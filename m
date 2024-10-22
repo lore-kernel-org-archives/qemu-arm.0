@@ -1,578 +1,279 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp3346055njb;
-        Tue, 22 Oct 2024 13:10:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXdzrJuut6zTUcq9NVYcA0AP88L6TsKwevbQA44CyMpt/u5w15U9SgzcXYWgMfe+vizUVxn2f5oFPGy0w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEV3gncg/E9RORtPQdesRSewC0zVnheB1tcgh0JxyJULWTmhH7vbACj1H3LFbJJh3Q0lVAb
-X-Received: by 2002:a05:622a:191a:b0:460:eb65:be26 with SMTP id d75a77b69052e-46114727e10mr1840611cf.48.1729627833776;
-        Tue, 22 Oct 2024 13:10:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729627833; cv=none;
+Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp9653njb;
+        Tue, 22 Oct 2024 14:36:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCVwJ8EpX9+dlCUSQ8tTMfbU4hKI9EGswNAFiPX/6AHilUY3VZ8kSgVv2dfqpCgO515dcvmQvOijzWA71A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGDHcBzPBw/smarIQUm2pvj2vqFz9YAZCuhkFFw3cp5/G7XqlNSXLEkKFrSAfzljtHhsetm
+X-Received: by 2002:ac8:5812:0:b0:460:a367:5d5f with SMTP id d75a77b69052e-46114746723mr4307641cf.59.1729632974887;
+        Tue, 22 Oct 2024 14:36:14 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1729632974; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Loa10660YvIpDQ8IvOTiw6nZngSoI4f2M8iLWNewnaUo/sFeYCnxpjaSiPqwVrNRwZ
-         /E2IeZ9eFmGB8TJtAw+AXB71Xks3aNQOOPSL+qqNFOkpiJQETXCrv/pZmvOf/hOVPbek
-         e5vwJaA3SlijLJZ7j1F+Q8qfS4saZBCYzq6jmKgpzUTO/O0xXRDp9C6CqYOT0S85f/hA
-         oVnZZFCGaIAlursbfS0uQ7siQQ27ePled5WXZye8Dub0gIIEkyEq8gPqp1bPl230cx1b
-         hP/l/JDFGi4Kf/QeFA3K2cV6irmA9AzczrL9P3/MMhuQR+WzrAZeWZiRqr2XAwDacxoK
-         H6iw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=RDfl2DpW/taqdMrtyVLZ4oLx0gC0rTi0jzm6kfkYchrL+WIBTRkpqcPPymtqtirYu8
+         YPjiH5Gg0bxrBeXiH9KtkxU9AD3cYxXvyxsbOGn3U9Zuc7jDwx/2n87kfjofNiWcvt2B
+         mPc51/rS0yDP1ox2zKRwXvkEdVviqQNH7yKL7qbR3SN0xgP+KnT2dVlBL/5i3mvfAaxf
+         ex5PKmQ55XolSOo4uMHs/60smtnJ7R19+imqvff4HveA3CaRrRROi+efMYlXgmSeA8hn
+         iVy/eh7gJPWdndVrGFD/T58/upewRfbOOb5Cwy4TRz3G4gMZzd8swOnWG9P1v/cLF9f2
+         zK4w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:subject
-         :in-reply-to:message-id:cc:to:from:date:dkim-signature;
-        bh=/3iYGqdg3gAHkLCv/GvRia1pbMngF0geI2plVtgtyzc=;
-        fh=niu+unTRiDpEQt9c+49ttWiDzK2gCFBuU5ybhTq9R00=;
-        b=ZdSXOZTwmZw6IjoYLsQkRhH/s8Qoo8rhwGX9e/hY8ErbNsKaYHWGWsjonHTgj5jcow
-         BzWcwVF/Kdt0YF4XavlIaz1tF/OSN9hom4GOlFXzJ0nYzGs3/1TmcwB2/qKaew3kzSyT
-         roqXb9NogfOk5VWv3Hsv3NZmiV7uwToJhDKrhn2hNptc86jhz4e4xIW1WQjk+SYijxY4
-         mrLnUBYVDoNTBt1TX8neJybyckTK0FhWV/EqKJmuAnBKQKp1IgEeBv3uFXCPG1VfT59R
-         ifKBNDEdv7Oy1tXGJvvzz9BYU+sW8kiJYHBc4k5FOyozBgEowOOk9Pam2TdBwEXg4kOH
-         H/Yw==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:references:in-reply-to:message-id:date
+         :subject:cc:to:from:dkim-signature:dkim-signature;
+        bh=yA5SGXqxap0vZEqvFgb2qBzg1DPOrZyTVMAb7dTFU+I=;
+        fh=anieKe/wYuoolAgq9ss2v7Xi+WIvU8oFTnn8Guryt5A=;
+        b=H5UtaEpGH83QG4i9Ch5xiJf482FxeHX/ZQYOF2pFWYxBqZMF/nlH0OLqxddntbwh+/
+         CAarnfGKF+v+WixUlfILPqWB58ToP9AQHfwg+T57G+BbLMARm7d9ty1uTHFBMMZ6Ux9t
+         QDeFMfOt4tY16JG/N6bPzsz90YbGNauxc0AdX0tkHNZOj7gY17Ef2luR2B4Sde0uU1cW
+         Pg+yM2EWVUEIksYyd2PoQQeKOrstEwRM5gvn0MVkQpBnBaCdTp2a6mFW7YnPP86Yk+Ml
+         Nakws2H3N/NSVPwPFwglTcBVGT5VoPwOPEBWO8G71RPZXnP0Ggqh+GbRRXaHipxBMFeJ
+         T1Lw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b="i2R/QGex";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=AijDQy9H;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=Z7QMbKt1;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460d3b385easi70779601cf.131.2024.10.22.13.10.33
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3da22c9si79238611cf.711.2024.10.22.14.36.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 13:10:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Oct 2024 14:36:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b="i2R/QGex";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=AijDQy9H;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=Z7QMbKt1;
+       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t3LCq-0000nA-KO; Tue, 22 Oct 2024 16:10:16 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t3MXI-0004yJ-QG; Tue, 22 Oct 2024 17:35:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <castet.matthieu@free.fr>)
- id 1t3LCo-0000jx-5u; Tue, 22 Oct 2024 16:10:14 -0400
-Received: from smtp6-g21.free.fr ([2a01:e0c:1:1599::15])
+ (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
+ id 1t3MXF-0004we-TS; Tue, 22 Oct 2024 17:35:25 -0400
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <castet.matthieu@free.fr>)
- id 1t3LCk-0005JW-Jf; Tue, 22 Oct 2024 16:10:13 -0400
-Received: from zimbra83-e15.priv.proxad.net (unknown [172.20.243.252])
- by smtp6-g21.free.fr (Postfix) with ESMTP id B8CE87804FD;
- Tue, 22 Oct 2024 22:10:07 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
- s=smtp-20201208; t=1729627807;
- bh=/3iYGqdg3gAHkLCv/GvRia1pbMngF0geI2plVtgtyzc=;
- h=Date:From:To:Cc:In-Reply-To:Subject:From;
- b=i2R/QGexcZNI71244eILzQ9hWY2hX9vKkc5jp7XkrxxnCFmQE8810bVjmgI32h73d
- hWIk/biXjuOP/nbxUNUiKj1FwoouInh3ZEWRTOl/eYguNEuGPRfiW+WkcwFTAqrQv5
- CTivjOoAxGYbtv0H2vRt5Jx72Iybydn1xww+KiF0xJkEIfPotqlfYOdJ+2kfN9mbme
- A7VADZR8wboHLrXuYyIliV/QxOa3SlvCMYjDXjsc1hBNakwLmyl06Qbn6SL+RMc4wg
- 20/eL+3hHWCWgk3wy2zCH9EqABzvYrEdpVcDOmBl8SVsXm/YUpIghSj/aqCRlkhRG1
- lpZ7kAc04d/vg==
-Date: Tue, 22 Oct 2024 22:10:07 +0200 (CEST)
-From: castet.matthieu@free.fr
-To: castet matthieu <castet.matthieu@free.fr>
-Cc: Peter Maydell <peter.maydell@linaro.org>, 
- "open list:ARM cores" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Message-ID: <229573109.377326698.1729627807614.JavaMail.root@zimbra83-e15.priv.proxad.net>
-In-Reply-To: <20241022200310.175432-2-castet.matthieu@free.fr>
-Subject: Re: [PATCH 1/1] target/arm: Add cortex-m0+ support
+ (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
+ id 1t3MXD-0006jM-QU; Tue, 22 Oct 2024 17:35:25 -0400
+Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
+ by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 49MLQbwR022771;
+ Tue, 22 Oct 2024 21:35:19 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=
+ corp-2023-11-20; bh=yA5SGXqxap0vZEqvFgb2qBzg1DPOrZyTVMAb7dTFU+I=; b=
+ AijDQy9HETJv8Z+3jEHPjMwWyYE4cWIg0eLgu5jap0IRZvmxRkjKOzY9FU2T29aB
+ UF5eISVW+pyA9gyvQwXkT0RoLh/eYG4Hc19vxdjfqIW7ijJtVC1JAyCbwzf+rpNn
+ eh/gO8aPeOKoXR95lspD26uayMKFDqrGlbUQ38mEGnwrYwxaesm46QsiIt/YMYkD
+ SW6zhEKYlaU3pFC9iQNJ7Rs4jb6Syt7VjU8YBOGj7fKx5fVQLsP9BtKgVHyBKd3S
+ Jwh/oGYlWGXEt9RgEcboc0NaNIyms0HkG4AWLGuEzU0v3pDTecGRfQvNUDVupfxS
+ bKPAm0nAByg1ww1aiQPR3w==
+Received: from iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com
+ (iadpaimrmta01.appoci.oracle.com [130.35.100.223])
+ by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 42c5aserat-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 22 Oct 2024 21:35:18 +0000 (GMT)
+Received: from pps.filterd
+ (iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
+ with ESMTP id 49ML4swM020265; Tue, 22 Oct 2024 21:35:17 GMT
+Received: from nam02-sn1-obe.outbound.protection.outlook.com
+ (mail-sn1nam02lp2044.outbound.protection.outlook.com [104.47.57.44])
+ by iadpaimrmta01.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
+ 42c37egyk2-2
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 22 Oct 2024 21:35:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=oZnc0fa9EAUwUmeuM9u2GQZxsjB2K1vgUWeg8388d6b/yOGIzrIRSsCFtyapxJ4LhVv1pyhqZEXahb9sImhHKtmpK+un0r+ii0CS/Mf0gJKY4Ki3EAgRmzeK1lsAxbu7NCw7Hf4/7tQ23h7UEqKMRJJIQi1owSjyPXTfrkKlgKp4LFDvnmxvrC0tF6TJVT62uT/Xlc8TQFYOkFxL4aswhCURH5o77hAI8FyuT/bfvPB6FrjcgynuOdsCsEwi2vnfWfiL6yByFoXySrVFTrRrhK5ibndss4y5MoeZPCjn4PAMqacG7VpeufR0w0/Hv69oWhfAztyok0MszZ+TwcK+Vw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yA5SGXqxap0vZEqvFgb2qBzg1DPOrZyTVMAb7dTFU+I=;
+ b=ZfILI5HhsuPRUjt/9uI4QRsl5gbzjhrSTwJNj/T72+JmS6IckybirzIzyfRBvKujCCMcjqdYhUd/I90fewqVKmyUxyVtCwAwak+xF7O1HVYjMjpd6lsI8h4VJZ4yvxUNRzrAy8byxxfQ3h1t3SHmkqpQzCtYUHDQA7QViuNSiMHVgWdJgzQDZXUWlO0tlPlk10kSUeSKIbR2Zq24iJSn54jmYr38mmO3xqYj26SqpujsSMvGPEcd3lXfa1Tw/yP4k59vETCjkePrJbHJ+LKbIWeWRwAliZNCzAM/3EkeawhhwqY9qVsfve0txOxn3TKeX1/EvDBwY79glsjWFpGcbw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yA5SGXqxap0vZEqvFgb2qBzg1DPOrZyTVMAb7dTFU+I=;
+ b=Z7QMbKt1sTLBUj7Iz/dSf9dc9xEIf5OVw+Xe6/b1i7B4x8ST7xXd2H2DiuopKVhNtHINYicD1MQM78v03njBtiUyg0wYg9SaRYE/Uvgj9j4+obzaA57z90I8YLhWrGsqfB/gr0OLIOHUJfeG1ijoSZnGB6W7gx4bLeQMcNVzBPU=
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
+ by SA2PR10MB4809.namprd10.prod.outlook.com (2603:10b6:806:113::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.16; Tue, 22 Oct
+ 2024 21:35:15 +0000
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23%4]) with mapi id 15.20.8069.027; Tue, 22 Oct 2024
+ 21:35:15 +0000
+From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
+To: peterx@redhat.com, david@redhat.com, pbonzini@redhat.com,
+ richard.henderson@linaro.org, philmd@linaro.org,
+ peter.maydell@linaro.org, mtosatti@redhat.com, kvm@vger.kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: william.roche@oracle.com, joao.m.martins@oracle.com
+Subject: [PATCH v1 3/4] system/physmem: Largepage punch hole before reset of
+ memory pages
+Date: Tue, 22 Oct 2024 21:35:02 +0000
+Message-ID: <20241022213503.1189954-4-william.roche@oracle.com>
+X-Mailer: git-send-email 2.43.5
+In-Reply-To: <20241022213503.1189954-1-william.roche@oracle.com>
+References: <ZwalK7Dq_cf-EA_0@x1n>
+ <20241022213503.1189954-1-william.roche@oracle.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: BN9PR03CA0971.namprd03.prod.outlook.com
+ (2603:10b6:408:109::16) To CH3PR10MB7329.namprd10.prod.outlook.com
+ (2603:10b6:610:12c::16)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_377326697_69394490.1729627807613"
-X-Originating-IP: [2a01:cb00:13da:d200:7cf5:aa34:e526:681b]
-X-Mailer: Zimbra 7.2.0-GA2598 (ZimbraWebClient - FF3.0 (Linux)/7.2.0-GA2598)
-X-Authenticated-User: castet.matthieu@free.fr
-Received-SPF: pass client-ip=2a01:e0c:1:1599::15;
- envelope-from=castet.matthieu@free.fr; helo=smtp6-g21.free.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|SA2PR10MB4809:EE_
+X-MS-Office365-Filtering-Correlation-Id: 49084a3a-3a25-4ecf-60f3-08dcf2e16ace
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|7416014|366016|1800799024|921020; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?52m4ycQxcOLGWK3JwN0NJR7gNcxCHZwtO18QVRJz7S0xbMufbcrkjwgdchga?=
+ =?us-ascii?Q?2J89DKfAmpg2hWk3NmGfcQJ/fFzk1+fBQ7DNbdov+ZcAsRin9NsjRD21hMaK?=
+ =?us-ascii?Q?GCt2si8t7GlBL/Z8v7HrBOcqItxXsnxmC6upuLsUuj38E/oFiaQoHtZHveCS?=
+ =?us-ascii?Q?VdL0eKmr2rjRyrURl/9N+2GwDf1v8gFrxV2nohcj/QH0T+WonAImqx1/Mb10?=
+ =?us-ascii?Q?0zI5gjxFGkTVUCHrwtETAdfuFfVkhqDMGDSOFBzzhFdRyCxnoHjsiuBXY7Qd?=
+ =?us-ascii?Q?9aRMZTZnZA2Tvnzpe+UD+c8KjAAakCHYABEYrRxbvf7IP1JOdUvsE7musgKw?=
+ =?us-ascii?Q?pIMyUiPdMLN+zrAkXQVEGm9ky2u3FTFEjMLAeS/YeQNLBaBNj9m9lbub52U5?=
+ =?us-ascii?Q?9hD5eUqQrXKapZEQtc0lQ60OMWwNLLr8zqVbMCBxy7Lb9npg4F3CZPH0zWVK?=
+ =?us-ascii?Q?rT+tqM6RBHW9rnoAY2r6Z5nEoZ6/SSLyKNkcY3wr7FbYH3B1PHEZa6LmOKoh?=
+ =?us-ascii?Q?LaAQS6Pe/hayLNREcXRmAdP3SUNhQMEWoT1lYz4e+iubwLmPtfv7OYFHgyCV?=
+ =?us-ascii?Q?hW+V8/hUbwIsD1Fafyv7KczkMJrRgshUplyMDvVOejXEwDLDUgn4xEx+1SMa?=
+ =?us-ascii?Q?s2Rt6TaDUdw9KwjUVQs/T85QBFJQesqUhroBeOWaRXawib679AUJBUzl1BS+?=
+ =?us-ascii?Q?pK0Cx9qatAI5y8M4/JGUPCs4V2xv9Fr/rU2pwQZdhOKOZcl9Yiwoutzm76mF?=
+ =?us-ascii?Q?FczyGZW9TyZKybvXDE74oWhTGXfxTOusf6X3Zxrrn6ab0Vv+r8Hz2LK0xOdF?=
+ =?us-ascii?Q?MfKoBxqp4G1T0PCQY6Y8bsHOv2KSI0FyMSCAFgbN7gmM5t80c3jsEe9AGje5?=
+ =?us-ascii?Q?rjpKyRnuhofjC+6j/k1HtDqoCW++4HDlwkMUjfEtK4RHbONXtMES5wkzGWAv?=
+ =?us-ascii?Q?iNcpguu4EaSEQcOa3iAF21dWOVknFYVkH6r7shGCtAb/oulvZ0r6iwlNB/2Z?=
+ =?us-ascii?Q?j9/pzbyGNA+9DM8dIj1nufhIorA2TZwl3WRTN39eMpYYeKnUmwTVmyQuurjV?=
+ =?us-ascii?Q?ZuRZsEhDQRmh8EDoxsllCivFt4Ln8v4XJ09zDVA6GGoXRCfwMfP4QycvPSrA?=
+ =?us-ascii?Q?IqqGwqpQkVcZWfapu8nZP5JTUgP8jfyYoB2ztLfA0Jwj1sVFvUNkYrp/68Qh?=
+ =?us-ascii?Q?j8Bj2vbQvKMIpIlgKLv1FPjsxO6URNCE+jp0DNT5CiyygD7cRwQkNvlJEpxB?=
+ =?us-ascii?Q?ADhhhrym2LywMBCk/bY2hK/+xnBd4ham2IfxNELqaO41azSyZ4RSF2TIAQgE?=
+ =?us-ascii?Q?ikX24ZbkFX9cAY6WVl+AgOpBSD+HX4k2H+YszpYbxba7FtyGX+zIRTe04KDZ?=
+ =?us-ascii?Q?ZA+U+zM=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CH3PR10MB7329.namprd10.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(366016)(1800799024)(921020); DIR:OUT; SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?4+HZsTy5oSttN001piD2iQQTAANs6hGctJaX1UeCe5vI6dEUQRB5xa8wXTbz?=
+ =?us-ascii?Q?wbEsk65tSdjTPusWgyaDnivMTrI6xE9Ev5FCvYfmQJJvZqZqttjBuUOU7z2O?=
+ =?us-ascii?Q?43MrEkuO2U/l27ZzXWWXqS9F6/qz/7pySA52PPTU37/WkZGb/EJ4xETp4RYe?=
+ =?us-ascii?Q?0Nv1fdIHxhljN6UAuSUe4J818lVBc4GBQ2LXljLOnsrj022JBx0YO7JXV4fH?=
+ =?us-ascii?Q?Ij1xR4lYGgnrW1r5ZwZjXag8K1LoOWjLKPqfMM45NqzwuHBUffeyQ+bYBzQp?=
+ =?us-ascii?Q?GgDcnBi7gNkKTeUJKvD7R2fEZYacB6n6aSMcXV9USWlZDMBxSPGm/mieLimA?=
+ =?us-ascii?Q?ZUXZs5Lq2MFYx6hdNrQ55gG7lI2SSiy0C8i6RlT//bVNoMCORW3oWRgrExQ0?=
+ =?us-ascii?Q?WnIENpJQZ7TQifITmTTIXT19pFvd7/WZob4Bxzu5hwk4IELdA2JQ31JPg3fA?=
+ =?us-ascii?Q?5NWx0szkJIn9qXbASHe7hjWTaEjw+MSawDtxQvbwx2TyAOYpL01l6SnNs9oY?=
+ =?us-ascii?Q?gCVO545nPhUBQwgMlKE9cuI8Hrf+WTGu+1GJWpUA8c1w2VJSzJgOiBZ6HBR/?=
+ =?us-ascii?Q?2ds41Jsae7wzgzYl7Z6XD4HrIFz/imPCWExHUy59LoFQI400jNi5p4bhVv/+?=
+ =?us-ascii?Q?LHJtVkiV02KtTL+mHFF5hy8oPOrVVocopXBGZer2bdUXewef5OLBhRytaQY7?=
+ =?us-ascii?Q?8jT7/wogQ5rYYGLlnRT9S0GmgECBizpmYFPANDqxgXTdz5r93CHOeSd/RmUm?=
+ =?us-ascii?Q?o/jlYGiEVD8HALEk6zr2GeThoLyG40ROQYDDuwLjpMqhjcvgMytZ9xxmQTQl?=
+ =?us-ascii?Q?h+bd2FPbvWJE6PFS1iY+DDzuA9Xp3kdkqew5sY1zIR2yYZyYvVaWd8ArBLJU?=
+ =?us-ascii?Q?XOUiqnV1Jt08ni3vCjxXoCbEXNXq1cd56eI9ntxV5ymXEqPwoAiabUMDlVwC?=
+ =?us-ascii?Q?zqYHXENux1lS45K5xxC8WzJDgbM4spKb8SbsVxCIdK0dbkVQmGrr2JsHGRmZ?=
+ =?us-ascii?Q?bWnLLWnguaCPG8ZsXXEKDhaeMIoswoOUZlI0WU0Cn8tjVT4E0xr+sTb//gG9?=
+ =?us-ascii?Q?E3rHv6sL68cUICkjm4iW8MNmIVM3TuTyIgHPAYuJeni+HThatVSNNhZPh9cN?=
+ =?us-ascii?Q?5XA6lGz4J1HkRANoSTPRKCF9VDLEYH5QbQyHulsQwd+79NYvh1yPE6fOZTJl?=
+ =?us-ascii?Q?kSnW0oLRHYsCUfqaFz5Rn5ps0e3vxOJNKo/LifE0haNV0ZW62ApSkY4eda/9?=
+ =?us-ascii?Q?tL9C2LSxb6B91VXkxrrnhJxWdPGoshZj0FKTsz8A1Vb3kkmV0h7e+nnznzm3?=
+ =?us-ascii?Q?cVFG3+e6/rq1ThVmFFhj9SLXHQL6EeE1GBmyNOakxPe5CpRr/8Tm4lHH+DVk?=
+ =?us-ascii?Q?g8C3MHaaed2gBtU/3/NPm8XjdfT3BEEvgiUPDFykDBnSceGtMBc2pZfGqb6Z?=
+ =?us-ascii?Q?x04NlZjChHba094px4w15/I+0SRUKwIx8+3uor9FMk5DnYTcK928195YAuKv?=
+ =?us-ascii?Q?HtuCDAwkrPr6w/5tgCoSwRNq8Mw0/uRWpz180NABjhk+7f3/0+JMexLgVhHO?=
+ =?us-ascii?Q?qfScqW9+8cAlCsY7DkaSoV9Pmi7nBrxOexkBO7dlpqn644dyvC7QQRVuKcjx?=
+ =?us-ascii?Q?qA=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: SmMfP8Gm9nLBRFI52+M452qF77n4o6Po6HtTg67lJxMtXDcg/072zEpyZxJ+vcqb/ZZi5ESPHZN6oxGJNz97uavzaMR/MPVaXxphLtIy37VGETy3eHM18Z4RsjltQa7ljSlWtHzj4QfIrwTfeO8PYR/cXovhtlLq3UU2nPZZ593ymTdyNUYLzb3IBUt585P0NyuLF8R2xmsyurQpMkhFuE+SHNMLqUAfNRCH+5m8Ph9Uo2202xm0d2otPwVkD87QuoQQ3fYilWn0t4XCmGJTy2WwAgE8nf5wwe8jcVGASFPWkFI0EQmKNFS4ZN1rzRxLEMG87BnneEG0dFApY2xmzul/mOov8UtzoIf708sfO4cUpKf27ZzqOp2lUIRSfzWs6Od4jSzkGDdAE8sZYfhON14nP6mokZ7a5RmtkRDSkOKF5d0huq8gd2jjyirFVwdAbvouVwEqRE7cJRyGvQkkUFCA4dorMd+7p3G+gkxqL29LLf2XA9sCs/PrUepF5d7hPpvModFBUlRrK+y/5E/P0d/treeYPcP4cYV6nsiCqtq79cmXy5Fal5G8NZW6VIYGibG1fZckkZGOh86pdpniPEJ35zKvQki8rKh3mmlrpt8=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 49084a3a-3a25-4ecf-60f3-08dcf2e16ace
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Oct 2024 21:35:15.4930 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: hYl6350lDZOgQhzKx3WbgaD2SGh1IglWwFsBMaUKfKZDJLaMPNiotjsluY+W8l1Y4v0Buu2BLwaay6GLx+q8zjz+UY64A/G0KD2YFPoGf7o=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR10MB4809
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
+ definitions=2024-10-22_23,2024-10-22_01,2024-09-30_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
+ suspectscore=0
+ mlxlogscore=999 spamscore=0 malwarescore=0 mlxscore=0 adultscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2409260000 definitions=main-2410220140
+X-Proofpoint-GUID: YoTjuLtpRFYnHesFQiS80yYBVEGzU_c2
+X-Proofpoint-ORIG-GUID: YoTjuLtpRFYnHesFQiS80yYBVEGzU_c2
+Received-SPF: pass client-ip=205.220.165.32;
+ envelope-from=william.roche@oracle.com; helo=mx0a-00069f02.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ TVD_PH_BODY_ACCOUNTS_PRE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RWMWVVAeNYpS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gWd43znaPR3u
 
-------=_Part_377326697_69394490.1729627807613
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+From: William Roche <william.roche@oracle.com>
 
+When the VM reboots, a memory reset is performed calling
+qemu_ram_remap() on all hwpoisoned pages.
+While we take into account the recorded page sizes to repair the
+memory locations, a large page also needs to punch a hole in the
+backend file to regenerate a usable memory, cleaning the HW
+poisoned section. This is mandatory for hugetlbfs case for example.
 
-Hello,=20
+Signed-off-by: William Roche <william.roche@oracle.com>
+---
+ system/physmem.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
+diff --git a/system/physmem.c b/system/physmem.c
+index 3757428336..3f6024a92d 100644
+--- a/system/physmem.c
++++ b/system/physmem.c
+@@ -2211,6 +2211,14 @@ void qemu_ram_remap(ram_addr_t addr, ram_addr_t length)
+                 prot = PROT_READ;
+                 prot |= block->flags & RAM_READONLY ? 0 : PROT_WRITE;
+                 if (block->fd >= 0) {
++                    if (length > TARGET_PAGE_SIZE && fallocate(block->fd,
++                        FALLOC_FL_KEEP_SIZE | FALLOC_FL_PUNCH_HOLE,
++                        offset + block->fd_offset, length) != 0) {
++                        error_report("Could not recreate the file hole for "
++                                     "addr: " RAM_ADDR_FMT "@" RAM_ADDR_FMT "",
++                                     length, addr);
++                        exit(1);
++                    }
+                     area = mmap(vaddr, length, prot, flags, block->fd,
+                                 offset + block->fd_offset);
+                 } else {
+-- 
+2.43.5
 
-Please ignore this mail,=20
-I was doing some test and didn't realise real email was added.=20
-
-
-
-I will resend the real one.=20
-
-
-Thanks.=20
-
------ Mail original -----
-
-De: "Matthieu Castet" <castet.matthieu@free.fr>=20
-=C3=80: "castet matthieu" <castet.matthieu@free.fr>=20
-Cc: "Peter Maydell" <peter.maydell@linaro.org>, "open list:ARM cores" <qemu=
--arm@nongnu.org>, "open list:All patches CC here" <qemu-devel@nongnu.org>=
-=20
-Envoy=C3=A9: Mardi 22 Octobre 2024 22:03:10=20
-Objet: [PATCH 1/1] target/arm: Add cortex-m0+ support=20
-
-Signed-off-by: Matthieu Castet<castet.matthieu@free.fr>=20
----=20
-hw/intc/armv7m_nvic.c | 38 +++++++++++++++++++++++++++++++++-----=20
-target/arm/cpu.c | 4 ++--=20
-target/arm/ptw.c | 23 +++++++++++++++++++----=20
-target/arm/tcg/cpu-v7m.c | 21 ++++++++++++++++++++-=20
-4 files changed, 74 insertions(+), 12 deletions(-)=20
-
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c=20
-index 98f3cf59bc..ed084e9db3 100644=20
---- a/hw/intc/armv7m_nvic.c=20
-+++ b/hw/intc/armv7m_nvic.c=20
-@@ -1386,7 +1386,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t off=
-set, MemTxAttrs attrs)=20
-}=20
-return (cpu->env.pmsav7.drbar[region] & ~0x1f) | (region & 0xf);=20
-}=20
-- case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */=20
-+ case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */=20
-case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */=20
-case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */=20
-case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */=20
-@@ -1876,6 +1876,14 @@ static void nvic_writel(NVICState *s, uint32_t offse=
-t, uint32_t value,=20
-return;=20
-}=20
-
-+ if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {=20
-+ if (offset !=3D 0xd9c)=20
-+ goto bad_offset;=20
-+=20
-+ /* do not support size less than 256 */=20
-+ value &=3D ~0xe0;=20
-+ }=20
-+=20
-if (value & (1 << 4)) {=20
-/* VALID bit means use the region number specified in this=20
-* value and also update MPU_RNR.REGION with that value.=20
-@@ -1900,12 +1908,13 @@ static void nvic_writel(NVICState *s, uint32_t offs=
-et, uint32_t value,=20
-tlb_flush(CPU(cpu));=20
-break;=20
-}=20
-- case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */=20
-- case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */=20
-- case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */=20
-- case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */=20
-+ case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */=20
-+ case 0xda8: /* MPU_RASR_A1 (v6M/v7M), MPU_RLAR_A1 (v8M) */=20
-+ case 0xdb0: /* MPU_RASR_A2 (v6M/v7M), MPU_RLAR_A2 (v8M) */=20
-+ case 0xdb8: /* MPU_RASR_A3 (v6M/v7M), MPU_RLAR_A3 (v8M) */=20
-{=20
-int region =3D cpu->env.pmsav7.rnr[attrs.secure];=20
-+ int rsize;=20
-
-if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {=20
-/* PMSAv8M handling of the aliases is different from v7M:=20
-@@ -1926,6 +1935,25 @@ static void nvic_writel(NVICState *s, uint32_t offse=
-t, uint32_t value,=20
-return;=20
-}=20
-
-+ rsize =3D extract32(value, 1, 5);=20
-+ if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {=20
-+ if (offset !=3D 0xda0)=20
-+ goto bad_offset;=20
-+ /* for armv6-m rsize >=3D 7 (min 256) */=20
-+ if (rsize < 7) {=20
-+ qemu_log_mask(LOG_GUEST_ERROR,=20
-+ "MPU region size too small %d\n", rsize);=20
-+ return;=20
-+ }=20
-+ }=20
-+=20
-+ /* for armv7-m rsize >=3D 4 (min 32) */=20
-+ if (rsize < 4) {=20
-+ qemu_log_mask(LOG_GUEST_ERROR,=20
-+ "MPU region size too small %d\n", rsize);=20
-+ return;=20
-+ }=20
-+=20
-if (region >=3D cpu->pmsav7_dregion) {=20
-return;=20
-}=20
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c=20
-index 1320fd8c8f..875e3aab69 100644=20
---- a/target/arm/cpu.c=20
-+++ b/target/arm/cpu.c=20
-@@ -508,7 +508,7 @@ static void arm_cpu_reset_hold(Object *obj, ResetType t=
-ype)=20
-sizeof(*env->pmsav8.rlar[M_REG_S])=20
-* cpu->pmsav7_dregion);=20
-}=20
-- } else if (arm_feature(env, ARM_FEATURE_V7)) {=20
-+ } else if (arm_feature(env, ARM_FEATURE_M)) {=20
-memset(env->pmsav7.drbar, 0,=20
-sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);=20
-memset(env->pmsav7.drsr, 0,=20
-@@ -2454,7 +2454,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error=
- **errp)=20
-}=20
-
-if (arm_feature(env, ARM_FEATURE_PMSA) &&=20
-- arm_feature(env, ARM_FEATURE_V7)) {=20
-+ arm_feature(env, ARM_FEATURE_M)) {=20
-uint32_t nr =3D cpu->pmsav7_dregion;=20
-
-if (nr > 0xff) {=20
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c=20
-index dd40268397..fa771907e3 100644=20
---- a/target/arm/ptw.c=20
-+++ b/target/arm/ptw.c=20
-@@ -2383,6 +2383,13 @@ static bool pmsav7_use_background_region(ARMCPU *cpu=
-, ARMMMUIdx mmu_idx,=20
-return regime_sctlr(env, mmu_idx) & SCTLR_BR;=20
-}=20
-
-+/* armv6m PMSAv6 is mostly compatible with PMSAv7,=20
-+ * main difference :=20
-+ * - min region size is 256 instead of 32=20
-+ * - TEX can be only 0 (Tex not used by qemu)=20
-+ * - no alias register=20
-+ * - HardFault instead of MemManage=20
-+ */=20
-static bool get_phys_addr_pmsav7(CPUARMState *env,=20
-S1Translate *ptw,=20
-uint32_t address,=20
-@@ -2423,11 +2430,19 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,=
-=20
-continue;=20
-}=20
-
-- if (!rsize) {=20
-+ /* Issue warning for invalid values=20
-+ * for armv7-m rsize >=3D 4 (min 32)=20
-+ * for armv6-m rsize >=3D 7 (min 256)=20
-+ */=20
-+ if (!rsize ||=20
-+ (arm_feature(env, ARM_FEATURE_M) && (=20
-+ rsize < 7 ||=20
-+ (rsize < 4 && !arm_feature(env, ARM_FEATURE_V7))))) {=20
-qemu_log_mask(LOG_GUEST_ERROR,=20
-- "DRSR[%d]: Rsize field cannot be 0\n", n);=20
-+ "DRSR[%d]: Rsize field cannot be %d\n", n, rsize);=20
-continue;=20
-}=20
-+=20
-rsize++;=20
-rmask =3D (1ull << rsize) - 1;=20
-
-@@ -3515,8 +3530,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1T=
-ranslate *ptw,=20
-/* PMSAv8 */=20
-ret =3D get_phys_addr_pmsav8(env, ptw, address, access_type,=20
-result, fi);=20
-- } else if (arm_feature(env, ARM_FEATURE_V7)) {=20
-- /* PMSAv7 */=20
-+ } else if (arm_feature(env, ARM_FEATURE_V7) || arm_feature(env, ARM_FEATU=
-RE_M)) {=20
-+ /* PMSAv7 or PMSAv6 */=20
-ret =3D get_phys_addr_pmsav7(env, ptw, address, access_type,=20
-result, fi);=20
-} else {=20
-diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c=20
-index 58e54578d6..01bc5d4375 100644=20
---- a/target/arm/tcg/cpu-v7m.c=20
-+++ b/target/arm/tcg/cpu-v7m.c=20
-@@ -76,6 +76,20 @@ static void cortex_m0_initfn(Object *obj)=20
-cpu->isar.id_isar6 =3D 0x00000000;=20
-}=20
-
-+static void cortex_m0p_initfn(Object *obj)=20
-+{=20
-+ ARMCPU *cpu =3D ARM_CPU(obj);=20
-+=20
-+ /* cortex-m0p is a cortex-m0 with=20
-+ * vtor and mpu extension=20
-+ */=20
-+ cortex_m0_initfn(obj);=20
-+=20
-+ cpu->midr =3D 0x410cc601;=20
-+ cpu->pmsav7_dregion =3D 8;=20
-+}=20
-+=20
-+=20
-static void cortex_m3_initfn(Object *obj)=20
-{=20
-ARMCPU *cpu =3D ARM_CPU(obj);=20
-@@ -111,6 +125,7 @@ static void cortex_m4_initfn(Object *obj)=20
-set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);=20
-cpu->midr =3D 0x410fc240; /* r0p0 */=20
-cpu->pmsav7_dregion =3D 8;=20
-+ /* VFPv4-SP */=20
-cpu->isar.mvfr0 =3D 0x10110021;=20
-cpu->isar.mvfr1 =3D 0x11000011;=20
-cpu->isar.mvfr2 =3D 0x00000000;=20
-@@ -141,6 +156,7 @@ static void cortex_m7_initfn(Object *obj)=20
-set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);=20
-cpu->midr =3D 0x411fc272; /* r1p2 */=20
-cpu->pmsav7_dregion =3D 8;=20
-+ /* VFPv5 DP */=20
-cpu->isar.mvfr0 =3D 0x10110221;=20
-cpu->isar.mvfr1 =3D 0x12000011;=20
-cpu->isar.mvfr2 =3D 0x00000040;=20
-@@ -173,6 +189,7 @@ static void cortex_m33_initfn(Object *obj)=20
-cpu->midr =3D 0x410fd213; /* r0p3 */=20
-cpu->pmsav7_dregion =3D 16;=20
-cpu->sau_sregion =3D 8;=20
-+ /* VFPv5 DP */=20
-cpu->isar.mvfr0 =3D 0x10110021;=20
-cpu->isar.mvfr1 =3D 0x11000011;=20
-cpu->isar.mvfr2 =3D 0x00000040;=20
-@@ -209,7 +226,7 @@ static void cortex_m55_initfn(Object *obj)=20
-cpu->revidr =3D 0;=20
-cpu->pmsav7_dregion =3D 16;=20
-cpu->sau_sregion =3D 8;=20
-- /* These are the MVFR* values for the FPU + full MVE configuration */=20
-+ /* These are the MVFR* values for the FPv5-D16-M + full MVE configuration=
- */=20
-cpu->isar.mvfr0 =3D 0x10110221;=20
-cpu->isar.mvfr1 =3D 0x12100211;=20
-cpu->isar.mvfr2 =3D 0x00000040;=20
-@@ -267,6 +284,8 @@ static void arm_v7m_class_init(ObjectClass *oc, void *d=
-ata)=20
-static const ARMCPUInfo arm_v7m_cpus[] =3D {=20
-{ .name =3D "cortex-m0", .initfn =3D cortex_m0_initfn,=20
-.class_init =3D arm_v7m_class_init },=20
-+ { .name =3D "cortex-m0p", .initfn =3D cortex_m0p_initfn,=20
-+ .class_init =3D arm_v7m_class_init },=20
-{ .name =3D "cortex-m3", .initfn =3D cortex_m3_initfn,=20
-.class_init =3D arm_v7m_class_init },=20
-{ .name =3D "cortex-m4", .initfn =3D cortex_m4_initfn,=20
---=20
-2.39.5=20
-
-
-
-------=_Part_377326697_69394490.1729627807613
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-
-<html><head><style type=3D'text/css'>p { margin: 0; }</style></head><body><=
-div style=3D'font-family: times new roman,new york,times,serif; font-size: =
-12pt; color: #000000'><div>Hello,</div><div><br></div><div>Please ignore th=
-is mail,</div><div>I was doing some test and didn't realise real email was =
-added.<br></div><div><br></div><div>I will resend the real one.</div><div><=
-br></div><div>Thanks.<br></div><br><hr id=3D"zwchr"><div style=3D"color:#00=
-0;font-weight:normal;font-style:normal;text-decoration:none;font-family:Hel=
-vetica,Arial,sans-serif;font-size:12pt;"><b>De: </b>"Matthieu Castet" &lt;c=
-astet.matthieu@free.fr&gt;<br><b>=C3=80: </b>"castet matthieu" &lt;castet.m=
-atthieu@free.fr&gt;<br><b>Cc: </b>"Peter Maydell" &lt;peter.maydell@linaro.=
-org&gt;, "open list:ARM cores" &lt;qemu-arm@nongnu.org&gt;, "open list:All =
-patches CC here" &lt;qemu-devel@nongnu.org&gt;<br><b>Envoy=C3=A9: </b>Mardi=
- 22 Octobre 2024 22:03:10<br><b>Objet: </b>[PATCH 1/1] target/arm: Add cort=
-ex-m0+ support<br><br>Signed-off-by: Matthieu Castet&lt;castet.matthieu@fre=
-e.fr&gt;<br>---<br>&nbsp;hw/intc/armv7m_nvic.c &nbsp; &nbsp;| 38 ++++++++++=
-+++++++++++++++++++++++-----<br>&nbsp;target/arm/cpu.c &nbsp; &nbsp; &nbsp;=
- &nbsp; | &nbsp;4 ++--<br>&nbsp;target/arm/ptw.c &nbsp; &nbsp; &nbsp; &nbsp=
-; | 23 +++++++++++++++++++----<br>&nbsp;target/arm/tcg/cpu-v7m.c | 21 +++++=
-+++++++++++++++-<br>&nbsp;4 files changed, 74 insertions(+), 12 deletions(-=
-)<br><br>diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c<br>inde=
-x 98f3cf59bc..ed084e9db3 100644<br>--- a/hw/intc/armv7m_nvic.c<br>+++ b/hw/=
-intc/armv7m_nvic.c<br>@@ -1386,7 +1386,7 @@ static uint32_t nvic_readl(NVIC=
-State *s, uint32_t offset, MemTxAttrs attrs)<br>&nbsp;&nbsp; &nbsp; &nbsp; =
-&nbsp; }<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; return (cpu-&gt;env.pmsav7.dr=
-bar[region] &amp; ~0x1f) | (region &amp; 0xf);<br>&nbsp;&nbsp; &nbsp; }<br>=
-- &nbsp; &nbsp;case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */<br>+ &nbsp;=
- &nbsp;case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */<br>&nbsp;&nbsp;=
- &nbsp; case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */<br>&nbsp;&nb=
-sp; &nbsp; case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */<br>&nbsp;=
-&nbsp; &nbsp; case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */<br>@@ =
--1876,6 +1876,14 @@ static void nvic_writel(NVICState *s, uint32_t offset, =
-uint32_t value,<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; return;<=
-br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp;<br>+ &nbsp; &nbsp; &nbsp; =
-&nbsp;if (!arm_feature(&amp;s-&gt;cpu-&gt;env, ARM_FEATURE_V7)) {<br>+ &nbs=
-p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (offset !=3D 0xd9c)<b=
-r>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp;goto bad_offset;<br>+<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp;/* do not support size less than 256 */<br>+ &nbsp; &nbs=
-p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;value &amp;=3D ~0xe0;<br>+ &nbs=
-p; &nbsp; &nbsp; &nbsp;}<br>+<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if (valu=
-e &amp; (1 &lt;&lt; 4)) {<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; /* VALID bit means use the region number specified in this<br>&nbsp;&nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;* value and also update MPU_RNR.=
-REGION with that value.<br>@@ -1900,12 +1908,13 @@ static void nvic_writel(=
-NVICState *s, uint32_t offset, uint32_t value,<br>&nbsp;&nbsp; &nbsp; &nbsp=
-; &nbsp; tlb_flush(CPU(cpu));<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; break;<b=
-r>&nbsp;&nbsp; &nbsp; }<br>- &nbsp; &nbsp;case 0xda0: /* MPU_RASR (v7M), MP=
-U_RLAR (v8M) */<br>- &nbsp; &nbsp;case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLA=
-R_A1 (v8M) */<br>- &nbsp; &nbsp;case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_=
-A2 (v8M) */<br>- &nbsp; &nbsp;case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3=
- (v8M) */<br>+ &nbsp; &nbsp;case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8=
-M) */<br>+ &nbsp; &nbsp;case 0xda8: /* MPU_RASR_A1 (v6M/v7M), MPU_RLAR_A1 (=
-v8M) */<br>+ &nbsp; &nbsp;case 0xdb0: /* MPU_RASR_A2 (v6M/v7M), MPU_RLAR_A2=
- (v8M) */<br>+ &nbsp; &nbsp;case 0xdb8: /* MPU_RASR_A3 (v6M/v7M), MPU_RLAR_=
-A3 (v8M) */<br>&nbsp;&nbsp; &nbsp; {<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; i=
-nt region =3D cpu-&gt;env.pmsav7.rnr[attrs.secure];<br>+ &nbsp; &nbsp; &nbs=
-p; &nbsp;int rsize;<br>&nbsp;<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if (arm_=
-feature(&amp;cpu-&gt;env, ARM_FEATURE_V8)) {<br>&nbsp;&nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; /* PMSAv8M handling of the aliases is different from v=
-7M:<br>@@ -1926,6 +1935,25 @@ static void nvic_writel(NVICState *s, uint32_=
-t offset, uint32_t value,<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; return;<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; }<br>&nbsp;<br>+ &nbsp; &nbs=
-p; &nbsp; &nbsp;rsize =3D extract32(value, 1, 5);<br>+ &nbsp; &nbsp; &nbsp;=
- &nbsp;if (!arm_feature(&amp;s-&gt;cpu-&gt;env, ARM_FEATURE_V7)) {<br>+ &nb=
-sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (offset !=3D 0xda0)<br>+ &nbsp; &n=
-bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;goto bad_offset;<br>+ &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* for armv6-m rsize &gt;=3D 7 (min 256) =
-*/<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (rsize &lt; 7) {<br>+ &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_log_mask(LOG_GUE=
-ST_ERROR,<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
-p; &nbsp; &nbsp; &nbsp;"MPU region size too small %d\n", rsize);<br>+ &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return;<br>+ &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp;}<br>+ &nbsp; &nbsp; &nbsp; &nbsp;}<br>+<br>+ =
-&nbsp; &nbsp; &nbsp; &nbsp;/* for armv7-m rsize &gt;=3D 4 (min 32) */<br>+ =
-&nbsp; &nbsp; &nbsp; &nbsp;if (rsize &lt; 4) {<br>+ &nbsp; &nbsp; &nbsp; &n=
-bsp; &nbsp; &nbsp;qemu_log_mask(LOG_GUEST_ERROR,<br>+ &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;"MPU region size too small =
-%d\n", rsize);<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return;<br>+ &=
-nbsp; &nbsp; &nbsp; &nbsp;}<br>+<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if (r=
-egion &gt;=3D cpu-&gt;pmsav7_dregion) {<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; return;<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; }<br>diff --gi=
-t a/target/arm/cpu.c b/target/arm/cpu.c<br>index 1320fd8c8f..875e3aab69 100=
-644<br>--- a/target/arm/cpu.c<br>+++ b/target/arm/cpu.c<br>@@ -508,7 +508,7=
- @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)<br>&nbsp;&n=
-bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp;sizeof(*env-&gt;pmsav8.rlar[M_REG_S])<br>&nbsp;&nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp;* cpu-&gt;pmsav7_dregion);<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbs=
-p; &nbsp; &nbsp; &nbsp; &nbsp; }<br>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
-bsp;} else if (arm_feature(env, ARM_FEATURE_V7)) {<br>+ &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp;} else if (arm_feature(env, ARM_FEATURE_M)) {<br>&nbs=
-p;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; memset(env-&gt;pm=
-sav7.drbar, 0,<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
-bsp; &nbsp; &nbsp; &nbsp; &nbsp;sizeof(*env-&gt;pmsav7.drbar) * cpu-&gt;pms=
-av7_dregion);<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp; memset(env-&gt;pmsav7.drsr, 0,<br>@@ -2454,7 +2454,7 @@ static void arm=
-_cpu_realizefn(DeviceState *dev, Error **errp)<br>&nbsp;&nbsp; &nbsp; }<br>=
-&nbsp;<br>&nbsp;&nbsp; &nbsp; if (arm_feature(env, ARM_FEATURE_PMSA) &amp;&=
-amp;<br>- &nbsp; &nbsp; &nbsp; &nbsp;arm_feature(env, ARM_FEATURE_V7)) {<br=
->+ &nbsp; &nbsp; &nbsp; &nbsp;arm_feature(env, ARM_FEATURE_M)) {<br>&nbsp;&=
-nbsp; &nbsp; &nbsp; &nbsp; uint32_t nr =3D cpu-&gt;pmsav7_dregion;<br>&nbsp=
-;<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; if (nr &gt; 0xff) {<br>diff --git a/=
-target/arm/ptw.c b/target/arm/ptw.c<br>index dd40268397..fa771907e3 100644<=
-br>--- a/target/arm/ptw.c<br>+++ b/target/arm/ptw.c<br>@@ -2383,6 +2383,13 =
-@@ static bool pmsav7_use_background_region(ARMCPU *cpu, ARMMMUIdx mmu_idx,=
-<br>&nbsp;&nbsp; &nbsp; return regime_sctlr(env, mmu_idx) &amp; SCTLR_BR;<b=
-r>&nbsp;}<br>&nbsp;<br>+/* armv6m PMSAv6 is mostly compatible with PMSAv7,<=
-br>+ * main difference :<br>+ * - min region size is 256 instead of 32<br>+=
- * - TEX can be only 0 (Tex not used by qemu)<br>+ * - no alias register<br=
->+ * - HardFault instead of MemManage<br>+ */<br>&nbsp;static bool get_phys=
-_addr_pmsav7(CPUARMState *env,<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp;S1Translate *ptw,<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp;uint32_t address,<br>@@ -2423,11 +2430,19 @@ static bool get_phys_addr_p=
-msav7(CPUARMState *env,<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; continue;<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-}<br>&nbsp;<br>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (!rsize) {<br>=
-+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* Issue warning for invalid val=
-ues<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * for armv7-m rsize &gt;=
-=3D 4 (min 32)<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * for armv6-m=
- rsize &gt;=3D 7 (min 256)<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *=
-/<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (!rsize ||<br>+ &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(arm_feature(env, ARM_FEATUR=
-E_M) &amp;&amp; (<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp; &nbsp; &nbsp; &nbsp; rsize &lt; 7 ||<br>+ &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (rsize &lt; 4 &amp;&amp; !a=
-rm_feature(env, ARM_FEATURE_V7))))) {<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; qemu_log_mask(LOG_GUEST_ERROR,<br>- &nbsp; &nbs=
-p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
-bsp; &nbsp; &nbsp;"DRSR[%d]: Rsize field cannot be 0\n", n);<br>+ &nbsp; &n=
-bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp;"DRSR[%d]: Rsize field cannot be %d\n", n, rsize);<br>&=
-nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; continue;<br>&=
-nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }<br>+<br>&nbsp;&nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; rsize++;<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp; rmask =3D (1ull &lt;&lt; rsize) - 1;<br>&nbsp;<br>@@ -3515,8=
- +3530,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *=
-ptw,<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; /* PMSAv8 */<br>&nb=
-sp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ret =3D get_phys_addr_pmsav8(e=
-nv, ptw, address, access_type,<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp;result, fi);<br>- &nbsp; &nbsp; &nbsp; &nbsp;}=
- else if (arm_feature(env, ARM_FEATURE_V7)) {<br>- &nbsp; &nbsp; &nbsp; &nb=
-sp; &nbsp; &nbsp;/* PMSAv7 */<br>+ &nbsp; &nbsp; &nbsp; &nbsp;} else if (ar=
-m_feature(env, ARM_FEATURE_V7) || arm_feature(env, ARM_FEATURE_M)) {<br>+ &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* PMSAv7 or PMSAv6 */<br>&nbsp;&nb=
-sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ret =3D get_phys_addr_pmsav7(env, pt=
-w, address, access_type,<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
-p; &nbsp; &nbsp; &nbsp;result, fi);<br>&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; } =
-else {<br>diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c<=
-br>index 58e54578d6..01bc5d4375 100644<br>--- a/target/arm/tcg/cpu-v7m.c<br=
->+++ b/target/arm/tcg/cpu-v7m.c<br>@@ -76,6 +76,20 @@ static void cortex_m0=
-_initfn(Object *obj)<br>&nbsp;&nbsp; &nbsp; cpu-&gt;isar.id_isar6 =3D 0x000=
-00000;<br>&nbsp;}<br>&nbsp;<br>+static void cortex_m0p_initfn(Object *obj)<=
-br>+{<br>+ &nbsp; &nbsp;ARMCPU *cpu =3D ARM_CPU(obj);<br>+<br>+ &nbsp; &nbs=
-p;/* cortex-m0p is a cortex-m0 with<br>+ &nbsp; &nbsp; * vtor and mpu exten=
-sion<br>+ &nbsp; &nbsp; */<br>+ &nbsp; &nbsp;cortex_m0_initfn(obj);<br>+<br=
->+ &nbsp; &nbsp;cpu-&gt;midr =3D 0x410cc601;<br>+ &nbsp; &nbsp;cpu-&gt;pmsa=
-v7_dregion =3D 8;<br>+}<br>+<br>+<br>&nbsp;static void cortex_m3_initfn(Obj=
-ect *obj)<br>&nbsp;{<br>&nbsp;&nbsp; &nbsp; ARMCPU *cpu =3D ARM_CPU(obj);<b=
-r>@@ -111,6 +125,7 @@ static void cortex_m4_initfn(Object *obj)<br>&nbsp;&n=
-bsp; &nbsp; set_feature(&amp;cpu-&gt;env, ARM_FEATURE_THUMB_DSP);<br>&nbsp;=
-&nbsp; &nbsp; cpu-&gt;midr =3D 0x410fc240; /* r0p0 */<br>&nbsp;&nbsp; &nbsp=
-; cpu-&gt;pmsav7_dregion =3D 8;<br>+ &nbsp; &nbsp;/* VFPv4-SP */<br>&nbsp;&=
-nbsp; &nbsp; cpu-&gt;isar.mvfr0 =3D 0x10110021;<br>&nbsp;&nbsp; &nbsp; cpu-=
-&gt;isar.mvfr1 =3D 0x11000011;<br>&nbsp;&nbsp; &nbsp; cpu-&gt;isar.mvfr2 =
-=3D 0x00000000;<br>@@ -141,6 +156,7 @@ static void cortex_m7_initfn(Object =
-*obj)<br>&nbsp;&nbsp; &nbsp; set_feature(&amp;cpu-&gt;env, ARM_FEATURE_THUM=
-B_DSP);<br>&nbsp;&nbsp; &nbsp; cpu-&gt;midr =3D 0x411fc272; /* r1p2 */<br>&=
-nbsp;&nbsp; &nbsp; cpu-&gt;pmsav7_dregion =3D 8;<br>+ &nbsp; &nbsp;/* VFPv5=
- DP */<br>&nbsp;&nbsp; &nbsp; cpu-&gt;isar.mvfr0 =3D 0x10110221;<br>&nbsp;&=
-nbsp; &nbsp; cpu-&gt;isar.mvfr1 =3D 0x12000011;<br>&nbsp;&nbsp; &nbsp; cpu-=
-&gt;isar.mvfr2 =3D 0x00000040;<br>@@ -173,6 +189,7 @@ static void cortex_m3=
-3_initfn(Object *obj)<br>&nbsp;&nbsp; &nbsp; cpu-&gt;midr =3D 0x410fd213; /=
-* r0p3 */<br>&nbsp;&nbsp; &nbsp; cpu-&gt;pmsav7_dregion =3D 16;<br>&nbsp;&n=
-bsp; &nbsp; cpu-&gt;sau_sregion =3D 8;<br>+ &nbsp; &nbsp;/* VFPv5 DP */<br>=
-&nbsp;&nbsp; &nbsp; cpu-&gt;isar.mvfr0 =3D 0x10110021;<br>&nbsp;&nbsp; &nbs=
-p; cpu-&gt;isar.mvfr1 =3D 0x11000011;<br>&nbsp;&nbsp; &nbsp; cpu-&gt;isar.m=
-vfr2 =3D 0x00000040;<br>@@ -209,7 +226,7 @@ static void cortex_m55_initfn(O=
-bject *obj)<br>&nbsp;&nbsp; &nbsp; cpu-&gt;revidr =3D 0;<br>&nbsp;&nbsp; &n=
-bsp; cpu-&gt;pmsav7_dregion =3D 16;<br>&nbsp;&nbsp; &nbsp; cpu-&gt;sau_sreg=
-ion =3D 8;<br>- &nbsp; &nbsp;/* These are the MVFR* values for the FPU + fu=
-ll MVE configuration */<br>+ &nbsp; &nbsp;/* These are the MVFR* values for=
- the FPv5-D16-M + full MVE configuration */<br>&nbsp;&nbsp; &nbsp; cpu-&gt;=
-isar.mvfr0 =3D 0x10110221;<br>&nbsp;&nbsp; &nbsp; cpu-&gt;isar.mvfr1 =3D 0x=
-12100211;<br>&nbsp;&nbsp; &nbsp; cpu-&gt;isar.mvfr2 =3D 0x00000040;<br>@@ -=
-267,6 +284,8 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)=
-<br>&nbsp;static const ARMCPUInfo arm_v7m_cpus[] =3D {<br>&nbsp;&nbsp; &nbs=
-p; { .name =3D "cortex-m0", &nbsp; .initfn =3D cortex_m0_initfn,<br>&nbsp;&=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp; &nbsp; &nbsp;.class_init =3D arm_v7m_class_init },<br>+ &nbs=
-p; &nbsp;{ .name =3D "cortex-m0p", &nbsp;.initfn =3D cortex_m0p_initfn,<br>=
-+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp; &nbsp; &nbsp; &nbsp; .class_init =3D arm_v7m_class_init },<br>&nbsp;&nb=
-sp; &nbsp; { .name =3D "cortex-m3", &nbsp; .initfn =3D cortex_m3_initfn,<br=
->&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.class_init =3D arm_v7m_class_init },<b=
-r>&nbsp;&nbsp; &nbsp; { .name =3D "cortex-m4", &nbsp; .initfn =3D cortex_m4=
-_initfn,<br>-- <br>2.39.5<br><br></div><br></div></body></html>
-------=_Part_377326697_69394490.1729627807613--

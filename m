@@ -1,56 +1,56 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2943276njb;
-        Tue, 22 Oct 2024 02:43:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUFXqXHhpJ9siAiVfrcqpJ6hJJxVDXwVIKYTqg1PL3Gw/PfB7F21tpPN1OR5tNctOkzFHU6DbCPMzJSqg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEYiypyafNU065Jv9SqzqgX//bU0pWkKw9pfnuVfW60wb5QIf2V+Po09iazUxeW0evEze6P
-X-Received: by 2002:ac8:5fd1:0:b0:458:3a5a:94c5 with SMTP id d75a77b69052e-460aed034dcmr233416301cf.1.1729590210497;
-        Tue, 22 Oct 2024 02:43:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729590210; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2943305njb;
+        Tue, 22 Oct 2024 02:43:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWffAMMTpZ5pC/B/+4lwG7wouymI+BFWfZbkbChhG9YXz9IDPGKe3+d02BwuToYrUOeBqMzA0WReH+bhg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHi+4VyR3hwLFuryrXGQJnPNvCcHluNcl+bCogkMhkO9KVscnwzbYJjaZpN2TRsYocBICL5
+X-Received: by 2002:a05:6902:70b:b0:e2b:b74c:4783 with SMTP id 3f1490d57ef6-e2e2717a8f4mr1703555276.18.1729590214086;
+        Tue, 22 Oct 2024 02:43:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729590214; cv=none;
         d=google.com; s=arc-20240605;
-        b=fvb3eJ+bO+rHzyYMYTCuBRXdvsATa+MZILcW8Frj119E3tSHLxHG36sAM+cS2y3YDc
-         0DePFPxPjAgpXXSX5WMfVLB9Sb/AiIiR5zGSUqG6BvZPAJhhRjswupvaByJVn8el2zwM
-         8QAtWcfC2sBzjC1d9K+Q0bxWSO5J2PJKJLwmJVNNAU0nHAzwfK/p1zMRusShFAVd6zwJ
-         TxuYjeaWOEiiSTWjQBQ+1M4ZxjA7Xg/gzM1flJaPTT2nYV4uzwgw1V9P2CK5rMy3Klsa
-         NrM0d9i1RYnEXHpdmA9LFqJcD8MbRkoZXQGjoXQxbKkhheV3LJBaWxcTEF7k8uKK1uYe
-         Pxug==
+        b=M0VTydVftLjDvlBTAa0y5dV8VGMYYEReRrvt/ipm51zMWLwA6ga3toO+SSpic4/VQm
+         KPi8/+6kM+VC627O7YL3+f1odj5l0gio0prmzjSEI9fO9RPZ5iWuz3A7CeUJNMp177mA
+         PLjDhV46vBSfO4i7XP426FWtBXDAaKJeRvRFDR8K8Vs7S7Pb6qRlbYHLj2400wgHTXiM
+         xiyag68ZF+tTY4HcOdqs08ZNZlf4Cd4heXd9zBbK/BYWQQQPqVQtcQSiWjjzlvLkvkhJ
+         zGBYghMRwDQsVX3qWkaljyZbRqkX0r9MEZ0gBiWCjcG0gYf9ZKJKwYnbWCuAu23KWONn
+         FJUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=sk/u2CxIbxmPfVhMpnjoonKvQAOsYIhs2UDY+7ygnFY=;
+        bh=yBTNtTzKmNj8U3inGFszVlG8T2z/d5p4xTAcHoEBuds=;
         fh=tJ6TeM8XDKi6I9LERy0ves/+1WFn5YJhFzDAan5mwNk=;
-        b=ISdNdMKFDi057v2Vd8oiFIstdxnM0zHj7qx4u5C7/xuXF3CfX8N9IEoQdb/5a5/rQP
-         rnWKLRL3OsHFr9GlBgkl4B7jzO+W76AHX2HnwwzdWNoZSUIjKnvrm+Vy1nTQ6w87Ccqz
-         LrpXUZLAcohqMylxuzz/Ot+EBRXigGTtBcKS27ZTAH+mYRltEHvkVb7obRyD4QYpkx+i
-         NVoDLJ3GfYDhS/Eg63blISB4ZEt2HW+5M7qdAzlOl35HPBLO/OptK0IvalYX+j4w+Yw8
-         aIbt0L/u2SudOblBRs+UyOlphjWiz5i0U1bg/YYsU4eTn+PndY6FYSbpZZtFkmmt+TFg
-         KAwg==;
+        b=lLKSzMXZ8tNBBLy7vAFpPztzDFOu/RIjTOrdg7IlsfAHHKxZb10RoKyHFAMdWZHSnP
+         +nDoHO/DMtl1qXknVdG+k4cXpjLfdE5Mcqou1voYfaBUnrnC8KbfdAKjmg0bkcrqtR7d
+         FZcn4r4NRKxZFRv5OkuV+EsdYANmJz67/mxqIcnDrRyxx83RsiqWPGuixQXrLOp9thRk
+         AqedFVudsN1LF+TCcb9c/8xsx+XLw3iUK2GPaAF5BlXrjAU0i0xWGaLWjVF7eS1VL5Wu
+         TPzgZD/prRp8Sg5K8YHB+lYcf3C6e/KaoyWabmuO3iXmUIr1VLXFdnizFFFOSlmshTH3
+         D28g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460d3d5acb1si59712191cf.612.2024.10.22.02.43.30
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3d94c85si59291231cf.674.2024.10.22.02.43.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 02:43:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 22 Oct 2024 02:43:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t3BOj-0002tm-D9; Tue, 22 Oct 2024 05:41:53 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t3BOk-0002uc-8G; Tue, 22 Oct 2024 05:41:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t3BOa-0002ph-0e; Tue, 22 Oct 2024 05:41:45 -0400
+ id 1t3BOW-0002pT-Hc; Tue, 22 Oct 2024 05:41:43 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t3BOX-00015E-L9; Tue, 22 Oct 2024 05:41:43 -0400
+ id 1t3BOU-00015E-V5; Tue, 22 Oct 2024 05:41:40 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 22 Oct
@@ -70,10 +70,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@redhat.com>
-Subject: [PATCH v2 05/18] hw/arm/aspeed: Correct spi_model w25q256 for
- ast1030-a1 EVB.
-Date: Tue, 22 Oct 2024 17:40:57 +0800
-Message-ID: <20241022094110.1574011-6-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 04/18] hw/block/m25p80: Add SFDP table for w25q80bl flash
+Date: Tue, 22 Oct 2024 17:40:56 +0800
+Message-ID: <20241022094110.1574011-5-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
 References: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
@@ -89,49 +88,107 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LqoZEpM8PQJQ
+From:  Jamin Lin via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 34IBIsqq5GMS
 
-Currently, the default spi_model was "sst25vf032b" whose size was 4MB for
-ast1030-a1 EVB. However, according to the schematic of ast1030-a1 EVB,
-ASPEED shipped default flash of spi1 and spi2 were w25q256 whose size
-was 32MB.
-
-Correct spi_model default flash to w25q256 for ast1030-a1 EVB.
+Add the SFDP table for the Windbond w25q80bl flash.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/block/m25p80.c      |  3 ++-
+ hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
+ hw/block/m25p80_sfdp.h |  2 +-
+ 3 files changed, 39 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index cf0c6c580b..bf68224295 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1643,7 +1643,7 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-     amc->i2c_init = ast1030_evb_i2c_init;
-     mc->default_ram_size = 0;
-     amc->fmc_model = "sst25vf032b";
--    amc->spi_model = "sst25vf032b";
-+    amc->spi_model = "w25q256";
-     amc->num_cs = 2;
-     amc->macs_mask = 0;
-     aspeed_machine_class_init_cpus_defaults(mc);
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 411d810d3b..e2e84f8b5f 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -356,7 +356,8 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("w25x64",      0xef3017,      0,  64 << 10, 128, ER_4K) },
+     { INFO("w25q64",      0xef4017,      0,  64 << 10, 128, ER_4K) },
+     { INFO("w25q80",      0xef5014,      0,  64 << 10,  16, ER_4K) },
+-    { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K) },
++    { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K),
++      .sfdp_read = m25p80_sfdp_w25q80bl },
+     { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K),
+       .sfdp_read = m25p80_sfdp_w25q256 },
+     { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K),
+diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+index 82d84cc21f..a03a291a09 100644
+--- a/hw/block/m25p80_sfdp.c
++++ b/hw/block/m25p80_sfdp.c
+@@ -404,6 +404,42 @@ static const uint8_t sfdp_w25q01jvq[] = {
+ };
+ define_sfdp_read(w25q01jvq);
+ 
++static const uint8_t sfdp_w25q80bl[] = {
++    0x53, 0x46, 0x44, 0x50, 0x05, 0x01, 0x00, 0xff,
++    0x00, 0x05, 0x01, 0x10, 0x80, 0x00, 0x00, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xe5, 0x20, 0xf1, 0xff, 0xff, 0xff, 0x7f, 0x00,
++    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
++    0xee, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
++    0xff, 0xff, 0x00, 0x00, 0x0c, 0x20, 0x0f, 0x52,
++    0x10, 0xd8, 0x00, 0x00, 0x23, 0x02, 0xa6, 0x00,
++    0x81, 0x6c, 0x14, 0xa7, 0xed, 0x61, 0x76, 0x33,
++    0x7a, 0x75, 0x7a, 0x75, 0xf7, 0xa2, 0xd5, 0x5c,
++    0x00, 0xf7, 0x1d, 0xff, 0xe9, 0x30, 0xc0, 0x80,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++};
++define_sfdp_read(w25q80bl);
++
+ /*
+  * Integrated Silicon Solution (ISSI)
+  */
+diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+index 89c2d8f72d..35785686a0 100644
+--- a/hw/block/m25p80_sfdp.h
++++ b/hw/block/m25p80_sfdp.h
+@@ -25,7 +25,7 @@ uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
+ 
+ uint8_t m25p80_sfdp_w25q256(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q512jv(uint32_t addr);
+-
++uint8_t m25p80_sfdp_w25q80bl(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q01jvq(uint32_t addr);
+ 
+ uint8_t m25p80_sfdp_is25wp256(uint32_t addr);
 -- 
 2.34.1
 

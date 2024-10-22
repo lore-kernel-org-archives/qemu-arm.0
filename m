@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb675eb1bdsm2947453a12.10.2024.10.22.03.56.15
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66c7262bsm2981150a12.82.2024.10.22.03.56.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 22 Oct 2024 03:56:15 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BF0265F8A6;
+	by draig.lan (Postfix) with ESMTP id D35445F8CC;
 	Tue, 22 Oct 2024 11:56:14 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -34,85 +34,53 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v2 01/20] tests/docker: Fix microblaze atomics
-Date: Tue, 22 Oct 2024 11:55:55 +0100
-Message-Id: <20241022105614.839199-2-alex.bennee@linaro.org>
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v2 02/20] tests/docker: add NOFETCH env variable for testing
+Date: Tue, 22 Oct 2024 11:55:56 +0100
+Message-Id: <20241022105614.839199-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241022105614.839199-1-alex.bennee@linaro.org>
 References: <20241022105614.839199-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: U8U99C6TfAYJ
+X-TUID: 1qTPnh0stpvq
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+Testing non-auto built docker containers (i.e. custom built compilers)
+is a bit fiddly as you couldn't continue a build with a previously
+locally built container. While you can play games with REGISTRY its
+simpler to allow a NOFETCH that will go through the cached build
+process when you run the tests.
 
-GCC produces invalid code for microblaze atomics.
-
-The fix is unfortunately not upstream, so fetch it from an external
-location and apply it locally.
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Message-Id: <20240919152308.10440-1-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .../debian-microblaze-cross.d/build-toolchain.sh          | 8 ++++++++
- tests/docker/dockerfiles/debian-toolchain.docker          | 7 +++++++
- 2 files changed, 15 insertions(+)
+ tests/docker/Makefile.include | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh b/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
-index 23ec0aa9a7..c5cd0aa931 100755
---- a/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
-+++ b/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
-@@ -10,6 +10,8 @@ TOOLCHAIN_INSTALL=/usr/local
- TOOLCHAIN_BIN=${TOOLCHAIN_INSTALL}/bin
- CROSS_SYSROOT=${TOOLCHAIN_INSTALL}/$TARGET/sys-root
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index 681feae744..fead7d3abe 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -92,10 +92,10 @@ endif
+ docker-image-alpine: NOUSER=1
  
-+GCC_PATCH0_URL=https://raw.githubusercontent.com/Xilinx/meta-xilinx/refs/tags/xlnx-rel-v2024.1/meta-microblaze/recipes-devtools/gcc/gcc-12/0009-Patch-microblaze-Fix-atomic-boolean-return-value.patch
-+
- export PATH=${TOOLCHAIN_BIN}:$PATH
- 
- #
-@@ -31,6 +33,12 @@ mv gcc-11.2.0 src-gcc
- mv musl-1.2.2 src-musl
- mv linux-5.10.70 src-linux
- 
-+#
-+# Patch gcc
-+#
-+
-+wget -O - ${GCC_PATCH0_URL} | patch -d src-gcc -p1
-+
- mkdir -p bld-hdr bld-binu bld-gcc bld-musl
- mkdir -p ${CROSS_SYSROOT}/usr/include
- 
-diff --git a/tests/docker/dockerfiles/debian-toolchain.docker b/tests/docker/dockerfiles/debian-toolchain.docker
-index 687a97fec4..ab4ce29533 100644
---- a/tests/docker/dockerfiles/debian-toolchain.docker
-+++ b/tests/docker/dockerfiles/debian-toolchain.docker
-@@ -10,6 +10,8 @@ FROM docker.io/library/debian:11-slim
- # ??? The build-dep isn't working, missing a number of
- # minimal build dependiencies, e.g. libmpc.
- 
-+RUN sed 's/^deb /deb-src /' </etc/apt/sources.list >/etc/apt/sources.list.d/deb-src.list
-+
- RUN apt update && \
-     DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
-     DEBIAN_FRONTEND=noninteractive eatmydata \
-@@ -33,6 +35,11 @@ RUN cd /root && ./build-toolchain.sh
- # and the build trees by restoring the original image,
- # then copying the built toolchain from stage 0.
- FROM docker.io/library/debian:11-slim
-+RUN apt update && \
-+    DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
-+    DEBIAN_FRONTEND=noninteractive eatmydata \
-+    apt install -y --no-install-recommends \
-+        libmpc3
- COPY --from=0 /usr/local /usr/local
- # As a final step configure the user (if env is defined)
- ARG USER
+ debian-toolchain-run = \
+-	$(if $(NOCACHE), 						\
++	$(if $(NOCACHE)$(NOFETCH),					\
+ 		$(call quiet-command,					\
+ 			$(DOCKER_SCRIPT) build -t qemu/$1 -f $< 	\
+-			$(if $V,,--quiet) --no-cache 			\
++			$(if $V,,--quiet) $(if $(NOCACHE),--no-cache)	\
+ 			--registry $(DOCKER_REGISTRY) --extra-files	\
+ 			$(DOCKER_FILES_DIR)/$1.d/build-toolchain.sh,	\
+ 			"BUILD", $1),				        \
+@@ -177,6 +177,7 @@ docker:
+ 	@echo '    NETWORK=$$BACKEND     Enable virtual network interface with $$BACKEND.'
+ 	@echo '    NOUSER=1             Define to disable adding current user to containers passwd.'
+ 	@echo '    NOCACHE=1            Ignore cache when build images.'
++	@echo '    NOFETCH=1            Do not fetch from the registry.'
+ 	@echo '    EXECUTABLE=<path>    Include executable in image.'
+ 	@echo '    EXTRA_FILES="<path> [... <path>]"'
+ 	@echo '                         Include extra files in image.'
 -- 
 2.39.5

@@ -1,386 +1,174 @@
-Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp10124njb;
-        Tue, 22 Oct 2024 14:37:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCU4cv8O0+Lu2MIx4Y0FIqxAAmNA1zl7n2ECYjZemwBz3e6Es0dIsVBCQ1rVwGcKL0O9nf4mgrswHniDzw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFxeq/3JWTIRnFhoCRLlZMJLtL0ybb7g0h3XzA6Wf2jgcVIqCLRf/1hKKrhiMN1HW9uoCzH
-X-Received: by 2002:a05:6102:dce:b0:4a7:49ca:4ba4 with SMTP id ada2fe7eead31-4a751cbebc7mr500357137.27.1729633038234;
-        Tue, 22 Oct 2024 14:37:18 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1729633038; cv=pass;
+Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp50239njb;
+        Tue, 22 Oct 2024 16:02:41 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUBBBrSxpM+30KmB5BsFruRCFzwnB/dEnZaTLlb5ZJwewA5leu1NtLz6QzFGFtZ/v5EgFTtu13KI0my6Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEQAo4jp/F6fUCPVKZhGGTX6cnFBcsA3wj7Do11+c/RsEcDL7m97ZcV5DvdZFT74AOCTZlv
+X-Received: by 2002:a5d:4536:0:b0:37d:5436:4a1 with SMTP id ffacd0b85a97d-37efcf0521bmr297844f8f.3.1729638161308;
+        Tue, 22 Oct 2024 16:02:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729638161; cv=none;
         d=google.com; s=arc-20240605;
-        b=KFmwNcKTGJ58FqSdYaTvAquX7H7BMkHXl1KFeOf9BseqzNiykNRq4xEiOYgZ0rXQNO
-         oBzrwUjLiXljCSQ0UQL/iAvZpFd0Lk96c6o4wViZfHFjBLXJNOJhYTqNv3j7uiJMCA1w
-         pdzDZ7gAg8K1p+YMINCWiySZMbCPvL7FVk2xeQgnGWyW5pZQdY4MtpjB2g0bbDmSFDwK
-         H2jAgZo4bGO3/gkWVNoDfukZOtw1ol6bJkhNdMIrnKErhdHOXj07N/GhNNA8KQn2ArhS
-         Tqhris3TBmNK9hrwDb455cqBFN0BEM1HMDHh0v1XAGwOCdwqAaGo4WYZeZgG2FKrz6it
-         kEKg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=OIWqMKgNsqbitTcUMMAADhcXdRRq01tyynWWoGYh2v8=;
-        fh=anieKe/wYuoolAgq9ss2v7Xi+WIvU8oFTnn8Guryt5A=;
-        b=H/RHvk6O+X1d2cMycl2tP257Om9wSodWq1npnqIZ3DumWqlvUV3QYBRxXQvUdyIGgz
-         OY25vYS2/BaJWrVQrt/jj5J83IrZWdkWAT5uXlHiz6S3qeAf8R04SF16Pp2OvQYlkYEq
-         eeWO3s1REd2QJYHcrIWqmJ7oZ3Uga1zCEWbyjsF65JeZDcAJ6k6tffvJ0v/fGLa8Vyp9
-         WfK6bNtP0z+WjywLeq956ydofhUWL3PAYtg2nZFNZujYBqV07qwcboyLoSm26pO0j2bZ
-         tNP8whuFNcUUAwrOnR1gkuK1DtcqNcVavgP+SAC/BMpWGbOgG+SW4VVXwhJmooeK6yCC
-         fAmA==;
+        b=NpBBz25vccKWxXkjBlDUPvLKyMwuFUFHzyB+6SxhzvoLqrtaa+1AdmTh2UNzlXuT5W
+         NUFxNG4EuL/U3ERt6lt/LEIiszDyEoUa/NW2ViIE9YRxJWfjnfYJ/beB65vKNaH1bPn2
+         Bl/hd2fAC9MDyLrPzYk+wraIPxDv4OW1+JafQ0E02hYqXmJ7SnJKlAnJF8s10Oo52c1O
+         HLiCetShdBEx2lsQlowt/r59SM49OJVYtfd/8QfRwV5KQyOn+IxA4I4Ebk0J2FwIaT1V
+         WOawOz/Mw8KC10LSM4m5ARloA54rg4FwztwfFrapfr0imLMjhC55E4s3eEUZbB9MmaiM
+         Cx2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=cNZNm0NmJ9EpgAAVZC0RQ3ovxQjYKqseBZzO1y6sMqs=;
+        fh=b/SX6GG71f9+bLfLBvQcX6oLBcOeE4ofRqFQKBOtBxw=;
+        b=JgLe4eU3K7ya9+LB5IrUuznez+a9+Aq73w6GDiAsor0gsNCd/xMuFKYPO3gcfy72ud
+         bd5Hoges9XZS+U6xE08xmt3YP4Bg/2vIxyyAh7gh302lTKGEwfOSVVq1sH0ZisbSEq1P
+         8OQZkJeDYkpbvZnUbJicLthoLqMvYPfILdZjEQ5S6ulnsWKgd6pjQRvEKD2biH+Lpa98
+         V07N2i0DElD2q8yDDicYrDCaJN7tEfv99rm9PFATrgmgRZWL+C+c6lyJ0R78R5h8KWdu
+         7u7e1KpgnyBfDHYXIZIIEv1/NGaT+GKQzYC1USsV5ENCh8GCx24qRoM9EV5gTFnudnzi
+         mgPw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=ShBp1awp;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=bDbqwP9t;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460d3db78fdsi71791461cf.788.2024.10.22.14.37.18
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 14:37:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-37ee0a3bd36si2979457f8f.205.2024.10.22.16.02.40
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 Oct 2024 16:02:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=ShBp1awp;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=bDbqwP9t;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t3MXQ-0004zM-7n; Tue, 22 Oct 2024 17:35:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1t3MXI-0004yL-Rf; Tue, 22 Oct 2024 17:35:29 -0400
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1t3MXG-0006iu-Tq; Tue, 22 Oct 2024 17:35:28 -0400
-Received: from pps.filterd (m0246617.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 49MLQZl8022739;
- Tue, 22 Oct 2024 21:35:16 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=
- corp-2023-11-20; bh=OIWqMKgNsqbitTcUMMAADhcXdRRq01tyynWWoGYh2v8=; b=
- ShBp1awpCJzldOyoSwb8nsKQ7cvoNbnbRLWMJaMYq3uo906g6ImK3h6LHqpBhX0m
- Lj9JYgkcB+uRBtf0fbgWEvIS/7m+0njLcfXkGrI1EamA0xym4wHFXn5qS5LwSpKI
- cxu4FZq8h9mYgGQ6etVPxd5h4YrOYvhtb8CSrd8zpG8aKAZinFRvrs4aS3HGRhPt
- +SLVfa0meLtdkRca9euf1BSjpsZPQVd+namdHVeMsd8feUGDEqGlwxkZsfuyvt95
- qEKdGSye3nNZ6j81PdpQJN3iqLigu/uO1jYHBwLNO7L+OK2Rrgsv71n5DMHzmmxI
- R2uHXB7/Mo7bLNDpghuyBA==
-Received: from phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta01.appoci.oracle.com [138.1.114.2])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 42c5aserar-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 22 Oct 2024 21:35:15 +0000 (GMT)
-Received: from pps.filterd
- (phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
- with ESMTP id 49MKeALH026254; Tue, 22 Oct 2024 21:35:15 GMT
-Received: from nam02-dm3-obe.outbound.protection.outlook.com
- (mail-dm3nam02lp2049.outbound.protection.outlook.com [104.47.56.49])
- by phxpaimrmta01.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 42c3788nvy-2
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 22 Oct 2024 21:35:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=hCXPdnLy793bMqKPnktF0sx5IBToqtv/2Z5CAG8Ulrg9LSI7nqdPiS/xElupEb5OMAlOKGDJnulSsDVBVBScod9SWBRGoubh+DKYcXXTNXzxNuaokedsW9SD85cMw0gyQEQFFqqeB7bDrRdWhGtxVDA5psAj1yahqr8Rnh7BxI+wK4N1pNAQPOd+3+F4NAm44OzK+btPES9dl+wKCAuzCzUsZbW0AfPE3TqkiOeTzt8WiwUla3Em0h2vczRPezDtNowMQcvd5hOjdQnQgx+ThlN/pSvzBjoAJZ4z/BW342xyoeoYKA/HtM3H8Er4gUi+fIxu9+Ae6TPQOwiFzeLrOw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OIWqMKgNsqbitTcUMMAADhcXdRRq01tyynWWoGYh2v8=;
- b=SjkwpT2FRXdfN8NWEGgzrV4nBKm34ndY2k5Ln3aGiP3EurkjyczC/hFOscyLdhtO6ZP3Jt8nE4UmDDLfxawtQVyquTRqzBSNIWpKfaq9DQnaQvJ9kRPFFwu7Fw7A286rXHyiUb/aOT/Q3QymB1fgDBMSBeqGfb7xDdIpyBx1NgUFoYb0bc3W4KEiypOQskjPwCM35IVMS/0UHBUd1l+wwHI24uGSkYNi8/ssUQ4KDud6lgTJ0m9BZPffPNP9q1A2U5WhS3hjVSEhXsx3FEoFfIrvNvONfLGqQg7rhHO0VwZKvgEGumfsMNEGGnuiyKevrD6wogSdzjququ/5B5KoPQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OIWqMKgNsqbitTcUMMAADhcXdRRq01tyynWWoGYh2v8=;
- b=bDbqwP9tnA96d59z2/qhzEilnamY50F89Sim3JpFDk0rKYm2OGC6zZH5rAdWVLMep16CNMD0xS3WKxR/QZ6UqGgbVBHKm/SuY0JAX5YOIC2lqV2qg5kmg7ZdyNw0EQ84hKYYGA6dCm/39zwNdnSYD5AIgG29shuGCmTKPxFRcy0=
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
- by SA2PR10MB4809.namprd10.prod.outlook.com (2603:10b6:806:113::7)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.16; Tue, 22 Oct
- 2024 21:35:13 +0000
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23%4]) with mapi id 15.20.8069.027; Tue, 22 Oct 2024
- 21:35:13 +0000
-From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
-To: peterx@redhat.com, david@redhat.com, pbonzini@redhat.com,
- richard.henderson@linaro.org, philmd@linaro.org,
- peter.maydell@linaro.org, mtosatti@redhat.com, kvm@vger.kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: william.roche@oracle.com, joao.m.martins@oracle.com
-Subject: [PATCH v1 1/4] accel/kvm: SIGBUS handler should also deal with
- si_addr_lsb
-Date: Tue, 22 Oct 2024 21:35:00 +0000
-Message-ID: <20241022213503.1189954-2-william.roche@oracle.com>
-X-Mailer: git-send-email 2.43.5
-In-Reply-To: <20241022213503.1189954-1-william.roche@oracle.com>
-References: <ZwalK7Dq_cf-EA_0@x1n>
- <20241022213503.1189954-1-william.roche@oracle.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: BN8PR15CA0038.namprd15.prod.outlook.com
- (2603:10b6:408:80::15) To CH3PR10MB7329.namprd10.prod.outlook.com
- (2603:10b6:610:12c::16)
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XY6yw4m7pz6LD9d;
+	Wed, 23 Oct 2024 06:58:00 +0800 (CST)
+Received: from frapeml500006.china.huawei.com (unknown [7.182.85.219])
+	by mail.maildlp.com (Postfix) with ESMTPS id 2E7E01400F4;
+	Wed, 23 Oct 2024 07:02:40 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (7.182.85.172) by
+ frapeml500006.china.huawei.com (7.182.85.219) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 23 Oct 2024 01:02:39 +0200
+Received: from frapeml500007.china.huawei.com ([7.182.85.172]) by
+ frapeml500007.china.huawei.com ([7.182.85.172]) with mapi id 15.01.2507.039;
+ Wed, 23 Oct 2024 01:02:39 +0200
+From: Salil Mehta <salil.mehta@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org"
+	<maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+	Jonathan Cameron <jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
+	<lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+	<richard.henderson@linaro.org>, "andrew.jones@linux.dev"
+	<andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
+	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
+	<eric.auger@redhat.com>, "will@kernel.org" <will@kernel.org>,
+	"ardb@kernel.org" <ardb@kernel.org>, "oliver.upton@linux.dev"
+	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
+	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
+	<rafael@kernel.org>, "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "npiggin@gmail.com"
+	<npiggin@gmail.com>, "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
+	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
+	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
+	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
+	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
+	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
+	"shahuang@redhat.com" <shahuang@redhat.com>, "zhao1.liu@intel.com"
+	<zhao1.liu@intel.com>, Linuxarm <linuxarm@huawei.com>,
+	"gustavo.romero@linaro.org" <gustavo.romero@linaro.org>
+Subject: RE: [PATCH V1 2/4] hw/acpi: Update ACPI CPU Status `is_{present,
+ enabled}` during vCPU hot(un)plug
+Thread-Topic: [PATCH V1 2/4] hw/acpi: Update ACPI CPU Status `is_{present,
+ enabled}` during vCPU hot(un)plug
+Thread-Index: AQHbHm6LVfm++ex4ak2XyzXHJrqBZLKMcruAgAb57AA=
+Date: Tue, 22 Oct 2024 23:02:39 +0000
+Message-ID: <b31151bc8f4e48ccafb9707543363db3@huawei.com>
+References: <20241014192205.253479-1-salil.mehta@huawei.com>
+	<20241014192205.253479-3-salil.mehta@huawei.com>
+ <20241018161811.4a88c7b7@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20241018161811.4a88c7b7@imammedo.users.ipa.redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.48.148.112]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|SA2PR10MB4809:EE_
-X-MS-Office365-Filtering-Correlation-Id: 02df668f-5a21-4e31-bddb-08dcf2e16948
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|7416014|366016|1800799024|921020; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?eWhUDAVhJCRw5cgbwbFWBfrADfLAVk6IotB3nvdUMOBxrr7NTkEyr75Vxd+C?=
- =?us-ascii?Q?bWiEjB1wcEQPKe7J4LBhGbaMxgfysXVURyltwD9MuZ8SGa5lZ8x4ViRlnVcN?=
- =?us-ascii?Q?MuZ41XH77tpxSWlgh7Z87ObbcxnPHrotPZMdiZszLSD7GoGPa2Kx4U6Q+CoH?=
- =?us-ascii?Q?+so45JTlXF26xlBThYKnh0AUODWGiarCfXAMIPaDIoHtQy+yoGZz0TpMeetm?=
- =?us-ascii?Q?Y5wAJ7Txbe3tvlTV0FPRzHSFIVnk4iGoF66TA5OHRzqKvQgUc028jaqH6Dqz?=
- =?us-ascii?Q?pkd2HyQs2n5vb4tBDu+6rdznY2OElHJJXlln9SVApH7iNV8DXxijVIaomAEU?=
- =?us-ascii?Q?Tjdw0AHnKdI4Fc4GBPWlTZzuJaeNfkVe0N7Umg2g/qiVeovjbTeRuRg8g4eC?=
- =?us-ascii?Q?ZD3hSJQKHCDIwWTzUYMPUEcE3DVhZ8xjuBt4w9zpOJCZVJ+d77cDU8/UGXn1?=
- =?us-ascii?Q?vRjwTreixBo0BZrBdb2qcE+BO4SWkIM7jY9Wrs82Q7FPWW7hzgqxVHhOByzB?=
- =?us-ascii?Q?Lo74Q8AS0XzIls0ZA49ww8yH+dLTMY5uUVKHI8QSyZ/2LU0L/y+FRz5e7n/e?=
- =?us-ascii?Q?p4XV2oR3hovI9be2QN57OQmHGfEN9tZRVto1PBI8uD5sg/FnLr9cBHDcLZwP?=
- =?us-ascii?Q?DT/EWm287tyB5eTEBxx85amLYBa0hNfR18FFrZtYo2YaFTAeUdBpYvDY6OzQ?=
- =?us-ascii?Q?YAtR6xnai4zRJC7WDM5+99Us4LLktdeLQhCFRspnV9ix+862tDvtrjvVPZok?=
- =?us-ascii?Q?ACjYH5jryrH5xjqH836zgbl+1pVGYmc82S2mFzvOwzs7iiGfDEroqGvg50si?=
- =?us-ascii?Q?QV1VoDb+0MC9Nm66253zRyqLirV4W58l/2/GexkGyVXQFyammfp79GLbTe0t?=
- =?us-ascii?Q?2bpfitIhs+xXsNRooEoFgdFadeQYmsXWpKnJISWs97tZ/eVvkTp2Wo5/zdlb?=
- =?us-ascii?Q?aIzZdiaAjPX9k5nHzayC9CRxvGEwWCCeIvMHkW/KH6DkFM6wlBLIPpjcaE5q?=
- =?us-ascii?Q?CK7JGCgoOElex6IIUyT+Ham3BQCbKdl/x1brzDXyOuG+PHdEEZDYo77BXzOn?=
- =?us-ascii?Q?yzzTXqYxX2xuojYkoA3BvJPmyHLF/6md6kebJFPtJqu9y68h1KEr6yxRKHuS?=
- =?us-ascii?Q?BKEoi3bWY6WbkBIvUaTCs3tYiQehV+wNY3Cn/1dN/GX1Bw7nmaCkpp0yYyOc?=
- =?us-ascii?Q?0XZI442fk9t/Q/irk6APgXIFkT+7XSnMXqnOleuz8/F03ZrP3oG34LHOG1Pb?=
- =?us-ascii?Q?mhZ6n2qsqz/egNuEkY8TfyRsCGrvR4l1tgA3JosEXjFJDyj7Ul6lCLEJtSP1?=
- =?us-ascii?Q?gL+9tXETxB+ORhaKJwvXHPt7nOU9EyEALsqy37hSfVWwA4bQtHp6bV5XrpHB?=
- =?us-ascii?Q?g9mKJVU=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR10MB7329.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(366016)(1800799024)(921020); DIR:OUT; SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?yUmMuu/9UPY31nN7DwE/0DRgAPP+aKaw2baBG2gJf1COwnAY81Im1iUdxvvf?=
- =?us-ascii?Q?b2WNUpGOWbS5BBTMXNPiIngzL4HAzZnk5fFexVRbgmKEFuoVCXqf/KWJ3e92?=
- =?us-ascii?Q?iDkfhJtpUbKZ57/N5piAnT5rz7zhpS/CuB1cdbNYIsHhYMrikYr5iLp94Dhk?=
- =?us-ascii?Q?ZJ47E0ZeQgvEyNgrxqpIpOUMQtToGc/LI5IPOQAiEcTOF9S2SNMJ29Pgbtmo?=
- =?us-ascii?Q?VOGdXOlwjrDIY6InU2qrah3HXA/2cETV809GcyqdU4Dj6eC/KzYkLGXYLDAa?=
- =?us-ascii?Q?Oo6Aj7krDKTxqOO+5sFEdj//kzXleqfSC97jaMLpklGiE8XEJFOvwLNr9cPw?=
- =?us-ascii?Q?fO+kNvkNgnIS+rweFgu5vCUIgBfllRyKwdzUxQWW+LC6JA8yz2IuJSdaqtcP?=
- =?us-ascii?Q?3dO1JanIgdXaka3ydOI8szqNQX4ZGv75H/VL0kpK6Ls9DVXU6e537JLrC40g?=
- =?us-ascii?Q?cfy7qthz832lEvMYFJh+dresb4GaQiKN7IAyma6N6YqpyQVg8RePO+vjB9YF?=
- =?us-ascii?Q?UTY1qBSfl3XHh4tl7rMkN00QM2oXlavPA6OdmcozUZLwItCK4CIY8PwaMoUs?=
- =?us-ascii?Q?uwX9zqJ9dulF6xAIWUwXO1kYqJY9Fb+h6h/xZT1ZdWQbv7uv3zTAxOgFLx/n?=
- =?us-ascii?Q?/6ZPIzbQD88lJWgFQiKHCXt7PWoYmtxlen+N/l0nfwP0TTzRoXNgRb+7kTBn?=
- =?us-ascii?Q?u+Rx1yosa8QE8vdM22C7gl2O4sXhHDIDSHgrfRSujeUKLRrF7qncLSzpBZO/?=
- =?us-ascii?Q?o3bladZEaiUJgQWaTb+ZRBJRaB6intBV6t7Lc2xTlyU/uKvQJ3OvkfGQJV3Q?=
- =?us-ascii?Q?YKJmnTW1gSSfCMuz/lmjzngwwbNI4Xf6RpnSdQtbf/tRHW7n9Ci8LPucUu1L?=
- =?us-ascii?Q?7WtmK5uDuUSH+JxgFSgCDg8/ldnlQbzl3zzmj3NgNYe9IhPfLLtCEx1MVcYO?=
- =?us-ascii?Q?m4mSV+WQPjDCEZQCVkw87Etj8RoqydV6Dx9Jj8PvWVFlCyrXEQvToO4r3yzK?=
- =?us-ascii?Q?RD7BMorLJqnY+5bZ/7renpPGu1wC1oSy3d/DAFZgUBXNdUa4eygUG0DB32b1?=
- =?us-ascii?Q?n0RwcA4OajvC5OX32+Oz49FpwdXzEeiC21XQ2UZc0nahCBTUdnkI33SX4Hjr?=
- =?us-ascii?Q?dKxN98tfyE1RYR9NUyhHRohHdFOdT6XqUQrG/HYkUSXrAMM2nVVtcAKdZ1k/?=
- =?us-ascii?Q?3rBafGX5j88wGrun4AyTgXxKjRh2IuSqAVmn9kCAv5pxSFQcU39mooD57B3r?=
- =?us-ascii?Q?M9saSyDTp7sARycDODswQPoUqHIWpQ9PHpsAZlUtBnsvW7RvEsN/XEp6Op7F?=
- =?us-ascii?Q?UmiCGNx7ylJZMh3u/gnxuwiLYXT2gA2DAd2Q4YvthxRc0G3KnrzYHfrKPLm6?=
- =?us-ascii?Q?LAnOuDB7XtkstXPtdxmsLlD9Xq0dTHpiJ7XbOEdrERWRkdkzfeIs5TyX9qjN?=
- =?us-ascii?Q?3BXzFxgJdr1oBgfL2yS+988saPSgakSXgYqKIkfPvRgF0WHUPypmYcvrOsyH?=
- =?us-ascii?Q?DwriPgONmKG/dpDwVXXF6V4WH/C4vRmrJCucKlPv5Rfg/FD4b/njNLfBN2wr?=
- =?us-ascii?Q?9GRz9Z0CFdg9W0Vhrz2iPDnRRsR1JKNNZIQtafcBEeQHZmt/tIGy/hRy3V9U?=
- =?us-ascii?Q?Nw=3D=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: 3iZxWKtpBEbIBH3YwxfDUt1aegBIcIjb6i4PCwwRVByUxxvgTvPlw9J5Z3WSRVEC80F6/t9RffJfflODKV3LHGDas3KvGWcgOxdScwp90O6Q0+cD5jsK1/We2cQph3R8gSQxkuLGze/ZdIqunQk+pO22S7c1e8sFpj1X9AUz6x3a0Z/RTdpIDMg6XFOSTZymTwu/ri5oZAesm5GbHkMDL0IFzzsDjbNyNrYGMAUYFFJNaKEPaLdLcHHEKM9ZQzLRvefZsn42ahRCiyGGa0XXbiuh60j2Y8vcHbGD3HJW7CeqAtsIEwBF+iavz3ittDMz4FvKR8vundjgUR9C9ygNVK/ZPXxKfdPzQz/FD2tLp4uvrAaNk29w/Nh1bPMIz/S99/aTdpkIskFraHduUh0PeCDRoxkfvSutpawS+pnvKA1WkfrPbnwcmn4UASa+BYkDYjqGi7PDcav0VlOGINqlGQtVjXGqL3/Z6cur9+w4HZo7l6mZNvFf29QIny0P6QHvi+eAzwvyRmT501dK+dswtqjh9b3c+zGr7VbRT8oEZGcj6My+pp1/iiklvbownO+RmRcq3SH5/oRadwHq7ip/uc+wmqRmCeQzOELtIotdBMI=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 02df668f-5a21-4e31-bddb-08dcf2e16948
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Oct 2024 21:35:13.0088 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3cXMivO1lnMr6Qp6dWYZx34aJhi/VWmwnWXXb31OXsSG0skMQg0v2MsnJKCAviuKtd3iyK/B8FfqHie7N6dRPI4N4FyWZT56BKBD6/qnkug=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA2PR10MB4809
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
- definitions=2024-10-22_23,2024-10-22_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- adultscore=0 suspectscore=0
- spamscore=0 malwarescore=0 mlxscore=0 mlxlogscore=999 phishscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2409260000
- definitions=main-2410220140
-X-Proofpoint-GUID: 4Yq_wQtCSWgoGHr-HJTZhe5GhHCrlNvJ
-X-Proofpoint-ORIG-GUID: 4Yq_wQtCSWgoGHr-HJTZhe5GhHCrlNvJ
-Received-SPF: pass client-ip=205.220.165.32;
- envelope-from=william.roche@oracle.com; helo=mx0a-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Omb3+L3DW5Jd
+X-TUID: 1UA9gpsSW2qm
 
-From: William Roche <william.roche@oracle.com>
+Hi Igor,
 
-The SIGBUS signal siginfo reporting a HW memory error
-provides a si_addr_lsb field with an indication of the
-impacted memory page size.
-This information should be used to track the hwpoisoned
-page sizes.
+>  From: Igor Mammedov <imammedo@redhat.com>
+>  Sent: Friday, October 18, 2024 3:18 PM
+>  To: Salil Mehta <salil.mehta@huawei.com>
+> =20
+>  On Mon, 14 Oct 2024 20:22:03 +0100
+>  Salil Mehta <salil.mehta@huawei.com> wrote:
+> =20
+>  > Update the `AcpiCpuStatus` for `is_enabled` and `is_present`
+>  > accordingly when vCPUs are hot-plugged or hot-unplugged, taking into
+>  > account the *persistence* of the vCPUs.
+>  >
+>  > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+>  > ---
+>  >  hw/acpi/cpu.c | 7 +++++++
+>  >  1 file changed, 7 insertions(+)
+>  >
+>  > diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c index
+>  > 083c4010c2..700aa855e9 100644
+>  > --- a/hw/acpi/cpu.c
+>  > +++ b/hw/acpi/cpu.c
+>  > @@ -291,6 +291,8 @@ void acpi_cpu_plug_cb(HotplugHandler
+>  *hotplug_dev,
+>  >      }
+>  >
+>  >      cdev->cpu =3D CPU(dev);
+>  > +    cdev->is_present =3D true;
+>  > +    cdev->is_enabled =3D true;
+> =20
+>  hmm, if cpu is always present, then these fields are redundant since
+>    (!cdev->cpu) =3D=3D present
+>  and
+>    then is_enabled could be fetched from cdev->cpu directly
 
-Signed-off-by: William Roche <william.roche@oracle.com>
----
- accel/kvm/kvm-all.c    | 6 ++++--
- accel/stubs/kvm-stub.c | 4 ++--
- include/qemu/osdep.h   | 5 +++--
- include/sysemu/kvm.h   | 4 ++--
- system/cpus.c          | 6 ++++--
- util/oslib-posix.c     | 3 +++
- 6 files changed, 18 insertions(+), 10 deletions(-)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 801cff16a5..2adc4d9c24 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2940,6 +2940,7 @@ void kvm_cpu_synchronize_pre_loadvm(CPUState *cpu)
- #ifdef KVM_HAVE_MCE_INJECTION
- static __thread void *pending_sigbus_addr;
- static __thread int pending_sigbus_code;
-+static __thread short pending_sigbus_addr_lsb;
- static __thread bool have_sigbus_pending;
- #endif
- 
-@@ -3651,7 +3652,7 @@ void kvm_init_cpu_signals(CPUState *cpu)
- }
- 
- /* Called asynchronously in VCPU thread.  */
--int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr)
-+int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr, short addr_lsb)
- {
- #ifdef KVM_HAVE_MCE_INJECTION
-     if (have_sigbus_pending) {
-@@ -3660,6 +3661,7 @@ int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr)
-     have_sigbus_pending = true;
-     pending_sigbus_addr = addr;
-     pending_sigbus_code = code;
-+    pending_sigbus_addr_lsb = addr_lsb;
-     qatomic_set(&cpu->exit_request, 1);
-     return 0;
- #else
-@@ -3668,7 +3670,7 @@ int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr)
- }
- 
- /* Called synchronously (via signalfd) in main thread.  */
--int kvm_on_sigbus(int code, void *addr)
-+int kvm_on_sigbus(int code, void *addr, short addr_lsb)
- {
- #ifdef KVM_HAVE_MCE_INJECTION
-     /* Action required MCE kills the process if SIGBUS is blocked.  Because
-diff --git a/accel/stubs/kvm-stub.c b/accel/stubs/kvm-stub.c
-index 8e0eb22e61..80780433d8 100644
---- a/accel/stubs/kvm-stub.c
-+++ b/accel/stubs/kvm-stub.c
-@@ -38,12 +38,12 @@ bool kvm_has_sync_mmu(void)
-     return false;
- }
- 
--int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr)
-+int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr, short addr_lsb)
- {
-     return 1;
- }
- 
--int kvm_on_sigbus(int code, void *addr)
-+int kvm_on_sigbus(int code, void *addr, short addr_lsb)
- {
-     return 1;
- }
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index fe7c3c5f67..838271c4b8 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -585,8 +585,9 @@ struct qemu_signalfd_siginfo {
-     uint64_t ssi_stime;   /* System CPU time consumed (SIGCHLD) */
-     uint64_t ssi_addr;    /* Address that generated signal
-                              (for hardware-generated signals) */
--    uint8_t  pad[48];     /* Pad size to 128 bytes (allow for
--                             additional fields in the future) */
-+    uint16_t ssi_addr_lsb;/* Least significant bit of address (SIGBUS) */
-+    uint8_t  pad[46];     /* Pad size to 128 bytes (allow for */
-+                          /* additional fields in the future) */
- };
- 
- int qemu_signalfd(const sigset_t *mask);
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index c3a60b2890..1bde598404 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -207,8 +207,8 @@ int kvm_has_gsi_routing(void);
- bool kvm_arm_supports_user_irq(void);
- 
- 
--int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
--int kvm_on_sigbus(int code, void *addr);
-+int kvm_on_sigbus_vcpu(CPUState *cpu, int code, void *addr, short addr_lsb);
-+int kvm_on_sigbus(int code, void *addr, short addr_lsb);
- 
- #ifdef COMPILING_PER_TARGET
- #include "cpu.h"
-diff --git a/system/cpus.c b/system/cpus.c
-index 1c818ff682..12e630f760 100644
---- a/system/cpus.c
-+++ b/system/cpus.c
-@@ -376,12 +376,14 @@ static void sigbus_handler(int n, siginfo_t *siginfo, void *ctx)
- 
-     if (current_cpu) {
-         /* Called asynchronously in VCPU thread.  */
--        if (kvm_on_sigbus_vcpu(current_cpu, siginfo->si_code, siginfo->si_addr)) {
-+        if (kvm_on_sigbus_vcpu(current_cpu, siginfo->si_code,
-+                               siginfo->si_addr, siginfo->si_addr_lsb)) {
-             sigbus_reraise();
-         }
-     } else {
-         /* Called synchronously (via signalfd) in main thread.  */
--        if (kvm_on_sigbus(siginfo->si_code, siginfo->si_addr)) {
-+        if (kvm_on_sigbus(siginfo->si_code,
-+                          siginfo->si_addr, siginfo->si_addr_lsb)) {
-             sigbus_reraise();
-         }
-     }
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index 11b35e48fb..64517d1e40 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -767,6 +767,9 @@ void sigaction_invoke(struct sigaction *action,
-     } else if (info->ssi_signo == SIGILL || info->ssi_signo == SIGFPE ||
-                info->ssi_signo == SIGSEGV || info->ssi_signo == SIGBUS) {
-         si.si_addr = (void *)(uintptr_t)info->ssi_addr;
-+        if (info->ssi_signo == SIGBUS) {
-+            si.si_addr_lsb = (short int)info->ssi_addr_lsb;
-+        }
-     } else if (info->ssi_signo == SIGCHLD) {
-         si.si_pid = info->ssi_pid;
-         si.si_status = info->ssi_status;
--- 
-2.43.5
+I believe you are assuming, that all the QOM possible vCPUs objects will
+exists (and hence realized) for the entire life time of the VM? If yes, the=
+n
+we need to first debate on that as we cannot let presence of all the possib=
+le
+vCPUs affect  the boot time. This is one of the key requirement from this
+feature.
 
+
+> =20
+>  >      if (dev->hotplugged) {
+>  >          cdev->is_inserting =3D true;
+>  >          acpi_send_event(DEVICE(hotplug_dev),
+>  > ACPI_CPU_HOTPLUG_STATUS); @@ -322,6 +324,11 @@ void
+>  acpi_cpu_unplug_cb(CPUHotplugState *cpu_st,
+>  >          return;
+>  >      }
+>  >
+>  > +    cdev->is_enabled =3D false;
+>  > +    if (!acpi_persistent_cpu(CPU(dev))) {
+>  > +        cdev->is_present =3D false;
+>  > +    }
+> =20
+>  and other way around works as well.
+> =20
+>  then we don't have to carry around extra state and making sure that it's=
+ in
+>  sync/migrated.
+> =20
+>  > +
+>  >      cdev->cpu =3D NULL;
+>  >  }
+>  >
+> =20

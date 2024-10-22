@@ -1,156 +1,191 @@
-Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp10507njb;
-        Tue, 22 Oct 2024 14:38:00 -0700 (PDT)
-X-Received: by 2002:a17:902:d502:b0:20c:7e99:3df2 with SMTP id d9443c01a7336-20fab33acadmr6608335ad.23.1729633080062;
-        Tue, 22 Oct 2024 14:38:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729633080; cv=none;
+Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp13774njb;
+        Tue, 22 Oct 2024 14:45:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWhd5N0yJkqsyfvMcOOypOa/VTpWmTuOkmDIAwvenU5gMS5H+SYmXvzs0r9onPkGMmV8/pahOuLZeuiBw==@linaro.org
+X-Google-Smtp-Source: AGHT+IF83MUWPrY7zSN0giMqFd+noZggb2cQ4xJBWTehvINVPjhzKHHJQYHjZ/5N/U3plpQslZ6V
+X-Received: by 2002:a05:6359:458d:b0:1c3:66d1:8078 with SMTP id e5c5f4694b2df-1c3d819e3dfmr36898755d.18.1729633540740;
+        Tue, 22 Oct 2024 14:45:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729633540; cv=none;
         d=google.com; s=arc-20240605;
-        b=X+U6V7jBBrhZ0ThYMw7F4cs36nNztopcY8rzpxveWxbHOuvpvRFYvwFc6a4A8r5+IL
-         iVCn+5c1kS5CuRjWLayG4a6L2ZFtay7UUhDjufeRp+/WsCV6BUYqJLWQxekWZo7FYbYt
-         SN1JmQ023+QRipDwj65SsQfhmrwqfnozd9KIOsjzk1SEp1BE06xZ7YRcJhOZkcU81vLI
-         zM1R+nR7IIVczOFl75k0Pl0e75aWSUQa+hzQDjkranCXxtPfb1ScGx7miyVqo8IqChjY
-         vgwryxgEd0TKI20/JrYf0XtmoAz+i5hnzkALPAKFgPf0GW1nTi/cjBh/k6yBi++G6xhQ
-         dSnA==
+        b=Capk/XrL6Xjkx1lCLs4j7b2aFM3MLD6pqHMFnEeSMyo6JwNWczMsqokFls3MW/r/zm
+         RXZEJiIVVUyZzn7p23fMIzBGFmvRmhzCvkPoemI4//s10D+uma1jXKBLYFa5mOf9sFEI
+         zPU4EpGpzl0bslkWc97nzntaknHbyQgKwDTEiertDBzwMMpBihh81IZVUU9sVmVDs9Dl
+         Z4Vkqg239R2qkIsyMLbOD2SFxhisZQ2unIzEVFNNi9/TyU1oKk9WOw7jfWpm6YE2QJdv
+         dyOBARE4v8B9ExuyuO0AMN/Ooy07ELFCRmgwmqby1X0OyYyMeAQDjHUt9Dp5lQ69Q9xM
+         Z3VA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=VUKVknCSlFqFsBqoQ9goFiTR4ArnZOnvNU99XEHFp3w=;
-        fh=Nww9TSlvSrZvOpHQt0LxodzM28RhQ/w3CsC046muh1c=;
-        b=NvrFCagsPzEzX1GdLnSO7BunF2sBXn6yMNKG9C7EfKJdkiW5C2Q3mTlbhIJ47YStm3
-         1Y8x5y+hz50dd3Ho/nUCdkqsPijGMPUdiEWfE8LtIxoXX/eKXXbJs3audbKosU1FA8td
-         l21wvcMUOa97XNChQY0gxbNr77LXgp18HKOyHrEK0ZN1jQLZGOokmvvWrkgrtAfxvD6P
-         eCSltzi19lcw5SpsAtRnosMtn7rCBUXaE1wtX70in8zd2XIPGW2yVotpWWC65OpwUSUc
-         2UD0sPz04kM/+iEhYsa/3k6gnTl38KrdvdFlZDMC9LzesmC7ReTPyc30pEtIYaWjHfCN
-         /dGg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ZnM6ntIP/B/pJcZOvtXOMQQynVkp6BnyRgAw0610MbU=;
+        fh=DGffonLYqcCcp6mbOfx+WUsUV0Mf/6jkInXLzkJmEac=;
+        b=MYiD0pgO4eFP0dYqJUx/DzKqok8QqKecBNFKBodLU3FXAzA4reoZAVwxzNKXPMkc9m
+         L7kIXENeoBdjHeQyLkNbGundqSRKftKuqmRgxSvGgrx0bppDM8MGRjMuv+0SoxvVBmAb
+         HGShCjvBnkvaTdeMyultFLy0CXTBRT/DYAZxW9OMGm2eHF4DEagDP3YaviEtUXqs+bGI
+         7mjvHEyLUC9eXdu5GCkezGdH50BsyQKGjXRBz2In8QrwCGXARyd+XZPXLVZ0KJpUuuUU
+         YiqOpWM3GCzhsuLtToH3Pnr2J/0f38VRkhzN42637ULLFcNswk1lscCLnPqjj6x77/Wf
+         47bg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ivXu8/sP";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="O/IsZRxc";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20e7f0f5946sor33684965ad.8.2024.10.22.14.37.59
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b1659fa225si722373085a.164.2024.10.22.14.45.40
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 22 Oct 2024 14:38:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 22 Oct 2024 14:45:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ivXu8/sP";
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="O/IsZRxc";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t3Mgm-0003xX-7W; Tue, 22 Oct 2024 17:45:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t3Mgk-0003x9-9x
+ for qemu-devel@nongnu.org; Tue, 22 Oct 2024 17:45:14 -0400
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t3Mgi-0007iQ-Bv
+ for qemu-devel@nongnu.org; Tue, 22 Oct 2024 17:45:13 -0400
+Received: by mail-pl1-x62b.google.com with SMTP id
+ d9443c01a7336-20c805a0753so53327905ad.0
+ for <qemu-devel@nongnu.org>; Tue, 22 Oct 2024 14:45:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729633079; x=1730237879; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=VUKVknCSlFqFsBqoQ9goFiTR4ArnZOnvNU99XEHFp3w=;
-        b=ivXu8/sPLUjayC2IKZmzarNQjpV/Ez188HeVXWkQaMzd+B+5T0AmLknfdEgYMCVGhn
-         hcUmH6rW5TmO5njHRIY1nagDndDPuRc8+Ay2+VDTGLKXx08vP/iMZZykbBwALCW68ebE
-         6F9SKIlvbe4aK32nsPh06OJDA4rb7d2L3mxYklcl2qJhpAjMISUBSd/cZnE4Ms0OL2+v
-         ojngjFtZi6ohdmPHJ9368HHmkjrFkV3eAI6cboWCIrwj3ZVYwtXrTMc4kJOjnGUsqBrf
-         B2Un2EzRQqJY4/9oAIF9ty6zzDbojQLYQWLvyyQdr4VzSnXShk5aSxDpBNGMCGq6xwD1
-         bwTA==
+ d=linaro.org; s=google; t=1729633511; x=1730238311; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ZnM6ntIP/B/pJcZOvtXOMQQynVkp6BnyRgAw0610MbU=;
+ b=O/IsZRxcw5T1HVi+q/nYydNc6bKdwGnm2JyopEyON5IZaL5fC5Yt3foPcASzNZAVlF
+ AF43k2+89gYI48x6u2yGNSsOw9Oa/efMRcuWtWvY2+1pNFpMZszhq/7wTuU9t3xVL73n
+ pVtBX74pmDKs4ARed/HRhlFr+NmKxshrtYfMRdgPqfsPhVQxOgC2rM1jmOq/WmyZJ6Sk
+ iqk19WQB+mtBPwr7EtPh7uQoaM+0/BDs4bXIt00xMTh/lCnTWxsEHGe5Iqny9QikstaM
+ i/CZJN89APRLvIim5x34Ez1n2Rr992Tl/gMaTpirn7hdN3jp2VLksYbjt512a1t9bBIP
+ yUMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729633079; x=1730237879;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=VUKVknCSlFqFsBqoQ9goFiTR4ArnZOnvNU99XEHFp3w=;
-        b=YgnefnWiNsr7dQghjwovxSCIFIbkTkxlXVilDNKcbYkTNbXO2q8gqmDBR12Xhroy/u
-         Bm5TLCVMgTCxA5XH+HL8rvdOM+Lh2/FZPWHdSkw0xkOPXYo4TI0bi+X1mR1mhzRnfN1c
-         2+umbjnu07ebgRv3B+43ic0nCkuwKC7Z20NOpKIfAYRA7qQenyPrABlCa92vqymHbeVN
-         B6Sg0i8jw5njqS9QIrkdAKonXpDTlS7SHJUegSJtaFYTq/oRJLO7U3aQ1mRrJf9NMWqv
-         PIpkfZEvstmOFK5J8TTi5wM8zOax4tolurMVTvVuEvqOJ0z8XnFaCd8snERMuZ2GN7d1
-         26LQ==
-X-Gm-Message-State: AOJu0YwjJTl6IGsjE5cFgjY3RKuSyPkhB2lxwxrNojq2b2GXkIqrNHu2
-	CzsxDXsqUU7fkYbLqCDaG7W0fUfLMXhAbTvHKkywdPVchPKztWofVdhW1Lp5V5eanQII/FLSbkM
-	akPY=
-X-Google-Smtp-Source: AGHT+IHlm9BqHLU0sWEdynV1vM6Mhq6aFCZddq4VYJowPs+Wt47y1RjJ8GqOZOi7QgCpTbYANdT30w==
-X-Received: by 2002:a17:903:40c8:b0:20c:62af:a0f0 with SMTP id d9443c01a7336-20e96ebc90emr70643225ad.7.1729633079139;
-        Tue, 22 Oct 2024 14:37:59 -0700 (PDT)
-Return-Path: <philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1729633511; x=1730238311;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZnM6ntIP/B/pJcZOvtXOMQQynVkp6BnyRgAw0610MbU=;
+ b=eqT9rfYApQnxOLrQJ7ZrJgyjxR0sau4o5OVJ3FAaF4a7Ys1ki1hcb1eYfcKtHRgsES
+ OvL8ULPKBckCT2OqeXYYoGA7O7CJ/Ql3CjanEPVYXWt8XQmELs7IBTIoCl+MgfsoXB0Y
+ g7tcZx/C9n4Hymzk4B09MXlKV+JU1ek7ksu4xNHQP3OWltW529todHL1e8kOYD8YbxeT
+ kbh6vNczzDYxzfIIuGcREEea8Lr6dwNKtqebYPiYEMBkQPZV4nVrqIcBqdeNethzQdIU
+ W6XazhoOMVflMf8u8vQAeBkaKAHt44rUQMYKVZINzK7ogN3HKC6P11jzfSZHcAeF5/r8
+ GicA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW+0YbAURltsHYgPbdGipfdx6rO6Ia9CYcAQXK32VPNc0U2x7aOk9LapdCuh2UdyD4NW9RVXZR9cfpv@nongnu.org
+X-Gm-Message-State: AOJu0YyvX1NVnQUiHj9U5pNzRcze1qxF1LeilbrR97A26z21q1vF5y7r
+ XEYkJTYFmUGSUxZJUbqzr9RC2iiNvu7trjY44A8MRS8H8303JM2Uf5ONcTH3B9M=
+X-Received: by 2002:a17:902:d4cf:b0:20c:b517:d715 with SMTP id
+ d9443c01a7336-20fa9e5e89bmr6397075ad.25.1729633510773; 
+ Tue, 22 Oct 2024 14:45:10 -0700 (PDT)
 Received: from [192.168.100.49] ([45.176.88.171])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7ef152d3sm46951595ad.117.2024.10.22.14.37.52
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 22 Oct 2024 14:37:58 -0700 (PDT)
-Message-ID: <79577df9-fe51-46e6-9b70-01ae03ef4dae@linaro.org>
-Date: Tue, 22 Oct 2024 18:37:51 -0300
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-20e7f0db2c8sm47097885ad.195.2024.10.22.14.45.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 22 Oct 2024 14:45:10 -0700 (PDT)
+Message-ID: <2b8cc882-062f-4278-a043-60e2a135f425@linaro.org>
+Date: Tue, 22 Oct 2024 18:45:06 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 13/20] tests/tcg: enable basic testing for
- aarch64_be-linux-user
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Beraldo Leal <bleal@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Yanan Wang <wangyanan55@huawei.com>,
- Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- devel@lists.libvirt.org, Cleber Rosa <crosa@redhat.com>,
- kvm@vger.kernel.org, Alexandre Iooss <erdnaxe@crans.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Riku Voipio <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20241022105614.839199-1-alex.bennee@linaro.org>
- <20241022105614.839199-14-alex.bennee@linaro.org>
+Subject: Re: [PATCH 1/2] tests/functional: Add a functional test for the
+ collie board
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>, Thomas Huth <thuth@redhat.com>
+References: <20241017163247.711244-1-peter.maydell@linaro.org>
+ <20241017163247.711244-2-peter.maydell@linaro.org>
+ <977b5038-fa06-46d4-946d-f60135ecf106@linaro.org>
+ <ZxdO57heifGyI4lw@redhat.com>
+ <CAFEAcA9G_VjeUSgGW4b_WihkJ18JtO=a=VFYsrhgL=FYxd4dpg@mail.gmail.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241022105614.839199-14-alex.bennee@linaro.org>
+In-Reply-To: <CAFEAcA9G_VjeUSgGW4b_WihkJ18JtO=a=VFYsrhgL=FYxd4dpg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: oj3sCnxx3oV7
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
+ envelope-from=philmd@linaro.org; helo=mail-pl1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mrA52ICVgAPn
 
-On 22/10/24 07:56, Alex Bennée wrote:
-> We didn't notice breakage of aarch64_be because we don't have any TCG
-> tests for it. However while the existing aarch64 compiler can target
-> big-endian builds no one packages a BE libc. Instead we bang some
-> rocks together to do the most basic of hello world with a nostdlib
-> syscall test.
+On 22/10/24 06:02, Peter Maydell wrote:
+> On Tue, 22 Oct 2024 at 08:09, Daniel P. Berrangé <berrange@redhat.com> wrote:
+>>
+>> On Tue, Oct 22, 2024 at 01:11:31AM -0300, Philippe Mathieu-Daudé wrote:
+>>> On 17/10/24 13:32, Peter Maydell wrote:
+>>>> Add a functional test for the collie board that uses the kernel and
+>>>> rootfs provided by Guenter Roeck in the linux-test-downloads repo:
+>>>>    https://github.com/groeck/linux-test-downloads/
+>>>>
+>>>> This just boots Linux with a userspace that immediately reboots
+>>>> the board, so we wait for the reboot log line.
+>>>>
+>>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>>>> ---
+>>>>    MAINTAINERS                         |  1 +
+>>>>    tests/functional/meson.build        |  1 +
+>>>>    tests/functional/test_arm_collie.py | 31 +++++++++++++++++++++++++++++
+>>>>    3 files changed, 33 insertions(+)
+>>>>    create mode 100755 tests/functional/test_arm_collie.py
+>>>
+>>>
+>>>> +class CollieTest(LinuxKernelTest):
+>>>> +
+>>>> +    ASSET_ZIMAGE = Asset(
+>>>> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/collie/zImage',
+>>>> +        '10ace8abf9e0875ef8a83b8829cc3b5b50bc6d7bc3ca29f19f49f5673a43c13b')
+>>>> +
+>>>> +    ASSET_ROOTFS = Asset(
+>>>> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/collie/rootfs-sa110.cpio',
+>>>> +        '89ccaaa5c6b33331887047e1618ffe81b0f55909173944347d5d2426f3bcc1f2')
+>>>
+>>> Should we wrap these lines to comply with checkpatch.pl?
+>>
+>> While we have some line wrapped URLs in the tests already, IMHO they are
+>> pretty awful to look at. I think we should make URLs be an exception to
+>> line wrapping rules, provided the URL is the /only/ thing on the line.
+
+Clever, fine by me.
+
+> Our style guide already says
+> "If wrapping the line at 80 columns is obviously less readable and more
+>   awkward, prefer not to wrap it"
+> and that's the principle under which I chose not to wrap these.
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> (I think of this as analogous to George Orwell's "Break any
+> of these rules sooner than say anything outright barbarous"
+> rule for writing English...)
 > 
-> ---
-> v2
->    - fix checkpatch complaints
-> ---
->   configure                            |  5 ++++
->   tests/tcg/aarch64_be/hello.c         | 35 ++++++++++++++++++++++++++++
->   tests/tcg/Makefile.target            |  7 +++++-
->   tests/tcg/aarch64_be/Makefile.target | 17 ++++++++++++++
->   4 files changed, 63 insertions(+), 1 deletion(-)
->   create mode 100644 tests/tcg/aarch64_be/hello.c
->   create mode 100644 tests/tcg/aarch64_be/Makefile.target
+> -- PMM
 
-
-> diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-> index 2da70b2fcf..9722145b97 100644
-> --- a/tests/tcg/Makefile.target
-> +++ b/tests/tcg/Makefile.target
-> @@ -103,9 +103,14 @@ ifeq ($(filter %-softmmu, $(TARGET)),)
->   # then the target. If there are common tests shared between
->   # sub-targets (e.g. ARM & AArch64) then it is up to
->   # $(TARGET_NAME)/Makefile.target to include the common parent
-> -# architecture in its VPATH.
-> +# architecture in its VPATH. However some targets are so minimal we
-> +# can't even build the multiarch tests.
-> +ifneq ($(filter $(TARGET_NAME),aarch64_be),)
-> +-include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.target
-
-ifeq and include once? Anyhow,
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-> +else
->   -include $(SRC_PATH)/tests/tcg/multiarch/Makefile.target
->   -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.target
-> +endif

@@ -1,218 +1,93 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2937476njb;
-        Tue, 22 Oct 2024 02:30:21 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUZ6OWgPoO6YApPyf/DdL5HzIhOgUD6SHhJuWp+0uBkhr+lNWQ6+ZRimIpzc7/bRgLIz8g61UrW+TGa9w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHYSvFL9nRe4FXjqLiv6NP0D6KzHHr+wrk7gO+YVCRlRe5h2so9E0oq27GAP8SwCa/p2OdD
-X-Received: by 2002:a05:690c:6c8f:b0:6e2:af9b:a862 with SMTP id 00721157ae682-6e5bf9a697bmr147204737b3.13.1729589421675;
-        Tue, 22 Oct 2024 02:30:21 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1729589421; cv=pass;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2942690njb;
+        Tue, 22 Oct 2024 02:42:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXH1ds68BlBcrJC4rjlFykz68e09OsJC1RzYmj6WtRA8kiSHq8LNOWhQ9IoCUGQLFhIAsc3Hz5GLFnqCQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF4fFAzLMscY3U6Vo/bP8pz+vLE9EMcDEGXgmF3qs86peHWQsd5Eufr7+kic3P3FAwctCic
+X-Received: by 2002:a05:620a:46a5:b0:7a1:df6f:3625 with SMTP id af79cd13be357-7b176769909mr271020085a.37.1729590125805;
+        Tue, 22 Oct 2024 02:42:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729590125; cv=none;
         d=google.com; s=arc-20240605;
-        b=PJcSGGYC9c7h0YekH7ANFYv7K/R4qURAnLShtnh95ohiuNDbs9pMu8Lfr1hw6uLnDF
-         ApSOwoAGbPql1VeFHO57z0gkwvuJ2XMJ+acJWpXqylwC9Pz8TlrDoZKh55REPDDJKNhW
-         +6T1dnQ152/i4x4CW8ZDiZJ+Tswp2LX63lbndUWLI/Go7MTX9VoPlGHn6Q9xc0xOPwXN
-         TizxXqXlEqbzQuu810h3/qnIJDAwy0B9/E6tg5Nlzg3dqIqEvoDF3FPi90aVr/NBzG/Z
-         DJjuFvDv+xksJWCpTkrSnKrG0ix1xmluUZdzEUkk5MF3T8JdXFIbiamKdlq6hRmXXWTq
-         002w==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to:from:dkim-signature;
-        bh=O9LArQzR0uFtoPNl96E1rhmSqqEt4vNeqO2Nh3G2OFA=;
-        fh=3Rbg6Wf9wSddYYAlyU8r/kfS6ObfKR32Npy7qjh8plc=;
-        b=eGuPOP9oOjX7Gqh8T5yK0ckth8q34k6+LLiMB1pA4GdhuhpPczjbeM4BYlL36PWUwl
-         +eWfv3yw6qBZVwWBc8d7cOMeLwFCSNCY+yzEnE76WyXxFecC85RplzqfLktZSVlPVvNU
-         lyCZySFwKY++9UrY2jWPprElq83xslIujtIxBZ4r1rpod6t1Kx3KoZgHxx0IGKa77XgJ
-         nK8wZE6D5r9lHVWVuuo2K9lZHuVXa3JeK9mUXfokn3tsit3kcnZjMs4vy4p53slN9OdT
-         VGqX615iqcOxGj2jTnnqISgH6WzWxsQGCdAyNgdwa38nIrhTXrQQEmzwpvTKN7hM46Jp
-         R9cQ==;
+        b=H0kCGO/1JHuHDETcphyN4Bys4DZQeIktdAUsNuQALcTzgONuUrv2cWozXjQTy4V2/g
+         imHos7VVSrRNE2LfmYU/gZAaWchaxCLfDoXA96bdIM2PYA8yKVAlrtd+dOVvpJgw7faq
+         39Ju5IeHL9MQmdglv6QnMur2bnZjwefSWjnDgOhOgNZdLEzoGG5lGuNdNd/khEAChgl2
+         bj8QSEas7nHJh2UzybIxrmKizB7n4RoJyzV3+9I3wXUKsqh5+ZUPErYJaFeEyAUD8Gof
+         5xxU3zVfhAKoSIMF1P/njOK5kNsOKXhHl5ZgTTc8EAUk8eGNb8bhlEibYTIMQs1QzEu4
+         OHqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=9d3rpcdmCmdfVPQIX+SZnYBz+wstNEYEIkuWqNnuVBc=;
+        fh=tJ6TeM8XDKi6I9LERy0ves/+1WFn5YJhFzDAan5mwNk=;
+        b=PGJCt9bVQ6X+RqRJlHVA7Yqn0aH17EqzflK651uPNqgGqcPE+9lLeZc/Xr55stwDXn
+         VTyxEXNmvxtn05dvck5wnLyGs2C0FiPsJZgxE22G99I/0lvgUULls/+xV9Cf4iJyZ59k
+         fHjH/gtcv+fYakaS1/a8+Y8BdjVJeCKpKcH2nU3x2rrBqeKMAaMd08ZMXecZzjn4ZEto
+         lqF0YsYFdIT0x9KaR3AGkh+h7PzQMMgBPkSgLp5bv45HrCgUowPVBBl8uoW1MvsW7sWq
+         FAjmcn4BQ4P8xYxl1XtQ6hzaQNBZzbq1ZhPeVcfln41HTixwbmA+s98YL9PhJ83sbu60
+         xH/g==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=bpfB+226;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
+ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460d3da3053si63213001cf.712.2024.10.22.02.30.21
+        by mx.google.com with ESMTPS id af79cd13be357-7b165ab4471si590490385a.716.2024.10.22.02.42.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 02:30:21 -0700 (PDT)
+        Tue, 22 Oct 2024 02:42:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=bpfB+226;
-       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t3BCk-0007sR-2x; Tue, 22 Oct 2024 05:29:30 -0400
+	id 1t3BOt-0003Gk-37; Tue, 22 Oct 2024 05:42:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t3BCg-0007rl-S6; Tue, 22 Oct 2024 05:29:27 -0400
-Received: from mail-koreacentralazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::7] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ id 1t3BOq-00037a-R1; Tue, 22 Oct 2024 05:42:00 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t3BCd-0007eu-Np; Tue, 22 Oct 2024 05:29:26 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HRhLseipy911B8nezVvR4W9coit2NaqYKKHPkKVnwYrsOpIlmpH7hqzHLNpKWg0glbvhKhm3xyqVZ4YsLT9cOur6jj83vtPE8dP8Haz0fmgWEh6+Yyu1plrtzuW+jQ7en2z4iYjgr+u9SFzmfcdx46vb/yM//u44R+MNaSjd1NSMENaR4Q2xUdBVq2p/BeonN93Sptwf28Tmu+6hw5JKvS1RzwoOWILKuzqRSawLeqxy47il8OmFob5CUwOiMjn1KaxLySRBxAiVQIqjDJA5aBnt62QYS5+KUzrEQSCcxXeESj5Z4DrcNvnpbMnKTFx/Y5X/e86VkqN/+q5YE3rMuQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=O9LArQzR0uFtoPNl96E1rhmSqqEt4vNeqO2Nh3G2OFA=;
- b=rjx55BSXVr+hEH5Z3ayHf1Jfx5e7E7CMJIyngCQKuYCWupj+FUmB64eGTivV23jlrt6f/nHxo97d9jUaJflMwf3Zpv4lGZZRpTVhFkWoaF22ycKnW0exzMy7IBQzHVn5sJgDsVlJArnK0AojywHPzPpn4fj7VFjIeY6jEKIT1M2hu19v3+G7Agxwc2IUashShMkWCsTyQ6HQgaFpydSyGxgikbRt374dvGF8AuL7Z0zrGJpe3bmKO6299bOfXbH8+VIuEIRlG3wwAqZ7N0YluApqa9YvGohpkHJ0S7cPKlrqqIWwjcbnkCfKDxDpEEtdrwICfse11BViRcslT9rLBQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=O9LArQzR0uFtoPNl96E1rhmSqqEt4vNeqO2Nh3G2OFA=;
- b=bpfB+226wa0ujfnB4uH/HysJoZD/2z0ZXLMeYc0OVDUGwTS1EFUwWM2jVuNa0957Gxq40RNp4tzskMEAuOGsYJZc69icECvzKmIbx2LB+w4GWJ6lJz36QVaKmDwFukSLEvt/dApADvN7owVtH5nvEzeTCWk5x6BB8djBYRrm6oHL9EvV9uySozukQ9C7RX0OBjcYt2Q4a65a4ks6hZuSYkJZ0CttAr73UGmjqTDwGTcdYaouIapn5AqBOvbvCnGTutMbJIf1MBpe0W/SY3Ph2u8I/Etd2Q8aHdoW/rfNKWRwJ+9v2jYiVlS+ILLARjP+LB7IobJhZk/mN4EojIx8cg==
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
- TYZPR06MB6914.apcprd06.prod.outlook.com (2603:1096:405:41::7) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8093.14; Tue, 22 Oct 2024 09:29:15 +0000
-Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
- ([fe80::705a:352a:7564:8e56%6]) with mapi id 15.20.8093.013; Tue, 22 Oct 2024
- 09:29:15 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ id 1t3BOn-00019W-Jv; Tue, 22 Oct 2024 05:42:00 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 22 Oct
+ 2024 17:41:14 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Tue, 22 Oct 2024 17:41:14 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
- Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, Kevin
- Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, Thomas Huth
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>, "Kevin
+ Wolf" <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, Thomas Huth
  <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
  <pbonzini@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
  list:All patches CC here" <qemu-devel@nongnu.org>, "open list:Block layer
  core" <qemu-block@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
- <yunlin.tang@aspeedtech.com>
-Subject: RE: [SPAM] [PATCH v1 01/16] aspeed/smc: Fix write incorrect data into
- flash in user mode
-Thread-Topic: [SPAM] [PATCH v1 01/16] aspeed/smc: Fix write incorrect data
- into flash in user mode
-Thread-Index: AQHbIR72cAUzWi7YlEuc5foBrb6SxbKSSpmAgAA618A=
-Date: Tue, 22 Oct 2024 09:29:14 +0000
-Message-ID: <SI2PR06MB5041EE717DADE3155F4C9097FC4C2@SI2PR06MB5041.apcprd06.prod.outlook.com>
-References: <20241018053112.1886173-1-jamin_lin@aspeedtech.com>
- <20241018053112.1886173-2-jamin_lin@aspeedtech.com>
- <eb69d07f-8114-41e2-bea0-06f0d67a0d6f@kaod.org>
-In-Reply-To: <eb69d07f-8114-41e2-bea0-06f0d67a0d6f@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|TYZPR06MB6914:EE_
-x-ms-office365-filtering-correlation-id: af6b5389-9ba2-402b-acda-08dcf27bfecc
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|7416014|376014|366016|921020|38070700018|217643003; 
-x-microsoft-antispam-message-info: =?utf-8?B?NnVQeVljRGIxYmdPUllNSE5sMTJuUkV4c0Z0cGdoQXhTOFNFSjlYbUhuQWcx?=
- =?utf-8?B?SHpoVW1jNzlGZG1yQmVaWG1PdFhVdGFwdnVBdDhzQ3hRL2txck1tdnU1RFZ3?=
- =?utf-8?B?WGJWYnpDcGZQK2tGMDdCb0JYcGIwUUFCRHg1S0xYYVpCT0JWaWlPejZNZXl2?=
- =?utf-8?B?bmtsR2R1YWFCbXZtVkoxei81d1piTzd4ZkZ6MS83cnl6VFRidGhscFpodEpw?=
- =?utf-8?B?Q1lWTW1rTFNLYU5jMUxtYVh0MUpPYXBGWnVQQ3lyVDV5c3ZmQ1UyRnVpdlpV?=
- =?utf-8?B?ZDVvbjFqMnFDQTNiWmQzTzgzTmdST2FwbmdDZm9WNUNzbVJXbHRRaTFnelN3?=
- =?utf-8?B?NUxnR3U0eTgwS2RjU2t4Y0E3bjdOMFB3QUdLM0dYUVBxcjFnZEdOaThJVGt3?=
- =?utf-8?B?cXhORzlucUVBNDNvVHA4OVN4Ym9JS3kraWFiV3RkbGh6MWlVNzk1OHBCaXRx?=
- =?utf-8?B?VVM1d1c4UkxKUTE1dUFabzRsRHVpSUs4TjdINXpDSzQvYkJGUkZ3R3lYcXhY?=
- =?utf-8?B?cmNJaXVsTGpZWFF0RjNWNEtkaHB4L0RhNWVMRnNGQ2hDUnNMUkpZL0VDSmlC?=
- =?utf-8?B?dTVuUHhnaXdWRzgvWWJjOE9ib2dEK2t0UW9uaFl5b3NuOC84Vnh4aEVIZWl6?=
- =?utf-8?B?cHc2akkyekRBdDNCYWRwT0YvOE5xVTR1MGNBMmVUN0NWWFZlcGNNN1B3V1dE?=
- =?utf-8?B?VnlJcnJ0aWk0Wm55TGx2MWk3a09ENWpmeDBKWU14MmVMRzNVbHkxcWRKQzdY?=
- =?utf-8?B?MmRNaWtwNDVJenRuWURxbVNabWV1SmRyUmNpSnhEcjFLWUZFSG1veklBUkY1?=
- =?utf-8?B?YXBYa3duaWZtNndEOGlRMGxQTExTZ1h5ajhmVjl5eTR5M3N0NTA1ZXJqS3V5?=
- =?utf-8?B?bnM5bXhGTnl6RmRPUXdPZTQzUWIvd1I5ZWIyTHNJSE9mR3RVK1NHTzA3SmY3?=
- =?utf-8?B?aVBOaW1yYTFhM2RxbjlpaHVzajRPeXM3RXIrUWlNdkJ4UmdDRzdybTY1SFh5?=
- =?utf-8?B?TDh0WFJHRGZlNVJkUGNLMlVyZXlaLzN3c1p5S25TVUtxbm1OR1UvakpUZllm?=
- =?utf-8?B?R2lDenlmQzBueGZadlJ1SlBSRUpGOGg0SUIyeVZuSmJFMEJjL0VQdlZOMUI4?=
- =?utf-8?B?OEtWUzFzd3BJbDhjOXV3N2dJS0hPR0dydzAyQm1qcjVYa3o4MTZOajZ5dGxr?=
- =?utf-8?B?UDl2MWtjSjhoU3JRREVFTnRjenBUTGhWMHdFcGo5R1NyNzJuempnZHlZdCtE?=
- =?utf-8?B?SzU4VVRYUkQzQVJCWUtRd0N5SmZsTzdyZk0wYVRQaVI3dS9tUmVXTyt2bFA0?=
- =?utf-8?B?TEp0TE5YdUxNVHZaU2VkYllINGMyOUQvLzZ4aW5LTFZkNVZmYTNabXFiZGI4?=
- =?utf-8?B?TU5PL0pkZklZOTVIK3FoU1RPQXNTcWhCMGxxUXMxVGVCcXR1N0dDclVFbFF0?=
- =?utf-8?B?aTdXZVU4UklnbERXZDJESFA3ZWhROEN0aXJ0RWlyT3YyTldJVVVHMmF1N3RS?=
- =?utf-8?B?M3k3Ly9BM0RrSzZGT3BySGNxK1pWTGZGQklWdEhFSmZHaUQzR3M5TElzcjQz?=
- =?utf-8?B?dkpXeW90Q25BWUovaHhlSit5bXFHRVAyQTIyc2JkOWZZZS9vdTlVSXVTekhK?=
- =?utf-8?B?dlJkSjc2RDlNWXVZM3VpTnQ1aGcyQWhYKzR1amlaL0x5dkNTRGdiR2ZLb1Bh?=
- =?utf-8?B?OENjSmZLeVZlMzhlLzZtR2RBYkRoaHQwNkNKWGErL0Zhd09IaEdFSTY3SHJL?=
- =?utf-8?B?M2hFbEtRT24zU0lnMWFaRG82cG5rbGJjVTEyZGxzVGVDNjBVVUN4OVBhd0tB?=
- =?utf-8?B?ekhuVXVheFRmS0VDcXBRcElhbUdUd2k5cVFnZWZLRVFxWlR0N0NBWVRxN1ZS?=
- =?utf-8?B?U3ZOVDZkYjZrWmtNbFAwNmFyczdUU2p2QkpqdysxZ2xFQ3c9PQ==?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(376014)(366016)(921020)(38070700018)(217643003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?NU5yemhUMWlocW5CTldsbENuSzZsQ0U2aEY3emhsSnNKU2dDRUFxNy96eTBh?=
- =?utf-8?B?L1hCdHhIZFNmamZuUUNBSzl5Znc0OFZkRGpId0FhTWJnNHQvajdvb1VXelM5?=
- =?utf-8?B?M1dPNlhHWnRvdUdUK1hmcXdib2V1ZVRnQ0lRaVVmZkNSbEdVZStvZi8yMU5K?=
- =?utf-8?B?MklYcTdEbVl3anZvNVlHbWo4YUR6anp3dTFkQnJvbzJnV3NJQzliVHIvNjla?=
- =?utf-8?B?aTdCZUpjMEN6QTRXQ2hna0I0VlRwUGVFQXA1M0R1ajRNSTU3QTBuenh1cm1C?=
- =?utf-8?B?ejV4a1RvU281cVEyS3FwTzk5VjgvRnFodVFRV0VNQ2F2YmxkUXdRYU1DbnJQ?=
- =?utf-8?B?bi9BYWdBcWpDa2tUK0dpUlJ1OEk2bFRZbEtCSG1yK0tLTEUwVUNvaStqZHJZ?=
- =?utf-8?B?VnRPS25QSDVJd2dCUmRBaDVhd2R5cjBCSWtTVVdHZVVyeURvb1EwbEprQ252?=
- =?utf-8?B?QWNGMFNXeWpwelR5RVN5SUNXKzJUdm9ESkFreEU2bGExTHNYL0VDc3Z5L0pP?=
- =?utf-8?B?Qm52dUtCbGp1dDJtMlN1K0tJVnBKSkQ4TVRjWFgrTGh4SkxBbUZGMHFHWFZs?=
- =?utf-8?B?aWJSNStaRTFEWmV2Vkx5NWNJUG44b2ViV0JqQklkdUNuS20vQ2g3Z2RWcENz?=
- =?utf-8?B?dnVVcER0SnRocDBsYlNLdE01T2hHcGxXRzZIdS9FWnluT3UrR1F0bGpJZ0Ru?=
- =?utf-8?B?b2xLSUNtcWNka3d3WWZWRk9xb1diakg2UTBGOHRqdjFMZHdyZ3E1TVdrNTVC?=
- =?utf-8?B?TkU5RExvOW9RU3ZoQmRkdjEwU0kvMTN1MmE3Vm1pMFZvdTNDTlViY3diYzZO?=
- =?utf-8?B?R2tYLzJvaE8ySXVqcCtsTVYwUGNOaXhVVFE0SFVSRjNDVmNLR2NyYWlOMHVx?=
- =?utf-8?B?NmVmcE1BcUcvaFBKajlUMmlWaXJCUm13U3FqQ25ybUdwWmNrMXkvK3p6bVVE?=
- =?utf-8?B?bHY3VUZjTWxYQU5Zd0JRb3ZYemhCNk9BTlRUVEl1QzUyV1AvT3NrVDdTeHY5?=
- =?utf-8?B?TnJTeHNtZ0dQVnAvWmo3N0c2U0hPV0NsSklMN2d2Y3ZhSWV2RG5Peng4d2Ra?=
- =?utf-8?B?MjBRM05qbXR5MWg5ZWlFL3gva2Z6SHh5ZkhoZ0pwTGxaR25CQkV6R0FCN0Iy?=
- =?utf-8?B?amRGR2xiMitTMzFuZ2NOYlRuSSt4NXJWcFBGcG1KTEdPMGVQakt1Q2pBd291?=
- =?utf-8?B?OGxmeHdwbWFyWjV1Z3VmVldVdUZHcVJ2TEhKdkhwK2JUNmtWdHRpL21vR0RC?=
- =?utf-8?B?dmxlZUcvVDdhMU4zN0VlUEJtZjEvY3ZkenVlV1JCTTNzUkFYbjgzT3Q4LzJr?=
- =?utf-8?B?WG5DRFhhSVJ4VDd0VjFLa3Bta2JidTc2OEJuVGp0ViszY25EckJXQ204QXVE?=
- =?utf-8?B?blFjU3RHMXhIczA1bHJGc0Z3UEhmTGxQZjEyaVkvVFVJUGxFVTZOUGlsc29C?=
- =?utf-8?B?U1hHMmEzVnpaRmlaRzRnUU1oMDFhb3NJRjdiMEZ4NG1MamxlVzVKWUR4VFJU?=
- =?utf-8?B?cnpyUkwvTUkvNFFaWE1UL2hXLzVDSWhXV1VkbkRjbmlEaEtpRjFPZURBM1gy?=
- =?utf-8?B?b25jQmFSbVpoNzFOU0NRT3B2VnpTSWJ1LzhFQVptaks2TDl1Z1hMelRtZUZC?=
- =?utf-8?B?NDdrMWZnQ2wwTldzZUdwamRPdG1Cc1J2NTBDR2t6Ukd6ZnVINldlL0JSU2xZ?=
- =?utf-8?B?ejR5VVpKelFIaXU3b2VYRjBUUCtBaHVqd2xrSUcvUXFocldKc2xTbHBpRTh0?=
- =?utf-8?B?aUZwa3NLYXFIeklvTjNJaTNkbDBrcmJEcG1xYzdBZitRS0RVdXpVR3FXMHBM?=
- =?utf-8?B?Tit1RUgrZTlDeVJld2FhdDdBbDJZWEpNVkxGUXU4c05HQ0RLSGtCeERnNFlM?=
- =?utf-8?B?aEJpRVcrTHdFWmZlT3JWeFpaTlJDWE5ZalFXVnh6Rk15ckpSbXJtQmcwcUpP?=
- =?utf-8?B?QjlwVFo2NkJmcjJqZGNlcWYrb2hyb3ZmUGpJc2JRT3JpMjZYUUZhWjlLMlFL?=
- =?utf-8?B?V0x3cllnYWkwU3hRaVMyamNqZlVCakJqMzdDejFyWWZxcHo3cnVaVk14Yk5m?=
- =?utf-8?B?VFhrMGJ3QVB0dVc3bHh6MGlaZlY0clV0UmZkMG1iNDFGb0p2NW00Nk1jOXY5?=
- =?utf-8?Q?9JaA7Gu30vohR6fWZH2A1pW8/?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
+ <clg@redhat.com>
+Subject: [PATCH v2 10/18] test/qtest/aspeed_smc-test: Introduce a new TestData
+ to test different BMC SOCs
+Date: Tue, 22 Oct 2024 17:41:02 +0800
+Message-ID: <20241022094110.1574011-11-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
+References: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: af6b5389-9ba2-402b-acda-08dcf27bfecc
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Oct 2024 09:29:14.8962 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: qSLjOI81GL6uJSwsfEKm+IyVLxJv2uzhj7MFlWmzCiTsXHKrudFG78/dkPyeJm1KwfN9JWU+CozUwB/2EtNZDdrTPzh1kv1z9vEQ74/1QOY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB6914
-Received-SPF: pass client-ip=2a01:111:f403:c40f::7;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -225,152 +100,934 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zZCVb/dv5268
+X-TUID: uQn+opbw9aim
 
-SGkgQ2VkcmljLA0KDQo+IEZyb206IEPDqWRyaWMgTGUgR29hdGVyIDxjbGdAa2FvZC5vcmc+DQo+
-IFNlbnQ6IFR1ZXNkYXksIE9jdG9iZXIgMjIsIDIwMjQgMTo1MSBQTQ0KPiBUbzogSmFtaW4gTGlu
-IDxqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20+OyBQZXRlciBNYXlkZWxsDQo+IDxwZXRlci5tYXlk
-ZWxsQGxpbmFyby5vcmc+OyBTdGV2ZW4gTGVlIDxzdGV2ZW5fbGVlQGFzcGVlZHRlY2guY29tPjsg
-VHJveQ0KPiBMZWUgPGxlZXRyb3lAZ21haWwuY29tPjsgQW5kcmV3IEplZmZlcnkgPGFuZHJld0Bj
-b2RlY29uc3RydWN0LmNvbS5hdT47DQo+IEpvZWwgU3RhbmxleSA8am9lbEBqbXMuaWQuYXU+OyBB
-bGlzdGFpciBGcmFuY2lzIDxhbGlzdGFpckBhbGlzdGFpcjIzLm1lPjsgS2V2aW4NCj4gV29sZiA8
-a3dvbGZAcmVkaGF0LmNvbT47IEhhbm5hIFJlaXR6IDxocmVpdHpAcmVkaGF0LmNvbT47IFRob21h
-cyBIdXRoDQo+IDx0aHV0aEByZWRoYXQuY29tPjsgTGF1cmVudCBWaXZpZXIgPGx2aXZpZXJAcmVk
-aGF0LmNvbT47IFBhb2xvIEJvbnppbmkNCj4gPHBib256aW5pQHJlZGhhdC5jb20+OyBvcGVuIGxp
-c3Q6QVNQRUVEIEJNQ3MgPHFlbXUtYXJtQG5vbmdudS5vcmc+Ow0KPiBvcGVuIGxpc3Q6QWxsIHBh
-dGNoZXMgQ0MgaGVyZSA8cWVtdS1kZXZlbEBub25nbnUub3JnPjsgb3BlbiBsaXN0OkJsb2NrIGxh
-eWVyDQo+IGNvcmUgPHFlbXUtYmxvY2tAbm9uZ251Lm9yZz4NCj4gQ2M6IFRyb3kgTGVlIDx0cm95
-X2xlZUBhc3BlZWR0ZWNoLmNvbT47IFl1bmxpbiBUYW5nDQo+IDx5dW5saW4udGFuZ0Bhc3BlZWR0
-ZWNoLmNvbT4NCj4gU3ViamVjdDogUmU6IFtTUEFNXSBbUEFUQ0ggdjEgMDEvMTZdIGFzcGVlZC9z
-bWM6IEZpeCB3cml0ZSBpbmNvcnJlY3QgZGF0YSBpbnRvDQo+IGZsYXNoIGluIHVzZXIgbW9kZQ0K
-PiANCj4gSGVsbG8gSmFtaW4sDQo+IA0KPiBPbiAxMC8xOC8yNCAwNzozMCwgSmFtaW4gTGluIHdy
-b3RlOg0KPiA+IEFjY29yZGluZyB0byB0aGUgZGVzaWduIG9mIEFTUEVFRCBTUEkgY29udHJvbGxl
-cnMgdXNlciBtb2RlLCB1c2Vycw0KPiA+IHdyaXRlIHRoZSBkYXRhIHRvIGZsYXNoLCB0aGUgU1BJ
-IGRyaXZlcnMgc2V0IHRoZSBDb250cm9sDQo+ID4gUmVnaXN0ZXIoMHgxMCkgYml0IDAgYW5kIDEg
-ZW50ZXIgdXNlciBtb2RlLiBUaGVuLCBTUEkgZHJpdmVycyBzZW5kIGZsYXNoDQo+IGNvbW1hbmRz
-IGZvciB3cml0aW5nIGRhdGEuDQo+ID4gRmluYWxseSwgU1BJIGRyaXZlcnMgc2V0IHRoZSBDb250
-cm9sIFJlZ2lzdGVyICgweDEwKSBiaXQgMiB0byBzdG9wDQo+ID4gYWN0aXZlIGNvbnRyb2wgYW5k
-IHJlc3RvcmUgYml0IDAgYW5kIDEuDQo+ID4NCj4gPiBBY2NvcmRpbmcgdG8gdGhlIGRlc2lnbiBv
-ZiBBU1BFRUQgU01DIG1vZGVsLCBmaXJtd2FyZSB3cml0ZXMgdGhlDQo+ID4gQ29udHJvbCBSZWdp
-c3RlciBhbmQgdGhlICJhc3BlZWRfc21jX2ZsYXNoX3VwZGF0ZV9jdHJsIiBmdW5jdGlvbiBpcyBj
-YWxsZWQuDQo+ID4gVGhlbiwgdGhpcyBmdW5jdGlvbiB2ZXJpZnkgQ29udHJvbCBSZWdpc3Rlcigw
-eDEwKSBiaXQgMCBhbmQgMS4gSWYgaXQNCj4gPiBzZXQgdXNlciBtb2RlLCB0aGUgdmFsdWUgb2Yg
-cy0+c25vb3BfaW5kZXggaXMgU05PT1BfU1RBUlQgZWxzZQ0KPiBTTk9PUF9PRkYuDQo+ID4gSWYg
-cy0+c25vb3BfaW5kZXggaXMgU05PT1BfU1RBUlQsIHRoZSAiYXNwZWVkX3NtY19kb19zbm9vcCIg
-ZnVuY3Rpb24NCj4gPiB2ZXJpZnkgdGhlIGZpcnN0IGluY29tbWluZyBkYXRhIGlzIGEgbmV3IGZs
-YXNoIGNvbW1hbmQgYW5kIHdyaXRlcyB0aGUNCj4gPiBjb3JyZXNwb25kaW5nIGR1bW15IGJ5dGVz
-IGlmIG5lZWQuDQo+ID4NCj4gPiBIb3dldmVyLCBpdCBkaWQgbm90IGNoZWNrIHRoZSBjdXJyZW50
-IHVuc2VsZWN0IHN0YXR1cy4gSWYgY3VycmVudA0KPiA+IHVuc2VsZWN0IHN0YXR1cyBpcyAiZmFs
-c2UiIGFuZCBmaXJtd2FyZSBzZXQgdGhlIElPIE1PREUgYnkgQ29udHJvbA0KPiA+IFJlZ2lzdGVy
-IGJpdCAzMToyOCwgdGhlIHZhbHVlIG9mIHMtPnNub29wX2luZGV4IHdpbGwgYmUgY2hhbmdlZCB0
-bw0KPiA+IFNOT09QX1NUQVJUIGFnYWluIGFuZCAiYXNwZWVkX3NtY19kb19zbm9vcCIgbWlzdW5k
-ZXJzdGFuZCB0aGF0IHRoZQ0KPiA+IGluY29tbWluZyBkYXRhIGlzIHRoZSBuZXcgZmxhc2ggY29t
-bWFuZCBhbmQgaXQgY2F1c2VzIHdyaXRpbmcgdW5leHBlY3RlZA0KPiBkYXRhIGludG8gZmxhc2gu
-DQo+ID4NCj4gPiBFeGFtcGxlOg0KPiA+IDEuIEZpcm13YXJlIHNldCB1c2VyIG1vZGUgYnkgQ29u
-dHJvbCBSZWdpc3RlciBiaXQgMCBhbmQgMSgweDAzKSAyLiBTTUMNCj4gPiBtb2RlbCBzZXQgcy0+
-c25vb3AgU05PT1BfU1RBUlQgMy4gRmlybXdhcmUgc2V0IFF1YWQgUGFnZSBQcm9ncmFtIHdpdGgN
-Cj4gPiA0LUJ5dGUgQWRkcmVzcyBjb21tYW5kICgweDM0KSA0LiBTTUMgbW9kZWwgdmVyaWZ5IHRo
-aXMgZmxhc2ggY29tbWFuZA0KPiA+IGFuZCBpdCBuZWVkcyA0IGR1bW15IGJ5dGVzLg0KPiA+IDUu
-IEZpcm13YXJlIHNlbmQgNCBieXRlcyBhZGRyZXNzLg0KPiA+IDYuIFNNQyBtb2RlbCByZWNlaXZl
-cyA0IGJ5dGVzIGFkZHJlc3MNCj4gPiA3LiBGaXJtd2FyZSBzZXQgUVBJIElPIE1PREUgYnkgQ29u
-dHJvbCBSZWdpc3RlciBiaXQgMzEuICgweDgwMDAwMDAzKQ0KPiA+IDguIFNNQyBtb2RlbCB2ZXJp
-ZnkgbmV3IHVzZXIgbW9kZSBieSBDb250cm9sIFJlZ2lzdGVyIGJpdCAwIGFuZCAxLg0KPiA+ICAg
-ICBUaGVuLCBzZXQgcy0+c25vb3AgU05PT1BfU1RBUlQgYWdhaW4uIChJdCBpcyB0aGUgd3Jvbmcg
-YmVoYXZpb3IuKQ0KPiA+IDkuIEZpcm13YXJlIHNlbmQgMHhlYmQ4YzEzNCBkYXRhIGFuZCBpdCBz
-aG91bGQgYmUgd3JpdHRlbiBpbnRvIGZsYXNoLg0KPiA+ICAgICBIb3dldmVyLCBTTUMgbW9kZWwg
-bWlzdW5kZXJzdGFuZCB0aGF0IHRoZSBmaXJzdCBpbmNvbWluZyBkYXRhLCAweDM0LA0KPiA+ICAg
-ICBpcyB0aGUgbmV3IGNvbW1hbmQgYmVjYXVzZSB0aGUgdmFsdWUgb2Ygcy0+c25vb3AgaXMgY2hh
-bmdlZCB0bw0KPiBTTk9PUF9TVEFSVC4NCj4gPiAgICAgRmluYWxseSwgU01DIHNuZWQgdGhlIGlu
-Y29ycmVjdCBkYXRhIHRvIGZsYXNoIG1vZGVsLg0KPiA+DQo+ID4gSW50cm9kdWNlIGEgbmV3IHVu
-c2VsZWN0IGF0dHJpYnV0ZSBpbiBBc3BlZWRTTUNTdGF0ZSB0byBzYXZlIHRoZQ0KPiA+IGN1cnJl
-bnQgdW5zZWxlY3Qgc3RhdHVzIGZvciB1c2VyIG1vZGUgYW5kIHNldCBpdCAidHJ1ZSIgYnkgZGVm
-YXVsdC4NCj4gPiBVcGRhdGUgImFzcGVlZF9zbWNfZmxhc2hfdXBkYXRlX2N0cmwiIGZ1bmN0aW9u
-IHRvIGNoZWNrIHRoZSBwcmV2aW91cw0KPiA+IHVuc2VsZWN0IHN0YXR1cy4gSWYgYm90aCBuZXcg
-dW5zZWxlY3Qgc3RhdHVzIGFuZCBwcmV2aW91cyB1bnNlbGVjdA0KPiA+IHN0YXR1cyBpcyBkaWZm
-ZXJlbnQsIHVwZGF0ZSBzLT5zbm9vcF9pbmRleCB2YWx1ZSBhbmQgY2FsbA0KPiAiYXNwZWVkX3Nt
-Y19mbGFzaF9kb19zZWxlY3QiLg0KPiANCj4gSXQncyB2ZXJ5IGRpZmZpY3VsdCBhbmQgdGltZSBj
-b25zdW1pbmcgdG8gZGVidWcgc3VjaCBpc3N1ZXMuIFRoYW5rcyBmb3IgdGhlDQo+IGVmZm9ydCAh
-DQo+IA0KPiA+IEluY3JlYXNlIFZNU3RhdGVEZXNjcmlwdGlvbiB2ZXJzaW9uIDEuDQo+IA0KPiAi
-SW5jcmVhc2UgVk1TdGF0ZURlc2NyaXB0aW9uIHZlcnNpb24iIGlzIHN1ZmZpY2llbnQuDQo+IA0K
-PiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogSmFtaW4gTGluIDxqYW1pbl9saW5AYXNwZWVkdGVjaC5j
-b20+DQo+ID4gLS0tDQo+ID4gICBody9zc2kvYXNwZWVkX3NtYy5jICAgICAgICAgfCAzOQ0KPiAr
-KysrKysrKysrKysrKysrKysrKysrKysrLS0tLS0tLS0tLS0tDQo+ID4gICBpbmNsdWRlL2h3L3Nz
-aS9hc3BlZWRfc21jLmggfCAgMSArDQo+ID4gICAyIGZpbGVzIGNoYW5nZWQsIDI4IGluc2VydGlv
-bnMoKyksIDEyIGRlbGV0aW9ucygtKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3L3NzaS9hc3Bl
-ZWRfc21jLmMgYi9ody9zc2kvYXNwZWVkX3NtYy5jIGluZGV4DQo+ID4gZTNmZGM2NmNiMi4uOGE2
-MTQ1YWZlOSAxMDA2NDQNCj4gPiAtLS0gYS9ody9zc2kvYXNwZWVkX3NtYy5jDQo+ID4gKysrIGIv
-aHcvc3NpL2FzcGVlZF9zbWMuYw0KPiA+IEBAIC00MTcsNyArNDE3LDcgQEAgc3RhdGljIHZvaWQN
-Cj4gYXNwZWVkX3NtY19mbGFzaF9kb19zZWxlY3QoQXNwZWVkU01DRmxhc2ggKmZsLCBib29sIHVu
-c2VsZWN0KQ0KPiA+ICAgICAgIEFzcGVlZFNNQ1N0YXRlICpzID0gZmwtPmNvbnRyb2xsZXI7DQo+
-ID4NCj4gPiAgICAgICB0cmFjZV9hc3BlZWRfc21jX2ZsYXNoX3NlbGVjdChmbC0+Y3MsIHVuc2Vs
-ZWN0ID8gInVuIiA6ICIiKTsNCj4gPiAtDQo+ID4gKyAgICBzLT51bnNlbGVjdCA9IHVuc2VsZWN0
-Ow0KPiA+ICAgICAgIHFlbXVfc2V0X2lycShzLT5jc19saW5lc1tmbC0+Y3NdLCB1bnNlbGVjdCk7
-DQo+ID4gICB9DQo+ID4NCj4gPiBAQCAtNjc3LDIyICs2NzcsMzUgQEAgc3RhdGljIGNvbnN0IE1l
-bW9yeVJlZ2lvbk9wcw0KPiA+IGFzcGVlZF9zbWNfZmxhc2hfb3BzID0gew0KPiANCj4gSSB3b3Vs
-ZCBsaWtlIHRvIGFkZCBzb21lIGRvY3VtZW50YXRpb24gdG8gdGhpcyByb3V0aW5lLiBMaXN0aW5n
-IHRoZSBkaWZmZXJlbnQNCg0KVGhhbmtzIGZvciBzdWdnZXN0aW9uLg0KQ291bGQgeW91IHBsZWFz
-ZSBicmllZmx5IHRlbGwgbWUgYWRkaW5nIGRvY3VtZW50YXRpb24gaW4gd2hlcmUgYW5kIHdoYXQg
-Y29udGVudHMgc2hvdWxkIGJlIGFkZGVkIGludG8gZG9jdW1lbnRhdGlvbj8NCkkgd2lsbCBzZW5k
-IHRoZSBwYXRjaCB0byBhZGQgdGhlbSBpbiB0aGUgZnV0dXJlLg0KIA0KPiBjb250cm9sbGVyIHN0
-YXRlIGNoYW5nZXMgc2VlbXMgaW1wb3J0YW50IHRvIG1lIHRvIHVuZGVyc3RhbmQgaG93IHRoZXkg
-YXJlDQo+IGhhbmRsZWQuIEluIGEgZnV0dXJlIHBhdGNoLCBubyBuZWVkIG5vdy4gRml4aW5nIHRo
-ZSBpc3N1ZSBpcyBhbHJlYWR5IGdyZWF0ICENCj4gDQo+IA0KPiANCj4gPiAgIHN0YXRpYyB2b2lk
-IGFzcGVlZF9zbWNfZmxhc2hfdXBkYXRlX2N0cmwoQXNwZWVkU01DRmxhc2ggKmZsLCB1aW50MzJf
-dA0KPiB2YWx1ZSkNCj4gPiAgIHsNCj4gPiAgICAgICBBc3BlZWRTTUNTdGF0ZSAqcyA9IGZsLT5j
-b250cm9sbGVyOw0KPiA+IC0gICAgYm9vbCB1bnNlbGVjdDsNCj4gPiArICAgIGJvb2wgdW5zZWxl
-Y3QgPSBmYWxzZTsNCj4gPiArICAgIHVpbnQzMl90IG9sZF9tb2RlOw0KPiA+ICsgICAgdWludDMy
-X3QgbmV3X21vZGU7DQo+ID4gKw0KPiA+ICsgICAgb2xkX21vZGUgPSBzLT5yZWdzW3MtPnJfY3Ry
-bDAgKyBmbC0+Y3NdICYgQ1RSTF9DTURfTU9ERV9NQVNLOw0KPiA+ICsgICAgbmV3X21vZGUgPSB2
-YWx1ZSAmIENUUkxfQ01EX01PREVfTUFTSzsNCj4gPg0KPiA+IC0gICAgLyogVXNlciBtb2RlIHNl
-bGVjdHMgdGhlIENTLCBvdGhlciBtb2RlcyB1bnNlbGVjdCAqLw0KPiA+IC0gICAgdW5zZWxlY3Qg
-PSAodmFsdWUgJiBDVFJMX0NNRF9NT0RFX01BU0spICE9IENUUkxfVVNFUk1PREU7DQo+ID4gKyAg
-ICBpZiAob2xkX21vZGUgPT0gQ1RSTF9VU0VSTU9ERSkgew0KPiA+ICsgICAgICAgIGlmIChuZXdf
-bW9kZSAhPSBDVFJMX1VTRVJNT0RFKSB7DQo+ID4gKyAgICAgICAgICAgIHVuc2VsZWN0ID0gdHJ1
-ZTsNCj4gPiArICAgICAgICB9DQo+ID4NCj4gPiAtICAgIC8qIEEgY2hhbmdlIG9mIENUUkxfQ0Vf
-U1RPUF9BQ1RJVkUgZnJvbSAwIHRvIDEsIHVuc2VsZWN0cyB0aGUgQ1MgKi8NCj4gPiAtICAgIGlm
-ICghKHMtPnJlZ3Nbcy0+cl9jdHJsMCArIGZsLT5jc10gJiBDVFJMX0NFX1NUT1BfQUNUSVZFKSAm
-Jg0KPiA+IC0gICAgICAgIHZhbHVlICYgQ1RSTF9DRV9TVE9QX0FDVElWRSkgew0KPiA+IC0gICAg
-ICAgIHVuc2VsZWN0ID0gdHJ1ZTsNCj4gPiArICAgICAgICAvKiBBIGNoYW5nZSBvZiBDVFJMX0NF
-X1NUT1BfQUNUSVZFIGZyb20gMCB0byAxLCB1bnNlbGVjdHMgdGhlDQo+IENTICovDQo+ID4gKyAg
-ICAgICAgaWYgKCEocy0+cmVnc1tzLT5yX2N0cmwwICsgZmwtPmNzXSAmIENUUkxfQ0VfU1RPUF9B
-Q1RJVkUpICYmDQo+ID4gKyAgICAgICAgICAgIHZhbHVlICYgQ1RSTF9DRV9TVE9QX0FDVElWRSkg
-ew0KPiA+ICsgICAgICAgICAgICB1bnNlbGVjdCA9IHRydWU7DQo+ID4gKyAgICAgICAgfQ0KPiA+
-ICsgICAgfSBlbHNlIHsNCj4gPiArICAgICAgICBpZiAobmV3X21vZGUgIT0gQ1RSTF9VU0VSTU9E
-RSkgew0KPiA+ICsgICAgICAgICAgICB1bnNlbGVjdCA9IHRydWU7DQo+ID4gKyAgICAgICAgfQ0K
-PiA+ICAgICAgIH0NCj4gPg0KPiA+ICAgICAgIHMtPnJlZ3Nbcy0+cl9jdHJsMCArIGZsLT5jc10g
-PSB2YWx1ZTsNCj4gPg0KPiA+IC0gICAgcy0+c25vb3BfaW5kZXggPSB1bnNlbGVjdCA/IFNOT09Q
-X09GRiA6IFNOT09QX1NUQVJUOw0KPiA+IC0NCj4gPiAtICAgIGFzcGVlZF9zbWNfZmxhc2hfZG9f
-c2VsZWN0KGZsLCB1bnNlbGVjdCk7DQo+ID4gKyAgICBpZiAodW5zZWxlY3QgIT0gcy0+dW5zZWxl
-Y3QpIHs+ICsgICAgICAgIHMtPnNub29wX2luZGV4ID0gdW5zZWxlY3QgPw0KPiBTTk9PUF9PRkYg
-OiBTTk9PUF9TVEFSVDsNCj4gPiArICAgICAgICBhc3BlZWRfc21jX2ZsYXNoX2RvX3NlbGVjdChm
-bCwgdW5zZWxlY3QpOw0KPiA+ICsgICAgfQ0KPiA+ICAgfQ0KPiA+DQo+ID4gICBzdGF0aWMgdm9p
-ZCBhc3BlZWRfc21jX3Jlc2V0KERldmljZVN0YXRlICpkKSBAQCAtNzM3LDYgKzc1MCw3IEBADQo+
-ID4gc3RhdGljIHZvaWQgYXNwZWVkX3NtY19yZXNldChEZXZpY2VTdGF0ZSAqZCkNCj4gPg0KPiA+
-ICAgICAgIHMtPnNub29wX2luZGV4ID0gU05PT1BfT0ZGOw0KPiA+ICAgICAgIHMtPnNub29wX2R1
-bW1pZXMgPSAwOw0KPiA+ICsgICAgcy0+dW5zZWxlY3QgPSB0cnVlOw0KPiANCj4gUGxlYXNlIG1v
-dmUgdGhpcyBhc3NpZ25tZW50IGJlbG93IHRoZSAiLyogVW5zZWxlY3QgYWxsIHBlcmlwaGVyYWxz
-ICovIg0KPiBzZWN0aW9uLg0KPiANCj4gDQpUaGFua3MgZm9yIHJldmlldyBhbmQgc3VnZ2VzdGlv
-bi4NCldpbGwgdXBkYXRlIGl0Lg0KDQpUaGFua3MtSmFtaW4NCj4gVGhhbmtzLA0KPiANCj4gQy4N
-Cj4gDQo+IA0KPiANCj4gPiAgIH0NCj4gPg0KPiA+ICAgc3RhdGljIHVpbnQ2NF90IGFzcGVlZF9z
-bWNfcmVhZCh2b2lkICpvcGFxdWUsIGh3YWRkciBhZGRyLCB1bnNpZ25lZA0KPiA+IGludCBzaXpl
-KSBAQCAtMTI2MSwxMiArMTI3NSwxMyBAQCBzdGF0aWMgdm9pZA0KPiA+IGFzcGVlZF9zbWNfcmVh
-bGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBFcnJvciAqKmVycnApDQo+ID4NCj4gPiAgIHN0YXRpYyBj
-b25zdCBWTVN0YXRlRGVzY3JpcHRpb24gdm1zdGF0ZV9hc3BlZWRfc21jID0gew0KPiA+ICAgICAg
-IC5uYW1lID0gImFzcGVlZC5zbWMiLA0KPiA+IC0gICAgLnZlcnNpb25faWQgPSAyLA0KPiA+ICsg
-ICAgLnZlcnNpb25faWQgPSAzLA0KPiA+ICAgICAgIC5taW5pbXVtX3ZlcnNpb25faWQgPSAyLA0K
-PiA+ICAgICAgIC5maWVsZHMgPSAoY29uc3QgVk1TdGF0ZUZpZWxkW10pIHsNCj4gPiAgICAgICAg
-ICAgVk1TVEFURV9VSU5UMzJfQVJSQVkocmVncywgQXNwZWVkU01DU3RhdGUsDQo+IEFTUEVFRF9T
-TUNfUl9NQVgpLA0KPiA+ICAgICAgICAgICBWTVNUQVRFX1VJTlQ4KHNub29wX2luZGV4LCBBc3Bl
-ZWRTTUNTdGF0ZSksDQo+ID4gICAgICAgICAgIFZNU1RBVEVfVUlOVDgoc25vb3BfZHVtbWllcywg
-QXNwZWVkU01DU3RhdGUpLA0KPiA+ICsgICAgICAgIFZNU1RBVEVfQk9PTCh1bnNlbGVjdCwgQXNw
-ZWVkU01DU3RhdGUpLA0KPiA+ICAgICAgICAgICBWTVNUQVRFX0VORF9PRl9MSVNUKCkNCj4gPiAg
-ICAgICB9DQo+ID4gICB9Ow0KPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2h3L3NzaS9hc3BlZWRf
-c21jLmggYi9pbmNsdWRlL2h3L3NzaS9hc3BlZWRfc21jLmgNCj4gPiBpbmRleCAyMzRkY2EzMmIw
-Li4yNWI5NWU3NDA2IDEwMDY0NA0KPiA+IC0tLSBhL2luY2x1ZGUvaHcvc3NpL2FzcGVlZF9zbWMu
-aA0KPiA+ICsrKyBiL2luY2x1ZGUvaHcvc3NpL2FzcGVlZF9zbWMuaA0KPiA+IEBAIC04Miw2ICs4
-Miw3IEBAIHN0cnVjdCBBc3BlZWRTTUNTdGF0ZSB7DQo+ID4NCj4gPiAgICAgICB1aW50OF90IHNu
-b29wX2luZGV4Ow0KPiA+ICAgICAgIHVpbnQ4X3Qgc25vb3BfZHVtbWllczsNCj4gPiArICAgIGJv
-b2wgdW5zZWxlY3Q7DQo+ID4gICB9Ow0KPiA+DQo+ID4gICB0eXBlZGVmIHN0cnVjdCBBc3BlZWRT
-ZWdtZW50cyB7DQoNCg==
+Currently, these test cases are only used for testing fmc_cs0 for AST2400.
+To test others BMC SOCs, introduces a new TestData structure.
+Users can set the spi base address, flash base address, jedesc id and so on
+for different BMC SOCs and flash model testing.
+
+Introduce new helper functions to make the test case more readable.
+
+Set spi base address 0x1E620000, flash_base address 0x20000000
+and jedec id 0x20ba19 for fmc_cs0 with n25q256a flash for AST2400
+SMC model testing.
+
+To pass the TestData into the test case, replace qtest_add_func with
+qtest_add_data_func.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+---
+ tests/qtest/aspeed_smc-test.c | 546 +++++++++++++++++++---------------
+ 1 file changed, 299 insertions(+), 247 deletions(-)
+
+diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
+index ec1fa6ec15..4c62009605 100644
+--- a/tests/qtest/aspeed_smc-test.c
++++ b/tests/qtest/aspeed_smc-test.c
+@@ -43,9 +43,6 @@
+ #define   CTRL_USERMODE        0x3
+ #define SR_WEL BIT(1)
+ 
+-#define ASPEED_FMC_BASE    0x1E620000
+-#define ASPEED_FLASH_BASE  0x20000000
+-
+ /*
+  * Flash commands
+  */
+@@ -65,11 +62,16 @@ enum {
+     ERASE_SECTOR = 0xd8,
+ };
+ 
+-#define FLASH_JEDEC         0x20ba19  /* n25q256a */
+-#define FLASH_SIZE          (32 * 1024 * 1024)
+-
+ #define FLASH_PAGE_SIZE           256
+ 
++typedef struct TestData {
++    QTestState *s;
++    uint64_t spi_base;
++    uint64_t flash_base;
++    uint32_t jedec_id;
++    char *tmp_path;
++} TestData;
++
+ /*
+  * Use an explicit bswap for the values read/wrote to the flash region
+  * as they are BE and the Aspeed CPU is LE.
+@@ -79,275 +81,315 @@ static inline uint32_t make_be32(uint32_t data)
+     return bswap32(data);
+ }
+ 
+-static void spi_conf(uint32_t value)
++static inline void spi_writel(const TestData *data, uint64_t offset,
++                              uint32_t value)
++{
++    qtest_writel(data->s, data->spi_base + offset, value);
++}
++
++static inline uint32_t spi_readl(const TestData *data, uint64_t offset)
++{
++    return qtest_readl(data->s, data->spi_base + offset);
++}
++
++static inline void flash_writeb(const TestData *data, uint64_t offset,
++                                uint8_t value)
++{
++    qtest_writeb(data->s, data->flash_base + offset, value);
++}
++
++static inline void flash_writel(const TestData *data, uint64_t offset,
++                                uint32_t value)
++{
++    qtest_writel(data->s, data->flash_base + offset, value);
++}
++
++static inline uint8_t flash_readb(const TestData *data, uint64_t offset)
+ {
+-    uint32_t conf = readl(ASPEED_FMC_BASE + R_CONF);
++    return qtest_readb(data->s, data->flash_base + offset);
++}
++
++static inline uint32_t flash_readl(const TestData *data, uint64_t offset)
++{
++    return qtest_readl(data->s, data->flash_base + offset);
++}
++
++static void spi_conf(const TestData *data, uint32_t value)
++{
++    uint32_t conf = spi_readl(data, R_CONF);
+ 
+     conf |= value;
+-    writel(ASPEED_FMC_BASE + R_CONF, conf);
++    spi_writel(data, R_CONF, conf);
+ }
+ 
+-static void spi_conf_remove(uint32_t value)
++static void spi_conf_remove(const TestData *data, uint32_t value)
+ {
+-    uint32_t conf = readl(ASPEED_FMC_BASE + R_CONF);
++    uint32_t conf = spi_readl(data, R_CONF);
+ 
+     conf &= ~value;
+-    writel(ASPEED_FMC_BASE + R_CONF, conf);
++    spi_writel(data, R_CONF, conf);
+ }
+ 
+-static void spi_ce_ctrl(uint32_t value)
++static void spi_ce_ctrl(const TestData *data, uint32_t value)
+ {
+-    uint32_t conf = readl(ASPEED_FMC_BASE + R_CE_CTRL);
++    uint32_t conf = spi_readl(data, R_CE_CTRL);
+ 
+     conf |= value;
+-    writel(ASPEED_FMC_BASE + R_CE_CTRL, conf);
++    spi_writel(data, R_CE_CTRL, conf);
+ }
+ 
+-static void spi_ctrl_setmode(uint8_t mode, uint8_t cmd)
++static void spi_ctrl_setmode(const TestData *data, uint8_t mode, uint8_t cmd)
+ {
+-    uint32_t ctrl = readl(ASPEED_FMC_BASE + R_CTRL0);
++    uint32_t ctrl = spi_readl(data, R_CTRL0);
+     ctrl &= ~(CTRL_USERMODE | 0xff << 16);
+     ctrl |= mode | (cmd << 16);
+-    writel(ASPEED_FMC_BASE + R_CTRL0, ctrl);
++    spi_writel(data, R_CTRL0, ctrl);
+ }
+ 
+-static void spi_ctrl_start_user(void)
++static void spi_ctrl_start_user(const TestData *data)
+ {
+-    uint32_t ctrl = readl(ASPEED_FMC_BASE + R_CTRL0);
++    uint32_t ctrl = spi_readl(data, R_CTRL0);
+ 
+     ctrl |= CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
+-    writel(ASPEED_FMC_BASE + R_CTRL0, ctrl);
++    spi_writel(data, R_CTRL0, ctrl);
+ 
+     ctrl &= ~CTRL_CE_STOP_ACTIVE;
+-    writel(ASPEED_FMC_BASE + R_CTRL0, ctrl);
++    spi_writel(data, R_CTRL0, ctrl);
+ }
+ 
+-static void spi_ctrl_stop_user(void)
++static void spi_ctrl_stop_user(const TestData *data)
+ {
+-    uint32_t ctrl = readl(ASPEED_FMC_BASE + R_CTRL0);
++    uint32_t ctrl = spi_readl(data, R_CTRL0);
+ 
+     ctrl |= CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
+-    writel(ASPEED_FMC_BASE + R_CTRL0, ctrl);
++    spi_writel(data, R_CTRL0, ctrl);
+ }
+ 
+-static void flash_reset(void)
++static void flash_reset(const TestData *data)
+ {
+-    spi_conf(CONF_ENABLE_W0);
++    spi_conf(data, CONF_ENABLE_W0);
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, RESET_ENABLE);
+-    writeb(ASPEED_FLASH_BASE, RESET_MEMORY);
+-    writeb(ASPEED_FLASH_BASE, WREN);
+-    writeb(ASPEED_FLASH_BASE, BULK_ERASE);
+-    writeb(ASPEED_FLASH_BASE, WRDI);
+-    spi_ctrl_stop_user();
++    spi_ctrl_start_user(data);
++    flash_writeb(data, 0, RESET_ENABLE);
++    flash_writeb(data, 0, RESET_MEMORY);
++    flash_writeb(data, 0, WREN);
++    flash_writeb(data, 0, BULK_ERASE);
++    flash_writeb(data, 0, WRDI);
++    spi_ctrl_stop_user(data);
+ 
+-    spi_conf_remove(CONF_ENABLE_W0);
++    spi_conf_remove(data, CONF_ENABLE_W0);
+ }
+ 
+-static void test_read_jedec(void)
++static void test_read_jedec(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint32_t jedec = 0x0;
+ 
+-    spi_conf(CONF_ENABLE_W0);
++    spi_conf(test_data, CONF_ENABLE_W0);
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, JEDEC_READ);
+-    jedec |= readb(ASPEED_FLASH_BASE) << 16;
+-    jedec |= readb(ASPEED_FLASH_BASE) << 8;
+-    jedec |= readb(ASPEED_FLASH_BASE);
+-    spi_ctrl_stop_user();
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, JEDEC_READ);
++    jedec |= flash_readb(test_data, 0) << 16;
++    jedec |= flash_readb(test_data, 0) << 8;
++    jedec |= flash_readb(test_data, 0);
++    spi_ctrl_stop_user(test_data);
+ 
+-    flash_reset();
++    flash_reset(test_data);
+ 
+-    g_assert_cmphex(jedec, ==, FLASH_JEDEC);
++    g_assert_cmphex(jedec, ==, test_data->jedec_id);
+ }
+ 
+-static void read_page(uint32_t addr, uint32_t *page)
++static void read_page(const TestData *data, uint32_t addr, uint32_t *page)
+ {
+     int i;
+ 
+-    spi_ctrl_start_user();
++    spi_ctrl_start_user(data);
+ 
+-    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
+-    writeb(ASPEED_FLASH_BASE, READ);
+-    writel(ASPEED_FLASH_BASE, make_be32(addr));
++    flash_writeb(data, 0, EN_4BYTE_ADDR);
++    flash_writeb(data, 0, READ);
++    flash_writel(data, 0, make_be32(addr));
+ 
+     /* Continuous read are supported */
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+-        page[i] = make_be32(readl(ASPEED_FLASH_BASE));
++        page[i] = make_be32(flash_readl(data, 0));
+     }
+-    spi_ctrl_stop_user();
++    spi_ctrl_stop_user(data);
+ }
+ 
+-static void read_page_mem(uint32_t addr, uint32_t *page)
++static void read_page_mem(const TestData *data, uint32_t addr, uint32_t *page)
+ {
+     int i;
+ 
+     /* move out USER mode to use direct reads from the AHB bus */
+-    spi_ctrl_setmode(CTRL_READMODE, READ);
++    spi_ctrl_setmode(data, CTRL_READMODE, READ);
+ 
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+-        page[i] = make_be32(readl(ASPEED_FLASH_BASE + addr + i * 4));
++        page[i] = make_be32(flash_readl(data, addr + i * 4));
+     }
+ }
+ 
+-static void write_page_mem(uint32_t addr, uint32_t write_value)
++static void write_page_mem(const TestData *data, uint32_t addr,
++                           uint32_t write_value)
+ {
+-    spi_ctrl_setmode(CTRL_WRITEMODE, PP);
++    spi_ctrl_setmode(data, CTRL_WRITEMODE, PP);
+ 
+     for (int i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+-        writel(ASPEED_FLASH_BASE + addr + i * 4, write_value);
++        flash_writel(data, addr + i * 4, write_value);
+     }
+ }
+ 
+-static void assert_page_mem(uint32_t addr, uint32_t expected_value)
++static void assert_page_mem(const TestData *data, uint32_t addr,
++                            uint32_t expected_value)
+ {
+     uint32_t page[FLASH_PAGE_SIZE / 4];
+-    read_page_mem(addr, page);
++    read_page_mem(data, addr, page);
+     for (int i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, expected_value);
+     }
+ }
+ 
+-static void test_erase_sector(void)
++static void test_erase_sector(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint32_t some_page_addr = 0x600 * FLASH_PAGE_SIZE;
+     uint32_t page[FLASH_PAGE_SIZE / 4];
+     int i;
+ 
+-    spi_conf(CONF_ENABLE_W0);
++    spi_conf(test_data, CONF_ENABLE_W0);
+ 
+     /*
+      * Previous page should be full of 0xffs after backend is
+      * initialized
+      */
+-    read_page(some_page_addr - FLASH_PAGE_SIZE, page);
++    read_page(test_data, some_page_addr - FLASH_PAGE_SIZE, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, 0xffffffff);
+     }
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
+-    writeb(ASPEED_FLASH_BASE, WREN);
+-    writeb(ASPEED_FLASH_BASE, PP);
+-    writel(ASPEED_FLASH_BASE, make_be32(some_page_addr));
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, EN_4BYTE_ADDR);
++    flash_writeb(test_data, 0, WREN);
++    flash_writeb(test_data, 0, PP);
++    flash_writel(test_data, 0, make_be32(some_page_addr));
+ 
+     /* Fill the page with its own addresses */
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+-        writel(ASPEED_FLASH_BASE, make_be32(some_page_addr + i * 4));
++        flash_writel(test_data, 0, make_be32(some_page_addr + i * 4));
+     }
+-    spi_ctrl_stop_user();
++    spi_ctrl_stop_user(test_data);
+ 
+     /* Check the page is correctly written */
+-    read_page(some_page_addr, page);
++    read_page(test_data, some_page_addr, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, some_page_addr + i * 4);
+     }
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, WREN);
+-    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
+-    writeb(ASPEED_FLASH_BASE, ERASE_SECTOR);
+-    writel(ASPEED_FLASH_BASE, make_be32(some_page_addr));
+-    spi_ctrl_stop_user();
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, WREN);
++    flash_writeb(test_data, 0, EN_4BYTE_ADDR);
++    flash_writeb(test_data, 0, ERASE_SECTOR);
++    flash_writel(test_data, 0, make_be32(some_page_addr));
++    spi_ctrl_stop_user(test_data);
+ 
+     /* Check the page is erased */
+-    read_page(some_page_addr, page);
++    read_page(test_data, some_page_addr, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, 0xffffffff);
+     }
+ 
+-    flash_reset();
++    flash_reset(test_data);
+ }
+ 
+-static void test_erase_all(void)
++static void test_erase_all(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint32_t some_page_addr = 0x15000 * FLASH_PAGE_SIZE;
+     uint32_t page[FLASH_PAGE_SIZE / 4];
+     int i;
+ 
+-    spi_conf(CONF_ENABLE_W0);
++    spi_conf(test_data, CONF_ENABLE_W0);
+ 
+     /*
+      * Previous page should be full of 0xffs after backend is
+      * initialized
+      */
+-    read_page(some_page_addr - FLASH_PAGE_SIZE, page);
++    read_page(test_data, some_page_addr - FLASH_PAGE_SIZE, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, 0xffffffff);
+     }
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
+-    writeb(ASPEED_FLASH_BASE, WREN);
+-    writeb(ASPEED_FLASH_BASE, PP);
+-    writel(ASPEED_FLASH_BASE, make_be32(some_page_addr));
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, EN_4BYTE_ADDR);
++    flash_writeb(test_data, 0, WREN);
++    flash_writeb(test_data, 0, PP);
++    flash_writel(test_data, 0, make_be32(some_page_addr));
+ 
+     /* Fill the page with its own addresses */
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+-        writel(ASPEED_FLASH_BASE, make_be32(some_page_addr + i * 4));
++        flash_writel(test_data, 0, make_be32(some_page_addr + i * 4));
+     }
+-    spi_ctrl_stop_user();
++    spi_ctrl_stop_user(test_data);
+ 
+     /* Check the page is correctly written */
+-    read_page(some_page_addr, page);
++    read_page(test_data, some_page_addr, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, some_page_addr + i * 4);
+     }
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, WREN);
+-    writeb(ASPEED_FLASH_BASE, BULK_ERASE);
+-    spi_ctrl_stop_user();
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, WREN);
++    flash_writeb(test_data, 0, BULK_ERASE);
++    spi_ctrl_stop_user(test_data);
+ 
+     /* Check the page is erased */
+-    read_page(some_page_addr, page);
++    read_page(test_data, some_page_addr, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, 0xffffffff);
+     }
+ 
+-    flash_reset();
++    flash_reset(test_data);
+ }
+ 
+-static void test_write_page(void)
++static void test_write_page(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint32_t my_page_addr = 0x14000 * FLASH_PAGE_SIZE; /* beyond 16MB */
+     uint32_t some_page_addr = 0x15000 * FLASH_PAGE_SIZE;
+     uint32_t page[FLASH_PAGE_SIZE / 4];
+     int i;
+ 
+-    spi_conf(CONF_ENABLE_W0);
++    spi_conf(test_data, CONF_ENABLE_W0);
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
+-    writeb(ASPEED_FLASH_BASE, WREN);
+-    writeb(ASPEED_FLASH_BASE, PP);
+-    writel(ASPEED_FLASH_BASE, make_be32(my_page_addr));
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, EN_4BYTE_ADDR);
++    flash_writeb(test_data, 0, WREN);
++    flash_writeb(test_data, 0, PP);
++    flash_writel(test_data, 0, make_be32(my_page_addr));
+ 
+     /* Fill the page with its own addresses */
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+-        writel(ASPEED_FLASH_BASE, make_be32(my_page_addr + i * 4));
++        flash_writel(test_data, 0, make_be32(my_page_addr + i * 4));
+     }
+-    spi_ctrl_stop_user();
++    spi_ctrl_stop_user(test_data);
+ 
+     /* Check what was written */
+-    read_page(my_page_addr, page);
++    read_page(test_data, my_page_addr, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, my_page_addr + i * 4);
+     }
+ 
+     /* Check some other page. It should be full of 0xff */
+-    read_page(some_page_addr, page);
++    read_page(test_data, some_page_addr, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, 0xffffffff);
+     }
+ 
+-    flash_reset();
++    flash_reset(test_data);
+ }
+ 
+-static void test_read_page_mem(void)
++static void test_read_page_mem(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint32_t my_page_addr = 0x14000 * FLASH_PAGE_SIZE; /* beyond 16MB */
+     uint32_t some_page_addr = 0x15000 * FLASH_PAGE_SIZE;
+     uint32_t page[FLASH_PAGE_SIZE / 4];
+@@ -357,40 +399,41 @@ static void test_read_page_mem(void)
+      * Enable 4BYTE mode for controller. This is should be strapped by
+      * HW for CE0 anyhow.
+      */
+-    spi_ce_ctrl(1 << CRTL_EXTENDED0);
++    spi_ce_ctrl(test_data, 1 << CRTL_EXTENDED0);
+ 
+     /* Enable 4BYTE mode for flash. */
+-    spi_conf(CONF_ENABLE_W0);
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
+-    writeb(ASPEED_FLASH_BASE, WREN);
+-    writeb(ASPEED_FLASH_BASE, PP);
+-    writel(ASPEED_FLASH_BASE, make_be32(my_page_addr));
++    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, EN_4BYTE_ADDR);
++    flash_writeb(test_data, 0, WREN);
++    flash_writeb(test_data, 0, PP);
++    flash_writel(test_data, 0, make_be32(my_page_addr));
+ 
+     /* Fill the page with its own addresses */
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+-        writel(ASPEED_FLASH_BASE, make_be32(my_page_addr + i * 4));
++        flash_writel(test_data, 0, make_be32(my_page_addr + i * 4));
+     }
+-    spi_ctrl_stop_user();
+-    spi_conf_remove(CONF_ENABLE_W0);
++    spi_ctrl_stop_user(test_data);
++    spi_conf_remove(test_data, CONF_ENABLE_W0);
+ 
+     /* Check what was written */
+-    read_page_mem(my_page_addr, page);
++    read_page_mem(test_data, my_page_addr, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, my_page_addr + i * 4);
+     }
+ 
+     /* Check some other page. It should be full of 0xff */
+-    read_page_mem(some_page_addr, page);
++    read_page_mem(test_data, some_page_addr, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, 0xffffffff);
+     }
+ 
+-    flash_reset();
++    flash_reset(test_data);
+ }
+ 
+-static void test_write_page_mem(void)
++static void test_write_page_mem(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint32_t my_page_addr = 0x15000 * FLASH_PAGE_SIZE;
+     uint32_t page[FLASH_PAGE_SIZE / 4];
+     int i;
+@@ -399,150 +442,153 @@ static void test_write_page_mem(void)
+      * Enable 4BYTE mode for controller. This is should be strapped by
+      * HW for CE0 anyhow.
+      */
+-    spi_ce_ctrl(1 << CRTL_EXTENDED0);
++    spi_ce_ctrl(test_data, 1 << CRTL_EXTENDED0);
+ 
+     /* Enable 4BYTE mode for flash. */
+-    spi_conf(CONF_ENABLE_W0);
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
+-    writeb(ASPEED_FLASH_BASE, WREN);
+-    spi_ctrl_stop_user();
++    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, EN_4BYTE_ADDR);
++    flash_writeb(test_data, 0, WREN);
++    spi_ctrl_stop_user(test_data);
+ 
+     /* move out USER mode to use direct writes to the AHB bus */
+-    spi_ctrl_setmode(CTRL_WRITEMODE, PP);
++    spi_ctrl_setmode(test_data, CTRL_WRITEMODE, PP);
+ 
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+-        writel(ASPEED_FLASH_BASE + my_page_addr + i * 4,
++        flash_writel(test_data, my_page_addr + i * 4,
+                make_be32(my_page_addr + i * 4));
+     }
+ 
+     /* Check what was written */
+-    read_page_mem(my_page_addr, page);
++    read_page_mem(test_data, my_page_addr, page);
+     for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
+         g_assert_cmphex(page[i], ==, my_page_addr + i * 4);
+     }
+ 
+-    flash_reset();
++    flash_reset(test_data);
+ }
+ 
+-static void test_read_status_reg(void)
++static void test_read_status_reg(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint8_t r;
+ 
+-    spi_conf(CONF_ENABLE_W0);
++    spi_conf(test_data, CONF_ENABLE_W0);
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, RDSR);
+-    r = readb(ASPEED_FLASH_BASE);
+-    spi_ctrl_stop_user();
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, RDSR);
++    r = flash_readb(test_data, 0);
++    spi_ctrl_stop_user(test_data);
+ 
+     g_assert_cmphex(r & SR_WEL, ==, 0);
+     g_assert(!qtest_qom_get_bool
+-            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
++            (test_data->s, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, WREN);
+-    writeb(ASPEED_FLASH_BASE, RDSR);
+-    r = readb(ASPEED_FLASH_BASE);
+-    spi_ctrl_stop_user();
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, WREN);
++    flash_writeb(test_data, 0, RDSR);
++    r = flash_readb(test_data, 0);
++    spi_ctrl_stop_user(test_data);
+ 
+     g_assert_cmphex(r & SR_WEL, ==, SR_WEL);
+     g_assert(qtest_qom_get_bool
+-            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
++            (test_data->s, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
+ 
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, WRDI);
+-    writeb(ASPEED_FLASH_BASE, RDSR);
+-    r = readb(ASPEED_FLASH_BASE);
+-    spi_ctrl_stop_user();
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, WRDI);
++    flash_writeb(test_data, 0, RDSR);
++    r = flash_readb(test_data, 0);
++    spi_ctrl_stop_user(test_data);
+ 
+     g_assert_cmphex(r & SR_WEL, ==, 0);
+     g_assert(!qtest_qom_get_bool
+-            (global_qtest, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
++            (test_data->s, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
+ 
+-    flash_reset();
++    flash_reset(test_data);
+ }
+ 
+-static void test_status_reg_write_protection(void)
++static void test_status_reg_write_protection(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint8_t r;
+ 
+-    spi_conf(CONF_ENABLE_W0);
++    spi_conf(test_data, CONF_ENABLE_W0);
+ 
+     /* default case: WP# is high and SRWD is low -> status register writable */
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, WREN);
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, WREN);
+     /* test ability to write SRWD */
+-    writeb(ASPEED_FLASH_BASE, WRSR);
+-    writeb(ASPEED_FLASH_BASE, SRWD);
+-    writeb(ASPEED_FLASH_BASE, RDSR);
+-    r = readb(ASPEED_FLASH_BASE);
+-    spi_ctrl_stop_user();
++    flash_writeb(test_data, 0, WRSR);
++    flash_writeb(test_data, 0, SRWD);
++    flash_writeb(test_data, 0, RDSR);
++    r = flash_readb(test_data, 0);
++    spi_ctrl_stop_user(test_data);
+     g_assert_cmphex(r & SRWD, ==, SRWD);
+ 
+     /* WP# high and SRWD high -> status register writable */
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, WREN);
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, WREN);
+     /* test ability to write SRWD */
+-    writeb(ASPEED_FLASH_BASE, WRSR);
+-    writeb(ASPEED_FLASH_BASE, 0);
+-    writeb(ASPEED_FLASH_BASE, RDSR);
+-    r = readb(ASPEED_FLASH_BASE);
+-    spi_ctrl_stop_user();
++    flash_writeb(test_data, 0, WRSR);
++    flash_writeb(test_data, 0, 0);
++    flash_writeb(test_data, 0, RDSR);
++    r = flash_readb(test_data, 0);
++    spi_ctrl_stop_user(test_data);
+     g_assert_cmphex(r & SRWD, ==, 0);
+ 
+     /* WP# low and SRWD low -> status register writable */
+-    qtest_set_irq_in(global_qtest,
++    qtest_set_irq_in(test_data->s,
+                      "/machine/soc/fmc/ssi.0/child[0]", "WP#", 0, 0);
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, WREN);
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0, WREN);
+     /* test ability to write SRWD */
+-    writeb(ASPEED_FLASH_BASE, WRSR);
+-    writeb(ASPEED_FLASH_BASE, SRWD);
+-    writeb(ASPEED_FLASH_BASE, RDSR);
+-    r = readb(ASPEED_FLASH_BASE);
+-    spi_ctrl_stop_user();
++    flash_writeb(test_data, 0, WRSR);
++    flash_writeb(test_data, 0, SRWD);
++    flash_writeb(test_data, 0, RDSR);
++    r = flash_readb(test_data, 0);
++    spi_ctrl_stop_user(test_data);
+     g_assert_cmphex(r & SRWD, ==, SRWD);
+ 
+     /* WP# low and SRWD high -> status register NOT writable */
+-    spi_ctrl_start_user();
+-    writeb(ASPEED_FLASH_BASE, WREN);
++    spi_ctrl_start_user(test_data);
++    flash_writeb(test_data, 0 , WREN);
+     /* test ability to write SRWD */
+-    writeb(ASPEED_FLASH_BASE, WRSR);
+-    writeb(ASPEED_FLASH_BASE, 0);
+-    writeb(ASPEED_FLASH_BASE, RDSR);
+-    r = readb(ASPEED_FLASH_BASE);
+-    spi_ctrl_stop_user();
++    flash_writeb(test_data, 0, WRSR);
++    flash_writeb(test_data, 0, 0);
++    flash_writeb(test_data, 0, RDSR);
++    r = flash_readb(test_data, 0);
++    spi_ctrl_stop_user(test_data);
+     /* write is not successful */
+     g_assert_cmphex(r & SRWD, ==, SRWD);
+ 
+-    qtest_set_irq_in(global_qtest,
++    qtest_set_irq_in(test_data->s,
+                      "/machine/soc/fmc/ssi.0/child[0]", "WP#", 0, 1);
+-    flash_reset();
++    flash_reset(test_data);
+ }
+ 
+-static void test_write_block_protect(void)
++static void test_write_block_protect(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint32_t sector_size = 65536;
+     uint32_t n_sectors = 512;
+ 
+-    spi_ce_ctrl(1 << CRTL_EXTENDED0);
+-    spi_conf(CONF_ENABLE_W0);
++    spi_ce_ctrl(test_data, 1 << CRTL_EXTENDED0);
++    spi_conf(test_data, CONF_ENABLE_W0);
+ 
+     uint32_t bp_bits = 0b0;
+ 
+     for (int i = 0; i < 16; i++) {
+         bp_bits = ((i & 0b1000) << 3) | ((i & 0b0111) << 2);
+ 
+-        spi_ctrl_start_user();
+-        writeb(ASPEED_FLASH_BASE, WREN);
+-        writeb(ASPEED_FLASH_BASE, BULK_ERASE);
+-        writeb(ASPEED_FLASH_BASE, WREN);
+-        writeb(ASPEED_FLASH_BASE, WRSR);
+-        writeb(ASPEED_FLASH_BASE, bp_bits);
+-        writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
+-        writeb(ASPEED_FLASH_BASE, WREN);
+-        spi_ctrl_stop_user();
++        spi_ctrl_start_user(test_data);
++        flash_writeb(test_data, 0, WREN);
++        flash_writeb(test_data, 0, BULK_ERASE);
++        flash_writeb(test_data, 0, WREN);
++        flash_writeb(test_data, 0, WRSR);
++        flash_writeb(test_data, 0, bp_bits);
++        flash_writeb(test_data, 0, EN_4BYTE_ADDR);
++        flash_writeb(test_data, 0, WREN);
++        spi_ctrl_stop_user(test_data);
+ 
+         uint32_t num_protected_sectors = i ? MIN(1 << (i - 1), n_sectors) : 0;
+         uint32_t protection_start = n_sectors - num_protected_sectors;
+@@ -551,27 +597,28 @@ static void test_write_block_protect(void)
+         for (int sector = 0; sector < n_sectors; sector++) {
+             uint32_t addr = sector * sector_size;
+ 
+-            assert_page_mem(addr, 0xffffffff);
+-            write_page_mem(addr, make_be32(0xabcdef12));
++            assert_page_mem(test_data, addr, 0xffffffff);
++            write_page_mem(test_data, addr, make_be32(0xabcdef12));
+ 
+             uint32_t expected_value = protection_start <= sector
+                                       && sector < protection_end
+                                       ? 0xffffffff : 0xabcdef12;
+ 
+-            assert_page_mem(addr, expected_value);
++            assert_page_mem(test_data, addr, expected_value);
+         }
+     }
+ 
+-    flash_reset();
++    flash_reset(test_data);
+ }
+ 
+-static void test_write_block_protect_bottom_bit(void)
++static void test_write_block_protect_bottom_bit(const void *data)
+ {
++    const TestData *test_data = (const TestData *)data;
+     uint32_t sector_size = 65536;
+     uint32_t n_sectors = 512;
+ 
+-    spi_ce_ctrl(1 << CRTL_EXTENDED0);
+-    spi_conf(CONF_ENABLE_W0);
++    spi_ce_ctrl(test_data, 1 << CRTL_EXTENDED0);
++    spi_conf(test_data, CONF_ENABLE_W0);
+ 
+     /* top bottom bit is enabled */
+     uint32_t bp_bits = 0b00100 << 3;
+@@ -579,15 +626,15 @@ static void test_write_block_protect_bottom_bit(void)
+     for (int i = 0; i < 16; i++) {
+         bp_bits = (((i & 0b1000) | 0b0100) << 3) | ((i & 0b0111) << 2);
+ 
+-        spi_ctrl_start_user();
+-        writeb(ASPEED_FLASH_BASE, WREN);
+-        writeb(ASPEED_FLASH_BASE, BULK_ERASE);
+-        writeb(ASPEED_FLASH_BASE, WREN);
+-        writeb(ASPEED_FLASH_BASE, WRSR);
+-        writeb(ASPEED_FLASH_BASE, bp_bits);
+-        writeb(ASPEED_FLASH_BASE, EN_4BYTE_ADDR);
+-        writeb(ASPEED_FLASH_BASE, WREN);
+-        spi_ctrl_stop_user();
++        spi_ctrl_start_user(test_data);
++        flash_writeb(test_data, 0, WREN);
++        flash_writeb(test_data, 0, BULK_ERASE);
++        flash_writeb(test_data, 0, WREN);
++        flash_writeb(test_data, 0, WRSR);
++        flash_writeb(test_data, 0, bp_bits);
++        flash_writeb(test_data, 0, EN_4BYTE_ADDR);
++        flash_writeb(test_data, 0, WREN);
++        spi_ctrl_stop_user(test_data);
+ 
+         uint32_t num_protected_sectors = i ? MIN(1 << (i - 1), n_sectors) : 0;
+         uint32_t protection_start = 0;
+@@ -596,64 +643,69 @@ static void test_write_block_protect_bottom_bit(void)
+         for (int sector = 0; sector < n_sectors; sector++) {
+             uint32_t addr = sector * sector_size;
+ 
+-            assert_page_mem(addr, 0xffffffff);
+-            write_page_mem(addr, make_be32(0xabcdef12));
++            assert_page_mem(test_data, addr, 0xffffffff);
++            write_page_mem(test_data, addr, make_be32(0xabcdef12));
+ 
+             uint32_t expected_value = protection_start <= sector
+                                       && sector < protection_end
+                                       ? 0xffffffff : 0xabcdef12;
+ 
+-            assert_page_mem(addr, expected_value);
++            assert_page_mem(test_data, addr, expected_value);
+         }
+     }
+ 
+-    flash_reset();
++    flash_reset(test_data);
+ }
+ 
+-static int test_palmetto_bmc(void)
++static void test_palmetto_bmc(TestData *data)
+ {
+-    g_autofree char *tmp_path = NULL;
+     int ret;
+     int fd;
+ 
+-    fd = g_file_open_tmp("qtest.m25p80.XXXXXX", &tmp_path, NULL);
++    fd = g_file_open_tmp("qtest.m25p80.n25q256a.XXXXXX", &data->tmp_path, NULL);
+     g_assert(fd >= 0);
+-    ret = ftruncate(fd, FLASH_SIZE);
++    ret = ftruncate(fd, 32 * 1024 * 1024);
+     g_assert(ret == 0);
+     close(fd);
+ 
+-    global_qtest = qtest_initf("-m 256 -machine palmetto-bmc "
+-                               "-drive file=%s,format=raw,if=mtd",
+-                               tmp_path);
+-
+-    qtest_add_func("/ast2400/smc/read_jedec", test_read_jedec);
+-    qtest_add_func("/ast2400/smc/erase_sector", test_erase_sector);
+-    qtest_add_func("/ast2400/smc/erase_all",  test_erase_all);
+-    qtest_add_func("/ast2400/smc/write_page", test_write_page);
+-    qtest_add_func("/ast2400/smc/read_page_mem", test_read_page_mem);
+-    qtest_add_func("/ast2400/smc/write_page_mem", test_write_page_mem);
+-    qtest_add_func("/ast2400/smc/read_status_reg", test_read_status_reg);
+-    qtest_add_func("/ast2400/smc/status_reg_write_protection",
+-                   test_status_reg_write_protection);
+-    qtest_add_func("/ast2400/smc/write_block_protect",
+-                   test_write_block_protect);
+-    qtest_add_func("/ast2400/smc/write_block_protect_bottom_bit",
+-                   test_write_block_protect_bottom_bit);
+-
+-    flash_reset();
+-    ret = g_test_run();
+-    qtest_quit(global_qtest);
+-    unlink(tmp_path);
+-
+-    return ret;
++    data->s = qtest_initf("-m 256 -machine palmetto-bmc "
++                          "-drive file=%s,format=raw,if=mtd",
++                          data->tmp_path);
++
++    /* fmc cs0 with n25q256a flash */
++    data->flash_base = 0x20000000;
++    data->spi_base = 0x1E620000;
++    data->jedec_id = 0x20ba19;
++
++    qtest_add_data_func("/ast2400/smc/read_jedec", data, test_read_jedec);
++    qtest_add_data_func("/ast2400/smc/erase_sector", data, test_erase_sector);
++    qtest_add_data_func("/ast2400/smc/erase_all",  data, test_erase_all);
++    qtest_add_data_func("/ast2400/smc/write_page", data, test_write_page);
++    qtest_add_data_func("/ast2400/smc/read_page_mem",
++                        data, test_read_page_mem);
++    qtest_add_data_func("/ast2400/smc/write_page_mem",
++                        data, test_write_page_mem);
++    qtest_add_data_func("/ast2400/smc/read_status_reg",
++                        data, test_read_status_reg);
++    qtest_add_data_func("/ast2400/smc/status_reg_write_protection",
++                        data, test_status_reg_write_protection);
++    qtest_add_data_func("/ast2400/smc/write_block_protect",
++                        data, test_write_block_protect);
++    qtest_add_data_func("/ast2400/smc/write_block_protect_bottom_bit",
++                        data, test_write_block_protect_bottom_bit);
+ }
+ 
+ int main(int argc, char **argv)
+ {
++    TestData palmetto_data;
+     int ret;
+ 
+     g_test_init(&argc, &argv, NULL);
+-    ret = test_palmetto_bmc();
+ 
++    test_palmetto_bmc(&palmetto_data);
++    ret = g_test_run();
++
++    qtest_quit(palmetto_data.s);
++    unlink(palmetto_data.tmp_path);
+     return ret;
+ }
+-- 
+2.34.1
+

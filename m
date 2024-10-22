@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a915a48aesm326490066b.221.2024.10.22.03.56.26
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66a6a6efsm3001448a12.53.2024.10.22.04.03.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Oct 2024 03:56:32 -0700 (PDT)
+        Tue, 22 Oct 2024 04:03:54 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 394875FC3D;
+	by draig.lan (Postfix) with ESMTP id 0BE3F5FC19;
 	Tue, 22 Oct 2024 11:56:16 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -35,77 +35,35 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 18/20] meson: build contrib/plugins with meson
-Date: Tue, 22 Oct 2024 11:56:12 +0100
-Message-Id: <20241022105614.839199-19-alex.bennee@linaro.org>
+Subject: [PATCH v2 16/20] MAINTAINERS: mention my plugins/next tree
+Date: Tue, 22 Oct 2024 11:56:10 +0100
+Message-Id: <20241022105614.839199-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241022105614.839199-1-alex.bennee@linaro.org>
 References: <20241022105614.839199-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: UV1lUJc5iML8
+X-TUID: gmRrrQlDrgL5
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Make it easier to find where plugin patches are being staged.
 
-Tried to unify this meson.build with tests/tcg/plugins/meson.build but
-the resulting modules are not output in the right directory.
-
-Originally proposed by Anton Kochkov, thank you!
-
-Solves: https://gitlab.com/qemu-project/qemu/-/issues/1710
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240925204845.390689-2-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- meson.build                 |  4 ++++
- contrib/plugins/meson.build | 23 +++++++++++++++++++++++
- 2 files changed, 27 insertions(+)
- create mode 100644 contrib/plugins/meson.build
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/meson.build b/meson.build
-index bdd67a2d6d..3ea03c451b 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3678,6 +3678,10 @@ subdir('accel')
- subdir('plugins')
- subdir('ebpf')
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 81396c9f15..02b8b2dfd6 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3702,6 +3702,7 @@ F: include/tcg/
  
-+if 'CONFIG_TCG' in config_all_accel
-+  subdir('contrib/plugins')
-+endif
-+
- common_user_inc = []
- 
- subdir('common-user')
-diff --git a/contrib/plugins/meson.build b/contrib/plugins/meson.build
-new file mode 100644
-index 0000000000..a0e026d25e
---- /dev/null
-+++ b/contrib/plugins/meson.build
-@@ -0,0 +1,23 @@
-+t = []
-+if get_option('plugins')
-+  foreach i : ['cache', 'drcov', 'execlog', 'hotblocks', 'hotpages', 'howvec',
-+               'hwprofile', 'ips', 'lockstep', 'stoptrigger']
-+    if host_os == 'windows'
-+      t += shared_module(i, files(i + '.c') + 'win32_linker.c',
-+                        include_directories: '../../include/qemu',
-+                        link_depends: [win32_qemu_plugin_api_lib],
-+                        link_args: ['-Lplugins', '-lqemu_plugin_api'],
-+                        dependencies: glib)
-+
-+    else
-+      t += shared_module(i, files(i + '.c'),
-+                        include_directories: '../../include/qemu',
-+                        dependencies: glib)
-+    endif
-+  endforeach
-+endif
-+if t.length() > 0
-+  alias_target('contrib-plugins', t)
-+else
-+  run_target('contrib-plugins', command: find_program('true'))
-+endif
+ TCG Plugins
+ M: Alex Bennée <alex.bennee@linaro.org>
++T: git https://gitlab.com/stsquad/qemu plugins/next
+ R: Alexandre Iooss <erdnaxe@crans.org>
+ R: Mahmoud Mandour <ma.mandourr@gmail.com>
+ R: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 -- 
 2.39.5

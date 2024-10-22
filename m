@@ -1,331 +1,195 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp3358026njb;
-        Tue, 22 Oct 2024 13:35:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCV4ZW3EdnucCLIPB1JyVcgS0f4yMAdDAvuBBhoEc7eZIJ9rbDQp4LLrWx9Un7CrLisRSUTE9/YOpgMHEQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IExqyf7sQf5ISIOLmW19gD39u1tu9HYA/7wIj3MPQf7RveTfXoPXpNSeRVhf1+sQS8n52C0
-X-Received: by 2002:a05:622a:420a:b0:460:8be6:9b00 with SMTP id d75a77b69052e-46114745afcmr2941061cf.50.1729629318358;
-        Tue, 22 Oct 2024 13:35:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729629318; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp3358528njb;
+        Tue, 22 Oct 2024 13:36:22 -0700 (PDT)
+X-Received: by 2002:a05:6830:668b:b0:718:12b5:1ed3 with SMTP id 46e09a7af769-7184b3235b4mr685071a34.23.1729629382530;
+        Tue, 22 Oct 2024 13:36:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729629382; cv=none;
         d=google.com; s=arc-20240605;
-        b=a/EMWc3E7deXds0PI3jQHGjKIcow9/Nyv6XyKwoYD98gHJx+XXPnVXdpc4PzzuZT/N
-         dxWdCl5RWHmNhxU9qnv7hoTeOASV1fUgvuTr557U7DLT5ZbtJlm8Tkx6E2v4MOGYJwsX
-         fTq87IZ8//Pr06zJJ5qtOfGkNcHTv3pGs+iCDE448ur9AoLGNP+AGBUw005CVK12VfEC
-         yKAymIrHcbqOsYMko+bWTpSGRBk+tnqimFfPfIjgDUWCmvHfv9XayyU6upwhdiiMDtNQ
-         gSoSK/iNMaGdGmU8KvLol9q2XFzGl2CPM2QH1rpa2fQJ+eUmXWF0uL/wvsLsdhuDWpzJ
-         4eWA==
+        b=VsYxjGjBReEz+LdeV1GqU5w6wNtgBb0qN1cJy/YXNzWYpceYVIAo7ubQc+iNbjAN09
+         iCnZ7RpvSLtlDxAYbIq8zOV/Ic9a/PYoQmf0mv5hEG7b/2k4Lhj201+ciDk1CDBvGtb4
+         FuTNKS7yl7v5tde+g9PLTI7lkEoxLU6rKYoIJqb7+SeWorv1own7j6LOzqA0wHtN27kE
+         fim/3Ce9WFYHCLlbNJpaxtyaBD4ZSMC2VIIB8VAl3TSlgU0D5AcpDQOBTI/gZIJYWZm/
+         YYTI6PrXU86yqrku7PFoqgb5A3KwwTaR1a5S7slO+uLuNrg93YJVupBIAOPo8emviaST
+         9Wmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=mgFYeTwOWX3Ulkk9gyvLAYsCBy7vUt9OB6nUN4He6ho=;
-        fh=21d38VI4RMWqwGl2Tk7V31keeMckXjExBvjIpUIy/E8=;
-        b=g6yeI/ybQTNgZnVeDP6hpX8oiOEG+z6i1bXoAwRLUF0JpN/fK393a7jEcQlXcatAV2
-         RbSnJpSgFD7BPx1/W7/llkezb591tSDMKx4/4Zqs1Ic5NvBGgAAhR25uI9ba9Vw+QkJ1
-         NBiGZ/rXm26RMmOi29Z3Hi6/Rr8zeG+VVXq75Zb7N0NsSdjV9RcUzEw7ZSs5i23G1/fO
-         DDhk944OWCRCGsf9O/smPBFZkZK98747AbFRHKr+9nSaijDVc1lp1an0v9nUT6GpDrmo
-         OC6sv8jSQpPTHHGP/KFqwkgQXfAfo29c3ibeul4AMWSjWXW1JWH7ybWS7UnCNtbbtbhD
-         3JIg==;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=pWCjqM/ZGrYgSGYtF/2fhacKTSpeH+nFNO6u0QKRQPs=;
+        fh=np0Gm4YEgg1jmyRAZ7aAjLYx131aU2TiPz931c1Xp7k=;
+        b=hM9ceQfKO8t8G4bJb6JCsizMDw5x8r53Rqt8WGrmdvbKrpGRwjrphLgcrc0wI9/0ME
+         CDWotPNJzQp9EleDtVwdPwW+DKQphAWd01LowZl1dH/q4HIe3Xcf7Y6HqTZ4rkCdcDXY
+         zE0kI1d2Km4GnbU9ZRx9vF6lGRYfQf0IIrmHGTubZeqUp1vqc3wPde5Xx+fFoNZzF/7n
+         N0PvW4p5BvhHiWt57tO+u5u6NJ83GoyJaPGHeSYHcEa+u53vR8cU8LWRSwhzPh8Z1A+K
+         BSraGsB722nZP+S6kpK0BY4tI+4zWcUj5B+FRIZq2VMeZsBzx/ezqeXMsfpwdfUTYQ+e
+         5/AA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b=FKTUyUU5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460d3da5fcbsi80276921cf.745.2024.10.22.13.35.18
+       dkim=pass header.i=@linaro.org header.s=google header.b=BSIedooh;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 46e09a7af769-7182ec44c87sor1984239a34.17.2024.10.22.13.36.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 13:35:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 22 Oct 2024 13:36:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b=FKTUyUU5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t3Lao-00080s-Ng; Tue, 22 Oct 2024 16:35:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <castet.matthieu@free.fr>)
- id 1t3Lag-0007qr-RX; Tue, 22 Oct 2024 16:34:54 -0400
-Received: from smtp5-g21.free.fr ([2a01:e0c:1:1599::14])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <castet.matthieu@free.fr>)
- id 1t3Lae-0007vr-TE; Tue, 22 Oct 2024 16:34:54 -0400
-Received: from debtag.home (unknown
- [IPv6:2a01:cb00:13da:d200:7cf5:aa34:e526:681b])
- (Authenticated sender: castet.matthieu@free.fr)
- by smtp5-g21.free.fr (Postfix) with ESMTPSA id B3C8960129;
- Tue, 22 Oct 2024 22:34:45 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
- s=smtp-20201208; t=1729629290;
- bh=Y1XczkptPUaL5JqERs0e5MtTVPI+G3JTY7wWyUZHLys=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=FKTUyUU5MaO7eNWsUGyRT6W82aduS0lwe3+72YeXMJhpwGBrQr/eFGSRZM7ZN0Sql
- +1TDfbD2lN2F/o2DsEn64iI7Jtlnix7iPLh7xj+hwINdqK197is35qMmAADj1H+WXG
- BO/iqQLtu0+lU7ASUvtwNaH+qgu5978TRBZA9XPuI5Ff3fLSGWBZkcdUZvBvq3vUdq
- z2Lti9BiCr0YUeP5llx3ZiQBSZzLUV5oAIflt+UnPY7ESSBT2SDNKHJwyeB3YeNX+N
- 2X5nxbRXCYUasfq+qHwNUE/poT8Ak2LmvYD6ExXeTeq2dSB9GIZ+tB9SX4dNTmv5Zu
- oG4KiiAGdifgQ==
-From: Matthieu Castet <castet.matthieu@free.fr>
-To: qemu-devel@nongnu.org
-Cc: Matthieu Castet <castet.matthieu@free.fr>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM cores)
-Subject: [PATCH 1/1] target/arm: Add cortex-m0+ support
-Date: Tue, 22 Oct 2024 22:34:35 +0200
-Message-Id: <20241022203435.181452-2-castet.matthieu@free.fr>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241022203435.181452-1-castet.matthieu@free.fr>
-References: <20241022203435.181452-1-castet.matthieu@free.fr>
+       dkim=pass header.i=@linaro.org header.s=google header.b=BSIedooh;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1729629382; x=1730234182; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=pWCjqM/ZGrYgSGYtF/2fhacKTSpeH+nFNO6u0QKRQPs=;
+        b=BSIedoohes6703J2t8+vEG7BwPXeSVYPvqeUMvzWSs1P2pkDML3QourvMakJTsV11M
+         w3cReJGfh68FCuxvO1IQG6KKg04ke3zLGypq6ugbRtvBztu/7V6voiGLFMxusJ1iuori
+         DRwFb/hDGPJxMZ6JV6339mZmh0M1/AQyGR7JOLFLJaCKxW+4CBThVb5Ay3V8s7OXPY87
+         C6R6vqqz/CG0AGbg3YAJvcrz9p4CYqcF46orkCfX+1lm7KEvwnZdlUksKATKCIeZ51CF
+         p//JGf4NUGWwKCAAUOEJ4salKjxud85x34eBLE2rLwcmfsSMRvONncoT3EkC86D1AOOR
+         B/sQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729629382; x=1730234182;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=pWCjqM/ZGrYgSGYtF/2fhacKTSpeH+nFNO6u0QKRQPs=;
+        b=GPD2qqBuBbpUsO3kR++cfPKNNmDbrGzEVZMzD5pnEYLxg8eOgNIjfD2seO9IstOX6C
+         ZNNw6ijU3iguDPLJIS6+0Fmvc67U5ilTOlaYTzDiFeGuZD6ZLJ6ZMGr406We/ptJ2ayE
+         lUu0PCUDnAnrL643rSFRQkbIOpqBHLDDUS9Otlx+UZ/3+7VV7C0GSnEIdErkD1HsQ84Y
+         uMoOIcFUV7yOrCHkxRvmwu/9WSfTXA39YKa4jOsb41t/eP12vtCa/t2zbDQXIeawSkDk
+         Nn0U1YZ++LbnAbUQgQYp2byisdAyxvSztGWQr0H5/sFz/E34C5BryZh4bdjxG/ZQTHF0
+         /3XQ==
+X-Gm-Message-State: AOJu0YyiVCrdyw8SrSqmd0UC+OTfyvNz5y5+NZyPA6TAIkXrrxWM+Wj6
+	Ea8XBjSuW8lXeRTwemxRS+N2jC9JmfvJR2my4oNK03DXW5uPQWZMyW3bqkdAoZOQgLw2TVPtZG0
+	ENcat/BAP
+X-Google-Smtp-Source: AGHT+IFOV2tqy6lFuMgVduTERwsqrRtotWYLgFoAjiv7Y0ywFSpgU/BHCZTMaDagLLfJEs3P77nWEQ==
+X-Received: by 2002:a05:6870:a990:b0:288:b220:a57e with SMTP id 586e51a60fabf-28ccb68fa1cmr526849fac.40.1729629382058;
+        Tue, 22 Oct 2024 13:36:22 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7eaeab1e5cdsm5499718a12.21.2024.10.22.13.36.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 22 Oct 2024 13:36:21 -0700 (PDT)
+Message-ID: <6b18238b-f9c3-4046-964f-de16dc30d26e@linaro.org>
+Date: Tue, 22 Oct 2024 13:36:20 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a01:e0c:1:1599::14;
- envelope-from=castet.matthieu@free.fr; helo=smtp5-g21.free.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KKIly59nhB8F
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 07/20] tests/tcg/x86_64: Add cross-modifying code test
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Beraldo Leal <bleal@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ devel@lists.libvirt.org, Cleber Rosa <crosa@redhat.com>,
+ kvm@vger.kernel.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Riku Voipio <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>
+References: <20241022105614.839199-1-alex.bennee@linaro.org>
+ <20241022105614.839199-8-alex.bennee@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20241022105614.839199-8-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: POZM2NQ1O6cF
 
-Signed-off-by: Matthieu Castet<castet.matthieu@free.fr>
----
- hw/intc/armv7m_nvic.c    | 38 +++++++++++++++++++++++++++++++++-----
- target/arm/cpu.c         |  4 ++--
- target/arm/ptw.c         | 23 +++++++++++++++++++----
- target/arm/tcg/cpu-v7m.c | 21 ++++++++++++++++++++-
- 4 files changed, 74 insertions(+), 12 deletions(-)
-
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 98f3cf59bc..ed084e9db3 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -1386,7 +1386,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
-         }
-         return (cpu->env.pmsav7.drbar[region] & ~0x1f) | (region & 0xf);
-     }
--    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
-+    case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */
-     case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
-     case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
-     case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
-@@ -1876,6 +1876,14 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-             return;
-         }
- 
-+        if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
-+                if (offset != 0xd9c)
-+                        goto bad_offset;
-+
-+                /* do not support size less than 256 */
-+                value &= ~0xe0;
-+        }
-+
-         if (value & (1 << 4)) {
-             /* VALID bit means use the region number specified in this
-              * value and also update MPU_RNR.REGION with that value.
-@@ -1900,12 +1908,13 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-         tlb_flush(CPU(cpu));
-         break;
-     }
--    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
--    case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
--    case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
--    case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
-+    case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */
-+    case 0xda8: /* MPU_RASR_A1 (v6M/v7M), MPU_RLAR_A1 (v8M) */
-+    case 0xdb0: /* MPU_RASR_A2 (v6M/v7M), MPU_RLAR_A2 (v8M) */
-+    case 0xdb8: /* MPU_RASR_A3 (v6M/v7M), MPU_RLAR_A3 (v8M) */
-     {
-         int region = cpu->env.pmsav7.rnr[attrs.secure];
-+        int rsize;
- 
-         if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {
-             /* PMSAv8M handling of the aliases is different from v7M:
-@@ -1926,6 +1935,25 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-             return;
-         }
- 
-+        rsize = extract32(value, 1, 5);
-+        if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
-+            if (offset != 0xda0)
-+                goto bad_offset;
-+            /* for armv6-m rsize >= 7 (min 256) */
-+            if (rsize < 7) {
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                        "MPU region size too small %d\n", rsize);
-+                return;
-+            }
-+        }
-+
-+        /* for armv7-m rsize >= 4 (min 32) */
-+        if (rsize < 4) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                    "MPU region size too small %d\n", rsize);
-+            return;
-+        }
-+
-         if (region >= cpu->pmsav7_dregion) {
-             return;
-         }
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 1320fd8c8f..875e3aab69 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -508,7 +508,7 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
-                            sizeof(*env->pmsav8.rlar[M_REG_S])
-                            * cpu->pmsav7_dregion);
-                 }
--            } else if (arm_feature(env, ARM_FEATURE_V7)) {
-+            } else if (arm_feature(env, ARM_FEATURE_M)) {
-                 memset(env->pmsav7.drbar, 0,
-                        sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
-                 memset(env->pmsav7.drsr, 0,
-@@ -2454,7 +2454,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
- 
-     if (arm_feature(env, ARM_FEATURE_PMSA) &&
--        arm_feature(env, ARM_FEATURE_V7)) {
-+        arm_feature(env, ARM_FEATURE_M)) {
-         uint32_t nr = cpu->pmsav7_dregion;
- 
-         if (nr > 0xff) {
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index dd40268397..fa771907e3 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -2383,6 +2383,13 @@ static bool pmsav7_use_background_region(ARMCPU *cpu, ARMMMUIdx mmu_idx,
-     return regime_sctlr(env, mmu_idx) & SCTLR_BR;
- }
- 
-+/* armv6m PMSAv6 is mostly compatible with PMSAv7,
-+ * main difference :
-+ * - min region size is 256 instead of 32
-+ * - TEX can be only 0 (Tex not used by qemu)
-+ * - no alias register
-+ * - HardFault instead of MemManage
-+ */
- static bool get_phys_addr_pmsav7(CPUARMState *env,
-                                  S1Translate *ptw,
-                                  uint32_t address,
-@@ -2423,11 +2430,19 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
-                 continue;
-             }
- 
--            if (!rsize) {
-+            /* Issue warning for invalid values
-+             * for armv7-m rsize >= 4 (min 32)
-+             * for armv6-m rsize >= 7 (min 256)
-+             */
-+            if (!rsize ||
-+                (arm_feature(env, ARM_FEATURE_M) && (
-+                       rsize < 7 ||
-+                       (rsize < 4 && !arm_feature(env, ARM_FEATURE_V7))))) {
-                 qemu_log_mask(LOG_GUEST_ERROR,
--                              "DRSR[%d]: Rsize field cannot be 0\n", n);
-+                              "DRSR[%d]: Rsize field cannot be %d\n", n, rsize);
-                 continue;
-             }
-+
-             rsize++;
-             rmask = (1ull << rsize) - 1;
- 
-@@ -3515,8 +3530,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
-             /* PMSAv8 */
-             ret = get_phys_addr_pmsav8(env, ptw, address, access_type,
-                                        result, fi);
--        } else if (arm_feature(env, ARM_FEATURE_V7)) {
--            /* PMSAv7 */
-+        } else if (arm_feature(env, ARM_FEATURE_V7) || arm_feature(env, ARM_FEATURE_M)) {
-+            /* PMSAv7 or PMSAv6 */
-             ret = get_phys_addr_pmsav7(env, ptw, address, access_type,
-                                        result, fi);
-         } else {
-diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-index 58e54578d6..01bc5d4375 100644
---- a/target/arm/tcg/cpu-v7m.c
-+++ b/target/arm/tcg/cpu-v7m.c
-@@ -76,6 +76,20 @@ static void cortex_m0_initfn(Object *obj)
-     cpu->isar.id_isar6 = 0x00000000;
- }
- 
-+static void cortex_m0p_initfn(Object *obj)
-+{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    /* cortex-m0p is a cortex-m0 with
-+     * vtor and mpu extension
-+     */
-+    cortex_m0_initfn(obj);
-+
-+    cpu->midr = 0x410cc601;
-+    cpu->pmsav7_dregion = 8;
-+}
-+
-+
- static void cortex_m3_initfn(Object *obj)
- {
-     ARMCPU *cpu = ARM_CPU(obj);
-@@ -111,6 +125,7 @@ static void cortex_m4_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-     cpu->midr = 0x410fc240; /* r0p0 */
-     cpu->pmsav7_dregion = 8;
-+    /* VFPv4-SP */
-     cpu->isar.mvfr0 = 0x10110021;
-     cpu->isar.mvfr1 = 0x11000011;
-     cpu->isar.mvfr2 = 0x00000000;
-@@ -141,6 +156,7 @@ static void cortex_m7_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-     cpu->midr = 0x411fc272; /* r1p2 */
-     cpu->pmsav7_dregion = 8;
-+    /* VFPv5 DP */
-     cpu->isar.mvfr0 = 0x10110221;
-     cpu->isar.mvfr1 = 0x12000011;
-     cpu->isar.mvfr2 = 0x00000040;
-@@ -173,6 +189,7 @@ static void cortex_m33_initfn(Object *obj)
-     cpu->midr = 0x410fd213; /* r0p3 */
-     cpu->pmsav7_dregion = 16;
-     cpu->sau_sregion = 8;
-+    /* VFPv5 DP */
-     cpu->isar.mvfr0 = 0x10110021;
-     cpu->isar.mvfr1 = 0x11000011;
-     cpu->isar.mvfr2 = 0x00000040;
-@@ -209,7 +226,7 @@ static void cortex_m55_initfn(Object *obj)
-     cpu->revidr = 0;
-     cpu->pmsav7_dregion = 16;
-     cpu->sau_sregion = 8;
--    /* These are the MVFR* values for the FPU + full MVE configuration */
-+    /* These are the MVFR* values for the FPv5-D16-M + full MVE configuration */
-     cpu->isar.mvfr0 = 0x10110221;
-     cpu->isar.mvfr1 = 0x12100211;
-     cpu->isar.mvfr2 = 0x00000040;
-@@ -267,6 +284,8 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
- static const ARMCPUInfo arm_v7m_cpus[] = {
-     { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
-                              .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m0p",  .initfn = cortex_m0p_initfn,
-+                             .class_init = arm_v7m_class_init },
-     { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
-                              .class_init = arm_v7m_class_init },
-     { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
--- 
-2.39.5
-
+T24gMTAvMjIvMjQgMDM6NTYsIEFsZXggQmVubsOpZSB3cm90ZToNCj4gRnJvbTogSWx5YSBM
+ZW9zaGtldmljaCA8aWlpQGxpbnV4LmlibS5jb20+DQo+IA0KPiBjb21taXQgZjAyNTY5MmM5
+OTJjICgiYWNjZWwvdGNnOiBDbGVhciBQQUdFX1dSSVRFIGJlZm9yZSB0cmFuc2xhdGlvbiIp
+DQo+IGZpeGVkIGNyb3NzLW1vZGlmeWluZyBjb2RlIGhhbmRsaW5nLCBidXQgZGlkIG5vdCBh
+ZGQgYSB0ZXN0LiBUaGUNCj4gY2hhbmdlZCBjb2RlIHdhcyBmdXJ0aGVyIGltcHJvdmVkIHJl
+Y2VudGx5IFsxXSwgYW5kIEkgd2FzIG5vdCBzdXJlDQo+IHdoZXRoZXIgdGhlc2UgbW9kaWZp
+Y2F0aW9ucyB3ZXJlIHNhZmUgKHNwb2lsZXI6IHRoZXkgd2VyZSBmaW5lKS4NCj4gDQo+IEFk
+ZCBhIHRlc3QgdG8gbWFrZSBzdXJlIHRoZXJlIGFyZSBubyByZWdyZXNzaW9ucy4NCj4gDQo+
+IFsxXSBodHRwczovL2xpc3RzLmdudS5vcmcvYXJjaGl2ZS9odG1sL3FlbXUtZGV2ZWwvMjAy
+Mi0wOS9tc2cwMDAzNC5odG1sDQo+IA0KPiBTaWduZWQtb2ZmLWJ5OiBJbHlhIExlb3Noa2V2
+aWNoIDxpaWlAbGludXguaWJtLmNvbT4NCj4gTWVzc2FnZS1JZDogPDIwMjQxMDAxMTUwNjE3
+Ljk5NzctMS1paWlAbGludXguaWJtLmNvbT4NCj4gU2lnbmVkLW9mZi1ieTogQWxleCBCZW5u
+w6llIDxhbGV4LmJlbm5lZUBsaW5hcm8ub3JnPg0KPiAtLS0NCj4gICB0ZXN0cy90Y2cveDg2
+XzY0L2Nyb3NzLW1vZGlmeWluZy1jb2RlLmMgfCA4MCArKysrKysrKysrKysrKysrKysrKysr
+KysrDQo+ICAgdGVzdHMvdGNnL3g4Nl82NC9NYWtlZmlsZS50YXJnZXQgICAgICAgIHwgIDQg
+KysNCj4gICAyIGZpbGVzIGNoYW5nZWQsIDg0IGluc2VydGlvbnMoKykNCj4gICBjcmVhdGUg
+bW9kZSAxMDA2NDQgdGVzdHMvdGNnL3g4Nl82NC9jcm9zcy1tb2RpZnlpbmctY29kZS5jDQo+
+IA0KPiBkaWZmIC0tZ2l0IGEvdGVzdHMvdGNnL3g4Nl82NC9jcm9zcy1tb2RpZnlpbmctY29k
+ZS5jIGIvdGVzdHMvdGNnL3g4Nl82NC9jcm9zcy1tb2RpZnlpbmctY29kZS5jDQo+IG5ldyBm
+aWxlIG1vZGUgMTAwNjQ0DQo+IGluZGV4IDAwMDAwMDAwMDAuLjI3MDRkZjYwNjENCj4gLS0t
+IC9kZXYvbnVsbA0KPiArKysgYi90ZXN0cy90Y2cveDg2XzY0L2Nyb3NzLW1vZGlmeWluZy1j
+b2RlLmMNCj4gQEAgLTAsMCArMSw4MCBAQA0KPiArLyoNCj4gKyAqIFRlc3QgcGF0Y2hpbmcg
+Y29kZSwgcnVubmluZyBpbiBvbmUgdGhyZWFkLCBmcm9tIGFub3RoZXIgdGhyZWFkLg0KPiAr
+ICoNCj4gKyAqIEludGVsIFNETSBjYWxscyB0aGlzICJjcm9zcy1tb2RpZnlpbmcgY29kZSIg
+YW5kIHJlY29tbWVuZHMgYSBzcGVjaWFsDQo+ICsgKiBzZXF1ZW5jZSwgd2hpY2ggcmVxdWly
+ZXMgYm90aCB0aHJlYWRzIHRvIGNvb3BlcmF0ZS4NCj4gKyAqDQo+ICsgKiBMaW51eCBrZXJu
+ZWwgdXNlcyBhIGRpZmZlcmVudCBzZXF1ZW5jZSB0aGF0IGRvZXMgbm90IHJlcXVpcmUgY29v
+cGVyYXRpb24gYW5kDQo+ICsgKiBpbnZvbHZlcyBwYXRjaGluZyB0aGUgZmlyc3QgYnl0ZSB3
+aXRoIGludDMuDQo+ICsgKg0KPiArICogRmluYWxseSwgdGhlcmUgaXMgdXNlci1tb2RlIHNv
+ZnR3YXJlIG91dCB0aGVyZSB0aGF0IHNpbXBseSB1c2VzIGF0b21pY3MsIGFuZA0KPiArICog
+dGhhdCBzZWVtcyB0byBiZSBnb29kIGVub3VnaCBpbiBwcmFjdGljZS4gVGVzdCB0aGF0IFFF
+TVUgaGFzIG5vIHByb2JsZW1zDQo+ICsgKiB3aXRoIHRoaXMgYXMgd2VsbC4NCj4gKyAqLw0K
+PiArDQo+ICsjaW5jbHVkZSA8YXNzZXJ0Lmg+DQo+ICsjaW5jbHVkZSA8cHRocmVhZC5oPg0K
+PiArI2luY2x1ZGUgPHN0ZGJvb2wuaD4NCj4gKyNpbmNsdWRlIDxzdGRsaWIuaD4NCj4gKw0K
+PiArdm9pZCBhZGQxX29yX25vcChsb25nICp4KTsNCj4gK2FzbSgiLnB1c2hzZWN0aW9uIC5y
+d3gsXCJhd3hcIixAcHJvZ2JpdHNcbiINCj4gKyAgICAiLmdsb2JsIGFkZDFfb3Jfbm9wXG4i
+DQo+ICsgICAgLyogYWRkcSAkMHgxLCglcmRpKSAqLw0KPiArICAgICJhZGQxX29yX25vcDog
+LmJ5dGUgMHg0OCwgMHg4MywgMHgwNywgMHgwMVxuIg0KPiArICAgICJyZXRcbiINCj4gKyAg
+ICAiLnBvcHNlY3Rpb25cbiIpOw0KPiArDQo+ICsjZGVmaW5lIFRIUkVBRF9XQUlUIDANCj4g
+KyNkZWZpbmUgVEhSRUFEX1BBVENIIDENCj4gKyNkZWZpbmUgVEhSRUFEX1NUT1AgMg0KPiAr
+DQo+ICtzdGF0aWMgdm9pZCAqdGhyZWFkX2Z1bmModm9pZCAqYXJnKQ0KPiArew0KPiArICAg
+IGludCB2YWwgPSAweDAwMjY3NDhkOyAvKiBub3AgKi8NCj4gKw0KPiArICAgIHdoaWxlICh0
+cnVlKSB7DQo+ICsgICAgICAgIHN3aXRjaCAoX19hdG9taWNfbG9hZF9uKChpbnQgKilhcmcs
+IF9fQVRPTUlDX1NFUV9DU1QpKSB7DQo+ICsgICAgICAgIGNhc2UgVEhSRUFEX1dBSVQ6DQo+
+ICsgICAgICAgICAgICBicmVhazsNCj4gKyAgICAgICAgY2FzZSBUSFJFQURfUEFUQ0g6DQo+
+ICsgICAgICAgICAgICB2YWwgPSBfX2F0b21pY19leGNoYW5nZV9uKChpbnQgKikmYWRkMV9v
+cl9ub3AsIHZhbCwNCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+X19BVE9NSUNfU0VRX0NTVCk7DQo+ICsgICAgICAgICAgICBicmVhazsNCj4gKyAgICAgICAg
+Y2FzZSBUSFJFQURfU1RPUDoNCj4gKyAgICAgICAgICAgIHJldHVybiBOVUxMOw0KPiArICAg
+ICAgICBkZWZhdWx0Og0KPiArICAgICAgICAgICAgYXNzZXJ0KGZhbHNlKTsNCj4gKyAgICAg
+ICAgICAgIF9fYnVpbHRpbl91bnJlYWNoYWJsZSgpOw0KDQpVc2UgZ19hc3NlcnRfbm90X3Jl
+YWNoZWQoKSBpbnN0ZWFkLg0KY2hlY2twYXRjaCBlbWl0cyBhbiBlcnJvciBmb3IgaXQgbm93
+Lg0KDQo+ICsgICAgICAgIH0NCj4gKyAgICB9DQo+ICt9DQo+ICsNCj4gKyNkZWZpbmUgSU5J
+VElBTCA0Mg0KPiArI2RlZmluZSBDT1VOVCAxMDAwMDAwDQo+ICsNCj4gK2ludCBtYWluKHZv
+aWQpDQo+ICt7DQo+ICsgICAgaW50IGNvbW1hbmQgPSBUSFJFQURfV0FJVDsNCj4gKyAgICBw
+dGhyZWFkX3QgdGhyZWFkOw0KPiArICAgIGxvbmcgeCA9IDA7DQo+ICsgICAgaW50IGVycjsN
+Cj4gKyAgICBpbnQgaTsNCj4gKw0KPiArICAgIGVyciA9IHB0aHJlYWRfY3JlYXRlKCZ0aHJl
+YWQsIE5VTEwsICZ0aHJlYWRfZnVuYywgJmNvbW1hbmQpOw0KPiArICAgIGFzc2VydChlcnIg
+PT0gMCk7DQo+ICsNCj4gKyAgICBfX2F0b21pY19zdG9yZV9uKCZjb21tYW5kLCBUSFJFQURf
+UEFUQ0gsIF9fQVRPTUlDX1NFUV9DU1QpOw0KPiArICAgIGZvciAoaSA9IDA7IGkgPCBDT1VO
+VDsgaSsrKSB7DQo+ICsgICAgICAgIGFkZDFfb3Jfbm9wKCZ4KTsNCj4gKyAgICB9DQo+ICsg
+ICAgX19hdG9taWNfc3RvcmVfbigmY29tbWFuZCwgVEhSRUFEX1NUT1AsIF9fQVRPTUlDX1NF
+UV9DU1QpOw0KPiArDQo+ICsgICAgZXJyID0gcHRocmVhZF9qb2luKHRocmVhZCwgTlVMTCk7
+DQo+ICsgICAgYXNzZXJ0KGVyciA9PSAwKTsNCj4gKw0KPiArICAgIGFzc2VydCh4ID49IElO
+SVRJQUwpOw0KPiArICAgIGFzc2VydCh4IDw9IElOSVRJQUwgKyBDT1VOVCk7DQo+ICsNCj4g
+KyAgICByZXR1cm4gRVhJVF9TVUNDRVNTOw0KPiArfQ0KPiBkaWZmIC0tZ2l0IGEvdGVzdHMv
+dGNnL3g4Nl82NC9NYWtlZmlsZS50YXJnZXQgYi90ZXN0cy90Y2cveDg2XzY0L01ha2VmaWxl
+LnRhcmdldA0KPiBpbmRleCA3ODNhYjViMjFhLi5kNmRmZjU1OWM3IDEwMDY0NA0KPiAtLS0g
+YS90ZXN0cy90Y2cveDg2XzY0L01ha2VmaWxlLnRhcmdldA0KPiArKysgYi90ZXN0cy90Y2cv
+eDg2XzY0L01ha2VmaWxlLnRhcmdldA0KPiBAQCAtMTcsNiArMTcsNyBAQCBYODZfNjRfVEVT
+VFMgKz0gY21weGNoZw0KPiAgIFg4Nl82NF9URVNUUyArPSBhZG94DQo+ICAgWDg2XzY0X1RF
+U1RTICs9IHRlc3QtMTY0OA0KPiAgIFg4Nl82NF9URVNUUyArPSB0ZXN0LTIxNzUNCj4gK1g4
+Nl82NF9URVNUUyArPSBjcm9zcy1tb2RpZnlpbmctY29kZQ0KPiAgIFRFU1RTPSQoTVVMVElB
+UkNIX1RFU1RTKSAkKFg4Nl82NF9URVNUUykgdGVzdC14ODZfNjQNCj4gICBlbHNlDQo+ICAg
+VEVTVFM9JChNVUxUSUFSQ0hfVEVTVFMpDQo+IEBAIC0yNyw2ICsyOCw5IEBAIGFkb3g6IENG
+TEFHUz0tTzINCj4gICBydW4tdGVzdC1pMzg2LXNzc2UzOiBRRU1VX09QVFMgKz0gLWNwdSBt
+YXgNCj4gICBydW4tcGx1Z2luLXRlc3QtaTM4Ni1zc3NlMy0lOiBRRU1VX09QVFMgKz0gLWNw
+dSBtYXgNCj4gICANCj4gK2Nyb3NzLW1vZGlmeWluZy1jb2RlOiBDRkxBR1MrPS1wdGhyZWFk
+DQo+ICtjcm9zcy1tb2RpZnlpbmctY29kZTogTERGTEFHUys9LXB0aHJlYWQNCj4gKw0KPiAg
+IHRlc3QteDg2XzY0OiBMREZMQUdTKz0tbG0gLWxjDQo+ICAgdGVzdC14ODZfNjQ6IHRlc3Qt
+aTM4Ni5jIHRlc3QtaTM4Ni5oIHRlc3QtaTM4Ni1zaGlmdC5oIHRlc3QtaTM4Ni1tdWxkaXYu
+aA0KPiAgIAkkKENDKSAkKENGTEFHUykgJDwgLW8gJEAgJChMREZMQUdTKQ0KDQpXaXRoIHRo
+aXMgY2hhbmdlLA0KUmV2aWV3ZWQtYnk6IFBpZXJyaWNrIEJvdXZpZXIgPHBpZXJyaWNrLmJv
+dXZpZXJAbGluYXJvLm9yZz4NCg==

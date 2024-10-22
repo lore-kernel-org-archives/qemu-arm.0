@@ -1,96 +1,117 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2975618njb;
-        Tue, 22 Oct 2024 03:50:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUe4KFev7misSgTEqKMfgkiEfmLY3iYhZ1jgJ01LJo8PEbxXwjkeziEQGEr3+o6VKilsLwvhK/YSrlUWA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFo3TxYVwGBYz/FB2FbCRCeiUVdfwcDaxIm/s2GY3dekRc6oxVbvC1o9IyRVjQXEGkosoWL
-X-Received: by 2002:a05:6102:26c6:b0:4a4:7a00:d5b4 with SMTP id ada2fe7eead31-4a5d6bb237bmr11759351137.18.1729594208794;
-        Tue, 22 Oct 2024 03:50:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729594208; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2975809njb;
+        Tue, 22 Oct 2024 03:50:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXazydDILMqRw+LqjPtNAyAo23cX5VCXNPzWNwbyAjFiKkZyqWZ537fg1uYal/viif8b2aE8gzZ7wNPYA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE9sg7wC1DdSVJ/rV8tP+sfVOjMiGUVTocOBbBtaDPhMblKnmWj2V0TE0PSVulvBk37WIaT
+X-Received: by 2002:a05:6102:3583:b0:4a4:8fc3:9c8 with SMTP id ada2fe7eead31-4a742d61ecdmr2355186137.10.1729594238012;
+        Tue, 22 Oct 2024 03:50:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729594237; cv=none;
         d=google.com; s=arc-20240605;
-        b=j89xD18qpWMg2sAn4h7346VYeYiqj0AO/BfOeG+UxL1Da7voTXwbHtp0bOVqaZ3frW
-         tIIncRwlGET1/a6+Cc9mlB7LtFhqJKmsgbKkpGuBHAEPu81E+Fxr0Uh2uKFXnb2q+YfN
-         dav5jnS2RuGyJU6yiWp9bRv5D38ENdMQ7O1D6TT2HF1+bkX6gKAHT0sPGmH3oqNLHHrP
-         gRWvD1SrvQmQhokAGYnJDqNirp1ITMhPH1aviANrJ0S8ZbNHa4SmscWXhJsynwO6y8Or
-         kQ7bQrN8ZlmVsFFMDYFNUox1wZL0+sMv0U/mqishQJp1mHrMmDkwXOyZJyHkGT1ODhfy
-         qlug==
+        b=W8IuSX00SCXSZZ8HmTXt2y0VHAO12ngvNhdP2M3K1qe13OIV7zUi2XpGKiyguz3y6i
+         XCKNT1h6QQGfQqG9R8D0uV9cvR2L3wQeAatD2D2O5BDz7dqwc4Vqyybv8V2fvL/eEpgz
+         KmFS5bGcQH6XFzRZa9nJ4pRoG0wJH+9BHCW1v/Aucf1XrvwIbK7ugEJ3OZQRDSHoUP7s
+         fRkKmfqCJbY489ti4yEwZjC28ql00D4hpXd8bXSzkYMcaxY+SfRs2Dcg+3psYq/Wz8PT
+         Izib54Gm4Xkh+DeeVkUniM4NlAZZ/Uxf38oJgFexsYAGijdHWWStfKp3K7Br3P86tjsm
+         Ebgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=JcVAdTmgYWOptq94Fo1RxeKSVyh4j6P+B+NUORXDxJM=;
-        fh=4mlnkPeqTwuu2Qx8qreMlJHQU0w7aOUfwVS+XUkOkGE=;
-        b=DtAx3BU/kIxR4xqmMZFd+CdAF67L/1n/5Rlexg9pOBip71KPoOs1QaRYZoIme3sQGK
-         G/kLHEHSm+vDI0oQcUbCtNYZj9bzzChbTdGgVGpPbv9KqIHg8eR99KyvJSOKAWPg4KCt
-         srHW4+vS1dF364X+kI7OvzX6D324nvbprRh8Efo416zSrEu1JeDEe0IzRGIkMlIjE38R
-         pdKxe1IibYqdCG2SFojUoGr5VDIOqfM8Se0MZoDuuYL3ZMoybaiVoa6uwc3NX9I8JbHC
-         idAe3sNqAHKZ+HoXcfGBpikDvDiV/yZ/R00D89C8ceKv4+ZN0TKEviyOeGP8wcWB8TkY
-         icAg==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=WAEooVzpinCEpYZwuQSn6oLzygBQbX4zyPUpINNF/vU=;
+        fh=3xcYjppifPAhDyNqELlg+2g6YavK3Xq5yH5zHjsnL98=;
+        b=fW40RMhwfVwG4UqHwON6B39mkbmQLasDP+7uyZjDZDdJXpUrfh1yw+alOVXm1m0pdK
+         MZl0B2KDIwTT2Eb9YxWRcRk2U8gJZ2/O+CnEtsdNB2fGjAL/fjGunatIraFRhag8EEkb
+         +ZvyHM5vGMrU3rCI15wHB0L76/ONOkdZ0Yh8PvzGBXv0Sxzly7PsV1z6Dg5cS0dfvIb+
+         1945U408K8RgbVEBwxMNUZ6kltq152tCYBquLy7ZkwYmhshAXuKaBpRAPJLC67zrjCED
+         oDWbGfaJJNKO0NsW1Okb2GT9Xa/NOvYPGdUXZWek8ynadjx8u0avnZ6dp//zP2ATsDs2
+         8A9A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FV86I8h6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b165a89c8bsi606911685a.507.2024.10.22.03.50.08
+        by mx.google.com with ESMTPS id af79cd13be357-7b165a9bd62si602981585a.592.2024.10.22.03.50.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 03:50:08 -0700 (PDT)
+        Tue, 22 Oct 2024 03:50:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FV86I8h6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t3CRm-000644-EY; Tue, 22 Oct 2024 06:49:06 -0400
+	id 1t3CT9-0007dY-6k; Tue, 22 Oct 2024 06:50:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=pGrG=RS=kaod.org=clg@ozlabs.org>)
- id 1t3CRi-00063o-NB; Tue, 22 Oct 2024 06:49:02 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1t3CT5-0007ZS-KR
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2024 06:50:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=pGrG=RS=kaod.org=clg@ozlabs.org>)
- id 1t3CRY-0000i0-5w; Tue, 22 Oct 2024 06:49:02 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XXpnT2V9Wz4wbr;
- Tue, 22 Oct 2024 21:48:45 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1t3CT2-00014u-CW
+ for qemu-arm@nongnu.org; Tue, 22 Oct 2024 06:50:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1729594222;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=WAEooVzpinCEpYZwuQSn6oLzygBQbX4zyPUpINNF/vU=;
+ b=FV86I8h6T5CkeK3d5DE2FoxnzGm/58a7X6yl0R18104kNaXuSaNM0sJMORk4oGeq/KF9Ae
+ rrEl85Ts2+oIRbd1hfrZZPtjEhvZ/GG/eC3FIBym2muGBlPO53TRJ+6XPnjJq1HrriJKjh
+ 2/vS87qvWIJZCWN+fmZrwuxpB2KrbVg=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-88-zhxuPwa_MayRKtS4rGi3WA-1; Tue,
+ 22 Oct 2024 06:50:19 -0400
+X-MC-Unique: zhxuPwa_MayRKtS4rGi3WA-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XXpnM6mSCz4wb7;
- Tue, 22 Oct 2024 21:48:39 +1100 (AEDT)
-Message-ID: <e1803cd1-f4fd-4d1a-a8e9-5a5ed86c59e7@kaod.org>
-Date: Tue, 22 Oct 2024 12:48:35 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 07/18] aspeed: Fix hardcode attach flash model of spi
- controllers
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 095F7195608A; Tue, 22 Oct 2024 10:50:14 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.70])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 342EF30001A6; Tue, 22 Oct 2024 10:50:00 +0000 (UTC)
+Date: Tue, 22 Oct 2024 12:49:57 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Jamin Lin <jamin_lin@aspeedtech.com>
+Cc: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>,
  Hanna Reitz <hreitz@redhat.com>, Thomas Huth <thuth@redhat.com>,
  Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:Block layer core" <qemu-block@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+ "open list:Block layer core" <qemu-block@nongnu.org>,
+ troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+Subject: Re: [PATCH v2 01/18] aspeed/smc: Fix write incorrect data into flash
+ in user mode
+Message-ID: <ZxeDVTBwLZsOEDvE@redhat.com>
 References: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
- <20241022094110.1574011-8-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20241022094110.1574011-8-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=pGrG=RS=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.171, RCVD_IN_DNSWL_MED=-2.3,
+ <20241022094110.1574011-2-jamin_lin@aspeedtech.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241022094110.1574011-2-jamin_lin@aspeedtech.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.421,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,87 +126,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DEJ9jPHr4EYD
+X-TUID: FB8gTG46G0xc
 
-On 10/22/24 11:40, Jamin Lin wrote:
-> It only attached flash model of fmc and spi[0] in aspeed_machine_init function.
-> However, AST2500 and AST2600 have one fmc and two spi(spi1 and spi2)
-> controllers; AST2700 have one fmc and 3 spi(spi0, spi1 and spi2) controllers.
+Am 22.10.2024 um 11:40 hat Jamin Lin geschrieben:
+> According to the design of ASPEED SPI controllers user mode, users write the
+> data to flash, the SPI drivers set the Control Register(0x10) bit 0 and 1
+> enter user mode. Then, SPI drivers send flash commands for writing data.
+> Finally, SPI drivers set the Control Register (0x10) bit 2 to stop
+> active control and restore bit 0 and 1.
 > 
-> Besides, it used hardcode to attach flash model of fmc, spi[0] and spi[1] in
-> aspeed_minibmc_machine_init for AST1030.
+> According to the design of ASPEED SMC model, firmware writes the
+> Control Register and the "aspeed_smc_flash_update_ctrl" function is called.
+> Then, this function verify Control Register(0x10) bit 0 and 1. If it set user
+> mode, the value of s->snoop_index is SNOOP_START else SNOOP_OFF.
+> If s->snoop_index is SNOOP_START, the "aspeed_smc_do_snoop" function verify
+> the first incomming data is a new flash command and writes the corresponding
+> dummy bytes if need.
 > 
-> To make both functions more flexible and support all ASPEED SOCs spi
-> controllers, adds a for loop with sc->spis_num to attach flash model of
-> all supported spi controllers. The sc->spis_num is from AspeedSoCClass.
+> However, it did not check the current unselect status. If current unselect
+> status is "false" and firmware set the IO MODE by Control Register bit 31:28,
+> the value of s->snoop_index will be changed to SNOOP_START again and
+> "aspeed_smc_do_snoop" misunderstand that the incomming data is the new flash
+> command and it causes writing unexpected data into flash.
+> 
+> Example:
+> 1. Firmware set user mode by Control Register bit 0 and 1(0x03)
+> 2. SMC model set s->snoop SNOOP_START
+> 3. Firmware set Quad Page Program with 4-Byte Address command (0x34)
+> 4. SMC model verify this flash command and it needs 4 dummy bytes.
+> 5. Firmware send 4 bytes address.
+> 6. SMC model receives 4 bytes address
+> 7. Firmware set QPI IO MODE by Control Register bit 31. (0x80000003)
+> 8. SMC model verify new user mode by Control Register bit 0 and 1.
+>    Then, set s->snoop SNOOP_START again. (It is the wrong behavior.)
+> 9. Firmware send 0xebd8c134 data and it should be written into flash.
+>    However, SMC model misunderstand that the first incoming data, 0x34,
+>    is the new command because the value of s->snoop is changed to SNOOP_START.
+>    Finally, SMC sned the incorrect data to flash model.
+> 
+> Introduce a new unselect attribute in AspeedSMCState to save the current
+> unselect status for user mode and set it "true" by default.
+> Update "aspeed_smc_flash_update_ctrl" function to check the previous unselect
+> status. If both new unselect status and previous unselect status is different,
+> update s->snoop_index value and call "aspeed_smc_flash_do_select".
+> 
+> Increase VMStateDescription version.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
+> @@ -1261,12 +1276,13 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+>  
+>  static const VMStateDescription vmstate_aspeed_smc = {
+>      .name = "aspeed.smc",
+> -    .version_id = 2,
+> +    .version_id = 3,
+>      .minimum_version_id = 2,
+>      .fields = (const VMStateField[]) {
+>          VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
+>          VMSTATE_UINT8(snoop_index, AspeedSMCState),
+>          VMSTATE_UINT8(snoop_dummies, AspeedSMCState),
+> +        VMSTATE_BOOL(unselect, AspeedSMCState),
+>          VMSTATE_END_OF_LIST()
+>      }
+>  };
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+I think this will break migration compatibility. In order to enable
+at least forward migration, it should be:
 
-Thanks,
+    VMSTATE_BOOL_V(unselect, AspeedSMCState, 3),
 
-C.
+For allowing backwards migration, too, we should consider making it a
+subsection instead that allows migration in the default case of an idle
+device.
 
-
-> ---
->   hw/arm/aspeed.c | 21 ++++++++++++---------
->   1 file changed, 12 insertions(+), 9 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index b4b1ce9efb..7ac01a3562 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -419,9 +419,11 @@ static void aspeed_machine_init(MachineState *machine)
->           aspeed_board_init_flashes(&bmc->soc->fmc,
->                                 bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
->                                 amc->num_cs, 0);
-> -        aspeed_board_init_flashes(&bmc->soc->spi[0],
-> -                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
-> -                              1, amc->num_cs);
-> +        for (i = 0; i < sc->spis_num; i++) {
-> +            aspeed_board_init_flashes(&bmc->soc->spi[i],
-> +                            bmc->spi_model ? bmc->spi_model : amc->spi_model,
-> +                            amc->num_cs, amc->num_cs + (amc->num_cs * i));
-> +        }
->       }
->   
->       if (machine->kernel_filename && sc->num_cpus > 1) {
-> @@ -1579,7 +1581,9 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
->   {
->       AspeedMachineState *bmc = ASPEED_MACHINE(machine);
->       AspeedMachineClass *amc = ASPEED_MACHINE_GET_CLASS(machine);
-> +    AspeedSoCClass *sc;
->       Clock *sysclk;
-> +    int i;
->   
->       sysclk = clock_new(OBJECT(machine), "SYSCLK");
->       clock_set_hz(sysclk, SYSCLK_FRQ);
-> @@ -1587,6 +1591,7 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
->       bmc->soc = ASPEED_SOC(object_new(amc->soc_name));
->       object_property_add_child(OBJECT(machine), "soc", OBJECT(bmc->soc));
->       object_unref(OBJECT(bmc->soc));
-> +    sc = ASPEED_SOC_GET_CLASS(bmc->soc);
->       qdev_connect_clock_in(DEVICE(bmc->soc), "sysclk", sysclk);
->   
->       object_property_set_link(OBJECT(bmc->soc), "memory",
-> @@ -1599,13 +1604,11 @@ static void aspeed_minibmc_machine_init(MachineState *machine)
->                                 amc->num_cs,
->                                 0);
->   
-> -    aspeed_board_init_flashes(&bmc->soc->spi[0],
-> -                              bmc->spi_model ? bmc->spi_model : amc->spi_model,
-> -                              amc->num_cs, amc->num_cs);
-> -
-> -    aspeed_board_init_flashes(&bmc->soc->spi[1],
-> +    for (i = 0; i < sc->spis_num; i++) {
-> +        aspeed_board_init_flashes(&bmc->soc->spi[i],
->                                 bmc->spi_model ? bmc->spi_model : amc->spi_model,
-> -                              amc->num_cs, (amc->num_cs * 2));
-> +                              amc->num_cs, amc->num_cs + (amc->num_cs * i));
-> +    }
->   
->       if (amc->i2c_init) {
->           amc->i2c_init(bmc);
+Kevin
 

@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2942754njb;
-        Tue, 22 Oct 2024 02:42:14 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXV9t6zDUGscGmZF+MrMV6wc5Qk3LsisMWFQWeretYZBDbPkWCE3A8cizeYgsKbcYSaLkegytetD5MuFw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGKwcsNuRTRdgJR46SUse+cqj1DR2JDyNNGqT2J9u1/YiuimjLDPui2zq2VSA0SPiEZ7yzA
-X-Received: by 2002:a05:6902:1a48:b0:e29:11f4:81cc with SMTP id 3f1490d57ef6-e2e271ca26fmr1446368276.33.1729590134442;
-        Tue, 22 Oct 2024 02:42:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729590134; cv=none;
+Received: by 2002:a17:505:18c3:b0:1be9:327d:8ee3 with SMTP id tt3csp2942771njb;
+        Tue, 22 Oct 2024 02:42:17 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCURWXIzrd+CN0hp7KIDW6AFZXgvEWWjPXtsg8eB2u46ODGZxronrfpMNBAHOE+vcAhXcvMhoVieyW5TNw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGBnhlVeH47eVSeEbuV9Ogxzh09cT7WVOT2+gDEVCnBnAcQJlW4lqy7DE2Li0z5uLV7GtC/
+X-Received: by 2002:ac8:7f41:0:b0:460:9cb1:316d with SMTP id d75a77b69052e-460aee4d06amr225982931cf.58.1729590136851;
+        Tue, 22 Oct 2024 02:42:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729590136; cv=none;
         d=google.com; s=arc-20240605;
-        b=freM2GW84GHDjFjcWplPdPXYYHO4enoadSYyjv4jFfLFP4Btq5h0HSzjOGRFCiSK7P
-         BpHwscpRHSDSiTTiDlDzZU581vkYSNzMzQ4b7OXktVhr8MDjh1wZVZvZVaJ3ufmR9G5Z
-         7Wl7IcE7kcPBNlnM/NbX6Gff0+tVjwkpiSWlxbGr+z4kIC/9hhE4LMQWjmUQwk6+uO0S
-         +R2J0SARLxgSzdcDJ6oGGU99AuZ7mWshF97sRBxoNKSVRrijrQPqjqX8PGcZKuGn4s8X
-         eI+tOhmRaipIi6KzTUrZAgR0KpZgb2KSmVJ8K+kEDcpgABuVcC+PqBpHYYeHx9yfnIUy
-         S8tQ==
+        b=akUZn2om50cniGmLJFrpVLkNPNYrmMjWd6OhI02fcVHicOLNQiHljTrWjfP4vFPnAu
+         /QWo6UnP9dc9oJvWMxJFcDdbrNbUSSMcLWrrKvhtMId5OB6F6hDnoAK172Z7+B0tu5Fa
+         YFQoq7ZcRyvidmErD4u9rUpUsLMZq4Hx9gxYdEiff/iZ+Gq4bB8tzXVjRW2tA2Kn97qu
+         7Pt2NxHOAsZJCuEq0AnfGg0qUFyMdHC0cbeFZDVAlzDOc2T3X2AkVZx4V7EKPPQH5VZB
+         t6ixFCcO0r1lfP951DMlfUgQNIeqTUSPS5A+oZfcW/3pxPQtZtryhgBNbLYphVNpcI3U
+         jH9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=hmiHyedNBjqXGrc3BSmzUGaF8i7Bp7GqG6n0TuLl+H0=;
+        bh=/sC+BEiUDJYr7DMLmxHiaoP+4pPLAR2w1o6sF6ixcuM=;
         fh=tJ6TeM8XDKi6I9LERy0ves/+1WFn5YJhFzDAan5mwNk=;
-        b=T3j1t4TQXirkUBjNXYNo06QdKKQPD/rvZAJrdF9zZr04/OB8rPBVvGoj6p03B03gYa
-         4MtXRYa1HgD98cpPkh5sQ5OrPRP3m82pSNecKKXgl8Lf2/wVsKqM8hpyk/mUhg0bQnIm
-         /JCxXi4GZJl51iSOkBMYZfftesohuIk0R/rFfKjLrhMr0iIgDUCRzo2NGPLG+EpZHIvt
-         LaZR0ie0ThJKj6eYmf6f7F+hU9sGNDDnvovbDhf3eZ7a9QA0UbFEAD4Sy7y+JVXlKPsj
-         NTzuXUZCIvtuOMhk1ouMyZKkY4nvD1XN3wRs7xnyIw1ws1o4SApcdvX9GE2PwnvRpVoO
-         kYRg==;
+        b=a1aa8Pe2hP8z3064q7yArZumJvg4L8ce4yWs8knQcnRcsOB24MDgXwjQ94KzAL7kcf
+         OF/H3/v3CvjnQZsdEM2ht4dQlbZ8bXyZ8sBUMiz+6m5muyHpX+b60nZwuRksiji6E5LB
+         Tn+KQlypE2q2ndie70dVGz9OSb8V2JABmLEsg0eb9BhRqO53Fhg51WDcOu+dNFXE76CR
+         8iAgt8aAVxoE2j6vO6zaUMG8vbSu+bGzeO7x8KlGVFQtPIH25rGdsz/3aGKGgjKsulJn
+         9mrKWbE4/z8xtGd7SQeVTkkibD6kLv+XNuvs0kVbaMJ+2fryPnnwER/IlcGTy9xWmQfB
+         HLBA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460d3b34c0dsi62569771cf.40.2024.10.22.02.42.14
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3ce57a2si59941111cf.295.2024.10.22.02.42.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 02:42:14 -0700 (PDT)
+        Tue, 22 Oct 2024 02:42:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t3BOm-0002wz-Vb; Tue, 22 Oct 2024 05:41:57 -0400
+	id 1t3BOw-0003Ps-UN; Tue, 22 Oct 2024 05:42:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t3BOl-0002va-4K; Tue, 22 Oct 2024 05:41:55 -0400
+ id 1t3BOt-0003KP-SI; Tue, 22 Oct 2024 05:42:03 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t3BOj-00015E-S3; Tue, 22 Oct 2024 05:41:54 -0400
+ id 1t3BOs-00019W-0O; Tue, 22 Oct 2024 05:42:03 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 22 Oct
- 2024 17:41:14 +0800
+ 2024 17:41:15 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 22 Oct 2024 17:41:14 +0800
+ Transport; Tue, 22 Oct 2024 17:41:15 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -70,10 +70,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@redhat.com>
-Subject: [PATCH v2 09/18] test/qtest/aspeed_smc-test: Move testcases to
- test_palmetto_bmc function
-Date: Tue, 22 Oct 2024 17:41:01 +0800
-Message-ID: <20241022094110.1574011-10-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 11/18] test/qtest/aspeed_smc-test: Support to test all CE
+ pins
+Date: Tue, 22 Oct 2024 17:41:03 +0800
+Message-ID: <20241022094110.1574011-12-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
 References: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
@@ -104,59 +104,276 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Id5aGi1f4VVd
+X-TUID: e6r9Uzx954J7
 
-So far, the test cases are used for testing SMC model with AST2400 BMC.
-However, AST2400 is end off live and ASPEED is no longer support this SOC.
-To test SMC model for AST2500, AST2600 and AST1030, move the test cases
-from main to test_palmetto_bmc function.
+Currently, these test cases only support to test CE0. To test all CE pins,
+introduces new ce and node members in TestData structure. The ce member is used
+for saving the ce index and node member is used for saving the node path,
+respectively.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed_smc-test.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ tests/qtest/aspeed_smc-test.c | 77 ++++++++++++++++++-----------------
+ 1 file changed, 40 insertions(+), 37 deletions(-)
 
 diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index 4673371d95..ec1fa6ec15 100644
+index 4c62009605..b8ab20b43d 100644
 --- a/tests/qtest/aspeed_smc-test.c
 +++ b/tests/qtest/aspeed_smc-test.c
-@@ -610,14 +610,12 @@ static void test_write_block_protect_bottom_bit(void)
-     flash_reset();
- }
+@@ -32,11 +32,11 @@
+  * ASPEED SPI Controller registers
+  */
+ #define R_CONF              0x00
+-#define   CONF_ENABLE_W0       (1 << 16)
++#define   CONF_ENABLE_W0       16
+ #define R_CE_CTRL           0x04
+ #define   CRTL_EXTENDED0       0  /* 32 bit addressing for SPI */
+ #define R_CTRL0             0x10
+-#define   CTRL_CE_STOP_ACTIVE  (1 << 2)
++#define   CTRL_CE_STOP_ACTIVE  BIT(2)
+ #define   CTRL_READMODE        0x0
+ #define   CTRL_FREADMODE       0x1
+ #define   CTRL_WRITEMODE       0x2
+@@ -70,6 +70,8 @@ typedef struct TestData {
+     uint64_t flash_base;
+     uint32_t jedec_id;
+     char *tmp_path;
++    uint8_t cs;
++    const char *node;
+ } TestData;
  
--int main(int argc, char **argv)
-+static int test_palmetto_bmc(void)
+ /*
+@@ -140,34 +142,37 @@ static void spi_ce_ctrl(const TestData *data, uint32_t value)
+ 
+ static void spi_ctrl_setmode(const TestData *data, uint8_t mode, uint8_t cmd)
  {
-     g_autofree char *tmp_path = NULL;
-     int ret;
-     int fd;
- 
--    g_test_init(&argc, &argv, NULL);
--
-     fd = g_file_open_tmp("qtest.m25p80.XXXXXX", &tmp_path, NULL);
-     g_assert(fd >= 0);
-     ret = ftruncate(fd, FLASH_SIZE);
-@@ -644,8 +642,18 @@ int main(int argc, char **argv)
- 
-     flash_reset();
-     ret = g_test_run();
--
-     qtest_quit(global_qtest);
-     unlink(tmp_path);
-+
-+    return ret;
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    int ret;
-+
-+    g_test_init(&argc, &argv, NULL);
-+    ret = test_palmetto_bmc();
-+
-     return ret;
+-    uint32_t ctrl = spi_readl(data, R_CTRL0);
++    uint32_t ctrl_reg = R_CTRL0 + data->cs * 4;
++    uint32_t ctrl = spi_readl(data, ctrl_reg);
+     ctrl &= ~(CTRL_USERMODE | 0xff << 16);
+     ctrl |= mode | (cmd << 16);
+-    spi_writel(data, R_CTRL0, ctrl);
++    spi_writel(data, ctrl_reg, ctrl);
  }
+ 
+ static void spi_ctrl_start_user(const TestData *data)
+ {
+-    uint32_t ctrl = spi_readl(data, R_CTRL0);
++    uint32_t ctrl_reg = R_CTRL0 + data->cs * 4;
++    uint32_t ctrl = spi_readl(data, ctrl_reg);
+ 
+     ctrl |= CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
+-    spi_writel(data, R_CTRL0, ctrl);
++    spi_writel(data, ctrl_reg, ctrl);
+ 
+     ctrl &= ~CTRL_CE_STOP_ACTIVE;
+-    spi_writel(data, R_CTRL0, ctrl);
++    spi_writel(data, ctrl_reg, ctrl);
+ }
+ 
+ static void spi_ctrl_stop_user(const TestData *data)
+ {
+-    uint32_t ctrl = spi_readl(data, R_CTRL0);
++    uint32_t ctrl_reg = R_CTRL0 + data->cs * 4;
++    uint32_t ctrl = spi_readl(data, ctrl_reg);
+ 
+     ctrl |= CTRL_USERMODE | CTRL_CE_STOP_ACTIVE;
+-    spi_writel(data, R_CTRL0, ctrl);
++    spi_writel(data, ctrl_reg, ctrl);
+ }
+ 
+ static void flash_reset(const TestData *data)
+ {
+-    spi_conf(data, CONF_ENABLE_W0);
++    spi_conf(data, 1 << (CONF_ENABLE_W0 + data->cs));
+ 
+     spi_ctrl_start_user(data);
+     flash_writeb(data, 0, RESET_ENABLE);
+@@ -177,7 +182,7 @@ static void flash_reset(const TestData *data)
+     flash_writeb(data, 0, WRDI);
+     spi_ctrl_stop_user(data);
+ 
+-    spi_conf_remove(data, CONF_ENABLE_W0);
++    spi_conf_remove(data, 1 << (CONF_ENABLE_W0 + data->cs));
+ }
+ 
+ static void test_read_jedec(const void *data)
+@@ -185,7 +190,7 @@ static void test_read_jedec(const void *data)
+     const TestData *test_data = (const TestData *)data;
+     uint32_t jedec = 0x0;
+ 
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+ 
+     spi_ctrl_start_user(test_data);
+     flash_writeb(test_data, 0, JEDEC_READ);
+@@ -255,7 +260,7 @@ static void test_erase_sector(const void *data)
+     uint32_t page[FLASH_PAGE_SIZE / 4];
+     int i;
+ 
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+ 
+     /*
+      * Previous page should be full of 0xffs after backend is
+@@ -307,7 +312,7 @@ static void test_erase_all(const void *data)
+     uint32_t page[FLASH_PAGE_SIZE / 4];
+     int i;
+ 
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+ 
+     /*
+      * Previous page should be full of 0xffs after backend is
+@@ -358,7 +363,7 @@ static void test_write_page(const void *data)
+     uint32_t page[FLASH_PAGE_SIZE / 4];
+     int i;
+ 
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+ 
+     spi_ctrl_start_user(test_data);
+     flash_writeb(test_data, 0, EN_4BYTE_ADDR);
+@@ -396,13 +401,12 @@ static void test_read_page_mem(const void *data)
+     int i;
+ 
+     /*
+-     * Enable 4BYTE mode for controller. This is should be strapped by
+-     * HW for CE0 anyhow.
++     * Enable 4BYTE mode for controller.
+      */
+-    spi_ce_ctrl(test_data, 1 << CRTL_EXTENDED0);
++    spi_ce_ctrl(test_data, 1 << (CRTL_EXTENDED0 + test_data->cs));
+ 
+     /* Enable 4BYTE mode for flash. */
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+     spi_ctrl_start_user(test_data);
+     flash_writeb(test_data, 0, EN_4BYTE_ADDR);
+     flash_writeb(test_data, 0, WREN);
+@@ -414,7 +418,7 @@ static void test_read_page_mem(const void *data)
+         flash_writel(test_data, 0, make_be32(my_page_addr + i * 4));
+     }
+     spi_ctrl_stop_user(test_data);
+-    spi_conf_remove(test_data, CONF_ENABLE_W0);
++    spi_conf_remove(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+ 
+     /* Check what was written */
+     read_page_mem(test_data, my_page_addr, page);
+@@ -439,13 +443,12 @@ static void test_write_page_mem(const void *data)
+     int i;
+ 
+     /*
+-     * Enable 4BYTE mode for controller. This is should be strapped by
+-     * HW for CE0 anyhow.
++     * Enable 4BYTE mode for controller.
+      */
+-    spi_ce_ctrl(test_data, 1 << CRTL_EXTENDED0);
++    spi_ce_ctrl(test_data, 1 << (CRTL_EXTENDED0 + test_data->cs));
+ 
+     /* Enable 4BYTE mode for flash. */
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+     spi_ctrl_start_user(test_data);
+     flash_writeb(test_data, 0, EN_4BYTE_ADDR);
+     flash_writeb(test_data, 0, WREN);
+@@ -473,7 +476,7 @@ static void test_read_status_reg(const void *data)
+     const TestData *test_data = (const TestData *)data;
+     uint8_t r;
+ 
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+ 
+     spi_ctrl_start_user(test_data);
+     flash_writeb(test_data, 0, RDSR);
+@@ -482,7 +485,7 @@ static void test_read_status_reg(const void *data)
+ 
+     g_assert_cmphex(r & SR_WEL, ==, 0);
+     g_assert(!qtest_qom_get_bool
+-            (test_data->s, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
++            (test_data->s, test_data->node, "write-enable"));
+ 
+     spi_ctrl_start_user(test_data);
+     flash_writeb(test_data, 0, WREN);
+@@ -492,7 +495,7 @@ static void test_read_status_reg(const void *data)
+ 
+     g_assert_cmphex(r & SR_WEL, ==, SR_WEL);
+     g_assert(qtest_qom_get_bool
+-            (test_data->s, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
++            (test_data->s, test_data->node, "write-enable"));
+ 
+     spi_ctrl_start_user(test_data);
+     flash_writeb(test_data, 0, WRDI);
+@@ -502,7 +505,7 @@ static void test_read_status_reg(const void *data)
+ 
+     g_assert_cmphex(r & SR_WEL, ==, 0);
+     g_assert(!qtest_qom_get_bool
+-            (test_data->s, "/machine/soc/fmc/ssi.0/child[0]", "write-enable"));
++            (test_data->s, test_data->node, "write-enable"));
+ 
+     flash_reset(test_data);
+ }
+@@ -512,7 +515,7 @@ static void test_status_reg_write_protection(const void *data)
+     const TestData *test_data = (const TestData *)data;
+     uint8_t r;
+ 
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+ 
+     /* default case: WP# is high and SRWD is low -> status register writable */
+     spi_ctrl_start_user(test_data);
+@@ -537,8 +540,7 @@ static void test_status_reg_write_protection(const void *data)
+     g_assert_cmphex(r & SRWD, ==, 0);
+ 
+     /* WP# low and SRWD low -> status register writable */
+-    qtest_set_irq_in(test_data->s,
+-                     "/machine/soc/fmc/ssi.0/child[0]", "WP#", 0, 0);
++    qtest_set_irq_in(test_data->s, test_data->node, "WP#", 0, 0);
+     spi_ctrl_start_user(test_data);
+     flash_writeb(test_data, 0, WREN);
+     /* test ability to write SRWD */
+@@ -561,8 +563,7 @@ static void test_status_reg_write_protection(const void *data)
+     /* write is not successful */
+     g_assert_cmphex(r & SRWD, ==, SRWD);
+ 
+-    qtest_set_irq_in(test_data->s,
+-                     "/machine/soc/fmc/ssi.0/child[0]", "WP#", 0, 1);
++    qtest_set_irq_in(test_data->s, test_data->node, "WP#", 0, 1);
+     flash_reset(test_data);
+ }
+ 
+@@ -572,8 +573,8 @@ static void test_write_block_protect(const void *data)
+     uint32_t sector_size = 65536;
+     uint32_t n_sectors = 512;
+ 
+-    spi_ce_ctrl(test_data, 1 << CRTL_EXTENDED0);
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_ce_ctrl(test_data, 1 << (CRTL_EXTENDED0 + test_data->cs));
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+ 
+     uint32_t bp_bits = 0b0;
+ 
+@@ -617,8 +618,8 @@ static void test_write_block_protect_bottom_bit(const void *data)
+     uint32_t sector_size = 65536;
+     uint32_t n_sectors = 512;
+ 
+-    spi_ce_ctrl(test_data, 1 << CRTL_EXTENDED0);
+-    spi_conf(test_data, CONF_ENABLE_W0);
++    spi_ce_ctrl(test_data, 1 << (CRTL_EXTENDED0 + test_data->cs));
++    spi_conf(test_data, 1 << (CONF_ENABLE_W0 + test_data->cs));
+ 
+     /* top bottom bit is enabled */
+     uint32_t bp_bits = 0b00100 << 3;
+@@ -676,6 +677,8 @@ static void test_palmetto_bmc(TestData *data)
+     data->flash_base = 0x20000000;
+     data->spi_base = 0x1E620000;
+     data->jedec_id = 0x20ba19;
++    data->cs = 0;
++    data->node = "/machine/soc/fmc/ssi.0/child[0]";
+ 
+     qtest_add_data_func("/ast2400/smc/read_jedec", data, test_read_jedec);
+     qtest_add_data_func("/ast2400/smc/erase_sector", data, test_erase_sector);
 -- 
 2.34.1
 

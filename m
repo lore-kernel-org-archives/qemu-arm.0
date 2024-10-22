@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a912d62e4sm321153666b.7.2024.10.22.03.56.15
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb675eb1bdsm2947453a12.10.2024.10.22.03.56.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 22 Oct 2024 03:56:15 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0741C5F913;
-	Tue, 22 Oct 2024 11:56:15 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id BF0265F8A6;
+	Tue, 22 Oct 2024 11:56:14 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Beraldo Leal <bleal@redhat.com>,
@@ -34,56 +34,85 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 04/20] meson: hide tsan related warnings
-Date: Tue, 22 Oct 2024 11:55:58 +0100
-Message-Id: <20241022105614.839199-5-alex.bennee@linaro.org>
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Ilya Leoshkevich <iii@linux.ibm.com>
+Subject: [PATCH v2 01/20] tests/docker: Fix microblaze atomics
+Date: Tue, 22 Oct 2024 11:55:55 +0100
+Message-Id: <20241022105614.839199-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241022105614.839199-1-alex.bennee@linaro.org>
 References: <20241022105614.839199-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 9B88/1ZwbcyW
+X-TUID: U8U99C6TfAYJ
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+From: Ilya Leoshkevich <iii@linux.ibm.com>
 
-When building with gcc-12 -fsanitize=thread, gcc reports some
-constructions not supported with tsan.
-Found on debian stable.
+GCC produces invalid code for microblaze atomics.
 
-qemu/include/qemu/atomic.h:36:52: error: ‘atomic_thread_fence’ is not supported with ‘-fsanitize=thread’ [-Werror=tsan]
-   36 | #define smp_mb()                     ({ barrier(); __atomic_thread_fence(__ATOMIC_SEQ_CST); })
-      |                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The fix is unfortunately not upstream, so fetch it from an external
+location and apply it locally.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20240910174013.1433331-2-pierrick.bouvier@linaro.org>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+Message-Id: <20240919152308.10440-1-iii@linux.ibm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- meson.build | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ .../debian-microblaze-cross.d/build-toolchain.sh          | 8 ++++++++
+ tests/docker/dockerfiles/debian-toolchain.docker          | 7 +++++++
+ 2 files changed, 15 insertions(+)
 
-diff --git a/meson.build b/meson.build
-index d26690ce20..bdd67a2d6d 100644
---- a/meson.build
-+++ b/meson.build
-@@ -538,7 +538,15 @@ if get_option('tsan')
-                          prefix: '#include <sanitizer/tsan_interface.h>')
-     error('Cannot enable TSAN due to missing fiber annotation interface')
-   endif
--  qemu_cflags = ['-fsanitize=thread'] + qemu_cflags
-+  tsan_warn_suppress = []
-+  # gcc (>=11) will report constructions not supported by tsan:
-+  # "error: ‘atomic_thread_fence’ is not supported with ‘-fsanitize=thread’"
-+  # https://gcc.gnu.org/gcc-11/changes.html
-+  # However, clang does not support this warning and this triggers an error.
-+  if cc.has_argument('-Wno-tsan')
-+    tsan_warn_suppress = ['-Wno-tsan']
-+  endif
-+  qemu_cflags = ['-fsanitize=thread'] + tsan_warn_suppress + qemu_cflags
-   qemu_ldflags = ['-fsanitize=thread'] + qemu_ldflags
- endif
+diff --git a/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh b/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
+index 23ec0aa9a7..c5cd0aa931 100755
+--- a/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
++++ b/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
+@@ -10,6 +10,8 @@ TOOLCHAIN_INSTALL=/usr/local
+ TOOLCHAIN_BIN=${TOOLCHAIN_INSTALL}/bin
+ CROSS_SYSROOT=${TOOLCHAIN_INSTALL}/$TARGET/sys-root
  
++GCC_PATCH0_URL=https://raw.githubusercontent.com/Xilinx/meta-xilinx/refs/tags/xlnx-rel-v2024.1/meta-microblaze/recipes-devtools/gcc/gcc-12/0009-Patch-microblaze-Fix-atomic-boolean-return-value.patch
++
+ export PATH=${TOOLCHAIN_BIN}:$PATH
+ 
+ #
+@@ -31,6 +33,12 @@ mv gcc-11.2.0 src-gcc
+ mv musl-1.2.2 src-musl
+ mv linux-5.10.70 src-linux
+ 
++#
++# Patch gcc
++#
++
++wget -O - ${GCC_PATCH0_URL} | patch -d src-gcc -p1
++
+ mkdir -p bld-hdr bld-binu bld-gcc bld-musl
+ mkdir -p ${CROSS_SYSROOT}/usr/include
+ 
+diff --git a/tests/docker/dockerfiles/debian-toolchain.docker b/tests/docker/dockerfiles/debian-toolchain.docker
+index 687a97fec4..ab4ce29533 100644
+--- a/tests/docker/dockerfiles/debian-toolchain.docker
++++ b/tests/docker/dockerfiles/debian-toolchain.docker
+@@ -10,6 +10,8 @@ FROM docker.io/library/debian:11-slim
+ # ??? The build-dep isn't working, missing a number of
+ # minimal build dependiencies, e.g. libmpc.
+ 
++RUN sed 's/^deb /deb-src /' </etc/apt/sources.list >/etc/apt/sources.list.d/deb-src.list
++
+ RUN apt update && \
+     DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
+     DEBIAN_FRONTEND=noninteractive eatmydata \
+@@ -33,6 +35,11 @@ RUN cd /root && ./build-toolchain.sh
+ # and the build trees by restoring the original image,
+ # then copying the built toolchain from stage 0.
+ FROM docker.io/library/debian:11-slim
++RUN apt update && \
++    DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
++    DEBIAN_FRONTEND=noninteractive eatmydata \
++    apt install -y --no-install-recommends \
++        libmpc3
+ COPY --from=0 /usr/local /usr/local
+ # As a final step configure the user (if env is defined)
+ ARG USER
 -- 
 2.39.5

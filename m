@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66c7262bsm2981150a12.82.2024.10.22.03.56.15
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a91307874sm323980966b.94.2024.10.22.03.56.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Oct 2024 03:56:15 -0700 (PDT)
+        Tue, 22 Oct 2024 03:56:19 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id D35445F8CC;
-	Tue, 22 Oct 2024 11:56:14 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 2F1E35F92E;
+	Tue, 22 Oct 2024 11:56:15 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Beraldo Leal <bleal@redhat.com>,
@@ -35,52 +35,45 @@ Cc: Beraldo Leal <bleal@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 02/20] tests/docker: add NOFETCH env variable for testing
-Date: Tue, 22 Oct 2024 11:55:56 +0100
-Message-Id: <20241022105614.839199-3-alex.bennee@linaro.org>
+Subject: [PATCH v2 06/20] scripts/ci: remove architecture checks for build-environment updates
+Date: Tue, 22 Oct 2024 11:56:00 +0100
+Message-Id: <20241022105614.839199-7-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241022105614.839199-1-alex.bennee@linaro.org>
 References: <20241022105614.839199-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 1qTPnh0stpvq
+X-TUID: iPMIvpY1pasI
 
-Testing non-auto built docker containers (i.e. custom built compilers)
-is a bit fiddly as you couldn't continue a build with a previously
-locally built container. While you can play games with REGISTRY its
-simpler to allow a NOFETCH that will go through the cached build
-process when you run the tests.
+We were missing s390x here. There isn't much point testing for the
+architecture here as we will fail anyway if the appropriate package
+list is missing.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/Makefile.include | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ scripts/ci/setup/ubuntu/build-environment.yml | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index 681feae744..fead7d3abe 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -92,10 +92,10 @@ endif
- docker-image-alpine: NOUSER=1
+diff --git a/scripts/ci/setup/ubuntu/build-environment.yml b/scripts/ci/setup/ubuntu/build-environment.yml
+index edf1900b3e..56b51609e3 100644
+--- a/scripts/ci/setup/ubuntu/build-environment.yml
++++ b/scripts/ci/setup/ubuntu/build-environment.yml
+@@ -39,7 +39,6 @@
+       when:
+         - ansible_facts['distribution'] == 'Ubuntu'
+         - ansible_facts['distribution_version'] == '22.04'
+-        - ansible_facts['architecture'] == 'aarch64' or ansible_facts['architecture'] == 'x86_64'
  
- debian-toolchain-run = \
--	$(if $(NOCACHE), 						\
-+	$(if $(NOCACHE)$(NOFETCH),					\
- 		$(call quiet-command,					\
- 			$(DOCKER_SCRIPT) build -t qemu/$1 -f $< 	\
--			$(if $V,,--quiet) --no-cache 			\
-+			$(if $V,,--quiet) $(if $(NOCACHE),--no-cache)	\
- 			--registry $(DOCKER_REGISTRY) --extra-files	\
- 			$(DOCKER_FILES_DIR)/$1.d/build-toolchain.sh,	\
- 			"BUILD", $1),				        \
-@@ -177,6 +177,7 @@ docker:
- 	@echo '    NETWORK=$$BACKEND     Enable virtual network interface with $$BACKEND.'
- 	@echo '    NOUSER=1             Define to disable adding current user to containers passwd.'
- 	@echo '    NOCACHE=1            Ignore cache when build images.'
-+	@echo '    NOFETCH=1            Do not fetch from the registry.'
- 	@echo '    EXECUTABLE=<path>    Include executable in image.'
- 	@echo '    EXTRA_FILES="<path> [... <path>]"'
- 	@echo '                         Include extra files in image.'
+     - name: Install packages for QEMU on Ubuntu 22.04
+       package:
+@@ -47,7 +46,6 @@
+       when:
+         - ansible_facts['distribution'] == 'Ubuntu'
+         - ansible_facts['distribution_version'] == '22.04'
+-        - ansible_facts['architecture'] == 'aarch64' or ansible_facts['architecture'] == 'x86_64'
+ 
+     - name: Install armhf cross-compile packages to build QEMU on AArch64 Ubuntu 22.04
+       package:
 -- 
 2.39.5

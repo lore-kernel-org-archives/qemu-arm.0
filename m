@@ -1,191 +1,254 @@
-Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp13774njb;
-        Tue, 22 Oct 2024 14:45:40 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWhd5N0yJkqsyfvMcOOypOa/VTpWmTuOkmDIAwvenU5gMS5H+SYmXvzs0r9onPkGMmV8/pahOuLZeuiBw==@linaro.org
-X-Google-Smtp-Source: AGHT+IF83MUWPrY7zSN0giMqFd+noZggb2cQ4xJBWTehvINVPjhzKHHJQYHjZ/5N/U3plpQslZ6V
-X-Received: by 2002:a05:6359:458d:b0:1c3:66d1:8078 with SMTP id e5c5f4694b2df-1c3d819e3dfmr36898755d.18.1729633540740;
-        Tue, 22 Oct 2024 14:45:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729633540; cv=none;
+Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp82414njb;
+        Tue, 22 Oct 2024 17:18:20 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX0G4wUEUeKydGnpZn0jCLfhiCUnj4AAajRcKOHFdIa2pczF/4EuRT1XwajfVRCuznlEKGbzXlVRqzsNw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGETgj/KZMKjweLG8cuKWJIDbZh+mGPkwLuiXPNEZXaBQ4B3zZs2x1FHu1xktRbKkrJNXAu
+X-Received: by 2002:a05:690c:dc9:b0:6be:28ab:d874 with SMTP id 00721157ae682-6e7f0dbbd76mr10378867b3.2.1729642699975;
+        Tue, 22 Oct 2024 17:18:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729642699; cv=none;
         d=google.com; s=arc-20240605;
-        b=Capk/XrL6Xjkx1lCLs4j7b2aFM3MLD6pqHMFnEeSMyo6JwNWczMsqokFls3MW/r/zm
-         RXZEJiIVVUyZzn7p23fMIzBGFmvRmhzCvkPoemI4//s10D+uma1jXKBLYFa5mOf9sFEI
-         zPU4EpGpzl0bslkWc97nzntaknHbyQgKwDTEiertDBzwMMpBihh81IZVUU9sVmVDs9Dl
-         Z4Vkqg239R2qkIsyMLbOD2SFxhisZQ2unIzEVFNNi9/TyU1oKk9WOw7jfWpm6YE2QJdv
-         dyOBARE4v8B9ExuyuO0AMN/Ooy07ELFCRmgwmqby1X0OyYyMeAQDjHUt9Dp5lQ69Q9xM
-         Z3VA==
+        b=fj8u81G9n7aETyCmIqP6OahRGP2dNdJv3oiOWQsouroy9jUTH2f0xh6F+1hZjqSs8+
+         He1r5v0shaC5wawWFnreDUVQnDfskP8iQeALhyTMlG0uMnnD1tDjxeCR/jj2lGh/xb9Q
+         9q2Lk2DgO7cYJ1ehCzW6iWV/fdAEn0Vb4cLCZuCbyFpR8lbFZAC1g3VM9SerWd4Mhxng
+         ubdNw71v3cQUDXD8YO7xePb6y8QFYqE77uFSOvT9F49zV+rtIqmZLMAWFjRyGoepRFY6
+         1tgzQu+BJSlbTfJ9aG1cO/TeX9sewwFz0rkwJMgRn/a1VN5TtnpgzNbCp68aadR53RSJ
+         rK7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ZnM6ntIP/B/pJcZOvtXOMQQynVkp6BnyRgAw0610MbU=;
-        fh=DGffonLYqcCcp6mbOfx+WUsUV0Mf/6jkInXLzkJmEac=;
-        b=MYiD0pgO4eFP0dYqJUx/DzKqok8QqKecBNFKBodLU3FXAzA4reoZAVwxzNKXPMkc9m
-         L7kIXENeoBdjHeQyLkNbGundqSRKftKuqmRgxSvGgrx0bppDM8MGRjMuv+0SoxvVBmAb
-         HGShCjvBnkvaTdeMyultFLy0CXTBRT/DYAZxW9OMGm2eHF4DEagDP3YaviEtUXqs+bGI
-         7mjvHEyLUC9eXdu5GCkezGdH50BsyQKGjXRBz2In8QrwCGXARyd+XZPXLVZ0KJpUuuUU
-         YiqOpWM3GCzhsuLtToH3Pnr2J/0f38VRkhzN42637ULLFcNswk1lscCLnPqjj6x77/Wf
-         47bg==;
+        h=mime-version:content-transfer-encoding:user-agent:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=SBoBNINTmrmrZ6PS1raunSzBNj06bgQiQWurqk8pEkc=;
+        fh=G03eyFs6nj7eLWRqZanM8fnN+reaFU+SHvlp6Dvz0Ig=;
+        b=GSBJmrnZNt51qSYKJ6CkhZRsah63ltJbgl729XtJ4v6fR8hzlEXd0LoAFwlqi187lw
+         2+co7z2CBmUPVx2HN6EDJSF/ga8+g8h3cUNZzwWnMvPL5wtrx67/3DzMWia1elDdHB1p
+         /vydk2idxyQDg66UnWGcuVsPgTRM8GFO84GovtzF1Rl0bKjZah5sNe/260kaUBFw8I1w
+         AgstWSWgIsViuXUHkNAk3bSMTZ3gr1aLf2swtgngH0Q2uR/QsbtzOc/HDyPZvOlvUEVA
+         WBXsmFY/tE3dx2dR83+E7ZMhiGnJodOtttEN74Q1BvKDr8ZuZcMHVr08uQBBHMW/cKKF
+         IhCQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="O/IsZRxc";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b1659fa225si722373085a.164.2024.10.22.14.45.40
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 14:45:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OH+kt1r1;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id 00721157ae682-6e5f5ce40fesi52783157b3.234.2024.10.22.17.18.19
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 Oct 2024 17:18:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="O/IsZRxc";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t3Mgm-0003xX-7W; Tue, 22 Oct 2024 17:45:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t3Mgk-0003x9-9x
- for qemu-devel@nongnu.org; Tue, 22 Oct 2024 17:45:14 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t3Mgi-0007iQ-Bv
- for qemu-devel@nongnu.org; Tue, 22 Oct 2024 17:45:13 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-20c805a0753so53327905ad.0
- for <qemu-devel@nongnu.org>; Tue, 22 Oct 2024 14:45:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729633511; x=1730238311; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ZnM6ntIP/B/pJcZOvtXOMQQynVkp6BnyRgAw0610MbU=;
- b=O/IsZRxcw5T1HVi+q/nYydNc6bKdwGnm2JyopEyON5IZaL5fC5Yt3foPcASzNZAVlF
- AF43k2+89gYI48x6u2yGNSsOw9Oa/efMRcuWtWvY2+1pNFpMZszhq/7wTuU9t3xVL73n
- pVtBX74pmDKs4ARed/HRhlFr+NmKxshrtYfMRdgPqfsPhVQxOgC2rM1jmOq/WmyZJ6Sk
- iqk19WQB+mtBPwr7EtPh7uQoaM+0/BDs4bXIt00xMTh/lCnTWxsEHGe5Iqny9QikstaM
- i/CZJN89APRLvIim5x34Ez1n2Rr992Tl/gMaTpirn7hdN3jp2VLksYbjt512a1t9bBIP
- yUMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729633511; x=1730238311;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZnM6ntIP/B/pJcZOvtXOMQQynVkp6BnyRgAw0610MbU=;
- b=eqT9rfYApQnxOLrQJ7ZrJgyjxR0sau4o5OVJ3FAaF4a7Ys1ki1hcb1eYfcKtHRgsES
- OvL8ULPKBckCT2OqeXYYoGA7O7CJ/Ql3CjanEPVYXWt8XQmELs7IBTIoCl+MgfsoXB0Y
- g7tcZx/C9n4Hymzk4B09MXlKV+JU1ek7ksu4xNHQP3OWltW529todHL1e8kOYD8YbxeT
- kbh6vNczzDYxzfIIuGcREEea8Lr6dwNKtqebYPiYEMBkQPZV4nVrqIcBqdeNethzQdIU
- W6XazhoOMVflMf8u8vQAeBkaKAHt44rUQMYKVZINzK7ogN3HKC6P11jzfSZHcAeF5/r8
- GicA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW+0YbAURltsHYgPbdGipfdx6rO6Ia9CYcAQXK32VPNc0U2x7aOk9LapdCuh2UdyD4NW9RVXZR9cfpv@nongnu.org
-X-Gm-Message-State: AOJu0YyvX1NVnQUiHj9U5pNzRcze1qxF1LeilbrR97A26z21q1vF5y7r
- XEYkJTYFmUGSUxZJUbqzr9RC2iiNvu7trjY44A8MRS8H8303JM2Uf5ONcTH3B9M=
-X-Received: by 2002:a17:902:d4cf:b0:20c:b517:d715 with SMTP id
- d9443c01a7336-20fa9e5e89bmr6397075ad.25.1729633510773; 
- Tue, 22 Oct 2024 14:45:10 -0700 (PDT)
-Received: from [192.168.100.49] ([45.176.88.171])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-20e7f0db2c8sm47097885ad.195.2024.10.22.14.45.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 22 Oct 2024 14:45:10 -0700 (PDT)
-Message-ID: <2b8cc882-062f-4278-a043-60e2a135f425@linaro.org>
-Date: Tue, 22 Oct 2024 18:45:06 -0300
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OH+kt1r1;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 49MLoBML006937;
+	Wed, 23 Oct 2024 00:16:54 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=pp1; bh=SBoBNI
+	NTmrmrZ6PS1raunSzBNj06bgQiQWurqk8pEkc=; b=OH+kt1r1ac46DhWewUxJSv
+	VXQziNTkLk4XNNmuSOuq6sX1lhNEDpbRuv7aT3Tr1c//aHBuxdVvkMAut0Wh4Dve
+	xpOHh5ZsQTs8u2mnhVuQvcICbDsiCECTTmAGZQRIw5kTq3bVyc2mW1suRswGD4wF
+	KDhvbJRj0vSedvp/8aEpYJHZ5VKC2QaRJ4wkiYSYOTsfJVAH88OKmXs5DXq9cN4J
+	N/SuTKQWlc29JViCL6WSTibw6DBfmMqq+EWRWcGXKCXliBs7NzjxCSnm0Jyq9WGq
+	z1ezOywt4kb4Jdlp2DevWPWAJgwpqQGHee8IKE8ge5mYpyj8e8QBLOJZDi+Vtdmg
+	==
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 42emafrds9-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 23 Oct 2024 00:16:54 +0000 (GMT)
+Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
+	by pps.reinject (8.18.0.8/8.18.0.8) with ESMTP id 49N0GrLj023088;
+	Wed, 23 Oct 2024 00:16:53 GMT
+Received: from ppma12.dal12v.mail.ibm.com (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 42emafrds8-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 23 Oct 2024 00:16:53 +0000 (GMT)
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma12.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 49MM8hIG001552;
+	Wed, 23 Oct 2024 00:16:52 GMT
+Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
+	by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 42emk98cny-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 23 Oct 2024 00:16:52 +0000
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
+	by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 49N0GpHJ45285632
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 23 Oct 2024 00:16:51 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 0FBD020043;
+	Wed, 23 Oct 2024 00:16:51 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 83BB620040;
+	Wed, 23 Oct 2024 00:16:49 +0000 (GMT)
+Received: from [127.0.0.1] (unknown [9.152.108.100])
+	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Wed, 23 Oct 2024 00:16:49 +0000 (GMT)
+Message-ID: <4c383f09bd6bd9b488ad301e5f050b8c9971f3a2.camel@linux.ibm.com>
+Subject: Re: [PATCH v2 07/20] tests/tcg/x86_64: Add cross-modifying code test
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+        Alex
+ =?ISO-8859-1?Q?Benn=E9e?=
+	 <alex.bennee@linaro.org>,
+        qemu-devel@nongnu.org
+Cc: Beraldo Leal <bleal@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+        Wainer dos Santos Moschetta <wainersm@redhat.com>,
+        Mahmoud Mandour
+ <ma.mandourr@gmail.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Yanan Wang
+ <wangyanan55@huawei.com>, Thomas Huth <thuth@redhat.com>,
+        John Snow
+ <jsnow@redhat.com>,
+        =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau
+ <marcandre.lureau@redhat.com>,
+        qemu-arm@nongnu.org,
+        "Daniel P."
+ =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>,
+        Eduardo Habkost
+ <eduardo@habkost.net>, devel@lists.libvirt.org,
+        Cleber Rosa
+ <crosa@redhat.com>, kvm@vger.kernel.org,
+        Philippe
+ =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+        Alexandre Iooss
+ <erdnaxe@crans.org>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Richard
+ Henderson <richard.henderson@linaro.org>,
+        Riku Voipio
+ <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
+        Marcelo Tosatti
+ <mtosatti@redhat.com>,
+        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Paolo Bonzini
+ <pbonzini@redhat.com>
+Date: Wed, 23 Oct 2024 02:16:49 +0200
+In-Reply-To: <6b18238b-f9c3-4046-964f-de16dc30d26e@linaro.org>
+References: <20241022105614.839199-1-alex.bennee@linaro.org>
+	 <20241022105614.839199-8-alex.bennee@linaro.org>
+	 <6b18238b-f9c3-4046-964f-de16dc30d26e@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.52.4 (3.52.4-1.fc40) 
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: H5mvpg5WpP0LgFN83-PfKKlyGVf_CLmb
+X-Proofpoint-ORIG-GUID: bhM4KN_iLhtvPV9j9L2Gh6SjUqCU3ZM7
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-UnRewURL: 0 URL was un-rewritten
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] tests/functional: Add a functional test for the
- collie board
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>, Thomas Huth <thuth@redhat.com>
-References: <20241017163247.711244-1-peter.maydell@linaro.org>
- <20241017163247.711244-2-peter.maydell@linaro.org>
- <977b5038-fa06-46d4-946d-f60135ecf106@linaro.org>
- <ZxdO57heifGyI4lw@redhat.com>
- <CAFEAcA9G_VjeUSgGW4b_WihkJ18JtO=a=VFYsrhgL=FYxd4dpg@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA9G_VjeUSgGW4b_WihkJ18JtO=a=VFYsrhgL=FYxd4dpg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=philmd@linaro.org; helo=mail-pl1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mrA52ICVgAPn
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
+ definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 spamscore=0
+ priorityscore=1501 bulkscore=0 lowpriorityscore=0 malwarescore=0
+ mlxscore=0 adultscore=0 mlxlogscore=999 phishscore=0 suspectscore=0
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2409260000 definitions=main-2410220156
+X-TUID: h4uryx8vAYUR
 
-On 22/10/24 06:02, Peter Maydell wrote:
-> On Tue, 22 Oct 2024 at 08:09, Daniel P. Berrangé <berrange@redhat.com> wrote:
->>
->> On Tue, Oct 22, 2024 at 01:11:31AM -0300, Philippe Mathieu-Daudé wrote:
->>> On 17/10/24 13:32, Peter Maydell wrote:
->>>> Add a functional test for the collie board that uses the kernel and
->>>> rootfs provided by Guenter Roeck in the linux-test-downloads repo:
->>>>    https://github.com/groeck/linux-test-downloads/
->>>>
->>>> This just boots Linux with a userspace that immediately reboots
->>>> the board, so we wait for the reboot log line.
->>>>
->>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>>> ---
->>>>    MAINTAINERS                         |  1 +
->>>>    tests/functional/meson.build        |  1 +
->>>>    tests/functional/test_arm_collie.py | 31 +++++++++++++++++++++++++++++
->>>>    3 files changed, 33 insertions(+)
->>>>    create mode 100755 tests/functional/test_arm_collie.py
->>>
->>>
->>>> +class CollieTest(LinuxKernelTest):
->>>> +
->>>> +    ASSET_ZIMAGE = Asset(
->>>> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/collie/zImage',
->>>> +        '10ace8abf9e0875ef8a83b8829cc3b5b50bc6d7bc3ca29f19f49f5673a43c13b')
->>>> +
->>>> +    ASSET_ROOTFS = Asset(
->>>> +        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/collie/rootfs-sa110.cpio',
->>>> +        '89ccaaa5c6b33331887047e1618ffe81b0f55909173944347d5d2426f3bcc1f2')
->>>
->>> Should we wrap these lines to comply with checkpatch.pl?
->>
->> While we have some line wrapped URLs in the tests already, IMHO they are
->> pretty awful to look at. I think we should make URLs be an exception to
->> line wrapping rules, provided the URL is the /only/ thing on the line.
+On Tue, 2024-10-22 at 13:36 -0700, Pierrick Bouvier wrote:
+> On 10/22/24 03:56, Alex Benn=C3=A9e wrote:
+> > From: Ilya Leoshkevich <iii@linux.ibm.com>
+> >=20
+> > commit f025692c992c ("accel/tcg: Clear PAGE_WRITE before
+> > translation")
+> > fixed cross-modifying code handling, but did not add a test. The
+> > changed code was further improved recently [1], and I was not sure
+> > whether these modifications were safe (spoiler: they were fine).
+> >=20
+> > Add a test to make sure there are no regressions.
+> >=20
+> > [1]
+> > https://lists.gnu.org/archive/html/qemu-devel/2022-09/msg00034.html
+> >=20
+> > Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+> > Message-Id: <20241001150617.9977-1-iii@linux.ibm.com>
+> > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> > ---
+> > =C2=A0 tests/tcg/x86_64/cross-modifying-code.c | 80
+> > +++++++++++++++++++++++++
+> > =C2=A0 tests/tcg/x86_64/Makefile.target=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 |=C2=A0 4 ++
+> > =C2=A0 2 files changed, 84 insertions(+)
+> > =C2=A0 create mode 100644 tests/tcg/x86_64/cross-modifying-code.c
+> >=20
+> > diff --git a/tests/tcg/x86_64/cross-modifying-code.c
+> > b/tests/tcg/x86_64/cross-modifying-code.c
+> > new file mode 100644
+> > index 0000000000..2704df6061
+> > --- /dev/null
+> > +++ b/tests/tcg/x86_64/cross-modifying-code.c
+> > @@ -0,0 +1,80 @@
+> > +/*
+> > + * Test patching code, running in one thread, from another thread.
+> > + *
+> > + * Intel SDM calls this "cross-modifying code" and recommends a
+> > special
+> > + * sequence, which requires both threads to cooperate.
+> > + *
+> > + * Linux kernel uses a different sequence that does not require
+> > cooperation and
+> > + * involves patching the first byte with int3.
+> > + *
+> > + * Finally, there is user-mode software out there that simply uses
+> > atomics, and
+> > + * that seems to be good enough in practice. Test that QEMU has no
+> > problems
+> > + * with this as well.
+> > + */
+> > +
+> > +#include <assert.h>
+> > +#include <pthread.h>
+> > +#include <stdbool.h>
+> > +#include <stdlib.h>
+> > +
+> > +void add1_or_nop(long *x);
+> > +asm(".pushsection .rwx,\"awx\",@progbits\n"
+> > +=C2=A0=C2=A0=C2=A0 ".globl add1_or_nop\n"
+> > +=C2=A0=C2=A0=C2=A0 /* addq $0x1,(%rdi) */
+> > +=C2=A0=C2=A0=C2=A0 "add1_or_nop: .byte 0x48, 0x83, 0x07, 0x01\n"
+> > +=C2=A0=C2=A0=C2=A0 "ret\n"
+> > +=C2=A0=C2=A0=C2=A0 ".popsection\n");
+> > +
+> > +#define THREAD_WAIT 0
+> > +#define THREAD_PATCH 1
+> > +#define THREAD_STOP 2
+> > +
+> > +static void *thread_func(void *arg)
+> > +{
+> > +=C2=A0=C2=A0=C2=A0 int val =3D 0x0026748d; /* nop */
+> > +
+> > +=C2=A0=C2=A0=C2=A0 while (true) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 switch (__atomic_load_n((in=
+t *)arg, __ATOMIC_SEQ_CST)) {
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case THREAD_WAIT:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bre=
+ak;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case THREAD_PATCH:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 val=
+ =3D __atomic_exchange_n((int *)&add1_or_nop, val,
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 __ATOMIC_SEQ_CST);
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bre=
+ak;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case THREAD_STOP:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret=
+urn NULL;
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 default:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ass=
+ert(false);
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 __b=
+uiltin_unreachable();
+>=20
+> Use g_assert_not_reached() instead.
+> checkpatch emits an error for it now.
 
-Clever, fine by me.
+Is there an easy way to include glib from testcases?
+It's located using meson, and I can't immediately see how to push the
+respective compiler flags to the test Makefiles - this seems to be
+currently handled by configure writing to $config_target_mak.
 
-> Our style guide already says
-> "If wrapping the line at 80 columns is obviously less readable and more
->   awkward, prefer not to wrap it"
-> and that's the principle under which I chose not to wrap these.
-> 
-> (I think of this as analogous to George Orwell's "Break any
-> of these rules sooner than say anything outright barbarous"
-> rule for writing English...)
-> 
-> -- PMM
+[...]
 

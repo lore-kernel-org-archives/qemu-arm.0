@@ -1,253 +1,227 @@
-Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp72742njb;
-        Tue, 22 Oct 2024 16:57:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVoU4nQRyDGVdYnrOAQyF0VFlUwFh3k4htY6qzRsmsTLXfs4HosFh1RtagDwcjU7dWpnqSaV1RRqFFVZA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEuimT7zAwg6J0UIUkVRlLuOk5q07PcgXbp4+YF5t8c2Yiygi4H1UM3m1xkhGdrvhcGg4rF
-X-Received: by 2002:a05:600c:1c95:b0:42c:de34:34c1 with SMTP id 5b1f17b1804b1-43184133fc4mr5620095e9.2.1729641476625;
-        Tue, 22 Oct 2024 16:57:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729641476; cv=none;
+Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp98599njb;
+        Tue, 22 Oct 2024 18:01:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUCixrptCYNUUrolBHGGk3Kvz6xe3PUWvRjwuyWF7Ive2eUIDKrNg9vBVYQg8iiQCDkjzaNDTCCLJKbNQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHvFOOY832+lPBQ6eMvR69iZ1mzU6uA0jaqE4gBsQPA2j9AZ29Dju0F9ttXWL14Ec/GZsP4
+X-Received: by 2002:adf:ed8d:0:b0:37c:d276:f04 with SMTP id ffacd0b85a97d-37efcf84877mr382092f8f.45.1729645286633;
+        Tue, 22 Oct 2024 18:01:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729645286; cv=none;
         d=google.com; s=arc-20240605;
-        b=d8T9xea9P721tI/ZQMUeBiqIsv5hB1uSQwq0qVjYR+iwNQJU6loZTw+FfRC8d0p66l
-         /63csoeHysDeaIe57w2qHe9Z1F/xu80sz/DdLXwQRx1zaMApgTCbCyShF9SxvqOYUFnh
-         BnFHecDkl9cGPuz1aui69GvWWgaWAFMHDpI1DeObquqmzrUDcASsUCcvWfxY7uj++mRU
-         eXCMnR/iHPMbsNYJ4aydCsg9UE/BowqQTakrwrDY7bOVi01PJI9qNeGpaJPHx8MQrjoE
-         ydL+cypfG936ZX8/aIOFsPQWVSt0pW/yDCz2UuVIpdFI7RsNZnLUmh2O0xNoebSIAFOv
-         c7gg==
+        b=ZQ0qLP2u1R/YpYnffATNrYiNRv2w1YlVO3RGUJyKyULD53ER6FufQ8HeXOrsfwP5Ss
+         X+r6RtRaB2Mhyu01dgbnVm1swpCzp+U8m4n6YflhVl0yPp0jo72Otnvexxe/FYG+dMJ9
+         m9HH5u6GGkOyajY3Uz7G5QxslLdGSQiB/j0dQkBrUFJipIvzn7y7XuvDljdLewH3S2Hs
+         T6mJNeq6lOab/LxN451tLC1HvkTY8Vdx28cj3Rh4QVY6SxCmgFxiBx19fLtz2oM2aLwE
+         z+N9HFRiwgciaFF4MXAy8dpaegvQAj4IURWEP0q82fW1KkVT84mOhXTql9qjChJYP93U
+         GZjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=mime-version:content-transfer-encoding:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:subject:cc:to:from;
-        bh=Mjx0sRpzwnARzaYW1qwtigRQEFlREg/2KbbSund29jg=;
-        fh=b/SX6GG71f9+bLfLBvQcX6oLBcOeE4ofRqFQKBOtBxw=;
-        b=ChC45OOGbqp10Rzj8SF/eovmA4coCgQTTrJ3Vbqmo/DoKdD8qhXe786sjL9TXKHa6D
-         dOLCwkbYgtEyGNkqWt/4XmlXixaJ2RxPFCVKMMH9GBOdZKI9l5ZiRXO2HrEJAbyO9kLj
-         gHMh6Hp71SgyKDnpnwml2zgXv+S98JOhfdZ+Vv1/OMWGgxxwDemTmHmAybJcQpJeSTFm
-         e2BolHSKXidx/OiWh1MTjSnkB43DBawHZ9P3+6g+LT48V6KkywghSpGIM0u8WJneOHy2
-         cE4QCTrTkF8MbpnDgPfXqC2/Ij8SWW043cI2TNueOsDorjrpyjvIWVvS3H2YHuMyFpP2
-         1ZEg==;
+        bh=80+OMAZPsYyCtPoIoM8QU9FCXSnzQPSUaikPpWxWsrU=;
+        fh=pI0wqCmSJQDqpPrtMrpR4bkXnvzM5iCeCK7s4v8UZEM=;
+        b=kCydsvdjgxUzAscQ6v+0wmhaho2RwA4j66nS2cqsIu9zoVvbWggifjeiX1Re1UUA9q
+         Vm+icqY76kgelkdXwxl/I1nlckIzxUiceXF5yryovJOA4GatAH+46g90ErIKJdUCAAA7
+         6euoPK/wwACuvAXHcPmQGmp11lSkDam9GPyMyRNyrP6YAD9zAR2DDup8/EDc507klK/J
+         m/s3dtkgvZKMiQMcdqGSMPHK/Rm9MpbRyt//9owFq/oWfaRUn9JuKjom764Ei6arDksn
+         IdSV9qSZYNMzOQF8W9oOhzcREfD8QiX4fNU7BMuPtIeJBFYuhe1rhnVBzYHtuawDACL2
+         77UA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-43186c3a8a5si245775e9.107.2024.10.22.16.57.56
+        by mx.google.com with ESMTPS id ffacd0b85a97d-37ee0b9ac38si2968594f8f.569.2024.10.22.18.01.26
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 Oct 2024 16:57:56 -0700 (PDT)
+        Tue, 22 Oct 2024 18:01:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XY8Gz1BSDz6K9By;
-	Wed, 23 Oct 2024 07:56:59 +0800 (CST)
-Received: from frapeml100005.china.huawei.com (unknown [7.182.85.132])
-	by mail.maildlp.com (Postfix) with ESMTPS id 9F946140B35;
-	Wed, 23 Oct 2024 07:57:55 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XY9fz6M15z6K6ND;
+	Wed, 23 Oct 2024 08:59:23 +0800 (CST)
+Received: from frapeml500005.china.huawei.com (unknown [7.182.85.13])
+	by mail.maildlp.com (Postfix) with ESMTPS id 6CADE1401F3;
+	Wed, 23 Oct 2024 09:01:25 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (7.182.85.172) by
- frapeml100005.china.huawei.com (7.182.85.132) with Microsoft SMTP Server
+ frapeml500005.china.huawei.com (7.182.85.13) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 23 Oct 2024 01:57:55 +0200
+ 15.1.2507.39; Wed, 23 Oct 2024 03:01:25 +0200
 Received: from frapeml500007.china.huawei.com ([7.182.85.172]) by
  frapeml500007.china.huawei.com ([7.182.85.172]) with mapi id 15.01.2507.039;
- Wed, 23 Oct 2024 01:57:55 +0200
+ Wed, 23 Oct 2024 03:01:24 +0200
 From: Salil Mehta <salil.mehta@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, "maz@kernel.org"
-	<maz@kernel.org>, "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
-	Jonathan Cameron <jonathan.cameron@huawei.com>, "lpieralisi@kernel.org"
-	<lpieralisi@kernel.org>, "peter.maydell@linaro.org"
+To: Gustavo Romero <gustavo.romero@linaro.org>, "qemu-devel@nongnu.org"
+	<qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+	"mst@redhat.com" <mst@redhat.com>
+CC: "maz@kernel.org" <maz@kernel.org>, "jean-philippe@linaro.org"
+	<jean-philippe@linaro.org>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+	"lpieralisi@kernel.org" <lpieralisi@kernel.org>, "peter.maydell@linaro.org"
 	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "andrew.jones@linux.dev"
-	<andrew.jones@linux.dev>, "david@redhat.com" <david@redhat.com>,
-	"philmd@linaro.org" <philmd@linaro.org>, "eric.auger@redhat.com"
-	<eric.auger@redhat.com>, "will@kernel.org" <will@kernel.org>,
-	"ardb@kernel.org" <ardb@kernel.org>, "oliver.upton@linux.dev"
-	<oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"gshan@redhat.com" <gshan@redhat.com>, "rafael@kernel.org"
-	<rafael@kernel.org>, "borntraeger@linux.ibm.com" <borntraeger@linux.ibm.com>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "npiggin@gmail.com"
-	<npiggin@gmail.com>, "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>,
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn"
-	<maobibo@loongson.cn>, "lixianglai@loongson.cn" <lixianglai@loongson.cn>,
-	"shahuang@redhat.com" <shahuang@redhat.com>, "zhao1.liu@intel.com"
-	<zhao1.liu@intel.com>, Linuxarm <linuxarm@huawei.com>,
-	"gustavo.romero@linaro.org" <gustavo.romero@linaro.org>
+	<richard.henderson@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>,
+	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "david@redhat.com"
+	<david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>,
+	"eric.auger@redhat.com" <eric.auger@redhat.com>, "will@kernel.org"
+	<will@kernel.org>, "ardb@kernel.org" <ardb@kernel.org>,
+	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+	<pbonzini@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>,
+	"rafael@kernel.org" <rafael@kernel.org>, "borntraeger@linux.ibm.com"
+	<borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
+	<alex.bennee@linaro.org>, "npiggin@gmail.com" <npiggin@gmail.com>,
+	"harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, "linux@armlinux.org.uk"
+	<linux@armlinux.org.uk>, "darren@os.amperecomputing.com"
+	<darren@os.amperecomputing.com>, "ilkka@os.amperecomputing.com"
+	<ilkka@os.amperecomputing.com>, "vishnu@os.amperecomputing.com"
+	<vishnu@os.amperecomputing.com>, "karl.heubaum@oracle.com"
+	<karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>,
+	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian
+	<zhukeqian1@huawei.com>, "wangxiongfeng (C)" <wangxiongfeng2@huawei.com>,
+	"wangyanan (Y)" <wangyanan55@huawei.com>, "jiakernel2@gmail.com"
+	<jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>,
+	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, "shahuang@redhat.com"
+	<shahuang@redhat.com>, "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm
+	<linuxarm@huawei.com>
 Subject: RE: [PATCH V1 3/4] hw/acpi: Reflect ACPI vCPU {present,enabled}
  states in ACPI _STA.{PRES,ENA} Bits
 Thread-Topic: [PATCH V1 3/4] hw/acpi: Reflect ACPI vCPU {present,enabled}
  states in ACPI _STA.{PRES,ENA} Bits
-Thread-Index: AQHbHm6XRQnHA1hqSkuTlA12W4mCybKMdIeAgAcJKtA=
-Date: Tue, 22 Oct 2024 23:57:55 +0000
-Message-ID: <a8f41af5e450446e8dd68ebf9b9305a6@huawei.com>
+Thread-Index: AQHbHm6XRQnHA1hqSkuTlA12W4mCybKQXiWAgAMhhdA=
+Date: Wed, 23 Oct 2024 01:01:24 +0000
+Message-ID: <f3b24abb74604f07aa76bead91277d6d@huawei.com>
 References: <20241014192205.253479-1-salil.mehta@huawei.com>
-	<20241014192205.253479-4-salil.mehta@huawei.com>
- <20241018162437.782c12c1@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20241018162437.782c12c1@imammedo.users.ipa.redhat.com>
+ <20241014192205.253479-4-salil.mehta@huawei.com>
+ <700f6b4b-e609-42fe-afaf-e9ea62a049e1@linaro.org>
+In-Reply-To: <700f6b4b-e609-42fe-afaf-e9ea62a049e1@linaro.org>
 Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach:
 X-MS-TNEF-Correlator:
 x-originating-ip: [10.48.148.112]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-TUID: xrn6+xYvalx+
+X-TUID: 2NuMyC5j2fKE
 
-Hi Igor,
-
->  From: Igor Mammedov <imammedo@redhat.com>
->  Sent: Friday, October 18, 2024 3:25 PM
->  To: Salil Mehta <salil.mehta@huawei.com>
->  Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; mst@redhat.com;
->  maz@kernel.org; jean-philippe@linaro.org; Jonathan Cameron
->  <jonathan.cameron@huawei.com>; lpieralisi@kernel.org;
->  peter.maydell@linaro.org; richard.henderson@linaro.org;
->  andrew.jones@linux.dev; david@redhat.com; philmd@linaro.org;
->  eric.auger@redhat.com; will@kernel.org; ardb@kernel.org;
->  oliver.upton@linux.dev; pbonzini@redhat.com; gshan@redhat.com;
->  rafael@kernel.org; borntraeger@linux.ibm.com; alex.bennee@linaro.org;
->  npiggin@gmail.com; harshpb@linux.ibm.com; linux@armlinux.org.uk;
->  darren@os.amperecomputing.com; ilkka@os.amperecomputing.com;
->  vishnu@os.amperecomputing.com; karl.heubaum@oracle.com;
->  miguel.luis@oracle.com; salil.mehta@opnsrc.net; zhukeqian
->  <zhukeqian1@huawei.com>; wangxiongfeng (C)
->  <wangxiongfeng2@huawei.com>; wangyanan (Y)
->  <wangyanan55@huawei.com>; jiakernel2@gmail.com;
->  maobibo@loongson.cn; lixianglai@loongson.cn; shahuang@redhat.com;
->  zhao1.liu@intel.com; Linuxarm <linuxarm@huawei.com>;
->  gustavo.romero@linaro.org
->  Subject: Re: [PATCH V1 3/4] hw/acpi: Reflect ACPI vCPU {present,enabled}
->  states in ACPI _STA.{PRES,ENA} Bits
-> =20
->  On Mon, 14 Oct 2024 20:22:04 +0100
->  Salil Mehta <salil.mehta@huawei.com> wrote:
-> =20
->  > Reflect the ACPI CPU hotplug `is_{present, enabled}` states in the
->  > `_STA.PRES`
->  > (presence) and `_STA.ENA` (enabled) bits when the guest kernel
->  > evaluates the ACPI `_STA` method during initialization, as well as
->  > when vCPUs are hot-plugged or hot-unplugged. The presence of
->  unplugged
->  > vCPUs may need to be deliberately
->  > *simulated* at the ACPI level to maintain a *persistent* view of vCPUs
->  > for the guest kernel.
-> =20
->  given questionable future of is_present/is_enabled fields, it probably
->  premature to review this part.
-
-
-Sure, let us discuss the pain points.=20
-
-
->  The only thing, I have to say here is repeating spec/doc update patch
->  describing how it should work should come 1st, so that we could compare
->  this impl. with it.
-
-
-From the user perspective, there should not be any change in how he
-plug/unplugs the ARM vCPUs. This is a requirement, as we have to
-assists folks who wants to migrate from x86 world to ARM world
-seamlessly (without affecting performance parameters) and this
-feature is one small part of that bigger effort.
-
-
->  > Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
->  > ---
->  >  hw/acpi/cpu.c | 26 ++++++++++++++++++++++----
->  >  1 file changed, 22 insertions(+), 4 deletions(-)
->  >
->  > diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c index
->  > 700aa855e9..23ea2b9c70 100644
->  > --- a/hw/acpi/cpu.c
->  > +++ b/hw/acpi/cpu.c
->  > @@ -63,10 +63,11 @@ static uint64_t cpu_hotplug_rd(void *opaque,
->  hwaddr addr, unsigned size)
->  >      cdev =3D &cpu_st->devs[cpu_st->selector];
->  >      switch (addr) {
->  >      case ACPI_CPU_FLAGS_OFFSET_RW: /* pack and return is_* fields */
->  > -        val |=3D cdev->cpu ? 1 : 0;
->  > +        val |=3D cdev->is_enabled ? 1 : 0;
->  >          val |=3D cdev->is_inserting ? 2 : 0;
->  >          val |=3D cdev->is_removing  ? 4 : 0;
->  >          val |=3D cdev->fw_remove  ? 16 : 0;
->  > +        val |=3D cdev->is_present ? 32 : 0;
->  >          trace_cpuhp_acpi_read_flags(cpu_st->selector, val);
->  >          break;
->  >      case ACPI_CPU_CMD_DATA_OFFSET_RW:
->  > @@ -376,6 +377,7 @@ const VMStateDescription vmstate_cpu_hotplug =3D
->  {
->  > #define CPU_REMOVE_EVENT  "CRMV"
->  >  #define CPU_EJECT_EVENT   "CEJ0"
->  >  #define CPU_FW_EJECT_EVENT "CEJF"
->  > +#define CPU_PRESENT       "CPRS"
->  >
->  >  void build_cpus_aml(Aml *table, MachineState *machine,
->  CPUHotplugFeatures opts,
->  >                      build_madt_cpu_fn build_madt_cpu, hwaddr
->  > base_addr, @@ -436,7 +438,9 @@ void build_cpus_aml(Aml *table,
->  MachineState *machine, CPUHotplugFeatures opts,
->  >          aml_append(field, aml_named_field(CPU_EJECT_EVENT, 1));
->  >          /* tell firmware to do device eject, write only */
->  >          aml_append(field, aml_named_field(CPU_FW_EJECT_EVENT, 1));
->  > -        aml_append(field, aml_reserved_field(3));
->  > +        /* 1 if present, read only */
->  > +        aml_append(field, aml_named_field(CPU_PRESENT, 1));
->  > +        aml_append(field, aml_reserved_field(2));
->  >          aml_append(field, aml_named_field(CPU_COMMAND, 8));
->  >          aml_append(cpu_ctrl_dev, field);
->  >
->  > @@ -466,6 +470,7 @@ void build_cpus_aml(Aml *table, MachineState
->  *machine, CPUHotplugFeatures opts,
->  >          Aml *ctrl_lock =3D aml_name("%s.%s", cphp_res_path, CPU_LOCK)=
-;
->  >          Aml *cpu_selector =3D aml_name("%s.%s", cphp_res_path,
->  CPU_SELECTOR);
->  >          Aml *is_enabled =3D aml_name("%s.%s", cphp_res_path,
->  > CPU_ENABLED);
->  > +        Aml *is_present =3D aml_name("%s.%s", cphp_res_path,
->  > + CPU_PRESENT);
->  >          Aml *cpu_cmd =3D aml_name("%s.%s", cphp_res_path,
->  CPU_COMMAND);
->  >          Aml *cpu_data =3D aml_name("%s.%s", cphp_res_path, CPU_DATA);
->  >          Aml *ins_evt =3D aml_name("%s.%s", cphp_res_path,
->  > CPU_INSERT_EVENT); @@ -494,13 +499,26 @@ void build_cpus_aml(Aml
->  *table, MachineState *machine, CPUHotplugFeatures opts,
->  >          {
->  >              Aml *idx =3D aml_arg(0);
->  >              Aml *sta =3D aml_local(0);
->  > +            Aml *ifctx2;
->  > +            Aml *else_ctx;
->  >
->  >              aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
->  >              aml_append(method, aml_store(idx, cpu_selector));
->  >              aml_append(method, aml_store(zero, sta));
->  > -            ifctx =3D aml_if(aml_equal(is_enabled, one));
->  > +            ifctx =3D aml_if(aml_equal(is_present, one));
->  >              {
->  > -                aml_append(ifctx, aml_store(aml_int(0xF), sta));
->  > +                ifctx2 =3D aml_if(aml_equal(is_enabled, one));
->  > +                {
->  > +                    /* cpu is present and enabled */
->  > +                    aml_append(ifctx2, aml_store(aml_int(0xF), sta));
->  > +                }
->  > +                aml_append(ifctx, ifctx2);
->  > +                else_ctx =3D aml_else();
->  > +                {
->  > +                    /* cpu is present but disabled */
->  > +                    aml_append(else_ctx, aml_store(aml_int(0xD), sta)=
-);
->  > +                }
->  > +                aml_append(ifctx, else_ctx);
->  >              }
->  >              aml_append(method, ifctx);
->  >              aml_append(method, aml_release(ctrl_lock));
-> =20
+SGkgR3VzdGF2bywNCg0KPiAgRnJvbTogR3VzdGF2byBSb21lcm8gPGd1c3Rhdm8ucm9tZXJvQGxp
+bmFyby5vcmc+DQo+ICBTZW50OiBNb25kYXksIE9jdG9iZXIgMjEsIDIwMjQgMzoxMCBBTQ0KPiAg
+VG86IFNhbGlsIE1laHRhIDxzYWxpbC5tZWh0YUBodWF3ZWkuY29tPjsgcWVtdS1kZXZlbEBub25n
+bnUub3JnOw0KPiAgcWVtdS1hcm1Abm9uZ251Lm9yZzsgbXN0QHJlZGhhdC5jb20NCj4gIA0KPiAg
+SGkgU2FsaWwsDQo+ICANCj4gIE9uIDEwLzE0LzI0IDE2OjIyLCBTYWxpbCBNZWh0YSB3cm90ZToN
+Cj4gID4gUmVmbGVjdCB0aGUgQUNQSSBDUFUgaG90cGx1ZyBgaXNfe3ByZXNlbnQsIGVuYWJsZWR9
+YCBzdGF0ZXMgaW4gdGhlDQo+ICA+IGBfU1RBLlBSRVNgDQo+ICA+IChwcmVzZW5jZSkgYW5kIGBf
+U1RBLkVOQWAgKGVuYWJsZWQpIGJpdHMgd2hlbiB0aGUgZ3Vlc3Qga2VybmVsDQo+ICA+IGV2YWx1
+YXRlcyB0aGUgQUNQSSBgX1NUQWAgbWV0aG9kIGR1cmluZyBpbml0aWFsaXphdGlvbiwgYXMgd2Vs
+bCBhcw0KPiAgPiB3aGVuIHZDUFVzIGFyZSBob3QtcGx1Z2dlZCBvciBob3QtdW5wbHVnZ2VkLiBU
+aGUgcHJlc2VuY2Ugb2YNCj4gIHVucGx1Z2dlZA0KPiAgPiB2Q1BVcyBtYXkgbmVlZCB0byBiZSBk
+ZWxpYmVyYXRlbHkNCj4gID4gKnNpbXVsYXRlZCogYXQgdGhlIEFDUEkgbGV2ZWwgdG8gbWFpbnRh
+aW4gYSAqcGVyc2lzdGVudCogdmlldyBvZiB2Q1BVcw0KPiAgPiBmb3IgdGhlIGd1ZXN0IGtlcm5l
+bC4NCj4gID4NCj4gID4gU2lnbmVkLW9mZi1ieTogU2FsaWwgTWVodGEgPHNhbGlsLm1laHRhQGh1
+YXdlaS5jb20+DQo+ICA+IC0tLQ0KPiAgPiAgIGh3L2FjcGkvY3B1LmMgfCAyNiArKysrKysrKysr
+KysrKysrKysrKysrLS0tLQ0KPiAgPiAgIDEgZmlsZSBjaGFuZ2VkLCAyMiBpbnNlcnRpb25zKCsp
+LCA0IGRlbGV0aW9ucygtKQ0KPiAgPg0KPiAgPiBkaWZmIC0tZ2l0IGEvaHcvYWNwaS9jcHUuYyBi
+L2h3L2FjcGkvY3B1LmMgaW5kZXgNCj4gID4gNzAwYWE4NTVlOS4uMjNlYTJiOWM3MCAxMDA2NDQN
+Cj4gID4gLS0tIGEvaHcvYWNwaS9jcHUuYw0KPiAgPiArKysgYi9ody9hY3BpL2NwdS5jDQo+ICA+
+IEBAIC02MywxMCArNjMsMTEgQEAgc3RhdGljIHVpbnQ2NF90IGNwdV9ob3RwbHVnX3JkKHZvaWQg
+Km9wYXF1ZSwNCj4gIGh3YWRkciBhZGRyLCB1bnNpZ25lZCBzaXplKQ0KPiAgPiAgICAgICBjZGV2
+ID0gJmNwdV9zdC0+ZGV2c1tjcHVfc3QtPnNlbGVjdG9yXTsNCj4gID4gICAgICAgc3dpdGNoIChh
+ZGRyKSB7DQo+ICA+ICAgICAgIGNhc2UgQUNQSV9DUFVfRkxBR1NfT0ZGU0VUX1JXOiAvKiBwYWNr
+IGFuZCByZXR1cm4gaXNfKiBmaWVsZHMgKi8NCj4gID4gLSAgICAgICAgdmFsIHw9IGNkZXYtPmNw
+dSA/IDEgOiAwOw0KPiAgPiArICAgICAgICB2YWwgfD0gY2Rldi0+aXNfZW5hYmxlZCA/IDEgOiAw
+Ow0KPiAgPiAgICAgICAgICAgdmFsIHw9IGNkZXYtPmlzX2luc2VydGluZyA/IDIgOiAwOw0KPiAg
+PiAgICAgICAgICAgdmFsIHw9IGNkZXYtPmlzX3JlbW92aW5nICA/IDQgOiAwOw0KPiAgPiAgICAg
+ICAgICAgdmFsIHw9IGNkZXYtPmZ3X3JlbW92ZSAgPyAxNiA6IDA7DQo+ICA+ICsgICAgICAgIHZh
+bCB8PSBjZGV2LT5pc19wcmVzZW50ID8gMzIgOiAwOw0KPiAgPiAgICAgICAgICAgdHJhY2VfY3B1
+aHBfYWNwaV9yZWFkX2ZsYWdzKGNwdV9zdC0+c2VsZWN0b3IsIHZhbCk7DQo+ICA+ICAgICAgICAg
+ICBicmVhazsNCj4gID4gICAgICAgY2FzZSBBQ1BJX0NQVV9DTURfREFUQV9PRkZTRVRfUlc6DQo+
+ICA+IEBAIC0zNzYsNiArMzc3LDcgQEAgY29uc3QgVk1TdGF0ZURlc2NyaXB0aW9uIHZtc3RhdGVf
+Y3B1X2hvdHBsdWcgPQ0KPiAgew0KPiAgPiAgICNkZWZpbmUgQ1BVX1JFTU9WRV9FVkVOVCAgIkNS
+TVYiDQo+ICA+ICAgI2RlZmluZSBDUFVfRUpFQ1RfRVZFTlQgICAiQ0VKMCINCj4gID4gICAjZGVm
+aW5lIENQVV9GV19FSkVDVF9FVkVOVCAiQ0VKRiINCj4gID4gKyNkZWZpbmUgQ1BVX1BSRVNFTlQg
+ICAgICAgIkNQUlMiDQo+ICA+DQo+ICA+ICAgdm9pZCBidWlsZF9jcHVzX2FtbChBbWwgKnRhYmxl
+LCBNYWNoaW5lU3RhdGUgKm1hY2hpbmUsDQo+ICBDUFVIb3RwbHVnRmVhdHVyZXMgb3B0cywNCj4g
+ID4gICAgICAgICAgICAgICAgICAgICAgIGJ1aWxkX21hZHRfY3B1X2ZuIGJ1aWxkX21hZHRfY3B1
+LCBod2FkZHINCj4gID4gYmFzZV9hZGRyLCBAQCAtNDM2LDcgKzQzOCw5IEBAIHZvaWQgYnVpbGRf
+Y3B1c19hbWwoQW1sICp0YWJsZSwNCj4gIE1hY2hpbmVTdGF0ZSAqbWFjaGluZSwgQ1BVSG90cGx1
+Z0ZlYXR1cmVzIG9wdHMsDQo+ICA+ICAgICAgICAgICBhbWxfYXBwZW5kKGZpZWxkLCBhbWxfbmFt
+ZWRfZmllbGQoQ1BVX0VKRUNUX0VWRU5ULCAxKSk7DQo+ICA+ICAgICAgICAgICAvKiB0ZWxsIGZp
+cm13YXJlIHRvIGRvIGRldmljZSBlamVjdCwgd3JpdGUgb25seSAqLw0KPiAgPiAgICAgICAgICAg
+YW1sX2FwcGVuZChmaWVsZCwgYW1sX25hbWVkX2ZpZWxkKENQVV9GV19FSkVDVF9FVkVOVCwgMSkp
+Ow0KPiAgPiAtICAgICAgICBhbWxfYXBwZW5kKGZpZWxkLCBhbWxfcmVzZXJ2ZWRfZmllbGQoMykp
+Ow0KPiAgPiArICAgICAgICAvKiAxIGlmIHByZXNlbnQsIHJlYWQgb25seSAqLw0KPiAgPiArICAg
+ICAgICBhbWxfYXBwZW5kKGZpZWxkLCBhbWxfbmFtZWRfZmllbGQoQ1BVX1BSRVNFTlQsIDEpKTsN
+Cj4gID4gKyAgICAgICAgYW1sX2FwcGVuZChmaWVsZCwgYW1sX3Jlc2VydmVkX2ZpZWxkKDIpKTsN
+Cj4gID4gICAgICAgICAgIGFtbF9hcHBlbmQoZmllbGQsIGFtbF9uYW1lZF9maWVsZChDUFVfQ09N
+TUFORCwgOCkpOw0KPiAgPiAgICAgICAgICAgYW1sX2FwcGVuZChjcHVfY3RybF9kZXYsIGZpZWxk
+KTsNCj4gID4NCj4gID4gQEAgLTQ2Niw2ICs0NzAsNyBAQCB2b2lkIGJ1aWxkX2NwdXNfYW1sKEFt
+bCAqdGFibGUsIE1hY2hpbmVTdGF0ZQ0KPiAgKm1hY2hpbmUsIENQVUhvdHBsdWdGZWF0dXJlcyBv
+cHRzLA0KPiAgPiAgICAgICAgICAgQW1sICpjdHJsX2xvY2sgPSBhbWxfbmFtZSgiJXMuJXMiLCBj
+cGhwX3Jlc19wYXRoLCBDUFVfTE9DSyk7DQo+ICA+ICAgICAgICAgICBBbWwgKmNwdV9zZWxlY3Rv
+ciA9IGFtbF9uYW1lKCIlcy4lcyIsIGNwaHBfcmVzX3BhdGgsDQo+ICBDUFVfU0VMRUNUT1IpOw0K
+PiAgPiAgICAgICAgICAgQW1sICppc19lbmFibGVkID0gYW1sX25hbWUoIiVzLiVzIiwgY3BocF9y
+ZXNfcGF0aCwNCj4gID4gQ1BVX0VOQUJMRUQpOw0KPiAgPiArICAgICAgICBBbWwgKmlzX3ByZXNl
+bnQgPSBhbWxfbmFtZSgiJXMuJXMiLCBjcGhwX3Jlc19wYXRoLA0KPiAgPiArIENQVV9QUkVTRU5U
+KTsNCj4gID4gICAgICAgICAgIEFtbCAqY3B1X2NtZCA9IGFtbF9uYW1lKCIlcy4lcyIsIGNwaHBf
+cmVzX3BhdGgsDQo+ICBDUFVfQ09NTUFORCk7DQo+ICA+ICAgICAgICAgICBBbWwgKmNwdV9kYXRh
+ID0gYW1sX25hbWUoIiVzLiVzIiwgY3BocF9yZXNfcGF0aCwgQ1BVX0RBVEEpOw0KPiAgPiAgICAg
+ICAgICAgQW1sICppbnNfZXZ0ID0gYW1sX25hbWUoIiVzLiVzIiwgY3BocF9yZXNfcGF0aCwNCj4g
+ID4gQ1BVX0lOU0VSVF9FVkVOVCk7IEBAIC00OTQsMTMgKzQ5OSwyNiBAQCB2b2lkIGJ1aWxkX2Nw
+dXNfYW1sKEFtbA0KPiAgKnRhYmxlLCBNYWNoaW5lU3RhdGUgKm1hY2hpbmUsIENQVUhvdHBsdWdG
+ZWF0dXJlcyBvcHRzLA0KPiAgPiAgICAgICAgICAgew0KPiAgPiAgICAgICAgICAgICAgIEFtbCAq
+aWR4ID0gYW1sX2FyZygwKTsNCj4gID4gICAgICAgICAgICAgICBBbWwgKnN0YSA9IGFtbF9sb2Nh
+bCgwKTsNCj4gID4gKyAgICAgICAgICAgIEFtbCAqaWZjdHgyOw0KPiAgPiArICAgICAgICAgICAg
+QW1sICplbHNlX2N0eDsNCj4gID4NCj4gID4gICAgICAgICAgICAgICBhbWxfYXBwZW5kKG1ldGhv
+ZCwgYW1sX2FjcXVpcmUoY3RybF9sb2NrLCAweEZGRkYpKTsNCj4gID4gICAgICAgICAgICAgICBh
+bWxfYXBwZW5kKG1ldGhvZCwgYW1sX3N0b3JlKGlkeCwgY3B1X3NlbGVjdG9yKSk7DQo+ICA+ICAg
+ICAgICAgICAgICAgYW1sX2FwcGVuZChtZXRob2QsIGFtbF9zdG9yZSh6ZXJvLCBzdGEpKTsNCj4g
+ID4gLSAgICAgICAgICAgIGlmY3R4ID0gYW1sX2lmKGFtbF9lcXVhbChpc19lbmFibGVkLCBvbmUp
+KTsNCj4gID4gKyAgICAgICAgICAgIGlmY3R4ID0gYW1sX2lmKGFtbF9lcXVhbChpc19wcmVzZW50
+LCBvbmUpKTsNCj4gID4gICAgICAgICAgICAgICB7DQo+ICA+IC0gICAgICAgICAgICAgICAgYW1s
+X2FwcGVuZChpZmN0eCwgYW1sX3N0b3JlKGFtbF9pbnQoMHhGKSwgc3RhKSk7DQo+ICA+ICsgICAg
+ICAgICAgICAgICAgaWZjdHgyID0gYW1sX2lmKGFtbF9lcXVhbChpc19lbmFibGVkLCBvbmUpKTsN
+Cj4gID4gKyAgICAgICAgICAgICAgICB7DQo+ICA+ICsgICAgICAgICAgICAgICAgICAgIC8qIGNw
+dSBpcyBwcmVzZW50IGFuZCBlbmFibGVkICovDQo+ICA+ICsgICAgICAgICAgICAgICAgICAgIGFt
+bF9hcHBlbmQoaWZjdHgyLCBhbWxfc3RvcmUoYW1sX2ludCgweEYpLCBzdGEpKTsNCj4gID4gKyAg
+ICAgICAgICAgICAgICB9DQo+ICA+ICsgICAgICAgICAgICAgICAgYW1sX2FwcGVuZChpZmN0eCwg
+aWZjdHgyKTsNCj4gID4gKyAgICAgICAgICAgICAgICBlbHNlX2N0eCA9IGFtbF9lbHNlKCk7DQo+
+ICA+ICsgICAgICAgICAgICAgICAgew0KPiAgPiArICAgICAgICAgICAgICAgICAgICAvKiBjcHUg
+aXMgcHJlc2VudCBidXQgZGlzYWJsZWQgKi8NCj4gID4gKyAgICAgICAgICAgICAgICAgICAgYW1s
+X2FwcGVuZChlbHNlX2N0eCwgYW1sX3N0b3JlKGFtbF9pbnQoMHhEKSwNCj4gID4gKyBzdGEpKTsN
+Cj4gIA0KPiAgSGVyZSwgdGhlIHJldHVybiB2YWx1ZSBmb3IgX1NUQSBtZXRob2QgaXMgc2V0IHRv
+IHJlZmxlY3QgdGhlIHN0YXRlIG9mDQo+ICBDUFVfUFJFU0VOVCBhbmQgQ1BVX0VOQUJMRUQgZmll
+bGRzLiBJIGNhbid0IHNlZSB0aGVzZSB0d28gZmllbGRzIGJlaW5nDQo+ICBtYXBwZWQgdG8gQWNw
+aUNwdVN0YXR1cy57aXNfcHJlc2VudCxpc19lbmFibGVkfS4gVGhleSBsb29rIHRvIGJlIG1hcHBl
+ZA0KPiAgdG8gdGhlIE1NSU8gcmVnaW9uIChiYXNlX2FkZHIpLCB3aGljaCBkb2Vzbid0IG1hcHBl
+ZCB0byBBY3BpQ3B1U3RhdHVzDQo+ICBhZmFpY3MuIFNvIHdoZXJlIENQVV9QUkVTRU5UIGFuZCBD
+UFVfRU5BQkxFRCBhcmUgc2V0IGFuZCB3aGVyZQ0KPiAgZXhhY3RseSB0aGV5IHJlc2lkZT8NCg0K
+DQpZb3UgZG9u4oCZdCBzZXQgX1NUQSBmaWVsZCBmcm9tIGd1ZXN0IGZvciBDUFVzLiBXZSBvbmx5
+IGZldGNoIHZhbHVlcyBiZWluZw0KcmVmbGVjdGVkIGJ5IHRoZSBWTU0uIEluIGdlbmVyYWwsIEFD
+UEkgX1NUQSBtZXRob2QgaXMgZm9yIGZldGNoaW5nIHN0YXR1cw0Kb2YgYSBkZXZpY2UuIFBsZWFz
+ZSBjaGVjayBiZWxvdzoNCg0KaHR0cHM6Ly91ZWZpLm9yZy9zcGVjcy9BQ1BJLzYuNS8wNl9EZXZp
+Y2VfQ29uZmlndXJhdGlvbi5odG1sP2hpZ2hsaWdodD1fc3RhI3N0YS1kZXZpY2Utc3RhdHVzDQoN
+Cg0KV2UgYXJlIGJhbmtpbmcgb24gYmVsb3cgc3RhdHVzIGJpdHM6DQoNCkJpdCBbMF0gLSBTZXQg
+aWYgdGhlIGRldmljZSBpcyBwcmVzZW50Lg0KQml0IFsxXSAtIFNldCBpZiB0aGUgZGV2aWNlIGlz
+IGVuYWJsZWQgYW5kIGRlY29kaW5nIGl0cyByZXNvdXJjZXMuDQoNCkhlbmNlLCBBY3BpQ3B1U3Rh
+dHVzOjooaXNfcHJlc2VudCwgaXNfZW5hYmxlZH0gYXJlIHNldCBpbiB0aGUgVk1NDQphbmQgdGhl
+aXIgc3RhdHVzIGlzIHNoYXJlZCB0byB0aGUgZ3Vlc3Qga2VybmVsIHdoZW4gdGhlIEFDUEkgX1NU
+QQ0KbWV0aG9kIGlzIGV2YWx1YXRlZCBieSB0aGUgT1NQTS4NCg0KDQpQYXRjaCAzLzQ6IGh0dHBz
+Oi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAyNDEwMTQxOTIyMDUuMjUzNDc5LTQtc2Fs
+aWwubWVodGFAaHVhd2VpLmNvbS8NCiNIVU5LDQoNCmRpZmYgLS1naXQgYS9ody9hY3BpL2NwdS5j
+IGIvaHcvYWNwaS9jcHUuYw0KaW5kZXggNzAwYWE4NTVlOS4uMjNlYTJiOWM3MCAxMDA2NDQNCi0t
+LSBhL2h3L2FjcGkvY3B1LmMNCisrKyBiL2h3L2FjcGkvY3B1LmMNCkBAIC02MywxMCArNjMsMTEg
+QEAgc3RhdGljIHVpbnQ2NF90IGNwdV9ob3RwbHVnX3JkKHZvaWQgKm9wYXF1ZSwgaHdhZGRyIGFk
+ZHIsIHVuc2lnbmVkIHNpemUpDQogICAgIGNkZXYgPSAmY3B1X3N0LT5kZXZzW2NwdV9zdC0+c2Vs
+ZWN0b3JdOy0tLS0tLS0tLT4gY2hlY2sgdGhpcyBjb2RlIGV4Y2VycHQNCiAgICAgc3dpdGNoIChh
+ZGRyKSB7DQogICAgIGNhc2UgQUNQSV9DUFVfRkxBR1NfT0ZGU0VUX1JXOiAvKiBwYWNrIGFuZCBy
+ZXR1cm4gaXNfKiBmaWVsZHMgKi8NCi0gICAgICAgIHZhbCB8PSBjZGV2LT5jcHUgPyAxIDogMDsN
+CisgICAgICAgIHZhbCB8PSBjZGV2LT5pc19lbmFibGVkID8gMSA6IDA7LS0tLS0tLS0tLS0tLS0t
+PiB0aGlzIGNoYW5nZQ0KICAgICAgICAgdmFsIHw9IGNkZXYtPmlzX2luc2VydGluZyA/IDIgOiAw
+Ow0KICAgICAgICAgdmFsIHw9IGNkZXYtPmlzX3JlbW92aW5nICA/IDQgOiAwOw0KICAgICAgICAg
+dmFsIHw9IGNkZXYtPmZ3X3JlbW92ZSAgPyAxNiA6IDA7DQorICAgICAgICB2YWwgfD0gY2Rldi0+
+aXNfcHJlc2VudCA/IDMyIDogMDstLS0tLS0tLS0tLS0tPiBhbmQgdGhpcyBjaGFuZ2UNCiAgICAg
+ICAgIHRyYWNlX2NwdWhwX2FjcGlfcmVhZF9mbGFncyhjcHVfc3QtPnNlbGVjdG9yLCB2YWwpOw0K
+ICAgICAgICAgYnJlYWs7DQogICAgIGNhc2UgQUNQSV9DUFVfQ01EX0RBVEFfT0ZGU0VUX1JXOg0K
+DQoNClRoYW5rcw0KDQo+ICANCj4gIA0KPiAgQ2hlZXJzLA0KPiAgR3VzdGF2bw0KPiAgDQo+ICA+
+ICsgICAgICAgICAgICAgICAgfQ0KPiAgPiArICAgICAgICAgICAgICAgIGFtbF9hcHBlbmQoaWZj
+dHgsIGVsc2VfY3R4KTsNCj4gID4gICAgICAgICAgICAgICB9DQo+ICA+ICAgICAgICAgICAgICAg
+YW1sX2FwcGVuZChtZXRob2QsIGlmY3R4KTsNCj4gID4gICAgICAgICAgICAgICBhbWxfYXBwZW5k
+KG1ldGhvZCwgYW1sX3JlbGVhc2UoY3RybF9sb2NrKSk7DQoNCg==

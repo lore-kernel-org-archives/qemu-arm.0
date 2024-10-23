@@ -1,130 +1,153 @@
-Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp406620njb;
-        Wed, 23 Oct 2024 06:14:28 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHa1EnwC/T8qToV3e2rXmjNQOCcZO+2oIYYkSO9Y/F/SKC67gj+nJakfszwTOQ8VIzF6dNH
-X-Received: by 2002:ac8:598e:0:b0:458:2a24:6ed6 with SMTP id d75a77b69052e-461145befb7mr29809321cf.21.1729689268217;
-        Wed, 23 Oct 2024 06:14:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729689268; cv=none;
+Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp728034njb;
+        Wed, 23 Oct 2024 14:31:47 -0700 (PDT)
+X-Received: by 2002:a17:902:f54d:b0:20c:79f1:fed9 with SMTP id d9443c01a7336-20fa9e4af0amr56642345ad.25.1729719107331;
+        Wed, 23 Oct 2024 14:31:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729719107; cv=none;
         d=google.com; s=arc-20240605;
-        b=NL9LtoOVMnPiBHvUdT48YTCE4lM5xsPsHVLf0XEA7F+RE21vquGtxq3imxIS+eYbdM
-         09aiPUU4M1L5S0aZYj6OZn7yyY2r9BPMNTYOGdNZ9Jh3FviYK4vZeVM9TejoOFVIjkOl
-         CdbOiecyhUSSXzMsZ/uLSBA7zYmEP85k+suLadaAeeinsTNM+7wb2c+NWP8u4d1jvptj
-         FXgJnZNdFB0C9IFfMRLM1drNTtx6C7XKxrnDWLrgYJyTkh4yMnr0cHmfW2CiD5ZBIT8H
-         qrpAVoO2/bBY8EQPDXiBCjSIOgXCoOlcLpI5VeZIm2YexKlRm+gy39lFsIwo8a3VU/hu
-         AO3w==
+        b=F5YVb2Vse6mnT33SSRymo4Zj8I0zpuLx2oAI3SYynwwtbqRBDFkR7cXVRP+bSG5w1E
+         SinGSZ5GPIb+U+dqVzsc7wxg2R9us8OwzN4JVhFUvLXOMTSFxI3A58JhShkHU1oJV+Ar
+         3Qc42rM9Fa2eHTBO+N3xDMCr0P7BY3shTgOcE4+oj/xtm1vF3Y9kYf3YnLSlyppguSAS
+         DNORT2hYow7rBpPQVxvLQoc9WDhzG8osOmHQz5t1fjhYBFj61QKP3jjtX50wDKA63AEy
+         VTHAyW9EA+tVQG35bJl2Y8Ukfm78BTdrNQZArwDPyie/KRr4K9lnv8e1uQitXeW9BuwG
+         xCmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=+b3DDwCyM3dIDJrog05I+Xx0Ggfa5QHIq1W48Um5CTU=;
-        fh=PsI3NmtKm5/RAnNNV7hEx6tyseYhuPI0nZhotP/PYqE=;
-        b=Cz7X+ygZdcRgAob/bjxoH324WN1k6RmfRZuBJjuGZHNZ+4A9FDRs9CGAMDT8U30F4V
-         7GWc7tIRRqTq0AaGEQry6xCq4AOPWyEo8k1KEVyiA7HkKLD6Hf9/UIv19dHTAK9O9RT3
-         iVYtb2DQjHHa8ax9KgLniyf9fQIXg0cg1meuKzz8e8Ffg64Y8XI6MCt7O3aaxgFH6xPV
-         stoej3yAiaHkjPuqU81Kpvy7d/emtTKQeN/8iNxzNxTCOI3+BCDMRRIltxkV34gqUw1q
-         kIC/G+Fv8sDOzEh/kFuMzgXf3XuE6UgBF15ynnC6Vd29gdcnCk9i7RjuPeLHixW/3bct
-         vGjQ==;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=XMV66Tma+m+DyNkwDKnD2R7rJWyhw+6KbQDPG90Lh9o=;
+        fh=FRepLuWzGGLcbqFN68zQFnLNBGmhecJ5ZUcYxwW1mbw=;
+        b=dvZSPAFFbKRAXTD35GyxWCwIfWEOGh3vShsJD9D0I25iBRXAq6uP4Mox9hGz/bS9TQ
+         49bkTrfc2ufs7xgKqB8SBmy+TN1eyUI/fjF8xpK379SdDhdAH5SsszUQyxpC0Yw9ttT8
+         t6PFhCVhEpavwIUhcL7JJu7JAhysjFQdbxjDJAq71n1iABW+mWEPao93UJlkJWmCmKvy
+         UBINhRnjpbBdUNlhdlIXh1i6dwLSohNLouzyu/WwkLRNI3Ba6yPJr9Rsc1pc7Tw60cTD
+         W4oPrhiE+mBqalPYJL4hpf0zOuq87FcdsFiTRrOd6DU+CgIwrh+gWgV3sp6iiDfRNKRh
+         j9SA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IUDvXMzL;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-460e89cae9csi76532611cf.308.2024.10.23.06.14.28
+       dkim=pass header.i=@linaro.org header.s=google header.b=hKFfIzQG;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-20e7f1a664fsor52116175ad.20.2024.10.23.14.31.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2024 06:14:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Wed, 23 Oct 2024 14:31:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IUDvXMzL;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1729689267;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=+b3DDwCyM3dIDJrog05I+Xx0Ggfa5QHIq1W48Um5CTU=;
-	b=IUDvXMzLNlrQeY2GdSzifX/argW8vlrJUjNt1iA4fmGHSVanCDevL0c7rFKPTfBQNnq7Qw
-	2lNXDEZdfcl8bOOtKbXIED5QMqd7pvB6JOhslC1GYUDsmjDy5AvbLfI+dqmPjXwUQ6SovA
-	hF6jz8J1Ik1uwusSil1ipItTmF6y3WY=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-679-sADDw2CRP-KNiv6bR-Payw-1; Wed,
- 23 Oct 2024 09:14:23 -0400
-X-MC-Unique: sADDw2CRP-KNiv6bR-Payw-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 6E6A11964CC1;
-	Wed, 23 Oct 2024 13:14:20 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.19])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id CE38119560AE;
-	Wed, 23 Oct 2024 13:14:10 +0000 (UTC)
-Date: Wed, 23 Oct 2024 14:14:07 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>, John Snow <jsnow@redhat.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	devel@lists.libvirt.org, Marcelo Tosatti <mtosatti@redhat.com>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>, qemu-arm@nongnu.org,
-	=?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>, kvm@vger.kernel.org,
-	Beraldo Leal <bleal@redhat.com>, Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v3 10/18] gitlab: make check-[dco|patch] a little more
- verbose
-Message-ID: <Zxj2n0kxAtnIAd9A@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20241023113406.1284676-1-alex.bennee@linaro.org>
- <20241023113406.1284676-11-alex.bennee@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=hKFfIzQG;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1729719107; x=1730323907; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=XMV66Tma+m+DyNkwDKnD2R7rJWyhw+6KbQDPG90Lh9o=;
+        b=hKFfIzQGM0SADd9nT97xcaueGfXSFDUMCrkyV+CJnX4KIogcKOMCpYtGGc50XFu6Pa
+         ksP2Ms9ldZ3MB/EU7Q6KPtVznzbC2DJIUcannX2Jh0NhNueBBuofBPb33gacu3EpBHcf
+         BnzvOacMTczpYxYKpxvcnSdM8LLpi/pIBXXTRqpJFFeosIusGx/1nSVzgodNf2K1FpYo
+         YwwcwwGqgNotFofJiglTASVKqaLdFWttySvQ8YfFHcApZSJ0T+8yR3v9H2A0XvvM7hel
+         CEVVi1pfrfW00+qKP3Co9fZc5QlvX86K5sXRuBJ32u4l+2bt/7FT6Aw+YPjXc8ZzEeHG
+         R4SA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729719107; x=1730323907;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=XMV66Tma+m+DyNkwDKnD2R7rJWyhw+6KbQDPG90Lh9o=;
+        b=nuprKWfaz8dFqBZ9v21VB3UCz69jVf3pCilJaEp0Dwc5u4O+URXFzA7JoKm0x5kQFS
+         TER0z6uHbe8sPHx2mnGOEiVMIbEiLtAWiTr9j5LlaN280LTeP3qibCUFkg0nbs9GJJCS
+         xVVs/hDyYPs84kxa/A9vcAS7/R/AP3r6iWSjNh8YCqUzhROou/vQsdX+nYaD/z4VZtNR
+         7ooDNxp/j0U8TBriOz/qSciva/KiRypnEyfFALhsRjNwaKBuO8HpPk+hE7/s9fFpzGtM
+         un0+8e95mFc1k/RlTpYAOOrI/WCTpXp04LV8h9UH2EOo1lbmfBUSIJwss8Nzyf0uc5UF
+         CWZg==
+X-Gm-Message-State: AOJu0YyqeaH6VTAyrVGs+uGQbNrParen83ryztrk/btziuJ3RQDbjnVd
+	KjjUAGcfywT5IPDmkGuholtMhMebFoJJJZ500poJPLbh+TkmUJj1uEZpb9/0jT0U2vOIonA2kDa
+	lzDh10pDY
+X-Google-Smtp-Source: AGHT+IECIPlif+Tu0yu3XBicCEMHLEOzNPxUBgiSXihwbTu2CDR+24J+6/0XGCXXFNeLSWMcYXUV8g==
+X-Received: by 2002:a05:6a21:6b0c:b0:1d9:78c:dcf2 with SMTP id adf61e73a8af0-1d978bd32cdmr5191354637.43.1729719106774;
+        Wed, 23 Oct 2024 14:31:46 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7eaec52dd6csm6230401a12.4.2024.10.23.14.31.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 23 Oct 2024 14:31:46 -0700 (PDT)
+Message-ID: <202cd5e2-3732-479d-ab02-67061e2114cc@linaro.org>
+Date: Wed, 23 Oct 2024 14:31:45 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20241023113406.1284676-11-alex.bennee@linaro.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: ufbLKVNo50o2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 18/20] meson: build contrib/plugins with meson
+Content-Language: en-US
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Beraldo Leal <bleal@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ devel@lists.libvirt.org, Cleber Rosa <crosa@redhat.com>,
+ kvm@vger.kernel.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Riku Voipio <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20241022105614.839199-1-alex.bennee@linaro.org>
+ <20241022105614.839199-19-alex.bennee@linaro.org>
+ <fe33c996-3241-4706-9ac1-85f00cb8f388@linaro.org>
+ <87sesnkxhm.fsf@draig.linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <87sesnkxhm.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: ZqOOpsMpDbIA
 
-On Wed, Oct 23, 2024 at 12:33:58PM +0100, Alex Bennée wrote:
-> When git fails the rather terse backtrace only indicates it failed
-> without some useful context. Add some to make the log a little more
-> useful.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> 
-> ---
-> v2
->   - keep check_call, just don't redirect stdout/err
-> ---
->  .gitlab-ci.d/check-dco.py   | 5 ++---
->  .gitlab-ci.d/check-patch.py | 5 ++---
->  2 files changed, 4 insertions(+), 6 deletions(-)
-
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-
-> 
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+T24gMTAvMjMvMjQgMDE6NTcsIEFsZXggQmVubsOpZSB3cm90ZToNCj4gUGllcnJpY2sgQm91
+dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPiB3cml0ZXM6DQo+IA0KPj4gT24g
+MTAvMjIvMjQgMDM6NTYsIEFsZXggQmVubsOpZSB3cm90ZToNCj4+PiBGcm9tOiBQaWVycmlj
+ayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+DQo+Pj4gVHJpZWQgdG8g
+dW5pZnkgdGhpcyBtZXNvbi5idWlsZCB3aXRoIHRlc3RzL3RjZy9wbHVnaW5zL21lc29uLmJ1
+aWxkDQo+Pj4gYnV0DQo+Pj4gdGhlIHJlc3VsdGluZyBtb2R1bGVzIGFyZSBub3Qgb3V0cHV0
+IGluIHRoZSByaWdodCBkaXJlY3RvcnkuDQo+Pj4gT3JpZ2luYWxseSBwcm9wb3NlZCBieSBB
+bnRvbiBLb2Noa292LCB0aGFuayB5b3UhDQo+Pj4gU29sdmVzOiBodHRwczovL2dpdGxhYi5j
+b20vcWVtdS1wcm9qZWN0L3FlbXUvLS9pc3N1ZXMvMTcxMA0KPj4+IFNpZ25lZC1vZmYtYnk6
+IFBpZXJyaWNrIEJvdXZpZXIgPHBpZXJyaWNrLmJvdXZpZXJAbGluYXJvLm9yZz4NCj4+PiBN
+ZXNzYWdlLUlkOiA8MjAyNDA5MjUyMDQ4NDUuMzkwNjg5LTItcGllcnJpY2suYm91dmllckBs
+aW5hcm8ub3JnPg0KPj4+IFNpZ25lZC1vZmYtYnk6IEFsZXggQmVubsOpZSA8YWxleC5iZW5u
+ZWVAbGluYXJvLm9yZz4NCj4+PiAtLS0NCj4+PiAgICBtZXNvbi5idWlsZCAgICAgICAgICAg
+ICAgICAgfCAgNCArKysrDQo+Pj4gICAgY29udHJpYi9wbHVnaW5zL21lc29uLmJ1aWxkIHwg
+MjMgKysrKysrKysrKysrKysrKysrKysrKysNCj4+PiAgICAyIGZpbGVzIGNoYW5nZWQsIDI3
+IGluc2VydGlvbnMoKykNCj4+PiAgICBjcmVhdGUgbW9kZSAxMDA2NDQgY29udHJpYi9wbHVn
+aW5zL21lc29uLmJ1aWxkDQo+Pj4gZGlmZiAtLWdpdCBhL21lc29uLmJ1aWxkIGIvbWVzb24u
+YnVpbGQNCj4+PiBpbmRleCBiZGQ2N2EyZDZkLi4zZWEwM2M0NTFiIDEwMDY0NA0KPj4+IC0t
+LSBhL21lc29uLmJ1aWxkDQo+Pj4gKysrIGIvbWVzb24uYnVpbGQNCj4+PiBAQCAtMzY3OCw2
+ICszNjc4LDEwIEBAIHN1YmRpcignYWNjZWwnKQ0KPj4+ICAgIHN1YmRpcigncGx1Z2lucycp
+DQo+Pj4gICAgc3ViZGlyKCdlYnBmJykNCj4+PiAgICAraWYgJ0NPTkZJR19UQ0cnIGluIGNv
+bmZpZ19hbGxfYWNjZWwNCj4+PiArICBzdWJkaXIoJ2NvbnRyaWIvcGx1Z2lucycpDQo+Pj4g
+K2VuZGlmDQo+Pj4gKw0KPj4+ICAgIGNvbW1vbl91c2VyX2luYyA9IFtdDQo+Pj4gICAgICBz
+dWJkaXIoJ2NvbW1vbi11c2VyJykNCj4+PiBkaWZmIC0tZ2l0IGEvY29udHJpYi9wbHVnaW5z
+L21lc29uLmJ1aWxkIGIvY29udHJpYi9wbHVnaW5zL21lc29uLmJ1aWxkDQo+Pj4gbmV3IGZp
+bGUgbW9kZSAxMDA2NDQNCj4+PiBpbmRleCAwMDAwMDAwMDAwLi5hMGUwMjZkMjVlDQo+Pj4g
+LS0tIC9kZXYvbnVsbA0KPj4+ICsrKyBiL2NvbnRyaWIvcGx1Z2lucy9tZXNvbi5idWlsZA0K
+Pj4+IEBAIC0wLDAgKzEsMjMgQEANCj4+PiArdCA9IFtdDQo+Pj4gK2lmIGdldF9vcHRpb24o
+J3BsdWdpbnMnKQ0KPj4+ICsgIGZvcmVhY2ggaSA6IFsnY2FjaGUnLCAnZHJjb3YnLCAnZXhl
+Y2xvZycsICdob3RibG9ja3MnLCAnaG90cGFnZXMnLCAnaG93dmVjJywNCj4+PiArICAgICAg
+ICAgICAgICAgJ2h3cHJvZmlsZScsICdpcHMnLCAnbG9ja3N0ZXAnLCAnc3RvcHRyaWdnZXIn
+XQ0KPj4NCj4+IGxvY2tzdGVwIGRvZXMgbm90IGJ1aWxkIHVuZGVyIFdpbmRvd3MgKGl0IHVz
+ZXMgc29ja2V0cyksIHNvIGl0IHNob3VsZA0KPj4gYmUgY29uZGl0aW9ubmFsbHkgbm90IGJ1
+aWx0IG9uIHRoaXMgcGxhdGZvcm0uDQo+PiBAQWxleCwgaWYgeW91IGZlZWwgbGlrZSBtb2Rp
+ZnlpbmcgdGhpcywgeW91IGNhbi4gSWYgbm90LCB5b3UgY2FuIGRyb3ANCj4+IHRoZSBtZXNv
+biBidWlsZCBwYXRjaGVzIGZyb20gdGhpcyBzZXJpZXMgdG8gbm90IGJsb2NrIGl0Lg0KPiAN
+Cj4gSSdsbCBkcm9wIGZyb20gdGhlIFBSIGFuZCBsZXQgeW91IHJlLXN1Ym1pdC4NCj4gDQoN
+ClNlbnQgYSB2MyB3aXRoIHdpbmRvd3MgZml4Og0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
+cWVtdS1kZXZlbC8yMDI0MTAyMzIxMjgxMi4xMzc2OTcyLTEtcGllcnJpY2suYm91dmllckBs
+aW5hcm8ub3JnL1QvI3QNCg0KVGhhbmtzLA0KUGllcnJpY2sNCg==

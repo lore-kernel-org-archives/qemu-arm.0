@@ -1,158 +1,178 @@
-Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp240363njb;
-        Wed, 23 Oct 2024 00:51:34 -0700 (PDT)
-X-Received: by 2002:a17:902:ecc5:b0:20c:c086:4998 with SMTP id d9443c01a7336-20fab31ce28mr25340175ad.55.1729669894436;
-        Wed, 23 Oct 2024 00:51:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729669894; cv=none;
-        d=google.com; s=arc-20240605;
-        b=doChHssBCYrAglDSJdCQeJVpLQZbMDdDvHwCh4p5z9vtsRg5yyO53DE4IgQzW/TsKW
-         R1RjqOMx3o4UkSsSMkB4EfEpggz1aJhm2QrZ5601otK8baTOC8jju7TPPQZsl2eDsEh7
-         QegfxDWOoxqBSraXdGpSCf2765UJKU0dpaYeRkkIAMKVJox6wD5ZaVqSbYSgkzZ/+j+g
-         tklzYOG7bTNjXx6yMvHWgMBzC5IK02A93OaV03PMGqy5AWQAmzsSl6awGMdZ0IjJroht
-         7/wOGWAwEDIjIabLmJ2feXDE54UjYTN2l+ib8SPobH4GlBZjl9bT9aUXxyNCZH4ml989
-         WvXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=MepkjDJ2ngcxljXy3snTzhEiovBpyY4ILIqybTz6Vcw=;
-        fh=X8ItXK/eP+lsZpHYO2upAce6PY3lCv88NOwH1uPYlKY=;
-        b=XntsAsqKhnMmZ6/h77YXoUEgnbMrwCks0Mo4SFA3igVKP5/NxJ7RjTrEFEl4CiJJbr
-         /gyS4+8qP1Pk1HflUwfDPkDf5VbTgHOsj60Iz8ElpgEIrYoONckOFlKbZMAlr51ulTw6
-         Hw4rJaYaAHnC9hFUG3KdpXo2fYjLAZI29Deo7rtA7CfCijRbRYotnWHKXheiAa2CMwWL
-         SlWa+vySF+vlh20gknGynHnGCGSOzs1PPANzMjYsYqteemMVuzvDifUU8ZjVAM1ZDOZJ
-         x1+MpFwcZx3eO20urmJqqvPERutxgtGIKVCfrVyB5Pg1HRuZZ63CQoPUChxQITlJtb/B
-         OyLQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="bS/aeO93";
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20e7f0f64f0sor39480315ad.19.2024.10.23.00.51.34
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 23 Oct 2024 00:51:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="bS/aeO93";
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729669894; x=1730274694; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=MepkjDJ2ngcxljXy3snTzhEiovBpyY4ILIqybTz6Vcw=;
-        b=bS/aeO93pVoROaSfCbBSJrVZFYNp5Usj/yjLQXZYBo7drtNeSOPWfLlxAX54PtPrug
-         hV/Ya+1byHX0DlfdXhypUrM7Di8An9ANweCkVE9CMLhpFUAXM9ZzFmDW3FLKc//K2XoW
-         hbmoXwpkfn/mdxaRLpngmUBCdBEwM0syHSO5bNZDcCVG4RYf9BeKMI1QzWZqfR2lKnmS
-         TOfH7m2a2KM0Z3Wob7uk4PJL+OoVg0LWiYCVQZ9hBeuna3PxGhdBwLDYCBXjWMOrsnRT
-         iw0uXG9FdSjnRKYQ1E88nP0vaxnFHKa68otwld8tBa91PNBNTD9+/wBfWEoBXlxDw1dl
-         VrXw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729669894; x=1730274694;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=MepkjDJ2ngcxljXy3snTzhEiovBpyY4ILIqybTz6Vcw=;
-        b=ittMGZMPhVrjwaiHtmWRsY4IQQRiIFcSPlSAscBsMOQrwSce4AacPLNii4EMzmze1v
-         84kc5DdhS11AhLiv4G3mQU5P+lMmcSqInGlr2GMrWgo8i5lQzK1owQaxVaFNAZMjaypx
-         W+O86Kvxo6lHD2nCht0V0xR4vi6mOOWgpCA9lF1nsW8aQVpmzQuy/GyRzsiRweauxxGL
-         9Qnsb1IIJ9a3LJtQAQTXd18QgsjoebiSd8xf53xduyfaocT2kYFPEIAWbwZS5wX6xvqn
-         AtvH167jKOObEB//Jy0s2rAvN8a3kCGPp3Vs8pYS0oBrDASRzdL6qMhUvLZsNL5w2XXt
-         JeLw==
-X-Gm-Message-State: AOJu0YxzblOCUv25C/vODrKolWjKBmo4GRVrJmiQbCPs89k3+dEcqd46
-	VgE0pzraZYLf1vhRVRKmbb0ulk5cS5aPNQuf5XdsX79gLwbv8p4eMuEvffP8JFKlqknX5hrOeFT
-	SHI1wK/oR
-X-Google-Smtp-Source: AGHT+IGNBB4bbKqXJ3Wb1+fBO9LhwIz0J+plK6Cd2LbsP0Eo4zu0cRnOrM5NJnHjCVrMqBXhu4NedQ==
-X-Received: by 2002:a17:903:22ce:b0:20c:ce9c:bbb0 with SMTP id d9443c01a7336-20fa7074a94mr22409375ad.0.1729669893937;
-        Wed, 23 Oct 2024 00:51:33 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7ef0cc12sm52872905ad.95.2024.10.23.00.51.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 23 Oct 2024 00:51:33 -0700 (PDT)
-Message-ID: <fe33c996-3241-4706-9ac1-85f00cb8f388@linaro.org>
-Date: Wed, 23 Oct 2024 00:51:32 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 18/20] meson: build contrib/plugins with meson
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Beraldo Leal <bleal@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Yanan Wang <wangyanan55@huawei.com>,
- Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- devel@lists.libvirt.org, Cleber Rosa <crosa@redhat.com>,
- kvm@vger.kernel.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Riku Voipio <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a912d6328sm445752966b.40.2024.10.23.01.55.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Oct 2024 01:55:01 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 293D55F89C;
+	Wed, 23 Oct 2024 09:55:00 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: Ilya Leoshkevich <iii@linux.ibm.com>,  qemu-devel@nongnu.org,  Beraldo
+ Leal <bleal@redhat.com>,  Laurent Vivier <laurent@vivier.eu>,  Wainer dos
+ Santos Moschetta <wainersm@redhat.com>,  Mahmoud Mandour
+ <ma.mandourr@gmail.com>,  Jiaxun Yang <jiaxun.yang@flygoat.com>,  Yanan
+ Wang <wangyanan55@huawei.com>,  Thomas Huth <thuth@redhat.com>,  John Snow
+ <jsnow@redhat.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,
+  qemu-arm@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Eduardo
+ Habkost <eduardo@habkost.net>,  devel@lists.libvirt.org,  Cleber Rosa
+ <crosa@redhat.com>,  kvm@vger.kernel.org,  Philippe =?utf-8?Q?Mathieu-Dau?=
+ =?utf-8?Q?d=C3=A9?=
+ <philmd@linaro.org>,  Alexandre Iooss <erdnaxe@crans.org>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Riku Voipio <riku.voipio@iki.fi>,  Zhao
+ Liu <zhao1.liu@intel.com>,  Marcelo Tosatti <mtosatti@redhat.com>,  "Edgar
+ E. Iglesias" <edgar.iglesias@gmail.com>,  Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,  Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v2 07/20] tests/tcg/x86_64: Add cross-modifying code test
+In-Reply-To: <17ab6a26-bfd2-4ee6-8fc4-c371d266dcb1@linaro.org> (Pierrick
+	Bouvier's message of "Tue, 22 Oct 2024 17:33:21 -0700")
 References: <20241022105614.839199-1-alex.bennee@linaro.org>
- <20241022105614.839199-19-alex.bennee@linaro.org>
-Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20241022105614.839199-19-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: ddzEvAtIifdw
+	<20241022105614.839199-8-alex.bennee@linaro.org>
+	<6b18238b-f9c3-4046-964f-de16dc30d26e@linaro.org>
+	<4c383f09bd6bd9b488ad301e5f050b8c9971f3a2.camel@linux.ibm.com>
+	<17ab6a26-bfd2-4ee6-8fc4-c371d266dcb1@linaro.org>
+User-Agent: mu4e 1.12.6; emacs 29.4
+Date: Wed, 23 Oct 2024 09:55:00 +0100
+Message-ID: <87y12fkxln.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 8z9MzvJrRzrh
 
-T24gMTAvMjIvMjQgMDM6NTYsIEFsZXggQmVubsOpZSB3cm90ZToNCj4gRnJvbTogUGllcnJp
-Y2sgQm91dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPg0KPiANCj4gVHJpZWQg
-dG8gdW5pZnkgdGhpcyBtZXNvbi5idWlsZCB3aXRoIHRlc3RzL3RjZy9wbHVnaW5zL21lc29u
-LmJ1aWxkIGJ1dA0KPiB0aGUgcmVzdWx0aW5nIG1vZHVsZXMgYXJlIG5vdCBvdXRwdXQgaW4g
-dGhlIHJpZ2h0IGRpcmVjdG9yeS4NCj4gDQo+IE9yaWdpbmFsbHkgcHJvcG9zZWQgYnkgQW50
-b24gS29jaGtvdiwgdGhhbmsgeW91IQ0KPiANCj4gU29sdmVzOiBodHRwczovL2dpdGxhYi5j
-b20vcWVtdS1wcm9qZWN0L3FlbXUvLS9pc3N1ZXMvMTcxMA0KPiBTaWduZWQtb2ZmLWJ5OiBQ
-aWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+DQo+IE1lc3Nh
-Z2UtSWQ6IDwyMDI0MDkyNTIwNDg0NS4zOTA2ODktMi1waWVycmljay5ib3V2aWVyQGxpbmFy
-by5vcmc+DQo+IFNpZ25lZC1vZmYtYnk6IEFsZXggQmVubsOpZSA8YWxleC5iZW5uZWVAbGlu
-YXJvLm9yZz4NCj4gLS0tDQo+ICAgbWVzb24uYnVpbGQgICAgICAgICAgICAgICAgIHwgIDQg
-KysrKw0KPiAgIGNvbnRyaWIvcGx1Z2lucy9tZXNvbi5idWlsZCB8IDIzICsrKysrKysrKysr
-KysrKysrKysrKysrDQo+ICAgMiBmaWxlcyBjaGFuZ2VkLCAyNyBpbnNlcnRpb25zKCspDQo+
-ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGNvbnRyaWIvcGx1Z2lucy9tZXNvbi5idWlsZA0KPiAN
-Cj4gZGlmZiAtLWdpdCBhL21lc29uLmJ1aWxkIGIvbWVzb24uYnVpbGQNCj4gaW5kZXggYmRk
-NjdhMmQ2ZC4uM2VhMDNjNDUxYiAxMDA2NDQNCj4gLS0tIGEvbWVzb24uYnVpbGQNCj4gKysr
-IGIvbWVzb24uYnVpbGQNCj4gQEAgLTM2NzgsNiArMzY3OCwxMCBAQCBzdWJkaXIoJ2FjY2Vs
-JykNCj4gICBzdWJkaXIoJ3BsdWdpbnMnKQ0KPiAgIHN1YmRpcignZWJwZicpDQo+ICAgDQo+
-ICtpZiAnQ09ORklHX1RDRycgaW4gY29uZmlnX2FsbF9hY2NlbA0KPiArICBzdWJkaXIoJ2Nv
-bnRyaWIvcGx1Z2lucycpDQo+ICtlbmRpZg0KPiArDQo+ICAgY29tbW9uX3VzZXJfaW5jID0g
-W10NCj4gICANCj4gICBzdWJkaXIoJ2NvbW1vbi11c2VyJykNCj4gZGlmZiAtLWdpdCBhL2Nv
-bnRyaWIvcGx1Z2lucy9tZXNvbi5idWlsZCBiL2NvbnRyaWIvcGx1Z2lucy9tZXNvbi5idWls
-ZA0KPiBuZXcgZmlsZSBtb2RlIDEwMDY0NA0KPiBpbmRleCAwMDAwMDAwMDAwLi5hMGUwMjZk
-MjVlDQo+IC0tLSAvZGV2L251bGwNCj4gKysrIGIvY29udHJpYi9wbHVnaW5zL21lc29uLmJ1
-aWxkDQo+IEBAIC0wLDAgKzEsMjMgQEANCj4gK3QgPSBbXQ0KPiAraWYgZ2V0X29wdGlvbign
-cGx1Z2lucycpDQo+ICsgIGZvcmVhY2ggaSA6IFsnY2FjaGUnLCAnZHJjb3YnLCAnZXhlY2xv
-ZycsICdob3RibG9ja3MnLCAnaG90cGFnZXMnLCAnaG93dmVjJywNCj4gKyAgICAgICAgICAg
-ICAgICdod3Byb2ZpbGUnLCAnaXBzJywgJ2xvY2tzdGVwJywgJ3N0b3B0cmlnZ2VyJ10NCg0K
-bG9ja3N0ZXAgZG9lcyBub3QgYnVpbGQgdW5kZXIgV2luZG93cyAoaXQgdXNlcyBzb2NrZXRz
-KSwgc28gaXQgc2hvdWxkIGJlIA0KY29uZGl0aW9ubmFsbHkgbm90IGJ1aWx0IG9uIHRoaXMg
-cGxhdGZvcm0uDQpAQWxleCwgaWYgeW91IGZlZWwgbGlrZSBtb2RpZnlpbmcgdGhpcywgeW91
-IGNhbi4gSWYgbm90LCB5b3UgY2FuIGRyb3AgDQp0aGUgbWVzb24gYnVpbGQgcGF0Y2hlcyBm
-cm9tIHRoaXMgc2VyaWVzIHRvIG5vdCBibG9jayBpdC4NCg0KPiArICAgIGlmIGhvc3Rfb3Mg
-PT0gJ3dpbmRvd3MnDQo+ICsgICAgICB0ICs9IHNoYXJlZF9tb2R1bGUoaSwgZmlsZXMoaSAr
-ICcuYycpICsgJ3dpbjMyX2xpbmtlci5jJywNCj4gKyAgICAgICAgICAgICAgICAgICAgICAg
-IGluY2x1ZGVfZGlyZWN0b3JpZXM6ICcuLi8uLi9pbmNsdWRlL3FlbXUnLA0KPiArICAgICAg
-ICAgICAgICAgICAgICAgICAgbGlua19kZXBlbmRzOiBbd2luMzJfcWVtdV9wbHVnaW5fYXBp
-X2xpYl0sDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICBsaW5rX2FyZ3M6IFsnLUxwbHVn
-aW5zJywgJy1scWVtdV9wbHVnaW5fYXBpJ10sDQo+ICsgICAgICAgICAgICAgICAgICAgICAg
-ICBkZXBlbmRlbmNpZXM6IGdsaWIpDQo+ICsNCj4gKyAgICBlbHNlDQo+ICsgICAgICB0ICs9
-IHNoYXJlZF9tb2R1bGUoaSwgZmlsZXMoaSArICcuYycpLA0KPiArICAgICAgICAgICAgICAg
-ICAgICAgICAgaW5jbHVkZV9kaXJlY3RvcmllczogJy4uLy4uL2luY2x1ZGUvcWVtdScsDQo+
-ICsgICAgICAgICAgICAgICAgICAgICAgICBkZXBlbmRlbmNpZXM6IGdsaWIpDQo+ICsgICAg
-ZW5kaWYNCj4gKyAgZW5kZm9yZWFjaA0KPiArZW5kaWYNCj4gK2lmIHQubGVuZ3RoKCkgPiAw
-DQo+ICsgIGFsaWFzX3RhcmdldCgnY29udHJpYi1wbHVnaW5zJywgdCkNCj4gK2Vsc2UNCj4g
-KyAgcnVuX3RhcmdldCgnY29udHJpYi1wbHVnaW5zJywgY29tbWFuZDogZmluZF9wcm9ncmFt
-KCd0cnVlJykpDQo+ICtlbmRpZg0K
+Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
+
+> On 10/22/24 17:16, Ilya Leoshkevich wrote:
+>> On Tue, 2024-10-22 at 13:36 -0700, Pierrick Bouvier wrote:
+>>> On 10/22/24 03:56, Alex Benn=C3=A9e wrote:
+>>>> From: Ilya Leoshkevich <iii@linux.ibm.com>
+>>>>
+>>>> commit f025692c992c ("accel/tcg: Clear PAGE_WRITE before
+>>>> translation")
+>>>> fixed cross-modifying code handling, but did not add a test. The
+>>>> changed code was further improved recently [1], and I was not sure
+>>>> whether these modifications were safe (spoiler: they were fine).
+>>>>
+>>>> Add a test to make sure there are no regressions.
+>>>>
+>>>> [1]
+>>>> https://lists.gnu.org/archive/html/qemu-devel/2022-09/msg00034.html
+>>>>
+>>>> Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
+>>>> Message-Id: <20241001150617.9977-1-iii@linux.ibm.com>
+>>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>>> ---
+>>>>  =C2=A0 tests/tcg/x86_64/cross-modifying-code.c | 80
+>>>> +++++++++++++++++++++++++
+>>>>  =C2=A0 tests/tcg/x86_64/Makefile.target=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 |=C2=A0 4 ++
+>>>>  =C2=A0 2 files changed, 84 insertions(+)
+>>>>  =C2=A0 create mode 100644 tests/tcg/x86_64/cross-modifying-code.c
+>>>>
+>>>> diff --git a/tests/tcg/x86_64/cross-modifying-code.c
+>>>> b/tests/tcg/x86_64/cross-modifying-code.c
+>>>> new file mode 100644
+>>>> index 0000000000..2704df6061
+>>>> --- /dev/null
+>>>> +++ b/tests/tcg/x86_64/cross-modifying-code.c
+>>>> @@ -0,0 +1,80 @@
+>>>> +/*
+>>>> + * Test patching code, running in one thread, from another thread.
+>>>> + *
+>>>> + * Intel SDM calls this "cross-modifying code" and recommends a
+>>>> special
+>>>> + * sequence, which requires both threads to cooperate.
+>>>> + *
+>>>> + * Linux kernel uses a different sequence that does not require
+>>>> cooperation and
+>>>> + * involves patching the first byte with int3.
+>>>> + *
+>>>> + * Finally, there is user-mode software out there that simply uses
+>>>> atomics, and
+>>>> + * that seems to be good enough in practice. Test that QEMU has no
+>>>> problems
+>>>> + * with this as well.
+>>>> + */
+>>>> +
+>>>> +#include <assert.h>
+>>>> +#include <pthread.h>
+>>>> +#include <stdbool.h>
+>>>> +#include <stdlib.h>
+>>>> +
+>>>> +void add1_or_nop(long *x);
+>>>> +asm(".pushsection .rwx,\"awx\",@progbits\n"
+>>>> +=C2=A0=C2=A0=C2=A0 ".globl add1_or_nop\n"
+>>>> +=C2=A0=C2=A0=C2=A0 /* addq $0x1,(%rdi) */
+>>>> +=C2=A0=C2=A0=C2=A0 "add1_or_nop: .byte 0x48, 0x83, 0x07, 0x01\n"
+>>>> +=C2=A0=C2=A0=C2=A0 "ret\n"
+>>>> +=C2=A0=C2=A0=C2=A0 ".popsection\n");
+>>>> +
+>>>> +#define THREAD_WAIT 0
+>>>> +#define THREAD_PATCH 1
+>>>> +#define THREAD_STOP 2
+>>>> +
+>>>> +static void *thread_func(void *arg)
+>>>> +{
+>>>> +=C2=A0=C2=A0=C2=A0 int val =3D 0x0026748d; /* nop */
+>>>> +
+>>>> +=C2=A0=C2=A0=C2=A0 while (true) {
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 switch (__atomic_load_n((i=
+nt *)arg, __ATOMIC_SEQ_CST)) {
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case THREAD_WAIT:
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 br=
+eak;
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case THREAD_PATCH:
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 va=
+l =3D __atomic_exchange_n((int *)&add1_or_nop, val,
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 __ATOMIC_SEQ_CST);
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 br=
+eak;
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case THREAD_STOP:
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 re=
+turn NULL;
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 default:
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 as=
+sert(false);
+>>>> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 __=
+builtin_unreachable();
+>>>
+>>> Use g_assert_not_reached() instead.
+>>> checkpatch emits an error for it now.
+>> Is there an easy way to include glib from testcases?
+>> It's located using meson, and I can't immediately see how to push the
+>> respective compiler flags to the test Makefiles - this seems to be
+>> currently handled by configure writing to $config_target_mak.
+>> [...]
+>>=20
+>
+> Sorry you're right, I missed the fact tests don't have the deps we
+> have in QEMU itself.
+> I don't think any test case include any extra dependency for now (and
+> would make it hard to cross compile them too), so it's not worth
+> trying to get the right glib header for this.
+
+No we only have glibc for test cases.
+
+>
+> I don't now if it will be a problem when merging the series regarding
+> checkpatch, but if it is, we can always replace this by abort, or
+> exit.
+
+Its a false positive in this case. We could tech checkpatch not to care
+about glib-isms in tests/tcg but that would probaly make keeping it in
+sync with the kernel version harder.
+
+>
+>>=20
+>
+> As it is,
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

@@ -1,254 +1,190 @@
-Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp82414njb;
-        Tue, 22 Oct 2024 17:18:20 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX0G4wUEUeKydGnpZn0jCLfhiCUnj4AAajRcKOHFdIa2pczF/4EuRT1XwajfVRCuznlEKGbzXlVRqzsNw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGETgj/KZMKjweLG8cuKWJIDbZh+mGPkwLuiXPNEZXaBQ4B3zZs2x1FHu1xktRbKkrJNXAu
-X-Received: by 2002:a05:690c:dc9:b0:6be:28ab:d874 with SMTP id 00721157ae682-6e7f0dbbd76mr10378867b3.2.1729642699975;
-        Tue, 22 Oct 2024 17:18:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729642699; cv=none;
+Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp88266njb;
+        Tue, 22 Oct 2024 17:33:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXpu3mFaNw4No/h/4VWKHN3VrCmI3Q4XuBzZADGzv6GlskG1lIBM5f0vdepHjd6FxeCw/bowmpJT+yguw==@linaro.org
+X-Received: by 2002:a17:903:2452:b0:20c:f648:e39b with SMTP id d9443c01a7336-20fa9de9099mr11526615ad.11.1729643603939;
+        Tue, 22 Oct 2024 17:33:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729643603; cv=none;
         d=google.com; s=arc-20240605;
-        b=fj8u81G9n7aETyCmIqP6OahRGP2dNdJv3oiOWQsouroy9jUTH2f0xh6F+1hZjqSs8+
-         He1r5v0shaC5wawWFnreDUVQnDfskP8iQeALhyTMlG0uMnnD1tDjxeCR/jj2lGh/xb9Q
-         9q2Lk2DgO7cYJ1ehCzW6iWV/fdAEn0Vb4cLCZuCbyFpR8lbFZAC1g3VM9SerWd4Mhxng
-         ubdNw71v3cQUDXD8YO7xePb6y8QFYqE77uFSOvT9F49zV+rtIqmZLMAWFjRyGoepRFY6
-         1tgzQu+BJSlbTfJ9aG1cO/TeX9sewwFz0rkwJMgRn/a1VN5TtnpgzNbCp68aadR53RSJ
-         rK7g==
+        b=iTjY3IhdyIks1fp56O7/SMTMGjDJIvmgo9Mlzm951TPqZfVExVMS1SlbhZOcrG/it1
+         rvBAXlmx2FDOJyx82AW076mN76oCfmIJUdLEEjTR1Z1ZsdbkHe32JJLRQIugFOrJvxwu
+         ionNcJbKUptIAIWvY2t2LLqo2ebBpHZECB1TdBQEeRe6Z8snQVCRN5ryK62YiIR5HO2b
+         mnG+RWZlcNfsF4E1KIKYeOPk0US/KNwngj94+2YW06lICyybu3AgLwHkm9sn8gOI7ohq
+         UL/zI8msc//nXmK2aw8nwqpc/GRQsFH1hCTHxYB7G9MutOvx18/sA0/pqrfFtuHTJAa8
+         Lqow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:content-transfer-encoding:user-agent:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=SBoBNINTmrmrZ6PS1raunSzBNj06bgQiQWurqk8pEkc=;
-        fh=G03eyFs6nj7eLWRqZanM8fnN+reaFU+SHvlp6Dvz0Ig=;
-        b=GSBJmrnZNt51qSYKJ6CkhZRsah63ltJbgl729XtJ4v6fR8hzlEXd0LoAFwlqi187lw
-         2+co7z2CBmUPVx2HN6EDJSF/ga8+g8h3cUNZzwWnMvPL5wtrx67/3DzMWia1elDdHB1p
-         /vydk2idxyQDg66UnWGcuVsPgTRM8GFO84GovtzF1Rl0bKjZah5sNe/260kaUBFw8I1w
-         AgstWSWgIsViuXUHkNAk3bSMTZ3gr1aLf2swtgngH0Q2uR/QsbtzOc/HDyPZvOlvUEVA
-         WBXsmFY/tE3dx2dR83+E7ZMhiGnJodOtttEN74Q1BvKDr8ZuZcMHVr08uQBBHMW/cKKF
-         IhCQ==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=79ndCH4BWZEfycwpeQ4eGvQI1Eq+4kSlvhh1T8GdH5Q=;
+        fh=qkXLXDTE3rwWByhuEiQazmM1UyHd2SSZas4NwcChtWo=;
+        b=jOCLqfecAnMS2ZbsPAdMcnVytc4q1cUm2UogzXlHq/0Povdfehi8/eqofq+td2oLdY
+         9H9WdMtK4zcSCLWwOFMwh8XhCN/JZ6HNQi6/UTaK3dG+NG4rrJxIqqlf7JQbp3yJm4OU
+         O/EVhSzPra+aF3xxca+Pl1aDjDWk4TzHRlp21DLziZKXxfp2o1ApNfWR50L4F4rGgw01
+         5X4PCwgln3JtBGLkWYc9DEgd6jypz4J69oJHap1O1HctHzVhjjJqFeixuqbpuq9Z4Fdz
+         iyjK8kXXhWFhdfKM8aSz8zuFC7UYaX62pv4pFeWP7Z32hVMZ7Lumcbr644yXt6QJIKXD
+         9uBg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OH+kt1r1;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <iii@linux.ibm.com>
-Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id 00721157ae682-6e5f5ce40fesi52783157b3.234.2024.10.22.17.18.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 22 Oct 2024 17:18:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SGuKYtYX;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-20e9952a3e8sor18341505ad.14.2024.10.22.17.33.23
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 22 Oct 2024 17:33:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=OH+kt1r1;
-       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 49MLoBML006937;
-	Wed, 23 Oct 2024 00:16:54 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=pp1; bh=SBoBNI
-	NTmrmrZ6PS1raunSzBNj06bgQiQWurqk8pEkc=; b=OH+kt1r1ac46DhWewUxJSv
-	VXQziNTkLk4XNNmuSOuq6sX1lhNEDpbRuv7aT3Tr1c//aHBuxdVvkMAut0Wh4Dve
-	xpOHh5ZsQTs8u2mnhVuQvcICbDsiCECTTmAGZQRIw5kTq3bVyc2mW1suRswGD4wF
-	KDhvbJRj0vSedvp/8aEpYJHZ5VKC2QaRJ4wkiYSYOTsfJVAH88OKmXs5DXq9cN4J
-	N/SuTKQWlc29JViCL6WSTibw6DBfmMqq+EWRWcGXKCXliBs7NzjxCSnm0Jyq9WGq
-	z1ezOywt4kb4Jdlp2DevWPWAJgwpqQGHee8IKE8ge5mYpyj8e8QBLOJZDi+Vtdmg
-	==
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 42emafrds9-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 23 Oct 2024 00:16:54 +0000 (GMT)
-Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
-	by pps.reinject (8.18.0.8/8.18.0.8) with ESMTP id 49N0GrLj023088;
-	Wed, 23 Oct 2024 00:16:53 GMT
-Received: from ppma12.dal12v.mail.ibm.com (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 42emafrds8-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 23 Oct 2024 00:16:53 +0000 (GMT)
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
-	by ppma12.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 49MM8hIG001552;
-	Wed, 23 Oct 2024 00:16:52 GMT
-Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
-	by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 42emk98cny-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 23 Oct 2024 00:16:52 +0000
-Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
-	by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 49N0GpHJ45285632
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 23 Oct 2024 00:16:51 GMT
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 0FBD020043;
-	Wed, 23 Oct 2024 00:16:51 +0000 (GMT)
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 83BB620040;
-	Wed, 23 Oct 2024 00:16:49 +0000 (GMT)
-Received: from [127.0.0.1] (unknown [9.152.108.100])
-	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
-	Wed, 23 Oct 2024 00:16:49 +0000 (GMT)
-Message-ID: <4c383f09bd6bd9b488ad301e5f050b8c9971f3a2.camel@linux.ibm.com>
-Subject: Re: [PATCH v2 07/20] tests/tcg/x86_64: Add cross-modifying code test
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-        Alex
- =?ISO-8859-1?Q?Benn=E9e?=
-	 <alex.bennee@linaro.org>,
-        qemu-devel@nongnu.org
-Cc: Beraldo Leal <bleal@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
-        Wainer dos Santos Moschetta <wainersm@redhat.com>,
-        Mahmoud Mandour
- <ma.mandourr@gmail.com>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>,
-        Yanan Wang
- <wangyanan55@huawei.com>, Thomas Huth <thuth@redhat.com>,
-        John Snow
- <jsnow@redhat.com>,
-        =?ISO-8859-1?Q?Marc-Andr=E9?= Lureau
- <marcandre.lureau@redhat.com>,
-        qemu-arm@nongnu.org,
-        "Daniel P."
- =?ISO-8859-1?Q?Berrang=E9?= <berrange@redhat.com>,
-        Eduardo Habkost
- <eduardo@habkost.net>, devel@lists.libvirt.org,
-        Cleber Rosa
- <crosa@redhat.com>, kvm@vger.kernel.org,
-        Philippe
- =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-        Alexandre Iooss
- <erdnaxe@crans.org>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Richard
- Henderson <richard.henderson@linaro.org>,
-        Riku Voipio
- <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
-        Marcelo Tosatti
- <mtosatti@redhat.com>,
-        "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Paolo Bonzini
- <pbonzini@redhat.com>
-Date: Wed, 23 Oct 2024 02:16:49 +0200
-In-Reply-To: <6b18238b-f9c3-4046-964f-de16dc30d26e@linaro.org>
-References: <20241022105614.839199-1-alex.bennee@linaro.org>
-	 <20241022105614.839199-8-alex.bennee@linaro.org>
-	 <6b18238b-f9c3-4046-964f-de16dc30d26e@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-User-Agent: Evolution 3.52.4 (3.52.4-1.fc40) 
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: H5mvpg5WpP0LgFN83-PfKKlyGVf_CLmb
-X-Proofpoint-ORIG-GUID: bhM4KN_iLhtvPV9j9L2Gh6SjUqCU3ZM7
-Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+       dkim=pass header.i=@linaro.org header.s=google header.b=SGuKYtYX;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1729643603; x=1730248403; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=79ndCH4BWZEfycwpeQ4eGvQI1Eq+4kSlvhh1T8GdH5Q=;
+        b=SGuKYtYXW4LpkdWL7mDc8uJKW89AqRIBN1LW31uGhy4C0KcYtnoGZzewgV1LE5f50O
+         6fUbrWci6GfgKzEv5DKji+Bn+E19lWznpo9tlGgpxHAzr2ZYCe7aNRgBo996zo0QZqcZ
+         tSFMw1+nPV+YOQZVtCA7kkKL/NVf79DbBL3khuG/6H/t1GzQLXGxp6whsOq3UDA96dUF
+         PnKykwGroX4cHodZ4pZ8LEnAXqYZ3aQfqD+DXo8jGwrylPcN2WUzTZrkXbj7OfjiOtjr
+         QuIrWE/gaFiKrE60T2rNphKN0LPTC9669XGZWLqDlkiZqg2vgnIbPNtBmX9qJ6U6uhYz
+         BgBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729643603; x=1730248403;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=79ndCH4BWZEfycwpeQ4eGvQI1Eq+4kSlvhh1T8GdH5Q=;
+        b=O8OmihoETOyydG8Sska/iJvURafrBTvGIItHSmnSpHdS+VzYu9UEfKzcoiv035rgs3
+         T25Brni3mML+aRXWjD2JXp3OGWFbW7Z/PzNydpW+B0+Y3AqlCqhgckLSJVyYrZrdm+Gp
+         wDHoQ3rmCMAgWq2g5peNGRaWsWLFGU8hXdHnLVwA3VKTuOOcyJS/L+32Sh5rPm8PnSSz
+         7BmI2EniS+Fl0w7SuZpzKmj8owbLob+jsONvoRWJ6YS+arywKEatTaRiVb+iQ86QjN15
+         496RMe6UR5x6Fnv+WuGo4VMdLA3W8ysJhDdnqbk4YjdJyXcuGC5nwwZPt7nlGk7NLMmc
+         getg==
+X-Forwarded-Encrypted: i=1; AJvYcCWxymanqVUWOx0VWvezJXTtXBu9Sh2zagKmlqVkkaVYyy33SgRui76cnvmNx85r9iBA2Nh8nv2wWjC6Ow==@linaro.org
+X-Gm-Message-State: AOJu0Yxsn0nU9BjMUZbZvexEXp0s8dn0D7Yb5PrguJPnRk8LkVbwcbJe
+	y1tpgRe0m6y9KaT9Qf/T137M5pBTMjViyyWbTURCEfVTUIk0B0Pi66+7xIVs+Yno6w==
+X-Google-Smtp-Source: AGHT+IFhsM4ymH4z9iMfmjz8kHFWc3s1RItxg2i/WUFTPSle33GeerWDLNrU1JzWzNM+vUvkbjTJDw==
+X-Received: by 2002:a17:902:e883:b0:20b:7ed8:3990 with SMTP id d9443c01a7336-20fa9de8bf5mr14329755ad.12.1729643603347;
+        Tue, 22 Oct 2024 17:33:23 -0700 (PDT)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-20e7f0ebb5csm48187915ad.240.2024.10.22.17.33.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 22 Oct 2024 17:33:22 -0700 (PDT)
+Message-ID: <17ab6a26-bfd2-4ee6-8fc4-c371d266dcb1@linaro.org>
+Date: Tue, 22 Oct 2024 17:33:21 -0700
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
- definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0 spamscore=0
- priorityscore=1501 bulkscore=0 lowpriorityscore=0 malwarescore=0
- mlxscore=0 adultscore=0 mlxlogscore=999 phishscore=0 suspectscore=0
- clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2409260000 definitions=main-2410220156
-X-TUID: h4uryx8vAYUR
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 07/20] tests/tcg/x86_64: Add cross-modifying code test
+To: Ilya Leoshkevich <iii@linux.ibm.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, qemu-devel@nongnu.org
+Cc: Beraldo Leal <bleal@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Yanan Wang <wangyanan55@huawei.com>,
+ Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ devel@lists.libvirt.org, Cleber Rosa <crosa@redhat.com>,
+ kvm@vger.kernel.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Riku Voipio <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20241022105614.839199-1-alex.bennee@linaro.org>
+ <20241022105614.839199-8-alex.bennee@linaro.org>
+ <6b18238b-f9c3-4046-964f-de16dc30d26e@linaro.org>
+ <4c383f09bd6bd9b488ad301e5f050b8c9971f3a2.camel@linux.ibm.com>
+Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <4c383f09bd6bd9b488ad301e5f050b8c9971f3a2.camel@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: lx9TTA+zDVJ3
 
-On Tue, 2024-10-22 at 13:36 -0700, Pierrick Bouvier wrote:
-> On 10/22/24 03:56, Alex Benn=C3=A9e wrote:
-> > From: Ilya Leoshkevich <iii@linux.ibm.com>
-> >=20
-> > commit f025692c992c ("accel/tcg: Clear PAGE_WRITE before
-> > translation")
-> > fixed cross-modifying code handling, but did not add a test. The
-> > changed code was further improved recently [1], and I was not sure
-> > whether these modifications were safe (spoiler: they were fine).
-> >=20
-> > Add a test to make sure there are no regressions.
-> >=20
-> > [1]
-> > https://lists.gnu.org/archive/html/qemu-devel/2022-09/msg00034.html
-> >=20
-> > Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-> > Message-Id: <20241001150617.9977-1-iii@linux.ibm.com>
-> > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> > ---
-> > =C2=A0 tests/tcg/x86_64/cross-modifying-code.c | 80
-> > +++++++++++++++++++++++++
-> > =C2=A0 tests/tcg/x86_64/Makefile.target=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 |=C2=A0 4 ++
-> > =C2=A0 2 files changed, 84 insertions(+)
-> > =C2=A0 create mode 100644 tests/tcg/x86_64/cross-modifying-code.c
-> >=20
-> > diff --git a/tests/tcg/x86_64/cross-modifying-code.c
-> > b/tests/tcg/x86_64/cross-modifying-code.c
-> > new file mode 100644
-> > index 0000000000..2704df6061
-> > --- /dev/null
-> > +++ b/tests/tcg/x86_64/cross-modifying-code.c
-> > @@ -0,0 +1,80 @@
-> > +/*
-> > + * Test patching code, running in one thread, from another thread.
-> > + *
-> > + * Intel SDM calls this "cross-modifying code" and recommends a
-> > special
-> > + * sequence, which requires both threads to cooperate.
-> > + *
-> > + * Linux kernel uses a different sequence that does not require
-> > cooperation and
-> > + * involves patching the first byte with int3.
-> > + *
-> > + * Finally, there is user-mode software out there that simply uses
-> > atomics, and
-> > + * that seems to be good enough in practice. Test that QEMU has no
-> > problems
-> > + * with this as well.
-> > + */
-> > +
-> > +#include <assert.h>
-> > +#include <pthread.h>
-> > +#include <stdbool.h>
-> > +#include <stdlib.h>
-> > +
-> > +void add1_or_nop(long *x);
-> > +asm(".pushsection .rwx,\"awx\",@progbits\n"
-> > +=C2=A0=C2=A0=C2=A0 ".globl add1_or_nop\n"
-> > +=C2=A0=C2=A0=C2=A0 /* addq $0x1,(%rdi) */
-> > +=C2=A0=C2=A0=C2=A0 "add1_or_nop: .byte 0x48, 0x83, 0x07, 0x01\n"
-> > +=C2=A0=C2=A0=C2=A0 "ret\n"
-> > +=C2=A0=C2=A0=C2=A0 ".popsection\n");
-> > +
-> > +#define THREAD_WAIT 0
-> > +#define THREAD_PATCH 1
-> > +#define THREAD_STOP 2
-> > +
-> > +static void *thread_func(void *arg)
-> > +{
-> > +=C2=A0=C2=A0=C2=A0 int val =3D 0x0026748d; /* nop */
-> > +
-> > +=C2=A0=C2=A0=C2=A0 while (true) {
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 switch (__atomic_load_n((in=
-t *)arg, __ATOMIC_SEQ_CST)) {
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case THREAD_WAIT:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bre=
-ak;
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case THREAD_PATCH:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 val=
- =3D __atomic_exchange_n((int *)&add1_or_nop, val,
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 __ATOMIC_SEQ_CST);
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 bre=
-ak;
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 case THREAD_STOP:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ret=
-urn NULL;
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 default:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ass=
-ert(false);
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 __b=
-uiltin_unreachable();
->=20
-> Use g_assert_not_reached() instead.
-> checkpatch emits an error for it now.
-
-Is there an easy way to include glib from testcases?
-It's located using meson, and I can't immediately see how to push the
-respective compiler flags to the test Makefiles - this seems to be
-currently handled by configure writing to $config_target_mak.
-
-[...]
-
+T24gMTAvMjIvMjQgMTc6MTYsIElseWEgTGVvc2hrZXZpY2ggd3JvdGU6DQo+IE9uIFR1ZSwg
+MjAyNC0xMC0yMiBhdCAxMzozNiAtMDcwMCwgUGllcnJpY2sgQm91dmllciB3cm90ZToNCj4+
+IE9uIDEwLzIyLzI0IDAzOjU2LCBBbGV4IEJlbm7DqWUgd3JvdGU6DQo+Pj4gRnJvbTogSWx5
+YSBMZW9zaGtldmljaCA8aWlpQGxpbnV4LmlibS5jb20+DQo+Pj4NCj4+PiBjb21taXQgZjAy
+NTY5MmM5OTJjICgiYWNjZWwvdGNnOiBDbGVhciBQQUdFX1dSSVRFIGJlZm9yZQ0KPj4+IHRy
+YW5zbGF0aW9uIikNCj4+PiBmaXhlZCBjcm9zcy1tb2RpZnlpbmcgY29kZSBoYW5kbGluZywg
+YnV0IGRpZCBub3QgYWRkIGEgdGVzdC4gVGhlDQo+Pj4gY2hhbmdlZCBjb2RlIHdhcyBmdXJ0
+aGVyIGltcHJvdmVkIHJlY2VudGx5IFsxXSwgYW5kIEkgd2FzIG5vdCBzdXJlDQo+Pj4gd2hl
+dGhlciB0aGVzZSBtb2RpZmljYXRpb25zIHdlcmUgc2FmZSAoc3BvaWxlcjogdGhleSB3ZXJl
+IGZpbmUpLg0KPj4+DQo+Pj4gQWRkIGEgdGVzdCB0byBtYWtlIHN1cmUgdGhlcmUgYXJlIG5v
+IHJlZ3Jlc3Npb25zLg0KPj4+DQo+Pj4gWzFdDQo+Pj4gaHR0cHM6Ly9saXN0cy5nbnUub3Jn
+L2FyY2hpdmUvaHRtbC9xZW11LWRldmVsLzIwMjItMDkvbXNnMDAwMzQuaHRtbA0KPj4+DQo+
+Pj4gU2lnbmVkLW9mZi1ieTogSWx5YSBMZW9zaGtldmljaCA8aWlpQGxpbnV4LmlibS5jb20+
+DQo+Pj4gTWVzc2FnZS1JZDogPDIwMjQxMDAxMTUwNjE3Ljk5NzctMS1paWlAbGludXguaWJt
+LmNvbT4NCj4+PiBTaWduZWQtb2ZmLWJ5OiBBbGV4IEJlbm7DqWUgPGFsZXguYmVubmVlQGxp
+bmFyby5vcmc+DQo+Pj4gLS0tDQo+Pj4gIMKgIHRlc3RzL3RjZy94ODZfNjQvY3Jvc3MtbW9k
+aWZ5aW5nLWNvZGUuYyB8IDgwDQo+Pj4gKysrKysrKysrKysrKysrKysrKysrKysrKw0KPj4+
+ICDCoCB0ZXN0cy90Y2cveDg2XzY0L01ha2VmaWxlLnRhcmdldMKgwqDCoMKgwqDCoMKgIHzC
+oCA0ICsrDQo+Pj4gIMKgIDIgZmlsZXMgY2hhbmdlZCwgODQgaW5zZXJ0aW9ucygrKQ0KPj4+
+ICDCoCBjcmVhdGUgbW9kZSAxMDA2NDQgdGVzdHMvdGNnL3g4Nl82NC9jcm9zcy1tb2RpZnlp
+bmctY29kZS5jDQo+Pj4NCj4+PiBkaWZmIC0tZ2l0IGEvdGVzdHMvdGNnL3g4Nl82NC9jcm9z
+cy1tb2RpZnlpbmctY29kZS5jDQo+Pj4gYi90ZXN0cy90Y2cveDg2XzY0L2Nyb3NzLW1vZGlm
+eWluZy1jb2RlLmMNCj4+PiBuZXcgZmlsZSBtb2RlIDEwMDY0NA0KPj4+IGluZGV4IDAwMDAw
+MDAwMDAuLjI3MDRkZjYwNjENCj4+PiAtLS0gL2Rldi9udWxsDQo+Pj4gKysrIGIvdGVzdHMv
+dGNnL3g4Nl82NC9jcm9zcy1tb2RpZnlpbmctY29kZS5jDQo+Pj4gQEAgLTAsMCArMSw4MCBA
+QA0KPj4+ICsvKg0KPj4+ICsgKiBUZXN0IHBhdGNoaW5nIGNvZGUsIHJ1bm5pbmcgaW4gb25l
+IHRocmVhZCwgZnJvbSBhbm90aGVyIHRocmVhZC4NCj4+PiArICoNCj4+PiArICogSW50ZWwg
+U0RNIGNhbGxzIHRoaXMgImNyb3NzLW1vZGlmeWluZyBjb2RlIiBhbmQgcmVjb21tZW5kcyBh
+DQo+Pj4gc3BlY2lhbA0KPj4+ICsgKiBzZXF1ZW5jZSwgd2hpY2ggcmVxdWlyZXMgYm90aCB0
+aHJlYWRzIHRvIGNvb3BlcmF0ZS4NCj4+PiArICoNCj4+PiArICogTGludXgga2VybmVsIHVz
+ZXMgYSBkaWZmZXJlbnQgc2VxdWVuY2UgdGhhdCBkb2VzIG5vdCByZXF1aXJlDQo+Pj4gY29v
+cGVyYXRpb24gYW5kDQo+Pj4gKyAqIGludm9sdmVzIHBhdGNoaW5nIHRoZSBmaXJzdCBieXRl
+IHdpdGggaW50My4NCj4+PiArICoNCj4+PiArICogRmluYWxseSwgdGhlcmUgaXMgdXNlci1t
+b2RlIHNvZnR3YXJlIG91dCB0aGVyZSB0aGF0IHNpbXBseSB1c2VzDQo+Pj4gYXRvbWljcywg
+YW5kDQo+Pj4gKyAqIHRoYXQgc2VlbXMgdG8gYmUgZ29vZCBlbm91Z2ggaW4gcHJhY3RpY2Uu
+IFRlc3QgdGhhdCBRRU1VIGhhcyBubw0KPj4+IHByb2JsZW1zDQo+Pj4gKyAqIHdpdGggdGhp
+cyBhcyB3ZWxsLg0KPj4+ICsgKi8NCj4+PiArDQo+Pj4gKyNpbmNsdWRlIDxhc3NlcnQuaD4N
+Cj4+PiArI2luY2x1ZGUgPHB0aHJlYWQuaD4NCj4+PiArI2luY2x1ZGUgPHN0ZGJvb2wuaD4N
+Cj4+PiArI2luY2x1ZGUgPHN0ZGxpYi5oPg0KPj4+ICsNCj4+PiArdm9pZCBhZGQxX29yX25v
+cChsb25nICp4KTsNCj4+PiArYXNtKCIucHVzaHNlY3Rpb24gLnJ3eCxcImF3eFwiLEBwcm9n
+Yml0c1xuIg0KPj4+ICvCoMKgwqAgIi5nbG9ibCBhZGQxX29yX25vcFxuIg0KPj4+ICvCoMKg
+wqAgLyogYWRkcSAkMHgxLCglcmRpKSAqLw0KPj4+ICvCoMKgwqAgImFkZDFfb3Jfbm9wOiAu
+Ynl0ZSAweDQ4LCAweDgzLCAweDA3LCAweDAxXG4iDQo+Pj4gK8KgwqDCoCAicmV0XG4iDQo+
+Pj4gK8KgwqDCoCAiLnBvcHNlY3Rpb25cbiIpOw0KPj4+ICsNCj4+PiArI2RlZmluZSBUSFJF
+QURfV0FJVCAwDQo+Pj4gKyNkZWZpbmUgVEhSRUFEX1BBVENIIDENCj4+PiArI2RlZmluZSBU
+SFJFQURfU1RPUCAyDQo+Pj4gKw0KPj4+ICtzdGF0aWMgdm9pZCAqdGhyZWFkX2Z1bmModm9p
+ZCAqYXJnKQ0KPj4+ICt7DQo+Pj4gK8KgwqDCoCBpbnQgdmFsID0gMHgwMDI2NzQ4ZDsgLyog
+bm9wICovDQo+Pj4gKw0KPj4+ICvCoMKgwqAgd2hpbGUgKHRydWUpIHsNCj4+PiArwqDCoMKg
+wqDCoMKgwqAgc3dpdGNoIChfX2F0b21pY19sb2FkX24oKGludCAqKWFyZywgX19BVE9NSUNf
+U0VRX0NTVCkpIHsNCj4+PiArwqDCoMKgwqDCoMKgwqAgY2FzZSBUSFJFQURfV0FJVDoNCj4+
+PiArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazsNCj4+PiArwqDCoMKgwqDCoMKgwqAg
+Y2FzZSBUSFJFQURfUEFUQ0g6DQo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgdmFsID0g
+X19hdG9taWNfZXhjaGFuZ2VfbigoaW50ICopJmFkZDFfb3Jfbm9wLCB2YWwsDQo+Pj4gK8Kg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgwqDCoMKgIF9fQVRPTUlDX1NFUV9DU1QpOw0KPj4+ICvCoMKgwqDCoMKg
+wqDCoMKgwqDCoMKgIGJyZWFrOw0KPj4+ICvCoMKgwqDCoMKgwqDCoCBjYXNlIFRIUkVBRF9T
+VE9QOg0KPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybiBOVUxMOw0KPj4+ICvC
+oMKgwqDCoMKgwqDCoCBkZWZhdWx0Og0KPj4+ICvCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIGFz
+c2VydChmYWxzZSk7DQo+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgX19idWlsdGluX3Vu
+cmVhY2hhYmxlKCk7DQo+Pg0KPj4gVXNlIGdfYXNzZXJ0X25vdF9yZWFjaGVkKCkgaW5zdGVh
+ZC4NCj4+IGNoZWNrcGF0Y2ggZW1pdHMgYW4gZXJyb3IgZm9yIGl0IG5vdy4NCj4gDQo+IElz
+IHRoZXJlIGFuIGVhc3kgd2F5IHRvIGluY2x1ZGUgZ2xpYiBmcm9tIHRlc3RjYXNlcz8NCj4g
+SXQncyBsb2NhdGVkIHVzaW5nIG1lc29uLCBhbmQgSSBjYW4ndCBpbW1lZGlhdGVseSBzZWUg
+aG93IHRvIHB1c2ggdGhlDQo+IHJlc3BlY3RpdmUgY29tcGlsZXIgZmxhZ3MgdG8gdGhlIHRl
+c3QgTWFrZWZpbGVzIC0gdGhpcyBzZWVtcyB0byBiZQ0KPiBjdXJyZW50bHkgaGFuZGxlZCBi
+eSBjb25maWd1cmUgd3JpdGluZyB0byAkY29uZmlnX3RhcmdldF9tYWsuDQo+IA0KPiBbLi4u
+XQ0KPiANCg0KU29ycnkgeW91J3JlIHJpZ2h0LCBJIG1pc3NlZCB0aGUgZmFjdCB0ZXN0cyBk
+b24ndCBoYXZlIHRoZSBkZXBzIHdlIGhhdmUgDQppbiBRRU1VIGl0c2VsZi4NCkkgZG9uJ3Qg
+dGhpbmsgYW55IHRlc3QgY2FzZSBpbmNsdWRlIGFueSBleHRyYSBkZXBlbmRlbmN5IGZvciBu
+b3cgKGFuZCANCndvdWxkIG1ha2UgaXQgaGFyZCB0byBjcm9zcyBjb21waWxlIHRoZW0gdG9v
+KSwgc28gaXQncyBub3Qgd29ydGggdHJ5aW5nIA0KdG8gZ2V0IHRoZSByaWdodCBnbGliIGhl
+YWRlciBmb3IgdGhpcy4NCg0KSSBkb24ndCBub3cgaWYgaXQgd2lsbCBiZSBhIHByb2JsZW0g
+d2hlbiBtZXJnaW5nIHRoZSBzZXJpZXMgcmVnYXJkaW5nIA0KY2hlY2twYXRjaCwgYnV0IGlm
+IGl0IGlzLCB3ZSBjYW4gYWx3YXlzIHJlcGxhY2UgdGhpcyBieSBhYm9ydCwgb3IgZXhpdC4N
+Cg0KPiANCg0KQXMgaXQgaXMsDQpSZXZpZXdlZC1ieTogUGllcnJpY2sgQm91dmllciA8cGll
+cnJpY2suYm91dmllckBsaW5hcm8ub3JnPg0K

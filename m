@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a91370744sm465054866b.131.2024.10.23.04.34.09
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66a654b9sm4351143a12.34.2024.10.23.04.34.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 23 Oct 2024 04:34:10 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id E3FA95F9DD;
+	by draig.lan (Postfix) with ESMTP id 6C4CE5F913;
 	Wed, 23 Oct 2024 12:34:07 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -35,67 +35,76 @@ Cc: Zhao Liu <zhao1.liu@intel.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 10/18] gitlab: make check-[dco|patch] a little more verbose
-Date: Wed, 23 Oct 2024 12:33:58 +0100
-Message-Id: <20241023113406.1284676-11-alex.bennee@linaro.org>
+Subject: [PATCH v3 05/18] docs/devel: update tsan build documentation
+Date: Wed, 23 Oct 2024 12:33:53 +0100
+Message-Id: <20241023113406.1284676-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241023113406.1284676-1-alex.bennee@linaro.org>
 References: <20241023113406.1284676-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: pTc7DBS9xXqQ
+X-TUID: 1NWeiYapP39f
 
-When git fails the rather terse backtrace only indicates it failed
-without some useful context. Add some to make the log a little more
-useful.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
+Mention it's now possible to build with gcc, instead of clang, and
+explain how to build a sanitized glib version.
+
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20240910174013.1433331-4-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - keep check_call, just don't redirect stdout/err
----
- .gitlab-ci.d/check-dco.py   | 5 ++---
- .gitlab-ci.d/check-patch.py | 5 ++---
- 2 files changed, 4 insertions(+), 6 deletions(-)
+ docs/devel/testing/main.rst | 26 ++++++++++++++++++++++----
+ 1 file changed, 22 insertions(+), 4 deletions(-)
 
-diff --git a/.gitlab-ci.d/check-dco.py b/.gitlab-ci.d/check-dco.py
-index 632c8bcce8..d221b16bd5 100755
---- a/.gitlab-ci.d/check-dco.py
-+++ b/.gitlab-ci.d/check-dco.py
-@@ -19,10 +19,9 @@
- reponame = os.path.basename(cwd)
- repourl = "https://gitlab.com/%s/%s.git" % (namespace, reponame)
+diff --git a/docs/devel/testing/main.rst b/docs/devel/testing/main.rst
+index 09725e8ea9..91f4dc61fb 100644
+--- a/docs/devel/testing/main.rst
++++ b/docs/devel/testing/main.rst
+@@ -628,20 +628,38 @@ Building and Testing with TSan
+ It is possible to build and test with TSan, with a few additional steps.
+ These steps are normally done automatically in the docker.
  
-+print(f"adding upstream git repo @ {repourl}")
- subprocess.check_call(["git", "remote", "add", "check-dco", repourl])
--subprocess.check_call(["git", "fetch", "check-dco", "master"],
--                      stdout=subprocess.DEVNULL,
--                      stderr=subprocess.DEVNULL)
-+subprocess.check_call(["git", "fetch", "check-dco", "master"])
+-There is a one time patch needed in clang-9 or clang-10 at this time:
++TSan is supported for clang and gcc.
++One particularity of sanitizers is that all the code, including shared objects
++dependencies, should be built with it.
++In the case of TSan, any synchronization primitive from glib (GMutex for
++instance) will not be recognized, and will lead to false positives.
++
++To build a tsan version of glib:
  
- ancestor = subprocess.check_output(["git", "merge-base",
-                                     "check-dco/master", "HEAD"],
-diff --git a/.gitlab-ci.d/check-patch.py b/.gitlab-ci.d/check-patch.py
-index 39e2b403c9..68c549a146 100755
---- a/.gitlab-ci.d/check-patch.py
-+++ b/.gitlab-ci.d/check-patch.py
-@@ -19,13 +19,12 @@
- reponame = os.path.basename(cwd)
- repourl = "https://gitlab.com/%s/%s.git" % (namespace, reponame)
+ .. code::
  
-+print(f"adding upstream git repo @ {repourl}")
- # GitLab CI environment does not give us any direct info about the
- # base for the user's branch. We thus need to figure out a common
- # ancestor between the user's branch and current git master.
- subprocess.check_call(["git", "remote", "add", "check-patch", repourl])
--subprocess.check_call(["git", "fetch", "check-patch", "master"],
--                      stdout=subprocess.DEVNULL,
--                      stderr=subprocess.DEVNULL)
-+subprocess.check_call(["git", "fetch", "check-patch", "master"])
+-  sed -i 's/^const/static const/g' \
+-      /usr/lib/llvm-10/lib/clang/10.0.0/include/sanitizer/tsan_interface.h
++   $ git clone --depth=1 --branch=2.81.0 https://github.com/GNOME/glib.git
++   $ cd glib
++   $ CFLAGS="-O2 -g -fsanitize=thread" meson build
++   $ ninja -C build
  
- ancestor = subprocess.check_output(["git", "merge-base",
-                                     "check-patch/master", "HEAD"],
+ To configure the build for TSan:
+ 
+ .. code::
+ 
+-  ../configure --enable-tsan --cc=clang-10 --cxx=clang++-10 \
++  ../configure --enable-tsan \
+                --disable-werror --extra-cflags="-O0"
+ 
++When executing qemu, don't forget to point to tsan glib:
++
++.. code::
++
++   $ glib_dir=/path/to/glib
++   $ export LD_LIBRARY_PATH=$glib_dir/build/gio:$glib_dir/build/glib:$glib_dir/build/gmodule:$glib_dir/build/gobject:$glib_dir/build/gthread
++   # check correct version is used
++   $ ldd build/qemu-x86_64 | grep glib
++   $ qemu-system-x86_64 ...
++
+ The runtime behavior of TSAN is controlled by the TSAN_OPTIONS environment
+ variable.
+ 
 -- 
 2.39.5

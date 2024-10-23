@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a91571ed3sm463602366b.164.2024.10.23.04.44.03
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a91370e54sm462834566b.102.2024.10.23.04.44.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 23 Oct 2024 04:44:03 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id B34075FC34;
+	by draig.lan (Postfix) with ESMTP id 6AE8B5FC0F;
 	Wed, 23 Oct 2024 12:34:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -35,57 +35,133 @@ Cc: Zhao Liu <zhao1.liu@intel.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Robbin Ehn <rehn@rivosinc.com>
-Subject: [PATCH v3 18/18] plugins: fix qemu_plugin_reset
-Date: Wed, 23 Oct 2024 12:34:06 +0100
-Message-Id: <20241023113406.1284676-19-alex.bennee@linaro.org>
+	Gustavo Romero <gustavo.romero@linaro.org>
+Subject: [PATCH v3 15/18] testing: Enhance gdb probe script
+Date: Wed, 23 Oct 2024 12:34:03 +0100
+Message-Id: <20241023113406.1284676-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241023113406.1284676-1-alex.bennee@linaro.org>
 References: <20241023113406.1284676-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: cU8dUJ+Egw3Q
+X-TUID: 89nGAUmAxI2l
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+From: Gustavo Romero <gustavo.romero@linaro.org>
 
-34e5e1 refactored the plugin context initialization. After this change,
-tcg_ctx->plugin_insn is not reset inconditionnally anymore, but only if
-one plugin at least is active.
+Use list and set comprehension to simplify code. Also, gently handle
+invalid gdb filenames.
 
-When uninstalling the last plugin active, we stopped reinitializing
-tcg_ctx->plugin_insn, which leads to memory callbacks being emitted.
-This results in an error as they don't appear in a plugin op sequence as
-expected.
-
-The correct fix is to make sure we reset plugin translation variables
-after current block translation ends. This way, we can catch any
-potential misuse of those after a given block, in more than fixing the
-current bug.
-
-Fixes: https://gitlab.com/qemu-project/qemu/-/issues/2570
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Tested-by: Robbin Ehn <rehn@rivosinc.com>
-Message-Id: <20241015003819.984601-1-pierrick.bouvier@linaro.org>
-[AJB: trim patch version details from commit msg]
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20241022105614.839199-16-alex.bennee@linaro.org>
+Message-Id: <20241015145848.387281-1-gustavo.romero@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- accel/tcg/plugin-gen.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ scripts/probe-gdb-support.py | 75 +++++++++++++++++++-----------------
+ 1 file changed, 39 insertions(+), 36 deletions(-)
 
-diff --git a/accel/tcg/plugin-gen.c b/accel/tcg/plugin-gen.c
-index 2ee4c22bef..0f47bfbb48 100644
---- a/accel/tcg/plugin-gen.c
-+++ b/accel/tcg/plugin-gen.c
-@@ -467,4 +467,8 @@ void plugin_gen_tb_end(CPUState *cpu, size_t num_insns)
+diff --git a/scripts/probe-gdb-support.py b/scripts/probe-gdb-support.py
+index 6dc58d06c7..6bcadce150 100644
+--- a/scripts/probe-gdb-support.py
++++ b/scripts/probe-gdb-support.py
+@@ -19,58 +19,61 @@
  
-     /* inject the instrumentation at the appropriate places */
-     plugin_gen_inject(ptb);
-+
-+    /* reset plugin translation state (plugin_tb is reused between blocks) */
-+    tcg_ctx->plugin_db = NULL;
-+    tcg_ctx->plugin_insn = NULL;
+ import argparse
+ import re
+-from subprocess import check_output, STDOUT
++from subprocess import check_output, STDOUT, CalledProcessError
++import sys
+ 
+-# mappings from gdb arch to QEMU target
+-mappings = {
+-    "alpha" : "alpha",
++# Mappings from gdb arch to QEMU target
++MAP = {
++    "alpha" : ["alpha"],
+     "aarch64" : ["aarch64", "aarch64_be"],
+-    "armv7": "arm",
++    "armv7": ["arm"],
+     "armv8-a" : ["aarch64", "aarch64_be"],
+-    "avr" : "avr",
++    "avr" : ["avr"],
+     # no hexagon in upstream gdb
+-    "hppa1.0" : "hppa",
+-    "i386" : "i386",
+-    "i386:x86-64" : "x86_64",
+-    "Loongarch64" : "loongarch64",
+-    "m68k" : "m68k",
+-    "MicroBlaze" : "microblaze",
++    "hppa1.0" : ["hppa"],
++    "i386" : ["i386"],
++    "i386:x86-64" : ["x86_64"],
++    "Loongarch64" : ["loongarch64"],
++    "m68k" : ["m68k"],
++    "MicroBlaze" : ["microblaze"],
+     "mips:isa64" : ["mips64", "mips64el"],
+-    "or1k" : "or1k",
+-    "powerpc:common" : "ppc",
++    "or1k" : ["or1k"],
++    "powerpc:common" : ["ppc"],
+     "powerpc:common64" : ["ppc64", "ppc64le"],
+-    "riscv:rv32" : "riscv32",
+-    "riscv:rv64" : "riscv64",
+-    "s390:64-bit" : "s390x",
++    "riscv:rv32" : ["riscv32"],
++    "riscv:rv64" : ["riscv64"],
++    "s390:64-bit" : ["s390x"],
+     "sh4" : ["sh4", "sh4eb"],
+-    "sparc": "sparc",
+-    "sparc:v8plus": "sparc32plus",
+-    "sparc:v9a" : "sparc64",
++    "sparc": ["sparc"],
++    "sparc:v8plus": ["sparc32plus"],
++    "sparc:v9a" : ["sparc64"],
+     # no tricore in upstream gdb
+     "xtensa" : ["xtensa", "xtensaeb"]
  }
+ 
++
+ def do_probe(gdb):
+-    gdb_out = check_output([gdb,
+-                            "-ex", "set architecture",
+-                            "-ex", "quit"], stderr=STDOUT)
++    try:
++        gdb_out = check_output([gdb,
++                               "-ex", "set architecture",
++                               "-ex", "quit"], stderr=STDOUT, encoding="utf-8")
++    except (OSError) as e:
++        sys.exit(e)
++    except CalledProcessError as e:
++        sys.exit(f'{e}. Output:\n\n{e.output}')
++
++    found_gdb_archs = re.search(r'Valid arguments are (.*)', gdb_out)
+ 
+-    m = re.search(r"Valid arguments are (.*)",
+-                  gdb_out.decode("utf-8"))
++    targets = set()
++    if found_gdb_archs:
++        gdb_archs = found_gdb_archs.group(1).split(", ")
++        mapped_gdb_archs = [arch for arch in gdb_archs if arch in MAP]
+ 
+-    valid_arches = set()
++        targets = {target for arch in mapped_gdb_archs for target in MAP[arch]}
+ 
+-    if m.group(1):
+-        for arch in m.group(1).split(", "):
+-            if arch in mappings:
+-                mapping = mappings[arch]
+-                if isinstance(mapping, str):
+-                    valid_arches.add(mapping)
+-                else:
+-                    for entry in mapping:
+-                        valid_arches.add(entry)
++    # QEMU targets
++    return targets
+ 
+-    return valid_arches
+ 
+ def main() -> None:
+     parser = argparse.ArgumentParser(description='Probe GDB Architectures')
 -- 
 2.39.5

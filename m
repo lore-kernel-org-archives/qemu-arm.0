@@ -1,241 +1,232 @@
-Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp197658njb;
-        Tue, 22 Oct 2024 23:00:32 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVrQhNUBEHHWMwt5zuSblOE3TaLgZNVmNh5JAuWOAdPFlLCxCRTBjcqbT+UI2ZyBiRgDkqjlyey3bIRLg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFMZpGkJCxpJcD4VrUioTfZZWIlQm4hWA1Fn6BT4tCZFboj7VvdIfT2hn4D61kRO4P7V6rs
-X-Received: by 2002:a05:6122:a13:b0:4fc:da8f:c8a8 with SMTP id 71dfb90a1353d-50fd01be7a5mr1745460e0c.1.1729663231686;
-        Tue, 22 Oct 2024 23:00:31 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1729663231; cv=pass;
+Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp233143njb;
+        Wed, 23 Oct 2024 00:31:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCX1YeCkpOU1WfKsaeiP2/mh4RfWGRwbbssdvXAx0UE6QPEpevinY52h4H6qglS4IF4vxLfD3x+WTjO3nA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG0i1vxlgSp14/Faob8Me68ZVBI4ZSsPol/xSMSrIKIqyT1D4sk9qH7JIUnv8JGZqDxLZTi
+X-Received: by 2002:a05:6512:3e0a:b0:533:d3e:16fe with SMTP id 2adb3069b0e04-53b1a36ab1emr656502e87.38.1729668665563;
+        Wed, 23 Oct 2024 00:31:05 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1729668665; cv=pass;
         d=google.com; s=arc-20240605;
-        b=PD47iAwdad1GOygsnZshsKF+X0GkO6TFgjXnyci+hz1P0IKDnuwRCd4barP/2O0KyN
-         MeU200rxyvQr20Yavu1HR1gclKvUbmXwXwJMJpufzCCr/aj+hGTkdFkkoReIbb/Q1kjP
-         B9yV0N4o4czB/H3tXNf9pzR3KMNicfsueQv0vdnqD3WaAhi++euRRW0uiw8vh56TAInl
-         UrbJBBJuErcGj57I/MuuXBw1Q5/uK9a1SyFdKQqEh2CI8KVBWfMcViw5Q4DBGoCtM4OH
-         RRipK8UF9kaneXT82mhJ+RbqTYNye5wEUDSCRH13ZUF8CsIN+mAHkMTeJMqPmX0qfnR2
-         wZvQ==
+        b=UYHfGcsAOFODCA9rALr829elFGkfSWVhe5/6a9RxwBLfTalaCRItyTQC6jLMWmp+Pe
+         +9iXJF7mDaoKYrqIuY2ps6JqW3RpnKDFRY2n1bqjsN1Fa6a5SgJFO3CSlAHUkDq40NSp
+         rFtw6OKHKrO3z8LhIqIzTcUQCuvwIgo7+6JiYX6IayjWTYy9YmyHHWm8v/PBe/bLac/L
+         mIBNpWo+1E2m2ta3/dp+UTAK8gSJl2ophJ08NKIthQ9F25n14Z91G7vLeabdq8lRHbvm
+         D7/lCjIP1ZKOCWiV0I4ePjIguH/GLtPt+mG8wE3v/l9ul+I2LRm0ThcL0Pj++1eiLyT/
+         wZHg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :message-id:date:thread-index:subject:cc:to:from;
-        bh=1QMa5cHrDuZ+TER/mNwgao+Q5Xfcwug1Cr51qU/FMvU=;
-        fh=jRVpQIn+BBPjns2D7sg1aqvtmrr+DAQVtOs401rlJr4=;
-        b=h7zArJBD09sDIfxBjS/SGiKHPgIJuBpwdmFvwVWfIcRlB5qb2+jDqCxZrT1HzC/vw+
-         lt3Fa4ykYaSviF78da1vZkQT1RpV/5sQxPoYLUVc/VRxVVDmzQQ6HG/fuXoj4poX/9OA
-         lslq4gOUegn0U6L2Er4z49PhSjwyOD/NIvLwSfpRXix5wjaHJrepgIUPiRKaRCnk9YR3
-         Q5XstAHEmAXP1Dd6XV6hAhBOsN6PpPozGupW+WCiw3S8iUYMdLaYL467Is3+ZXGGWxP1
-         bdZq1oMc61DFtxqN+RYQLzPvgMtAlUamYlBhlWgmGME7HFjLRg3cr6ynTTwZwEGI+EIc
-         fEkA==;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:from:references:cc:to:subject:user-agent
+         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
+         :date:message-id:dkim-signature;
+        bh=nLAbOW5noKWYdqiOCxdBnOzCCEaEY6Bx0acXsqpyM84=;
+        fh=Vd7wm+rAnfxIGfIplb4RXUFv1PXBf0XtBX+dBS8bYP8=;
+        b=HLqWBmz3sGNg+PztwD4J72KZCRiytoCMmETLtunOvH+bogQvuS69mq7S4J7LaHNwET
+         Xd9GonI9J4LwS2yXK9uOY/8bzj19C19LsLZZEyniQXtmh9/H/PoJ+/ePxXlFzQD29uRB
+         /rXc578Tccgjg8q8DARW/82f21Xhlsr+Xm5Icu9A8DqFD0fWRoKpU+Rl1CDYd5G4sui3
+         /reHwCNcymCv4bfCRDclQbT78wolk9Xbjud2hwCuMv2aORmmoYTPrWAw13KqakgcL1ny
+         ZUckj5xeOMfbGky/qrON9NGu10ekbQU6P7kKagCEKnKuz1oXWd62JL5G8zu7oC4GYulQ
+         9uaA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b165a6a355si814575385a.292.2024.10.22.23.00.31
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ITZaz2qr;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-29465-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-29465-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm+bounces-29465-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5cb66e70e2fsi5537708a12.601.2024.10.23.00.31.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Oct 2024 23:00:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Oct 2024 00:31:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-29465-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=starfivetech.com dkim=pass dkdomain=starfivetech.com dmarc=pass fromdomain=starfivetech.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t3UPM-00060q-QN; Wed, 23 Oct 2024 01:59:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1t3UPI-000603-BU; Wed, 23 Oct 2024 01:59:44 -0400
-Received: from mail-sh0chn02on2070d.outbound.protection.partner.outlook.cn
- ([2406:e500:4420:2::70d]
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeeheng.sia@starfivetech.com>)
- id 1t3UPE-0005gP-RI; Wed, 23 Oct 2024 01:59:44 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=WaaoYZoUBK7WGFlE7TCJ1HkB7qaKe3qWtlyTfqtHADtg6YpHrkOZGM8myqVXK3G1s4mJXbl1bxaIwvhN9tLiKMlNhFJXDseLC2beCB7dA3bVUX59TqEfyXs4uSMOp/rD4wgvr0AHDwpbXhexwBVSyBCXD9+pFnjBAB5wtEFFsOg6UZhhdMzeiff9Y8PqnFDDevSnd8rw6q2s9+WBv+axPHFGBFV6d5Un7dXcHEVTkOHBABDRZ75rpH0VmSxvz9rSoWE/MutYYqT6sJZb48k+jCjdXZbMY/jNW3P9RS3r70+XCaH9hRjJ7m9dod5Y7vwD6f4sJEgl4eh0mhgDtvxdnw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=1QMa5cHrDuZ+TER/mNwgao+Q5Xfcwug1Cr51qU/FMvU=;
- b=jgdr8D9xhzJFI5kZMP5FVqJo87HCXg4aNKe7jRGFyPHVFC2QdAHDu62HeiVYXB7zzuStsAgCqrspaI9wZ0707xcWrfE2d9bHdSoPuRevaljlgubjcIlJpuGaxJtq4EzP5iadfKKBiJL5LiDc++HPc5meyNffBkaWS0sBYzE48IRhoNA4Va+EPOpCx6KGV9Z9dYVKf+/yFaFliH1PfLpqd2sMN5At7zp+mZTVhHQrYEENBl+W9SvQHhoBWNGpNCmus+fyzSrUhNGWsRpQsIGCa6IGb9pwcN9p6KW9G3zIB4lhMqA78+eCAz31wg5ekNT23Nm9WF9YHCVuPIpk6xDfrw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=starfivetech.com; dmarc=pass action=none
- header.from=starfivetech.com; dkim=pass header.d=starfivetech.com; arc=none
-Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:12::10) by NT0PR01MB1023.CHNPR01.prod.partner.outlook.cn
- (2406:e500:c510:2::12) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8069.20; Wed, 23 Oct
- 2024 05:59:33 +0000
-Received: from NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
- ([fe80::affa:7fe4:57c8:11ce]) by
- NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn ([fe80::affa:7fe4:57c8:11ce%6])
- with mapi id 15.20.8069.027; Wed, 23 Oct 2024 05:59:33 +0000
-From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>
-CC: "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "sunilvl@ventanamicro.com" <sunilvl@ventanamicro.com>, "palmer@dabbelt.com"
- <palmer@dabbelt.com>, "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
- "bin.meng@windriver.com" <bin.meng@windriver.com>, "liwei1518@gmail.com"
- <liwei1518@gmail.com>, "dbarboza@ventanamicro.com"
- <dbarboza@ventanamicro.com>, "zhiwei_liu@linux.alibaba.com"
- <zhiwei_liu@linux.alibaba.com>
-Subject: RE: [PATCH v5 0/3] Upgrade ACPI SPCR table to support SPCR table
- revision 4 format
-Thread-Index: AQHa+bcVlvBbjnDuK0qmkfSNTtMG1bKULR7A
-Date: Wed, 23 Oct 2024 05:59:33 +0000
-Message-ID: <NT0PR01MB12789AEDB0B8B5E32E4A7EA79C4D2@NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=starfivetech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: NT0PR01MB1278:EE_|NT0PR01MB1023:EE_
-x-ms-office365-filtering-correlation-id: 1a325a45-d2aa-4b50-6cc2-08dcf327de01
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|41320700013|1800799024|366016|38070700018; 
-x-microsoft-antispam-message-info: bBur/rH61TXDoJQmebywBhxjDwzM+PDP22SFbH+C8vDWSq9hsAcOBS96/okFWcjtGUGdEbudkv+iftpE0bb9OaPfJhHzRkwTPNvqZHWODhOtH4AJcPcdMpBSJPtz6rTvaglPA4JZE3t2gsUdLitzjSWagMxg+mDvllPZsShO2MJxKF1C2SaLv5Fx9+MiOVMezG0m8CxB9QY646BEarRmVEtzOpd1A2Bk5F3Ap/ePC8ENe0ixO+rWjufvlBQH6DJrDRAj9p9erYSF87XzY0wk1qI3YOMKB1DPCQ7i5+rcK7HjHBXYs15yXEe/uqXG7wYNCw1aq2eQww8LTzmVfrJKzjmpdTlzDgLXO36oSBup/UASjMsYK7Y07e6QIMu3JvYiWC6KIQNct1+kA2zxZwLH5mcaLsrgsJX9/wcJjbtWpUzu1SA9WCjvVMaUcIM4ln+NPju2OKdeelG9gNGE60ksK7X+M9rdG1DO+5gmFQN+CFu92YCCC92QjyOt/rEvxyR57JwqMFidmPhLa0MDZv2Yna5/va6E4BuWjEMAuhP93dee4+qhJE8r7pKpPdQE0l4su2SqTXqDeialKr2X3BlTORJpCN40+5CJNq5wepW4BayEYUmMZzeMnF0oV7HEjbVI
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn; PTR:;
- CAT:NONE;
- SFS:(13230040)(7416014)(41320700013)(1800799024)(366016)(38070700018); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?asssEYPWO+Mwo8733nUAt6ndGfUztflf2ApIyzzumO1GNfQXWiJ9HK1EpXdh?=
- =?us-ascii?Q?3iPZTpnfbe6vmE5MRhM+HFYRW4fAivdEQ+PaVBIynGH2TTqiJNvskQ//y6rd?=
- =?us-ascii?Q?nkj6R/ymyB59kjiU4+6uCeLq7ezWDiDgZl/HhT9uWYNTHwleyRKUXTE+kbv5?=
- =?us-ascii?Q?4PvNk+aGvScQfsGmB3XIWl9xS6DPUlOAvlyTWUVRkuqDxsRvaxaYm8SG4eFk?=
- =?us-ascii?Q?8YOsUKWH+SSR54mOabq+ZP4SCbwMUtjNJr/HCvSRtRB92vx4Hs6/hoGlAvG0?=
- =?us-ascii?Q?it0a/bdj2M+XpvI1fJL2L5l3U3qwskQs2drHSa/MpTB2aPrK6E/sRql1LCP1?=
- =?us-ascii?Q?cwGYXdA0QXxJgCzx8sJVX5+hfpkGNj69oWgqrVGOmJefAIwAd2Zdnq/zyr49?=
- =?us-ascii?Q?0OGejMKstnRRipi+hB3/yMlQ7ofx+t9gziQrfMq2x1MPyiXlv8u34rg4ka2F?=
- =?us-ascii?Q?LJP8lPAwh7raqaFgRInH5QyiKsanY7EzSN1nFeSw4IbwJTSpl830oqGAIqtX?=
- =?us-ascii?Q?/gadqWqs1h6FU6u4wr2E4p15g2NYyANBfwMiyutgdo+sFiuxY0TVI65fr8uz?=
- =?us-ascii?Q?S7md2JKpQTwrhy5rDLeoH6DPBxsIBacgmtq/OLtA/QClwOECyggisHAOK97K?=
- =?us-ascii?Q?Yb5v1plfNwICzm4DBn/V5RzJlcqCXlkihX8dKwl5cGhsHOHnoMYINhjQDFw/?=
- =?us-ascii?Q?ozQxmQ4FN3rydemDQmRtmUZZofsSCw+AHuyOjHFv35BRC8nS5qGncN/vGknE?=
- =?us-ascii?Q?yEhzD8ijQnL/SVmg2OM0cuLWqPfi1xifCLbilq0yLdLEgovXctkV2GIduQ+K?=
- =?us-ascii?Q?paRdcHwhiG5EXkmK9+uGslFemG2c7BbWySfzvRXz7+E2bcf2SmLOGIfOjlE0?=
- =?us-ascii?Q?Mvij2+ZLg2KMX++jmLyx71oDT12qtuKBJek3epvFz1CmwAH1ww8DDe3BkWh8?=
- =?us-ascii?Q?2okd2NjfnSbVf2AkX4F4aa5XciJjlj4MZWcSzDLjZDy5tofsuumgd8BAl9UG?=
- =?us-ascii?Q?oT2fQuK3fi0CrH/Zf7HbapqvQ1AXFprJMvJTz6lvsjT/dvTvYja6ZOaMFEzw?=
- =?us-ascii?Q?3SI80Uv+behwBA4jTbBNENotDfCf6HNKMfcx/XOIszSbYmofkueN/2J6C/At?=
- =?us-ascii?Q?0XMihsHu2yMyoXLWKl5+M0v/Hs+twZeYDhAzK+CjBMpsC/tv2p8Ix8Y55dHS?=
- =?us-ascii?Q?ECV9tZyLRB8ZYxo4bvMev0fwf4lAJDbv7lFgWL29whVVU3BGU2MUDBqVagLm?=
- =?us-ascii?Q?MtBNLeJ5fWXuz/PRUOYox7vwYQ/erzk/IcjNtG3/4LTBtd86V+ilWGNyzCsf?=
- =?us-ascii?Q?+Di3SBgSFCNezjawrv+4r4bkvhlmyJtRdRI3QW0/ETxrf9X7dXCr5z49w9JW?=
- =?us-ascii?Q?KbjFude6q3yQAWSNxGsC2oLVbpCTEEkZKI6wII1nPeL5RZ+el9CkLUD/uwk5?=
- =?us-ascii?Q?djb36+pny3MeAdXB4ChjLy6jpBxL70YwrmasJwK777wqUU4yaqvBFTodwVI4?=
- =?us-ascii?Q?UBTSWNe8nep/PdnWaPbI87OYFsVjwWqtdgl7GgEETZYT+HGfv81rBOwGA2hx?=
- =?us-ascii?Q?7FPgCvLUDJQQoryO1VyUZXeXSEq/M94rYzIi8D5duqqV99c/lK1dPUEbpELt?=
- =?us-ascii?Q?Lg=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ITZaz2qr;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of kvm+bounces-29465-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-29465-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id F367E1F23825
+	for <alex.bennee@linaro.org>; Wed, 23 Oct 2024 07:31:04 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id F031373451;
+	Wed, 23 Oct 2024 07:30:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="ITZaz2qr"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 194F2148FE8
+	for <kvm@vger.kernel.org>; Wed, 23 Oct 2024 07:30:57 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1729668659; cv=none; b=mPqAf3kpMo9hD3ZezaZINKF8QmmKYpjgNc1WWRZAV42qhgZGnahnwp5MMClTs5xLzHVRdOFNGWkYUyWNfr0GeA7ZD/eSo+Ga/i1pvCUrTGYXy7f0bWlPN23+eyDySL9F6XcoTgjxVYLKTBt+Nvu23JN9QLcPk+vMyFVxAbQobeU=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1729668659; c=relaxed/simple;
+	bh=S18A9/uegNQLch0nFe6lcikOk1MT+xNgksoyQj207/Q=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=MKtzBb4WuTMF70YAu/ibyROQOEx+Kp3zUQ8YGnlPHIPQZVsl+bYuAPcuzAJwwvse/e3hitOcNFedj2HDVRr6KzX4HbGZ8+8myzcQdrPUE7T+ZD7PTyuJJ3ZuFWZ1qm8mejeJUq1Qc12cB+ir4DmzzG/Poc5K+Tp8qNsK0vmxBtw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=ITZaz2qr; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1729668656;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=nLAbOW5noKWYdqiOCxdBnOzCCEaEY6Bx0acXsqpyM84=;
+	b=ITZaz2qrZ71Jy2iShgEesjVr/boxexA2jFzktfjU4yMtEA/LO6agxlA44eRfr+1yX1xBmV
+	LWYvxTAHy1ipXdOwO7BsV3JmTA3KJjHrmXduMhajg09q4dZ3/HrRjPE6wO25lDcX0+XMPB
+	pRebKtOjrSJp4tYfKSn53F646Sr90DM=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-335-bx9Tyoi3MCmlysoH1VNRSw-1; Wed, 23 Oct 2024 03:30:53 -0400
+X-MC-Unique: bx9Tyoi3MCmlysoH1VNRSw-1
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-37d5a3afa84so3411185f8f.3
+        for <kvm@vger.kernel.org>; Wed, 23 Oct 2024 00:30:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729668652; x=1730273452;
+        h=content-transfer-encoding:in-reply-to:organization:autocrypt
+         :content-language:from:references:cc:to:subject:user-agent
+         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=nLAbOW5noKWYdqiOCxdBnOzCCEaEY6Bx0acXsqpyM84=;
+        b=UqQ7Drs/+s//AAnzskgblxE8LIy98xPrU6hTs8cQS9h/71+a11KybcTzGvSlJoJJ57
+         4rsUwJw0t1kfV5opANSxZDiEa6rum/9ku60ruC/XYRxa7hkuo2OysACMd3mCBW39lZNj
+         HhVAOtTYO7wyQ1EYDgQYoS7JOTF8y/rV/jtPUd3E6CwGKeHx9pXlBX4FkBKEeHlAC3gb
+         Nt6FI5TKyZpCL6poK5fsgUFkpb4hx669KrElhxuzyblC0V0MxwHTs+sP6BIs5nqLdAx6
+         tEt98BeftP2WIrS1tR0yFFpIqIlChMjTxnbTRO3qoy74xx7kd5KKrqkIwtE2tASJ0p7Z
+         qpAw==
+X-Forwarded-Encrypted: i=1; AJvYcCUltHql8WB72JBHjTmiM38Ma6uz7yHvOFpinecMbg7tve7CyZht7qBtFS41xRZWEa82DXs=@vger.kernel.org
+X-Gm-Message-State: AOJu0YwSjAovzM332pifscm0KmFjv/+DavHBqGQ8UN6Kwg55l2fz9eWf
+	4e5oi88eErMgDCz79U1M6bnboLm6homSRK49Gc2Gs2ebj5kFjtKLXfMfoQx8tJ37oLaHndorwdp
+	XkzkpB68tyiVCxkr41y3Z2QWb24wi6lLya3YqUkPHjbtYoDtwcw==
+X-Received: by 2002:adf:fc89:0:b0:37e:f1ed:67e8 with SMTP id ffacd0b85a97d-37efcf1febemr910537f8f.35.1729668652070;
+        Wed, 23 Oct 2024 00:30:52 -0700 (PDT)
+X-Received: by 2002:adf:fc89:0:b0:37e:f1ed:67e8 with SMTP id ffacd0b85a97d-37efcf1febemr910514f8f.35.1729668651465;
+        Wed, 23 Oct 2024 00:30:51 -0700 (PDT)
+Received: from ?IPV6:2003:cb:c70c:cd00:c139:924e:3595:3b5? (p200300cbc70ccd00c139924e359503b5.dip0.t-ipconnect.de. [2003:cb:c70c:cd00:c139:924e:3595:3b5])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43186c15684sm8218015e9.39.2024.10.23.00.30.49
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 23 Oct 2024 00:30:50 -0700 (PDT)
+Message-ID: <0cda6b34-d62c-49c7-b30c-33f171985817@redhat.com>
+Date: Wed, 23 Oct 2024 09:30:48 +0200
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-X-OriginatorOrg: starfivetech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: NT0PR01MB1278.CHNPR01.prod.partner.outlook.cn
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1a325a45-d2aa-4b50-6cc2-08dcf327de01
-X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Oct 2024 05:59:33.3481 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 06fe3fa3-1221-43d3-861b-5a4ee687a85c
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: mFEbmU5VmOHu2wBXDKHzDVLh9a9RNXmpUWDuiRGc/a763/VWlne1TIyWzSerUV1tWsEt61VLSR289f5+4h8fivk8K7J3sR5E+lda7x4/AU0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: NT0PR01MB1023
-Received-SPF: pass client-ip=2406:e500:4420:2::70d;
- envelope-from=jeeheng.sia@starfivetech.com;
- helo=CHN02-SH0-obe.outbound.protection.partner.outlook.cn
-X-Spam_score_int: 1
-X-Spam_score: 0.1
-X-Spam_bar: /
-X-Spam_report: (0.1 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, URI_TRY_3LD=1.997 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: maaiFvne41Pi
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 3/4] system/physmem: Largepage punch hole before reset
+ of memory pages
+To: =?UTF-8?Q?=E2=80=9CWilliam_Roche?= <william.roche@oracle.com>,
+ peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+ philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
+ kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: joao.m.martins@oracle.com
+References: <ZwalK7Dq_cf-EA_0@x1n>
+ <20241022213503.1189954-1-william.roche@oracle.com>
+ <20241022213503.1189954-4-william.roche@oracle.com>
+From: David Hildenbrand <david@redhat.com>
+Content-Language: en-US
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ WNyWQQ==
+Organization: Red Hat
+In-Reply-To: <20241022213503.1189954-4-william.roche@oracle.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 7lsElnGQOyku
 
+On 22.10.24 23:35, “William Roche wrote:
+> From: William Roche <william.roche@oracle.com>
+> 
+> When the VM reboots, a memory reset is performed calling
+> qemu_ram_remap() on all hwpoisoned pages.
+> While we take into account the recorded page sizes to repair the
+> memory locations, a large page also needs to punch a hole in the
+> backend file to regenerate a usable memory, cleaning the HW
+> poisoned section. This is mandatory for hugetlbfs case for example.
+> 
+> Signed-off-by: William Roche <william.roche@oracle.com>
+> ---
+>   system/physmem.c | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/system/physmem.c b/system/physmem.c
+> index 3757428336..3f6024a92d 100644
+> --- a/system/physmem.c
+> +++ b/system/physmem.c
+> @@ -2211,6 +2211,14 @@ void qemu_ram_remap(ram_addr_t addr, ram_addr_t length)
+>                   prot = PROT_READ;
+>                   prot |= block->flags & RAM_READONLY ? 0 : PROT_WRITE;
+>                   if (block->fd >= 0) {
+> +                    if (length > TARGET_PAGE_SIZE && fallocate(block->fd,
+> +                        FALLOC_FL_KEEP_SIZE | FALLOC_FL_PUNCH_HOLE,
+> +                        offset + block->fd_offset, length) != 0) {
+> +                        error_report("Could not recreate the file hole for "
+> +                                     "addr: " RAM_ADDR_FMT "@" RAM_ADDR_FMT "",
+> +                                     length, addr);
+> +                        exit(1);
+> +                    }
+>                       area = mmap(vaddr, length, prot, flags, block->fd,
+>                                   offset + block->fd_offset);
+>                   } else {
 
+Ah! Just what I commented to patch #3; we should be using 
+ram_discard_range(). It might be better to avoid the mmap() completely 
+if ram_discard_range() worked.
 
-> -----Original Message-----
-> From: JeeHeng Sia <jeeheng.sia@starfivetech.com>
-> Sent: Thursday, 29 August, 2024 9:59 AM
-> To: qemu-arm@nongnu.org; qemu-devel@nongnu.org; qemu-riscv@nongnu.org
-> Cc: mst@redhat.com; imammedo@redhat.com; anisinha@redhat.com; peter.mayde=
-ll@linaro.org; JeeHeng Sia
-> <jeeheng.sia@starfivetech.com>; shannon.zhaosl@gmail.com; sunilvl@ventana=
-micro.com; palmer@dabbelt.com;
-> alistair.francis@wdc.com; bin.meng@windriver.com; liwei1518@gmail.com; db=
-arboza@ventanamicro.com;
-> zhiwei_liu@linux.alibaba.com
-> Subject: [PATCH v5 0/3] Upgrade ACPI SPCR table to support SPCR table rev=
-ision 4 format
->=20
-> Update the SPCR table to accommodate the SPCR Table revision 4 [1].
-> The SPCR table has been modified to adhere to the revision 4 format [2].
->=20
-> Meanwhile, the virt SPCR golden reference file for RISC-V have been updat=
-ed to
-> accommodate the SPCR Table revision 4.
->=20
-> [1]: https://learn.microsoft.com/en-us/windows-hardware/drivers/serports/=
-serial-port-console-redirection-table
-> [2]: https://github.com/acpica/acpica/pull/931
->=20
-> Changes in v5:
-> - Reverted the SPCR table revision history for the ARM architecture.
-> - Corrected the output of the SPCR Table diff.
->=20
-> Changes in v4:
-> - Remove the SPCR table revision 4 update for the ARM architecture.
->=20
-> Changes in v3:
-> - Rebased on the latest QEMU.
-> - Added Acked-by: Alistair Francis <alistair.francis@wdc.com>
->=20
-> Changes in v2:
-> - Utilizes a three-patch approach to modify the ACPI pre-built binary
->   files required by the Bios-Table-Test.
-> - Rebases and incorporates changes to support both ARM and RISC-V ACPI
->   pre-built binary files.
->=20
-> Sia Jee Heng (3):
->   qtest: allow SPCR acpi table changes
->   hw/acpi: Upgrade ACPI SPCR table to support SPCR table revision 4
->     format
->   tests/qtest/bios-tables-test: Update virt SPCR golden reference for
->     RISC-V
->=20
->  hw/acpi/aml-build.c               |  20 ++++++++++++++++----
->  hw/arm/virt-acpi-build.c          |   8 ++++++--
->  hw/riscv/virt-acpi-build.c        |  12 +++++++++---
->  include/hw/acpi/acpi-defs.h       |   7 +++++--
->  include/hw/acpi/aml-build.h       |   2 +-
->  tests/data/acpi/riscv64/virt/SPCR | Bin 80 -> 90 bytes
->  6 files changed, 37 insertions(+), 12 deletions(-)
->=20
->=20
-> base-commit: cec99171931ea79215c79661d33423ac84e63b6e
-> --
-> 2.34.1
-Hi, are there any more comments? This patch has been open for more than 6 w=
-eeks and has not been merged yet.
+And as raised, there is the problem with memory preallocation (where we 
+should fail if it doesn't work) and ram discards being disabled because 
+something relies on long-term page pinning ...
+
+-- 
+Cheers,
+
+David / dhildenb
+

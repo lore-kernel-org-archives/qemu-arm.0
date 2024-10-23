@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb766710d1sm2661378a12.90.2024.10.23.04.34.07
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66a65451sm4275667a12.27.2024.10.23.04.34.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 23 Oct 2024 04:34:07 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 11D8C5F8AD;
+	by draig.lan (Postfix) with ESMTP id 3EC7A5F8CC;
 	Wed, 23 Oct 2024 12:34:07 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -34,87 +34,39 @@ Cc: Zhao Liu <zhao1.liu@intel.com>,
 	kvm@vger.kernel.org,
 	Beraldo Leal <bleal@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v3 01/18] tests/docker: Fix microblaze atomics
-Date: Wed, 23 Oct 2024 12:33:49 +0100
-Message-Id: <20241023113406.1284676-2-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v3 03/18] MAINTAINERS: mention my testing/next tree
+Date: Wed, 23 Oct 2024 12:33:51 +0100
+Message-Id: <20241023113406.1284676-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241023113406.1284676-1-alex.bennee@linaro.org>
 References: <20241023113406.1284676-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3aYqx7V/ZSbW
+X-TUID: BURIZFyBZG4z
 
-From: Ilya Leoshkevich <iii@linux.ibm.com>
+I put it under my name as there may be other maintainer testing trees
+as well.
 
-GCC produces invalid code for microblaze atomics.
-
-The fix is unfortunately not upstream, so fetch it from an external
-location and apply it locally.
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20241022105614.839199-2-alex.bennee@linaro.org>
-Message-Id: <20240919152308.10440-1-iii@linux.ibm.com>
+Message-Id: <20241022105614.839199-4-alex.bennee@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .../debian-microblaze-cross.d/build-toolchain.sh          | 8 ++++++++
- tests/docker/dockerfiles/debian-toolchain.docker          | 7 +++++++
- 2 files changed, 15 insertions(+)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh b/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
-index 23ec0aa9a7..c5cd0aa931 100755
---- a/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
-+++ b/tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh
-@@ -10,6 +10,8 @@ TOOLCHAIN_INSTALL=/usr/local
- TOOLCHAIN_BIN=${TOOLCHAIN_INSTALL}/bin
- CROSS_SYSROOT=${TOOLCHAIN_INSTALL}/$TARGET/sys-root
- 
-+GCC_PATCH0_URL=https://raw.githubusercontent.com/Xilinx/meta-xilinx/refs/tags/xlnx-rel-v2024.1/meta-microblaze/recipes-devtools/gcc/gcc-12/0009-Patch-microblaze-Fix-atomic-boolean-return-value.patch
-+
- export PATH=${TOOLCHAIN_BIN}:$PATH
- 
- #
-@@ -31,6 +33,12 @@ mv gcc-11.2.0 src-gcc
- mv musl-1.2.2 src-musl
- mv linux-5.10.70 src-linux
- 
-+#
-+# Patch gcc
-+#
-+
-+wget -O - ${GCC_PATCH0_URL} | patch -d src-gcc -p1
-+
- mkdir -p bld-hdr bld-binu bld-gcc bld-musl
- mkdir -p ${CROSS_SYSROOT}/usr/include
- 
-diff --git a/tests/docker/dockerfiles/debian-toolchain.docker b/tests/docker/dockerfiles/debian-toolchain.docker
-index 687a97fec4..ab4ce29533 100644
---- a/tests/docker/dockerfiles/debian-toolchain.docker
-+++ b/tests/docker/dockerfiles/debian-toolchain.docker
-@@ -10,6 +10,8 @@ FROM docker.io/library/debian:11-slim
- # ??? The build-dep isn't working, missing a number of
- # minimal build dependiencies, e.g. libmpc.
- 
-+RUN sed 's/^deb /deb-src /' </etc/apt/sources.list >/etc/apt/sources.list.d/deb-src.list
-+
- RUN apt update && \
-     DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
-     DEBIAN_FRONTEND=noninteractive eatmydata \
-@@ -33,6 +35,11 @@ RUN cd /root && ./build-toolchain.sh
- # and the build trees by restoring the original image,
- # then copying the built toolchain from stage 0.
- FROM docker.io/library/debian:11-slim
-+RUN apt update && \
-+    DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
-+    DEBIAN_FRONTEND=noninteractive eatmydata \
-+    apt install -y --no-install-recommends \
-+        libmpc3
- COPY --from=0 /usr/local /usr/local
- # As a final step configure the user (if env is defined)
- ARG USER
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c3bfa132fd..ef1678a1a8 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -4080,6 +4080,7 @@ Build and test automation
+ -------------------------
+ Build and test automation, general continuous integration
+ M: Alex Bennée <alex.bennee@linaro.org>
++T: git https://gitlab.com/stsquad/qemu testing/next
+ M: Philippe Mathieu-Daudé <philmd@linaro.org>
+ M: Thomas Huth <thuth@redhat.com>
+ R: Wainer dos Santos Moschetta <wainersm@redhat.com>
 -- 
 2.39.5

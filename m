@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a91559f15sm463603866b.133.2024.10.23.04.34.10
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a912ee061sm464471066b.63.2024.10.23.04.34.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2024 04:34:10 -0700 (PDT)
+        Wed, 23 Oct 2024 04:34:16 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 84B6C5F925;
-	Wed, 23 Oct 2024 12:34:07 +0100 (BST)
+	by draig.lan (Postfix) with ESMTP id 061BA5F9EC;
+	Wed, 23 Oct 2024 12:34:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>,
@@ -35,47 +35,38 @@ Cc: Zhao Liu <zhao1.liu@intel.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 06/18] scripts/ci: remove architecture checks for build-environment updates
-Date: Wed, 23 Oct 2024 12:33:54 +0100
-Message-Id: <20241023113406.1284676-7-alex.bennee@linaro.org>
+Subject: [PATCH v3 11/18] MAINTAINERS: mention my gdbstub/next tree
+Date: Wed, 23 Oct 2024 12:33:59 +0100
+Message-Id: <20241023113406.1284676-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241023113406.1284676-1-alex.bennee@linaro.org>
 References: <20241023113406.1284676-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: uOOjNFbJwz6L
+X-TUID: iIq80JQeBWeu
 
-We were missing s390x here. There isn't much point testing for the
-architecture here as we will fail anyway if the appropriate package
-list is missing.
+Make it easy for people to see what is already queued.
 
-Message-Id: <20241022105614.839199-7-alex.bennee@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20241022105614.839199-12-alex.bennee@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/ci/setup/ubuntu/build-environment.yml | 2 --
- 1 file changed, 2 deletions(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/scripts/ci/setup/ubuntu/build-environment.yml b/scripts/ci/setup/ubuntu/build-environment.yml
-index edf1900b3e..56b51609e3 100644
---- a/scripts/ci/setup/ubuntu/build-environment.yml
-+++ b/scripts/ci/setup/ubuntu/build-environment.yml
-@@ -39,7 +39,6 @@
-       when:
-         - ansible_facts['distribution'] == 'Ubuntu'
-         - ansible_facts['distribution_version'] == '22.04'
--        - ansible_facts['architecture'] == 'aarch64' or ansible_facts['architecture'] == 'x86_64'
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ef1678a1a8..7eea7b7954 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2984,6 +2984,7 @@ F: gdb-xml/
+ F: tests/tcg/multiarch/gdbstub/*
+ F: scripts/feature_to_c.py
+ F: scripts/probe-gdb-support.py
++T: git https://gitlab.com/stsquad/qemu gdbstub/next
  
-     - name: Install packages for QEMU on Ubuntu 22.04
-       package:
-@@ -47,7 +46,6 @@
-       when:
-         - ansible_facts['distribution'] == 'Ubuntu'
-         - ansible_facts['distribution_version'] == '22.04'
--        - ansible_facts['architecture'] == 'aarch64' or ansible_facts['architecture'] == 'x86_64'
- 
-     - name: Install armhf cross-compile packages to build QEMU on AArch64 Ubuntu 22.04
-       package:
+ Memory API
+ M: Paolo Bonzini <pbonzini@redhat.com>
 -- 
 2.39.5

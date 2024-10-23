@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66c6b18csm4250181a12.62.2024.10.23.04.34.11
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a912edc33sm463333266b.58.2024.10.23.04.44.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2024 04:34:16 -0700 (PDT)
+        Wed, 23 Oct 2024 04:44:03 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 397B25FABE;
+	by draig.lan (Postfix) with ESMTP id 7FB525FC11;
 	Wed, 23 Oct 2024 12:34:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -35,149 +35,37 @@ Cc: Zhao Liu <zhao1.liu@intel.com>,
 	Beraldo Leal <bleal@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 13/18] tests/tcg: enable basic testing for aarch64_be-linux-user
-Date: Wed, 23 Oct 2024 12:34:01 +0100
-Message-Id: <20241023113406.1284676-14-alex.bennee@linaro.org>
+Subject: [PATCH v3 16/18] MAINTAINERS: mention my plugins/next tree
+Date: Wed, 23 Oct 2024 12:34:04 +0100
+Message-Id: <20241023113406.1284676-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241023113406.1284676-1-alex.bennee@linaro.org>
 References: <20241023113406.1284676-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: k3vwdHVT6JJW
+X-TUID: iJ5J6L6tgaVI
 
-We didn't notice breakage of aarch64_be because we don't have any TCG
-tests for it. However while the existing aarch64 compiler can target
-big-endian builds no one packages a BE libc. Instead we bang some
-rocks together to do the most basic of hello world with a nostdlib
-syscall test.
+Make it easier to find where plugin patches are being staged.
 
-Message-Id: <20241022105614.839199-14-alex.bennee@linaro.org>
+Message-Id: <20241022105614.839199-17-alex.bennee@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - fix checkpatch complaints
-v3
-  - fix libc typo
----
- configure                            |  5 ++++
- tests/tcg/aarch64_be/hello.c         | 35 ++++++++++++++++++++++++++++
- tests/tcg/Makefile.target            |  7 +++++-
- tests/tcg/aarch64_be/Makefile.target | 17 ++++++++++++++
- 4 files changed, 63 insertions(+), 1 deletion(-)
- create mode 100644 tests/tcg/aarch64_be/hello.c
- create mode 100644 tests/tcg/aarch64_be/Makefile.target
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/configure b/configure
-index 72d1a94225..7dd3400ccb 100755
---- a/configure
-+++ b/configure
-@@ -1418,6 +1418,7 @@ probe_target_compiler() {
-   target_arch=${1%%-*}
-   case $target_arch in
-     aarch64) container_hosts="x86_64 aarch64" ;;
-+    aarch64_be) container_hosts="x86_64 aarch64" ;;
-     alpha) container_hosts=x86_64 ;;
-     arm) container_hosts="x86_64 aarch64" ;;
-     hexagon) container_hosts=x86_64 ;;
-@@ -1447,6 +1448,10 @@ probe_target_compiler() {
-     case $target_arch in
-       # debian-all-test-cross architectures
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 7eea7b7954..5b6c722a20 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3708,6 +3708,7 @@ F: include/tcg/
  
-+      aarch64_be)
-+        container_image=debian-all-test-cross
-+        container_cross_prefix=aarch64-linux-gnu-
-+        ;;
-       hppa|m68k|mips|riscv64|sparc64)
-         container_image=debian-all-test-cross
-         ;;
-diff --git a/tests/tcg/aarch64_be/hello.c b/tests/tcg/aarch64_be/hello.c
-new file mode 100644
-index 0000000000..a9b2ab45de
---- /dev/null
-+++ b/tests/tcg/aarch64_be/hello.c
-@@ -0,0 +1,35 @@
-+/*
-+ * Non-libc syscall hello world for Aarch64 BE
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#define __NR_write 64
-+#define __NR_exit 93
-+
-+int write(int fd, char *buf, int len)
-+{
-+    register int x0 __asm__("x0") = fd;
-+    register char *x1 __asm__("x1") = buf;
-+    register int x2 __asm__("x2") = len;
-+    register int x8 __asm__("x8") = __NR_write;
-+
-+    asm volatile("svc #0" : : "r"(x0), "r"(x1), "r"(x2), "r"(x8));
-+
-+    return len;
-+}
-+
-+void exit(int ret)
-+{
-+    register int x0 __asm__("x0") = ret;
-+    register int x8 __asm__("x8") = __NR_exit;
-+
-+    asm volatile("svc #0" : : "r"(x0), "r"(x8));
-+    __builtin_unreachable();
-+}
-+
-+void _start(void)
-+{
-+    write(1, "Hello World\n", 12);
-+    exit(0);
-+}
-diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
-index 2da70b2fcf..9722145b97 100644
---- a/tests/tcg/Makefile.target
-+++ b/tests/tcg/Makefile.target
-@@ -103,9 +103,14 @@ ifeq ($(filter %-softmmu, $(TARGET)),)
- # then the target. If there are common tests shared between
- # sub-targets (e.g. ARM & AArch64) then it is up to
- # $(TARGET_NAME)/Makefile.target to include the common parent
--# architecture in its VPATH.
-+# architecture in its VPATH. However some targets are so minimal we
-+# can't even build the multiarch tests.
-+ifneq ($(filter $(TARGET_NAME),aarch64_be),)
-+-include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.target
-+else
- -include $(SRC_PATH)/tests/tcg/multiarch/Makefile.target
- -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.target
-+endif
- 
- # Add the common build options
- CFLAGS+=-Wall -Werror -O0 -g -fno-strict-aliasing
-diff --git a/tests/tcg/aarch64_be/Makefile.target b/tests/tcg/aarch64_be/Makefile.target
-new file mode 100644
-index 0000000000..cbe5fa0b2d
---- /dev/null
-+++ b/tests/tcg/aarch64_be/Makefile.target
-@@ -0,0 +1,17 @@
-+# -*- Mode: makefile -*-
-+#
-+# A super basic AArch64 BE makefile. As we don't have any big-endian
-+# libc available the best we can do is a basic Hello World.
-+
-+AARCH64BE_SRC=$(SRC_PATH)/tests/tcg/aarch64_be
-+VPATH += $(AARCH64BE_SRC)
-+
-+AARCH64BE_TEST_SRCS=$(notdir $(wildcard $(AARCH64BE_SRC)/*.c))
-+AARCH64BE_TESTS=$(AARCH64BE_TEST_SRCS:.c=)
-+#MULTIARCH_TESTS = $(MULTIARCH_SRCS:.c=)
-+
-+# We need to specify big-endian cflags
-+CFLAGS +=-mbig-endian -ffreestanding
-+LDFLAGS +=-nostdlib
-+
-+TESTS += $(AARCH64BE_TESTS)
+ TCG Plugins
+ M: Alex Bennée <alex.bennee@linaro.org>
++T: git https://gitlab.com/stsquad/qemu plugins/next
+ R: Alexandre Iooss <erdnaxe@crans.org>
+ R: Mahmoud Mandour <ma.mandourr@gmail.com>
+ R: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 -- 
 2.39.5

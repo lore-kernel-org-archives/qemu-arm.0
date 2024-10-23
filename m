@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9a91370e54sm462834566b.102.2024.10.23.04.44.03
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66a6d798sm4478915a12.50.2024.10.23.04.44.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2024 04:44:03 -0700 (PDT)
+        Wed, 23 Oct 2024 04:44:04 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6AE8B5FC0F;
+	by draig.lan (Postfix) with ESMTP id 9B1C55FC19;
 	Wed, 23 Oct 2024 12:34:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -34,134 +34,195 @@ Cc: Zhao Liu <zhao1.liu@intel.com>,
 	kvm@vger.kernel.org,
 	Beraldo Leal <bleal@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Gustavo Romero <gustavo.romero@linaro.org>
-Subject: [PATCH v3 15/18] testing: Enhance gdb probe script
-Date: Wed, 23 Oct 2024 12:34:03 +0100
-Message-Id: <20241023113406.1284676-16-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v3 17/18] contrib/plugins: remove Makefile for contrib/plugins
+Date: Wed, 23 Oct 2024 12:34:05 +0100
+Message-Id: <20241023113406.1284676-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241023113406.1284676-1-alex.bennee@linaro.org>
 References: <20241023113406.1284676-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 89nGAUmAxI2l
+X-TUID: fSecGlkEmcRF
 
-From: Gustavo Romero <gustavo.romero@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Use list and set comprehension to simplify code. Also, gently handle
-invalid gdb filenames.
+Now replaced by meson build.
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20241022105614.839199-16-alex.bennee@linaro.org>
-Message-Id: <20241015145848.387281-1-gustavo.romero@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20240925204845.390689-3-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/probe-gdb-support.py | 75 +++++++++++++++++++-----------------
- 1 file changed, 39 insertions(+), 36 deletions(-)
+ configure                | 18 ---------
+ Makefile                 | 10 -----
+ contrib/plugins/Makefile | 87 ----------------------------------------
+ 3 files changed, 115 deletions(-)
+ delete mode 100644 contrib/plugins/Makefile
 
-diff --git a/scripts/probe-gdb-support.py b/scripts/probe-gdb-support.py
-index 6dc58d06c7..6bcadce150 100644
---- a/scripts/probe-gdb-support.py
-+++ b/scripts/probe-gdb-support.py
-@@ -19,58 +19,61 @@
+diff --git a/configure b/configure
+index 7dd3400ccb..101ca9ace9 100755
+--- a/configure
++++ b/configure
+@@ -1073,7 +1073,6 @@ if test "$plugins" != "no" && test $host_bits -eq 64; then
+         plugins="no"
+     else
+         plugins=yes
+-        subdirs="$subdirs contrib/plugins"
+     fi
+ fi
  
- import argparse
- import re
--from subprocess import check_output, STDOUT
-+from subprocess import check_output, STDOUT, CalledProcessError
-+import sys
+@@ -1704,7 +1703,6 @@ LINKS="$LINKS .gdbinit scripts" # scripts needed by relative path in .gdbinit
+ LINKS="$LINKS tests/avocado tests/data"
+ LINKS="$LINKS tests/qemu-iotests/check tests/qemu-iotests/Makefile"
+ LINKS="$LINKS python"
+-LINKS="$LINKS contrib/plugins/Makefile "
+ for f in $LINKS ; do
+     if [ -e "$source_path/$f" ]; then
+         symlink "$source_path/$f" "$f"
+@@ -1790,22 +1788,6 @@ if test "$default_targets" = "yes"; then
+   echo "CONFIG_DEFAULT_TARGETS=y" >> $config_host_mak
+ fi
  
--# mappings from gdb arch to QEMU target
--mappings = {
--    "alpha" : "alpha",
-+# Mappings from gdb arch to QEMU target
-+MAP = {
-+    "alpha" : ["alpha"],
-     "aarch64" : ["aarch64", "aarch64_be"],
--    "armv7": "arm",
-+    "armv7": ["arm"],
-     "armv8-a" : ["aarch64", "aarch64_be"],
--    "avr" : "avr",
-+    "avr" : ["avr"],
-     # no hexagon in upstream gdb
--    "hppa1.0" : "hppa",
--    "i386" : "i386",
--    "i386:x86-64" : "x86_64",
--    "Loongarch64" : "loongarch64",
--    "m68k" : "m68k",
--    "MicroBlaze" : "microblaze",
-+    "hppa1.0" : ["hppa"],
-+    "i386" : ["i386"],
-+    "i386:x86-64" : ["x86_64"],
-+    "Loongarch64" : ["loongarch64"],
-+    "m68k" : ["m68k"],
-+    "MicroBlaze" : ["microblaze"],
-     "mips:isa64" : ["mips64", "mips64el"],
--    "or1k" : "or1k",
--    "powerpc:common" : "ppc",
-+    "or1k" : ["or1k"],
-+    "powerpc:common" : ["ppc"],
-     "powerpc:common64" : ["ppc64", "ppc64le"],
--    "riscv:rv32" : "riscv32",
--    "riscv:rv64" : "riscv64",
--    "s390:64-bit" : "s390x",
-+    "riscv:rv32" : ["riscv32"],
-+    "riscv:rv64" : ["riscv64"],
-+    "s390:64-bit" : ["s390x"],
-     "sh4" : ["sh4", "sh4eb"],
--    "sparc": "sparc",
--    "sparc:v8plus": "sparc32plus",
--    "sparc:v9a" : "sparc64",
-+    "sparc": ["sparc"],
-+    "sparc:v8plus": ["sparc32plus"],
-+    "sparc:v9a" : ["sparc64"],
-     # no tricore in upstream gdb
-     "xtensa" : ["xtensa", "xtensaeb"]
- }
+-# contrib/plugins configuration
+-echo "# Automatically generated by configure - do not modify" > contrib/plugins/$config_host_mak
+-echo "SRC_PATH=$source_path/contrib/plugins" >> contrib/plugins/$config_host_mak
+-echo "PKG_CONFIG=${pkg_config}" >> contrib/plugins/$config_host_mak
+-echo "CC=$cc $CPU_CFLAGS" >> contrib/plugins/$config_host_mak
+-echo "CFLAGS=${CFLAGS-$default_cflags} $EXTRA_CFLAGS" >> contrib/plugins/$config_host_mak
+-if test "$host_os" = windows; then
+-  echo "DLLTOOL=$dlltool" >> contrib/plugins/$config_host_mak
+-fi
+-if test "$host_os" = darwin; then
+-  echo "CONFIG_DARWIN=y" >> contrib/plugins/$config_host_mak
+-fi
+-if test "$host_os" = windows; then
+-  echo "CONFIG_WIN32=y" >> contrib/plugins/$config_host_mak
+-fi
+-
+ # tests/tcg configuration
+ mkdir -p tests/tcg
+ echo "# Automatically generated by configure - do not modify" > tests/tcg/$config_host_mak
+diff --git a/Makefile b/Makefile
+index 917c9a34d1..b65b0bd41a 100644
+--- a/Makefile
++++ b/Makefile
+@@ -187,11 +187,6 @@ SUBDIR_RULES=$(foreach t, all clean distclean, $(addsuffix /$(t), $(SUBDIRS)))
+ $(SUBDIR_RULES):
+ 	$(call quiet-command,$(MAKE) $(SUBDIR_MAKEFLAGS) -C $(dir $@) V="$(V)" TARGET_DIR="$(dir $@)" $(notdir $@),)
  
-+
- def do_probe(gdb):
--    gdb_out = check_output([gdb,
--                            "-ex", "set architecture",
--                            "-ex", "quit"], stderr=STDOUT)
-+    try:
-+        gdb_out = check_output([gdb,
-+                               "-ex", "set architecture",
-+                               "-ex", "quit"], stderr=STDOUT, encoding="utf-8")
-+    except (OSError) as e:
-+        sys.exit(e)
-+    except CalledProcessError as e:
-+        sys.exit(f'{e}. Output:\n\n{e.output}')
-+
-+    found_gdb_archs = re.search(r'Valid arguments are (.*)', gdb_out)
- 
--    m = re.search(r"Valid arguments are (.*)",
--                  gdb_out.decode("utf-8"))
-+    targets = set()
-+    if found_gdb_archs:
-+        gdb_archs = found_gdb_archs.group(1).split(", ")
-+        mapped_gdb_archs = [arch for arch in gdb_archs if arch in MAP]
- 
--    valid_arches = set()
-+        targets = {target for arch in mapped_gdb_archs for target in MAP[arch]}
- 
--    if m.group(1):
--        for arch in m.group(1).split(", "):
--            if arch in mappings:
--                mapping = mappings[arch]
--                if isinstance(mapping, str):
--                    valid_arches.add(mapping)
--                else:
--                    for entry in mapping:
--                        valid_arches.add(entry)
-+    # QEMU targets
-+    return targets
- 
--    return valid_arches
- 
- def main() -> None:
-     parser = argparse.ArgumentParser(description='Probe GDB Architectures')
+-ifneq ($(filter contrib/plugins, $(SUBDIRS)),)
+-.PHONY: plugins
+-plugins: contrib/plugins/all
+-endif
+-
+ .PHONY: recurse-all recurse-clean
+ recurse-all: $(addsuffix /all, $(SUBDIRS))
+ recurse-clean: $(addsuffix /clean, $(SUBDIRS))
+@@ -307,11 +302,6 @@ help:
+ 	$(call print-help,cscope,Generate cscope index)
+ 	$(call print-help,sparse,Run sparse on the QEMU source)
+ 	@echo  ''
+-ifneq ($(filter contrib/plugins, $(SUBDIRS)),)
+-	@echo  'Plugin targets:'
+-	$(call print-help,plugins,Build the example TCG plugins)
+-	@echo  ''
+-endif
+ 	@echo  'Cleaning targets:'
+ 	$(call print-help,clean,Remove most generated files but keep the config)
+ 	$(call print-help,distclean,Remove all generated files)
+diff --git a/contrib/plugins/Makefile b/contrib/plugins/Makefile
+deleted file mode 100644
+index bbddd4800f..0000000000
+--- a/contrib/plugins/Makefile
++++ /dev/null
+@@ -1,87 +0,0 @@
+-# -*- Mode: makefile -*-
+-#
+-# This Makefile example is fairly independent from the main makefile
+-# so users can take and adapt it for their build. We only really
+-# include config-host.mak so we don't have to repeat probing for
+-# programs that the main configure has already done for us.
+-#
+-
+-include config-host.mak
+-
+-TOP_SRC_PATH = $(SRC_PATH)/../..
+-
+-VPATH += $(SRC_PATH)
+-
+-NAMES :=
+-NAMES += bbv
+-NAMES += execlog
+-NAMES += hotblocks
+-NAMES += hotpages
+-NAMES += howvec
+-
+-# The lockstep example communicates using unix sockets,
+-# and can't be easily made to work on windows.
+-ifneq ($(CONFIG_WIN32),y)
+-NAMES += lockstep
+-endif
+-
+-NAMES += hwprofile
+-NAMES += cache
+-NAMES += drcov
+-NAMES += ips
+-NAMES += stoptrigger
+-NAMES += cflow
+-
+-ifeq ($(CONFIG_WIN32),y)
+-SO_SUFFIX := .dll
+-LDLIBS += $(shell $(PKG_CONFIG) --libs glib-2.0)
+-else
+-SO_SUFFIX := .so
+-endif
+-
+-SONAMES := $(addsuffix $(SO_SUFFIX),$(addprefix lib,$(NAMES)))
+-
+-# The main QEMU uses Glib extensively so it is perfectly fine to use it
+-# in plugins (which many example do).
+-PLUGIN_CFLAGS := $(shell $(PKG_CONFIG) --cflags glib-2.0)
+-PLUGIN_CFLAGS += -fPIC -Wall
+-PLUGIN_CFLAGS += -I$(TOP_SRC_PATH)/include/qemu
+-
+-# Helper that honours V=1 so we get some output when compiling
+-quiet-@ = $(if $(V),,@$(if $1,printf "  %-7s %s\n" "$(strip $1)" "$(strip $2)" && ))
+-quiet-command = $(call quiet-@,$2,$3)$1
+-
+-# for including , in command strings
+-COMMA := ,
+-
+-all: $(SONAMES)
+-
+-%.o: %.c
+-	$(call quiet-command, \
+-		$(CC) $(CFLAGS) $(PLUGIN_CFLAGS) -c -o $@ $<, \
+-	        BUILD, plugin $@)
+-
+-ifeq ($(CONFIG_WIN32),y)
+-lib%$(SO_SUFFIX): %.o win32_linker.o ../../plugins/libqemu_plugin_api.a
+-	$(call quiet-command, \
+-		$(CC) -shared -o $@ $^ $(LDLIBS), \
+-		LINK, plugin $@)
+-else ifeq ($(CONFIG_DARWIN),y)
+-lib%$(SO_SUFFIX): %.o
+-	$(call quiet-command, \
+-		$(CC) -bundle -Wl$(COMMA)-undefined$(COMMA)dynamic_lookup -o $@ $^ $(LDLIBS), \
+-		LINK, plugin $@)
+-else
+-lib%$(SO_SUFFIX): %.o
+-	$(call quiet-command, \
+-		$(CC) -shared -o $@ $^ $(LDLIBS), \
+-		LINK, plugin $@)
+-endif
+-
+-
+-clean distclean:
+-	rm -f *.o *$(SO_SUFFIX) *.d
+-	rm -Rf .libs
+-
+-.PHONY: all clean
+-.SECONDARY:
 -- 
 2.39.5

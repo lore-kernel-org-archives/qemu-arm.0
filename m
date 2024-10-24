@@ -1,83 +1,87 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp116262njx;
-        Wed, 23 Oct 2024 23:11:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXxEgPSw3XcVvrvHyUJQHT/qG2/XUY+scIzV9JYpcPmehRiXWyK7BWcRFF91omorF5vJkPOb/EgPQk4xw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGAh4CvTNjNp9Ecgdk3w+084V8SMHIFs32IG/PXJJ7RTP4m8r+VHSQRZZd1zLNsQ+lIR2xl
-X-Received: by 2002:a05:622a:1352:b0:460:a9f9:23a2 with SMTP id d75a77b69052e-461146cd767mr63182471cf.34.1729750298727;
-        Wed, 23 Oct 2024 23:11:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729750298; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp116930njx;
+        Wed, 23 Oct 2024 23:13:26 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXH715QsPPfMcPecRH9D90m5WYL0G5z+AtODeBN/RSu+oHQEvOArk0VG68U+LIbAtTqGiiswxpwaQL/Vg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGz/Cc8bmK1jDiDaFAYvXZDVluWR0yZpxHcdJ/0wJjTcS3gRNWdyByfSDmGup9IkDsDS106
+X-Received: by 2002:a05:622a:191a:b0:460:eb65:be26 with SMTP id d75a77b69052e-46114727e10mr65378981cf.48.1729750405865;
+        Wed, 23 Oct 2024 23:13:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729750405; cv=none;
         d=google.com; s=arc-20240605;
-        b=AdtC+w854yTrtwdUdH3EjajQiKg6nZUkVuCdwbq+qkggJiXHO+pxj8wIIZVYr0guVy
-         lxFKQPwfjbmcWmPiXi6RMnyQmroiw5tjO4tI5wRxCVubSzEJ76J+0+xZu0nF+C7YfxFd
-         jJ9V6qr/tpen8JtVPHChzbFhoAqpeBrXEsQKJ9+IW5anaxHY3cD+Xh72K8XJUBitWTer
-         8nL3sJW/nK3JM4Qc+Xwk3AMDWlPGDXn8iS7PCWBprW6td0ZjmvMPqvme7SCgrvvqC2zL
-         7heMlLexvsFks04NldhoYc2dZxEdw95jIsjRZAKUv2z+8qHbYj3fUGG1gmBzQRblAZjC
-         BHjA==
+        b=AfQCVnVlFyWofcL9hkFkh+5s4vmpQtfeck9ffE7basqrG9UHm4+ZeY3Oi0d65ZIdNF
+         a3OxSwbi5OW/Y90LNNDief6vlM6iwazmQ4MdmJ03d2K0OcpslReXIosaT2B1EqBOSaR/
+         WkkaUes8wm3Hksyuw9aV5P0OEJHtpWRym6FvuJyTPxc/PD5uS1X8S6HBvXeytcFeoOa2
+         O0htadnq6pYM7XTdyfILasyp1u8n+7/UbMu4Wto/57YPz6f9a0JbpU1neAtiO90vcllB
+         By1qhISooLR4YkHcLGklIIjWqs9/UEIknbUwzyiPGTH7fBhEdcwQuhFq0vDwkoFqWfam
+         jPXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=vD/gJkGSSMr2of/tHAMCU3G2n3I1+kGqL9KUv0ZzpUw=;
-        fh=4mlnkPeqTwuu2Qx8qreMlJHQU0w7aOUfwVS+XUkOkGE=;
-        b=iBBj71UiHwI7ysbvuoUAavX75L99kNgsmC6/porna6VCybMt5ToOCdLI7LK+D2LdHF
-         q9uNYJVXFeu8neRJs/B99Q29i1Dw6Qts4qcLxsHUYBytgyqz0R9/hLNluAC+W3SCtjlw
-         JfC3xB/Ji81W+5JeMvaQW0+Iywz0wcxR/o8lYaRGZtJeQpseNqEo9g1PQ+8d+qvukCQe
-         cmw+Q+sU4PL5V3NNLJONiSkvkj+XFcaDuLFX2V/nWn4chj6F7vYsy+9nvMRtrYNL433W
-         TwuQPgDq8ACscnJaeZ1DNpROPwvxTcfNIRm0hWK6d1aZlylPPJMlPPC5YjFW3C1p8kIj
-         reUg==;
+        bh=to3e+PXIQXL9wJQfNWZ73LJGNbjUe49yDY2L1mJkmzk=;
+        fh=+GqoWB/UiE7QGbBUivuJ2Ndypv953u6WRDmjLhaX870=;
+        b=d8zYl7mwPH2MfVHRJCyIhRizUEaLOupAcz+kgLMcf9XwexwDHMsU5vsVcabE6LCmaV
+         iaTD23ikUcVG8gp5d5pRzxn+CSO6KJ9vgwFSdffrLgIZ4rpfjhi3NVm4OA/dQBEJMQNl
+         9bkUhxA7nrpVED7G4xJ1TuUeG+MC5Fm466RJqyI0menSEzDBxc/bohGK2ThXMn8XfcQI
+         tBEs285Ir5CnM4l9VCeDmqGjHEMUbo8rQLIam2qI6dPg1Nb8+tsGnZ0Y5ZYSib4k+0sG
+         nGDecX9B+BJOYwMl2tyeJub6E0Ev+wHGkSV/GbJKOxebXP9u3SQSTkDNmIQ8JknhQuil
+         /WvA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460ea700d90si87617381cf.154.2024.10.23.23.11.38
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3ce658fsi103713851cf.357.2024.10.23.23.13.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2024 23:11:38 -0700 (PDT)
+        Wed, 23 Oct 2024 23:13:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t3r4F-0003lx-M3; Thu, 24 Oct 2024 02:11:31 -0400
+	id 1t3r5z-00059d-Pq; Thu, 24 Oct 2024 02:13:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=9NnO=RU=kaod.org=clg@ozlabs.org>)
- id 1t3r4D-0003lD-2g; Thu, 24 Oct 2024 02:11:29 -0400
+ id 1t3r5y-00058r-B3; Thu, 24 Oct 2024 02:13:18 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=9NnO=RU=kaod.org=clg@ozlabs.org>)
- id 1t3r4B-0000Km-Dq; Thu, 24 Oct 2024 02:11:28 -0400
+ id 1t3r5t-0000TG-Tl; Thu, 24 Oct 2024 02:13:15 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XYwXW2fcmz4wyh;
- Thu, 24 Oct 2024 17:11:23 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4XYwZX2vmtz4wb1;
+ Thu, 24 Oct 2024 17:13:08 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XYwXQ0g4Dz4wb1;
- Thu, 24 Oct 2024 17:11:17 +1100 (AEDT)
-Message-ID: <9fe3e1cd-6aed-473f-9193-8541a202b7a0@kaod.org>
-Date: Thu, 24 Oct 2024 08:11:17 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4XYwZQ6d9Mz4w2F;
+ Thu, 24 Oct 2024 17:13:02 +1100 (AEDT)
+Message-ID: <2213d24e-b77c-43ed-87be-a00c70f001e0@kaod.org>
+Date: Thu, 24 Oct 2024 08:13:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/18] Fix write incorrect data into flash in user mode
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+Subject: Re: [PATCH v2 01/18] aspeed/smc: Fix write incorrect data into flash
+ in user mode
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Kevin Wolf <kwolf@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Hanna Reitz <hreitz@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:Block layer core" <qemu-block@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+ "open list:Block layer core" <qemu-block@nongnu.org>,
+ Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang <yunlin.tang@aspeedtech.com>
 References: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
+ <20241022094110.1574011-2-jamin_lin@aspeedtech.com>
+ <ZxeDVTBwLZsOEDvE@redhat.com> <b682dc55-f5e8-4fec-82f7-333dbaba240e@kaod.org>
+ <SI2PR06MB50417FE5ACE6C21AFA0E31D8FC4D2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <SI2PR06MB50417FE5ACE6C21AFA0E31D8FC4D2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -103,27 +107,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dhb1IjXxFBuS
+X-TUID: SR1Cnmn1ZKpE
 
-Hello Jamin,
-
-On 10/22/24 11:40, Jamin Lin wrote:
-> change from v1:
->   1. Fix write incorrect data into flash in user mode.
->   2. Refactor aspeed smc qtest testcases to support AST2600, AST2500 and
-> AST1030.
->   3. Add ast2700 smc qtest testcase to support AST2700.
+On 10/23/24 03:41, Jamin Lin wrote:
+> Hi Cedric,
 > 
-> change from v2:
-> 1. Introduce a new aspeed-smc-utils.c to place common testcases.
-> 2. Fix hardcode attach flash model of spi controllers
-> 3. Add reviewers suggestion and fix review issue.
-I have applied 1-6,8 to aspeed-next and should send a PR with them. I kept
-the test extensions for later, to take a closer a look and also because
-I will be on PTO next week. Tests can be merged in the next PR if we have
-time in this cycle or in QEMU 10.0.
+>> Subject: Re: [PATCH v2 01/18] aspeed/smc: Fix write incorrect data into flash in
+>> user mode
+>>
+>>>>
+>>>>    static const VMStateDescription vmstate_aspeed_smc = {
+>>>>        .name = "aspeed.smc",
+>>>> -    .version_id = 2,
+>>>> +    .version_id = 3,
+>>>>        .minimum_version_id = 2,
+>>>>        .fields = (const VMStateField[]) {
+>>>>            VMSTATE_UINT32_ARRAY(regs, AspeedSMCState,
+>> ASPEED_SMC_R_MAX),
+>>>>            VMSTATE_UINT8(snoop_index, AspeedSMCState),
+>>>>            VMSTATE_UINT8(snoop_dummies, AspeedSMCState),
+>>>> +        VMSTATE_BOOL(unselect, AspeedSMCState),
+>>>>            VMSTATE_END_OF_LIST()
+>>>>        }
+>>>>    };
+>>>
+>>> I think this will break migration compatibility. In order to enable at
+>>> least forward migration, it should be:
+>>>
+>>>       VMSTATE_BOOL_V(unselect, AspeedSMCState, 3),
+>>
+>> This is correct. I will fix the patch.
+>>
+> If I need to re-send v3 patch, I will fix it.
 
-Thanks,
+I took care of it. No need to resend.
+
+Thanks
 
 C.
 

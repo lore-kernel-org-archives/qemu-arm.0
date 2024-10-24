@@ -1,99 +1,99 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp228967njx;
-        Thu, 24 Oct 2024 03:32:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUWimyLyKMaxj68z439ymW8ZNgZAqnXWOuN1J2z8gG2sRl3ZsQGmVxaaJ8kIeyaRHg2yOl+L9x2ybwYfQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEaAy18US+3H2TO/GssvdBhmRPVwkMNy4xThXIQCqw82tTblg1f4AecrECoL2WJiGS+7/0y
-X-Received: by 2002:a05:6214:3b81:b0:6cc:3da0:d07d with SMTP id 6a1803df08f44-6ce341cc9e2mr65666056d6.4.1729765976350;
-        Thu, 24 Oct 2024 03:32:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729765976; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp229032njx;
+        Thu, 24 Oct 2024 03:33:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUafx+rYzclSzz/0nYFciwlbUwG35zRKhQDLdb/vEPxAOwsCA934Ed9qSlIHDiTLJAyGhWcVtovgO8Paw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHNrLCk6WhFJs3vka4EoANxa2AyCOsbh90cJlIyahO2wH8YYJIpto8Z7Lvm50YxfR6uZjJG
+X-Received: by 2002:a05:6902:2290:b0:e2e:3769:ab10 with SMTP id 3f1490d57ef6-e2e3a6c5564mr5227334276.40.1729765985446;
+        Thu, 24 Oct 2024 03:33:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729765985; cv=none;
         d=google.com; s=arc-20240605;
-        b=fGuWzC2CXH33q5hokhdQmCX0p+uX/r98ZbDt9B/ajZ/hSjX4Sys6jafiEdklTqqDsv
-         s/nU6sQpkkSAP+8IEhCn3Yt2F58ufu7q0BMyHbMXx/S91k3KHpvS+txdrmkmeNsRgY4B
-         EM5BqTj77/wbWiDkqpaA4gSRjPJYUPCaamlmbkbfpFdMujdp2UexjEL4FzXv0nxrLM5r
-         +DmMTUiEEjTkjSkRxPDz8YrNPyEn4knqut3H8MmN9wNdDCUYOVCL1xo4jVJYTzFR8wRu
-         RnwTEV8I7NzI8kUn20cKQi0tTdQMB/qZGTD2W5k/B7XM8wCYx3SNUU1CsyWvtsa4ZX69
-         p2Aw==
+        b=I3hmckM39z+6UxT/WsaRsVgudooQH2f9bNOjeKODv16O5n8bopGXMxwV61es7p/4xZ
+         +OhQYNowJo7xb1dTda8MwCzB08keAAHWk6h2AOpgwd+swHvgczninKJIfDOFGr3GEHvA
+         Xp6bXvzVRvDvhpQPgiYSkJq5A9cUI8cxhRpK1i6YikSzawcL9oy5V9ID0hmnkBGpTXup
+         OFDi1H+B5Oue7ot2qUIcIXZAPxvClCcL0TYSdaLVRchsZWYbkVt5/x1yFav9ht3QNblP
+         fJIBVA1H27o0PVL1I65dbkgVfVReHSidBOSMROiVF5/7J2Ce3n9tAV9ak4uQiK48I53O
+         VNHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=IeeiN2yn/TS4rJUlED7bKC2li59eUCEaUtMqhMT8sOo=;
-        fh=X/cEeG0IecOcbktZzhggOUgW8rnsW2Y9KQE40BZHOoA=;
-        b=acp+I1YZducVqmdaSRc7TkFXFwcaE1D5joqBd2t3bSw2MrE0jH9Bmj+VQbdecKyiRk
-         djRNu+VeTwNsf0PKiKxoirCgZmU1XaUqTbBnZAC2tU5DbLAGB9BWa7WXbv07Fo94OXQV
-         4Ec+HDj9VR3iJ+Hp/XY82TknrLUIDeHb0H7YOjIlmyWw60uUSlGxj2H3TnfG+jo6Hocm
-         kAwCr7EfFJAjORlIXyBXovOLcIbpzrE+tbwJdYlAkxN2AMzncuUVfjgK0ybhol70Ioul
-         yk7Sj95usaHNvrl1nG8eavwBa+DRgPdh5DHf95gspDO4N+M5Q1FD7L8M8839smYcVIRf
-         XOhA==;
+        bh=3ZB/+Sc9m5mjoqV4Si29Zg65y5ttl3uRlQNwxYZ9Scg=;
+        fh=Cz9mr7WFxiYKJBC2Bqqst74qbX4rU+wpTENwEkbsku8=;
+        b=K5RpMeN5VARY6Njjml6Ww08zEuZnarOnwg3zxzOEvppxe929Uf4zknPUSsYEGsmESD
+         oWDIr3Bd9xTNlp5oOUPBQw31Bk27cVnhr3YuWbxUM4YVJ+U4yN1q0ms+gv3A6P7lpFMe
+         T51MpiT1AfGVH1EX1I5TbB5oy3bEQ9IYE4cBWxi4FjFV/TfV6JN96scEPHiuf/VQb/n/
+         2ZAAdmfqFe16cWkFba+k21hAhUATJRj6oMr8GN1AmN2PmCe9yX4NPaPLOrqtiCVUrqZ1
+         RG1Hta11lUpxAe/AlQgCNEPU3qkJkAV8HWbMaREdhqn4Yxdk4oT7khjdZ6rFYiuikVuv
+         NVxA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=QZfm7Tj8;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=B50kEjd5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ce008a0699si111500896d6.100.2024.10.24.03.32.56
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3d0a979si112131021cf.400.2024.10.24.03.33.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2024 03:32:56 -0700 (PDT)
+        Thu, 24 Oct 2024 03:33:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=QZfm7Tj8;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=B50kEjd5;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t3v5A-0000tP-W2; Thu, 24 Oct 2024 06:28:45 -0400
+	id 1t3v5D-0000vV-SC; Thu, 24 Oct 2024 06:28:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1t3v57-0000pq-Fd
- for qemu-devel@nongnu.org; Thu, 24 Oct 2024 06:28:41 -0400
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+ id 1t3v5A-0000sM-Dg
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2024 06:28:44 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1t3v51-0008Ad-8X
- for qemu-devel@nongnu.org; Thu, 24 Oct 2024 06:28:41 -0400
-Received: by mail-lf1-x131.google.com with SMTP id
- 2adb3069b0e04-539f7606199so942413e87.0
- for <qemu-devel@nongnu.org>; Thu, 24 Oct 2024 03:28:34 -0700 (PDT)
+ id 1t3v56-0008Cq-1c
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2024 06:28:44 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-a9a2209bd7fso86920366b.2
+ for <qemu-devel@nongnu.org>; Thu, 24 Oct 2024 03:28:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1729765713; x=1730370513;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1729765718; x=1730370518;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IeeiN2yn/TS4rJUlED7bKC2li59eUCEaUtMqhMT8sOo=;
- b=QZfm7Tj8AcwHXggf5Z/mcyGAACm4ZOlUe2YUKQhM77EUf3A3Ox5CPfohWKR7yFRsvA
- CH08lATlQRzZDNoBzMCUcs8R+Ju++6wpoY7nXyOZmIHD3//yABPfoO5/xteMDlUvH30x
- ZlAfWcOvRlCYHJWJNI5zaDDpM8YjrJQws39jyM13S/3fthAUCXpVnGifMqKDvd9K1QBL
- d1BBMeSpOW1olkuNHKbJdwT6kux0/EEeUSF5yoh82kewOa7DUQYwONhNDc1v/ucXQX+m
- acRlzT4OuCZXrgk9B/1sBrH2JoCkbsyLN1mAltObKPEU8Lgc4PNbJr5XDU6k/U/PX0vw
- Beaw==
+ bh=3ZB/+Sc9m5mjoqV4Si29Zg65y5ttl3uRlQNwxYZ9Scg=;
+ b=B50kEjd5bPoiatm/yiDK1/v9GuVaX4d0vO7nP58kjX88gaqet8kn8uhLAqHhdsJy1f
+ 0OZJXfCA/VOtTgVgqvHUpDkCnuIKqFYMuAmn0HOjpZymimP5EI0W0/bfpgb3dVtiPBJp
+ JZA69f35/1iIPee9fGzL4u9oL1MwTg2IKLM8P/9z6VZqAisIhyf+l0MbvHmkqr5F84nH
+ u31U5i6ltLRTf8jvxqBZyMdieVkxUjS0gltdrwE3hDD0Gl3/ChAvIGIiXozKAET42GSm
+ 2HfFk/kCPbFJTphOhMjZQwzI462eJrqeYvBAdw/XkWoSFkRY8sn5jmAbcpHEPdeqB3p2
+ cH/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729765713; x=1730370513;
+ d=1e100.net; s=20230601; t=1729765718; x=1730370518;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=IeeiN2yn/TS4rJUlED7bKC2li59eUCEaUtMqhMT8sOo=;
- b=SxjvqJ7VrazK/Ntaoeo9SXKs5S4nU4Szg+865stPkBqCJtAEq1wQg8boZNtJGdl89N
- QuBZMOxBNayXbH2ACdIFxXEyx2YsTp08NvB39ccaTOFZCVSgiFmid2h7E63CCQ8Wkavk
- jQPr2UPqS73OqBTBN98NpMJbGED8fkkZDarcGink4UKdEJ9eSfDPSyf/X2QBJmFQjGN5
- 8sE+W1Z1kH4K3+xx1AKKWyyAwu1sfvbOPZoClcC+6SiSoI1E7DFXA4DqN2UEgVisrINY
- wdsmpkXipP3izPE2+XnbF8IjtufJZonqQt43DS44+feT8AI7O0tA52ldlGt85R+bnU3h
- pAFg==
-X-Gm-Message-State: AOJu0YyEVS3F4XcW/3yiPCtJYVoDTtHywVhA5msUXSOSUx/+h1hrmO9i
- Etaxgqy0rDCfcYz9S7iko/zkPaRQQ1Z/TNfu1pVQxbbVO4XE0fXPin/Ny6+ImZ2aQka9tJEvMFc
- inA==
-X-Received: by 2002:a05:6512:398a:b0:539:f2f6:c70f with SMTP id
- 2adb3069b0e04-53b1a2fed80mr2917958e87.8.1729765712713; 
- Thu, 24 Oct 2024 03:28:32 -0700 (PDT)
+ bh=3ZB/+Sc9m5mjoqV4Si29Zg65y5ttl3uRlQNwxYZ9Scg=;
+ b=ozijjVwSgD6u2QXs0aZCacUinirLXtsCiwtFskldJcGy9mMkR1tNKFOuxcww15xGSm
+ BOEYuSWoHFKpQK4mIzc7UsqJmnc3GeKigzt44ph35arm0pbSE3RqYGEG0sfAOkcwnK5g
+ 9g2emeV8G2GjmYmtgZsNuYQzkrTEtiOGI/o6X7h+VNp5D7zQk4h36NSkqicKnVn7XjWF
+ GY4Xa07BDB3D+K4TImQW0pI+9Nj95xRww3pQ9plaRkL5hRJK94SMGOUckLcc0tcdDW+D
+ /Xg2EPUmNEHbn7oZPw84wGQ6pICy+w/h55iCQSg7zQ6fXnSImcjRDjLdHJ0ItS/qxIEn
+ cRIA==
+X-Gm-Message-State: AOJu0YzLbs/exO5XrMoTsMwmG9MrF0+fC+ptJYOkgXDbfZ29P28QoRdb
+ bbmhvJHROxO2J04yd0yQ5YEf44geKxi1iF9Cg42lNKT/1qOrJys1gpWFpM+OyMnyo9eOE+wuIWA
+ Zyw==
+X-Received: by 2002:a17:906:d554:b0:a9a:2afc:e4e4 with SMTP id
+ a640c23a62f3a-a9ad285fd4amr122434666b.59.1729765718508; 
+ Thu, 24 Oct 2024 03:28:38 -0700 (PDT)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9a913706d3sm601019066b.134.2024.10.24.03.28.29
+ a640c23a62f3a-a9a913706d3sm601019066b.134.2024.10.24.03.28.36
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 24 Oct 2024 03:28:32 -0700 (PDT)
+ Thu, 24 Oct 2024 03:28:38 -0700 (PDT)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -107,17 +107,18 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PATCH v4 04/15] hw/display/apple-gfx: Adds configurable mode list
-Date: Thu, 24 Oct 2024 12:28:02 +0200
-Message-Id: <20241024102813.9855-5-phil@philjordan.eu>
+ qemu-riscv@nongnu.org, Alexander Graf <graf@amazon.com>
+Subject: [PATCH v4 07/15] hw/misc/pvpanic: Add MMIO interface
+Date: Thu, 24 Oct 2024 12:28:05 +0200
+Message-Id: <20241024102813.9855-8-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.3 (Apple Git-145)
 In-Reply-To: <20241024102813.9855-1-phil@philjordan.eu>
 References: <20241024102813.9855-1-phil@philjordan.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::131;
- envelope-from=phil@philjordan.eu; helo=mail-lf1-x131.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::62f;
+ envelope-from=phil@philjordan.eu; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -138,326 +139,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LMpbVQFMJ+YZ
+X-TUID: NFLksY4zI1v4
 
-This change adds a property 'display_modes' on the graphics device
-which permits specifying a list of display modes. (screen resolution
-and refresh rate)
+From: Alexander Graf <graf@amazon.com>
 
-The property is an array of a custom type to make the syntax slightly
-less awkward to use, for example:
+In addition to the ISA and PCI variants of pvpanic, let's add an MMIO
+platform device that we can use in embedded arm environments.
 
--device '{"driver":"apple-gfx-pci", "display-modes":["1920x1080@60", "3840x2160@60"]}'
-
+Signed-off-by: Alexander Graf <graf@amazon.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
+ hw/misc/Kconfig           |  4 +++
+ hw/misc/meson.build       |  1 +
+ hw/misc/pvpanic-mmio.c    | 61 +++++++++++++++++++++++++++++++++++++++
+ include/hw/misc/pvpanic.h |  1 +
+ 4 files changed, 67 insertions(+)
+ create mode 100644 hw/misc/pvpanic-mmio.c
 
-v4:
-
- * Switched to the native array property type, which recently gained
-	 command line support.
- * The property has also been added to the -mmio variant.
- * Tidied up the code a little.
-
- hw/display/apple-gfx-mmio.m |   8 +++
- hw/display/apple-gfx-pci.m  |   9 ++-
- hw/display/apple-gfx.h      |  12 ++++
- hw/display/apple-gfx.m      | 127 ++++++++++++++++++++++++++++++++----
- hw/display/trace-events     |   2 +
- 5 files changed, 145 insertions(+), 13 deletions(-)
-
-diff --git a/hw/display/apple-gfx-mmio.m b/hw/display/apple-gfx-mmio.m
-index 06131bc23f1..5d427c7005e 100644
---- a/hw/display/apple-gfx-mmio.m
-+++ b/hw/display/apple-gfx-mmio.m
-@@ -261,6 +261,12 @@ static void apple_gfx_mmio_reset(Object *obj, ResetType type)
-     [s->common.pgdev reset];
- }
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 1f1baa5dde9..5a6c1603b60 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -145,6 +145,10 @@ config PVPANIC_ISA
+     depends on ISA_BUS
+     select PVPANIC_COMMON
  
-+static Property apple_gfx_mmio_properties[] = {
-+    DEFINE_PROP_ARRAY("display-modes", AppleGFXMMIOState,
-+                      common.num_display_modes, common.display_modes,
-+                      qdev_prop_display_mode, AppleGFXDisplayMode),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
- 
- static void apple_gfx_mmio_class_init(ObjectClass *klass, void *data)
- {
-@@ -270,6 +276,8 @@ static void apple_gfx_mmio_class_init(ObjectClass *klass, void *data)
-     rc->phases.hold = apple_gfx_mmio_reset;
-     dc->hotpluggable = false;
-     dc->realize = apple_gfx_mmio_realize;
++config PVPANIC_MMIO
++    bool
++    select PVPANIC_COMMON
 +
-+    device_class_set_props(dc, apple_gfx_mmio_properties);
- }
+ config AUX
+     bool
+     select I2C
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index d02d96e403b..4de4db0a600 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -122,6 +122,7 @@ system_ss.add(when: 'CONFIG_ARMSSE_MHU', if_true: files('armsse-mhu.c'))
  
- static TypeInfo apple_gfx_mmio_types[] = {
-diff --git a/hw/display/apple-gfx-pci.m b/hw/display/apple-gfx-pci.m
-index 4ee26dde422..32e81bbef8b 100644
---- a/hw/display/apple-gfx-pci.m
-+++ b/hw/display/apple-gfx-pci.m
-@@ -115,6 +115,13 @@ static void apple_gfx_pci_reset(Object *obj, ResetType type)
-     [s->common.pgdev reset];
- }
- 
-+static Property apple_gfx_pci_properties[] = {
-+    DEFINE_PROP_ARRAY("display-modes", AppleGFXPCIState,
-+                      common.num_display_modes, common.display_modes,
-+                      qdev_prop_display_mode, AppleGFXDisplayMode),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
+ system_ss.add(when: 'CONFIG_PVPANIC_ISA', if_true: files('pvpanic-isa.c'))
+ system_ss.add(when: 'CONFIG_PVPANIC_PCI', if_true: files('pvpanic-pci.c'))
++system_ss.add(when: 'CONFIG_PVPANIC_MMIO', if_true: files('pvpanic-mmio.c'))
+ system_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
+ system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_hace.c',
+diff --git a/hw/misc/pvpanic-mmio.c b/hw/misc/pvpanic-mmio.c
+new file mode 100644
+index 00000000000..56738efee53
+--- /dev/null
++++ b/hw/misc/pvpanic-mmio.c
+@@ -0,0 +1,61 @@
++/*
++ * QEMU simulated pvpanic device (MMIO frontend)
++ *
++ * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
- static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -132,7 +139,7 @@ static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
-     pci->class_id = PCI_CLASS_DISPLAY_OTHER;
-     pci->realize = apple_gfx_pci_realize;
- 
--    // TODO: Property for setting mode list
-+    device_class_set_props(dc, apple_gfx_pci_properties);
- }
- 
- static TypeInfo apple_gfx_pci_types[] = {
-diff --git a/hw/display/apple-gfx.h b/hw/display/apple-gfx.h
-index 39931fba65a..d2c6a14229a 100644
---- a/hw/display/apple-gfx.h
-+++ b/hw/display/apple-gfx.h
-@@ -9,6 +9,7 @@
- #import <ParavirtualizedGraphics/ParavirtualizedGraphics.h>
- #include "qemu/typedefs.h"
- #include "exec/memory.h"
++#include "qemu/osdep.h"
++
 +#include "hw/qdev-properties.h"
- #include "ui/surface.h"
- 
- @class PGDeviceDescriptor;
-@@ -20,6 +21,7 @@
- 
- typedef QTAILQ_HEAD(, PGTask_s) PGTaskList;
- 
-+struct AppleGFXDisplayMode;
- struct AppleGFXMapMemoryJob;
- typedef struct AppleGFXState {
-     MemoryRegion iomem_gfx;
-@@ -31,6 +33,8 @@ typedef struct AppleGFXState {
-     id<MTLCommandQueue> mtl_queue;
-     bool cursor_show;
-     QEMUCursor *cursor;
-+    struct AppleGFXDisplayMode *display_modes;
-+    uint32_t num_display_modes;
- 
-     /* For running PVG memory-mapping requests in the AIO context */
-     QemuCond job_cond;
-@@ -47,6 +51,12 @@ typedef struct AppleGFXState {
-     id<MTLTexture> texture;
- } AppleGFXState;
- 
-+typedef struct AppleGFXDisplayMode {
-+    uint16_t width_px;
-+    uint16_t height_px;
-+    uint16_t refresh_rate_hz;
-+} AppleGFXDisplayMode;
++#include "hw/misc/pvpanic.h"
++#include "hw/sysbus.h"
++#include "standard-headers/misc/pvpanic.h"
 +
- void apple_gfx_common_init(Object *obj, AppleGFXState *s, const char* obj_name);
- void apple_gfx_common_realize(AppleGFXState *s, PGDeviceDescriptor *desc,
-                               Error **errp);
-@@ -54,5 +64,7 @@ uintptr_t apple_gfx_host_address_for_gpa_range(uint64_t guest_physical,
-                                                uint64_t length, bool read_only);
- void apple_gfx_await_bh_job(AppleGFXState *s, bool *job_done_flag);
- 
-+extern const PropertyInfo qdev_prop_display_mode;
++OBJECT_DECLARE_SIMPLE_TYPE(PVPanicMMIOState, PVPANIC_MMIO_DEVICE)
 +
- #endif
- 
-diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
-index 46be9957f69..42b601329fb 100644
---- a/hw/display/apple-gfx.m
-+++ b/hw/display/apple-gfx.m
-@@ -28,9 +28,10 @@
- #include "qapi/error.h"
- #include "ui/console.h"
- 
--static const PGDisplayCoord_t apple_gfx_modes[] = {
--    { .x = 1440, .y = 1080 },
--    { .x = 1280, .y = 1024 },
-+static const AppleGFXDisplayMode apple_gfx_default_modes[] = {
-+    { 1920, 1080, 60 },
-+    { 1440, 1080, 60 },
-+    { 1280, 1024, 60 },
- };
- 
- /* This implements a type defined in <ParavirtualizedGraphics/PGDevice.h>
-@@ -303,7 +304,6 @@ static void set_mode(AppleGFXState *s, uint32_t width, uint32_t height)
- static void create_fb(AppleGFXState *s)
- {
-     s->con = graphic_console_init(NULL, 0, &apple_gfx_fb_ops, s);
--    set_mode(s, 1440, 1080);
- 
-     s->cursor_show = true;
- }
-@@ -628,20 +628,25 @@ static void apple_gfx_register_task_mapping_handlers(AppleGFXState *s,
-     return disp_desc;
- }
- 
--static NSArray<PGDisplayMode*>* apple_gfx_prepare_display_mode_array(void)
-+static NSArray<PGDisplayMode*>* apple_gfx_create_display_mode_array(
-+    const AppleGFXDisplayMode display_modes[], uint32_t display_mode_count)
- {
--    PGDisplayMode *modes[ARRAY_SIZE(apple_gfx_modes)];
-+    PGDisplayMode **modes = alloca(sizeof(modes[0]) * display_mode_count);
-     NSArray<PGDisplayMode*>* mode_array = nil;
--    int i;
-+    uint32_t i;
- 
--    for (i = 0; i < ARRAY_SIZE(apple_gfx_modes); i++) {
-+    for (i = 0; i < display_mode_count; i++) {
-+        const AppleGFXDisplayMode *mode = &display_modes[i];
-+        trace_apple_gfx_display_mode(i, mode->width_px, mode->height_px);
-+        PGDisplayCoord_t mode_size = { mode->width_px, mode->height_px };
-         modes[i] =
--            [[PGDisplayMode alloc] initWithSizeInPixels:apple_gfx_modes[i] refreshRateInHz:60.];
-+            [[PGDisplayMode alloc] initWithSizeInPixels:mode_size
-+                                        refreshRateInHz:mode->refresh_rate_hz];
-     }
- 
--    mode_array = [NSArray arrayWithObjects:modes count:ARRAY_SIZE(apple_gfx_modes)];
-+    mode_array = [NSArray arrayWithObjects:modes count:display_mode_count];
- 
--    for (i = 0; i < ARRAY_SIZE(apple_gfx_modes); i++) {
-+    for (i = 0; i < display_mode_count; i++) {
-         [modes[i] release];
-         modes[i] = nil;
-     }
-@@ -679,6 +684,8 @@ void apple_gfx_common_realize(AppleGFXState *s, PGDeviceDescriptor *desc,
-                               Error **errp)
- {
-     PGDisplayDescriptor *disp_desc = nil;
-+    const AppleGFXDisplayMode *display_modes = apple_gfx_default_modes;
-+    int num_display_modes = ARRAY_SIZE(apple_gfx_default_modes);
- 
-     if (apple_gfx_mig_blocker == NULL) {
-         error_setg(&apple_gfx_mig_blocker,
-@@ -704,10 +711,106 @@ void apple_gfx_common_realize(AppleGFXState *s, PGDeviceDescriptor *desc,
-     s->pgdisp = [s->pgdev newDisplayWithDescriptor:disp_desc
-                                               port:0 serialNum:1234];
-     [disp_desc release];
--    s->pgdisp.modeList = apple_gfx_prepare_display_mode_array();
++#define PVPANIC_MMIO_SIZE 0x2
 +
-+    if (s->display_modes != NULL && s->num_display_modes > 0) {
-+        trace_apple_gfx_common_realize_modes_property(s->num_display_modes);
-+        display_modes = s->display_modes;
-+        num_display_modes = s->num_display_modes;
-+    }
-+    s->pgdisp.modeList =
-+        apple_gfx_create_display_mode_array(display_modes, num_display_modes);
- 
-     create_fb(s);
- 
-     qemu_mutex_init(&s->job_mutex);
-     qemu_cond_init(&s->job_cond);
- }
++struct PVPanicMMIOState {
++    SysBusDevice parent_obj;
 +
-+static void apple_gfx_get_display_mode(Object *obj, Visitor *v,
-+                                       const char *name, void *opaque,
-+                                       Error **errp)
-+{
-+    Property *prop = opaque;
-+    AppleGFXDisplayMode *mode = object_field_prop_ptr(obj, prop);
-+    /* 3 uint16s (max 5 digits) and 2 separator characters + nul. */
-+    static const size_t buffer_size = 5 * 3 + 2 + 1;
-+
-+    char buffer[buffer_size];
-+    char *pos = buffer;
-+
-+    int rc = snprintf(buffer, buffer_size,
-+                      "%"PRIu16"x%"PRIu16"@%"PRIu16,
-+                      mode->width_px, mode->height_px,
-+                      mode->refresh_rate_hz);
-+    assert(rc < buffer_size);
-+
-+    visit_type_str(v, name, &pos, errp);
-+}
-+
-+static void apple_gfx_set_display_mode(Object *obj, Visitor *v,
-+                                       const char *name, void *opaque,
-+                                       Error **errp)
-+{
-+    Property *prop = opaque;
-+    AppleGFXDisplayMode *mode = object_field_prop_ptr(obj, prop);
-+    Error *local_err = NULL;
-+    const char *endptr;
-+    char *str;
-+    int ret;
-+    unsigned int val;
-+
-+    visit_type_str(v, name, &str, &local_err);
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return;
-+    }
-+
-+    endptr = str;
-+
-+    ret = qemu_strtoui(endptr, &endptr, 10, &val);
-+    if (ret || val > UINT16_MAX || val == 0) {
-+        error_setg(errp, "width in '%s' must be a decimal integer number "
-+                   "of pixels in the range 1..65535", name);
-+        goto out;
-+    }
-+    mode->width_px = val;
-+    if (*endptr != 'x') {
-+        goto separator_error;
-+    }
-+
-+    ret = qemu_strtoui(endptr + 1, &endptr, 10, &val);
-+    if (ret || val > UINT16_MAX || val == 0) {
-+        error_setg(errp, "height in '%s' must be a decimal integer number "
-+                   "of pixels in the range 1..65535", name);
-+        goto out;
-+    }
-+    mode->height_px = val;
-+    if (*endptr != '@') {
-+        goto separator_error;
-+    }
-+
-+    ret = qemu_strtoui(endptr + 1, &endptr, 10, &val);
-+    if (ret) {
-+        error_setg(errp, "refresh rate in '%s'"
-+                   " must be a non-negative decimal integer (Hertz)", name);
-+    }
-+    mode->refresh_rate_hz = val;
-+
-+    goto out;
-+
-+separator_error:
-+    error_setg(errp, "Each display mode takes the format "
-+               "'<width>x<height>@<rate>'");
-+out:
-+    g_free(str);
-+    return;
-+}
-+
-+const PropertyInfo qdev_prop_display_mode = {
-+    .name  = "display_mode",
-+    .description =
-+        "Display mode in pixels and Hertz, as <width>x<height>@<refresh-rate> "
-+        "Example: 3840x2160@60",
-+    .get   = apple_gfx_get_display_mode,
-+    .set   = apple_gfx_set_display_mode,
++    PVPanicState pvpanic;
 +};
-diff --git a/hw/display/trace-events b/hw/display/trace-events
-index 214998312b9..2780239dbde 100644
---- a/hw/display/trace-events
-+++ b/hw/display/trace-events
-@@ -209,6 +209,8 @@ apple_gfx_cursor_set(uint32_t bpp, uint64_t width, uint64_t height) "bpp=%d widt
- apple_gfx_cursor_show(uint32_t show) "show=%d"
- apple_gfx_cursor_move(void) ""
- apple_gfx_common_init(const char *device_name, size_t mmio_size) "device: %s; MMIO size: %zu bytes"
-+apple_gfx_common_realize_modes_property(uint32_t num_modes) "using %u modes supplied by 'display-modes' device property"
-+apple_gfx_display_mode(uint32_t mode_idx, uint16_t width_px, uint16_t height_px) "mode %2"PRIu32": %4"PRIu16"x%4"PRIu16
++
++static void pvpanic_mmio_initfn(Object *obj)
++{
++    PVPanicMMIOState *s = PVPANIC_MMIO_DEVICE(obj);
++
++    pvpanic_setup_io(&s->pvpanic, DEVICE(s), PVPANIC_MMIO_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->pvpanic.mr);
++}
++
++static Property pvpanic_mmio_properties[] = {
++    DEFINE_PROP_UINT8("events", PVPanicMMIOState, pvpanic.events,
++                      PVPANIC_PANICKED | PVPANIC_CRASH_LOADED),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void pvpanic_mmio_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    device_class_set_props(dc, pvpanic_mmio_properties);
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++}
++
++static const TypeInfo pvpanic_mmio_info = {
++    .name          = TYPE_PVPANIC_MMIO_DEVICE,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(PVPanicMMIOState),
++    .instance_init = pvpanic_mmio_initfn,
++    .class_init    = pvpanic_mmio_class_init,
++};
++
++static void pvpanic_register_types(void)
++{
++    type_register_static(&pvpanic_mmio_info);
++}
++
++type_init(pvpanic_register_types)
+diff --git a/include/hw/misc/pvpanic.h b/include/hw/misc/pvpanic.h
+index 9a71a5ad0d7..049a94c1125 100644
+--- a/include/hw/misc/pvpanic.h
++++ b/include/hw/misc/pvpanic.h
+@@ -26,6 +26,7 @@
  
- # apple-gfx-mmio.m
- apple_gfx_mmio_iosfc_read(uint64_t offset, uint64_t res) "offset=0x%"PRIx64" res=0x%"PRIx64
+ #define TYPE_PVPANIC_ISA_DEVICE "pvpanic"
+ #define TYPE_PVPANIC_PCI_DEVICE "pvpanic-pci"
++#define TYPE_PVPANIC_MMIO_DEVICE "pvpanic-mmio"
+ 
+ #define PVPANIC_IOPORT_PROP "ioport"
+ 
 -- 
 2.39.3 (Apple Git-145)
 

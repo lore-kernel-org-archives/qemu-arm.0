@@ -1,164 +1,274 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp125758njx;
-        Wed, 23 Oct 2024 23:36:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWs33cRVWxuJNkWv4qJdkpKlznA5p7FU5Xy6sXutNXkzGKUv1wqElaVEG9AmkMF9O0CeR90A0v7E+viRw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEUkUyqjYG0/rmRMUW3y496QYXLIs16l/fHi+FYcaP5LadKe5LCebs/nMd8ykma1pyBDki0
-X-Received: by 2002:ac8:5f8a:0:b0:461:1e88:5931 with SMTP id d75a77b69052e-4611e885c2bmr47814971cf.13.1729751808305;
-        Wed, 23 Oct 2024 23:36:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729751808; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp125774njx;
+        Wed, 23 Oct 2024 23:36:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXayQONYqrfIJ23jF8GojBOaqNyNWAlAyDTJ+gu3EPIkrdbDvtsn2PTNDsBe78DeZ7oAJyGrxHRSpflZQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEcfXplI6Hpx4oRuwYgJH1WeSXqFMhGIgcxNIDkotrMCAgZPv43bNsNa0Da+le2eV4O3uLc
+X-Received: by 2002:a05:6214:2dca:b0:6cb:ef34:9c00 with SMTP id 6a1803df08f44-6d08d3feb3dmr12580226d6.12.1729751813083;
+        Wed, 23 Oct 2024 23:36:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729751813; cv=none;
         d=google.com; s=arc-20240605;
-        b=Nxjodk6XJEAsDQoQMNUxsp5KqapN7U9Y61ADBEt/4fpdB+LpQyOCB7guDq7PeOd82q
-         oF0dg3Ck9Zg6Qz2yR9onv4MEfV/mM0QiYQei4izdgWg7eE6hqnDhlYWmgeyDSYor/3M9
-         Z1sTsxMZKCNTUc/iaOQLNCXlQ2ezFlIViYUGlaHPJ0NnYzhl9pdCABHSplg6D9NEFxbt
-         MIc3dqTG15cX601v++xIUQYE2m8lTIWhoaE9q9u3gWe5ML5QWk6ost0LaJ9UlnUylFXz
-         v/Y28YuZPjiupT3VNkvd2yv6YsEi71Phie0vk4apVqxl2Brc7aQ4Z6v4PxXgv2IKHpdB
-         xaow==
+        b=gY62+UhxnxiFuDRVcHFCiooZo4pY3nBKBotgFXIfOl/N5o0A5Zjo2V7GFn2T4ID5Rn
+         cD7OtSGZaLVCxEJrP7t4gf+VWA0fQ0z2Qi3tCPhu2AnovTq7ih2hCBodJZ70H3ltseWN
+         ZwTXdj9dnDalJlB9zE6+BkPiPycWRgLVhVFNreeyCUx6J3oAGzogJtS/AjMxoao2bXkW
+         +4BogmWapwmYAaI5AMJ05uJG5i8H16S9MyJPgk2zYBhQU2ffz13ecmUGXT7c6tOczT/o
+         D0t8TagNOQ2rdKpuBsSvHcx33H1qYqqsgGmiGS5riFc0FSmd0gRRNJ7DtNw2vqV8/QFq
+         b/hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=hVYO9c1AO+7wGXJZty83PbYK2F8h/XQOz1D7tLdWMNM=;
+        bh=incJPjlJux44acScDahhQwO/PoF7Ylf2Fb5Kd883v6c=;
         fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=c0TApZbqKEzPLJRDYi3MRoDZtH62I8Wz1/NLedaJKCX5CZ+KaHm2f8GcTO09shpSWw
-         Y8kYXlfF0T24E2F7Ab7/Z0yonVmqqjzfUOLmQOIqVUmkrPbd3lQwHqh5RKvttjBLsuGD
-         NWPq7gWsGvUMdwkX/3nlB8AsVqQhu23GbFTLP+qy+Lo91ktvVc2PovOUMPQH4HnDIGlS
-         p35F2yP8I76aT4TOR4vxo6HoXdbvg5dDsD3oXtIIYqBsbkNwbTENjALBZ4tdKzRA3VXc
-         GN/DO1C0gwDLKHfCB1HIooKs39Uqe3so8LA6UBa/eItuzmag6VBZ0Eo5ikzr77bHTsYx
-         ze5Q==;
+        b=hwK9fx4g8zrPDlNYu79lz4XwORaaECF+fz052DBrkchXQi0K5brEv0670xJNLXsLH1
+         GP6j+YU5GcRnFc3139YK5x9VaCVj5KWgbZZ3k5c+Zi+X2B4WFkNIA0EczfWwoxuxhFy8
+         b4ueGY4U0UMr/HtBlnShvuKOqcATQQzL7lL3qgcXTjLT65q3Poex+kdjQrY2Kwq6nZWz
+         tFnGxD6/12dnwld+INgAbCaFionIGm2/0SeKWomliZgIj9YZ091LK4rnmWZKfpPOyHd1
+         CPXsFOP93e7wa3jOyOtGfVodyudaQdcj0fysezATnon21NmyQOoFJVvcktHExSUlZcyF
+         4esQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FW6Je4gc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AzotkdyR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-460d3b34883si105172221cf.83.2024.10.23.23.36.48
+        by mx.google.com with ESMTPS id 6a1803df08f44-6ce26a6fcfesi56645296d6.128.2024.10.23.23.36.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2024 23:36:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Oct 2024 23:36:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FW6Je4gc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AzotkdyR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t3rRw-0002PZ-VO; Thu, 24 Oct 2024 02:36:00 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t3rRl-0002JM-T9; Thu, 24 Oct 2024 02:35:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRv-0002Or-IU
- for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRj-0002IJ-Dv
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2024 02:35:47 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRu-0003US-7S
- for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:59 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRh-0003Rg-S8
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2024 02:35:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1729751757;
+ s=mimecast20190719; t=1729751745;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hVYO9c1AO+7wGXJZty83PbYK2F8h/XQOz1D7tLdWMNM=;
- b=FW6Je4gcFLEEpwcb1dQXomQX7xt3Oz+i6iEOuwwCAanCECDGbt5yk1u7t4jDyCWG57uTfr
- VxwbGx3coPI/R7Ynpse1LUjgtdxxJF+IqLSA23U7Xyx6csZ5YRrWye+4QjFj+koMCOsWnJ
- kjVjqT/gPONjap4la92QRb6N/2PQ+fY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=incJPjlJux44acScDahhQwO/PoF7Ylf2Fb5Kd883v6c=;
+ b=AzotkdyRAocp4mVlP4MrqzLvLi5a7XdHFrTLBvMfSZAYInwBzLL3XpEtxMV3EU6IEXfhvq
+ InGDDbRCD0AZ/eOz0ucnRURjNBh/RsZwWU0QLV0qbDRZqMqDd0jAN2BVj1xIZI9zK49gCK
+ 4A9CAHxwiZDnzI965VUIKoiyRNlLcho=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-517-mHFoI846MI2EiH0KTquN2Q-1; Thu,
- 24 Oct 2024 02:35:54 -0400
-X-MC-Unique: mHFoI846MI2EiH0KTquN2Q-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-394-fwKl2Fx6NXa4v_VWap_rzA-1; Thu,
+ 24 Oct 2024 02:35:43 -0400
+X-MC-Unique: fwKl2Fx6NXa4v_VWap_rzA-1
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 207F21955D5B; Thu, 24 Oct 2024 06:35:53 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CB8B41955BEF; Thu, 24 Oct 2024 06:35:42 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.9])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 964B91956056; Thu, 24 Oct 2024 06:35:50 +0000 (UTC)
+ id 766971956056; Thu, 24 Oct 2024 06:35:41 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 16/17] hw/arm/aspeed: Correct fmc_model w25q80bl for ast1030-a1
- EVB
-Date: Thu, 24 Oct 2024 08:35:06 +0200
-Message-ID: <20241024063507.1585765-17-clg@redhat.com>
+Subject: [PULL 11/17] aspeed/smc: Fix write incorrect data into flash in user
+ mode
+Date: Thu, 24 Oct 2024 08:35:01 +0200
+Message-ID: <20241024063507.1585765-12-clg@redhat.com>
 In-Reply-To: <20241024063507.1585765-1-clg@redhat.com>
 References: <20241024063507.1585765-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.263,
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.263,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1.697,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2BFiaaF4VIUX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XvZHayqSQqZu
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Currently, the default fmc_model was "sst25vf032b" whose size was 4MB for
-ast1030-a1 EVB. However, according to the schematic of ast1030-a1 EVB,
-ASPEED shipped default flash of fmc_cs0 and fmc_cs1 were "w25q80bl" and
-"w25q256", respectively. The size of w25q80bl is 1MB and the size of w25q256
-is 32MB.
+According to the design of ASPEED SPI controllers user mode, users write the
+data to flash, the SPI drivers set the Control Register(0x10) bit 0 and 1
+enter user mode. Then, SPI drivers send flash commands for writing data.
+Finally, SPI drivers set the Control Register (0x10) bit 2 to stop
+active control and restore bit 0 and 1.
 
-The fmc_cs0 was connected to AST1030 A1 internal flash and the fmc_cs1 was
-connected to external flash. The internal flash could not be changed because
-it was placed into AST1030 A1 chip. Users only can change fmc_cs1 external
-flash.
+According to the design of ASPEED SMC model, firmware writes the
+Control Register and the "aspeed_smc_flash_update_ctrl" function is called.
+Then, this function verify Control Register(0x10) bit 0 and 1. If it set user
+mode, the value of s->snoop_index is SNOOP_START else SNOOP_OFF.
+If s->snoop_index is SNOOP_START, the "aspeed_smc_do_snoop" function verify
+the first incomming data is a new flash command and writes the corresponding
+dummy bytes if need.
 
-So far, only supports to set the default fmc_model for all chip select pins.
-In other words, users cannot set the different default flash model for
-fmc_cs0 and fmc_cs1, respectively.
+However, it did not check the current unselect status. If current unselect
+status is "false" and firmware set the IO MODE by Control Register bit 31:28,
+the value of s->snoop_index will be changed to SNOOP_START again and
+"aspeed_smc_do_snoop" misunderstand that the incomming data is the new flash
+command and it causes writing unexpected data into flash.
 
-Correct fmc_model default flash to w25q80bl the same as AST1030 A1
-internal flash for ast1030-a1 EVB.
+Example:
+1. Firmware set user mode by Control Register bit 0 and 1(0x03)
+2. SMC model set s->snoop SNOOP_START
+3. Firmware set Quad Page Program with 4-Byte Address command (0x34)
+4. SMC model verify this flash command and it needs 4 dummy bytes.
+5. Firmware send 4 bytes address.
+6. SMC model receives 4 bytes address
+7. Firmware set QPI IO MODE by Control Register bit 31. (0x80000003)
+8. SMC model verify new user mode by Control Register bit 0 and 1.
+   Then, set s->snoop SNOOP_START again. (It is the wrong behavior.)
+9. Firmware send 0xebd8c134 data and it should be written into flash.
+   However, SMC model misunderstand that the first incoming data, 0x34,
+   is the new command because the value of s->snoop is changed to SNOOP_START.
+   Finally, SMC sned the incorrect data to flash model.
+
+Introduce a new unselect attribute in AspeedSMCState to save the current
+unselect status for user mode and set it "true" by default.
+Update "aspeed_smc_flash_update_ctrl" function to check the previous unselect
+status. If both new unselect status and previous unselect status is different,
+update s->snoop_index value and call "aspeed_smc_flash_do_select".
+
+Increase VMStateDescription version.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
+[ clg: - Replaced VMSTATE_BOOL -> VMSTATE_BOOL_V ]
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/ssi/aspeed_smc.h |  1 +
+ hw/ssi/aspeed_smc.c         | 40 ++++++++++++++++++++++++++-----------
+ 2 files changed, 29 insertions(+), 12 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index bf68224295f8..b4b1ce9efb2b 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -1642,7 +1642,7 @@ static void aspeed_minibmc_machine_ast1030_evb_class_init(ObjectClass *oc,
-     mc->init = aspeed_minibmc_machine_init;
-     amc->i2c_init = ast1030_evb_i2c_init;
-     mc->default_ram_size = 0;
--    amc->fmc_model = "sst25vf032b";
-+    amc->fmc_model = "w25q80bl";
-     amc->spi_model = "w25q256";
-     amc->num_cs = 2;
-     amc->macs_mask = 0;
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 234dca32b017..25b95e740608 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -82,6 +82,7 @@ struct AspeedSMCState {
+ 
+     uint8_t snoop_index;
+     uint8_t snoop_dummies;
++    bool unselect;
+ };
+ 
+ typedef struct AspeedSegments {
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index e3fdc66cb2b7..033cbbb59b06 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -417,7 +417,7 @@ static void aspeed_smc_flash_do_select(AspeedSMCFlash *fl, bool unselect)
+     AspeedSMCState *s = fl->controller;
+ 
+     trace_aspeed_smc_flash_select(fl->cs, unselect ? "un" : "");
+-
++    s->unselect = unselect;
+     qemu_set_irq(s->cs_lines[fl->cs], unselect);
+ }
+ 
+@@ -677,22 +677,35 @@ static const MemoryRegionOps aspeed_smc_flash_ops = {
+ static void aspeed_smc_flash_update_ctrl(AspeedSMCFlash *fl, uint32_t value)
+ {
+     AspeedSMCState *s = fl->controller;
+-    bool unselect;
++    bool unselect = false;
++    uint32_t old_mode;
++    uint32_t new_mode;
++
++    old_mode = s->regs[s->r_ctrl0 + fl->cs] & CTRL_CMD_MODE_MASK;
++    new_mode = value & CTRL_CMD_MODE_MASK;
+ 
+-    /* User mode selects the CS, other modes unselect */
+-    unselect = (value & CTRL_CMD_MODE_MASK) != CTRL_USERMODE;
++    if (old_mode == CTRL_USERMODE) {
++        if (new_mode != CTRL_USERMODE) {
++            unselect = true;
++        }
+ 
+-    /* A change of CTRL_CE_STOP_ACTIVE from 0 to 1, unselects the CS */
+-    if (!(s->regs[s->r_ctrl0 + fl->cs] & CTRL_CE_STOP_ACTIVE) &&
+-        value & CTRL_CE_STOP_ACTIVE) {
+-        unselect = true;
++        /* A change of CTRL_CE_STOP_ACTIVE from 0 to 1, unselects the CS */
++        if (!(s->regs[s->r_ctrl0 + fl->cs] & CTRL_CE_STOP_ACTIVE) &&
++            value & CTRL_CE_STOP_ACTIVE) {
++            unselect = true;
++        }
++    } else {
++        if (new_mode != CTRL_USERMODE) {
++            unselect = true;
++        }
+     }
+ 
+     s->regs[s->r_ctrl0 + fl->cs] = value;
+ 
+-    s->snoop_index = unselect ? SNOOP_OFF : SNOOP_START;
+-
+-    aspeed_smc_flash_do_select(fl, unselect);
++    if (unselect != s->unselect) {
++        s->snoop_index = unselect ? SNOOP_OFF : SNOOP_START;
++        aspeed_smc_flash_do_select(fl, unselect);
++    }
+ }
+ 
+ static void aspeed_smc_reset(DeviceState *d)
+@@ -729,6 +742,8 @@ static void aspeed_smc_reset(DeviceState *d)
+         qemu_set_irq(s->cs_lines[i], true);
+     }
+ 
++    s->unselect = true;
++
+     /* setup the default segment register values and regions for all */
+     for (i = 0; i < asc->cs_num_max; ++i) {
+         aspeed_smc_flash_set_segment_region(s, i,
+@@ -1261,12 +1276,13 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+ 
+ static const VMStateDescription vmstate_aspeed_smc = {
+     .name = "aspeed.smc",
+-    .version_id = 2,
++    .version_id = 3,
+     .minimum_version_id = 2,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
+         VMSTATE_UINT8(snoop_index, AspeedSMCState),
+         VMSTATE_UINT8(snoop_dummies, AspeedSMCState),
++        VMSTATE_BOOL_V(unselect, AspeedSMCState, 3),
+         VMSTATE_END_OF_LIST()
+     }
+ };
 -- 
 2.47.0
 

@@ -1,92 +1,93 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp125531njx;
-        Wed, 23 Oct 2024 23:36:11 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVs2p89IU4eQZL/6VhCU4n8IJqc3LdwkCFIeZ10IhSzjNoGqacU28ymF/AQDThF/ab7lsH482yq6o53Eg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHRQxFK9XtHgnTSymlca6NXMaiIs5pbtptXX/K5UVRSI6KUaPUSfWQvpvAJArYlWKUCvq6z
-X-Received: by 2002:a05:620a:1791:b0:7b1:517b:ac1e with SMTP id af79cd13be357-7b17e5bc60fmr657662485a.59.1729751771526;
-        Wed, 23 Oct 2024 23:36:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729751771; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp125559njx;
+        Wed, 23 Oct 2024 23:36:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVkPTZyUiMreZiXittZwLP08qx+LwYTAnLY03l2iNt00tpYJL84sPdzxmBKGwoqfv8Tq9iArFt5iSRcsg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGCSf9RYMi/1n+t24maTDIe0MgSL+OyRgl1qPyFfnxbuZXYWDF8tdehpgmjoDkQK8KqvhAM
+X-Received: by 2002:a05:622a:5d2:b0:460:ac49:ef59 with SMTP id d75a77b69052e-46125948c32mr11299091cf.49.1729751775574;
+        Wed, 23 Oct 2024 23:36:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729751775; cv=none;
         d=google.com; s=arc-20240605;
-        b=a3BfmfRvVNkKvBmiyMI8lcrCvCUG1IwBqfVe7KNeFPkQ15M9HGLB9E8i3sb0xobY0i
-         byHJvRBG3IkQalQR5DJDrt7hdeTp/f147bifPDwV75QGR/hJtpxqGupem6ffQphDUWW9
-         WcckFbouhATBCYuPWoVvwavKylceLp9Cv/CH/1LUaGLycBY008OU6fjKoKbU3/80Mx/K
-         /Ri4gS1w01Up9WGGOT81j5k5X9fW336MhzMwtTJVv4z9tT9PtqlZ4rlZK3w/rUkt6FN3
-         6x5Jt4jJy76IccbMe3WPLfDYToRpiEavklgbsUC2HPVA/mBXOSOrEZfswGVNL+RSgzr3
-         4XHw==
+        b=BpLMXcOH6lddbFY7uAiq05UaEAuzLlcRDnY7qhQeOoijxNSuif0GVe8rBZrlAEHe5o
+         ksyqMq8rY5W+zyFbVmGCPIt/ETJZpmd7bm/J8O+dNFsCsnxAzAHuimq3e7IF5348YyeV
+         cx43i3UTYCfrcPiEgiMsNS6zeXjwxmvdaXpNqpuufHJZY54YEW2cKHiQyLBMBQJdtv8a
+         trYg0SEEojZFhconLLYgV3nWuUZdWAscMvN7CRLrIJzkhFtLzYMqM0E1s7dNbVTmQigm
+         SjPn3TUTei4v5/RduJsmLzFcwTrRG7+0MXA4ayXEgYvuptEOcqanul6MbThGHEt2nWWG
+         DVLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=in1fEYqv6YPWd3G/6wnJi4lRfQFwyEsnfr6TOmiHWxk=;
+        bh=rHdefSFaAlfcO7ZPYCUUPbcDnd5WonG7FdA9aimFitw=;
         fh=3ckr5lrDF2pwmhVsvExtISKBTABGBd3oRVaeNcIDnTc=;
-        b=TeF9wso7Nyzwz567YurL9TAZe3ZAMynGoudEQFNq+0PFNHeYagywRlVsGtHGRbcKcv
-         Aw6tSsqlxKSuLUGI3Scb4s++II8exLGlYvoDX0SXqNHf827ulmTSzNnQ50WZzwZiqEAn
-         JvERRevIxvv7YQr9zt7Ji37Q9RezAg84WS4SdfUAC9G5oLiLSmql4lhHjGD5U7deDDPM
-         VAvhgKR5EKwujpTstiOHJQZt+hEAzR6YjNAUQXLUjdVxkb4RqlS1faSR55dxALOW8ZKb
-         R5Ni+snZsJL4lFHbvDixK/9D9MlksVvX36Pg9QajNS6ytqAPRl9XW0H4iRdLvufNK3Sl
-         YziA==;
+        b=bUKlSY6/r8WazcBHdT4vI4mAzY3/+bHPcVxFG/aizJ0f8UyutOEHPcDHQqew8T5Edb
+         PA9F3g5KkWRbM9s/Pvqs04O4qASFTmzTfUsT7KTv1JmPBPImgkc7Pwo2jsrvqYKKmsoe
+         pSoouIXzozYhd5Z/S8B+zsZvEa7x9mq/9iuYcunYX0bMPGZD0b5oiKA9Q83i2M+db0AD
+         hg74No9LAaaoJfYp1qhYZY1Ew5Ut+RRFgFjPLv27xXGExIi9XBy6b1raN+UIWyWmD8ER
+         lE0iyrxWVoXEG+xd2+DD2dhj6/meoBbZ+vlLLZvLcPKLJBnVn0I5dQFF1bFJI0MjVVMp
+         5XlA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Hco+ACRJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PVy+3AMS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b165a8905dsi1072677485a.444.2024.10.23.23.36.11
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3b368ccsi16072431cf.106.2024.10.23.23.36.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2024 23:36:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Oct 2024 23:36:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Hco+ACRJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PVy+3AMS;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t3rS0-0002Qn-Qx; Thu, 24 Oct 2024 02:36:04 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t3rRf-0002Hd-Pf; Thu, 24 Oct 2024 02:35:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRy-0002QG-QZ
- for qemu-arm@nongnu.org; Thu, 24 Oct 2024 02:36:02 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRd-0002Fs-QO
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRw-0003Ul-8m
- for qemu-arm@nongnu.org; Thu, 24 Oct 2024 02:36:02 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRc-0003Qn-6Y
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1729751759;
+ s=mimecast20190719; t=1729751739;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=in1fEYqv6YPWd3G/6wnJi4lRfQFwyEsnfr6TOmiHWxk=;
- b=Hco+ACRJwaV8KGuDFk/73LaqFFwXQdILExrnHBscsRnDQT1NyEjLw/u7yfZFcyxrm+3F+T
- hsxxEo4TFkyPzOiKGmE1TR/rv+2avzVY2EwWEhy2125x9UYsJoDES09F2BvjyyJ0/W4xSn
- 0H/eG4w+y8fFshTJwQmxuhqh8beSNMY=
+ bh=rHdefSFaAlfcO7ZPYCUUPbcDnd5WonG7FdA9aimFitw=;
+ b=PVy+3AMShA3D/2fZXM0+PQT5P8OQtc1NFvSSW4SRi4BuiaMs3QQA/xZuyFMZjBBiClKA1J
+ rgxedYkb2AgbrJahUN+59J5X3R0btWx6CVQOBtXROfkKgkMm0DcpgQx+jnsY74jqunM3Qu
+ vhGYhxL/JtApBEmH55RpL7egWWSVeVM=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-651-WC57GxbKMVqVkO9O4cik4A-1; Thu,
- 24 Oct 2024 02:35:56 -0400
-X-MC-Unique: WC57GxbKMVqVkO9O4cik4A-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-97-NETfFMVEMeaLTJQQHnJ-nA-1; Thu,
+ 24 Oct 2024 02:35:37 -0400
+X-MC-Unique: NETfFMVEMeaLTJQQHnJ-nA-1
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 24D911955F42; Thu, 24 Oct 2024 06:35:55 +0000 (UTC)
+ id 2B8821955F41; Thu, 24 Oct 2024 06:35:36 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.9])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 868B81956056; Thu, 24 Oct 2024 06:35:53 +0000 (UTC)
+ id 770001956056; Thu, 24 Oct 2024 06:35:34 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 17/17] test/qtest/aspeed_smc-test: Fix coding style
-Date: Thu, 24 Oct 2024 08:35:07 +0200
-Message-ID: <20241024063507.1585765-18-clg@redhat.com>
+Subject: [PULL 08/17] tests/qtest:ast2700-gpio-test: Add GPIO test case for
+ AST2700
+Date: Thu, 24 Oct 2024 08:34:58 +0200
+Message-ID: <20241024063507.1585765-9-clg@redhat.com>
 In-Reply-To: <20241024063507.1585765-1-clg@redhat.com>
 References: <20241024063507.1585765-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -102,58 +103,172 @@ X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.263,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1.697,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: poiFLoPlRbGZ
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0vns23LRSJnu
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Fix coding style issues from checkpatch.pl
+Add GPIO test cases to test output and input pins from A0 to D7 for AST2700.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+[ clg: - Updated MAINTAINERS ]
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed_smc-test.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ MAINTAINERS                     |  1 +
+ tests/qtest/ast2700-gpio-test.c | 95 +++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build         |  3 ++
+ 3 files changed, 99 insertions(+)
+ create mode 100644 tests/qtest/ast2700-gpio-test.c
 
-diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index c713a3700b6d..4673371d9539 100644
---- a/tests/qtest/aspeed_smc-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -353,7 +353,8 @@ static void test_read_page_mem(void)
-     uint32_t page[FLASH_PAGE_SIZE / 4];
-     int i;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c3bfa132fd6e..bcaf36e525df 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1123,6 +1123,7 @@ F: hw/net/ftgmac100.c
+ F: include/hw/net/ftgmac100.h
+ F: docs/system/arm/aspeed.rst
+ F: tests/*/*aspeed*
++F: tests/*/*ast2700*
+ F: hw/arm/fby35.c
  
--    /* Enable 4BYTE mode for controller. This is should be strapped by
-+    /*
-+     * Enable 4BYTE mode for controller. This is should be strapped by
-      * HW for CE0 anyhow.
-      */
-     spi_ce_ctrl(1 << CRTL_EXTENDED0);
-@@ -394,7 +395,8 @@ static void test_write_page_mem(void)
-     uint32_t page[FLASH_PAGE_SIZE / 4];
-     int i;
+ NRF51
+diff --git a/tests/qtest/ast2700-gpio-test.c b/tests/qtest/ast2700-gpio-test.c
+new file mode 100644
+index 000000000000..92758455641f
+--- /dev/null
++++ b/tests/qtest/ast2700-gpio-test.c
+@@ -0,0 +1,95 @@
++/*
++ * QTest testcase for the ASPEED AST2700 GPIO Controller.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (C) 2024 ASPEED Technology Inc.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/bitops.h"
++#include "qemu/timer.h"
++#include "qapi/qmp/qdict.h"
++#include "libqtest-single.h"
++
++#define AST2700_GPIO_BASE 0x14C0B000
++#define GPIOA0_CONTROL 0x180
++
++static void test_output_pins(const char *machine, const uint32_t base)
++{
++    QTestState *s = qtest_init(machine);
++    uint32_t offset = 0;
++    uint32_t value = 0;
++    uint32_t pin = 0;
++
++    for (char c = 'A'; c <= 'D'; c++) {
++        for (int i = 0; i < 8; i++) {
++            offset = base + (pin * 4);
++
++            /* output direction and output hi */
++            qtest_writel(s, offset, 0x00000003);
++            value = qtest_readl(s, offset);
++            g_assert_cmphex(value, ==, 0x00000003);
++
++            /* output direction and output low */
++            qtest_writel(s, offset, 0x00000002);
++            value = qtest_readl(s, offset);
++            g_assert_cmphex(value, ==, 0x00000002);
++            pin++;
++        }
++    }
++
++    qtest_quit(s);
++}
++
++static void test_input_pins(const char *machine, const uint32_t base)
++{
++    QTestState *s = qtest_init(machine);
++    char name[16];
++    uint32_t offset = 0;
++    uint32_t value = 0;
++    uint32_t pin = 0;
++
++    for (char c = 'A'; c <= 'D'; c++) {
++        for (int i = 0; i < 8; i++) {
++            sprintf(name, "gpio%c%d", c, i);
++            offset = base + (pin * 4);
++            /* input direction */
++            qtest_writel(s, offset, 0);
++
++            /* set input */
++            qtest_qom_set_bool(s, "/machine/soc/gpio", name, true);
++            value = qtest_readl(s, offset);
++            g_assert_cmphex(value, ==, 0x00002000);
++
++            /* clear input */
++            qtest_qom_set_bool(s, "/machine/soc/gpio", name, false);
++            value = qtest_readl(s, offset);
++            g_assert_cmphex(value, ==, 0);
++            pin++;
++        }
++    }
++
++    qtest_quit(s);
++}
++
++static void test_2700_input_pins(void)
++{
++    test_input_pins("-machine ast2700-evb",
++                    AST2700_GPIO_BASE + GPIOA0_CONTROL);
++}
++
++static void test_2700_output_pins(void)
++{
++    test_output_pins("-machine ast2700-evb",
++                     AST2700_GPIO_BASE + GPIOA0_CONTROL);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/ast2700/gpio/input_pins", test_2700_input_pins);
++    qtest_add_func("/ast2700/gpio/output_pins", test_2700_output_pins);
++
++    return g_test_run();
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index e8be8b3942d7..f7a19032f7d8 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -210,6 +210,8 @@ qtests_aspeed = \
+   ['aspeed_hace-test',
+    'aspeed_smc-test',
+    'aspeed_gpio-test']
++qtests_aspeed64 = \
++  ['ast2700-gpio-test']
  
--    /* Enable 4BYTE mode for controller. This is should be strapped by
-+    /*
-+     * Enable 4BYTE mode for controller. This is should be strapped by
-      * HW for CE0 anyhow.
-      */
-     spi_ce_ctrl(1 << CRTL_EXTENDED0);
+ qtests_stm32l4x5 = \
+   ['stm32l4x5_exti-test',
+@@ -248,6 +250,7 @@ qtests_aarch64 = \
+   (config_all_devices.has_key('CONFIG_RASPI') ? ['bcm2835-dma-test', 'bcm2835-i2c-test'] : []) +  \
+   (config_all_accel.has_key('CONFIG_TCG') and                                            \
+    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) + \
+   ['arm-cpu-features',
+    'numa-test',
+    'boot-serial-test',
 -- 
 2.47.0
 

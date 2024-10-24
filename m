@@ -1,92 +1,92 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp126303njx;
-        Wed, 23 Oct 2024 23:38:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXps6y36IPwOg2NgAMxNhqZqQ8FXJqms2N7Dd691b/TeQltc4NZXh3ihqWbUE1d2bBxy876Yi+gnK8jpA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9lR3cJf7d8mMbN6IaD+cd7N71cnXSRPwm8liUVWoerA9huEIiACw9udKilwhIZ0on8p//
-X-Received: by 2002:a05:6214:5d89:b0:6cb:fbdf:8496 with SMTP id 6a1803df08f44-6ce341a95demr47534376d6.24.1729751908885;
-        Wed, 23 Oct 2024 23:38:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729751908; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp126405njx;
+        Wed, 23 Oct 2024 23:38:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUkQWBK/lmweDMctKVNTwcSRuKaAIUnX+C6vDSbdORnU3gzpvTxry7/bxqpBG/B47GoSrI0nvH9BGzY+A==@linaro.org
+X-Google-Smtp-Source: AGHT+IECQu1j/SseAaPqbpNzybMcz3enxTjWX0f4/VnIQCYNACmyjzzMCSDg5Y5Qz2F8eeZDpFaC
+X-Received: by 2002:a05:620a:4412:b0:7a9:dc30:3d3e with SMTP id af79cd13be357-7b186bb8cddmr81790685a.24.1729751926305;
+        Wed, 23 Oct 2024 23:38:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729751926; cv=none;
         d=google.com; s=arc-20240605;
-        b=hb9aFU7ZX5rOYtP6kAYjJ7x1ITclBcgW+f2Rth0W5q/wv1BGZJl/VNYkmXEIfy2xw0
-         ch0pxUVNGULthNp0RuJ8r/9to3HNcfKZn7CzLMWIe+oru4LAs7f1MD/VWSX0WyBw7Ksx
-         ZZoBipSi8YlcNev9aWAj8GBch+TVoF0+6xUAIAtmLZpPStiANnHgWQPJSvknoHi72dki
-         eKDnSkK2lniTBLEodAKPn5bydAGsPVWgLhwjX4aWhQGRIRKENfv8q7EBFE2MhkRcLQbi
-         72+N6JrDABHNbAyHFKfuAPQHs3+d0Vifls7HpaD2boFIO9SdW93ADXpyKw+69Na+7FWh
-         s3yw==
+        b=bDRmX3SSKS1qXyqBGE4iEZ0fB0us4c6lf/02Le0NfK1wHDXfqoyhjE/Nev/WfqdudK
+         xGE3e/sg+vh8QXt9FT2u7guKGOQsOqPqaoSrgE0PAucIO19LxpdU1amIuySiEPornV9Q
+         ZvA5bRseyukuMHBn87/KtukqLSMJilihPcXqvQGhNCxkyPsRndhbq/g6gifYrROGW25U
+         fsvywS3PmWpl9og7pdGY9SNISVbNgI5g5AB1sVWPxPtM/DLZ5DVxjpBGLoixJIm2NUis
+         w90QYyw2X0bSfRxENa7Ged3YZ+2z8U2AXzvIGCeM1n2rdgirg3HAK0epdnIxovDCoxpJ
+         PZaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vSWlToqPCAWVXccB0955bor5gnfBy3VynEI6kLZqWCM=;
+        bh=7TLwld3t9KOUqUx+FlmrlaZeNHVfm57CkbHCMoIGBKc=;
         fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=BA0a8+DaskCNlffAj1jtmr1zxPhYft8Nzmy31TMx3hgT1LvNs8bDxTw0ETXPwHG9zB
-         z2l8Ox+4PG5DArQ+xG1U90wq1vWulQyOhnFFLCcAosghlwfL5oD0XXXP4gqF6/+BSRAO
-         rZ2Zxwcjw+yJkoBQ4BsLMB+eRCWc20p1K40tCgAeYEOx6m1m7l1DiMDOPdTFj8bSJ3g/
-         336gGW9p38EDcgyv1JebBNkks7FD96tpTZ2XwZ+jWFSHfdgFsBEZL+15lHIlgkbwo2+F
-         XFhy3Q2WAbuURnah8fX2rDMcAd7PriJ9w6slW5xRVcm311/NflZYXXzm/tw0OSmbCrsU
-         FKYQ==;
+        b=dy9CiAKIt2NNXpJCrGWxoUsh1bPKY4vZXv90mj8T9jl8wXiQxfPTDwJyzvBfal215R
+         T2KlrAml12HKY9m8APlDDtjvWdY9aEMpD0EzuCKF8a6DFsr1v4zaczQYMnt8ALHatHb+
+         KCPXVBgZg2MUFkGZEG7S2f/O+lvFnrFsWVUKcc33NYyuMFoZMQ4Xj9KPTnRt20kCIoTe
+         Fi4BOZzQJHGqd/p8pqrdJRNLtQR+OHUhxBPJMnK/55qsldUdZobjtTsRodx7G1OujhPD
+         PL/7Deu0NVietFZlgHvYtvsyYXcuvxg7nt/oMpBmrgi/vwaU4+FWKWj8m8Js0WTI5a/h
+         NvAQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1pJvZwo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fO9B832p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6ce009cea92si109138776d6.366.2024.10.23.23.38.28
+        by mx.google.com with ESMTPS id af79cd13be357-7b165a88a7csi1065023685a.443.2024.10.23.23.38.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2024 23:38:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Oct 2024 23:38:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K1pJvZwo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fO9B832p;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t3rRq-0002Lg-7f; Thu, 24 Oct 2024 02:35:54 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t3rRt-0002N8-9D; Thu, 24 Oct 2024 02:35:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRn-0002Kl-WC
- for qemu-arm@nongnu.org; Thu, 24 Oct 2024 02:35:52 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRs-0002MQ-7q
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRm-0003Sh-Eb
- for qemu-arm@nongnu.org; Thu, 24 Oct 2024 02:35:51 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRp-0003TI-Lt
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1729751749;
+ s=mimecast20190719; t=1729751753;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vSWlToqPCAWVXccB0955bor5gnfBy3VynEI6kLZqWCM=;
- b=K1pJvZwoQeh+uq62KWDJFPnoNaLNbu/ELN66ahps4ViHkfDp7UYAcNaSDt6pfDtS9oiVcR
- tpQVXSCe2tsa4MuQ58YQ0m6FnfPYy2l0EoF3ahL80hfmZYiOx9sUBN90xNvHa4N1OjeUY+
- mWEY2p4d1CkT586cbT7SXtvKpd0L1eg=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=7TLwld3t9KOUqUx+FlmrlaZeNHVfm57CkbHCMoIGBKc=;
+ b=fO9B832pP35dvwf7XHvRuhe6U1d2fpqh+eYHKA6B46M8LOxN+3qdwoirCFCp1LhgyZ3kc3
+ MGMoAB1ivvnstIlfLC6HZmD0Olgu1mtw+dGdN5KeuO/wlrA0eNO+Q/3Q686cBUUjr8ss5j
+ 0xLNyRIZO2jK6/V/8GoWyC7cjs51PxQ=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-468-8qlckcPVMhKNfpPOs-UDmw-1; Thu,
- 24 Oct 2024 02:35:45 -0400
-X-MC-Unique: 8qlckcPVMhKNfpPOs-UDmw-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-14-IqAzRYucNz-1VOzk-d1b7w-1; Thu,
+ 24 Oct 2024 02:35:49 -0400
+X-MC-Unique: IqAzRYucNz-1VOzk-d1b7w-1
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B11EC1956088; Thu, 24 Oct 2024 06:35:44 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7CEBD19560B0; Thu, 24 Oct 2024 06:35:48 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.9])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3E33B1956056; Thu, 24 Oct 2024 06:35:43 +0000 (UTC)
+ id C1D581956056; Thu, 24 Oct 2024 06:35:46 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 12/17] hw/block:m25p80: Fix coding style
-Date: Thu, 24 Oct 2024 08:35:02 +0200
-Message-ID: <20241024063507.1585765-13-clg@redhat.com>
+Subject: [PULL 14/17] hw/block/m25p80: Add SFDP table for w25q80bl flash
+Date: Thu, 24 Oct 2024 08:35:04 +0200
+Message-ID: <20241024063507.1585765-15-clg@redhat.com>
 In-Reply-To: <20241024063507.1585765-1-clg@redhat.com>
 References: <20241024063507.1585765-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -104,100 +104,107 @@ X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.263,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZmLGqh5EvcqI
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xJDRhI4ISudg
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Fix coding style issues from checkpatch.pl
+Add the SFDP table for the Windbond w25q80bl flash.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/block/m25p80.c | 22 ++++++++++++++--------
- 1 file changed, 14 insertions(+), 8 deletions(-)
+ hw/block/m25p80_sfdp.h |  2 +-
+ hw/block/m25p80.c      |  3 ++-
+ hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 39 insertions(+), 2 deletions(-)
 
+diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+index 89c2d8f72d5c..35785686a0ec 100644
+--- a/hw/block/m25p80_sfdp.h
++++ b/hw/block/m25p80_sfdp.h
+@@ -25,7 +25,7 @@ uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
+ 
+ uint8_t m25p80_sfdp_w25q256(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q512jv(uint32_t addr);
+-
++uint8_t m25p80_sfdp_w25q80bl(uint32_t addr);
+ uint8_t m25p80_sfdp_w25q01jvq(uint32_t addr);
+ 
+ uint8_t m25p80_sfdp_is25wp256(uint32_t addr);
 diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index f7123f9e6878..3f55b8f38561 100644
+index 411d810d3b1b..e2e84f8b5f8d 100644
 --- a/hw/block/m25p80.c
 +++ b/hw/block/m25p80.c
-@@ -61,7 +61,8 @@ typedef struct FlashPartInfo {
-      */
-     uint8_t id[SPI_NOR_MAX_ID_LEN];
-     uint8_t id_len;
--    /* there is confusion between manufacturers as to what a sector is. In this
-+    /*
-+     * there is confusion between manufacturers as to what a sector is. In this
-      * device model, a "sector" is the size that is erased by the ERASE_SECTOR
-      * command (opcode 0xd8).
-      */
-@@ -168,7 +169,7 @@ typedef struct FlashPartInfo {
+@@ -356,7 +356,8 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("w25x64",      0xef3017,      0,  64 << 10, 128, ER_4K) },
+     { INFO("w25q64",      0xef4017,      0,  64 << 10, 128, ER_4K) },
+     { INFO("w25q80",      0xef5014,      0,  64 << 10,  16, ER_4K) },
+-    { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K) },
++    { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K),
++      .sfdp_read = m25p80_sfdp_w25q80bl },
+     { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K),
+       .sfdp_read = m25p80_sfdp_w25q256 },
+     { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K),
+diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+index 82d84cc21fe6..a03a291a09b5 100644
+--- a/hw/block/m25p80_sfdp.c
++++ b/hw/block/m25p80_sfdp.c
+@@ -404,6 +404,42 @@ static const uint8_t sfdp_w25q01jvq[] = {
+ };
+ define_sfdp_read(w25q01jvq);
+ 
++static const uint8_t sfdp_w25q80bl[] = {
++    0x53, 0x46, 0x44, 0x50, 0x05, 0x01, 0x00, 0xff,
++    0x00, 0x05, 0x01, 0x10, 0x80, 0x00, 0x00, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xe5, 0x20, 0xf1, 0xff, 0xff, 0xff, 0x7f, 0x00,
++    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
++    0xee, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
++    0xff, 0xff, 0x00, 0x00, 0x0c, 0x20, 0x0f, 0x52,
++    0x10, 0xd8, 0x00, 0x00, 0x23, 0x02, 0xa6, 0x00,
++    0x81, 0x6c, 0x14, 0xa7, 0xed, 0x61, 0x76, 0x33,
++    0x7a, 0x75, 0x7a, 0x75, 0xf7, 0xa2, 0xd5, 0x5c,
++    0x00, 0xf7, 0x1d, 0xff, 0xe9, 0x30, 0xc0, 0x80,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
++};
++define_sfdp_read(w25q80bl);
++
  /*
-  * Spansion read mode command length in bytes,
-  * the mode is currently not supported.
--*/
-+ */
- 
- #define SPANSION_CONTINUOUS_READ_MODE_CMD_LEN 1
- #define WINBOND_CONTINUOUS_READ_MODE_CMD_LEN 1
-@@ -189,7 +190,8 @@ static const FlashPartInfo known_devices[] = {
- 
-     { INFO("at45db081d",  0x1f2500,      0,  64 << 10,  16, ER_4K) },
- 
--    /* Atmel EEPROMS - it is assumed, that don't care bit in command
-+    /*
-+     * Atmel EEPROMS - it is assumed, that don't care bit in command
-      * is set to 0. Block protection is not supported.
-      */
-     { INFO("at25128a-nonjedec", 0x0,     0,         1, 131072, EEPROM) },
-@@ -275,10 +277,13 @@ static const FlashPartInfo known_devices[] = {
-     { INFO_STACKED("n25q00a",   0x20bb21, 0x1000, 64 << 10, 2048, ER_4K, 4) },
-     { INFO_STACKED("mt25ql01g", 0x20ba21, 0x1040, 64 << 10, 2048, ER_4K, 2) },
-     { INFO_STACKED("mt25qu01g", 0x20bb21, 0x1040, 64 << 10, 2048, ER_4K, 2) },
--    { INFO_STACKED("mt25ql02g", 0x20ba22, 0x1040, 64 << 10, 4096, ER_4K | ER_32K, 2) },
--    { INFO_STACKED("mt25qu02g", 0x20bb22, 0x1040, 64 << 10, 4096, ER_4K | ER_32K, 2) },
-+    { INFO_STACKED("mt25ql02g", 0x20ba22, 0x1040, 64 << 10, 4096,
-+                   ER_4K | ER_32K, 2) },
-+    { INFO_STACKED("mt25qu02g", 0x20bb22, 0x1040, 64 << 10, 4096,
-+                   ER_4K | ER_32K, 2) },
- 
--    /* Spansion -- single (large) sector size only, at least
-+    /*
-+     * Spansion -- single (large) sector size only, at least
-      * for the chips listed here (without boot sectors).
-      */
-     { INFO("s25sl032p",   0x010215, 0x4d00,  64 << 10,  64, ER_4K) },
-@@ -549,7 +554,8 @@ static void blk_sync_complete(void *opaque, int ret)
-     qemu_iovec_destroy(iov);
-     g_free(iov);
- 
--    /* do nothing. Masters do not directly interact with the backing store,
-+    /*
-+     * do nothing. Masters do not directly interact with the backing store,
-      * only the working copy so no mutexing required.
-      */
- }
-@@ -1843,7 +1849,7 @@ static void m25p80_register_types(void)
- 
-     type_register_static(&m25p80_info);
-     for (i = 0; i < ARRAY_SIZE(known_devices); ++i) {
--        TypeInfo ti = {
-+        const TypeInfo ti = {
-             .name       = known_devices[i].part_name,
-             .parent     = TYPE_M25P80,
-             .class_init = m25p80_class_init,
+  * Integrated Silicon Solution (ISSI)
+  */
 -- 
 2.47.0
 

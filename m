@@ -1,153 +1,339 @@
-Received: by 2002:a17:504:4a21:b0:1be9:327d:8ee3 with SMTP id wq1csp728034njb;
-        Wed, 23 Oct 2024 14:31:47 -0700 (PDT)
-X-Received: by 2002:a17:902:f54d:b0:20c:79f1:fed9 with SMTP id d9443c01a7336-20fa9e4af0amr56642345ad.25.1729719107331;
-        Wed, 23 Oct 2024 14:31:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729719107; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp125467njx;
+        Wed, 23 Oct 2024 23:35:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCURLqn5+xLexEA5s7vB8vd1Jnf8eX6RsBtEANZzFtBRTRl9BifiqvS/7itCffK3vVeUkD+MM3WF9ArB2A==@linaro.org
+X-Google-Smtp-Source: AGHT+IE4sr7Fqvcyrt79x+Xq9OiMyCvEFhxCjmmy2+g7tuGTPLC4qhsqjls0hQjGBDUNSLRpl1p5
+X-Received: by 2002:a05:620a:4511:b0:79d:759d:4016 with SMTP id af79cd13be357-7b17e5403b5mr617052885a.11.1729751757557;
+        Wed, 23 Oct 2024 23:35:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729751757; cv=none;
         d=google.com; s=arc-20240605;
-        b=F5YVb2Vse6mnT33SSRymo4Zj8I0zpuLx2oAI3SYynwwtbqRBDFkR7cXVRP+bSG5w1E
-         SinGSZ5GPIb+U+dqVzsc7wxg2R9us8OwzN4JVhFUvLXOMTSFxI3A58JhShkHU1oJV+Ar
-         3Qc42rM9Fa2eHTBO+N3xDMCr0P7BY3shTgOcE4+oj/xtm1vF3Y9kYf3YnLSlyppguSAS
-         DNORT2hYow7rBpPQVxvLQoc9WDhzG8osOmHQz5t1fjhYBFj61QKP3jjtX50wDKA63AEy
-         VTHAyW9EA+tVQG35bJl2Y8Ukfm78BTdrNQZArwDPyie/KRr4K9lnv8e1uQitXeW9BuwG
-         xCmg==
+        b=di9oQg+ORx6haoqjmiit4g5z4DnANl8PXWjQcVx2mV8/zavVrMfovVkPI1Plyc4RlK
+         768/gTvdpcfcDcHBnehgMr9UzBg3Uqg+bm7s62DNH/GI8PXh4lxjh+GVjjelAiwG3xSh
+         jkFsCWmnCGUX0P/fx91Zx138ClMzoXtv3Vr6wn+GJeGv+pU7iS8jUHjJcTxiNkWYWDyY
+         HmBq+GJLaDAwPwICTFWr0Qs/4WSFJpLFAOglKh9ggGHGjr2xiFiX6WYe9Gc5Z5fYEZFm
+         2+mHUbYr/b5Gj5nfm8hJwmVRgFc7joUML4dI2vjdtWQB6m3tOPLbpsb+ICY93QkL3vfC
+         L63A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=XMV66Tma+m+DyNkwDKnD2R7rJWyhw+6KbQDPG90Lh9o=;
-        fh=FRepLuWzGGLcbqFN68zQFnLNBGmhecJ5ZUcYxwW1mbw=;
-        b=dvZSPAFFbKRAXTD35GyxWCwIfWEOGh3vShsJD9D0I25iBRXAq6uP4Mox9hGz/bS9TQ
-         49bkTrfc2ufs7xgKqB8SBmy+TN1eyUI/fjF8xpK379SdDhdAH5SsszUQyxpC0Yw9ttT8
-         t6PFhCVhEpavwIUhcL7JJu7JAhysjFQdbxjDJAq71n1iABW+mWEPao93UJlkJWmCmKvy
-         UBINhRnjpbBdUNlhdlIXh1i6dwLSohNLouzyu/WwkLRNI3Ba6yPJr9Rsc1pc7Tw60cTD
-         W4oPrhiE+mBqalPYJL4hpf0zOuq87FcdsFiTRrOd6DU+CgIwrh+gWgV3sp6iiDfRNKRh
-         j9SA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=ug8pvu8j9ZZmRgar7cJxXuiLWHOWL3pPlF+gILxlOxo=;
+        fh=YMTBZYw2mKO5HK/a7OBX/q83Qu1C/bWxk6qE5fz8Ggc=;
+        b=NnLy80lhePDCm4Q8p2AgUnIsOmfZ4fWsK10QAAEErdv7PIt5aJAf5WzLS9WJ9E4s0p
+         lYt2CnaxD00RlJffrxTkCnYopS1LsggWeh0qamWDO3Sdz5xvqwR7TR7JvUbHnBl/V7Nx
+         MVCcv2LHySycsCvGSVtcIfR8/QkfNl89adKrRww1azGUG7hh28CMdyljZKrzug7hm6Qg
+         +Y7fcd5iyqW68RiogIG3S//fUqAAODbfb3UZaOTnpuZJraQbbkEZ2+Oq0k3LkKsAE4DK
+         3Xx8FHHm0LwtKu+iNz+elWFojHHJ4coAv3k3sroGExbhZ+jzk/IQqD/s9Aa+TExS1o34
+         WvBA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hKFfIzQG;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-20e7f1a664fsor52116175ad.20.2024.10.23.14.31.47
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DRiJCziW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b165ab65b6si1086269185a.756.2024.10.23.23.35.57
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 23 Oct 2024 14:31:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 23 Oct 2024 23:35:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hKFfIzQG;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729719107; x=1730323907; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=XMV66Tma+m+DyNkwDKnD2R7rJWyhw+6KbQDPG90Lh9o=;
-        b=hKFfIzQGM0SADd9nT97xcaueGfXSFDUMCrkyV+CJnX4KIogcKOMCpYtGGc50XFu6Pa
-         ksP2Ms9ldZ3MB/EU7Q6KPtVznzbC2DJIUcannX2Jh0NhNueBBuofBPb33gacu3EpBHcf
-         BnzvOacMTczpYxYKpxvcnSdM8LLpi/pIBXXTRqpJFFeosIusGx/1nSVzgodNf2K1FpYo
-         YwwcwwGqgNotFofJiglTASVKqaLdFWttySvQ8YfFHcApZSJ0T+8yR3v9H2A0XvvM7hel
-         CEVVi1pfrfW00+qKP3Co9fZc5QlvX86K5sXRuBJ32u4l+2bt/7FT6Aw+YPjXc8ZzEeHG
-         R4SA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729719107; x=1730323907;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XMV66Tma+m+DyNkwDKnD2R7rJWyhw+6KbQDPG90Lh9o=;
-        b=nuprKWfaz8dFqBZ9v21VB3UCz69jVf3pCilJaEp0Dwc5u4O+URXFzA7JoKm0x5kQFS
-         TER0z6uHbe8sPHx2mnGOEiVMIbEiLtAWiTr9j5LlaN280LTeP3qibCUFkg0nbs9GJJCS
-         xVVs/hDyYPs84kxa/A9vcAS7/R/AP3r6iWSjNh8YCqUzhROou/vQsdX+nYaD/z4VZtNR
-         7ooDNxp/j0U8TBriOz/qSciva/KiRypnEyfFALhsRjNwaKBuO8HpPk+hE7/s9fFpzGtM
-         un0+8e95mFc1k/RlTpYAOOrI/WCTpXp04LV8h9UH2EOo1lbmfBUSIJwss8Nzyf0uc5UF
-         CWZg==
-X-Gm-Message-State: AOJu0YyqeaH6VTAyrVGs+uGQbNrParen83ryztrk/btziuJ3RQDbjnVd
-	KjjUAGcfywT5IPDmkGuholtMhMebFoJJJZ500poJPLbh+TkmUJj1uEZpb9/0jT0U2vOIonA2kDa
-	lzDh10pDY
-X-Google-Smtp-Source: AGHT+IECIPlif+Tu0yu3XBicCEMHLEOzNPxUBgiSXihwbTu2CDR+24J+6/0XGCXXFNeLSWMcYXUV8g==
-X-Received: by 2002:a05:6a21:6b0c:b0:1d9:78c:dcf2 with SMTP id adf61e73a8af0-1d978bd32cdmr5191354637.43.1729719106774;
-        Wed, 23 Oct 2024 14:31:46 -0700 (PDT)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7eaec52dd6csm6230401a12.4.2024.10.23.14.31.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 23 Oct 2024 14:31:46 -0700 (PDT)
-Message-ID: <202cd5e2-3732-479d-ab02-67061e2114cc@linaro.org>
-Date: Wed, 23 Oct 2024 14:31:45 -0700
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DRiJCziW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t3rRj-0002IM-JS; Thu, 24 Oct 2024 02:35:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRi-0002IB-SY
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2024 02:35:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRh-0003Rc-2i
+ for qemu-arm@nongnu.org; Thu, 24 Oct 2024 02:35:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1729751744;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ug8pvu8j9ZZmRgar7cJxXuiLWHOWL3pPlF+gILxlOxo=;
+ b=DRiJCziWC900yCFF9GbVA3cibMVNDx7fN1R3K95YDap6MOeMDhwESJXJGVLKJQG2Y/8X10
+ jtVFUbF3XDjivD/aK0a+K3IAB6yslHVkR3Wd9uRA1jDLdHNg/dYgQF3QgC0jNxMATchYrM
+ DP5lk01TOemM0CF9c1eH9++Iq5cZ7X0=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-133-ruHVheMaNLegHnQShwuQSw-1; Thu,
+ 24 Oct 2024 02:35:40 -0400
+X-MC-Unique: ruHVheMaNLegHnQShwuQSw-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 124E71955F3E; Thu, 24 Oct 2024 06:35:39 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.192.9])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 74AFC1956056; Thu, 24 Oct 2024 06:35:36 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Alejandro Zeise <alejandro.zeise@seagate.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>
+Subject: [PULL 09/17] hw/misc/aspeed_hace: Fix SG Accumulative hashing
+Date: Thu, 24 Oct 2024 08:34:59 +0200
+Message-ID: <20241024063507.1585765-10-clg@redhat.com>
+In-Reply-To: <20241024063507.1585765-1-clg@redhat.com>
+References: <20241024063507.1585765-1-clg@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 18/20] meson: build contrib/plugins with meson
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Beraldo Leal <bleal@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Yanan Wang <wangyanan55@huawei.com>,
- Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- devel@lists.libvirt.org, Cleber Rosa <crosa@redhat.com>,
- kvm@vger.kernel.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Riku Voipio <riku.voipio@iki.fi>, Zhao Liu <zhao1.liu@intel.com>,
- Marcelo Tosatti <mtosatti@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20241022105614.839199-1-alex.bennee@linaro.org>
- <20241022105614.839199-19-alex.bennee@linaro.org>
- <fe33c996-3241-4706-9ac1-85f00cb8f388@linaro.org>
- <87sesnkxhm.fsf@draig.linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <87sesnkxhm.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: ZqOOpsMpDbIA
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.263,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1.697,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1vPXrdndGr9J
 
-T24gMTAvMjMvMjQgMDE6NTcsIEFsZXggQmVubsOpZSB3cm90ZToNCj4gUGllcnJpY2sgQm91
-dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPiB3cml0ZXM6DQo+IA0KPj4gT24g
-MTAvMjIvMjQgMDM6NTYsIEFsZXggQmVubsOpZSB3cm90ZToNCj4+PiBGcm9tOiBQaWVycmlj
-ayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+DQo+Pj4gVHJpZWQgdG8g
-dW5pZnkgdGhpcyBtZXNvbi5idWlsZCB3aXRoIHRlc3RzL3RjZy9wbHVnaW5zL21lc29uLmJ1
-aWxkDQo+Pj4gYnV0DQo+Pj4gdGhlIHJlc3VsdGluZyBtb2R1bGVzIGFyZSBub3Qgb3V0cHV0
-IGluIHRoZSByaWdodCBkaXJlY3RvcnkuDQo+Pj4gT3JpZ2luYWxseSBwcm9wb3NlZCBieSBB
-bnRvbiBLb2Noa292LCB0aGFuayB5b3UhDQo+Pj4gU29sdmVzOiBodHRwczovL2dpdGxhYi5j
-b20vcWVtdS1wcm9qZWN0L3FlbXUvLS9pc3N1ZXMvMTcxMA0KPj4+IFNpZ25lZC1vZmYtYnk6
-IFBpZXJyaWNrIEJvdXZpZXIgPHBpZXJyaWNrLmJvdXZpZXJAbGluYXJvLm9yZz4NCj4+PiBN
-ZXNzYWdlLUlkOiA8MjAyNDA5MjUyMDQ4NDUuMzkwNjg5LTItcGllcnJpY2suYm91dmllckBs
-aW5hcm8ub3JnPg0KPj4+IFNpZ25lZC1vZmYtYnk6IEFsZXggQmVubsOpZSA8YWxleC5iZW5u
-ZWVAbGluYXJvLm9yZz4NCj4+PiAtLS0NCj4+PiAgICBtZXNvbi5idWlsZCAgICAgICAgICAg
-ICAgICAgfCAgNCArKysrDQo+Pj4gICAgY29udHJpYi9wbHVnaW5zL21lc29uLmJ1aWxkIHwg
-MjMgKysrKysrKysrKysrKysrKysrKysrKysNCj4+PiAgICAyIGZpbGVzIGNoYW5nZWQsIDI3
-IGluc2VydGlvbnMoKykNCj4+PiAgICBjcmVhdGUgbW9kZSAxMDA2NDQgY29udHJpYi9wbHVn
-aW5zL21lc29uLmJ1aWxkDQo+Pj4gZGlmZiAtLWdpdCBhL21lc29uLmJ1aWxkIGIvbWVzb24u
-YnVpbGQNCj4+PiBpbmRleCBiZGQ2N2EyZDZkLi4zZWEwM2M0NTFiIDEwMDY0NA0KPj4+IC0t
-LSBhL21lc29uLmJ1aWxkDQo+Pj4gKysrIGIvbWVzb24uYnVpbGQNCj4+PiBAQCAtMzY3OCw2
-ICszNjc4LDEwIEBAIHN1YmRpcignYWNjZWwnKQ0KPj4+ICAgIHN1YmRpcigncGx1Z2lucycp
-DQo+Pj4gICAgc3ViZGlyKCdlYnBmJykNCj4+PiAgICAraWYgJ0NPTkZJR19UQ0cnIGluIGNv
-bmZpZ19hbGxfYWNjZWwNCj4+PiArICBzdWJkaXIoJ2NvbnRyaWIvcGx1Z2lucycpDQo+Pj4g
-K2VuZGlmDQo+Pj4gKw0KPj4+ICAgIGNvbW1vbl91c2VyX2luYyA9IFtdDQo+Pj4gICAgICBz
-dWJkaXIoJ2NvbW1vbi11c2VyJykNCj4+PiBkaWZmIC0tZ2l0IGEvY29udHJpYi9wbHVnaW5z
-L21lc29uLmJ1aWxkIGIvY29udHJpYi9wbHVnaW5zL21lc29uLmJ1aWxkDQo+Pj4gbmV3IGZp
-bGUgbW9kZSAxMDA2NDQNCj4+PiBpbmRleCAwMDAwMDAwMDAwLi5hMGUwMjZkMjVlDQo+Pj4g
-LS0tIC9kZXYvbnVsbA0KPj4+ICsrKyBiL2NvbnRyaWIvcGx1Z2lucy9tZXNvbi5idWlsZA0K
-Pj4+IEBAIC0wLDAgKzEsMjMgQEANCj4+PiArdCA9IFtdDQo+Pj4gK2lmIGdldF9vcHRpb24o
-J3BsdWdpbnMnKQ0KPj4+ICsgIGZvcmVhY2ggaSA6IFsnY2FjaGUnLCAnZHJjb3YnLCAnZXhl
-Y2xvZycsICdob3RibG9ja3MnLCAnaG90cGFnZXMnLCAnaG93dmVjJywNCj4+PiArICAgICAg
-ICAgICAgICAgJ2h3cHJvZmlsZScsICdpcHMnLCAnbG9ja3N0ZXAnLCAnc3RvcHRyaWdnZXIn
-XQ0KPj4NCj4+IGxvY2tzdGVwIGRvZXMgbm90IGJ1aWxkIHVuZGVyIFdpbmRvd3MgKGl0IHVz
-ZXMgc29ja2V0cyksIHNvIGl0IHNob3VsZA0KPj4gYmUgY29uZGl0aW9ubmFsbHkgbm90IGJ1
-aWx0IG9uIHRoaXMgcGxhdGZvcm0uDQo+PiBAQWxleCwgaWYgeW91IGZlZWwgbGlrZSBtb2Rp
-ZnlpbmcgdGhpcywgeW91IGNhbi4gSWYgbm90LCB5b3UgY2FuIGRyb3ANCj4+IHRoZSBtZXNv
-biBidWlsZCBwYXRjaGVzIGZyb20gdGhpcyBzZXJpZXMgdG8gbm90IGJsb2NrIGl0Lg0KPiAN
-Cj4gSSdsbCBkcm9wIGZyb20gdGhlIFBSIGFuZCBsZXQgeW91IHJlLXN1Ym1pdC4NCj4gDQoN
-ClNlbnQgYSB2MyB3aXRoIHdpbmRvd3MgZml4Og0KaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
-cWVtdS1kZXZlbC8yMDI0MTAyMzIxMjgxMi4xMzc2OTcyLTEtcGllcnJpY2suYm91dmllckBs
-aW5hcm8ub3JnL1QvI3QNCg0KVGhhbmtzLA0KUGllcnJpY2sNCg==
+From: Alejandro Zeise <alejandro.zeise@seagate.com>
+
+Make the Aspeed HACE module use the new qcrypto accumulative hashing functions
+when in scatter-gather accumulative mode. A hash context will maintain a
+"running-hash" as each scatter-gather chunk is received.
+
+Previously each scatter-gather "chunk" was cached
+so the hash could be computed once the final chunk was received.
+However, the cache was a shallow copy, so once the guest overwrote the
+memory provided to HACE the final hash would not be correct.
+
+Possibly related to: https://gitlab.com/qemu-project/qemu/-/issues/1121
+Buglink: https://github.com/openbmc/qemu/issues/36
+
+Signed-off-by: Alejandro Zeise <alejandro.zeise@seagate.com>
+[ clg: - Checkpatch fixes
+       - Reworked qcrypto_hash*() error reports in do_hash_operation() ]
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Acked-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+---
+ include/hw/misc/aspeed_hace.h |   4 ++
+ hw/misc/aspeed_hace.c         | 104 +++++++++++++++++++---------------
+ 2 files changed, 63 insertions(+), 45 deletions(-)
+
+diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h
+index ecb1b67de816..4af99191955a 100644
+--- a/include/hw/misc/aspeed_hace.h
++++ b/include/hw/misc/aspeed_hace.h
+@@ -1,6 +1,7 @@
+ /*
+  * ASPEED Hash and Crypto Engine
+  *
++ * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+  * Copyright (C) 2021 IBM Corp.
+  *
+  * SPDX-License-Identifier: GPL-2.0-or-later
+@@ -10,6 +11,7 @@
+ #define ASPEED_HACE_H
+ 
+ #include "hw/sysbus.h"
++#include "crypto/hash.h"
+ 
+ #define TYPE_ASPEED_HACE "aspeed.hace"
+ #define TYPE_ASPEED_AST2400_HACE TYPE_ASPEED_HACE "-ast2400"
+@@ -35,6 +37,8 @@ struct AspeedHACEState {
+ 
+     MemoryRegion *dram_mr;
+     AddressSpace dram_as;
++
++    QCryptoHash *hash_ctx;
+ };
+ 
+ 
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index b6f43f65b29a..bc1d66ad8064 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -1,6 +1,7 @@
+ /*
+  * ASPEED Hash and Crypto Engine
+  *
++ * Copyright (c) 2024 Seagate Technology LLC and/or its Affiliates
+  * Copyright (C) 2021 IBM Corp.
+  *
+  * Joel Stanley <joel@jms.id.au>
+@@ -151,49 +152,28 @@ static int reconstruct_iov(AspeedHACEState *s, struct iovec *iov, int id,
+     return iov_count;
+ }
+ 
+-/**
+- * Generate iov for accumulative mode.
+- *
+- * @param s             aspeed hace state object
+- * @param iov           iov of the current request
+- * @param id            index of the current iov
+- * @param req_len       length of the current request
+- *
+- * @return count of iov
+- */
+-static int gen_acc_mode_iov(AspeedHACEState *s, struct iovec *iov, int id,
+-                            hwaddr *req_len)
+-{
+-    uint32_t pad_offset;
+-    uint32_t total_msg_len;
+-    s->total_req_len += *req_len;
+-
+-    if (has_padding(s, &iov[id], *req_len, &total_msg_len, &pad_offset)) {
+-        if (s->iov_count) {
+-            return reconstruct_iov(s, iov, id, &pad_offset);
+-        }
+-
+-        *req_len -= s->total_req_len - total_msg_len;
+-        s->total_req_len = 0;
+-        iov[id].iov_len = *req_len;
+-    } else {
+-        s->iov_cache[s->iov_count].iov_base = iov->iov_base;
+-        s->iov_cache[s->iov_count].iov_len = *req_len;
+-        ++s->iov_count;
+-    }
+-
+-    return id + 1;
+-}
+-
+ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+                               bool acc_mode)
+ {
+     struct iovec iov[ASPEED_HACE_MAX_SG];
++    uint32_t total_msg_len;
++    uint32_t pad_offset;
+     g_autofree uint8_t *digest_buf = NULL;
+     size_t digest_len = 0;
+-    int niov = 0;
++    bool sg_acc_mode_final_request = false;
+     int i;
+     void *haddr;
++    Error *local_err = NULL;
++
++    if (acc_mode && s->hash_ctx == NULL) {
++        s->hash_ctx = qcrypto_hash_new(algo, &local_err);
++        if (s->hash_ctx == NULL) {
++            qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash failed : %s",
++                          error_get_pretty(local_err));
++            error_free(local_err);
++            return;
++        }
++    }
+ 
+     if (sg_mode) {
+         uint32_t len = 0;
+@@ -226,8 +206,16 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+             }
+             iov[i].iov_base = haddr;
+             if (acc_mode) {
+-                niov = gen_acc_mode_iov(s, iov, i, &plen);
+-
++                s->total_req_len += plen;
++
++                if (has_padding(s, &iov[i], plen, &total_msg_len,
++                                &pad_offset)) {
++                    /* Padding being present indicates the final request */
++                    sg_acc_mode_final_request = true;
++                    iov[i].iov_len = pad_offset;
++                } else {
++                    iov[i].iov_len = plen;
++                }
+             } else {
+                 iov[i].iov_len = plen;
+             }
+@@ -252,21 +240,42 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+              * required to check whether cache is empty. If no, we should
+              * combine cached iov and the current iov.
+              */
+-            uint32_t total_msg_len;
+-            uint32_t pad_offset;
+             s->total_req_len += len;
+             if (has_padding(s, iov, len, &total_msg_len, &pad_offset)) {
+-                niov = reconstruct_iov(s, iov, 0, &pad_offset);
++                i = reconstruct_iov(s, iov, 0, &pad_offset);
+             }
+         }
+     }
+ 
+-    if (niov) {
+-        i = niov;
+-    }
++    if (acc_mode) {
++        if (qcrypto_hash_updatev(s->hash_ctx, iov, i, &local_err) < 0) {
++            qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash update failed : %s",
++                          error_get_pretty(local_err));
++            error_free(local_err);
++            return;
++        }
++
++        if (sg_acc_mode_final_request) {
++            if (qcrypto_hash_finalize_bytes(s->hash_ctx, &digest_buf,
++                                            &digest_len, &local_err)) {
++                qemu_log_mask(LOG_GUEST_ERROR,
++                              "qcrypto hash finalize failed : %s",
++                              error_get_pretty(local_err));
++                error_free(local_err);
++                local_err = NULL;
++            }
+ 
+-    if (qcrypto_hash_bytesv(algo, iov, i, &digest_buf, &digest_len, NULL) < 0) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
++            qcrypto_hash_free(s->hash_ctx);
++
++            s->hash_ctx = NULL;
++            s->iov_count = 0;
++            s->total_req_len = 0;
++        }
++    } else if (qcrypto_hash_bytesv(algo, iov, i, &digest_buf,
++                                   &digest_len, &local_err) < 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "qcrypto hash bytesv failed : %s",
++                      error_get_pretty(local_err));
++        error_free(local_err);
+         return;
+     }
+ 
+@@ -397,6 +406,11 @@ static void aspeed_hace_reset(DeviceState *dev)
+ {
+     struct AspeedHACEState *s = ASPEED_HACE(dev);
+ 
++    if (s->hash_ctx != NULL) {
++        qcrypto_hash_free(s->hash_ctx);
++        s->hash_ctx = NULL;
++    }
++
+     memset(s->regs, 0, sizeof(s->regs));
+     s->iov_count = 0;
+     s->total_req_len = 0;
+-- 
+2.47.0
+

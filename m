@@ -1,228 +1,164 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cb66a6d798sm4478915a12.50.2024.10.23.04.44.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Oct 2024 04:44:04 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9B1C55FC19;
-	Wed, 23 Oct 2024 12:34:08 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	John Snow <jsnow@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	devel@lists.libvirt.org,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Laurent Vivier <laurent@vivier.eu>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Alexandre Iooss <erdnaxe@crans.org>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	kvm@vger.kernel.org,
-	Beraldo Leal <bleal@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v3 17/18] contrib/plugins: remove Makefile for contrib/plugins
-Date: Wed, 23 Oct 2024 12:34:05 +0100
-Message-Id: <20241023113406.1284676-18-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241023113406.1284676-1-alex.bennee@linaro.org>
-References: <20241023113406.1284676-1-alex.bennee@linaro.org>
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp114334njx;
+        Wed, 23 Oct 2024 23:07:09 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXfT+p4sulLN6La173EPf0diC5axXTWVeIID2KORD0krAN10wIG/808/MnVVoS6+sFC7nZYwKAGQOy1YQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHGfXtlJne6hWMPCRoCEb+xBDBUXGcjC9zqlNRZeXhUh0kfldKD/mZ9ci8jmQmHzWpqXE5i
+X-Received: by 2002:a05:620a:4249:b0:7a1:d73f:53d2 with SMTP id af79cd13be357-7b186bb8322mr70084285a.20.1729750028830;
+        Wed, 23 Oct 2024 23:07:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729750028; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Xz+4Khbav3MwIbwcHwqyDMH4kG8KqBYT38WKfEQiQ0Jp0ObpWCrbavEy6n8pfesn79
+         svV/vHgJDu4R8jhAr574GW3kgwWq5W0/MYjeo9WwnYL70ZB7bZoMWgdLJ5YYFMsOZdoH
+         tYrYp05tALy/lONM0JcTInNIZXwrME7aQZQZQIxFXbYfmjEfA6jap2M6G9d4K6u2fKVq
+         6HKHQuCdkLEReiCFyjB7wVTwEfkShp6xv4AGWaWKN4TrmmtO7k88tRFrtt1huKbUX4cT
+         5BHay5js0TScerQQSOuXUQEB5LLJ2iWHAQOaTmkZjsn9SetBlv0WpI6uL80ZWmlrffDN
+         RDmw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=+VLopP6p/jWGG8K+ML4fKiAT3Kzag9GfiED9v/O8EV4=;
+        fh=x8sb2JS19MM04/4tGPb1OKwjZznyZEfrXTz71XoGOcY=;
+        b=OPoYwJivaiGiye1m2vMXNdic7MRO+/YKkBPZY0wnhb98vf+fMdYIDOoN/idvo3T1uF
+         rGHes6XgxmViMs0cgbct47z315YkLfo3FzM5crzW/04d3cp4fSNWxHOcdoQRtfypIuQA
+         Oox9EXuuCd1+fA8v+iFH6IdUVwJYzUIAy39fsaibui2BBoPX2WVorpQJvjL8NrxgCfXr
+         WWUvYvxQbyM9Z6yMoAERmINeEtBV2AFmj67cM2TwjcFe4zxko1FxNWriFnqFw/bAfum4
+         JxVwruc7ZyfIlPLZQ0Q+a5lu5wUleYncT87M+K1FVjgdZoLBFgFYSG7NABZJ7I7EjQwV
+         CbuA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b165a9c32dsi1110406685a.606.2024.10.23.23.07.08
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 23 Oct 2024 23:07:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t3qzW-0002XQ-Cf; Thu, 24 Oct 2024 02:06:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=9NnO=RU=kaod.org=clg@ozlabs.org>)
+ id 1t3qzT-0002VA-RR; Thu, 24 Oct 2024 02:06:36 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=9NnO=RU=kaod.org=clg@ozlabs.org>)
+ id 1t3qzQ-0008Hr-Vf; Thu, 24 Oct 2024 02:06:35 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4XYwQd35lZz4wc4;
+ Thu, 24 Oct 2024 17:06:17 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4XYwQW2f9Nz4w2F;
+ Thu, 24 Oct 2024 17:06:11 +1100 (AEDT)
+Message-ID: <84e64626-059e-4177-bd40-2bf8fa84e8f9@kaod.org>
+Date: Thu, 24 Oct 2024 08:06:08 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 01/18] aspeed/smc: Fix write incorrect data into flash
+ in user mode
+To: Kevin Wolf <kwolf@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>, Hanna Reitz <hreitz@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:Block layer core" <qemu-block@nongnu.org>,
+ troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
+ <20241022094110.1574011-2-jamin_lin@aspeedtech.com>
+ <ZxeDVTBwLZsOEDvE@redhat.com> <b682dc55-f5e8-4fec-82f7-333dbaba240e@kaod.org>
+ <ZxfDYWEyMLcnMXlh@redhat.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <ZxfDYWEyMLcnMXlh@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: fSecGlkEmcRF
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=9NnO=RU=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.17, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: odHT9/Ns6P4f
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+On 10/22/24 17:23, Kevin Wolf wrote:
+> Am 22.10.2024 um 15:40 hat Cédric Le Goater geschrieben:
+>>>>    static const VMStateDescription vmstate_aspeed_smc = {
+>>>>        .name = "aspeed.smc",
+>>>> -    .version_id = 2,
+>>>> +    .version_id = 3,
+>>>>        .minimum_version_id = 2,
+>>>>        .fields = (const VMStateField[]) {
+>>>>            VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
+>>>>            VMSTATE_UINT8(snoop_index, AspeedSMCState),
+>>>>            VMSTATE_UINT8(snoop_dummies, AspeedSMCState),
+>>>> +        VMSTATE_BOOL(unselect, AspeedSMCState),
+>>>>            VMSTATE_END_OF_LIST()
+>>>>        }
+>>>>    };
+>>>
+>>> I think this will break migration compatibility. In order to enable
+>>> at least forward migration, it should be:
+>>>
+>>>       VMSTATE_BOOL_V(unselect, AspeedSMCState, 3),
+>>
+>> This is correct. I will fix the patch.
+>>
+>> Some background,
+>>
+>> The aspeed machines are fully emulated and the Aspeed SoC models are not
+>> part of any virt* machines (yet). So migration support is a bit of a
+>> theory. We have done our best to maintain some support, compatibility
+>> not being a priority. IOW, it's not perfectly tuned as on virt machines.
+>>
+>> Also, on ARM, migration of the CPU secure mode (I think this is the reason,
+>> Peter please correct me !) is not supported and if migration is initiated
+>> after Linux has started, the machine will hang.
+> 
+> That's a good reason not to implement backwards migration for now, it
+> would only complicate things. But as long as we claim to be migratable
+> by having VMStateDescriptions and even increasing version_id, we should
+> at least try to keep that part correct.
 
-Now replaced by meson build.
+Sure. Thanks for pointing that out.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20240925204845.390689-3-pierrick.bouvier@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- configure                | 18 ---------
- Makefile                 | 10 -----
- contrib/plugins/Makefile | 87 ----------------------------------------
- 3 files changed, 115 deletions(-)
- delete mode 100644 contrib/plugins/Makefile
+>> However, if one day, an aspeed model becomes part of a virt machine, we
+>> should be more careful. I would start by resetting all vmstate versions
+>> to 1!
+> 
+> Why would you reset it? Keeping 3 (or whatever it will be by then) as
+> the first serious supported version shouldn't hurt and probably avoids
+> some confusion.
+  OK . We'll see when we get to that point. Who knows. The Aspeed machines
+have gotten much bigger than we expected !
 
-diff --git a/configure b/configure
-index 7dd3400ccb..101ca9ace9 100755
---- a/configure
-+++ b/configure
-@@ -1073,7 +1073,6 @@ if test "$plugins" != "no" && test $host_bits -eq 64; then
-         plugins="no"
-     else
-         plugins=yes
--        subdirs="$subdirs contrib/plugins"
-     fi
- fi
- 
-@@ -1704,7 +1703,6 @@ LINKS="$LINKS .gdbinit scripts" # scripts needed by relative path in .gdbinit
- LINKS="$LINKS tests/avocado tests/data"
- LINKS="$LINKS tests/qemu-iotests/check tests/qemu-iotests/Makefile"
- LINKS="$LINKS python"
--LINKS="$LINKS contrib/plugins/Makefile "
- for f in $LINKS ; do
-     if [ -e "$source_path/$f" ]; then
-         symlink "$source_path/$f" "$f"
-@@ -1790,22 +1788,6 @@ if test "$default_targets" = "yes"; then
-   echo "CONFIG_DEFAULT_TARGETS=y" >> $config_host_mak
- fi
- 
--# contrib/plugins configuration
--echo "# Automatically generated by configure - do not modify" > contrib/plugins/$config_host_mak
--echo "SRC_PATH=$source_path/contrib/plugins" >> contrib/plugins/$config_host_mak
--echo "PKG_CONFIG=${pkg_config}" >> contrib/plugins/$config_host_mak
--echo "CC=$cc $CPU_CFLAGS" >> contrib/plugins/$config_host_mak
--echo "CFLAGS=${CFLAGS-$default_cflags} $EXTRA_CFLAGS" >> contrib/plugins/$config_host_mak
--if test "$host_os" = windows; then
--  echo "DLLTOOL=$dlltool" >> contrib/plugins/$config_host_mak
--fi
--if test "$host_os" = darwin; then
--  echo "CONFIG_DARWIN=y" >> contrib/plugins/$config_host_mak
--fi
--if test "$host_os" = windows; then
--  echo "CONFIG_WIN32=y" >> contrib/plugins/$config_host_mak
--fi
--
- # tests/tcg configuration
- mkdir -p tests/tcg
- echo "# Automatically generated by configure - do not modify" > tests/tcg/$config_host_mak
-diff --git a/Makefile b/Makefile
-index 917c9a34d1..b65b0bd41a 100644
---- a/Makefile
-+++ b/Makefile
-@@ -187,11 +187,6 @@ SUBDIR_RULES=$(foreach t, all clean distclean, $(addsuffix /$(t), $(SUBDIRS)))
- $(SUBDIR_RULES):
- 	$(call quiet-command,$(MAKE) $(SUBDIR_MAKEFLAGS) -C $(dir $@) V="$(V)" TARGET_DIR="$(dir $@)" $(notdir $@),)
- 
--ifneq ($(filter contrib/plugins, $(SUBDIRS)),)
--.PHONY: plugins
--plugins: contrib/plugins/all
--endif
--
- .PHONY: recurse-all recurse-clean
- recurse-all: $(addsuffix /all, $(SUBDIRS))
- recurse-clean: $(addsuffix /clean, $(SUBDIRS))
-@@ -307,11 +302,6 @@ help:
- 	$(call print-help,cscope,Generate cscope index)
- 	$(call print-help,sparse,Run sparse on the QEMU source)
- 	@echo  ''
--ifneq ($(filter contrib/plugins, $(SUBDIRS)),)
--	@echo  'Plugin targets:'
--	$(call print-help,plugins,Build the example TCG plugins)
--	@echo  ''
--endif
- 	@echo  'Cleaning targets:'
- 	$(call print-help,clean,Remove most generated files but keep the config)
- 	$(call print-help,distclean,Remove all generated files)
-diff --git a/contrib/plugins/Makefile b/contrib/plugins/Makefile
-deleted file mode 100644
-index bbddd4800f..0000000000
---- a/contrib/plugins/Makefile
-+++ /dev/null
-@@ -1,87 +0,0 @@
--# -*- Mode: makefile -*-
--#
--# This Makefile example is fairly independent from the main makefile
--# so users can take and adapt it for their build. We only really
--# include config-host.mak so we don't have to repeat probing for
--# programs that the main configure has already done for us.
--#
--
--include config-host.mak
--
--TOP_SRC_PATH = $(SRC_PATH)/../..
--
--VPATH += $(SRC_PATH)
--
--NAMES :=
--NAMES += bbv
--NAMES += execlog
--NAMES += hotblocks
--NAMES += hotpages
--NAMES += howvec
--
--# The lockstep example communicates using unix sockets,
--# and can't be easily made to work on windows.
--ifneq ($(CONFIG_WIN32),y)
--NAMES += lockstep
--endif
--
--NAMES += hwprofile
--NAMES += cache
--NAMES += drcov
--NAMES += ips
--NAMES += stoptrigger
--NAMES += cflow
--
--ifeq ($(CONFIG_WIN32),y)
--SO_SUFFIX := .dll
--LDLIBS += $(shell $(PKG_CONFIG) --libs glib-2.0)
--else
--SO_SUFFIX := .so
--endif
--
--SONAMES := $(addsuffix $(SO_SUFFIX),$(addprefix lib,$(NAMES)))
--
--# The main QEMU uses Glib extensively so it is perfectly fine to use it
--# in plugins (which many example do).
--PLUGIN_CFLAGS := $(shell $(PKG_CONFIG) --cflags glib-2.0)
--PLUGIN_CFLAGS += -fPIC -Wall
--PLUGIN_CFLAGS += -I$(TOP_SRC_PATH)/include/qemu
--
--# Helper that honours V=1 so we get some output when compiling
--quiet-@ = $(if $(V),,@$(if $1,printf "  %-7s %s\n" "$(strip $1)" "$(strip $2)" && ))
--quiet-command = $(call quiet-@,$2,$3)$1
--
--# for including , in command strings
--COMMA := ,
--
--all: $(SONAMES)
--
--%.o: %.c
--	$(call quiet-command, \
--		$(CC) $(CFLAGS) $(PLUGIN_CFLAGS) -c -o $@ $<, \
--	        BUILD, plugin $@)
--
--ifeq ($(CONFIG_WIN32),y)
--lib%$(SO_SUFFIX): %.o win32_linker.o ../../plugins/libqemu_plugin_api.a
--	$(call quiet-command, \
--		$(CC) -shared -o $@ $^ $(LDLIBS), \
--		LINK, plugin $@)
--else ifeq ($(CONFIG_DARWIN),y)
--lib%$(SO_SUFFIX): %.o
--	$(call quiet-command, \
--		$(CC) -bundle -Wl$(COMMA)-undefined$(COMMA)dynamic_lookup -o $@ $^ $(LDLIBS), \
--		LINK, plugin $@)
--else
--lib%$(SO_SUFFIX): %.o
--	$(call quiet-command, \
--		$(CC) -shared -o $@ $^ $(LDLIBS), \
--		LINK, plugin $@)
--endif
--
--
--clean distclean:
--	rm -f *.o *$(SO_SUFFIX) *.d
--	rm -Rf .libs
--
--.PHONY: all clean
--.SECONDARY:
--- 
-2.39.5
+C.

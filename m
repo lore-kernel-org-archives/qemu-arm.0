@@ -1,92 +1,92 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp126405njx;
-        Wed, 23 Oct 2024 23:38:46 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUkQWBK/lmweDMctKVNTwcSRuKaAIUnX+C6vDSbdORnU3gzpvTxry7/bxqpBG/B47GoSrI0nvH9BGzY+A==@linaro.org
-X-Google-Smtp-Source: AGHT+IECQu1j/SseAaPqbpNzybMcz3enxTjWX0f4/VnIQCYNACmyjzzMCSDg5Y5Qz2F8eeZDpFaC
-X-Received: by 2002:a05:620a:4412:b0:7a9:dc30:3d3e with SMTP id af79cd13be357-7b186bb8cddmr81790685a.24.1729751926305;
-        Wed, 23 Oct 2024 23:38:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729751926; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp126637njx;
+        Wed, 23 Oct 2024 23:39:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVKM3Fi0ZKm5WgiX+RoBbEIa/+eMSF/+vZYJGoGM9oFQfzcRyZ/3mwTlE+F9nDXkPh2/X0HDS9P924/6Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGResuDOU2+uJIXjJHMVkNSnK3GXttcN2VzTFdagaS2kxrYZGN/UpLoO94TCXdU7dAKTW41
+X-Received: by 2002:a05:6902:188f:b0:e2e:4a7c:7783 with SMTP id 3f1490d57ef6-e2e4a7c7845mr2296768276.22.1729751964384;
+        Wed, 23 Oct 2024 23:39:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729751964; cv=none;
         d=google.com; s=arc-20240605;
-        b=bDRmX3SSKS1qXyqBGE4iEZ0fB0us4c6lf/02Le0NfK1wHDXfqoyhjE/Nev/WfqdudK
-         xGE3e/sg+vh8QXt9FT2u7guKGOQsOqPqaoSrgE0PAucIO19LxpdU1amIuySiEPornV9Q
-         ZvA5bRseyukuMHBn87/KtukqLSMJilihPcXqvQGhNCxkyPsRndhbq/g6gifYrROGW25U
-         fsvywS3PmWpl9og7pdGY9SNISVbNgI5g5AB1sVWPxPtM/DLZ5DVxjpBGLoixJIm2NUis
-         w90QYyw2X0bSfRxENa7Ged3YZ+2z8U2AXzvIGCeM1n2rdgirg3HAK0epdnIxovDCoxpJ
-         PZaw==
+        b=g17FMLlXMNPOZ582XJdMNWh9dkjTnxosDc8Nvg8dB4bMpR89goU7fp9TSIH3bej29X
+         Vc5ROLNmUxBW7bnoce7WCKQc7ZEbCpSxEuz1VnPhLRGBZ66sYFMWpGnpJTpxCZt8nD0P
+         3v9RVjR0TlxfY1AgqGBqfMYoX/ogyILK61KckM/+gb8uqshZFxGVh8+AMpo16LTesYw9
+         60vAbM+0arM47QfDeAjVaYIksCowjpKSRmUq6v0wd7azTCAX5jr5+8LY+R3WX5Tiq9KM
+         5/a0w5hsfvwqDCPuEB8lCcomeLc1gmJokv+iCs4EhmsYCdw5Es+KGX1rISegxzlQAmdb
+         K+xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=7TLwld3t9KOUqUx+FlmrlaZeNHVfm57CkbHCMoIGBKc=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=dy9CiAKIt2NNXpJCrGWxoUsh1bPKY4vZXv90mj8T9jl8wXiQxfPTDwJyzvBfal215R
-         T2KlrAml12HKY9m8APlDDtjvWdY9aEMpD0EzuCKF8a6DFsr1v4zaczQYMnt8ALHatHb+
-         KCPXVBgZg2MUFkGZEG7S2f/O+lvFnrFsWVUKcc33NYyuMFoZMQ4Xj9KPTnRt20kCIoTe
-         Fi4BOZzQJHGqd/p8pqrdJRNLtQR+OHUhxBPJMnK/55qsldUdZobjtTsRodx7G1OujhPD
-         PL/7Deu0NVietFZlgHvYtvsyYXcuvxg7nt/oMpBmrgi/vwaU4+FWKWj8m8Js0WTI5a/h
-         NvAQ==;
+        bh=nzkrD5tNYYfCDyj3GSxOObG/iuTkqLW0MLBKGBdU4S4=;
+        fh=dCqPeOMyJN6b1xLXHrHk9Vfv4bvn90zVm2nOfsHEFC8=;
+        b=JQjg3wy9Qt1O+Rgyp55wYiU8vAbQrou+KrnmihRbOkv8z9RmllUIAmhG6Pc3ga5Rvq
+         255xNR+FWNzVPrfDUz4EJP7c+hFBq36UDnr7QlwA+K0frPrVt71x6J+qU7AWmMV70xqD
+         /1O1mkI4kMsW57iTL3wJKgylCIuYEiprOr75YzYKd6/4I0mze+utYekjnoroVmLorwKa
+         v0f8ST4+H3A8Ik9sGUCbdMCY7d79oCMfka5riKx+vbL2+UMoc/NbWtCyOA+TzZOvdeew
+         cpAeSBj0cNb4E1QuoHwDEARVB/lBN6OAz8TIfyqnd5qPirEO5GvcfCHIENd5mobrh35+
+         51lw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fO9B832p;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Oh5doCpm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b165a88a7csi1065023685a.443.2024.10.23.23.38.46
+        by mx.google.com with ESMTPS id d75a77b69052e-460d3db78fdsi104973721cf.788.2024.10.23.23.39.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Oct 2024 23:38:46 -0700 (PDT)
+        Wed, 23 Oct 2024 23:39:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fO9B832p;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Oh5doCpm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t3rRt-0002N8-9D; Thu, 24 Oct 2024 02:35:57 -0400
+	id 1t3rRo-0002L2-H1; Thu, 24 Oct 2024 02:35:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRs-0002MQ-7q
- for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:56 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRl-0002JP-Um
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:49 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRp-0003TI-Lt
- for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:56 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t3rRj-0003Rz-2j
+ for qemu-devel@nongnu.org; Thu, 24 Oct 2024 02:35:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1729751753;
+ s=mimecast20190719; t=1729751746;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7TLwld3t9KOUqUx+FlmrlaZeNHVfm57CkbHCMoIGBKc=;
- b=fO9B832pP35dvwf7XHvRuhe6U1d2fpqh+eYHKA6B46M8LOxN+3qdwoirCFCp1LhgyZ3kc3
- MGMoAB1ivvnstIlfLC6HZmD0Olgu1mtw+dGdN5KeuO/wlrA0eNO+Q/3Q686cBUUjr8ss5j
- 0xLNyRIZO2jK6/V/8GoWyC7cjs51PxQ=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=nzkrD5tNYYfCDyj3GSxOObG/iuTkqLW0MLBKGBdU4S4=;
+ b=Oh5doCpmnUCcM8SnTR4USpv28/1Tve0LAKa22xyggyLPOcMHYTu4cidO69LynY3tNU1u7h
+ 5AbjitgExvVoFCg252tEgeJ5JRTgeprL6SmSIa36lnAeoPrAYnolH8CNboYqGF9k+rthP8
+ 4Ws3WUjlSYbFVEK++sDh2C92ewQajp4=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-14-IqAzRYucNz-1VOzk-d1b7w-1; Thu,
- 24 Oct 2024 02:35:49 -0400
-X-MC-Unique: IqAzRYucNz-1VOzk-d1b7w-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-316-VkJtkJSwMK6fXUQONdAUXg-1; Thu,
+ 24 Oct 2024 02:35:42 -0400
+X-MC-Unique: VkJtkJSwMK6fXUQONdAUXg-1
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7CEBD19560B0; Thu, 24 Oct 2024 06:35:48 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0E3E01955F2E; Thu, 24 Oct 2024 06:35:41 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.9])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C1D581956056; Thu, 24 Oct 2024 06:35:46 +0000 (UTC)
+ id 7904B1955F40; Thu, 24 Oct 2024 06:35:39 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 14/17] hw/block/m25p80: Add SFDP table for w25q80bl flash
-Date: Thu, 24 Oct 2024 08:35:04 +0200
-Message-ID: <20241024063507.1585765-15-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 10/17] tests/functional: Convert most Aspeed machine tests
+Date: Thu, 24 Oct 2024 08:35:00 +0200
+Message-ID: <20241024063507.1585765-11-clg@redhat.com>
 In-Reply-To: <20241024063507.1585765-1-clg@redhat.com>
 References: <20241024063507.1585765-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -102,7 +102,7 @@ X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.263,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,94 +117,640 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xJDRhI4ISudg
+X-TUID: YdDA8eJ5TBUE
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+This is a simple conversion of the tests with some cleanups and
+adjustments to match the new test framework. Replace the zephyr image
+MD5 hashes with SHA256 hashes while at it.
 
-Add the SFDP table for the Windbond w25q80bl flash.
+The SDK tests depend on a ssh class from avocado.utils which is
+difficult to replace. To be addressed separately.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/block/m25p80_sfdp.h |  2 +-
- hw/block/m25p80.c      |  3 ++-
- hw/block/m25p80_sfdp.c | 36 ++++++++++++++++++++++++++++++++++++
- 3 files changed, 39 insertions(+), 2 deletions(-)
+ tests/avocado/machine_aspeed.py     | 292 ----------------------------
+ tests/functional/meson.build        |   2 +
+ tests/functional/test_arm_aspeed.py | 282 +++++++++++++++++++++++++++
+ 3 files changed, 284 insertions(+), 292 deletions(-)
+ create mode 100644 tests/functional/test_arm_aspeed.py
 
-diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-index 89c2d8f72d5c..35785686a0ec 100644
---- a/hw/block/m25p80_sfdp.h
-+++ b/hw/block/m25p80_sfdp.h
-@@ -25,7 +25,7 @@ uint8_t m25p80_sfdp_mx66l1g45g(uint32_t addr);
- 
- uint8_t m25p80_sfdp_w25q256(uint32_t addr);
- uint8_t m25p80_sfdp_w25q512jv(uint32_t addr);
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 4e144bde9131..241ef180affc 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -19,258 +19,6 @@
+ from avocado_qemu import has_cmd
+ from avocado.utils import archive
+ from avocado import skipUnless
+-from avocado import skipUnless
 -
-+uint8_t m25p80_sfdp_w25q80bl(uint32_t addr);
- uint8_t m25p80_sfdp_w25q01jvq(uint32_t addr);
+-
+-class AST1030Machine(QemuSystemTest):
+-    """Boots the zephyr os and checks that the console is operational"""
+-
+-    timeout = 10
+-
+-    def test_ast1030_zephyros_1_04(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:ast1030-evb
+-        :avocado: tags=os:zephyr
+-        """
+-        tar_url = ('https://github.com/AspeedTech-BMC'
+-                   '/zephyr/releases/download/v00.01.04/ast1030-evb-demo.zip')
+-        tar_hash = '4c6a8ce3a8ba76ef1a65dae419ae3409343c4b20'
+-        tar_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
+-        archive.extract(tar_path, self.workdir)
+-        kernel_file = self.workdir + "/ast1030-evb-demo/zephyr.elf"
+-        self.vm.set_console()
+-        self.vm.add_args('-kernel', kernel_file,
+-                         '-nographic')
+-        self.vm.launch()
+-        wait_for_console_pattern(self, "Booting Zephyr OS")
+-        exec_command_and_wait_for_pattern(self, "help",
+-                                          "Available commands")
+-
+-    def test_ast1030_zephyros_1_07(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:ast1030-evb
+-        :avocado: tags=os:zephyr
+-        """
+-        tar_url = ('https://github.com/AspeedTech-BMC'
+-                   '/zephyr/releases/download/v00.01.07/ast1030-evb-demo.zip')
+-        tar_hash = '40ac87eabdcd3b3454ce5aad11fedc72a33ecda2'
+-        tar_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
+-        archive.extract(tar_path, self.workdir)
+-        kernel_file = self.workdir + "/ast1030-evb-demo/zephyr.bin"
+-        self.vm.set_console()
+-        self.vm.add_args('-kernel', kernel_file,
+-                         '-nographic')
+-        self.vm.launch()
+-        wait_for_console_pattern(self, "Booting Zephyr OS")
+-        for shell_cmd in [
+-                'kernel stacks',
+-                'otp info conf',
+-                'otp info scu',
+-                'hwinfo devid',
+-                'crypto aes256_cbc_vault',
+-                'random get',
+-                'jtag JTAG1 sw_xfer high TMS',
+-                'adc ADC0 resolution 12',
+-                'adc ADC0 read 42',
+-                'adc ADC1 read 69',
+-                'i2c scan I2C_0',
+-                'i3c attach I3C_0',
+-                'hash test',
+-                'kernel uptime',
+-                'kernel reboot warm',
+-                'kernel uptime',
+-                'kernel reboot cold',
+-                'kernel uptime',
+-        ]: exec_command_and_wait_for_pattern(self, shell_cmd, "uart:~$")
+-
+-class AST2x00Machine(QemuSystemTest):
+-
+-    timeout = 180
+-
+-    def wait_for_console_pattern(self, success_message, vm=None):
+-        wait_for_console_pattern(self, success_message,
+-                                 failure_message='Kernel panic - not syncing',
+-                                 vm=vm)
+-
+-    def do_test_arm_aspeed(self, image):
+-        self.vm.set_console()
+-        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+-                         '-net', 'nic')
+-        self.vm.launch()
+-
+-        self.wait_for_console_pattern("U-Boot 2016.07")
+-        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
+-        self.wait_for_console_pattern("Starting kernel ...")
+-        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
+-        wait_for_console_pattern(self,
+-                "aspeed-smc 1e620000.spi: read control register: 203b0641")
+-        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
+-        self.wait_for_console_pattern("systemd[1]: Set hostname to")
+-
+-    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:palmetto-bmc
+-        """
+-
+-        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
+-                     'obmc-phosphor-image-palmetto.static.mtd')
+-        image_hash = ('3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-
+-        self.do_test_arm_aspeed(image_path)
+-
+-    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:romulus-bmc
+-        """
+-
+-        image_url = ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
+-                     'obmc-phosphor-image-romulus.static.mtd')
+-        image_hash = ('820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-
+-        self.do_test_arm_aspeed(image_path)
+-
+-    def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
+-        self.require_netdev('user')
+-
+-        self.vm.set_console()
+-        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+-                         '-net', 'nic', '-net', 'user')
+-        self.vm.launch()
+-
+-        self.wait_for_console_pattern('U-Boot 2019.04')
+-        self.wait_for_console_pattern('## Loading kernel from FIT Image')
+-        self.wait_for_console_pattern('Starting kernel ...')
+-        self.wait_for_console_pattern('Booting Linux on physical CPU ' + cpu_id)
+-        self.wait_for_console_pattern('lease of 10.0.2.15')
+-        # the line before login:
+-        self.wait_for_console_pattern(pattern)
+-        time.sleep(0.1)
+-        exec_command(self, 'root')
+-        time.sleep(0.1)
+-        exec_command(self, "passw0rd")
+-
+-    def do_test_arm_aspeed_buildroot_poweroff(self):
+-        exec_command_and_wait_for_pattern(self, 'poweroff',
+-                                          'reboot: System halted');
+-
+-    def test_arm_ast2500_evb_buildroot(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:ast2500-evb
+-        """
+-
+-        image_url = ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-                     'images/ast2500-evb/buildroot-2023.11/flash.img')
+-        image_hash = ('c23db6160cf77d0258397eb2051162c8473a56c441417c52a91ba217186e715f')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-
+-        self.vm.add_args('-device',
+-                         'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0', 'Aspeed AST2500 EVB')
+-
+-        exec_command_and_wait_for_pattern(self,
+-             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+-             'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
+-        exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
+-        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+-                    property='temperature', value=18000);
+-        exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
+-
+-        self.do_test_arm_aspeed_buildroot_poweroff()
+-
+-    def test_arm_ast2600_evb_buildroot(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:ast2600-evb
+-        """
+-
+-        image_url = ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-                     'images/ast2600-evb/buildroot-2023.11/flash.img')
+-        image_hash = ('b62808daef48b438d0728ee07662290490ecfa65987bb91294cafb1bb7ad1a68')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-
+-        self.vm.add_args('-device',
+-                         'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+-        self.vm.add_args('-device',
+-                         'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
+-        self.vm.add_args('-device',
+-                         'i2c-echo,bus=aspeed.i2c.bus.3,address=0x42');
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
+-
+-        exec_command_and_wait_for_pattern(self,
+-             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+-             'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
+-        exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
+-        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+-                    property='temperature', value=18000);
+-        exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
+-
+-        exec_command_and_wait_for_pattern(self,
+-             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-3/device/new_device',
+-             'i2c i2c-3: new_device: Instantiated device ds1307 at 0x32');
+-        year = time.strftime("%Y")
+-        exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', year);
+-
+-        exec_command_and_wait_for_pattern(self,
+-             'echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device',
+-             'i2c i2c-3: new_device: Instantiated device slave-24c02 at 0x64');
+-        exec_command(self, 'i2cset -y 3 0x42 0x64 0x00 0xaa i');
+-        time.sleep(0.1)
+-        exec_command_and_wait_for_pattern(self,
+-             'hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom',
+-             '0000000 ffaa ffff ffff ffff ffff ffff ffff ffff');
+-        self.do_test_arm_aspeed_buildroot_poweroff()
+-
+-    @skipUnless(*has_cmd('swtpm'))
+-    def test_arm_ast2600_evb_buildroot_tpm(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:ast2600-evb
+-        """
+-
+-        image_url = ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-                     'images/ast2600-evb/buildroot-2023.02-tpm/flash.img')
+-        image_hash = ('a46009ae8a5403a0826d607215e731a8c68d27c14c41e55331706b8f9c7bd997')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-
+-        # force creation of VM object, which also defines self._sd
+-        vm = self.vm
+-
+-        socket = os.path.join(self._sd.name, 'swtpm-socket')
+-
+-        subprocess.run(['swtpm', 'socket', '-d', '--tpm2',
+-                        '--tpmstate', f'dir={self.vm.temp_dir}',
+-                        '--ctrl', f'type=unixio,path={socket}'])
+-
+-        self.vm.add_args('-chardev', f'socket,id=chrtpm,path={socket}')
+-        self.vm.add_args('-tpmdev', 'emulator,id=tpm0,chardev=chrtpm')
+-        self.vm.add_args('-device',
+-                         'tpm-tis-i2c,tpmdev=tpm0,bus=aspeed.i2c.bus.12,address=0x2e')
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
+-
+-        exec_command_and_wait_for_pattern(self,
+-            'echo tpm_tis_i2c 0x2e > /sys/bus/i2c/devices/i2c-12/new_device',
+-            'tpm_tis_i2c 12-002e: 2.0 TPM (device-id 0x1, rev-id 1)');
+-        exec_command_and_wait_for_pattern(self,
+-            'cat /sys/class/tpm/tpm0/pcr-sha256/0',
+-            'B804724EA13F52A9072BA87FE8FDCC497DFC9DF9AA15B9088694639C431688E0');
+-
+-        self.do_test_arm_aspeed_buildroot_poweroff()
  
- uint8_t m25p80_sfdp_is25wp256(uint32_t addr);
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 411d810d3b1b..e2e84f8b5f8d 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -356,7 +356,8 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("w25x64",      0xef3017,      0,  64 << 10, 128, ER_4K) },
-     { INFO("w25q64",      0xef4017,      0,  64 << 10, 128, ER_4K) },
-     { INFO("w25q80",      0xef5014,      0,  64 << 10,  16, ER_4K) },
--    { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K) },
-+    { INFO("w25q80bl",    0xef4014,      0,  64 << 10,  16, ER_4K),
-+      .sfdp_read = m25p80_sfdp_w25q80bl },
-     { INFO("w25q256",     0xef4019,      0,  64 << 10, 512, ER_4K),
-       .sfdp_read = m25p80_sfdp_w25q256 },
-     { INFO("w25q512jv",   0xef4020,      0,  64 << 10, 1024, ER_4K),
-diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
-index 82d84cc21fe6..a03a291a09b5 100644
---- a/hw/block/m25p80_sfdp.c
-+++ b/hw/block/m25p80_sfdp.c
-@@ -404,6 +404,42 @@ static const uint8_t sfdp_w25q01jvq[] = {
- };
- define_sfdp_read(w25q01jvq);
+ class AST2x00MachineSDK(QemuSystemTest, LinuxSSHMixIn):
  
-+static const uint8_t sfdp_w25q80bl[] = {
-+    0x53, 0x46, 0x44, 0x50, 0x05, 0x01, 0x00, 0xff,
-+    0x00, 0x05, 0x01, 0x10, 0x80, 0x00, 0x00, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xe5, 0x20, 0xf1, 0xff, 0xff, 0xff, 0x7f, 0x00,
-+    0x44, 0xeb, 0x08, 0x6b, 0x08, 0x3b, 0x42, 0xbb,
-+    0xee, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00,
-+    0xff, 0xff, 0x00, 0x00, 0x0c, 0x20, 0x0f, 0x52,
-+    0x10, 0xd8, 0x00, 0x00, 0x23, 0x02, 0xa6, 0x00,
-+    0x81, 0x6c, 0x14, 0xa7, 0xed, 0x61, 0x76, 0x33,
-+    0x7a, 0x75, 0x7a, 0x75, 0xf7, 0xa2, 0xd5, 0x5c,
-+    0x00, 0xf7, 0x1d, 0xff, 0xe9, 0x30, 0xc0, 0x80,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-+};
-+define_sfdp_read(w25q80bl);
+@@ -452,43 +200,3 @@ def test_aarch64_ast2700_evb_sdk_v09_02(self):
+                     property='temperature', value=18000)
+         self.ssh_command_output_contains(
+             'cat /sys/class/hwmon/hwmon20/temp1_input', '18000')
+-
+-class AST2x00MachineMMC(QemuSystemTest):
+-
+-    timeout = 240
+-
+-    def wait_for_console_pattern(self, success_message, vm=None):
+-        wait_for_console_pattern(self, success_message,
+-                                 failure_message='Kernel panic - not syncing',
+-                                 vm=vm)
+-
+-    def test_arm_aspeed_emmc_boot(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:rainier-bmc
+-        :avocado: tags=device:emmc
+-        """
+-
+-        image_url = ('https://fileserver.linaro.org/s/B6pJTwWEkzSDi36/download/'
+-                     'mmc-p10bmc-20240617.qcow2')
+-        image_hash = ('d523fb478d2b84d5adc5658d08502bc64b1486955683814f89c6137518acd90b')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-
+-        self.require_netdev('user')
+-
+-        self.vm.set_console()
+-        self.vm.add_args('-drive',
+-                         'file=' + image_path + ',if=sd,id=sd2,index=2',
+-                         '-net', 'nic', '-net', 'user')
+-        self.vm.launch()
+-
+-        self.wait_for_console_pattern('U-Boot SPL 2019.04')
+-        self.wait_for_console_pattern('Trying to boot from MMC1')
+-        self.wait_for_console_pattern('U-Boot 2019.04')
+-        self.wait_for_console_pattern('eMMC 2nd Boot')
+-        self.wait_for_console_pattern('## Loading kernel from FIT Image')
+-        self.wait_for_console_pattern('Starting kernel ...')
+-        self.wait_for_console_pattern('Booting Linux on physical CPU 0xf00')
+-        self.wait_for_console_pattern('mmcblk0: p1 p2 p3 p4 p5 p6 p7')
+-        self.wait_for_console_pattern('IBM eBMC (OpenBMC for IBM Enterprise')
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 5ccc1aa66ddc..97c1c597e861 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -15,6 +15,7 @@ test_timeouts = {
+   'aarch64_sbsaref' : 600,
+   'aarch64_virt' : 360,
+   'acpi_bits' : 240,
++  'arm_aspeed' : 600,
+   'arm_raspi2' : 120,
+   'arm_tuxrun' : 120,
+   'mips_malta' : 120,
+@@ -51,6 +52,7 @@ tests_alpha_system_thorough = [
+ ]
+ 
+ tests_arm_system_thorough = [
++  'arm_aspeed',
+   'arm_canona1100',
+   'arm_integratorcp',
+   'arm_raspi2',
+diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
+new file mode 100644
+index 000000000000..9761fc06a454
+--- /dev/null
++++ b/tests/functional/test_arm_aspeed.py
+@@ -0,0 +1,282 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the ASPEED SoCs with firmware
++#
++# Copyright (C) 2022 ASPEED Technology Inc
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
- /*
-  * Integrated Silicon Solution (ISSI)
-  */
++import os
++import time
++import subprocess
++import tempfile
++
++from qemu_test import LinuxKernelTest, Asset
++from qemu_test import exec_command_and_wait_for_pattern
++from qemu_test import interrupt_interactive_console_until_pattern
++from qemu_test import exec_command
++from qemu_test import has_cmd
++from qemu_test.utils import archive_extract
++from zipfile import ZipFile
++from unittest import skipUnless
++
++class AST1030Machine(LinuxKernelTest):
++
++    ASSET_ZEPHYR_1_04 = Asset(
++        ('https://github.com/AspeedTech-BMC'
++         '/zephyr/releases/download/v00.01.04/ast1030-evb-demo.zip'),
++        '4ac6210adcbc61294927918707c6762483fd844dde5e07f3ba834ad1f91434d3')
++
++    def test_ast1030_zephyros_1_04(self):
++        self.set_machine('ast1030-evb')
++
++        zip_file = self.ASSET_ZEPHYR_1_04.fetch()
++
++        kernel_name = "ast1030-evb-demo/zephyr.elf"
++        with ZipFile(zip_file, 'r') as zf:
++                     zf.extract(kernel_name, path=self.workdir)
++        kernel_file = os.path.join(self.workdir, kernel_name)
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', kernel_file, '-nographic')
++        self.vm.launch()
++        self.wait_for_console_pattern("Booting Zephyr OS")
++        exec_command_and_wait_for_pattern(self, "help",
++                                          "Available commands")
++
++    ASSET_ZEPHYR_1_07 = Asset(
++        ('https://github.com/AspeedTech-BMC'
++         '/zephyr/releases/download/v00.01.07/ast1030-evb-demo.zip'),
++        'ad52e27959746988afaed8429bf4e12ab988c05c4d07c9d90e13ec6f7be4574c')
++
++    def test_ast1030_zephyros_1_07(self):
++        self.set_machine('ast1030-evb')
++
++        zip_file = self.ASSET_ZEPHYR_1_07.fetch()
++
++        kernel_name = "ast1030-evb-demo/zephyr.bin"
++        with ZipFile(zip_file, 'r') as zf:
++                     zf.extract(kernel_name, path=self.workdir)
++        kernel_file = os.path.join(self.workdir, kernel_name)
++
++        self.vm.set_console()
++        self.vm.add_args('-kernel', kernel_file, '-nographic')
++        self.vm.launch()
++        self.wait_for_console_pattern("Booting Zephyr OS")
++        for shell_cmd in [
++                'kernel stacks',
++                'otp info conf',
++                'otp info scu',
++                'hwinfo devid',
++                'crypto aes256_cbc_vault',
++                'random get',
++                'jtag JTAG1 sw_xfer high TMS',
++                'adc ADC0 resolution 12',
++                'adc ADC0 read 42',
++                'adc ADC1 read 69',
++                'i2c scan I2C_0',
++                'i3c attach I3C_0',
++                'hash test',
++                'kernel uptime',
++                'kernel reboot warm',
++                'kernel uptime',
++                'kernel reboot cold',
++                'kernel uptime',
++        ]: exec_command_and_wait_for_pattern(self, shell_cmd, "uart:~$")
++
++class AST2x00Machine(LinuxKernelTest):
++
++    def do_test_arm_aspeed(self, machine, image):
++        self.set_machine(machine)
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic', '-snapshot')
++        self.vm.launch()
++
++        self.wait_for_console_pattern("U-Boot 2016.07")
++        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
++        self.wait_for_console_pattern("Starting kernel ...")
++        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
++        self.wait_for_console_pattern(
++                "aspeed-smc 1e620000.spi: read control register: 203b0641")
++        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
++        self.wait_for_console_pattern("systemd[1]: Set hostname to")
++
++    ASSET_PALMETTO_FLASH = Asset(
++        ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++         'obmc-phosphor-image-palmetto.static.mtd'),
++        '3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d');
++
++    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
++        image_path = self.ASSET_PALMETTO_FLASH.fetch()
++
++        self.do_test_arm_aspeed('palmetto-bmc', image_path)
++
++    ASSET_ROMULUS_FLASH = Asset(
++        ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++         'obmc-phosphor-image-romulus.static.mtd'),
++        '820341076803f1955bc31e647a512c79f9add4f5233d0697678bab4604c7bb25')
++
++    def test_arm_ast2500_romulus_openbmc_v2_9_0(self):
++        image_path = self.ASSET_ROMULUS_FLASH.fetch()
++
++        self.do_test_arm_aspeed('romulus-bmc', image_path)
++
++    def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
++        self.require_netdev('user')
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic', '-net', 'user')
++        self.vm.launch()
++
++        self.wait_for_console_pattern('U-Boot 2019.04')
++        self.wait_for_console_pattern('## Loading kernel from FIT Image')
++        self.wait_for_console_pattern('Starting kernel ...')
++        self.wait_for_console_pattern('Booting Linux on physical CPU ' + cpu_id)
++        self.wait_for_console_pattern('lease of 10.0.2.15')
++        # the line before login:
++        self.wait_for_console_pattern(pattern)
++        time.sleep(0.1)
++        exec_command(self, 'root')
++        time.sleep(0.1)
++        exec_command(self, "passw0rd")
++
++    def do_test_arm_aspeed_buildroot_poweroff(self):
++        exec_command_and_wait_for_pattern(self, 'poweroff',
++                                          'reboot: System halted');
++
++    ASSET_BR2_202311_AST2500_FLASH = Asset(
++        ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
++         'images/ast2500-evb/buildroot-2023.11/flash.img'),
++        'c23db6160cf77d0258397eb2051162c8473a56c441417c52a91ba217186e715f')
++
++    def test_arm_ast2500_evb_buildroot(self):
++        self.set_machine('ast2500-evb')
++
++        image_path = self.ASSET_BR2_202311_AST2500_FLASH.fetch()
++
++        self.vm.add_args('-device',
++                         'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0',
++                                                'Aspeed AST2500 EVB')
++
++        exec_command_and_wait_for_pattern(self,
++             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
++             'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
++        exec_command_and_wait_for_pattern(self,
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
++        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
++                    property='temperature', value=18000);
++        exec_command_and_wait_for_pattern(self,
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
++
++        self.do_test_arm_aspeed_buildroot_poweroff()
++
++    ASSET_BR2_202311_AST2600_FLASH = Asset(
++        ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
++         'images/ast2600-evb/buildroot-2023.11/flash.img'),
++        'b62808daef48b438d0728ee07662290490ecfa65987bb91294cafb1bb7ad1a68')
++
++    def test_arm_ast2600_evb_buildroot(self):
++        self.set_machine('ast2600-evb')
++
++        image_path = self.ASSET_BR2_202311_AST2600_FLASH.fetch()
++
++        self.vm.add_args('-device',
++                         'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
++        self.vm.add_args('-device',
++                         'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
++        self.vm.add_args('-device',
++                         'i2c-echo,bus=aspeed.i2c.bus.3,address=0x42');
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
++
++        exec_command_and_wait_for_pattern(self,
++             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
++             'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
++        exec_command_and_wait_for_pattern(self,
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
++        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
++                    property='temperature', value=18000);
++        exec_command_and_wait_for_pattern(self,
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
++
++        exec_command_and_wait_for_pattern(self,
++             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-3/device/new_device',
++             'i2c i2c-3: new_device: Instantiated device ds1307 at 0x32');
++        year = time.strftime("%Y")
++        exec_command_and_wait_for_pattern(self, 'hwclock -f /dev/rtc1', year);
++
++        exec_command_and_wait_for_pattern(self,
++             'echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device',
++             'i2c i2c-3: new_device: Instantiated device slave-24c02 at 0x64');
++        exec_command(self, 'i2cset -y 3 0x42 0x64 0x00 0xaa i');
++        time.sleep(0.1)
++        exec_command_and_wait_for_pattern(self,
++             'hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom',
++             '0000000 ffaa ffff ffff ffff ffff ffff ffff ffff');
++        self.do_test_arm_aspeed_buildroot_poweroff()
++
++    ASSET_BR2_202302_AST2600_TPM_FLASH = Asset(
++        ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
++         'images/ast2600-evb/buildroot-2023.02-tpm/flash.img'),
++        'a46009ae8a5403a0826d607215e731a8c68d27c14c41e55331706b8f9c7bd997')
++
++    @skipUnless(*has_cmd('swtpm'))
++    def test_arm_ast2600_evb_buildroot_tpm(self):
++        self.set_machine('ast2600-evb')
++
++        image_path = self.ASSET_BR2_202302_AST2600_TPM_FLASH.fetch()
++
++        socket_dir = tempfile.TemporaryDirectory(prefix="qemu_")
++        socket = os.path.join(socket_dir.name, 'swtpm-socket')
++
++        subprocess.run(['swtpm', 'socket', '-d', '--tpm2',
++                        '--tpmstate', f'dir={self.vm.temp_dir}',
++                        '--ctrl', f'type=unixio,path={socket}'])
++
++        self.vm.add_args('-chardev', f'socket,id=chrtpm,path={socket}')
++        self.vm.add_args('-tpmdev', 'emulator,id=tpm0,chardev=chrtpm')
++        self.vm.add_args('-device',
++                         'tpm-tis-i2c,tpmdev=tpm0,bus=aspeed.i2c.bus.12,address=0x2e')
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
++
++        exec_command_and_wait_for_pattern(self,
++            'echo tpm_tis_i2c 0x2e > /sys/bus/i2c/devices/i2c-12/new_device',
++            'tpm_tis_i2c 12-002e: 2.0 TPM (device-id 0x1, rev-id 1)');
++        exec_command_and_wait_for_pattern(self,
++            'cat /sys/class/tpm/tpm0/pcr-sha256/0',
++            'B804724EA13F52A9072BA87FE8FDCC497DFC9DF9AA15B9088694639C431688E0');
++
++        self.do_test_arm_aspeed_buildroot_poweroff()
++
++class AST2x00MachineMMC(LinuxKernelTest):
++
++    ASSET_RAINIER_EMMC = Asset(
++        ('https://fileserver.linaro.org/s/B6pJTwWEkzSDi36/download/'
++         'mmc-p10bmc-20240617.qcow2'),
++        'd523fb478d2b84d5adc5658d08502bc64b1486955683814f89c6137518acd90b')
++
++    def test_arm_aspeed_emmc_boot(self):
++        self.set_machine('rainier-bmc')
++        self.require_netdev('user')
++
++        image_path = self.ASSET_RAINIER_EMMC.fetch()
++
++        self.vm.set_console()
++        self.vm.add_args('-drive',
++                         'file=' + image_path + ',if=sd,id=sd2,index=2',
++                         '-net', 'nic', '-net', 'user', '-snapshot')
++        self.vm.launch()
++
++        self.wait_for_console_pattern('U-Boot SPL 2019.04')
++        self.wait_for_console_pattern('Trying to boot from MMC1')
++        self.wait_for_console_pattern('U-Boot 2019.04')
++        self.wait_for_console_pattern('eMMC 2nd Boot')
++        self.wait_for_console_pattern('## Loading kernel from FIT Image')
++        self.wait_for_console_pattern('Starting kernel ...')
++        self.wait_for_console_pattern('Booting Linux on physical CPU 0xf00')
++        self.wait_for_console_pattern('mmcblk0: p1 p2 p3 p4 p5 p6 p7')
++        self.wait_for_console_pattern('IBM eBMC (OpenBMC for IBM Enterprise')
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
 2.47.0
 

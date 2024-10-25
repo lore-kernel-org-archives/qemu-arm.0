@@ -1,173 +1,175 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp1049956njx;
-        Fri, 25 Oct 2024 06:24:15 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUzpN1M6N3yNcTmoOQv2W5TguB0+b/wn0iN5L+0zc7K7f5ql0hVcwF9NAXqD3iFlOLMa9J8gQN7+wAeBA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEry3UmtjaMS7Q2ZkUrc3vciDC6BWnkeplVHgKUDmwYagAebjozVHjOlkgE/khrVktI6GaM
-X-Received: by 2002:a05:622a:4489:b0:461:3834:b62e with SMTP id d75a77b69052e-4613834bb57mr4857201cf.3.1729862655311;
-        Fri, 25 Oct 2024 06:24:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729862655; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp1053006njx;
+        Fri, 25 Oct 2024 06:28:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVd0WcNFX1/tjZvMcbuJpyiVyNQMcKYN0C3oyDGmrA2pLV2meiyyryXY8xrWoo+C9UZoNgM4eZXmwZMLg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGrTbICty6Gd6dWXjZ0pw2lNpTuTGOafuvmo3Np/glAQODBYdkOENExqgrrY/YWpoF3IgfZ
+X-Received: by 2002:a05:6214:5347:b0:6d1:72f5:bc6c with SMTP id 6a1803df08f44-6d172f5bcc2mr45913896d6.22.1729862922678;
+        Fri, 25 Oct 2024 06:28:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729862922; cv=none;
         d=google.com; s=arc-20240605;
-        b=Y1hIsQ88Bbhoi0rPOE3AQikj2+rSJQcCbyRcXldgxOiDfP+M7vxDp8y2NY1t7v53qw
-         SdfyRmwmSOmFzByfn3VCp+TuMhiilyWmJC7eYamc1+mLhrZgyY/k6TXm+NrG2OSCvBG1
-         Fqr25KuHsLNEPV4QCy0TRqyiIdV5dLoPLZC4Aj/7zZaNpRiFZsXJS3iaYhIqWoTrLjEW
-         CyHQPKhuK+SBgCVVbjnYa2/6kG+lvpA5awvsZz9j/gFgFU5p65HU0a0Kap7A6z1SUCSX
-         s7hxbqnse6y+xZc0t2E98cfghj2iFvsNKfg29MCAGvbjwAK/br3fznNmEZK4huia3Kbv
-         BFNw==
+        b=AEWfFEJ3SVdl4CMFZQcZE9BAY9yKY1m4QnQcDxrtvq7dGvVSRCuAOTcL6qDoc8iNNZ
+         cgwCv55bKsrqyh5dWy+tMGtkYqAqwyGiWd4M8ITrlRa/qksgZr5GLdzoqscGms0Q5X/g
+         xqCEovc7TIZ+YKQ8BWwKgjVnH/Z+ByAgpxIJY2OTv5r7aM0oS9X3v7JypcURwI/NS/ha
+         dENNIegwjLE0ptkG2cBonlxMAyQPxpU0hD+jv/MJFytUfADXJJ08+Kqh4GgcztKofzR7
+         udoid3wirT9dYfnbBiQxA5uC2NSCcRorirPymdDSzG+WFjXYDx2vZsRWwp07dm1+CENj
+         BYSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=4jwhy2OH/3EypchV1ohJFKLuUp6Hz5miw89y3nkFMXs=;
-        fh=xvAnbKHZqn/QIdcyEcvWukR35/6Gm2tQ0V5YAjW0SGw=;
-        b=AGDoYYHQyrwxAHVRxBgh8KN6DRaNVfZJkq7dIUfS77DY5VwsoJ0FISe8Wqn+X0OTrC
-         r0QBw0QQc5O/SObTyeLpiPttF7aRsPfXPWlaStMGKSPG+6eCyvXSv2zMFc8JtnGrRQXf
-         w6dSQ77qeA7q8yfQUXi4JyrwJzIkHXNnmWd1prV2dXNQDV35PU4Zx25AHnU5YjXXaYaG
-         xumYrMLWrr3SgrIStJoS4jJeJgGEM308mNYKwtpKXPokUk54oA9Lt9lQnHIoeMrmmae+
-         LlD1DubDkEByYzy99bsiuSmYoYPMJzQzLbEK+0fDXcpCwdKNh8HT3P20338VnSXpzdzh
-         gusw==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=jfuBxxkO8cV8uPIqOpQfVwuiKiP8AV2qLKYZ7Y6yiag=;
+        fh=euy+9dj2VHtSqnZLVIOF7qXcykvhRjpeyMC1ZW5LbnA=;
+        b=fszdN85xbw7R3gUxBfHmuQPZh4tnHR8qiXyV8J4h0OGc2PMGFORaSCfWnV0HeUoyFL
+         ofF6jwupLVMOfEJNb5fdDuw+u7GpRx9HgRnj/W4JQ9l9ScXq2mGpICJefuGoJKt4jOEG
+         p6XGtqHK9OUDqX1fddcMP29plm+KoQmz4a79k/wxbpxOUp0Xz9mK06Hxd+2RZoYlBe8s
+         wo3XVoWr3p4BsBtyG7iQa7s3v3sZHO9iKslEpLmBqDC0UHKZ4uaS+uJLz+h1P/RwlX5X
+         qvFCfJzDcxGHCFFXxoNOHU0jV8U4PM9PS3Lm3rdEbQdwhj3HIZjUYyn0ODA9CSWiYZwf
+         rnvA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DmxuCm+4;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ajsQuJUC;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4613235a7a4si13569941cf.241.2024.10.25.06.24.15
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d179a7e799si15920256d6.497.2024.10.25.06.28.42
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Oct 2024 06:24:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 25 Oct 2024 06:28:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=DmxuCm+4;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ajsQuJUC;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1729862654;
+	s=mimecast20190719; t=1729862922;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=4jwhy2OH/3EypchV1ohJFKLuUp6Hz5miw89y3nkFMXs=;
-	b=DmxuCm+4UYFuEklz76K/wk2NaDsVqjY0z4NIfdT/0c2OqDcbA/rytNFo6x+TtwH0jZFwak
-	A9Pr7cHmdjbZAR5/mJhfaSszXYr0bJqT20FY3k3UOnZo+oWKgZx1Nh2EOZhUInI73B3tmX
-	BS1DGs9Br/wrxusYeyciWA5OFBc1D3g=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-372-z4pMRBx_NAa-FFL8VBYx9Q-1; Fri,
- 25 Oct 2024 09:24:11 -0400
-X-MC-Unique: z4pMRBx_NAa-FFL8VBYx9Q-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 47D781955E7F;
-	Fri, 25 Oct 2024 13:24:09 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.164])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4D4E21955F30;
-	Fri, 25 Oct 2024 13:24:01 +0000 (UTC)
-Date: Fri, 25 Oct 2024 14:23:58 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, cohuck@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
-	peter.maydell@linaro.org, richard.henderson@linaro.org,
-	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
-	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
-	armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
-	shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
-	pbonzini@redhat.com
-Subject: Re: [RFC 18/21] arm/cpu: Introduce a customizable kvm host cpu model
-Message-ID: <Zxub7ol4p8P_sWF8@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20241025101959.601048-1-eric.auger@redhat.com>
- <20241025101959.601048-19-eric.auger@redhat.com>
- <ZxuX4i9NjVRizB72@redhat.com>
- <cb6c8f62-c5dc-416d-865f-fbdf96164dac@redhat.com>
+	bh=jfuBxxkO8cV8uPIqOpQfVwuiKiP8AV2qLKYZ7Y6yiag=;
+	b=ajsQuJUC5gMbFi/T5BxG1gD4SeLvsGHBtkYNKaIIDPCTNk1vj7fW/a0VfA/UYiBzsXpQy7
+	OSLlqmttfeWSLpqCjtmmMKhQ7S+8Wp11w32GmLc+WYL0myBKMNvV5fXfUtkS2FE52AC85G
+	US76AsE4LIwCaP5P32SRs4dyVGXT3Fs=
+Received: from mail-lf1-f71.google.com (mail-lf1-f71.google.com
+ [209.85.167.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-35-ImFRXxLPNASeL8K7CpVhbA-1; Fri, 25 Oct 2024 09:28:41 -0400
+X-MC-Unique: ImFRXxLPNASeL8K7CpVhbA-1
+Received: by mail-lf1-f71.google.com with SMTP id 2adb3069b0e04-53a0b48e8d4so1962862e87.3
+        for <alex.bennee@linaro.org>; Fri, 25 Oct 2024 06:28:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1729862919; x=1730467719;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=jfuBxxkO8cV8uPIqOpQfVwuiKiP8AV2qLKYZ7Y6yiag=;
+        b=Ewz7rMMjT9wvpOHAXrnoRjZ9xu3YKymY8PvPInDEpMVM5GBci9ljuJ3q7EI1c5lH+L
+         ok3cJggHj/t9KQbjMux0Bg2p433GJbCsGLmKSsGCDRqJLcfmy5TdQ5IlpYW3ipLe2yB2
+         jDIaX7g6Are/Sl+PEcIbHdiwVeexJ9Q7qu8wO1BFIKRZWEPXMmqzqQszrewRa/ceSGYg
+         yMeZHjk63impGY0EFR1X2kGJUD/xUtA6nBN/DCgLI5vr/9neXBb4mL7Y9D9Snv2yBgnQ
+         VSmGtwcC2Ojn47mT4aIkH+U7PqghfOaZHsXO3lbZ04kL+B0Btoe0Bnez7nU6dA7kwjT5
+         ZY8A==
+X-Forwarded-Encrypted: i=1; AJvYcCVLF/CYBy2V3kMi39cTXUfpA7jltHoVHm2HHiTqOmSaquuphYowhL5UY2dKPWewXHlQiTEk2Y1W3+XzXg==@linaro.org
+X-Gm-Message-State: AOJu0YyQIx0zXRWy2vdrlE59lNvaYvjcjsTmPLUZ7V7ok3tw11O3l9Go
+	lwPOMF0taP6jaS2hSBflmURQ/6ZjEtx9qeBWj6+HMDa03Qd84f/8pPXGvyoh9Wd4WqcK1HmKvvf
+	dkDDozbngZZm4Zj0NEoSKrPIXOuKpbX3ebkjQQItTX8k66Bg2eZQ4gQ==
+X-Received: by 2002:a05:6512:2305:b0:539:e88f:2398 with SMTP id 2adb3069b0e04-53b23e8ec21mr3936005e87.39.1729862919496;
+        Fri, 25 Oct 2024 06:28:39 -0700 (PDT)
+X-Received: by 2002:a05:6512:2305:b0:539:e88f:2398 with SMTP id 2adb3069b0e04-53b23e8ec21mr3935965e87.39.1729862918950;
+        Fri, 25 Oct 2024 06:28:38 -0700 (PDT)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43193572932sm18131515e9.1.2024.10.25.06.28.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 25 Oct 2024 06:28:38 -0700 (PDT)
+Message-ID: <0700af51-a1a6-4b11-a4bf-0eaf6e279c6d@redhat.com>
+Date: Fri, 25 Oct 2024 15:28:35 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [RFC 21/21] arm/cpu-features: Document custom vcpu model
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: eric.auger.pro@gmail.com, cohuck@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ oliver.upton@linux.dev, sebott@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com,
+ mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+References: <20241025101959.601048-1-eric.auger@redhat.com>
+ <20241025101959.601048-22-eric.auger@redhat.com>
+ <ZxuZkUFz_bwAA1pf@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <ZxuZkUFz_bwAA1pf@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <cb6c8f62-c5dc-416d-865f-fbdf96164dac@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: 8p0HQfrbVOjv
+X-TUID: mDMqGoNXOuXM
 
-On Fri, Oct 25, 2024 at 03:18:25PM +0200, Eric Auger wrote:
-> Hi Daniel,
-> 
-> On 10/25/24 15:06, Daniel P. Berrangé wrote:
-> > On Fri, Oct 25, 2024 at 12:17:37PM +0200, Eric Auger wrote:
-> >> This new cpu model takes by default the host cpu values.
-> >> However it exposes uint64 SYSREG properties for writable ID reg
-> >> fields exposed by the host kernel. Properties are named
-> >> SYSREG_<REG>_<FIELD> with REG and FIELD being those used
-> >> in linux arch/arm64/tools/sysreg. This done by matching the
-> >> writable fields retrieved from the host kernel against the
-> >> generated description of sysregs.
-> >>
-> >> An example of invocation is:
-> >> -cpu custom,SYSREG_ID_AA64ISAR0_EL1_DP=0x0
-> >> which sets DP field of ID_AA64ISAR0_EL1 to 0.
-> > "SYSREG_" feels kinda redundant to repeat on every single
-> > feature. 
-> 
-> I do agree. To be honest this was mostly driven my implementation need
-> for cpu model expansion. Given the high number of props which are
-> getting exposed, I iterate on all props and having a prefix let me
-> return only those SYSREG props. Most probably we can get rid of the
-> prefix by using some generated code as well.
-> >
-> > Also, is this naming convention really the same one that users
-> > will see when they look at /proc/cpuinfo to view features ? It
-> No it is not. I do agree that the custom cpu model is very low level. It
-> is very well suited to test all series turning ID regs as writable but
-> this would require an extra layer that adapts /proc/cpuinfo feature
-> level to this regid/field abstraction.
-> 
-> In /cpu/proc you will see somethink like:
->  Features    : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp
-> asimdhp cpuid asimdrdm lrcpc dcpop asimddp
+Hi Daniel,
 
-Right, IMHO, this is the terminology that QEMU must use in user
-facing APIs.
+On 10/25/24 15:13, Daniel P. Berrangé wrote:
+> On Fri, Oct 25, 2024 at 12:17:40PM +0200, Eric Auger wrote:
+>> From: Cornelia Huck <cohuck@redhat.com>
+>>
+>> Add some documentation for the custom model.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>> ---
+>>  docs/system/arm/cpu-features.rst | 55 +++++++++++++++++++++++++++-----
+>>  1 file changed, 47 insertions(+), 8 deletions(-)
+>
+>> @@ -167,6 +196,16 @@ disabling many SVE vector lengths would be quite verbose, the ``sve<N>`` CPU
+>>  properties have special semantics (see "SVE CPU Property Parsing
+>>  Semantics").
+>>  
+>> +The ``custom`` CPU model needs to be configured via individual ID register
+>> +field properties, for example::
+>> +
+>> +  $ qemu-system-aarch64 -M virt -cpu custom,SYSREG_ID_AA64ISAR0_EL1_DP=0x0
+>> +
+>> +This forces ID_AA64ISAR0_EL1 DP field to 0.
+> What is the "baseline" featureset implied by 'custom' ?
+there is no baseline at the moment. By default this is a host
+passthrough model.
+>
+> On x86 we have the named CPU models each setting a baseline that matches
+> some corresponding real world silicon. Arm has that too, with TCG at
+> least. So that way you know what the baseline is that you're toggling
+> features against.
+Having named models is the next thing. custom vcpu model is not a named
+model. But we don't want to TCG like CPU model (like A57) because we
+want to be able to migrate between different machines like Ampere to
+NVidia or different Ampere systems. So the baseline must be something
+usable by both hosts.
+>
+> Experiance on x86 was that making arbitrary feature changes on top of the
+> named models could often backfire, as there are too many scenarios where
+> code will check for feature "Y", and assume that existance of "Y" implies
+> existance of "A", "B" and "C" too. So if you invent custom models where
+> Y is set, but B is missing, there's decent risk of things going wrong in
+> horrible to debug ways.  With that in mind, best practice is to try to
+> just the vanilla named CPU models to the greatest extent possible, and
+> keep feature toggling to an absolute minimum.  This 'custom' model does
+> not seem to give us such ability for arm.
+The custom model is not yet a named model. This is rather something to
+start this kind of discussion.
+The code used by the custom vcpu model allows fine tuning of the ID reg
+fields. This code could be reused by named models. We can also imagine
+that libvirt does implement the named models, ie. hardcodes some IDReg
+fields and thus implement the named model instead. Libvirt could
+identify what is the baseline source and dest are the closest to, choose
+this baseline and tune few reg id fields if some additional tuning are
+needed.
 
-On x86 we have a conversion tables for named features to register
-bits
+Thanks
 
-  https://gitlab.com/qemu-project/qemu/-/blob/master/target/i386/cpu.c#L914
-
-and libvirt does similar
-
-  https://gitlab.com/libvirt/libvirt/-/blob/master/src/cpu_map/x86_features.xml
-
-Yep, it is more work, but it is also much better for humans IMHO.
-
-> > feels pretty low level to me ?  Naming after the registers &
-> > fields, would be like configuring x86 CPU features by asking
-> > for "SYSREG_EAX_1_ECX_20" instead of saying "vmx" which is the
-> > human friendly name.
-> agreed.
-
-> >> At the moment, the custom model does not support legacy options
-> >> of the host cpu model. We need to understand what we do with those
-> >> latter (SVE, ...). This means that related KVM ioctl are
-> >> not called yet.
-> > It will be pretty painful to have to use different feature
-> > terminology for different CPU models. Everything in libvirt
-> > assuming feature terminology varies per-arch, not per-CPU
-> > model.
-> Actually as far as I understand those regids/fields would fit all kind
-> of aarch64 Cortex-A CPUs. So they wouldn't vary per-CPU (I mean their
-> terminology. Their availability will).
-
-What I mean is can we define  named models for various different
-vendor's Cortex-A silicon and just use that without needing to
-toggle features, except in rare cases.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Eric
+>
+> With regards,
+> Daniel

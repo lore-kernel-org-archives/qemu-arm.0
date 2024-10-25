@@ -1,331 +1,310 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1604336njf;
-        Mon, 28 Oct 2024 09:42:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXVmD0xkytS6yreoIyCxPm0oIl9ktL1mWkZgNxqnpL43GeIybg0OMmBQbgauLIhMZA2CYsE4Ts5+f3KDw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGfE/+9AS9yMfSXmBrlT/iRQetvNuAFVDCXyXpvnNs7ocXr0jmz+jslzqarr0AWEr7f69J1
-X-Received: by 2002:a05:6402:4313:b0:5c8:a4c1:d59a with SMTP id 4fb4d7f45d1cf-5cc19636c99mr224322a12.8.1730133743636;
-        Mon, 28 Oct 2024 09:42:23 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1730133743; cv=pass;
-        d=google.com; s=arc-20240605;
-        b=E61o0xA2mL9s1szR1i3zBODLywsqPrR49jBVIRoa5872tDvcJ7vcc/vENHBMPuVSu4
-         qouqnqFKQCmkoD9U+jTfPP3k7a75ZhNaeuxxX1C70MJQ8dW+yJUr/uVVIl6AR+b81cs5
-         ecEd7cfIxZUYs84HWR39WggAkg+Cn4O1qK848s59fkB919cHb4CmEGP6591bkGD7KGpb
-         ctIZo7LXioNxEBpYcjMohOqt412JjBOdFuTNhzHMbO8B9pMbtQ82q+X7KtczORRlQTlF
-         OJBWY0olaIGCHEy/TmTU5C6CYzSb0t76vZ228iHfokCR0cpSkp05764QqrxsOK5KSf56
-         atCw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :date:message-id:dkim-signature;
-        bh=T0UAX23+37ZRrHea98bsMhwQ80Lb1MZgJknkx7BqqeA=;
-        fh=zbAstK0XEpZpM61MrfDK9yU+RncDAvey8LV34OpnzWQ=;
-        b=NU/fMvx7/AFTc2F0ZCBe3SIMswUl9y9YHDS2txb/KQVERT6jkOfuPKqpvdnppeyRnu
-         /aMYaGJB3U7PTng1UHXdifNeshFacHmzcAjhlmzNpscBTi7GfzlS/eS+/+cNmUiLz438
-         eV9/OMe6RK6+eLmYasH9GQGZdow2PfCFCgQoQXS04NA099s3eWbmGieyf2AJeec4lPiu
-         kwkohAdSAW5mw3proHPVCOquO8SC9UMWQTmQF9EVlwlJDifZyAXdiUhO3xdNHvOMLTyd
-         YbKwRTYKVmjK3+URMhp/MZ4Cu7vV4TjTOCBejhSxw77hkaxc+iUn76g5PCqetwQxtiW5
-         92/g==;
-        dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y2Vh8dY6;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-29866-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-29866-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-29866-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5cbb630816esi4368048a12.221.2024.10.28.09.42.23
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp160938njf;
+        Fri, 25 Oct 2024 16:27:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AJvYcCUyQUmpZBP/X39h5OeJ3zfbh0huKwLGGghAoBzdPMqjLCKUjQ6GzpjskU4aVoTGcD6e8bFzz83cbIuJRg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFnvIWNY6kDkAFlahLc14hjjVTMZBmshdmCesV1t5zShd6uwXBUN6QEndwvgy4EIO89JjrP
+X-Received: by 2002:a17:906:dc8f:b0:a9a:6dc:b39d with SMTP id a640c23a62f3a-a9de619e644mr45521666b.41.1729898872812;
+        Fri, 25 Oct 2024 16:27:52 -0700 (PDT)
+Return-Path: <kvm+bounces-29744-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-a9b1d44525csi121690066b.184.2024.10.25.16.27.52
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2024 09:42:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-29866-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Fri, 25 Oct 2024 16:27:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm+bounces-29744-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Y2Vh8dY6;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-29866-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-29866-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=cEDZKBR7;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=V8VRDgQz;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of kvm+bounces-29744-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-29744-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 16D7A1F21F8F
-	for <alex.bennee@linaro.org>; Mon, 28 Oct 2024 16:42:23 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 3E47C1F22635
+	for <alex.bennee@linaro.org>; Fri, 25 Oct 2024 23:27:52 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id CD6F31DE3C4;
-	Mon, 28 Oct 2024 16:42:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 2B52620EA55;
+	Fri, 25 Oct 2024 23:27:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Y2Vh8dY6"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="cEDZKBR7";
+	dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b="V8VRDgQz"
+Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com [205.220.165.32])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3BAFF186E27
-	for <kvm@vger.kernel.org>; Mon, 28 Oct 2024 16:42:15 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1730133738; cv=none; b=Mi0skVxkajtC1luR69Of7ErhEClgN3AGYD6b+en7vYk6/nqFREutKl31pTY8o5fZygDK8YrfQ1kN9N+vAE+cMnpgRfEEj4NQuunGfjdNx9aOMKd1ck3BFU2fSYJ4ElGF0R1uYqEURpv/AowSOpVlfkVLUauX+3qkSPrBoSoWB8o=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1730133738; c=relaxed/simple;
-	bh=gtDU3Zk/9KeyeKM9oi//Mw9PoYgZ2wDzl+5iv5WDJ58=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=T+RYLqmnoh08iQzyxaLoVAekjeB8gAXbXKHjHbBLasXw/e+WLZzTIvaYFjmx2cOqo9pd82Fye1t6TPtng22Bg24k3xOVmlDsgA44+ylS7tkArypddlrISY/eQCFsUCxjLMh8e4Md2+jSNWtFunPFYee/MNVVGu/JJcC+n6y6e/k=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Y2Vh8dY6; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1730133735;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=T0UAX23+37ZRrHea98bsMhwQ80Lb1MZgJknkx7BqqeA=;
-	b=Y2Vh8dY691G7jmQKyjtRF0hXJ5JBtqX5IfTfkwIef4/eVT12MsR3uCXAnxnPDcZI/ionv9
-	M9xMfXcZtwLvuv8ZN78QQE3s2RzzNukkTT+ArGgKhxiU8+7FBzMX97yJVRp/sQJimX1cp7
-	pVOgiwDSDqUBEpyaY2NxYOoRp4WY6yw=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-383-OGNcBieINGuCpUkI5dahJg-1; Mon, 28 Oct 2024 12:42:13 -0400
-X-MC-Unique: OGNcBieINGuCpUkI5dahJg-1
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4315e8e9b1cso24996175e9.1
-        for <kvm@vger.kernel.org>; Mon, 28 Oct 2024 09:42:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730133732; x=1730738532;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=T0UAX23+37ZRrHea98bsMhwQ80Lb1MZgJknkx7BqqeA=;
-        b=GSUdCz1fNkYhqg5zNfq8X9UIKu+GZnpQRWDANXFXrjm+FyXBhf+yonsANdsakd9sVe
-         aKyPtYfbc4XJlOE2YKS8mI8BtjHJYzcv6QP92zkUpb3d7eej2YmC2qIYgRrXj/3iNz7b
-         Ziu/42nSsQ7NO5ogvloLZdliuO/2X1eyCV9/8wrYWy7tOzonswgnmtyOI4nFypzrZA7w
-         nzn/ayHsOpTiw8t8ZOgMYkrbJfhep/TP7muSHgHSpJx6GNI8OLyjEj4w+H3ESrf5i29/
-         Af8F5IWFFgs3Ltt/4qZR4DLJzBjYUvNAZP35aqZwctJNj885mWpm0KOL2L6CUffqIoY+
-         eCBg==
-X-Forwarded-Encrypted: i=1; AJvYcCXN2RUOGwL8tliVUMaYr7jOTG/CW71/n3gDeUkPDm5itxR5GyFYmIE6taV237JT0kvVbQo=@vger.kernel.org
-X-Gm-Message-State: AOJu0Yxp43z7RTLCSToQ/MidhPDVxpBxNEVSrXZmg4EqEOcBviENkacu
-	nv6Lq/UKueN0yux7YNAymU+MRfsg4TP+/ZG3y8lkORDpnxTh4pFjY83QqY5wQ/zLk4/hQmvEfDj
-	XX7Mvp5a/pPQ1rLES/3BB41jVGsYB9LzoZJ31wEKtHL+xRC42jA==
-X-Received: by 2002:a05:600c:450f:b0:431:7ccd:ff8a with SMTP id 5b1f17b1804b1-431b2f326c8mr2055605e9.14.1730133731985;
-        Mon, 28 Oct 2024 09:42:11 -0700 (PDT)
-X-Received: by 2002:a05:600c:450f:b0:431:7ccd:ff8a with SMTP id 5b1f17b1804b1-431b2f326c8mr2055315e9.14.1730133731552;
-        Mon, 28 Oct 2024 09:42:11 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c722:3c00:70fc:90a8:2c65:79b4? (p200300cbc7223c0070fc90a82c6579b4.dip0.t-ipconnect.de. [2003:cb:c722:3c00:70fc:90a8:2c65:79b4])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43193573551sm115340055e9.6.2024.10.28.09.42.10
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2024 09:42:11 -0700 (PDT)
-Message-ID: <9a49fc5f-bf9e-4e72-bd3e-13975d4913bd@redhat.com>
-Date: Mon, 28 Oct 2024 17:42:10 +0100
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F5E7217F5A
+	for <kvm@vger.kernel.org>; Fri, 25 Oct 2024 23:27:44 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=205.220.165.32
+ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1729898866; cv=fail; b=WM0khjJrJRrPGAwEuV9ITJ61QeTClXbrR8pZU277iEJ5qE7XwOCqyh/P15yg9HL8dUauTFmtv6Wy8/TxE+RGypoVh+fYGCDLLC8PSoub55sfhnYpmx5erPSdHLXLAOecFvM63jPDM5Gylv7QMNoHdQC3OQuiIQXDtiw9+2fP2XY=
+ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1729898866; c=relaxed/simple;
+	bh=KFLJMH9lkeeDGTkEs5fFsnCp9XK/BNQQhOnRPOlOhJc=;
+	h=Message-ID:Date:Subject:To:Cc:References:From:In-Reply-To:
+	 Content-Type:MIME-Version; b=pxGlCyTUc7bhckBFCM408G3D4pZ919bvnAQlyftU+j8A0fHvubxczpEaGW2FsT+yzQiF8jfrHdKjtmocf1iG5TpLrLeAydlwyVWy3gekAQ1rEd9g6GF8d6/Zb7/FEgjxOTSsqfXOeBghkrSDhxIO7mwOAbkQSSiQd7m4gIB1qqg=
+ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=cEDZKBR7; dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b=V8VRDgQz; arc=fail smtp.client-ip=205.220.165.32
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
+Received: from pps.filterd (m0246627.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 49PJdTbp009555;
+	Fri, 25 Oct 2024 23:27:37 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2023-11-20; bh=NH2pSWPPd1U5Ay1vV1GCgzgKCKbfjSLDTmpJtUu7nSs=; b=
+	cEDZKBR7ux1GBTrLm09djDY8RvZbpsAyZfImk9HwEaLOuSC8ekB3Wd7CT4psC/mb
+	G8nILAwXowp4PZ+hMVsI/S6a/QHFgFsBhXebDFL/OBzDNdUpstSLwuaL5Bi7k7wa
+	n8gIM3zvrX6ZmHDuU7+QV7PJ69nBTCwW8k1Twu0ldKPVrYOv/JK8vHfInfSCxKEu
+	OfzugoVVKo9FAbtb/6WRDd4F5g2zZ/SoziojRDPIcOwfhLmM2HYPshrJ/4wiqcBV
+	4Rvj3wzdu1UcEPSR5mJUUMVZ1T67bpLKSmhvZDEybty6jxJD21rZM1Owg7gTxLPZ
+	ynn8UHC3IPGyOlvNdbxnFQ==
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 42c55v62y7-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 25 Oct 2024 23:27:36 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 49PM0reb016379;
+	Fri, 25 Oct 2024 23:27:35 GMT
+Received: from nam02-dm3-obe.outbound.protection.outlook.com (mail-dm3nam02lp2048.outbound.protection.outlook.com [104.47.56.48])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 42emhefatc-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 25 Oct 2024 23:27:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=cUDvvwtJCoKffSYZSnjn2S76OCHw0UCM12neJGIl8SReZ4JTj+TtgtFquQwEH6kR7tV25XnDfz/WdYrldryqGGQjPz9aF0Z+s92gz+TqGQtoBVqssoFDQrt8Ygeg0tWK6WnIaXMeOdxRieRZGk8LERid6HzDC1MR30ODb5/lWh7p+Fuejfv/+NYYHLPeH/l0N3b75lvAXMhgJIfOjc9tr+8R7uPuH0xkUKEEax3XLfgpDELBeGkFrDGsL53uwDH8K54aslYbrwcZ67tzc9e9C0vZtha3RoFgQNiIBFmNtvspSHn62cmLF2Tx8FQ7Buf2wc1MVAFydLU2TDjRoo4IoQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=NH2pSWPPd1U5Ay1vV1GCgzgKCKbfjSLDTmpJtUu7nSs=;
+ b=drUyZZA0KLP/VvJO7bCeFOZjSbaTd40VcKux8AATrqnTsVcHt6tzBTFETC9fH2Fwr3R9mj88e2y279ghSiqwJOjurdeOhb7PnMiRZ2qwgdKRBhjmjqcAZ4s5wPoE1c2/C7tq5lNuahi2vZL64gYtVib/Q/dWatMzqqCt4RNG2tmM5GAielGovOlRIH86hvtSIVSgcit1PROIAqY4pIhmkNB5JPFtdxqLjzV/OYPDm3WwgZHzTp9tZIsko8dECuc/VeWAG+ycXE6gbbLrttXtEwDazwebXfg62SYBdwRxqcFMCD70BXDJ5kkatsfhpjxsx3VnDqXmNcunK/smbik3gQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=NH2pSWPPd1U5Ay1vV1GCgzgKCKbfjSLDTmpJtUu7nSs=;
+ b=V8VRDgQzfIaw8Lb1a9h3Sl9+bl+iUF1cJ/N3ipvSfW43GaJ6MTvRQ2anA35o1P+66ZLxG8H6Qj0U71uNrcFyN4zG+IqlChKiQzA+FDCEdLlDOUi221+bApvKOryn0oFaDkyMqw/kOPXd7m/hsvjLoAkeNzS2TGz9TswfXrxjKA8=
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
+ by MN6PR10MB8141.namprd10.prod.outlook.com (2603:10b6:208:4f9::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8093.18; Fri, 25 Oct
+ 2024 23:27:33 +0000
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23%4]) with mapi id 15.20.8093.014; Fri, 25 Oct 2024
+ 23:27:33 +0000
+Message-ID: <e9f8e404-50db-4e0f-a5e1-749acad49325@oracle.com>
+Date: Sat, 26 Oct 2024 01:27:31 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 3/4] system/physmem: Largepage punch hole before reset
+ of memory pages
+To: David Hildenbrand <david@redhat.com>, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+        philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
+        joao.m.martins@oracle.com
+References: <ZwalK7Dq_cf-EA_0@x1n>
+ <20241022213503.1189954-1-william.roche@oracle.com>
+ <20241022213503.1189954-4-william.roche@oracle.com>
+ <0cda6b34-d62c-49c7-b30c-33f171985817@redhat.com>
+Content-Language: en-US, fr
+From: William Roche <william.roche@oracle.com>
+In-Reply-To: <0cda6b34-d62c-49c7-b30c-33f171985817@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: PR3P193CA0059.EURP193.PROD.OUTLOOK.COM
+ (2603:10a6:102:51::34) To CH3PR10MB7329.namprd10.prod.outlook.com
+ (2603:10b6:610:12c::16)
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/4] accel/kvm: Keep track of the HWPoisonPage
- page_size
-To: William Roche <william.roche@oracle.com>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
- joao.m.martins@oracle.com
-References: <ZwalK7Dq_cf-EA_0@x1n>
- <20241022213503.1189954-1-william.roche@oracle.com>
- <20241022213503.1189954-3-william.roche@oracle.com>
- <a0fda9e7-d55b-455b-aeaa-27162b6cdc65@redhat.com>
- <9b17600d-4473-4bb6-841f-00f93d86f720@oracle.com>
-From: David Hildenbrand <david@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <9b17600d-4473-4bb6-841f-00f93d86f720@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: kkBlpRxD0Hl+
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|MN6PR10MB8141:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6138fe19-18a8-472d-7bb1-08dcf54c99fa
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?ZmFoSnFxOWNYWU5RTmtMRmhhdkF5NnVPNm90Z1RudjJ1MDkvVERFVWFzTTg1?=
+ =?utf-8?B?TklRVkpDTVNkWVZ5L1BIeXFlZUpVV2pjTW9ya0d1aVgza3lYWGQ1ZEdlSjVP?=
+ =?utf-8?B?TXZPRVRMdFJhL3hNY05mRVB2OWNXSFdDNnM2aTc2NXV5aVlmd25pUkxvV0tS?=
+ =?utf-8?B?M1JRalhtTEZnWW9odHFrdW45eEJUcHMwRE5HTkxVeTZRcXlIb2E1UStwc3hH?=
+ =?utf-8?B?NWJQazNIS0pFeGZjVmtoa2NUalcxVnRMdVk1MU9ZbGtTZ3RzZUZaRWVWMDF6?=
+ =?utf-8?B?encvVGJvUWxSVXFWSzY3aGF5QkxmSnNXYzI4Umx0ZnVlV3ZzOWZ3SmVYYzVO?=
+ =?utf-8?B?RFAwMnJQUWoxUWdlSHBDdkpXU0NYTTlaUFZrWEtMUUgzM1laMysxV1J3SGtt?=
+ =?utf-8?B?SHVTL0xTQmUzOWJoRGFqeVRKdHBJRXpubnFMK25iZjViTCthajg1NVZHeURV?=
+ =?utf-8?B?VlpGYnNFcnpWSFZ3R2JvREJtRDdZelBkL3RCenF0WDhSU1diT3QzbzJHdkNR?=
+ =?utf-8?B?STRNZTlxeDd0ZXFKT216QjhqaHplY01jSkNxY1hTUXpVMDZBbmlLeFlrZjVU?=
+ =?utf-8?B?RHZFZ1gvRWkyQUJWL1o5K2Uxa3hvbEdZUElIaFJvVVRBMkZjVlRLdnlVV1RR?=
+ =?utf-8?B?QmlOdjlqeFNPWVJLWU8zNTE4alliNW9weFlac1g5T2RXRVp4OXM4cFkwcDFP?=
+ =?utf-8?B?cXZkditTQ3hxQnVWUi91bXcyOGZFTjlvYzlEbC9vVElQZUhqeFNaVUdLSEp1?=
+ =?utf-8?B?S3hQczIxYUtPOGNuYmVKLzlEakRuc1J1UzZhN1k3aHlaQ3lNVzk0R3BaWkhY?=
+ =?utf-8?B?b0xIc0ErUlhVYnk1TUkyM3RaNnA5SjZNNVMxUzBURHFlRTdLNlZwNVpRbWpC?=
+ =?utf-8?B?V3c5T1NtSkIzMCtEL0tEVi9UeWlhRTZCOHNpVXdnenN5b3BlUHZFbzAwN05T?=
+ =?utf-8?B?NnQraXI5QmkyRFpKOVlHVDF0cmlXNUFoSFM3YWJkY1hjcFFoRFJIMjUwWmdz?=
+ =?utf-8?B?RnR2Y0pSTkwxTDR2ZUpTMFhUaWlPaXo3L1RISmFHTE51bVNYakRBdmhtQ1JN?=
+ =?utf-8?B?dm15YlJ6K3BXYW1LbUd2d1FqcGFHVFYwZFhHRFVDTm9hb1AxR2RlQ0Q3TTBx?=
+ =?utf-8?B?S0czTW5NQmFoV2FMMmlxaFJMOEVJM1MrOUU4RmZPbnArVjY4eHZ3aUsrcmZE?=
+ =?utf-8?B?c0ZPWHhxWDJMSWVYcWhtOTZpZkt3Uk12NktXN2hPK2FiemZaTXg2L25ORU02?=
+ =?utf-8?B?MFRsTWM3R3NlVGRhUm1ScGhXSklLejJCU3p6TjJUYmt0THJKMzV2YVdqdWxL?=
+ =?utf-8?B?b3VLY2ZtdUFxRnRXVG5YSFJiMUpNRDFGczVObnJFcWdrcnQ4TFNpZXBMaXJO?=
+ =?utf-8?B?eG4xNERROXlNa2xaY013aGFUY0xPUXZHTXVZQkxuaVYxWDFwQi9wS2hoWFVG?=
+ =?utf-8?B?Wm5leWpCdjU0NWVtVXJJZitoTnlsZHJlMk1JdGNGSENaa2FJK1R4MDRsUUNq?=
+ =?utf-8?B?bGtXaVd2OEVYQ3V3NVJHb1BaYmt4bGgzRHFMaGd4VmZyRENSMXFlNHEycUpV?=
+ =?utf-8?B?UVdGbnZXZUNPREZRSkN0MnBMcFdRZzk5YU0rTW9lSW5XVFRhVXZxQ2x4Wjlo?=
+ =?utf-8?B?UG5kZk44K2NGSno2b1FQa1hXQ0dKcVZBTkdXNDJULy81OTV4T2o2Z1dIOHdS?=
+ =?utf-8?B?a0p5dHNnZmpVV3FTT0pFeFZVN1ZTVi9UK29vNktUaDRPdTRlNndyU3VVbHBI?=
+ =?utf-8?Q?rsm1OcJme/qOP6i7Vi52N0HXir9wMt53dOfqIhN?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR10MB7329.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?anQzQUZlZTk5clplNWkxelRFMUp3T3g1cExHcEh4cGUvOCtQK3VQYUxhYUlP?=
+ =?utf-8?B?MGdyNzBzSUJPMUNRTWlKNjBqVDVHck80cTBjd1RJcGJBVTlTSEtLUXlMMlVm?=
+ =?utf-8?B?SUtzelhuSkgvRmJMVnBqbG9XWERPK1dYRW41ekczYkJlYTdxSkRiZ0ZDMzJw?=
+ =?utf-8?B?NmdFV1BTUStuZ3ZMQzBqUjdWMitxem1lOE9wcDdWS3dGS0RjLytZNzA2ejZZ?=
+ =?utf-8?B?QkFiR2Z0U2VyMmNldXdVN1RRa1p4ZXRaTU14dUhxN1JsVlljbGtwSGdhVWpw?=
+ =?utf-8?B?U2czT2ZRTDhweWYrMDJ2cDdoMnY0d1E1VldaUWlDTGg3cmFsc1V1SHhHZkFq?=
+ =?utf-8?B?dUE3NkVMUDZ6MVQzVHZ1c0N3aGg3cVhLN21xZXJSY0tabE9MT0s1SVd0WHhF?=
+ =?utf-8?B?M2lWemVrMmFidDloMmlOUCtiMmpuQ0ZEeHNuNklWcTNhK2JqdWxBZGw4ZnJ6?=
+ =?utf-8?B?M1Q0WDZwdlYwSHViVUloYy9YSWtiZW9NK284djhpcDJRalpHcHRWU2l3WDVk?=
+ =?utf-8?B?cnpiL3NpMmNVcVRSSG9kdnF5K0Jhd3BycXAzM0xRQmlzbXVsRVlzWTRlZk15?=
+ =?utf-8?B?Q3RyL3QrY3JMSFZlTzlmclFpYzJsVWVRQjJTeERhd2U0YXhSVU51SlRxRFl6?=
+ =?utf-8?B?cXl1blI5dnlkRjBwRmhRNitRcUIrRVdMUmtiN0RENldlbFJPZlRwam5vUmkw?=
+ =?utf-8?B?bEZDSFBRY3FoQS9NWjBIaTB2SVNyTHo0cmFvRWtrdHJwQS9sVHBYWXZqYmpz?=
+ =?utf-8?B?Q1FLbWtYNThGRkkxaThaNDF3cy8zVS92cFByK3NWYVBvaU5wdUdnS09iY0hX?=
+ =?utf-8?B?SkpmMFMxUjlGaDlnajYvTElHUUZCNTBiN05EdDE2Rjl4THV6U0x0UmRsc0xs?=
+ =?utf-8?B?T2l6U1hrK3FyUDVSVDMwbFR1T2pLeFJUaER1aHRrc1JQb1p6dTF0bXI3TWJa?=
+ =?utf-8?B?NkV6YVVjZGN6MGhpaVloTS94SGsyTlZ4SzVGcENaZVVTVnZId0FjRFlRWWtS?=
+ =?utf-8?B?WUp1OVZiSVRlN1NaSlB6Zm1SaUtLZG9xR0tQTnNLM1FLeGxPUHR3MmNXcm0r?=
+ =?utf-8?B?d0gvMTh4Wml5c1NJTEtOS0x3ZUZIWTM2QmJjN3J2aS8zL0NOaG1lanR5N2xl?=
+ =?utf-8?B?Y3BBS0sydVF4RmNPZnU5cngraDMxQlJIMm1mb3oyM3ZzcFBpd1loWVA1aytT?=
+ =?utf-8?B?YU90UVJHS3ZseGYvTzVUYzczdzVQc3RKUVd2aDdsRjZzRHppc3pFRmpDZlU4?=
+ =?utf-8?B?SWFqc2FGSGRFbFNmSmFERmx4SzRJcW15TS9TblJiZkpTREpkWHZyT2RXKzJJ?=
+ =?utf-8?B?VVVHY2JodHFyUWxvU3J5VTlicHY4S2RKbXl1R2RtRlQ5eWRTT0FzcDdMYWQ4?=
+ =?utf-8?B?Tzd2eVNuWDNWcGJWZk1QL1EyUUlHY0lTc1g1UXRsQm5oaUs5QnFNc2d1L294?=
+ =?utf-8?B?OU1jUVAvK2dSVFVYLzJJOXhoVzhvbmpBN1V3VTJjdnV0Zmt0NVFsRGtHenBH?=
+ =?utf-8?B?TE1UYXJlNFoyQ3N5Y0RCaUl5RFhCT0xlRWcrWVpwSVVZMWdLcUZDYXh0amxj?=
+ =?utf-8?B?R3lEWUxXSUVqS2xXSHhDY0hTdzE3Rm5MSER1ZnhNOWdLZVc5VnVYcEUzdEwr?=
+ =?utf-8?B?RTlpK09NYjdnZ1ZvZDl4d04yNldaamREYU52ak45TnN6Y2lmNEdYRHBBNXdx?=
+ =?utf-8?B?ZEhoSmc0Vm5DelZpNVBjZS9GWGF0ZFdDYVp3R0dTK0d2YUQyRlpGYlRZZFJU?=
+ =?utf-8?B?TUdBd3VjcndEcnB0RVNPTEwweng4T2x0UmpDNHJtaVRtL0tNWnZORE5PQ2lO?=
+ =?utf-8?B?Tlhtc1JnS1hyaFR6MFJtbHVKRFV6U1ZqdzNZWUFHM2dSZ0tlTEVmUk5GWTY1?=
+ =?utf-8?B?MHliaEN3MVgxSFJBMDFJcTVNNitHT3RDTVpSMjE3dC84dWZpKy8yRDM0WVJ3?=
+ =?utf-8?B?OVFXRnFaYldteSt0K1VLZkdiell6Q3JoUVV4WlJzQUFwMzJPK01zSzFTMWxm?=
+ =?utf-8?B?V0pnN01NNDR4SUU0cUgzZzYzaktCOFM2eTRLOGRUWnMzY1hiSUF6Z0JKVldn?=
+ =?utf-8?B?U25BM3VFaENzdlBhc0FSRU4xMDF2N1UxOEw5WWpuUk1Bb3FCVUZUQklhUVc4?=
+ =?utf-8?B?Wjl0Q0MxT0M1Ni9kUWxSTjFpblJHZ24wVDdGQ0pWTW9mV3FVWFNEdFd0NThW?=
+ =?utf-8?B?Wnc9PQ==?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
+	KTdeZ82Ix8EcQsDJ7np5aav9v8DQqU3jmzsKed2bzmfHOhp3caaQlnZiQQ0ERdmJyymcP5yK4JMvO/HsG1EjQvyhxpieKLHWq3Ej+72cwO6Atu1+I4lzgeHqAIPRoYCOZj4Q2MSxmLFtx8H0OU+PF3KrSsrI8OieNZ/OiXgaj4tx3DDYncrvL4IXHEXkLzXPvayQUka4y4oe2pZ/iVJoRF8ZRjpdApxsddJQvEa/7ca8gZQdH/Yqst37Ja9E5NGpq+EF7Y6kdbxQOkp3TArOzXrTHt4BNKoKyjFakwkO8rh3jTxM9vQUPkeLSvcC0RA94AKDU+pAHSpLYBhoLrKwoOvSYB4P7OXbnzWlhksTkysu1E0wUbGCebzEHRRUEGS/ri6KwV8fkuY3G0n2nc13fBTJzW17/STsNtfvQM248KZLfP7QehysVxnO1k0B9CXaBX6oz02nfGWry2ikOtV/WpdliLV0Aiz1YC6q97+8weRvaJn8J5Xfe0cjhuEpdLwKUciqZ+nnhbgDfgCNJECPe+w8TYfIVeUQRWv1/6mpysIVqe7VTcqI7AWvkuU7DwEy1xbcapbzhSJdX2f6sW9ckYdDbYeIM+rySEZnK6CuFjw=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6138fe19-18a8-472d-7bb1-08dcf54c99fa
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Oct 2024 23:27:33.0596
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: /4N2zUgWKZ4OcAt+I9L8vgEZj/NiveuY6fWxTKMCZRfxzbGa7vXWbEYzmZxQI/nC23mTVpGxrp+agmey3NlF82iyKAsLOX9VHX+CPvbvX6g=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN6PR10MB8141
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
+ definitions=2024-10-25_14,2024-10-25_02,2024-09-30_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 mlxscore=0 phishscore=0
+ suspectscore=0 bulkscore=0 adultscore=0 malwarescore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2409260000
+ definitions=main-2410250181
+X-Proofpoint-GUID: _aDqjkFImmU5D5axMs9_rI4YxKFAivFM
+X-Proofpoint-ORIG-GUID: _aDqjkFImmU5D5axMs9_rI4YxKFAivFM
+X-TUID: wbRu2U0luuBk
 
-On 26.10.24 01:27, William Roche wrote:
-> On 10/23/24 09:28, David Hildenbrand wrote:
-> 
->> On 22.10.24 23:35, “William Roche wrote:
->>> From: William Roche <william.roche@oracle.com>
->>>
->>> Add the page size information to the hwpoison_page_list elements.
->>> As the kernel doesn't always report the actual poisoned page size,
->>> we adjust this size from the backend real page size.
->>> We take into account the recorded page size to adjust the size
->>> and location of the memory hole.
->>>
->>> Signed-off-by: William Roche <william.roche@oracle.com>
->>> ---
->>>   accel/kvm/kvm-all.c       | 14 ++++++++++----
->>>   include/exec/cpu-common.h |  1 +
->>>   include/sysemu/kvm.h      |  3 ++-
->>>   include/sysemu/kvm_int.h  |  3 ++-
->>>   system/physmem.c          | 20 ++++++++++++++++++++
->>>   target/arm/kvm.c          |  8 ++++++--
->>>   target/i386/kvm/kvm.c     |  8 ++++++--
->>>   7 files changed, 47 insertions(+), 10 deletions(-)
->>>
->>> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
->>> index 2adc4d9c24..40117eefa7 100644
->>> --- a/accel/kvm/kvm-all.c
->>> +++ b/accel/kvm/kvm-all.c
->>> @@ -1266,6 +1266,7 @@ int kvm_vm_check_extension(KVMState *s, 
->>> unsigned int extension)
->>>    */
->>>   typedef struct HWPoisonPage {
->>>       ram_addr_t ram_addr;
->>> +    size_t     page_size;
->>>       QLIST_ENTRY(HWPoisonPage) list;
->>>   } HWPoisonPage;
->>>   @@ -1278,15 +1279,18 @@ static void kvm_unpoison_all(void *param)
->>>         QLIST_FOREACH_SAFE(page, &hwpoison_page_list, list, next_page) {
->>>           QLIST_REMOVE(page, list);
->>> -        qemu_ram_remap(page->ram_addr, TARGET_PAGE_SIZE);
->>> +        qemu_ram_remap(page->ram_addr, page->page_size);
+On 10/23/24 09:30, David Hildenbrand wrote:
+
+> On 22.10.24 23:35, “William Roche wrote:
+>> From: William Roche <william.roche@oracle.com>
 >>
->> Can't we just use the page size from the RAMBlock in qemu_ram_remap? 
->> There we lookup the RAMBlock, and all pages in a RAMBlock have the 
->> same size.
-> 
-> 
-> Yes, we could use the page size from the RAMBlock in qemu_ram_remap() 
-> that is called when the VM is resetting. I think that knowing the 
-> information about the size of poisoned chunk of memory when the poison 
-> is created is useful to give a trace of what is going on, before seeing 
-> maybe other pages being reported as poisoned. That's the 4th patch goal 
-> to give an information as soon as we get it.
-> It also helps to filter the new errors reported and only create an entry 
-> in the hwpoison_page_list for new large pages.
-> Now we could delay the page size retrieval until we are resetting and 
-> present the information (post mortem). I do think that having the 
-> information earlier is better in this case.
-
-If it is not required for this patch, then please move the other stuff 
-to patch #4.
-
-Here, we really only have to discard a large page, which we can derive 
-from the QEMU RAMBlock page size.
-
-> 
-> 
+>> When the VM reboots, a memory reset is performed calling
+>> qemu_ram_remap() on all hwpoisoned pages.
+>> While we take into account the recorded page sizes to repair the
+>> memory locations, a large page also needs to punch a hole in the
+>> backend file to regenerate a usable memory, cleaning the HW
+>> poisoned section. This is mandatory for hugetlbfs case for example.
 >>
->> I'll note that qemu_ram_remap() is rather stupid and optimized only 
->> for private memory (not shmem etc).
+>> Signed-off-by: William Roche <william.roche@oracle.com>
+>> ---
+>>   system/physmem.c | 8 ++++++++
+>>   1 file changed, 8 insertions(+)
 >>
->> mmap(MAP_FIXED|MAP_SHARED, fd) will give you the same poisoned page 
->> from the pagecache; you'd have to punch a hole instead.
->>
->> It might be better to use ram_block_discard_range() in the long run. 
->> Memory preallocation + page pinning is tricky, but we could simply 
->> bail out in these cases (preallocation failing, ram discard being 
->> disabled).
-> 
-> 
-> I see that ram_block_discard_range() adds more control before discarding 
-> the RAM region and can also call madvise() in addition to the fallocate 
-> punch hole for standard sized memory pages. Now as the range is supposed 
-> to be recreated, I'm not convinced that these madvise calls are necessary.
+>> diff --git a/system/physmem.c b/system/physmem.c
+>> index 3757428336..3f6024a92d 100644
+>> --- a/system/physmem.c
+>> +++ b/system/physmem.c
+>> @@ -2211,6 +2211,14 @@ void qemu_ram_remap(ram_addr_t addr, 
+>> ram_addr_t length)
+>>                   prot = PROT_READ;
+>>                   prot |= block->flags & RAM_READONLY ? 0 : PROT_WRITE;
+>>                   if (block->fd >= 0) {
+>> +                    if (length > TARGET_PAGE_SIZE && 
+>> fallocate(block->fd,
+>> +                        FALLOC_FL_KEEP_SIZE | FALLOC_FL_PUNCH_HOLE,
+>> +                        offset + block->fd_offset, length) != 0) {
+>> +                        error_report("Could not recreate the file 
+>> hole for "
+>> +                                     "addr: " RAM_ADDR_FMT "@" 
+>> RAM_ADDR_FMT "",
+>> +                                     length, addr);
+>> +                        exit(1);
+>> +                    }
+>>                       area = mmap(vaddr, length, prot, flags, block->fd,
+>>                                   offset + block->fd_offset);
+>>                   } else {
+>
+> Ah! Just what I commented to patch #3; we should be using 
+> ram_discard_range(). It might be better to avoid the mmap() completely 
+> if ram_discard_range() worked.
 
-They are the proper replacement for the mmap(MAP_FIXED) + fallocate.
 
-That function handles all cases of properly discarding guest RAM.
+I think you are referring to ram_block_discard_range() here, as 
+ram_discard_range() seems to relate to VM migrations, maybe not a VM reset.
 
-> 
-> But we can also notice that this function will report the following 
-> warning in all cases of not shared file backends:
-> "ram_block_discard_range: Discarding RAM in private file mappings is 
-> possibly dangerous, because it will modify the underlying file and will 
-> affect other users of the file"
+Remapping the page is needed to get rid of the poison. So if we want to 
+avoid the mmap(), we have to shrink the memory address space -- which 
+can be a real problem if we imagine a VM with 1G large pages for 
+example. qemu_ram_remap() is used to regenerate the lost memory and the 
+mmap() call looks mandatory on the reset phase.
 
-Yes, because it's a clear warning sign that something weird is 
-happening. You might be throwing away data that some other process might 
-be relying on.
 
-How are you making QEMU consume hugetlbs?
+>
+> And as raised, there is the problem with memory preallocation (where 
+> we should fail if it doesn't work) and ram discards being disabled 
+> because something relies on long-term page pinning ...
 
-We could suppress these warnings, but let's first see how you are able 
-to trigger it.
 
-> Which means that hugetlbfs configurations do see this new cryptic 
-> warning message on reboot if it is impacted by a memory poisoning.
-> So I would prefer to leave the fallocate call in the qemu_ram_remap() 
-> function. Or would you prefer to enhance ram_block_discard_range()code 
-> to avoid the message in a reset situation (when called from qemu_ram_remap)?
+Yes. Do you suggest that we add a call to qemu_prealloc_mem() for the 
+remapped area in case of a backend->prealloc being true ?
 
-Please try reusing the mechanism to discard guest RAM instead of 
-open-coding this. We still have to use mmap(MAP_FIXED) as a backup, but 
-otherwise this function should mostly do+check what you need.
+Or as we are running on posix machines for this piece of code (ifndef 
+_WIN32) maybe we could simply add a MAP_POPULATE flag to the mmap call 
+done in qemu_ram_remap() in the case where the backend requires a 
+'prealloc' ?  Can you confirm if this flag could be used on all systems 
+running this code ?
 
-(-warnings we might want to report differently / suppress)
+Unfortunately, I don't know how to get the MEMORY_BACKEND corresponding 
+to a given memory block. I'm not sure that MEMORY_BACKEND(block->mr) is 
+a valid way to retrieve the Backend object and its 'prealloc' property 
+here. Could you please give me a direction here ?
 
-If you want, I can start a quick prototype of what it could look like 
-when using ram_block_discard_range() + ram_block_discard_is_disabled() + 
-fallback to existing mmap(MAP_FIXED).
+I can send a new version using ram_block_discard_range() as you 
+suggested to replace the direct call to fallocate(), if you think it 
+would be better.
+Please let me know what other enhancement(s) you'd like to see in this 
+code change.
 
-> 
-> 
->>
->> qemu_ram_remap() might be problematic with page pinning (vfio) as is 
->> in any way :(
-> 
-> I agree. If qemu_ram_remap() fails, Qemu is ended either abort() or 
-> exit(1). Do you say that memory pinning could be detected by 
-> ram_block_discard_range() or maybe mmap call for the impacted region and 
-> make one of them fail ? This would be an additional reason to call 
-> ram_block_discard_range() from qemu_ram_remap().   Is it what you are 
-> suggesting ?
-
-ram_block_discard_is_disabled() might be the right test. If discarding 
-is disabled, then rebooting might create an inconsistency with 
-e.g.,vfio, resulting in the issues we know from memory ballooning where 
-the state vfio sees will be different from the state the guest kernel 
-sees. It's tricky ... and we much rather quit the VM early instead of 
-corrupting data later :/
-
--- 
-Cheers,
-
-David / dhildenb
+Thanks in advance,
+William.
 

@@ -1,166 +1,170 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp1094387njx;
-        Fri, 25 Oct 2024 07:23:55 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXXVOqxSzhKWNlPjGI++iH/cKA+T1Huyc3E7VbkLBc4Q0JjxBkqXa+k6C5i7FYPb4Gaa89paCeNBnj8wQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEjuzVb56pmhTIB6pIXsc6PsOVUzmk0j4+UbH2lbdtOELhiTsMWqu1Lqo4IQ4PP1tfazT/R
-X-Received: by 2002:a05:620a:24d0:b0:7b1:1cf6:cfd0 with SMTP id af79cd13be357-7b17e5722b3mr1336027685a.33.1729866235340;
-        Fri, 25 Oct 2024 07:23:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729866235; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp1112912njx;
+        Fri, 25 Oct 2024 07:51:36 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXvDBqtPOywd2RE12vHg96v7+TTH7DHloi639W9yyYc4NJwq9LhPNLB4VSMRX/X/l3nB0B+sRVkmJ2f3g==@linaro.org
+X-Google-Smtp-Source: AGHT+IEdB2gL91c4ILvxA7E/BQiwNX2NqnWvbd0ekDo77YOss16R0PHGeKB6HGHNhGZBS04+OU7U
+X-Received: by 2002:a05:620a:4441:b0:7b1:4f5c:6e86 with SMTP id af79cd13be357-7b17e566ce0mr1338074185a.17.1729867896408;
+        Fri, 25 Oct 2024 07:51:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729867896; cv=none;
         d=google.com; s=arc-20240605;
-        b=fMXKbSDaFqMyUXbuDQDv18lkbSbFMC43zKYikXX76nZ6RThRcDEVS/3E8ca4hdJZdQ
-         HzQd1mwv2TcSSM+Hk8lUi+Mq9wElckCLPsIvg4eqMHoprf2rGUgv3n13D/xrGi4FYPiv
-         wMOyii/C6cCsWEwFFIzgMrbe+6IlPICUS8jW52KH1Hd87MTD1FvrHfN3QyhxnlXznWAe
-         wrg2xP8KYjDj7vUoOAjA0Bk3rD/+/1p0gD0CGnuK2dt90gYrMl5leXsdPJ7dZI4q6kNV
-         5tj4AMzRVLxybv9tY1+9TxJp6+d5b/WQMIrQBcLPBP7fCjPPWaI0LumOQgnm4GhFQk8F
-         xrDw==
+        b=W4tW7WXPapi3adm7NtZSqWNQE69zBnbXhyZxNHvM3roxEqI2Rfvdwk+/QvnwmdsQkC
+         cGYHVWjCyv6A+GGSgAV/41zXWS7JMjZg7RdjGDXc06PHq8IFgcdAWNoqpLKgjFgz2BZk
+         pzxIc4KfczKZRhhblGLloFHzBUBEOjSR95dxWCeJ3XQ2lOLk/U4WWfFNl+YFY5BYYIbV
+         vzZ/Nngqc4p9y9lYsF+mow0AOx3L8wlnTRAHgEca9uyIqPpoauc9j+EbUd/pzYCo+fuc
+         FZiC9vaEbxk8ApRYBot2Q86TMbVJGwbz6V1NOF5XDt56cRrOt//2H2fLnyjdFIhUWAlD
+         Lr+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=nLMYlHcdvCVqme3C29S30Xolv4HvZ+Z8lZg76ycL2/E=;
-        fh=qiZPS4UC8WZTyfFCFo+5R+0C+WhFaVgWm6qQmIOAEaI=;
-        b=Vv9QSa9HkCYXfWO5lPVAnfvedZuNdexS5ZpZ80mX0hJL+mj8R9fGz5/nvLB94NZq4K
-         kYtpT8ILgkKMcvvOliCYAIJ0R6QtPeFpFULWtxG8sX7srrZL6noifXUwmsyUGCfZywYW
-         sFIWUX7G7CNppRXIvEaSOFV6kVDLEKQ+iPneUfXwAycpeyrjOJEcZZwss2rNOjqBLJlI
-         f5KBmZA7G1LzAAhejtjm7PmhpbwCesjxWyaf/2JoT53brX4wNIDv5NRkBCo47KyBntT+
-         t/iFs4UsHNEJCJTWA59SE86lRgI/+s3VLx9DCDYGK/c3Dad5qA0Rnlnsgg28yVIGFyeN
-         seQQ==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=oCATtNYUN/GH6SdVzjWLD+NRphY1brBLxdU6nbHifzE=;
+        fh=j8iu9gnKkyKRCdyssngZ40t6wHCC1TYvXQdL2AD/0bI=;
+        b=Q1mVsIqo7UCzL4i4wEv9qy0vuhkwDxm3S7ZmiS7ZJ3d0pOiXTCv2aGEoKNt2fy7uDc
+         F24PLPhwmLmuwls2W1BLHtstNYbWvixi3H41ZVkKbxu/nYQmt/Snm3R2yMkrO4uznHqe
+         U7PjG6v7sB2PMol5c94+PVCRMzYfWQTyDQ4jWJZYHaIoMAq43HYvR9I7wLordYZA1sCb
+         XFYiHo4P41eQ16v55Dcz72zCqRri5baEc78Uml5ZYex6qLxyJDs2IDhKRhO9pJiz1L88
+         oUtLgOeNrXG3UP+QOteIEogkJ/P3C3UZLHfRexWsv+osh7q2IpZfnq3NUQjTeEN+XpTe
+         j0xQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hKcvEo4T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b18d3599a9si155986385a.533.2024.10.25.07.23.55
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pq19XceS;
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kchamart@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d361fa4si163616085a.646.2024.10.25.07.51.36
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Oct 2024 07:23:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Oct 2024 07:51:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hKcvEo4T;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t4LE7-0004P9-D3; Fri, 25 Oct 2024 10:23:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t4LE6-0004Od-4K
- for qemu-arm@nongnu.org; Fri, 25 Oct 2024 10:23:42 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t4LE4-0000wX-BU
- for qemu-arm@nongnu.org; Fri, 25 Oct 2024 10:23:41 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-5c9c28c1e63so2522750a12.0
- for <qemu-arm@nongnu.org>; Fri, 25 Oct 2024 07:23:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729866218; x=1730471018; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=nLMYlHcdvCVqme3C29S30Xolv4HvZ+Z8lZg76ycL2/E=;
- b=hKcvEo4TAJ2IyVNHAe7TxsN856oB1PnSW5LQ61BV4tL2B1ZLoScWbUtecSxAyTTpvb
- xHX2bE3/zs6/EpDkeYE31NzcoN94hfWQosM2J+7Sj8WRyH1cT3+pjrHlpOR5A9pyqNjL
- isF4RfYaGcfhJQlAQBKid5vSDQXtQg0UFvrvJrzzLwMQu3yHsnEvrtdU43ct1X3LRSCZ
- Pdln5cOizbIqW843GvKb0/na3SuyPCIiHvIFEoBW6MUQ5DBDOiyFzTtuiMHJJVSxNXR1
- bbv+4RSHDBrcnUmDOY7PS0gLe/sVN1P7fZ7UEujCgwOyO5QvM1jQJWbUE19+VbO+781f
- i6Wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729866218; x=1730471018;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=nLMYlHcdvCVqme3C29S30Xolv4HvZ+Z8lZg76ycL2/E=;
- b=jsXVPPxNmRSo2KZqm5a1xKbAFGStSI++9HfunP7pUQG/zqaaaKNki8wuV2DN81XY1k
- J5cVk8P2PUjWawyWzEKov1RYxW6gs1mosCWxxppIonZltkn1HkvsaNZcyCMIB8sRyr0j
- OtbzDd7sNdr2ZfT7Fd6hROrGC8hdJScW0Nj8ktXRSumJyprW6INiNzxLHaTOFpbFe5xm
- gYl7i18k+ZftC4Fq0ZTJZRmXPbK8DStk32n9X6lsCcb+zRXwAhklNmWiLoDWvlQsgtt5
- XgfyTEX4JQHrJGsKW0wSCjyJkb0cV1exdcJIFlQVa+/akK+nEScAt8P8zuRrvzqw2vvH
- sDHg==
-X-Gm-Message-State: AOJu0Yyo/GMFQ6lFLILJf9wbyqjV+Sk3JdMyxe+AOuKiZpIR+an6fazi
- A1nlAhTs51gfIN4UQzLWw+SzxWFM7MRg00D/kp2nKa5ndRbu3dgVPKIYTWZyDA32aA3UFtCAd70
- CeO8b7rxZR6qhoCk1wXNzX5iYwvUdYtC+6nf48w==
-X-Received: by 2002:a05:6402:3586:b0:5cb:6869:24b4 with SMTP id
- 4fb4d7f45d1cf-5cb8aa4368emr7146380a12.0.1729866218146; Fri, 25 Oct 2024
- 07:23:38 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pq19XceS;
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1729867896;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=oCATtNYUN/GH6SdVzjWLD+NRphY1brBLxdU6nbHifzE=;
+	b=Pq19XceSrxuA3mOMmghXSh32ox0SWsPXgGEKvzlkSqsQbA8OnWWVZC6D26smoPQ3sHXBes
+	Rn9WclrTi4R8uOXXPTKjZGiM+V2N1T440Zjt2mw92Pp0U0yMu/bem3LHlPi9xQLd2s9r7s
+	1PTeoygRQcBojW6OYnbK8HWXio2DyvI=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-149-vvtCLRQwPH6-Gn7xQefQPA-1; Fri,
+ 25 Oct 2024 10:51:32 -0400
+X-MC-Unique: vvtCLRQwPH6-Gn7xQefQPA-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BA9EC19560A6;
+	Fri, 25 Oct 2024 14:51:30 +0000 (UTC)
+Received: from pinwheel (unknown [10.39.208.23])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 09383300018D;
+	Fri, 25 Oct 2024 14:51:22 +0000 (UTC)
+Date: Fri, 25 Oct 2024 16:51:19 +0200
+From: Kashyap Chamarthy <kchamart@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, cohuck@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org, richard.henderson@linaro.org,
+	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+	jdenemar@redhat.com, shahuang@redhat.com, mark.rutland@arm.com,
+	philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [RFC 00/21] kvm/arm: Introduce a customizable aarch64 KVM host
+ model
+Message-ID: <ZxuwZw2plMI6dNyE@pinwheel>
+References: <20241025101959.601048-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-References: <20241024063507.1585765-1-clg@redhat.com>
-In-Reply-To: <20241024063507.1585765-1-clg@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 25 Oct 2024 15:23:26 +0100
-Message-ID: <CAFEAcA-Ee7Dw98a1AmniR4H0VoDDyLowYx=7ZZVC3iGvcNvoOg@mail.gmail.com>
-Subject: Re: [PULL 00/17] aspeed queue
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HymAE2dHvNjm
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241025101959.601048-1-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: QUwmWA5ROZEB
 
-On Thu, 24 Oct 2024 at 07:38, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
->
-> The following changes since commit 6f625ce2f21d6a1243065d236298277c56f972=
-d5:
->
->   Merge tag 'pull-request-2024-10-21' of https://gitlab.com/thuth/qemu in=
-to staging (2024-10-21 17:12:59 +0100)
->
-> are available in the Git repository at:
->
->   https://github.com/legoater/qemu/ tags/pull-aspeed-20241024
->
-> for you to fetch changes up to 1df52a9ac0897687cff7c38705007b2b58065042:
->
->   test/qtest/aspeed_smc-test: Fix coding style (2024-10-24 07:57:47 +0200=
-)
->
-> ----------------------------------------------------------------
-> aspeed queue:
->
-> * Fixed GPIO interrupt status when in index mode
-> * Added GPIO support for the AST2700 SoC and specific test cases
-> * Fixed crypto controller (HACE) Accumulative hash function
-> * Converted Aspeed machine avocado tests to the new functional
->   framework. SDK tests still to be addressed.
-> * Fixed issue in the SSI controller when doing writes in user mode
-> * Added support for the WRSR2 register of Winbond flash devices
-> * Added SFDP table for the Windbond w25q80bl flash device
-> * Changed flash device models for the ast1030-a1 EVB
->
+On Fri, Oct 25, 2024 at 12:17:19PM +0200, Eric Auger wrote:
+
+Hi Eric,
+
+I'm new to Arm, so please bear with my questions :)
+
+> This RFC series introduces a KVM host "custom" model.
+
+(a) On terminology: as we know, in the x86 world, QEMU uses these
+    terms[1]:
+
+    - Host passthrough
+    - Named CPU models
+    - Then there's the libvirt abstraction, "host-model", that aims to
+      provide the best of 'host-passthrough' + named CPU models.
+
+    Now I see the term "host 'custom' model" here.  Most
+    management-layer tools and libvirt users are familiar with the
+    classic terms "host-model" or "custom".  If we now say "host
+    'custom' model", it can create confusion.  I hope we can settle on
+    one of the existing terms, or create a new term if need be.
+
+    (I'll share one more thought on how layers above libvirt tend to use
+    the term "custom", as a reply to patch 21/21, "arm/cpu-features:
+    Document custom vcpu model".)
+
+(b) The current CPU features doc[2] for Arm doesn't mention "host
+    passthrough" at all.  It is only implied by the last part of this
+    paragraph, from the section titled "A note about CPU models and
+    KVM"[3]:
+
+      "Named CPU models generally do not work with KVM. There are a few
+      cases that do work [...] but mostly if KVM is enabled the 'host'
+      CPU type must be used."
+
+    Related: in your reply[4] to Dan in this series, you write: "Having
+    named models is the next thing".  So named CPU models will be a
+    thing in Arm, too?  Then the above statement in the Arm
+    'cpu-features' will need updating :-)
+
+[...]
+
+> - the QEMU layer does not take care of IDREG field value consistency.
+>   The kernel neither. I imagine this could be the role of the upper
+>   layer to implement a vcpu profile that makes sure settings are
+>   consistent. Here we come to "named" models. What should they look
+>   like on ARM?
+
+Are there reasons why they can't be similar to how x86 reports in
+`qemu-system-x86 -cpu help`?  
+
+E.g. If it's an NVIDIA "Grace A02" (Neoverse-V2) host, it can report:
+
+    [gracehopper] $> qemu-kvm -cpu help
+    Available CPUs:
+      gracehopper-neoverse-v2
+      cortex-a57 (deprecated)
+      host
+      max
+
+Or whatever is the preferred nomenclature for ARM.  It also gives users
+of both x86 and ARM deployments a consistent expectation.  
+
+Currently on a "Grace A02" ("Neoverse-V2") machine, it reports:
+
+    [gracehopper] $> qemu-kvm -cpu help
+    Available CPUs:
+      cortex-a57 (deprecated)
+      host
+      max
+
+I see it's because there are no named models yet on ARM :-)
+
+[...]
+
+[1] https://www.qemu.org/docs/master/system/i386/cpu.html
+[2] https://www.qemu.org/docs/master/system/arm/cpu-features.html
+[3] https://www.qemu.org/docs/master/system/arm/cpu-features.html#a-note-about-cpu-models-and-kvm
+[4] https://lists.nongnu.org/archive/html/qemu-arm/2024-10/msg00891.html
 
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/9.2
-for any user-visible changes.
-
--- PMM
+-- 
+/kashyap

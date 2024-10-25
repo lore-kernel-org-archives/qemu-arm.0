@@ -1,170 +1,230 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp1112912njx;
-        Fri, 25 Oct 2024 07:51:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXvDBqtPOywd2RE12vHg96v7+TTH7DHloi639W9yyYc4NJwq9LhPNLB4VSMRX/X/l3nB0B+sRVkmJ2f3g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEdB2gL91c4ILvxA7E/BQiwNX2NqnWvbd0ekDo77YOss16R0PHGeKB6HGHNhGZBS04+OU7U
-X-Received: by 2002:a05:620a:4441:b0:7b1:4f5c:6e86 with SMTP id af79cd13be357-7b17e566ce0mr1338074185a.17.1729867896408;
-        Fri, 25 Oct 2024 07:51:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729867896; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp1139003njx;
+        Fri, 25 Oct 2024 08:26:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUaoiLy2BkSsWQFBmQIet3ApXOCJ/oFiNGFw5pjvYxk9rn2ddx+NT0fmiJf6jriLbLF8CX9H0JoW0l0DA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHkCKUXtFLLXedkFrdxq5csLhkxZG8p24/uvRmOJ2LzYPL5ga1jvWAh6nWXonKD60w3s50m
+X-Received: by 2002:ac8:5d43:0:b0:460:a9ec:b50e with SMTP id d75a77b69052e-46114715479mr146616891cf.38.1729869962607;
+        Fri, 25 Oct 2024 08:26:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729869962; cv=none;
         d=google.com; s=arc-20240605;
-        b=W4tW7WXPapi3adm7NtZSqWNQE69zBnbXhyZxNHvM3roxEqI2Rfvdwk+/QvnwmdsQkC
-         cGYHVWjCyv6A+GGSgAV/41zXWS7JMjZg7RdjGDXc06PHq8IFgcdAWNoqpLKgjFgz2BZk
-         pzxIc4KfczKZRhhblGLloFHzBUBEOjSR95dxWCeJ3XQ2lOLk/U4WWfFNl+YFY5BYYIbV
-         vzZ/Nngqc4p9y9lYsF+mow0AOx3L8wlnTRAHgEca9uyIqPpoauc9j+EbUd/pzYCo+fuc
-         FZiC9vaEbxk8ApRYBot2Q86TMbVJGwbz6V1NOF5XDt56cRrOt//2H2fLnyjdFIhUWAlD
-         Lr+g==
+        b=MCJ5PWN4HsAZxZjbnFBXgQbGZx42jT4TsHgvWvS14lOBqDO8X/rPAOd8XN0hKqLDtf
+         yJnuz89eXZuwDFgjN0VCIT4yia71uOnL/YM6hU2qK3GfEaIpW3WJZgCdFtl7hNeL/Gy6
+         weWRvOYHA5uBVxIa0TQOggNnk2GQ6zUjAWmuvGI1geXfXCHMbcBh9PFCQpue+8h81XqL
+         mAKkhbA49d1X2CTK1KShLIauYidRGhM1q5ZFs7UR8X9TLvp3tmHLDkpH4w4UVBT/4E6u
+         dA3AvK4b7/j0UzolsfPFCan+j1ja06qVirKhqJoKMZNpxGn9V1KJ8/pFib0eXQOSvVea
+         f/Qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=oCATtNYUN/GH6SdVzjWLD+NRphY1brBLxdU6nbHifzE=;
-        fh=j8iu9gnKkyKRCdyssngZ40t6wHCC1TYvXQdL2AD/0bI=;
-        b=Q1mVsIqo7UCzL4i4wEv9qy0vuhkwDxm3S7ZmiS7ZJ3d0pOiXTCv2aGEoKNt2fy7uDc
-         F24PLPhwmLmuwls2W1BLHtstNYbWvixi3H41ZVkKbxu/nYQmt/Snm3R2yMkrO4uznHqe
-         U7PjG6v7sB2PMol5c94+PVCRMzYfWQTyDQ4jWJZYHaIoMAq43HYvR9I7wLordYZA1sCb
-         XFYiHo4P41eQ16v55Dcz72zCqRri5baEc78Uml5ZYex6qLxyJDs2IDhKRhO9pJiz1L88
-         oUtLgOeNrXG3UP+QOteIEogkJ/P3C3UZLHfRexWsv+osh7q2IpZfnq3NUQjTeEN+XpTe
-         j0xQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id;
+        bh=KsYyQttbpL3ZH0ngkRFFWco798b7Y+XxejROx7CxYJ4=;
+        fh=Wc6k/MgZRYQS6gWStcrFzRXD5oFgUFWXlKexkMs9HmM=;
+        b=EKwMgMJtx7hPNn+0uzCU8eq73+VViiIRJU0646ZC+23/V77ErlfYsmA5Z6XWxt/Guc
+         WHVWOp7gFt0EfP5dX3p7v7nql5bgIkXfBdHj58C0gU5X90ag3i1ud/0GGZC//Hzw527z
+         MDATiKC8pxoaQkJvMsoAhJo97szFUaUIsS/Drub2uDIg+04skWzTYEqInZPHMQxuNpmi
+         zJT1zTUhkSncKKaNRyRQpW/44qztwTJm9zP0HyOU0MVmYjznH6Yc3B8eeD2Wu3y0pUgY
+         IQ/Rkrb7lV1ke0G+d1sBKfwGzZHw8p9tkeN9GZiLhBgJNfGuYqOFBRZRNQo/boX3MrNX
+         YkWw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pq19XceS;
-       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kchamart@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b18d361fa4si163616085a.646.2024.10.25.07.51.36
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-461323d8ab4si17771301cf.634.2024.10.25.08.26.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Oct 2024 07:51:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 25 Oct 2024 08:26:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Pq19XceS;
-       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1729867896;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=oCATtNYUN/GH6SdVzjWLD+NRphY1brBLxdU6nbHifzE=;
-	b=Pq19XceSrxuA3mOMmghXSh32ox0SWsPXgGEKvzlkSqsQbA8OnWWVZC6D26smoPQ3sHXBes
-	Rn9WclrTi4R8uOXXPTKjZGiM+V2N1T440Zjt2mw92Pp0U0yMu/bem3LHlPi9xQLd2s9r7s
-	1PTeoygRQcBojW6OYnbK8HWXio2DyvI=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-149-vvtCLRQwPH6-Gn7xQefQPA-1; Fri,
- 25 Oct 2024 10:51:32 -0400
-X-MC-Unique: vvtCLRQwPH6-Gn7xQefQPA-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BA9EC19560A6;
-	Fri, 25 Oct 2024 14:51:30 +0000 (UTC)
-Received: from pinwheel (unknown [10.39.208.23])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 09383300018D;
-	Fri, 25 Oct 2024 14:51:22 +0000 (UTC)
-Date: Fri, 25 Oct 2024 16:51:19 +0200
-From: Kashyap Chamarthy <kchamart@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com, cohuck@redhat.com, qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
-	peter.maydell@linaro.org, richard.henderson@linaro.org,
-	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
-	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
-	armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
-	jdenemar@redhat.com, shahuang@redhat.com, mark.rutland@arm.com,
-	philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [RFC 00/21] kvm/arm: Introduce a customizable aarch64 KVM host
- model
-Message-ID: <ZxuwZw2plMI6dNyE@pinwheel>
-References: <20241025101959.601048-1-eric.auger@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t4MC5-00059X-7P; Fri, 25 Oct 2024 11:25:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
+ id 1t4MC3-00058w-5p
+ for qemu-arm@nongnu.org; Fri, 25 Oct 2024 11:25:39 -0400
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
+ id 1t4MC1-00007Y-6o
+ for qemu-arm@nongnu.org; Fri, 25 Oct 2024 11:25:38 -0400
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.whiteo.stw.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <jlu@pengutronix.de>)
+ id 1t4MBp-0004XG-Uv; Fri, 25 Oct 2024 17:25:25 +0200
+Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77])
+ by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.96)
+ (envelope-from <jlu@pengutronix.de>) id 1t4MBo-000OFW-2e;
+ Fri, 25 Oct 2024 17:25:24 +0200
+Received: from localhost ([127.0.0.1])
+ by ptz.office.stw.pengutronix.de with esmtp (Exim 4.96)
+ (envelope-from <jlu@pengutronix.de>) id 1t4MBo-006ahU-05;
+ Fri, 25 Oct 2024 17:25:24 +0200
+Message-ID: <b67f302a11a679c3fdb02318eb9ef0be559d14ce.camel@pengutronix.de>
+Subject: Re: [PATCH 0/2] arm: Add collie and sx functional tests
+From: Jan =?ISO-8859-1?Q?L=FCbbe?= <jlu@pengutronix.de>
+To: Guenter Roeck <linux@roeck-us.net>, =?ISO-8859-1?Q?C=E9dric?= Le Goater	
+ <clg@kaod.org>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+ <philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
+ <thuth@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>, Joel Stanley
+ <joel@jms.id.au>
+Date: Fri, 25 Oct 2024 17:25:24 +0200
+In-Reply-To: <84c32f2d-7d9a-4e5a-8b67-1f954dd493f6@roeck-us.net>
+References: <20241017163247.711244-1-peter.maydell@linaro.org>
+ <dcf06645-dac0-4099-8946-38ca9deaeccf@redhat.com>
+ <ec2cb5e8-77be-435e-8aa7-4314cf412c4d@redhat.com>
+ <CAFEAcA8MY8DWABNuYuzH57k-nv3J4s0eMR=FuRt1TVd8P2GU2g@mail.gmail.com>
+ <a65a224e-4f54-436d-b555-734a8926d941@roeck-us.net>
+ <aa7755a2-e6fa-4d23-bcac-a630e6da98db@linaro.org>
+ <d9f18091-aee1-4b32-ba72-e1028fe433c9@roeck-us.net>
+ <5262a33d-d0c5-452b-9869-f8f482b1c857@linaro.org>
+ <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
+ <600baa43c3dd3547338934717cfb57c5e12b0d23.camel@pengutronix.de>
+ <84c32f2d-7d9a-4e5a-8b67-1f954dd493f6@roeck-us.net>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.0 (by Flathub.org) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241025101959.601048-1-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: QUwmWA5ROZEB
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: jlu@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: qemu-arm@nongnu.org
+Received-SPF: pass client-ip=2a0a:edc0:2:b01:1d::104;
+ envelope-from=jlu@pengutronix.de; helo=metis.whiteo.stw.pengutronix.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yYQeUmyC2i4U
 
-On Fri, Oct 25, 2024 at 12:17:19PM +0200, Eric Auger wrote:
+On Fri, 2024-10-25 at 06:59 -0700, Guenter Roeck wrote:
+> On 10/25/24 02:57, Jan L=C3=BCbbe wrote:
+> > On Fri, 2024-10-25 at 08:55 +0200, C=C3=A9dric Le Goater wrote:
+> > > On 10/24/24 19:59, Philippe Mathieu-Daud=C3=A9 wrote:
+> > > > Cc'ing Jan.
+> > > >=20
+> > > > On 22/10/24 12:04, Guenter Roeck wrote:
+> > > >=20
+> > > > > I have no idea how this is supposed to work, and I don't think it=
+ works
+> > > > > as implemented. I'll revert commit e32ac563b83 in my local copy o=
+f qemu.
+> > > > > Jan, can you have a look at this bug report please? Otherwise I'l=
+l
+> > > > > have a look during soft freeze.
+> >=20
+> > Guenter, just to make sure: In your case [1], you had "boot-emmc" (see
+> > aspeed_machine_ast2600_class_emmc_init) enabled, right? Otherwise the
+>=20
+> I tried both enabled and disabled.
+>=20
+> > boot partition size would be 0, meaning that the eMMC has no boot
+> > partitions.
+>=20
+> That is what I would have expected, but it does not reflect reality.
+>=20
+> > In that configuration, your backing file needs to have space for the
+> > boot partitions at the start (2*1MiB) and the rootfs starts at the 2
+> > MiB offset.
+> >=20
+>=20
+> boot-emmc doesn't make a difference, because
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (emmc) {
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+qdev_prop_set_uint8(card, "boot-config",
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 boot_emmc ? 0x1 << 3 : 0x0);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+>=20
+> in hw/arm/aspeed.c sets the boot partition size independently of the
+> boot-emmc flag.=C2=A0
 
-Hi Eric,
+Ah, yes. :/
 
-I'm new to Arm, so please bear with my questions :)
+So you can have SD, eMMC with boot from boot partition *disabled* or
+eMMC with boot from boot partition *enabled*.
 
-> This RFC series introduces a KVM host "custom" model.
+> I suspect that the expectation is that I always provide
+> an emmc image with a 2 MB gap at the beginning, but in my opinion that is
+> really hyper-clumsy, and I simply won't do it, sorry.
 
-(a) On terminology: as we know, in the x86 world, QEMU uses these
-    terms[1]:
+I was surprised that the boot partitions' contents are stored in the
+same backing file as the main area (instead of being separate files).
+But I've not researched why it was designed this way.
 
-    - Host passthrough
-    - Named CPU models
-    - Then there's the libvirt abstraction, "host-model", that aims to
-      provide the best of 'host-passthrough' + named CPU models.
+> I can work around
+> the problem by changing the above code to only set boot-partition-size if
+> boot_emmc is set, or I can revert commit e32ac563b83. For now I chose the
+> latter.
 
-    Now I see the term "host 'custom' model" here.  Most
-    management-layer tools and libvirt users are familiar with the
-    classic terms "host-model" or "custom".  If we now say "host
-    'custom' model", it can create confusion.  I hope we can settle on
-    one of the existing terms, or create a new term if need be.
-
-    (I'll share one more thought on how layers above libvirt tend to use
-    the term "custom", as a reply to patch 21/21, "arm/cpu-features:
-    Document custom vcpu model".)
-
-(b) The current CPU features doc[2] for Arm doesn't mention "host
-    passthrough" at all.  It is only implied by the last part of this
-    paragraph, from the section titled "A note about CPU models and
-    KVM"[3]:
-
-      "Named CPU models generally do not work with KVM. There are a few
-      cases that do work [...] but mostly if KVM is enabled the 'host'
-      CPU type must be used."
-
-    Related: in your reply[4] to Dan in this series, you write: "Having
-    named models is the next thing".  So named CPU models will be a
-    thing in Arm, too?  Then the above statement in the Arm
-    'cpu-features' will need updating :-)
-
-[...]
-
-> - the QEMU layer does not take care of IDREG field value consistency.
->   The kernel neither. I imagine this could be the role of the upper
->   layer to implement a vcpu profile that makes sure settings are
->   consistent. Here we come to "named" models. What should they look
->   like on ARM?
-
-Are there reasons why they can't be similar to how x86 reports in
-`qemu-system-x86 -cpu help`?  
-
-E.g. If it's an NVIDIA "Grace A02" (Neoverse-V2) host, it can report:
-
-    [gracehopper] $> qemu-kvm -cpu help
-    Available CPUs:
-      gracehopper-neoverse-v2
-      cortex-a57 (deprecated)
-      host
-      max
-
-Or whatever is the preferred nomenclature for ARM.  It also gives users
-of both x86 and ARM deployments a consistent expectation.  
-
-Currently on a "Grace A02" ("Neoverse-V2") machine, it reports:
-
-    [gracehopper] $> qemu-kvm -cpu help
-    Available CPUs:
-      cortex-a57 (deprecated)
-      host
-      max
-
-I see it's because there are no named models yet on ARM :-)
-
-[...]
-
-[1] https://www.qemu.org/docs/master/system/i386/cpu.html
-[2] https://www.qemu.org/docs/master/system/arm/cpu-features.html
-[3] https://www.qemu.org/docs/master/system/arm/cpu-features.html#a-note-about-cpu-models-and-kvm
-[4] https://lists.nongnu.org/archive/html/qemu-arm/2024-10/msg00891.html
+With e32ac563b83 reverted, your backing file layout will change *at
+runtime* depending on whether booting from the boot partition is
+enabled via EXT CSD registers. You should be able to try that using
+'mmc bootpart enable <boot_part> 0 /dev/mmcblk0' (with boot_part=3D0 for
+disabled and boot_part=3D1/2 for enabled).
 
 
--- 
-/kashyap
+I'm not sure what the best way forward is... perhaps make the boot-
+partition-size zero if boot_emmc is false? e.g.
+
+@@ -339,7 +339,12 @@ static void sdhci_attach_drive(SDHCIState *sdhci, Driv=
+eInfo *dinfo, bool emmc,
+         }
+         card =3D qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
+         if (emmc) {
+-            qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
++            /*
++             * Avoid the requirement for a padded disk image if booting fr=
+om
++             * eMMC boot partitions is not needed.
++             */
++            qdev_prop_set_uint64(card, "boot-partition-size",
++                                boot_emmc ? 1 * MiB : 0);
+             qdev_prop_set_uint8(card, "boot-config",
+                                 boot_emmc ? 0x1 << 3 : 0x0);
+         }
+
+
+Then you'd have the choice between:
+- an eMMC, but without boot partitions (and simple backing=C2=A0file=C2=A0l=
+ayout)
+- an eMMC with boot partitions and need a backing file with=C2=A0
+  the=C2=A0boot partitions at the beginning
+
+That might be the lesser evil. :)
+
+Jan
+
+--=20
+Pengutronix e.K.                        |                             |
+Steuerwalder Str. 21                    | https://www.pengutronix.de/ |
+31137 Hildesheim, Germany               | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686        | Fax:   +49-5121-206917-5555 |
+
+

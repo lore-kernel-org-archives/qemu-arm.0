@@ -1,137 +1,299 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp1206419njx;
-        Fri, 25 Oct 2024 10:05:08 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWleK/u6gr+sBoe3wletqCljOk7y2JgIhBjDH8R/tMula/q6CzKUiMXlK/+wTsf0jlM86S5vljD6C66Jw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH/9dqqXWwQcKWyDnwVVcHodx2P0j7YD1IiBHY5mKWJYTENkFLqBNstjLtgJzHq2gZLytxv
-X-Received: by 2002:ac8:5795:0:b0:45f:7f0:c3fc with SMTP id d75a77b69052e-461258cf3e2mr78602591cf.28.1729875908586;
-        Fri, 25 Oct 2024 10:05:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729875908; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp1207071njx;
+        Fri, 25 Oct 2024 10:05:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXXW9h9/WPHuTPw8jhMfyyN/xFARvUKnQv4fQWsfwK53fj6s9IlxtFAXWP5wmHoaowefTCDOzwEabGPHA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFtCAlqhLgIVDWxF7KyH5d+zQD1FvoEMP72lkWhlONVzB57xAfoFr/GemY4kyXoy1SkgjSz
+X-Received: by 2002:a05:6214:3d8a:b0:6cb:9b65:5c75 with SMTP id 6a1803df08f44-6d18585133emr923566d6.32.1729875952635;
+        Fri, 25 Oct 2024 10:05:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729875952; cv=none;
         d=google.com; s=arc-20240605;
-        b=YM6J1TqcEhk7Nez/mM3aBvi5PhpnEz/akh/J0ln7Cr4GWLkxW1fo3ZIo/88nY4IzoO
-         gBhXFqY0gq+F4nJGALc/XWHueZkXVmZ0ZcBcjHyVqyv7er8EfJHDzgmBjC95V5IvX9/f
-         vPLxB53FJUvqJglYEWgeprZHWn4q1f5JIuEURiVNlxbs0xZ353apCT+Qr7IFPF1jjGnk
-         FivMfd6I98rVjndReW/N3uAKhO1y/zPzU6Ho5AeNszQwxKn7PrOygvuBMPNl2pQwfmMv
-         dCgKaRAaZEQtGy8oZm1IKB+8xVtUCp+A5mCh7VtS4a6FhGaaj8kkwnIQthG0qKtEFZOl
-         UkdQ==
+        b=JHr/Q2Y3v1SXnNUC+GrmZ/m7OXstRpOQIj2m8599o25oKfbyBK6MCsT06YbTm9Xat9
+         f4XAHWZ5AJhu30+BQMpw1sxcHIkCfCtqpi3pnUyvVkNH9sXDv71L6/o7pY0DehjxdVu5
+         YynV6+YXgtW61uyOtJXz4N5ncEgucxGzpM3qPEa8Rarv6pCUjtDLYUm4b6j0dsHtzAap
+         sIS/AlF4a38aGToiFtc0+NxsU2bIfM1I0sXq1+vUCiMTWRV3SLU2Ato7wASJ8JmdLB1e
+         SJFSkZicqF7bLjtDE8gOKwwkyk3aLpEsefAumNSY/TQwCUBA1iideVaOBMk4z+7Tg5d5
+         Y3+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:user-agent:references:in-reply-to:subject:cc:to:from
-         :message-id:date:dkim-signature;
-        bh=7n16jx+AM4Q75TF9/4pFmgqIdwkyIqPYbvGYkDGNvgg=;
-        fh=TdyXTmdLqzwlDDWpF7QQ46aVNhC8CcvlAiVWl47ijyQ=;
-        b=Wu9Qk2B/N2c+fgPwy076utz+ftI4Nszpa8ZYKK7/yr+BGV1/L5B/c1OmKM9IJCUJiB
-         FW0amExR3lQbvbgHtYhXwl6e1xSTq0ymxGVocRQdCeZlC16x02lRYJtnPNX/d17lI6kX
-         wz/Wsz1hNdl8z5xx+1qkASz3Me+CRgGMxnyMOpyKhcIP0HKsSxGcriV9d6kXUS3/DnF6
-         OPsUYTm4cpUoACm4OadvfrxQKY6xXfYM05DlVRh4Jg2ZB1gMLXHSy47vuHTpZJW9c0nh
-         FToduKvmJKP3MK7HPyz8jE1MlhEto0tu+ezbVA4mrkXjIixpUUFfjLm/1yw7UACr4Dlh
-         0JTA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=lw71pk82LpfjAulczG7MG8JmKnJKEsspPL35UZ0lrYA=;
+        fh=WneqyjsRkNNq88Yd4qSkAfHx9MOec5NEz7KqkAYPd+w=;
+        b=gd/iKyQfHCH3adHkY7/PZIRCjVrS3XnBJ/1EHldbVD8TJF8JrJInNmmX/+NMAnw/+w
+         rvHFdXKZj9SUp8dRWhDEqmFXlqNvq6U1apDs0F0UWHEwZpyWiAQRskzkf6i5azw28FGi
+         gJH/OpOMHksFVpj/S+3C60uQY+u0Bim0WivWY9LYzRCJk0u+hsIR9NB00xw0t7LAIe+K
+         Xa1MwFGHyW9NB8WT8x/lIwK/d9tm09WsrxngoD9bpgMsMYo4zTHQXOLF1jAbzXX1HMRT
+         7PtPnGIIQvagFZtJKTp6w3RzNBNksZXBIxt5mJhQjhjYeP4eXs7w8VnrWxuKq0zewBeg
+         jEWw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=JNy0FXX4;
-       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:45d1:ec00::3 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <maz@kernel.org>
-Received: from nyc.source.kernel.org (nyc.source.kernel.org. [2604:1380:45d1:ec00::3])
-        by mx.google.com with ESMTPS id d75a77b69052e-4613213a5e2si18030561cf.185.2024.10.25.10.05.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Oct 2024 10:05:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of maz@kernel.org designates 2604:1380:45d1:ec00::3 as permitted sender) client-ip=2604:1380:45d1:ec00::3;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b="Hr/UZ8eI";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d179a7f3cdsi19459026d6.502.2024.10.25.10.05.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 25 Oct 2024 10:05:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=JNy0FXX4;
-       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:45d1:ec00::3 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 49662A4315B;
-	Fri, 25 Oct 2024 17:03:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16391C4CEE3;
-	Fri, 25 Oct 2024 17:05:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1729875906;
-	bh=VAh/4/78mDGKWgIG/y/D4fuPPawGrBhwtluopSQMBjE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=JNy0FXX4xsONOYlDh5s2CmGeGT+GDA9VoqdO1EcCSbmb6yvktqAly8Cwm+wk7/LET
-	 PYPmNfTCnKP1iNCpMseKsv6qG3l5tfK4lNoHOc3D2ABCZ3+y/72XT5ysRwu45aICdf
-	 izgbH7mHJiMYcf31kQiNlCOFQJsoycMKUBQZQE7WPgHSaxcToQmY1qaomaxL2qshCu
-	 WYYzXNC2csxIfGDGhN/GkbNPwwetYtjAnpJZt0GEfr9hvriYH6mnoZo58CvD6VBNUa
-	 fKzpqwnodvXZRAEF3Ek5kY6AiSlGVSLjErUY+SzvjuasM5WVQSjvDfaH1/XkCpZ48G
-	 rz1cCwjEXmXAA==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1t4NkF-006riz-RU;
-	Fri, 25 Oct 2024 18:05:04 +0100
-Date: Fri, 25 Oct 2024 18:05:03 +0100
-Message-ID: <86frok2jwg.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: eric.auger.pro@gmail.com,
-	cohuck@redhat.com,
-	qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	kvmarm@lists.linux.dev,
-	peter.maydell@linaro.org,
-	richard.henderson@linaro.org,
-	alex.bennee@linaro.org,
-	oliver.upton@linux.dev,
-	sebott@redhat.com,
-	shameerali.kolothum.thodi@huawei.com,
-	armbru@redhat.com,
-	berrange@redhat.com,
-	abologna@redhat.com,
-	jdenemar@redhat.com,
-	shahuang@redhat.com,
-	mark.rutland@arm.com,
-	philmd@linaro.org,
-	pbonzini@redhat.com
-Subject: Re: [RFC 14/21] arm/cpu: Add sysreg generation scripts
-In-Reply-To: <20241025101959.601048-15-eric.auger@redhat.com>
-References: <20241025101959.601048-1-eric.auger@redhat.com>
-	<20241025101959.601048-15-eric.auger@redhat.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: eric.auger@redhat.com, eric.auger.pro@gmail.com, cohuck@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org, richard.henderson@linaro.org, alex.bennee@linaro.org, oliver.upton@linux.dev, sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com, berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
-X-TUID: /6VExwSYtf5H
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b="Hr/UZ8eI";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t4Nkg-0006bF-Aa; Fri, 25 Oct 2024 13:05:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t4NkW-0006ZV-DD; Fri, 25 Oct 2024 13:05:20 -0400
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t4NkP-0003yX-1i; Fri, 25 Oct 2024 13:05:16 -0400
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-20cbca51687so19770995ad.1; 
+ Fri, 25 Oct 2024 10:05:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1729875911; x=1730480711; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=lw71pk82LpfjAulczG7MG8JmKnJKEsspPL35UZ0lrYA=;
+ b=Hr/UZ8eIQsg8sK/Dlf4Zxok1xOfTSVqvA+uv2TLAcdnmqyLaN2xKWWtQgPQl+89bRL
+ y+Loi4Bh+pi/xun/j1jVrMqFmbytxA5Kb/TCmdBFOUK56lKB1kH7+pr7/98PcilT83fp
+ SvqLe6FP6BAz4qyhDFvi6zomuAxkdGKMEqMCxLdAP0/e1ScsCstnaloh5OFn8oP4k20N
+ +BpEYgKhU0LDnH0RPbHTEOdB+Mg06VmwpfzB7MgNKvvyuclhZ8U8st8828huKNibAAuV
+ ABJF4+SnQXPMR/i3isT4tgTfi0QjqjU1tKCioKUueKVEL1ASwGB9Aej6LnHS4qCW9SJc
+ Hv7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1729875911; x=1730480711;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=lw71pk82LpfjAulczG7MG8JmKnJKEsspPL35UZ0lrYA=;
+ b=wcKxPj8d9qpJukfvX13DOYa2l9jIixOhUOoWDpMtQ4hl5JMyU9hw0uNlzQCH3sOz6T
+ 2X7HOLXZk52lb0NwPr4grYbptPiKiMMyD+JHLwB3/h9YrFMvV8IAPoCKtIZ+R4TgUrwl
+ +pgIPQS+l0x3lR+dh9kNrek/CXxMkHJxQKljzTNN/XvAZN5y8OmJ87o9Mli/Rn4fFx8A
+ Vhzf+iYFrjHNiIwxJ6UZVdtetnTj2/pbjSEJNaQBo0eQqw3fH3zLBLi7b3SXLLcpGRZY
+ L9G2B+n8qflVS7nSahmyU8IFjNsGpRuWgSdnQKIZqRPj+lbc2mZM/72GKpbFHSBhm8xi
+ xJ+w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVxps/IN+8tWpyvl0sM5yMG4rpV5j38mCq17vSRghlMDh9w0u+k5p4moyePtoCGFwasrUfTlHtYkEVr@nongnu.org
+X-Gm-Message-State: AOJu0YwjbA8eU83Gy079kJBFT45RIV/h/nQlBwWR3o5Yb1SJpbOTRxtg
+ 1R/6wCq0edwTkVaA4VrOzmIybcwp/xvuk4Y552WuMZ6QiqgMU4Bu
+X-Received: by 2002:a17:902:da84:b0:20c:5c37:e2c6 with SMTP id
+ d9443c01a7336-20fa9deb323mr140299635ad.11.1729875910495; 
+ Fri, 25 Oct 2024 10:05:10 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-210bc013620sm11395465ad.121.2024.10.25.10.05.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Oct 2024 10:05:09 -0700 (PDT)
+Message-ID: <8dfd38c9-bb9e-40e9-b95d-fe898db5df82@roeck-us.net>
+Date: Fri, 25 Oct 2024 10:05:07 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] arm: Add collie and sx functional tests
+To: =?UTF-8?Q?Jan_L=C3=BCbbe?= <jlu@pengutronix.de>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Joel Stanley <joel@jms.id.au>
+References: <20241017163247.711244-1-peter.maydell@linaro.org>
+ <dcf06645-dac0-4099-8946-38ca9deaeccf@redhat.com>
+ <ec2cb5e8-77be-435e-8aa7-4314cf412c4d@redhat.com>
+ <CAFEAcA8MY8DWABNuYuzH57k-nv3J4s0eMR=FuRt1TVd8P2GU2g@mail.gmail.com>
+ <a65a224e-4f54-436d-b555-734a8926d941@roeck-us.net>
+ <aa7755a2-e6fa-4d23-bcac-a630e6da98db@linaro.org>
+ <d9f18091-aee1-4b32-ba72-e1028fe433c9@roeck-us.net>
+ <5262a33d-d0c5-452b-9869-f8f482b1c857@linaro.org>
+ <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
+ <600baa43c3dd3547338934717cfb57c5e12b0d23.camel@pengutronix.de>
+ <84c32f2d-7d9a-4e5a-8b67-1f954dd493f6@roeck-us.net>
+ <b67f302a11a679c3fdb02318eb9ef0be559d14ce.camel@pengutronix.de>
+Content-Language: en-US
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ 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
+ mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
+In-Reply-To: <b67f302a11a679c3fdb02318eb9ef0be559d14ce.camel@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=groeck7@gmail.com; helo=mail-pl1-x62f.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.17, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZHFQ2xg+LojM
 
-On Fri, 25 Oct 2024 11:17:33 +0100,
-Eric Auger <eric.auger@redhat.com> wrote:
+On 10/25/24 08:25, Jan Lübbe wrote:
+> On Fri, 2024-10-25 at 06:59 -0700, Guenter Roeck wrote:
+>> On 10/25/24 02:57, Jan Lübbe wrote:
+>>> On Fri, 2024-10-25 at 08:55 +0200, Cédric Le Goater wrote:
+>>>> On 10/24/24 19:59, Philippe Mathieu-Daudé wrote:
+>>>>> Cc'ing Jan.
+>>>>>
+>>>>> On 22/10/24 12:04, Guenter Roeck wrote:
+>>>>>
+>>>>>> I have no idea how this is supposed to work, and I don't think it works
+>>>>>> as implemented. I'll revert commit e32ac563b83 in my local copy of qemu.
+>>>>>> Jan, can you have a look at this bug report please? Otherwise I'll
+>>>>>> have a look during soft freeze.
+>>>
+>>> Guenter, just to make sure: In your case [1], you had "boot-emmc" (see
+>>> aspeed_machine_ast2600_class_emmc_init) enabled, right? Otherwise the
+>>
+>> I tried both enabled and disabled.
+>>
+>>> boot partition size would be 0, meaning that the eMMC has no boot
+>>> partitions.
+>>
+>> That is what I would have expected, but it does not reflect reality.
+>>
+>>> In that configuration, your backing file needs to have space for the
+>>> boot partitions at the start (2*1MiB) and the rootfs starts at the 2
+>>> MiB offset.
+>>>
+>>
+>> boot-emmc doesn't make a difference, because
+>>
+>>           if (emmc) {
+>>               qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
+>>               qdev_prop_set_uint8(card, "boot-config",
+>>                                   boot_emmc ? 0x1 << 3 : 0x0);
+>>           }
+>>
+>> in hw/arm/aspeed.c sets the boot partition size independently of the
+>> boot-emmc flag.
 > 
-> Introduce scripts that automate the generation of system register
-> definitions from a given linux source tree arch/arm64/tools/sysreg.
+> Ah, yes. :/
 > 
-> Invocation of
-> ./update-aarch64-sysreg-code.sh $PATH_TO_LINUX_SOURCE_TREE
-> in scripts directory do generate 2 qemu files:
-> - target/arm/cpu-sysreg-properties.c
-> - target/arm/cpu-sysregs.h
+> So you can have SD, eMMC with boot from boot partition *disabled* or
+> eMMC with boot from boot partition *enabled*.
 > 
-> cpu-sysregs.h creates defined for all system registers.
-> However cpu-sysreg-properties.c only cares about feature ID registers.
+>> I suspect that the expectation is that I always provide
+>> an emmc image with a 2 MB gap at the beginning, but in my opinion that is
+>> really hyper-clumsy, and I simply won't do it, sorry.
 > 
-> update-aarch64-sysreg-code.sh calls two awk scripts.
-> gen-cpu-sysreg-properties.awk is inherited from kernel
-> arch/arm64/tools/gen-sysreg.awk. All credits to Mark Rutland
-> the original author of this script.
+> I was surprised that the boot partitions' contents are stored in the
+> same backing file as the main area (instead of being separate files).
+> But I've not researched why it was designed this way.
+> 
+>> I can work around
+>> the problem by changing the above code to only set boot-partition-size if
+>> boot_emmc is set, or I can revert commit e32ac563b83. For now I chose the
+>> latter.
+> 
+> With e32ac563b83 reverted, your backing file layout will change *at
+> runtime* depending on whether booting from the boot partition is
+> enabled via EXT CSD registers. You should be able to try that using
+> 'mmc bootpart enable <boot_part> 0 /dev/mmcblk0' (with boot_part=0 for
+> disabled and boot_part=1/2 for enabled).
+> 
 
-You really want to be careful with this. Both the script and the
-source file describing the registers are submitted to regular outburst
-of churn (I'm currently sitting on such a series). You really have to
-be prepared to see things breaking on each import.
+That does not matter for me since I am only testing if the emulation can boot
+Linux from emmc. Booing Linux from the boot partition isn't possible anyway
+because it is too small.
 
-That file has also been known to contain annoying mistakes, as it is
-all written by hand.
+> 
+> I'm not sure what the best way forward is... perhaps make the boot-
+> partition-size zero if boot_emmc is false? e.g.
+> 
+> @@ -339,7 +339,12 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
+>           }
+>           card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
+>           if (emmc) {
+> -            qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
+> +            /*
+> +             * Avoid the requirement for a padded disk image if booting from
+> +             * eMMC boot partitions is not needed.
+> +             */
+> +            qdev_prop_set_uint64(card, "boot-partition-size",
+> +                                boot_emmc ? 1 * MiB : 0);
+>               qdev_prop_set_uint8(card, "boot-config",
+>                                   boot_emmc ? 0x1 << 3 : 0x0);
+>           }
+> 
+> 
+> Then you'd have the choice between:
+> - an eMMC, but without boot partitions (and simple backing file layout)
+> - an eMMC with boot partitions and need a backing file with
+>    the boot partitions at the beginning
+> 
+> That might be the lesser evil. :)
+> 
 
-Ideally, this would be directly generated from the ARM XML, which is a
-public set of files. However, the license attached to this package
-strictly prohibits its use in QEMU (or anywhere else). One day...
+I would agree, but ...
+
+I don't know how boot partitions are used in the field. Having its size fixed to 1 MiB
+seems odd. Maybe a second parameter in addition to boot-emmc would be useful, so one
+could say something like "boot-emmc=on,boot-partition-size=16M".
 
 Thanks,
+Guenter
 
-	M.
-
--- 
-Without deviation from the norm, progress is not possible.

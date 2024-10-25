@@ -1,73 +1,81 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp851979njx;
-        Thu, 24 Oct 2024 23:55:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUPdF+w1nHKE7V3vISgiNMAEkhIQS7nd/vKRRaniUikzb0LfljYG5T+wOlPV9HcAj8tBFiCi+JPee0IjQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGXmSDFbXKmgoQi5dgj6GuuqamrXBKylpFLqba58U1K+W/0fJC1XQm8ZAwHSfkBh6AAXHG1
-X-Received: by 2002:a05:620a:4041:b0:7a9:9a28:5480 with SMTP id af79cd13be357-7b17e5b45a6mr1129019085a.46.1729839352715;
-        Thu, 24 Oct 2024 23:55:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729839352; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp927426njx;
+        Fri, 25 Oct 2024 02:58:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXK8e0nhJ+ZaHssUtqw0WE/pY55J+hELPDZy2cnF1uLgusZkiYU4+0Mdt/cuY0EEeZ474peXyu06kEq6w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGVObgASvdXDhMKW9XiAxhIEDVzgMfbJXXndCEAowso3i8GmiOQ3r6cQE8ZaDTnARnsguKv
+X-Received: by 2002:a05:620a:1908:b0:7b1:13d1:a8f5 with SMTP id af79cd13be357-7b186bb341bmr576386685a.16.1729850333074;
+        Fri, 25 Oct 2024 02:58:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729850333; cv=none;
         d=google.com; s=arc-20240605;
-        b=ARc69sc33YT/PhZEHfYUQwW1VlnPN+czB91B2QfUvEDxH/Y6uSaczHnfvfBLVZTPHw
-         jz+DS4fEMtnOAUxg2Du+7vLC5OnugiUpos+0CkIHbVpxW2y6dqjFG3A0whusSjNiMWjJ
-         1W85SOesaZ7T66EknPum5mxtJXgOYfq3hX93yP7hhmflcKszI96caPOf6IUJqukjlEBU
-         ash/WQtkcv/g1xtP9qIpItOKq6mgMUB7Q/ZOIDr/GVCGXi0X+1MLifDPjOeqn/zk72ai
-         JvEAjZaDvTK0ab5AziWFXlhJpueve/bmmMUNNWV4yPr6vJxYwEMPaXInmXLVwYP92UeF
-         u8vw==
+        b=BqLj2bKGH1jwCcd2Bw3NDsNM58gYzfjx6gh1oalKMh/4ljrbf+fJ6ubb23aezbTaJ0
+         A8KabpZt7fTJtwLoKIyWgZNBvLPo0e02k/p/sBT9TKTJgV9vCdowPIFU3TNAvIWVn3i4
+         TZ3s4VkfX7xfipsMK3Mb99STLMHrvtB5bbZzR3E8TprzQULjGTF/3/FBb7K5Ue3nUNMj
+         2QVR/KotHOk9ZdmtvnFFjz9oy1BkAoxeGEIe+iD5o/O5S4U7d3tQTIB0I3s7NJjT2ZZ/
+         knRfT9XWnSix3sfqC5mNCtVcnypMuBErJ20vLXHPrvX1tkbyMQ2gbzLfFM2h8FUDisoi
+         sM8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=gWEDNxYhq5YrOpo/yumoBMH/FloyzhE5TSdfcLjY0y4=;
-        fh=2TFTgnZPc9RygC+mHZJvOl54wyRvXbdY65CJDDCCNjc=;
-        b=KGS/oPV8wgnYy7OFgSy+NVxj2fSX/+Fdskov64uJrU3DOfl6LbarFFVnfrAT4WAU5k
-         A0simJsc+yypJ7TSGMH6XRNCkB0NGLQJJmngrvIPRYElha6s6hpbWYYQRApsZYPt4nm5
-         SRnHkhP6e0b5EQruS7QbJ+7v8Ht2m5z0UlrDSvAZaRCSzd5j4t1sdmSBGR8VkP7ngvoT
-         Ak6Vm7T/MGFDvtGD/RYexo51FWaonY1WtWuH+Z8wpRc5d/vrYOszFsNgSpfoq1GdB58U
-         ZBPRtoy06JpCe2ONB2ZkWlPF569pfIfitUQQbnXBJly7DaHR0nKT86VsI8go8UAwkS7j
-         g7MQ==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id;
+        bh=fIF8n/M7U1nIhMuqnQOoKkZwBrCfkxZs/F65N+JND2g=;
+        fh=vhchqryEbco/ZgVL/FWK1SZLRocSIAWcItRVbKfbPFQ=;
+        b=lB6sKjEe2ubSCkMVU3/7MfO/k9Qu2u6KVvGg0S2kEnpV/L48N0x7Zk4NE0YC810XWO
+         xMfuMqU0g3TznVM1oLoR8kFdawluzGpSJUK0UdbUHirMnI8Ir7hVfW66Vo3/BHJCkV7T
+         Uz5PbwcAzqW2qgx4YgAXh3mZWk/3yOJIgWFEcNU3sk20ip0/0MDsZck3lg+RLKdoTQjy
+         CT8cB2xUOJzzBa8RWzHfVVyHjDgvd8n7ZnlVlY7TuZhXQtT2sOR2DuuXvl2hafabK9ES
+         //YBL82wP8jyh6LKNOBXnWfWtL0y+9BCoCNPFjJAwokf6tDu1sQcBKLiw+GWr2bIueAc
+         vzmg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d17986b776si8765986d6.13.2024.10.24.23.55.52
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d3215f1si111799285a.265.2024.10.25.02.58.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Oct 2024 23:55:52 -0700 (PDT)
+        Fri, 25 Oct 2024 02:58:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t4EEO-0002YT-Lk; Fri, 25 Oct 2024 02:55:32 -0400
+	id 1t4H5L-0008Id-1J; Fri, 25 Oct 2024 05:58:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=hdtb=RV=kaod.org=clg@ozlabs.org>)
- id 1t4EEM-0002Xu-Be; Fri, 25 Oct 2024 02:55:30 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
+ id 1t4H5C-0008I7-SB
+ for qemu-arm@nongnu.org; Fri, 25 Oct 2024 05:58:15 -0400
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=hdtb=RV=kaod.org=clg@ozlabs.org>)
- id 1t4EEK-0001QP-5c; Fri, 25 Oct 2024 02:55:30 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XZYSg2TBqz4w2K;
- Fri, 25 Oct 2024 17:55:15 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XZYSb5cSCz4wyk;
- Fri, 25 Oct 2024 17:55:11 +1100 (AEDT)
-Message-ID: <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
-Date: Fri, 25 Oct 2024 08:55:09 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
+ id 1t4H5A-0006Af-JD
+ for qemu-arm@nongnu.org; Fri, 25 Oct 2024 05:58:14 -0400
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.whiteo.stw.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <jlu@pengutronix.de>)
+ id 1t4H4x-0008CR-CF; Fri, 25 Oct 2024 11:57:59 +0200
+Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77])
+ by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.96)
+ (envelope-from <jlu@pengutronix.de>) id 1t4H4w-000LLu-0V;
+ Fri, 25 Oct 2024 11:57:58 +0200
+Received: from localhost ([127.0.0.1])
+ by ptz.office.stw.pengutronix.de with esmtp (Exim 4.96)
+ (envelope-from <jlu@pengutronix.de>) id 1t4H4v-006Mwp-1O;
+ Fri, 25 Oct 2024 11:57:58 +0200
+Message-ID: <600baa43c3dd3547338934717cfb57c5e12b0d23.camel@pengutronix.de>
 Subject: Re: [PATCH 0/2] arm: Add collie and sx functional tests
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Guenter Roeck <linux@roeck-us.net>, Jan Luebbe <jlu@pengutronix.de>
+From: Jan =?ISO-8859-1?Q?L=FCbbe?= <jlu@pengutronix.de>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Philippe
+ =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+ <philmd@linaro.org>, Guenter Roeck <linux@roeck-us.net>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
- <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Joel Stanley <joel@jms.id.au>
+ <thuth@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>, Joel Stanley
+ <joel@jms.id.au>
+Date: Fri, 25 Oct 2024 11:57:57 +0200
+In-Reply-To: <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
 References: <20241017163247.711244-1-peter.maydell@linaro.org>
  <dcf06645-dac0-4099-8946-38ca9deaeccf@redhat.com>
  <ec2cb5e8-77be-435e-8aa7-4314cf412c4d@redhat.com>
@@ -76,19 +84,23 @@ References: <20241017163247.711244-1-peter.maydell@linaro.org>
  <aa7755a2-e6fa-4d23-bcac-a630e6da98db@linaro.org>
  <d9f18091-aee1-4b32-ba72-e1028fe433c9@roeck-us.net>
  <5262a33d-d0c5-452b-9869-f8f482b1c857@linaro.org>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <5262a33d-d0c5-452b-9869-f8f482b1c857@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=hdtb=RV=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
+ <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.0 (by Flathub.org) 
+MIME-Version: 1.0
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: jlu@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: qemu-arm@nongnu.org
+Received-SPF: pass client-ip=2a0a:edc0:2:b01:1d::104;
+ envelope-from=jlu@pengutronix.de; helo=metis.whiteo.stw.pengutronix.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.17, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,65 +115,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oAeEjicqX6x4
+X-TUID: hn7z/2zrcBxY
 
-On 10/24/24 19:59, Philippe Mathieu-Daudé wrote:
-> Cc'ing Jan.
-> 
-> On 22/10/24 12:04, Guenter Roeck wrote:
->> On 10/21/24 21:09, Philippe Mathieu-Daudé wrote:
->>> Hi Guenter,
->>>
->>> On 21/10/24 11:02, Guenter Roeck wrote:
->>>
->>>> Unrelated to this, but I found that the sd emulation in 9.1 is also broken
->>>> for loongarch and sifive_u, and partially for ast2600-evb (it has two
->>>> controllers, with one of them no longer working). That is too much for me
->>>> to track down quickly, so this is just a heads-up.
+Hi,
 
-It would greatly help if we could merge some of your testsuite under QEMU.
+On Fri, 2024-10-25 at 08:55 +0200, C=C3=A9dric Le Goater wrote:
+> On 10/24/24 19:59, Philippe Mathieu-Daud=C3=A9 wrote:
+> > Cc'ing Jan.
+> >=20
+> > On 22/10/24 12:04, Guenter Roeck wrote:
+> > > On 10/21/24 21:09, Philippe Mathieu-Daud=C3=A9 wrote:
+> > > > Hi Guenter,
+> > > >=20
+> > > > On 21/10/24 11:02, Guenter Roeck wrote:
+> > > >=20
+> > > > > Unrelated to this, but I found that the sd emulation in 9.1 is al=
+so broken
+> > > > > for loongarch and sifive_u, and partially for ast2600-evb (it has=
+ two
+> > > > > controllers, with one of them no longer working). That is too muc=
+h for me
+> > > > > to track down quickly, so this is just a heads-up.
+>=20
+> It would greatly help if we could merge some of your testsuite under QEMU=
+.
+>=20
+> > > > Please Cc me with reproducer or assign Gitlab issues to me,
+> > > > I'll have a look.
+> > > >=20
+> > >=20
+> > > If it wasn't funny, it would be sad.
+> > >=20
+> > > hw/sd/sd.c:sd_reset() calls sd_bootpart_offset() t determine the boot=
+ partition
+> > > offset. That function needs to have sd->ext_csd[EXT_CSD_PART_CONFIG] =
+configured.
+> > > However, the value is only set later in sd_reset() with the call to s=
+c->set_csd().
+> > > One of the parameters of that function is the previously calculated s=
+ize.
+> > >=20
+> > > So in other words there is a circular dependency. The call to sd_boot=
+part_offset()
+> > > returns 0 because sd->ext_csd[EXT_CSD_PART_CONFIG] isn't set, then
+> > > the call to sc->set_csd() sets it ... too late. Subsequent calls to
+> > > sd_bootpart_offset() will then return the expected offset.
 
+> oh. I didn't realize that :/ I guess we only tested our own scenario when
+> we were working on the ast2600 bringup.
 
->>> Please Cc me with reproducer or assign Gitlab issues to me,
->>> I'll have a look.
->>>
->>
->> If it wasn't funny, it would be sad.
->>
->> hw/sd/sd.c:sd_reset() calls sd_bootpart_offset() t determine the boot partition
->> offset. That function needs to have sd->ext_csd[EXT_CSD_PART_CONFIG] configured.
->> However, the value is only set later in sd_reset() with the call to sc->set_csd().
->> One of the parameters of that function is the previously calculated size.
->>
->> So in other words there is a circular dependency. The call to sd_bootpart_offset()
->> returns 0 because sd->ext_csd[EXT_CSD_PART_CONFIG] isn't set, then
->> the call to sc->set_csd() sets it ... too late. Subsequent calls to
->> sd_bootpart_offset() will then return the expected offset.
+Ah, I missed that early call to sd_bootpart_offset() as well.
 
-oh. I didn't realize that :/ I guess we only tested our own scenario when
-we were working on the ast2600 bringup.
+As this function calculates the *runtime* offset which changes as the
+guest switches between accessing the main user data area and the boot
+partitions by writing to the EXT_CSD_PART_CONFIG_ACC_MASK bits, it
+shouldn't be involved in the calculations in sd_reset() at all.
 
-I think the change in the reset handler should be :
+> I think the change in the reset handler should be :
+>=20
+> -=C2=A0=C2=A0=C2=A0 size -=3D sd_bootpart_offset(sd);
+> +=C2=A0=C2=A0=C2=A0 if (sd_is_emmc(sd)) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 size -=3D sd->boot_part_size =
+* 2;
+> +=C2=A0=C2=A0=C2=A0 }
 
--    size -= sd_bootpart_offset(sd);
-+    if (sd_is_emmc(sd)) {
-+        size -= sd->boot_part_size * 2;
-+    }
+Yes, that seems correct.
 
+> > > I have no idea how this is supposed to work, and I don't think it wor=
+ks
+> > > as implemented. I'll revert commit e32ac563b83 in my local copy of qe=
+mu.
+> > > Jan, can you have a look at this bug report please? Otherwise I'll
+> > > have a look during soft freeze.
 
-Thanks,
+Guenter, just to make sure: In your case [1], you had "boot-emmc" (see
+aspeed_machine_ast2600_class_emmc_init) enabled, right? Otherwise the
+boot partition size would be 0, meaning that the eMMC has no boot
+partitions.
 
-C.
+In that configuration, your backing file needs to have space for the
+boot partitions at the start (2*1MiB) and the rootfs starts at the 2
+MiB offset.
 
+Jan
 
+[1]https://lore.kernel.org/qemu-devel/8f3536a0-2685-4aa4-b26d-f460e738d387@=
+roeck-us.net/#t
+--=20
+Pengutronix e.K.                        |                             |
+Steuerwalder Str. 21                    | https://www.pengutronix.de/ |
+31137 Hildesheim, Germany               | Phone: +49-5121-206917-0    |
+Amtsgericht Hildesheim, HRA 2686        | Fax:   +49-5121-206917-5555 |
 
->> I have no idea how this is supposed to work, and I don't think it works
->> as implemented. I'll revert commit e32ac563b83 in my local copy of qemu.
-> > Jan, can you have a look at this bug report please? Otherwise I'll
-> have a look during soft freeze.
-> 
-> Regards,
-> 
-> Phil.
-> 
 

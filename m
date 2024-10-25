@@ -1,210 +1,283 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp927426njx;
-        Fri, 25 Oct 2024 02:58:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXK8e0nhJ+ZaHssUtqw0WE/pY55J+hELPDZy2cnF1uLgusZkiYU4+0Mdt/cuY0EEeZ474peXyu06kEq6w==@linaro.org
-X-Google-Smtp-Source: AGHT+IGVObgASvdXDhMKW9XiAxhIEDVzgMfbJXXndCEAowso3i8GmiOQ3r6cQE8ZaDTnARnsguKv
-X-Received: by 2002:a05:620a:1908:b0:7b1:13d1:a8f5 with SMTP id af79cd13be357-7b186bb341bmr576386685a.16.1729850333074;
-        Fri, 25 Oct 2024 02:58:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729850333; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp939432njx;
+        Fri, 25 Oct 2024 03:20:24 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWv6q6i5BWqPL0tPE5rLQGUxRZc1yLBz8ijBk0+dwR/3H0nIkq8IF5NS7tDA3ztRqAAnUpVtTEotfNduQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEm+2KrxCZ4RAOK+83/enN5ZD4x5OcoeuBYhBGPb/EDrwMR06UkANMF5N/hGDl2kfBDvD3d
+X-Received: by 2002:a05:620a:1720:b0:7ac:b93b:b250 with SMTP id af79cd13be357-7b186af0fa5mr669778585a.0.1729851624173;
+        Fri, 25 Oct 2024 03:20:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729851624; cv=none;
         d=google.com; s=arc-20240605;
-        b=BqLj2bKGH1jwCcd2Bw3NDsNM58gYzfjx6gh1oalKMh/4ljrbf+fJ6ubb23aezbTaJ0
-         A8KabpZt7fTJtwLoKIyWgZNBvLPo0e02k/p/sBT9TKTJgV9vCdowPIFU3TNAvIWVn3i4
-         TZ3s4VkfX7xfipsMK3Mb99STLMHrvtB5bbZzR3E8TprzQULjGTF/3/FBb7K5Ue3nUNMj
-         2QVR/KotHOk9ZdmtvnFFjz9oy1BkAoxeGEIe+iD5o/O5S4U7d3tQTIB0I3s7NJjT2ZZ/
-         knRfT9XWnSix3sfqC5mNCtVcnypMuBErJ20vLXHPrvX1tkbyMQ2gbzLfFM2h8FUDisoi
-         sM8A==
+        b=jakInIF8Wzs4NKyemKLgyJ8cba3gW5v9f/DITxSppNyhjMY3AljcgNIdSlMVeGOJ7r
+         1y0Y7sOq1Vg8NlIftds0ySTvfHZ8zctLkNda/moxXdxhP6gPHaLJkPCXsL9YewRHF4R7
+         Xf0DRJPh1HHFBZKu4gbk6SR4kcUdCKduPdPMFbxkez1dfnrXkPuMUb7He9N+ipk5VD/y
+         RZf2Q0gmrr1dBUD9rXm1vMJ7S+QngzAaMqUJhF5cdHgRTBpfIwL2McJRUs4/3CrulU70
+         +Q5MUqYrAgryOsZOrmbtngQ2iE0DuKjTVN52mXElWLPFKO2+bXF5C0EQ/GVoThUGaLw+
+         1Zeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id;
-        bh=fIF8n/M7U1nIhMuqnQOoKkZwBrCfkxZs/F65N+JND2g=;
-        fh=vhchqryEbco/ZgVL/FWK1SZLRocSIAWcItRVbKfbPFQ=;
-        b=lB6sKjEe2ubSCkMVU3/7MfO/k9Qu2u6KVvGg0S2kEnpV/L48N0x7Zk4NE0YC810XWO
-         xMfuMqU0g3TznVM1oLoR8kFdawluzGpSJUK0UdbUHirMnI8Ir7hVfW66Vo3/BHJCkV7T
-         Uz5PbwcAzqW2qgx4YgAXh3mZWk/3yOJIgWFEcNU3sk20ip0/0MDsZck3lg+RLKdoTQjy
-         CT8cB2xUOJzzBa8RWzHfVVyHjDgvd8n7ZnlVlY7TuZhXQtT2sOR2DuuXvl2hafabK9ES
-         //YBL82wP8jyh6LKNOBXnWfWtL0y+9BCoCNPFjJAwokf6tDu1sQcBKLiw+GWr2bIueAc
-         vzmg==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=qYGN8AneHs7Yi2bBHsXC5Dwgmi47r05I0LJR1RgUMiE=;
+        fh=g9Vpjz63mVuJw8UctUd3g7QIg2gWmZ7/W2EH3lsjMnE=;
+        b=ht+oIUby+dN5hOd4mswXt7Rgv4JirAo6N20IhvqcdFwQ/u4w13xf809sqwwjD8WF6y
+         5X2/fUUHTVjgnoULJ2Hbe9dYtvFSqkBBcI8OoaplyVqelS54an7H/nfhHeqRnr2b5lEw
+         YChgax64YMQHD6Jh/++p0/jzRNIpY4pBM/PyxOJ0kQktKAmv4YcZskm8TmBYYujlm3Qr
+         SOcL1S+jJNsoIDNP2hdqVrVD6XhrU1faE11sJHsJyRf7MBeNyPbhuD4pltYkgKXYZBxB
+         Ww37uosxWhCEKVsowH4y5veLG76j0tmoX+sOQ/oGOKrxuwxCpvwZPEbnUQTzehq2Qe0g
+         +0fA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b18d3215f1si111799285a.265.2024.10.25.02.58.52
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MRD1Ag2V;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d320523si108754385a.367.2024.10.25.03.20.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Oct 2024 02:58:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Oct 2024 03:20:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t4H5L-0008Id-1J; Fri, 25 Oct 2024 05:58:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
- id 1t4H5C-0008I7-SB
- for qemu-arm@nongnu.org; Fri, 25 Oct 2024 05:58:15 -0400
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
- id 1t4H5A-0006Af-JD
- for qemu-arm@nongnu.org; Fri, 25 Oct 2024 05:58:14 -0400
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.whiteo.stw.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <jlu@pengutronix.de>)
- id 1t4H4x-0008CR-CF; Fri, 25 Oct 2024 11:57:59 +0200
-Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77])
- by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.96)
- (envelope-from <jlu@pengutronix.de>) id 1t4H4w-000LLu-0V;
- Fri, 25 Oct 2024 11:57:58 +0200
-Received: from localhost ([127.0.0.1])
- by ptz.office.stw.pengutronix.de with esmtp (Exim 4.96)
- (envelope-from <jlu@pengutronix.de>) id 1t4H4v-006Mwp-1O;
- Fri, 25 Oct 2024 11:57:58 +0200
-Message-ID: <600baa43c3dd3547338934717cfb57c5e12b0d23.camel@pengutronix.de>
-Subject: Re: [PATCH 0/2] arm: Add collie and sx functional tests
-From: Jan =?ISO-8859-1?Q?L=FCbbe?= <jlu@pengutronix.de>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Philippe
- =?ISO-8859-1?Q?Mathieu-Daud=E9?=
- <philmd@linaro.org>, Guenter Roeck <linux@roeck-us.net>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
- <thuth@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>, Joel Stanley
- <joel@jms.id.au>
-Date: Fri, 25 Oct 2024 11:57:57 +0200
-In-Reply-To: <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
-References: <20241017163247.711244-1-peter.maydell@linaro.org>
- <dcf06645-dac0-4099-8946-38ca9deaeccf@redhat.com>
- <ec2cb5e8-77be-435e-8aa7-4314cf412c4d@redhat.com>
- <CAFEAcA8MY8DWABNuYuzH57k-nv3J4s0eMR=FuRt1TVd8P2GU2g@mail.gmail.com>
- <a65a224e-4f54-436d-b555-734a8926d941@roeck-us.net>
- <aa7755a2-e6fa-4d23-bcac-a630e6da98db@linaro.org>
- <d9f18091-aee1-4b32-ba72-e1028fe433c9@roeck-us.net>
- <5262a33d-d0c5-452b-9869-f8f482b1c857@linaro.org>
- <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.0 (by Flathub.org) 
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MRD1Ag2V;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1729851623;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=qYGN8AneHs7Yi2bBHsXC5Dwgmi47r05I0LJR1RgUMiE=;
+	b=MRD1Ag2VEL+VLI6w2fBEOyapSHngR5Ovg19S8TkyhA3bgVqCqyugfTSBVC4N6GQnpESH4t
+	5tM5wscR6xJfI/zByXeSRM7SbkWsWQmd5XltqSHA4gEbzbydJoEYacL2fGL7iaW95xdXlK
+	9C3mfOZWMe3nyIsa+mE3eZLjc+uNB4U=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-172-ptBJYbRdMJyGvdkJnzdOpg-1; Fri,
+ 25 Oct 2024 06:20:20 -0400
+X-MC-Unique: ptBJYbRdMJyGvdkJnzdOpg-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A9A0119560AB;
+	Fri, 25 Oct 2024 10:20:17 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.39.194.5])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 433AE196BB7E;
+	Fri, 25 Oct 2024 10:20:08 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com,
+	eric.auger@redhat.com,
+	cohuck@redhat.com,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	maz@kernel.org,
+	oliver.upton@linux.dev,
+	sebott@redhat.com,
+	shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com,
+	berrange@redhat.com,
+	abologna@redhat.com,
+	jdenemar@redhat.com
+Cc: shahuang@redhat.com,
+	mark.rutland@arm.com,
+	philmd@linaro.org,
+	pbonzini@redhat.com
+Subject: [RFC 00/21] kvm/arm: Introduce a customizable aarch64 KVM host model
+Date: Fri, 25 Oct 2024 12:17:19 +0200
+Message-ID: <20241025101959.601048-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: jlu@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: qemu-arm@nongnu.org
-Received-SPF: pass client-ip=2a0a:edc0:2:b01:1d::104;
- envelope-from=jlu@pengutronix.de; helo=metis.whiteo.stw.pengutronix.de
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hn7z/2zrcBxY
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: fGO9kcSbipt9
 
-Hi,
+This RFC series introduces a KVM host "custom" model.
 
-On Fri, 2024-10-25 at 08:55 +0200, C=C3=A9dric Le Goater wrote:
-> On 10/24/24 19:59, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Cc'ing Jan.
-> >=20
-> > On 22/10/24 12:04, Guenter Roeck wrote:
-> > > On 10/21/24 21:09, Philippe Mathieu-Daud=C3=A9 wrote:
-> > > > Hi Guenter,
-> > > >=20
-> > > > On 21/10/24 11:02, Guenter Roeck wrote:
-> > > >=20
-> > > > > Unrelated to this, but I found that the sd emulation in 9.1 is al=
-so broken
-> > > > > for loongarch and sifive_u, and partially for ast2600-evb (it has=
- two
-> > > > > controllers, with one of them no longer working). That is too muc=
-h for me
-> > > > > to track down quickly, so this is just a heads-up.
->=20
-> It would greatly help if we could merge some of your testsuite under QEMU=
-.
->=20
-> > > > Please Cc me with reproducer or assign Gitlab issues to me,
-> > > > I'll have a look.
-> > > >=20
-> > >=20
-> > > If it wasn't funny, it would be sad.
-> > >=20
-> > > hw/sd/sd.c:sd_reset() calls sd_bootpart_offset() t determine the boot=
- partition
-> > > offset. That function needs to have sd->ext_csd[EXT_CSD_PART_CONFIG] =
-configured.
-> > > However, the value is only set later in sd_reset() with the call to s=
-c->set_csd().
-> > > One of the parameters of that function is the previously calculated s=
-ize.
-> > >=20
-> > > So in other words there is a circular dependency. The call to sd_boot=
-part_offset()
-> > > returns 0 because sd->ext_csd[EXT_CSD_PART_CONFIG] isn't set, then
-> > > the call to sc->set_csd() sets it ... too late. Subsequent calls to
-> > > sd_bootpart_offset() will then return the expected offset.
+Since v6.7 kernel, KVM/arm allows the userspace to overwrite the values
+of a subset of ID regs. The list of writable fields continues to grow.
+The feature ID range is defined as the AArch64 System register space
+with op0==3, op1=={0, 1, 3}, CRn==0, CRm=={0-7}, op2=={0-7}.
 
-> oh. I didn't realize that :/ I guess we only tested our own scenario when
-> we were working on the ast2600 bringup.
+The custom model uses this capability and allows to tune the host
+passthrough model by overriding some of the host passthrough ID regs.
 
-Ah, I missed that early call to sd_bootpart_offset() as well.
+The end goal is to get more flexibility when migrating guests
+between different machines. We would like the upper software layer
+to be able detect how tunable the vpcu is on both source and destination
+and accordingly define a customized KVM host model that can fit
+both ends. With the legacy host passthrough model, this migration
+use case would fail.
 
-As this function calculates the *runtime* offset which changes as the
-guest switches between accessing the main user data area and the boot
-partitions by writing to the EXT_CSD_PART_CONFIG_ACC_MASK bits, it
-shouldn't be involved in the calculations in sd_reset() at all.
+QEMU queries the host kernel to get the list of writable ID reg
+fields and expose all the writable fields as uint64 properties. Those
+are named "SYSREG_<REG>_<FIELD>". REG and FIELD names are those
+described in ARM ARM Reference manual and linux arch/arm64/tools/sysreg.
+Some awk scriptsintroduced in the series help parsing the sysreg file and
+generate some code. those scripts are used in a similar way as
+scripts/update-linux-headers.sh.  In case the ABI gets broken, it is
+still possible to manually edit the generated code. However it is
+globally expected the REG and FIELD names are stable.
 
-> I think the change in the reset handler should be :
->=20
-> -=C2=A0=C2=A0=C2=A0 size -=3D sd_bootpart_offset(sd);
-> +=C2=A0=C2=A0=C2=A0 if (sd_is_emmc(sd)) {
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 size -=3D sd->boot_part_size =
-* 2;
-> +=C2=A0=C2=A0=C2=A0 }
+The list of SYSREG_ID properties can be retrieved through the qmp
+monitor using query-cpu-model-expansion [2].
 
-Yes, that seems correct.
+The first part of the series mostly consists in migrating id reg
+storage from named fields in ARMISARegisters to anonymous index
+ordered storage in an IdRegMap struct array. The goal is to have
+a generic way to store all id registers, also compatible with the
+way we retrieve their writable capability at kernel level through
+the KVM_ARM_GET_REG_WRITABLE_MASKS ioctl. Having named fields
+prevented us from getting this scalability/genericity. Although the
+change is invasive  it is quite straightforward and should be easy
+to be reviewed.
 
-> > > I have no idea how this is supposed to work, and I don't think it wor=
-ks
-> > > as implemented. I'll revert commit e32ac563b83 in my local copy of qe=
-mu.
-> > > Jan, can you have a look at this bug report please? Otherwise I'll
-> > > have a look during soft freeze.
+Then the bulk of the job is to retrieve the writable ID fields and
+match them against a "human readable" description of those fields.
+We use awk scripts, derived from kernel arch/arm64/tools/gen-sysreg.awk
+(so all the credit to Mark Rutland) that populates a data structure
+which describes all the ID regs in sysreg and their fields. We match
+writable ID reg fields with those latter and dynamically create a
+uint64 property.
 
-Guenter, just to make sure: In your case [1], you had "boot-emmc" (see
-aspeed_machine_ast2600_class_emmc_init) enabled, right? Otherwise the
-boot partition size would be 0, meaning that the eMMC has no boot
-partitions.
+Then we need to extend the list of id regs read from the host
+so that we get a chance to let their value overriden and write them
+back into KVM .
 
-In that configuration, your backing file needs to have space for the
-boot partitions at the start (2*1MiB) and the rootfs starts at the 2
-MiB offset.
+This expectation is that this custom KVM host model can prepare for
+the advent of named models. Introducing named models with reduced
+and explicitly defined features is the next step.
 
-Jan
+Obviously this series is not able to cope with non writable ID regs.
+For instance the problematic of MIDR/REVIDR setting is not handled
+at the moment.
 
-[1]https://lore.kernel.org/qemu-devel/8f3536a0-2685-4aa4-b26d-f460e738d387@=
-roeck-us.net/#t
---=20
-Pengutronix e.K.                        |                             |
-Steuerwalder Str. 21                    | https://www.pengutronix.de/ |
-31137 Hildesheim, Germany               | Phone: +49-5121-206917-0    |
-Amtsgericht Hildesheim, HRA 2686        | Fax:   +49-5121-206917-5555 |
+Connie & Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/custom-cpu-model-rfc
+
+TESTS:
+- with few IDREG fields that can be easily examined from guest
+  userspace:
+  -cpu custom,SYSREG_ID_AA64ISAR0_EL1_DP=0x0,SYSREG_ID_AA64ISAR1_EL1_DPB=0x0
+- migration between custom models
+- TCG A57 non regressions. Light testing for TCG though. Deep
+  review may detect some mistakes when migrating between named fields
+  and IDRegMap storage
+- light testing of introspection. Testing a given writable ID field
+  value with query-cpu-model-expansion is not supported yet.
+
+TODO/QUESTIONS:
+- Some idreg named fields are not yet migrated to an array storage.
+  some of them are not in isar struct either. Maybe we could have
+  handled TCG and KVM separately and it may turn out that this
+  conversion is unneeded. So as it is quite cumbersome I prefered
+  to keep it for a later stage.
+- the custom model does not come with legacy host properties
+  such as SVE, MTE, expecially those that induce some KVM
+  settings. This needs to be fixed.
+- The custom model and its exposed properties depend on the host
+  capabilities. More and more IDREG become writable meaning that
+  the custom model gains more properties over the time and it is
+  host linux dependent. At the moment there is no versioning in
+  place. By default the custom model is a host passthrough model
+  (besides the legacy functions). So if the end-user tries to set
+  a field that is not writable from a kernel pov, it will fail.
+  Nevertheless a versionned custom model could constrain the props
+  exposed, independently on the host linux capabilities.
+- the QEMU layer does not take care of IDREG field value consistency.
+  The kernel neither. I imagine this could be the role of the upper
+  layer to implement a vcpu profile that makes sure settings are
+  consistent. Here we come to "named" models. What should they look
+  like on ARM?
+- Implementation details:
+  -  it seems there are a lot of duplications in
+  the code. ID regs are described in different manners, with different
+  data structs, for TCG, now for KVM.
+  - The IdRegMap->regs is sparsely populated. Maybe a better data
+  struct could be used, although this is the one chosen for the kernel
+  uapi.
+
+References:
+
+[1] [PATCH v12 00/11] Support writable CPU ID registers from userspace
+https://lore.kernel.org/all/20230609190054.1542113-1-oliver.upton@linux.dev/
+
+[2]
+qemu-system-aarch64 -qmp unix:/home/augere/TEST/QEMU/qmp-sock,server,nowait -M virt --enable-kvm -cpu custom
+scripts/qmp/qmp-shell /home/augere/TEST/QEMU/qmp-sock
+Welcome to the QMP low-level shell!
+Connected to QEMU 9.0.50
+(QEMU) query-cpu-model-expansion type=full model={"name":"custom"}
+
+[3]
+KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES
+KVM_ARM_GET_REG_WRITABLE_MASKS
+Documentation/virt/kvm/api.rst
+
+[4] linux "sysreg" file
+linux/arch/arm64/tools/sysreg and gen-sysreg.awk
+./tools/include/generated/asm/sysreg-defs.h
 
 
+Cornelia Huck (4):
+  kvm: kvm_get_writable_id_regs
+  virt: Allow custom vcpu model in arm virt
+  arm-qmp-cmds: introspection for custom model
+  arm/cpu-features: Document custom vcpu model
+
+Eric Auger (17):
+  arm/cpu: Add sysreg definitions in cpu-sysegs.h
+  arm/cpu: Store aa64isar0 into the idregs arrays
+  arm/cpu: Store aa64isar1/2 into the idregs array
+  arm/cpu: Store aa64drf0/1 into the idregs array
+  arm/cpu: Store aa64mmfr0-3 into the idregs array
+  arm/cpu: Store aa64drf0/1 into the idregs array
+  arm/cpu: Store aa64smfr0 into the idregs array
+  arm/cpu: Store id_isar0-7 into the idregs array
+  arm/cpu: Store id_mfr0/1 into the idregs array
+  arm/cpu: Store id_dfr0/1 into the idregs array
+  arm/cpu: Store id_mmfr0-5 into the idregs array
+  arm/cpu: Add infra to handle generated ID register definitions
+  arm/cpu: Add sysreg generation scripts
+  arm/cpu: Add generated files
+  arm/kvm: Allow reading all the writable ID registers
+  arm/kvm: write back modified ID regs to KVM
+  arm/cpu: Introduce a customizable kvm host cpu model
+
+ docs/system/arm/cpu-features.rst      |  55 ++-
+ target/arm/cpu-custom.h               |  58 +++
+ target/arm/cpu-features.h             | 307 ++++++------
+ target/arm/cpu-sysregs.h              | 152 ++++++
+ target/arm/cpu.h                      | 120 +++--
+ target/arm/internals.h                |   6 +-
+ target/arm/kvm_arm.h                  |  16 +-
+ hw/arm/virt.c                         |   3 +
+ hw/intc/armv7m_nvic.c                 |  27 +-
+ target/arm/arm-qmp-cmds.c             |  56 ++-
+ target/arm/cpu-sysreg-properties.c    | 682 ++++++++++++++++++++++++++
+ target/arm/cpu.c                      | 124 +++--
+ target/arm/cpu64.c                    | 265 +++++++---
+ target/arm/helper.c                   |  68 +--
+ target/arm/kvm.c                      | 253 +++++++---
+ target/arm/ptw.c                      |   6 +-
+ target/arm/tcg/cpu-v7m.c              | 174 +++----
+ target/arm/tcg/cpu32.c                | 320 ++++++------
+ target/arm/tcg/cpu64.c                | 460 ++++++++---------
+ scripts/gen-cpu-sysreg-properties.awk | 325 ++++++++++++
+ scripts/gen-cpu-sysregs-header.awk    |  47 ++
+ scripts/update-aarch64-sysreg-code.sh |  27 +
+ target/arm/meson.build                |   1 +
+ target/arm/trace-events               |   8 +
+ 24 files changed, 2646 insertions(+), 914 deletions(-)
+ create mode 100644 target/arm/cpu-custom.h
+ create mode 100644 target/arm/cpu-sysregs.h
+ create mode 100644 target/arm/cpu-sysreg-properties.c
+ create mode 100755 scripts/gen-cpu-sysreg-properties.awk
+ create mode 100755 scripts/gen-cpu-sysregs-header.awk
+ create mode 100755 scripts/update-aarch64-sysreg-code.sh
+
+-- 
+2.41.0

@@ -1,160 +1,196 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp1225811njx;
-        Fri, 25 Oct 2024 10:32:43 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWspED1Cv0p9xVaL1oXUqVRtupX377EmeNUysk84ZXkU5j2Sj8c4Nam2vwP5y61hO6spvkp7vFskbYGHQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFPoxxAg2NvRSs6z/r96uJkBVGrJ4klRGXzNYl1S0IZ/e1RKieME6KJEmfH84KcOFZElo9a
-X-Received: by 2002:a05:6122:16a9:b0:50d:6756:5464 with SMTP id 71dfb90a1353d-50feafa63a6mr8258986e0c.4.1729877562824;
-        Fri, 25 Oct 2024 10:32:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729877562; cv=none;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp559njf;
+        Fri, 25 Oct 2024 10:46:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHa2giDpmlDeHmzZef5vaWysPEec4zPhiETg/elSt6AIGqhhaB8Fq7Wj0bBIjLX9QIfOr0v
+X-Received: by 2002:a05:6102:2aca:b0:4a3:ce82:cfb9 with SMTP id ada2fe7eead31-4a8cfb40a7bmr262611137.6.1729878367873;
+        Fri, 25 Oct 2024 10:46:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729878367; cv=none;
         d=google.com; s=arc-20240605;
-        b=d1mz4tRJ5UAM+ks1ri+Dz0yofddv3pTWVobfH9yFcYePKkX0df6x1vo2mwAMD3gcU1
-         0Ihniu9P6qZObP1sT51qt78QzMGRXDVmH8HPQErfjvLfUs9nYyx8cPSEhHDPCc46sORF
-         F8R1rEdNe9ivXjyvb5UHWKbSYYlnbI0oDXR19MrOijK4acJLtxWpUuKCUvpoOJEmua9B
-         8zjsqI+e0TRHQKWEtnQnG0JBca4pLn/9fnq3E0RGrNWPcvYykvHhMzVkANPYFTn+f2pH
-         Kft3ieLnh2zv3C/X3OZICKxzLgD8w9U8tTeJAeH1Q32DKFZv7Hu8arl/xCv2HxXyW+ZL
-         VNTg==
+        b=dZ/W6hRakFSCsK25U33lBlGYgVmiUD+EFJieTV0FGEM8xD1o4r2juyCVirPkSd+Jjn
+         USqWaC22gszCpmMPAOoV2cb0yMZpaBFkV+lYv3WdS/Z2TBGvZpRZhHDR3lLS+ns90VmH
+         wQeJbqlBe+oh6FWbbGwxRPQIodi48nR+y5TDFCUgrV9OHlpaNqr1qJrw4zkOjhqOxsS8
+         hi7KVwY7VLt3F0+k/ND8KNOOE2XasqR4k8vd9WSMerfXhFE4J9jDMJhCMUfpFpYt3cmo
+         8GQwHl/zKNBj0JjY37c1cOEHqu6rHQObPOPT3rB3Im03rDmL5EWbSosvI6X1b65cReCa
+         UFPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ZjgjzbtbBZzuRbBVzKz6bDVJAcjSqRyqDfv27QNlrxs=;
-        fh=rhknE0qM2k2UrGPB9EJ8VoY876PwXtPvlHZYryFz1RI=;
-        b=dYxUa9W0RJX3v/8VbMT7BxdL0g1ZKkmUDtKZFWOG2FbqsO9XOq4dlmVbkYeCEZs8ZM
-         d7JERQh1SHvJc1IQFhg59OeyuORJcDcfRY0oMN2/SjRjM8vZPjYx3FAOf6pLJJbP7tW4
-         GVSeFUWP4vlnqQ2pa33cpqVFuLIgnoIAJRqikelhCE6WifZsdinzCky901O6Ybmkr02m
-         GSmZoAs62y/IAaF3xSjdztIogY8APJxQdxiXOmPoT4Qe25ml3LThuMUVGdHxZb41IdpK
-         0He8AbmInwO9Wca1akcdCbdSk8K09WgO1hAUyi/96AJ4aoMt3RBUtLo94lTF6WHOqdiE
-         RtOQ==;
+        h=mime-version:user-agent:content-transfer-encoding:references
+         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
+        bh=krDHAkbzmR22kwJkOs/Fzwt9voQIBLZhbIDmZMcII/4=;
+        fh=GQ4ArP7BWbWizSnX85yZNp73edElTynRe969OysUfPw=;
+        b=hkj1cknP8+XfcQddwnMY9gS6smVuyyBVzW5qQQnCQKomFvfbrM9ZhVJ0Jp+XcW/A+S
+         s34EDpFDvX+mBp7l54sZwBTj9tSGioKmRxijmSqftmRv/38KhE7/E/zSa/iMHFIh76Ez
+         +lpM105kLvqr/uWvpCNwBjfpSLR1kYtoNWuI69KjrKI8ztrpTYyImnQ5ixuGwNfNaS1N
+         8jNt8UmNipbq7y3flZx01V9vhKiKEUvPBPbds0AyBjnhOvxFFVY4u5UiqMlwMkWHNovj
+         hAzssJ1hWJ5hawG/G+j/35lf2dMMK23334a8m+siJQ41EGZRt+luYoHHdZRN9Y6rD7XQ
+         NYgg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=VD+2+4Hf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=quicinc.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4a8c5361ca1si577566137.565.2024.10.25.10.32.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Oct 2024 10:32:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=g12Fq9s1;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <iii@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a8c53cbbd7si620711137.818.2024.10.25.10.46.07
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 25 Oct 2024 10:46:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=VD+2+4Hf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=quicinc.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t4OAa-0004pm-Bi; Fri, 25 Oct 2024 13:32:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_mathbern@quicinc.com>)
- id 1t4OAO-0004p6-Jv; Fri, 25 Oct 2024 13:32:05 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_mathbern@quicinc.com>)
- id 1t4OAN-0007nC-2w; Fri, 25 Oct 2024 13:32:04 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 49PCHNKd004522;
- Fri, 25 Oct 2024 17:31:51 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- ZjgjzbtbBZzuRbBVzKz6bDVJAcjSqRyqDfv27QNlrxs=; b=VD+2+4HfEiNSSOIY
- FmyiIoPzXWp3MfiW5zLcsBx94TlQkgukqxKSrFVU8uHywazMBinnqdjqYu6DIXjD
- oYZS2SjaQb61C6KFCJmIIONnO3VM2jgi7QD/EeF0Mi0KtU+dG71Fr1iwWXvcBrob
- 6VwGWmLQaqkU4JmIG5pioLb5BExjrNJyakTiwH4RU5uYCxlssm4IdRqThVSaZBJQ
- DM7xbWCfNLyv9RQwLjvdU8Z0Tpf8c8BuvD/8JL1hi8fQA++BhE0zyIv+CmL7mQqM
- kIq6T6LHRTHiC3r/w+ENE8VMn8qRgq2GSIU9kS5cdimrQOvIIlkosWIeleMZN4H5
- 55silA==
-Received: from nalasppmta03.qualcomm.com (Global_NAT1.qualcomm.com
- [129.46.96.20])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 42em689xvj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 25 Oct 2024 17:31:51 +0000 (GMT)
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com
- [10.47.209.196])
- by NALASPPMTA03.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 49PHVoda001132
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 25 Oct 2024 17:31:50 GMT
-Received: from hu-mathbern-lv.qualcomm.com (10.49.16.6) by
- nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.9; Fri, 25 Oct 2024 10:31:49 -0700
-From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
-To: <berrange@redhat.com>
-CC: <quic_mathbern@quicinc.com>, <qemu-devel@nongnu.org>,
- <alejandro.zeise@seagate.com>, <clg@redhat.com>, <qemu-arm@nongnu.org>,
- <kris.conklin@seagate.com>, <jonathan.henze@seagate.com>,
- <evan.burgess@seagate.com>, <clg@kaod.org>, <peter.maydell@linaro.org>,
- <bcain@quicinc.com>, <sidneym@quicinc.com>
-Subject: Re: qcrypto_ivgen mem leak and possible issue?
-Date: Fri, 25 Oct 2024 14:31:39 -0300
-Message-ID: <20241025173139.3277091-1-quic_mathbern@quicinc.com>
-X-Mailer: git-send-email 2.37.2
-In-Reply-To: <ZxvGHesrhPlQri__@redhat.com>
-References: <ZxvGHesrhPlQri__@redhat.com>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=g12Fq9s1;
+       spf=pass (google.com: domain of iii@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=iii@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 49P5u6Xv004002;
+	Fri, 25 Oct 2024 17:45:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=pp1; bh=krDHAk
+	bzmR22kwJkOs/Fzwt9voQIBLZhbIDmZMcII/4=; b=g12Fq9s1DML1ZJTL5i9BMF
+	qaZCo5yTzrSxhrUtv5+sVmm9yTw+vrBlgUr525HK2Dy3b4yOantiEotvzCNoVryn
+	6V1z9fBLRFX48vYF+i16+3NUGQqz0yuX9y+VADKnXZuyN2IQjvyA8eheLCmzFU/G
+	CIWyWekF+9hCVooVwaIpNcGyrUD5tzaT6MQtCZuTDfyf5wHraaaMkSn97P+PnInW
+	iibe76vZvxJr+ND5JcsFwD/zshSKY6nYNm71MufSYdK5bR495rXFjyl6LsD1pN1k
+	ksLIOs1g0Vkmqb0oP6OBEeTnT7DguWTyJFlu6rcLO7GeG8rbSCCTZhc/ZEdcqjzw
+	==
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 42g5kxk9fr-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 25 Oct 2024 17:45:56 +0000 (GMT)
+Received: from m0360083.ppops.net (m0360083.ppops.net [127.0.0.1])
+	by pps.reinject (8.18.0.8/8.18.0.8) with ESMTP id 49PHjtHw006356;
+	Fri, 25 Oct 2024 17:45:55 GMT
+Received: from ppma13.dal12v.mail.ibm.com (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 42g5kxk9fq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 25 Oct 2024 17:45:55 +0000 (GMT)
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma13.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 49PHDmLK012615;
+	Fri, 25 Oct 2024 17:45:54 GMT
+Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
+	by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 42emhfpy25-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Fri, 25 Oct 2024 17:45:54 +0000
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com [10.20.54.100])
+	by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 49PHjq4B37683512
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 25 Oct 2024 17:45:52 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id AF5C820040;
+	Fri, 25 Oct 2024 17:45:52 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id CF99C20043;
+	Fri, 25 Oct 2024 17:45:49 +0000 (GMT)
+Received: from [127.0.0.1] (unknown [9.152.108.100])
+	by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+	Fri, 25 Oct 2024 17:45:49 +0000 (GMT)
+Message-ID: <eae6bd6b38ad972c792739eb05c7ee92c1e9242f.camel@linux.ibm.com>
+Subject: Re: [PATCH 07/21] target/s390x: Explicitly set 2-NaN propagation
+ rule
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org
+Cc: Alex =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+        Richard
+ Henderson <richard.henderson@linaro.org>,
+        Philippe
+ =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+        Song Gao
+ <gaosong@loongson.cn>, Eduardo Habkost <eduardo@habkost.net>,
+        "Edgar E.
+ Iglesias" <edgar.iglesias@gmail.com>,
+        Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo <arikalo@gmail.com>,
+        Stafford
+ Horne <shorne@gmail.com>,
+        Nicholas Piggin <npiggin@gmail.com>,
+        Daniel
+ Henrique Barboza <danielhb413@gmail.com>,
+        Yoshinori Sato
+ <ysato@users.sourceforge.jp>,
+        David Hildenbrand <david@redhat.com>, Thomas
+ Huth <thuth@redhat.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Max Filippov <jcmvbkbc@gmail.com>, qemu-ppc@nongnu.org,
+        qemu-s390x@nongnu.org
+Date: Fri, 25 Oct 2024 19:45:49 +0200
+In-Reply-To: <20241025141254.2141506-8-peter.maydell@linaro.org>
+References: <20241025141254.2141506-1-peter.maydell@linaro.org>
+	 <20241025141254.2141506-8-peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.4 (3.52.4-1.fc40) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.49.16.6]
-X-ClientProxiedBy: nalasex01c.na.qualcomm.com (10.47.97.35) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-ORIG-GUID: RGdMu4vDRe8Wy1ujkRdfrmTCJNIkJv77
-X-Proofpoint-GUID: RGdMu4vDRe8Wy1ujkRdfrmTCJNIkJv77
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: A0BlXL4U1OOiXL4FIBcs_TBHoOuqwKse
+X-Proofpoint-GUID: nCmk0rsFG3-nq-YUXtU1E03tH7hR33LS
 X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 malwarescore=0
- priorityscore=1501 adultscore=0 bulkscore=0 phishscore=0 mlxscore=0
- lowpriorityscore=0 mlxlogscore=854 impostorscore=0 suspectscore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
+ definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxlogscore=909
+ malwarescore=0 spamscore=0 bulkscore=0 priorityscore=1501 impostorscore=0
+ suspectscore=0 phishscore=0 mlxscore=0 lowpriorityscore=0 adultscore=0
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.19.0-2409260000 definitions=main-2410250134
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=quic_mathbern@quicinc.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2pvbo/RsiDwk
+X-TUID: Ivn1+o+4myPP
 
-On Fri, 25 Oct 2024 17:23:57 +0100 Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com> wrote:
->
-> On Fri, Oct 25, 2024 at 01:06:01PM -0300, Matheus Tavares Bernardino wrote:
-> > Hi,
-> > 
-> > Since e3c07527f3 (crypto/hash: Implement and use new hash API,
-> > 2024-10-08), we've been seeing a memory leak in two check-unit tests:
-> > test-crypto-hash and test-crypto-ivgen. Looking a bit further to try and
-> > plug the leak, I got a bit confused regarding how the result crypto
-> > buffer is handled. Looks like we are allocating different sizes at two
-> > different places, and I'm unsure if these places follow the same
-> > convention or could be breaking expectations from one another...
-> 
-> There was a screwup in the commit you mention causing a memory leak. Can
-> you check whether it reproduces after
-> 
-> commit dde538c9a76f328a92c532893e97e18785d57364
+On Fri, 2024-10-25 at 15:12 +0100, Peter Maydell wrote:
+> Set the 2-NaN propagation rule explicitly in env->fpu_status.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> =C2=A0target/s390x/cpu.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 | 1 +
+> =C2=A0fpu/softfloat-specialize.c.inc | 5 ++---
+> =C2=A02 files changed, 3 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+> index 4e41a3dff59..514c70f3010 100644
+> --- a/target/s390x/cpu.c
+> +++ b/target/s390x/cpu.c
+> @@ -205,6 +205,7 @@ static void s390_cpu_reset_hold(Object *obj,
+> ResetType type)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* tininess for underflo=
+w is detected before rounding */
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 set_float_detect_tinines=
+s(float_tininess_before_rounding,
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 &env->fpu_status)=
+;
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 set_float_2nan_prop_rule(floa=
+t_2nan_prop_s_ab, &env-
+> >fpu_status);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* fall through */
+> =C2=A0=C2=A0=C2=A0=C2=A0 case RESET_TYPE_S390_CPU_NORMAL:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 env->psw.mask &=3D ~PSW_=
+MASK_RI;
+> diff --git a/fpu/softfloat-specialize.c.inc b/fpu/softfloat-
+> specialize.c.inc
+> index 4e51cf8d083..a0c740e544d 100644
+> --- a/fpu/softfloat-specialize.c.inc
+> +++ b/fpu/softfloat-specialize.c.inc
+> @@ -403,10 +403,9 @@ static int pickNaN(FloatClass a_cls, FloatClass
+> b_cls,
+> =C2=A0#if defined(TARGET_AVR) || defined(TARGET_HEXAGON) \
+> =C2=A0=C2=A0=C2=A0=C2=A0 || defined(TARGET_RISCV) || defined(TARGET_SH4) =
+\
+> =C2=A0=C2=A0=C2=A0=C2=A0 || defined(TARGET_TRICORE) || defined(TARGET_ARM=
+) ||
+> defined(TARGET_MIPS) \
+> -=C2=A0=C2=A0=C2=A0 || defined(TARGET_LOONGARCH64) || defined(TARGET_HPPA=
+)
+> +=C2=A0=C2=A0=C2=A0 || defined(TARGET_LOONGARCH64) || defined(TARGET_HPPA=
+) \
+> +=C2=A0=C2=A0=C2=A0 || defined(TARGET_S390X)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_assert_not_reached();
+> -#elif defined(TARGET_S390X)
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rule =3D float_2nan_prop_s_ab=
+;
+> =C2=A0#elif defined(TARGET_PPC) || defined(TARGET_M68K)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * PowerPC propagat=
+ion rules:
 
-Thanks, Daniel. Yes, it is no longer reproducible after that commit :)
+Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
+
+Thanks!

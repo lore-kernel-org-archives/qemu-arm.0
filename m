@@ -1,69 +1,69 @@
-Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp939495njx;
-        Fri, 25 Oct 2024 03:20:30 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXElJB5zmxMeplnyAFmGkmoaAvhvFLI+uc17MjwChqzEDsprL/QUEWRygD0fkDtXMJKLdlTrim2ye4cBg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFvHfaLcMZ/IVDrNna8ob+j0rKXbGV6ktAdfoSsBNJeVoYgTMDZlZUlupvjjSkGl36zS5sS
-X-Received: by 2002:a05:6122:2226:b0:50d:6a43:d525 with SMTP id 71dfb90a1353d-50fd00c4921mr10412942e0c.1.1729851630704;
-        Fri, 25 Oct 2024 03:20:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729851630; cv=none;
+Received: by 2002:a17:504:5682:b0:1be9:327d:8ee3 with SMTP id r2csp939565njx;
+        Fri, 25 Oct 2024 03:20:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWlRE75JBjf0ihhtqcOzAo2ixjJxQaHgsGt7EFFtc5+eZGxoZkMPNAi1CZbUBaqd4/1dTWOvYTiC9e1WQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGVY11hC4ZmnRTh3S0OoAhakpM92r7E6LBKWHOEIuxF/epdzA7G47NZj+vstqJwvpeeUzeK
+X-Received: by 2002:a05:6214:5d06:b0:6cb:e69d:4c0a with SMTP id 6a1803df08f44-6ce343042famr86084616d6.48.1729851638248;
+        Fri, 25 Oct 2024 03:20:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729851638; cv=none;
         d=google.com; s=arc-20240605;
-        b=AoRuaRpkcXExNTm57H1uV88yOnA5dOuxaA7CAxSKtEglGup1L+GaVIhAzSsuZyNpUR
-         yVBDJhWFKAHJaY1m0S+/QxuE8/XYE0qkKgTXmpLJ0dpvNoDpY8gw76EJdD/Ghq2dNTzQ
-         7JIRyCAbhIPaBMkoQyATkSVdbjk+ws/KMCn0/qZ2f7thkodxAkowZNu5XyX6NObkJiO9
-         oF2p+ERuIB8rRSmnBMJC9B7j2sP6kexIkPw1PjkB/QOrk+oB51ikiPcJVLWW/Yff65/p
-         3Kv2YGccs93/PkIFL2tACJUexazRdp6leK2bJ/FLP/CzmigU69HtBTAsNpbLz2hlbsLi
-         iCjQ==
+        b=Ql84xAQvd6lTNilfJd3vJu9JI94MBtfZaXswzwQ1C6k83ly5QhtViKyOePTgLCn4m9
+         WDd4LU1rjVA2bGTN9DmIvlydPkjgqaTxdyC/ROLzcCRUxs5gFGFq6gdjLOBunXqlIR4m
+         kPbpWVGkTOyWyksleJg55RC3LqoKsbZqj2e/RDcogWAfqmIQQ67ulm0zQmf3FAnCyxGl
+         +zyUAPFvCpjXJIn8a0I9XJ18F3bYS6GIVo5a6YtpuhQwW9CsDyCS+YcacWwuG4jZ/EIQ
+         M8pzKeif+5EmUxB8lgc7KhCGjHzWpfTulLF4BzmIKmFjN5knKjfWlq1vjLB0SxF4t2fm
+         CFHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=kp5QFl0T+y2RN+mj0Xap6zvqN21krl+Kxh65E9f4CQI=;
+        bh=ky3ThRkvDhjr0upkbEECwN+3U+A5A3WcAWKqNWydsmA=;
         fh=g9Vpjz63mVuJw8UctUd3g7QIg2gWmZ7/W2EH3lsjMnE=;
-        b=Y/y59MbjFse/bC+liNpnU4424DF9XaVyM1y0+BYPMR3b+ECOk18cRWDihB5Lw8adgL
-         jT/vxJ+KztS2xnGP+pMR+lOdURYNcxmjmTnKoV/VnS3mFsr6vZcLlDrU6gZKatCWU22M
-         l9Ynnlu0mlsS9TNgC90JHoKG3cUwUD3dKCUhxPOPZYqhgAQhesS+9fOuo78KkDLOryEs
-         ZBUiXVBK1KDEG9pkqrzlp93NTOUcBPWwbgnfGfWNbp9GSzzm/Xa4akV9Q0tradkUckc7
-         EYLgk+zMeiIwrc09ZnttAHm+ySm7EPWTD4JBTRxEYJkffi7lqSFmsANoILQpPRzC4nUu
-         Suvg==;
+        b=EaxTKc5WGDyTj+MQMdOQSQFGvwl+ZRFo8dFrX6vSW+QppROMgLnPKkJOYBZ5pIlnBx
+         VmXgZIlQRGeiHvTOTK5YWIdLxOi/9oPmw2gPJeYP+VEcTM3dMlirft0Gi4dtjE1RHdAK
+         LJ2nNRq8lv17K2mJxCRoH7KmjShsjtX1WFZ3BYIJ81C64TIdTH9CgSZ5JSAwTs6E9xcQ
+         qTarThUDUaF8sok+g3XyMEyQH17Kl7CV1GZc0pxwBbLTNCU36NDxkzaHD+f4yIwBwsHB
+         b0ZYrTlVY8EFle63A9hSiCXnJ6OfV5K7vOVfCDjyzX/0k3vMw9XzltE4HA+v77ZwTKkH
+         tuow==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aOJfebS9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hiIfbDHv;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b18d35b962si113224085a.541.2024.10.25.03.20.30
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d179a11ae1si11667806d6.213.2024.10.25.03.20.38
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Oct 2024 03:20:30 -0700 (PDT)
+        Fri, 25 Oct 2024 03:20:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aOJfebS9;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hiIfbDHv;
        spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1729851630;
+	s=mimecast20190719; t=1729851637;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=kp5QFl0T+y2RN+mj0Xap6zvqN21krl+Kxh65E9f4CQI=;
-	b=aOJfebS99HiHQ0ids/ETdrg5GAt0P8HQU/BGvy1O3PTS6wjc3hhYchtWzN/eZrLOv+rFcp
-	vv5qJQTfmpvomxj8QMzLFi18651xXcgS0MJOCEP273CmomPtGmu/vhpvhOW3TQ1THZI/ym
-	3/1nIgrpn9NdMeE+kGEL7AE/uatvgtg=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+	bh=ky3ThRkvDhjr0upkbEECwN+3U+A5A3WcAWKqNWydsmA=;
+	b=hiIfbDHvgSQjtj9+HQQausN7TnOlavWIGElvE6XFQplBFeNnKU+D7YnM79za8A+pk3HStB
+	RbWFO6fbgN/KHWFcZoiVxW2uW1WfnwibeX21vuCa5Iwbfq4YU7+HGucDSBq8YUqozOgVVf
+	qUmrDtAga4+X6qsqDUcqt9S7430YAGQ=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-111-vN9ycNIOMZenEaTWGsnKyw-1; Fri,
- 25 Oct 2024 06:20:27 -0400
-X-MC-Unique: vN9ycNIOMZenEaTWGsnKyw-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-533-ZohcQP7aM26-5wtACeHH9g-1; Fri,
+ 25 Oct 2024 06:20:33 -0400
+X-MC-Unique: ZohcQP7aM26-5wtACeHH9g-1
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4E0B019560BA;
-	Fri, 25 Oct 2024 10:20:24 +0000 (UTC)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 260281956083;
+	Fri, 25 Oct 2024 10:20:31 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.39.194.5])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 37739196BB7D;
-	Fri, 25 Oct 2024 10:20:17 +0000 (UTC)
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id C8165196BB7E;
+	Fri, 25 Oct 2024 10:20:24 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -86,141 +86,155 @@ Cc: shahuang@redhat.com,
 	mark.rutland@arm.com,
 	philmd@linaro.org,
 	pbonzini@redhat.com
-Subject: [RFC 01/21] kvm: kvm_get_writable_id_regs
-Date: Fri, 25 Oct 2024 12:17:20 +0200
-Message-ID: <20241025101959.601048-2-eric.auger@redhat.com>
+Subject: [RFC 02/21] arm/cpu: Add sysreg definitions in cpu-sysegs.h
+Date: Fri, 25 Oct 2024 12:17:21 +0200
+Message-ID: <20241025101959.601048-3-eric.auger@redhat.com>
 In-Reply-To: <20241025101959.601048-1-eric.auger@redhat.com>
 References: <20241025101959.601048-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: pZ1fZtDx18vx
+X-TUID: 8kYDXv96KMfu
 
-From: Cornelia Huck <cohuck@redhat.com>
-
-Add an helper to retrieve the writable id reg bitmask. The
-status of the query is stored in the CPU struct so that an
-an error, if any, can be reported on vcpu realize().
+This new header contains macros that define aarch64 regiters.
+In a subsequent patche, this will be replaced by a more exhaustive
+version that will be generated from linux arch/arm64/tools/sysreg
+file. Those macros are sufficient to migrate the storage of those
+ID regs from named fields in isar struct to an array cell.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- target/arm/cpu.h     | 19 +++++++++++++++++++
- target/arm/kvm_arm.h |  7 +++++++
- target/arm/kvm.c     | 32 ++++++++++++++++++++++++++++++++
- 3 files changed, 58 insertions(+)
+ target/arm/cpu-sysregs.h | 42 +++++++++++++++++++++++++++++++
+ target/arm/cpu.h         | 54 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 96 insertions(+)
+ create mode 100644 target/arm/cpu-sysregs.h
 
+diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
+new file mode 100644
+index 0000000000..f4b63a3af7
+--- /dev/null
++++ b/target/arm/cpu-sysregs.h
+@@ -0,0 +1,42 @@
++#ifndef ARM_CPU_SYSREGS_H
++#define ARM_CPU_SYSREGS_H
++
++/* to be generated */
++
++#define SYS_ID_AA64PFR0_EL1                             sys_reg(3, 0, 0, 4, 0)
++#define SYS_ID_AA64PFR1_EL1                             sys_reg(3, 0, 0, 4, 1)
++#define SYS_ID_AA64SMFR0_EL1                            sys_reg(3, 0, 0, 4, 5)
++#define SYS_ID_AA64DFR0_EL1                             sys_reg(3, 0, 0, 5, 0)
++#define SYS_ID_AA64DFR1_EL1                             sys_reg(3, 0, 0, 5, 1)
++#define SYS_ID_AA64ISAR0_EL1                            sys_reg(3, 0, 0, 6, 0)
++#define SYS_ID_AA64ISAR1_EL1                            sys_reg(3, 0, 0, 6, 1)
++#define SYS_ID_AA64ISAR2_EL1                            sys_reg(3, 0, 0, 6, 2)
++#define SYS_ID_AA64MMFR0_EL1                            sys_reg(3, 0, 0, 7, 0)
++#define SYS_ID_AA64MMFR1_EL1                            sys_reg(3, 0, 0, 7, 1)
++#define SYS_ID_AA64MMFR2_EL1                            sys_reg(3, 0, 0, 7, 2)
++#define SYS_ID_AA64MMFR3_EL1                            sys_reg(3, 0, 0, 7, 3)
++
++#define SYS_ID_PFR0_EL1                                 sys_reg(3, 0, 0, 1, 0)
++#define SYS_ID_PFR1_EL1                                 sys_reg(3, 0, 0, 1, 1)
++#define SYS_ID_DFR0_EL1                                 sys_reg(3, 0, 0, 1, 2)
++#define SYS_ID_MMFR0_EL1                                sys_reg(3, 0, 0, 1, 4)
++#define SYS_ID_MMFR1_EL1                                sys_reg(3, 0, 0, 1, 5)
++#define SYS_ID_MMFR2_EL1                                sys_reg(3, 0, 0, 1, 6)
++#define SYS_ID_MMFR3_EL1                                sys_reg(3, 0, 0, 1, 7)
++#define SYS_ID_ISAR0_EL1                                sys_reg(3, 0, 0, 2, 0)
++#define SYS_ID_ISAR1_EL1                                sys_reg(3, 0, 0, 2, 1)
++#define SYS_ID_ISAR2_EL1                                sys_reg(3, 0, 0, 2, 2)
++#define SYS_ID_ISAR3_EL1                                sys_reg(3, 0, 0, 2, 3)
++#define SYS_ID_ISAR4_EL1                                sys_reg(3, 0, 0, 2, 4)
++#define SYS_ID_ISAR5_EL1                                sys_reg(3, 0, 0, 2, 5)
++#define SYS_ID_MMFR4_EL1                                sys_reg(3, 0, 0, 2, 6)
++#define SYS_ID_ISAR6_EL1                                sys_reg(3, 0, 0, 2, 7)
++#define SYS_MVFR0_EL1                                   sys_reg(3, 0, 0, 3, 0)
++#define SYS_MVFR1_EL1                                   sys_reg(3, 0, 0, 3, 1)
++#define SYS_MVFR2_EL1                                   sys_reg(3, 0, 0, 3, 2)
++#define SYS_ID_PFR2_EL1                                 sys_reg(3, 0, 0, 3, 4)
++#define SYS_ID_DFR1_EL1                                 sys_reg(3, 0, 0, 3, 5)
++#define SYS_ID_MMFR5_EL1                                sys_reg(3, 0, 0, 3, 6)
++#define SYS_ID_AA64ZFR0_EL1                             sys_reg(3, 0, 0, 4, 4)
++
++#endif
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d8eb986a04..1493b35d99 100644
+index 1493b35d99..0491a482f0 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -821,6 +821,19 @@ typedef struct {
-     uint32_t map, init, supported;
- } ARMVQMap;
+@@ -144,6 +144,14 @@ typedef struct ARMGenericTimer {
+     uint64_t ctl; /* Timer Control register */
+ } ARMGenericTimer;
  
-+typedef enum ARMIdRegsState {
-+    WRITABLE_ID_REGS_UNKNOWN,
-+    WRITABLE_ID_REGS_NOT_DISCOVERABLE,
-+    WRITABLE_ID_REGS_FAILED,
-+    WRITABLE_ID_REGS_AVAIL,
-+} ARMIdRegsState;
++typedef struct ARMSysReg {
++    int op0;
++    int op1;
++    int crn;
++    int crm;
++    int op2;
++} ARMSysReg;
 +
-+#define NR_ID_REGS (3 * 8 * 8)
+ /* Define a maximum sized vector register.
+  * For 32-bit, this is a 128-bit NEON/AdvSIMD register.
+  * For 64-bit, this is a 2048-bit SVE register.
+@@ -834,6 +842,51 @@ typedef struct IdRegMap {
+     uint64_t regs[NR_ID_REGS];
+ } IdRegMap;
+ 
++#define ARM_FEATURE_ID_RANGE_IDX(op0, op1, crn, crm, op2)               \
++        ({                                                              \
++                __u64 __op1 = (op1) & 3;                                \
++                __op1 -= (__op1 == 3);                                  \
++                (__op1 << 6 | ((crm) & 7) << 3 | (op2));                \
++        })
 +
-+typedef struct IdRegMap {
-+    uint64_t regs[NR_ID_REGS];
-+} IdRegMap;
++static inline uint64_t _get_idreg(const IdRegMap *map, ARMSysReg sr)
++{
++    int index = ARM_FEATURE_ID_RANGE_IDX(sr.op0, sr.op1, sr.crn, sr.crm, sr.op2);
++
++    return map->regs[index];
++}
++
++static inline void _set_idreg(IdRegMap *map, ARMSysReg sr, uint64_t value)
++{
++    int index = ARM_FEATURE_ID_RANGE_IDX(sr.op0, sr.op1, sr.crn, sr.crm, sr.op2);
++
++    map->regs[index] = value;
++}
++
++/* REG is ID_XXX */
++#define FIELD_DP64_IDREG(MAP, REG, FIELD, VALUE)              \
++{                                                             \
++uint64_t regval = _get_idreg(MAP, SYS_ ## REG ## _EL1);       \
++regval = FIELD_DP64(regval, REG, FIELD, VALUE);               \
++_set_idreg(MAP, SYS_ ## REG ## _EL1, regval);                 \
++}
++
++#define FIELD_EX64_IDREG(MAP, REG, FIELD)                     \
++FIELD_EX64(_get_idreg(MAP, SYS_ ## REG ## _EL1), REG, FIELD)  \
++
++#define SET_IDREG(MAP, REG, VALUE)                            \
++_set_idreg(MAP, SYS_ ## REG ## _EL1, VALUE)
++
++#define GET_IDREG(MAP, REG)                                   \
++_get_idreg(MAP, SYS_ ## REG ## _EL1)
++
++static inline ARMSysReg sys_reg(int op0, int op1, int crn, int crm, int op2)
++{
++        ARMSysReg sr = {op0, op1, crn, crm, op2};
++
++        return sr;
++}
 +
  /**
   * ARMCPU:
   * @env: #CPUARMState
-@@ -960,6 +973,12 @@ struct ArchCPU {
-      */
-     bool host_cpu_probe_failed;
- 
-+    /*
-+     * state of writable id regs query used to report an error, if any,
-+     * on KVM custom vcpu model realize
-+     */
-+    ARMIdRegsState writable_id_regs;
-+
-     /* QOM property to indicate we should use the back-compat CNTFRQ default */
-     bool backcompat_cntfrq;
- 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index cfaa0d9bc7..9868065277 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -214,6 +214,8 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa);
- 
- int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
- 
-+int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap);
-+
- #else
- 
- /*
-@@ -235,6 +237,11 @@ static inline bool kvm_arm_sve_supported(void)
-     return false;
- }
- 
-+static inline int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap)
-+{
-+    return -ENOSYS;
-+}
-+
- /*
-  * These functions should never actually be called without KVM support.
-  */
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 70f79eda33..be98f8be18 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -47,6 +47,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
- static bool cap_has_mp_state;
- static bool cap_has_inject_serror_esr;
- static bool cap_has_inject_ext_dabt;
-+static int cap_writable_id_regs;
- 
- /**
-  * ARMHostCPUFeatures: information about the host CPU (identified
-@@ -478,6 +479,37 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-     env->features = arm_host_cpu_features.features;
- }
- 
-+int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap)
-+{
-+    struct reg_mask_range range = {
-+        .range = 0, /* up to now only a single range is supported */
-+        .addr = (uint64_t)idregmap,
-+    };
-+    int ret;
-+
-+    if (!kvm_enabled()) {
-+        cpu->writable_id_regs = WRITABLE_ID_REGS_NOT_DISCOVERABLE;
-+        return -ENOSYS;
-+    }
-+
-+    cap_writable_id_regs =
-+        kvm_check_extension(kvm_state, KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES);
-+
-+    if (!cap_writable_id_regs ||
-+        !(cap_writable_id_regs & (1 << KVM_ARM_FEATURE_ID_RANGE))) {
-+        cpu->writable_id_regs = WRITABLE_ID_REGS_NOT_DISCOVERABLE;
-+        return -ENOSYS;
-+    }
-+
-+    ret = kvm_vm_ioctl(kvm_state, KVM_ARM_GET_REG_WRITABLE_MASKS, &range);
-+    if (ret) {
-+        cpu->writable_id_regs = WRITABLE_ID_REGS_FAILED;
-+        return ret;
-+     }
-+    cpu->writable_id_regs = WRITABLE_ID_REGS_AVAIL;
-+    return ret;
-+}
-+
- static bool kvm_no_adjvtime_get(Object *obj, Error **errp)
- {
-     return !ARM_CPU(obj)->kvm_adjvtime;
+@@ -1043,6 +1096,7 @@ struct ArchCPU {
+         uint64_t id_aa64zfr0;
+         uint64_t id_aa64smfr0;
+         uint64_t reset_pmcr_el0;
++        IdRegMap idregs;
+     } isar;
+     uint64_t midr;
+     uint32_t revidr;
 -- 
 2.41.0

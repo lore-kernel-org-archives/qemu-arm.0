@@ -1,84 +1,84 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp254181njf;
-        Fri, 25 Oct 2024 21:39:47 -0700 (PDT)
-X-Received: by 2002:a17:902:d58c:b0:20c:ab2d:a664 with SMTP id d9443c01a7336-210c6cd11f6mr22983535ad.59.1729917587437;
-        Fri, 25 Oct 2024 21:39:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729917587; cv=none;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp254276njf;
+        Fri, 25 Oct 2024 21:40:09 -0700 (PDT)
+X-Received: by 2002:a05:6a00:178f:b0:71e:594:f1ef with SMTP id d2e1a72fcca58-72062fdba89mr2961104b3a.16.1729917608797;
+        Fri, 25 Oct 2024 21:40:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729917608; cv=none;
         d=google.com; s=arc-20240605;
-        b=T1Tx1KtA+AalBJR+rOD0iTmRgdgO9G+jqe+fnHM+0DLd+GY8avbMBGpJK1j40+15qN
-         mhG9Vg3XKpfCRBEfG1NBs5E8aB9arBgnuuq+h/v5zPZqLTTWnoY1IA6PClcC6RYNZpG2
-         /Hi+UzyWZazEwY8ZSpbjICLOnFaMrO7JwVjewmIzxAdbOw8cjeN2FLSXVRxIyvemC1gR
-         ybziGFeRDFJf2Yatht+wHdLRvcwNsO8Kef95NT36XspKZyZ3gRXzt+zTLTiSthkrsinl
-         SWC+BDVXVQYwNwoeR4X0JXoczEukqV9mnz+piICiQ4yWMsg7FsbQnbJtukYcULzj/qVR
-         kkUw==
+        b=Zl6UZg+09cnsCeefhiV4oXkeOg+luwSoLgTcHjdWeLThb6I37aQObuULVJycAOkZzp
+         AfbkKtOfb8wSmOz2mySDRatSPaXaUUN182/AKuBGC6mI4a/jn5tfj+E/rOFZGYzZv09B
+         sGI9IHVwpxc0J/NWPkduTH1XmAdJCT2R1cm9voAWgiyndk4gD5+xCyz/6hhJUbEUjTUW
+         TB9aj9/pRAbt3JkYr6j1TPDFFeh92RvXss2tzwxbogo+qLDme2z8yAIlgPE5XcZLjRMT
+         /NKvadex8m0TzDu+hmTs/sHHN1UElMRvr8PKXOXasKvhCwCebnoAfrHX1zeJQsMio2vV
+         OeJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=Hvh0+NDIIxNrTt03RW0CfWwHElN89DGa3qT5CiLqnG4=;
+        bh=OKvTzTd2ANidL74ryN8G09s4Libe61Whgnlswc7fVp8=;
         fh=57KB4fSpGukS9IUlPcDISciwmQ4lhGDq9IA5L5jXiis=;
-        b=A/9Jrks36OJeGSI6P6hbsI34fOTnJTu3ExH/NUV3DBm+aoPWw4o+NuQ1KHx5Y7YpLY
-         PuxeshoMsfOEf3T3xBsHtpf4o0TH7a7yGyiQF8AHRFKg1ZY0Yd3i1g6vx/7La/417RMz
-         wFY4ikihhYjyQ0qZJ0JaYPBRM7w40gysjRSdTnoaIvIXA0JcoK/KmTw3yzcxMG+JJhdL
-         S7qd7o4X2fDlEmz9qmQ5foKQH1wPFX6+oYL69Lbip7Yahm3EpAo1lnrNClGQQBK+35f5
-         KqNVWH/6dPtcO2Hkrv9zNaNhWFdudBClURlzyggv6SokSg4P483m595e1HkWEoSWhqXQ
-         haHg==;
+        b=MmvZGc2db1wz58OMXV78V/OlUsgL7Z0Xc2tKG76xHebX6miJIyp8aAL/XcDbNHJnml
+         E/b2FlomOqzPyK+C1+E8Bfj2C8nxNDtaRenpWZpk/BgOq1vvhx3NnD07hBJpVIS7vq35
+         oZ8aGXhHu9kSipIS1dXc6wQA4RNkOpIFkMCE3WzTsMRMd4ctNdGn7kJmkS/Y1dmm+rD9
+         lEk3c5otg6oDG+AKuqTOVTTRpP3zRYgZrWoA5Dmf7/X/datDlysTTSHmxCTqhhXQdiy+
+         EYjID4EupNQjX436fnD06SQxx3fUZS/+9eW7Qzyj7s+wDwOs/2NJ2JNOr/P2yVyOsUYh
+         x5xA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=r4zgxe+r;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FO47pewJ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-210bc19202csor17979945ad.16.2024.10.25.21.39.47
+        by mx.google.com with SMTPS id d2e1a72fcca58-72057935c3bsor1433221b3a.4.2024.10.25.21.40.08
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 25 Oct 2024 21:39:47 -0700 (PDT)
+        Fri, 25 Oct 2024 21:40:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=r4zgxe+r;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FO47pewJ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729917587; x=1730522387; darn=linaro.org;
+        d=linaro.org; s=google; t=1729917608; x=1730522408; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=Hvh0+NDIIxNrTt03RW0CfWwHElN89DGa3qT5CiLqnG4=;
-        b=r4zgxe+raFSWUQ3ES8Le4+OWJt9C32hKyC9SZqZCCdMe8pT8KTHRlWu8qeoSRe3oaB
-         WiP2QHLkP9JFV9RbBTjVTEcR90FFDGiGQ3gJzWoAtj0iRrzrfRQWwKVWYAQF/S/CuwKs
-         SV0WCSapLHlhN09YJerNySp/qGfPLm3/X1eXNhTT+2gi2LC5k372NNvxJ4jhp6gDHDaC
-         FOT8/DHRffFiuh/3irTxtPz1SYbclGOfVPFQT+qcmSGXbbAEMbnxXQ9Cxm5qUyFIxquT
-         WFmBofx6gJl/koy1QdXvW8t0lmbJBxeXkv22Qwcl1WqTZVHUvyZcbk5QNBa93hKzIptm
-         0TYw==
+        bh=OKvTzTd2ANidL74ryN8G09s4Libe61Whgnlswc7fVp8=;
+        b=FO47pewJuJahZf1SP97iEY7sNqJWWJ2ml3Th8MdWZVUFvI0qKJESKUIpTCIeNAfEYh
+         OKQZuzfslR5tRlar5uXGRheCeY4gIrZgUVUUhWrC468xTIP+a6LuJn55fEWED3GqntJw
+         5kIlFpIX8RTgdp3Q5lilhB3buWLewb8bKp1PrJNQWzypSp5sEZZTva7NO1yp+Id8HQHG
+         NQQWZFz8kCDIPiFW8340jPimcg0iYNrnHzvgXIZZ0j4ZghUhToH0ZwlSBAzsWqHabMtW
+         tjzQvuVroNMdbu3fzDo0UxaX0gGFvKEr9nNNXj3SRMRdSdDa6r8Uag9+q77J6Sg9OXl+
+         Fk2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729917587; x=1730522387;
+        d=1e100.net; s=20230601; t=1729917608; x=1730522408;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Hvh0+NDIIxNrTt03RW0CfWwHElN89DGa3qT5CiLqnG4=;
-        b=bhQI91zZ5+ohdRUmaMmejJtDfF7aapWglR5AgJ/RxQWBWLcGte1X0kC3fo7diz/yuF
-         WUFCqn3vpQMzXvgrKLqhrsZdjppbFjWqiW3TafMTMZnyj5kMghNkP0J1fDpP1gXcmfWX
-         5HnhM0z8vbWy3tgHIhH5LmSgHqGJJ8U+QinQbc6HWP67mHAQMJWk3pkWGg6D+Qle9Bco
-         Njga7fmhDvuqo6JgP0ZZLt3QpDXkD5UtsOk40MsabAZz/ng3zD8263OelI3rcYqNqNeg
-         RIEhC2NEJ2IlmCK60SvYH+G+x80606ruH3IymPyBPqakdGRGTRuJQFxU5CTVI8iyyEe1
-         51Tg==
-X-Gm-Message-State: AOJu0Yyd85W06U9SThJ4rnUrB0IERfW7t753D/91bvHQ/Jtd4zWyGOm9
-	Hlzw9xlGg/AlXVJAEuGTxTzaa2kjcsFu+vgiYq17NrRMllO2vxDO/JMBArA2YCPCTw==
-X-Google-Smtp-Source: AGHT+IERE2I9p7BYU8mcWHw1Y9HBtji07mvDioX8gLcSgkE2Ih4vfKxRDTW61yw34cHGdRD7Ux5/5Q==
-X-Received: by 2002:a17:902:e5d0:b0:1fb:57e7:5bb4 with SMTP id d9443c01a7336-210c6c6b978mr15380225ad.37.1729917586966;
-        Fri, 25 Oct 2024 21:39:46 -0700 (PDT)
+        bh=OKvTzTd2ANidL74ryN8G09s4Libe61Whgnlswc7fVp8=;
+        b=naBLWMCsDgeL+BN8WgcRnpmK9Th3hsPgU0sOBKs9YxrU9KVguFUTUpfM6hofwJNN1y
+         oqyQhpepvydH/20D/4g5tQSGvY/PBqVOYCC4m8RdPHnmndFq88ufKiPgUhKPeSjkL+D+
+         bnA1vSaHqM25f2PEqEWehUsercCl3NK5pMX1XAfliA6M7dm7by38jCLU0D6i/zSx9c/V
+         cMiapMvGaIbAxPvYQ4+ZRZBB4BIq+jWwTcFJTwIxmyfnxoy9ZBQgLAtKYaoD536Vw3J1
+         vAtsdDROWJQaHrMlohe+cvjlss5/FZHBwh4lAzBY90PVQr3fHMWl+uNWjCySQEm2GcQt
+         bXDw==
+X-Gm-Message-State: AOJu0YzacU5NXM7y7YSQ6ZSBV+DIooS6S7BlQL/WD69J+7PvQgpaGV1s
+	0L3nHpfqs+zGfZwqEpa1NOrkOQCawRHRKKZMLfYq5I3A3XcwYuwhN4e87EiJYlFX7g==
+X-Google-Smtp-Source: AGHT+IGcMwTrhA4GquFtAw/OAkU/5sXiscLyVf5o6L+IC0teyPNwdg2NJVY5QYBPMx+soAotXkJoLA==
+X-Received: by 2002:aa7:8891:0:b0:71e:44f6:6904 with SMTP id d2e1a72fcca58-72062fd9eb7mr2854808b3a.13.1729917608339;
+        Fri, 25 Oct 2024 21:40:08 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.120.226] ([45.176.88.169])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bc02eee6sm17342875ad.219.2024.10.25.21.39.41
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72057a0cf09sm1952054b3a.135.2024.10.25.21.40.02
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Oct 2024 21:39:46 -0700 (PDT)
-Message-ID: <33ed109e-5221-43f0-8f1c-e188187c581b@linaro.org>
-Date: Sat, 26 Oct 2024 01:39:39 -0300
+        Fri, 25 Oct 2024 21:40:07 -0700 (PDT)
+Message-ID: <3ba8e29f-0e23-4b8f-b654-8416b9725fa4@linaro.org>
+Date: Sat, 26 Oct 2024 01:40:00 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 18/21] target/microblaze: Explicitly set 2-NaN propagation
+Subject: Re: [PATCH 19/21] target/openrisc: Explicitly set 2-NaN propagation
  rule
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
@@ -97,26 +97,22 @@ Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
  qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
 References: <20241025141254.2141506-1-peter.maydell@linaro.org>
- <20241025141254.2141506-19-peter.maydell@linaro.org>
+ <20241025141254.2141506-20-peter.maydell@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241025141254.2141506-19-peter.maydell@linaro.org>
+In-Reply-To: <20241025141254.2141506-20-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Uuf676nzm3R/
+X-TUID: cslRzBNskrNu
 
 On 25/10/24 11:12, Peter Maydell wrote:
 > Set the NaN propagation rule explicitly for the float_status word
-> used in the microblaze target.
-> 
-> This is probably not the architecturally correct behaviour,
-> but since this is a no-behaviour-change patch, we leave a
-> TODO note to that effect.
+> used in the openrisc target.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   target/microblaze/cpu.c        | 5 +++++
->   fpu/softfloat-specialize.c.inc | 3 ++-
+>   target/openrisc/cpu.c          | 6 ++++++
+>   fpu/softfloat-specialize.c.inc | 2 +-
 >   2 files changed, 7 insertions(+), 1 deletion(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

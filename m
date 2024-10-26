@@ -1,105 +1,108 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp255820njf;
-        Fri, 25 Oct 2024 21:47:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUh0Bv2OkJqnIZYGx9JDWikryOhUcSTCoUuo349VqAIkaGQpKVTPc5EKR5TTEoi+DbbQyUrwUIH3cdUMg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGQHxbZLrDLz1JDG6UK0HkiHgUJq2/8qSqXsi2hG7/slV/pokFjRue99vEe5Le1BBIVSp3+
-X-Received: by 2002:a05:600c:4ec7:b0:42e:93af:61c5 with SMTP id 5b1f17b1804b1-4319acad2e4mr11333015e9.14.1729918046606;
-        Fri, 25 Oct 2024 21:47:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729918046; cv=none;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp272700njf;
+        Fri, 25 Oct 2024 22:55:06 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUjWdSodXX3WjmwZVje843YkU9I7pcxqOCOJbkW4SGZSwMGXHG93W5CFNJHOYoGWkQR5ysvelkQMrWwSA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHhuAWc3oAou5GGJpabXvHslBEtUVttqZajTiPdJ5+m63Jljw6Pr76z0tg23H7S2xrnxpdm
+X-Received: by 2002:a05:6214:5702:b0:6cb:5d17:62df with SMTP id 6a1803df08f44-6d1856fc199mr30863866d6.26.1729922105946;
+        Fri, 25 Oct 2024 22:55:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729922105; cv=none;
         d=google.com; s=arc-20240605;
-        b=DzPPqoOyCp1uVS+RMFPAvGATAOeQ95pTzHC9HOSB5Udxw0Jf0YFMoRzzw9RdoUMqkI
-         TQjB9EQzdVlKdBNXsJtf7ihX9HNmRKFHRyiVi0kSUOqPcDDlBx/1RimzmQR9dGsbnoGQ
-         9OQigxTBR8j2CmuyJsnr1UseF+1oMWKtFI6+HcwaDL4mUVFmnitROjNZOZqR6nLYhnWc
-         +7/ToTtzdaCcaTvCb4XSsH/LtVOirmmBRclqx9znCKAPJXQ2iI0JzDElljYtx8CiJF4c
-         oCECZgjzuGPfjSvJLE8LYJIRpsLNT7xxrQgUYNKPrDSfY1a+nqkHIycCquGcslM5sbyG
-         vadQ==
+        b=irtWBtmlR9RwjL352zmukQyxtU89U1lemEkd/axaPCU2FemCupC3FX/GOVf1xZRn54
+         gjHck+NhUduurGxFv5PsiRA3HSpC7RMGKgrCgL39jqN72KSDvpcLY5VapXQ/skCLIKVq
+         8AW5U/K6J1LMKhFYnTzqtxGTfiFW2nZEFNEIMSjY23r8rToo48gBtDdCgm94UMKxNKh/
+         DN6ENVE0rl7g0fEMKF2CIHBZb2Bi0e3KnVKhHjBX+N/gzmXTl9IPtIFEIghkMJzAf32G
+         Sxgkc8jjv3QZAF/qxwf/+uSo7eXCKBuO3NMHw9pUNmWJaiAFhZqjyCLPX8viKV6d7hCf
+         djGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=yJ8dGdbJeWFvl4ollPhSLJU33Y4fP/CM8oXsOmLAysE=;
-        fh=FjTnA5X5XdriGYy6/LymxBIP3wjWF+x+EeHW0qkXzS0=;
-        b=U1ylmMHeLwEMT1/mKwN+pqDUqH5HWVG1zztkCCCpziLgwDMrT9A2TlaVeBnhyNk4El
-         9MrnGe4ihy2F3GqOv/vBw32hqzcruv2JEf0AZiPj9czYCPTZG7i6HsSP5CWWYfXAMlTH
-         law8gG/3b++oEYaXP+xcYcWuj7m7iMQmDF4NAs8jch3N3kJAbn+/BTt1tN86GUisBehW
-         llK0Zqdx5Npn4pUL5zsU914ONh/bhMF9I5SFw5x1p13asuW0Mnjp7lU3AJ/6uM+Sj+p9
-         6iBtjph8uvXMn0G0ibCqrgRYzCvZU3hfq9Ly3/TSMpOLMlrPNjy1sarOpd2VPjbcfj9v
-         rceQ==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=NOMGy2FEk66qzMckv6NEqNCB3zgERDeVlupgMzTkWMg=;
+        fh=5QCKnM+s0R4oG321kJO5jn5HnZVS9jZHDvSN1RxHu/o=;
+        b=FsZ80NTXxzE+l8lJRZOrlaOBVp2DZ3rA9bfUWY2Kzivhu28qCx/yFowwSOT5wdwTf/
+         qacOnmRkqgDMQbfTIbljz0M8/rFaHryCCGteXRBINH+YB444rEcytdpmiC6WIYTJl3L6
+         X9pLkZmFA+YjUDEMG2oN9KomKTj2iqA3aT6I3kPh3ZgcZxwAuPfBAiksRR34Sqk17JnM
+         96D+Q8/aJrmI7T3JoT48VFQLNZw6rdq+LdgzoxZLxDXWiZTTLqY+YRMrl0YGUWo1qJpu
+         hTZmZnTUmzc26viya2sr7Xkmqi+o5s4Kw8tRbWQ8QOt68pvLtNwSMqbSI3NAZUoJLHrl
+         N64Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IDXjLRVC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=kI5y4Okm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-38058bd242esi1665086f8f.976.2024.10.25.21.47.26
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d179a11ff9si33854726d6.302.2024.10.25.22.55.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Oct 2024 21:47:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Oct 2024 22:55:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IDXjLRVC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=kI5y4Okm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t4Yhq-00048B-0x; Sat, 26 Oct 2024 00:47:18 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t4ZlC-0007Z6-Hb; Sat, 26 Oct 2024 01:54:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t4Yhl-00047j-Lt
- for qemu-arm@nongnu.org; Sat, 26 Oct 2024 00:47:13 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t4Zl4-0007YM-R9; Sat, 26 Oct 2024 01:54:44 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t4Yhj-0001zB-RN
- for qemu-arm@nongnu.org; Sat, 26 Oct 2024 00:47:13 -0400
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-20cceb8d8b4so14951915ad.1
- for <qemu-arm@nongnu.org>; Fri, 25 Oct 2024 21:47:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t4Zl1-0001KO-Oy; Sat, 26 Oct 2024 01:54:42 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-2e3fca72a41so2143938a91.1; 
+ Fri, 25 Oct 2024 22:54:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729918030; x=1730522830; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=yJ8dGdbJeWFvl4ollPhSLJU33Y4fP/CM8oXsOmLAysE=;
- b=IDXjLRVC2I2ghy3+DYoY/1WI5SqeOMP/VPtf3cQrEVT9N/hVgS73rVXc7pos9+atrw
- 0ZhbC4Q1sZcFWfo+3ekRyjuxmIuZQKqggZBqCbSo7qOpf/NJ6D3eb4Vyg0VFwPytszk/
- QGE4rMaAG2PjYhcIoAH5aBDQ1yzzvg1VP7ausAwGUC0QL2pDzEcOhzB3/4adByelICqU
- pN7JZsgc+sKuHR3soEyfS/aml8y3Wv3WPfJyTEVEPI23PAs8gykpaupjZGDKE/icCrnF
- N2c7eFUtPqmaxqJCq104lioY39jveOaE15dZR4rfBha//c9cSBjUV5hqKNrkA2RyZIiM
- 63Jw==
+ d=gmail.com; s=20230601; t=1729922077; x=1730526877; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=NOMGy2FEk66qzMckv6NEqNCB3zgERDeVlupgMzTkWMg=;
+ b=kI5y4OkmY8sO3OdztOvoq/rwfxG41DszzpxMVgBJf6RVi0kGcCtYmdGXgy06aGLaui
+ cp5NGPTvQyzeJIIW7FWQjacThAR029jft5vhRwWvz27WIYVvhcSwbLbBt3OJelADaUnj
+ g3ukF0JwLG9eOOKV9S3HYjJ5UYVksN/8jRq5okrsA6rq7iJv1V+7N1JwsvSCgXPLQBIA
+ 5y/kbWTZO62H31mw9PheM/2D12zUnipzpQDZ/GxO+rPNKqOpwvJ1a7XYEmtDPNgmpmGt
+ wRhfJ9svctc+KlVobM6EaeD/shuUrwxNhmUtJ25l8mdSFxfV6kUkByvM2dvgrAHJe+Qz
+ fULQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729918030; x=1730522830;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yJ8dGdbJeWFvl4ollPhSLJU33Y4fP/CM8oXsOmLAysE=;
- b=l5o/nnDMwU+ZLvdod5FZmGgw3yIkczn7UyJMFyaug/1IZu1dv8kyLqnF6B5EqHFGcU
- k6t6YYPtZ+RV9D2hfEyVdBgok7FEQGv1NzMXds0rO0rrTk8DIk8OMZSAXgYrBI6X4tNh
- gSBFgSKT46mkbV7vVCUPd7DaYl7tyEIKWdPAHKjSBOyuWLRY/fEl4xnEvRU80v/yacRS
- mo7VSb9x8GQEGPYBElLp73Ojtmxh+0mz8bNLs1iKRvtzKDuf1DlaYuWBYC8pKveO7wh9
- 24cBdMJpcATLctldx/fs/5mY7CwfoLDRq1ofVKddyZeJOtGJNwyznSW+ALIeBWXTK2a9
- py+w==
-X-Gm-Message-State: AOJu0Yz+BBJ/idVz82EmNys+ZpmA+x7zxiWKrYLa/I0woS3jzURCXpzi
- E3kiKRPXdCZ4VPUAy3rUYYOgQak4iCkQP4qp7HlVLn6wUraZ5WNJ32cKLOXcK8Y=
-X-Received: by 2002:a17:903:32ce:b0:20c:5990:897c with SMTP id
- d9443c01a7336-20fb8a5b3c2mr111413415ad.27.1729918030152; 
- Fri, 25 Oct 2024 21:47:10 -0700 (PDT)
-Received: from [192.168.120.226] ([45.176.88.169])
+ d=1e100.net; s=20230601; t=1729922077; x=1730526877;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=NOMGy2FEk66qzMckv6NEqNCB3zgERDeVlupgMzTkWMg=;
+ b=EVMOLfheDrIiVr1fod9znbFuYtQbJhV3vWlXpSQJl0uaUHwdVX3qsWjAqncgppjtw8
+ 6zvjsl53bS9ijc6Mve+oPYMDJZllqW/FHKtII/lNZrFdmW2OYZxZATijaPUx5R1yONfT
+ sFTrMo2nwkhJ4tIK469oA9m0Cm8FPTUYALDbpUMgdJ6U1ryHVlRxMPKDfQWwpJP7RBHE
+ JuCKAErdIcolNGVbRj9XjqWlXFqGweJ10rDpTfWE+NHAdbpJUGhXoZdgSqh7GH3kSTQY
+ btqcBae3C2ArHXTBtxU7Aun7xgylOMmc27FprfZlbIDWKwp5XAp0NqwCvfKRbkJC58x8
+ bipw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU21pWiAz78e25rjzc6NmONv2Hf79EJNRuJnplWSBY0GeZndNfTVdlzYFoi/dzZ8WidckX+aY0j4XYo@nongnu.org,
+ AJvYcCW9PW9nnvVorfLIqha1KuYZcKWgiUfDGjn5/qb6zVts41/6QQk7y1UOmaOcPzKRuazJlVjTx+8yBx6NuQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzCt356Xx+67hfQu5rPAy7KT2XG9D19Uq5K5YV9tZP0DpOJMVJ0
+ vJB4fTTlHLPzGTtqQ7zP3/4l3EoXZs41kitxW9fC/Ts4tzMxtgD5
+X-Received: by 2002:a17:90a:b305:b0:2e2:9038:4a48 with SMTP id
+ 98e67ed59e1d1-2e8f10a6e39mr2108770a91.32.1729922077318; 
+ Fri, 25 Oct 2024 22:54:37 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-210bc0303dbsm17280395ad.217.2024.10.25.21.47.07
+ 98e67ed59e1d1-2e8e3555b67sm2627131a91.9.2024.10.25.22.54.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Oct 2024 21:47:09 -0700 (PDT)
-Message-ID: <53cbb597-e7f2-4742-bf85-928c704ddbcf@linaro.org>
-Date: Sat, 26 Oct 2024 01:47:05 -0300
+ Fri, 25 Oct 2024 22:54:36 -0700 (PDT)
+Message-ID: <443f1b0c-8184-4bf4-9f68-c23d7de3bc36@roeck-us.net>
+Date: Fri, 25 Oct 2024 22:54:34 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 0/2] arm: Add collie and sx functional tests
-To: =?UTF-8?Q?Jan_L=C3=BCbbe?= <jlu@pengutronix.de>,
- Guenter Roeck <linux@roeck-us.net>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Jan_L=C3=BCbbe?= <jlu@pengutronix.de>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
  <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Joel Stanley <joel@jms.id.au>, qemu-block <qemu-block@nongnu.org>
@@ -115,132 +118,185 @@ References: <20241017163247.711244-1-peter.maydell@linaro.org>
  <600baa43c3dd3547338934717cfb57c5e12b0d23.camel@pengutronix.de>
  <84c32f2d-7d9a-4e5a-8b67-1f954dd493f6@roeck-us.net>
  <b67f302a11a679c3fdb02318eb9ef0be559d14ce.camel@pengutronix.de>
+ <53cbb597-e7f2-4742-bf85-928c704ddbcf@linaro.org>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <b67f302a11a679c3fdb02318eb9ef0be559d14ce.camel@pengutronix.de>
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ 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
+ mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
+In-Reply-To: <53cbb597-e7f2-4742-bf85-928c704ddbcf@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=philmd@linaro.org; helo=mail-pl1-x632.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=groeck7@gmail.com; helo=mail-pj1-x102e.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.17, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PLNu5dL7u0Nd
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7uUdx8Q/zdgo
 
-On 25/10/24 12:25, Jan Lübbe wrote:
-> On Fri, 2024-10-25 at 06:59 -0700, Guenter Roeck wrote:
->> On 10/25/24 02:57, Jan Lübbe wrote:
->>> On Fri, 2024-10-25 at 08:55 +0200, Cédric Le Goater wrote:
->>>> On 10/24/24 19:59, Philippe Mathieu-Daudé wrote:
->>>>> Cc'ing Jan.
->>>>>
->>>>> On 22/10/24 12:04, Guenter Roeck wrote:
->>>>>
->>>>>> I have no idea how this is supposed to work, and I don't think it works
->>>>>> as implemented. I'll revert commit e32ac563b83 in my local copy of qemu.
->>>>>> Jan, can you have a look at this bug report please? Otherwise I'll
->>>>>> have a look during soft freeze.
+On 10/25/24 21:47, Philippe Mathieu-Daudé wrote:
+> On 25/10/24 12:25, Jan Lübbe wrote:
+>> On Fri, 2024-10-25 at 06:59 -0700, Guenter Roeck wrote:
+>>> On 10/25/24 02:57, Jan Lübbe wrote:
+>>>> On Fri, 2024-10-25 at 08:55 +0200, Cédric Le Goater wrote:
+>>>>> On 10/24/24 19:59, Philippe Mathieu-Daudé wrote:
+>>>>>> Cc'ing Jan.
+>>>>>>
+>>>>>> On 22/10/24 12:04, Guenter Roeck wrote:
+>>>>>>
+>>>>>>> I have no idea how this is supposed to work, and I don't think it works
+>>>>>>> as implemented. I'll revert commit e32ac563b83 in my local copy of qemu.
+>>>>>>> Jan, can you have a look at this bug report please? Otherwise I'll
+>>>>>>> have a look during soft freeze.
+>>>>
+>>>> Guenter, just to make sure: In your case [1], you had "boot-emmc" (see
+>>>> aspeed_machine_ast2600_class_emmc_init) enabled, right? Otherwise the
 >>>
->>> Guenter, just to make sure: In your case [1], you had "boot-emmc" (see
->>> aspeed_machine_ast2600_class_emmc_init) enabled, right? Otherwise the
->>
->> I tried both enabled and disabled.
->>
->>> boot partition size would be 0, meaning that the eMMC has no boot
->>> partitions.
->>
->> That is what I would have expected, but it does not reflect reality.
->>
->>> In that configuration, your backing file needs to have space for the
->>> boot partitions at the start (2*1MiB) and the rootfs starts at the 2
->>> MiB offset.
+>>> I tried both enabled and disabled.
 >>>
+>>>> boot partition size would be 0, meaning that the eMMC has no boot
+>>>> partitions.
+>>>
+>>> That is what I would have expected, but it does not reflect reality.
+>>>
+>>>> In that configuration, your backing file needs to have space for the
+>>>> boot partitions at the start (2*1MiB) and the rootfs starts at the 2
+>>>> MiB offset.
+>>>>
+>>>
+>>> boot-emmc doesn't make a difference, because
+>>>
+>>>           if (emmc) {
+>>>               qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
+>>>               qdev_prop_set_uint8(card, "boot-config",
+>>>                                   boot_emmc ? 0x1 << 3 : 0x0);
+>>>           }
+>>>
+>>> in hw/arm/aspeed.c sets the boot partition size independently of the
+>>> boot-emmc flag.
 >>
->> boot-emmc doesn't make a difference, because
+>> Ah, yes. :/
 >>
->>           if (emmc) {
->>               qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
->>               qdev_prop_set_uint8(card, "boot-config",
->>                                   boot_emmc ? 0x1 << 3 : 0x0);
->>           }
+>> So you can have SD, eMMC with boot from boot partition *disabled* or
+>> eMMC with boot from boot partition *enabled*.
 >>
->> in hw/arm/aspeed.c sets the boot partition size independently of the
->> boot-emmc flag.
+>>> I suspect that the expectation is that I always provide
+>>> an emmc image with a 2 MB gap at the beginning, but in my opinion that is
+>>> really hyper-clumsy, and I simply won't do it, sorry.
+>>
+>> I was surprised that the boot partitions' contents are stored in the
+>> same backing file as the main area (instead of being separate files).
+>> But I've not researched why it was designed this way.
 > 
-> Ah, yes. :/
+> Yeah I'd have preferred separate files too, but when it seemed
+> to be simpler for the single user case:
+> https://lore.kernel.org/qemu-devel/d48b6357-c839-4971-aa28-bdbd5b1bab53@kaod.org/
 > 
-> So you can have SD, eMMC with boot from boot partition *disabled* or
-> eMMC with boot from boot partition *enabled*.
-> 
->> I suspect that the expectation is that I always provide
->> an emmc image with a 2 MB gap at the beginning, but in my opinion that is
->> really hyper-clumsy, and I simply won't do it, sorry.
-> 
-> I was surprised that the boot partitions' contents are stored in the
-> same backing file as the main area (instead of being separate files).
-> But I've not researched why it was designed this way.
 
-Yeah I'd have preferred separate files too, but when it seemed
-to be simpler for the single user case:
-https://lore.kernel.org/qemu-devel/d48b6357-c839-4971-aa28-bdbd5b1bab53@kaod.org/
+I don't mind a single file. What bothers me is that the partitioning is made
+mandatory for ast2600 even if not used.
 
-> 
->> I can work around
->> the problem by changing the above code to only set boot-partition-size if
->> boot_emmc is set, or I can revert commit e32ac563b83. For now I chose the
->> latter.
-> 
-> With e32ac563b83 reverted, your backing file layout will change *at
-> runtime* depending on whether booting from the boot partition is
-> enabled via EXT CSD registers. You should be able to try that using
-> 'mmc bootpart enable <boot_part> 0 /dev/mmcblk0' (with boot_part=0 for
-> disabled and boot_part=1/2 for enabled).
-> 
-> 
-> I'm not sure what the best way forward is... perhaps make the boot-
-> partition-size zero if boot_emmc is false? e.g.
-> 
-> @@ -339,7 +339,12 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
->           }
->           card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
->           if (emmc) {
-> -            qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
-> +            /*
-> +             * Avoid the requirement for a padded disk image if booting from
-> +             * eMMC boot partitions is not needed.
-> +             */
-> +            qdev_prop_set_uint64(card, "boot-partition-size",
-> +                                boot_emmc ? 1 * MiB : 0);
->               qdev_prop_set_uint8(card, "boot-config",
->                                   boot_emmc ? 0x1 << 3 : 0x0);
->           }
-> 
-> 
-> Then you'd have the choice between:
-> - an eMMC, but without boot partitions (and simple backing file layout)
-> - an eMMC with boot partitions and need a backing file with
->    the boot partitions at the beginning
-> 
-> That might be the lesser evil. :)
-> 
-> Jan
+Guenter
+
+>>
+>>> I can work around
+>>> the problem by changing the above code to only set boot-partition-size if
+>>> boot_emmc is set, or I can revert commit e32ac563b83. For now I chose the
+>>> latter.
+>>
+>> With e32ac563b83 reverted, your backing file layout will change *at
+>> runtime* depending on whether booting from the boot partition is
+>> enabled via EXT CSD registers. You should be able to try that using
+>> 'mmc bootpart enable <boot_part> 0 /dev/mmcblk0' (with boot_part=0 for
+>> disabled and boot_part=1/2 for enabled).
+>>
+>>
+>> I'm not sure what the best way forward is... perhaps make the boot-
+>> partition-size zero if boot_emmc is false? e.g.
+>>
+>> @@ -339,7 +339,12 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
+>>           }
+>>           card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
+>>           if (emmc) {
+>> -            qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
+>> +            /*
+>> +             * Avoid the requirement for a padded disk image if booting from
+>> +             * eMMC boot partitions is not needed.
+>> +             */
+>> +            qdev_prop_set_uint64(card, "boot-partition-size",
+>> +                                boot_emmc ? 1 * MiB : 0);
+>>               qdev_prop_set_uint8(card, "boot-config",
+>>                                   boot_emmc ? 0x1 << 3 : 0x0);
+>>           }
+>>
+>>
+>> Then you'd have the choice between:
+>> - an eMMC, but without boot partitions (and simple backing file layout)
+>> - an eMMC with boot partitions and need a backing file with
+>>    the boot partitions at the beginning
+>>
+>> That might be the lesser evil. :)
+>>
+>> Jan
+>>
 > 
 

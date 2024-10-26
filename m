@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp252484njf;
-        Fri, 25 Oct 2024 21:32:37 -0700 (PDT)
-X-Received: by 2002:a17:902:cccd:b0:20c:9ec9:9a77 with SMTP id d9443c01a7336-210c6c3ec85mr19533425ad.37.1729917156793;
-        Fri, 25 Oct 2024 21:32:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729917156; cv=none;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp253264njf;
+        Fri, 25 Oct 2024 21:36:03 -0700 (PDT)
+X-Received: by 2002:a17:902:c949:b0:20b:8bd0:7387 with SMTP id d9443c01a7336-210c6cab86cmr23723005ad.52.1729917363458;
+        Fri, 25 Oct 2024 21:36:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729917363; cv=none;
         d=google.com; s=arc-20240605;
-        b=WpWoo5bhVRp4844T4eC+/XrW5sQ0ikbJ+ZXNf1M4o5dFzB864NDIJErfIxEP/z++GD
-         A6qdHU8Ds4oY/mYGqd5bHoyc5YGs44mI4XRIe6n9fX7Ox2tw++jMzO1Jx0iFrMbiA7ad
-         hDgbtaOpACp7UEZV7tzhwI312a/7l6pnUKG5JlrmtYAr0CVCGQGEGLO7tTXIhCm5VuaX
-         u5fqHPmCvV5cnUC1bxoWIZj3IssvQf9AxuFNVm7gWgboEfRl4vkymWC91a5ViR96D/LD
-         9etnpShN/CKLni/+jBNNFm5sdy9quM1hQ3jq78G6zkKw0cX2cAg87jtrc50QoWH2o6Vp
-         NFHQ==
+        b=fgLWdvOBp4+UsulP222gMMI5heKd+AsrNN0XZg04y7zCe6aizDo1spDoNVGkMERWlf
+         1RRMEGZIOijuMD92MmRgp4nhYrXvrQZJGcbJCQc6DMddqrc92jnprMj5GqYaWCde2Nt+
+         0e8nomM/riUse2CPJsFo//6QeLAQoBqOzb1UDh8FmyAr8TAn2zGYJnwlqf4X8TasLGdW
+         7km5lo0MvnHtyLVku8NtM9R43GEDybwgLH5oev7OJS6ABTv/9qUWOgzsGY7jl4aR8xxs
+         uG8VEVwhg7DVL3z7r1kNUUOgVCHoWkBa20EhZcaBHlKadEO9PKDIgjFa8W8z25IcI1oz
+         2s9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=2xY5NFCSqNOVgI2joiK27KmS99wVtlCnPM+PxE8Ic9A=;
+        bh=/gIbe1d55J0i7G5iCOOM1ljApzrAFEyO6xE7+q4tuJA=;
         fh=57KB4fSpGukS9IUlPcDISciwmQ4lhGDq9IA5L5jXiis=;
-        b=VVlF5PUT9BPPH0l0OHNmm0+glcNRemLR48xAMgAqFZfTRuYscqtcgWbsEV2ymx/IPc
-         zDV/I4uLFY209czA7Z8ga67zskhl2ggSgOA/dw/VFlh+SIwLHuY1SHHWdAZbLmgdnL26
-         FnmIU9J30FqZ3nfNxmn/GjekSHdhMU0fErfT/7RmCERTaZoXresAgfoDIllNXFroXQn2
-         PsFxnKmyxgRcrHjsI9lLlTxr39HtnJ5v0msq1/mWyTiRLisyKEbLKvlv0t+r6I2XTwDe
-         Gw6xMwmz0w7SYxrdBcE14pPBt504vOLTg8Pt+NECaH2ySef4ipqQol2v4B1wZU61p+xr
-         EaOg==;
+        b=UyLBYGRBmEe4ctLGHAEwMGv1bP5PtAxTxyCUZfbfKEK+leuPuf3727UHGzb2f+fXJ5
+         KEzAKXvOjC+Hn6i+q9RJ7V8IeIQaFmcL53O6hHk0N1eFi+PDjo5LUeoIIC3LgvT73Lv+
+         pmNIeBUwuvmUrqII6am6Q7WZsGaiUCE1eM5svH4Qgpekn552bdaNG9AV7zl6UPWzaVK1
+         nSoxXgiBGEPTcaJgjOIQ0k/CU67eri4f61Ha4paUAGx8x4Ht/VCl0Nrhx0eqDn5y1OK+
+         bW/FfW40sOSNGQtZC/4mww73ATsjwSkWAg+wHchST0yl8e96hEZ4mX5fIuc+fpamEdN5
+         pyvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SzMpxaW0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xF40gHzu;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-210bc06f0d1sor13641535ad.19.2024.10.25.21.32.36
+        by mx.google.com with SMTPS id d9443c01a7336-210bbf7f2f3sor15475485ad.6.2024.10.25.21.36.03
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 25 Oct 2024 21:32:36 -0700 (PDT)
+        Fri, 25 Oct 2024 21:36:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=SzMpxaW0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xF40gHzu;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729917156; x=1730521956; darn=linaro.org;
+        d=linaro.org; s=google; t=1729917363; x=1730522163; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=2xY5NFCSqNOVgI2joiK27KmS99wVtlCnPM+PxE8Ic9A=;
-        b=SzMpxaW0E9WQLSuEGt13gA/YJJhQuDTKEBXDrCogHl9SBIVbXpwQhYK2hPcXi1bcLH
-         sG+1kXTgsPMfOjqbmxVNzllhLLK1wuQNfzJExOIGsKzjzcW/KQiTO5a1suEDb/4gkZWx
-         bxaiVIYV6kfDCOwh9WVLKDZX0D5uWb4vpwLkpiRUy1pLjgG8YipHFZEBZ58Z9Zb092tq
-         Xat5okLOiklqW0+dbgHG3h9V918K2cz8FY34aHyRArdk8R8PQArYmvOdlbcXUORTLVdm
-         lJF6+HFOzdotz0CBu1z1+edUlQ3il+jTahwxiPHApmXaaAba2ZXPxuIIg/N5skH+BTZ9
-         gCcw==
+        bh=/gIbe1d55J0i7G5iCOOM1ljApzrAFEyO6xE7+q4tuJA=;
+        b=xF40gHzuIoI51qhZqJ7AKqgLqf4GOuDdoIE8had/NH6L+OypIsmNot1VgVpi01JqJU
+         Olm3PSlE+sctcS6ZmFg8sH1ceywsS37+FeA38qAoZYhEhNHrb0y6LQDf/iMlYYJOhbxx
+         8qVRoVoA+Pk+ygIwa3AcpYpHoQTcMQD25Mxag7mwtwiYhvBn1J9kocZJz/AI6FbrFBc5
+         wKKzzQVhcFsyp3670v6Md7NWNOhmKU8CZ0sy/4NqEp2XWX0I+rtOkxDn1iEBH/3HB4gl
+         BtodRLSFTjzdRmozOABa0pP9xWs9igljOXdyyrgMxZ7LBqLubFaUL+qTJY+gngcyZJJH
+         Z0xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729917156; x=1730521956;
+        d=1e100.net; s=20230601; t=1729917363; x=1730522163;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2xY5NFCSqNOVgI2joiK27KmS99wVtlCnPM+PxE8Ic9A=;
-        b=hpVNFGcy1ojiRDcogABL7qcrZWxnkME3120KamrAvhbapJ7HCMNbMajb3p8KbSdsYz
-         XprOhjn3i6M6SElNI1xUnwzFJkf//ZUwCm5TLTaiLVax+zX9s+R93T84YfmLtRLIBEYQ
-         cR8DljQSX7zi/zPNRLudQTRREkvicwGEJCR9Xq3lrjQcsZ5pmLzcxBfJ9ZLTnDnTxQio
-         19ilTpZh1x2kZaDgybQg+kTrrQ9Po0S7EIytmvv0Ir9G/Gkd2Bpkeg6E2FEEIjnH2jsM
-         Z98fvEhQJOM5Lsb1zXviEd/loZAU1BgQP8GnpVz1f+/lMsGJ7oqBQyiCe+vH+hUFNhCg
-         7I7A==
-X-Gm-Message-State: AOJu0YxZh0cteQBBL7s7cvWq2ZUCP+4Hhpa/3J/1PB14u1esi9jab8q7
-	xMkeg9J1FTnZE5nmb/3FlgPI44R28/Ba3P72TjYiHqVp1oWfCm3iPhXqhDEuwGCbCg==
-X-Google-Smtp-Source: AGHT+IFJ8TBIq1vw2ZrDWZ66H+dIj/BiCfj7ifKHaOguXKsUTHM2GUCjEft7XwWKwwgXSFj43vaeag==
-X-Received: by 2002:a17:902:cccd:b0:20c:9ec9:9a77 with SMTP id d9443c01a7336-210c6c3ec85mr19533225ad.37.1729917156310;
-        Fri, 25 Oct 2024 21:32:36 -0700 (PDT)
+        bh=/gIbe1d55J0i7G5iCOOM1ljApzrAFEyO6xE7+q4tuJA=;
+        b=phNjv+VdxsbjW3sI9MOK3cMUGOkEfFzfe4JJOAMSWqnetQpgp0F75bOpY6pLuJ/3TK
+         YzHAJrZCF0QrHAuTFf8vo7AAohFjrgvNOntnx5yg3o9/cn8HeZ3+5Sk2fgwT3KD8Jxuh
+         jxS0h2Y8G9396BO+ttnoxirwW3E9b4PbraL79vCuN9EkGhXpavIW+YppZQk4RDjrtvLB
+         vJ2pXQtFzg+R5LeECD6BzgEld54MuwLLiIz2BaDEQKwgG9u/6wPt2M3FIstHZZPsmmsE
+         GiojnvY5fmhQtR7EhZuIecioHLn3SNHVck2Ouz3oJ3unsPaRIp1NJMOhXlwTAoxXVcvX
+         axmA==
+X-Gm-Message-State: AOJu0YxEILkDPjcCLGKSo1GKeiyFsNeg32JzgXxmqBR0l9Ehaq0EXUnI
+	c6y1ulLTJah4RFM75IMqlrCpA7/JY/MWaqjHjfgaufaI6FfpYkiEmbzg0o7jPUz0lw==
+X-Google-Smtp-Source: AGHT+IGReU4ICQ3M2VC36Ip/tTtyo22+H2HnmGfFtSFZ+yskBIh5Dcb1rq0I/LLPKx/DtGbBjo8Ylw==
+X-Received: by 2002:a17:90b:5201:b0:2e7:6e84:a854 with SMTP id 98e67ed59e1d1-2e8f0f53e17mr2311975a91.1.1729917362924;
+        Fri, 25 Oct 2024 21:36:02 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.120.226] ([45.176.88.169])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bbf445d5sm17221225ad.42.2024.10.25.21.32.30
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2e8e37490cesm2435135a91.37.2024.10.25.21.35.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Oct 2024 21:32:35 -0700 (PDT)
-Message-ID: <3bc58d20-a874-44e8-9f09-3a0fb54a46cb@linaro.org>
-Date: Sat, 26 Oct 2024 01:32:29 -0300
+        Fri, 25 Oct 2024 21:36:02 -0700 (PDT)
+Message-ID: <a6a832c5-9429-40b8-ae3f-1c90c5301f73@linaro.org>
+Date: Sat, 26 Oct 2024 01:35:54 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/21] target/sparc: Move cpu_put_fsr(env, 0) call to
- reset
+Subject: Re: [PATCH 10/21] target/m68k: Initialize float_status fields in gdb
+ set/get functions
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -97,34 +97,55 @@ Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
  qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
 References: <20241025141254.2141506-1-peter.maydell@linaro.org>
- <20241025141254.2141506-12-peter.maydell@linaro.org>
+ <20241025141254.2141506-11-peter.maydell@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241025141254.2141506-12-peter.maydell@linaro.org>
+In-Reply-To: <20241025141254.2141506-11-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 1ZQwvamZHCuF
+X-TUID: UAyM2K8tKZfg
 
 On 25/10/24 11:12, Peter Maydell wrote:
-> Currently we call cpu_put_fsr(0) in sparc_cpu_realizefn(), which
-> initializes various fields in the CPU struct:
->   * fsr_cexc_ftt
->   * fcc[]
->   * fsr_qne
->   * fsr
-> It also sets the rounding mode in env->fp_status.
+> In cf_fpu_gdb_get_reg() and cf_fpu_gdb_set_reg() we use a temporary
+> float_status variable to pass to floatx80_to_float64() and
+> float64_to_floatx80(), but we don't initialize it, meaning that those
+> functions could access uninitialized data.  Zero-init the structs.
 > 
-> This is largely pointless, because when we later reset the CPU
-> this will zero out all the fields up until the "end_reset_fields"
-> label, which includes all of these (but not fp_status!)
-> 
-> Move the cpu_put_fsr(env, 0) call to reset, because that expresses
-> the logical requirement: we want to reset FSR to 0 on every reset.
-> This isn't a behaviour change because the fields are all zero anyway.
+> (We don't need to set a NaN-propagation rule here because we
+> don't use these with a 2-argument fpu operation.)
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   target/sparc/cpu.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+> Spotted by code-inspection while I was doing the 2-NaN propagation
+> patches.
+> ---
+>   target/m68k/helper.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/target/m68k/helper.c b/target/m68k/helper.c
+> index 9d3db8419de..9bfc6ae97c0 100644
+> --- a/target/m68k/helper.c
+> +++ b/target/m68k/helper.c
+> @@ -36,7 +36,7 @@ static int cf_fpu_gdb_get_reg(CPUState *cs, GByteArray *mem_buf, int n)
+>       CPUM68KState *env = &cpu->env;
+>   
+>       if (n < 8) {
+> -        float_status s;
+> +        float_status s = {};
+>           return gdb_get_reg64(mem_buf, floatx80_to_float64(env->fregs[n].d, &s));
+
+While here, could be renamed as 'discard' like SPARC. Regardless:
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+>       }
+>       switch (n) {
+> @@ -56,7 +56,7 @@ static int cf_fpu_gdb_set_reg(CPUState *cs, uint8_t *mem_buf, int n)
+>       CPUM68KState *env = &cpu->env;
+>   
+>       if (n < 8) {
+> -        float_status s;
+> +        float_status s = {};
+>           env->fregs[n].d = float64_to_floatx80(ldq_be_p(mem_buf), &s);
+>           return 8;
+>       }

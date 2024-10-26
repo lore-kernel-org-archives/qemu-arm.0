@@ -1,84 +1,85 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp252206njf;
-        Fri, 25 Oct 2024 21:31:31 -0700 (PDT)
-X-Received: by 2002:a17:903:41c4:b0:20c:6b11:deef with SMTP id d9443c01a7336-210c6c3692dmr19833605ad.48.1729917091565;
-        Fri, 25 Oct 2024 21:31:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729917091; cv=none;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp252484njf;
+        Fri, 25 Oct 2024 21:32:37 -0700 (PDT)
+X-Received: by 2002:a17:902:cccd:b0:20c:9ec9:9a77 with SMTP id d9443c01a7336-210c6c3ec85mr19533425ad.37.1729917156793;
+        Fri, 25 Oct 2024 21:32:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1729917156; cv=none;
         d=google.com; s=arc-20240605;
-        b=i3fU37XVX0EqJOA2VlSkqJ3v9GWfq1iAAoJF69bum/3O0B1KjZ2YwtEDqPpzpf5jRG
-         gZGpnpFAxgfmySbXL/mODusRKQ77dj8M/Om0SAVAnRTREGMwzoLSy/VvqgdELAGocmp5
-         b+WAXO56KaPDc//diOWIvOu3bXMmibWTNZyaAUEqP2tElW9k9j1YqONWzFFHjA5PXni1
-         H8c7+NMYYYARByNHgfAQYn5gJjVc+iWvp62r/1I83hHFqaAhlreXeGMHugGV80SnwfWx
-         ZhNq5MpDukxpJrupIBcWhN2iWBdDucq4YEP6d1l304/hoyiWsh6pZVVaM50EnixIpj5+
-         f4oA==
+        b=WpWoo5bhVRp4844T4eC+/XrW5sQ0ikbJ+ZXNf1M4o5dFzB864NDIJErfIxEP/z++GD
+         A6qdHU8Ds4oY/mYGqd5bHoyc5YGs44mI4XRIe6n9fX7Ox2tw++jMzO1Jx0iFrMbiA7ad
+         hDgbtaOpACp7UEZV7tzhwI312a/7l6pnUKG5JlrmtYAr0CVCGQGEGLO7tTXIhCm5VuaX
+         u5fqHPmCvV5cnUC1bxoWIZj3IssvQf9AxuFNVm7gWgboEfRl4vkymWC91a5ViR96D/LD
+         9etnpShN/CKLni/+jBNNFm5sdy9quM1hQ3jq78G6zkKw0cX2cAg87jtrc50QoWH2o6Vp
+         NFHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=vQFUT+9eznvkrzicjIRNa391H8s4Bx97SjBzilVyW4Y=;
+        bh=2xY5NFCSqNOVgI2joiK27KmS99wVtlCnPM+PxE8Ic9A=;
         fh=57KB4fSpGukS9IUlPcDISciwmQ4lhGDq9IA5L5jXiis=;
-        b=g8KakFk9XskbPvVSU+in8tMHy1NEz0r4FrS1zwePl+cP4DJgCPeqsvjHRAw6alN0xp
-         vo0TJxxXmv+Qone6YyXvPim8sEXi8aRSyaP6+xQhFcfxpByFRC2J+wU9ZwvGx9rtCtUn
-         o/k6KT+1uYRzpGxMBsG9I2UnyMw7lhopokKx19nVMfYjj56ECOs/hXLRy+QzAXaSkFHI
-         vol0jofHCrs3swOgWmt3/ZSDlv8C3wSERytEAE3S1q3VSPoE1RDjFEKeuyrY1rqodGeD
-         +XDihpumZIfvxEukhiLNYlExzplhzjVnxhM+doXO/hqskyT2OQOqXSY4l3sXxKbePZid
-         wM4g==;
+        b=VVlF5PUT9BPPH0l0OHNmm0+glcNRemLR48xAMgAqFZfTRuYscqtcgWbsEV2ymx/IPc
+         zDV/I4uLFY209czA7Z8ga67zskhl2ggSgOA/dw/VFlh+SIwLHuY1SHHWdAZbLmgdnL26
+         FnmIU9J30FqZ3nfNxmn/GjekSHdhMU0fErfT/7RmCERTaZoXresAgfoDIllNXFroXQn2
+         PsFxnKmyxgRcrHjsI9lLlTxr39HtnJ5v0msq1/mWyTiRLisyKEbLKvlv0t+r6I2XTwDe
+         Gw6xMwmz0w7SYxrdBcE14pPBt504vOLTg8Pt+NECaH2ySef4ipqQol2v4B1wZU61p+xr
+         EaOg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rBebr9Lv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SzMpxaW0;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-210bbec7ea8sor17567565ad.2.2024.10.25.21.31.31
+        by mx.google.com with SMTPS id d9443c01a7336-210bc06f0d1sor13641535ad.19.2024.10.25.21.32.36
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 25 Oct 2024 21:31:31 -0700 (PDT)
+        Fri, 25 Oct 2024 21:32:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rBebr9Lv;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SzMpxaW0;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1729917091; x=1730521891; darn=linaro.org;
+        d=linaro.org; s=google; t=1729917156; x=1730521956; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=vQFUT+9eznvkrzicjIRNa391H8s4Bx97SjBzilVyW4Y=;
-        b=rBebr9LvHhECf+YYVn8f6tHWyfVBgz2V3wH6zTBtr/NlGrfhyQh3LeuNDbuiSToy/a
-         Evyp+9usPcswXrjeVIHs4hdHK0MHY43uxgRRg6iGnatDRcpJKmJEYwMrWy1xkWpzvfCO
-         SAnVstM9IOyeD2YaNN6AiCa8qm+8+Et64bT16s65ogC1oxWwes3RStdQ4aFprEATX49J
-         iBxhBu7141mjXBKtPl4FbzmNyKB/xNqMsa3OgBTqUqHX0z1zzi9PA71OarBI0sJJQUbF
-         WhZ1oUUEiWzIxxeE9FXqXHQ5fqpsFpFnlOlwhTPOahm8v2yEq8UqQ6fSttA5J+Hpbpjj
-         MDlA==
+        bh=2xY5NFCSqNOVgI2joiK27KmS99wVtlCnPM+PxE8Ic9A=;
+        b=SzMpxaW0E9WQLSuEGt13gA/YJJhQuDTKEBXDrCogHl9SBIVbXpwQhYK2hPcXi1bcLH
+         sG+1kXTgsPMfOjqbmxVNzllhLLK1wuQNfzJExOIGsKzjzcW/KQiTO5a1suEDb/4gkZWx
+         bxaiVIYV6kfDCOwh9WVLKDZX0D5uWb4vpwLkpiRUy1pLjgG8YipHFZEBZ58Z9Zb092tq
+         Xat5okLOiklqW0+dbgHG3h9V918K2cz8FY34aHyRArdk8R8PQArYmvOdlbcXUORTLVdm
+         lJF6+HFOzdotz0CBu1z1+edUlQ3il+jTahwxiPHApmXaaAba2ZXPxuIIg/N5skH+BTZ9
+         gCcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1729917091; x=1730521891;
+        d=1e100.net; s=20230601; t=1729917156; x=1730521956;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=vQFUT+9eznvkrzicjIRNa391H8s4Bx97SjBzilVyW4Y=;
-        b=oREBPMnyHYx1COsTF2iaarMsLv+BFfvnAc5gXhqSEW3G5upVyAwyFfcfS12o2uwM+7
-         lBPXnD6U2MAse52isVtr5zNVZZyDeVFS8xesPfYXeHMTBxTe5q5gdV4Y46mPtadMIadb
-         Z2cRQeB1DdAHNuSyWA1G4he7rgAMusAYEmM/CIBT2aH4RtpVqukfkKIiInfjgJuctI5t
-         Bvvk4pgD3RpF4ZfV6njylmIMyTFoYKZxwKqMBVzlulH+p3T432lQeJh8SbpHtP14De7Q
-         cY9+LxcJFQhxO0WNPv0zfn+A2DfIzGVr2wj4M9d1qO6zAal+vuJ1qB4fvh4XDaoyCvXk
-         4DEA==
-X-Gm-Message-State: AOJu0YwLvY0/LObsnW6I8abYJQUSIxov/61QlzLDe0TtyrGqX9SCbSwk
-	8jE69W3YYh6dmzYm0bNw6Crg3NxyMgZLnNaY702+S0BKlUIZzcFgjIcaOfU0gUGjRQ==
-X-Google-Smtp-Source: AGHT+IFU0RXYnF5Od9msysEhanVG6XdYlrsv5dJzVCaPoDM1turQHQTLSuLEVSYTQtJwfnH4xmOwug==
-X-Received: by 2002:a17:902:db0f:b0:20c:cf39:fe3c with SMTP id d9443c01a7336-210c6c34824mr21072615ad.41.1729917090995;
-        Fri, 25 Oct 2024 21:31:30 -0700 (PDT)
+        bh=2xY5NFCSqNOVgI2joiK27KmS99wVtlCnPM+PxE8Ic9A=;
+        b=hpVNFGcy1ojiRDcogABL7qcrZWxnkME3120KamrAvhbapJ7HCMNbMajb3p8KbSdsYz
+         XprOhjn3i6M6SElNI1xUnwzFJkf//ZUwCm5TLTaiLVax+zX9s+R93T84YfmLtRLIBEYQ
+         cR8DljQSX7zi/zPNRLudQTRREkvicwGEJCR9Xq3lrjQcsZ5pmLzcxBfJ9ZLTnDnTxQio
+         19ilTpZh1x2kZaDgybQg+kTrrQ9Po0S7EIytmvv0Ir9G/Gkd2Bpkeg6E2FEEIjnH2jsM
+         Z98fvEhQJOM5Lsb1zXviEd/loZAU1BgQP8GnpVz1f+/lMsGJ7oqBQyiCe+vH+hUFNhCg
+         7I7A==
+X-Gm-Message-State: AOJu0YxZh0cteQBBL7s7cvWq2ZUCP+4Hhpa/3J/1PB14u1esi9jab8q7
+	xMkeg9J1FTnZE5nmb/3FlgPI44R28/Ba3P72TjYiHqVp1oWfCm3iPhXqhDEuwGCbCg==
+X-Google-Smtp-Source: AGHT+IFJ8TBIq1vw2ZrDWZ66H+dIj/BiCfj7ifKHaOguXKsUTHM2GUCjEft7XwWKwwgXSFj43vaeag==
+X-Received: by 2002:a17:902:cccd:b0:20c:9ec9:9a77 with SMTP id d9443c01a7336-210c6c3ec85mr19533225ad.37.1729917156310;
+        Fri, 25 Oct 2024 21:32:36 -0700 (PDT)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.120.226] ([45.176.88.169])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bc01791bsm17195155ad.145.2024.10.25.21.31.25
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-210bbf445d5sm17221225ad.42.2024.10.25.21.32.30
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Oct 2024 21:31:30 -0700 (PDT)
-Message-ID: <43863d19-30ea-4f68-a353-4cba12532ba1@linaro.org>
-Date: Sat, 26 Oct 2024 01:31:23 -0300
+        Fri, 25 Oct 2024 21:32:35 -0700 (PDT)
+Message-ID: <3bc58d20-a874-44e8-9f09-3a0fb54a46cb@linaro.org>
+Date: Sat, 26 Oct 2024 01:32:29 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 21/21] softfloat: Remove fallback rule from pickNaN()
+Subject: Re: [PATCH 11/21] target/sparc: Move cpu_put_fsr(env, 0) call to
+ reset
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -96,27 +97,34 @@ Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
  qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
 References: <20241025141254.2141506-1-peter.maydell@linaro.org>
- <20241025141254.2141506-22-peter.maydell@linaro.org>
+ <20241025141254.2141506-12-peter.maydell@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241025141254.2141506-22-peter.maydell@linaro.org>
+In-Reply-To: <20241025141254.2141506-12-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Vedicq/LLcwK
+X-TUID: 1ZQwvamZHCuF
 
 On 25/10/24 11:12, Peter Maydell wrote:
-> Now that all targets have been converted to explicitly set a NaN
-> propagation rule, we can remove the set of target ifdefs (which now
-> list every target) and clean up the references to fallback behaviour
-> for float_2nan_prop_none.
+> Currently we call cpu_put_fsr(0) in sparc_cpu_realizefn(), which
+> initializes various fields in the CPU struct:
+>   * fsr_cexc_ftt
+>   * fcc[]
+>   * fsr_qne
+>   * fsr
+> It also sets the rounding mode in env->fp_status.
 > 
-> The "default" case in the switch will catch any remaining places
-> where status->float_2nan_prop_rule was not set by the target.
+> This is largely pointless, because when we later reset the CPU
+> this will zero out all the fields up until the "end_reset_fields"
+> label, which includes all of these (but not fp_status!)
+> 
+> Move the cpu_put_fsr(env, 0) call to reset, because that expresses
+> the logical requirement: we want to reset FSR to 0 on every reset.
+> This isn't a behaviour change because the fields are all zero anyway.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   include/fpu/softfloat-types.h  | 10 +++-------
->   fpu/softfloat-specialize.c.inc | 23 +++--------------------
->   2 files changed, 6 insertions(+), 27 deletions(-)
+>   target/sparc/cpu.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

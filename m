@@ -1,106 +1,69 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp499372njf;
-        Sat, 26 Oct 2024 08:32:53 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVYrqjaHR+MKOD4J5puAnkgW8pJZ7OsrS+Fhk+AuxdVkYAJ8k6x5S5PVmGbNqfA3brghXB4SpZasE/vRg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHFx0Q8lXqilutl/4lciDNi2j8A/R0f1rDTHrLzs5ha6Mug3B8SP5AWA5zFW4JfZURpqoum
-X-Received: by 2002:ac8:5dc9:0:b0:456:919a:11e4 with SMTP id d75a77b69052e-4613b47784amr56827001cf.20.1729956773388;
-        Sat, 26 Oct 2024 08:32:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1729956773; cv=none;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1103294njf;
+        Sun, 27 Oct 2024 14:15:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXgdd8qszzuwdxWMM5CnM9bFJliZacKGqwOiP6Q6hVLcgXgmt2gU8rjmJueUY9KYtRhPz/Y5jD9BAcNzw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEhuZ9HCzHQoZgpaBAiPsOvL3RgiSg3NRkNKt75a6wuz+rQN7cmwit9kJEN8sarfnrxf+dg
+X-Received: by 2002:a05:6214:460a:b0:6cb:ef22:bf8f with SMTP id 6a1803df08f44-6d1856b49b3mr120085536d6.12.1730063700912;
+        Sun, 27 Oct 2024 14:15:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730063700; cv=none;
         d=google.com; s=arc-20240605;
-        b=fOnzunjL2aE8xV71RYlMyVfJvmGDnuHbOVKn+XqopnY695EKt1att5JMjeWask8oGR
-         yQ3KqR1elkW76Mz+Abbnd4ZxcMdpUx1P8FpoGbU/4S0YSLlLN9/Uv0OKCBfGHlqIg/p0
-         KxGJY3hZY0QbRTRbGvdW31Rfm2Hjla4tyPHfryb/Xs+efuBZI22e+9Jg+KyaTGSh06fI
-         QDpNIYSGXKLUnT0iUyZIc1rSSo+0dNsZZkm8fQyiYZdTx4o6sx6RCH7bAXy8hlh5nvv3
-         HQVYdK9jnbBPhDlyyP3s7IjyQtYukoXvOG64M82zIi82oP5gDSV2II1MwNsbKJEkG/km
-         INoA==
+        b=Dq2U2OylmQPvGJ1f1ZO/EYxJskczMexwSXmGxppoa+jLpMPvLI1SAZ0QcJib7OQXeM
+         g9MZsvzf1uiKftg0jaFQCLpZIHlULWW5lVayN6erJDWD8bIMewbb5pH6v9tYY29bM+cS
+         kw6LS31hBFNvdMyKYxI5wPSspi2KptF1nLgfO4ggX3a2B97D6EJezQkYMhKwaj0ONjZQ
+         o7BkAjMfis9+eU5Tzbl+rQw6H9UdNugqD5oF35WhVNGb+lrwHnKRpo+6sZJJA8xU1uYn
+         X1hqRdqv3uM0nkBdhkeeAjSJMVtbQdYb/qqJj8Thq6ArJfOvBmx1PHUnSrgzB9Wyq9CS
+         IkTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=/E+P9XDtTfhdme2tZGAF7PlqHwrHS7iT886fnkgkgcI=;
-        fh=eQgzoinPZYRGBcZ3GVdpyYkxvI9SfzxhQ3aGkCe3Q/g=;
-        b=cFS9DhXDCj1tnuN81o3bLtm9UtoM0SBCMwqUAjd6Wum5DIATpTbGxqK7kgO/SuYtyv
-         Tzp11oqOhxorq7SXAOe0Uc8aEjliFzM/ASX18ohHW8stI13xWz+Lhd5LEd3xDMVkbAVq
-         d/Si8GHwO84VPAU1tvJBPIoBqNVEGYRIuZuBqDa1hYbK1LdID+caP4Fat9fEw9Ya6dnA
-         wdLbdbzcauX6LL6NR15AO+/bK9XGSbRRHRDOusR7Bj1Fppl8kSLQqTpI7OUEMrG5TNXj
-         mkGIpI1qbHzGsw6n/Aee/FlIUEZdqZAAjy9geIUgmCm4kz0tdMDcYTgHwQhokUk68lIQ
-         tGFQ==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id;
+        bh=/p0qBqLJdgIoMAcqASOMjkncQ3IChSZp2pQLSnjLmPo=;
+        fh=Yd2ZSQNA7aQRjnvMOLDnaaoJGxj70oI7NbnxbK+ja+Y=;
+        b=jyFbfsnuJ7VYyaDC3nFG56B9ljCRcZAIfe31Z7gyZDcZ1zogrKDjUAiYgC/wIm+8St
+         zatmoZUMA0hfD8gNq85iLyLig25WmbmLhbkCIyWDbHXWsHEbq+HsmtijKDJn+hmRMwiS
+         6yhfTc6f7MM2AbPwv/aCcj3+khSPQvq3qxE1WKoIgPIaI4In+X0ElL2hl3RSHxRDbfzh
+         qWf7rlmi+J5i5lxzWSknUrzXy42/VRKlhw/sEXAkPNeu97RPM+HjMpkdPr5o6mZn5sqH
+         3NvYPJtlBASB2BvIXK53mfBy3CJrziajb+zlQp1yBj8dNVrqCgpiFrZ/ASX5YC8+B7Dh
+         hr2A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=G9KPA5ri;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46132358e9csi46287661cf.284.2024.10.26.08.32.53
+        by mx.google.com with ESMTPS id d75a77b69052e-461324188desi66620331cf.798.2024.10.27.14.15.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 26 Oct 2024 08:32:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 27 Oct 2024 14:15:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=G9KPA5ri;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=fail header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t4imV-0007m6-5O; Sat, 26 Oct 2024 11:32:47 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t5Aa4-0005Ks-8e; Sun, 27 Oct 2024 17:13:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1t4imS-0007kz-33; Sat, 26 Oct 2024 11:32:44 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1t4imQ-0002zH-3e; Sat, 26 Oct 2024 11:32:43 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-20cceb8d8b4so16549995ad.1; 
- Sat, 26 Oct 2024 08:32:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1729956759; x=1730561559; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
- bh=/E+P9XDtTfhdme2tZGAF7PlqHwrHS7iT886fnkgkgcI=;
- b=G9KPA5riHazgfXKqjwJegXGnNRDXQnxXLNiXC0BZcrQNs6x/Yinzw94vkiGnuzrXK6
- EjRbuzpIJ3kYjUcSsEF78JU2UxY5Ssb4bu5HKUxrXyWE2S7laTtX8zfTsH7rUz8yOJ1H
- FkqTxzyn3zi/BHQUQ1dHeyuadtklCBpGlXA8YRNLjZ7dQhmjW+MOGLyDCWQsEk2kMID2
- Ml1QqnnNZz0lCyQWT3/hXZHNHiDPNk9/w7xRpOpcWd442Sq9HTQSv+++j06AFJ9ZKElh
- tqZjPbXy9ym2YArHmDny2FUUtH0Bt9PbLiIkPsXJAgzECppArSE8RdlO2hKiUEN6K99+
- dFDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729956759; x=1730561559;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/E+P9XDtTfhdme2tZGAF7PlqHwrHS7iT886fnkgkgcI=;
- b=YGj4IprsGWLcPmUfiW1u6SEBUgCvrRK/NS2rtHfzyXxtmi0e6N+BZBOXmDAPURXsjU
- tW4MI+ot6UFfs8oUxeaweDpEhIEMQpZL3RTTD/GA2wHzTcJ1ctGXYIUOOJK4i2GirvNG
- F1Di1NgsTBVEOPUVtiW7inAuA9uU4iPByagy98IIoEe1H4m+i71ILv2FI8LD6zwao4UQ
- A3WmX85IaqdTh+lGS/RcfiWccqdsot+xWd+90Hrxi88YETnJgOLZEQB7iGGq1YYe4OAC
- tmUgZ2Lzm5evPUkGhsqcoHAg4uLhdi+07r3qZxBQqm32Uu/NBZMObcbGXPD+L9cfqz8g
- xehw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUk+EfBeBvv8BrVw6WwlxrrtD3Y4KIJ1kcuqVyDIuwtsAFv+doQBwvG+Pr1FN/GzHaFJAZCTb5g+5xk@nongnu.org,
- AJvYcCXAkslEv1uuXsnfVnPEeqlAxdnyriyM31X/NLGCfEQe7Zm5OQYyoDBkI7P/QD5NjI89dX0UghdtxYbeXQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxG2wUt+bJDEjNnFYq5R//DF3WOhkhQ5zqibbJbJZEaKVK1zp3l
- h7K3A0ulJNM/nCra7RacDSGND3LBwSVVMXcUbup/6u5tX4FnhYi/
-X-Received: by 2002:a17:902:e88e:b0:205:8b84:d5e8 with SMTP id
- d9443c01a7336-210c59e2580mr45231885ad.18.1729956759422; 
- Sat, 26 Oct 2024 08:32:39 -0700 (PDT)
-Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
- ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-210bc02f6f1sm25370515ad.226.2024.10.26.08.32.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 26 Oct 2024 08:32:38 -0700 (PDT)
-Message-ID: <c27fbed6-596e-4ce7-a6ca-6d12d7205e99@roeck-us.net>
-Date: Sat, 26 Oct 2024 08:32:36 -0700
+ (Exim 4.90_1) (envelope-from <SRS0=DUM3=RX=kaod.org=clg@ozlabs.org>)
+ id 1t5Aa3-0005Ke-9k; Sun, 27 Oct 2024 17:13:47 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=DUM3=RX=kaod.org=clg@ozlabs.org>)
+ id 1t5Aa1-0007U6-99; Sun, 27 Oct 2024 17:13:47 -0400
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Xc8Q63J6Bz4x4c;
+ Mon, 28 Oct 2024 08:13:34 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Xc8Q257Hkz4x33;
+ Mon, 28 Oct 2024 08:13:30 +1100 (AEDT)
+Message-ID: <86fa6e68-5861-4d4d-941f-95b278074eb6@kaod.org>
+Date: Sun, 27 Oct 2024 22:13:28 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 0/2] arm: Add collie and sx functional tests
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+To: Guenter Roeck <linux@roeck-us.net>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?Q?Jan_L=C3=BCbbe?= <jlu@pengutronix.de>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
@@ -121,128 +84,103 @@ References: <20241017163247.711244-1-peter.maydell@linaro.org>
  <53cbb597-e7f2-4742-bf85-928c704ddbcf@linaro.org>
  <443f1b0c-8184-4bf4-9f68-c23d7de3bc36@roeck-us.net>
  <1bce4c22-9281-44c5-8acb-860881dc271c@kaod.org>
-Content-Language: en-US
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-In-Reply-To: <1bce4c22-9281-44c5-8acb-860881dc271c@kaod.org>
+ <c27fbed6-596e-4ce7-a6ca-6d12d7205e99@roeck-us.net>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <c27fbed6-596e-4ce7-a6ca-6d12d7205e99@roeck-us.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=groeck7@gmail.com; helo=mail-pl1-x62a.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.171, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=DUM3=RX=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hvsfJqujvBYh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: yPkzYBMAXLuV
 
-On 10/26/24 03:02, Cédric Le Goater wrote:
-[ ... ]
+On 10/26/24 17:32, Guenter Roeck wrote:
+> On 10/26/24 03:02, Cédric Le Goater wrote:
+> [ ... ]
+> 
+>>> I don't mind a single file. What bothers me is that the partitioning is made
+>>> mandatory for ast2600 even if not used.
+>>
+>> Our only use case, in 2019, was to boot QEMU ast2600 machines from an
+>> eMMC device using an OpenBMC FW image like the ones we find on IBM
+>> Power10 Rainier systems. I agree we only focused on this scenario.
+>> Most of the support should be there for other use cases, and it's now
+>> a question of finding the right tunables for the user.
+>>
+>> I did a quick experiment using 2 patches,
+>>
+>> one on hw/sd/sd.c to fix c8cb19876d3e ("hw/sd/sdcard: Support boot
+>> area in emmc image")
+>>
+>>      @@ -826,7 +826,9 @@ static void sd_reset(DeviceState *dev)
+>>               sect = 0;
+>>           }
+>>           size = sect << HWBLOCK_SHIFT;
+>>      -    size -= sd_bootpart_offset(sd);
+>>      +    if (sd_is_emmc(sd)) {
+>>      +        size -= sd->boot_part_size * 2;
+>>      +    }
+>>           sect = sd_addr_to_wpnum(size) + 1;
+>>
+>> and another on hw/arm/aspeed.c to remove the setting of the eMMC
+>> device properties when it is not bootable :
+>>      @@ -338,7 +338,7 @@ static void sdhci_attach_drive(SDHCIStat
+>>                   return;
+>>               }
+>>               card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
+>>      -        if (emmc) {
+>>      +        if (emmc && boot_emmc) {
+>>                   qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
+>>                   qdev_prop_set_uint8(card, "boot-config",
+>>                                       boot_emmc ? 0x1 << 3 : 0x0);
+>> (I am not saying this is correct)
+>>
+> 
+> Works for me, though, and it is much better than mandating the existence
+> of boot partitions.
 
->> I don't mind a single file. What bothers me is that the partitioning is made
->> mandatory for ast2600 even if not used.
-> 
-> Our only use case, in 2019, was to boot QEMU ast2600 machines from an
-> eMMC device using an OpenBMC FW image like the ones we find on IBM
-> Power10 Rainier systems. I agree we only focused on this scenario.
-> Most of the support should be there for other use cases, and it's now
-> a question of finding the right tunables for the user.
-> 
-> I did a quick experiment using 2 patches,
-> 
-> one on hw/sd/sd.c to fix c8cb19876d3e ("hw/sd/sdcard: Support boot
-> area in emmc image")
-> 
->      @@ -826,7 +826,9 @@ static void sd_reset(DeviceState *dev)
->               sect = 0;
->           }
->           size = sect << HWBLOCK_SHIFT;
->      -    size -= sd_bootpart_offset(sd);
->      +    if (sd_is_emmc(sd)) {
->      +        size -= sd->boot_part_size * 2;
->      +    }
->           sect = sd_addr_to_wpnum(size) + 1;
-> 
-> and another on hw/arm/aspeed.c to remove the setting of the eMMC
-> device properties when it is not bootable :
->      @@ -338,7 +338,7 @@ static void sdhci_attach_drive(SDHCIStat
->                   return;
->               }
->               card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
->      -        if (emmc) {
->      +        if (emmc && boot_emmc) {
->                   qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
->                   qdev_prop_set_uint8(card, "boot-config",
->                                       boot_emmc ? 0x1 << 3 : 0x0);
-> (I am not saying this is correct)
-> 
+Yes. However, if the emmc device was user creatable, we could use :
 
-Works for me, though, and it is much better than mandating the existence
-of boot partitions.
+   -blockdev node-name=emmc0,driver=file,filename=mmc-ast2600-evb-noboot.raw \
+   -device emmc,bus=sdhci-bus.2,drive=emmc0
 
-If you end up submitting those patches, please feel free to add
+and with boot partitions:
 
-Tested-by: Guenter Roeck <linux@roeck-us.net>
+   -M boot-emmc=true \
+   -blockdev node-name=emmc0,driver=file,filename=mmc-ast2600-evb.raw \
+   -device emmc,bus=sdhci-bus.2,drive=emmc0,boot-partition-size=1048576,boot-config=8
+
+The above would be my preferred approach if acceptable. The "sd-bus"
+bus identifier should be changed in other machines tough.
+
+> If you end up submitting those patches, please feel free to add
+> 
+> Tested-by: Guenter Roeck <linux@roeck-us.net>
+
+I should send these fixes for QEMU 9.2.
 
 Thanks,
-Guenter
+
+C.
 

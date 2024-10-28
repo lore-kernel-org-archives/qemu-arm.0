@@ -1,228 +1,183 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1597569njf;
-        Mon, 28 Oct 2024 09:32:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCUpStylQmsK4wq4f37qYxyBXwPx8KQ/A/r5cx/SkCjsgQOiuc6BkeectraFPtwQdWYSW5WcGvHGm0YCQA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHVKnHCK8Idk0OSy5mcI/QnSfXjR/wrEnumc1wpVQshEWBpCyvMQ2pgCblZzDju26pc3MhF
-X-Received: by 2002:a17:902:d4c3:b0:20b:b0ab:4fc3 with SMTP id d9443c01a7336-210c6c934c1mr135213425ad.49.1730133154653;
-        Mon, 28 Oct 2024 09:32:34 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1730133154; cv=pass;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1600003njf;
+        Mon, 28 Oct 2024 09:35:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCULb9v6E4KqopuUWwqkcDUnNa2XzticidXMaMqP0DgFQbapcN1cbw1if0tX4alu92IKvE210dAYAj/Xtg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHpnpxyZzBfNKISXtCBiGhum6/4LuUYavejiFNj2IeCmNREoEs4Kv2/lQgFxgnP/QoONGqb
+X-Received: by 2002:a05:620a:4512:b0:7b1:4890:d177 with SMTP id af79cd13be357-7b1a8326f59mr36198385a.33.1730133356547;
+        Mon, 28 Oct 2024 09:35:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730133356; cv=none;
         d=google.com; s=arc-20240605;
-        b=GmEkUla1rWdCZ+cd5on3414ujmHmgpL1aTrBvUNHnKRfv8bGKf8j/xR2nmjdp5vVvi
-         x6KCgX0U+JCKCNXbqsrhDtKqmAGvX7kuos+d4aAbPRifP/YI/e6x6I/wnr6OnqJ0necE
-         5grchAVTiKtmnxjEc19uNlDFz7/aHWuOq0HtHYPzu4BWxF+u+FvdTnvqMnWFdXaPISc/
-         195B6moxGdZZsI2XonNhSWSsY9+n4qVZA5WmY8akNpLTIy+jsT7fxtayVFzRG1fojRAb
-         hsthALVdO7ABr5TdooUzju/glAaURIu+mrg4qZq/vusGz1ewkNaVI1SEmu9RUazxODG+
-         McXQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
-         :dkim-signature;
-        bh=gjggvzGWkBwrrwMfWh3JXGSzHIVlrh/OgLv0sI1bRiQ=;
-        fh=tdLty3RcaJP7avZQuuycCSI/edFLTz+MbEe2/vUfXaQ=;
-        b=M0x4kh+n3l7YUYYqybQl+07Wjejmmfli8NTuppgFfUhr/+fjoD+jylnyzNIcg76X7F
-         CCs4CXg3vs7yNqCIds+7kE24Gp7OoK4oiCDq6U9VdSGzSfS+1BGGZnVcMXKlbpaD38wz
-         r3U3y1cxVt7SZhRMU5KEsuZMHd5ZlfWqeAOK6pqB96C4LFnc6xEoyzIs1+Fc5EgMnxUo
-         TDDLvzkyWYhvGl/+tC8bUkkcCZoN2qV2uxs5QLEScEi5xXhtd4Z1LkFXImDQgh3REeL+
-         2N5di4f4YaALOwqQ7tgcOmQfak8iuluAd55odN/x/Lphp613im7LNUjmYK9rVl/MDaCp
-         gfOg==;
+        b=ay4/V61dLeMrDOsv93DjRBzc25GBVmqzMaHo9rBt/pAs+AlpZifdjIyV8NIQYzi3yn
+         U/a5r2q31WyMeA1FS0MrJecjtrTtlnd6aXZudIktxks0n0mpev3SNp1Dja5+rJkKw3U5
+         B8c5zke+2PVsCuwI3O+LkXTjsJye3R8WMXYLcIJftKuA5/0eyBBfgRuHhzCNzYdiI+8F
+         QXk2nTbeam3ObKBeSOETn6nH91984o9cY8a0vY02Zn+508mrmavhRsBFFetpxuQWMm8K
+         Fkf5Gi97CYQGnxHsph6Dz9c4sdMlj78KSLlLzwOhoDW0ZJVp3x6mXmY7tIGekoJ4Q5F2
+         UILw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Y9b5CzbUSU2n0RZT4h84OA5Z8uF+KezT8fQqdhGRljA=;
+        fh=Af+j01jgw9a8GO5hOeAC2uRi0z1BP276NqhjltNOU90=;
+        b=PFiRHvCEBYy8fHEi+zMniYO01NKgnbjDZxhwfgWWoFbDXZDXP0Wpzrenf3r6CT1D2q
+         ObZD9g5JfkEmcK3RAprK3QN/d6Sy0bJj1ouE8raEr08NZFgPmXobn55zPWMjxZg4skVd
+         FnTyHpX/iT57x/rra9y7CB11v5eetoJgolj3qALFwkLlU+BFUydg0tG9/her5OboxjXL
+         tvsmoHxm9pKOeiCmWtvAMF0F6ROwIcLFayvsRHz7n0FQ2vI6VX4cYCB593E3DmvGWa2I
+         gkFJ5iJbVK2eRVpoATbr1nQC5Fn9f3hDpW67vjMxEJivdJiXolsbwA4k3avOejRdAle3
+         ZmjA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cczWJyoY;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-29865-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-29865-alex.bennee=linaro.org@vger.kernel.org";
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NjM7CepK;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-29865-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-210bbf0598esi75454655ad.152.2024.10.28.09.32.34
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d342b4bsi891759085a.386.2024.10.28.09.35.56
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2024 09:32:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-29865-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        Mon, 28 Oct 2024 09:35:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cczWJyoY;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-29865-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-29865-alex.bennee=linaro.org@vger.kernel.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NjM7CepK;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 359D6283EF5
-	for <alex.bennee@linaro.org>; Mon, 28 Oct 2024 16:32:34 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0AE321DED59;
-	Mon, 28 Oct 2024 16:32:31 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="cczWJyoY"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D1FB8188701
-	for <kvm@vger.kernel.org>; Mon, 28 Oct 2024 16:32:28 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1730133150; cv=none; b=rfiU9etsRAo3YMmd0QAh5XTGCrEHEzi1ZELXf6E37jkFq3sl+rkvKXkLArFNl+oC/ScCAlQ5iQ7biA98gVmqkQrwI/gwKZtPWaJxA1jOkroc/z0pY1rXOUGQ2+imhDWGiB6trDyDKPeNomqZXrVlGygW8v7aRr/uCcO+48rrsLw=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1730133150; c=relaxed/simple;
-	bh=CUqbEHRp/aGU4YbiXZRV3LYL7rE97ohMOM4Ak9tlEng=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=aQCnGUAnxmc9um+790DnX3CLpdfbKCbjaViNPJkFtp/3uO9eMpx9K3LHROvrpqADC0Y0cM0ps0xnbRECDNAooI3fPWNts7yT2vtJG7aPBP98F+imkNEwyqGfUfkbDfg9dM2C04qu9DboY+idoa0hp8HdqX8Z81LiKFRM6npIm9Q=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=cczWJyoY; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1730133147;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	s=mimecast20190719; t=1730133356;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=gjggvzGWkBwrrwMfWh3JXGSzHIVlrh/OgLv0sI1bRiQ=;
-	b=cczWJyoYdCSgyf3m1ZzvmwPTpFeQ50iAt1MoMfPDUcAszqi6Y6P0wAGGkOS1seV7KANYj2
-	VmgNuYpyLMjuC3LxMtSfbuQ6m8SzPyOCFjy2K3yI2EX61fine2SBeTRNpJLpCciv4jONMe
-	1guNvNeoUVxWZEOMYajN1ZRAlqUkQQg=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-338-AALFBt3pPwSv08lXxUlu-A-1; Mon, 28 Oct 2024 12:32:26 -0400
-X-MC-Unique: AALFBt3pPwSv08lXxUlu-A-1
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4316300bb15so32430715e9.2
-        for <kvm@vger.kernel.org>; Mon, 28 Oct 2024 09:32:26 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730133145; x=1730737945;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=gjggvzGWkBwrrwMfWh3JXGSzHIVlrh/OgLv0sI1bRiQ=;
-        b=bicHvptAHXIM+gpc5GCp2IbC07REoFwMcZbXfzlbZ+AYJZwlZduuQy6DkrEJSShgKH
-         Ajs50BUyYIg8epO+ZljRTkOcfCMJEMdABS3TAtBl4UnKdskVYkzXk+if8T06RYNHQbzJ
-         Chl50JrUGQEa+qZUVBN7624Pj/rLFt2EfiLaXPvpJEDJCrWgumArOmM6QiafZAyZSxh/
-         xeS6pOXG206ULkEiH/hWl2rR/uJ9Z+WMF3z1gwUzLZXGY0s+MTGPhNH44LKPx6rK9wbp
-         ISYPwHyuMeKE+6TlXXMc6f9amTj0Zg610t2qMWZLsPQIh4fGK+GtG1eYOOSICPjX9Rfg
-         QqJg==
-X-Gm-Message-State: AOJu0Yw+U7sAIITaXOP9TsVMOYaCvuCzSwh2dH37YQi3dsKkIk6VDfP2
-	kbuJrBNuHXp9bnPtzX0DxPeYqS6LlnTBGHlB8BczyV/OUSwCmJPuvD+dLYPl0wOqJz+T+Sx0PZU
-	ziahLBRhvn4U9++zXFyj3pyADYljD81qCvNGvxRA1r+eT1UFrGA==
-X-Received: by 2002:a05:600c:46d4:b0:427:ff3b:7a20 with SMTP id 5b1f17b1804b1-4319ad049a8mr63761705e9.27.1730133145159;
-        Mon, 28 Oct 2024 09:32:25 -0700 (PDT)
-X-Received: by 2002:a05:600c:46d4:b0:427:ff3b:7a20 with SMTP id 5b1f17b1804b1-4319ad049a8mr63761545e9.27.1730133144747;
-        Mon, 28 Oct 2024 09:32:24 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c722:3c00:70fc:90a8:2c65:79b4? (p200300cbc7223c0070fc90a82c6579b4.dip0.t-ipconnect.de. [2003:cb:c722:3c00:70fc:90a8:2c65:79b4])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4319360d233sm113285555e9.45.2024.10.28.09.32.23
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2024 09:32:24 -0700 (PDT)
-Message-ID: <be678d47-b8f5-4061-9287-adb6a44ad483@redhat.com>
-Date: Mon, 28 Oct 2024 17:32:23 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+	 in-reply-to:in-reply-to:references:references;
+	bh=Y9b5CzbUSU2n0RZT4h84OA5Z8uF+KezT8fQqdhGRljA=;
+	b=NjM7CepK2ZcDMQTqCMcqH1uuuRdjBMkanvREqkaC2/oSxcNsTKfN8pCNVjnEA6FzwFQfEE
+	bX70yaD7vmLAJ+43s/HRQRKMKw3gDAWmgFIkQjnm15EHja2c/GJOWuYBPc1c0o3rrNxbEH
+	7/0p4w0cbWr3ufIXE5AuxeBqp8Afh+A=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-120-n8NY9vqZPxSv0Fatb-9iKg-1; Mon,
+ 28 Oct 2024 12:35:53 -0400
+X-MC-Unique: n8NY9vqZPxSv0Fatb-9iKg-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id EFB2C1955F3C;
+	Mon, 28 Oct 2024 16:35:49 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.86])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D9EE719560A2;
+	Mon, 28 Oct 2024 16:35:42 +0000 (UTC)
+Date: Mon, 28 Oct 2024 16:35:39 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+	cohuck@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev, richard.henderson@linaro.org,
+	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+	shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
+	pbonzini@redhat.com
+Subject: Re: [RFC 18/21] arm/cpu: Introduce a customizable kvm host cpu model
+Message-ID: <Zx-9WxXkmkMuGIlQ@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20241025101959.601048-1-eric.auger@redhat.com>
+ <20241025101959.601048-19-eric.auger@redhat.com>
+ <ZxuX4i9NjVRizB72@redhat.com>
+ <cb6c8f62-c5dc-416d-865f-fbdf96164dac@redhat.com>
+ <Zxub7ol4p8P_sWF8@redhat.com>
+ <CAFEAcA_wQu17y0PyQwxw0wuf2H5y2VE5aX16nLP2-u7QUP2ggA@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC RESEND 0/6] hugetlbfs largepage RAS project
-To: William Roche <william.roche@oracle.com>, pbonzini@redhat.com,
- peterx@redhat.com, philmd@linaro.org, marcandre.lureau@redhat.com,
- berrange@redhat.com, thuth@redhat.com, richard.henderson@linaro.org,
- peter.maydell@linaro.org, mtosatti@redhat.com, qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, qemu-arm@nongnu.org, joao.m.martins@oracle.com
-References: <20240910090747.2741475-1-william.roche@oracle.com>
- <20240910100216.2744078-1-william.roche@oracle.com>
- <ec3337f7-3906-4a1b-b153-e3d5b16685b6@redhat.com>
- <9f9a975e-3a04-4923-b8a5-f1edbed945e6@oracle.com>
- <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
- <966bf4bf-6928-44a3-b452-d2847d06bb25@oracle.com>
- <0ef808b0-839d-4078-90cb-d3d56c1f4a71@oracle.com>
-Content-Language: en-US
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <0ef808b0-839d-4078-90cb-d3d56c1f4a71@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: /fz2Klow6WKj
+In-Reply-To: <CAFEAcA_wQu17y0PyQwxw0wuf2H5y2VE5aX16nLP2-u7QUP2ggA@mail.gmail.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: Nes+s+mRrtGN
 
-On 19.09.24 18:52, William Roche wrote:
-> Hello David,
-
-Hi William,
-
-sorry for not replying earlier, it somehow fell through the cracks as my 
-inbox got flooded :(
-
+On Mon, Oct 28, 2024 at 04:16:31PM +0000, Peter Maydell wrote:
+> On Fri, 25 Oct 2024 at 14:24, Daniel P. Berrangé <berrange@redhat.com> wrote:
+> > On Fri, Oct 25, 2024 at 03:18:25PM +0200, Eric Auger wrote:
+> > > On 10/25/24 15:06, Daniel P. Berrangé wrote:
+> > > > Also, is this naming convention really the same one that users
+> > > > will see when they look at /proc/cpuinfo to view features ? It
+> > > No it is not. I do agree that the custom cpu model is very low level. It
+> > > is very well suited to test all series turning ID regs as writable but
+> > > this would require an extra layer that adapts /proc/cpuinfo feature
+> > > level to this regid/field abstraction.
+> > >
+> > > In /cpu/proc you will see somethink like:
+> > >  Features    : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp
+> > > asimdhp cpuid asimdrdm lrcpc dcpop asimddp
+> >
+> > Right, IMHO, this is the terminology that QEMU must use in user
+> > facing APIs.
 > 
-> I hope my last week email answered your interrogations about:
->       - retrieving the valid data from the lost hugepage
->       - the need of smaller pages to replace a failed large page
->       - the interaction of memory error and VM migration
->       - the non-symmetrical access to a poisoned memory area after a recovery
->         Qemu would be able to continue to access the still valid data
->         location of the formerly poisoned hugepage, but any other entity
->         mapping the large page would not be allowed to use the location.
+> /proc/cpuinfo's naming is rather weird for historical
+> reasons (for instance there is only one FEAT_FP16 feature
+> but cpuinfo lists "fphp" and "asimdhp" separately).
+
+There's plenty of wierd history in x86 too. In this
+case I might suggest just picking one of the two
+common names, and ignoring the other.
+
+If we really wanted to, we could alias the 2nd name
+to the first, but its likely not worth the bother.
+
+> Currently QEMU only has to care about cpuinfo name tags
+> in linux-user/elfload.c where there's a bunch of data
+> structures for "what hwcaps do we need to advertise
+> given what the CPU has?". I would definitely prefer it if
+> we could use architectural feature names...
 > 
-> I understand that this last item _is_ some kind of "inconsistency".
+> On other architectures do we do anything to forbid
+> invalid combinations? For Arm there are architectural
+> rules about feature X requiring features Y and Z.
+> Are we going to just let the user create a CPU that
+> the guest OS will barf on if they want to? (The
+> user-experience for that is potentially not very nice,
+> because something like "-cpu cortex-a57,+sve" seems like
+> something you might want to do but isn't actually valid;
+> even listing the direct required dependency of FEAT_SVE
+> like "-cpu cortex-a57,+sve,+fp16" isn't sufficient
+> because SVE is optional-from-v8.2 and so a guest could
+> in theory assume the presence of anything mandatory in
+> v8.1 and v8.2. But even merely diagnosing invalid
+> combinations is a huge pain, and automagically pulling
+> in every mandatory implicit or explicit dependency
+> seems like it might be surprising to users, as well as
+> being annoying to implement. Currently we sidestep
+> all of these problems by (a) only allowing the command
+> line to disable a feature, not to enable it where it
+> didn't previously exist and (b) mostly not providing
+> command line flags for individual features...)
 
-That's my biggest concern. Physical memory and its properties are 
-described by the QEMU RAMBlock, which includes page size, 
-shared/private, and sometimes properties (e.g., uffd).
+AFAICT, in x86 world, there's no generally documented dependancies
+between features. I imagine there might be deps mentioned in an
+adhoc basis in docs/specs.  There are certainly implicit deps though
+where apps check for X, and blindly assume it means Y+Z also exist.
 
-Adding inconsistent there is really suboptimal :(
+In the QEMU  & libvirt world though, there's no deps. This is generally
+why we discourage apps/users from trying to enable arbitrarily many
+features. People should stick to the named CPU models, and just use
+feature enablement as an exception.
 
-> So if I want to make sure that a "shared" memory region (used for vhost-user
-> processes, vfio or ivshmem) is not recovered, how can I identify what
-> region(s)
-> of a guest memory could be used for such a shared location ?
-> Is there a way for qemu to identify the memory locations that have been
-> shared ?
+Enabling individual features *is* certainly a critically important
+benefit though, even with the risks from implicit undocumented
+dependencies.
 
-I'll reply to your other cleanups/improvements, but we can detect if we 
-must not discard arbitrary memory (because likely something is relying 
-on long-term pinnings) using ram_block_discard_is_disabled().
+Most notably, it has been used to turn on fixes for hardware CVEs,
+where microcode introduces a new named feature. Your named CPU
+model may not be updated, but as long as QEMU knows the feature
+name, you can turn it on.
 
+Overall, while it would be desirable to have a way to express
+feature dependencies, I wouldn't call that a blocker for enabling
+the ability to turn features on & off.
+
+With regards,
+Daniel
 -- 
-Cheers,
-
-David / dhildenb
-
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

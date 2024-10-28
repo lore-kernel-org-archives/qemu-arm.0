@@ -1,108 +1,111 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1551887njf;
-        Mon, 28 Oct 2024 08:27:58 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZdDydKy4JpkKfhoiez6McChUYlSnN2M/7jllAVd8g8WhjGWviP92b37LlHrJgL+veiCW/HCjflWw3Dg==@linaro.org
-X-Google-Smtp-Source: AGHT+IErHp1liDPPREbFEdL6+ZwQjZBkACLbnre0gqLcM696bdZXDsw92KoXt6i+K63poPw5if4H
-X-Received: by 2002:a05:6214:4288:b0:6cb:ce17:e80d with SMTP id 6a1803df08f44-6d185682676mr153686736d6.18.1730129277890;
-        Mon, 28 Oct 2024 08:27:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730129277; cv=none;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1464522njf;
+        Mon, 28 Oct 2024 06:25:37 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUWdi2eJILXpXGKpNqxRZJdIzaNbXi59UunCz/sTeA5H5r6GZ+wFLgldMULzPRf1Fi5sKp9J/RGNbhvlQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHAHXnx04jiqT3iZWvNqr93jUySso4k2t0hL2AzkVrGHmmlECpfk8Kepjb6jDuUuDuwmtSJ
+X-Received: by 2002:a05:6102:54a8:b0:4a3:ad47:58df with SMTP id ada2fe7eead31-4a8cfb453a3mr5014961137.10.1730121937344;
+        Mon, 28 Oct 2024 06:25:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730121937; cv=none;
         d=google.com; s=arc-20240605;
-        b=QJqLdlEIl5rBXjZLyNCYz64Z9RXzYOB+w5dXAAF9faG+UO8Gr5EiW8xJJgrAFvM5RC
-         QZyvHRrf/60hOET1TQ5VwSE45/QeQ3NC2og9JfTwdhifFlZaphC/YK1CWRdSc69rGg9s
-         zzj0HNq0j6SxHUolF3hFGr0uZ9awpf7QW+WfAh5Vxy3Ekx0x18etySbA3XZRZAIRkNAS
-         HsO++CCGQCmIhYw05JdEXupju2yJXQhsg5L3EvKLl52KlQTBHbytPi1lqt4BFPe5p70t
-         mQRU7Q9PLqF14nKDcWwG7gqz6Aea1+WNV411ZedM+7g0fImISDVtmG7XJaEE5LoXBqN2
-         J6Qg==
+        b=IrfFG6nNSM7NjqhhQSrbF1pUWV7m4I3WRjPmvsA83zB01Hcpy+7DBC4qXWXc1wT3jb
+         RJF/5sot0HCcue4GNVNvOb8UeumEim3Pqz5rdL27hOPpR5bQkRRDeBtSB1Rzs7MM3S1/
+         4byXRLtEQlzhR2HxFczZXYMMYIuWVAEdl9Adqxb3cTKBFm3JjGAh2BRcTAjrWbkuBrE0
+         Z4LxFg8vPJitpkfuPuIzVNesVXp4Od4OGVQKHOMfWsdkh7LGbaEdKRnSHSIWLRWsEUM7
+         XiQOUQ41IkgnPThlPYauZselDl3CXEYvqnxXz0PQHUo35VDDEKQjEjIuIUcbPn0MZoXA
+         AJeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=5xhuFuPgZeqfwprbYEotsOMqzGm+376aPoYdZARYRAs=;
-        fh=eNn4R5iPCoG1ST+3R93HRsbexPdfWfeFq64Q/5PD6YM=;
-        b=elezLshAjG0zgQsoEfGw3Nrss0lXlX0ei7wNhcio8tOYhDu8f/LdNxhfVxYWhUyAnU
-         fczycVsYMVG/yek//p5E2vdd0T9lqwopdaLiLsSUtBjzVxLs+pgsBORwisXMKWW98vlw
-         VE7JSIG419Zujk3XkQ6J+SIoYl3KOh5kTibFo2mMCEigXLvhPngPsiUwMmL+aPLfszzx
-         Fm/Mn4ctZ3A/mdyJQ94X3DqGSPN1i4YlJvqesccpHRUZbfbPMyGb5yPXcKZntii7YXXY
-         w/0vAJiDf/7HLz6BZtAnGiTooTgT8wwkUwTH61+7E7xrKf6qLMmhVwsUIYlTu8AnEYqT
-         j4qA==;
+        bh=8ZVH5GxwAKibzog2TH5n/39WEZ0Rd/nXcfSMUNQhE0k=;
+        fh=wNz1W12zaRcxtjOEOmxVYAjevGhBFJkTHwI2kK1cj/8=;
+        b=BzLbCLw0FJnaperUUlk0lPkdcnrrUSagpeGzgz/egAj69Y7Ixdm7kPVvlQv9O0BiAM
+         u6BA6bHfGZVT7OL8bG35IIpykTbcZaEbALIP+znGlUGQKa527LqqmkS+BUReHO7giNq+
+         9SQ8RQXTV+7LHONV/hfGYNxlcf/E+sEh/UlPVDjqFp8wIe6HwmLAhKwdqQuXTgiEwe8D
+         ievpQjASPT3nQDLhYqVwjMPQwp86A94IRxKVFhGQmSw5Tx40mS14U4qKhdP3qDqnrUeq
+         /AnQr2myb4978povrlqUveIpbIWmfJHj8tKiZlsAt1D/vV8OTGpYQGAXIlljBmj+ysWA
+         XwWg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FqXDDxGC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TJHsFcDV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d179a7e799si89867516d6.497.2024.10.28.08.27.57
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a8c5311876si1393285137.345.2024.10.28.06.25.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Oct 2024 08:27:57 -0700 (PDT)
+        Mon, 28 Oct 2024 06:25:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=FqXDDxGC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TJHsFcDV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t5Rem-0000nG-UP; Mon, 28 Oct 2024 11:27:48 -0400
+	id 1t5Pk1-00039G-2A; Mon, 28 Oct 2024 09:25:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t5Rel-0000mu-Kq
- for qemu-arm@nongnu.org; Mon, 28 Oct 2024 11:27:47 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ id 1t5Pjz-00037f-EG
+ for qemu-arm@nongnu.org; Mon, 28 Oct 2024 09:25:03 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t5Rej-0001w3-EA
- for qemu-arm@nongnu.org; Mon, 28 Oct 2024 11:27:47 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-5c99be0a4bbso6104602a12.2
- for <qemu-arm@nongnu.org>; Mon, 28 Oct 2024 08:27:44 -0700 (PDT)
+ id 1t5Pjx-0002pY-GU
+ for qemu-arm@nongnu.org; Mon, 28 Oct 2024 09:25:03 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-5c935d99dc5so4876897a12.1
+ for <qemu-arm@nongnu.org>; Mon, 28 Oct 2024 06:25:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730129263; x=1730734063; darn=nongnu.org;
+ d=linaro.org; s=google; t=1730121899; x=1730726699; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5xhuFuPgZeqfwprbYEotsOMqzGm+376aPoYdZARYRAs=;
- b=FqXDDxGCD0m4jVba6UvKo9sFqgpXKsv3Fti/TJE6jGoypKTdnNZlIXsF248CkYNFMw
- ts5ktI+awiq33GQQSSElPn4fM9zVNE1gjoJ3fxtjXBE+8KaDOAyGvRgrCSWRfpPIfT9j
- y7EPjxW1h8mmNGzgXrkoWpXs8Mga0qyszcjkvNXF46offvOEB3tkeP7rldqGL4TMegl1
- HR8N6407uTY6OUcZpuDRaeZR3s7WT7eQen6gb98Wy16Vg6DD4pSy+latzf+GVTHTjaKz
- PUBQ0iuJJnR7xHa++2RJWlQ2SHLgNu/q7JSPXp7t+2nQjkeWdLYWsntIdAi3Ajm5ig2e
- hO0Q==
+ bh=8ZVH5GxwAKibzog2TH5n/39WEZ0Rd/nXcfSMUNQhE0k=;
+ b=TJHsFcDVuT5Ftw2gs6XLPnCfCqQB3EmnArLd1Id1KPoGGi76NfUaraD2H275VFVlrz
+ o6qo6hJEaG1OBW5xzksqi12h7jJd0IFZLoGQFORg23EORR1wJzyrxjmmshGLR3jIJD8H
+ dgV4dJeMe8snDJ4iTNSLA6u24AP0ziYvb/MzBSgrNU2HPIIh4jbXVT5D73NN/hmBC13D
+ 0UJAq6D8IAAHPeNOc4591VBUZNIu29N7L7YqH0o3fgtRABxyksjNMBWpi3dYPOehJQo/
+ 5T0aaMdmOp0Y+74J+bDAFLKDM6zmLQUh6JN7HdcluZLOc9Zv4AWTw8FyNcSCu7txKGFS
+ iTrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730129263; x=1730734063;
+ d=1e100.net; s=20230601; t=1730121899; x=1730726699;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=5xhuFuPgZeqfwprbYEotsOMqzGm+376aPoYdZARYRAs=;
- b=Gj+rBA5dLFEhOYqWlV76TWFCNnbfwvmU0fL/xJ3EFrv55oIEh8gyAeMQfjICsri1tI
- yMrlrMWnWM9NnVJn3iGCloKmHzntKwWJswUkE0ztGcN+3kpyZIsYOonZJ1lex08NoFUT
- uSObuUjEU7fKbA7/wS/TIi7A0AWCI3DUIKyZuN65fRu7z4uiEuxBx1dSCgnYlAiENJu1
- 2a2S0W3GMAbeN8ecHhtZArqm4Pj9AZmpSJzr+MyqSHMZKNz9ZkmJQl8v41YsHjs6me9R
- LI/pqlNoAr3cb50wky5YMVn266GXM2BB7nkwNIm6kZ3hmMd4D48kmf0AQXFArNHDobP6
- kSIQ==
+ bh=8ZVH5GxwAKibzog2TH5n/39WEZ0Rd/nXcfSMUNQhE0k=;
+ b=IdaNwSmnWv46mEQtuhBYlYaeDj93TMx2qVkbDz0iZkZQvU4mwSqG2ZUbr/Ke1j1ZgK
+ 1GTz8GsvSQD3hVvdJuSdL24BNxvhwBsNELR3DArGxyldbluJ4P4qtipMeT62T8QOcUMs
+ z5KC+qq+WlDjDIQdCdIN2xUEIqgpagfH4na36MJIxoFuGxpN2xVVJdBJhejc2Irlvwl8
+ 3lmmQw56ufPBi6+j5y47T0GBBEabfbCxx+xnNHka8/nLEYbydFKRsaKKBNy5yF4dSJwD
+ c7oVtc62degnALHKekdyPx+yqUJWc2YtAtjJIPArhn/BLLZ/v9brGu+7LibuQTHMTj6W
+ AP+g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUr9PvkjKk8CN0S/FYRj4vlhVzAhXMPn2GJfXEH5fDRg4+UYXD+aSfygmGrjqa4mXteov252rTFtg==@nongnu.org
-X-Gm-Message-State: AOJu0YwmhUwZbgjZYfXh3iwtZBwanDiH8H+M3HTgIcccjKseJUHIUCqx
- lWUDAGHusH+nAaQDr+qmIPgmh9piRX5MqD2P/EoXz0XPjVu8ECtkVpW+gZGgj/nAb4aKKYWgywI
- IILHIWSVGa3sU913S6gzc/dxcKy4EVcd3cSVeAA==
-X-Received: by 2002:a05:6402:5206:b0:5c8:9f3d:391b with SMTP id
- 4fb4d7f45d1cf-5cbbfa54a4amr7107422a12.28.1730129262835; Mon, 28 Oct 2024
- 08:27:42 -0700 (PDT)
+ AJvYcCX68WF4rM2TFzK7ILdIboTM8vLPW2hNwyoqK4izDUHzdOkjPvdi50kbWwO/CUdFVKgL3NWBA0X6nw==@nongnu.org
+X-Gm-Message-State: AOJu0YyKggHJXDDwFMYFwER9MXgP7jkIWxb1vpMZot22xzDNQK0RPt39
+ yzkQgyMmHTxc7tvs1cXJPsCJyJIww9xTztMBnE7PvZMzXMpIFtqsL8h45jgP9KuZDtaLtzQzhil
+ w5y5Vxyt20SXHeZqYudVxE41869OXnSupiiK5zA==
+X-Received: by 2002:a05:6402:348f:b0:5c9:709c:24ab with SMTP id
+ 4fb4d7f45d1cf-5cbbf8795aamr7511329a12.6.1730121898946; Mon, 28 Oct 2024
+ 06:24:58 -0700 (PDT)
 MIME-Version: 1.0
-References: <20241022203435.181452-1-castet.matthieu@free.fr>
- <20241022203435.181452-2-castet.matthieu@free.fr>
-In-Reply-To: <20241022203435.181452-2-castet.matthieu@free.fr>
+References: <20240813152054.2445099-1-peter.maydell@linaro.org>
+ <20240813152054.2445099-5-peter.maydell@linaro.org>
+ <b090fac1-85df-4727-a382-8a934bd02f33@redhat.com>
+In-Reply-To: <b090fac1-85df-4727-a382-8a934bd02f33@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Oct 2024 15:27:31 +0000
-Message-ID: <CAFEAcA9JQNJBfk+g8iYcczVcTSqEOJZ5=LGtBupHqreUX-2MkA@mail.gmail.com>
-Subject: Re: [PATCH 1/1] target/arm: Add cortex-m0+ support
-To: Matthieu Castet <castet.matthieu@free.fr>
-Cc: qemu-devel@nongnu.org, "open list:ARM cores" <qemu-arm@nongnu.org>
+Date: Mon, 28 Oct 2024 13:24:47 +0000
+Message-ID: <CAFEAcA_VWKkZyagd7aPWjAM8maJDZnXaR_aVjQ8MEkVUU9-=CQ@mail.gmail.com>
+Subject: Re: [PULL 4/4] target/arm: Fix usage of MMU indexes when EL3 is
+ AArch32
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm <qemu-arm@nongnu.org>, 
+ Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,312 +127,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 01EqqXTt220R
+X-TUID: Rrf3H3vZH72g
 
-On Tue, 22 Oct 2024 at 21:34, Matthieu Castet <castet.matthieu@free.fr> wrote:
+On Fri, 25 Oct 2024 at 13:54, Thomas Huth <thuth@redhat.com> wrote:
 >
-> Signed-off-by: Matthieu Castet<castet.matthieu@free.fr>
-
-Hi; thanks for this patch. I have some initial code review comments,
-but the change looks broadly correct to me and I don't think
-there's anything obvious missing.
-
-The commit message body here is empty. Commits should
-almost always have some description in the body of
-what they are doing and why.
-
-(You don't need a separate cover-letter email for
-single-patch patches, by the way -- only for multi-patch series.)
-
-> ---
->  hw/intc/armv7m_nvic.c    | 38 +++++++++++++++++++++++++++++++++-----
->  target/arm/cpu.c         |  4 ++--
->  target/arm/ptw.c         | 23 +++++++++++++++++++----
->  target/arm/tcg/cpu-v7m.c | 21 ++++++++++++++++++++-
->  4 files changed, 74 insertions(+), 12 deletions(-)
+> On 13/08/2024 17.20, Peter Maydell wrote:
+> > Our current usage of MMU indexes when EL3 is AArch32 is confused.
+> > Architecturally, when EL3 is AArch32, all Secure code runs under the
+> > Secure PL1&0 translation regime:
+> >   * code at EL3, which might be Mon, or SVC, or any of the
+> >     other privileged modes (PL1)
+> >   * code at EL0 (Secure PL0)
+> >
+> > This is different from when EL3 is AArch64, in which case EL3 is its
+> > own translation regime, and EL1 and EL0 (whether AArch32 or AArch64)
+> > have their own regime.
+> >
+> > We claimed to be mapping Secure PL1 to our ARMMMUIdx_EL3, but didn't
+> > do anything special about Secure PL0, which meant it used the same
+> > ARMMMUIdx_EL10_0 that NonSecure PL0 does.  This resulted in a bug
+> > where arm_sctlr() incorrectly picked the NonSecure SCTLR as the
+> > controlling register when in Secure PL0, which meant we were
+> > spuriously generating alignment faults because we were looking at the
+> > wrong SCTLR control bits.
+> >
+> > The use of ARMMMUIdx_EL3 for Secure PL1 also resulted in the bug that
+> > we wouldn't honour the PAN bit for Secure PL1, because there's no
+> > equivalent _PAN mmu index for it.
+> >
+> > We could fix this in one of two ways:
+> >   * The most straightforward is to add new MMU indexes EL30_0,
+> >     EL30_3, EL30_3_PAN to correspond to "Secure PL1&0 at PL0",
+> >     "Secure PL1&0 at PL1", and "Secure PL1&0 at PL1 with PAN".
+> >     This matches how we use indexes for the AArch64 regimes, and
+> >     preserves propirties like being able to determine the privilege
+> >     level from an MMU index without any other information. However
+> >     it would add two MMU indexes (we can share one with ARMMMUIdx_EL3),
+> >     and we are already using 14 of the 16 the core TLB code permits.
+> >
+> >   * The more complicated approach is the one we take here. We use
+> >     the same MMU indexes (E10_0, E10_1, E10_1_PAN) for Secure PL1&0
+> >     than we do for NonSecure PL1&0. This saves on MMU indexes, but
+> >     means we need to check in some places whether we're in the
+> >     Secure PL1&0 regime or not before we interpret an MMU index.
+> >
+> > The changes in this commit were created by auditing all the places
+> > where we use specific ARMMMUIdx_ values, and checking whether they
+> > needed to be changed to handle the new index value usage.
 >
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index 98f3cf59bc..ed084e9db3 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -1386,7 +1386,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
->          }
->          return (cpu->env.pmsav7.drbar[region] & ~0x1f) | (region & 0xf);
->      }
-> -    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
-> +    case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */
->      case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
->      case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
->      case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
-
-The v6M spec says that it doesn't have the _A* aliases
-for RBAR and RASR so we should have a check to make those
-goto bad_offset in both read and write functions.
-
-> @@ -1876,6 +1876,14 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
->              return;
->          }
+>   Hi Peter,
 >
-> +        if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
-> +                if (offset != 0xd9c)
-> +                        goto bad_offset;
-
-Our coding style says all if() statements need braces, even
-one-line ones. The indentation here also seems to be off --
-our indent is four-space.
-
-> +
-> +                /* do not support size less than 256 */
-> +                value &= ~0xe0;
-
-This line doesn't look like it does what the comment suggests.
-A region size of 256 bytes would be a SIZE field of 7, where
-the size field is bits [5:1]. This &= ~0xe0 will (unless I've
-got confused) zero bits [3:1], which would turn a SIZE of 7
-into an invalid SIZE of 0.
-
-More generally: in QEMU if we're enforcing limits on the
-values a register field can hold we typically do it on the
-guest-write path. Then the read path can just return the
-value in the register, which we already know to be in-range.
-
-(The other approach we often take which is quite frequently
-what real hardware does is "allow writes of any value,
-read back the value written, do some vaguely plausible thing
-at execution time when we use the value".)
-
-> +        }
-> +
->          if (value & (1 << 4)) {
->              /* VALID bit means use the region number specified in this
->               * value and also update MPU_RNR.REGION with that value.
-> @@ -1900,12 +1908,13 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
->          tlb_flush(CPU(cpu));
->          break;
->      }
-> -    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
-> -    case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
-> -    case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
-> -    case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
-> +    case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */
-> +    case 0xda8: /* MPU_RASR_A1 (v6M/v7M), MPU_RLAR_A1 (v8M) */
-> +    case 0xdb0: /* MPU_RASR_A2 (v6M/v7M), MPU_RLAR_A2 (v8M) */
-> +    case 0xdb8: /* MPU_RASR_A3 (v6M/v7M), MPU_RLAR_A3 (v8M) */
-
-v6M doesn't have the RASR_A* aliases, so those lines shouldn't change.
-
->      {
->          int region = cpu->env.pmsav7.rnr[attrs.secure];
-> +        int rsize;
+> this commit caused a regression with one of the Avocado tests:
 >
->          if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {
->              /* PMSAv8M handling of the aliases is different from v7M:
-> @@ -1926,6 +1935,25 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
->              return;
->          }
+>   AVOCADO_ALLOW_LARGE_STORAGE=1 avocado run
+> tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_bpim2u_openwrt_22_03_3
 >
-> +        rsize = extract32(value, 1, 5);
-> +        if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
-> +            if (offset != 0xda0)
-> +                goto bad_offset;
-> +            /* for armv6-m rsize >= 7 (min 256) */
-> +            if (rsize < 7) {
-> +                qemu_log_mask(LOG_GUEST_ERROR,
-> +                        "MPU region size too small %d\n", rsize);
-> +                return;
-> +            }
-> +        }
-> +
-> +        /* for armv7-m rsize >= 4 (min 32) */
-> +        if (rsize < 4) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                    "MPU region size too small %d\n", rsize);
-> +            return;
-> +        }
+> is failing now. It works still fine before this commit. Could you please
+> have a look?
 
-You don't need to handle and log too-large region
-sizes both in the register-set codepath and then again
-later when we do the address translation. If you're ruling
-them out here then they'll never happen later.
+Thanks for the report; I've investigated it. The cause of this specific
+failure is that regime_el() doesn't return the right answer when code
+is executing in the guest in Monitor mode. The effect is that because
+regime_el() returns 1, not 3, we look at the wrong banked registers
+and the page table walk fails when it should not. This is enough to fix:
 
-Duplicating the qemu_log_mask() line is awkward -- maybe
-better to have
-  rsize_min = arm_feature(&s->cpu->env, ARM_FEATURE_V7) ? 4 : 7;
-  if (rsize < rsize_min) {
-      qemu_log_mask(...)
-  }
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 203a2dae148..812487b9291 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -926,7 +926,7 @@ static inline uint32_t regime_el(CPUARMState *env,
+ARMMMUIdx mmu_idx)
+     case ARMMMUIdx_E10_1_PAN:
+     case ARMMMUIdx_Stage1_E1:
+     case ARMMMUIdx_Stage1_E1_PAN:
+-        return arm_el_is_aa64(env, 3) || !arm_is_secure_below_el3(env) ? 1 : 3;
++        return arm_aa32_secure_pl1_0(env) ? 3 : 1;
+     case ARMMMUIdx_MPrivNegPri:
+     case ARMMMUIdx_MUserNegPri:
+     case ARMMMUIdx_MPriv:
 
-> +
->          if (region >= cpu->pmsav7_dregion) {
->              return;
->          }
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 1320fd8c8f..875e3aab69 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -508,7 +508,7 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
->                             sizeof(*env->pmsav8.rlar[M_REG_S])
->                             * cpu->pmsav7_dregion);
->                  }
-> -            } else if (arm_feature(env, ARM_FEATURE_V7)) {
-> +            } else if (arm_feature(env, ARM_FEATURE_M)) {
->                  memset(env->pmsav7.drbar, 0,
->                         sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
->                  memset(env->pmsav7.drsr, 0,
-> @@ -2454,7 +2454,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->      }
->
->      if (arm_feature(env, ARM_FEATURE_PMSA) &&
-> -        arm_feature(env, ARM_FEATURE_V7)) {
-> +        arm_feature(env, ARM_FEATURE_M)) {
->          uint32_t nr = cpu->pmsav7_dregion;
->
->          if (nr > 0xff) {
+However, while I was thinking about this I realised that there
+are some problems with the design change this commit is trying
+to do. The idea is that we now use the same MMU indexes for
+Secure PL1&0 as we do for NonSecure PL1&0.
 
-These changes don't look correct -- they will break the handling
-of R-profile PMSAv7 CPUs like the Cortex-R5.
+Small problem:
+ That means we need to flush the TLBs at any point where the CPU
+ state flips from one to the other. We already flush the TLB when
+ SCR.NS is changed, but we don't flush the TLB when we take an
+ exception from NS PL1&0 into Mon or when we return from Mon to
+ NS PL1&0. Now we need to do that, so any time we call up into
+ Mon and back we'll dump the TLBs, which is a bit sad.
+ (Also we could skip flushing all these TLBs when NS changes.)
 
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index dd40268397..fa771907e3 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -2383,6 +2383,13 @@ static bool pmsav7_use_background_region(ARMCPU *cpu, ARMMMUIdx mmu_idx,
->      return regime_sctlr(env, mmu_idx) & SCTLR_BR;
->  }
->
-> +/* armv6m PMSAv6 is mostly compatible with PMSAv7,
-> + * main difference :
-> + * - min region size is 256 instead of 32
-> + * - TEX can be only 0 (Tex not used by qemu)
-> + * - no alias register
-> + * - HardFault instead of MemManage
-> + */
+Larger problem:
+ the ATS12NS* address translate instructions allow Mon code
+ (which is Secure) to do a stage 1+2 page table walk for NS.
+ I thought this was OK because do_ats_write() does a page
+ table walk which doesn't use the TLBs, so because it can
+ pass both the MMU index and also an ARMSecuritySpace argument
+ we can tell the table walk that we want NS stage1+2, not S.
+ But that means that all the code within the ptw that needs
+ to find e.g. the regime EL cannot do so only with an
+ mmu_idx -- all these functions like regime_sctlr(), regime_el(),
+ etc would need to pass both an mmu_idx and the security_space,
+ so they can tell whether this is a translation regime
+ controlled by EL1 or EL3 (and so whether to look at SCTLR.S
+ or SCTLR.NS, etc).
 
-Our coding style for multiline comments says
-/*
- * they look like this, with the opening and closing markers on
- * lines of their own
- */
+So now I'm wondering if this merge was a good idea after all.
+Should we do all that replumbing required, or should we
+instead revert this and take the "straightforward" approach
+described in the commit message above of adding some extra
+MMU indexes?
 
-This comment might be better placed at the point below where
-we call get_phys_addr_psav7(), because it is the explanation
-for why on M-profile we call that function even if we don't
-have PMSAv7.
+(I suspect that this commit is likely also the cause of
+https://gitlab.com/qemu-project/qemu/-/issues/2588 )
 
->  static bool get_phys_addr_pmsav7(CPUARMState *env,
->                                   S1Translate *ptw,
->                                   uint32_t address,
-> @@ -2423,11 +2430,19 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
->                  continue;
->              }
->
-> -            if (!rsize) {
-> +            /* Issue warning for invalid values
-> +             * for armv7-m rsize >= 4 (min 32)
-> +             * for armv6-m rsize >= 7 (min 256)
-> +             */
-> +            if (!rsize ||
-> +                (arm_feature(env, ARM_FEATURE_M) && (
-> +                       rsize < 7 ||
-> +                       (rsize < 4 && !arm_feature(env, ARM_FEATURE_V7))))) {
->                  qemu_log_mask(LOG_GUEST_ERROR,
-> -                              "DRSR[%d]: Rsize field cannot be 0\n", n);
-> +                              "DRSR[%d]: Rsize field cannot be %d\n", n, rsize);
->                  continue;
->              }
-> +
->              rsize++;
->              rmask = (1ull << rsize) - 1;
->
-> @@ -3515,8 +3530,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
->              /* PMSAv8 */
->              ret = get_phys_addr_pmsav8(env, ptw, address, access_type,
->                                         result, fi);
-> -        } else if (arm_feature(env, ARM_FEATURE_V7)) {
-> -            /* PMSAv7 */
-> +        } else if (arm_feature(env, ARM_FEATURE_V7) || arm_feature(env, ARM_FEATURE_M)) {
-> +            /* PMSAv7 or PMSAv6 */
-
-This is specifically M-profile PMSAv6. R-profile PMSAv6
-(which we do not implement) is a bit different.
-
->              ret = get_phys_addr_pmsav7(env, ptw, address, access_type,
->                                         result, fi);
->          } else {
-> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-> index 58e54578d6..01bc5d4375 100644
-> --- a/target/arm/tcg/cpu-v7m.c
-> +++ b/target/arm/tcg/cpu-v7m.c
-> @@ -76,6 +76,20 @@ static void cortex_m0_initfn(Object *obj)
->      cpu->isar.id_isar6 = 0x00000000;
->  }
->
-> +static void cortex_m0p_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +
-> +    /* cortex-m0p is a cortex-m0 with
-> +     * vtor and mpu extension
-> +     */
-> +    cortex_m0_initfn(obj);
-> +
-> +    cpu->midr = 0x410cc601;
-> +    cpu->pmsav7_dregion = 8;
-> +}
-> +
-> +
->  static void cortex_m3_initfn(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> @@ -111,6 +125,7 @@ static void cortex_m4_initfn(Object *obj)
->      set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
->      cpu->midr = 0x410fc240; /* r0p0 */
->      cpu->pmsav7_dregion = 8;
-> +    /* VFPv4-SP */
->      cpu->isar.mvfr0 = 0x10110021;
->      cpu->isar.mvfr1 = 0x11000011;
->      cpu->isar.mvfr2 = 0x00000000;
-> @@ -141,6 +156,7 @@ static void cortex_m7_initfn(Object *obj)
->      set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
->      cpu->midr = 0x411fc272; /* r1p2 */
->      cpu->pmsav7_dregion = 8;
-> +    /* VFPv5 DP */
->      cpu->isar.mvfr0 = 0x10110221;
->      cpu->isar.mvfr1 = 0x12000011;
->      cpu->isar.mvfr2 = 0x00000040;
-> @@ -173,6 +189,7 @@ static void cortex_m33_initfn(Object *obj)
->      cpu->midr = 0x410fd213; /* r0p3 */
->      cpu->pmsav7_dregion = 16;
->      cpu->sau_sregion = 8;
-> +    /* VFPv5 DP */
->      cpu->isar.mvfr0 = 0x10110021;
->      cpu->isar.mvfr1 = 0x11000011;
->      cpu->isar.mvfr2 = 0x00000040;
-> @@ -209,7 +226,7 @@ static void cortex_m55_initfn(Object *obj)
->      cpu->revidr = 0;
->      cpu->pmsav7_dregion = 16;
->      cpu->sau_sregion = 8;
-> -    /* These are the MVFR* values for the FPU + full MVE configuration */
-> +    /* These are the MVFR* values for the FPv5-D16-M + full MVE configuration */
->      cpu->isar.mvfr0 = 0x10110221;
->      cpu->isar.mvfr1 = 0x12100211;
->      cpu->isar.mvfr2 = 0x00000040;
-
-These comment additions/changes don't seem to be related to the
-Cortex-M0+. If you want to make them, put them in a
-separate commit with its own commit message saying why.
-
-> @@ -267,6 +284,8 @@ static void arm_v7m_class_init(ObjectClass *oc, void *data)
->  static const ARMCPUInfo arm_v7m_cpus[] = {
->      { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
->                               .class_init = arm_v7m_class_init },
-> +    { .name = "cortex-m0p",  .initfn = cortex_m0p_initfn,
-> +                             .class_init = arm_v7m_class_init },
->      { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
->                               .class_init = arm_v7m_class_init },
->      { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
-> --
-> 2.39.5
-
-thanks
 -- PMM

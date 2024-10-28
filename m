@@ -1,349 +1,207 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1616610njf;
-        Mon, 28 Oct 2024 10:01:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCXnebmy2amJlXZgA76rx58Jv7aFynfUFL+V2UGauWISltCUMRQ7b9GKeGcIXwZPns2052C3R5F4y+Q52Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGoiUmVNjEUmyF4/OJWYtKn+qC6ZIKtFi3fM0VNuUalzlu1h5LoEZeV9L5ZIgkQABJXg/Nz
-X-Received: by 2002:a17:902:ec87:b0:20b:7a46:1071 with SMTP id d9443c01a7336-210c68739a5mr147786885ad.4.1730134905232;
-        Mon, 28 Oct 2024 10:01:45 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1730134905; cv=pass;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1667691njf;
+        Mon, 28 Oct 2024 11:19:57 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWMRWuK+Ft9CEzvuoDHMcBARL9uKWkOlxmJKYmhOwsXM1rCxIN6L+4XXjuD9lWBy3O+LehTGj/Py2qX8A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFPvsNjb6fjRatgoAXJbk4puFupcgER0k3UW2bQdRqB1B5rb67OvadTobY0bZh4o3+Q68iz
+X-Received: by 2002:ac8:58d4:0:b0:460:a82a:39a8 with SMTP id d75a77b69052e-4613bff3422mr158368311cf.13.1730139596933;
+        Mon, 28 Oct 2024 11:19:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730139596; cv=none;
         d=google.com; s=arc-20240605;
-        b=YIVgltpgWVdOKdu28dRmxXWGjIv5ZNhCg5Vak+vkjjB/n4+Im/SLrsI6p0t5qfJibd
-         VqaURETCu7BsGaLCsIp5nrcxZTGrA/063f6ZpKr/N12bY/LUw3xO+QNy/lbOrtoLqK/6
-         s4Q5Crzwt7aCF+Bfm1cpBop1d4659Mxw+H4sjPzfAFjw5+yhrYIbE7MoBkft6wlRTTbX
-         PpkzA7YFR/O1w5mUSyYxQhLYflNcvsMD8WVSpwUcj/+TuKiYdlQ4JUB5+f6NdYBNf7ty
-         NzN+vTQ+VgkGW+UhBCEh4Ya9DMfL4gfE2/TB8Q5qJurz+UWevXtThswbW+UU2ZhLHjKl
-         XnJA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :date:message-id:dkim-signature;
-        bh=knyVjinu2Mws85bdLGklnnsg+EFi+WIdDCzwpn7Dbgw=;
-        fh=hEtcX4xdMFyR/tC31fQwJxRtPfHcF4GD1pNvftiN8OY=;
-        b=M/2wOeE96a5eDPlxU5PQCG6CCxNZvj0BPLi5HkEN27FMiakLp582NoMznA9ChWStgi
-         QXCC4mYrIs28GB9sew8TCaJdoGzphzREReWTgE08y1fA9Kdu7rBfnW8N4yvYimBwI4ey
-         zbPGxpHnVolvWjf3JW5/a6Mghj39xZ4iezsgyk6dvf6m5K3gsyPJw3+/OTlhczMzQ4u4
-         2vbVlvMRZvfk9h1a99K+1DLhFwEzmHgJnXSo2Dw39ngGBGioDfTaGsTMYA1lUsjEfTcA
-         mEjKPQIzTDWVgy9S2FNiqTetcQTATnrz8y6vxSMSPHhzmsM6uJDHBYWPV0MT+TdFN2aB
-         xc/w==;
+        b=Ss/z6D3zYIhPFV4pseQiSk/w0s8rfO1lkBfXWZA3NQqxT8O5qlj7NIIWi2EYn13/fl
+         QSrC2W40nn8zHLlsZqDr7pHnc/eyp6GgW1ErOPjvz/0pSxHo96rj9tXkxvy0+Fy6tvxw
+         CaXDGvk2VX2Tt0xd9X82ewJOv1PAPBnRSislV0FxysFWZLtF4pEzEfx2Znhm1n4RB0z3
+         NzfesYMMcxEXuzWepmammmixhhBzOHt+4q73wh4ZSSZheBkZ02/y5zODxrj/5er/fW/m
+         s14mS7dEhGTSXgbP6EEXZ6GFdYICg4UNH7Fv9Tn1ycO8EeLh+8bfv+Kd5Rv7LlZmb1cy
+         7LbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=I9KpKqmLLGgWQg4P3FM7fUf1XDrH/wvRuXnmbYM3Wa0=;
+        fh=0Zuabs5JsaFAl/9OSS7W5Bf/pNESBKuy1Z14SM5a9HI=;
+        b=j04dml4jHfFrI/l02jsJImLH3wiF0KReeahPhSRAAfS8qv4uHnRx7zwhSSj0YVLzMS
+         aMAYPrCh0Iprbcd6I04+AJ5VdC3RgBdV6LDyrdR6opoAknu4xybTbQaQfG0ZTuBstT6y
+         wnn3cPKJYn5p5GG78irTCaCcEPnimayRlN4gQBdXdiVBaq5WyEuyVhMvDMZfqqVUO2il
+         reC51U/zcBOxCMWhSS4kNlOSDPl7wBsGy7ccTTeQvNCmT/6DHkp6qtUhYYIDtP3zDlvP
+         olgeAKsyJ2ZdcOZn4h8EnZxVQVp4KHk+8iLs9UD7mfz1QBr9cGyQLfJe4tQjIZXtf5i0
+         enCw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gHabOiGP;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-29871-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-29871-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-29871-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-210bbfc2e03si78075305ad.339.2024.10.28.10.01.44
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=TrtiJPS2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-46132411a67si89105071cf.744.2024.10.28.11.19.56
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2024 10:01:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm+bounces-29871-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 28 Oct 2024 11:19:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gHabOiGP;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-29871-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-29871-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id E5665B266C0
-	for <alex.bennee@linaro.org>; Mon, 28 Oct 2024 17:01:42 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 28E2A1DEFE0;
-	Mon, 28 Oct 2024 17:01:38 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="gHabOiGP"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C21A13AD11
-	for <kvm@vger.kernel.org>; Mon, 28 Oct 2024 17:01:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1730134897; cv=none; b=lktRRz6wkieD64SqxFHxqsACO94ZIZAgIZMa+WkUV/O1oRJPOYIPf9i682QtC4yUkryNQFLJUEZ1QzsHtv9kjR2apwKtwQGRwEgt7j/dGH/+8EZj676dN+m+uDhxotV6OtA9ov5cpAm1oJewKO6ZlD+/XOcPRAbkd54w9x4ZQao=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1730134897; c=relaxed/simple;
-	bh=Pi6FvMLZ+C2fSeEMtyS0gXQL3BBNEqvp1D1t6yA1ACM=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=uIC5Ao2uQaRbHdm/jY0g3RjqK/YMiolK7B4ouh10Hw8jCfWn+PJNgfZstY3uuK6we0AdWfk7N8EMJRR9s5LVbVBxYH+9ZiAkuRMIovYYiVPx/2wQwfGrkhA4ky7qcW9+MHbHoQ7rwS9ZPn8ds6Um9ECDsXzAA2H59p82ZW6C8P0=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=gHabOiGP; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1730134894;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=knyVjinu2Mws85bdLGklnnsg+EFi+WIdDCzwpn7Dbgw=;
-	b=gHabOiGPjD2gl7wESY6xqpEofhAUiCvcXf+bhiIy+T/aBIC2P/iYUJFtDE+V0on2h/QMHG
-	ZvG1RJUqiE5eNvBRrLfik3WINZNV7aURCU9dAPbtD2mPyAprTEUhU/xhB4tJTtE43Rtrdd
-	eEG0zxkcE0c9D9ctP5Od6yy01uK2d94=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-693-p9-NltxUNqeQvXkLDi87NA-1; Mon, 28 Oct 2024 13:01:33 -0400
-X-MC-Unique: p9-NltxUNqeQvXkLDi87NA-1
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-37d49887a2cso2371405f8f.0
-        for <kvm@vger.kernel.org>; Mon, 28 Oct 2024 10:01:32 -0700 (PDT)
+       dkim=pass header.i=@google.com header.s=20230601 header.b=TrtiJPS2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t5ULD-0007To-6O; Mon, 28 Oct 2024 14:19:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1t5UKs-0007LM-7q
+ for qemu-arm@nongnu.org; Mon, 28 Oct 2024 14:19:31 -0400
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1t5UKp-0003Fm-R0
+ for qemu-arm@nongnu.org; Mon, 28 Oct 2024 14:19:25 -0400
+Received: by mail-lf1-x133.google.com with SMTP id
+ 2adb3069b0e04-539e66ba398so2784e87.0
+ for <qemu-arm@nongnu.org>; Mon, 28 Oct 2024 11:19:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1730139558; x=1730744358; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=I9KpKqmLLGgWQg4P3FM7fUf1XDrH/wvRuXnmbYM3Wa0=;
+ b=TrtiJPS2nMYzDDJifz04HGa+6f7RJl1gILbrX6K+3pe38Rtik+0bu8HebCHD9hNI6H
+ alJEApvBJ6dsrlgHYmU8FrguH7bvmOu5cv1ehEprz+DfSD2SqKczErlGIP5HcXfpqtk6
+ wLdilKuzZAR6yMYSzOEXGru0P6qzskWmdLb12cH35ePzPV0w6LbPrQT69WTwGnGctQhw
+ jOeCw3/Hg6mkxjOzIpM3IDpewxZ4J8Bhf8vwjNRtiSzK/k/i+eOdl6AEULLS4zGjawGi
+ znuBSapldFQMlWr4//S2niiSTCeiXP751kn+/1yO9LZcPzK+DxGpVN/zvPpxCm0lDqun
+ 3vOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730134892; x=1730739692;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=knyVjinu2Mws85bdLGklnnsg+EFi+WIdDCzwpn7Dbgw=;
-        b=wHsABCL9Tug18XD74cxDPFoYi3Gn5E2R46uLhYTs1fF0Ma/fRGH2dRgk1YQ6tzuVfl
-         ki9AVeBGrS9cgAFzSdJrw4jJvtVrhFUAZojbaiGLDRzOgus/14LymZZ/Le7aSn1KPoa2
-         QxJPH+8G00CfJBYEpj3qBprBYicr9zCBFajQxuKaYBPKLz9K/xsN+xIsNm9VAJXPniV6
-         lGEHgnuUUhtsJ+4vupOipx2O5mKaEe1hH1zlcNy60GghQxfSkqi80KYhUtKb5ADhJ+Qz
-         LHuGtQ0oBkTU6e42abKC44e0exfg0q3NyhCvw3iQ16S+dvpnOXgv7ACfhhJvJDgmSSEz
-         TvOw==
-X-Forwarded-Encrypted: i=1; AJvYcCVqDMQxfbFAhO0RMUBVZ6YpMDfGzhPWPpvwkdzvy8BInKplFsxvyRiJXqDWlZA1ICJBALA=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzOpW1dd7LoX+qtquOsdKzgpaKz5ZdvphNA36rwpgi6pmWbu2zf
-	d1YOriwvjKOG8scf2m2QxJwwtoHTm7y/lTHIT3DrmTvjK1sqTfTKSfS/i2pTuHUWO6KVzA4pMPm
-	xx+xM4MNeyVv20cZ+cMNnRwYX1EqW9eoKDpddYtZTRP84I0QrfA==
-X-Received: by 2002:adf:fc46:0:b0:37d:3b31:7a9d with SMTP id ffacd0b85a97d-3808142425cmr219966f8f.23.1730134891674;
-        Mon, 28 Oct 2024 10:01:31 -0700 (PDT)
-X-Received: by 2002:adf:fc46:0:b0:37d:3b31:7a9d with SMTP id ffacd0b85a97d-3808142425cmr219916f8f.23.1730134891180;
-        Mon, 28 Oct 2024 10:01:31 -0700 (PDT)
-Received: from ?IPV6:2003:cb:c722:3c00:70fc:90a8:2c65:79b4? (p200300cbc7223c0070fc90a82c6579b4.dip0.t-ipconnect.de. [2003:cb:c722:3c00:70fc:90a8:2c65:79b4])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38058b712bfsm10008386f8f.79.2024.10.28.10.01.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2024 10:01:30 -0700 (PDT)
-Message-ID: <6cc00e04-6e38-4970-9d6b-52b56ee20a64@redhat.com>
-Date: Mon, 28 Oct 2024 18:01:29 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1730139558; x=1730744358;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=I9KpKqmLLGgWQg4P3FM7fUf1XDrH/wvRuXnmbYM3Wa0=;
+ b=TqZOlnzbvEvzEkMPbMvvWH/4JdBNjbzC4CYlJNlid0B5UHUip41bDVjnH0Y+Mh7MeH
+ yYJc0FCw6qOGmQmOV6UF0rvHTlmpXJaziOnWOvI/P3RNkf34kQ2xAj8XAvoHo94K5KM8
+ sN/rR5WObS+WDXEY+k6TSCrUgZDt/2WnW0nuXY9taBfxapDHUaU0yNyCPG83dFT2mP/q
+ NkFVdi3sYeATtUPi+C6HcC4oZwplkvmsyIB5pL3zfVW/uqtvGxycDcHBCL4cx9LJgQUv
+ Qf5l1wC5QwKp1favwwWYXKBgC8WOJLkguPXreirQySCqF1mmYwXk/mIwVTLs6B8urZ2Y
+ KY2w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWueLEYiD0cQwkM10nckC9R4WkrbxuaC69QTJZF52ehzNyLySr6nzoVjxv6pEW/jWwE1KVY5pajyw==@nongnu.org
+X-Gm-Message-State: AOJu0YyREIFFsKPvflGSbX/NAdSKr0bdGqOnGne2RNHxyE+yzcRAAFIT
+ s+sVuX24C7PMJwFkZ09dejSS8BXbUqZEArbew7rZB/5vDjYh19y3L+M4cNRHd/zY0u8cL2UvPKh
+ eQt7o63ybW18M67COjNZH3ybRZPPLX/HsqfIS
+X-Received: by 2002:a05:6512:4017:b0:538:9e44:3034 with SMTP id
+ 2adb3069b0e04-53b480a3b88mr19500e87.6.1730139557940; Mon, 28 Oct 2024
+ 11:19:17 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 3/4] system/physmem: Largepage punch hole before reset
- of memory pages
-To: William Roche <william.roche@oracle.com>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
- joao.m.martins@oracle.com
-References: <ZwalK7Dq_cf-EA_0@x1n>
- <20241022213503.1189954-1-william.roche@oracle.com>
- <20241022213503.1189954-4-william.roche@oracle.com>
- <0cda6b34-d62c-49c7-b30c-33f171985817@redhat.com>
- <e9f8e404-50db-4e0f-a5e1-749acad49325@oracle.com>
-From: David Hildenbrand <david@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <e9f8e404-50db-4e0f-a5e1-749acad49325@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: VfwplT+dcJsG
+References: <20241028181420.1438938-1-venture@google.com>
+In-Reply-To: <20241028181420.1438938-1-venture@google.com>
+From: Hao Wu <wuhaotsh@google.com>
+Date: Mon, 28 Oct 2024 11:19:03 -0700
+Message-ID: <CAGcCb13zjuH4dAspE=dAdWZXG88b5e3OkGFaE+KcwcWDjioyUQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: enable at24c with aspeed
+To: Patrick Leis <venture@google.com>
+Cc: clg@kaod.org, peter.maydell@linaro.org, steven_lee@aspeedtech.com, 
+ leetroy@gmail.co, jamin_lin@aspeedtech.com, andrew@codeconstruct.com.au, 
+ joel@jms.id.au, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000c3bb9306258d814a"
+Received-SPF: pass client-ip=2a00:1450:4864:20::133;
+ envelope-from=wuhaotsh@google.com; helo=mail-lf1-x133.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cP3+KQ8xo9PK
 
-On 26.10.24 01:27, William Roche wrote:
-> On 10/23/24 09:30, David Hildenbrand wrote:
-> 
->> On 22.10.24 23:35, “William Roche wrote:
->>> From: William Roche <william.roche@oracle.com>
->>>
->>> When the VM reboots, a memory reset is performed calling
->>> qemu_ram_remap() on all hwpoisoned pages.
->>> While we take into account the recorded page sizes to repair the
->>> memory locations, a large page also needs to punch a hole in the
->>> backend file to regenerate a usable memory, cleaning the HW
->>> poisoned section. This is mandatory for hugetlbfs case for example.
->>>
->>> Signed-off-by: William Roche <william.roche@oracle.com>
->>> ---
->>>    system/physmem.c | 8 ++++++++
->>>    1 file changed, 8 insertions(+)
->>>
->>> diff --git a/system/physmem.c b/system/physmem.c
->>> index 3757428336..3f6024a92d 100644
->>> --- a/system/physmem.c
->>> +++ b/system/physmem.c
->>> @@ -2211,6 +2211,14 @@ void qemu_ram_remap(ram_addr_t addr,
->>> ram_addr_t length)
->>>                    prot = PROT_READ;
->>>                    prot |= block->flags & RAM_READONLY ? 0 : PROT_WRITE;
->>>                    if (block->fd >= 0) {
->>> +                    if (length > TARGET_PAGE_SIZE &&
->>> fallocate(block->fd,
->>> +                        FALLOC_FL_KEEP_SIZE | FALLOC_FL_PUNCH_HOLE,
->>> +                        offset + block->fd_offset, length) != 0) {
->>> +                        error_report("Could not recreate the file
->>> hole for "
->>> +                                     "addr: " RAM_ADDR_FMT "@"
->>> RAM_ADDR_FMT "",
->>> +                                     length, addr);
->>> +                        exit(1);
->>> +                    }
->>>                        area = mmap(vaddr, length, prot, flags, block->fd,
->>>                                    offset + block->fd_offset);
->>>                    } else {
->>
->> Ah! Just what I commented to patch #3; we should be using
->> ram_discard_range(). It might be better to avoid the mmap() completely
->> if ram_discard_range() worked.
-> 
+--000000000000c3bb9306258d814a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Hi!
+On Mon, Oct 28, 2024 at 11:15=E2=80=AFAM Patrick Leis <venture@google.com> =
+wrote:
 
-> 
-> I think you are referring to ram_block_discard_range() here, as
-> ram_discard_range() seems to relate to VM migrations, maybe not a VM reset.
+> Enable AT24C with ASPEED in the KConfig because the boards build this
+> device.
+>
+> Signed-off-by: Patrick Leis <venture@google.com>
+>
+Reviewed-by: Hao Wu <wuhaotsh@google.com>
 
-Please take a look at the users of ram_block_discard_range(), including 
-virtio-balloon to completely zap guest memory, so we will get fresh 
-memory on next access. It takes care of process-private and file-backed 
-(shared) memory.
+> ---
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index e7fd9338d1..1b25e73578 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -539,6 +539,7 @@ config ASPEED_SOC
+>      select PMBUS
+>      select MAX31785
+>      select FSI_APB2OPB_ASPEED
+> +    select AT24C
+>
+>  config MPS2
+>      bool
+> --
+> 2.47.0.163.g1226f6d8fa-goog
+>
+>
+>
 
-> 
-> Remapping the page is needed to get rid of the poison. So if we want to
-> avoid the mmap(), we have to shrink the memory address space -- which
-> can be a real problem if we imagine a VM with 1G large pages for
-> example. qemu_ram_remap() is used to regenerate the lost memory and the
-> mmap() call looks mandatory on the reset phase.
+--000000000000c3bb9306258d814a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Why can't we use ram_block_discard_range() to zap the poisoned page 
-(unmap from page tables + conditionallydrop from the page cache)? Is 
-there anything important I am missing?
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Mon, Oct 28, 2024 at 11:15=E2=80=
+=AFAM Patrick Leis &lt;<a href=3D"mailto:venture@google.com">venture@google=
+.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
+gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
+ex">Enable AT24C with ASPEED in the KConfig because the boards build this<b=
+r>
+device.<br>
+<br>
+Signed-off-by: Patrick Leis &lt;<a href=3D"mailto:venture@google.com" targe=
+t=3D"_blank">venture@google.com</a>&gt;<br></blockquote><div>Reviewed-by: H=
+ao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@google.com</a>&gt=
+;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0hw/arm/Kconfig | 1 +<br>
+=C2=A01 file changed, 1 insertion(+)<br>
+<br>
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig<br>
+index e7fd9338d1..1b25e73578 100644<br>
+--- a/hw/arm/Kconfig<br>
++++ b/hw/arm/Kconfig<br>
+@@ -539,6 +539,7 @@ config ASPEED_SOC<br>
+=C2=A0 =C2=A0 =C2=A0select PMBUS<br>
+=C2=A0 =C2=A0 =C2=A0select MAX31785<br>
+=C2=A0 =C2=A0 =C2=A0select FSI_APB2OPB_ASPEED<br>
++=C2=A0 =C2=A0 select AT24C<br>
+<br>
+=C2=A0config MPS2<br>
+=C2=A0 =C2=A0 =C2=A0bool<br>
+-- <br>
+2.47.0.163.g1226f6d8fa-goog<br>
+<br>
+<br>
+</blockquote></div></div>
 
-> 
-> 
->>
->> And as raised, there is the problem with memory preallocation (where
->> we should fail if it doesn't work) and ram discards being disabled
->> because something relies on long-term page pinning ...
-> 
-> 
-> Yes. Do you suggest that we add a call to qemu_prealloc_mem() for the
-> remapped area in case of a backend->prealloc being true ?
-
-Yes. Otherwise, with hugetlb, you might run out of hugetlb pages at 
-runtime and SIGBUS QEMU :(
-
-> 
-> Or as we are running on posix machines for this piece of code (ifndef
-> _WIN32) maybe we could simply add a MAP_POPULATE flag to the mmap call
-> done in qemu_ram_remap() in the case where the backend requires a
-> 'prealloc' ?  Can you confirm if this flag could be used on all systems
-> running this code ?
-
-Please use qemu_prealloc_mem(). MAP_POPULATE has no guarantees, it's 
-really weird :/ mmap() might succeed even though MAP_POPULATE didn't 
-work ... and it's problematic with NUMA policies because we essentially 
-lose (overwrite) them.
-
-And the whole mmap(MAP_FIXED) is an ugly hack. For example, we wouldn't 
-reset the memory policy we apply in 
-host_memory_backend_memory_complete() ... that code really needs a 
-rewrite to do it properly.
-
-
-Ideally, we'd do something high-level like
-
-
-if (ram_block_discard_is_disabled()) {
-	/*
-	 * We cannot safely discard RAM,  ... for example we might have
-	 * to remap all guest RAM into vfio after discarding the 	
-	 * problematic pages ... TODO.
-	 */
-	exit(0);
-}
-
-/* Throw away the problematic (poisoned) page. *./
-if (ram_block_discard_range()) {
-	/* Conditionally fallback to MAP_FIXED workaround */
-	...
-}
-
-/* If prealloction was requested, we really must re-preallcoate. */
-if (prealloc && qemu_prealloc_mem()) {
-	/* Preallocation failed .... */
-	exit(0);
-}
-
-As you note the last part is tricky. See bwloe.
-
-> 
-> Unfortunately, I don't know how to get the MEMORY_BACKEND corresponding
-> to a given memory block. I'm not sure that MEMORY_BACKEND(block->mr) is
-> a valid way to retrieve the Backend object and its 'prealloc' property
-> here. Could you please give me a direction here ?
-
-We could add a RAM_PREALLOC flag to hint that this memory has "prealloc" 
-semantics.
-
-I once had an alternative approach: Similar to ram_block_notify_resize() 
-we would implement ram_block_notify_remap().
-
-That's where the backend could register and re-apply mmap properties 
-like NUMA policies (in case we have to fallback to MAP_FIXED) and handle 
-the preallocation.
-
-So one would implement a ram_block_notify_remap() and maybe indicate if 
-we had to do MAP_FIXED or if we only discarded the page.
-
-I once had a prototype for that, let me dig ...
-
-> 
-> I can send a new version using ram_block_discard_range() as you
-> suggested to replace the direct call to fallocate(), if you think it
-> would be better.
-> Please let me know what other enhancement(s) you'd like to see in this
-> code change.
-
-Something along the lines above. Please let me know if you see problems 
-with that approach that I am missing.
-
--- 
-Cheers,
-
-David / dhildenb
-
+--000000000000c3bb9306258d814a--

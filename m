@@ -1,147 +1,205 @@
-Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1619288njf;
-        Mon, 28 Oct 2024 10:04:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX/SccnWXRHNVLb99RhgJ4OmmpTrAhUlJy2RsRSk8/iWk0QrNLJon2RJHSNaKD/uPzC7nd2r6z6NZq8zw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGF8O3m38JsI5Ha5hhArVdWiFXyo7/bSFHIJeDY0E//E2s3j3l2oaW46WotB8gbhfXYWFMU
-X-Received: by 2002:a05:622a:190a:b0:458:2dba:55a7 with SMTP id d75a77b69052e-4613bfd438emr149084281cf.2.1730135082210;
-        Mon, 28 Oct 2024 10:04:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730135082; cv=none;
+Received: by 2002:a17:504:c05:b0:1be9:327d:8ee3 with SMTP id k5csp1765732njf;
+        Mon, 28 Oct 2024 14:17:46 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXHelFNbCaYHu7J5/4czRtkjVww/jQzwDsj4ip56/OMa0EWKO3bj06UubUAahrBREJoHPsa3XNb31B2+A==@linaro.org
+X-Google-Smtp-Source: AGHT+IF69W8fqMgJTWClNGNe90WreDCvO7KvfQs4iTUdYJDq4p/WnmEymwLIFAXCgiphIuTTOFz2
+X-Received: by 2002:a05:6808:3305:b0:3e6:4f27:5c7e with SMTP id 5614622812f47-3e64f275d5amr1319222b6e.21.1730150265874;
+        Mon, 28 Oct 2024 14:17:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730150265; cv=none;
         d=google.com; s=arc-20240605;
-        b=V4CC6004zYdurOG4+jcKXGKujeDCifqR5/NssmPUqFIrzW+xXkdDxlzz2uVPVbrkZj
-         tsA4eJ0QLrAn1/SGnNnTDenCBRdXYo7NpIRZArxd0d9YFwE6kli5nn3/kC97NDdhfTwe
-         lnCL5D8x+0aMrayolctLI6XJrTXtkTIkCPVWTzONqacb/pABs+726v5U11FGKFcNJnPt
-         KwmIe/6tn7jOpoZYXlmavNzwctPUP90B8pMbWhsid07HhESPYENUooGhq9j/XlmF7j7s
-         IJtZ3/dgXYvi4C3q82LOcMl/z5ewB00dEct7Jn/uW4FCHNUcTJSGIUbIR+QQwavE4dXp
-         O8kA==
+        b=A/F3+2B+wVhJYBSI3aHjghm0Cs0DWTZlItme3sX0vQS33JRfzDTHDCFifLLcounjOl
+         hDtFoWGdf6esfEAAjyCDLPtLvrOLTIi1xcINE3LJPuHXN9fx7a0i1vEe99EkVHdQV3Qc
+         NxrordV9LTYaXNru8yTVCaUuXwElG/92wqaMabmXgiNGXP8qF1IOn1DmsCntEJKmoI2Q
+         sz3/VZ9F1AZB1ECbYH+ZShk0s1VyO5EeqUrZK74Rw9R3zDMEJnSPOQR85oBaSF3qQ5ur
+         /bFgeFFkkS9C5u2M0tnNKc+u+B4px0aHiStomNEln3sXT1+ZqLrnw1h1Eiodn7Lgbm1t
+         EbTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=NQu+8I7Sok3PPSrWFRnNNqhfVgvV3ebDTRz6eG60lgs=;
-        fh=Af+j01jgw9a8GO5hOeAC2uRi0z1BP276NqhjltNOU90=;
-        b=QpTwla5cEZhFvqzDDponrTQb/3Micj/WmjIKmvyuVz4vy/+gkDngh8Of0KtR818o8Y
-         ooBVsSRcCcMx+CiXv5qHPdlnDc5VxY7FuVhRIrZonZTvJnD92K4sdKoJ1hWokYQBepP1
-         uOu6bX8T9auMTyppMmbmyUsJ6en/sG8bcuJeGDopdEzEb0PfewygpdCTveVzT3oFXqgQ
-         gERuiHv/N/NMU1/hGE0ssTQzUjfHgxt902fqeof4H1MRR665aNtOFeu1YB46j0A5yqnC
-         QNvl1HXn2mUuu81ftmoyZGePKawer2m/kPrm52xh1AbdTK/K1VhpilZr7BJFbvK8vOn9
-         SNjg==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=x9yXQx6CUSGYQAyHhPOLAki9LUCVSXELr2t2+lTGyyk=;
+        fh=j8iu9gnKkyKRCdyssngZ40t6wHCC1TYvXQdL2AD/0bI=;
+        b=eBq3f7RDalhlPRVsYMY+tRcpE/QSNnm/5ae3trlyI8902HQHjMK4CxuRiQdSLOtWxL
+         LRGA9sVkoUiQalxXbZexYB5XP1jkP69pDhMlo29FK+CP019UnHt8R2qKDRuXJTSDf3eg
+         M2fsB5GNyHMzfuqZqVTclMMDRj/dwrjhOH2DWiE4udZ2qm/xF/pKrE0gu+yArkYcnP4G
+         4a9gsWfYlSPqTUOQsBKwO+F+iSUWC/ubBZ2dkR/B+adw+lWXSYn33IFTl10gyq9GmDUL
+         DoCCmdFFKwtqt6cMye4YY5HYl/rl4VLlxtQRpA9TICXALpRll4sY1P0SntcLFGdQ7PMQ
+         Ok1A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bfF/ylEV";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cl0wYMzs;
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
+Return-Path: <kchamart@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4613235dcd1si84252061cf.376.2024.10.28.10.04.42
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d179a12bf1si93486486d6.308.2024.10.28.14.17.45
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Oct 2024 10:04:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 28 Oct 2024 14:17:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="bfF/ylEV";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Cl0wYMzs;
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1730135081;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
+	s=mimecast20190719; t=1730150265;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=NQu+8I7Sok3PPSrWFRnNNqhfVgvV3ebDTRz6eG60lgs=;
-	b=bfF/ylEVXAxaSY+WkeuFNyscinLqH84zIDJd4esi9pfaC0qCNibCOOOg6SFF9vJevpxeSr
-	t/ZAxUgAkDm60nZBTE/y+yCGBtVv0pfsDGHU2kbJYqv8fCuE7cCXRh1Unr6brmZ5434Gbr
-	LMo5At2coWXmeifjxviabveiVRSs9Ho=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+	bh=x9yXQx6CUSGYQAyHhPOLAki9LUCVSXELr2t2+lTGyyk=;
+	b=Cl0wYMzsEz3aNwOpCS2Tg/yL8AYkwLXAiBDKrw4QUcVL87pD7gxyeDOoBemQifu3Zv4xrC
+	S5Rov8Too83TkpWaVNS5KhRbAMyiEJ6x38ip0xAISOI3TK8SR38/zKM9heOWeidQ1i8iIM
+	FskXvrcM8zfYtnpXkCZY+5aF1p91d6E=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-328-jh4yBVELOw2Tk0UapQ0TwQ-1; Mon,
- 28 Oct 2024 13:04:40 -0400
-X-MC-Unique: jh4yBVELOw2Tk0UapQ0TwQ-1
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-646-Pe_AsnNgMnuLHkrU2oYL-g-1; Mon,
+ 28 Oct 2024 17:17:42 -0400
+X-MC-Unique: Pe_AsnNgMnuLHkrU2oYL-g-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id DF7481955EB5;
-	Mon, 28 Oct 2024 17:04:37 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.86])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E381B1956088;
-	Mon, 28 Oct 2024 17:04:30 +0000 (UTC)
-Date: Mon, 28 Oct 2024 17:04:27 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
-	cohuck@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	kvmarm@lists.linux.dev, richard.henderson@linaro.org,
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4EA93195608B;
+	Mon, 28 Oct 2024 21:17:39 +0000 (UTC)
+Received: from pinwheel (unknown [10.39.208.6])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id D291319560A2;
+	Mon, 28 Oct 2024 21:17:29 +0000 (UTC)
+Date: Mon, 28 Oct 2024 22:17:26 +0100
+From: Kashyap Chamarthy <kchamart@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Cc: eric.auger.pro@gmail.com, cohuck@redhat.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org, richard.henderson@linaro.org,
 	alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
 	sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
-	armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
-	shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
-	pbonzini@redhat.com
-Subject: Re: [RFC 18/21] arm/cpu: Introduce a customizable kvm host cpu model
-Message-ID: <Zx_EGxj2aqc_2-kY@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+	armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+	jdenemar@redhat.com, shahuang@redhat.com, mark.rutland@arm.com,
+	philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [RFC 21/21] arm/cpu-features: Document custom vcpu model
+Message-ID: <Zx__Zi3Zpg1AspnE@pinwheel>
 References: <20241025101959.601048-1-eric.auger@redhat.com>
- <20241025101959.601048-19-eric.auger@redhat.com>
- <ZxuX4i9NjVRizB72@redhat.com>
- <cb6c8f62-c5dc-416d-865f-fbdf96164dac@redhat.com>
- <Zxub7ol4p8P_sWF8@redhat.com>
- <CAFEAcA_wQu17y0PyQwxw0wuf2H5y2VE5aX16nLP2-u7QUP2ggA@mail.gmail.com>
- <Zx-9WxXkmkMuGIlQ@redhat.com>
- <CAFEAcA9w0mb5bcU8p+fScQony-=oqLmNurGWpnL_sBneQCzxUg@mail.gmail.com>
+ <20241025101959.601048-22-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFEAcA9w0mb5bcU8p+fScQony-=oqLmNurGWpnL_sBneQCzxUg@mail.gmail.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: r1uMGn+OMT2J
+In-Reply-To: <20241025101959.601048-22-eric.auger@redhat.com>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: tY53KSUgMz7z
 
-On Mon, Oct 28, 2024 at 04:48:18PM +0000, Peter Maydell wrote:
-> On Mon, 28 Oct 2024 at 16:35, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> >
-> > On Mon, Oct 28, 2024 at 04:16:31PM +0000, Peter Maydell wrote:
-> > > On Fri, 25 Oct 2024 at 14:24, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> > > > On Fri, Oct 25, 2024 at 03:18:25PM +0200, Eric Auger wrote:
-> > > > > On 10/25/24 15:06, Daniel P. Berrangé wrote:
-> > > > > > Also, is this naming convention really the same one that users
-> > > > > > will see when they look at /proc/cpuinfo to view features ? It
-> > > > > No it is not. I do agree that the custom cpu model is very low level. It
-> > > > > is very well suited to test all series turning ID regs as writable but
-> > > > > this would require an extra layer that adapts /proc/cpuinfo feature
-> > > > > level to this regid/field abstraction.
-> > > > >
-> > > > > In /cpu/proc you will see somethink like:
-> > > > >  Features    : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp
-> > > > > asimdhp cpuid asimdrdm lrcpc dcpop asimddp
-> > > >
-> > > > Right, IMHO, this is the terminology that QEMU must use in user
-> > > > facing APIs.
-> > >
-> > > /proc/cpuinfo's naming is rather weird for historical
-> > > reasons (for instance there is only one FEAT_FP16 feature
-> > > but cpuinfo lists "fphp" and "asimdhp" separately).
-> >
-> > There's plenty of wierd history in x86 too. In this
-> > case I might suggest just picking one of the two
-> > common names, and ignoring the other.
-> >
-> > If we really wanted to, we could alias the 2nd name
-> > to the first, but its likely not worth the bother.
+On Fri, Oct 25, 2024 at 12:17:40PM +0200, Eric Auger wrote:
+> From: Cornelia Huck <cohuck@redhat.com>
 > 
-> Or we could use the standard set of architectural
-> feature names, and not have the problem at all, and not
-> have to document what we mean by our nonstandard names.
-> (cpuinfo names do actually mostly line up with the
-> standard names, just not 100%. Similarly gcc/clang command
-> line options are mostly the architectural feature name.)
+> Add some documentation for the custom model.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>  docs/system/arm/cpu-features.rst | 55 +++++++++++++++++++++++++++-----
+>  1 file changed, 47 insertions(+), 8 deletions(-)
+> 
+> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+> index a5fb929243..962a2c6c26 100644
+> --- a/docs/system/arm/cpu-features.rst
+> +++ b/docs/system/arm/cpu-features.rst
+> @@ -2,7 +2,10 @@ Arm CPU Features
 
-Ah, right, yes. Sorry I mis-understood you originally to be suggesting
-the same low level names as this patch.
+[...]
 
-With regards,
-Daniel
+> +Using the ``host`` type means the guest is provided all the same CPU
+> +features as the host CPU type has.  And, for this reason, the ``host``
+> +CPU type should enable all CPU features that the host has by default.
+> +
+> +In case some features need to be hidden to the guest, ``custom`` model
+> +shall be used instead. This is especially useful for migration purpose.
+> +
+> +The ``custom`` CPU model generally is the better choice if you want more
+> +flexibility or stability across different machines or with different kernel
+> +versions. 
+
+Does "more flexibility or stability across different machines" also
+imply "live migration compatiblity across host CPUs"?
+
+> However, even the ``custom`` CPU model will not allow configuring
+> +an arbitrary set of features; the ID registers must describe a subset of the
+> +host's features, and all differences to the host's configuration must actually
+> +be supported by the kernel to be deconfigured.
+
+[...]
+
+> +The ``custom`` CPU model needs to be configured via individual ID register
+> +field properties, for example::
+> +
+> +  $ qemu-system-aarch64 -M virt -cpu custom,SYSREG_ID_AA64ISAR0_EL1_DP=0x0
+
+If possible, it would be really helpful (and user-friendly) to be able
+to specify the CPU feature names as you see under /proc/cpuinfo, and be
+able to turn the flags on or off:
+    
+        -M virt -cpu franken,rndr=on,ts=on,fhm=off
+
+(... instead of specifying long system register IDs that groups together
+a bunch of CPU features.  If I understand it correctly, the register
+"ID_AA64ISAR0_EL1" maps to a set of visible features listed here:
+https://docs.kernel.org/arch/arm64/cpu-feature-registers.html)
+
+
+Next, I prefix the below by noting that I wrote it before seeing
+Cornelia's reply that the name "custom" is not set in stone:
+https://lists.nongnu.org/archive/html/qemu-arm/2024-10/msg00987.html.
+
+I wonder if the word "custom" is starting to get overloaded; on x86:
+
+  - Libvirt itself uses the term "custom" this way, to quote its
+    documentation[1] for the 'custom' XML attribute:
+
+      custom
+    
+      In this mode, the 'cpu' element describes the CPU that should be
+      presented to the guest. This is the default when no 'mode'
+      attribute is specified. This mode makes it so that a persistent
+      guest will see the same hardware no matter what host the guest is
+      booted on.
+
+  - Some management tools also follow libvirt and use the term "custom"
+    to refer to one of two things, (a) a specific named CPU model that
+    libvirt and QEMU recognize, e.g. "Cascadelake-Server"; or (b) a
+    named CPU model + extra CPU flags, e.g. this is how OpenStack
+    uses[2] "custom" to configure CPU models, and flags that can be
+    enabled or disabled via "+" or "-":
+
+      [libvirt]
+      cpu_mode = custom
+      cpu_model = IvyBridge-IBRS
+      cpu_model_extra_flags="ss,+vmx,-pcid [...]"
+
+    (Note the "cpu_mode" there: it is referring to the three possible
+    modes that libvirt and QEMU support today: 'host-passthrough',
+    'host-model', and named CPU models via "custom".)
+
+    The above config translates to this QEMU command-line:
+
+        -cpu IvyBridge-IBRS,ss=on,vmx=on,pcid=off [...]
+
+Now if QEMU introduces "custom", it is likely to create some confusion.
+But luckily, as referenced above, it is open to change. :)
+
+    * * *
+
+FWIW, I agree with Dan here[3] that it would cause less future pain if
+Arm's named CPU models also decides on a "baseline that matches some
+corresponding real world silicon".  I've experienced plenty of such
+debugging pain in x86-land from years of troubleshooting live migration
+bugs involving CPU model (in)compatibility.  (Often, with help from
+DanPB and Jiri Denemark).
+
+[1] https://docs.openstack.org/nova/latest/admin/cpu-models.html#cpu-modes
+[2] https://libvirt.org/formatdomain.html#cpu-model-and-topology
+[3] https://lists.nongnu.org/archive/html/qemu-arm/2024-10/msg00888.html
+    — [RFC 21/21] arm/cpu-features: Document custom vcpu model
+
+[...]
+
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+/kashyap

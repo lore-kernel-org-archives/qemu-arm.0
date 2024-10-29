@@ -1,120 +1,123 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp324088njj;
-        Tue, 29 Oct 2024 08:18:37 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVmXl4dtkuNX2ekFDhAuSIC7lrTz4qVUzeWXXysKqUzQplKKlMN4ksKT6uezOdlEZQJmhtoOfkMJp5btw==@linaro.org
-X-Google-Smtp-Source: AGHT+IH+eQSl9F3fzcDaB4obWez9MXA7QgPXxn0L8QgBgg56cVFi8F+Vvn/8VbaQi63qF0w6REXT
-X-Received: by 2002:a05:6102:cd2:b0:4a4:4868:cfd9 with SMTP id ada2fe7eead31-4a8f6ac814fmr1656894137.1.1730215117173;
-        Tue, 29 Oct 2024 08:18:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730215117; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp375562njj;
+        Tue, 29 Oct 2024 09:31:53 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX0hzxzmZOWgM2WycLa0spARXIJcEOo/82bntldkfCwJHCRR8unmLBTTPqjSLAQV47ARNVg7WdSfJoZkQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEwXGc9y/DUrDIVIEEnohs2Znb5sFi3KnPSi3BJ5K9VbCCXAxs+j8HovfvZxbzHIUa3Fn05
+X-Received: by 2002:a05:6358:2829:b0:1c2:fcd0:d20a with SMTP id e5c5f4694b2df-1c3f9f80695mr495531955d.25.1730219512935;
+        Tue, 29 Oct 2024 09:31:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730219512; cv=none;
         d=google.com; s=arc-20240605;
-        b=UktjagOEEEJwOaVMQmmi8bpQp9p2hjr/+RYEqk5b3DUqYsmiksezRk+Hx09MVDZ/s4
-         9yQaSuxfFX++lgDA3AQtE5se8hAI3AwelF31/ymxR4HgjmR6c+ygZN8jmle7PBb8PFWT
-         T/rBT+vULi4u1PjOyjpJyjCZeVv6zDhth90pqn5bzvZ5SuYhpJQQJxH54Ic1w1msnV4g
-         wSqP43t+f/AbPSoWqTPNLTOlCx/vx9zfRTUnnu+tQKnvJde+qZKSR0Vlhw7sVdx9Obt1
-         A2pGQgWzSQALARY3Uh15q25tWaFs2H+cm+8nG44yzo16eMliU77urtzt1P7u2Q6u4gD4
-         wVPQ==
+        b=VjfHIvBjPU814bs8lN/Z1fWnhQI/NBseSneknxQZvPaKneHjQ1dvL7IruD8zIMUOpD
+         m6Og3F3Bx+sEH8Nz3YScx0fhxp0Ip6fBV3jX6yA2dOtgFyRiQdcu+TBKkYaDUC1Hesdj
+         XL7L0yfhnVizeBrJolJXCRkMS5YEWtJmUi9aO96iO+tsTBc+G4awtMgvY0CLN8lHd8Ji
+         z7fGo3bamXPw55wJrPl3xKbLFnifC0k+SBQkeEHhQOC0qIq/varS7THWOwo3AeyaSTt8
+         XgpjibwyzfG6mY8Rmr4VQP4fB88XozwWrxim0hZo+1ToHzHKnBjfphZmyOL1u8kDQfQo
+         jt5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=8e1aymOVILrgw7W2xEL/OiCjMGpomvllpnPzHFIUe8Q=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=OKxOnGkmGYzLc6bekcQFszZa/gBR4DNKLb0Omxk6igU0s1iqrQ7yz1yY7aXKcQ38Ia
-         r80Zci78RWXhgMKRjAP7Fgskw2dys7LC45oq1Sj0EFVYErA3+E5/n9x6IOkx527H0PSz
-         6qfl5YzVxiw6CRS0hzEwne9gPchJuf+MwqRZMo+0XLfWfsGtyPqqgi46tFxfqxdxh4iu
-         v5E4dcny/1d11FHxW2wGQmAhXPlsd1oren+FtXGOLeZgsfrcgQJMNagg3F3Kdplig2Xq
-         xgNfjKLNYsRyQ+QFsnzxJ1u5piCXg+NOZjYot5l9dPvtjgpnyJXWwdeaPf1/pa5PrEaA
-         r/Vg==;
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=GluvrkFpzjprinBJrorJ6GPoWP4Kppr9WPEXb916Ol8=;
+        fh=CVjI828JK1ERWJmDL5l77/zkfrTk9Jgzfxjk1QD2qUg=;
+        b=WWNqBt7Jg/dFS3FTJ8GT8AtoD7ZYf08ZDw9QDG0wP4CzTByI5scjp4I1pOUGNwyG+y
+         LkAoQK7hPKswP+MT/PIdICfF5Wk2qs/n65d3jWkc8fTDajOC/eh3M1JlJYOiIGDcWYgr
+         ZuyTWcYiXmP7W3KcOdhGubqjcbAchNAzx44/1vdG8gMfZUM6AQarQdimI6wyue8U6YcU
+         TZI6H8/TOFMlfYkAYLYlp5fhOMQE+yxGZYeEXSZHwmmUDYbRdobglbAMt4/LBdl/P/q1
+         uVdw7yayUmTu+K63HakRxpfojlD+8fn+J11Rw8xkv/mOvteyKZA9TTZJoaVt8OKvqIdG
+         GHZg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q+uhP822;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AxhMNeJM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4a8c531127dsi2296986137.395.2024.10.29.08.18.37
+        by mx.google.com with ESMTPS id d75a77b69052e-4613238e14esi109684271cf.488.2024.10.29.09.31.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 08:18:37 -0700 (PDT)
+        Tue, 29 Oct 2024 09:31:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Q+uhP822;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AxhMNeJM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t5nwD-0007eL-3Z; Tue, 29 Oct 2024 11:15:17 -0400
+	id 1t5p82-00011w-GU; Tue, 29 Oct 2024 12:31:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t5ns7-0000iH-CJ
- for qemu-arm@nongnu.org; Tue, 29 Oct 2024 11:11:04 -0400
-Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1t5p7q-0000zt-GE
+ for qemu-arm@nongnu.org; Tue, 29 Oct 2024 12:31:22 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t5ns1-0007hn-6k
- for qemu-arm@nongnu.org; Tue, 29 Oct 2024 11:11:02 -0400
-Received: by mail-lf1-x133.google.com with SMTP id
- 2adb3069b0e04-539f72c8fc1so6906033e87.1
- for <qemu-arm@nongnu.org>; Tue, 29 Oct 2024 08:10:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1t5p7m-0000pf-PQ
+ for qemu-arm@nongnu.org; Tue, 29 Oct 2024 12:31:21 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-71e5a62031aso4158093b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 29 Oct 2024 09:31:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730214654; x=1730819454; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=8e1aymOVILrgw7W2xEL/OiCjMGpomvllpnPzHFIUe8Q=;
- b=Q+uhP822wY6j/2OBE1UFo1lAZMKykhjOlk99R3Qhx5Cp0L6s6e9NHQHQ4YV/r9V+mF
- 1oMK+swtLxZUfOWzVdERvc8Wp09vchH9dBsXcSmB72gw7EVPvK7gzj/4tzAhR2rwdARd
- xGysPczgnYoLzYjGjeVCx2mV+h5LJdEA8yJ+RNdlRgmcGQ9VMYti4zQwp9vof6jZX2qj
- 4lwObM7eQcUPWuR7NlOwsvq6rnbtySLF3oJDHRyyEd1YN7Dy3FDg953hLErwuOSOYCGX
- hw23IlegJ1blTbOClb48Kcb0LCbuAMSVqV0EdvQeBsTq7aWQoUCurbLKbyUG9hfmjGAS
- FWeQ==
+ d=linaro.org; s=google; t=1730219476; x=1730824276; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=GluvrkFpzjprinBJrorJ6GPoWP4Kppr9WPEXb916Ol8=;
+ b=AxhMNeJMfLItRp6z0s+7leViic04Oz3nynfDuC2raNGgC1z8iIZ00B3nuB7w2hBv6U
+ W4EMju7WGIWtSuHFqYmx0Ye6Cl9l26xyf770aWdHezevvQ8LhPXpOGIi/Cidv9v3CgqU
+ k+VslFg4QmxFqYv58GztbY3Yz4ZtVlnfFxDq9Ob0jyWRmksP6IDk88F6QwDS6a0Fd3aM
+ ddD8GtuIu8EMAbpogQJ6NL3Cc5XVSKDDKO+ubItlusy7pIUr4LY5hIh/XgSqJPE5jkRl
+ uwyw7jYG082vU+6sr4UcndRPZkrHKJd5Fl2OGjAppBvhAxHkKGX57znhZFGxHX4XbmHT
+ lHmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730214654; x=1730819454;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=8e1aymOVILrgw7W2xEL/OiCjMGpomvllpnPzHFIUe8Q=;
- b=J1SJTM6OlGXQvK4t79RaLPGXtHGdPiNJACxM33W0e3BL4Be1CPP/SQWqOH8OB4UfxC
- UHMQs5tntSQNpuSQspi8TszMdsBN5hr7L/+ZvIIAOgAaPQo12LpuegEyWY/2wKJHX6bj
- ZC35NCNDfFVZOlWR+6+/3pKxsCqBbJxW70pWbqQYJgoZdLkfYhJiAzHceUUzHGu668tW
- 5Oe4iB+RFG9daHjQ2lC3voqwpku3F0RkfMBxU/ToJ0r3c9BuzrIKhuyVNVFzTOWAVUoe
- Ko0kHMv3yFCvcKWRh+FGnaJf4hkzOUEhHOIbYfgu0lZv0L2dMci50cJd9KQqvd3KoYrl
- 0yDQ==
-X-Gm-Message-State: AOJu0Yy+nFjmgm8BWRJM4m+Ekhk8j+XTJr26w6RAQfs3RVagSE5ZtaEq
- h+acW4QWJNbHQJ9AbDOiApM9axKb4iaU5DX7I0AUX38Qx61WPPIEYUN1AlDvTCKpGTpnf1KrnI9
- i
-X-Received: by 2002:a05:6512:1392:b0:539:e0ee:4f5f with SMTP id
- 2adb3069b0e04-53b7ecdeed7mr35054e87.18.1730214654213; 
- Tue, 29 Oct 2024 08:10:54 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4319360cc2esm146835865e9.44.2024.10.29.08.10.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Oct 2024 08:10:53 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PULL 08/18] scripts/symlink-install-tree.py: Fix MESONINTROSPECT
- parsing
-Date: Tue, 29 Oct 2024 15:10:38 +0000
-Message-Id: <20241029151048.1047247-9-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241029151048.1047247-1-peter.maydell@linaro.org>
-References: <20241029151048.1047247-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1730219476; x=1730824276;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=GluvrkFpzjprinBJrorJ6GPoWP4Kppr9WPEXb916Ol8=;
+ b=T8V4GGtZZB2hm57DIuJgX0BkEtsytj7LCHc+v+fM6Xlg1GI51NRKI3S/Dm6ytXPron
+ RIBv8uxVdCAxbE/9RH6bkLl1TRu3qzGlIF7R3UNZKFjIjmQSnngWOqpH2xNst9t7nljp
+ 5Gxz9qvOhRg+mG++3ziJea/A/s0Af9b6eNbCT52F7mPzeHEGTeSz6JBTsCSgUyFIRfmW
+ eSbr3Rt+afm7BdhYkUD34kDJHxGTs2i9lESkm5u48O2pVAx2qRaHYgwDH+XoB4pkDdEh
+ TiCh+P4NQOHmZszWwj2c0aD+6WjHolEyRHi6iijMDHt7tggbjq2OMxs5kIz+I4EUh0/1
+ X6hw==
+X-Gm-Message-State: AOJu0YwLNWmH9LcRMMJqt+sjvT1t80U/mqb8sULWNGyTeBaDxDgdA+y4
+ kGnnt1ErGJ8xSbP8aiwNWVmlMKe2Vw3Wv1CGt7TugSxaN4qg7htfhx6XJyDeblg=
+X-Received: by 2002:a05:6a20:439f:b0:1d9:a72:87e9 with SMTP id
+ adf61e73a8af0-1d9a83a3dc9mr19430899637.10.1730219476344; 
+ Tue, 29 Oct 2024 09:31:16 -0700 (PDT)
+Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net.
+ [216.180.64.156]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-72057a3c2c9sm7710532b3a.196.2024.10.29.09.31.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 29 Oct 2024 09:31:15 -0700 (PDT)
+Message-ID: <c5ff463d-c5fb-4d00-95fc-f3c3ce9178d5@linaro.org>
+Date: Tue, 29 Oct 2024 09:31:15 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::133;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x133.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] Convert the BananaPi and OrangePi Avacodo tests
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Niek Linnenbank <nieklinnenbank@gmail.com>,
+ Joel Stanley <joel@jms.id.au>
+References: <20241029092440.25021-1-thuth@redhat.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20241029092440.25021-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,59 +132,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: x/FWycHfiisR
+X-TUID: 6+vk+RPhzWog
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+Hi Thomas,
 
-The arguments in MESONINTROSPECT are quoted with shlex.quote() so it
-must be parsed with shlex.split().  Otherwise the script will fail if
-the build directory has a character like "~" in it.
+On 10/29/24 02:24, Thomas Huth wrote:
+> Some of the URLs in the Avocado tests stopped working since the
+> original assets have been removed from the servers or moved location,
+> see:
+> 
+>   https://lore.kernel.org/qemu-devel/CACPK8Xc=jsz5iT_WR7s-rcu1cRzryiK+-0o=6vUK_D_qMMrP3A@mail.gmail.com/
+> 
+> Since we are currently in progress of converting the Avocado tests
+> to the new functional framework, this is a good opportunity to convert
+> these tests and adjust the URLs (and hashsums) along the way to make
+> these tests work again.
+> 
+> Thomas Huth (2):
+>    tests/functional: Convert BananaPi tests to the functional framework
+>    tests/functional: Convert the OrangePi tests to the functional
+>      framework
+> 
+>   MAINTAINERS                           |   1 +
+>   tests/avocado/boot_linux_console.py   | 411 --------------------------
+>   tests/functional/meson.build          |   4 +
+>   tests/functional/qemu_test/utils.py   |  21 ++
+>   tests/functional/test_arm_bpim2u.py   | 206 +++++++++++++
+>   tests/functional/test_arm_orangepi.py | 270 +++++++++++++++++
+>   6 files changed, 502 insertions(+), 411 deletions(-)
+>   create mode 100755 tests/functional/test_arm_bpim2u.py
+>   create mode 100755 tests/functional/test_arm_orangepi.py
+> 
 
-Note: this fix cannot be backported directly to any stable branch
-that doesn't require Meson version 1.4.0 or better; otherwise it will
-work OK on Linux but will break on Windows hosts.
+I have a general question regarding tests in QEMU.
+Is the current goal to convert all avocado tests to functional ones, and 
+then remove avocado from codebase?
 
-(Unfortunately, Meson prior to version 1.4.0 was inconsistent between
-host OSes about how it quoted arguments, and used a different quoting
-process on Windows hosts.  Our current git trunk already requires
-1.5.0 as of commit 07f0d32641e ("Require meson version 1.5.0"), but
-the stable branches are still on older Meson.)
-
-Fixes: cf60ccc330 ("cutils: Introduce bundle mechanism")
-Reported-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Tested-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-id: 20241018130852.931509-1-peter.maydell@linaro.org
-[PMM: Updated commit message to give all the detail about the
-Meson version compability requirements.]
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- scripts/symlink-install-tree.py | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/scripts/symlink-install-tree.py b/scripts/symlink-install-tree.py
-index 8ed97e3c943..b72563895c5 100644
---- a/scripts/symlink-install-tree.py
-+++ b/scripts/symlink-install-tree.py
-@@ -4,6 +4,7 @@
- import errno
- import json
- import os
-+import shlex
- import subprocess
- import sys
- 
-@@ -14,7 +15,7 @@ def destdir_join(d1: str, d2: str) -> str:
-     return str(PurePath(d1, *PurePath(d2).parts[1:]))
- 
- introspect = os.environ.get('MESONINTROSPECT')
--out = subprocess.run([*introspect.split(' '), '--installed'],
-+out = subprocess.run([*shlex.split(introspect), '--installed'],
-                      stdout=subprocess.PIPE, check=True).stdout
- for source, dest in json.loads(out).items():
-     bundle_dest = destdir_join('qemu-bundle', dest)
--- 
-2.34.1
-
+Thanks,
+Pierrick

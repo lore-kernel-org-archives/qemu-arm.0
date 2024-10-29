@@ -1,63 +1,63 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp106375njj;
-        Tue, 29 Oct 2024 02:18:18 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVXhcH+Q9dUhX6BtMb1yiLV7uAcHdO5mVXV9DRo4DR/F0tTxgngMHlEz8nFyJwrfpqt9oOYUj92O84/LQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE7b5wHqGl9EVDmQTRWivhiSYa1+rmovVpqEAkW9okp6qzVn5+WPNrFNwRKsioUHYDsUwiT
-X-Received: by 2002:a05:620a:4708:b0:7b1:481f:b8b7 with SMTP id af79cd13be357-7b193f3d0e9mr1774472185a.43.1730193498147;
-        Tue, 29 Oct 2024 02:18:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730193498; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp106478njj;
+        Tue, 29 Oct 2024 02:18:33 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV6yFG0B0YIEGYJjpQHb4Xl8KQpFVutMI/S+1k4CNBzqnZq8GG0RZMl3vRWu5CoggP9akxmOSoA3g7ySw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHTEwNKNwR/EEMPj4D1chdpLifLHL5/kbPXCqABoCJCSP4R6G1w0TfxihRCvvPcf+dnw3Pj
+X-Received: by 2002:ac8:59c1:0:b0:460:78ad:16af with SMTP id d75a77b69052e-4613bffba5emr185369181cf.21.1730193513701;
+        Tue, 29 Oct 2024 02:18:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730193513; cv=none;
         d=google.com; s=arc-20240605;
-        b=O3aIfDhIIgS7x7b4FFjBzTB+kbuBXED4sFfeVnIIfFRBnJ5VN4610/CZ3xGvaVO+fl
-         E38rmUFHTJRgki+i1MgoFER+KMXyHzIieOryKP/F+3DanCicH0v+Y/Pr6+ri+lNdnoX9
-         nGD4YOrNQzBdaaY+4dLgDcL67yw3O40btYiUTeWWQGAIMJw8lgSZ1hn3dvwaxEqKSHMF
-         3xU/MGwgEEb0HpaTf7i/7WGn0h6N5yz7Pntubzt55KRPvGx94B5ORoDAJdhQhRdJ58ju
-         C8PzQy/OQJBi8sMVwrotRPnNt+hZP4CZz8a94LnDA2f9Z+0Z3ejo/Gfdv2BwwOIS1wp4
-         C6EA==
+        b=SrlAA9HNA9hMoG9MOorcgmC894+FdlerjkOGGUiOJBOzNX4NTYuSQbk1RYl4pwGqbL
+         ewMXRCNJ2mRZNCMGUAlJyx5KJbAhvEppExPxm8L1IqDe6S8BH5WvTw7plZ7riufppvz1
+         sNyeUd5R356s8Fk/Xo2m7Hh2E65fa/yQ33fugvsRA0Z8LtbElCpdIcdZRanoOQbedjlJ
+         cSsTdshmUDTvOOFsvUVTUKwHCozE8axoHzxf1gI2EykH/fu0vdw9hJto7sx0Nm4pZDlI
+         lhLzYaRvNDB6C+K2gZuQXMCloI0IHYVpf4ri809kBUOP/ELLr0vhTd7m3nrrm1f3h/L9
+         ygog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=gV1O5Rb7blVfbi2RD7rwG4QbWvEX0MzbQQ1ZITjqVKg=;
+        bh=I6b8ZfEbINB6Js0mAvDW78IC2X6VREHK+mCncE394Cc=;
         fh=4rHsaFhVkVMXk5u1IVZO4usPBujjRbqK1KMv0eZ+6CI=;
-        b=BonKq2yBsOLGXcUOncVbc6srS3V9PVMPPfCc1/Xy3wJCbPi1DTXxBRhBLmoAZswyXP
-         rykPqqVetE/K1oE2EgG/VBMV4itFRPuhVyl/nRcdR9DMvnZlFmJzMA6Ivkl0eljNoJ3a
-         DqJ98Qli44SaCJVi1SXXLh9KwoPYURETQILOuf7Sh3X0CK7hK+EQr4rJ5sfonzkKm6fW
-         H9kW8xdF0ferlXLJQlvVGzrvKywjYNVhKd/rizNvzKkFD27Qo8gfKBDXpla2zbSUX+D9
-         8UlPe1J2GETRKTsXkiRJHKRowt7fUcnSocL6KCIbsjLv1FA1niO0Ra6LjwH5szgDK57P
-         at/Q==;
+        b=iZgqLcWUQ0+rGMAE5ARncG5rmrY2OQ2LobZ4dCyTA/aBtYCBOEuxCN/Hi15B4BMXVk
+         oKsHbX8AxN6mGqdA+MYRPt2qPAEbX4OQ9InAN8EHc8PA7SqyC1XymTes8WEkIhtO5JC7
+         fK6fUCGiEi53tyt/3U2JOfpxiGhY0X+UDUqlV72wQjYdJMTtjc/Vf5r0abDVdufLPkib
+         6bzvqBVNl4mgHDIdRldZJhCh8N40cTc713RxXC2lR4HRxZ15hThUoXuLab79ijAUd0FI
+         dDPAaaSZV7EI54vZTFYZQBvccGoGKpKPH2xYLgXufDj2fGTVBXxibJ6yX4StHk2zLLFD
+         4Ifg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b18d344729si1055911985a.491.2024.10.29.02.18.18
+        by mx.google.com with ESMTPS id d75a77b69052e-461323c40b8si102728821cf.557.2024.10.29.02.18.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 02:18:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Oct 2024 02:18:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t5iMW-0000bG-4H; Tue, 29 Oct 2024 05:18:06 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t5iMJ-0000Zf-3c; Tue, 29 Oct 2024 05:17:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t5iMM-0000aR-Io; Tue, 29 Oct 2024 05:17:54 -0400
+ id 1t5iMG-0000YE-0F; Tue, 29 Oct 2024 05:17:48 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t5iMJ-0003A3-SA; Tue, 29 Oct 2024 05:17:53 -0400
+ id 1t5iME-0003A3-Pd; Tue, 29 Oct 2024 05:17:47 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 29 Oct
- 2024 17:17:31 +0800
+ 2024 17:17:30 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 29 Oct 2024 17:17:31 +0800
+ Transport; Tue, 29 Oct 2024 17:17:30 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -67,10 +67,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 5/8] hw/sd/sdhci: Introduce a new Write Protected pin
- inverted property
-Date: Tue, 29 Oct 2024 17:17:26 +0800
-Message-ID: <20241029091729.3317512-6-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 3/8] hw/timer/aspeed: Fix interrupt status does not be
+ cleared for AST2600
+Date: Tue, 29 Oct 2024 17:17:24 +0800
+Message-ID: <20241029091729.3317512-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
 References: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
@@ -86,77 +86,47 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ESK0IGd2CNX3
+From:  Jamin Lin via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4vQue0CY6gZe
 
-The Write Protect pin of SDHCI model is default active low to match the SDHCI
-spec. So, write enable the bit 19 should be 1 and write protected the bit 19
-should be 0 at the Present State Register (0x24). However, some board are
-design Write Protected pin active high. In other words, write enable the bit 19
-should be 0 and write protected the bit 19 should be 1 at the
-Present State Register (0x24). To support it, introduces a new "wp_invert"
-property and set it false by default.
+According to the datasheet of AST2600 description, interrupt status set by HW
+and clear to "0" by software writing "1" on the specific bit.
+
+Therefore, if firmware set the specific bit "1" in the interrupt status
+register(0x34), the specific bit of "s->irq_sts" should be cleared 0.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/sd/sdhci.c         | 6 ++++++
- include/hw/sd/sdhci.h | 5 +++++
- 2 files changed, 11 insertions(+)
+ hw/timer/aspeed_timer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index db7d547156..bdf5cbfb80 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -275,6 +275,10 @@ static void sdhci_set_readonly(DeviceState *dev, bool level)
- {
-     SDHCIState *s = (SDHCIState *)dev;
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index 5af268ea9e..149f7cc5a6 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -580,7 +580,7 @@ static void aspeed_2600_timer_write(AspeedTimerCtrlState *s, hwaddr offset,
  
-+    if (s->wp_invert) {
-+        level = !level;
-+    }
-+
-     if (level) {
-         s->prnsts &= ~SDHC_WRITE_PROTECT;
-     } else {
-@@ -1551,6 +1555,8 @@ static Property sdhci_sysbus_properties[] = {
-                      false),
-     DEFINE_PROP_LINK("dma", SDHCIState,
-                      dma_mr, TYPE_MEMORY_REGION, MemoryRegion *),
-+    DEFINE_PROP_BOOL("wp-invert", SDHCIState,
-+                     wp_invert, false),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-index 6cd2822f1d..d68f4788e7 100644
---- a/include/hw/sd/sdhci.h
-+++ b/include/hw/sd/sdhci.h
-@@ -100,6 +100,11 @@ struct SDHCIState {
-     uint8_t sd_spec_version;
-     uint8_t uhs_mode;
-     uint8_t vendor;        /* For vendor specific functionality */
-+    /*
-+     * Write Protect pin default active low for detecting SD card
-+     * to be protected. Set wp_invert to true inverted the signal.
-+     */
-+    bool wp_invert;
- };
- typedef struct SDHCIState SDHCIState;
- 
+     switch (offset) {
+     case 0x34:
+-        s->irq_sts &= tv;
++        s->irq_sts &= ~tv;
+         break;
+     case 0x3C:
+         aspeed_timer_set_ctrl(s, s->ctrl & ~tv);
 -- 
 2.34.1
 

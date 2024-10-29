@@ -1,124 +1,456 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp36877njj;
-        Mon, 28 Oct 2024 23:11:21 -0700 (PDT)
-X-Received: by 2002:a05:600c:3b93:b0:430:5356:ac8e with SMTP id 5b1f17b1804b1-4319ac705camr91533945e9.5.1730182281400;
-        Mon, 28 Oct 2024 23:11:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730182281; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp68112njj;
+        Tue, 29 Oct 2024 00:43:38 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWeyoEGExL9NKUqrseAq8dwH34f0VuPP9hwYdp856/Yzj8edDCF5LxzTw88g/3G3UwQx4pMaDZ2ec5oXQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEFo0zgZR4BCp/l/jiD+g6sPOXvg8HYkDlGbtaKJ3GdflfNRosDsn+4cN/AWfoWF0ErQpQ/
+X-Received: by 2002:a05:6214:5d03:b0:6cb:f1cb:a16d with SMTP id 6a1803df08f44-6d18568dee9mr136918036d6.9.1730187818391;
+        Tue, 29 Oct 2024 00:43:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730187818; cv=none;
         d=google.com; s=arc-20240605;
-        b=Mvw1yAL8OJmt3Ts5llklVoS+uAL0s1MBhZkgqCjwhHXMlEX0f+pxRDSMkRl7JPAdFM
-         KeEdI2LLovJRo769kk1JYOF6gq+p/GQLqon69zZauUO5OnsnCJlP2vqVrAtDorARdAKU
-         dy0m054pAuHwi1sjcrPhnaLBB1l0Qgy0eytLi16306w5DYDSu/c12SkSVWYFk1Z47Zki
-         oMW7cPOlwCVi8xbQY0yRoWjFvL1KU4wEBWxb3Dsvwf9SkHyBG8YzHXfiaCtOTI2+OCzR
-         NT587vY1jWUHLClnMbr155vD+yESa/0+HUGiam7w+yTT6ntFKHFWARR4HMOj87RbeuXN
-         7t0g==
+        b=L4snp9zRvUc+TJQ69TmBxuE3KzWxs7b0TzpVxzEFaBQ7yJP4R6G84hK12WCdtJ1ceS
+         JEnFjdqS4bJLtgCBrbuoaP+mRSkQcSKmLUYsS6xXBo9yM2fpgA4dqsSFm0scpjBMwBhI
+         Xg0IcrxbLPBGMGFm7BTcBaJ/KD2ptxjSc61Nfkc3mmUEaRdYEJD+Ha58sAelG3cqUsyp
+         5YxE7xdpEKl+TCTS5phk93WqErguh/pJhYidZD4KN9ycDS/U6bpDCaOoTwH73VCPfuMr
+         FFvm9F+lPFk6ycVnm/MncwlULYxe/5hn347ubhWGk4hijL6Cy4+Seswj7lyW5ecQ24H9
+         Vsmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=jE2BT7EGIKvBQJ3ORlP36YhCMobQCHTdfKNvbMTdSpc=;
-        fh=cV0x2MJ9gtIrfnrUMYB6k0QkF3vl+EU6F4WwtejqRuE=;
-        b=CxzEODkIgMamoBYWNV/LCI2c6oZ/Jyynh38eI4rfyhGqX3/g2N2tBlN2V9g34UEp4C
-         g1SUHjGgd2TasdhhRBopEFAuigu0wAiW2zKqte4Qa89UeE6TlNeqHxO91iE6LgjxCCGV
-         NB1MSeJcokYBEeene6w78WEDt+o9BATJvt9ZPhlNLSxarpoKveW17RMP2dLFxcvoicPp
-         zgXr8jGqnojPqqOdaE0vOgspd7IuNFDV36H5JUlXe10R5N+NwiXupkoBu8n6ZSwDfYFG
-         G0utxKTKSQkF4HFIWVC4WXWxOPjb9a7uLUY6KiypKwV3LdvxFtySQYHZm8MQwduazE+w
-         6+ng==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=uuJZ19WtLdxfjQyVMkBdMKCy8aHM7u7Y3NgldeRpHgw=;
+        fh=77M8+hjBmYlyI04dcgsjqRttdtLT84g5XU2fmdEZsQg=;
+        b=aXG27g2+O7U8y6m6aPKzDyR0bnIRpxtHwQ8G5rcRuCsz1xwiSobiFewurdq7fhWsMC
+         7umZ3dUS2n6KspNYm8DJFZP+R4F9ZNpcSg2aP+2e7dSXx4Jkl8AVEUkxIZYKkXsje7EI
+         AD/BW7+yqLLY+ABObrskX0T9ZvXPU8W7F0da83uuOJnjlG/YT0vPAY3m5KAcAf9OevK8
+         dQknv+HWVKbBIKCov6JqqJH7JiUCjwdvBJ2I2hJQiVjctmrALAreadM+YpA7nZb4Xlml
+         RAtkTABr6eLrrrUdX1IBwwt4uYQc7k+5RBw/gr5rvdxBmQFxRK3+MlTyIQAaRdmAlQbi
+         U8pg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g7Ne+WFA;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=YfK8apgz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43193842fedsor38967495e9.0.2024.10.28.23.11.21
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d17986b50esi106347626d6.101.2024.10.29.00.43.38
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 28 Oct 2024 23:11:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 29 Oct 2024 00:43:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g7Ne+WFA;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=YfK8apgz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t5gsU-0003P3-JH; Tue, 29 Oct 2024 03:42:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1t5gsH-0003Np-Rk
+ for qemu-devel@nongnu.org; Tue, 29 Oct 2024 03:42:46 -0400
+Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1t5gsC-0001IF-DZ
+ for qemu-devel@nongnu.org; Tue, 29 Oct 2024 03:42:45 -0400
+Received: by mail-pf1-x429.google.com with SMTP id
+ d2e1a72fcca58-72097a5ca74so226499b3a.3
+ for <qemu-devel@nongnu.org>; Tue, 29 Oct 2024 00:42:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1730182281; x=1730787081; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=jE2BT7EGIKvBQJ3ORlP36YhCMobQCHTdfKNvbMTdSpc=;
-        b=g7Ne+WFA5Mj/NwfWcJfZ+YgdU3ImGLFuGF9dFNzZu1yWUyB2NwR1vDsromrKeaANvF
-         KMIDwpVhweqHypdQln8t/JD3otEvvi3EOiD8DJUnaTfqGL47l0D3aVPks+LaI4chNJcy
-         KGM/kq0Xu21j8TeMi8W0TXEbruBw6029Q32v60bqX885yuB42yicoos/KyoqKCx4F1vN
-         fIzgECsYy3IoM3sqjGeS1G7Ki2z6xVMW7d19IsgLTPl2+IJLGvGnkJ9V/2tbu3ZjeerB
-         J+e952ZZ0grNq2h2YXxmhARcX60eYwCSVMi3FkJ+9Rz04i9zrgx5kVPPmdg0HMIJZd46
-         0WWw==
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1730187758; x=1730792558;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=uuJZ19WtLdxfjQyVMkBdMKCy8aHM7u7Y3NgldeRpHgw=;
+ b=YfK8apgzk+TDWJmuVKLjgTiV2BF6FvUi818W7ZsoEGZHju4l8Lxp8/UJy7Vapt8eaV
+ fwRF92ARcCCmf5DDM0LOuhiu9JgHQsvcy3AiCCTyvuXoyedT5E8mMChzmSqd1iqvQK56
+ SVc3H1qR+ilcVizU0MJuDANLuwGXFDUWjFAcXGL5/hvJcNDNhbv+CMg9tCkwGidGxnMu
+ 8XhSGWEgs3PITqZdnGkm4nu0RtGvrNH1MxxlSlQ02M71SLGlM2jP7Nz6bwEHyDb7gCQA
+ 8+4qMY+voH5xQ6N17dpUrEAodyUSTgLv6HuUsb1DoWVRVju0yFYsdesnGmj5oMOyFh6V
+ wkbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730182281; x=1730787081;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=jE2BT7EGIKvBQJ3ORlP36YhCMobQCHTdfKNvbMTdSpc=;
-        b=NF9FX2ayKIJStpgvv5uiC9UdB9RRiPtKtwWeOhgpKsVip/D5hGk0+SmNItdMzD3JN6
-         6tvgLF62KzU9sEyMDjjbiTijYTYdPxUGvtCBsxZHirYH0C6DX/Nq7MZukXKNJgqFMDOx
-         YNzbh0FhhP+p2Ik3FTmXB/B/m0NojaEqF2l4ZnK0aDlxYvEOppvzQCAzxCpRDBJeGJ4W
-         XES4ea1HFx0ZR2qR9ooG9b+O3PZRl/MtLWxm81VOHH+dZ0xJwhVQeiWhbL1qly2FWIaS
-         VG/Axufkfb4RPrZ2mfu76j0u3zbDbUySAckC1EI9z7KqgxdgL2fxBCTvBIOes+u4tys6
-         YA2w==
-X-Gm-Message-State: AOJu0YyrPNhYlTnebQT07xhKrk+lIyDjsu8SyXHjfxUfBXQcZTe3MDht
-	7LGNRgCQat/gcQbPA42nPX9OVZZvkTNbD7da7GGk40ojc5p7V0v8aMhBE7EA3xZphw==
-X-Google-Smtp-Source: AGHT+IECOb9SHYbyTj00TCPx1nQpVJVfrB/mxIKC34O7m01vTfaIa2d9yxZMNlvFjH71EN91MovWIg==
-X-Received: by 2002:a5d:4c4f:0:b0:37d:446a:4142 with SMTP id ffacd0b85a97d-38061158e44mr7282810f8f.32.1730182280800;
-        Mon, 28 Oct 2024 23:11:20 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.21.227] ([90.197.151.65])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4318b566f11sm161756735e9.20.2024.10.28.23.11.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 28 Oct 2024 23:11:19 -0700 (PDT)
-Message-ID: <be77ed82-f936-4fe6-9fd4-87a0fada176f@linaro.org>
-Date: Mon, 28 Oct 2024 12:28:34 +0000
+ d=1e100.net; s=20230601; t=1730187758; x=1730792558;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=uuJZ19WtLdxfjQyVMkBdMKCy8aHM7u7Y3NgldeRpHgw=;
+ b=ZUDShlMlk7PE+cxEfFtrgWQXEnZdn0GPpCbHq44a9ou7TtugQLr/sy5esgNUbN+m7m
+ LdMCl0qhpk13ztp1SEtBGGbAcg81e7dAPstSr/TdX1gnnK+wfA/QPufkbqFJC5AvXGkL
+ aIgAwLhFW6wZDQXXNDEAAErkvcm8EIeuMTFp2oxGeEu/Nwa4xslc0uxiW4FOlsqKcxqg
+ uubdDW/4dU2fIlKuhipwFbDGkGKs1V7Cv+lWSb6tdGvv55EXr0e3HVB2mVQTGVcCVxZ9
+ srgUZNuI6YRwcu387tv0usmMIs12M0Ts7R8gCPrlNZyd8Q8H+KIh3y2wmcgevFmgPWzo
+ W2cA==
+X-Gm-Message-State: AOJu0YzbVqzcnchJdcILp+cSZYoMZ4H2QU6+rGLJY/8Mi8LWExc9qBJw
+ wMzbrfI2QI2v9SW09YboVT2VKChfoNiXD2ljkP31BuKmq1tgIXz39VInJ9moyck=
+X-Received: by 2002:a05:6a20:9f95:b0:1d9:23ab:470 with SMTP id
+ adf61e73a8af0-1d9a840afd3mr16357467637.29.1730187758025; 
+ Tue, 29 Oct 2024 00:42:38 -0700 (PDT)
+Received: from [157.82.207.107] ([157.82.207.107])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-72057a20241sm6982699b3a.165.2024.10.29.00.42.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 29 Oct 2024 00:42:37 -0700 (PDT)
+Message-ID: <a8b4472c-8741-4f80-87e5-b406c56d1acd@daynix.com>
+Date: Tue, 29 Oct 2024 16:42:30 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 21/21] softfloat: Remove fallback rule from pickNaN()
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Eduardo Habkost <eduardo@habkost.net>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo
- <arikalo@gmail.com>, Stafford Horne <shorne@gmail.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
- qemu-ppc@nongnu.org, qemu-s390x@nongnu.org
-References: <20241025141254.2141506-1-peter.maydell@linaro.org>
- <20241025141254.2141506-22-peter.maydell@linaro.org>
+Subject: Re: [PATCH v4 02/15] hw/display/apple-gfx: Introduce
+ ParavirtualizedGraphics.Framework support
+To: Phil Dennis-Jordan <phil@philjordan.eu>
+Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
+ pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com,
+ marcin.juszkiewicz@linaro.org, stefanha@redhat.com, mst@redhat.com,
+ slp@redhat.com, richard.henderson@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
+ chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
+ philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org,
+ Alexander Graf <graf@amazon.com>
+References: <20241024102813.9855-1-phil@philjordan.eu>
+ <20241024102813.9855-3-phil@philjordan.eu>
+ <9e310d5e-ab73-47b9-b9ed-5a16d4db3fb9@daynix.com>
+ <CAAibmn0NA+K63OvrsBpN1HivndyZo-fgeLwzY8AVE4hPrQR26w@mail.gmail.com>
+ <dd2aae75-348d-44ad-bbd9-5d45aad15bc6@daynix.com>
+ <CAAibmn1z+7yizwH8DogfcCWOWzA8Ox6e=p+Hc1pu-CS4SjAirg@mail.gmail.com>
+ <6a989d04-6416-4bd9-98ac-e1230a1095a9@daynix.com>
+ <CAAibmn3YEOT0O55-bwJkpi_oEGkA1WwvhC0w3jGbgXOZLTVa0w@mail.gmail.com>
+ <CAAibmn3HZeDeK8FrYhHa1GGwc+N8rBuB2VvMRm7LCt0mUGmsYQ@mail.gmail.com>
+ <27ced2db-472d-47ae-9047-9efc0b589a1e@daynix.com>
+ <CAAibmn17=iTaEW0Q_E_n6gsS7vd-d8-w36yee9f2eZ+SR-d-ng@mail.gmail.com>
+ <dbb394d4-f8fe-484d-974c-c84275f7a1c7@daynix.com>
+ <CAAibmn1Th6w6JJcxgD7HA62qo-Lk0yV-Cg4XK9OYEtDvvQbhrg@mail.gmail.com>
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20241025141254.2141506-22-peter.maydell@linaro.org>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <CAAibmn1Th6w6JJcxgD7HA62qo-Lk0yV-Cg4XK9OYEtDvvQbhrg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: hWy3oBYuFG+l
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::429;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x429.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: we7msTEAIaHL
 
-On 10/25/24 15:12, Peter Maydell wrote:
-> Now that all targets have been converted to explicitly set a NaN
-> propagation rule, we can remove the set of target ifdefs (which now
-> list every target) and clean up the references to fallback behaviour
-> for float_2nan_prop_none.
+On 2024/10/29 6:06, Phil Dennis-Jordan wrote:
 > 
-> The "default" case in the switch will catch any remaining places
-> where status->float_2nan_prop_rule was not set by the target.
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   include/fpu/softfloat-types.h  | 10 +++-------
->   fpu/softfloat-specialize.c.inc | 23 +++--------------------
->   2 files changed, 6 insertions(+), 27 deletions(-)
+> On Mon, 28 Oct 2024 at 17:06, Akihiko Odaki <akihiko.odaki@daynix.com 
+> <mailto:akihiko.odaki@daynix.com>> wrote:
+> 
+>     On 2024/10/28 23:13, Phil Dennis-Jordan wrote:
+>      >
+>      >
+>      > On Mon, 28 Oct 2024 at 15:02, Akihiko Odaki
+>     <akihiko.odaki@daynix.com <mailto:akihiko.odaki@daynix.com>
+>      > <mailto:akihiko.odaki@daynix.com
+>     <mailto:akihiko.odaki@daynix.com>>> wrote:
+>      >
+>      >     On 2024/10/28 22:31, Phil Dennis-Jordan wrote:
+>      >      >
+>      >      >
+>      >      > On Mon, 28 Oct 2024 at 10:00, Phil Dennis-Jordan
+>      >     <phil@philjordan.eu <mailto:phil@philjordan.eu>
+>     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>>
+>      >      > <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>
+>     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>>>> wrote:
+>      >      >
+>      >      >
+>      >      >          >      >
+>      >      >          >      > Hmm. I think if we were to use that, we
+>     would
+>      >     need to
+>      >      >         create a new
+>      >      >          >      > QemuEvent for every job and destroy it
+>     afterward,
+>      >      >         which seems
+>      >      >          >     expensive.
+>      >      >          >      > We can't rule out multiple concurrent
+>     jobs being
+>      >      >         submitted, and the
+>      >      >          >      > QemuEvent system only supports a single
+>     producer as
+>      >      >         far as I can
+>      >      >          >     tell.
+>      >      >          >      >
+>      >      >          >      > You can probably sort of hack around it with
+>      >     just one
+>      >      >         QemuEvent by
+>      >      >          >      > putting the qemu_event_wait into a loop
+>     and turning
+>      >      >         the job.done
+>      >      >          >     flag
+>      >      >          >      > into an atomic (because it would now
+>     need to be
+>      >      >         checked outside the
+>      >      >          >      > lock) but this all seems unnecessarily
+>     complicated
+>      >      >         considering the
+>      >      >          >      > QemuEvent uses the same mechanism QemuCond/
+>      >     QemuMutex
+>      >      >         internally
+>      >      >          >     on macOS
+>      >      >          >      > (the only platform relevant here), except we
+>      >     can use it as
+>      >      >          >     intended with
+>      >      >          >      > QemuCond/QemuMutex rather than having to
+>     work
+>      >     against the
+>      >      >          >     abstraction.
+>      >      >          >
+>      >      >          >     I don't think it's going to be used
+>     concurrently. It
+>      >      >         would be difficult
+>      >      >          >     to reason even for the framework if it
+>     performs memory
+>      >      >          >     unmapping/mapping/reading operations
+>     concurrently.
+>      >      >          >
+>      >      >          >
+>      >      >          > I've just performed a very quick test by
+>     wrapping the job
+>      >      >         submission/
+>      >      >          > wait in the 2 mapMemory callbacks and the 1
+>     readMemory
+>      >      >         callback with
+>      >      >          > atomic counters and logging whenever a counter went
+>      >     above 1.
+>      >      >          >
+>      >      >          >   * Overall, concurrent callbacks across all
+>     types were
+>      >      >         common (many per
+>      >      >          > second when the VM is busy). It's not exactly a
+>      >     "thundering
+>      >      >         herd" (I
+>      >      >          > never saw >2) but it's probably not a bad idea
+>     to use
+>      >     a separate
+>      >      >          > condition variable for each job type. (task map,
+>      >     surface map,
+>      >      >         memory read)
+>      >      >          >   * While I did not observe any concurrent
+>     memory mapping
+>      >      >         operations
+>      >      >          > *within* a type of memory map (2 task mappings or 2
+>      >     surface
+>      >      >         mappings) I
+>      >      >          > did see very occasional concurrent memory *read*
+>      >     callbacks.
+>      >      >         These would,
+>      >      >          > as far as I can tell, not be safe with QemuEvents,
+>      >     unless we
+>      >      >         placed the
+>      >      >          > event inside the job struct and init/destroyed
+>     it on every
+>      >      >         callback
+>      >      >          > (which seems like excessive overhead).
+>      >      >
+>      >      >         I think we can tolerate that overhead. init/destroy
+>      >     essentially
+>      >      >         sets the
+>      >      >         fields in the data structure and I estimate its
+>     total size is
+>      >      >         about 100
+>      >      >         bytes. It is probably better than waking an
+>     irrelevant thread
+>      >      >         up. I also
+>      >      >         hope that keeps the code simple; it's not worthwhile
+>      >     adding code to
+>      >      >         optimize this.
+>      >      >
+>      >      >
+>      >      >     At least pthread_cond_{init,destroy} and
+>      >      >     pthread_mutex_{init,destroy} don't make any syscalls,
+>     so yeah
+>      >     it's
+>      >      >     probably an acceptable overhead.
+>      >      >
+>      >      >
+>      >      > I've just experimented with QemuEvents created on-demand
+>     and ran
+>      >     into
+>      >      > some weird deadlocks, which then made me sit down and
+>     think about it
+>      >      > some more. I've come to the conclusion that creating (and
+>     crucially,
+>      >      > destroying) QemuEvents on demand in this way is not safe.
+>      >      >
+>      >      > Specifically, you must not call qemu_event_destroy() - which
+>      >      > transitively destroys the mutex and condition variable -
+>     unless
+>      >     you can
+>      >      > guarantee that the qemu_event_set() call on that event
+>     object has
+>      >     completed.
+>      >      >
+>      >      > In qemu_event_set, the event object's value is atomically
+>     set to
+>      >     EV_SET.
+>      >      > If the previous value was EV_BUSY, qemu_futex_wake() is
+>     called.
+>      >     All of
+>      >      > this is outside any mutex, however, so apart from memory
+>     coherence
+>      >      > (there are barriers) this can race with the waiting thread.
+>      >      > qemu_event_wait() reads the event's value. If EV_FREE, it's
+>      >     atomically
+>      >      > set to EV_BUSY. Then the mutex is locked, the value is checked
+>      >     again,
+>      >      > and if it's still EV_BUSY, it waits for the condition
+>     variable,
+>      >      > otherwise the mutex is immediately unlocked again. If the
+>     trigger
+>      >      > thread's qemu_event_set() flip to EV_SET occurs between
+>     the waiting
+>      >      > thread's two atomic reads of the value, the waiting thread
+>     will
+>      >     never
+>      >      > wait for the condition variable, but the trigger thread
+>     WILL try to
+>      >      > acquire the mutex and signal the condition variable in
+>      >      > qemu_futex_wake(), by which  time the waiting thread may have
+>      >     advanced
+>      >      > outside of qemu_event_wait().
+>      >
+>      >     Sorry if I'm making a mistake again, but the waiting thread won't
+>      >     set to
+>      >     EV_BUSY unless the value is EV_FREE on the second read so the
+>     trigger
+>      >     thread will not call qemu_futex_wake() if it manages to set
+>     to EV_SET
+>      >     before the second read, will it?
+>      >
+>      >
+>      > This sequence of events will cause the problem:
+>      >
+>      > WAITER (in qemu_event_wait):
+>      > value = qatomic_load_acquire(&ev->value);
+>      > -> EV_FREE
+>      >
+>      > TRIGGER (in qemu_event_set):
+>      > qatomic_read(&ev->value) != EV_SET
+>      > -> EV_FREE (condition is false)
+>      >
+>      > WAITER:
+>      > qatomic_cmpxchg(&ev->value, EV_FREE, EV_BUSY) == EV_SET
+>      > -> cmpxchg returns EV_FREE, condition false.
+>      > ev->value =  EV_BUSY.
+>      > > TRIGGER:
+>      >          int old = qatomic_xchg(&ev->value, EV_SET);
+>      >          smp_mb__after_rmw();
+>      >          if (old == EV_BUSY) {
+>      > -> old = EV_BUSY, condition true.
+>      > ev->value = EV_SET
+>      >
+>      > WAITER (in qemu_futex_wait(ev, EV_BUSY)):
+>      >      pthread_mutex_lock(&ev->lock);
+>      >      if (ev->value == val) {
+>      > -> false, because value is EV_SET
+>      >
+>      > WAITER:
+>      >      pthread_mutex_unlock(&ev->lock);
+>      >      …
+>      >      qemu_event_destroy(&job->done_event);
+>      >
+>      > TRIGGER (in qemu_futex_wake(ev, INT_MAX)):
+>      >      pthread_mutex_lock(&ev->lock);
+>      > -> hangs, because mutex has been destroyed
+> 
+>     Thanks for clarification. This is very insightful.
+> 
+> 
+>      >
+>      >      >
+>      >      > This is all fine usually, BUT if you destroy the QemuEvent
+>      >     immediately
+>      >      > after the qemu_event_wait() call, qemu_futex_wake() may try to
+>      >     lock a
+>      >      > mutex that has been destroyed, or signal a condition variable
+>      >     which has
+>      >      > been destroyed. I don't see a reasonable way of making
+>     this safe
+>      >     other
+>      >      > than using long-lived mutexes and condition variables. And
+>      >     anyway, we
+>      >      > have much, MUCH bigger contention/performance issues
+>     coming from
+>      >     almost
+>      >      > everything being covered by the BQL. (If waking these
+>     callbacks
+>      >     can even
+>      >      > be considered an issue: I haven't seen it show up in
+>     profiling,
+>      >     whereas
+>      >      > BQL contention very much does.)
+>      >      >
+>      >      > I'll submit v5 of this patch set with separate condition
+>      >     variables for
+>      >      > each job type. This should make the occurrence of waking
+>     the wrong
+>      >      > thread quite rare, while reasoning about correctness is pretty
+>      >      > straightforward. I think that's good enough.
+> 
+>     What about using QemuSemaphore then? It does not seem to have the
+>     problem same with QemuEvent.
+> 
+> 
+> Nowhere else in the code base uses short-lived semaphores, and while I 
+> can't immediately see a risk (the mutex is held during both post and 
+> wait) there might be some non-obvious problem with the approach. 
+> Internally, the semaphores use condition variables. The solution using 
+> condition variables directly already works, is safe, relatively easy to 
+> reason about, and does not cause any performance issues. There is a tiny 
+> inefficiency about waking up a thread unnecessarily in the rare case 
+> when two callbacks of the same kind occur concurrently. In practice, 
+> it's irrelevant. Thanks to the awkward mismatch of the 
+> PVGraphics.framework's libdispatch based approach and Qemu's BQL/AIO/BH 
+> approach, we are already sending messages to other threads very 
+> frequently. This isn't ideal, but not fixable without drastically 
+> reducing the need to acquire the BQL across Qemu.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I found several usage of ephemeral semaphores:
+h_random() in hw/ppc/spapr_rng.c
+colo_process_checkpoint() in migration/colo.c
+postcopy_thread_create() in migration/postcopy-ram.c
 
-r~
+I'm sure short-lived semaphores will keep working (or break migration in 
+strange ways).
+
+> 
+> I do not think it is worth spending even more time trying to fix this 
+> part of the code which isn't broken in the first place.
+
+I'm sorry to bring you to this mess, which I didn't really expect. I 
+thought combining a shared pair of conditional variable and mutex and 
+job-specific bools is unnecessarily complex, and having one 
+synchronization primitive for each job will be simpler and will just work.
+
+However, there was a pitfall with QemuEvent as you demonstrated and now 
+I grep QemuEvent and QemuSemaphore to find all such ephemeral usage is 
+written with QemuSemaphore instead of QemuEvent. I think the critical 
+problem here is that it is not documented that qemu_event_destroy() 
+cannot be used immediately after qemu_event_wait(). We would not run 
+into this situation if it is written. I will write a patch to add such a 
+documentation comment.

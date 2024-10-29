@@ -1,113 +1,113 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp318362njj;
-        Tue, 29 Oct 2024 08:11:42 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCU+s2j5SbNMBdCUJkZkoc11aYbX9D98z2Ks1rRvAtjx8Vov7DlyEeAPjvmfMphngDvhXYx7tB2TTzTahQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGDhY+IBSFLrAEIDMBLwgjlQ2Cr3D/SIBp6sU1uyX62iJzNJYZFMYh1tQykZElVAeQ+xhUm
-X-Received: by 2002:a05:620a:400a:b0:79f:b3d:bed1 with SMTP id af79cd13be357-7b193f3ddb3mr1657449385a.49.1730214702521;
-        Tue, 29 Oct 2024 08:11:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730214702; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp318459njj;
+        Tue, 29 Oct 2024 08:11:49 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCWmtdmvc5x43XTgF7T6blKd2NcTJy/Jt8f9nvDzqDFvWsVC6H82ZkrB1XrDnUdBrXHvr7lAQlKSrb8PGw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFDgk4KgRjVGKh3aQiLQhMgh5jknG46FemTSv9dREJRd6ZHq7TChq1hTquNPRTpYuzNs9Ug
+X-Received: by 2002:ac8:7f53:0:b0:460:988a:da42 with SMTP id d75a77b69052e-4613bfdeb52mr194499571cf.2.1730214709538;
+        Tue, 29 Oct 2024 08:11:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730214709; cv=none;
         d=google.com; s=arc-20240605;
-        b=jLKox8wUqJfeJ0SiOb74ZF4+yhj18/lbj1z6BofhkD41UgHAibarqszBmQDpS/haAf
-         vqM/GglMaXIRfOQ0STYCLwrE3v0yVvTYKphKKviW0yc62JqKUnf3EPE0/uKY3ZDZwaUK
-         LnqiekUkwPfba/gOFFDmrNNVeOP0t7d+RxKYdcB3ZRIp2a3PzZz0xB31nCSn9y2lTACK
-         EzIVsTDU7tuwNyctpng3y8fufjHZW31ypia7DQN/pzGxPN2BPTeptbAHUaUv6EMwC1VU
-         wRUA+IexX6Yz0oXAaPFGqmFvd0nrXVoXe/bMk6n6B8lwi3HddaB9KC4N0SrkF1j/zGri
-         ThPw==
+        b=EcHHi9e4YpZYzXxJzTh4GfnQ8fiUpLPkBTJR6HIm9UeilDffi6VdCvhMgXlwSS+v1l
+         ODjnt8xshgznJwdWxe68p8NKU8hsTXgr6mlPxstQYiIB6pZNzIsYawFGf2GRt6Zfyo0k
+         fgPXG9asy3VE3sNwX3Pcz7tA5UztRts8C+rZHUPTI12aYHdKUItKOONCCQv935pyC/LO
+         uGt9vNVjZRIyg+r4LIFQoWQNokXD7Gb2YhrPYKBMbPm0uI4gZu21K3I+84ZQqidjV1QH
+         sk+QaTNDNQApRNTqN+Ql4u6VXiiMZ3mJ9Xo6HFXQVlgjtvsHBKx0ooQgPqJhU5XvKUrZ
+         LNNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=QD7klZQEYAvteWerIuPHuaPLuFXzFsaVkFjCQXxT8EE=;
+        bh=zZy//cWTdf5wvz+1/D1caLV6ihJzmgvgWerEXZ8yj5Y=;
         fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=hqB7aJJEaF4gMhkk2a90XvCq46p3MGU8HJ5IejKg/5opy0pqux92C+Aqp7HPpUVZ6F
-         /Mhw+6I1UQHPn4J25P7PrfcUCiEzv9Ts/BtfmkIHUGU3WP4jFI3Sl8A3387uJ3A0rxVf
-         nbXjA4aZKqSf84iFjhY5nIkSrAMicV7xeN/KgpiColtS/CAj6tcWijsruH1HY91VFBNe
-         ZZEs25S1vpIO3Hc7Ol2uZVNyf9vJRiQQYqF1kUrxYpsIYQlh7Dam/M4enGCTV22jIppH
-         z/96DuDiLzfRuEP2+2ICcHVEyjq4k1GaNxz0FK+Jm1BgHl9xEKUFs2m7/Fqxsi1BRSOD
-         DTAA==;
+        b=YbWbix//QVe6h/Y9BnZoRK414TdYiUDCFBeKiUo+THYOVGxRXgrzOMaC4dvMACyUo0
+         TdHUuTCCnowakYphZLtzHpWQmraPtKhMquuxBaVaWLG1E4UvSG+fVw6FrE/vqEaCsXen
+         MgM30dSM3t2MCCVLB4ZtL2zpspMqBmkBgEOflnafEJ/QLmfwb0hpgZHRGz/Yr7t+znEb
+         Zj1sgE3pDSIX7ydxQrDtMkOzwR0zR6lG447+KdORA/t0cm1sPQFeh7rtw6eZXSw1HxWO
+         MeavnJ6Fdy9oVYrZwxlfQF8/d5vz8PfF26boacKFHITIvauWhVfvL/CapxpIonzPS4+d
+         VtRQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gKZ5Pq4a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=syeCpO9f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b18d269fccsi1098975385a.34.2024.10.29.08.11.42
+        by mx.google.com with ESMTPS id d75a77b69052e-461323fd8a2si106434551cf.687.2024.10.29.08.11.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 08:11:42 -0700 (PDT)
+        Tue, 29 Oct 2024 08:11:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gKZ5Pq4a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=syeCpO9f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t5nsI-0000ul-SP; Tue, 29 Oct 2024 11:11:15 -0400
+	id 1t5nsK-00016J-R1; Tue, 29 Oct 2024 11:11:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t5nrz-0000aL-Tn
- for qemu-arm@nongnu.org; Tue, 29 Oct 2024 11:10:56 -0400
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+ id 1t5ns7-0000hb-A7
+ for qemu-arm@nongnu.org; Tue, 29 Oct 2024 11:11:04 -0400
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t5nrw-0007fR-NF
- for qemu-arm@nongnu.org; Tue, 29 Oct 2024 11:10:55 -0400
-Received: by mail-lf1-x136.google.com with SMTP id
- 2adb3069b0e04-539fbbadf83so7227771e87.0
- for <qemu-arm@nongnu.org>; Tue, 29 Oct 2024 08:10:52 -0700 (PDT)
+ id 1t5nrz-0007gO-5i
+ for qemu-arm@nongnu.org; Tue, 29 Oct 2024 11:11:01 -0400
+Received: by mail-lf1-x129.google.com with SMTP id
+ 2adb3069b0e04-539f1292a9bso6577609e87.2
+ for <qemu-arm@nongnu.org>; Tue, 29 Oct 2024 08:10:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730214651; x=1730819451; darn=nongnu.org;
+ d=linaro.org; s=google; t=1730214653; x=1730819453; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=QD7klZQEYAvteWerIuPHuaPLuFXzFsaVkFjCQXxT8EE=;
- b=gKZ5Pq4adhHJdcarha+byvmh1LtU3lepymo7Nr0ty4VlaotXVzq6d9fTndGM+3LkWg
- hP55BTqUS2sGMJKyxTpR1/fYOUMlFi5tKtcGA+ANGeBNR2o/8GvzfRCRupQfw+WxzmCB
- E2/IjXDVjOOl/CDBrAAn3tLJ8CvbcLIeml0NIUwHYVV64oShNJMYAKk36RcPW4fsgJWC
- OOuf7Ia7a+Lz5vkFM/PSBgYo1cZp4WIuPBrkXtHsqNZgpHH6kCzWwV5B+3yvDWyMR8uh
- WrUQLP9Hymbv9cleMdHF7/r7Omn7MKvqKbWqWpaTTpJP5OuQ1Qh0Oq2F/qL/KP/NaaXA
- Pu1g==
+ :reply-to; bh=zZy//cWTdf5wvz+1/D1caLV6ihJzmgvgWerEXZ8yj5Y=;
+ b=syeCpO9f12SiDBryP6+JyBXhy8JEdfzauTmN7AZKRD7XmCaDc9MBd1MjVmQqukLnog
+ NPfBm+GL+eBVVM+UeObEV43du6ASsJQSjrSNLUxEuKy7odtWEKzbRV1pHZlEc53gYlF2
+ MbcA8nDtvH5mulmP9ew/L/J6027VvtOrInF9OHYbqVG5bXBeXHNYwA8hGtthy6YM1DB5
+ BKAAOUg62QXimuJoM0Q7jwI/fe+VFmAVsiT/SQt/sDbPLMPkUt1BCy9turPznNN1m9yD
+ QhWmQfi/1WVSbGeVdRMVkVZweVJZdrgzEW79nrIvUWOewo5Ap5vs0Ha2gp1aczzMV8Lu
+ Vh/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730214651; x=1730819451;
+ d=1e100.net; s=20230601; t=1730214653; x=1730819453;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=QD7klZQEYAvteWerIuPHuaPLuFXzFsaVkFjCQXxT8EE=;
- b=VHAzxouZk8CHQwf0gBrUYiHWq6xO5E0GOJY5Bamp+X/0rmrkhAY55BK9D0DGhNcGxW
- /tvrCNxmlc/TixpNN78ctLF3J6hJAqzzhYZPMq3G8k9QRaFeEpfpd+QERsGIWnTcX1Db
- jme/2JTjWlrlxgKVbOyoRtlgorYnswe+9TFIuztfsLY5N9Tp/gpSjI7rj1wOry41Eh7G
- lCWYH9b9Cnd1rr7xoAibVW62b9CKShO0LpCmwOPkD0L2vWUfHqNZGtsu5k3LhlJjYFhR
- udlpVrvWFJAN0m/dghhlntA7sWT8785iMxKhzx5m3K27aNC79CTbHOKIEzjUa/KWn7NZ
- Ya4Q==
-X-Gm-Message-State: AOJu0YznQw8ym87Hz3BEc16zaP1QLKf+26Cp4/LxFg9x4WYnv46zysuE
- HEkviFdwGKgAmq5TyinJ8VRZzzdfR8uhHl0/e22OkPs4sCtD3w0A2nqCGuAKwPwHg3emGrkJ1TP
- 2
-X-Received: by 2002:a05:6512:2304:b0:53a:aea:a9e1 with SMTP id
- 2adb3069b0e04-53b34a1afd9mr6639430e87.54.1730214650697; 
- Tue, 29 Oct 2024 08:10:50 -0700 (PDT)
+ bh=zZy//cWTdf5wvz+1/D1caLV6ihJzmgvgWerEXZ8yj5Y=;
+ b=wUqqcMfT/amgXIwXqk+1GYhThTeQqnDk4aL9IGkABhK4j5kKmC+7LQA20s1XPzPKTM
+ wn4moKp2Gu+j3uFP580gi3A0hH+6u3jIxksYSSqKwX5zZWKnCNlsGp3vOodpJY/huGbe
+ /EjOPLPVQyAux2o6iQVyqNWMu11FYXfZiRYwF+D+BSweCUCLLzywgTJrstFHt5i4KwMr
+ bbIUPN2C/fv5MD/DLi4TLXj2F5uU+POAOLL1i5dO8dbPUDeDtasOourHC/pCAprkAyK2
+ ruIzgnEglLelVYMuOQ95lrGjCFMNm+R4XYhxazV5O0y0B88ay1ss98dpQ/hMu0KWdOAC
+ B08g==
+X-Gm-Message-State: AOJu0YwxzBs/daxz8EhTb2yNIRSVEQ4riv65QLdS52GRgQr/HLIqFjP6
+ fVnXrINfCUAs6MMphuaokueXgU0tO0PA/8PMdez2JSOVDzEtfJm36KlS8pARLNTSMHVgFHVrgHb
+ 1
+X-Received: by 2002:a05:6512:15a9:b0:539:ecef:376d with SMTP id
+ 2adb3069b0e04-53b34a33d05mr5926085e87.54.1730214653099; 
+ Tue, 29 Oct 2024 08:10:53 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4319360cc2esm146835865e9.44.2024.10.29.08.10.50
+ 5b1f17b1804b1-4319360cc2esm146835865e9.44.2024.10.29.08.10.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Oct 2024 08:10:50 -0700 (PDT)
+ Tue, 29 Oct 2024 08:10:52 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PULL 02/18] docs/system/cpu-hotplug: Update example's
- socket-id/core-id
-Date: Tue, 29 Oct 2024 15:10:32 +0000
-Message-Id: <20241029151048.1047247-3-peter.maydell@linaro.org>
+Subject: [PULL 06/18] tests/functional: Add a functional test for the collie
+ board
+Date: Tue, 29 Oct 2024 15:10:36 +0000
+Message-Id: <20241029151048.1047247-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241029151048.1047247-1-peter.maydell@linaro.org>
 References: <20241029151048.1047247-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x136.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,149 +129,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P+1hrz5aemm3
+X-TUID: TsiOUgXo+hex
 
-The example of how to do vCPU hotplug and hot-unlpug in the
-cpu-hotplug documentation no longer works, because the way we
-allocate socket-id and core-id to CPUs by default has changed at some
-point.  The output also no longer matches what current QEMU produces
-in some more cosmetic ways.
+Add a functional test for the collie board that uses the kernel and
+rootfs provided by Guenter Roeck in the linux-test-downloads repo:
+ https://github.com/groeck/linux-test-downloads/
 
-Update the example to match current QEMU. The differences are:
- * the second CPU is now socket-id=0 core-id=1,
-   not socket-id=1 core-id=0
- * the order of fields in QMP responses is now in alphabetical order
- * the "arch" member is no longer present in the query-cpus-fast
-   output (it was removed in QEMU 6.0)
+This just boots Linux with a userspace that immediately reboots
+the board, so we wait for the reboot log line.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Acked-by: Igor Mammedov <imammedo@redhat.com>
-Message-id: 20241010131800.3210161-1-peter.maydell@linaro.org
-Message-id: 20240819144303.37852-1-peter.maydell@linaro.org
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-id: 20241017163247.711244-2-peter.maydell@linaro.org
 ---
- docs/system/cpu-hotplug.rst | 56 ++++++++++++++++++-------------------
- 1 file changed, 27 insertions(+), 29 deletions(-)
+ MAINTAINERS                         |  1 +
+ tests/functional/meson.build        |  1 +
+ tests/functional/test_arm_collie.py | 31 +++++++++++++++++++++++++++++
+ 3 files changed, 33 insertions(+)
+ create mode 100755 tests/functional/test_arm_collie.py
 
-diff --git a/docs/system/cpu-hotplug.rst b/docs/system/cpu-hotplug.rst
-index 015ce2b6ec3..cc50937c36c 100644
---- a/docs/system/cpu-hotplug.rst
-+++ b/docs/system/cpu-hotplug.rst
-@@ -33,23 +33,23 @@ vCPU hotplug
-       {
-           "return": [
-               {
--                  "type": "IvyBridge-IBRS-x86_64-cpu",
--                  "vcpus-count": 1,
-                   "props": {
--                      "socket-id": 1,
--                      "core-id": 0,
-+                      "core-id": 1,
-+                      "socket-id": 0,
-                       "thread-id": 0
--                  }
-+                  },
-+                  "type": "IvyBridge-IBRS-x86_64-cpu",
-+                  "vcpus-count": 1
-               },
-               {
-+                  "props": {
-+                      "core-id": 0,
-+                      "socket-id": 0,
-+                      "thread-id": 0
-+                  },
-                   "qom-path": "/machine/unattached/device[0]",
-                   "type": "IvyBridge-IBRS-x86_64-cpu",
--                  "vcpus-count": 1,
--                  "props": {
--                      "socket-id": 0,
--                      "core-id": 0,
--                      "thread-id": 0
--                  }
-+                  "vcpus-count": 1
-               }
-           ]
-       }
-@@ -58,18 +58,18 @@ vCPU hotplug
- (4) The ``query-hotpluggable-cpus`` command returns an object for CPUs
-     that are present (containing a "qom-path" member) or which may be
-     hot-plugged (no "qom-path" member).  From its output in step (3), we
--    can see that ``IvyBridge-IBRS-x86_64-cpu`` is present in socket 0,
--    while hot-plugging a CPU into socket 1 requires passing the listed
-+    can see that ``IvyBridge-IBRS-x86_64-cpu`` is present in socket 0 core 0,
-+    while hot-plugging a CPU into socket 0 core 1 requires passing the listed
-     properties to QMP ``device_add``::
+diff --git a/MAINTAINERS b/MAINTAINERS
+index f48d9142b8a..6b1fa225d6e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -929,6 +929,7 @@ F: hw/arm/strongarm*
+ F: hw/gpio/zaurus.c
+ F: include/hw/arm/sharpsl.h
+ F: docs/system/arm/collie.rst
++F: tests/functional/test_arm_collie.py
  
--      (QEMU) device_add id=cpu-2 driver=IvyBridge-IBRS-x86_64-cpu socket-id=1 core-id=0 thread-id=0
-+      (QEMU) device_add id=cpu-2 driver=IvyBridge-IBRS-x86_64-cpu socket-id=0 core-id=1 thread-id=0
-       {
-           "execute": "device_add",
-           "arguments": {
--              "socket-id": 1,
-+              "core-id": 1,
-               "driver": "IvyBridge-IBRS-x86_64-cpu",
-               "id": "cpu-2",
--              "core-id": 0,
-+              "socket-id": 0,
-               "thread-id": 0
-           }
-       }
-@@ -83,34 +83,32 @@ vCPU hotplug
- 
-       (QEMU) query-cpus-fast
-       {
--          "execute": "query-cpus-fast",
-           "arguments": {}
-+          "execute": "query-cpus-fast",
-       }
-       {
-           "return": [
-               {
--                  "qom-path": "/machine/unattached/device[0]",
--                  "target": "x86_64",
--                  "thread-id": 11534,
-                   "cpu-index": 0,
-                   "props": {
--                      "socket-id": 0,
-                       "core-id": 0,
-+                      "socket-id": 0,
-                       "thread-id": 0
-                   },
--                  "arch": "x86"
-+                  "qom-path": "/machine/unattached/device[0]",
-+                  "target": "x86_64",
-+                  "thread-id": 28957
-               },
-               {
--                  "qom-path": "/machine/peripheral/cpu-2",
--                  "target": "x86_64",
--                  "thread-id": 12106,
-                   "cpu-index": 1,
-                   "props": {
--                      "socket-id": 1,
--                      "core-id": 0,
-+                      "core-id": 1,
-+                      "socket-id": 0,
-                       "thread-id": 0
-                   },
--                  "arch": "x86"
-+                  "qom-path": "/machine/peripheral/cpu-2",
-+                  "target": "x86_64",
-+                  "thread-id": 29095
-               }
-           ]
-       }
-@@ -123,10 +121,10 @@ From the 'qmp-shell', invoke the QMP ``device_del`` command::
- 
-       (QEMU) device_del id=cpu-2
-       {
--          "execute": "device_del",
-           "arguments": {
-               "id": "cpu-2"
-           }
-+          "execute": "device_del",
-       }
-       {
-           "return": {}
+ Stellaris
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 97c1c597e86..9538e103d6e 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -54,6 +54,7 @@ tests_alpha_system_thorough = [
+ tests_arm_system_thorough = [
+   'arm_aspeed',
+   'arm_canona1100',
++  'arm_collie',
+   'arm_integratorcp',
+   'arm_raspi2',
+   'arm_vexpress',
+diff --git a/tests/functional/test_arm_collie.py b/tests/functional/test_arm_collie.py
+new file mode 100755
+index 00000000000..7e144a0a8fb
+--- /dev/null
++++ b/tests/functional/test_arm_collie.py
+@@ -0,0 +1,31 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel on a collie machine
++# and checks the console
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import LinuxKernelTest, Asset
++from qemu_test.utils import archive_extract
++
++class CollieTest(LinuxKernelTest):
++
++    ASSET_ZIMAGE = Asset(
++        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/collie/zImage',
++        '10ace8abf9e0875ef8a83b8829cc3b5b50bc6d7bc3ca29f19f49f5673a43c13b')
++
++    ASSET_ROOTFS = Asset(
++        'https://github.com/groeck/linux-test-downloads/raw/225223f2ad7d637b34426810bf6c3b727b76a718/collie/rootfs-sa110.cpio',
++        '89ccaaa5c6b33331887047e1618ffe81b0f55909173944347d5d2426f3bcc1f2')
++
++    def test_arm_collie(self):
++        self.set_machine('collie')
++        zimage_path = self.ASSET_ZIMAGE.fetch()
++        rootfs_path = self.ASSET_ROOTFS.fetch()
++        self.vm.add_args('-append', 'rdinit=/sbin/init console=ttySA1')
++        self.launch_kernel(zimage_path,
++                           initrd=rootfs_path,
++                           wait_for='reboot: Restarting system')
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
 2.34.1
 

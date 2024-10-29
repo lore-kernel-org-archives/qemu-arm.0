@@ -1,456 +1,166 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp68112njj;
-        Tue, 29 Oct 2024 00:43:38 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWeyoEGExL9NKUqrseAq8dwH34f0VuPP9hwYdp856/Yzj8edDCF5LxzTw88g/3G3UwQx4pMaDZ2ec5oXQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEFo0zgZR4BCp/l/jiD+g6sPOXvg8HYkDlGbtaKJ3GdflfNRosDsn+4cN/AWfoWF0ErQpQ/
-X-Received: by 2002:a05:6214:5d03:b0:6cb:f1cb:a16d with SMTP id 6a1803df08f44-6d18568dee9mr136918036d6.9.1730187818391;
-        Tue, 29 Oct 2024 00:43:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730187818; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp106343njj;
+        Tue, 29 Oct 2024 02:18:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVi/DJDv+aebTO5vY/oX0u6dJ/8tNf0C6KUMDCd+eRjheIbdigGHkvvFLheGvGjp26twmxi3xLU+/g+hA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE2wODH3Cr0jJOubNhYJo+R/+5OXhMurjfnMz0KJ2xArr9TfHMtYs98918qWNigjNv9qj4h
+X-Received: by 2002:a05:620a:408b:b0:7af:cb6b:b4fb with SMTP id af79cd13be357-7b193f359femr1752487885a.52.1730193493594;
+        Tue, 29 Oct 2024 02:18:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730193493; cv=none;
         d=google.com; s=arc-20240605;
-        b=L4snp9zRvUc+TJQ69TmBxuE3KzWxs7b0TzpVxzEFaBQ7yJP4R6G84hK12WCdtJ1ceS
-         JEnFjdqS4bJLtgCBrbuoaP+mRSkQcSKmLUYsS6xXBo9yM2fpgA4dqsSFm0scpjBMwBhI
-         Xg0IcrxbLPBGMGFm7BTcBaJ/KD2ptxjSc61Nfkc3mmUEaRdYEJD+Ha58sAelG3cqUsyp
-         5YxE7xdpEKl+TCTS5phk93WqErguh/pJhYidZD4KN9ycDS/U6bpDCaOoTwH73VCPfuMr
-         FFvm9F+lPFk6ycVnm/MncwlULYxe/5hn347ubhWGk4hijL6Cy4+Seswj7lyW5ecQ24H9
-         Vsmw==
+        b=P9ZFqMmCLndGm2WdbKoIprGtgFaoi/DTwCwd+wncCmoUsu2XPFVpmaYpeTYf1vKIMi
+         x2LxI4ZAD7TQYx/ULkAtZlBqPwdfSQ/DED2GpelMQ+yLoFUoeVUi2rXc0ZMDmrDHkV/6
+         9k1Y/hA4RlEpVLNZl9s3z4fCRZ3OI14kUS+V6fzwtlUYVTT78M2xuelQHxrPiMLaKCLi
+         stoVVNI5Xd30bQEGHPsOVXB+Y2cUCaU1jpSicoChTNgj3fPEKi54MUAW8bd3JRt3o8fm
+         NXjhix83HxglEK97Chcad4rCa8zT/IBKB43kFkn1TP/8k93JHFSNbMqccp5pE1Gwx/4X
+         fgIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=uuJZ19WtLdxfjQyVMkBdMKCy8aHM7u7Y3NgldeRpHgw=;
-        fh=77M8+hjBmYlyI04dcgsjqRttdtLT84g5XU2fmdEZsQg=;
-        b=aXG27g2+O7U8y6m6aPKzDyR0bnIRpxtHwQ8G5rcRuCsz1xwiSobiFewurdq7fhWsMC
-         7umZ3dUS2n6KspNYm8DJFZP+R4F9ZNpcSg2aP+2e7dSXx4Jkl8AVEUkxIZYKkXsje7EI
-         AD/BW7+yqLLY+ABObrskX0T9ZvXPU8W7F0da83uuOJnjlG/YT0vPAY3m5KAcAf9OevK8
-         dQknv+HWVKbBIKCov6JqqJH7JiUCjwdvBJ2I2hJQiVjctmrALAreadM+YpA7nZb4Xlml
-         RAtkTABr6eLrrrUdX1IBwwt4uYQc7k+5RBw/gr5rvdxBmQFxRK3+MlTyIQAaRdmAlQbi
-         U8pg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=7M3jkkJV5t7WdcYTAhIPytPWTzFHwNKoz/pNBmkAt24=;
+        fh=4rHsaFhVkVMXk5u1IVZO4usPBujjRbqK1KMv0eZ+6CI=;
+        b=flmv4N8BFSApFSleyI34ARJTLb3QLuOAwNvCusoYEhFGbn4xC5qOTamytBAOAIs7JZ
+         QV3v6s6pVKiUF1YNZml/SXrWxn1QNFvCfn4vMYyc18o5EYovlmVzUMBEV/GbWEy28Qna
+         2rrJwYxt57l4PEhF7KRw/wyTD/kB8SZpF7M2ClAiJveHm70pbpjWfa78Xkc97sFnmRx5
+         hYCrqtL2dGWOWv4cAA3BH3YuYqGsSPQqpwd7aL1DDSnzvYw4CPQ45puEhcWZnk7aw4di
+         J0Rq5zGoWpIGglC2xEPWbvJed35PdII1A9fDDhjR/GShWx3oaT/4HEmXlH3owQT6wrRQ
+         36pQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=YfK8apgz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d17986b50esi106347626d6.101.2024.10.29.00.43.38
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d37f4e1si1042572185a.713.2024.10.29.02.18.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 00:43:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Oct 2024 02:18:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=YfK8apgz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t5gsU-0003P3-JH; Tue, 29 Oct 2024 03:42:59 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t5iME-0000Xg-Qi; Tue, 29 Oct 2024 05:17:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1t5gsH-0003Np-Rk
- for qemu-devel@nongnu.org; Tue, 29 Oct 2024 03:42:46 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1t5gsC-0001IF-DZ
- for qemu-devel@nongnu.org; Tue, 29 Oct 2024 03:42:45 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-72097a5ca74so226499b3a.3
- for <qemu-devel@nongnu.org>; Tue, 29 Oct 2024 00:42:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1730187758; x=1730792558;
- darn=nongnu.org; 
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=uuJZ19WtLdxfjQyVMkBdMKCy8aHM7u7Y3NgldeRpHgw=;
- b=YfK8apgzk+TDWJmuVKLjgTiV2BF6FvUi818W7ZsoEGZHju4l8Lxp8/UJy7Vapt8eaV
- fwRF92ARcCCmf5DDM0LOuhiu9JgHQsvcy3AiCCTyvuXoyedT5E8mMChzmSqd1iqvQK56
- SVc3H1qR+ilcVizU0MJuDANLuwGXFDUWjFAcXGL5/hvJcNDNhbv+CMg9tCkwGidGxnMu
- 8XhSGWEgs3PITqZdnGkm4nu0RtGvrNH1MxxlSlQ02M71SLGlM2jP7Nz6bwEHyDb7gCQA
- 8+4qMY+voH5xQ6N17dpUrEAodyUSTgLv6HuUsb1DoWVRVju0yFYsdesnGmj5oMOyFh6V
- wkbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730187758; x=1730792558;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=uuJZ19WtLdxfjQyVMkBdMKCy8aHM7u7Y3NgldeRpHgw=;
- b=ZUDShlMlk7PE+cxEfFtrgWQXEnZdn0GPpCbHq44a9ou7TtugQLr/sy5esgNUbN+m7m
- LdMCl0qhpk13ztp1SEtBGGbAcg81e7dAPstSr/TdX1gnnK+wfA/QPufkbqFJC5AvXGkL
- aIgAwLhFW6wZDQXXNDEAAErkvcm8EIeuMTFp2oxGeEu/Nwa4xslc0uxiW4FOlsqKcxqg
- uubdDW/4dU2fIlKuhipwFbDGkGKs1V7Cv+lWSb6tdGvv55EXr0e3HVB2mVQTGVcCVxZ9
- srgUZNuI6YRwcu387tv0usmMIs12M0Ts7R8gCPrlNZyd8Q8H+KIh3y2wmcgevFmgPWzo
- W2cA==
-X-Gm-Message-State: AOJu0YzbVqzcnchJdcILp+cSZYoMZ4H2QU6+rGLJY/8Mi8LWExc9qBJw
- wMzbrfI2QI2v9SW09YboVT2VKChfoNiXD2ljkP31BuKmq1tgIXz39VInJ9moyck=
-X-Received: by 2002:a05:6a20:9f95:b0:1d9:23ab:470 with SMTP id
- adf61e73a8af0-1d9a840afd3mr16357467637.29.1730187758025; 
- Tue, 29 Oct 2024 00:42:38 -0700 (PDT)
-Received: from [157.82.207.107] ([157.82.207.107])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-72057a20241sm6982699b3a.165.2024.10.29.00.42.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Oct 2024 00:42:37 -0700 (PDT)
-Message-ID: <a8b4472c-8741-4f80-87e5-b406c56d1acd@daynix.com>
-Date: Tue, 29 Oct 2024 16:42:30 +0900
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1t5iMD-0000X6-Ne; Tue, 29 Oct 2024 05:17:45 -0400
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1t5iMC-0003A3-6D; Tue, 29 Oct 2024 05:17:45 -0400
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 29 Oct
+ 2024 17:17:30 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Tue, 29 Oct 2024 17:17:30 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Bin Meng <bmeng.cn@gmail.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v1 2/8] hw/timer/aspeed: Fix coding style
+Date: Tue, 29 Oct 2024 17:17:23 +0800
+Message-ID: <20241029091729.3317512-3-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
+References: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 02/15] hw/display/apple-gfx: Introduce
- ParavirtualizedGraphics.Framework support
-To: Phil Dennis-Jordan <phil@philjordan.eu>
-Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
- pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com,
- marcin.juszkiewicz@linaro.org, stefanha@redhat.com, mst@redhat.com,
- slp@redhat.com, richard.henderson@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
- philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
- marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- Alexander Graf <graf@amazon.com>
-References: <20241024102813.9855-1-phil@philjordan.eu>
- <20241024102813.9855-3-phil@philjordan.eu>
- <9e310d5e-ab73-47b9-b9ed-5a16d4db3fb9@daynix.com>
- <CAAibmn0NA+K63OvrsBpN1HivndyZo-fgeLwzY8AVE4hPrQR26w@mail.gmail.com>
- <dd2aae75-348d-44ad-bbd9-5d45aad15bc6@daynix.com>
- <CAAibmn1z+7yizwH8DogfcCWOWzA8Ox6e=p+Hc1pu-CS4SjAirg@mail.gmail.com>
- <6a989d04-6416-4bd9-98ac-e1230a1095a9@daynix.com>
- <CAAibmn3YEOT0O55-bwJkpi_oEGkA1WwvhC0w3jGbgXOZLTVa0w@mail.gmail.com>
- <CAAibmn3HZeDeK8FrYhHa1GGwc+N8rBuB2VvMRm7LCt0mUGmsYQ@mail.gmail.com>
- <27ced2db-472d-47ae-9047-9efc0b589a1e@daynix.com>
- <CAAibmn17=iTaEW0Q_E_n6gsS7vd-d8-w36yee9f2eZ+SR-d-ng@mail.gmail.com>
- <dbb394d4-f8fe-484d-974c-c84275f7a1c7@daynix.com>
- <CAAibmn1Th6w6JJcxgD7HA62qo-Lk0yV-Cg4XK9OYEtDvvQbhrg@mail.gmail.com>
-Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <CAAibmn1Th6w6JJcxgD7HA62qo-Lk0yV-Cg4XK9OYEtDvvQbhrg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::429;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x429.google.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: we7msTEAIaHL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PcU299UKY2kT
 
-On 2024/10/29 6:06, Phil Dennis-Jordan wrote:
-> 
-> 
-> On Mon, 28 Oct 2024 at 17:06, Akihiko Odaki <akihiko.odaki@daynix.com 
-> <mailto:akihiko.odaki@daynix.com>> wrote:
-> 
->     On 2024/10/28 23:13, Phil Dennis-Jordan wrote:
->      >
->      >
->      > On Mon, 28 Oct 2024 at 15:02, Akihiko Odaki
->     <akihiko.odaki@daynix.com <mailto:akihiko.odaki@daynix.com>
->      > <mailto:akihiko.odaki@daynix.com
->     <mailto:akihiko.odaki@daynix.com>>> wrote:
->      >
->      >     On 2024/10/28 22:31, Phil Dennis-Jordan wrote:
->      >      >
->      >      >
->      >      > On Mon, 28 Oct 2024 at 10:00, Phil Dennis-Jordan
->      >     <phil@philjordan.eu <mailto:phil@philjordan.eu>
->     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>>
->      >      > <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>
->     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>>>> wrote:
->      >      >
->      >      >
->      >      >          >      >
->      >      >          >      > Hmm. I think if we were to use that, we
->     would
->      >     need to
->      >      >         create a new
->      >      >          >      > QemuEvent for every job and destroy it
->     afterward,
->      >      >         which seems
->      >      >          >     expensive.
->      >      >          >      > We can't rule out multiple concurrent
->     jobs being
->      >      >         submitted, and the
->      >      >          >      > QemuEvent system only supports a single
->     producer as
->      >      >         far as I can
->      >      >          >     tell.
->      >      >          >      >
->      >      >          >      > You can probably sort of hack around it with
->      >     just one
->      >      >         QemuEvent by
->      >      >          >      > putting the qemu_event_wait into a loop
->     and turning
->      >      >         the job.done
->      >      >          >     flag
->      >      >          >      > into an atomic (because it would now
->     need to be
->      >      >         checked outside the
->      >      >          >      > lock) but this all seems unnecessarily
->     complicated
->      >      >         considering the
->      >      >          >      > QemuEvent uses the same mechanism QemuCond/
->      >     QemuMutex
->      >      >         internally
->      >      >          >     on macOS
->      >      >          >      > (the only platform relevant here), except we
->      >     can use it as
->      >      >          >     intended with
->      >      >          >      > QemuCond/QemuMutex rather than having to
->     work
->      >     against the
->      >      >          >     abstraction.
->      >      >          >
->      >      >          >     I don't think it's going to be used
->     concurrently. It
->      >      >         would be difficult
->      >      >          >     to reason even for the framework if it
->     performs memory
->      >      >          >     unmapping/mapping/reading operations
->     concurrently.
->      >      >          >
->      >      >          >
->      >      >          > I've just performed a very quick test by
->     wrapping the job
->      >      >         submission/
->      >      >          > wait in the 2 mapMemory callbacks and the 1
->     readMemory
->      >      >         callback with
->      >      >          > atomic counters and logging whenever a counter went
->      >     above 1.
->      >      >          >
->      >      >          >   * Overall, concurrent callbacks across all
->     types were
->      >      >         common (many per
->      >      >          > second when the VM is busy). It's not exactly a
->      >     "thundering
->      >      >         herd" (I
->      >      >          > never saw >2) but it's probably not a bad idea
->     to use
->      >     a separate
->      >      >          > condition variable for each job type. (task map,
->      >     surface map,
->      >      >         memory read)
->      >      >          >   * While I did not observe any concurrent
->     memory mapping
->      >      >         operations
->      >      >          > *within* a type of memory map (2 task mappings or 2
->      >     surface
->      >      >         mappings) I
->      >      >          > did see very occasional concurrent memory *read*
->      >     callbacks.
->      >      >         These would,
->      >      >          > as far as I can tell, not be safe with QemuEvents,
->      >     unless we
->      >      >         placed the
->      >      >          > event inside the job struct and init/destroyed
->     it on every
->      >      >         callback
->      >      >          > (which seems like excessive overhead).
->      >      >
->      >      >         I think we can tolerate that overhead. init/destroy
->      >     essentially
->      >      >         sets the
->      >      >         fields in the data structure and I estimate its
->     total size is
->      >      >         about 100
->      >      >         bytes. It is probably better than waking an
->     irrelevant thread
->      >      >         up. I also
->      >      >         hope that keeps the code simple; it's not worthwhile
->      >     adding code to
->      >      >         optimize this.
->      >      >
->      >      >
->      >      >     At least pthread_cond_{init,destroy} and
->      >      >     pthread_mutex_{init,destroy} don't make any syscalls,
->     so yeah
->      >     it's
->      >      >     probably an acceptable overhead.
->      >      >
->      >      >
->      >      > I've just experimented with QemuEvents created on-demand
->     and ran
->      >     into
->      >      > some weird deadlocks, which then made me sit down and
->     think about it
->      >      > some more. I've come to the conclusion that creating (and
->     crucially,
->      >      > destroying) QemuEvents on demand in this way is not safe.
->      >      >
->      >      > Specifically, you must not call qemu_event_destroy() - which
->      >      > transitively destroys the mutex and condition variable -
->     unless
->      >     you can
->      >      > guarantee that the qemu_event_set() call on that event
->     object has
->      >     completed.
->      >      >
->      >      > In qemu_event_set, the event object's value is atomically
->     set to
->      >     EV_SET.
->      >      > If the previous value was EV_BUSY, qemu_futex_wake() is
->     called.
->      >     All of
->      >      > this is outside any mutex, however, so apart from memory
->     coherence
->      >      > (there are barriers) this can race with the waiting thread.
->      >      > qemu_event_wait() reads the event's value. If EV_FREE, it's
->      >     atomically
->      >      > set to EV_BUSY. Then the mutex is locked, the value is checked
->      >     again,
->      >      > and if it's still EV_BUSY, it waits for the condition
->     variable,
->      >      > otherwise the mutex is immediately unlocked again. If the
->     trigger
->      >      > thread's qemu_event_set() flip to EV_SET occurs between
->     the waiting
->      >      > thread's two atomic reads of the value, the waiting thread
->     will
->      >     never
->      >      > wait for the condition variable, but the trigger thread
->     WILL try to
->      >      > acquire the mutex and signal the condition variable in
->      >      > qemu_futex_wake(), by which  time the waiting thread may have
->      >     advanced
->      >      > outside of qemu_event_wait().
->      >
->      >     Sorry if I'm making a mistake again, but the waiting thread won't
->      >     set to
->      >     EV_BUSY unless the value is EV_FREE on the second read so the
->     trigger
->      >     thread will not call qemu_futex_wake() if it manages to set
->     to EV_SET
->      >     before the second read, will it?
->      >
->      >
->      > This sequence of events will cause the problem:
->      >
->      > WAITER (in qemu_event_wait):
->      > value = qatomic_load_acquire(&ev->value);
->      > -> EV_FREE
->      >
->      > TRIGGER (in qemu_event_set):
->      > qatomic_read(&ev->value) != EV_SET
->      > -> EV_FREE (condition is false)
->      >
->      > WAITER:
->      > qatomic_cmpxchg(&ev->value, EV_FREE, EV_BUSY) == EV_SET
->      > -> cmpxchg returns EV_FREE, condition false.
->      > ev->value =  EV_BUSY.
->      > > TRIGGER:
->      >          int old = qatomic_xchg(&ev->value, EV_SET);
->      >          smp_mb__after_rmw();
->      >          if (old == EV_BUSY) {
->      > -> old = EV_BUSY, condition true.
->      > ev->value = EV_SET
->      >
->      > WAITER (in qemu_futex_wait(ev, EV_BUSY)):
->      >      pthread_mutex_lock(&ev->lock);
->      >      if (ev->value == val) {
->      > -> false, because value is EV_SET
->      >
->      > WAITER:
->      >      pthread_mutex_unlock(&ev->lock);
->      >      …
->      >      qemu_event_destroy(&job->done_event);
->      >
->      > TRIGGER (in qemu_futex_wake(ev, INT_MAX)):
->      >      pthread_mutex_lock(&ev->lock);
->      > -> hangs, because mutex has been destroyed
-> 
->     Thanks for clarification. This is very insightful.
-> 
-> 
->      >
->      >      >
->      >      > This is all fine usually, BUT if you destroy the QemuEvent
->      >     immediately
->      >      > after the qemu_event_wait() call, qemu_futex_wake() may try to
->      >     lock a
->      >      > mutex that has been destroyed, or signal a condition variable
->      >     which has
->      >      > been destroyed. I don't see a reasonable way of making
->     this safe
->      >     other
->      >      > than using long-lived mutexes and condition variables. And
->      >     anyway, we
->      >      > have much, MUCH bigger contention/performance issues
->     coming from
->      >     almost
->      >      > everything being covered by the BQL. (If waking these
->     callbacks
->      >     can even
->      >      > be considered an issue: I haven't seen it show up in
->     profiling,
->      >     whereas
->      >      > BQL contention very much does.)
->      >      >
->      >      > I'll submit v5 of this patch set with separate condition
->      >     variables for
->      >      > each job type. This should make the occurrence of waking
->     the wrong
->      >      > thread quite rare, while reasoning about correctness is pretty
->      >      > straightforward. I think that's good enough.
-> 
->     What about using QemuSemaphore then? It does not seem to have the
->     problem same with QemuEvent.
-> 
-> 
-> Nowhere else in the code base uses short-lived semaphores, and while I 
-> can't immediately see a risk (the mutex is held during both post and 
-> wait) there might be some non-obvious problem with the approach. 
-> Internally, the semaphores use condition variables. The solution using 
-> condition variables directly already works, is safe, relatively easy to 
-> reason about, and does not cause any performance issues. There is a tiny 
-> inefficiency about waking up a thread unnecessarily in the rare case 
-> when two callbacks of the same kind occur concurrently. In practice, 
-> it's irrelevant. Thanks to the awkward mismatch of the 
-> PVGraphics.framework's libdispatch based approach and Qemu's BQL/AIO/BH 
-> approach, we are already sending messages to other threads very 
-> frequently. This isn't ideal, but not fixable without drastically 
-> reducing the need to acquire the BQL across Qemu.
+Fix coding style issues from checkpatch.pl
 
-I found several usage of ephemeral semaphores:
-h_random() in hw/ppc/spapr_rng.c
-colo_process_checkpoint() in migration/colo.c
-postcopy_thread_create() in migration/postcopy-ram.c
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+---
+ hw/timer/aspeed_timer.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-I'm sure short-lived semaphores will keep working (or break migration in 
-strange ways).
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index b1f860ecfb..5af268ea9e 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -276,7 +276,8 @@ static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
+         old_reload = t->reload;
+         t->reload = calculate_min_ticks(t, value);
+ 
+-        /* If the reload value was not previously set, or zero, and
++        /*
++         * If the reload value was not previously set, or zero, and
+          * the current value is valid, try to start the timer if it is
+          * enabled.
+          */
+@@ -312,7 +313,8 @@ static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
+     }
+ }
+ 
+-/* Control register operations are broken out into helpers that can be
++/*
++ * Control register operations are broken out into helpers that can be
+  * explicitly called on aspeed_timer_reset(), but also from
+  * aspeed_timer_ctrl_op().
+  */
+@@ -396,7 +398,8 @@ static void aspeed_timer_set_ctrl(AspeedTimerCtrlState *s, uint32_t reg)
+     AspeedTimer *t;
+     const uint8_t enable_mask = BIT(op_enable);
+ 
+-    /* Handle a dependency between the 'enable' and remaining three
++    /*
++     * Handle a dependency between the 'enable' and remaining three
+      * configuration bits - i.e. if more than one bit in the control set has
+      * changed, including the 'enable' bit, then we want either disable the
+      * timer and perform configuration, or perform configuration and then
+@@ -582,7 +585,6 @@ static void aspeed_2600_timer_write(AspeedTimerCtrlState *s, hwaddr offset,
+     case 0x3C:
+         aspeed_timer_set_ctrl(s, s->ctrl & ~tv);
+         break;
+-
+     case 0x38:
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\n",
+@@ -623,7 +625,8 @@ static void aspeed_timer_reset(DeviceState *dev)
+ 
+     for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
+         AspeedTimer *t = &s->timers[i];
+-        /* Explicitly call helpers to avoid any conditional behaviour through
++        /*
++         * Explicitly call helpers to avoid any conditional behaviour through
+          * aspeed_timer_set_ctrl().
+          */
+         aspeed_timer_ctrl_enable(t, false);
+-- 
+2.34.1
 
-> 
-> I do not think it is worth spending even more time trying to fix this 
-> part of the code which isn't broken in the first place.
-
-I'm sorry to bring you to this mess, which I didn't really expect. I 
-thought combining a shared pair of conditional variable and mutex and 
-job-specific bools is unnecessarily complex, and having one 
-synchronization primitive for each job will be simpler and will just work.
-
-However, there was a pitfall with QemuEvent as you demonstrated and now 
-I grep QemuEvent and QemuSemaphore to find all such ephemeral usage is 
-written with QemuSemaphore instead of QemuEvent. I think the critical 
-problem here is that it is not documented that qemu_event_destroy() 
-cannot be used immediately after qemu_event_wait(). We would not run 
-into this situation if it is written. I will write a patch to add such a 
-documentation comment.

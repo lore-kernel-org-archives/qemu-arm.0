@@ -1,122 +1,121 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp322003njj;
-        Tue, 29 Oct 2024 08:16:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCWpWmQm+hT3x46XBxxT8nEUCW0+gh/h7hy452Hi+GnUELc09mB0KuxU9XpT/kBvface7CGQF0Xoh/CXAw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFEJ0HO65uJfSP82cbKCPEq9rPrCPDe98fMyNH+j8d8gfJnl8jC4c7FrBWStOW6Vlq3jMZZ
-X-Received: by 2002:a05:620a:4455:b0:7b1:4356:fd43 with SMTP id af79cd13be357-7b193f5d862mr1698448285a.53.1730214960611;
-        Tue, 29 Oct 2024 08:16:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730214960; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp323528njj;
+        Tue, 29 Oct 2024 08:17:51 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUY+OQ6zzBZ+Sw+78fARvN4nGpNkc6I7EXu8Xi/hAgO82oNZhJcDB8TUr2UmHVIhCn5Mk6zeZPbZKk6JA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH8D0zu1l6Q/HlS529YpGD+dVYYwQj7jrhTcLHPO8UZSbiTGOzU7muBohurjwOTOA8F0jLj
+X-Received: by 2002:a05:6214:3201:b0:6ce:348e:a8c4 with SMTP id 6a1803df08f44-6d18584009bmr204179216d6.48.1730215070981;
+        Tue, 29 Oct 2024 08:17:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730215070; cv=none;
         d=google.com; s=arc-20240605;
-        b=kfxmUdx5Z6+EXrh6hacYrSFVpxd5g0FBzNro/9gszEvN6i/xBMDFOlkji4YOUQy+QW
-         MWqOKhsi3XcMG6wOjToVxulQQaz4t+lEP5BEEWwvhv5WveTVPxywtukUdLZU0o+2UAi8
-         gIFyIwLkzrciRTeYZXF6acfEUKGS51Moiis5m7RAJweX3CEO/usdjLnYM+a3HSQG5fU1
-         gq70fPBoqQP4rV6dfavzPi8HrInZIbtOXGdf3u05AmUTwJWk+oi6OW1V7zQQBYTid+1n
-         2AmYtblLecKaOTgXM31efAmF6l4uPqPWnP4pAFBun7V4v7+ecAnNHq4F4x2A5siMwYdi
-         PxUQ==
+        b=D345J4PFuxR04wSJi937Is+NmVsPiiH9KGX52rNaDv7XiIuPo2hJuu/OvhCpff2Cd+
+         8L6TxjyO7qdpEaKADwtLv6i9EKaOfLxWQJfxvwI+ZVf/jO21+EeP9EmSF7TNf8htlqIm
+         mh6qixNfViOzaZeeZXwgzoNjbYVs67ilZfjzvlwe61Fm0CUbTQb1p0CL4rUOY9vBTuaS
+         JmJa/Nxk+CPeeGI340/PwbxxAgcdFNR5U2rn8CJMWHNxOAJi464VSz+fmxwX0P8zQ+mi
+         dMSiTRmHr3SmrcZu1gwlHAeyigepLmcwkC/dk8PuSjnNNds/U7vvAPFR3NCD5COUvlXI
+         OEUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=y+/gn5PrRHI6aUAYrICmiO61nI9SeFkHZ/jV7ZOSLYc=;
-        fh=yZhXkKuTQnPc9+tlBwMmnb8Hv6eiMihiu/3IK36kbUk=;
-        b=EslcatNuFHUQBeTIJLqMhgepg0bYBVpo3d/7nR0dACyHpY38GUsjTrJyDUTjADMFwK
-         z/eSQWxJ9BZmh/qt2eGOdgMPUAh615sl2mcIce4PcUnDX8yXerUhm4X8jFKh786skPSd
-         d1qXm46W9GBrYG6WhD0TuqEhneFco3UWHZcTGbQ4MmHx5OzxGr3CqoyugiZPSQK9l6bI
-         odX9290LjX5HBPmqpKNjCp+MZG3isb05+izHtPbOUFTYimbU7nA5O4KSbON2AS6YbXxB
-         o6vyvrBuyjllS2TfgzOhwYtIbzlnxPQ/CZ4k3L7W0jerjI4Sv95G4QFDqd4geAHK2RkE
-         wMPw==;
+        bh=uWF1bVue0jp3RIgvuBCykNspwtoTgYc0dfBnutz7ERk=;
+        fh=c4ggBIJjITc+/i06rIXIYLZU0WsTwyROAs4+vY+ySzM=;
+        b=WGQE9H3P+mEoC644BhwmDh3V1cjsClWUIInADSenBBFLIYyusOfpMmiTa2YBZ1zs+X
+         DT2e+MQdYz743Zf1mwImY31EymvueuTvPyC+e1W4PBKjPwMief0xcrlg6di5CEiVIYOZ
+         2mW+S/++gOZ3eVL2SYz4rG8tEnO4QiLS0MFjpmcUSkWyIv4BmIRcjltZ7VMuovyqrtpZ
+         8kmR/DHMkn2qbEZ0GN8i/8H5WhmqYTcyJgi2lq6YB9Mikhfzp39peJg9C06gbDC6Gs1f
+         JkYFvNXz6k6kTez4CbCe9WI1utlASAY9coBe9YHkALkJy8RRaGx5Dy00pJyX97Qne3h4
+         bp9g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cgi33KTs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fLBQDEtv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b18d26a837si1122438785a.90.2024.10.29.08.16.00
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d179a47724si114683086d6.392.2024.10.29.08.17.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 08:16:00 -0700 (PDT)
+        Tue, 29 Oct 2024 08:17:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cgi33KTs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fLBQDEtv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t5nuj-0004pD-Fs; Tue, 29 Oct 2024 11:13:46 -0400
+	id 1t5ntx-0002z0-7K; Tue, 29 Oct 2024 11:12:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t5nsB-0000p8-Tm
+ id 1t5nsE-0000qM-0b
  for qemu-devel@nongnu.org; Tue, 29 Oct 2024 11:11:11 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t5ns3-0007jZ-KT
- for qemu-devel@nongnu.org; Tue, 29 Oct 2024 11:11:07 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4316cce103dso72805575e9.3
- for <qemu-devel@nongnu.org>; Tue, 29 Oct 2024 08:10:59 -0700 (PDT)
+ id 1t5ns7-0007kR-2K
+ for qemu-devel@nongnu.org; Tue, 29 Oct 2024 11:11:09 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4314f38d274so72966795e9.1
+ for <qemu-devel@nongnu.org>; Tue, 29 Oct 2024 08:11:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730214658; x=1730819458; darn=nongnu.org;
+ d=linaro.org; s=google; t=1730214659; x=1730819459; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=y+/gn5PrRHI6aUAYrICmiO61nI9SeFkHZ/jV7ZOSLYc=;
- b=cgi33KTsNbCX/IQC/79Vf6VDoKV76NWLPJR1uS4CbpjDlSnAsGPVtZaXRa+jB+1ERe
- JEInaVfmXvv+hAqEbkQDGKv7Reeast3O2si4mpKqWMCjP9LphZvg/FckHj/K7OWgXQp5
- xYyRCzQdLjdY8416AahrMuXX+bvor0X35xKvC2+MGIy/OGyX99TqkAX5JvUkUVGmnG2J
- w50UR5tK+pIMvZT3p5itd0LMr0b86y9Ha1SlQpDrA9afYxJqJExuqlgVI5ZoN1DfX59F
- 7ew/IoBeR6UfVZcOZfJFomJEir1kWNkfcsm0frsXZI/S5Yx5CRIxhk4ibCHzuZ1XN8i1
- jutg==
+ :reply-to; bh=uWF1bVue0jp3RIgvuBCykNspwtoTgYc0dfBnutz7ERk=;
+ b=fLBQDEtvf44K4GlWtqJCpbBlCfW0Ln7nU5Rx2zN/lVmBKl5m4SvviMAkCnvZLakOH4
+ yMfE/vuqtXI41RUU8k1NIs+RoFLjXFpHb2HxFWOY68fHtuaOl/XH+0XLJe+GOrbrMKpq
+ qC621i0DMBmPGpSfw5Kssj+6tb5bWnzgXAUIAdpNQjR7crr35zeKzmfIwiJLfPRlgrcV
+ oPZ9kwLyiqDKdNcY2Aax2lw2lONcI2zys4IitWodcGIJqeo9bp6cASLBGaKram9DwNIR
+ LLjrf8bi/v99YEiezcuO2uohQdVX9MLgmJ8Jg9OI7dj4Xn8hRRxANcL/y0R3iCQywTz2
+ fQig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730214658; x=1730819458;
+ d=1e100.net; s=20230601; t=1730214659; x=1730819459;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=y+/gn5PrRHI6aUAYrICmiO61nI9SeFkHZ/jV7ZOSLYc=;
- b=kilYqqhuHeAkijeJZKrOgCrXRJ+gaW1xnP5P0t5OKUAERKrttcVvhsLRNKqwVLhcq7
- 0Go2eAeTZ33CfLJJNKCxKaMy3xy/xRoEKrDt++6PldtI630WIVhwFJs2J+Vh3dXtKd+H
- SFAjK6c3ntTGiJ3Rt5fxl7UOVt6CCdKDE1m3c77WRBh/SsXbI1lGmBC/tpwCty2vubbB
- BJx9TwtDTrgt9uM3MBorNfsyUVmtAEqsZzv1oKwh6+U7xytI8dC7FE2yfNt/osLq4rzT
- 9feJqhCRqRsgmdapfCKAjq4KKk4uV8o4tDr7llJhCrvwhemJkqNxTV8x5j44QjZJULOc
- qH3Q==
+ bh=uWF1bVue0jp3RIgvuBCykNspwtoTgYc0dfBnutz7ERk=;
+ b=tmYR8yFEQrGo8V67HsAFTu1QKh7rTOE4octwHD+9QMVJTYvpVYeGqaXiAXLQPkjwwu
+ 6Gg+nIPmDX3mmNHzkGEA/4dONzaIILPT13ye0JC02eYyXHe30uE1Obyh31XunSLv5mw6
+ LN9mR2eSMLXF8f7o7t/Z0YwpT3dxtTVCg9BC7ydGMEB4OPM8CEqI8LInOveLlRo8JIPy
+ ZAeloge7FSTXYdXuGIRWnz0pcYDpIoSjZ7GZFoU4Mhl2OAdP0MQMm2aLjsfhJoKa/Z2T
+ EA7549E8011NugUDg+w6S6RMz2izBVv9JGyk9hbF/26+y00KFicD8iA2GhgjSn1251bv
+ p5gw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXbVGOT1Sjw+Fchhs98CtyrXAlEveK3AmPJpR5w+gZfhyZWPdMwcMqI+jpdqISBwfzzf5QBprE2Jzqg@nongnu.org
-X-Gm-Message-State: AOJu0YyRRz8qaj+HYVNPa0bn+WtUklc465zaqwNQQlwA2sHyVQ5DKeSe
- MIm7EBupJoinAlOPf2JlXwdhSU5ebsB9tJwo4nrVVaydFWmtClFDpk04F3153GQ=
-X-Received: by 2002:a05:600c:358e:b0:42f:75e0:780e with SMTP id
- 5b1f17b1804b1-4319ac9a68cmr140317035e9.10.1730214656641; 
- Tue, 29 Oct 2024 08:10:56 -0700 (PDT)
+ AJvYcCWJ38+Ah4yiK0ZuQtVrqA1LBR7vAL65LyUUF7/IxdCD15MCPdPJdrqy6jlhu3U+9qhlbxqYa1l7QIsV@nongnu.org
+X-Gm-Message-State: AOJu0YxIi6npE6cWyhaK5kc72HrcvrWQqGQz3YNh/Iv60hh26f52QLi0
+ TajeM/VhmZdrX5GwTliF+ozbtayUM2mAYklZALJYom9iFA2M8PtAfmmyDBCC1PzCaNjuMgK69hR
+ e
+X-Received: by 2002:a05:6000:1ccc:b0:37d:4f69:c9b with SMTP id
+ ffacd0b85a97d-380611e0c40mr10835699f8f.35.1730214659106; 
+ Tue, 29 Oct 2024 08:10:59 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4319360cc2esm146835865e9.44.2024.10.29.08.10.56
+ 5b1f17b1804b1-4319360cc2esm146835865e9.44.2024.10.29.08.10.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 29 Oct 2024 08:10:56 -0700 (PDT)
+ Tue, 29 Oct 2024 08:10:58 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PULL 13/18] docs/system/arm: Add placeholder doc for xlnx-zcu102
- board
-Date: Tue, 29 Oct 2024 15:10:43 +0000
-Message-Id: <20241029151048.1047247-14-peter.maydell@linaro.org>
+Subject: [PULL 18/18] target/arm: kvm: require KVM_CAP_DEVICE_CTRL
+Date: Tue, 29 Oct 2024 15:10:48 +0000
+Message-Id: <20241029151048.1047247-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241029151048.1047247-1-peter.maydell@linaro.org>
 References: <20241029151048.1047247-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,71 +130,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a2wNUdsWmSlU
+X-TUID: fW4/bWUpZc7b
 
-Add a placeholder doc for the xlnx-zcu102 board.
+From: Paolo Bonzini <pbonzini@redhat.com>
 
+The device control API was added in 2013, assume that it is present.
+
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Message-id: 20241024113126.44343-1-pbonzini@redhat.com
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-id: 20241018141332.942844-6-peter.maydell@linaro.org
 ---
- MAINTAINERS                     |  1 +
- docs/system/arm/xlnx-zcu102.rst | 19 +++++++++++++++++++
- docs/system/target-arm.rst      |  1 +
- 3 files changed, 21 insertions(+)
- create mode 100644 docs/system/arm/xlnx-zcu102.rst
+ target/arm/kvm_arm.h  | 16 +++++++---------
+ hw/intc/arm_gic_kvm.c |  9 +--------
+ target/arm/kvm.c      | 17 +++++------------
+ 3 files changed, 13 insertions(+), 29 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 2b524d7af54..66c7572c27b 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1018,6 +1018,7 @@ F: include/hw/ssi/xilinx_spips.h
- F: hw/display/dpcd.c
- F: include/hw/display/dpcd.h
- F: docs/system/arm/xlnx-versal-virt.rst
-+F: docs/system/arm/xlnx-zcu102.rst
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 4d293618a78..2e6b49bf137 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -22,17 +22,15 @@
+  * @devid: the KVM device ID
+  * @group: device control API group for setting addresses
+  * @attr: device control API address type
+- * @dev_fd: device control device file descriptor (or -1 if not supported)
++ * @dev_fd: device control device file descriptor
+  * @addr_ormask: value to be OR'ed with resolved address
+  *
+- * Remember the memory region @mr, and when it is mapped by the
+- * machine model, tell the kernel that base address using the
+- * KVM_ARM_SET_DEVICE_ADDRESS ioctl or the newer device control API.  @devid
+- * should be the ID of the device as defined by KVM_ARM_SET_DEVICE_ADDRESS or
+- * the arm-vgic device in the device control API.
+- * The machine model may map
+- * and unmap the device multiple times; the kernel will only be told the final
+- * address at the point where machine init is complete.
++ * Remember the memory region @mr, and when it is mapped by the machine
++ * model, tell the kernel that base address using the device control API.
++ * @devid should be the ID of the device as defined by  the arm-vgic device
++ * in the device control API.  The machine model may map and unmap the device
++ * multiple times; the kernel will only be told the final address at the
++ * point where machine init is complete.
+  */
+ void kvm_arm_register_device(MemoryRegion *mr, uint64_t devid, uint64_t group,
+                              uint64_t attr, int dev_fd, uint64_t addr_ormask);
+diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
+index 53defee7d59..e2a73337b1e 100644
+--- a/hw/intc/arm_gic_kvm.c
++++ b/hw/intc/arm_gic_kvm.c
+@@ -547,17 +547,10 @@ static void kvm_arm_gic_realize(DeviceState *dev, Error **errp)
+                               KVM_DEV_ARM_VGIC_CTRL_INIT, NULL, true,
+                               &error_abort);
+         }
+-    } else if (kvm_check_extension(kvm_state, KVM_CAP_DEVICE_CTRL)) {
++    } else {
+         error_setg_errno(errp, -ret, "error creating in-kernel VGIC");
+         error_append_hint(errp,
+                           "Perhaps the host CPU does not support GICv2?\n");
+-    } else if (ret != -ENODEV && ret != -ENOTSUP) {
+-        /*
+-         * Very ancient kernel without KVM_CAP_DEVICE_CTRL: assume that
+-         * ENODEV or ENOTSUP mean "can't create GICv2 with KVM_CREATE_DEVICE",
+-         * and that we will get a GICv2 via KVM_CREATE_IRQCHIP.
+-         */
+-        error_setg_errno(errp, -ret, "error creating in-kernel VGIC");
+         return;
+     }
  
- Xilinx Versal OSPI
- M: Francisco Iglesias <francisco.iglesias@amd.com>
-diff --git a/docs/system/arm/xlnx-zcu102.rst b/docs/system/arm/xlnx-zcu102.rst
-new file mode 100644
-index 00000000000..534cd1dc887
---- /dev/null
-+++ b/docs/system/arm/xlnx-zcu102.rst
-@@ -0,0 +1,19 @@
-+Xilinx ZynqMP ZCU102 (``xlnx-zcu102``)
-+======================================
-+
-+The ``xlnx-zcu102`` board models the Xilinx ZynqMP ZCU102 board.
-+This board has 4 Cortex-A53 CPUs and 2 Cortex-R5F CPUs.
-+
-+Machine-specific options
-+""""""""""""""""""""""""
-+
-+The following machine-specific options are supported:
-+
-+secure
-+  Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
-+  Arm Security Extensions (TrustZone). The default is ``off``.
-+
-+virtualization
-+  Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
-+  Arm Virtualization Extensions. The default is ``off``.
-+
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index a7f88c8f317..ace36d1b17d 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -107,6 +107,7 @@ undocumented; you can get a complete list by running
-    arm/xenpvh
-    arm/xlnx-versal-virt
-    arm/xlnx-zynq
-+   arm/xlnx-zcu102
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 000afa03631..7b6812c0de2 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -42,6 +42,7 @@
+ #include "migration/blocker.h"
  
- Emulated CPU architecture support
- =================================
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
++    KVM_CAP_INFO(DEVICE_CTRL),
+     KVM_CAP_LAST_INFO
+ };
+ 
+@@ -691,19 +692,11 @@ static void kvm_arm_set_device_addr(KVMDevice *kd)
+ {
+     struct kvm_device_attr *attr = &kd->kdattr;
+     int ret;
++    uint64_t addr = kd->kda.addr;
+ 
+-    /* If the device control API is available and we have a device fd on the
+-     * KVMDevice struct, let's use the newer API
+-     */
+-    if (kd->dev_fd >= 0) {
+-        uint64_t addr = kd->kda.addr;
+-
+-        addr |= kd->kda_addr_ormask;
+-        attr->addr = (uintptr_t)&addr;
+-        ret = kvm_device_ioctl(kd->dev_fd, KVM_SET_DEVICE_ATTR, attr);
+-    } else {
+-        ret = kvm_vm_ioctl(kvm_state, KVM_ARM_SET_DEVICE_ADDR, &kd->kda);
+-    }
++    addr |= kd->kda_addr_ormask;
++    attr->addr = (uintptr_t)&addr;
++    ret = kvm_device_ioctl(kd->dev_fd, KVM_SET_DEVICE_ATTR, attr);
+ 
+     if (ret < 0) {
+         fprintf(stderr, "Failed to set device address: %s\n",
 -- 
 2.34.1
 

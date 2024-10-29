@@ -1,99 +1,99 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp542480njj;
-        Tue, 29 Oct 2024 14:03:51 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXfa2jgcrRYmdahagWyFFQvNHBfAjSDn9o2CxjhgpoPTEuAa9n4K4f33CFgGMz60k+Ts9GYjH9qv0al+Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IEcvnmF0jOgI4V+qdyC+oJHEcNWFf49i5zVhF0i1Er3deOP3dM6e3+ni3c9KvcCXOlSeRiX
-X-Received: by 2002:ac8:7d14:0:b0:460:aa51:8411 with SMTP id d75a77b69052e-4613bffb691mr211612101cf.24.1730235831707;
-        Tue, 29 Oct 2024 14:03:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730235831; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp542627njj;
+        Tue, 29 Oct 2024 14:04:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXibM/8VrQvIketlwxyF053LVQmqik9sFWpBwJMpQK6soE9MF2lDLNKq1x9EVCV22T7YToGuIyXiHZwWA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEuSGgpp1xoiUqvF7amfwvnhYHRn4q1lTOw5TcNhIuq/g9K5H0AbwUiZOQJJJnZ0832Ekgl
+X-Received: by 2002:a05:6358:94a2:b0:1bc:573a:401a with SMTP id e5c5f4694b2df-1c3f9d13410mr634266955d.5.1730235847365;
+        Tue, 29 Oct 2024 14:04:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730235847; cv=none;
         d=google.com; s=arc-20240605;
-        b=IhcbsL34Zr8dwi/ExL+Snm+vlY3cHWTujtfAn+fzWkdSp2mQAKRc87cMz5wekiBwb8
-         m7sApNb6KdiLdiDKJPl8GaBT7FbLJuw4qwT1gRV5mKV/RKgMnGSMUB/fgT00ONMRRuEf
-         sFDQiNN+Y823ZqkGUgynKh5FzFFONsApykB1oZdPEr2aliNQp0bJeB/lH9hv9a3Ljpq7
-         YlrKm4HNpvZGl5KB7bSNeJI+8k3+QkLp/o6L/9KNQnOA1ZP+nM0YOeRnjL2lZ7Xfh75b
-         hooVt9hnJlIqjIZsxxJMcM60uMD8SwA0c1+Ogc5zcad33j9rzyimf+2mTXi/4mrXi9NO
-         S+Kg==
+        b=gYLwoCILXpodRHI8eRV4EVe98VNPocUuOAxzpbHTJXqyR1m4v6qq4/jcl94SckHqbY
+         tf/wVrVj6j3B9cUYlnd/bS08LJQFdhFmk+PrUMu+awMpjmgiMM1jsuye54RCIjab3jdS
+         ySCgOj0OKRKzwasbaYMbs4ppJ3xbdm9up7ioW5EXuyu7LHMif/NW/n6O9iR7KgaxktnI
+         Qby05RihBa1SYMqKrz89R7WZceZFd9j41SDwnUi+FKIkcrcQrBNaJgEwjAqEqVH9KuSZ
+         xOB45OjiUflVyweafBpfu9cq5+yAsz3r3RmzvRTSGtjrnomIwg+qfVzal3il8Pf1O4TP
+         +BjA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=sF4EzLgassltetVNYListRFM3poKJJInTjRzUkXddxM=;
-        fh=Cz9mr7WFxiYKJBC2Bqqst74qbX4rU+wpTENwEkbsku8=;
-        b=Y0eJWOypPVdRT8qf4RK8QVTvi26JR4LVjBlH9SX1EKK/Ucoka3019geH6hgJ0wnGk2
-         CreUuz1fMOQDhs/2njyeStXNakCEqbQByQ8mUPPmdTSDwGMtkuF4B5yOeCQoAo280hBN
-         V+QH7SibU1TrsnBQl/cc6ObnGlAGefjB2obx0Uh+ZmLkBRdPfKiSfv1MOcFWamD8U5Ns
-         yn1suMAPspzlud3eLHC45bpBrMQssBSexLjYpHds4Btnoa0jQmOSDnLGBKurxUNrv539
-         DWa0WpkPqU3IeDu4/hmzhHb/W8hWuK3Te8BugcuaMg+E5e6K6dv45Djtu2GDmZWWZ1CJ
-         iVog==;
+        bh=eHMN46rJt9QcxyBveWaVh/b2Y4BBk6tAt2nO8pjIz70=;
+        fh=X/cEeG0IecOcbktZzhggOUgW8rnsW2Y9KQE40BZHOoA=;
+        b=GnIgIRsXcJAbv8Q/NnA8mi3Nk7kWpGG6339YPYBGafbgdYa+0s9bwODqbdq4X1nZ+a
+         8p5ycepV0OLca/cAo1uiWYQFgCY+LZNW+TzivCqCxrsAmWh1I2bm9flAtr7sy9TyYCXq
+         Ap+mzHByY6mBr4d37E2j5jqDEbH7Ho8MPCd2a3omunRfvnepHbTqkGB/X9P9QHk8tjcA
+         G1PAnkI/S1bZb0FUIerlZUdfqa9CVl15SE+DDX+gBDhlcDOgm4d3IdJS52M/ZzsgSRLR
+         1SKrgtDV8jfLr7h9IE0J8wfJCAx5xiCKWe1FUH/Fmo0AFFmWUKX+4K74bdXFOk5HL9D1
+         fJ0g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=Lj5VQdjF;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=MyG+cP5U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46159d7cc88si53819051cf.651.2024.10.29.14.03.51
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d378c7asi1155103585a.683.2024.10.29.14.04.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 14:03:51 -0700 (PDT)
+        Tue, 29 Oct 2024 14:04:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=Lj5VQdjF;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=MyG+cP5U;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t5tJo-0004hc-04; Tue, 29 Oct 2024 17:00:00 -0400
+	id 1t5tIm-0003e4-Vh; Tue, 29 Oct 2024 16:58:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1t5tJW-00047X-Eu
- for qemu-devel@nongnu.org; Tue, 29 Oct 2024 16:59:46 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ id 1t5tIk-0003bF-Pc
+ for qemu-devel@nongnu.org; Tue, 29 Oct 2024 16:58:55 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1t5tJT-0005h6-JJ
- for qemu-devel@nongnu.org; Tue, 29 Oct 2024 16:59:42 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5cb15b84544so7451344a12.2
- for <qemu-devel@nongnu.org>; Tue, 29 Oct 2024 13:59:39 -0700 (PDT)
+ id 1t5tIe-0005XO-Ny
+ for qemu-devel@nongnu.org; Tue, 29 Oct 2024 16:58:54 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-5c9454f3bfaso7058588a12.2
+ for <qemu-devel@nongnu.org>; Tue, 29 Oct 2024 13:58:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1730235578; x=1730840378;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1730235527; x=1730840327;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=sF4EzLgassltetVNYListRFM3poKJJInTjRzUkXddxM=;
- b=Lj5VQdjFEfPAPrBj7a+NkM4idoS81cLV63Eq6Su6ruDOFvLy1oNc1ze1hbCRzy6rxo
- k3pHkCUfPPyeMcD6ZviOAwqOQ5DNCOYS2h5YYRbISXyBCFn43CucEvK2yU8E+JvAXuL4
- Pnp3GMsMI9kRzHKY3kqUTIWft5n7L6+skx1gy6Z1N15rV7TcbbSmC/dJhUi5mbWl9J5C
- 6m7BsdhlUMK86hubwQlqUe+em+qQoIUyd6qywOa6FAI/Ox3AFe4yj80GPIg+/+Rrde4j
- nN8nVVL1eWFpSyAw/S6BvqoUg+7Pceo6JbEgaLIpC0lOVyMR/n9WS/2wRbr9xLKPheaJ
- plUg==
+ bh=eHMN46rJt9QcxyBveWaVh/b2Y4BBk6tAt2nO8pjIz70=;
+ b=MyG+cP5UkEMFyOHjTzNLkMibFV63+8eOhV+4CzBDhho8EC5QGE5XUhNCTrpzCVfuc5
+ B7TsAJWPelSya+g9aLqbNH9etbuyFNMUssWByzE8nAsLWC0iyUjVUJ2qsl14gXqPsr07
+ K1iLDIvYMSbscdB4jrJfkGtw6W+WIv7xZTr+Lq68fWd83Kja+7po8wIaWergS77FlPA6
+ XzqbngmPQp5AaJcNqngOOLWF0/OsyCAZLcSSSrU2jzRu38mcVHwVwgqin5pTSz6AE6am
+ tpDkGYamD1ITxmBQYc4zrBBFMqkwQXXlJ9evsurmODV5PqM5rpFq1rC4r5RdCuJv+Oqo
+ 62pw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730235578; x=1730840378;
+ d=1e100.net; s=20230601; t=1730235527; x=1730840327;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=sF4EzLgassltetVNYListRFM3poKJJInTjRzUkXddxM=;
- b=LyQ+v6AsVCWmMT/3dvk5lRSuGOlqxltQjmjviMVmz9cQGogHdejQnUyBQxAkeQGVQa
- sREHnfMfglB1BfqHn4ZvAbwxS4s/vwY3hSaJHedAIY8Kf6a4zaGN5BG2fzmSaia5UO9s
- LRaa0m5ZAxQ0TqYpUyy8OJuEfPKj8hOZorh7J3iOo/4Yd/FmKL1iIJnY4LJYxsp0LpGT
- bE7yw4ix2P5FoMmS5usg1JfILmnhw/WyKmep4P0xz9ewH3FnWZhtCrIgT1KF0mk9/f0H
- 4GxnJpMdmrao1oMp9qBHqqc3wjcOlOHZ5O7zlBZNIfq89M4H2nDzlVLh+KQR9zTNo1VM
- 4IOQ==
-X-Gm-Message-State: AOJu0YzJrc7p/oRw3y41VJQyvZAHW63qyO/5DCpUztI37B+uxBIPiwPi
- aYqhtS5gXM3pDhWIVtJkGa9KjPjxJUx9GbatVA5oDXI3NF/b2zexvlZp37D3J+CWxRkGVLfGQpZ
- VvA==
-X-Received: by 2002:a05:6402:194e:b0:5cb:7443:27d4 with SMTP id
- 4fb4d7f45d1cf-5cbbf90eb86mr11278434a12.25.1730235577574; 
- Tue, 29 Oct 2024 13:59:37 -0700 (PDT)
+ bh=eHMN46rJt9QcxyBveWaVh/b2Y4BBk6tAt2nO8pjIz70=;
+ b=fVcOdQs+rPZu4vDOtAtpvbzPeZM9V7N3LLjUBBlADKAjcrCa2f1db+lANJtZt3LLSD
+ yBGlkewvf+jKRd/qJlAPOOEl1Fef+p7GtpNPoPRokRUNL800ShOXJub9718Tq1krC+ub
+ cv+N3gmJqcvJ4e0FtJC0XW6DOnkoB1mlLXU7lN99kvx0sWxpDFwEx4RXb1U13puBEABH
+ zhwR36jOD90ZSiPOqv0+2LbvsIu6ah6jQ8XE7rJHjZfnEgnN1tH66BXUjOoo+fOr1qJw
+ FbQLQra/ibso8DyVFXrA1b4R0fZzxLLWSqHXosZCMsvm1E10OO9qw4jo6cN6u4Xyb0DQ
+ yXxg==
+X-Gm-Message-State: AOJu0YwfMfn1lutGYrnD2sJdLWYvYY7ybJ9v4gLPp57zZHwAdKJdDeGq
+ J4En4zJ48/4rPkQkxG02vMIc1G9AcbiIerC0iXM7jyOO8UmIGWGKFCwVyAbz8CYsUjScAZYu0+v
+ 08Q==
+X-Received: by 2002:a05:6402:51d0:b0:5cb:66c6:d82a with SMTP id
+ 4fb4d7f45d1cf-5cbbf88a35fmr9930969a12.3.1730235527106; 
+ Tue, 29 Oct 2024 13:58:47 -0700 (PDT)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5cbb629d5besm4217341a12.33.2024.10.29.13.59.34
+ 4fb4d7f45d1cf-5cbb629d5besm4217341a12.33.2024.10.29.13.58.45
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 29 Oct 2024 13:59:36 -0700 (PDT)
+ Tue, 29 Oct 2024 13:58:46 -0700 (PDT)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -107,19 +107,17 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, Alexander Graf <graf@amazon.com>
-Subject: [PATCH v5 13/15] hw/vmapple/virtio-blk: Add support for apple
- virtio-blk
-Date: Tue, 29 Oct 2024 21:58:17 +0100
-Message-Id: <20241029205819.69888-14-phil@philjordan.eu>
+ qemu-riscv@nongnu.org
+Subject: [PATCH v5 04/15] hw/display/apple-gfx: Adds configurable mode list
+Date: Tue, 29 Oct 2024 21:58:08 +0100
+Message-Id: <20241029205819.69888-5-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.3 (Apple Git-145)
 In-Reply-To: <20241029205819.69888-1-phil@philjordan.eu>
 References: <20241029205819.69888-1-phil@philjordan.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::533;
- envelope-from=phil@philjordan.eu; helo=mail-ed1-x533.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::535;
+ envelope-from=phil@philjordan.eu; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -140,403 +138,326 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2d5xtygMntgf
+X-TUID: ARKLx/JJmcLk
 
-From: Alexander Graf <graf@amazon.com>
+This change adds a property 'display_modes' on the graphics device
+which permits specifying a list of display modes. (screen resolution
+and refresh rate)
 
-Apple has its own virtio-blk PCI device ID where it deviates from the
-official virtio-pci spec slightly: It puts a new "apple type"
-field at a static offset in config space and introduces a new barrier
-command.
+The property is an array of a custom type to make the syntax slightly
+less awkward to use, for example:
 
-This patch first creates a mechanism for virtio-blk downstream classes to
-handle unknown commands. It then creates such a downstream class and a new
-vmapple-virtio-blk-pci class which support the additional apple type config
-identifier as well as the barrier command.
+-device '{"driver":"apple-gfx-pci", "display-modes":["1920x1080@60", "3840x2160@60"]}'
 
-It then exposes 2 subclasses from that that we can use to expose root and
-aux virtio-blk devices: "vmapple-virtio-root" and "vmapple-virtio-aux".
-
-Signed-off-by: Alexander Graf <graf@amazon.com>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
 ---
 
 v4:
 
- * Use recommended object type declaration pattern.
- * Correctly log unimplemented code paths.
- * Most header code moved to .c, type name #defines moved to vmapple.h
+ * Switched to the native array property type, which recently gained
+	 command line support.
+ * The property has also been added to the -mmio variant.
+ * Tidied up the code a little.
 
 v5:
 
- * Corrected handling of potentially unaligned writes to virtio config area.
- * Simplified passing through device variant type to subobject.
+ * Better error handling and buffer management in property parsing and
+   output.
 
- hw/block/virtio-blk.c          |  19 ++-
- hw/vmapple/Kconfig             |   3 +
- hw/vmapple/meson.build         |   1 +
- hw/vmapple/virtio-blk.c        | 226 +++++++++++++++++++++++++++++++++
- include/hw/pci/pci_ids.h       |   1 +
- include/hw/virtio/virtio-blk.h |  12 +-
- include/hw/vmapple/vmapple.h   |   4 +
- 7 files changed, 261 insertions(+), 5 deletions(-)
- create mode 100644 hw/vmapple/virtio-blk.c
+ hw/display/apple-gfx-mmio.m |   8 +++
+ hw/display/apple-gfx-pci.m  |   9 ++-
+ hw/display/apple-gfx.h      |  12 ++++
+ hw/display/apple-gfx.m      | 121 ++++++++++++++++++++++++++++++++----
+ hw/display/trace-events     |   2 +
+ 5 files changed, 139 insertions(+), 13 deletions(-)
 
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index 9166d7974d4..9e8337bb639 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -50,12 +50,12 @@ static void virtio_blk_init_request(VirtIOBlock *s, VirtQueue *vq,
-     req->mr_next = NULL;
+diff --git a/hw/display/apple-gfx-mmio.m b/hw/display/apple-gfx-mmio.m
+index b0c5669a344..a801c5fa722 100644
+--- a/hw/display/apple-gfx-mmio.m
++++ b/hw/display/apple-gfx-mmio.m
+@@ -364,6 +364,12 @@ static void apple_gfx_mmio_reset(Object *obj, ResetType type)
+     [s->common.pgdev reset];
  }
  
--static void virtio_blk_free_request(VirtIOBlockReq *req)
-+void virtio_blk_free_request(VirtIOBlockReq *req)
- {
-     g_free(req);
- }
- 
--static void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status)
-+void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status)
- {
-     VirtIOBlock *s = req->dev;
-     VirtIODevice *vdev = VIRTIO_DEVICE(s);
-@@ -966,8 +966,18 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-         break;
-     }
-     default:
--        virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
--        virtio_blk_free_request(req);
-+    {
-+        /*
-+         * Give subclasses a chance to handle unknown requests. This way the
-+         * class lookup is not in the hot path.
-+         */
-+        VirtIOBlkClass *vbk = VIRTIO_BLK_GET_CLASS(s);
-+        if (!vbk->handle_unknown_request ||
-+            !vbk->handle_unknown_request(req, mrb, type)) {
-+            virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
-+            virtio_blk_free_request(req);
-+        }
-+    }
-     }
-     return 0;
- }
-@@ -2044,6 +2054,7 @@ static const TypeInfo virtio_blk_info = {
-     .instance_size = sizeof(VirtIOBlock),
-     .instance_init = virtio_blk_instance_init,
-     .class_init = virtio_blk_class_init,
-+    .class_size = sizeof(VirtIOBlkClass),
- };
- 
- static void virtio_register_types(void)
-diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
-index 8bbeb9a9237..bcd1be63e3c 100644
---- a/hw/vmapple/Kconfig
-+++ b/hw/vmapple/Kconfig
-@@ -7,3 +7,6 @@ config VMAPPLE_BDIF
- config VMAPPLE_CFG
-     bool
- 
-+config VMAPPLE_VIRTIO_BLK
-+    bool
-+
-diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
-index 64b78693a31..bf17cf906c9 100644
---- a/hw/vmapple/meson.build
-+++ b/hw/vmapple/meson.build
-@@ -1,3 +1,4 @@
- system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c'))
- system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
- system_ss.add(when: 'CONFIG_VMAPPLE_CFG',  if_true: files('cfg.c'))
-+system_ss.add(when: 'CONFIG_VMAPPLE_VIRTIO_BLK',  if_true: files('virtio-blk.c'))
-diff --git a/hw/vmapple/virtio-blk.c b/hw/vmapple/virtio-blk.c
-new file mode 100644
-index 00000000000..1652151ec9c
---- /dev/null
-+++ b/hw/vmapple/virtio-blk.c
-@@ -0,0 +1,226 @@
-+/*
-+ * VMApple specific VirtIO Block implementation
-+ *
-+ * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * VMApple uses almost standard VirtIO Block, but with a few key differences:
-+ *
-+ *  - Different PCI device/vendor ID
-+ *  - An additional "type" identifier to differentiate AUX and Root volumes
-+ *  - An additional BARRIER command
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/vmapple/vmapple.h"
-+#include "hw/virtio/virtio-blk.h"
-+#include "hw/virtio/virtio-pci.h"
-+#include "qemu/bswap.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
-+
-+OBJECT_DECLARE_TYPE(VMAppleVirtIOBlk, VMAppleVirtIOBlkClass, VMAPPLE_VIRTIO_BLK)
-+
-+typedef struct VMAppleVirtIOBlkClass {
-+    VirtIOBlkClass parent;
-+
-+    void (*get_config)(VirtIODevice *vdev, uint8_t *config);
-+} VMAppleVirtIOBlkClass;
-+
-+typedef struct VMAppleVirtIOBlk {
-+    VirtIOBlock parent_obj;
-+
-+    uint32_t apple_type;
-+} VMAppleVirtIOBlk;
-+
-+/*
-+ * vmapple-virtio-blk-pci: This extends VirtioPCIProxy.
-+ */
-+#define TYPE_VMAPPLE_VIRTIO_BLK_PCI "vmapple-virtio-blk-pci-base"
-+OBJECT_DECLARE_SIMPLE_TYPE(VMAppleVirtIOBlkPCI, VMAPPLE_VIRTIO_BLK_PCI)
-+
-+#define VIRTIO_BLK_T_APPLE_BARRIER     0x10000
-+
-+#define VIRTIO_APPLE_TYPE_ROOT 1
-+#define VIRTIO_APPLE_TYPE_AUX  2
-+
-+static bool vmapple_virtio_blk_handle_unknown_request(VirtIOBlockReq *req,
-+                                                      MultiReqBuffer *mrb,
-+                                                      uint32_t type)
-+{
-+    switch (type) {
-+    case VIRTIO_BLK_T_APPLE_BARRIER:
-+        qemu_log_mask(LOG_UNIMP, "%s: Barrier requests are currently no-ops\n",
-+                      __func__);
-+        virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-+        virtio_blk_free_request(req);
-+        return true;
-+    default:
-+        return false;
-+    }
-+}
-+
-+/*
-+ * VMApple virtio-blk uses the same config format as normal virtio, with one
-+ * exception: It adds an "apple type" specififer at the same location that
-+ * the spec reserves for max_secure_erase_sectors. Let's hook into the
-+ * get_config code path here, run it as usual and then patch in the apple type.
-+ */
-+static void vmapple_virtio_blk_get_config(VirtIODevice *vdev, uint8_t *config)
-+{
-+    VMAppleVirtIOBlk *dev = VMAPPLE_VIRTIO_BLK(vdev);
-+    VMAppleVirtIOBlkClass *vvbk = VMAPPLE_VIRTIO_BLK_GET_CLASS(dev);
-+    struct virtio_blk_config *blkcfg = (struct virtio_blk_config *)config;
-+
-+    vvbk->get_config(vdev, config);
-+
-+    g_assert(dev->parent_obj.config_size >= endof(struct virtio_blk_config, zoned));
-+
-+    /* Apple abuses the field for max_secure_erase_sectors as type id */
-+    stl_he_p(&blkcfg->max_secure_erase_sectors, dev->apple_type);
-+}
-+
-+static void vmapple_virtio_blk_class_init(ObjectClass *klass, void *data)
-+{
-+    VirtIOBlkClass *vbk = VIRTIO_BLK_CLASS(klass);
-+    VirtioDeviceClass *vdc = VIRTIO_DEVICE_CLASS(klass);
-+    VMAppleVirtIOBlkClass *vvbk = VMAPPLE_VIRTIO_BLK_CLASS(klass);
-+
-+    vbk->handle_unknown_request = vmapple_virtio_blk_handle_unknown_request;
-+    vvbk->get_config = vdc->get_config;
-+    vdc->get_config = vmapple_virtio_blk_get_config;
-+}
-+
-+static const TypeInfo vmapple_virtio_blk_info = {
-+    .name          = TYPE_VMAPPLE_VIRTIO_BLK,
-+    .parent        = TYPE_VIRTIO_BLK,
-+    .instance_size = sizeof(VMAppleVirtIOBlk),
-+    .class_init    = vmapple_virtio_blk_class_init,
++static Property apple_gfx_mmio_properties[] = {
++    DEFINE_PROP_ARRAY("display-modes", AppleGFXMMIOState,
++                      common.num_display_modes, common.display_modes,
++                      qdev_prop_display_mode, AppleGFXDisplayMode),
++    DEFINE_PROP_END_OF_LIST(),
 +};
+ 
+ static void apple_gfx_mmio_class_init(ObjectClass *klass, void *data)
+ {
+@@ -373,6 +379,8 @@ static void apple_gfx_mmio_class_init(ObjectClass *klass, void *data)
+     rc->phases.hold = apple_gfx_mmio_reset;
+     dc->hotpluggable = false;
+     dc->realize = apple_gfx_mmio_realize;
 +
-+/* PCI Devices */
-+
-+struct VMAppleVirtIOBlkPCI {
-+    VirtIOPCIProxy parent_obj;
-+    VMAppleVirtIOBlk vdev;
-+    uint32_t apple_type;
-+};
-+
-+
-+static Property vmapple_virtio_blk_pci_properties[] = {
-+    DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
-+    DEFINE_PROP_BIT("ioeventfd", VirtIOPCIProxy, flags,
-+                    VIRTIO_PCI_FLAG_USE_IOEVENTFD_BIT, true),
-+    DEFINE_PROP_UINT32("vectors", VirtIOPCIProxy, nvectors,
-+                       DEV_NVECTORS_UNSPECIFIED),
++    device_class_set_props(dc, apple_gfx_mmio_properties);
+ }
+ 
+ static TypeInfo apple_gfx_mmio_types[] = {
+diff --git a/hw/display/apple-gfx-pci.m b/hw/display/apple-gfx-pci.m
+index 870d0c41e66..e2fa2567c99 100644
+--- a/hw/display/apple-gfx-pci.m
++++ b/hw/display/apple-gfx-pci.m
+@@ -113,6 +113,13 @@ static void apple_gfx_pci_reset(Object *obj, ResetType type)
+     [s->common.pgdev reset];
+ }
+ 
++static Property apple_gfx_pci_properties[] = {
++    DEFINE_PROP_ARRAY("display-modes", AppleGFXPCIState,
++                      common.num_display_modes, common.display_modes,
++                      qdev_prop_display_mode, AppleGFXDisplayMode),
 +    DEFINE_PROP_END_OF_LIST(),
 +};
 +
-+static void vmapple_virtio_blk_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
-+{
-+    VMAppleVirtIOBlkPCI *dev = VMAPPLE_VIRTIO_BLK_PCI(vpci_dev);
-+    DeviceState *vdev = DEVICE(&dev->vdev);
-+    VirtIOBlkConf *conf = &dev->vdev.parent_obj.conf;
-+
-+    if (conf->num_queues == VIRTIO_BLK_AUTO_NUM_QUEUES) {
-+        conf->num_queues = virtio_pci_optimal_num_queues(0);
-+    }
-+
-+    if (vpci_dev->nvectors == DEV_NVECTORS_UNSPECIFIED) {
-+        vpci_dev->nvectors = conf->num_queues + 1;
-+    }
-+
-+    /*
-+     * We don't support zones, but we need the additional config space size.
-+     * Let's just expose the feature so the rest of the virtio-blk logic
-+     * allocates enough space for us. The guest will ignore zones anyway.
-+     */
-+    virtio_add_feature(&dev->vdev.parent_obj.host_features, VIRTIO_BLK_F_ZONED);
-+    /* Propagate the apple type down to the virtio-blk device */
-+    dev->vdev.apple_type = dev->apple_type;
-+    /* and spawn the virtio-blk device */
-+    qdev_realize(vdev, BUS(&vpci_dev->bus), errp);
-+
-+    /*
-+     * The virtio-pci machinery adjusts its vendor/device ID based on whether
-+     * we support modern or legacy virtio. Let's patch it back to the Apple
-+     * identifiers here.
-+     */
-+    pci_config_set_vendor_id(vpci_dev->pci_dev.config, PCI_VENDOR_ID_APPLE);
-+    pci_config_set_device_id(vpci_dev->pci_dev.config,
-+                             PCI_DEVICE_ID_APPLE_VIRTIO_BLK);
-+}
-+
-+static void vmapple_virtio_blk_pci_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    VirtioPCIClass *k = VIRTIO_PCI_CLASS(klass);
-+    PCIDeviceClass *pcidev_k = PCI_DEVICE_CLASS(klass);
-+
-+    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
-+    device_class_set_props(dc, vmapple_virtio_blk_pci_properties);
-+    k->realize = vmapple_virtio_blk_pci_realize;
-+    pcidev_k->vendor_id = PCI_VENDOR_ID_APPLE;
-+    pcidev_k->device_id = PCI_DEVICE_ID_APPLE_VIRTIO_BLK;
-+    pcidev_k->revision = VIRTIO_PCI_ABI_VERSION;
-+    pcidev_k->class_id = PCI_CLASS_STORAGE_SCSI;
-+}
-+
-+static void vmapple_virtio_blk_pci_instance_init(Object *obj)
-+{
-+    VMAppleVirtIOBlkPCI *dev = VMAPPLE_VIRTIO_BLK_PCI(obj);
-+
-+    virtio_instance_init_common(obj, &dev->vdev, sizeof(dev->vdev),
-+                                TYPE_VMAPPLE_VIRTIO_BLK);
-+}
-+
-+static const VirtioPCIDeviceTypeInfo vmapple_virtio_blk_pci_info = {
-+    .base_name     = TYPE_VMAPPLE_VIRTIO_BLK_PCI,
-+    .generic_name  = "vmapple-virtio-blk-pci",
-+    .instance_size = sizeof(VMAppleVirtIOBlkPCI),
-+    .instance_init = vmapple_virtio_blk_pci_instance_init,
-+    .class_init    = vmapple_virtio_blk_pci_class_init,
-+};
-+
-+static void vmapple_virtio_root_instance_init(Object *obj)
-+{
-+    VMAppleVirtIOBlkPCI *dev = VMAPPLE_VIRTIO_BLK_PCI(obj);
-+
-+    dev->apple_type = VIRTIO_APPLE_TYPE_ROOT;
-+}
-+
-+static const TypeInfo vmapple_virtio_root_info = {
-+    .name          = TYPE_VMAPPLE_VIRTIO_ROOT,
-+    .parent        = "vmapple-virtio-blk-pci",
-+    .instance_size = sizeof(VMAppleVirtIOBlkPCI),
-+    .instance_init = vmapple_virtio_root_instance_init,
-+};
-+
-+static void vmapple_virtio_aux_instance_init(Object *obj)
-+{
-+    VMAppleVirtIOBlkPCI *dev = VMAPPLE_VIRTIO_BLK_PCI(obj);
-+
-+    dev->apple_type = VIRTIO_APPLE_TYPE_AUX;
-+}
-+
-+static const TypeInfo vmapple_virtio_aux_info = {
-+    .name          = TYPE_VMAPPLE_VIRTIO_AUX,
-+    .parent        = "vmapple-virtio-blk-pci",
-+    .instance_size = sizeof(VMAppleVirtIOBlkPCI),
-+    .instance_init = vmapple_virtio_aux_instance_init,
-+};
-+
-+static void vmapple_virtio_blk_register_types(void)
-+{
-+    type_register_static(&vmapple_virtio_blk_info);
-+    virtio_pci_types_register(&vmapple_virtio_blk_pci_info);
-+    type_register_static(&vmapple_virtio_root_info);
-+    type_register_static(&vmapple_virtio_aux_info);
-+}
-+
-+type_init(vmapple_virtio_blk_register_types)
-diff --git a/include/hw/pci/pci_ids.h b/include/hw/pci/pci_ids.h
-index f1a53fea8d6..33e2898be95 100644
---- a/include/hw/pci/pci_ids.h
-+++ b/include/hw/pci/pci_ids.h
-@@ -191,6 +191,7 @@
- #define PCI_DEVICE_ID_APPLE_UNI_N_AGP    0x0020
- #define PCI_DEVICE_ID_APPLE_U3_AGP       0x004b
- #define PCI_DEVICE_ID_APPLE_UNI_N_GMAC   0x0021
-+#define PCI_DEVICE_ID_APPLE_VIRTIO_BLK   0x1a00
+ static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -129,7 +136,7 @@ static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
+     pci->class_id = PCI_CLASS_DISPLAY_OTHER;
+     pci->realize = apple_gfx_pci_realize;
  
- #define PCI_VENDOR_ID_SUN                0x108e
- #define PCI_DEVICE_ID_SUN_EBUS           0x1000
-diff --git a/include/hw/virtio/virtio-blk.h b/include/hw/virtio/virtio-blk.h
-index 5c14110c4b1..28d5046ea6c 100644
---- a/include/hw/virtio/virtio-blk.h
-+++ b/include/hw/virtio/virtio-blk.h
-@@ -24,7 +24,7 @@
- #include "qapi/qapi-types-virtio.h"
+-    // TODO: Property for setting mode list
++    device_class_set_props(dc, apple_gfx_pci_properties);
+ }
  
- #define TYPE_VIRTIO_BLK "virtio-blk-device"
--OBJECT_DECLARE_SIMPLE_TYPE(VirtIOBlock, VIRTIO_BLK)
-+OBJECT_DECLARE_TYPE(VirtIOBlock, VirtIOBlkClass, VIRTIO_BLK)
+ static TypeInfo apple_gfx_pci_types[] = {
+diff --git a/hw/display/apple-gfx.h b/hw/display/apple-gfx.h
+index ef34e8160c8..e9fef09e37e 100644
+--- a/hw/display/apple-gfx.h
++++ b/hw/display/apple-gfx.h
+@@ -16,6 +16,7 @@
+ #import <ParavirtualizedGraphics/ParavirtualizedGraphics.h>
+ #include "qemu/typedefs.h"
+ #include "exec/memory.h"
++#include "hw/qdev-properties.h"
+ #include "ui/surface.h"
  
- /* This is the last element of the write scatter-gather list */
- struct virtio_blk_inhdr
-@@ -100,6 +100,16 @@ typedef struct MultiReqBuffer {
-     bool is_write;
- } MultiReqBuffer;
+ @class PGDeviceDescriptor;
+@@ -27,6 +28,7 @@
  
-+typedef struct VirtIOBlkClass {
-+    /*< private >*/
-+    VirtioDeviceClass parent;
-+    /*< public >*/
-+    bool (*handle_unknown_request)(VirtIOBlockReq *req, MultiReqBuffer *mrb,
-+                                   uint32_t type);
-+} VirtIOBlkClass;
+ typedef QTAILQ_HEAD(, PGTask_s) PGTaskList;
+ 
++struct AppleGFXDisplayMode;
+ typedef struct AppleGFXState {
+     /* Initialised on init/realize() */
+     MemoryRegion iomem_gfx;
+@@ -36,6 +38,8 @@ typedef struct AppleGFXState {
+     id<MTLDevice> mtl;
+     id<MTLCommandQueue> mtl_queue;
+     dispatch_queue_t render_queue;
++    struct AppleGFXDisplayMode *display_modes;
++    uint32_t num_display_modes;
+     /*
+      * QemuMutex & QemuConds for awaiting completion of PVG memory-mapping and
+      * reading requests after submitting them to run in the AIO context.
+@@ -66,6 +70,12 @@ typedef struct AppleGFXState {
+     id<MTLTexture> texture;
+ } AppleGFXState;
+ 
++typedef struct AppleGFXDisplayMode {
++    uint16_t width_px;
++    uint16_t height_px;
++    uint16_t refresh_rate_hz;
++} AppleGFXDisplayMode;
 +
- void virtio_blk_handle_vq(VirtIOBlock *s, VirtQueue *vq);
-+void virtio_blk_free_request(VirtIOBlockReq *req);
-+void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status);
+ void apple_gfx_common_init(Object *obj, AppleGFXState *s, const char* obj_name);
+ void apple_gfx_common_realize(AppleGFXState *s, PGDeviceDescriptor *desc,
+                               Error **errp);
+@@ -75,5 +85,7 @@ uintptr_t apple_gfx_host_address_for_gpa_range(uint64_t guest_physical,
+ void apple_gfx_await_bh_job(AppleGFXState *s, QemuCond *job_cond,
+                             bool *job_done_flag);
  
++extern const PropertyInfo qdev_prop_display_mode;
++
  #endif
-diff --git a/include/hw/vmapple/vmapple.h b/include/hw/vmapple/vmapple.h
-index 3bba59f5ec7..b20956e1286 100644
---- a/include/hw/vmapple/vmapple.h
-+++ b/include/hw/vmapple/vmapple.h
-@@ -18,4 +18,8 @@
  
- #define TYPE_VMAPPLE_CFG "vmapple-cfg"
+diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
+index 101b38e8a6e..2e264e5561f 100644
+--- a/hw/display/apple-gfx.m
++++ b/hw/display/apple-gfx.m
+@@ -31,9 +31,10 @@
+ #include "sysemu/dma.h"
+ #include "ui/console.h"
  
-+#define TYPE_VMAPPLE_VIRTIO_BLK  "vmapple-virtio-blk"
-+#define TYPE_VMAPPLE_VIRTIO_ROOT "vmapple-virtio-root"
-+#define TYPE_VMAPPLE_VIRTIO_AUX  "vmapple-virtio-aux"
+-static const PGDisplayCoord_t apple_gfx_modes[] = {
+-    { .x = 1440, .y = 1080 },
+-    { .x = 1280, .y = 1024 },
++static const AppleGFXDisplayMode apple_gfx_default_modes[] = {
++    { 1920, 1080, 60 },
++    { 1440, 1080, 60 },
++    { 1280, 1024, 60 },
+ };
+ 
+ /* This implements a type defined in <ParavirtualizedGraphics/PGDevice.h>
+@@ -320,7 +321,6 @@ static void set_mode(AppleGFXState *s, uint32_t width, uint32_t height)
+ static void create_fb(AppleGFXState *s)
+ {
+     s->con = graphic_console_init(NULL, 0, &apple_gfx_fb_ops, s);
+-    set_mode(s, 1440, 1080);
+ 
+     s->cursor_show = true;
+ }
+@@ -686,20 +686,25 @@ static void apple_gfx_register_task_mapping_handlers(AppleGFXState *s,
+     return disp_desc;
+ }
+ 
+-static NSArray<PGDisplayMode*>* apple_gfx_prepare_display_mode_array(void)
++static NSArray<PGDisplayMode*>* apple_gfx_create_display_mode_array(
++    const AppleGFXDisplayMode display_modes[], uint32_t display_mode_count)
+ {
+-    PGDisplayMode *modes[ARRAY_SIZE(apple_gfx_modes)];
++    PGDisplayMode **modes = alloca(sizeof(modes[0]) * display_mode_count);
+     NSArray<PGDisplayMode*>* mode_array = nil;
+-    int i;
++    uint32_t i;
+ 
+-    for (i = 0; i < ARRAY_SIZE(apple_gfx_modes); i++) {
++    for (i = 0; i < display_mode_count; i++) {
++        const AppleGFXDisplayMode *mode = &display_modes[i];
++        trace_apple_gfx_display_mode(i, mode->width_px, mode->height_px);
++        PGDisplayCoord_t mode_size = { mode->width_px, mode->height_px };
+         modes[i] =
+-            [[PGDisplayMode alloc] initWithSizeInPixels:apple_gfx_modes[i] refreshRateInHz:60.];
++            [[PGDisplayMode alloc] initWithSizeInPixels:mode_size
++                                        refreshRateInHz:mode->refresh_rate_hz];
+     }
+ 
+-    mode_array = [NSArray arrayWithObjects:modes count:ARRAY_SIZE(apple_gfx_modes)];
++    mode_array = [NSArray arrayWithObjects:modes count:display_mode_count];
+ 
+-    for (i = 0; i < ARRAY_SIZE(apple_gfx_modes); i++) {
++    for (i = 0; i < display_mode_count; i++) {
+         [modes[i] release];
+         modes[i] = nil;
+     }
+@@ -737,6 +742,8 @@ void apple_gfx_common_realize(AppleGFXState *s, PGDeviceDescriptor *desc,
+                               Error **errp)
+ {
+     PGDisplayDescriptor *disp_desc = nil;
++    const AppleGFXDisplayMode *display_modes = apple_gfx_default_modes;
++    int num_display_modes = ARRAY_SIZE(apple_gfx_default_modes);
+ 
+     if (apple_gfx_mig_blocker == NULL) {
+         error_setg(&apple_gfx_mig_blocker,
+@@ -763,7 +770,14 @@ void apple_gfx_common_realize(AppleGFXState *s, PGDeviceDescriptor *desc,
+     s->pgdisp = [s->pgdev newDisplayWithDescriptor:disp_desc
+                                               port:0 serialNum:1234];
+     [disp_desc release];
+-    s->pgdisp.modeList = apple_gfx_prepare_display_mode_array();
 +
- #endif /* HW_VMAPPLE_VMAPPLE_H */
++    if (s->display_modes != NULL && s->num_display_modes > 0) {
++        trace_apple_gfx_common_realize_modes_property(s->num_display_modes);
++        display_modes = s->display_modes;
++        num_display_modes = s->num_display_modes;
++    }
++    s->pgdisp.modeList =
++        apple_gfx_create_display_mode_array(display_modes, num_display_modes);
+ 
+     create_fb(s);
+ 
+@@ -771,3 +785,86 @@ void apple_gfx_common_realize(AppleGFXState *s, PGDeviceDescriptor *desc,
+     qemu_cond_init(&s->task_map_job_cond);
+     qemu_cond_init(&s->mem_read_job_cond);
+ }
++
++static void apple_gfx_get_display_mode(Object *obj, Visitor *v,
++                                       const char *name, void *opaque,
++                                       Error **errp)
++{
++    Property *prop = opaque;
++    AppleGFXDisplayMode *mode = object_field_prop_ptr(obj, prop);
++    /* 3 uint16s (max 5 digits) + 2 separator characters + nul. */
++    char buffer[5 * 3 + 2 + 1];
++    char *pos = buffer;
++
++    int rc = snprintf(buffer, sizeof(buffer),
++                      "%"PRIu16"x%"PRIu16"@%"PRIu16,
++                      mode->width_px, mode->height_px,
++                      mode->refresh_rate_hz);
++    assert(rc < sizeof(buffer));
++
++    visit_type_str(v, name, &pos, errp);
++}
++
++static void apple_gfx_set_display_mode(Object *obj, Visitor *v,
++                                       const char *name, void *opaque,
++                                       Error **errp)
++{
++    Property *prop = opaque;
++    AppleGFXDisplayMode *mode = object_field_prop_ptr(obj, prop);
++    Error *local_err = NULL;
++    const char *endptr;
++    g_autofree char *str = NULL;
++    int ret;
++    int val;
++
++    visit_type_str(v, name, &str, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    endptr = str;
++
++    ret = qemu_strtoi(endptr, &endptr, 10, &val);
++    if (ret || val > UINT16_MAX || val <= 0) {
++        error_setg(errp, "width in '%s' must be a decimal integer number "
++                   "of pixels in the range 1..65535", name);
++        return;
++    }
++    mode->width_px = val;
++    if (*endptr != 'x') {
++        goto separator_error;
++    }
++
++    ret = qemu_strtoi(endptr + 1, &endptr, 10, &val);
++    if (ret || val > UINT16_MAX || val <= 0) {
++        error_setg(errp, "height in '%s' must be a decimal integer number "
++                   "of pixels in the range 1..65535", name);
++        return;
++    }
++    mode->height_px = val;
++    if (*endptr != '@') {
++        goto separator_error;
++    }
++
++    ret = qemu_strtoi(endptr + 1, &endptr, 10, &val);
++    if (ret || val > UINT16_MAX || val <= 0) {
++        error_setg(errp, "refresh rate in '%s'"
++                   " must be a positive decimal integer (Hertz)", name);
++    }
++    mode->refresh_rate_hz = val;
++    return;
++
++separator_error:
++    error_setg(errp, "Each display mode takes the format "
++               "'<width>x<height>@<rate>'");
++}
++
++const PropertyInfo qdev_prop_display_mode = {
++    .name  = "display_mode",
++    .description =
++        "Display mode in pixels and Hertz, as <width>x<height>@<refresh-rate> "
++        "Example: 3840x2160@60",
++    .get   = apple_gfx_get_display_mode,
++    .set   = apple_gfx_set_display_mode,
++};
+diff --git a/hw/display/trace-events b/hw/display/trace-events
+index d63fba6d094..0e223075375 100644
+--- a/hw/display/trace-events
++++ b/hw/display/trace-events
+@@ -209,6 +209,8 @@ apple_gfx_cursor_set(uint32_t bpp, uint64_t width, uint64_t height) "bpp=%d widt
+ apple_gfx_cursor_show(uint32_t show) "show=%d"
+ apple_gfx_cursor_move(void) ""
+ apple_gfx_common_init(const char *device_name, size_t mmio_size) "device: %s; MMIO size: %zu bytes"
++apple_gfx_common_realize_modes_property(uint32_t num_modes) "using %u modes supplied by 'display-modes' device property"
++apple_gfx_display_mode(uint32_t mode_idx, uint16_t width_px, uint16_t height_px) "mode %2"PRIu32": %4"PRIu16"x%4"PRIu16
+ 
+ # apple-gfx-mmio.m
+ apple_gfx_mmio_iosfc_read(uint64_t offset, uint64_t res) "offset=0x%"PRIx64" res=0x%"PRIx64
 -- 
 2.39.3 (Apple Git-145)
 

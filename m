@@ -1,63 +1,63 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp106786njj;
-        Tue, 29 Oct 2024 02:19:23 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCW5JpDTgKV2qKLkUP+e+9w5br8+ZmXfql8Y+s4vKspG4dJzUMqkIqciPmPa+H81NYERp+yAiBwxl86nrg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGv3QrhC1oPViCTW4dmaroaLKSZ139lxOT8S0CNdrgP1In8zjHcZlfGlXqKtVwcLHAnqYIU
-X-Received: by 2002:a05:620a:4110:b0:7b1:534b:5385 with SMTP id af79cd13be357-7b193f0bd6fmr1501758085a.37.1730193563388;
-        Tue, 29 Oct 2024 02:19:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730193563; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp107073njj;
+        Tue, 29 Oct 2024 02:20:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXDKIM4zq0lNIDoq1Vuss/jump9CEcsN3Ib/ikSFs5cObBcJlqVvZyqVpRkJr6zDFcpB/ONg9IJenUrpA==@linaro.org
+X-Google-Smtp-Source: AGHT+IG9rtlW8Kd52eUbsSzbTP3IwcaJKqIummic89N/M2QQIEcV4ynq+yFbquPxJID4gQMaMgTG
+X-Received: by 2002:a05:620a:472b:b0:7b1:4762:65 with SMTP id af79cd13be357-7b193eeb9dfmr1568965685a.20.1730193607512;
+        Tue, 29 Oct 2024 02:20:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730193607; cv=none;
         d=google.com; s=arc-20240605;
-        b=KhumYAN+ECCcVzpovHBdumX3M9+tQ5Zz9BP/nfLpf4D0hmEyJqhlJB1roia6+pAEH7
-         Rhf1vWsm2jjHFt14gxTyRz89GYxrAj91jf2Z9+lQgY8kYF0Hcqs9yPLpdoySEZ8D21Fm
-         V2YvoeubMMHYS6loSDrOwICK00bLQolVqHzyjXlkIm0fQ2cpieg3XttsuAbHI/ey2Ahw
-         Z1cdBkYDfYgi/LEx7vELqO4GW51a46wnfiZ9/3BKvnvxnbyLCOLLz1FpjLZYtzMPFlOh
-         vPClNp0U2E2du4TT4kzIsscdW55UK+JU5DclwRCGT1l0HuOfyicAU3FJT+FStY0B0le6
-         FT3g==
+        b=Bm1EIU2Rdp0EWdc68uFx0zr/yHpNLGOjvrK2ELHROP4vJ/UpyJbliLs8o7sviZMRr1
+         1g50ma42nQTidTYVvLNzRPFKR0hAcK5EHcqQ+/iErVKE1ByCGVZiE1BWYrN6ydknswnH
+         6y4844NxdLfR/0xxzrjXfD1n/7WtwR6zZ7yG5IgfIqfIJwx24hjYWxV1SVEAsOmdD+lS
+         a6X5zPuNDi87+NdFYxdqs70ljpEcJVd/UBgRXgIooj0Dk1awF5Zn5ubNjnDAUFUafFmP
+         H6szJF9PJbe5grumLjxduUr089Jd0Wtz42tCgaWP5rY4kNQwpyL/IhdEjH5rVNCr2wk+
+         b2Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=KMGW2OrpToXnlcz7PbYDNHJtZUo7wx5866teQTVm4PU=;
+        bh=y3PV8u6QqUB+b40Wsnnjr24BniiaLcCQM104Ia0rve0=;
         fh=4rHsaFhVkVMXk5u1IVZO4usPBujjRbqK1KMv0eZ+6CI=;
-        b=fqPocI6FW2ynfkPYK0b76c4mHAQd4bOMK21Gup2pEUiMeKG6vpc1CKfJSdypiV5W0/
-         ccn38gGr1hPHmpD3VHDJxsoVbOCArIEgxcJ26CdWGI1CFD6XW6SeI0l8SeQvlTuntHMr
-         10q6l234s45TVgGLGZjspQ8h0zYWT/FMWPQfc9Erdf7k0z7TcA/EQLB6zJ96xdeAUzFi
-         1SeSFqy92AmEjcmNqQ3D/pwLYnMhTy3J4KG+hfj+FaUYeJMbo9do37Z4oC0iYUmQ5655
-         owWSe6ArQdjJ43dq2K0Np9t4FSAgLiINTIRT/C33yiOwObDAzB11hA5xThPFcVV9PoUP
-         v+og==;
+        b=ZOEvrd/4jznx4lTQ+zOaVpezSj1kHLxUHdfY/5LPI/JNWBC2b2SWVNiWOGWBglmN2S
+         QDhcbvLuLamwTsTOGq1Mw8h57Yt3EIKqyUhSl4JFyUjkkCVQHbaEvZEzcpMe+CEkhiOl
+         aDaCbeYFKc2dWuzZmVJ3MbUNmWXO9ncGUchBrmeHztVDP+jRxDCG2enkzNyfiRqHHJVi
+         lFY9esfGeVGDrxUe0m8fAUNK++Gx0eCKpY14QB57Kv2Fu6v/1V9mgk3cY3ssz/sEgtgm
+         PWgFQmp+RB665VhVm3C3VwPXyc+EXvijZqvnhuGx40ODUrmRdaSpcy7YXFdliZito+NE
+         rnrw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b18d291068si1030809885a.212.2024.10.29.02.19.23
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d321439si1038039085a.269.2024.10.29.02.20.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 02:19:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Oct 2024 02:20:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t5iMD-0000Ws-B1; Tue, 29 Oct 2024 05:17:45 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t5iML-0000Zy-FP; Tue, 29 Oct 2024 05:17:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t5iMB-0000WE-0N; Tue, 29 Oct 2024 05:17:43 -0400
+ id 1t5iMI-0000ZX-Qy; Tue, 29 Oct 2024 05:17:50 -0400
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1t5iM9-0003A3-Iy; Tue, 29 Oct 2024 05:17:42 -0400
+ id 1t5iMH-0003A3-4q; Tue, 29 Oct 2024 05:17:50 -0400
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 29 Oct
- 2024 17:17:30 +0800
+ 2024 17:17:31 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Tue, 29 Oct 2024 17:17:30 +0800
+ Transport; Tue, 29 Oct 2024 17:17:31 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -67,9 +67,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 1/8] aspeed/soc: Support RTC for AST2700
-Date: Tue, 29 Oct 2024 17:17:22 +0800
-Message-ID: <20241029091729.3317512-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 4/8] hw/sd/sdhci: Fix coding style
+Date: Tue, 29 Oct 2024 17:17:25 +0800
+Message-ID: <20241029091729.3317512-5-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
 References: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
@@ -85,68 +85,194 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JGhmHdAO6nDS
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: BiSPyq1soTpq
 
-The RTC controller between AST2600 and AST2700 are identical. Add RTC model for
-AST2700 RTC support. The RTC controller registers base address is start at
-0x12C0_F000 and its alarm interrupt is connected to GICINT13.
+Fix coding style issues from checkpatch.pl
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/arm/aspeed_ast27x0.c | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+ hw/sd/sdhci.c | 64 +++++++++++++++++++++++++++++++++------------------
+ 1 file changed, 42 insertions(+), 22 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index dca660eb6b..7ab4bec644 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -63,6 +63,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
-     [ASPEED_DEV_ADC]       =  0x14C00000,
-     [ASPEED_DEV_I2C]       =  0x14C0F000,
-     [ASPEED_DEV_GPIO]      =  0x14C0B000,
-+    [ASPEED_DEV_RTC]       =  0x12C0F000,
- };
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index ed01499391..db7d547156 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -234,7 +234,7 @@ static void sdhci_raise_insertion_irq(void *opaque)
  
- #define AST2700_MAX_IRQ 288
-@@ -376,6 +377,8 @@ static void aspeed_soc_ast2700_init(Object *obj)
+     if (s->norintsts & SDHC_NIS_REMOVE) {
+         timer_mod(s->insert_timer,
+-                       qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + SDHC_INSERTION_DELAY);
++                qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + SDHC_INSERTION_DELAY);
+     } else {
+         s->prnsts = 0x1ff0000;
+         if (s->norintstsen & SDHC_NISEN_INSERT) {
+@@ -252,7 +252,7 @@ static void sdhci_set_inserted(DeviceState *dev, bool level)
+     if ((s->norintsts & SDHC_NIS_REMOVE) && level) {
+         /* Give target some time to notice card ejection */
+         timer_mod(s->insert_timer,
+-                       qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + SDHC_INSERTION_DELAY);
++                qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + SDHC_INSERTION_DELAY);
+     } else {
+         if (level) {
+             s->prnsts = 0x1ff0000;
+@@ -290,9 +290,11 @@ static void sdhci_reset(SDHCIState *s)
+     timer_del(s->insert_timer);
+     timer_del(s->transfer_timer);
  
-     snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
-     object_initialize_child(obj, "gpio", &s->gpio, typename);
-+
-+    object_initialize_child(obj, "rtc", &s->rtc, TYPE_ASPEED_RTC);
+-    /* Set all registers to 0. Capabilities/Version registers are not cleared
++    /*
++     * Set all registers to 0. Capabilities/Version registers are not cleared
+      * and assumed to always preserve their value, given to them during
+-     * initialization */
++     * initialization
++     */
+     memset(&s->sdmasysad, 0, (uintptr_t)&s->capareg - (uintptr_t)&s->sdmasysad);
+ 
+     /* Reset other state based on current card insertion/readonly status */
+@@ -306,7 +308,8 @@ static void sdhci_reset(SDHCIState *s)
+ 
+ static void sdhci_poweron_reset(DeviceState *dev)
+ {
+-    /* QOM (ie power-on) reset. This is identical to reset
++    /*
++     * QOM (ie power-on) reset. This is identical to reset
+      * commanded via device register apart from handling of the
+      * 'pending insert on powerup' quirk.
+      */
+@@ -446,8 +449,10 @@ static void sdhci_read_block_from_card(SDHCIState *s)
+         s->prnsts &= ~SDHC_DAT_LINE_ACTIVE;
+     }
+ 
+-    /* If stop at block gap request was set and it's not the last block of
+-     * data - generate Block Event interrupt */
++    /*
++     * If stop at block gap request was set and it's not the last block of
++     * data - generate Block Event interrupt
++     */
+     if (s->stopped_state == sdhc_gap_read && (s->trnmod & SDHC_TRNS_MULTI) &&
+             s->blkcnt != 1)    {
+         s->prnsts &= ~SDHC_DAT_LINE_ACTIVE;
+@@ -549,8 +554,10 @@ static void sdhci_write_block_to_card(SDHCIState *s)
+     sdhci_update_irq(s);
  }
  
- /*
-@@ -670,6 +673,14 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
+-/* Write @size bytes of @value data to host controller @s Buffer Data Port
+- * register */
++/*
++ * Write @size bytes of @value data to host controller @s Buffer Data Port
++ * register
++ */
+ static void sdhci_write_dataport(SDHCIState *s, uint32_t value, unsigned size)
+ {
+     unsigned i;
+@@ -595,9 +602,11 @@ static void sdhci_sdma_transfer_multi_blocks(SDHCIState *s)
+         return;
+     }
  
-+    /* RTC */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->rtc), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->rtc), 0, sc->memmap[ASPEED_DEV_RTC]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->rtc), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_DEV_RTC));
-+
-     create_unimplemented_device("ast2700.dpmcu", 0x11000000, 0x40000);
-     create_unimplemented_device("ast2700.iomem0", 0x12000000, 0x01000000);
-     create_unimplemented_device("ast2700.iomem1", 0x14000000, 0x01000000);
+-    /* XXX: Some sd/mmc drivers (for example, u-boot-slp) do not account for
++    /*
++     * XXX: Some sd/mmc drivers (for example, u-boot-slp) do not account for
+      * possible stop at page boundary if initial address is not page aligned,
+-     * allow them to work properly */
++     * allow them to work properly
++     */
+     if ((s->sdmasysad % boundary_chk) == 0) {
+         page_aligned = true;
+     }
+@@ -703,7 +712,8 @@ static void get_adma_description(SDHCIState *s, ADMADescr *dscr)
+         dma_memory_read(s->dma_as, entry_addr, &adma2, sizeof(adma2),
+                         MEMTXATTRS_UNSPECIFIED);
+         adma2 = le64_to_cpu(adma2);
+-        /* The spec does not specify endianness of descriptor table.
++        /*
++         * The spec does not specify endianness of descriptor table.
+          * We currently assume that it is LE.
+          */
+         dscr->addr = (hwaddr)extract64(adma2, 32, 32) & ~0x3ull;
+@@ -978,8 +988,10 @@ static bool sdhci_can_issue_command(SDHCIState *s)
+     return true;
+ }
+ 
+-/* The Buffer Data Port register must be accessed in sequential and
+- * continuous manner */
++/*
++ * The Buffer Data Port register must be accessed in sequential and
++ * continuous manner
++ */
+ static inline bool
+ sdhci_buff_access_is_sequential(SDHCIState *s, unsigned byte_num)
+ {
+@@ -1207,8 +1219,10 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+         MASKED_WRITE(s->argument, mask, value);
+         break;
+     case SDHC_TRNMOD:
+-        /* DMA can be enabled only if it is supported as indicated by
+-         * capabilities register */
++        /*
++         * DMA can be enabled only if it is supported as indicated by
++         * capabilities register
++         */
+         if (!(s->capareg & R_SDHC_CAPAB_SDMA_MASK)) {
+             value &= ~SDHC_TRNS_DMA;
+         }
+@@ -1280,8 +1294,10 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+         } else {
+             s->norintsts &= ~SDHC_NIS_ERR;
+         }
+-        /* Quirk for Raspberry Pi: pending card insert interrupt
+-         * appears when first enabled after power on */
++        /*
++         * Quirk for Raspberry Pi: pending card insert interrupt
++         * appears when first enabled after power on
++         */
+         if ((s->norintstsen & SDHC_NISEN_INSERT) && s->pending_insert_state) {
+             assert(s->pending_insert_quirk);
+             s->norintsts |= SDHC_NIS_INSERT;
+@@ -1397,8 +1413,10 @@ void sdhci_initfn(SDHCIState *s)
+ {
+     qbus_init(&s->sdbus, sizeof(s->sdbus), TYPE_SDHCI_BUS, DEVICE(s), "sd-bus");
+ 
+-    s->insert_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_raise_insertion_irq, s);
+-    s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_data_transfer, s);
++    s->insert_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
++                                   sdhci_raise_insertion_irq, s);
++    s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
++                                     sdhci_data_transfer, s);
+ 
+     s->io_ops = &sdhci_mmio_le_ops;
+ }
+@@ -1446,11 +1464,13 @@ void sdhci_common_realize(SDHCIState *s, Error **errp)
+ 
+ void sdhci_common_unrealize(SDHCIState *s)
+ {
+-    /* This function is expected to be called only once for each class:
++    /*
++     * This function is expected to be called only once for each class:
+      * - SysBus:    via DeviceClass->unrealize(),
+      * - PCI:       via PCIDeviceClass->exit().
+      * However to avoid double-free and/or use-after-free we still nullify
+-     * this variable (better safe than sorry!). */
++     * this variable (better safe than sorry!).
++     */
+     g_free(s->fifo_buffer);
+     s->fifo_buffer = NULL;
+ }
 -- 
 2.34.1
 

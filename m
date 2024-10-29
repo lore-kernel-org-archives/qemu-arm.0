@@ -1,460 +1,166 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp534848njj;
-        Tue, 29 Oct 2024 13:48:01 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX7pMcoP7iVLIp8aiJiXH5OwMaan07aWeqxkMi+Nzb8/UhnMa7u5EnPd7q+06gVaQBi0TPpdTaCHjhEoQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH2U4eq3n47MtUqx06aTl9dVM5Sg9x5nPYWNJpRjBPdZC2xnUnsk8bLAEXvsnhla9wwclvo
-X-Received: by 2002:a05:6214:3d0e:b0:6cb:eea5:69e0 with SMTP id 6a1803df08f44-6d1856f3c9bmr266923496d6.27.1730234881564;
-        Tue, 29 Oct 2024 13:48:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730234881; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp550996njj;
+        Tue, 29 Oct 2024 14:21:06 -0700 (PDT)
+X-Received: by 2002:a05:6102:dd0:b0:4a5:e5b6:25d1 with SMTP id ada2fe7eead31-4a8cfb83185mr12206713137.15.1730236866013;
+        Tue, 29 Oct 2024 14:21:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730236865; cv=none;
         d=google.com; s=arc-20240605;
-        b=kAAaYYeFZ0nMrKJN5sAICfUTRHaGgzCkWjVUyphm77EXNgKWngYs1IlTYRDrpA1S9B
-         eLgFuIT0YmQc1PlJcaO5VDTJjuPcg0HGjuxU6zOapYxDSxucLIfG3gi/ihK3JytuQce7
-         TLitoSLqR6fCIdLJUuDv13cwiXEKfptRJOM6byHsAylgcBz/S9ON1/Fmzf9ALodSqeL9
-         cLQE5pxPFzlEfCtyM17JIj9yKc4oweUhQu34V2/S8ADR8CS4XDEZHipYm9RiwdIDjL63
-         wkKx1N+c4GGYU5iTKlrM36HRzy/DnsdQiCSxOIgDoiNSs/dNjU2Pstvl19R6jOGvK+TR
-         cOuA==
+        b=GM8A4D/95li9iBfh5DFXQBQa3ouel4smWN8wlcfWoYi03lHRhs9O9vkeKXzsdNzb7o
+         hntIfNRozm6ZDgfFqdPWlbo0rjsd9ZwFtO8B6nlzpwqE0hzXXmjTZlIBPcSZbICoZAv/
+         BrBm30wnJjb/E3kXcd37gop12FwxnDPx0OPA4lA18/yxc6RO4XVAscDJupzpQxbEbH1M
+         c/0oGFpyh5gabb2x3lCDIFDqv9yrorPdzMhQXwNTsA+4tilIZh/+O6oaqA4RbrVAfgDH
+         nGQ1Fhqf+BniLI77y2KdSxSCQtJIl17Yi4W0cy284DlqbzlcwLaTeuEzUuyvvhL0fyRe
+         qB3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:subject:in-reply-to:message-id:cc:to:from:date
-         :dkim-signature;
-        bh=I4y2F/iW15T4JcRgIGdNwOfFRj+jiZH9l33EIXu5V1Y=;
-        fh=9Z0KOU3uKWrvpFCXfXNpEu8KPaUw/am7yFw6o8jlfCA=;
-        b=AOnUmHOttQindPb7mfS7JyO8ouWCllSF+WMye+xtZ8L8/YBbPPue8UyGtTRXkMdgkT
-         /oa8M0Ku0JAAmt/LMbaNA/AYYswosNtdGKCLxiYIyRLBA9OHJd8YoncR5ZuT2LKMfQCI
-         YEvTKbsu4owXQNEpkH+Nsj04YnGpzvVf1ChNplbRWS1/1DtRu1U1r7yC8M4zgn1M8r/V
-         3ZaV4hDhywxjqahb31aPdUg75I9OHV1a0Uhu4tu6fuOInn3cTEfcdzQxJzM2df8hS5K0
-         in0mGZyxlkPqgx0ffyaTOo9sZ3dj/4e+PuhiQ85Wj7nXqdI9OvRJ5c/7hI5E4Z4iBie9
-         3dqQ==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=vM4TwgSByAwjE/8uPmOkWGdQzOQ04DQhkwgOetgVghY=;
+        fh=3xyYzkKeA3JtDjLKVEnOzljpFRwT6zGEOAjXqvseqIg=;
+        b=Hdc1LS6/17nxwN8wTyrKke98KaIWZcXc1RXG3fFXc7u38kIxV2K/iHRS5mO1gYNbQ3
+         EioSPmA2OHiLcXjj1Md0iCWOPwy9dFsKA4RQXWKwEm8FRcv3IuyD2HX+TJ6fu86yM0/A
+         59KPBYtEKiXOXAV8VcKGffCLzjQIJyqsSUCVMzC9A+9guojWZ5kR44pRajMMRttJMNZz
+         2V99UISsz91iLjE53dCg14I56AQK+gSlkRiJ4uALC2svTf+5DLGSyY/MrCtjZpiNhHA7
+         QTdD6a1n0P9eDXw9/+NDlxRgUMnRzuVp8Qvn1u8v/jOTVu/GL7ryN4p2GCtGtEwBfLE4
+         w1Wg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b=NpeQpjVN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d17986f15bsi119457746d6.58.2024.10.29.13.48.01
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=e+Nr6fh8;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by domain of phil@philjordan.eu) smtp.mailfrom=phil@philjordan.eu;
+       dara=neutral header.i=@linaro.org
+Return-Path: <phil@philjordan.eu>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a1e0cc1a2514c-85580a6a7a0sor1660281241.2.2024.10.29.14.21.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 13:48:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 29 Oct 2024 14:21:05 -0700 (PDT)
+Received-SPF: neutral (google.com: 209.85.220.41 is neither permitted nor denied by domain of phil@philjordan.eu) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@free.fr header.s=smtp-20201208 header.b=NpeQpjVN;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=free.fr
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t5t86-0001aE-Q7; Tue, 29 Oct 2024 16:47:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <castet.matthieu@free.fr>)
- id 1t5t7l-0001Qf-2K; Tue, 29 Oct 2024 16:47:51 -0400
-Received: from smtp1-g21.free.fr ([2a01:e0c:1:1599::10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <castet.matthieu@free.fr>)
- id 1t5t7e-0004Zg-Sg; Tue, 29 Oct 2024 16:47:32 -0400
-Received: from zimbra83-e15.priv.proxad.net (unknown [172.20.243.252])
- by smtp1-g21.free.fr (Postfix) with ESMTP id 26D9FB00571;
- Tue, 29 Oct 2024 21:47:09 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=free.fr;
- s=smtp-20201208; t=1730234829;
- bh=v1TWAZb8OQG85dxrs0Bpz+2OwcB3hwa+95QE6bHQBWQ=;
- h=Date:From:To:Cc:In-Reply-To:Subject:From;
- b=NpeQpjVNekdk3JY11mQ9HiM9iFpxgRJ5aD8+eAV4GNPEkHuOjc8OkmolL3Nl/DZo3
- hvEkKY4U/w2PJ24oRp3MsQBsURIE4uCxM/2gLUi9MIUwlb7G5Ci09Suxqie9m4+Wfa
- 4Wo/mXSN/4qcVZoxcEXh1nLadV6jL8K/ubL1exMXxZ+goPyuXGA/mkzH8fqlBOEawU
- WlzHVrgVyp2DQZzjAbj3BKmug1ORtACamNC6Hz5YHSYkfTMLbJFilyQ69GgeXu9Hqk
- XlMw9ygeSlZljxt71JGPCsl/AOWlhany49QC4o/J9PC/e6dxKVYDHBW27zCvjdZuD/
- ZBZJHZzfkh3uA==
-Date: Tue, 29 Oct 2024 21:47:09 +0100 (CET)
-From: castet.matthieu@free.fr
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, "open list:ARM cores" <qemu-arm@nongnu.org>
-Message-ID: <605361231.417554090.1730234829057.JavaMail.root@zimbra83-e15.priv.proxad.net>
-In-Reply-To: <CAFEAcA9JQNJBfk+g8iYcczVcTSqEOJZ5=LGtBupHqreUX-2MkA@mail.gmail.com>
-Subject: Re: [PATCH 1/1] target/arm: Add cortex-m0+ support
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=e+Nr6fh8;
+       spf=neutral (google.com: 209.85.220.41 is neither permitted nor denied by domain of phil@philjordan.eu) smtp.mailfrom=phil@philjordan.eu;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1730236865; x=1730841665; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=vM4TwgSByAwjE/8uPmOkWGdQzOQ04DQhkwgOetgVghY=;
+        b=e+Nr6fh8bqaENQRviuTkfw8frvrqC/oEETKxMEki2yKKjAbWII5GCrE6U6kDk1X2D6
+         ttMBuhQCvrUa+A/6B4oQB+J4O2dnVmZ8eZj/XcrZCTP1WWEXkgnEK8IWjwDqCJ3f9QmX
+         FaGjA2xxkqGDfmD0qx7KnRVZuQ4Jjm+INMwdHdntkAugxdWqPMADpW+bEplVwhOG3bkP
+         bcyNp6G34H+DQKvFaV5a7ReqjUUqEVOCDnPMo5u1mOculskxfQhYKVAg3CUB9EqkQ8u1
+         h1EWwVyGuwN8CQtgGYP7YX+n5WMGlXRXtm4lyAV/XowkclmVn8N1xx4RqfEE9mF6XPkY
+         GGEA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730236865; x=1730841665;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=vM4TwgSByAwjE/8uPmOkWGdQzOQ04DQhkwgOetgVghY=;
+        b=jKjKRAv/Sxxr+qBFzc+KzPY/0YX8YqrSws0VDPsDoTsRfftPWfRN7wcEOAsqwxNGA3
+         rlvxNyJLE/9cn6LHJBzyyDnReSAAu1JVnH7MBJ/2H4yN7JGonlr0py8GCp0uTo1NbVCX
+         FvwiqxSVTrJ9/Epn6tE5v6cxOci6idOBVR/Lh9bjcrlZhJIAh/GK8pEYOf+/BYqxVE4q
+         YPrcL1hRHZrZBIaskBhw7NUHXtM5kjx6vCIItaiXgEeHJbMnFgcVxEzpb15bAsHrG8wO
+         jMwclU1QClxybKNoD0b/mv6WP07+YDvSUsmphC2DEybeio+bJN7lhZR8YPLICHtuoB1z
+         bJ+g==
+X-Gm-Message-State: AOJu0YzNYIH8gO1HzPGMvD8zXqu9uW0EF8UnTS8LAjCUrolVf7J7Q5/8
+	zAesgFlu/zV5b0oRLZNNq+snanKlqR6ppZKVIWUskRkrwqYWtEnQmn7bM+6A8+eeFxjOoLTKBDd
+	92HeA6oA34FNiGISu8v+NlW50AIIzaqeuppEuBRGXTpUjoqv29Q==
+X-Google-Smtp-Source: AGHT+IFCZUDVtQPvXMT+DM7TUBuVOxKbphCii00tVwzsU2yHo08+YD7nTKeDPcXYYXsva8aRFM6sBzrlzGHvK2Njfoo=
+X-Received: by 2002:a05:6102:f13:b0:4a4:9194:d2c1 with SMTP id
+ ada2fe7eead31-4a8cfd72365mr11581446137.27.1730236864115; Tue, 29 Oct 2024
+ 14:21:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [2a01:cb00:13da:d200:7cf5:aa34:e526:681b]
-X-Mailer: Zimbra 7.2.0-GA2598 (ZimbraWebClient - FF3.0 (Linux)/7.2.0-GA2598)
-X-Authenticated-User: castet.matthieu@free.fr
-Received-SPF: pass client-ip=2a01:e0c:1:1599::10;
- envelope-from=castet.matthieu@free.fr; helo=smtp1-g21.free.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: EMN+EluXWIF5
+References: <20240928085727.56883-1-phil@philjordan.eu> <871q0xmwzb.fsf@draig.linaro.org>
+In-Reply-To: <871q0xmwzb.fsf@draig.linaro.org>
+From: Phil Dennis-Jordan <phil@philjordan.eu>
+Date: Tue, 29 Oct 2024 22:20:53 +0100
+Message-ID: <CAAibmn0wc6a-BM+kC6MJDTAFJoaAR4cVnVd6dr1G6eC8Lt_QBw@mail.gmail.com>
+Subject: Re: [PATCH v3 00/14] macOS PV Graphics and new vmapple machine type
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org, 
+	pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com, 
+	marcin.juszkiewicz@linaro.org, stefanha@redhat.com, mst@redhat.com, 
+	slp@redhat.com, richard.henderson@linaro.org, eduardo@habkost.net, 
+	marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com, 
+	chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com, philmd@linaro.org, 
+	shorne@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com, 
+	bmeng.cn@gmail.com, liwei1518@gmail.com, dbarboza@ventanamicro.com, 
+	zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, 
+	berrange@redhat.com, akihiko.odaki@daynix.com, qemu-arm@nongnu.org, 
+	qemu-block@nongnu.org, qemu-riscv@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000a9d1580625a42988"
+X-TUID: QSBhcFZSklwQ
 
-Hi Peter,
+--000000000000a9d1580625a42988
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
->On Tue, 22 Oct 2024 at 21:34, Matthieu Castet <castet.matthieu@free.fr> wrote:
->>
->> Signed-off-by: Matthieu Castet<castet.matthieu@free.fr>
->
->Hi; thanks for this patch. I have some initial code review comments,
->but the change looks broadly correct to me and I don't think
->there's anything obvious missing.
->
->The commit message body here is empty. Commits should
->almost always have some description in the body of
->what they are doing and why.
-
-Thanks for the review. When I sent the patch, I didn't put my
-last version and some of your comment were already fixed.
-Sorry for that.
+On Thu, 3 Oct 2024 at 10:06, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
 
 >
->(You don't need a separate cover-letter email for
->single-patch patches, by the way -- only for multi-patch series.)
+> > There are currently a few limitations to this which aren't intrinsic,
+> > just imperfect emulation of the VZF, but it's good enough to be just
+> > about usable for some purposes:
+> >
+> >  * macOS 12 guests only. Versions 13+ currently fail during early boot.
+> >  * macOS 11+ arm64 hosts only, with hvf accel. (Perhaps some difference=
+s
+> >    between Apple M series CPUs and TCG's aarch64 implementation? macOS
+> >    hosts only because ParavirtualizedGraphics.framework is a black box
+> >    implementing most of the logic behind the apple-gfx device.)
+>
+> We don't currently have TCG CPU models for the Apple Silicon processors.
+> They are not too hard to add (basically setting the correct ID register
+> bits, c.f. aarch64_neoverse_n1_initfn for an example). However that
+> would only cover Aarch64 architectural features. We do no modelling of
+> the extra instructions that Apple added (although in theory that should
+> only be run in Apples own ML libraries).
 >
 
-ok
+This really isn't my area of expertise, and I don't see myself attempting
+to make it work with TCG. Given that the OS only boots with the PV graphics
+device, you can only really use this machine type on a macOS host, so there
+aren't many reasons to use TCG over HVF. I suppose it might make debugging
+the myriad other rough edges easier!
 
->> ---
->>  hw/intc/armv7m_nvic.c    | 38 +++++++++++++++++++++++++++++++++-----
->>  target/arm/cpu.c         |  4 ++--
->>  target/arm/ptw.c         | 23 +++++++++++++++++++----
->>  target/arm/tcg/cpu-v7m.c | 21 ++++++++++++++++++++-
->>  4 files changed, 74 insertions(+), 12 deletions(-)
->>
->> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
->> index 98f3cf59bc..ed084e9db3 100644
->> --- a/hw/intc/armv7m_nvic.c
->> +++ b/hw/intc/armv7m_nvic.c
->> @@ -1386,7 +1386,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
->>          }
->>          return (cpu->env.pmsav7.drbar[region] & ~0x1f) | (region & 0xf);
->>      }
->> -    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
->> +    case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */
->>      case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
->>      case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
->>      case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
->
->The v6M spec says that it doesn't have the _A* aliases
->for RBAR and RASR so we should have a check to make those
->goto bad_offset in both read and write functions.
+--000000000000a9d1580625a42988
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-ok, I will add the bad_offset to read
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, 3 Oct 2024 at 10:06, Alex Ben=
+n=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@linaro.o=
+rg</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
+n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
+"><br>
+&gt; There are currently a few limitations to this which aren&#39;t intrins=
+ic,<br>
+&gt; just imperfect emulation of the VZF, but it&#39;s good enough to be ju=
+st<br>
+&gt; about usable for some purposes:<br>
+&gt;<br>
+&gt;=C2=A0 * macOS 12 guests only. Versions 13+ currently fail during early=
+ boot.<br>
+&gt;=C2=A0 * macOS 11+ arm64 hosts only, with hvf accel. (Perhaps some diff=
+erences<br>
+&gt;=C2=A0 =C2=A0 between Apple M series CPUs and TCG&#39;s aarch64 impleme=
+ntation? macOS<br>
+&gt;=C2=A0 =C2=A0 hosts only because ParavirtualizedGraphics.framework is a=
+ black box<br>
+&gt;=C2=A0 =C2=A0 implementing most of the logic behind the apple-gfx devic=
+e.)<br>
+<br>
+We don&#39;t currently have TCG CPU models for the Apple Silicon processors=
+.<br>
+They are not too hard to add (basically setting the correct ID register<br>
+bits, c.f. aarch64_neoverse_n1_initfn for an example). However that<br>
+would only cover Aarch64 architectural features. We do no modelling of<br>
+the extra instructions that Apple added (although in theory that should<br>
+only be run in Apples own ML libraries).<br></blockquote><div><br></div><di=
+v>This really isn&#39;t my area of expertise, and I don&#39;t see myself at=
+tempting to make it work with TCG. Given that the OS only boots with the PV=
+ graphics device, you can only really use this machine type on a macOS host=
+, so there aren&#39;t many reasons to use TCG over HVF. I suppose it might =
+make debugging the myriad other rough edges easier!</div><div><br></div><di=
+v><br></div></div></div>
 
-
-
->
->> @@ -1876,6 +1876,14 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
->>              return;
->>          }
->>
->> +        if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
->> +                if (offset != 0xd9c)
->> +                        goto bad_offset;
->
->Our coding style says all if() statements need braces, even
->one-line ones. The indentation here also seems to be off --
->our indent is four-space.
->
-
-I will fix the code
-
->> +
->> +                /* do not support size less than 256 */
->> +                value &= ~0xe0;
->
->This line doesn't look like it does what the comment suggests.
->A region size of 256 bytes would be a SIZE field of 7, where
->the size field is bits [5:1]. This &= ~0xe0 will (unless I've
->got confused) zero bits [3:1], which would turn a SIZE of 7
->into an invalid SIZE of 0.
-
-The code is checking region address alignement, not region size.
-ADDR is encoded on bits [31:8] on armv6-m and bits [31:5]
-on armv7-m.
-
-I will update the comment to 
-
-                /* armv6-m do not support region address with alignement 
-                 * less than 256. Force alignement.
-                 */
-
-
->
->More generally: in QEMU if we're enforcing limits on the
->values a register field can hold we typically do it on the
->guest-write path. Then the read path can just return the
->value in the register, which we already know to be in-range.
-
-Ok
-
-
-
->> -    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
->> -    case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
->> -    case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
->> -    case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
->> +    case 0xda0: /* MPU_RASR (v6M/v7M), MPU_RLAR (v8M) */
->> +    case 0xda8: /* MPU_RASR_A1 (v6M/v7M), MPU_RLAR_A1 (v8M) */
->> +    case 0xdb0: /* MPU_RASR_A2 (v6M/v7M), MPU_RLAR_A2 (v8M) */
->> +    case 0xdb8: /* MPU_RASR_A3 (v6M/v7M), MPU_RLAR_A3 (v8M) */
->
->v6M doesn't have the RASR_A* aliases, so those lines shouldn't change.
-
-ok
-
-
->
->>      {
->>          int region = cpu->env.pmsav7.rnr[attrs.secure];
->> +        int rsize;
->>
->>          if (arm_feature(&cpu->env, ARM_FEATURE_V8)) {
->>              /* PMSAv8M handling of the aliases is different from v7M:
->> @@ -1926,6 +1935,25 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
->>              return;
->>          }
->>
->> +        rsize = extract32(value, 1, 5);
->> +        if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7)) {
->> +            if (offset != 0xda0)
->> +                goto bad_offset;
->> +            /* for armv6-m rsize >= 7 (min 256) */
->> +            if (rsize < 7) {
->> +                qemu_log_mask(LOG_GUEST_ERROR,
->> +                        "MPU region size too small %d\n", rsize);
->> +                return;
->> +            }
->> +        }
->> +
->> +        /* for armv7-m rsize >= 4 (min 32) */
->> +        if (rsize < 4) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                    "MPU region size too small %d\n", rsize);
->> +            return;
->> +        }
->
->You don't need to handle and log too-large region
->sizes both in the register-set codepath and then again
->later when we do the address translation. If you're ruling
->them out here then they'll never happen later.
-
-Ok, let's handle it here in the write path.
-
-
->
->Duplicating the qemu_log_mask() line is awkward -- maybe
->better to have
->  rsize_min = arm_feature(&s->cpu->env, ARM_FEATURE_V7) ? 4 : 7;
->  if (rsize < rsize_min) {
->      qemu_log_mask(...)
->  }
->
-
-Ok, I will do that
-
-
-
->> +
->>          if (region >= cpu->pmsav7_dregion) {
->>              return;
->>          }
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 1320fd8c8f..875e3aab69 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -508,7 +508,7 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
->>                             sizeof(*env->pmsav8.rlar[M_REG_S])
->>                             * cpu->pmsav7_dregion);
->>                  }
->> -            } else if (arm_feature(env, ARM_FEATURE_V7)) {
->> +            } else if (arm_feature(env, ARM_FEATURE_M)) {
->>                  memset(env->pmsav7.drbar, 0,
->>                         sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
->>                  memset(env->pmsav7.drsr, 0,
->> @@ -2454,7 +2454,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->>      }
->>
->>      if (arm_feature(env, ARM_FEATURE_PMSA) &&
->> -        arm_feature(env, ARM_FEATURE_V7)) {
->> +        arm_feature(env, ARM_FEATURE_M)) {
->>          uint32_t nr = cpu->pmsav7_dregion;
->>
->>          if (nr > 0xff) {
->
->These changes don't look correct -- they will break the handling
->of R-profile PMSAv7 CPUs like the Cortex-R5.
-
-You are right, I changed it to : 
-
-
-
-@@ -508,7 +508,8 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
-                            sizeof(*env->pmsav8.rlar[M_REG_S])
-                            * cpu->pmsav7_dregion);
-                 }
--            } else if (arm_feature(env, ARM_FEATURE_V7)) {
-+            } else if (arm_feature(env, ARM_FEATURE_V7) ||
-+                       arm_feature(env, ARM_FEATURE_M)) {
-                 memset(env->pmsav7.drbar, 0,
-                        sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
-                 memset(env->pmsav7.drsr, 0,
-@@ -2454,7 +2455,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
- 
-     if (arm_feature(env, ARM_FEATURE_PMSA) &&
--        arm_feature(env, ARM_FEATURE_V7)) {
-+        (arm_feature(env, ARM_FEATURE_V7) || arm_feature(env, ARM_FEATURE_M))) {
-         uint32_t nr = cpu->pmsav7_dregion;
- 
-         if (nr > 0xff) {
-
-
-Is that correct ?
-
->
->> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
->> index dd40268397..fa771907e3 100644
->> --- a/target/arm/ptw.c
->> +++ b/target/arm/ptw.c
->> @@ -2383,6 +2383,13 @@ static bool pmsav7_use_background_region(ARMCPU *cpu, ARMMMUIdx mmu_idx,
->>      return regime_sctlr(env, mmu_idx) & SCTLR_BR;
->>  }
->>
->> +/* armv6m PMSAv6 is mostly compatible with PMSAv7,
->> + * main difference :
->> + * - min region size is 256 instead of 32
->> + * - TEX can be only 0 (Tex not used by qemu)
->> + * - no alias register
->> + * - HardFault instead of MemManage
->> + */
->
->Our coding style for multiline comments says
->/*
-> * they look like this, with the opening and closing markers on
-> * lines of their own
-> */
-
-I will changed that.
-
-It do not seem to be followed in In hw/intc/armv7m_nvic.c, but my new comment should also follow
-this rule in this file ?
-
-
->
->This comment might be better placed at the point below where
->we call get_phys_addr_psav7(), because it is the explanation
->for why on M-profile we call that function even if we don't
->have PMSAv7.
-
-ok
-
->
->>  static bool get_phys_addr_pmsav7(CPUARMState *env,
->>                                   S1Translate *ptw,
->>                                   uint32_t address,
->> @@ -2423,11 +2430,19 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
->>                  continue;
->>              }
->>
->> -            if (!rsize) {
->> +            /* Issue warning for invalid values
->> +             * for armv7-m rsize >= 4 (min 32)
->> +             * for armv6-m rsize >= 7 (min 256)
->> +             */
->> +            if (!rsize ||
->> +                (arm_feature(env, ARM_FEATURE_M) && (
->> +                       rsize < 7 ||
->> +                       (rsize < 4 && !arm_feature(env, ARM_FEATURE_V7))))) {
->>                  qemu_log_mask(LOG_GUEST_ERROR,
->> -                              "DRSR[%d]: Rsize field cannot be 0\n", n);
->> +                              "DRSR[%d]: Rsize field cannot be %d\n", n, rsize);
->>                  continue;
->>              }
->> +
->>              rsize++;
->>              rmask = (1ull << rsize) - 1;
-
-I will remove this modification. Size check is done in write.
-
-
->>
->> @@ -3515,8 +3530,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
->>              /* PMSAv8 */
->>              ret = get_phys_addr_pmsav8(env, ptw, address, access_type,
->>                                         result, fi);
->> -        } else if (arm_feature(env, ARM_FEATURE_V7)) {
->> -            /* PMSAv7 */
->> +        } else if (arm_feature(env, ARM_FEATURE_V7) || arm_feature(env, ARM_FEATURE_M)) {
->> +            /* PMSAv7 or PMSAv6 */
->
->This is specifically M-profile PMSAv6. R-profile PMSAv6
->(which we do not implement) is a bit different.
-
-I change the comment to "armv6-m PMSAv6".
-
-
-
->>  static void cortex_m3_initfn(Object *obj)
->>  {
->>      ARMCPU *cpu = ARM_CPU(obj);
->> @@ -111,6 +125,7 @@ static void cortex_m4_initfn(Object *obj)
->>      set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
->>      cpu->midr = 0x410fc240; /* r0p0 */
->>      cpu->pmsav7_dregion = 8;
->> +    /* VFPv4-SP */
->>      cpu->isar.mvfr0 = 0x10110021;
->>      cpu->isar.mvfr1 = 0x11000011;
->>      cpu->isar.mvfr2 = 0x00000000;
->> @@ -141,6 +156,7 @@ static void cortex_m7_initfn(Object *obj)
->>      set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
->>      cpu->midr = 0x411fc272; /* r1p2 */
->>      cpu->pmsav7_dregion = 8;
->> +    /* VFPv5 DP */
->>      cpu->isar.mvfr0 = 0x10110221;
->>      cpu->isar.mvfr1 = 0x12000011;
->>      cpu->isar.mvfr2 = 0x00000040;
->> @@ -173,6 +189,7 @@ static void cortex_m33_initfn(Object *obj)
->>      cpu->midr = 0x410fd213; /* r0p3 */
->>      cpu->pmsav7_dregion = 16;
->>      cpu->sau_sregion = 8;
->> +    /* VFPv5 DP */
->>      cpu->isar.mvfr0 = 0x10110021;
->>      cpu->isar.mvfr1 = 0x11000011;
->>      cpu->isar.mvfr2 = 0x00000040;
->> @@ -209,7 +226,7 @@ static void cortex_m55_initfn(Object *obj)
->>      cpu->revidr = 0;
->>      cpu->pmsav7_dregion = 16;
->>      cpu->sau_sregion = 8;
->> -    /* These are the MVFR* values for the FPU + full MVE configuration */
->> +    /* These are the MVFR* values for the FPv5-D16-M + full MVE configuration */
->>      cpu->isar.mvfr0 = 0x10110221;
->>      cpu->isar.mvfr1 = 0x12100211;
->>      cpu->isar.mvfr2 = 0x00000040;
->
->These comment additions/changes don't seem to be related to the
->Cortex-M0+. If you want to make them, put them in a
->separate commit with its own commit message saying why.
-
-I will remove this comments, and may be send them in extra patch.
-
-If everything is ok, I will send a V2 patch with your review.
-
-Thanks
-
-Matthieu
+--000000000000a9d1580625a42988--

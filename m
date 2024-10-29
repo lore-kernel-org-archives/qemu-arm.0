@@ -1,100 +1,100 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp541664njj;
-        Tue, 29 Oct 2024 14:02:29 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVZxlRjRABc5+kE83aiircxPpPYcpgh5YYmkcyenKaGJf1y+VYR8mDSn6BCmSwtGMiP8Isq1wZBoscGTA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFvCWwb3lkmo0HNC7KFkfCM3XT3qSE2E2EFn5gfSnqEVHnDdWNT+pWeZOpsJAahqOCOXuwq
-X-Received: by 2002:a05:620a:318b:b0:7ac:b93b:b250 with SMTP id af79cd13be357-7b193e2f634mr1908517485a.0.1730235749608;
-        Tue, 29 Oct 2024 14:02:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730235749; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp541981njj;
+        Tue, 29 Oct 2024 14:03:02 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXL6ml6SHwLjJIolmQtf51/SpHugghLZvY/r+i/Q5w/SHBhn5mzZJHg+Zq0EYK+oKekzF1s3+ffSp61IA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHSShXSV90/DsDKBZwSvuwIj3Ygv/UglNPyX97CHtx54rY0ZMMoP2lxFqZR8otSdqWzpxxI
+X-Received: by 2002:a05:620a:1724:b0:7b1:5424:e994 with SMTP id af79cd13be357-7b193eed5d0mr2304646685a.26.1730235782608;
+        Tue, 29 Oct 2024 14:03:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730235782; cv=none;
         d=google.com; s=arc-20240605;
-        b=NFLd5Ws6ktDZVAV/ox4NYLqazvVnzx17aCNe0OYa4/g4DtK5sptxZv3jDL0YslgMTv
-         Z+A4uVgWXq5otFMmx0wW9VGYG3hjlZaQSGdtG2vQ05u7pH3/rnuNjqXuZq7lQs6tm913
-         tY/NlllaXSio5xpLmhqpyN9mce7xNFv/P8Wr/IWF1nLMWJGjIdtPABXaj3ySptZSUtgf
-         Gv03Bb5V5bx0VK3JoUUVwwYQuv9ylYiCedhxHNgoSKDjKEYuxbEahb6hQmxw7/OMFUvY
-         fZl/QCxvpZJWIv7aeW0x5bVJF8weyjUoK+hl5dZfbAQD/VO8g/qEnL799RbW0xzn7teG
-         aTdw==
+        b=b8H2DrVu/aKDGgED0hLP4Z9StFwnu1Xi1W4vMPOa8VKRhzOxfHsjccOUgHB6LXJMnJ
+         Gqct1dtXhCai0hBURmFFz3mpffyyOD5kfrS/+Mqpvg1PkMIK6VAVjCIB7msuDYQlZWNq
+         SaBTe4D9RClbi1NfXA7q3NXs7ZMtw0OSuB0eU5JLlJMK8b1YJNpWXMKPEFd5AsV+Wrd1
+         gZJMl6Yp4orSoVU8aJdQ166TAx82DMlghZzIFlILTjW/IkiimJcz82BBi5KcJaGyM8Nz
+         +2sXwYzb+TcFuQmEKffleNdACjemt/3MaRWbmYi0KUHDSaoF9faP/JjdlSNT68OEB5BV
+         9dyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=/7At35sOPcE3GUUaFg/vHYoUFWhiVUqXzP1FpK3MLlI=;
-        fh=FMZT4Ac/UsToQgFZgx1SDuymot5TFzkU1wALLkOs07g=;
-        b=bp4bJRVcj26RDkCx+NqiqUwlSoiZFEFKNCGeh61uk37IQSh/qLNqv/LtkAl1DdQ2zA
-         E1tQ8JoOdjRzVMSi3zOaUgBZT9Qkinrd9tZj2hBqwHitiozrHdZpsN7sTkL9+vX1k6wl
-         xhQgx6rjDi3RC0iBPR/2NllMBdR0wxgGI7cABwRlqXUD2TY+8BscbHVLl6JFkZ8Svagf
-         Z++4TgXebxOX7NBittYp2Of5DyFH1+Ezst+MuybVaZQp6dZhJI5pFobiVTdPZdN7x3n4
-         2hdkWC9EZvIyKGfH/5FGunzTNrx1TOcDMZeUEcIgZt8bm2g0iXeDNqwmrZXXE/s6sVwg
-         DK0w==;
+        bh=ijAewjRBURoFdp5bzkLZ63F+nbsTOOkYMV9t/qC9vNc=;
+        fh=VkK0trCX69cWggZg9Zsz4EC6QTdpjnDgaQFj4DzBHzQ=;
+        b=fbZ6xwsTt9dk2qoT8MveajLXtywxG+xh1vThwt6QvTrOWfU9Y68ul4Pm9LG3tYlt9I
+         00mUdxZ7id/t6HaJBi0k6nNoJDO+uCGd3tn0q0MTIZMH/hCyGfso6/aaqiPtOAOHSvUh
+         EVdkz8+Crrk5z0LtmFWbWenmigSLQ9z+eZrKiJZvUrhljZsAN124g2cQ3RkKf6lVx3WB
+         IfNkHoVjtfq/dj9oN9MODi/VSWv9tbsGIpbjghA+EbTsL2d/u0dj6cdWgIci/Kb0XqT/
+         GvHcGujK5A3qLW62IeFpacGbvWLe2uVnf3gHVu6awI+AGSmXHcUR3128okroeGEFg6Ez
+         FgXA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=uRZXdsaD;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=uwovqJ9H;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b1ae567e17si89082285a.456.2024.10.29.14.02.29
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d321c7csi1189123185a.325.2024.10.29.14.03.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 14:02:29 -0700 (PDT)
+        Tue, 29 Oct 2024 14:03:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=uRZXdsaD;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=uwovqJ9H;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t5tJo-0004l4-NV; Tue, 29 Oct 2024 17:00:00 -0400
+	id 1t5tJn-0004cu-0A; Tue, 29 Oct 2024 16:59:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1t5tJa-00048Q-Sy
- for qemu-arm@nongnu.org; Tue, 29 Oct 2024 16:59:46 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ id 1t5tJU-00044B-9A
+ for qemu-arm@nongnu.org; Tue, 29 Oct 2024 16:59:41 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1t5tJV-0005i8-SV
- for qemu-arm@nongnu.org; Tue, 29 Oct 2024 16:59:43 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-5c94c4ad9d8so7379646a12.2
- for <qemu-arm@nongnu.org>; Tue, 29 Oct 2024 13:59:41 -0700 (PDT)
+ id 1t5tJQ-0005g1-8X
+ for qemu-arm@nongnu.org; Tue, 29 Oct 2024 16:59:40 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-5cb72918bddso7814341a12.3
+ for <qemu-arm@nongnu.org>; Tue, 29 Oct 2024 13:59:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1730235580; x=1730840380;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1730235575; x=1730840375;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=/7At35sOPcE3GUUaFg/vHYoUFWhiVUqXzP1FpK3MLlI=;
- b=uRZXdsaDBnBCh4fxpzJsE0PPMEOrTHfu/K2mqi0yPaymxpH76qmomJTgV+SFk6zlu+
- /1WKcx1LHsSNUg43PZq9d5TcpPPfTQfTWO7RvDkz199xLRuuBY/bXtT4hhqLf3ryd6sV
- 0mrOAaRcrniSgWiWwvG50isCHToMhmDIWDr6TDlTfj/V95Hb4rwIXwj9LNbaBEcoSKBX
- XCkpqVNH1sWd5j42GALO87su56Aj+BM8lQyqgfh+xu3jh9ks0VlwK6F3fGdDbUC/Cd80
- I6KQ868SBzKGUbo/pcRrNnhszhixMK6S7txC5m5rEwetFQJF5ymNPEDVwa7uczxGzfdH
- WhCg==
+ bh=ijAewjRBURoFdp5bzkLZ63F+nbsTOOkYMV9t/qC9vNc=;
+ b=uwovqJ9HJGRNCwy2C7IaGM2CYMEacAGDRAydH6AfUuPHeOjo5Br1TLuRKT1nTxPuir
+ pDCuU6ksLbaCYqc5jXexVxgeQszaSeINSx5bNnLkL2hQtuCI4A3BB6ZV8VDR+Gf+vf+R
+ rDrJVQHxf8eVyyajlX0NfKoZAZryrWbQgsdpNBpTB2H1JXLIYXcZN5UXqhjV4i4fOw+1
+ t/VgQUyWN7QrRs27QuUs3gPBbqj7baihBcvsD5uq7ZhOpi3nZMXxA8KpPtliFGEy+1x9
+ ywyz/J2J2D25HrXO8rSGOjlUqCDBkw/rhfpLw8irwXeAo5S9gZ/UV2AUJvmYdmDehr/f
+ 7Q0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730235580; x=1730840380;
+ d=1e100.net; s=20230601; t=1730235575; x=1730840375;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=/7At35sOPcE3GUUaFg/vHYoUFWhiVUqXzP1FpK3MLlI=;
- b=a6Zj/rPEtveJ4KVhfXVimf0EpQCSOCHMi6I0CMxwRkAGcoglDtScpEDVpyqbNtAxu1
- 4vqSFG8mBCj2JfsGbQXquV/JqFO+6RSGqJxzXeK57vgnvRLHmiP+awRoLxGq4+Usn0T+
- FfD7ilPmSHVKF7bbL7m3/Kp5NrkZVbAa+L6HpnmzGGFbRYUyPgVXUa+KKr9a/vtZinaZ
- SgvMRxkACoVrJbohPInu2XJ7hicawym7MqjFj7s1MgEfvS+DhfkzDgsJkmz7LS9lZ/XA
- DUrfzedFYLgh4EZz06yI6zBLdzoemHoSsQBkkTX4JmGa5sTp0l+oWg93LjF7xfFNDHcR
- HXyg==
+ bh=ijAewjRBURoFdp5bzkLZ63F+nbsTOOkYMV9t/qC9vNc=;
+ b=niN9CB3WvXoyVkZ46oehjxB1iGtXK9OCXiI5DXEnYX+89i4HLItW1DUlx4jOPndsch
+ +oZSLrr1q607QvTLEnd+a6LrSBM3pCMlVRfkpZTdmpVUotvwf+2u/2Bmhf9Zdg+JbSBA
+ R5BwZwmBBaebdwo+tBlyj/PRRVuIFU1cvL7D7ZbiTsFvt2iINZT/l9woTluf1GCSDq8M
+ 1yLhpJSgOBfSRr7NZrtxAvD0iYnvAYTcvfNFVWTU7eJGctvUi0tFxnOmOcasem383ykV
+ RT/4vVznFIDF0xL+BCc5sVK+stFeNlJlg1dY7v6tCmMEmtB83DUHFONGyInZcNHWJ8cu
+ /w7w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWnUlhCndRPpFd/V2lkrhjDuzItv143FaT3IlJm79kwSB2Bx7QSRBzt+tBAGGVLpJPKIOsuA4HOXw==@nongnu.org
-X-Gm-Message-State: AOJu0YzFWk66VoocTf9bgWw2Tnvn+ZF31uThXSiA+mqDPMjVfzL84L0c
- LjHtHzVbOn43PjQ4KAKCUlY12bUf1v1Dr0Xf1lEq6FJEFFqvDm02kbRkKpT5/w==
-X-Received: by 2002:a05:6402:234c:b0:5cb:6ca4:f552 with SMTP id
- 4fb4d7f45d1cf-5cbbfaef98cmr11395949a12.35.1730235580182; 
- Tue, 29 Oct 2024 13:59:40 -0700 (PDT)
+ AJvYcCVNyAOWfEAX+PrDFYkNWuiNRnxN0q6fyBQDuVuGJwJCfowuguo7ew8IRwRm77Kl1/YwDqC5u+w5EQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yza0t8P6kzyWVbbIIM366XTw3K+IgxyXYn1XpwIAzpYgcYgTnyf
+ rUkxeYKm9PQJ+wE63+qWvZxSEJO7GJjIg3V9Ok4mReBN+IKnp9yPiLCoLKNukw==
+X-Received: by 2002:a05:6402:254e:b0:5ca:da2:b2ca with SMTP id
+ 4fb4d7f45d1cf-5cbbf8dc477mr9888063a12.19.1730235574769; 
+ Tue, 29 Oct 2024 13:59:34 -0700 (PDT)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5cbb629d5besm4217341a12.33.2024.10.29.13.59.37
+ 4fb4d7f45d1cf-5cbb629d5besm4217341a12.33.2024.10.29.13.59.33
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 29 Oct 2024 13:59:39 -0700 (PDT)
+ Tue, 29 Oct 2024 13:59:34 -0700 (PDT)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -108,18 +108,18 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PATCH v5 14/15] hw/block/virtio-blk: Replaces request free function
- with g_free
-Date: Tue, 29 Oct 2024 21:58:18 +0100
-Message-Id: <20241029205819.69888-15-phil@philjordan.eu>
+ qemu-riscv@nongnu.org, Alexander Graf <graf@amazon.com>
+Subject: [PATCH v5 12/15] hw/vmapple/cfg: Introduce vmapple cfg region
+Date: Tue, 29 Oct 2024 21:58:16 +0100
+Message-Id: <20241029205819.69888-13-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.3 (Apple Git-145)
 In-Reply-To: <20241029205819.69888-1-phil@philjordan.eu>
 References: <20241029205819.69888-1-phil@philjordan.eu>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::52a;
- envelope-from=phil@philjordan.eu; helo=mail-ed1-x52a.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::52c;
+ envelope-from=phil@philjordan.eu; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -140,232 +140,281 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: z5ZAWpKfbt+Q
+X-TUID: rouA2eRAMnqk
 
-The virtio_blk_free_request() function has been a 1-liner forwarding
-to g_free() for a while now. We may as well call g_free on the request
-pointer directly.
+From: Alexander Graf <graf@amazon.com>
 
+Instead of device tree or other more standardized means, VMApple passes
+platform configuration to the first stage boot loader in a binary encoded
+format that resides at a dedicated RAM region in physical address space.
+
+This patch models this configuration space as a qdev device which we can
+then map at the fixed location in the address space. That way, we can
+influence and annotate all configuration fields easily.
+
+Signed-off-by: Alexander Graf <graf@amazon.com>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
-Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- hw/block/virtio-blk.c          | 43 +++++++++++++++-------------------
- hw/vmapple/virtio-blk.c        |  2 +-
- include/hw/virtio/virtio-blk.h |  1 -
- 3 files changed, 20 insertions(+), 26 deletions(-)
+v3:
 
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index 9e8337bb639..40d2c9bc591 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -50,11 +50,6 @@ static void virtio_blk_init_request(VirtIOBlock *s, VirtQueue *vq,
-     req->mr_next = NULL;
- }
+ * Replaced legacy device reset method with Resettable method
+
+v4:
+
+ * Fixed initialisation of default values for properties
+ * Dropped superfluous endianness conversions
+ * Moved most header code to .c, device name #define goes in vmapple.h
+
+v5:
+
+ * Improved error reporting in case of string property buffer overflow.
+
+ hw/vmapple/Kconfig           |   3 +
+ hw/vmapple/cfg.c             | 203 +++++++++++++++++++++++++++++++++++
+ hw/vmapple/meson.build       |   1 +
+ include/hw/vmapple/vmapple.h |   2 +
+ 4 files changed, 209 insertions(+)
+ create mode 100644 hw/vmapple/cfg.c
+
+diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
+index 68f88876eb9..8bbeb9a9237 100644
+--- a/hw/vmapple/Kconfig
++++ b/hw/vmapple/Kconfig
+@@ -4,3 +4,6 @@ config VMAPPLE_AES
+ config VMAPPLE_BDIF
+     bool
  
--void virtio_blk_free_request(VirtIOBlockReq *req)
--{
--    g_free(req);
--}
--
- void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status)
- {
-     VirtIOBlock *s = req->dev;
-@@ -93,7 +88,7 @@ static int virtio_blk_handle_rw_error(VirtIOBlockReq *req, int error,
-         if (acct_failed) {
-             block_acct_failed(blk_get_stats(s->blk), &req->acct);
-         }
--        virtio_blk_free_request(req);
-+        g_free(req);
-     }
++config VMAPPLE_CFG
++    bool
++
+diff --git a/hw/vmapple/cfg.c b/hw/vmapple/cfg.c
+new file mode 100644
+index 00000000000..91c57239f86
+--- /dev/null
++++ b/hw/vmapple/cfg.c
+@@ -0,0 +1,203 @@
++/*
++ * VMApple Configuration Region
++ *
++ * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/vmapple/vmapple.h"
++#include "hw/sysbus.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qapi/error.h"
++#include "net/net.h"
++
++OBJECT_DECLARE_SIMPLE_TYPE(VMAppleCfgState, VMAPPLE_CFG)
++
++#define VMAPPLE_CFG_SIZE 0x00010000
++
++typedef struct VMAppleCfg {
++    uint32_t version;         /* 0x000 */
++    uint32_t nr_cpus;         /* 0x004 */
++    uint32_t unk1;            /* 0x008 */
++    uint32_t unk2;            /* 0x00c */
++    uint32_t unk3;            /* 0x010 */
++    uint32_t unk4;            /* 0x014 */
++    uint64_t ecid;            /* 0x018 */
++    uint64_t ram_size;        /* 0x020 */
++    uint32_t run_installer1;  /* 0x028 */
++    uint32_t unk5;            /* 0x02c */
++    uint32_t unk6;            /* 0x030 */
++    uint32_t run_installer2;  /* 0x034 */
++    uint32_t rnd;             /* 0x038 */
++    uint32_t unk7;            /* 0x03c */
++    MACAddr mac_en0;          /* 0x040 */
++    uint8_t pad1[2];
++    MACAddr mac_en1;          /* 0x048 */
++    uint8_t pad2[2];
++    MACAddr mac_wifi0;        /* 0x050 */
++    uint8_t pad3[2];
++    MACAddr mac_bt0;          /* 0x058 */
++    uint8_t pad4[2];
++    uint8_t reserved[0xa0];   /* 0x060 */
++    uint32_t cpu_ids[0x80];   /* 0x100 */
++    uint8_t scratch[0x200];   /* 0x180 */
++    char serial[32];          /* 0x380 */
++    char unk8[32];            /* 0x3a0 */
++    char model[32];           /* 0x3c0 */
++    uint8_t unk9[32];         /* 0x3e0 */
++    uint32_t unk10;           /* 0x400 */
++    char soc_name[32];        /* 0x404 */
++} VMAppleCfg;
++
++struct VMAppleCfgState {
++    SysBusDevice parent_obj;
++    VMAppleCfg cfg;
++
++    MemoryRegion mem;
++    char *serial;
++    char *model;
++    char *soc_name;
++};
++
++static void vmapple_cfg_reset(Object *obj, ResetType type)
++{
++    VMAppleCfgState *s = VMAPPLE_CFG(obj);
++    VMAppleCfg *cfg;
++
++    cfg = memory_region_get_ram_ptr(&s->mem);
++    memset(cfg, 0, VMAPPLE_CFG_SIZE);
++    *cfg = s->cfg;
++}
++
++static bool strlcpy_set_error(char *restrict dst, const char *restrict src,
++                              size_t dst_size, Error **errp,
++                              const char *parent_func, const char *location,
++                              const char *buffer_name, const char *extra_info)
++{
++    size_t len;
++
++    len = g_strlcpy(dst, src, dst_size);
++    if (len < dst_size) { /* len does not count nul terminator */
++        return true;
++    }
++
++    error_setg(errp,
++               "%s (%s) strlcpy error: Destination buffer %s too small "
++               "(need %zu, have %zu) %s",
++               parent_func, location, buffer_name, len + 1, dst_size, extra_info);
++    return false;
++}
++
++/*
++ * String copying wrapper that returns and reports a runtime error in
++ * case of truncation due to insufficient destination buffer space.
++ */
++#define strlcpy_array_return_error(dst_array, src, errp, extra_info) \
++    do { \
++        if (!strlcpy_set_error((dst_array), (src), ARRAY_SIZE(dst_array), \
++                               (errp), __func__, stringify(__LINE__), \
++                               # dst_array, extra_info)) { \
++            return; \
++        } \
++    } while (0)
++
++static void vmapple_cfg_realize(DeviceState *dev, Error **errp)
++{
++    VMAppleCfgState *s = VMAPPLE_CFG(dev);
++    uint32_t i;
++
++    if (!s->serial) {
++        s->serial = g_strdup("1234");
++    }
++    if (!s->model) {
++        s->model = g_strdup("VM0001");
++    }
++    if (!s->soc_name) {
++        s->soc_name = g_strdup("Apple M1 (Virtual)");
++    }
++
++    strlcpy_array_return_error(s->cfg.serial, s->serial, errp,
++                               "setting 'serial' property on VMApple cfg device");
++    strlcpy_array_return_error(s->cfg.model, s->model, errp,
++                               "setting 'model' property on VMApple cfg device");
++    strlcpy_array_return_error(s->cfg.soc_name, s->soc_name, errp,
++                               "setting 'soc_name' property on VMApple cfg device");
++    strlcpy_array_return_error(s->cfg.unk8, "D/A", errp, "");
++    s->cfg.version = 2;
++    s->cfg.unk1 = 1;
++    s->cfg.unk2 = 1;
++    s->cfg.unk3 = 0x20;
++    s->cfg.unk4 = 0;
++    s->cfg.unk5 = 1;
++    s->cfg.unk6 = 1;
++    s->cfg.unk7 = 0;
++    s->cfg.unk10 = 1;
++
++    if (s->cfg.nr_cpus > ARRAY_SIZE(s->cfg.cpu_ids)) {
++        error_setg(errp,
++                   "Failed to create %u CPUs, vmapple machine supports %zu max",
++                   s->cfg.nr_cpus, ARRAY_SIZE(s->cfg.cpu_ids));
++        return;
++    }
++    for (i = 0; i < s->cfg.nr_cpus; i++) {
++        s->cfg.cpu_ids[i] = i;
++    }
++}
++
++static void vmapple_cfg_init(Object *obj)
++{
++    VMAppleCfgState *s = VMAPPLE_CFG(obj);
++
++    memory_region_init_ram(&s->mem, obj, "VMApple Config", VMAPPLE_CFG_SIZE,
++                           &error_fatal);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mem);
++}
++
++static Property vmapple_cfg_properties[] = {
++    DEFINE_PROP_UINT32("nr-cpus", VMAppleCfgState, cfg.nr_cpus, 1),
++    DEFINE_PROP_UINT64("ecid", VMAppleCfgState, cfg.ecid, 0),
++    DEFINE_PROP_UINT64("ram-size", VMAppleCfgState, cfg.ram_size, 0),
++    DEFINE_PROP_UINT32("run_installer1", VMAppleCfgState, cfg.run_installer1, 0),
++    DEFINE_PROP_UINT32("run_installer2", VMAppleCfgState, cfg.run_installer2, 0),
++    DEFINE_PROP_UINT32("rnd", VMAppleCfgState, cfg.rnd, 0),
++    DEFINE_PROP_MACADDR("mac-en0", VMAppleCfgState, cfg.mac_en0),
++    DEFINE_PROP_MACADDR("mac-en1", VMAppleCfgState, cfg.mac_en1),
++    DEFINE_PROP_MACADDR("mac-wifi0", VMAppleCfgState, cfg.mac_wifi0),
++    DEFINE_PROP_MACADDR("mac-bt0", VMAppleCfgState, cfg.mac_bt0),
++    DEFINE_PROP_STRING("serial", VMAppleCfgState, serial),
++    DEFINE_PROP_STRING("model", VMAppleCfgState, model),
++    DEFINE_PROP_STRING("soc_name", VMAppleCfgState, soc_name),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void vmapple_cfg_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++
++    dc->realize = vmapple_cfg_realize;
++    dc->desc = "VMApple Configuration Region";
++    device_class_set_props(dc, vmapple_cfg_properties);
++    rc->phases.hold = vmapple_cfg_reset;
++}
++
++static const TypeInfo vmapple_cfg_info = {
++    .name          = TYPE_VMAPPLE_CFG,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(VMAppleCfgState),
++    .instance_init = vmapple_cfg_init,
++    .class_init    = vmapple_cfg_class_init,
++};
++
++static void vmapple_cfg_register_types(void)
++{
++    type_register_static(&vmapple_cfg_info);
++}
++
++type_init(vmapple_cfg_register_types)
+diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
+index d4624713deb..64b78693a31 100644
+--- a/hw/vmapple/meson.build
++++ b/hw/vmapple/meson.build
+@@ -1,2 +1,3 @@
+ system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c'))
+ system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
++system_ss.add(when: 'CONFIG_VMAPPLE_CFG',  if_true: files('cfg.c'))
+diff --git a/include/hw/vmapple/vmapple.h b/include/hw/vmapple/vmapple.h
+index 9090e9c5ac8..3bba59f5ec7 100644
+--- a/include/hw/vmapple/vmapple.h
++++ b/include/hw/vmapple/vmapple.h
+@@ -16,4 +16,6 @@
  
-     blk_error_action(s->blk, action, is_read, error);
-@@ -136,7 +131,7 @@ static void virtio_blk_rw_complete(void *opaque, int ret)
+ #define TYPE_VMAPPLE_BDIF "vmapple-bdif"
  
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-         block_acct_done(blk_get_stats(s->blk), &req->acct);
--        virtio_blk_free_request(req);
-+        g_free(req);
-     }
- }
- 
-@@ -151,7 +146,7 @@ static void virtio_blk_flush_complete(void *opaque, int ret)
- 
-     virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-     block_acct_done(blk_get_stats(s->blk), &req->acct);
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static void virtio_blk_discard_write_zeroes_complete(void *opaque, int ret)
-@@ -169,7 +164,7 @@ static void virtio_blk_discard_write_zeroes_complete(void *opaque, int ret)
-     if (is_write_zeroes) {
-         block_acct_done(blk_get_stats(s->blk), &req->acct);
-     }
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static VirtIOBlockReq *virtio_blk_get_request(VirtIOBlock *s, VirtQueue *vq)
-@@ -214,7 +209,7 @@ static void virtio_blk_handle_scsi(VirtIOBlockReq *req)
- 
- fail:
-     virtio_blk_req_complete(req, status);
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static inline void submit_requests(VirtIOBlock *s, MultiReqBuffer *mrb,
-@@ -612,7 +607,7 @@ static void virtio_blk_zone_report_complete(void *opaque, int ret)
- 
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
-     g_free(data->zone_report_data.zones);
-     g_free(data);
- }
-@@ -661,7 +656,7 @@ static void virtio_blk_handle_zone_report(VirtIOBlockReq *req,
-     return;
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static void virtio_blk_zone_mgmt_complete(void *opaque, int ret)
-@@ -677,7 +672,7 @@ static void virtio_blk_zone_mgmt_complete(void *opaque, int ret)
-     }
- 
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static int virtio_blk_handle_zone_mgmt(VirtIOBlockReq *req, BlockZoneOp op)
-@@ -719,7 +714,7 @@ static int virtio_blk_handle_zone_mgmt(VirtIOBlockReq *req, BlockZoneOp op)
-     return 0;
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
-     return err_status;
- }
- 
-@@ -750,7 +745,7 @@ static void virtio_blk_zone_append_complete(void *opaque, int ret)
- 
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
-     g_free(data);
- }
- 
-@@ -788,7 +783,7 @@ static int virtio_blk_handle_zone_append(VirtIOBlockReq *req,
- 
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
-     return err_status;
- }
- 
-@@ -855,7 +850,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-             virtio_blk_req_complete(req, VIRTIO_BLK_S_IOERR);
-             block_acct_invalid(blk_get_stats(s->blk),
-                                is_write ? BLOCK_ACCT_WRITE : BLOCK_ACCT_READ);
--            virtio_blk_free_request(req);
-+            g_free(req);
-             return 0;
-         }
- 
-@@ -911,7 +906,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-                               VIRTIO_BLK_ID_BYTES));
-         iov_from_buf(in_iov, in_num, 0, serial, size);
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
--        virtio_blk_free_request(req);
-+        g_free(req);
-         break;
-     }
-     case VIRTIO_BLK_T_ZONE_APPEND & ~VIRTIO_BLK_T_OUT:
-@@ -943,7 +938,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-         if (unlikely(!(type & VIRTIO_BLK_T_OUT) ||
-                      out_len > sizeof(dwz_hdr))) {
-             virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
--            virtio_blk_free_request(req);
-+            g_free(req);
-             return 0;
-         }
- 
-@@ -960,7 +955,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-                                                             is_write_zeroes);
-         if (err_status != VIRTIO_BLK_S_OK) {
-             virtio_blk_req_complete(req, err_status);
--            virtio_blk_free_request(req);
-+            g_free(req);
-         }
- 
-         break;
-@@ -975,7 +970,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-         if (!vbk->handle_unknown_request ||
-             !vbk->handle_unknown_request(req, mrb, type)) {
-             virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
--            virtio_blk_free_request(req);
-+            g_free(req);
-         }
-     }
-     }
-@@ -998,7 +993,7 @@ void virtio_blk_handle_vq(VirtIOBlock *s, VirtQueue *vq)
-         while ((req = virtio_blk_get_request(s, vq))) {
-             if (virtio_blk_handle_request(req, &mrb)) {
-                 virtqueue_detach_element(req->vq, &req->elem, 0);
--                virtio_blk_free_request(req);
-+                g_free(req);
-                 break;
-             }
-         }
-@@ -1048,7 +1043,7 @@ static void virtio_blk_dma_restart_bh(void *opaque)
-             while (req) {
-                 next = req->next;
-                 virtqueue_detach_element(req->vq, &req->elem, 0);
--                virtio_blk_free_request(req);
-+                g_free(req);
-                 req = next;
-             }
-             break;
-@@ -1131,7 +1126,7 @@ static void virtio_blk_reset(VirtIODevice *vdev)
-             /* No other threads can access req->vq here */
-             virtqueue_detach_element(req->vq, &req->elem, 0);
- 
--            virtio_blk_free_request(req);
-+            g_free(req);
-         }
-     }
- 
-diff --git a/hw/vmapple/virtio-blk.c b/hw/vmapple/virtio-blk.c
-index 1652151ec9c..fee1cf0ecaf 100644
---- a/hw/vmapple/virtio-blk.c
-+++ b/hw/vmapple/virtio-blk.c
-@@ -58,7 +58,7 @@ static bool vmapple_virtio_blk_handle_unknown_request(VirtIOBlockReq *req,
-         qemu_log_mask(LOG_UNIMP, "%s: Barrier requests are currently no-ops\n",
-                       __func__);
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
--        virtio_blk_free_request(req);
-+        g_free(req);
-         return true;
-     default:
-         return false;
-diff --git a/include/hw/virtio/virtio-blk.h b/include/hw/virtio/virtio-blk.h
-index 28d5046ea6c..dcb2c89aed5 100644
---- a/include/hw/virtio/virtio-blk.h
-+++ b/include/hw/virtio/virtio-blk.h
-@@ -109,7 +109,6 @@ typedef struct VirtIOBlkClass {
- } VirtIOBlkClass;
- 
- void virtio_blk_handle_vq(VirtIOBlock *s, VirtQueue *vq);
--void virtio_blk_free_request(VirtIOBlockReq *req);
- void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status);
- 
- #endif
++#define TYPE_VMAPPLE_CFG "vmapple-cfg"
++
+ #endif /* HW_VMAPPLE_VMAPPLE_H */
 -- 
 2.39.3 (Apple Git-145)
 

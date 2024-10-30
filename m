@@ -1,328 +1,151 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp735492njj;
-        Tue, 29 Oct 2024 23:01:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCX/fWBhTBHV0Y8VpRCMH29lDi2Q0liqhp69MQiDKT8hUOR9BL+vihMcsNM6H2QHL+vslVi90/bzHvEUdQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEkPy8OeskVlDXL84phaOGwHyxOwuy3f47SfSu4v6e/yIvrahtrtRWMNQZcieW5VvW2a1r9
-X-Received: by 2002:a05:620a:4406:b0:7a4:d56a:a928 with SMTP id af79cd13be357-7b1b0685a71mr209217285a.21.1730268119688;
-        Tue, 29 Oct 2024 23:01:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730268119; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp1071916njj;
+        Wed, 30 Oct 2024 09:17:00 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCU8mczKdfnCrFohGzVlKCb4EEghAyv4FWXJYyuX34gYOFD3/ouK8Jxaslg7+V2WsiWRXdvWeUW/JF6Wgg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFRcjZtrYS1FHPPZUhGtQfMqHsNDVwhsTslMSWYpedXfz+xwxibHrAwsrY7r32hRlYPXCnf
+X-Received: by 2002:a05:620a:2a0d:b0:7a9:bb80:1f3f with SMTP id af79cd13be357-7b193ef31c3mr2589107585a.22.1730305019910;
+        Wed, 30 Oct 2024 09:16:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730305019; cv=none;
         d=google.com; s=arc-20240605;
-        b=Mc9C/9w63EeQGPyumz/dBkQXv5RuAa7kbI1VXXH6kZie1wXpIzY4RPgODF2K4BidzB
-         PU1Dxp3dRtpddKpc2ESXiAN67pMtinblCQT/UR7K4mtZU8/dRDa8f2+KSONMUKxDoaw3
-         Yxqrw3cagg55a0nRH4dur3UvLF/5lDiA+bQFV957GO6Nok093AvTW+lZwv9ujTjBLqxS
-         gzANlAtDqz3jPiBZYBbYf5ij6UYbWAEAsy+UcU8BejnoGAf0fFViTMn8PrGiFyu5yYKj
-         bS6nYVQCzyuJ3oT8rNLy+p2MIzs2VMZaacX1mwqBvhMnS8OsL04Y7i/eGo8/2WCqYcdK
-         GEDQ==
+        b=d3motrVT+BZ4ja1zTvmKy36G7dLdFdOhuFR5GDT5BnQUtwr9NSmArdtgDML+JAt5GZ
+         KGvCuiCRGfLeG6fvET6xqqPMG7WTxJL1GjbMCeC49cXk7mRiYToXcmQarZeL+eU9W8h2
+         1dVjBNu94XdpDOl7AVww0w+t7ixwpfXip/63vPBPcEEWfFDflmqKLY9AyXXqT7qx/Cr6
+         FHQXmFkTPS773flFYlY3GbB4cpfww9NU4rurvzpU1rQ41INtL9ljoTLVlLrRGdIBjdcO
+         RQMqW6yInXPNSMUslrlcAFLxdkqI9NKvNuamHk8OUgOY/DDJZJx/SxlxQHAmqjyR+8wT
+         8DUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :feedback-id:dkim-signature:dkim-signature;
-        bh=SJgybJpt+nV8SoJCmz4xWg5DLbsh66RohILsXS/7Wpw=;
-        fh=P/QE6QMMJwL+AAMmPVPRb0cZWRGWkd28m194bTTntpo=;
-        b=e+X9hw2MzLlBviQPG++6OCmU3uWGoEQ8/eT78x1YFmbEgCyqMbwO54rOvacPl9Walk
-         sSHkOpugr6ENvUoiHHD+7NYWig0g3vC9GOkBbsxT0383RgOyBc8tsrm+7LlWoBpLdUxg
-         qqRhR+YqrNuRdkMc0gCat31d4eOhL+JerdOK8Xn1JAaYrHcKJocCacB/JEhkxHOGTrdH
-         Xb4LpJDEiX8W/X9gBTphd/WaLdvgcbgeqoiOkAlyQMRsBmYBqqv3TWYAPAWDdsm6RVT5
-         0uaSqF6I/Zgg0dRYao3GmiBa8zew7Mgd2mZwGnlXMv4o2DdX0WSO5lwjVWnjRM0+jIWf
-         WvMg==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=y9J5Nn2VIDI2g1fVa/d94I87DoPbRGqzG8bhzTdHbqo=;
+        fh=pL6RB1rnp0sIY3x/oq3wy/oUD7MV4IQKq3w/BOt6QCM=;
+        b=ko1b+jA9ziOzKYLkWotBwY6H68ggYTvcMNoJZ16jr/FHFvDASREXdxLqq+JfTdL+1G
+         ywwwSaTJ3/Gm2cYkiKGbSp8MIFXs8Xfwd+5EL0Cz8PT8IsxvAXVcX71u0UVPRh2U+TQT
+         Wl1za/WP3uVohagMvE/PGPP+MhnjGhzF0racwuzS6hLpUbadPCfkSTzI21LZmlL8VdvI
+         6VVamZb9mU89QYMGLM20QcQnf813zdLYsANmA81BeCS+L8rT9hIAHdmnwfwZhEt3GX3B
+         gs9Cj//Ie7AnETuXX+Yh4wYZqKn+Ip7VFVNNTnSJcMU04FuM2+Ukw6MiCtn+XIPvFC7Q
+         qPuA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@irrelevant.dk header.s=fm2 header.b=gmgqcY7v;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=EIK+lziB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="xk/T5Lu2";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b18d362412si1292846385a.654.2024.10.29.23.01.59
+        by mx.google.com with ESMTPS id af79cd13be357-7b18d344662si1377873185a.459.2024.10.30.09.16.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Oct 2024 23:01:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 30 Oct 2024 09:16:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@irrelevant.dk header.s=fm2 header.b=gmgqcY7v;
-       dkim=pass header.i=@messagingengine.com header.s=fm3 header.b=EIK+lziB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b="xk/T5Lu2";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t61li-0003Gx-Dy; Wed, 30 Oct 2024 02:01:22 -0400
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t6BNM-0003UV-KU; Wed, 30 Oct 2024 12:16:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1t61lg-0003Fw-18; Wed, 30 Oct 2024 02:01:20 -0400
-Received: from fhigh-a8-smtp.messagingengine.com ([103.168.172.159])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <its@irrelevant.dk>)
- id 1t61ld-0001K7-56; Wed, 30 Oct 2024 02:01:19 -0400
-Received: from phl-compute-01.internal (phl-compute-01.phl.internal
- [10.202.2.41])
- by mailfhigh.phl.internal (Postfix) with ESMTP id CFBBA11400D9;
- Wed, 30 Oct 2024 02:01:14 -0400 (EDT)
-Received: from phl-mailfrontend-01 ([10.202.2.162])
- by phl-compute-01.internal (MEProxy); Wed, 30 Oct 2024 02:01:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=irrelevant.dk;
- h=cc:cc:content-type:content-type:date:date:from:from
- :in-reply-to:in-reply-to:message-id:mime-version:references
- :reply-to:subject:subject:to:to; s=fm2; t=1730268074; x=
- 1730354474; bh=SJgybJpt+nV8SoJCmz4xWg5DLbsh66RohILsXS/7Wpw=; b=g
- mgqcY7viscu6cYj9gzXGulABtPU92ZghrDYCu9j0YtUT52ZbjV99j6rvkcJTmCHX
- pOKD1kuGb/Fpby9SDHlm/Jmm2rSqEFe8ftDBFBTMowNVaGCkUmnG0MRT/pXoV9+/
- P+h+ss1Zmto8ViNSwSGRYZCHxv/dIUDeiyEqL6UPtVcHiEewQNNxGXapoh08CyNT
- OmSDWHocxbjVdDFFb67ZVxvEbZyFerJ4m1kUf/0qO/ZXzSwcCKyOAG6Bwgcc7ewv
- 7FW5/Hgn+yg+fuxHCjbRsLKnNrRzeI6Tb23k7s8SdMtbNkQEObwIqLNi9aJVHTAW
- /vTt+GNsl6yllum7Z3KFg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-type:content-type:date:date
- :feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
- :message-id:mime-version:references:reply-to:subject:subject:to
- :to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
- 1730268074; x=1730354474; bh=SJgybJpt+nV8SoJCmz4xWg5DLbsh66RohIL
- sXS/7Wpw=; b=EIK+lziBwgIvJsOM+JXG6NXFgX2e0cHy5GRqisPpXFJCM+S3Loz
- E/p86VZRqSSTeHAgcisJWlvVQPSMp+pRKmDcKpNiT10D1XHu3M8bJX/znANfuJMu
- Bjq4QFgIJztJKG1h7c53rRPZRrkm5I5zwk0ja8+vxVBlvHwJLwCCQuQ6aGxag6xs
- 8HA0pJOXvAhHFsDiABQJziW/Ozl97egspxA5wmQo2KqAnckK3CHQ+QHyHktIzwgJ
- AtwKJaPAEjsxrq7Oh9YFw/n3Bxe062bbP0zDwJhpB39GX2ZFyL2+Kqp0NKZJ+/kJ
- CcSBWpqJCSy5CHoPm9Qe+3l4hXzSNbeGakQ==
-X-ME-Sender: <xms:p8shZ_3knMLzLgrrZLTIjOvJjJvrsJA7zYDPE3csng7I_ZnI4kTuqA>
- <xme:p8shZ-HpuplR5C0FEz7hgKysj2Apu0Wz-mhPmO2cxFo_8JtlPzwnrvyci4whNTEGH
- dpRwAEcr8aiFoAnZdU>
-X-ME-Received: <xmr:p8shZ_4SghPVkPV1zWYd0B3-yKRFqBrf9G6UZT4BOKFW_z7sCyxulp284AHE>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeeftddrvdekvddgledtucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
- rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
- htshculddquddttddmnecujfgurhepfffhvfevuffkfhggtggujgesghdtreertddtjeen
- ucfhrhhomhepmfhlrghushculfgvnhhsvghnuceoihhtshesihhrrhgvlhgvvhgrnhhtrd
- gukheqnecuggftrfgrthhtvghrnhepveeiheffhfduieeikefghedtudehudduueekiefg
- geffuedvkefgfeeuheejieefnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucevlh
- hushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpehithhssehirhhr
- vghlvghvrghnthdrughkpdhnsggprhgtphhtthhopedvtddpmhhouggvpehsmhhtphhouh
- htpdhrtghpthhtohepjhhonhgrthhhrghnrdgtrghmvghrohhnsehhuhgrfigvihdrtgho
- mhdprhgtphhtthhopehmihhnhigrrhgusegrtghmrdhorhhgpdhrtghpthhtoheprghnug
- hrvgifsegtohguvggtohhnshhtrhhutghtrdgtohhmrdgruhdprhgtphhtthhopehmrght
- thestghouggvtghonhhsthhruhgtthdrtghomhdrrghupdhrtghpthhtoheptghmihhnhi
- grrhgusehmvhhishhtrgdrtghomhdprhgtphhtthhopehpsghonhiiihhnihesrhgvughh
- rghtrdgtohhmpdhrtghpthhtohepphgvthgvrhdrmhgrhiguvghllheslhhinhgrrhhord
- horhhgpdhrtghpthhtohepjhgrshhofigrnhhgsehrvgguhhgrthdrtghomhdprhgtphht
- thhopehksghushgthheskhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:p8shZ022fTZAfKDMeVI6KsMPTAlXTd-U1uit_S_OZhI6oCVDDhTW3Q>
- <xmx:p8shZyGRjzYegaYOvRWVUokN_I285O_ZqQDnueNcPCgtVz0G_dEQ8g>
- <xmx:p8shZ18N1yCJlA5ovAZOjUrb3Toq30QZQeYxLlfvYzUT_yq0TW6Lnw>
- <xmx:p8shZ_mcxVmKKWqpZO8W_lGVMDYuwV_T2gy0bqdpPS0UWSBv20FYHg>
- <xmx:qsshZ1ncfOzfZpwpnPcakeej658ShTWCsAOS9QhXvBuIo4kzD1fvKTc0>
-Feedback-ID: idc91472f:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
- 30 Oct 2024 02:01:11 -0400 (EDT)
-Date: Wed, 30 Oct 2024 07:01:09 +0100
-From: Klaus Jensen <its@irrelevant.dk>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Corey Minyard <minyard@acm.org>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Matt Johnston <matt@codeconstruct.com.au>,
- Corey Minyard <cminyard@mvista.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Jason Wang <jasowang@redhat.com>, Keith Busch <kbusch@kernel.org>,
- Lior Weintraub <liorw@pliops.com>, Jeremy Kerr <jk@codeconstruct.com.au>,
- Peter Delevoryas <peter@pjd.dev>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-block@nongnu.org,
- Klaus Jensen <k.jensen@samsung.com>,
- Davidlohr Bueso <dave@stgolabs.net>, linux-cxl@vger.kernel.org,
- Hannes Reinecke <hare@suse.com>
-Subject: Re: [PATCH v6 0/3] hw/{i2c,nvme}: mctp endpoint, nvme management
- interface model
-Message-ID: <ZyHLpSzAAt7CevSg@AALNPWKJENSEN.aal.scsc.local>
-References: <20230914-nmi-i2c-v6-0-11bbb4f74d18@samsung.com>
- <20230920124803.00005ae9@Huawei.com>
- <ZQrrgxHrfzmGyhZU@mail.minyard.net>
- <ZQr0LXsSRXGqJ4EL@cormorant.local>
- <ZQsDcmkZYCk0eVhA@mail.minyard.net>
- <20241014103653.00002c83@Huawei.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t6BNK-0003UA-Uu
+ for qemu-devel@nongnu.org; Wed, 30 Oct 2024 12:16:50 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t6BNJ-0002TR-BX
+ for qemu-devel@nongnu.org; Wed, 30 Oct 2024 12:16:50 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-5c40aea5c40so49334a12.0
+ for <qemu-devel@nongnu.org>; Wed, 30 Oct 2024 09:16:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1730305006; x=1730909806; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=y9J5Nn2VIDI2g1fVa/d94I87DoPbRGqzG8bhzTdHbqo=;
+ b=xk/T5Lu2KTz4tBB+wMH8M4gp0kHkGdXDWr7bhmIHuZ9o90+AnAK0aRyhTVeJqACsLe
+ xalEELFKv9K/v4Wt97CrSzoVuN/kEjmJapa5F0Gmb2wwLubwErvxreKK2jbUdm96/Wyo
+ Ocqeix27KzjuWX2Rbc9dHkeVFVFekK28/7K9n03+jmgfJeLNanAzhiW0iswA24uszH9C
+ 0ZlhWOSrBgxXiHEWUiQDy7o388nlT77xffUzAQM6503Xn3ZG9404Ug43/wCqzT6YllLQ
+ /eoeaOCarG2NJmQijB5MfwshSO9MoYOuxNMHIV2b8dVjk0+dNoyXHTyGiNPuDAxnjfBm
+ qhWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730305006; x=1730909806;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=y9J5Nn2VIDI2g1fVa/d94I87DoPbRGqzG8bhzTdHbqo=;
+ b=S8AnzR8QKcM205B5BUWh2LIbHPL/u+ZNZIPJhg+Oq8Kg8yPDhFyJYJ6PUj4VQ6T8lP
+ zfsVjVF0SfiOoIOM6oN8MOdXWZtYwb1WnPpiWpDoe2JWiYtUKIxyNGZwXF78GBnHbBfF
+ mA1o+FIXFaMk6m2UsZUFOsRaRcwQqEouGaedAKSPxgsPrm2zX009tt4dt09hRKzT0vne
+ LAFIBVSb+dhiEoKQteI5gQNWD+8gbbpP9EV8EzsoqC70akdZ8KbiWZzOFTMU2N7SaRuw
+ XJgBOC+mQH5I5QlvpZvKhqY8obnNiGRH43LuR9kW/mfWQnMFoBXT6mt3Q/Pt7O41KtCF
+ 8cRQ==
+X-Gm-Message-State: AOJu0YxjqPLSJh5GZvi4r0s2oY3Z9oObTDhLP1v9AjYZmMyVVFhRBax7
+ H/zMs3ntSHWul48CEl1prZSw2uQz/rT2bxnWF9iCDFFcdyBPLeoBPMlQHMN3eGigYRnzCldvUMU
+ 60BbNdiKmAz9zT5wsDZOI5lo5TO4upGb4VWkpWQ==
+X-Received: by 2002:a05:6402:1f44:b0:5cb:68c7:879d with SMTP id
+ 4fb4d7f45d1cf-5cd564fe471mr2758782a12.19.1730305006076; Wed, 30 Oct 2024
+ 09:16:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="j6NcMIs1GVbu8Nan"
-Content-Disposition: inline
-In-Reply-To: <20241014103653.00002c83@Huawei.com>
-Received-SPF: pass client-ip=103.168.172.159; envelope-from=its@irrelevant.dk;
- helo=fhigh-a8-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <CAFEAcA9JQNJBfk+g8iYcczVcTSqEOJZ5=LGtBupHqreUX-2MkA@mail.gmail.com>
+ <605361231.417554090.1730234829057.JavaMail.root@zimbra83-e15.priv.proxad.net>
+In-Reply-To: <605361231.417554090.1730234829057.JavaMail.root@zimbra83-e15.priv.proxad.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 30 Oct 2024 16:16:33 +0000
+Message-ID: <CAFEAcA-zznZ=_=JtAuLveQevAj7doDyq8-q-Yz7Q2EZaPiy-pA@mail.gmail.com>
+Subject: Re: [PATCH 1/1] target/arm: Add cortex-m0+ support
+To: castet.matthieu@free.fr
+Cc: qemu-devel@nongnu.org, "open list:ARM cores" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NF1X1mKriHyE
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Gkd0jWzxTWOv
 
+On Tue, 29 Oct 2024 at 20:47, <castet.matthieu@free.fr> wrote:
+> >Our coding style for multiline comments says
+> >/*
+> > * they look like this, with the opening and closing markers on
+> > * lines of their own
+> > */
+>
+> I will changed that.
+>
+> It do not seem to be followed in In hw/intc/armv7m_nvic.c, but my new comment should also follow
+> this rule in this file ?
 
---j6NcMIs1GVbu8Nan
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Yes, please. We have quite a lot of older code that was written
+before we imposed some of the coding style standardisations we
+now use, so you'll see stuff that doesn't quite follow the
+rules in files already. Our general policy is that we don't
+bother to try to tidy up pre-existing code, but where we're
+adding new code or if we have to touch the code for some
+other reason we'll clean it up in that local area.
+(A rough guide is "if the checkpatch script complains about
+it consider fixing it", though checkpatch is not always
+correct about its suggestions.)
 
-On Oct 14 10:36, Jonathan Cameron via wrote:
-> On Wed, 20 Sep 2023 09:36:34 -0500
-> Corey Minyard <minyard@acm.org> wrote:
->=20
-> > On Wed, Sep 20, 2023 at 06:31:25AM -0700, Klaus Jensen wrote:
-> > > On Sep 20 07:54, Corey Minyard wrote: =20
-> > > > On Wed, Sep 20, 2023 at 12:48:03PM +0100, Jonathan Cameron via wrot=
-e: =20
-> > > > > On Thu, 14 Sep 2023 11:53:40 +0200
-> > > > > Klaus Jensen <its@irrelevant.dk> wrote:
-> > > > >  =20
-> > > > > > This adds a generic MCTP endpoint model that other devices may =
-derive
-> > > > > > from.
-> > > > > >=20
-> > > > > > Also included is a very basic implementation of an NVMe-MI devi=
-ce,
-> > > > > > supporting only a small subset of the required commands.
-> > > > > >=20
-> > > > > > Since this all relies on i2c target mode, this can currently on=
-ly be
-> > > > > > used with an SoC that includes the Aspeed I2C controller.
-> > > > > >=20
-> > > > > > The easiest way to get up and running with this, is to grab my =
-buildroot
-> > > > > > overlay[1] (aspeed_ast2600evb_nmi_defconfig). It includes modif=
-ied a
-> > > > > > modified dts as well as a couple of required packages.
-> > > > > >=20
-> > > > > > QEMU can then be launched along these lines:
-> > > > > >=20
-> > > > > >   qemu-system-arm \
-> > > > > >     -nographic \
-> > > > > >     -M ast2600-evb \
-> > > > > >     -kernel output/images/zImage \
-> > > > > >     -initrd output/images/rootfs.cpio \
-> > > > > >     -dtb output/images/aspeed-ast2600-evb-nmi.dtb \
-> > > > > >     -nic user,hostfwd=3Dtcp::2222-:22 \
-> > > > > >     -device nmi-i2c,address=3D0x3a \
-> > > > > >     -serial mon:stdio
-> > > > > >=20
-> > > > > > From within the booted system,
-> > > > > >=20
-> > > > > >   mctp addr add 8 dev mctpi2c15
-> > > > > >   mctp link set mctpi2c15 up
-> > > > > >   mctp route add 9 via mctpi2c15
-> > > > > >   mctp neigh add 9 dev mctpi2c15 lladdr 0x3a
-> > > > > >   mi-mctp 1 9 info
-> > > > > >=20
-> > > > > > Comments are very welcome!
-> > > > > >=20
-> > > > > >   [1]: https://github.com/birkelund/hwtests/tree/main/br2-exter=
-nal
-> > > > > >=20
-> > > > > > Signed-off-by: Klaus Jensen <k.jensen@samsung.com> =20
-> > > > >=20
-> > > > > Hi Klaus,
-> > > > >=20
-> > > > > Silly question, but who is likely to pick this up? + likely to be=
- soon?
-> > > > >=20
-> > > > > I'm going to post the CXL stuff that makes use of the core suppor=
-t shortly
-> > > > > and whilst I can point at this patch set on list, I'd keen to see=
- it upstream
-> > > > > to reduce the dependencies (it's got 2 sets ahead of it of CXL st=
-uff
-> > > > > anyway but that will all hopefully go through Michael Tsirkin's t=
-ree
-> > > > > for PCI stuff in one go). =20
-> > > >=20
-> > > > I can pick it up, but he can just request a merge, too.
-> > > >=20
-> > > > I did have a question I asked earlier about tests.  It would be unu=
-sual
-> > > > at this point to add something like this without having some tests,
-> > > > especially injecting invalid data.
-> > > >  =20
-> > >=20
-> > > Hi all,
-> > >=20
-> > > Sorry for the late reply. I'm currently at SDC, but I will write up s=
-ome
-> > > tests when I get back to in the office on Monday.
-> > >=20
-> > > Corey, what kinds of tests would be best here? Avocado "acceptance"
-> > > tests or would you like to see something lower level? =20
-> >=20
-> > My main concern is testing what happens when bad data gets injected, to
-> > avoid people coming up with clever names for exploits in qemu.  It's not
-> > so much for this code, it's for the changes that comes in the future.
-> >=20
-> > And, of course, normal functional tests to make sure it works.  What a
-> > friend of mine calls "dead chicken" tests.  You wave a dead chicken at
-> > it, and if the chicken is still dead everything is ok :).
-> >=20
-> > I'm fine with either type of tests, but I'm not sure you can do this
-> > with avocado.  It's probably about the same amount of work either path
-> > you choose.
-> >=20
-> > -corey
->=20
-> Hi Klaus, All,
->=20
-> I was looking at what dependencies I'm carrying on my CXL tree and this
-> series is one of the bigger bits :(
->=20
-> Any plans to take it forwards?
-> I have some other stuff to solve to have a fully upstream QEMU
-> solution for the CXL fm-api over mctp (direct from host anyway), but
-> if this is blocked indefinitely tackling how to get a controller onto
-> a typical server system isn't going to be productive :(
->=20
-> As Davidlohr called out at in the CXL LPC Uconf [1] this is really handy
-> for testing his work on libcxlmi. A number of people are looking
-> at more sophisticated CXL fabric emulation and that will also need
-> us to close this gap!
->=20
-> No promises but maybe we can find someone to help with adding tests
-> if that's the only remaining blocker.
->=20
-
-Yes, I believe the lack of tests are the blocker currently. I've mostly
-been testing this through a buildroot. That allows me to at least kick
-it with invalid fields and so on, but it all depends on the linux mctp
-driver doing the bulk of the work (and it's not really supposed to do
-"bad stuff"), so it's limited how low we can go.
-
-While I have the infrastructure to do that, I'm really not sure where to
-start if we want to test what happens when the emulated mctp device gets
-bad packets. I don't think we can instruct the mctp subsystem in linux
-to do that easily. And if we do not use it (to forcefully write invalid
-packets on the bus), I'm not sure how to deal with the required target
-mode.
-
-Would anyone know if the i2c-slave-testunit could be viable way forward
-to test this?
-
---j6NcMIs1GVbu8Nan
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEUigzqnXi3OaiR2bATeGvMW1PDekFAmchy6MACgkQTeGvMW1P
-DengKQgAgnPE1IbGBycgJBotI9FlQfKbmbcoOH6PaK3pr4EUO7uFCoUO0z97Ua8p
-3Nxkb+xTvWJFSMvxd2kmAKNU77o8imATPx8SWNMGuKKX9I0OmofUigMYwhd8UPkP
-dPZN76fAB4lD7QalwUIrj7k/AiXwsdGYmsa7E5HnkdLBJmiZLyACOyXFmSeqFCky
-20XpXbLRh8ptRUi1NjBvNKI/roCCAnpmY/CoqXyAIaD6tVZvxLEr4uuxSbWlFI4L
-yg9++qrVRyy/AUyDwbJ5ed8NoLx8uyKjW4L0lBdgNTIJWvxPGWIabSBjfebPCiuY
-Jpwtl+lXpSDSdZCRFsZlHvz11AmIEA==
-=COjM
------END PGP SIGNATURE-----
-
---j6NcMIs1GVbu8Nan--
+thanks
+-- PMM

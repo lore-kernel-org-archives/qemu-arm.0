@@ -1,851 +1,458 @@
-Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp1467332njj;
-        Wed, 30 Oct 2024 23:53:04 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXZrC9Y4PAy8JWhK/x4raBR6RMc3PG1MUSCregM7rsGa2V12dphQ6JjpohWtl89rO01GQ/NUpfaY6Dd3Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGgLqDDRA0LyIk0zo1tsAu/9ethMvSsxybksBTPeqfdTTVk+QrXoPmXexswdo0zp7aEPlxH
-X-Received: by 2002:a05:622a:15c5:b0:461:dbd:e4da with SMTP id d75a77b69052e-462ab31a649mr31450221cf.49.1730357584206;
-        Wed, 30 Oct 2024 23:53:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730357584; cv=none;
+Received: by 2002:a17:504:82cc:b0:1be9:327d:8ee3 with SMTP id m12csp1491274njj;
+        Thu, 31 Oct 2024 00:53:13 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXtY04l84VgYvOxzr1BaEgpNzjiz4BP1racgSShEk6gNWhZWRlavmIzYPulKJD5N7spcL7TR8JSgG0GnQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH5xDJPCnm5NXsIg9KGbCeiAhs9KpVeAa7AZS/4kvblQUZfWf/WB/8zV85Vy32G6OsEvOPU
+X-Received: by 2002:ac8:5806:0:b0:460:c2f3:9017 with SMTP id d75a77b69052e-4613bff0d8emr279815551cf.17.1730361193154;
+        Thu, 31 Oct 2024 00:53:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730361193; cv=none;
         d=google.com; s=arc-20240605;
-        b=CyybfCEciy1jzzPN2A17zGnCAhgZDh3G8vfVlbKOa2LBHsC+ScoIv2GhbUxNLChkTz
-         w9TNW99W8kZNXjQvHrkVptdWnMlaXipU57fXztzML8I6tliYaqVH0qWVpuK4mf7mBdMP
-         IWT1aNpMTi8JMJpqg15ghZin5Ud6mntdFoVD04kSCSufmbrZoAA7ypj/2sbolTss5BeZ
-         7bnR/v9oZkXBXOjWkvSO1jAE5twZl70LhtkLiSTaE2vvM5PWiw/r+u4ypggpEsIIEiq6
-         TJS7kcM9G5/eh+GvBubk+SpAOFtbV6vDK0UMIQLvXOjt7O7mQdOT49bpBfPjzFestq7Q
-         Mz6w==
+        b=eBFnbpdYSXWUNlTElx7O0Gg3TKouNpn/YsI6rqTn4liAQldyxYVjpA2ifc1MAzymtI
+         pTSVIfBtd5sTbJahkUzpMqKILYLSLGj/FNX+3JFauP2AqGowhV0kQyzKgI1sLA9cj7ni
+         /G1QwQvcJNECChpipu1HigAId97j/v6aRwW8yE+f+GpdqZYgMUw5FaFxu73GKaVrQeW0
+         Quz9tsf+W0ypHJqW3ymwOl/jcwbzgICl/zXeJ15d/sQcrG3HnJgEhGactGCtxHBEw58l
+         cdK7mowj6t3bu5hTjCFqg4rKS0K6gwkjA10gD8vLodQ15CJufdDF42yswRawp9qZm0SJ
+         tVbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:content-language:references:cc:to:subject:from
+         :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=APDOlnwxW0i4iu5cgpXuOXKlIeYapWpNui3pSygCvK8=;
-        fh=77M8+hjBmYlyI04dcgsjqRttdtLT84g5XU2fmdEZsQg=;
-        b=JNvl9XnojL71dd7SKaC1OqeSZgWaczdYe+6gnNmzrEZq3JDWmzCslkM096GGpsxWtX
-         xEGrdGT0gOj+HPmwETGAunLE+FTSv1F0BdRsX4rJNGXGHKroChy7RTSuD/qXufzLnduA
-         bwa0VhSbr1tsTx+Lp3cXPzZkYHnA2SU8zn1kRmT6PRjkOAwszV3YsMyM/7IJGq5a1UZa
-         QdNdYRg13I6OgkjonvmNUxAVpPSda65AUw+vrSUkM/vZsm7VdiPVF6zyzfq/fD+Ki02f
-         x4e5QUledrO9u9mpPSgHZyUsXj70wg9ipiSM95+TbzZIKaxEHsNdVD+6/P0hR1v6FNtg
-         yFyg==;
+        bh=1gHo7DyUcPqEaAsl8oCYTM1s3Az4DtaIMXl5FebxitM=;
+        fh=aaLM9rgakoZbbufuVh2fmch1tLeRxYfghG+z/Y519dM=;
+        b=N27++Fv327pH8jN1T4maGwAmcn+Ku3XizJ7cV+fiCFScu7kPzyXpo/si5f4EouWXxD
+         HBw9rsFVXjWKmQw1NMgyIbj21Z4+e1vdyi5Rv/w9LOUhWo0TOUNh8X0PO9NGge9igIuB
+         LponD5v1mtt5Du/j2inU7JRU5laLflo8z/d4LSBKDPIxmNSYLXcEnPWvH6UK7u8y8OeY
+         qr/G1vFOK3QdjNr0ySJd5r8lZhnUBsBa7hp+vM8EJC9EPzvXKHKcdRrZxWQEXdypcnph
+         plfKydWo8nKCaA56Bv/FeHFiA/uuu2+MLJYbMdNw5lq18iTl1IHL9Lqf4QTnRT92Pbhi
+         1PWw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=JOZy8V6r;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Zrsa0QiR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ad24360asi11274911cf.566.2024.10.30.23.53.04
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad0d20d3si12082641cf.209.2024.10.31.00.53.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Oct 2024 23:53:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 31 Oct 2024 00:53:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=JOZy8V6r;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Zrsa0QiR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t6P2g-00075T-Q4; Thu, 31 Oct 2024 02:52:26 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t6Pym-0005Eu-Tg; Thu, 31 Oct 2024 03:52:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1t6P2d-00074N-Rt
- for qemu-devel@nongnu.org; Thu, 31 Oct 2024 02:52:23 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+ id 1t6Pyj-0005EL-4E
+ for qemu-arm@nongnu.org; Thu, 31 Oct 2024 03:52:26 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1t6P2a-0006GZ-Ek
- for qemu-devel@nongnu.org; Thu, 31 Oct 2024 02:52:23 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-720be2b27acso236076b3a.0
- for <qemu-devel@nongnu.org>; Wed, 30 Oct 2024 23:52:18 -0700 (PDT)
+ id 1t6PyX-0003aK-Uw
+ for qemu-arm@nongnu.org; Thu, 31 Oct 2024 03:52:17 -0400
+Received: by mail-pf1-x430.google.com with SMTP id
+ d2e1a72fcca58-71e7086c231so513361b3a.0
+ for <qemu-arm@nongnu.org>; Thu, 31 Oct 2024 00:52:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1730357537; x=1730962337;
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1730361132; x=1730965932;
  darn=nongnu.org; 
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:subject:from:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=APDOlnwxW0i4iu5cgpXuOXKlIeYapWpNui3pSygCvK8=;
- b=JOZy8V6rjAYkdIJuzOJFB5s+nvk9r+3XmRNBfppWoMtLHdbyQrN8xr49oWnH0GP5hd
- qmZqAOiTOvJ2Hwf/X+olsZDhR4AfdPWQnwQSbd1uCq3iKJ8iKd4U6f0KQeUCC8/eGaLi
- IGhkubjQOEEC+XS/XHMa/79yVhLVtGnTVcRL37yXpABh0mEfvxftRdkgI2Ny6+DcOghl
- MvUfpWh+ns5YgEGq5AXi57OyAcbsJhqbVcQdsRdbPlHgwbH+gCHjG4X0WCvdD7Fh5+uR
- dyr/DOqG2XvWUqwRHtVY/lAYQ/eZQvztBuUDovz6iBpa1rZZlDGQfKXbuFjY74BEbhsQ
- Vypw==
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=1gHo7DyUcPqEaAsl8oCYTM1s3Az4DtaIMXl5FebxitM=;
+ b=Zrsa0QiRXHAkQCMSURpdvozR+MiAwRxGmda/EPeU+vG+5r+cg4bsAXpamqqN8IRqJf
+ tWxQul8DszSxdwclYYpudBYhrICaQwq6JSvSBC3rlaP2ewgHTYNDghuu+TWMDvtygT0W
+ IECTFIHDl/sQ+DGlEgSsFxzjXQJpms6sDv8+ujQXXWsaHcJYWhnUDtdmnkFRJxufMgjq
+ ifqav4F8X72RerR7fusSSnIqlyBSoaOrz8VkxohNVfTudftHZiNmeRv6bu2R5wFrY4u+
+ ZpT7levVoU/4RKP7dMSn3qf9njvPSFO2Da1TDxq+LIpkStThbRcAIghFO21LEMyzXEre
+ pFCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730357537; x=1730962337;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:subject:from:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1730361132; x=1730965932;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=APDOlnwxW0i4iu5cgpXuOXKlIeYapWpNui3pSygCvK8=;
- b=XOijrLYo9zo54mqWW+VpboQiL2c/n1hD2zvB0grIvBnQ+SxDspOQ/j8uRt1L5a6j8z
- eijimK+9Y3JjUURnaKtZB+H2N8ELriUlSw/yixKucIPwm3yUShGbsMDuKP7wbeNni7Vi
- xXccI0q8+MKDdt7Sid2ABKjqLdB/Kg8HCnfwwJqobkFgTm8eZKmIZVpXoqjCCRN8ydFw
- S3WtMcRG27lCJTu5cuFwavoz06SO4ELk9IIivEJwgmTE63QZKw3RD2DOY6Wo3FMc+O2D
- LBYjwaJEZzavY92QEa7oj4778HoMdMvsxWooDsFACbQudZ1HNzYQwMjv3gDDx5anTCqv
- y+Fw==
-X-Gm-Message-State: AOJu0YzAGd336+yxWmP8U67Bc9e5qMrKsKMSUTGu4Xyn2qNZBgbj3K3h
- DYsXgXDA3KtxzfC0BnbEL0q1scIXM+s5hFtf2t+47pcY9a+SEftBiOirN0ilPTw=
-X-Received: by 2002:a05:6a00:3d09:b0:71e:44f6:6904 with SMTP id
- d2e1a72fcca58-720b9c291e0mr2965122b3a.13.1730357537295; 
- Wed, 30 Oct 2024 23:52:17 -0700 (PDT)
+ bh=1gHo7DyUcPqEaAsl8oCYTM1s3Az4DtaIMXl5FebxitM=;
+ b=eMWe5JjAyKY+D7RFSLjoWohQk0MLlz2sIvs/gRE6BnbgdsymEjMB5B/THN7fHvE7lJ
+ BveoOU9vBqTPOL+9NbwSHE7UuIbia/eiBDU8Mr1IXlUHFQTjiiyGcIUSiA+EVnvcn/Ot
+ F1xaymhwdBkTXvS5txf9xDgfvtK1Ky+bJN31R7mvI08mY6lpK0trx92T0nTS08wg/Q9A
+ I4gpInXLPYK6zItUIM84dlEMkoRGX6kyN9f3+gxTcSOhTnY3G9zzTH4E86ubdeKjmkZ5
+ Ox8aHXdALzVcObOTVjSWnfIevraeZWxsVpaYOl6R8Sx0osy77l7mcLGhqkb3JUjClz3q
+ mJ5A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWJv2C87DsJK1v1RUtycx5v6mPd4aoZlOGqu7cNKuaUVXBjEPnT3UlOdy/OlAYD0WHWJe+Gt0J7fg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy64tnijX9MrPfeALcml3EaW0WsG5Jc+3QRrlKxdhI4xBhN02v8
+ i3hRGaGZ49zwlKZu9LbIfF6GRmoo4psZg6Obnc+rsu5qjshVRnWkzZwG9pzgvu4=
+X-Received: by 2002:a05:6a00:4610:b0:71e:4fe4:282e with SMTP id
+ d2e1a72fcca58-72063096385mr25652600b3a.28.1730361132071; 
+ Thu, 31 Oct 2024 00:52:12 -0700 (PDT)
 Received: from [157.82.207.167] ([157.82.207.167])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-720bc1ba19asm614907b3a.21.2024.10.30.23.52.10
+ d2e1a72fcca58-720bc2eb6c9sm680875b3a.162.2024.10.31.00.52.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Oct 2024 23:52:16 -0700 (PDT)
-Message-ID: <229fe384-f0e6-4aa9-8f36-e44fc0391b75@daynix.com>
-Date: Thu, 31 Oct 2024 15:52:09 +0900
+ Thu, 31 Oct 2024 00:52:11 -0700 (PDT)
+Message-ID: <115d6281-65c9-4487-9dfa-26677f9563ec@daynix.com>
+Date: Thu, 31 Oct 2024 16:52:04 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: Re: [PATCH v4 02/15] hw/display/apple-gfx: Introduce
- ParavirtualizedGraphics.Framework support
-To: Phil Dennis-Jordan <phil@philjordan.eu>
-Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
- pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com,
- marcin.juszkiewicz@linaro.org, stefanha@redhat.com, mst@redhat.com,
- slp@redhat.com, richard.henderson@linaro.org, eduardo@habkost.net,
+Subject: Re: [PATCH v5 01/15] ui & main loop: Redesign of system-specific main
+ thread event handling
+To: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org
+Cc: agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, marcin.juszkiewicz@linaro.org,
+ stefanha@redhat.com, mst@redhat.com, slp@redhat.com,
+ richard.henderson@linaro.org, eduardo@habkost.net,
  marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
  chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
  philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com,
  alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
  marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- Alexander Graf <graf@amazon.com>
-References: <20241024102813.9855-1-phil@philjordan.eu>
- <20241024102813.9855-3-phil@philjordan.eu>
- <9e310d5e-ab73-47b9-b9ed-5a16d4db3fb9@daynix.com>
- <CAAibmn0NA+K63OvrsBpN1HivndyZo-fgeLwzY8AVE4hPrQR26w@mail.gmail.com>
- <dd2aae75-348d-44ad-bbd9-5d45aad15bc6@daynix.com>
- <CAAibmn1z+7yizwH8DogfcCWOWzA8Ox6e=p+Hc1pu-CS4SjAirg@mail.gmail.com>
- <6a989d04-6416-4bd9-98ac-e1230a1095a9@daynix.com>
- <CAAibmn3YEOT0O55-bwJkpi_oEGkA1WwvhC0w3jGbgXOZLTVa0w@mail.gmail.com>
- <CAAibmn3HZeDeK8FrYhHa1GGwc+N8rBuB2VvMRm7LCt0mUGmsYQ@mail.gmail.com>
- <27ced2db-472d-47ae-9047-9efc0b589a1e@daynix.com>
- <CAAibmn17=iTaEW0Q_E_n6gsS7vd-d8-w36yee9f2eZ+SR-d-ng@mail.gmail.com>
- <dbb394d4-f8fe-484d-974c-c84275f7a1c7@daynix.com>
- <CAAibmn1Th6w6JJcxgD7HA62qo-Lk0yV-Cg4XK9OYEtDvvQbhrg@mail.gmail.com>
- <a8b4472c-8741-4f80-87e5-b406c56d1acd@daynix.com>
- <CAAibmn1r=xymvZg9KaOtauo5K=Juxh7GdcrSrVvd=36ymj4qFA@mail.gmail.com>
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org
+References: <20241029205819.69888-1-phil@philjordan.eu>
+ <20241029205819.69888-2-phil@philjordan.eu>
 Content-Language: en-US
-In-Reply-To: <CAAibmn1r=xymvZg9KaOtauo5K=Juxh7GdcrSrVvd=36ymj4qFA@mail.gmail.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20241029205819.69888-2-phil@philjordan.eu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::431;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x431.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::430;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: s2zkuWZ2O0QZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3Yr4EuCyChfw
 
-On 2024/10/30 6:16, Phil Dennis-Jordan wrote:
+On 2024/10/30 5:58, Phil Dennis-Jordan wrote:
+> macOS's Cocoa event handling must be done on the initial (main) thread
+> of the process. Furthermore, if library or application code uses
+> libdispatch, the main dispatch queue must be handling events on the main
+> thread as well.
 > 
+> So far, this has affected Qemu in both the Cocoa and SDL UIs, although
+> in different ways: the Cocoa UI replaces the default qemu_main function
+> with one that spins Qemu's internal main event loop off onto a
+> background thread. SDL (which uses Cocoa internally) on the other hand
+> uses a polling approach within Qemu's main event loop. Events are
+> polled during the SDL UI's dpy_refresh callback, which happens to run
+> on the main thread by default.
 > 
-> On Tue, 29 Oct 2024 at 08:42, Akihiko Odaki <akihiko.odaki@daynix.com 
-> <mailto:akihiko.odaki@daynix.com>> wrote:
+> As UIs are mutually exclusive, this works OK as long as nothing else
+> needs platform-native event handling. In the next patch, a new device is
+> introduced based on the ParavirtualizedGraphics.framework in macOS.
+> This uses libdispatch internally, and only works when events are being
+> handled on the main runloop. With the current system, it works when
+> using either the Cocoa or the SDL UI. However, it does not when running
+> headless. Moreover, any attempt to install a similar scheme to the
+> Cocoa UI's main thread replacement fails when combined with the SDL
+> UI.
 > 
->     On 2024/10/29 6:06, Phil Dennis-Jordan wrote:
->      >
->      >
->      > On Mon, 28 Oct 2024 at 17:06, Akihiko Odaki
->     <akihiko.odaki@daynix.com <mailto:akihiko.odaki@daynix.com>
->      > <mailto:akihiko.odaki@daynix.com
->     <mailto:akihiko.odaki@daynix.com>>> wrote:
->      >
->      >     On 2024/10/28 23:13, Phil Dennis-Jordan wrote:
->      >      >
->      >      >
->      >      > On Mon, 28 Oct 2024 at 15:02, Akihiko Odaki
->      >     <akihiko.odaki@daynix.com <mailto:akihiko.odaki@daynix.com>
->     <mailto:akihiko.odaki@daynix.com <mailto:akihiko.odaki@daynix.com>>
->      >      > <mailto:akihiko.odaki@daynix.com
->     <mailto:akihiko.odaki@daynix.com>
->      >     <mailto:akihiko.odaki@daynix.com
->     <mailto:akihiko.odaki@daynix.com>>>> wrote:
->      >      >
->      >      >     On 2024/10/28 22:31, Phil Dennis-Jordan wrote:
->      >      >      >
->      >      >      >
->      >      >      > On Mon, 28 Oct 2024 at 10:00, Phil Dennis-Jordan
->      >      >     <phil@philjordan.eu <mailto:phil@philjordan.eu>
->     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>>
->      >     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>
->     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>>>
->      >      >      > <mailto:phil@philjordan.eu
->     <mailto:phil@philjordan.eu> <mailto:phil@philjordan.eu
->     <mailto:phil@philjordan.eu>>
->      >     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>
->     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>>>>> wrote:
->      >      >      >
->      >      >      >
->      >      >      >          >      >
->      >      >      >          >      > Hmm. I think if we were to use
->     that, we
->      >     would
->      >      >     need to
->      >      >      >         create a new
->      >      >      >          >      > QemuEvent for every job and
->     destroy it
->      >     afterward,
->      >      >      >         which seems
->      >      >      >          >     expensive.
->      >      >      >          >      > We can't rule out multiple concurrent
->      >     jobs being
->      >      >      >         submitted, and the
->      >      >      >          >      > QemuEvent system only supports a
->     single
->      >     producer as
->      >      >      >         far as I can
->      >      >      >          >     tell.
->      >      >      >          >      >
->      >      >      >          >      > You can probably sort of hack
->     around it with
->      >      >     just one
->      >      >      >         QemuEvent by
->      >      >      >          >      > putting the qemu_event_wait into
->     a loop
->      >     and turning
->      >      >      >         the job.done
->      >      >      >          >     flag
->      >      >      >          >      > into an atomic (because it would now
->      >     need to be
->      >      >      >         checked outside the
->      >      >      >          >      > lock) but this all seems
->     unnecessarily
->      >     complicated
->      >      >      >         considering the
->      >      >      >          >      > QemuEvent uses the same mechanism
->     QemuCond/
->      >      >     QemuMutex
->      >      >      >         internally
->      >      >      >          >     on macOS
->      >      >      >          >      > (the only platform relevant
->     here), except we
->      >      >     can use it as
->      >      >      >          >     intended with
->      >      >      >          >      > QemuCond/QemuMutex rather than
->     having to
->      >     work
->      >      >     against the
->      >      >      >          >     abstraction.
->      >      >      >          >
->      >      >      >          >     I don't think it's going to be used
->      >     concurrently. It
->      >      >      >         would be difficult
->      >      >      >          >     to reason even for the framework if it
->      >     performs memory
->      >      >      >          >     unmapping/mapping/reading operations
->      >     concurrently.
->      >      >      >          >
->      >      >      >          >
->      >      >      >          > I've just performed a very quick test by
->      >     wrapping the job
->      >      >      >         submission/
->      >      >      >          > wait in the 2 mapMemory callbacks and the 1
->      >     readMemory
->      >      >      >         callback with
->      >      >      >          > atomic counters and logging whenever a
->     counter went
->      >      >     above 1.
->      >      >      >          >
->      >      >      >          >   * Overall, concurrent callbacks across all
->      >     types were
->      >      >      >         common (many per
->      >      >      >          > second when the VM is busy). It's not
->     exactly a
->      >      >     "thundering
->      >      >      >         herd" (I
->      >      >      >          > never saw >2) but it's probably not a
->     bad idea
->      >     to use
->      >      >     a separate
->      >      >      >          > condition variable for each job type.
->     (task map,
->      >      >     surface map,
->      >      >      >         memory read)
->      >      >      >          >   * While I did not observe any concurrent
->      >     memory mapping
->      >      >      >         operations
->      >      >      >          > *within* a type of memory map (2 task
->     mappings or 2
->      >      >     surface
->      >      >      >         mappings) I
->      >      >      >          > did see very occasional concurrent
->     memory *read*
->      >      >     callbacks.
->      >      >      >         These would,
->      >      >      >          > as far as I can tell, not be safe with
->     QemuEvents,
->      >      >     unless we
->      >      >      >         placed the
->      >      >      >          > event inside the job struct and init/
->     destroyed
->      >     it on every
->      >      >      >         callback
->      >      >      >          > (which seems like excessive overhead).
->      >      >      >
->      >      >      >         I think we can tolerate that overhead.
->     init/destroy
->      >      >     essentially
->      >      >      >         sets the
->      >      >      >         fields in the data structure and I estimate its
->      >     total size is
->      >      >      >         about 100
->      >      >      >         bytes. It is probably better than waking an
->      >     irrelevant thread
->      >      >      >         up. I also
->      >      >      >         hope that keeps the code simple; it's not
->     worthwhile
->      >      >     adding code to
->      >      >      >         optimize this.
->      >      >      >
->      >      >      >
->      >      >      >     At least pthread_cond_{init,destroy} and
->      >      >      >     pthread_mutex_{init,destroy} don't make any
->     syscalls,
->      >     so yeah
->      >      >     it's
->      >      >      >     probably an acceptable overhead.
->      >      >      >
->      >      >      >
->      >      >      > I've just experimented with QemuEvents created on-
->     demand
->      >     and ran
->      >      >     into
->      >      >      > some weird deadlocks, which then made me sit down and
->      >     think about it
->      >      >      > some more. I've come to the conclusion that
->     creating (and
->      >     crucially,
->      >      >      > destroying) QemuEvents on demand in this way is not
->     safe.
->      >      >      >
->      >      >      > Specifically, you must not call
->     qemu_event_destroy() - which
->      >      >      > transitively destroys the mutex and condition
->     variable -
->      >     unless
->      >      >     you can
->      >      >      > guarantee that the qemu_event_set() call on that event
->      >     object has
->      >      >     completed.
->      >      >      >
->      >      >      > In qemu_event_set, the event object's value is
->     atomically
->      >     set to
->      >      >     EV_SET.
->      >      >      > If the previous value was EV_BUSY, qemu_futex_wake() is
->      >     called.
->      >      >     All of
->      >      >      > this is outside any mutex, however, so apart from
->     memory
->      >     coherence
->      >      >      > (there are barriers) this can race with the waiting
+> This change tidies up main thread management to be more flexible.
+> 
+>   * The qemu_main global function pointer is a custom function for the
+>     main thread, and it may now be NULL. When it is, the main thread
+>     runs the main Qemu loop. This represents the traditional setup.
+>   * When non-null, spawning the main Qemu event loop on a separate
+>     thread is now done centrally rather than inside the Cocoa UI code.
+>   * For most platforms, qemu_main is indeed NULL by default, but on
+>     Darwin, it defaults to a function that runs the CFRunLoop.
+>   * The Cocoa UI sets qemu_main to a function which runs the
+>     NSApplication event handling runloop, as is usual for a Cocoa app.
+>   * The SDL UI overrides the qemu_main function to NULL, thus
+>     specifying that Qemu's main loop must run on the main
 >     thread.
->      >      >      > qemu_event_wait() reads the event's value. If
->     EV_FREE, it's
->      >      >     atomically
->      >      >      > set to EV_BUSY. Then the mutex is locked, the value
->     is checked
->      >      >     again,
->      >      >      > and if it's still EV_BUSY, it waits for the condition
->      >     variable,
->      >      >      > otherwise the mutex is immediately unlocked again.
->     If the
->      >     trigger
->      >      >      > thread's qemu_event_set() flip to EV_SET occurs between
->      >     the waiting
->      >      >      > thread's two atomic reads of the value, the waiting
->     thread
->      >     will
->      >      >     never
->      >      >      > wait for the condition variable, but the trigger thread
->      >     WILL try to
->      >      >      > acquire the mutex and signal the condition variable in
->      >      >      > qemu_futex_wake(), by which  time the waiting
->     thread may have
->      >      >     advanced
->      >      >      > outside of qemu_event_wait().
->      >      >
->      >      >     Sorry if I'm making a mistake again, but the waiting
->     thread won't
->      >      >     set to
->      >      >     EV_BUSY unless the value is EV_FREE on the second read
->     so the
->      >     trigger
->      >      >     thread will not call qemu_futex_wake() if it manages
->     to set
->      >     to EV_SET
->      >      >     before the second read, will it?
->      >      >
->      >      >
->      >      > This sequence of events will cause the problem:
->      >      >
->      >      > WAITER (in qemu_event_wait):
->      >      > value = qatomic_load_acquire(&ev->value);
->      >      > -> EV_FREE
->      >      >
->      >      > TRIGGER (in qemu_event_set):
->      >      > qatomic_read(&ev->value) != EV_SET
->      >      > -> EV_FREE (condition is false)
->      >      >
->      >      > WAITER:
->      >      > qatomic_cmpxchg(&ev->value, EV_FREE, EV_BUSY) == EV_SET
->      >      > -> cmpxchg returns EV_FREE, condition false.
->      >      > ev->value =  EV_BUSY.
->      >      > > TRIGGER:
->      >      >          int old = qatomic_xchg(&ev->value, EV_SET);
->      >      >          smp_mb__after_rmw();
->      >      >          if (old == EV_BUSY) {
->      >      > -> old = EV_BUSY, condition true.
->      >      > ev->value = EV_SET
->      >      >
->      >      > WAITER (in qemu_futex_wait(ev, EV_BUSY)):
->      >      >      pthread_mutex_lock(&ev->lock);
->      >      >      if (ev->value == val) {
->      >      > -> false, because value is EV_SET
->      >      >
->      >      > WAITER:
->      >      >      pthread_mutex_unlock(&ev->lock);
->      >      >      …
->      >      >      qemu_event_destroy(&job->done_event);
->      >      >
->      >      > TRIGGER (in qemu_futex_wake(ev, INT_MAX)):
->      >      >      pthread_mutex_lock(&ev->lock);
->      >      > -> hangs, because mutex has been destroyed
->      >
->      >     Thanks for clarification. This is very insightful.
->      >
->      >
->      >      >
->      >      >      >
->      >      >      > This is all fine usually, BUT if you destroy the
->     QemuEvent
->      >      >     immediately
->      >      >      > after the qemu_event_wait() call, qemu_futex_wake()
->     may try to
->      >      >     lock a
->      >      >      > mutex that has been destroyed, or signal a
->     condition variable
->      >      >     which has
->      >      >      > been destroyed. I don't see a reasonable way of making
->      >     this safe
->      >      >     other
->      >      >      > than using long-lived mutexes and condition
->     variables. And
->      >      >     anyway, we
->      >      >      > have much, MUCH bigger contention/performance issues
->      >     coming from
->      >      >     almost
->      >      >      > everything being covered by the BQL. (If waking these
->      >     callbacks
->      >      >     can even
->      >      >      > be considered an issue: I haven't seen it show up in
->      >     profiling,
->      >      >     whereas
->      >      >      > BQL contention very much does.)
->      >      >      >
->      >      >      > I'll submit v5 of this patch set with separate
->     condition
->      >      >     variables for
->      >      >      > each job type. This should make the occurrence of
->     waking
->      >     the wrong
->      >      >      > thread quite rare, while reasoning about
->     correctness is pretty
->      >      >      > straightforward. I think that's good enough.
->      >
->      >     What about using QemuSemaphore then? It does not seem to have the
->      >     problem same with QemuEvent.
->      >
->      >
->      > Nowhere else in the code base uses short-lived semaphores, and
->     while I
->      > can't immediately see a risk (the mutex is held during both post and
->      > wait) there might be some non-obvious problem with the approach.
->      > Internally, the semaphores use condition variables. The solution
->     using
->      > condition variables directly already works, is safe, relatively
->     easy to
->      > reason about, and does not cause any performance issues. There is
->     a tiny
->      > inefficiency about waking up a thread unnecessarily in the rare case
->      > when two callbacks of the same kind occur concurrently. In practice,
->      > it's irrelevant. Thanks to the awkward mismatch of the
->      > PVGraphics.framework's libdispatch based approach and Qemu's BQL/
->     AIO/BH
->      > approach, we are already sending messages to other threads very
->      > frequently. This isn't ideal, but not fixable without drastically
->      > reducing the need to acquire the BQL across Qemu.
+>   * For other UIs, or in the absence of UIs, the platform's default
+>     behaviour is followed.
 > 
->     I found several usage of ephemeral semaphores:
->     h_random() in hw/ppc/spapr_rng.c
->     colo_process_checkpoint() in migration/colo.c
->     postcopy_thread_create() in migration/postcopy-ram.c
+> This means that on macOS, the platform's runloop events are always
+> handled, regardless of chosen UI. The new PV graphics device will
+> thus work in all configurations. There is no functional change on other
+> operating systems.
 > 
->     I'm sure short-lived semaphores will keep working (or break
->     migration in
->     strange ways).
+> Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+> ---
 > 
->      >
->      > I do not think it is worth spending even more time trying to fix
->     this
->      > part of the code which isn't broken in the first place.
+> v5:
 > 
->     I'm sorry to bring you to this mess, which I didn't really expect. I
->     thought combining a shared pair of conditional variable and mutex and
->     job-specific bools is unnecessarily complex, and having one
->     synchronization primitive for each job will be simpler and will just
->     work.
+>   * Simplified the way of setting/clearing the main loop by going back
+>     to setting qemu_main directly, but narrowing the scope of what it
+>     needs to do, and it can now be NULL.
 > 
+>   include/qemu-main.h     |  3 +--
+>   include/qemu/typedefs.h |  1 +
+>   system/main.c           | 56 +++++++++++++++++++++++++++++++++++----
+>   ui/cocoa.m              | 58 +++++++++++------------------------------
+>   ui/sdl2.c               |  4 +++
+>   5 files changed, 72 insertions(+), 50 deletions(-)
 > 
-> With multithreading, the devil is always in the detail! 😅 I wouldn't 
-> mind if we were seeing genuine issues with the Mutex/Cond code, but it's 
-> fine as far as I can tell. The QemuEvent version wasn't even really any 
-> simpler (replacing bool done; with QemuEvent done_event; and await -> 
-> init/wait/destroy gets longer while lock/broadcast/unlock -> set gets 
-> shorter), and I guess a QemuSemaphore version would be about the same. 
-> Relying on the way an edge case is handled - destroying immediately 
-> after waiting - in the long term potentially makes the code more fragile 
-> too in case implementation details change. I think we've reached a 
-> bikeshedding stage here, and I suggest any further improvements on this 
-> part other than bug fixes should be deferred to future patches.
+> diff --git a/include/qemu-main.h b/include/qemu-main.h
+> index 940960a7dbc..4bd0d667edc 100644
+> --- a/include/qemu-main.h
+> +++ b/include/qemu-main.h
+> @@ -5,7 +5,6 @@
+>   #ifndef QEMU_MAIN_H
+>   #define QEMU_MAIN_H
+>   
+> -int qemu_default_main(void);
+> -extern int (*qemu_main)(void);
+> +extern qemu_main_fn qemu_main;
+>   
+>   #endif /* QEMU_MAIN_H */
+> diff --git a/include/qemu/typedefs.h b/include/qemu/typedefs.h
+> index 3d84efcac47..b02cfe1f328 100644
+> --- a/include/qemu/typedefs.h
+> +++ b/include/qemu/typedefs.h
+> @@ -131,5 +131,6 @@ typedef struct IRQState *qemu_irq;
+>    * Function types
+>    */
+>   typedef void (*qemu_irq_handler)(void *opaque, int n, int level);
+> +typedef int (*qemu_main_fn)(void);
+>   
+>   #endif /* QEMU_TYPEDEFS_H */
+> diff --git a/system/main.c b/system/main.c
+> index 9b91d21ea8c..8c90b8d2ddf 100644
+> --- a/system/main.c
+> +++ b/system/main.c
+> @@ -24,13 +24,14 @@
+>   
+>   #include "qemu/osdep.h"
+>   #include "qemu-main.h"
+> +#include "qemu/main-loop.h"
+>   #include "sysemu/sysemu.h"
+>   
+> -#ifdef CONFIG_SDL
+> -#include <SDL.h>
+> +#ifdef CONFIG_DARWIN
+> +#include <CoreFoundation/CoreFoundation.h>
+>   #endif
+>   
+> -int qemu_default_main(void)
+> +static int qemu_default_main(void)
+>   {
+>       int status;
+>   
+> @@ -40,10 +41,55 @@ int qemu_default_main(void)
+>       return status;
+>   }
+>   
+> -int (*qemu_main)(void) = qemu_default_main;
+> +/*
+> + * Various macOS system libraries, including the Cocoa UI and anything using
+> + * libdispatch, such as ParavirtualizedGraphics.framework, requires that the
+> + * main runloop, on the main (initial) thread be running or at least regularly
+> + * polled for events. A special mode is therefore supported, where the QEMU
+> + * main loop runs on a separate thread and the main thread handles the
+> + * CF/Cocoa runloop.
+> + */
+> +
+> +static void *call_qemu_default_main(void *opaque)
+> +{
+> +    int status;
+> +
+> +    bql_lock();
+> +    status = qemu_default_main();
+> +    bql_unlock();
+> +
+> +    exit(status);
+> +}
+> +
+> +static void qemu_run_default_main_on_new_thread(void)
+> +{
+> +    QemuThread thread;
+> +
+> +    qemu_thread_create(&thread, "qemu_main", call_qemu_default_main,
+> +                       NULL, QEMU_THREAD_DETACHED);
 
-We still have more than bikeshedding. There are two design options 
-discussed:
+This function only contains two statements and I think is better to be 
+merged into main().
 
-1) Whether synchronization primitives should be localized
-2) Whether short-lived QemuSemaphore is appropriate if 1) is true
+> +}
+> +
+> +
+> +#ifdef CONFIG_DARWIN
+> +static int os_darwin_cfrunloop_main(void)
+> +{
+> +    CFRunLoopRun();
+> +    abort();
+> +}
+> +
+> +qemu_main_fn qemu_main = os_darwin_cfrunloop_main;
+> +#else
+> +qemu_main_fn qemu_main;
+> +#endif
+>   
+>   int main(int argc, char **argv)
+>   {
+>       qemu_init(argc, argv);
+> -    return qemu_main();
+> +    if (qemu_main) {
+> +        qemu_run_default_main_on_new_thread();
+> +        bql_unlock();
+> +        return qemu_main();
+> +    } else {
+> +        qemu_default_main();
+> +    }
+>   }
+> diff --git a/ui/cocoa.m b/ui/cocoa.m
+> index 4c2dd335323..a1474d473a6 100644
+> --- a/ui/cocoa.m
+> +++ b/ui/cocoa.m
+> @@ -73,6 +73,8 @@
+>       int height;
+>   } QEMUScreen;
+>   
+> +@class QemuCocoaPasteboardTypeOwner;
+> +
+>   static void cocoa_update(DisplayChangeListener *dcl,
+>                            int x, int y, int w, int h);
+>   
+> @@ -107,6 +109,7 @@ static void cocoa_switch(DisplayChangeListener *dcl,
+>   static NSInteger cbchangecount = -1;
+>   static QemuClipboardInfo *cbinfo;
+>   static QemuEvent cbevent;
+> +static QemuCocoaPasteboardTypeOwner *cbowner;
+>   
+>   // Utility functions to run specified code block with the BQL held
+>   typedef void (^CodeBlock)(void);
+> @@ -1321,8 +1324,10 @@ - (void) dealloc
+>   {
+>       COCOA_DEBUG("QemuCocoaAppController: dealloc\n");
+>   
+> -    if (cocoaView)
+> -        [cocoaView release];
+> +    [cocoaView release];
+> +    [cbowner release];
+> +    cbowner = nil;
+> +
+>       [super dealloc];
+>   }
+>   
+> @@ -1938,8 +1943,6 @@ - (void)pasteboard:(NSPasteboard *)sender provideDataForType:(NSPasteboardType)t
+>   
+>   @end
+>   
+> -static QemuCocoaPasteboardTypeOwner *cbowner;
+> -
+>   static void cocoa_clipboard_notify(Notifier *notifier, void *data);
+>   static void cocoa_clipboard_request(QemuClipboardInfo *info,
+>                                       QemuClipboardType type);
+> @@ -2002,43 +2005,8 @@ static void cocoa_clipboard_request(QemuClipboardInfo *info,
+>       }
+>   }
+>   
+> -/*
+> - * The startup process for the OSX/Cocoa UI is complicated, because
+> - * OSX insists that the UI runs on the initial main thread, and so we
+> - * need to start a second thread which runs the qemu_default_main():
+> - * in main():
+> - *  in cocoa_display_init():
+> - *   assign cocoa_main to qemu_main
+> - *   create application, menus, etc
+> - *  in cocoa_main():
+> - *   create qemu-main thread
+> - *   enter OSX run loop
+> - */
+> -
+> -static void *call_qemu_main(void *opaque)
+> -{
+> -    int status;
+> -
+> -    COCOA_DEBUG("Second thread: calling qemu_default_main()\n");
+> -    bql_lock();
+> -    status = qemu_default_main();
+> -    bql_unlock();
+> -    COCOA_DEBUG("Second thread: qemu_default_main() returned, exiting\n");
+> -    [cbowner release];
+> -    exit(status);
+> -}
+> -
+>   static int cocoa_main(void)
+>   {
+> -    QemuThread thread;
+> -
+> -    COCOA_DEBUG("Entered %s()\n", __func__);
+> -
+> -    bql_unlock();
+> -    qemu_thread_create(&thread, "qemu_main", call_qemu_main,
+> -                       NULL, QEMU_THREAD_DETACHED);
+> -
+> -    // Start the main event loop
+>       COCOA_DEBUG("Main thread: entering OSX run loop\n");
+>       [NSApp run];
+>       COCOA_DEBUG("Main thread: left OSX run loop, which should never happen\n");
+> @@ -2120,8 +2088,6 @@ static void cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
+>   
+>       COCOA_DEBUG("qemu_cocoa: cocoa_display_init\n");
+>   
+> -    qemu_main = cocoa_main;
+> -
+>       // Pull this console process up to being a fully-fledged graphical
+>       // app with a menubar and Dock icon
+>       ProcessSerialNumber psn = { 0, kCurrentProcess };
+> @@ -2185,11 +2151,17 @@ static void cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
+>       qemu_clipboard_peer_register(&cbpeer);
+>   
+>       [pool release];
+> +
+> +    /*
+> +     * The Cocoa UI will run the NSApplication runloop on the main thread
+> +     * rather than the default Core Foundation one.
+> +     */
+> +    qemu_main = cocoa_main;
+>   }
+>   
+>   static QemuDisplay qemu_display_cocoa = {
+> -    .type       = DISPLAY_TYPE_COCOA,
+> -    .init       = cocoa_display_init,
+> +    .type                   = DISPLAY_TYPE_COCOA,
+> +    .init                   = cocoa_display_init,
 
-We discussed 2) in details, but haven't done much for 1) so there is 
-some room for discussion.
+This change seems irrelevant.
 
-Even for 2), let me emphasize that avoiding ephemeral QemuSemaphore in 
-one device implementation is not appropriate as means to deal with its 
-potential problem when there is similar existing usage. QEMU needs to be 
-correct as whole, and having a workaround only part of its codebase is 
-not OK. We need to either follow existing patterns or prepare for even 
-more discussion (and I'm for the former).
+>   };
+>   
+>   static void register_cocoa(void)
+> diff --git a/ui/sdl2.c b/ui/sdl2.c
+> index bd4f5a9da14..44ab2762262 100644
+> --- a/ui/sdl2.c
+> +++ b/ui/sdl2.c
+> @@ -34,6 +34,7 @@
+>   #include "sysemu/sysemu.h"
+>   #include "ui/win32-kbd-hook.h"
+>   #include "qemu/log.h"
+> +#include "qemu-main.h"
+>   
+>   static int sdl2_num_outputs;
+>   static struct sdl2_console *sdl2_console;
+> @@ -965,6 +966,9 @@ static void sdl2_display_init(DisplayState *ds, DisplayOptions *o)
+>       }
+>   
+>       atexit(sdl_cleanup);
+> +
+> +    /* SDL's event polling (in dpy_refresh) must happen on the main thread. */
+> +    qemu_main = NULL;
+>   }
+>   
+>   static QemuDisplay qemu_display_sdl2 = {
 
-Regarding 1), I think it's easier just to show code. Below is my idea of 
-code change to localize synchronization primitives. This code is not 
-tested or even compiled, but it should be sufficient to demonstrate the 
-idea. There are a few notable observations:
-
-a) apple_gfx_await_bh_job() can be extended to absorb all repetitive 
-code of BH jobs. Such a change is probably beneficial even when 
-synchronization primitives are shared, but it is more beneficial when 
-synchronization primitives are localized since it allows to wrap init 
-and destroy.
-
-b) No need to declare multiple conditional variables and choosing one of 
-them for each job type. Instead we can have one definition and let it 
-instantiated whenever creating BH jobs.
-
-c) Localized synchronization primitives make reasoning simpler and makes 
-the comment in apple-gfx.h unnecessary. We still need the discussion of 
-QemuEvent v.s. QemuSemaphore, but it will be dealt in the common code so 
-apple-gfx does not need to have its own comment.
-
-Regards,
-Akihiko Odaki
-
----
-  hw/display/apple-gfx.h      | 19 +++---------
-  hw/display/apple-gfx-mmio.m | 23 ++------------
-  hw/display/apple-gfx.m      | 60 +++++++++++++++++--------------------
-  3 files changed, 34 insertions(+), 68 deletions(-)
-
-diff --git a/hw/display/apple-gfx.h b/hw/display/apple-gfx.h
-index e9fef09e37ea..b5aeed4f3dcf 100644
---- a/hw/display/apple-gfx.h
-+++ b/hw/display/apple-gfx.h
-@@ -40,19 +40,6 @@ typedef struct AppleGFXState {
-      dispatch_queue_t render_queue;
-      struct AppleGFXDisplayMode *display_modes;
-      uint32_t num_display_modes;
--    /*
--     * QemuMutex & QemuConds for awaiting completion of PVG 
-memory-mapping and
--     * reading requests after submitting them to run in the AIO context.
--     * QemuCond (rather than QemuEvent) are used so multiple concurrent 
-jobs
--     * can be handled safely.
--     * The state associated with each job is tracked in a AppleGFX*Job 
-struct
--     * for each kind of job; instances are allocated on the caller's stack.
--     * This struct also contains the completion flag which is used in
--     * conjunction with the condition variable.
--     */
--    QemuMutex job_mutex;
--    QemuCond task_map_job_cond;
--    QemuCond mem_read_job_cond;
-
-      /* tasks is protected by task_mutex */
-      QemuMutex task_mutex;
-@@ -82,8 +69,10 @@ void apple_gfx_common_realize(AppleGFXState *s, 
-PGDeviceDescriptor *desc,
-  uintptr_t apple_gfx_host_address_for_gpa_range(uint64_t guest_physical,
-                                                 uint64_t length, bool 
-read_only,
-                                                 MemoryRegion 
-**mapping_in_region);
--void apple_gfx_await_bh_job(AppleGFXState *s, QemuCond *job_cond,
--                            bool *job_done_flag);
-+void apple_gfx_bh_job_run_full(QEMUBHFunc *cb, void *opaque, const char 
-*name);
-+
-+#define apple_gfx_bh_job_run(cb, opaque) \
-+    apple_gfx_bh_job_run_full((cb), (opaque), (stringify(cb)))
-
-  extern const PropertyInfo qdev_prop_display_mode;
-
-diff --git a/hw/display/apple-gfx-mmio.m b/hw/display/apple-gfx-mmio.m
-index a801c5fa722e..889a23df89e9 100644
---- a/hw/display/apple-gfx-mmio.m
-+++ b/hw/display/apple-gfx-mmio.m
-@@ -60,8 +60,6 @@ -(void)mmioWriteAtOffset:(size_t)offset 
-value:(uint32_t)value;
-
-      AppleGFXState common;
-
--    QemuCond iosfc_map_job_cond;
--    QemuCond iosfc_unmap_job_cond;
-      qemu_irq irq_gfx;
-      qemu_irq irq_iosfc;
-      MemoryRegion iomem_iosfc;
-@@ -154,7 +152,6 @@ static void raise_irq(void *opaque)
-      AppleGFXMMIOState *state;
-      bool read_only;
-      bool success;
--    bool done;
-  } AppleGFXMapSurfaceMemoryJob;
-
-  typedef struct AppleGFXMMIOMappedRegion {
-@@ -203,18 +200,13 @@ static void apple_gfx_mmio_map_surface_memory(void 
-*opaque)
-          }
-      }
-
--    qemu_mutex_lock(&s->common.job_mutex);
-      job->result_mem = (void *)mem;
-      job->success = mem != 0;
--    job->done = true;
--    qemu_cond_broadcast(&s->iosfc_map_job_cond);
--    qemu_mutex_unlock(&s->common.job_mutex);
-  }
-
-  typedef struct AppleGFXUnmapSurfaceMemoryJob {
-      void *virtual_address;
-      AppleGFXMMIOState *state;
--    bool done;
-  } AppleGFXUnmapSurfaceMemoryJob;
-
-  static AppleGFXMMIOMappedRegion *find_mapped_region_containing(GArray 
-*regions,
-@@ -257,11 +249,6 @@ static void 
-apple_gfx_mmio_unmap_surface_memory(void *opaque)
-                        __func__,
-                        job->virtual_address, regions->len);
-      }
--
--    qemu_mutex_lock(&s->common.job_mutex);
--    job->done = true;
--    qemu_cond_broadcast(&s->iosfc_unmap_job_cond);
--    qemu_mutex_unlock(&s->common.job_mutex);
-  }
-
-  static PGIOSurfaceHostDevice *apple_gfx_prepare_iosurface_host_device(
-@@ -278,9 +265,7 @@ static void apple_gfx_mmio_unmap_surface_memory(void 
-*opaque)
-                  .read_only = ro, .state = s,
-              };
-
--            aio_bh_schedule_oneshot(qemu_get_aio_context(),
--                                    apple_gfx_mmio_map_surface_memory, 
-&job);
--            apple_gfx_await_bh_job(&s->common, &s->iosfc_map_job_cond, 
-&job.done);
-+            apple_gfx_bh_job_run(apple_gfx_mmio_map_surface_memory, &job);
-
-              *va = job.result_mem;
-
-@@ -295,9 +280,7 @@ static void apple_gfx_mmio_unmap_surface_memory(void 
-*opaque)
-              AppleGFXUnmapSurfaceMemoryJob job = { va, s };
-              trace_apple_gfx_iosfc_unmap_memory(va, b, c, d, e, f);
-
--            aio_bh_schedule_oneshot(qemu_get_aio_context(),
-- 
-apple_gfx_mmio_unmap_surface_memory, &job);
--            apple_gfx_await_bh_job(&s->common, 
-&s->iosfc_unmap_job_cond, &job.done);
-+            apple_gfx_bh_job_run(apple_gfx_mmio_unmap_surface_memory, 
-&job);
-
-              return true;
-          };
-@@ -336,8 +319,6 @@ static void apple_gfx_mmio_realize(DeviceState *dev, 
-Error **errp)
-                                2 /* Usually no more RAM regions*/);
-
-          apple_gfx_common_realize(&s->common, desc, errp);
--        qemu_cond_init(&s->iosfc_map_job_cond);
--        qemu_cond_init(&s->iosfc_unmap_job_cond);
-
-          [desc release];
-          desc = nil;
-diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
-index 2e264e5561fc..4d174e766310 100644
---- a/hw/display/apple-gfx.m
-+++ b/hw/display/apple-gfx.m
-@@ -90,6 +90,31 @@ static dispatch_queue_t get_background_queue(void)
-      return task;
-  }
-
-+typedef struct AppleGFXJob {
-+  QEMUBHFunc cb;
-+  void *opaque;
-+  QemuSemaphore sem;
-+} AppleGFXJob;
-+
-+void apple_gfx_bh_job_cb(void *opaque)
-+{
-+  AppleGFXJob *job = opaque;
-+  job->cb(job->opaque);
-+  qemu_sem_post(&job->sem);
-+}
-+
-+void apple_gfx_bh_job_run_full(QEMUBHFunc *cb, void *opaque, const char 
-*name)
-+{
-+    AppleGFXJob job;
-+    job->cb = cb;
-+    job->opaque = opaque;
-+    qemu_sem_init(&job->sem, 0);
-+    aio_bh_schedule_oneshot_full(qemu_get_aio_context(), 
-apple_gfx_bh_job_cb,
-+                                 &job, name);
-+    qemu_sem_wait(&job->sem);
-+    qemu_sem_destroy(&job->sem);
-+}
-+
-  typedef struct AppleGFXIOJob {
-      AppleGFXState *state;
-      uint64_t offset;
-@@ -355,7 +380,6 @@ void apple_gfx_common_init(Object *obj, 
-AppleGFXState *s, const char* obj_name)
-      uint32_t range_count;
-      bool read_only;
-      bool success;
--    bool done;
-  } AppleGFXMapMemoryJob;
-
-  uintptr_t apple_gfx_host_address_for_gpa_range(uint64_t guest_physical,
-@@ -457,20 +481,7 @@ static void apple_gfx_map_memory(void *opaque)
-          g_assert(r == KERN_SUCCESS);
-      }
-
--    qemu_mutex_lock(&s->job_mutex);
-      job->success = success;
--    job->done = true;
--    qemu_cond_broadcast(&s->task_map_job_cond);
--    qemu_mutex_unlock(&s->job_mutex);
--}
--
--void apple_gfx_await_bh_job(AppleGFXState *s, QemuCond *job_cond, bool 
-*job_done_flag)
--{
--    qemu_mutex_lock(&s->job_mutex);
--    while (!*job_done_flag) {
--        qemu_cond_wait(job_cond, &s->job_mutex);
--    }
--    qemu_mutex_unlock(&s->job_mutex);
-  }
-
-  typedef struct AppleGFXReadMemoryJob {
-@@ -478,8 +489,6 @@ void apple_gfx_await_bh_job(AppleGFXState *s, 
-QemuCond *job_cond, bool *job_done
-      hwaddr physical_address;
-      uint64_t length;
-      void *dst;
--    bool done;
--    bool success;
-  } AppleGFXReadMemoryJob;
-
-  static void apple_gfx_do_read_memory(void *opaque)
-@@ -491,11 +500,6 @@ static void apple_gfx_do_read_memory(void *opaque)
-      r = dma_memory_read(&address_space_memory, job->physical_address,
-                          job->dst, job->length, MEMTXATTRS_UNSPECIFIED);
-      job->success = r == MEMTX_OK;
--
--    qemu_mutex_lock(&s->job_mutex);
--    job->done = true;
--    qemu_cond_broadcast(&s->mem_read_job_cond);
--    qemu_mutex_unlock(&s->job_mutex);
-  }
-
-  static bool apple_gfx_read_memory(AppleGFXState *s, hwaddr 
-physical_address,
-@@ -508,9 +512,7 @@ static bool apple_gfx_read_memory(AppleGFXState *s, 
-hwaddr physical_address,
-      trace_apple_gfx_read_memory(physical_address, length, dst);
-
-      /* Traversing the memory map requires RCU/BQL, so do it in a BH. */
--    aio_bh_schedule_oneshot(qemu_get_aio_context(), 
-apple_gfx_do_read_memory,
--                            &job);
--    apple_gfx_await_bh_job(s, &s->mem_read_job_cond, &job.done);
-+    apple_gfx_bh_job_run(s, apple_gfx_do_read_memory, &job);
-      return job.success;
-  }
-
-@@ -556,12 +558,10 @@ static void 
-apple_gfx_register_task_mapping_handlers(AppleGFXState *s,
-              .state = s,
-              .task = task, .ranges = ranges, .range_count = range_count,
-              .read_only = read_only, .virtual_offset = virtual_offset,
--            .done = false, .success = true,
-+            .success = true,
-          };
-          if (range_count > 0) {
--            aio_bh_schedule_oneshot(qemu_get_aio_context(),
--                                    apple_gfx_map_memory, &job);
--            apple_gfx_await_bh_job(s, &s->task_map_job_cond, &job.done);
-+            apple_gfx_bh_job_run(s, apple_gfx_map_memory, &job);
-          }
-          return job.success;
-      };
-@@ -780,10 +780,6 @@ void apple_gfx_common_realize(AppleGFXState *s, 
-PGDeviceDescriptor *desc,
-          apple_gfx_create_display_mode_array(display_modes, 
-num_display_modes);
-
-      create_fb(s);
--
--    qemu_mutex_init(&s->job_mutex);
--    qemu_cond_init(&s->task_map_job_cond);
--    qemu_cond_init(&s->mem_read_job_cond);
-  }
-
-  static void apple_gfx_get_display_mode(Object *obj, Visitor *v,
--- 
-2.47.0

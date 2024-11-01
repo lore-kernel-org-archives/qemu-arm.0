@@ -1,236 +1,277 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp196294njc;
-        Thu, 31 Oct 2024 21:10:28 -0700 (PDT)
-X-Forwarded-Encrypted: i=3; AJvYcCVVsB99PFAqHzWVbeCaQ0LnbhdXE6DQ17eZ4UMiPnqVh24pVM7NeOQAvNzg+mqilMRMMqlWHICHf9rivA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGrCrFPXf8MVhKv1mvmPEHHBYUUtfEmCR0WTddd1yaZHGCQU1xVYhripdToEaiCzG26opBT
-X-Received: by 2002:a05:620a:2409:b0:7a2:e2e:31c6 with SMTP id af79cd13be357-7b2f3d2550emr808635085a.21.1730434227929;
-        Thu, 31 Oct 2024 21:10:27 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1730434227; cv=pass;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp276696njc;
+        Fri, 1 Nov 2024 01:16:01 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCV3NhfkSwUiaZD/7SgZaW9kplAeq+WQL3PJa0piDJFYuCxp9EVFo74ioa6Lvm8ejn/c15u34/nDpqw+Qw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHMmebu36heegeeAnM6fGvLVBOm7gjMnNFnS+OUmdAMuiA7r3R/OE+VEEoJ9/ivULaxIFin
+X-Received: by 2002:a05:6102:442c:b0:4a9:14:3ee9 with SMTP id ada2fe7eead31-4a9543a912emr7252170137.23.1730448960778;
+        Fri, 01 Nov 2024 01:16:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730448960; cv=none;
         d=google.com; s=arc-20240605;
-        b=bmveAFO9SU6LVVewS83fqfaFfj1Omo2rsidcwYUJYsE0aoFAXDIUOlvbRsSTqmZstd
-         bK5AAE7aIIju9MCCaeR3qz9UBCNDY9MbGaiz3ZFHYiFu8VSQrPEwyd5x7mEb5HLrVI4n
-         ijjn/k8+Pa73w9o4HRVbzrrSjOWGE8h3U2fmxpfw7oi96M84iJkHqbDqRlWo1W26UnVu
-         fbbC84w7tOJo/uvepmR4zJRHuOm/7Fc/h95WVkqdYwuQeeaxlkn3QyDaIPVmFytzFgmL
-         DlapZjA+UmnKPCZeBAjal1m7wyJ2Cp23yapLY1HW7ZT9WJ/CCNnJ6KMiLbx7zRUoEbFA
-         PXUg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :mime-version:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=om/05SEztcF8F/Re1/Pb/8FkpHxe63jpwzb3Ys2pCnc=;
-        fh=yyAiQ50iING41mWFoXcKeqrARMLeHr+uOfxIHMIG0g8=;
-        b=aQNr3Zik3/HGiOZ8MtJMCXsIEh/DvN+B711VGTvEDee09+6cRZ2Ijssasrjkh/aRgb
-         l9WZWuw/a2plOgn0qee4Qt7XuJcy4IkKrngJ77jGoi8hIG8K6bHehvOelv6gsHyO9yPH
-         zu1aYeXxuqYATpGDzFB3CnT8tAQaSTehMzywVTTBbcN5OiHM6HapaBarVtH8MuNOKPop
-         Js7Yp5fZiqDeqiqjQlCuOSU1lFhpCcCV6maQUHoZhWCCbCGaFXSgQNr2SFOOthLAzRzi
-         5IF+jDe4S47kz9HzDVw2F8/WGbgl0GvYzwh3lDYkl/mnuW/jy3jkmBSAacLREkEt5H4N
-         NHgw==;
+        b=JO17m2pgEA7/aL/tlI1CSBImAeDZN7XJncE6lS1uTriydUNJQPUEQd/f1hjlbv7NFS
+         IRCidV8PALBwDBymVwVVQtTYIifQ04fBZt3eNMVAhKEaWBd44eni/GaZ06QwRoGOG30K
+         /6qRGdxTNOr9D5FFEPkO5tULRcWYiuNWih61KsZFM1rByqXumrhlCaYBiC3XWfwABTtX
+         MEKn9583rB4p84Rdzel04NBjjs8h02TIHLOkrnb6H7NLEYIf6Cx/jZN58Qg6pQhHLjEh
+         HSwajJUexBIXppJMKxn/ei5WfMvUDkSI4UGzksFcUyPAezYh56En+50Y6TFB+vKi2+7j
+         H8fw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:dkim-signature;
+        bh=3LAOFSbGVV8G7hTs0ywBHMefEjcusnnXgP0sYJl+8+A=;
+        fh=/Q7DFfK0c6lcL5pNzN/8+EzqG4IF+hoXAsi0Ur0bC2k=;
+        b=I4SM4fAegzD7qWZ6HEMVl5lSuNAPbC/VUV18OUUQf71q31UpSNZ4WYuvVad52lPYNB
+         9iV639ZCrjPU3nZ1QMPPP8N8z7cJs33X+0HOYshk5pkuPLpopu4zXJwwzwcXXzJpG0Um
+         6k8fU8uJm47tRDacIdUIMXFE4lkITL6yBF0PUKj/96vnsKp9z7ecxdAmycKR0L9mdtST
+         5QP1VyEc9zy36if/CGe4Nb5rt4c7fMtZmatOIA4Pjmi3cpVg8p2ugVDi5a0bnXF9xn5I
+         DM8QrQRh8OKW5QlJpL1JLkgBTO2UNMAenADSPiwMYNAas11TNTA4ukI2OBhcrNBOfdub
+         eTtg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=lZyLTDTy;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b2f3ad1c17si392192485a.733.2024.10.31.21.10.27
-        for <alex.bennee@linaro.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=MC4aef0V;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.16])
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad0b2030si40528111cf.75.2024.11.01.01.15.59
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 31 Oct 2024 21:10:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 01 Nov 2024 01:16:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) client-ip=192.198.163.16;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=lZyLTDTy;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t6iyl-0006e1-C0; Fri, 01 Nov 2024 00:09:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1t6iyh-0006cp-LN; Fri, 01 Nov 2024 00:09:41 -0400
-Received: from mail-bn7nam10on20603.outbound.protection.outlook.com
- ([2a01:111:f403:2009::603]
- helo=NAM10-BN7-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1t6iyd-0007Nf-5a; Fri, 01 Nov 2024 00:09:39 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=H6cvCN34v9e/O6Yd+RABVs122AyEUVhnxPJKWqxxbVSAtI8pD8egJKshSWjQOrVqimawYbFzO7bNHPkcbmEGgitk0X5eyWTRC2IQOXQNeDSlSNp62jOZDQYP0Ufs1MT5r8lVn/8go83pRzQbol7BP66teQKsZlLJn9PmPM+quvWe8Nh5ZYY0yR+2mmbaHHKNXThaXdNjOFmhF89K+HmHNLyIUzybVanrc6uTlin5eOpaAkvPJbeHib+Tvf260Glb6x9kPEe7gUQDmXbOqOfp27LwY3o31Bz5T+eNFI3bAIu1iVbu8iS2zBS3kze5hpirvdkAmtptREdAJpn+Z0FCvw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=om/05SEztcF8F/Re1/Pb/8FkpHxe63jpwzb3Ys2pCnc=;
- b=BPu1XR4rGoSm8XhLi3JN/7MwaH47kzVCJdsaGwdwf2tyWPa65FJP4D7MQJFbWP3yNFbqyH3Ic9etlYu5ZyT+N/7vhSK4jDft/6zjCiftv5oPoMbNhgRBVcri7AGe+9muMDWZKe5B0wrJ/AFdKbaYyJ3NyEx75mjqs4U6AJqlnToyEZPNDV9u6bL+8EfJWlDmIDSR1OoDjhI/VvGAYSPgLda+7rj7SZCp3CFoz8Q46gxUBcVgbtrhqco1/aHMD0q2L0aA0uNAt3t8UxeE+YjFn5KCqmBd/OiFnS3vx7HUsGXZyXHspVBMQYAZRICQeM+WozwG8SbPhgq4EFqGNbzPMA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.118.232) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=om/05SEztcF8F/Re1/Pb/8FkpHxe63jpwzb3Ys2pCnc=;
- b=lZyLTDTy20KoH8H42giNsmEWXUfx0SbBl2KCLgL3d1NMLxE7MLjKKKUGShw9zkJfnPDQTT8ieSNadG5m//tfyrvka/17pNbeRpipuT7gACe2UOifZj6976lVywRMfs4zze0I4yo/Zlf4+u2avzjzUyMcU7hEjaVZxA7AP5u99az+tsm0IpJhUmWYHWY8nDvEQTUadIKHxdnJw8RWBYKA072x7ge4Ql4BT4E1EFYZrbbhZLPauDtUDIC1af8qoiSPREl56E9EVz2EUDEo75Dr90TjH0SEXSwq0EC01KLPNsgiO2PNp16I17BvtJKIujupIPXoHSAF1sAtbXRzfHE6rw==
-Received: from DM6PR07CA0112.namprd07.prod.outlook.com (2603:10b6:5:330::27)
- by DM6PR12MB4284.namprd12.prod.outlook.com (2603:10b6:5:21a::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8114.20; Fri, 1 Nov
- 2024 04:09:27 +0000
-Received: from DS1PEPF00017094.namprd03.prod.outlook.com
- (2603:10b6:5:330:cafe::1d) by DM6PR07CA0112.outlook.office365.com
- (2603:10b6:5:330::27) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8114.22 via Frontend
- Transport; Fri, 1 Nov 2024 04:09:27 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.118.232) by
- DS1PEPF00017094.mail.protection.outlook.com (10.167.17.137) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8114.16 via Frontend Transport; Fri, 1 Nov 2024 04:09:26 +0000
-Received: from drhqmail201.nvidia.com (10.126.190.180) by mail.nvidia.com
- (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Thu, 31 Oct
- 2024 21:09:22 -0700
-Received: from drhqmail202.nvidia.com (10.126.190.181) by
- drhqmail201.nvidia.com (10.126.190.180) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.4; Thu, 31 Oct 2024 21:09:22 -0700
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com
- (10.126.190.181) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
- Transport; Thu, 31 Oct 2024 21:09:21 -0700
-Date: Thu, 31 Oct 2024 21:09:20 -0700
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-CC: Eric Auger <eric.auger@redhat.com>, Mostafa Saleh <smostafa@google.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Jason
- Gunthorpe" <jgg@nvidia.com>, Jean-Philippe Brucker
- <jean-philippe@linaro.org>, Moritz Fischer <mdf@kernel.org>, Michael Shavit
- <mshavit@google.com>, "Andrea Bolognani" <abologna@redhat.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, "Peter Xu" <peterx@redhat.com>, Zhangfei Gao
- <zhangfei.gao@linaro.org>, <nathanc@nvidia.com>, <arighi@nvidia.com>,
- <ianm@nvidia.com>, <jan@nvidia.com>, <mochs@nvidia.com>
-Subject: nested-smmuv3 topic for QEMU/libvirt, Nov 2024
-Message-ID: <ZyRUcGKKS6NbIV5O@Asurada-Nvidia>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=MC4aef0V;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.16 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1730448961; x=1761984961;
+  h=from:to:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=OeRYF2apaD+NDr933mJ/vBCoF1Va5KOdDbSi5mJxQUk=;
+  b=MC4aef0Vq+ARo+XktnTpUDo98v8WKvFSZPRSv+wGh3bsZw52bELNYPTy
+   vk7pWH3e23LeTD7HqeMHJ8DwWC5XNpu61eRz2NHqFDlZ8jxS3yj6fphK+
+   JxQnZpIHRUJVR9Nc/35MQu0YSwUuVOzoG47DLGTUbKC+wOi2G/AN6xrbH
+   1GBp1tSq72Kma+jRFSIv3YE+fivsOk5zDBQEiHZVcqWET9gwPM3G3qu8n
+   qhRRuJoPKwxhUuYoqrVLDhV4hZf/xl6FiXxSt6HjpeNOyQl+IPs6/CZx6
+   nucAFaBd1nGTJ2R2b8tMuuQfdH1TcrGXUSKZjKg30u57hre4aVYKP7w9H
+   w==;
+X-CSE-ConnectionGUID: 7S8G1jQ8TLOFGVAJQ75yOA==
+X-CSE-MsgGUID: fecVMpaJR0CKsquf4gKJxA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11242"; a="17845995"
+X-IronPort-AV: E=Sophos;i="6.11,249,1725346800"; 
+   d="scan'208";a="17845995"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Nov 2024 01:15:59 -0700
+X-CSE-ConnectionGUID: FKT23MALQ2CRulJ7gc80ig==
+X-CSE-MsgGUID: t3SK6hiQRqeSZcJtirYTcQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,249,1725346800"; 
+   d="scan'208";a="86834534"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+  by fmviesa003.fm.intel.com with ESMTP; 01 Nov 2024 01:15:54 -0700
+From: Zhao Liu <zhao1.liu@intel.com>
+To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>,
+	Alireza Sanaee <alireza.sanaee@huawei.com>,
+	qemu-devel@nongnu.org,
+	kvm@vger.kernel.org,
+	qemu-riscv@nongnu.org,
+	qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH v5 0/9] Introduce SMP Cache Topology
+Date: Fri,  1 Nov 2024 16:33:22 +0800
+Message-Id: <20241101083331.340178-1-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS1PEPF00017094:EE_|DM6PR12MB4284:EE_
-X-MS-Office365-Filtering-Correlation-Id: 81dcc4ad-fab1-4a5f-34cd-08dcfa2af9ff
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|82310400026|36860700013|1800799024|7416014|376014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?d1MrKDnzgOIFQXeOAI2oqrPx2rffCc6wkdstcptZIk+m/La4nHh/3OE8LWP3?=
- =?us-ascii?Q?ep2UAu0YBsX3JnI70S/FrhCGc3q9RW0qH9uQYk9TpIvUhXaXtBf8dTZRNA63?=
- =?us-ascii?Q?LlqDp6WEjIa4GwChyJ3NZQa43ZvCn7jMZv+4c/HKeMZt3FDE+WwkZsXf3oTQ?=
- =?us-ascii?Q?UsEn/x9ouJ+dR1v5BjpBxd06ELcQoJGDa3R0OUFqQzfOx7ul9qzozalBnt4b?=
- =?us-ascii?Q?9L9XzsF2/pqFtN3bsVFgGNvUwVb9h1FcVjo0EY9CSqw50btPGZFQEtmUTaJH?=
- =?us-ascii?Q?hbKXQDG0WIOR4v1/vnME8jFppJDno3ze+tfOcQRo7w+b0SRbH/69l+sZxXvt?=
- =?us-ascii?Q?ygfPrxSEx5whIbTE/Rr4P22VE7/DDZRIoeeKadSNBvAR9ppCD0ktDshjeZPp?=
- =?us-ascii?Q?gQi5ZMfl0tDAyLCqThfYm0ZGOnLmQx/OR5u5+6CWWKhO6mNh8Dx5AMUABaH1?=
- =?us-ascii?Q?261ZeSZCbahkzVKqrBkVb/ETvGhtJTF28WTH+HfAxrKyQLeIk59hnP00P0/o?=
- =?us-ascii?Q?6RNMt5O0c0WKYxRrlcPr8yYBEdP30ORH+2jKsE4ZPUq5y31KXDuQvtxzYBd3?=
- =?us-ascii?Q?H7fLgEJBmykloMjLYF1TqLUGK+AffkbUtme3Wb5RdgUbsmdFFAzhEBvTGpjM?=
- =?us-ascii?Q?3UVyBMuRRIVDQTm+/U+NvMZ6cu0G3wbLFsSh8k5aDm+V0o1Aw2VwizthQp0h?=
- =?us-ascii?Q?0cQiYxdeKoDzlwQOddfBLBOIbqDPXgyVbLRT4Y1ylKVIZtmBIYi3poCrsOqx?=
- =?us-ascii?Q?ZXJypCnAo7u/EmOOdjGpMafVp+3o2ekg1lPytiSN004T08q5nkgrXwHGR7wR?=
- =?us-ascii?Q?VAmMOskwlkSe9KsSDoj/UZ+76tUrvDmViW0jv10M0ct2JdCb0LwDagBc+624?=
- =?us-ascii?Q?GWqjBaYSJgNEiP7SHyAye51HZ9IrlzIl4Eq10TdHxnTw2hBlMqE32D/Ax2wn?=
- =?us-ascii?Q?eDoluSC20CxYvjznrtLqnOth+629iPBK1v+wrqu23KWG7DGOP4auPZ+peSMZ?=
- =?us-ascii?Q?oDFKJPpovH7MQOSDXs434uXB6dR5Posycr9VTXTH1SkOVDNcZgIrFp4nm+e4?=
- =?us-ascii?Q?Oys0TVsu5aGZ0HaMwD+B2pmWZPtI8BOLojuu5e0905kySm4RhMl2GrAAzn18?=
- =?us-ascii?Q?uT5P4qvX/tV9DNjgpEG9c7I4/ppZ4v08QjetBjYKzzlna0Wc2xG3tu+3DwwI?=
- =?us-ascii?Q?H9/Or6sz0hR0ZTy2oXikbzr+kcaR7Ow0wZAlMUaAsfhD6Gn2MsQLa2hHK7pZ?=
- =?us-ascii?Q?/tn/E1LwuTabeyPP42xF+waDXIx7vARY+pIFdw5HJujxtsZlvZXkYoMUC1KX?=
- =?us-ascii?Q?GMTcclI1/DRLtdMxvW8G4zA4tOjtd5N8w114V3kZfnX3LoDd6ntxxAHqemiq?=
- =?us-ascii?Q?AVGMiSljdrGlN5OyDRv3DReQ1vbNePkYw5BNarCDQgRlGGeOCw=3D=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(82310400026)(36860700013)(1800799024)(7416014)(376014); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Nov 2024 04:09:26.8183 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 81dcc4ad-fab1-4a5f-34cd-08dcfa2af9ff
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS1PEPF00017094.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4284
-Received-SPF: softfail client-ip=2a01:111:f403:2009::603;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.366,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PtfrhRmDe8Tp
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: ySd46WIJCW7R
 
-Hi,
+Hi Paolo,
 
-This is a continued discussion following previous month's:
-https://lore.kernel.org/qemu-devel/Zvr%2Fbf7KgLN1cjOl@Asurada-Nvidia/
+This is my v5, if you think it's okay, could this feature get the final
+merge? (Before the 9.2 cycle ends) :-)
 
-Kernel changes are getting closer to merge, as Jason's planning to
-take vIOMMU series and smmuv3_nesting series into the iommufd tree:
-https://lore.kernel.org/all/cover.1730313494.git.nicolinc@nvidia.com/
-https://lore.kernel.org/all/cover.1730313494.git.nicolinc@nvidia.com/
-https://lore.kernel.org/all/0-v4-9e99b76f3518+3a8-smmuv3_nesting_jgg@nvidia.com/
+Compared with v4 [1], there's no more changes except rebase and adding
+Acked/Reviewed-by tags (thanks!).
 
-So, I think it's probably a good time to align with each others and
-talk about kicking off some QEMU upstream work in the month ahead.
+ARM side has also worked a lot on the smp-cache based on this series [2].
 
-@Shameer,
-Do you have some update on the pluggable smmuv3 module?
+This series is based on the Paolo's for-upstream-i386 (commit 1a519388a882
+("target/i386: Introduce GraniteRapids-v2 model")).
 
-Updates on my side:
-1) I have kept uAPI updated to the latest version and verified too.
-   There should be some polishing changes depending on how the basic
-   nesting infrastructure would look like from Intel/Duan's work.
-2) I got some help from NVIDIA folks for the libvirt task. And they
-   have done some drafting and are now verifying the PCI topology
-   with "iommu=none".
+Since AMD's Turin model hasn't been picked, there's actually no conflict
+at the moment, and this series can be applied to the master as well
 
-Once the pluggable smmuv3 module is ready to test, we will make some
-change to libvirt for that and drop the auto-assigning patches from
-the VIRT code, so as to converge for a libvirt+QEMU test.
 
-FWIW, Robin requested a different solution for MSI mapping [1], v.s.
-the RMR one that we have been using since Eric's work. I drafted a
-few VFIO/IOMMUFD patches for that, yet paused for getting the vIOMMU
-series merged to this kernel cycle. I plan to continue in Nov/Dec.
-So, for the near term we will continue with the RMR solution, until
-we have something solid later.
+Background
+==========
 
-[1] https://lore.kernel.org/linux-iommu/ZrVN05VylFq8lK4q@Asurada-Nvidia/
+The x86 and ARM (RISCV) need to allow user to configure cache properties
+(current only topology):
+ * For x86, the default cache topology model (of max/host CPU) does not
+   always match the Host's real physical cache topology. Performance can
+   increase when the configured virtual topology is closer to the
+   physical topology than a default topology would be.
+ * For ARM, QEMU can't get the cache topology information from the CPU
+   registers, then user configuration is necessary. Additionally, the
+   cache information is also needed for MPAM emulation (for TCG) to
+   build the right PPTT. (Originally from Jonathan)
 
-Thanks
-Nicolin
+
+About smp-cache
+===============
+
+The API design has been discussed heavily in [3].
+
+Now, smp-cache is implemented as a array integrated in -machine. Though
+-machine currently can't support JSON format, this is the one of the
+directions of future.
+
+An example is as follows:
+
+smp_cache=smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=module,smp-cache.3.cache=l3,smp-cache.3.topology=die
+
+"cache" specifies the cache that the properties will be applied on. This
+field is the combination of cache level and cache type. Now it supports
+"l1d" (L1 data cache), "l1i" (L1 instruction cache), "l2" (L2 unified
+cache) and "l3" (L3 unified cache).
+
+"topology" field accepts CPU topology levels including "thread", "core",
+"module", "cluster", "die", "socket", "book", "drawer" and a special
+value "default".
+
+The "default" is introduced to make it easier for libvirt to set a
+default parameter value without having to care about the specific
+machine (because currently there is no proper way for machine to
+expose supported topology levels and caches).
+
+If "default" is set, then the cache topology will follow the
+architecture's default cache topology model. If other CPU topology level
+is set, the cache will be shared at corresponding CPU topology level.
+
+
+[1]: Patch v4: https://lore.kernel.org/qemu-devel/20241022135151.2052198-1-zhao1.liu@intel.com/
+[2]: ARM smp-cache: https://lore.kernel.org/qemu-devel/20241010111822.345-1-alireza.sanaee@huawei.com/
+[3]: API disscussion: https://lore.kernel.org/qemu-devel/8734ndj33j.fsf@pond.sub.org/
+
+Thanks and Best Regards,
+Zhao
+---
+Changelog:
+
+Changes since Patch v4:
+ * Added Acked/Reviewed-by tags.
+ * Rebased on Paolo's for-upstream-i386 tag.
+
+Main changes since Patch v3:
+ * Stopped exposing "invalid" enumeration in QAPI and define it by a
+   macro instead. (Dainel)
+ * Checked cache topology after the arch machine loads the
+   user-configured cache model from MachineState.smp_cache and consumes
+   the special "default" level by replacing it with the specific level.
+   (Daniel)
+ * Described the omitting cache will use "default" level and described
+   the default cache topology model of i386 PC machine. (Daniel)
+
+Main changes since Patch v2:
+ * Updated version of new QAPI structures to v9.2. (Jonathan)
+ * Merged the QAPI change and smp-cache property support of machine
+   into one commit. (Jonathan)
+ * Picked Alireza's patch to add a has_caches flag.
+ * Polished english and coding style. (Jonathan)
+
+Main changes since Patch v1:
+ * Dropped handwriten smp-cache object and integrated cache properties
+   list into MachineState and used -machine to configure SMP cache
+   properties. (Markus)
+ * Dropped prefix of CpuTopologyLevel enumeration. (Markus)
+ * Rename CPU_TOPO_LEVEL_* to CPU_TOPOLOGY_LEVEL_* to match the QAPI's
+   generated code. (Markus)
+ * Renamed SMPCacheProperty/SMPCacheProperties (QAPI structures) to
+   SmpCacheProperties/SmpCachePropertiesWrapper. (Markus)
+ * Renamed SMPCacheName (QAPI structure) to SmpCacheLevelAndType and
+   dropped prefix. (Markus)
+ * Renamed 'name' field in SmpCacheProperties to 'cache', since the
+   type and level of the cache in SMP system could be able to specify
+   all of these kinds of cache explicitly enough.
+ * Renamed 'topo' field in SmpCacheProperties to 'topology'. (Markus)
+ * Returned error information when user repeats setting cache
+   properties. (Markus)
+ * Renamed SmpCacheLevelAndType to CacheLevelAndType, since this
+   representation is general across SMP or hybrid system.
+ * Dropped machine_check_smp_cache_support() and did the check when
+   -machine parses smp-cache in machine_parse_smp_cache().
+
+Main changes since RFC v2:
+ * Dropped cpu-topology.h and cpu-topology.c since QAPI has the helper
+   (CpuTopologyLevel_str) to convert enum to string. (Markus)
+ * Fixed text format in machine.json (CpuTopologyLevel naming, 2 spaces
+   between sentences). (Markus)
+ * Added a new level "default" to de-compatibilize some arch-specific
+   topo settings. (Daniel)
+ * Moved CpuTopologyLevel to qapi/machine-common.json, at where the
+   cache enumeration and smp-cache object would be added.
+   - If smp-cache object is defined in qapi/machine.json, storage-daemon
+     will complain about the qmp cmds in qapi/machine.json during
+     compiling.
+ * Referred to Daniel's suggestion to introduce cache JSON list, though
+   as a standalone object since -smp/-machine can't support JSON.
+ * Linked machine's smp_cache to smp-cache object instead of a builtin
+   structure. This is to get around the fact that the keyval format of
+   -machine can't support JSON.
+ * Wrapped the cache topology level access into a helper.
+ * Split as a separate commit to just include compatibility checking and
+   topology checking.
+ * Allow setting "default" topology level even though the cache
+   isn't supported by machine. (Daniel)
+ * Rewrote the document of smp-cache object.
+
+Main changes since RFC v1:
+ * Split CpuTopology renaimg out of this RFC.
+ * Use QAPI to enumerate CPU topology levels.
+ * Drop string_to_cpu_topo() since QAPI will help to parse the topo
+   levels.
+ * Set has_*_cache field in machine_get_smp(). (JeeHeng)
+ * Use "*_cache=topo_level" as -smp example as the original "level"
+   term for a cache has a totally different meaning. (Jonathan)
+---
+Alireza Sanaee (1):
+  i386/cpu: add has_caches flag to check smp_cache configuration
+
+Zhao Liu (8):
+  i386/cpu: Don't enumerate the "invalid" CPU topology level
+  hw/core: Make CPU topology enumeration arch-agnostic
+  qapi/qom: Define cache enumeration and properties for machine
+  hw/core: Check smp cache topology support for machine
+  hw/core: Add a helper to check the cache topology level
+  i386/cpu: Support thread and module level cache topology
+  i386/cpu: Update cache topology with machine's configuration
+  i386/pc: Support cache topology in -machine for PC machine
+
+ hw/core/machine-smp.c      | 128 +++++++++++++++++++++
+ hw/core/machine.c          |  44 ++++++++
+ hw/i386/pc.c               |   4 +
+ hw/i386/x86-common.c       |   4 +-
+ include/hw/boards.h        |  19 ++++
+ include/hw/i386/topology.h |  22 +---
+ qapi/machine-common.json   |  94 +++++++++++++++-
+ qemu-options.hx            |  31 ++++-
+ target/i386/cpu.c          | 225 ++++++++++++++++++++++++-------------
+ target/i386/cpu.h          |   4 +-
+ 10 files changed, 474 insertions(+), 101 deletions(-)
+
+-- 
+2.34.1

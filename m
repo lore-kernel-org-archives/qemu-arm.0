@@ -1,106 +1,118 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp648250njc;
-        Fri, 1 Nov 2024 11:35:49 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCXipxuTz0jfCiJo4TjReYBKyKXsbXn1KW3pixAyFxBoREpF1k4R5pDrfzeLDAqCTxGi7zNxfBOSSjvE7A==@linaro.org
-X-Google-Smtp-Source: AGHT+IEMCdbtOuTpFD/Af7SB36e+gHRD/UVjxoZKpufbEA6WBQHNKzDAwlYSYYfrJh/N2KfxhYXJ
-X-Received: by 2002:a05:620a:2484:b0:7a9:c2d5:a9d9 with SMTP id af79cd13be357-7b2fb95815dmr621296185a.9.1730486149092;
-        Fri, 01 Nov 2024 11:35:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730486149; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp660229njc;
+        Fri, 1 Nov 2024 11:56:27 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX8NsWzVjXKFuHkgriwbrc3IZqpDj/72Bbk/4t4CK0PoyGi7td1XOulZX/Dc1woAeMJRpRknv/uBahsfg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFNlI++S1acyeIhQxa9WM0uIU8kd43qquIsNPHoFNeFUAQ0RsR2AYjMl77tijL5KVZZQGZH
+X-Received: by 2002:a05:622a:287:b0:461:1895:d9a with SMTP id d75a77b69052e-462b86869e4mr58860021cf.14.1730487386744;
+        Fri, 01 Nov 2024 11:56:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730487386; cv=none;
         d=google.com; s=arc-20240605;
-        b=P9uxZfYjFAQ/YBiJQW3N2OVBoaPI6BjLGmr0qikqcscbrrH4ieHTQJ/ydhOqgxYXKY
-         Cdg8pJ1jRkc/z96+HnMqBAvS8+UhohzGaTiPOtdWqDshMBijvrRRNPCY8wXDvIG9fE2Q
-         kp6HLmBvTbLVl5ebimKmFyLu7cuoma0DIydQc1KFY1xs5JLHL1mUJv2VTwCeiCNFu/Ne
-         7aCzgIdKoX+42T5nbTnqEoQS/kln/2QFqbIGz0chki4A7BSAZIfiKQBwOlmYdVitDTZt
-         PUHMwgXeEk5ae9X/EWadqd+B0Rlhs1ziQLB9SwdZlhwu9DPeXdDN0+NvIfv+0U6Y6Ix/
-         t9Dw==
+        b=JD5AP1c3KJ+KVrP7AFlbU/L9sP9slV3SRova6psZ4H7/CTFWddDmePD9WAey1+07b3
+         Iw57uMBuGGx5fccbZln0QaFhvxiycD0xypOm4FWhw4UFDoVkisjVeVLnu0WT9SDzpxib
+         DYdmRf715vjAINbpDBxmm6G6UjIWPDjMBnvGGau7FYWWxpjl58A/NWtbf6obk40qhJYt
+         PtbJj0+8kMYY6gzEIJQQhFnkyInh/RYbIRLTNrgcCtC1hDi43TnJtaEWgHhZHdCVUmI6
+         mSZjFI6J7D+jNfejBda5HEMwdos0D/lC2GrN5R4+OtWZDd3SiZxe60jTQXXZUyX7OxzK
+         b/qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=wyL4HAmhw5QC7T/GCe0CS8WPVoSAv3v9ECTBAg0sK9Y=;
-        fh=RNJ+0uUWiIBO2ZtF9AoBFZekqv+LKBL1Ue5ZuxB+6h4=;
-        b=hwj7kyYz/+uSOIuiihvxksaIACHvURlAEbV2MDlWcP1LBJr6IhBlgWAu6UjCs9+0yE
-         kAzGgRbDMeRVoGxXNhzoBDFNCRlldpdBG9f9XFTDFrsxEFVeYfpMVBzo/h+pkoeFwAij
-         Nvo92AQzkEP1z39u2180lzdunsLb7I38LSyxuzRjdaWxLN99QOCB8YamhIuwkHpZw4FY
-         vBoIIs2fkRDzLmdNw+17JQZyIZoCotiZWOkkCh5ZmyulqzOb0SGlniX9G/1637xPY3Tt
-         /k3+oVPQN0RURt1mMRsKLlkWDCzCziaHwZ903urukIdwe46OLpglWJrARhFsGhM3Knr+
-         egsQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=yDS9zlSiQ+PwoWX9xwv9cdCJ/JL5YOEq5jidXUjNycY=;
+        fh=y40LNZs05R3i5IV6fHXzzcWaHqhYI6WuHX9dcMo1lak=;
+        b=NDWCrFXHvovlBlXy3vsXg4GghEkzMoMxIrYLg96ofGXYqzLK+FBcsQiunFhfw+5mvD
+         asRPBwHVwn6evZge7nPWSlYURAfo+G4js0MMq0Cu1+OW1f876FoA3gV5U8gS3/vOlC/W
+         M3ehdXBZvpEXnNPUvd74wHfM/IiMJ/jY8s2MiCXWsgd6Kd46oIWzuBZUdduYlfGuS/Y5
+         xaGgbOCTwSh9Wn7FPDvs+ly2SodxyfJyZ6tgodG8WKSHOxNa+8JC0UiQUkH4eudMsuQ4
+         Fx2GJpuMIKu7sIfinSDigBxWkmghddOltKnfm598S9n8+QsMt92wNIq8UoFlf5qQJUca
+         JZpQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kg1dqlL7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b2f3a9ce9dsi486362785a.474.2024.11.01.11.35.49
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad2772c6si53597071cf.685.2024.11.01.11.56.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 01 Nov 2024 11:35:49 -0700 (PDT)
+        Fri, 01 Nov 2024 11:56:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kg1dqlL7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t6wUk-00021n-NM; Fri, 01 Nov 2024 14:35:39 -0400
+	id 1t6woL-0007XP-Q3; Fri, 01 Nov 2024 14:55:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1t6wUj-00021a-NP; Fri, 01 Nov 2024 14:35:37 -0400
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1t6wUg-00072r-Sn; Fri, 01 Nov 2024 14:35:37 -0400
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xg8cM6jNwz6K6NM;
- Sat,  2 Nov 2024 02:32:51 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 1B634140517;
- Sat,  2 Nov 2024 02:35:24 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 1 Nov 2024 19:35:23 +0100
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Fri, 1 Nov 2024 19:35:23 +0100
-To: Nicolin Chen <nicolinc@nvidia.com>
-CC: Eric Auger <eric.auger@redhat.com>, Mostafa Saleh <smostafa@google.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Jason
- Gunthorpe" <jgg@nvidia.com>, Jean-Philippe Brucker
- <jean-philippe@linaro.org>, Moritz Fischer <mdf@kernel.org>, Michael Shavit
- <mshavit@google.com>, "Andrea Bolognani" <abologna@redhat.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, "Peter Xu" <peterx@redhat.com>, Zhangfei Gao
- <zhangfei.gao@linaro.org>, "nathanc@nvidia.com" <nathanc@nvidia.com>,
- "arighi@nvidia.com" <arighi@nvidia.com>, "ianm@nvidia.com" <ianm@nvidia.com>, 
- "jan@nvidia.com" <jan@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>
-Subject: RE: nested-smmuv3 topic for QEMU/libvirt, Nov 2024
-Thread-Topic: nested-smmuv3 topic for QEMU/libvirt, Nov 2024
-Thread-Index: AQHbLBPkDYWW/RlwrUqSJByfpx0jw7KisNtQ
-Date: Fri, 1 Nov 2024 18:35:23 +0000
-Message-ID: <cf4359b18f0d44f09b8901141b678a09@huawei.com>
-References: <ZyRUcGKKS6NbIV5O@Asurada-Nvidia>
-In-Reply-To: <ZyRUcGKKS6NbIV5O@Asurada-Nvidia>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t6woI-0007Wm-EC
+ for qemu-arm@nongnu.org; Fri, 01 Nov 2024 14:55:50 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t6woF-0000ZY-Dw
+ for qemu-arm@nongnu.org; Fri, 01 Nov 2024 14:55:50 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-37d4b0943c7so1319774f8f.1
+ for <qemu-arm@nongnu.org>; Fri, 01 Nov 2024 11:55:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1730487345; x=1731092145; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=yDS9zlSiQ+PwoWX9xwv9cdCJ/JL5YOEq5jidXUjNycY=;
+ b=kg1dqlL7w6b2GbwZUZOGuzBHKHiRlEdtMlCrouqdtJNifvWYG3DoLPL496FG1i6iAR
+ QRfA+ANZsPwrRI+8+L5v6WcX+J/RN0ezb3xxn3/h0oWRem7Ih47OSeClM08YRUyl4gjH
+ jzZK1kmC1K/3Y3Sj5x0w/a7vN9r7Vzb+Sjc8cW9F89XRS1VGNPNXhu6dNPYW93H5zjyU
+ sm6nAOmdpD4WufCz1orao+7lVcgDPWdIMNVHvuDBnrEaNs0yyb1PntkcJIQCCXu7oVyW
+ CdCzA/R77nKoU1pZUJxdQ4uodFi25Gm6S+i7PtfA+2FTgABHd5ZsNGodf5C3sfEE9o1/
+ zKHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730487345; x=1731092145;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=yDS9zlSiQ+PwoWX9xwv9cdCJ/JL5YOEq5jidXUjNycY=;
+ b=R2XXrqrbRj4jbKt2QAPdgeo6N2478vDyLmuVBl2E1LMD9/vdJnswAmIZlJVlZvEDIA
+ u3t9b8qv+fcaFaDrrZE30m/JsQvSlVZuVXXeYh/oXQTWwjwdJfVVyt/+fVhfc6x9VKFr
+ vMxxuOxz1jaV+N8anpMGuS0pbVCEtR8ie26DpZM2DBwl4uE7xNPzG/mZdX/dkSYEXpAh
+ jljgY2++KDl69YJkq6T01zlyVHkzy4UuSTPXW8ZYm5bJTslIqk+d+0+0jd/qcaMk46ZK
+ 9fOez/6KkmUprZbtwXR/1eyVxyQC+1gUIvzdRh1kjyOBlmpnXpfi87IzJPONRTUYpxzi
+ rRTw==
+X-Gm-Message-State: AOJu0Ywr+YgRZXF02qxLPhhAi5wjopW65Ar1HIDaduvwLbx0giBUQXym
+ XeCugVjW/xE9NtimyltfknZeIWpLkElEiYDCNnbc8PSKO41tL0dgR4Z9QEKAsTZmXfyzTTGtAyL
+ Y
+X-Received: by 2002:a05:6000:d85:b0:371:8319:4dbd with SMTP id
+ ffacd0b85a97d-38061127842mr16292134f8f.17.1730487345321; 
+ Fri, 01 Nov 2024 11:55:45 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-381c113e771sm5951292f8f.81.2024.11.01.11.55.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 01 Nov 2024 11:55:45 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH] target/arm: Fix SVE SDOT/UDOT/USDOT (4-way, indexed)
+Date: Fri,  1 Nov 2024 18:55:44 +0000
+Message-Id: <20241101185544.2130972-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,90 +125,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gmwl/WCTG+HB
+X-TUID: E4eDvi+rxIcm
 
+Our implementation of the indexed version of SVE SDOT/UDOT/USDOT got
+the calculation of the inner loop terminator wrong.  Although we
+correctly account for the element size when we calculate the
+terminator for the first iteration:
+   intptr_t segend = MIN(16 / sizeof(TYPED), opr_sz_n);
+we don't do that when we move it forward after the first inner loop
+completes.  The intention is that we process the vector in 128-bit
+segments, which for a 64-bit element size should mean (1, 2), (3, 4),
+(5, 6), etc.  This bug meant that we would iterate (1, 2), (3, 4, 5,
+6), (7, 8, 9, 10) etc and apply the wrong indexed element to some of
+the operations, and also index off the end of the vector.
 
-Hi Nicolin,
+You don't see this bug if the vector length is small enough that we
+don't need to iterate the outer loop, i.e.  if it is only 128 bits,
+or if it is the 64-bit special case from AA32/AA64 AdvSIMD.  If the
+vector length is 256 bits then we calculate the right results for the
+elements in the vector but do index off the end of the vector. Vector
+lengths greater than 256 bits see wrong answers. The instructions
+that produce 32-bit results behave correctly.
 
-> -----Original Message-----
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: Friday, November 1, 2024 4:09 AM
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: Eric Auger <eric.auger@redhat.com>; Mostafa Saleh
-> <smostafa@google.com>; qemu-arm@nongnu.org; qemu-
-> devel@nongnu.org; Peter Maydell <peter.maydell@linaro.org>; Jason
-> Gunthorpe <jgg@nvidia.com>; Jean-Philippe Brucker <jean-
-> philippe@linaro.org>; Moritz Fischer <mdf@kernel.org>; Michael Shavit
-> <mshavit@google.com>; Andrea Bolognani <abologna@redhat.com>;
-> Michael S. Tsirkin <mst@redhat.com>; Peter Xu <peterx@redhat.com>;
-> Zhangfei Gao <zhangfei.gao@linaro.org>; nathanc@nvidia.com;
-> arighi@nvidia.com; ianm@nvidia.com; jan@nvidia.com; mochs@nvidia.com
-> Subject: nested-smmuv3 topic for QEMU/libvirt, Nov 2024
->=20
-> Hi,
->=20
-> This is a continued discussion following previous month's:
-> https://lore.kernel.org/qemu-devel/Zvr%2Fbf7KgLN1cjOl@Asurada-Nvidia/
->=20
-> Kernel changes are getting closer to merge, as Jason's planning to
-> take vIOMMU series and smmuv3_nesting series into the iommufd tree:
-> https://lore.kernel.org/all/cover.1730313494.git.nicolinc@nvidia.com/
-> https://lore.kernel.org/all/cover.1730313494.git.nicolinc@nvidia.com/
-> https://lore.kernel.org/all/0-v4-9e99b76f3518+3a8-
-> smmuv3_nesting_jgg@nvidia.com/
->=20
-> So, I think it's probably a good time to align with each others and
-> talk about kicking off some QEMU upstream work in the month ahead.
->=20
-> @Shameer,
-> Do you have some update on the pluggable smmuv3 module?
+Fix the recalculation of 'segend' for subsequent iterations, and
+restore a version of the comment that was lost in the refactor of
+commit 7020ffd656a5 that explains why we only need to clamp segend to
+opr_sz_n for the first iteration, not the later ones.
 
-I have a bare minimum prototype code that works with a pluggable smmuv3.
+Cc: qemu-stable@nongnu.org
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2595
+Fixes: 7020ffd656a5 ("target/arm: Macroize helper_gvec_{s,u}dot_idx_{b,h}")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/tcg/vec_helper.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-...
--device pxb-pcie,id=3Dpcie.1,bus_nr=3D2,bus=3Dpcie.0 \
--device pcie-root-port,id=3Dpcie.port1,bus=3Dpcie.1 \
--device arm-smmuv3-nested,id=3Dsmmuv1,pci-bus=3Dpcie.1 \
--device vfio-pci-nohotplug,host=3D0000:75:00.1,bus=3Dpcie.port1,iommufd=3Di=
-ommufd0 \
--device pxb-pcie,id=3Dpcie.2,bus_nr=3D8,bus=3Dpcie.0 \
--device pcie-root-port,id=3Dpcie.port2,bus=3Dpcie.2,chassis=3D8 \
--device arm-smmuv3-nested,id=3Dsmmuv2,pci-bus=3Dpcie.2 \
--device vfio-pci-nohotplug,host=3D0000:7d:02.1,bus=3Dpcie.port2,iommufd=3Di=
-ommufd0 \
-...
+diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
+index 22ddb968817..e825d501a22 100644
+--- a/target/arm/tcg/vec_helper.c
++++ b/target/arm/tcg/vec_helper.c
+@@ -836,6 +836,13 @@ void HELPER(NAME)(void *vd, void *vn, void *vm, void *va, uint32_t desc)  \
+ {                                                                         \
+     intptr_t i = 0, opr_sz = simd_oprsz(desc);                            \
+     intptr_t opr_sz_n = opr_sz / sizeof(TYPED);                           \
++    /*                                                                    \
++     * Special case: opr_sz == 8 from AA64/AA32 advsimd means the         \
++     * first iteration might not be a full 16 byte segment. But           \
++     * for vector lengths beyond that this must be SVE and we know        \
++     * opr_sz is a multiple of 16, so we need not clamp segend            \
++     * to opr_sz_n when we advance it at the end of the loop.             \
++     */                                                                   \
+     intptr_t segend = MIN(16 / sizeof(TYPED), opr_sz_n);                  \
+     intptr_t index = simd_data(desc);                                     \
+     TYPED *d = vd, *a = va;                                               \
+@@ -853,7 +860,7 @@ void HELPER(NAME)(void *vd, void *vn, void *vm, void *va, uint32_t desc)  \
+                     n[i * 4 + 2] * m2 +                                   \
+                     n[i * 4 + 3] * m3);                                   \
+         } while (++i < segend);                                           \
+-        segend = i + 4;                                                   \
++        segend = i + (16 / sizeof(TYPED));                                \
+     } while (i < opr_sz_n);                                               \
+     clear_tail(d, opr_sz, simd_maxsz(desc));                              \
+ }
+-- 
+2.34.1
 
-Something like above can now boot a Guest with the latest kernel. But I am =
-not
-sure it actually works correctly. I need a bit more time to update this and=
- carry
-out some tests. Will target that in Nov.
-
->=20
-> Updates on my side:
-> 1) I have kept uAPI updated to the latest version and verified too.
->    There should be some polishing changes depending on how the basic
->    nesting infrastructure would look like from Intel/Duan's work.
-> 2) I got some help from NVIDIA folks for the libvirt task. And they
->    have done some drafting and are now verifying the PCI topology
->    with "iommu=3Dnone".
->=20
-> Once the pluggable smmuv3 module is ready to test, we will make some
-> change to libvirt for that and drop the auto-assigning patches from
-> the VIRT code, so as to converge for a libvirt+QEMU test.
-
-One query I have is, do Qemu still need to check whether the VFIO devices a=
-re
-assigned correctly behind the nested vSMMUv3 w.r.t the phys SMMUv3s or not?
-Or we can just trust whatever the user/libvirt specifies?
-
-(I think even if we don't explicitly check, at present  it will eventually =
-fail in s2
-HWPT attach  for the viommu if it belongs to a different phys SMMUv3).
-
-Thanks,
-Shameer

@@ -1,176 +1,149 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4280njc;
-        Thu, 31 Oct 2024 13:07:59 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUxd6qCsEcWHRAs4VGWhaRkKCtQjUHOKOZ3TR0V+KfhbEvV5Sqti/gG2WPDjnwhqxFWT9raier8ssn15A==@linaro.org
-X-Google-Smtp-Source: AGHT+IETFCN7sULnFFqnGWM9v0iaGHSDhBWsdf4sYzrRTfk8GS7Ah4MprVlC2PRDRdthO7T7/Oyl
-X-Received: by 2002:adf:f7ca:0:b0:37d:34f6:92a with SMTP id ffacd0b85a97d-38061220071mr15322726f8f.51.1730405279419;
-        Thu, 31 Oct 2024 13:07:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730405279; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp163150njc;
+        Thu, 31 Oct 2024 19:21:12 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCX2ooFoOcnIePPGkWABzOCbmb9FtNdfp/hqoMNhZH0yqyx1dtTNnpeVeeyBhoTEtVjCMzEwl3t8iC9zCw==@linaro.org
+X-Google-Smtp-Source: AGHT+IF4JzrE7qmGtQcg8McNaHaOTKYPrIyAFLQZ2SBj0gnu+ZsIWBMeKnRbbu14l4DTHVoXCrQu
+X-Received: by 2002:a05:6214:5d89:b0:6cb:ae4e:20de with SMTP id 6a1803df08f44-6d18583239bmr246690336d6.32.1730427672757;
+        Thu, 31 Oct 2024 19:21:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730427672; cv=none;
         d=google.com; s=arc-20240605;
-        b=il6AP9RW2LKSFS2HNDk02roj7z3eGVTDkL4R+tBSXfDsWYz8YjjH/5P/1zMK89Vdhj
-         Mqtd9JYeE2ipiwNcxlOzjAQDITuyCRXEux0BvkZ4sxTm0wWPRtC0SYJ2qRfiVCmmPchB
-         33UiB7QB12KcIVWQBcTOMDvLZOlKq5pZyuCGojA2LVEFdl66tR63g4s+etER5axIm7Z7
-         hOcvWejLVEYOzQme0JGGj7441PaMgTLeQVSw7WuVASU1KoFK+7wbCpE39gZHudP5RAIR
-         5t/q+IW/1NMPMUzURWfJ2Jc1WXK/WedL3J17fNebaaR9WO4GhtW46PvdCXNYVbOBjr1r
-         dZhg==
+        b=YQ9ZWrEWUND+/9/6RumFkZiEFHJaLqJJnzAgdwMl1aek2HsdPbKNiNruW5hEFTApO2
+         BJqc5IJhRxI1OnJsX9ldYBVW83tPDUzcXXtAdpiwoIyw4Gm3AI411LobFWI2iORQ6eb3
+         vf70WYhWadhksuo3A4OWjqFaaOkV3hlPLO/Qv9VKYPw1vui7iz3C1U1rrlaet+fF5ZWy
+         8yPNcjJdKmfK+3FTpKNO76CNHwiTBRlYzD9l7rprjycqMIk0nKKHDeMAeQEwrOkYZKDO
+         rZ0dcW39lJQ8eOPwFmoNBMGbFHzqA8Zi9rIEKeUgJu2uKoqrOqLBBwYn89V8kewyV2vq
+         m2vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=0XUol1bTlvT5DBMz/IGKlfE01NhDaVIhxkQqDhUCbqM=;
-        fh=f7aqOn0Aylihzqer4hTA2kHSEaA8DU6KE1VFtniI5w4=;
-        b=iWv9hu+5MAN8MTKcTJVTBCvEYswfltcUocYrLfOutkkJrB1VsQ8f1sGhVJR3aBUfwO
-         mYHSKDuYR7pB4R5LfFJ/h6bbiilqCJNhn4P+xZXfOL+ALQHeZ3gU5JZmeUM6vk1ezHBi
-         uwv8LwVr6Y6DK8k6TPzFwcNIIXQS/FWhV1sYmNYiJPGPzDUDx1aAZ4Xkk9QYG1GRPW0F
-         +xGup2L5Tv3BwiCn622EQb9+UBXA3d7Rh6Fkk7mOqJi+tLcynq4jbeu2ZXKt9ha8kfBS
-         WzF5Z0TFzpEQM4TmG5axKLEgxKtt3pvSsXi/EY2lfUoItvlsjKig6p6r/r4nolAJkKw/
-         Wwkw==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=Sa1K4V57llOapFCz3juQdZ6z9JyBHYmppvq4jOzd5U0=;
+        fh=sU9YK+uiemBFTCP6fdChdeyfH96xQGE0UPbnPSLj5yU=;
+        b=SooSxXLaWBj6VnJHbANa0aJJOoDPRKnZ5MyS7cTHxnig5BI016G6wcHFvV7bL8rm27
+         G0+Ji4jNVs6/SszdXjhAGvKardKpoyHuJKFPxdjzSA339O7E5rI2hUg/H8QcCYOXJ+l4
+         VvbO/dPzVGAhp2EazrqHSxoFLLMsl5d/6ZJDiKbJj0MGt8eW0lrv8UUkgAKAgCvzZV+0
+         oTcRgQvapwZTR+6PAFEJ+IXdYRuQXNXR/Jlr3cKz3ILXe6WyLWlvuuoeXh+JggOCCklr
+         JaAuScz+Aqd7suz/HhGEZo9VjG1ttEsCAN6FtWoxn7LXwLjFuLaek5ZJuPrqsSnPcakG
+         DzVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-381c1174844si1481988f8f.468.2024.10.31.13.07.59
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 31 Oct 2024 13:07:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Zy0G9VoI;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.17 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <zhao1.liu@intel.com>
+Received: from mgamail.intel.com (mgamail.intel.com. [192.198.163.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b2f39f1f2csi330635785a.27.2024.10.31.19.21.11
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 31 Oct 2024 19:21:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.17 as permitted sender) client-ip=192.198.163.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XfZfk0L2Mz6L6wx;
-	Fri,  1 Nov 2024 04:02:54 +0800 (CST)
-Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 12727140A9C;
-	Fri,  1 Nov 2024 04:07:47 +0800 (CST)
-Received: from 00293818-MRGF.huawei.com (10.48.152.207) by
- frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 31 Oct 2024 21:07:27 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
-CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
-	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
-	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
-	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
-	<philmd@linaro.org>, <peterx@redhat.com>, <eric.auger@redhat.com>,
-	<will@kernel.org>, <ardb@kernel.org>, <oliver.upton@linux.dev>,
-	<pbonzini@redhat.com>, <gshan@redhat.com>, <rafael@kernel.org>,
-	<borntraeger@linux.ibm.com>, <alex.bennee@linaro.org>, <npiggin@gmail.com>,
-	<harshpb@linux.ibm.com>, <linux@armlinux.org.uk>,
-	<darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
-	<vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
-	<miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
-	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
-	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
-	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
-	<gustavo.romero@linaro.org>
-Subject: [PATCH V2 6/6] hw/acpi: Update GED with vCPU Hotplug VMSD for migration
-Date: Thu, 31 Oct 2024 20:05:02 +0000
-Message-ID: <20241031200502.3869-7-salil.mehta@huawei.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241031200502.3869-1-salil.mehta@huawei.com>
-References: <20241031200502.3869-1-salil.mehta@huawei.com>
+       dkim=pass header.i=@intel.com header.s=Intel header.b=Zy0G9VoI;
+       spf=pass (google.com: domain of zhao1.liu@intel.com designates 192.198.163.17 as permitted sender) smtp.mailfrom=zhao1.liu@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1730427673; x=1761963673;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=f5edtnaWl0000c3Tv65SjcYIpMNCaJtIb4m9wYByLX8=;
+  b=Zy0G9VoIbIXBu3UkT9pN8d1AnMlnekSgxs1DSVaRdTBFBjOKOZ6JPWo4
+   ZYIlE2DmZ5d++/D7tO44ADdUyrI4/wd5e+Si1jnbQ/8FDRSUK0sK6PRs0
+   xBm2707yydXlzur4csFHWpyUZRjeIigrePU/PO2wDk5Y6Cx4HyrwNCTGQ
+   5ANbB5w/Q9SDtbIjuhJTLwFEgzOEzpa2GY9riecAU8tmuC1qxPwaU2ATh
+   5jzR6qD7UT2+1EcP0UfywbsEx5LRD79Lq0HUOEHT9Ze1o1ygfbUlKXxBN
+   0Esbp9Fd99gtXpdjfOvVQGpS7gQ/JZMGxBwJa5bTUzT8bK+B8z9GBBrCu
+   w==;
+X-CSE-ConnectionGUID: Xq7NLMshQ9SPMnMivrkclA==
+X-CSE-MsgGUID: qhDLFJpARtundvt8yJXPMQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11242"; a="30082689"
+X-IronPort-AV: E=Sophos;i="6.11,248,1725346800"; 
+   d="scan'208";a="30082689"
+Received: from fmviesa007.fm.intel.com ([10.60.135.147])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2024 19:21:11 -0700
+X-CSE-ConnectionGUID: FmrdQIZqQ9a0t/TsjpyEKg==
+X-CSE-MsgGUID: nzCFyinlQqu3gqOKIYVunQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.11,248,1725346800"; 
+   d="scan'208";a="82502436"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost) ([10.239.160.36])
+  by fmviesa007.fm.intel.com with ESMTP; 31 Oct 2024 19:21:05 -0700
+Date: Fri, 1 Nov 2024 10:38:56 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Sia Jee Heng <jeeheng.sia@starfivetech.com>,
+	Alireza Sanaee <alireza.sanaee@huawei.com>, qemu-devel@nongnu.org,
+	kvm@vger.kernel.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
+	Zhenyu Wang <zhenyu.z.wang@intel.com>,
+	Dapeng Mi <dapeng1.mi@linux.intel.com>,
+	Yongwei Ma <yongwei.ma@intel.com>
+Subject: Re: [PATCH v4 2/9] hw/core: Make CPU topology enumeration
+ arch-agnostic
+Message-ID: <ZyQ/QJnTPvo9wO+H@intel.com>
+References: <20241022135151.2052198-1-zhao1.liu@intel.com>
+ <20241022135151.2052198-3-zhao1.liu@intel.com>
+ <31e8dc51-f70f-44eb-a768-61cfa50eed5b@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.48.152.207]
-X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
- frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: x80GPUgsP9i4
+In-Reply-To: <31e8dc51-f70f-44eb-a768-61cfa50eed5b@linaro.org>
+X-TUID: oZt9vjz9ynd+
 
-The ACPI CPU hotplug state `is_enabled` must be migrated along with
-other vCPU hotplug states to the destination VM. Update the GED's VM
-State Description (VMSD) table subsection to include the CPU Hotplug
-VM State Description (VMSD).
+Hi Phil,
 
-Question: How to stop `is_enabled` state being migrated in case of x86?
+> > -static uint32_t cpuid1f_topo_type(enum CPUTopoLevel topo_level)
+> > +static uint32_t cpuid1f_topo_type(enum CpuTopologyLevel topo_level)
+> >   {
+> >       switch (topo_level) {
+> > -    case CPU_TOPO_LEVEL_INVALID:
+> > +    case CPU_TOPOLOGY_LEVEL_INVALID:
+> 
+> Since we use an enum, I'd rather directly use CPU_TOPOLOGY_LEVEL__MAX.
+>
+> Or maybe in this case ...
+> 
+> >           return CPUID_1F_ECX_TOPO_LEVEL_INVALID;
+> > -    case CPU_TOPO_LEVEL_SMT:
+> > +    case CPU_TOPOLOGY_LEVEL_THREAD:
+> >           return CPUID_1F_ECX_TOPO_LEVEL_SMT;
+> > -    case CPU_TOPO_LEVEL_CORE:
+> > +    case CPU_TOPOLOGY_LEVEL_CORE:
+> >           return CPUID_1F_ECX_TOPO_LEVEL_CORE;
+> > -    case CPU_TOPO_LEVEL_MODULE:
+> > +    case CPU_TOPOLOGY_LEVEL_MODULE:
+> >           return CPUID_1F_ECX_TOPO_LEVEL_MODULE;
+> > -    case CPU_TOPO_LEVEL_DIE:
+> > +    case CPU_TOPOLOGY_LEVEL_DIE:
+> >           return CPUID_1F_ECX_TOPO_LEVEL_DIE;
+> >       default:
+>            /* Other types are not supported in QEMU. */
+>            g_assert_not_reached();
+> 
+> ... return CPUID_1F_ECX_TOPO_LEVEL_INVALID as default.
 
-Excerpt of GED VMSD State Dump at Source:
+I prefer the first way you mentioned since I want "default" to keep
+to detact unimplemented levels.
 
-    "acpi-ged (16)": {
-        "ged_state": {
-            "sel": "0x00000000"
-        },
-        [...]
-        "acpi-ged/cpuhp": {
-            "cpuhp_state": {
-                "selector": "0x00000005",
-                "command": "0x00",
-                "devs": [
-                    {
-                        "is_inserting": false,
-                        "is_removing": false,
-                        "is_enabled": true,
-                        "ost_event": "0x00000000",
-                        "ost_status": "0x00000000"
-                    },
-		    [...]
-                    {
-                        "is_inserting": false,
-                        "is_removing": false,
-                        "is_enabled": false,
-                        "ost_event": "0x00000000",
-                        "ost_status": "0x00000000"
-                    }
-                ]
-            }
-        }
-    },
+> Can be cleaned on top, so:
 
-Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
----
- hw/acpi/cpu.c                  |  1 +
- hw/acpi/generic_event_device.c | 19 +++++++++++++++++++
- 2 files changed, 20 insertions(+)
+Yes, I'll rebase (now there's the conflict) with this fixed.
 
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index 017b847815..514d671bfb 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -308,6 +308,7 @@ static const VMStateDescription vmstate_cpuhp_sts = {
-     .fields = (const VMStateField[]) {
-         VMSTATE_BOOL(is_inserting, AcpiCpuStatus),
-         VMSTATE_BOOL(is_removing, AcpiCpuStatus),
-+        VMSTATE_BOOL(is_enabled, AcpiCpuStatus),
-         VMSTATE_UINT32(ost_event, AcpiCpuStatus),
-         VMSTATE_UINT32(ost_status, AcpiCpuStatus),
-         VMSTATE_END_OF_LIST()
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index d00f5a6c1c..663d9cb093 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -331,6 +331,24 @@ static const VMStateDescription vmstate_memhp_state = {
-     }
- };
- 
-+static bool cpuhp_needed(void *opaque)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
-+
-+    return mc->has_hotpluggable_cpus;
-+}
-+
-+static const VMStateDescription vmstate_cpuhp_state = {
-+    .name = "acpi-ged/cpuhp",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .needed = cpuhp_needed,
-+    .fields      = (VMStateField[]) {
-+        VMSTATE_CPU_HOTPLUG(cpuhp_state, AcpiGedState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
- static const VMStateDescription vmstate_ged_state = {
-     .name = "acpi-ged-state",
-     .version_id = 1,
-@@ -379,6 +397,7 @@ static const VMStateDescription vmstate_acpi_ged = {
-     },
-     .subsections = (const VMStateDescription * const []) {
-         &vmstate_memhp_state,
-+        &vmstate_cpuhp_state,
-         &vmstate_ghes_state,
-         NULL
-     }
--- 
-2.34.1
+> Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+Thanks!
+
+Regards,
+Zhao

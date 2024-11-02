@@ -1,91 +1,173 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1139529njc;
-        Sat, 2 Nov 2024 08:03:52 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUTV/7mv3VlXn3a/HLfJijA/okaq7O0G+P8hUej/KxPLurCrfuu8zox81SXtU7IUCnrBi6Ku3W8h6rmvw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFBhy+I2x/4uzVphPbRDwIDS0DpbhUbKfx4oV6+8OLdVQPoleW/VX9jx9r91ZcGHRQQJ8id
-X-Received: by 2002:a05:6902:1081:b0:e29:7be6:8af0 with SMTP id 3f1490d57ef6-e30e5b3bd34mr9073900276.56.1730559832263;
-        Sat, 02 Nov 2024 08:03:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730559832; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1156237njc;
+        Sat, 2 Nov 2024 08:36:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCVWp2Ph07kmngcrua491oNZDFogfEk6QE7Pch1U2/kWD0U0/BN68Zo2vs00fBaK2zE+RGXqbruIK+BU+Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEaIQL6feoINEBU8hbM4M/+s+KiIeqK70kEVf0EAmpJostJg+VRqvCqWWNgU5iQxmxzpLVC
+X-Received: by 2002:a05:622a:1b9e:b0:460:8d5c:34bd with SMTP id d75a77b69052e-462b8686c43mr111358861cf.17.1730561795523;
+        Sat, 02 Nov 2024 08:36:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730561795; cv=none;
         d=google.com; s=arc-20240605;
-        b=gg7cq8jLtvnw8OUS1BLqbF2vh7kBVpu7kSSSHsNguSoKatPXCqEtDVcuC6VJbZgFb8
-         4LRBS1ssI4R1s+hPW1Rfbl/2fKeHuIbkDt+DecghLSTwYW0CkPWHXifXTgpfyQacIV1w
-         aI0gKbURjTQh6yeMTxPcSWTKvvFNWiZx0xOSha02VxUaaIkkwBRaOCo84r8rpiNkaZBI
-         hII/mS79f4OvKaBwSB1FHnryuZWmPOtrdI+YXrghuU8d9c4E7IpEmpyUB1r2q/uGDnFE
-         VREIJJULC7yrAyYLGsiMM/9j/iQqe3MyqHWKOqWzNAf5WP9Zdkgqt7XlP5IwPlKPkv6M
-         J42w==
+        b=AueVwRZ2zGLukGrXx5b1PavfDx14UxROO7eVQuc194vSq89JWvVvNy22HYkLbngyfv
+         SwLQHzc7nhmPhknVbLPfDM0nUKys4JNhe/0QlPYOFlsdPAt//u6NU++2DxfrgU4hr84O
+         C30alVW4XyR/DBkPzxuFpNrWpOPyFc0CqYmzsic2fntR6TEe+bOq4vIpl8HZyWR8jeuY
+         jb2m3eYu/7Z0+YTMzz7mihYuWDxRILsWbOZltHqKAtlW8xYuOXD6iLd7UJWdx2tAIKiZ
+         gRS19GwfAg55JN9OUKiQaZzH0SW6z+OqdVz2xd0VmeQ3ebPYv1i4bBnavhJX14uhMJsS
+         8uvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=c3wcaOKCtcb4dtPg+8v9j+QuP/LtAoRWX4Gn1ypAOIQ=;
-        fh=98dZCMvX+NqbPkRXvFJNDIlyaWZH4tCfmKGJXDrbs8k=;
-        b=SPfvlN7MZ6zi8Dtvc8+nAkJXZOwuu14Q44HI1sp4g84vFBIlPYRBeyHKVevd4yGxmP
-         GRf+J2/zkHB8fwFoiRiEKgVOR0N6l319Jha+G8LDzO7N2fQsvspAktk6ElCaeTK+Tg9a
-         cny5q3Vt7gbzq8upvzaiDEWQQEcekYklskG9peax0ONTmk1CtjuCBiPYSEOwyG/LvRcR
-         w1j6XwSN4ZF4QdtW51zhZR1/p8VSl0HbcRVOyRxBklbqPB1gdKdYJCKC5+HJXMGPmRkV
-         bgPxigKGwpA4hMX6ZDeFVUoLp0BlX4EZZ7HxW/ZxS/yiyCFVwnzoDeVUsqevt5T1noSX
-         cd3A==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=ir4bsmkC5gM1QHQB0cTjySbGrM9JmrsviXDE92WrX34=;
+        fh=3kX2vp1Rm7R7rndLAA6nM5VN0uydPuFwAn2CXxJ86gE=;
+        b=cfHMcLFC18mFuLcFvY4ZiCCyYv5fVpUeyWP2aMukywtb+URbUOmdTy9oTyc+UmgHDJ
+         RLSKrPq4xoRvjkfsz2jWgqxCXzwuRuunAlloHDWpAbxqFUp4TkWJDd216IO8nntrJgdl
+         VVKX22ovBro0FGSFqRh80ekNjxNekNDxQKgANSTsOPLSD2ZNLyb9xBwo7NpBk2+M4bwV
+         cDw3/Z22XkaIclydFZFkhOiRvoHMecMeXX9wHr44YKVaSOyD7D6wfyrW3LflkAW6cObD
+         QV7meVDrjxe4txIP2/xK8s7JSf7rUvdYELhjqRYfpU8iMVpoOLOSAXKAjTSc+vHWEG42
+         /rDQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b="H3tYa1e/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3f1490d57ef6-e30e8a570basi4205678276.80.2024.11.02.08.03.52
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad27842esi76006121cf.688.2024.11.02.08.36.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Nov 2024 08:03:52 -0700 (PDT)
+        Sat, 02 Nov 2024 08:36:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b="H3tYa1e/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7Ff5-0000mS-Oy; Sat, 02 Nov 2024 11:03:35 -0400
+	id 1t7GAe-0006Qh-My; Sat, 02 Nov 2024 11:36:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=uVOK=R5=kaod.org=clg@ozlabs.org>)
- id 1t7Ff4-0000lr-4k; Sat, 02 Nov 2024 11:03:34 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=uVOK=R5=kaod.org=clg@ozlabs.org>)
- id 1t7Ff2-0004jV-JS; Sat, 02 Nov 2024 11:03:33 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XggwF6hGGz4x8R;
- Sun,  3 Nov 2024 02:03:25 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Xggw92DkSz4wxf;
- Sun,  3 Nov 2024 02:03:21 +1100 (AEDT)
-Message-ID: <9cf62dd0-2e88-4692-8a16-544b75665b6c@kaod.org>
-Date: Sat, 2 Nov 2024 16:03:20 +0100
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t7GAd-0006QG-1M; Sat, 02 Nov 2024 11:36:11 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1t7GAZ-0005XT-69; Sat, 02 Nov 2024 11:36:10 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-20ce5e3b116so23031695ad.1; 
+ Sat, 02 Nov 2024 08:36:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1730561765; x=1731166565; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:from:to:cc:subject:date:message-id:reply-to;
+ bh=ir4bsmkC5gM1QHQB0cTjySbGrM9JmrsviXDE92WrX34=;
+ b=H3tYa1e/fICThUxoLqWrhPtHzksXbg1YfxImDWg7Ii57YFZgjB+3LG3aJpvr+Ruewk
+ 63KWybEoIXvQz/kqj9Zkm9evbuHn9ZmGO1v5+c3TVMadawlu6sTRmuhBVKQMpt7R5caJ
+ oqEzh6x2XYGkhei3SeAiunb+SU7Cu3kcjGhtY6EWKmoYcJPUz6CMaRLL94T1I4gHGCeq
+ FiIH2crpQkZgRuMbRop9hkfkzBNygS6QbwUUMOFWSo+JtM1hKSoiRXEZFjHKi1yNh1tN
+ IxtHc1al4eCqufJ46raYD2dxPk9A+mIipIKJH/AGhNZzeeNQr5OmzvmNzoPzzlG+bQnf
+ dnJQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730561765; x=1731166565;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:sender:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ir4bsmkC5gM1QHQB0cTjySbGrM9JmrsviXDE92WrX34=;
+ b=fFVkRfruerKZ/A2Q20eUoP8KvYoU8ukLzyomEurUEhSV16fBth+fRDVYnUkrbRdNuD
+ ycfuM34xA0L7tisd7/f8/GqE5xKwL/1hhFRz9SWhH80Rx6uY98dfgHZU19ywpfz/YCno
+ m3HCB4rnPB2Zkt5wMkGCr+5gD31PrlwZcZMKEET0u/X4ZZniTsYH20KoIoVc0FvQgGi0
+ X2OjMvyzp9+3qqkb/oMI1euvw6egNsOIV6ha5UJ8AvrKf8ZFCUaIw56M4oHs4Z6tcIsO
+ HHnZOkOMlqwxeLpLuJ1O4ikfGrtHcHXsjXzw3p9A/EL7kD5NMq1nKyrOziYCbBJIkjTh
+ kmmg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCViIgB7SS50/43CgLqOBJ1eiMhE975CHOlsjv2D8+KrdbDJYlwpYr1HoMBqBU5EhumSuePsW2VDtTCP1Q==@nongnu.org,
+ AJvYcCW9Bh9yfpEG1PEcVLEqeh3v97TvMLbI3NS9ZWA+NwE15jtXgcJmRZ84mrsnw+S+bROB2jKi4pQdNw==@nongnu.org
+X-Gm-Message-State: AOJu0Yx0dqsOiL8pTi7bnoIVoDYw0B4mQ0Yv7cTsxfGR1ugtUomHY7Gd
+ oNmfMuRZbDi1kF8dQC3tI65NcJZlEvv/nGc0inI4dIALoM56kJP3
+X-Received: by 2002:a17:903:2344:b0:20c:94d1:2cb9 with SMTP id
+ d9443c01a7336-2111af1cdf2mr94705295ad.9.1730561764830; 
+ Sat, 02 Nov 2024 08:36:04 -0700 (PDT)
+Received: from ?IPV6:2600:1700:e321:62f0:329c:23ff:fee3:9d7c?
+ ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-211056edc5asm35135935ad.9.2024.11.02.08.36.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 02 Nov 2024 08:36:04 -0700 (PDT)
+Message-ID: <e3b7cbff-7cf9-4529-adfc-b650a4db0d81@roeck-us.net>
+Date: Sat, 2 Nov 2024 08:36:01 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1 0/8] Support RTC for AST2700
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+Subject: Re: [PATCH] aspeed: Don't set always boot properties of the emmc
+ device
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Bin Meng <bmeng.cn@gmail.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
+ Jan Luebbe <jlu@pengutronix.de>
+References: <20241102143943.1929177-1-clg@redhat.com>
+Content-Language: en-US
+From: Guenter Roeck <linux@roeck-us.net>
+Autocrypt: addr=linux@roeck-us.net; keydata=
+ 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
+ mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
+In-Reply-To: <20241102143943.1929177-1-clg@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=uVOK=R5=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=groeck7@gmail.com; helo=mail-pl1-x629.google.com
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,41 +182,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: W7xoACKjE0dn
+X-TUID: xo42rXfpZHXC
 
-On 10/29/24 10:17, Jamin Lin wrote:
-> change from v1:
-> 1. Support RTC for AST2700.
-> 2. Support SDHCI write protected pin inverted for AST2500 and AST2600.
-> 3. Introduce Capabilities Register 2 for SD slot 0 and 1.
-> 4. Support create flash devices via command line for AST1030.
+On 11/2/24 07:39, Cédric Le Goater wrote:
+> Commit e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
+> HW strapping") added support to boot from an eMMC device by setting
+> the boot properties of the eMMC device. This change made the
+> assumption that the device always has boot areas.
 > 
-> Jamin Lin (8):
->    aspeed/soc: Support RTC for AST2700
->    hw/timer/aspeed: Fix coding style
->    hw/timer/aspeed: Fix interrupt status does not be cleared for AST2600
->    hw/sd/sdhci: Fix coding style
->    hw/sd/sdhci: Introduce a new Write Protected pin inverted property
->    hw/sd/aspeed_sdhci: Introduce Capabilities Register 2 for SD slot 0
->      and 1
->    hw/arm/aspeed: Invert sdhci write protected pin for AST2600 and
->      AST2500 EVBs
->    aspeed: Support create flash devices via command line for AST1030
+> However, if the machine boots from the flash device (or -kernel) and
+> uses an eMMC device without boot areas, support would be broken. This
+> impacts the ast2600-evb machine which can choose to boot from flash or
+> eMMC using the "boot-emmc" machine option.
 > 
->   hw/arm/aspeed.c         | 30 ++++++++++++------
->   hw/arm/aspeed_ast27x0.c | 11 +++++++
->   hw/sd/aspeed_sdhci.c    | 40 ++++++++++++++++-------
->   hw/sd/sdhci.c           | 70 ++++++++++++++++++++++++++++-------------
->   hw/timer/aspeed_timer.c | 15 +++++----
->   include/hw/arm/aspeed.h |  1 +
->   include/hw/sd/sdhci.h   |  5 +++
->   7 files changed, 123 insertions(+), 49 deletions(-)
+> To provide some flexibility for Aspeed machine users to use different
+> flavors of eMMC devices (with or without boot areas), do not set the
+> eMMC device boot properties when the machine is not configured to boot
+> from eMMC. However, this approach makes another assumption about eMMC
+> devices, namely that eMMC devices from which the machine does not boot
+> do not have boot areas.
 > 
+> A preferable alternative would be to add support for user creatable
+> eMMC devices and define the device boot properties on the QEMU command
+> line :
+> 
+>    -blockdev node-name=emmc0,driver=file,filename=mmc-ast2600-evb.raw \
+>    -device emmc,bus=sdhci-bus.2,drive=emmc0,boot-partition-size=1048576,boot-config=8
+> 
+> This is a global change requiring more thinking. Nevertheless, in the
+> case of the ast2600-evb machine booting from an eMMC device and when
+> default devices are created, the proposed change still makes sense
+> since the device is required to have boot areas.
+> 
+> Cc: Jan Luebbe <jlu@pengutronix.de>
+> Fixes: e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
+> HW strapping")
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> Tested-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+>   hw/arm/aspeed.c | 13 ++++++++++++-
+>   1 file changed, 12 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index e161e6b1c582..ac6d8dde71b3 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -338,7 +338,18 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
+>               return;
+>           }
+>           card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
+> -        if (emmc) {
+> +
+> +        /*
+> +         * Force the boot properties of the eMMC device only when the
+> +         * machine is strapped to boot from eMMC. Without these
+> +         * settings, the machine would not boot.
+> +         *
+> +         * This also allows the machine to use an eMMC device without
+> +         * boot areas when booting from the flash device (or -kernel)
+> +         * Ideally, the device and its properties should be defined on
+> +         * the command line.
+> +         */
+> +        if (emmc && boot_emmc) {
+>               qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
+>               qdev_prop_set_uint8(card, "boot-config",
+>                                   boot_emmc ? 0x1 << 3 : 0x0);
 
-Applied 1,2,3,6,8 to aspeed-next.
+That second boot_emmc check is no longer necessary, so this could be
+simplified to
+		qdev_prop_set_uint8(card, "boot-config", 0x1 << 3);
 
 Thanks,
-
-C.
-
+Guenter
 

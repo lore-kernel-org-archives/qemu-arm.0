@@ -1,69 +1,68 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1137099njc;
-        Sat, 2 Nov 2024 08:00:48 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUPhHIah8OhNNUyURplns3ikQcnVKR/xCivLG8rCUle4dTiGu0OWJdM94Gh4jzI1/ElqttwplStFYwzhw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEvU6IlcL62qs4m+bHcJGpHEoobW3fLsKFCr36gwO3COnFB383JTEe15GaMVckrs3mtVchL
-X-Received: by 2002:a05:6214:440c:b0:6d1:9e72:596a with SMTP id 6a1803df08f44-6d351b20831mr146158576d6.37.1730559647978;
-        Sat, 02 Nov 2024 08:00:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730559647; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1137245njc;
+        Sat, 2 Nov 2024 08:00:58 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCXhTNvSZWG+H9u+eLEF+eKWpoQ6mA/MZEVt8JCRNzog3buft/RjxchULWhBxWpOhOiCt65XKhridyXyjA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEKF645kBJNO8o1g0UT+j2J9uT1ipX4aOTOGBoUO5Hi6ecToh3t09KGF+4bPcN1MzVoPB4d
+X-Received: by 2002:a05:6102:2acb:b0:49e:94e8:acd5 with SMTP id ada2fe7eead31-4a962f3a1ddmr6809965137.22.1730559656069;
+        Sat, 02 Nov 2024 08:00:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730559656; cv=none;
         d=google.com; s=arc-20240605;
-        b=UjlF2rrLR3dg/NNV+BBM9qiGRwJvQc/BmEL2a4Ipa88e1ruAghkyFlwD8UXdTgHc+3
-         Z8y4yqPM9nJMwS0c9PSLZii0GNYZJ+Q+nJxybTxaokfqc0h1A+FoySB1DUnt+yZa+9EQ
-         oCl9b4oMfgCFj4oTlGJO4qlLMk151xK/m5doNHwxrTuo2K2eE+dgsw2/nCfSp5kg0uI/
-         8+/az9aeLtpieGCo01biRkIDcyZxNOW4G94vKkjFIakjWKKsTsaco4jQzgJYU5QolX+w
-         K21Q2i/IN67F6aCxfmR2Urrejg0XDMaIFeK2hW4JzxB+fD6FWEELMD+R4U3DdUhBHZm7
-         SE/A==
+        b=KONZPbwz2pC1Wj7bu4yICSmAtt5/dLqRf4XaG6V25gY2fMStyyAlZnptl3HJxXSbKV
+         GtAlBi/GWYkTTMAM61pb/jrX7ueYlp7pEF+fLh39JlwKrjN8GOPKQoug2JyeEruIMsUO
+         k+Y2A9wT30s8Mc/TUEcqVuCqdALxs2RrnhhG92DBsFNN+6LsVpK6JHkBX7R8Af8UWcb1
+         teyuIaxd7iE5njZ4VC7qgX6llKm12m+yew3qsqKjfo9wt+l6P4WqxyqmE4caW629fbmL
+         rBNNjK01Nx70DPR2ichrpK9n4ZZz+3tSJq/gkClcWnPoefwcfqke2COwjzajd5Vmmjg/
+         eMmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=kLR2e7SqBES5NNpt0BpVbhcBu0olCydQJOA2joMgNj4=;
+        bh=CZT1yl1BGV7RadF7g3wX3ZtJz/m5lZXCjgHRTc/8VeU=;
         fh=98dZCMvX+NqbPkRXvFJNDIlyaWZH4tCfmKGJXDrbs8k=;
-        b=NMkcc47YKC9mWlOJjxT/8tbnlB/K27wdZBUbwc01Tnw14/pT8TaYcnb8rYo7IMky1O
-         /1ua0N0tzHSgPlBRRPUIBblx/EgFFqNpf4Li6El44aInugpTmRnM7bF6n/5mlYhXBPJd
-         o6VwqeDYZjlYW/SPgc9fMk4hMWG3c7ycOVF4QGH0LYyQnngZMhIeXZdGI5H/dV5GUipV
-         VGhjVZXVy5WitrHIeh1iwJtqCGolno7vSuGQCwVS+zQz06/CLG0mYmXvyav3k6Ssg97M
-         E9qCwPYKKw93nUlojnEkcVBTPFSNUUnxPgFX55VFuUGI4okyI8h6fI3h61DEJIM0PsLg
-         7fvA==;
+        b=TBBUCgvtag6XN4r8YoIHExTgBaS4ORHspSlGmlkV8/IWIGOR3vnsuW3OBfp1aBid3X
+         f8yAXZSJaPBPQkmlMFra3UgfRIb5FMW3qyb4tqXHaMsMK9lz3hjkiZUTWIa4APYnZiNX
+         xSwn/rK8S+yAzpiiwrDKsRaLHNpKQFWnqVE4wnKWn5/l+CDF0mw5K/2N/MmhA9gXFK91
+         P2trE4vCPOOOYVUIg4eid+QyisWCY+VcUiCT7rvnxmQwrAkSP+oLlOZu5mPyDzHdxx1D
+         z7mnrDi07+ZSzwr9Qy4vbzVKN6qITxByFY4dlsPP40RpenW93rpOqjVO+iKPGQfGRBdz
+         ZI+w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d3541802aasi67620576d6.386.2024.11.02.08.00.47
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a95758ead0si1436907137.640.2024.11.02.08.00.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Nov 2024 08:00:47 -0700 (PDT)
+        Sat, 02 Nov 2024 08:00:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7FcN-0005Er-7Y; Sat, 02 Nov 2024 11:00:47 -0400
+	id 1t7FcV-0005R4-Dn; Sat, 02 Nov 2024 11:00:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=uVOK=R5=kaod.org=clg@ozlabs.org>)
- id 1t7Fbt-00056I-5Y; Sat, 02 Nov 2024 11:00:21 -0400
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1t7FcL-0005BF-73; Sat, 02 Nov 2024 11:00:45 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=uVOK=R5=kaod.org=clg@ozlabs.org>)
- id 1t7Fbq-0004C9-9B; Sat, 02 Nov 2024 11:00:16 -0400
+ id 1t7FcI-0004R3-4u; Sat, 02 Nov 2024 11:00:44 -0400
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XggrH4GDDz4x8g;
- Sun,  3 Nov 2024 01:59:59 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Xggs06D86z4x7H;
+ Sun,  3 Nov 2024 02:00:36 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XggrC0Z2dz4x7G;
- Sun,  3 Nov 2024 01:59:54 +1100 (AEDT)
-Message-ID: <1f02a767-2e28-429f-ac78-fb97ac9b2854@kaod.org>
-Date: Sat, 2 Nov 2024 15:59:56 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Xggrw3Frxz4x8R;
+ Sun,  3 Nov 2024 02:00:32 +1100 (AEDT)
+Message-ID: <6323f00d-1dcc-4873-a4d5-aa5b41f76570@kaod.org>
+Date: Sat, 2 Nov 2024 16:00:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [SPAM] [PATCH v1 3/8] hw/timer/aspeed: Fix interrupt status does
- not be cleared for AST2600
+Subject: Re: [SPAM] [PATCH v1 4/8] hw/sd/sdhci: Fix coding style
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,19 +73,20 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
- <20241029091729.3317512-4-jamin_lin@aspeedtech.com>
+ <20241029091729.3317512-5-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20241029091729.3317512-4-jamin_lin@aspeedtech.com>
+In-Reply-To: <20241029091729.3317512-5-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=uVOK=R5=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -39
 X-Spam_score: -4.0
 X-Spam_bar: ----
 X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -102,16 +102,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PnxvEysq0ZvQ
+X-TUID: wMCuczdflApg
 
 On 10/29/24 10:17, Jamin Lin wrote:
-> According to the datasheet of AST2600 description, interrupt status set by HW
-> and clear to "0" by software writing "1" on the specific bit.
-> 
-> Therefore, if firmware set the specific bit "1" in the interrupt status
-> register(0x34), the specific bit of "s->irq_sts" should be cleared 0.
+> Fix coding style issues from checkpatch.pl
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+
 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
@@ -122,20 +119,171 @@ C.
 
 
 > ---
->   hw/timer/aspeed_timer.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/sd/sdhci.c | 64 +++++++++++++++++++++++++++++++++------------------
+>   1 file changed, 42 insertions(+), 22 deletions(-)
 > 
-> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-> index 5af268ea9e..149f7cc5a6 100644
-> --- a/hw/timer/aspeed_timer.c
-> +++ b/hw/timer/aspeed_timer.c
-> @@ -580,7 +580,7 @@ static void aspeed_2600_timer_write(AspeedTimerCtrlState *s, hwaddr offset,
+> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+> index ed01499391..db7d547156 100644
+> --- a/hw/sd/sdhci.c
+> +++ b/hw/sd/sdhci.c
+> @@ -234,7 +234,7 @@ static void sdhci_raise_insertion_irq(void *opaque)
 >   
->       switch (offset) {
->       case 0x34:
-> -        s->irq_sts &= tv;
-> +        s->irq_sts &= ~tv;
+>       if (s->norintsts & SDHC_NIS_REMOVE) {
+>           timer_mod(s->insert_timer,
+> -                       qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + SDHC_INSERTION_DELAY);
+> +                qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + SDHC_INSERTION_DELAY);
+>       } else {
+>           s->prnsts = 0x1ff0000;
+>           if (s->norintstsen & SDHC_NISEN_INSERT) {
+> @@ -252,7 +252,7 @@ static void sdhci_set_inserted(DeviceState *dev, bool level)
+>       if ((s->norintsts & SDHC_NIS_REMOVE) && level) {
+>           /* Give target some time to notice card ejection */
+>           timer_mod(s->insert_timer,
+> -                       qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + SDHC_INSERTION_DELAY);
+> +                qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + SDHC_INSERTION_DELAY);
+>       } else {
+>           if (level) {
+>               s->prnsts = 0x1ff0000;
+> @@ -290,9 +290,11 @@ static void sdhci_reset(SDHCIState *s)
+>       timer_del(s->insert_timer);
+>       timer_del(s->transfer_timer);
+>   
+> -    /* Set all registers to 0. Capabilities/Version registers are not cleared
+> +    /*
+> +     * Set all registers to 0. Capabilities/Version registers are not cleared
+>        * and assumed to always preserve their value, given to them during
+> -     * initialization */
+> +     * initialization
+> +     */
+>       memset(&s->sdmasysad, 0, (uintptr_t)&s->capareg - (uintptr_t)&s->sdmasysad);
+>   
+>       /* Reset other state based on current card insertion/readonly status */
+> @@ -306,7 +308,8 @@ static void sdhci_reset(SDHCIState *s)
+>   
+>   static void sdhci_poweron_reset(DeviceState *dev)
+>   {
+> -    /* QOM (ie power-on) reset. This is identical to reset
+> +    /*
+> +     * QOM (ie power-on) reset. This is identical to reset
+>        * commanded via device register apart from handling of the
+>        * 'pending insert on powerup' quirk.
+>        */
+> @@ -446,8 +449,10 @@ static void sdhci_read_block_from_card(SDHCIState *s)
+>           s->prnsts &= ~SDHC_DAT_LINE_ACTIVE;
+>       }
+>   
+> -    /* If stop at block gap request was set and it's not the last block of
+> -     * data - generate Block Event interrupt */
+> +    /*
+> +     * If stop at block gap request was set and it's not the last block of
+> +     * data - generate Block Event interrupt
+> +     */
+>       if (s->stopped_state == sdhc_gap_read && (s->trnmod & SDHC_TRNS_MULTI) &&
+>               s->blkcnt != 1)    {
+>           s->prnsts &= ~SDHC_DAT_LINE_ACTIVE;
+> @@ -549,8 +554,10 @@ static void sdhci_write_block_to_card(SDHCIState *s)
+>       sdhci_update_irq(s);
+>   }
+>   
+> -/* Write @size bytes of @value data to host controller @s Buffer Data Port
+> - * register */
+> +/*
+> + * Write @size bytes of @value data to host controller @s Buffer Data Port
+> + * register
+> + */
+>   static void sdhci_write_dataport(SDHCIState *s, uint32_t value, unsigned size)
+>   {
+>       unsigned i;
+> @@ -595,9 +602,11 @@ static void sdhci_sdma_transfer_multi_blocks(SDHCIState *s)
+>           return;
+>       }
+>   
+> -    /* XXX: Some sd/mmc drivers (for example, u-boot-slp) do not account for
+> +    /*
+> +     * XXX: Some sd/mmc drivers (for example, u-boot-slp) do not account for
+>        * possible stop at page boundary if initial address is not page aligned,
+> -     * allow them to work properly */
+> +     * allow them to work properly
+> +     */
+>       if ((s->sdmasysad % boundary_chk) == 0) {
+>           page_aligned = true;
+>       }
+> @@ -703,7 +712,8 @@ static void get_adma_description(SDHCIState *s, ADMADescr *dscr)
+>           dma_memory_read(s->dma_as, entry_addr, &adma2, sizeof(adma2),
+>                           MEMTXATTRS_UNSPECIFIED);
+>           adma2 = le64_to_cpu(adma2);
+> -        /* The spec does not specify endianness of descriptor table.
+> +        /*
+> +         * The spec does not specify endianness of descriptor table.
+>            * We currently assume that it is LE.
+>            */
+>           dscr->addr = (hwaddr)extract64(adma2, 32, 32) & ~0x3ull;
+> @@ -978,8 +988,10 @@ static bool sdhci_can_issue_command(SDHCIState *s)
+>       return true;
+>   }
+>   
+> -/* The Buffer Data Port register must be accessed in sequential and
+> - * continuous manner */
+> +/*
+> + * The Buffer Data Port register must be accessed in sequential and
+> + * continuous manner
+> + */
+>   static inline bool
+>   sdhci_buff_access_is_sequential(SDHCIState *s, unsigned byte_num)
+>   {
+> @@ -1207,8 +1219,10 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+>           MASKED_WRITE(s->argument, mask, value);
 >           break;
->       case 0x3C:
->           aspeed_timer_set_ctrl(s, s->ctrl & ~tv);
+>       case SDHC_TRNMOD:
+> -        /* DMA can be enabled only if it is supported as indicated by
+> -         * capabilities register */
+> +        /*
+> +         * DMA can be enabled only if it is supported as indicated by
+> +         * capabilities register
+> +         */
+>           if (!(s->capareg & R_SDHC_CAPAB_SDMA_MASK)) {
+>               value &= ~SDHC_TRNS_DMA;
+>           }
+> @@ -1280,8 +1294,10 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+>           } else {
+>               s->norintsts &= ~SDHC_NIS_ERR;
+>           }
+> -        /* Quirk for Raspberry Pi: pending card insert interrupt
+> -         * appears when first enabled after power on */
+> +        /*
+> +         * Quirk for Raspberry Pi: pending card insert interrupt
+> +         * appears when first enabled after power on
+> +         */
+>           if ((s->norintstsen & SDHC_NISEN_INSERT) && s->pending_insert_state) {
+>               assert(s->pending_insert_quirk);
+>               s->norintsts |= SDHC_NIS_INSERT;
+> @@ -1397,8 +1413,10 @@ void sdhci_initfn(SDHCIState *s)
+>   {
+>       qbus_init(&s->sdbus, sizeof(s->sdbus), TYPE_SDHCI_BUS, DEVICE(s), "sd-bus");
+>   
+> -    s->insert_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_raise_insertion_irq, s);
+> -    s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sdhci_data_transfer, s);
+> +    s->insert_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
+> +                                   sdhci_raise_insertion_irq, s);
+> +    s->transfer_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
+> +                                     sdhci_data_transfer, s);
+>   
+>       s->io_ops = &sdhci_mmio_le_ops;
+>   }
+> @@ -1446,11 +1464,13 @@ void sdhci_common_realize(SDHCIState *s, Error **errp)
+>   
+>   void sdhci_common_unrealize(SDHCIState *s)
+>   {
+> -    /* This function is expected to be called only once for each class:
+> +    /*
+> +     * This function is expected to be called only once for each class:
+>        * - SysBus:    via DeviceClass->unrealize(),
+>        * - PCI:       via PCIDeviceClass->exit().
+>        * However to avoid double-free and/or use-after-free we still nullify
+> -     * this variable (better safe than sorry!). */
+> +     * this variable (better safe than sorry!).
+> +     */
+>       g_free(s->fifo_buffer);
+>       s->fifo_buffer = NULL;
+>   }
 

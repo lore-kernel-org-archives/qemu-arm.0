@@ -1,646 +1,188 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1071710njc;
-        Sat, 2 Nov 2024 05:59:02 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCVCA05rJww/Npyn+VchEAAn7tW6T8hinQZE4ou5mK4MMM2CAmbJxJs1f4euNH+wm+sR0r23upVheAzV/g==@linaro.org
-X-Google-Smtp-Source: AGHT+IG7R9DEdw6NEziYCcyb/8UWEc+/YXEK9LAfvpvTnk0GiQWd92txnF2/l/fYN5zvCpdKiLQD
-X-Received: by 2002:a05:622a:1b1e:b0:462:c1c6:d8f5 with SMTP id d75a77b69052e-462c1c6d8fdmr75218171cf.8.1730552342374;
-        Sat, 02 Nov 2024 05:59:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730552342; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1128799njc;
+        Sat, 2 Nov 2024 07:40:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=2; AJvYcCUHADdFXxBicHNgCMCaheiYl9t8+FfkW9LBsD9J5TerQyYsdstOpn2MQy+m2i6OKcxTszXd8D74SGiCSg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFlivfA5payzqPtIXk6jbXfBaTUIlWcc7VB46Z0kx/e4KFe5KFLxppnP8p/f4td6ctAHq6q
+X-Received: by 2002:a05:622a:350:b0:461:213b:c151 with SMTP id d75a77b69052e-462b8754286mr90721511cf.38.1730558448699;
+        Sat, 02 Nov 2024 07:40:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1730558448; cv=none;
         d=google.com; s=arc-20240605;
-        b=dEurJQZHXHADJJ42ZnmXzJXyXHozoe5HBhDWz2E76o/j1rtEQ5586nNN5PKW73k0FC
-         uwHm6XF5BrvitcY/EQYSOth9g5Omvrd9IAW7mdmRuWYqIagfv/A7QqSVwiEydIxa1Yyv
-         +Cz9QODi5mZf4c0lWhB4cgf1alPZpD2ggR3laoyNH9iQJc06x2x1RyISl7PkBFzDxh3Z
-         ocpwb9bvpnKWLFy8zCbb7xKGv+IjkYDxGIDvAiU2F0xAx+Ed1Z/vElfgZ4xpexp8yIFz
-         SYnNHasMcOn1S3ilyLjwgFESuAS04CSyLX6YkQJ9QGXMM1xFaFcPyG1m+fYiE74SYAtA
-         ulkA==
+        b=j/EfWXjOFg358j5YEjxrUSLtU3UnjKAg1ybPSxfEE8xsT1pOdc4o05TD/iKnRZ8FEZ
+         25pFFhbt0TGbJ9xq90eQdXOR1PvE9wdjtW0ZmvTjm1MtYC/NfayNQw4Ayu7FTzd8xXqd
+         lZHDtt9Di7HvozivYdmlQoXI3ypQ9CNLVD3Ov/baklLN/AiJokqvto56YfdenuRsPa4x
+         YtXWs9/6R1g5VzBPWWPnhzy4Y1Nm04SZtgOGfH/ypOfe+Lvn2WMM1HtKNKi6NNSkxuCk
+         u1zB7YO8/d7H9hRjI0lWWOqG2JEvvSZWK3bTbzlPaPgKUcXsixYTtAZVU7q7joh/UYtm
+         BfOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=FlcSxqpsZa4n/dCjn71gV0G7clLJBWqqs/PQbNvaLE0=;
-        fh=Fn7kfhcTL6++pGrAge26t0dUKwHJke2FKvzTBYieU9A=;
-        b=BC26BJVeet58LOaT+VZ1OB8cRBrI+5zaNmCq+lIFNz8Cs8UpWIqaFAFy5qIoem+Dkp
-         SC/1mce7wQAR2zy/icj4QVC3KXEoiVt/gGAwVkxlIasgdhKqI8ghBpIRCiAksPDHo8qT
-         RF9ZlBnry3PzcxFrShM7vx/mGpCfIZysl6Q+vgL5BTPq6S8/4IWMMpYpbDSz4YENhIaH
-         etvgOU48Y59wF1b/kx1lWiEnaYuRzHneC9P7pyvfnkC7eFfgQzVDsPuR0lBA5mnBMzmw
-         eB+n9cMNgs9T1DAtzd4iBGy3qL4gRrjVIHQKZom1LVJ61SEO70lOlpOqNo0/aHINRqQr
-         RfkQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=8MbxtM9zKtquGKObGbaLz0NeOQN2pH32upqIbkhv+60=;
+        fh=89k3x3IclbU3qfEa2unE+YRtD8B32plSL1dutfAIx+Q=;
+        b=FiuneVtayDjdzfAMGKvPxAOuxCgkkGf+ael0cbnpFgyYAfY6MNELfJRwt2a3zIIHXY
+         sssEfYb1hpjipIKDcYkoEUqQQPlOsg3Of3r2HueDaQ5TtLN5iGSAx5VeZrxTvDYthW7l
+         ZaLdWaBFDNE06fhcG12t5MHypSYIMPOrEK+xyUlDK0P2TzbB9fnUH5cXBKvwqDxxF1aO
+         pJq8qLfEkvDNDXicX4jxU/bH4ZtpbNDHGXG5McwL9y0nuJtTRc5gE9fs+pHeJaZTayt1
+         Zuui7nByU8c/xba7PRGVp8j7nxcblSRRtGo82QnglW6ip3teRg7L5ZnZESclBiQzincR
+         /FaA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JM0fLlCV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XHFx9ru8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ad249e51si63502051cf.645.2024.11.02.05.59.02
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad19f78csi73904111cf.288.2024.11.02.07.40.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Nov 2024 05:59:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 02 Nov 2024 07:40:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=JM0fLlCV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XHFx9ru8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t7DhL-0004LM-0x; Sat, 02 Nov 2024 08:57:47 -0400
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t7FIT-0001Zl-UT; Sat, 02 Nov 2024 10:40:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1t7DhF-0004Jt-8z; Sat, 02 Nov 2024 08:57:41 -0400
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1t7DhC-0003Wk-UC; Sat, 02 Nov 2024 08:57:41 -0400
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-a9a156513a1so464866966b.0; 
- Sat, 02 Nov 2024 05:57:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1730552257; x=1731157057; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FlcSxqpsZa4n/dCjn71gV0G7clLJBWqqs/PQbNvaLE0=;
- b=JM0fLlCVRqdw1eSNQjWCYZLiVmpcOAc7QV5/BzxOihrr+Fa9gj3hM46d5ZTAUryCIG
- hsDeBOj7e9WaBBCxLtL6nCGmQGWqHu/lis5GIvR+HHTYrUOnwl+0EnY/2cElWqRiGDqO
- pHTQ/tSdnd1FSkfflWgzVllQDTZ7ibuizl2Wxgpxh+CFiK+JE8IsNVzDW2q4W0sMPhlU
- DdLNd8CnYmwtLMJNR3P+zW87XDamNYXaMp2VfcShIsAlSmO8tMNeYFyA87/w3XY/zjpG
- IfFc31bfAoRl5x0UR6zb4Pf7M1dfseb4NCjfuRKbpYO2mNGnevjXlF7gOsEU8CWMJP92
- 45AA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730552257; x=1731157057;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=FlcSxqpsZa4n/dCjn71gV0G7clLJBWqqs/PQbNvaLE0=;
- b=TYvcBlVX1LGjfCqphHMGdRVJL4kn95Puh5a/2CLRW2cZEV5PsAxLGuy21+LSyoGgAD
- O+khN//t9R3dQjSdPgR5ESFJ/9PKw8WdNHSCn4hyt8IJHtLkU6gTu0hzidpw3v8f7ctv
- TlBUpwpiI/OeKABcSZ7OsGxfIN1JAgCyvYSSms659IrpzQOXaIfNCoJ8IRPWs/0lVtv5
- i8O9+wIwO1n/3ljg5s5gZ1MKq3VJWxrkGN5+ly/C91QE4QCESHtdJ0FKIj2WmDp67O+Y
- GtqrKJ4X3ff2pmIgR9bQULRK6vPZDQ/iU2lQ6q8A0TRvl0sAfyW906of6PtwmVOQwY+t
- xOYQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXPjnJG77w3CxmSryAVj/SDqbu6oRXTmikC8XO0eM76vdbgasyuxYH39b/T+Gb4jhacYpKOjqgQaA==@nongnu.org
-X-Gm-Message-State: AOJu0YwfdWxR2L59kHmaYQI/1HragnlvgeXlkLLxNr602o5lAbfvpKQ5
- NVQQ10Ed6T/XK7R684nssn7W7Za4YHUfgki3lHxlUmiadBAlUED8ChMK3w==
-X-Received: by 2002:a17:907:9451:b0:a9a:cf6:b629 with SMTP id
- a640c23a62f3a-a9de5f72b77mr2371838266b.29.1730552256278; 
- Sat, 02 Nov 2024 05:57:36 -0700 (PDT)
-Received: from archlinux.. (pd9ed7f6d.dip0.t-ipconnect.de. [217.237.127.109])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9e566846a7sm305836666b.206.2024.11.02.05.57.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 02 Nov 2024 05:57:35 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, Guenter Roeck <linux@roeck-us.net>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 1/5] hw/net/lan9118: Extract lan9118_phy
-Date: Sat,  2 Nov 2024 13:57:20 +0100
-Message-ID: <20241102125724.532843-2-shentey@gmail.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241102125724.532843-1-shentey@gmail.com>
-References: <20241102125724.532843-1-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7FIR-0001ZS-Gt
+ for qemu-arm@nongnu.org; Sat, 02 Nov 2024 10:40:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7FIO-0007F5-NM
+ for qemu-arm@nongnu.org; Sat, 02 Nov 2024 10:40:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1730558405;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=8MbxtM9zKtquGKObGbaLz0NeOQN2pH32upqIbkhv+60=;
+ b=XHFx9ru88VAsT4B46VI992XL/6aJLwFbLBfH3qMHEBlbDDbYqF5uZ9OmirSaaqtreTxeaN
+ 8aNunMHna5Ze/JZ+3yAGvOCtrZ9IkI43W8CAPZuMHeGzp0A9R2M5q1xvyI6Ngs5c5+2go0
+ b/OkTC3JFZXe+Neqw+VU4a7zPn2iifg=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-527-QJTKwB_KMgWO6tAURxTt-A-1; Sat,
+ 02 Nov 2024 10:40:02 -0400
+X-MC-Unique: QJTKwB_KMgWO6tAURxTt-A-1
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5B7F5195608A; Sat,  2 Nov 2024 14:39:54 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.193.155])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 542A21956086; Sat,  2 Nov 2024 14:39:45 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Jan Luebbe <jlu@pengutronix.de>, Guenter Roeck <linux@roeck-us.net>
+Subject: [PATCH] aspeed: Don't set always boot properties of the emmc device
+Date: Sat,  2 Nov 2024 15:39:43 +0100
+Message-ID: <20241102143943.1929177-1-clg@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x62b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 09SFTXtPiR36
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VMFssgn98z3q
 
-A very similar implementation of the same device exists in imx_fec. Prepare for
-a common implementation by extracting a device model into its own files.
+Commit e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
+HW strapping") added support to boot from an eMMC device by setting
+the boot properties of the eMMC device. This change made the
+assumption that the device always has boot areas.
 
-Some migration state has been moved into the new device model which breaks
-migration compatibility for the following machines:
-* smdkc210
-* realview-*
-* vexpress-*
-* kzm
-* mps2-*
+However, if the machine boots from the flash device (or -kernel) and
+uses an eMMC device without boot areas, support would be broken. This
+impacts the ast2600-evb machine which can choose to boot from flash or
+eMMC using the "boot-emmc" machine option.
 
-While breaking migration ABI, fix the size of the MII registers to be 16 bit,
-as defined by IEEE 802.3u.
+To provide some flexibility for Aspeed machine users to use different
+flavors of eMMC devices (with or without boot areas), do not set the
+eMMC device boot properties when the machine is not configured to boot
+from eMMC. However, this approach makes another assumption about eMMC
+devices, namely that eMMC devices from which the machine does not boot
+do not have boot areas.
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+A preferable alternative would be to add support for user creatable
+eMMC devices and define the device boot properties on the QEMU command
+line :
+
+  -blockdev node-name=emmc0,driver=file,filename=mmc-ast2600-evb.raw \
+  -device emmc,bus=sdhci-bus.2,drive=emmc0,boot-partition-size=1048576,boot-config=8
+
+This is a global change requiring more thinking. Nevertheless, in the
+case of the ast2600-evb machine booting from an eMMC device and when
+default devices are created, the proposed change still makes sense
+since the device is required to have boot areas.
+
+Cc: Jan Luebbe <jlu@pengutronix.de>
+Fixes: e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
+HW strapping")
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Tested-by: Guenter Roeck <linux@roeck-us.net>
 ---
- include/hw/net/lan9118_phy.h |  37 ++++++++
- hw/net/lan9118.c             | 137 +++++-----------------------
- hw/net/lan9118_phy.c         | 169 +++++++++++++++++++++++++++++++++++
- hw/net/Kconfig               |   4 +
- hw/net/meson.build           |   1 +
- 5 files changed, 233 insertions(+), 115 deletions(-)
- create mode 100644 include/hw/net/lan9118_phy.h
- create mode 100644 hw/net/lan9118_phy.c
+ hw/arm/aspeed.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/net/lan9118_phy.h b/include/hw/net/lan9118_phy.h
-new file mode 100644
-index 0000000000..af12fc33d5
---- /dev/null
-+++ b/include/hw/net/lan9118_phy.h
-@@ -0,0 +1,37 @@
-+/*
-+ * SMSC LAN9118 PHY emulation
-+ *
-+ * Copyright (c) 2009 CodeSourcery, LLC.
-+ * Written by Paul Brook
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ */
-+
-+#ifndef HW_NET_LAN9118_PHY_H
-+#define HW_NET_LAN9118_PHY_H
-+
-+#include "qom/object.h"
-+#include "hw/sysbus.h"
-+
-+#define TYPE_LAN9118_PHY "lan9118-phy"
-+OBJECT_DECLARE_SIMPLE_TYPE(Lan9118PhyState, LAN9118_PHY)
-+
-+typedef struct Lan9118PhyState {
-+    SysBusDevice parent_obj;
-+
-+    uint16_t status;
-+    uint16_t control;
-+    uint16_t advertise;
-+    uint16_t ints;
-+    uint16_t int_mask;
-+    qemu_irq irq;
-+    bool link_down;
-+} Lan9118PhyState;
-+
-+void lan9118_phy_update_link(Lan9118PhyState *s, bool link_down);
-+void lan9118_phy_reset(Lan9118PhyState *s);
-+uint16_t lan9118_phy_read(Lan9118PhyState *s, int reg);
-+void lan9118_phy_write(Lan9118PhyState *s, int reg, uint16_t val);
-+
-+#endif
-diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
-index db28a0ef30..99e87b7178 100644
---- a/hw/net/lan9118.c
-+++ b/hw/net/lan9118.c
-@@ -16,6 +16,7 @@
- #include "net/net.h"
- #include "net/eth.h"
- #include "hw/irq.h"
-+#include "hw/net/lan9118_phy.h"
- #include "hw/net/lan9118.h"
- #include "hw/ptimer.h"
- #include "hw/qdev-properties.h"
-@@ -139,14 +140,6 @@ do { printf("lan9118: " fmt , ## __VA_ARGS__); } while (0)
- #define MAC_CR_RXEN     0x00000004
- #define MAC_CR_RESERVED 0x7f404213
- 
--#define PHY_INT_ENERGYON            0x80
--#define PHY_INT_AUTONEG_COMPLETE    0x40
--#define PHY_INT_FAULT               0x20
--#define PHY_INT_DOWN                0x10
--#define PHY_INT_AUTONEG_LP          0x08
--#define PHY_INT_PARFAULT            0x04
--#define PHY_INT_AUTONEG_PAGE        0x02
--
- #define GPT_TIMER_EN    0x20000000
- 
- /*
-@@ -228,11 +221,8 @@ struct lan9118_state {
-     uint32_t mac_mii_data;
-     uint32_t mac_flow;
- 
--    uint32_t phy_status;
--    uint32_t phy_control;
--    uint32_t phy_advertise;
--    uint32_t phy_int;
--    uint32_t phy_int_mask;
-+    Lan9118PhyState mii;
-+    IRQState mii_irq;
- 
-     int32_t eeprom_writable;
-     uint8_t eeprom[128];
-@@ -274,8 +264,8 @@ struct lan9118_state {
- 
- static const VMStateDescription vmstate_lan9118 = {
-     .name = "lan9118",
--    .version_id = 2,
--    .minimum_version_id = 1,
-+    .version_id = 3,
-+    .minimum_version_id = 3,
-     .fields = (const VMStateField[]) {
-         VMSTATE_PTIMER(timer, lan9118_state),
-         VMSTATE_UINT32(irq_cfg, lan9118_state),
-@@ -301,11 +291,6 @@ static const VMStateDescription vmstate_lan9118 = {
-         VMSTATE_UINT32(mac_mii_acc, lan9118_state),
-         VMSTATE_UINT32(mac_mii_data, lan9118_state),
-         VMSTATE_UINT32(mac_flow, lan9118_state),
--        VMSTATE_UINT32(phy_status, lan9118_state),
--        VMSTATE_UINT32(phy_control, lan9118_state),
--        VMSTATE_UINT32(phy_advertise, lan9118_state),
--        VMSTATE_UINT32(phy_int, lan9118_state),
--        VMSTATE_UINT32(phy_int_mask, lan9118_state),
-         VMSTATE_INT32(eeprom_writable, lan9118_state),
-         VMSTATE_UINT8_ARRAY(eeprom, lan9118_state, 128),
-         VMSTATE_INT32(tx_fifo_size, lan9118_state),
-@@ -385,9 +370,11 @@ static void lan9118_reload_eeprom(lan9118_state *s)
-     lan9118_mac_changed(s);
- }
- 
--static void phy_update_irq(lan9118_state *s)
-+static void lan9118_update_irq(void *opaque, int n, int level)
- {
--    if (s->phy_int & s->phy_int_mask) {
-+    lan9118_state *s = opaque;
-+
-+    if (level) {
-         s->int_sts |= PHY_INT;
-     } else {
-         s->int_sts &= ~PHY_INT;
-@@ -395,33 +382,10 @@ static void phy_update_irq(lan9118_state *s)
-     lan9118_update(s);
- }
- 
--static void phy_update_link(lan9118_state *s)
--{
--    /* Autonegotiation status mirrors link status.  */
--    if (qemu_get_queue(s->nic)->link_down) {
--        s->phy_status &= ~0x0024;
--        s->phy_int |= PHY_INT_DOWN;
--    } else {
--        s->phy_status |= 0x0024;
--        s->phy_int |= PHY_INT_ENERGYON;
--        s->phy_int |= PHY_INT_AUTONEG_COMPLETE;
--    }
--    phy_update_irq(s);
--}
--
- static void lan9118_set_link(NetClientState *nc)
- {
--    phy_update_link(qemu_get_nic_opaque(nc));
--}
--
--static void phy_reset(lan9118_state *s)
--{
--    s->phy_status = 0x7809;
--    s->phy_control = 0x3000;
--    s->phy_advertise = 0x01e1;
--    s->phy_int_mask = 0;
--    s->phy_int = 0;
--    phy_update_link(s);
-+    lan9118_phy_update_link(&LAN9118(qemu_get_nic_opaque(nc))->mii,
-+                            nc->link_down);
- }
- 
- static void lan9118_reset(DeviceState *d)
-@@ -478,8 +442,6 @@ static void lan9118_reset(DeviceState *d)
-     s->read_word_n = 0;
-     s->write_word_n = 0;
- 
--    phy_reset(s);
--
-     s->eeprom_writable = 0;
-     lan9118_reload_eeprom(s);
- }
-@@ -678,7 +640,7 @@ static void do_tx_packet(lan9118_state *s)
-     uint32_t status;
- 
-     /* FIXME: Honor TX disable, and allow queueing of packets.  */
--    if (s->phy_control & 0x4000)  {
-+    if (s->mii.control & 0x4000) {
-         /* This assumes the receive routine doesn't touch the VLANClient.  */
-         qemu_receive_packet(qemu_get_queue(s->nic), s->txp->data, s->txp->len);
-     } else {
-@@ -834,68 +796,6 @@ static void tx_fifo_push(lan9118_state *s, uint32_t val)
-     }
- }
- 
--static uint32_t do_phy_read(lan9118_state *s, int reg)
--{
--    uint32_t val;
--
--    switch (reg) {
--    case 0: /* Basic Control */
--        return s->phy_control;
--    case 1: /* Basic Status */
--        return s->phy_status;
--    case 2: /* ID1 */
--        return 0x0007;
--    case 3: /* ID2 */
--        return 0xc0d1;
--    case 4: /* Auto-neg advertisement */
--        return s->phy_advertise;
--    case 5: /* Auto-neg Link Partner Ability */
--        return 0x0f71;
--    case 6: /* Auto-neg Expansion */
--        return 1;
--        /* TODO 17, 18, 27, 29, 30, 31 */
--    case 29: /* Interrupt source.  */
--        val = s->phy_int;
--        s->phy_int = 0;
--        phy_update_irq(s);
--        return val;
--    case 30: /* Interrupt mask */
--        return s->phy_int_mask;
--    default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "do_phy_read: PHY read reg %d\n", reg);
--        return 0;
--    }
--}
--
--static void do_phy_write(lan9118_state *s, int reg, uint32_t val)
--{
--    switch (reg) {
--    case 0: /* Basic Control */
--        if (val & 0x8000) {
--            phy_reset(s);
--            break;
--        }
--        s->phy_control = val & 0x7980;
--        /* Complete autonegotiation immediately.  */
--        if (val & 0x1000) {
--            s->phy_status |= 0x0020;
--        }
--        break;
--    case 4: /* Auto-neg advertisement */
--        s->phy_advertise = (val & 0x2d7f) | 0x80;
--        break;
--        /* TODO 17, 18, 27, 31 */
--    case 30: /* Interrupt mask */
--        s->phy_int_mask = val & 0xff;
--        phy_update_irq(s);
--        break;
--    default:
--        qemu_log_mask(LOG_GUEST_ERROR,
--                      "do_phy_write: PHY write reg %d = 0x%04x\n", reg, val);
--    }
--}
--
- static void do_mac_write(lan9118_state *s, int reg, uint32_t val)
- {
-     switch (reg) {
-@@ -929,9 +829,9 @@ static void do_mac_write(lan9118_state *s, int reg, uint32_t val)
-         if (val & 2) {
-             DPRINTF("PHY write %d = 0x%04x\n",
-                     (val >> 6) & 0x1f, s->mac_mii_data);
--            do_phy_write(s, (val >> 6) & 0x1f, s->mac_mii_data);
-+            lan9118_phy_write(&s->mii, (val >> 6) & 0x1f, s->mac_mii_data);
-         } else {
--            s->mac_mii_data = do_phy_read(s, (val >> 6) & 0x1f);
-+            s->mac_mii_data = lan9118_phy_read(&s->mii, (val >> 6) & 0x1f);
-             DPRINTF("PHY read %d = 0x%04x\n",
-                     (val >> 6) & 0x1f, s->mac_mii_data);
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index e161e6b1c582..ac6d8dde71b3 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -338,7 +338,18 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
+             return;
          }
-@@ -1126,7 +1026,7 @@ static void lan9118_writel(void *opaque, hwaddr offset,
-         break;
-     case CSR_PMT_CTRL:
-         if (val & 0x400) {
--            phy_reset(s);
-+            lan9118_phy_reset(&s->mii);
-         }
-         s->pmt_ctrl &= ~0x34e;
-         s->pmt_ctrl |= (val & 0x34e);
-@@ -1373,6 +1273,13 @@ static void lan9118_realize(DeviceState *dev, Error **errp)
-     const MemoryRegionOps *mem_ops =
-             s->mode_16bit ? &lan9118_16bit_mem_ops : &lan9118_mem_ops;
- 
-+    qemu_init_irq(&s->mii_irq, lan9118_update_irq, s, 0);
-+    object_initialize_child(OBJECT(s), "mii", &s->mii, TYPE_LAN9118_PHY);
-+    if (!sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->mii), errp)) {
-+        return;
-+    }
-+    qdev_connect_gpio_out(DEVICE(&s->mii), 0, &s->mii_irq);
+         card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
+-        if (emmc) {
 +
-     memory_region_init_io(&s->mmio, OBJECT(dev), mem_ops, s,
-                           "lan9118-mmio", 0x100);
-     sysbus_init_mmio(sbd, &s->mmio);
-diff --git a/hw/net/lan9118_phy.c b/hw/net/lan9118_phy.c
-new file mode 100644
-index 0000000000..b22c3c2855
---- /dev/null
-+++ b/hw/net/lan9118_phy.c
-@@ -0,0 +1,169 @@
-+/*
-+ * SMSC LAN9118 PHY emulation
-+ *
-+ * Copyright (c) 2009 CodeSourcery, LLC.
-+ * Written by Paul Brook
-+ *
-+ * This code is licensed under the GNU GPL v2
-+ *
-+ * Contributions after 2012-01-13 are licensed under the terms of the
-+ * GNU GPL, version 2 or (at your option) any later version.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/net/lan9118_phy.h"
-+#include "hw/irq.h"
-+#include "hw/resettable.h"
-+#include "migration/vmstate.h"
-+#include "qemu/log.h"
-+
-+#define PHY_INT_ENERGYON            (1 << 7)
-+#define PHY_INT_AUTONEG_COMPLETE    (1 << 6)
-+#define PHY_INT_FAULT               (1 << 5)
-+#define PHY_INT_DOWN                (1 << 4)
-+#define PHY_INT_AUTONEG_LP          (1 << 3)
-+#define PHY_INT_PARFAULT            (1 << 2)
-+#define PHY_INT_AUTONEG_PAGE        (1 << 1)
-+
-+static void lan9118_phy_update_irq(Lan9118PhyState *s)
-+{
-+    qemu_set_irq(s->irq, !!(s->ints & s->int_mask));
-+}
-+
-+uint16_t lan9118_phy_read(Lan9118PhyState *s, int reg)
-+{
-+    uint16_t val;
-+
-+    switch (reg) {
-+    case 0: /* Basic Control */
-+        return s->control;
-+    case 1: /* Basic Status */
-+        return s->status;
-+    case 2: /* ID1 */
-+        return 0x0007;
-+    case 3: /* ID2 */
-+        return 0xc0d1;
-+    case 4: /* Auto-neg advertisement */
-+        return s->advertise;
-+    case 5: /* Auto-neg Link Partner Ability */
-+        return 0x0f71;
-+    case 6: /* Auto-neg Expansion */
-+        return 1;
-+        /* TODO 17, 18, 27, 29, 30, 31 */
-+    case 29: /* Interrupt source. */
-+        val = s->ints;
-+        s->ints = 0;
-+        lan9118_phy_update_irq(s);
-+        return val;
-+    case 30: /* Interrupt mask */
-+        return s->int_mask;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "lan9118_phy_read: PHY read reg %d\n", reg);
-+        return 0;
-+    }
-+}
-+
-+void lan9118_phy_write(Lan9118PhyState *s, int reg, uint16_t val)
-+{
-+    switch (reg) {
-+    case 0: /* Basic Control */
-+        if (val & 0x8000) {
-+            lan9118_phy_reset(s);
-+            break;
-+        }
-+        s->control = val & 0x7980;
-+        /* Complete autonegotiation immediately. */
-+        if (val & 0x1000) {
-+            s->status |= 0x0020;
-+        }
-+        break;
-+    case 4: /* Auto-neg advertisement */
-+        s->advertise = (val & 0x2d7f) | 0x80;
-+        break;
-+        /* TODO 17, 18, 27, 31 */
-+    case 30: /* Interrupt mask */
-+        s->int_mask = val & 0xff;
-+        lan9118_phy_update_irq(s);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "lan9118_phy_write: PHY write reg %d = 0x%04x\n", reg, val);
-+    }
-+}
-+
-+void lan9118_phy_update_link(Lan9118PhyState *s, bool link_down)
-+{
-+    s->link_down = link_down;
-+
-+    /* Autonegotiation status mirrors link status. */
-+    if (link_down) {
-+        s->status &= ~0x0024;
-+        s->ints |= PHY_INT_DOWN;
-+    } else {
-+        s->status |= 0x0024;
-+        s->ints |= PHY_INT_ENERGYON;
-+        s->ints |= PHY_INT_AUTONEG_COMPLETE;
-+    }
-+    lan9118_phy_update_irq(s);
-+}
-+
-+void lan9118_phy_reset(Lan9118PhyState *s)
-+{
-+    s->control = 0x3000;
-+    s->status = 0x7809;
-+    s->advertise = 0x01e1;
-+    s->int_mask = 0;
-+    s->ints = 0;
-+    lan9118_phy_update_link(s, s->link_down);
-+}
-+
-+static void lan9118_phy_reset_hold(Object *obj, ResetType type)
-+{
-+    Lan9118PhyState *s = LAN9118_PHY(obj);
-+
-+    lan9118_phy_reset(s);
-+}
-+
-+static void lan9118_phy_init(Object *obj)
-+{
-+    Lan9118PhyState *s = LAN9118_PHY(obj);
-+
-+    qdev_init_gpio_out(DEVICE(s), &s->irq, 1);
-+}
-+
-+static const VMStateDescription vmstate_lan9118_phy = {
-+    .name = "lan9118-phy",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT16(control, Lan9118PhyState),
-+        VMSTATE_UINT16(status, Lan9118PhyState),
-+        VMSTATE_UINT16(advertise, Lan9118PhyState),
-+        VMSTATE_UINT16(ints, Lan9118PhyState),
-+        VMSTATE_UINT16(int_mask, Lan9118PhyState),
-+        VMSTATE_BOOL(link_down, Lan9118PhyState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void lan9118_phy_class_init(ObjectClass *klass, void *data)
-+{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    rc->phases.hold = lan9118_phy_reset_hold;
-+    dc->vmsd = &vmstate_lan9118_phy;
-+}
-+
-+static const TypeInfo types[] = {
-+    {
-+        .name          = TYPE_LAN9118_PHY,
-+        .parent        = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(Lan9118PhyState),
-+        .instance_init = lan9118_phy_init,
-+        .class_init    = lan9118_phy_class_init,
-+    }
-+};
-+
-+DEFINE_TYPES(types)
-diff --git a/hw/net/Kconfig b/hw/net/Kconfig
-index 7fcc0d7faa..6b2ff2f937 100644
---- a/hw/net/Kconfig
-+++ b/hw/net/Kconfig
-@@ -62,8 +62,12 @@ config VMXNET3_PCI
- config SMC91C111
-     bool
- 
-+config LAN9118_PHY
-+    bool
-+
- config LAN9118
-     bool
-+    select LAN9118_PHY
-     select PTIMER
- 
- config NE2000_ISA
-diff --git a/hw/net/meson.build b/hw/net/meson.build
-index 00a9e9dd51..3bb5d749a8 100644
---- a/hw/net/meson.build
-+++ b/hw/net/meson.build
-@@ -19,6 +19,7 @@ system_ss.add(when: 'CONFIG_VMXNET3_PCI', if_true: files('vmxnet3.c'))
- 
- system_ss.add(when: 'CONFIG_SMC91C111', if_true: files('smc91c111.c'))
- system_ss.add(when: 'CONFIG_LAN9118', if_true: files('lan9118.c'))
-+system_ss.add(when: 'CONFIG_LAN9118_PHY', if_true: files('lan9118_phy.c'))
- system_ss.add(when: 'CONFIG_NE2000_ISA', if_true: files('ne2000-isa.c'))
- system_ss.add(when: 'CONFIG_OPENCORES_ETH', if_true: files('opencores_eth.c'))
- system_ss.add(when: 'CONFIG_XGMAC', if_true: files('xgmac.c'))
++        /*
++         * Force the boot properties of the eMMC device only when the
++         * machine is strapped to boot from eMMC. Without these
++         * settings, the machine would not boot.
++         *
++         * This also allows the machine to use an eMMC device without
++         * boot areas when booting from the flash device (or -kernel)
++         * Ideally, the device and its properties should be defined on
++         * the command line.
++         */
++        if (emmc && boot_emmc) {
+             qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
+             qdev_prop_set_uint8(card, "boot-config",
+                                 boot_emmc ? 0x1 << 3 : 0x0);
 -- 
 2.47.0
 

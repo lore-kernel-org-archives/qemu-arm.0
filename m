@@ -1,51 +1,51 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1611042njc;
-        Sun, 3 Nov 2024 07:24:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWcoIAuRDFzMTqiDHhCuLIZtea5Oyoe50da9BuUU5xqUI/DJ6DUXf2dbDh6rO9j4wus7mMYmohrlpF7EA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFSALftb4si2YBM8kEGJq49cyJHEuYxVUmUGkDBG9NlV/GcLPQeamya9sTXdd3RaWCoQvbW
-X-Received: by 2002:a5d:5a8c:0:b0:381:d133:d541 with SMTP id ffacd0b85a97d-381d133d9cdmr3274207f8f.11.1730647454644;
-        Sun, 03 Nov 2024 07:24:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730647454; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1611644njc;
+        Sun, 3 Nov 2024 07:25:31 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWAD9OJ8QqzcqUz8UfCPoVHg6EoquVUFWsVyDiMEJlSpo9Pe+cUxJkILmWbWqsDqUAfebM0OnUKquKyhw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGfmSRrl4+byfLfqc7tyyR5uS6NBkh7jHL17QuN05Mo+eeXvbthYoxjktIA8uEZy6uuMwCB
+X-Received: by 2002:a05:6808:19aa:b0:3e6:5ee:f197 with SMTP id 5614622812f47-3e758c17e81mr7908423b6e.14.1730647531236;
+        Sun, 03 Nov 2024 07:25:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730647531; cv=none;
         d=google.com; s=arc-20240605;
-        b=cTF7ofMcAQtPM6Mx9F6t79oS5T+2NQ8hzUuN5sv0XaapHq4CcsZQl07an+XZA6R2hD
-         LPC4HHJ/svNzusSsV7PT777RU/ajDugBEynWx2DJB2XS8KxePUSR0/J6wFLrNgf7886k
-         U0bC8XaPeWvLNVQwUQWTZetn8jEjOBEKjASj/tkMD0va/YLP9RETgc0n2p9Xq/CrBp12
-         6+sSNkTlhewATJjINB3cTVgChph50fFBI71s+kCyJ3E//EJjVejCKlcT6jZ/ZvCgdeZy
-         q5eiRykRugQ48+5B+f139Q6qwWZN6pgSqlwkWIEw7RLkhwluRpf8ipsFAipgnJwRpo3Q
-         CpfA==
+        b=fd3FFIz8i9F5zqlO7ZLDvebcBpv5gZXM2ipqHKhl8VaKNh7ET5eN9GfP4ew1TxdnQ6
+         ZFcAHBCiCAPDN525+K4tZAQ/Ip8IOR68+/MOYHyQVSAXw8Em5rAQB/7PVROUK1HHIDvT
+         H2qD/xJeID9iEfeGt4YwYbJVbt+QB/XrRWTtILTxWyZbM55pKBMvh+TQ3qbgGxUmQgOL
+         HP5+Yn5g/i51so0bxITsEQe6UvczMDE6PoVYxeVM1FrHPRtxjQ7YKx643pGjxrlH+6V4
+         +c4RhYZBKZjSW0SuPwk++f9I1bha3+iVedCBTBo1qPZIZgZ0Ly5nJ91MnKic6s7SrJTn
+         B0Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from;
-        bh=6wVqS5e9ADoMalRccE87K9H47ri3096hyPOTVzM+IUs=;
+        bh=87qKo/Iv8mWSCoxaZqQ3oxO3wdneZQsycnj/oK/pcnM=;
         fh=aZ+ktIGDgW/6qknyYMJe32UNdHDchsP+Kk6AMToiipc=;
-        b=kl25k3iSWWXQlp1bI0gUnMNBDxm4nAQwgSHW7Z1oRCoRoCupKljtrXsmPPCLkxAIwN
-         xT0vlqR35qWxiYR4kxs4uGV9+mO0FDX31dIlEny0Xy90hioYCTx1xnPaiC6ayn3uuYnP
-         oxbxcg/6xh8BILrG9tQEoNPyDVFpmdEr8et1oMMz0cKtGeLOQAXKPnKpfjSMRAj/Gp7B
-         Hiv7Y/k9+52dusvS6l+QkFDp8iG5MvneT+8rfJTdoVhKH9cu1MSjSsGE+XNHcQXOQP1+
-         3WKqeY4QvduEaUk9CMPMMjDlekgjrUbNIigycoGI6BfBHMQ+KtOoU7+///3CzJXTSmoE
-         H+aA==;
+        b=lqnWJU33BP5yNrFUNY2kcUNdCBCryUo3MoQZZKXl0MDmVC2HZ50lI5TDjNDbxgqccH
+         ZnYJcXhtQCFcwjakKsEPDrWByv1eWFWLjz109dkUZ+Rll9+ZXq0JGgiiZapfgTDhsduS
+         9l3F9iPTT4ktVpse53uFIkMA39Wx4Bror5QN2M8CLJhNDOk2wD/FqcJrbax56S+yK+p2
+         rURCTwTv3JxuAxcBqSQPrhgcl8xU60hEgVdRkOcBQPIrAQTUyz0XxqELDCaP9s5V0g4B
+         F83I0oWargNVJvM6QdxnO3la8Op6dsx9WhF30IMiV3wpJcP+AVqrHcP+4TmOq6R7wQ8Y
+         lhHA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-381c1196a35si4952383f8f.593.2024.11.03.07.24.14
+        by mx.google.com with ESMTPS id 5614622812f47-3e6611e27a8si3834078b6e.94.2024.11.03.07.25.30
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Nov 2024 07:24:14 -0800 (PST)
+        Sun, 03 Nov 2024 07:25:31 -0800 (PST)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XhJGl2gXYz67Kdt;
-	Sun,  3 Nov 2024 23:21:35 +0800 (CST)
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XhJFT081Fz6L77H;
+	Sun,  3 Nov 2024 23:20:29 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 57A99140B67;
-	Sun,  3 Nov 2024 23:24:13 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id A23C1140B67;
+	Sun,  3 Nov 2024 23:25:26 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.48.146.9) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Sun, 3 Nov 2024 16:23:55 +0100
+ 15.1.2507.39; Sun, 3 Nov 2024 16:25:09 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>,
 	<richard.henderson@linaro.org>, <peter.maydell@linaro.org>
@@ -63,340 +63,165 @@ CC: <salil.mehta@huawei.com>, <jonathan.cameron@huawei.com>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH] hw/arm/virt: Move common vCPU properties in a function
-Date: Sun, 3 Nov 2024 15:22:56 +0000
-Message-ID: <20241103152256.202444-1-salil.mehta@huawei.com>
+Subject: [PATCH] arm/virt: Extract common code to wire GICC<->vCPU IRQs for reuse
+Date: Sun, 3 Nov 2024 15:24:55 +0000
+Message-ID: <20241103152455.202462-1-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.48.146.9]
-X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+X-ClientProxiedBy: dggems706-chm.china.huawei.com (10.3.19.183) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: btxyU0P96oXk
+X-TUID: YyaIi3R1GYJA
 
-Refactor vCPU properties code from the `machvirt_init()` main loop with
-the following goals:
+Extract common GIC and CPU interrupt wiring code to improve code
+readability and modularity, supporting reuse in future patch sets. This
+refactor is benign and introduces *no* functional changes.
 
-1. Enable code reuse in future patch sets.
-2. Improve code readability.
-3. Separate out the one-time initialization of (secure-)Tagged memory,
-   handling potential failures early.
+Note: This patch has been isolated from a larger patch set to facilitate
+early merging and reduce the complexity of the original set, as it
+operates independently. All original tags and author contributions are
+retained.
 
-Note: This is a cosmetic change only; *no* functional changes are
-      intended here.
+[!] Please note, this is a purely cosmetic change. No functional change.
 
+Reported-by: Vishnu Pajjuri <vishnu@os.amperecomputing.com>
+[4/05/2024: Issue with total number of PPI available during create GIC]
+Suggested-by: Miguel Luis <miguel.luis@oracle.com>
+[5/05/2024: Fix the total number of PPIs available as per ARM BSA to avoid overflow]
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/arm/virt.c         | 238 +++++++++++++++++++++++++-----------------
- include/hw/arm/virt.h |   4 +
- 2 files changed, 147 insertions(+), 95 deletions(-)
+ hw/arm/virt.c | 108 ++++++++++++++++++++++++++++----------------------
+ 1 file changed, 60 insertions(+), 48 deletions(-)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 1a381e9a2b..a0d3bef875 100644
+index a0d3bef875..d6892b0266 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2091,16 +2091,126 @@ static void virt_cpu_post_init(VirtMachineState *vms, MemoryRegion *sysmem)
-     }
+@@ -761,6 +761,65 @@ static bool gicv3_nmi_present(VirtMachineState *vms)
+            (vms->gic_version != VIRT_GIC_VERSION_2);
  }
  
-+static void virt_cpu_set_properties(Object *cpuobj, Error **errp)
++/*
++ * Mapping from the output timer irq lines from the CPU to the GIC PPI inputs
++ * we use for the virt board.
++ */
++const int timer_irq[] = {
++    [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
++    [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
++    [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
++    [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
++    [GTIMER_HYPVIRT] = ARCH_TIMER_NS_EL2_VIRT_IRQ,
++};
++
++static void wire_gic_cpu_irqs(VirtMachineState *vms, CPUState *cs)
 +{
-+    MachineState *ms = MACHINE(qdev_get_machine());
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    VirtMachineState *vms = VIRT_MACHINE(ms);
-+    const CPUArchIdList *possible_cpus;
-+    Error *local_err = NULL;
-+    VirtMachineClass *vmc;
++    SysBusDevice *gicbusdev = SYS_BUS_DEVICE(vms->gic);
++    unsigned int smp_cpus = MACHINE(vms)->smp.cpus;
++    DeviceState *cpudev = DEVICE(cs);
++    int i = CPU(cs)->cpu_index;
++    int intidbase, irqn;
 +
-+    vmc = VIRT_MACHINE_GET_CLASS(ms);
++    intidbase = NUM_IRQS + i * GIC_INTERNAL;
 +
-+    possible_cpus = mc->possible_cpu_arch_ids(ms);
-+    object_property_set_int(cpuobj, "mp-affinity",
-+                            possible_cpus->cpus[CPU(cpuobj)->cpu_index].arch_id,
-+                            NULL);
-+
-+    numa_cpu_pre_plug(&possible_cpus->cpus[CPU(cpuobj)->cpu_index],
-+                      DEVICE(cpuobj), &local_err);
-+    if (local_err) {
-+        goto out;
++    for (irqn = 0; irqn < ARRAY_SIZE(timer_irq); irqn++) {
++        qdev_connect_gpio_out(cpudev, irqn,
++                              qdev_get_gpio_in(vms->gic,
++                                               intidbase + timer_irq[irqn]));
 +    }
 +
-+    if (!vms->secure) {
-+        object_property_set_bool(cpuobj, "has_el3", false, NULL);
++
++    if (vms->gic_version != VIRT_GIC_VERSION_2) {
++        qemu_irq irq = qdev_get_gpio_in(vms->gic,
++                                        intidbase + ARCH_GIC_MAINT_IRQ);
++        qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
++                                    0, irq);
++    } else if (vms->virt) {
++        qemu_irq irq = qdev_get_gpio_in(vms->gic,
++                                        intidbase + ARCH_GIC_MAINT_IRQ);
++        sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus, irq);
 +    }
 +
-+    if (!vms->virt && object_property_find(cpuobj, "has_el2")) {
-+        object_property_set_bool(cpuobj, "has_el2", false, NULL);
-+    }
++    qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
++                                qdev_get_gpio_in(vms->gic, intidbase
++                                                  + VIRTUAL_PMU_IRQ));
 +
-+    if (vmc->kvm_no_adjvtime &&
-+        object_property_find(cpuobj, "kvm-no-adjvtime")) {
-+        object_property_set_bool(cpuobj, "kvm-no-adjvtime", true, NULL);
-+    }
-+
-+    if (vmc->no_kvm_steal_time &&
-+        object_property_find(cpuobj, "kvm-steal-time")) {
-+        object_property_set_bool(cpuobj, "kvm-steal-time", false, NULL);
-+    }
-+
-+    if (vmc->no_pmu && object_property_find(cpuobj, "pmu")) {
-+        object_property_set_bool(cpuobj, "pmu", false, NULL);
-+    }
-+
-+    if (vmc->no_tcg_lpa2 && object_property_find(cpuobj, "lpa2")) {
-+        object_property_set_bool(cpuobj, "lpa2", false, NULL);
-+    }
-+
-+    if (object_property_find(cpuobj, "reset-cbar")) {
-+        object_property_set_int(cpuobj, "reset-cbar",
-+                                vms->memmap[VIRT_CPUPERIPHS].base,
-+                                &local_err);
-+        if (local_err) {
-+            goto out;
-+        }
-+    }
-+
-+    object_property_set_link(cpuobj, "memory", OBJECT(vms->sysmem), &local_err);
-+    if (local_err) {
-+        goto out;
-+    }
-+
-+    if (vms->secure) {
-+        object_property_set_link(cpuobj, "secure-memory",
-+                                 OBJECT(vms->secure_sysmem), &local_err);
-+        if (local_err) {
-+            goto out;
-+        }
-+    }
-+
-+    if (vms->mte) {
-+        if (tcg_enabled()) {
-+            /*
-+             * The property exists only if MemTag is supported.
-+             * If it is, we must allocate the ram to back that up.
-+             */
-+            if (!object_property_find(cpuobj, "tag-memory")) {
-+                error_report("MTE requested, but not supported "
-+                             "by the guest CPU");
-+                exit(1);
-+            }
-+
-+            object_property_set_link(cpuobj, "tag-memory",
-+                                     OBJECT(vms->tag_sysmem), &local_err);
-+            if (local_err) {
-+                goto out;
-+            }
-+
-+            if (vms->secure) {
-+                object_property_set_link(cpuobj, "secure-tag-memory",
-+                                         OBJECT(vms->secure_tag_sysmem),
-+                                         &local_err);
-+                if (local_err) {
-+                    goto out;
-+                }
-+            }
-+        } else if (kvm_enabled()) {
-+            kvm_arm_enable_mte(cpuobj, &local_err);
-+            if (local_err) {
-+                goto out;
-+            }
-+        }
-+    }
-+
-+out:
-+    if (local_err) {
-+        error_propagate(errp, local_err);
++    sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
++    sysbus_connect_irq(gicbusdev, i + smp_cpus,
++                       qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
++    sysbus_connect_irq(gicbusdev, i + 2 * smp_cpus,
++                       qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
++    sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
++                       qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
++    if (vms->gic_version != VIRT_GIC_VERSION_2) {
++        sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
++        sysbus_connect_irq(gicbusdev, i + 5 * smp_cpus,
++                           qdev_get_gpio_in(cpudev, ARM_CPU_VINMI));
 +    }
 +}
 +
- static void machvirt_init(MachineState *machine)
+ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
  {
-     VirtMachineState *vms = VIRT_MACHINE(machine);
-     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(machine);
-     MachineClass *mc = MACHINE_GET_CLASS(machine);
-     const CPUArchIdList *possible_cpus;
--    MemoryRegion *sysmem = get_system_memory();
-+    MemoryRegion *secure_tag_sysmem = NULL;
-     MemoryRegion *secure_sysmem = NULL;
-     MemoryRegion *tag_sysmem = NULL;
--    MemoryRegion *secure_tag_sysmem = NULL;
-+    MemoryRegion *sysmem;
-     int n, virt_max_cpus;
-     bool firmware_loaded;
-     bool aarch64 = true;
-@@ -2140,6 +2250,8 @@ static void machvirt_init(MachineState *machine)
+     MachineState *ms = MACHINE(vms);
+@@ -862,54 +921,7 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+      * CPU's inputs.
       */
-     finalize_gic_version(vms);
- 
-+    sysmem = vms->sysmem = get_system_memory();
-+
-     if (vms->secure) {
-         /*
-          * The Secure view of the world is the same as the NonSecure,
-@@ -2147,7 +2259,7 @@ static void machvirt_init(MachineState *machine)
-          * containing the system memory at low priority; any secure-only
-          * devices go in at higher priority and take precedence.
-          */
--        secure_sysmem = g_new(MemoryRegion, 1);
-+        secure_sysmem = vms->secure_sysmem = g_new(MemoryRegion, 1);
-         memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
-                            UINT64_MAX);
-         memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
-@@ -2220,6 +2332,33 @@ static void machvirt_init(MachineState *machine)
-         exit(1);
+     for (i = 0; i < smp_cpus; i++) {
+-        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
+-        int intidbase = NUM_IRQS + i * GIC_INTERNAL;
+-        /* Mapping from the output timer irq lines from the CPU to the
+-         * GIC PPI inputs we use for the virt board.
+-         */
+-        const int timer_irq[] = {
+-            [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
+-            [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
+-            [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
+-            [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
+-            [GTIMER_HYPVIRT] = ARCH_TIMER_NS_EL2_VIRT_IRQ,
+-        };
+-
+-        for (unsigned irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
+-            qdev_connect_gpio_out(cpudev, irq,
+-                                  qdev_get_gpio_in(vms->gic,
+-                                                   intidbase + timer_irq[irq]));
+-        }
+-
+-        if (vms->gic_version != VIRT_GIC_VERSION_2) {
+-            qemu_irq irq = qdev_get_gpio_in(vms->gic,
+-                                            intidbase + ARCH_GIC_MAINT_IRQ);
+-            qdev_connect_gpio_out_named(cpudev, "gicv3-maintenance-interrupt",
+-                                        0, irq);
+-        } else if (vms->virt) {
+-            qemu_irq irq = qdev_get_gpio_in(vms->gic,
+-                                            intidbase + ARCH_GIC_MAINT_IRQ);
+-            sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus, irq);
+-        }
+-
+-        qdev_connect_gpio_out_named(cpudev, "pmu-interrupt", 0,
+-                                    qdev_get_gpio_in(vms->gic, intidbase
+-                                                     + VIRTUAL_PMU_IRQ));
+-
+-        sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
+-        sysbus_connect_irq(gicbusdev, i + smp_cpus,
+-                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
+-        sysbus_connect_irq(gicbusdev, i + 2 * smp_cpus,
+-                           qdev_get_gpio_in(cpudev, ARM_CPU_VIRQ));
+-        sysbus_connect_irq(gicbusdev, i + 3 * smp_cpus,
+-                           qdev_get_gpio_in(cpudev, ARM_CPU_VFIQ));
+-
+-        if (vms->gic_version != VIRT_GIC_VERSION_2) {
+-            sysbus_connect_irq(gicbusdev, i + 4 * smp_cpus,
+-                               qdev_get_gpio_in(cpudev, ARM_CPU_NMI));
+-            sysbus_connect_irq(gicbusdev, i + 5 * smp_cpus,
+-                               qdev_get_gpio_in(cpudev, ARM_CPU_VINMI));
+-        }
++        wire_gic_cpu_irqs(vms, qemu_get_cpu(i));
      }
  
-+    if (vms->mte && !kvm_enabled() && !tcg_enabled()) {
-+        error_report("MTE requested, but not supported ");
-+        exit(1);
-+    }
-+
-+    if (vms->mte && kvm_enabled() && !kvm_arm_mte_supported()) {
-+        error_report("MTE requested, but not supported by KVM");
-+        exit(1);
-+    }
-+
-+    if (vms->mte && tcg_enabled()) {
-+        /* Create the memory region only once, but link to all cpus later */
-+        tag_sysmem = vms->tag_sysmem = g_new(MemoryRegion, 1);
-+        memory_region_init(tag_sysmem, OBJECT(machine),
-+                           "tag-memory", UINT64_MAX / 32);
-+
-+        if (vms->secure) {
-+            secure_tag_sysmem = vms->secure_tag_sysmem = g_new(MemoryRegion, 1);
-+            memory_region_init(secure_tag_sysmem, OBJECT(machine),
-+                               "secure-tag-memory", UINT64_MAX / 32);
-+
-+            /* As with ram, secure-tag takes precedence over tag.  */
-+            memory_region_add_subregion_overlap(secure_tag_sysmem, 0,
-+                                                tag_sysmem, -1);
-+        }
-+    }
-+
-     create_fdt(vms);
- 
-     assert(possible_cpus->len == max_cpus);
-@@ -2232,104 +2371,13 @@ static void machvirt_init(MachineState *machine)
-         }
- 
-         cpuobj = object_new(possible_cpus->cpus[n].type);
--        object_property_set_int(cpuobj, "mp-affinity",
--                                possible_cpus->cpus[n].arch_id, NULL);
- 
-         cs = CPU(cpuobj);
-         cs->cpu_index = n;
- 
--        numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpuobj),
--                          &error_fatal);
--
-         aarch64 &= object_property_get_bool(cpuobj, "aarch64", NULL);
- 
--        if (!vms->secure) {
--            object_property_set_bool(cpuobj, "has_el3", false, NULL);
--        }
--
--        if (!vms->virt && object_property_find(cpuobj, "has_el2")) {
--            object_property_set_bool(cpuobj, "has_el2", false, NULL);
--        }
--
--        if (vmc->kvm_no_adjvtime &&
--            object_property_find(cpuobj, "kvm-no-adjvtime")) {
--            object_property_set_bool(cpuobj, "kvm-no-adjvtime", true, NULL);
--        }
--
--        if (vmc->no_kvm_steal_time &&
--            object_property_find(cpuobj, "kvm-steal-time")) {
--            object_property_set_bool(cpuobj, "kvm-steal-time", false, NULL);
--        }
--
--        if (vmc->no_pmu && object_property_find(cpuobj, "pmu")) {
--            object_property_set_bool(cpuobj, "pmu", false, NULL);
--        }
--
--        if (vmc->no_tcg_lpa2 && object_property_find(cpuobj, "lpa2")) {
--            object_property_set_bool(cpuobj, "lpa2", false, NULL);
--        }
--
--        if (object_property_find(cpuobj, "reset-cbar")) {
--            object_property_set_int(cpuobj, "reset-cbar",
--                                    vms->memmap[VIRT_CPUPERIPHS].base,
--                                    &error_abort);
--        }
--
--        object_property_set_link(cpuobj, "memory", OBJECT(sysmem),
--                                 &error_abort);
--        if (vms->secure) {
--            object_property_set_link(cpuobj, "secure-memory",
--                                     OBJECT(secure_sysmem), &error_abort);
--        }
--
--        if (vms->mte) {
--            if (tcg_enabled()) {
--                /* Create the memory region only once, but link to all cpus. */
--                if (!tag_sysmem) {
--                    /*
--                     * The property exists only if MemTag is supported.
--                     * If it is, we must allocate the ram to back that up.
--                     */
--                    if (!object_property_find(cpuobj, "tag-memory")) {
--                        error_report("MTE requested, but not supported "
--                                     "by the guest CPU");
--                        exit(1);
--                    }
--
--                    tag_sysmem = g_new(MemoryRegion, 1);
--                    memory_region_init(tag_sysmem, OBJECT(machine),
--                                       "tag-memory", UINT64_MAX / 32);
--
--                    if (vms->secure) {
--                        secure_tag_sysmem = g_new(MemoryRegion, 1);
--                        memory_region_init(secure_tag_sysmem, OBJECT(machine),
--                                           "secure-tag-memory",
--                                           UINT64_MAX / 32);
--
--                        /* As with ram, secure-tag takes precedence over tag. */
--                        memory_region_add_subregion_overlap(secure_tag_sysmem,
--                                                            0, tag_sysmem, -1);
--                    }
--                }
--
--                object_property_set_link(cpuobj, "tag-memory",
--                                         OBJECT(tag_sysmem), &error_abort);
--                if (vms->secure) {
--                    object_property_set_link(cpuobj, "secure-tag-memory",
--                                             OBJECT(secure_tag_sysmem),
--                                             &error_abort);
--                }
--            } else if (kvm_enabled()) {
--                if (!kvm_arm_mte_supported()) {
--                    error_report("MTE requested, but not supported by KVM");
--                    exit(1);
--                }
--                kvm_arm_enable_mte(cpuobj, &error_abort);
--            } else {
--                    error_report("MTE requested, but not supported ");
--                    exit(1);
--            }
--        }
-+        virt_cpu_set_properties(cpuobj, &error_abort);
- 
-         qdev_realize(DEVICE(cpuobj), NULL, &error_fatal);
-         object_unref(cpuobj);
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index aca4f8061b..239f3678af 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -143,6 +143,10 @@ struct VirtMachineState {
-     DeviceState *platform_bus_dev;
-     FWCfgState *fw_cfg;
-     PFlashCFI01 *flash[2];
-+    MemoryRegion *sysmem;
-+    MemoryRegion *secure_sysmem;
-+    MemoryRegion *tag_sysmem;
-+    MemoryRegion *secure_tag_sysmem;
-     bool secure;
-     bool highmem;
-     bool highmem_compact;
+     fdt_add_gic_node(vms);
 -- 
 2.34.1

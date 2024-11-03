@@ -1,100 +1,100 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1587299njc;
-        Sun, 3 Nov 2024 06:35:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWwkp0qkBBaYEj7tdTdDaYeRK20NihXK5IQU4GfulKqOd/pvVZ02X0D83hSJ5KBYJGfthiovUJ8kZO2UA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEsIz3sH5uhMbf+A1MiUFy0HTbGpa5WblMY39ofAxispcooJvFQX5vDyrfAcXBMJiX7TcAR
-X-Received: by 2002:a05:620a:c44:b0:7b1:7838:9423 with SMTP id af79cd13be357-7b2fb9bfd58mr1425103085a.64.1730644514718;
-        Sun, 03 Nov 2024 06:35:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730644514; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1587328njc;
+        Sun, 3 Nov 2024 06:35:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXRKICvpt6RdiHTxxvmiyyzEMN8XP5NAQgeZ2kXukK5qpNuk52/rXFt+BymncVDeKXlrDBO6wo2TSloNw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFbSgCOYmhPgUPAPBXQGqMMzgXTjdMrr4dCeHYpo9kkVPlgVWKgAGX/87OAAqk1qNDBOKGs
+X-Received: by 2002:ad4:5ae8:0:b0:6d3:6542:848e with SMTP id 6a1803df08f44-6d36542951fmr124424816d6.18.1730644518850;
+        Sun, 03 Nov 2024 06:35:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730644518; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZdLb85qDakgdZ2wk8XjIB9jO0bhazTnsLgPjYnKSMy9hHagBpMDMBoG0D6d9TMbabA
-         arrD4/9oe4D0CINamUc0bkJoFGyupdBmT+JIe5hsrnCO1nyy80CkSaaeuYF+lmPUO0L7
-         MmUvi7sm3IHsf7hpTTSRqpJD9mEzpCjwDRW4x12mi6V8iaIbMS3t4QG5mIPc2nVY+07t
-         G5dbKdBGWp1ffcnKN62X0Q3KfHBTXFvP8EAtLP56O7tuX4U0/Rl+qnKejnvVI0gCJawv
-         05m8heeTNzRo6rA5AYznSavkulhO/inptk1MxSpC3SDW5Btm6t7pO//eLWcduYo7O9vn
-         9pMw==
+        b=MKK9yjaboVgMrqyPBo8vsp7Ked+kyGkQa6+dLH5hvjPOyD5CSwz8+VBdtFMtkwQj32
+         t3/DvObJPk/fyGQZSNXppv/zjaI2VImuj0+wP23Mlv6kwEjG0thNv917ESvaNeCTZxsF
+         LsMRxFJDUEnlfrGjh2AKRYnpq1Yql+bznoCkenOgzpieNfLVYkNStXcilTa07jh7afsT
+         C7BFK9x036V2rjhR93NqM6toYzXJfQOoG+vDySbUj9rc0rksfuMaEUgeaEQTdB6g77fM
+         AgdQfQREiwf89J+g2i68+VQVVY4PBqB0DDI5yJzTgZgJ8YUY/IqDVIvxq26+xHNm/j7Y
+         S5kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=MK2+7m6Ph4dw8VXtBR6y8ZzWbe55VMIAgVQqAY/2DDs=;
-        fh=HWZPk7hiIPOuKGBLJWaUwme2ypL/Q0J619b1v51dqKA=;
-        b=gJsphfP1LC1NTaIxMbWFjt6EkkH4UevSu1JPJUDfPNh0zWZef83GPuwAFyLCdggLaj
-         qD396SgLfEQigUt4mZcLF8+FapIC71kXT5Bz0b0voq/pqCTXXcq3cRbibUVWDwFy9vzQ
-         FY17ryLdQPmIGF+Sih6cI9jPIfDQ+jtrXUmkx2zGrLc+o08CyGYsVStccsVuSYVySrP5
-         G/2vq/dxApU0wyiqcwMveYjISnnMJ2h9BQDX/nXYDXVqDcxmdJGJwHnCBbvzjq6uTg0P
-         PhbaSkVr8F/Ewr7lVpH+81oIyKbjHYwgN4KGzhEXOeUZdDj4BzF7d6tzXDgey+gPpeLn
-         RgSQ==;
+        bh=AQqur4ICLRRHD8Fc52q1dC6WTnMWn9RJygPTgDiWU8I=;
+        fh=xYJN08vfJIRANBkLqAOPur39GoWP9N9cI7nPs7wQWso=;
+        b=HFd4gS1LEV5Xaup8MDJxn5sB9tePQKDyfepM53FvTjPhcZuKa/owSboF0qWrdQiOk1
+         5hmmlntXEhBc5CCGADgpM1gp/m5Kv/hiBoiNmvUVF10gAQXXQ+kvocLIubpiaSnfujr6
+         ZGi5qU3DctpLaVPQDCVPed1kwotWUoYEVfjLPciIvriUx2xg6185Z6bOgkax6ZNNSxpS
+         hc1TjnEG9EJMMLhRrmVwZ7cCtQAAMJkCp3E7uLr9aYxkdxJAOKBHWjGdxuKHW/HrWlNy
+         mzglZR/MOGxvdhN9PaT1C7jtvGH1PiguNBxKjwbD4iHTcXH6/BYZoYknUG+p3vuu9aqx
+         gXRQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="A/oZD2xn";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Xc+NpWIq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d35416e965si86280796d6.304.2024.11.03.06.35.14
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d35419765asi89497706d6.458.2024.11.03.06.35.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Nov 2024 06:35:14 -0800 (PST)
+        Sun, 03 Nov 2024 06:35:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="A/oZD2xn";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Xc+NpWIq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7bgZ-0000Tp-8g; Sun, 03 Nov 2024 09:34:35 -0500
+	id 1t7bgX-0000SW-2t; Sun, 03 Nov 2024 09:34:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1t7bgX-0000Sf-B7; Sun, 03 Nov 2024 09:34:33 -0500
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1t7bgV-0000RG-6L; Sun, 03 Nov 2024 09:34:31 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1t7bgV-0001xQ-OH; Sun, 03 Nov 2024 09:34:33 -0500
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-5c9362c26d8so6801802a12.1; 
- Sun, 03 Nov 2024 06:34:30 -0800 (PST)
+ id 1t7bgT-0001wr-RG; Sun, 03 Nov 2024 09:34:30 -0500
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-5ceccffadfdso983268a12.2; 
+ Sun, 03 Nov 2024 06:34:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1730644469; x=1731249269; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1730644467; x=1731249267; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MK2+7m6Ph4dw8VXtBR6y8ZzWbe55VMIAgVQqAY/2DDs=;
- b=A/oZD2xnXvZWnBIlJOKm/F0v3nXWpuxdrSpA+hiDUCILYJ69LTc7LpALGLv9f0TpNb
- 6EiFG7S/tgWLdSVnyJwiKHcikFxvpYQutqV9zngn5kafhJYlaMol9vw7OXticm2W4RXP
- +dfyA5BNlzjx0Wk7xuOg/isxR2xL3wJA5VyFEV4BUhRR8I2fjkGEeXkuDdPQcsFe2AtY
- u5+QsGGC2f7hrf5m03BYUNuW0rC2A3sQJKHyoxYhAvnjwM1K3XjvIgeCirREkLB1IxJo
- ZjrnU0ZM/3GKBw1g4DzE5/6HVTsfT0H5Ey2WWGCIAOiu/v+ntLHrscliVnVJF9lkNdHc
- 6fag==
+ bh=AQqur4ICLRRHD8Fc52q1dC6WTnMWn9RJygPTgDiWU8I=;
+ b=Xc+NpWIq1JRjN+xsraS9D++v+aQEbg+fO1viMC3UvoIY3tSDn98RCh3c4mOVgUlioQ
+ chVGSw13idnBvWAkT7H59IDhNdlkmzcyazOUJ9eAqm3c5qPNgiryd/Ad+0eY0MMqJMWD
+ jW/Jrwn4Jt2ZhIde1oF517dvRfAIkFI6KevwpMp47juO3e4zpVoUIzF0f8TcJIH1rdUP
+ IKX3O1ukf+CCC1Do6/0kDz88rr0i6hOSUtWBK5G3hr+8LWSLfIOW1x/Cg5NjmdiNbMxW
+ OtsPvlyeNBWy25+NKhnYO/nUc2XUkE/j7rNjT/NAiP4RbAGFrNSuYJ22pJbAn6IrXPzb
+ UnuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730644469; x=1731249269;
+ d=1e100.net; s=20230601; t=1730644467; x=1731249267;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=MK2+7m6Ph4dw8VXtBR6y8ZzWbe55VMIAgVQqAY/2DDs=;
- b=OD/2BWU9XhP5FZMwR7lfA4jo2p2svSLKHuTwZ4Req1xq+ucUI+mRhup6DkORKctsqQ
- aenQduwHeB3BmhOMj5NXAGsbiwdcW2yoAW2ViCgVfPWr+B3e3Cp/f3JVQZs9j6w6ZH7E
- /W3FWSu6nAnwVrPedjWQf/C5oX72ctP/4Nqye69wPFcHvgrSd7b40vuIWs1DSuRQLkbm
- FRfNMtHeP/mtx8KVFiKv3dp0Gr6prqFazh1BVJNu6sig45ESr3yNb4s0PacSM3nFGdcm
- 9sBBozRg6Kuv+bNpg+wY5Ol6ReD2yhcWxm/qp0DSLh3urHenmF+MyZrYrqN5tAZoDHpb
- sc2w==
+ bh=AQqur4ICLRRHD8Fc52q1dC6WTnMWn9RJygPTgDiWU8I=;
+ b=WwlsmBIXPzJdVYL97517FrztQRx/ImwiBugyGMmPQJRY164XN2fbUqVP8WRLxG/Dbq
+ yHULaHbn1HNoE4Ih02pT4epzmmFtsCrHTsFLC6px/BqJ6iHNU5fS49po9DgsFH5Jh4de
+ DCuWZlk+GLVzZMX3ePiDavgOmPd6y3U0cJa0xvk1zzNH4HUvz8OgyrE7EndOi0ue1Nms
+ TCXDPnNTaetvaGqXiQhZHkBTktBBVVZJtCwJHaQxwbpcjzp1o6yqvuluEwYtCX+s1Ajn
+ v+XKM77z+6KP5oK/gdnDOUA0mGl3Q/IADgW6QQDer0QurMhEZCr8MNlTCMQUZfkPvj0c
+ epDQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWz31zIO1CDwdjVhnXPG4tTgPzu38HPEhYVFLUT0Ja7I/E7k2/csO8fYib5JslIRagl1/WJOMrVFg==@nongnu.org,
- AJvYcCX08g4c/V4yvi/L/3ucRwR0zdfA3oRiHWi5Mwxy/5tv3tTiHP4OKIR5noqo6c5Fw5lVrjXaQQ6lfeDK+L3P@nongnu.org
-X-Gm-Message-State: AOJu0YxpJGgNI+4FLoTIqQPmW+N9yYTMuLjKY9AdY5ZBLPnEemOWtXHC
- NWVfb1yOP/8N2YUU5iJQwqOqfIB35Yn3thJbcKcUdcyoc8XbaJLv0DSS0Q==
-X-Received: by 2002:a05:6402:1e8a:b0:5ce:caa1:ca55 with SMTP id
- 4fb4d7f45d1cf-5cecaa1cda1mr4871181a12.1.1730644469044; 
- Sun, 03 Nov 2024 06:34:29 -0800 (PST)
+ AJvYcCU4mZjY8CZlwI6UzZeNCyINIlDp9sGwi2eR+MRXeH9AJI2fO3MmvgzPcBCtT7MhgdcxBtjW5V4YQQ==@nongnu.org,
+ AJvYcCVR1gzRgiRAtyFTWw+Y7ELARcm7w1gHqAFIMTFmuOSJT8/QqoBKo8hVq3GttJPxYHzvWIv9gtce85pA4fGg@nongnu.org
+X-Gm-Message-State: AOJu0Yw/QmGrjbd7YykhgHvOG20rHGjg29icZ3QrL49htx3MSJRGLXaK
+ tThLNaLABcIA0wHN/cMcMxydUrAXQfafqd7WMV4/lLyk80NYXciJjMWRsA==
+X-Received: by 2002:a05:6402:274b:b0:5ce:cffa:2ba9 with SMTP id
+ 4fb4d7f45d1cf-5cecffa2c90mr3010800a12.24.1730644467110; 
+ Sun, 03 Nov 2024 06:34:27 -0800 (PST)
 Received: from archlinux.. (pd9ed7f6d.dip0.t-ipconnect.de. [217.237.127.109])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5ceac74c667sm3350723a12.20.2024.11.03.06.34.27
+ 4fb4d7f45d1cf-5ceac74c667sm3350723a12.20.2024.11.03.06.34.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 03 Nov 2024 06:34:28 -0800 (PST)
+ Sun, 03 Nov 2024 06:34:26 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -105,18 +105,17 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 4/4] hw/sensor/tmp105: Convert printf() to trace event,
- add tracing for read/write access
-Date: Sun,  3 Nov 2024 15:33:30 +0100
-Message-ID: <20241103143330.123596-5-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>, Guenter Roeck <linux@roeck-us.net>
+Subject: [PATCH v2 3/4] hw/watchdog/wdt_imx2: Remove redundant assignment
+Date: Sun,  3 Nov 2024 15:33:29 +0100
+Message-ID: <20241103143330.123596-4-shentey@gmail.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241103143330.123596-1-shentey@gmail.com>
 References: <20241103143330.123596-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -138,89 +137,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X0Jk0iaH4zBL
+X-TUID: ZBkcyJmALyH9
 
-printf() unconditionally prints to the console which disturbs `-serial stdio`.
-Fix that by converting into a trace event. While at it, add some tracing for
-read and write access.
+The same statement is executed unconditionally right before the if statement.
 
-Fixes: 7e7c5e4c1ba5 "Nokia N800 machine support (ARM)."
+Cc: Guenter Roeck <linux@roeck-us.net>
+Reviewed-by: Guenter Roeck <linux@roeck-us.net>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- meson.build            | 1 +
- hw/sensor/trace.h      | 1 +
- hw/sensor/tmp105.c     | 7 ++++++-
- hw/sensor/trace-events | 6 ++++++
- 4 files changed, 14 insertions(+), 1 deletion(-)
- create mode 100644 hw/sensor/trace.h
- create mode 100644 hw/sensor/trace-events
+ hw/watchdog/wdt_imx2.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/meson.build b/meson.build
-index 2c9086a3fe..19df8d7125 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3476,6 +3476,7 @@ if have_system
-     'hw/s390x',
-     'hw/scsi',
-     'hw/sd',
-+    'hw/sensor',
-     'hw/sh4',
-     'hw/sparc',
-     'hw/sparc64',
-diff --git a/hw/sensor/trace.h b/hw/sensor/trace.h
-new file mode 100644
-index 0000000000..e4721560b0
---- /dev/null
-+++ b/hw/sensor/trace.h
-@@ -0,0 +1 @@
-+#include "trace/trace-hw_sensor.h"
-diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
-index 9d7b911f59..ef2824f3e1 100644
---- a/hw/sensor/tmp105.c
-+++ b/hw/sensor/tmp105.c
-@@ -27,6 +27,7 @@
- #include "qapi/visitor.h"
- #include "qemu/module.h"
- #include "hw/registerfields.h"
-+#include "trace.h"
+diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
+index be63d421da..8162d58afa 100644
+--- a/hw/watchdog/wdt_imx2.c
++++ b/hw/watchdog/wdt_imx2.c
+@@ -39,7 +39,6 @@ static void imx2_wdt_expired(void *opaque)
  
- FIELD(CONFIG, SHUTDOWN_MODE,        0, 1)
- FIELD(CONFIG, THERMOSTAT_MODE,      1, 1)
-@@ -150,17 +151,21 @@ static void tmp105_read(TMP105State *s)
-         s->buf[s->len++] = ((uint16_t) s->limit[1]) >> 0;
-         break;
+     /* Perform watchdog action if watchdog is enabled */
+     if (s->wcr & IMX2_WDT_WCR_WDE) {
+-        s->wrsr = IMX2_WDT_WRSR_TOUT;
+         watchdog_perform_action();
      }
-+
-+    trace_tmp105_read(s->i2c.address, s->pointer);
  }
- 
- static void tmp105_write(TMP105State *s)
- {
-+    trace_tmp105_write(s->i2c.address, s->pointer);
-+
-     switch (s->pointer & 3) {
-     case TMP105_REG_TEMPERATURE:
-         break;
- 
-     case TMP105_REG_CONFIG:
-         if (FIELD_EX8(s->buf[0] & ~s->config, CONFIG, SHUTDOWN_MODE)) {
--            printf("%s: TMP105 shutdown\n", __func__);
-+            trace_tmp105_write_shutdown(s->i2c.address);
-         }
-         s->config = FIELD_DP8(s->buf[0], CONFIG, ONE_SHOT, 0);
-         s->faults = tmp105_faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
-diff --git a/hw/sensor/trace-events b/hw/sensor/trace-events
-new file mode 100644
-index 0000000000..a3fe54fa6d
---- /dev/null
-+++ b/hw/sensor/trace-events
-@@ -0,0 +1,6 @@
-+# See docs/devel/tracing.rst for syntax documentation.
-+
-+# tmp105.c
-+tmp105_read(uint8_t dev, uint8_t addr) "device: 0x%02x, addr: 0x%02x"
-+tmp105_write(uint8_t dev, uint8_t addr) "device: 0x%02x, addr 0x%02x"
-+tmp105_write_shutdown(uint8_t dev) "device: 0x%02x"
 -- 
 2.47.0
 

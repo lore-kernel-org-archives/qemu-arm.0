@@ -1,141 +1,474 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1141511njc;
-        Sat, 2 Nov 2024 08:06:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=2; AJvYcCUQTyjU+TRWMsB2Z4cCZEQux+b9h4xdwtNpcOsboBz9iEPlax8X1woskMVv9aa93UhBa8hFxEq9yO8xgQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGQqXF5xudmEb2VveUZBVWs74IbLyylub9IR+RXmXzWfsF11l9lKOJp9i3YhWlCABIPNQu8
-X-Received: by 2002:a0c:ec0c:0:b0:6d3:5274:f37e with SMTP id 6a1803df08f44-6d35274f42dmr125106096d6.40.1730559996004;
-        Sat, 02 Nov 2024 08:06:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1730559995; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1612416njc;
+        Sun, 3 Nov 2024 07:27:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXMeFflraHl8nS5Mx6FDz2/wyOTkcNk1hR/S/XbvcjryekwWNpyQj8iSfwiXYBWkPBPZIfAD9vSsYOwLw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFntRG5yhCKnj5RyWZ713lPT2MNL0RNxDug26Zyy7ZfBolZxVlHo3I1fDGHaa3agfC3pjsV
+X-Received: by 2002:a05:6000:1a89:b0:37c:cfbb:d356 with SMTP id ffacd0b85a97d-381c7a5e9camr7045867f8f.28.1730647636143;
+        Sun, 03 Nov 2024 07:27:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730647636; cv=none;
         d=google.com; s=arc-20240605;
-        b=gj5GGrxlV5nnF+SWPBmSVd/JBAhAGx9r/nmb5qg+I2P0N9et/Yyx593QXkjF6/coqF
-         WfWCxsR1qzkKYK0jnZ6E+oTGdVwf/diIusT2PXnmjIYu0MkgppSyulhjRchizDewZU0X
-         iAmCcK05JBbBYYX90bMQPMePIB9SqLE3Q7VR++Ssb72UC0PYGnPX0r9+NtbQRlInNR/a
-         J8fFEXNw8sBwZi2Ze8DDYPSqsWr12oGu9kqlbOgOVtCUmMc2LnFiJRnipCqbCA5318oW
-         TRNitzC38Eff1WMSMKsdZdjzctaANnrGR6wgh3wch//SuBW9V5wdH8Ctm2eGVzDIfCjJ
-         HaRg==
+        b=dZjwS591SKTclXep5hGFdKQgxQnzb4WBTZ7065IWV9xqSRbSlgJgstuJ2oCzbYo3i1
+         G/7RPy7UBfWjncBX43VUzxNZdYmumaxDYk9YjYI7Tz/MqhBD6DpetjZdza0+8YPdKaAN
+         4fuPSqD13bnML+MxDMx91PagqrC6O+GnnxsqKFXZIFUBwYggDSyE/TK6ON4zYjm4Etlr
+         O593cNUwMj6iNr90urGI+lBQq3DO6fRAuu2raggeCdJKgI2nDlAzXgIhBEE6GUX9ZFW0
+         07tWP/IIqSSPCXXCyuKocjALdwKN2l2BcaTPZNFcgZKhMmsO2rIeIg7ZJoM4QljGdfro
+         Mltw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id;
-        bh=dtEShMJiq97tXPYWxI3gXdjJ/zN7jrEN7Elu5NQ3cow=;
-        fh=6ILVr1oEIca51E/DhccYCIeasNpl/rrGbbtj0Cc168M=;
-        b=PQyQf/qdueva9sdij9SxP9A9UbJHGvYPwxMqWSkhORhpZzVYQ6u90PKqNJqpuzR+Xy
-         nVWLGfy14AyHc3t3Ia1xm7+d8ETEOkPNIk5rqJgfQkGW8mdpdAu5ogb8LZUiS1Knd5TV
-         FXhYoIEYiMJOV/aGzY5tVRUZKEkKYd6+B3l6//4PPxd9NroW4/Afqni0woko6ZUI6jwz
-         XvNJC5WnlmdBz3JrU2CnS8HbJcHsX6TXFm5UsDjNPMy7a8eCM0Zl4uE/rW5D5DbPezWp
-         3u7b8Mmqq6lnQFcLZZw8vqEhJ4RlkL64XEBTLv9oEC9tG2OAtZMx+PsM2/2o59wiYeDN
-         NUmQ==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=X/lgnGN367Q4E3qhvM/Y6wvZAqSeIGQOcUg264pLo1Y=;
+        fh=aZ+ktIGDgW/6qknyYMJe32UNdHDchsP+Kk6AMToiipc=;
+        b=XWsI5A4qdYRVbUOFENZ7ENKm+oIWXDIyYLA2kjNY48obwY9k3HaPxRrEE79YthH72q
+         p75RT1PJfyUpqQcXTKnteKK6hq5kqBjZbBMR23ek3s2/vVXrvtBQwGmAsCt/RwRLlVtR
+         8dd8DQNCm6rTbxIUEuJ22oVF7Zio6JXNUV/l/byiCB1dru0BW2QgQp/lRaczTPjm/tYb
+         Ab0PeBFsOAhkorPZ04ijgVus98iWzi09wD0TvgK0FNiYRaQCS8k2aBcwvCxKhjuNr1qt
+         481v26W5YSg09EkelDxMkAwQP6FBvmXWElajzccsG0/pOQaL34GjUTF/ywH4jCZYJKqh
+         auHA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d353fa8895si70043596d6.49.2024.11.02.08.06.35
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 02 Nov 2024 08:06:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-381c11f4edasi5136743f8f.1000.2024.11.03.07.27.15
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Nov 2024 07:27:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t7Fhm-0002mU-8w; Sat, 02 Nov 2024 11:06:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=uVOK=R5=kaod.org=clg@ozlabs.org>)
- id 1t7Fhg-0002lS-Gw; Sat, 02 Nov 2024 11:06:16 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=uVOK=R5=kaod.org=clg@ozlabs.org>)
- id 1t7Fhe-000606-Tc; Sat, 02 Nov 2024 11:06:16 -0400
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XggzQ1Kysz4x8W;
- Sun,  3 Nov 2024 02:06:10 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XggzL5tqDz4x7G;
- Sun,  3 Nov 2024 02:06:06 +1100 (AEDT)
-Message-ID: <9fa94cbc-8010-4805-be44-939ce35182dc@kaod.org>
-Date: Sat, 2 Nov 2024 16:06:06 +0100
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XhJLF21hVz6K5lR;
+	Sun,  3 Nov 2024 23:24:37 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+	by mail.maildlp.com (Postfix) with ESMTPS id 42385140B67;
+	Sun,  3 Nov 2024 23:27:15 +0800 (CST)
+Received: from 00293818-MRGF.huawei.com (10.48.146.9) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Sun, 3 Nov 2024 16:26:57 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>,
+	<richard.henderson@linaro.org>, <peter.maydell@linaro.org>
+CC: <salil.mehta@huawei.com>, <jonathan.cameron@huawei.com>,
+	<alex.bennee@linaro.org>, <imammedo@redhat.com>, <pbonzini@redhat.com>,
+	<gshan@redhat.com>, <maz@kernel.org>, <will@kernel.org>,
+	<oliver.upton@linux.dev>, <jean-philippe@linaro.org>,
+	<lpieralisi@kernel.org>, <david@redhat.com>, <philmd@linaro.org>,
+	<andrew.jones@linux.dev>, <eric.auger@redhat.com>, <npiggin@gmail.com>,
+	<harshpb@linux.ibm.com>, <linux@armlinux.org.uk>,
+	<darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+	<vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+	<miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
+	<gustavo.romero@linaro.org>
+Subject: [PATCH] hw/intc/arm-gicv3*: Refactor GICv3 CPU reginfo to have common invocation
+Date: Sun, 3 Nov 2024 15:26:39 +0000
+Message-ID: <20241103152639.202480-1-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/sd/sdcard: Fix calculation of size when using eMMC
- boot partitions
-To: Jan Luebbe <jlu@pengutronix.de>, qemu-devel@nongnu.org
-Cc: Guenter Roeck <linux@roeck-us.net>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-block@nongnu.org
-References: <1bce4c22-9281-44c5-8acb-860881dc271c@kaod.org>
- <20241028162308.2152712-1-jlu@pengutronix.de>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20241028162308.2152712-1-jlu@pengutronix.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=uVOK=R5=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -39
-X-Spam_score: -4.0
-X-Spam_bar: ----
-X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cP2yrxOCiE1H
+Content-Type: text/plain
+X-Originating-IP: [10.48.146.9]
+X-ClientProxiedBy: dggems701-chm.china.huawei.com (10.3.19.178) To
+ frapeml500007.china.huawei.com (7.182.85.172)
+X-TUID: 3zItjE/UvGz/
 
-Philippe,
+Refactor GICv3 code for TCG and KVM to initialize the GIC CPU interface
+register information by introducing a new common hook
+`ARMGICv3CommonClass::init_cpu_reginfo`. This hook can be assigned to
+the respective TCG or KVM variants during the GICv3 initialization
+phase and invoked during the GICv3 realization phase. The primary goals
+of this refactor include:
 
-I can take this patch through the aspeed branch.
+1. Enhancing code modularity and reusability in future patch-sets.
+2. Providing a common invocation function for TCG and KVM during GICv3
+   realization.
+3. Improving code readability.
 
-Thanks,
+Note: This is a non-intrusive patch with *no* functional changes
+      intended. Code has been tested to confirm correct initialization
+      sequences across relevant scenarios.
 
-C.
+Co-developed-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+---
+ hw/intc/arm_gicv3.c                |   1 +
+ hw/intc/arm_gicv3_cpuif.c          | 245 ++++++++++++++---------------
+ hw/intc/arm_gicv3_cpuif_common.c   |  10 ++
+ hw/intc/arm_gicv3_kvm.c            |  12 +-
+ hw/intc/gicv3_internal.h           |   1 +
+ include/hw/intc/arm_gicv3_common.h |   1 +
+ 6 files changed, 140 insertions(+), 130 deletions(-)
 
-On 10/28/24 17:23, Jan Luebbe wrote:
-> The sd_bootpart_offset() function calculates the *runtime* offset which
-> changes as the guest switches between accessing the main user data area
-> and the boot partitions by writing to the EXT_CSD_PART_CONFIG_ACC_MASK
-> bits, so it shouldn't be used to calculate the main user data area size.
-> 
-> Instead, subtract the boot_part_size directly (twice, as there are two
-> identical boot partitions defined by the eMMC spec).
-> 
-> Suggested-by: Cédric Le Goater <clg@kaod.org>
-> Signed-off-by: Jan Luebbe <jlu@pengutronix.de>
-> --->   hw/sd/sd.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> index 2d3467c3d956..8430d5ae361c 100644
-> --- a/hw/sd/sd.c
-> +++ b/hw/sd/sd.c
-> @@ -826,7 +826,9 @@ static void sd_reset(DeviceState *dev)
->           sect = 0;
->       }
->       size = sect << HWBLOCK_SHIFT;
-> -    size -= sd_bootpart_offset(sd);
-> +    if (sd_is_emmc(sd)) {
-> +        size -= sd->boot_part_size * 2;
-> +    }
->   
->       sect = sd_addr_to_wpnum(size) + 1;
->   
-
+diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
+index 58e18fff54..2a30625916 100644
+--- a/hw/intc/arm_gicv3.c
++++ b/hw/intc/arm_gicv3.c
+@@ -459,6 +459,7 @@ static void arm_gicv3_class_init(ObjectClass *klass, void *data)
+     ARMGICv3Class *agc = ARM_GICV3_CLASS(klass);
+ 
+     agcc->post_load = arm_gicv3_post_load;
++    agcc->init_cpu_reginfo = gicv3_init_cpu_reginfo;
+     device_class_set_parent_realize(dc, arm_gic_realize, &agc->parent_realize);
+ }
+ 
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index ea1d1b3455..75a06d6f28 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -3025,143 +3025,138 @@ static void gicv3_cpuif_el_change_hook(ARMCPU *cpu, void *opaque)
+     gicv3_cpuif_virt_irq_fiq_update(cs);
+ }
+ 
+-void gicv3_init_cpuif(GICv3State *s)
++void gicv3_init_cpu_reginfo(CPUState *cs)
+ {
+-    /* Called from the GICv3 realize function; register our system
+-     * registers with the CPU
+-     */
+-    int i;
++    ARMCPU *cpu = ARM_CPU(cs);
++    GICv3CPUState *gcs = icc_cs_from_env(&cpu->env);
+ 
+-    for (i = 0; i < s->num_cpu; i++) {
+-        ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
+-        GICv3CPUState *cs = &s->cpu[i];
++    /*
++     * If the CPU doesn't define a GICv3 configuration, probably because
++     * in real hardware it doesn't have one, then we use default values
++     * matching the one used by most Arm CPUs. This applies to:
++     *  cpu->gic_num_lrs
++     *  cpu->gic_vpribits
++     *  cpu->gic_vprebits
++     *  cpu->gic_pribits
++     */
+ 
+-        /*
+-         * If the CPU doesn't define a GICv3 configuration, probably because
+-         * in real hardware it doesn't have one, then we use default values
+-         * matching the one used by most Arm CPUs. This applies to:
+-         *  cpu->gic_num_lrs
+-         *  cpu->gic_vpribits
+-         *  cpu->gic_vprebits
+-         *  cpu->gic_pribits
+-         */
++    /*
++     * Note that we can't just use the GICv3CPUState as an opaque pointer
++     * in define_arm_cp_regs_with_opaque(), because when we're called back
++     * it might be with code translated by CPU 0 but run by CPU 1, in
++     * which case we'd get the wrong value.
++     * So instead we define the regs with no ri->opaque info, and
++     * get back to the GICv3CPUState from the CPUARMState.
++     *
++     * These CP regs callbacks can be called from either TCG or HVF code.
++     */
++    define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
+ 
+-        /* Note that we can't just use the GICv3CPUState as an opaque pointer
+-         * in define_arm_cp_regs_with_opaque(), because when we're called back
+-         * it might be with code translated by CPU 0 but run by CPU 1, in
+-         * which case we'd get the wrong value.
+-         * So instead we define the regs with no ri->opaque info, and
+-         * get back to the GICv3CPUState from the CPUARMState.
+-         *
+-         * These CP regs callbacks can be called from either TCG or HVF code.
+-         */
+-        define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
++    /*
++     * If the CPU implements FEAT_NMI and FEAT_GICv3 it must also
++     * implement FEAT_GICv3_NMI, which is the CPU interface part
++     * of NMI support. This is distinct from whether the GIC proper
++     * (redistributors and distributor) have NMI support. In QEMU
++     * that is a property of the GIC device in s->nmi_support;
++     * cs->nmi_support indicates the CPU interface's support.
++     */
++    if (cpu_isar_feature(aa64_nmi, cpu)) {
++        gcs->nmi_support = true;
++        define_arm_cp_regs(cpu, gicv3_cpuif_gicv3_nmi_reginfo);
++    }
+ 
+-        /*
+-         * If the CPU implements FEAT_NMI and FEAT_GICv3 it must also
+-         * implement FEAT_GICv3_NMI, which is the CPU interface part
+-         * of NMI support. This is distinct from whether the GIC proper
+-         * (redistributors and distributor) have NMI support. In QEMU
+-         * that is a property of the GIC device in s->nmi_support;
+-         * cs->nmi_support indicates the CPU interface's support.
+-         */
+-        if (cpu_isar_feature(aa64_nmi, cpu)) {
+-            cs->nmi_support = true;
+-            define_arm_cp_regs(cpu, gicv3_cpuif_gicv3_nmi_reginfo);
+-        }
++    /*
++     * The CPU implementation specifies the number of supported
++     * bits of physical priority. For backwards compatibility
++     * of migration, we have a compat property that forces use
++     * of 8 priority bits regardless of what the CPU really has.
++     */
++    if (gcs->gic->force_8bit_prio) {
++        gcs->pribits = 8;
++    } else {
++        gcs->pribits = cpu->gic_pribits ?: 5;
++    }
+ 
+-        /*
+-         * The CPU implementation specifies the number of supported
+-         * bits of physical priority. For backwards compatibility
+-         * of migration, we have a compat property that forces use
+-         * of 8 priority bits regardless of what the CPU really has.
+-         */
+-        if (s->force_8bit_prio) {
+-            cs->pribits = 8;
+-        } else {
+-            cs->pribits = cpu->gic_pribits ?: 5;
+-        }
++    /*
++     * The GICv3 has separate ID register fields for virtual priority
++     * and preemption bit values, but only a single ID register field
++     * for the physical priority bits. The preemption bit count is
++     * always the same as the priority bit count, except that 8 bits
++     * of priority means 7 preemption bits. We precalculate the
++     * preemption bits because it simplifies the code and makes the
++     * parallels between the virtual and physical bits of the GIC
++     * a bit clearer.
++     */
++    gcs->prebits = gcs->pribits;
++    if (gcs->prebits == 8) {
++        gcs->prebits--;
++    }
++    /*
++     * Check that CPU code defining pribits didn't violate
++     * architectural constraints our implementation relies on.
++     */
++    g_assert(gcs->pribits >= 4 && gcs->pribits <= 8);
+ 
+-        /*
+-         * The GICv3 has separate ID register fields for virtual priority
+-         * and preemption bit values, but only a single ID register field
+-         * for the physical priority bits. The preemption bit count is
+-         * always the same as the priority bit count, except that 8 bits
+-         * of priority means 7 preemption bits. We precalculate the
+-         * preemption bits because it simplifies the code and makes the
+-         * parallels between the virtual and physical bits of the GIC
+-         * a bit clearer.
+-         */
+-        cs->prebits = cs->pribits;
+-        if (cs->prebits == 8) {
+-            cs->prebits--;
+-        }
+-        /*
+-         * Check that CPU code defining pribits didn't violate
+-         * architectural constraints our implementation relies on.
+-         */
+-        g_assert(cs->pribits >= 4 && cs->pribits <= 8);
++    /*
++     * gicv3_cpuif_reginfo[] defines ICC_AP*R0_EL1; add definitions
++     * for ICC_AP*R{1,2,3}_EL1 if the prebits value requires them.
++     */
++    if (gcs->prebits >= 6) {
++        define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr1_reginfo);
++    }
++    if (gcs->prebits == 7) {
++        define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr23_reginfo);
++    }
+ 
+-        /*
+-         * gicv3_cpuif_reginfo[] defines ICC_AP*R0_EL1; add definitions
+-         * for ICC_AP*R{1,2,3}_EL1 if the prebits value requires them.
+-         */
+-        if (cs->prebits >= 6) {
+-            define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr1_reginfo);
+-        }
+-        if (cs->prebits == 7) {
+-            define_arm_cp_regs(cpu, gicv3_cpuif_icc_apxr23_reginfo);
+-        }
++    if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
++        int j;
+ 
+-        if (arm_feature(&cpu->env, ARM_FEATURE_EL2)) {
+-            int j;
++        gcs->num_list_regs = cpu->gic_num_lrs ?: 4;
++        gcs->vpribits = cpu->gic_vpribits ?: 5;
++        gcs->vprebits = cpu->gic_vprebits ?: 5;
+ 
+-            cs->num_list_regs = cpu->gic_num_lrs ?: 4;
+-            cs->vpribits = cpu->gic_vpribits ?: 5;
+-            cs->vprebits = cpu->gic_vprebits ?: 5;
+ 
+-            /* Check against architectural constraints: getting these
+-             * wrong would be a bug in the CPU code defining these,
+-             * and the implementation relies on them holding.
+-             */
+-            g_assert(cs->vprebits <= cs->vpribits);
+-            g_assert(cs->vprebits >= 5 && cs->vprebits <= 7);
+-            g_assert(cs->vpribits >= 5 && cs->vpribits <= 8);
++        /* Check against architectural constraints: getting these
++         * wrong would be a bug in the CPU code defining these,
++         * and the implementation relies on them holding.
++         */
++        g_assert(gcs->vprebits <= gcs->vpribits);
++        g_assert(gcs->vprebits >= 5 && gcs->vprebits <= 7);
++        g_assert(gcs->vpribits >= 5 && gcs->vpribits <= 8);
+ 
+-            define_arm_cp_regs(cpu, gicv3_cpuif_hcr_reginfo);
++        define_arm_cp_regs(cpu, gicv3_cpuif_hcr_reginfo);
+ 
+-            for (j = 0; j < cs->num_list_regs; j++) {
+-                /* Note that the AArch64 LRs are 64-bit; the AArch32 LRs
+-                 * are split into two cp15 regs, LR (the low part, with the
+-                 * same encoding as the AArch64 LR) and LRC (the high part).
+-                 */
+-                ARMCPRegInfo lr_regset[] = {
+-                    { .name = "ICH_LRn_EL2", .state = ARM_CP_STATE_BOTH,
+-                      .opc0 = 3, .opc1 = 4, .crn = 12,
+-                      .crm = 12 + (j >> 3), .opc2 = j & 7,
+-                      .type = ARM_CP_IO | ARM_CP_NO_RAW,
+-                      .nv2_redirect_offset = 0x400 + 8 * j,
+-                      .access = PL2_RW,
+-                      .readfn = ich_lr_read,
+-                      .writefn = ich_lr_write,
+-                    },
+-                    { .name = "ICH_LRCn_EL2", .state = ARM_CP_STATE_AA32,
+-                      .cp = 15, .opc1 = 4, .crn = 12,
+-                      .crm = 14 + (j >> 3), .opc2 = j & 7,
+-                      .type = ARM_CP_IO | ARM_CP_NO_RAW,
+-                      .access = PL2_RW,
+-                      .readfn = ich_lr_read,
+-                      .writefn = ich_lr_write,
+-                    },
+-                };
+-                define_arm_cp_regs(cpu, lr_regset);
+-            }
+-            if (cs->vprebits >= 6) {
+-                define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr1_reginfo);
+-            }
+-            if (cs->vprebits == 7) {
+-                define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
+-            }
++        for (j = 0; j < gcs->num_list_regs; j++) {
++            /* Note that the AArch64 LRs are 64-bit; the AArch32 LRs
++             * are split into two cp15 regs, LR (the low part, with the
++             * same encoding as the AArch64 LR) and LRC (the high part).
++             */
++            ARMCPRegInfo lr_regset[] = {
++                { .name = "ICH_LRn_EL2", .state = ARM_CP_STATE_BOTH,
++                  .opc0 = 3, .opc1 = 4, .crn = 12,
++                  .crm = 12 + (j >> 3), .opc2 = j & 7,
++                  .type = ARM_CP_IO | ARM_CP_NO_RAW,
++                  .nv2_redirect_offset = 0x400 + 8 * j,
++                  .access = PL2_RW,
++                  .readfn = ich_lr_read,
++                  .writefn = ich_lr_write,
++                },
++                { .name = "ICH_LRCn_EL2", .state = ARM_CP_STATE_AA32,
++                  .cp = 15, .opc1 = 4, .crn = 12,
++                  .crm = 14 + (j >> 3), .opc2 = j & 7,
++                  .type = ARM_CP_IO | ARM_CP_NO_RAW,
++                  .access = PL2_RW,
++                  .readfn = ich_lr_read,
++                  .writefn = ich_lr_write,
++                },
++            };
++            define_arm_cp_regs(cpu, lr_regset);
++        }
++        if (gcs->vprebits >= 6) {
++            define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr1_reginfo);
++        }
++        if (gcs->vprebits == 7) {
++            define_arm_cp_regs(cpu, gicv3_cpuif_ich_apxr23_reginfo);
+         }
+         if (tcg_enabled() || qtest_enabled()) {
+             /*
+@@ -3169,7 +3164,7 @@ void gicv3_init_cpuif(GICv3State *s)
+              * state only changes on EL changes involving EL2 or EL3, so for
+              * the non-TCG case this is OK, as EL2 and EL3 can't exist.
+              */
+-            arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, cs);
++            arm_register_el_change_hook(cpu, gicv3_cpuif_el_change_hook, gcs);
+         } else {
+             assert(!arm_feature(&cpu->env, ARM_FEATURE_EL2));
+             assert(!arm_feature(&cpu->env, ARM_FEATURE_EL3));
+diff --git a/hw/intc/arm_gicv3_cpuif_common.c b/hw/intc/arm_gicv3_cpuif_common.c
+index ff1239f65d..f4d5ca447b 100644
+--- a/hw/intc/arm_gicv3_cpuif_common.c
++++ b/hw/intc/arm_gicv3_cpuif_common.c
+@@ -20,3 +20,13 @@ void gicv3_set_gicv3state(CPUState *cpu, GICv3CPUState *s)
+ 
+     env->gicv3state = (void *)s;
+ };
++
++void gicv3_init_cpuif(GICv3State *s)
++{
++    ARMGICv3CommonClass *agcc = ARM_GICV3_COMMON_GET_CLASS(s);
++
++    /* define and register `system registers` with the vCPU  */
++    for (int i = 0; i < s->num_cpu; i++) {
++        agcc->init_cpu_reginfo(s->cpu[i].cpu);
++    }
++}
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 9ea6b8e218..b4128786ca 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -777,6 +777,10 @@ static void vm_change_state_handler(void *opaque, bool running,
+     }
+ }
+ 
++static void kvm_gicv3_init_cpu_reginfo(CPUState *cs)
++{
++    define_arm_cp_regs(ARM_CPU(cs), gicv3_cpuif_reginfo);
++}
+ 
+ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+ {
+@@ -812,11 +816,8 @@ static void kvm_arm_gicv3_realize(DeviceState *dev, Error **errp)
+ 
+     gicv3_init_irqs_and_mmio(s, kvm_arm_gicv3_set_irq, NULL);
+ 
+-    for (i = 0; i < s->num_cpu; i++) {
+-        ARMCPU *cpu = ARM_CPU(qemu_get_cpu(i));
+-
+-        define_arm_cp_regs(cpu, gicv3_cpuif_reginfo);
+-    }
++    /* Initialize vCPU interface */
++    gicv3_init_cpuif(s);
+ 
+     /* Try to create the device via the device control API */
+     s->dev_fd = kvm_create_device(kvm_state, KVM_DEV_TYPE_ARM_VGIC_V3, false);
+@@ -902,6 +903,7 @@ static void kvm_arm_gicv3_class_init(ObjectClass *klass, void *data)
+ 
+     agcc->pre_save = kvm_arm_gicv3_get;
+     agcc->post_load = kvm_arm_gicv3_put;
++    agcc->init_cpu_reginfo = kvm_gicv3_init_cpu_reginfo;
+     device_class_set_parent_realize(dc, kvm_arm_gicv3_realize,
+                                     &kgc->parent_realize);
+     resettable_class_set_parent_phases(rc, NULL, kvm_arm_gicv3_reset_hold, NULL,
+diff --git a/hw/intc/gicv3_internal.h b/hw/intc/gicv3_internal.h
+index bc9f518fe8..cc8edc499b 100644
+--- a/hw/intc/gicv3_internal.h
++++ b/hw/intc/gicv3_internal.h
+@@ -722,6 +722,7 @@ void gicv3_redist_vinvall(GICv3CPUState *cs, uint64_t vptaddr);
+ 
+ void gicv3_redist_send_sgi(GICv3CPUState *cs, int grp, int irq, bool ns);
+ void gicv3_init_cpuif(GICv3State *s);
++void gicv3_init_cpu_reginfo(CPUState *cs);
+ 
+ /**
+  * gicv3_cpuif_update:
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index cd09bee3bc..7171f770e4 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -338,6 +338,7 @@ struct ARMGICv3CommonClass {
+ 
+     void (*pre_save)(GICv3State *s);
+     void (*post_load)(GICv3State *s);
++    void (*init_cpu_reginfo)(CPUState *cs);
+ };
+ 
+ void gicv3_init_irqs_and_mmio(GICv3State *s, qemu_irq_handler handler,
+-- 
+2.34.1

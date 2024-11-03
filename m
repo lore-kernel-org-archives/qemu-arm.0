@@ -1,176 +1,238 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1479636njc;
-        Sun, 3 Nov 2024 01:54:55 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWviMZz2UNz5CUC9JHxnboJ9qiucnjJDXcYRRsMB/z4o7/4ep2P19Md3Twd/qUM6lw/wMlK+6UPevZaDA==@linaro.org
-X-Google-Smtp-Source: AGHT+IF66qI0TEldMYl65aiDcT05k8jFP9Xxu9kgl1KnIpw9+2h/o3Mo7FHfrjM0xXG802EuspML
-X-Received: by 2002:a05:6214:5783:b0:6d3:46a8:8f02 with SMTP id 6a1803df08f44-6d351a930abmr194752616d6.5.1730627694783;
-        Sun, 03 Nov 2024 01:54:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730627694; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1489431njc;
+        Sun, 3 Nov 2024 02:25:32 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU/jK/QJ6MJMj1+3lSTPRTK3aZL+cltp7FLPparLUd2vkXGyIptrTie5zzAR7aVriOlr2ajgtx5iZ8s3g==@linaro.org
+X-Google-Smtp-Source: AGHT+IE3LxuEloe6VVDaOWZoxgZHFHzBjQORBbv7bQ9PEtfL/uZ32QPbgywhyszPAolpQJMEevaj
+X-Received: by 2002:adf:e705:0:b0:37c:ddab:a626 with SMTP id ffacd0b85a97d-381b70572bfmr11361984f8f.7.1730629532247;
+        Sun, 03 Nov 2024 02:25:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730629532; cv=none;
         d=google.com; s=arc-20240605;
-        b=VHs92yvJKroiYmZJJ7qodEAhnqWlW8S8uiEyRuE7SS1dXZdDpoH39zxtpx38LMhgcE
-         Wmavgl4qwMkEUy2z4XKOIOKtZiudHOUd+JUgXzxOz+6qFvUzv16JIfnWNhgs5DkFEbzK
-         F/ApzSKshtfobT1Eoyxqi9I1t1g/0M1OVLGm3pTVaIMnr5C+jJ8sHEbR61nDN/JFinx3
-         GLcPF6bgdulWC+IhQV0fJ8tmZYba5Hsh+FnTpLz4zssit7+f2knpJQFS+yJc6KLzelJK
-         K+mFE4pTCa50bfs+jjfS7KTZURs+i+gW9dZ3L3ym4dmUT+DCBNzsYGaY+d6nlCa+I2yq
-         EKSw==
+        b=Q+uZ4F41OFAUpRKhko9xhciQyDAvK60gSsci9aEJ4Xs7njSOl1/sH0SCuqX/asVGTY
+         7+jjaxodoIhVxDDSG7JEB65OYPxUYzS89swyu0zO8dyxxNDfT5NDu7s/fPJZ5WhvOEnx
+         1DDGAW66lj8MMcHSrq3NIL95HQsIPfrJtqi9MpZheV0eolXW5ktm0C+xjI3ALPkoDQLD
+         pfzYKNarPDXRkk8veLPiO6HzpfXXYDhRSv8WwAd0kmKaDUMgSYb/28SL7BFQOBg9qOUt
+         2nnZuoDDk79QLQYXC909gjUWMug+gpr8jKc1r1ggfrY/4QgNEJZH4yRPscHXlAydi9CH
+         yIRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=eK1ACBQdcVq11/sNE0g5q33esKHBWkQCzFbqxdrPPHs=;
-        fh=kbjaWpJ4/vy0WJ78xoUaTLmZ1Fx8TSu9AVR4kgneNI8=;
-        b=Nk65Hy6Xt051II+3fTvAV3dyZw4Aa8nBWhIrp5N2sVPzFdxZNtwner+O54BscZIrxV
-         5CDcXMs8WiYkHPZZKEZ3vsAlBRTxGSZQQkdjEaNZLrdS4AmACb0uUND+jAQtQgCwkCfl
-         zI65c2f3ORAV+hDs1PKUysoU9MdpiagC66e2yCoMBaX8JEC04/AJLBXTs9RMCedIwQNP
-         QfmTN1YvqoD+0MieabB+WOOMosPkWE5MZPBDZtrJbhODnhlVhgU6vAC8lyByyqnEp0cu
-         rJ5TYLyJC2WJNJuxhnzjIjkZWFEBbgAwQhl5Maa6Jjf6a51gpTYaA3lC5IdHVUoxEUpJ
-         X45g==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=BrQW+Etf6rYK2hEJkUH8PD/KlGxVGBwlfg3iQt/vi+I=;
+        fh=f7aqOn0Aylihzqer4hTA2kHSEaA8DU6KE1VFtniI5w4=;
+        b=ciTiEMqMUFWrVNlCEUvMm7ubTK3rQBrO+T+fa0evgUSOiGOFixJe6YEb+KWrQEZ72K
+         7rGTsNjUHMnXI3EEobJCyJI9KnN4m7oDt0k0VDbCAY/OtlkAVjO2Sz6U9XEuikiu7n0k
+         ZeImHy4LQ9JpamNijWNWdROoVpKWygimuuj8uMnT8VMGkqxHiwTMLcWyfRJzTTrsBGxG
+         YiwMvZkRU2i70M5wTgay32EUmmFy4IuRX0mMcUsj4+jWmAT3OkT7yK26zTbNEoD7PuRb
+         CdrTB0zgtiRN670+9PGxExcwfydeqROk78t7tSLHfBaEFB7NABHxAAIonT/76dABNaAc
+         dmRA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OChaQh0G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d35416a859si82223176d6.279.2024.11.03.01.54.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Nov 2024 01:54:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-381c1198858si4925353f8f.525.2024.11.03.02.25.31
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Nov 2024 02:25:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OChaQh0G;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7XJp-0002bo-Ff; Sun, 03 Nov 2024 04:54:49 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1t7XJo-0002bV-1L
- for qemu-arm@nongnu.org; Sun, 03 Nov 2024 04:54:48 -0500
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1t7XJm-0001i0-7r
- for qemu-arm@nongnu.org; Sun, 03 Nov 2024 04:54:47 -0500
-Received: by mail-lj1-x230.google.com with SMTP id
- 38308e7fff4ca-2fb388e64b0so31046991fa.0
- for <qemu-arm@nongnu.org>; Sun, 03 Nov 2024 01:54:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730627684; x=1731232484; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=eK1ACBQdcVq11/sNE0g5q33esKHBWkQCzFbqxdrPPHs=;
- b=OChaQh0Gy/9vb/kvttofSoEa5a/rYUj+gqmPF+46E7PNkx8H27tnvKMNPbFBmqvFQ9
- STypYkR8MZPTivZ6Hr1yvZXHne/ZUO6Z4FsWrLU4DYR2mA0k9k4PaNeAB0FcpwvGylgO
- 1VJ5FYaMpJ6XV2J1aOaqI+5n9zxTjHalNLP3eH8BP2fgv26M8vfvxwA+2esAJSKu8OjO
- 4GBIwfYzXRctgD4LYcPoi9O0sWRfROAKaxIRp7fikBXvUKM3eZUXmWlYDib4eTUiGnEt
- 0puzY6a1z0awNXOLgvTZP9oIAh17ZWW3DJEKC4y0eVv4hUA2QE79TQ2lFXxYnBkk4ua8
- PCbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730627684; x=1731232484;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eK1ACBQdcVq11/sNE0g5q33esKHBWkQCzFbqxdrPPHs=;
- b=gc6l8Otu7RLPD8y+EKZZuZm+1xuP+hOD1WYTqF+TOoE+Ps/Z+QPkXzwHex5B9Fz/0N
- 5c5FpPGu0hNuYYtV8I30rL+jPZ006mHzCBjMzhjZqlrULX8Iemt7mTFi3D2om4Nb5kN8
- Z5PchYVkkDXu1bVmshawblwqxhwa9LEpVRuivVqX7K1CiURFi7UPlqlaNgkCUMlbj8wa
- CLA+rYPjeIAs7t5bVuD8EE9VU/+ZEZBMDiC2o2XTK/vYuDPXve19yyZfVfgUA0G9IhAy
- iYBrpDNLfwwN/0O7mqbNwcJ+RnXVp6ZDKJ8+DFBOlHtOa6Wj6UxsqKAvzVBrYEm1CPEX
- ciMQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU2tMIg/eTmUurpwfvpL7DD4D7W2tUEhNqMEW1MGJiVceyqgpHh/O4eCjMyjzHxH3GN+9Gs53Be+Q==@nongnu.org
-X-Gm-Message-State: AOJu0YxExANu8VczTO6oKutAO4xXJKhUWp5S069L+Pj9zNBP5UCowest
- IJqChTY1pIWooAep0B6gp78tgUiQXj8l+lXbX1544mtXCdCr7+plSX8DzI5Uwko=
-X-Received: by 2002:a2e:a98e:0:b0:2fa:d4c1:3b6b with SMTP id
- 38308e7fff4ca-2fd059d2d1fmr88755631fa.33.1730627683986; 
- Sun, 03 Nov 2024 01:54:43 -0800 (PST)
-Received: from [192.168.21.227] ([91.209.212.64])
- by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-2fdef8a62c0sm12501271fa.75.2024.11.03.01.54.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 03 Nov 2024 01:54:42 -0800 (PST)
-Message-ID: <cc3fe99c-11c9-4130-8559-e95b00688b2a@linaro.org>
-Date: Sun, 3 Nov 2024 09:54:36 +0000
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xh9gQ1lmJz6K5r5;
+	Sun,  3 Nov 2024 18:24:02 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+	by mail.maildlp.com (Postfix) with ESMTPS id C0222140155;
+	Sun,  3 Nov 2024 18:25:30 +0800 (CST)
+Received: from 00293818-MRGF.huawei.com (10.48.154.43) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Sun, 3 Nov 2024 11:25:06 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
+CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
+	<jonathan.cameron@huawei.com>, <lpieralisi@kernel.org>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<imammedo@redhat.com>, <andrew.jones@linux.dev>, <david@redhat.com>,
+	<philmd@linaro.org>, <peterx@redhat.com>, <eric.auger@redhat.com>,
+	<will@kernel.org>, <ardb@kernel.org>, <oliver.upton@linux.dev>,
+	<pbonzini@redhat.com>, <gshan@redhat.com>, <rafael@kernel.org>,
+	<borntraeger@linux.ibm.com>, <alex.bennee@linaro.org>, <npiggin@gmail.com>,
+	<harshpb@linux.ibm.com>, <linux@armlinux.org.uk>,
+	<darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+	<vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+	<miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
+	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
+	<gustavo.romero@linaro.org>
+Subject: [PATCH V3 0/5] Arch agnostic ACPI changes to support vCPU Hotplug (on Archs like ARM)
+Date: Sun, 3 Nov 2024 10:24:14 +0000
+Message-ID: <20241103102419.202225-1-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm: Fix SVE SDOT/UDOT/USDOT (4-way, indexed)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-References: <20241101185544.2130972-1-peter.maydell@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20241101185544.2130972-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::230;
- envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x230.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: El98Hiq5hS69
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [10.48.154.43]
+X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
+ frapeml500007.china.huawei.com (7.182.85.172)
+X-TUID: aPj5+Bp+Ew28
 
-On 11/1/24 18:55, Peter Maydell wrote:
-> Our implementation of the indexed version of SVE SDOT/UDOT/USDOT got
-> the calculation of the inner loop terminator wrong.  Although we
-> correctly account for the element size when we calculate the
-> terminator for the first iteration:
->     intptr_t segend = MIN(16 / sizeof(TYPED), opr_sz_n);
-> we don't do that when we move it forward after the first inner loop
-> completes.  The intention is that we process the vector in 128-bit
-> segments, which for a 64-bit element size should mean (1, 2), (3, 4),
-> (5, 6), etc.  This bug meant that we would iterate (1, 2), (3, 4, 5,
-> 6), (7, 8, 9, 10) etc and apply the wrong indexed element to some of
-> the operations, and also index off the end of the vector.
-> 
-> You don't see this bug if the vector length is small enough that we
-> don't need to iterate the outer loop, i.e.  if it is only 128 bits,
-> or if it is the 64-bit special case from AA32/AA64 AdvSIMD.  If the
-> vector length is 256 bits then we calculate the right results for the
-> elements in the vector but do index off the end of the vector. Vector
-> lengths greater than 256 bits see wrong answers. The instructions
-> that produce 32-bit results behave correctly.
-> 
-> Fix the recalculation of 'segend' for subsequent iterations, and
-> restore a version of the comment that was lost in the refactor of
-> commit 7020ffd656a5 that explains why we only need to clamp segend to
-> opr_sz_n for the first iteration, not the later ones.
-> 
-> Cc: qemu-stable@nongnu.org
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2595
-> Fixes: 7020ffd656a5 ("target/arm: Macroize helper_gvec_{s,u}dot_idx_{b,h}")
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   target/arm/tcg/vec_helper.c | 9 ++++++++-
->   1 file changed, 8 insertions(+), 1 deletion(-)
+Change Log
+==========
 
-D'oh.
+Patch V2 -> V3:
+1. Addressed left over issues of x86 suggested by Igor Mammedov (Redhat):
+   - Removed the `ACPICPUstatus::is_enabled` State as well as it was
+     breaking the x86 migration
+   - Above is in addition to `is_present` state which was removed in V2
+   - Dropped [PATCH 1/6] of V2 patch-set 
+   - Introduced hooks `CPUClass::cpu_{persistence,enabled}_status()`
+2. Fixed the accidental CPUs AML break of x86 in V2 (sorry for this!).
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Patch V1 -> V2:
+1. Addressed Igor Mammedov's (Redhat) raised issues:
+   - Removed `ACPICPUstatus::is_present` State and its handling in the
+     ACPI APUs AML code and now all QOM vCPUs are present.
+   - Dropped the concept of `acpi_persistent` because now QOM vCPUs
+     states and the ACPI vCPU states are consistent.
+   - QOM vCPU objects are always present now (accompanying RFC V6)
+   - Added .needed() hook to the GED VMSD toconditionally migrate the
+     ACPI CPU hotplug state at the source VM.
+2. Addressed Zhao Liu's (Intel) reported x86 DSDT Table bios-acpi-test failure 
+3. Incorporated Gustavo Romero's comments and added his Tag to [Patches 1,2,4]
+4. Addressed Gavin Shan's comment to reduce the inline code comments
+   wherever possible.
 
-r~
+
+Brief Recall
+============
+With the advent of multi-core SoCs, the concept of CPU-level hotplugging
+has become less distinct, often functioning as a power on/off event
+rather than a full hotplug operation. However, hotplug support at the
+die/NUMA/socket level remains meaningful and is architecture-specific.
+Virtual CPU hotplug can be supported regardless of architectural support
+for physical CPU hotplug, as it serves resource management needs—such as
+dynamically scaling VM compute capacity based on demand or SLAs,
+optimizing boot times, or reducing memory footprint. Although, its
+desing must be scalable and must co-exist with future die/NUMA/socket
+level hotplug features.
+
+
+Motivation for this patch-set
+=============================
+In architectures that support vCPU hotplug, firmware or the VMM/QEMU
+typically reflects vCPU status changes to the OS via the ACPI
+`_STA.Present` bit. However, certain CPU architectures prohibit [1]
+modifications to CPU presence after kernel boot. This restriction [2][3]
+could be due to closely integrated per-CPU components—like interrupt
+controllers or other features— that may not support reconfiguration
+post-boot and are often in an `always-on` power domain. Consequently,
+specifications for these architectures require all CPUs to remain
+present i.e.`_STA.Present=True`, once the system is initialized.
+
+To be able to support vCPU Hotplug feature, as a workaround to the above
+limitation,  ACPI method `_STA.Enabled` Bit could be used to reflect the
+plugged and unplugged states of the QOM vCPUs.
+
+This patch set introduces the following changes:
+
+1. Introduces`CPUClass::cpu_{persistence,enabled}_status` hooks: To
+   check if the CPU should always remain present even after unplug
+   operation and to fetch the vCPU `enabled` status in case it is
+   present. Later is used in context when Guest Kernel evaluates
+   ACPI `_STA` method and the status is read from the flags stored
+   in the Qemu ACPI code.
+   
+2. Support for Migrating ACPI CPU Hotplug State: Facilitates the
+   migration of the ACPI CPU hotplug state in VMSD by conditonally
+   making it part of the GED VMSD.
+
+3. Updates the Qtest bios-acpi-tables/DSDT binaries for x86/{pc,q35}
+
+This patch set is designed to work independently and is meant to ensure
+compatibility with existing hotplug support across different
+architectures. This patch-set has been tested alongside ARM-specific
+vCPU hotplug changes (included in the upcoming RFC V6 [4]), and
+hot(un)plug functionalities performed as expected which concerns this
+patch-set. Please have a look.
+
+Thank you!
+
+
+Repository of this patch-set
+============================
+(*) Latest Architecture Agnostic ACPI changes patch-set:
+    Repo: https://github.com/salil-mehta/qemu.git   virt-cpuhp-armv8/rfc-v6.arch.agnostic.acpi.v3
+    Link: https://github.com/salil-mehta/qemu/commits/virt-cpuhp-armv8/rfc-v6.arch.agnostic.acpi.v3
+(*) Works with upcoming ARM architecture specific patch-set RFC V6-rc5 [4]
+
+
+References
+==========
+[1] Check comment 5 in the bugzilla entry
+    Link: https://bugzilla.tianocore.org/show_bug.cgi?id=4481#c5
+[2] KVMForum 2023 Presentation: Challenges Revisited in Supporting Virt CPU Hotplug on
+    architectures that don’t Support CPU Hotplug (like ARM64)
+    a. Kernel Link: https://kvm-forum.qemu.org/2023/KVM-forum-cpu-hotplug_7OJ1YyJ.pdf
+    b. Qemu Link:  https://kvm-forum.qemu.org/2023/Challenges_Revisited_in_Supporting_Virt_CPU_Hotplug_-__ii0iNb3.pdf
+[3] KVMForum 2020 Presentation: Challenges in Supporting Virtual CPU Hotplug on
+    SoC Based Systems (like ARM64)
+    Link: https://kvmforum2020.sched.com/event/eE4m
+[4] Upcoming RFC V6, Support of Virtual CPU Hotplug for ARMv8 Arch
+    Link: https://github.com/salil-mehta/qemu/commits/virt-cpuhp-armv8/rfc-v6-rc5
+
+Salil Mehta (5):
+  hw/acpi: Make CPUs ACPI `presence` conditional during vCPU hot-unplug
+  qtest: allow ACPI DSDT Table changes
+  hw/acpi: Update ACPI `_STA` method with QOM vCPU ACPI Hotplug states
+  tests/qtest/bios-tables-test: Update DSDT golden masters for
+    x86/{pc,q35}
+  hw/acpi: Update GED with vCPU Hotplug VMSD for migration
+
+ hw/acpi/cpu.c                                 |  53 ++++++++++++++++--
+ hw/acpi/generic_event_device.c                |  19 +++++++
+ include/hw/core/cpu.h                         |   2 +
+ tests/data/acpi/x86/pc/DSDT                   | Bin 8527 -> 8561 bytes
+ tests/data/acpi/x86/pc/DSDT.acpierst          | Bin 8438 -> 8472 bytes
+ tests/data/acpi/x86/pc/DSDT.acpihmat          | Bin 9852 -> 9886 bytes
+ tests/data/acpi/x86/pc/DSDT.bridge            | Bin 15398 -> 15432 bytes
+ tests/data/acpi/x86/pc/DSDT.cphp              | Bin 8991 -> 9025 bytes
+ tests/data/acpi/x86/pc/DSDT.dimmpxm           | Bin 10181 -> 10215 bytes
+ tests/data/acpi/x86/pc/DSDT.hpbridge          | Bin 8478 -> 8512 bytes
+ tests/data/acpi/x86/pc/DSDT.hpbrroot          | Bin 5034 -> 5068 bytes
+ tests/data/acpi/x86/pc/DSDT.ipmikcs           | Bin 8599 -> 8633 bytes
+ tests/data/acpi/x86/pc/DSDT.memhp             | Bin 9886 -> 9920 bytes
+ tests/data/acpi/x86/pc/DSDT.nohpet            | Bin 8385 -> 8419 bytes
+ tests/data/acpi/x86/pc/DSDT.numamem           | Bin 8533 -> 8567 bytes
+ tests/data/acpi/x86/pc/DSDT.roothp            | Bin 12320 -> 12354 bytes
+ tests/data/acpi/x86/q35/DSDT                  | Bin 8355 -> 8389 bytes
+ tests/data/acpi/x86/q35/DSDT.acpierst         | Bin 8372 -> 8406 bytes
+ tests/data/acpi/x86/q35/DSDT.acpihmat         | Bin 9680 -> 9714 bytes
+ .../acpi/x86/q35/DSDT.acpihmat-noinitiator    | Bin 8634 -> 8668 bytes
+ tests/data/acpi/x86/q35/DSDT.applesmc         | Bin 8401 -> 8435 bytes
+ tests/data/acpi/x86/q35/DSDT.bridge           | Bin 11968 -> 12002 bytes
+ tests/data/acpi/x86/q35/DSDT.core-count       | Bin 12913 -> 12947 bytes
+ tests/data/acpi/x86/q35/DSDT.core-count2      | Bin 33770 -> 33804 bytes
+ tests/data/acpi/x86/q35/DSDT.cphp             | Bin 8819 -> 8853 bytes
+ tests/data/acpi/x86/q35/DSDT.cxl              | Bin 13148 -> 13182 bytes
+ tests/data/acpi/x86/q35/DSDT.dimmpxm          | Bin 10009 -> 10043 bytes
+ tests/data/acpi/x86/q35/DSDT.ipmibt           | Bin 8430 -> 8464 bytes
+ tests/data/acpi/x86/q35/DSDT.ipmismbus        | Bin 8443 -> 8477 bytes
+ tests/data/acpi/x86/q35/DSDT.ivrs             | Bin 8372 -> 8406 bytes
+ tests/data/acpi/x86/q35/DSDT.memhp            | Bin 9714 -> 9748 bytes
+ tests/data/acpi/x86/q35/DSDT.mmio64           | Bin 9485 -> 9519 bytes
+ tests/data/acpi/x86/q35/DSDT.multi-bridge     | Bin 13208 -> 13242 bytes
+ tests/data/acpi/x86/q35/DSDT.noacpihp         | Bin 8235 -> 8269 bytes
+ tests/data/acpi/x86/q35/DSDT.nohpet           | Bin 8213 -> 8247 bytes
+ tests/data/acpi/x86/q35/DSDT.numamem          | Bin 8361 -> 8395 bytes
+ tests/data/acpi/x86/q35/DSDT.pvpanic-isa      | Bin 8456 -> 8490 bytes
+ tests/data/acpi/x86/q35/DSDT.thread-count     | Bin 12913 -> 12947 bytes
+ tests/data/acpi/x86/q35/DSDT.thread-count2    | Bin 33770 -> 33804 bytes
+ tests/data/acpi/x86/q35/DSDT.tis.tpm12        | Bin 8961 -> 8995 bytes
+ tests/data/acpi/x86/q35/DSDT.tis.tpm2         | Bin 8987 -> 9021 bytes
+ tests/data/acpi/x86/q35/DSDT.type4-count      | Bin 18589 -> 18623 bytes
+ tests/data/acpi/x86/q35/DSDT.viot             | Bin 14615 -> 14649 bytes
+ tests/data/acpi/x86/q35/DSDT.xapic            | Bin 35718 -> 35752 bytes
+ 44 files changed, 69 insertions(+), 5 deletions(-)
+
+-- 
+2.34.1

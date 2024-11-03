@@ -1,51 +1,51 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1489503njc;
-        Sun, 3 Nov 2024 02:25:46 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVWEqluBc6oiRvDbEeB/Fd+TU0jdoeAsyyfQeDaGpx4YOFAdCu1vO3oErZu9kPngrSKtUXKWOgRA87KEA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHOlM9jHEcYK1U15oIAwopSx4FcuspBvfft77aLsBISiSGKiYkDYkzWO2HI1Ne11JN3F6+b
-X-Received: by 2002:a5d:6487:0:b0:37d:54d0:1f20 with SMTP id ffacd0b85a97d-381c7a4e17cmr7035440f8f.24.1730629546075;
-        Sun, 03 Nov 2024 02:25:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730629546; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1489589njc;
+        Sun, 3 Nov 2024 02:26:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW5XiTj46k9/nambRuQAjAV+veHCrYyu5XRZkAqDsU0rjOm/aKQjG4v6l9TCBdIVLXrbDkTvZ8hJgdJ7w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEgbmQ9LTL8cSqtJeup5K5vZbq02/33FYSwgTsFqMv9c0dIYW3UlyQZDtWPeBZoXH1IChv4
+X-Received: by 2002:a5d:47a7:0:b0:37c:d1e3:ebd2 with SMTP id ffacd0b85a97d-381be7bae19mr10905864f8f.29.1730629565299;
+        Sun, 03 Nov 2024 02:26:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730629565; cv=none;
         d=google.com; s=arc-20240605;
-        b=F+KTrt/IxQTFw1GPE58mUEL0lIsM/igN6Ug3M9O1A8MYcRXI4Z9FuZ28P6ulmdjAP9
-         WQJ+aG6W+tUwxCGXqIPrkL+l/Q+zn98P/VbXVraiu8RqIaR6Sr4pHZhg6cy00txP17Xb
-         0Vi2maSaBebHoGo0a/bPZGVvumQ+006WQtQW/5E8FN3uUL1Zc1nUL1JGWbCFcdZehfv/
-         i1eD3tvtLNtS0/ZU3DjkUb1H8+uV6Yd3LgyqJ1HnlX6UvnkH7LC/qiT+RhHRwFBGyfVA
-         4JgSZYsbeDbkO8x5nOxw14QKalPoh3pqVcYfGs/yn/T/rH7/ZNz8pTRdLxB+gX30KAdt
-         G6Hg==
+        b=ZcqsZf+YMYAz84WqKYIlTXYYIAlusB4g/cfko8B6R/A/8zQTg9JeWKgrSn/Df5Dr8t
+         rug98GwNt3Gj+emZER116qqI/gqzq+lyi5yhpx1NGDxFx2YvE3Y/gMwIdNyX1Rms1yqP
+         kj++E04VEV6IHs1byTho+TTvdhIhRl+CIGSmVIV3qBiaHd9qCY/R4/g8GGD1+0ZdtIFa
+         RAK7J32pHKS9UNAByJziy0IgnPG8Y9CtitGYeGn6FLn01mSBxs0OGAKiqA+gcyYThLYF
+         rE1uPukQhZV9lxyUgJhd9WtPpFpaZbOjBtUjhMe++UCJaAlpuChc/CXYFd7ozMe+Kx5v
+         lgMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=WAKLr6Xe8L7POCW3jEVCqHDeXsUosEFvkZ5nrAL6PBA=;
+        bh=hzsP50dTkGg2PCAvMRdu2Rly35OsPtIkf1sK9CN2ySM=;
         fh=f7aqOn0Aylihzqer4hTA2kHSEaA8DU6KE1VFtniI5w4=;
-        b=bku/DZATtZzRYbSRMsuSy13o3al+ZDclJ6CGi0Fklm1gJ0Jz3rzIcBRUuUXit1QFMH
-         nS1WZP/Z927OgWXu0+eMmtd9aP4dvNHlc81qyryMjncUbqMlezRlE9tpORWzNvRR7fnf
-         4Q2nLoMWv3wdcpYWXzcgfe80UUb4ePAERlPBXHlBwaI+vkPdfi9UYLgzurklRc5MiPqX
-         VFG90oH5irItAHsfMZvT/ZHVfJwqD8ofANGnI9xewksdQGVxdBdrXPZ0lbhTk4y4pwzz
-         7Ac737/++vBAJN+oiovnj+VZXQSX97486S2azetvbruZpD8ZSkkVMQj88A96g4BJZ54u
-         teyA==;
+        b=FR7Wx2stvvaOKwSr00FhiRrERPUi0Lw/iMBAXcORO6IGpqd0hwh6EGxtLdJnkkMFjU
+         uNt/8t3FcJit9iRQi4M2Kv2UE+CsuyS7mOAdNpmacDrGe0rmJ6hOH3czk/EpTBe64a2h
+         67R8CocqpZGeZ4Gzcxh1h35fu2NGNIWvDD3ULUPHldPNDaVIc4AyFnxe90ZR0LYtGrWE
+         O2Gh9Ae3u8HCaejqz8T3JrGVDwykE1y3Ul3Jo1VvegiR60HqTbqnP0ov+3QvvkvIEHG3
+         Duo6nHZPyWsKiV4VlV7IRxd8bZX4OufW28nNncNotIhUNzRvmjfed+vLMTtLDuLZg0X3
+         tuCw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-381c11fa29dsi4847517f8f.1070.2024.11.03.02.25.45
+        by mx.google.com with ESMTPS id ffacd0b85a97d-381c11aea9dsi4843390f8f.756.2024.11.03.02.26.05
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Nov 2024 02:25:46 -0800 (PST)
+        Sun, 03 Nov 2024 02:26:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xh9fM5ZkGz6K6JX;
-	Sun,  3 Nov 2024 18:23:07 +0800 (CST)
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xh9fl0pRWz6K5qb;
+	Sun,  3 Nov 2024 18:23:27 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 1A8D0140C98;
-	Sun,  3 Nov 2024 18:25:45 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id 6913F140B67;
+	Sun,  3 Nov 2024 18:26:04 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.48.154.43) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Sun, 3 Nov 2024 11:25:26 +0100
+ 15.1.2507.39; Sun, 3 Nov 2024 11:25:45 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>
 CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
@@ -64,102 +64,74 @@ CC: <salil.mehta@huawei.com>, <maz@kernel.org>, <jean-philippe@linaro.org>,
 	<jiakernel2@gmail.com>, <maobibo@loongson.cn>, <lixianglai@loongson.cn>,
 	<shahuang@redhat.com>, <zhao1.liu@intel.com>, <linuxarm@huawei.com>,
 	<gustavo.romero@linaro.org>
-Subject: [PATCH V3 1/5] hw/acpi: Make CPUs ACPI `presence` conditional during vCPU hot-unplug
-Date: Sun, 3 Nov 2024 10:24:15 +0000
-Message-ID: <20241103102419.202225-2-salil.mehta@huawei.com>
+Subject: [PATCH V3 2/5] qtest: allow ACPI DSDT Table changes
+Date: Sun, 3 Nov 2024 10:24:16 +0000
+Message-ID: <20241103102419.202225-3-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241103102419.202225-1-salil.mehta@huawei.com>
 References: <20241103102419.202225-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-Originating-IP: [10.48.154.43]
 X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: 6mOULsWwN2AL
+X-TUID: MQCJGhmUC3PL
 
-On most architectures, during vCPU hot-plug and hot-unplug actions, the
-firmware or VMM/QEMU can update the OS on vCPU status by toggling the
-ACPI method `_STA.Present` bit. However, certain CPU architectures
-prohibit [1] modifications to a CPU’s `presence` status after the kernel
-has booted.
+list changed files in tests/qtest/bios-tables-test-allowed-diff.h
 
-This limitation [2][3] exists because many per-CPU components, such as
-interrupt controllers and various per-CPU features tightly integrated
-with CPUs, may not support reconfiguration once the kernel is
-initialized. Often, these components cannot be powered down, as they may
-belong to an `always-on` power domain. As a result, some architectures
-require all CPUs to remain `_STA.Present` after system initialization.
-
-Therefore, it is essential to mirror the exact QOM vCPU status through
-ACPI for the Guest kernel. For this, we should determine—via
-architecture-specific code[4]—whether vCPUs must always remain present
-and whether the associated `AcpiCpuStatus::cpu` object should remain
-valid, even following a vCPU hot-unplug operation.
-
-References:
-[1] Check comment 5 in the bugzilla entry
-    Link: https://bugzilla.tianocore.org/show_bug.cgi?id=4481#c5
-[2] KVMForum 2023 Presentation: Challenges Revisited in Supporting Virt CPU Hotplug on
-    architectures that don’t Support CPU Hotplug (like ARM64)
-    a. Kernel Link: https://kvm-forum.qemu.org/2023/KVM-forum-cpu-hotplug_7OJ1YyJ.pdf
-    b. Qemu Link:  https://kvm-forum.qemu.org/2023/Challenges_Revisited_in_Supporting_Virt_CPU_Hotplug_-__ii0iNb3.pdf
-[3] KVMForum 2020 Presentation: Challenges in Supporting Virtual CPU Hotplug on
-    SoC Based Systems (like ARM64)
-    Link: https://kvmforum2020.sched.com/event/eE4m
-[4] Example implementation of architecture-specific CPU persistence hook
-    Link: https://github.com/salil-mehta/qemu/commit/c0b416b11e5af6505e558866f0eb6c9f3709173e
-
+Reported-by: Zhao Liu <zhao1.liu@intel.com>
 Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 ---
- hw/acpi/cpu.c         | 15 ++++++++++++++-
- include/hw/core/cpu.h |  1 +
- 2 files changed, 15 insertions(+), 1 deletion(-)
+ tests/qtest/bios-tables-test-allowed-diff.h | 41 +++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index 5cb60ca8bc..9b03b4292e 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -233,6 +233,17 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
-     memory_region_add_subregion(as, base_addr, &state->ctrl_reg);
- }
- 
-+static bool should_remain_acpi_present(DeviceState *dev)
-+{
-+    CPUClass *k = CPU_GET_CLASS(dev);
-+    /*
-+     * A system may contain CPUs that are always present on one die, NUMA node,
-+     * or socket, yet may be non-present on another simultaneously. Check from
-+     * architecture specific code.
-+     */
-+    return k->cpu_persistent_status && k->cpu_persistent_status(CPU(dev));
-+}
-+
- static AcpiCpuStatus *get_cpu_status(CPUHotplugState *cpu_st, DeviceState *dev)
- {
-     CPUClass *k = CPU_GET_CLASS(dev);
-@@ -289,7 +300,9 @@ void acpi_cpu_unplug_cb(CPUHotplugState *cpu_st,
-         return;
-     }
- 
--    cdev->cpu = NULL;
-+    if (!should_remain_acpi_present(dev)) {
-+        cdev->cpu = NULL;
-+    }
- }
- 
- static const VMStateDescription vmstate_cpuhp_sts = {
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index c3ca0babcb..e7de77dc6d 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -158,6 +158,7 @@ struct CPUClass {
-     void (*dump_state)(CPUState *cpu, FILE *, int flags);
-     void (*query_cpu_fast)(CPUState *cpu, CpuInfoFast *value);
-     int64_t (*get_arch_id)(CPUState *cpu);
-+    bool (*cpu_persistent_status)(CPUState *cpu);
-     void (*set_pc)(CPUState *cpu, vaddr value);
-     vaddr (*get_pc)(CPUState *cpu);
-     int (*gdb_read_register)(CPUState *cpu, GByteArray *buf, int reg);
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..512d40665d 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,42 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/x86/pc/DSDT",
++"tests/data/acpi/x86/pc/DSDT.acpierst",
++"tests/data/acpi/x86/pc/DSDT.acpihmat",
++"tests/data/acpi/x86/pc/DSDT.bridge",
++"tests/data/acpi/x86/pc/DSDT.cphp",
++"tests/data/acpi/x86/pc/DSDT.dimmpxm",
++"tests/data/acpi/x86/pc/DSDT.hpbridge",
++"tests/data/acpi/x86/pc/DSDT.hpbrroot",
++"tests/data/acpi/x86/pc/DSDT.ipmikcs",
++"tests/data/acpi/x86/pc/DSDT.memhp",
++"tests/data/acpi/x86/pc/DSDT.nohpet",
++"tests/data/acpi/x86/pc/DSDT.numamem",
++"tests/data/acpi/x86/pc/DSDT.roothp",
++"tests/data/acpi/x86/q35/DSDT",
++"tests/data/acpi/x86/q35/DSDT.acpierst",
++"tests/data/acpi/x86/q35/DSDT.acpihmat",
++"tests/data/acpi/x86/q35/DSDT.acpihmat-noinitiator",
++"tests/data/acpi/x86/q35/DSDT.applesmc",
++"tests/data/acpi/x86/q35/DSDT.bridge",
++"tests/data/acpi/x86/q35/DSDT.core-count",
++"tests/data/acpi/x86/q35/DSDT.core-count2",
++"tests/data/acpi/x86/q35/DSDT.cphp",
++"tests/data/acpi/x86/q35/DSDT.cxl",
++"tests/data/acpi/x86/q35/DSDT.dimmpxm",
++"tests/data/acpi/x86/q35/DSDT.ipmibt",
++"tests/data/acpi/x86/q35/DSDT.ipmismbus",
++"tests/data/acpi/x86/q35/DSDT.ivrs",
++"tests/data/acpi/x86/q35/DSDT.memhp",
++"tests/data/acpi/x86/q35/DSDT.mmio64",
++"tests/data/acpi/x86/q35/DSDT.multi-bridge",
++"tests/data/acpi/x86/q35/DSDT.noacpihp",
++"tests/data/acpi/x86/q35/DSDT.nohpet",
++"tests/data/acpi/x86/q35/DSDT.numamem",
++"tests/data/acpi/x86/q35/DSDT.pvpanic-isa",
++"tests/data/acpi/x86/q35/DSDT.thread-count",
++"tests/data/acpi/x86/q35/DSDT.thread-count2",
++"tests/data/acpi/x86/q35/DSDT.tis.tpm12",
++"tests/data/acpi/x86/q35/DSDT.tis.tpm2",
++"tests/data/acpi/x86/q35/DSDT.type4-count",
++"tests/data/acpi/x86/q35/DSDT.viot",
++"tests/data/acpi/x86/q35/DSDT.xapic",
 -- 
 2.34.1

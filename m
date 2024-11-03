@@ -1,99 +1,99 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1600583njc;
-        Sun, 3 Nov 2024 07:04:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVkcin3DyWAkbld0lqrPMvGPzb6NG2p1GT7KM4Yz6SzskpeX39usWwExw742Xdn2Gi0cokOOF88FDdJAg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFwQd+J03Lg8m7JbMkbVb5HdFIRFi+pfeuJ8iiE++uId1Ko1AuF5elhW98pJ5dqQqjr2Mp6
-X-Received: by 2002:a05:6122:4585:b0:50c:79a4:c25 with SMTP id 71dfb90a1353d-51227357810mr7723671e0c.8.1730646269440;
-        Sun, 03 Nov 2024 07:04:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730646269; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1600678njc;
+        Sun, 3 Nov 2024 07:04:38 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXdVVJnq8GMszs57F6F+exXAg0il/airYjF6U/znAGJE9WZXIs8sUptQpVC+EIlLf+UGuZJGQ9ZhxKjSw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE/oyKBC0Jj2hDzhNwri9vy8qIu8U+XLz4UMQM5itFUb7dVZfGFjc+G97miY4Gpcc7vzBZT
+X-Received: by 2002:a05:620a:2802:b0:7b1:3c5a:687c with SMTP id af79cd13be357-7b2fb9aac4fmr1369020685a.41.1730646278023;
+        Sun, 03 Nov 2024 07:04:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730646278; cv=none;
         d=google.com; s=arc-20240605;
-        b=hV52mJ5E6klhR79e168D2gSrKhPKtCtOZ6o2d6QrgQVMt8IS7vn09nIE0QoqrEPWyn
-         lc+PlJ3PimL3Qt6DstTXgEA5f+oP76NK/PWMr+G2N1vOAgyuG67prhMhhI+vaLg/IJc7
-         J+p4iWDqTThE1PDmutpR6aGINjWpwASJPvZFZgVC3UDihcDs+YnB/hoHXzHyESv9k1LR
-         LVxrej7uOk7FJeosOiMJ3l9b6ROLUIbzxuZK6NBm4Q3+kMgNuqP0Z4Au03v2VlVS/eQL
-         t7DbO6VR/IkqmLzWHARf/PAh/Y6Z9tOwq5jdiJjQuRiSPmhyXdSYC2npoYYCO0GBVHMG
-         vZ1w==
+        b=XPcU1oYN/T86CUcMnaHMepfRaLenpatowqsJ2QuWvP0tSIiI4dk7uQ+IJWgfS+EhI8
+         bGs2kySBXMTGEJo4aHLyMDoZwPQM4AsA6B2Z2QPFPPbMsQpGDvi2TjFMDN9yhD1MPjiD
+         RheKiRHg+M4/neCywVRtlWHelU5JShfEruhHvKHBO4LGRj5X7g9f4wvCWsanKj8+nB+5
+         Y9Hge+VI8bHbSnflkcu6jfiwNSS9dvHS/lO6YrDxmKXAgF4EKZvy2GlKQUObs7DEzU7U
+         6m2KGG5itX70BcDFYKrEXhnI3TQM92Swsh05Zp2rrREWqp0GUB1gs3y/dSx8NM1eYkPG
+         7WNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=35ml+LQzgDz+d7Jvf+nOL9CBpkJtC3faqN+iRSaqfrI=;
-        fh=X/cEeG0IecOcbktZzhggOUgW8rnsW2Y9KQE40BZHOoA=;
-        b=EBsPsleLz7cdfwQZ6TzGQR60u73Pv6yKsDNLx0qOjbabr9AKtAfvzKwdmfJsLc3Uhr
-         ho974RPaqvpPOz3BPnIz5qWyJN0hKJ0eUwF3VeNVunQ23Xw4FI+qnmgDoE3soGIwUx+g
-         jHeUTh0j+5hiET7XbOdBX1u8UofzwdtUzCvjo/Ap0AIiA+ndSL8Gepri6a7FiuyF3k5h
-         eKDhkgUwwvILj5+Srdpmdb9nIcXjxj8xybd42Kp658spersz4yfWtYOB/+IoXcJGMjR3
-         uOmZVRdUYiPCZ6m1HupgwKF9nmjc+vkbeMnlChIYPEd8gKj7d5IDQvruzFRGFng8uH7n
-         4uEw==;
+        bh=lk6DmwR1trCObzc5QE+RdchuXUh7gssyok3qWRKKP8I=;
+        fh=Cz9mr7WFxiYKJBC2Bqqst74qbX4rU+wpTENwEkbsku8=;
+        b=b5wcvkhYCWf09yqirSU6bnkVbhyXRqr6SMQY13ZvA25CoGiHHyJ7N/iFV8x+J+wGYJ
+         r5MzGm1+9vKnTO5v7FlxclvWUonTP5Xvz9xwdMGekPFFD8C/SWzixTSGq37St1Z4FF32
+         658Q+tkzgpRQ4wS7+vrmL88ml0Lv1054pFSNrMQoLuZFy51OsRGoSb4Ld8iacLs1qu71
+         0DZxHmx6Z/4spFaLshst1LbfNrALaxX2mjhv01HdTExuNCwVHGv16Wv8ekUwLBvU51Xw
+         al8F9bACjAlg5YkXPDJ8bAQHJH7GoIVlNawD3n09mJtrOzLlR/2sKNeNNeNbh3eKGHo/
+         W6NQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=D0YxtMEg;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=bjJYW8Iv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4a957590422si1597560137.656.2024.11.03.07.04.29
+        by mx.google.com with ESMTPS id af79cd13be357-7b2f3ad5c36si895846585a.747.2024.11.03.07.04.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Nov 2024 07:04:29 -0800 (PST)
+        Sun, 03 Nov 2024 07:04:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=D0YxtMEg;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=bjJYW8Iv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t7c6n-0000KN-Cm; Sun, 03 Nov 2024 10:01:41 -0500
+	id 1t7c7G-00015w-3U; Sun, 03 Nov 2024 10:02:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1t7c6E-0008KC-Kj
- for qemu-devel@nongnu.org; Sun, 03 Nov 2024 10:01:06 -0500
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ id 1t7c6J-0008Nf-UP
+ for qemu-devel@nongnu.org; Sun, 03 Nov 2024 10:01:15 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1t7c69-0006XW-6D
- for qemu-devel@nongnu.org; Sun, 03 Nov 2024 10:01:06 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-a99ea294480so270760366b.2
- for <qemu-devel@nongnu.org>; Sun, 03 Nov 2024 07:00:59 -0800 (PST)
+ id 1t7c6F-0006cc-9O
+ for qemu-devel@nongnu.org; Sun, 03 Nov 2024 10:01:11 -0500
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-a9a6b4ca29bso428924266b.3
+ for <qemu-devel@nongnu.org>; Sun, 03 Nov 2024 07:01:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1730646058; x=1731250858;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1730646066; x=1731250866;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=35ml+LQzgDz+d7Jvf+nOL9CBpkJtC3faqN+iRSaqfrI=;
- b=D0YxtMEgLAJlr8Oy0cE62y+Oq+Hb8qO3hRweeJ77QmHg5oihSpKVe6PSmUcuhvTmGl
- KegAjswZ31dVP+vTqEeSVr5Pu6NGObOfOilJg/bBlisdS2OOLPrfftVgig6zX2025bMm
- zfpA09k6mbYU+kcmNM8P3dw83yXu2uvMxF+xRtVIQ/AhgNjH3qHGLkEwQgV5ocRnZYtQ
- 0CN3TvPx7o2xBrP1cxUQfzqYlTuK2M6Axvbdi8v2cBdUHzEqNod3PIZpI29Bf5r5PoxO
- 9TOyr/gtcReJ/Qt6AhNTmnMgMKSDlPe0yeuqPC0/3Bqbc4FFSErFtbaY2CHKFG3WbLXF
- KhXg==
+ bh=lk6DmwR1trCObzc5QE+RdchuXUh7gssyok3qWRKKP8I=;
+ b=bjJYW8IvmRi8FEPsFhNtzTRPTSG8UeyPDr2sosAHhR3j0szAdDY32kqBYpX4hB8/hZ
+ IPHD8+Cag7tce9yTndNMdsx2Gy+fXt2P1wQVmad9LIX0eFWHSCxviPekbEYhS8UugNO+
+ SUiXMCfg53VO5GgiAqgBi6H4nNyjgwwin7w7mQZDDxfzqBEwuHrmsd4BMhCvQzuA7ayJ
+ AlbmUb3D7LQIw8+OCc0w9Gs7b/qnJG8CuIGUhwRBjwXJoQlm1byw2s007yClr0brIHZb
+ DnvKA1XZIZzzdtccW/iF2a0lfzrO51uIX+FFxC3MS1/q1npaz6sDrabRgNXhShnqTTda
+ iWTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730646058; x=1731250858;
+ d=1e100.net; s=20230601; t=1730646066; x=1731250866;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=35ml+LQzgDz+d7Jvf+nOL9CBpkJtC3faqN+iRSaqfrI=;
- b=oZ2o4dpqrYt/qHd5SoAX29RI6CtVPC5u2iucHSoqlRRG5mWKo/ahJ/8QzTOp9XsiWw
- /a4tFtdaIgkxNS8SzUXtYsD6LyhraHJAcqJdxXmutPrkC8TpzydlGjbsuguG9OBYZzTs
- jFpF0OovoeDOH5+51ZdSrILqmWnox4p9/AWb/XlFUmU+FYIJoSSKZTwQ9marZ0P/FII3
- GFWWZ+/dq/9Xns9nekZJyirUCsaZZCscZ+LOiZOVecqPKl2yDdgdkEWKA8TbMetjsy2R
- h+U/djUZ/P8MMB7VDYYMWYfEqZYzNcklM7QZUtmWcijoJwAQLbazgpPoZfHzPwStGb9k
- i+Xw==
-X-Gm-Message-State: AOJu0YzM6STxU0x2Oh2bTVwDgO0VQD2+YLA0kRFbTJRrdrPWJvqT/HwL
- kb6dtbxtYbenRCMazx+J5dBr1lMQhHTiWVIhOkcZuUJsVxs2CHK5azE/e3ig/zhADAF82tjAV6R
- 9Kw==
-X-Received: by 2002:a05:6402:1d88:b0:5ce:af08:a2cd with SMTP id
- 4fb4d7f45d1cf-5ceb9384a91mr9605608a12.33.1730646058315; 
- Sun, 03 Nov 2024 07:00:58 -0800 (PST)
+ bh=lk6DmwR1trCObzc5QE+RdchuXUh7gssyok3qWRKKP8I=;
+ b=iGOussYKwqVdOx6kLo5rIg5zr+rNfAIgDdNFzgjw+x9nokLxuLWr8o8JSB6kCItt5i
+ c+gTiJonC6RsEYbNnM8OgjqLnrFqJTUwvtO0KmYAuJgXtReneHw4gyiY93Bs68MM+g7C
+ 7AhWlc6XCXmiZodJ3zSqDw9MexjxqVqST5J96SFOriw73AS5999CJjROAFX0shojhkEH
+ eUQDph+M2vTU1dSZez/5UxjbYSECBiv0EOyPXOVklkvPW8OXacyTIentPI+HJ6WH73dq
+ JnHE0s5rNRvNGUGumuP50vismniW+DjuQOukWpYUCytygw+++Jtp8Y2WxQMnOsUhrckQ
+ NFdg==
+X-Gm-Message-State: AOJu0YzAwkWdIolXt5abqJvL/lYFGq/10F2KWEGxpDqMGgC4xo8FQMJO
+ HJosOOYwm4wmN835M/kj5HdDTCdiz5cxFzpBUwOdhp+0vcqkD3MF1obbirjwMPHMRVQChEVWGFO
+ Now==
+X-Received: by 2002:a17:907:6d17:b0:a99:fd2c:4f06 with SMTP id
+ a640c23a62f3a-a9e50ca30f3mr1426911666b.65.1730646065650; 
+ Sun, 03 Nov 2024 07:01:05 -0800 (PST)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9e5664350esm431536666b.159.2024.11.03.07.00.56
+ a640c23a62f3a-a9e5664350esm431536666b.159.2024.11.03.07.01.03
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 03 Nov 2024 07:00:57 -0800 (PST)
+ Sun, 03 Nov 2024 07:01:05 -0800 (PST)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -107,19 +107,17 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PATCH v6 05/15] MAINTAINERS: Add myself as maintainer for apple-gfx,
- reviewer for HVF
-Date: Sun,  3 Nov 2024 16:00:27 +0100
-Message-Id: <20241103150037.48194-6-phil@philjordan.eu>
+ qemu-riscv@nongnu.org, Alexander Graf <graf@amazon.com>
+Subject: [PATCH v6 09/15] gpex: Allow more than 4 legacy IRQs
+Date: Sun,  3 Nov 2024 16:00:31 +0100
+Message-Id: <20241103150037.48194-10-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.3 (Apple Git-145)
 In-Reply-To: <20241103150037.48194-1-phil@philjordan.eu>
 References: <20241103150037.48194-1-phil@philjordan.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::62c;
- envelope-from=phil@philjordan.eu; helo=mail-ej1-x62c.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::631;
+ envelope-from=phil@philjordan.eu; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -140,57 +138,362 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0F7ny16SDvMZ
+X-TUID: /hgGNvxL06JG
 
-I'm happy to take responsibility for the macOS PV graphics code. As
-HVF patches don't seem to get much attention at the moment, I'm also
-adding myself as designated reviewer for HVF and x86 HVF to try and
-improve that.
+From: Alexander Graf <graf@amazon.com>
 
-I anticipate that the resulting workload should be covered by the
-funding I'm receiving for improving Qemu in combination with macOS. As
-of right now this runs out at the end of 2024; I expect the workload on
-apple-gfx should be relatively minor and manageable in my spare time
-beyond that. I may have to remove myself from more general HVF duties
-once the contract runs out if it's more than I can manage.
+Some boards such as vmapple don't do real legacy PCI IRQ swizzling.
+Instead, they just keep allocating more board IRQ lines for each new
+legacy IRQ. Let's support that mode by giving instantiators a new
+"nr_irqs" property they can use to support more than 4 legacy IRQ lines.
+In this mode, GPEX will export more IRQ lines, one for each device.
 
+Signed-off-by: Alexander Graf <graf@amazon.com>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- MAINTAINERS | 7 +++++++
- 1 file changed, 7 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 1e88b5738cb..fa8b8e858f8 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -505,6 +505,7 @@ F: target/arm/hvf/
- X86 HVF CPUs
- M: Cameron Esfahani <dirty@apple.com>
- M: Roman Bolshakov <rbolshakov@ddn.com>
-+R: Phil Dennis-Jordan <phil@philjordan.eu>
- W: https://wiki.qemu.org/Features/HVF
- S: Maintained
- F: target/i386/hvf/
-@@ -512,6 +513,7 @@ F: target/i386/hvf/
- HVF
- M: Cameron Esfahani <dirty@apple.com>
- M: Roman Bolshakov <rbolshakov@ddn.com>
-+R: Phil Dennis-Jordan <phil@philjordan.eu>
- W: https://wiki.qemu.org/Features/HVF
- S: Maintained
- F: accel/hvf/
-@@ -2587,6 +2589,11 @@ F: hw/display/edid*
- F: include/hw/display/edid.h
- F: qemu-edid.c
+v4:
+
+ * Turned pair of IRQ arrays into array of structs.
+ * Simplified swizzling logic selection.
+
+ hw/arm/sbsa-ref.c          |  2 +-
+ hw/arm/virt.c              |  2 +-
+ hw/i386/microvm.c          |  2 +-
+ hw/loongarch/virt.c        |  2 +-
+ hw/mips/loongson3_virt.c   |  2 +-
+ hw/openrisc/virt.c         | 12 +++++------
+ hw/pci-host/gpex.c         | 43 ++++++++++++++++++++++++++++++--------
+ hw/riscv/virt.c            | 12 +++++------
+ hw/xtensa/virt.c           |  2 +-
+ include/hw/pci-host/gpex.h |  7 +++----
+ 10 files changed, 55 insertions(+), 31 deletions(-)
+
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index e3195d54497..7e7322486c2 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -673,7 +673,7 @@ static void create_pcie(SBSAMachineState *sms)
+     /* Map IO port space */
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
  
-+macOS PV Graphics (apple-gfx)
-+M: Phil Dennis-Jordan <phil@philjordan.eu>
-+S: Maintained
-+F: hw/display/apple-gfx*
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+                            qdev_get_gpio_in(sms->gic, irq + i));
+         gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 1a381e9a2bd..8aa22ea3155 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1547,7 +1547,7 @@ static void create_pcie(VirtMachineState *vms)
+     /* Map IO port space */
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+                            qdev_get_gpio_in(vms->gic, irq + i));
+         gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
+diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+index 693099f2256..b3a348bee09 100644
+--- a/hw/i386/microvm.c
++++ b/hw/i386/microvm.c
+@@ -139,7 +139,7 @@ static void create_gpex(MicrovmMachineState *mms)
+                                     mms->gpex.mmio64.base, mmio64_alias);
+     }
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+                            x86ms->gsi[mms->gpex.irq + i]);
+     }
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index 9a635d1d3d3..50056384994 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -741,7 +741,7 @@ static void virt_devices_init(DeviceState *pch_pic,
+     memory_region_add_subregion(get_system_memory(), VIRT_PCI_IO_BASE,
+                                 pio_alias);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         sysbus_connect_irq(d, i,
+                            qdev_get_gpio_in(pch_pic, 16 + i));
+         gpex_set_irq_num(GPEX_HOST(gpex_dev), i, 16 + i);
+diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
+index f3b6326cc59..884b5f23a99 100644
+--- a/hw/mips/loongson3_virt.c
++++ b/hw/mips/loongson3_virt.c
+@@ -458,7 +458,7 @@ static inline void loongson3_virt_devices_init(MachineState *machine,
+                                 virt_memmap[VIRT_PCIE_PIO].base, s->pio_alias);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, virt_memmap[VIRT_PCIE_PIO].base);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         irq = qdev_get_gpio_in(pic, PCIE_IRQ_BASE + i);
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, irq);
+         gpex_set_irq_num(GPEX_HOST(dev), i, PCIE_IRQ_BASE + i);
+diff --git a/hw/openrisc/virt.c b/hw/openrisc/virt.c
+index 47d2c9bd3c7..6f053bf48e0 100644
+--- a/hw/openrisc/virt.c
++++ b/hw/openrisc/virt.c
+@@ -318,7 +318,7 @@ static void create_pcie_irq_map(void *fdt, char *nodename, int irq_base,
+ {
+     int pin, dev;
+     uint32_t irq_map_stride = 0;
+-    uint32_t full_irq_map[GPEX_NUM_IRQS * GPEX_NUM_IRQS * 6] = {};
++    uint32_t full_irq_map[PCI_NUM_PINS * PCI_NUM_PINS * 6] = {};
+     uint32_t *irq_map = full_irq_map;
+ 
+     /*
+@@ -330,11 +330,11 @@ static void create_pcie_irq_map(void *fdt, char *nodename, int irq_base,
+      * possible slot) seeing the interrupt-map-mask will allow the table
+      * to wrap to any number of devices.
+      */
+-    for (dev = 0; dev < GPEX_NUM_IRQS; dev++) {
++    for (dev = 0; dev < PCI_NUM_PINS; dev++) {
+         int devfn = dev << 3;
+ 
+-        for (pin = 0; pin < GPEX_NUM_IRQS; pin++) {
+-            int irq_nr = irq_base + ((pin + PCI_SLOT(devfn)) % GPEX_NUM_IRQS);
++        for (pin = 0; pin < PCI_NUM_PINS; pin++) {
++            int irq_nr = irq_base + ((pin + PCI_SLOT(devfn)) % PCI_NUM_PINS);
+             int i = 0;
+ 
+             /* Fill PCI address cells */
+@@ -357,7 +357,7 @@ static void create_pcie_irq_map(void *fdt, char *nodename, int irq_base,
+     }
+ 
+     qemu_fdt_setprop(fdt, nodename, "interrupt-map", full_irq_map,
+-                     GPEX_NUM_IRQS * GPEX_NUM_IRQS *
++                     PCI_NUM_PINS * PCI_NUM_PINS *
+                      irq_map_stride * sizeof(uint32_t));
+ 
+     qemu_fdt_setprop_cells(fdt, nodename, "interrupt-map-mask",
+@@ -409,7 +409,7 @@ static void openrisc_virt_pcie_init(OR1KVirtState *state,
+     memory_region_add_subregion(get_system_memory(), pio_base, alias);
+ 
+     /* Connect IRQ lines. */
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         pcie_irq = get_per_cpu_irq(cpus, num_cpus, irq_base + i);
+ 
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pcie_irq);
+diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+index e9cf455bf52..cd63aa2d3cf 100644
+--- a/hw/pci-host/gpex.c
++++ b/hw/pci-host/gpex.c
+@@ -32,6 +32,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "hw/irq.h"
++#include "hw/pci/pci_bus.h"
+ #include "hw/pci-host/gpex.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+@@ -41,20 +42,25 @@
+  * GPEX host
+  */
+ 
++struct GPEXIrq {
++    qemu_irq irq;
++    int irq_num;
++};
 +
- PIIX4 South Bridge (i82371AB)
- M: Hervé Poussineau <hpoussin@reactos.org>
- M: Philippe Mathieu-Daudé <philmd@linaro.org>
+ static void gpex_set_irq(void *opaque, int irq_num, int level)
+ {
+     GPEXHost *s = opaque;
+ 
+-    qemu_set_irq(s->irq[irq_num], level);
++    qemu_set_irq(s->irq[irq_num].irq, level);
+ }
+ 
+ int gpex_set_irq_num(GPEXHost *s, int index, int gsi)
+ {
+-    if (index >= GPEX_NUM_IRQS) {
++    if (index >= s->num_irqs) {
+         return -EINVAL;
+     }
+ 
+-    s->irq_num[index] = gsi;
++    s->irq[index].irq_num = gsi;
+     return 0;
+ }
+ 
+@@ -62,7 +68,7 @@ static PCIINTxRoute gpex_route_intx_pin_to_irq(void *opaque, int pin)
+ {
+     PCIINTxRoute route;
+     GPEXHost *s = opaque;
+-    int gsi = s->irq_num[pin];
++    int gsi = s->irq[pin].irq_num;
+ 
+     route.irq = gsi;
+     if (gsi < 0) {
+@@ -74,6 +80,13 @@ static PCIINTxRoute gpex_route_intx_pin_to_irq(void *opaque, int pin)
+     return route;
+ }
+ 
++static int gpex_swizzle_map_irq_fn(PCIDevice *pci_dev, int pin)
++{
++    PCIBus *bus = pci_device_root_bus(pci_dev);
++
++    return (PCI_SLOT(pci_dev->devfn) + pin) % bus->nirq;
++}
++
+ static void gpex_host_realize(DeviceState *dev, Error **errp)
+ {
+     PCIHostState *pci = PCI_HOST_BRIDGE(dev);
+@@ -82,6 +95,8 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
+     PCIExpressHost *pex = PCIE_HOST_BRIDGE(dev);
+     int i;
+ 
++    s->irq = g_malloc0_n(s->num_irqs, sizeof(*s->irq));
++
+     pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
+     sysbus_init_mmio(sbd, &pex->mmio);
+ 
+@@ -128,19 +143,27 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
+         sysbus_init_mmio(sbd, &s->io_ioport);
+     }
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
+-        sysbus_init_irq(sbd, &s->irq[i]);
+-        s->irq_num[i] = -1;
++    for (i = 0; i < s->num_irqs; i++) {
++        sysbus_init_irq(sbd, &s->irq[i].irq);
++        s->irq[i].irq_num = -1;
+     }
+ 
+     pci->bus = pci_register_root_bus(dev, "pcie.0", gpex_set_irq,
+-                                     pci_swizzle_map_irq_fn, s, &s->io_mmio,
+-                                     &s->io_ioport, 0, 4, TYPE_PCIE_BUS);
++                                     gpex_swizzle_map_irq_fn,
++                                     s, &s->io_mmio, &s->io_ioport, 0,
++                                     s->num_irqs, TYPE_PCIE_BUS);
+ 
+     pci_bus_set_route_irq_fn(pci->bus, gpex_route_intx_pin_to_irq);
+     qdev_realize(DEVICE(&s->gpex_root), BUS(pci->bus), &error_fatal);
+ }
+ 
++static void gpex_host_unrealize(DeviceState *dev)
++{
++    GPEXHost *s = GPEX_HOST(dev);
++
++    g_free(s->irq);
++}
++
+ static const char *gpex_host_root_bus_path(PCIHostState *host_bridge,
+                                           PCIBus *rootbus)
+ {
+@@ -166,6 +189,7 @@ static Property gpex_host_properties[] = {
+                        gpex_cfg.mmio64.base, 0),
+     DEFINE_PROP_SIZE(PCI_HOST_ABOVE_4G_MMIO_SIZE, GPEXHost,
+                      gpex_cfg.mmio64.size, 0),
++    DEFINE_PROP_UINT8("num-irqs", GPEXHost, num_irqs, PCI_NUM_PINS),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -176,6 +200,7 @@ static void gpex_host_class_init(ObjectClass *klass, void *data)
+ 
+     hc->root_bus_path = gpex_host_root_bus_path;
+     dc->realize = gpex_host_realize;
++    dc->unrealize = gpex_host_unrealize;
+     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+     device_class_set_props(dc, gpex_host_properties);
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 45a8c4f8190..567fe92a136 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -168,7 +168,7 @@ static void create_pcie_irq_map(RISCVVirtState *s, void *fdt, char *nodename,
+ {
+     int pin, dev;
+     uint32_t irq_map_stride = 0;
+-    uint32_t full_irq_map[GPEX_NUM_IRQS * GPEX_NUM_IRQS *
++    uint32_t full_irq_map[PCI_NUM_PINS * PCI_NUM_PINS *
+                           FDT_MAX_INT_MAP_WIDTH] = {};
+     uint32_t *irq_map = full_irq_map;
+ 
+@@ -180,11 +180,11 @@ static void create_pcie_irq_map(RISCVVirtState *s, void *fdt, char *nodename,
+      * possible slot) seeing the interrupt-map-mask will allow the table
+      * to wrap to any number of devices.
+      */
+-    for (dev = 0; dev < GPEX_NUM_IRQS; dev++) {
++    for (dev = 0; dev < PCI_NUM_PINS; dev++) {
+         int devfn = dev * 0x8;
+ 
+-        for (pin = 0; pin < GPEX_NUM_IRQS; pin++) {
+-            int irq_nr = PCIE_IRQ + ((pin + PCI_SLOT(devfn)) % GPEX_NUM_IRQS);
++        for (pin = 0; pin < PCI_NUM_PINS; pin++) {
++            int irq_nr = PCIE_IRQ + ((pin + PCI_SLOT(devfn)) % PCI_NUM_PINS);
+             int i = 0;
+ 
+             /* Fill PCI address cells */
+@@ -210,7 +210,7 @@ static void create_pcie_irq_map(RISCVVirtState *s, void *fdt, char *nodename,
+     }
+ 
+     qemu_fdt_setprop(fdt, nodename, "interrupt-map", full_irq_map,
+-                     GPEX_NUM_IRQS * GPEX_NUM_IRQS *
++                     PCI_NUM_PINS * PCI_NUM_PINS *
+                      irq_map_stride * sizeof(uint32_t));
+ 
+     qemu_fdt_setprop_cells(fdt, nodename, "interrupt-map-mask",
+@@ -1182,7 +1182,7 @@ static inline DeviceState *gpex_pcie_init(MemoryRegion *sys_mem,
+ 
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, pio_base);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         irq = qdev_get_gpio_in(irqchip, PCIE_IRQ + i);
+ 
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, irq);
+diff --git a/hw/xtensa/virt.c b/hw/xtensa/virt.c
+index 5310a888613..8f5c2009d29 100644
+--- a/hw/xtensa/virt.c
++++ b/hw/xtensa/virt.c
+@@ -93,7 +93,7 @@ static void create_pcie(MachineState *ms, CPUXtensaState *env, int irq_base,
+     /* Connect IRQ lines. */
+     extints = xtensa_get_extints(env);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         void *q = extints[irq_base + i];
+ 
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, q);
+diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+index dce883573ba..84471533af0 100644
+--- a/include/hw/pci-host/gpex.h
++++ b/include/hw/pci-host/gpex.h
+@@ -32,8 +32,6 @@ OBJECT_DECLARE_SIMPLE_TYPE(GPEXHost, GPEX_HOST)
+ #define TYPE_GPEX_ROOT_DEVICE "gpex-root"
+ OBJECT_DECLARE_SIMPLE_TYPE(GPEXRootState, GPEX_ROOT_DEVICE)
+ 
+-#define GPEX_NUM_IRQS 4
+-
+ struct GPEXRootState {
+     /*< private >*/
+     PCIDevice parent_obj;
+@@ -49,6 +47,7 @@ struct GPEXConfig {
+     PCIBus      *bus;
+ };
+ 
++typedef struct GPEXIrq GPEXIrq;
+ struct GPEXHost {
+     /*< private >*/
+     PCIExpressHost parent_obj;
+@@ -60,8 +59,8 @@ struct GPEXHost {
+     MemoryRegion io_mmio;
+     MemoryRegion io_ioport_window;
+     MemoryRegion io_mmio_window;
+-    qemu_irq irq[GPEX_NUM_IRQS];
+-    int irq_num[GPEX_NUM_IRQS];
++    GPEXIrq *irq;
++    uint8_t num_irqs;
+ 
+     bool allow_unmapped_accesses;
+ 
 -- 
 2.39.3 (Apple Git-145)
 

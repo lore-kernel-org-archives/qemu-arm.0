@@ -1,185 +1,186 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2009269njc;
-        Mon, 4 Nov 2024 02:33:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVisySi//5BGr7DqejQIYme2NsGRR0bkmslRxhcVi5GAgt3xfnsQzE6kUbdYWoS7SFzH4Q1hKhgwslIog==@linaro.org
-X-Google-Smtp-Source: AGHT+IEe8iLajdW8N2utgOZ24ZbxLZmNrrw7ywUV6vHyj/65ozSgf+T6A3gdTSmv4UWD0deZ8mar
-X-Received: by 2002:ac8:7d0f:0:b0:460:d105:c74b with SMTP id d75a77b69052e-4613bff9ce0mr509513801cf.14.1730716412950;
-        Mon, 04 Nov 2024 02:33:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730716412; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2019266njc;
+        Mon, 4 Nov 2024 02:59:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV+bha0MFgqmlBEDflolZCULhMd4mEXqwQ2qqEjYXLDCp9t7vQTW6zRF+mzlCiNoK/aLOv+oiWflmvVVw==@linaro.org
+X-Received: by 2002:a17:907:9813:b0:a9a:1253:4d81 with SMTP id a640c23a62f3a-a9e50b56a34mr1185333166b.47.1730717967091;
+        Mon, 04 Nov 2024 02:59:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730717967; cv=none;
         d=google.com; s=arc-20240605;
-        b=UiHF+dzdbujwburdvU2+qS200ISyDmKWEOKIdCUxdSfDRt3hL9fodrFzLS5P3aBn0h
-         DqH3cDon8bZk94V+bbBNjvu0s5tnhxCSZ9CUFuZN/Pk4wt/N8wElnRPYwHz9+ETMvY+4
-         BqDbbotkkzWZzm4kFzrZwZ+64AkGtJ2jlpkEHKGxoRAL4Zj47Lya1XDTE3MUYDMvgQAW
-         /6fVnYVyQaAPtbmhTtZDOd0yNxfjaRR24nW9P2/UCk4IdUvNjyYvEoMa+CaSX6whqTzs
-         Walnl9n0dBcGBQoJZfAvFTnd9mSexOeUqDtUnC0ULWVWopyOQ8yledphj0d16YzgjOPx
-         +usQ==
+        b=V3mI3LTbrHOiuPYfHlwOBv9PvpL8zohtIjvOgZ6aDBEHaWpfeNahP89U4XZACgKXZG
+         msVJ/QDuLxK8hG8liY9lN+doCzYl7AJfnElDcNEFB/1MRvzJkI3M5YbM+yw25BCqh95s
+         5o7nQn2zhUK9pIwdjVIFGt4WU3sEUB+l4qt8uCYQdVO0gq03g4yo7BYv2dJBZjqFilfJ
+         6y50gv0N9x9NTjXdmxhXkPp7GvsKm05AIRpTGKInHjTDrghe3iky2PysvnbyKHlDSLr9
+         1+fU84+kd4puubMc1XWK3jMnETFdJ91T5r6EMIwcr2VjoEbpDa0rH65ij9oYN6M6jTUY
+         f4OQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=KzVHIa4009J5lHNdd+RPwSYq34F+AL83D7dZKkSBSu8=;
-        fh=T7T3FvWt+K2UwFyFCe4yHy4tTL0D85SgIKzFuISN0Sg=;
-        b=dufg6gqOgby5EtZxYQZZCADXAHMH7UIxDzU4iCCaPrtsHe6apL/z+k8JHFWbS8Q4S7
-         q7zwscDhxzLXvepGRrmz4x1oLDAAvlAfC8sG5WXFKyMRtKejnqCWr42ZUu6I+IQwVDS7
-         /THDkSvFCWID6QROvvlHdVKzBKp5FxS1OneMfGROuBRHUyWjS8vlsHKEXd0fNGAtEInU
-         M6q0eFZ1ObpRvu0/CebyuGQ9giMKC7mtfg12v+mbx6r/pL1HMmLyZ5/ftppthK3flfCy
-         UhuEiZUXhWvB4Ru7rKK2VmVxxAnD1IVwQvkkyM8EYyZV6TE3O5v8VQbAC0HCgBhWPBUj
-         T3WA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=mz5OMtV/UHaaM9hW7xpbIoTcAeBFVS80t+xWnzGlhMA=;
+        fh=pE/vyPT5odSqUnkm9BJXj3X11rAKCo33sT1KnhmeQa0=;
+        b=eqpK02j7r2nezx8Is1WLTteQFx3f+YxMF+TD13aJ7LDUqsWCetkVkFnCrNpny56pq2
+         0YcGvYBPzG35sfegizGPAzSNs5eTpn5jIrl9ejD0SZRWj6mgUxumZXc7ROWXsCISbzlk
+         OrldlOM9DoqtFimHSVUoeSCccO5gxJ9Mmp/keODooleUv9IcED4GnFnr/H9Up0hW5fKp
+         LcL6d4UKm3Hd8rVNU/sLQ0vCEixoLxB8dw1nMwTSD+6KeZlCihRQruTrTpwxJT7qDFeT
+         l2t1He7BoJhqvIggTKPwrnJv7Ou/3uJgkFdX06eiSw7CZKiypbt4PiY+Pn4wwvXOp6sH
+         3FdQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Vl6ejsj3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="EPOYi/Cy";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ad0b1c36si109978641cf.36.2024.11.04.02.33.32
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-a9e56485565sor414302766b.2.2024.11.04.02.59.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Nov 2024 02:33:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 04 Nov 2024 02:59:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Vl6ejsj3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="EPOYi/Cy";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7uOk-0004BX-EP; Mon, 04 Nov 2024 05:33:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t7uOi-0004B8-Oc
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:33:24 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t7uOg-00010p-SF
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:33:24 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4315e62afe0so34982865e9.1
- for <qemu-arm@nongnu.org>; Mon, 04 Nov 2024 02:33:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730716401; x=1731321201; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=KzVHIa4009J5lHNdd+RPwSYq34F+AL83D7dZKkSBSu8=;
- b=Vl6ejsj3/bsBMPi1Bsdr9i88FFeWd904aJyLEDbYkuzrcAIwk/kiq2TPv+WdRPoo/x
- SoK0gD3njjAk/robrkpZY25PL7kPEDgQMd82dLsU51Zs+9juphrRc8d8dywO5fA64L+S
- E2Xjba3X7uIeB61drVL2WSM3AoYHcECYspExjf0OMZIJx5NlO2Bg8RbH4RCJyP/rg2ka
- fPlPeFSYpQWz9nsyaCmHWlm0C3ShEUH0L38boyU+aQWSI4oY39YBSDnKp46DzhuCn1me
- GVNQY+bw7cuGlMVNbJRpT6MuDVWyUCx9MvbQvVclu4TJUJ/uYIhT8/Mqw933ahDXFcIH
- j7Sw==
+        d=linaro.org; s=google; t=1730717966; x=1731322766; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=mz5OMtV/UHaaM9hW7xpbIoTcAeBFVS80t+xWnzGlhMA=;
+        b=EPOYi/Cy77Vnk212y0qaSfDbWlTP9GdNYCQel8qWzUat0U0dGH0J9sZH8k8U5YKMOg
+         fU1oHBfhqBsys0abu+kLbSM8NbpHR2VU/LZQZM1KfVHfi9WDxlkaFOOchlSITreAuQjI
+         LBxCXuSuSpmDsOWSYwx8otAu6dO50ujJXqm9Wnupj6dDF9CkHALGSzIojqxxL9nZa+Du
+         j+TlntfZ78PY9919yg49F5AmBYsqvmuCOYbEsRavg+J9f02gRjf/tMgJEbFUvDwBpy3E
+         srJz8mvqTAuBGM+PzP4YwZZzF/VcDYrUFMSl4EB8ZpczoJnbPmMGVoy5OCapo4bM4Vjn
+         RuFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730716401; x=1731321201;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KzVHIa4009J5lHNdd+RPwSYq34F+AL83D7dZKkSBSu8=;
- b=EwBsB6anpuKYy3glHa9M4GlMz5SNxLkGGJT+UYjzvhmOqZJ5anrxPkbUfDraPwWGiM
- yEFKR9nRJGRf2pnBIg4YKpbgWI88HoE5WG8CSSSUdz1ZChwScZwRZ68zvVfmGDefOTtH
- vxJjmPvpU1XZ/HAONLyoyhxZf9wHcJudGVjh45NW3v9Cho37I00cpPkuHukSK0BN0EoL
- SrC52Hmzusuz3wix+qyZ6LF/moxppP5u77jxHA+RDGXPYPyGdiwnL7y2ofYxAsc+j/gd
- G2yPaEAOnsBq0t/ebJY/CASJ8qEOoeZTKxqoZABFbFYHHHA4S/azsFkVuZgTkiee45FE
- KM3w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXXPvIfCF8j0CjAZfdvoNt5WJOLbAMd1JPkxkMO0DSN4hoMjfCyizq5WqF2Yq80xesuhHTAKH5Icw==@nongnu.org
-X-Gm-Message-State: AOJu0YxnTr/mUttAc5tC1wHbcd5Ozl+VBQpnSKhIspm6e7YuFQ3LeNpf
- ++A0XOXS8cSU1DulclaisGji2DMrGexckyn3R2OxLiTKSx2xpI+8cFJCtLofDz4=
-X-Received: by 2002:a05:600c:458e:b0:42c:baf9:bee7 with SMTP id
- 5b1f17b1804b1-4328250f211mr122777275e9.12.1730716401195; 
- Mon, 04 Nov 2024 02:33:21 -0800 (PST)
-Received: from [192.168.69.126] ([176.176.145.27])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4327d5e8562sm149387215e9.23.2024.11.04.02.33.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Nov 2024 02:33:20 -0800 (PST)
-Message-ID: <9ecb2c75-3e1f-4c3b-918b-af40fa3d6fac@linaro.org>
-Date: Mon, 4 Nov 2024 11:33:18 +0100
+        d=1e100.net; s=20230601; t=1730717966; x=1731322766;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=mz5OMtV/UHaaM9hW7xpbIoTcAeBFVS80t+xWnzGlhMA=;
+        b=Kx9kellaWwkYZAYaWoEtz1MrcFfzgevhiGQd0PnuYguUee1Jf3r1f9bfqK9k9FRTbi
+         +C5GCK+15C6rw0pV1THI7vrH9F1t4CLfd4JhGfyu9bp/GRiCR0HNDWyv5qM9NNf4n/zr
+         NNVAFhiRXePOveVJyMQusEfIvaDighT3DaGcoa15k3kYdyBbFtoYUnOHEYqlb4oHzno1
+         ZuoVPzHYvC7aLzgW3PT2v6UlpdW0DDcU79lQAUtx9ratKbO+pMvoytucduPEWYRq5ycH
+         P66KpI7kvOCIn71/p2wHujpY/v24zoQ5LhupE6BY5BtWKoqZ07Ez4CPvC5u5Lh2Uezlx
+         Ft6A==
+X-Forwarded-Encrypted: i=1; AJvYcCXo83+gpeumdp05G9WuLLzsdnZ4B+dL6gnhHx6+BrlEYMYZeg8lUIJwcJvQXqjKPxSj5NH6nmlgNLqRHQ==@linaro.org
+X-Gm-Message-State: AOJu0YynypYPmDt76wxx1gnCD1U1JJ9oGtSJGvkBND+gsiBLSkGGG8KB
+	8py4L2I3QIoSe/dTp6S/idpOkXbtWUd+eOyoOL6audDTkxN0izoOmJOYnPvpcKQlsg==
+X-Google-Smtp-Source: AGHT+IErrJSAtuCjMlQ1BeVsU2ECBAy6ra5jp7xH8Qm9FpUreP+5N1mNZHe+3ur+HWzWEjcDF80cug==
+X-Received: by 2002:a17:906:7310:b0:a99:f779:ae0c with SMTP id a640c23a62f3a-a9e50916803mr1632279666b.25.1730717966455;
+        Mon, 04 Nov 2024 02:59:26 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.21.227] ([91.223.100.66])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-a9e565ef518sm538538466b.118.2024.11.04.02.59.24
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Nov 2024 02:59:26 -0800 (PST)
+Message-ID: <9994b8dd-0522-43ff-94ff-1a94aafd5ce2@linaro.org>
+Date: Mon, 4 Nov 2024 10:59:22 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/sd/sdcard: Fix calculation of size when using eMMC
- boot partitions
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Jan Luebbe <jlu@pengutronix.de>, qemu-devel@nongnu.org
-Cc: Guenter Roeck <linux@roeck-us.net>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-block@nongnu.org
-References: <1bce4c22-9281-44c5-8acb-860881dc271c@kaod.org>
- <20241028162308.2152712-1-jlu@pengutronix.de>
- <9fa94cbc-8010-4805-be44-939ce35182dc@kaod.org>
+Subject: Re: [PATCH] target/arm: Enable FEAT_CMOW for -cpu max
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org
+References: <20241101013541.883785-1-gustavo.romero@linaro.org>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <9fa94cbc-8010-4805-be44-939ce35182dc@kaod.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20241101013541.883785-1-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: E8pwbwGLjYvR
+Content-Transfer-Encoding: 7bit
+X-TUID: AJg6WqTUwlMU
 
-On 2/11/24 12:06, Cédric Le Goater wrote:
-> Philippe,
+On 11/1/24 01:35, Gustavo Romero wrote:
+> FEAT_CMOW introduces support for controlling cache maintenance
+> instructions executed in EL0/1 and is mandatory from Armv8.8.
 > 
-> I can take this patch through the aspeed branch.
-
-I missed this patch because it was deeply buried in a long thread.
-
-Since you mentioned this feature will be reworked in the next cycle:
-
-Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+> On real hardware, the main use for this feature is to prevent processes
+> from invalidating or flushing cache lines for addresses they only have
+> read permission, which can impact the performance of other processes.
 > 
-> Thanks,
+> QEMU implements all cache instructions as NOPs, and, according to rule
+> [1], which states that generating any Permission fault when a cache
+> instruction is implemented as a NOP is implementation-defined, no
+> Permission fault is generated for any cache instruction when it lacks
+> read and write permissions.
 > 
-> C.
+> QEMU does not model any cache topology, so the PoU and PoC are before
+> any cache, and rules [2] apply. These rules states that generating any
+> MMU fault for cache instructions in this topology is also
+> implementation-defined. Therefore, for FEAT_CMOW, we do not generate any
+> MMU faults either, instead, we only advertise it in the feature
+> register.
 > 
-> On 10/28/24 17:23, Jan Luebbe wrote:
->> The sd_bootpart_offset() function calculates the *runtime* offset which
->> changes as the guest switches between accessing the main user data area
->> and the boot partitions by writing to the EXT_CSD_PART_CONFIG_ACC_MASK
->> bits, so it shouldn't be used to calculate the main user data area size.
->>
->> Instead, subtract the boot_part_size directly (twice, as there are two
->> identical boot partitions defined by the eMMC spec).
->>
->> Suggested-by: Cédric Le Goater <clg@kaod.org>
->> Signed-off-by: Jan Luebbe <jlu@pengutronix.de>
->> --->   hw/sd/sd.c | 4 +++-
->>   1 file changed, 3 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
->> index 2d3467c3d956..8430d5ae361c 100644
->> --- a/hw/sd/sd.c
->> +++ b/hw/sd/sd.c
->> @@ -826,7 +826,9 @@ static void sd_reset(DeviceState *dev)
->>           sect = 0;
->>       }
->>       size = sect << HWBLOCK_SHIFT;
->> -    size -= sd_bootpart_offset(sd);
->> +    if (sd_is_emmc(sd)) {
->> +        size -= sd->boot_part_size * 2;
->> +    }
->>       sect = sd_addr_to_wpnum(size) + 1;
+> [1] Rule R_HGLYG of section D8.14.3, Arm ARM K.a.
+> [2] Rules R_MZTNR and R_DNZYL of section D8.14.3, Arm ARM K.a.
 > 
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> ---
+>   docs/system/arm/emulation.rst | 1 +
+>   target/arm/cpu-features.h     | 5 +++++
+>   target/arm/cpu.h              | 1 +
+>   target/arm/tcg/cpu64.c        | 1 +
+>   4 files changed, 8 insertions(+)
+> 
+> diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+> index 35f52a54b1..a2a388f091 100644
+> --- a/docs/system/arm/emulation.rst
+> +++ b/docs/system/arm/emulation.rst
+> @@ -26,6 +26,7 @@ the following architecture extensions:
+>   - FEAT_BF16 (AArch64 BFloat16 instructions)
+>   - FEAT_BTI (Branch Target Identification)
+>   - FEAT_CCIDX (Extended cache index)
+> +- FEAT_CMOW (Control for cache maintenance permission)
+>   - FEAT_CRC32 (CRC32 instructions)
+>   - FEAT_Crypto (Cryptographic Extension)
+>   - FEAT_CSV2 (Cache speculation variant 2)
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index 04ce281826..e806f138b8 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -802,6 +802,11 @@ static inline bool isar_feature_aa64_tidcp1(const ARMISARegisters *id)
+>       return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, TIDCP1) != 0;
+>   }
+>   
+> +static inline bool isar_feature_aa64_cmow(const ARMISARegisters *id)
+> +{
+> +    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, CMOW) != 0;
+> +}
 
+This isn't used, so it may be omitted.
+
+Otherwise,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~
+
+> +
+>   static inline bool isar_feature_aa64_hafs(const ARMISARegisters *id)
+>   {
+>       return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HAFDBS) != 0;
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 8fc8b6398f..1ea4c545e0 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1367,6 +1367,7 @@ void pmu_init(ARMCPU *cpu);
+>   #define SCTLR_EnIB    (1U << 30) /* v8.3, AArch64 only */
+>   #define SCTLR_EnIA    (1U << 31) /* v8.3, AArch64 only */
+>   #define SCTLR_DSSBS_32 (1U << 31) /* v8.5, AArch32 only */
+> +#define SCTLR_CMOW    (1ULL << 32) /* FEAT_CMOW */
+>   #define SCTLR_MSCEN   (1ULL << 33) /* FEAT_MOPS */
+>   #define SCTLR_BT0     (1ULL << 35) /* v8.5-BTI */
+>   #define SCTLR_BT1     (1ULL << 36) /* v8.5-BTI */
+> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> index 0168920828..2963d7510f 100644
+> --- a/target/arm/tcg/cpu64.c
+> +++ b/target/arm/tcg/cpu64.c
+> @@ -1218,6 +1218,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+>       t = FIELD_DP64(t, ID_AA64MMFR1, ETS, 2);      /* FEAT_ETS2 */
+>       t = FIELD_DP64(t, ID_AA64MMFR1, HCX, 1);      /* FEAT_HCX */
+>       t = FIELD_DP64(t, ID_AA64MMFR1, TIDCP1, 1);   /* FEAT_TIDCP1 */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, CMOW, 1);     /* FEAT_CMOW */
+>       cpu->isar.id_aa64mmfr1 = t;
+>   
+>       t = cpu->isar.id_aa64mmfr2;

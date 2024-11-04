@@ -1,109 +1,109 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2002059njc;
-        Mon, 4 Nov 2024 02:16:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX9nn45o9bx55j+kKOROzunhRhM60Etg6paKp9UEjv+1cgunvMMBMn+elZqi/5aDMfL4pntLfzaLW/EIg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHI884CB0uEZOh6h6mo5bAVPEPBF2KKCVd6a+KDfJDqlARHbx7aPd/5gOaMxToOMnTdos/q
-X-Received: by 2002:a05:6214:5981:b0:6cb:e4d3:10a0 with SMTP id 6a1803df08f44-6d35c1aea9dmr188802366d6.48.1730715371873;
-        Mon, 04 Nov 2024 02:16:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730715371; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2002100njc;
+        Mon, 4 Nov 2024 02:16:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUvARvWzU1gV0dcyQ0gARZOSgYEKUFNDO1Syj3seUF/Hf1GNS8wn2JR2PSi41vWtePE4IeC0//oaYbYRA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFVdZEW7QnQhWF+hF85KuQEHAXt9UXEPfa92N1jGL65uZsRYTxWbYWBwda8Ogny2YUxvCwX
+X-Received: by 2002:a05:6214:2d44:b0:6ce:1011:60c1 with SMTP id 6a1803df08f44-6d35c19b8bbmr148128086d6.35.1730715376906;
+        Mon, 04 Nov 2024 02:16:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730715376; cv=none;
         d=google.com; s=arc-20240605;
-        b=WCae0UHQoTFnfgAdFsznJI5OM1KWQ+PXaXopwTTP4qQRrEnkdAy1leuzmlZe8D8Ohu
-         sLFFdoN8cjsi+GskgZ8GeyzTDuQBL98bU3lgsDq3vaGX8jlLyVGWtMx8/tNfEXv/LcE8
-         0WX5EghifrNOqaMTM/cAb6uoo70UF2+/XspsHj1sbK9v9Leex3m6OmOpCWdle6KqIFdD
-         Z/E48FTICrJCpxuaY42DDIHKzNKZ4ON1HcBSaFCpD6D4OHv86GAQC9HeJ+QGJpmeixFV
-         bMzUXpqp8ANx3X+6/qvxXKFGbb3CmjD4mY50Kq+5y8mSTD7fdV5STo94j3tPoP/OetK/
-         L/qA==
+        b=OjQNKUB30LXVuUzEZQtvC6HAwJpd/q3go9KdLQO4RA7HKghuaM/WtpGeg1l9HcSOTz
+         iwVwRQss5e+WiU1HtTpLSgMtjs62pCt6IanMKNJ4fbiiFwrHMZEmEzWPYsCIxBpsCQgZ
+         H27Ma2BwsHp3ZzL9QnqlZp6rHeygQ2vJ4DLsVBbEdCiUZgRQkLnPD86QzYQhKTpzeMee
+         q1G3E6D+Ct4Lu5h4DXk9mq3fZfJX6ZZcYASj7RI5V7pFeX+KBA0Jca8XcLhqiInwNnXv
+         pO8ARTSbWE7td4wNlnUGoyvJoZx5fQTGNbOgWfrPPZUZeXJMabKNAy65D1WG9EMZ05rJ
+         b4+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=tVjafkZnyxLi3ipSWKwXdxnsAegwe+glEiTN1gXul0Y=;
-        fh=uNljzBZjmFvWr8aOpOjwvHUiNyssvg0DhfxObsQAMtw=;
-        b=PPVQ4upCId2x/yFwbAKizUm85LnG+/61iss2MYZsUhGCaONhDtp7zBURGcHxyvjSSh
-         rcwV/+BmVpK2xdKCnOVEmDrMs4tGFudImrWldJiowE25ldt/lreXrdToeXgrPM/rWrJH
-         WhPzZUmNLElcHPK/hgreEyu4zAkZpthA8jMHrkvKI92GMuv77/2A6gl4bQ9T/jSrBoGt
-         Oqbm0TPN6fNaOwlDm+rPTlatnY+NM5faNwDLL+YRXqhXYP9UxWb1TKpk4K2B4ZXc4iuH
-         CvY+fdqw1x21x2/zYHI5JrLot5h5++shOwr9qDiAIJ4Os8qHCOC7BX9QmH6CV92HnSvN
-         7BOg==;
+        bh=BZdvH/GfNWMkDbJPcCePcYhrbzcwgt3JfPMq8q8/Fw4=;
+        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
+        b=D/XlDwwCeFHwGUxwK6IoywlePEMeSiLLrnBm/JsX3Y3xfMKt3Xvrd9XY00eNL26jps
+         Rz5NYK8+qiO35pIZy+DdYh9/T1A54lrXvmjfOFeMR7V076JQb+6ug8IkMWwDLu5sjV3z
+         oYuCRar1/GRJ4OXvX4Pc7f2/fBXRv7mOaEtY+KrxWLuHTjvCQNZs6Qz1R+/TbBWvPXkN
+         Y74rC5tllfgoicCUQxjBskCcy/Ld+NaD9IhXPo1UMVote0SQ0wyiXVllTUWWgfPwj6Io
+         9EYjPgb1321Envd6xMq9VJae23z1WF4Ry3z7U+kRtBRsQ04vYQ7YeMnhI61/LyQipt72
+         kWYg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qe0Q+X6Y;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IWlzBlM7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d35418029fsi104971666d6.398.2024.11.04.02.16.11
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d3541ace47si106255046d6.506.2024.11.04.02.16.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Nov 2024 02:16:11 -0800 (PST)
+        Mon, 04 Nov 2024 02:16:16 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qe0Q+X6Y;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IWlzBlM7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7u7m-0000rm-Qy; Mon, 04 Nov 2024 05:15:54 -0500
+	id 1t7u7k-0000pV-Q6; Mon, 04 Nov 2024 05:15:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u7V-0000nN-Eb
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:41 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u7U-0000me-4y
+ for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u7S-0006dZ-T6
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:37 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u7S-0006cy-Dl
+ for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1730715334;
+ s=mimecast20190719; t=1730715331;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=tVjafkZnyxLi3ipSWKwXdxnsAegwe+glEiTN1gXul0Y=;
- b=Qe0Q+X6YV/VWRsRQRRb0EZuZor9u3yy5tP8jugwVyiLImH19UA5Q/RkluyWC4Mk4y2/1d5
- Jmeqj3GQDXhj6JTy/uBObiy/YujyAnPaBJ+eMVzAmKgiMjs/qa3Mv1S2NHYZ1dRDtLxhSr
- CHzURy5FPnUqj1hJs04ZLu+eVbZLlSA=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=BZdvH/GfNWMkDbJPcCePcYhrbzcwgt3JfPMq8q8/Fw4=;
+ b=IWlzBlM7NQvkTs/t0H8mEzLStTIZWwbl/fmQL5hYphWXQtnFKTIeGZSYp6sC0KzmQ0wD3D
+ PXFl3RTp4QCLQYtWc9A/4j95aEMzQGzmIaZmnwWTfcOtdC/oAQ4areJmI3SXKCJjln6bo4
+ bF2004HhQ9C0ekShAKTCWWSgU7YVEJ8=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-679-MzM_2Z0OMz6-inl4uFfUgQ-1; Mon,
- 04 Nov 2024 05:15:30 -0500
-X-MC-Unique: MzM_2Z0OMz6-inl4uFfUgQ-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-522-YpOLog55PROVv3s6QsUvaQ-1; Mon,
+ 04 Nov 2024 05:15:26 -0500
+X-MC-Unique: YpOLog55PROVv3s6QsUvaQ-1
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 59295193587B; Mon,  4 Nov 2024 10:15:29 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1FD7F1953941; Mon,  4 Nov 2024 10:15:25 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.67])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 612661956052; Mon,  4 Nov 2024 10:15:27 +0000 (UTC)
+ id B4FF91956052; Mon,  4 Nov 2024 10:15:23 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Jan Luebbe <jlu@pengutronix.de>, Guenter Roeck <linux@roeck-us.net>
-Subject: [PULL 10/10] aspeed: Don't set always boot properties of the emmc
- device
-Date: Mon,  4 Nov 2024 11:15:01 +0100
-Message-ID: <20241104101501.2487001-11-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 08/10] hw/sd/aspeed_sdhci: Introduce Capabilities Register 2
+ for SD slot 0 and 1
+Date: Mon,  4 Nov 2024 11:14:59 +0100
+Message-ID: <20241104101501.2487001-9-clg@redhat.com>
 In-Reply-To: <20241104101501.2487001-1-clg@redhat.com>
 References: <20241104101501.2487001-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -23
 X-Spam_score: -2.4
 X-Spam_bar: --
 X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,75 +118,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: smnO4nOhZBpu
+X-TUID: s3dxt4Z5lBhu
 
-Commit e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
-HW strapping") added support to boot from an eMMC device by setting
-the boot properties of the eMMC device. This change made the
-assumption that the device always has boot areas.
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-However, if the machine boots from the flash device (or -kernel) and
-uses an eMMC device without boot areas, support would be broken. This
-impacts the ast2600-evb machine which can choose to boot from flash or
-eMMC using the "boot-emmc" machine option.
+The size of SDHCI capabilities register is 64bits, so introduces new
+Capabilities Register 2 for SD slot 0 (0x144) and SD slot1 (0x244).
 
-To provide some flexibility for Aspeed machine users to use different
-flavors of eMMC devices (with or without boot areas), do not set the
-eMMC device boot properties when the machine is not configured to boot
-from eMMC. However, this approach makes another assumption about eMMC
-devices, namely that eMMC devices from which the machine does not boot
-do not have boot areas.
-
-A preferable alternative would be to add support for user creatable
-eMMC devices and define the device boot properties on the QEMU command
-line :
-
-  -blockdev node-name=emmc0,driver=file,filename=mmc-ast2600-evb.raw \
-  -device emmc,bus=sdhci-bus.2,drive=emmc0,boot-partition-size=1048576,boot-config=8
-
-This is a global change requiring more thinking. Nevertheless, in the
-case of the ast2600-evb machine booting from an eMMC device and when
-default devices are created, the proposed change still makes sense
-since the device is required to have boot areas.
-
-Cc: Jan Luebbe <jlu@pengutronix.de>
-Fixes: e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
-HW strapping")
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+[ clg: Fixed code alignment ]
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
-Tested-by: Guenter Roeck <linux@roeck-us.net>
-Reviewed-by: Jan Luebbe <jlu@pengutronix.de>
 ---
- hw/arm/aspeed.c | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
+ hw/sd/aspeed_sdhci.c | 40 +++++++++++++++++++++++++++++-----------
+ 1 file changed, 29 insertions(+), 11 deletions(-)
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index e447923536b4..6ca145362cbd 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -338,10 +338,20 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
-             return;
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+index 427e5336a8fb..98d5460905df 100644
+--- a/hw/sd/aspeed_sdhci.c
++++ b/hw/sd/aspeed_sdhci.c
+@@ -24,8 +24,10 @@
+ #define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
+ #define ASPEED_SDHCI_BUS             0x08
+ #define ASPEED_SDHCI_SDIO_140        0x10
++#define ASPEED_SDHCI_SDIO_144        0x14
+ #define ASPEED_SDHCI_SDIO_148        0x18
+ #define ASPEED_SDHCI_SDIO_240        0x20
++#define ASPEED_SDHCI_SDIO_244        0x24
+ #define ASPEED_SDHCI_SDIO_248        0x28
+ #define ASPEED_SDHCI_WP_POL          0xec
+ #define ASPEED_SDHCI_CARD_DET        0xf0
+@@ -35,21 +37,27 @@
+ 
+ static uint64_t aspeed_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+-    uint32_t val = 0;
++    uint64_t val = 0;
+     AspeedSDHCIState *sdhci = opaque;
+ 
+     switch (addr) {
+     case ASPEED_SDHCI_SDIO_140:
+-        val = (uint32_t)sdhci->slots[0].capareg;
++        val = extract64(sdhci->slots[0].capareg, 0, 32);
++        break;
++    case ASPEED_SDHCI_SDIO_144:
++        val = extract64(sdhci->slots[0].capareg, 32, 32);
+         break;
+     case ASPEED_SDHCI_SDIO_148:
+-        val = (uint32_t)sdhci->slots[0].maxcurr;
++        val = extract64(sdhci->slots[0].maxcurr, 0, 32);
+         break;
+     case ASPEED_SDHCI_SDIO_240:
+-        val = (uint32_t)sdhci->slots[1].capareg;
++        val = extract64(sdhci->slots[1].capareg, 0, 32);
++        break;
++    case ASPEED_SDHCI_SDIO_244:
++        val = extract64(sdhci->slots[1].capareg, 32, 32);
+         break;
+     case ASPEED_SDHCI_SDIO_248:
+-        val = (uint32_t)sdhci->slots[1].maxcurr;
++        val = extract64(sdhci->slots[1].maxcurr, 0, 32);
+         break;
+     default:
+         if (addr < ASPEED_SDHCI_REG_SIZE) {
+@@ -61,9 +69,9 @@ static uint64_t aspeed_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
          }
-         card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
--        if (emmc) {
-+
-+        /*
-+         * Force the boot properties of the eMMC device only when the
-+         * machine is strapped to boot from eMMC. Without these
-+         * settings, the machine would not boot.
-+         *
-+         * This also allows the machine to use an eMMC device without
-+         * boot areas when booting from the flash device (or -kernel)
-+         * Ideally, the device and its properties should be defined on
-+         * the command line.
-+         */
-+        if (emmc && boot_emmc) {
-             qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
--            qdev_prop_set_uint8(card, "boot-config",
--                                boot_emmc ? 0x1 << 3 : 0x0);
-+            qdev_prop_set_uint8(card, "boot-config", 0x1 << 3);
-         }
-         qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
-                                 &error_fatal);
+     }
+ 
+-    trace_aspeed_sdhci_read(addr, size, (uint64_t) val);
++    trace_aspeed_sdhci_read(addr, size, val);
+ 
+-    return (uint64_t)val;
++    return val;
+ }
+ 
+ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
+@@ -79,16 +87,26 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
+         sdhci->regs[TO_REG(addr)] = (uint32_t)val & ~ASPEED_SDHCI_INFO_RESET;
+         break;
+     case ASPEED_SDHCI_SDIO_140:
+-        sdhci->slots[0].capareg = (uint64_t)(uint32_t)val;
++        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg, 0, 32, val);
++        break;
++    case ASPEED_SDHCI_SDIO_144:
++        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg, 32, 32, val);
+         break;
+     case ASPEED_SDHCI_SDIO_148:
+-        sdhci->slots[0].maxcurr = (uint64_t)(uint32_t)val;
++        sdhci->slots[0].maxcurr = deposit64(sdhci->slots[0].maxcurr,
++                                            0, 32, val);
+         break;
+     case ASPEED_SDHCI_SDIO_240:
+-        sdhci->slots[1].capareg = (uint64_t)(uint32_t)val;
++        sdhci->slots[1].capareg = deposit64(sdhci->slots[1].capareg,
++                                            0, 32, val);
++        break;
++    case ASPEED_SDHCI_SDIO_244:
++        sdhci->slots[1].capareg = deposit64(sdhci->slots[1].capareg,
++                                            32, 32, val);
+         break;
+     case ASPEED_SDHCI_SDIO_248:
+-        sdhci->slots[1].maxcurr = (uint64_t)(uint32_t)val;
++        sdhci->slots[1].maxcurr = deposit64(sdhci->slots[0].maxcurr,
++                                            0, 32, val);
+         break;
+     default:
+         if (addr < ASPEED_SDHCI_REG_SIZE) {
 -- 
 2.47.0
 

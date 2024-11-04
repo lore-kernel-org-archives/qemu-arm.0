@@ -1,110 +1,214 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1752172njc;
-        Sun, 3 Nov 2024 13:09:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXuJEhC35evyHx86AB9/MKOpi3bEtRKLYYHchyoYqIjtdRyE2Cz76WZwLw3uvI7S9VY9Z0sDGkbi9154g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEI/GPrHvcG20otu4UK7WZpHhTxVJI6Vr7+tu+hdulMHRDvPaIqlRzr35LD3vUUsfAOxdfq
-X-Received: by 2002:a05:620a:40cf:b0:7a9:8679:993 with SMTP id af79cd13be357-7b2fb950b02mr1900739185a.13.1730668170722;
-        Sun, 03 Nov 2024 13:09:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730668170; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1833086njc;
+        Sun, 3 Nov 2024 17:17:42 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUumgRdt+OTAYFHDrKf/HwucgvP8o6wvNSF7Dnc15YZNYhyhMnvS5+UcwfVtlfXk9/WJlq1Zj+e3bHr0A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFpb3c6+QjTMQG+XELUsDGBSXKkOG172q0clG5OC7dwCWEszLoPmPsW5Ddhhh5Aaibx46wy
+X-Received: by 2002:a05:622a:c7:b0:460:8e3b:6798 with SMTP id d75a77b69052e-462ab22bf01mr216566761cf.6.1730683062248;
+        Sun, 03 Nov 2024 17:17:42 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1730683062; cv=pass;
         d=google.com; s=arc-20240605;
-        b=KqYWSxSQlIGLdaQvOJ+eYIK7BXul/qZW/ZoYsElj2AF+0govvOkupA9RYywlYWTEWq
-         oQJdbAi/ap+liy+I6KyPJTvaSqsBgl1Fi0roDKFG9qqHds4tg8sAlmL3Q5plvf4Ssqgm
-         9GLWZDFmj7ktxWpad4OUCiOdSxFyDlcDUsD760aPbUox8yCzsaJVPqwxpzPxIuKsj8Al
-         w7CQDK4v8KyjVOq2RGFYvPuJddYIJycLcBIhodS5+WDuzkqxa/upsrinUx9pOKT2ovaB
-         DIBRW3TJz7GApoGoOdoK7TpAQNa27W5tAXl6CAIBhC/J/pego+tCbY+f1qqbA62NJn+a
-         wd1g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=aCkPhfLPVN1M1OKGhk3++sYS2ZxE6NNPu5BVGspFdqXGyxfTrRacs4kzEPrWCJ1RIM
+         lJHv5zDCX3gHeFbK6DfQ7xik0h6n12+TtZIRQSA6ugKPPWIVHqkhG+U+gOkIO71QIyDV
+         P40z2MDbh5JBA03zskhVbqAhgTwamm/fmfAJ/E3Mih0WrU7KoCiPgWKbWSQYnOl5Ab3L
+         8x+2u4EfJ5Zop/VW2jxFUS7lbSPh6rthCKO92f6Pkwq1wg87Q1RJFU0USH1DT8h6w3pQ
+         NFteVOdK51ZpBfvjpIE/7lSyZfSLw1eHYbKtw7tr4Hi45EGPKbz75+1lEEnLfFobTT/G
+         z/IA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=47FrWmDp2fvQtorP4IU2/OCcFoxoYcF/j8n/zVjbRsA=;
-        fh=89k3x3IclbU3qfEa2unE+YRtD8B32plSL1dutfAIx+Q=;
-        b=Ulv7BrvD+K1j0G7tgM59c84sxG8ktTfP4+Wrl49leBBUfPe1WPG9RPA3/BApnx8GTT
-         Amg/IXqJsgq8EWZgzrmhlfBdsVvS3Irq+6NTWaZHyKBcZGelP+2jxdITJN7pe1urOLmy
-         lWI5/DhdVk8bCZNRIFplEKxXSjiv9r8qL5mkKAU/fxZB6k7eTw91v/S3/m0rByZLxSn0
-         V4LaPVfQ9gLr1PLoIw8E8sKcaMROuMBD06pT64R4SHS7PzuW0DAA38gBBmfqR8t04eUU
-         DkJLyIvZ9lgWGTc8qqO+Ij8f+C4EMgiz8gjTF4rybL5IWGBCnzkNwgtizerAvPqviYdk
-         yfMw==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:dkim-signature;
+        bh=g5QKiRLKTT/hpSqINKZl+8TrlLejobwNeHHYz5nHPQU=;
+        fh=MU48PegYqkJDEWOw1+Obs+9R5+fPFcUEPnNRVEdXUoM=;
+        b=kjT0T7yDxSF2fzO89LhVhOCct2IDM6ewFab6ozVPjUr8nsN97jymy/e27fcKuV621w
+         gonhQ2XjfJUfppx/yAggWVvzl7Al1nqpz1TUOQjRiYwKwsjzdzI8IqeS88M5aJhF/4q8
+         I65WikSOAT0pH2VFADTrKk+ZMVdakSz6+7VW2TQYYvu8f0HeLDwVFQ43XWHHMTEiDwO2
+         kPFdXeSA6VUgPbmuVkzxyquhRDNRnxopYcvhxBHEKaDiwszfiUCw0mPh7lSrok04ngYq
+         2J/QSRt6HrIbeEvIuseQlH3Rl7eCahDE+0OSsxCUtuClzFJ8pcYYUzhexphTt2xW0DzJ
+         AxaA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dMgBTBw+;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=bZ73oBGJ;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b2f3a9d374si950755885a.503.2024.11.03.13.09.30
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad1ae556si106124061cf.314.2024.11.03.17.17.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 03 Nov 2024 13:09:30 -0800 (PST)
+        Sun, 03 Nov 2024 17:17:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dMgBTBw+;
+       dkim=pass header.i=@aspeedtech.com header.s=selector2 header.b=bZ73oBGJ;
+       arc=pass (i=1 spf=pass spfdomain=aspeedtech.com dkim=pass dkdomain=aspeedtech.com dmarc=pass fromdomain=aspeedtech.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=aspeedtech.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7hqH-0004R1-Tt; Sun, 03 Nov 2024 16:09:01 -0500
+	id 1t7liQ-0005q7-Kb; Sun, 03 Nov 2024 20:17:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7hqG-0004QI-5W
- for qemu-arm@nongnu.org; Sun, 03 Nov 2024 16:09:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1t7liO-0005pi-L7; Sun, 03 Nov 2024 20:17:08 -0500
+Received: from mail-psaapc01on20706.outbound.protection.outlook.com
+ ([2a01:111:f403:200e::706]
+ helo=APC01-PSA-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7hqE-0007GR-AW
- for qemu-arm@nongnu.org; Sun, 03 Nov 2024 16:08:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1730668135;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=47FrWmDp2fvQtorP4IU2/OCcFoxoYcF/j8n/zVjbRsA=;
- b=dMgBTBw+Gt8A1Xp5BE3BMrJ+mH+RfmQDNJ41jZia2cyAAC56pbu8A8uqItqQmuKene4AI2
- Se8+Rt6ZNqv9Eqj+bJwg8Sq73InjETDwjLVxVkmkH8BEIFz1wuoKMZ77rY47Huxw8RUEBP
- svkNaF8E7KCQfexl+6mFfCkFtPJWCmQ=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-JA5CT5eINHmCGCWMQ99rEg-1; Sun,
- 03 Nov 2024 16:08:50 -0500
-X-MC-Unique: JA5CT5eINHmCGCWMQ99rEg-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 291EB19560B8; Sun,  3 Nov 2024 21:08:45 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.39.192.67])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C370C300018D; Sun,  3 Nov 2024 21:08:32 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Jan Luebbe <jlu@pengutronix.de>, Guenter Roeck <linux@roeck-us.net>
-Subject: [PATCH v2] aspeed: Don't set always boot properties of the emmc device
-Date: Sun,  3 Nov 2024 22:08:29 +0100
-Message-ID: <20241103210829.2307729-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1t7liM-0000FI-T9; Sun, 03 Nov 2024 20:17:08 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fMg9neJI58G8bcG+llGeCjMIcdXHLKkwSN//OJNxEXYBNZu7GUORBu/U2AWAj1JjB253mR0G/arrymWvZRDOA9v1jrjsiW1TUjWhztK/q/xMI+w+ci4p62Rq/ashJwL9tOZPfKoF57OpwZMXQSKoXgQuprqHSxpERwNAw+sna1icCpBqDC6DWHhbFFRT+zgWR4Nq6VRDA4s5AgfXdJn9UBpE6zfpmOSO1fPx6YEV2KVE3WBbrxMIeoTh88rlKGNutocL8bCD4+JnrRiMjGeazaviR8rBYPd+py3yrdn9ZWsLqqrlwxAyJCEK0hvFJENgI84qzbr1tDcqRLTxhMLsPg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=g5QKiRLKTT/hpSqINKZl+8TrlLejobwNeHHYz5nHPQU=;
+ b=T7MG9Jnqh7fWfUC4Gi08HwUCMdbB6QhFDTjZ25WZ86L/Zsf7ztnVyrZrs3rIGcR12HTR4rLG/BAximN6lHJcEElXoXwi9/IHgvAYrshTAx7/qU5LZjKlaYEAMM6Kjv4d8KQC/TmTvJYB9wjmmA5Y75QXDU16Zjh97y05J/z2Cmgyha7SwRU5bMuq1Eg/jP9evDjsBWUa2cjNm1iNsOe4YxW3+CDTydwBCV9FdG4Beqe6WIR40kROG0lEkWqQBwLlXFpIh598NnhIVSfkMuZFhTwFvNBeDyV+3EgjvM4pL6dno91ILz9xPAATZQAiUtn6YJVQudqZZxTfSBbIIrqQ2w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=g5QKiRLKTT/hpSqINKZl+8TrlLejobwNeHHYz5nHPQU=;
+ b=bZ73oBGJdxvkIndqevRVZlTx7UPaeEL31l12AYaD3toF6uoVSgUmFrnMUYGDzwvEjZVsu+2wxCaDwBr6ST4TG+P2rhgBiDGne8MKxQKss/neF2R1G9GoTXEW0FvcTgYwAYn0IRYgUgFqWWNWIneq18Gg/APddlG12teD1WYmjAut6hm6xPrA23oRV8XcbfwPvqqR3tBdFas+J52t2OXKGaY3lfdqg1vFhIQD7SiNhGkXvbUDktlNGK5Hz/sS0sNSDhOgaDNI6wHSy0GWJDOOq2UfUTjfq/A4NOirWBw7NYzb+nUBWXzEknfgfighwI76Gq5lEjKhI9osVLd2Nm/50A==
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com (2603:1096:4:1a4::6) by
+ PUZPR06MB6267.apcprd06.prod.outlook.com (2603:1096:301:115::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8137.17; Mon, 4 Nov
+ 2024 01:16:53 +0000
+Received: from SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56]) by SI2PR06MB5041.apcprd06.prod.outlook.com
+ ([fe80::705a:352a:7564:8e56%6]) with mapi id 15.20.8137.011; Mon, 4 Nov 2024
+ 01:16:53 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, Joel
+ Stanley <joel@jms.id.au>, =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?=
+ <philmd@linaro.org>, Bin Meng <bmeng.cn@gmail.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>, Yunlin Tang
+ <yunlin.tang@aspeedtech.com>
+Subject: RE: [SPAM] [PATCH v1 0/8] Support RTC for AST2700
+Thread-Topic: [SPAM] [PATCH v1 0/8] Support RTC for AST2700
+Thread-Index: AQHbKeNklA36gRpU7kmIXYVXJiMgQ7KkHO4AgAI9ajA=
+Date: Mon, 4 Nov 2024 01:16:53 +0000
+Message-ID: <SI2PR06MB50412B856A25FAEB19FD10ABFC512@SI2PR06MB5041.apcprd06.prod.outlook.com>
+References: <20241029091729.3317512-1-jamin_lin@aspeedtech.com>
+ <9cf62dd0-2e88-4692-8a16-544b75665b6c@kaod.org>
+In-Reply-To: <9cf62dd0-2e88-4692-8a16-544b75665b6c@kaod.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SI2PR06MB5041:EE_|PUZPR06MB6267:EE_
+x-ms-office365-filtering-correlation-id: fb069bbe-562c-4a8c-8452-08dcfc6e5e32
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|7416014|1800799024|38070700018|921020|217643003; 
+x-microsoft-antispam-message-info: =?utf-8?B?OW1QdzYxRmFESzFSbjN5amZNMDhKOTBOcnVUYjVqSEkxQzN3bzZrcGowSDhL?=
+ =?utf-8?B?Qm9mVE9SM096a0VpZ2RqdnFvMXlNT3I3Z2hmRSt5QXg3RFBEZGdBczlQbzZR?=
+ =?utf-8?B?NGovOFpkdVFMRFZ5S3duUGhxUkNhSXRJNTVSKzBOTGI2VkxNbllPY1JwUUZO?=
+ =?utf-8?B?V0FtM21JbENmMTM5Y2czelVHU1VuN3FCWkZ2LzFGcTh1M0hVdWV6Unc0anEz?=
+ =?utf-8?B?ZXNLVHRUVk9kWE01MjFCK2pzNWFqNDFQYmVVOFFBT0V4UDdVTzIxT3EyakMz?=
+ =?utf-8?B?d2lucXI5RDZBRTRKMDlJZkFvRnBnVW5BV3MrWUZna1QwYnZra3NRYWxPUm9m?=
+ =?utf-8?B?ZWQ3d0lvZjNpRTBZTkJJL1hzbGhueWFDcWxudy9FM3djKzZxY1RCMnZ0dWNL?=
+ =?utf-8?B?NDgxOTNRMVppeHVFb0hEdkFiZ3ZrZDRsY092RlhZeUVWNFA3dW1JdExLdHVz?=
+ =?utf-8?B?WktteUVZSDM4SThNcmdTRVNkeDVVdExueDh6ZXNpU0RjMFNmVWdrSE0wR25H?=
+ =?utf-8?B?Zng0WHh3Tk1QOEMvNmdwcURid1VZd0ZJVzhkVE5TWThNSENDVzlnM25aRURZ?=
+ =?utf-8?B?YXh0czJydjRnOGdxell3MzFSY3IyMWpPamhpb0cvRXlYd1JUYUxmZFhySGN3?=
+ =?utf-8?B?L2ZnWW5TdEYvQVNLeHRSTlF2NE5tTzRodFl5RHRncHFUZU5lWUVYdjQ2bVo3?=
+ =?utf-8?B?TXp0NU15NEYvSE1DWTFONndHNE10b2dVZ1V2OElVd3FHTEF1MmYzaGg0VkJL?=
+ =?utf-8?B?bUlxcWY0bzBieXRLRTlmRGpLVWhVZ3R0V1RkQjZza2VZOGxSTElRblc1TEpN?=
+ =?utf-8?B?N0d3V0QweVl1c2oxQjl1WlQra2ZpMDd3dHoxYk05YXJhRGROYnhWVnBVTE9S?=
+ =?utf-8?B?OGg3eFluYmtJU1ZveVAwM1EyT3dxbHp1a2xvdmRkY2RuQitZUjhOUjR2ZDFo?=
+ =?utf-8?B?SVA0ekI0NVRncUQ5NGdVejdXSVVPWkp3U3JDUGVZRzQ3L2ZOUEY3UFI3ejJV?=
+ =?utf-8?B?ZkY3RWJDVkJYSVJwTHFLVGFpT090bzdxT25QUVZGNnNJRXJkckhiUWNLTFF3?=
+ =?utf-8?B?WUdBQ0Zvdm1IS3lKKzFTc1hDajBiWFF5QVVUUi9NOHN3WVlVRmIrL0VjYWc3?=
+ =?utf-8?B?UFhTaXl2dUVML2YycVBNQ0FVNTl4a3M3TG1WSnlETThJdDU0TXVqbUlsY2Jq?=
+ =?utf-8?B?UUdVS3JuOGdrL2cxemU5c2pnRHp2Wk9aNExmV2N1aXFCZE1aTjJBOVlIVjcv?=
+ =?utf-8?B?eGpEQUFabWxrL2wva0l0YWVucm54SWoyL201ZjZkaitPN3UrWFdhbXF0N2N3?=
+ =?utf-8?B?dkpTTkdIUmFQNmRsNEZ4cFdBQmx1bElZdW5ZMDdLQVMrSVlBbWxZQnM1blJ5?=
+ =?utf-8?B?UUcyUEVQU1lhYmRBZS9xNzUzODlWaHV1aFZQRkFWREZKazM3ZUFIcjFCUTEw?=
+ =?utf-8?B?R3Q0U3dTZDM0WFM2RGRJRWI2M0pQV3hkbHZsdUZnRFVtc05XZEtjaHdKcnIz?=
+ =?utf-8?B?ZUtpQUdVazRtVzZPK2RQQTl4aUFuMVRqTmdPQm9Nb0d1ZDJXdWFvRHErNHVB?=
+ =?utf-8?B?QUgxTi8zaWFkN3l1cnZqMWtMeUxMWTdDQlNob0dDY3gxUDRqTThoakxJcjdX?=
+ =?utf-8?B?Vyt4WDJQWTQyVVhjSVpjaklCTWRsOVNYM1lEUUdydXJZalJaeXYrT3BFNnNL?=
+ =?utf-8?B?RTVESjdlck1xZ1JFSG5BbkhRVTJQRGhHbWNhZHdkYk5TV0lVTHk2aFdwMDVE?=
+ =?utf-8?B?MEw2Nk5jN0RXa3FCa0wzc0Noa2Y2d2Z5Q1FXVlVJN1EzdXRPTGJQUDdFeU9J?=
+ =?utf-8?B?VytyVEg3MWt0WFFlOFdrS0VsQlVvR1JSRlExMmk4SnpHSlFZbmE4RVUyWWtO?=
+ =?utf-8?B?WS9mNGF2MkRYbTd5WlhicUQ1N1RmdVl2OC9VMjJMeXVUNXc9PQ==?=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:SI2PR06MB5041.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(366016)(376014)(7416014)(1800799024)(38070700018)(921020)(217643003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?a2s2Nkc1QWRXb3JRbXFvQitBdGlSQjJWbjlhWExkWC9YQWxPcWNHOHZYNnpV?=
+ =?utf-8?B?bDZXejhaV0V6VDRyU0VOYlIzUXR0aDlZb0srYzR1bEdkMmFIdEx1anhtUlBZ?=
+ =?utf-8?B?NjBqSXV4cmZyVDQrWnBpdFpndGVGSnVoMDlhYUpiSXh1bTBUZ0VSU24zZGdB?=
+ =?utf-8?B?ckNXcUxaWFRHVDgyQlZ0SmVuZFgyRUt1VGNIZlA4YzFHUVJzRUhqUlA5b1pF?=
+ =?utf-8?B?RUN2WHlrY3V4ZmU5dzZmNExxZk5tbHJvL3c3R3YrM2c2RWgwNGZWSGtpeERx?=
+ =?utf-8?B?TkxkMHEyRWtmNGJiQUh4dHFKMytHbHBacWdMTVZvZ0plUDc5dm1tazRoelU3?=
+ =?utf-8?B?Nk5KcmZKK3UydHl4cUd1S2MxenhOSDhMalRjTFJmYVRML2oyVzZuZHpjamNa?=
+ =?utf-8?B?WFFQWDhybDk5UytVWWZVbi8zd2tlRkc1V2lERkkxSjNxN0l5MmFtY3VHZExk?=
+ =?utf-8?B?QVdhRVIxZ2Q5cTNYVGpSUGtvRXkza0NqNEdUdjlReExObzdWR0IyaVduZ1JP?=
+ =?utf-8?B?V3BWR2Z5ajgzamovMFI3T2pwTVY1TEE2NnhReFFDTExBaWZmUGJlUE5UNkVi?=
+ =?utf-8?B?d1VpOWlvd3dYRFRpTjBxcnRSUEdTaEVZUFBKZTRucDh0WlluZWUyWkxVY3dU?=
+ =?utf-8?B?d2hCc3pkWEppTE9qTGNBd2p1M0NENUZ5T1EvZmoyeTg4dkQvK3h2VHVuYXo1?=
+ =?utf-8?B?VjNZcmFQejhiU3F2WlBpK3A3ZTRXc1RHOTRYVkFaYmZuSWI1eWNudXMvV0d6?=
+ =?utf-8?B?YXFzUWN6eHcvNFVjRjVCcXhFRDZtSkMzZTlBUXFHcWZwSmVCWlFrcUw3Ymtv?=
+ =?utf-8?B?MHlzQXZ3SWJaSmtqOWgvVzdRcWN6UWFndkZJaXdzbDdKU0FpVGF0MFlyaWxl?=
+ =?utf-8?B?R1VlY2lpVEJnQ2drOVN1Sm5mRmFkYW1vK2xhcUVGN0JRMEtRZFU4bjlyMnFj?=
+ =?utf-8?B?M3NIRlVDSWIycm1XUFFCVy83QVVQYjQzQzArSnN4Q09vRTBoZ0ZGWTN6dGVC?=
+ =?utf-8?B?UWM1RjJDTzBvYVFkL081ZnVZQlJONHhBVExqMUgrMWc3RmxQd1VzaDRnY3Nv?=
+ =?utf-8?B?b0czdzZhcWhXb3NHWnBjUVFhNElQdCsyQUV1bGp1aHYwVVdKZE1XNXh6dEFP?=
+ =?utf-8?B?QkZiNUV4aDZucUYxZGtLRks5eElVNi9EU2VXWnBDUVFQeUNxOWpkRTBYbytI?=
+ =?utf-8?B?TjdxaWJPU1k3bUNXd01KWENrbFZNeVNjeFBMdUpaa0xtTUdpdExzdlZ1YmV2?=
+ =?utf-8?B?eTEwZmY1MTJyRVlHQU1TcEUxRFQ3aEZIMm80QXFrdDh3SG5nRlBUNFpEZVpB?=
+ =?utf-8?B?dWw1dldINXJLMDZ6VFRVWmxJZUN1VVg1aFNhV0JnVG9KLzBGZjdZZkxKaXZp?=
+ =?utf-8?B?TVN6L1dIVGcwcXZWQjhZMHZFUzdsRjNVeWFlYVRnWnFoNHFKSjlyb2NDSXJD?=
+ =?utf-8?B?MkxIVFQyVDlYZkpIbGQ4WWp4ZVgyQ1czZ25VQ0NIcm83WlV0bFdET1lVOXF5?=
+ =?utf-8?B?R21pMTZ1aWdERGZVcGVONGpGL2s3dk0yYnQ1WHhuaFBHU3d3clBwRGgxRWIx?=
+ =?utf-8?B?My9sbTlWSVc1ZGNxMXBtMS9RUTVOY2NlSDMwOGQvMDdWUkZ4dGQ5VGlPcVQ4?=
+ =?utf-8?B?RWV2RUxXa1JzRzlUb1Z2U2twZDdPY1B1OStiNENzSDJ3Q0NzRFZ6RXNHZ3Rm?=
+ =?utf-8?B?dkFqLzJOcFo1V25MMVZmV2dDNjQvOE1UaWs1L3JrZjhjQ0l1YWU4U2xkNlFZ?=
+ =?utf-8?B?dGw5ZExLdm53T25vOEZNL1pjVk1CS3VKdFQzRkZHNnpHQUVPVGtzOWhhbnBp?=
+ =?utf-8?B?ekVCL05vWW1NenIrbTJoVFd3RVF2RktBaTNZNVJvU1EzcEpjcXpIWkI3d2lx?=
+ =?utf-8?B?Wjdrck9aZkdHeEU4amZ6WHlKVnV6SFlBSkM5d3NVd2owSWJOT3lwdjZBRTB1?=
+ =?utf-8?B?OTlhSUQ0MkFERVZrcCtROGlTUDFpeXBxTHB4N0dVV1pDWU9Ma3dOQUIyd05t?=
+ =?utf-8?B?b3Vra3dhYW9wY2R4ejVmcTdEckhjbEhmTmUzalJCM2EyT2FmdDJnQXBDeXdC?=
+ =?utf-8?B?anBKMUVnZ1phUUNSNzdtWTJUVHVWdXJPdFA2dTlkc0dheVZ5dUdYUXljbHMy?=
+ =?utf-8?Q?RYL1/Ja63FLa3oDzYrN2DbWdc?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SI2PR06MB5041.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fb069bbe-562c-4a8c-8452-08dcfc6e5e32
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2024 01:16:53.6703 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: iSxWO9wD5EoiSL9xt86nf60ZoJ0ZCugWz/KqvqksUNhyQuyBP4DO0HPqg9FDTw+FuxhzGSK0FMtwjmeKUJgKh3fe6wVSZAbDOzvFNtmFmJU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB6267
+Received-SPF: pass client-ip=2a01:111:f403:200e::706;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=APC01-PSA-obe.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,79 +223,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pE4ePVe/PQ+a
+X-TUID: 7FbATaR/TbuH
 
-Commit e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
-HW strapping") added support to boot from an eMMC device by setting
-the boot properties of the eMMC device. This change made the
-assumption that the device always has boot areas.
-
-However, if the machine boots from the flash device (or -kernel) and
-uses an eMMC device without boot areas, support would be broken. This
-impacts the ast2600-evb machine which can choose to boot from flash or
-eMMC using the "boot-emmc" machine option.
-
-To provide some flexibility for Aspeed machine users to use different
-flavors of eMMC devices (with or without boot areas), do not set the
-eMMC device boot properties when the machine is not configured to boot
-from eMMC. However, this approach makes another assumption about eMMC
-devices, namely that eMMC devices from which the machine does not boot
-do not have boot areas.
-
-A preferable alternative would be to add support for user creatable
-eMMC devices and define the device boot properties on the QEMU command
-line :
-
-  -blockdev node-name=emmc0,driver=file,filename=mmc-ast2600-evb.raw \
-  -device emmc,bus=sdhci-bus.2,drive=emmc0,boot-partition-size=1048576,boot-config=8
-
-This is a global change requiring more thinking. Nevertheless, in the
-case of the ast2600-evb machine booting from an eMMC device and when
-default devices are created, the proposed change still makes sense
-since the device is required to have boot areas.
-
-Cc: Jan Luebbe <jlu@pengutronix.de>
-Fixes: e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
-HW strapping")
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
-Tested-by: Guenter Roeck <linux@roeck-us.net>
----
-
- Changes in v2:
-
- - Simplified "boot-config setting
-
- hw/arm/aspeed.c | 16 +++++++++++++---
- 1 file changed, 13 insertions(+), 3 deletions(-)
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index e447923536b4..6ca145362cbd 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -338,10 +338,20 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
-             return;
-         }
-         card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
--        if (emmc) {
-+
-+        /*
-+         * Force the boot properties of the eMMC device only when the
-+         * machine is strapped to boot from eMMC. Without these
-+         * settings, the machine would not boot.
-+         *
-+         * This also allows the machine to use an eMMC device without
-+         * boot areas when booting from the flash device (or -kernel)
-+         * Ideally, the device and its properties should be defined on
-+         * the command line.
-+         */
-+        if (emmc && boot_emmc) {
-             qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
--            qdev_prop_set_uint8(card, "boot-config",
--                                boot_emmc ? 0x1 << 3 : 0x0);
-+            qdev_prop_set_uint8(card, "boot-config", 0x1 << 3);
-         }
-         qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
-                                 &error_fatal);
--- 
-2.47.0
-
+SGkgQ2VkcmljLA0KDQo+IFN1YmplY3Q6IFJlOiBbU1BBTV0gW1BBVENIIHYxIDAvOF0gU3VwcG9y
+dCBSVEMgZm9yIEFTVDI3MDANCj4gDQo+IE9uIDEwLzI5LzI0IDEwOjE3LCBKYW1pbiBMaW4gd3Jv
+dGU6DQo+ID4gY2hhbmdlIGZyb20gdjE6DQo+ID4gMS4gU3VwcG9ydCBSVEMgZm9yIEFTVDI3MDAu
+DQo+ID4gMi4gU3VwcG9ydCBTREhDSSB3cml0ZSBwcm90ZWN0ZWQgcGluIGludmVydGVkIGZvciBB
+U1QyNTAwIGFuZCBBU1QyNjAwLg0KPiA+IDMuIEludHJvZHVjZSBDYXBhYmlsaXRpZXMgUmVnaXN0
+ZXIgMiBmb3IgU0Qgc2xvdCAwIGFuZCAxLg0KPiA+IDQuIFN1cHBvcnQgY3JlYXRlIGZsYXNoIGRl
+dmljZXMgdmlhIGNvbW1hbmQgbGluZSBmb3IgQVNUMTAzMC4NCj4gPg0KPiA+IEphbWluIExpbiAo
+OCk6DQo+ID4gICAgYXNwZWVkL3NvYzogU3VwcG9ydCBSVEMgZm9yIEFTVDI3MDANCj4gPiAgICBo
+dy90aW1lci9hc3BlZWQ6IEZpeCBjb2Rpbmcgc3R5bGUNCj4gPiAgICBody90aW1lci9hc3BlZWQ6
+IEZpeCBpbnRlcnJ1cHQgc3RhdHVzIGRvZXMgbm90IGJlIGNsZWFyZWQgZm9yIEFTVDI2MDANCj4g
+PiAgICBody9zZC9zZGhjaTogRml4IGNvZGluZyBzdHlsZQ0KPiA+ICAgIGh3L3NkL3NkaGNpOiBJ
+bnRyb2R1Y2UgYSBuZXcgV3JpdGUgUHJvdGVjdGVkIHBpbiBpbnZlcnRlZCBwcm9wZXJ0eQ0KPiA+
+ICAgIGh3L3NkL2FzcGVlZF9zZGhjaTogSW50cm9kdWNlIENhcGFiaWxpdGllcyBSZWdpc3RlciAy
+IGZvciBTRCBzbG90IDANCj4gPiAgICAgIGFuZCAxDQo+ID4gICAgaHcvYXJtL2FzcGVlZDogSW52
+ZXJ0IHNkaGNpIHdyaXRlIHByb3RlY3RlZCBwaW4gZm9yIEFTVDI2MDAgYW5kDQo+ID4gICAgICBB
+U1QyNTAwIEVWQnMNCj4gPiAgICBhc3BlZWQ6IFN1cHBvcnQgY3JlYXRlIGZsYXNoIGRldmljZXMg
+dmlhIGNvbW1hbmQgbGluZSBmb3IgQVNUMTAzMA0KPiA+DQo+ID4gICBody9hcm0vYXNwZWVkLmMg
+ICAgICAgICB8IDMwICsrKysrKysrKysrKy0tLS0tLQ0KPiA+ICAgaHcvYXJtL2FzcGVlZF9hc3Qy
+N3gwLmMgfCAxMSArKysrKysrDQo+ID4gICBody9zZC9hc3BlZWRfc2RoY2kuYyAgICB8IDQwICsr
+KysrKysrKysrKysrKystLS0tLS0tDQo+ID4gICBody9zZC9zZGhjaS5jICAgICAgICAgICB8IDcw
+DQo+ICsrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLS0tLS0tLS0tDQo+ID4gICBody90
+aW1lci9hc3BlZWRfdGltZXIuYyB8IDE1ICsrKysrLS0tLQ0KPiA+ICAgaW5jbHVkZS9ody9hcm0v
+YXNwZWVkLmggfCAgMSArDQo+ID4gICBpbmNsdWRlL2h3L3NkL3NkaGNpLmggICB8ICA1ICsrKw0K
+PiA+ICAgNyBmaWxlcyBjaGFuZ2VkLCAxMjMgaW5zZXJ0aW9ucygrKSwgNDkgZGVsZXRpb25zKC0p
+DQo+ID4NCj4gDQo+IEFwcGxpZWQgMSwyLDMsNiw4IHRvIGFzcGVlZC1uZXh0Lg0KPiANCg0KVGhh
+bmtzIGZvciB5b3VyIGhlbHAuDQpXaWxsIHJlc2VuZCA0LDUgYW5kIDcgcGF0Y2hlcyBpbiB2Mi4N
+ClRoYW5rcy1KYW1pbg0KPiBUaGFua3MsDQo+IA0KPiBDLg0KPiANCg0K

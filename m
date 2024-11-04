@@ -1,167 +1,174 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2154342njc;
-        Mon, 4 Nov 2024 06:36:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUpeq1F8SN9v8h6Dux15vApG3v0Bsleb/WKmLw94ismOKvf6VOh+DVNcCZOa9r8sC5NjiKOxMO0HwrVqA==@linaro.org
-X-Received: by 2002:a05:6a20:3054:b0:1da:2e7c:e510 with SMTP id adf61e73a8af0-1da2e7ce558mr21192792637.1.1730730994723;
-        Mon, 04 Nov 2024 06:36:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730730994; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2159984njc;
+        Mon, 4 Nov 2024 06:45:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUj8notTwTjZKJOVl59u51T+sPYB5WmuseqbmXjWOZqaDOSSyF7JKVzwNNiR1p83wCUY7KpSOFHCon2oQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHwn40IqP6Kvvs5wwRLfXxwcJWmcTVh/sOYZg3lsBvEBgqOxyaf2b5OMRNsaN18xSGP3/Mo
+X-Received: by 2002:a05:6102:3753:b0:4a4:9363:b84f with SMTP id ada2fe7eead31-4a8cfb25e4amr30553251137.5.1730731522797;
+        Mon, 04 Nov 2024 06:45:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730731522; cv=none;
         d=google.com; s=arc-20240605;
-        b=IwLem1Zn1ws+C060TdX3N4yOUglWEws+aBshFH2BCrsuJ80PnOhLTlcdXldKSKQmpe
-         xaBI8FA7tf3RZZhLu+6jgkKMYjMOJf2LyeIRa/vNW86R8xEPtt1f4H0zA4mj1fTSMLNW
-         Km4d5endVj3dp84qBZDgr5a5ZOl5tThmTYUQFZDd6aeo58SbxN/1qymHPdNYnELgUUuY
-         uz1JW3p3GUgDSKlUzJxfP6JuP7BG+zejfl5Rou5RLMVfj7p1ndz2NqpqR0QL7LyTbdaU
-         nunWsJU/4rErA68+lAyTFTjacEpKQqS0eg8XGbonPHZP/NunBxMZbASDMKMM4io88Jvv
-         9oFw==
+        b=TrYbMmj1E9+mGk+7nyAGfPAPoJA7FHbasfh4WRqPtaxgS0jgURl5c9u5sCDGPyEL1O
+         szEnrlGfUUXwPH7XvEdw+37y4Xpv0mPJAUlwCoUFvXWYn8CIdv4pUlOgkQ8QcRH/Er2i
+         w3itE2BxgOLCPVDoHiLS6zMecneuNWYisEPSvxYuOZ//4O1GlqEPyswqLRuQ/iCvlGwS
+         HZAnHi+gC/cfWjdBesBPjiMt9sNUzfAPJFPeLVGlyTt7tKcoIVzyFgHOzRuSUwS/Pq21
+         kgyOgBhpdbo2l7mt/AlUj7wLVer/1mb5SUMb0BaSrIgPg+pcC9z1MHSrx9OOfpuFmHLl
+         EG3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=w8M/FL/xjMX5xGJffF8YSjnj9dbeNo9YjNKE+lvn3Qw=;
-        fh=u7LXuynynhOjUO1++sOMNhRG8/YbxcQvOhkbdPnYThY=;
-        b=ilJdx2ZcEgmvhsY+UpFJgwKeZqur+lKWRxZEUybIq95fN2qfRGou8ZNCfnJgB0J/Bn
-         yZOHIREWo9VbS1Jy5soYM0EWuEFX3zM0qLg4MBVnGqns+7MXELDUno5qF1eF0Fstbb70
-         jv0IpYMa3PJxIdUccodGo6CTp6Z/VnKbd3rq6RjaVaRKz6Za/ysjt9uiUcXEsiHbvoY+
-         xargZmL/UDwtiBnJdvGyKBM9LAGGWkHAaDvF68CLZYwSJ+FK2X1MBKM/dgVQ+H1Ciiwq
-         DxzipGDcaCIxVvBXq0mSA1Zoale3EypBd3PUCI/kQSgfm5FvFb/m3eKCVpaRNYEuGKS6
-         4Svw==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=JhlNDrXlUzM5p8FZMA7dRiQzkSxBvDnj3EpKeGQ8LMg=;
+        fh=FQYDpF4nMqWebfmcMZTKh7DOI+/xfNHCyXrfikBaXUg=;
+        b=H9CTYKvPiJTuLFrc7MqD6uOA3KuXNp/3x3n+JEWImJlpjy/O/kIcw9ufB6hujsuGwL
+         ARWHvx6oUdGgDnOA83LVT/M8/PW3MdMVeH4Z0AkPq1b5YRcJ8+1GszkulOT19FB/1Vq0
+         I2gkqkuABwYCP3l+Avoo+o9+7f0HwBMxBS+cfflR1PdFQ6p6S1NKE0oEZmjRtoboqrT7
+         +zwrVarS/5Nx4zogaPixY5ZG2kBNSr4sTOd9nAWn+pJcEKvLt8ctOmh3N8oue9Zdtzzf
+         Hkm20+f3RVBIevk1HXv5xSM1ulfHidRiisr/JeHPV6qF+fqLWuxQPzo2Jgl8oZUBF5Aj
+         sn+A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jbKQfGKG;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-7ee458fd394sor4521113a12.6.2024.11.04.06.36.34
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jOn+VJVm;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a95758811bsi1944865137.574.2024.11.04.06.45.22
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 04 Nov 2024 06:36:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Nov 2024 06:45:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jbKQfGKG;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1730730994; x=1731335794; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=w8M/FL/xjMX5xGJffF8YSjnj9dbeNo9YjNKE+lvn3Qw=;
-        b=jbKQfGKGqNkDQ7/13gGU3gDh83Xb7diBgLEV7+98ll669rlAVoDpZCHWIaVk82vDOt
-         aHtdfFMnNnU66PcHJMdfVT703jsrvJ61qRPS7qceXnHQ9AXG/l88547KoTnaw96TutT6
-         NyNBF5bjbzS8XfZlraGobWQL0NVxLTIvZV48cXpLW4em82ikPy5qJhdtUzbQUMzZQYAM
-         DoTl4LKEVqpHuaQVYL3RozER/604/CzV/B+DPNE8dyJBc6u5UzReVHQkpcLEKovPGKeb
-         8zybFtjMoNGTjWYfxNyGSpBrMy1WDqsR4L6LNLuOMSjqRsXAJFyT3WP/MZbadOEZTqnU
-         /GUw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=jOn+VJVm;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1730731522;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=JhlNDrXlUzM5p8FZMA7dRiQzkSxBvDnj3EpKeGQ8LMg=;
+	b=jOn+VJVmeUuqhJB+ZfL3s3W+2jFncd0Aap6T0Q+RRRumcS+WUNzI+Ayh0ydA8wdZWgBIMf
+	arHesdhqFq9fUxLDnO6CfkdlKq+AysYnoks0NOUhM29eBgRNMT0ssdj2ZcCwISFJqVa2c8
+	ZGszkl+iysXk3kI1xksZqpMtu8rZIYU=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-413-7_XoKcbCMMqxr73HfX1WLg-1; Mon, 04 Nov 2024 09:45:18 -0500
+X-MC-Unique: 7_XoKcbCMMqxr73HfX1WLg-1
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-4314f023f55so29179365e9.2
+        for <alex.bennee@linaro.org>; Mon, 04 Nov 2024 06:45:18 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730730994; x=1731335794;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=w8M/FL/xjMX5xGJffF8YSjnj9dbeNo9YjNKE+lvn3Qw=;
-        b=M0Kiw5rkMQJ0DIwBUrBY0Yc9IpDjCPQq+0UhWYCoxpCfma+og8rdZnFLm1NG5DYNlw
-         T66P/7EG/Halzv2rFULSgKlwaJd7s/Nn6cIl+h5UHPaKWFl84C17GQ1Dd5JaB8SsczBl
-         NQILQh2auTW1sAUGglKK38XYQk2m5PnEwZT0E2ZekF/636Opbpp/QODROKlWo/rM9tqS
-         aKskCP6LALbNrbWXe+VoJ+1O/Pxed7M3UTr9jESHevdYUPViGqpyW+RREmP/6TBzMivH
-         B3sj1oz0h7TEBFgRmJPT+m9xky7hEopZH3eDYohrSlKrmntnEwjwJSwArml9F3d08qnv
-         WpDw==
-X-Forwarded-Encrypted: i=1; AJvYcCWSC2fG6eNNo7sUNQRpMt5bfDhViORErouOpVYUPVTshRtFMI72Jefe1XVTA1fzx/zHztWMaGqIPswMWQ==@linaro.org
-X-Gm-Message-State: AOJu0YzeHZMpbGgCKY3b9h0E0O9ZSze92nDDEdESyzAE1AmtYt4rvmRu
-	Q2dKkfFPQt+mi0S5D+tynIKSN2SzCZ+P68RvXk984bj6W5AKMGThY4x8xN8yaZ3YlA==
-X-Google-Smtp-Source: AGHT+IEfofvv++LSViFzOXpu2nP2BPbSQMPosmxNaaD7qa8vvCNAbxofsOIg6HSuELn7xjsAi8QeYQ==
-X-Received: by 2002:a05:6a20:121a:b0:1db:a33e:2c6 with SMTP id adf61e73a8af0-1dba33e02f1mr13030321637.18.1730730994211;
-        Mon, 04 Nov 2024 06:36:34 -0800 (PST)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from [192.168.0.102] (200-207-104-238.dsl.telesp.net.br. [200.207.104.238])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-720bc1e592asm7530342b3a.60.2024.11.04.06.36.31
+        d=1e100.net; s=20230601; t=1730731517; x=1731336317;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=JhlNDrXlUzM5p8FZMA7dRiQzkSxBvDnj3EpKeGQ8LMg=;
+        b=EbxKvzMreKMjj2WC5+YTI1lQqGEriaRiRrgpwOfdWsImY7d2pngVL4KonMFw5oT1Ws
+         GqTNJbI2ZwkpcZJb8ccBNIM3Ynfl+XZt05ayMXld5l9OYvsqdPAqgY50Q8pSNXwf+dpc
+         YB5tCr9ZJA1gyWOovgaPs5Wjj7GQG4pGr0lwEd5c76qV0PPB0TwsQ/B4dQIM2E2FFfwE
+         n/lyO1R2HRu5Z1rTOo7cSzeKXygvequXQyhFP/FFzn4pKYGtc16/9xJyMD1M4dCLkajo
+         iIO+Zl094SC1R8Q9E27mO7QqW06Zsne/HvROGmaJiKlOI7xnkJzcjfgGfsahl9SSeLfC
+         Dcdw==
+X-Forwarded-Encrypted: i=1; AJvYcCVIEQI4kJhAilMVJKRQgcT1KNvVTZbbl6CCVdtyNkeiH0y6rv4vJIJcRegJcg4Sjdu3Q/vOFV6m364Gfw==@linaro.org
+X-Gm-Message-State: AOJu0YxuPHyrkKNm2JPByDycaNIUVoWNlXiliFiEoUDJV/ItaiSZWBib
+	3pNLPukKu5t7HI5n3kxMIbNb6dtbXEOIpcCftn02/vsB6Nv78XyUHnpjnhNvNSl+IzeaLgoJ0p6
+	+shJknH75Ed2vzjTA2q8ZUbLGc8SlR4rvmKvW4+Y/ARpFrWTRpyGoNQ==
+X-Received: by 2002:a05:600c:4f83:b0:42c:c28c:e477 with SMTP id 5b1f17b1804b1-4319ad089b0mr249763595e9.23.1730731517249;
+        Mon, 04 Nov 2024 06:45:17 -0800 (PST)
+X-Received: by 2002:a05:600c:4f83:b0:42c:c28c:e477 with SMTP id 5b1f17b1804b1-4319ad089b0mr249763345e9.23.1730731516834;
+        Mon, 04 Nov 2024 06:45:16 -0800 (PST)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-431bd9180f2sm184056535e9.19.2024.11.04.06.45.14
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Nov 2024 06:36:33 -0800 (PST)
-Message-ID: <d8827389-1de1-45b6-b572-33c6697f3b13@linaro.org>
-Date: Mon, 4 Nov 2024 11:36:30 -0300
+        Mon, 04 Nov 2024 06:45:16 -0800 (PST)
+Message-ID: <24ca0278-5018-41e3-a097-ac560a16f8fa@redhat.com>
+Date: Mon, 4 Nov 2024 15:45:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm: Enable FEAT_CMOW for -cpu max
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org
-References: <20241101013541.883785-1-gustavo.romero@linaro.org>
- <9994b8dd-0522-43ff-94ff-1a94aafd5ce2@linaro.org>
+Reply-To: eric.auger@redhat.com
+Subject: Re: [RFC 21/21] arm/cpu-features: Document custom vcpu model
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ oliver.upton@linux.dev, sebott@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com,
+ mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+References: <20241025101959.601048-1-eric.auger@redhat.com>
+ <20241025101959.601048-22-eric.auger@redhat.com>
+ <ZxuZkUFz_bwAA1pf@redhat.com>
+ <0700af51-a1a6-4b11-a4bf-0eaf6e279c6d@redhat.com>
+ <Zxudl5-fZV1vIaEL@redhat.com> <87y128nrfr.fsf@redhat.com>
+ <Zx-3OUioG1l47hW3@redhat.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <Zx-3OUioG1l47hW3@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Gustavo Romero <gustavo.romero@linaro.org>
-In-Reply-To: <9994b8dd-0522-43ff-94ff-1a94aafd5ce2@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 0im38ir/TTGR
+X-TUID: 2UgIhojbMhcp
 
-Hi Richard,
+Hi
 
-On 11/4/24 07:59, Richard Henderson wrote:
-> On 11/1/24 01:35, Gustavo Romero wrote:
->> FEAT_CMOW introduces support for controlling cache maintenance
->> instructions executed in EL0/1 and is mandatory from Armv8.8.
+On 10/28/24 17:09, Daniel P. Berrangé wrote:
+> On Mon, Oct 28, 2024 at 05:05:44PM +0100, Cornelia Huck wrote:
+>> On Fri, Oct 25 2024, Daniel P. Berrangé <berrange@redhat.com> wrote:
 >>
->> On real hardware, the main use for this feature is to prevent processes
->> from invalidating or flushing cache lines for addresses they only have
->> read permission, which can impact the performance of other processes.
->>
->> QEMU implements all cache instructions as NOPs, and, according to rule
->> [1], which states that generating any Permission fault when a cache
->> instruction is implemented as a NOP is implementation-defined, no
->> Permission fault is generated for any cache instruction when it lacks
->> read and write permissions.
->>
->> QEMU does not model any cache topology, so the PoU and PoC are before
->> any cache, and rules [2] apply. These rules states that generating any
->> MMU fault for cache instructions in this topology is also
->> implementation-defined. Therefore, for FEAT_CMOW, we do not generate any
->> MMU faults either, instead, we only advertise it in the feature
->> register.
->>
->> [1] Rule R_HGLYG of section D8.14.3, Arm ARM K.a.
->> [2] Rules R_MZTNR and R_DNZYL of section D8.14.3, Arm ARM K.a.
->>
->> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->> ---
->>   docs/system/arm/emulation.rst | 1 +
->>   target/arm/cpu-features.h     | 5 +++++
->>   target/arm/cpu.h              | 1 +
->>   target/arm/tcg/cpu64.c        | 1 +
->>   4 files changed, 8 insertions(+)
->>
->> diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
->> index 35f52a54b1..a2a388f091 100644
->> --- a/docs/system/arm/emulation.rst
->> +++ b/docs/system/arm/emulation.rst
->> @@ -26,6 +26,7 @@ the following architecture extensions:
->>   - FEAT_BF16 (AArch64 BFloat16 instructions)
->>   - FEAT_BTI (Branch Target Identification)
->>   - FEAT_CCIDX (Extended cache index)
->> +- FEAT_CMOW (Control for cache maintenance permission)
->>   - FEAT_CRC32 (CRC32 instructions)
->>   - FEAT_Crypto (Cryptographic Extension)
->>   - FEAT_CSV2 (Cache speculation variant 2)
->> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
->> index 04ce281826..e806f138b8 100644
->> --- a/target/arm/cpu-features.h
->> +++ b/target/arm/cpu-features.h
->> @@ -802,6 +802,11 @@ static inline bool isar_feature_aa64_tidcp1(const ARMISARegisters *id)
->>       return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, TIDCP1) != 0;
->>   }
->> +static inline bool isar_feature_aa64_cmow(const ARMISARegisters *id)
->> +{
->> +    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, CMOW) != 0;
->> +}
-> 
-> This isn't used, so it may be omitted.
-> 
-> Otherwise,
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>>> On Fri, Oct 25, 2024 at 03:28:35PM +0200, Eric Auger wrote:
+>>>> Hi Daniel,
+>>>>
+>>>> On 10/25/24 15:13, Daniel P. Berrangé wrote:
+>>>>> On Fri, Oct 25, 2024 at 12:17:40PM +0200, Eric Auger wrote:
+>>>>>> From: Cornelia Huck <cohuck@redhat.com>
+>>>>>>
+>>>>>> Add some documentation for the custom model.
+>>>>>>
+>>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>>>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>>>>>> ---
+>>>>>>  docs/system/arm/cpu-features.rst | 55 +++++++++++++++++++++++++++-----
+>>>>>>  1 file changed, 47 insertions(+), 8 deletions(-)
+>>>>>> @@ -167,6 +196,16 @@ disabling many SVE vector lengths would be quite verbose, the ``sve<N>`` CPU
+>>>>>>  properties have special semantics (see "SVE CPU Property Parsing
+>>>>>>  Semantics").
+>>>>>>  
+>>>>>> +The ``custom`` CPU model needs to be configured via individual ID register
+>>>>>> +field properties, for example::
+>>>>>> +
+>>>>>> +  $ qemu-system-aarch64 -M virt -cpu custom,SYSREG_ID_AA64ISAR0_EL1_DP=0x0
+>>>>>> +
+>>>>>> +This forces ID_AA64ISAR0_EL1 DP field to 0.
+>>>>> What is the "baseline" featureset implied by 'custom' ?
+>>>> there is no baseline at the moment. By default this is a host
+>>>> passthrough model.
+>>> Why do we need to create "custom" at all, as opposed to just letting
+>>> users toggle features on "-cpu host" ? 
+>> We could consolidate that to the current "host" model, once we figure
+>> out how to handle the currently already existing properties. Models
+>> based on the different architecture extensions would probably be more
+>> useable in the long run; maybe "custom" has a place for testing.
+> If you can set the features against "host", then any testing could
+> be done with "host" surely, making 'custom' pointless ?
+Yeah I do agree that we may not need to introduce this "custom" model
+bus just enhance the custom host model with the capability to tweek some
+features. For instance we have the case where migration between 2 Ampere
+systems fails with host model but if you tweek 1 field in CTR_EL0 it
+passes. So I think in itself this modality can be useful. Same for
+debug/test purpose. As mentionned in the cover letter the number of
+writable ID regs continue to grow and this enhanced host model gives
+flexibility to test new support and may provide enhanced debug
+capabilities for migration (getting a straight understanding of which ID
+reg field(s) causes the migration failure could be helpful I think)
 
-Got it. I wasn’t entirely sure if I should add it for future convenience.
+Thanks
 
-k, I'll omit it if I come across a similar case. Thanks.
-
-Since I'm using it after Peter's comment for v2, I kept it, and added your R-b.
-
-
-Cheers,
-Gustavo
+Eric
+>
+> With regards,
+> Daniel

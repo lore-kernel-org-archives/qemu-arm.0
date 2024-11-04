@@ -1,194 +1,206 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2207777njc;
-        Mon, 4 Nov 2024 07:49:00 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWhJDnbKhXizkQgSCy1AWtZ+5RpFkZGLZr3BYvAsMQzE24ejsJ1Ar0Bjz7pMgpC2JPTa444/6X+p8SDWQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IF22xuL6jn0BiXbtOHNzSSBCs2sAjmgCjyvpT0KbkXrK33OxUFZCZ34xonusnuC0J4MMQtu
-X-Received: by 2002:a05:6214:4283:b0:6cb:ec7e:4fba with SMTP id 6a1803df08f44-6d351ad4028mr239081466d6.25.1730735340253;
-        Mon, 04 Nov 2024 07:49:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730735340; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2210091njc;
+        Mon, 4 Nov 2024 07:53:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXzWK9hoSQnjZeTSNK157/GGzM3sRbELu63FvPKOw49AhXc242I8N0XjHcJimyaUL8A60lxUV/xyLn0Rg==@linaro.org
+X-Google-Smtp-Source: AGHT+IF146eEt/xbjZj8W69zreQRlQXmLLe+r+Tc9tPWj8a+CF9LLV7lQj/htNVFd5a7rMsUCaX5
+X-Received: by 2002:a05:6102:3594:b0:4a4:8651:3c3f with SMTP id ada2fe7eead31-4a956b0ecb4mr11339478137.0.1730735581239;
+        Mon, 04 Nov 2024 07:53:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730735581; cv=none;
         d=google.com; s=arc-20240605;
-        b=Xjr4O/3xE9g28SgpDK7SJsj38BsmLYVq0i2pk58Lhw/OCD+guTliH5x18boSX78Eg3
-         t/ZvQp830KC96dob0octwKquGABabGyyXj4YRFLhx1fzo10236n/xR4A4tJtS63W9sOk
-         zqQnDCKtmveSpqFU3LxK1l3vhyp/8QpD5iaMobnRntQTSap0NRvBwXN5vCwywAI6xHMb
-         qg2mWituK+YvOANCxjIhPP1X4uCL+p2EdYjvFF8iyyTO3JBn5T+lMJC33//gHSTBHSxC
-         9Nxi3gSWi+eJmSViWvP/yq9ZWVdpm5j7KUSWKcnZqAPVsv8bUHn2jkvgI5R7DhMBehBr
-         MbnA==
+        b=Z6a8p7u1VlfzIsf3IfndmUijmBPn5SN/ei3J4QGySi8ATnoTkkhMCC0x9qtTOrDhqO
+         NC5yByJE4OUv32MOAx19u9DECbM4RkONQP1E9pelGDz1ZTaaWZNOL29BiHPiSY1Rjao9
+         CT6MFC85rIg2QPM6BmOnC3t2S/mtBZuyKOuqsufYvaLz5uzE/L/KJPCObqGbOgGAZxXR
+         GDlxZREjQFWe9nnwwwjg+OXS794FveuToPp+XIBZyNZA/7rVPThRabl7O+oKywDNJCKB
+         lDOHZv/l/fcbDV3cPH+ndQvM/s7S5dxeNOzS/6YbPOIV5WATS757mykuLZGfzOeCblts
+         RKDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=L5qKSNIK6vQ6Q7JE8WWXcZJy6X0rXyRaC1H1Rdx2Ib0=;
-        fh=vkC5NXDI1dbKRVQLiBq/wfOwSPXN2qX1eFw1mGb5Lss=;
-        b=jCow/l+orEZZUD766IjM4CvFK7BzXVPHSMaAOuyWBD4n3GGTx34zMxWILNQGFSeBYi
-         U6oj/tCAx1dEJ2xrci5CeqOVDxKeGYTV+/twOSuq4epW0dFU/XYZwxS01e3/8GyEEqPr
-         ZQ+1NPeur3axo5hFjfjoAHLr4KWLn5fuFj6htmguhmTwJOb0yNYd3NZ2jFo+M2TNuH6f
-         cZRO0Q5nstrWWEDOOuNeY3MXQJGePKWWzmL+BQBeRj3Tv/wBO2RElAinX/Su2vTCDfJd
-         p4OC6ZvwmWXSnFqr2MbiqYsVpf2lrIJf3NTHcMUEbJpIV3w6Est2CRHCT1k5m50s1GHY
-         tegw==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=7mUA65axYf94RHzQ+FsEaE5eP349wKq6vreKY/gkmjE=;
+        fh=eOG3v5cl5vc5sYq+sq+pWJNIuw/B2LPswfZS4OfADRo=;
+        b=EIFKqE2/ZexADfr0cUB6OJgXFDePq+dGj09vGes85hsiWGIX4YBbSFyFeotYScpBpP
+         XtF1uFeEjvv0aqDp0dJ0I0CP74RMS4VpUXYjkEERHRWDdwBQTxuFwBDMBLt3esldG83/
+         1aq6HoUdlaTjnvlSD0heFMUnyLhsUDfJJK5Y1VZEiifO6PaIA6TRsr7ur9SyJht1i2lq
+         cD0LuDsxJ3SvvRGxc5Smg2TCU8m1KZM8J5gfoX8xb+MIIIE3anb8M6ibhe80Fi5/MTlG
+         N1efXOcjMPoyY1n3DLKl4ogiid6XUUBuyMzy72/xkSXRM1Rcqt/lvV69tDodWQwfFTAJ
+         dbpA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZrGBrCwj;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="L5V/tJN6";
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d368fc21c6si59378436d6.352.2024.11.04.07.49.00
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a957531436si2276379137.284.2024.11.04.07.53.01
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Nov 2024 07:49:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Mon, 04 Nov 2024 07:53:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZrGBrCwj;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="L5V/tJN6";
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1730735339;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	s=mimecast20190719; t=1730735580;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=L5qKSNIK6vQ6Q7JE8WWXcZJy6X0rXyRaC1H1Rdx2Ib0=;
-	b=ZrGBrCwjNyN7J6jdzEH0Fbtjn3jMLbE7EkTdKUznXhZrz5IwKR4DYDZAuZfQgslUWI97Rb
-	syBhJJqSYI9r9YVnb51l6ZFzxd+5TQnu17Lq8Xy83G5tilacDIeAzMaDWaBCJIrn0bg9oN
-	udnTgTR+9kYN6YETQSc+mmyRvlM9u+s=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-675-e8lFgkbVPOG9bE--gIfUBg-1; Mon,
- 04 Nov 2024 10:48:56 -0500
-X-MC-Unique: e8lFgkbVPOG9bE--gIfUBg-1
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 89A1F19560B4;
-	Mon,  4 Nov 2024 15:48:53 +0000 (UTC)
-Received: from localhost (dhcp-192-244.str.redhat.com [10.33.192.244])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 556421956086;
-	Mon,  4 Nov 2024 15:48:51 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
- peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
- armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+	bh=7mUA65axYf94RHzQ+FsEaE5eP349wKq6vreKY/gkmjE=;
+	b=L5V/tJN6XNTAAMzg8dyia4u6KLrGPMOuSRtmXVlnCnNH1cmlvwScVKMltjBJUtWukzFISm
+	sIhvuhqeKUN/r7jnLBMjC9btfW4SJxO8ou73MilazJFJmrcjvRY8s8HdHWGyfFWF9qrDNP
+	npQcpfl+IoFFMieK3SMn5YpqSfoD5+0=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-558-3KEzPQTLNuC92eT_YkGCgw-1; Mon, 04 Nov 2024 10:52:59 -0500
+X-MC-Unique: 3KEzPQTLNuC92eT_YkGCgw-1
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-431673032e6so26534505e9.0
+        for <alex.bennee@linaro.org>; Mon, 04 Nov 2024 07:52:59 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730735578; x=1731340378;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=7mUA65axYf94RHzQ+FsEaE5eP349wKq6vreKY/gkmjE=;
+        b=v7oo7nSgJcHV+CLUSWk12Kp22IeU0twgisEA4yCr30+lsiJKP+aK2gc59lF7pXR56E
+         +qz8R++0SZuGlQKVOPSnOBFWxHFqZuaQ1PfMZ9iZrpZcXSybMtfEzMciQtj7TixtTDi4
+         D+LWnvNcTejuwdjjgeGORt1f0fZdlrLFCZ2qoRbE6m+N2apq9DuVS43yW+25Q2KUzYHj
+         eBRVfKLM+O+6Mjw3x8oDn5pgMdBmvNeUzvljBuMZ+JOlhWxf2JOezkt9jvjEdjwngsK1
+         lpUrQKaUcj74kgkARWNygXHVBLir8PXo4+LmA8Vt3TYleIE4+QpLzHdKqWg8DKDRkRQC
+         6RlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXw0G62exT74h9zIpVAzN9LQHFsGjQBu36Fbx2PC2Ec+hzKDO2srx3lG9lNSeDnfGthO4M2lZzzlrFSZg==@linaro.org
+X-Gm-Message-State: AOJu0Yw6PDiJUq/JlHFQh24GVVdLjoiXNkfnyyqvx7aaTygILSmb0IXn
+	O8w1vrqsIeYxW4Lk/VZ+9BGZ/LMXWk5phS4zRoLDo+EX7vhroOaJYJdWsydrBV/qN4fKlBSrBy7
+	nqBEypS8V/WMRxX0Lw6ZBE8wCwbpFU8gq2evfAs1pTsE0fol5F6btvvDTLXZoxA==
+X-Received: by 2002:a05:600c:a01:b0:42c:ba83:3f01 with SMTP id 5b1f17b1804b1-431bb984e8cmr179170775e9.8.1730735577942;
+        Mon, 04 Nov 2024 07:52:57 -0800 (PST)
+X-Received: by 2002:a05:600c:a01:b0:42c:ba83:3f01 with SMTP id 5b1f17b1804b1-431bb984e8cmr179170445e9.8.1730735577520;
+        Mon, 04 Nov 2024 07:52:57 -0800 (PST)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4327d698144sm162050515e9.39.2024.11.04.07.52.54
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Nov 2024 07:52:56 -0800 (PST)
+Message-ID: <0007b45a-0278-4dad-8b8f-a65bd0506dc2@redhat.com>
+Date: Mon, 4 Nov 2024 16:52:53 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [RFC 00/21] kvm/arm: Introduce a customizable aarch64 KVM host
+ model
+To: Kashyap Chamarthy <kchamart@redhat.com>
+Cc: eric.auger.pro@gmail.com, cohuck@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ oliver.upton@linux.dev, sebott@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
  shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
  pbonzini@redhat.com
-Subject: Re: [RFC 21/21] arm/cpu-features: Document custom vcpu model
-In-Reply-To: <ZyjnIMteSuCvpGPW@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
 References: <20241025101959.601048-1-eric.auger@redhat.com>
- <20241025101959.601048-22-eric.auger@redhat.com>
- <ZxuZkUFz_bwAA1pf@redhat.com>
- <0700af51-a1a6-4b11-a4bf-0eaf6e279c6d@redhat.com>
- <Zxudl5-fZV1vIaEL@redhat.com> <87y128nrfr.fsf@redhat.com>
- <Zx-3OUioG1l47hW3@redhat.com>
- <24ca0278-5018-41e3-a097-ac560a16f8fa@redhat.com>
- <ZyjgWJ3bZ69sueE2@redhat.com> <875xp3nigb.fsf@redhat.com>
- <ZyjnIMteSuCvpGPW@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Mon, 04 Nov 2024 16:48:48 +0100
-Message-ID: <8734k7ngnz.fsf@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: 6m7TO7CV7IT+
+ <ZxuwZw2plMI6dNyE@pinwheel>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <ZxuwZw2plMI6dNyE@pinwheel>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TUID: 3G+jLRiMvOpc
 
-On Mon, Nov 04 2024, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
-
-> On Mon, Nov 04, 2024 at 04:10:12PM +0100, Cornelia Huck wrote:
->> On Mon, Nov 04 2024, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
->>=20
->> >
->> > FYI, in x86 target the -cpu command has had a "migratable=3Dbool" prop=
-erty
->> > for a long time , which defaults to 'true' for 'host' model. This caus=
-es
->> > QEMU to explicitly drop features which would otherwise prevent migrati=
-on
->> > between two hosts with identical physical CPUs.
->> >
->> > IOW, if there are some bits present in 'host' that cause migration
->> > problems on Ampere hosts, ideally either QEMU (or KVM kmod) would
->> > detect them and turn them off automatically if migratable=3Dtrue is
->> > set. See commit message in 84f1b92f & 120eee7d1fd for some background
->> > info
->>=20
->> How does this work for version-sensitive features -- are they always
->> defaulting to off? How many features are left with that in the end?
+Hi Kashyap,
+On 10/25/24 16:51, Kashyap Chamarthy wrote:
+> On Fri, Oct 25, 2024 at 12:17:19PM +0200, Eric Auger wrote:
 >
-> Do you mean QEMU versions here ? The non-migratable feature list is
-> just hardcoded in QEMU right now, and there's only 1 of them.
-> eg grep for 'unmigratable_flags'
+> Hi Eric,
 >
-> Note, that "migratable" property is not defining a general purpose
-> migration mask between different hw generations. It was specifically
-> blocking just stuff that is known to make migration impossible, even
-> if HW is identical on both sides.
-
-I was more thinking of dependencies on the KVM version -- QEMU versions
-are easier to control for, but you don't really know what kernel version
-you are running with. In the end, we'd probably need to mark a lot of
-things as unmigratable.
-
+> I'm new to Arm, so please bear with my questions :)
 >
->> > NB "migratable" is defined in i386 target code today, but conceptually
->> > we should expand/move that to apply to all targets for consistency,
->> > even if it is effectively a no-op some targets (eg if they are
->> > guaranteed migratable out of the box already with '-cpu host').
->>=20
->> How does this compare to s390x, which defines some migration-safe cpu
->> models, based upon the different hw generations? If I look at the QEMU
->> code for x86 and s390x, the s390x approach seems cleaner to me (probably
->> because it came later, and therefore could start afresh without having
->> to care for legacy things.) Given that we'll cook up a new model for Arm
->> migration as well, we might as well start with a clean implementation :)
+>> This RFC series introduces a KVM host "custom" model.
+> (a) On terminology: as we know, in the x86 world, QEMU uses these
+>     terms[1]:
 >
-> The impression I get (as an distant observer) is that CPUs on s390x in
-> general have less complexity to worry about. A combination of not having
-> a vendor who creates loads off different SKUs for the same CPU model
-> family with slight variations between each, and also not seeming to have
-> a situation where CPU flags a known to disappear (or appear) arbitrarily
-> in microcode updates.
+>     - Host passthrough
+>     - Named CPU models
+>     - Then there's the libvirt abstraction, "host-model", that aims to
+>       provide the best of 'host-passthrough' + named CPU models.
 >
-> The s390x idea of a "migratable" and "non migratable" model for each
-> HW generation is a nice simplification, but I can't see how it could
-> be made to work for x86 when you can't predict ahead of time what
-> features are going to be removed from existing HW definition by the
-> next microcode update, or by the next CPU SKU that removes a feature
-> you had assumed would always be present in a given HW generation.
+>     Now I see the term "host 'custom' model" here.  Most
+>     management-layer tools and libvirt users are familiar with the
+>     classic terms "host-model" or "custom".  If we now say "host
+>     'custom' model", it can create confusion.  I hope we can settle on
+>     one of the existing terms, or create a new term if need be.
 >
-> I don't know much about how ARM world works, but having lots of vendors
-> competing with their own custom impls makes me worry complexity will
-> be closer to x86 than to s390.
-
-My concern was more about code complexity, not hw complexity. We'll
-probably end up with a zoo of weird creatures for Arm, but I don't see a
-reason why the code would need to have strange things tacked
-on. I.e. have a set of arch extensions that you can baseline to, and
-have individual cpus on top, so you can deal with both well-known cpus
-and more boutique ones.
-
+>     (I'll share one more thought on how layers above libvirt tend to use
+>     the term "custom", as a reply to patch 21/21, "arm/cpu-features:
+>     Document custom vcpu model".)
+agreed, as replied earlier, custom terminology most probably will be
+dropped.
 >
-> If the ARM specifications define a minimum require featureset for each
-> HW generation, maybe you can define a model based on that ? You might
-> still want to have vendor specific models though, if there are compelling
-> features they expose which are optional, or non-standardized.=20
+> (b) The current CPU features doc[2] for Arm doesn't mention "host
+>     passthrough" at all.  It is only implied by the last part of this
+>     paragraph, from the section titled "A note about CPU models and
+>     KVM"[3]:
+>
+>       "Named CPU models generally do not work with KVM. There are a few
+>       cases that do work [...] but mostly if KVM is enabled the 'host'
+>       CPU type must be used."
+indeed
+>
+>     Related: in your reply[4] to Dan in this series, you write: "Having
+>     named models is the next thing".  So named CPU models will be a
+>     thing in Arm, too?  Then the above statement in the Arm
+>     'cpu-features' will need updating :-)
 
-We have a list of features that are optional for a given arch extension,
-and a list of features that are mandatory, so I think we'd be able to
-generate a model with the mandatory features only. Models for individual
-cpus could base off these. (There are currently 13 vendors defined in
-MIDR, but I'm not sure how often new vendors might be added, and vendors
-may also be more or less active.) If you have a baseline of Arm v9.2 or
-so, that might already go a long way.
+Yes named models implementing a baseline are the end goal.
+>
+> [...]
+>
+>> - the QEMU layer does not take care of IDREG field value consistency.
+>>   The kernel neither. I imagine this could be the role of the upper
+>>   layer to implement a vcpu profile that makes sure settings are
+>>   consistent. Here we come to "named" models. What should they look
+>>   like on ARM?
+> Are there reasons why they can't be similar to how x86 reports in
+> `qemu-system-x86 -cpu help`?  
+>
+> E.g. If it's an NVIDIA "Grace A02" (Neoverse-V2) host, it can report:
+>
+>     [gracehopper] $> qemu-kvm -cpu help
+>     Available CPUs:
+>       gracehopper-neoverse-v2
+>       cortex-a57 (deprecated)
+>       host
+>       max
+>
+> Or whatever is the preferred nomenclature for ARM.  It also gives users
+> of both x86 and ARM deployments a consistent expectation.  
+>
+> Currently on a "Grace A02" ("Neoverse-V2") machine, it reports:
+>
+>     [gracehopper] $> qemu-kvm -cpu help
+>     Available CPUs:
+>       cortex-a57 (deprecated)
+>       host
+>       max
+>
+> I see it's because there are no named models yet on ARM :-)
+yes this is definitively because on ARM there is no such named KVM model
+besides cortex-a57 on aarch64.
+on x86 does it return the closest named model?
 
-[But I obviously have no idea how well that will work when it meats
-reality :)]
+Thanks
+
+Eric
+>
+> [...]
+>
+> [1] https://www.qemu.org/docs/master/system/i386/cpu.html
+> [2] https://www.qemu.org/docs/master/system/arm/cpu-features.html
+> [3] https://www.qemu.org/docs/master/system/arm/cpu-features.html#a-note-about-cpu-models-and-kvm
+> [4] https://lists.nongnu.org/archive/html/qemu-arm/2024-10/msg00891.html
+>
+>

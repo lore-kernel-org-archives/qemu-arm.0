@@ -1,89 +1,95 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2001799njc;
-        Mon, 4 Nov 2024 02:15:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW2IOIw1qefDobY5Uj5NJbOO/Dl4HvAZWbQb7vyVY5pFAiQil/T3pSvm/UlhkxRElJlYusjXc/piOjDBg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFj839VIrwyi1ObkFxf2oUqUsyoQuBGb6TGRY8gmrIkIbzHktQQoTyvFE/yygpuCLEVYGY5
-X-Received: by 2002:ac8:5d01:0:b0:460:97ec:3978 with SMTP id d75a77b69052e-462b86514fcmr137895811cf.5.1730715342256;
-        Mon, 04 Nov 2024 02:15:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730715342; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2002059njc;
+        Mon, 4 Nov 2024 02:16:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX9nn45o9bx55j+kKOROzunhRhM60Etg6paKp9UEjv+1cgunvMMBMn+elZqi/5aDMfL4pntLfzaLW/EIg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHI884CB0uEZOh6h6mo5bAVPEPBF2KKCVd6a+KDfJDqlARHbx7aPd/5gOaMxToOMnTdos/q
+X-Received: by 2002:a05:6214:5981:b0:6cb:e4d3:10a0 with SMTP id 6a1803df08f44-6d35c1aea9dmr188802366d6.48.1730715371873;
+        Mon, 04 Nov 2024 02:16:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730715371; cv=none;
         d=google.com; s=arc-20240605;
-        b=gRsT/KiNgiCggJ9BrAHmSMDKNOF5EPAiQBLKpst1jet+AXwyEErAOjpdNn6Guc/3C8
-         jzzaBgU907Qqa9M7w3G8x+JoIPQgpRMC3yKThzc8nIayh/NO1FUjruaqGB9O+3rnNiXB
-         b5ED4n9/dPU0adnS3AyCEKtC9fwEEN4+icIAL70Mr27Bh8AZRDHJ+joQMr9W+qLw2g7y
-         07Fhy7xIPBQM8iIjGdPOnx/RfEA6SmktKY0pwCinsTnDeVqa1lTGE0+czHiJLp10LzUt
-         +y5o5U6fQwqugOl4JH06EjM3uGdq1chVeFr2WIFgyRU6NbfI58SgFYe2REpAiBK3Jr7Z
-         46Mw==
+        b=WCae0UHQoTFnfgAdFsznJI5OM1KWQ+PXaXopwTTP4qQRrEnkdAy1leuzmlZe8D8Ohu
+         sLFFdoN8cjsi+GskgZ8GeyzTDuQBL98bU3lgsDq3vaGX8jlLyVGWtMx8/tNfEXv/LcE8
+         0WX5EghifrNOqaMTM/cAb6uoo70UF2+/XspsHj1sbK9v9Leex3m6OmOpCWdle6KqIFdD
+         Z/E48FTICrJCpxuaY42DDIHKzNKZ4ON1HcBSaFCpD6D4OHv86GAQC9HeJ+QGJpmeixFV
+         bMzUXpqp8ANx3X+6/qvxXKFGbb3CmjD4mY50Kq+5y8mSTD7fdV5STo94j3tPoP/OetK/
+         L/qA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=C98Aoh57Ke8BBUi2KG1jgCHvhbodcB+FV9OOM1H0SoU=;
-        fh=//RUmME8FDhHHOy0et2Cqja/I65gKN6UBnwN7MzepaQ=;
-        b=EUfkJi3vFtL0QBMEenMJ+ZGpNJh9D2nrN0pZvoxNGTwMaVeYXQRErHwcqk6yeT8HnI
-         S0quBo3N85zTFVy5foj45Mm4MEzkvIMtIJTl7zvWskSFSKJ2HMjP9azP/xXTatEYLkzL
-         +2ODclcU31zepyq6urX59e/bi0/0hOtR8jLNxlsz0WL+9KbHaXVvK14OsJbd+xwUqkas
-         Nmkxs3AMye3OtjZ10qgsDHd7eBujJb/wy5vIDox1VUfB80+WaIiHM0voUcVv5g6b8iOE
-         56TBkbesFtc1/7/6DC8KbG5fSfCNQOEquOKKbA+9fhrtLaJ8u9WuBi0DC2RYuQYz71NO
-         MQ8w==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=tVjafkZnyxLi3ipSWKwXdxnsAegwe+glEiTN1gXul0Y=;
+        fh=uNljzBZjmFvWr8aOpOjwvHUiNyssvg0DhfxObsQAMtw=;
+        b=PPVQ4upCId2x/yFwbAKizUm85LnG+/61iss2MYZsUhGCaONhDtp7zBURGcHxyvjSSh
+         rcwV/+BmVpK2xdKCnOVEmDrMs4tGFudImrWldJiowE25ldt/lreXrdToeXgrPM/rWrJH
+         WhPzZUmNLElcHPK/hgreEyu4zAkZpthA8jMHrkvKI92GMuv77/2A6gl4bQ9T/jSrBoGt
+         Oqbm0TPN6fNaOwlDm+rPTlatnY+NM5faNwDLL+YRXqhXYP9UxWb1TKpk4K2B4ZXc4iuH
+         CvY+fdqw1x21x2/zYHI5JrLot5h5++shOwr9qDiAIJ4Os8qHCOC7BX9QmH6CV92HnSvN
+         7BOg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QiUBPciU;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qe0Q+X6Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ad19e857si99457791cf.309.2024.11.04.02.15.42
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d35418029fsi104971666d6.398.2024.11.04.02.16.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Nov 2024 02:15:42 -0800 (PST)
+        Mon, 04 Nov 2024 02:16:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QiUBPciU;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Qe0Q+X6Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7u7B-0000gl-Iu; Mon, 04 Nov 2024 05:15:17 -0500
+	id 1t7u7m-0000rm-Qy; Mon, 04 Nov 2024 05:15:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u77-0000g8-SS
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:16 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u7V-0000nN-Eb
+ for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:41 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u75-0006Vf-Ui
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:13 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u7S-0006dZ-T6
+ for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1730715310;
+ s=mimecast20190719; t=1730715334;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=C98Aoh57Ke8BBUi2KG1jgCHvhbodcB+FV9OOM1H0SoU=;
- b=QiUBPciULvrNnypqFcFVfDhsvXjiKKKBwgpISUxlb6NUGOxGVdOt7vI1RtxElpdjSjPZBA
- zuCeZT3FbPVv6pk+o5mPmef+PSKZBNY0iNS9w2syodKHENA8LL0WzzmBwbWsRrj9HVc5L3
- seuOUMj9PZVXMTZrNUXjQgzqGIDKv9Q=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tVjafkZnyxLi3ipSWKwXdxnsAegwe+glEiTN1gXul0Y=;
+ b=Qe0Q+X6YV/VWRsRQRRb0EZuZor9u3yy5tP8jugwVyiLImH19UA5Q/RkluyWC4Mk4y2/1d5
+ Jmeqj3GQDXhj6JTy/uBObiy/YujyAnPaBJ+eMVzAmKgiMjs/qa3Mv1S2NHYZ1dRDtLxhSr
+ CHzURy5FPnUqj1hJs04ZLu+eVbZLlSA=
 Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-283-9tJrE9DwPxyCG0QntK9b1w-1; Mon,
- 04 Nov 2024 05:15:06 -0500
-X-MC-Unique: 9tJrE9DwPxyCG0QntK9b1w-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-679-MzM_2Z0OMz6-inl4uFfUgQ-1; Mon,
+ 04 Nov 2024 05:15:30 -0500
+X-MC-Unique: MzM_2Z0OMz6-inl4uFfUgQ-1
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D3DF91944CEE; Mon,  4 Nov 2024 10:15:05 +0000 (UTC)
+ id 59295193587B; Mon,  4 Nov 2024 10:15:29 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.67])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 73DE91956052; Mon,  4 Nov 2024 10:15:04 +0000 (UTC)
+ id 612661956052; Mon,  4 Nov 2024 10:15:27 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 00/10] aspeed queue
-Date: Mon,  4 Nov 2024 11:14:51 +0100
-Message-ID: <20241104101501.2487001-1-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Jan Luebbe <jlu@pengutronix.de>, Guenter Roeck <linux@roeck-us.net>
+Subject: [PULL 10/10] aspeed: Don't set always boot properties of the emmc
+ device
+Date: Mon,  4 Nov 2024 11:15:01 +0100
+Message-ID: <20241104101501.2487001-11-clg@redhat.com>
+In-Reply-To: <20241104101501.2487001-1-clg@redhat.com>
+References: <20241104101501.2487001-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -112,57 +118,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yVpfgFs09yqg
+X-TUID: smnO4nOhZBpu
 
-The following changes since commit 92ec7805190313c9e628f8fc4eb4f932c15247bd:
+Commit e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
+HW strapping") added support to boot from an eMMC device by setting
+the boot properties of the eMMC device. This change made the
+assumption that the device always has boot areas.
 
-  Merge tag 'pull-riscv-to-apply-20241031-1' of https://github.com/alistair23/qemu into staging (2024-10-31 16:34:25 +0000)
+However, if the machine boots from the flash device (or -kernel) and
+uses an eMMC device without boot areas, support would be broken. This
+impacts the ast2600-evb machine which can choose to boot from flash or
+eMMC using the "boot-emmc" machine option.
 
-are available in the Git repository at:
+To provide some flexibility for Aspeed machine users to use different
+flavors of eMMC devices (with or without boot areas), do not set the
+eMMC device boot properties when the machine is not configured to boot
+from eMMC. However, this approach makes another assumption about eMMC
+devices, namely that eMMC devices from which the machine does not boot
+do not have boot areas.
 
-  https://github.com/legoater/qemu/ tags/pull-aspeed-20241104
+A preferable alternative would be to add support for user creatable
+eMMC devices and define the device boot properties on the QEMU command
+line :
 
-for you to fetch changes up to 8df5fd815e841bf33fb51e1e6e5be9c31d529b94:
+  -blockdev node-name=emmc0,driver=file,filename=mmc-ast2600-evb.raw \
+  -device emmc,bus=sdhci-bus.2,drive=emmc0,boot-partition-size=1048576,boot-config=8
 
-  aspeed: Don't set always boot properties of the emmc device (2024-11-04 10:12:02 +0100)
+This is a global change requiring more thinking. Nevertheless, in the
+case of the ast2600-evb machine booting from an eMMC device and when
+default devices are created, the proposed change still makes sense
+since the device is required to have boot areas.
 
-----------------------------------------------------------------
-aspeed queue:
+Cc: Jan Luebbe <jlu@pengutronix.de>
+Fixes: e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
+HW strapping")
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Tested-by: Guenter Roeck <linux@roeck-us.net>
+Reviewed-by: Jan Luebbe <jlu@pengutronix.de>
+---
+ hw/arm/aspeed.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-* Fixed eMMC size calculation
-* Fixed IRQ definitions on AST2700
-* Added RTC support to AST2700
-* Fixed timer IRQ status on AST2600
-* Improved SDHCI model with new registers
-* Added -nodefaults support to AST1030
-* Provided a way to use an eMMC device without boot partitions
-
-----------------------------------------------------------------
-Cédric Le Goater (1):
-      aspeed: Don't set always boot properties of the emmc device
-
-Jamin Lin (5):
-      aspeed/soc: Support RTC for AST2700
-      hw/timer/aspeed: Fix coding style
-      hw/timer/aspeed: Fix interrupt status does not be cleared for AST2600
-      hw/sd/aspeed_sdhci: Introduce Capabilities Register 2 for SD slot 0 and 1
-      aspeed: Support create flash devices via command line for AST1030
-
-Jan Luebbe (1):
-      hw/sd/sdcard: Fix calculation of size when using eMMC boot partitions
-
-Patrick Leis (1):
-      hw/arm: enable at24c with aspeed
-
-Peter Maydell (2):
-      hw/arm/aspeed_ast27x0: Use bsa.h for PPI definitions
-      hw/arm/aspeed_ast27x0: Avoid hardcoded '256' in IRQ calculation
-
- hw/arm/aspeed.c         | 38 +++++++++++++++++++++++++-------------
- hw/arm/aspeed_ast27x0.c | 33 ++++++++++++++++++++++-----------
- hw/sd/aspeed_sdhci.c    | 40 +++++++++++++++++++++++++++++-----------
- hw/sd/sd.c              |  4 +++-
- hw/timer/aspeed_timer.c | 15 +++++++++------
- hw/arm/Kconfig          |  1 +
- 6 files changed, 89 insertions(+), 42 deletions(-)
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index e447923536b4..6ca145362cbd 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -338,10 +338,20 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
+             return;
+         }
+         card = qdev_new(emmc ? TYPE_EMMC : TYPE_SD_CARD);
+-        if (emmc) {
++
++        /*
++         * Force the boot properties of the eMMC device only when the
++         * machine is strapped to boot from eMMC. Without these
++         * settings, the machine would not boot.
++         *
++         * This also allows the machine to use an eMMC device without
++         * boot areas when booting from the flash device (or -kernel)
++         * Ideally, the device and its properties should be defined on
++         * the command line.
++         */
++        if (emmc && boot_emmc) {
+             qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
+-            qdev_prop_set_uint8(card, "boot-config",
+-                                boot_emmc ? 0x1 << 3 : 0x0);
++            qdev_prop_set_uint8(card, "boot-config", 0x1 << 3);
+         }
+         qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
+                                 &error_fatal);
+-- 
+2.47.0
 

@@ -1,100 +1,103 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp1974266njc;
-        Mon, 4 Nov 2024 01:09:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVbVp0liRjNuh919hL0Na8rOwUXsgns5KajWaM3L95QvygqhN+wa48dqhEnj//614gjK0kAHnyYttAp+A==@linaro.org
-X-Google-Smtp-Source: AGHT+IG+h7xxIVHffrjdQNImKm7HszETVZWqeOVhwZXKqtCoHedRm0IVvl/WHnwXnYX43xMkMvO/
-X-Received: by 2002:a05:6102:3584:b0:4a5:b5db:ec5e with SMTP id ada2fe7eead31-4a90108f45cmr19125335137.27.1730711396987;
-        Mon, 04 Nov 2024 01:09:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730711396; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2001799njc;
+        Mon, 4 Nov 2024 02:15:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW2IOIw1qefDobY5Uj5NJbOO/Dl4HvAZWbQb7vyVY5pFAiQil/T3pSvm/UlhkxRElJlYusjXc/piOjDBg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFj839VIrwyi1ObkFxf2oUqUsyoQuBGb6TGRY8gmrIkIbzHktQQoTyvFE/yygpuCLEVYGY5
+X-Received: by 2002:ac8:5d01:0:b0:460:97ec:3978 with SMTP id d75a77b69052e-462b86514fcmr137895811cf.5.1730715342256;
+        Mon, 04 Nov 2024 02:15:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730715342; cv=none;
         d=google.com; s=arc-20240605;
-        b=Pxj5yZfRGj3M0hRP1iqgH0LZ0uZXyRsTOJNJClf/QRoTu/iN5kvA2qUvXspbAyg5g9
-         YdqMEmXJ+mnjTASQICWfhQjc7+eg1glpbT1XOkeP+4n4X3WlvAusmucDYjS0HIAyTnM7
-         sgv6EKQXEQoHhetitIRHb/yz/tLHWPBDJR0NhkCapGquxEsFii+zCt64eelycZi3ggxP
-         mZ5NlWIJ1UL8zFo+myQ7SQMTHgeDuDmnMPB3aDYf3YQ4xdz5lXgTGbgi7oyr/+SGuA0K
-         OTqekEqOsGwv3efPHvDi0Ums2xbnEIRsICWWSuQ7hrpTk6wj7Sx1mx4q4ALOpsZP6VNM
-         n7wQ==
+        b=gRsT/KiNgiCggJ9BrAHmSMDKNOF5EPAiQBLKpst1jet+AXwyEErAOjpdNn6Guc/3C8
+         jzzaBgU907Qqa9M7w3G8x+JoIPQgpRMC3yKThzc8nIayh/NO1FUjruaqGB9O+3rnNiXB
+         b5ED4n9/dPU0adnS3AyCEKtC9fwEEN4+icIAL70Mr27Bh8AZRDHJ+joQMr9W+qLw2g7y
+         07Fhy7xIPBQM8iIjGdPOnx/RfEA6SmktKY0pwCinsTnDeVqa1lTGE0+czHiJLp10LzUt
+         +y5o5U6fQwqugOl4JH06EjM3uGdq1chVeFr2WIFgyRU6NbfI58SgFYe2REpAiBK3Jr7Z
+         46Mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id;
-        bh=AALid2C27ri7YzYBGgF8YZtSc9EQ1dEROrv5tI+VFY4=;
-        fh=rmQsTAwe9wNi+R5V2shMGkhFztzQmGwp9RZVnibn9xo=;
-        b=bKYeQL9ETpRCluLD2PK6HGaL/tEvIXHb7yuEB+Ly7KmloGKgIa0KY4mapjel8RXFBI
-         +1WJI+aZfdxYAb2/pY38DOk3FMaqU50+BYg/Ko1gE1q+SeC9dD5Nh5JBtn5lkzpixkPM
-         q1iH1nfIGyldIPaOizKEdNjawK+EuCeyjROwe+Yo7CPCW4XI5OzrMWW7ahmrF3afW1ZK
-         7++8y6TuMnzt3jgEXM67JY91BVmHQsh5NXcA48NjwjbZZic+XrN9plar1/34QPRdWrH7
-         bBxePaiqN1dmiNZ4Zvr2KObQ2TBwF64NJnpgzDeRlPHbt8bDV3Npg7qFw2Vso5JsJWLY
-         WZJw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=C98Aoh57Ke8BBUi2KG1jgCHvhbodcB+FV9OOM1H0SoU=;
+        fh=//RUmME8FDhHHOy0et2Cqja/I65gKN6UBnwN7MzepaQ=;
+        b=EUfkJi3vFtL0QBMEenMJ+ZGpNJh9D2nrN0pZvoxNGTwMaVeYXQRErHwcqk6yeT8HnI
+         S0quBo3N85zTFVy5foj45Mm4MEzkvIMtIJTl7zvWskSFSKJ2HMjP9azP/xXTatEYLkzL
+         +2ODclcU31zepyq6urX59e/bi0/0hOtR8jLNxlsz0WL+9KbHaXVvK14OsJbd+xwUqkas
+         Nmkxs3AMye3OtjZ10qgsDHd7eBujJb/wy5vIDox1VUfB80+WaIiHM0voUcVv5g6b8iOE
+         56TBkbesFtc1/7/6DC8KbG5fSfCNQOEquOKKbA+9fhrtLaJ8u9WuBi0DC2RYuQYz71NO
+         MQ8w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QiUBPciU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b2f39f242dsi1051184585a.39.2024.11.04.01.09.56
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad19e857si99457791cf.309.2024.11.04.02.15.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Nov 2024 01:09:56 -0800 (PST)
+        Mon, 04 Nov 2024 02:15:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QiUBPciU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7t5T-00054N-KF; Mon, 04 Nov 2024 04:09:27 -0500
+	id 1t7u7B-0000gl-Iu; Mon, 04 Nov 2024 05:15:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
- id 1t7t5S-000547-3w
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 04:09:26 -0500
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u77-0000g8-SS
+ for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
- id 1t7t5Q-0002i9-EG
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 04:09:25 -0500
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.whiteo.stw.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <jlu@pengutronix.de>)
- id 1t7t5M-0006t9-1Q; Mon, 04 Nov 2024 10:09:20 +0100
-Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77])
- by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.96)
- (envelope-from <jlu@pengutronix.de>) id 1t7t5L-001x1m-27;
- Mon, 04 Nov 2024 10:09:19 +0100
-Received: from localhost ([127.0.0.1])
- by ptz.office.stw.pengutronix.de with esmtp (Exim 4.96)
- (envelope-from <jlu@pengutronix.de>) id 1t7t5K-00Cohd-2y;
- Mon, 04 Nov 2024 10:09:19 +0100
-Message-ID: <80d49b179da1b9162141e8594be297d54be1a638.camel@pengutronix.de>
-Subject: Re: [PATCH v2] aspeed: Don't set always boot properties of the emmc
- device
-From: Jan =?ISO-8859-1?Q?L=FCbbe?= <jlu@pengutronix.de>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>, 
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Steven Lee	
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin	
- <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Joel Stanley <joel@jms.id.au>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
- <philmd@linaro.org>, Guenter Roeck	 <linux@roeck-us.net>
-Date: Mon, 04 Nov 2024 10:09:19 +0100
-In-Reply-To: <20241103210829.2307729-1-clg@redhat.com>
-References: <20241103210829.2307729-1-clg@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.1 (by Flathub.org) 
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1t7u75-0006Vf-Ui
+ for qemu-arm@nongnu.org; Mon, 04 Nov 2024 05:15:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1730715310;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=C98Aoh57Ke8BBUi2KG1jgCHvhbodcB+FV9OOM1H0SoU=;
+ b=QiUBPciULvrNnypqFcFVfDhsvXjiKKKBwgpISUxlb6NUGOxGVdOt7vI1RtxElpdjSjPZBA
+ zuCeZT3FbPVv6pk+o5mPmef+PSKZBNY0iNS9w2syodKHENA8LL0WzzmBwbWsRrj9HVc5L3
+ seuOUMj9PZVXMTZrNUXjQgzqGIDKv9Q=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-283-9tJrE9DwPxyCG0QntK9b1w-1; Mon,
+ 04 Nov 2024 05:15:06 -0500
+X-MC-Unique: 9tJrE9DwPxyCG0QntK9b1w-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D3DF91944CEE; Mon,  4 Nov 2024 10:15:05 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.192.67])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 73DE91956052; Mon,  4 Nov 2024 10:15:04 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 00/10] aspeed queue
+Date: Mon,  4 Nov 2024 11:14:51 +0100
+Message-ID: <20241104101501.2487001-1-clg@redhat.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: jlu@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: qemu-arm@nongnu.org
-Received-SPF: pass client-ip=2a0a:edc0:2:b01:1d::104;
- envelope-from=jlu@pengutronix.de; helo=metis.whiteo.stw.pengutronix.de
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,101 +112,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5u5xcWqW1Osy
+X-TUID: yVpfgFs09yqg
 
-On Sun, 2024-11-03 at 22:08 +0100, C=C3=A9dric Le Goater wrote:
-> Commit e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
-> HW strapping") added support to boot from an eMMC device by setting
-> the boot properties of the eMMC device. This change made the
-> assumption that the device always has boot areas.
->=20
-> However, if the machine boots from the flash device (or -kernel) and
-> uses an eMMC device without boot areas, support would be broken. This
-> impacts the ast2600-evb machine which can choose to boot from flash or
-> eMMC using the "boot-emmc" machine option.
->=20
-> To provide some flexibility for Aspeed machine users to use different
-> flavors of eMMC devices (with or without boot areas), do not set the
-> eMMC device boot properties when the machine is not configured to boot
-> from eMMC. However, this approach makes another assumption about eMMC
-> devices, namely that eMMC devices from which the machine does not boot
-> do not have boot areas.
->=20
-> A preferable alternative would be to add support for user creatable
-> eMMC devices and define the device boot properties on the QEMU command
-> line :
->=20
-> =C2=A0 -blockdev node-name=3Demmc0,driver=3Dfile,filename=3Dmmc-ast2600-e=
-vb.raw \
-> =C2=A0 -device emmc,bus=3Dsdhci-bus.2,drive=3Demmc0,boot-partition-size=
-=3D1048576,boot-config=3D8
->=20
-> This is a global change requiring more thinking. Nevertheless, in the
-> case of the ast2600-evb machine booting from an eMMC device and when
-> default devices are created, the proposed change still makes sense
-> since the device is required to have boot areas.
->=20
-> Cc: Jan Luebbe <jlu@pengutronix.de>
-> Fixes: e554e45b4478 ("aspeed: Tune eMMC device properties to reflect
-> HW strapping")
-> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
-> Tested-by: Guenter Roeck <linux@roeck-us.net>
-> ---
->=20
-> =C2=A0Changes in v2:
->=20
-> =C2=A0- Simplified "boot-config setting
->=20
-> =C2=A0hw/arm/aspeed.c | 16 +++++++++++++---
-> =C2=A01 file changed, 13 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index e447923536b4..6ca145362cbd 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -338,10 +338,20 @@ static void sdhci_attach_drive(SDHCIState *sdhci, D=
-riveInfo *dinfo, bool emmc,
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-return;
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 card =3D qdev_new(emmc ?=
- TYPE_EMMC : TYPE_SD_CARD);
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (emmc) {
-> +
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /*
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * Force the boot proper=
-ties of the eMMC device only when the
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * machine is strapped t=
-o boot from eMMC. Without these
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * settings, the machine=
- would not boot.
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 *
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * This also allows the =
-machine to use an eMMC device without
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * boot areas when booti=
-ng from the flash device (or -kernel)
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * Ideally, the device a=
-nd its properties should be defined on
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * the command line.
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 if (emmc && boot_emmc) {
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
-qdev_prop_set_uint64(card, "boot-partition-size", 1 * MiB);
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_=
-prop_set_uint8(card, "boot-config",
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 boot_emmc ? 0x1 << 3 : 0x0);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_=
-prop_set_uint8(card, "boot-config", 0x1 << 3);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 qdev_prop_set_drive_err(=
-card, "drive", blk_by_legacy_dinfo(dinfo),
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 &error_fatal);
+The following changes since commit 92ec7805190313c9e628f8fc4eb4f932c15247bd:
 
-Reviewed-by: Jan Luebbe <jlu@pengutronix.de>
+  Merge tag 'pull-riscv-to-apply-20241031-1' of https://github.com/alistair23/qemu into staging (2024-10-31 16:34:25 +0000)
 
-Thanks,
-Jan
+are available in the Git repository at:
+
+  https://github.com/legoater/qemu/ tags/pull-aspeed-20241104
+
+for you to fetch changes up to 8df5fd815e841bf33fb51e1e6e5be9c31d529b94:
+
+  aspeed: Don't set always boot properties of the emmc device (2024-11-04 10:12:02 +0100)
+
+----------------------------------------------------------------
+aspeed queue:
+
+* Fixed eMMC size calculation
+* Fixed IRQ definitions on AST2700
+* Added RTC support to AST2700
+* Fixed timer IRQ status on AST2600
+* Improved SDHCI model with new registers
+* Added -nodefaults support to AST1030
+* Provided a way to use an eMMC device without boot partitions
+
+----------------------------------------------------------------
+Cédric Le Goater (1):
+      aspeed: Don't set always boot properties of the emmc device
+
+Jamin Lin (5):
+      aspeed/soc: Support RTC for AST2700
+      hw/timer/aspeed: Fix coding style
+      hw/timer/aspeed: Fix interrupt status does not be cleared for AST2600
+      hw/sd/aspeed_sdhci: Introduce Capabilities Register 2 for SD slot 0 and 1
+      aspeed: Support create flash devices via command line for AST1030
+
+Jan Luebbe (1):
+      hw/sd/sdcard: Fix calculation of size when using eMMC boot partitions
+
+Patrick Leis (1):
+      hw/arm: enable at24c with aspeed
+
+Peter Maydell (2):
+      hw/arm/aspeed_ast27x0: Use bsa.h for PPI definitions
+      hw/arm/aspeed_ast27x0: Avoid hardcoded '256' in IRQ calculation
+
+ hw/arm/aspeed.c         | 38 +++++++++++++++++++++++++-------------
+ hw/arm/aspeed_ast27x0.c | 33 ++++++++++++++++++++++-----------
+ hw/sd/aspeed_sdhci.c    | 40 +++++++++++++++++++++++++++++-----------
+ hw/sd/sd.c              |  4 +++-
+ hw/timer/aspeed_timer.c | 15 +++++++++------
+ hw/arm/Kconfig          |  1 +
+ 6 files changed, 89 insertions(+), 42 deletions(-)
+

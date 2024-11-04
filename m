@@ -1,176 +1,115 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2081812njc;
-        Mon, 4 Nov 2024 04:59:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUwWEgpBzo7eD8AZda9Wqghuyq1A8zNgJMJhQ4SvtbWrP1F2AuK+m1fczNCbwr0W8NiB3BoALaPUkWtjA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGTo6gItm3q6hf11KhExp7RZvbavz/y7ZuAqgkcIss8n5q3gr1wHoiu5uBPSi0TBNE04PoT
-X-Received: by 2002:a05:6214:598b:b0:6cb:99db:bdd5 with SMTP id 6a1803df08f44-6d35c1996e3mr185380546d6.39.1730725189551;
-        Mon, 04 Nov 2024 04:59:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730725189; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2101872njc;
+        Mon, 4 Nov 2024 05:27:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUfaTxlDL4ftGEc0h3LWpukERLCMv10DoMPzYPocDueISNoh8oZUz75RT4ZNUy13VAhq9kwseG1kmTHmw==@linaro.org
+X-Received: by 2002:a05:6402:13c8:b0:5ce:d277:a5bf with SMTP id 4fb4d7f45d1cf-5ced277a5ebmr4655832a12.16.1730726831750;
+        Mon, 04 Nov 2024 05:27:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730726831; cv=none;
         d=google.com; s=arc-20240605;
-        b=fFVyDW4bPbB7N8tbG8NR6ov6/w9mF7DofIWEyFBl5Wy6WNc3vbpwX6xiJo4lY2FWv2
-         LMJnvtIRFphLTT7H64Qmp9bKDH0DWeb6Or+9i7dLxSchfuiJZnMIawLvO0pHaqC/Fqlc
-         9HAvYSNIdhiHh+U1caOs/BWnk/OarkBi4K5sCHwAuY59pGp99OkIdVkwhp7G+w71gvHM
-         2rKztYUheVuXYc+tP6EqR9VGNEudAMaZwJajQZaH2aV96tr2qEh5IFpvJMkxqlsb4xsV
-         rMQeCj+InqcI6qPnAPpRo2TxqAxqZkjMdL1v8OZevfV92CTQXzNYeesITMGpscG9fuKP
-         R3cA==
+        b=XQjOFV+xBbahb1o41cgQMbQk0I9YjsGHuXNGzu6zrB2FZaDohR3vAx70z/0uEzapN5
+         N8ZaB/4gLlpGQRtQ6c2GZi2PAd3C4KPALfofBRisJGPmjl4mQiSa5PJ90CX+ND997aol
+         19hHKMWIIPGHrV0BqsK0E43407euskTtM7qyNoK15Fl5cDPNnYSsyIk6lnqUmVf6Sy6W
+         2kStJij/7A7ONkl9kwYRwXq4jgar5bRTLJfvi5OqgSyT5fEkzyoRnnqaAXJ+PRkBp9I0
+         DsOhkF2MVPDjRQIULODXruLwu0OeBTpvzQeGOZ9BBadT2ctO3yXTaXzZSTDhpqLaZ/59
+         o+7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=usraR9Sgjvrl3oPL/nuvCEg/Bb2HrMmnGGynllF0mp8=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=CmuDtWHlFT5HKyyH7SCG9kYcX8SyXlPJyxYCpx6vHnCbY0BQNrvVullj20Ba9y+BkD
-         Cth/U7bRX94KI3E16ukDITcy0r4rD4zwG25sUeTH23BrhOYaXj01twpV0BCJHAEbBCil
-         +H5bCgoxHf/JgcU0YYw4NSnwVmqebyGbFAXuCsIg1iv734SOqJ6CGzegyjZNoPx80j/J
-         Kh/ehcmiIrqpUAUCq8gy10UC6WztezfKtKb+8KnUQPot54FEA2DIMDYXxIavXdGLjJjm
-         PY6i9yCt3FkzTVr6wcVtK+ajHE+xcm5SO77bDeqdJIy/RxjVY58RXbYUtwZhFjZ9iHr+
-         TEWA==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=AkttCzgUV3BRt8IPVgGGCOwte4MCCFD2pradZxoj/H0=;
+        fh=zchmNQJi8jv1VB2ZJWoSs5SigZwoa8UukaYZ+57rBcg=;
+        b=l0sVpNfMAi7PO2xP0JWhQp/1R/Vn2wVq/wcyWDuZJEO0801dIZH/xxqTG46u8DqzB4
+         ty0hoMLYsTIegr7fbjxVg06OWgmOiVHIFFSiMRJ37onoPzCnuAwO0Qpg65U0JQt7jw71
+         uILrzkbP0+sbbtxNErTFboF2VMK12OTWevDCNuEg1Rd/CiBK5LFHilFBy4wTIKUWCgFY
+         qanCm3PfLyPisJhQn01xFhn6bMOi+L1YvqULgK7zzcW/+R5c2Fsy2BdoMkFSHu6ji17U
+         +Td4nkdUY7OOTQCkBMf4z4WN8XMwphsBXxZToh2m8gloYRNXMsRlws4xqUnNA2rDaMND
+         l5zA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X845xrSQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=q09r0KUS;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d35417f3cdsi106838796d6.359.2024.11.04.04.59.49
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5ceac7448adsor3785048a12.2.2024.11.04.05.27.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 04 Nov 2024 04:59:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 04 Nov 2024 05:27:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X845xrSQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=q09r0KUS;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t7wg6-0005xg-1O; Mon, 04 Nov 2024 07:59:30 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t7wg4-0005xI-G7
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 07:59:28 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t7wg2-0004k5-N9
- for qemu-arm@nongnu.org; Mon, 04 Nov 2024 07:59:28 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5ceccffadfdso1757894a12.2
- for <qemu-arm@nongnu.org>; Mon, 04 Nov 2024 04:59:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730725165; x=1731329965; darn=nongnu.org;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :from:to:cc:subject:date:message-id:reply-to;
- bh=usraR9Sgjvrl3oPL/nuvCEg/Bb2HrMmnGGynllF0mp8=;
- b=X845xrSQ+cSQXnxrF4XGTzqkzMHt3PWis88CK85ljW0jlmsBh9dnaeK1y3eh3EkzFO
- GwHETMnVs4/qAOF77OLJYRP4Ar9B3f8NMDQWRsogxpoJ01NzDdG7Ust/EI3jT9l1oXuV
- +VMfsJUdUnGCA+YvCVYJrrjmDXgfdNBOGtHAtuSex4uDKVvY8C4rGGicHCyt59aifyXs
- bTBY1VQu5jQH5KrENDBml9cEoWvntOTOer+VB4dbEdRGN67+FQTrh8kYkkecOktFpvpb
- Cp+4tzOLf0cL7H00onxlgQePnHiZNIWAs+azcslIPr+DTEqNHdvj0FhKKivwmQqHvxms
- ZQnA==
+        d=linaro.org; s=google; t=1730726831; x=1731331631; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=AkttCzgUV3BRt8IPVgGGCOwte4MCCFD2pradZxoj/H0=;
+        b=q09r0KUS7IlupPrXmoRCEJ4gFa9TM4RFejGnbWN/02vABPDpGczHU2ISjIZDIOwvMW
+         YwLNzlJrfFty0NNBdLXzEHhB+ceBjMdiVkIwj44zGF+9f+ftKtmrNKNXdPqER+dQ1NsO
+         8IUarnNAiK09LDdoqraps6TykM+t5ONfsnCjeNvNWS3vnHEFhVG5cgxNGgehHkxgRwwS
+         ndj5vy8L9x+pozFaRxIV1ISVxPUkogahZByeTyJTj8KdSLr0Jr6WzX3xEHAV7L6TnaRv
+         dhzuTVMRfEuExbJhCFvzJytktoF/IqnFqwXUivEkZ+VaRkEbvfQpfKsGTVrmCi5PvfCc
+         dwYA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730725165; x=1731329965;
- h=to:subject:message-id:date:from:in-reply-to:references:mime-version
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=usraR9Sgjvrl3oPL/nuvCEg/Bb2HrMmnGGynllF0mp8=;
- b=hctTP4fRQQIOjtvJFV1Vbex9vLdnlwtab6AdQ2g0bbNw37tkt34HPvQTpat9zM1MOy
- KkT0nUbTwuJ6ctEoXL4PlxbYyCzrQeikfu6w4tpQKfTBmtUYRctR1wVhfOLrvnOElc5p
- DcQHLPRN0My0z76JACS+/Dh4nwidHO4X00tGI/IeRBvGFQXTgs72JRiNyiUgqEgergxk
- oGL9+eOzQgVMpOAsVsd4Y8yc4LHNt6Eu1tvVf5ay2vnZSn4Y9YqibrkkzPZA8y9lDbpR
- 2UhYt6USWo977xMPMGBRwxl9ykGL+vXQQ3xFBD3z22X7HGU2hWn5EkbLAdpUID+UinUX
- KglA==
-X-Gm-Message-State: AOJu0YyYjLYPyaYWAwwiwCjvIS0rwzhnafHWgd6tDjN2DKqV8GRqNO1Y
- EJ4HHDXFqEs0tJhbwWRDi7DAFgHmu3qSpvMFSKZ4B5hPMFqEitPF2Hk8WOUdcFAaT2rGUCR0UJB
- OBO/3pVY9z+RMr0lr9A596RHZjSWDB73o+cPOIBNnVJ4v/Hkh
-X-Received: by 2002:a05:6402:2708:b0:5ca:da2:b2ca with SMTP id
- 4fb4d7f45d1cf-5cea96894e1mr12916774a12.19.1730725163502; Mon, 04 Nov 2024
- 04:59:23 -0800 (PST)
+        d=1e100.net; s=20230601; t=1730726831; x=1731331631;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=AkttCzgUV3BRt8IPVgGGCOwte4MCCFD2pradZxoj/H0=;
+        b=eMFW1/qBvWVom4uZAnhHYY12FXlZdxwLzYwXxSoFA7GGqtOfhU2ZJf7hEsLB3W/wl+
+         mtTBi5fkPjAH4E9G2wxCC9m3ErXnP/qdJJQM3dM9QZIW58LBGruSIf1EVSHsFehsJ/Nt
+         n/fxZ3/VMAbGtoy4g0fKrr3AdcK4Mzwqjmu6pTTswEUtDndqvvy8EFDe9NJYVvvogXCZ
+         kFWtwuADMGkMFCSnl1bUZr8RevSNJDiEtWDyN2fCWdNOuEvKrJaVEI8uCMeDRAXF8tMg
+         saKyQdp0vLy0wRvc6T+upPx1/VZwR7+g5PCV2u8TsAt1RDXampUhT4i/fEmy/8dEqyT8
+         9uqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW/JrbA13zAa70fvVyCnLvwEyln1YTEXqnOdrqpDCiagG+LRLf/YwAxsdnvcCsL2pIwR+LFS0lSwv3FBQ==@linaro.org
+X-Gm-Message-State: AOJu0YwsaX3e49f+aYXAzOg/G9NJSuq4K+Jd8jtvgIH81rn7HITdIJc6
+	uONLu9t3NYOYNK4Xtoe+zuobQhDndwoDhnCzmXP3mb/qwzSemXBbpSzJ/aAdVAXklVIgNT9DIt+
+	NZ+q8myiZEC1TTvdIgDB7mLhe2abQK+eSiStuLNzt
+X-Google-Smtp-Source: AGHT+IFXAkc6iIy34i7xg898djnsHLTDuDGjZ2mN0WPUbUdzvkLwwto8V/maKZsbdiwr0farIxVEE3qUUZn+/Syf25g=
+X-Received: by 2002:a05:6402:2111:b0:5ce:dfbc:7fa5 with SMTP id
+ 4fb4d7f45d1cf-5cedfbc8197mr937401a12.25.1730726831066; Mon, 04 Nov 2024
+ 05:27:11 -0800 (PST)
 MIME-Version: 1.0
-References: <20241101142845.1712482-1-peter.maydell@linaro.org>
-In-Reply-To: <20241101142845.1712482-1-peter.maydell@linaro.org>
+References: <20241103152455.202462-1-salil.mehta@huawei.com>
+In-Reply-To: <20241103152455.202462-1-salil.mehta@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Nov 2024 12:59:12 +0000
-Message-ID: <CAFEAcA8Uhj+HN0ieYetOwFEkfTb2p_71dp-A2bpc2m=nz2sHXg@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Fix EL3 AArch32 MMU index usage (again)
-To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Mon, 4 Nov 2024 13:26:59 +0000
+Message-ID: <CAFEAcA91DoU4dAHYy6OOeMjEQ+0LGZX8KM-rKsCh89UnFS4yTQ@mail.gmail.com>
+Subject: Re: [PATCH] arm/virt: Extract common code to wire GICC<->vCPU IRQs
+ for reuse
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, mst@redhat.com, 
+	richard.henderson@linaro.org, jonathan.cameron@huawei.com, 
+	alex.bennee@linaro.org, imammedo@redhat.com, pbonzini@redhat.com, 
+	gshan@redhat.com, maz@kernel.org, will@kernel.org, oliver.upton@linux.dev, 
+	jean-philippe@linaro.org, lpieralisi@kernel.org, david@redhat.com, 
+	philmd@linaro.org, andrew.jones@linux.dev, eric.auger@redhat.com, 
+	npiggin@gmail.com, harshpb@linux.ibm.com, linux@armlinux.org.uk, 
+	darren@os.amperecomputing.com, ilkka@os.amperecomputing.com, 
+	vishnu@os.amperecomputing.com, karl.heubaum@oracle.com, 
+	miguel.luis@oracle.com, salil.mehta@opnsrc.net, zhukeqian1@huawei.com, 
+	wangxiongfeng2@huawei.com, wangyanan55@huawei.com, jiakernel2@gmail.com, 
+	maobibo@loongson.cn, lixianglai@loongson.cn, shahuang@redhat.com, 
+	zhao1.liu@intel.com, linuxarm@huawei.com, gustavo.romero@linaro.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: utVVbC3ePfQR
+X-TUID: P+xTQlL73CHb
 
-On Fri, 1 Nov 2024 at 14:28, Peter Maydell <peter.maydell@linaro.org> wrote:
+On Sun, 3 Nov 2024 at 15:25, Salil Mehta <salil.mehta@huawei.com> wrote:
 >
-> In commit 4c2c0474693229 I tried to fix a problem with our
-> usage of MMU indexes when EL3 is AArch32. The problem we're
-> trying to fix is:
+> Extract common GIC and CPU interrupt wiring code to improve code
+> readability and modularity, supporting reuse in future patch sets. This
+> refactor is benign and introduces *no* functional changes.
 >
->     Architecturally, when EL3 is AArch32, all Secure code runs under the
->     Secure PL1&0 translation regime:
->      * code at EL3, which might be Mon, or SVC, or any of the
->        other privileged modes (PL1)
->      * code at EL0 (Secure PL0)
->
->     This is different from when EL3 is AArch64, in which case EL3 is its
->     own translation regime, and EL1 and EL0 (whether AArch32 or AArch64)
->     have their own regime.
->
->     We claimed to be mapping Secure PL1 to our ARMMMUIdx_EL3, but didn't
->     do anything special about Secure PL0, which meant it used the same
->     ARMMMUIdx_EL10_0 that NonSecure PL0 does.  This resulted in a bug
->     where arm_sctlr() incorrectly picked the NonSecure SCTLR as the
->     controlling register when in Secure PL0, which meant we were
->     spuriously generating alignment faults because we were looking at the
->     wrong SCTLR control bits.
->
->     The use of ARMMMUIdx_EL3 for Secure PL1 also resulted in the bug that
->     we wouldn't honour the PAN bit for Secure PL1, because there's no
->     equivalent _PAN mmu index for it.
->
-> The "spurious alignment faults" part is
-> https://gitlab.com/qemu-project/qemu/-/issues/2326
->
-> Commit 4c2c047469322 tried to fix this using what I described in the
-> commit message as a "more complicated approach", but didn't get it
-> right in several ways. Full detail in the commit message of patch 1,
-> but the major visible problem was that regime_el() would return 1
-> even when the CPU was in Monitor mode; this meant that page table
-> walks in Monitor mode would look at the wrong SCTLR, TCR, etc and
-> would generally fault when they should not.
->
-> Rather than trying to fix up the multiple problems with the complicated
-> approach, this series first reverts that commit and then fixes the
-> initial problem with the idea that commit 4c2c047469322 describes
-> as "the most straightforward" approach: we add new MMU indexes
-> EL30_0 and EL30_3_PAN, and use the EL3 index as EL30_3. These then
-> correspond to "Secure PL1&0 at PL0", "Secure PL1&0 at PL1", and
-> "Secure PL1&0 at PL1 with PAN", and parallel the NonSecure use
-> of EL10_0, EL10_1_PAN and EL10_1.
+> Note: This patch has been isolated from a larger patch set to facilitate
+> early merging and reduce the complexity of the original set, as it
+> operates independently. All original tags and author contributions are
+> retained.
 
-The submitter tells me that this also fixes
-https://gitlab.com/qemu-project/qemu/-/issues/2588
-(a different variety of "misbehaviour in Secure Monitor mode").
+I would prefer to see refactoring patches in the context of
+the series that makes them necessary. As it stands, there
+doesn't really seem to be much benefit to this change.
 
+thanks
 -- PMM

@@ -1,331 +1,153 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2103915njc;
-        Mon, 4 Nov 2024 05:30:41 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUxWoIElmRuawjO7woHFzrYCkKzzIg9B6/Ea+gcxkPd2yXv9mFR/ndZAfJjTtAGksHREom4t8rOeQM78A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFuzi8GFcIHCyOVrO+h3beJuRs2D/0zZA4AwGI6/QjwcntBJUKJp81E8oioath7bY864RYF
-X-Received: by 2002:a05:6830:310c:b0:718:2eb7:4ebe with SMTP id 46e09a7af769-7189b55cfbdmr13023106a34.27.1730727041050;
-        Mon, 04 Nov 2024 05:30:41 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1730727041; cv=pass;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2116345njc;
+        Mon, 4 Nov 2024 05:50:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUhFK+dKzsBEcOaPCtQoo9CPU3pgd4ZrYDTIBwjgWMgmUlNZOlvIMY52rfFzrEOso9MZ1U0CRLoeaoWyw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEMbcjTTQQ+s1fctW52pwdFj186lpFjFtGDyfr6EfD3LWoMyy3QLesx+A4ggwvHI5OuLaaW
+X-Received: by 2002:a05:620a:1993:b0:7b1:45be:2e87 with SMTP id af79cd13be357-7b2f24dcc7cmr2295117885a.18.1730728244011;
+        Mon, 04 Nov 2024 05:50:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730728243; cv=none;
         d=google.com; s=arc-20240605;
-        b=d0o6OzMRQravGDkyWHHErnLkLGURc1zBxcYRqMzQ7WFsm8U0MQOQ9H5iKFxolWlO6F
-         QY7P2ox26q9Z/p9vNR5IhWxrd8XSwbBzI7KEw5GoaRlMaeTic7dxad/KnKoqd3zOhSHA
-         skpAKhRgcMhJIzXwpOY6o78YUqVD4ZFrcsR5+8xN7ESEQKSpd7aZaNXyW1iPyOTFFWtS
-         AUUIxoixL+WkZon1YrrlgCfglDh5cY7rfgGAmSfC0BcG5RfkqgA2kl+//EMfq9BOrQMp
-         olWblp54ul59oabptgOQKgZ03ZwfYkUSQHS3XgIrt4mNH9wWTtARvp0YRA2xIRqZcKTe
-         2aGA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :date:message-id:dkim-signature;
-        bh=aGiEtRKqelpqDSUzw09EH7hKIXBP+iprJTrDTUj8CNs=;
-        fh=3KNNR/p7+Rn3Zkym0KqmV2Hp8XHM0xbHxqc4t/cXqUU=;
-        b=DUCUVjLPNBnJWTX9FnpcDZ1znq7+kdl9jYHM4BaFzI2OwHRDFAatyPyshkW+pLQViS
-         cx+izT1pawvQf2g2vIPQZrEE7pem9SS26s2Csw0M96tqTL2pNGIx/H/ttcQYaynbnUwk
-         Oj9LCoERyJukOdr2qGXxyXGhkR2g34ajj3UunkcxgXOJl0Sl0+IvfYr9P1++66lFzoqB
-         8pfKc/E0KyYmXZWZOiRjn3pgPC5ElFqCzEpFdq9YlUnd8fjxpjPKrSOcbwoskR4m1ZH1
-         oD8NVqzPDVXZ0uZmLf30hRMX3O2mb/MSlwojLlPeHGuyX6Y9pg+4xx9XA7+6QV7EAlyv
-         xZQg==;
+        b=iZ8iW57jD9HLJRFnxbJQB77Xd3TWK5bPajUtnNMlxptJM1VuSP+pHcCov1x4PxlaFs
+         9H/pzN+vYpLkXgf4Fc46DZFg6zcyNtlnqqj7BUmGTF8z6OfXCXvEqZbPu6qiZyqQFhJn
+         tuQkAKrTW2mwNdgGa6w09BbDM/cgHET01QwOTcibYF/W6hK3VRR6czJpOPmU9aG1n6fk
+         f2XJJDzU0RZ6oVJ6qlt1MUI5kL36VJYUa1pAMQAnKQ1Lz88pTZJ+STNsVVOCJYVsJ+ol
+         OL+U9JFqThBDwUiynQGYhdgsyf0xYgVmbnmnsbDD0B/Iqzrx3Vtn5LPqdJtwuQI5LR9t
+         W1eg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=dS1gayiJU2kFB+GNxmbWJy3bmw1afim8OPvFaUJ+fX8=;
+        fh=2NL/sGWtyDyFM0jhcB+y48S8TkgAAVqMJxBJqtzF7p0=;
+        b=knoS57X3SIgfr5M6ZGyeLpNBxqa995l7dlx7ObchAdGx/EWbnnPnFPrKrnqO73LC3g
+         Q0FxEaxey70oQ42AQQASY1/DSwFtiM4BhC6i5bUcsZElR2VO1k0q3YjzRMOLmeTlDJpB
+         a+hOpWJY/DUfe97KAcuZKl36wojOFu0+3odVs4yIvdThhiS1Nbps0Cv60ijG0HqxIw2G
+         YAkD7vZXItunZ+b/E8LT0xHXhuF9DlydZUgIJHBYfkIPalNDvHVZaw4qL9jgNE8gdN/Y
+         jNsEJ/sA2m7jLLDz7yvGI/B5qGoU21aFxGUZRZvmIGFVRM0EtKtk8lgFPNtB5q7Lcu0a
+         9H2Q==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QKM+AxID;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-30550-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-30550-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-30550-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7b2f3ad2214si1096154085a.726.2024.11.04.05.30.40
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JAEPYEMX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b2f3ad5786si1076023685a.720.2024.11.04.05.50.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Nov 2024 05:30:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-30550-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 04 Nov 2024 05:50:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QKM+AxID;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-30550-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-30550-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id AC8871C21009
-	for <alex.bennee@linaro.org>; Mon,  4 Nov 2024 13:30:40 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8DC3314A91;
-	Mon,  4 Nov 2024 13:30:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="QKM+AxID"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BFA88BEE
-	for <kvm@vger.kernel.org>; Mon,  4 Nov 2024 13:30:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1730727036; cv=none; b=t8WJx3befgO4wKqc/5taC8i/sH2WWS9nj1YVi7OG/L2HuwNMrF7KXt3rG0XGy+Vl7Zqk57QiwiJHuq+cGrMTuXl3V5/c+CxkigKjK1hiR32wiKR+SehvT3OiVClfZfXmUhR4WTUyIPPYmHyt0IOHiVv8Z/+u70RDV5TNe1AAV3A=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1730727036; c=relaxed/simple;
-	bh=RvddaWTWVjmOwgmrtpL8rDKW+PNJcfO8369touBBN3I=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=t0jBz0ZpW0sauvp/0Yg1jJ9g/Ub5wGmwZ/DJoUQaplQ8upqJKMKRJQXf6XSOcxZyUJxd0YMdt0GqZhaqzLDc73hk+7+IEbS2xHLJ3EhXMxTCfHe7muXqBNfchd7gkRL/63AVct5Cj0Wa4gTp9z2w/ljtGNJNiMiVVnHyXtc8VFw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=QKM+AxID; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1730727033;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=aGiEtRKqelpqDSUzw09EH7hKIXBP+iprJTrDTUj8CNs=;
-	b=QKM+AxID++TzRlDhqX3A2eOPifm9oCwL3cLvgjFOIYh/5fAK5q3+QyBMzQ9xQDnEfeydZp
-	vHvletXRB1IWiZ8nC5ahZF28Bb6I727eBFTJBFkqsWBJPRwPXTdpxaTAYhR9UpsYFTjj+E
-	eGFsfvGivTNbFqlBM48lsrCia0bes8Y=
-Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
- [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-512-9chIT1NQM6-hR-o3GD-DaA-1; Mon, 04 Nov 2024 08:30:32 -0500
-X-MC-Unique: 9chIT1NQM6-hR-o3GD-DaA-1
-Received: by mail-lf1-f70.google.com with SMTP id 2adb3069b0e04-539f7abe2e6so2892455e87.1
-        for <kvm@vger.kernel.org>; Mon, 04 Nov 2024 05:30:31 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=JAEPYEMX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t7xTS-0000pJ-Ng; Mon, 04 Nov 2024 08:50:30 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t7xTQ-0000os-Ii
+ for qemu-devel@nongnu.org; Mon, 04 Nov 2024 08:50:29 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t7xTO-0003xb-LD
+ for qemu-devel@nongnu.org; Mon, 04 Nov 2024 08:50:28 -0500
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-5c9454f3bfaso5482198a12.2
+ for <qemu-devel@nongnu.org>; Mon, 04 Nov 2024 05:50:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1730728225; x=1731333025; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=dS1gayiJU2kFB+GNxmbWJy3bmw1afim8OPvFaUJ+fX8=;
+ b=JAEPYEMXsajplrHf9LIN/3MIN7vbdCAYUk1M9e4AkAC62vMGoxZQ29EJUq3zgFUdLN
+ x0mjt9g+StvjAEAZk7jshjuFpwnfOGuGKx2OAG+1WM9Au9j3WkvQzmuXlKEUkU/dVYgW
+ dzkC0tsqQtCTGi8bwuhkSmtAnBfKixuunJ5Dn84XSYI0wR/WZCEkcyTwl9xOvdw+OSod
+ ujN+P1g/uhmaeTa/abgIruQchHUr/NFIZvV4PzZ2qspMn1htJgHdO5lZFKNYKdBvRuI8
+ fe1Z6qGnDbmO1Tc69x6g7UatCluWlsC0n8SI9KgN6aSNeyJSYE5ogMEwcwS9I3JAsJxQ
+ tY3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730727031; x=1731331831;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=aGiEtRKqelpqDSUzw09EH7hKIXBP+iprJTrDTUj8CNs=;
-        b=EA4UmTh/wQMiLYRxKmLI3TPw8Fw94VAIHRhBgHr9cC2H89yX7jlai62n9ZtbMGkKNj
-         70IJ2qaTIu5fXQPd6BU+lkDUrNDAZw30u1tKehNjMQ+YNSmfeRl2pZaFY6YXLcOJv5p1
-         6cCgxdx4YgYt5Dbgfr4f7z63AMV1Q/L0FC7lxOFyRZ6KQeZgebgEbNZ1CN2uLXmuLHSd
-         dxbASoNEAgtEhs7Fze9tIfI897D2jFVSmxIdWBtGvkTIOMwTZ+QA6tS/jN7Wscc+/VcY
-         pZ1bcG162QARLjMZh826bklSRM/LyG7aAw2VBD+u34E1ejcNTtuxaUKEwDwdAwPfo+zf
-         Ppnw==
-X-Forwarded-Encrypted: i=1; AJvYcCWpVSAhF9/sQciQ0u9eDb3oRWZC+RVMGkv82ShfNlAkHPP+ZjKLGoUymxLSBT5vzQcPrtU=@vger.kernel.org
-X-Gm-Message-State: AOJu0Yy8YX6o4MMdkEl5EMLr3W8GVAKstDoP73MoGGXOqctMoQpvhvys
-	WuCC6ZDMR3afeIExljKdgBtATSQtuwo3P5rpdvPmNMsCMAZii898hgum4gHYGYKHPwsaNP+Vmmg
-	RCZk84bW6+nHtvMM+Da+n/zTqy+ZkV4uj7EWwlnn6laAJufqRhA==
-X-Received: by 2002:a05:6512:1047:b0:53a:40e:d547 with SMTP id 2adb3069b0e04-53b7ecd58damr10405418e87.5.1730727030556;
-        Mon, 04 Nov 2024 05:30:30 -0800 (PST)
-X-Received: by 2002:a05:6512:1047:b0:53a:40e:d547 with SMTP id 2adb3069b0e04-53b7ecd58damr10405390e87.5.1730727029838;
-        Mon, 04 Nov 2024 05:30:29 -0800 (PST)
-Received: from ?IPV6:2a09:80c0:192:0:5dac:bf3d:c41:c3e7? ([2a09:80c0:192:0:5dac:bf3d:c41:c3e7])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4327d5e7c9asm158736435e9.21.2024.11.04.05.30.28
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Nov 2024 05:30:28 -0800 (PST)
-Message-ID: <e2ac7ad0-aa26-4af2-8bb3-825cba4ffca0@redhat.com>
-Date: Mon, 4 Nov 2024 14:30:27 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=1e100.net; s=20230601; t=1730728225; x=1731333025;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dS1gayiJU2kFB+GNxmbWJy3bmw1afim8OPvFaUJ+fX8=;
+ b=lNpEkmxydSEoEDSS97koTs8/Dw6uRSHMZc9CTpmVuNzpiU27DLj3gk83saiI9GY9E7
+ fzy1HlSe3m8rrEw6+FZcegRY/XfOCFSwAQ/z+bNhNBggivXExd/3mDsZOQwXQYA/+mnD
+ YeiHhXtDHN/v0rbCZCJ9ZC1WSiv1aLl4PkQ1zC0VjzsDYDZv1kfKmZ3l3EsbBWZ6W7k0
+ w/YDpwiibRY5V2gAQKq+dsys31WbHPk44u8z7naGqy9FfJvrNtKipv9ODYaxnRCMRG6S
+ GvmGjY2KwrleQpY6W41QBkXPl7qoHYJW7oRJlnqUXCr6cH/vjYeSg3wunaP82yLcm8zM
+ gk4A==
+X-Gm-Message-State: AOJu0YyruH2XeFu+YQoNSHPXKh0j8P75YAoivfBrj8d+Xtnmuhr6Ugte
+ 3oynEctxmO23PNjGNwUZVLaP5aBxy74al5hI6oaauDJ1jftfTwU6s2GuDIZHGv3ayWJ2PrPIWov
+ /iHgF/HANFELVAYQTvfzoYqjo4tvdhvSmIPo8gA==
+X-Received: by 2002:a05:6402:2695:b0:5c2:6d16:ad5e with SMTP id
+ 4fb4d7f45d1cf-5ceb92a7bc4mr9226036a12.19.1730728224900; Mon, 04 Nov 2024
+ 05:50:24 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 3/4] system/physmem: Largepage punch hole before reset
- of memory pages
-To: William Roche <william.roche@oracle.com>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
- joao.m.martins@oracle.com
-References: <ZwalK7Dq_cf-EA_0@x1n>
- <20241022213503.1189954-1-william.roche@oracle.com>
- <20241022213503.1189954-4-william.roche@oracle.com>
- <0cda6b34-d62c-49c7-b30c-33f171985817@redhat.com>
- <e9f8e404-50db-4e0f-a5e1-749acad49325@oracle.com>
- <6cc00e04-6e38-4970-9d6b-52b56ee20a64@redhat.com>
- <416a47ff-3324-444b-a2e2-9ea775e61244@oracle.com>
-From: David Hildenbrand <david@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <416a47ff-3324-444b-a2e2-9ea775e61244@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: FPr+skXkOH7e
+References: <20241103143330.123596-1-shentey@gmail.com>
+In-Reply-To: <20241103143330.123596-1-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Nov 2024 13:50:13 +0000
+Message-ID: <CAFEAcA_6TTBzuP=wcweMZLJKSNVz4qxT+yHOVUmPqZU-VmWPQg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/4] Trivial ARM changes
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sVdtRyifosJ9
 
->>>
->>> Remapping the page is needed to get rid of the poison. So if we want to
->>> avoid the mmap(), we have to shrink the memory address space -- which
->>> can be a real problem if we imagine a VM with 1G large pages for
->>> example. qemu_ram_remap() is used to regenerate the lost memory and the
->>> mmap() call looks mandatory on the reset phase.
->>
->> Why can't we use ram_block_discard_range() to zap the poisoned page
->> (unmap from page tables + conditionally drop from the page cache)? Is
->> there anything important I am missing?
-> 
-> Or maybe _I'm_ missing something important, but what I understand is that:
->      need_madvise = (rb->page_size == qemu_real_host_page_size());
-> 
-> ensures that the madvise call on ram_block_discard_range() is not done
-> in the case off hugepages.
-> In this case, we need to call mmap the remap the hugetlbfs large page.
-
-Right, madvise(DONTNEED) works ever since "90e7e7f5ef3f ("mm: enable 
-MADV_DONTNEED for hugetlb mappings")".
-
-But as you note, in QEMU we never called madvise(DONTNEED) for hugetlb 
-as of today. But note that we always have an "fd" with hugetlb, because 
-we never use mmap(MAP_ANON|MAP_PRIVATE|MAP_HUGETLB) in QEMU.
-
-The weird thing is that if you have a mmap(fd, MAP_PRIVATE) hugetlb 
-mapping, fallocate(fd, FALLOC_FL_PUNCH_HOLE) will *also* zap any private 
-pages. So in contrast to "ordinary" memory, the madvise(DONTNEED) is not 
-required.
-
-(yes, it's very weird)
-
-So the fallocate(fd, FALLOC_FL_PUNCH_HOLE) will zap the hugetlb page and 
-you will get a fresh one on next fault.
-
-For all the glorious details, see:
-
-https://lore.kernel.org/linux-mm/2ddd0a26-33fd-9cde-3501-f0584bbffefc@redhat.com/
+On Sun, 3 Nov 2024 at 14:34, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+> This series improves the tracing experience in three devices used in ARM
+> context. It also removes a duplicate statement in an IMX watchdog.
+>
+> v2:
+> * Fix format strings in trace events for imx_gpt (Phil)
+> * Add patch for tmp105 which improves tracing
+>
+> Bernhard Beschow (4):
+>   hw/rtc/ds1338: Trace send and receive operations
+>   hw/timer/imx_gpt: Convert DPRINTF to trace events
+>   hw/watchdog/wdt_imx2: Remove redundant assignment
+>   hw/sensor/tmp105: Convert printf() to trace event, add tracing for
+>     read/write access
 
 
-> 
-> As I said in the previous email, recent kernels start to implement these
-> calls for hugetlbfs, but I'm not sure that changing the mechanism of
-> this ram_block_discard_range() function now is appropriate.
-> Do you agree with that ?
 
-The key point is that it works for hugetlb without madvise(DONTNEED), 
-which is weird :)
+Applied to target-arm.next, thanks.
 
-Which is also why the introducing kernel change added "Do note that 
-there is no compelling use case for adding this support.
-This was discussed in the RFC [1].  However, adding support makes sense
-as it is fairly trivial and brings hugetlb functionality more in line
-with 'normal' memory."
-
-[...]
-
->>
->> So one would implement a ram_block_notify_remap() and maybe indicate if
->> we had to do MAP_FIXED or if we only discarded the page.
->>
->> I once had a prototype for that, let me dig ...
-> 
-> That would be great !  Thanks.
-
-Found them:
-
-https://gitlab.com/virtio-mem/qemu/-/commit/f528c861897d1086ae84ea1bcd6a0be43e8fea7d
-
-https://gitlab.com/virtio-mem/qemu/-/commit/c5b0328654def8f168497715409d6364096eb63f
-
-https://gitlab.com/virtio-mem/qemu/-/commit/15e9737907835105c132091ad10f9d0c9c68ea64
-
-But note that I didn't realize back then that the mmap(MAP_FIXED) is the 
-wrong way to do it, and that we actually have to DONTNEED/PUNCH_HOLE to 
-do it properly. But to get the preallocation performed by the backend, 
-it should still be valuable.
-
-Note that I wonder if we can get rid of the mmap(MAP_FIXED) handling 
-completely: likely we only support Linux with MCE recovery, and 
-ram_block_discard_range() should do what we need under Linux.
-
-That would make it a lot simpler.
-
-> 
->>
->>>
->>> I can send a new version using ram_block_discard_range() as you
->>> suggested to replace the direct call to fallocate(), if you think it
->>> would be better.
->>> Please let me know what other enhancement(s) you'd like to see in this
->>> code change.
->>
->> Something along the lines above. Please let me know if you see problems
->> with that approach that I am missing.
-> 
-> 
-> Let me check the madvise use on hugetlbfs and if it works as expected,
-> I'll try to implement a V2 version of the fix proposal integrating a
-> modified ram_block_discard_range() function.
-
-As discussed, it might all be working. If not, we would have to fix 
-ram_block_discard_range().
-
-> 
-> I'll also remove the page size information from the signal handlers
-> and only keep it in the kvm_hwpoison_page_add() function.
-
-That's good. Especially because there was talk in the last bi-weekly MM 
-sync [1] about possibly indicating only the actually failed cachelines 
-in the future, not necessarily the full page.
-
-So relying on that interface to return the actual pagesize would no be 
-future proof.
-
-That session was in general very interesting and very relevant for your 
-work; did you by any chance attend it? If not, we should find you the 
-recordings, because the idea is to be able to configure to 
-not-unmap-during-mce, and instead only inform the guest OS about the MCE 
-(forward it). Which avoids any HGM (high-granularity mapping) issues 
-completely.
-
-Only during reboot of the VM we will have to do exactly what is being 
-done in this series: zap the whole *page* so our fresh OS will see "all 
-non-faulty" memory.
-
-[1] 
-https://lkml.kernel.org/r/9242f7cc-6b9d-b807-9079-db0ca81f3c6d@google.com
-
-> 
-> I'll investigate how to keep track of the 'prealloc' attribute to
-> optionally use when remapping the hugepages (on older kernels).
-> And if you find the prototype code you talked about that would
-> definitely help :)
-
-Right, the above should help getting that sorted out (but code id 4 
-years old, so it won't "just apply").
-
--- 
-Cheers,
-
-David / dhildenb
-
+-- PMM

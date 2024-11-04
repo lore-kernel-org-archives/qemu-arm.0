@@ -1,113 +1,113 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2199221njc;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2199226njc;
         Mon, 4 Nov 2024 07:36:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV8UFPsoImOYhjk9F4DDw4euJUXOy50D2aqB1rm5hfySs44fqkWSP9k9zhDNVs5chWBj7PxMWxV27CHHw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHz/AId7C7nvtXXhKriWsbAofRYpeZFwKZCTYB/y4HkbnsQnks3FMCg8+b4VeoJ7Z9GLX8S
-X-Received: by 2002:a05:6122:1793:b0:509:e7d:b7b2 with SMTP id 71dfb90a1353d-512270ca7dbmr9981318e0c.2.1730734571344;
+X-Forwarded-Encrypted: i=2; AJvYcCXetzp+M+DhLVdEHTEtouBVReSjT4ZSQzCepVy79zmATH0/GcgMRZugcYs31J8BV58hyIsMN6qsuqfQXA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFpo1iQAXWgbar9uQhhTDoWuzUKCdVn6uNAvmZovspZATML+ZhbblQj+2UEdI1VTYUHYL0s
+X-Received: by 2002:a05:6359:410e:b0:1ba:4c2a:7675 with SMTP id e5c5f4694b2df-1c3f9b46307mr1541806255d.0.1730734571756;
         Mon, 04 Nov 2024 07:36:11 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1730734571; cv=none;
         d=google.com; s=arc-20240605;
-        b=RO8KOl+dCwk03QLZKT4YzQLq94x4qzwggK2VbtEtSVZwtGS01dOieh7mFVvRl5S8ug
-         +nG8a18QGeKq6fRYxG0N1uz88jxPg4acGZjHKu+8gnflg+uIcKJmWWt48c3SFH35o0FZ
-         s77GUDSApjPO/RfUTpRrCc8ulaRytqW61ffF6rzgllT6H+9U8AC/DtGW8Rm4zCkTpzvu
-         HfThta2yydX7hjEacSE0HKoztl9uYndRJcwyC4OPzxndHr+WEZ/OadNoWR/Fi2qX26fl
-         Vp202cT06fpS3FOfvIgCO/7GhT1tFU86mo3O+ai4lS5dY+dlFGQyZ4wNr2RjYZib5Opr
-         SLKw==
+        b=CnEo2DdRA2d4sWqeFtjpxb2JH9SSYwPsXvb3GdQ8n8zJvjC3aHx9pOdtqgT328nVC3
+         +sKcMXz/T9x+azlA1b4qch1C/HaE7+vgTna07qkJx83q8PR25fYVpw+0UGiwTaSLaAYq
+         JglFwuP5lHobQM4K3YvjYchq7I57TRCWOpCtSo/pWL2awTxsiOvNIXCfT2rMCjQA2t0g
+         xdsMVUu6lDPwNEVVfAVuHJ3ISozL1s8o5LKwa9BbTNY2oaf0r6o+Xdfa+2miX70e8wrs
+         kqdcTx/nueLcNOO4/IFaLmXsVmCMMn4gFNzTbf3Fq2ur3fB1oWYPIQuiOouK2F5Y2OMe
+         OMIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=B3T4Y7a84gLEiseyOukDpriSwBSOd9sFWxCqIXjDVVU=;
-        fh=8FprZlSMeoqi1J8uJUHhF+YzL2g/Q5jAoXGbf/nCEdE=;
-        b=a75kZoS9mNy2NSzWFImtIWGIQN9WOX5lpECzm0OcDuqKnOr0M7ZVeTbxRLVFPYXlVm
-         Z2ydOC8B3KGXZbGF4NnP4+oGrOSGFkOTmtsuHOKe02NNpVG0MInPlmaLeO6AtRoyb3Lg
-         N/mON3ea9MhqXMhWEE6kaB/1PjiTkC6NqxINFjKKPy3D96TYSoae6nWY5YJjijyGrVPu
-         4LVs8LejykMPpDjqmkh55S5HQiS0fdFo5sh0cwOfCexRMLVCUPAbVLFUPfMipiRMxbqk
-         cy7+htKOKf8sncjfM+by+48q0uoarRSkYFc0YQtPgpTv46tWyukDSctcmAYGdB3acQQG
-         vxMA==;
+        bh=hKvgXly1z1CaicGb+6SpfFpA2C3l1HDrjzMFn85ScT4=;
+        fh=OIWB/VC8bQMwGqwyaK5eKlT5WGqNLq0G6e1pCxTaYG4=;
+        b=JrAQinaSe0LmwERIxtGcCTetHj3zvx1XcSJWIzmbosXHqP3kYUXc+iZf5/gHM7a6Wx
+         ikOhQUO+Y3uL9MZpahyowcHLhmQqU11Rj51yDYqWJjk5Ap1DotDNfqYQie7ERa3qaDXZ
+         Rkx0pW4M11pZuZkZrx8WmRCrvRj3aZVEyH0MkWQqk46PR3yS7qlGi/KaO4T9cosCy4nD
+         YO5namBPVKHMY7Jbtwu/+RAjWGsHHXkR6olnf3znEEir9J6bAeXBsELRnHC3CL67bmXp
+         M1xXPCe9SgHFuvGLpzlTsD8uqxatmqYggQsy1Xq90t8Wa4LDYwZOWRJT95VSyW5hfLlY
+         XLaQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=blYi3FA2;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=mIg9uBdI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5106f2be117si2219551e0c.69.2024.11.04.07.36.11
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a957531719si2036483137.300.2024.11.04.07.36.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 04 Nov 2024 07:36:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=blYi3FA2;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=mIg9uBdI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t7z7K-0003cj-Oe; Mon, 04 Nov 2024 10:35:47 -0500
+	id 1t7z7b-0003vR-AQ; Mon, 04 Nov 2024 10:36:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1t7z7I-0003cC-4F; Mon, 04 Nov 2024 10:35:44 -0500
-Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
+ id 1t7z7U-0003qb-Se; Mon, 04 Nov 2024 10:35:57 -0500
+Received: from mail-il1-x136.google.com ([2607:f8b0:4864:20::136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1t7z7G-0003it-Ne; Mon, 04 Nov 2024 10:35:43 -0500
-Received: by mail-oa1-x2b.google.com with SMTP id
- 586e51a60fabf-277e6002b7dso1737075fac.1; 
- Mon, 04 Nov 2024 07:35:42 -0800 (PST)
+ id 1t7z7T-0003kB-3O; Mon, 04 Nov 2024 10:35:56 -0500
+Received: by mail-il1-x136.google.com with SMTP id
+ e9e14a558f8ab-3a5e0bfc7fdso12814145ab.1; 
+ Mon, 04 Nov 2024 07:35:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1730734541; x=1731339341; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1730734553; x=1731339353; darn=nongnu.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
- :reply-to; bh=B3T4Y7a84gLEiseyOukDpriSwBSOd9sFWxCqIXjDVVU=;
- b=blYi3FA2xnYQmb0i9nnVOwPjl54V7mkcL7pkclmbISQYwSBlK4hOaY226Krj4ivkc6
- Ix08DmNGsd0cJCO6+I4V5kflHBFMX9L69sNmQIfYZz9rrfaOR6JBB53A+cAWI0X3QfTN
- uUhrnMNRRiO/mkTxfpkKS0awLcZgJm5kxUmHiWGmazqTGX0CBcglIvzOj4bGfPhdNz1j
- WUuJpIVYuZ3W+9XXMl5zHuT2+kjMA+r+n8O+dbaKzc9TTWnJyDQBruj0NcjpoSDpLnL/
- wZJBgOwvr11pqWIyrnFrB5DIKr84UBbD+P3lM2ty8KkROycjSp1fDlLDkrufre87Vks4
- B72A==
+ :reply-to; bh=hKvgXly1z1CaicGb+6SpfFpA2C3l1HDrjzMFn85ScT4=;
+ b=mIg9uBdIzGVelfDFzAbeJv1h+Udt/SBSJJkSV0B4hiAToRkqeCDXbQ4LskuNhjfait
+ KPhpjomsHgI9zpV8LHapEGJ7QwrDp3GupHfV5yrd+5Q9U5yGY88MMEAe2FfQp6xaPqnT
+ 4G9ni7nsyYBbbSZLpxrQLgsgvSWWZvo/+VEsfNl5wyoMa308TtES62jeCpdKyU1Fou6X
+ mlXacwjJVFLOkLyvvcjrHgIPi4YaNNusLnn7cLflhHFI8a58TxHC8qqOQrrddOnCWRA4
+ mq2DXgjdclIzWrx4GlMuNYNAozxFHfu+aM77g/mUC3+ABtwHO3/zwqSMshwwzuCw7sNa
+ SKiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730734541; x=1731339341;
+ d=1e100.net; s=20230601; t=1730734553; x=1731339353;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:sender:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=B3T4Y7a84gLEiseyOukDpriSwBSOd9sFWxCqIXjDVVU=;
- b=Y2WIRoQqTEAV3sAwY84YMuxGQPf8t7rgjX0RVk1HLkrk7FfVXJta+CbtaRZMIy1oh3
- A7NicurgKC8bJ6cIDd0631yYjOKAe0i8i1WqlL8oUAg0CmszEV45vE6UdG6I6mPXJ4Ru
- 2d39kKvQLKqSLR1PT2A2RcxsOi7gvF0KUKWTOrJJSjkGcAFtF+ntK9WprEfuOoVnUbNK
- q5T9Dj03hF5Ut4pLAu3sVUH7NfF8XgziiXqZn9FcySBM6somzf3N4whKk202usPn8f+I
- wHN0OECURX2og9F/DbtDHbFXYAtOFRT1SHDogkaKcLM9M06/aOnd962wj52BXO/+/MQq
- 0Jmg==
+ bh=hKvgXly1z1CaicGb+6SpfFpA2C3l1HDrjzMFn85ScT4=;
+ b=UVZYYSCbpV9a0hOP0PZuB+8aPTPulZoC9Ohsz0q5svh5KMv5jcFXGZK3zPPtR5TwDU
+ 3JYCJy+6oTYcqjY21uGvxbXFv3aisCAnKts6EGI8VZ5QEALJV5UT5mTKFQ5CbP4IjJ+z
+ b4GySCqJAJeLN9wcKouEg7b3J1bK13r4YTYChOXxdRlBdSLW7nzARBmBwEVUJzmGplI3
+ Gx+xDuGsjeivyiwo4Xp5NRNOvv4lsykFsTBvIDH0Cx9vzn8I94JFLiYt7wqJXTfuZIlv
+ IL2lL4wffi4vmSWH93TXIB0m7tKqZWT1v6qDgZgiKa9oLxtG3J+xFQfOq9TkX/nDVkNc
+ xWpQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXRmTluIIIli7pm7CeBZLX4+KZlSmLxadtm1HJTTih9xBJ9fPu4ChNnKRM5XsigL9Nwj+BKmT3U5Q==@nongnu.org
-X-Gm-Message-State: AOJu0YynvMXnHzVB5SN7bjwabfkcjAxWQPHrpFM/G9mmA6+NJ1040Oot
- ut8J38gFLXFKx367NbRFNEwRcdMHgTpPAqY+dONXphe2IBK3iN1l
-X-Received: by 2002:a05:6870:3324:b0:279:334e:7f93 with SMTP id
- 586e51a60fabf-2949ed580c5mr11044799fac.10.1730734540710; 
- Mon, 04 Nov 2024 07:35:40 -0800 (PST)
+ AJvYcCW1+WQ9EmYx5kLSIY9k8XoFeVKZmZXhOzq5Io8q9/yBls9JYL20NLD6HqKMRlHdHmMlY+I8E7WSnw==@nongnu.org
+X-Gm-Message-State: AOJu0YyuMF1IRyB1thDUHUUGDhCXb4juMjKZqrp/UW66yAUuJWmg6yjR
+ N1ZPZaFtAzYu0U5yvdXnruEjaSAqG94Mo8L7u1/Cpgb8JmqkkZmR
+X-Received: by 2002:a05:6e02:20c8:b0:3a1:f549:7272 with SMTP id
+ e9e14a558f8ab-3a4ed305e5cmr270585045ab.23.1730734553540; 
+ Mon, 04 Nov 2024 07:35:53 -0800 (PST)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-7ee45a0ec8bsm7180678a12.79.2024.11.04.07.35.39
+ 41be03b00d2f7-7ee452a8b4asm7147377a12.20.2024.11.04.07.35.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Nov 2024 07:35:40 -0800 (PST)
-Date: Mon, 4 Nov 2024 07:35:39 -0800
+ Mon, 04 Nov 2024 07:35:52 -0800 (PST)
+Date: Mon, 4 Nov 2024 07:35:51 -0800
 From: Guenter Roeck <linux@roeck-us.net>
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
  qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v3 2/5] hw/net/lan9118_phy: Reuse in imx_fec and
- consolidate implementations
-Message-ID: <f9e72d65-5116-4633-98a1-4f284a2ad5fb@roeck-us.net>
+Subject: Re: [PATCH v3 3/5] hw/net/lan9118_phy: Fix off-by-one error in
+ MII_ANLPAR register
+Message-ID: <e5cd7dc6-b35c-4ecb-81f8-413294e42924@roeck-us.net>
 References: <20241102125724.532843-1-shentey@gmail.com>
- <20241102125724.532843-3-shentey@gmail.com>
+ <20241102125724.532843-4-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20241102125724.532843-3-shentey@gmail.com>
-Received-SPF: pass client-ip=2001:4860:4864:20::2b;
- envelope-from=groeck7@gmail.com; helo=mail-oa1-x2b.google.com
+In-Reply-To: <20241102125724.532843-4-shentey@gmail.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::136;
+ envelope-from=groeck7@gmail.com; helo=mail-il1-x136.google.com
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
@@ -130,20 +130,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CeaAi6K6Gjxo
+X-TUID: HKRAinkdk3DL
 
-On Sat, Nov 02, 2024 at 01:57:21PM +0100, Bernhard Beschow wrote:
-> imx_fec models the same PHY as lan9118_phy. The code is almost the same with
-> imx_fec having more logging and tracing. Merge these improvements into
-> lan9118_phy and reuse in imx_fec to fix the code duplication.
+On Sat, Nov 02, 2024 at 01:57:22PM +0100, Bernhard Beschow wrote:
+> Turns 0x70 into 0xe0 (== 0x70 << 1) which adds the missing MII_ANLPAR_TX and
+> fixes the MSB of selector field to be zero, as specified in the datasheet.
 > 
-> Some migration state how resides in the new device model which breaks migration
-> compatibility for the following machines:
-> * imx25-pdk
-> * sabrelite
-> * mcimx7d-sabre
-> * mcimx6ul-evk
-> 
+> Fixes: 2a424990170b "LAN9118 emulation"
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 
 Tested-by: Guenter Roeck <linux@roeck-us.net>

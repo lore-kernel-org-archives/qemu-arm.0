@@ -1,119 +1,198 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2254778njc;
-        Mon, 4 Nov 2024 08:58:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWJyv4FY912eJjF6cfmbleRJuEBC4vOHTdahONnFo26yRGlfiS9Xr3r+EONAwUrEn1y8Tu8OV3AehzaPw==@linaro.org
-X-Received: by 2002:a5d:64a1:0:b0:37d:41c5:a527 with SMTP id ffacd0b85a97d-381c7a5d2bemr10699103f8f.13.1730739501571;
-        Mon, 04 Nov 2024 08:58:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730739501; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2262734njc;
+        Mon, 4 Nov 2024 09:07:28 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX/nelMtSy42ew+v62ZARuNu+NhNSK2FHwd17AsVTwgbPO3Skp6TTptY13nDKbaV+yTWrHT5tLEtOOfBw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHvp5CQkfa9f8HfwROLTwAvCLHPOJsheUYctfb++JmtWY078kLLKwVQ4+cD1Fjqk8Z6alOA
+X-Received: by 2002:a05:6358:5f0f:b0:1ba:564b:48eb with SMTP id e5c5f4694b2df-1c3f9db9fabmr1478816255d.6.1730740048485;
+        Mon, 04 Nov 2024 09:07:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730740048; cv=none;
         d=google.com; s=arc-20240605;
-        b=HSfg/6v/2LyT353waWrSqR7xtt09dftztAAut8hb6WrIIrE3NloLtd3XlJbXfbDDfh
-         fQ+oUZLIz0SSwt3O3j1vbLXH4pGBRm2QHbra9MqbnTRWpNcmt3q53EIRD2k2vNvhvYFU
-         D6qRPfDnpyNhpwTg0zbnmjQ8e4QDFWWXR+kzVpuXnr0eZ6m3zyScuZv/dFvKaf8oeoxz
-         d7X/yfKBJZc0o2R8NxQnwpWFIRzZX44IfojLSqfNaCsSftrzOrIOOiMg8E2LbExyJThY
-         9wE0mUZdIfmXtcNXVlBHezoSAL0ng0rciPram5qyGWmk8dgWrDVBhoyVF13+tYhjfKLj
-         N8oA==
+        b=Z2N+BqbrAqqby/fEhyeTE2yAIp48DjXA1HfWRoNNtPfI/h6tFtW0sulPDZ8VdFiQd4
+         XhkNm0O5dRz7u+ZYHBAQihIeyvTll+xWK9pV9e1TqjFQgxNsrtzQH6Dvsvuq/pQgymeQ
+         ErP2w4WVbyhzXd2CKMrQ/O5dxYymg31glu37ALp96zcLU3kZJKIftOT3FRYS4Kc5obzg
+         oEYrBtl282SX9J499xFyD+vJT4akUoJC05cqTUHXOAhA6aFpu2LauiMVqwL7/6W1NFnb
+         y29bj4jcye+MRj6FeFEBQqW+kNereBI0TjMBKDEWbE18g5jGAC0mOsWVOeFJgR97OcmI
+         hENA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=m0o2RgKkHP9t1oVMWCUj0yrb8kc+cMF2/vR0PNGAOy4=;
-        fh=Uuk6k6UD0tWdqjMOOZox9w2Enez5wBoRneRgsfGSLdU=;
-        b=QOf//nOfto2h6mmjZphhNqT/xjDlCjcEzqIyg+kE81pK9QieElcqrCQPpgCG9/VHgK
-         QHYbNCe3z/IT+xEm9fu+A/qEaENG1IziCwXwqIRB10bGIB3IAKrPkYwpy2BYeQ7wXMTQ
-         ky2qm+3v/Y9hkJgc/pLjNRF5LcLUamIos1H0NHS35B7xWXPpTI63hgQ5CVgJz/ZrFjLn
-         ZGtWCWkU1ngnfK2tu+e7NxOQvrxk5zMctmqfSfIIuj3/rbSu8TKZr+ZR5isjMRgYeWRW
-         8e6tIRKU9qYHFmDbeayIJaoGaI7M32th8ccl2IrSqahch7SDf84eUhd0CsFo7SLmfrqa
-         WfHg==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:reply-to:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=9kd/SLSKtmTJFWvEeiYbH/ZTYsZ9MzO/O/GCUBVtKaw=;
+        fh=X6ly4WJz8tAGsV2mG3R2vpJV9RpHkzWr1SO6IA/k2aU=;
+        b=CLZNe8JDKtZEVdLX3fV2pinUrSgKNd4dojFE3qFaQTU5KkIuS4Z1a3YSyo3TMY3lYw
+         GbD+CfvMOAxCFV+Er4GYCVL63/+oa+FLi38zMR1D4fZ4BB+BmjvlkaWDLEECuYCiOWBS
+         XOx05XI6lcl0WVxxuGBOp6aP0IgD+8nPFgNwqAPzR0TnPwEZUB0h55e0tRN0d3p1QfrG
+         sVSSQj9uc1Xm1/4CssOAxn0YKIzfafIsugVmEUUKYemZMiDzxL8uhUAVN+ZJ4eA/5S5g
+         LLzflz6O/qS0VmIvWVGlPClCcA7tEkonVtG3Azdy1VtQyJ+17N8dGGqnGzogqbpxIwgh
+         aYhQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nflr6a4Q;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-381c10b7f8esor3906592f8f.2.2024.11.04.08.58.21
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B+dhLpLK;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a957531d78si1916002137.374.2024.11.04.09.07.28
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 04 Nov 2024 08:58:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 04 Nov 2024 09:07:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Nflr6a4Q;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1730739501; x=1731344301; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=m0o2RgKkHP9t1oVMWCUj0yrb8kc+cMF2/vR0PNGAOy4=;
-        b=Nflr6a4Q8rBgGsAisxTClCQdjRBQYPHqvDVMDQY/s1Nsthred3i9x1++z9xysV3wfH
-         Mzh9HzK2OOWJ2CHHMwQTG/RHEezPU4GLtA0Nxr46lWB+WbJ3VDnMKSIL3cSYVugQ2Uqq
-         mj43xrcoXdutjUQ9AO0BEsv64+RyZ2hkDFgbcb/iD+GuP+QhzN3HtfEntoLbKu1lx0cB
-         NQxJYilF6lqudlV0On6eRqpebILjBZ7fs6PZhc24epzo+kF0LG5pgvChy2qgAC9deAaK
-         kp9hJSifaqkWqP7Oq+GjOQxko3xY5JESRmBdIx6+wwkOXo7NL6iPaUCagytKBaKbBwfR
-         poXA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B+dhLpLK;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1730740048;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9kd/SLSKtmTJFWvEeiYbH/ZTYsZ9MzO/O/GCUBVtKaw=;
+	b=B+dhLpLKARcdRmShEY8mw/7KkRhzPE4dxkg1TqIKqOCghtPWaU4ubrb6jta9aolzghcyR3
+	Y2Fe4nNqAyBbifJo6HstmXcuzpUlebvJ1HuUKwnc6cJQG/u7t43seSrSsBQ2+Jst49j71a
+	okNZUf65YyVcsK8ZROIItytcAG+5Qs4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-170-gFOKYXSlNEGShj-wNC5veA-1; Mon, 04 Nov 2024 12:07:27 -0500
+X-MC-Unique: gFOKYXSlNEGShj-wNC5veA-1
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4315d98a75fso30628215e9.2
+        for <alex.bennee@linaro.org>; Mon, 04 Nov 2024 09:07:26 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730739501; x=1731344301;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1730740045; x=1731344845;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:reply-to:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=m0o2RgKkHP9t1oVMWCUj0yrb8kc+cMF2/vR0PNGAOy4=;
-        b=XBX5M0enMLhFo4bFQUSVFyBbjhT3Do5GP53imjt5mcitsDbq5cGohXroYBMCBefRtZ
-         SqKMDsBs3QEqulhHsn/OWlWzvkH1RLqAkyfkoNerO/4wdM5eciVioFHPU0gnbbb48snk
-         3GDtDAR5nHesN1pxOjaUWJL3s0jvieUJunb+tYRNeSZuFFL1p2Seag8gU60OZidtuUlg
-         KXAiLrYZ6bxfuvNW5kPTfFCw8e/mBgeScmQ2B3vNC/7Qg9hQdHQrkGnX2c/wlBIljURd
-         TTZyyR8/INuJTkLUslzWtBT2E9I9T4K+8vlrc/KGFeFfqujNUmo92PBMTlGqstVtdXAv
-         fLxQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVD1RY0fiGaJMOt4WaBNtBl8ZrUSJYLLCQFTGB/1x2uty9UPb4aY0QAUk0zsdVHlO5iRTXncD6fvlt+RA==@linaro.org
-X-Gm-Message-State: AOJu0YxNfflFDoBG8veR3ZbLkP9UGVeF4IcPw3DAWsmqV/l6tvMWAlIU
-	0UG1h2XBSfdbigGdpdUlcltyTPgkAYMiYI9MKJYCaVyZx8+7eWoSwyK8IY2xzYPyF1qBW4ZRcfj
-	AP4DM3MYxynG8tKFSI089FiHnTayxzZE6woLV65CCuWCEWRHIwBs=
-X-Google-Smtp-Source: AGHT+IHlfbypLypjDRbkkufLGEWuzBXtPvG95UdaIRb7uMNRkLJ7lPcNZa3L/SUhBsFDrRudH6xZAFIYXSNCpA65k5Y=
-X-Received: by 2002:a05:6000:4027:b0:37d:4ebe:1646 with SMTP id
- ffacd0b85a97d-381c7ac74d2mr10870950f8f.48.1730739500855; Mon, 04 Nov 2024
- 08:58:20 -0800 (PST)
+        bh=9kd/SLSKtmTJFWvEeiYbH/ZTYsZ9MzO/O/GCUBVtKaw=;
+        b=YFfHlLRnHN6mvSLSTuUf3wSKsGcB2kg94z/hA2Ps6gI/wj17n+KqI4RYpM195nx3Jm
+         ViL97qnaWsgITL5IDTP6GobWZ2ViKJNeBmiuJz16k4SXpK60rk8kQYCZGpls9UxMT/Dg
+         aW5EeyJRqMSlkx5betd9ZrTG9CfWzoDVXPoAxOvikW9CjXapJeFUtXeQrgKMrj2raGbr
+         AdmTVcpn9A3FbnoFTTdNxkg/vCjLO/4nCkqYA1dFjNhqqbHJ7w89xI9hIDXErG2EQVbv
+         yG3Nle/sycKdDq7PHNnaykoCOYKfY89JSsFMm6DlPYTdBb+kf6MOrYzo515/mWK5Qkqm
+         sORw==
+X-Forwarded-Encrypted: i=1; AJvYcCV8gBnYzwRzLXODvsRlT8kuh+sqrNG6aBbQTtJkhBZ3cEqKR3lpExXEct4qbT2qIPeCXuRCD7OhdJhIwA==@linaro.org
+X-Gm-Message-State: AOJu0Yz9Vdeu5mfMm3zML2Kho383AXc93CVzbq5Z+Rnsy6xqG8qioks7
+	3S9vbV+N04jzNvIpyxuzrCKgFsStDQftWmc9ss78Bvu2RYeVuT0m+62PzDSoYZavRQe6NYEXTom
+	2gZYf2qn1NIO9jppMsuVcPBuRb4wUPFi41KIxeazOsLf5S9aT2pyuMLXzIma/9Q==
+X-Received: by 2002:a05:600c:3b07:b0:426:602d:a246 with SMTP id 5b1f17b1804b1-4319ad361dfmr283157435e9.32.1730740045198;
+        Mon, 04 Nov 2024 09:07:25 -0800 (PST)
+X-Received: by 2002:a05:600c:3b07:b0:426:602d:a246 with SMTP id 5b1f17b1804b1-4319ad361dfmr283156685e9.32.1730740044307;
+        Mon, 04 Nov 2024 09:07:24 -0800 (PST)
+Return-Path: <eric.auger@redhat.com>
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4327d698144sm163984475e9.39.2024.11.04.09.07.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 04 Nov 2024 09:07:23 -0800 (PST)
+Message-ID: <48637795-14b9-4b0c-9fb5-46b387be4fd0@redhat.com>
+Date: Mon, 4 Nov 2024 18:07:21 +0100
 MIME-Version: 1.0
-References: <20241104142606.941638-1-gustavo.romero@linaro.org>
-In-Reply-To: <20241104142606.941638-1-gustavo.romero@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Nov 2024 16:58:09 +0000
-Message-ID: <CAFEAcA85mXoskBCnackKpMAe936qGHwdkSpSRsOBespzeAFBjw@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: Enable FEAT_CMOW for -cpu max
-To: Gustavo Romero <gustavo.romero@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org, 
-	richard.henderson@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: L0gT45oCrelr
+User-Agent: Mozilla Thunderbird
+Reply-To: eric.auger@redhat.com
+Subject: Re: [RFC 21/21] arm/cpu-features: Document custom vcpu model
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Kashyap Chamarthy <kchamart@redhat.com>, eric.auger.pro@gmail.com,
+ cohuck@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+ shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
+ pbonzini@redhat.com
+References: <20241025101959.601048-1-eric.auger@redhat.com>
+ <20241025101959.601048-22-eric.auger@redhat.com> <Zx__Zi3Zpg1AspnE@pinwheel>
+ <52690aae-55b6-47d5-a308-dd75475f8377@redhat.com>
+ <CAFEAcA9y5ooPNZ7JbGmRyTKbZn5XPK+5zZgVAvnER=++kWuBrg@mail.gmail.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <CAFEAcA9y5ooPNZ7JbGmRyTKbZn5XPK+5zZgVAvnER=++kWuBrg@mail.gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-TUID: CK5JmWEAQcoo
 
-On Mon, 4 Nov 2024 at 14:26, Gustavo Romero <gustavo.romero@linaro.org> wrote:
->
-> FEAT_CMOW introduces support for controlling cache maintenance
-> instructions executed in EL0/1 and is mandatory from Armv8.8.
->
-> On real hardware, the main use for this feature is to prevent processes
-> from invalidating or flushing cache lines for addresses they only have
-> read permission, which can impact the performance of other processes.
->
-> QEMU implements all cache instructions as NOPs, and, according to rule
-> [1], which states that generating any Permission fault when a cache
-> instruction is implemented as a NOP is implementation-defined, no
-> Permission fault is generated for any cache instruction when it lacks
-> read and write permissions.
->
-> QEMU does not model any cache topology, so the PoU and PoC are before
-> any cache, and rules [2] apply. These rules state that generating any
-> MMU fault for cache instructions in this topology is also
-> implementation-defined. Therefore, for FEAT_CMOW, we do not generate any
-> MMU faults either, instead, we only advertise it in the feature
-> register.
->
-> [1] Rule R_HGLYG of section D8.14.3, Arm ARM K.a.
-> [2] Rules R_MZTNR and R_DNZYL of section D8.14.3, Arm ARM K.a.
->
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Hi Peter,
 
+On 11/4/24 17:30, Peter Maydell wrote:
+> On Mon, 4 Nov 2024 at 15:34, Eric Auger <eric.auger@redhat.com> wrote:
+>> Hi Kashyap,
+>>
+>> On 10/28/24 22:17, Kashyap Chamarthy wrote:
+>>> On Fri, Oct 25, 2024 at 12:17:40PM +0200, Eric Auger wrote:
+>>>> From: Cornelia Huck <cohuck@redhat.com>
+>>>>
+>>>> Add some documentation for the custom model.
+>>>>
+>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>>>> ---
+>>>>  docs/system/arm/cpu-features.rst | 55 +++++++++++++++++++++++++++-----
+>>>>  1 file changed, 47 insertions(+), 8 deletions(-)
+>>>>
+>>>> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+>>>> index a5fb929243..962a2c6c26 100644
+>>>> --- a/docs/system/arm/cpu-features.rst
+>>>> +++ b/docs/system/arm/cpu-features.rst
+>>>> @@ -2,7 +2,10 @@ Arm CPU Features
+>>> [...]
+>>>
+>>>> +Using the ``host`` type means the guest is provided all the same CPU
+>>>> +features as the host CPU type has.  And, for this reason, the ``host``
+>>>> +CPU type should enable all CPU features that the host has by default.
+>>>> +
+>>>> +In case some features need to be hidden to the guest, ``custom`` model
+>>>> +shall be used instead. This is especially useful for migration purpose.
+>>>> +
+>>>> +The ``custom`` CPU model generally is the better choice if you want more
+>>>> +flexibility or stability across different machines or with different kernel
+>>>> +versions.
+>>> Does "more flexibility or stability across different machines" also
+>>> imply "live migration compatiblity across host CPUs"?
+>> yes that's the goal
+>>>> However, even the ``custom`` CPU model will not allow configuring
+>>>> +an arbitrary set of features; the ID registers must describe a subset of the
+>>>> +host's features, and all differences to the host's configuration must actually
+>>>> +be supported by the kernel to be deconfigured.
+>>> [...]
+>>>
+>>>> +The ``custom`` CPU model needs to be configured via individual ID register
+>>>> +field properties, for example::
+>>>> +
+>>>> +  $ qemu-system-aarch64 -M virt -cpu custom,SYSREG_ID_AA64ISAR0_EL1_DP=0x0
+>>> If possible, it would be really helpful (and user-friendly) to be able
+>>> to specify the CPU feature names as you see under /proc/cpuinfo, and be
+>>> able to turn the flags on or off:
+>>>
+>>>         -M virt -cpu franken,rndr=on,ts=on,fhm=off
+>>>
+>>> (... instead of specifying long system register IDs that groups together
+>>> a bunch of CPU features.  If I understand it correctly, the register
+>>> "ID_AA64ISAR0_EL1" maps to a set of visible features listed here:
+>>> https://docs.kernel.org/arch/arm64/cpu-feature-registers.html)
+>> Not all the writable ID regs are visible through the above technique.
+>> But indeed I think we converged on the idea to use higher level feature
+>> names than ID reg field values.
+>> However we need to study the feasibility and mappings between those high
+>> level features and ID reg field values.
+>> The cons is that we need to describe this mapping manually. Besides
+>> being cumbersome this is also error prone.
+> You might be interested in "Arm Architecture Features" on
+> https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
+> which includes a 1.8MB Features.json which is a machine
+> readable version of the "what are the features and their
+> dependencies and ID registers and so on" information.
+thank you for the link.
+>
+> But note that (a) it is alpha quality and (b) I am not personally
+> going to try to interpret what might be reasonable to do with it
+> based on the legal notice attached to it: that's a matter for
+> you and your lawyer ;-)
 
+Thank you for the notice. This may be similar to the ARM xml mentioned
+by Marc...
 
-Applied to target-arm.next, thanks.
-
--- PMM
+Eric
+>
+> -- PMM
+>

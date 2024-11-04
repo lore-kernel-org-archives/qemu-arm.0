@@ -1,155 +1,186 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2105803njc;
-        Mon, 4 Nov 2024 05:33:46 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWGm6P3PTCAVTl9ycsUclcIa0kZlXWYrTAOX5B7sutM2TM02a8q9V5gm7MheRIYXmEKwzmPnkgAMckqAQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEXxkXPBDx+cUwD95XTNC3fR4ALDFBcGxXcUIm8B4OEf8jYQxtGHphUT9F1ZVph6kkT71Gb
-X-Received: by 2002:a05:6122:1784:b0:50a:cb38:31d5 with SMTP id 71dfb90a1353d-512275606cfmr8262720e0c.12.1730727226481;
-        Mon, 04 Nov 2024 05:33:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730727226; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2108562njc;
+        Mon, 4 Nov 2024 05:38:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWrcBNoqU8gBNyeJ2Jtfxp5JYfBwU8u9ysGingvjTsjV/k0LOWcfU8cr88Ntr51Hxteru8QA//n7CryoQ==@linaro.org
+X-Received: by 2002:a05:6512:3405:b0:539:fcb7:8d53 with SMTP id 2adb3069b0e04-53b34c5fa2cmr15945388e87.46.1730727507686;
+        Mon, 04 Nov 2024 05:38:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730727507; cv=none;
         d=google.com; s=arc-20240605;
-        b=gfpaTOOJwBaUhZ7107NN/+LHSCcIqUPfTORcuypajx+5kBDBu5bWe+sG3vdkuTTFha
-         rUGAdT95yo3Xcu3OMAKcMAmmd0LtQMDbKkUSwFGn1qJqGHmgEV9yrK5Uch+d+Cz58QY9
-         G9d2277dSr3zQULnKlF4qE6WI8rNroWuNGcQm1OJW2IHbX174RgQ432hQ7aQDZpCMzdv
-         y66DJciapVYAWUrFgbSJUOh/885h3XbW4wzlrRfIB3HNv+bHu+OgpoHVaAOyPJcaPTby
-         6abWBBHLEWWb15ftsMXPBQoAN1DthM6b6A+yHJX9fCwUec2XA/Cl0saAHsw6UqQsvaXK
-         zE2g==
+        b=f75FeLFvny4PDwCiQdNbAV+bYSBKoLpyhYLTPFFaiRibHloVS3Fcw4MqYW7HvI28Wr
+         3DOVgcGuFVzWqoDCIBZ0nFflPQzyhuRe7MTgCEDWQZEBeVSO9XYSLlqdROy1tfb0I0Mj
+         izwHWuynXr4hjbNmIPJmTWGr3nirHsUnC40O20oD/4360k7mxoO63Jg+GmSsxF3REaqb
+         XBdkMhzIfEOTHk4t8xc/RIpUBGh6pgcAMKNMxOY4fv++GDSqNkYm5KoGhEh24vYtVDwx
+         Q1jubBiNgQ7VV1eYMpMPzSXRC4vqasagUDgUa9iObqkXzE1UB4j3hZ2HpkSwsjqoV1A0
+         w2ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=bsKR/ZbSwcHqsurNqiuF+M7XrV5jICI7Kt7LjPLlYkQ=;
-        fh=u3iconJjuTyYVzaOv0ERZQXfW1/PLQRYrGPAnUPtfWI=;
-        b=Jd6KnmkmgkXxY8Zzblq5fOKGKEUwmB5IbUSNbJnhj5+28fU7IWFmNTxsPBQ52hqeNI
-         l4+pciVplkYxwIde429cSLh19nrxfQ389DwwVlzIvp0ORj3c6tlNY3pVFGFBzHdyJgZs
-         qOtHah3rHYKNqLW/2CFCDlEQ9G4xgggfjWCrx5bz3HiiF7MkPHDAL5WkEB275BJhKt55
-         OP9Gk/4sNTd54e98SD4NTClZCkVHzMAzR88Bk+nCSi+GPoeSJH7t9/qi5tBrc7yw9N2q
-         WfCLsj3jW+YgYq/GdU90B6uhSRxrwbJBu7CxHSYnbmevR/dkcp4p+QbHucCE93AaePbW
-         LB4w==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=go9/v40Y/7RdK76AIxCKH2IKaRhoqjtAJzDbG/iGJ6A=;
+        fh=crtlnYyGngx+1gbqprOvPaB+fF9dnKbtDitc+esT+Ss=;
+        b=lpBRQYoQvNlHnfcPKviK7+/QpptZyT4e986VhyPI+3ChRpYMCH/7yqP2Rbx9lfipmK
+         vKRikPgIdCRlcl0Qbrv++KFpBO2oWuDW/NzF6oUpFBLthtZx/vPj1X4ww7D1O1NohrMd
+         fQ4JqFuyydWguYpa0CWya6M2ivfO/kVX0CsjDfosDiYCAMT7HkRb2i1s8pqyp2EAd7qT
+         20brbvYr7bYbHvZYI+B0I0kumlBrYyIuKOwAfBNVTQ9HRD6FEVsv9f8SWgbW1IiXAlAf
+         zws577AAvXu2qiJFHPOvRTRuOcsYatX17qmtHMWzREuCqzcythTz6CJR79IolzRfn2fs
+         LXxg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d6UgYyCB;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5139ccffcb3si769199e0c.290.2024.11.04.05.33.46
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZL0bVPI+;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 2adb3069b0e04-53c7bc980f7sor2497406e87.3.2024.11.04.05.38.27
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 Nov 2024 05:33:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Mon, 04 Nov 2024 05:38:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d6UgYyCB;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1730727226;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=bsKR/ZbSwcHqsurNqiuF+M7XrV5jICI7Kt7LjPLlYkQ=;
-	b=d6UgYyCBG/mBxH1rpB44hl2g7x5WI4UsMblNyPo+vjEsZkj0urTvMILBTuxLYPbtA9+ktW
-	BywHo5iOC7D2604BWytoEZv1BnyrgvmeJobDEmAbPOhBFrd/ws9T/O8/w8mi9bSbmRzWL9
-	11RUFZTQr76LxDzOj4UMvGKKmtu9K38=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-374-F9X1kR_TPnaPTxLOAtf2_Q-1; Mon, 04 Nov 2024 08:33:45 -0500
-X-MC-Unique: F9X1kR_TPnaPTxLOAtf2_Q-1
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-37d4af408dcso1955683f8f.0
-        for <alex.bennee@linaro.org>; Mon, 04 Nov 2024 05:33:44 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZL0bVPI+;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1730727507; x=1731332307; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=go9/v40Y/7RdK76AIxCKH2IKaRhoqjtAJzDbG/iGJ6A=;
+        b=ZL0bVPI+r1JzrZHNoBeRK+mTEZOXJlnh3ifuiOyeATkBtM4lWK+GIbxqfAx1kROvBn
+         QrzZ3+L23zg3kx1bhpzRcVRUKpwy0WCYt5GMjNArm4LPT56J26B3T3aEhZIjzrgGgW2X
+         QRHdl6RXOIw02Nz9x95LaltnMrEv/8ybtnz2nt3e021ipQRNcYv/V+FzdfWBo1QHOy7v
+         flULWhiZH0UrwFb+5DHRmhckzMviQdIzTezwnlIcvGmiI9wJ5hTbTuRXBXdQhW+iF5o/
+         YuhWck4lpoBUEzaLo3mKwm3O43YmUwlDBtReoFr8SKMaxR2j1ceEZhUvXz/lHjVnVfBm
+         P9iQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730727224; x=1731332024;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1730727507; x=1731332307;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=bsKR/ZbSwcHqsurNqiuF+M7XrV5jICI7Kt7LjPLlYkQ=;
-        b=PdTCWJfQPJsYhLkNOZO+N9X/PERlzYafS0MWJP+5cbVLj/+1cn60pFXx1WGLkIO2EH
-         ryi9x32Sw8XTv5QDBOvDwjbyhHlVt2vAeRY6YcHD5N74X5NrMhC/SDv0+KtYbe+Bn7B6
-         9fNIj3U+N+Bny4YbLGArwCD8/ttiEMKQ9ggor4cPSrNBchjcHjcl0XhHGhkJ8EFGms5j
-         xG4niheYMkcgzvJFIivlYgTV9c+AUqooVNE+U9yCCpO+MstcP9ZCzadhfn78ElHJtENX
-         lzvtWd8Md1wUZLz+51Cy5kI43vDkiNvnJMqXFMOkrrZRUoTExv84kKbLdM8X9Xub4NuV
-         nuVg==
-X-Forwarded-Encrypted: i=1; AJvYcCVvbaowDJ4DG8qazN82ZI6PzORBXsUaYZtmJ34GbDWeeaBqEm1Q9i7i25VGmCQ6/RCiVNPUPCpU2NDGJg==@linaro.org
-X-Gm-Message-State: AOJu0YzQ8/+iaxb7EXgxMygFw0sz6gZbOEO51eeou+j5gPbt/DeKWhLL
-	/tSjobH8bctpCTxvr2hSseOHCtc2DbjRN87lH+DMOpkJ+DNxVmOE4Li2xaW+3SFAsiDe9nCpUSk
-	D0KlP1RbABFMiawUA6wGw7zSclrq9gXLSc5w0mV9oauFiqPsrxAkRRw==
-X-Received: by 2002:a5d:4cd0:0:b0:376:37e:2729 with SMTP id ffacd0b85a97d-3806115ae83mr21401259f8f.31.1730727223772;
-        Mon, 04 Nov 2024 05:33:43 -0800 (PST)
-X-Received: by 2002:a5d:4cd0:0:b0:376:37e:2729 with SMTP id ffacd0b85a97d-3806115ae83mr21401234f8f.31.1730727223376;
-        Mon, 04 Nov 2024 05:33:43 -0800 (PST)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381c10d49dfsm13267277f8f.46.2024.11.04.05.33.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 04 Nov 2024 05:33:42 -0800 (PST)
-Message-ID: <f950f884-f5f7-4985-8825-ed5f2a10509b@redhat.com>
-Date: Mon, 4 Nov 2024 14:33:40 +0100
+        bh=go9/v40Y/7RdK76AIxCKH2IKaRhoqjtAJzDbG/iGJ6A=;
+        b=Ub70b1INV74qa3oGCP9/j1IX2Ih1HYBND8TjMz73RqDqS+HgAKk/VXrF3n+pC+DL3/
+         EAZqUWzw+WXy7x+NnUUyFhjiXqYpfM+0rkjTVOsX0Vb2nxGwdCJhutrVoSYcYPCHzN3Z
+         KAGAx4XjfzawZLUSQlD7XUiAl9g/mvMroQlnYuDB8O0eqENok+KPw2oYVvyuHL9fBvZB
+         U0BQUCyQKmKXjXxh4KJ18ZBHQ5Mu5N/SKbNM9tbVrxjFDVqXhFarQpViFonYgZ4T/Qcs
+         eOi0k2Z9C1CT5XVy2nFwvB6o4bFlW1/DLRjWppV0HYZJAQAnjvdJUnIqQbNnyUkPPhL5
+         xK2w==
+X-Forwarded-Encrypted: i=1; AJvYcCXRWVF4d9dGfs7S+YFXX/TPpWtAlD26vKI4Uq4CAJ37zZVboQ3MVnyLOmyzPEp/5P6d4oJHmqUkN8MsMQ==@linaro.org
+X-Gm-Message-State: AOJu0YyEnEx9SWjHvuFxFta9x6V4sOzqcth3XaAUTcI7g4CcDWcfdTe4
+	ABXXPCPCKvwZqfS6LaU0wTBMslBfrrkzc/qtHdAu7oRU1fTaSMxreZ/mFBSq8qAqPA1GGP0G8ou
+	z3FlJflwlEdeXQz11j76kq2ZfAai5l9zrynCHjdqGPDYRgjAVnTY=
+X-Google-Smtp-Source: AGHT+IE40dRHnJ9VMhdmQ2IW9Gu+tsqZR7xVnmFn+hcCvSbAIIHkBIT2uGmWtii2jURArYbNVxk5XBDnK/Z391/R6Uc=
+X-Received: by 2002:a2e:be84:0:b0:2fb:4f2e:5be7 with SMTP id
+ 38308e7fff4ca-2fcbdfe4a77mr158336871fa.24.1730727506909; Mon, 04 Nov 2024
+ 05:38:26 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [RFC 14/21] arm/cpu: Add sysreg generation scripts
-To: Marc Zyngier <maz@kernel.org>
-Cc: eric.auger.pro@gmail.com, cohuck@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex.bennee@linaro.org,
- oliver.upton@linux.dev, sebott@redhat.com,
- shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
- pbonzini@redhat.com
-References: <20241025101959.601048-1-eric.auger@redhat.com>
- <20241025101959.601048-15-eric.auger@redhat.com>
- <86frok2jwg.wl-maz@kernel.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <86frok2jwg.wl-maz@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TUID: POlHxJqDSu/q
+References: <20241101013541.883785-1-gustavo.romero@linaro.org>
+In-Reply-To: <20241101013541.883785-1-gustavo.romero@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Nov 2024 13:38:15 +0000
+Message-ID: <CAFEAcA-aNf7ca1jYc0YnzSYKjvC42u178gmFTB+5p+TSgz0MfA@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Enable FEAT_CMOW for -cpu max
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org, 
+	richard.henderson@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: CNKqcwBGXli0
 
-Hi Marc,
-On 10/25/24 19:05, Marc Zyngier wrote:
-> On Fri, 25 Oct 2024 11:17:33 +0100,
-> Eric Auger <eric.auger@redhat.com> wrote:
->> Introduce scripts that automate the generation of system register
->> definitions from a given linux source tree arch/arm64/tools/sysreg.
->>
->> Invocation of
->> ./update-aarch64-sysreg-code.sh $PATH_TO_LINUX_SOURCE_TREE
->> in scripts directory do generate 2 qemu files:
->> - target/arm/cpu-sysreg-properties.c
->> - target/arm/cpu-sysregs.h
->>
->> cpu-sysregs.h creates defined for all system registers.
->> However cpu-sysreg-properties.c only cares about feature ID registers.
->>
->> update-aarch64-sysreg-code.sh calls two awk scripts.
->> gen-cpu-sysreg-properties.awk is inherited from kernel
->> arch/arm64/tools/gen-sysreg.awk. All credits to Mark Rutland
->> the original author of this script.
-Sorry for the delay. I was out of the office last week.
-> You really want to be careful with this. Both the script and the
-> source file describing the registers are submitted to regular outburst
-> of churn (I'm currently sitting on such a series). You really have to
-> be prepared to see things breaking on each import.
-OK thank you for the warning. It is now understood we cannot fully rely
-on them and checks should be done on each run.
+On Fri, 1 Nov 2024 at 01:36, Gustavo Romero <gustavo.romero@linaro.org> wrote:
 >
-> That file has also been known to contain annoying mistakes, as it is
-> all written by hand.
+> FEAT_CMOW introduces support for controlling cache maintenance
+> instructions executed in EL0/1 and is mandatory from Armv8.8.
 >
-> Ideally, this would be directly generated from the ARM XML, which is a
-> public set of files. However, the license attached to this package
-> strictly prohibits its use in QEMU (or anywhere else). One day...
-;-)
+> On real hardware, the main use for this feature is to prevent processes
+> from invalidating or flushing cache lines for addresses they only have
+> read permission, which can impact the performance of other processes.
+>
+> QEMU implements all cache instructions as NOPs, and, according to rule
+> [1], which states that generating any Permission fault when a cache
+> instruction is implemented as a NOP is implementation-defined, no
+> Permission fault is generated for any cache instruction when it lacks
+> read and write permissions.
+>
+> QEMU does not model any cache topology, so the PoU and PoC are before
+> any cache, and rules [2] apply. These rules states that generating any
+> MMU fault for cache instructions in this topology is also
+> implementation-defined. Therefore, for FEAT_CMOW, we do not generate any
+> MMU faults either, instead, we only advertise it in the feature
+> register.
+>
+> [1] Rule R_HGLYG of section D8.14.3, Arm ARM K.a.
+> [2] Rules R_MZTNR and R_DNZYL of section D8.14.3, Arm ARM K.a.
+>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> ---
+>  docs/system/arm/emulation.rst | 1 +
+>  target/arm/cpu-features.h     | 5 +++++
+>  target/arm/cpu.h              | 1 +
+>  target/arm/tcg/cpu64.c        | 1 +
+>  4 files changed, 8 insertions(+)
+>
+> diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+> index 35f52a54b1..a2a388f091 100644
+> --- a/docs/system/arm/emulation.rst
+> +++ b/docs/system/arm/emulation.rst
+> @@ -26,6 +26,7 @@ the following architecture extensions:
+>  - FEAT_BF16 (AArch64 BFloat16 instructions)
+>  - FEAT_BTI (Branch Target Identification)
+>  - FEAT_CCIDX (Extended cache index)
+> +- FEAT_CMOW (Control for cache maintenance permission)
+>  - FEAT_CRC32 (CRC32 instructions)
+>  - FEAT_Crypto (Cryptographic Extension)
+>  - FEAT_CSV2 (Cache speculation variant 2)
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index 04ce281826..e806f138b8 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -802,6 +802,11 @@ static inline bool isar_feature_aa64_tidcp1(const ARMISARegisters *id)
+>      return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, TIDCP1) != 0;
+>  }
+>
+> +static inline bool isar_feature_aa64_cmow(const ARMISARegisters *id)
+> +{
+> +    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, CMOW) != 0;
+> +}
+> +
+>  static inline bool isar_feature_aa64_hafs(const ARMISARegisters *id)
+>  {
+>      return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HAFDBS) != 0;
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 8fc8b6398f..1ea4c545e0 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1367,6 +1367,7 @@ void pmu_init(ARMCPU *cpu);
+>  #define SCTLR_EnIB    (1U << 30) /* v8.3, AArch64 only */
+>  #define SCTLR_EnIA    (1U << 31) /* v8.3, AArch64 only */
+>  #define SCTLR_DSSBS_32 (1U << 31) /* v8.5, AArch32 only */
+> +#define SCTLR_CMOW    (1ULL << 32) /* FEAT_CMOW */
+>  #define SCTLR_MSCEN   (1ULL << 33) /* FEAT_MOPS */
+>  #define SCTLR_BT0     (1ULL << 35) /* v8.5-BTI */
+>  #define SCTLR_BT1     (1ULL << 36) /* v8.5-BTI */
+> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> index 0168920828..2963d7510f 100644
+> --- a/target/arm/tcg/cpu64.c
+> +++ b/target/arm/tcg/cpu64.c
+> @@ -1218,6 +1218,7 @@ void aarch64_max_tcg_initfn(Object *obj)
+>      t = FIELD_DP64(t, ID_AA64MMFR1, ETS, 2);      /* FEAT_ETS2 */
+>      t = FIELD_DP64(t, ID_AA64MMFR1, HCX, 1);      /* FEAT_HCX */
+>      t = FIELD_DP64(t, ID_AA64MMFR1, TIDCP1, 1);   /* FEAT_TIDCP1 */
+> +    t = FIELD_DP64(t, ID_AA64MMFR1, CMOW, 1);     /* FEAT_CMOW */
+>      cpu->isar.id_aa64mmfr1 = t;
+>
+>      t = cpu->isar.id_aa64mmfr2;
 
-Eric
->
-> Thanks,
->
-> 	M.
->
+We don't need to do anything for the actual cache operations,
+but we do need to make sure that the SCTLR_ELx and HCRX_EL2
+control bits for it can be set and read back. Our sctlr_write()
+doesn't impose a mask, so no change nedeed there, but
+our hcrx_write() does set up a valid_mask and doesn't allow
+the guest to write bits that aren't in that mask. So we
+need to add an
+   if (cpu_isar_feature(aa64_cmow, cpu)) {
+       valid_mask |= HCRX_CMOW;
+   }
+in there.
+
+thanks
+-- PMM

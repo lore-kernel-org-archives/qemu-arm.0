@@ -1,103 +1,104 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3154038njc;
-        Tue, 5 Nov 2024 14:39:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUr70Zg8jr91WzH8MeP3wkObLqS1tcemgWhTUFSd9+1zMNiqrryCV48MNR/FJ7EEGDXiwAxbuFJUeHz/g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEah6LzFD//042gT+Qea2BV2qfPYHQGOkMHXbLGxt40a5HR+fw7bjFf+HHTpcRtwSKeCqu+
-X-Received: by 2002:a05:620a:4311:b0:7a9:aba6:d037 with SMTP id af79cd13be357-7b193ed8235mr5516015185a.13.1730846352199;
-        Tue, 05 Nov 2024 14:39:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730846352; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3154791njc;
+        Tue, 5 Nov 2024 14:41:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVaydgZ64MY95NU566HX51DWtkBiJ+4osZT118CpUP8PXesaLKTXpMZOVeLcmnr4dKXNIbe0Zb++B/FaQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFYLuyBTu4dDNHnhKHrorprhdTXRr34CdfZKsPdhy1w4sYtxVbOQDPHOac692kclmxRZ+1g
+X-Received: by 2002:a05:622a:1a18:b0:461:1393:fd8b with SMTP id d75a77b69052e-462b86841aamr282306251cf.15.1730846477052;
+        Tue, 05 Nov 2024 14:41:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730846477; cv=none;
         d=google.com; s=arc-20240605;
-        b=S+yNa1r5YIpI7pZv8gcsynce197qngUTVpWjTGGd4+nSU3RMTGTFbW8Nne9YKAg2+4
-         g6sXnjTovM8hg+W3pv2636az0YeD9t1i57irehmIK9iKTQGMKRaIWMl+QMA8UfYjTU2B
-         7QsSNmCW/TO3nVNldbCxgmq4Un5JrPV9d+gntfVlTR67T8YCOwjCSnxUuNe+HaISHp/2
-         K6orBprCVh8Bga61LN+k/lqivnqc54w9+lcKpvBFo/jK0OELjXTe/CbANNak02xnzb1b
-         1sqBYCPuqEXCatsOekGRb4il3/Nxdt6T4ZjWpvDAg8DIdU8xwwmTYkFnq909smgrxcoN
-         W2fw==
+        b=Hghis8XLNSe5FlDv+G39IbGsVk0fJlqRW3ELR7ezxI7W71uIFPvfBZ8tDNfKxnpKg/
+         INejAbGYrYQISHiWS94WDRdV+m6L2GhcRfaM5Y0KjWc+Q73hNuD+bxWVmNxUfspGFLsz
+         wciya2MxTlh6eDAniWBP7rwTRR6jDS88fU9eFeRYqGy0pWNwypbq9HQUrRSqTPO4HcqE
+         yba4oguEqMJC2v+S3M02vEwxZyk1can1OWAWzQXeXne2engULkngqH3GJHB7Zo18D/0E
+         p5cOBq/ae/S4jkeOZ2S03vnmP+MUVEtW+iQVUMznfM0STFPJF66AZdP53u/bEeJ2l+vI
+         4zEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=ShFGJTpVKFc9QmQlqenOsyPYzBf+Ir7f6DuZ968ajtE=;
-        fh=JQrwQORT4nDwB6w6aHcSiG16YbIyXY9Fu1VpFjeAYrg=;
-        b=QKYrCTJrOsDuFQfXPEMkNVvLN1jzScwi5C/ILF/lI25y2JepB0kjz9mCYKWRdgqQoM
-         JEhMUeiWFkm2/DKmrE1JtXIVwcLOgFjw6JKO86nZWntHxJ0CrW/GF+xy/6Wss7Ya2tpS
-         VOf7U+aoIvG3b0s+HGo7ZTBWmfgPltKhGGtdhRBrC99x1V1mwhOP58rQi+vjO6pGsAB8
-         G3PQ6BT4o+EpACQOQEMTIUVNOB8l9d7fcf8La07sfuxtOR6MuAOXmWUxHg9+FWQSrTyZ
-         DTUi1L7KssGsIGvH4JnQ1jWfnUBkH/YMocehTULtE+jLEw1tmWOOGWkOy/GHLZTUD4Co
-         ZO0A==;
+        bh=wigJ1UnWmMX0x09YnYXSSLLIJ50XleHXgHbUUqXrP9U=;
+        fh=FuCmsOzWoksTrHEwIdW1NPSjMFcPUw2tieh5wudAkO8=;
+        b=cRFBcXuA1gPbddFOxTBXXxL9FJeYKUuTemtbk7MrfPwEli7gSkB58C+0KoCrV4/pC2
+         2UIzMgUK3BkfxOnxH+FwOANXIZZhkdY4NU4MqYKgLqpgA/bsbdn5RgdlcLNIZT8D7O2c
+         X8H02u87TMONezu/CHh+TOe0SjqI3Pb9KwsY++GGAcZHAGHJCReFvxJu31Pk+eZh60lD
+         kOWPHbvtKBu5IIQ45APm7ULSciJmgdikeVu16fTxP2+0dN7x2E0Nr8Roby5kpo0J4sd4
+         dZlaYBfuPbJf/qrnJtG5Jt04pgKfQFWdsbgCMMsdGyxNsD5DRD486IXu0ymwjGI/c1uj
+         LuGQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SNLOUcAR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Kto49BUS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b2f3ab11efsi1428093485a.536.2024.11.05.14.39.12
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad0d2fe2si141023191cf.218.2024.11.05.14.41.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 14:39:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Nov 2024 14:41:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SNLOUcAR;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Kto49BUS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t8SCQ-0002fU-Bx; Tue, 05 Nov 2024 17:38:58 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t8SEG-0003qz-FE; Tue, 05 Nov 2024 17:40:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1t8SCP-0002fI-8r; Tue, 05 Nov 2024 17:38:57 -0500
+ id 1t8SEB-0003qW-T8; Tue, 05 Nov 2024 17:40:48 -0500
 Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1t8SCN-0002S9-ME; Tue, 05 Nov 2024 17:38:57 -0500
+ id 1t8SEA-0003AX-C4; Tue, 05 Nov 2024 17:40:47 -0500
 Received: by mail-ua1-x930.google.com with SMTP id
- a1e0cc1a2514c-851d6c397bbso1943842241.2; 
- Tue, 05 Nov 2024 14:38:55 -0800 (PST)
+ a1e0cc1a2514c-84fe1bc5284so2283279241.0; 
+ Tue, 05 Nov 2024 14:40:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1730846334; x=1731451134; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1730846444; x=1731451244; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ShFGJTpVKFc9QmQlqenOsyPYzBf+Ir7f6DuZ968ajtE=;
- b=SNLOUcARxc85DmXVH80uZeQDeb5IgXsmLwqZBTCmnlwb6DgjFihEfT+l73iQxGWe7C
- VKwzegIlfyumYru/sHjDcOaknmpxy4NQCQe1IM8X7GWUJ6DORtL+sKWP9rmINdNmjnBp
- IZrrWdC7FO+KeQP1bYU65CHOaeCQ3glwsTKUEYOQQomb+w6+co/oINjbpWNESuFcb+Mf
- zFWFyrcAhazzIHAo8rHocqakc8tmvxdY1TB6a6Nswz2jITy/Dmu2Xap6kfcN1rd9jo2S
- 4l5UnGFqOjNScXNiZpsAWG7MOUCZESPX5nYF/V2IwNtILsoh+cTF31hst4tkYEN6Fbfn
- URYA==
+ bh=wigJ1UnWmMX0x09YnYXSSLLIJ50XleHXgHbUUqXrP9U=;
+ b=Kto49BUSCUQVy01xIELF8ZIrkSnx7cGRvSyHPSCQNxtg4MQbbdrDZWOQnKrgd8AmFq
+ yBoF5KTjzkxQn1VeMBvy94FJaAHANfMkSFxeAMTzKnMO3xMujr6Vq0XgdUEPamVSY3oc
+ GYiTSd1Ft0D+i45PsdcuadtZsS0xuhN9qPuhiTK9w9U/T9xRnm8BPiSo+pOCccs2DDvn
+ rB15yFjgMm8wKZDBjDIcGSvCQ1BPDeq95Fte8YSEe2TbJy9j3ihg6KXz1KqI9thXWjkw
+ olt/dn13KC92ovwIjaIlrADf4ChtRDnH1qZyye7bVxZd3gmjjjPpzyphJYXNCXjfIxWb
+ iecA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730846334; x=1731451134;
+ d=1e100.net; s=20230601; t=1730846444; x=1731451244;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ShFGJTpVKFc9QmQlqenOsyPYzBf+Ir7f6DuZ968ajtE=;
- b=jfclHzVLEXo+HyIo4SB3W3xwrn5IYSQfMLjRmVZ9GVIvrljCEk+yWWCrhsJQcQ07Hp
- 3ykyGRa8URThdLdxpbHLQGf0tWYHnZoCYyErSwe9aTbYNSH2XKFvYBjxtYxQgEBaSBut
- NOVt7aisL6z8JgUBDXSith4THct4cnl8TuJiPr76OfMdk2sh5KrAPqxlom0z+qyAv4Mp
- 2CMSNcBatrTv9chr/lXpDT5d1tbYSgIdB0IDtD779x9taXXMAwgvgq/rt9b77xwHkZYs
- KhNw8c2XeAlfjX+jz+okPJJ9EbqqAf6/MV7ZRQiyiqieNm+Q+6WbyQvPaHV6BlHNBu89
- wpGQ==
+ bh=wigJ1UnWmMX0x09YnYXSSLLIJ50XleHXgHbUUqXrP9U=;
+ b=GSqnmErHDwA8UrYPfpZWxIbpNNcGRrLKeoQIgNyEC8+Ymhwpl9Na23/zZCveMVvo/2
+ FDV7/hAWRQe3e8Hit8zbgTohXODhTaEwq5Q9HxobjOTpD9HdhKH67yOrtK8/K4/eZMvD
+ R771valLDO4GtP8APJVSf3NYQlS5JkacvZBQb7CEQuThh8BhgF1u3ODQlVmN9P51wUge
+ OSq7/gmWF4V7NF6zlTbtfbD1WPqLWGbPWPRsmI9LhMBfE1luHipST5ZWxLhjIiEqrxfc
+ TG20Iq7HssUhgBVqFy0RAklfKSj3GwxRdGk4BjMQwV4JLBw3JLB2TOttFnfqguHTqiYB
+ GLIg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUM2UzosK8fhYUEG97UK4DoFrEwVvnf+jFAAQe7rlupG6Za8kD9EbWpjrRprWw8AWfBtgEDVYDZdw==@nongnu.org
-X-Gm-Message-State: AOJu0YwE81od6f/GGlDGwsN9Rwnpds+6nnfTBE3/vMcAMxk3burCpgFu
- Dh+OAdTL46NOzEaQgmaN9SANxONadPPvzg7YNGJOUW0D/EDgs1Lp+bEMJ8Uw6SQaoshEC6t24Go
- HdyCj+9HyvnmITXZ1WjLsNWxi88g=
-X-Received: by 2002:a05:6102:6cc:b0:4a5:6f41:211e with SMTP id
- ada2fe7eead31-4a8cfd598demr33376274137.24.1730846334280; Tue, 05 Nov 2024
- 14:38:54 -0800 (PST)
+ AJvYcCU8Kmr3Rr1YmHUgfs+amcLOhja3FxwGiZlfgUC1afmtDbNcvH+Ub3MXe3Xv6wA9NlzDNFRf7CnO3g==@nongnu.org
+X-Gm-Message-State: AOJu0YwXYyJXJEa8yKpbUUxix+wUh/fP4OWyEZbyRAlzUzDkcIlQJb9d
+ YfSGyIrb8WIobAhcvUEq8aK1bsUGG4EmW+RDKXL3u27HKG7zMV8/c9ofbGQD4+yemOM1F61fNwF
+ 5JKtZtsJaLAas75tdBU/uqXE+7Hc=
+X-Received: by 2002:a05:6102:3909:b0:4a5:c74b:66a7 with SMTP id
+ ada2fe7eead31-4a962f3bd39mr16793151137.19.1730846442842; Tue, 05 Nov 2024
+ 14:40:42 -0800 (PST)
 MIME-Version: 1.0
 References: <20241105130431.22564-1-philmd@linaro.org>
- <20241105130431.22564-7-philmd@linaro.org>
-In-Reply-To: <20241105130431.22564-7-philmd@linaro.org>
+ <20241105130431.22564-6-philmd@linaro.org>
+In-Reply-To: <20241105130431.22564-6-philmd@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 6 Nov 2024 08:38:28 +1000
-Message-ID: <CAKmqyKMBaGoH_iXiQqX3TBuAJteGRA6UcXsFDuRqBSU-yLytaw@mail.gmail.com>
-Subject: Re: [PATCH 06/19] hw/microblaze: Fix MemoryRegionOps coding style
+Date: Wed, 6 Nov 2024 08:40:16 +1000
+Message-ID: <CAKmqyKNHA7CR70HrvB2Ao4Yr=H3fziMO8pZkVZiQ-YrXuAmCLw@mail.gmail.com>
+Subject: Re: [PATCH 05/19] hw/microblaze/s3adsp1800: Declare machine type
+ using DEFINE_TYPES macro
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>, 
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -120,26 +121,26 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pRs/NB9J3Z4C
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TS4m74KtOlxf
 
-On Tue, Nov 5, 2024 at 11:07=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
+On Tue, Nov 5, 2024 at 11:05=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
 <philmd@linaro.org> wrote:
 >
-> Fix few MemoryRegionOps style before adding new fields
-> in the following commits.
+> Replace DEFINE_MACHINE() by DEFINE_TYPES(), converting the
+> class_init() handler.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
@@ -148,72 +149,51 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/char/xilinx_uartlite.c | 4 ++--
->  hw/intc/xilinx_intc.c     | 4 ++--
->  hw/net/xilinx_ethlite.c   | 4 ++--
->  hw/timer/xilinx_timer.c   | 4 ++--
->  4 files changed, 8 insertions(+), 8 deletions(-)
+>  hw/microblaze/petalogix_s3adsp1800_mmu.c | 17 +++++++++++++++--
+>  1 file changed, 15 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/char/xilinx_uartlite.c b/hw/char/xilinx_uartlite.c
-> index f325084f8b9..a69ad769cc4 100644
-> --- a/hw/char/xilinx_uartlite.c
-> +++ b/hw/char/xilinx_uartlite.c
-> @@ -172,8 +172,8 @@ static const MemoryRegionOps uart_ops =3D {
->      .endianness =3D DEVICE_NATIVE_ENDIAN,
->      .valid =3D {
->          .min_access_size =3D 1,
-> -        .max_access_size =3D 4
-> -    }
-> +        .max_access_size =3D 4,
+> diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/pet=
+alogix_s3adsp1800_mmu.c
+> index 581b0411e29..6c0f5c6c651 100644
+> --- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> +++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> @@ -55,6 +55,9 @@
+>  #define ETHLITE_IRQ         1
+>  #define UARTLITE_IRQ        3
+>
+> +#define TYPE_PETALOGIX_S3ADSP1800_MACHINE \
+> +            MACHINE_TYPE_NAME("petalogix-s3adsp1800")
+> +
+>  static void
+>  petalogix_s3adsp1800_init(MachineState *machine)
+>  {
+> @@ -132,11 +135,21 @@ petalogix_s3adsp1800_init(MachineState *machine)
+>                             NULL);
+>  }
+>
+> -static void petalogix_s3adsp1800_machine_init(MachineClass *mc)
+> +static void petalogix_s3adsp1800_machine_class_init(ObjectClass *oc, voi=
+d *data)
+>  {
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +
+>      mc->desc =3D "PetaLogix linux refdesign for xilinx Spartan 3ADSP1800=
+";
+>      mc->init =3D petalogix_s3adsp1800_init;
+>      mc->is_default =3D true;
+>  }
+>
+> -DEFINE_MACHINE("petalogix-s3adsp1800", petalogix_s3adsp1800_machine_init=
+)
+> +static const TypeInfo petalogix_s3adsp1800_machine_types[] =3D {
+> +    {
+> +        .name           =3D TYPE_PETALOGIX_S3ADSP1800_MACHINE,
+> +        .parent         =3D TYPE_MACHINE,
+> +        .class_init     =3D petalogix_s3adsp1800_machine_class_init,
 > +    },
->  };
->
->  static Property xilinx_uartlite_properties[] =3D {
-> diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
-> index 6e5012e66eb..2b8246f6206 100644
-> --- a/hw/intc/xilinx_intc.c
-> +++ b/hw/intc/xilinx_intc.c
-> @@ -146,8 +146,8 @@ static const MemoryRegionOps pic_ops =3D {
->      .endianness =3D DEVICE_NATIVE_ENDIAN,
->      .valid =3D {
->          .min_access_size =3D 4,
-> -        .max_access_size =3D 4
-> -    }
-> +        .max_access_size =3D 4,
-> +    },
->  };
->
->  static void irq_handler(void *opaque, int irq, int level)
-> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-> index bd812908085..11eb53c4d60 100644
-> --- a/hw/net/xilinx_ethlite.c
-> +++ b/hw/net/xilinx_ethlite.c
-> @@ -172,8 +172,8 @@ static const MemoryRegionOps eth_ops =3D {
->      .endianness =3D DEVICE_NATIVE_ENDIAN,
->      .valid =3D {
->          .min_access_size =3D 4,
-> -        .max_access_size =3D 4
-> -    }
-> +        .max_access_size =3D 4,
-> +    },
->  };
->
->  static bool eth_can_rx(NetClientState *nc)
-> diff --git a/hw/timer/xilinx_timer.c b/hw/timer/xilinx_timer.c
-> index 32a9df69e0b..0822345779c 100644
-> --- a/hw/timer/xilinx_timer.c
-> +++ b/hw/timer/xilinx_timer.c
-> @@ -195,8 +195,8 @@ static const MemoryRegionOps timer_ops =3D {
->      .endianness =3D DEVICE_NATIVE_ENDIAN,
->      .valid =3D {
->          .min_access_size =3D 4,
-> -        .max_access_size =3D 4
-> -    }
-> +        .max_access_size =3D 4,
-> +    },
->  };
->
->  static void timer_hit(void *opaque)
+> +};
+> +
+> +DEFINE_TYPES(petalogix_s3adsp1800_machine_types)
 > --
 > 2.45.2
 >

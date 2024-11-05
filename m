@@ -1,217 +1,202 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2687735njc;
-        Tue, 5 Nov 2024 01:06:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXM8uUi5MfGTQlPbPX4ZSWfOnXPMNdNrO1oqfnF62LoM7VKWCgg6VX9qaQciLIjBC0NKBtlr8HuMgzSXA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFi65oz+Dg5Ok2NVCbeCNv+bFp8evtzfpieo3TWjy1CILJgFka5dEEi6V7RdWAnZW3t2pii
-X-Received: by 2002:a05:6102:3a0d:b0:4a3:db6a:dbbf with SMTP id ada2fe7eead31-4a962e13857mr12331352137.14.1730797614474;
-        Tue, 05 Nov 2024 01:06:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730797614; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2807445njc;
+        Tue, 5 Nov 2024 05:07:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU79lQpalc+sb8SymBUjeqPsUnSuCpfxxMXWzS/YApnt6AaWxwaMrLdInt59HnnHPQhyN0K9v9+l6w3Yw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGMqNwzY9sIrFKPqgS2LjSzGdZcJU8sMfJDFu87ShPO/vLctKxST4mQ9AK9p/2XfgSaXR2O
+X-Received: by 2002:a05:622a:11cc:b0:461:2a3f:a0ca with SMTP id d75a77b69052e-4613c197fc8mr542806351cf.59.1730812049769;
+        Tue, 05 Nov 2024 05:07:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730812049; cv=none;
         d=google.com; s=arc-20240605;
-        b=bIwMJl6eXTSVRbBDLqKiKEVlvV5IaGavbyPkgdIDJX/oPB9eh5br1tdzZ+FW4xbWxY
-         vdqW2lFBzGKkkaiuH84/4xC3JabG2U60MsmRV8fUE5nhkoWLzYHWxpBc2zq0LkBC7eKo
-         TejfmZINZTh9tAGxgvtX+lxFt9eIHcrYrXqpKyhyvmpfNCwnBnthWjHai3jGztLfW0CN
-         91rRv9I8OEvuTAlnpAme89McgoJU0O1sIQI4tK5fP/fZQjTHm8Iorw9XY7evnxda/6Vn
-         P+fGD3hgBLpA11bVKP2KhjL6T2qW/bxuCGYs409oenrFx1GQ7qIfyZaE8ynjlHBepjDD
-         bQiA==
+        b=Ib0agGlpCfXIvW3PDeIX2i6blD7XbF9EPkm5GQKhlCov9YPSWemvPaOG6JLZuRn/Ce
+         xKq5g1zP6aoRxPu5sp61A1YvtUluZ2hshm4eKVZkDpRw/QH9H4qU9kKiy+pfqFo240l/
+         cgmEEQRSQcCbI7aba4QpxQUBbckiZ6cXeh0tvnjFz2aGmjFLr5aBFglTZb+m9Z7u8RDC
+         R+BWQRie7Qbz/ikEaxDgOfk99bw6D2FGjPyJDjEACebZIDli4WdQcqGY5H1ncn1BzqC/
+         +2PKiYPx/kYJEMmGFxfnutRkNknsx/X6nJLZT/0Fh70lunUQ40Kr0SQIFyxjfhHrMpIr
+         tudA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=uXjIO+9s+KD2upHIWrfQy6arDb4vJIP8Rsh6ycWz53o=;
-        fh=b/6h+kk+1q1aAw9aWX7lYt+LMRf5q5204sGfyobOJ3A=;
-        b=ay1i+3QcncExHRcN3PmEXwCgl4tp2/ZIehzHM071hPFtrdKZMQtqsW+rC8fXk2oWyu
-         fTALelJsJoXuSPL5ftEMeGBFG1tggsYtKDtcHvv9RtsiVVzFdcGGgAWidkGMsgBEI6Cy
-         cxKKEfl17QOl0gz0VXEaWzTbfpt4qa34+3TN3Z35YgMPwTzIHCS6Nw5Xreeu9VFY1bB8
-         0KL9DgB/lr1sikf+tOr3z/KwmhIp15/fXTM//lH81foR1KNI5dpAiIxk15cgpyu3uB6V
-         ly4jLILyPpeDK+ozBZQmAUdEkW3EQvacj+QI7pEfQ0g2cWHCr1ngnrbTBdSyl3MebkOB
-         vjbg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Kbb2EbjAWyPRswDzNr8J6AfAT+vMH4Ts659xVE0GgBY=;
+        fh=5RTreV2FJKUlTpgU1MOH25M9luQpnjc1cvxvb//HIwQ=;
+        b=A5uXbssUA8GZyjtXfOfCWrZ5Gq3tH5mK/seXhhCBD0Haoxac57NIIi1L0yBZKaPtsO
+         UkPULsaaci/zC51Bj/U/JccMdx+kRDJ4dmjeMiGtK+q3EojUAom4GI5jxgd2x6I1YjiB
+         uvy+jO9tKQ61HzhRMaPcKX6A0HHRwEV+YfYWvwrBRRuQotYE5Z8ilEpx+q9Tw1bkxRRZ
+         HD6+H6mG23JmmfuPo3wcZs+MXCAEDrP1YlVcuJ0nFqJHVrO4aV0eQYV+toV0E6Mh79KE
+         NkayfnTvw5M3jVoUq5Tjb0QIm8AZ0Kjsbml7AK2HwMlOUWBZOwMwbmEH9L9FFxu9xU7r
+         t+mA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MM8eGCwB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="NMS/MpdH";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ad1b2827si126525731cf.284.2024.11.05.01.06.54
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad0b343fsi128470491cf.56.2024.11.05.05.07.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 01:06:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Nov 2024 05:07:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MM8eGCwB;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="NMS/MpdH";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t8FWR-0003rK-Q5; Tue, 05 Nov 2024 04:06:47 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t8JHH-0007Jh-VU; Tue, 05 Nov 2024 08:07:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1t8FWP-0003r0-9A
- for qemu-devel@nongnu.org; Tue, 05 Nov 2024 04:06:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1t8FWM-0002Xo-Og
- for qemu-devel@nongnu.org; Tue, 05 Nov 2024 04:06:44 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1730797602;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=uXjIO+9s+KD2upHIWrfQy6arDb4vJIP8Rsh6ycWz53o=;
- b=MM8eGCwBb73//KJkIIs5Yq8Hz7dqapeyx2AlIrM0tJggElrYrNgeN7BZcdMuTi5u3CuJmy
- pN1ArNIh7vCOj5KM5yWPqs0GuSmxzeu38jZYUuQ/IQ4wrTPyPLGmqcnssmNv7eWTGNAjy7
- HcJ3bsUwM7sr0PL8YVLicZ8Ct73TU+w=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-121-dGJxp6TLOD6SVWQW8zsXRw-1; Tue,
- 05 Nov 2024 04:06:39 -0500
-X-MC-Unique: dGJxp6TLOD6SVWQW8zsXRw-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E6DEC1955F28; Tue,  5 Nov 2024 09:06:36 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.52])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A2C8B19560A2; Tue,  5 Nov 2024 09:06:30 +0000 (UTC)
-Date: Tue, 5 Nov 2024 09:06:26 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Markus Armbruster <armbru@redhat.com>,
- "Huang, Ying" <ying.huang@intel.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8JH4-0006c2-9c
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2024 08:07:12 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8JH0-0002gH-BG
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2024 08:07:09 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-43159c9f617so42922985e9.2
+ for <qemu-arm@nongnu.org>; Tue, 05 Nov 2024 05:07:05 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1730812024; x=1731416824; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Kbb2EbjAWyPRswDzNr8J6AfAT+vMH4Ts659xVE0GgBY=;
+ b=NMS/MpdHv0mL+xXX4MDKMtHhCQD8tUoLFhAHOWTYVdzr25FdS5FjZuabDfzOLGrYTm
+ a7bLb1/DQAfa6SN8YoSaJkhjlM2Hqd1XoF6qPaFjTbpVosaNYxnjYZo3b3tbk4ZR0Mrc
+ u2sat5CPvv3ypxBGsvgr5PmeGHrHpY9jM/FBnWTC0et/Dp9kxqch+mmicDmAfXbLDa5d
+ 783kZgl7DNu7FV5g411uE1MB9RK0hh08hjYF8Li1neIxLmroTy491X8bbqAKkpufpkn5
+ PhzyZ0UwBuPzNWxkQ9VXcGZJj8+xfA8HhQDzUuIHmsRedQ1PtFOfCuApSPWTGDikV7LV
+ Vl/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730812024; x=1731416824;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Kbb2EbjAWyPRswDzNr8J6AfAT+vMH4Ts659xVE0GgBY=;
+ b=GlECCP8WTlvQ/owT14bQPzzpfNwUJ5bdIE7DklN3liCFUo5p9EPf2FvLsXDvNOxJaG
+ QRA1Aw9eP7hL3K+g+FUa8+DQfdDYV25QtxbPn0Vq58xzzF6ZqYhayhwk6C72i43J/zsR
+ ekBKIqJnIFIXicXTbUDmE+XBcE8lLS1FMsURh+yEU4XpayRmJxEhz85moCP85dgNMWy7
+ uWZDjzBTyhmslUr1WPONwvByfqGjPC1h0TlO/lOYBPNJAAZp9AogBiElPQPhemlZWEEW
+ 7H6bMke4PAN28CcUoXr6e1lv7lH1s9YRLg0YdZKm3ryT/5LVUjW8SdJ22f3bvq0iOJzO
+ SrOA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWxNPe78nzSBzsbM1Mti+a2HIn65sA+kRYaYBeFGSkxwIqcMG05fxUbgthkPRLLtGwPoGm/ZsCRNw==@nongnu.org
+X-Gm-Message-State: AOJu0YwxP1RoeHlyPHaujzXYDyacN1iMm2SGP4shc5cucZlclRyaXljG
+ AIX3fiM0WYTG3GaQriMTiKlPKSikxrjxR8UFWqIXGiPz0If5Tctsrbf7/ESZ230=
+X-Received: by 2002:a5d:5d09:0:b0:381:dff2:cf08 with SMTP id
+ ffacd0b85a97d-381dff2cff8mr3069929f8f.2.1730812024322; 
+ Tue, 05 Nov 2024 05:07:04 -0800 (PST)
+Received: from localhost.localdomain (86.red-88-29-160.dynamicip.rima-tde.net.
+ [88.29.160.86]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-381c113e073sm16114234f8f.66.2024.11.05.05.07.01
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 05 Nov 2024 05:07:03 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org,
+	Anton Johansson <anjo@rev.ng>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, devel@lists.libvirt.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org
-Subject: Re: [PULL 12/65] hw/acpi: Generic Port Affinity Structure support
-Message-ID: <ZyngEiwmYeZ-DvCy@redhat.com>
-References: <cover.1730754238.git.mst@redhat.com>
- <a82fe82916432091ca6fcbd7f357cccf35f6e80d.1730754238.git.mst@redhat.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 15/19] target/microblaze: Introduce mo_endian() helper
+Date: Tue,  5 Nov 2024 14:04:27 +0100
+Message-ID: <20241105130431.22564-16-philmd@linaro.org>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241105130431.22564-1-philmd@linaro.org>
+References: <20241105130431.22564-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <a82fe82916432091ca6fcbd7f357cccf35f6e80d.1730754238.git.mst@redhat.com>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WDQSuCpGXbSv
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: F3ka+hVt3LdT
 
-On Mon, Nov 04, 2024 at 04:06:16PM -0500, Michael S. Tsirkin wrote:
-> From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> 
-> These are very similar to the recently added Generic Initiators
-> but instead of representing an initiator of memory traffic they
-> represent an edge point beyond which may lie either targets or
-> initiators.  Here we add these ports such that they may
-> be targets of hmat_lb records to describe the latency and
-> bandwidth from host side initiators to the port.  A discoverable
-> mechanism such as UEFI CDAT read from CXL devices and switches
-> is used to discover the remainder of the path, and the OS can build
-> up full latency and bandwidth numbers as need for work and data
-> placement decisions.
-> 
-> Acked-by: Markus Armbruster <armbru@redhat.com>
-> Tested-by: "Huang, Ying" <ying.huang@intel.com>
-> Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Message-Id: <20240916174122.1843197-1-Jonathan.Cameron@huawei.com>
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> ---
->  qapi/qom.json                       |  41 ++++++++++
->  include/hw/acpi/aml-build.h         |   3 +
->  include/hw/acpi/pci.h               |   2 +-
->  include/hw/pci/pci_bridge.h         |   1 +
->  hw/acpi/aml-build.c                 |  39 ++++++++++
->  hw/acpi/pci.c                       | 116 +++++++++++++++++++++++++++-
->  hw/arm/virt-acpi-build.c            |   2 +-
->  hw/i386/acpi-build.c                |   2 +-
->  hw/pci-bridge/pci_expander_bridge.c |   1 -
->  9 files changed, 202 insertions(+), 5 deletions(-)
-> 
-> diff --git a/qapi/qom.json b/qapi/qom.json
-> index 321ccd708a..a8beeabf1f 100644
-> --- a/qapi/qom.json
-> +++ b/qapi/qom.json
-> @@ -844,6 +844,45 @@
->    'data': { 'pci-dev': 'str',
->              'node': 'uint32' } }
->  
-> +##
-> +# @AcpiGenericPortProperties:
-> +#
-> +# Properties for acpi-generic-port objects.
-> +#
-> +# @pci-bus: QOM path of the PCI bus of the hostbridge associated with
-> +#     this SRAT Generic Port Affinity Structure.  This is the same as
-> +#     the bus parameter for the root ports attached to this host
-> +#     bridge.  The resulting SRAT Generic Port Affinity Structure will
-> +#     refer to the ACPI object in DSDT that represents the host bridge
-> +#     (e.g.  ACPI0016 for CXL host bridges).  See ACPI 6.5 Section
-> +#     5.2.16.7 for more information.
-> +#
-> +# @node: Similar to a NUMA node ID, but instead of providing a
-> +#     reference point used for defining NUMA distances and access
-> +#     characteristics to memory or from an initiator (e.g. CPU), this
-> +#     node defines the boundary point between non-discoverable system
-> +#     buses which must be described by firmware, and a discoverable
-> +#     bus.  NUMA distances and access characteristics are defined to
-> +#     and from that point.  For system software to establish full
-> +#     initiator to target characteristics this information must be
-> +#     combined with information retrieved from the discoverable part
-> +#     of the path.  An example would use CDAT (see UEFI.org)
-> +#     information read from devices and switches in conjunction with
-> +#     link characteristics read from PCIe Configuration space.
-> +#     To get the full path latency from CPU to CXL attached DRAM
-> +#     CXL device:  Add the latency from CPU to Generic Port (from
-> +#     HMAT indexed via the the node ID in this SRAT structure) to
-> +#     that for CXL bus links, the latency across intermediate switches
-> +#     and from the EP port to the actual memory.  Bandwidth is more
-> +#     complex as there may be interleaving across multiple devices
-> +#     and shared links in the path.
-> +#
-> +# Since: 9.1
+mo_endian() returns the target endianness, currently static.
 
-This is outdated, we're in the 9.2 dev cycle currently.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/microblaze/translate.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
 
-
-With regards,
-Daniel
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index 86f3c196189..0b466db694c 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
+@@ -707,12 +707,17 @@ static void record_unaligned_ess(DisasContext *dc, int rd,
+ }
+ #endif
+ 
++static inline MemOp mo_endian(DisasContext *dc)
++{
++    return MO_TE;
++}
++
+ static bool do_load(DisasContext *dc, int rd, TCGv addr, MemOp mop,
+                     int mem_index, bool rev)
+ {
+     MemOp size = mop & MO_SIZE;
+ 
+-    mop |= MO_TE;
++    mop |= mo_endian(dc);
+ 
+     /*
+      * When doing reverse accesses we need to do two things.
+@@ -847,7 +852,8 @@ static bool trans_lwx(DisasContext *dc, arg_typea *arg)
+     /* lwx does not throw unaligned access errors, so force alignment */
+     tcg_gen_andi_tl(addr, addr, ~3);
+ 
+-    tcg_gen_qemu_ld_i32(cpu_res_val, addr, dc->mem_index, MO_TE | MO_UL);
++    tcg_gen_qemu_ld_i32(cpu_res_val, addr, dc->mem_index,
++                        mo_endian(dc) | MO_UL);
+     tcg_gen_mov_tl(cpu_res_addr, addr);
+ 
+     if (arg->rd) {
+@@ -864,7 +870,7 @@ static bool do_store(DisasContext *dc, int rd, TCGv addr, MemOp mop,
+ {
+     MemOp size = mop & MO_SIZE;
+ 
+-    mop |= MO_TE;
++    mop |= mo_endian(dc);
+ 
+     /*
+      * When doing reverse accesses we need to do two things.
+@@ -1018,7 +1024,7 @@ static bool trans_swx(DisasContext *dc, arg_typea *arg)
+ 
+     tcg_gen_atomic_cmpxchg_i32(tval, cpu_res_addr, cpu_res_val,
+                                reg_for_write(dc, arg->rd),
+-                               dc->mem_index, MO_TE | MO_UL);
++                               dc->mem_index, mo_endian(dc) | MO_UL);
+ 
+     tcg_gen_brcond_i32(TCG_COND_NE, cpu_res_val, tval, swx_fail);
+ 
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.45.2
 

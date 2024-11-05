@@ -1,104 +1,104 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3150268njc;
-        Tue, 5 Nov 2024 14:30:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUR74WnQ5KwcEy2BCi9PkNT0wrUz2Q0iWj28hRTgHlabWwp+eJ6UOC61QZ6n+18gXJ9gAGFE+oG28jszw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEgz0LZG77okkzzSik2wP6SCUbbTh8LfGy76lVAXjYhALvi9jJlRpYlGsSZWR1qBXNEWbvX
-X-Received: by 2002:a05:620a:410b:b0:7b1:4073:e8c9 with SMTP id af79cd13be357-7b2fb964f8emr2503736585a.20.1730845804808;
-        Tue, 05 Nov 2024 14:30:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730845804; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3152405njc;
+        Tue, 5 Nov 2024 14:34:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW4058ChwPc0x0Lgmzn9hxrat/khSvJt/+yXpLErcna+AVp+EV+MfECOjE4DlHEeLtb06af+ucgBwlNYg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHyTa1O1rcAmc2QQGmoNl75vIqidkZMQ0W/VnQ9Nvj7nP8BOPNOsNS4ANegilpsraH8dPhJ
+X-Received: by 2002:a05:620a:4554:b0:7b1:7d5c:8f9a with SMTP id af79cd13be357-7b193efe4c8mr4783010985a.28.1730846092208;
+        Tue, 05 Nov 2024 14:34:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730846092; cv=none;
         d=google.com; s=arc-20240605;
-        b=Vsqko2zAdwVtjfBEWEUBPdfgJd6l8judEJ6dpj8swD1vyTTyXeLcy1x/Z0nZe+fGH0
-         Kaj7RWrW73CBYNvLqIj6X3JseagfVvts+d4jPWMkZvrKrmmhHiExigsl5xNwkRe1IT7q
-         I2h6ZThXYvlpJMQMkNvh8fHsfVlUC2ufLkwObztHblof6DZfQKjmPUD6OeRHV+XpstGW
-         BjHvjwIEejacV9uvJJWiRV5TWpI70ErdV3BnZPb9+Kt2WYgdDZquzvgSS21/voFIncRZ
-         i6gb3TvvxvfD7pMeSb5bshhCYZBddKqu2+JQfTsFG4i2GU8vayhN0Z4PDhrOd5Lekq3s
-         6z3w==
+        b=UnLuvcW9rTTgjxnLtdpFITCvv/qoB+WwAt7pRLFpVmCvoUkUs4ld8qmynvFElvaZJz
+         JumtUeHcgEzFkHh607gTCODB9eeBm31YkYnMlE1ysz43uupGVod8tE81KW9xmixProeC
+         3bYUMn4ZhWyDVFoeBUXGw9NCRW/CzVcWhDp+oG+PCJ9VQQJovskHa0aOYG4kiK9jQRND
+         p5RqQRaxWNytUN9zGsb7eGEq72piUh03L7wLpnNRqiafun7T0FTBVQiP5J0+AszKYzfC
+         +9I+pPU/Bpil36Q0MA7TQkL9AwNRfSlmqKBdbcT8KyEkJY0QxPfqD5m9Lr3WNNIO3sf4
+         v2JA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=oGO9MICo6jKhq9VwPdZ6jahDb4TVdUEcMfxq2EiVi48=;
-        fh=HDlNf+vPi0UvsY1uuznWHcVqzsQ71tdea9tCl5KaaPA=;
-        b=ljf+iRWWyJ3IE2m5PmObEI9PQDNwax8cdW9Lct5D2yzmS3g86SI9k+8GiyJBkBFiPR
-         rwAaeClRcVL98j9oZ6Np0TwLGzkuOI0yIhjPqi5jbhQlDQbaeTj4alfbR0RHtN+To9Jy
-         G5ikhmkiSNagRfTotsheilirQnQbiLqx0VeFKSRaPq0kmxz5cNUnfgXu3pKXLxoKm8Ga
-         OuKi4pCYQfSNwgD8TAo5LXWZjDm2911eVgONRHAmOz069/VUfZ71V19wVVtdhtlJak6q
-         dcsCGfsP8Na2HnFnVafiWuw1m+cwA8XAKaFjAbJ2Exb8VFVkOuTX8+TcG4h6tNVMUiBg
-         hHvw==;
+        bh=+UwgmuRq0+OGGQeDNtF/5FwIx7BUqqW9UryJulqPz9c=;
+        fh=HFxHKQkAExMJeQEpHV7CmS8+/8BGiVTB4WnMvkp0pkU=;
+        b=gzTWGdBzajl0VcPspYWSVZNsqjjNVKwnB+TG5pSa4xAwj92yH2Wff5plfmxWvKrOl9
+         EL+sZhFvSlcjENGV5Zp+Htpfqvd7V9znraVzUUi0DDUD+UBgmBw+m/9wSu/oVWYB+bP5
+         NF5MU0g7YqV/0kt8L5Elxf4aUu3wUfknZRn0HhI6mLcEH7d69Tsmi9RLsV69EPdBk+PX
+         OP4nXaCdKqP8A3eIiylc4LaytX9ZPhYP7OEYuMUZPmos53vfKZnww7T3l9A6YMDIjMo5
+         Od17QP9eb4jFBi30JCYql2mxw7lhgtnVkziAB2wwg7/Dt7IlTRk0Vt/xzLLKd5yREYpw
+         Q3ZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EJn+ygVY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gXOJHAgS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b2f3a9cae9si1577284685a.466.2024.11.05.14.30.04
+        by mx.google.com with ESMTPS id af79cd13be357-7b2f3acecafsi1470972885a.683.2024.11.05.14.34.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 14:30:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Nov 2024 14:34:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=EJn+ygVY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gXOJHAgS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t8S3U-00057x-L0; Tue, 05 Nov 2024 17:29:44 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t8S88-0006wr-Qi; Tue, 05 Nov 2024 17:34:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1t8S3T-00057Q-2j; Tue, 05 Nov 2024 17:29:43 -0500
-Received: from mail-ua1-x930.google.com ([2607:f8b0:4864:20::930])
+ id 1t8S87-0006vl-Jo; Tue, 05 Nov 2024 17:34:31 -0500
+Received: from mail-vk1-xa36.google.com ([2607:f8b0:4864:20::a36])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1t8S3R-0000ry-Ea; Tue, 05 Nov 2024 17:29:42 -0500
-Received: by mail-ua1-x930.google.com with SMTP id
- a1e0cc1a2514c-84fdb038aaaso1803555241.3; 
- Tue, 05 Nov 2024 14:29:40 -0800 (PST)
+ id 1t8S85-0001u2-U7; Tue, 05 Nov 2024 17:34:31 -0500
+Received: by mail-vk1-xa36.google.com with SMTP id
+ 71dfb90a1353d-5139cd002b7so1514084e0c.0; 
+ Tue, 05 Nov 2024 14:34:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1730845780; x=1731450580; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1730846068; x=1731450868; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oGO9MICo6jKhq9VwPdZ6jahDb4TVdUEcMfxq2EiVi48=;
- b=EJn+ygVYvz/lEbbIG6A2ZAyL9wSao8dRuhdueyhOdY9+iInKkxn5GBX/+8AXSkM5kQ
- J02gu4HEOIzMOVjQde6IXwkIOd4P18lPcJVrbOeBAWjZtgoth1B/t7i12NADqLmqotz8
- yrK/oF7UfXj8nMKi0zHIdh2IKZPi/fnQlFoZ+CQFHPdiS4dCd1yXwPaynxpHdlqx2r1i
- uGWzekc2vDWVEl0nIncjgfXOvScEiWkFwFSA8P0IXbxLcwbOAuLqX3yDmszrfW0tV4kg
- kLg1NjzhnhOwratkflbe4POqauw5hszK7Xt+mxkJRqLfl2q41iYG9kUYmC20HluNyExY
- 9yTA==
+ bh=+UwgmuRq0+OGGQeDNtF/5FwIx7BUqqW9UryJulqPz9c=;
+ b=gXOJHAgSO2RP0ItDb4SO1jdQozn8f4+FyiN3HMS7xsnqYPMNaN0km514AH5ARtKyR+
+ PbnFUPtAeoOEgOCGVtfJOr4Z9KEINAv86TRFJMVTDL1CMm9b1TqBV3R2LOPFmJ5KjZ42
+ fnFQfyQ6ZKnK2wkGjk9sOWoYbn3MS0iD30pFlLPX/g99GRizFpJE1y+piR7CURdaRhVB
+ 8gx6HmXOwd9V2aDshh4sAZyg7p+8zLmKoz+G+/LQRUL2iz7BlR3BeqV3dljlEbEqxloB
+ uw0l/zngsKqp0phCaQ2Kf6h6rCa3sdGwvG2/xsbNOU/Z/d6gGBrOL4fB3O1eyjBx+c8w
+ MLwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730845780; x=1731450580;
+ d=1e100.net; s=20230601; t=1730846068; x=1731450868;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=oGO9MICo6jKhq9VwPdZ6jahDb4TVdUEcMfxq2EiVi48=;
- b=wVtm7lEI4wLayn5WK1PMkDclcCrvButIVjTzOl89DmJiiMr6JOYML10gND7GRfr5Mt
- gwgaYaztlGE3VAwEhc6ucScYSBw7dQPjVorMnWXmcAsPUR2rhgrHhu71E7lCuq+aTC05
- 5jysPG0TXnflwzE1mMKIR5kjQu/meBukR3oHpq20HMuWUfeOM2o6wiD8YsH+ywReZdUa
- Wn3B2UASneYJVbJ5TATtiuBh7Ty/LiXlPqbvM6eHxA7NS300JoL5otbpVqIJSoOei6SS
- ZZFRdmn8p0b7Y2ce5Qej3wgkTd1mpecyT65y+GPLdjdiGeTsjCCjjhDAawx+LYlKgS57
- k0Cg==
+ bh=+UwgmuRq0+OGGQeDNtF/5FwIx7BUqqW9UryJulqPz9c=;
+ b=Md39E+uqVSa30Pphzi+UW/NQ9LMKfksb44CYkZu/5yQeCWPqX+sAqW4xeGhIDRJG2M
+ kn41dRdJ7nEMkfP0yA7QxxKvOCa5MuLWoDF0FzurDfWjKWmcHldL5b+v76u/MdqMQO2I
+ O5M4o6N8tb/n5EIQ6JTExX9zvQ0bv39miqP1Gwk7m7PK/GoNRWNf5JAneDOvdWp7oSsn
+ Ob89yFr1p7Bc5AtIIH4ZTvCmwMSP+aS0IrqhCkzHNqXz6jswfOnQB4S0KvOWcbVNW98g
+ N8bXEsH37g2KZAiRPTyJlz2MlZtFq9tqQur3Ob/BvHQVU5AH8NtEsVnvCA81ruSaPIAE
+ +gjg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVjJ1F5CNa0xeu8/5OmtHwtkwIYEUBQIbUzJFFm8tc2+aF8opxVpaY8ZRczetM1sa/wgcrXuTF35g==@nongnu.org
-X-Gm-Message-State: AOJu0YzCmEIOudjJ++Hs/Nqm3FQv8JexUFDo5YYtd93xezC5KTYUhv5m
- kqzEhExqQHKNKAqMNCXndY+fqfOt+rBrkCrvlaKS0rhL4RkZ/UhX3H0yLfvbK2Vyqe5hwHR1fli
- SO0hw++j2Ru/t75SOTG8/0w0yUvM=
-X-Received: by 2002:a05:6102:370e:b0:498:ef8d:8368 with SMTP id
- ada2fe7eead31-4a962e0b82fmr15497448137.13.1730845779955; Tue, 05 Nov 2024
- 14:29:39 -0800 (PST)
+ AJvYcCXgS+eZ0mqxSC3WB7fKNOOvWdTBow9OeBFDO9XkHMyGKxekSdsk+fxtGlGNUqQstRFMX34BaKg87w==@nongnu.org
+X-Gm-Message-State: AOJu0YwfOY4uTvyidtdB5xAw8V7IihkyYrbrmN7vcAFdv54AQBIekFBy
+ EYi9lmSkTXq7X8j50Tz/QeZnoAyN6YW93RN02DGNjPkuUEYyrGvPCZQ3uVIZYDpdoP8nlkoRxh2
+ if772ociQUTuMycYarjnGZT0uTws=
+X-Received: by 2002:a05:6102:5488:b0:4a5:6f41:2143 with SMTP id
+ ada2fe7eead31-4a8cfb42ee1mr35267226137.4.1730846068437; Tue, 05 Nov 2024
+ 14:34:28 -0800 (PST)
 MIME-Version: 1.0
 References: <20241105130431.22564-1-philmd@linaro.org>
- <20241105130431.22564-2-philmd@linaro.org>
-In-Reply-To: <20241105130431.22564-2-philmd@linaro.org>
+ <20241105130431.22564-3-philmd@linaro.org>
+In-Reply-To: <20241105130431.22564-3-philmd@linaro.org>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 6 Nov 2024 08:29:14 +1000
-Message-ID: <CAKmqyKO+Q5zNa_DPbubooXZ2o681ztzD32S-f1cLPKNhQEBDxg@mail.gmail.com>
-Subject: Re: [PATCH 01/19] target/microblaze: Rename CPU endianness property
- as 'little-endian'
+Date: Wed, 6 Nov 2024 08:34:01 +1000
+Message-ID: <CAKmqyKNoXGsVmufYtWu0FbsFZvoTQyc64c0dSLdF_ACTkR-paA@mail.gmail.com>
+Subject: Re: [PATCH 02/19] hw/microblaze: Deprecate big-endian petalogix-ml605
+ & xlnx-zynqmp-pmu
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>, 
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -110,8 +110,8 @@ Cc: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>,
  Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::930;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x930.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a36;
+ envelope-from=alistair23@gmail.com; helo=mail-vk1-xa36.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -121,87 +121,139 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1Wr53UnxefAE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dmbmfcu+a6ko
 
 On Tue, Nov 5, 2024 at 11:06=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
 <philmd@linaro.org> wrote:
 >
-> Rename the 'endian' property as 'little-endian' because the 'ENDI'
-> bit is set when the endianness is in little order, and unset in
-> big order.
+> The petalogix-ml605 machine was explicitly added as little-endian only
+> machine in commit 00914b7d970 ("microblaze: Add PetaLogix ml605 MMU
+> little-endian ref design"). Mark the big-endian version as deprecated.
+>
+> When the xlnx-zynqmp-pmu machine's CPU was added in commit 133d23b3ad1
+> ("xlnx-zynqmp-pmu: Add the CPU and memory"), its 'endianness' property
+> was set to %true, thus wired in little endianness.
+>
+> Both machine are included in the big-endian system binary, while their
+> CPU is working in little-endian. Unlikely to work as it. Deprecate now
+> as broken config so we can remove soon.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
->  hw/microblaze/petalogix_ml605_mmu.c | 2 +-
->  hw/microblaze/xlnx-zynqmp-pmu.c     | 2 +-
->  target/microblaze/cpu.c             | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+>  docs/about/deprecated.rst                        | 6 ++++++
+>  configs/devices/microblaze-softmmu/default.mak   | 2 --
+>  configs/devices/microblazeel-softmmu/default.mak | 5 ++++-
+>  hw/microblaze/petalogix_ml605_mmu.c              | 7 ++++++-
+>  hw/microblaze/xlnx-zynqmp-pmu.c                  | 8 ++++++--
+>  5 files changed, 22 insertions(+), 6 deletions(-)
 >
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index ff404d44f85..e1c8829e1a4 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -279,6 +279,12 @@ BMC and a witherspoon like OpenPOWER system. It was =
+used for bring up
+>  of the AST2600 SoC in labs.  It can be easily replaced by the
+>  ``rainier-bmc`` machine which is a real product.
+>
+> +Big-Endian variants of MicroBlaze ``petalogix-ml605`` and ``xlnx-zynqmp-=
+pmu`` machines (since 9.2)
+> +''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''=
+''''''''''''''''''''''''''
+> +
+> +Both ``petalogix-ml605`` and ``xlnx-zynqmp-pmu`` were added for little e=
+ndian
+> +CPUs. Big endian support is not tested.
+> +
+>  Backend options
+>  ---------------
+>
+> diff --git a/configs/devices/microblaze-softmmu/default.mak b/configs/dev=
+ices/microblaze-softmmu/default.mak
+> index 583e3959bb7..78941064655 100644
+> --- a/configs/devices/microblaze-softmmu/default.mak
+> +++ b/configs/devices/microblaze-softmmu/default.mak
+> @@ -2,5 +2,3 @@
+>
+>  # Boards are selected by default, uncomment to keep out of the build.
+>  # CONFIG_PETALOGIX_S3ADSP1800=3Dn
+> -# CONFIG_PETALOGIX_ML605=3Dn
+> -# CONFIG_XLNX_ZYNQMP_PMU=3Dn
+> diff --git a/configs/devices/microblazeel-softmmu/default.mak b/configs/d=
+evices/microblazeel-softmmu/default.mak
+> index 29f7f13816c..4c1086435bf 100644
+> --- a/configs/devices/microblazeel-softmmu/default.mak
+> +++ b/configs/devices/microblazeel-softmmu/default.mak
+> @@ -1,3 +1,6 @@
+>  # Default configuration for microblazeel-softmmu
+>
+> -include ../microblaze-softmmu/default.mak
+> +# Boards are selected by default, uncomment to keep out of the build.
+> +# CONFIG_PETALOGIX_S3ADSP1800=3Dn
+> +# CONFIG_PETALOGIX_ML605=3Dn
+> +# CONFIG_XLNX_ZYNQMP_PMU=3Dn
 > diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogi=
 x_ml605_mmu.c
-> index b4183c5267d..df808ac323e 100644
+> index df808ac323e..61e47d83988 100644
 > --- a/hw/microblaze/petalogix_ml605_mmu.c
 > +++ b/hw/microblaze/petalogix_ml605_mmu.c
-> @@ -90,7 +90,7 @@ petalogix_ml605_init(MachineState *machine)
->      object_property_set_int(OBJECT(cpu), "use-fpu", 1, &error_abort);
->      object_property_set_bool(OBJECT(cpu), "dcache-writeback", true,
->                               &error_abort);
-> -    object_property_set_bool(OBJECT(cpu), "endianness", true, &error_abo=
-rt);
-> +    object_property_set_bool(OBJECT(cpu), "little-endian", true, &error_=
-abort);
->      qdev_realize(DEVICE(cpu), NULL, &error_abort);
+> @@ -213,7 +213,12 @@ petalogix_ml605_init(MachineState *machine)
 >
->      /* Attach emulated BRAM through the LMB.  */
+>  static void petalogix_ml605_machine_init(MachineClass *mc)
+>  {
+> -    mc->desc =3D "PetaLogix linux refdesign for xilinx ml605 little endi=
+an";
+> +#if TARGET_BIG_ENDIAN
+> +    mc->desc =3D "PetaLogix linux refdesign for xilinx ml605 (big endian=
+)";
+> +    mc->deprecation_reason =3D "big endian support is not tested";
+> +#else
+> +    mc->desc =3D "PetaLogix linux refdesign for xilinx ml605 (little end=
+ian)";
+> +#endif
+>      mc->init =3D petalogix_ml605_init;
+>  }
+>
 > diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-=
 pmu.c
-> index 1bfc9641d29..43608c2dca4 100644
+> index 43608c2dca4..567aad47bfc 100644
 > --- a/hw/microblaze/xlnx-zynqmp-pmu.c
 > +++ b/hw/microblaze/xlnx-zynqmp-pmu.c
-> @@ -90,7 +90,7 @@ static void xlnx_zynqmp_pmu_soc_realize(DeviceState *de=
-v, Error **errp)
->      object_property_set_bool(OBJECT(&s->cpu), "use-pcmp-instr", true,
->                               &error_abort);
->      object_property_set_bool(OBJECT(&s->cpu), "use-mmu", false, &error_a=
-bort);
-> -    object_property_set_bool(OBJECT(&s->cpu), "endianness", true,
-> +    object_property_set_bool(OBJECT(&s->cpu), "little-endian", true,
->                               &error_abort);
->      object_property_set_str(OBJECT(&s->cpu), "version", "8.40.b",
->                              &error_abort);
-> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-> index 135947ee800..e9f98806274 100644
-> --- a/target/microblaze/cpu.c
-> +++ b/target/microblaze/cpu.c
-> @@ -368,7 +368,7 @@ static Property mb_properties[] =3D {
->      DEFINE_PROP_UINT8("use-non-secure", MicroBlazeCPU, cfg.use_non_secur=
-e, 0),
->      DEFINE_PROP_BOOL("dcache-writeback", MicroBlazeCPU, cfg.dcache_write=
-back,
->                       false),
-> -    DEFINE_PROP_BOOL("endianness", MicroBlazeCPU, cfg.endi, false),
-> +    DEFINE_PROP_BOOL("little-endian", MicroBlazeCPU, cfg.endi, false),
->      /* Enables bus exceptions on failed data accesses (load/stores).  */
->      DEFINE_PROP_BOOL("dopb-bus-exception", MicroBlazeCPU,
->                       cfg.dopb_bus_exception, false),
+> @@ -181,9 +181,13 @@ static void xlnx_zynqmp_pmu_init(MachineState *machi=
+ne)
+>
+>  static void xlnx_zynqmp_pmu_machine_init(MachineClass *mc)
+>  {
+> -    mc->desc =3D "Xilinx ZynqMP PMU machine";
+> +#if TARGET_BIG_ENDIAN
+> +    mc->desc =3D "Xilinx ZynqMP PMU machine (big endian)";
+> +    mc->deprecation_reason =3D "big endian support is not tested";
+> +#else
+> +    mc->desc =3D "Xilinx ZynqMP PMU machine (little endian)";
+> +#endif
+>      mc->init =3D xlnx_zynqmp_pmu_init;
+>  }
+>
+>  DEFINE_MACHINE("xlnx-zynqmp-pmu", xlnx_zynqmp_pmu_machine_init)
+> -
 > --
 > 2.45.2
 >

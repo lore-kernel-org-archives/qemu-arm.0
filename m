@@ -1,122 +1,128 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3160907njc;
-        Tue, 5 Nov 2024 14:58:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXmGjmkN1kKr4bk8NWv1TvKV3L3x7cP3XdoiD7fYipzSTN/G14uAU4Co8At2kF9RSfOWiHvUfyouv87ig==@linaro.org
-X-Google-Smtp-Source: AGHT+IFWu6NCb+iE9+hcSO+LumhfTcpax6IQuHI2SvdDc0gF4xjM/lGz3xhQajpDsMMHISIPG8Eb
-X-Received: by 2002:a05:6902:1884:b0:e30:e1c9:de30 with SMTP id 3f1490d57ef6-e30e5a3cd7dmr19226045276.13.1730847496567;
-        Tue, 05 Nov 2024 14:58:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730847496; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3161404njc;
+        Tue, 5 Nov 2024 14:59:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVpzDG3nCDUmSmP7AmfV2W2Dc46MZ9wA6H5M/BeCQUepiQzyNvXRIoKf+Gsp3zydeFSCyD2aiZjZrcJeg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFa4XRqvVaCc5cjGEXqpHUGknCzZDglWMDI3qX/3d8wUCs0ZSApbvcchzxBC0/ebdAuTF0y
+X-Received: by 2002:a05:6902:2746:b0:e28:f03e:fc2b with SMTP id 3f1490d57ef6-e33025b2f1cmr15061106276.25.1730847574900;
+        Tue, 05 Nov 2024 14:59:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730847574; cv=none;
         d=google.com; s=arc-20240605;
-        b=F4grDEMRXCQC9IjpEnFPVRi7Fz3/dM4jD0xD+v+lYt598kSvBhiUO63M8sIYDYCbHB
-         N7dco0HM1dGAGOvJPwSHsbNWSgmpRakLyrbvpg6tjYbZIENRPpUGfY8Yb0ga+7Buvi69
-         Hsh8ovxGLU9I6C2ffm847925QBk5wpuU/gywLP9fH5oHy2dd1yWn1CZIQoro0IFwhbTv
-         VPRotVQ5IqjJ5NgC4jTaUm72JTJIGCINDzrWh/VnlgdWWz3EVNQqLG4+C27uilPmKLaj
-         QE9yBArDQ1GPpIyV96tJTI503e4QaseWX2RaUglbp5b9ObCERwfYpMbtfZ/7Y84R3yTk
-         HXOg==
+        b=NjurtT3/haw2rqaaVahwQrqWlW2xFj4E2SzDEbmBQKrTGZPJgNRxHzoxdBFc3GBsf0
+         rM37d2XRvnCFpoldOEYB5SzKNC4FfssU8dkK2kSsbDSY8NfwK+aHyr0LVGlrMSpfFkHD
+         xCIb+1VMvKT6Y29wCbLuVmaxTpUtFytizsG71x1mGwtwKTsroc9Cxq3/eqz33oIYZyCw
+         hvFrg/ZG3GsLkldBiKnROzG8BWLD8ghE1g7C9uHKqTXgQqPx5hJxPl9Fio2ps/IlKMrc
+         Obv9NN2RGG+s65Aq0ey60lp4XgXX+vg5vSB5XBfn8jyrVXMhv4FCGKHAaR+xeKUPAOlj
+         famQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=We6j0KP009ueD40evB1SXX2cvSr19QGfXSwUYGQPazw=;
-        fh=bHSrRy/cytXnkO0Y/lfuIiRtiuabYRWjmnG8TYvsXLU=;
-        b=RHj3pd51HRnySG9rtOl3ZkgBYJSCtwm3J6afIpu3jKKWu7iAafKGXmWFBR1OYiDvl9
-         ufvbPFvyyeVcO1zqt+K3KDl3xtQXIERrspoOeN4wbCGijZt2JN55JC+M7Rth2a2c0E5b
-         h3E5sfT2GxkDatto+QaeKQCqn7b4KV2S24FeAW4iZheCcOqTavvp7htYLBQ0fnhPS3k7
-         dDIyFvKtpA49ms8jALKWUtwnKFNSxrzeaT3rF+S3PXEm55J7YCeICIOkfFHtG05h7yY3
-         lXM19diWJXQDhCl59Sp8LLJHKSbPDXQnikZ6vUEVDcElMmCm2ff3AU+Ycmxen39Oxiuf
-         IceA==;
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=MFZyr2VRlQ1VNjSzl69Okeyb/RsPEOM4GrEdhgZ2hEQ=;
+        fh=2K20Nj666pzHPPKVS9EUfha9fhijZR7ogvp0FWSdNeY=;
+        b=kD7IP5lWMTDYLUFK3J8r2/FzLHpEVvM2/x5omsTypen/vI2fuD2d7qmGFoFWhFPQOf
+         M7k9M3oY30L0YSmjgDapK0aRiUKftvap8x75b1tbsW/gOAY54x/Q3RwfNprnpbPHBMUP
+         HJlpvvOwLdxcnjxclJ7rY+sIwSWbJbg5RZ36etsbuQSAjf7ZVCwlaGFP2De/4E1XzyFd
+         yGEoUosvhj7f6Gz8R84Vpq8ttF+oWP/nowFYzWyPsE7vKVpRYmxBZrkWK9DZ/uzi4qSi
+         7M73Aq5BudozaIBz2F5Ydlpb8x55izUELQ1+QGbHQKPPSGQtCH5q5Sd6BdKkjFSqrqIM
+         HxhA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="PNGV/9Uy";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="eZB/lVLM";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ad2474a2si159183951cf.599.2024.11.05.14.58.16
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad19b977si140523711cf.312.2024.11.05.14.59.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 14:58:16 -0800 (PST)
+        Tue, 05 Nov 2024 14:59:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="PNGV/9Uy";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="eZB/lVLM";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t8SV2-0001iH-Px; Tue, 05 Nov 2024 17:58:13 -0500
+	id 1t8SWJ-0002rT-Ur; Tue, 05 Nov 2024 17:59:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1t8SUw-0001OR-6g; Tue, 05 Nov 2024 17:58:06 -0500
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1t8SWH-0002qm-Up; Tue, 05 Nov 2024 17:59:29 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1t8SUt-0006a8-Fw; Tue, 05 Nov 2024 17:58:05 -0500
-Received: by mail-ua1-x936.google.com with SMTP id
- a1e0cc1a2514c-84fe454176bso2344825241.1; 
- Tue, 05 Nov 2024 14:58:01 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1t8SWF-0006ld-B6; Tue, 05 Nov 2024 17:59:29 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4314f38d274so70917435e9.1; 
+ Tue, 05 Nov 2024 14:59:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1730847480; x=1731452280; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=We6j0KP009ueD40evB1SXX2cvSr19QGfXSwUYGQPazw=;
- b=PNGV/9UyNP9Wodl1y40u82QJJ50/nxhMp9PebQykJNvhyBkVkQ1gid7l9PRW3xNKmW
- 1yc8atZoPLVFn2cgTG3ja32yM1MdGIEq1oZ1CFlqY4fi4jDXYfpQRUX2L8ECdn0eEyUN
- gy1+74pNuV3UjjevWmubQ2j698xaRXBvbN1m6vcRpbszIHoG1i4kiE47/tHVfli+MH0A
- 4zKZOIOWem0Q+cTXEq8VLw9tNjXMEIKacdDxHKQTaKEXeOhyiBz37pjKax86pfyPqEQ9
- lFfbvrJ68yp176JjiLo+LS5oW35t92cIeuCBxJMdCiyAi7Y5XJ4qcDLGBbAONahXGzrH
- M2AA==
+ d=gmail.com; s=20230601; t=1730847566; x=1731452366; darn=nongnu.org;
+ h=user-agent:in-reply-to:content-transfer-encoding
+ :content-disposition:mime-version:references:message-id:subject:cc
+ :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=MFZyr2VRlQ1VNjSzl69Okeyb/RsPEOM4GrEdhgZ2hEQ=;
+ b=eZB/lVLMdW1ZUhPGafe1jUowzfMH2c/CDVZ4muRwA9MueOWb7bzHKkB3td1YsR1/oS
+ wDkC1gAewL8GxRUyU1FIXYEb/K28bf+udKPaAPSs/Xc+hs70nhqD9pVywLxAHUQfPdaj
+ TZujof0S55onIC7d4EU6xQo+76vIHngcLxROzmFn2G/UQnzhxU8OzhiaTfSoIjtrf+0w
+ 06+8LWil9bdPCccx6292oslHvePEOP3p7oXHpi3TdpYPDRICZ5PAXeW4aa5oqzdvi/B1
+ m9JpW9uQZsWO3xh1mNYpUTuvVqVgjVXqKv+2d8/d5i1rJAvDTTZzQwMNYx/z/u/29VC6
+ FPkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730847480; x=1731452280;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=We6j0KP009ueD40evB1SXX2cvSr19QGfXSwUYGQPazw=;
- b=iiCXS4F6Tj+pTaMfVRWzHHUywZGAIIXjLDmoxfIxyQyAxOnKnrjjsX7cWKrLKgMVdt
- ax1/7ZpCmsMR186B8Weuw7ia6hwdQhRRq+81BTPUmMC71ONF2nroap0F9fdCcN+G40OM
- H5GP00fm1VkOvhyAQjStgd6WXbGzVgyA6DYAWrBAM09gexjlt4qIik0k05QlW1f19vz6
- i+FIOuc0GVirAXzB9dD2E43rAwJ3xa7aSQbiAiWd0uxWRj2dvsdYsBzNEk6gFYP1Pxav
- 8hT9s5ujlHcX14m+3AsRNUVwsu/6gbD2X2+51HOT0JqM+xPXtK8XAS1ekzwVR7EGwWsJ
- iARg==
+ d=1e100.net; s=20230601; t=1730847566; x=1731452366;
+ h=user-agent:in-reply-to:content-transfer-encoding
+ :content-disposition:mime-version:references:message-id:subject:cc
+ :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=MFZyr2VRlQ1VNjSzl69Okeyb/RsPEOM4GrEdhgZ2hEQ=;
+ b=D6AO7s4y+ToQR5VCw+9OPwbYhtsmrog1+Arrt1xT68ztfS9ZDWm5NAbbqER93R8lQG
+ W4VNcyWo1ufDi8RInUHBBGHinWr7GJzK61gYBEZbf/2d7cUEAAeogWv9ymHMLvzw5GCQ
+ lOTjVxDtwniNb8hOfHhh52NabWhOnjsfcCQWrt+rTZINhQrVzg5XvHB3H8sCEbCv9wkR
+ /xsau5g5FJfW9GVzBZQEOaC0t7LYwRMnBvy8JLXP0PLECkEDY6noVcJ7frCJZY6CvAS6
+ QBbhoAkK74mQZ6Y65jUkQG8BQiaAYJ8l+vFj4WrwVV6t61tc23pawuf3cm2R3iD5DUCj
+ Fsng==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUyFNUh9JWtKw/EjXf72q2dchJnmBR+mbsoreaCfQVMdLMBBWQuFu9S/VP8R02PThgVx6796fj7Jw==@nongnu.org
-X-Gm-Message-State: AOJu0YzbfhxDU0Du98QZnopMAjISrl+nDOz5TOKMBTY0FIfTQSMh5L16
- 8mzn5c6PCxSSreZBGnVnnDAVoVE2a7scIJG5L9SnsZ7iRhU0KMofl8t1hXjXXvn564KG7HcVceK
- MQT07hwXdCjXUVC9LTrlvE8R8HIo=
-X-Received: by 2002:a05:6102:26c3:b0:4a4:7e16:6176 with SMTP id
- ada2fe7eead31-4a954262b73mr20962786137.6.1730847480582; Tue, 05 Nov 2024
- 14:58:00 -0800 (PST)
-MIME-Version: 1.0
-References: <20241105130431.22564-1-philmd@linaro.org>
- <20241105130431.22564-14-philmd@linaro.org>
-In-Reply-To: <20241105130431.22564-14-philmd@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 6 Nov 2024 08:57:34 +1000
-Message-ID: <CAKmqyKMjWPMg8c0S76eXN-tUK2Ly1qD48G78qtFJ=8Eh1BNTxw@mail.gmail.com>
-Subject: Re: [PATCH 13/19] target/microblaze: Explode MO_TExx -> MO_TE | MO_xx
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, devel@lists.libvirt.org,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>, 
+ AJvYcCW3RtCwIskMKeQArwjK2M09TW4dMDYd0crwA0Z6so4JSH5Z4vrA74zZ6yZJCuX7sl9sutthDloRhQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz6RtNdEEHAZGObSRKAJGQDCKyb9ncllhdQeH7BaQlgo5icfSQ8
+ R6pEj1nEX8wljiaTMVNcW4WhlX9bZSvomtcajY0JuAav0jmVBZEf
+X-Received: by 2002:a05:600c:4455:b0:42c:b508:750e with SMTP id
+ 5b1f17b1804b1-4328324ae6cmr184100085e9.11.1730847565553; 
+ Tue, 05 Nov 2024 14:59:25 -0800 (PST)
+Received: from gmail.com ([89.101.60.19]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-432aa6b35c0sm1314005e9.16.2024.11.05.14.59.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 05 Nov 2024 14:59:24 -0800 (PST)
+Date: Tue, 5 Nov 2024 23:59:24 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ devel@lists.libvirt.org,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::936;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x936.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+Subject: Re: [PATCH 04/19] hw/microblaze/s3adsp1800: Rename unimplemented
+ MMIO region as xps_gpio
+Message-ID: <ZyqjTDvocg7fHdLb@zapote>
+References: <20241105130431.22564-1-philmd@linaro.org>
+ <20241105130431.22564-5-philmd@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20241105130431.22564-5-philmd@linaro.org>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -133,208 +139,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eQPrtA4bQ8aE
+X-TUID: 2BcUj8ec2s/s
 
-On Tue, Nov 5, 2024 at 11:07=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> Extract the implicit MO_TE definition in order to replace
-> it by runtime variable in the next commit.
->
-> Mechanical change using:
->
->   $ for n in UW UL UQ UO SW SL SQ; do \
->       sed -i -e "s/MO_TE$n/MO_TE | MO_$n/" \
->            $(git grep -l MO_TE$n target/microblaze); \
->     done
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+On Tue, Nov 05, 2024 at 02:04:16PM +0100, Philippe Mathieu-Daudé wrote:
+> The machine datasheet mentions the GPIO device as 'xps_gpio'.
+> Rename it accordingly to easily find its documentation.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 
-Alistair
 
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->  target/microblaze/translate.c | 36 +++++++++++++++++------------------
->  1 file changed, 18 insertions(+), 18 deletions(-)
->
-> diff --git a/target/microblaze/translate.c b/target/microblaze/translate.=
-c
-> index 4beaf69e76a..4c25b1e4383 100644
-> --- a/target/microblaze/translate.c
-> +++ b/target/microblaze/translate.c
-> @@ -779,13 +779,13 @@ static bool trans_lbui(DisasContext *dc, arg_typeb =
-*arg)
->  static bool trans_lhu(DisasContext *dc, arg_typea *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typea(dc, arg->ra, arg->rb);
-> -    return do_load(dc, arg->rd, addr, MO_TEUW, dc->mem_index, false);
-> +    return do_load(dc, arg->rd, addr, MO_TE | MO_UW, dc->mem_index, fals=
-e);
->  }
->
->  static bool trans_lhur(DisasContext *dc, arg_typea *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typea(dc, arg->ra, arg->rb);
-> -    return do_load(dc, arg->rd, addr, MO_TEUW, dc->mem_index, true);
-> +    return do_load(dc, arg->rd, addr, MO_TE | MO_UW, dc->mem_index, true=
-);
->  }
->
->  static bool trans_lhuea(DisasContext *dc, arg_typea *arg)
-> @@ -797,26 +797,26 @@ static bool trans_lhuea(DisasContext *dc, arg_typea=
- *arg)
->      return true;
->  #else
->      TCGv addr =3D compute_ldst_addr_ea(dc, arg->ra, arg->rb);
-> -    return do_load(dc, arg->rd, addr, MO_TEUW, MMU_NOMMU_IDX, false);
-> +    return do_load(dc, arg->rd, addr, MO_TE | MO_UW, MMU_NOMMU_IDX, fals=
-e);
->  #endif
->  }
->
->  static bool trans_lhui(DisasContext *dc, arg_typeb *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typeb(dc, arg->ra, arg->imm);
-> -    return do_load(dc, arg->rd, addr, MO_TEUW, dc->mem_index, false);
-> +    return do_load(dc, arg->rd, addr, MO_TE | MO_UW, dc->mem_index, fals=
-e);
->  }
->
->  static bool trans_lw(DisasContext *dc, arg_typea *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typea(dc, arg->ra, arg->rb);
-> -    return do_load(dc, arg->rd, addr, MO_TEUL, dc->mem_index, false);
-> +    return do_load(dc, arg->rd, addr, MO_TE | MO_UL, dc->mem_index, fals=
-e);
->  }
->
->  static bool trans_lwr(DisasContext *dc, arg_typea *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typea(dc, arg->ra, arg->rb);
-> -    return do_load(dc, arg->rd, addr, MO_TEUL, dc->mem_index, true);
-> +    return do_load(dc, arg->rd, addr, MO_TE | MO_UL, dc->mem_index, true=
-);
->  }
->
->  static bool trans_lwea(DisasContext *dc, arg_typea *arg)
-> @@ -828,14 +828,14 @@ static bool trans_lwea(DisasContext *dc, arg_typea =
-*arg)
->      return true;
->  #else
->      TCGv addr =3D compute_ldst_addr_ea(dc, arg->ra, arg->rb);
-> -    return do_load(dc, arg->rd, addr, MO_TEUL, MMU_NOMMU_IDX, false);
-> +    return do_load(dc, arg->rd, addr, MO_TE | MO_UL, MMU_NOMMU_IDX, fals=
-e);
->  #endif
->  }
->
->  static bool trans_lwi(DisasContext *dc, arg_typeb *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typeb(dc, arg->ra, arg->imm);
-> -    return do_load(dc, arg->rd, addr, MO_TEUL, dc->mem_index, false);
-> +    return do_load(dc, arg->rd, addr, MO_TE | MO_UL, dc->mem_index, fals=
-e);
->  }
->
->  static bool trans_lwx(DisasContext *dc, arg_typea *arg)
-> @@ -845,7 +845,7 @@ static bool trans_lwx(DisasContext *dc, arg_typea *ar=
-g)
->      /* lwx does not throw unaligned access errors, so force alignment */
->      tcg_gen_andi_tl(addr, addr, ~3);
->
-> -    tcg_gen_qemu_ld_i32(cpu_res_val, addr, dc->mem_index, MO_TEUL);
-> +    tcg_gen_qemu_ld_i32(cpu_res_val, addr, dc->mem_index, MO_TE | MO_UL)=
-;
->      tcg_gen_mov_tl(cpu_res_addr, addr);
->
->      if (arg->rd) {
-> @@ -929,13 +929,13 @@ static bool trans_sbi(DisasContext *dc, arg_typeb *=
-arg)
->  static bool trans_sh(DisasContext *dc, arg_typea *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typea(dc, arg->ra, arg->rb);
-> -    return do_store(dc, arg->rd, addr, MO_TEUW, dc->mem_index, false);
-> +    return do_store(dc, arg->rd, addr, MO_TE | MO_UW, dc->mem_index, fal=
-se);
->  }
->
->  static bool trans_shr(DisasContext *dc, arg_typea *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typea(dc, arg->ra, arg->rb);
-> -    return do_store(dc, arg->rd, addr, MO_TEUW, dc->mem_index, true);
-> +    return do_store(dc, arg->rd, addr, MO_TE | MO_UW, dc->mem_index, tru=
-e);
->  }
->
->  static bool trans_shea(DisasContext *dc, arg_typea *arg)
-> @@ -947,26 +947,26 @@ static bool trans_shea(DisasContext *dc, arg_typea =
-*arg)
->      return true;
->  #else
->      TCGv addr =3D compute_ldst_addr_ea(dc, arg->ra, arg->rb);
-> -    return do_store(dc, arg->rd, addr, MO_TEUW, MMU_NOMMU_IDX, false);
-> +    return do_store(dc, arg->rd, addr, MO_TE | MO_UW, MMU_NOMMU_IDX, fal=
-se);
->  #endif
->  }
->
->  static bool trans_shi(DisasContext *dc, arg_typeb *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typeb(dc, arg->ra, arg->imm);
-> -    return do_store(dc, arg->rd, addr, MO_TEUW, dc->mem_index, false);
-> +    return do_store(dc, arg->rd, addr, MO_TE | MO_UW, dc->mem_index, fal=
-se);
->  }
->
->  static bool trans_sw(DisasContext *dc, arg_typea *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typea(dc, arg->ra, arg->rb);
-> -    return do_store(dc, arg->rd, addr, MO_TEUL, dc->mem_index, false);
-> +    return do_store(dc, arg->rd, addr, MO_TE | MO_UL, dc->mem_index, fal=
-se);
->  }
->
->  static bool trans_swr(DisasContext *dc, arg_typea *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typea(dc, arg->ra, arg->rb);
-> -    return do_store(dc, arg->rd, addr, MO_TEUL, dc->mem_index, true);
-> +    return do_store(dc, arg->rd, addr, MO_TE | MO_UL, dc->mem_index, tru=
-e);
->  }
->
->  static bool trans_swea(DisasContext *dc, arg_typea *arg)
-> @@ -978,14 +978,14 @@ static bool trans_swea(DisasContext *dc, arg_typea =
-*arg)
->      return true;
->  #else
->      TCGv addr =3D compute_ldst_addr_ea(dc, arg->ra, arg->rb);
-> -    return do_store(dc, arg->rd, addr, MO_TEUL, MMU_NOMMU_IDX, false);
-> +    return do_store(dc, arg->rd, addr, MO_TE | MO_UL, MMU_NOMMU_IDX, fal=
-se);
->  #endif
->  }
->
->  static bool trans_swi(DisasContext *dc, arg_typeb *arg)
->  {
->      TCGv addr =3D compute_ldst_addr_typeb(dc, arg->ra, arg->imm);
-> -    return do_store(dc, arg->rd, addr, MO_TEUL, dc->mem_index, false);
-> +    return do_store(dc, arg->rd, addr, MO_TE | MO_UL, dc->mem_index, fal=
-se);
->  }
->
->  static bool trans_swx(DisasContext *dc, arg_typea *arg)
-> @@ -1014,7 +1014,7 @@ static bool trans_swx(DisasContext *dc, arg_typea *=
-arg)
->
->      tcg_gen_atomic_cmpxchg_i32(tval, cpu_res_addr, cpu_res_val,
->                                 reg_for_write(dc, arg->rd),
-> -                               dc->mem_index, MO_TEUL);
-> +                               dc->mem_index, MO_TE | MO_UL);
->
->      tcg_gen_brcond_i32(TCG_COND_NE, cpu_res_val, tval, swx_fail);
->
-> --
+>  hw/microblaze/petalogix_s3adsp1800_mmu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> index 37e9a05a62a..581b0411e29 100644
+> --- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> +++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
+> @@ -124,7 +124,7 @@ petalogix_s3adsp1800_init(MachineState *machine)
+>      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, ETHLITE_BASEADDR);
+>      sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[ETHLITE_IRQ]);
+>  
+> -    create_unimplemented_device("gpio", GPIO_BASEADDR, 0x10000);
+> +    create_unimplemented_device("xps_gpio", GPIO_BASEADDR, 0x10000);
+>  
+>      microblaze_load_kernel(cpu, ddr_base, ram_size,
+>                             machine->initrd_filename,
+> -- 
 > 2.45.2
->
->
+> 

@@ -1,128 +1,128 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3169975njc;
-        Tue, 5 Nov 2024 15:16:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVb8NwulOM+Qf8J8umih5zadV26ZE14lxeCDbJHW6i6LHMzI/mXBVlbW1qiB5w89HCw0Emxa/QTegvsSA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGgPQsUTP25GrG8YcOLpfEhC/JHRqovhzAiPualMR4t7ueZ8U6ecpTTQCqnnIxldo+xe6W6
-X-Received: by 2002:a05:6808:3c88:b0:3e6:3d39:2b94 with SMTP id 5614622812f47-3e6608a8dedmr18843822b6e.5.1730848612448;
-        Tue, 05 Nov 2024 15:16:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730848612; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3170735njc;
+        Tue, 5 Nov 2024 15:18:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWIUY/Z38+TBVCbermVB6wecwYYjl+os8G4rNAAcUs+J0ayMozhF3NRU53YzvtbCbaFKhoV0mOPHPscqQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHs1SfWWzUXmb4YrOlch4B6qpJnAP777AfDOcajfIXGKV6vRvIJDfxB2A0vvopprAraJqbg
+X-Received: by 2002:a05:622a:120c:b0:460:bb96:dd08 with SMTP id d75a77b69052e-461716a0d8cmr13271991cf.5.1730848730354;
+        Tue, 05 Nov 2024 15:18:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730848730; cv=none;
         d=google.com; s=arc-20240605;
-        b=Kv6eKElDsIN+UaRw51n7ueDIdtWVXctz6egyR+VsARTITD86Qp/J+6QsDVYbZsJuom
-         O3yLCBUI6hQYrWeDLgK86skljZALzjNy62rVUOUNSGVL8az1YEfxgC3XPk5JqKipJGYH
-         z26LrFlqBRYLiq7VYgcZHSMoxXKKSv+/RS6aDlEoPaweCw61vICQg7S0ziGDLylkbWnF
-         Eh1fYJ9fRMohLOjv2izGPVnvb3BZjvuEOWL6KZ+0eXNdBZ4ko6k35VEG3I9nKY1fn3JN
-         nuhsF6Y1GJpNFHkTTgadmz/3+0bCARnG6fTqJ5PFvANtj0KY5f3fG5i2VGFcSSbS/2Ry
-         DHwQ==
+        b=lZ31Nr/sWnfX/9REeoMkV7H0ajdWY2ATehoQ8WiHi81KF2PtM3ykh5Yk99ere6H6BE
+         8LM3tQGIbDcPC8gWs3py1yI36tI8atP2LxYe8v4OTjHWNuyrKkAhtCeoFsBNJ0LjD0fU
+         K9TtJKI/wJbEMMKDLTHKpfcBCoJmI1wX1l5VOlz20QwRo2u0wtNJ3914noWlVM6LyLpi
+         jz/RMjB6YQaIOaNYpm9IASmCeOFT9xCFt7qsk2qMfDzmkzSVKdNKUZcYHsPAUxn7X3jn
+         q4ZSMNfc6iZtXNnpor1YLSAuoidruyVPqSFz15Dw4jpxCjTRdgR4fdroTN884MRtexb1
+         IUvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=zscit44dK30D2dB26XkJD5zmW7H58nCSFWwIyxhXmtE=;
-        fh=2FLhLpZ1a0Lrp9HWoG6/0pAMjrWLFNPoKJSOqmLUibU=;
-        b=ONlNk4sVFnvIuwnCM4jSoPr02VKc3qu0d+DjEUMuQ93s+CJhi8KDIVaxzKmY+9Ws25
-         gki7QIh289D9CzfQ6vWt4vLkqRIH9lo93qA6SKgQMkVto9N8bE+UuT68c8n7agZHfzYx
-         ryglXmXaPosqVTH4Gq/CbEhkZxw2o7bGdL2TL7sm6fo+Zq8AUJjdUHVrPH4WcT2mqPaj
-         CdhAaW87ccGhF0xSD05IJS0pyWJEf5KKdcBcO9utUptNKC6sdzbZ1HJjP3gl+BUxTVSu
-         VM6tMqq9oN2BWKk8YPa7uVJVPETF7oVgZGORMSbahiukqqawO6SEd2AekQQ+g1uAVHpm
-         gW3Q==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:content-language:references:cc:to:from:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=s6agi9YZXxwW2nS8NmS8Db9dmILr40JIUJhSpW0Xehc=;
+        fh=0lil2Jzcux59eFultkCsthmc6wVp1ZLEeul4WaUFUbg=;
+        b=R6792W85miRxx5yct8HF3Xk7LpCR6hcvlXWGNQjbkuhZm8fI3iGoO+cHLzvGcF0AXL
+         TWvqMnnBpAw5hFIbBtoiT+JM/NBTvS+9h7SuhtnZnq3ArwB/mnt7DOAXJJSGhaHPnoDd
+         xOlTZGSDQlEgoBJBnW4whhT5cIiNcRfpZLylMTg37YZQ8WTHG+pOYmDoY6WRntNeuiS8
+         cLo+Ee/l7QN5B76ty1B/BXvCsVZYhqGBOpjaSGHp4N3/P4vKQipypbgw7UrFTgK093CC
+         4Z8KJUA/VJ72c/HiR023aj4d8SE4/9l3eGHGIXhpE0IUIiYnH10nK6RlmUuJhiYewNz+
+         Ls6g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VCVXiF5E;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aKgp7m+T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d3541824d0si149649476d6.380.2024.11.05.15.16.52
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad19eec8si162342361cf.343.2024.11.05.15.18.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 15:16:52 -0800 (PST)
+        Tue, 05 Nov 2024 15:18:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=VCVXiF5E;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aKgp7m+T;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t8SmV-00039A-Or; Tue, 05 Nov 2024 18:16:15 -0500
+	id 1t8Sor-0004vg-Pc; Tue, 05 Nov 2024 18:18:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1t8SmQ-000376-8O; Tue, 05 Nov 2024 18:16:10 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8Soq-0004vF-Jr
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2024 18:18:40 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1t8SmM-0002E4-Iq; Tue, 05 Nov 2024 18:16:09 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4315eac969aso1595095e9.1; 
- Tue, 05 Nov 2024 15:16:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8Som-0002rS-FS
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2024 18:18:40 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4315e9e9642so52016085e9.0
+ for <qemu-arm@nongnu.org>; Tue, 05 Nov 2024 15:18:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1730848564; x=1731453364; darn=nongnu.org;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=zscit44dK30D2dB26XkJD5zmW7H58nCSFWwIyxhXmtE=;
- b=VCVXiF5EfQ3apY1NqRU3BdQdcvc0/6jivOfu4Gb0EWaC5Bh1rijXB37nJWT2n3FnZC
- HEBHkpNCP7Sg7l14G+vcTm0f5BuBtCPJihWL8DhP4e12pHQhF4med7w+fIr5zKdxlqEA
- N6D5oEzEkcgVF7+9sExrZnI8zPGAG8aXRHsY5uOp35ACnnI5iB2nf1zgHiYnfQe76drS
- v+nb9PSTLTc0Hh2a6ywOET1DTonK/wJqhrNKHJoISbX0xtBI7OeaoTYEHy91RYHFrjAf
- iy0vdVR1eZxAv9QJQwIzIcb0eygGFAuT5G50TRs/lWlAQX9iC9ARbb34YvSRpe6b2KZc
- HF6g==
+ d=linaro.org; s=google; t=1730848713; x=1731453513; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=s6agi9YZXxwW2nS8NmS8Db9dmILr40JIUJhSpW0Xehc=;
+ b=aKgp7m+TayUyNTsqn65SAS6QiVohPs6Wq/iQy7d4N+2WffzD+patBI0Wy6V+evICrQ
+ qy8aD6nNo6terXXvxrTnOeZsqLktquu6HNPXRUiImSRSeW0XyviAxS3A8SvxzU0FY98H
+ c2oh9B7SoxkMGdYzHfYvcQxxyNjx/Nyz6StHTbhvmlS9vUnfEINEYFqI0OJCWuaiOgY9
+ 2Q2JixsWhcLd6Adg952UYGZTMW0IUDkgKnpju6MXc4JkBgrFeJZu+jKkrX9CFia4yCU5
+ /gx4xt8w/lHZ2tRN66Kc1DbFN1isFtCvarpYLIZi1cO61Mn+fdFdJa4F6ATp4YtqQEI3
+ 2fkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730848564; x=1731453364;
- h=user-agent:in-reply-to:content-transfer-encoding
- :content-disposition:mime-version:references:message-id:subject:cc
- :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zscit44dK30D2dB26XkJD5zmW7H58nCSFWwIyxhXmtE=;
- b=bcUUv4KtVPn10X03Udjoxyas8jD0i7cOuudMruzsmhQENyISjENpCkhK7vHUt4pc6F
- h0bHhnhhuqsDreseVgRwz7pxkP3BMc5JS7jVyGSZi9dESs1pYethM5u+3bQLZfGl5+8k
- R2YRtT7fbu+6P4r4pxFEInPMOfZr29mC5E4B33WZO9azv9W4eTrqj91FxRQCmVWmVp2a
- 37rCUqk569/Zbecg+SaT+WutA7Yv0fEv1kxuZNgZXlWTBUp715zyMSjLtilxEPyzF+/2
- GnTp676nHH3JlO7rzHapL+18XsdZPEcVbEF7fXNLtn06UtE4XZNRZploxyAuCvT/s3oI
- 1r9Q==
+ d=1e100.net; s=20230601; t=1730848713; x=1731453513;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=s6agi9YZXxwW2nS8NmS8Db9dmILr40JIUJhSpW0Xehc=;
+ b=xQq7Qvu39sRUzBIvaBXnqr2qubqAItyYHpMPNtCFafRKnlW9yg+1V9ZoeAyQzXXuhZ
+ lkDCyhFlGUbAv7TAzjhOj5XzU4bsLMYqbQJilC4j1MFxMXILJk1n+RU+IYqXvLiGv2VG
+ rQKn64sm1Sgr+H2Q0I5mntiIovD6GtC3EvzkeipruCGv/NRbzIFs2Cxx7arIw4McWwG/
+ pFKyUFjGd5cGrM5IzbJiXBHew8Nyx/AIWJCTILC/DenjFdKqKL6pF8pLWsMo2CDJ4n/t
+ LgyuwcDRO9ItKVXQcLv6L0Ot3KvXRF7J47DlwWZPCjxxp3i/UzJf0xTt5Uox2cvmOe3N
+ fHQg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUi3NF448a4DcVY4H4Gfzo/En+oirtmMSZRIh4/UMYsposjdDW5KpN+YsiaarhYA3V/2eNr0dV5LQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxfxUSw7NKkW7C8GY2z/YkgLf/J3wrY6CLWK+Do2YbrSNQi2cU1
- kKnndtDkoJucEmiY2c+6TERdmsABaTRuQpYK+ImDXsFo6V/HAoGPO6wo3JmMI24=
-X-Received: by 2002:a05:600c:3c82:b0:42c:b826:a26c with SMTP id
- 5b1f17b1804b1-432a9a9b03amr3406365e9.8.1730848563594; 
- Tue, 05 Nov 2024 15:16:03 -0800 (PST)
-Received: from gmail.com ([89.101.60.19]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-432aa6b62b4sm1619845e9.17.2024.11.05.15.16.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Nov 2024 15:16:03 -0800 (PST)
-Date: Wed, 6 Nov 2024 00:16:02 +0100
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+ AJvYcCVr3oz4UNYN8mrDSjDhm220YWmRhiOIFq/jAB3LyubyCZbxvUKMDng0yFD5x1P2MZPSSjyNH2DMOQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxTDUptUbqJFp9AEnWEafowO59vsakrU4v5Zrrh47f5HGPcd5bA
+ fE9BLFTwK980CCOiKsp8vPiLLP8QUhjklOO5R9mzttc1v6r9dO7Fha4JIq+jBJo=
+X-Received: by 2002:a05:600c:3514:b0:431:5863:4240 with SMTP id
+ 5b1f17b1804b1-4327b7ea586mr178117675e9.24.1730848713377; 
+ Tue, 05 Nov 2024 15:18:33 -0800 (PST)
+Received: from [172.20.143.32] ([89.101.134.25])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-432aa6b2c32sm1697405e9.10.2024.11.05.15.18.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 Nov 2024 15:18:32 -0800 (PST)
+Message-ID: <3f61b85c-9382-4520-a1ce-5476eb16fb56@linaro.org>
+Date: Tue, 5 Nov 2024 23:18:31 +0000
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/19] target/microblaze: Rename CPU endianness property
+ as 'little-endian'
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Cc: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>,
  Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- devel@lists.libvirt.org,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, devel@lists.libvirt.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH 12/19] hw/net/xilinx_ethlite: Only expect big-endian
- accesses
-Message-ID: <ZyqnMsZxpdn4EgTY@zapote>
 References: <20241105130431.22564-1-philmd@linaro.org>
- <20241105130431.22564-13-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+ <20241105130431.22564-2-philmd@linaro.org> <ZyqiPrf2wjP1yAPz@zapote>
+ <accdb8b5-a73e-45d0-8086-82d69c97b569@linaro.org>
+Content-Language: en-US
+In-Reply-To: <accdb8b5-a73e-45d0-8086-82d69c97b569@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20241105130431.22564-13-philmd@linaro.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -139,143 +139,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T/Ptc3Jm6xME
+X-TUID: YD7PzJPswQj3
 
-On Tue, Nov 05, 2024 at 02:04:24PM +0100, Philippe Mathieu-Daud� wrote:
-> The Xilinx 'ethlite' device was added in commit b43848a100
-> ("xilinx: Add ethlite emulation"), being only built back
-> then for a big-endian MicroBlaze target (see commit 72b675caac
-> "microblaze: Hook into the build-system").
+On 5/11/24 23:01, Philippe Mathieu-Daudé wrote:
+> Hi Edgar,
 > 
-> I/O endianness access was then clarified in commit d48751ed4f
-> ("xilinx-ethlite: Simplify byteswapping to/from brams"). Here
-> the 'fix' was to use tswap32(). Since the machine was built as
-> big-endian target, tswap32() use means the fix was for a little
-> endian host. While the datasheet (reference added in file header)
-> is not precise about it, we interpret such change as the device
-> expects accesses in big-endian order. Besides, this is what other
-> Xilinx/MicroBlaze devices use (see the 3 previous commits).
+> On 5/11/24 23:54, Edgar E. Iglesias wrote:
+>> On Tue, Nov 05, 2024 at 02:04:13PM +0100, Philippe Mathieu-Daudé wrote:
+>>> Rename the 'endian' property as 'little-endian' because the 'ENDI'
+>>> bit is set when the endianness is in little order, and unset in
+>>> big order.
+>>
+>> Hi Phil,
+>>
+>> Unfortunately, these properties are not only QEMU internal these got 
+>> named
+>> from the bindings Xilinx choose way back in time.
+>>
+>> This will likely break many of the Xilinx flows with automatic dts to
+>> qemu property conversions so I don't think it's a good idea to rename it.
+>> If you like to clarify things perhaps we could keep an alias for the old
+>> one?
 > 
-> Correct the MemoryRegionOps endianness. Add a 'access-little-endian'
-> property, so if the bus access expect little-endian order we swap
-> the values. Replace the tswap32() calls accordingly.
+> Adding an alias is the safest way, I'll respin this patch.
 > 
-> Set the property on the single machine using this device.
+> Note however I'm worried about this fragile disconnect between Xilinx
+> dts conversion which isn't exercised on mainstream (in particular if
+> you get busy and can't review).
+> 
+>>
+>> For example:
+>> https://github.com/torvalds/linux/blob/master/arch/microblaze/boot/dts/system.dts#L73
+>>
+>> Cheers,
+>> Edgar
+>>
+>>
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> ---
+>>>   hw/microblaze/petalogix_ml605_mmu.c | 2 +-
+>>>   hw/microblaze/xlnx-zynqmp-pmu.c     | 2 +-
+>>>   target/microblaze/cpu.c             | 2 +-
+>>>   3 files changed, 3 insertions(+), 3 deletions(-)
 
 
-I think you're partially correct but not fully. This buffer area is
-really a RAM and has no endianess. Problem is back then I don't think
-I was a ware of a way to map RAM memory sub regions so we hacked in
-byteswaps to swap from host (which usually was little endian) to
-big endian. This is because register accesses from CPU to device model
-are kept in host endianess. I think the right way to solve this issue
-is to map a RAM memory region to represent the BRAM.
+>>> diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+>>> index 135947ee800..e9f98806274 100644
+>>> --- a/target/microblaze/cpu.c
+>>> +++ b/target/microblaze/cpu.c
+>>> @@ -368,7 +368,7 @@ static Property mb_properties[] = {
+>>>       DEFINE_PROP_UINT8("use-non-secure", MicroBlazeCPU, 
+>>> cfg.use_non_secure, 0),
+>>>       DEFINE_PROP_BOOL("dcache-writeback", MicroBlazeCPU, 
+>>> cfg.dcache_writeback,
+>>>                        false),
+>>> -    DEFINE_PROP_BOOL("endianness", MicroBlazeCPU, cfg.endi, false),
+>>> +    DEFINE_PROP_BOOL("little-endian", MicroBlazeCPU, cfg.endi, false),
+>>>       /* Enables bus exceptions on failed data accesses 
+>>> (load/stores).  */
+>>>       DEFINE_PROP_BOOL("dopb-bus-exception", MicroBlazeCPU,
+>>>                        cfg.dopb_bus_exception, false),
+>>> -- 
 
-Cheers,
-Edgar
+OK if I squash the following?
 
+-- >8 --
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index e9f98806274..b322f060777 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -328,9 +328,16 @@ static void mb_cpu_initfn(Object *obj)
+      qdev_init_gpio_in_named(DEVICE(cpu), mb_cpu_ns_axi_dc, 
+"ns_axi_dc", 1);
+      qdev_init_gpio_in_named(DEVICE(cpu), mb_cpu_ns_axi_ic, 
+"ns_axi_ic", 1);
+  #endif
++
++    /* Restricted 'endianness' property is equivalent of 'little-endian' */
++    object_property_add_alias(obj, "little-endian", obj, "endianness");
+  }
 
-> 
-> Signed-off-by: Philippe Mathieu-Daud� <philmd@linaro.org>
-> ---
->  hw/microblaze/petalogix_s3adsp1800_mmu.c |  1 +
->  hw/net/xilinx_ethlite.c                  | 20 ++++++++++++++++----
->  2 files changed, 17 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/microblaze/petalogix_s3adsp1800_mmu.c b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-> index 8110be83715..8407dbee12a 100644
-> --- a/hw/microblaze/petalogix_s3adsp1800_mmu.c
-> +++ b/hw/microblaze/petalogix_s3adsp1800_mmu.c
-> @@ -123,6 +123,7 @@ petalogix_s3adsp1800_init(MachineState *machine)
->      qemu_configure_nic_device(dev, true, NULL);
->      qdev_prop_set_uint32(dev, "tx-ping-pong", 0);
->      qdev_prop_set_uint32(dev, "rx-ping-pong", 0);
-> +    qdev_prop_set_bit(dev, "access-little-endian", !TARGET_BIG_ENDIAN);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, ETHLITE_BASEADDR);
->      sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[ETHLITE_IRQ]);
-> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-> index ede7c172748..44ef11ebf89 100644
-> --- a/hw/net/xilinx_ethlite.c
-> +++ b/hw/net/xilinx_ethlite.c
-> @@ -3,6 +3,9 @@
->   *
->   * Copyright (c) 2009 Edgar E. Iglesias.
->   *
-> + * DS580: https://docs.amd.com/v/u/en-US/xps_ethernetlite
-> + * LogiCORE IP XPS Ethernet Lite Media Access Controller
-> + *
->   * Permission is hereby granted, free of charge, to any person obtaining a copy
->   * of this software and associated documentation files (the "Software"), to deal
->   * in the Software without restriction, including without limitation the rights
-> @@ -25,7 +28,6 @@
->  #include "qemu/osdep.h"
->  #include "qemu/module.h"
->  #include "qom/object.h"
-> -#include "exec/tswap.h"
->  #include "hw/sysbus.h"
->  #include "hw/irq.h"
->  #include "hw/qdev-properties.h"
-> @@ -65,6 +67,7 @@ struct xlx_ethlite
->      NICState *nic;
->      NICConf conf;
->  
-> +    bool access_little_endian;
->      uint32_t c_tx_pingpong;
->      uint32_t c_rx_pingpong;
->      unsigned int txbuf;
-> @@ -103,9 +106,12 @@ eth_read(void *opaque, hwaddr addr, unsigned int size)
->              break;
->  
->          default:
-> -            r = tswap32(s->regs[addr]);
-> +            r = s->regs[addr];
->              break;
->      }
-> +    if (s->access_little_endian) {
-> +        bswap32s(&r);
-> +    }
->      return r;
->  }
->  
-> @@ -117,6 +123,10 @@ eth_write(void *opaque, hwaddr addr,
->      unsigned int base = 0;
->      uint32_t value = val64;
->  
-> +    if (s->access_little_endian) {
-> +        bswap32s(&value);
-> +    }
-> +
->      addr >>= 2;
->      switch (addr) 
->      {
-> @@ -161,7 +171,7 @@ eth_write(void *opaque, hwaddr addr,
->              break;
->  
->          default:
-> -            s->regs[addr] = tswap32(value);
-> +            s->regs[addr] = value;
->              break;
->      }
->  }
-> @@ -169,7 +179,7 @@ eth_write(void *opaque, hwaddr addr,
->  static const MemoryRegionOps eth_ops = {
->      .read = eth_read,
->      .write = eth_write,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .endianness = DEVICE_BIG_ENDIAN,
->      .impl = {
->          .min_access_size = 4,
->          .max_access_size = 4,
-> @@ -256,6 +266,8 @@ static void xilinx_ethlite_init(Object *obj)
->  }
->  
->  static Property xilinx_ethlite_properties[] = {
-> +    DEFINE_PROP_BOOL("access-little-endian", struct xlx_ethlite,
-> +                     access_little_endian, false),
->      DEFINE_PROP_UINT32("tx-ping-pong", struct xlx_ethlite, c_tx_pingpong, 1),
->      DEFINE_PROP_UINT32("rx-ping-pong", struct xlx_ethlite, c_rx_pingpong, 1),
->      DEFINE_NIC_PROPERTIES(struct xlx_ethlite, conf),
-> -- 
-> 2.45.2
-> 
+  static Property mb_properties[] = {
++    /*
++     * Following properties are used by Xilinx DTS conversion tool
++     * do not rename them.
++     */
+      DEFINE_PROP_UINT32("base-vectors", MicroBlazeCPU, 
+cfg.base_vectors, 0),
+      DEFINE_PROP_BOOL("use-stack-protection", MicroBlazeCPU, cfg.stackprot,
+                       false),
+@@ -368,7 +375,7 @@ static Property mb_properties[] = {
+      DEFINE_PROP_UINT8("use-non-secure", MicroBlazeCPU, 
+cfg.use_non_secure, 0),
+      DEFINE_PROP_BOOL("dcache-writeback", MicroBlazeCPU, 
+cfg.dcache_writeback,
+                       false),
+-    DEFINE_PROP_BOOL("little-endian", MicroBlazeCPU, cfg.endi, false),
++    DEFINE_PROP_BOOL("endianness", MicroBlazeCPU, cfg.endi, false),
+      /* Enables bus exceptions on failed data accesses (load/stores).  */
+      DEFINE_PROP_BOOL("dopb-bus-exception", MicroBlazeCPU,
+                       cfg.dopb_bus_exception, false),
+@@ -387,6 +394,9 @@ static Property mb_properties[] = {
+      DEFINE_PROP_UINT8("pvr", MicroBlazeCPU, cfg.pvr, C_PVR_FULL),
+      DEFINE_PROP_UINT8("pvr-user1", MicroBlazeCPU, cfg.pvr_user1, 0),
+      DEFINE_PROP_UINT32("pvr-user2", MicroBlazeCPU, cfg.pvr_user2, 0),
++    /*
++     * End of properties reserved by Xilinx DTS conversion tool.
++     */
+      DEFINE_PROP_END_OF_LIST(),
+  };
+
+---

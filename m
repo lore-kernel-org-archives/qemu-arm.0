@@ -1,221 +1,167 @@
-Received: by 2002:a05:7022:611:b0:8f:43c:4b5e with SMTP id 17csp2937190dlb;
-        Tue, 5 Nov 2024 08:15:18 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXpOUFeDeK3VZ7FZLk6/FKKKqZpLbdqpN+6AGKv1Sv5F++jW1x4YXh3aK7YruRwgT8dGo9J+lR26TG5tQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG25CMdkmfllQEM0YMTXgwQKIr3y9EANpXcENPn4s81aUJVbioypLvsfNfQpQOQ5y8gSL1i
-X-Received: by 2002:a05:6214:5f04:b0:6d3:7712:b223 with SMTP id 6a1803df08f44-6d37712b284mr150674136d6.7.1730823318427;
-        Tue, 05 Nov 2024 08:15:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730823318; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2950498njc;
+        Tue, 5 Nov 2024 08:33:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW83PLz50ZvcK/8M1ptVNXis26vPq/s2/zTH6QGxyTulSvksvzUadAb/BcRFBOSi8Qdu1pP4u8MECVp8A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGRPaAgcMtN3RXM4Cv7cC1Oan6qswtIPUJGP6VkHegLrW+eXSydG4Bsz3byepnqs9KNYyxe
+X-Received: by 2002:a05:6358:390f:b0:1c3:9cf5:285b with SMTP id e5c5f4694b2df-1c5f993c8b3mr678619955d.15.1730824388032;
+        Tue, 05 Nov 2024 08:33:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730824388; cv=none;
         d=google.com; s=arc-20240605;
-        b=CzMYkrIGPMGCTSGIr+/mc2ItLAMXQWgt8DhSdwUP1OXKMl9ToKZzBro1M4qkz85mwR
-         Ucedi6RFsegXbw75A2UHpYJHAHjIPF1cDHFuZd9WTqsMpUHoCAH0fPYH0GYkZWTeVCDr
-         2wQVy/h/HIBLbwuADSxvJ8Bm2EtLNZ/77sO8SsXFGqaLD2sL7P+wVqgVcWawDqwqsm4/
-         zFYWSu1yuBDqpmnB4t0QalJVP82+ekNCqmLTIKEg5it89mS5xyqZCkfesgsaTZp8Jf/h
-         H5SS8WwVXTTy+stLK2ji4QlsG9DaqmEQfx9yZEGbCaNhY/M1rO8eWz7u09ls3yXQmNwW
-         gJfg==
+        b=RXMJdjxjTp9fL7p+hGP1GitxVQODg/T9/h7FRNlb2B9dzUxPQczGKIeqbMjQsa/vi5
+         F3jz8QS871ApTi+n2+2U1RD6BU2Vc5R6mktjWV6HnZyTb6RQUmffkJ/KYr3Z7mRd2YNv
+         4kmcTevHDcfnopaxvo99HhfUJhX5ngRLeNvx7RsGkgj2luSx8/0mD9DaJw6umvgjz0uH
+         I7rE7sqBybmP0ANOdPS+ZbpgBRgnPA0Fl03ld+Nrn3YCQSJruRyzM4Lo7Nw7lrJnLtF6
+         YJdnVfJJeFBISXG1ih4IfB3fx3a49W3exq/AMW9lYR93Gfjr4CqHB0oHcvLhch3/2TV1
+         MaeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=3/F6khqFVm3o2NzLzzy4Lwer2MDCHx9zC71RAhU07XQ=;
-        fh=t2Ldz34Gy5EfUX74q88ghZd9V9P3KC1+MYYwMr1VRkA=;
-        b=kYExH7FGzxArbqF0SIMMJTuoL//58WNjox7Uj7BvE2KMsXyyxVWCfONS6gQsY01vB9
-         p60XMYH/NhMnAvygopA7eRjX93ArnWoOUW8fCVbcKW3eP/34hssBalEh2IawU1/uwLde
-         OJsWwsdWsx91nTrVerY5rd+0uKRi1GHxE+fk1mRowoKLi4kNIkYEQXlxG0NxFIKDU5C2
-         HBPRlbhNIKmikOG7e4x3HL9/z10IG4rOetTRl6/AF7nPEuAWnTT//TgcUEB/2OVi3XZP
-         LgW+D8O7Evawba9OL+B9PEuv/BLxOSO8UAVJMQlLK67/+xNTLMNPbi2Is/v1HkeQXob0
-         MtzQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=DdzrTq33iccZuRAJFB3XPxgukTQfdFtHIO8OFwof0V4=;
+        fh=AHdEe34EI2eD5jgrpSjYXshKb8ttXRKaOkE79RkB9cM=;
+        b=F17B98T0TAddxsiiOEPMFPgAXhimH6QJSY+c904me+uYN42fEqBJ/YI9D9yeQ3NAM+
+         EeMnDBAmqboGlzJXfkG8rEtdjQ/Gtl7tXpuRb0gUbegjMTI8qEOfFJEz98ZsRoMkMF+C
+         3miIxKHKY6fnY99CU7898LFKRv2eFsJYbheKYrrI9i9goM9Xwt85EFzfV96aesfTFmQ0
+         ehAmB13+P5umFWui1zT1QXBluf5jmoDqj3qKCIZyoK2sFECD641pU7NrXTbTM/hUOTMe
+         7DPnfj88zoYHWyyPrOIBlykBmQIv0bnCfp046gOg15/4TaF1gPNcb0PkzI0V2QxsNCZb
+         3Z5w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dFIym84l;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d35416aafasi132243936d6.297.2024.11.05.08.15.18
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a95758b1f2si3324399137.584.2024.11.05.08.33.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 08:15:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Nov 2024 08:33:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dFIym84l;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t8MD2-0006Yz-N3; Tue, 05 Nov 2024 11:15:12 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t8MTl-0004Oq-Ed; Tue, 05 Nov 2024 11:32:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t8MCw-0006PW-Sa
- for qemu-devel@nongnu.org; Tue, 05 Nov 2024 11:15:08 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t8MCu-0000oY-QV
- for qemu-devel@nongnu.org; Tue, 05 Nov 2024 11:15:06 -0500
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-5c9850ae22eso7086722a12.3
- for <qemu-devel@nongnu.org>; Tue, 05 Nov 2024 08:15:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730823303; x=1731428103; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=3/F6khqFVm3o2NzLzzy4Lwer2MDCHx9zC71RAhU07XQ=;
- b=dFIym84l8J+ksfKFfiBMECjpkg15jFFPx7iRG4xrEp15h0ZqPE0UYWu8f/O18W/vK7
- 0W9blUkATUd+vPPcKRZfk83TP9C1KJGVvcdWW1nIs8XpNXZahD9CCxpCk3i3Ixzs43oa
- rMeO7+VswqT/MBU4Sr2xzDD0E6sZ3XsFp+eJuAX2rkJrvv4IfEWZemCC3foQRElpITf4
- NtGsVVkLl+/MQ9cJPtS/1I8RJGp2lGWjFEJdJI7uatdFYMVEdPkZ9sYCUlSFZoti0Qd5
- xmY3FHBtQJ9NnzXGV6/jsv29dLBMvQBcAtJLayCHHjGqnSd4TzLaZw4ecdz/5+BMEfAQ
- Y+Pg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730823303; x=1731428103;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=3/F6khqFVm3o2NzLzzy4Lwer2MDCHx9zC71RAhU07XQ=;
- b=mgsoLzOOCHqBtlu6OFTeiYKF5NgSfUkZShBBdAPMxKtMzYC6Lv/jHvgwK6jGGHByhx
- ajkI8JocxAKEXwu3G8XkNL0YIXQw3cBeksrpVwIVCWHCy1SHPwQhcPSYSPANvSoVDvw5
- hmdBPpAoRyPtvl8tFsY49uM0pYzloR25TcdeAhlUW8lFc8socMXBbKiKiylQfO3witrD
- jV3jlALw75dCDzMlWY/7fcE8yYRZXaPHhPtAslYhaHU37/8Q3/WJ0PrTH9EqEc9kmmWe
- 0uAhIMibkQ2w90929ojG+Z/IUrSaURApGgvL5BHb7V8zBgsZT/+Bhe96EzEdlovAeONX
- JiDg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWfA0Tzvwb1RU5Td/6m5dC1rjet0njDJDtTQRVbKX95nvMxbnEKAL5yhHJ/KSupNQvf4qD6G28K4iWg@nongnu.org
-X-Gm-Message-State: AOJu0YwbmXV5xx7sXglbQIkC+3T1ZV6xscggAzIvX7JymlsVvbSaQ9rB
- +qrUMLpm5UeXAx96bLr9qqVHtqYF7DFVmJeX414TepP/zYM0dTf1KVaURgr3LoLrRCzBzxp6//a
- EAqLEE1v1uWu9riJYcfTAUYy1Z8/t9si7bdYZ2g==
-X-Received: by 2002:a05:6402:234a:b0:5c9:625c:f82a with SMTP id
- 4fb4d7f45d1cf-5cbbf8765c6mr28077757a12.1.1730823301094; Tue, 05 Nov 2024
- 08:15:01 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <SRS0=riH2=SA=kaod.org=clg@ozlabs.org>)
+ id 1t8MTf-0004OB-Or; Tue, 05 Nov 2024 11:32:24 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=riH2=SA=kaod.org=clg@ozlabs.org>)
+ id 1t8MTc-0002f9-Fw; Tue, 05 Nov 2024 11:32:23 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4XjYlB2fVNz4x2J;
+ Wed,  6 Nov 2024 03:32:06 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4XjYl52gpdz4w2L;
+ Wed,  6 Nov 2024 03:32:01 +1100 (AEDT)
+Message-ID: <bc13762c-eee7-4c07-977a-0d605b008a0a@kaod.org>
+Date: Tue, 5 Nov 2024 17:31:58 +0100
 MIME-Version: 1.0
-References: <20241024063507.1585765-1-clg@redhat.com>
- <20241024063507.1585765-11-clg@redhat.com>
-In-Reply-To: <20241024063507.1585765-11-clg@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Nov 2024 16:14:49 +0000
-Message-ID: <CAFEAcA8A=kWLtTZ+nua-MpzqkaEjW5srOYZruZnE2tB6vmoMig@mail.gmail.com>
-Subject: Re: [PULL 10/17] tests/functional: Convert most Aspeed machine tests
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Stefan Berger <stefanb@linux.ibm.com>,
- "Daniel P. Berrange" <berrange@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/sd/sdcard: Fix calculation of size when using eMMC
+ boot partitions
+To: Michael Tokarev <mjt@tls.msk.ru>, Jan Luebbe <jlu@pengutronix.de>,
+ qemu-devel@nongnu.org
+Cc: Guenter Roeck <linux@roeck-us.net>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, qemu-block@nongnu.org,
+ qemu-stable <qemu-stable@nongnu.org>
+References: <1bce4c22-9281-44c5-8acb-860881dc271c@kaod.org>
+ <20241028162308.2152712-1-jlu@pengutronix.de>
+ <d1d12a0a-ba78-48af-9116-328ffc5f63c9@tls.msk.ru>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <d1d12a0a-ba78-48af-9116-328ffc5f63c9@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=riH2=SA=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ElsFZ3n71BKE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XustMVxVo65Y
 
-On Thu, 24 Oct 2024 at 07:39, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
->
-> This is a simple conversion of the tests with some cleanups and
-> adjustments to match the new test framework. Replace the zephyr image
-> MD5 hashes with SHA256 hashes while at it.
+On 11/5/24 17:13, Michael Tokarev wrote:
+> 28.10.2024 19:23, Jan Luebbe wrote:
+>> The sd_bootpart_offset() function calculates the *runtime* offset which
+>> changes as the guest switches between accessing the main user data area
+>> and the boot partitions by writing to the EXT_CSD_PART_CONFIG_ACC_MASK
+>> bits, so it shouldn't be used to calculate the main user data area size.
+>>
+>> Instead, subtract the boot_part_size directly (twice, as there are two
+>> identical boot partitions defined by the eMMC spec).
+> 
+> Should I pick this up for stable-9.1 branch?
 
-(ccing Stefan Berger for possible insight into swtpm)
+yes.
 
-Hi; I find that this swtpm-using test fails for me on my
-local system due to an apparmor/swtpm problem...
+Thanks,
 
-> +    @skipUnless(*has_cmd('swtpm'))
-> +    def test_arm_ast2600_evb_buildroot_tpm(self):
-> +        self.set_machine('ast2600-evb')
-> +
-> +        image_path =3D self.ASSET_BR2_202302_AST2600_TPM_FLASH.fetch()
-> +
-> +        socket_dir =3D tempfile.TemporaryDirectory(prefix=3D"qemu_")
-> +        socket =3D os.path.join(socket_dir.name, 'swtpm-socket')
-> +
-> +        subprocess.run(['swtpm', 'socket', '-d', '--tpm2',
-> +                        '--tpmstate', f'dir=3D{self.vm.temp_dir}',
-> +                        '--ctrl', f'type=3Dunixio,path=3D{socket}'])
-> +
-> +        self.vm.add_args('-chardev', f'socket,id=3Dchrtpm,path=3D{socket=
-}')
-> +        self.vm.add_args('-tpmdev', 'emulator,id=3Dtpm0,chardev=3Dchrtpm=
-')
-> +        self.vm.add_args('-device',
-> +                         'tpm-tis-i2c,tpmdev=3Dtpm0,bus=3Daspeed.i2c.bus=
-.12,address=3D0x2e')
-> +        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'As=
-peed AST2600 EVB')
-> +
-> +        exec_command_and_wait_for_pattern(self,
-> +            'echo tpm_tis_i2c 0x2e > /sys/bus/i2c/devices/i2c-12/new_dev=
-ice',
-> +            'tpm_tis_i2c 12-002e: 2.0 TPM (device-id 0x1, rev-id 1)');
-> +        exec_command_and_wait_for_pattern(self,
-> +            'cat /sys/class/tpm/tpm0/pcr-sha256/0',
-> +            'B804724EA13F52A9072BA87FE8FDCC497DFC9DF9AA15B9088694639C431=
-688E0');
-> +
-> +        self.do_test_arm_aspeed_buildroot_poweroff()
-
-The test fails like this:
-
-qemu-system-arm: tpm-emulator: TPM result for CMD_INIT: 0x9 operation faile=
-d
-
-Adding extra logging to swtpm (--log file=3D/tmp/swtpm.log,level=3D20)
-reveals:
-
-SWTPM_NVRAM_Lock_Lockfile: Could not open lockfile: Permission denied
-Error: Could not initialize libtpms.
-Error: Could not initialize the TPM
-
-Checking the system logs, this is because apparmor has denied it:
-
-Nov  5 16:01:14 e104462 kernel: [946406.489088] audit: type=3D1400
-audit(1730822474.384:446): apparmor=3D"DENIED" operation=3D"mknod"
-profile=3D"swtpm"
-name=3D"/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/tests/functional/a=
-rm/test_arm_aspeed.AST2x00Machine.test_arm_ast2600_evb_buildroot_tpm/qemu-m=
-achine-hhuvwytc/.lock"
-pid=3D2820156 comm=3D"swtpm" requested_mask=3D"c" denied_mask=3D"c" fsuid=
-=3D1000
-ouid=3D1000
+C.
 
 
-
-Q1: why is apparmor forbidding swtpm from doing something that
-it needs to do to work?
-
-Q2: is there a way to run swtpm such that it is not
-confined by apparmor, for purposes of running it in a test case?
-
-Q3: if not, is there a way to at least detect that swtpm is
-broken on this system so we can skip the test case?
-
-(I note that there is a thing in the apparmor config
-"owner @{HOME}/** rwk" which I think means you only run into
-this if you happen to be building/testing QEMU somewhere other
-than your own home directory -- but that's hardly an
-unreasonable configuration...)
-
-thanks
--- PMM

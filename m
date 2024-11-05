@@ -1,107 +1,96 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3035040njc;
-        Tue, 5 Nov 2024 10:36:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWy2eF3uFF7mSvxvPr2WTdE1pdCGziDwngYGbXgmtBW0hDQKWi/unblOQ48wLw8OJEC0p0mTTXzSILqFQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEBugmvX9SWBDsqssoLnoUnaAYjWAAzjAGOheKJVG/XS3VmPaH3pZgKn9X7Banc1V/6vsyW
-X-Received: by 2002:a05:6214:4188:b0:6cb:d512:e6e6 with SMTP id 6a1803df08f44-6d35c14e09bmr201118646d6.23.1730831780896;
-        Tue, 05 Nov 2024 10:36:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730831780; cv=none;
+Received: by 2002:a05:7022:611:b0:8f:43c:4b5e with SMTP id 17csp3071590dlb;
+        Tue, 5 Nov 2024 11:55:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWIZ8VYyBG/IhiaApCszLSZo5CIBR42hRpkI4vEfJJltfWVVwH+IqI3VjAQI26M2O7Jp7bCqGscuDdTBw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGYEE7eYvxc4AO9qZPfJRdxGNL+jQrm4FaNPaCbUooMpEeAOxPCwdIMtC9mX+IVauFIzBDa
+X-Received: by 2002:a05:6122:3c46:b0:50d:39aa:787b with SMTP id 71dfb90a1353d-5105cee2303mr22952624e0c.0.1730836506343;
+        Tue, 05 Nov 2024 11:55:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730836506; cv=none;
         d=google.com; s=arc-20240605;
-        b=JaviRp4SPVGGDSq5U/tbJJP7foJVCMYeseVaki6M8mPuASo3w1lISZd2HU41B9dNNn
-         G/pGb60DLcZi9rI8Mrlm0OcKZlC5NmZJoJIaMnOnnyIoEt/x/1VA7cMUDedQeIMXma0O
-         Db/uJiDSoHSclha4mRCEbRkj4YXK447RAwI9EGunqhC18Svj/l9K0KJNBmg5Mx0H3tMC
-         cygOk6KA/hYRKpp0mv+zmKfLqgY1yW/mxKPJ3c+sDiEfU2jXSMqVcbJNUg/sUIwZDlZH
-         ahflvtQy95yDdsERxHN1fd6ImLEqf3nec7aA2UOQfnFSOaQRHnaOfkXlmUIfXih7skDz
-         YSow==
+        b=CILMwB2b0dRU5gpm2rOAJNZBE6nvqROknNzj0dNEpTWCEZGqa3RCvwy3xQXoJQen/o
+         8AFoFP/Q7llZubUYx51WGlN+aywe4LH3uIw6ZlUoJ2M05hr1QGcdS3EqOLJa0kUHV0P7
+         bWUQiHwG9hvVirnUSn2livYhmgon82HR6O5MyHpJhJkIWwhbs4JXUKAVeidpRBbwx29u
+         HVa2PE6M5smod86s4CbLegWgRR79vnymB7GkpxYqj81PQ6QpaVi1iwWJLJGAboki4Yy3
+         T951/tM4/lmfO8zOflKC0PSTHaIvxS/4Nu0Xfs3nelP/lYiM4oO0KJZgwlkqAWCxMMbB
+         BRQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=wc7f2Hrr1rAEYSxyfo0HmCBarTs+hABQdxgNXKiFOt8=;
-        fh=f8RoGae6YR6/W+bdd1Qvt18k2KHzEO8CHqSY1AFrB0c=;
-        b=V+n8Wxlt4O8cScBYx/WNs2hacER/sCE7q19+ovi0LDaQC3ji+OwQUU7pz+qkd8Knag
-         d9fcYZdr4uKwqiP6ouczSsxBF6VX693Kdtzx9thzng104vzCGsZFrxxcfHKNxqjofKCa
-         kK6VWQqpGr6IaacGKf5GaItskSKmOcZ1XTklWnf+7OywHV8sBQ2wC8JEp7Im1/anJaay
-         koDk26q+O7NixCQMBXxczSPxO+QJ6DgyQPyUsLK6B1KA9zk0ipDLBLVnk01CN0GgEmwA
-         OuDQd/ic/WavwI0yOxBw7PjxE0ZqJnUzzD3yCnPCOJ42Dwwe20qviQkJLUrvxoqFafWv
-         mVGw==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=OmO/yvZbnYpkNp7dAyYz09oOK6ndjH8HBKv4zKmb+SI=;
+        fh=58XMCArdACVdznP1Z8OFrXPdIyyLGijYvnCJBM1YpgM=;
+        b=MTvqh2ZEQTk31BsSp71/e7YyVdGUpfTRUr3DRQXpu2lZsgam4VuFqnUfWEi4PhlqfB
+         1w3avsUS7q/P5droz0gR0kzOBBZb3d23XIPMepkdjmOuxUElb92CseFgpkEsS3mfQTRa
+         H4tYtznOcY8/kyd7V0UPpdSOeC4j4XSlZzlnAGoKReGX9UOzdt83bPEPAr4EFnm0X13Z
+         6RDPkNBy4nE5AwwawXcTq4u7p1RQiRRFmtHdHOKhFlz/U06sFcF/FlCRjIgUcyfIUKWi
+         kva0t7f+LI3QIwCR6J3NLrFSqs/9LZyYrw7s3yPGA8B3r/tHkz7ltBLCLngq+pp0nnz3
+         SeYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=DQM4Iimo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ofY0Wz3O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d35416a821si134809926d6.294.2024.11.05.10.36.20
+        by mx.google.com with ESMTPS id af79cd13be357-7b2f3ab4d55si1413530185a.583.2024.11.05.11.55.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 10:36:20 -0800 (PST)
+        Tue, 05 Nov 2024 11:55:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=DQM4Iimo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ofY0Wz3O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t8OPS-00069d-F3; Tue, 05 Nov 2024 13:36:11 -0500
+	id 1t8PdO-00022K-H8; Tue, 05 Nov 2024 14:54:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1t8OPQ-00068s-Ln; Tue, 05 Nov 2024 13:36:08 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1t8OPN-0007e0-NO; Tue, 05 Nov 2024 13:36:08 -0500
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4A5HeAdX022178;
- Tue, 5 Nov 2024 18:36:01 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=wc7f2H
- rr1rAEYSxyfo0HmCBarTs+hABQdxgNXKiFOt8=; b=DQM4IimoXgbMzlUwM8eGTh
- foETMWKg/r1YjxfdwpTULaVwMtzVo9+WgHDFL5fdrE3eDxQl4KHE5YTxe3YaGd7P
- 1crxHUVAkaMubYaX3hD/2BSqCaGyoQP6JeptVx1k24U10JT56P99R15fVYsm+3MJ
- 64YpynhsLh9hVvCQkdAIr6IA1HTRA22wJ7wrN9T7FNqQeOi545E7EJSfeSlZtG78
- wFILAIAva99AvU5WutNxV4R6auGy+rud9dXiS/YTshfVBcEZYpkEbkwFLhTHqaGU
- WHsQkpvU7oAFhe0PI7ktH/JXm+I/l/jDbDXOpY6lDzWRhSlrcBVX70JG4trBSZ0A
- ==
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 42qqy5r8xf-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 05 Nov 2024 18:36:00 +0000 (GMT)
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 4A5HhPqL019414;
- Tue, 5 Nov 2024 18:36:00 GMT
-Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 42p0mj4jd5-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 05 Nov 2024 18:36:00 +0000
-Received: from smtpav04.dal12v.mail.ibm.com (smtpav04.dal12v.mail.ibm.com
- [10.241.53.103])
- by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 4A5IZxew57737584
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 5 Nov 2024 18:35:59 GMT
-Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B349158056;
- Tue,  5 Nov 2024 18:35:59 +0000 (GMT)
-Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 527C258052;
- Tue,  5 Nov 2024 18:35:59 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
- by smtpav04.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Tue,  5 Nov 2024 18:35:59 +0000 (GMT)
-Message-ID: <e6c33df3-49e9-4b8a-b7cb-d38c2ebee3be@linux.ibm.com>
-Date: Tue, 5 Nov 2024 13:35:58 -0500
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t8PdN-00021o-O6
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2024 14:54:37 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t8PdL-00072N-RT
+ for qemu-arm@nongnu.org; Tue, 05 Nov 2024 14:54:37 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-5c957d8bce2so3120206a12.2
+ for <qemu-arm@nongnu.org>; Tue, 05 Nov 2024 11:54:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1730836473; x=1731441273; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=OmO/yvZbnYpkNp7dAyYz09oOK6ndjH8HBKv4zKmb+SI=;
+ b=ofY0Wz3OaiyID6vZ3LRv+q2wAKkhJ1cLEpWlc7bx8elkMDE1UlTyUIQTaO1BXVLCso
+ GFLVNzDAbDjjghPzLdaF1c8eJgxPJiTopWL3Bpc5tq4P0w10rZJA4dMK/6kCLL1IWJs2
+ YrUL8fpba8whguj8cuGZGn4Wryls92aY4ZYHNvo3E44IZR10N9SeRmEV7xhLvWCIxyIB
+ 0qjiP95OO7FGpEMZKvd4DfZ+bFRZWleTn8SVpVjbIIXUSOSu8Oho3BudqJfxQz1yVmUU
+ VRihGWcxoub8WOiUVwuPNdYLGrmCzjHcrvpBIiTwBwvcfaQaC7kHRlZkFTOvlLOm3mnA
+ OeNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730836473; x=1731441273;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=OmO/yvZbnYpkNp7dAyYz09oOK6ndjH8HBKv4zKmb+SI=;
+ b=gRvPL2oxmJFXljgMG9kFOYcYBcYzEyzCt5YvDKM4Yp6nt3qMoKqJF8xJcjrAtjIHLM
+ B3fbiAKXwByMNdo/DiFbOi0X+nG9r54g6BeLb0wbwUqVaIj4xyJA9MdKKy5x9icbL6tk
+ k1tTeshpfmJYA33H+MENTlW88YcvNQMQJineelByYMb6HMCmchDU8OUsM4m914WuxYw3
+ cdDkgpBeAxHfsqwR03f7OoYhhKADCKOpxS/v1zFqPsDXxPNKRc33ZwZy0dMdgxUuZJ7w
+ M76RcubP0N/qcL271OM7NKkgD2gzc6bBzPpAbt0HFRPrQcoJJ1gQPthBOMlKF2+xqBFX
+ vEOw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWLQGKUp5ho2R+6YzM0/LFXr3HgjfPGTEuqUETUOeKQ7mui2+a/tx3qG4JMOa3/AENP3VyD3Gk8JA==@nongnu.org
+X-Gm-Message-State: AOJu0YxXtRnCSZOxC1yGuLZSjJoD99E70AgwKpIFtfoYdtdia5CmxSP3
+ 8pL5NWW6Z86YPEaFo3ElJeJLaplUeUSbayUZNt5JSVMUoPj8m4UswWgu1ZP6aCyPw+LXLzRWnIA
+ aBrir3vfVssLtEXE7r4zYvSlHqcWvQnyFgu2/eQ==
+X-Received: by 2002:a05:6402:35c9:b0:5cb:6696:4e31 with SMTP id
+ 4fb4d7f45d1cf-5ceb935a7e6mr19088835a12.22.1730836472680; Tue, 05 Nov 2024
+ 11:54:32 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 10/17] tests/functional: Convert most Aspeed machine tests
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
- "Daniel P. Berrange" <berrange@redhat.com>, lena.voytek@canonical.com
 References: <20241024063507.1585765-1-clg@redhat.com>
  <20241024063507.1585765-11-clg@redhat.com>
  <CAFEAcA8A=kWLtTZ+nua-MpzqkaEjW5srOYZruZnE2tB6vmoMig@mail.gmail.com>
@@ -109,33 +98,26 @@ References: <20241024063507.1585765-1-clg@redhat.com>
  <CAFEAcA84hhWu2ouirfDPbCpq_=QLQxAf3k47h0Pij8iEnOVj+A@mail.gmail.com>
  <2491bc60-9a0b-486a-8f6d-2c4c94332756@linux.ibm.com>
  <CAFEAcA85g2nX3MU5RzmBvAHT8Kis1JHhiEaBvnFFbEQkG+0OxQ@mail.gmail.com>
-Content-Language: en-US
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <CAFEAcA85g2nX3MU5RzmBvAHT8Kis1JHhiEaBvnFFbEQkG+0OxQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: JNkWtJIMtNaM7AU7DsAWOG8nwzTg7wE4
-X-Proofpoint-GUID: JNkWtJIMtNaM7AU7DsAWOG8nwzTg7wE4
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
- definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- bulkscore=0 impostorscore=0 suspectscore=0 lowpriorityscore=0 spamscore=0
- mlxlogscore=999 mlxscore=0 phishscore=0 adultscore=0 malwarescore=0
- clxscore=1015 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2409260000 definitions=main-2411050143
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+ <e6c33df3-49e9-4b8a-b7cb-d38c2ebee3be@linux.ibm.com>
+In-Reply-To: <e6c33df3-49e9-4b8a-b7cb-d38c2ebee3be@linux.ibm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 Nov 2024 19:54:21 +0000
+Message-ID: <CAFEAcA9La7y1Z2-nMnJDyC_p+z-3c0EnDzEE=w5LTYtRnXPT1g@mail.gmail.com>
+Subject: Re: [PULL 10/17] tests/functional: Convert most Aspeed machine tests
+To: Stefan Berger <stefanb@linux.ibm.com>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>, 
+ "Daniel P. Berrange" <berrange@redhat.com>, lena.voytek@canonical.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,100 +132,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: m/03pgifkBuk
+X-TUID: BT997oykMG81
 
+On Tue, 5 Nov 2024 at 18:36, Stefan Berger <stefanb@linux.ibm.com> wrote:
+> On 11/5/24 1:12 PM, Peter Maydell wrote:
+> > On Tue, 5 Nov 2024 at 18:02, Stefan Berger <stefanb@linux.ibm.com> wrote:
+> >> On 11/5/24 12:13 PM, Peter Maydell wrote:
+> > Is there no way to just have apparmor not apply at all
+> > here? I can see why you might want it to apply for the
+>
+> If you are root you can change things. I have shown the options using
+> aa-complain and aa-disable that you can revert once the test has
+> finished: sudo aa-enforce /usr/bin/swtpm
+>
+> You could also copy swtpm into a user-owned directory but you will have
+> to adapt the user's PATH. That's an easy option.
+>
+> The most compatible option is the 3rd option since I would expect that
+> we will have this rule in a future version of the usr.bin.swtpm Ubuntu
+> profile provided by the swtpm package:
+>
+> echo "include <abstractions/user-tmp>" >>
+> /etc/apparmor.d/local/usr.bin.swtpm
+> apparmor_parser -r /etc/apparmor.d/usr.bin.swtpm
+>
+> > case of "I'm using it as part of a sandboxed VM setup",
+> > but in this scenario I am a local user running this binary
+> > which is not setuid root and it is accessing a file in a
+> > directory which my user owns and has permissions for.
+> > This should not be being rejected: there is no security
+> > boundary involved and swtpm is not doing anything
+> > that I could not directly do myself anyway (as you
+> > can tell from the fact that copying the swtpm binary
+> > to a different location and running it works).
+>
+> I am not aware of how user/non-root-started programs can be generally
+> made exempt from AppArmor.
+>
+> There may still be a security boundary if a user runs QEMU and swtpm was
+> able to manipulate (with malicious input) the user's files in some
+> undesirable way or copy the user's data elsewhere. In this case it may
+> be desirable for the user that the profile be applied and the PATH he is
+> using points to the standard swtpm.
 
+But our test makefiles could equally well just run "cp" !
+swtpm has no privilege here that we do not already have.
 
-On 11/5/24 1:12 PM, Peter Maydell wrote:
-> On Tue, 5 Nov 2024 at 18:02, Stefan Berger <stefanb@linux.ibm.com> wrote:
->>
->>
->>
->> On 11/5/24 12:13 PM, Peter Maydell wrote:
->>> On Tue, 5 Nov 2024 at 17:02, Stefan Berger <stefanb@linux.ibm.com> wrote:
->>>> On 11/5/24 11:14 AM, Peter Maydell wrote:
->>>>> Q1: why is apparmor forbidding swtpm from doing something that
->>>>> it needs to do to work?
->>>>
->>>> What distro and version is this?
->>>>
->>>> The profile may be too strict and not reflecting all the paths needed
->>>> for running the test cases. Ubuntu for example would have to update
->>>> their profile in such a case.
->>>
->>> This is Ubuntu 22.04 "jammy" (with swtpm 0.6.3-0ubuntu3.3).
->>>
->>>>> Q2: is there a way to run swtpm such that it is not
->>>>> confined by apparmor, for purposes of running it in a test case?
->>>>
->>>> Try either one:
->>>> - sudo aa-complain /usr/bin/swtpm
->>>> - sudo aa-disable /usr/bin/swtpm
->>>
->>> We don't have root access from QEMU's 'make check',
->>> though (and shouldn't be globally disabling apparmor
->>> even if we could). I had in mind more a way that an
->>> individual user can say "run this swtpm process but don't
->>> apply the apparmor profile to it".
->>
->> So the problem is that the avocado tests are using /var/tmp but we only
->> have AppArmor rules for /tmp/
-> 
-> The file AppArmor gives the error for is not in /var/tmp:
-> it's in a local directory inside QEMU's build dir:
-> 
-> Nov  5 16:01:14 e104462 kernel: [946406.489088] audit: type=1400
-> audit(1730822474.384:446): apparmor="DENIED" operation="mknod"
-> profile="swtpm"
-> name="/mnt/nvmedisk/linaro/qemu-from-laptop/qemu/build/tests/functional/arm/test_arm_aspeed.AST2x00Machine.test_arm_ast2600_evb_buildroot_tpm/qemu-machine-hhuvwytc/.lock"
-> pid=2820156 comm="swtpm" requested_mask="c" denied_mask="c" fsuid=1000
-> ouid=1000
->> The following solutions should work:
->> - do not install swtpm at all
->> - sudo cp /usr/bin/swtpm  /usr/local/bin/swtpm
->> - as root: echo "include <abstractions/user-tmp>" >>
->> /etc/apparmor.d/local/usr.bin.swtpm && apparmor_parser -r
->> /etc/apparmor.d/usr.bin.swtpm
-> 
-> Is there no way to just have apparmor not apply at all
-> here? I can see why you might want it to apply for the
+Anyway, the thing here is that we run swtpm like this:
 
-If you are root you can change things. I have shown the options using 
-aa-complain and aa-disable that you can revert once the test has 
-finished: sudo aa-enforce /usr/bin/swtpm
+ swtpm socket -d  --tpm2 --tpmstate dir=/path/to/somewhere --ctrl
+type=unixio,path=/path/to/socket
 
-You could also copy swtpm into a user-owned directory but you will have 
-to adapt the user's PATH. That's an easy option.
+where we use command line arguments to tell it where to
+put the tpmstate and the socket.
 
-The most compatible option is the 3rd option since I would expect that 
-we will have this rule in a future version of the usr.bin.swtpm Ubuntu 
-profile provided by the swtpm package:
+Either:
+ (1) there are places where it's not valid for us to tell swtpm to
+put the tpmstate or to put the control socket
+ (2) it's valid to put those anywhere we like
 
-echo "include <abstractions/user-tmp>" >> 
-/etc/apparmor.d/local/usr.bin.swtpm
-apparmor_parser -r /etc/apparmor.d/usr.bin.swtpm
+If (1), then swtpm should give a clear error message that we've
+given it an invalid argument (and its manpage should say what
+the restrictions are)
+If (2), then apparmor should not be rejecting this usage
 
-> case of "I'm using it as part of a sandboxed VM setup",
-> but in this scenario I am a local user running this binary
-> which is not setuid root and it is accessing a file in a
-> directory which my user owns and has permissions for.
-> This should not be being rejected: there is no security
-> boundary involved and swtpm is not doing anything
-> that I could not directly do myself anyway (as you
-> can tell from the fact that copying the swtpm binary
-> to a different location and running it works).
+One of swtpm or apparmor must be wrong here and I think it should
+be fixed. In particular, having the failure mode be "something
+goes wrong after swtpm has successfully started and only once
+it gets sent the TPM_INIT command, and the information about it
+only winds up in the syslog" is pretty awkward -- it would
+be much nicer if it failed fast, as soon as you ran it, and
+printed the error to stderr.
 
-I am not aware of how user/non-root-started programs can be generally 
-made exempt from AppArmor.
+In the interim, since we'd like to be able to run the test suite
+on Ubuntu, it sounds like we can work around this by putting
+the tpmstate and socket in either /tmp/ or somewhere under
+the user's home directory.
 
-There may still be a security boundary if a user runs QEMU and swtpm was 
-able to manipulate (with malicious input) the user's files in some 
-undesirable way or copy the user's data elsewhere. In this case it may 
-be desirable for the user that the profile be applied and the PATH he is 
-using points to the standard swtpm.
-
-> 
-> thanks
-> -- PMM
-> 
-
+thanks
+-- PMM

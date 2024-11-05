@@ -1,98 +1,98 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2806595njc;
-        Tue, 5 Nov 2024 05:06:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV7dxR/liP/at4tb9lMSIe6Wa1WQUjJrW5dDnISURkN6FqdQqEn5xPHB5R17xz3cOB97q8hl0BVgY3d0w==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9Mz/3VGxTlquvxsh8uaq1slRQBTWVzs0VfqGYqE1NFcIilFMsaOPyQX3xJhJNPO+Gl7RA
-X-Received: by 2002:ac8:5fd4:0:b0:461:4734:959a with SMTP id d75a77b69052e-462b875355amr227266161cf.39.1730811973646;
-        Tue, 05 Nov 2024 05:06:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730811973; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2806735njc;
+        Tue, 5 Nov 2024 05:06:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVz8NLz8znyR3N5Z+SXffMxNqufP/Tkl+PIhM3PQgudAmk+qk7hcVHmrpqTBHqiFUsfc1x4tfQqRjRs6Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFwDWE909pw6PD2B4cr+vkmXWmtKrUpOrUTHMabMcP2QNuqLWS5/0Dh1OiX/eZuadZeDWrw
+X-Received: by 2002:a05:622a:406:b0:461:285:9f5a with SMTP id d75a77b69052e-462b875427bmr258129131cf.40.1730811986485;
+        Tue, 05 Nov 2024 05:06:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730811986; cv=none;
         d=google.com; s=arc-20240605;
-        b=RLDdyOB2DlZbFncZ47Q4hrphMl1bV9Sr5MU/3XMC368kor4PJmald31CeBrjKSp8Dc
-         aYG+CCbBK5syiqx+RdvV4Ev/IYljvY7rlcp34fe+21ThQTZ8Oknu6cy3Wbk3Pd4Y46il
-         hAjvh8qsatBTWComNS5TuZrWlIUgSQ/E8AluR4Nw19yTo5nsJh5pfL+S5OO2QgTHWRVl
-         OwqG0XdI56NUQ27zQp6b35UkS15GUSc072ucvMwEiGQ441+aXufc4+czyFKkDMH0bgrg
-         FT9aRrk/EqtotAMAuVsYtOXL4mgQ6LFUgrx8jcC5ZjZarUEk/MT8N8ePUZBxsNz5DLXh
-         npjg==
+        b=XqcadXX+NCdejrNZR/oxcOWot7e9iUG3Iv2yVE1rFA+9QezwL8fYBR3NcxpMuhE0aE
+         bKHWtWw+BrGqQJAhKfZmoJA1Km4OUqTz+mD1CjcWaX2t9IvORPH2jcPUIeYuTmSfV8Lu
+         pNU7sun2NvYZ4OTTWAzG/7lIzfhei7tPJs6gy/3XiJW5uaRJa5nZTXhPWEZXbZxFhHM0
+         CfTUn3Y4m89dgdxYkTEJHer2iSRq9TNa+r8c0w3SAcbh9PzezTHydzi8lOg09IOtpGsD
+         EgzF1Cj7GVFXocLAOZeMEEzDBJITwQFDjyxG5K1vEFcdZ+kocH4CGtF6gdASdiBdE6S5
+         1UuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=UmQHqWTaQOMkWHXP0Jn/QpgcUfCH1B37UiHSpX6N2KA=;
+        bh=Eawrki87ewjyeRlcMvMb8c/enE33+lgoSeTt32ZNL40=;
         fh=t3XyJLi79GAl74vwjx9CHyT1q7cQJdnSqFDS2FXNV/w=;
-        b=eV9XBH7cB8fv2xk1xfvqqjMk6OZ/jK4pn+jmmGo2N0urcKH8oA6Nz8IH+7JZ7dHk5+
-         AXfGEraisi3lqDsK6tkBfkLlz0h1wttBHN9ZccEkHcSS/nktkDDZ7OdnzDcI8qf/EW0J
-         6aefh3ohibjHjsqDUvY9skMsvfOnsClQpF+eQiaIXKjgpGf6vEXymUTfEBSrq7GJlWLe
-         e4doS/q/bGNS0s16TDfORLFTCrHjFlO6SB1uCSxDzO9e5Wth/QZ4s8weE3wMGUM1htRv
-         TgZSuNvtaphr0SesfvUs0ZmilGiNp9pIinWaq6PWIK0aErh0gYRK+HnNhoyx0zfKRJKf
-         ACdA==;
+        b=Jjb7UvtTb0dmxzYjDqH80Dj0WAsR3ySABy7/IsMaMnUPSs8Ovmh2TvbCi/zPJzC5dp
+         NOawFN9l1N/VUxrQqhIcSEMWMvPn0xzjAvzwnKiNTnEXpvLZ0Wp2yvtavaDcTSTGq53s
+         vUjIwUks8n2cudI+GMsXGU7UKJQsitahA0sWl3oFIuTGxIzcANwXTptO4gpba3maEb8x
+         dcfBR3EEmModpnqw9JSNOIxsVYjMojON5KesS5NG50uhUB1SSdybYn2TSeNoweBJMs0a
+         cr6gvauTcdHeUFMDQM0sjpDHPNgxYYwFPoPofjBDpydGKC2XWg4rnOAUfFUTAyTY2++t
+         q1Rw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s5HPSlAw;
+       dkim=pass header.i=@linaro.org header.s=google header.b="GWoW7pk/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ad19e80bsi127463361cf.251.2024.11.05.05.06.13
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad1e9994si146066131cf.403.2024.11.05.05.06.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 05:06:13 -0800 (PST)
+        Tue, 05 Nov 2024 05:06:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s5HPSlAw;
+       dkim=pass header.i=@linaro.org header.s=google header.b="GWoW7pk/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t8JFp-0002u1-TQ; Tue, 05 Nov 2024 08:05:53 -0500
+	id 1t8JEs-00016f-EX; Tue, 05 Nov 2024 08:04:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8JFo-0002mJ-0i
- for qemu-devel@nongnu.org; Tue, 05 Nov 2024 08:05:52 -0500
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8JEq-00015C-Ai
+ for qemu-devel@nongnu.org; Tue, 05 Nov 2024 08:04:52 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8JFm-0002X5-Ad
- for qemu-devel@nongnu.org; Tue, 05 Nov 2024 08:05:51 -0500
-Received: by mail-lf1-x12a.google.com with SMTP id
- 2adb3069b0e04-539ee1acb86so5437842e87.0
- for <qemu-devel@nongnu.org>; Tue, 05 Nov 2024 05:05:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8JEo-0002Ah-ND
+ for qemu-devel@nongnu.org; Tue, 05 Nov 2024 08:04:52 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-43168d9c6c9so44383355e9.3
+ for <qemu-devel@nongnu.org>; Tue, 05 Nov 2024 05:04:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730811948; x=1731416748; darn=nongnu.org;
+ d=linaro.org; s=google; t=1730811889; x=1731416689; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=UmQHqWTaQOMkWHXP0Jn/QpgcUfCH1B37UiHSpX6N2KA=;
- b=s5HPSlAwC2nA+to5RFYRJHwjdxqCcpkRZTt+rMvMVhefAgAA6uPMsU/1ILGUOCMtUL
- Sk4japgXgFTaW4BRSox/gTdrBSrXrn0iM3pFSrkrYlUjMLqk6VBjfFr2cX3ChPGLCDNk
- Uu2mUHdtrZvQhmshMSqJLQO9GMDHXwHbIdTR/EI9kQiN8x6bL+xHF7w5GuyQvvaOjAMw
- 9Llwloovy8KhI7Fu8Ub71BH5Z/nmNllEZFjKvlliuLRePn0HwqrvKLLwup2Ck3FvlMhx
- 2W8/o6fVYisL6Olt0uz0GYBxPmvmi4hR8aTaJV0YhTp6FURjybGWvW//u9Vi20Advcyq
- A54Q==
+ bh=Eawrki87ewjyeRlcMvMb8c/enE33+lgoSeTt32ZNL40=;
+ b=GWoW7pk/2CoCrUluBuZHB7dsPT/TU1B1pmKzzA7xSKVBnamNSgATa8AEPDxxpzhtw8
+ 4fGhe6Tku/9h4AXgfSU/cCq5Ho7aWUvt0Y+53JQEKpO4Y4vrvLU2nSq+aMn0I/JMahpG
+ sIhJt8BHcw+D5IcnTRdmk/oIFLN29+eoCjdjOHHEz30Lp/uD+3dwHpPhlZzs/ycCrS4j
+ KOkDnWAl8rqBgjSQva1nn4dMBcolNy7sSlcqKXZRNp5WuiaxC0Nyhm2bVx9ngBsJDiWJ
+ QkI2dzz++uqYWcATn0oPOoc/KuhJQNe3tz4FVGUO1rimsmsVoQbxK9ave2ITipX2cG3v
+ WyJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730811948; x=1731416748;
+ d=1e100.net; s=20230601; t=1730811889; x=1731416689;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=UmQHqWTaQOMkWHXP0Jn/QpgcUfCH1B37UiHSpX6N2KA=;
- b=W+CI1cfOBAyJXx5aw2ol/3jsyBlMcv6lh1RTKsT5IM9WG1OfMTQCfR5lT+szdQtHtY
- ykwKPhmxmUvQbNT++qRoqK5wacDaLGrTQWcmQKzb+cDKI90V0F6cydg52zijRHYnP9lN
- nKCfo24NanGSrz8iON8xmPGrlLXyUuXzr692RYL5MZPE59Z3D+9bQiHD4OMtZ+3NLq+b
- xR4NpfhaznWZRW63yHcA3nbQrybpzY7IvgcxdJLzlrnxGIOCqbkUiImXt3uH6gBEKpAF
- q2BnfU9MZhzjwi/4n2Cz4DQB1qpfb68/7tOdw/hLAHXrGs5GaCECQagpYDVdpiMMAas6
- 5izA==
-X-Gm-Message-State: AOJu0YyWsSJtuFrPyD7Qh5Nm22iPLNQmHpWgSBqUswmgQqT5PRR6PnSO
- XSgYSj5kbKSR+pObMMOoLSgMYw6olC14evhmoluKjsOXJM/3KJ0ExreD9AJoBsQBkLR4in7+EyS
- Lov4=
-X-Received: by 2002:a05:6512:10d1:b0:539:f10b:ff93 with SMTP id
- 2adb3069b0e04-53d65df7cb4mr6726958e87.27.1730811948119; 
- Tue, 05 Nov 2024 05:05:48 -0800 (PST)
+ bh=Eawrki87ewjyeRlcMvMb8c/enE33+lgoSeTt32ZNL40=;
+ b=V4hKcGeAASQhxH91O4xnx/wONmS2AqkTcsX7+bgo/fC637JrhYA8/ii1zqM1lnsXFX
+ AeF6jeBb8ORmsGlW3UkULB94zLz3Z/YcqXV9CwoI+Nit5EhJ7n2/9h+PvulmMnsUW8vI
+ iZfUpVmLG5RFJIdVckJZ0ZV3M4OD1AqdgsAIJjL7SRmntn0crj+zDPomh5jFyMB+vK3h
+ MHqcNbEkF8hKsYKKskIol9wrtLO4A88D7vsPwqdhY+44hzph1sjlL+jCC44TzhDFAxM0
+ /cHkpkHjY+nlZSGQBRiVPXxU4frtX0d6BREeV5qM82kYdtuACz8GsB65LpB66YX58HUg
+ JO6A==
+X-Gm-Message-State: AOJu0YwNq8m+7zzYoAuYHCT5D65SRnurDhrTCNCokUuuJDbvw+kr4U6H
+ h1qwB23x3sIbRVNoWlwzI0ciTi+JPOO2WBAnQgudmPdRv3Ocz4IBTu9+jHRKv0lKJWK9N98MaQ8
+ ozv0=
+X-Received: by 2002:a05:6000:1868:b0:381:d014:9be0 with SMTP id
+ ffacd0b85a97d-381d0149ed0mr8845872f8f.17.1730811888759; 
+ Tue, 05 Nov 2024 05:04:48 -0800 (PST)
 Received: from localhost.localdomain (86.red-88-29-160.dynamicip.rima-tde.net.
  [88.29.160.86]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-381c113e528sm16313895f8f.78.2024.11.05.05.05.45
+ ffacd0b85a97d-381c116ac7dsm16160227f8f.105.2024.11.05.05.04.45
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 05 Nov 2024 05:05:47 -0800 (PST)
+ Tue, 05 Nov 2024 05:04:48 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org,
 	Anton Johansson <anjo@rev.ng>
@@ -104,18 +104,18 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 07/19] hw/microblaze: Restrict MemoryRegionOps are implemented
- as 32-bit
-Date: Tue,  5 Nov 2024 14:04:19 +0100
-Message-ID: <20241105130431.22564-8-philmd@linaro.org>
+Subject: [PATCH 01/19] target/microblaze: Rename CPU endianness property as
+ 'little-endian'
+Date: Tue,  5 Nov 2024 14:04:13 +0100
+Message-ID: <20241105130431.22564-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241105130431.22564-1-philmd@linaro.org>
 References: <20241105130431.22564-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -137,80 +137,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CHnbiRZxSCNB
+X-TUID: royq2ZAjVcQM
 
-All these MemoryRegionOps read() and write() handlers are
-implemented expecting 32-bit accesses. Clarify that setting
-.impl.min/max_access_size fields.
+Rename the 'endian' property as 'little-endian' because the 'ENDI'
+bit is set when the endianness is in little order, and unset in
+big order.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/char/xilinx_uartlite.c | 4 ++++
- hw/intc/xilinx_intc.c     | 4 ++++
- hw/net/xilinx_ethlite.c   | 4 ++++
- hw/timer/xilinx_timer.c   | 4 ++++
- 4 files changed, 16 insertions(+)
+ hw/microblaze/petalogix_ml605_mmu.c | 2 +-
+ hw/microblaze/xlnx-zynqmp-pmu.c     | 2 +-
+ target/microblaze/cpu.c             | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/char/xilinx_uartlite.c b/hw/char/xilinx_uartlite.c
-index a69ad769cc4..892efe81fee 100644
---- a/hw/char/xilinx_uartlite.c
-+++ b/hw/char/xilinx_uartlite.c
-@@ -170,6 +170,10 @@ static const MemoryRegionOps uart_ops = {
-     .read = uart_read,
-     .write = uart_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-     .valid = {
-         .min_access_size = 1,
-         .max_access_size = 4,
-diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
-index 2b8246f6206..1762b34564e 100644
---- a/hw/intc/xilinx_intc.c
-+++ b/hw/intc/xilinx_intc.c
-@@ -144,6 +144,10 @@ static const MemoryRegionOps pic_ops = {
-     .read = pic_read,
-     .write = pic_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-     .valid = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-index 11eb53c4d60..ede7c172748 100644
---- a/hw/net/xilinx_ethlite.c
-+++ b/hw/net/xilinx_ethlite.c
-@@ -170,6 +170,10 @@ static const MemoryRegionOps eth_ops = {
-     .read = eth_read,
-     .write = eth_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-     .valid = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-diff --git a/hw/timer/xilinx_timer.c b/hw/timer/xilinx_timer.c
-index 0822345779c..28ac95edea1 100644
---- a/hw/timer/xilinx_timer.c
-+++ b/hw/timer/xilinx_timer.c
-@@ -193,6 +193,10 @@ static const MemoryRegionOps timer_ops = {
-     .read = timer_read,
-     .write = timer_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-     .valid = {
-         .min_access_size = 4,
-         .max_access_size = 4,
+diff --git a/hw/microblaze/petalogix_ml605_mmu.c b/hw/microblaze/petalogix_ml605_mmu.c
+index b4183c5267d..df808ac323e 100644
+--- a/hw/microblaze/petalogix_ml605_mmu.c
++++ b/hw/microblaze/petalogix_ml605_mmu.c
+@@ -90,7 +90,7 @@ petalogix_ml605_init(MachineState *machine)
+     object_property_set_int(OBJECT(cpu), "use-fpu", 1, &error_abort);
+     object_property_set_bool(OBJECT(cpu), "dcache-writeback", true,
+                              &error_abort);
+-    object_property_set_bool(OBJECT(cpu), "endianness", true, &error_abort);
++    object_property_set_bool(OBJECT(cpu), "little-endian", true, &error_abort);
+     qdev_realize(DEVICE(cpu), NULL, &error_abort);
+ 
+     /* Attach emulated BRAM through the LMB.  */
+diff --git a/hw/microblaze/xlnx-zynqmp-pmu.c b/hw/microblaze/xlnx-zynqmp-pmu.c
+index 1bfc9641d29..43608c2dca4 100644
+--- a/hw/microblaze/xlnx-zynqmp-pmu.c
++++ b/hw/microblaze/xlnx-zynqmp-pmu.c
+@@ -90,7 +90,7 @@ static void xlnx_zynqmp_pmu_soc_realize(DeviceState *dev, Error **errp)
+     object_property_set_bool(OBJECT(&s->cpu), "use-pcmp-instr", true,
+                              &error_abort);
+     object_property_set_bool(OBJECT(&s->cpu), "use-mmu", false, &error_abort);
+-    object_property_set_bool(OBJECT(&s->cpu), "endianness", true,
++    object_property_set_bool(OBJECT(&s->cpu), "little-endian", true,
+                              &error_abort);
+     object_property_set_str(OBJECT(&s->cpu), "version", "8.40.b",
+                             &error_abort);
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index 135947ee800..e9f98806274 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -368,7 +368,7 @@ static Property mb_properties[] = {
+     DEFINE_PROP_UINT8("use-non-secure", MicroBlazeCPU, cfg.use_non_secure, 0),
+     DEFINE_PROP_BOOL("dcache-writeback", MicroBlazeCPU, cfg.dcache_writeback,
+                      false),
+-    DEFINE_PROP_BOOL("endianness", MicroBlazeCPU, cfg.endi, false),
++    DEFINE_PROP_BOOL("little-endian", MicroBlazeCPU, cfg.endi, false),
+     /* Enables bus exceptions on failed data accesses (load/stores).  */
+     DEFINE_PROP_BOOL("dopb-bus-exception", MicroBlazeCPU,
+                      cfg.dopb_bus_exception, false),
 -- 
 2.45.2
 

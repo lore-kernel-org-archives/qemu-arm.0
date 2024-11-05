@@ -1,208 +1,126 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2913498njc;
-        Tue, 5 Nov 2024 07:38:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWIVILcPINGrTcmdJ8OzN/buSONghE6RoC82u0A+Yi9hS793TRlWBJtdJQLXPeDGwTDaSPZKwjJrFc/EA==@linaro.org
-X-Google-Smtp-Source: AGHT+IExbnX/XLLa5x0EKiTnpverPmQd7P5vw/2W4mhOxC9dmQ3t53Whivvvm6zlvcLwfeVpF1NZ
-X-Received: by 2002:a05:6102:50ab:b0:4a7:502c:5fcc with SMTP id ada2fe7eead31-4a9542630f1mr17044283137.5.1730821115182;
-        Tue, 05 Nov 2024 07:38:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730821115; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2962340njc;
+        Tue, 5 Nov 2024 08:53:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUpReHuS+/NxU2GVXg64jWTZWV9YV//UuN3210i3ZBgnnecqP6CVuilrtcT1Zdyp3DhbwCNdzRTZZkWjQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFCrhGA/2dOdMbTEgpbA3x7R/jFjEDvFJyqVujpvKfaSNn7oZTEzP0rNK/xySnG6/4VfvIt
+X-Received: by 2002:a05:6358:94a2:b0:1bc:573a:401a with SMTP id e5c5f4694b2df-1c3f9d13410mr1629500355d.5.1730825638817;
+        Tue, 05 Nov 2024 08:53:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730825638; cv=none;
         d=google.com; s=arc-20240605;
-        b=SCZeM7W4sTP9po6lE6rmItaUbQv9aeRv6WGfZC3929tBVqK35ah3vsY1zYIkbIuSs9
-         xos53DF7S/EBeVcfmyK7hmFNlUW9VgZkz73Q7fU3p9KW1Pz/5RaQUpZWig1xP1UI1Hcv
-         /c16m1nt177aO0mYuFiQ2910v4dt3q7GjsJGZw+QzstzdG8w3k6/I1ch5lmAHqD+AXmt
-         ufhjEk55SJERwhF4qmZIFGw7nJafMvf/gyVNRJlmkC6a4Rh6DrIaZtLRlgtRg2cyNHZk
-         Icq8c1N6mvv33aS1NFvYNy1NzaBjhxlrItxHwGWxUIT8tioXlUUHxJNYGxeovvd9NGsC
-         fxTA==
+        b=Am7CYI14Qmb60cOag1mekdTBYh2v0C8u1b6PtZ6WJI3BBVwplnMsuJdSRJIbeygc92
+         RjVzLgLse0ye5FDDJneLmpwhg46h0rkyo+szVlRTyrEFmRugGAl0mPMWEPXaYkozGEAX
+         rW69+UiRyY85BmwPVQsWeZDz2YBSB188yInU4rjNHvkj7J6UIHbWv5nHMh9Gpp6MUinW
+         vIYpEuXNLvcE/iGTBtTlxr/ypzRh+CBmuf3Nh78s4nezBIrgJgzIaWSMUaEOcQ3r6Jvt
+         FKS9/sZ+1EjyWw2L5ib6T1r6ohUYZlZmkRGVqX3Qi4qRFPK44yLmv6ktqNwTDYtB0e1V
+         d0iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=d4go3bp9vwKXUsHdZahivwZLkjek4unj4vZiye1qF4s=;
-        fh=TMR46DTfpxim3XkrkbCHwVX614HO3zr+EpKIQu3vhwE=;
-        b=Q4dLGlr/n9l0CreRaIFPLmCBf70smSHxSL3b5oIt/sG7GM0B6d9C+1e6vDi+oO9trR
-         8hq8iBbfOoW06SWBi9GGya4BOh9D61JmDHiJHUygTl5WF7qJouh2Ou1CcP/s6GpcvZLw
-         dg78d4p+jPjLxpXSVdmsKXqdxh3jSire4TlcuSThi+/mYflzvzQrlZgMUaGpAQ8YDB3l
-         +rehUWAMcigN0MbgXrqvePsDnTtgylStejxaBYx9pB7CIdngw+j+IOLmfn0glKKwguw+
-         SIRu8+6Lr//hPZy9dCRRGV8cLms1xGzuuMk0CG7uegPXPC/BCjbRa9//+B4NJ+a/fpiA
-         XLoA==;
+         :references:message-id:subject:cc:to:date:dkim-signature;
+        bh=flv3ujNe21r/RG52tSwhS+6SmqV+5XOaUrjyRpdhmsg=;
+        fh=vDt2tAnSauL46jd9IHShjTjOSYwG1bOsam4bHq/qpFQ=;
+        b=CfZlub0981m83HO/uq+7wIIE8eJPwumVQjG9MNgp7pAz/hZp7M0e0JvD5V9LsS6WnJ
+         pXV/DXlaJv7yT3dqp0vcJushgg/qd/uBSj76XaahLLHM0xGzzgeC9I/trlhR8ziDMJib
+         Zlw73SJSpwcEagtKCtIKhcq/P3D75M2+F8Ospx/vun9lEWDP0vJJ6u6Kx5LM+CYgpZsF
+         P/uxoZsBgdX28Gju7pUulFKraKsDpW0ZbOdK7LSpTxcjVh8LEDZwjpJbs2WD/xdH/zdY
+         poI3l9BINOwSUq8q2Tiwt+Nif/SJEV1Bl7iiLBjVigto33e4FfBAHV3SRYK7pyP8WdJZ
+         VqXg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@roolebo.dev header.s=mail header.b=VoxqSw0h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@rev.ng header.s=dkim header.b="M/WN6RY7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4a95758c43csi2521718137.601.2024.11.05.07.38.35
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d353fd0f4asi136793816d6.128.2024.11.05.08.53.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 07:38:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 05 Nov 2024 08:53:58 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@roolebo.dev header.s=mail header.b=VoxqSw0h;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
+       dkim=fail header.i=@rev.ng header.s=dkim header.b="M/WN6RY7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t8Lbc-0007Zq-Ij; Tue, 05 Nov 2024 10:36:32 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t8MoD-0001gb-N5; Tue, 05 Nov 2024 11:53:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <roman@roolebo.dev>) id 1t8Lba-0007MJ-91
- for qemu-devel@nongnu.org; Tue, 05 Nov 2024 10:36:30 -0500
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <roman@roolebo.dev>) id 1t8LbX-0004k5-4P
- for qemu-devel@nongnu.org; Tue, 05 Nov 2024 10:36:29 -0500
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-71e5a00d676so307140b3a.1
- for <qemu-devel@nongnu.org>; Tue, 05 Nov 2024 07:36:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=roolebo.dev; s=mail; t=1730820985; x=1731425785; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=d4go3bp9vwKXUsHdZahivwZLkjek4unj4vZiye1qF4s=;
- b=VoxqSw0hK+FpsXapxAnZn2xm2U4Atloko+9/On00TegdXhWnFBBRvoQzESaagA3Hhk
- JVw+LYpQsnhrlTPw3KXJ6iabcjfR63BZeYUMa3nsK0tf0/Yb0rXcDoTxiVACf5TVWdAH
- BdSk/sEOe1jAbrhFqi5NDACSgPPMxSR9rOvVYn15ovT6TIZeU0CgNVg+QG1dE46zDaYy
- c9Dmvx8zRH2CzpitqQMKNJrf4nGRXrF0XJD5cOFVZQiC13kinhc9nE0Y3m0cKlPgsLB/
- nV6gqkPt4CHyFy43shNdW6ogJjmmr3atqbx0AZDF0bp1i8EfbbOQURhDDHuOmJya8aDd
- 2L/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730820985; x=1731425785;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=d4go3bp9vwKXUsHdZahivwZLkjek4unj4vZiye1qF4s=;
- b=ULqTjLhxcBCtdxz/zjGdfMcvXA4bpNqYwtLXw/582T09UFtuAs36VsrYu1+vk/YRV+
- XrcLB/cq8PDoSa9gAnsqJi1YPhg7N8CfO4Kn/r8xKJ7HW8z5SnIV2pg1rbXZR/OCgFhC
- 7n56dOf4DKT4kUdjtoDKOmO8S3Od3KwPN5NmhLXl2GRgYfroyjcdEejoAFbprXNThOP9
- fKNjiPylfHK8RS0wbXREOYey+K4tIs9JScz2JSiyjCttC8nBDhdfYYFpm0w3ZzyQjDmq
- Jq52SL2dQx5UhybOh9tBvZGEV7HNDAxK0E31RSSKCX8eJ7TO5u/MLW7dl3eSsmf068hU
- k8zA==
-X-Gm-Message-State: AOJu0YwKEFBwAqXfxgS9GVcHMX40WjK9Jis2NkWPVN03KiAhKFeep0if
- Qi7CiyJXDSgCXNVh4vDG86b8yhbyzJd7gfdXd98tc6gxvdV3RT64H33VZCpYDAE=
-X-Received: by 2002:a05:6a20:9143:b0:1d9:14b4:9bf2 with SMTP id
- adf61e73a8af0-1d9a81ce828mr25250168637.0.1730820985081; 
- Tue, 05 Nov 2024 07:36:25 -0800 (PST)
-Received: from localhost ([184.22.32.237]) by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-7ee459f9222sm9184701a12.64.2024.11.05.07.36.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Nov 2024 07:36:24 -0800 (PST)
-Date: Tue, 5 Nov 2024 22:36:10 +0700
-From: Roman Bolshakov <roman@roolebo.dev>
-To: Phil Dennis-Jordan <phil@philjordan.eu>
-Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
- pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com,
- marcin.juszkiewicz@linaro.org, stefanha@redhat.com, mst@redhat.com,
- slp@redhat.com, richard.henderson@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, gaosong@loongson.cn,
- jiaxun.yang@flygoat.com, chenhuacai@kernel.org, kwolf@redhat.com,
- hreitz@redhat.com, philmd@linaro.org, shorne@gmail.com,
- palmer@dabbelt.com, alistair.francis@wdc.com, bmeng.cn@gmail.com,
- liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
- marcandre.lureau@redhat.com, berrange@redhat.com,
- akihiko.odaki@daynix.com, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org
-Subject: Re: [PATCH v4 05/15] MAINTAINERS: Add myself as maintainer for
- apple-gfx, reviewer for HVF
-Message-ID: <Zyo7LCTKSsCNz6wX@roolebo.dev>
-References: <20241024102813.9855-1-phil@philjordan.eu>
- <20241024102813.9855-6-phil@philjordan.eu>
+ (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
+ id 1t8Mo4-0001Ue-1J; Tue, 05 Nov 2024 11:53:29 -0500
+Received: from rev.ng ([94.130.142.21])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
+ id 1t8Mo2-0004ug-7u; Tue, 05 Nov 2024 11:53:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
+ s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
+ List-Help; bh=flv3ujNe21r/RG52tSwhS+6SmqV+5XOaUrjyRpdhmsg=; b=M/WN6RY7KEIIiFu
+ flIR0IUlxhlGz9EtQyvf/fG9c0bnjKxh4ZwAn/Ei2I1lKd20QRc7gGQJx23tJATFHffZpMOc+CI4Q
+ ucV0DMuo3BJUbWD0tYd5z27yARsftEY/HHf40tHAwwZtG2WCd8x6grevL3tEW+mRbDKlI3LB2CILr
+ B4=;
+Date: Tue, 5 Nov 2024 17:56:07 +0100
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, devel@lists.libvirt.org, 
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH 08/19] hw/microblaze: Propagate CPU endianness to
+ microblaze_load_kernel()
+Message-ID: <bhyfbuv6k5alp2tvegfdmcpn3777v3jofi3eryfcjr7xeg3pm7@af6so5isinst>
+References: <20241105130431.22564-1-philmd@linaro.org>
+ <20241105130431.22564-9-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20241024102813.9855-6-phil@philjordan.eu>
-Received-SPF: none client-ip=2607:f8b0:4864:20::436;
- envelope-from=roman@roolebo.dev; helo=mail-pf1-x436.google.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+In-Reply-To: <20241105130431.22564-9-philmd@linaro.org>
+Received-SPF: pass client-ip=94.130.142.21; envelope-from=anjo@rev.ng;
+ helo=rev.ng
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- URIBL_SBL_A=0.1 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /Z7F5n8MWS9x
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Anton Johansson <anjo@rev.ng>
+From:  Anton Johansson via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: C6/NJIcS911L
 
-On Thu, Oct 24, 2024 at 12:28:03PM +0200, Phil Dennis-Jordan wrote:
-> I'm happy to take responsibility for the macOS PV graphics code. As
-> HVF patches don't seem to get much attention at the moment, I'm also
-> adding myself as designated reviewer for HVF and x86 HVF to try and
-> improve that.
+On 05/11/24, Philippe Mathieu-DaudÃ© wrote:
+> Pass vCPU endianness as argument so we can load kernels
+> with different endianness (different from the qemu-system-binary
+> builtin one).
 > 
-> I anticipate that the resulting workload should be covered by the
-> funding I'm receiving for improving Qemu in combination with macOS. As
-> of right now this runs out at the end of 2024; I expect the workload on
-> apple-gfx should be relatively minor and manageable in my spare time
-> beyond that. I may have to remove myself from more general HVF duties
-> once the contract runs out if it's more than I can manage.
-> 
-> Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+> Signed-off-by: Philippe Mathieu-DaudÃ© <philmd@linaro.org>
 > ---
->  MAINTAINERS | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index c3bfa132fd6..16ea47a5e6d 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -505,6 +505,7 @@ F: target/arm/hvf/
->  X86 HVF CPUs
->  M: Cameron Esfahani <dirty@apple.com>
->  M: Roman Bolshakov <rbolshakov@ddn.com>
-> +R: Phil Dennis-Jordan <phil@philjordan.eu>
->  W: https://wiki.qemu.org/Features/HVF
->  S: Maintained
->  F: target/i386/hvf/
-> @@ -512,6 +513,7 @@ F: target/i386/hvf/
->  HVF
->  M: Cameron Esfahani <dirty@apple.com>
->  M: Roman Bolshakov <rbolshakov@ddn.com>
-> +R: Phil Dennis-Jordan <phil@philjordan.eu>
->  W: https://wiki.qemu.org/Features/HVF
->  S: Maintained
->  F: accel/hvf/
-> @@ -2580,6 +2582,11 @@ F: hw/display/edid*
->  F: include/hw/display/edid.h
->  F: qemu-edid.c
->  
-> +macOS PV Graphics (apple-gfx)
-> +M: Phil Dennis-Jordan <phil@philjordan.eu>
-> +S: Maintained
-> +F: hw/display/apple-gfx*
-> +
->  PIIX4 South Bridge (i82371AB)
->  M: Hervé Poussineau <hpoussin@reactos.org>
->  M: Philippe Mathieu-Daudé <philmd@linaro.org>
-> -- 
-> 2.39.3 (Apple Git-145)
-> 
-> 
+>  hw/microblaze/boot.h                     | 4 ++--
+>  hw/microblaze/boot.c                     | 8 ++++----
+>  hw/microblaze/petalogix_ml605_mmu.c      | 2 +-
+>  hw/microblaze/petalogix_s3adsp1800_mmu.c | 2 +-
+>  hw/microblaze/xlnx-zynqmp-pmu.c          | 2 +-
+>  5 files changed, 9 insertions(+), 9 deletions(-)
 
-Thanks for helping out,
-Reviewed-by: Roman Bolshakov <rbolshakov@ddn.com>
-
-I have recently got some cycles to do HVF work too at DDN.
-
-i386 HVF future is not clear as it took two days to update my 2015 MBA
-just to get QEMU compiled. It's no longer supported by brew.sh so I had
-to go through some hoops to get dependencies compiled.
-
-Regards,
-Roman
+Reviewed-by: Anton Johansson <anjo@rev.ng>

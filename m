@@ -1,90 +1,131 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2728684njc;
-        Tue, 5 Nov 2024 02:44:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVQyQT00ax73EJd2f7aJeDLuGEM/4D4aPhYWc2KQXSzO4tzWjXcCtXILyTjx0W57IYMp9nK6+IzmCEDcg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGHoyWv+7xVE8Tmn0fXYgmfcXHN+bMtBVtHxhMcbsHMPRBHQhq2oBuu8YepIhwWpPrQbQuH
-X-Received: by 2002:a05:622a:10a:b0:461:59d5:e5a8 with SMTP id d75a77b69052e-46171702672mr331608341cf.28.1730803495906;
-        Tue, 05 Nov 2024 02:44:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730803495; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp2829628njc;
+        Tue, 5 Nov 2024 05:44:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXy4L3NcCv4DJryZ55G/6n08fX/mPK1vfP5l8blC910Z3Pq0cStFkKtmEBy18n4RnzI59kI3uFtHYNFGw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFDeZ8Qcu7CNvmrimr0uYPHO8RyqxyI3CpnhLOQxzeVugzJ3mVEO0E9TIn46Q48ofhRWj2m
+X-Received: by 2002:a05:622a:55:b0:461:2f3:c52f with SMTP id d75a77b69052e-462ad2549d2mr275432121cf.2.1730814273481;
+        Tue, 05 Nov 2024 05:44:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730814273; cv=none;
         d=google.com; s=arc-20240605;
-        b=UhPryeMYkOWjPoqlFabqPRqgXjxZVeEKY36+i1a3/AiK3RjyyGwlmIbVLY8+23Sc9W
-         ylEo/m6d0ZG6VhLUQtb8IUlw268HlaMF+5BkRNUG2qe4t1EqPqKGZjfh58tqZvFjiWD6
-         4HHtd3L4DTS57gNGOI/fYAaWeRaIoxc1gxFSGL7aZV+hQ5S0n3lzJ9KAjA5wv2WF8/qh
-         gsv56DsbOECzskYCXlvpu9EP0cw7iuoZ83Z/Q9Dlv5kOIiZVRfAYpnH11Lb5znJe6WG1
-         5uMfyURqFuKao3E02dZ79L1XcLIBMS2hMGorEggXhb9w48GAjSWpAdCVj2keqxXL5th7
-         pV4Q==
+        b=jTpczZdeJgA+Jx7qLhYEZrua7FSxHJsM0M1awMsxjzDgqOY3pw8Y11OkL24MbRb9Zx
+         RzDWI5x3xXU59h04vG0P+n4I/7X+L6buDt+uom9Y/3b2PLcqrCZqd51Rz+eOapRk34JO
+         tvvvzJ42gb2qnbS5OfWkK5jW4Xc3ne/LRpcWAw7JlQE9Btj/6wggV6MldbueRlVloGkk
+         m8GGirABroXLbIg3Y9lJ9jAyOA3AyBSWLiGPbM0uzbdWKp8Idq3VcZ+phQDmmUGyhb9D
+         X1cVODaVxDKkRjJHt0DAOifEaD3AXB74l6hgkULVt4DplUmYgqIx251PU1V9naw4Ml/J
+         7PSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=mcBsUcj8JnARcrcZXwo7JIQ8wjRv7ASnDuWA599qwf4=;
-        fh=taNw9iCzOE37gn3k81gC3bf85TfgMzk1jLMGk3QoO74=;
-        b=U3uJxF2xD44dcGcohaKU7JIbB95T+VPvcGtBVEO+2jOqH1q3U4PMDJ1P8pIVNEsO4s
-         LAcdfK0nPiEWtmF8HEJNvknnDs7MI3ZpqqmGNjN82HkcdpBsl6hsjuBAxtb9j+EW768d
-         BVaLpFVZ65MVhYNN6L513ow5Wfazt5CO4khSXKSYk4+gKG0Y4JkdYQxibzkZvrYQnmqc
-         LF8Xaz4ZtX1b9W/FZa2TceZNmjpkXuEyastOfNewsOcDCtOMRcRVZ2aev9wtyFyND/+N
-         iLjzlIWHbHIT20Sn5UWzuIlTlWHa9NZ00DTEhTQ45B8sQEme01I0LxBZy0r8A4uDulK/
-         pWPQ==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=40G9pr3QBzMc2KOpvJ6PeZ8hO4T9az3q3ckT6Oy74kU=;
+        fh=7kjaeKwFPrFGjOrKNu7cNgl0ebyHGqbMOvThH/RAcFc=;
+        b=GEaBqlUP3uOLfPKp7rUJDJQU5Pha+HrY4HCQDntlEru7coDxMXlTHb7/BRguAkBxwv
+         8DmwHNRAcG+6YnWgLL1yRA5NcYpBsyA2gMzGUqJIDjtt4WrrThjM769e71UrH8po9vOj
+         hXwOy5MykTnrnjCgrXMuhSgx+ZxYxKCG++w4Rxr3wzQSxBlfVimko/BE7qHq+0EUmTbl
+         AqC9VsBY4gvY60fycmWjWMrJELTTeWxmPqpW7DfsRoUK1px5E8tIZoOJ2klV0PonQTC6
+         GpnloOIhEi9hEzA2VX9IfG/FEGBJfPhXymxQOwuujqK6WrccM/23549moRVVu7uU+IwM
+         r1BA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=cBUyz4Z9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ad19ebf3si138028261cf.372.2024.11.05.02.44.55
+        by mx.google.com with ESMTPS id d75a77b69052e-462ad0b0f4csi142292671cf.145.2024.11.05.05.44.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 02:44:55 -0800 (PST)
+        Tue, 05 Nov 2024 05:44:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=cBUyz4Z9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t8H3L-0005FP-Tk; Tue, 05 Nov 2024 05:44:51 -0500
+	id 1t8Jqq-00031k-13; Tue, 05 Nov 2024 08:44:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1t8H31-0004sy-Hp; Tue, 05 Nov 2024 05:44:36 -0500
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1t8H2z-0003Tc-5a; Tue, 05 Nov 2024 05:44:31 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwA3l_D29iln3PM3AA--.5413S2;
- Tue, 05 Nov 2024 18:44:06 +0800 (CST)
-Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwD3SXb09ilnmo9HAA--.23086S3;
- Tue, 05 Nov 2024 18:44:05 +0800 (CST)
-From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-To: Jonathan.Cameron@Huawei.com, marcin.juszkiewicz@linaro.org,
- ardb+tianocore@kernel.org, quic_llindhol@quicinc.com,
- peter.maydell@linaro.org
-Cc: chenbaozi@phytium.com.cn, devel@edk2.groups.io, linux-cxl@vger.kernel.org,
- asa-dev@op-lists.linaro.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Yuquan Wang <wangyuquan1236@phytium.com.cn>
-Subject: [RFC PATCH v2 0/1] Sbsa-ref CXL Enablement
-Date: Tue,  5 Nov 2024 18:43:45 +0800
-Message-Id: <20241105104346.417102-1-wangyuquan1236@phytium.com.cn>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t8Jqo-00031T-Gd
+ for qemu-devel@nongnu.org; Tue, 05 Nov 2024 08:44:06 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t8Jqm-0000Ur-RB
+ for qemu-devel@nongnu.org; Tue, 05 Nov 2024 08:44:06 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-a9a4031f69fso875836566b.0
+ for <qemu-devel@nongnu.org>; Tue, 05 Nov 2024 05:44:04 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1730814243; x=1731419043; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=40G9pr3QBzMc2KOpvJ6PeZ8hO4T9az3q3ckT6Oy74kU=;
+ b=cBUyz4Z9TsBkNaG9NBciu/arL0RmeUc+NaVCNHzQLP00Ke7uT2H0/fg1RrOt8zAzZo
+ SRc9gu3W5xSnHCWYiSa3PVQCGTV+eSn1SfG975IlmnOK/OSNNWWKMuC84lNZTOmnkg1H
+ SG3Yr4NnE5/Gx2GFe/CKNiEmPBaOFTDL5e/irg3Ep8HM7dZglGzPqZo6YoG8TcTV7ZR5
+ RrRCCNjVVQEOEAjRbZKbOo6hakOKno3jb59nb+fLLTbUEUHxXuJ75KRwvaMMV2/s5+1X
+ IeHdLjEinFazI/rn8XEE4x03kBXdpibFfA121if+nlwG3v60NAoWRGp1ks3nkIMbOw4T
+ Hl9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730814243; x=1731419043;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=40G9pr3QBzMc2KOpvJ6PeZ8hO4T9az3q3ckT6Oy74kU=;
+ b=rt5uWhoaZTSlqHiJBBX1MG9+bPpwCkIHQsPkrvDVPklp/LVVmTnXw6LNB8ncTxOWb9
+ 0obOL+4Ta5lvHf1WLtkuupGfs6YikkYo+XoiUxPvkLFUq+vjhGoqOCAXSOFRt6+kWMkM
+ PgBl0I631+BI9BKEtbQ0WWpPqqw9eR4pRdw89b451F1Iq2yZISQilpu0d0gWpu/jFuVf
+ SyoNUsMpy0RV9EsJdy+uJd8qkT+KyH07MzeIDVafAWEynuxdGIV7tjAK0uA4dTFZJUYb
+ w8/sjxdka3uJzNaq9Ti46h/JzEYhe4DBZtX9IhPLvHwUX+MkyZGFjoox4r/eWxzF8/8J
+ 3dpA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUq5y6MOuflabjxQMUWCIRmQlczNzKh4h0NbMUe+D1slhOD6tzokig/QZdG46rUOS2BhjDPbt1iRZzL@nongnu.org
+X-Gm-Message-State: AOJu0YwmWiE1qv6WnJMA3uq5MlsGyqfHi6ceJwnl2m4FU/Ac6IYZM5Yv
+ BZ7hHzcYWURtck6xlEHe5uE3+5xsvZq/GMrTuxQXp5SHI29eksEcXt75W/qIvl3lRsKY3w819yl
+ o+1s=
+X-Received: by 2002:a17:906:f889:b0:a9e:6712:c27 with SMTP id
+ a640c23a62f3a-a9e67120e0dmr1261536966b.49.1730814242789; 
+ Tue, 05 Nov 2024 05:44:02 -0800 (PST)
+Received: from [192.168.21.227] ([89.101.134.25])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a9eb169fa0dsm135635166b.17.2024.11.05.05.44.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 Nov 2024 05:44:02 -0800 (PST)
+Message-ID: <95438667-18ee-450f-8d1f-69bf6b898651@linaro.org>
+Date: Tue, 5 Nov 2024 13:43:59 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 17/19] hw/microblaze: Support various endianness for
+ s3adsp1800 machines
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, devel@lists.libvirt.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>
+References: <20241105130431.22564-1-philmd@linaro.org>
+ <20241105130431.22564-18-philmd@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20241105130431.22564-18-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwD3SXb09ilnmo9HAA--.23086S3
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAAAWcpJZAFkgAIsk
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxZFW7GrWxZw1DJw17tFy7Jrb_yoWrWrWfpF
- s0kr43CF48Gw1akws3Z3W8Xr1rCwn5uayUCrn7Cryvkay5GrnYvrZ7Ka1Y9a47JryxGFy3
- AF1qywn5u3W5Z3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -100,99 +141,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gxDaB1p01Yk+
+X-TUID: Cog82Gcs9Qnx
 
-v1 -> v2:
-- provide CXL exclusive MMIO32 & MMIO64 space
-- hard coded two cxl root ports
+On 11/5/24 13:04, Philippe Mathieu-Daudé wrote:
+> -static void petalogix_s3adsp1800_machine_class_init(ObjectClass *oc, void *data)
+> +static void petalogix_s3adsp1800_machine_class_init_be(ObjectClass *oc, void *data)
+>   {
+>       MachineClass *mc = MACHINE_CLASS(oc);
+> +    PetalogixS3adsp1800MachineClass *pmc = PETALOGIX_S3ADSP1800_MACHINE_CLASS(oc);
+>   
+> -    mc->desc = "PetaLogix linux refdesign for xilinx Spartan 3ADSP1800";
+> +    pmc->little_endian = false;
+> +    mc->desc = "PetaLogix linux refdesign for xilinx Spartan 3ADSP1800 (big endian)";
+>       mc->init = petalogix_s3adsp1800_init;
+> +#if TARGET_BIG_ENDIAN
+>       mc->is_default = true;
+> +    mc->alias = "petalogix-s3adsp1800";
+> +#endif
+> +}
+> +
+> +static void petalogix_s3adsp1800_machine_class_init_le(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    PetalogixS3adsp1800MachineClass *pmc = PETALOGIX_S3ADSP1800_MACHINE_CLASS(oc);
+> +
+> +    pmc->little_endian = true;
+> +    mc->desc = "PetaLogix linux refdesign for xilinx Spartan 3ADSP1800 (little endian)";
+> +    mc->init = petalogix_s3adsp1800_init;
+> +#if !TARGET_BIG_ENDIAN
+> +    mc->is_default = true;
+> +    mc->alias = "petalogix-s3adsp1800";
+> +#endif
+>   }
 
-RFC because
-- Many contents are ported from Jonathan' patch on qemu virt design
+These can be C if's, instead of preprocessor #if, at which point you can share code.
 
-- Less experience and not particularly confident in sbsa-ref address space design
-  so this might be stupidly broken in a way I've not considered.
+static void petalogix_s3adsp1800_machine_class_init(ObjectClass *oc, bool little_endian)
+{
+     MachineClass *mc = MACHINE_CLASS(oc);
+     PetalogixS3adsp1800MachineClass *pmc = PETALOGIX_S3ADSP1800_MACHINE_CLASS(oc);
 
-Currently the base CXL support for arm platforms is only on Jonathan's patches[1]
-which have not yet merged into upstream. SBSA-REF can be more like a real machine,
-thus the support of cxl could be meaningful.
+     mc->init = petalogix_s3adsp1800_init;
+     pmc->little_endian = little_endian;
+     mc->desc = little_endian
+         ? "PetaLogix linux refdesign for xilinx Spartan 3ADSP1800 (little endian)"
+         : "PetaLogix linux refdesign for xilinx Spartan 3ADSP1800 (big endian)";
+     if (little_endian == !TARGET_BIG_ENDIAN) {
+         mc->is_default = true;
+         mc->alias = "petalogix-s3adsp1800";
+     }
+}
 
-This series leverages Jonathan's patches[1] to design [SBSA_CXL_HOST] and
-[SBSA_CXL_FIXED_WINDOW] spaces for sbsa-ref layout. 
+static void petalogix_s3adsp1800_machine_class_init_be(ObjectClass *oc, void *data)
+{
+     petalogix_s3adsp1800_machine_class_init(oc, false);
+}
 
-For [SBSA_CXL_HOST], since this creates a default pxb-cxl (bus_nr=0xc0) bridge
-with two cxl root ports on sbsa-ref, the new memory layout places 64K space for
-one hard coded cxl host bridge register regions in the sbsa-ref memmap. 
+With that,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-According to above design, for now only two cxl type3 devices could be added on
-the cxl host. 
 
-With the 'create_pxb_cxl', users don't need to input '-device pxb-cxl' and 
-'-device cxl-rp' parameters.
-
-In addition, this support indepentent mmio32(32M) & mmio64(1M) space which are
-enough for cxl components, because in this way the previous pcie mmio32/64 space
-would not be divided and affected. 
-
-However, with the pxb-cxl-host, any cxl root ports and cxl endpoint devices would
-occupy the BDF number of the original pcie domain. Hence, the max available pcie
-devices on sbsa-ref would decrease, which seems to bring a series of trouble. 
-I'm looking for some comments on the problems and suggestions on if there are better
-ways to do it.
-
-For [SBSA_CXL_FIXED_WINDOW], in order to provide CFMWs on sbsa-ref, this extends 1TB
-space from the hole above RAM Memory [SBSA_MEM] for CXL Fixed Memory Window. 
-0xA0000000000 is chosen as the base address of this space because of 3 reasons:
-
-1) It is more suitable to choose a static address instead of that
-implementation in virt, since a dynamic address space layout of
-sbsa-ref is not appropriate for its original purpose as a reference
-platform.
-
-2) The Hotplug Memory address range should in the range of maximum
-addressable range of sbsa-ref platform(0x10000000000-0x80ffffffffff).
-It is satisfied the requirements of memory hotplug in linux kernel.
-
-3) The start pfn of CFMW should exceed the reserved_pfn_range for
-onlined numa node.
-
-Based on 'cxl_fmws_link_targets', this adds a new function
-'sbsa_cxl_fmws_link_targets' for binding cfmws.target with the default
-pxb-cxl-bus on sbsa-ref.
-
-In addition, this also adds 'create_cxl_fixed_window_region' to support 
-creating a static cfmw region on sbsa-ref, so users don't need to input
-'-M cxl-fmw' parameter.
-
-Thus, to run sbsa-ref with a cxl device could use:
-qemu-system-aarch64 \
--object memory-backend-file,id=mem2,mem-path=/tmp/mem2,size=256M,share=true \
--device cxl-type3,bus=cxl.0,volatile-memdev=mem2,id=cxl-mem1 \
-
-By the way, since the matched firmware correspond to this patch would allocate
-pcie bus 0xc0 ~ 0xff to pxb-cxl-host, we should add "bus=pcie.0" when we want 
-to plug some devices on the original pcie bus, for example:
--device qemu-xhci,bus=pcie.0 \
-or
--device nvme,serial=deadbeef,bus=pcie.0,drive=hdd \
--drive file=../disk/hdd.qcow2,format=qcow2,id=hdd,if=none \
-
-This series patches are here to hopefully some comments to guide me!
-
-Link:
-[1]: https://lore.kernel.org/linux-cxl/20220616141950.23374-1-Jonathan.Cameron@huawei.com/
-[2]: https://edk2.groups.io/g/devel/topic/rfc_edk2_patch_v3_0_1/109403423#
-[3]: https://edk2.groups.io/g/devel/topic/rfc_patch_edk2_platforms_v2/109403456
-
-Yuquan Wang (1):
-  hw/arm/sbsa-ref: Support CXL Host Bridge & CFMW
-
- docs/system/arm/sbsa.rst  |   4 ++
- hw/arm/sbsa-ref.c         | 122 +++++++++++++++++++++++++++++++++++++-
- hw/cxl/cxl-host-stubs.c   |   2 +
- hw/cxl/cxl-host.c         |   2 +-
- include/hw/cxl/cxl_host.h |   2 +
- 5 files changed, 130 insertions(+), 2 deletions(-)
-
--- 
-2.34.1
-
+r~

@@ -1,140 +1,134 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3490585njc;
-        Wed, 6 Nov 2024 05:00:55 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUkuEqzBQoWRa7Js9YkHWLS3fJ9VPtMp6+PoF2NGDQ0Yf93qzAs9nPV6ZEZDASjCMF02KcfqVg5yUSkJA==@linaro.org
-X-Received: by 2002:a17:907:3e8d:b0:a9e:c5a2:9cda with SMTP id a640c23a62f3a-a9ec66e9ef0mr205174066b.20.1730898055502;
-        Wed, 06 Nov 2024 05:00:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730898055; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3493607njc;
+        Wed, 6 Nov 2024 05:04:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVHdti5rPmHAa1kHsCduf4zQoYKGnG6NSXgRvG3Dpemw9XWI0jYISU4MpZ0N9i2hacSFWRHpJr3q7eGFw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFSG6/iJH6LW8I3aEUeeFb+55SXWloKH/nBevrGqd/64JEbRmRWJR1x3tIyVBCasFSKzASz
+X-Received: by 2002:a05:690c:c14:b0:6dd:fb47:2184 with SMTP id 00721157ae682-6ea64aec9bfmr196862617b3.13.1730898253118;
+        Wed, 06 Nov 2024 05:04:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730898253; cv=none;
         d=google.com; s=arc-20240605;
-        b=lfRuEPuaTf4C+mLk3D36vAKZ8nASwbGIL12/eoRspn+lBIYqgsMxOf/J/sOkOVvwxY
-         dKCxH94PYGux5xwHEBoMXgTJMUN4ID2SCkrvgQOzSOhB3sjCXUQqA4M8drvIf2Fgowsa
-         dzmd80mqmnxQS50U+6dgEr71wrw2ZLEGrPlP04O9jM9QjQWEQ/n/Dh1TERJnqvqhq1OE
-         X/ymD5B0bch/7JHi6VXh/+Y06CRH2lg1mPRINV7Zdghf8PYGgZ6MalVoHKsfhAdkDE9f
-         91H0RXKJuUgb7bkuXHSwKNriRRsUsKT2PiEFdyc0k89o2pmDwDWPmnlXjTY1kdkMzAF0
-         RWUA==
+        b=JbUCrpLKI4B/4CDHaeV+CN5n54TTDZbhRVnXYgFSWGSQMU7oQZtCvu+y9zA9fd42Qs
+         VM0WvIBQfxtvFs1YL2hXMF3AZG1tX7IEp0wzSZuWXoOaZx+wRvJXRvO6Du+n5y7llZ+5
+         2mBR2wmEQkm+O1kFSV5pCgFR7iSOZMfTMhkdgGZMiX7JO5/2QirSKEmSKc30fzHm0dAY
+         c9Rvsp8RFgfnS7f63bk1Ujnb3Wyzd1Hpi3XfHuZlJP987TuukUCNaXw6KNzjJ1fZZNhx
+         sI2DMAaAchMiJwdP9A8JH13rHp17xu5U26ALFlOTv4JXUmFOdqq0rGwzkPXI4udMdkJ+
+         GvtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=jhFk8sXF0+0vMDlC/wtmfmSOJXSyyl3ZNW10dFJvH8s=;
-        fh=+ImPzBoK7pZ2dovt6mU5t/6gDBRjO7uoIO7zGVAbwWQ=;
-        b=Z5By4vsRoAcH5u7+fEEdVq0rIenkl1x8wCxoXgdXNuVS29XQZENyKUTdso3Qu371Vw
-         FWPzoPh0MHCD96gYX3L0dc7bTUmRxkdBo91pztcDVrR72He5yi/47+Mo1YZ6TNpWc+YV
-         kzPfVUX/takGQGxzPd1jvpZeX7uviKNQLy8/IbYmTYLM7OauDzwYH44gP4wHXYHjccXm
-         FK21z+NP2TMxRVSpnabaypYUmRPvIaHf4AMUqTJVOx4haREYCm51xYyfkfvHOB73OtZR
-         99BhlFr2jpdpXTrQAEom/+ACqQbQNGz35nqquuTQ3riRxUX+2PXX677oC9NGMU2J5ICj
-         4Fag==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=wcUBrxsFtJnUOTyz+tm/W38EHZOrl2HL/UE+MnpkNlA=;
+        fh=r8ajd3FUMdtDxzqs0wLEINYA6psD113amket9C+CNXU=;
+        b=T1H8vZjhfcjIrBYfkTcQwLNheiQSfouAX4Vsh4SJZOVUxYHQ7DSN4DrGLS68oXnpgY
+         QQWSMHAUURnZmeAxxuPE/kYGUrEISKd/EiV/F2vhKgYiHwKHt3ggqmoaxqZqeA814NgZ
+         3GpUCaRa3h6cNRI8+HHk6uqaNb1in03X58b0ALpwyF9RK9i4brKRg/n1NNkN536XmcwE
+         fbPdtyZ4iDMbij9+PTngP39hl7PSF56cSxJL5aThJTCiIafiVcEepVRKW8SmLe8ezkUX
+         XjqIj9cNo0ZbcvVS6g9fxpKpAjBahRuhJq3HwRtnBqKfDE+PCyI0xWZ/I6cqkly0R1cu
+         zrPA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=beDhyOmI;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-a9ec8c1b392sor44096466b.9.2024.11.06.05.00.55
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 06 Nov 2024 05:00:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id 00721157ae682-6ea8d22e6a9si67480077b3.218.2024.11.06.05.04.12
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 06 Nov 2024 05:04:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=beDhyOmI;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1730898055; x=1731502855; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=jhFk8sXF0+0vMDlC/wtmfmSOJXSyyl3ZNW10dFJvH8s=;
-        b=beDhyOmI2/4zOk3Gm++GjmZYNFPYNpkHA1MH9svWKM4Vz5ISMQMfhkvaXQbo1CNGhq
-         91ZRP3rKT6L/hDLuCbtfPYY79RvkZmCD1DUkg6cTcONiabN4YUn52oKabkZk4Aiva5vR
-         YX9kIW/Ts9y2NuQtM/VIM065DUT49Yi1+Atwl2FmRrv9AHL33edrAl+EqIJgaKvlenYg
-         7qSfxkWcVxBuzEgoHtbtQ84/A18vFvS8qIGjeTbSp2YcIPeV9ncSX1KqGE8euHpdl5MW
-         SWwGaEfyToz4yqAp5VU3vbp6ywe1H32RgDM0nFhPHk9mlO0HtelZIRJ+D0Pb/TkhUzh3
-         PjQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730898055; x=1731502855;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=jhFk8sXF0+0vMDlC/wtmfmSOJXSyyl3ZNW10dFJvH8s=;
-        b=ZtGCha8Q4J4Smi4SXfGboXaZW6F1FS6Le98k9tt3p3Mt6+2TyZJE38I+3JLUDZLGYD
-         jy7Cmew4uT7a0lf46hNekegGw+qQZV/Pp8Yj4JyrA7U3d3ESuXOB9hmVOkVubI8KKoV6
-         i4BCR+ZiM3nNtQnd3vvYwS8bZV4t1mdCpF1yB3y2++h6iyczdHFFHzj3lW3NpLBWZFUv
-         L07vbEoMlQyFn1tdNsKY1fyoSrSwz5dageKojsyQddL8astyAzjwWzBaiRDJcjHRryg9
-         cttPy1BYqJyckNyJ+2elsbpwFUTJLoAnSDU2r4+lZbv16x/x43CEVRDgS29Q9VjXKYEs
-         VmBQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV/2wtNhAehsioLE4FJPEFPgdw2Xgnk3LGdxWc5NfdSbSncxrK0yk4lXOygw07sWMRoFfg2bLFpABlnug==@linaro.org
-X-Gm-Message-State: AOJu0Yxf+b/9nt0SbpEup4J+qfLBohUBTkxFeLSizY+Ljslmkjn+QI0U
-	b5zc0I8Uw8z8stLpbjDEa8KdOrAIFSKPyk5FxH/dGAjI2QilWzrziXiHQVi2wf9hqQ4WVjcxJDA
-	52rv5gdQZXUoQii9SRvU693M/ir0o8+hPU8eJ9TlY
-X-Google-Smtp-Source: AGHT+IEIbv26AHpMeik7ogNJXmmv7jlx0fvLwc8iofMhChEjjQZWYkmy4g3sNHHoo06SCHcsU5ueSbiN9951z8EOu/s=
-X-Received: by 2002:a17:907:9805:b0:a9d:e1cf:b9d3 with SMTP id
- a640c23a62f3a-a9ec66049bfmr283588166b.12.1730898054735; Wed, 06 Nov 2024
- 05:00:54 -0800 (PST)
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xk54m51Kmz6LDWB;
+	Wed,  6 Nov 2024 21:04:08 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+	by mail.maildlp.com (Postfix) with ESMTPS id 33A2214011D;
+	Wed,  6 Nov 2024 21:04:11 +0800 (CST)
+Received: from 00293818-MRGF.huawei.com (10.126.170.112) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Wed, 6 Nov 2024 14:03:56 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>,
+	<imammedo@redhat.com>
+CC: <salil.mehta@huawei.com>, <jonathan.cameron@huawei.com>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<anisinha@redhat.com>, <eduardo@habkost.net>, <marcel.apfelbaum@gmail.com>,
+	<david@redhat.com>, <philmd@linaro.org>, <peterx@redhat.com>,
+	<pbonzini@redhat.com>, <gshan@redhat.com>, <borntraeger@linux.ibm.com>,
+	<alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
+	<darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+	<vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+	<miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>, <zhao1.liu@intel.com>,
+	<linuxarm@huawei.com>, <gustavo.romero@linaro.org>
+Subject: [PATCH 0/3] Fixes CPUs AML & acpi-bios-tables to be x86 backward compatible 
+Date: Wed, 6 Nov 2024 13:03:28 +0000
+Message-ID: <20241106130331.205020-1-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20241103152455.202462-1-salil.mehta@huawei.com>
- <CAFEAcA91DoU4dAHYy6OOeMjEQ+0LGZX8KM-rKsCh89UnFS4yTQ@mail.gmail.com> <7d27ceab963441dc8355d06e6bc4b88d@huawei.com>
-In-Reply-To: <7d27ceab963441dc8355d06e6bc4b88d@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 6 Nov 2024 13:00:43 +0000
-Message-ID: <CAFEAcA9Jhz9a-X0B_bW++3kUePzTENJfq520A0CEst1o+QES4Q@mail.gmail.com>
-Subject: Re: [PATCH] arm/virt: Extract common code to wire GICC<->vCPU IRQs
- for reuse
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
-	"mst@redhat.com" <mst@redhat.com>, 
-	"richard.henderson@linaro.org" <richard.henderson@linaro.org>, 
-	Jonathan Cameron <jonathan.cameron@huawei.com>, 
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "imammedo@redhat.com" <imammedo@redhat.com>, 
-	"pbonzini@redhat.com" <pbonzini@redhat.com>, "gshan@redhat.com" <gshan@redhat.com>, 
-	"maz@kernel.org" <maz@kernel.org>, "will@kernel.org" <will@kernel.org>, 
-	"oliver.upton@linux.dev" <oliver.upton@linux.dev>, 
-	"jean-philippe@linaro.org" <jean-philippe@linaro.org>, "lpieralisi@kernel.org" <lpieralisi@kernel.org>, 
-	"david@redhat.com" <david@redhat.com>, "philmd@linaro.org" <philmd@linaro.org>, 
-	"andrew.jones@linux.dev" <andrew.jones@linux.dev>, "eric.auger@redhat.com" <eric.auger@redhat.com>, 
-	"npiggin@gmail.com" <npiggin@gmail.com>, "harshpb@linux.ibm.com" <harshpb@linux.ibm.com>, 
-	"linux@armlinux.org.uk" <linux@armlinux.org.uk>, 
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>, 
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>, 
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>, 
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com" <miguel.luis@oracle.com>, 
-	"salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>, zhukeqian <zhukeqian1@huawei.com>, 
-	"wangxiongfeng (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>, 
-	"jiakernel2@gmail.com" <jiakernel2@gmail.com>, "maobibo@loongson.cn" <maobibo@loongson.cn>, 
-	"lixianglai@loongson.cn" <lixianglai@loongson.cn>, "shahuang@redhat.com" <shahuang@redhat.com>, 
-	"zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm <linuxarm@huawei.com>, 
-	"gustavo.romero@linaro.org" <gustavo.romero@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 3IzAwU8YxU03
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.126.170.112]
+X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
+ frapeml500007.china.huawei.com (7.182.85.172)
+X-TUID: w62mGqyF2C9E
 
-On Tue, 5 Nov 2024 at 22:20, Salil Mehta <salil.mehta@huawei.com> wrote:
->
-> HI Peter,
->
-> >  From: Peter Maydell <peter.maydell@linaro.org>
-> >  Sent: Monday, November 4, 2024 1:27 PM
-> >  To: Salil Mehta <salil.mehta@huawei.com>
-> >
-> >  On Sun, 3 Nov 2024 at 15:25, Salil Mehta <salil.mehta@huawei.com> wrote:
-> >  >
-> >  > Extract common GIC and CPU interrupt wiring code to improve code
-> >  > readability and modularity, supporting reuse in future patch sets.
-> >  > This refactor is benign and introduces *no* functional changes.
-> >  >
-> >  > Note: This patch has been isolated from a larger patch set to
-> >  > facilitate early merging and reduce the complexity of the original
-> >  > set, as it operates independently. All original tags and author
-> >  > contributions are retained.
-> >
-> >  I would prefer to see refactoring patches in the context of the series that
-> >  makes them necessary. As it stands, there doesn't really seem to be much
-> >  benefit to this change.
->
->
-> Ok no issues. Just to confirm, your above comment is just specific to this patch
-> or all the 3 individual patches I had sent for review?
+Fixes the the CPUs AML code and its corresponding golden masters ACPI
+tables files for backward compatability of live migration on x86 platforms
+i.e. when newer Qemu is migrated to older Qemu without `CPRS` Bit present
+in the register block.
 
-It applies to all of them (and as a general principle).
+Fixes [PULL 60/65], [PULL 61/65]:
+Message-ID: <bf1ecc8dad6061914730a2a2d57af6b37c3a4f8d.1730754238.git.mst@redhat.com>
+Message-ID: <4d62d15b11909e9af121577e707b88f2e4524371.1730754238.git.mst@redhat.com>
 
-thanks
--- PMM
+Salil Mehta (3):
+  qtest: allow ACPI DSDT Table changes
+  Fix: Reverse CPUs presence check logic for x86 backward compatability
+  tests/qtest/bios-tables-test: Fix DSDT golden masters for x86/{pc,q35}
+
+ hw/acpi/cpu.c                                 |  22 +++++++++---------
+ tests/data/acpi/x86/pc/DSDT                   | Bin 8561 -> 8561 bytes
+ tests/data/acpi/x86/pc/DSDT.acpierst          | Bin 8472 -> 8472 bytes
+ tests/data/acpi/x86/pc/DSDT.acpihmat          | Bin 9886 -> 9886 bytes
+ tests/data/acpi/x86/pc/DSDT.bridge            | Bin 15432 -> 15432 bytes
+ tests/data/acpi/x86/pc/DSDT.cphp              | Bin 9025 -> 9025 bytes
+ tests/data/acpi/x86/pc/DSDT.dimmpxm           | Bin 10215 -> 10215 bytes
+ tests/data/acpi/x86/pc/DSDT.hpbridge          | Bin 8512 -> 8512 bytes
+ tests/data/acpi/x86/pc/DSDT.hpbrroot          | Bin 5068 -> 5068 bytes
+ tests/data/acpi/x86/pc/DSDT.ipmikcs           | Bin 8633 -> 8633 bytes
+ tests/data/acpi/x86/pc/DSDT.memhp             | Bin 9920 -> 9920 bytes
+ tests/data/acpi/x86/pc/DSDT.nohpet            | Bin 8419 -> 8419 bytes
+ tests/data/acpi/x86/pc/DSDT.numamem           | Bin 8567 -> 8567 bytes
+ tests/data/acpi/x86/pc/DSDT.roothp            | Bin 12354 -> 12354 bytes
+ tests/data/acpi/x86/q35/DSDT                  | Bin 8389 -> 8389 bytes
+ tests/data/acpi/x86/q35/DSDT.acpierst         | Bin 8406 -> 8406 bytes
+ tests/data/acpi/x86/q35/DSDT.acpihmat         | Bin 9714 -> 9714 bytes
+ .../acpi/x86/q35/DSDT.acpihmat-noinitiator    | Bin 8668 -> 8668 bytes
+ tests/data/acpi/x86/q35/DSDT.applesmc         | Bin 8435 -> 8435 bytes
+ tests/data/acpi/x86/q35/DSDT.bridge           | Bin 12002 -> 12002 bytes
+ tests/data/acpi/x86/q35/DSDT.core-count       | Bin 12947 -> 12947 bytes
+ tests/data/acpi/x86/q35/DSDT.core-count2      | Bin 33804 -> 33804 bytes
+ tests/data/acpi/x86/q35/DSDT.cphp             | Bin 8853 -> 8853 bytes
+ tests/data/acpi/x86/q35/DSDT.cxl              | Bin 13182 -> 13182 bytes
+ tests/data/acpi/x86/q35/DSDT.dimmpxm          | Bin 10043 -> 10043 bytes
+ tests/data/acpi/x86/q35/DSDT.ipmibt           | Bin 8464 -> 8464 bytes
+ tests/data/acpi/x86/q35/DSDT.ipmismbus        | Bin 8477 -> 8477 bytes
+ tests/data/acpi/x86/q35/DSDT.ivrs             | Bin 8406 -> 8406 bytes
+ tests/data/acpi/x86/q35/DSDT.memhp            | Bin 9748 -> 9748 bytes
+ tests/data/acpi/x86/q35/DSDT.mmio64           | Bin 9519 -> 9519 bytes
+ tests/data/acpi/x86/q35/DSDT.multi-bridge     | Bin 13242 -> 13242 bytes
+ tests/data/acpi/x86/q35/DSDT.noacpihp         | Bin 8269 -> 8269 bytes
+ tests/data/acpi/x86/q35/DSDT.nohpet           | Bin 8247 -> 8247 bytes
+ tests/data/acpi/x86/q35/DSDT.numamem          | Bin 8395 -> 8395 bytes
+ tests/data/acpi/x86/q35/DSDT.pvpanic-isa      | Bin 8490 -> 8490 bytes
+ tests/data/acpi/x86/q35/DSDT.thread-count     | Bin 12947 -> 12947 bytes
+ tests/data/acpi/x86/q35/DSDT.thread-count2    | Bin 33804 -> 33804 bytes
+ tests/data/acpi/x86/q35/DSDT.tis.tpm12        | Bin 8995 -> 8995 bytes
+ tests/data/acpi/x86/q35/DSDT.tis.tpm2         | Bin 9021 -> 9021 bytes
+ tests/data/acpi/x86/q35/DSDT.type4-count      | Bin 18623 -> 18623 bytes
+ tests/data/acpi/x86/q35/DSDT.viot             | Bin 14649 -> 14649 bytes
+ tests/data/acpi/x86/q35/DSDT.xapic            | Bin 35752 -> 35752 bytes
+ 42 files changed, 11 insertions(+), 11 deletions(-)
+
+-- 
+2.34.1

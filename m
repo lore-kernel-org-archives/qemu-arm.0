@@ -1,51 +1,51 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3493607njc;
-        Wed, 6 Nov 2024 05:04:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVHdti5rPmHAa1kHsCduf4zQoYKGnG6NSXgRvG3Dpemw9XWI0jYISU4MpZ0N9i2hacSFWRHpJr3q7eGFw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFSG6/iJH6LW8I3aEUeeFb+55SXWloKH/nBevrGqd/64JEbRmRWJR1x3tIyVBCasFSKzASz
-X-Received: by 2002:a05:690c:c14:b0:6dd:fb47:2184 with SMTP id 00721157ae682-6ea64aec9bfmr196862617b3.13.1730898253118;
-        Wed, 06 Nov 2024 05:04:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730898253; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3493802njc;
+        Wed, 6 Nov 2024 05:04:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUASvjKhWdO4s7C9h0TZ59wHtE4xHFz7bd8bpLXFB8aLLI8zaAVfkn9l7WhekNUe87AyOrwI5u0z8v+6A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHh9oyWV86YJmJ+mEyHdyHC1v2r7mACr+5BIGBZcnW4mtizQqaFsZunB+drYHjSl0u5QUUd
+X-Received: by 2002:a05:600c:4691:b0:431:4e25:fe42 with SMTP id 5b1f17b1804b1-4319ad24a5cmr353390205e9.32.1730898267518;
+        Wed, 06 Nov 2024 05:04:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730898267; cv=none;
         d=google.com; s=arc-20240605;
-        b=JbUCrpLKI4B/4CDHaeV+CN5n54TTDZbhRVnXYgFSWGSQMU7oQZtCvu+y9zA9fd42Qs
-         VM0WvIBQfxtvFs1YL2hXMF3AZG1tX7IEp0wzSZuWXoOaZx+wRvJXRvO6Du+n5y7llZ+5
-         2mBR2wmEQkm+O1kFSV5pCgFR7iSOZMfTMhkdgGZMiX7JO5/2QirSKEmSKc30fzHm0dAY
-         c9Rvsp8RFgfnS7f63bk1Ujnb3Wyzd1Hpi3XfHuZlJP987TuukUCNaXw6KNzjJ1fZZNhx
-         sI2DMAaAchMiJwdP9A8JH13rHp17xu5U26ALFlOTv4JXUmFOdqq0rGwzkPXI4udMdkJ+
-         GvtQ==
+        b=NeFAyB5IpYKT4OB3phC1RinTGvFVKFEcmttpLnewx6DGOjkKbX48Kqif7jLEpM3A0Z
+         N5lV7jQXulm3vmeDA5VOPUIvR9CMVsBXlKSzXQlAcNV9wQ9+5wrabZLs0PlARRe13c00
+         tCb1/wpZv528cwSz0jFRjyjaGUxz8i6NtPl37ogyg77DhnE82Dw1PtPoGj5TUthjpyLD
+         z632k0HDPfsDzvqUc590tYNcitbVqFuHPT0I2rubJXEGMJYe5KOqErmUH927ReVE3nje
+         CcSC9FbV0beXAji7ePv1/LvYY6S3knc27DguAJKqT6hqKpw/NXEEMCsOCboEdyGWZnTv
+         fpOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=wcUBrxsFtJnUOTyz+tm/W38EHZOrl2HL/UE+MnpkNlA=;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=zoGAge3NNc2l2OYbk7DrC6lUB/HWMMEBkCjVJ5sqCio=;
         fh=r8ajd3FUMdtDxzqs0wLEINYA6psD113amket9C+CNXU=;
-        b=T1H8vZjhfcjIrBYfkTcQwLNheiQSfouAX4Vsh4SJZOVUxYHQ7DSN4DrGLS68oXnpgY
-         QQWSMHAUURnZmeAxxuPE/kYGUrEISKd/EiV/F2vhKgYiHwKHt3ggqmoaxqZqeA814NgZ
-         3GpUCaRa3h6cNRI8+HHk6uqaNb1in03X58b0ALpwyF9RK9i4brKRg/n1NNkN536XmcwE
-         fbPdtyZ4iDMbij9+PTngP39hl7PSF56cSxJL5aThJTCiIafiVcEepVRKW8SmLe8ezkUX
-         XjqIj9cNo0ZbcvVS6g9fxpKpAjBahRuhJq3HwRtnBqKfDE+PCyI0xWZ/I6cqkly0R1cu
-         zrPA==;
+        b=cm8RgOlUqoqtV0StwtQlP9WsoQae0xCK/zCrQ0wqlgJn5IL7kmV6lb3aO16u1R96xW
+         RDJLJC7RTfMj/Bw8KvdQ7eJIzQnvMfdjX0qWkapaV8biHbGOjOmM1cmq6WRRgfPLdZqv
+         s4kuFtMNQiiZF8dzBlBehvT8lou9Egpk9uTbQAGoWjrSrP1VQ+YNvRTOKyBtOtX43Zzx
+         hIvTo0bKHfPAqtM7EBDB/qOwOgN4WKqgjb2NHHnZPdJhUBfmLselpBEsE3296ylgzwe2
+         VAZ58D6tB7vSrOI3eNsCwfXhyNIsSJSeBqCvl3/E7n9gIm8Uluci1EwQ5drB5Q5AUtX6
+         ejsg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Return-Path: <salil.mehta@huawei.com>
 Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 00721157ae682-6ea8d22e6a9si67480077b3.218.2024.11.06.05.04.12
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-432aa756012si9283815e9.205.2024.11.06.05.04.27
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Nov 2024 05:04:13 -0800 (PST)
+        Wed, 06 Nov 2024 05:04:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xk54m51Kmz6LDWB;
-	Wed,  6 Nov 2024 21:04:08 +0800 (CST)
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xk51t4r2qz6K6vm;
+	Wed,  6 Nov 2024 21:01:38 +0800 (CST)
 Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
-	by mail.maildlp.com (Postfix) with ESMTPS id 33A2214011D;
-	Wed,  6 Nov 2024 21:04:11 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id EAB23140B33;
+	Wed,  6 Nov 2024 21:04:25 +0800 (CST)
 Received: from 00293818-MRGF.huawei.com (10.126.170.112) by
  frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 6 Nov 2024 14:03:56 +0100
+ 15.1.2507.39; Wed, 6 Nov 2024 14:04:11 +0100
 From: Salil Mehta <salil.mehta@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>,
 	<imammedo@redhat.com>
@@ -60,75 +60,75 @@ CC: <salil.mehta@huawei.com>, <jonathan.cameron@huawei.com>,
 	<miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
 	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>, <zhao1.liu@intel.com>,
 	<linuxarm@huawei.com>, <gustavo.romero@linaro.org>
-Subject: [PATCH 0/3] Fixes CPUs AML & acpi-bios-tables to be x86 backward compatible 
-Date: Wed, 6 Nov 2024 13:03:28 +0000
-Message-ID: <20241106130331.205020-1-salil.mehta@huawei.com>
+Subject: [PATCH 1/3] qtest: allow ACPI DSDT Table changes
+Date: Wed, 6 Nov 2024 13:03:29 +0000
+Message-ID: <20241106130331.205020-2-salil.mehta@huawei.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20241106130331.205020-1-salil.mehta@huawei.com>
+References: <20241106130331.205020-1-salil.mehta@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.126.170.112]
 X-ClientProxiedBy: dggems705-chm.china.huawei.com (10.3.19.182) To
  frapeml500007.china.huawei.com (7.182.85.172)
-X-TUID: w62mGqyF2C9E
+X-TUID: Wx9aGklwFJu3
 
-Fixes the the CPUs AML code and its corresponding golden masters ACPI
-tables files for backward compatability of live migration on x86 platforms
-i.e. when newer Qemu is migrated to older Qemu without `CPRS` Bit present
-in the register block.
+list changed files in tests/qtest/bios-tables-test-allowed-diff.h
 
-Fixes [PULL 60/65], [PULL 61/65]:
-Message-ID: <bf1ecc8dad6061914730a2a2d57af6b37c3a4f8d.1730754238.git.mst@redhat.com>
-Message-ID: <4d62d15b11909e9af121577e707b88f2e4524371.1730754238.git.mst@redhat.com>
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Message-ID: <20241106100047.18901c9d@imammedo.users.ipa.redhat.com>
+Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
+---
+ tests/qtest/bios-tables-test-allowed-diff.h | 41 +++++++++++++++++++++
+ 1 file changed, 41 insertions(+)
 
-Salil Mehta (3):
-  qtest: allow ACPI DSDT Table changes
-  Fix: Reverse CPUs presence check logic for x86 backward compatability
-  tests/qtest/bios-tables-test: Fix DSDT golden masters for x86/{pc,q35}
-
- hw/acpi/cpu.c                                 |  22 +++++++++---------
- tests/data/acpi/x86/pc/DSDT                   | Bin 8561 -> 8561 bytes
- tests/data/acpi/x86/pc/DSDT.acpierst          | Bin 8472 -> 8472 bytes
- tests/data/acpi/x86/pc/DSDT.acpihmat          | Bin 9886 -> 9886 bytes
- tests/data/acpi/x86/pc/DSDT.bridge            | Bin 15432 -> 15432 bytes
- tests/data/acpi/x86/pc/DSDT.cphp              | Bin 9025 -> 9025 bytes
- tests/data/acpi/x86/pc/DSDT.dimmpxm           | Bin 10215 -> 10215 bytes
- tests/data/acpi/x86/pc/DSDT.hpbridge          | Bin 8512 -> 8512 bytes
- tests/data/acpi/x86/pc/DSDT.hpbrroot          | Bin 5068 -> 5068 bytes
- tests/data/acpi/x86/pc/DSDT.ipmikcs           | Bin 8633 -> 8633 bytes
- tests/data/acpi/x86/pc/DSDT.memhp             | Bin 9920 -> 9920 bytes
- tests/data/acpi/x86/pc/DSDT.nohpet            | Bin 8419 -> 8419 bytes
- tests/data/acpi/x86/pc/DSDT.numamem           | Bin 8567 -> 8567 bytes
- tests/data/acpi/x86/pc/DSDT.roothp            | Bin 12354 -> 12354 bytes
- tests/data/acpi/x86/q35/DSDT                  | Bin 8389 -> 8389 bytes
- tests/data/acpi/x86/q35/DSDT.acpierst         | Bin 8406 -> 8406 bytes
- tests/data/acpi/x86/q35/DSDT.acpihmat         | Bin 9714 -> 9714 bytes
- .../acpi/x86/q35/DSDT.acpihmat-noinitiator    | Bin 8668 -> 8668 bytes
- tests/data/acpi/x86/q35/DSDT.applesmc         | Bin 8435 -> 8435 bytes
- tests/data/acpi/x86/q35/DSDT.bridge           | Bin 12002 -> 12002 bytes
- tests/data/acpi/x86/q35/DSDT.core-count       | Bin 12947 -> 12947 bytes
- tests/data/acpi/x86/q35/DSDT.core-count2      | Bin 33804 -> 33804 bytes
- tests/data/acpi/x86/q35/DSDT.cphp             | Bin 8853 -> 8853 bytes
- tests/data/acpi/x86/q35/DSDT.cxl              | Bin 13182 -> 13182 bytes
- tests/data/acpi/x86/q35/DSDT.dimmpxm          | Bin 10043 -> 10043 bytes
- tests/data/acpi/x86/q35/DSDT.ipmibt           | Bin 8464 -> 8464 bytes
- tests/data/acpi/x86/q35/DSDT.ipmismbus        | Bin 8477 -> 8477 bytes
- tests/data/acpi/x86/q35/DSDT.ivrs             | Bin 8406 -> 8406 bytes
- tests/data/acpi/x86/q35/DSDT.memhp            | Bin 9748 -> 9748 bytes
- tests/data/acpi/x86/q35/DSDT.mmio64           | Bin 9519 -> 9519 bytes
- tests/data/acpi/x86/q35/DSDT.multi-bridge     | Bin 13242 -> 13242 bytes
- tests/data/acpi/x86/q35/DSDT.noacpihp         | Bin 8269 -> 8269 bytes
- tests/data/acpi/x86/q35/DSDT.nohpet           | Bin 8247 -> 8247 bytes
- tests/data/acpi/x86/q35/DSDT.numamem          | Bin 8395 -> 8395 bytes
- tests/data/acpi/x86/q35/DSDT.pvpanic-isa      | Bin 8490 -> 8490 bytes
- tests/data/acpi/x86/q35/DSDT.thread-count     | Bin 12947 -> 12947 bytes
- tests/data/acpi/x86/q35/DSDT.thread-count2    | Bin 33804 -> 33804 bytes
- tests/data/acpi/x86/q35/DSDT.tis.tpm12        | Bin 8995 -> 8995 bytes
- tests/data/acpi/x86/q35/DSDT.tis.tpm2         | Bin 9021 -> 9021 bytes
- tests/data/acpi/x86/q35/DSDT.type4-count      | Bin 18623 -> 18623 bytes
- tests/data/acpi/x86/q35/DSDT.viot             | Bin 14649 -> 14649 bytes
- tests/data/acpi/x86/q35/DSDT.xapic            | Bin 35752 -> 35752 bytes
- 42 files changed, 11 insertions(+), 11 deletions(-)
-
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..512d40665d 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,42 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/x86/pc/DSDT",
++"tests/data/acpi/x86/pc/DSDT.acpierst",
++"tests/data/acpi/x86/pc/DSDT.acpihmat",
++"tests/data/acpi/x86/pc/DSDT.bridge",
++"tests/data/acpi/x86/pc/DSDT.cphp",
++"tests/data/acpi/x86/pc/DSDT.dimmpxm",
++"tests/data/acpi/x86/pc/DSDT.hpbridge",
++"tests/data/acpi/x86/pc/DSDT.hpbrroot",
++"tests/data/acpi/x86/pc/DSDT.ipmikcs",
++"tests/data/acpi/x86/pc/DSDT.memhp",
++"tests/data/acpi/x86/pc/DSDT.nohpet",
++"tests/data/acpi/x86/pc/DSDT.numamem",
++"tests/data/acpi/x86/pc/DSDT.roothp",
++"tests/data/acpi/x86/q35/DSDT",
++"tests/data/acpi/x86/q35/DSDT.acpierst",
++"tests/data/acpi/x86/q35/DSDT.acpihmat",
++"tests/data/acpi/x86/q35/DSDT.acpihmat-noinitiator",
++"tests/data/acpi/x86/q35/DSDT.applesmc",
++"tests/data/acpi/x86/q35/DSDT.bridge",
++"tests/data/acpi/x86/q35/DSDT.core-count",
++"tests/data/acpi/x86/q35/DSDT.core-count2",
++"tests/data/acpi/x86/q35/DSDT.cphp",
++"tests/data/acpi/x86/q35/DSDT.cxl",
++"tests/data/acpi/x86/q35/DSDT.dimmpxm",
++"tests/data/acpi/x86/q35/DSDT.ipmibt",
++"tests/data/acpi/x86/q35/DSDT.ipmismbus",
++"tests/data/acpi/x86/q35/DSDT.ivrs",
++"tests/data/acpi/x86/q35/DSDT.memhp",
++"tests/data/acpi/x86/q35/DSDT.mmio64",
++"tests/data/acpi/x86/q35/DSDT.multi-bridge",
++"tests/data/acpi/x86/q35/DSDT.noacpihp",
++"tests/data/acpi/x86/q35/DSDT.nohpet",
++"tests/data/acpi/x86/q35/DSDT.numamem",
++"tests/data/acpi/x86/q35/DSDT.pvpanic-isa",
++"tests/data/acpi/x86/q35/DSDT.thread-count",
++"tests/data/acpi/x86/q35/DSDT.thread-count2",
++"tests/data/acpi/x86/q35/DSDT.tis.tpm12",
++"tests/data/acpi/x86/q35/DSDT.tis.tpm2",
++"tests/data/acpi/x86/q35/DSDT.type4-count",
++"tests/data/acpi/x86/q35/DSDT.viot",
++"tests/data/acpi/x86/q35/DSDT.xapic",
 -- 
 2.34.1

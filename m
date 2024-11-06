@@ -1,289 +1,510 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3620419njc;
-        Wed, 6 Nov 2024 08:07:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVs5anSiirE+r5R2s5r85n5i7g86CH5u9YlciXcjbK5pmSD/lqOzpCH/dw3i5h0ouf7ghCfa4uPkIs/Ag==@linaro.org
-X-Google-Smtp-Source: AGHT+IHXeXti8y9uBwB1LOWWhZmAfsNVdvBPFTjDGMnBg7r+bEBQecIeDr702+rAI4XnSoFxjFAP
-X-Received: by 2002:a05:622a:20f:b0:462:a961:6316 with SMTP id d75a77b69052e-462f1013172mr49531671cf.26.1730909260463;
-        Wed, 06 Nov 2024 08:07:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730909260; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3690000njc;
+        Wed, 6 Nov 2024 09:50:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUYkFK/IzqZhkiM1Y6jZjuOJIiKInwvlIzQuCEPONxFYj4OA+XvapZ5paI7IdDncT1bwzh8t1aFWuu7jw==@linaro.org
+X-Google-Smtp-Source: AGHT+IF2dFlyXNQU3ioLUm8GGfoEAxvRRGdeBEpQnBbBYmBsXsSfWST7NK7xe71GX1I35VNYtUtA
+X-Received: by 2002:a05:6214:5905:b0:6cc:364f:fc32 with SMTP id 6a1803df08f44-6d35c19bd12mr288592236d6.32.1730915457810;
+        Wed, 06 Nov 2024 09:50:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730915457; cv=none;
         d=google.com; s=arc-20240605;
-        b=MKUHPMHga2bMs3NF6J+5uuWRWDsCDA2M+iIg6rf63BxsLxJh0fTpmFgtlWYkfflvFe
-         C3WsFxhfrJSEB3+gWZtZDDU132N7/JqO/vxVWhp8AH1DY61+ueAJ1cJpVLe70+1wGj8w
-         9GOR3eJwMm12dGCisdnwcViMSvH0SCaAaj+VQ+cvifPWJZj4mLUaC9UyQ5ur76P8vds2
-         9ulVa/g/uiDZ1tYXGBfhqJbljdh6hdZjzLRmWqGW1AaGy1SXGByQL6nocyt3D1d2ZQ7z
-         MUzlPnzfSSeJ32rEZN7/1veBA4HvyVVtOyJEr6RZisSkFxr+AQEA8nnUclU84eV1bJTH
-         teDA==
+        b=SzwcJ7vDRSw9hBflr/CiTlgEkTvO6OhWr6yc4LgdVaiD14c3A1ri5eOZusJO0GkAGF
+         pvNgJmAl0wxts+z9S8BO1pez03rq/ecEeH5jcRjLKTHkxHjBkZDLvYTO4YguBhJYhY++
+         zvxxg36orguuh6CRTInSdcJk3nq1UIZzY71MuBWK1A0fk3TVPowCi5VRU4LcnBP945No
+         q6fss/RvZvbIvBh4S5Eb0L7ko8vGRbNqfyw7uUoghJ88aLXB3ga4nmOaLpEbc7uGWost
+         hKIyLRhFBwREFh5U6M6PAIhCzaXiV95UMnuSOQbHuY8V6m2yDu3BFNpL6Aphqd4WAzmY
+         HZtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=OO+1Xz9kPoxa2BLbOM9BMqtCrXow0wDqno+akvmyg1o=;
-        fh=dYaH8Ews8VphbsQ333M7FfdNbnaZky4S5BG2mol2bFU=;
-        b=jyhV+vA4NW7XSpyAgiNe86Z1Z51p2DfeVYBQjk8LByiT2ttR6BVVhQmQoGrLJ+uZqs
-         zbXn4cFoSxLbo9zyW3H8zMKf5gyj3E60z+AbMjrZ8XLYAtzrEf1c4aJPO2PjzXxTES2+
-         /pNU8+nKAwPvy4lGyX+ZmIVpF+gFNaOKHiZ34SgyNDklQzDSxtbIjSTLJFbSZL1DfcOn
-         8cAGHpE+s2YZccF8kqeanwAMLmZnZPtLysoeHf6p6Twpm/Y4H5HiqxpDJeKTjzDN94vf
-         7RItXDu5g1h/tsbjviQ6EreMIBiHSjR2+0kSWw2ymRA0zM9gloN8lM8/biRzHDYgXSy1
-         WQKg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gzsEA5SZ4N6AwUu4rrEMQcdkP/A16EOGxPXq3szFpKk=;
+        fh=wSBGoxbHvuLoGQKmkxT5RprtF0ZYbOQa17OrnkuHkTM=;
+        b=lgyZ4ZRIUKAk5XHPUNURi/rNQVrH4sKnBbl8m3W/NBKZdrg7qJHBnVQIxQRJj/RoSL
+         b5rHeIfzaC28N+Cwep99N156T9WTbed8gk9Lj8VVMOLw/NK8y0ux5pz85qO7wJtflkiI
+         XLhuLICf6kjJUK07j33UaAzE9Qn1qdAk4lW/kNEFbsjq2b84EVGDm2+MELkkD/eV9oIx
+         7iWCfA8SEKBMYzVPkBT5K6Vyye3NFM3Z8E1JZfBcbhV1BowszobrxnBbg83I7gxFcHEE
+         sdyRXjDifm8QFRlUKJj+FxFtLk9rXaB8RWRIUNZhWbrOvCgJ6yglcMrGDTfVIRKPvS0Q
+         zLHw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O7tnH7Fs;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="f/JUn16w";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ad0b257esi159935511cf.24.2024.11.06.08.07.40
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d354180341si181086766d6.361.2024.11.06.09.50.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Nov 2024 08:07:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 06 Nov 2024 09:50:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=O7tnH7Fs;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="f/JUn16w";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t8kB4-0002Xh-AT; Wed, 06 Nov 2024 12:50:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t8kB2-0002Wk-Em
+ for qemu-devel@nongnu.org; Wed, 06 Nov 2024 12:50:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t8kAz-0000aK-Pc
+ for qemu-devel@nongnu.org; Wed, 06 Nov 2024 12:50:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1730909259;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=OO+1Xz9kPoxa2BLbOM9BMqtCrXow0wDqno+akvmyg1o=;
-	b=O7tnH7Fs//2agHaoXQ0Pp4W7eGg7P8uMu+54M2DTgzqXnrVTCxh0yQErVp815Vnmst7u2m
-	aNH+cBi57rxsOsrWvMh8oaknY0n8KuPespSo4wgtBYxz/kqZjsDKOAKAb11lFmjXOk2wnm
-	0qvGiNjQF7aTkxb9QgCI+/lcNE6fwEY=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-491-M68_qiLBP06hNRMQPttt9Q-1; Wed, 06 Nov 2024 11:07:38 -0500
-X-MC-Unique: M68_qiLBP06hNRMQPttt9Q-1
-X-Mimecast-MFC-AGG-ID: M68_qiLBP06hNRMQPttt9Q
-Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-37d67f4bf98so3100432f8f.1
-        for <alex.bennee@linaro.org>; Wed, 06 Nov 2024 08:07:38 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1730909257; x=1731514057;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=OO+1Xz9kPoxa2BLbOM9BMqtCrXow0wDqno+akvmyg1o=;
-        b=Vjn+IIqOmCw/qwz13Sh2niGETDPf+tq4FYlT083LuNjgALAIlD9dARhnurHQZgF7Ji
-         7m9RgXCvpUeYY2cQehYOsmk8N6hu0G27aBik4Msa3Nz8WEVTWzLUFvNj9WUAhH2YNlvi
-         jRSStwJrgIonCL6UaHGlfKwP72tLrTqRiLwKzZ5BPDS+DEx2y3SghXJYxD5KVlSIYNCC
-         nQhjO2/itwgnyLsMLHqMT38foiobKbsCKFMS79cY70rsTqCwzwFQsDVYgz9s2ygpE0z1
-         sGzISkOZi4LGFG9qS0d1Y9Mkv7SEnGdMdfe7nhz+PzRPtR4NJaXfnoENEGzaNEhIEIBr
-         Y3nA==
-X-Forwarded-Encrypted: i=1; AJvYcCUu9ks9i/DPi7lyt+CtKirlTKG3zwg7/DVdtnBfQ3vYyHKJRDJ5LnGkSMQAIgNeufEku/iHDxnJtxLvEw==@linaro.org
-X-Gm-Message-State: AOJu0YwKDqxkQP0Bh7dZqROKTU5ovmrNYbpJuJjbqYWEpLineDUDzPZ3
-	mkNkqk391eqg0zxTpqcvd0xL91em+t7mko9DorTZCQ5iuMldwSP3KDA4ly8Pop1cngXlxtsROr8
-	u8RxGc6Y/BD8DvfHjqS59ZdS5+vjBaxQop1Zvrcuy74vFlsNOOVAUJQ==
-X-Received: by 2002:a5d:4cd0:0:b0:376:37e:2729 with SMTP id ffacd0b85a97d-3806115ae83mr26848932f8f.31.1730909257408;
-        Wed, 06 Nov 2024 08:07:37 -0800 (PST)
-X-Received: by 2002:a5d:4cd0:0:b0:376:37e:2729 with SMTP id ffacd0b85a97d-3806115ae83mr26848893f8f.31.1730909256927;
-        Wed, 06 Nov 2024 08:07:36 -0800 (PST)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381c113de0esm19679552f8f.85.2024.11.06.08.07.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 Nov 2024 08:07:36 -0800 (PST)
-Date: Wed, 6 Nov 2024 17:07:34 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Salil Mehta <salil.mehta@huawei.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, Jonathan Cameron
- <jonathan.cameron@huawei.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, "anisinha@redhat.com"
- <anisinha@redhat.com>, "eduardo@habkost.net" <eduardo@habkost.net>,
- "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
- "david@redhat.com" <david@redhat.com>, "philmd@linaro.org"
- <philmd@linaro.org>, "peterx@redhat.com" <peterx@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "gshan@redhat.com"
- <gshan@redhat.com>, "borntraeger@linux.ibm.com"
- <borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
- <alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
- "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
- "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
- "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
- "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
- "miguel.luis@oracle.com" <miguel.luis@oracle.com>, "salil.mehta@opnsrc.net"
- <salil.mehta@opnsrc.net>, zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng
- (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
- "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm
- <linuxarm@huawei.com>, "gustavo.romero@linaro.org"
- <gustavo.romero@linaro.org>
-Subject: Re: [PATCH 2/3] Fix: Reverse CPUs presence check logic for x86
- backward compatability
-Message-ID: <20241106170734.0c7a5adb@imammedo.users.ipa.redhat.com>
-In-Reply-To: <28a19ad7554e4b70819e1435669eeba3@huawei.com>
-References: <20241106130331.205020-1-salil.mehta@huawei.com>
-	<20241106130331.205020-3-salil.mehta@huawei.com>
-	<20241106145635.77332d7c@imammedo.users.ipa.redhat.com>
-	<28a19ad7554e4b70819e1435669eeba3@huawei.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ s=mimecast20190719; t=1730915440;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=gzsEA5SZ4N6AwUu4rrEMQcdkP/A16EOGxPXq3szFpKk=;
+ b=f/JUn16wcOQNBzQF274Elko2Pi5nsVqJTOkti/2I49dbvXkq+58OOC8CtlODoumT0tcbVX
+ Mg7M5bh00wEibtGt4UMrXFd+4ohLYhrLalhDm+qEmGVsH/JyBji8ZLlP5+oLbqE8I/q4HP
+ 3yJ+qzkvNuLzqY+cKzeEqVueMmTr/oc=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-49-gtDeCROwO5qXp01ochfHqQ-1; Wed,
+ 06 Nov 2024 12:50:37 -0500
+X-MC-Unique: gtDeCROwO5qXp01ochfHqQ-1
+X-Mimecast-MFC-AGG-ID: gtDeCROwO5qXp01ochfHqQ
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D9A861977024; Wed,  6 Nov 2024 17:50:33 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.5])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id E54041956054; Wed,  6 Nov 2024 17:50:30 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH] tests/functional: Split the test_aarch64_sbsaref test
+Date: Wed,  6 Nov 2024 18:50:28 +0100
+Message-ID: <20241106175029.1000589-1-thuth@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ZO1RxP5GNnO96iOxJ0YouMfEaVtaOpjfxf67yyuuPFg_1730909257
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: /9k6C7s+47/T
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5MzvZVF4qdGi
 
-On Wed, 6 Nov 2024 14:45:42 +0000
-Salil Mehta <salil.mehta@huawei.com> wrote:
+The test_aarch64_sbsaref test is the test with the longest runtime
+in our functional test suite. Split it into parts so that it can
+be run on multiple CPUs in parallel.
 
-> Hi Igor,
-> 
-> >  From: qemu-arm-bounces+salil.mehta=huawei.com@nongnu.org <qemu-
-> >  arm-bounces+salil.mehta=huawei.com@nongnu.org> On Behalf Of Igor
-> >  Mammedov
-> >  Sent: Wednesday, November 6, 2024 1:57 PM
-> >  To: Salil Mehta <salil.mehta@huawei.com>
-> >  
-> >  On Wed, 6 Nov 2024 13:03:30 +0000
-> >  Salil Mehta <salil.mehta@huawei.com> wrote:
-> >    
-> >  > Checking `is_present` first can break x86 migration from new Qemu
-> >  > version to old Qemu. This is because CPRS Bit is not defined in the
-> >  > older Qemu register block and will always be 0 resulting in check
-> >  > always failing. Reversing the logic to first check `is_enabled` can
-> >  > alleviate below problem:
-> >  >
-> >  > -                If ((\_SB.PCI0.PRES.CPEN == One))
-> >  > -                {
-> >  > -                    Local0 = 0x0F
-> >  > +                If ((\_SB.PCI0.PRES.CPRS == One))
-> >  > +                {
-> >  > +                    If ((\_SB.PCI0.PRES.CPEN == One))
-> >  > +                    {
-> >  > +                        Local0 = 0x0F
-> >  > +                    }
-> >  > +                    Else
-> >  > +                    {
-> >  > +                        Local0 = 0x0D
-> >  > +                    }
-> >  >                  }
-> >  >
-> >  > Suggested-by: Igor Mammedov <imammedo@redhat.com>  
-> >  'Reported-by' maybe, but certainly not suggested.  
-> 
-> 
-> No issues. I can change.
-> 
-> 
-> >  
-> >  After more thinking and given presence is system wide that doesn't change
-> >  at runtime, I don't see any reason for introducing presence bit as ABI (and
-> >  undocumented on top of that).  
-> 
-> 
-> This is a wrong assumption. Presence bit can change in future. We have taken
-> into account this aspect by design in the kernel code as well. Both virtual
+For this we have to move the fetch_firmware() function out of the
+class definition to be able to reuse it easily from the other tests
+(deriving the Aarch64SbsarefAlpine and Aarch64SbsarefFreeBSD directly
+from Aarch64SbsarefMachine does not work, unfortunately, since we'd
+inherit the test_sbsaref_edk2_firmware() function that way, causing
+it to be run multiple times - and keeping the fetch_firmware() in
+a separate class without the test_sbsaref_edk2_firmware() function
+also does not work since the "make precache-functional" won't work
+in that case ==> turning fetch_firmware() into a static function is
+the best option).
 
-Above does imply that support for really hotpluggable CPUs might be implemented
-in the future.
-Can you point to relevant kernel code/patches?
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ MAINTAINERS                                   |   2 +-
+ tests/functional/meson.build                  |   5 +-
+ tests/functional/test_aarch64_sbsaref.py      | 159 ++++--------------
+ .../functional/test_aarch64_sbsaref_alpine.py |  64 +++++++
+ .../test_aarch64_sbsaref_freebsd.py           |  66 ++++++++
+ 5 files changed, 172 insertions(+), 124 deletions(-)
+ create mode 100755 tests/functional/test_aarch64_sbsaref_alpine.py
+ create mode 100755 tests/functional/test_aarch64_sbsaref_freebsd.py
 
-> and physical CPU hot plug can co-exists or entirely as sole features.  This is
-> a requirement.
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 0844f5da19..bd9afc24ef 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -923,7 +923,7 @@ F: hw/misc/sbsa_ec.c
+ F: hw/watchdog/sbsa_gwdt.c
+ F: include/hw/watchdog/sbsa_gwdt.h
+ F: docs/system/arm/sbsa.rst
+-F: tests/functional/test_aarch64_sbsaref.py
++F: tests/functional/test_aarch64_sbsaref*.py
+ 
+ Sharp SL-5500 (Collie) PDA
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 3561f987a6..68c911f98d 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -12,7 +12,8 @@ endif
+ # Timeouts for individual tests that can be slow e.g. with debugging enabled
+ test_timeouts = {
+   'aarch64_raspi4' : 480,
+-  'aarch64_sbsaref' : 600,
++  'aarch64_sbsaref_alpine' : 720,
++  'aarch64_sbsaref_freebsd' : 720,
+   'aarch64_virt' : 720,
+   'acpi_bits' : 420,
+   'arm_aspeed' : 600,
+@@ -49,6 +50,8 @@ tests_aarch64_system_thorough = [
+   'aarch64_raspi3',
+   'aarch64_raspi4',
+   'aarch64_sbsaref',
++  'aarch64_sbsaref_alpine',
++  'aarch64_sbsaref_freebsd',
+   'aarch64_virt',
+   'multiprocess',
+ ]
+diff --git a/tests/functional/test_aarch64_sbsaref.py b/tests/functional/test_aarch64_sbsaref.py
+index b50e1a5965..9fda396b3a 100755
+--- a/tests/functional/test_aarch64_sbsaref.py
++++ b/tests/functional/test_aarch64_sbsaref.py
+@@ -16,6 +16,42 @@
+ from qemu_test.utils import lzma_uncompress
+ from unittest import skipUnless
+ 
++def fetch_firmware(test):
++    """
++    Flash volumes generated using:
++
++    Toolchain from Debian:
++    aarch64-linux-gnu-gcc (Debian 12.2.0-14) 12.2.0
++
++    Used components:
++
++    - Trusted Firmware         v2.11.0
++    - Tianocore EDK2           4d4f569924
++    - Tianocore EDK2-platforms 3f08401
++
++    """
++
++    # Secure BootRom (TF-A code)
++    fs0_xz_path = Aarch64SbsarefMachine.ASSET_FLASH0.fetch()
++    fs0_path = os.path.join(test.workdir, "SBSA_FLASH0.fd")
++    lzma_uncompress(fs0_xz_path, fs0_path)
++
++    # Non-secure rom (UEFI and EFI variables)
++    fs1_xz_path = Aarch64SbsarefMachine.ASSET_FLASH1.fetch()
++    fs1_path = os.path.join(test.workdir, "SBSA_FLASH1.fd")
++    lzma_uncompress(fs1_xz_path, fs1_path)
++
++    for path in [fs0_path, fs1_path]:
++        with open(path, "ab+") as fd:
++            fd.truncate(256 << 20)  # Expand volumes to 256MiB
++
++    test.set_machine('sbsa-ref')
++    test.vm.set_console()
++    test.vm.add_args(
++        "-drive", f"if=pflash,file={fs0_path},format=raw",
++        "-drive", f"if=pflash,file={fs1_path},format=raw",
++    )
++
+ 
+ class Aarch64SbsarefMachine(QemuSystemTest):
+     """
+@@ -35,45 +71,9 @@ class Aarch64SbsarefMachine(QemuSystemTest):
+          '20240619-148232/edk2/SBSA_FLASH1.fd.xz'),
+         'c6ec39374c4d79bb9e9cdeeb6db44732d90bb4a334cec92002b3f4b9cac4b5ee')
+ 
+-    def fetch_firmware(self):
+-        """
+-        Flash volumes generated using:
+-
+-        Toolchain from Debian:
+-        aarch64-linux-gnu-gcc (Debian 12.2.0-14) 12.2.0
+-
+-        Used components:
+-
+-        - Trusted Firmware         v2.11.0
+-        - Tianocore EDK2           4d4f569924
+-        - Tianocore EDK2-platforms 3f08401
+-
+-        """
+-
+-        # Secure BootRom (TF-A code)
+-        fs0_xz_path = self.ASSET_FLASH0.fetch()
+-        fs0_path = os.path.join(self.workdir, "SBSA_FLASH0.fd")
+-        lzma_uncompress(fs0_xz_path, fs0_path)
+-
+-        # Non-secure rom (UEFI and EFI variables)
+-        fs1_xz_path = self.ASSET_FLASH1.fetch()
+-        fs1_path = os.path.join(self.workdir, "SBSA_FLASH1.fd")
+-        lzma_uncompress(fs1_xz_path, fs1_path)
+-
+-        for path in [fs0_path, fs1_path]:
+-            with open(path, "ab+") as fd:
+-                fd.truncate(256 << 20)  # Expand volumes to 256MiB
+-
+-        self.set_machine('sbsa-ref')
+-        self.vm.set_console()
+-        self.vm.add_args(
+-            "-drive", f"if=pflash,file={fs0_path},format=raw",
+-            "-drive", f"if=pflash,file={fs1_path},format=raw",
+-        )
+-
+     def test_sbsaref_edk2_firmware(self):
+ 
+-        self.fetch_firmware()
++        fetch_firmware(self)
+ 
+         self.vm.add_args('-cpu', 'cortex-a57')
+         self.vm.launch()
+@@ -101,90 +101,5 @@ def test_sbsaref_edk2_firmware(self):
+         wait_for_console_pattern(self, "UEFI firmware (version 1.0")
+         interrupt_interactive_console_until_pattern(self, "QEMU SBSA-REF Machine")
+ 
+-
+-    ASSET_ALPINE_ISO = Asset(
+-        ('https://dl-cdn.alpinelinux.org/'
+-         'alpine/v3.17/releases/aarch64/alpine-standard-3.17.2-aarch64.iso'),
+-        '5a36304ecf039292082d92b48152a9ec21009d3a62f459de623e19c4bd9dc027')
+-
+-    # This tests the whole boot chain from EFI to Userspace
+-    # We only boot a whole OS for the current top level CPU and GIC
+-    # Other test profiles should use more minimal boots
+-    def boot_alpine_linux(self, cpu=None):
+-        self.fetch_firmware()
+-
+-        iso_path = self.ASSET_ALPINE_ISO.fetch()
+-
+-        self.vm.set_console()
+-        self.vm.add_args(
+-            "-drive", f"file={iso_path},media=cdrom,format=raw",
+-        )
+-        if cpu:
+-            self.vm.add_args("-cpu", cpu)
+-
+-        self.vm.launch()
+-        wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
+-
+-    def test_sbsaref_alpine_linux_cortex_a57(self):
+-        self.boot_alpine_linux("cortex-a57")
+-
+-    def test_sbsaref_alpine_linux_default_cpu(self):
+-        self.boot_alpine_linux()
+-
+-    def test_sbsaref_alpine_linux_max_pauth_off(self):
+-        self.boot_alpine_linux("max,pauth=off")
+-
+-    def test_sbsaref_alpine_linux_max_pauth_impdef(self):
+-        self.boot_alpine_linux("max,pauth-impdef=on")
+-
+-    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
+-                'Test might timeout due to PAuth emulation')
+-    def test_sbsaref_alpine_linux_max(self):
+-        self.boot_alpine_linux("max")
+-
+-
+-    ASSET_FREEBSD_ISO = Asset(
+-        ('https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/'
+-         '14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso'),
+-        '44cdbae275ef1bb6dab1d5fbb59473d4f741e1c8ea8a80fd9e906b531d6ad461')
+-
+-    # This tests the whole boot chain from EFI to Userspace
+-    # We only boot a whole OS for the current top level CPU and GIC
+-    # Other test profiles should use more minimal boots
+-    def boot_freebsd14(self, cpu=None):
+-        self.fetch_firmware()
+-
+-        img_path = self.ASSET_FREEBSD_ISO.fetch()
+-
+-        self.vm.set_console()
+-        self.vm.add_args(
+-            "-drive", f"file={img_path},format=raw,snapshot=on",
+-        )
+-        if cpu:
+-            self.vm.add_args("-cpu", cpu)
+-
+-        self.vm.launch()
+-        wait_for_console_pattern(self, 'Welcome to FreeBSD!')
+-
+-    def test_sbsaref_freebsd14_cortex_a57(self):
+-        self.boot_freebsd14("cortex-a57")
+-
+-    def test_sbsaref_freebsd14_default_cpu(self):
+-        self.boot_freebsd14()
+-
+-    def test_sbsaref_freebsd14_max_pauth_off(self):
+-        self.boot_freebsd14("max,pauth=off")
+-
+-    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
+-                'Test might timeout due to PAuth emulation')
+-    def test_sbsaref_freebsd14_max_pauth_impdef(self):
+-        self.boot_freebsd14("max,pauth-impdef=on")
+-
+-    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
+-                'Test might timeout due to PAuth emulation')
+-    def test_sbsaref_freebsd14_max(self):
+-        self.boot_freebsd14("max")
+-
+-
+ if __name__ == '__main__':
+     QemuSystemTest.main()
+diff --git a/tests/functional/test_aarch64_sbsaref_alpine.py b/tests/functional/test_aarch64_sbsaref_alpine.py
+new file mode 100755
+index 0000000000..ebc29b2fb5
+--- /dev/null
++++ b/tests/functional/test_aarch64_sbsaref_alpine.py
+@@ -0,0 +1,64 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a kernel and checks the console
++#
++# SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
++# SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
++# SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import os
++
++from qemu_test import QemuSystemTest, Asset
++from qemu_test import wait_for_console_pattern
++from qemu_test import interrupt_interactive_console_until_pattern
++from unittest import skipUnless
++from test_aarch64_sbsaref import fetch_firmware
++
++
++class Aarch64SbsarefAlpine(QemuSystemTest):
++
++    ASSET_ALPINE_ISO = Asset(
++        ('https://dl-cdn.alpinelinux.org/'
++         'alpine/v3.17/releases/aarch64/alpine-standard-3.17.2-aarch64.iso'),
++        '5a36304ecf039292082d92b48152a9ec21009d3a62f459de623e19c4bd9dc027')
++
++    # This tests the whole boot chain from EFI to Userspace
++    # We only boot a whole OS for the current top level CPU and GIC
++    # Other test profiles should use more minimal boots
++    def boot_alpine_linux(self, cpu=None):
++        fetch_firmware(self)
++
++        iso_path = self.ASSET_ALPINE_ISO.fetch()
++
++        self.vm.set_console()
++        self.vm.add_args(
++            "-drive", f"file={iso_path},media=cdrom,format=raw",
++        )
++        if cpu:
++            self.vm.add_args("-cpu", cpu)
++
++        self.vm.launch()
++        wait_for_console_pattern(self, "Welcome to Alpine Linux 3.17")
++
++    def test_sbsaref_alpine_linux_cortex_a57(self):
++        self.boot_alpine_linux("cortex-a57")
++
++    def test_sbsaref_alpine_linux_default_cpu(self):
++        self.boot_alpine_linux()
++
++    def test_sbsaref_alpine_linux_max_pauth_off(self):
++        self.boot_alpine_linux("max,pauth=off")
++
++    def test_sbsaref_alpine_linux_max_pauth_impdef(self):
++        self.boot_alpine_linux("max,pauth-impdef=on")
++
++    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
++                'Test might timeout due to PAuth emulation')
++    def test_sbsaref_alpine_linux_max(self):
++        self.boot_alpine_linux("max")
++
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
+diff --git a/tests/functional/test_aarch64_sbsaref_freebsd.py b/tests/functional/test_aarch64_sbsaref_freebsd.py
+new file mode 100755
+index 0000000000..80298dd190
+--- /dev/null
++++ b/tests/functional/test_aarch64_sbsaref_freebsd.py
+@@ -0,0 +1,66 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a kernel and checks the console
++#
++# SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
++# SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
++# SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import os
++
++from qemu_test import QemuSystemTest, Asset
++from qemu_test import wait_for_console_pattern
++from qemu_test import interrupt_interactive_console_until_pattern
++from unittest import skipUnless
++from test_aarch64_sbsaref import fetch_firmware
++
++
++class Aarch64SbsarefFreeBSD(QemuSystemTest):
++
++    ASSET_FREEBSD_ISO = Asset(
++        ('https://download.freebsd.org/releases/arm64/aarch64/ISO-IMAGES/'
++         '14.1/FreeBSD-14.1-RELEASE-arm64-aarch64-bootonly.iso'),
++        '44cdbae275ef1bb6dab1d5fbb59473d4f741e1c8ea8a80fd9e906b531d6ad461')
++
++    # This tests the whole boot chain from EFI to Userspace
++    # We only boot a whole OS for the current top level CPU and GIC
++    # Other test profiles should use more minimal boots
++    def boot_freebsd14(self, cpu=None):
++        fetch_firmware(self)
++
++        img_path = self.ASSET_FREEBSD_ISO.fetch()
++
++        self.vm.set_console()
++        self.vm.add_args(
++            "-drive", f"file={img_path},format=raw,snapshot=on",
++        )
++        if cpu:
++            self.vm.add_args("-cpu", cpu)
++
++        self.vm.launch()
++        wait_for_console_pattern(self, 'Welcome to FreeBSD!')
++
++    def test_sbsaref_freebsd14_cortex_a57(self):
++        self.boot_freebsd14("cortex-a57")
++
++    def test_sbsaref_freebsd14_default_cpu(self):
++        self.boot_freebsd14()
++
++    def test_sbsaref_freebsd14_max_pauth_off(self):
++        self.boot_freebsd14("max,pauth=off")
++
++    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
++                'Test might timeout due to PAuth emulation')
++    def test_sbsaref_freebsd14_max_pauth_impdef(self):
++        self.boot_freebsd14("max,pauth-impdef=on")
++
++    @skipUnless(os.getenv('QEMU_TEST_TIMEOUT_EXPECTED'),
++                'Test might timeout due to PAuth emulation')
++    def test_sbsaref_freebsd14_max(self):
++        self.boot_freebsd14("max")
++
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
+-- 
+2.47.0
 
-
-I don't see any _must_ requirements here whatsoever. If/when ARM reaches point
-where standby and hotplug cpus are mixed within VM instance, we might have to
-expose presence bit to guest dynamically but it is totally not needed within
-observable future and premature.
-
-Your cpu class presence check also works target-wise just with more boiler code
-+ not needed presence bit ABI for guest side,
-The same as my suggestion only from other side.
-
-But regardless of that as long as machine has doesn't mix always present CPUs
-with hotpluggable ones within the same instance, changing AML side
-as I've just suggested works.
-
-If ARM ever gets real cpu hotplug as your comment above hints, my suggestion
-also works fine. With only difference that board code would turn off
-always_present_cpus if hotpluggable CPUs are used instead of standby.
-
-> 
-> >  
-> >  Instead changing AML code to account for it would be better, something like
-> >  this:
-> >  
-> >  diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h index
-> >  32654dc274..4a3e591120 100644
-> >  --- a/include/hw/acpi/cpu.h
-> >  +++ b/include/hw/acpi/cpu.h
-> >  @@ -55,6 +55,7 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object
-> >  *owner,  typedef struct CPUHotplugFeatures {
-> >       bool acpi_1_compatible;
-> >       bool has_legacy_cphp;
-> >  +    bool always_present_cpus;  
-> 
-> 
-> This has to be fetched from architecture code. Please see other changes in the V3
-> patch-set.
-
-I've seen, that and it doesn't have to be fetched dynamically.
-In my opinion the series was not ready to be merged
-(Michael probably picked it by mistake).
-
-We don't really need this in 9.2 as it is only ARM cpu 'hotplug'
-related, and the later is not ready for 9.2.
-I'd prefer the series being reverted and we continue improving series,
-instead of rushing it and fixing broken thing up.
-
-
-> 
-> 
-> >       bool fw_unplugs_cpu;
-> >       const char *smi_path;
-> >   } CPUHotplugFeatures;
-> >  diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c index 5cb60ca8bc..2bcce2b31c
-> >  100644
-> >  --- a/hw/acpi/cpu.c
-> >  +++ b/hw/acpi/cpu.c
-> >  @@ -452,15 +452,16 @@ void build_cpus_aml(Aml *table, MachineState
-> >  *machine, CPUHotplugFeatures opts,
-> >  
-> >           method = aml_method(CPU_STS_METHOD, 1, AML_SERIALIZED);
-> >           {
-> >  +            uint8_t default_sta = opts.always_present_cpus?0xd:0;
-> >               Aml *idx = aml_arg(0);
-> >  -            Aml *sta = aml_local(0);
-> >  +            Aml *sta = aml_local(default_sta);
-> >  
-> >               aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
-> >               aml_append(method, aml_store(idx, cpu_selector));
-> >               aml_append(method, aml_store(zero, sta));
-> >               ifctx = aml_if(aml_equal(is_enabled, one));
-> >               {
-> >  -                aml_append(ifctx, aml_store(aml_int(0xF), sta));
-> >  +                aml_append(ifctx, aml_or(aml_int(0xF), sta, sta));
-> >               }
-> >               aml_append(method, ifctx);
-> >               aml_append(method, aml_release(ctrl_lock))
-> >  
-> >  then for ARM set
-> >   CPUHotplugFeatures::always_present_cpus = true to get present flag
-> >  always enabled  
-> 
-> 
-> We MUST fetch this from architecture code as this can dynamically change in
-> future and hence, we need to keep that flexibility
-
-CPUHotplugFeatures::always_present_cpus can be set dynamically per VM instance
-or per Machine type.
-
-> >  
-> >  After that revert _all_ other presence bit related changes that were just
-> >  merged.
-> >  (I did ask to get rid of that in previous reviews but it came back again for no
-> >  good reason).  
-> 
-> 
-> The CPUs AML in the V2 patch-set would have broken the x86 functionality.
-
-Frankly speaking, I don't see much progress. All that happens on respins
-is flipping between what I asked to remove before to some earlier concept.
-And all of that for the purpose to workaround/accommodate fake cpu hotplug hacks.
-
-> Thanks
-> Salil.
-> 

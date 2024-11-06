@@ -1,222 +1,210 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3562071njc;
-        Wed, 6 Nov 2024 06:45:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXrd8o9HFTBo/vAK4+7c5d8ltE3YY3l7P9cgD/nBgpqQVyDC3DfbmhuJjcrRas+dreTQno3FYikUgXzOQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFDDfkHUEtNDozA/3EimWshj9DQ36XWLljUDtGfWAfkTsXGUeWCBwsgUc21vfpAeKf+ccfZ
-X-Received: by 2002:a17:903:1c2:b0:20c:a175:1943 with SMTP id d9443c01a7336-210c6c6d9a5mr543368475ad.40.1730904348877;
-        Wed, 06 Nov 2024 06:45:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730904348; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3589182njc;
+        Wed, 6 Nov 2024 07:22:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUsupAh3GfwJhdUc1SbRQuGLNxHuA3vefTb1fZcoFj7d4XdMNSLs/o7dwHwmzhaw8zbwVHHAsbYSZv/Iw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEaKxdctCDXtgy5Ie/tPe8p6cfXZ6p4Ku+4gU4GNqMX6ZIM1dgJ09BcyrXRb4PqAJs4K7ql
+X-Received: by 2002:a05:6808:2209:b0:3e5:fd7f:c149 with SMTP id 5614622812f47-3e758cbfb40mr20196610b6e.39.1730906524777;
+        Wed, 06 Nov 2024 07:22:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730906524; cv=none;
         d=google.com; s=arc-20240605;
-        b=K4rnYnAF0e4aFKanRN1kn+f5shclIZuRsx3aS+ZOQkm8BJ8TKBeMaWFZK/8XOqgfpY
-         AqEQu7Zy0eiMGE2KQ231+TTj+F7/I4s8FtB6+6PIQo6XN0j0npneUYDYNx/Q2enX3k8u
-         1I6wDrUSZqcta+ekv6e3KYMJumal5rB3J/Tqi15AUKZbLsPkeDZIkZJIu7Usj5BdKZRF
-         Casg2PXgsfw8HstgnwkTNOkkeJScNbbNe3Q/c2pCHldWvxP6K2BHUmBb+WMtXkllLmK1
-         vTlaer9IpoJqHmDkUxd4xuvKt2RetB9buV2SkSYFJHVT5CrdjA7dgq8rO6Nyes7MsJAR
-         9coQ==
+        b=CPOOM8YyyetmFFiOsunfvT0c1J2K/w1Pgvn3ZUPDtcVu0X/X+lEtJI98HrH5ayyM2M
+         VeV92E9xNN5MWfTwQZSCl9x5O5QJeO0C27jMklt5EAlJJ7KRDpph430AKVfG8gWhIZbp
+         tUQ4tkuLkBHjA1eMqXZ/uiyZeY5qGit183sQyvmMoJRzs/I3UtGZ0TDOB0qP0GMkGpGK
+         pgoimrm9SjepmHkPk1ygsHnsrnZQi5986lcSzw77R0+r2gc4G75vgQhxebJHLR8uba2s
+         bBxrwdgd1QpfRix1UeydAeFJxOOuJXlOG8OX7fCEaOb8IZTadKbh9zz5Ecsf9EQKyG5l
+         AzfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=9UxL0cPmccouLgbuDTBY6/YfzFLNIqRDwPJlyvXOPck=;
-        fh=Nez8zrmKCjCutbNo/j68/izbwT5Kw1c1Hq/bj7m1JEA=;
-        b=ELaPCTmplz369CxPIV+0AjPb7nicHs6buz8G6efNR5cbH8sBf2k7+CZMoC7Ce/7kxf
-         j2AQIyB06SVQSayGOZm1ww/ld/YGG9JB46F+Ao47AdmMQYMzFFZ17d+eDJW+MHZ54f1f
-         NfziQPAeIJuN85/FQDaGGNtyNhE0baJuvmIUToKKTzafaHdN6bvRrJQSg860DHfqkp7d
-         /rbmb2f0brtzS4Br4IHkpfbJ+E5r/YfIJ6dqc1wfHJsFZAMNerf9B+nWAtQVJT+WqCJ1
-         pbUoreN8I/Sv4532vtdE6ASjqsmvm40Cq7bClvrJYX47wgmZNpP9bBHouWJ9nPK0XOll
-         SLLQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:content-language:references:cc:to:from:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=4bFpLaltumf2qLsclcMeWZujkgU4sJrxb2XK7RLIDjE=;
+        fh=f8RoGae6YR6/W+bdd1Qvt18k2KHzEO8CHqSY1AFrB0c=;
+        b=WVlm+FlH4rSCOvuJCSRGIKUjl3UJuOVnL6S8m/dApDlJMrxe00C29jNbImFZw7got9
+         nzmjQ6DitkhAFBP+qSID23QmNLQjfUlsJGO+WouTY2PPkziSohwgzImhNbrEG+7v7C2t
+         m9y5D+LftXtoL9wkqr9Gc+QHyhUWM0scu1fsSq1t0Z7i8HRTWgRMj/Lg5PAnpTGZaMcF
+         FAaEdsqHXG8S4KsqpKhbmSD1b9O41GjZFJIFqD4l5hM766SYbK81nwa8KviVfFpXSaHH
+         5pyIH9nPXRqQV7zPmYiVur7fZ+ho8Z77fFU7MAV/VR6+/E7eW2MHIuw9Hyol3L/z1rVL
+         L7RA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id d9443c01a7336-2115da995c5si48420635ad.402.2024.11.06.06.45.47
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 06 Nov 2024 06:45:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=VXZM58jj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4a9575aa691si3858627137.750.2024.11.06.07.22.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 06 Nov 2024 07:22:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xk7Gm55Vfz6J6sP;
-	Wed,  6 Nov 2024 22:42:56 +0800 (CST)
-Received: from frapeml500006.china.huawei.com (unknown [7.182.85.219])
-	by mail.maildlp.com (Postfix) with ESMTPS id 36396140B2F;
-	Wed,  6 Nov 2024 22:45:44 +0800 (CST)
-Received: from frapeml500007.china.huawei.com (7.182.85.172) by
- frapeml500006.china.huawei.com (7.182.85.219) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Wed, 6 Nov 2024 15:45:42 +0100
-Received: from frapeml500007.china.huawei.com ([7.182.85.172]) by
- frapeml500007.china.huawei.com ([7.182.85.172]) with mapi id 15.01.2507.039;
- Wed, 6 Nov 2024 15:45:42 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, Jonathan Cameron
-	<jonathan.cameron@huawei.com>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "anisinha@redhat.com" <anisinha@redhat.com>,
-	"eduardo@habkost.net" <eduardo@habkost.net>, "marcel.apfelbaum@gmail.com"
-	<marcel.apfelbaum@gmail.com>, "david@redhat.com" <david@redhat.com>,
-	"philmd@linaro.org" <philmd@linaro.org>, "peterx@redhat.com"
-	<peterx@redhat.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"gshan@redhat.com" <gshan@redhat.com>, "borntraeger@linux.ibm.com"
-	<borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm <linuxarm@huawei.com>,
-	"gustavo.romero@linaro.org" <gustavo.romero@linaro.org>
-Subject: RE: [PATCH 2/3] Fix: Reverse CPUs presence check logic for x86
- backward compatability
-Thread-Topic: [PATCH 2/3] Fix: Reverse CPUs presence check logic for x86
- backward compatability
-Thread-Index: AQHbMExwRTIJtUKJlEic/SrRi9Z39bKqNgWAgAAbf+A=
-Date: Wed, 6 Nov 2024 14:45:42 +0000
-Message-ID: <28a19ad7554e4b70819e1435669eeba3@huawei.com>
-References: <20241106130331.205020-1-salil.mehta@huawei.com>
- <20241106130331.205020-3-salil.mehta@huawei.com>
- <20241106145635.77332d7c@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20241106145635.77332d7c@imammedo.users.ipa.redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.126.170.112]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=VXZM58jj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t8hqb-0002rX-T5; Wed, 06 Nov 2024 10:21:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1t8hqZ-0002qo-Fi; Wed, 06 Nov 2024 10:21:27 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1t8hqX-00073w-Jv; Wed, 06 Nov 2024 10:21:27 -0500
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4A6F8ESX007256;
+ Wed, 6 Nov 2024 15:21:20 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=4bFpLa
+ ltumf2qLsclcMeWZujkgU4sJrxb2XK7RLIDjE=; b=VXZM58jjxxeoVafZPcd/qs
+ 14PTTMj+UVu2BxFjCpdtSndfrSibXO466gh37ner5MYr/h/xmC9CclWI8kzKgPGs
+ 3qDQZZBSgAwZFyojYrjV1EUGuK0FR5wZsyeGAO90WoaXVuZFz+ZHSJw/6xtHrpYZ
+ ADrXHfunfzrfCvqHNRVHKOdJHH62RnehXdxvyJsGPOQHJh+NESCankb+4t3kIU6q
+ cLIEqiuRORmeh5Y6d897tAa4BY3u3wIGyiWRXp0+Xdydg/VaismQXe8ewauphIuo
+ oPrwUFApeJ00VS7JullBpgmqSuBWtQ5HXnekM4yXkhbK1lXWUPJssPp58K8/YqMg
+ ==
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 42radvg81f-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 06 Nov 2024 15:21:20 +0000 (GMT)
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 4A6EMV5C024200;
+ Wed, 6 Nov 2024 15:21:19 GMT
+Received: from smtprelay01.wdc07v.mail.ibm.com ([172.16.1.68])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 42nxds6fyy-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 06 Nov 2024 15:21:19 +0000
+Received: from smtpav04.dal12v.mail.ibm.com (smtpav04.dal12v.mail.ibm.com
+ [10.241.53.103])
+ by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 4A6FLIU934537976
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 6 Nov 2024 15:21:18 GMT
+Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7AD1858056;
+ Wed,  6 Nov 2024 15:21:18 +0000 (GMT)
+Received: from smtpav04.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 1C35858052;
+ Wed,  6 Nov 2024 15:21:18 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav04.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Wed,  6 Nov 2024 15:21:17 +0000 (GMT)
+Message-ID: <08fd5270-8223-419e-b5ec-075b14c42c09@linux.ibm.com>
+Date: Wed, 6 Nov 2024 10:21:17 -0500
 MIME-Version: 1.0
-X-TUID: FM3l0/J3+NZA
-
-Hi Igor,
-
->  From: qemu-arm-bounces+salil.mehta=3Dhuawei.com@nongnu.org <qemu-
->  arm-bounces+salil.mehta=3Dhuawei.com@nongnu.org> On Behalf Of Igor
->  Mammedov
->  Sent: Wednesday, November 6, 2024 1:57 PM
->  To: Salil Mehta <salil.mehta@huawei.com>
-> =20
->  On Wed, 6 Nov 2024 13:03:30 +0000
->  Salil Mehta <salil.mehta@huawei.com> wrote:
-> =20
->  > Checking `is_present` first can break x86 migration from new Qemu
->  > version to old Qemu. This is because CPRS Bit is not defined in the
->  > older Qemu register block and will always be 0 resulting in check
->  > always failing. Reversing the logic to first check `is_enabled` can
->  > alleviate below problem:
->  >
->  > -                If ((\_SB.PCI0.PRES.CPEN =3D=3D One))
->  > -                {
->  > -                    Local0 =3D 0x0F
->  > +                If ((\_SB.PCI0.PRES.CPRS =3D=3D One))
->  > +                {
->  > +                    If ((\_SB.PCI0.PRES.CPEN =3D=3D One))
->  > +                    {
->  > +                        Local0 =3D 0x0F
->  > +                    }
->  > +                    Else
->  > +                    {
->  > +                        Local0 =3D 0x0D
->  > +                    }
->  >                  }
->  >
->  > Suggested-by: Igor Mammedov <imammedo@redhat.com>
->  'Reported-by' maybe, but certainly not suggested.
-
-
-No issues. I can change.
-
-
-> =20
->  After more thinking and given presence is system wide that doesn't chang=
-e
->  at runtime, I don't see any reason for introducing presence bit as ABI (=
-and
->  undocumented on top of that).
-
-
-This is a wrong assumption. Presence bit can change in future. We have take=
-n
-into account this aspect by design in the kernel code as well. Both virtual
-and physical CPU hot plug can co-exists or entirely as sole features.  This=
- is
-a requirement.
-
-
-> =20
->  Instead changing AML code to account for it would be better, something l=
-ike
->  this:
-> =20
->  diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h index
->  32654dc274..4a3e591120 100644
->  --- a/include/hw/acpi/cpu.h
->  +++ b/include/hw/acpi/cpu.h
->  @@ -55,6 +55,7 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object
->  *owner,  typedef struct CPUHotplugFeatures {
->       bool acpi_1_compatible;
->       bool has_legacy_cphp;
->  +    bool always_present_cpus;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PULL 10/17] tests/functional: Convert most Aspeed machine tests
+From: Stefan Berger <stefanb@linux.ibm.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>, lena.voytek@canonical.com
+References: <20241024063507.1585765-1-clg@redhat.com>
+ <20241024063507.1585765-11-clg@redhat.com>
+ <CAFEAcA8A=kWLtTZ+nua-MpzqkaEjW5srOYZruZnE2tB6vmoMig@mail.gmail.com>
+ <91c2ac92-66b2-45c8-b4fe-e8f8587b0e9c@linux.ibm.com>
+ <CAFEAcA84hhWu2ouirfDPbCpq_=QLQxAf3k47h0Pij8iEnOVj+A@mail.gmail.com>
+ <2491bc60-9a0b-486a-8f6d-2c4c94332756@linux.ibm.com>
+ <CAFEAcA85g2nX3MU5RzmBvAHT8Kis1JHhiEaBvnFFbEQkG+0OxQ@mail.gmail.com>
+ <e6c33df3-49e9-4b8a-b7cb-d38c2ebee3be@linux.ibm.com>
+ <CAFEAcA9La7y1Z2-nMnJDyC_p+z-3c0EnDzEE=w5LTYtRnXPT1g@mail.gmail.com>
+ <1a1d29b3-c14c-42a9-93ad-c773e3b265df@linux.ibm.com>
+ <CAFEAcA_awJURkAhyhz88iEyfe7BU-ApeHB8XZ5EeThoKFh3p5w@mail.gmail.com>
+ <60734922-c31d-4a24-865e-45d03ff53141@linux.ibm.com>
+Content-Language: en-US
+In-Reply-To: <60734922-c31d-4a24-865e-45d03ff53141@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: ppOVMKymP4RT8U8y9u1nX49u0-uGOVbu
+X-Proofpoint-ORIG-GUID: ppOVMKymP4RT8U8y9u1nX49u0-uGOVbu
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
+ definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 spamscore=0
+ mlxscore=0 adultscore=0 impostorscore=0 phishscore=0 malwarescore=0
+ bulkscore=0 suspectscore=0 lowpriorityscore=0 mlxlogscore=609
+ priorityscore=1501 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2409260000 definitions=main-2411060118
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ewJOE9BfZ4kc
 
 
-This has to be fetched from architecture code. Please see other changes in =
-the V3
-patch-set.
+
+On 11/5/24 4:50 PM, Stefan Berger wrote:
+> 
+> 
+
+>>>
+>>>   > > One of swtpm or apparmor must be wrong here and I think it should
+>>>> be fixed. In particular, having the failure mode be "something
+>>>
+>>> As stated, we were going to fix the AppArmor path in the swtpm Ubuntu
+>>> package.
+>>
+>> But AIUI the solution you've proposed is to add the user
+>> temp directory -- abstractions/user-tmp looks like it
+>> adds permissions for $HOME/tmp, /var/tmp and /tmp/. None
+>> of those will fix the failure we ran into, because we're not
+>> using any of those tmp directories. We use a directory
+>> that's a subdirectory of wherever the user put the build
+>> directory, which can be anywhere the user has permissions for.
+> 
+> Yes, you are right. The same test failed for me locally due to the usage 
+> of /var/tmp/ path but that's not what was originally reported.
+> 
+> I am not aware that user-started programs can have an exception from 
+> having their profiles applied, nor do I know whether rules exist that 
+> allow a user to circumvent any rule. So my guess is we need rules like 
+> either one of the following:
+> 
+> owner /mnt/** rwkl
+> 
+> or worse:
+> 
+> owner /** rwkl
+> 
+> I don't see another choice than adding one of these rules, maybe even 
+> the 2nd. Lena?
+
+If there was value in the path-confinement of swtpm (for a few years) do 
+we really want to loose it now because of a test case? We could either
+
+- adjust the test case to have swtpm use a directory under one of the 
+accepted paths, e.g., /tmp or /var/tmp
+- or add /mnt as a newly supported path to the AppArmor profile
+
+The latter works for the setup that Peter has but a new user creating 
+paths under /mymnt would cause the same discussion again.
 
 
->       bool fw_unplugs_cpu;
->       const char *smi_path;
->   } CPUHotplugFeatures;
->  diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c index 5cb60ca8bc..2bcce2b31c
->  100644
->  --- a/hw/acpi/cpu.c
->  +++ b/hw/acpi/cpu.c
->  @@ -452,15 +452,16 @@ void build_cpus_aml(Aml *table, MachineState
->  *machine, CPUHotplugFeatures opts,
-> =20
->           method =3D aml_method(CPU_STS_METHOD, 1, AML_SERIALIZED);
->           {
->  +            uint8_t default_sta =3D opts.always_present_cpus?0xd:0;
->               Aml *idx =3D aml_arg(0);
->  -            Aml *sta =3D aml_local(0);
->  +            Aml *sta =3D aml_local(default_sta);
-> =20
->               aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
->               aml_append(method, aml_store(idx, cpu_selector));
->               aml_append(method, aml_store(zero, sta));
->               ifctx =3D aml_if(aml_equal(is_enabled, one));
->               {
->  -                aml_append(ifctx, aml_store(aml_int(0xF), sta));
->  +                aml_append(ifctx, aml_or(aml_int(0xF), sta, sta));
->               }
->               aml_append(method, ifctx);
->               aml_append(method, aml_release(ctrl_lock))
-> =20
->  then for ARM set
->   CPUHotplugFeatures::always_present_cpus =3D true to get present flag
->  always enabled
+    Stefan
 
-
-We MUST fetch this from architecture code as this can dynamically change in
-future and hence, we need to keep that flexibility
-
-> =20
->  After that revert _all_ other presence bit related changes that were jus=
-t
->  merged.
->  (I did ask to get rid of that in previous reviews but it came back again=
- for no
->  good reason).
-
-
-The CPUs AML in the V2 patch-set would have broken the x86 functionality.
-
-
-Thanks
-Salil.

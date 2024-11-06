@@ -1,107 +1,115 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3174922njc;
-        Tue, 5 Nov 2024 15:30:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUP+r02DKZ69as51Gc3YW4FkuyZCCXzv2SLXGBWQbkt2iH+7EKnpIh0fnCaiiFS4Y76gBHNW/di6dyoHg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHU+2s9HamS4odh2S8Aydq6fo5Ol+VRMVvwGg9w6a+r014KzaUfIY6yATIennFnvGVVdgcW
-X-Received: by 2002:a05:6214:5991:b0:6cb:ec71:f1a1 with SMTP id 6a1803df08f44-6d185690ad8mr522340596d6.17.1730849405026;
-        Tue, 05 Nov 2024 15:30:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730849405; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3326965njc;
+        Tue, 5 Nov 2024 22:45:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX45svdSKXHGW1Ga4I0ckJg1MlSsw+WtJLwjAi5t7PE04uEczeWrQe5j9DbgQBnSTx9NYcJJfdGS98Haw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG5RbNnlqwAhEZjO7R32M6x0/ppAOcMxTzuiHjRwDX7qCs5bXlWxURB1TxbFPrLtPmsxqI5
+X-Received: by 2002:a05:620a:1905:b0:7b1:4436:cf1d with SMTP id af79cd13be357-7b193f0a223mr5063944485a.31.1730875559241;
+        Tue, 05 Nov 2024 22:45:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730875559; cv=none;
         d=google.com; s=arc-20240605;
-        b=aWgPB2ODptpmAvX3GsOBeuCO4Xgy3oKuGIrUC81rFlZT4PsexYYTLhyQ27FuYszYvD
-         o2T2u1RS7LLD+CZARQ0j0SlKmRsSbgF2rPkzSqONGuWztYwjePHwiFh7Hx9sHTiZCpMr
-         Ihn63DLhWqrC0dZ0bvzYq67zDzS3D5MU83+fohqMhWi2UEnwataAVRE8QrcKfKG4JcfG
-         LYdALh9b4AogDYtcmnqBjHREeI2ICeXczrDHbfsFf8xYGzYqzf4eSSsYILOKYYuNzPYu
-         6o9GRUoGrLb7U66viKJlcDucF7+h244ievmkeuvvtp1RMivehtV7xpKS4xInJ4wZLetd
-         s/2w==
+        b=B3q8h0EscgQuGtmzB9Rtqslw9DVLMT06pZVChHx1mZN037L/I5ejt0xcbBzZLI7EfI
+         4ADRqOBJqY6Oy1Xyq4F1g/EGZWMEbS120GB9pmhONrIW7QqBeuHSZ8C6v45lJvIasmG/
+         M/NSmBFgqrNTGc7lOYI2Gs5zVlW91aoUORjSUmaFiF/Rp2BR8ak5wcYIBqipnFaKgH9G
+         sPw2yVKv84A46o/OiIjzvmUNGLLqpt4QrgKfdzPaq2a1QWfvWKzd0W8HNSEWQo7D3aOe
+         AlqnVBaq/HIO9wGnme+na+tsP8/dWBNxkYZLalYa+fVzvk9LdWBNMLLCL5BivHeUv6GK
+         eYtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=tjJDJMeZWZ0bLi+K9wzyg8U5rQIR7V2vFJ/qP35A+wg=;
-        fh=7qfgaRfDlM+u+vLCEBtAo2wuQCetcs50NBP73xWMPwo=;
-        b=V3c2xSAtktzgB5Aew7ue7yJiR3XGOoIlqK5Bf++6pNEY//usTpgoRJUF0MWxOyu3qq
-         5+QEGzi772Owv9saK69vVDrQYmKLsfIP87yaC0rddJgQ9h9nJqOTbIRn1036ooyDkCJA
-         23oxkWycZsWwW4Q0OWjmjIop6vK/ZHRc2EBlUdKblaXL+YSs7NmS1gF7Vj5d4oauiYdk
-         2WVyPTDdUvRqn63nnb++Jb3HPAW+wL5nEP+yUI8UYaecU2eTODAdWBkPVu804SDp2ycK
-         YjiGjvc1m9vCFruc3upuAtu7JGvxNA0xgFKv9HoYaGrOe26Vl2qFa7mKymqZoFAFYp6V
-         rUlg==;
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=wSpucpDqsDvxTAZyhxFYFsGqMLIgHO1zXDbRy6bxakg=;
+        fh=2avgBAE2S/MqTKFBR8jeziS+J0XZxiI1PvxUED8R+BE=;
+        b=B4aWu+jpEnBGgt9eEzHI+PvYylRu8fZGsbhBqjaPa4pHb2cwxg6SC3rLkn8bqDE/1i
+         UXQ6gVszi9fkG12rY242fDX4IEL5s+3MgCaji69IQC2F3rIGX2KVRUbsmJVIiAdYiaPQ
+         0rb6LhF1+Q1sDxdd8BlWuPK/uSD8/goV/Jh7mAIOQDTXAQ5xQEMgT8NGleK/NFqJ06KY
+         DU9QRqiN7p74/nQnkwD8FYRvId7F/eRSQVMHTeAFNatLFocAu/ahRVXdgExGkaIpcgEC
+         fOLBPlSMTel70nsZrpIz0Sj86DXJDl63oCbf6d0hTLzYO/C0PETIopmklYpGV7ZgEOGB
+         4PEg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="IJb3tk/v";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MCgcK5M9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d368fc21c6si93826616d6.352.2024.11.05.15.30.04
+        by mx.google.com with ESMTPS id af79cd13be357-7b2f3ad117fsi1563071585a.702.2024.11.05.22.45.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 15:30:04 -0800 (PST)
+        Tue, 05 Nov 2024 22:45:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="IJb3tk/v";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MCgcK5M9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t8Szm-0007Rw-Rf; Tue, 05 Nov 2024 18:29:58 -0500
+	id 1t8Zn7-0004uz-Kk; Wed, 06 Nov 2024 01:45:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8Szj-0007RR-3b
- for qemu-arm@nongnu.org; Tue, 05 Nov 2024 18:29:55 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1t8Szh-0004pj-G3
- for qemu-arm@nongnu.org; Tue, 05 Nov 2024 18:29:54 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5cec93719ccso4792046a12.2
- for <qemu-arm@nongnu.org>; Tue, 05 Nov 2024 15:29:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730849391; x=1731454191; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tjJDJMeZWZ0bLi+K9wzyg8U5rQIR7V2vFJ/qP35A+wg=;
- b=IJb3tk/vfH25ZZf/2dKe+p8RG6UVCd0bOSD6hd9h8TPb4HgTMV0952WqPdp98Q/dC5
- icbRjqHlIMfYpLbuFluxZeA0j668WhKZUAlML2E287JzksrsAaStzjZpGYvyray+qoHt
- TwQPpWlPtmDeR6eECY/f6CWhwNa0r8iOEZUUCJBQv5jpu6EmtQBRorAV8DBO+nOtsJj6
- GkMKXKC92SlpK0qDSnuFcQkV6lwd3abxY82C0h71g9Uzg3NpTK1IzdSWokgozJIvfb9j
- iIaz8yG72N17rS0U92N1w7+zJflfd3zP3bh3IYzf2LKvA83wRSZkLoSavYbskR4uUC/Z
- QDfQ==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1t8Zmz-0004uN-Pk
+ for qemu-arm@nongnu.org; Wed, 06 Nov 2024 01:45:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1t8Zmu-0005Pi-Lm
+ for qemu-arm@nongnu.org; Wed, 06 Nov 2024 01:45:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1730875506;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=wSpucpDqsDvxTAZyhxFYFsGqMLIgHO1zXDbRy6bxakg=;
+ b=MCgcK5M9Wh90e0nZ2o+H+sp0VJ+BSZLurb80/oFBFxcIBeV5OQEzT6N9TkTcOZK5l7FkY4
+ KUmsctXIZ7Jw/5gRXmvh/hojUL0E8FdCakq64SctuSVa5wNyc9l0hY14aYnVj7T3Y/JeR3
+ 6vDEuJgLx43pu6586Rj+ToDrMWNmBQI=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-49-8auuPQPuP0Sc7VN4m2z84w-1; Wed, 06 Nov 2024 01:45:05 -0500
+X-MC-Unique: 8auuPQPuP0Sc7VN4m2z84w-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-431604a3b47so39969855e9.3
+ for <qemu-arm@nongnu.org>; Tue, 05 Nov 2024 22:45:05 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730849391; x=1731454191;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tjJDJMeZWZ0bLi+K9wzyg8U5rQIR7V2vFJ/qP35A+wg=;
- b=rHkFmdsv2NMQnoDIzMUi+DNWdIS9axI/UIgdgZq97YGXNsNvKGrpfhdU1a0KwFu1lW
- 4LsKZAcxlIXcEpmVNTsFxxi0RzJRpX58ZHjpUJhr6rDd8jQmf0n2cDqdcGd4mB6W+Tr0
- ++1Q3A0R/D7uF/yiPKW+VDG1Ur59n8zSnu2+J32eMd0NKk+BmbAfSrADYG8gIWeGSBEy
- rCUUS5NiiwSKuD2FiwD9yIfxPh2V6CLln2l8kL/oc4RIgAGsef9ClUm0yhhFU8g7IgKp
- MJX0D63ho4SjE858Ajgcqp1O2yxmmcPw8yqOiRd+wO4KdGPGApoOc110Mpy1NK57pTyz
- /LzQ==
+ d=1e100.net; s=20230601; t=1730875504; x=1731480304;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=wSpucpDqsDvxTAZyhxFYFsGqMLIgHO1zXDbRy6bxakg=;
+ b=WZLefiXXbYDJAsIhApGRcmTE5FXP8irmWRciUMbJDx/WS8GLgwdoJkiG2LebQbfjkz
+ Ri1Q+W7BEMTAA9lEUsjC2UvdL34BYqK4Z18HIcP5vcgb3mLmfTbVbIJ3QmsZ3XsG3X7y
+ MouRwCbgGutWUXG99wzRm2tkNztXci49V7lJKZPxVV5kKgHpXMy3nH4uH0hq6UrFgvHX
+ /++A/KDuLDYZcl4x7QMLbVDfVX7nH+H+XKlA15EpFAhppUy5fbDOOU91DYtXlWi40//j
+ za1mHL940Y8kmJaSjFAHGAtGHW86wwLMZahvICkpbmXcCG3peh4DFOHu+npW6sIMnX/d
+ qbSQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXKT+E9re1kPjz+Y4OQWNxHztFP/4hXEVPRmgxRwzgu6EJOVN0loHqJTm5EpC8M/yQPIdZhTbqNyQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz6MWThXFpC045DKL97f4lGjArdTKZkNDgmv4YCjHWkKmd1EoeJ
- MESMoOcTXQ9JIP+QwBG17u8wsSYrDS2OMuJOTWSUEfiJ2DtwMsTT+nc6F6c2rYE=
-X-Received: by 2002:a05:6402:3482:b0:5ce:d378:b098 with SMTP id
- 4fb4d7f45d1cf-5ced378b241mr10252507a12.5.1730849391289; 
- Tue, 05 Nov 2024 15:29:51 -0800 (PST)
-Received: from [172.20.143.32] ([89.101.134.25])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5cee6a9a36dsm1924554a12.9.2024.11.05.15.29.49
+ AJvYcCVcJ15ZvhLn3T8kth0QAs8RgJYfBEDz7jZFvwug7nV0Ojzinud+7cPXlsqkyaA4UkE1/UUBT0Mx5g==@nongnu.org
+X-Gm-Message-State: AOJu0YwVnXvj2A5/RaiSv1B9GponpwXX6793elrJaELwaMWyOAl9LKlA
+ K24wopwILvqBIuXnDW2FoXFYYhisyF8pVbpz6LA8Pfvlenl3aA5MHwhL0F84dhrYqxrSPTfu418
+ bngdHfciIBzUXb9G1R/gjpNkMhgAKxb9UCskRuiE6iv5FLtrjpA==
+X-Received: by 2002:a05:600c:46d4:b0:427:ff3b:7a20 with SMTP id
+ 5b1f17b1804b1-4319ad049a8mr318966535e9.27.1730875504306; 
+ Tue, 05 Nov 2024 22:45:04 -0800 (PST)
+X-Received: by 2002:a05:600c:46d4:b0:427:ff3b:7a20 with SMTP id
+ 5b1f17b1804b1-4319ad049a8mr318966305e9.27.1730875503917; 
+ Tue, 05 Nov 2024 22:45:03 -0800 (PST)
+Received: from [192.168.10.3] ([151.49.226.83])
+ by smtp.googlemail.com with ESMTPSA id
+ ffacd0b85a97d-381c10b7becsm18118987f8f.14.2024.11.05.22.45.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Nov 2024 15:29:50 -0800 (PST)
-Message-ID: <5434961f-93ec-4cda-a0be-3e35aaab5d7d@linaro.org>
-Date: Tue, 5 Nov 2024 23:29:48 +0000
+ Tue, 05 Nov 2024 22:45:03 -0800 (PST)
+Message-ID: <34f6fe2f-06e0-4e2a-a361-2d662f6814b5@redhat.com>
+Date: Wed, 6 Nov 2024 07:45:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 12/19] hw/net/xilinx_ethlite: Only expect big-endian
  accesses
-To: Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
  Anton Johansson <anjo@rev.ng>
 Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -112,20 +120,59 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
 References: <20241105130431.22564-1-philmd@linaro.org>
  <20241105130431.22564-13-philmd@linaro.org>
  <eae65cf8-af71-4b6d-8bfb-b22224f8496b@redhat.com>
+ <5434961f-93ec-4cda-a0be-3e35aaab5d7d@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
+ CxXPkIBTvYY+ZPkoTh5xF9oS1jqI8iRLzouzF8yXs3QjQIZ2SfuCxSVwlV65jotcjD2FTN04
+ hVopm9llFijNZpVIOGUTqzM4U55sdsCcZUluWM6x4HSOdw5F5Utxfp1wOjD/v92Lrax0hjiX
+ DResHSt48q+8FrZzY+AUbkUS+Jm34qjswdrgsC5uxeVcLkBgWLmov2kMaMROT0YmFY6A3m1S
+ P/kXmHDXxhe23gKb3dgwxUTpENDBGcfEzrzilWueOeUWiOcWuFOed/C3SyijBx3Av/lbCsHU
+ Vx6pMycNTdzU1BuAroB+Y3mNEuW56Yd44jlInzG2UOwt9XjjdKkJZ1g0P9dwptwLEgTEd3Fo
+ UdhAQyRXGYO8oROiuh+RZ1lXp6AQ4ZjoyH8WLfTLf5g1EKCTc4C1sy1vQSdzIRu3rBIjAvnC
+ tGZADei1IExLqB3uzXKzZ1BZ+Z8hnt2og9hb7H0y8diYfEk2w3R7wEr+Ehk5NQsT2MPI2QBd
+ wEv1/Aj1DgUHZAHzG1QN9S8wNWQ6K9DqHZTBnI1hUlkp22zCSHK/6FwUCuYp1zcAEQEAAc0j
+ UGFvbG8gQm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT7CwU0EEwECACMFAlRCcBICGwMH
+ CwkIBwMCAQYVCAIJCgsEFgIDAQIeAQIXgAAKCRB+FRAMzTZpsbceDp9IIN6BIA0Ol7MoB15E
+ 11kRz/ewzryFY54tQlMnd4xxfH8MTQ/mm9I482YoSwPMdcWFAKnUX6Yo30tbLiNB8hzaHeRj
+ jx12K+ptqYbg+cevgOtbLAlL9kNgLLcsGqC2829jBCUTVeMSZDrzS97ole/YEez2qFpPnTV0
+ VrRWClWVfYh+JfzpXmgyhbkuwUxNFk421s4Ajp3d8nPPFUGgBG5HOxzkAm7xb1cjAuJ+oi/K
+ CHfkuN+fLZl/u3E/fw7vvOESApLU5o0icVXeakfSz0LsygEnekDbxPnE5af/9FEkXJD5EoYG
+ SEahaEtgNrR4qsyxyAGYgZlS70vkSSYJ+iT2rrwEiDlo31MzRo6Ba2FfHBSJ7lcYdPT7bbk9
+ AO3hlNMhNdUhoQv7M5HsnqZ6unvSHOKmReNaS9egAGdRN0/GPDWr9wroyJ65ZNQsHl9nXBqE
+ AukZNr5oJO5vxrYiAuuTSd6UI/xFkjtkzltG3mw5ao2bBpk/V/YuePrJsnPFHG7NhizrxttB
+ nTuOSCMo45pfHQ+XYd5K1+Cv/NzZFNWscm5htJ0HznY+oOsZvHTyGz3v91pn51dkRYN0otqr
+ bQ4tlFFuVjArBZcapSIe6NV8C4cEiSTOwE0EVEJx7gEIAMeHcVzuv2bp9HlWDp6+RkZe+vtl
+ KwAHplb/WH59j2wyG8V6i33+6MlSSJMOFnYUCCL77bucx9uImI5nX24PIlqT+zasVEEVGSRF
+ m8dgkcJDB7Tps0IkNrUi4yof3B3shR+vMY3i3Ip0e41zKx0CvlAhMOo6otaHmcxr35sWq1Jk
+ tLkbn3wG+fPQCVudJJECvVQ//UAthSSEklA50QtD2sBkmQ14ZryEyTHQ+E42K3j2IUmOLriF
+ dNr9NvE1QGmGyIcbw2NIVEBOK/GWxkS5+dmxM2iD4Jdaf2nSn3jlHjEXoPwpMs0KZsgdU0pP
+ JQzMUMwmB1wM8JxovFlPYrhNT9MAEQEAAcLBMwQYAQIACQUCVEJx7gIbDAAKCRB+FRAMzTZp
+ sadRDqCctLmYICZu4GSnie4lKXl+HqlLanpVMOoFNnWs9oRP47MbE2wv8OaYh5pNR9VVgyhD
+ OG0AU7oidG36OeUlrFDTfnPYYSF/mPCxHttosyt8O5kabxnIPv2URuAxDByz+iVbL+RjKaGM
+ GDph56ZTswlx75nZVtIukqzLAQ5fa8OALSGum0cFi4ptZUOhDNz1onz61klD6z3MODi0sBZN
+ Aj6guB2L/+2ZwElZEeRBERRd/uommlYuToAXfNRdUwrwl9gRMiA0WSyTb190zneRRDfpSK5d
+ usXnM/O+kr3Dm+Ui+UioPf6wgbn3T0o6I5BhVhs4h4hWmIW7iNhPjX1iybXfmb1gAFfjtHfL
+ xRUr64svXpyfJMScIQtBAm0ihWPltXkyITA92ngCmPdHa6M1hMh4RDX+Jf1fiWubzp1voAg0
+ JBrdmNZSQDz0iKmSrx8xkoXYfA3bgtFN8WJH2xgFL28XnqY4M6dLhJwV3z08tPSRqYFm4NMP
+ dRsn0/7oymhneL8RthIvjDDQ5ktUjMe8LtHr70OZE/TT88qvEdhiIVUogHdo4qBrk41+gGQh
+ b906Dudw5YhTJFU3nC6bbF2nrLlB4C/XSiH76ZvqzV0Z/cAMBo5NF/w=
+In-Reply-To: <5434961f-93ec-4cda-a0be-3e35aaab5d7d@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <eae65cf8-af71-4b6d-8bfb-b22224f8496b@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,48 +187,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jiHbzC+jV/Il
+X-TUID: W3RWTaUlLQjb
 
-On 5/11/24 14:18, Paolo Bonzini wrote:
-> On 11/5/24 14:04, Philippe Mathieu-Daudé wrote:
->> The Xilinx 'ethlite' device was added in commit b43848a100
->> ("xilinx: Add ethlite emulation"), being only built back
->> then for a big-endian MicroBlaze target (see commit 72b675caac
->> "microblaze: Hook into the build-system").
->>
->> I/O endianness access was then clarified in commit d48751ed4f
->> ("xilinx-ethlite: Simplify byteswapping to/from brams"). Here
->> the 'fix' was to use tswap32(). Since the machine was built as
->> big-endian target, tswap32() use means the fix was for a little
->> endian host. While the datasheet (reference added in file header)
->> is not precise about it, we interpret such change as the device
->> expects accesses in big-endian order. Besides, this is what other
->> Xilinx/MicroBlaze devices use (see the 3 previous commits).
->>
->> Correct the MemoryRegionOps endianness. Add a 'access-little-endian'
->> property, so if the bus access expect little-endian order we swap
->> the values. Replace the tswap32() calls accordingly.
->>
->> Set the property on the single machine using this device.
+On 11/6/24 00:29, Philippe Mathieu-Daudé wrote:
+> We assumed most guest vCPUs run with the same endianness of the binary.
 > 
-> I don't understand.  This machine type is little-endian only and 
-> expecting inverted accesses, isn't it?  Therefore, all that you need is
+> Now we want to swap wrt the vCPU, not the binary. So indeed this patch
+> effectively undo the memory.c swapping (feature).
 > 
->> -    .endianness = DEVICE_NATIVE_ENDIAN,
->> +    .endianness = DEVICE_BIG_ENDIAN,
-> 
-> And removing the tswap altogether.  The big-endian petalogix board will 
-> start getting "correct" values (not swapped anymore).  That's a feature, 
-> not a bug.
+> I suppose the better way is to modify memory.c, possibly passing MemOp
+> all over. For HW accel where vCPU endianness is forced to host one,
+> this would become a no-op. Lot of rework in perspective.
 
-The feature is memory.c swapping MemoryRegionOps depending on the
-*qemu-system binary* target endianness.
+It should be much easier than that.  First of all, this is when memory.c
+swaps according to DEVICE_*_ENDIAN:
 
-We assumed most guest vCPUs run with the same endianness of the binary.
+guest      \   host    little-endian         big-endian
+little-endian          BIG                   LITTLE, NATIVE
+big-endian             BIG, NATIVE           LITTLE
 
-Now we want to swap wrt the vCPU, not the binary. So indeed this patch
-effectively undo the memory.c swapping (feature).
+tswap swaps in the two cases marked "NATIVE" (same as DEVICE_NATIVE_ENDIAN).
+ldl_le_p swaps in the two cases marked "LITTLE" (same as DEVICE_LITTLE_ENDIAN).
+ldl_be_p swaps in the two cases marked "BIG" (same as DEVICE_BIG_ENDIAN).
 
-I suppose the better way is to modify memory.c, possibly passing MemOp
-all over. For HW accel where vCPU endianness is forced to host one,
-this would become a no-op. Lot of rework in perspective.
+
+First of all, current code does different things for RAM vs. the other
+registers.  After your patch it's the same, which seems fishy.
+
+Anyway let's focus on RAM for now.  Current code (unconditional tswap +
+DEVICE_NATIVE_ENDIAN) always performs an even number of swaps:
+
+guest      \   host    little-endian         big-endian
+little-endian          none                  tswap+memory.c
+big-endian             tswap+memory.c        none
+
+That's what Edgar says - it's just RAM.
+
+
+
+So with your patch the behavior becomes:
+
+guest      \   host    little-endian         big-endian
+little-endian          bswap+memory.c        bswap
+big-endian             memory.c              none
+
+Behavior changes in the cross-endianness case.  LE-on-LE remains the same.
+It seems to break BE hosts since petalogix is a qemu-system-microblazeel board.
+
+If this reasoning is correct, together with DEVICE_BIG_ENDIAN you need
+cpu_to_be32 instead of tswap:
+
+guest      \   host    little-endian         big-endian
+little-endian          cpu_to_be32+memory.c  none
+big-endian             cpu_to_be32+memory.c  none
+
+  
+
+However, things are different for the R_RX* and R_TX* cases.
+
+Before:
+
+guest      \   host    little-endian         big-endian
+little-endian          none                  memory.c
+big-endian             memory.c              none
+
+
+Your patch here keeps the same evenness of swaps, even if who
+swaps changes:
+
+guest      \   host    little-endian         big-endian
+little-endian          bswap+memory.c        bswap
+big-endian             memory.c              none
+
+Is this just a change in migration format for the RAM ara?  Then I
+guess your patch works, though I'd prefer Richard's suggestion of
+flipping the endianness in the MemoryRegionOps.
+
+
+However, since you said the board is LE-only, maybe the following
+also works and seems simpler?
+
+1) use DEVICE_LITTLE_ENDIAN (i.e. always the same perspective as
+qemu-microblazeel)
+
+2) use cpu_to_le32 for RAM and nothing for the other registers
+
+
+But again, maybe I'm completely wrong.
+
+Paolo
+
+

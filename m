@@ -1,106 +1,106 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4108009njc;
-        Thu, 7 Nov 2024 02:28:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX3jTqA30ii4Z5FTn/oQJiUAi7AhUP0tNIT7TMt30S/MwGjjnS1fy/uPjypL4MXAgBoCZmOHS3X4BbmTg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGy24/kEDqIkrlie3nEI7blcM3NyBBIw7Nz/wkR6I5YwXCdO99hR7STKNUfHlnQ6LKNtSDM
-X-Received: by 2002:ac8:7d41:0:b0:461:18f2:49be with SMTP id d75a77b69052e-462b868747dmr309251311cf.21.1730975290739;
-        Thu, 07 Nov 2024 02:28:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730975290; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4123485njc;
+        Thu, 7 Nov 2024 03:02:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX+i5pQPKl5ESLHs6CcQMw5mRMUm6xmLvs43T2IKoAIHA3v/m96QJ7pihT7xwON5v8yucIikrGYvXATmQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHgqVAkKYKGktUBlYBNp/PKfcEdZ7Um/AQ/hjdlJ1NTHmklzD1qIQ+qZ8Ym3GiWpVlxmUTm
+X-Received: by 2002:a05:6808:18a3:b0:3e6:b3:33ea with SMTP id 5614622812f47-3e78fcb74acmr724439b6e.14.1730977356840;
+        Thu, 07 Nov 2024 03:02:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730977356; cv=none;
         d=google.com; s=arc-20240605;
-        b=Yhuvt2yDjWrPL5yLDV0hMuP/RSH3/iZesbFacG0y0JBje2Cvd1KSOzZo84N0forAnR
-         bVy1R5QbsWBa0WHyHxWNUW6XTKWOMGtY9JjMJ0VAAqtqnK0/sryR+pO4XgB6xD6NyAVl
-         DFXvM9RIJoVrd4xfkTfIiXDOv8JuLFvKw4RvoVrHRlXx8jDERUBJS+lTeI4AiIO/ZCcd
-         TQJTuWjWh7SzkWcZvlpExvcnDzZRQwWc7LmlWK/Wx6VSJntq616g1gON/23xom7zlr0K
-         ILDwHw2g8GB2smYmuBW9dSlMi+LVRZh+WotTriECt3zTl05W0Ymd4l7KFDRe6eGuggxi
-         3XVA==
+        b=WhLjBnin7yz/gVEvlaNu3sXUwMrXdXkjS+z/wmICqe4lyzAxAl7AYbybu9R2DbuD6p
+         Y9L4qKq4HrwuuX49R5UqZMiUUdNvfnXN+hNKNf8vPB7ldmUQfGheP0fU+XNjHFDK/l9s
+         WDC+tlg8NwlgEkslbLC0sklnCqj4zbgG5sQGiTCzi8AmyNfWWwd40tSigC5dtzQa5xrJ
+         JpPRjbV7TCUQ+42A6LFkaUE+0oE2STdDNIXiowZLbR+wED9RNyPacGktij2lGs+Q1gR4
+         tKJhoLEw05qik0ZRwiVNarBw1hxCEiiZmF9ryG6sGPpac7+IrNgrycA4M8JmOqixQTCZ
+         tHGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=wX89TnjD0GpGlaLexSSa5ZtdHMZ3CG5OaqI44rLpj68=;
-        fh=FGkn5uymvOjMNsXQ1w5gUCe0xMXUpxbKqAVcg5ydvsk=;
-        b=PWeiOTGs+UVK10uAHxcRr3BjSps6582lSTV/2qlPapldl1i/pyhmY08+bnbjluSejb
-         tIcF9aLt8D/ajAb7lq3SOFd97X0nv2ZPROPcjObS2PycGtg8e0fIWzWHldel0vEApPV/
-         Hai1JwDSYgbuGa6VDWrHYTKVG5/VNs9GPC8/o3SaBH9im3wMrBTEdWE8a89KF4AzSK/t
-         J7ifyeNAiOdiEhWI4k8nHIlyGHKs6oT7xAb+oadUD6Jjtm06fRDo+/T+d2C/ydjDJx3o
-         an/0hC0LsskoZPA4vAgZzt+I32gj82chKp0xK8cVJJ/9wgY7Y6uf2uEdUX4hqSzYaWfD
-         FiTg==;
+        bh=DDq9D1U8taeFULz8W5ddU7nLUTOFAivkmxpUM45Z04A=;
+        fh=LFSibL5J6aGwD3gtd8RvnNJAlCmLcgVpTz2OVCzrIiI=;
+        b=afJbG1K+brcPNe4oPrMjKVNs2yxVjqY//kIiofZ5/3yMdhdNoQYirRMS19KgubbBQE
+         g0F1Tf9ImJlFSyjq1VfTmLOTFayRsUAKByXP8tmqLu6soK71NpoUljh55absmdmMDE/k
+         35Kxs7kSB5hlJrGOjScz+IFf4WjMHjLHmdQiWEEKmLVN6BQyyAUtza4sh/kNgJgpOsej
+         e6WO6wkEmaQ98aLcLFmwq4Mlh+/qZF9TqSA38m9Uo2iHT83jIfHGm3cGnhlpJ12e0Ylx
+         JV0k4SxSfyomMoO4xbeVvRgyWLrbERjSu6Up8QVWBRDiuveCwGmK+RmuCwZch5pqJILG
+         ZTYQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B3WSYVbD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="v1/hS8NX";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ff40e92csi11801871cf.3.2024.11.07.02.28.10
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-856555b52adsi154606241.90.2024.11.07.03.02.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Nov 2024 02:28:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 07 Nov 2024 03:02:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B3WSYVbD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="v1/hS8NX";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t8zk8-0008G5-CL; Thu, 07 Nov 2024 05:28:00 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t90H4-0001G6-GI; Thu, 07 Nov 2024 06:02:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1t8zk7-0008Fk-1B
- for qemu-devel@nongnu.org; Thu, 07 Nov 2024 05:27:59 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ id 1t90H2-0001FM-UQ
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2024 06:02:00 -0500
+Received: from mail-lj1-x231.google.com ([2a00:1450:4864:20::231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1t8zk5-00031N-5y
- for qemu-devel@nongnu.org; Thu, 07 Nov 2024 05:27:58 -0500
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-5cefa22e9d5so861777a12.3
- for <qemu-devel@nongnu.org>; Thu, 07 Nov 2024 02:27:56 -0800 (PST)
+ id 1t90H1-0000mB-A2
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2024 06:02:00 -0500
+Received: by mail-lj1-x231.google.com with SMTP id
+ 38308e7fff4ca-2f75c56f16aso7471791fa.0
+ for <qemu-arm@nongnu.org>; Thu, 07 Nov 2024 03:01:58 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730975275; x=1731580075; darn=nongnu.org;
+ d=linaro.org; s=google; t=1730977317; x=1731582117; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=wX89TnjD0GpGlaLexSSa5ZtdHMZ3CG5OaqI44rLpj68=;
- b=B3WSYVbDWJqg4k5J1ESIviAE75+z4hnGrL39vN1OuDjjBbV/ke1LS6CGyYdQLgbzcL
- RxxcEy+bjjWNBC7yCPZQDVPOfH4btjv8eJVXvJEZFk7gXJ38HDBQC8NxPprt27R7zxCd
- O2pXhXd2oqQPqc0/VwwDM0Pc95rvk6mI3jP06trTLOmUsZPEpqkNp4EwPidkINVYgQV3
- YOs6IL4VIh5SJ323Jf/kw/Oj9q34J4/oqhJ8FR7qbKpDEArUrmkZE2dwCjmG//bSilRR
- 3OXX7/o4krGujOxAaagLi2nQGSnQM7kYTlTmztsjxASmv2bljT8aH1jGpRpfbgl8L4AJ
- 3yPA==
+ bh=DDq9D1U8taeFULz8W5ddU7nLUTOFAivkmxpUM45Z04A=;
+ b=v1/hS8NXkQTeRL2Q87/KFHBxShVEIrShLnQpMk6clc3ybcZXm81MKUXFvoxChlKSaf
+ WUCYm4kHltAWoQuC+v/TN/lvWUTgmsc0uAidlOKmaFzk/MTpdmbiznJ/T7gtBvNbGOhT
+ yguK6ttuBOC9stNMDGUbrGKS3V+f3/xpNc/D8G+tilT/CUZlBb7KaNBLnFf99ZITEpO9
+ uHKoiOUTZGeBTzOvmARJF5wcgWLWwvtQa8Wvkdumh9FlraYxBKMtlFgSYRKvrnxIwH/K
+ ZSIRhHiK9VM13l2VohpYFUs/9Urqk1Gbn/XpiHSuCim5jfawtJU5D5heSx4OuBcMzYoE
+ R6mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730975275; x=1731580075;
+ d=1e100.net; s=20230601; t=1730977317; x=1731582117;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wX89TnjD0GpGlaLexSSa5ZtdHMZ3CG5OaqI44rLpj68=;
- b=vAYC+PkQuq8Ui8DNTRPFw5hAC3hPlYS2lPQ3Le1+4SxtOc6Sagv4Y5G/nOaOzjx7Dn
- LJjQrCrtvH19M3KK+5oWxRLa1lMdfmuz7sCUFd+5Hz+Rgi3Qbw/W+RTLOPt119okSkr6
- 1qDM6L+n3tZeIQEuPxFaHhSxUQ8+erDGyq5zkfFH19PbE2C/n7UJ6Qspn2IP6u80VyhJ
- AmZewLc0Tf45HoNsm6RyMO+81gnQ1MvRSJv22pU9KBlFDeEcihmzcxsO4pqR0XGBe+JZ
- PWNomPI3V9BcQyJ5XR+BraiZj+NVTnPKlenIcqzgnoh6a53Otw4HP4vmyV8gPwOEdBkj
- ST3A==
+ bh=DDq9D1U8taeFULz8W5ddU7nLUTOFAivkmxpUM45Z04A=;
+ b=sjuCfFCNc6xq3GvhlOqWrv0fSnRczZYFv3QAUVZjZYlkiMLwL7MHObHmG5mJaUd5my
+ ho93v9gCBzLLZ1uk8JZ64YCgGkO3LqCKN+Eyfnfpx48PQ7Sjrob8deJntxSegspTmbKZ
+ Fe9qzqF62sfezvFj48dUSrTa2hbpEkiS//afuszXEp9NB6kS6EvCg/UoO1+J1arbzImo
+ oAOEXNuclwdjdWpfwfB0ADn1IKoUlXAlVKO7AMCePW/ujOJWFQGb3ecaGhSqtG0rIqBl
+ Gkj4Ag61N7pQc/J748WmuOyWT4xwjOPm3ZR/dxGXf6PSCdXN0rVpPYJsNn0330xEUxk2
+ t7Sw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU36/d0DDYDTOGZho2eHcJI0bFI4GWIhgXQCmmb7rMy9gJhJWpJjXC8Nv13o3RXcDy6r0+YV2JLCkd1@nongnu.org
-X-Gm-Message-State: AOJu0YyYMa+fw2A8VOpyItIc7BxFReBj5honEQK72q03ETtiUpTB2FPv
- DPDMvCtOfhjoIByF0DlXr21sdIo8i+2udcMpYl/SOcidvoAdggVkdWgIYeBy4qk=
-X-Received: by 2002:a05:6402:3202:b0:5c4:14fe:971e with SMTP id
- 4fb4d7f45d1cf-5cbbf920567mr30670560a12.23.1730975275173; 
- Thu, 07 Nov 2024 02:27:55 -0800 (PST)
+ AJvYcCUszO739glH4GfwPN4XjiHxrewRO4yO4X99wjTkvx2Fbgije7j2PujmwB26o9532Lj+rbH6QeyAIg==@nongnu.org
+X-Gm-Message-State: AOJu0Yyryb7jlgkOBIvDsPMBmVv8aR1PXNxII2KeLmSIiRIcu5/+Cb7k
+ 0f5l4uShAZkfbMEXkJNur2rXwUzRltBqM7XtbdJCZseE4VHRzmgn1FHgpBe0IRs=
+X-Received: by 2002:a05:651c:1b13:b0:2fa:d604:e525 with SMTP id
+ 38308e7fff4ca-2ff1aadd768mr6195211fa.28.1730977317218; 
+ Thu, 07 Nov 2024 03:01:57 -0800 (PST)
 Received: from [172.16.23.118] ([89.101.134.25])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5cf03c7d957sm609806a12.87.2024.11.07.02.27.53
+ 5b1f17b1804b1-432b054b34csm20140695e9.14.2024.11.07.03.01.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Nov 2024 02:27:54 -0800 (PST)
-Message-ID: <fe69adc2-0ebb-4be0-93a2-9a45d87c36d3@linaro.org>
-Date: Thu, 7 Nov 2024 10:27:52 +0000
+ Thu, 07 Nov 2024 03:01:56 -0800 (PST)
+Message-ID: <4b678b54-0f1b-4b3e-8201-fb22c7cd7cd5@linaro.org>
+Date: Thu, 7 Nov 2024 11:01:53 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 07/16] hw/char/xilinx_uartlite: Make device endianness
+Subject: Re: [PATCH v2 08/16] hw/ssi/xilinx_spi: Make device endianness
  configurable
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Anton Johansson <anjo@rev.ng>, qemu-devel@nongnu.org
@@ -111,36 +111,36 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>
 References: <20241107012223.94337-1-philmd@linaro.org>
- <20241107012223.94337-8-philmd@linaro.org>
+ <20241107012223.94337-9-philmd@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20241107012223.94337-8-philmd@linaro.org>
+In-Reply-To: <20241107012223.94337-9-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x530.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::231;
+ envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x231.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Zpx/7VrbUf4Q
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 313PZZwLtiou
 
 On 11/7/24 01:22, Philippe Mathieu-Daudé wrote:
 > Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair
@@ -152,50 +152,28 @@ On 11/7/24 01:22, Philippe Mathieu-Daudé wrote:
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/char/xilinx_uartlite.c                | 44 ++++++++++++++++--------
->   hw/microblaze/petalogix_s3adsp1800_mmu.c |  1 +
->   2 files changed, 31 insertions(+), 14 deletions(-)
+>   hw/arm/xlnx-zynqmp.c |  4 ++++
+>   hw/ssi/xilinx_spi.c  | 29 +++++++++++++++++++++--------
+>   2 files changed, 25 insertions(+), 8 deletions(-)
+> 
+> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+> index ab2d50e31b..e735dbdf82 100644
+> --- a/hw/arm/xlnx-zynqmp.c
+> +++ b/hw/arm/xlnx-zynqmp.c
+> @@ -714,6 +714,10 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+>       for (i = 0; i < XLNX_ZYNQMP_NUM_SPIS; i++) {
+>           gchar *bus_name;
+>   
+> +        if (!object_property_set_bool(OBJECT(&s->spi[i])), "little-endian",
+> +                                      true, errp)) {
+> +            return;
+> +        }
 
+How might this ever fail?
+Despite xlnx_zynqmp_realize having an errp argument, I'd be inclined to use error_abort.
+
+Otherwise,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-> +static const MemoryRegionOps uart_ops[2] = {
-> +    {
-> +        .read = uart_read,
-> +        .write = uart_write,
-> +        .endianness = DEVICE_BIG_ENDIAN,
-> +        .impl = {
-> +            .min_access_size = 4,
-> +            .max_access_size = 4,
-> +        },
-> +        .valid = {
-> +            .min_access_size = 1,
-> +            .max_access_size = 4,
-> +        },
-> +    }, {
-> +        .read = uart_read,
-> +        .write = uart_write,
-> +        .endianness = DEVICE_LITTLE_ENDIAN,
-> +        .impl = {
-> +            .min_access_size = 4,
-> +            .max_access_size = 4,
-> +        },
-> +        .valid = {
-> +            .min_access_size = 1,
-> +            .max_access_size = 4,
-> +        },
->       }
->   };
-
-Having looked at several of these now, it occurs to me that you can avoid repetition:
-
-static const MemoryRegionOps uart_ops[2] = {
-     [0 ... 1] = {
-         .read = uart_read,
-         etc,
-     },
-     [0].endianness = DEVICE_BIG_ENDIAN,
-     [1].endianness = DEVICE_LITTLE_ENDIAN,
-};
 
 
 r~

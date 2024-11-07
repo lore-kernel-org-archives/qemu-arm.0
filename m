@@ -1,366 +1,430 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4156251njc;
-        Thu, 7 Nov 2024 04:05:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWsjqByh8gEkLPKEAFm4FrSZVyQuZox2yigmCMUEK0AuBXpfifD22DbB3FFpg4uAQLeiJhccXBg+yrs+Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IGl07cpnEi9FZU/lgL5/Oal4M6f+NCsoTRSiwHyI0OZnpqtpiP6ZewOk2uIUgFftOixQbmJ
-X-Received: by 2002:a05:620a:2888:b0:7a9:a356:a5dd with SMTP id af79cd13be357-7b32dffdc78mr128380085a.20.1730981150456;
-        Thu, 07 Nov 2024 04:05:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730981150; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4353996njc;
+        Thu, 7 Nov 2024 08:57:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWYrKfTjRTzr787Sc1+a+Ergvi2ntbKwRsCyYyvZkZI8qyejgaS543dV7mCYRjrSRyGmWTEYD8sAeU/SA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGREBk319NB5vaFec3w603B1i+jP3IaJ5gJxT7Yo8SaCpUquaxz1Rm/hAUbLZLAlkztdR+q
+X-Received: by 2002:a05:6214:3bc7:b0:6cb:be3c:ab05 with SMTP id 6a1803df08f44-6d39d9de650mr218636d6.38.1730998646112;
+        Thu, 07 Nov 2024 08:57:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730998646; cv=none;
         d=google.com; s=arc-20240605;
-        b=b9vhckBaAk3vbsonmMl9WsQ2+1LHOcWPAWglRvxRoMqrfJWltTNYNDZZScmUmL+jlC
-         FmROIS+x6mbVwxgTWBNPgKg5jxv628I4ooVGPu+KCl0r4IMMnLDqZOQ/cK+eS0lHB78I
-         +lCXxNr2rjJ2FZBsHozl9R2xPqQ45CN0W+uWFcP7DWAsNOxWKcNI5tFAMYZOPEN/F8Bl
-         tSNgpvLwojdUCRnaTsl9LHb9meN1thqlTPSDIPby201FpYLooMpj/lnGPmHnCBv323p/
-         nF7FklCvZvNZVA9xKFtzJNytqUYeocmSijIY0/MsvbdW4ahsd7Iy2sfQRoNVq3ZJyvZG
-         NnUw==
+        b=i5kotLWnvi5nV2e9l0QyOj5B/O8Zq4nmgxmwB/uMTmGzHcdzZsmQ2WyNZQQzThdzhm
+         OCLN0gTKZw6dZGEUCwfVTc2sbGRwccXEWBrJkKI1OwVRrmwp7jLYQwDm6UDT/phXbkYH
+         X99hJFpt0hKumQ3lAXRdy4poM6E6//5mQRLCUWAe3KdtMUKZ7YiycMFcTGUwAcBX62Rn
+         VMmVAYdnO57z3aPTSj5c+87d4f5xd9QRQsln7V4deXhgx6jHIN+tGsieRCigQ8QyxFhB
+         cIljB4KcskpBVe1fbRg4QVO4sNG4miCNUPf1IfEG/oVc7wE92Bw0gCD6nubpE+yMxi9+
+         DsAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:date;
-        bh=HuzIRW0roysNhK1Z0xAdmPF96Qa1QBxQjaRVK+433ZE=;
-        fh=53pOvERpcaWUZv9LUNI9RdLZvkaBCLIRCF8F+F1I4Hg=;
-        b=YXWaZt/v+wS/qw7TvnXVemd4PgG/X9rghG5tlfqucfd+Q8fT7r62zoLkLUTvKAaIcR
-         szd2bDr2kXG7zJ781QOzUfivfBnoTnmEfcsrItPVigbzc2s4SvCeb2fwYkaXDNq12vyY
-         DuN4519ynVPXObkGaOTTM1nZ7UTo52wmTWbjpS8qMmBRyzXbdBU3bD5vlmauIuN5KNqL
-         ChE8xXOfkWZkPFcdHtj5czVgqpmf0cu9Lsg1HFlE3zmETQKSClxb+dUCGO2Aibs/modg
-         L0tB7z5/2neX8HnK5e5Nx1oMUb9z2+IBeATW8mmSiCtt0SqRXBTiclTD0uA255xvsEfk
-         0U2w==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=rrCTtWuu+7TAJvD8VFDy9NKfEB2Ww99Dp+mj3g6wArE=;
+        fh=dD4M3Ma3AR4Om8YQa2gwJOFI4z1feRafn4I2TxuGrkA=;
+        b=ITcy/7J2KJwca+qNXlfyNmscQIOEAFB6QIe9thnaXJBfGAmprlqJqPQRt55Q4gvlYp
+         fw6zKklUNsmH9aBmL+cHTg+o/i/4SAj+rX1VV+dMBOrfFlhX2l3wjFnras48i30FjliD
+         GtxlCIPfCg/G3y043y5JdUvg6qQGyDttFWyxOQVTFdOK047y6oy/3P5S58Vfv6XchWn7
+         DkDw1scvyhiBaFg8M1nGB/cjMZmSmEqIc/XiJIrG6hzFKaeSx4lQKGMkNy+wUrpxoqTP
+         DKZZKJuB7gBY1ncOAsgGQry6PRs4J8uNk7lKcgP6HRhNzfzCJd9pY10Ju8ipF7YnZ0+O
+         hG4w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b32ad12905si144878085a.562.2024.11.07.04.05.50
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B9HFpYAX;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <imammedo@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d3966bf5d2si19161476d6.521.2024.11.07.08.57.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Nov 2024 04:05:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 Nov 2024 08:57:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t91GL-0004yN-42; Thu, 07 Nov 2024 07:05:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1t91GE-0004uD-Aj; Thu, 07 Nov 2024 07:05:14 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1t91GA-00041j-Js; Thu, 07 Nov 2024 07:05:13 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xkgk43q4hz6LD90;
- Thu,  7 Nov 2024 20:05:00 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 6FC4B140CB9;
- Thu,  7 Nov 2024 20:05:04 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 7 Nov
- 2024 13:04:58 +0100
-Date: Thu, 7 Nov 2024 12:04:57 +0000
-To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-CC: <devel@edk2.groups.io>, <marcin.juszkiewicz@linaro.org>,
- <ardb+tianocore@kernel.org>, <quic_llindhol@quicinc.com>,
- <peter.maydell@linaro.org>, <chenbaozi@phytium.com.cn>,
- <linux-cxl@vger.kernel.org>, <asa-dev@op-lists.linaro.org>,
- <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: Re: [edk2-devel] [RFC PATCH v2 1/1] hw/arm/sbsa-ref: Support CXL
- Host Bridge & CFMW
-Message-ID: <20241107120457.00006024@Huawei.com>
-In-Reply-To: <20241105104346.417102-2-wangyuquan1236@phytium.com.cn>
-References: <20241105104346.417102-1-wangyuquan1236@phytium.com.cn>
- <20241105104346.417102-2-wangyuquan1236@phytium.com.cn>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=B9HFpYAX;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1730998645;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=rrCTtWuu+7TAJvD8VFDy9NKfEB2Ww99Dp+mj3g6wArE=;
+	b=B9HFpYAXIZwwLxMCgK7Lk4dOpiLPcVFYSBqgF4HU1X23bY4c2n/qSi58mlkwkWmoDRwTI9
+	PuYN2Q8cwk2N0ybOdQU93PXgPHGjOctyHkPS6BMvGiq+TKZKwvhNb/rG7ZlzTy+LEy7pKz
+	aZy5adMAielW/2km7o0b/gL6wGYaLDk=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-614-jOb1UAcbNOycVtnx2YASeg-1; Thu, 07 Nov 2024 11:57:19 -0500
+X-MC-Unique: jOb1UAcbNOycVtnx2YASeg-1
+X-Mimecast-MFC-AGG-ID: jOb1UAcbNOycVtnx2YASeg
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-4315af466d9so7892375e9.3
+        for <alex.bennee@linaro.org>; Thu, 07 Nov 2024 08:57:19 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1730998638; x=1731603438;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=rrCTtWuu+7TAJvD8VFDy9NKfEB2Ww99Dp+mj3g6wArE=;
+        b=SpXL1VYWYy0xBvEiTA5995u86DFbCyQ5ujE4BBHs9JaR/+BIVGwhE0kd0joNA2pNIf
+         KPdDCFpNvp76g5J4D6Alkjp5dgOyhWF70KpoAf/J+tJ3jOWerA78uPJQm3dtlG+5IIEl
+         qSok12TDAEqIyvEDViaKp3IFH3oRfQKbNSfSdwKF77NAc83U2YNQstzjg8fV0qganO3V
+         s0RoEFUv2R4fItdYKTr9tnFFTnWbvxtbqR8oJmsSYYTvzDaNVmMdknZzIMlkLOda4S00
+         g5h/F0QDIXHb13j6tR1Jro6QkR+L3G4iJuHz6aRogX2MgPFLh2bVXHQtT81E6RFOHegW
+         9CyA==
+X-Forwarded-Encrypted: i=1; AJvYcCWxjeobXS+bh4iW4VZkm7QT80w7orW9MSnaXShmMXfqzO5jd0JQ8cSC1ZmnwrE1f076E2y1A9Ea2g/+DA==@linaro.org
+X-Gm-Message-State: AOJu0Ywj0sOl9nL9mKvO3sa5gYjMNO9XnC3UZEgvlU6WdVGeVJHC83u5
+	RZrIBr90u2hoa6TMyf0qiVSo56BsqU6ci2ZBjXAX3Z0X/Y+h8UZQ8vP9HJLOTk32xOrKtymELLg
+	c0YsV0v6STPOkSZYV7DXQXFpDe/I1nLnjKxz3qffzx6QEy9oij0QXFA==
+X-Received: by 2002:a05:600c:3d8a:b0:431:57e5:b251 with SMTP id 5b1f17b1804b1-4328327e6d2mr182011955e9.28.1730998638155;
+        Thu, 07 Nov 2024 08:57:18 -0800 (PST)
+X-Received: by 2002:a05:600c:3d8a:b0:431:57e5:b251 with SMTP id 5b1f17b1804b1-4328327e6d2mr182011635e9.28.1730998637732;
+        Thu, 07 Nov 2024 08:57:17 -0800 (PST)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432aa70a1f8sm70293115e9.30.2024.11.07.08.57.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 Nov 2024 08:57:16 -0800 (PST)
+Date: Thu, 7 Nov 2024 17:57:15 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, Jonathan Cameron
+ <jonathan.cameron@huawei.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>, "anisinha@redhat.com"
+ <anisinha@redhat.com>, "eduardo@habkost.net" <eduardo@habkost.net>,
+ "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
+ "david@redhat.com" <david@redhat.com>, "philmd@linaro.org"
+ <philmd@linaro.org>, "peterx@redhat.com" <peterx@redhat.com>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>, "gshan@redhat.com"
+ <gshan@redhat.com>, "borntraeger@linux.ibm.com"
+ <borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
+ <alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
+ "darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
+ "ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
+ "vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
+ "karl.heubaum@oracle.com" <karl.heubaum@oracle.com>,
+ "miguel.luis@oracle.com" <miguel.luis@oracle.com>, "salil.mehta@opnsrc.net"
+ <salil.mehta@opnsrc.net>, zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng
+ (C)" <wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
+ "zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm
+ <linuxarm@huawei.com>, "gustavo.romero@linaro.org"
+ <gustavo.romero@linaro.org>
+Subject: Re: [PATCH 2/3] Fix: Reverse CPUs presence check logic for x86
+ backward compatability
+Message-ID: <20241107175715.4f07ae22@imammedo.users.ipa.redhat.com>
+In-Reply-To: <2bb1abda0787405b95af0233940e3df7@huawei.com>
+References: <20241106130331.205020-1-salil.mehta@huawei.com>
+	<20241106130331.205020-3-salil.mehta@huawei.com>
+	<20241106145635.77332d7c@imammedo.users.ipa.redhat.com>
+	<28a19ad7554e4b70819e1435669eeba3@huawei.com>
+	<20241106170734.0c7a5adb@imammedo.users.ipa.redhat.com>
+	<2bb1abda0787405b95af0233940e3df7@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: faJXO--_r_JOv8Jnf860BUSYY2Zqp4ghGmNkqm4K3GU_1730998638
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
-X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
- frapeml500008.china.huawei.com (7.182.85.71)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-From:  Jonathan Cameron via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0sm7kr9BXPZX
+X-TUID: R8T9/N6ihav2
 
-On Tue,  5 Nov 2024 18:43:46 +0800
-"Yuquan Wang" <wangyuquan1236@phytium.com.cn> wrote:
+On Wed, 6 Nov 2024 19:05:15 +0000
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-> This creates a default pxb-cxl (bus_nr=0xc0) bridge with two
-> cxl root ports on sbsa-ref. And the memory layout places 64K
-> space for the cxl host bridge register regions(CHBCR) in the
-> sbsa-ref memmap.
+> Hi Igor,
 > 
-> In addition, this support indepentent mmio32(32M) & mmio64(1M)
-> space for cxl components.
+> Thanks for replying back and the reviews. Please find my replies
+> inline.
+> 
+> >  From: Igor Mammedov <imammedo@redhat.com>
+> >  Sent: Wednesday, November 6, 2024 4:08 PM
+> >  To: Salil Mehta <salil.mehta@huawei.com>
+> >  
+> >  On Wed, 6 Nov 2024 14:45:42 +0000
+> >  Salil Mehta <salil.mehta@huawei.com> wrote:
+> >    
+> >  > Hi Igor,
+> >  >  
+> >  > >  From: qemu-arm-bounces+salil.mehta=huawei.com@nongnu.org  
+> >  <qemu-  
+> >  > > arm-bounces+salil.mehta=huawei.com@nongnu.org> On Behalf Of Igor
+> >  > > Mammedov
+> >  > >  Sent: Wednesday, November 6, 2024 1:57 PM
+> >  > >  To: Salil Mehta <salil.mehta@huawei.com>
+> >  > >
+> >  > >  On Wed, 6 Nov 2024 13:03:30 +0000
+> >  > >  Salil Mehta <salil.mehta@huawei.com> wrote:
+> >  > >  
+> >  > >  > Checking `is_present` first can break x86 migration from new Qemu
+> >  > > > version to old Qemu. This is because CPRS Bit is not defined in  
+> >  > > the  > older Qemu register block and will always be 0 resulting in
+> >  > > check  > always failing. Reversing the logic to first check
+> >  > > `is_enabled` can  > alleviate below problem:  
+> >  > >  >
+> >  > >  > -                If ((\_SB.PCI0.PRES.CPEN == One))
+> >  > >  > -                {
+> >  > >  > -                    Local0 = 0x0F
+> >  > >  > +                If ((\_SB.PCI0.PRES.CPRS == One))
+> >  > >  > +                {
+> >  > >  > +                    If ((\_SB.PCI0.PRES.CPEN == One))
+> >  > >  > +                    {
+> >  > >  > +                        Local0 = 0x0F
+> >  > >  > +                    }
+> >  > >  > +                    Else
+> >  > >  > +                    {
+> >  > >  > +                        Local0 = 0x0D
+> >  > >  > +                    }
+> >  > >  >                  }
+> >  > >  >
+> >  > >  > Suggested-by: Igor Mammedov <imammedo@redhat.com>  
+> >  'Reported-by'  
+> >  > > maybe, but certainly not suggested.  
+> >  >
+> >  >
+> >  > No issues. I can change.
+> >  >
+> >  >  
+> >  > >
+> >  > >  After more thinking and given presence is system wide that doesn't
+> >  > > change  at runtime, I don't see any reason for introducing presence
+> >  > > bit as ABI (and  undocumented on top of that).  
+> >  >
+> >  >
+> >  > This is a wrong assumption. Presence bit can change in future. We have
+> >  > taken into account this aspect by design in the kernel code as well.
+> >  > Both virtual  
+> >  
+> >  Above does imply that support for really hotpluggable CPUs might be
+> >  implemented in the future.
+> >  Can you point to relevant kernel code/patches?  
+> 
+> 
+> Let me make it clear so that there is no confusion, there is no support of
+> physical "CPU" hot-plug on ARM platforms right now and nor will there be
+> any in future as it does not makes sense to have. The point I made in the
+> patches is about hot-plug was at different granularity which has not been
+> denied by ARM.
 
-Those are too small.  Might work today but not sustainable.
+_STA and ACPI cphp registers are per logical CPU and can't be anything else
+per spec.
 
-I'm a bit surprised it was this simple to move the MMIO Space away
-from what is normally done for PXBs.
-I think it might work because the GPEX memory windows are effectively
-unlimited in size but I'd like some more eyes on this from people
-familiar with how all that works and whether there might be some
-corner cases that you haven't seen yet.
-
-Otherwise this looks ok to me.
+how different granularity is relevant here?
 
 > 
-> To provide CFMWs on sbsa-ref, this extends 1TB space from the
-> hole above RAM Memory [SBSA_MEM] for CXL Fixed Memory Window.
+> >    
+> >  > and physical CPU hot plug can co-exists or entirely as sole features.
+> >  > This is a requirement.  
+> >  
+> >  
+> >  I don't see any _must_ requirements here whatsoever. If/when ARM
+> >  reaches point where standby and hotplug cpus are mixed within VM
+> >  instance, we might have to expose presence bit to guest dynamically but it
+> >  is totally not needed within observable future and premature.  
 > 
-> Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-> ---
->  docs/system/arm/sbsa.rst  |   4 ++
->  hw/arm/sbsa-ref.c         | 122 +++++++++++++++++++++++++++++++++++++-
->  hw/cxl/cxl-host-stubs.c   |   2 +
->  hw/cxl/cxl-host.c         |   2 +-
->  include/hw/cxl/cxl_host.h |   2 +
->  5 files changed, 130 insertions(+), 2 deletions(-)
 > 
-> diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
-> index 2bf3fc8d59..21b88e88e7 100644
-> --- a/docs/system/arm/sbsa.rst
-> +++ b/docs/system/arm/sbsa.rst
-> @@ -28,6 +28,7 @@ The ``sbsa-ref`` board supports:
->    - E1000E ethernet card on PCIe bus
->    - Bochs display adapter on PCIe bus
->    - A generic SBSA watchdog device
-> +  - CXL host bridge and CXL fixed memory window
->  
->  
->  Board to firmware interface
-> @@ -92,3 +93,6 @@ Platform version changes:
->  
->  0.4
->    CPU topology information is present in devicetree.
-> +
-> +0.5
-> +  CXL host bridge and CXL fixed memory window are supported.
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index e3195d5449..655dc82863 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -36,12 +36,18 @@
->  #include "hw/arm/smmuv3.h"
->  #include "hw/block/flash.h"
->  #include "hw/boards.h"
-> +#include "hw/cxl/cxl.h"
-> +#include "hw/cxl/cxl_host.h"
->  #include "hw/ide/ide-bus.h"
->  #include "hw/ide/ahci-sysbus.h"
->  #include "hw/intc/arm_gicv3_common.h"
->  #include "hw/intc/arm_gicv3_its_common.h"
->  #include "hw/loader.h"
-> +#include "hw/pci/pci_bridge.h"
-> +#include "hw/pci/pci_bus.h"
-> +#include "hw/pci/pcie_port.h"
->  #include "hw/pci-host/gpex.h"
-> +#include "hw/pci-bridge/pci_expander_bridge.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/usb.h"
->  #include "hw/usb/xhci.h"
-> @@ -94,6 +100,10 @@ enum {
->      SBSA_SECURE_MEM,
->      SBSA_AHCI,
->      SBSA_XHCI,
-> +    SBSA_CXL_HOST,
-> +    SBSA_CXL_MMIO,
-> +    SBSA_CXL_MMIO_HIGH,
-> +    SBSA_CXL_FIXED_WINDOW,
->  };
->  
->  struct SBSAMachineState {
-> @@ -105,6 +115,8 @@ struct SBSAMachineState {
->      int psci_conduit;
->      DeviceState *gic;
->      PFlashCFI01 *flash[2];
-> +    CXLState cxl_devices_state;
-> +    PCIBus *cxlbus;
->  };
->  
->  #define TYPE_SBSA_MACHINE   MACHINE_TYPE_NAME("sbsa-ref")
-> @@ -132,6 +144,10 @@ static const MemMapEntry sbsa_ref_memmap[] = {
->      /* Space here reserved for more SMMUs */
->      [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
->      [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
-> +    /* 64KiB CXL Host Bridge Registers space */
-> +    [SBSA_CXL_HOST] =           { 0x60120000, 0x00010000 },
+> >  Your cpu class presence check also works target-wise just with more boiler
+> >  code
+> >  + not needed presence bit ABI for guest side,
+> >  The same as my suggestion only from other side.
+> >  
+> >  But regardless of that as long as machine has doesn't mix always present
+> >  CPUs with hotpluggable ones within the same instance, changing AML side
+> >  as I've just suggested works.  
+> 
+> 
+> Sure, I'm not disagreeing. It will work by adding the flag you've suggested
+> but it will work even by not adding any flag and not defining a `persistent`
+> hook for any architecture.
 
-> +    /* 32M CXL 32-bit MMIO space */
-> +    [SBSA_CXL_MMIO] =           { 0x60130000, 0x02000000 },
->      /* Space here reserved for other devices */
->      [SBSA_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
->      /* 32-bit address PCIE MMIO space */
-> @@ -141,6 +157,10 @@ static const MemMapEntry sbsa_ref_memmap[] = {
->      /* ~1TB PCIE MMIO space (4GB to 1024GB boundary) */
->      [SBSA_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0xFF00000000ULL },
->      [SBSA_MEM] =                { 0x10000000000ULL, RAMLIMIT_BYTES },
-> +    /* 1M CXL 64-bit MMIO space */
-> +    [SBSA_CXL_MMIO_HIGH] =           { 0x90000000000ULL, 0x00100000 },
+hook is more complicated and hidden way, than directly passing down
+configuration data to routine that builds AML where it is needed,
+but that's cosmetics in the end.
 
-As above, make this bigger.  CXL devices can have substantial BARs.
+However there is more to your hook approach, it exposes is_present bit
+in cphp flag register which is ABI to guest which we will have to
+maintain forever and guest will do not necessary round-trip to QEMU
+to query it, while alternative is much simpler AML change without any
+ABI changes to care about.
 
-> +    /* 1TB CXL FIXED WINDOW space */
-> +    [SBSA_CXL_FIXED_WINDOW] =   { 0xA0000000000ULL, 0x10000000000ULL },
->  };
->  
->  static const int sbsa_ref_irqmap[] = {
-> @@ -216,7 +236,7 @@ static void create_fdt(SBSAMachineState *sms)
->       *                        fw compatibility.
->       */
->      qemu_fdt_setprop_cell(fdt, "/", "machine-version-major", 0);
-> -    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 4);
-> +    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 5);
->  
->      if (ms->numa_state->have_numa_distance) {
->          int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
-> @@ -629,6 +649,35 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
->      }
->  }
->  
-> +static void create_pxb_cxl(SBSAMachineState *sms, PCIBus *bus)
-> +{
-> +    DeviceState *qdev = qdev_new(TYPE_PXB_CXL_DEV);
-> +    PCIDevice *dev = PCI_DEVICE(qdev);
-> +    CXLHost *host;
-> +    PCIHostState *cxl;
-> +    PCIDevice *cxlrp;
-> +    PCIEPort *p;
-> +    PCIESlot *s;
-> +    int i;
-> +
-> +    sms->cxl_devices_state.is_enabled = true;
-> +    qdev_prop_set_uint32(qdev, "bus_nr", 0xc0);
-> +    pci_realize_and_unref(dev, bus, &error_fatal);
-> +
-> +    host = PXB_CXL_DEV(dev)->cxl_host_bridge;
-> +    cxl = PCI_HOST_BRIDGE(host);
-> +    sms->cxlbus = cxl->bus;
-> +
-> +    for (i = 0; i < 2; i++) {
-> +        cxlrp = pci_new(-1, "cxl-rp");
-> +        p = PCIE_PORT(cxlrp);
-> +        s = PCIE_SLOT(cxlrp);
-> +        p->port = i;
-> +        s->slot = i;
-> +        pci_realize_and_unref(cxlrp, sms->cxlbus, &error_fatal);
-> +    }
-> +}
-> +
->  static void create_pcie(SBSAMachineState *sms)
->  {
->      hwaddr base_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
-> @@ -638,6 +687,10 @@ static void create_pcie(SBSAMachineState *sms)
->      hwaddr base_mmio_high = sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base;
->      hwaddr size_mmio_high = sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size;
->      hwaddr base_pio = sbsa_ref_memmap[SBSA_PCIE_PIO].base;
-> +    hwaddr cxl_base_mmio = sbsa_ref_memmap[SBSA_CXL_MMIO].base;
-> +    hwaddr cxl_size_mmio = sbsa_ref_memmap[SBSA_CXL_MMIO].size;
-> +    hwaddr cxl_base_mmio_high = sbsa_ref_memmap[SBSA_CXL_MMIO_HIGH].base;
-> +    hwaddr cxl_size_mmio_high = sbsa_ref_memmap[SBSA_CXL_MMIO_HIGH].size;
->      int irq = sbsa_ref_irqmap[SBSA_PCIE];
->      MachineClass *mc = MACHINE_GET_CLASS(sms);
->      MemoryRegion *mmio_alias, *mmio_alias_high, *mmio_reg;
-> @@ -686,6 +739,67 @@ static void create_pcie(SBSAMachineState *sms)
->      pci_create_simple(pci->bus, -1, "bochs-display");
->  
->      create_smmu(sms, pci->bus);
-> +
-> +    /* Map CXL MMIO space */
-> +    mmio_alias = g_new0(MemoryRegion, 1);
-> +    mmio_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
-> +    memory_region_init_alias(mmio_alias, OBJECT(dev), "cxl-mmio",
-> +                             mmio_reg, cxl_base_mmio, cxl_size_mmio);
-> +    memory_region_add_subregion(get_system_memory(), cxl_base_mmio, mmio_alias);
-> +
-> +    /* Map CXL MMIO_HIGH space */
-> +    mmio_alias_high = g_new0(MemoryRegion, 1);
-> +    memory_region_init_alias(mmio_alias_high, OBJECT(dev), "cxl-mmio-high",
-> +                             mmio_reg, cxl_base_mmio_high, cxl_size_mmio_high);
-> +    memory_region_add_subregion(get_system_memory(), cxl_base_mmio_high,
-> +                                mmio_alias_high);
-> +
-> +    create_pxb_cxl(sms, pci->bus);
-> +}
+The point is we shouldn't add new ABI unless we have to.
+In this case new ABI (is_presence flag) is not _must_,
+and much simpler static AML change is sufficient. 
 
->  
->  static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
-> @@ -821,6 +935,12 @@ static void sbsa_ref_init(MachineState *machine)
->  
->      create_pcie(sms);
->  
-> +    create_cxl_host_reg_region(sms);
-> +    create_cxl_fixed_window_region(sms, sysmem);
-> +    pxb_cxl_hook_up_registers(&sms->cxl_devices_state, sms->cxlbus,
-> +                              &error_fatal);
-> +    sbsa_cxl_fmws_link_targets(sms, &error_fatal);
-> +
->      create_secure_ec(secure_sysmem);
->  
->      sms->bootinfo.ram_size = machine->ram_size;
-> diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
-> index cae4afcdde..aea94933ba 100644
-> --- a/hw/cxl/cxl-host-stubs.c
-> +++ b/hw/cxl/cxl-host-stubs.c
-> @@ -11,5 +11,7 @@
->  void cxl_fmws_link_targets(CXLState *stat, Error **errp) {};
->  void cxl_machine_init(Object *obj, CXLState *state) {};
->  void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
-> +void cxl_fixed_memory_window_config(CXLState *cxl_state,
-> +                        CXLFixedMemoryWindowOptions *object, Error **errp) {};
->  
->  const MemoryRegionOps cfmws_ops;
-> diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
-> index e9f2543c43..d408c7db15 100644
-> --- a/hw/cxl/cxl-host.c
-> +++ b/hw/cxl/cxl-host.c
-> @@ -22,7 +22,7 @@
->  #include "hw/pci/pcie_port.h"
->  #include "hw/pci-bridge/pci_expander_bridge.h"
->  
-> -static void cxl_fixed_memory_window_config(CXLState *cxl_state,
-> +void cxl_fixed_memory_window_config(CXLState *cxl_state,
->                                             CXLFixedMemoryWindowOptions *object,
->                                             Error **errp)
->  {
-> diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
-> index c9bc9c7c50..f3184733aa 100644
-> --- a/include/hw/cxl/cxl_host.h
-> +++ b/include/hw/cxl/cxl_host.h
-> @@ -16,6 +16,8 @@
->  void cxl_machine_init(Object *obj, CXLState *state);
->  void cxl_fmws_link_targets(CXLState *stat, Error **errp);
->  void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
-> +void cxl_fixed_memory_window_config(CXLState *cxl_state,
-> +                        CXLFixedMemoryWindowOptions *object, Error **errp);
->  
->  extern const MemoryRegionOps cfmws_ops;
->  
+> >  
+> >  If ARM ever gets real cpu hotplug as your comment above hints, my
+> >  suggestion also works fine. With only difference that board code would turn
+> >  off always_present_cpus if hotpluggable CPUs are used instead of standby.  
+> 
+> 
+> Sure, but is it necessary to define a new flag when you can do even without it?
+> Having few lines of extra code (literally 2-3 only) should not be a major cause of
+> worry, especially, if it makes design more clear and easy to understand. This is
+> not a performance code either.
+>
+> Again, I appreciate your compact logic. I'm not disagreeing with it.
+> 
+> 
+> >  > >  Instead changing AML code to account for it would be better,
+> >  > > something like
+> >  > >  this:
+> >  > >
+> >  > >  diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h index
+> >  > >  32654dc274..4a3e591120 100644
+> >  > >  --- a/include/hw/acpi/cpu.h
+> >  > >  +++ b/include/hw/acpi/cpu.h
+> >  > >  @@ -55,6 +55,7 @@ void cpu_hotplug_hw_init(MemoryRegion *as,  
+> >  Object  
+> >  > > *owner,  typedef struct CPUHotplugFeatures {
+> >  > >       bool acpi_1_compatible;
+> >  > >       bool has_legacy_cphp;
+> >  > >  +    bool always_present_cpus;  
+> >  >
+> >  >
+> >  > This has to be fetched from architecture code. Please see other
+> >  > changes in the V3 patch-set.  
+> >  
+> >  I've seen, that and it doesn't have to be fetched dynamically.  
+> 
+> 
+> Agreed, it is not necessary to be fetched. Hence, if you do not define the
+> hook. In later case, it assumes the existing logic, which x86 has been following.
+> It will work.
 
+It is better to get rid of not necessary hook altogether, and
+replace it with a simple AML change.
+
+> >  In my opinion the series was not ready to be merged (Michael probably
+> >  picked it by mistake).
+> >  
+> >  We don't really need this in 9.2 as it is only ARM cpu 'hotplug'
+> >  related, and the later is not ready for 9.2.
+> >  I'd prefer the series being reverted and we continue improving series,
+> >  instead of rushing it and fixing broken thing up.
+> >  
+> >    
+> >  >
+> >  >  
+> >  > >       bool fw_unplugs_cpu;
+> >  > >       const char *smi_path;
+> >  > >   } CPUHotplugFeatures;
+> >  > >  diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c index
+> >  > > 5cb60ca8bc..2bcce2b31c
+> >  > >  100644
+> >  > >  --- a/hw/acpi/cpu.c
+> >  > >  +++ b/hw/acpi/cpu.c
+> >  > >  @@ -452,15 +452,16 @@ void build_cpus_aml(Aml *table,  
+> >  MachineState  
+> >  > > *machine, CPUHotplugFeatures opts,
+> >  > >
+> >  > >           method = aml_method(CPU_STS_METHOD, 1, AML_SERIALIZED);
+> >  > >           {
+> >  > >  +            uint8_t default_sta = opts.always_present_cpus?0xd:0;
+> >  > >               Aml *idx = aml_arg(0);
+> >  > >  -            Aml *sta = aml_local(0);
+> >  > >  +            Aml *sta = aml_local(default_sta);
+> >  > >
+> >  > >               aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+> >  > >               aml_append(method, aml_store(idx, cpu_selector));
+> >  > >               aml_append(method, aml_store(zero, sta));
+> >  > >               ifctx = aml_if(aml_equal(is_enabled, one));
+> >  > >               {
+> >  > >  -                aml_append(ifctx, aml_store(aml_int(0xF), sta));
+> >  > >  +                aml_append(ifctx, aml_or(aml_int(0xF), sta, sta));
+> >  > >               }
+> >  > >               aml_append(method, ifctx);
+> >  > >               aml_append(method, aml_release(ctrl_lock))
+> >  > >
+> >  > >  then for ARM set
+> >  > >   CPUHotplugFeatures::always_present_cpus = true to get present flag
+> >  > > always enabled  
+> >  >
+> >  >
+> >  > We MUST fetch this from architecture code as this can dynamically
+> >  > change in future and hence, we need to keep that flexibility  
+> >  
+> >  CPUHotplugFeatures::always_present_cpus can be set dynamically per VM
+> >  instance or per Machine type.  
+> 
+> 
+> Yes, but you need a code for that and I'm not sure what is being saved by
+> introducing an extra flag then?
+
+beside snippet, I've suggested. You need to delete all is_present callback
+related logic, than it save quite a bit, and not only on lines of code.
+
+I guess, I need to send a patch to get point across.
+
+> 
+> 
+> >  > >  After that revert _all_ other presence bit related changes that
+> >  > > were just  merged.
+> >  > >  (I did ask to get rid of that in previous reviews but it came back
+> >  > > again for no  good reason).  
+> >  >
+> >  >
+> >  > The CPUs AML in the V2 patch-set would have broken the x86  
+> >  functionality.
+> >  
+> >  Frankly speaking, I don't see much progress. All that happens on respins is
+> >  flipping between what I asked to remove before to some earlier concept.  
+> 
+> 
+> I think then you've missed the code which addressed one of your key concerns
+> in the V1 patch-set that would have broken x86 migration i.e. presence of the
+> `is_enabled` state in the CPU Hot-plug VMSD. That has been removed. Maybe
+> you would like to go through the change log of the V3 patch-set
+> 
+> https://lore.kernel.org/qemu-devel/20241018163118.0ae01a84@imammedo.users.ipa.redhat.com/
+> 
+> Below is the relevant excerpt from your many comments:
+> 
+> [...]
+> >      .fields = (const VMStateField[]) {
+> >          VMSTATE_BOOL(is_inserting, AcpiCpuStatus),
+> >          VMSTATE_BOOL(is_removing, AcpiCpuStatus),
+> > +        VMSTATE_BOOL(is_present, AcpiCpuStatus),
+> > +        VMSTATE_BOOL(is_enabled, AcpiCpuStatus),  
+> 
+> that's likely will break x86 migration,
+> but before bothering peterx, maybe we won't need this hunk if
+> is_enabled is migrated as part of vCPU state.
+> 
+
+what has been done in v3 is moving is_present/is_enabled,
+elsewhere (callbacks in this case). While argument was that
+both are not necessary to begin with.
+
+> [...]
+> 
+> 
+> >  And all of that for the purpose to workaround/accommodate fake cpu
+> >  hotplug hacks.  
+> 
+> 
+> I've to respectfully disagree on this. This is your assumption which is far from
+> reality. The accompanying main series of this will never have vCPUs which are
+> *not* present.
+
+Reality of your last posted main series (v5), disagrees with what you are saying here
+
+ [PATCH RFC V5 12/30] arm/virt: Release objects for *disabled* possible vCPUs after init
+  https://patchew.org/QEMU/20241015100012.254223-1-salil.mehta@huawei.com/20241015100012.254223-13-salil.mehta@huawei.com/
+
+after this patch, new is_present hook would let you bury the lie
+about CPU being present inside ARM specific code.
+
+> BTW, these changes have been tested by Oracle folks with that
+> series and are known to work.
+> 
+> https://lore.kernel.org/qemu-devel/C4FEC9E7-69DB-428A-A85F-30170F98814B@oracle.com/
+
+One can write anything and it can even work somehow,
+that however doesn't mean it's something merge-able,
+maintainable, ...whatever else come to mind...
+
+> 
+> Thanks!
+> 
+> Best regards
+> Salil.
+> 
+> 

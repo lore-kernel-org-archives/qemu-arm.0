@@ -1,110 +1,115 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4467342njc;
-        Thu, 7 Nov 2024 11:55:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWj+lHscWkbBJsJg0tWP4+0yBJwGc2/EqDsVC2APYOPdGwByKoxpKkZJxMg67dO7WOu9D7FEm3YMocJlg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHz0lWGRTLJcr5Z+cEUSa0f8vFZ+ah/OqiX2wQjnR7uP7vh8InKFEHrJ9HfuUAW+N/tii+l
-X-Received: by 2002:a05:620a:4485:b0:7ac:b93b:b250 with SMTP id af79cd13be357-7b331dc5331mr64464485a.0.1731009312273;
-        Thu, 07 Nov 2024 11:55:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731009312; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4467632njc;
+        Thu, 7 Nov 2024 11:55:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUqKj6zoTpceUSeLWJY5o/Dcm6V5RpzqSFZlZzMz41AhVZ1gCZ/2Mq4Gs9qCpcWejHEtreobn07u8mgnw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHZFhq9I7r1O8XF/JNwUhwQuXwGuagYhSFJ/yCt5gouzZtFdhlEcquY/CnOItVwg2FFpoED
+X-Received: by 2002:a05:6214:4a89:b0:6d3:556c:1002 with SMTP id 6a1803df08f44-6d39e1ea64amr1963256d6.43.1731009340817;
+        Thu, 07 Nov 2024 11:55:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731009340; cv=none;
         d=google.com; s=arc-20240605;
-        b=gXxLZDIXXgbk3TMLyjXUB0XIChL+sheMNyqI8gZg8ZkrLJvhjRqudf/IB1MWvdgspu
-         YY93R+J2S+eAFRsc5UKy7Ungu4+fBY89WeXj2v/CU88jqKZhJZv79JIVcN84CnpN3ULE
-         Cxtcc2wt0SXdd1vGkthK+vUvt6GLhJV3SUSBtAeZhBO9W5Qpo/7CncYloLfMf2Fp4pSu
-         xY8E9MNx0TCDeD7Hi+Mp/isMHmIABpi7H5ybMDEOi2uXF5o7Jc14hhCxyIoEEQylhFgY
-         gejYehpWkGzVElCeKqihznYK2Jb+Hjd01r4va45Id0QoEv0awVOrR15nQU5pF1pjhAAl
-         l4cA==
+        b=TLlf3ZNxhMugtaFZsZliWr6dblMcrfTyjAPZczy+hPBVa6XBZBCGZTLT4sAZjlSPy2
+         25p+A0KQXIJzFpsFb0BJGu657ToIlQ6I6gXwoA8XUobt4K7da8vba/cJ/RIRCIR95hey
+         yUdtwJg+BHxMFetGDdlYhr9R057khX7XSRGGDXxzhI7/3mDAv9T3KuR2HHPwqg7OSyYk
+         /574o35ORrPou8xZ4FjX0y5PqGY2GxGRwveomj0Q6wjF+oIOYzNrjnO+V69ZtwGiQy47
+         IZqijfZKOuybjxq8ik60YBwf6HOLJV3IuS5ksZhUB3/Ekd21HGzfY6+O5YA4JLla0H9t
+         xBTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :mime-version:date:dkim-signature;
-        bh=Jzv6DPkMq+AatJ9bE5NP8pF1sQdsh9cAVnptctptWRA=;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :from:subject:message-id:references:mime-version:in-reply-to:date
+         :dkim-signature;
+        bh=Dhx3Bv91IwsNiKrqW6EopdF6ygF7pLBG+NH0I9FnnMU=;
         fh=XuBrA54R9ySozHoD/qCHuwIA1pKE6YAf4KhJE72ECqw=;
-        b=jty8fmTEbRSXtEE8GwngxL4bssuMrOfi6s1Vs9QTLAFDbgA/Tx5ULFCRpJjSrRtT4g
-         VdiQjx1Zy6BsGFI5Cy9fGUUsXbR+8K9Q/Tx4AaIfryoY/rPeSy0G27g6ybxYeJsHqGgG
-         WLb+iYGw19hd5Hq4iDEa+XtC89rHVWoltOD+XlRoxFoMKZDK9EOcsP+gH6n+sT/+sHH2
-         rFx4BbyjKux9KOHwoR+QM8W9KpnWSAyiqo8+9yAWnAGmc+/OB02ojO1ggUZIkPAHcG8J
-         HyrTY044xnWJG1+fbTuasBnE1d4YITdjA7FdtVdwVzN7LwKaVXt86AfwkY67oqIkqbM5
-         NNvw==;
+        b=Co5nF28lxpMc1m3zVz/iRwnUc+uhZGKpPY1qVKmAzdyMat8cOrqW/jj8LXTJ2hgKoU
+         MyccDIW3HU6dQ+oVGFOgS9WfLLSoUbqCHdyFwTSL5R16zTYuqshrBvszDBSeNLV9m7jF
+         hZiNyWen15bkFOzpXOCWN7tQUUMIMH2GAM/1dBqhUCz2hdEHJMwQZhuFtGOhd8+tfmyB
+         BW75gMOsYe8GlCCp/JYpat0Ovm148DeCXlZL5FGfTucKMGv5POsJ5omkWGpJXHfB1kZ9
+         CpRp0o4DZdtOf8uKeJT5GmUpeeqojzXtw2xu221T19VaJRwGFqeoTDx0TqOMvTR7Aif3
+         DAkw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=h1QWR4dm;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=HJOq6v5r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b32acb9bb5si230382985a.269.2024.11.07.11.55.12
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d396666ae4si22265696d6.387.2024.11.07.11.55.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Nov 2024 11:55:12 -0800 (PST)
+        Thu, 07 Nov 2024 11:55:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=h1QWR4dm;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=HJOq6v5r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t98au-0001Sq-OT; Thu, 07 Nov 2024 14:55:04 -0500
+	id 1t98az-0001YN-8u; Thu, 07 Nov 2024 14:55:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3ERstZwYKCDwrgrsqpemmejc.amkocks-Ypklmlels.mpe@flex--titusr.bounces.google.com>)
- id 1t98at-0001Qm-4e
- for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:03 -0500
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ <3FhstZwYKCEEwlwxvujrrjoh.frpthpx-dupqrqjqx.ruj@flex--titusr.bounces.google.com>)
+ id 1t98aw-0001VC-W1
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:07 -0500
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3ERstZwYKCDwrgrsqpemmejc.amkocks-Ypklmlels.mpe@flex--titusr.bounces.google.com>)
- id 1t98ap-0003K1-I2
- for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:01 -0500
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-e29205f6063so2268472276.1
- for <qemu-arm@nongnu.org>; Thu, 07 Nov 2024 11:54:58 -0800 (PST)
+ <3FhstZwYKCEEwlwxvujrrjoh.frpthpx-dupqrqjqx.ruj@flex--titusr.bounces.google.com>)
+ id 1t98at-0003L8-EA
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:06 -0500
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-6e9d6636498so27172257b3.2
+ for <qemu-arm@nongnu.org>; Thu, 07 Nov 2024 11:55:02 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1731009297; x=1731614097; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=Jzv6DPkMq+AatJ9bE5NP8pF1sQdsh9cAVnptctptWRA=;
- b=h1QWR4dmkZbMAaofqSXG9Y/s3OBcZ10KT4BSI62Vtoihrws1tiNiGfmui22DtlBq54
- eWeISE2e8HQgPh/sB7UzpeaalnCuOtxSQkorabzb6a4hbnBAjNeLR6ejwU6r4Q1rO9L5
- LpnUyDh6HlbCpGMEWKpdvJ+8cQNh2xE9XvUHEwo/sjwLYELg4/H73kYOtuCJJGUGw9xj
- ZG//Mo4sw22ravpGTZk1M1WlYTYVAat5VOqNp+agprDsYCPUMhFFZ9PfZJS0M9tp7ES3
- mAXwPok+WmuyHkl4lAqxRE67Hm8NsZrVkN4179bm389ElCjGGxwe5tRxA4SQZaw66+46
- 4z/Q==
+ d=google.com; s=20230601; t=1731009302; x=1731614102; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:from:subject:message-id:references
+ :mime-version:in-reply-to:date:from:to:cc:subject:date:message-id
+ :reply-to; bh=Dhx3Bv91IwsNiKrqW6EopdF6ygF7pLBG+NH0I9FnnMU=;
+ b=HJOq6v5rhqbMrcftI+/LxDpc/WkswW27a69yG2M7nZz6OT0iG2Fcghlv3gPFVjQr3z
+ 1HNV4wvzOms03U5fvZ/i6GQlAL/Pn7sUjpEGvhtXfQxErjHXZD7s4/IxUE3VdJNG+8+J
+ gttdY/1hSxQlIr4objVtIODodZSwZn6NPCgUoncVn6KcfZiKtNazC1MC/47wjDUWwhW1
+ eJCoUwVuPv4ehiBASv2PC3i4AK1hhMCYlKbsc0Q/ixvjFhn2t3j4EWfh8r2Oah9mZIDK
+ 6dFsO0p7LyBqYwmV+ESDnNGEMdRZAeoiR5JSB94Eta9OaNjqLjz4tOMHr0HS2tjlAZ/z
+ fcAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731009297; x=1731614097;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Jzv6DPkMq+AatJ9bE5NP8pF1sQdsh9cAVnptctptWRA=;
- b=TR4I6UCwPoLrzjJz+ogaMieVCDW0cN7Xi7jtpgFwqOVyrQ3sHhjOEcVDy6VTIpei3/
- 6PXustYjNAyQFP2R7E3L+LeKlEaAIiJOZGxZwn3pg1LSJEd9YbsAoC3OU7UvScB2G5xT
- Eby9Nq/V8m/NuL7wVSEF8mVIYUEiTfstOYSvoyEwKLr1aKfohgcVr2PAhIUnMbq7O74O
- xsa9y7p4uDkVIq0cj5BWzBoquzdf3PMg4mivAbj7hmfJWI449uvP0OsarZn1lFpDWoZo
- ccdFcc34sneZ+V5l+SZtAm71zzktI6rtW1rSd8ewYKofYQJs5LO+mxdOxoIOQ6sbV+vb
- RHlw==
-X-Gm-Message-State: AOJu0Ywg3JJgy1zti4ouo8o6S3x8HrLXO3QAaEiVzV2zsCcnDx/DzRge
- 3tyTz7PJ6RznyDCyHVzok2kcuaEXyD7mGkWfah+LvT8oR4YEHI04orSabmn+tkuJT3S78LO+Ai3
- 67Q==
+ d=1e100.net; s=20230601; t=1731009302; x=1731614102;
+ h=content-transfer-encoding:cc:to:from:subject:message-id:references
+ :mime-version:in-reply-to:date:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=Dhx3Bv91IwsNiKrqW6EopdF6ygF7pLBG+NH0I9FnnMU=;
+ b=ZcxLfC2xQ191HMczz4RIh92tMlijQmdonNmrpfN9WMxmo9VGaGVcxL3WWpogTeTJUW
+ fRisz0Y2DdLUxRNtoDVbEXf81XfOYisLIvf1CR4gQcLXC1wpmvWpHAf2RQrPuKMcIjFw
+ 8MjXSHN+dFIlj6G+e1c1LRTuf4v6xOI/wecMyOSbCWWVzpSg6bo68CGPah4pKf5qGIN0
+ fgoXjkajAThR4u2Q2rPTXvQl0u9iT61ShaiYRKPeqBEmmYo3ilGo5trQriok4z0UaL9m
+ EPiewgIhDL5ZQCkjlOCbKyXKKZH8+qMBzzVluyBvJPE3GvzvG2uTCqtdM36/uv7vDlHF
+ pgGg==
+X-Gm-Message-State: AOJu0YziNGO/t2TlWPct5IhajcrkNYR0+NCbnAcg6qeuoD9yJqFkXjmz
+ /m5Uhgb5Q+w67vnxeN8X1s7p+YyJbjkmTQ5b950E7r35OjUbF5nAjRxn5Q1hWByihyZqcVYZLZY
+ suw==
 X-Received: from titusr.c.googlers.com ([fda3:e722:ac3:cc00:dc:567e:c0a8:e14])
- (user=titusr job=sendgmr) by 2002:a25:2d10:0:b0:e33:4850:b1bd with
+ (user=titusr job=sendgmr) by 2002:a25:aac4:0:b0:e2b:da82:f695 with
  SMTP id
- 3f1490d57ef6-e337f843c12mr621276.1.1731009297594; Thu, 07 Nov 2024 11:54:57
+ 3f1490d57ef6-e337f8c1754mr158276.6.1731009302052; Thu, 07 Nov 2024 11:55:02
  -0800 (PST)
-Date: Thu,  7 Nov 2024 19:54:47 +0000
+Date: Thu,  7 Nov 2024 19:54:51 +0000
+In-Reply-To: <20241107195453.2684138-1-titusr@google.com>
 Mime-Version: 1.0
+References: <20241107195453.2684138-1-titusr@google.com>
 X-Mailer: git-send-email 2.47.0.277.g8800431eea-goog
-Message-ID: <20241107195453.2684138-1-titusr@google.com>
-Subject: [PATCH 0/6] Add Quanta GSZ BMC machine and PCA I2C GPIO expanders
+Message-ID: <20241107195453.2684138-5-titusr@google.com>
+Subject: [PATCH 4/6] hw/i2c: add canonical path to i2c event traces
 From: Titus Rwantare <titusr@google.com>
 To: peter.maydell@linaro.org, minyard@acm.org, clg@redhat.com
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, philmd@linaro.org, 
  venture@google.com, wuhaotsh@google.com, milesg@linux.vnet.ibm.com, 
  Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3ERstZwYKCDwrgrsqpemmejc.amkocks-Ypklmlels.mpe@flex--titusr.bounces.google.com;
- helo=mail-yb1-xb49.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=3FhstZwYKCEEwlwxvujrrjoh.frpthpx-dupqrqjqx.ruj@flex--titusr.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -126,47 +131,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TkHkcO7JlVru
+X-TUID: I8iealtXP6aQ
 
-This patch series bundles the GPIO sensors previously sent for review:
-https://lore.kernel.org/all/20230206194936.168843-1-titusr@google.com
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Signed-off-by: Titus Rwantare <titusr@google.com>
+---
+ hw/i2c/core.c       | 8 +++++---
+ hw/i2c/trace-events | 2 +-
+ 2 files changed, 6 insertions(+), 4 deletions(-)
 
-and the GSZ board commit sent here:
-https://lore.kernel.org/all/20241007171700.1594342-1-titusr@google.com/
-
-The Quanta GSZ a current Google machine of the day. This machine will be used as a platform to enable features such as the PECI bmc interface, and Intel eSPI virtual wire interface in QEMU.
-
-This patch series also contains a set of i2c GPIO expanders, with support for 4, 8, and 16 GPIO connections.
-
-The devices are configured as GPIO inputs by default, but can have pins configured to be inputs with qmp commands.
-
-These sensors and machine are maintained and used in CI daily within Google.
-
-Titus Rwantare (6):
-  bitops.h: add deposit16 function
-  hw/gpio: add PCA953x i2c GPIO expanders
-  hw/gpio: add PCA9536 i2c gpio expander
-  hw/i2c: add canonical path to i2c event traces
-  hw/arm: imply I2C_DEVICES on NPCM7xx
-  hw/arm: add Quanta GSZ bmc machine
-
- hw/arm/Kconfig                  |   1 +
- hw/arm/npcm7xx_boards.c         | 160 +++++++++++++
- hw/gpio/Kconfig                 |   5 +
- hw/gpio/meson.build             |   1 +
- hw/gpio/pca_i2c_gpio.c          | 409 ++++++++++++++++++++++++++++++++
- hw/gpio/trace-events            |   5 +
- hw/i2c/core.c                   |   8 +-
- hw/i2c/trace-events             |   2 +-
- include/hw/gpio/pca_i2c_gpio.h  |  70 ++++++
- include/qemu/bitops.h           |  26 ++
- tests/qtest/meson.build         |   1 +
- tests/qtest/pca_i2c_gpio-test.c | 188 +++++++++++++++
- 12 files changed, 872 insertions(+), 4 deletions(-)
- create mode 100644 hw/gpio/pca_i2c_gpio.c
- create mode 100644 include/hw/gpio/pca_i2c_gpio.h
- create mode 100644 tests/qtest/pca_i2c_gpio-test.c
-
--- 
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index 4cf30b2c86..d238311776 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -161,7 +161,8 @@ static int i2c_do_start_transfer(I2CBus *bus, uint8_t a=
+ddress,
+            start condition.  */
+=20
+         if (sc->event) {
+-            trace_i2c_event(event =3D=3D I2C_START_SEND ? "start" : "start=
+_async",
++            trace_i2c_event(DEVICE(s)->canonical_path,
++                            event =3D=3D I2C_START_SEND ? "start" : "start=
+_async",
+                             s->address);
+             rv =3D sc->event(s, event);
+             if (rv && !bus->broadcast) {
+@@ -244,7 +245,7 @@ void i2c_end_transfer(I2CBus *bus)
+         I2CSlave *s =3D node->elt;
+         sc =3D I2C_SLAVE_GET_CLASS(s);
+         if (sc->event) {
+-            trace_i2c_event("finish", s->address);
++            trace_i2c_event(DEVICE(s)->canonical_path, "finish", s->addres=
+s);
+             sc->event(s, I2C_FINISH);
+         }
+         QLIST_REMOVE(node, next);
+@@ -321,7 +322,8 @@ void i2c_nack(I2CBus *bus)
+     QLIST_FOREACH(node, &bus->current_devs, next) {
+         sc =3D I2C_SLAVE_GET_CLASS(node->elt);
+         if (sc->event) {
+-            trace_i2c_event("nack", node->elt->address);
++            trace_i2c_event(DEVICE(node->elt)->canonical_path,
++                            "nack", node->elt->address);
+             sc->event(node->elt, I2C_NACK);
+         }
+     }
+diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+index f708a7ace1..e5f2dc643e 100644
+--- a/hw/i2c/trace-events
++++ b/hw/i2c/trace-events
+@@ -9,7 +9,7 @@ bitbang_i2c_data(unsigned clk, unsigned dat, unsigned old_o=
+ut, unsigned new_out)
+=20
+ # core.c
+=20
+-i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
++i2c_event(const char *id, const char *event, uint8_t address) "%s: %s(addr=
+:0x%02x)"
+ i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
+ i2c_send_async(uint8_t address, uint8_t data) "send_async(addr:0x%02x) dat=
+a:0x%02x"
+ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
+--=20
 2.47.0.277.g8800431eea-goog
 

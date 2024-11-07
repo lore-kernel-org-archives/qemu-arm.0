@@ -1,400 +1,201 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4105692njc;
-        Thu, 7 Nov 2024 02:22:34 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWGo8fxUOidCFoit6a3FIgZWh4FBLSqnp1BXg3BHDSnWU5/a1wnlx/fkBA2v1vWpy1L/DIvP2K8TIiyOg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHXXF1JaLJgKilUitiP3wRqRUiXB6Tc3p6y/xCN7F7W7Wl/hAnrfZB4z/UtG63AVS1iT4QY
-X-Received: by 2002:a05:6402:2551:b0:5ce:deb1:13a3 with SMTP id 4fb4d7f45d1cf-5cedeb1142emr11365807a12.33.1730974954495;
-        Thu, 07 Nov 2024 02:22:34 -0800 (PST)
-Return-Path: <kvm+bounces-31096-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5cf03cfb721si739051a12.594.2024.11.07.02.22.34
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4108009njc;
+        Thu, 7 Nov 2024 02:28:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX3jTqA30ii4Z5FTn/oQJiUAi7AhUP0tNIT7TMt30S/MwGjjnS1fy/uPjypL4MXAgBoCZmOHS3X4BbmTg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGy24/kEDqIkrlie3nEI7blcM3NyBBIw7Nz/wkR6I5YwXCdO99hR7STKNUfHlnQ6LKNtSDM
+X-Received: by 2002:ac8:7d41:0:b0:461:18f2:49be with SMTP id d75a77b69052e-462b868747dmr309251311cf.21.1730975290739;
+        Thu, 07 Nov 2024 02:28:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730975290; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Yhuvt2yDjWrPL5yLDV0hMuP/RSH3/iZesbFacG0y0JBje2Cvd1KSOzZo84N0forAnR
+         bVy1R5QbsWBa0WHyHxWNUW6XTKWOMGtY9JjMJ0VAAqtqnK0/sryR+pO4XgB6xD6NyAVl
+         DFXvM9RIJoVrd4xfkTfIiXDOv8JuLFvKw4RvoVrHRlXx8jDERUBJS+lTeI4AiIO/ZCcd
+         TQJTuWjWh7SzkWcZvlpExvcnDzZRQwWc7LmlWK/Wx6VSJntq616g1gON/23xom7zlr0K
+         ILDwHw2g8GB2smYmuBW9dSlMi+LVRZh+WotTriECt3zTl05W0Ymd4l7KFDRe6eGuggxi
+         3XVA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=wX89TnjD0GpGlaLexSSa5ZtdHMZ3CG5OaqI44rLpj68=;
+        fh=FGkn5uymvOjMNsXQ1w5gUCe0xMXUpxbKqAVcg5ydvsk=;
+        b=PWeiOTGs+UVK10uAHxcRr3BjSps6582lSTV/2qlPapldl1i/pyhmY08+bnbjluSejb
+         tIcF9aLt8D/ajAb7lq3SOFd97X0nv2ZPROPcjObS2PycGtg8e0fIWzWHldel0vEApPV/
+         Hai1JwDSYgbuGa6VDWrHYTKVG5/VNs9GPC8/o3SaBH9im3wMrBTEdWE8a89KF4AzSK/t
+         J7ifyeNAiOdiEhWI4k8nHIlyGHKs6oT7xAb+oadUD6Jjtm06fRDo+/T+d2C/ydjDJx3o
+         an/0hC0LsskoZPA4vAgZzt+I32gj82chKp0xK8cVJJ/9wgY7Y6uf2uEdUX4hqSzYaWfD
+         FiTg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=B3WSYVbD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-462ff40e92csi11801871cf.3.2024.11.07.02.28.10
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 07 Nov 2024 02:22:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-31096-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 07 Nov 2024 02:28:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b="Xh//7UEm";
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=LRw1ud7R;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of kvm+bounces-31096-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-31096-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id ED0F81F22716
-	for <alex.bennee@linaro.org>; Thu,  7 Nov 2024 10:22:33 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 624671EF929;
-	Thu,  7 Nov 2024 10:22:01 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="Xh//7UEm";
-	dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b="LRw1ud7R"
-Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6BDC71EBA1B
-	for <kvm@vger.kernel.org>; Thu,  7 Nov 2024 10:21:59 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=205.220.177.32
-ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1730974921; cv=fail; b=q5bWB6neuUdcGRUHTAN3NQkVWk/hrJHuqtFgeDS3rxvOo5ZCJikUBCyJvMLwKLV1smPGrWtHCMhXIyBJayQpIQONzFhedjE5O73SlE/MyHK50umubJu3XH68grhazQG0APz/T51Otre0bdA0GOH6dOcNi4MmaxQq1BwZgpiKRYo=
-ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1730974921; c=relaxed/simple;
-	bh=nOoEfpB2IGGp8YvQIcXEUIHcBF9AiD/lYg9oz6SIVBw=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 Content-Type:MIME-Version; b=bwe5pVnFKD+IPHFUjNGfyJHCYOueGNSJFC6XjuwJC4POvFZEfMmIdGOz9DXlixwEmFDkvY+XGlo8t+DB6gFsKuNve5iPeB0PBVkS8bxfGy11Jw80jIOGHhySPXpa4nQK817YaJREiuUdfhLRbq5PKkUv5+KpadpbUjx8hzllGHo=
-ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=Xh//7UEm; dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b=LRw1ud7R; arc=fail smtp.client-ip=205.220.177.32
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
-Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4A71faqS021962;
-	Thu, 7 Nov 2024 10:21:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2023-11-20; bh=tMm7sfsa5tMZm+9vPsMqJy+JU6H3ZOklscSFRUBodPg=; b=
-	Xh//7UEmu0ak9LE34UCKZmNBk6K3icnpsFDj0Q9MzaGRQH89s9c6yrP2Ihq9DGeQ
-	GdS5gKV4vrH3yojWZk4R4lU59vRScSo+pwqAX5t3gxPKWUkI+1TM4cPydwZ2s6tQ
-	4TDLxwqQ2AkWScU1KnIImA4sSpVe1YIdsVqQvLoKhEJcn12Xusf4IwbH0DxZKDR3
-	TdQrZIsmAuBTJcFMefJGQSKXOJMNYWOOpWKNZI6jIgXZPCiUHh1wMCSTNuZxNjh7
-	9yipXr6CM4uC2oOiuKHn4HGgXIb3b8G8tsMEWaY4okJuhXmNes4RhD/UvzWBuljX
-	Di5uzZk7bkO+dFWbIT7LJw==
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 42nbpst3ye-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 07 Nov 2024 10:21:42 +0000 (GMT)
-Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 4A79LanJ010012;
-	Thu, 7 Nov 2024 10:21:42 GMT
-Received: from nam10-dm6-obe.outbound.protection.outlook.com (mail-dm6nam10lp2041.outbound.protection.outlook.com [104.47.58.41])
-	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 42nahg53bt-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 07 Nov 2024 10:21:42 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=WUMu30hc4zkbfwDkv48C3f63Y2W+W7Jqp4gTelWx4wgL9uc1esK2PFuMIaDIMnftMSjb5Yw8fQ2ondv1jF9/Up7OKZSvfSbRyDCASjRLkBR4oW3Z1UknY7DmXVO/2ocaSqyLJBH4RC5gIaaEKzwioIe/iLxan7oPP82Wn00YxkoOofpgdzYdSgi2dDg/aXV0tLzSVzu17uc4E/Z5U+63zHa6e28j7iFHi3I2kgnkXoBWJLKSp7gOSaObXSkfY+471rhvZrAlrKazn5c0OS748CXpvbmcu7IM6/9nmbl+tU0cyO53WPolh6yvY9TwisV0PsYRAEtqQZsgTJgCYjSAkw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tMm7sfsa5tMZm+9vPsMqJy+JU6H3ZOklscSFRUBodPg=;
- b=EMaNK/Ktbk6mkb5V+59pa6PVS0OMZIe50QR82ylyfjU1MpwboA9/QfPUAv5u3XOsMqKTVJKM8OWPI+XZNAzK3pwRd5RdjRGpkm+vyfxRed9DyLQzL0KbRB63sFsLfD7eEZpX97y72BkeEkc1DJcFbiN3ziRT19B+Q/RDOrWD+SIVJk3iGOKeU3iFx9FVyDtpzoKg1Qm6rk/hJD9tR/HpHiZVAtkA3UKS0SR48r73bUEAbuid1s/mFBI18TQH5O+Gn+3FtwMLYrnGr+kaPvZOp7bKmEtAZErsXHeAmFcIePHqPkp+tDGPdWfBNuNOx1ip36Rr7Aq41a4Mj3j9GmQScg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+       dkim=pass header.i=@linaro.org header.s=google header.b=B3WSYVbD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1t8zk8-0008G5-CL; Thu, 07 Nov 2024 05:28:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t8zk7-0008Fk-1B
+ for qemu-devel@nongnu.org; Thu, 07 Nov 2024 05:27:59 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t8zk5-00031N-5y
+ for qemu-devel@nongnu.org; Thu, 07 Nov 2024 05:27:58 -0500
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-5cefa22e9d5so861777a12.3
+ for <qemu-devel@nongnu.org>; Thu, 07 Nov 2024 02:27:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tMm7sfsa5tMZm+9vPsMqJy+JU6H3ZOklscSFRUBodPg=;
- b=LRw1ud7R6gA1PQiE7QcloQXZpCmUB833d6mYj4A20tp1W+3fw6V71ZBkTVVALrVv4Ia/R58+3VpsNL9dRGn1a4yf0nv52gmfHGHJ6pWUFc62heeJFoBNNRglmRatFyTAOK8F2dX1QJLJccQtEwOWqjzpX8QbhkFZgoC/GZ+CR8c=
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
- by DM6PR10MB4187.namprd10.prod.outlook.com (2603:10b6:5:210::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8137.19; Thu, 7 Nov
- 2024 10:21:40 +0000
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23%3]) with mapi id 15.20.8137.018; Thu, 7 Nov 2024
- 10:21:40 +0000
-From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
-To: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
-        qemu-arm@nongnu.org
-Cc: william.roche@oracle.com, peterx@redhat.com, pbonzini@redhat.com,
-        richard.henderson@linaro.org, philmd@linaro.org,
-        peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
-        eduardo@habkost.net, marcel.apfelbaum@gmail.com,
-        wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
-Subject: [PATCH v2 5/7] hostmem: Factor out applying settings
-Date: Thu,  7 Nov 2024 10:21:24 +0000
-Message-ID: <20241107102126.2183152-6-william.roche@oracle.com>
-X-Mailer: git-send-email 2.43.5
-In-Reply-To: <20241107102126.2183152-1-william.roche@oracle.com>
-References: <e2ac7ad0-aa26-4af2-8bb3-825cba4ffca0@redhat.com>
- <20241107102126.2183152-1-william.roche@oracle.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: BY3PR10CA0009.namprd10.prod.outlook.com
- (2603:10b6:a03:255::14) To CH3PR10MB7329.namprd10.prod.outlook.com
- (2603:10b6:610:12c::16)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+ d=linaro.org; s=google; t=1730975275; x=1731580075; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=wX89TnjD0GpGlaLexSSa5ZtdHMZ3CG5OaqI44rLpj68=;
+ b=B3WSYVbDWJqg4k5J1ESIviAE75+z4hnGrL39vN1OuDjjBbV/ke1LS6CGyYdQLgbzcL
+ RxxcEy+bjjWNBC7yCPZQDVPOfH4btjv8eJVXvJEZFk7gXJ38HDBQC8NxPprt27R7zxCd
+ O2pXhXd2oqQPqc0/VwwDM0Pc95rvk6mI3jP06trTLOmUsZPEpqkNp4EwPidkINVYgQV3
+ YOs6IL4VIh5SJ323Jf/kw/Oj9q34J4/oqhJ8FR7qbKpDEArUrmkZE2dwCjmG//bSilRR
+ 3OXX7/o4krGujOxAaagLi2nQGSnQM7kYTlTmztsjxASmv2bljT8aH1jGpRpfbgl8L4AJ
+ 3yPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730975275; x=1731580075;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=wX89TnjD0GpGlaLexSSa5ZtdHMZ3CG5OaqI44rLpj68=;
+ b=vAYC+PkQuq8Ui8DNTRPFw5hAC3hPlYS2lPQ3Le1+4SxtOc6Sagv4Y5G/nOaOzjx7Dn
+ LJjQrCrtvH19M3KK+5oWxRLa1lMdfmuz7sCUFd+5Hz+Rgi3Qbw/W+RTLOPt119okSkr6
+ 1qDM6L+n3tZeIQEuPxFaHhSxUQ8+erDGyq5zkfFH19PbE2C/n7UJ6Qspn2IP6u80VyhJ
+ AmZewLc0Tf45HoNsm6RyMO+81gnQ1MvRSJv22pU9KBlFDeEcihmzcxsO4pqR0XGBe+JZ
+ PWNomPI3V9BcQyJ5XR+BraiZj+NVTnPKlenIcqzgnoh6a53Otw4HP4vmyV8gPwOEdBkj
+ ST3A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU36/d0DDYDTOGZho2eHcJI0bFI4GWIhgXQCmmb7rMy9gJhJWpJjXC8Nv13o3RXcDy6r0+YV2JLCkd1@nongnu.org
+X-Gm-Message-State: AOJu0YyYMa+fw2A8VOpyItIc7BxFReBj5honEQK72q03ETtiUpTB2FPv
+ DPDMvCtOfhjoIByF0DlXr21sdIo8i+2udcMpYl/SOcidvoAdggVkdWgIYeBy4qk=
+X-Received: by 2002:a05:6402:3202:b0:5c4:14fe:971e with SMTP id
+ 4fb4d7f45d1cf-5cbbf920567mr30670560a12.23.1730975275173; 
+ Thu, 07 Nov 2024 02:27:55 -0800 (PST)
+Received: from [172.16.23.118] ([89.101.134.25])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-5cf03c7d957sm609806a12.87.2024.11.07.02.27.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 Nov 2024 02:27:54 -0800 (PST)
+Message-ID: <fe69adc2-0ebb-4be0-93a2-9a45d87c36d3@linaro.org>
+Date: Thu, 7 Nov 2024 10:27:52 +0000
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|DM6PR10MB4187:EE_
-X-MS-Office365-Filtering-Correlation-Id: 54a8ee8e-3aa5-4709-182a-08dcff15f7e4
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|366016|376014;
-X-Microsoft-Antispam-Message-Info:
-	=?us-ascii?Q?1YoTOZaMPiJTppOAp4N/eNGYblZTfCMrOWtaAV9WpJVrtsWfGYIRZa1D75hh?=
- =?us-ascii?Q?xfvulWPYzvJ+ZmdS28kqpr1NhfNuxVVGqLQp3pBCx4viW32K4biUsVSXclSv?=
- =?us-ascii?Q?dlVdx1DMS0cpFd2LfrxZPFmbvR2smd1JzyuDs7Ujg+cDXzuUfxqvT/Zn/qbO?=
- =?us-ascii?Q?6gpKwicEp/pco4LubEHz9MYzt6+wYLv/ZySoUKMSZeUfIDLBvGYrhyf+D+I4?=
- =?us-ascii?Q?cpBgoAYA7eV2NkTElh38yCaB5bgy5vTEdYkBcQzd3Jy4rt9ok1uW2oe6PQzA?=
- =?us-ascii?Q?wrxBCC2YJwJSt40B8O+iq6iBRF3fUIyLHshFfQqwLGIyVFUyK4p1eoI20+9q?=
- =?us-ascii?Q?7xH1e6uLaRDcFnq9mYxkaI9BoNptEXkP341/4fCqo9DfSgNYEttvF4mKgfZt?=
- =?us-ascii?Q?eAZcfYgfc0OAjAtQgIOD5qjD7c5EqZSLKU/erihG0QupKOndU9bLrrRNSZZP?=
- =?us-ascii?Q?0sAQJEu6zrMpT7TC+i3+eExgspzQBdpCPSP2msS/tnNPOnjExmLNt+N9Wv4P?=
- =?us-ascii?Q?Rm70Ixz24OVeM8f69S4C0NN9z4Dc+j4TKZqzLseAPmnS7oixacOZ0b2TysBz?=
- =?us-ascii?Q?UzPEPiMfJWRVYMsg8PlXYm3yYf80FQNY0BumTEg1uOuC+7WnduwoGAknaX6L?=
- =?us-ascii?Q?f3n02D/gPZz8leSbNniX/Zm0F7Z7ZgEM8erNvMzHOgZK27JS/aoQ/D0hkc9Y?=
- =?us-ascii?Q?tZ3pnv3TOAQnxiCECQo2WExVvrNAnYs8SbXVRolSfQpDjbOHbMWx7uuLUgZ6?=
- =?us-ascii?Q?Gmpirk4WWSiB9zX2VUUz7BOsq87k+KPrV3xJqllG6YFesWM+huhPLaXMRpPO?=
- =?us-ascii?Q?TRXVNt4AxlhXriBrakuCrniYMfmm06Zp9Pswwc33hBeFHchR/xqnv12QiSEh?=
- =?us-ascii?Q?G+acfrqTMya7USOr+5wZK4aHJynYGJP8x8+d2TTNkcTJsx8EpUjf1IUISNEi?=
- =?us-ascii?Q?ZVK1CUW9LDn61KehuHFtLfgQZbk7CAQf93Yn2Ike4hmi6iIxHrxrm1NlI7aO?=
- =?us-ascii?Q?CKL76wZYdArExfxKFtVNsLFpHKDiXcHJi9s03Nj28lEpdnCCMyfHG1kZKufS?=
- =?us-ascii?Q?ih99tVj9lBn+7dpnmlZ2ReUKn2LNCgpX6UCqk1ScK1qepsslxEfOuk6gnAJH?=
- =?us-ascii?Q?fx1Ojt6cDyH8dFM7ifyGYZ/Y1UgOkPqO8n/XzRpL/Hg/W48VcERA6aBmtVzw?=
- =?us-ascii?Q?NafzOIXiv4oqm1gGpHXeFgFmGN0kNNaFdlhGJmeCb3LrZpECaRGBrEeip8M0?=
- =?us-ascii?Q?RXh3dG0ScQHTjy//C41iec63p62hUD7fOkPF6Gd+ASu76MwbRtv30TSIKeC7?=
- =?us-ascii?Q?nCU=3D?=
-X-Forefront-Antispam-Report:
-	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR10MB7329.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(366016)(376014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0:
-	=?us-ascii?Q?sz9XJxwly131rmz5Z8I5ebLFwth8wrDZS6JKNcAiBXeDcp2M3jvz6ajZJ8Mk?=
- =?us-ascii?Q?W7S5US9sRksOLb02o5fO9crgMTIpzyZHuTfKKcpfZ4yOu4XhMMupC5pMSpPb?=
- =?us-ascii?Q?8NAo0NVdHGCzoPKKBVjM9nPafiulZ4R6/gsHtCSm33+pa3yXeF2MVMm047Oa?=
- =?us-ascii?Q?a6D6BpBS8RBZa/V7ssIcApHTryci2jVhdaIM26KnbsOnZplA3egzAG6tbaz/?=
- =?us-ascii?Q?Gz7o9WxtHPNuohqqz1Dn9hPel89h83faeiVzMAvkkbHjUrOi5aQzu4syzRfQ?=
- =?us-ascii?Q?QwG8QZF+G8U8gQOOVUT/B7BN5WW4S1dTGiZ3IPHhE5Vur+cFTcU7j9/qVNEE?=
- =?us-ascii?Q?U7COOa1wxbnwywKT0YQNql/tQBTOAB7ITGjO3e3kOUn98gqAcQ1FafMXjRb6?=
- =?us-ascii?Q?W5zzZufnv1tKE+raEL+bb8VJVW+879vZVEgYciyn25LJjNKPmoqfhdC0erA8?=
- =?us-ascii?Q?iA8ELwK/i00p1OH4wnJ/qV8yssgTNAsJ79zhU6Z8MdTdQF7oNHPjmM5/KJty?=
- =?us-ascii?Q?v5iojZncv9BNEUwLQz2XOzymDe++KGgIn/FsVDY6ahDT6gefYxQbb2Up0dS/?=
- =?us-ascii?Q?z0KNlsntqJIoQnUUPzXwHWVl5UjslkAuoo1qZprXwoqJjKcPfzwdLp44EH2x?=
- =?us-ascii?Q?hmtONTose4Fn7TxTecoxYltdfpN1bi2GbQGAxaC0MLa7SVUWf2fCbL8JfLiY?=
- =?us-ascii?Q?9SQ6A+Hj1pkQ43LUu5VjgfJ/S5c8ct9GSPjDarfupoA27SO0Yc7z66jPno5/?=
- =?us-ascii?Q?rS1Qtr7ocPWLv5CEB1VkOJmjpmbED14rCaXdy8QVAi6msuMFobHHeV+JyUds?=
- =?us-ascii?Q?5zkHnRy9tq1QU54pc6mTRI0m3gqQRDDCSGEtLGypqLYbjQCqdEjnYPhr3Dpt?=
- =?us-ascii?Q?idFNs68HZ1/hrYJ9vkWPEnB0QWUr5lLOcRhlTMJqSBo/EKlx06F+2UVovdv+?=
- =?us-ascii?Q?5x4F13ejW8/EEY5ei4QqL0Ovb4SZ6CQQwX5TS1YzqG4CvriFXEBAO7Y+NWAQ?=
- =?us-ascii?Q?hL8lKFTO41GV4tdL3eTXgmZNlrtUYET6ZXqf5LEZbrblY9mlK9OoEUlUbEux?=
- =?us-ascii?Q?OMIS/kGocUZ07k4VsINWvUy1I9ZrYWOzv2x/Cw7gp3nuGLGm88FDtuI35VGl?=
- =?us-ascii?Q?BFWCVfbsVpQ1njSY/sZIOR5mR3BfebHNaKv8toIR7/CJn7V7yeIUAYqS7oqa?=
- =?us-ascii?Q?evHb+DBpO8xQppbWGoNlRU3Sj7+febYKWiUugzMVSPuEVwknQ8YBzsfdZZwS?=
- =?us-ascii?Q?KEdwhC43lS7MtLiwx/I74btMfIa3TGTdKEnueRhd8DY8mW0TimUzEYAphEIw?=
- =?us-ascii?Q?lOLqXvcnLkuWydDqOeYwP85/xR8p1RXdD/4hZj7ojdhKgdLSNO2wVS7huDl2?=
- =?us-ascii?Q?Cyne61sUxAyzB997RGEPzmuNe42EmlBe9Qfd+kdViWJXc8mqDSqrJWF53RYu?=
- =?us-ascii?Q?jVIzYUroGE/JYxUjGWKtFbjBbNHzr3+P0RujnhpDzwKWAPO2KmFJfue8HL5j?=
- =?us-ascii?Q?7yVFLRVqkSrMMgLICAijzHeOl9AXOT3Myq1xgYl3DIHCIFTLWPQsbQQgtmth?=
- =?us-ascii?Q?aMznMkqz3cpO0BEiFR73H8pwxuZMDEhnzGEyLErBy/c33kesQrmBGJ3Og7eG?=
- =?us-ascii?Q?ww=3D=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
-	wzDRmPDEp7FFQVrOfFTBTnHJVbqcjBjCZx1vhG5gTUC8pTpseAIBTWHv/+CHy1mjHXSNk8FPzfFfk8eXxmLe4lGHd8UhafSF5WAlWHM0BGhN6ZYDUBBRAvVG9Rpk2uBTZb3V3F+Fj8a2sjv/XGrZsyMRTD0kuJlv6ccH5da+Wqwc8X0AMPzzdAYOjVEQqcZcPtEyTyQC7rrZUa4J7u16thzBcp0L6HswtLoeByzXc98IR74dRZvCGOTHPJ0CIMtX/wkzsVzzrMOMc3XS6F1K66GVfxbNjQciwEfviEPqYk7Q+ivmmK7xGc9d8Zp+bx1xPDc9WtnDvsrjUn9sQ6o50+lGsAbwl5wc39BY0uutsvwUDZwrlnpw4EfHy2PGZQqxJRJGUl6vFmrQELs3xLuQQVkBNt9Vhx0l2YXvCOh04KYHJgB9weqD51XtJnYwsnWFYpqMxhhqvs7zwKv4TRfaGCT8OBZ/BCHy4e/rqi2NKOy7HtIF07f1O9O67GF210FOJqq/Ar25YAW2nq0377xIzDaFiuzDbokFLxQxV+pRu4P5vpw/RGCVcT19blZUub3rVH/ROdODIpmRaVs+Zro8g6Hx/GWUGuvRLXmYSfLbBZA=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 54a8ee8e-3aa5-4709-182a-08dcff15f7e4
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Nov 2024 10:21:39.9867
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3KVq142CdnkgtgYiLKGJxJ4YitHe1LyR71vOuwE1mmPsstbwZKyrWGZy4dNZrQmZ+VmVo4W+S+C3rRMsXTu2CE6gip3DfMMn5qKZsRPH0MA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR10MB4187
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.62.30
- definitions=2024-11-07_01,2024-11-06_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0 phishscore=0
- mlxlogscore=999 mlxscore=0 suspectscore=0 bulkscore=0 malwarescore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2409260000 definitions=main-2411070079
-X-Proofpoint-ORIG-GUID: 4K4v826o53Z9uUv6P93cWpL9wc3iiqqR
-X-Proofpoint-GUID: 4K4v826o53Z9uUv6P93cWpL9wc3iiqqR
-X-TUID: RsGRppQVMGGv
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 07/16] hw/char/xilinx_uartlite: Make device endianness
+ configurable
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Anton Johansson <anjo@rev.ng>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, devel@lists.libvirt.org,
+ qemu-ppc@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20241107012223.94337-1-philmd@linaro.org>
+ <20241107012223.94337-8-philmd@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20241107012223.94337-8-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Zpx/7VrbUf4Q
 
-From: David Hildenbrand <david@redhat.com>
+On 11/7/24 01:22, Philippe Mathieu-Daudé wrote:
+> Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair
+> of DEVICE_LITTLE_ENDIAN / DEVICE_BIG_ENDIAN.
+> Add the "little-endian" property to select the device
+> endianness, defaulting to little endian.
+> Set the proper endianness on the single machine using the
+> device.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/char/xilinx_uartlite.c                | 44 ++++++++++++++++--------
+>   hw/microblaze/petalogix_s3adsp1800_mmu.c |  1 +
+>   2 files changed, 31 insertions(+), 14 deletions(-)
 
-We want to reuse the functionality when remapping or resizing RAM.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Signed-off-by: David Hildenbrand <david@redhat.com>
-Signed-off-by: William Roche <william.roche@oracle.com>
----
- backends/hostmem.c | 155 ++++++++++++++++++++++++---------------------
- 1 file changed, 82 insertions(+), 73 deletions(-)
+> +static const MemoryRegionOps uart_ops[2] = {
+> +    {
+> +        .read = uart_read,
+> +        .write = uart_write,
+> +        .endianness = DEVICE_BIG_ENDIAN,
+> +        .impl = {
+> +            .min_access_size = 4,
+> +            .max_access_size = 4,
+> +        },
+> +        .valid = {
+> +            .min_access_size = 1,
+> +            .max_access_size = 4,
+> +        },
+> +    }, {
+> +        .read = uart_read,
+> +        .write = uart_write,
+> +        .endianness = DEVICE_LITTLE_ENDIAN,
+> +        .impl = {
+> +            .min_access_size = 4,
+> +            .max_access_size = 4,
+> +        },
+> +        .valid = {
+> +            .min_access_size = 1,
+> +            .max_access_size = 4,
+> +        },
+>       }
+>   };
 
-diff --git a/backends/hostmem.c b/backends/hostmem.c
-index 181446626a..bf85d716e5 100644
---- a/backends/hostmem.c
-+++ b/backends/hostmem.c
-@@ -36,6 +36,87 @@ QEMU_BUILD_BUG_ON(HOST_MEM_POLICY_BIND != MPOL_BIND);
- QEMU_BUILD_BUG_ON(HOST_MEM_POLICY_INTERLEAVE != MPOL_INTERLEAVE);
- #endif
- 
-+static void host_memory_backend_apply_settings(HostMemoryBackend *backend,
-+                                               void *ptr, uint64_t size,
-+                                               Error **errp)
-+{
-+    bool async = !phase_check(PHASE_LATE_BACKENDS_CREATED);
-+
-+    if (backend->merge) {
-+        qemu_madvise(ptr, size, QEMU_MADV_MERGEABLE);
-+    }
-+    if (!backend->dump) {
-+        qemu_madvise(ptr, size, QEMU_MADV_DONTDUMP);
-+    }
-+#ifdef CONFIG_NUMA
-+    unsigned long lastbit = find_last_bit(backend->host_nodes, MAX_NODES);
-+    /* lastbit == MAX_NODES means maxnode = 0 */
-+    unsigned long maxnode = (lastbit + 1) % (MAX_NODES + 1);
-+    /*
-+     * Ensure policy won't be ignored in case memory is preallocated
-+     * before mbind(). note: MPOL_MF_STRICT is ignored on hugepages so
-+     * this doesn't catch hugepage case.
-+     */
-+    unsigned flags = MPOL_MF_STRICT | MPOL_MF_MOVE;
-+    int mode = backend->policy;
-+
-+    /*
-+     * Check for invalid host-nodes and policies and give more verbose
-+     * error messages than mbind().
-+     */
-+    if (maxnode && backend->policy == MPOL_DEFAULT) {
-+        error_setg(errp, "host-nodes must be empty for policy default,"
-+                   " or you should explicitly specify a policy other"
-+                   " than default");
-+        return;
-+    } else if (maxnode == 0 && backend->policy != MPOL_DEFAULT) {
-+        error_setg(errp, "host-nodes must be set for policy %s",
-+                   HostMemPolicy_str(backend->policy));
-+        return;
-+    }
-+
-+    /*
-+     * We can have up to MAX_NODES nodes, but we need to pass maxnode+1
-+     * as argument to mbind() due to an old Linux bug (feature?) which
-+     * cuts off the last specified node. This means backend->host_nodes
-+     * must have MAX_NODES+1 bits available.
-+     */
-+    assert(sizeof(backend->host_nodes) >=
-+           BITS_TO_LONGS(MAX_NODES + 1) * sizeof(unsigned long));
-+    assert(maxnode <= MAX_NODES);
-+
-+#ifdef HAVE_NUMA_HAS_PREFERRED_MANY
-+    if (mode == MPOL_PREFERRED && numa_has_preferred_many() > 0) {
-+        /*
-+         * Replace with MPOL_PREFERRED_MANY otherwise the mbind() below
-+         * silently picks the first node.
-+         */
-+        mode = MPOL_PREFERRED_MANY;
-+    }
-+#endif
-+
-+    if (maxnode &&
-+        mbind(ptr, size, mode, backend->host_nodes, maxnode + 1, flags)) {
-+        if (backend->policy != MPOL_DEFAULT || errno != ENOSYS) {
-+            error_setg_errno(errp, errno,
-+                             "cannot bind memory to host NUMA nodes");
-+            return;
-+        }
-+    }
-+#endif
-+    /*
-+     * Preallocate memory after the NUMA policy has been instantiated.
-+     * This is necessary to guarantee memory is allocated with
-+     * specified NUMA policy in place.
-+     */
-+    if (backend->prealloc &&
-+        !qemu_prealloc_mem(memory_region_get_fd(&backend->mr),
-+                           ptr, size, backend->prealloc_threads,
-+                           backend->prealloc_context, async, errp)) {
-+        return;
-+    }
-+}
-+
- char *
- host_memory_backend_get_name(HostMemoryBackend *backend)
- {
-@@ -337,7 +418,6 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
-     void *ptr;
-     uint64_t sz;
-     size_t pagesize;
--    bool async = !phase_check(PHASE_LATE_BACKENDS_CREATED);
- 
-     if (!bc->alloc) {
-         return;
-@@ -357,78 +437,7 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
-         return;
-     }
- 
--    if (backend->merge) {
--        qemu_madvise(ptr, sz, QEMU_MADV_MERGEABLE);
--    }
--    if (!backend->dump) {
--        qemu_madvise(ptr, sz, QEMU_MADV_DONTDUMP);
--    }
--#ifdef CONFIG_NUMA
--    unsigned long lastbit = find_last_bit(backend->host_nodes, MAX_NODES);
--    /* lastbit == MAX_NODES means maxnode = 0 */
--    unsigned long maxnode = (lastbit + 1) % (MAX_NODES + 1);
--    /*
--     * Ensure policy won't be ignored in case memory is preallocated
--     * before mbind(). note: MPOL_MF_STRICT is ignored on hugepages so
--     * this doesn't catch hugepage case.
--     */
--    unsigned flags = MPOL_MF_STRICT | MPOL_MF_MOVE;
--    int mode = backend->policy;
--
--    /* check for invalid host-nodes and policies and give more verbose
--     * error messages than mbind(). */
--    if (maxnode && backend->policy == MPOL_DEFAULT) {
--        error_setg(errp, "host-nodes must be empty for policy default,"
--                   " or you should explicitly specify a policy other"
--                   " than default");
--        return;
--    } else if (maxnode == 0 && backend->policy != MPOL_DEFAULT) {
--        error_setg(errp, "host-nodes must be set for policy %s",
--                   HostMemPolicy_str(backend->policy));
--        return;
--    }
--
--    /*
--     * We can have up to MAX_NODES nodes, but we need to pass maxnode+1
--     * as argument to mbind() due to an old Linux bug (feature?) which
--     * cuts off the last specified node. This means backend->host_nodes
--     * must have MAX_NODES+1 bits available.
--     */
--    assert(sizeof(backend->host_nodes) >=
--           BITS_TO_LONGS(MAX_NODES + 1) * sizeof(unsigned long));
--    assert(maxnode <= MAX_NODES);
--
--#ifdef HAVE_NUMA_HAS_PREFERRED_MANY
--    if (mode == MPOL_PREFERRED && numa_has_preferred_many() > 0) {
--        /*
--         * Replace with MPOL_PREFERRED_MANY otherwise the mbind() below
--         * silently picks the first node.
--         */
--        mode = MPOL_PREFERRED_MANY;
--    }
--#endif
--
--    if (maxnode &&
--        mbind(ptr, sz, mode, backend->host_nodes, maxnode + 1, flags)) {
--        if (backend->policy != MPOL_DEFAULT || errno != ENOSYS) {
--            error_setg_errno(errp, errno,
--                             "cannot bind memory to host NUMA nodes");
--            return;
--        }
--    }
--#endif
--    /*
--     * Preallocate memory after the NUMA policy has been instantiated.
--     * This is necessary to guarantee memory is allocated with
--     * specified NUMA policy in place.
--     */
--    if (backend->prealloc && !qemu_prealloc_mem(memory_region_get_fd(&backend->mr),
--                                                ptr, sz,
--                                                backend->prealloc_threads,
--                                                backend->prealloc_context,
--                                                async, errp)) {
--        return;
--    }
-+    host_memory_backend_apply_settings(backend, ptr, sz, errp);
- }
- 
- static bool
--- 
-2.43.5
+Having looked at several of these now, it occurs to me that you can avoid repetition:
 
+static const MemoryRegionOps uart_ops[2] = {
+     [0 ... 1] = {
+         .read = uart_read,
+         etc,
+     },
+     [0].endianness = DEVICE_BIG_ENDIAN,
+     [1].endianness = DEVICE_LITTLE_ENDIAN,
+};
+
+
+r~

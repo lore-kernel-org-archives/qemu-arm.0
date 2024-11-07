@@ -1,547 +1,172 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4435886njc;
-        Thu, 7 Nov 2024 10:59:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW6p8clu4+Q2Oa/PgnOTbCEu9PFCGa6H1tUSxAEERT/7yf5n3SSPVuebHhRLxZeDq4QtIEQdIrKUaU06g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEGwaosbRqcJB5wnH38R3ATcS9R7GEoNUVHEetfkH/7KE4I15zd597j9k6QMeNZ9Ealn3bK
-X-Received: by 2002:a5d:59a3:0:b0:37d:41df:136b with SMTP id ffacd0b85a97d-381f172a1eemr186370f8f.13.1731005949696;
-        Thu, 07 Nov 2024 10:59:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731005949; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4467342njc;
+        Thu, 7 Nov 2024 11:55:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWj+lHscWkbBJsJg0tWP4+0yBJwGc2/EqDsVC2APYOPdGwByKoxpKkZJxMg67dO7WOu9D7FEm3YMocJlg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHz0lWGRTLJcr5Z+cEUSa0f8vFZ+ah/OqiX2wQjnR7uP7vh8InKFEHrJ9HfuUAW+N/tii+l
+X-Received: by 2002:a05:620a:4485:b0:7ac:b93b:b250 with SMTP id af79cd13be357-7b331dc5331mr64464485a.0.1731009312273;
+        Thu, 07 Nov 2024 11:55:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731009312; cv=none;
         d=google.com; s=arc-20240605;
-        b=XchkBmAkVznYR4/IHWRFSMNJ3memFGiGfy6IyswD4O/eWS8Ll1gCKAWpaAbNx87nqf
-         VbSgTIqL+HqXM9SDOA8a7f2BfzVQY3l2swom4pSVDQTAF5n97o/ugSjdHwMU37kDBi/J
-         422rAO1QXKxi97Y/h2nkSjD9Qc1WPuYwSSfc44YUmYltvz8lg1BZtiyqFbah7LhPF1GU
-         Vw3DVgY6IEGSrSMqaDs12mfnE1avUPJwgzKXmN+UVWhfGOXF4pYaZcQh2L9/80zGiT4O
-         2r6YJt6LPw/zUyfs0dFVIB5peo+8rg6ib8lS4hNZI5TJpJ1Z5KB2e8WNDkqVwa1vcytM
-         VHdA==
+        b=gXxLZDIXXgbk3TMLyjXUB0XIChL+sheMNyqI8gZg8ZkrLJvhjRqudf/IB1MWvdgspu
+         YY93R+J2S+eAFRsc5UKy7Ungu4+fBY89WeXj2v/CU88jqKZhJZv79JIVcN84CnpN3ULE
+         Cxtcc2wt0SXdd1vGkthK+vUvt6GLhJV3SUSBtAeZhBO9W5Qpo/7CncYloLfMf2Fp4pSu
+         xY8E9MNx0TCDeD7Hi+Mp/isMHmIABpi7H5ybMDEOi2uXF5o7Jc14hhCxyIoEEQylhFgY
+         gejYehpWkGzVElCeKqihznYK2Jb+Hjd01r4va45Id0QoEv0awVOrR15nQU5pF1pjhAAl
+         l4cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:content-transfer-encoding:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from;
-        bh=CGFrwbIYVs7+THfXOiHykPKQbrMugTiAiUofkcrdoU0=;
-        fh=Nez8zrmKCjCutbNo/j68/izbwT5Kw1c1Hq/bj7m1JEA=;
-        b=RTY2uko1Ni5UKqlPH7IdidgoRhtSJ8KIocK2Gl108zvY5QBKufZn4SfxcUJN0xiqBt
-         jIZ2kisbAWMGYZOoUNSp7QT6g/qmrch2rPvw4JmR0h23TAgmwwsl1nPcEhEpHDpVGooO
-         2F2QqeV31OYinjf4iIzvWkaBYLEZygnDq4+xVGUomFpoCdfHE1dg0Gfzu0CItugk5//s
-         IRfWvbhkt8+htpMMX7zM6YKrrLr2Ecikk068azKCgGjEoZl1aVxrT4vJzaXZ9azLTeXd
-         k9HY971srIVXpsE2cBiF+2E9YpklY4n8kQCYsDKJs/4K/sDjMLgx9EixS7E+oSduoQyV
-         Zl5w==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :mime-version:date:dkim-signature;
+        bh=Jzv6DPkMq+AatJ9bE5NP8pF1sQdsh9cAVnptctptWRA=;
+        fh=XuBrA54R9ySozHoD/qCHuwIA1pKE6YAf4KhJE72ECqw=;
+        b=jty8fmTEbRSXtEE8GwngxL4bssuMrOfi6s1Vs9QTLAFDbgA/Tx5ULFCRpJjSrRtT4g
+         VdiQjx1Zy6BsGFI5Cy9fGUUsXbR+8K9Q/Tx4AaIfryoY/rPeSy0G27g6ybxYeJsHqGgG
+         WLb+iYGw19hd5Hq4iDEa+XtC89rHVWoltOD+XlRoxFoMKZDK9EOcsP+gH6n+sT/+sHH2
+         rFx4BbyjKux9KOHwoR+QM8W9KpnWSAyiqo8+9yAWnAGmc+/OB02ojO1ggUZIkPAHcG8J
+         HyrTY044xnWJG1+fbTuasBnE1d4YITdjA7FdtVdwVzN7LwKaVXt86AfwkY67oqIkqbM5
+         NNvw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <salil.mehta@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-381ed9fc5edsi1384393f8f.391.2024.11.07.10.59.09
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 07 Nov 2024 10:59:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=h1QWR4dm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b32acb9bb5si230382985a.269.2024.11.07.11.55.12
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 07 Nov 2024 11:55:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xkrsy6t9bz6K5g3;
-	Fri,  8 Nov 2024 02:57:26 +0800 (CST)
-Received: from frapeml500006.china.huawei.com (unknown [7.182.85.219])
-	by mail.maildlp.com (Postfix) with ESMTPS id D94FF1400CA;
-	Fri,  8 Nov 2024 02:59:07 +0800 (CST)
-Received: from frapeml500007.china.huawei.com (7.182.85.172) by
- frapeml500006.china.huawei.com (7.182.85.219) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 7 Nov 2024 19:59:07 +0100
-Received: from frapeml500007.china.huawei.com ([7.182.85.172]) by
- frapeml500007.china.huawei.com ([7.182.85.172]) with mapi id 15.01.2507.039;
- Thu, 7 Nov 2024 19:59:07 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, "mst@redhat.com" <mst@redhat.com>, Jonathan Cameron
-	<jonathan.cameron@huawei.com>, "peter.maydell@linaro.org"
-	<peter.maydell@linaro.org>, "richard.henderson@linaro.org"
-	<richard.henderson@linaro.org>, "anisinha@redhat.com" <anisinha@redhat.com>,
-	"eduardo@habkost.net" <eduardo@habkost.net>, "marcel.apfelbaum@gmail.com"
-	<marcel.apfelbaum@gmail.com>, "david@redhat.com" <david@redhat.com>,
-	"philmd@linaro.org" <philmd@linaro.org>, "peterx@redhat.com"
-	<peterx@redhat.com>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
-	"gshan@redhat.com" <gshan@redhat.com>, "borntraeger@linux.ibm.com"
-	<borntraeger@linux.ibm.com>, "alex.bennee@linaro.org"
-	<alex.bennee@linaro.org>, "linux@armlinux.org.uk" <linux@armlinux.org.uk>,
-	"darren@os.amperecomputing.com" <darren@os.amperecomputing.com>,
-	"ilkka@os.amperecomputing.com" <ilkka@os.amperecomputing.com>,
-	"vishnu@os.amperecomputing.com" <vishnu@os.amperecomputing.com>,
-	"karl.heubaum@oracle.com" <karl.heubaum@oracle.com>, "miguel.luis@oracle.com"
-	<miguel.luis@oracle.com>, "salil.mehta@opnsrc.net" <salil.mehta@opnsrc.net>,
-	zhukeqian <zhukeqian1@huawei.com>, "wangxiongfeng (C)"
-	<wangxiongfeng2@huawei.com>, "wangyanan (Y)" <wangyanan55@huawei.com>,
-	"zhao1.liu@intel.com" <zhao1.liu@intel.com>, Linuxarm <linuxarm@huawei.com>,
-	"gustavo.romero@linaro.org" <gustavo.romero@linaro.org>
-Subject: RE: [PATCH 2/3] Fix: Reverse CPUs presence check logic for x86
- backward compatability
-Thread-Topic: [PATCH 2/3] Fix: Reverse CPUs presence check logic for x86
- backward compatability
-Thread-Index: AQHbMExwRTIJtUKJlEic/SrRi9Z39bKqNgWAgAAbf+CAAAkaAIAAEedggAGOT4CAAB/3QA==
-Date: Thu, 7 Nov 2024 18:59:07 +0000
-Message-ID: <6f6b3856c9274be4b070539770be1b39@huawei.com>
-References: <20241106130331.205020-1-salil.mehta@huawei.com>
- <20241106130331.205020-3-salil.mehta@huawei.com>
- <20241106145635.77332d7c@imammedo.users.ipa.redhat.com>
- <28a19ad7554e4b70819e1435669eeba3@huawei.com>
- <20241106170734.0c7a5adb@imammedo.users.ipa.redhat.com>
- <2bb1abda0787405b95af0233940e3df7@huawei.com>
- <20241107175715.4f07ae22@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20241107175715.4f07ae22@imammedo.users.ipa.redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach:
-X-MS-TNEF-Correlator:
-x-originating-ip: [10.48.150.69]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
-X-TUID: 4pi2uplM/0S1
+       dkim=pass header.i=@google.com header.s=20230601 header.b=h1QWR4dm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t98au-0001Sq-OT; Thu, 07 Nov 2024 14:55:04 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from
+ <3ERstZwYKCDwrgrsqpemmejc.amkocks-Ypklmlels.mpe@flex--titusr.bounces.google.com>)
+ id 1t98at-0001Qm-4e
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:03 -0500
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3ERstZwYKCDwrgrsqpemmejc.amkocks-Ypklmlels.mpe@flex--titusr.bounces.google.com>)
+ id 1t98ap-0003K1-I2
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:01 -0500
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-e29205f6063so2268472276.1
+ for <qemu-arm@nongnu.org>; Thu, 07 Nov 2024 11:54:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1731009297; x=1731614097; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=Jzv6DPkMq+AatJ9bE5NP8pF1sQdsh9cAVnptctptWRA=;
+ b=h1QWR4dmkZbMAaofqSXG9Y/s3OBcZ10KT4BSI62Vtoihrws1tiNiGfmui22DtlBq54
+ eWeISE2e8HQgPh/sB7UzpeaalnCuOtxSQkorabzb6a4hbnBAjNeLR6ejwU6r4Q1rO9L5
+ LpnUyDh6HlbCpGMEWKpdvJ+8cQNh2xE9XvUHEwo/sjwLYELg4/H73kYOtuCJJGUGw9xj
+ ZG//Mo4sw22ravpGTZk1M1WlYTYVAat5VOqNp+agprDsYCPUMhFFZ9PfZJS0M9tp7ES3
+ mAXwPok+WmuyHkl4lAqxRE67Hm8NsZrVkN4179bm389ElCjGGxwe5tRxA4SQZaw66+46
+ 4z/Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1731009297; x=1731614097;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Jzv6DPkMq+AatJ9bE5NP8pF1sQdsh9cAVnptctptWRA=;
+ b=TR4I6UCwPoLrzjJz+ogaMieVCDW0cN7Xi7jtpgFwqOVyrQ3sHhjOEcVDy6VTIpei3/
+ 6PXustYjNAyQFP2R7E3L+LeKlEaAIiJOZGxZwn3pg1LSJEd9YbsAoC3OU7UvScB2G5xT
+ Eby9Nq/V8m/NuL7wVSEF8mVIYUEiTfstOYSvoyEwKLr1aKfohgcVr2PAhIUnMbq7O74O
+ xsa9y7p4uDkVIq0cj5BWzBoquzdf3PMg4mivAbj7hmfJWI449uvP0OsarZn1lFpDWoZo
+ ccdFcc34sneZ+V5l+SZtAm71zzktI6rtW1rSd8ewYKofYQJs5LO+mxdOxoIOQ6sbV+vb
+ RHlw==
+X-Gm-Message-State: AOJu0Ywg3JJgy1zti4ouo8o6S3x8HrLXO3QAaEiVzV2zsCcnDx/DzRge
+ 3tyTz7PJ6RznyDCyHVzok2kcuaEXyD7mGkWfah+LvT8oR4YEHI04orSabmn+tkuJT3S78LO+Ai3
+ 67Q==
+X-Received: from titusr.c.googlers.com ([fda3:e722:ac3:cc00:dc:567e:c0a8:e14])
+ (user=titusr job=sendgmr) by 2002:a25:2d10:0:b0:e33:4850:b1bd with
+ SMTP id
+ 3f1490d57ef6-e337f843c12mr621276.1.1731009297594; Thu, 07 Nov 2024 11:54:57
+ -0800 (PST)
+Date: Thu,  7 Nov 2024 19:54:47 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.47.0.277.g8800431eea-goog
+Message-ID: <20241107195453.2684138-1-titusr@google.com>
+Subject: [PATCH 0/6] Add Quanta GSZ BMC machine and PCA I2C GPIO expanders
+From: Titus Rwantare <titusr@google.com>
+To: peter.maydell@linaro.org, minyard@acm.org, clg@redhat.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, philmd@linaro.org, 
+ venture@google.com, wuhaotsh@google.com, milesg@linux.vnet.ibm.com, 
+ Titus Rwantare <titusr@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3ERstZwYKCDwrgrsqpemmejc.amkocks-Ypklmlels.mpe@flex--titusr.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TkHkcO7JlVru
 
-Hi Igor,
+This patch series bundles the GPIO sensors previously sent for review:
+https://lore.kernel.org/all/20230206194936.168843-1-titusr@google.com
 
-Many thanks for taking time to reply.
+and the GSZ board commit sent here:
+https://lore.kernel.org/all/20241007171700.1594342-1-titusr@google.com/
 
->  From: qemu-arm-bounces+salil.mehta=3Dhuawei.com@nongnu.org <qemu-
->  arm-bounces+salil.mehta=3Dhuawei.com@nongnu.org> On Behalf Of Igor
->  Mammedov
->  Sent: Thursday, November 7, 2024 4:57 PM
->  To: Salil Mehta <salil.mehta@huawei.com>
-> =20
->  On Wed, 6 Nov 2024 19:05:15 +0000
->  Salil Mehta <salil.mehta@huawei.com> wrote:
-> =20
->  > Hi Igor,
->  >
->  > Thanks for replying back and the reviews. Please find my replies
->  > inline.
->  >
->  > >  From: Igor Mammedov <imammedo@redhat.com>
->  > >  Sent: Wednesday, November 6, 2024 4:08 PM
->  > >  To: Salil Mehta <salil.mehta@huawei.com>
->  > >
->  > >  On Wed, 6 Nov 2024 14:45:42 +0000
->  > >  Salil Mehta <salil.mehta@huawei.com> wrote:
->  > >
->  > >  > Hi Igor,
->  > >  >
->  > >  > >  From: qemu-arm-bounces+salil.mehta=3Dhuawei.com@nongnu.org
->  > >  <qemu-
->  > >  > > arm-bounces+salil.mehta=3Dhuawei.com@nongnu.org> On Behalf Of
->  > > Igor  > > Mammedov  > >  Sent: Wednesday, November 6, 2024 1:57 PM
->  > > > >  To: Salil Mehta <salil.mehta@huawei.com>  > >  > >  On Wed, 6
->  > > Nov 2024 13:03:30 +0000  > >  Salil Mehta <salil.mehta@huawei.com>
->  > > wrote:
->  > >  > >
->  > >  > >  > Checking `is_present` first can break x86 migration from new
->  > > Qemu  > > > version to old Qemu. This is because CPRS Bit is not
->  > > defined in  > > the  > older Qemu register block and will always be
->  > > 0 resulting in  > > check  > always failing. Reversing the logic to
->  > > first check  > > `is_enabled` can  > alleviate below problem:
->  > >  > >  >
->  > >  > >  > -                If ((\_SB.PCI0.PRES.CPEN =3D=3D One))
->  > >  > >  > -                {
->  > >  > >  > -                    Local0 =3D 0x0F
->  > >  > >  > +                If ((\_SB.PCI0.PRES.CPRS =3D=3D One))
->  > >  > >  > +                {
->  > >  > >  > +                    If ((\_SB.PCI0.PRES.CPEN =3D=3D One))
->  > >  > >  > +                    {
->  > >  > >  > +                        Local0 =3D 0x0F
->  > >  > >  > +                    }
->  > >  > >  > +                    Else
->  > >  > >  > +                    {
->  > >  > >  > +                        Local0 =3D 0x0D
->  > >  > >  > +                    }
->  > >  > >  >                  }
->  > >  > >  >
->  > >  > >  > Suggested-by: Igor Mammedov <imammedo@redhat.com>
->  > > 'Reported-by'
->  > >  > > maybe, but certainly not suggested.
->  > >  >
->  > >  >
->  > >  > No issues. I can change.
->  > >  >
->  > >  >
->  > >  > >
->  > >  > >  After more thinking and given presence is system wide that
->  > > doesn't  > > change  at runtime, I don't see any reason for
->  > > introducing presence  > > bit as ABI (and  undocumented on top of th=
-at).
->  > >  >
->  > >  >
->  > >  > This is a wrong assumption. Presence bit can change in future. We
->  > > have  > taken into account this aspect by design in the kernel code =
-as
->  well.
->  > >  > Both virtual
->  > >
->  > >  Above does imply that support for really hotpluggable CPUs might be
->  > > implemented in the future.
->  > >  Can you point to relevant kernel code/patches?
->  >
->  >
->  > Let me make it clear so that there is no confusion, there is no
->  > support of physical "CPU" hot-plug on ARM platforms right now and nor
->  > will there be any in future as it does not makes sense to have. The
->  > point I made in the patches is about hot-plug was at different
->  > granularity which has not been denied by ARM.
-> =20
->  _STA and ACPI cphp registers are per logical CPU and can't be anything e=
-lse
->  per spec.
-> =20
->  how different granularity is relevant here?
+The Quanta GSZ a current Google machine of the day. This machine will be used as a platform to enable features such as the PECI bmc interface, and Intel eSPI virtual wire interface in QEMU.
 
+This patch series also contains a set of i2c GPIO expanders, with support for 4, 8, and 16 GPIO connections.
 
-It is because hot-plug at socket level (or similar level) has not been deni=
-ed.
+The devices are configured as GPIO inputs by default, but can have pins configured to be inputs with qmp commands.
 
+These sensors and machine are maintained and used in CI daily within Google.
 
->  > >  > and physical CPU hot plug can co-exists or entirely as sole featu=
-res.
->  > >  > This is a requirement.
->  > >
->  > >
->  > >  I don't see any _must_ requirements here whatsoever. If/when ARM
->  > > reaches point where standby and hotplug cpus are mixed within VM
->  > > instance, we might have to expose presence bit to guest dynamically
->  > > but it  is totally not needed within observable future and premature=
-.
->  >
->  >
->  > >  Your cpu class presence check also works target-wise just with more
->  > > boiler  code  + not needed presence bit ABI for guest side,  The
->  > > same as my suggestion only from other side.
->  > >
->  > >  But regardless of that as long as machine has doesn't mix always
->  > > present  CPUs with hotpluggable ones within the same instance,
->  > > changing AML side  as I've just suggested works.
->  >
->  >
->  > Sure, I'm not disagreeing. It will work by adding the flag you've
->  > suggested but it will work even by not adding any flag and not
->  > defining a `persistent` hook for any architecture.
-> =20
->  hook is more complicated and hidden way, than directly passing down
->  configuration data to routine that builds AML where it is needed, but th=
-at's
->  cosmetics in the end.
+Titus Rwantare (6):
+  bitops.h: add deposit16 function
+  hw/gpio: add PCA953x i2c GPIO expanders
+  hw/gpio: add PCA9536 i2c gpio expander
+  hw/i2c: add canonical path to i2c event traces
+  hw/arm: imply I2C_DEVICES on NPCM7xx
+  hw/arm: add Quanta GSZ bmc machine
 
+ hw/arm/Kconfig                  |   1 +
+ hw/arm/npcm7xx_boards.c         | 160 +++++++++++++
+ hw/gpio/Kconfig                 |   5 +
+ hw/gpio/meson.build             |   1 +
+ hw/gpio/pca_i2c_gpio.c          | 409 ++++++++++++++++++++++++++++++++
+ hw/gpio/trace-events            |   5 +
+ hw/i2c/core.c                   |   8 +-
+ hw/i2c/trace-events             |   2 +-
+ include/hw/gpio/pca_i2c_gpio.h  |  70 ++++++
+ include/qemu/bitops.h           |  26 ++
+ tests/qtest/meson.build         |   1 +
+ tests/qtest/pca_i2c_gpio-test.c | 188 +++++++++++++++
+ 12 files changed, 872 insertions(+), 4 deletions(-)
+ create mode 100644 hw/gpio/pca_i2c_gpio.c
+ create mode 100644 include/hw/gpio/pca_i2c_gpio.h
+ create mode 100644 tests/qtest/pca_i2c_gpio-test.c
 
-It is indeed an abstraction and an intentional one because decision whether
-some or all CPUs should remain present even after unplug action is=20
-specific to an architecture. Hence, should be left with that part.
-
-
-> =20
->  However there is more to your hook approach, it exposes is_present bit i=
-n
->  cphp flag register which is ABI to guest which we will have to maintain
->  forever and guest will do not necessary round-trip to QEMU to query it,
->  while alternative is much simpler AML change without any ABI changes to
->  care about.
-
-
-I understand your predicament about ABI but I've to respectfully disagree o=
-n
-the assumption that guest will never round trip and check for the presence =
-bit.
-
-
-> =20
->  The point is we shouldn't add new ABI unless we have to.
-
-
-Ok sure. point taken.=20
-
-
->  In this case new ABI (is_presence flag) is not _must_, and much simpler
->  static AML change is sufficient.
-
-
-Agreed, there can be multiple ways to get rid of it . But I'm not sure if i=
-ts
-simpler or easier to maintain because CPUs AML code has become even
-more obscure by that compact logic. It is not easy to understand at the
-first look. This is not a performance leg and maintainability should take
-over the precedence.
-
-But I understand your primary concern now (i.e. to get rid of CPU_PRESENT
-Bit) and allow me to propose in the lines of what you want but maybe in a
-slightly different way. I would still like to retain hooks though.
-
-
->  > >  If ARM ever gets real cpu hotplug as your comment above hints, my
->  > > suggestion also works fine. With only difference that board code
->  > > would turn  off always_present_cpus if hotpluggable CPUs are used
->  instead of standby.
->  >
->  >
->  > Sure, but is it necessary to define a new flag when you can do even
->  without it?
->  > Having few lines of extra code (literally 2-3 only) should not be a
->  > major cause of worry, especially, if it makes design more clear and
->  > easy to understand. This is not a performance code either.
->  >
->  > Again, I appreciate your compact logic. I'm not disagreeing with it.
->  >
->  >
->  > >  > >  Instead changing AML code to account for it would be better,
->  > > > > something like  > >  this:
->  > >  > >
->  > >  > >  diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
->  > > index  > >  32654dc274..4a3e591120 100644  > >  ---
->  > > a/include/hw/acpi/cpu.h  > >  +++ b/include/hw/acpi/cpu.h  > >  @@
->  > > -55,6 +55,7 @@ void cpu_hotplug_hw_init(MemoryRegion *as,  Object
->  >
->  > > > *owner,  typedef struct CPUHotplugFeatures {
->  > >  > >       bool acpi_1_compatible;
->  > >  > >       bool has_legacy_cphp;
->  > >  > >  +    bool always_present_cpus;
->  > >  >
->  > >  >
->  > >  > This has to be fetched from architecture code. Please see other
->  > > > changes in the V3 patch-set.
->  > >
->  > >  I've seen, that and it doesn't have to be fetched dynamically.
->  >
->  >
->  > Agreed, it is not necessary to be fetched. Hence, if you do not define
->  > the hook. In later case, it assumes the existing logic, which x86 has =
-been
->  following.
->  > It will work.
-> =20
->  It is better to get rid of not necessary hook altogether, and replace it=
- with a
->  simple AML change.
-
-
-We still need a way to initialize flags in the architecture specific way. H=
-ooks are
-clean way to fetch that architecture specific state rather fiddling with fl=
-ags
-at multiple levels (initialization, migration etc) and you will be duplicat=
-ing
-CPU states at ACPI level and QOM vCPU object level .  To be frank that's no=
-t
-a very good design.
-
-That said, I believe your end goal of getting rid of the change in the ABI
-can still be achieved.=20
-
-
->  > >  In my opinion the series was not ready to be merged (Michael
->  > > probably  picked it by mistake).
->  > >
->  > >  We don't really need this in 9.2 as it is only ARM cpu 'hotplug'
->  > >  related, and the later is not ready for 9.2.
->  > >  I'd prefer the series being reverted and we continue improving
->  > > series,  instead of rushing it and fixing broken thing up.
->  > >
->  > >
->  > >  >
->  > >  >
->  > >  > >       bool fw_unplugs_cpu;
->  > >  > >       const char *smi_path;
->  > >  > >   } CPUHotplugFeatures;
->  > >  > >  diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c index  > >
->  > > 5cb60ca8bc..2bcce2b31c  > >  100644  > >  --- a/hw/acpi/cpu.c  > >
->  > > +++ b/hw/acpi/cpu.c  > >  @@ -452,15 +452,16 @@ void
->  > > build_cpus_aml(Aml *table,  MachineState  > > *machine,
->  > > CPUHotplugFeatures opts,  > >
->  > >  > >           method =3D aml_method(CPU_STS_METHOD, 1,
->  AML_SERIALIZED);
->  > >  > >           {
->  > >  > >  +            uint8_t default_sta =3D opts.always_present_cpus?=
-0xd:0;
->  > >  > >               Aml *idx =3D aml_arg(0);
->  > >  > >  -            Aml *sta =3D aml_local(0);
->  > >  > >  +            Aml *sta =3D aml_local(default_sta);
->  > >  > >
->  > >  > >               aml_append(method, aml_acquire(ctrl_lock, 0xFFFF)=
-);
->  > >  > >               aml_append(method, aml_store(idx, cpu_selector));
->  > >  > >               aml_append(method, aml_store(zero, sta));
->  > >  > >               ifctx =3D aml_if(aml_equal(is_enabled, one));
->  > >  > >               {
->  > >  > >  -                aml_append(ifctx, aml_store(aml_int(0xF), sta=
-));
->  > >  > >  +                aml_append(ifctx, aml_or(aml_int(0xF), sta, s=
-ta));
->  > >  > >               }
->  > >  > >               aml_append(method, ifctx);
->  > >  > >               aml_append(method, aml_release(ctrl_lock))
->  > >  > >
->  > >  > >  then for ARM set
->  > >  > >   CPUHotplugFeatures::always_present_cpus =3D true to get prese=
-nt
->  flag
->  > >  > > always enabled
->  > >  >
->  > >  >
->  > >  > We MUST fetch this from architecture code as this can dynamically
->  > > > change in future and hence, we need to keep that flexibility
->  > >
->  > >  CPUHotplugFeatures::always_present_cpus can be set dynamically per
->  > > VM  instance or per Machine type.
->  >
->  >
->  > Yes, but you need a code for that and I'm not sure what is being saved
->  > by introducing an extra flag then?
-> =20
->  beside snippet, I've suggested. You need to delete all is_present callba=
-ck
->  related logic, than it save quite a bit, and not only on lines of code.
-> =20
->  I guess, I need to send a patch to get point across.
-
-
-There is some misunderstanding. We are not maintaining any `is_present`
-state at the ACPI level. Both flags `is_present` and `is_enabled` were
-removed in V3 patch-set.
-
-
->  > >  > >  After that revert _all_ other presence bit related changes
->  > > that  > > were just  merged.
->  > >  > >  (I did ask to get rid of that in previous reviews but it came
->  > > back  > > again for no  good reason).
->  > >  >
->  > >  >
->  > >  > The CPUs AML in the V2 patch-set would have broken the x86
->  > > functionality.
->  > >
->  > >  Frankly speaking, I don't see much progress. All that happens on
->  > > respins is  flipping between what I asked to remove before to some
->  earlier concept.
->  >
->  >
->  > I think then you've missed the code which addressed one of your key
->  > concerns in the V1 patch-set that would have broken x86 migration i.e.
->  > presence of the `is_enabled` state in the CPU Hot-plug VMSD. That has
->  > been removed. Maybe you would like to go through the change log of the
->  > V3 patch-set
->  >
->  > https://lore.kernel.org/qemu-
->  devel/20241018163118.0ae01a84@imammedo.us
->  > ers.ipa.redhat.com/
->  >
->  > Below is the relevant excerpt from your many comments:
->  >
->  > [...]
->  > >      .fields =3D (const VMStateField[]) {
->  > >          VMSTATE_BOOL(is_inserting, AcpiCpuStatus),
->  > >          VMSTATE_BOOL(is_removing, AcpiCpuStatus),
->  > > +        VMSTATE_BOOL(is_present, AcpiCpuStatus),
->  > > +        VMSTATE_BOOL(is_enabled, AcpiCpuStatus),
->  >
->  > that's likely will break x86 migration, but before bothering peterx,
->  > maybe we won't need this hunk if is_enabled is migrated as part of
->  > vCPU state.
->  >
-> =20
->  what has been done in v3 is moving is_present/is_enabled, elsewhere
->  (callbacks in this case). While argument was that both are not necessary=
- to
->  begin with.
-
-
-We need to have a way to check whether CPU is _STA.Enabled or not and=20
-the meaning of the `disabled` is best decided by the architecture specific
-code not the ACPI code. It could mean different across architectures and
-the implementations. We need to keep that flexibility in design.
-
-The thin Qemu ACPI code is just an interfacing logic with the guest. It is
-best not to duplicate the state of the QOM objects inside the ACPI. That's
-a bad design practice because we will have to worry about keeping those
-states consistent at both the places all the time whether it is during
-initialization or migration.
-
-
-> =20
->  > [...]
->  >
->  >
->  > >  And all of that for the purpose to workaround/accommodate fake cpu
->  > > hotplug hacks.
->  >
->  >
->  > I've to respectfully disagree on this. This is your assumption which
->  > is far from reality. The accompanying main series of this will never
->  > have vCPUs which are
->  > *not* present.
-> =20
->  Reality of your last posted main series (v5), disagrees with what you ar=
-e
->  saying here
-> =20
->   [PATCH RFC V5 12/30] arm/virt: Release objects for *disabled* possible
->  vCPUs after init
->    https://patchew.org/QEMU/20241015100012.254223-1-
->  salil.mehta@huawei.com/20241015100012.254223-13-
->  salil.mehta@huawei.com/
-
-
-I think you missed what I mentioned above " The accompanying main series...=
-".
-To get more information about that series, please check the details mention=
-ed
-in the cover-letter of the V3 patch-set (link below) which clearly says,
-
-https://lore.kernel.org/qemu-devel/20241103102419.202225-1-salil.mehta@huaw=
-ei.com/
-
-Excerpt from the cover letter:=20
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-[...]
-This patch-set has been tested alongside ARM-specific
-vCPU hotplug changes (included in the upcoming RFC V6 [4]), and
-hot(un)plug functionalities performed as expected which concerns this
-patch-set. Please have a look.
-[...]
-
-References
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-[...]
-[4] Upcoming RFC V6, Support of Virtual CPU Hotplug for ARMv8 Arch
-    Link: https://github.com/salil-mehta/qemu/commits/virt-cpuhp-armv8/rfc-=
-v6-rc5=20
-[...]
-
-
->  after this patch, new is_present hook would let you bury the lie about C=
-PU
->  being present inside ARM specific code.
-
-
-I would request you to check the facts again! (please see previous pointers=
-)
-
-ACPI logic should not worry about what is happening inside architecture
-code. It is beyond its realms and should be by design. It is an interfacing=
- upper
-layer gelling the Guest with the VMM.
-
-
->  > BTW, these changes have been tested by Oracle folks with that series
->  > and are known to work.
->  >
->  > https://lore.kernel.org/qemu-devel/C4FEC9E7-69DB-428A-A85F-
->  30170F98814
->  > B@oracle.com/
-> =20
->  One can write anything and it can even work somehow, that however
->  doesn't mean it's something merge-able, maintainable, ...whatever else
->  come to mind...
-
-
-It would be very helpful if you can `objectively` point the problems in the
-main series so that there is a context and we can have a productive
-discussion there. There is always a scope of improvement.
-
-
-Many thanks!
-
-Best regards
-Salil.
+-- 
+2.47.0.277.g8800431eea-goog
 

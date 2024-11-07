@@ -1,241 +1,296 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp3340493njc;
-        Tue, 5 Nov 2024 23:20:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWEF98mDhcSTT5IuChtT0cDKqkfY0pUPgVgEiW4v0YTCPd3ctQplNI7ECvKufj/sYLuIOyh43eitOJARA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFpI2/7vQETsd9mUHssvdCyUNoGnhPo5Iswcha1pVCMcU1AO4VrqQ3jf82Fnk2G6V/rfIwL
-X-Received: by 2002:a05:620a:4547:b0:7b1:4cd4:469c with SMTP id af79cd13be357-7b2fb9cc305mr2311161085a.51.1730877644581;
-        Tue, 05 Nov 2024 23:20:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730877644; cv=none;
-        d=google.com; s=arc-20240605;
-        b=YjF23bizYTkT4DR/eloYfl01/+5Nldxjm3MMwYRa0vGefEIeL5ItavmJEKn2cDuFNS
-         A2AJBah9rL+2Ub5LVi+XXXl/0lZvzLk3c0EnGfKcPjh4VU8P+mGi3cTpLWHqhKRZUBF0
-         x9MOEXeO5Ey6cFI5rax5+DN0GFEiGDnauQ1y2DM3boAr8gYLW/CFcbtiwBJgJ5caZPPJ
-         A/lDxeEXActkVXuSrl6UTfWP/+KNWlzLubNVEnbFlmO3GJRp0/JaKNcGNH1/LauqtKRg
-         YOIy0oGlswgtl2HAYlnU90/cqPQOMHRTuxJjYBUHjIqrVpVBVr/08leFFXhW85uIgLRH
-         AFAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=yWFwvOlyH6K6JITpy++vRurgHpvJM/Pup3QsymDL3AU=;
-        fh=bAzEthHJ1uUwxRM9c+FLy1JnxpDYMS48uBCmITyRV6A=;
-        b=AJ+XuR5f66+WpUAJPvzkxmgA6mA6sEYfumY3Xx95FKn3xD4ZJZR2Kju8EzReaPgxkm
-         lOw5kE2Yb+pqcN8ksmyGTnlpTdf5TnTAdndyadU990Ca4x17BKQEnuExJUjAY1WQJTcV
-         di0+AhRQ1rkO4s5+JahDz7Bfh8A1zoV4EK87est4O8R8ey7Wr9a3/F5jQY+csGNXZBsL
-         I4y8HX2XyxHYilztc/qRtJ73ZZyIdNlV3UMimYhhs+5l7QavGLdmGVSJaCOMEgNdKV1R
-         vvnPABbJCYhLONQyI8fqA+N6vAnxarmrPtntPmKtk/rRSc4Eq8xpd+dUcbUXmTfpI6g3
-         T2tw==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="IG3G/aM4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b2f3a812ffsi1516567285a.241.2024.11.05.23.20.44
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4105460njc;
+        Thu, 7 Nov 2024 02:22:09 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCV7tFXUs6Nf/PIhrnl1DKMXjnmQL+h9J62NfDakvcArCfg07njPyWXOYKUDcGFs7J1S0rllo9XFDn/igQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEkbjgcGdpPCuGRkLjUIbc3ECdZESynmIufxCynF+ULnJfJijqOWNCGXiwfwwUj84EqN9Tr
+X-Received: by 2002:a05:6830:2585:b0:718:a89:496b with SMTP id 46e09a7af769-719ca26b590mr23533530a34.30.1730974929319;
+        Thu, 07 Nov 2024 02:22:09 -0800 (PST)
+Return-Path: <kvm+bounces-31091-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7f41f66ab01si1390596a12.538.2024.11.07.02.22.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 05 Nov 2024 23:20:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 07 Nov 2024 02:22:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-31091-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="IG3G/aM4";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t8aLD-0007Vn-KJ; Wed, 06 Nov 2024 02:20:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1t8aLB-0007VI-Nh
- for qemu-arm@nongnu.org; Wed, 06 Nov 2024 02:20:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1t8aL8-0007dj-Hm
- for qemu-arm@nongnu.org; Wed, 06 Nov 2024 02:20:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1730877627;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=yWFwvOlyH6K6JITpy++vRurgHpvJM/Pup3QsymDL3AU=;
- b=IG3G/aM4AZYjTJh7B9P7xi0Gt0beUz3e5fuT23bNHIgmoD2z9N56Rp5Bnhuj1+nv0TwxLw
- RGzAwlXv+Qjm6Qam8I/b/TcUngQ6GfhWVLmzdFPAiQjwN25HmZ0vdTw7tVumnw0V+qzSEw
- UTs4PPdJQIXiSE/8q9Jsnm/up+jox7A=
-Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
- [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-611-JiwgLl06N32wjSKcOYJH7w-1; Wed, 06 Nov 2024 02:20:23 -0500
-X-MC-Unique: JiwgLl06N32wjSKcOYJH7w-1
-Received: by mail-lf1-f72.google.com with SMTP id
- 2adb3069b0e04-539fbf73a2fso4052559e87.2
- for <qemu-arm@nongnu.org>; Tue, 05 Nov 2024 23:20:23 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730877622; x=1731482422;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yWFwvOlyH6K6JITpy++vRurgHpvJM/Pup3QsymDL3AU=;
- b=ouBIjHk9R7PC5DddUTawKq+JHbzaA5mXwUlX3/0tKHgJodUS3jvNmBa+9wHhT8t+xS
- Bo+01OK8Qfi1d9gyo6D0l+2s0aIJ+d59QLAQnJS1NFgEOAw106CqJLh0WL57+hu9y60y
- llV1duPyAq1+5rRcG7aGt68eLLIMNC/1SQDNvaFP3CCv7x0Rx0FkoI0wpU/Lekkx91Yb
- auhmgoT6VDCiRyjMUCOs0OzCfLBGxhNs/sXZrSfH3bYif8yasM6CTG/OmwRkczoQJRmx
- y5/sHYiCBOWPDX0NtHB0gCkjqOIoz83xJPRCodNG/xwoDdNdR7XRAiTA5cALgnslF/og
- sVmQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXW1zJiHNvBUPc6XyK50iUwSxL6s77b/iUqNWJ4O83237CdVbqtyWmzmeRqDV4QzkFFruf1aneWMw==@nongnu.org
-X-Gm-Message-State: AOJu0YzixatJpMAuOnicEZicqEV6mv+qkWPFIBWa+ZyFhjFiSLIXPGJx
- q6Lvh+l4uSGPbJuqp1fJ+RCSqBhwNZX8+29R1UFeQ+E0n2Qz/05engh84EO/JuAyBjWP3hAylDu
- JI8bcTwuW2CT7FAuTobbf0EnQy8OAtBPIRPkBk/d6/Bu9wMrZgA==
-X-Received: by 2002:a05:6512:31c3:b0:53b:1526:3a63 with SMTP id
- 2adb3069b0e04-53d65e26c49mr8624654e87.56.1730877621792; 
- Tue, 05 Nov 2024 23:20:21 -0800 (PST)
-X-Received: by 2002:a05:6512:31c3:b0:53b:1526:3a63 with SMTP id
- 2adb3069b0e04-53d65e26c49mr8624639e87.56.1730877621307; 
- Tue, 05 Nov 2024 23:20:21 -0800 (PST)
-Received: from redhat.com ([2a02:14f:178:e74:5fcf:8a69:659d:f2b2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-381c116ad6fsm18139872f8f.98.2024.11.05.23.20.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 05 Nov 2024 23:20:20 -0800 (PST)
-Date: Wed, 6 Nov 2024 02:20:14 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Markus Armbruster <armbru@redhat.com>,
- "Huang, Ying" <ying.huang@intel.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org
-Subject: Re: [PULL 12/65] hw/acpi: Generic Port Affinity Structure support
-Message-ID: <20241106022000-mutt-send-email-mst@kernel.org>
-References: <cover.1730754238.git.mst@redhat.com>
- <a82fe82916432091ca6fcbd7f357cccf35f6e80d.1730754238.git.mst@redhat.com>
- <ZyngEiwmYeZ-DvCy@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <ZyngEiwmYeZ-DvCy@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=Uvc1CkBk;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=szww7YRD;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of kvm+bounces-31091-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="kvm+bounces-31091-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 00E2CB214A4
+	for <alex.bennee@linaro.org>; Thu,  7 Nov 2024 10:22:07 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 105001EE005;
+	Thu,  7 Nov 2024 10:21:53 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="Uvc1CkBk";
+	dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b="szww7YRD"
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0AD681E7657
+	for <kvm@vger.kernel.org>; Thu,  7 Nov 2024 10:21:50 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=205.220.177.32
+ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1730974912; cv=fail; b=i2wYn835ckReBs+2cckZm3p4PgYwPsg+ZMYpJwMNPcF7jRG/IN5KYffcvtmq9KHesjvt0Oq2pqfdRrwBKVBbNBBGLIgM2hkFoatFwyiiGjg75AtUMwjrSt39GxBpSbUfROvEekfEg8VxGw6fxxed3HlxBv8+C+0w80nuLAw/OC4=
+ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1730974912; c=relaxed/simple;
+	bh=szafWKNGGmuiqy2q+eLU33TjN2gTs0ASIBKuqhdmXvg=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 Content-Type:MIME-Version; b=RWrz+bFHL2VqYH3zcqZ1HOdus+6IJFizcVTg4nvxpJyK/dlIdTaCGlTjZsbK8RgDklNCooj+Poh9sYpdnuc6qd6aDX8vMBR55EBCsJZFF3yFBX9vfRSm8G07xD+vwBN+REGTnL0zKEe5XBLjZrTVnEVCa83Hu3yyq4z+/sKS9ss=
+ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=Uvc1CkBk; dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b=szww7YRD; arc=fail smtp.client-ip=205.220.177.32
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
+Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4A71fwNd026505;
+	Thu, 7 Nov 2024 10:21:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2023-11-20; bh=GEW89da9mr5UnO1EF3nQ/iyj+HstLwvCpbUPEV66wKo=; b=
+	Uvc1CkBkLL98EI8YPl5+lpTvsiA5+xnjJVgdLJXPlZSLXIkzTYgS9wIpGlbv8kFt
+	L2ouy10kG0fpqIc75633nIfjrItRUzdzZ/ciEMv79VArPF3lZ+/mnMMQqhbXGGJ0
+	VFHDIVT0V5kOLFpNG4q4IY3M9VMEBgLGFEF11Hq239BD6QoBxoqFm4LV2Xg5rE6I
+	6BaaVQfC6IHQIG4OwkrMcFXSm5qNY44pPAkj8VZz1z6oKszN2wG633TXwdFRjZE+
+	ivVuNlS2MgmtKbSjKt3Vzj7th4jxRj2Il+1iGXt9NVN7i1gvtyXDMI+VxDh3LgLw
+	s/bPUWpcHWOdYBlh7irTMw==
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 42nav2a6rc-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 07 Nov 2024 10:21:38 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 4A79xIGE036170;
+	Thu, 7 Nov 2024 10:21:38 GMT
+Received: from nam10-mw2-obe.outbound.protection.outlook.com (mail-mw2nam10lp2048.outbound.protection.outlook.com [104.47.55.48])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 42nahg4wbn-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 07 Nov 2024 10:21:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=kdagLG8hgpixWjks6BgEGYuWcKedOfrqRO44/hzfEFweDgsePQ5DkuPjUalSF5JgXYl42wrdGuWOYwJETG8G6Fna+lS9ccWt2Wfci/MRyQ36wY4Isg2rcduNYYgkkRhP+K1LFUcCD19RlywNOWAGW66/qTRh00ng5gfyQY+orQwf5ZJqVpVEPA9d6PNGzjdHci4uWiiu4Z0DFa5uHgrv8mCJjrg3OoFpyegXlBbofIJPjkCXA4EENIWA8KKUI2D4Xx0jqDoGVFnIikE92P8QTd1fG2BQNbgNt8o+X3DzaTRGCYzK2htDeksGe7tb3IVcIPp7q7ri38PQLjGv1lqVqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=GEW89da9mr5UnO1EF3nQ/iyj+HstLwvCpbUPEV66wKo=;
+ b=idL3G1R1fXxWVsAzKfbzi77d5+Zv8DuN6NBt/hEK/9+rJy1i17H9i94vRyTwOfAuuTO083mYA/wN9rEn9SqeBj7eRB03yyhKieXQtMzmV5qzYMzO9QVQbxW7tNC3wGT/H2iMBDlsu8VDOKYEzhSFWgR01byzjkmMSciH52ScH7FdRcOY4Oj9Sd4wdUpM+zVYzndiyUL/ru/PI/Os7y9PTWNXm9iu91TlX06r5SjNlD8q/UPdUG5FzpJJ5mQirMBwdlGTTxLcXcuWbHe0OZV32MC06lMermEtucvr6Wk3sp8E79uTZLNaUfMjQ/aUVtTPR3SB5IaADTuUnQrRjUvnsw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GEW89da9mr5UnO1EF3nQ/iyj+HstLwvCpbUPEV66wKo=;
+ b=szww7YRDugIXZ6ZrHdGsFX7RfYfHq3yGvDdXer4sRCHMMHghoy9LdAzG3tdLM2IBo3lXXr7fo8dvP0zUF92h3H2/CEAmxYLZ+Ies+Lj7SSoq9t+JREDPmSjGCAAQiWa8KxbWttoireKRZpF0UWHQ/ktdJS3JxY3pohxkABJ59+U=
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
+ by DM6PR10MB4187.namprd10.prod.outlook.com (2603:10b6:5:210::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8137.19; Thu, 7 Nov
+ 2024 10:21:35 +0000
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23%3]) with mapi id 15.20.8137.018; Thu, 7 Nov 2024
+ 10:21:35 +0000
+From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
+To: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org
+Cc: william.roche@oracle.com, peterx@redhat.com, pbonzini@redhat.com,
+        richard.henderson@linaro.org, philmd@linaro.org,
+        peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
+        eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+        wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
+Subject: [PATCH v2 3/7] accel/kvm: Report the loss of a large memory page
+Date: Thu,  7 Nov 2024 10:21:22 +0000
+Message-ID: <20241107102126.2183152-4-william.roche@oracle.com>
+X-Mailer: git-send-email 2.43.5
+In-Reply-To: <20241107102126.2183152-1-william.roche@oracle.com>
+References: <e2ac7ad0-aa26-4af2-8bb3-825cba4ffca0@redhat.com>
+ <20241107102126.2183152-1-william.roche@oracle.com>
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 69iBxTJ03nta
+Content-Type: text/plain
+X-ClientProxiedBy: BYAPR06CA0008.namprd06.prod.outlook.com
+ (2603:10b6:a03:d4::21) To CH3PR10MB7329.namprd10.prod.outlook.com
+ (2603:10b6:610:12c::16)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|DM6PR10MB4187:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0dec6cf1-bfa1-4616-c351-08dcff15f540
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|366016|376014;
+X-Microsoft-Antispam-Message-Info:
+	=?us-ascii?Q?97t+X+HCxZTRxlhwYqe+PBAIaFfJJfS3pt8g/dSvJHg6f5TXcFpOG88Y/i+q?=
+ =?us-ascii?Q?HIdLPjgrj6Y3vygCn1vxQY8ZJbRISym0QHObHxs2vYfmoZL6iaZtDABs/aGt?=
+ =?us-ascii?Q?j4eFBd2TylI6VpV0krm1/5P3M7CvZpCKZXnpT1RVtLpleruk9PDn4OVZ0fyP?=
+ =?us-ascii?Q?Nq61JxNNFRb7PtTeLREz9jMkfjQCmCVdFjIRfElQB6ysZZlI3v82SjqRa46r?=
+ =?us-ascii?Q?CQrQt7Jh55ztSYoSPaxPTOtHzTJFIU366lwthTlqByfDDMOVD6hfjf1W7qqx?=
+ =?us-ascii?Q?oRNMlnTaMbKib16TL6ECwphuQbBGEO/NmtzAj31G8fv2UTukq/8gF3RrLP8/?=
+ =?us-ascii?Q?SYcC6MJekZBoMAEPgV+2P/Jgck7WaYCeb7gzTK6X/0oTWPHA2oZJ0Gw86p2A?=
+ =?us-ascii?Q?F30jqNLkcJNpXS8Nx15Fwpz+2nbXm5DUYfPDwvY7ZPb7K6b84q7plYFyt7Qe?=
+ =?us-ascii?Q?Dm4PvRpfD+FzsYovmmqcfjuh4WlM63+AaUlvHm0mj234URcOP/2mpEMb7JfN?=
+ =?us-ascii?Q?Cegux9Ymoqu+BZ/R9jVS7kaM3XQGiCRtuQft1SYyeH+0xuWF2uNvNY1xtEna?=
+ =?us-ascii?Q?pHPao5/ct7eJf/KkUydjUXtu5d0kxs8YM6dE9ULsXc4iB1EhQ1GaifYqqqSl?=
+ =?us-ascii?Q?xJ3GiTznbE2KhfNHb2/4FIOJYLUBex+Z5EqR/HXBZW5R9R3cT8GE+osuBK4O?=
+ =?us-ascii?Q?sqmcwqTes9nR9akFBQc72WFndqG5uy0yj7HYpUeB/UG2Fi4VLrDWCT19HRNQ?=
+ =?us-ascii?Q?AU/bbYtLRKXrbRNXxauMyl6X9Vvnx3XFGF7vuMclnbxUall8/NlV4No13N12?=
+ =?us-ascii?Q?xtuB7VX58G94OVRwhMLkXzv36+4SIlZFkF7qj48q+YjupuIJ6wBtZgT33zub?=
+ =?us-ascii?Q?xciyRgqspI2O6EykiuGGhBRVPAMtSAvprFSzRZNZ/3xVJwP6Kr0H8AXn1rDw?=
+ =?us-ascii?Q?ZCnYrKymvM1uAe3gL/JbvwRgTTe/JIkGqep6iXJZFlzfjp24blZbHoYS7wuf?=
+ =?us-ascii?Q?1kawieydrdbBahWIyibx64jWGssL0IPrSYfk/HvcYs+S4cXPPdXe4LeUfX8R?=
+ =?us-ascii?Q?++vGEHsDbFcnGEAgZRcoEoFlr0YFiKQlkx2R08gJ9qwuy8fevShMC5UFypiO?=
+ =?us-ascii?Q?KGOKqVIHpnyLRR2h/NnuW9aG6+0I4olg0NO+BApqsVVjOKHX6mgQhSX1MCMf?=
+ =?us-ascii?Q?ZP8E+I4NdJH/wZWHWMPYQmSpoLOAirv/9tWaKiTjS5BLdd4OT2DBAeAejO/B?=
+ =?us-ascii?Q?G+bqeZMHvW38KnDTouUVVTtb6IzDGKR9rUzhXuhidSkIrJKAMO/hEskE0EOF?=
+ =?us-ascii?Q?Yv8=3D?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR10MB7329.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(366016)(376014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?us-ascii?Q?IEoP93QSaolUs2Ud+8U8X/NDMKtIoN3i5nU0qcdH+uiUQJvDZqUs9AeKM9nQ?=
+ =?us-ascii?Q?8QYQ8+82C+o1JpDknITSSZsaV+5iigjxbNzxG6R0QLsZ+XAC+JV/7uKkL/RP?=
+ =?us-ascii?Q?W2dCDBKS3Xxskyakx5gqweEFKToiX20P06NYilxRYicjYsxwHdYknpQNTh7t?=
+ =?us-ascii?Q?gxn0P0mqPa+mrbVz9zS0wcapvzLyA0lwLV0McW3PLToLIraNA7Q0AW+/z9yX?=
+ =?us-ascii?Q?suvVwRAHa+PSqT4R+A4+t/B3HNgeaOIMjNacULZPe/XIDm/6VwUmwhZY8EUu?=
+ =?us-ascii?Q?eC8aRsOJXtkJHCle+j97u9hYTrVlhS74W1dVWwW5WE9PwZwVruWYP4uEKuRi?=
+ =?us-ascii?Q?Zrj/TgsSVfOKh3z5HHhJN7c+nYwPl2oTH4RtApBRhTvsl9MypwiDD1w4Wvry?=
+ =?us-ascii?Q?STmFaKJShYvpZfwPABhXylYbsVgmDv0Rkna8fG4piOpPGtgExpBznfZA3ivB?=
+ =?us-ascii?Q?Wg/Y5HSnY27YDrZd1uFfAN17ZnDCKxLvGWmTtzY69/HhFPWu42AeQ55o82VG?=
+ =?us-ascii?Q?+5ZXvaVuQ20AdCE5oJJz//4ikG53bADdZt1ZvSvYKwwCGca656u4mAQjYamN?=
+ =?us-ascii?Q?bKU8uDweFT6sLfUv25cbnbz9B0/dIwMyWdv4FK2W5ZqIJwF0QdHEJa4YExZr?=
+ =?us-ascii?Q?kcGp3MH8Bo5sjRC/zhzXFJ3SQB1eRkK5evfeugEz8lBhv523anwcA3QehehY?=
+ =?us-ascii?Q?7NGEhTyhbBk0bBIilFoHkOMdMUzP6EFEP7g65umrHItIkHqAXwWWJ2tZ3f4s?=
+ =?us-ascii?Q?n/9bJw5ENTThxIC0SVi6gN/T+xJ0ICxCs8NUbYSUdRRvLHB3XQ0wrkpHoiXA?=
+ =?us-ascii?Q?gse0G+Kgw0UTmJeH2FCAkrMOKX59xhNQN8DWzMgumFLhmRbrQuUZBYVxfEoa?=
+ =?us-ascii?Q?5tVjU9S6FqNkGAZSiDRYYi4hdNHWxkbURujxW5GK0lUHMAn9n//K45iz/QgK?=
+ =?us-ascii?Q?ALeorUjuvQOkhauFNpDjThf8jYlAOqmH+q5IelSlrRvIlOItObfpia/Xt/4c?=
+ =?us-ascii?Q?okZ5LvKlLI9NCwNujrgAl9yGrs3R1HAWwHnGzntzmF432A9fhjVt3s0FEjiu?=
+ =?us-ascii?Q?jBCNzcWanGn7hfc3GSvsVua9WhzS0SI9k3YTOzPvCF7JDhNLR2dLDh5N2MTt?=
+ =?us-ascii?Q?vpzEfNJiIcyzJdJ/95pKWAZBcjybckySsznjQKzJ2fzkfVdW2ef5jJYMvRry?=
+ =?us-ascii?Q?IIbwHcGSSO2dC7R+VlA4o85jh1vQDZCxNIoH11NaJaJjUq7Q/P6rtQdk2QMp?=
+ =?us-ascii?Q?lu1SBDJo0WIv4svALtMjH6vVhR57Zxz/WgUVpp6VN1nWuSqbNLMnJBhUYfd9?=
+ =?us-ascii?Q?qSPpA6lJ1DGWWivp+HP4tBI7s0PVSeBiEKMk/ykWPlqf9uwwAA8oeZQs0pj0?=
+ =?us-ascii?Q?TVyua2Yx1IYOaAuDuMzqUsTANW5sBBTdepS2fK41Sy2BgVA0ZPIhd2FjXQB/?=
+ =?us-ascii?Q?PMwDrU0NmNWp3Wejb6g9ldUf8CPRibltZ9ShIWZBLx8oSKZLNXh7Q8ZibejU?=
+ =?us-ascii?Q?zVa9qgZdRtuiM7R9cDKaasSLiFHn5DRJoPUsWjknRRUsuYHorGNP2XoQsmXR?=
+ =?us-ascii?Q?GYc9NCogfl7iiMRU0Au436juFtd3XdfDI2WWNuI35xCqxfeqeTbueXfwwT72?=
+ =?us-ascii?Q?Mg=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
+	o2/YPRj9QOF8HRw7CLL9abQdVOVtgf2+CErE7CNaFkSmPUUrmL4klUJgC0EgY7zvEWeenFYed+DfrRjEL9kyUM7ptWXtYb+SrETsJuQCJYGKjtn0jEqFuju53GGPCJuLKny8gValgCJCEcXBXbpv4N1v4Yo1Vtb7/HbXAcQlw+sRqbXB3tDNC6osqUow0k18NAN2zYv5eaDLuKB3PS4qpKTfJQha7D3nE1IQdpfkfs4m7vbx8OXuMxdh/NBeVTWUvN840P6sOpyWvl7zWwL0XFEIuhqOH2KDDZcnoe60ZWlXG1HDQcJDF4IbHwRfTa6Jumn7Oe9OxkLMCCYNIZafGYERXjlTlEOwPbEUIPzNA5RdQuD8g1Q4PJZ5rYq8QuZWNLPVs2xoVcKjtZEJzHTyDsZtF++AXh/brjORnQg75GhBGy5ZD3+XYC8QftaLHxvp4rbqvIElgRcrQQJ62kyP+zSbW70DAsX7ZNKIB6+AMLn7avp61SKXkgCeuFaAV2GX2ZEB3ee16K+7Eegy4kO8mbgfDzTuF9NKSd3j20erRhMtOe+rGQChvbpeY48wp8YpM9jBJKf99TKCBzSGVd45TGVV1f6tHzs4RaaoWirOPRc=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0dec6cf1-bfa1-4616-c351-08dcff15f540
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Nov 2024 10:21:35.5404
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: eoNXaa6sW46nxudtd+/zKzmYNm4JP0okX1hp0aA3SZDTMkoJobtMGuvtIRsr4WziZluf03+eUOOjeZM6YOJWAZ4spvL7QQYN4IRAd67ZYrw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR10MB4187
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.62.30
+ definitions=2024-11-07_01,2024-11-06_01,2024-09-30_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
+ spamscore=0 mlxlogscore=999 mlxscore=0 phishscore=0 adultscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2409260000 definitions=main-2411070079
+X-Proofpoint-GUID: ysV6_aSQbQrNnm1TU9BFzERmfideuWi9
+X-Proofpoint-ORIG-GUID: ysV6_aSQbQrNnm1TU9BFzERmfideuWi9
+X-TUID: qpsjE/UehPKe
 
-On Tue, Nov 05, 2024 at 09:06:26AM +0000, Daniel P. Berrangé wrote:
-> On Mon, Nov 04, 2024 at 04:06:16PM -0500, Michael S. Tsirkin wrote:
-> > From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > 
-> > These are very similar to the recently added Generic Initiators
-> > but instead of representing an initiator of memory traffic they
-> > represent an edge point beyond which may lie either targets or
-> > initiators.  Here we add these ports such that they may
-> > be targets of hmat_lb records to describe the latency and
-> > bandwidth from host side initiators to the port.  A discoverable
-> > mechanism such as UEFI CDAT read from CXL devices and switches
-> > is used to discover the remainder of the path, and the OS can build
-> > up full latency and bandwidth numbers as need for work and data
-> > placement decisions.
-> > 
-> > Acked-by: Markus Armbruster <armbru@redhat.com>
-> > Tested-by: "Huang, Ying" <ying.huang@intel.com>
-> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > Message-Id: <20240916174122.1843197-1-Jonathan.Cameron@huawei.com>
-> > Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> > Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> > ---
-> >  qapi/qom.json                       |  41 ++++++++++
-> >  include/hw/acpi/aml-build.h         |   3 +
-> >  include/hw/acpi/pci.h               |   2 +-
-> >  include/hw/pci/pci_bridge.h         |   1 +
-> >  hw/acpi/aml-build.c                 |  39 ++++++++++
-> >  hw/acpi/pci.c                       | 116 +++++++++++++++++++++++++++-
-> >  hw/arm/virt-acpi-build.c            |   2 +-
-> >  hw/i386/acpi-build.c                |   2 +-
-> >  hw/pci-bridge/pci_expander_bridge.c |   1 -
-> >  9 files changed, 202 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/qapi/qom.json b/qapi/qom.json
-> > index 321ccd708a..a8beeabf1f 100644
-> > --- a/qapi/qom.json
-> > +++ b/qapi/qom.json
-> > @@ -844,6 +844,45 @@
-> >    'data': { 'pci-dev': 'str',
-> >              'node': 'uint32' } }
-> >  
-> > +##
-> > +# @AcpiGenericPortProperties:
-> > +#
-> > +# Properties for acpi-generic-port objects.
-> > +#
-> > +# @pci-bus: QOM path of the PCI bus of the hostbridge associated with
-> > +#     this SRAT Generic Port Affinity Structure.  This is the same as
-> > +#     the bus parameter for the root ports attached to this host
-> > +#     bridge.  The resulting SRAT Generic Port Affinity Structure will
-> > +#     refer to the ACPI object in DSDT that represents the host bridge
-> > +#     (e.g.  ACPI0016 for CXL host bridges).  See ACPI 6.5 Section
-> > +#     5.2.16.7 for more information.
-> > +#
-> > +# @node: Similar to a NUMA node ID, but instead of providing a
-> > +#     reference point used for defining NUMA distances and access
-> > +#     characteristics to memory or from an initiator (e.g. CPU), this
-> > +#     node defines the boundary point between non-discoverable system
-> > +#     buses which must be described by firmware, and a discoverable
-> > +#     bus.  NUMA distances and access characteristics are defined to
-> > +#     and from that point.  For system software to establish full
-> > +#     initiator to target characteristics this information must be
-> > +#     combined with information retrieved from the discoverable part
-> > +#     of the path.  An example would use CDAT (see UEFI.org)
-> > +#     information read from devices and switches in conjunction with
-> > +#     link characteristics read from PCIe Configuration space.
-> > +#     To get the full path latency from CPU to CXL attached DRAM
-> > +#     CXL device:  Add the latency from CPU to Generic Port (from
-> > +#     HMAT indexed via the the node ID in this SRAT structure) to
-> > +#     that for CXL bus links, the latency across intermediate switches
-> > +#     and from the EP port to the actual memory.  Bandwidth is more
-> > +#     complex as there may be interleaving across multiple devices
-> > +#     and shared links in the path.
-> > +#
-> > +# Since: 9.1
-> 
-> This is outdated, we're in the 9.2 dev cycle currently.
+From: William Roche <william.roche@oracle.com>
 
+When an entire large page is impacted by an error (hugetlbfs case),
+report better the size and location of this large memory hole, so
+give a warning message when this page is first hit:
+Memory error: Loosing a large page (size: X) at QEMU addr Y and GUEST addr Z
 
-Jonathan can you fix this up pls?
+Signed-off-by: William Roche <william.roche@oracle.com>
+---
+ accel/kvm/kvm-all.c      | 9 ++++++++-
+ include/sysemu/kvm_int.h | 4 +++-
+ target/arm/kvm.c         | 2 +-
+ target/i386/kvm/kvm.c    | 2 +-
+ 4 files changed, 13 insertions(+), 4 deletions(-)
 
-> 
-> With regards,
-> Daniel
-> -- 
-> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-> |: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 6dd06f5edf..a572437115 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -1284,7 +1284,7 @@ static void kvm_unpoison_all(void *param)
+     }
+ }
+ 
+-void kvm_hwpoison_page_add(ram_addr_t ram_addr)
++void kvm_hwpoison_page_add(ram_addr_t ram_addr, void *ha, hwaddr gpa)
+ {
+     HWPoisonPage *page;
+     size_t sz = qemu_ram_pagesize_from_addr(ram_addr);
+@@ -1301,6 +1301,13 @@ void kvm_hwpoison_page_add(ram_addr_t ram_addr)
+     page->ram_addr = ram_addr;
+     page->page_size = sz;
+     QLIST_INSERT_HEAD(&hwpoison_page_list, page, list);
++
++    if (sz > TARGET_PAGE_SIZE) {
++        gpa = ROUND_DOWN(gpa, sz);
++        ha = (void *)ROUND_DOWN((uint64_t)ha, sz);
++        warn_report("Memory error: Loosing a large page (size: %zu) "
++            "at QEMU addr %p and GUEST addr 0x%" HWADDR_PRIx, sz, ha, gpa);
++    }
+ }
+ 
+ bool kvm_hwpoisoned_mem(void)
+diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
+index a1e72763da..ee34f1d225 100644
+--- a/include/sysemu/kvm_int.h
++++ b/include/sysemu/kvm_int.h
+@@ -178,10 +178,12 @@ void kvm_set_max_memslot_size(hwaddr max_slot_size);
+  *
+  * Parameters:
+  *  @ram_addr: the address in the RAM for the poisoned page
++ *  @hva: host virtual address aka QEMU addr
++ *  @gpa: guest physical address aka GUEST addr
+  *
+  * Add a poisoned page to the list
+  *
+  * Return: None.
+  */
+-void kvm_hwpoison_page_add(ram_addr_t ram_addr);
++void kvm_hwpoison_page_add(ram_addr_t ram_addr, void *hva, hwaddr gpa);
+ #endif
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index f1f1b5b375..aae66dba41 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -2359,7 +2359,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+         ram_addr = qemu_ram_addr_from_host(addr);
+         if (ram_addr != RAM_ADDR_INVALID &&
+             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+-            kvm_hwpoison_page_add(ram_addr);
++            kvm_hwpoison_page_add(ram_addr, addr, paddr);
+             /*
+              * If this is a BUS_MCEERR_AR, we know we have been called
+              * synchronously from the vCPU thread, so we can easily
+diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+index fd9f198892..fd7cd7008e 100644
+--- a/target/i386/kvm/kvm.c
++++ b/target/i386/kvm/kvm.c
+@@ -753,7 +753,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+         ram_addr = qemu_ram_addr_from_host(addr);
+         if (ram_addr != RAM_ADDR_INVALID &&
+             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+-            kvm_hwpoison_page_add(ram_addr);
++            kvm_hwpoison_page_add(ram_addr, addr, paddr);
+             kvm_mce_inject(cpu, paddr, code);
+ 
+             /*
+-- 
+2.43.5
 

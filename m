@@ -1,115 +1,112 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4467632njc;
-        Thu, 7 Nov 2024 11:55:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUqKj6zoTpceUSeLWJY5o/Dcm6V5RpzqSFZlZzMz41AhVZ1gCZ/2Mq4Gs9qCpcWejHEtreobn07u8mgnw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHZFhq9I7r1O8XF/JNwUhwQuXwGuagYhSFJ/yCt5gouzZtFdhlEcquY/CnOItVwg2FFpoED
-X-Received: by 2002:a05:6214:4a89:b0:6d3:556c:1002 with SMTP id 6a1803df08f44-6d39e1ea64amr1963256d6.43.1731009340817;
-        Thu, 07 Nov 2024 11:55:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731009340; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4467772njc;
+        Thu, 7 Nov 2024 11:55:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUjn72MA8JC8eXANf+0xH4B3zEQaga1Elp/U/Oz8on1zDa26RXN9+3y4eGstraeiIFijNKJ8ezQ+kYVWg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEdAOxc0tP/dWSDy4X/zNpZOVxZlk9Pm8w/4Mh3HhGpPu1jc/7aJ2/3D33Bzmfxd1/3S3GU
+X-Received: by 2002:a05:6358:6e8b:b0:1c3:724e:f4e1 with SMTP id e5c5f4694b2df-1c641f66121mr48741855d.21.1731009359669;
+        Thu, 07 Nov 2024 11:55:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731009359; cv=none;
         d=google.com; s=arc-20240605;
-        b=TLlf3ZNxhMugtaFZsZliWr6dblMcrfTyjAPZczy+hPBVa6XBZBCGZTLT4sAZjlSPy2
-         25p+A0KQXIJzFpsFb0BJGu657ToIlQ6I6gXwoA8XUobt4K7da8vba/cJ/RIRCIR95hey
-         yUdtwJg+BHxMFetGDdlYhr9R057khX7XSRGGDXxzhI7/3mDAv9T3KuR2HHPwqg7OSyYk
-         /574o35ORrPou8xZ4FjX0y5PqGY2GxGRwveomj0Q6wjF+oIOYzNrjnO+V69ZtwGiQy47
-         IZqijfZKOuybjxq8ik60YBwf6HOLJV3IuS5ksZhUB3/Ekd21HGzfY6+O5YA4JLla0H9t
-         xBTw==
+        b=VA6PwkjwWmOhWGcOu+c+8ZStyU0WvMSgslgaz/cEOxnmVbWmBrQWJCjVmizkMsWSXx
+         N6bVm5p3kRERxcDMx/BsVd7dqEgoxKT/7L2CAZvOoPzlwwbR5IuZaQqeW0Q5g6X1+F3W
+         iia7dfU4ah32GKeYISEiDiRAk0VCOqmGUWoZaEjbLTrI2YLajLgVDMORVD+RVQLj4TS+
+         UZZrkNTvDd5SWMaf4lLW0skn24AO7IQtdb425rGFYqOx3U7ZevvwAZ4wcrTsk/bDZtVM
+         3bpybPyjT1J6XxP7dxK+1UzsipNTgW7ZGfkyWIx+LJxyVM3N0IqUOQgr6nAJuCVefU5C
+         MzIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :from:subject:message-id:references:mime-version:in-reply-to:date
-         :dkim-signature;
-        bh=Dhx3Bv91IwsNiKrqW6EopdF6ygF7pLBG+NH0I9FnnMU=;
+         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
+         :references:mime-version:in-reply-to:date:dkim-signature;
+        bh=2TPajN/xK866wB9/V0io4yin6lsJZUCZq19AIoNDrlE=;
         fh=XuBrA54R9ySozHoD/qCHuwIA1pKE6YAf4KhJE72ECqw=;
-        b=Co5nF28lxpMc1m3zVz/iRwnUc+uhZGKpPY1qVKmAzdyMat8cOrqW/jj8LXTJ2hgKoU
-         MyccDIW3HU6dQ+oVGFOgS9WfLLSoUbqCHdyFwTSL5R16zTYuqshrBvszDBSeNLV9m7jF
-         hZiNyWen15bkFOzpXOCWN7tQUUMIMH2GAM/1dBqhUCz2hdEHJMwQZhuFtGOhd8+tfmyB
-         BW75gMOsYe8GlCCp/JYpat0Ovm148DeCXlZL5FGfTucKMGv5POsJ5omkWGpJXHfB1kZ9
-         CpRp0o4DZdtOf8uKeJT5GmUpeeqojzXtw2xu221T19VaJRwGFqeoTDx0TqOMvTR7Aif3
-         DAkw==;
+        b=fJIrHBTCCLACZntx88UrzGCctuPeo2LFWmCpDbKExQStP1xOLT9vEodY+9k4/+t5V+
+         MuJ3ldehxBQgAuiCu7icXp/XsKTCFmLdvz9pFD87u/ICdmkV0GqGEZt6OpmJ3CS+iuHg
+         ifEkIrZlN2sjBlJPI2C2UOVbsaTN6PxfOQG0RJEWu+qqy+wpbFbEiZCDncbtcZuVUTHP
+         1fetxvrc1jhXBSSkS0JNqAHRLgET+Pm6UxK1Gsrd3gJy98hzHfXaewYsMkkiRn/ibWiq
+         o1QuRpnkv3e6r9AJYqcFI5B1DE+bqa6/0UGS/ajU3cfumxnQhZWAkuH5JM/Z5ksIiTVg
+         M2MA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=HJOq6v5r;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=34cAvccr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d396666ae4si22265696d6.387.2024.11.07.11.55.40
+        by mx.google.com with ESMTPS id af79cd13be357-7b32ad02644si150469885a.506.2024.11.07.11.55.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Nov 2024 11:55:40 -0800 (PST)
+        Thu, 07 Nov 2024 11:55:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=HJOq6v5r;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=34cAvccr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1t98az-0001YN-8u; Thu, 07 Nov 2024 14:55:09 -0500
+	id 1t98b1-0001Zm-1V; Thu, 07 Nov 2024 14:55:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3FhstZwYKCEEwlwxvujrrjoh.frpthpx-dupqrqjqx.ruj@flex--titusr.bounces.google.com>)
- id 1t98aw-0001VC-W1
- for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:07 -0500
-Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
+ <3GBstZwYKCEMynyzxwlttlqj.htrvjrz-fwrstslsz.twl@flex--titusr.bounces.google.com>)
+ id 1t98ay-0001XU-8M
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:08 -0500
+Received: from mail-yw1-x1149.google.com ([2607:f8b0:4864:20::1149])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3FhstZwYKCEEwlwxvujrrjoh.frpthpx-dupqrqjqx.ruj@flex--titusr.bounces.google.com>)
- id 1t98at-0003L8-EA
- for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:06 -0500
-Received: by mail-yw1-x114a.google.com with SMTP id
- 00721157ae682-6e9d6636498so27172257b3.2
- for <qemu-arm@nongnu.org>; Thu, 07 Nov 2024 11:55:02 -0800 (PST)
+ <3GBstZwYKCEMynyzxwlttlqj.htrvjrz-fwrstslsz.twl@flex--titusr.bounces.google.com>)
+ id 1t98av-0003Ls-88
+ for qemu-arm@nongnu.org; Thu, 07 Nov 2024 14:55:07 -0500
+Received: by mail-yw1-x1149.google.com with SMTP id
+ 00721157ae682-6ea7c5805ccso22451067b3.0
+ for <qemu-arm@nongnu.org>; Thu, 07 Nov 2024 11:55:04 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1731009302; x=1731614102; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:from:subject:message-id:references
- :mime-version:in-reply-to:date:from:to:cc:subject:date:message-id
- :reply-to; bh=Dhx3Bv91IwsNiKrqW6EopdF6ygF7pLBG+NH0I9FnnMU=;
- b=HJOq6v5rhqbMrcftI+/LxDpc/WkswW27a69yG2M7nZz6OT0iG2Fcghlv3gPFVjQr3z
- 1HNV4wvzOms03U5fvZ/i6GQlAL/Pn7sUjpEGvhtXfQxErjHXZD7s4/IxUE3VdJNG+8+J
- gttdY/1hSxQlIr4objVtIODodZSwZn6NPCgUoncVn6KcfZiKtNazC1MC/47wjDUWwhW1
- eJCoUwVuPv4ehiBASv2PC3i4AK1hhMCYlKbsc0Q/ixvjFhn2t3j4EWfh8r2Oah9mZIDK
- 6dFsO0p7LyBqYwmV+ESDnNGEMdRZAeoiR5JSB94Eta9OaNjqLjz4tOMHr0HS2tjlAZ/z
- fcAw==
+ d=google.com; s=20230601; t=1731009304; x=1731614104; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:from:to:cc:subject:date:message-id:reply-to;
+ bh=2TPajN/xK866wB9/V0io4yin6lsJZUCZq19AIoNDrlE=;
+ b=34cAvccrIHy7K54KuYIfa8mCgzS11KozYsQDWsovLVkAeUzmn4uYwAcc3EfgcyLFaT
+ Nm1AdPdTtWNyWfe92h1G8TiCdTvPJS3xB/81snLoefNo8pHVzQH3jQCavPRtSAq4xz7/
+ CKmMLQzwED/FwS8We3zxfBuWXmg8CW8GKAho5UUz7+U+aL6fsNVwZd9/nVt9orexePci
+ 5xnNOTuL0+62Vv6BEkP3DUhTtb1J+plSYEiuPstsLzSEnEEbLz8tgLFIorrwTsg9NFPJ
+ x0BhkCRVCl+qo+F5n1KLu6WZF1uEbHD64gfeKnOEDKeHH29zBh1lpf8TrwleGnGzdM0t
+ LHvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731009302; x=1731614102;
- h=content-transfer-encoding:cc:to:from:subject:message-id:references
- :mime-version:in-reply-to:date:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to;
- bh=Dhx3Bv91IwsNiKrqW6EopdF6ygF7pLBG+NH0I9FnnMU=;
- b=ZcxLfC2xQ191HMczz4RIh92tMlijQmdonNmrpfN9WMxmo9VGaGVcxL3WWpogTeTJUW
- fRisz0Y2DdLUxRNtoDVbEXf81XfOYisLIvf1CR4gQcLXC1wpmvWpHAf2RQrPuKMcIjFw
- 8MjXSHN+dFIlj6G+e1c1LRTuf4v6xOI/wecMyOSbCWWVzpSg6bo68CGPah4pKf5qGIN0
- fgoXjkajAThR4u2Q2rPTXvQl0u9iT61ShaiYRKPeqBEmmYo3ilGo5trQriok4z0UaL9m
- EPiewgIhDL5ZQCkjlOCbKyXKKZH8+qMBzzVluyBvJPE3GvzvG2uTCqtdM36/uv7vDlHF
- pgGg==
-X-Gm-Message-State: AOJu0YziNGO/t2TlWPct5IhajcrkNYR0+NCbnAcg6qeuoD9yJqFkXjmz
- /m5Uhgb5Q+w67vnxeN8X1s7p+YyJbjkmTQ5b950E7r35OjUbF5nAjRxn5Q1hWByihyZqcVYZLZY
- suw==
+ d=1e100.net; s=20230601; t=1731009304; x=1731614104;
+ h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
+ :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2TPajN/xK866wB9/V0io4yin6lsJZUCZq19AIoNDrlE=;
+ b=U9SIP3BIso4T8CR154eBd6XdTN7IBb6i398Vvu7nBUT8KW9nzWwLS2DF3cxY9qrFOa
+ NyiTq2ncdpK2IW3KD5NegOP1YGwa0Xqjy5/eCSiEMBmlFt3sXpay2GlHNDhI+aVd8Tb8
+ LKBXFJGlAIrt4qti9RhJAX7kZAe59CUyCPK8KL/f3diOJxBLt7ax9PvMF1ffcD5e1hKv
+ uJ9Q4HGhqPM7tuSnjCCV0TUJ2U/Fma2mLie6NSeefz+AeScDTDjpISK4A/yXh/cbf6V2
+ OONT2Ug6B2WWbHrmVisOdjP1oma+BZBFXKQ3+/rR/17MNvRu9wQr+6ibXYnFEIED1Udw
+ XYfA==
+X-Gm-Message-State: AOJu0YzMsm+egWQWLG2mYCYXuMwUD+9a5g89PV86XSfKioPkjk+DFVzb
+ 9Lz19J4voxjv62lz6uG/st1P9isw0yfQVfMUWBHKw/t5G+Gn8R0tLXhWxAEKcMqjfMlFjCTNr26
+ Uyg==
 X-Received: from titusr.c.googlers.com ([fda3:e722:ac3:cc00:dc:567e:c0a8:e14])
- (user=titusr job=sendgmr) by 2002:a25:aac4:0:b0:e2b:da82:f695 with
- SMTP id
- 3f1490d57ef6-e337f8c1754mr158276.6.1731009302052; Thu, 07 Nov 2024 11:55:02
+ (user=titusr job=sendgmr) by 2002:a05:690c:6908:b0:6ea:71c3:6cc3
+ with SMTP id
+ 00721157ae682-6eaddfe2f18mr907b3.8.1731009304063; Thu, 07 Nov 2024 11:55:04
  -0800 (PST)
-Date: Thu,  7 Nov 2024 19:54:51 +0000
+Date: Thu,  7 Nov 2024 19:54:53 +0000
 In-Reply-To: <20241107195453.2684138-1-titusr@google.com>
 Mime-Version: 1.0
 References: <20241107195453.2684138-1-titusr@google.com>
 X-Mailer: git-send-email 2.47.0.277.g8800431eea-goog
-Message-ID: <20241107195453.2684138-5-titusr@google.com>
-Subject: [PATCH 4/6] hw/i2c: add canonical path to i2c event traces
+Message-ID: <20241107195453.2684138-7-titusr@google.com>
+Subject: [PATCH 6/6] hw/arm: add Quanta GSZ bmc machine
 From: Titus Rwantare <titusr@google.com>
 To: peter.maydell@linaro.org, minyard@acm.org, clg@redhat.com
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, philmd@linaro.org, 
  venture@google.com, wuhaotsh@google.com, milesg@linux.vnet.ibm.com, 
  Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
- envelope-from=3FhstZwYKCEEwlwxvujrrjoh.frpthpx-dupqrqjqx.ruj@flex--titusr.bounces.google.com;
- helo=mail-yw1-x114a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1149;
+ envelope-from=3GBstZwYKCEMynyzxwlttlqj.htrvjrz-fwrstslsz.twl@flex--titusr.bounces.google.com;
+ helo=mail-yw1-x1149.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -131,68 +128,217 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I8iealtXP6aQ
+X-TUID: 9lEy2B0A4B4c
 
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+This patch adds the quanta-gsz-bmc target, a current Google machine of
+the day. This machine will be used as a platform to enable features such
+as the PECI bmc interface, and Intel eSPI virtual wire interface in
+QEMU.
+
 Signed-off-by: Titus Rwantare <titusr@google.com>
 ---
- hw/i2c/core.c       | 8 +++++---
- hw/i2c/trace-events | 2 +-
- 2 files changed, 6 insertions(+), 4 deletions(-)
+ hw/arm/npcm7xx_boards.c | 160 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 160 insertions(+)
 
-diff --git a/hw/i2c/core.c b/hw/i2c/core.c
-index 4cf30b2c86..d238311776 100644
---- a/hw/i2c/core.c
-+++ b/hw/i2c/core.c
-@@ -161,7 +161,8 @@ static int i2c_do_start_transfer(I2CBus *bus, uint8_t a=
-ddress,
-            start condition.  */
-=20
-         if (sc->event) {
--            trace_i2c_event(event =3D=3D I2C_START_SEND ? "start" : "start=
-_async",
-+            trace_i2c_event(DEVICE(s)->canonical_path,
-+                            event =3D=3D I2C_START_SEND ? "start" : "start=
-_async",
-                             s->address);
-             rv =3D sc->event(s, event);
-             if (rv && !bus->broadcast) {
-@@ -244,7 +245,7 @@ void i2c_end_transfer(I2CBus *bus)
-         I2CSlave *s =3D node->elt;
-         sc =3D I2C_SLAVE_GET_CLASS(s);
-         if (sc->event) {
--            trace_i2c_event("finish", s->address);
-+            trace_i2c_event(DEVICE(s)->canonical_path, "finish", s->addres=
-s);
-             sc->event(s, I2C_FINISH);
-         }
-         QLIST_REMOVE(node, next);
-@@ -321,7 +322,8 @@ void i2c_nack(I2CBus *bus)
-     QLIST_FOREACH(node, &bus->current_devs, next) {
-         sc =3D I2C_SLAVE_GET_CLASS(node->elt);
-         if (sc->event) {
--            trace_i2c_event("nack", node->elt->address);
-+            trace_i2c_event(DEVICE(node->elt)->canonical_path,
-+                            "nack", node->elt->address);
-             sc->event(node->elt, I2C_NACK);
-         }
-     }
-diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
-index f708a7ace1..e5f2dc643e 100644
---- a/hw/i2c/trace-events
-+++ b/hw/i2c/trace-events
-@@ -9,7 +9,7 @@ bitbang_i2c_data(unsigned clk, unsigned dat, unsigned old_o=
-ut, unsigned new_out)
-=20
- # core.c
-=20
--i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
-+i2c_event(const char *id, const char *event, uint8_t address) "%s: %s(addr=
-:0x%02x)"
- i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02x"
- i2c_send_async(uint8_t address, uint8_t data) "send_async(addr:0x%02x) dat=
-a:0x%02x"
- i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
---=20
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index e229efb447..85c3f8e9a0 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -48,6 +48,8 @@
+ #define NPCM750_EVB_POWER_ON_STRAPS ( \
+         NPCM7XX_POWER_ON_STRAPS_DEFAULT & ~NPCM7XX_PWRON_STRAP_J2EN)
+ #define QUANTA_GSJ_POWER_ON_STRAPS NPCM7XX_POWER_ON_STRAPS_DEFAULT
++#define QUANTA_GSZ_POWER_ON_STRAPS ( \
++        NPCM7XX_POWER_ON_STRAPS_DEFAULT & ~NPCM7XX_PWRON_STRAP_SFAB)
+ #define QUANTA_GBS_POWER_ON_STRAPS ( \
+         NPCM7XX_POWER_ON_STRAPS_DEFAULT & ~NPCM7XX_PWRON_STRAP_SFAB)
+ #define KUDO_BMC_POWER_ON_STRAPS NPCM7XX_POWER_ON_STRAPS_DEFAULT
+@@ -269,6 +271,129 @@ static void quanta_gsj_fan_init(NPCM7xxMachine *machine, NPCM7xxState *soc)
+     npcm7xx_connect_pwm_fan(soc, &splitter[2], 0x05, 1);
+ }
+ 
++static void quanta_gsz_i2c_init(NPCM7xxState *soc)
++{
++    DeviceState *dev;
++    I2CSlave *i2c_mux;
++
++    /* i2c1 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1), TYPE_PCA9548,
++                                      0x75);
++    /* pca6416@0x20 */
++    dev = DEVICE(i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 3),
++                                         "pca6416", 0x20));
++    object_property_set_uint(OBJECT(dev), "gpio_config", 0xF00, &error_abort);
++    object_property_set_uint(OBJECT(dev), "gpio_input", 0xF00, &error_abort);
++
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 1),
++                                      TYPE_PCA9548, 0x77);
++
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0), "raa229004", 0x72);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1), "raa229004", 0x72);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "isl69260", 0x72);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 3), "isl69260", 0x72);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4), "isl69260", 0x72);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), "isl69260", 0x72);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6), "adm1272", 0x1f);
++
++    /* i2c2 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 2),
++                                      TYPE_PCA9548, 0x77);
++    /*         - channel 0: tps546d24 @25
++     *         - channel 1: delta,dps800 @69
++     */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1), "raa228000", 0x68);
++    /*          - channel 2: delta,dps800 @68 */
++    /* max31725 is compatible with tmp105. */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x5c);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 5), "tmp105", 0x5c);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 6), "tmp105", 0x5c);
++
++    /* i2c3 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 3), TYPE_PCA9548,
++                                      0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "pca9538", 0x72);
++
++    /* i2c4 */
++    /* mobo_fru_1 */
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 4), 0x50, 8192);
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 4),
++                                      TYPE_PCA9548, 0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0), "max34451", 0x59);
++    /* mobo_fru_2 */
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 2), 0x55, 32768);
++
++    dev = DEVICE(i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 3),
++                                         "pca6416", 0x20));
++    object_property_set_uint(OBJECT(dev), "gpio_config", 0x4000, &error_abort);
++    object_property_set_uint(OBJECT(dev), "gpio_input", 0x4000, &error_abort);
++
++    dev = DEVICE(i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4),
++                                         "pca6416", 0x20));
++    object_property_set_uint(OBJECT(dev), "gpio_config", 0xFFFF, &error_abort);
++    object_property_set_uint(OBJECT(dev), "gpio_input", 0x0000, &error_abort);
++
++    /* pdb_fru */
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 6), 0x55, 8192);
++
++    /* i2c5 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 5), TYPE_PCA9548,
++                                      0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "pca9538", 0x72);
++
++    /* i2c6 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 6), TYPE_PCA9548,
++                                      0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "pca9538", 0x72);
++
++    /* i2c7 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 7), TYPE_PCA9548,
++                                      0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "pca9538", 0x72);
++
++    /* i2c8 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 8), TYPE_PCA9548,
++                                      0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "pca9538", 0x72);
++
++    /* i2c9 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 9), TYPE_PCA9548,
++                                      0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "pca9538", 0x72);
++
++    /* i2c10 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 10),
++                                      TYPE_PCA9548, 0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 1), "pca9538", 0x72);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "pca9538", 0x72);
++    /* i2c11 */
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 11),
++                                      TYPE_PCA9548, 0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2), "pca9538", 0x72);
++
++    /* i2c12 */
++
++    /* i2c13 */
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 13), "pca6416", 0x22);
++
++    /* i2c14 */
++    /* LEDs and PE Resets */
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 14), "pca6416", 0x20);
++
++    /* bmc_fru_1 */
++    at24c_eeprom_init(npcm7xx_i2c_get_bus(soc, 14), 0x55, 8192);
++
++    i2c_mux = i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 14),
++                                      TYPE_PCA9548, 0x77);
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0), "max34451", 0x59);
++
++    /* max31725 is compatible with tmp105 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 4), "tmp105", 0x5c);
++
++    /* i2c15 */
++    i2c_slave_create_simple(npcm7xx_i2c_get_bus(soc, 15), TYPE_PCA9546, 0x75);
++}
++
+ static void quanta_gbs_i2c_init(NPCM7xxState *soc)
+ {
+     /*
+@@ -392,6 +517,25 @@ static void quanta_gsj_init(MachineState *machine)
+     npcm7xx_load_kernel(machine, soc);
+ }
+ 
++static void quanta_gsz_init(MachineState *machine)
++{
++    NPCM7xxState *soc;
++
++    soc = npcm7xx_create_soc(machine, QUANTA_GSZ_POWER_ON_STRAPS);
++    npcm7xx_connect_dram(soc, machine->ram);
++    qdev_realize(DEVICE(soc), NULL, &error_fatal);
++
++    npcm7xx_load_bootrom(machine, soc);
++    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx66u51235f",
++                          drive_get(IF_MTD, 0, 0));
++    npcm7xx_connect_flash(&soc->fiu[1], 0, "mx66u51235f",
++                          drive_get(IF_MTD, 3, 0));
++
++    quanta_gsz_i2c_init(soc);
++    sdhci_attach_drive(&soc->mmc.sdhci, 0);
++    npcm7xx_load_kernel(machine, soc);
++}
++
+ static void quanta_gbs_init(MachineState *machine)
+ {
+     NPCM7xxState *soc;
+@@ -496,6 +640,18 @@ static void gsj_machine_class_init(ObjectClass *oc, void *data)
+     mc->default_ram_size = 512 * MiB;
+ };
+ 
++static void gsz_machine_class_init(ObjectClass *oc, void *data)
++{
++    NPCM7xxMachineClass *nmc = NPCM7XX_MACHINE_CLASS(oc);
++    MachineClass *mc = MACHINE_CLASS(oc);
++
++    npcm7xx_set_soc_type(nmc, TYPE_NPCM730);
++
++    mc->desc = "Quanta GSZ (Cortex-A9)";
++    mc->init = quanta_gsz_init;
++    mc->default_ram_size = 1 * GiB;
++}
++
+ static void gbs_bmc_machine_class_init(ObjectClass *oc, void *data)
+ {
+     NPCM7xxMachineClass *nmc = NPCM7XX_MACHINE_CLASS(oc);
+@@ -548,6 +704,10 @@ static const TypeInfo npcm7xx_machine_types[] = {
+         .name           = MACHINE_TYPE_NAME("quanta-gsj"),
+         .parent         = TYPE_NPCM7XX_MACHINE,
+         .class_init     = gsj_machine_class_init,
++    }, {
++        .name           = MACHINE_TYPE_NAME("quanta-gsz-bmc"),
++        .parent         = TYPE_NPCM7XX_MACHINE,
++        .class_init     = gsz_machine_class_init,
+     }, {
+         .name           = MACHINE_TYPE_NAME("quanta-gbs-bmc"),
+         .parent         = TYPE_NPCM7XX_MACHINE,
+-- 
 2.47.0.277.g8800431eea-goog
 

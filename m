@@ -1,145 +1,96 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4128967njc;
-        Thu, 7 Nov 2024 03:11:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWkbuGyo+K21VJKsHJmjrbPSscz5J9/qmssNeALqCeo4UiCU589Y4rBCx0lzXjwpEVz3RmpctudFqHzGg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFImBQSmqyiO62vIhCRAgeSLnhxgIhYOWrDQldxiSDB/LY4FixRGWBCFQ8B1qwZIoodzZr9
-X-Received: by 2002:a05:6214:418e:b0:6cc:22eb:4508 with SMTP id 6a1803df08f44-6d39a544964mr8031546d6.47.1730977893824;
-        Thu, 07 Nov 2024 03:11:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1730977893; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4156251njc;
+        Thu, 7 Nov 2024 04:05:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWsjqByh8gEkLPKEAFm4FrSZVyQuZox2yigmCMUEK0AuBXpfifD22DbB3FFpg4uAQLeiJhccXBg+yrs+Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGl07cpnEi9FZU/lgL5/Oal4M6f+NCsoTRSiwHyI0OZnpqtpiP6ZewOk2uIUgFftOixQbmJ
+X-Received: by 2002:a05:620a:2888:b0:7a9:a356:a5dd with SMTP id af79cd13be357-7b32dffdc78mr128380085a.20.1730981150456;
+        Thu, 07 Nov 2024 04:05:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1730981150; cv=none;
         d=google.com; s=arc-20240605;
-        b=FDLnbTyxOK8qJoCFs5hYgU2QEW6irbep+Aiq5Lo4GE2TwS/3Sly2DBCTdBbcPiEJRD
-         RzFM379cF9tndUMMKMAsR1zQzlhQOSAIklDhHlGA5IH3WLY82rNSVHFz6i9HNejyZ+4w
-         SzULgAWEu+4spB0pRZzV8FI+ux4t0GTPo9l7WmJnJ4Ch7vQ1Ic2OK17vxB7ff6d2NZa7
-         H0+RYlSlvlKqKx+imBN6hzajTyNHFkWgGknYHqOIhpTtpHesdHeVC7mvCM8yvleUyMTO
-         elwcE7LP1dGbuJVM30ywZbdRZ8GccTHzcA9sVuCTOp+NOl/uTOlnzN3m/kzyXuHsIQhV
-         eh9w==
+        b=b9vhckBaAk3vbsonmMl9WsQ2+1LHOcWPAWglRvxRoMqrfJWltTNYNDZZScmUmL+jlC
+         FmROIS+x6mbVwxgTWBNPgKg5jxv628I4ooVGPu+KCl0r4IMMnLDqZOQ/cK+eS0lHB78I
+         +lCXxNr2rjJ2FZBsHozl9R2xPqQ45CN0W+uWFcP7DWAsNOxWKcNI5tFAMYZOPEN/F8Bl
+         tSNgpvLwojdUCRnaTsl9LHb9meN1thqlTPSDIPby201FpYLooMpj/lnGPmHnCBv323p/
+         nF7FklCvZvNZVA9xKFtzJNytqUYeocmSijIY0/MsvbdW4ahsd7Iy2sfQRoNVq3ZJyvZG
+         NnUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=zLPbw+LOCiW49xri+PS81nXTSXc9M95CdG7b2wuAfuY=;
-        fh=XRf8EflgBuQ1RMYNl8VXSE03Ip/QqF6c6j0oa2kxOJA=;
-        b=X11N2zoeHusb/3f7xWu3JZzqQg8X7oKY//GAkKKCYSr9OFX6GV9rKUUJSG7kNLq01e
-         UzL2dkVu2aQ0PBB2nEUS7ClHRH5NlAzbEg0gyo6eKKs+0+OWfe85aai364k8xfWmZ+nJ
-         pLXVVZDrvcSHDgUZzVpDcOT9hWjYAc8CBIItbtX2FVzn16tMCc96537r4FUQBQ0zh9S7
-         O5CO67DH0bZy+O7PssOnyvGrLoyAH+2Y3GfnONol7yVlJlqBKYa6TffdykvHpirIsJCF
-         Vm20tExK4dwxslGIwV+2OUyrwufOs0KbXZrxN2npljhJBBbcNWHkMnULCgIoqsFd2+49
-         yKtA==;
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:date;
+        bh=HuzIRW0roysNhK1Z0xAdmPF96Qa1QBxQjaRVK+433ZE=;
+        fh=53pOvERpcaWUZv9LUNI9RdLZvkaBCLIRCF8F+F1I4Hg=;
+        b=YXWaZt/v+wS/qw7TvnXVemd4PgG/X9rghG5tlfqucfd+Q8fT7r62zoLkLUTvKAaIcR
+         szd2bDr2kXG7zJ781QOzUfivfBnoTnmEfcsrItPVigbzc2s4SvCeb2fwYkaXDNq12vyY
+         DuN4519ynVPXObkGaOTTM1nZ7UTo52wmTWbjpS8qMmBRyzXbdBU3bD5vlmauIuN5KNqL
+         ChE8xXOfkWZkPFcdHtj5czVgqpmf0cu9Lsg1HFlE3zmETQKSClxb+dUCGO2Aibs/modg
+         L0tB7z5/2neX8HnK5e5Nx1oMUb9z2+IBeATW8mmSiCtt0SqRXBTiclTD0uA255xvsEfk
+         0U2w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MzS0W8dD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d39620f4b7si12625796d6.6.2024.11.07.03.11.33
+        by mx.google.com with ESMTPS id af79cd13be357-7b32ad12905si144878085a.562.2024.11.07.04.05.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 07 Nov 2024 03:11:33 -0800 (PST)
+        Thu, 07 Nov 2024 04:05:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MzS0W8dD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t90Q9-00067t-Kc; Thu, 07 Nov 2024 06:11:26 -0500
+	id 1t91GL-0004yN-42; Thu, 07 Nov 2024 07:05:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1t90Q5-00067c-If
- for qemu-devel@nongnu.org; Thu, 07 Nov 2024 06:11:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1t91GE-0004uD-Aj; Thu, 07 Nov 2024 07:05:14 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1t90Q1-0002te-Qu
- for qemu-devel@nongnu.org; Thu, 07 Nov 2024 06:11:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1730977874;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zLPbw+LOCiW49xri+PS81nXTSXc9M95CdG7b2wuAfuY=;
- b=MzS0W8dDplR27hBvZT/mzNcxJycaVWidi1yTD7YYMDEMnmCzseEXgj8oCArfWYlce7OZpo
- EUQQkNASGZWvrpaR/9vO3uYGRDgN5sL+GqQb6KNPkuqOsyGjZSX94IaSMhzxynPh/hnCju
- y7pNEu5P35LR7ARj4xnn944OltQ8AM0=
-Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
- [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-304-K840HQXmORqDwui_Ddwc5w-1; Thu, 07 Nov 2024 06:11:11 -0500
-X-MC-Unique: K840HQXmORqDwui_Ddwc5w-1
-X-Mimecast-MFC-AGG-ID: K840HQXmORqDwui_Ddwc5w
-Received: by mail-lj1-f197.google.com with SMTP id
- 38308e7fff4ca-2fcda6c1906so5353811fa.1
- for <qemu-devel@nongnu.org>; Thu, 07 Nov 2024 03:11:11 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730977870; x=1731582670;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zLPbw+LOCiW49xri+PS81nXTSXc9M95CdG7b2wuAfuY=;
- b=SwZ+NTKGe0AjKt1smMWkViafMYhxBMI9SSxnawvqKW2K+M/jvsbgLcihEP3W28vp3s
- OBL0JhkR81Pr5DrQDO5YdFfnT7pWryLitv55MW3hXyAm6N6yOh63F1ewT9mCenkpUXBU
- UIRQJakV5rB7Q2BiXu5uILxYKEOtFPfPqPvQ+1QFdzvO1qV3E4lYzPAk7x8xOYsrzRq3
- flKrkxnlwC7jk4sj0l2zNbFln7klvju/RBmGuujXxKtTZzo/46Q79rVa+hw1yOrfBCGi
- 4azMkJdS/EX/k72vICEvJGaur7HAuHofHdwtVRlPkoIlkKFPkXPrzqwVQmAQNW3RRUNO
- SvYA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVg21npmfsTxG4dq6VTxEi0VOthKn/adfXbMbHdW944X96horpGxQS0/x64ec4qGM1h6kf6LMuGnqgD@nongnu.org
-X-Gm-Message-State: AOJu0Yye1yokdp9Gac1Da+925BLHfr5rVUNbnno4VyUTrWqmekRrK7Zx
- mmI0dTwGFqJAWbZ1bhNPxsAg7ng77dtLUgQzNk3MiSsoxE5kWU8ld9Iw4KtwIM8pmsWxbMtDkn6
- 4rRylE/NWuS9KMUGrTScRLuQYwdwRkoDN1uq/UW7REvyjSVDggfL8
-X-Received: by 2002:a05:651c:1592:b0:2f6:62a1:25fe with SMTP id
- 38308e7fff4ca-2ff1a92f814mr6669661fa.23.1730977870023; 
- Thu, 07 Nov 2024 03:11:10 -0800 (PST)
-X-Received: by 2002:a05:651c:1592:b0:2f6:62a1:25fe with SMTP id
- 38308e7fff4ca-2ff1a92f814mr6668871fa.23.1730977869059; 
- Thu, 07 Nov 2024 03:11:09 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-432b053ff08sm20437535e9.10.2024.11.07.03.11.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Nov 2024 03:11:07 -0800 (PST)
-Message-ID: <1845a6b8-5214-4379-85f4-3d36b61059dd@redhat.com>
-Date: Thu, 7 Nov 2024 12:11:05 +0100
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1t91GA-00041j-Js; Thu, 07 Nov 2024 07:05:13 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xkgk43q4hz6LD90;
+ Thu,  7 Nov 2024 20:05:00 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 6FC4B140CB9;
+ Thu,  7 Nov 2024 20:05:04 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 7 Nov
+ 2024 13:04:58 +0100
+Date: Thu, 7 Nov 2024 12:04:57 +0000
+To: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+CC: <devel@edk2.groups.io>, <marcin.juszkiewicz@linaro.org>,
+ <ardb+tianocore@kernel.org>, <quic_llindhol@quicinc.com>,
+ <peter.maydell@linaro.org>, <chenbaozi@phytium.com.cn>,
+ <linux-cxl@vger.kernel.org>, <asa-dev@op-lists.linaro.org>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: Re: [edk2-devel] [RFC PATCH v2 1/1] hw/arm/sbsa-ref: Support CXL
+ Host Bridge & CFMW
+Message-ID: <20241107120457.00006024@Huawei.com>
+In-Reply-To: <20241105104346.417102-2-wangyuquan1236@phytium.com.cn>
+References: <20241105104346.417102-1-wangyuquan1236@phytium.com.cn>
+ <20241105104346.417102-2-wangyuquan1236@phytium.com.cn>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: nested-smmuv3 topic for QEMU/libvirt, Nov 2024
-Content-Language: en-US
-To: Nicolin Chen <nicolinc@nvidia.com>,
- Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Cc: Mostafa Saleh <smostafa@google.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>,
- Jean-Philippe Brucker <jean-philippe@linaro.org>,
- Moritz Fischer <mdf@kernel.org>, Michael Shavit <mshavit@google.com>,
- Andrea Bolognani <abologna@redhat.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Peter Xu <peterx@redhat.com>,
- Zhangfei Gao <zhangfei.gao@linaro.org>, nathanc@nvidia.com,
- arighi@nvidia.com, ianm@nvidia.com, jan@nvidia.com, mochs@nvidia.com,
- Don Dutile <ddutile@redhat.com>
-References: <ZyRUcGKKS6NbIV5O@Asurada-Nvidia>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <ZyRUcGKKS6NbIV5O@Asurada-Nvidia>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100001.china.huawei.com (7.191.160.183) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -152,61 +103,264 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+From:  Jonathan Cameron via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NBsUkAcrZJJQ
+X-TUID: 0sm7kr9BXPZX
 
-Hi Nicolin,
+On Tue,  5 Nov 2024 18:43:46 +0800
+"Yuquan Wang" <wangyuquan1236@phytium.com.cn> wrote:
 
-On 11/1/24 05:09, Nicolin Chen wrote:
-> Hi,
->
-> This is a continued discussion following previous month's:
-> https://lore.kernel.org/qemu-devel/Zvr%2Fbf7KgLN1cjOl@Asurada-Nvidia/
->
-> Kernel changes are getting closer to merge, as Jason's planning to
-> take vIOMMU series and smmuv3_nesting series into the iommufd tree:
-> https://lore.kernel.org/all/cover.1730313494.git.nicolinc@nvidia.com/
-> https://lore.kernel.org/all/cover.1730313494.git.nicolinc@nvidia.com/
-> https://lore.kernel.org/all/0-v4-9e99b76f3518+3a8-smmuv3_nesting_jgg@nvidia.com/
->
-> So, I think it's probably a good time to align with each others and
-> talk about kicking off some QEMU upstream work in the month ahead.
->
-> @Shameer,
-> Do you have some update on the pluggable smmuv3 module?
->
-> Updates on my side:
-> 1) I have kept uAPI updated to the latest version and verified too.
->    There should be some polishing changes depending on how the basic
->    nesting infrastructure would look like from Intel/Duan's work.
-> 2) I got some help from NVIDIA folks for the libvirt task. And they
->    have done some drafting and are now verifying the PCI topology
->    with "iommu=none".
->
-> Once the pluggable smmuv3 module is ready to test, we will make some
-> change to libvirt for that and drop the auto-assigning patches from
-> the VIRT code, so as to converge for a libvirt+QEMU test.
->
-> FWIW, Robin requested a different solution for MSI mapping [1], v.s.
-> the RMR one that we have been using since Eric's work. I drafted a
-> few VFIO/IOMMUFD patches for that, yet paused for getting the vIOMMU
-> series merged to this kernel cycle. I plan to continue in Nov/Dec.
-> So, for the near term we will continue with the RMR solution, until
-> we have something solid later.
->
-> [1] https://lore.kernel.org/linux-iommu/ZrVN05VylFq8lK4q@Asurada-Nvidia/
+> This creates a default pxb-cxl (bus_nr=0xc0) bridge with two
+> cxl root ports on sbsa-ref. And the memory layout places 64K
+> space for the cxl host bridge register regions(CHBCR) in the
+> sbsa-ref memmap.
+> 
+> In addition, this support indepentent mmio32(32M) & mmio64(1M)
+> space for cxl components.
 
-At Red Hat we may find some cycles to resume working on the QEMU
-integration. Please can you sketch some tasks we could carry out in
-coordination with you and Shameer? Adding Don in the loop.
+Those are too small.  Might work today but not sustainable.
 
-Thank you in advance
+I'm a bit surprised it was this simple to move the MMIO Space away
+from what is normally done for PXBs.
+I think it might work because the GPEX memory windows are effectively
+unlimited in size but I'd like some more eyes on this from people
+familiar with how all that works and whether there might be some
+corner cases that you haven't seen yet.
 
-Eric
->
-> Thanks
-> Nicolin
->
+Otherwise this looks ok to me.
+
+> 
+> To provide CFMWs on sbsa-ref, this extends 1TB space from the
+> hole above RAM Memory [SBSA_MEM] for CXL Fixed Memory Window.
+> 
+> Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+> ---
+>  docs/system/arm/sbsa.rst  |   4 ++
+>  hw/arm/sbsa-ref.c         | 122 +++++++++++++++++++++++++++++++++++++-
+>  hw/cxl/cxl-host-stubs.c   |   2 +
+>  hw/cxl/cxl-host.c         |   2 +-
+>  include/hw/cxl/cxl_host.h |   2 +
+>  5 files changed, 130 insertions(+), 2 deletions(-)
+> 
+> diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
+> index 2bf3fc8d59..21b88e88e7 100644
+> --- a/docs/system/arm/sbsa.rst
+> +++ b/docs/system/arm/sbsa.rst
+> @@ -28,6 +28,7 @@ The ``sbsa-ref`` board supports:
+>    - E1000E ethernet card on PCIe bus
+>    - Bochs display adapter on PCIe bus
+>    - A generic SBSA watchdog device
+> +  - CXL host bridge and CXL fixed memory window
+>  
+>  
+>  Board to firmware interface
+> @@ -92,3 +93,6 @@ Platform version changes:
+>  
+>  0.4
+>    CPU topology information is present in devicetree.
+> +
+> +0.5
+> +  CXL host bridge and CXL fixed memory window are supported.
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index e3195d5449..655dc82863 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -36,12 +36,18 @@
+>  #include "hw/arm/smmuv3.h"
+>  #include "hw/block/flash.h"
+>  #include "hw/boards.h"
+> +#include "hw/cxl/cxl.h"
+> +#include "hw/cxl/cxl_host.h"
+>  #include "hw/ide/ide-bus.h"
+>  #include "hw/ide/ahci-sysbus.h"
+>  #include "hw/intc/arm_gicv3_common.h"
+>  #include "hw/intc/arm_gicv3_its_common.h"
+>  #include "hw/loader.h"
+> +#include "hw/pci/pci_bridge.h"
+> +#include "hw/pci/pci_bus.h"
+> +#include "hw/pci/pcie_port.h"
+>  #include "hw/pci-host/gpex.h"
+> +#include "hw/pci-bridge/pci_expander_bridge.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/usb.h"
+>  #include "hw/usb/xhci.h"
+> @@ -94,6 +100,10 @@ enum {
+>      SBSA_SECURE_MEM,
+>      SBSA_AHCI,
+>      SBSA_XHCI,
+> +    SBSA_CXL_HOST,
+> +    SBSA_CXL_MMIO,
+> +    SBSA_CXL_MMIO_HIGH,
+> +    SBSA_CXL_FIXED_WINDOW,
+>  };
+>  
+>  struct SBSAMachineState {
+> @@ -105,6 +115,8 @@ struct SBSAMachineState {
+>      int psci_conduit;
+>      DeviceState *gic;
+>      PFlashCFI01 *flash[2];
+> +    CXLState cxl_devices_state;
+> +    PCIBus *cxlbus;
+>  };
+>  
+>  #define TYPE_SBSA_MACHINE   MACHINE_TYPE_NAME("sbsa-ref")
+> @@ -132,6 +144,10 @@ static const MemMapEntry sbsa_ref_memmap[] = {
+>      /* Space here reserved for more SMMUs */
+>      [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
+>      [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
+> +    /* 64KiB CXL Host Bridge Registers space */
+> +    [SBSA_CXL_HOST] =           { 0x60120000, 0x00010000 },
+
+> +    /* 32M CXL 32-bit MMIO space */
+> +    [SBSA_CXL_MMIO] =           { 0x60130000, 0x02000000 },
+>      /* Space here reserved for other devices */
+>      [SBSA_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
+>      /* 32-bit address PCIE MMIO space */
+> @@ -141,6 +157,10 @@ static const MemMapEntry sbsa_ref_memmap[] = {
+>      /* ~1TB PCIE MMIO space (4GB to 1024GB boundary) */
+>      [SBSA_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0xFF00000000ULL },
+>      [SBSA_MEM] =                { 0x10000000000ULL, RAMLIMIT_BYTES },
+> +    /* 1M CXL 64-bit MMIO space */
+> +    [SBSA_CXL_MMIO_HIGH] =           { 0x90000000000ULL, 0x00100000 },
+
+As above, make this bigger.  CXL devices can have substantial BARs.
+
+> +    /* 1TB CXL FIXED WINDOW space */
+> +    [SBSA_CXL_FIXED_WINDOW] =   { 0xA0000000000ULL, 0x10000000000ULL },
+>  };
+>  
+>  static const int sbsa_ref_irqmap[] = {
+> @@ -216,7 +236,7 @@ static void create_fdt(SBSAMachineState *sms)
+>       *                        fw compatibility.
+>       */
+>      qemu_fdt_setprop_cell(fdt, "/", "machine-version-major", 0);
+> -    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 4);
+> +    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 5);
+>  
+>      if (ms->numa_state->have_numa_distance) {
+>          int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
+> @@ -629,6 +649,35 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+>      }
+>  }
+>  
+> +static void create_pxb_cxl(SBSAMachineState *sms, PCIBus *bus)
+> +{
+> +    DeviceState *qdev = qdev_new(TYPE_PXB_CXL_DEV);
+> +    PCIDevice *dev = PCI_DEVICE(qdev);
+> +    CXLHost *host;
+> +    PCIHostState *cxl;
+> +    PCIDevice *cxlrp;
+> +    PCIEPort *p;
+> +    PCIESlot *s;
+> +    int i;
+> +
+> +    sms->cxl_devices_state.is_enabled = true;
+> +    qdev_prop_set_uint32(qdev, "bus_nr", 0xc0);
+> +    pci_realize_and_unref(dev, bus, &error_fatal);
+> +
+> +    host = PXB_CXL_DEV(dev)->cxl_host_bridge;
+> +    cxl = PCI_HOST_BRIDGE(host);
+> +    sms->cxlbus = cxl->bus;
+> +
+> +    for (i = 0; i < 2; i++) {
+> +        cxlrp = pci_new(-1, "cxl-rp");
+> +        p = PCIE_PORT(cxlrp);
+> +        s = PCIE_SLOT(cxlrp);
+> +        p->port = i;
+> +        s->slot = i;
+> +        pci_realize_and_unref(cxlrp, sms->cxlbus, &error_fatal);
+> +    }
+> +}
+> +
+>  static void create_pcie(SBSAMachineState *sms)
+>  {
+>      hwaddr base_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
+> @@ -638,6 +687,10 @@ static void create_pcie(SBSAMachineState *sms)
+>      hwaddr base_mmio_high = sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].base;
+>      hwaddr size_mmio_high = sbsa_ref_memmap[SBSA_PCIE_MMIO_HIGH].size;
+>      hwaddr base_pio = sbsa_ref_memmap[SBSA_PCIE_PIO].base;
+> +    hwaddr cxl_base_mmio = sbsa_ref_memmap[SBSA_CXL_MMIO].base;
+> +    hwaddr cxl_size_mmio = sbsa_ref_memmap[SBSA_CXL_MMIO].size;
+> +    hwaddr cxl_base_mmio_high = sbsa_ref_memmap[SBSA_CXL_MMIO_HIGH].base;
+> +    hwaddr cxl_size_mmio_high = sbsa_ref_memmap[SBSA_CXL_MMIO_HIGH].size;
+>      int irq = sbsa_ref_irqmap[SBSA_PCIE];
+>      MachineClass *mc = MACHINE_GET_CLASS(sms);
+>      MemoryRegion *mmio_alias, *mmio_alias_high, *mmio_reg;
+> @@ -686,6 +739,67 @@ static void create_pcie(SBSAMachineState *sms)
+>      pci_create_simple(pci->bus, -1, "bochs-display");
+>  
+>      create_smmu(sms, pci->bus);
+> +
+> +    /* Map CXL MMIO space */
+> +    mmio_alias = g_new0(MemoryRegion, 1);
+> +    mmio_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
+> +    memory_region_init_alias(mmio_alias, OBJECT(dev), "cxl-mmio",
+> +                             mmio_reg, cxl_base_mmio, cxl_size_mmio);
+> +    memory_region_add_subregion(get_system_memory(), cxl_base_mmio, mmio_alias);
+> +
+> +    /* Map CXL MMIO_HIGH space */
+> +    mmio_alias_high = g_new0(MemoryRegion, 1);
+> +    memory_region_init_alias(mmio_alias_high, OBJECT(dev), "cxl-mmio-high",
+> +                             mmio_reg, cxl_base_mmio_high, cxl_size_mmio_high);
+> +    memory_region_add_subregion(get_system_memory(), cxl_base_mmio_high,
+> +                                mmio_alias_high);
+> +
+> +    create_pxb_cxl(sms, pci->bus);
+> +}
+
+>  
+>  static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+> @@ -821,6 +935,12 @@ static void sbsa_ref_init(MachineState *machine)
+>  
+>      create_pcie(sms);
+>  
+> +    create_cxl_host_reg_region(sms);
+> +    create_cxl_fixed_window_region(sms, sysmem);
+> +    pxb_cxl_hook_up_registers(&sms->cxl_devices_state, sms->cxlbus,
+> +                              &error_fatal);
+> +    sbsa_cxl_fmws_link_targets(sms, &error_fatal);
+> +
+>      create_secure_ec(secure_sysmem);
+>  
+>      sms->bootinfo.ram_size = machine->ram_size;
+> diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
+> index cae4afcdde..aea94933ba 100644
+> --- a/hw/cxl/cxl-host-stubs.c
+> +++ b/hw/cxl/cxl-host-stubs.c
+> @@ -11,5 +11,7 @@
+>  void cxl_fmws_link_targets(CXLState *stat, Error **errp) {};
+>  void cxl_machine_init(Object *obj, CXLState *state) {};
+>  void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
+> +void cxl_fixed_memory_window_config(CXLState *cxl_state,
+> +                        CXLFixedMemoryWindowOptions *object, Error **errp) {};
+>  
+>  const MemoryRegionOps cfmws_ops;
+> diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+> index e9f2543c43..d408c7db15 100644
+> --- a/hw/cxl/cxl-host.c
+> +++ b/hw/cxl/cxl-host.c
+> @@ -22,7 +22,7 @@
+>  #include "hw/pci/pcie_port.h"
+>  #include "hw/pci-bridge/pci_expander_bridge.h"
+>  
+> -static void cxl_fixed_memory_window_config(CXLState *cxl_state,
+> +void cxl_fixed_memory_window_config(CXLState *cxl_state,
+>                                             CXLFixedMemoryWindowOptions *object,
+>                                             Error **errp)
+>  {
+> diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
+> index c9bc9c7c50..f3184733aa 100644
+> --- a/include/hw/cxl/cxl_host.h
+> +++ b/include/hw/cxl/cxl_host.h
+> @@ -16,6 +16,8 @@
+>  void cxl_machine_init(Object *obj, CXLState *state);
+>  void cxl_fmws_link_targets(CXLState *stat, Error **errp);
+>  void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
+> +void cxl_fixed_memory_window_config(CXLState *cxl_state,
+> +                        CXLFixedMemoryWindowOptions *object, Error **errp);
+>  
+>  extern const MemoryRegionOps cfmws_ops;
+>  
 

@@ -1,82 +1,98 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4890314njc;
-        Fri, 8 Nov 2024 04:57:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXR5u4T6yWZPbBRjC750nk6ZE5LBV8gTJDGvc1kc5rthFsVPrWSO+sTTv1h3l03ALhP/jJg6y9VBx/Kfg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH1GKQVB4cf0QyMzxd/wTG6T41vk1B1a6S7pYQO+MRAtnaudK6hJi/4tpfL4rd5EsKO+ozf
-X-Received: by 2002:a05:620a:4515:b0:7ae:d2d0:190d with SMTP id af79cd13be357-7b331eaff0cmr337123685a.32.1731070654285;
-        Fri, 08 Nov 2024 04:57:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731070654; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp4897105njc;
+        Fri, 8 Nov 2024 05:06:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUjjN8pFpc7meIWgHy6xlsFbAEf2VheRqKvFdccXtfSxmraKDdauRKHbvcmQFOqplG8CmW71IVh9jL5GA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFx5rkcCAphhE7y6zSCNoAonLFP/+DEayrPA2BU7+kBjn7Ah0fEad2Su25feIw8lTND7Vjn
+X-Received: by 2002:a05:620a:4449:b0:7a9:d0ec:2d9d with SMTP id af79cd13be357-7b331eac340mr343777085a.15.1731071164677;
+        Fri, 08 Nov 2024 05:06:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731071164; cv=none;
         d=google.com; s=arc-20240605;
-        b=YYg62dIorpWhYkxkoucrXs1dxoYt1hOgkR8OSZejfWyUKkOTz9kM1woL+qhgQSaFbS
-         nDOl42n+tlZfLFqXg5uuquHJCaB+sampNKkL7BYqhW0B0znfqtHLyZbUx75oKwnj1GPe
-         LC8FdmAtwSenRpeWGkbCzyLUzyQPhlaYBpGSrMz1aTT9AhAb/6uIu21u2dTzmIXqPsgH
-         1CL1YsCb28at8VGdlkfX7mJQMj8mf6jYYQLHqcHRLOpheU8pSZndcibk+JNqlYSEl1qJ
-         LI3/B8vyxRWzfz8dI8P9OFUpcJq/iwR+Y6+TsM+EhGkSPtXLYeqaB3Cd3qqSP1DrMk2V
-         lZWg==
+        b=BzjglphDqYWK+Ac3yeeL7nj5XTcc3COI0mLZXmt63WCv0Ix0DLw5DHrHwEdec72KVl
+         wP/K5J5wDCenYHjeD/crDjJ4jpdD3SbnFaIrSuMecyQ94uceIuK8LXqeIC6qwIb+jucR
+         WxPKq3xRyL23NLkRIF7uztGJMRDoHxGx02sxHXrUFPYJJFxa+L6gefA6KkzAMhmgIfUu
+         ZSsr/g8CX2wU+1UxGatUmcslgAr0d8fGCPAgT0d4GioEgc6xtttDpFaiwJpuPB6vBURx
+         yxOD6XsLBlLyPL3MKuN7v5+FAdti/ImYvAkOy10CknykbPV5+dvPaYPRtGZOfyGzarfy
+         NFdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to;
-        bh=zYfjLUcCZrcX3KRe3r7yUavDTFpH1pcfdojWhmK6+9g=;
-        fh=cBv4SKPzbf4CEhFYoUFnssX5GAjcCEGzof5+BStAs6s=;
-        b=K5OWgUyqkYf/Dx1Is9+0ayL0YR94gOIvqYAVZE83hD4h1LAX60yrFVqvtO4iATIp6w
-         PS+8Q2XQgKIM9/0v8cupVKEHWnhiDZvGjEEMWa0Xz1x2mSneg80lLq4AVuXmrK+BTtQl
-         1RHoGpilaeS6KXpds0k37RQtZvl1W6dbm5CDXvLXcvpFrWmsXY5kwwfiFdztaFEwKc9D
-         glc9Eb7lJty2fBO/CT9Z+iIcr1YkT10SRV8ivO2G2iBhosdrp62mHDjLt05Y8CLLZrl0
-         wyRc9qjpVwo2xv7V41omhMBQ06FwuoL/LPKKDu+2cQQrrHSZ8x78x0SljhmOfjmPAotA
-         KwoQ==;
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to;
+        bh=KKn0oCMx9t8sk74y63hkFYkpeJrrNhscq4Md8Nnv/dw=;
+        fh=RNJ+0uUWiIBO2ZtF9AoBFZekqv+LKBL1Ue5ZuxB+6h4=;
+        b=bEFQ9dLW1yKuDEuPQT8aPlxzZKxIKFCNz3UazCAbGFunpaxR0UaPJalbH50FvMfUff
+         DBR+jgv7w095H/pypEN3pR6mbH2MqXjEOcW4rrz6DY6vQyLFf6L47YQO3DXF5elUuxhL
+         IuUrA3oqKUuYIZZ7qibYdkJurEsY681YRAW0n+iVfKwoPvN47iizooiFoGMDKyubyoBV
+         fCYlVDMWgrqhHw05vdfk4rOcf9+trHX+rjuYa9qQD3knwB22BRuvc4ARE83FKo2OYiOj
+         2x6M17NdIh48iuo7O1v2VRilyitI6mr3pm/7Sge3/qBIxabE8QTTNmZl3CZWgnkx5VQr
+         mirw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b32ac59d78si416499185a.206.2024.11.08.04.57.34
+        by mx.google.com with ESMTPS id d75a77b69052e-462ff680b82si38894901cf.586.2024.11.08.05.06.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Nov 2024 04:57:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 08 Nov 2024 05:06:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t9OXK-00054K-Ct; Fri, 08 Nov 2024 07:56:26 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1t9Ofy-0002Iu-Fz; Fri, 08 Nov 2024 08:05:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1t9OXI-00053s-Tt; Fri, 08 Nov 2024 07:56:24 -0500
+ id 1t9Ofv-0002IQ-Ic; Fri, 08 Nov 2024 08:05:20 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1t9OXG-0006hf-Qf; Fri, 08 Nov 2024 07:56:24 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XlJlW3088z6J768;
- Fri,  8 Nov 2024 20:53:27 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 15B6D1400CA;
- Fri,  8 Nov 2024 20:56:21 +0800 (CST)
-Received: from A2303104131.china.huawei.com (10.203.177.241) by
- frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
+ id 1t9Ofs-00082D-Vt; Fri, 08 Nov 2024 08:05:19 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XlK0y5n9gz6DBXr;
+ Fri,  8 Nov 2024 21:05:06 +0800 (CST)
+Received: from frapeml100006.china.huawei.com (unknown [7.182.85.201])
+ by mail.maildlp.com (Postfix) with ESMTPS id 3AB5E140B3C;
+ Fri,  8 Nov 2024 21:05:12 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml100006.china.huawei.com (7.182.85.201) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Fri, 8 Nov 2024 13:56:15 +0100
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-CC: <eric.auger@redhat.com>, <peter.maydell@linaro.org>, <jgg@nvidia.com>,
- <nicolinc@nvidia.com>, <ddutile@redhat.com>, <linuxarm@huawei.com>,
- <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: [RFC PATCH 5/5] hw/arm/virt-acpi-build: Add IORT RMR regions to
- handle MSI nested binding
-Date: Fri, 8 Nov 2024 12:52:42 +0000
-Message-ID: <20241108125242.60136-6-shameerali.kolothum.thodi@huawei.com>
-X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ 15.1.2507.39; Fri, 8 Nov 2024 14:05:11 +0100
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Fri, 8 Nov 2024 14:05:11 +0100
+To: Nicolin Chen <nicolinc@nvidia.com>
+CC: Eric Auger <eric.auger@redhat.com>, Mostafa Saleh <smostafa@google.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, "Jason
+ Gunthorpe" <jgg@nvidia.com>, Jean-Philippe Brucker
+ <jean-philippe@linaro.org>, Moritz Fischer <mdf@kernel.org>, Michael Shavit
+ <mshavit@google.com>, "Andrea Bolognani" <abologna@redhat.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, "Peter Xu" <peterx@redhat.com>, Zhangfei Gao
+ <zhangfei.gao@linaro.org>, "nathanc@nvidia.com" <nathanc@nvidia.com>,
+ "arighi@nvidia.com" <arighi@nvidia.com>, "ianm@nvidia.com" <ianm@nvidia.com>, 
+ "jan@nvidia.com" <jan@nvidia.com>, "mochs@nvidia.com" <mochs@nvidia.com>
+Subject: RE: nested-smmuv3 topic for QEMU/libvirt, Nov 2024
+Thread-Topic: nested-smmuv3 topic for QEMU/libvirt, Nov 2024
+Thread-Index: AQHbLBPkDYWW/RlwrUqSJByfpx0jw7KisNtQgAAO5ACACqTPgA==
+Date: Fri, 8 Nov 2024 13:05:11 +0000
+Message-ID: <3e452b1e4d634e8da8e939e1ba89075e@huawei.com>
+References: <ZyRUcGKKS6NbIV5O@Asurada-Nvidia>
+ <cf4359b18f0d44f09b8901141b678a09@huawei.com>
+ <ZyUsClNQwcIkjdZo@Asurada-Nvidia>
+In-Reply-To: <ZyUsClNQwcIkjdZo@Asurada-Nvidia>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.203.177.241]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.203.177.241]
-X-ClientProxiedBy: dggems702-chm.china.huawei.com (10.3.19.179) To
- frapeml500008.china.huawei.com (7.182.85.71)
 Received-SPF: pass client-ip=185.176.79.56;
  envelope-from=shameerali.kolothum.thodi@huawei.com;
  helo=frasgout.his.huawei.com
@@ -88,208 +104,78 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-From:  Shameer Kolothum via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: yD8T0Os8h7Nq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OOxUp4lSpfQe
 
-From: Eric Auger <eric.auger@redhat.com>
 
-To handle SMMUv3 nested stage support it is practical to
-expose the guest with reserved memory regions (RMRs)
-covering the IOVAs used by the host kernel to map
-physical MSI doorbells.
 
-Those IOVAs belong to [0x8000000, 0x8100000] matching
-MSI_IOVA_BASE and MSI_IOVA_LENGTH definitions in kernel
-arm-smmu-v3 driver. This is the window used to allocate
-IOVAs matching physical MSI doorbells.
+> -----Original Message-----
+> From: Nicolin Chen <nicolinc@nvidia.com>
+> Sent: Friday, November 1, 2024 7:29 PM
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: Eric Auger <eric.auger@redhat.com>; Mostafa Saleh
+> <smostafa@google.com>; qemu-arm@nongnu.org; qemu-
+> devel@nongnu.org; Peter Maydell <peter.maydell@linaro.org>; Jason
+> Gunthorpe <jgg@nvidia.com>; Jean-Philippe Brucker <jean-
+> philippe@linaro.org>; Moritz Fischer <mdf@kernel.org>; Michael Shavit
+> <mshavit@google.com>; Andrea Bolognani <abologna@redhat.com>;
+> Michael S. Tsirkin <mst@redhat.com>; Peter Xu <peterx@redhat.com>;
+> Zhangfei Gao <zhangfei.gao@linaro.org>; nathanc@nvidia.com;
+> arighi@nvidia.com; ianm@nvidia.com; jan@nvidia.com; mochs@nvidia.com
+> Subject: Re: nested-smmuv3 topic for QEMU/libvirt, Nov 2024
+>=20
+> On Fri, Nov 01, 2024 at 06:35:23PM +0000, Shameerali Kolothum Thodi
+> wrote:
+> > > @Shameer,
+> > > Do you have some update on the pluggable smmuv3 module?
+> >
+> > I have a bare minimum prototype code that works with a pluggable
+> smmuv3.
+> >
+> > ...
+> > -device pxb-pcie,id=3Dpcie.1,bus_nr=3D2,bus=3Dpcie.0 \
+> > -device pcie-root-port,id=3Dpcie.port1,bus=3Dpcie.1 \
+> > -device arm-smmuv3-nested,id=3Dsmmuv1,pci-bus=3Dpcie.1 \
+> > -device vfio-pci-
+> nohotplug,host=3D0000:75:00.1,bus=3Dpcie.port1,iommufd=3Diommufd0 \
+> > -device pxb-pcie,id=3Dpcie.2,bus_nr=3D8,bus=3Dpcie.0 \
+> > -device pcie-root-port,id=3Dpcie.port2,bus=3Dpcie.2,chassis=3D8 \
+> > -device arm-smmuv3-nested,id=3Dsmmuv2,pci-bus=3Dpcie.2 \
+> > -device vfio-pci-
+> nohotplug,host=3D0000:7d:02.1,bus=3Dpcie.port2,iommufd=3Diommufd0 \
+> > ...
+> >
+> > Something like above can now boot a Guest with the latest kernel. But I
+> am not
+> > sure it actually works correctly. I need a bit more time to update this=
+ and
+> carry
+> > out some tests. Will target that in Nov.
+>=20
+> That looks nice to me! Thanks for the update.
 
-With those RMRs, the guest is forced to use a flat mapping
-for this range. Hence the assigned device is programmed
-with one IOVA from this range. Stage 1, owned by the guest
-has a flat mapping for this IOVA. Stage2, owned by the VMM
-then enforces a mapping from this IOVA to the physical
-MSI doorbell.
+I have sent out an initial RFC here(Might have missed CC few in this email.=
+ Apologies.),
+https://lore.kernel.org/qemu-devel/20241108125242.60136-1-shameerali.koloth=
+um.thodi@huawei.com/
 
-The creation of those RMR nodes only is relevant if nested
-stage SMMU is in use, along with VFIO. As VFIO devices can be
-hotplugged, all RMRs need to be created in advance. Hence
-the patch introduces a new arm virt "nested-smmuv3" iommu type.
+Please take a look and let me know.
 
-ARM DEN 0049E.b IORT specification also mandates that when
-RMRs are present, the OS must preserve PCIe configuration
-performed by the boot FW. So along with the RMR IORT nodes,
-a _DSM function #5, as defined by PCI FIRMWARE SPECIFICATION
-EVISION 3.3, chapter 4.6.5 is added to PCIe host bridge
-and PCIe expander bridge objects.
+Thanks,
+Shameer
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Suggested-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- hw/arm/virt-acpi-build.c | 77 +++++++++++++++++++++++++++++++++++-----
- 1 file changed, 68 insertions(+), 9 deletions(-)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index ec4cdfb2d7..f327ca59ec 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -132,6 +132,14 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-         .bus    = vms->bus,
-     };
- 
-+    /*
-+     * Nested SMMU requires RMRs for MSI 1-1 mapping, which
-+     * require _DSM for PreservingPCI Boot Configurations
-+     */
-+    if (vms->iommu == VIRT_IOMMU_SMMUV3_NESTED) {
-+        cfg.preserve_config = true;
-+    }
-+
-     if (vms->highmem_mmio) {
-         cfg.mmio64 = memmap[VIRT_HIGH_PCIE_MMIO];
-     }
-@@ -216,16 +224,16 @@ static void acpi_dsdt_add_tpm(Aml *scope, VirtMachineState *vms)
-  *
-  * Note that @id_count gets internally subtracted by one, following the spec.
-  */
--static void build_iort_id_mapping(GArray *table_data, uint32_t input_base,
--                                  uint32_t id_count, uint32_t out_ref)
-+static void
-+build_iort_id_mapping(GArray *table_data, uint32_t input_base,
-+                      uint32_t id_count, uint32_t out_ref, uint32_t flags)
- {
-     build_append_int_noprefix(table_data, input_base, 4); /* Input base */
-     /* Number of IDs - The number of IDs in the range minus one */
-     build_append_int_noprefix(table_data, id_count - 1, 4);
-     build_append_int_noprefix(table_data, input_base, 4); /* Output base */
-     build_append_int_noprefix(table_data, out_ref, 4); /* Output Reference */
--    /* Flags */
--    build_append_int_noprefix(table_data, 0 /* Single mapping (disabled) */, 4);
-+    build_append_int_noprefix(table_data, flags, 4); /* Flags */
- }
- 
- struct AcpiIortIdMapping {
-@@ -267,6 +275,50 @@ static int iort_idmap_compare(gconstpointer a, gconstpointer b)
-     return idmap_a->input_base - idmap_b->input_base;
- }
- 
-+static void
-+build_iort_rmr_nodes(GArray *table_data, GArray *smmu_idmaps,
-+                     size_t *smmu_offset, uint32_t *id)
-+{
-+    AcpiIortIdMapping *range;
-+    int i;
-+
-+    for (i = 0; i < smmu_idmaps->len; i++) {
-+        range = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
-+        int bdf = range->input_base;
-+
-+        /* Table 18 Reserved Memory Range Node */
-+
-+        build_append_int_noprefix(table_data, 6 /* RMR */, 1); /* Type */
-+        /* Length */
-+        build_append_int_noprefix(table_data, 28 + ID_MAPPING_ENTRY_SIZE + 20, 2);
-+        build_append_int_noprefix(table_data, 3, 1); /* Revision */
-+        build_append_int_noprefix(table_data, *id, 4); /* Identifier */
-+        /* Number of ID mappings */
-+        build_append_int_noprefix(table_data, 1, 4);
-+        /* Reference to ID Array */
-+        build_append_int_noprefix(table_data, 28, 4);
-+
-+        /* RMR specific data */
-+
-+        /* Flags */
-+        build_append_int_noprefix(table_data, 0 /* Disallow remapping */, 4);
-+        /* Number of Memory Range Descriptors */
-+        build_append_int_noprefix(table_data, 1 , 4);
-+        /* Reference to Memory Range Descriptors */
-+        build_append_int_noprefix(table_data, 28 + ID_MAPPING_ENTRY_SIZE, 4);
-+        build_iort_id_mapping(table_data, bdf, range->id_count, smmu_offset[i], 1);
-+
-+        /* Table 19 Memory Range Descriptor */
-+
-+        /* Physical Range offset */
-+        build_append_int_noprefix(table_data, 0x8000000, 8);
-+        /* Physical Range length */
-+        build_append_int_noprefix(table_data, 0x100000, 8);
-+        build_append_int_noprefix(table_data, 0, 4); /* Reserved */
-+        *id += 1;
-+    }
-+}
-+
- /*
-  * Input Output Remapping Table (IORT)
-  * Conforms to "IO Remapping Table System Software on ARM Platforms",
-@@ -284,7 +336,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     GArray *smmu_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
-     GArray *its_idmaps = g_array_new(false, true, sizeof(AcpiIortIdMapping));
- 
--    AcpiTable table = { .sig = "IORT", .rev = 3, .oem_id = vms->oem_id,
-+    AcpiTable table = { .sig = "IORT", .rev = 5, .oem_id = vms->oem_id,
-                         .oem_table_id = vms->oem_table_id };
-     /* Table 2 The IORT */
-     acpi_table_begin(&table, table_data);
-@@ -325,6 +377,9 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             }
- 
-             next_range.input_base = idmap->input_base + idmap->id_count;
-+            if (vms->iommu == VIRT_IOMMU_SMMUV3_NESTED) {
-+                nb_nodes++; /* RMR node per SMMU */
-+            }
-         }
- 
-         /* Append the last RC -> ITS ID mapping */
-@@ -386,7 +441,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         build_append_int_noprefix(table_data, 0, 4);
- 
-         /* output IORT node is the ITS group node (the first node) */
--        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
-+        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET, 0);
-     }
- 
-     /* Table 17 Root Complex Node */
-@@ -427,7 +482,7 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             range = &g_array_index(smmu_idmaps, AcpiIortIdMapping, i);
-             /* output IORT node is the smmuv3 node */
-             build_iort_id_mapping(table_data, range->input_base,
--                                  range->id_count, smmu_offset[i]);
-+                                  range->id_count, smmu_offset[i], 0);
-         }
- 
-         /* bypassed RIDs connect to ITS group node directly: RC -> ITS */
-@@ -435,11 +490,15 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-             range = &g_array_index(its_idmaps, AcpiIortIdMapping, i);
-             /* output IORT node is the ITS group node (the first node) */
-             build_iort_id_mapping(table_data, range->input_base,
--                                  range->id_count, IORT_NODE_OFFSET);
-+                                  range->id_count, IORT_NODE_OFFSET, 0);
-         }
-     } else {
-         /* output IORT node is the ITS group node (the first node) */
--        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET);
-+        build_iort_id_mapping(table_data, 0, 0x10000, IORT_NODE_OFFSET, 0);
-+    }
-+
-+    if (vms->iommu == VIRT_IOMMU_SMMUV3_NESTED) {
-+        build_iort_rmr_nodes(table_data, smmu_idmaps, smmu_offset, &id);
-     }
- 
-     acpi_table_end(linker, &table);
--- 
-2.34.1
 

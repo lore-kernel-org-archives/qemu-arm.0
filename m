@@ -1,340 +1,137 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp5148796njc;
-        Fri, 8 Nov 2024 11:11:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWBhtqbD/q9GOdkyHwQkr5JkfiGglkoqDg6KBICGhbbb68QezodcBIswMGHNOiNcykiLsa7xhFNnzyIxQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IENriLhDj9qsVg19EpDhiy20YmrSrbxsabvZlFRMa2qIE7l4w5aUpcU7R5maWi7zHojVNNZ
-X-Received: by 2002:a05:620a:1aa0:b0:7a9:acf4:36bc with SMTP id af79cd13be357-7b331e890abmr563813585a.3.1731093109434;
-        Fri, 08 Nov 2024 11:11:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731093109; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp5290101njc;
+        Fri, 8 Nov 2024 16:08:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWnboi34KML9ut7yKx8MIWZjH6W4TxT12BbQsRiumZD8Sx/NjKMA4diBXZvMxKEdQ1NouFCHnka9I7vfw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGHkSj628kKjB8VcpjtLdDo9miyoMJicP7QsVC/oWDiF1wtJBdU2aSXBpFyrHTI59uJdicq
+X-Received: by 2002:a17:902:d4c5:b0:20e:552c:5408 with SMTP id d9443c01a7336-211835cc3ffmr62742395ad.51.1731110890486;
+        Fri, 08 Nov 2024 16:08:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731110890; cv=none;
         d=google.com; s=arc-20240605;
-        b=HhSkUnCS4RJJrTD6Me6r3Lz7u/+Y8L8ieGNB0i5rR2P2o7al7L4Bjg+t9wP/XInkww
-         vfm0hIpTwAgcU0vmV/bXu3KXEwSE37dmIfNRn24C8/z6LhYzHI1MeUaUUO9Tkms159wY
-         mQwTcJeD8jD0WczR+TuK2dXCr13n1iem1kdiU2vECHT/f6PlJoxXtlUMV4ee7JTMo2K6
-         Yh9D8k9ZMtrGXcfXYbDXLCa2TnZ9a8Hz27ATykyGAGh2CeCvJdIDc1Tj6mSjO3bVh0fR
-         kCLIljBJQ2fY/MpQ4ljxk80gduRq/6QxV1eNjWXQi0OR1dcYJTj2jNI0ynYh4QUcY1V1
-         b1Aw==
+        b=d9fRr6pBTPTyy++upY3U+McmWAjwCsHaAdveuXZzG9zQETiHls5tqUgnGDa3YndUzn
+         6FAZd75UYH1XExvup7bsYN3tMQbypBdiVQ57STsEIcQZxEPLhMqnhQPq5lLXlHAZn2n7
+         WYcexrQkKoV1fqeh9ffsF/ZKZW371vcXkH1x7znjSpW4emR+u763YC4v2Se3d/34ivQO
+         KDTQJlOYkk0Hq89mxIV8mqcdTb5WhYvxDumBgbfz7Z2v3HRELjth60V40E1lPNp70Y/w
+         6FQUyu3sNtTVy6X2Tb+b+TFeOXP3kjL3VVOXl/FhwmXvRfv1++1wTyOvIvkbCckVE+ap
+         raSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
-         :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=Es1ZOsUkh5a26ERSNoZBbj4rwDM4JoIl2SBvc0JCEas=;
-        fh=ypBVXsMFHjWYVR+aCFGHOg1gZLuN167OIpN5IOze6T0=;
-        b=RlfTRrYWh94iwUrmIPo8ilaYXR4RvkHuzCIaJtWDGjYoEY4WIdkAsE9ThH2F/yXWPp
-         4Jp23z7A28MEphKlDAGU/pVlAwrfHgAjBqSn30qc/P3vWKW9ng00sJ0uMVN8yriKUJG6
-         3ERpg3gJ74BA3rPOP2L5xYxNObi2L+Y47/8bvvcTVBPTATuf/0ejzKT0l8EC6PJun7Pq
-         J4XEc9Hy5VJmvYUMpCOQK6Kb5VgqFqUQtgWmptSgU1YZwNRKCrnCVRIYzLmpGXio6dgY
-         m3khLDSntg7Geps99AaAWk6gPq5s0UsCpo62WlYLCM1Kn7WmD2RQE7snEUQCy1hGcyIg
-         D7tw==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=Das08dq/GmN6T/TlYWCwd4Bq8FXXFyKErX7YTQ+phX8=;
+        fh=r8ajd3FUMdtDxzqs0wLEINYA6psD113amket9C+CNXU=;
+        b=YIp34qjZUWibhcVPphdB+TrSOsyPsi2v5hE3VBnh2CuZV+XM3avaJ2qyWwtCKvgg6s
+         DA8WJu5Ak3cMpGLKmPWrja2X1urxpYZ9rjGryUefruAzV89ypYKUpSzsrokL6TKZULy4
+         ifLRvJgAQCChrVhGthJO1BQFAcmz5/08WiBO67yGazCwMWCu+3J+Lyiz7dZDrB0h4oeZ
+         1yrC9R7g/P3KPe616PXdpU91hJDIqG6ZRr2+vkGw0EFiwqxJ5Xoe4RNEhkreqW/ORxzI
+         VamiF8gl1DPaHUy7YqmcX86ADHlO7RQAuc+JhhyNGkjJCmfqLahfENv0H6q4s7hSMZdF
+         rvYA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=SL8VL1rP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b32acf7f49si455594985a.458.2024.11.08.11.11.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 08 Nov 2024 11:11:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <salil.mehta@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id d9443c01a7336-21177e4a15fsi56795155ad.211.2024.11.08.16.08.09
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 08 Nov 2024 16:08:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=SL8VL1rP;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1t9UNV-0000fh-IC; Fri, 08 Nov 2024 14:10:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3KmIuZwYKCucaXZdNQPXXPUN.LXVZNVd-MNeNUWXWPWd.XaP@flex--roqueh.bounces.google.com>)
- id 1t9UNS-0000eQ-I4
- for qemu-devel@nongnu.org; Fri, 08 Nov 2024 14:10:39 -0500
-Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3KmIuZwYKCucaXZdNQPXXPUN.LXVZNVd-MNeNUWXWPWd.XaP@flex--roqueh.bounces.google.com>)
- id 1t9UNQ-0002RP-Mh
- for qemu-devel@nongnu.org; Fri, 08 Nov 2024 14:10:38 -0500
-Received: by mail-yw1-x114a.google.com with SMTP id
- 00721157ae682-6e6101877abso51134607b3.0
- for <qemu-devel@nongnu.org>; Fri, 08 Nov 2024 11:10:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1731093034; x=1731697834; darn=nongnu.org;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:from:to:cc:subject:date:message-id:reply-to;
- bh=Es1ZOsUkh5a26ERSNoZBbj4rwDM4JoIl2SBvc0JCEas=;
- b=SL8VL1rPsnySYc+BrSa6kfK/xEcK30VHYeZtxPDVjzf7T1HtHNJjRl1m6IbPrEOpCx
- 8LuGNnWnJAeH0EcMXhvQltjr/x5Q6DkIFsnJKWcf0ZYwBRgQKWrbntzQLJiTpvlNtBut
- cLyj5N17+gOLbjjMPXbkbNy9hfa1JPN3x4lH0BgEFZeOdcpcqgBhvwwQSbW17VMDU1Gj
- TiVJve33Vyd/KpjAXJkOT4vhpvTJmKXvEgOEz7Cozsj3+FrdzN1qAio5JOkwzCaLEReg
- vKOAeEvcW3J/bu+VtugzAZR6ltsZiwcnOgLsOq+8wBb8I9UPWXw7MbrsMeBqJ05hd+zd
- AxHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731093034; x=1731697834;
- h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
- :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Es1ZOsUkh5a26ERSNoZBbj4rwDM4JoIl2SBvc0JCEas=;
- b=HXegU2a8zpLJmeIRMqRvqKyfhKhqmNegIr043MLybEOCdt2+TbmsLXKV9AcecrIvUI
- 8xncR3agdOolcKzfHsV7hd0gHx13evDKel4IQU9nV7JauXO+9+RSkM7uCghoAvpXOxC3
- DpjhvpP+RFerYIEwy8J/Hm12ghpn4vOkI3Ao7HzflIC3uYjrOaDQ4U+gomVCLSaFkPPx
- anR3KMpWtEnlbMDZ3+1XF8XPqnsYKz1dMCwF52quWHTpHCs+wyhKOrnrWMC3laHw1q21
- eAXK2zMvu4T/re0UTX3LKjr7H+S98O7nS7fyVgntrDU0CzUkl/BKdPWUzGXeBAvb1pN2
- o02g==
-X-Gm-Message-State: AOJu0YwW/Gd8TtcN8wjdOBxbQuMQpAje2jsP1HffhdsWWSD3ZwKDArUz
- zBUUBWRpMq2Fa28XTxA0i1HpZ4ewIzexafRWM59/wistc8ZcJguLTwsS54P0CdyGCFFK73KIwDF
- aDA==
-X-Received: from roqueh.c.googlers.com ([fda3:e722:ac3:cc00:4e:3bc9:ac1c:1ab])
- (user=roqueh job=sendgmr) by 2002:a0d:f4c3:0:b0:6e3:ce76:103f with
- SMTP id
- 00721157ae682-6eaddfb8e66mr496267b3.6.1731093034670; Fri, 08 Nov 2024
- 11:10:34 -0800 (PST)
-Date: Fri,  8 Nov 2024 19:10:23 +0000
-In-Reply-To: <20241108191024.2931097-1-roqueh@google.com>
-Mime-Version: 1.0
-References: <20241108191024.2931097-1-roqueh@google.com>
-X-Mailer: git-send-email 2.47.0.277.g8800431eea-goog
-Message-ID: <20241108191024.2931097-3-roqueh@google.com>
-Subject: [PATCH 2/3] tests/qtest/cmsdk-apb-watchdog-test: Parameterize tests
-From: Roque Arcudia Hernandez <roqueh@google.com>
-To: peter.maydell@linaro.org, farosas@suse.de, lvivier@redhat.com, 
- slongfield@google.com, komlodi@google.com, pbonzini@redhat.com, 
- venture@google.com
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Roque Arcudia Hernandez <roqueh@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
- envelope-from=3KmIuZwYKCucaXZdNQPXXPUN.LXVZNVd-MNeNUWXWPWd.XaP@flex--roqueh.bounces.google.com;
- helo=mail-yw1-x114a.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: A7DF5BJuhO0o
+       spf=pass (google.com: domain of salil.mehta@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=salil.mehta@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xlbgn0rKJz67nWm;
+	Sat,  9 Nov 2024 08:06:13 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+	by mail.maildlp.com (Postfix) with ESMTPS id 7941D140453;
+	Sat,  9 Nov 2024 08:07:57 +0800 (CST)
+Received: from 00293818-MRGF.huawei.com (10.48.150.69) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Sat, 9 Nov 2024 01:07:43 +0100
+From: Salil Mehta <salil.mehta@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>,
+	<imammedo@redhat.com>
+CC: <salil.mehta@huawei.com>, <jonathan.cameron@huawei.com>,
+	<peter.maydell@linaro.org>, <richard.henderson@linaro.org>,
+	<anisinha@redhat.com>, <eduardo@habkost.net>, <marcel.apfelbaum@gmail.com>,
+	<david@redhat.com>, <philmd@linaro.org>, <peterx@redhat.com>,
+	<pbonzini@redhat.com>, <gshan@redhat.com>, <borntraeger@linux.ibm.com>,
+	<alex.bennee@linaro.org>, <linux@armlinux.org.uk>,
+	<darren@os.amperecomputing.com>, <ilkka@os.amperecomputing.com>,
+	<vishnu@os.amperecomputing.com>, <karl.heubaum@oracle.com>,
+	<miguel.luis@oracle.com>, <salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+	<wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>, <zhao1.liu@intel.com>,
+	<linuxarm@huawei.com>, <gustavo.romero@linaro.org>
+Subject: [PATCH V2 0/3] Fixes CPUs AML & acpi-bios-tables to be x86 backward compatible
+Date: Sat, 9 Nov 2024 00:07:25 +0000
+Message-ID: <20241109000728.206825-1-salil.mehta@huawei.com>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.48.150.69]
+X-ClientProxiedBy: dggems704-chm.china.huawei.com (10.3.19.181) To
+ frapeml500007.china.huawei.com (7.182.85.172)
+X-TUID: 3Agvq+Tkpr3A
 
-Currently the CMSDK APB watchdog tests target an specialized version
-of the device (luminaris using the lm3s811evb machine) that prevents
-the development of tests for the more generic device documented in:
+Fixes the the CPUs AML code and its corresponding golden masters ACPI
+tables files for backward compatability of live migration on x86 platforms
+i.e. when newer Qemu is migrated to older Qemu without `CPRS` Bit present
+in the register block. This also reverts the ACPI ABI change introduced for
+checking the `presence` of vCPUs dynamically (feedback from Igor Mammedov)
 
-https://developer.arm.com/documentation/ddi0479/d/apb-components/apb-watchdog/programmers-model
+Fixes [PULL 60/65], [PULL 61/65]:
+Message-ID: <bf1ecc8dad6061914730a2a2d57af6b37c3a4f8d.1730754238.git.mst@redhat.com>
+Message-ID: <4d62d15b11909e9af121577e707b88f2e4524371.1730754238.git.mst@redhat.com>
 
-This patch allows the execution of the watchdog tests in an MPS2
-machine (when applicable) which uses the generic version of the CMSDK
-APB watchdog.
+Salil Mehta (3):
+  qtest: allow ACPI DSDT Table changes
+  Fix: CPUs presence logic in _STA for x86 backward compatability
+  tests/qtest/bios-tables-test: Fix DSDT golden masters for x86/{pc,q35}
 
-Finally the rules for compiling the test have to change because it is
-possible not to have CONFIG_STELLARIS (required for the lm3s811evb
-machine) while still having CONFIG_CMSDK_APB_WATCHDOG and the test
-will fail. Due to the addition of the MPS2 machine CONFIG_MPS2
-becomes also a dependency for the test compilation.
+ hw/acpi/cpu.c                                 |  49 +++++++-----------
+ include/hw/acpi/cpu.h                         |   1 +
+ include/hw/core/cpu.h                         |   1 -
+ tests/data/acpi/x86/pc/DSDT                   | Bin 8561 -> 8528 bytes
+ tests/data/acpi/x86/pc/DSDT.acpierst          | Bin 8472 -> 8439 bytes
+ tests/data/acpi/x86/pc/DSDT.acpihmat          | Bin 9886 -> 9853 bytes
+ tests/data/acpi/x86/pc/DSDT.bridge            | Bin 15432 -> 15399 bytes
+ tests/data/acpi/x86/pc/DSDT.cphp              | Bin 9025 -> 8992 bytes
+ tests/data/acpi/x86/pc/DSDT.dimmpxm           | Bin 10215 -> 10182 bytes
+ tests/data/acpi/x86/pc/DSDT.hpbridge          | Bin 8512 -> 8479 bytes
+ tests/data/acpi/x86/pc/DSDT.hpbrroot          | Bin 5068 -> 5035 bytes
+ tests/data/acpi/x86/pc/DSDT.ipmikcs           | Bin 8633 -> 8600 bytes
+ tests/data/acpi/x86/pc/DSDT.memhp             | Bin 9920 -> 9887 bytes
+ tests/data/acpi/x86/pc/DSDT.nohpet            | Bin 8419 -> 8386 bytes
+ tests/data/acpi/x86/pc/DSDT.numamem           | Bin 8567 -> 8534 bytes
+ tests/data/acpi/x86/pc/DSDT.roothp            | Bin 12354 -> 12321 bytes
+ tests/data/acpi/x86/q35/DSDT                  | Bin 8389 -> 8356 bytes
+ tests/data/acpi/x86/q35/DSDT.acpierst         | Bin 8406 -> 8373 bytes
+ tests/data/acpi/x86/q35/DSDT.acpihmat         | Bin 9714 -> 9681 bytes
+ .../acpi/x86/q35/DSDT.acpihmat-noinitiator    | Bin 8668 -> 8635 bytes
+ tests/data/acpi/x86/q35/DSDT.applesmc         | Bin 8435 -> 8402 bytes
+ tests/data/acpi/x86/q35/DSDT.bridge           | Bin 12002 -> 11969 bytes
+ tests/data/acpi/x86/q35/DSDT.core-count       | Bin 12947 -> 12914 bytes
+ tests/data/acpi/x86/q35/DSDT.core-count2      | Bin 33804 -> 33771 bytes
+ tests/data/acpi/x86/q35/DSDT.cphp             | Bin 8853 -> 8820 bytes
+ tests/data/acpi/x86/q35/DSDT.cxl              | Bin 13182 -> 13149 bytes
+ tests/data/acpi/x86/q35/DSDT.dimmpxm          | Bin 10043 -> 10010 bytes
+ tests/data/acpi/x86/q35/DSDT.ipmibt           | Bin 8464 -> 8431 bytes
+ tests/data/acpi/x86/q35/DSDT.ipmismbus        | Bin 8477 -> 8444 bytes
+ tests/data/acpi/x86/q35/DSDT.ivrs             | Bin 8406 -> 8373 bytes
+ tests/data/acpi/x86/q35/DSDT.memhp            | Bin 9748 -> 9715 bytes
+ tests/data/acpi/x86/q35/DSDT.mmio64           | Bin 9519 -> 9486 bytes
+ tests/data/acpi/x86/q35/DSDT.multi-bridge     | Bin 13242 -> 13209 bytes
+ tests/data/acpi/x86/q35/DSDT.noacpihp         | Bin 8269 -> 8236 bytes
+ tests/data/acpi/x86/q35/DSDT.nohpet           | Bin 8247 -> 8214 bytes
+ tests/data/acpi/x86/q35/DSDT.numamem          | Bin 8395 -> 8362 bytes
+ tests/data/acpi/x86/q35/DSDT.pvpanic-isa      | Bin 8490 -> 8457 bytes
+ tests/data/acpi/x86/q35/DSDT.thread-count     | Bin 12947 -> 12914 bytes
+ tests/data/acpi/x86/q35/DSDT.thread-count2    | Bin 33804 -> 33771 bytes
+ tests/data/acpi/x86/q35/DSDT.tis.tpm12        | Bin 8995 -> 8962 bytes
+ tests/data/acpi/x86/q35/DSDT.tis.tpm2         | Bin 9021 -> 8988 bytes
+ tests/data/acpi/x86/q35/DSDT.type4-count      | Bin 18623 -> 18590 bytes
+ tests/data/acpi/x86/q35/DSDT.viot             | Bin 14649 -> 14616 bytes
+ tests/data/acpi/x86/q35/DSDT.xapic            | Bin 35752 -> 35719 bytes
+ 44 files changed, 19 insertions(+), 32 deletions(-)
 
-Signed-off-by: Roque Arcudia Hernandez <roqueh@google.com>
-Reviewed-by: Stephen Longfield <slongfield@google.com>
----
- tests/qtest/cmsdk-apb-watchdog-test.c | 115 +++++++++++++++++++-------
- tests/qtest/meson.build               |   3 +-
- 2 files changed, 86 insertions(+), 32 deletions(-)
-
-diff --git a/tests/qtest/cmsdk-apb-watchdog-test.c b/tests/qtest/cmsdk-apb-watchdog-test.c
-index 00b5dbbc81..fe535a553c 100644
---- a/tests/qtest/cmsdk-apb-watchdog-test.c
-+++ b/tests/qtest/cmsdk-apb-watchdog-test.c
-@@ -15,14 +15,12 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "exec/hwaddr.h"
- #include "qemu/bitops.h"
- #include "libqtest-single.h"
- 
--/*
-- * lm3s811evb watchdog; at board startup this runs at 200MHz / 16 == 12.5MHz,
-- * which is 80ns per tick.
-- */
- #define WDOG_BASE 0x40000000
-+#define WDOG_BASE_MPS2 0x40008000
- 
- #define WDOGLOAD 0
- #define WDOGVALUE 4
-@@ -37,39 +35,87 @@
- #define SYSDIV_SHIFT 23
- #define SYSDIV_LENGTH 4
- 
--static void test_watchdog(void)
-+#define WDOGLOAD_DEFAULT 0xFFFFFFFF
-+#define WDOGVALUE_DEFAULT 0xFFFFFFFF
-+
-+typedef struct CMSDKAPBWatchdogTestArgs {
-+    int64_t tick;
-+    hwaddr wdog_base;
-+    const char *machine;
-+} CMSDKAPBWatchdogTestArgs;
-+
-+enum {
-+    MACHINE_LM3S811EVB,
-+    MACHINE_MPS2_AN385,
-+};
-+
-+/*
-+ * lm3s811evb watchdog; at board startup this runs at 200MHz / 16 == 12.5MHz,
-+ * which is 80ns per tick.
-+ *
-+ * IoTKit/ARMSSE dualtimer; driven at 25MHz in mps2-an385, so 40ns per tick
-+ */
-+static const CMSDKAPBWatchdogTestArgs machine_info[] = {
-+    [MACHINE_LM3S811EVB] = {
-+        .tick = 80,
-+        .wdog_base = WDOG_BASE,
-+        .machine = "lm3s811evb",
-+    },
-+    [MACHINE_MPS2_AN385] = {
-+        .tick = 40,
-+        .wdog_base = WDOG_BASE_MPS2,
-+        .machine = "mps2-an385",
-+    },
-+};
-+
-+static void test_watchdog(const void *ptr)
- {
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-+    const CMSDKAPBWatchdogTestArgs *args = ptr;
-+    hwaddr wdog_base = args->wdog_base;
-+    int64_t tick = args->tick;
-+    g_autofree gchar *cmdline = g_strdup_printf("-machine %s", args->machine);
-+    qtest_start(cmdline);
- 
--    writel(WDOG_BASE + WDOGCONTROL, 1);
--    writel(WDOG_BASE + WDOGLOAD, 1000);
-+    g_assert_cmpuint(readl(wdog_base + WDOGRIS), ==, 0);
-+
-+    writel(wdog_base + WDOGCONTROL, 1);
-+    writel(wdog_base + WDOGLOAD, 1000);
- 
-     /* Step to just past the 500th tick */
--    clock_step(500 * 80 + 1);
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
-+    clock_step(500 * tick + 1);
-+    g_assert_cmpuint(readl(wdog_base + WDOGRIS), ==, 0);
-+    g_assert_cmpuint(readl(wdog_base + WDOGVALUE), ==, 500);
- 
-     /* Just past the 1000th tick: timer should have fired */
--    clock_step(500 * 80);
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 0);
-+    clock_step(500 * tick);
-+    g_assert_cmpuint(readl(wdog_base + WDOGRIS), ==, 1);
-+    g_assert_cmpuint(readl(wdog_base + WDOGVALUE), ==, 0);
- 
-     /* VALUE reloads at following tick */
--    clock_step(80);
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
-+    clock_step(tick);
-+    g_assert_cmpuint(readl(wdog_base + WDOGVALUE), ==, 1000);
- 
-     /* Writing any value to WDOGINTCLR clears the interrupt and reloads */
--    clock_step(500 * 80);
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
--    writel(WDOG_BASE + WDOGINTCLR, 0);
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
--    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-+    clock_step(500 * tick);
-+    g_assert_cmpuint(readl(wdog_base + WDOGVALUE), ==, 500);
-+    g_assert_cmpuint(readl(wdog_base + WDOGRIS), ==, 1);
-+    writel(wdog_base + WDOGINTCLR, 0);
-+    g_assert_cmpuint(readl(wdog_base + WDOGVALUE), ==, 1000);
-+    g_assert_cmpuint(readl(wdog_base + WDOGRIS), ==, 0);
-+
-+    qtest_end();
- }
- 
--static void test_clock_change(void)
-+/*
-+ * This test can only be executed in the stellaris board since it relies on a
-+ * component of the board to change the clocking parameters of the watchdog.
-+ */
-+static void test_clock_change(const void *ptr)
- {
-     uint32_t rcc;
-+    const CMSDKAPBWatchdogTestArgs *args = ptr;
-+    g_autofree gchar *cmdline = g_strdup_printf("-machine %s", args->machine);
-+    qtest_start(cmdline);
- 
-     /*
-      * Test that writing to the stellaris board's RCC register to
-@@ -109,6 +155,8 @@ static void test_clock_change(void)
-     writel(WDOG_BASE + WDOGINTCLR, 0);
-     g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
-     g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-+
-+    qtest_end();
- }
- 
- int main(int argc, char **argv)
-@@ -116,16 +164,21 @@ int main(int argc, char **argv)
-     int r;
- 
-     g_test_init(&argc, &argv, NULL);
--
--    qtest_start("-machine lm3s811evb");
--
--    qtest_add_func("/cmsdk-apb-watchdog/watchdog", test_watchdog);
--    qtest_add_func("/cmsdk-apb-watchdog/watchdog_clock_change",
--                   test_clock_change);
-+    g_test_set_nonfatal_assertions();
-+
-+    if (qtest_has_machine(machine_info[MACHINE_LM3S811EVB].machine)) {
-+        qtest_add_data_func("/cmsdk-apb-watchdog/watchdog",
-+                            &machine_info[MACHINE_LM3S811EVB], test_watchdog);
-+        qtest_add_data_func("/cmsdk-apb-watchdog/watchdog_clock_change",
-+                            &machine_info[MACHINE_LM3S811EVB],
-+                            test_clock_change);
-+    }
-+    if (qtest_has_machine(machine_info[MACHINE_MPS2_AN385].machine)) {
-+        qtest_add_data_func("/cmsdk-apb-watchdog/watchdog_mps2",
-+                            &machine_info[MACHINE_MPS2_AN385], test_watchdog);
-+    }
- 
-     r = g_test_run();
- 
--    qtest_end();
--
-     return r;
- }
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index aa93e98418..f2f35367ae 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -227,7 +227,8 @@ qtests_arm = \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
--  (config_all_devices.has_key('CONFIG_CMSDK_APB_WATCHDOG') ? ['cmsdk-apb-watchdog-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_STELLARIS') or
-+   config_all_devices.has_key('CONFIG_MPS2') ? ['cmsdk-apb-watchdog-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_PFLASH_CFI02') and
-    config_all_devices.has_key('CONFIG_MUSICPAL') ? ['pflash-cfi02-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed : []) + \
 -- 
-2.47.0.277.g8800431eea-goog
-
+2.34.1

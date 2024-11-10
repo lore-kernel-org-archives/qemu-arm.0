@@ -1,105 +1,108 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6084938njc;
-        Sun, 10 Nov 2024 07:01:47 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXckQvc9UAQOs1NPcxg/zOfJ4hi6tz51GNpZ/DsRe5wMdcoCQGPr2ig/xplXMWiaznrSD/x6iMgyqc9ng==@linaro.org
-X-Google-Smtp-Source: AGHT+IHn+xJoB+RKO0RiwgZUqW7afo90FpK087Xv0RmcAWuLOJP5HMFTLWC3KjMBhDYUeaLa1OrV
-X-Received: by 2002:a05:6214:3bca:b0:6cb:e3ea:f07e with SMTP id 6a1803df08f44-6d39e143404mr134716846d6.26.1731250907582;
-        Sun, 10 Nov 2024 07:01:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731250907; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6093519njc;
+        Sun, 10 Nov 2024 07:15:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU59253fvKTOXRR1ni7ZQgIKW1r7uVVeJjc/Do/iBjMgn4rnvwGUzwOuIEpWKm9yAzfZL+OYv869X3wbw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEpN3W9HgkE06PORafgRj8FhP8TL3O+ABnY9LwD00ASTp0dct5sVJD7cI2jzqOHc3aGS3AP
+X-Received: by 2002:ac8:664c:0:b0:463:112f:4ab9 with SMTP id d75a77b69052e-463112f4cd2mr93412881cf.25.1731251740968;
+        Sun, 10 Nov 2024 07:15:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731251740; cv=none;
         d=google.com; s=arc-20240605;
-        b=A4PU6p0khRGeGvaYLf+Jn09WpXcb/IGs3FTFAwbAIMoNKXX8icVbSdk5B2OW9j/eny
-         JvNMnwYYaIm7zWZOCUKCH3EQcgKgjq/CK0ufah1v6D1YdcKAUU88cg88l7+aNs42HAVL
-         1U2cxWvQHyFWBOIGgixiplOpvs4/330L0UOUC4m1DzbYgi2vY37GVIEQLxNR+/0iaVAn
-         u5CLKuENc1lm8SEGNuhnWO/AIGT0Ouaa65x11fOO+51d4ThkphiGXXh5OWa4HZgrXvUO
-         UCIOLjgG9uIR6hQcl/s/23QfIHECbBw5NFHb7EuW3e+LXcpSLqoUEZK933vqc3ehIh+K
-         AnSw==
+        b=ALbWiA6c3rBqVuUSFGuQICT50iVnQR3apsJp1q/ftHrlYcmSM4w0jkO1OAMh+VLMT6
+         eaxyNyeL8zmShRL7aye3dY0QLVeWb37hIB1E2W0vMKFaK3kM0CJ0FYeYJ2uiwkzhgnX7
+         qLzBBrxT0N8arVWaH0L7KJ+e+vnEGjTM7AIlLK298xoDYqIef4ps1eg8nr1o2vI+KXBS
+         6se5jTEivR8vJ+fZq7EVHnGk7XxOYcHSqgqVK+uUu0CG9U4VKtZCszE6dTp/l5unYfSY
+         ZVRn3q3bsoJcBAQkaasmlE5RxUMaCB7RNMhlgm1FRPXw5PKnsA4LaiMWMko+Ti06pREJ
+         rY3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=Hd/nmmJScsIPibtVK8VLZNhGGeAx1Ux/9TRubfH8OLQ=;
-        fh=JKJnBVQDNUMpJ9l1W15mIMGqg3LdEt4nob7f5ARgOOc=;
-        b=f0yqv+UJT6P1mKPQKrfG5rsAUBOQC6rWnypzjueZjGONbKdLsAEwURpAuX5Q6PKXsc
-         9w7s1GAZrUgslcmjN8Gu98Tf8KBn4xAs2ux0Lo//dbn0q1HSGWPadNcQFmVk9rIkp1RP
-         QQJT2G5dv6BGYt5Ywf/IC0mgPAieF52yh1dtHnG/xi1EvjUP01mMlKITpTQL5N9fSYgx
-         ocER9MAE0620A5IY3SijUVGduCH+xkYbRI0yTwT71wQuJSSk6sPFie+iZj9Oy1pojJI7
-         GSA69TsoV6noyPd68bd6yb/LcXmW4PoojO3bRtYo/dJsoER0vDwb0ojipQ6wcrPC+s/R
-         IZkw==;
+        bh=bRIElRIkbSkGcDEyJKLsexpTiPct+QzbWRnM08FSXYA=;
+        fh=k97Q3GuPdxm74FUI4BbLMYNtlUQvoR+LkqvARGxBk7I=;
+        b=NYTlY76cDUY5CNkqGgAHQz0g5GFfcWCa4sLMOIAtzJmTtqXQ12yGjFcEHb9AaeWIsm
+         qqBrTKmUnQ5N7j9StuqOptMDy9/3iIKStQqz4A9CMWMWk7K71H8o562U8fru7uqLyBEk
+         XMbDrEUkLPHGkskguB6aKbB5cMLoW2y9jj/qzEBTaLFdShsTd5dxFmdvDtPzSgxTAlfr
+         3++VW8TBoeWxjzRIdga3uU0wWN3ayHdoJ5i/q+QvLSC9APu8MPDBZVviWF4Hx81UpLfg
+         JsdZTgjL8hFTlZHv01MKHVV4rZMFPChCLF0XyIepfmXXsm3IFo2APmZmjthTdbTbAan6
+         A1sQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=B8EDruas;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=Gqn9qmiO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d396667af2si85059106d6.374.2024.11.10.07.01.47
+        by mx.google.com with ESMTPS id d75a77b69052e-462ff40f41csi83803201cf.89.2024.11.10.07.15.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Nov 2024 07:01:47 -0800 (PST)
+        Sun, 10 Nov 2024 07:15:40 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=B8EDruas;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=Gqn9qmiO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tA9RJ-0005IB-E5; Sun, 10 Nov 2024 10:01:21 -0500
+	id 1tA9f3-0007dK-EA; Sun, 10 Nov 2024 10:15:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <lists@philjordan.eu>)
- id 1tA9RH-0005Hf-DK
- for qemu-arm@nongnu.org; Sun, 10 Nov 2024 10:01:19 -0500
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ id 1tA9es-0007bE-8F
+ for qemu-arm@nongnu.org; Sun, 10 Nov 2024 10:15:29 -0500
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <lists@philjordan.eu>)
- id 1tA9RD-0000dX-3m
- for qemu-arm@nongnu.org; Sun, 10 Nov 2024 10:01:19 -0500
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-2e2c6bc4840so2985880a91.2
- for <qemu-arm@nongnu.org>; Sun, 10 Nov 2024 07:01:14 -0800 (PST)
+ id 1tA9eo-0002L4-SG
+ for qemu-arm@nongnu.org; Sun, 10 Nov 2024 10:15:22 -0500
+Received: by mail-pg1-x52c.google.com with SMTP id
+ 41be03b00d2f7-7edb6879196so2525891a12.3
+ for <qemu-arm@nongnu.org>; Sun, 10 Nov 2024 07:15:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731250873; x=1731855673;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731251717; x=1731856517;
  darn=nongnu.org; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Hd/nmmJScsIPibtVK8VLZNhGGeAx1Ux/9TRubfH8OLQ=;
- b=B8EDruas2HaEkU6/GoMHKhbI3u4Gf/tXQZuqwL4NEWvIQYoLVjfwM4Kfy04s6zVrw8
- biXfKhYpsMWgWT6Q8CE1qOVpHq0dK0cJ62PoW6B6bCXYLZtiDNQh4ekyDMs+LdEEy+1H
- 3NnREu/3qRPY7m/8Gy1bYuaLYUnLSElX6eCDSorJ/qYoEv4ILPLSwnKsbB7UjJemfa/B
- MrTjLWiD8ZnPhxPU+Yx8RfN+PdORzeDwrnIcPSxmDZPJp1FJh7fWJaPOtV3Do8Q/xaya
- k04zx43WkY8GRkerxojapA4FoztXtXF83aJQ3YpB2M3ccHk8oGtxwvbgT/EArlXrNjVh
- LP3w==
+ bh=bRIElRIkbSkGcDEyJKLsexpTiPct+QzbWRnM08FSXYA=;
+ b=Gqn9qmiOdrBf5KMxmEb4PZRgLuL0umL9pPgFRvxTklYu3GNeBAlETxvh0a1YAjGH2/
+ Ic2dwb7rzn5piHO1O6Leg6AmUhKCOysECxxFF+FkmFByfahiJjq+D5wt0Kj2RCxoPEBz
+ sftDvEm28e2Jv7Bt9iG0GJL8u1j3QjEb4Rso0SK50aPOg7HDp14W1v8+GpiCLYYvNtrv
+ 70AHzDDCHCAbXocJRNmsm8vJXsNOt1gTGzTeQT/2hDQ5z97JAVGyAcxsZXoR0HCW3LSy
+ 3fGm3DyuQN1C5INxds8lwoEGopgfD+SbD9IzrbHaLBl9xDt8OnYFb8k7m6cEpacCVcSx
+ ZP6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731250873; x=1731855673;
+ d=1e100.net; s=20230601; t=1731251717; x=1731856517;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Hd/nmmJScsIPibtVK8VLZNhGGeAx1Ux/9TRubfH8OLQ=;
- b=P3j7hIz1ajnBE1eCJHgleSE2SH4a1GJEZz84uLUJjIdiOfhEaufCNJhuT5KRR83fsI
- A9hPfp1kaHb+skQxzdO4wLcZy8aJoMI1uzzk23GqGwTh3pRMxoUX3ybaa0b1L3zoSU8h
- w0jo3ujaNYydC0/2O0OIw0symQTsPdqYUcKuOd3JYfDWhQ+TDMweCeZ02Apubj4LBD2J
- FImRYfLB6Wjpz9gmZKmQi4AXPDTunIcCwFrJkUXxpMv/oCeBJAmiYoTVpiazX7/jhzfb
- OMwYxlBqaXZDDfFxXHQ8E0BpcgknejhWsIYDaZqjoJXTZAEusybYjQr/2Z2H8kWXIQCJ
- Vp0Q==
+ bh=bRIElRIkbSkGcDEyJKLsexpTiPct+QzbWRnM08FSXYA=;
+ b=GXx+IzcAbeRD1KehMsdTzFBfhJ9IG39JgwLXKSCl/wQkwAGSpsyFwbEAP+Blt1cdRH
+ zSFBsPV3Az3FYIZ64aZDWZuXufM22DfOlbAAgnGh8qZzdRi14TVL5XMPV0CWEw99vP7H
+ MVS6AolJtjxe/1gX4NsVgPVhn+P+EkjDRcKuA9Xof8mOTs99SRvDr2bqlMFWZdQ9R9gW
+ UVzVBLo3kBIPOjUC1wVS8tJJpojvMv3w9KaH5WIQ1P+GexvYx2IWOP8eX4J9az1ycCCz
+ eUAq5ZI3TJMOR5ryD+tOHuLJXib/vdVwMRD0uP4a9+iY4iDGhvFLZepOn1h6NvSPvcv1
+ XVEw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUqty7PCpYPm96DQf56q88IchmJ03Q2reAQoExB3FgnaSdy0MgaKRHz2pe003smQsbFCWZrtDaflw==@nongnu.org
-X-Gm-Message-State: AOJu0YxetSJr1WXIEloGi6CFLrk01NHD8HzD/Wc9lTYw45BHhHfMTayl
- o+056rukXCrB3C/305wHXGqU1O6+oz4gd/0TAJGd9WyTjaH1DOXYh5TXAn9z1rcHPiPD7kR6WFQ
- KCdyysX+HXj62OBKA+7nBIDVm2WMebApUOn42
-X-Received: by 2002:a17:90b:4fcd:b0:2e9:5d94:5992 with SMTP id
- 98e67ed59e1d1-2e9b17814f0mr14097539a91.31.1731250872956; Sun, 10 Nov 2024
- 07:01:12 -0800 (PST)
+ AJvYcCXLng+3pG0fQU2oSsU8IV0iYxAMH4zUziyMBpLSxFgN5AoE92c8pnvDFg7FfHNEcTVmnRNjsM4MZg==@nongnu.org
+X-Gm-Message-State: AOJu0YwMA9xeCSztkySgtprakeV1c85OZsuOFivNs45z8fFRFT588R7B
+ CB7Ekvum8NlLMbPk5KO3J42wvrwRNymhsBakplxrJ2dlZRKE3tritTadt0ClEXptHN/tLK82ix1
+ HM1hITEVPzr86eWAWrvIpB4WJCqfqKJ1f1L9h
+X-Received: by 2002:a17:90b:4f43:b0:2e2:e82d:48cf with SMTP id
+ 98e67ed59e1d1-2e9b1724271mr14520256a91.16.1731251716985; Sun, 10 Nov 2024
+ 07:15:16 -0800 (PST)
 MIME-Version: 1.0
 References: <20241108144709.95498-1-phil@philjordan.eu>
- <20241108144709.95498-13-phil@philjordan.eu>
- <49a1d82f-2464-4e10-b932-733e94be31b2@daynix.com>
-In-Reply-To: <49a1d82f-2464-4e10-b932-733e94be31b2@daynix.com>
+ <20241108144709.95498-2-phil@philjordan.eu>
+ <9c2e0b96-2125-4041-9f66-116d54accb04@daynix.com>
+ <CAAibmn3NbtOEwWLQFOo_UmAGTehOj+dDP04A=-JGMZVK9AYMDw@mail.gmail.com>
+ <07ec41b8-922c-4c6a-b550-63fc4481d019@daynix.com>
+In-Reply-To: <07ec41b8-922c-4c6a-b550-63fc4481d019@daynix.com>
 From: Phil Dennis-Jordan <lists@philjordan.eu>
-Date: Sun, 10 Nov 2024 16:01:02 +0100
-Message-ID: <CAGCz3vt_HuXu9uPwrOQkgE84-8nTgEQXST-BbXXc=FsEx_Wx2w@mail.gmail.com>
-Subject: Re: [PATCH v8 12/15] hw/vmapple/cfg: Introduce vmapple cfg region
+Date: Sun, 10 Nov 2024 16:15:06 +0100
+Message-ID: <CAGCz3vt=jCBU8UpXhcLEXC20mJZ=4Mx0hL4ixzhSPAKF3rV64w@mail.gmail.com>
+Subject: Re: [PATCH v8 01/15] ui & main loop: Redesign of system-specific main
+ thread event handling
 To: Akihiko Odaki <akihiko.odaki@daynix.com>
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org,
  agraf@csgraf.de, 
@@ -112,11 +115,11 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org,
  bmeng.cn@gmail.com, liwei1518@gmail.com, dbarboza@ventanamicro.com, 
  zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, 
  berrange@redhat.com, qemu-arm@nongnu.org, qemu-block@nongnu.org, 
- qemu-riscv@nongnu.org, Alexander Graf <graf@amazon.com>
+ qemu-riscv@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: neutral client-ip=2607:f8b0:4864:20::1030;
- envelope-from=lists@philjordan.eu; helo=mail-pj1-x1030.google.com
+Received-SPF: neutral client-ip=2607:f8b0:4864:20::52c;
+ envelope-from=lists@philjordan.eu; helo=mail-pg1-x52c.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -137,321 +140,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: saGBztFSbRH7
+X-TUID: 3qnfIDvYqtuc
 
-On Sun, 10 Nov 2024 at 08:15, Akihiko Odaki <akihiko.odaki@daynix.com> wrot=
+On Sun, 10 Nov 2024 at 08:10, Akihiko Odaki <akihiko.odaki@daynix.com> wrot=
 e:
 >
-> On 2024/11/08 23:47, Phil Dennis-Jordan wrote:
-> > From: Alexander Graf <graf@amazon.com>
+> On 2024/11/10 16:08, Phil Dennis-Jordan wrote:
 > >
-> > Instead of device tree or other more standardized means, VMApple passes
-> > platform configuration to the first stage boot loader in a binary encod=
-ed
-> > format that resides at a dedicated RAM region in physical address space=
-.
 > >
-> > This patch models this configuration space as a qdev device which we ca=
-n
-> > then map at the fixed location in the address space. That way, we can
-> > influence and annotate all configuration fields easily.
+> > On Sun 10. Nov 2024 at 08:01, Akihiko Odaki <akihiko.odaki@daynix.com
+> > <mailto:akihiko.odaki@daynix.com>> wrote:
 > >
-> > Signed-off-by: Alexander Graf <graf@amazon.com>
-> > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
-> > ---
+> >     On 2024/11/08 23:46, Phil Dennis-Jordan wrote:
+> >      > macOS's Cocoa event handling must be done on the initial (main)
+> >     thread
+> >      > of the process. Furthermore, if library or application code uses
+> >      > libdispatch, the main dispatch queue must be handling events on
+> >     the main
+> >      > thread as well.
+> >      >
+> >      > So far, this has affected Qemu in both the Cocoa and SDL UIs,
+> >     although
+> >      > in different ways: the Cocoa UI replaces the default qemu_main
+> >     function
+> >      > with one that spins Qemu's internal main event loop off onto a
+> >      > background thread. SDL (which uses Cocoa internally) on the othe=
+r
+> >     hand
+> >      > uses a polling approach within Qemu's main event loop. Events ar=
+e
+> >      > polled during the SDL UI's dpy_refresh callback, which happens t=
+o run
+> >      > on the main thread by default.
 > >
-> > v3:
+> >     GTK should also do the same as SDL and requires treatment; I forgot=
+ to
+> >     note that in previous reviews.
 > >
-> >   * Replaced legacy device reset method with Resettable method
 > >
-> > v4:
+> > Although it=E2=80=98s possible to build Qemu with GTK support enabled o=
+n macOS,
+> > that UI doesn=E2=80=99t actually work on macOS at all, and apparently h=
+asn=E2=80=99t
+> > been supported since 2018, see:
+> > https://stackoverflow.com/a/51474795 <https://stackoverflow.com/a/51474=
+795>
 > >
-> >   * Fixed initialisation of default values for properties
-> >   * Dropped superfluous endianness conversions
-> >   * Moved most header code to .c, device name #define goes in vmapple.h
-> >
-> > v5:
-> >
-> >   * Improved error reporting in case of string property buffer overflow=
-.
-> >
-> > v7:
-> >
-> >   * Changed error messages for overrun of properties with
-> >     fixed-length strings to be more useful to users than developers.
-> >
-> > v8:
-> >
-> >   * Consistent parenthesising of macro arguments for better safety.
-> >
-> >   hw/vmapple/Kconfig           |   3 +
-> >   hw/vmapple/cfg.c             | 196 ++++++++++++++++++++++++++++++++++=
-+
-> >   hw/vmapple/meson.build       |   1 +
-> >   include/hw/vmapple/vmapple.h |   2 +
-> >   4 files changed, 202 insertions(+)
-> >   create mode 100644 hw/vmapple/cfg.c
-> >
-> > diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
-> > index 68f88876eb9..8bbeb9a9237 100644
-> > --- a/hw/vmapple/Kconfig
-> > +++ b/hw/vmapple/Kconfig
-> > @@ -4,3 +4,6 @@ config VMAPPLE_AES
-> >   config VMAPPLE_BDIF
-> >       bool
-> >
-> > +config VMAPPLE_CFG
-> > +    bool
-> > +
-> > diff --git a/hw/vmapple/cfg.c b/hw/vmapple/cfg.c
-> > new file mode 100644
-> > index 00000000000..787e2505d57
-> > --- /dev/null
-> > +++ b/hw/vmapple/cfg.c
-> > @@ -0,0 +1,196 @@
-> > +/*
-> > + * VMApple Configuration Region
-> > + *
-> > + * Copyright =C2=A9 2023 Amazon.com, Inc. or its affiliates. All Right=
-s Reserved.
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + *
-> > + * This work is licensed under the terms of the GNU GPL, version 2 or =
-later.
-> > + * See the COPYING file in the top-level directory.
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "hw/vmapple/vmapple.h"
-> > +#include "hw/sysbus.h"
-> > +#include "qemu/log.h"
-> > +#include "qemu/module.h"
-> > +#include "qapi/error.h"
-> > +#include "net/net.h"
-> > +
-> > +OBJECT_DECLARE_SIMPLE_TYPE(VMAppleCfgState, VMAPPLE_CFG)
-> > +
-> > +#define VMAPPLE_CFG_SIZE 0x00010000
-> > +
-> > +typedef struct VMAppleCfg {
-> > +    uint32_t version;         /* 0x000 */
-> > +    uint32_t nr_cpus;         /* 0x004 */
-> > +    uint32_t unk1;            /* 0x008 */
-> > +    uint32_t unk2;            /* 0x00c */
-> > +    uint32_t unk3;            /* 0x010 */
-> > +    uint32_t unk4;            /* 0x014 */
-> > +    uint64_t ecid;            /* 0x018 */
-> > +    uint64_t ram_size;        /* 0x020 */
-> > +    uint32_t run_installer1;  /* 0x028 */
-> > +    uint32_t unk5;            /* 0x02c */
-> > +    uint32_t unk6;            /* 0x030 */
-> > +    uint32_t run_installer2;  /* 0x034 */
-> > +    uint32_t rnd;             /* 0x038 */
-> > +    uint32_t unk7;            /* 0x03c */
-> > +    MACAddr mac_en0;          /* 0x040 */
-> > +    uint8_t pad1[2];
-> > +    MACAddr mac_en1;          /* 0x048 */
-> > +    uint8_t pad2[2];
-> > +    MACAddr mac_wifi0;        /* 0x050 */
-> > +    uint8_t pad3[2];
-> > +    MACAddr mac_bt0;          /* 0x058 */
-> > +    uint8_t pad4[2];
-> > +    uint8_t reserved[0xa0];   /* 0x060 */
-> > +    uint32_t cpu_ids[0x80];   /* 0x100 */
-> > +    uint8_t scratch[0x200];   /* 0x180 */
-> > +    char serial[32];          /* 0x380 */
-> > +    char unk8[32];            /* 0x3a0 */
-> > +    char model[32];           /* 0x3c0 */
-> > +    uint8_t unk9[32];         /* 0x3e0 */
-> > +    uint32_t unk10;           /* 0x400 */
-> > +    char soc_name[32];        /* 0x404 */
-> > +} VMAppleCfg;
-> > +
-> > +struct VMAppleCfgState {
-> > +    SysBusDevice parent_obj;
-> > +    VMAppleCfg cfg;
-> > +
-> > +    MemoryRegion mem;
-> > +    char *serial;
-> > +    char *model;
-> > +    char *soc_name;
-> > +};
-> > +
-> > +static void vmapple_cfg_reset(Object *obj, ResetType type)
-> > +{
-> > +    VMAppleCfgState *s =3D VMAPPLE_CFG(obj);
-> > +    VMAppleCfg *cfg;
-> > +
-> > +    cfg =3D memory_region_get_ram_ptr(&s->mem);
-> > +    memset(cfg, 0, VMAPPLE_CFG_SIZE);
-> > +    *cfg =3D s->cfg;
-> > +}
-> > +
-> > +static bool set_fixlen_property_or_error(char *restrict dst,
-> > +                                         const char *restrict src,
-> > +                                         size_t dst_size, Error **errp=
-,
-> > +                                         const char *property_name)
-> > +{
-> > +    size_t len;
-> > +
-> > +    len =3D g_strlcpy(dst, src, dst_size);
-> > +    if (len < dst_size) { /* len does not count nul terminator */
-> > +        return true;
-> > +    }
-> > +
-> > +    error_setg(errp,
-> > +               "Failed to set property '%s' on VMApple 'cfg' device: l=
-ength "
-> > +               "(%zu) exceeds maximum of %zu",
+> > I don=E2=80=99t think there=E2=80=99s any point making adjustments to t=
+he GTK code by
+> > guessing what might be needed if someone did fix that to work with macO=
+S
+> > at some point.
 >
-> Don't print the device name here as it will be automatically printed.
+> But there is a GitLab issue saying it "sometimes" crashes, implying it
+> works otherwise:
+> https://gitlab.com/qemu-project/qemu/-/issues/2539
 
-That's not what I'm seeing in tests. With code as-is, and setting an
-overly long value from create_cfg() in the vmapple machine type
-startup, I get the following output:
-
-qemu-system-aarch64: Failed to set property 'soc_name' on VMApple
-'cfg' device: length (50) exceeds maximum of 31
-
-I don't see any redundant mention of an object or property name. Of
-course, this error occurs during the cfg device's realize(), not
-immediately when setting the property. I can't see a built-in way to
-explicitly limit the length of a string property.
-
-> > +               property_name, len, dst_size - 1);
-> > +    return false;
-> > +}
-> > +
-> > +#define set_fixlen_property_or_return(dst_array, src, errp, property_n=
-ame) \
-> > +    do { \
-> > +        if (!set_fixlen_property_or_error((dst_array), (src), \
-> > +                                          ARRAY_SIZE(dst_array), \
-> > +                                          (errp), (property_name))) { =
-\
-> > +            return; \
-> > +        } \
-> > +    } while (0)
-> > +
-> > +static void vmapple_cfg_realize(DeviceState *dev, Error **errp)
-> > +{
-> > +    VMAppleCfgState *s =3D VMAPPLE_CFG(dev);
-> > +    uint32_t i;
-> > +
-> > +    if (!s->serial) {
-> > +        s->serial =3D g_strdup("1234");
-> > +    }
-> > +    if (!s->model) {
-> > +        s->model =3D g_strdup("VM0001");
-> > +    }
-> > +    if (!s->soc_name) {
-> > +        s->soc_name =3D g_strdup("Apple M1 (Virtual)");
-> > +    }
-> > +
-> > +    set_fixlen_property_or_return(s->cfg.serial, s->serial, errp, "ser=
-ial");
-> > +    set_fixlen_property_or_return(s->cfg.model, s->model, errp, "model=
-");
-> > +    set_fixlen_property_or_return(s->cfg.soc_name, s->soc_name, errp, =
-"soc_name");
-> > +    set_fixlen_property_or_return(s->cfg.unk8, "D/A", errp, "unk8");
-> > +    s->cfg.version =3D 2;
-> > +    s->cfg.unk1 =3D 1;
-> > +    s->cfg.unk2 =3D 1;
-> > +    s->cfg.unk3 =3D 0x20;
-> > +    s->cfg.unk4 =3D 0;
-> > +    s->cfg.unk5 =3D 1;
-> > +    s->cfg.unk6 =3D 1;
-> > +    s->cfg.unk7 =3D 0;
-> > +    s->cfg.unk10 =3D 1;
-> > +
-> > +    if (s->cfg.nr_cpus > ARRAY_SIZE(s->cfg.cpu_ids)) {
-> > +        error_setg(errp,
-> > +                   "Failed to create %u CPUs, vmapple machine supports=
- %zu max",
-> > +                   s->cfg.nr_cpus, ARRAY_SIZE(s->cfg.cpu_ids));
-> > +        return;
-> > +    }
-> > +    for (i =3D 0; i < s->cfg.nr_cpus; i++) {
-> > +        s->cfg.cpu_ids[i] =3D i;
-> > +    }
-> > +}
-> > +
-> > +static void vmapple_cfg_init(Object *obj)
-> > +{
-> > +    VMAppleCfgState *s =3D VMAPPLE_CFG(obj);
-> > +
-> > +    memory_region_init_ram(&s->mem, obj, "VMApple Config", VMAPPLE_CFG=
-_SIZE,
-> > +                           &error_fatal);
-> > +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mem);
-> > +}
-> > +
-> > +static Property vmapple_cfg_properties[] =3D {
-> > +    DEFINE_PROP_UINT32("nr-cpus", VMAppleCfgState, cfg.nr_cpus, 1),
-> > +    DEFINE_PROP_UINT64("ecid", VMAppleCfgState, cfg.ecid, 0),
-> > +    DEFINE_PROP_UINT64("ram-size", VMAppleCfgState, cfg.ram_size, 0),
-> > +    DEFINE_PROP_UINT32("run_installer1", VMAppleCfgState, cfg.run_inst=
-aller1, 0),
-> > +    DEFINE_PROP_UINT32("run_installer2", VMAppleCfgState, cfg.run_inst=
-aller2, 0),
-> > +    DEFINE_PROP_UINT32("rnd", VMAppleCfgState, cfg.rnd, 0),
-> > +    DEFINE_PROP_MACADDR("mac-en0", VMAppleCfgState, cfg.mac_en0),
-> > +    DEFINE_PROP_MACADDR("mac-en1", VMAppleCfgState, cfg.mac_en1),
-> > +    DEFINE_PROP_MACADDR("mac-wifi0", VMAppleCfgState, cfg.mac_wifi0),
-> > +    DEFINE_PROP_MACADDR("mac-bt0", VMAppleCfgState, cfg.mac_bt0),
-> > +    DEFINE_PROP_STRING("serial", VMAppleCfgState, serial),
-> > +    DEFINE_PROP_STRING("model", VMAppleCfgState, model),
-> > +    DEFINE_PROP_STRING("soc_name", VMAppleCfgState, soc_name),
-> > +    DEFINE_PROP_END_OF_LIST(),
-> > +};
-> > +
-> > +static void vmapple_cfg_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> > +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> > +
-> > +    dc->realize =3D vmapple_cfg_realize;
-> > +    dc->desc =3D "VMApple Configuration Region";
-> > +    device_class_set_props(dc, vmapple_cfg_properties);
-> > +    rc->phases.hold =3D vmapple_cfg_reset;
-> > +}
-> > +
-> > +static const TypeInfo vmapple_cfg_info =3D {
-> > +    .name          =3D TYPE_VMAPPLE_CFG,
-> > +    .parent        =3D TYPE_SYS_BUS_DEVICE,
-> > +    .instance_size =3D sizeof(VMAppleCfgState),
-> > +    .instance_init =3D vmapple_cfg_init,
-> > +    .class_init    =3D vmapple_cfg_class_init,
-> > +};
-> > +
-> > +static void vmapple_cfg_register_types(void)
-> > +{
-> > +    type_register_static(&vmapple_cfg_info);
-> > +}
-> > +
-> > +type_init(vmapple_cfg_register_types)
-> > diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
-> > index d4624713deb..64b78693a31 100644
-> > --- a/hw/vmapple/meson.build
-> > +++ b/hw/vmapple/meson.build
-> > @@ -1,2 +1,3 @@
-> >   system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c'))
-> >   system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
-> > +system_ss.add(when: 'CONFIG_VMAPPLE_CFG',  if_true: files('cfg.c'))
-> > diff --git a/include/hw/vmapple/vmapple.h b/include/hw/vmapple/vmapple.=
-h
-> > index 9090e9c5ac8..3bba59f5ec7 100644
-> > --- a/include/hw/vmapple/vmapple.h
-> > +++ b/include/hw/vmapple/vmapple.h
-> > @@ -16,4 +16,6 @@
-> >
-> >   #define TYPE_VMAPPLE_BDIF "vmapple-bdif"
-> >
-> > +#define TYPE_VMAPPLE_CFG "vmapple-cfg"
-> > +
-> >   #endif /* HW_VMAPPLE_VMAPPLE_H */
->
->
+I spent some time trying to get the GTK GUI working locally on macOS
+with no success (with or without the pvg/vmapple patch set) until I
+found various info online suggesting it was broken. But I guess I can
+add a qemu_main =3D NULL; line to gtk_display_init(). This will retain
+the existing behaviour both on other platforms (where qemu_main is
+NULL anyway) and if anyone does manage to use it on macOS.

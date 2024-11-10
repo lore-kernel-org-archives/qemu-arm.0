@@ -1,100 +1,99 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6255966njc;
-        Sun, 10 Nov 2024 14:00:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW/BhoZBedoKCz6DqBBTUAY1GOGOKhPgs8qoF3VCJFxE9MBH/mC8vEcIk9GvvCy/HBn+gsup/UXLS2luA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEHD3hMK25s6KZHxwENuE6ucEd71meKR+HiIbRQn8s1jnV78QqOCy+0D0G7kcvNeyhDZhK6
-X-Received: by 2002:a05:620a:2485:b0:7b1:1467:e40f with SMTP id af79cd13be357-7b331f2d0eamr1422701185a.62.1731276004939;
-        Sun, 10 Nov 2024 14:00:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731276004; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6256988njc;
+        Sun, 10 Nov 2024 14:01:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV8Fyp1tpOr37fizzoprqtHUgrzsMIJJZC9aUdJoBUDcGCPCBK0Guo94BE8p/SHDX70Pnb5ApGDlOMZOQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGx2bxtp+HuYQe9E1LfrwQ0P7jyH+eghrPUtF2sM44tBfqz/B3TisS9rhHKXDmXLwl8tuus
+X-Received: by 2002:a05:6122:8d1:b0:50d:34fe:fef0 with SMTP id 71dfb90a1353d-5140261518bmr8512217e0c.6.1731276109363;
+        Sun, 10 Nov 2024 14:01:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731276109; cv=none;
         d=google.com; s=arc-20240605;
-        b=ixe3ISb6tMlgDWB3oj20Gh0EpJ5VBD1kzaeUSyBuhkQ22KaEesQXlY4N2ekBUMZR2C
-         jmfZo0FMAFn/TF7xLLDdzNPsDCtyrv388lVQlew9N47QyMnVYBm22T6BCybFD0uLGTp2
-         zaZ/GzbqyUr+5Ks4PJd8yqkZgMvBvlW3U+4DcBGQKUvCfxRgEF1zUdZ6SK8hWJsuX4wS
-         PpusEFt9lK9xVSQhcJTAcIISrMQSaCbJOj8LioS8sIACGDt1n8+Y+H7/NIOF5wpC2SAW
-         wnPSch2OVrll5GuCC+2C/Vgzd79WAdNvUjm8fsPjsAzM+nY+Y13ZdMUH9BuVQmC5kSyg
-         xJRQ==
+        b=efbdR37gTcQgTFhL7awcwAEOKxOZTeHR4F826iAnhegfOxDxz7YXnxfq+xHDEILqg1
+         oRnpFioz4und2Ojh62oxwtn3x7yrGnLNmwxPaIP63YCvjT+YbpZ/ekE/sKgsOO6O1wp+
+         Rr/aizEAJQHd7cvgFzdAuFVHgMHkcSiiVBg4uCD1I6btlcccNQo2rkbiNAefiBp4yzn9
+         07MTYsMBiw6uugxAzQQNH5imR/1lOE52W64aKW1Qw3M3YKhhmKwnjdSJiksg9mUFu4ZB
+         ROMFYOjytDlRTD6yCc4gyc8TTSLBEp/JAxbCdduDXldKAbDQ04zIU5tRjIdbN5Hk8Ol7
+         I7wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=70j179MtiYe0c4HT2pP/NlYoc0OwO915XGbH80ZYZJE=;
-        fh=Ou4rrfN5kHYqYOq5Znga4PWFt7KWdMJHnUE7rUK3HRE=;
-        b=UsAjmDLBBDta7Jhtx1Ze454EbBR5ubM5gtW/HWY0Y2Jecd6s0yENjzghw2Zj9h6SNN
-         beQ5wOLP/u2Y5y2nDWx/6SiLVO+BPuhkUOQlXkbd/BBOuRtp6fcG7nh4VT+gWpv0Aysx
-         SMeP/Zyyt6FUr8Gc4BBYyked48W9Z+mxrDhNIvPuSSojOiWpGNuWkePt1BHvnY+WUUEp
-         hePbcjVXjvayMXEbxFDnLsY1tYMPdixjMPONYxIkilFXij5ly7/cMpzpGFJYQmGn4ois
-         chiY+Co2XE/fN/aB5ff6zOm4gAqeSj5fJs13GkX2SHZC+qFzyFuOj/FVvODkG94zupc1
-         8/yQ==;
+        bh=gAKddM5nbaKYo+JyrHvT71KySzTBNvFz5xcX/3O7Las=;
+        fh=kHyLu0fFKygxz0UsbTae2koSEaZbBzwTZygfmuMalKs=;
+        b=dLea1MnAdDmyUHF3Pa/YrQxzMHRUoFseIOo7lfW7wLvdwwpeyC06Mwgj60IdHOPik9
+         1S96B/RQex7zUFvTqyuC6q20Q1AJ9/XiNPUAvgLUQfK+dxF11qzCESmWl0hDe8H9COQY
+         WTmWmtXnP27Au3zzogPszc6SJORf2BObk3bCGybWizGR98G0ArCBrxoVdcwc9qYo7laq
+         9DfcVVnnSGTUKmgiYhVLHDO+PfPrTidKCrKrybh1iLVPk4afQ9SX0qYl6GpMkfZjNCnA
+         R8mhf/onpXxA+pSXBwwYirTCkyiJALHa9IhJ8F8/euYXEVkHQIfMPgRU02kIbvJXNxJg
+         PcPA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=I1TK4zl2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=1KpxwJEN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b32ad1f02bsi970766685a.597.2024.11.10.14.00.04
+        by mx.google.com with ESMTPS id 71dfb90a1353d-513f31647c6si2501525e0c.51.2024.11.10.14.01.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Nov 2024 14:00:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 10 Nov 2024 14:01:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=I1TK4zl2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=1KpxwJEN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tAFuU-0003wm-KO; Sun, 10 Nov 2024 16:55:54 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tAFuZ-00041D-Po; Sun, 10 Nov 2024 16:55:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tAFuS-0003um-Er
- for qemu-arm@nongnu.org; Sun, 10 Nov 2024 16:55:52 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ id 1tAFuX-000402-PE
+ for qemu-devel@nongnu.org; Sun, 10 Nov 2024 16:55:57 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tAFuP-00043P-On
- for qemu-arm@nongnu.org; Sun, 10 Nov 2024 16:55:52 -0500
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-5cb6ca2a776so5975385a12.0
- for <qemu-arm@nongnu.org>; Sun, 10 Nov 2024 13:55:49 -0800 (PST)
+ id 1tAFuV-00046A-Dx
+ for qemu-devel@nongnu.org; Sun, 10 Nov 2024 16:55:57 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-5c941623a5aso8750544a12.0
+ for <qemu-devel@nongnu.org>; Sun, 10 Nov 2024 13:55:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731275748; x=1731880548;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731275754; x=1731880554;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=70j179MtiYe0c4HT2pP/NlYoc0OwO915XGbH80ZYZJE=;
- b=I1TK4zl2ewISbns2uqo+FD7M7hKtFFT5GS7modWVdHozu5vPfz0JRNt4f+dvuBRqRQ
- 7H+xy1XWdPMxjJEzN2msM0nN+ubJP+A7DXLUqD87Gbj34GV5yd3mGYr8B2LG2syGn16E
- JQFoXHGNDjV/wbfqdg1FxcQgfE4U+qNjIz9Z+jaQdLlZtB66yqi2spdh8R1WQkObHSnj
- KKzdrnVc3LdF/eq0uTO1zVk7Al8HLrjUCn9/LP9LcscpgICkhqVaTtld9QsIPf85KjDA
- jCuvX55LWTNJu0DkLSDDty8imieMmrcTRs1vOIF7Nm/h+ywMCgjkEZGziCcwDT4+lkvz
- D7AQ==
+ bh=gAKddM5nbaKYo+JyrHvT71KySzTBNvFz5xcX/3O7Las=;
+ b=1KpxwJENpOPeKi6LHYF5RHAzk1L5uYB3XXjVMK4hZf9b4E+JmDWB0EHVS3NWEfJYIN
+ WHMRDi0mqy+kIXypY622ZBa1VhsOq43LlxzFRC6TzJkRMTwhEOmC7Y6fxbVNyTVO0lJS
+ jAFl0UqkNNyZsV7e2Mb3th6VUuGLjBctAksCSrXGV8lV8KIMiYaCZowecmOOgXiMNKOT
+ 4noqOMFEzmymwVbrp1stwZqOPnKrv/CYk+sq7zDFnPeFLzJtK8mY1dK0TpYIOPcbjYgi
+ 6KMCepdLAi/1jj3JPDqbKSPEHWiv+zp5PYUR5KN7nVIQeJChhrQXyHMRYfUKoFhlRV9D
+ tX5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731275748; x=1731880548;
+ d=1e100.net; s=20230601; t=1731275754; x=1731880554;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=70j179MtiYe0c4HT2pP/NlYoc0OwO915XGbH80ZYZJE=;
- b=nXNMkgtSCA9NdJk196oSjwBYaa0t6pwUhG1PjhokRuH9lwDNzb3G7GcraV2GWekCZI
- 5A2SGDDWpT0dQOd9RIT6vwowPChq+ES09PuhM1+jYwQEAESx91e664qUlQQRv47xCpiP
- zMh17DVYcE8WqVSanqbn0ahVl3SG19Qjmn/ZaVtviICrEvB7YZCGUoR4rkPzPxGvzbNt
- 2L2KSz2va2FJ9FwEZqe3QdtsPCzjIG662R6Sb2n/HS8NfJYtSRFcRX+k1/LHZGELq4HY
- aMK5TwEnfZCqD11xsJai4fuVC0Oxvn8qTZRBXPP1KK6Md+ojkLbbWz+3idJAroAF+gth
- owoA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWHguHGZTY5VNSms1vcINa+I5k1x99tcmc0z3dwDWFJsLrJ1/1AjzC+KVUgJrI6uf0ig/u1O6P99A==@nongnu.org
-X-Gm-Message-State: AOJu0Yz0DDDAzEv14/8trTkB+qLQAIQoedgztk6ludNm+4bt3JBgu8Xe
- R9+NVNQAlC91xfSp2tBpyzIyzjx8g1iRj8jNAJV7wMoUnrhwsvt9HS3Lh0wuCA==
-X-Received: by 2002:a17:907:3f82:b0:a9e:b08e:3de1 with SMTP id
- a640c23a62f3a-a9eeff44aa3mr930509066b.36.1731275748104; 
- Sun, 10 Nov 2024 13:55:48 -0800 (PST)
+ bh=gAKddM5nbaKYo+JyrHvT71KySzTBNvFz5xcX/3O7Las=;
+ b=W8gw5uGzOENvcnFqar/C4L0Gi5x2dUj6ea6IZWvN+tXfz2XuRScynnql4xeYeAqCsj
+ aCQTJ4l22b8wuY7LqsCmIpVjoBa06bw2kMKPnDP20eNyermVwt74v570AN/WGUBSG2tu
+ jREvdXBhEKc4bwh7Jm5VUUhmO8vXxaEtLp5R9ygKLV6yge3Cj/jmD/BuwAjyP8ddZpzm
+ KjxtK+4RtfSmjpDsYbRBia8VpVjYT6G6QdqtTRmjt8WSn64FvhDEBhjIVhGD0eNFqg8Q
+ dGviCF4fhOmkRF5MCCSArmlE6WDq1+aCFPNnUcQG0GC8+O3fQWtF0u/8JJSZXe8/Ou3U
+ 4zoQ==
+X-Gm-Message-State: AOJu0Ywu31P6z1XTOOophnd0vTolbIcTSDinZPqWVthu30mBliB0gA2K
+ H21KBgIrQS365suDOn8E8chxLLc1beMDE5G5VfXRLq4g2EbCLBac7Xlh63LZPeQnkh30ZhOvxdT
+ tGA==
+X-Received: by 2002:a17:907:3e29:b0:a9a:f19:8c2a with SMTP id
+ a640c23a62f3a-a9eec764f79mr1151822366b.6.1731275753914; 
+ Sun, 10 Nov 2024 13:55:53 -0800 (PST)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9ee0e2f731sm523715566b.189.2024.11.10.13.55.46
+ a640c23a62f3a-a9ee0e2f731sm523715566b.189.2024.11.10.13.55.52
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 10 Nov 2024 13:55:47 -0800 (PST)
+ Sun, 10 Nov 2024 13:55:53 -0800 (PST)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -108,18 +107,18 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, Alexander Graf <graf@amazon.com>
-Subject: [PATCH v9 11/16] hw/vmapple/bdif: Introduce vmapple backdoor interface
-Date: Sun, 10 Nov 2024 22:55:14 +0100
-Message-Id: <20241110215519.49150-12-phil@philjordan.eu>
+ qemu-riscv@nongnu.org
+Subject: [PATCH v9 14/16] hw/block/virtio-blk: Replaces request free function
+ with g_free
+Date: Sun, 10 Nov 2024 22:55:17 +0100
+Message-Id: <20241110215519.49150-15-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.3 (Apple Git-145)
 In-Reply-To: <20241110215519.49150-1-phil@philjordan.eu>
 References: <20241110215519.49150-1-phil@philjordan.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::536;
- envelope-from=phil@philjordan.eu; helo=mail-ed1-x536.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::52e;
+ envelope-from=phil@philjordan.eu; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -127,380 +126,245 @@ X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ax/zgwVZgbCO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 9DdcFHQBbHRP
 
-From: Alexander Graf <graf@amazon.com>
+The virtio_blk_free_request() function has been a 1-liner forwarding
+to g_free() for a while now. We may as well call g_free on the request
+pointer directly.
 
-The VMApple machine exposes AUX and ROOT block devices (as well as USB OTG
-emulation) via virtio-pci as well as a special, simple backdoor platform
-device.
-
-This patch implements this backdoor platform device to the best of my
-understanding. I left out any USB OTG parts; they're only needed for
-guest recovery and I don't understand the protocol yet.
-
-Signed-off-by: Alexander Graf <graf@amazon.com>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
+ hw/block/virtio-blk.c          | 43 +++++++++++++++-------------------
+ hw/vmapple/virtio-blk.c        |  2 +-
+ include/hw/virtio/virtio-blk.h |  1 -
+ 3 files changed, 20 insertions(+), 26 deletions(-)
 
-v4:
-
- * Moved most header code to .c, rest to vmapple.h
- * Better compliance with coding, naming, and formatting conventions.
-
-v8:
-
- * Replaced uses of cpu_physical_memory_read with dma_memory_read.
- * Replaced an instance of g_free with g_autofree.
-
-v9:
-
- * Replaced uses of cpu_physical_memory_write with dma_memory_write.
-
- hw/vmapple/Kconfig           |   3 +
- hw/vmapple/bdif.c            | 275 +++++++++++++++++++++++++++++++++++
- hw/vmapple/meson.build       |   1 +
- hw/vmapple/trace-events      |   5 +
- include/hw/vmapple/vmapple.h |   2 +
- 5 files changed, 286 insertions(+)
- create mode 100644 hw/vmapple/bdif.c
-
-diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
-index a73504d5999..68f88876eb9 100644
---- a/hw/vmapple/Kconfig
-+++ b/hw/vmapple/Kconfig
-@@ -1,3 +1,6 @@
- config VMAPPLE_AES
-     bool
+diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
+index 9e8337bb639..40d2c9bc591 100644
+--- a/hw/block/virtio-blk.c
++++ b/hw/block/virtio-blk.c
+@@ -50,11 +50,6 @@ static void virtio_blk_init_request(VirtIOBlock *s, VirtQueue *vq,
+     req->mr_next = NULL;
+ }
  
-+config VMAPPLE_BDIF
-+    bool
-+
-diff --git a/hw/vmapple/bdif.c b/hw/vmapple/bdif.c
-new file mode 100644
-index 00000000000..d7b6b7a25a4
---- /dev/null
-+++ b/hw/vmapple/bdif.c
-@@ -0,0 +1,275 @@
-+/*
-+ * VMApple Backdoor Interface
-+ *
-+ * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/units.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "trace.h"
-+#include "hw/vmapple/vmapple.h"
-+#include "hw/sysbus.h"
-+#include "hw/block/block.h"
-+#include "qapi/error.h"
-+#include "sysemu/block-backend.h"
-+#include "sysemu/dma.h"
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(VMAppleBdifState, VMAPPLE_BDIF)
-+
-+struct VMAppleBdifState {
-+    SysBusDevice parent_obj;
-+
-+    BlockBackend *aux;
-+    BlockBackend *root;
-+    MemoryRegion mmio;
-+};
-+
-+#define VMAPPLE_BDIF_SIZE   0x00200000
-+
-+#define REG_DEVID_MASK      0xffff0000
-+#define DEVID_ROOT          0x00000000
-+#define DEVID_AUX           0x00010000
-+#define DEVID_USB           0x00100000
-+
-+#define REG_STATUS          0x0
-+#define REG_STATUS_ACTIVE     BIT(0)
-+#define REG_CFG             0x4
-+#define REG_CFG_ACTIVE        BIT(1)
-+#define REG_UNK1            0x8
-+#define REG_BUSY            0x10
-+#define REG_BUSY_READY        BIT(0)
-+#define REG_UNK2            0x400
-+#define REG_CMD             0x408
-+#define REG_NEXT_DEVICE     0x420
-+#define REG_UNK3            0x434
-+
-+typedef struct VblkSector {
-+    uint32_t pad;
-+    uint32_t pad2;
-+    uint32_t sector;
-+    uint32_t pad3;
-+} VblkSector;
-+
-+typedef struct VblkReqCmd {
-+    uint64_t addr;
-+    uint32_t len;
-+    uint32_t flags;
-+} VblkReqCmd;
-+
-+typedef struct VblkReq {
-+    VblkReqCmd sector;
-+    VblkReqCmd data;
-+    VblkReqCmd retval;
-+} VblkReq;
-+
-+#define VBLK_DATA_FLAGS_READ  0x00030001
-+#define VBLK_DATA_FLAGS_WRITE 0x00010001
-+
-+#define VBLK_RET_SUCCESS  0
-+#define VBLK_RET_FAILED   1
-+
-+static uint64_t bdif_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    uint64_t ret = -1;
-+    uint64_t devid = offset & REG_DEVID_MASK;
-+
-+    switch (offset & ~REG_DEVID_MASK) {
-+    case REG_STATUS:
-+        ret = REG_STATUS_ACTIVE;
-+        break;
-+    case REG_CFG:
-+        ret = REG_CFG_ACTIVE;
-+        break;
-+    case REG_UNK1:
-+        ret = 0x420;
-+        break;
-+    case REG_BUSY:
-+        ret = REG_BUSY_READY;
-+        break;
-+    case REG_UNK2:
-+        ret = 0x1;
-+        break;
-+    case REG_UNK3:
-+        ret = 0x0;
-+        break;
-+    case REG_NEXT_DEVICE:
-+        switch (devid) {
-+        case DEVID_ROOT:
-+            ret = 0x8000000;
-+            break;
-+        case DEVID_AUX:
-+            ret = 0x10000;
-+            break;
-+        }
-+        break;
-+    }
-+
-+    trace_bdif_read(offset, size, ret);
-+    return ret;
-+}
-+
-+static void le2cpu_sector(VblkSector *sector)
-+{
-+    sector->sector = le32_to_cpu(sector->sector);
-+}
-+
-+static void le2cpu_reqcmd(VblkReqCmd *cmd)
-+{
-+    cmd->addr = le64_to_cpu(cmd->addr);
-+    cmd->len = le32_to_cpu(cmd->len);
-+    cmd->flags = le32_to_cpu(cmd->flags);
-+}
-+
-+static void le2cpu_req(VblkReq *req)
-+{
-+    le2cpu_reqcmd(&req->sector);
-+    le2cpu_reqcmd(&req->data);
-+    le2cpu_reqcmd(&req->retval);
-+}
-+
-+static void vblk_cmd(uint64_t devid, BlockBackend *blk, uint64_t gp_addr,
-+                     uint64_t static_off)
-+{
-+    VblkReq req;
-+    VblkSector sector;
-+    uint64_t off = 0;
-+    g_autofree char *buf = NULL;
-+    uint8_t ret = VBLK_RET_FAILED;
-+    int r;
-+    MemTxResult dma_result;
-+
-+    dma_result = dma_memory_read(&address_space_memory, gp_addr,
-+                                 &req, sizeof(req), MEMTXATTRS_UNSPECIFIED);
-+    if (dma_result != MEMTX_OK) {
-+        goto out;
-+    }
-+
-+    le2cpu_req(&req);
-+
-+    if (req.sector.len != sizeof(sector)) {
-+        goto out;
-+    }
-+
-+    /* Read the vblk command */
-+    dma_result = dma_memory_read(&address_space_memory, req.sector.addr,
-+                                 &sector, sizeof(sector),
-+                                 MEMTXATTRS_UNSPECIFIED);
-+    if (dma_result != MEMTX_OK) {
-+        goto out;
-+    }
-+    le2cpu_sector(&sector);
-+
-+    off = sector.sector * 512ULL + static_off;
-+
-+    /* Sanity check that we're not allocating bogus sizes */
-+    if (req.data.len > 128 * MiB) {
-+        goto out;
-+    }
-+
-+    buf = g_malloc0(req.data.len);
-+    switch (req.data.flags) {
-+    case VBLK_DATA_FLAGS_READ:
-+        r = blk_pread(blk, off, req.data.len, buf, 0);
-+        trace_bdif_vblk_read(devid == DEVID_AUX ? "aux" : "root",
-+                             req.data.addr, off, req.data.len, r);
-+        if (r < 0) {
-+            goto out;
-+        }
-+        dma_result = dma_memory_write(&address_space_memory, req.data.addr, buf,
-+                                      req.data.len, MEMTXATTRS_UNSPECIFIED);
-+        if (dma_result == MEMTX_OK) {
-+            ret = VBLK_RET_SUCCESS;
-+        }
-+        break;
-+    case VBLK_DATA_FLAGS_WRITE:
-+        /* Not needed, iBoot only reads */
-+        break;
-+    default:
-+        break;
-+    }
-+
-+out:
-+    dma_memory_write(&address_space_memory, req.retval.addr, &ret, 1,
-+                     MEMTXATTRS_UNSPECIFIED);
-+}
-+
-+static void bdif_write(void *opaque, hwaddr offset,
-+                       uint64_t value, unsigned size)
-+{
-+    VMAppleBdifState *s = opaque;
-+    uint64_t devid = (offset & REG_DEVID_MASK);
-+
-+    trace_bdif_write(offset, size, value);
-+
-+    switch (offset & ~REG_DEVID_MASK) {
-+    case REG_CMD:
-+        switch (devid) {
-+        case DEVID_ROOT:
-+            vblk_cmd(devid, s->root, value, 0x0);
-+            break;
-+        case DEVID_AUX:
-+            vblk_cmd(devid, s->aux, value, 0x0);
-+            break;
-+        }
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps bdif_ops = {
-+    .read = bdif_read,
-+    .write = bdif_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 8,
-+    },
-+    .impl = {
-+        .min_access_size = 1,
-+        .max_access_size = 8,
-+    },
-+};
-+
-+static void bdif_init(Object *obj)
-+{
-+    VMAppleBdifState *s = VMAPPLE_BDIF(obj);
-+
-+    memory_region_init_io(&s->mmio, obj, &bdif_ops, obj,
-+                         "VMApple Backdoor Interface", VMAPPLE_BDIF_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
-+}
-+
-+static Property bdif_properties[] = {
-+    DEFINE_PROP_DRIVE("aux", VMAppleBdifState, aux),
-+    DEFINE_PROP_DRIVE("root", VMAppleBdifState, root),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
-+static void bdif_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->desc = "VMApple Backdoor Interface";
-+    device_class_set_props(dc, bdif_properties);
-+}
-+
-+static const TypeInfo bdif_info = {
-+    .name          = TYPE_VMAPPLE_BDIF,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(VMAppleBdifState),
-+    .instance_init = bdif_init,
-+    .class_init    = bdif_class_init,
-+};
-+
-+static void bdif_register_types(void)
-+{
-+    type_register_static(&bdif_info);
-+}
-+
-+type_init(bdif_register_types)
-diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
-index bcd4dcb28d2..d4624713deb 100644
---- a/hw/vmapple/meson.build
-+++ b/hw/vmapple/meson.build
-@@ -1 +1,2 @@
- system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c'))
-+system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
-diff --git a/hw/vmapple/trace-events b/hw/vmapple/trace-events
-index fbbef40eac0..824f6595d35 100644
---- a/hw/vmapple/trace-events
-+++ b/hw/vmapple/trace-events
-@@ -14,3 +14,8 @@ aes_2_read(uint64_t offset, uint64_t res) "offset=0x%"PRIx64" res=0x%"PRIx64
- aes_2_write(uint64_t offset, uint64_t val) "offset=0x%"PRIx64" val=0x%"PRIx64
- aes_dump_data(const char *desc, const char *hex) "%s%s"
+-void virtio_blk_free_request(VirtIOBlockReq *req)
+-{
+-    g_free(req);
+-}
+-
+ void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status)
+ {
+     VirtIOBlock *s = req->dev;
+@@ -93,7 +88,7 @@ static int virtio_blk_handle_rw_error(VirtIOBlockReq *req, int error,
+         if (acct_failed) {
+             block_acct_failed(blk_get_stats(s->blk), &req->acct);
+         }
+-        virtio_blk_free_request(req);
++        g_free(req);
+     }
  
-+# bdif.c
-+bdif_read(uint64_t offset, uint32_t size, uint64_t value) "offset=0x%"PRIx64" size=0x%x value=0x%"PRIx64
-+bdif_write(uint64_t offset, uint32_t size, uint64_t value) "offset=0x%"PRIx64" size=0x%x value=0x%"PRIx64
-+bdif_vblk_read(const char *dev, uint64_t addr, uint64_t offset, uint32_t len, int r) "dev=%s addr=0x%"PRIx64" off=0x%"PRIx64" size=0x%x r=%d"
-+
-diff --git a/include/hw/vmapple/vmapple.h b/include/hw/vmapple/vmapple.h
-index 6762b6c869f..9090e9c5ac8 100644
---- a/include/hw/vmapple/vmapple.h
-+++ b/include/hw/vmapple/vmapple.h
-@@ -14,4 +14,6 @@
+     blk_error_action(s->blk, action, is_read, error);
+@@ -136,7 +131,7 @@ static void virtio_blk_rw_complete(void *opaque, int ret)
  
- #define TYPE_APPLE_AES "apple-aes"
+         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
+         block_acct_done(blk_get_stats(s->blk), &req->acct);
+-        virtio_blk_free_request(req);
++        g_free(req);
+     }
+ }
  
-+#define TYPE_VMAPPLE_BDIF "vmapple-bdif"
-+
- #endif /* HW_VMAPPLE_VMAPPLE_H */
+@@ -151,7 +146,7 @@ static void virtio_blk_flush_complete(void *opaque, int ret)
+ 
+     virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
+     block_acct_done(blk_get_stats(s->blk), &req->acct);
+-    virtio_blk_free_request(req);
++    g_free(req);
+ }
+ 
+ static void virtio_blk_discard_write_zeroes_complete(void *opaque, int ret)
+@@ -169,7 +164,7 @@ static void virtio_blk_discard_write_zeroes_complete(void *opaque, int ret)
+     if (is_write_zeroes) {
+         block_acct_done(blk_get_stats(s->blk), &req->acct);
+     }
+-    virtio_blk_free_request(req);
++    g_free(req);
+ }
+ 
+ static VirtIOBlockReq *virtio_blk_get_request(VirtIOBlock *s, VirtQueue *vq)
+@@ -214,7 +209,7 @@ static void virtio_blk_handle_scsi(VirtIOBlockReq *req)
+ 
+ fail:
+     virtio_blk_req_complete(req, status);
+-    virtio_blk_free_request(req);
++    g_free(req);
+ }
+ 
+ static inline void submit_requests(VirtIOBlock *s, MultiReqBuffer *mrb,
+@@ -612,7 +607,7 @@ static void virtio_blk_zone_report_complete(void *opaque, int ret)
+ 
+ out:
+     virtio_blk_req_complete(req, err_status);
+-    virtio_blk_free_request(req);
++    g_free(req);
+     g_free(data->zone_report_data.zones);
+     g_free(data);
+ }
+@@ -661,7 +656,7 @@ static void virtio_blk_handle_zone_report(VirtIOBlockReq *req,
+     return;
+ out:
+     virtio_blk_req_complete(req, err_status);
+-    virtio_blk_free_request(req);
++    g_free(req);
+ }
+ 
+ static void virtio_blk_zone_mgmt_complete(void *opaque, int ret)
+@@ -677,7 +672,7 @@ static void virtio_blk_zone_mgmt_complete(void *opaque, int ret)
+     }
+ 
+     virtio_blk_req_complete(req, err_status);
+-    virtio_blk_free_request(req);
++    g_free(req);
+ }
+ 
+ static int virtio_blk_handle_zone_mgmt(VirtIOBlockReq *req, BlockZoneOp op)
+@@ -719,7 +714,7 @@ static int virtio_blk_handle_zone_mgmt(VirtIOBlockReq *req, BlockZoneOp op)
+     return 0;
+ out:
+     virtio_blk_req_complete(req, err_status);
+-    virtio_blk_free_request(req);
++    g_free(req);
+     return err_status;
+ }
+ 
+@@ -750,7 +745,7 @@ static void virtio_blk_zone_append_complete(void *opaque, int ret)
+ 
+ out:
+     virtio_blk_req_complete(req, err_status);
+-    virtio_blk_free_request(req);
++    g_free(req);
+     g_free(data);
+ }
+ 
+@@ -788,7 +783,7 @@ static int virtio_blk_handle_zone_append(VirtIOBlockReq *req,
+ 
+ out:
+     virtio_blk_req_complete(req, err_status);
+-    virtio_blk_free_request(req);
++    g_free(req);
+     return err_status;
+ }
+ 
+@@ -855,7 +850,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
+             virtio_blk_req_complete(req, VIRTIO_BLK_S_IOERR);
+             block_acct_invalid(blk_get_stats(s->blk),
+                                is_write ? BLOCK_ACCT_WRITE : BLOCK_ACCT_READ);
+-            virtio_blk_free_request(req);
++            g_free(req);
+             return 0;
+         }
+ 
+@@ -911,7 +906,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
+                               VIRTIO_BLK_ID_BYTES));
+         iov_from_buf(in_iov, in_num, 0, serial, size);
+         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
+-        virtio_blk_free_request(req);
++        g_free(req);
+         break;
+     }
+     case VIRTIO_BLK_T_ZONE_APPEND & ~VIRTIO_BLK_T_OUT:
+@@ -943,7 +938,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
+         if (unlikely(!(type & VIRTIO_BLK_T_OUT) ||
+                      out_len > sizeof(dwz_hdr))) {
+             virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
+-            virtio_blk_free_request(req);
++            g_free(req);
+             return 0;
+         }
+ 
+@@ -960,7 +955,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
+                                                             is_write_zeroes);
+         if (err_status != VIRTIO_BLK_S_OK) {
+             virtio_blk_req_complete(req, err_status);
+-            virtio_blk_free_request(req);
++            g_free(req);
+         }
+ 
+         break;
+@@ -975,7 +970,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
+         if (!vbk->handle_unknown_request ||
+             !vbk->handle_unknown_request(req, mrb, type)) {
+             virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
+-            virtio_blk_free_request(req);
++            g_free(req);
+         }
+     }
+     }
+@@ -998,7 +993,7 @@ void virtio_blk_handle_vq(VirtIOBlock *s, VirtQueue *vq)
+         while ((req = virtio_blk_get_request(s, vq))) {
+             if (virtio_blk_handle_request(req, &mrb)) {
+                 virtqueue_detach_element(req->vq, &req->elem, 0);
+-                virtio_blk_free_request(req);
++                g_free(req);
+                 break;
+             }
+         }
+@@ -1048,7 +1043,7 @@ static void virtio_blk_dma_restart_bh(void *opaque)
+             while (req) {
+                 next = req->next;
+                 virtqueue_detach_element(req->vq, &req->elem, 0);
+-                virtio_blk_free_request(req);
++                g_free(req);
+                 req = next;
+             }
+             break;
+@@ -1131,7 +1126,7 @@ static void virtio_blk_reset(VirtIODevice *vdev)
+             /* No other threads can access req->vq here */
+             virtqueue_detach_element(req->vq, &req->elem, 0);
+ 
+-            virtio_blk_free_request(req);
++            g_free(req);
+         }
+     }
+ 
+diff --git a/hw/vmapple/virtio-blk.c b/hw/vmapple/virtio-blk.c
+index 16928d09685..40b33bbdac5 100644
+--- a/hw/vmapple/virtio-blk.c
++++ b/hw/vmapple/virtio-blk.c
+@@ -58,7 +58,7 @@ static bool vmapple_virtio_blk_handle_unknown_request(VirtIOBlockReq *req,
+         qemu_log_mask(LOG_UNIMP, "%s: Barrier requests are currently no-ops\n",
+                       __func__);
+         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
+-        virtio_blk_free_request(req);
++        g_free(req);
+         return true;
+     default:
+         return false;
+diff --git a/include/hw/virtio/virtio-blk.h b/include/hw/virtio/virtio-blk.h
+index 28d5046ea6c..dcb2c89aed5 100644
+--- a/include/hw/virtio/virtio-blk.h
++++ b/include/hw/virtio/virtio-blk.h
+@@ -109,7 +109,6 @@ typedef struct VirtIOBlkClass {
+ } VirtIOBlkClass;
+ 
+ void virtio_blk_handle_vq(VirtIOBlock *s, VirtQueue *vq);
+-void virtio_blk_free_request(VirtIOBlockReq *req);
+ void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status);
+ 
+ #endif
 -- 
 2.39.3 (Apple Git-145)
 

@@ -1,100 +1,100 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6255009njc;
-        Sun, 10 Nov 2024 13:56:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW+SFL4Xq5pCWYudQFksNw4uZn0KQd2iK565gtcgCQBQRcJOnffgtO3Z7vNKPHdngQcPrU7+z1GcOGk+Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHL6iqgG8vDZcNGX1RtTrDP+JyeqJtcZL+hZQWfSqQZUojvaTwMFptZK0PuwjxesfFv/oUY
-X-Received: by 2002:a05:622a:4a:b0:460:a802:961 with SMTP id d75a77b69052e-46309354cdcmr131468751cf.26.1731275803605;
-        Sun, 10 Nov 2024 13:56:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731275803; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6255056njc;
+        Sun, 10 Nov 2024 13:56:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX6ltOlrseV9Jg5uKb0pEHZLQ3G5wjJmj/fAhOY3Kbq3Fg+EwBoHUGW3XHNtL4mWRk27LPQ29YU/40M1g==@linaro.org
+X-Google-Smtp-Source: AGHT+IH4S9AlUeM9Y5I6UjoPmd29GX3tvGsMFUHaommBFeWoiN3+0MHKUhyOSO7guBQxGL+chT9o
+X-Received: by 2002:a05:6214:5707:b0:6cc:598:67a8 with SMTP id 6a1803df08f44-6d39e1e1a5bmr124412826d6.38.1731275815883;
+        Sun, 10 Nov 2024 13:56:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731275815; cv=none;
         d=google.com; s=arc-20240605;
-        b=RPJ4hu7vxIydb+khj9JTsmOBAOMETPZmjRAflwtNb3OF/KQnYKyb63qaUroQZpUaop
-         3lTPURT+H3hM/d84dyMF+VItF4gzAhqNtUAfmKxufq21ZNTUvYHGFLn6t0V0T457B6cA
-         WEWkbwOJLDmSDCPMaYbeC/mNUX0OZI3EhnVElfqUnZ3Clvz4h3sQbFuyzuzowHaFeZPO
-         orM9lHtIgFZbC54KXf6AgzM8VXwI1+5OFmfiJAYDeUjAlJr9nuNwH1XL3O/Qlo8VSwuy
-         B4KTO5aFqc5ES8jvEf2MQjAUAmWfnlihrSqrkqXhwK+dpWprrlCJ0kXcN3lzqPvxsMiQ
-         IR1g==
+        b=h7sLyLUxTAgHWtXEsx9OuwRG5jrlyB/J/K52Jai4g6oPOK7NjQXTHY9NB2psJW/y9z
+         P2fI4W3YFUINNHDyok1UeLGX2QOCAZ+gvCaRRsE6UNhflpxK+nzi73HYRWoklhR6YpwG
+         0VwXjf9kv+rNKRo2fxu9PGw3SyC/8g9sVfg7BkzS2994IPOX8FpLjEvCE9SLHaq8Sum8
+         dNVnPHHspoCdMHSEH+X4jorYcXlPAwSPTlls0s/01RGEibSXWgN1tF8yn55N9BAEKiOg
+         xgGezpyjKdpbHw9FiTThZXPB9ZKzyagN2yMRkVIvuXsr8sahUgN0v9RF0G9mS5c6Jmo4
+         e8gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=nlliDZRkq6nF/CfgBNP0Y9R7kDbpPfUDWRhrWJ91LQc=;
-        fh=JHrIIer8cEU9cPHKs0/Ny1Q0xMX5oB8T8kB7UKpPiL8=;
-        b=Q8XkjS/k9KOqVO53aLR1XO10amP2gQa3Drs5koI4TWWUQRCyGsXkoJAZSWi8U0NxpU
-         +YLQxdCSCTEs98WbFCcIPRgWrbc0/CdXtkunJHedD54QI2F6NfwWjlEub75By7Ad1G1b
-         3UCU0Ii/5oYe/rnQ0xUlkPaTR6HVcWwIKuOpc1S0ZX59HiD+juCd1ZLyER6vagme+h1+
-         enbtJJ+V5cxiCRGKoaNBXWG11N7NYbFXNjCZ3AX5qNDROdfqSCo7z1z68OYfDfgsxmiD
-         xNBhCTWOae/2IKBy+zGGVBd1ieHMcrC9gdVI73aNa+8Ja6SvrZ+nuvKR4WLWv+D32ba2
-         cyeg==;
+        bh=OIhXQnoj/9ouYAI2nP3PoRv/lz28A9hOVY2Snhhf/9M=;
+        fh=EON/uwfBjvI7jfpkIY4K5DULxoZ6EnfmBHl0OueVxWY=;
+        b=LLYB5wbkEM+0jI93/GvkKIsa1kLl4GRdMzzHfdCRK8MR9K4FZmMzX/iunJrj5YHXcB
+         xqWsPpHTCB1ZOHWGZlsIOr1QQd48bbWChwgOkMlEWiE/G5gqQnLikNQ5/0c+/yMbIqa5
+         CZTm1a+arY4yrEuX/tO6ElAJ7wjsqqVKdjEqZ/d5gbKU0HDyDKEuutGEcAwoG6Czuptn
+         BMFdhH6nzPVprdrXtPST3/jWlEYmfNo0BVtDHT6TdiCBm1ss12doAODxJiqciwu6+kCd
+         pGtVPSVBPvGdIdlUYwrhanT2lxF6aULqX3QAcPFG22WpN4vuACvZpTTz1hEGRrjV7Hbw
+         pFcQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=zvtkrc3+;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b="SeHQ5o/d";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ff40fb9asi91068461cf.12.2024.11.10.13.56.43
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d3966b22b1si95143076d6.480.2024.11.10.13.56.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Nov 2024 13:56:43 -0800 (PST)
+        Sun, 10 Nov 2024 13:56:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=zvtkrc3+;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b="SeHQ5o/d";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tAFue-00046f-I6; Sun, 10 Nov 2024 16:56:04 -0500
+	id 1tAFuL-0003l3-AJ; Sun, 10 Nov 2024 16:55:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tAFub-00042O-3N
- for qemu-arm@nongnu.org; Sun, 10 Nov 2024 16:56:01 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ id 1tAFuH-0003hB-BI
+ for qemu-arm@nongnu.org; Sun, 10 Nov 2024 16:55:42 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tAFuX-00046v-Q1
- for qemu-arm@nongnu.org; Sun, 10 Nov 2024 16:56:00 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-37d4ac91d97so3749248f8f.2
- for <qemu-arm@nongnu.org>; Sun, 10 Nov 2024 13:55:57 -0800 (PST)
+ id 1tAFuD-0003xD-Sg
+ for qemu-arm@nongnu.org; Sun, 10 Nov 2024 16:55:41 -0500
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-a99f3a5a44cso524766366b.3
+ for <qemu-arm@nongnu.org>; Sun, 10 Nov 2024 13:55:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731275756; x=1731880556;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731275736; x=1731880536;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nlliDZRkq6nF/CfgBNP0Y9R7kDbpPfUDWRhrWJ91LQc=;
- b=zvtkrc3+GROgc/qZPcFeEtt6TLl5IRn4MQpyL5YXSvn/NhfqfHQHbUD9iaNR5B020q
- lEtRd+6VBIQkBAlkmeCeB+YVEvlWdWl+iE4sLgGous3BOQ/D7NfsoV6NN9Ev1PC4lwEC
- 0TBXmveNj5J0GXYFHgbiJMK/DCP4om5Vks8rNxtEniJ4em72ryj0UePIrgNEeFfKuDUQ
- 2WPqKSMpoP8rh9C6/7NIdQJXlZqPoe2KMqII+ekVrnj6VtMRMOUMurNrtkKmSljKiRiH
- BUSIwVv6jtcezuSTx7c31u3n+MwxPiH1lPC37x4cG9Aovu2FNRlRRvIoKFWZPY4N16Kk
- 0yBw==
+ bh=OIhXQnoj/9ouYAI2nP3PoRv/lz28A9hOVY2Snhhf/9M=;
+ b=SeHQ5o/do/7angSREGqS65fkKuSyhDB9B3AIvEPyTCuOuw1KZOgz79nc5XeTGvLikV
+ 0bUGv+QPTcSRnWNCS4g83ik+b7CSifp/ccdyhZIHbtDWZSFmtk9mt85YwwI2z+2Puo9k
+ YrCWIK3AL6gwAf1M4SlZARKuf74aSUSYB0gE/yu8/4dov2Vzn0pJV1xlz3Y52ZGljP7A
+ yG6V5SA9XwOlBw2JQG7c2qMLLlFnopXdqFMA9TQ1hunBz9dBYWuHWFmkM00c9h9cHr+n
+ pIgpvRO5Mhxv7YWIGbkkvWfnPodTRb1Gk1J7dby1J/tP6wQO89u5ecee7d2WYiamn5Pv
+ 64oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731275756; x=1731880556;
+ d=1e100.net; s=20230601; t=1731275736; x=1731880536;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=nlliDZRkq6nF/CfgBNP0Y9R7kDbpPfUDWRhrWJ91LQc=;
- b=jkvFCnDrGp7ChRv7pXurcrNOzHh9eW6MiDmQvPHwQ7fvpej7OUJu7A4ivLYpG9nXof
- NIrDT9188jFg+NbhUJvvzgOSANPWKihGFQJvy4R/3vxJvEyKgOcae0SHdKaZX1i6lVnG
- iLIqIz6XeIetCBu5RGJd9oy4LQCH398Lz5dIgOF7RHkV7tUnOjaojXma9jXkw9ggNR4i
- A+KqQPWHYkK/D45s5a6Ajf8q9nx0lTatqfoEWzjZbsu8tYhOIqURPNuHWN2uVtdPMChF
- OLntdpuN78tEQVUassc66vqsmdlKnciJJZss0uk1fnVRqbPz5LrS+Td/dslv8eIE6IK8
- bEww==
+ bh=OIhXQnoj/9ouYAI2nP3PoRv/lz28A9hOVY2Snhhf/9M=;
+ b=jSczrPHI/r2UV11gSJOTpCQwXtKMB2DHXkHPe3fEOdgwg4H6SOmni2Gwit9/7y4pzk
+ a/nymg6h98XZxbRboyGyK6MabA6PXrXyYOzHqBqYLIM3n3BD0tvJGEPnTJDi0/lBvUNO
+ 8kd0S6nw0bD/IxwYOXnIZg6Rai7O3d8XmQKLEDd2cBF9E42BIw3jCcLX690cURyZfzVj
+ PJbrxqWZGz5/0lOqnx/g2l63Le2Zq+fVkaYpEMJ1K9Vgslx5wz3NJATGtV2v+a17i+Lq
+ cMfgLUVNtFNF9uh5Z1YKPiY/J67NQPypqDYgHUm4hJ46ttSU+vnkbA5bp6t02vKnGdL2
+ RnhA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU53S8vLK+kc3sDOko6JIgRI4wObt/ih1QNZt8ecvXQCUHhYbMMoBPIMst3Yuk2oC82O1WCVqZyYQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzvHGKlEYx6l9fs0kX3AUIrrJqCUeoJHqkrmtlja+zpiXKdM1wn
- yX1IgHLAB3bdc3K47wAxw8hSA1sN4UZ7PR47hbsc7UCQO83FG0XXAR6UMFUn8g==
-X-Received: by 2002:a05:6000:20c3:b0:381:f603:ff62 with SMTP id
- ffacd0b85a97d-381f603ff95mr6162291f8f.20.1731275756098; 
- Sun, 10 Nov 2024 13:55:56 -0800 (PST)
+ AJvYcCW1CEhtry7sZugJf8Xa31+qpP6vrODhlH5oCPPuHgKzI0TCBKa88r5YmGGhZNjC8A6Ie/1B5d7TGA==@nongnu.org
+X-Gm-Message-State: AOJu0Yziw2RfdW9AzCBYahC8N3N8f0etUU91f2AM9Vk4W2mYqNfwyM23
+ 8hl3pT0mARdjxYVq3/Aq9L+Gtm0SAy2gqYf91VhuqkLrS+jsx55dNbswgNOJ9A==
+X-Received: by 2002:a17:907:c09:b0:a9e:45e6:42cb with SMTP id
+ a640c23a62f3a-a9eefee4bddmr1033790966b.18.1731275735589; 
+ Sun, 10 Nov 2024 13:55:35 -0800 (PST)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9ee0e2f731sm523715566b.189.2024.11.10.13.55.54
+ a640c23a62f3a-a9ee0e2f731sm523715566b.189.2024.11.10.13.55.33
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 10 Nov 2024 13:55:55 -0800 (PST)
+ Sun, 10 Nov 2024 13:55:35 -0800 (PST)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -108,18 +108,19 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, Alexander Graf <graf@amazon.com>
-Subject: [PATCH v9 15/16] hw/vmapple/vmapple: Add vmapple machine type
-Date: Sun, 10 Nov 2024 22:55:18 +0100
-Message-Id: <20241110215519.49150-16-phil@philjordan.eu>
+ qemu-riscv@nongnu.org, Roman Bolshakov <rbolshakov@ddn.com>
+Subject: [PATCH v9 05/16] MAINTAINERS: Add myself as maintainer for apple-gfx,
+ reviewer for HVF
+Date: Sun, 10 Nov 2024 22:55:08 +0100
+Message-Id: <20241110215519.49150-6-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.3 (Apple Git-145)
 In-Reply-To: <20241110215519.49150-1-phil@philjordan.eu>
 References: <20241110215519.49150-1-phil@philjordan.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::42b;
- envelope-from=phil@philjordan.eu; helo=mail-wr1-x42b.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::635;
+ envelope-from=phil@philjordan.eu; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -140,884 +141,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ycspE3PsCuav
+X-TUID: 2i5cok17kfXW
 
-From: Alexander Graf <graf@amazon.com>
+I'm happy to take responsibility for the macOS PV graphics code. As
+HVF patches don't seem to get much attention at the moment, I'm also
+adding myself as designated reviewer for HVF and x86 HVF to try and
+improve that.
 
-Apple defines a new "vmapple" machine type as part of its proprietary
-macOS Virtualization.Framework vmm. This machine type is similar to the
-virt one, but with subtle differences in base devices, a few special
-vmapple device additions and a vastly different boot chain.
+I anticipate that the resulting workload should be covered by the
+funding I'm receiving for improving Qemu in combination with macOS. As
+of right now this runs out at the end of 2024; I expect the workload on
+apple-gfx should be relatively minor and manageable in my spare time
+beyond that. I may have to remove myself from more general HVF duties
+once the contract runs out if it's more than I can manage.
 
-This patch reimplements this machine type in QEMU. To use it, you
-have to have a readily installed version of macOS for VMApple,
-run on macOS with -accel hvf, pass the Virtualization.Framework
-boot rom (AVPBooter) in via -bios, pass the aux and root volume as pflash
-and pass aux and root volume as virtio drives. In addition, you also
-need to find the machine UUID and pass that as -M vmapple,uuid= parameter:
-
-$ qemu-system-aarch64 -accel hvf -M vmapple,uuid=0x1234 -m 4G \
-    -bios /System/Library/Frameworks/Virtualization.framework/Versions/A/Resources/AVPBooter.vmapple2.bin
-    -drive file=aux,if=pflash,format=raw \
-    -drive file=root,if=pflash,format=raw \
-    -drive file=aux,if=none,id=aux,format=raw \
-    -device vmapple-virtio-aux,drive=aux \
-    -drive file=root,if=none,id=root,format=raw \
-    -device vmapple-virtio-root,drive=root
-
-With all these in place, you should be able to see macOS booting
-successfully.
-
-Known issues:
- - Keyboard and mouse/tablet input is laggy. The reason for this is
-   either that macOS's XHCI driver is broken when the device/platform
-   does not support MSI/MSI-X, or there's some unfortunate interplay
-   with Qemu's XHCI implementation in this scenario.
- - Currently only macOS 12 guests are supported. The boot process for
-   13+ will need further investigation and adjustment.
-
-Signed-off-by: Alexander Graf <graf@amazon.com>
-Co-authored-by: Phil Dennis-Jordan <phil@philjordan.eu>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+Reviewed-by: Roman Bolshakov <rbolshakov@ddn.com>
 ---
-
-v3:
- * Rebased on latest upstream, updated affinity and NIC creation
-   API usage
- * Included Apple-variant virtio-blk in build dependency
- * Updated API usage for setting 'redist-region-count' array-typed property on GIC.
- * Switched from virtio HID devices (for which macOS 12 does not contain
-   drivers) to an XHCI USB controller and USB HID devices.
-
-v4:
- * Fixups for v4 changes to the other patches in the set.
- * Corrected the assert macro to use
- * Removed superfluous endian conversions corresponding to cfg's.
- * Init error handling improvement.
- * No need to select CPU type on TCG, as only HVF is supported.
- * Machine type version bumped to 9.2
- * #include order improved
-
-v5:
- * Fixed memory reservation for ecam alias region.
- * Better error handling setting properties on devices.
- * Simplified the machine ECID/UUID extraction script and actually created a
-   file for it rather than quoting its code in documentation.
-
-v7:
- * Tiny error handling fix, un-inlined function.
-
-v8:
- * Use object_property_add_uint64_ptr rather than defining custom UUID
-   property get/set functions.
-
-v9:
- * Documentation improvements
- * Fixed variable name and struct field used during pvpanic device creation.
-
-
- MAINTAINERS                 |   1 +
- contrib/vmapple/uuid.sh     |   9 +
- docs/system/arm/vmapple.rst |  63 ++++
- docs/system/target-arm.rst  |   1 +
- hw/vmapple/Kconfig          |  20 ++
- hw/vmapple/meson.build      |   1 +
- hw/vmapple/vmapple.c        | 639 ++++++++++++++++++++++++++++++++++++
- 7 files changed, 734 insertions(+)
- create mode 100755 contrib/vmapple/uuid.sh
- create mode 100644 docs/system/arm/vmapple.rst
- create mode 100644 hw/vmapple/vmapple.c
+ MAINTAINERS | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index c6b41b983bf..031754b1e13 100644
+index 095420f8b0e..b28267b6286 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -2768,6 +2768,7 @@ R: Phil Dennis-Jordan <phil@philjordan.eu>
+@@ -507,6 +507,7 @@ F: target/arm/hvf/
+ X86 HVF CPUs
+ M: Cameron Esfahani <dirty@apple.com>
+ M: Roman Bolshakov <rbolshakov@ddn.com>
++R: Phil Dennis-Jordan <phil@philjordan.eu>
+ W: https://wiki.qemu.org/Features/HVF
  S: Maintained
- F: hw/vmapple/*
- F: include/hw/vmapple/*
-+F: docs/system/arm/vmapple.rst
+ F: target/i386/hvf/
+@@ -514,6 +515,7 @@ F: target/i386/hvf/
+ HVF
+ M: Cameron Esfahani <dirty@apple.com>
+ M: Roman Bolshakov <rbolshakov@ddn.com>
++R: Phil Dennis-Jordan <phil@philjordan.eu>
+ W: https://wiki.qemu.org/Features/HVF
+ S: Maintained
+ F: accel/hvf/
+@@ -2609,6 +2611,11 @@ F: hw/display/edid*
+ F: include/hw/display/edid.h
+ F: qemu-edid.c
  
- Subsystems
- ----------
-diff --git a/contrib/vmapple/uuid.sh b/contrib/vmapple/uuid.sh
-new file mode 100755
-index 00000000000..956e8c3afed
---- /dev/null
-+++ b/contrib/vmapple/uuid.sh
-@@ -0,0 +1,9 @@
-+#!/bin/sh
-+# Used for converting a guest provisioned using Virtualization.framework
-+# for use with the QEMU 'vmapple' aarch64 machine type.
-+#
-+# Extracts the Machine UUID from Virtualization.framework VM JSON file.
-+# (as produced by 'macosvm', passed as command line argument)
-+
-+plutil -extract machineId raw "$1" | base64 -d | plutil -extract ECID raw -
-+
-diff --git a/docs/system/arm/vmapple.rst b/docs/system/arm/vmapple.rst
-new file mode 100644
-index 00000000000..67942474b93
---- /dev/null
-+++ b/docs/system/arm/vmapple.rst
-@@ -0,0 +1,63 @@
-+VMApple machine emulation
-+========================================================================================
-+
-+VMApple is the device model that the macOS built-in hypervisor called "Virtualization.framework"
-+exposes to Apple Silicon macOS guests. The "vmapple" machine model in QEMU implements the same
-+device model, but does not use any code from Virtualization.Framework.
-+
-+Prerequisites
-+-------------
-+
-+To run the vmapple machine model, you need to
-+
-+ * Run on Apple Silicon
-+ * Run on macOS 12.0 or above
-+ * Have an already installed copy of a Virtualization.Framework macOS 12 virtual
-+   machine. Note that newer versions than 12.x are currently NOT supported on
-+   the guest side. I will assume that you installed it using the
-+   `macosvm <https://github.com/s-u/macosvm>` CLI.
-+
-+First, we need to extract the UUID from the virtual machine that you installed. You can do this
-+by running the shell script in contrib/vmapple/uuid.sh on the macosvm.json file.
-+
-+.. code-block:: bash
-+  :caption: uuid.sh script to extract the UUID from a macosvm.json file
-+
-+  $ contrib/vmapple/uuid.sh "path/to/macosvm.json"
-+
-+Now we also need to trim the aux partition. It contains metadata that we can just discard:
-+
-+.. code-block:: bash
-+  :caption: Command to trim the aux file
-+
-+  $ dd if="aux.img" of="aux.img.trimmed" bs=$(( 0x4000 )) skip=1
-+
-+How to run
-+----------
-+
-+Then, we can launch QEMU with the Virtualization.Framework pre-boot environment and the readily
-+installed target disk images. I recommend to port forward the VM's ssh and vnc ports to the host
-+to get better interactive access into the target system:
-+
-+.. code-block:: bash
-+  :caption: Example execution command line
-+
-+  $ UUID=$(uuid.sh macosvm.json)
-+  $ AVPBOOTER=/System/Library/Frameworks/Virtualization.framework/Resources/AVPBooter.vmapple2.bin
-+  $ AUX=aux.img.trimmed
-+  $ DISK=disk.img
-+  $ qemu-system-aarch64 \
-+       -serial mon:stdio \
-+       -m 4G \
-+       -accel hvf \
-+       -M vmapple,uuid="$UUID" \
-+       -bios "$AVPBOOTER" \
-+       -drive file="$AUX",if=pflash,format=raw \
-+       -drive file="$DISK",if=pflash,format=raw \
-+       -drive file="$AUX",if=none,id=aux,format=raw \
-+       -drive file="$DISK",if=none,id=root,format=raw \
-+       -device vmapple-virtio-aux,drive=aux \
-+       -device vmapple-virtio-root,drive=root \
-+       -netdev user,id=net0,ipv6=off,hostfwd=tcp::2222-:22,hostfwd=tcp::5901-:5900 \
-+       -device virtio-net-pci,netdev=net0
-+
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 9aaa9c414c9..3426f79100b 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -102,6 +102,7 @@ Board-specific documentation
-    arm/stellaris
-    arm/stm32
-    arm/virt
-+   arm/vmapple
-    arm/xenpvh
-    arm/xlnx-versal-virt
-    arm/xlnx-zynq
-diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
-index bcd1be63e3c..6a4c4a7fa2e 100644
---- a/hw/vmapple/Kconfig
-+++ b/hw/vmapple/Kconfig
-@@ -10,3 +10,23 @@ config VMAPPLE_CFG
- config VMAPPLE_VIRTIO_BLK
-     bool
- 
-+config VMAPPLE
-+    bool
-+    depends on ARM
-+    depends on HVF
-+    default y if ARM
-+    imply PCI_DEVICES
-+    select ARM_GIC
-+    select PLATFORM_BUS
-+    select PCI_EXPRESS
-+    select PCI_EXPRESS_GENERIC_BRIDGE
-+    select PL011 # UART
-+    select PL031 # RTC
-+    select PL061 # GPIO
-+    select GPIO_PWR
-+    select PVPANIC_MMIO
-+    select VMAPPLE_AES
-+    select VMAPPLE_BDIF
-+    select VMAPPLE_CFG
-+    select MAC_PVG_MMIO
-+    select VMAPPLE_VIRTIO_BLK
-diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
-index bf17cf906c9..e572f7d5602 100644
---- a/hw/vmapple/meson.build
-+++ b/hw/vmapple/meson.build
-@@ -2,3 +2,4 @@ system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c'))
- system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
- system_ss.add(when: 'CONFIG_VMAPPLE_CFG',  if_true: files('cfg.c'))
- system_ss.add(when: 'CONFIG_VMAPPLE_VIRTIO_BLK',  if_true: files('virtio-blk.c'))
-+specific_ss.add(when: 'CONFIG_VMAPPLE',     if_true: files('vmapple.c'))
-diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
-new file mode 100644
-index 00000000000..d4c74db4e3d
---- /dev/null
-+++ b/hw/vmapple/vmapple.c
-@@ -0,0 +1,639 @@
-+/*
-+ * VMApple machine emulation
-+ *
-+ * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or later.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * VMApple is the device model that the macOS built-in hypervisor called
-+ * "Virtualization.framework" exposes to Apple Silicon macOS guests. The
-+ * machine model in this file implements the same device model in QEMU, but
-+ * does not use any code from Virtualization.Framework.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/bitops.h"
-+#include "qemu/datadir.h"
-+#include "qemu/error-report.h"
-+#include "qemu/guest-random.h"
-+#include "qemu/help-texts.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/option.h"
-+#include "qemu/units.h"
-+#include "monitor/qdev.h"
-+#include "hw/boards.h"
-+#include "hw/irq.h"
-+#include "hw/loader.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/sysbus.h"
-+#include "hw/usb.h"
-+#include "hw/arm/boot.h"
-+#include "hw/arm/primecell.h"
-+#include "hw/char/pl011.h"
-+#include "hw/intc/arm_gic.h"
-+#include "hw/intc/arm_gicv3_common.h"
-+#include "hw/misc/pvpanic.h"
-+#include "hw/pci-host/gpex.h"
-+#include "hw/usb/xhci.h"
-+#include "hw/virtio/virtio-pci.h"
-+#include "hw/vmapple/vmapple.h"
-+#include "net/net.h"
-+#include "qapi/error.h"
-+#include "qapi/qmp/qlist.h"
-+#include "qapi/visitor.h"
-+#include "qapi/qapi-visit-common.h"
-+#include "standard-headers/linux/input.h"
-+#include "sysemu/hvf.h"
-+#include "sysemu/kvm.h"
-+#include "sysemu/reset.h"
-+#include "sysemu/runstate.h"
-+#include "sysemu/sysemu.h"
-+#include "target/arm/internals.h"
-+#include "target/arm/kvm_arm.h"
-+
-+struct VMAppleMachineClass {
-+    MachineClass parent;
-+};
-+
-+struct VMAppleMachineState {
-+    MachineState parent;
-+
-+    Notifier machine_done;
-+    struct arm_boot_info bootinfo;
-+    MemMapEntry *memmap;
-+    const int *irqmap;
-+    DeviceState *gic;
-+    DeviceState *cfg;
-+    DeviceState *pvpanic;
-+    Notifier powerdown_notifier;
-+    PCIBus *bus;
-+    MemoryRegion fw_mr;
-+    MemoryRegion ecam_alias;
-+    uint64_t uuid;
-+};
-+
-+#define DEFINE_VMAPPLE_MACHINE_LATEST(major, minor, latest) \
-+    static void vmapple##major##_##minor##_class_init(ObjectClass *oc, \
-+                                                    void *data) \
-+    { \
-+        MachineClass *mc = MACHINE_CLASS(oc); \
-+        vmapple_machine_##major##_##minor##_options(mc); \
-+        mc->desc = "QEMU " # major "." # minor " Apple Virtual Machine"; \
-+        if (latest) { \
-+            mc->alias = "vmapple"; \
-+        } \
-+    } \
-+    static const TypeInfo machvmapple##major##_##minor##_info = { \
-+        .name = MACHINE_TYPE_NAME("vmapple-" # major "." # minor), \
-+        .parent = TYPE_VMAPPLE_MACHINE, \
-+        .class_init = vmapple##major##_##minor##_class_init, \
-+    }; \
-+    static void machvmapple_machine_##major##_##minor##_init(void) \
-+    { \
-+        type_register_static(&machvmapple##major##_##minor##_info); \
-+    } \
-+    type_init(machvmapple_machine_##major##_##minor##_init);
-+
-+#define DEFINE_VMAPPLE_MACHINE_AS_LATEST(major, minor) \
-+    DEFINE_VMAPPLE_MACHINE_LATEST(major, minor, true)
-+#define DEFINE_VMAPPLE_MACHINE(major, minor) \
-+    DEFINE_VMAPPLE_MACHINE_LATEST(major, minor, false)
-+
-+#define TYPE_VMAPPLE_MACHINE   MACHINE_TYPE_NAME("vmapple")
-+OBJECT_DECLARE_TYPE(VMAppleMachineState, VMAppleMachineClass, VMAPPLE_MACHINE)
-+
-+/* Number of external interrupt lines to configure the GIC with */
-+#define NUM_IRQS 256
-+
-+enum {
-+    VMAPPLE_FIRMWARE,
-+    VMAPPLE_CONFIG,
-+    VMAPPLE_MEM,
-+    VMAPPLE_GIC_DIST,
-+    VMAPPLE_GIC_REDIST,
-+    VMAPPLE_UART,
-+    VMAPPLE_RTC,
-+    VMAPPLE_PCIE,
-+    VMAPPLE_PCIE_MMIO,
-+    VMAPPLE_PCIE_ECAM,
-+    VMAPPLE_GPIO,
-+    VMAPPLE_PVPANIC,
-+    VMAPPLE_APV_GFX,
-+    VMAPPLE_APV_IOSFC,
-+    VMAPPLE_AES_1,
-+    VMAPPLE_AES_2,
-+    VMAPPLE_BDOOR,
-+    VMAPPLE_MEMMAP_LAST,
-+};
-+
-+static MemMapEntry memmap[] = {
-+    [VMAPPLE_FIRMWARE] =           { 0x00100000, 0x00100000 },
-+    [VMAPPLE_CONFIG] =             { 0x00400000, 0x00010000 },
-+
-+    [VMAPPLE_GIC_DIST] =           { 0x10000000, 0x00010000 },
-+    [VMAPPLE_GIC_REDIST] =         { 0x10010000, 0x00400000 },
-+
-+    [VMAPPLE_UART] =               { 0x20010000, 0x00010000 },
-+    [VMAPPLE_RTC] =                { 0x20050000, 0x00001000 },
-+    [VMAPPLE_GPIO] =               { 0x20060000, 0x00001000 },
-+    [VMAPPLE_PVPANIC] =            { 0x20070000, 0x00000002 },
-+    [VMAPPLE_BDOOR] =              { 0x30000000, 0x00200000 },
-+    [VMAPPLE_APV_GFX] =            { 0x30200000, 0x00010000 },
-+    [VMAPPLE_APV_IOSFC] =          { 0x30210000, 0x00010000 },
-+    [VMAPPLE_AES_1] =              { 0x30220000, 0x00004000 },
-+    [VMAPPLE_AES_2] =              { 0x30230000, 0x00004000 },
-+    [VMAPPLE_PCIE_ECAM] =          { 0x40000000, 0x10000000 },
-+    [VMAPPLE_PCIE_MMIO] =          { 0x50000000, 0x1fff0000 },
-+
-+    /* Actual RAM size depends on configuration */
-+    [VMAPPLE_MEM] =                { 0x70000000ULL, GiB},
-+};
-+
-+static const int irqmap[] = {
-+    [VMAPPLE_UART] = 1,
-+    [VMAPPLE_RTC] = 2,
-+    [VMAPPLE_GPIO] = 0x5,
-+    [VMAPPLE_APV_IOSFC] = 0x10,
-+    [VMAPPLE_APV_GFX] = 0x11,
-+    [VMAPPLE_AES_1] = 0x12,
-+    [VMAPPLE_PCIE] = 0x20,
-+};
-+
-+#define GPEX_NUM_IRQS 16
-+
-+static void create_bdif(VMAppleMachineState *vms, MemoryRegion *mem)
-+{
-+    DeviceState *bdif;
-+    SysBusDevice *bdif_sb;
-+    DriveInfo *di_aux = drive_get(IF_PFLASH, 0, 0);
-+    DriveInfo *di_root = drive_get(IF_PFLASH, 0, 1);
-+
-+    if (!di_aux) {
-+        error_report("No AUX device. Please specify one as pflash drive.");
-+        exit(1);
-+    }
-+
-+    if (!di_root) {
-+        /* Fall back to the first IF_VIRTIO device as root device */
-+        di_root = drive_get(IF_VIRTIO, 0, 0);
-+    }
-+
-+    if (!di_root) {
-+        error_report("No root device. Please specify one as virtio drive.");
-+        exit(1);
-+    }
-+
-+    /* PV backdoor device */
-+    bdif = qdev_new(TYPE_VMAPPLE_BDIF);
-+    bdif_sb = SYS_BUS_DEVICE(bdif);
-+    sysbus_mmio_map(bdif_sb, 0, vms->memmap[VMAPPLE_BDOOR].base);
-+
-+    qdev_prop_set_drive(DEVICE(bdif), "aux", blk_by_legacy_dinfo(di_aux));
-+    qdev_prop_set_drive(DEVICE(bdif), "root", blk_by_legacy_dinfo(di_root));
-+
-+    sysbus_realize_and_unref(bdif_sb, &error_fatal);
-+}
-+
-+static void create_pvpanic(VMAppleMachineState *vms, MemoryRegion *mem)
-+{
-+    SysBusDevice *pvpanic;
-+
-+    vms->pvpanic = qdev_new(TYPE_PVPANIC_MMIO_DEVICE);
-+    pvpanic = SYS_BUS_DEVICE(vms->pvpanic);
-+    sysbus_mmio_map(pvpanic, 0, vms->memmap[VMAPPLE_PVPANIC].base);
-+
-+    sysbus_realize_and_unref(pvpanic, &error_fatal);
-+}
-+
-+static void create_cfg(VMAppleMachineState *vms, MemoryRegion *mem)
-+{
-+    SysBusDevice *cfg;
-+    MachineState *machine = MACHINE(vms);
-+    uint32_t rnd = 1;
-+
-+    vms->cfg = qdev_new(TYPE_VMAPPLE_CFG);
-+    cfg = SYS_BUS_DEVICE(vms->cfg);
-+    sysbus_mmio_map(cfg, 0, vms->memmap[VMAPPLE_CONFIG].base);
-+
-+    qemu_guest_getrandom_nofail(&rnd, sizeof(rnd));
-+
-+    qdev_prop_set_uint32(vms->cfg, "nr-cpus", machine->smp.cpus);
-+    qdev_prop_set_uint64(vms->cfg, "ecid", vms->uuid);
-+    qdev_prop_set_uint64(vms->cfg, "ram-size", machine->ram_size);
-+    qdev_prop_set_uint32(vms->cfg, "rnd", rnd);
-+
-+    sysbus_realize_and_unref(cfg, &error_fatal);
-+}
-+
-+static void create_gfx(VMAppleMachineState *vms, MemoryRegion *mem)
-+{
-+    int irq_gfx = vms->irqmap[VMAPPLE_APV_GFX];
-+    int irq_iosfc = vms->irqmap[VMAPPLE_APV_IOSFC];
-+    SysBusDevice *gfx;
-+
-+    gfx = SYS_BUS_DEVICE(qdev_new("apple-gfx-mmio"));
-+    sysbus_mmio_map(gfx, 0, vms->memmap[VMAPPLE_APV_GFX].base);
-+    sysbus_mmio_map(gfx, 1, vms->memmap[VMAPPLE_APV_IOSFC].base);
-+    sysbus_connect_irq(gfx, 0, qdev_get_gpio_in(vms->gic, irq_gfx));
-+    sysbus_connect_irq(gfx, 1, qdev_get_gpio_in(vms->gic, irq_iosfc));
-+    sysbus_realize_and_unref(gfx, &error_fatal);
-+}
-+
-+static void create_aes(VMAppleMachineState *vms, MemoryRegion *mem)
-+{
-+    int irq = vms->irqmap[VMAPPLE_AES_1];
-+    SysBusDevice *aes;
-+
-+    aes = SYS_BUS_DEVICE(qdev_new(TYPE_APPLE_AES));
-+    sysbus_mmio_map(aes, 0, vms->memmap[VMAPPLE_AES_1].base);
-+    sysbus_mmio_map(aes, 1, vms->memmap[VMAPPLE_AES_2].base);
-+    sysbus_connect_irq(aes, 0, qdev_get_gpio_in(vms->gic, irq));
-+    sysbus_realize_and_unref(aes, &error_fatal);
-+}
-+
-+static int arm_gic_ppi_index(int cpu_nr, int ppi_index)
-+{
-+    return NUM_IRQS + cpu_nr * GIC_INTERNAL + ppi_index;
-+}
-+
-+static void create_gic(VMAppleMachineState *vms, MemoryRegion *mem)
-+{
-+    MachineState *ms = MACHINE(vms);
-+    /* We create a standalone GIC */
-+    SysBusDevice *gicbusdev;
-+    QList *redist_region_count;
-+    int i;
-+    unsigned int smp_cpus = ms->smp.cpus;
-+
-+    vms->gic = qdev_new(gicv3_class_name());
-+    qdev_prop_set_uint32(vms->gic, "revision", 3);
-+    qdev_prop_set_uint32(vms->gic, "num-cpu", smp_cpus);
-+    /*
-+     * Note that the num-irq property counts both internal and external
-+     * interrupts; there are always 32 of the former (mandated by GIC spec).
-+     */
-+    qdev_prop_set_uint32(vms->gic, "num-irq", NUM_IRQS + 32);
-+
-+    uint32_t redist0_capacity =
-+                vms->memmap[VMAPPLE_GIC_REDIST].size / GICV3_REDIST_SIZE;
-+    uint32_t redist0_count = MIN(smp_cpus, redist0_capacity);
-+
-+    redist_region_count = qlist_new();
-+    qlist_append_int(redist_region_count, redist0_count);
-+    qdev_prop_set_array(vms->gic, "redist-region-count", redist_region_count);
-+
-+    gicbusdev = SYS_BUS_DEVICE(vms->gic);
-+    sysbus_realize_and_unref(gicbusdev, &error_fatal);
-+    sysbus_mmio_map(gicbusdev, 0, vms->memmap[VMAPPLE_GIC_DIST].base);
-+    sysbus_mmio_map(gicbusdev, 1, vms->memmap[VMAPPLE_GIC_REDIST].base);
-+
-+    /*
-+     * Wire the outputs from each CPU's generic timer and the GICv3
-+     * maintenance interrupt signal to the appropriate GIC PPI inputs,
-+     * and the GIC's IRQ/FIQ/VIRQ/VFIQ interrupt outputs to the CPU's inputs.
-+     */
-+    for (i = 0; i < smp_cpus; i++) {
-+        DeviceState *cpudev = DEVICE(qemu_get_cpu(i));
-+
-+        /* Map the virt timer to PPI 27 */
-+        qdev_connect_gpio_out(cpudev, GTIMER_VIRT,
-+                              qdev_get_gpio_in(vms->gic,
-+                                               arm_gic_ppi_index(i, 27)));
-+
-+        /* Map the GIC IRQ and FIQ lines to CPU */
-+        sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
-+        sysbus_connect_irq(gicbusdev, i + smp_cpus,
-+                           qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
-+    }
-+}
-+
-+static void create_uart(const VMAppleMachineState *vms, int uart,
-+                        MemoryRegion *mem, Chardev *chr)
-+{
-+    hwaddr base = vms->memmap[uart].base;
-+    int irq = vms->irqmap[uart];
-+    DeviceState *dev = qdev_new(TYPE_PL011);
-+    SysBusDevice *s = SYS_BUS_DEVICE(dev);
-+
-+    qdev_prop_set_chr(dev, "chardev", chr);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    memory_region_add_subregion(mem, base,
-+                                sysbus_mmio_get_region(s, 0));
-+    sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
-+}
-+
-+static void create_rtc(const VMAppleMachineState *vms)
-+{
-+    hwaddr base = vms->memmap[VMAPPLE_RTC].base;
-+    int irq = vms->irqmap[VMAPPLE_RTC];
-+
-+    sysbus_create_simple("pl031", base, qdev_get_gpio_in(vms->gic, irq));
-+}
-+
-+static DeviceState *gpio_key_dev;
-+static void vmapple_powerdown_req(Notifier *n, void *opaque)
-+{
-+    /* use gpio Pin 3 for power button event */
-+    qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
-+}
-+
-+static void create_gpio_devices(const VMAppleMachineState *vms, int gpio,
-+                                MemoryRegion *mem)
-+{
-+    DeviceState *pl061_dev;
-+    hwaddr base = vms->memmap[gpio].base;
-+    int irq = vms->irqmap[gpio];
-+    SysBusDevice *s;
-+
-+    pl061_dev = qdev_new("pl061");
-+    /* Pull lines down to 0 if not driven by the PL061 */
-+    qdev_prop_set_uint32(pl061_dev, "pullups", 0);
-+    qdev_prop_set_uint32(pl061_dev, "pulldowns", 0xff);
-+    s = SYS_BUS_DEVICE(pl061_dev);
-+    sysbus_realize_and_unref(s, &error_fatal);
-+    memory_region_add_subregion(mem, base, sysbus_mmio_get_region(s, 0));
-+    sysbus_connect_irq(s, 0, qdev_get_gpio_in(vms->gic, irq));
-+    gpio_key_dev = sysbus_create_simple("gpio-key", -1,
-+                                        qdev_get_gpio_in(pl061_dev, 3));
-+}
-+
-+static void vmapple_firmware_init(VMAppleMachineState *vms,
-+                                  MemoryRegion *sysmem)
-+{
-+    hwaddr size = vms->memmap[VMAPPLE_FIRMWARE].size;
-+    hwaddr base = vms->memmap[VMAPPLE_FIRMWARE].base;
-+    const char *bios_name;
-+    int image_size;
-+    char *fname;
-+
-+    bios_name = MACHINE(vms)->firmware;
-+    if (!bios_name) {
-+        error_report("No firmware specified");
-+        exit(1);
-+    }
-+
-+    fname = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-+    if (!fname) {
-+        error_report("Could not find ROM image '%s'", bios_name);
-+        exit(1);
-+    }
-+
-+    memory_region_init_ram(&vms->fw_mr, NULL, "firmware", size, &error_fatal);
-+    image_size = load_image_mr(fname, &vms->fw_mr);
-+
-+    g_free(fname);
-+    if (image_size < 0) {
-+        error_report("Could not load ROM image '%s'", bios_name);
-+        exit(1);
-+    }
-+
-+    memory_region_add_subregion(get_system_memory(), base, &vms->fw_mr);
-+}
-+
-+static void create_pcie(VMAppleMachineState *vms)
-+{
-+    hwaddr base_mmio = vms->memmap[VMAPPLE_PCIE_MMIO].base;
-+    hwaddr size_mmio = vms->memmap[VMAPPLE_PCIE_MMIO].size;
-+    hwaddr base_ecam = vms->memmap[VMAPPLE_PCIE_ECAM].base;
-+    hwaddr size_ecam = vms->memmap[VMAPPLE_PCIE_ECAM].size;
-+    int irq = vms->irqmap[VMAPPLE_PCIE];
-+    MemoryRegion *mmio_alias;
-+    MemoryRegion *mmio_reg;
-+    MemoryRegion *ecam_reg;
-+    DeviceState *dev;
-+    int i;
-+    PCIHostState *pci;
-+    DeviceState *usb_controller;
-+    USBBus *usb_bus;
-+
-+    dev = qdev_new(TYPE_GPEX_HOST);
-+    qdev_prop_set_uint32(dev, "num-irqs", GPEX_NUM_IRQS);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+
-+    /* Map only the first size_ecam bytes of ECAM space */
-+    ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-+    memory_region_init_alias(&vms->ecam_alias, OBJECT(dev), "pcie-ecam",
-+                             ecam_reg, 0, size_ecam);
-+    memory_region_add_subregion(get_system_memory(), base_ecam,
-+                                &vms->ecam_alias);
-+
-+    /*
-+     * Map the MMIO window from [0x50000000-0x7fff0000] in PCI space into
-+     * system address space at [0x50000000-0x7fff0000].
-+     */
-+    mmio_alias = g_new0(MemoryRegion, 1);
-+    mmio_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
-+    memory_region_init_alias(mmio_alias, OBJECT(dev), "pcie-mmio",
-+                             mmio_reg, base_mmio, size_mmio);
-+    memory_region_add_subregion(get_system_memory(), base_mmio, mmio_alias);
-+
-+    for (i = 0; i < GPEX_NUM_IRQS; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-+                           qdev_get_gpio_in(vms->gic, irq + i));
-+        gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
-+    }
-+
-+    pci = PCI_HOST_BRIDGE(dev);
-+    vms->bus = pci->bus;
-+    g_assert(vms->bus);
-+
-+    while ((dev = qemu_create_nic_device("virtio-net-pci", true, NULL))) {
-+        qdev_realize_and_unref(dev, BUS(vms->bus), &error_fatal);
-+    }
-+
-+    usb_controller = qdev_new(TYPE_QEMU_XHCI);
-+    qdev_realize_and_unref(usb_controller, BUS(pci->bus), &error_fatal);
-+
-+    usb_bus = USB_BUS(object_resolve_type_unambiguous(TYPE_USB_BUS,
-+                                                      &error_fatal));
-+    usb_create_simple(usb_bus, "usb-kbd");
-+    usb_create_simple(usb_bus, "usb-tablet");
-+}
-+
-+static void vmapple_reset(void *opaque)
-+{
-+    VMAppleMachineState *vms = opaque;
-+    hwaddr base = vms->memmap[VMAPPLE_FIRMWARE].base;
-+
-+    cpu_set_pc(first_cpu, base);
-+}
-+
-+static void mach_vmapple_init(MachineState *machine)
-+{
-+    VMAppleMachineState *vms = VMAPPLE_MACHINE(machine);
-+    MachineClass *mc = MACHINE_GET_CLASS(machine);
-+    const CPUArchIdList *possible_cpus;
-+    MemoryRegion *sysmem = get_system_memory();
-+    int n;
-+    unsigned int smp_cpus = machine->smp.cpus;
-+    unsigned int max_cpus = machine->smp.max_cpus;
-+
-+    vms->memmap = memmap;
-+    machine->usb = true;
-+
-+    possible_cpus = mc->possible_cpu_arch_ids(machine);
-+    assert(possible_cpus->len == max_cpus);
-+    for (n = 0; n < possible_cpus->len; n++) {
-+        Object *cpu;
-+        CPUState *cs;
-+
-+        if (n >= smp_cpus) {
-+            break;
-+        }
-+
-+        cpu = object_new(possible_cpus->cpus[n].type);
-+        object_property_set_int(cpu, "mp-affinity",
-+                                possible_cpus->cpus[n].arch_id, &error_fatal);
-+
-+        cs = CPU(cpu);
-+        cs->cpu_index = n;
-+
-+        numa_cpu_pre_plug(&possible_cpus->cpus[cs->cpu_index], DEVICE(cpu),
-+                          &error_fatal);
-+
-+        if (object_property_find(cpu, "has_el3")) {
-+            object_property_set_bool(cpu, "has_el3", false, &error_fatal);
-+        }
-+        if (object_property_find(cpu, "has_el2")) {
-+            object_property_set_bool(cpu, "has_el2", false, &error_fatal);
-+        }
-+        object_property_set_int(cpu, "psci-conduit", QEMU_PSCI_CONDUIT_HVC,
-+                                &error_fatal);
-+
-+        /* Secondary CPUs start in PSCI powered-down state */
-+        if (n > 0) {
-+            object_property_set_bool(cpu, "start-powered-off", true,
-+                                     &error_fatal);
-+        }
-+
-+        object_property_set_link(cpu, "memory", OBJECT(sysmem), &error_abort);
-+        qdev_realize(DEVICE(cpu), NULL, &error_fatal);
-+        object_unref(cpu);
-+    }
-+
-+    memory_region_add_subregion(sysmem, vms->memmap[VMAPPLE_MEM].base,
-+                                machine->ram);
-+
-+    create_gic(vms, sysmem);
-+    create_bdif(vms, sysmem);
-+    create_pvpanic(vms, sysmem);
-+    create_aes(vms, sysmem);
-+    create_gfx(vms, sysmem);
-+    create_uart(vms, VMAPPLE_UART, sysmem, serial_hd(0));
-+    create_rtc(vms);
-+    create_pcie(vms);
-+
-+    create_gpio_devices(vms, VMAPPLE_GPIO, sysmem);
-+
-+    vmapple_firmware_init(vms, sysmem);
-+    create_cfg(vms, sysmem);
-+
-+    /* connect powerdown request */
-+    vms->powerdown_notifier.notify = vmapple_powerdown_req;
-+    qemu_register_powerdown_notifier(&vms->powerdown_notifier);
-+
-+    vms->bootinfo.ram_size = machine->ram_size;
-+    vms->bootinfo.board_id = -1;
-+    vms->bootinfo.loader_start = vms->memmap[VMAPPLE_MEM].base;
-+    vms->bootinfo.skip_dtb_autoload = true;
-+    vms->bootinfo.firmware_loaded = true;
-+    arm_load_kernel(ARM_CPU(first_cpu), machine, &vms->bootinfo);
-+
-+    qemu_register_reset(vmapple_reset, vms);
-+}
-+
-+static CpuInstanceProperties
-+vmapple_cpu_index_to_props(MachineState *ms, unsigned cpu_index)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    const CPUArchIdList *possible_cpus = mc->possible_cpu_arch_ids(ms);
-+
-+    assert(cpu_index < possible_cpus->len);
-+    return possible_cpus->cpus[cpu_index].props;
-+}
-+
-+
-+static int64_t vmapple_get_default_cpu_node_id(const MachineState *ms, int idx)
-+{
-+    return idx % ms->numa_state->num_nodes;
-+}
-+
-+static const CPUArchIdList *vmapple_possible_cpu_arch_ids(MachineState *ms)
-+{
-+    int n;
-+    unsigned int max_cpus = ms->smp.max_cpus;
-+
-+    if (ms->possible_cpus) {
-+        assert(ms->possible_cpus->len == max_cpus);
-+        return ms->possible_cpus;
-+    }
-+
-+    ms->possible_cpus = g_malloc0(sizeof(CPUArchIdList) +
-+                                  sizeof(CPUArchId) * max_cpus);
-+    ms->possible_cpus->len = max_cpus;
-+    for (n = 0; n < ms->possible_cpus->len; n++) {
-+        ms->possible_cpus->cpus[n].type = ms->cpu_type;
-+        ms->possible_cpus->cpus[n].arch_id =
-+            arm_build_mp_affinity(n, GICV3_TARGETLIST_BITS);
-+        ms->possible_cpus->cpus[n].props.has_thread_id = true;
-+        ms->possible_cpus->cpus[n].props.thread_id = n;
-+    }
-+    return ms->possible_cpus;
-+}
-+
-+static void vmapple_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->init = mach_vmapple_init;
-+    mc->max_cpus = 32;
-+    mc->block_default_type = IF_VIRTIO;
-+    mc->no_cdrom = 1;
-+    mc->pci_allow_0_address = true;
-+    mc->minimum_page_bits = 12;
-+    mc->possible_cpu_arch_ids = vmapple_possible_cpu_arch_ids;
-+    mc->cpu_index_to_instance_props = vmapple_cpu_index_to_props;
-+    mc->default_cpu_type = ARM_CPU_TYPE_NAME("host");
-+    mc->get_default_cpu_node_id = vmapple_get_default_cpu_node_id;
-+    mc->default_ram_id = "mach-vmapple.ram";
-+
-+    object_register_sugar_prop(TYPE_VIRTIO_PCI, "disable-legacy",
-+                               "on", true);
-+}
-+
-+static void vmapple_instance_init(Object *obj)
-+{
-+    VMAppleMachineState *vms = VMAPPLE_MACHINE(obj);
-+
-+    vms->irqmap = irqmap;
-+
-+    object_property_add_uint64_ptr(obj, "uuid", &vms->uuid,
-+                                   OBJ_PROP_FLAG_READWRITE);
-+    object_property_set_description(obj, "uuid", "Machine UUID (SDOM)");
-+}
-+
-+static const TypeInfo vmapple_machine_info = {
-+    .name          = TYPE_VMAPPLE_MACHINE,
-+    .parent        = TYPE_MACHINE,
-+    .abstract      = true,
-+    .instance_size = sizeof(VMAppleMachineState),
-+    .class_size    = sizeof(VMAppleMachineClass),
-+    .class_init    = vmapple_machine_class_init,
-+    .instance_init = vmapple_instance_init,
-+};
-+
-+static void machvmapple_machine_init(void)
-+{
-+    type_register_static(&vmapple_machine_info);
-+}
-+type_init(machvmapple_machine_init);
-+
-+static void vmapple_machine_9_2_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VMAPPLE_MACHINE_AS_LATEST(9, 2)
-+
++macOS PV Graphics (apple-gfx)
++M: Phil Dennis-Jordan <phil@philjordan.eu>
++S: Maintained
++F: hw/display/apple-gfx*
++
+ PIIX4 South Bridge (i82371AB)
+ M: Hervé Poussineau <hpoussin@reactos.org>
+ M: Philippe Mathieu-Daudé <philmd@linaro.org>
 -- 
 2.39.3 (Apple Git-145)
 

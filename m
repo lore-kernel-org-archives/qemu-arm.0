@@ -1,213 +1,321 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6682389njc;
-        Mon, 11 Nov 2024 06:29:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUCMwtuspO2rPrXe5C3GOxT9dT/HHWcQRtMrrz1PXDb7osN5A+3Vkojt2SZe8IpnE5uN09GV6aJsRea1A==@linaro.org
-X-Google-Smtp-Source: AGHT+IEKnA7u6F6tG4uQBOO8KRqz+v9wSjw046nwSrF4c6446mz1jCTS76RGDrBw02/fUMWp7fnG
-X-Received: by 2002:a05:6808:211b:b0:3e5:d5c3:e88b with SMTP id 5614622812f47-3e7946acafdmr9407766b6e.20.1731335376260;
-        Mon, 11 Nov 2024 06:29:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731335376; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6701933njc;
+        Mon, 11 Nov 2024 06:59:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVvY2stjUiCcyrxCBy7sKRVij4jwiZ3kA3DN+LN1VOAjBUyBc+nEkcmfxsID7hilCMKqNriGMhPLVdh3g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHMA5ctDclb/bSk7aBQQs/QoT1i+OMG8q+YdyuxNUJVX8HtRMhUPPwRo6anG+9ua1H0fqtF
+X-Received: by 2002:a05:620a:4007:b0:7af:d00b:9c79 with SMTP id af79cd13be357-7b33193ae27mr1806627485a.31.1731337179450;
+        Mon, 11 Nov 2024 06:59:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731337179; cv=none;
         d=google.com; s=arc-20240605;
-        b=Qn813ddMsqI3qZZTLpup2l1tEEeuKDo8AN+DhhHv3gYl//hKGdg6Kjcm1XQVQFEol7
-         U86QmAQOnQHEZF80GZcNazeanaZ6O6mbxsayLTevu8j7jcQkpLmHOkt71QJ3lDRIBb5S
-         vOoSLMi8Y8KxJdo9n/v1JGt2BnqcaQKddVqh2Y+rDCpP7OcUj101C3PoyzUC+i7/mhSQ
-         /5FP2ew4xwCv8bKLcDubgMt1X8Onxu/Xq4R3h2B+e+BNaBx+ETWgVDK3gDVc5zRFzDA8
-         JnGx8eZ5f8paog22eT7oXH3n+z2c3irnxrBrWG8llM6LnERj/VhWqteyO3fOsZEDU1W0
-         8wKA==
+        b=iyOx7j8qKlq5Mu4RTsXlgJ7ADHTly+xpJOGcbZ8PM0Y3upiiq7T99VTdqsOzT4IHWX
+         vKpCNXM+zfwU50EuIfWsjmF9/Ibpj8P1nLlDAV/V+xMjFSuG8zHTJFQn+NeahHhM8LWV
+         blL9B1mayg8mXJ7yXY9fIiHCCS6Pv7ausLibQjo+LvEfofMEow1gF2Ftf00vBZDvRsLI
+         naDZ1ZNeQAWBgfwwAtP23Psvmcl8XDfVe6WbREhlmJARHY/OPvoaQ/VseFyFXfzL+UOi
+         BO1ErQBS58klpLd9rxyM3btm+QAcUA/EDr2XAK6c9l5YEVoM4NaSZXtAIBK9YEd55thA
+         XiZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=pjRAGOxPKBLWWtMTL71YPmNIL38UX8S0tDkwH3bqdKI=;
-        fh=4Qf3bieO7/HzT9rRl7RHSSrgu0L2PAuaH7h5Ds/Uyik=;
-        b=UYb6Y9D+2mhNhQmmSprRA9bystxy9MALoZlA6B7gvPaPutKA+3R5ShZ0cRzwDkcxIV
-         Gl5g5ICEdAVJyG0vqZF61ql5pGpHEAKFGWlg0JdFBZqrXbAzqvbVE3nWPB0hb7iY3l6+
-         s91uOCQbXHQ15CMXsu3Z77GYNiw4c21tNNlpJbjNEDUnkj/VUkApKO6WiXsBJtmsY4o7
-         2TxmM75o/VBGHyLb34N6cr2OpGQ9/Iq3l1edRNjjL6OlwbFXrdWm8uGMpRqaxDqEZZDc
-         t3MVZEc/kDHr9HPozA4nqDFaa2BTg6q97YgcSdB9bo3Ab+V73ilQcGhPMiTUAwW7qg2u
-         5ftw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=CfwG7C9f8beRerYhjJe+Jyy+omwy59X5IZrCEpNc7qo=;
+        fh=C6y4BVYHs6Ho+IX4JBLPK7v+RYm31tXbvYbRG7pd+T8=;
+        b=LPIpK2WQ3WxQClH+pyQ8N8Q3WAbbN8awyfXUUiE/iIHbax+CG7zDY20zfexaSwu3UN
+         8p/EpkANydA/RhQb7JVCPtzORUZCycnuY/GqE6C1HyV+wg2Xqs3hf5u11r2f52v7dvoG
+         puvwDysAHCTGktP7YviSedV3zTf9+kuxkO4tFLZzThmBbj3UQuZZv4eY1Fd41y+5nzaT
+         92kX9rNUsrpcSE2cIoSF/Y6VMHA0wSGt+GdoFfFZVs60HdMeEKwseGId+S0RBhyBFMiJ
+         TrVIN2HXnzvOAAa/x5sN8Cj8vvfyhzawRt1DlNzzHBBBhNvfesMzUP+6fV56cGGPhv+t
+         1+HA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FDoH2Mo/";
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a3wHqHmq;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
+Return-Path: <imammedo@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d396210259si110941986d6.73.2024.11.11.06.29.36
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d3966b03e0si106676336d6.433.2024.11.11.06.59.39
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 Nov 2024 06:29:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 11 Nov 2024 06:59:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="FDoH2Mo/";
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=a3wHqHmq;
+       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1731335375;
+	s=mimecast20190719; t=1731337179;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=pjRAGOxPKBLWWtMTL71YPmNIL38UX8S0tDkwH3bqdKI=;
-	b=FDoH2Mo/Qlk0l+DkFVEkFwTsOrRSEf08xoBxUf0mUSB0WkGiRU9LOKS0TXYAmn2/vho3un
-	n5VBPqMk1A2EahG9671QDR4ZwDW9RnkSb7/PY+y4Oo4dckig0yLo734Yx2cS+5DWf3hDm3
-	rexHvxbAaerU9AHblP9kqBQbgvNSLLQ=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-138-qAk2hGD9OWOnj-H9L20ntQ-1; Mon,
- 11 Nov 2024 09:29:32 -0500
-X-MC-Unique: qAk2hGD9OWOnj-H9L20ntQ-1
-X-Mimecast-MFC-AGG-ID: qAk2hGD9OWOnj-H9L20ntQ
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id EA9FA1955DC3;
-	Mon, 11 Nov 2024 14:29:28 +0000 (UTC)
-Received: from localhost (unknown [10.22.80.107])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 76976300019E;
-	Mon, 11 Nov 2024 14:29:26 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: eric.auger@redhat.com, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, richard.henderson@linaro.org,
- alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
- armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
- pbonzini@redhat.com
-Subject: Re: [RFC 18/21] arm/cpu: Introduce a customizable kvm host cpu model
-In-Reply-To: <63c232c2-a325-48d6-8ed4-753a7c6e3b4e@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20241025101959.601048-1-eric.auger@redhat.com>
- <20241025101959.601048-19-eric.auger@redhat.com>
- <ZxuX4i9NjVRizB72@redhat.com>
- <cb6c8f62-c5dc-416d-865f-fbdf96164dac@redhat.com>
- <Zxub7ol4p8P_sWF8@redhat.com>
- <CAFEAcA_wQu17y0PyQwxw0wuf2H5y2VE5aX16nLP2-u7QUP2ggA@mail.gmail.com>
- <Zx-9WxXkmkMuGIlQ@redhat.com>
- <CAFEAcA9w0mb5bcU8p+fScQony-=oqLmNurGWpnL_sBneQCzxUg@mail.gmail.com>
- <Zx_EGxj2aqc_2-kY@redhat.com>
- <63c232c2-a325-48d6-8ed4-753a7c6e3b4e@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Mon, 11 Nov 2024 15:29:23 +0100
-Message-ID: <87ikstn8sc.fsf@redhat.com>
+	bh=CfwG7C9f8beRerYhjJe+Jyy+omwy59X5IZrCEpNc7qo=;
+	b=a3wHqHmqeom1iqKrbSl764Q02F9ANhtZs76CJHck3GCZwWiNhUO7uaED2m/5qoqgJo0lQa
+	oTwX+GOYi9RoY8IcK0Bl2eORfqdlHfpaa1+OgTMpTWUlpEm9cb6ygEL7yY+ymlAyNxg2oY
+	hdv2gC/FNaVi9dwcj9L0IX/pW1JNLaI=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-620-3zgb0Z6yO-OH2UaxI8nwCA-1; Mon, 11 Nov 2024 09:59:38 -0500
+X-MC-Unique: 3zgb0Z6yO-OH2UaxI8nwCA-1
+X-Mimecast-MFC-AGG-ID: 3zgb0Z6yO-OH2UaxI8nwCA
+Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-37d45de8bbfso3778189f8f.3
+        for <alex.bennee@linaro.org>; Mon, 11 Nov 2024 06:59:37 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731337177; x=1731941977;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=CfwG7C9f8beRerYhjJe+Jyy+omwy59X5IZrCEpNc7qo=;
+        b=AN1CY5RJBUhz7+pE/N3imqTO/cTSSZIO6ZfWxtUQikA0la0Ll1CljLGD3hyfzHIETV
+         eezDsLfULtl1Unv7kNzqLAP/xH62yt6TNd10udKmlFq+XyRaTjkP7jA3pJoVK1Hd8Qfn
+         Tyu7qvVz7QNhcqU59MWCea0Kg94xnJay4aABIaYStqfVG0o+9Yl4r0UMxWdH7cxkEcnL
+         wiilynG2oRo2B/Te9O8tbFsRI6uBizkHBPnutvcVyqd3mp18xUjBAWWh8ZPGZLTWUUIY
+         XlXNGdNU0HNgWE6L0p1O+Xn5U//xFtnkFTkE5emERkc5w3jwsmwTHlBIoy3WiHn+wqj4
+         7P7g==
+X-Forwarded-Encrypted: i=1; AJvYcCVSnf43n0dX0lixD+q+hzl8+A2WRwSSx/Rfe8yp5S1ukfYwibv1isLNeKt/9NmcMDzjgM7ICIhdjdQ6Og==@linaro.org
+X-Gm-Message-State: AOJu0YxBAJrkSl+bRsdSXIohY5J/xI0REn+JHYlP3P0dPtFP4CCAY5XY
+	vOH1a0pYzDVkkpZdy9YCeaxLrtUL4a+G338LyYhYNiUfyW2Wl27mJR4HVpAv9/z0l40Pw56WUhQ
+	vq61k74i3kwi+wdJX0eRVySpyRmzQcrRyKzjkH4S8bz9V4/maTW4CMA==
+X-Received: by 2002:a05:6000:1a89:b0:37d:4cf9:e08b with SMTP id ffacd0b85a97d-381f18723d4mr12954492f8f.31.1731337176672;
+        Mon, 11 Nov 2024 06:59:36 -0800 (PST)
+X-Received: by 2002:a05:6000:1a89:b0:37d:4cf9:e08b with SMTP id ffacd0b85a97d-381f18723d4mr12954447f8f.31.1731337176153;
+        Mon, 11 Nov 2024 06:59:36 -0800 (PST)
+Return-Path: <imammedo@redhat.com>
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381ed97f544sm13198084f8f.40.2024.11.11.06.59.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 Nov 2024 06:59:35 -0800 (PST)
+Date: Mon, 11 Nov 2024 15:59:33 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Salil Mehta <salil.mehta@huawei.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <mst@redhat.com>,
+ <jonathan.cameron@huawei.com>, <peter.maydell@linaro.org>,
+ <richard.henderson@linaro.org>, <anisinha@redhat.com>,
+ <eduardo@habkost.net>, <marcel.apfelbaum@gmail.com>, <david@redhat.com>,
+ <philmd@linaro.org>, <peterx@redhat.com>, <pbonzini@redhat.com>,
+ <gshan@redhat.com>, <borntraeger@linux.ibm.com>, <alex.bennee@linaro.org>,
+ <linux@armlinux.org.uk>, <darren@os.amperecomputing.com>,
+ <ilkka@os.amperecomputing.com>, <vishnu@os.amperecomputing.com>,
+ <karl.heubaum@oracle.com>, <miguel.luis@oracle.com>,
+ <salil.mehta@opnsrc.net>, <zhukeqian1@huawei.com>,
+ <wangxiongfeng2@huawei.com>, <wangyanan55@huawei.com>,
+ <zhao1.liu@intel.com>, <linuxarm@huawei.com>, <gustavo.romero@linaro.org>
+Subject: Re: [PATCH V2 2/3] Fix: CPUs presence logic in _STA for x86
+ backward compatability
+Message-ID: <20241111155933.0b920f57@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20241109000728.206825-3-salil.mehta@huawei.com>
+References: <20241109000728.206825-1-salil.mehta@huawei.com>
+	<20241109000728.206825-3-salil.mehta@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: 0Vubn2yxJ86/
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: dk-KsThfAiaZzbCYYoLnccxPCX4K85GHWXR1vZ6sw7E_1731337177
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: dLvXIcxj8E5E
 
-On Mon, Nov 04 2024, Eric Auger <eric.auger@redhat.com> wrote:
+On Sat, 9 Nov 2024 00:07:27 +0000
+Salil Mehta <salil.mehta@huawei.com> wrote:
 
-> Hi Daniel,
->
-> On 10/28/24 18:04, Daniel P. Berrang=C3=A9 wrote:
->> On Mon, Oct 28, 2024 at 04:48:18PM +0000, Peter Maydell wrote:
->>> On Mon, 28 Oct 2024 at 16:35, Daniel P. Berrang=C3=A9 <berrange@redhat.=
-com> wrote:
->>>> On Mon, Oct 28, 2024 at 04:16:31PM +0000, Peter Maydell wrote:
->>>>> On Fri, 25 Oct 2024 at 14:24, Daniel P. Berrang=C3=A9 <berrange@redha=
-t.com> wrote:
->>>>>> On Fri, Oct 25, 2024 at 03:18:25PM +0200, Eric Auger wrote:
->>>>>>> On 10/25/24 15:06, Daniel P. Berrang=C3=A9 wrote:
->>>>>>>> Also, is this naming convention really the same one that users
->>>>>>>> will see when they look at /proc/cpuinfo to view features ? It
->>>>>>> No it is not. I do agree that the custom cpu model is very low leve=
-l. It
->>>>>>> is very well suited to test all series turning ID regs as writable =
-but
->>>>>>> this would require an extra layer that adapts /proc/cpuinfo feature
->>>>>>> level to this regid/field abstraction.
->>>>>>>
->>>>>>> In /cpu/proc you will see somethink like:
->>>>>>>  Features    : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics f=
-php
->>>>>>> asimdhp cpuid asimdrdm lrcpc dcpop asimddp
->>>>>> Right, IMHO, this is the terminology that QEMU must use in user
->>>>>> facing APIs.
->>>>> /proc/cpuinfo's naming is rather weird for historical
->>>>> reasons (for instance there is only one FEAT_FP16 feature
->>>>> but cpuinfo lists "fphp" and "asimdhp" separately).
->>>> There's plenty of wierd history in x86 too. In this
->>>> case I might suggest just picking one of the two
->>>> common names, and ignoring the other.
->>>>
->>>> If we really wanted to, we could alias the 2nd name
->>>> to the first, but its likely not worth the bother.
->>> Or we could use the standard set of architectural
->>> feature names, and not have the problem at all, and not
->>> have to document what we mean by our nonstandard names.
->>> (cpuinfo names do actually mostly line up with the
->>> standard names, just not 100%. Similarly gcc/clang command
->>> line options are mostly the architectural feature name.)
->> Ah, right, yes. Sorry I mis-understood you originally to be suggesting
->> the same low level names as this patch.
-> If my understanding is correct, Peter suggested to rely on the
-> terminology used in
->
-> https://developer.arm.com/documentation/109697/2024_09
->
-> the doc pointed to by Oliver.
->
-> So I think the next step is to understand how those "high level" features=
- do map onto low level ID register field values. I think a high level featu=
-re can map onto separate fields in separate ID regs. This may not be the mo=
-st common case though.=20
+> Checking `is_present` first can break x86 migration from new Qemu
+> version to old Qemu. This is because CPRS Bit is not defined in the
+> older Qemu register block and will always be 0 resulting in check always
+> failing. Remove CPU_PRESENT Bit to preserve older ABI.
+> 
+> -                If ((\_SB.PCI0.PRES.CPEN == One))
+> -                {
+> -                    Local0 = 0x0F
+> +                If ((\_SB.PCI0.PRES.CPRS == One))
+> +                {
+> +                    If ((\_SB.PCI0.PRES.CPEN == One))
+> +                    {
+> +                        Local0 = 0x0F
+> +                    }
+> +                    Else
+> +                    {
+> +                        Local0 = 0x0D
+> +                    }
+>                  }
+> 
+> Reported-by: Igor Mammedov <imammedo@redhat.com>
+> Message-ID: <20241106100047.18901c9d@imammedo.users.ipa.redhat.com>
+> Signed-off-by: Salil Mehta <salil.mehta@huawei.com>
 
-I went through all the FEAT_xxx features defined so far and tried to
-categorize them (probably with some errors here and there, but the
-general trend should be correct.)
+AML parts looks fine modulo global nit.
 
-There's 335 features defined at the moment.
+My recommendation is to revert both patches for 9.2,
+as that would fix the broken hotplug and return code to original
+state. And then repost them (amended) as part of ARM cpuhp series
+to have cleaner history instead of spaghetti of fixups/refactoring commits.
 
-Of these, the majority (295 by my count) map to one or more values in
-one or more id registers. These are what I'd consider the "easy" ones
-(added complexity if we deal with serveral values, but in general, it is
-clear how to handle them, and most of them actually map to a single
-value.) Of course, dependencies may be on top of that.
+See other comments below.
 
-Then, we have some features (~25 or so) that are actually defined by
-dependencies (i.e. FEAT_FOO and FEAT_BAR mean that we have FEAT_BAZ,
-sometimes with an architecture extension dependency thrown in as well.)
-These features are not really relevant when we compare two cpus since
-they do not map to registers directly, but they are relevant if we allow
-them to be specified (and use them as a kind of shorthand.) IOW, we'd
-need to think about how we'd handle them for comparisons and baselining.
 
-Next, let's talk about architecture extensions. All features have a
-level where they have been introduced as optional, some have an upper
-limit (e.g. FEAT_AA32EL1 is not allowed from v9.0 onwards), and quite a
-number of them (~65 or so) become mandatory with a certain architecture
-extension. Sometimes, FEAT_FOO + arch ext also implies FEAT_BAR. If we
-introduce Armvx.y named models, we'd need to enforce that some features
-are (not) set for a certain model. Complex, but not a showstopper. (We'd
-also need to deal with that if we worked on the register level.)
+> ---
+>  hw/acpi/cpu.c         | 49 ++++++++++++++++---------------------------
+>  include/hw/acpi/cpu.h |  1 +
+>  include/hw/core/cpu.h |  1 -
+>  3 files changed, 19 insertions(+), 32 deletions(-)
+> 
+> diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
+> index 23443f09a5..7b0badd08a 100644
+> --- a/hw/acpi/cpu.c
+> +++ b/hw/acpi/cpu.c
+> @@ -23,6 +23,8 @@ enum {
+>      CPHP_CMD_MAX
+>  };
+>  
+> +static bool always_present_cpus;
+> +
+>  static ACPIOSTInfo *acpi_cpu_device_status(int idx, AcpiCpuStatus *cdev)
+>  {
+>      ACPIOSTInfo *info = g_new0(ACPIOSTInfo, 1);
+> @@ -79,7 +81,6 @@ static uint64_t cpu_hotplug_rd(void *opaque, hwaddr addr, unsigned size)
+>          val |= cdev->is_inserting ? 2 : 0;
+>          val |= cdev->is_removing  ? 4 : 0;
+>          val |= cdev->fw_remove  ? 16 : 0;
+> -        val |= cdev->cpu ? 32 : 0;
+>          trace_cpuhp_acpi_read_flags(cpu_st->selector, val);
+>          break;
+>      case ACPI_CPU_CMD_DATA_OFFSET_RW:
+> @@ -246,15 +247,9 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+>      memory_region_add_subregion(as, base_addr, &state->ctrl_reg);
+>  }
+>  
+> -static bool should_remain_acpi_present(DeviceState *dev)
+> +static inline bool should_remain_acpi_present(DeviceState *dev)
+>  {
+> -    CPUClass *k = CPU_GET_CLASS(dev);
+> -    /*
+> -     * A system may contain CPUs that are always present on one die, NUMA node,
+> -     * or socket, yet may be non-present on another simultaneously. Check from
+> -     * architecture specific code.
+> -     */
+> -    return k->cpu_persistent_status && k->cpu_persistent_status(CPU(dev));
+> +    return always_present_cpus;
+>  }
 
-We also have some registers like MIDR/REVIDR that do not correlate with
-any FEAT_xxx, but that we still need to handle; I would suggest to deal
-with them via separate cpu properties (e.g. specify a list of possible
-MIDR/REVIDR pairs.) I hope that there are not too many of them, although
-we do have some impdef registers.
+instead of using global, we should pass parameter to
 
-That leaves some headscratchers (at least for me.) E.g. FEAT_UINJ, which
-is optional from v9.5, and mandatory from v9.6, but where I'm unsure how
-we'd discover it, especially as we do not have a way to discover the
-architecture extensions. Maybe this will work for named actual cpus
-only? I'm also not sure if I understand FEAT_CHK, which is listed as
-optional from v8.0 and mandatory from v9.4, but every aarch64 cpu is
-supposed to be compliant, because CHKFEAT might be a NOP (and this is
-only supposed to check for FEAT_GCS? Yes, I'm confused.)
+ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,                        
+                         CPUHotplugState *state, hwaddr base_addr, bool always_present_cpus)
+                                                                   ^^^^  
 
-So tl;dr, we cover a lot of the ID register space via FEAT_xxx (with
-varying complexity), but we already know about some exceptions. For some
-FEAT_xxx, I'm not sure if we want to handle them at all.
+and store it in 'CPUHotplugState *state::always_present_cpus',
+Then caller would supply it to the function depending on configuration
+(a new property in GED to opt-in in the feature, and hardcoded 'false' for x86 call sites)
+ 
 
-(I also seem to remember that there some things like perf counters that
-don't map to any on/off features, but no idea about the details here.)
+Also this does leave around cpu_enabled_status() callback,
+instead of adding callbacks we should just use
+  object_property_get_bool(OBJECT(cdev->cpu), 'realized')
+to do the same (i.e. what v6 was hiding behind callbacks).
+
+That is still correct for x86, it might be different for ARM,
+like a dedicated property 'enabled' depending on where
+discussion leads us, but that is the topic for discussion
+with ARM cpuhp patches.
+
+The point is, it's stray arm cpuhp patch and not needed in 9.2.
+It's better to have 2d6cfbaf1 and bf1ecc8dad6 reverted for 9.2 and
+then ARM cpuhp will bring them back to the clean 9.1 codebase,
+instead of having a mess of not necessary right now broken patches +
+fixups to bring them to desired state.
+
+>  static AcpiCpuStatus *get_cpu_status(CPUHotplugState *cpu_st, DeviceState *dev)
+> @@ -362,7 +357,6 @@ const VMStateDescription vmstate_cpu_hotplug = {
+>  #define CPU_REMOVE_EVENT  "CRMV"
+>  #define CPU_EJECT_EVENT   "CEJ0"
+>  #define CPU_FW_EJECT_EVENT "CEJF"
+> -#define CPU_PRESENT       "CPRS"
+>  
+>  void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>                      build_madt_cpu_fn build_madt_cpu, hwaddr base_addr,
+> @@ -423,9 +417,7 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>          aml_append(field, aml_named_field(CPU_EJECT_EVENT, 1));
+>          /* tell firmware to do device eject, write only */
+>          aml_append(field, aml_named_field(CPU_FW_EJECT_EVENT, 1));
+> -        /* 1 if present, read only */
+> -        aml_append(field, aml_named_field(CPU_PRESENT, 1));
+> -        aml_append(field, aml_reserved_field(2));
+> +        aml_append(field, aml_reserved_field(3));
+>          aml_append(field, aml_named_field(CPU_COMMAND, 8));
+>          aml_append(cpu_ctrl_dev, field);
+>  
+> @@ -455,7 +447,6 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>          Aml *ctrl_lock = aml_name("%s.%s", cphp_res_path, CPU_LOCK);
+>          Aml *cpu_selector = aml_name("%s.%s", cphp_res_path, CPU_SELECTOR);
+>          Aml *is_enabled = aml_name("%s.%s", cphp_res_path, CPU_ENABLED);
+> -        Aml *is_present = aml_name("%s.%s", cphp_res_path, CPU_PRESENT);
+>          Aml *cpu_cmd = aml_name("%s.%s", cphp_res_path, CPU_COMMAND);
+>          Aml *cpu_data = aml_name("%s.%s", cphp_res_path, CPU_DATA);
+>          Aml *ins_evt = aml_name("%s.%s", cphp_res_path, CPU_INSERT_EVENT);
+> @@ -482,28 +473,24 @@ void build_cpus_aml(Aml *table, MachineState *machine, CPUHotplugFeatures opts,
+>  
+>          method = aml_method(CPU_STS_METHOD, 1, AML_SERIALIZED);
+>          {
+> -            Aml *idx = aml_arg(0);
+> +            Aml *default_sta = aml_int(opts.always_present_cpus ? 0xD : 0);
+>              Aml *sta = aml_local(0);
+> -            Aml *ifctx2;
+> -            Aml *else_ctx;
+> +            Aml *idx = aml_arg(0);
+> +
+> +            always_present_cpus = opts.always_present_cpus;
+
+opts argument is meant to configure AML generator,
+so I'd rather not overload it with ACPI device configuration
+and introduction of a global var.  
+
+>  
+>              aml_append(method, aml_acquire(ctrl_lock, 0xFFFF));
+>              aml_append(method, aml_store(idx, cpu_selector));
+> -            aml_append(method, aml_store(zero, sta));
+> -            ifctx = aml_if(aml_equal(is_present, one));
+> +            /*
+> +             * Default case:
+> +             * _STA(0xD) = cpu is present and disabled OR
+> +             * _STA(0x0) = cpu is not present (and hence disabled)
+> +             */
+> +            aml_append(method, aml_store(default_sta, sta));
+> +            ifctx = aml_if(aml_equal(is_enabled, one));
+>              {
+> -                ifctx2 = aml_if(aml_equal(is_enabled, one));
+> -                {
+> -                    /* cpu is present and enabled */
+> -                    aml_append(ifctx2, aml_store(aml_int(0xF), sta));
+> -                }
+> -                aml_append(ifctx, ifctx2);
+> -                else_ctx = aml_else();
+> -                {
+> -                    /* cpu is present but disabled */
+> -                    aml_append(else_ctx, aml_store(aml_int(0xD), sta));
+> -                }
+> -                aml_append(ifctx, else_ctx);
+> +                /* _STA(0xF) = cpu is present and enabled */
+> +                aml_append(ifctx, aml_or(aml_int(0xF), sta, sta));
+>              }
+>              aml_append(method, ifctx);
+>              aml_append(method, aml_release(ctrl_lock));
+> diff --git a/include/hw/acpi/cpu.h b/include/hw/acpi/cpu.h
+> index 32654dc274..4a3e591120 100644
+> --- a/include/hw/acpi/cpu.h
+> +++ b/include/hw/acpi/cpu.h
+> @@ -55,6 +55,7 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+>  typedef struct CPUHotplugFeatures {
+>      bool acpi_1_compatible;
+>      bool has_legacy_cphp;
+> +    bool always_present_cpus;
+>      bool fw_unplugs_cpu;
+>      const char *smi_path;
+>  } CPUHotplugFeatures;
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index db8a6fbc6e..e936b67675 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -158,7 +158,6 @@ struct CPUClass {
+>      void (*dump_state)(CPUState *cpu, FILE *, int flags);
+>      void (*query_cpu_fast)(CPUState *cpu, CpuInfoFast *value);
+>      int64_t (*get_arch_id)(CPUState *cpu);
+> -    bool (*cpu_persistent_status)(CPUState *cpu);
+>      bool (*cpu_enabled_status)(CPUState *cpu);
+>      void (*set_pc)(CPUState *cpu, vaddr value);
+>      vaddr (*get_pc)(CPUState *cpu);

@@ -1,127 +1,130 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6521575njc;
-        Mon, 11 Nov 2024 01:56:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX86yd44JBMeWoSiMJpmACetfQRLEKNhmeg8hQtCrtCNFA6WNqDS3sFdMeaAHpgK+Lr17suoKiOlzwIYw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGzNjcqX9yVrotkt7hudxPb7GUYEPzH6lZQhbBMj2BTDdgKe2AXfSNXaNL7Z7zmas9DUYrS
-X-Received: by 2002:a05:6214:430a:b0:6cd:ac54:7995 with SMTP id 6a1803df08f44-6d39e1ee6a1mr191749346d6.36.1731319018689;
-        Mon, 11 Nov 2024 01:56:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731319018; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6579060njc;
+        Mon, 11 Nov 2024 03:54:45 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWMn6CsbIHGq5H+994dQOtHlWAoEtwDCaFOM+hzRDWV4jg49aT0G5TgBUkpNTvahAWsfssB1zMeooQRJA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGUuLpJqAcplFaFcNXiY+YKkHXhl4qE9zS9msmAV+Z3lLJYV/VdylIZZzXRmcnfsNS4tRgz
+X-Received: by 2002:a05:6214:2c10:b0:6cb:e648:863e with SMTP id 6a1803df08f44-6d39e1ccbc8mr161321306d6.43.1731326085019;
+        Mon, 11 Nov 2024 03:54:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731326085; cv=none;
         d=google.com; s=arc-20240605;
-        b=lyVqqNyr6k7TbKdL6SXteVvyQUB4+p0nkK3W+5VqR959yGAruRtD9ny6sj9AAY1qXx
-         xyBBfsJB5iebrSZKODZJeqT3fUOdjQpSE87kXz9v6R9fUViiKrhy+jhnPLT5WvAJeErH
-         ybonHCDBTg1QUbBaA0o8zAtnwGwwxHdN40d/hdotWiOm3Txc4Xk9v99g9/OmBNfWPEWm
-         vaN2K0Wm2dAtEk8IXRdGKwk8UsnBo7digqKW0uo+SWTDtTDtJKftZXxAc0+z9Uy9RCA8
-         Na8dMtSa9GUbHWpNDDTDt2Xn9fm31hqr7Ws5iMiU42XiHWaj2eExDDY4j/SVUmihSjCV
-         vexw==
+        b=jC4kyEO70NPEWMFZOky458dCuJ2tVl0RtmWFP21VjUei7E02jc4ujpnEjZ+QWEpZo5
+         /y+H/9bJbwR5wzCEvweND6YEQtavdMalbwhY5D0+qbh8vT5tdQa9WrLyITS/r63jdulx
+         FsyHkw7HbJzsCkpGKWtb9Qzf7nYxYtkxfLkZ7MjhvawUsT9W+xIJs35C0b+/c94YUCr8
+         R2EQLGY8/bLg3sYFEQkjq7sJ1u7WkBTpnyu+wj8aJwrCy95wcNsRG/uBomLGFqrqd9gv
+         vP6+VTM1d5exWJdhTQyzUmbrpRCMROw+GormS91pVSSseVAX+hYTR7GlwfZ8jPiBu5ST
+         fupw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=k1NaZzNLNEWnr446KL2HeFVoJ66FsDx+sNb8sXj1S6A=;
-        fh=mu8v3PZNM53wNNVx4Kb8bP6qWAkqY7l8lAuNSH7TMXo=;
-        b=aOL8MiOdvRRi7TXtbxTnk2XW2Dbq9XwwUjtUioOLTKDSseqalU+AhK0IvfJJV/sVDs
-         J8wkdvBl2TyJdenliC4LJethsrb0gO1OQf4fIy8iap42a8bNfmQ+67NpFNkiFWTGryOX
-         xUa/2NwjLXDNlvRU7AIpUS/kJJEcY1optzWont87UBnM/1GSGUqy+VsAZPk/iKqvsXkQ
-         ZIhh++UPBdeloEWHCPPdJSda4Ynee3uR+J6SB024vdBNpmTfQ9qVBv5oeuPKNls4giRT
-         d0c/FAzuYyjbc2wp4aGeh0FZAxmNQOI20jv1t+YQfqAakmnldHYefKlM1pLMzCamEQCx
-         eHYQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=JEK++LKY806mq5+PocjWhHbFaAgBYGWUfkUJ1LZ2s6o=;
+        fh=JvIFEdG1fyRsuHcORBO7fCICKrzqxF2YaKuuWIWk40U=;
+        b=YbjmYKtclxs7Qb2eW+ew06WZoD8e6eh0P+xi7UIlU/TZddqVa7bKwvAZsVSG0CmALE
+         ijRpyJXAykMLEaj1/C/N8xAMgzTRpjiwVjAVxj07M9KJbGab3JdKfFCBm2gQrw+tfpYO
+         feLPI8BKD24R90Kfv1jpOuhzlZ/hXmQ2J+5I/H/AAooTsSbaPySLAA1qJ+4AO/dUtd/4
+         DbRDkczBJKBPh+tkaJx0PxYPJ56e8yyDCEebnKvD2PJsTArfqpXq1O7W34Gj+ToaY5Jq
+         5rXe28izpwvJjgD18i9FJrWzhZaw/Bf0DqZddMFlOaqVh3QwmrPl1jQ7qmH30mLtswr3
+         JhwQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=1PpNcHZp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hw3QedX0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d39621008fsi109257156d6.105.2024.11.11.01.56.58
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d396667af2si104938336d6.374.2024.11.11.03.54.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2024 01:56:58 -0800 (PST)
+        Mon, 11 Nov 2024 03:54:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=1PpNcHZp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hw3QedX0;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tAR9e-0002kP-7a; Mon, 11 Nov 2024 04:56:18 -0500
+	id 1tASzl-0005MF-4j; Mon, 11 Nov 2024 06:54:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tAR9Q-0002jh-4b
- for qemu-devel@nongnu.org; Mon, 11 Nov 2024 04:56:04 -0500
-Received: from mail-ua1-x936.google.com ([2607:f8b0:4864:20::936])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tASzj-0005LE-4V
+ for qemu-devel@nongnu.org; Mon, 11 Nov 2024 06:54:11 -0500
+Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tAR9M-0002FY-9S
- for qemu-devel@nongnu.org; Mon, 11 Nov 2024 04:56:03 -0500
-Received: by mail-ua1-x936.google.com with SMTP id
- a1e0cc1a2514c-84fd057a993so1824821241.3
- for <qemu-devel@nongnu.org>; Mon, 11 Nov 2024 01:55:58 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tASzh-0005zq-9A
+ for qemu-devel@nongnu.org; Mon, 11 Nov 2024 06:54:10 -0500
+Received: by mail-lf1-x129.google.com with SMTP id
+ 2adb3069b0e04-539f58c68c5so7388162e87.3
+ for <qemu-devel@nongnu.org>; Mon, 11 Nov 2024 03:54:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731318958; x=1731923758;
- darn=nongnu.org; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=k1NaZzNLNEWnr446KL2HeFVoJ66FsDx+sNb8sXj1S6A=;
- b=1PpNcHZpfrpWxnpQcm5XBtSNDu2hfpkTpWFeuPJPkDCmkVEUqhy9ELteKOZhNMhSok
- iJa4jTkptnLjr/T1AVAU4SdKS16GqYuO7N3enfzgrBgESlzBoWnLpk/Xy7bL8m9MVy0O
- yyR34dypPRMdpMHCRmwRQ/4htNSwEV1gnFIyP4/OqgY4QvZ7HtOLv7PJCLrjWTil1YeI
- EnOAxLF3c0phZjRBI4heIM1hU0PcpIul0S22k23O2VXTiGUag7sB40shshdwl5W23Q/j
- VVYEQeKYlYsDX6gVgDDnaK1OapYEr+6aTv2Nh8Py5lJhW7JDbKMmH76wJ8DQlLqetmz4
- idrQ==
+ d=linaro.org; s=google; t=1731326047; x=1731930847; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=JEK++LKY806mq5+PocjWhHbFaAgBYGWUfkUJ1LZ2s6o=;
+ b=hw3QedX0sqa7rk1YjGuUjLA4Xfu4EQBO3hQJ1nPi6iCWoAYbjCDZLQhHr/E2PonI6i
+ /9+92KCV8eZf8cscwPb1Hc91OCsvKkJjZnVO7tBvSGupbMm78DMyVFKChXW3ziLni6+e
+ 29+yG7wXoqr9IgRkjAkpqu0ds+AhsBiwMzv1K1du1ZxCRFh+e1gVykY+s+G4zGq8qkwD
+ G3rscWzPHhWfDWv2PjxJZekCa5i5m/J7+IwLPSYUX/gDK5B6jnFltO3YtezBAmMjIvpv
+ 1r5kqw9C4XKVrbj0eSVz/OcGO2wIAeLGie0Fa1dhB0fsDQAjl2GXHCsggMUOTCx62kBQ
+ +6/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731318958; x=1731923758;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=k1NaZzNLNEWnr446KL2HeFVoJ66FsDx+sNb8sXj1S6A=;
- b=WWAcx3FjF1Jx+891P0zk5tZ3keUelMEv2faC7u9gTYUO/HNcMmc5K2akb9gGtE8XJn
- hdMB8aIThCeUnqI+jx6k3FbZHYpRU9Pz2vEaeaqvVAvzy1QMnq/ITksAMpYuI9aG5aU/
- ntSeFbx18arahB1fNi8d5TP2LOllAr7Meim7SIya11+e4pIPUkRPQKz6wQaCffSy08BT
- zRvt4C6odem+kNdXH72XCn+LFPSXcxx4hxDjt4yooaIAH+U6J+Dzr/brImKSGivCiDAT
- RwE6kzSDwvJgwoq0YuMk3e30dlWciwCyDDVLFWWJ13gK29tlvHH9rOYNx8LvNJa9f9RF
- NnRg==
+ d=1e100.net; s=20230601; t=1731326047; x=1731930847;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=JEK++LKY806mq5+PocjWhHbFaAgBYGWUfkUJ1LZ2s6o=;
+ b=aqQZDA+IUurDHRco2iPKsgrfSX/ywfF7+y9GmoL6NPk/6h9rrqD/TW0ANdv7tOePW9
+ Z41MKQ0DbKqYvhSrCgSqnaJOS4Zwj4OeWYP0qTkjLoiof0XkWuFAvJw2YnDmc1E1hXIM
+ 7TTVpopPVV39qheanaXIQm3Y1DvEeo2vPkJo26W36g6Oqp/P8zBRAIcthCMi+ORFSfGv
+ zPt76W2Ee/khXRzg2lrqzzovlH7FBihT2yEW/4b7o00XwJaPrTpGQxl4ZKYNRS+s9+gR
+ AunlPkn0VG8w+LjcnTMTrjI8suHByRL/eFYwq4aM2fyyMBzkqpibFczwgOFQyjgoN7Vk
+ U1Tw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXer0dTkN0QGgk5Mns3SBDqQToUrPKk1M/WnJPz6gjbB8yVjPYhrowN6s5/PH6+h8QtH+oU8K7k+iuj@nongnu.org
-X-Gm-Message-State: AOJu0Yy92kvWQLGeUe14tOILx7ArPaTpkkLqomCdZJIqXiwi119gCMj7
- HswF/Z4F+tBnanWIgbS4F1K7LPGRH9d3lVl7ejUx5us57NFKPSrnb4U8xYsA+JMxT4ip5Fiw4Cn
- 5K2R7/1XZlw+6TCbS3DiDcTvmXvblpaUGm5MG
-X-Received: by 2002:a05:6102:3f09:b0:4a4:8651:3c2c with SMTP id
- ada2fe7eead31-4aae1686ad9mr10075987137.20.1731318957707; Mon, 11 Nov 2024
- 01:55:57 -0800 (PST)
+ AJvYcCXdNjIDf8VrIx7L4tzA7TZ/8nw/KPoZm00kRbgykiUSctthYeoKZyPd/5yVXszN7XCuo7z3PlvUhV26@nongnu.org
+X-Gm-Message-State: AOJu0YwdZTOSP1hC2yigUOZC2NtrU6Sp64UvszxtyZ/Fs+1NyOAJb7ch
+ eAxQdDgAPMxPY3p835X8vi1XJ1w2OPBlF81QlXEDgr+mSlkBedPsgrwNjJk5NkE=
+X-Received: by 2002:a05:6512:b17:b0:535:6951:9e1c with SMTP id
+ 2adb3069b0e04-53d862c6dffmr7790701e87.15.1731326047038; 
+ Mon, 11 Nov 2024 03:54:07 -0800 (PST)
+Received: from [192.168.69.126] (cnf78-h01-176-184-27-70.dsl.sta.abo.bbox.fr.
+ [176.184.27.70]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a9ee0def535sm590036166b.140.2024.11.11.03.54.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Nov 2024 03:54:06 -0800 (PST)
+Message-ID: <ffd30eb7-ed80-4b8e-8046-3e1fca14c35c@linaro.org>
+Date: Mon, 11 Nov 2024 12:54:03 +0100
 MIME-Version: 1.0
-References: <20241108144709.95498-1-phil@philjordan.eu>
- <20241108144709.95498-2-phil@philjordan.eu>
- <9c2e0b96-2125-4041-9f66-116d54accb04@daynix.com>
- <CAAibmn3NbtOEwWLQFOo_UmAGTehOj+dDP04A=-JGMZVK9AYMDw@mail.gmail.com>
- <ZzHJgAbBJZYrSt84@redhat.com>
-In-Reply-To: <ZzHJgAbBJZYrSt84@redhat.com>
-From: Phil Dennis-Jordan <phil@philjordan.eu>
-Date: Mon, 11 Nov 2024 10:55:46 +0100
-Message-ID: <CAAibmn2+pT_kpcdHd26KsFggRNRR3yPep11fToOK=GZ9AEDHpw@mail.gmail.com>
-Subject: Re: [PATCH v8 01/15] ui & main loop: Redesign of system-specific main
- thread event handling
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-devel@nongnu.org,
- agraf@csgraf.de, 
- peter.maydell@linaro.org, pbonzini@redhat.com, rad@semihalf.com, 
- quic_llindhol@quicinc.com, stefanha@redhat.com, mst@redhat.com, 
- slp@redhat.com, richard.henderson@linaro.org, eduardo@habkost.net, 
- marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com, 
- chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com, philmd@linaro.org, 
- shorne@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com, 
- bmeng.cn@gmail.com, liwei1518@gmail.com, dbarboza@ventanamicro.com, 
- zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, 
- qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000077b18f0626a01bb0"
-Received-SPF: neutral client-ip=2607:f8b0:4864:20::936;
- envelope-from=phil@philjordan.eu; helo=mail-ua1-x936.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 17/17] tests/functional: Add microblaze
+ cross-endianness tests
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Anton Johansson <anjo@rev.ng>
+Cc: Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, devel@lists.libvirt.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>
+References: <20241108154317.12129-1-philmd@linaro.org>
+ <20241108154317.12129-18-philmd@linaro.org>
+ <52d92762-3e14-45f3-aca0-cf47c25a0116@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <52d92762-3e14-45f3-aca0-cf47c25a0116@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::129;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x129.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,143 +139,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5o24dtZVwJnd
+X-TUID: 5Wl/LxAUvjhn
 
---00000000000077b18f0626a01bb0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 11/11/24 07:57, Thomas Huth wrote:
+> On 08/11/2024 16.43, Philippe Mathieu-Daudé wrote:
+>> Copy/paste the current tests, but call the opposite endianness
+>> machines, testing:
+>> - petalogix-s3adsp1800-le machine (little-endian CPU) on the
+>>    qemu-system-microblaze binary (big-endian)
+>> - petalogix-s3adsp1800-be machine (big-endian CPU) on the
+>>    qemu-system-microblazeel binary (little-endian).
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   .../functional/test_microblaze_s3adsp1800.py  | 21 +++++++++++++++++++
+>>   .../test_microblazeel_s3adsp1800.py           | 19 +++++++++++++++++
+>>   2 files changed, 40 insertions(+)
+>>
+>> diff --git a/tests/functional/test_microblaze_s3adsp1800.py 
+>> b/tests/functional/test_microblaze_s3adsp1800.py
+>> index 2b2f782270..7f5e8b6024 100755
+>> --- a/tests/functional/test_microblaze_s3adsp1800.py
+>> +++ b/tests/functional/test_microblaze_s3adsp1800.py
+>> @@ -36,5 +36,26 @@ def test_microblaze_s3adsp1800_be(self):
+>>           # message, that's why we don't test for a later string here. 
+>> This
+>>           # needs some investigation by a microblaze wizard one day...
+>> +    ASSET_IMAGE_LE = Asset(
+>> +        
+>> ('http://www.qemu-advent-calendar.org/2023/download/day13.tar.gz'),
+>> +        
+>> 'b9b3d43c5dd79db88ada495cc6e0d1f591153fe41355e925d791fbf44de50c22')
+>> +
+>> +    def test_microblaze_s3adsp1800_le(self):
+>> +        self.require_netdev('user')
+>> +        self.set_machine('petalogix-s3adsp1800-le')
+>> +        file_path = self.ASSET_IMAGE_LE.fetch()
+>> +        archive_extract(file_path, self.workdir)
+>> +        self.vm.set_console()
+>> +        self.vm.add_args('-kernel', self.workdir + '/day13/xmaton.bin')
+>> +        self.vm.add_args('-nic', 'user,tftp=' + self.workdir + 
+>> '/day13/')
+>> +        self.vm.launch()
+>> +        wait_for_console_pattern(self, 'QEMU Advent Calendar 2023')
+>> +        time.sleep(0.1)
+>> +        exec_command(self, 'root')
+>> +        time.sleep(0.1)
+>> +        exec_command_and_wait_for_pattern(self,
+>> +                'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
+>> +                '821cd3cab8efd16ad6ee5acc3642a8ea')
+>> +
+>>   if __name__ == '__main__':
+>>       QemuSystemTest.main()
+>> diff --git a/tests/functional/test_microblazeel_s3adsp1800.py 
+>> b/tests/functional/test_microblazeel_s3adsp1800.py
+>> index 1aee5149fb..60543009ba 100755
+>> --- a/tests/functional/test_microblazeel_s3adsp1800.py
+>> +++ b/tests/functional/test_microblazeel_s3adsp1800.py
+>> @@ -38,5 +38,24 @@ def test_microblazeel_s3adsp1800_le(self):
+>>                   'tftp -g -r xmaton.png 10.0.2.2 ; md5sum xmaton.png',
+>>                   '821cd3cab8efd16ad6ee5acc3642a8ea')
+>> +    ASSET_IMAGE_BE = Asset(
+>> +        ('https://qemu-advcal.gitlab.io/qac-best-of-multiarch/download/'
+>> +         'day17.tar.xz'),
+>> +        
+>> '3ba7439dfbea7af4876662c97f8e1f0cdad9231fc166e4861d17042489270057')
+>> +
+>> +    def test_microblazeel_s3adsp1800_be(self):
+>> +        self.set_machine('petalogix-s3adsp1800-be')
+>> +        file_path = self.ASSET_IMAGE_BE.fetch()
+>> +        archive_extract(file_path, self.workdir)
+>> +        self.vm.set_console()
+>> +        self.vm.add_args('-kernel', self.workdir + 
+>> '/day17/ballerina.bin')
+>> +        self.vm.launch()
+>> +        wait_for_console_pattern(self, 'This architecture does not 
+>> have '
+>> +                                       'kernel memory protection')
+>> +        # Note:
+>> +        # The kernel sometimes gets stuck after the "This 
+>> architecture ..."
+>> +        # message, that's why we don't test for a later string here. 
+>> This
+>> +        # needs some investigation by a microblaze wizard one day...
+>> +
+>>   if __name__ == '__main__':
+>>       QemuSystemTest.main()
+> 
+> Duplicating code is ugly. I think I'd rather prefer to merge the two 
+> files into one and then add that test to both targets in meson.build.
 
-On Mon, 11 Nov 2024 at 10:08, Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-wrote:
+In v2 I mentioned I'll merge them in a following up patch. I'll try
+to do that for v4.
 
-> On Sun, Nov 10, 2024 at 08:08:16AM +0100, Phil Dennis-Jordan wrote:
-> > On Sun 10. Nov 2024 at 08:01, Akihiko Odaki <akihiko.odaki@daynix.com>
-> > wrote:
-> >
-> > > On 2024/11/08 23:46, Phil Dennis-Jordan wrote:
-> > > > macOS's Cocoa event handling must be done on the initial (main)
-> thread
-> > > > of the process. Furthermore, if library or application code uses
-> > > > libdispatch, the main dispatch queue must be handling events on the
-> main
-> > > > thread as well.
-> > > >
-> > > > So far, this has affected Qemu in both the Cocoa and SDL UIs,
-> although
-> > > > in different ways: the Cocoa UI replaces the default qemu_main
-> function
-> > > > with one that spins Qemu's internal main event loop off onto a
-> > > > background thread. SDL (which uses Cocoa internally) on the other
-> hand
-> > > > uses a polling approach within Qemu's main event loop. Events are
-> > > > polled during the SDL UI's dpy_refresh callback, which happens to r=
-un
-> > > > on the main thread by default.
-> > >
-> > > GTK should also do the same as SDL and requires treatment; I forgot t=
-o
-> > > note that in previous reviews.
-> >
-> >
-> > Although it=E2=80=98s possible to build Qemu with GTK support enabled o=
-n macOS,
-> > that UI doesn=E2=80=99t actually work on macOS at all, and apparently h=
-asn=E2=80=99t been
-> > supported since 2018, see:
-> > https://stackoverflow.com/a/51474795
-> >
-> > I don=E2=80=99t think there=E2=80=99s any point making adjustments to t=
-he GTK code by
-> > guessing what might be needed if someone did fix that to work with macO=
-S
-> at
-> > some point.
->
-> If we don't support GTK on macOS, then we should update meson.build
-> to actively prevent users enabling GTK on macOS builds, rather than
-> letting them suffer random runtime crashes.
->
->
-Agreed - I'm now more confused than ever though because
-https://gitlab.com/qemu-project/qemu/-/issues/2539 sort of implies that
-Philippe has previously been using it successfully. Or perhaps this was
-created in response to https://gitlab.com/qemu-project/qemu/-/issues/2515 ?
-But it seems like even the SDL implementation isn't perfect:
-https://gitlab.com/qemu-project/qemu/-/issues/2537
-
-Basically, it seems like Qemu's UI threading on macOS is currently a bit of
-a mess, except in the Cocoa UI.
-
---00000000000077b18f0626a01bb0
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, 11 Nov 2024 at 10:08, Daniel =
-P. Berrang=C3=A9 &lt;<a href=3D"mailto:berrange@redhat.com">berrange@redhat=
-.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
-ex">On Sun, Nov 10, 2024 at 08:08:16AM +0100, Phil Dennis-Jordan wrote:<br>
-&gt; On Sun 10. Nov 2024 at 08:01, Akihiko Odaki &lt;<a href=3D"mailto:akih=
-iko.odaki@daynix.com" target=3D"_blank">akihiko.odaki@daynix.com</a>&gt;<br=
->
-&gt; wrote:<br>
-&gt; <br>
-&gt; &gt; On 2024/11/08 23:46, Phil Dennis-Jordan wrote:<br>
-&gt; &gt; &gt; macOS&#39;s Cocoa event handling must be done on the initial=
- (main) thread<br>
-&gt; &gt; &gt; of the process. Furthermore, if library or application code =
-uses<br>
-&gt; &gt; &gt; libdispatch, the main dispatch queue must be handling events=
- on the main<br>
-&gt; &gt; &gt; thread as well.<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; So far, this has affected Qemu in both the Cocoa and SDL UIs=
-, although<br>
-&gt; &gt; &gt; in different ways: the Cocoa UI replaces the default qemu_ma=
-in function<br>
-&gt; &gt; &gt; with one that spins Qemu&#39;s internal main event loop off =
-onto a<br>
-&gt; &gt; &gt; background thread. SDL (which uses Cocoa internally) on the =
-other hand<br>
-&gt; &gt; &gt; uses a polling approach within Qemu&#39;s main event loop. E=
-vents are<br>
-&gt; &gt; &gt; polled during the SDL UI&#39;s dpy_refresh callback, which h=
-appens to run<br>
-&gt; &gt; &gt; on the main thread by default.<br>
-&gt; &gt;<br>
-&gt; &gt; GTK should also do the same as SDL and requires treatment; I forg=
-ot to<br>
-&gt; &gt; note that in previous reviews.<br>
-&gt; <br>
-&gt; <br>
-&gt; Although it=E2=80=98s possible to build Qemu with GTK support enabled =
-on macOS,<br>
-&gt; that UI doesn=E2=80=99t actually work on macOS at all, and apparently =
-hasn=E2=80=99t been<br>
-&gt; supported since 2018, see:<br>
-&gt; <a href=3D"https://stackoverflow.com/a/51474795" rel=3D"noreferrer" ta=
-rget=3D"_blank">https://stackoverflow.com/a/51474795</a><br>
-&gt; <br>
-&gt; I don=E2=80=99t think there=E2=80=99s any point making adjustments to =
-the GTK code by<br>
-&gt; guessing what might be needed if someone did fix that to work with mac=
-OS at<br>
-&gt; some point.<br>
-<br>
-If we don&#39;t support GTK on macOS, then we should update meson.build<br>
-to actively prevent users enabling GTK on macOS builds, rather than<br>
-letting them suffer random runtime crashes.<br>
-<br></blockquote><div><br></div><div>Agreed - I&#39;m now more confused tha=
-n ever though because <a href=3D"https://gitlab.com/qemu-project/qemu/-/iss=
-ues/2539">https://gitlab.com/qemu-project/qemu/-/issues/2539</a> sort of im=
-plies that Philippe has previously been using it successfully. Or perhaps t=
-his was created in response to <a href=3D"https://gitlab.com/qemu-project/q=
-emu/-/issues/2515">https://gitlab.com/qemu-project/qemu/-/issues/2515</a> ?=
- But it seems like even the SDL implementation isn&#39;t perfect: <a href=
-=3D"https://gitlab.com/qemu-project/qemu/-/issues/2537">https://gitlab.com/=
-qemu-project/qemu/-/issues/2537</a></div><div><br></div><div>Basically, it =
-seems like Qemu&#39;s UI threading on macOS is currently a bit of a mess, e=
-xcept in the Cocoa UI.</div><div><br></div></div></div>
-
---00000000000077b18f0626a01bb0--

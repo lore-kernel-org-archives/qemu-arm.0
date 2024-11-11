@@ -1,112 +1,112 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6465557njc;
-        Sun, 10 Nov 2024 23:52:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVv/RFBLvYJN8PAvHJFZUtIpWYljqYxDFvYVo0mKvdiPzJeG8nHfx0L9veAJQT1f33iQczxpqp/phX2Tg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHuBuFb9h3kNvIIA+ag3gNqQ7I66mqh+WKwoqYK7dnczYvD0K8yRB0Osl5CLbVprF4z2TXQ
-X-Received: by 2002:ac8:58ca:0:b0:461:4907:ded9 with SMTP id d75a77b69052e-463093746fcmr193344311cf.30.1731311530477;
-        Sun, 10 Nov 2024 23:52:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731311530; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6467183njc;
+        Sun, 10 Nov 2024 23:56:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXaiBnaB50K5EZuKKOjIrpXsK/x0aprlNY+h8mNiyyCw3Ahvq1oJgeCPQpPDXl5Khsr8dFOT4GlMMflvQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGxVXM06uawS7sZ/WUjDkpGBW4DoXQum0Ld2VYOfzeNrGQaq57sGIs7LpqBvXViBCY0kp2L
+X-Received: by 2002:a05:620a:c4e:b0:7a8:554:c368 with SMTP id af79cd13be357-7b3318c7d76mr2097029885a.6.1731311819396;
+        Sun, 10 Nov 2024 23:56:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731311819; cv=none;
         d=google.com; s=arc-20240605;
-        b=k1U06g65q1iuxV7LqmRwl8fJBaoVebvujFly69rDz1+f/HFhTiVBjvYSIGKGeqgkTz
-         LfBYT5RQhTWGc2ekzRinyDW1GYqsaJeSPem1LU95EwNq5m5Y8W3J4eXpmmlEjh3Yq/Hn
-         iNHkkOlprsPQhypc2WXB6Uo0NZy7CGbI/zpBtUdK1IABRhWclstiXuiVC964d56N6yNz
-         z4oQ7RKgrvqaefCtFnh7Rw+Uev0tdm2cs/5DO5yx09XTj6fsM50V4X6UQFSvznvG/nGP
-         vWzZUUfJ62wxX+MEHd8bL2kmiNC+47MXr7CMbcTW0/svGBd1p6XcBm2nTbvZbYtMYF3p
-         nSQQ==
+        b=MSv6sy40irhZ2zpxfqDfpgGP+CuNmMfUXFFnQC7MEchb+ym+C57zKDq4SsT+NtKoIR
+         ZlWIErVWIf0K06e50+V3DGm74+VmdRpZacY8kWvYoaerGGxx2mrvtvKbLmP1UWGHtrYj
+         4UGyICaR4Uy9Er/rDKfRrv6Po71NeJMPUmsyuR3mLE1Ervvul4PDq+fAdPikP8f3gFuN
+         yh26efebtaNg28DfleTmui1Qzm6T6kfq1W3BfkZX216Un8wrfjRhEo4bqMQYzIJBfWoU
+         AeZj509AULE9AyUKOenTg+KGM8Ti4SLxtnMOFbkZrobvJuoPy7Xdcm39x2sNCV938NUk
+         UFJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=pRFs6ZA7wIfNa7Iv36NjGlXxZIi/J8a4VKBfI+yyVPA=;
-        fh=JKgxgEuLpcKsyDIFrTqj6dfwIrnppgMzqosGDZklYQY=;
-        b=NbpoGyrzPFk6Wk4x1649MVJU0DuT4jym/JxqYV4Y8iHMAI2X3/VPQRFhtgQuKwjDaY
-         MVOfyH1iohTAiaFn15DfVDFydiRGojaPw3xSvOAbxUq3tRcH+1iDphwPp4kvnJLZ2jMX
-         qGYUMFp5/14gC5ZAy4ZFfHVgTRAa3StszuTc4Eho+TsYhQrXc8tCVUfmGEwNqtwD6ajd
-         dY4sl6TRzRQtBf8nWkQKFRKkWx7gEMIM1ZmS7iwhoALHF4IOcqxAeO60oUxNq8aD/cOF
-         mh06dPf87yLokO6f2iStl5LpP9K9BF+f6e5GUcjgZi0mZjbOwOMGgTvRRBoul5mgjRpD
-         I+8g==;
+        bh=ow3FUGyStw/kKVci2B4aoXvUXvaaEUJf+4x32Fp7ekk=;
+        fh=DGsMngpo/1ldU+B2krjFo6WW8194bc9zeyjPt6lBn2I=;
+        b=i1GWbQ1pHpZsbMqEurgiLn5K9vw/RpTXDwZ72n2jGOFDdQXGQmuvEUr4t35c4VR/Tv
+         O6TCfKwSEjUVzCHDckLNOpU/YWKafv5pYzENvM3ju90QUpkbk0aTistKfBcv+3pVbUVU
+         r0wWzrxY+5KFp8cjNcTnxjb1fTNe6jwbh8ifO9Dz5T6qcu+qIGv+fxnDxpyP2gFwsoWd
+         9tWDHiWKpIh6zKjHNrT6W0z+AGfd+5GBiaRm/o/j/NegsjxGIKBEhGlzMbUh0e6TuRha
+         7czE0sEKCPSgb6tLnSKMJyLgozNZX7K95HVNNRkkATejpZtyz4LT0GA1df8B9s1eVj2R
+         MdBA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RWaymG9D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZOWwYCzP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ff5c757esi105925361cf.302.2024.11.10.23.52.10
+        by mx.google.com with ESMTPS id af79cd13be357-7b32ac58263si1067400985a.181.2024.11.10.23.56.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 10 Nov 2024 23:52:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 10 Nov 2024 23:56:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RWaymG9D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZOWwYCzP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tAPDD-0006CM-Te; Mon, 11 Nov 2024 02:51:51 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tAPI5-0007Rt-6M; Mon, 11 Nov 2024 02:56:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAPDC-0006Bq-BX
- for qemu-devel@nongnu.org; Mon, 11 Nov 2024 02:51:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAPHg-0007Ei-VC
+ for qemu-arm@nongnu.org; Mon, 11 Nov 2024 02:56:28 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAPDA-0007L1-Fu
- for qemu-devel@nongnu.org; Mon, 11 Nov 2024 02:51:50 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAPHf-0007sO-EG
+ for qemu-arm@nongnu.org; Mon, 11 Nov 2024 02:56:28 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1731311507;
+ s=mimecast20190719; t=1731311786;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=pRFs6ZA7wIfNa7Iv36NjGlXxZIi/J8a4VKBfI+yyVPA=;
- b=RWaymG9DlX6E4WIsBJBvyhETydd4xEHP4ik3kufgrda6LFTqZGB1s1WpK2sEuJNa8tVkjN
- xzmjwbZxPvPbG8HCZ7kXyQoYYjyOGWqkWmS+wm+2PKPi6hDhbnkJ78lbzofpDe3INqFHeH
- R9HDJVtY46xlPLSbFobrl98wv3K1c40=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ow3FUGyStw/kKVci2B4aoXvUXvaaEUJf+4x32Fp7ekk=;
+ b=ZOWwYCzPB3MQlJRYfehMMhXtgeliD0yQvTqpMvBzyV+Wdtku5DzgQheN/q46xHymxFh6GL
+ JT6Rc7az3y1l52vURpaAlxMfw/vdijXXWMbiEQTHnvPVBebe6KEmpN/su2cd0cIU0GzLzT
+ r4Ob6UbwmSwk2yvi+aNcGGLHmgLNleI=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-179-aJ6TVrqaOCam_PXaDGpHTA-1; Mon, 11 Nov 2024 02:51:45 -0500
-X-MC-Unique: aJ6TVrqaOCam_PXaDGpHTA-1
-X-Mimecast-MFC-AGG-ID: aJ6TVrqaOCam_PXaDGpHTA
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-a9a1b872d8bso323910466b.1
- for <qemu-devel@nongnu.org>; Sun, 10 Nov 2024 23:51:45 -0800 (PST)
+ us-mta-74-gKTwbER-MmyX9O5LhZQ0kw-1; Mon, 11 Nov 2024 02:56:25 -0500
+X-MC-Unique: gKTwbER-MmyX9O5LhZQ0kw-1
+X-Mimecast-MFC-AGG-ID: gKTwbER-MmyX9O5LhZQ0kw
+Received: by mail-ed1-f69.google.com with SMTP id
+ 4fb4d7f45d1cf-5cbadbef8edso3659342a12.3
+ for <qemu-arm@nongnu.org>; Sun, 10 Nov 2024 23:56:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731311504; x=1731916304;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=pRFs6ZA7wIfNa7Iv36NjGlXxZIi/J8a4VKBfI+yyVPA=;
- b=v/3yu8XEheSidZzpsWrZ0ziIp41j/McqV1gl60tGxJlyyAYlnO7YJScreYn2GeJWZZ
- vQtwJQmVL5Xe/RVL7Fz09QBAOC9cKY64y8GOTMFh1TD6+NQGubwWmGt9pGWjmj9ZqSFl
- vGLQ2LQSbFdwn0cdyZgLvADHpSo/4NlwwB1uvL2wzSa/FuiKS+ohf1KrUWEXOtdJsGLP
- w59M87yBgODJiwLsXNtc8rurn8uZX96xhibk53/NQBFlC50WJ1WvrvopuvfQkVSNdU2z
- Cdc73TvwgT5x+VfCkMfbbQBIUk4fmkyPAg13oyVD4tHSgnE2dr8OmKQ7dKHdboAFUvFn
- QorQ==
+ d=1e100.net; s=20230601; t=1731311784; x=1731916584;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ow3FUGyStw/kKVci2B4aoXvUXvaaEUJf+4x32Fp7ekk=;
+ b=pqpBOOyO3sTGZTbDoqY/JE7XFtIUP7aXKWCWEtuCjtB8bZ/zmAD9OUrC+43ap6/hXw
+ gk++hN5nLNR8I8is6x7RAuLd/7wd43+Fj0ML10jYBfGrF5QShdZm815BqL6dIcCYr2Ov
+ M/HZOnMsRoiITk9rn7ku/XotoV2I1sxWBa1fSvPurKr049GyiP8OUVbk0tFmBih4SWdV
+ dkzCZcX11dYVcbW6fDp0OXDlVyXf7xEfFABAg1LwUvRr24wZiuAsrEBkQKxrwhhKvZV3
+ WHmcv1HEsut6iJnxTCgXTRNsbKjk5bHF/nQODk3uqhPbk8ljdmMi+e+0WIspfBKczJJe
+ ccmQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWUPQWPl8sUInPTZwfkBrMC1LSAsa68MgvxVFAiKaPKIxVx8k5W0/wCIPV+gltzpUuVnrYZWqC5MxOY@nongnu.org
-X-Gm-Message-State: AOJu0YxuaMsdnaf6CT3Pza4LanDh15FeonHpfTiiqXig2d6trGDTlKcY
- Fy0VEOOYzWDvY7fCf/B3Z+l3PvHrUvvOPNHpH+vhLd8mNHB72lhqeJUWzpm2ovFatUIBRChL6D7
- w1XOvApLvUR8gQ1134puWGQ0H3THFrkfD4cW4ObbQ9v+bc3KrIMhC
-X-Received: by 2002:a17:907:9490:b0:a9a:59f:dfb9 with SMTP id
- a640c23a62f3a-a9eefeb2eb3mr1068373166b.5.1731311504571; 
- Sun, 10 Nov 2024 23:51:44 -0800 (PST)
-X-Received: by 2002:a17:907:9490:b0:a9a:59f:dfb9 with SMTP id
- a640c23a62f3a-a9eefeb2eb3mr1068371266b.5.1731311504249; 
- Sun, 10 Nov 2024 23:51:44 -0800 (PST)
+ AJvYcCWj/7Q64D9d/dSsa+f1NKPH3CxXCT9bEo2SwHNJkCZQK4vBgNkjKIkGcOHuYhDWsEwYinSzFNGgpw==@nongnu.org
+X-Gm-Message-State: AOJu0YxiUZ4oNJSsHDy4slNRvWJgbejwiw4KuP04uDbD1lpWivlz7Hgk
+ fkn70871rU+q3qtRQ9frh2KkbaZb8kcAnwRiYWBZ/+5FZhep+uA9nfMlfQ/C2fTJ48E4rqaBZoU
+ fyCqgyAyL7BeKMSbirVO6IzmW94uRwHaEa26hqx9dRisFy1bn+Q==
+X-Received: by 2002:a17:906:c112:b0:a99:6036:90a with SMTP id
+ a640c23a62f3a-a9eeff0d262mr1143452766b.14.1731311784099; 
+ Sun, 10 Nov 2024 23:56:24 -0800 (PST)
+X-Received: by 2002:a17:906:c112:b0:a99:6036:90a with SMTP id
+ a640c23a62f3a-a9eeff0d262mr1143451566b.14.1731311783733; 
+ Sun, 10 Nov 2024 23:56:23 -0800 (PST)
 Received: from [192.168.0.7] (ip-109-42-51-55.web.vodafone.de. [109.42.51.55])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9ee0dc5112sm563266066b.112.2024.11.10.23.51.42
+ a640c23a62f3a-a9ee0a17684sm565487266b.34.2024.11.10.23.56.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 10 Nov 2024 23:51:43 -0800 (PST)
-Message-ID: <b02ee63d-cd8b-4b18-91ff-c116636b6c8e@redhat.com>
-Date: Mon, 11 Nov 2024 08:51:42 +0100
+ Sun, 10 Nov 2024 23:56:23 -0800 (PST)
+Message-ID: <cf73685f-df95-4165-a642-ddbbb5efb64e@redhat.com>
+Date: Mon, 11 Nov 2024 08:56:21 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 16/17] tests/functional: Explicit endianness of
- microblaze assets
+Subject: Re: [PATCH v3 15/17] hw/microblaze: Support various endianness for
+ s3adsp1800 machines
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>
 Cc: Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -116,8 +116,7 @@ Cc: Jason Wang <jasowang@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>
 References: <20241108154317.12129-1-philmd@linaro.org>
- <20241108154317.12129-17-philmd@linaro.org>
-Content-Language: en-US
+ <20241108154317.12129-16-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -161,52 +160,82 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20241108154317.12129-17-philmd@linaro.org>
+In-Reply-To: <20241108154317.12129-16-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: W_U4kx_fvYeMdxxzpjwx73UNC2_0q2JzLb36YBzGtaA_1731311784
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.118,
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.118,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.743,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: g6o9gfdlo5RF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qtRrTxc8Heev
 
 On 08/11/2024 16.43, Philippe Mathieu-Daudé wrote:
-> The archive used in test_microblaze_s3adsp1800.py (testing a
-> big-endian target) contains a big-endian kernel. Rename using
-> the _BE suffix.
+> Introduce an abstract machine parent class which defines
+> the 'little_endian' property. Duplicate the current machine,
+> which endian is tied to the binary endianness, to one big
+> endian and a little endian machine; updating the machine
+> description. Keep the current default machine for each binary.
 > 
-> Similarly, the archive in test_microblazeel_s3adsp1800 (testing
-> a little-endian target) contains a little-endian kernel. Rename
-> using _LE suffix.
+> 'petalogix-s3adsp1800' machine is aliased as:
+> - 'petalogix-s3adsp1800-be' on big-endian binary,
+> - 'petalogix-s3adsp1800-le' on little-endian one.
 > 
-> These changes will help when adding cross-endian kernel tests.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   tests/functional/test_microblaze_s3adsp1800.py   | 6 +++---
->   tests/functional/test_microblazeel_s3adsp1800.py | 6 +++---
->   2 files changed, 6 insertions(+), 6 deletions(-)
+>   hw/microblaze/petalogix_s3adsp1800_mmu.c | 62 +++++++++++++++++++-----
+>   1 file changed, 51 insertions(+), 11 deletions(-)
+...
+>   static const TypeInfo petalogix_s3adsp1800_machine_types[] = {
+>       {
+>           .name           = TYPE_PETALOGIX_S3ADSP1800_MACHINE,
+>           .parent         = TYPE_MACHINE,
+> -        .class_init     = petalogix_s3adsp1800_machine_class_init,
+> +        .abstract       = true,
+> +        .class_size     = sizeof(PetalogixS3adsp1800MachineClass),
+> +    },
+> +    {
+> +        .name           = MACHINE_TYPE_NAME("petalogix-s3adsp1800-be"),
+> +        .parent         = TYPE_PETALOGIX_S3ADSP1800_MACHINE,
+> +        .class_init     = petalogix_s3adsp1800_machine_class_init_be,
+> +    },
+> +    {
+> +        .name           = MACHINE_TYPE_NAME("petalogix-s3adsp1800-le"),
+> +        .parent         = TYPE_PETALOGIX_S3ADSP1800_MACHINE,
+> +        .class_init     = petalogix_s3adsp1800_machine_class_init_le,
+>       },
+>   };
+>   
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Do we really want additional machine types for this? Can't we simply let the 
+user set the machine property instead? (otherwise, all tests that run for 
+each machine types (see qtest_cb_for_every_machine) will now be executed 
+three times instead of only once). IMHO it should be sufficient to have a 
+machine property for this and add proper documentation for the machine.
+
+  Thomas
 

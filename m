@@ -1,214 +1,190 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6584616njc;
-        Mon, 11 Nov 2024 04:03:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW21Qo+LYhrcfasn4S9yx/SU6OqlqRfGL6iaE0NH9ViZWp5Uspl+8DHQkErXboPK1pKb/ZtQxGVmqZo8w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHnzGcwzfLlAzMwdBK9kzTxQFmCUcz7hoN5uUh+06zBBLql91ZCWz3ftj+QNDL0BE8MeAxe
-X-Received: by 2002:a05:6122:da6:b0:50d:354a:19ae with SMTP id 71dfb90a1353d-51401ebddefmr10043301e0c.10.1731326609269;
-        Mon, 11 Nov 2024 04:03:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731326609; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp6609823njc;
+        Mon, 11 Nov 2024 04:41:47 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVCR2D3eXIIC4J3gy8Ue7DQOUrnI9TBUUziGnApY89DZxRWKuMNX8SHcBTYB//R52s2ZRffU6uVDfnxlw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHfIYwcMQAU9C4bnVrH5KnlFUpiB05NFAluz+OzAVwKfmUZOJiXhYiqX/VFCw5k2Cx3wLTw
+X-Received: by 2002:a05:620a:44d2:b0:7b1:4fab:9fa2 with SMTP id af79cd13be357-7b331f183d4mr1776586085a.42.1731328907299;
+        Mon, 11 Nov 2024 04:41:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731328907; cv=none;
         d=google.com; s=arc-20240605;
-        b=QeuwXh0Citl/pfqEf+Wa44q8dptN8HVZ67qMirmm8El6W8+nD1T5KdAM4fMuXRJiHm
-         jU0lhkDE/6FtFVm7ZWcP5P21G+XHIlofQfVqCbpgmov2xfokXzb4/r6E3Q3sLJGtLnc/
-         t6OtB9NBzNfjAn6fW5F8yX+qFdH+O2XjE2N3vIZAg+TDof9vrLpUcIxLF1wb/j7Y+rWh
-         KkURJjBhwjLIkuu8yPfILgE84C+10uEDxDgqXRTCQawWwUpxO/vwRzWbjnvXAhYnU8bC
-         Ne4EXc1nJMDi6hjXuWmZY0aoIZ6mLlNdN306ANld96X3ynyHNzzx6NPxuV6txoU34I+G
-         aAVw==
+        b=b/siIpjYACk1gKaXxA9T1Umxo3Rx9bjyRkBdMnwZFFVPrzBv2ddElsil7cFDouCnkN
+         ze+l2z7BsNrGZPbEUugA7WWbdMXy5M7VtyGD89jCsCwxfQ2QUYWMzyUmH43PhwavzlQW
+         Wu6XnYbySfHqnroAlHPDEc2Q+/8K5OZutT5N+lcFuc57WX+MyHOoGd0xJgUbQFbQMEQS
+         gVY26Ud40lq8wo7ea5YBi8CFu/fvQHAIbqVhC5wwX4YjU1ilXVtym3aMUsxNzgH+Dygw
+         v3Nxi+C00krAC1xEmsCV++MymTwYbMcKjwnTu1Fxt2fnORwV97wZQB4kgclhVjzznbqv
+         n2xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=dnMmNO50aDzoHtK5dRqtoMLJToObkbj4apMesAz6wjQ=;
-        fh=wFVISeno+KNxs811KkWGgYDI6lcenMm5nUQ4zweCVM8=;
-        b=TReTJUNllpCSwXXe8eCSqqzJpXCSozjP7wbK1p6vFGjNdzMoNebZWGGwi9XGDv/5Mc
-         gMxr+25Q7AqvBJadpbuMho/bwDPi0RIyCKBunyF6k6fmgA62X2YR4aCeJMjvId1URijl
-         l+SLu9koUWCtXZvUXF2krAwYO75me6rbyzRp1UUQNTTvi+yOPS0AhG2nXTJjxetdyt0d
-         oznXBG8XGIvrPE+omy7blcn+FOphYQqHRu824jE8axy10FdR6QBKwXdmjhmvot4+wV+I
-         CmlNAme3an9FLnNas09f38AH5iluOLygz5P/B6m6OlGPojpP1JZqY31EYjBARjcjHqbm
-         nF7A==;
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=rIpdqzY2eZNeQXM6H/d6/zX7461BCpeOtcj6OEl9MJI=;
+        fh=Cq8IHC2QSI4gip9v4lsYUB6RlFAVaxw4oiNlolABUxc=;
+        b=eK15E1yrBwCUM4/W3NzElqrEBh6COpk6BnhVFyQlUyrYgPMzx/oGF0909rEe0tHqwK
+         +3hCPFbY3aHayNkMqkrXKi78RUV1NKQoUy+a6ASw9IZWk4V1arZRGRQCk1L2Cd7s1xHt
+         o0j8g1iKfVZyyGwAf3KYmI6KKSuuMpdvBdnqlZIdfDHGSCazvPQ4wJZ0AHKaOe3jxkrA
+         x/KL7RVl3n7zB0hzI9KUIg2w6QGwipC8VSf67mcv/zpFaKCFv5ns7q1bYzfEvmiUSb4R
+         rISJdGFBOLIcVGDozMm8J90ytVfkK5GU/50N3ON1jnUU8QckzrwIDKIcecyBSgDzdOjY
+         gOsw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="a/T8Mb/k";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-513f321beb7si2522560e0c.175.2024.11.11.04.03.29
+        by mx.google.com with ESMTPS id af79cd13be357-7b32ac3d7e3si1049188285a.138.2024.11.11.04.41.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2024 04:03:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 11 Nov 2024 04:41:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="a/T8Mb/k";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tAT8E-0007UV-GI; Mon, 11 Nov 2024 07:02:58 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tATjc-0001xz-Bq; Mon, 11 Nov 2024 07:41:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tAT88-0007Tp-DG
- for qemu-devel@nongnu.org; Mon, 11 Nov 2024 07:02:53 -0500
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tAT84-0006pN-54
- for qemu-devel@nongnu.org; Mon, 11 Nov 2024 07:02:50 -0500
-Received: by mail-lj1-x22d.google.com with SMTP id
- 38308e7fff4ca-2feeb1e8edfso54509311fa.1
- for <qemu-devel@nongnu.org>; Mon, 11 Nov 2024 04:02:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1731326565; x=1731931365; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=dnMmNO50aDzoHtK5dRqtoMLJToObkbj4apMesAz6wjQ=;
- b=a/T8Mb/kHJSa1n9r8ko00cR7FTxEMODHLJr+1O9Jm4Wt/mgmIMRtTZ8wzUzXoxsDJt
- S/GLyi+WDQstIh0MObMCby4ki1tgprb9EhnDR9saxD8rcQHF7gMqgDLfhdSjgTLbF5Ur
- Lal2pahE0m7bavj0OUqK9jS4Io8sT0ASkvnqjhA/KvxVhipnRnzLGsRbv2jf+jAoJEir
- ZvtCTqfXDFHNycAM4K06U67PR4bRC5FT0wYpNfR7JisQjE8BiZ1iw4otbBODxxEv1zDQ
- 6lZpOm0JKx7wlFrAHkilUwdRGtUVWPI4KlSIqEXrDj3BZ/ICEurXluCeHJlqKtISufPP
- J93Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731326565; x=1731931365;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=dnMmNO50aDzoHtK5dRqtoMLJToObkbj4apMesAz6wjQ=;
- b=R2KHxLZp+qLzHKewgA9OSbGZkDUmaQykiY/1MtLaILOTBJt4dQFIk0n9m96H3U07wf
- y7JsYLqPff/OXbuZ/tfs1m+8JHOGyUFGwtDdUAchG8DCz7nIIH4LRF+eeKayfalLYeO4
- qAoux8wKZJ7CTuC4YUnLsYNElGjbfbNjFnmGGjDgYSfK2euQBM7fepapLXUzbqOCjFPK
- GkWgal0bNoQLvfUeZwDtotRvWaHUrNLr/HREWjvPSb20NLIOooov08B2PsKkzeOp06Iw
- oPMR+muN0wT3mwjJGt+1hbry0d6mbnSIaDou9KEhNsIYSFhRTaAYX3E3y1zbZyvzDdQT
- 50zQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW1am/siLOAz9DviUSPhV6F/JuQd3v9rMfqUcx0tNp1y+TklzJWNUnZNzQJZvceyYAP5eBexFUX7mh/@nongnu.org
-X-Gm-Message-State: AOJu0YztGcO7R0IwCkAe67Hx7M12oneYl7xnL+bFGCDfLe3OpIkSTbC6
- wjD7pw0llOSQBdDNYjX0WoxzuYcSDTPKErk3qC/o57BPv/Du6fbtBdu0DTiIi5c=
-X-Received: by 2002:a2e:bc1a:0:b0:2fa:d4ef:f234 with SMTP id
- 38308e7fff4ca-2ff2016361fmr59045781fa.1.1731326565447; 
- Mon, 11 Nov 2024 04:02:45 -0800 (PST)
-Received: from [192.168.69.126] (cnf78-h01-176-184-27-70.dsl.sta.abo.bbox.fr.
- [176.184.27.70]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-432b054aed6sm170869455e9.15.2024.11.11.04.02.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 Nov 2024 04:02:44 -0800 (PST)
-Message-ID: <0efff9f3-6053-4e2d-80b5-27b4c86da813@linaro.org>
-Date: Mon, 11 Nov 2024 13:02:42 +0100
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tATjJ-0001u7-4a; Mon, 11 Nov 2024 07:41:18 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tATjH-0003Zq-08; Mon, 11 Nov 2024 07:41:16 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 013F34E6001;
+ Mon, 11 Nov 2024 13:41:07 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id Y4HK22FdUUOH; Mon, 11 Nov 2024 13:41:04 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id A24E54E6000; Mon, 11 Nov 2024 13:41:04 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 9F222746F60;
+ Mon, 11 Nov 2024 13:41:04 +0100 (CET)
+Date: Mon, 11 Nov 2024 13:41:04 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Phil Dennis-Jordan <phil@philjordan.eu>
+cc: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
+ Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-devel@nongnu.org, 
+ agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com, 
+ rad@semihalf.com, quic_llindhol@quicinc.com, stefanha@redhat.com, 
+ mst@redhat.com, slp@redhat.com, richard.henderson@linaro.org, 
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, gaosong@loongson.cn, 
+ jiaxun.yang@flygoat.com, chenhuacai@kernel.org, kwolf@redhat.com, 
+ hreitz@redhat.com, philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com, 
+ alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com, 
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, 
+ jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, qemu-arm@nongnu.org, 
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org
+Subject: Re: [PATCH v8 01/15] ui & main loop: Redesign of system-specific
+ main thread event handling
+In-Reply-To: <CAAibmn2+pT_kpcdHd26KsFggRNRR3yPep11fToOK=GZ9AEDHpw@mail.gmail.com>
+Message-ID: <e08017b1-5b38-f482-5534-cea4dcc0f000@eik.bme.hu>
+References: <20241108144709.95498-1-phil@philjordan.eu>
+ <20241108144709.95498-2-phil@philjordan.eu>
+ <9c2e0b96-2125-4041-9f66-116d54accb04@daynix.com>
+ <CAAibmn3NbtOEwWLQFOo_UmAGTehOj+dDP04A=-JGMZVK9AYMDw@mail.gmail.com>
+ <ZzHJgAbBJZYrSt84@redhat.com>
+ <CAAibmn2+pT_kpcdHd26KsFggRNRR3yPep11fToOK=GZ9AEDHpw@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 04/17] hw/net/xilinx_ethlite: Simplify by having
- configurable endianness
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- Anton Johansson <anjo@rev.ng>
-Cc: Jason Wang <jasowang@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, devel@lists.libvirt.org,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>
-References: <20241108154317.12129-1-philmd@linaro.org>
- <20241108154317.12129-5-philmd@linaro.org>
- <71a10d65-dd73-4f39-93ee-2c36928f8f4f@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <71a10d65-dd73-4f39-93ee-2c36928f8f4f@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: multipart/mixed; boundary="3866299591-1363951794-1731328864=:607"
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: v2NUq0cp46La
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: p0vWm4B1OLqk
 
-On 8/11/24 16:05, Paolo Bonzini wrote:
-> On 11/8/24 16:43, Philippe Mathieu-Daudé wrote:
->> The Xilinx 'ethlite' device was added in commit b43848a100
->> ("xilinx: Add ethlite emulation"), being only built back
->> then for a big-endian MicroBlaze target (see commit 72b675caac
->> "microblaze: Hook into the build-system").
->>
->> I/O endianness access was then clarified in commit d48751ed4f
->> ("xilinx-ethlite: Simplify byteswapping to/from brams"). Here
->> the 'fix' was to use tswap32(). Since the machine was built as
->> big-endian target, tswap32() use means the fix was for a little
->> endian host. While the datasheet (reference added in file header)
->> is not precise about it, we interpret such change as the device
->> expects accesses in big-endian order.
->>
->> Instead of having a double swapping, one in the core memory layer
->> due to DEVICE_NATIVE_ENDIAN and a second one with the tswap calls,
->> allow the machine code to select the proper endianness desired,
->> removing the need of tswap().
->>
->> Replace the DEVICE_NATIVE_ENDIAN MemoryRegionOps by a pair of
->> DEVICE_LITTLE_ENDIAN / DEVICE_BIG_ENDIAN.
->> Add the "little-endian" property to select the device endianness,
->> defaulting to little endian.
->> Set the proper endianness on the single machine using the device.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->> RFC until I digest Paolo's review from v1:
->> https://lore.kernel.org/qemu-devel/34f6fe2f-06e0-4e2a-a361-2d662f6814b5@redhat.com/
-> 
-> tl;dr: this works but would break migration compatibility with the 
-> previous version.  If you want to keep that, you need to add
-> 
->> -            r = tswap32(s->regs[addr]);
->> +            r = s->regs[addr];
-> 
-> if (s->little_endian_model)
->      r = cpu_to_le32(r);
-> else
->      r = cpu_to_be32(r);
-> 
-> 
->> @@ -161,23 +165,26 @@ eth_write(void *opaque, hwaddr addr,
->>               break;
->>           default:
-> 
-> if (s->little_endian_model)
->      r = le32_to_cpu(r);
-> else
->      r = be32_to_cpu(r);
-> 
->> -            s->regs[addr] = tswap32(value);
->> +            s->regs[addr] = value;
->>               break;
-> 
-> These pairs ensure that RAM goes through an even number of swaps.  I 
-> don't think they are needed but you decide.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Indeed; I didn't realize it was RAM.
+--3866299591-1363951794-1731328864=:607
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-> However, I am wondering if the double MemoryRegionOps are needed *at 
-> all*.  Since petalogix is arguably a little-endian only machine, can you 
-> just use DEVICE_LITTLE_ENDIAN?
+On Mon, 11 Nov 2024, Phil Dennis-Jordan wrote:
+> On Mon, 11 Nov 2024 at 10:08, Daniel P. Berrangé <berrange@redhat.com>
+> wrote:
+>
+>> On Sun, Nov 10, 2024 at 08:08:16AM +0100, Phil Dennis-Jordan wrote:
+>>> On Sun 10. Nov 2024 at 08:01, Akihiko Odaki <akihiko.odaki@daynix.com>
+>>> wrote:
+>>>
+>>>> On 2024/11/08 23:46, Phil Dennis-Jordan wrote:
+>>>>> macOS's Cocoa event handling must be done on the initial (main)
+>> thread
+>>>>> of the process. Furthermore, if library or application code uses
+>>>>> libdispatch, the main dispatch queue must be handling events on the
+>> main
+>>>>> thread as well.
+>>>>>
+>>>>> So far, this has affected Qemu in both the Cocoa and SDL UIs,
+>> although
+>>>>> in different ways: the Cocoa UI replaces the default qemu_main
+>> function
+>>>>> with one that spins Qemu's internal main event loop off onto a
+>>>>> background thread. SDL (which uses Cocoa internally) on the other
+>> hand
+>>>>> uses a polling approach within Qemu's main event loop. Events are
+>>>>> polled during the SDL UI's dpy_refresh callback, which happens to run
+>>>>> on the main thread by default.
+>>>>
+>>>> GTK should also do the same as SDL and requires treatment; I forgot to
+>>>> note that in previous reviews.
+>>>
+>>>
+>>> Although it‘s possible to build Qemu with GTK support enabled on macOS,
+>>> that UI doesn’t actually work on macOS at all, and apparently hasn’t been
+>>> supported since 2018, see:
+>>> https://stackoverflow.com/a/51474795
+>>>
+>>> I don’t think there’s any point making adjustments to the GTK code by
+>>> guessing what might be needed if someone did fix that to work with macOS
+>> at
+>>> some point.
+>>
+>> If we don't support GTK on macOS, then we should update meson.build
+>> to actively prevent users enabling GTK on macOS builds, rather than
+>> letting them suffer random runtime crashes.
+>>
+>>
+> Agreed - I'm now more confused than ever though because
+> https://gitlab.com/qemu-project/qemu/-/issues/2539 sort of implies that
+> Philippe has previously been using it successfully. Or perhaps this was
+> created in response to https://gitlab.com/qemu-project/qemu/-/issues/2515 ?
+> But it seems like even the SDL implementation isn't perfect:
+> https://gitlab.com/qemu-project/qemu/-/issues/2537
+>
+> Basically, it seems like Qemu's UI threading on macOS is currently a bit of
+> a mess, except in the Cocoa UI.
 
-1/ This petalogix machine is actually built in the big-endian binary
-2/ As Edgar mentioned elsewhere, Petalogic IP can be synthetized as
-    big-endian
-3/ This machine is used to prove we can remove the TARGET_BIG_ENDIAN
-    definition and unify big/little endian binaries in our build system.
+Maybe it worked with older MacOS X releases but broke around the same time 
+when commit 5588840ff77800 was needed to fix the cocoa UI? Maybe gtk needs 
+a similar fix or whatever cocoa was changed to use since somewhere in gtk 
+or QEMU?
+
+Also I find it strange to require UI backends to NULL init a global. If 
+the cocoa UI is the only one that needs it could that also set it instead 
+of doing it in /system? That would also confine macOS specific code to 
+cocoa.m and the other UIs would not need any change that way.
+
+Regards,
+BALATON Zoltan
+--3866299591-1363951794-1731328864=:607--

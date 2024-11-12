@@ -1,349 +1,278 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7462909njc;
-        Tue, 12 Nov 2024 08:31:48 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXNFB5Qoa53+YA1byFzqE3Eow9c7oOWBrIvXUJcNsj3fiLiSZptSyPGnjgZAj0uf1EaQtNo7fXNUex35A==@linaro.org
-X-Google-Smtp-Source: AGHT+IE2J6WJABLRwZIkDagtS7ASstGYkYhzOb2/AXkaSfS8AR0XoaaTxd8qE47FSwxsSExvYkUc
-X-Received: by 2002:a05:6402:4021:b0:5cf:1214:8146 with SMTP id 4fb4d7f45d1cf-5cf12148226mr17614030a12.4.1731429108430;
-        Tue, 12 Nov 2024 08:31:48 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1731429108; cv=pass;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7479200njc;
+        Tue, 12 Nov 2024 08:56:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUPIgsxCjEFbuwG1lwms66+k9QzCVcGhoXdL6VajBU+0Ipn4jbGKYn8hGyudzYZP4PrS2CsZRT4NNxbvQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IERWaI+Zmmwx0FV1tlnbmz1aafvFV4sCvWfhHYxODK05e5GmiKNBLJ52i2DtT2XtKdLLnVj
+X-Received: by 2002:a05:6214:5541:b0:6c5:1fe5:f84c with SMTP id 6a1803df08f44-6d39e115ec5mr241167976d6.20.1731430609040;
+        Tue, 12 Nov 2024 08:56:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731430609; cv=none;
         d=google.com; s=arc-20240605;
-        b=TMCw1ukyBAJoQ6NQ/dGWfghI+/ugt2qihDVMlV+HioS2FvqmC9cnA9H2WGWi0qK5XS
-         6SZoDI3/xkMfz8TJgeTMS6dqjgLVJZvw65A7JnInqmKbX6JMrpnOFfvTAPh4RyVhUPbk
-         hxj4VMHOBgi/ll9xRgwzsaimpOPAA5dyK3pUTLahPDgSU6SuhPSn5v3JW8BJ5EgoKpGd
-         5jO53mn7INOCGXKP534fCN9f0sNKTfU038c4uRFYHdsTLhi/QxNvvH1CUbzly10vAdWq
-         qM6Sl9R37bhrksBY0YJ1Fcu2RprF5ue00DDjfBPcCsRwcYZhNkzFg1pc14SOb8R2spMq
-         8k+A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=LYLr+rh5hOZBfdtfKnkZ93awofZ11kfZdonr2arSeaw=;
-        fh=4Qf3bieO7/HzT9rRl7RHSSrgu0L2PAuaH7h5Ds/Uyik=;
-        b=JCIrVU+EO9Rl1dvEDe+abn6JPYONaeII1WPIw6h28mUzuK3F7RoMqDM6cFS5D7NRdS
-         +hLv4122w1dMmUxqS8succ1Xr8QNYOSzw+CezKnA5kGZ3g1VzwBv1ghw03DxrwJ1iJ9E
-         a/t99XdR9p1+ShaVAOxvykw5PKb8whYLycgKoU01NXapPJRyuRu6CftndwXS0039hHqP
-         +hdlLn10G4pZMBiJQfakdnXC2KUuTV++Eu01yse9pVi3Sh0qgH40STGABzQg1s8aajc2
-         gkT4jtW101GWc7OMZIfQejDpC0fJWpaQeOU+MRKRE7Mrz2IX66JnTORViXzq3j3cYSN4
-         pUYw==;
+        b=NT7vUipNsqRJe+SVDGr4r/ZhXDtoE5dfB5Osa7+0AF/A1Oft+/3voOKCvFqYav3zPg
+         aD23/kiJUfnH3yPT3/W3yzwKf5Jox9caXlXoQzGI9mNmq0Df9xWw+N22sjet1rdvboc9
+         naOB3bnX3/KuppkIWxb93m2MPJK7VdXbvORoyfaYB6IhTqVU4BwGhyrKnABs/unyHzVI
+         Dm+dobG4Yim+aEaIaV13Yl4+cbv5SzGIV3ToebDMbvCobIWfy/Dxc1gw4JLxLThQx4f4
+         Ph/6V7fdoQC0tnxrVpFuRGchK6MTGXHsgXinLYIR7R9sp2MYSsZJdC/8HvEbPj3pUNpB
+         SCqA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=XnAhVVFjjEa9AE7qgj063mddus/nht38lXKcvLgTu8c=;
+        fh=xB6UULXdeTixPsKfGI1ZMkFaZLSeptbrSxsY2iFFo6U=;
+        b=EMDML05scTxdc08dkN9qbPtmIJVkgathliApddeffHyY4Stj8OIa2A5ggmTDDmI2PA
+         rl50cCuEznLTt++1HSWxNk+P9ex4gyJOyo7cbB8RkWi+BkKxoNDsosy0+Xp7zZb87huC
+         GQRh4s3GzionJzvy0nz3VycKmGisY50umlU6sacU4B9//SUC8Fs7lLYZypA60lLRHDAe
+         EPDLgjHmPW1x/vVHWO766vILkvB481enIttvQ+OnPRAVAYX2/kkmzIfBDETY5icTFeVS
+         vGGur4sOYUr80kDPRUVnyUBWBjM2Q+4ZAatzGezT0MVXhy7aO8+d71brpHTuSOVlUwQK
+         uzuA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JtlYXdjJ;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvmarm+bounces-17267-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvmarm+bounces-17267-alex.bennee=linaro.org@lists.linux.dev";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm+bounces-17267-alex.bennee=linaro.org@lists.linux.dev>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5cf03c9c7e2si8251662a12.390.2024.11.12.08.31.48
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=Ju4ynRRD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b32acf8cadsi1502988685a.461.2024.11.12.08.56.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 Nov 2024 08:31:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm+bounces-17267-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 12 Nov 2024 08:56:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JtlYXdjJ;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvmarm+bounces-17267-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvmarm+bounces-17267-alex.bennee=linaro.org@lists.linux.dev";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id C4A4B1F23E63
-	for <alex.bennee@linaro.org>; Tue, 12 Nov 2024 16:31:47 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id C46C120651E;
-	Tue, 12 Nov 2024 16:30:52 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="JtlYXdjJ"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85251205E12
-	for <kvmarm@lists.linux.dev>; Tue, 12 Nov 2024 16:30:50 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1731429052; cv=none; b=KOv8jU2URbTyyCFSGhU58j66sQij6xQZfyOg7+VYREeRBVtQ5yi1Jnx7O3D78Eh4oVFCudyYkubo1UwCAjkFFjoVkZbUoT8FF4crJkjNTbGySK/jNNvdStKu8RNPBe7kXgUrRH7uE0e6Hi74sN8SC2eTHa2ArbgRtzz7EtpRarg=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1731429052; c=relaxed/simple;
-	bh=9efVBDaOj+NotMkSdM+uuNcfbkXRmF5g6Bq4LECl9mw=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:Message-ID:
-	 MIME-Version:Content-Type; b=Zd782NIESAGahhSyLJ3lpLRFE1vTjVPgBDAXA9CKqU1IvJyfc3zwQomyokBjqVLDA7Vk1IOO0FP6BDSS7fiPT0v8FdylGeujbpZZJ81dLkS3zlL5CpXfeU+TK28yzSLCpwUgR3HvjvtyQEIiXtIDM31M7fo7ZCQzikiPpuX99gE=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=JtlYXdjJ; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1731429049;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LYLr+rh5hOZBfdtfKnkZ93awofZ11kfZdonr2arSeaw=;
-	b=JtlYXdjJl1tr6ZuPw+sCxSRBFzxsPQwRqx2etLpJO2eocnv0AzbdTXz62rkO5GA1ovMm7t
-	dUJrjPUas2pR5NDMgALkZgOPUiQERUrMjAQQwvtn/PIebpcsURJpxcqAH62YgZOmV60oDG
-	wVYfdmP/+aW0aB55pDk70qgb/Lb93GU=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-332-qD_3M_D0MZ-H7d9sdBjsew-1; Tue,
- 12 Nov 2024 11:30:45 -0500
-X-MC-Unique: qD_3M_D0MZ-H7d9sdBjsew-1
-X-Mimecast-MFC-AGG-ID: qD_3M_D0MZ-H7d9sdBjsew
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 5DB4A1956095;
-	Tue, 12 Nov 2024 16:30:37 +0000 (UTC)
-Received: from localhost (unknown [10.39.194.144])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E75C31956089;
-	Tue, 12 Nov 2024 16:30:34 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: eric.auger@redhat.com, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, richard.henderson@linaro.org,
- alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
- armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
- pbonzini@redhat.com
-Subject: Re: [RFC 18/21] arm/cpu: Introduce a customizable kvm host cpu model
-In-Reply-To: <87ikstn8sc.fsf@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20241025101959.601048-1-eric.auger@redhat.com>
- <20241025101959.601048-19-eric.auger@redhat.com>
- <ZxuX4i9NjVRizB72@redhat.com>
- <cb6c8f62-c5dc-416d-865f-fbdf96164dac@redhat.com>
- <Zxub7ol4p8P_sWF8@redhat.com>
- <CAFEAcA_wQu17y0PyQwxw0wuf2H5y2VE5aX16nLP2-u7QUP2ggA@mail.gmail.com>
- <Zx-9WxXkmkMuGIlQ@redhat.com>
- <CAFEAcA9w0mb5bcU8p+fScQony-=oqLmNurGWpnL_sBneQCzxUg@mail.gmail.com>
- <Zx_EGxj2aqc_2-kY@redhat.com>
- <63c232c2-a325-48d6-8ed4-753a7c6e3b4e@redhat.com>
- <87ikstn8sc.fsf@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Tue, 12 Nov 2024 17:30:32 +0100
-Message-ID: <87frnwmn2v.fsf@redhat.com>
-Precedence: bulk
-X-Mailing-List: kvmarm@lists.linux.dev
-List-Id: <kvmarm.lists.linux.dev>
-List-Subscribe: <mailto:kvmarm+subscribe@lists.linux.dev>
-List-Unsubscribe: <mailto:kvmarm+unsubscribe@lists.linux.dev>
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=Ju4ynRRD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=fail header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tAuBx-00034o-6N; Tue, 12 Nov 2024 11:56:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1tAuBr-000334-03; Tue, 12 Nov 2024 11:56:31 -0500
+Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
+ id 1tAuBp-0000es-Do; Tue, 12 Nov 2024 11:56:30 -0500
+Received: by mail-pj1-x1034.google.com with SMTP id
+ 98e67ed59e1d1-2e2e87153a3so4305460a91.3; 
+ Tue, 12 Nov 2024 08:56:28 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1731430587; x=1732035387; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XnAhVVFjjEa9AE7qgj063mddus/nht38lXKcvLgTu8c=;
+ b=Ju4ynRRD3AYIZ+l0U9qsYAakUf0oNtt6gznI2P9iAGnJGWXDljP621SyoHiWqu/C8a
+ YbUge0EAm8iPappd9c9V0raYL8S3h0wuZbvp/hVE1xPqLlFgfZc6gfp4MtsUJm6Ovz0I
+ MRiysdAVJS2UXRF1fs+Ykq1PduwcL98xVYW++P2ni/7jfDjGKKroWjufU6AYLqkqGyQF
+ +8n79DGDV2PmnnnviOyjrB4AGKJ9r0TWQxMXent2FckSJGGr2NWrIIFAm/BxARjgXcKb
+ 8ziMD32zXVjND5icVV1IElZpp7aM3CmdhJ68i/Jyfrvtpsb04i21khoAgF65gOoYSzR3
+ HLUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1731430587; x=1732035387;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=XnAhVVFjjEa9AE7qgj063mddus/nht38lXKcvLgTu8c=;
+ b=VAyY4W1eTNy61FUOfDOyI3uSXS/yBQOUuz/oWaYUXI4vlCYgW8kWw+b9NfLFIOv5Ui
+ JPuaRcZEiDeqXPYhlE8cRcavmvkO/wQXQKJbTwBjhMvozU5wKwO+oYWTqbKO+nC5uf8F
+ LzboDr17ihtMoFsnQ7m3IUmDydFs9+O8kbCxESX/RRV6oalErUB2v96HeyhKZJKfAURr
+ CbQ50DB6u7VZ8vPPiBlke9bIXTISGDDDAapTKJP1OEIwQzlz6uiUr684cgiBCY26Aq7m
+ IX0OTYccjfLmU9tFTB8JDFGM/eOaA4mlaEISxhUbqDLQTrXlCRoNB76Z8Drrrd/PSk4S
+ U7EA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWG/8iuZBjIIXv/Pww3WNwzLR6CAcHk/VXXHgwl0O5LlRERqRMOCEqhlpR3gM77K+bwWXwEvPw1nQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzq6S/1eAFRJaC4ELxZ7zkCGaeWJhoOBLeF4Yqr0xiISkJFHluF
+ ap05z2LE/FrZ3vF3eF9dPwZZdVR3gkUr4uNikFYDY4zi3rEcAGYyjtil5g==
+X-Received: by 2002:a17:90b:380a:b0:2e2:bd34:f23b with SMTP id
+ 98e67ed59e1d1-2e9b178fd9dmr21744522a91.32.1731430586873; 
+ Tue, 12 Nov 2024 08:56:26 -0800 (PST)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-21177dc9d2fsm95841075ad.8.2024.11.12.08.56.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 12 Nov 2024 08:56:26 -0800 (PST)
+From: Guenter Roeck <linux@roeck-us.net>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, BALATON Zoltan <balaton@eik.bme.hu>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, Guenter Roeck <linux@roeck-us.net>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH 02/10] usb/uhci: Introduce and use register defines
+Date: Tue, 12 Nov 2024 08:56:11 -0800
+Message-ID: <20241112165618.217454-3-linux@roeck-us.net>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241112165618.217454-1-linux@roeck-us.net>
+References: <20241112165618.217454-1-linux@roeck-us.net>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: x4PQRMEfbh96
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
+ envelope-from=groeck7@gmail.com; helo=mail-pj1-x1034.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: BWLJCaWgHamU
 
-On Mon, Nov 11 2024, Cornelia Huck <cohuck@redhat.com> wrote:
+Introduce defines for UHCI registers to simplify adding register access
+in subsequent patches of the series.
 
-> On Mon, Nov 04 2024, Eric Auger <eric.auger@redhat.com> wrote:
->
->> Hi Daniel,
->>
->> On 10/28/24 18:04, Daniel P. Berrang=C3=A9 wrote:
->>> On Mon, Oct 28, 2024 at 04:48:18PM +0000, Peter Maydell wrote:
->>>> On Mon, 28 Oct 2024 at 16:35, Daniel P. Berrang=C3=A9 <berrange@redhat=
-.com> wrote:
->>>>> On Mon, Oct 28, 2024 at 04:16:31PM +0000, Peter Maydell wrote:
->>>>>> On Fri, 25 Oct 2024 at 14:24, Daniel P. Berrang=C3=A9 <berrange@redh=
-at.com> wrote:
->>>>>>> On Fri, Oct 25, 2024 at 03:18:25PM +0200, Eric Auger wrote:
->>>>>>>> On 10/25/24 15:06, Daniel P. Berrang=C3=A9 wrote:
->>>>>>>>> Also, is this naming convention really the same one that users
->>>>>>>>> will see when they look at /proc/cpuinfo to view features ? It
->>>>>>>> No it is not. I do agree that the custom cpu model is very low lev=
-el. It
->>>>>>>> is very well suited to test all series turning ID regs as writable=
- but
->>>>>>>> this would require an extra layer that adapts /proc/cpuinfo feature
->>>>>>>> level to this regid/field abstraction.
->>>>>>>>
->>>>>>>> In /cpu/proc you will see somethink like:
->>>>>>>>  Features    : fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics =
-fphp
->>>>>>>> asimdhp cpuid asimdrdm lrcpc dcpop asimddp
->>>>>>> Right, IMHO, this is the terminology that QEMU must use in user
->>>>>>> facing APIs.
->>>>>> /proc/cpuinfo's naming is rather weird for historical
->>>>>> reasons (for instance there is only one FEAT_FP16 feature
->>>>>> but cpuinfo lists "fphp" and "asimdhp" separately).
->>>>> There's plenty of wierd history in x86 too. In this
->>>>> case I might suggest just picking one of the two
->>>>> common names, and ignoring the other.
->>>>>
->>>>> If we really wanted to, we could alias the 2nd name
->>>>> to the first, but its likely not worth the bother.
->>>> Or we could use the standard set of architectural
->>>> feature names, and not have the problem at all, and not
->>>> have to document what we mean by our nonstandard names.
->>>> (cpuinfo names do actually mostly line up with the
->>>> standard names, just not 100%. Similarly gcc/clang command
->>>> line options are mostly the architectural feature name.)
->>> Ah, right, yes. Sorry I mis-understood you originally to be suggesting
->>> the same low level names as this patch.
->> If my understanding is correct, Peter suggested to rely on the
->> terminology used in
->>
->> https://developer.arm.com/documentation/109697/2024_09
->>
->> the doc pointed to by Oliver.
->>
->> So I think the next step is to understand how those "high level" feature=
-s do map onto low level ID register field values. I think a high level feat=
-ure can map onto separate fields in separate ID regs. This may not be the m=
-ost common case though.=20
->
-> I went through all the FEAT_xxx features defined so far and tried to
-> categorize them (probably with some errors here and there, but the
-> general trend should be correct.)
->
-> There's 335 features defined at the moment.
->
-> Of these, the majority (295 by my count) map to one or more values in
-> one or more id registers. These are what I'd consider the "easy" ones
-> (added complexity if we deal with serveral values, but in general, it is
-> clear how to handle them, and most of them actually map to a single
-> value.) Of course, dependencies may be on top of that.
->
-> Then, we have some features (~25 or so) that are actually defined by
-> dependencies (i.e. FEAT_FOO and FEAT_BAR mean that we have FEAT_BAZ,
-> sometimes with an architecture extension dependency thrown in as well.)
-> These features are not really relevant when we compare two cpus since
-> they do not map to registers directly, but they are relevant if we allow
-> them to be specified (and use them as a kind of shorthand.) IOW, we'd
-> need to think about how we'd handle them for comparisons and baselining.
->
-> Next, let's talk about architecture extensions. All features have a
-> level where they have been introduced as optional, some have an upper
-> limit (e.g. FEAT_AA32EL1 is not allowed from v9.0 onwards), and quite a
-> number of them (~65 or so) become mandatory with a certain architecture
-> extension. Sometimes, FEAT_FOO + arch ext also implies FEAT_BAR. If we
-> introduce Armvx.y named models, we'd need to enforce that some features
-> are (not) set for a certain model. Complex, but not a showstopper. (We'd
-> also need to deal with that if we worked on the register level.)
->
-> We also have some registers like MIDR/REVIDR that do not correlate with
-> any FEAT_xxx, but that we still need to handle; I would suggest to deal
-> with them via separate cpu properties (e.g. specify a list of possible
-> MIDR/REVIDR pairs.) I hope that there are not too many of them, although
-> we do have some impdef registers.
->
-> That leaves some headscratchers (at least for me.) E.g. FEAT_UINJ, which
-> is optional from v9.5, and mandatory from v9.6, but where I'm unsure how
-> we'd discover it, especially as we do not have a way to discover the
-> architecture extensions. Maybe this will work for named actual cpus
-> only? I'm also not sure if I understand FEAT_CHK, which is listed as
-> optional from v8.0 and mandatory from v9.4, but every aarch64 cpu is
-> supposed to be compliant, because CHKFEAT might be a NOP (and this is
-> only supposed to check for FEAT_GCS? Yes, I'm confused.)
->
-> So tl;dr, we cover a lot of the ID register space via FEAT_xxx (with
-> varying complexity), but we already know about some exceptions. For some
-> FEAT_xxx, I'm not sure if we want to handle them at all.
->
-> (I also seem to remember that there some things like perf counters that
-> don't map to any on/off features, but no idea about the details here.)
+No functional change.
 
-Following up on this, some ideas/questions on how a command line could
-look like and behave.
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
+Changes since RFC:
+- Rebased to v9.1.0-1673-g134b443512
+- Added Reviewed-by: tag
 
-Let's say we introduce Armv80, Armv81, ... models for the architecture
-extensions and optionally named models for individual cpus we care about
-(e.g. My85BasedCpu which would be Armv85 + some stuff on top). The
-Armv<xy> models would come with all mandatory features turned on and
-would allow all optional features to be set or unset, with
-(accelerator-specific) verification on top.
+ hw/usb/hcd-uhci.c          | 32 ++++++++++++++++----------------
+ include/hw/usb/uhci-regs.h | 11 +++++++++++
+ 2 files changed, 27 insertions(+), 16 deletions(-)
 
-Let's assume that we have
-
--cpu Armv80,FEAT_AdvSIMD=3Don,FEAT_FP=3Don
-
-Since the two features provide each other, I'd assume
-
--cpu Armv80,FEAT_AdvSIMD=3Don
-
-or
-
--cpu Armv80,FEAT_FP=3Don
-
-to be equivalent, and
-
--cpu Armv80,FEAT_AdvSIMD=3Don,FEAT_FP=3Doff
-
-to generate an error. Question: at which level? s390x does dependency
-validation in QEMU, we could do it as well, but I think we have way more
-dependencies on Arm.
-
-Also, let's take FEAT_BTI, which is optional for 8.4 and mandatory from
-8.5 onwards. I'd expect
-
--cpu Armv84,FEAT_BTI=3Don   <-- ok
--cpu Armv84  same as -cpu Armv84,FEAT_BTI=3Doff
--cpu Armv85 same as -cpu Arm84,FEAT_BTI=3Don
--cpu Armv85,FEAT_BTI=3Doff  <-- Error!
-
-When doing baselining while looking at id registers, we'd get
-
-ID_AA64PFR1_EL1.BT =3D=3D 1 -> must use Armv84 or later
-ID_AA64PFR1_EL1.BT =3D=3D 0 -> must use Armv84 or earlier
-
-(unfortunately, some other features are more complex...)
-
-Would
-
--cpu Armv84,<all 8.5 mandatory bits>
-
-generate the same cpu as
-
--cpu Armv85
-
-(and therefore, the two be migratable between each other?)
-
-If we create named cpu models for individual cpus, e.g.
-
--cpu My85BasedCpu
-
-as equivalent to
-
--cpu Armv85,FEAT_FOO=3Don,FEAT_BAR=3Don
-
-Should we allow
-
--cpu My85BasedCpu,FEAT_BAR=3Doff
-
-or would the command line need to be
-
--cpu Armv85,FEAT_FOO=3Don
-
-(e.g. to deal with not all id regs being writable?)
-
-Regardless of what we end up doing for features and cpu models, we'll
-need to be able to specify registers that do not correlate to any
-features; especially for things like MIDR/REVIDR, where we'll want to
-provide a list of possible target values as pairs;
-
--cpu Armv85,midr_revidr=3D(<value>,<value>)
-
-is ugly, and figuring the actual values is not user friendly at all, I
-fear :(
-
-And now, at the end of this long email, the most important questions:
-What colour should the features have?
-
-Matching the architecture: FEAT_AdvSIMD, FEAT_FP, FEAT_BTI
-
-Dropping "FEAT_": AdvSIMD, FP, BTI
-
-Less shouty: feat_advsimd, feat_fp, feat_bti
-
-Less shouty and shorter: advsimd, fp, bti  -- in this case we'd need to
-be careful because we already have sve/sme props, and I'm not sure if we
-could do some sugaring without conflicts.
-
-Thoughts?
+diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+index 50d488d6fb..bdab9ac37e 100644
+--- a/hw/usb/hcd-uhci.c
++++ b/hw/usb/hcd-uhci.c
+@@ -389,7 +389,7 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+     trace_usb_uhci_mmio_writew(addr, val);
+ 
+     switch (addr) {
+-    case 0x00:
++    case UHCI_USBCMD:
+         if ((val & UHCI_CMD_RS) && !(s->cmd & UHCI_CMD_RS)) {
+             /* start frame processing */
+             trace_usb_uhci_schedule_start();
+@@ -424,7 +424,7 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+             }
+         }
+         break;
+-    case 0x02:
++    case UHCI_USBSTS:
+         s->status &= ~val;
+         /*
+          * XXX: the chip spec is not coherent, so we add a hidden
+@@ -435,27 +435,27 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+         }
+         uhci_update_irq(s);
+         break;
+-    case 0x04:
++    case UHCI_USBINTR:
+         s->intr = val;
+         uhci_update_irq(s);
+         break;
+-    case 0x06:
++    case UHCI_USBFRNUM:
+         if (s->status & UHCI_STS_HCHALTED) {
+             s->frnum = val & 0x7ff;
+         }
+         break;
+-    case 0x08:
++    case UHCI_USBFLBASEADD:
+         s->fl_base_addr &= 0xffff0000;
+         s->fl_base_addr |= val & ~0xfff;
+         break;
+-    case 0x0a:
++    case UHCI_USBFLBASEADD + 2:
+         s->fl_base_addr &= 0x0000ffff;
+         s->fl_base_addr |= (val << 16);
+         break;
+-    case 0x0c:
++    case UHCI_USBSOF:
+         s->sof_timing = val & 0xff;
+         break;
+-    case 0x10 ... 0x1f:
++    case UHCI_USBPORTSC1 ... UHCI_USBPORTSC4:
+         {
+             UHCIPort *port;
+             USBDevice *dev;
+@@ -493,28 +493,28 @@ static uint64_t uhci_port_read(void *opaque, hwaddr addr, unsigned size)
+     uint32_t val;
+ 
+     switch (addr) {
+-    case 0x00:
++    case UHCI_USBCMD:
+         val = s->cmd;
+         break;
+-    case 0x02:
++    case UHCI_USBSTS:
+         val = s->status;
+         break;
+-    case 0x04:
++    case UHCI_USBINTR:
+         val = s->intr;
+         break;
+-    case 0x06:
++    case UHCI_USBFRNUM:
+         val = s->frnum;
+         break;
+-    case 0x08:
++    case UHCI_USBFLBASEADD:
+         val = s->fl_base_addr & 0xffff;
+         break;
+-    case 0x0a:
++    case UHCI_USBFLBASEADD + 2:
+         val = (s->fl_base_addr >> 16) & 0xffff;
+         break;
+-    case 0x0c:
++    case UHCI_USBSOF:
+         val = s->sof_timing;
+         break;
+-    case 0x10 ... 0x1f:
++    case UHCI_USBPORTSC1 ... UHCI_USBPORTSC4:
+         {
+             UHCIPort *port;
+             int n;
+diff --git a/include/hw/usb/uhci-regs.h b/include/hw/usb/uhci-regs.h
+index fd45d29db0..5b81714e5c 100644
+--- a/include/hw/usb/uhci-regs.h
++++ b/include/hw/usb/uhci-regs.h
+@@ -1,6 +1,17 @@
+ #ifndef HW_USB_UHCI_REGS_H
+ #define HW_USB_UHCI_REGS_H
+ 
++#define UHCI_USBCMD       0
++#define UHCI_USBSTS       2
++#define UHCI_USBINTR      4
++#define UHCI_USBFRNUM     6
++#define UHCI_USBFLBASEADD 8
++#define UHCI_USBSOF       0x0c
++#define UHCI_USBPORTSC1   0x10
++#define UHCI_USBPORTSC2   0x12
++#define UHCI_USBPORTSC3   0x14
++#define UHCI_USBPORTSC4   0x16
++
+ #define UHCI_CMD_FGR      (1 << 4)
+ #define UHCI_CMD_EGSM     (1 << 3)
+ #define UHCI_CMD_GRESET   (1 << 2)
+-- 
+2.45.2
 

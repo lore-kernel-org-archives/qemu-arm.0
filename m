@@ -1,100 +1,100 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7533927njc;
-        Tue, 12 Nov 2024 10:11:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW/t+4dWOQC3p7nem8NFZBOaNykfsgrRDeJeS5mbejEj+5z+Uy5QJWsETw+mA1tKxsxjJ7XmpxW7LnDkw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHG3XCW5jYBsMUDJ5/gBqMABGthNUbyavoMjC2nfWuLHFjbeSuHDOXwHMCPs9MVOk2uEWo2
-X-Received: by 2002:a05:622a:1a03:b0:45f:788:b1b1 with SMTP id d75a77b69052e-46309358fe2mr271659571cf.25.1731435097604;
-        Tue, 12 Nov 2024 10:11:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731435097; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7534276njc;
+        Tue, 12 Nov 2024 10:12:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUO67jD1qHL1MiIXDMFM6ErVbYrCS+N+05+Eao/mA/sDxPi9/DAcdcfq5Mf2I/9jPMcDnJs9PUAHGqpRQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFqfjKBRSvFmWd1mGn170BZnALMHaBlZ2OUVBj0feb9gmYmCgbwJ0RXMevHCl8QVyH2tNt+
+X-Received: by 2002:a05:622a:588:b0:460:8d5c:34bd with SMTP id d75a77b69052e-46309322da6mr261092331cf.17.1731435124540;
+        Tue, 12 Nov 2024 10:12:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731435124; cv=none;
         d=google.com; s=arc-20240605;
-        b=Zoz2X/HGwsL+RdhM9x5OlW0TpkSgcN/Dpjw6reV+guzC9Wz6Niiei1idItNYjRC0SL
-         eWcUUNS85B+/tpWRw8RcGvtlXPtGlSymC3Mk5Ry6lv0Rbvj9OQ5ZeITSKNpcAU6f+7oQ
-         PW94UXjznREhXV1s3C9JELsUa1KWYjWYLWwqn1FYjg8AmZRpYmY/OgQZwS1Nd2td1Nuy
-         L5S7VSz7uqjN7wOKiO4k1j8Nvwn2PIy7UnFHtffKxQvlRocvzTL51MO6j8ivXeW1P1vP
-         clMOlFPtqsL01d9xT08kp4uJHqdJ5WXEcJ6tisUUm/EQ4FaqXUhHJmhjD4ihVNHprvRt
-         itqw==
+        b=aAeDdPDHdKVYeHuvzzqhtOW276gQmOKpohvkCvx7m4lWgovIamjoPTW8d4rmKySLWl
+         6Xc9ppbRs0lEtT1cR0f1QJoA7hYp/VA29sAzZgcGbO+QQf9qCf1p7nVzr7vxZlOiByAf
+         o3XBaTe5DWZ+a8qnrGy0+QnFG3VDpyey6Iw5ZPapqTZPOkTel919lbMXZXjWxB+bBGK9
+         Zr38p7+s5htYE/2OLZCHnM+oqFS04IvXmmpOHO9z9yYPWdWEZKKcXBmKUIMzn7tWQzs2
+         ngkbCJTfMyeZtC9YlVebqmyGj9497+o/dkf3bH3KYPGP+fGFlo+ImrFyzRIsvTDcOWCy
+         LFPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ZQmPPVoGs75Oc0X7p2l9C1PUIeVlzMNRobjeBMri9rg=;
-        fh=5aZwubMTpUf+mLSbD5AVMyVUDtw0vRnbVpynKxoYM48=;
-        b=FQmKSbZuHao37+KkOIqzup0JZirdizodNXcA95aUBumpQ56BQ0wymIIUcqMTJmMws7
-         eDPTzcN6aInLMS36EGTBSTFRLCXErIwzhtQBS7S+e5tUrxwseZ4bXye4M376ESgva4oU
-         qCJ4cIHnCFihyflhOompDxal9xdg/ClHyVM3uTqqIzJq/RWiGA3BkZsEBGXEXNatS43t
-         vhGjsul6Xbl422hZ6aFHK4AQLO3wgmu2a5bY/MC1XxsI/wERTbRIa3KN3AZQ2o/bHhDp
-         x8q5kzTm6H6/HFEKzIG7jP7LXbPOolb6P1VU9PwXALyzgM/d+4jHq7YPa9pHtBH1K7zl
-         cUsw==;
+        bh=qd9qxHlovWjmh8ObGWU7tF9VLM9MT0KfWhMQvBKNL6I=;
+        fh=GQwhXWeulapoVeMUP1ZYRVPhBhUfoXQ/2Uw+Ek3dkQ4=;
+        b=YCBuYh8m8hTo2X5+BalZq413qHJGjbFoZbJ3YD9GHca8QlFjIoJixKGTrxL70Fq8R0
+         gVh3LbdiXLCLujLXDTjBREeIg8SqxLv33CDy9Y0cSY07ReNRx3ir+eW5dZ1kRD7OFv2H
+         JdVG/KevezybsZ+MFAyoYHb77pIVgHIbYQHpHtsRZHaquzlPOhf0kv4G0VX1se1TUSva
+         2cVj/gaUXbST1xm0oVJWZLYzyUlbWg5yGXTR8ONvba1AWcGmzYOpJJSy+2AjlbxGz3Ct
+         jKW0g4IcO7RgJghGY6or+dNq1pncvC1UfkpKoSeBw8WTODsXncJ+zZs+17VsFdPs2tdL
+         qV5Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bkuy9+OP;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Kt84ReZ/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ff6247e0si148658821cf.415.2024.11.12.10.11.37
+        by mx.google.com with ESMTPS id d75a77b69052e-462ff677961si148289241cf.580.2024.11.12.10.12.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Nov 2024 10:11:37 -0800 (PST)
+        Tue, 12 Nov 2024 10:12:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bkuy9+OP;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Kt84ReZ/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tAvMF-0004yN-Jc; Tue, 12 Nov 2024 13:11:21 -0500
+	id 1tAvMV-00054h-GH; Tue, 12 Nov 2024 13:11:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tAvM6-0004wi-11
- for qemu-arm@nongnu.org; Tue, 12 Nov 2024 13:11:11 -0500
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tAvMK-00050x-Kl
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 13:11:29 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tAvM2-0001sd-30
- for qemu-arm@nongnu.org; Tue, 12 Nov 2024 13:11:08 -0500
-Received: by mail-lf1-x129.google.com with SMTP id
- 2adb3069b0e04-539fbe22ac0so5844413e87.2
- for <qemu-arm@nongnu.org>; Tue, 12 Nov 2024 10:11:04 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tAvMH-0001uX-B5
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 13:11:23 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-43167ff0f91so52860065e9.1
+ for <qemu-arm@nongnu.org>; Tue, 12 Nov 2024 10:11:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1731435063; x=1732039863; darn=nongnu.org;
+ d=linaro.org; s=google; t=1731435080; x=1732039880; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ZQmPPVoGs75Oc0X7p2l9C1PUIeVlzMNRobjeBMri9rg=;
- b=Bkuy9+OPXMZT9cbrByOma1Ovv+5ysola10Jw57nqWV/59MX5oTDfkNHRdn1E+kVNLx
- FWRsYbOqaMnYaSxYg/athElhWxfT7fvNCdzQqtMyM7WptTXoKHgnxVb9Xno4cJDJ8GQx
- vLXxkLUsAV0DEz0++rWJnHXteX2V4wvO1In+6Gb/1j9NGwdXU0xFObPd+eHnJ2pSXYKi
- u1BE7u5oKPCqikc1mHHZNhtAFSszUeeP6jCwMekcaru3/XZC8PP/VQbG6rG1ZJS5uDHU
- lvo6wSyVx/R3dJBmIsRgEDCOBftewe/Mx5TLntrPwwzb5xeI3rtXsXHKiTMWVWp/puRp
- 57bw==
+ bh=qd9qxHlovWjmh8ObGWU7tF9VLM9MT0KfWhMQvBKNL6I=;
+ b=Kt84ReZ/6DIX+8ABwBG38Mtlg/aIFM274wqIVOEhwPPgKY6fPLUglZBkSGPyGeq7D0
+ rMvtWHHDhsifmPb578v7lbQRaTbVOhgZ2YOiMC1MtBdkA8zF5qK/ZyexieYvPiSqU7gw
+ SUavSVUDizQ+lR4Ok2bKU08lAXYD0ggXLKp3xPsgbIgJvlMx9SzeEGu1Fg8+MuY/TAFU
+ hWzOYPL2IfGvIMBBbeLbZ811wIsrs2SETFXfYU1YM8kFZshPDRBVPrAnXIx2An44O4k9
+ +wt7+YTApTZyCj8zJjStwFxJkM3TvmVOOA/ny/1GzahgYpbuAjnT+3LpdCrdzqWPlrlf
+ AEbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731435063; x=1732039863;
+ d=1e100.net; s=20230601; t=1731435080; x=1732039880;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=ZQmPPVoGs75Oc0X7p2l9C1PUIeVlzMNRobjeBMri9rg=;
- b=VDNDrvPPvPA0khnN/fDpNiM/olXesxlTWBsYhMdH6NJHoqNc9xkd4rOVkOo7FScaEW
- cHllpKItVViYHRWH8fM5ppjCOysU2sj4GoCEFXSrMlvMLYJyaZ8qgiNj/mGlM7EhJ+QA
- gJhh4Ek15CINT5AeiE4ghqs4zMZXTRVF0+s5Q0NAh5tlp4w7NC99YHKnYLfLUus7a20i
- 7xCFC3+VubP12y/sNx1FVcOrOqNQDFIhkr/SiDWQCDLtKdJuDJypBefb4NW75md9YQGG
- lt59+jdNmHx/8ndTfYoptoWHEq9GBZyMwfkr1fRQZjwC4lixD3cLPeGpcGxAGG4rYVEr
- v+BA==
+ bh=qd9qxHlovWjmh8ObGWU7tF9VLM9MT0KfWhMQvBKNL6I=;
+ b=CSvIPo2fqPXxxLoMbWnQlZ3h9U0OKECkvRV7epAeshqAqGY+112rn0Aw4G3uPhUZUU
+ AXHmDmpwEGnolizNUMq27htfj36MtHiZrQZ8wtKzv/JYw0c6Q8W2RvSqYp74u+v0fVXU
+ xveVDgLssZCrCIkv+qmY9fhanWPp5MQZ0GcPiUvKVRm3anTELyg8X68xl8EogsWgEhVV
+ fVi/dsdRPSvGA3YT3ZlVMML9BpRl+g8urx3Jxz9GwtSmjGGJIvxQ22Zn6jJV4xSj8nEc
+ 26PJxPlEJ6X759zMj1UxD0+xhoab7WD0sMO86YFXjR+0ZkRWCHs6xxMe844suLoF3VZd
+ 2kGg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWLqu6OmNQ6S4yBw1iRygW1p87SaNWRpG+XT21a36StOUU2TsLwwckSP3rA+1mpbtLQQfQHFP/jfg==@nongnu.org
-X-Gm-Message-State: AOJu0YxRv3wAQwmJRLrKwuD0WUm+6G0/OuXSLhgdfOCgTPbhzaWbtZDO
- CxzrVIqreVrI3uwN2dLlYywdwRcISe4G9+ZLJTUfbqRNKBv/yQqIplLv6mNRunE=
-X-Received: by 2002:a05:6512:1042:b0:539:e60a:6dd0 with SMTP id
- 2adb3069b0e04-53d862f8170mr8876660e87.51.1731435061922; 
- Tue, 12 Nov 2024 10:11:01 -0800 (PST)
+ AJvYcCXv5cZHlyNi38dpeAoziOuQYaEM/txdciI0GI7nhct+urZc7/8lg4YzRiWJtpm0EyCH8oC9khhyGA==@nongnu.org
+X-Gm-Message-State: AOJu0YyX+LbOSwd2bYOz1/J1FG/8EWFbqcq/qB15Rutt5a1gBSVSyiwM
+ VPLR+zzvfJYTEZ52+4+wjmkiYGy84YITo4cjNwT8AOfco/AlPBG+SDR4Ml6yozQ=
+X-Received: by 2002:a05:600c:3d05:b0:431:7c78:b885 with SMTP id
+ 5b1f17b1804b1-432d4aaa11emr816505e9.4.1731435079902; 
+ Tue, 12 Nov 2024 10:11:19 -0800 (PST)
 Received: from localhost.localdomain
  (cnf78-h01-176-184-27-250.dsl.sta.abo.bbox.fr. [176.184.27.250])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-432aa737c86sm262860325e9.38.2024.11.12.10.10.59
+ 5b1f17b1804b1-432b05e5f82sm222757955e9.42.2024.11.12.10.11.18
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 12 Nov 2024 10:11:01 -0800 (PST)
+ Tue, 12 Nov 2024 10:11:19 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
@@ -106,18 +106,17 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Gustavo Romero <gustavo.romero@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 02/20] hw/net/xilinx_ethlite: Convert some debug logs to trace
- events
-Date: Tue, 12 Nov 2024 19:10:26 +0100
-Message-ID: <20241112181044.92193-3-philmd@linaro.org>
+Subject: [PATCH 05/20] hw/net/xilinx_ethlite: Correct maximum RX buffer size
+Date: Tue, 12 Nov 2024 19:10:29 +0100
+Message-ID: <20241112181044.92193-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241112181044.92193-1-philmd@linaro.org>
 References: <20241112181044.92193-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x129.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -139,54 +138,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /nUR9djXJX2c
+X-TUID: Bhs/ejPqzZBh
+
+The current max RX bufsize is set to 0x800. This is
+invalid, since it contains the MMIO registers region.
+Add the correct definition and use it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/net/xilinx_ethlite.c | 5 +++--
- hw/net/trace-events     | 4 ++++
- 2 files changed, 7 insertions(+), 2 deletions(-)
+ hw/net/xilinx_ethlite.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
-index e84b4cdd35..bb330a233f 100644
+index 0f59811c78..e6f6179fce 100644
 --- a/hw/net/xilinx_ethlite.c
 +++ b/hw/net/xilinx_ethlite.c
-@@ -30,6 +30,7 @@
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "net/net.h"
-+#include "trace.h"
+@@ -46,6 +46,8 @@
+ #define R_RX_CTRL1    (0x1ffc / 4)
+ #define R_MAX         (0x2000 / 4)
  
- #define D(x)
- #define R_TX_BUF0     0
-@@ -198,13 +199,13 @@ static ssize_t eth_rx(NetClientState *nc, const uint8_t *buf, size_t size)
-         return size;
- 
-     if (s->regs[rxbase + R_RX_CTRL0] & CTRL_S) {
--        D(qemu_log("ethlite lost packet %x\n", s->regs[R_RX_CTRL0]));
-+        trace_ethlite_pkt_lost(s->regs[R_RX_CTRL0]);
-         return -1;
-     }
- 
-     D(qemu_log("%s %zd rxbase=%x\n", __func__, size, rxbase));
-     if (size > (R_MAX - R_RX_BUF0 - rxbase) * 4) {
--        D(qemu_log("ethlite packet is too big, size=%x\n", size));
-+        trace_ethlite_pkt_size_too_big(size);
-         return -1;
-     }
-     memcpy(&s->regs[rxbase + R_RX_BUF0], buf, size);
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index d0f1d8c0fb..2b36cd967e 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -511,3 +511,7 @@ xen_netdev_connect(int dev, unsigned int tx, unsigned int rx, int port) "vif%u t
- xen_netdev_frontend_changed(const char *dev, int state) "vif%s state %d"
- xen_netdev_tx(int dev, int ref, int off, int len, unsigned int flags, const char *c, const char *d, const char *m, const char *e) "vif%u ref %u off %u len %u flags 0x%x%s%s%s%s"
- xen_netdev_rx(int dev, int idx, int status, int flags) "vif%u idx %d status %d flags 0x%x"
++#define RX_BUFSZ_MAX  0x07e0
 +
-+# xilinx_ethlite.c
-+ethlite_pkt_lost(uint32_t rx_ctrl) "rx_ctrl:0x%" PRIx32
-+ethlite_pkt_size_too_big(uint64_t size) "size:0x%" PRIx64
+ #define GIE_GIE    0x80000000
+ 
+ #define CTRL_I     0x8
+@@ -195,7 +197,7 @@ static ssize_t eth_rx(NetClientState *nc, const uint8_t *buf, size_t size)
+         return -1;
+     }
+ 
+-    if (size > (R_MAX - R_RX_BUF0 - rxbase) * 4) {
++    if (size > RX_BUFSZ_MAX) {
+         trace_ethlite_pkt_size_too_big(size);
+         return -1;
+     }
 -- 
 2.45.2
 

@@ -1,181 +1,186 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7333376njc;
-        Tue, 12 Nov 2024 05:36:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUlRUia/0UDCAcD+aEnM7Q7ffb680CEtu3JAhtHVZWkcszaMkKVJVk2ROy1F2suRjI+UVS823QKX3Urhw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFPp4ZGtCZOMdTRGLGLwQd+5vAmiY6MaysVmRG+JdTQEfpn4k1LsW3LtN1568JU4Fs3/maI
-X-Received: by 2002:a05:6214:4686:b0:6d3:9c7b:9384 with SMTP id 6a1803df08f44-6d39e1ff520mr281527846d6.42.1731418602528;
-        Tue, 12 Nov 2024 05:36:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731418602; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7339161njc;
+        Tue, 12 Nov 2024 05:46:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXVEE9tvt1YlUpq4AnRAFJhxXEqwqHRBb3lGDyarCF5t7yIR5Hit7TLLWc2HuomBZZ6TYBLj/eczDfAiA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHzUdZNhCmA0YMs1CK5+ldNRPwCMg5F6njw2mNSCpsrcrPUnLmNymhB2X758oYi2UJTCJ2D
+X-Received: by 2002:a05:622a:1788:b0:462:b639:4b78 with SMTP id d75a77b69052e-4630942bd31mr241859751cf.46.1731419195525;
+        Tue, 12 Nov 2024 05:46:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731419195; cv=none;
         d=google.com; s=arc-20240605;
-        b=az3MzrNeTsBWj5g9l+AZiycdmhf1IYgF+zELCgXgmfp9tvvNN/5/X8K+gk6hiCTLdu
-         2UE4p7DQKkOVCj5b/A4HOCL2jdoLulh2sxxUfEsZWZV+SvWN1ksKFvaQvn0Y6HN5Ve+k
-         vW7WlGrRKz6HwCuCj4q5yuGq60VycNxAPbBN5ze+4scjtzTUw9aEB6uiUdFor2domf93
-         ao0OgmNs9rm+M2zgmHJ/RDM1Sj5mw9xn3h+x3FSlcpcXqUhUO7nW5XKwK8j1z60wqfpg
-         76iGJfmMmytBWRJpk7yF0irQ2bET27c3tJBFwAexr6xJplbIViIkS7L61CY9WBE2OIR4
-         dnxg==
+        b=KT0i5COL6fnKJn5dqb4KnS3C3iqF38f6PLJmy835W+pb6Lo+I7cuyFQgqKWq9GwLNB
+         mbrfpg7N03v3anQPuDQneT46tN0rZn+/pCHJuD4pG5SRxXSvKEWkT0dHO69GijRQNM/E
+         l8EzdQXoEfm8y9NuhlAqz5yHNqOR7+5+bTZndDRljSq2ZnHTD6CFcWOyXMrdEITWR5gy
+         rOX7tGAJUARm3vGGYZB4D+e+H8oe8AQBDXEneylAPguTTLvCom9KWGY8LrHfwz9r5Nf7
+         Znr510mGTQ5RBtM/RmDcFBGG1ZBbvfuAQmsmqTW/J5H8lvD6kOj7rE8pcG7RpJ/NPa+U
+         +bOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=pKzBLcMcXHy5XpA8wTRqmi6vMEHO+sLY8chTa4yGjVk=;
-        fh=4iIu/yFnlAy+oJ4+2fKeTdG+T67L3RoxqRWu0xbDVTc=;
-        b=NBMdzL3eykSNYFueXIiuTW6FYB7Wgofe59Rfca3NY9eUumH2dSBab55IxWawec2D9q
-         M1rxAXU6QS4ykcf/exUSsDkHxZp1Y4oKrtO858AyoZ7QcQtVKWuZZg3gwifX8JDZxsYQ
-         BDgwDHWkfme5NmshR9opqJdSfyuuIhMwM5gFe6MraToIP7PKrrqXYJM5/Kx/DLZ/CXNs
-         XgB/t6INjAc6cvqphmtqdpEmzu61JSCTI12XzzdH6UvmhHwRJw0wc2LGYUyLjPQxWE3L
-         6skFQEVhS84U4JAZzSGgVKx0wi/+EhyD8fJmypch0SOVJvuf5hYlhvKpNBceI4hy9gYh
-         UV+g==;
+         :content-language:in-reply-to:organization:autocrypt:from:references
+         :cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=J9Bndr5Df3jqzYskYNRItnd7EoDK8tnuhJfM4ecycrQ=;
+        fh=0QPjdBApGgU6/wFhvhLJpJMAT6Lh0kdeUm4rR82XMTI=;
+        b=ZFQ6ByUM0YLTgFJJ0lT0jXCSPjKhEjytNd3zGQug6FlUNs53qP5dtq+gesJ83QGul/
+         VUHM7vO1mdK+cTueVJIynyxy6dNxlqy96D/ychR4QWy9OU66QVavAA5UPHoTPuEAccym
+         qUVf2Da33y3VeM6nHV90sqjoh+BlWuqcB+PKrdWOS16QbDfhuk1hsInUYhBcOaBpU5oC
+         KO1EJu95CSAlukqPqj3rMtd7YLsbQzbN3PBaMyoJ3DAgMETsFmUAMBawYm8/9mZ2nMym
+         XHa+90f1PSPBRZpmwQCzs5DiIRG4eLnBDmBYkf1ItHmYmQZ0jjvXV6+eGuy4kOrAiVjf
+         hyfA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FpZflWh3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hV2q+C0K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ff457bb7si130393911cf.169.2024.11.12.05.36.42
+        by mx.google.com with ESMTPS id d75a77b69052e-462ff40fda9si142750911cf.64.2024.11.12.05.46.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Nov 2024 05:36:42 -0800 (PST)
+        Tue, 12 Nov 2024 05:46:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FpZflWh3;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hV2q+C0K;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tAr4J-0006q4-By; Tue, 12 Nov 2024 08:36:33 -0500
+	id 1tArDI-0000Zi-Iu; Tue, 12 Nov 2024 08:45:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAr4E-0006of-SL
- for qemu-arm@nongnu.org; Tue, 12 Nov 2024 08:36:26 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tArDE-0000Yh-75
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 08:45:44 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAr4B-0001K9-Tv
- for qemu-arm@nongnu.org; Tue, 12 Nov 2024 08:36:26 -0500
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tArDC-0002ap-L2
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 08:45:43 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1731418581;
+ s=mimecast20190719; t=1731419141;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=pKzBLcMcXHy5XpA8wTRqmi6vMEHO+sLY8chTa4yGjVk=;
- b=FpZflWh31Ns9T8ltGAybZPLSgYN5IhkewzYZSyr85+QGHzwBthgcB0Fmz7eUGhr3UOCjao
- /fNkyKce6B28N5/NVQH7lFuWJHMBEuo0j/KxKiUWhotoLn8RALm1OuTh2rISBrN/4KG3DJ
- eYdeWMOv889FXZshp5O1A4FLgUnf9CE=
-Received: from mail-ot1-f71.google.com (mail-ot1-f71.google.com
- [209.85.210.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=J9Bndr5Df3jqzYskYNRItnd7EoDK8tnuhJfM4ecycrQ=;
+ b=hV2q+C0KM73AMjNZZ8q4jip+buJlV8ftDUIUONH7MRaMo/xTVcVLXUk4V6+0iXxgiXFnPd
+ SpPrAoKRUUhnUQzGzqwH/RxKXx9eCBill1AS/pbneMcHIrNtD3K8HahCCGSzpOkV9RN7B9
+ 7RvNnv1MagyY8tC26VbRgXnRvT+mbmg=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-466-PliIVNpWMPGinjev1nFdHw-1; Tue, 12 Nov 2024 08:36:19 -0500
-X-MC-Unique: PliIVNpWMPGinjev1nFdHw-1
-X-Mimecast-MFC-AGG-ID: PliIVNpWMPGinjev1nFdHw
-Received: by mail-ot1-f71.google.com with SMTP id
- 46e09a7af769-71819315532so4906468a34.2
- for <qemu-arm@nongnu.org>; Tue, 12 Nov 2024 05:36:19 -0800 (PST)
+ us-mta-297-9x9U0xLpP0mn7bTM5KGRnQ-1; Tue, 12 Nov 2024 08:45:38 -0500
+X-MC-Unique: 9x9U0xLpP0mn7bTM5KGRnQ-1
+X-Mimecast-MFC-AGG-ID: 9x9U0xLpP0mn7bTM5KGRnQ
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-4315d98a75fso44210805e9.2
+ for <qemu-arm@nongnu.org>; Tue, 12 Nov 2024 05:45:37 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731418578; x=1732023378;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=pKzBLcMcXHy5XpA8wTRqmi6vMEHO+sLY8chTa4yGjVk=;
- b=ma0XJYes4s9G/bguy+ijXQDE2Eavz8tXFUUwqjcID41jL0bWvDjTHewWIzKU6DoZ+/
- GYV2+9L+fOdoZ86L2x0sJKFs4Q0DR76miK4LS/B8TyspbQZd6MagI7yIBQ0dc7JhAWpc
- dgFSslIgH9dIISud4QQ22xuYwN//yDZDZbVyXs+I81IkEshBq5WIk5kqVE7lkgzIR3Ag
- YtM4xkWbfrawoZXWyadq/lprhZ8xF+1JKyBc5S+Zv7dqH8YrWsaN9cHu+GkSDiv62BRS
- 1Gn/8EwmcCO2nDGlE7E5okJtz0CQc47ldxZUpf4Fa30clyHV7D990g2AYSbBLKjJF3bc
- 340Q==
+ d=1e100.net; s=20230601; t=1731419137; x=1732023937;
+ h=content-transfer-encoding:in-reply-to:organization:autocrypt
+ :content-language:from:references:cc:to:subject:user-agent
+ :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=J9Bndr5Df3jqzYskYNRItnd7EoDK8tnuhJfM4ecycrQ=;
+ b=grBA4tPbsZ1a+c0Dnpk061TMALPjEmze8hnwkQwINau8Be/v8QMWPy8zdTNQ9xMzTN
+ XzHOqn3KtCTO5DMCIFTU3/uXfI4DbygROUXxkOsh/dh7btWVy79NSuqlTrDVQO8AWHnY
+ Kz/aYqf70B0cgjaW1TicUJFTcKKtP+uuWSuKl9MzZTlY2GUTX/RGrpgHxk7BdbT6YHkh
+ VerCHGaOHIcgq33kZ5oidyuvq7BJ7OuTegdFDHLSuMq8pmYXJj7hMhqYaN5kAS7R8RrQ
+ zBOSmr9CACS+4A/0sejFg2xYfJdNDI++dL6Hx8nAytaaK7qIaALDTbOVLRmzf5Iqltj0
+ Lv+A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVN9byn8RlSfooxIRrFsos+65z2klU84aRw+cV+StwhR9i5Eofxe0jVzcWGQrKyl06dkjL2oAWVSA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz1bMJiqRG04o7DM+CPVSbaVA3pLy765tTHStn6BrwkTJlBlZHp
- hL4WbDYm12nL4ZUNZS2+Fc1TR48rX/b+PlvgCxX2WHxi/6CgqA8e76u7nPG6XablR+7uwIozsnU
- Q2hQaP42vDpkoxUFwU1X6uVWH4CrZE4u1VxQMRY9KMa6B1ohc5Q==
-X-Received: by 2002:a05:6358:d047:b0:1c3:81a4:d0f7 with SMTP id
- e5c5f4694b2df-1c641f66142mr640595855d.22.1731418578609; 
- Tue, 12 Nov 2024 05:36:18 -0800 (PST)
-X-Received: by 2002:a05:6358:d047:b0:1c3:81a4:d0f7 with SMTP id
- e5c5f4694b2df-1c641f66142mr640593955d.22.1731418578239; 
- Tue, 12 Nov 2024 05:36:18 -0800 (PST)
-Received: from [192.168.0.7] (ip-109-42-49-115.web.vodafone.de.
- [109.42.49.115]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6d39643aeb2sm71326836d6.80.2024.11.12.05.36.15
+ AJvYcCVD9iqIx4Osw4h2AHLxhdfFSoZ/mC21bkbiE+uC6vAMr5j/1bhHsKNYo8R9a7EOvuDjMraLwEO6fQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yz3K/fBDcpfW4wm1gRmkHG/7Fn5fEhQqC3ROPl9HR8AnxGMPlx+
+ YUd2U6AN95L/jiekl9okkvKqwiUEE81ZmEmzLWBmSdhcmcNNwX+MiMMEZyPSHHxXoOP917uzdUe
+ k5hcqwC/JUW70K+UHZyAn3q2unWDOQ6BeA61bDzsUiLACZyjyHg==
+X-Received: by 2002:a05:600c:5123:b0:42c:af06:703 with SMTP id
+ 5b1f17b1804b1-432b7519975mr141734425e9.31.1731419136928; 
+ Tue, 12 Nov 2024 05:45:36 -0800 (PST)
+X-Received: by 2002:a05:600c:5123:b0:42c:af06:703 with SMTP id
+ 5b1f17b1804b1-432b7519975mr141734085e9.31.1731419136516; 
+ Tue, 12 Nov 2024 05:45:36 -0800 (PST)
+Received: from ?IPV6:2003:cb:c739:8e00:7a46:1b8c:8b13:d3d?
+ (p200300cbc7398e007a461b8c8b130d3d.dip0.t-ipconnect.de.
+ [2003:cb:c739:8e00:7a46:1b8c:8b13:d3d])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-432aa6b2a3bsm245800095e9.11.2024.11.12.05.45.34
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Nov 2024 05:36:17 -0800 (PST)
-Message-ID: <c2fe0e26-9dcf-458c-926a-5be0a2a39181@redhat.com>
-Date: Tue, 12 Nov 2024 14:36:12 +0100
+ Tue, 12 Nov 2024 05:45:35 -0800 (PST)
+Message-ID: <3ed8c7c2-8059-4d51-a536-422c394f34e5@redhat.com>
+Date: Tue, 12 Nov 2024 14:45:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/4] tests/functional: Remove sleep workarounds from
- Aspeed tests
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-References: <20241112130246.970281-1-clg@redhat.com>
- <20241112130246.970281-5-clg@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20241112130246.970281-5-clg@redhat.com>
+Subject: Re: [PATCH v2 6/7] hostmem: Handle remapping of RAM
+To: =?UTF-8?Q?=E2=80=9CWilliam_Roche?= <william.roche@oracle.com>,
+ kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+ philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
+ imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+ wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
+References: <e2ac7ad0-aa26-4af2-8bb3-825cba4ffca0@redhat.com>
+ <20241107102126.2183152-1-william.roche@oracle.com>
+ <20241107102126.2183152-7-william.roche@oracle.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; keydata=
+ xsFNBFXLn5EBEAC+zYvAFJxCBY9Tr1xZgcESmxVNI/0ffzE/ZQOiHJl6mGkmA1R7/uUpiCjJ
+ dBrn+lhhOYjjNefFQou6478faXE6o2AhmebqT4KiQoUQFV4R7y1KMEKoSyy8hQaK1umALTdL
+ QZLQMzNE74ap+GDK0wnacPQFpcG1AE9RMq3aeErY5tujekBS32jfC/7AnH7I0v1v1TbbK3Gp
+ XNeiN4QroO+5qaSr0ID2sz5jtBLRb15RMre27E1ImpaIv2Jw8NJgW0k/D1RyKCwaTsgRdwuK
+ Kx/Y91XuSBdz0uOyU/S8kM1+ag0wvsGlpBVxRR/xw/E8M7TEwuCZQArqqTCmkG6HGcXFT0V9
+ PXFNNgV5jXMQRwU0O/ztJIQqsE5LsUomE//bLwzj9IVsaQpKDqW6TAPjcdBDPLHvriq7kGjt
+ WhVhdl0qEYB8lkBEU7V2Yb+SYhmhpDrti9Fq1EsmhiHSkxJcGREoMK/63r9WLZYI3+4W2rAc
+ UucZa4OT27U5ZISjNg3Ev0rxU5UH2/pT4wJCfxwocmqaRr6UYmrtZmND89X0KigoFD/XSeVv
+ jwBRNjPAubK9/k5NoRrYqztM9W6sJqrH8+UWZ1Idd/DdmogJh0gNC0+N42Za9yBRURfIdKSb
+ B3JfpUqcWwE7vUaYrHG1nw54pLUoPG6sAA7Mehl3nd4pZUALHwARAQABzSREYXZpZCBIaWxk
+ ZW5icmFuZCA8ZGF2aWRAcmVkaGF0LmNvbT7CwZgEEwEIAEICGwMGCwkIBwMCBhUIAgkKCwQW
+ AgMBAh4BAheAAhkBFiEEG9nKrXNcTDpGDfzKTd4Q9wD/g1oFAl8Ox4kFCRKpKXgACgkQTd4Q
+ 9wD/g1oHcA//a6Tj7SBNjFNM1iNhWUo1lxAja0lpSodSnB2g4FCZ4R61SBR4l/psBL73xktp
+ rDHrx4aSpwkRP6Epu6mLvhlfjmkRG4OynJ5HG1gfv7RJJfnUdUM1z5kdS8JBrOhMJS2c/gPf
+ wv1TGRq2XdMPnfY2o0CxRqpcLkx4vBODvJGl2mQyJF/gPepdDfcT8/PY9BJ7FL6Hrq1gnAo4
+ 3Iv9qV0JiT2wmZciNyYQhmA1V6dyTRiQ4YAc31zOo2IM+xisPzeSHgw3ONY/XhYvfZ9r7W1l
+ pNQdc2G+o4Di9NPFHQQhDw3YTRR1opJaTlRDzxYxzU6ZnUUBghxt9cwUWTpfCktkMZiPSDGd
+ KgQBjnweV2jw9UOTxjb4LXqDjmSNkjDdQUOU69jGMUXgihvo4zhYcMX8F5gWdRtMR7DzW/YE
+ BgVcyxNkMIXoY1aYj6npHYiNQesQlqjU6azjbH70/SXKM5tNRplgW8TNprMDuntdvV9wNkFs
+ 9TyM02V5aWxFfI42+aivc4KEw69SE9KXwC7FSf5wXzuTot97N9Phj/Z3+jx443jo2NR34XgF
+ 89cct7wJMjOF7bBefo0fPPZQuIma0Zym71cP61OP/i11ahNye6HGKfxGCOcs5wW9kRQEk8P9
+ M/k2wt3mt/fCQnuP/mWutNPt95w9wSsUyATLmtNrwccz63XOwU0EVcufkQEQAOfX3n0g0fZz
+ Bgm/S2zF/kxQKCEKP8ID+Vz8sy2GpDvveBq4H2Y34XWsT1zLJdvqPI4af4ZSMxuerWjXbVWb
+ T6d4odQIG0fKx4F8NccDqbgHeZRNajXeeJ3R7gAzvWvQNLz4piHrO/B4tf8svmRBL0ZB5P5A
+ 2uhdwLU3NZuK22zpNn4is87BPWF8HhY0L5fafgDMOqnf4guJVJPYNPhUFzXUbPqOKOkL8ojk
+ CXxkOFHAbjstSK5Ca3fKquY3rdX3DNo+EL7FvAiw1mUtS+5GeYE+RMnDCsVFm/C7kY8c2d0G
+ NWkB9pJM5+mnIoFNxy7YBcldYATVeOHoY4LyaUWNnAvFYWp08dHWfZo9WCiJMuTfgtH9tc75
+ 7QanMVdPt6fDK8UUXIBLQ2TWr/sQKE9xtFuEmoQGlE1l6bGaDnnMLcYu+Asp3kDT0w4zYGsx
+ 5r6XQVRH4+5N6eHZiaeYtFOujp5n+pjBaQK7wUUjDilPQ5QMzIuCL4YjVoylWiBNknvQWBXS
+ lQCWmavOT9sttGQXdPCC5ynI+1ymZC1ORZKANLnRAb0NH/UCzcsstw2TAkFnMEbo9Zu9w7Kv
+ AxBQXWeXhJI9XQssfrf4Gusdqx8nPEpfOqCtbbwJMATbHyqLt7/oz/5deGuwxgb65pWIzufa
+ N7eop7uh+6bezi+rugUI+w6DABEBAAHCwXwEGAEIACYCGwwWIQQb2cqtc1xMOkYN/MpN3hD3
+ AP+DWgUCXw7HsgUJEqkpoQAKCRBN3hD3AP+DWrrpD/4qS3dyVRxDcDHIlmguXjC1Q5tZTwNB
+ boaBTPHSy/Nksu0eY7x6HfQJ3xajVH32Ms6t1trDQmPx2iP5+7iDsb7OKAb5eOS8h+BEBDeq
+ 3ecsQDv0fFJOA9ag5O3LLNk+3x3q7e0uo06XMaY7UHS341ozXUUI7wC7iKfoUTv03iO9El5f
+ XpNMx/YrIMduZ2+nd9Di7o5+KIwlb2mAB9sTNHdMrXesX8eBL6T9b+MZJk+mZuPxKNVfEQMQ
+ a5SxUEADIPQTPNvBewdeI80yeOCrN+Zzwy/Mrx9EPeu59Y5vSJOx/z6OUImD/GhX7Xvkt3kq
+ Er5KTrJz3++B6SH9pum9PuoE/k+nntJkNMmQpR4MCBaV/J9gIOPGodDKnjdng+mXliF3Ptu6
+ 3oxc2RCyGzTlxyMwuc2U5Q7KtUNTdDe8T0uE+9b8BLMVQDDfJjqY0VVqSUwImzTDLX9S4g/8
+ kC4HRcclk8hpyhY2jKGluZO0awwTIMgVEzmTyBphDg/Gx7dZU1Xf8HFuE+UZ5UDHDTnwgv7E
+ th6RC9+WrhDNspZ9fJjKWRbveQgUFCpe1sa77LAw+XFrKmBHXp9ZVIe90RMe2tRL06BGiRZr
+ jPrnvUsUUsjRoRNJjKKA/REq+sAnhkNPPZ/NNMjaZ5b8Tovi8C0tmxiCHaQYqj7G2rgnT0kt
+ WNyWQQ==
+Organization: Red Hat
+In-Reply-To: <20241107102126.2183152-7-william.roche@oracle.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: hpDpxZEK8tRfnyfWT1t8tSvt3ZU60p2U1ubFB0rO87U_1731418578
+X-Mimecast-MFC-PROC-ID: eFYL-Mj6UqLdx-6VhKb3lbRCW_Cfh7uVAPJ6JUufpEg_1731419137
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=david@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.122,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.122,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.671,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -190,72 +195,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: siksYWnDqxlq
+X-TUID: dLsxBzkgB2Ty
 
-On 12/11/2024 14.02, Cédric Le Goater wrote:
-> These were introduced in the avocado tests to workaround read issues
-> when interacting with console. They are no longer necessary and we can
-> use the expected  "login:" string now.
+On 07.11.24 11:21, “William Roche wrote:
+> From: David Hildenbrand <david@redhat.com>
 > 
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> Let's register a RAM block notifier and react on remap notifications.
+> Simply re-apply the settings. Warn only when something goes wrong.
+> 
+> Note: qemu_ram_remap() will not remap when RAM_PREALLOC is set. Could be
+> that hostmem is still missing to update that flag ...
+> 
+> Signed-off-by: David Hildenbrand <david@redhat.com>
+> Signed-off-by: William Roche <william.roche@oracle.com>
 > ---
->   tests/functional/test_arm_aspeed.py | 12 +++++-------
->   1 file changed, 5 insertions(+), 7 deletions(-)
+>   backends/hostmem.c       | 29 +++++++++++++++++++++++++++++
+>   include/sysemu/hostmem.h |  1 +
+>   2 files changed, 30 insertions(+)
 > 
-> diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
-> index 7644ecbae750..2c9009f686fd 100755
-> --- a/tests/functional/test_arm_aspeed.py
-> +++ b/tests/functional/test_arm_aspeed.py
-> @@ -136,10 +136,8 @@ def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'
->           self.wait_for_console_pattern('lease of 10.0.2.15')
->           # the line before login:
->           self.wait_for_console_pattern(pattern)
-> -        time.sleep(0.1)
-> -        exec_command(self, 'root')
-> -        time.sleep(0.1)
-> -        exec_command(self, "passw0rd")
-> +        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
-> +        exec_command_and_wait_for_pattern(self, 'passw0rd', '#')
+> diff --git a/backends/hostmem.c b/backends/hostmem.c
+> index bf85d716e5..fbd8708664 100644
+> --- a/backends/hostmem.c
+> +++ b/backends/hostmem.c
+> @@ -361,11 +361,32 @@ static void host_memory_backend_set_prealloc_threads(Object *obj, Visitor *v,
+>       backend->prealloc_threads = value;
+>   }
 >   
->       def do_test_arm_aspeed_buildroot_poweroff(self):
->           exec_command_and_wait_for_pattern(self, 'poweroff',
-> @@ -158,7 +156,7 @@ def test_arm_ast2500_evb_buildroot(self):
->           self.vm.add_args('-device',
->                            'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
->           self.do_test_arm_aspeed_buildroot_start(image_path, '0x0',
-> -                                                'Aspeed AST2500 EVB')
-> +                                                'ast2500-evb login:')
->   
->           exec_command_and_wait_for_pattern(self,
->                'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
-> @@ -188,7 +186,8 @@ def test_arm_ast2600_evb_buildroot(self):
->                            'ds1338,bus=aspeed.i2c.bus.3,address=0x32');
->           self.vm.add_args('-device',
->                            'i2c-echo,bus=aspeed.i2c.bus.3,address=0x42');
-> -        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00', 'Aspeed AST2600 EVB')
-> +        self.do_test_arm_aspeed_buildroot_start(image_path, '0xf00',
-> +                                                'ast2600-evb login:')
->   
->           exec_command_and_wait_for_pattern(self,
->                'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
-> @@ -210,7 +209,6 @@ def test_arm_ast2600_evb_buildroot(self):
->                'echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device',
->                'i2c i2c-3: new_device: Instantiated device slave-24c02 at 0x64');
->           exec_command(self, 'i2cset -y 3 0x42 0x64 0x00 0xaa i');
+> +static void host_memory_backend_ram_remapped(RAMBlockNotifier *n, void *host,
+> +                                             size_t offset, size_t size)
+> +{
+> +    HostMemoryBackend *backend = container_of(n, HostMemoryBackend,
+> +                                              ram_notifier);
+> +    Error *err = NULL;
+> +
+> +    if (!host_memory_backend_mr_inited(backend) ||
+> +        memory_region_get_ram_ptr(&backend->mr) != host) {
+> +        return;
+> +    }
+> +
+> +    host_memory_backend_apply_settings(backend, host + offset, size, &err);
+> +    if (err) {
+> +        warn_report_err(err);
 
-Could we please wait for the shell prompt here now? i.e.:
+I wonder if we want to fail hard instead, or have a way to tell the 
+notifier that something wen wrong.
 
-          exec_command_and_wait_for_pattern(self,
-              'i2cset -y 3 0x42 0x64 0x00 0xaa i', '#')
+-- 
+Cheers,
 
-or something similar?
-
-With such a fix included:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
-
-> -        time.sleep(0.1)
->           exec_command_and_wait_for_pattern(self,
->                'hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom',
->                '0000000 ffaa ffff ffff ffff ffff ffff ffff ffff');
+David / dhildenb
 

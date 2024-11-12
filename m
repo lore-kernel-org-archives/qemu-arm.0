@@ -1,111 +1,112 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7149803njc;
-        Mon, 11 Nov 2024 23:12:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXVPVgI4YnYOIIM7h+VaByCCpK3ThKJ5TpOEKPfX3eSK1zQfZdmHtRSigmS4wy8hhbWQsDIqcPqTo2HBQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFhjgA0ZM+KYUyuxYMtNFifRPJsT9z3LcPhRW6MptqahoNVvIUwt2pUpeCwEkP20SGjxZPu
-X-Received: by 2002:a05:620a:44d2:b0:7b1:4fab:9fa2 with SMTP id af79cd13be357-7b331f183d4mr2159842585a.42.1731395534349;
-        Mon, 11 Nov 2024 23:12:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731395534; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7150591njc;
+        Mon, 11 Nov 2024 23:14:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXPVGjIlRx3rcmwiDz7EMOOeLuasMmUxuMH7EiSjqE+7KgLVxZOaeCpPPuxe1XTeglRZD0lCwXZzzfYDA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFXaTjuxwZinMf+PTJPKLNshqBjZqxwZ8sIFq1GkyaZy5Wr+4kMtYvPu8l6jKWyY/OH4tAx
+X-Received: by 2002:a05:620a:408e:b0:7b1:f1d:d0c4 with SMTP id af79cd13be357-7b331d979b4mr1790936685a.31.1731395677267;
+        Mon, 11 Nov 2024 23:14:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731395677; cv=none;
         d=google.com; s=arc-20240605;
-        b=JE9sXXUlidsJ7BUURxY/wKEFVrv2x0T+DSbTB5qn4b6lv8YalctsWrIzXPppVVUX0C
-         7psIfxu1FCofRlNqgcOTGljyJuKybnfcuGarPmrdUpuEVsVfk3eHj/WtCo5Y9YIpVbv0
-         t0VqQeft7ymFajoGLAA4g4aUdCqO0Z1JgWBEZ9Tssh8YGeNbylT5Q2USxrZN3MhO/cyP
-         7lPgAHKdM3HpaWJtCbTLHs5UWzvWrGQjrbQ45jrm8dHLzzRzZIwB56sPKLcByLv3pW43
-         tOpnpOuHNPcuJJNZo5sXeYQ967FrPxv9s97rIc0V4nZEqfiggsuviwQXeme3eApgQrN0
-         93Kw==
+        b=V4ybr357iEcYB4MN0psdTuSHm2UKjxib8+VCxKmMTr/q1vlZI9Ve1XW1QoyM+aoWFj
+         +J1ZEYH/1dEi8wBnJUnhc8hs+h/EpZhfWvMYEQTC1aOvFK6iC6LWAMUkUGRm9N+f0m/q
+         kH5Z6QC2h9+T36TtUa5yrm2MNufQ4CbzyWlYw/tVviJQ4PP0kACC2W7JJFL2BopmWglu
+         3wnNd1ZjtT1nxMUGZQpQtApfaetqq3j6vvGr8ceUw3P9olmX+uQRMok6i7HxuMcIbcQy
+         VPCJ9L3JrwIPj+k5V1Re5It2460bwONXWjVB6XcmgiZzraSqbiudFJwXwy1JC5XKolmX
+         0Swg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=m11e0o3+CrruBeCDBMWoKtjF5L1A9qeK2nO915NyIeg=;
-        fh=9L87wzS1b8/AvNcScga9ZYT2s3Tc6JjgNt28JWVuDCY=;
-        b=J9dUyCnnlt3SduAlcXEBKkT1aUTwl1IymBo9rdk2d6vWbX9UJmj0RyI6ih2IFzoA8w
-         zqsfpUaQxqjFC0TZd9ZFWn7SXHYl6OdR1xeL+H0LsOteCh+rivfq2iW1/Zn0PkCIym62
-         B+PvYx9NIEGP2lmeQ66eCqxojZA7gYd4bcBxB4EFDlUTAMgb+Stc6F0pVxpE0pJWv0Sh
-         qNt7fwcr237aohescC09lqshkTSCatDKm3Z2K6Xisbwo8tyIFdOBKytsPNhCzuG9BxH1
-         zb5YlK3Yeayiim+47WsCPxg0Co8/MMrpQ5cVkpuaaIypA9PccGRpRVwN0aXGDU1NkybV
-         pRfQ==;
+        bh=zb8U/+doWBa05XRot33wTgCEXY9Yz0wFm0qnpMOM0Es=;
+        fh=mR5Hg1ir68rV8KV3Gipk1DBlo4HdErxKE3U5WeuipWE=;
+        b=BUZozu8elCaJqFeyz+aB1YeEmB4CM01xkulJrVzR0XKARQOKTl03+DNM2gOpThsKXC
+         P4bCa1ESRoGuCu6t60Te9H6W42hEh59KQ0o7J83B79r2/hs2FHNlz4S6eXWUQw+V0FqJ
+         FoUZFL+KrQ3UPfDMMo1iBsBgmQS5B48KaWF2tLlsFMoVGfjEWUAI0G/u3yPaV0W4ICs4
+         AJGxH70rkldMa9M6z37955DyS3w4fVECFrZ5vnccXJI1JpN2RwYuKggrkyM24GvdFFiE
+         kqdm7ugS2knxU1ypctFK05WBL3qxu7ez9AXhqiAp0brQmlzv0EKvltb46Qy2Ng6b1twc
+         f2ZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HktyYLH4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSJBHjr1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b32ac3e9desi1281421285a.102.2024.11.11.23.12.14
+        by mx.google.com with ESMTPS id af79cd13be357-7b32ab9153esi1288890585a.0.2024.11.11.23.14.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2024 23:12:14 -0800 (PST)
+        Mon, 11 Nov 2024 23:14:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HktyYLH4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FSJBHjr1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tAl3z-00081t-61; Tue, 12 Nov 2024 02:11:47 -0500
+	id 1tAl6Y-0001ev-8j; Tue, 12 Nov 2024 02:14:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAl3x-00081T-11
- for qemu-arm@nongnu.org; Tue, 12 Nov 2024 02:11:45 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAl6P-0001aX-Nc
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 02:14:19 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAl3v-0006go-EI
- for qemu-arm@nongnu.org; Tue, 12 Nov 2024 02:11:44 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tAl6N-00072v-Ik
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 02:14:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1731395502;
+ s=mimecast20190719; t=1731395654;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=m11e0o3+CrruBeCDBMWoKtjF5L1A9qeK2nO915NyIeg=;
- b=HktyYLH4W3HOpURf5PCedprnL3kHOVU+CXyh5KdsDSpqT1KmML1dxSyexNmDwYgosdN9CK
- 2G5dxr/pIqE6l4wOUw64mgnxAJqitq0R6eRs9+KVZ3JiqPl93oghHI5JsTpbSmlcNqoT7G
- GTXGHcZh61NzrTXk5Gmy8Yt2VpXYchE=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=zb8U/+doWBa05XRot33wTgCEXY9Yz0wFm0qnpMOM0Es=;
+ b=FSJBHjr1STIdVr4zVSHNwlS3LZel7r2gHI6yyfNy5qtksmIKmPkN5QfWbzY3tlgEonxNme
+ uoj3/rdZ345+Av6H1mzwEfa2rHBSKatuMlEhFnOo/SRP/R5Csu2uyc+hf9hgtma142yUu3
+ eRR0wktYVckaZvaKfPykcPZr9UGnReQ=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-643-mAx9d4JtOxSSMFWRoEXsTg-1; Tue, 12 Nov 2024 02:11:40 -0500
-X-MC-Unique: mAx9d4JtOxSSMFWRoEXsTg-1
-X-Mimecast-MFC-AGG-ID: mAx9d4JtOxSSMFWRoEXsTg
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-a9a2a81ab82so419478266b.1
- for <qemu-arm@nongnu.org>; Mon, 11 Nov 2024 23:11:40 -0800 (PST)
+ us-mta-608-FvdBt90rMuy8O2RotFpvbg-1; Tue, 12 Nov 2024 02:14:11 -0500
+X-MC-Unique: FvdBt90rMuy8O2RotFpvbg-1
+X-Mimecast-MFC-AGG-ID: FvdBt90rMuy8O2RotFpvbg
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-a9a2593e9e9so387678566b.0
+ for <qemu-arm@nongnu.org>; Mon, 11 Nov 2024 23:14:11 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731395499; x=1732000299;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=m11e0o3+CrruBeCDBMWoKtjF5L1A9qeK2nO915NyIeg=;
- b=AR+y4VaLXIGeN++Z9BNCAJ5Yccyilwt+YAKFr/49UOiiVPTV19RcR9aj81H5NCkzX5
- 1od3eL0pi9zA9i5wLa7DrZFuHDFTHgYosF7BvaFnoqmU0fpAvqxkuGVsX5j0t5mArOoi
- hJNbi/iN9qyyjxYK6U+q777rJ7e+/Wl0FvthfuGiUuyIYKvSuUY/lmmXKaB//K+WISh9
- 1tNOlgoooarIDKr5OkstNXfSRY1RMGQY9CY5+naRzABEgjwkqCivAnQ37U/G+Wrvqu+v
- tyYD3ikpvLAh/7QQYky7NVIVnq1djEuktlCTxyr8UzE1dOo7sU+vutRz+eAx17fIc4or
- QIOw==
+ d=1e100.net; s=20230601; t=1731395650; x=1732000450;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zb8U/+doWBa05XRot33wTgCEXY9Yz0wFm0qnpMOM0Es=;
+ b=ndn4eMGRRIZ3YZv1EmxtOhuug++Yaas0MXdw3NFk1UyL5JWzNXYAXE05J1Dk/ZEEp1
+ 25va4gO/hGMgspTS+e18BhsMYuzbnM//PJUKYjVyZgUSqCxuZYI5Fql3l2ksLmgEOPC9
+ e+MREqg6Jaw+0FuQqwy2Dtj+zt4wb4atnDRkjnNOv0YzEHj6Csg9MAETRZwWOIkEil35
+ qMTwJ+aa4PwUNtxABjd3jRfQ9kKCrk0nWAOjxqNN0ceg+0ll8DpiU6Yan4CEmHUN/hjY
+ PJkVxt8KIQiShxml5UTKmu/rDg5J3xDcmjW0AXha+Pox3AejDOqjQIoEAr+NDZewqSgV
+ fRlw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXw5V1tb566goaJA+rzI7eTPya+O89FsdwASzwJZdsLDv199/27oTDzzKGwbkYPovwXTf6C81hCnw==@nongnu.org
-X-Gm-Message-State: AOJu0YxmuJLNCLWxVqhALMzgMA3KQ7S6AE4Nleit7+v+yjdpcMJICcN8
- RXdOiyAteahU9KW0FfCVttzxfkw4b0eXfmMVHj1/XFzNhqMsGKRb4fE0UsunFZoXRj8s1hdQhqZ
- Fmozjw9X7BPiQZc2ZlgU8eTtOOAb/JRFVcuCxvO0ZpGoPHqhsFg==
-X-Received: by 2002:a17:907:844:b0:a9a:a96a:e280 with SMTP id
- a640c23a62f3a-a9eeff0ea22mr1542076866b.20.1731395499407; 
- Mon, 11 Nov 2024 23:11:39 -0800 (PST)
-X-Received: by 2002:a17:907:844:b0:a9a:a96a:e280 with SMTP id
- a640c23a62f3a-a9eeff0ea22mr1542074466b.20.1731395499018; 
- Mon, 11 Nov 2024 23:11:39 -0800 (PST)
+ AJvYcCU+5vzRwbe4syZK849LSiHC3tAfY2/S4uMF1geauIu1eqU58hYb6Kc/AcGdcFS6ULvzOxwIfxDw6A==@nongnu.org
+X-Gm-Message-State: AOJu0YyGGXcRUk9NU/XTvoyD3or6B/X6eGu8l3k6Bxsr0NIrwtVeAy0r
+ r5N81Ajti9mWzEHeV7ihHhINPQZT/Ra9OToAjfYihsE5Vfv3Crb8PtRgyh/+T2PEJs0RW7/qmcw
+ kF7qhXEJZm4ohsrTLzoktL8uH+OVBRglX0MXvYfIfSgcIY66Wvw==
+X-Received: by 2002:a17:906:4a18:b0:aa1:e60e:6fe7 with SMTP id
+ a640c23a62f3a-aa1e60e774cmr27884366b.11.1731395650169; 
+ Mon, 11 Nov 2024 23:14:10 -0800 (PST)
+X-Received: by 2002:a17:906:4a18:b0:aa1:e60e:6fe7 with SMTP id
+ a640c23a62f3a-aa1e60e774cmr27881566b.11.1731395649793; 
+ Mon, 11 Nov 2024 23:14:09 -0800 (PST)
 Received: from [192.168.0.7] (ip-109-42-50-175.web.vodafone.de.
  [109.42.50.175]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9ee0dc56fcsm690734366b.125.2024.11.11.23.11.37
+ a640c23a62f3a-a9ee0a184f8sm675454766b.15.2024.11.11.23.14.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 11 Nov 2024 23:11:38 -0800 (PST)
-Message-ID: <3bea84f6-098f-4956-a40d-651b567212c2@redhat.com>
-Date: Tue, 12 Nov 2024 08:11:36 +0100
+ Mon, 11 Nov 2024 23:14:09 -0800 (PST)
+Message-ID: <f97df212-9094-4ea4-ab9a-3ca3f88a0c81@redhat.com>
+Date: Tue, 12 Nov 2024 08:14:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/4] tests/functional: Introduce _console_read()
+Subject: Re: [PATCH v1 4/4] tests/functional: Remove sleep workarounds from
+ Aspeed tests
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -114,7 +115,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 References: <20241112062806.838717-1-clg@redhat.com>
- <20241112062806.838717-2-clg@redhat.com>
+ <20241112062806.838717-5-clg@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -158,23 +159,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20241112062806.838717-2-clg@redhat.com>
+In-Reply-To: <20241112062806.838717-5-clg@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: H_m-J5JHfvzQqzkd18WJ2gtVdmHyTLqUbJC5mRkGFiA_1731395499
+X-Mimecast-MFC-PROC-ID: bpsEwlOzqjKvs8bezNlf3q6_itxIACEcGrNEmJ3nrgg_1731395650
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.122,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.122,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.671,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -189,72 +190,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Yqh79HQm7nw5
+X-TUID: zfhEElX8DYoV
 
 On 12/11/2024 07.28, Cédric Le Goater wrote:
-> Interaction with the console has been a problem in our avocado
-> tests. In some cases, the expected string does not match in the
-> output, causing the test to fail with a timeout. These were worked
-> around by sleeping before reading the console and even with SSH
-> connections in some places.
-> 
-> To fix, process the console output char by char and not with
-> readline. This routine was largely inspired by console_wait() in
-> tests/vm/basevm.py.
+> These were introduced in the avocado tests to workaround read issues
+> when interacting with console. They are no longer necessary.
 > 
 > Signed-off-by: Cédric Le Goater <clg@redhat.com>
 > ---
->   tests/functional/qemu_test/cmd.py | 17 ++++++++++++++++-
->   1 file changed, 16 insertions(+), 1 deletion(-)
+>   tests/functional/test_arm_aspeed.py | 7 ++-----
+>   1 file changed, 2 insertions(+), 5 deletions(-)
 > 
-> diff --git a/tests/functional/qemu_test/cmd.py b/tests/functional/qemu_test/cmd.py
-> index cbabb1ceed3c..bb39857e6cae 100644
-> --- a/tests/functional/qemu_test/cmd.py
-> +++ b/tests/functional/qemu_test/cmd.py
-> @@ -12,6 +12,7 @@
->   # later.  See the COPYING file in the top-level directory.
+> diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
+> index bdd5771a794e..07a8905e2365 100755
+> --- a/tests/functional/test_arm_aspeed.py
+> +++ b/tests/functional/test_arm_aspeed.py
+> @@ -136,10 +136,8 @@ def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'
+>           self.wait_for_console_pattern('lease of 10.0.2.15')
+>           # the line before login:
+>           self.wait_for_console_pattern(pattern)
+
+Could we please wait for the "login:" string now instead, to make sure that 
+there is no race between detecting the previous line and the real login prompt?
+
+> -        time.sleep(0.1)
+> -        exec_command(self, 'root')
+> -        time.sleep(0.1)
+> -        exec_command(self, "passw0rd")
+> +        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+> +        exec_command_and_wait_for_pattern(self, 'passw0rd', '#')
 >   
->   import logging
-> +import re
->   import os
->   import os.path
->   import subprocess
-> @@ -78,6 +79,20 @@ def run_cmd(args):
->   def is_readable_executable_file(path):
->       return os.path.isfile(path) and os.access(path, os.R_OK | os.X_OK)
->   
-> +def _console_read(vm, expect, expectalt = None):
-> +    output = ""
-> +    while True:
-> +        data = vm.console_socket.recv(1)
-> +        if not data:
-> +            break
-> +        output += data.decode("latin1")
-> +        if expect in output:
-> +            break
-> +        if "\r" in output or "\n" in output:
-> +            lines = re.split("[\r\n]", output)
-> +            output = lines.pop()
-> +    return output
-> +
+>       def do_test_arm_aspeed_buildroot_poweroff(self):
+>           exec_command_and_wait_for_pattern(self, 'poweroff',
+> @@ -210,7 +208,6 @@ def test_arm_ast2600_evb_buildroot(self):
+>                'echo slave-24c02 0x1064 > /sys/bus/i2c/devices/i2c-3/new_device',
+>                'i2c i2c-3: new_device: Instantiated device slave-24c02 at 0x64');
+>           exec_command(self, 'i2cset -y 3 0x42 0x64 0x00 0xaa i');
 
-The idea looks promising, but I just realized that this is breaking the 
-console.log:
-
-$ cat 
-tests/functional/arm/test_arm_aspeed.AST2x00Machine.test_arm_ast2500_evb_buildroot/console.log 
-  | wc -l
-12
-
-Without your patch, the log is way more verbose:
-
-$ cat 
-tests/functional/arm/test_arm_aspeed.AST2x00Machine.test_arm_ast2500_evb_buildroot/console.log 
-  | wc -l
-232
-
-Could you please have another look?
+Could please you change the above line to wait for the shell prompt pattern now?
 
   Thanks,
    Thomas
+
+> -        time.sleep(0.1)
+>           exec_command_and_wait_for_pattern(self,
+>                'hexdump /sys/bus/i2c/devices/3-1064/slave-eeprom',
+>                '0000000 ffaa ffff ffff ffff ffff ffff ffff ffff');
 

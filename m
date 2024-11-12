@@ -1,104 +1,114 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7046593njc;
-        Mon, 11 Nov 2024 17:51:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXJ+jH7Rs41RXeztTEZlNB+5Q1zwXCKjSgvfAQIuJttJ6ZkT0a8IgQZI/BHsPCn+/h5As1SuvD3D3daGw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHhQmhLX04OZV1UMRMuytmLN9NHWfYQrfaovDYep3igfEcGwr4mvyRNduTDfS1hNY1r24rP
-X-Received: by 2002:a05:6122:a06:b0:509:2c72:2427 with SMTP id 71dfb90a1353d-51401ebf197mr12214403e0c.12.1731376299814;
-        Mon, 11 Nov 2024 17:51:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731376299; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7134119njc;
+        Mon, 11 Nov 2024 22:28:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX2raPcO/s04RufPQDEUjqj6Jbk3FX1hH1W0NtGRqZOsn8XnzRN5rLsxmHjdlWz4y6Wl4WZAKBsG8BPLA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFQx7hjS04kLpgWvof675Xp9X1o03CTW/DQnRT9pZqw1MnSHF6X4PLtMRTtx/7bqVxDqvNH
+X-Received: by 2002:a05:620a:4112:b0:7b1:7838:940f with SMTP id af79cd13be357-7b331ec6e53mr1941806285a.33.1731392931272;
+        Mon, 11 Nov 2024 22:28:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731392931; cv=none;
         d=google.com; s=arc-20240605;
-        b=YeNPr7pF0lYYY9quvACWKBi9yydIuXhCZUDXyJUFq6upK68CUrEylF9qirzJ6uQwGS
-         7wRO9lbKYzTAP+hHZQq7IJ9nFVMMYDbAvUnn85R1bCazUWBjlEXgPYevWS6XdtKfCuU/
-         hNF2/Y9GQZxg6GEncfodpTG2fUztgRkZGx16IUTmf3/UH84ByuipkgWodqfj4NqzdL5I
-         jwlOwYCn2eFy+uBxsiSomFcc9JBo4mPViUMLFchzRWtLHln7VpVEcb5nfGG6nyAN/3oT
-         wgat7m7y+FSRNKc3Vdho+vu2fDnnE/OV4vag/I51vLCxbKns+aLicNQwc3dzQWf4FqZ6
-         MC8w==
+        b=KpPQAUh6GsOK60jUYU75ZHPUWPmPGuYaWoyedl7o7PauK3IMOsbBMjRxfK7SpoVB2t
+         wmiJZNUH81sYN1ZsezXJgIMIkUO+ecPPnhD00zxwXHlVXE9OBsVzpFr8Cbn2G77guo8D
+         C2isFnS4+IT3tqYS1tP8ogz4lxo9RLpJ5etsIC140vFr01i8M7JsNWOtUOiRzkLtYW/h
+         YPCuxzLOFawLkL1pV/ETDqMxj9y3caAIs8SPG5uh60PH+YAbd86KWO2hzG7e8w4JrVej
+         mxf2Diyz1AxWrcCCadkpK7XtsT9l+UuXOP6PYgjCs4ggW4wNCGg5Bcxkf03AWdyEnxES
+         zYiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=2iOthPqgpQWtlxYjSPtE7CAnYZtBI3ng6vdVsiWhG5Q=;
-        fh=Cq8IHC2QSI4gip9v4lsYUB6RlFAVaxw4oiNlolABUxc=;
-        b=R1dzrIrPOcFJskLmXhAVE5AFPkdXR3FIqZRirV7hSQrVo/zDf/5+J8DT80UW14TO5L
-         zsXZtr29bl5bjrG/umxbs8t7L9dNvaFcyCo0gHTrZLeCFF27xZDxyTgfITxyRoRZY3fH
-         8l4kGLxbzBZjsLwILStKamlcFA3VfGY47CuwLfng6hsBOuuId34HrC3Vby7qLellWnIp
-         WF0NZ2XcIEJFviDiKM70l3hLBB4reLKfeamVMw5Tv++d4UG3q9l2IO6vT2I6KD6lfXzH
-         2XNHG1E+MygW+NxUP12Ip8g5q/cZS9FA/nRITDmOTse58x327YIpJnoEy5V7Zl8eMlFm
-         f1wQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=UPvG211bgjOPoT7mi+ckBLnolqhsNWv3NDvVXCTXzTU=;
+        fh=36XeOeSnsB5LbZUpSpyTPSVUP6DQSW+xMm0rZH0YiK4=;
+        b=gw58LlpvfxoEj/b3sDlboP6ME7Of4hq82eXlBz9IIKVds1XSTXZy6GFgNnQNpa3HuW
+         2Ka7HT6CWd8sKTiuXoZK7a1tpMqlwn8yUOoIFUrWhqO3QUmh+0lqHUuQKx7UYJTvXhEb
+         i2YOFF1m1cjPyK7sVqBa/EVMPNAShCPRf2M9Ie/y8VLb8LC7WMWIIQXEeu1GagjJuUmq
+         LLYJSJoTJQgq6qtPE96OsF/7ruKPA8Wou+7BdjNzn3LJ+FlDqopFGQNXEE78mqTLbFb4
+         DRcpT9GbmDFCvLQzAaj7fUPmqonI3EX/TEP1qASlydUQ+tvku0LukBTzxteGe6VWMoCy
+         2abQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=idzaLbBz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d3966bee94si123090556d6.517.2024.11.11.17.51.39
+        by mx.google.com with ESMTPS id af79cd13be357-7b32ac3e53esi1425082285a.104.2024.11.11.22.28.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 11 Nov 2024 17:51:39 -0800 (PST)
+        Mon, 11 Nov 2024 22:28:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=idzaLbBz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tAg3i-0003pt-HP; Mon, 11 Nov 2024 20:51:11 -0500
+	id 1tAkOJ-0005wq-RQ; Tue, 12 Nov 2024 01:28:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1tAg3e-0003pK-9f; Mon, 11 Nov 2024 20:51:06 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tAkOI-0005wA-26
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 01:28:42 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1tAg3Z-0001sM-J9; Mon, 11 Nov 2024 20:51:05 -0500
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 74B2B4E6001;
- Tue, 12 Nov 2024 02:50:56 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id wARPds8jdvKh; Tue, 12 Nov 2024 02:50:54 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 170FD4E6000; Tue, 12 Nov 2024 02:50:54 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 114FC746F60;
- Tue, 12 Nov 2024 02:50:54 +0100 (CET)
-Date: Tue, 12 Nov 2024 02:50:54 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Phil Dennis-Jordan <phil@philjordan.eu>
-cc: =?ISO-8859-15?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>, 
- Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-devel@nongnu.org, 
- agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com, 
- rad@semihalf.com, quic_llindhol@quicinc.com, stefanha@redhat.com, 
- mst@redhat.com, slp@redhat.com, richard.henderson@linaro.org, 
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, gaosong@loongson.cn, 
- jiaxun.yang@flygoat.com, chenhuacai@kernel.org, kwolf@redhat.com, 
- hreitz@redhat.com, philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com, 
- alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com, 
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, 
- jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, qemu-arm@nongnu.org, 
- qemu-block@nongnu.org, qemu-riscv@nongnu.org
-Subject: Re: [PATCH v8 01/15] ui & main loop: Redesign of system-specific
- main thread event handling
-In-Reply-To: <CAAibmn2MPxgB+HQPMz_U=1LEeg8GzQEovKzoLe-gYRYv9EX89A@mail.gmail.com>
-Message-ID: <a1d15bf8-68b1-2650-daa5-1595d9d4b8e9@eik.bme.hu>
-References: <20241108144709.95498-1-phil@philjordan.eu>
- <20241108144709.95498-2-phil@philjordan.eu>
- <9c2e0b96-2125-4041-9f66-116d54accb04@daynix.com>
- <CAAibmn3NbtOEwWLQFOo_UmAGTehOj+dDP04A=-JGMZVK9AYMDw@mail.gmail.com>
- <ZzHJgAbBJZYrSt84@redhat.com>
- <CAAibmn2+pT_kpcdHd26KsFggRNRR3yPep11fToOK=GZ9AEDHpw@mail.gmail.com>
- <e08017b1-5b38-f482-5534-cea4dcc0f000@eik.bme.hu>
- <CAAibmn2MPxgB+HQPMz_U=1LEeg8GzQEovKzoLe-gYRYv9EX89A@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tAkOF-000202-Ic
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 01:28:41 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1731392918;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UPvG211bgjOPoT7mi+ckBLnolqhsNWv3NDvVXCTXzTU=;
+ b=idzaLbBz2CPU/QY2moPguEQCUGpJvGMGRiGvrHEfXN1JO1oDvuSCPi17xXJ8IWf2EEgM7F
+ MXPbLPkzfGiT2+zmgDi08IVkJPCT19xczmk/63ei5H4pVpP17kOtLvMEJqkUAYoGPIbpnH
+ 3Lzb+HzeX7JK/pDxDR5qRX7VJZeNi48=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-124-AsEdtu9XM-e_uWLWrgECgw-1; Tue,
+ 12 Nov 2024 01:28:33 -0500
+X-MC-Unique: AsEdtu9XM-e_uWLWrgECgw-1
+X-Mimecast-MFC-AGG-ID: AsEdtu9XM-e_uWLWrgECgw
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8D2B31955F41; Tue, 12 Nov 2024 06:28:31 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.39.193.48])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 6F011195E480; Tue, 12 Nov 2024 06:28:28 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v1 3/4] tests/functional: Convert Aspeed arm SDK tests
+Date: Tue, 12 Nov 2024 07:28:05 +0100
+Message-ID: <20241112062806.838717-4-clg@redhat.com>
+In-Reply-To: <20241112062806.838717-1-clg@redhat.com>
+References: <20241112062806.838717-1-clg@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-323661804-1731376254=:34944"
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.122,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,150 +123,226 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P3jGkl+s6lhQ
+X-TUID: x809/OKOPu11
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Drop the SSH connection which was introduced in the avocado tests to
+workaround read issues when interacting with console.
 
---3866299591-323661804-1731376254=:34944
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ tests/avocado/machine_aspeed.py     | 124 ----------------------------
+ tests/functional/test_arm_aspeed.py |  67 +++++++++++++++
+ 2 files changed, 67 insertions(+), 124 deletions(-)
+ delete mode 100644 tests/avocado/machine_aspeed.py
 
-On Mon, 11 Nov 2024, Phil Dennis-Jordan wrote:
-> On Mon, 11 Nov 2024 at 13:41, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->> On Mon, 11 Nov 2024, Phil Dennis-Jordan wrote:
->>> On Mon, 11 Nov 2024 at 10:08, Daniel P. Berrangé <berrange@redhat.com>
->>> wrote:
->>>
->>>> On Sun, Nov 10, 2024 at 08:08:16AM +0100, Phil Dennis-Jordan wrote:
->>>>> On Sun 10. Nov 2024 at 08:01, Akihiko Odaki <akihiko.odaki@daynix.com>
->>>>> wrote:
->>>>>
->>>>>> On 2024/11/08 23:46, Phil Dennis-Jordan wrote:
->>>>>>> macOS's Cocoa event handling must be done on the initial (main)
->>>> thread
->>>>>>> of the process. Furthermore, if library or application code uses
->>>>>>> libdispatch, the main dispatch queue must be handling events on the
->>>> main
->>>>>>> thread as well.
->>>>>>>
->>>>>>> So far, this has affected Qemu in both the Cocoa and SDL UIs,
->>>> although
->>>>>>> in different ways: the Cocoa UI replaces the default qemu_main
->>>> function
->>>>>>> with one that spins Qemu's internal main event loop off onto a
->>>>>>> background thread. SDL (which uses Cocoa internally) on the other
->>>> hand
->>>>>>> uses a polling approach within Qemu's main event loop. Events are
->>>>>>> polled during the SDL UI's dpy_refresh callback, which happens to run
->>>>>>> on the main thread by default.
->>>>>>
->>>>>> GTK should also do the same as SDL and requires treatment; I forgot to
->>>>>> note that in previous reviews.
->>>>>
->>>>>
->>>>> Although it‘s possible to build Qemu with GTK support enabled on macOS,
->>>>> that UI doesn’t actually work on macOS at all, and apparently hasn’t
->> been
->>>>> supported since 2018, see:
->>>>> https://stackoverflow.com/a/51474795
->>>>>
->>>>> I don’t think there’s any point making adjustments to the GTK code by
->>>>> guessing what might be needed if someone did fix that to work with
->> macOS
->>>> at
->>>>> some point.
->>>>
->>>> If we don't support GTK on macOS, then we should update meson.build
->>>> to actively prevent users enabling GTK on macOS builds, rather than
->>>> letting them suffer random runtime crashes.
->>>>
->>>>
->>> Agreed - I'm now more confused than ever though because
->>> https://gitlab.com/qemu-project/qemu/-/issues/2539 sort of implies that
->>> Philippe has previously been using it successfully. Or perhaps this was
->>> created in response to
->> https://gitlab.com/qemu-project/qemu/-/issues/2515 ?
->>> But it seems like even the SDL implementation isn't perfect:
->>> https://gitlab.com/qemu-project/qemu/-/issues/2537
->>>
->>> Basically, it seems like Qemu's UI threading on macOS is currently a bit
->> of
->>> a mess, except in the Cocoa UI.
->>
->> Maybe it worked with older MacOS X releases but broke around the same time
->> when commit 5588840ff77800 was needed to fix the cocoa UI? Maybe gtk needs
->> a similar fix or whatever cocoa was changed to use since somewhere in gtk
->> or QEMU?
->>
->
-> Possible! Calling the Cocoa UI APIs from anything other than the main
-> thread has never officially been supported as far as I'm aware, but perhaps
-> some subset silently worked on earlier releases. Modern versions definitely
-> enforce the rule to some extent.
->
-> Also I find it strange to require UI backends to NULL init a global. If
->> the cocoa UI is the only one that needs it could that also set it instead
->> of doing it in /system? That would also confine macOS specific code to
->> cocoa.m and the other UIs would not need any change that way.
->>
->
-> Well, that's the whole point, it's not just the Cocoa UI - other macOS
-> system frameworks also need a runloop or libdispatch to be handling events
-> on thread 0. Relevant here are the ParavirtualizedGraphics.framework that's
-> integrated with patches 2-4 from this patch set, as well as the
-> Metal.framework, which PVG uses internally, and which we need to use
-> directly to some extent to complete the generated guest frames. These
-> frameworks internally use libdispatch, and they just don't work if nothing
-> is processing events on the main dispatch queue/runloop. So without patch
-> 01/16, PV graphics will only work in conjunction with Cocoa or SDL, because
-> those do process the runloop on the main thread. But if you were to run
-> with -nographic, or VNC/SPICE-only, Mac PV graphics just wouldn't work. So
-> the idea is to uncouple the main thread's runloop from the Cocoa UI.
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+deleted file mode 100644
+index 2240c82abff9..000000000000
+--- a/tests/avocado/machine_aspeed.py
++++ /dev/null
+@@ -1,124 +0,0 @@
+-# Functional test that boots the ASPEED SoCs with firmware
+-#
+-# Copyright (C) 2022 ASPEED Technology Inc
+-#
+-# This work is licensed under the terms of the GNU GPL, version 2 or
+-# later.  See the COPYING file in the top-level directory.
+-
+-import time
+-import os
+-import tempfile
+-import subprocess
+-
+-from avocado_qemu import LinuxSSHMixIn
+-from avocado_qemu import QemuSystemTest
+-from avocado_qemu import wait_for_console_pattern
+-from avocado_qemu import exec_command
+-from avocado_qemu import exec_command_and_wait_for_pattern
+-from avocado_qemu import interrupt_interactive_console_until_pattern
+-from avocado_qemu import has_cmd
+-from avocado.utils import archive
+-from avocado import skipUnless
+-
+-class AST2x00MachineSDK(QemuSystemTest, LinuxSSHMixIn):
+-
+-    EXTRA_BOOTARGS = (
+-        'quiet '
+-        'systemd.mask=org.openbmc.HostIpmi.service '
+-        'systemd.mask=xyz.openbmc_project.Chassis.Control.Power@0.service '
+-        'systemd.mask=modprobe@fuse.service '
+-        'systemd.mask=rngd.service '
+-        'systemd.mask=obmc-console@ttyS2.service '
+-    )
+-
+-    # FIXME: Although these tests boot a whole distro they are still
+-    # slower than comparable machine models. There may be some
+-    # optimisations which bring down the runtime. In the meantime they
+-    # have generous timeouts and are disable for CI which aims for all
+-    # tests to run in less than 60 seconds.
+-    timeout = 240
+-
+-    def wait_for_console_pattern(self, success_message, vm=None):
+-        wait_for_console_pattern(self, success_message,
+-                                 failure_message='Kernel panic - not syncing',
+-                                 vm=vm)
+-
+-    def do_test_arm_aspeed_sdk_start(self, image):
+-        self.require_netdev('user')
+-        self.vm.set_console()
+-        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+-                         '-net', 'nic', '-net', 'user,hostfwd=:127.0.0.1:0-:22')
+-        self.vm.launch()
+-
+-        self.wait_for_console_pattern('U-Boot 2019.04')
+-        interrupt_interactive_console_until_pattern(
+-            self, 'Hit any key to stop autoboot:', 'ast#')
+-        exec_command_and_wait_for_pattern(
+-            self, 'setenv bootargs ${bootargs} ' + self.EXTRA_BOOTARGS, 'ast#')
+-        exec_command_and_wait_for_pattern(
+-            self, 'boot', '## Loading kernel from FIT Image')
+-        self.wait_for_console_pattern('Starting kernel ...')
+-
+-    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
+-    def test_arm_ast2500_evb_sdk(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:ast2500-evb
+-        :avocado: tags=flaky
+-        """
+-
+-        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+-                     'download/v08.06/ast2500-default-obmc.tar.gz')
+-        image_hash = ('e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-        archive.extract(image_path, self.workdir)
+-
+-        self.do_test_arm_aspeed_sdk_start(
+-            self.workdir + '/ast2500-default/image-bmc')
+-        self.wait_for_console_pattern('nodistro.0 ast2500-default ttyS4')
+-
+-    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
+-    def test_arm_ast2600_evb_sdk(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:ast2600-evb
+-        :avocado: tags=flaky
+-        """
+-
+-        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+-                     'download/v08.06/ast2600-a2-obmc.tar.gz')
+-        image_hash = ('9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-        archive.extract(image_path, self.workdir)
+-
+-        self.vm.add_args('-device',
+-                         'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test');
+-        self.vm.add_args('-device',
+-                         'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
+-        self.do_test_arm_aspeed_sdk_start(
+-            self.workdir + '/ast2600-a2/image-bmc')
+-        self.wait_for_console_pattern('nodistro.0 ast2600-a2 ttyS4')
+-
+-        self.ssh_connect('root', '0penBmc', False)
+-        self.ssh_command('dmesg -c > /dev/null')
+-
+-        self.ssh_command_output_contains(
+-             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device ; '
+-             'dmesg -c',
+-             'i2c i2c-5: new_device: Instantiated device lm75 at 0x4d');
+-        self.ssh_command_output_contains(
+-                             'cat /sys/class/hwmon/hwmon19/temp1_input', '0')
+-        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+-                    property='temperature', value=18000);
+-        self.ssh_command_output_contains(
+-                             'cat /sys/class/hwmon/hwmon19/temp1_input', '18000')
+-
+-        self.ssh_command_output_contains(
+-             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device ; '
+-             'dmesg -c',
+-             'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
+-        year = time.strftime("%Y")
+-        self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
+-
+diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
+index 5fb1adf46439..bdd5771a794e 100755
+--- a/tests/functional/test_arm_aspeed.py
++++ b/tests/functional/test_arm_aspeed.py
+@@ -252,6 +252,73 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+ 
+         self.do_test_arm_aspeed_buildroot_poweroff()
+ 
++    def do_test_arm_aspeed_sdk_start(self, image):
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic', '-snapshot')
++        self.vm.launch()
++
++        self.wait_for_console_pattern('U-Boot 2019.04')
++        self.wait_for_console_pattern('## Loading kernel from FIT Image')
++        self.wait_for_console_pattern('Starting kernel ...')
++
++    ASSET_SDK_V806_AST2500 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2500-default-obmc.tar.gz',
++        'e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
++
++    def test_arm_ast2500_evb_sdk(self):
++        self.set_machine('ast2500-evb')
++
++        image_path = self.ASSET_SDK_V806_AST2500.fetch()
++
++        archive_extract(image_path, self.workdir)
++
++        self.do_test_arm_aspeed_sdk_start(
++            self.workdir + '/ast2500-default/image-bmc')
++
++        self.wait_for_console_pattern('ast2500-default login:')
++
++    ASSET_SDK_V806_AST2600_A2 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2600-a2-obmc.tar.gz',
++        '9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
++
++    def test_arm_ast2600_evb_sdk(self):
++        self.set_machine('ast2600-evb')
++
++        image_path = self.ASSET_SDK_V806_AST2600_A2.fetch()
++
++        archive_extract(image_path, self.workdir)
++
++        self.vm.add_args('-device',
++            'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test');
++        self.vm.add_args('-device',
++            'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
++        self.do_test_arm_aspeed_sdk_start(
++            self.workdir + '/ast2600-a2/image-bmc')
++
++        self.wait_for_console_pattern('ast2600-a2 login:')
++
++        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
++        exec_command_and_wait_for_pattern(self, '0penBmc', 'root@ast2600-a2:~#')
++
++        exec_command_and_wait_for_pattern(self,
++            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device',
++            'i2c i2c-5: new_device: Instantiated device lm75 at 0x4d');
++        exec_command_and_wait_for_pattern(self,
++             'cat /sys/class/hwmon/hwmon19/temp1_input', '0')
++        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
++                    property='temperature', value=18000);
++        exec_command_and_wait_for_pattern(self,
++             'cat /sys/class/hwmon/hwmon19/temp1_input', '18000')
++
++        exec_command_and_wait_for_pattern(self,
++             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device',
++             'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
++        year = time.strftime("%Y")
++        exec_command_and_wait_for_pattern(self,
++             '/sbin/hwclock -f /dev/rtc1', year);
++
++
+ class AST2x00MachineMMC(LinuxKernelTest):
+ 
+     ASSET_RAINIER_EMMC = Asset(
+-- 
+2.47.0
 
-OK, I think I got that now.
-
-> An then, the GTK+ and SDL libraries themselves call down into Cocoa on
-> macOS. Windows also has specific rules about its Win32 UI API and
-> threading. SDL says outright that everything needs to be done from the main
-> thread. GTK+ says everything needs to be called from a single thread on
-> Win32; it seems like the rule on macOS is the same, except that thread must
-> be thread 0. Both those UIs in Qemu seem to violate the threading rules of
-> the libraries they integrate, as evidenced by the bug reports listed above.
-> This brokenness is entirely independent of this patch set here, it's just
-> that we're bumping up against the same underlying issue of needing runloop
-> handling on thread 0 in macOS.
->
-> With regard to NULL'ing the qemu_main function pointer from the SDL or GTK
-> UIs in Qemu: I had implemented a different approach to solving the problem
-> in v4, where each UI declared up-front what kind of threading arrangement
-> it needed rather than each one just overwriting a global variable. This was
-> somewhat more complex than the current one though.
-> https://patchew.org/QEMU/20241024102813.9855-1-phil@philjordan.eu/20241024102813.9855-2-phil@philjordan.eu/
-
-That does not seem to be better than the current version.
-
-> Ultimately, it seems like someone needs to take a look at the SDL and GTK
-> integrations in Qemu and rework them in a way that doesn't violate the SDL
-> and GTK+ libraries' own threading rules. Once we've figured out what
-> requirements fall out of that, we can tidy up the qemu_main arrangement.
->
-> But that's an undertaking that's out of scope for this patch - I see the
-> current patch as a step towards a global solution to the problem.
-> Definitely not the last word on the matter, but at least starting to get
-> away from the situation where each UI does whatever it wants with zero
-> regard for the rest of the code base.
-
-Agreed. As long as it's not more broken than it is already, i.e. the 
-current behaviour is preserved, that should be good enough but I'm not a 
-maintainer who has a word in this so that's just my opinion. Then maybe 
-you could add a comment when the global variable needs to be set to NULL 
-to note that this may not be the correct way and some hint of the above 
-that this may need fixing later. I think we don't have a graphics 
-maintainer at the moment who has time to look at this so then at least 
-leave a comment to help whoever comes later who wants to fix this 
-eventually.
-
-Regards,
-BALATON Zoltan
---3866299591-323661804-1731376254=:34944--

@@ -1,97 +1,97 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7479438njc;
-        Tue, 12 Nov 2024 08:57:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU2IyXu7knOiSOdORe7W3U/I+RficGu6/qvjV22t+MTQuAhrQLOH/xZcSKZHGx5+4wkpAtJ/+vIg35BOA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFiBatVdyvsY6DQAtmxCM6TLXxdW8UxDhA5x+IC7r1Q22jYOah2o1ecoXO1dUJwolTrlXVS
-X-Received: by 2002:a05:6359:514a:b0:1c6:1d02:9be0 with SMTP id e5c5f4694b2df-1c641ea8956mr777143155d.7.1731430632598;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7479441njc;
+        Tue, 12 Nov 2024 08:57:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUlU9cnqbrn7T8PfoHYS+2zPNEHMbF6XhCGLnebpWnRrLC7+fOoR1sql3X8pe7KqnL5tggcA9cMaGmwWQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGMLE4n+2F6dmtjDRPhuhVw+fXYWRwpJnNX5rbeHYXPyt8Yx78l4PkSTjAu5Zls9AQGOgZS
+X-Received: by 2002:ac8:7d56:0:b0:461:22f0:4f83 with SMTP id d75a77b69052e-463093fe4ddmr212671071cf.43.1731430632800;
         Tue, 12 Nov 2024 08:57:12 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1731430632; cv=none;
         d=google.com; s=arc-20240605;
-        b=bBBzFYql6czEeab/A3FEfCvXpMIBs3LkSNNfCxzL8T+JFB7Y2CAw31Ays/kf7BbH+M
-         /qAKzlRH63PmuVC2HOLtwj4PIkShqzxDDGp14OCMrvVo3xMvw44peNgPhlSBJiWEa5O4
-         YvH/goJ9KLVERVZ81rmj++iqQXV4mGUW0rJhBZbIQY9u75lHuzeprQAZnACAR4zfMOu2
-         KHzyBC6GEwO1KVHlVzudhAJLyZNqgc14mtTPOhPs/Nm2Sqv/iU2TQjtN2Iut4IuaLHD7
-         kH8EFng8fsXZ/LU8Ez6w+7ENDufA8fFLVE+vViW0Q6T9huti9Jropp7pkkk8bFDEWNb6
-         DFvw==
+        b=CKw8tuZPWSDddCFnIASHYpqdXN13yJ56GQ+RzRzvJvQ29wDvDGJqAp5c3mliUTc/uq
+         3aSaE/R/HN00HFOW1LvDVUvWWvUcFwQWge6GcB7QeX1rgYjsXaRLA0Qmxa2jNdyHHI+U
+         bKfGSP8Ui6+Io/0emz5jyud7iWiLAJkZ80E1VjtNZ9ICvvrcXr+5zupaT9XBqxwoZHhF
+         NC76c4amoBfnXPcce1xbPlTX5v0DJ41w/Mw1OawfYPa8f/fJ8iIhIoDIAHwS8rD+pokr
+         IYbWNIBYd3YZmicnWApdL6HpWMghYeA3h+La0u2t3IjEQMoRoLxFq4dRc9UsJm93KApz
+         PiVA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Ov5WN5Qnk9W75jTisVRah+9h5c0nBp5r2UmUapO7Zv8=;
-        fh=V8NahgZakCYn8t/TgqsXTBAFs5ckdSW9hzN6IJ8dREU=;
-        b=XSH6ov7gn/qehJlypiVgBKfLdIfkJZBAz1Z0TcT2/Q0m8qa0DGcw+3+1kxv6HP2JFA
-         1tlcg8BzxX8/8mXUxBTXQFxcs3tF/JZcVuDSkiVMqo+ENLL7M+c+x71y3MJbPIinbArZ
-         DUEERF1qZQ01BFzSHtiaupRdBuWeczQIgyHYZUvPR4dkKpR3EQvSbgR4cGAlTrXiSP0E
-         ywT2pMUsdA5Pedwb8Zu0cUyBSG1suNo81qCRja2xqr0jBdfeJLHkEZgj3HJxSazsRQUj
-         QM10lFrmtKCLzg8HFo0CIMgd/sIRpPDHXpU5rKu1l5hwl5V8fv/9NehCpD0EPIQrJUg4
-         cmiA==;
+        bh=B+TH8uDCTgTLX/QaHsjWAcbNQxza0LHPrr0Ee+Jl498=;
+        fh=DIOXQ/p1Haw2PaMJFWPyiLmU79DXRh9uO97TEeTab/c=;
+        b=iC8UVuJ0YdSfqSAMBO/dmKGVr6ZpVcC2Tk7fQH6YQ2rrWlevweODfzaDAw/ZclukcR
+         qm/XUk9ix/BYpibg5M8/zc7W08m6vC637nrVF27wGXf7oMc9l9SM1azJVXqRPwUungP7
+         VYCQHIaVTlJWr1Hyjyi7/zD3EGyNtplKWm5dX3xOKwx84F8NS8GTwgU4rGywxTK5AhsY
+         eulFHShGThDDKrIkKZM0B6nUuGx3c+w4ZD8reUnonZr9G89CINUHAbyhZioTUV5sVTWC
+         FZWE9IFIOqK3Znpk8C2L08CeWtVfpw6C7mtga1t3tVAZZqMm5mmhkCPvU5sAx0amKTEL
+         qOyA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=bSaurqmJ;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=DHJqzrS7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d396665df1si150030216d6.303.2024.11.12.08.57.12
+        by mx.google.com with ESMTPS id d75a77b69052e-462ff40f1e2si141547961cf.27.2024.11.12.08.57.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 12 Nov 2024 08:57:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=bSaurqmJ;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=DHJqzrS7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tAuCG-0003CC-Bs; Tue, 12 Nov 2024 11:56:59 -0500
+	id 1tAuBx-00035D-Lb; Tue, 12 Nov 2024 11:56:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1tAuC6-00038D-Hy; Tue, 12 Nov 2024 11:56:46 -0500
+ id 1tAuBv-00033k-Ia; Tue, 12 Nov 2024 11:56:35 -0500
 Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1tAuC4-0000hN-Na; Tue, 12 Nov 2024 11:56:46 -0500
+ id 1tAuBs-0000fU-B4; Tue, 12 Nov 2024 11:56:35 -0500
 Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-720b2d8bb8dso4306517b3a.1; 
- Tue, 12 Nov 2024 08:56:43 -0800 (PST)
+ d2e1a72fcca58-720b2d8bb8dso4306383b3a.1; 
+ Tue, 12 Nov 2024 08:56:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1731430602; x=1732035402; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1731430590; x=1732035390; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ov5WN5Qnk9W75jTisVRah+9h5c0nBp5r2UmUapO7Zv8=;
- b=bSaurqmJVi/lyf6iZMeOZfgJfh2A92qnxFClt0MspN9rFSNpVxxAXUxv3m+o2oazqF
- hUQ679P4+/vCCORC2MNbV7MNGZM9IMHS/GBUJZQQTqWKWUPRQAZ/KBv+gfT+SwUo8R/4
- RO8R+vLMZ73cJfmuJWP8N0cANImA+DrFPBpaZAtRHAheNw0GTrj0tPcLgRWWOXKXxaUV
- MeE+EZ2k7AbNk/8ruqemKEbrINV1UeA2SecbGniuRgHRn6bhQLEM5LyADQJcnXCw2TGL
- C4e4pMs+sXWydI7Ek1FF57ljz3Q+28UEXrfatLIs2QrIWw4lgeD3y5uNoR8MZBnJXKgA
- 2T9w==
+ bh=B+TH8uDCTgTLX/QaHsjWAcbNQxza0LHPrr0Ee+Jl498=;
+ b=DHJqzrS7gEybrAiX3Jdzldb9TVHm9Cv/gFtrt2lBIurbLPsW+6DmegQWEuyYuVkvbs
+ 7+6tnPaV7PYYk1bFoT0R6MpbckY9cT3icDHW80SDdc3AElNLE7IkXKyxe74G+5vSojLM
+ 8dUJWd7RNT7YcaRCvh4V/G3PmdDwHlJyCgbYDLXjsSwTsjJQMqjKkZWuMSMofKQEqjmr
+ nuvXYQveKVH/06fYcVe2HYJLmydzr5gvnsabQt5YWS2jJxOKN1Tl+RiAyEzX5GK8hyAc
+ CgfLuoTFYbE/HzjwG1b2kgNpXA1dhwOH4Ybsxtt7tcOD7dIzlG+Oo+wlJ8zSbgzmRR71
+ W60w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731430602; x=1732035402;
+ d=1e100.net; s=20230601; t=1731430590; x=1732035390;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=Ov5WN5Qnk9W75jTisVRah+9h5c0nBp5r2UmUapO7Zv8=;
- b=wL6+YfzS3Pvna85muZXQMapGqwHAgtHgdiNT1Rd2Jlrlqz7lS24Tq7/FwPO17Lkxoe
- WnotixRpDVNTegwQtRsfL8cJpbN0ZFJ10kM2uTeOjQnm5M3T894S54xAgSA08yRR6z++
- 2Re/ADVjIQDxr1jaP8EtC3GHreZ4PE8/vANCdVIrP+qMEk5k8/3fAM4wHWN4jszsrfXt
- WyJDzxXXNwQO+i9GBopbBz2XjPEigu2sfyoyI530EKR4ddE3L3r5Jd74SDIFZmr/Qbkt
- c6QVRSEFrrN5suKqnbVXPlcjoAaeMUeQ7vPlCjVsXKTfDLw4slH9+4uHM2Rx4bmkgYZ4
- AizQ==
+ bh=B+TH8uDCTgTLX/QaHsjWAcbNQxza0LHPrr0Ee+Jl498=;
+ b=LuVXxyPgDDjuVH7Vua1w6jiRdYuprNsU5b+eDZf3BvGKn+jP+ja6qVTfFSxqekBr/Z
+ U/sIT3ZOgv3LgegeHehQR6s1Q9SicB5pDv9Y/XczZR92YtGEwWb1IqCONoDiB18LGW1o
+ XLyMrCDmHwXrZabJERo2R7vchkphs+2REN5xIWWEPyCgaF/1XFCAbD94lBF4gyO8uhD/
+ QER/DE4dAY2ZJu9No8JB/ilpSD4QHKaMHW5LeJqRKJSX+TcNm3p5YQVb58/3T9hco7kn
+ Pvu2ZtDlh2bJyB90ePwOwNSg1X+rS/TIWeN62SwGMKEINfbdsvXPoo08wQqq05ExMTe+
+ wOtQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV990JjoQw1lehTU86MSER1BOvd223aRmKnA5eOE7IUc2m2IFRx+Si1hiDX5I1Sar3p/3Y67UIoEQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwOcRU8lBeyLdmVaUJUfEqMZ1uZ4jkJRujXwy7RvFR9NH/rKlrv
- IjVtrZ2Gk7S3cqFAFyyabJ+WjEDzkWJ8Anq6vbyny22pt5x831T09Nbp2w==
-X-Received: by 2002:a05:6a00:2e22:b0:71e:795f:92e4 with SMTP id
- d2e1a72fcca58-7241327d92bmr24309952b3a.2.1731430602136; 
- Tue, 12 Nov 2024 08:56:42 -0800 (PST)
+ AJvYcCX3XleMHgPICL2bttihBLJ46UJJIiHOn0rb02V3DiUCHk54YQ3sr1gM2a6UsWuvkv56E+dhmvEnFQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx2NoZL95IhDHN3NsToHJgPQ7hh1S8U8P0JVhuZ2MjmOLD8w+0c
+ 8OSHAG5DRSpSzvxmSLeBS4aLBVx7R+7fc8C9vHFDCJsLJnI7qjuioU4Zyw==
+X-Received: by 2002:a05:6a00:2e8f:b0:71d:ee1b:c851 with SMTP id
+ d2e1a72fcca58-724132a13ddmr21107668b3a.7.1731430589698; 
+ Tue, 12 Nov 2024 08:56:29 -0800 (PST)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-72407a17ebcsm11382484b3a.138.2024.11.12.08.56.41
+ d2e1a72fcca58-72407a1daf8sm11467383b3a.168.2024.11.12.08.56.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Nov 2024 08:56:41 -0800 (PST)
+ Tue, 12 Nov 2024 08:56:29 -0800 (PST)
 From: Guenter Roeck <linux@roeck-us.net>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
@@ -106,9 +106,9 @@ Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
  qemu-arm@nongnu.org, Guenter Roeck <linux@roeck-us.net>
-Subject: [PATCH 09/10] usb-hub: Add support for v2.0 hubs
-Date: Tue, 12 Nov 2024 08:56:18 -0800
-Message-ID: <20241112165618.217454-10-linux@roeck-us.net>
+Subject: [PATCH 03/10] usb/uhci: Move PCI-related code into a separate file
+Date: Tue, 12 Nov 2024 08:56:12 -0800
+Message-ID: <20241112165618.217454-4-linux@roeck-us.net>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241112165618.217454-1-linux@roeck-us.net>
 References: <20241112165618.217454-1-linux@roeck-us.net>
@@ -138,258 +138,936 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6vmEe42B4+Bn
+X-TUID: VDD+FmwewkMs
 
-When adding a high speed USB device to the USB hub supported by qemu,
-it is added in full speed mode. Here is an example for a storage device.
-
-/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=platform-uhci/2p, 12M
-    |__ Port 002: Dev 002, If 0, Class=Hub, Driver=hub/8p, 12M
-        |__ Port 001: Dev 003, If 0, Class=Human Interface Device, Driver=usbhid, 12M
-        |__ Port 002: Dev 004, If 0, Class=Human Interface Device, Driver=usbhid, 12M
-        |__ Port 003: Dev 005, If 0, Class=Mass Storage, Driver=usb-storage, 12M
-
-This also triggers messages such as
-
-usb 1-2.3: new full-speed USB device number 5 using platform-uhci
-usb 1-2.3: not running at top speed; connect to a high speed hub
-
-when such devices are instantiated in the host (example from Linux).
-
-Add basic support for USB v2.0 hubs to solve the problem. The usb_version
-device parameter configures the USB version; version 1 is default for
-compatibility reasons. Example:
-
--device usb-hub,bus=usb-bus.1,port=1,usb_version=2
-
-This command line parameter can be used to attach devices to the hub in
-high speed mode, as seen in the following example.
-
-/:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=ehci-platform/6p, 480M
-    |__ Port 001: Dev 002, If 0, Class=Hub, Driver=hub/8p, 480M
-        |__ Port 002: Dev 004, If 0, Class=Mass Storage, Driver=usb-storage, 480M
-
-and
-
-usb 2-1.2: new high-speed USB device number 4 using ehci-platform
-usb 2-1.2: New USB device found, idVendor=46f4, idProduct=0001, bcdDevice= 0.00
-
-To distinguish v1 from v2 instantiated hubs, the device version is set to
-2.01 (from 1.01) if the hub ist instantiated as USB v2 hub. The product
-name is set to "QEMU USB v2.0 Hub".
+Some machines (like Aspeed ARM) only have a sysbus UHCI controller.
+The current UHCI implementation only supports PCI based UHCI controllers.
+Move the UHCI-PCI device code into a separate file so that it is possible
+to create a sysbus UHCI device without PCI dependency.
 
 Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 ---
 Changes since RFC:
-- New patch
+- Rebased to v9.1.0-1673-g134b443512
+- Fixed bug in interrupt initialization
 
- hw/usb/dev-hub.c | 84 +++++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 76 insertions(+), 8 deletions(-)
+ hw/isa/Kconfig                |   4 +-
+ hw/isa/vt82c686.c             |   4 +-
+ hw/usb/Kconfig                |   6 +-
+ hw/usb/hcd-uhci-pci.c         | 255 ++++++++++++++++++++++++++++++++++
+ hw/usb/hcd-uhci-pci.h         |  63 +++++++++
+ hw/usb/hcd-uhci.c             | 221 +++++------------------------
+ hw/usb/hcd-uhci.h             |  30 ++--
+ hw/usb/meson.build            |   1 +
+ hw/usb/vt82c686-uhci-pci.c    |  18 +--
+ include/hw/southbridge/piix.h |   4 +-
+ 10 files changed, 386 insertions(+), 220 deletions(-)
+ create mode 100644 hw/usb/hcd-uhci-pci.c
+ create mode 100644 hw/usb/hcd-uhci-pci.h
 
-diff --git a/hw/usb/dev-hub.c b/hw/usb/dev-hub.c
-index 06e9537d03..4da91d151c 100644
---- a/hw/usb/dev-hub.c
-+++ b/hw/usb/dev-hub.c
-@@ -46,6 +46,7 @@ struct USBHubState {
-     USBDevice dev;
-     USBEndpoint *intr;
-     uint32_t num_ports;
-+    uint32_t usb_version;
-     bool port_power;
-     QEMUTimer *port_timer;
-     USBHubPort ports[MAX_PORTS];
-@@ -100,12 +101,14 @@ OBJECT_DECLARE_SIMPLE_TYPE(USBHubState, USB_HUB)
- enum {
-     STR_MANUFACTURER = 1,
-     STR_PRODUCT,
-+    STR_PRODUCT_V2,
-     STR_SERIALNUMBER,
- };
+diff --git a/hw/isa/Kconfig b/hw/isa/Kconfig
+index 73c6470805..b0e536fad9 100644
+--- a/hw/isa/Kconfig
++++ b/hw/isa/Kconfig
+@@ -47,7 +47,7 @@ config PIIX
+     select IDE_PIIX
+     select ISA_BUS
+     select MC146818RTC
+-    select USB_UHCI
++    select USB_UHCI_PCI
  
- static const USBDescStrings desc_strings = {
-     [STR_MANUFACTURER] = "QEMU",
-     [STR_PRODUCT]      = "QEMU USB Hub",
-+    [STR_PRODUCT_V2]   = "QEMU USB v2.0 Hub",
-     [STR_SERIALNUMBER] = "314159",
- };
+ config VT82C686
+     bool
+@@ -55,7 +55,7 @@ config VT82C686
+     select ISA_SUPERIO
+     select ACPI
+     select ACPI_SMBUS
+-    select USB_UHCI
++    select USB_UHCI_PCI
+     select APM
+     select I8254
+     select I8257
+diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
+index 6f44b381a5..a47cbd6191 100644
+--- a/hw/isa/vt82c686.c
++++ b/hw/isa/vt82c686.c
+@@ -26,7 +26,7 @@
+ #include "hw/intc/i8259.h"
+ #include "hw/irq.h"
+ #include "hw/dma/i8257.h"
+-#include "hw/usb/hcd-uhci.h"
++#include "hw/usb/hcd-uhci-pci.h"
+ #include "hw/timer/i8254.h"
+ #include "hw/rtc/mc146818rtc.h"
+ #include "migration/vmstate.h"
+@@ -600,7 +600,7 @@ struct ViaISAState {
+     ViaSuperIOState via_sio;
+     MC146818RtcState rtc;
+     PCIIDEState ide;
+-    UHCIState uhci[2];
++    UHCIPCIState uhci[2];
+     ViaPMState pm;
+     ViaAC97State ac97;
+     PCIDevice mc97;
+diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
+index 5fbecd2f43..bab4d2d67d 100644
+--- a/hw/usb/Kconfig
++++ b/hw/usb/Kconfig
+@@ -2,10 +2,14 @@ config USB
+     bool
  
-@@ -123,6 +126,20 @@ static const USBDescIface desc_iface_hub = {
-     }
- };
+ config USB_UHCI
++    bool
++    select USB
++
++config USB_UHCI_PCI
+     bool
+     default y if PCI_DEVICES
+     depends on PCI
+-    select USB
++    select USB_UHCI
  
-+static const USBDescIface desc_iface_hub_v2 = {
-+    .bInterfaceNumber              = 0,
-+    .bNumEndpoints                 = 1,
-+    .bInterfaceClass               = USB_CLASS_HUB,
-+    .eps = (USBDescEndpoint[]) {
-+        {
-+            .bEndpointAddress      = USB_DIR_IN | 0x01,
-+            .bmAttributes          = USB_ENDPOINT_XFER_INT,
-+            .wMaxPacketSize        = 512,
-+            .bInterval             = 10,
-+        },
+ config USB_OHCI
+     bool
+diff --git a/hw/usb/hcd-uhci-pci.c b/hw/usb/hcd-uhci-pci.c
+new file mode 100644
+index 0000000000..ed9b5f6121
+--- /dev/null
++++ b/hw/usb/hcd-uhci-pci.c
+@@ -0,0 +1,255 @@
++/*
++ * USB UHCI controller emulation
++ * PCI code
++ *
++ * Copyright (c) 2005 Fabrice Bellard
++ *
++ * Copyright (c) 2008 Max Krasnyansky
++ *     Magor rewrite of the UHCI data structures parser and frame processor
++ *     Support for fully async operation and multiple outstanding transactions
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/irq.h"
++#include "hw/usb.h"
++#include "migration/vmstate.h"
++#include "hw/pci/pci.h"
++#include "hw/qdev-properties.h"
++#include "qapi/error.h"
++#include "qemu/main-loop.h"
++#include "qemu/module.h"
++#include "qom/object.h"
++#include "hcd-uhci-pci.h"
++
++struct UHCIPCIDeviceClass {
++    PCIDeviceClass parent_class;
++    UHCIPCIInfo info;
++};
++
++static const VMStateDescription vmstate_uhci = {
++    .name = "pci_uhci",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_PCI_DEVICE(dev, UHCIPCIState),
++        VMSTATE_STRUCT(state, UHCIPCIState, 1, vmstate_uhci_state, UHCIState),
++        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
- static const USBDescDevice desc_device_hub = {
-     .bcdUSB                        = 0x0110,
-     .bDeviceClass                  = USB_CLASS_HUB,
-@@ -140,6 +157,23 @@ static const USBDescDevice desc_device_hub = {
-     },
- };
- 
-+static const USBDescDevice desc_device_hub_v2 = {
-+    .bcdUSB                        = 0x0200,
-+    .bDeviceClass                  = USB_CLASS_HUB,
-+    .bMaxPacketSize0               = 64,
-+    .bNumConfigurations            = 1,
-+    .confs = (USBDescConfig[]) {
-+        {
-+            .bNumInterfaces        = 1,
-+            .bConfigurationValue   = 1,
-+            .bmAttributes          = USB_CFG_ATT_ONE | USB_CFG_ATT_SELFPOWER |
-+                                     USB_CFG_ATT_WAKEUP,
-+            .nif = 1,
-+            .ifs = &desc_iface_hub_v2,
-+        },
++static void uhci_pci_reset(UHCIState *uhci)
++{
++    UHCIPCIState *pstate = container_of(uhci, UHCIPCIState, state);
++    PCIDevice *d = &pstate->dev;
++
++    d->config[0x6a] = 0x01; /* usb clock */
++    d->config[0x6b] = 0x00;
++
++    uhci_state_reset(uhci);
++}
++
++void usb_uhci_common_realize_pci(PCIDevice *dev, Error **errp)
++{
++    Error *err = NULL;
++    UHCIPCIDeviceClass *u = UHCI_PCI_GET_CLASS(dev);
++    UHCIPCIState *uhci = UHCI_PCI(dev);
++    UHCIState *s = &uhci->state;
++    uint8_t *pci_conf = dev->config;
++
++    pci_conf[PCI_CLASS_PROG] = 0x00;
++    /* TODO: reset value should be 0. */
++    pci_conf[USB_SBRN] = USB_RELEASE_1; /* release number */
++    pci_config_set_interrupt_pin(pci_conf, u->info.irq_pin + 1);
++
++    s->irq = pci_allocate_irq(dev);
++    s->masterbus = uhci->masterbus;
++    s->firstport = uhci->firstport;
++    s->maxframes = uhci->maxframes;
++    s->frame_bandwidth = uhci->frame_bandwidth;
++    s->as = pci_get_address_space(dev);
++    s->uhci_reset = uhci_pci_reset;
++
++    usb_uhci_init(s, DEVICE(dev), &err);
++
++    /*
++     * Use region 4 for consistency with real hardware.  BSD guests seem
++     * to rely on this.
++     */
++    pci_register_bar(dev, 4, PCI_BASE_ADDRESS_SPACE_IO, &s->mem);
++}
++
++static void uhci_pci_reset_pci(DeviceState *dev)
++{
++    PCIDevice *d = PCI_DEVICE(dev);
++    UHCIPCIState *uhci = UHCI_PCI(d);
++
++    uhci_pci_reset(&uhci->state);
++}
++
++static void usb_uhci_pci_exit(PCIDevice *dev)
++{
++    UHCIPCIState *uhci = UHCI_PCI(dev);
++    UHCIState *s = &uhci->state;
++
++    usb_uhci_exit(s);
++
++    qemu_free_irq(s->irq);
++}
++
++static Property uhci_properties_companion[] = {
++    DEFINE_PROP_STRING("masterbus", UHCIPCIState, masterbus),
++    DEFINE_PROP_UINT32("firstport", UHCIPCIState, firstport, 0),
++    DEFINE_PROP_UINT32("bandwidth", UHCIPCIState, frame_bandwidth, 1280),
++    DEFINE_PROP_UINT32("maxframes", UHCIPCIState, maxframes, 128),
++    DEFINE_PROP_END_OF_LIST(),
++};
++static Property uhci_properties_standalone[] = {
++    DEFINE_PROP_UINT32("bandwidth", UHCIPCIState, frame_bandwidth, 1280),
++    DEFINE_PROP_UINT32("maxframes", UHCIPCIState, maxframes, 128),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void uhci_pci_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
++
++    k->class_id  = PCI_CLASS_SERIAL_USB;
++    dc->vmsd = &vmstate_uhci;
++    device_class_set_legacy_reset(dc, uhci_pci_reset_pci);
++    set_bit(DEVICE_CATEGORY_USB, dc->categories);
++}
++
++static const TypeInfo uhci_pci_type_info = {
++    .name = TYPE_UHCI_PCI,
++    .parent = TYPE_PCI_DEVICE,
++    .instance_size = sizeof(UHCIPCIState),
++    .class_size    = sizeof(UHCIPCIDeviceClass),
++    .class_init    = uhci_pci_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
++        { },
 +    },
 +};
 +
- static const USBDesc desc_hub = {
-     .id = {
-         .idVendor          = 0x0409,
-@@ -153,6 +187,20 @@ static const USBDesc desc_hub = {
-     .str  = desc_strings,
- };
- 
-+static const USBDesc desc_hub_v2 = {
-+    .id = {
-+        .idVendor          = 0x0409,
-+        .idProduct         = 0x55aa,
-+        .bcdDevice         = 0x0201,
-+        .iManufacturer     = STR_MANUFACTURER,
-+        .iProduct          = STR_PRODUCT_V2,
-+        .iSerialNumber     = STR_SERIALNUMBER,
-+    },
-+    .full = &desc_device_hub,
-+    .high = &desc_device_hub_v2,
-+    .str  = desc_strings,
++void uhci_pci_data_class_init(ObjectClass *klass, void *data)
++{
++    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    UHCIPCIDeviceClass *u = UHCI_PCI_CLASS(klass);
++    UHCIPCIInfo *info = data;
++
++    k->realize = info->realize ? info->realize : usb_uhci_common_realize_pci;
++    k->exit = info->unplug ? usb_uhci_pci_exit : NULL;
++    k->vendor_id = info->vendor_id;
++    k->device_id = info->device_id;
++    k->revision  = info->revision;
++    if (!info->unplug) {
++        /* uhci controllers in companion setups can't be hotplugged */
++        dc->hotpluggable = false;
++        device_class_set_props(dc, uhci_properties_companion);
++    } else {
++        device_class_set_props(dc, uhci_properties_standalone);
++    }
++    if (info->notuser) {
++        dc->user_creatable = false;
++    }
++    u->info = *info;
++}
++
++static UHCIPCIInfo uhci_pci_info[] = {
++    {
++        .name      = TYPE_PIIX3_USB_UHCI,
++        .vendor_id = PCI_VENDOR_ID_INTEL,
++        .device_id = PCI_DEVICE_ID_INTEL_82371SB_2,
++        .revision  = 0x01,
++        .irq_pin   = 3,
++        .unplug    = true,
++    },{
++        .name      = TYPE_PIIX4_USB_UHCI,
++        .vendor_id = PCI_VENDOR_ID_INTEL,
++        .device_id = PCI_DEVICE_ID_INTEL_82371AB_2,
++        .revision  = 0x01,
++        .irq_pin   = 3,
++        .unplug    = true,
++    },{
++        .name      = TYPE_ICH9_USB_UHCI(1), /* 00:1d.0 */
++        .vendor_id = PCI_VENDOR_ID_INTEL,
++        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI1,
++        .revision  = 0x03,
++        .irq_pin   = 0,
++        .unplug    = false,
++    },{
++        .name      = TYPE_ICH9_USB_UHCI(2), /* 00:1d.1 */
++        .vendor_id = PCI_VENDOR_ID_INTEL,
++        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI2,
++        .revision  = 0x03,
++        .irq_pin   = 1,
++        .unplug    = false,
++    },{
++        .name      = TYPE_ICH9_USB_UHCI(3), /* 00:1d.2 */
++        .vendor_id = PCI_VENDOR_ID_INTEL,
++        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI3,
++        .revision  = 0x03,
++        .irq_pin   = 2,
++        .unplug    = false,
++    },{
++        .name      = TYPE_ICH9_USB_UHCI(4), /* 00:1a.0 */
++        .vendor_id = PCI_VENDOR_ID_INTEL,
++        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI4,
++        .revision  = 0x03,
++        .irq_pin   = 0,
++        .unplug    = false,
++    },{
++        .name      = TYPE_ICH9_USB_UHCI(5), /* 00:1a.1 */
++        .vendor_id = PCI_VENDOR_ID_INTEL,
++        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI5,
++        .revision  = 0x03,
++        .irq_pin   = 1,
++        .unplug    = false,
++    },{
++        .name      = TYPE_ICH9_USB_UHCI(6), /* 00:1a.2 */
++        .vendor_id = PCI_VENDOR_ID_INTEL,
++        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI6,
++        .revision  = 0x03,
++        .irq_pin   = 2,
++        .unplug    = false,
++    }
 +};
 +
- static const uint8_t qemu_hub_hub_descriptor[] =
- {
-         0x00,                   /*  u8  bLength; patched in later */
-@@ -195,15 +243,20 @@ static bool usb_hub_port_clear(USBHubPort *port, uint16_t status)
-     return usb_hub_port_change(port, status);
++static void uhci_pci_register_types(void)
++{
++    TypeInfo type_info = {
++        .parent        = TYPE_UHCI_PCI,
++        .class_init    = uhci_pci_data_class_init,
++    };
++    int i;
++
++    type_register_static(&uhci_pci_type_info);
++
++    for (i = 0; i < ARRAY_SIZE(uhci_pci_info); i++) {
++        type_info.name = uhci_pci_info[i].name;
++        type_info.class_data = uhci_pci_info + i;
++        type_register(&type_info);
++    }
++}
++
++type_init(uhci_pci_register_types)
+diff --git a/hw/usb/hcd-uhci-pci.h b/hw/usb/hcd-uhci-pci.h
+new file mode 100644
+index 0000000000..25d3e0eb97
+--- /dev/null
++++ b/hw/usb/hcd-uhci-pci.h
+@@ -0,0 +1,63 @@
++/*
++ * USB UHCI controller emulation
++ *
++ * Copyright (c) 2005 Fabrice Bellard
++ *
++ * Copyright (c) 2008 Max Krasnyansky
++ *     Magor rewrite of the UHCI data structures parser and frame processor
++ *     Support for fully async operation and multiple outstanding transactions
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++#ifndef HW_USB_HCD_UHCI_PCI_H
++#define HW_USB_HCD_UHCI_PCI_H
++
++#include "hcd-uhci.h"
++
++#define TYPE_UHCI_PCI "pci-uhci"
++
++struct UHCIPCIState {
++    PCIDevice dev;
++    UHCIState state;
++
++    /* Properties */
++    char *masterbus;
++    uint32_t firstport;
++    uint32_t frame_bandwidth;
++    uint32_t maxframes;
++    uint32_t num_ports;
++};
++
++OBJECT_DECLARE_TYPE(UHCIPCIState, UHCIPCIDeviceClass, UHCI_PCI)
++
++typedef struct UHCIPCIInfo {
++    const char *name;
++    uint16_t   vendor_id;
++    uint16_t   device_id;
++    uint8_t    revision;
++    uint8_t    irq_pin;
++    void       (*realize)(PCIDevice *dev, Error **errp);
++    bool       unplug;
++    bool       notuser; /* disallow user_creatable */
++} UHCIPCIInfo;
++
++void usb_uhci_common_realize_pci(PCIDevice *dev, Error **errp);
++void uhci_pci_data_class_init(ObjectClass *klass, void *data);
++
++#endif /* HW_USB_HCD_UHCI_PCI_H */
+diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+index bdab9ac37e..68b72f8d3b 100644
+--- a/hw/usb/hcd-uhci.c
++++ b/hw/usb/hcd-uhci.c
+@@ -30,7 +30,6 @@
+ #include "hw/usb.h"
+ #include "hw/usb/uhci-regs.h"
+ #include "migration/vmstate.h"
+-#include "hw/pci/pci.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+@@ -62,11 +61,6 @@ enum {
+ 
+ typedef struct UHCIAsync UHCIAsync;
+ 
+-struct UHCIPCIDeviceClass {
+-    PCIDeviceClass parent_class;
+-    UHCIInfo       info;
+-};
+-
+ /*
+  * Pending async transaction.
+  * 'packet' must be the first field because completion
+@@ -302,20 +296,13 @@ static void uhci_update_irq(UHCIState *s)
+     qemu_set_irq(s->irq, level);
  }
  
--static bool usb_hub_port_update(USBHubPort *port)
-+static bool usb_hub_port_update(USBHubState *s, USBHubPort *port)
+-static void uhci_reset(DeviceState *dev)
++void uhci_state_reset(UHCIState *s)
  {
-     bool notify = false;
+-    PCIDevice *d = PCI_DEVICE(dev);
+-    UHCIState *s = UHCI(d);
+-    uint8_t *pci_conf;
+     int i;
+     UHCIPort *port;
  
-     if (port->port.dev && port->port.dev->attached) {
-         notify = usb_hub_port_set(port, PORT_STAT_CONNECTION);
--        if (port->port.dev->speed == USB_SPEED_LOW) {
-+        if (s->usb_version == 2 && port->port.dev->speed == USB_SPEED_HIGH) {
-+            usb_hub_port_clear(port, PORT_STAT_LOW_SPEED);
-+            usb_hub_port_set(port, PORT_STAT_HIGH_SPEED);
-+        } else if (port->port.dev->speed == USB_SPEED_LOW) {
-+            usb_hub_port_clear(port, PORT_STAT_HIGH_SPEED);
-             usb_hub_port_set(port, PORT_STAT_LOW_SPEED);
-         } else {
-+            usb_hub_port_clear(port, PORT_STAT_HIGH_SPEED);
-             usb_hub_port_clear(port, PORT_STAT_LOW_SPEED);
+     trace_usb_uhci_reset();
+ 
+-    pci_conf = s->dev.config;
+-
+-    pci_conf[0x6a] = 0x01; /* usb clock */
+-    pci_conf[0x6b] = 0x00;
+     s->cmd = 0;
+     s->status = UHCI_STS_HCHALTED;
+     s->status2 = 0;
+@@ -336,6 +323,11 @@ static void uhci_reset(DeviceState *dev)
+     uhci_update_irq(s);
+ }
+ 
++static void uhci_reset(UHCIState *s)
++{
++        s->uhci_reset(s);
++}
++
+ static const VMStateDescription vmstate_uhci_port = {
+     .name = "uhci port",
+     .version_id = 1,
+@@ -357,13 +349,12 @@ static int uhci_post_load(void *opaque, int version_id)
+     return 0;
+ }
+ 
+-static const VMStateDescription vmstate_uhci = {
++const VMStateDescription vmstate_uhci_state = {
+     .name = "uhci",
+-    .version_id = 3,
++    .version_id = 4,
+     .minimum_version_id = 1,
+     .post_load = uhci_post_load,
+     .fields = (const VMStateField[]) {
+-        VMSTATE_PCI_DEVICE(dev, UHCIState),
+         VMSTATE_UINT8_EQUAL(num_ports_vmstate, UHCIState, NULL),
+         VMSTATE_STRUCT_ARRAY(ports, UHCIState, UHCI_PORTS, 1,
+                              vmstate_uhci_port, UHCIPort),
+@@ -409,11 +400,11 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+                 port = &s->ports[i];
+                 usb_device_reset(port->port.dev);
+             }
+-            uhci_reset(DEVICE(s));
++            uhci_reset(s);
+             return;
+         }
+         if (val & UHCI_CMD_HCRESET) {
+-            uhci_reset(DEVICE(s));
++            uhci_reset(s);
+             return;
+         }
+         s->cmd = val;
+@@ -628,9 +619,21 @@ static USBDevice *uhci_find_device(UHCIState *s, uint8_t addr)
+     return NULL;
+ }
+ 
++static void uhci_dma_read(UHCIState *s, dma_addr_t addr, void *buf,
++                          dma_addr_t len)
++{
++        dma_memory_read(s->as, addr, buf, len, MEMTXATTRS_UNSPECIFIED);
++}
++
++static void uhci_dma_write(UHCIState *s, dma_addr_t addr, void *buf,
++                           dma_addr_t len)
++{
++        dma_memory_write(s->as, addr, buf, len, MEMTXATTRS_UNSPECIFIED);
++}
++
+ static void uhci_read_td(UHCIState *s, UHCI_TD *td, uint32_t link)
+ {
+-    pci_dma_read(&s->dev, link & ~0xf, td, sizeof(*td));
++    uhci_dma_read(s, link & ~0xf, td, sizeof(*td));
+     le32_to_cpus(&td->link);
+     le32_to_cpus(&td->ctrl);
+     le32_to_cpus(&td->token);
+@@ -712,7 +715,7 @@ static int uhci_complete_td(UHCIState *s, UHCI_TD *td, UHCIAsync *async,
+     }
+ 
+     if (pid == USB_TOKEN_IN) {
+-        pci_dma_write(&s->dev, td->buffer, async->buf, len);
++        uhci_dma_write(s, td->buffer, async->buf, len);
+         if ((td->ctrl & TD_CTRL_SPD) && len < max_len) {
+             *int_mask |= 0x02;
+             /* short packet: do not update QH */
+@@ -848,7 +851,7 @@ static int uhci_handle_td(UHCIState *s, UHCIQueue *q, uint32_t qh_addr,
+     switch (pid) {
+     case USB_TOKEN_OUT:
+     case USB_TOKEN_SETUP:
+-        pci_dma_read(&s->dev, td->buffer, async->buf, max_len);
++        uhci_dma_read(s, td->buffer, async->buf, max_len);
+         usb_handle_packet(q->ep->dev, &async->packet);
+         if (async->packet.status == USB_RET_SUCCESS) {
+             async->packet.actual_length = max_len;
+@@ -976,7 +979,7 @@ static void uhci_process_frame(UHCIState *s)
+ 
+     frame_addr = s->fl_base_addr + ((s->frnum & 0x3ff) << 2);
+ 
+-    pci_dma_read(&s->dev, frame_addr, &link, 4);
++    uhci_dma_read(s, frame_addr, &link, 4);
+     le32_to_cpus(&link);
+ 
+     int_mask = 0;
+@@ -1016,7 +1019,7 @@ static void uhci_process_frame(UHCIState *s)
+                 }
+             }
+ 
+-            pci_dma_read(&s->dev, link & ~0xf, &qh, sizeof(qh));
++            uhci_dma_read(s, link & ~0xf, &qh, sizeof(qh));
+             le32_to_cpus(&qh.link);
+             le32_to_cpus(&qh.el_link);
+ 
+@@ -1041,7 +1044,7 @@ static void uhci_process_frame(UHCIState *s)
+         if (old_td_ctrl != td.ctrl) {
+             /* update the status bits of the TD */
+             val = cpu_to_le32(td.ctrl);
+-            pci_dma_write(&s->dev, (link & ~0xf) + 4, &val, sizeof(val));
++            uhci_dma_write(s, (link & ~0xf) + 4, &val, sizeof(val));
+         }
+ 
+         switch (ret) {
+@@ -1069,7 +1072,7 @@ static void uhci_process_frame(UHCIState *s)
+                 /* update QH element link */
+                 qh.el_link = link;
+                 val = cpu_to_le32(qh.el_link);
+-                pci_dma_write(&s->dev, (curr_qh & ~0xf) + 4, &val, sizeof(val));
++                uhci_dma_write(s, (curr_qh & ~0xf) + 4, &val, sizeof(val));
+ 
+                 if (!depth_first(link)) {
+                     /* done with this QH */
+@@ -1178,20 +1181,11 @@ static USBPortOps uhci_port_ops = {
+ static USBBusOps uhci_bus_ops = {
+ };
+ 
+-void usb_uhci_common_realize(PCIDevice *dev, Error **errp)
++void usb_uhci_init(UHCIState *s, DeviceState *dev, Error **errp)
+ {
+     Error *err = NULL;
+-    UHCIPCIDeviceClass *u = UHCI_GET_CLASS(dev);
+-    UHCIState *s = UHCI(dev);
+-    uint8_t *pci_conf = s->dev.config;
+     int i;
+ 
+-    pci_conf[PCI_CLASS_PROG] = 0x00;
+-    /* TODO: reset value should be 0. */
+-    pci_conf[USB_SBRN] = USB_RELEASE_1; /* release number */
+-    pci_config_set_interrupt_pin(pci_conf, u->info.irq_pin + 1);
+-    s->irq = pci_allocate_irq(dev);
+-
+     if (s->masterbus) {
+         USBPort *ports[UHCI_PORTS];
+         for (i = 0; i < UHCI_PORTS; i++) {
+@@ -1212,25 +1206,17 @@ void usb_uhci_common_realize(PCIDevice *dev, Error **errp)
+                               USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL);
          }
      }
-@@ -217,7 +270,7 @@ static void usb_hub_port_update_timer(void *opaque)
-     int i;
+-    s->bh = qemu_bh_new_guarded(uhci_bh, s, &DEVICE(dev)->mem_reentrancy_guard);
++    s->bh = qemu_bh_new_guarded(uhci_bh, s, &dev->mem_reentrancy_guard);
+     s->frame_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, uhci_frame_timer, s);
+     s->num_ports_vmstate = UHCI_PORTS;
+     QTAILQ_INIT(&s->queues);
  
-     for (i = 0; i < s->num_ports; i++) {
--        notify |= usb_hub_port_update(&s->ports[i]);
-+        notify |= usb_hub_port_update(s, &s->ports[i]);
-     }
-     if (notify) {
-         usb_wakeup(s->intr, 0);
-@@ -230,7 +283,7 @@ static void usb_hub_attach(USBPort *port1)
-     USBHubPort *port = &s->ports[port1->index];
- 
-     trace_usb_hub_attach(s->dev.addr, port1->index + 1);
--    usb_hub_port_update(port);
-+    usb_hub_port_update(s, port);
-     usb_wakeup(s->intr, 0);
+-    memory_region_init_io(&s->io_bar, OBJECT(s), &uhci_ioport_ops, s,
++    memory_region_init_io(&s->mem, OBJECT(s), &uhci_ioport_ops, s,
+                           "uhci", 0x20);
+-
+-    /*
+-     * Use region 4 for consistency with real hardware.  BSD guests seem
+-     * to rely on this.
+-     */
+-    pci_register_bar(&s->dev, 4, PCI_BASE_ADDRESS_SPACE_IO, &s->io_bar);
  }
  
-@@ -318,7 +371,7 @@ static void usb_hub_handle_reset(USBDevice *dev)
-         port->wPortStatus = 0;
-         port->wPortChange = 0;
-         usb_hub_port_set(port, PORT_STAT_POWER);
--        usb_hub_port_update(port);
-+        usb_hub_port_update(s, port);
+-static void usb_uhci_exit(PCIDevice *dev)
++void usb_uhci_exit(UHCIState *s)
+ {
+-    UHCIState *s = UHCI(dev);
+-
+     trace_usb_uhci_exit();
+ 
+     if (s->frame_timer) {
+@@ -1248,144 +1234,3 @@ static void usb_uhci_exit(PCIDevice *dev)
+         usb_bus_release(&s->bus);
      }
  }
+-
+-static Property uhci_properties_companion[] = {
+-    DEFINE_PROP_STRING("masterbus", UHCIState, masterbus),
+-    DEFINE_PROP_UINT32("firstport", UHCIState, firstport, 0),
+-    DEFINE_PROP_UINT32("bandwidth", UHCIState, frame_bandwidth, 1280),
+-    DEFINE_PROP_UINT32("maxframes", UHCIState, maxframes, 128),
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-static Property uhci_properties_standalone[] = {
+-    DEFINE_PROP_UINT32("bandwidth", UHCIState, frame_bandwidth, 1280),
+-    DEFINE_PROP_UINT32("maxframes", UHCIState, maxframes, 128),
+-    DEFINE_PROP_END_OF_LIST(),
+-};
+-
+-static void uhci_class_init(ObjectClass *klass, void *data)
+-{
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+-
+-    k->class_id  = PCI_CLASS_SERIAL_USB;
+-    dc->vmsd = &vmstate_uhci;
+-    device_class_set_legacy_reset(dc, uhci_reset);
+-    set_bit(DEVICE_CATEGORY_USB, dc->categories);
+-}
+-
+-static const TypeInfo uhci_pci_type_info = {
+-    .name = TYPE_UHCI,
+-    .parent = TYPE_PCI_DEVICE,
+-    .instance_size = sizeof(UHCIState),
+-    .class_size    = sizeof(UHCIPCIDeviceClass),
+-    .abstract = true,
+-    .class_init = uhci_class_init,
+-    .interfaces = (InterfaceInfo[]) {
+-        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+-        { },
+-    },
+-};
+-
+-void uhci_data_class_init(ObjectClass *klass, void *data)
+-{
+-    PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+-    DeviceClass *dc = DEVICE_CLASS(klass);
+-    UHCIPCIDeviceClass *u = UHCI_CLASS(klass);
+-    UHCIInfo *info = data;
+-
+-    k->realize = info->realize ? info->realize : usb_uhci_common_realize;
+-    k->exit = info->unplug ? usb_uhci_exit : NULL;
+-    k->vendor_id = info->vendor_id;
+-    k->device_id = info->device_id;
+-    k->revision  = info->revision;
+-    if (!info->unplug) {
+-        /* uhci controllers in companion setups can't be hotplugged */
+-        dc->hotpluggable = false;
+-        device_class_set_props(dc, uhci_properties_companion);
+-    } else {
+-        device_class_set_props(dc, uhci_properties_standalone);
+-    }
+-    if (info->notuser) {
+-        dc->user_creatable = false;
+-    }
+-    u->info = *info;
+-}
+-
+-static UHCIInfo uhci_info[] = {
+-    {
+-        .name      = TYPE_PIIX3_USB_UHCI,
+-        .vendor_id = PCI_VENDOR_ID_INTEL,
+-        .device_id = PCI_DEVICE_ID_INTEL_82371SB_2,
+-        .revision  = 0x01,
+-        .irq_pin   = 3,
+-        .unplug    = true,
+-    },{
+-        .name      = TYPE_PIIX4_USB_UHCI,
+-        .vendor_id = PCI_VENDOR_ID_INTEL,
+-        .device_id = PCI_DEVICE_ID_INTEL_82371AB_2,
+-        .revision  = 0x01,
+-        .irq_pin   = 3,
+-        .unplug    = true,
+-    },{
+-        .name      = TYPE_ICH9_USB_UHCI(1), /* 00:1d.0 */
+-        .vendor_id = PCI_VENDOR_ID_INTEL,
+-        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI1,
+-        .revision  = 0x03,
+-        .irq_pin   = 0,
+-        .unplug    = false,
+-    },{
+-        .name      = TYPE_ICH9_USB_UHCI(2), /* 00:1d.1 */
+-        .vendor_id = PCI_VENDOR_ID_INTEL,
+-        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI2,
+-        .revision  = 0x03,
+-        .irq_pin   = 1,
+-        .unplug    = false,
+-    },{
+-        .name      = TYPE_ICH9_USB_UHCI(3), /* 00:1d.2 */
+-        .vendor_id = PCI_VENDOR_ID_INTEL,
+-        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI3,
+-        .revision  = 0x03,
+-        .irq_pin   = 2,
+-        .unplug    = false,
+-    },{
+-        .name      = TYPE_ICH9_USB_UHCI(4), /* 00:1a.0 */
+-        .vendor_id = PCI_VENDOR_ID_INTEL,
+-        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI4,
+-        .revision  = 0x03,
+-        .irq_pin   = 0,
+-        .unplug    = false,
+-    },{
+-        .name      = TYPE_ICH9_USB_UHCI(5), /* 00:1a.1 */
+-        .vendor_id = PCI_VENDOR_ID_INTEL,
+-        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI5,
+-        .revision  = 0x03,
+-        .irq_pin   = 1,
+-        .unplug    = false,
+-    },{
+-        .name      = TYPE_ICH9_USB_UHCI(6), /* 00:1a.2 */
+-        .vendor_id = PCI_VENDOR_ID_INTEL,
+-        .device_id = PCI_DEVICE_ID_INTEL_82801I_UHCI6,
+-        .revision  = 0x03,
+-        .irq_pin   = 2,
+-        .unplug    = false,
+-    }
+-};
+-
+-static void uhci_register_types(void)
+-{
+-    TypeInfo uhci_type_info = {
+-        .parent        = TYPE_UHCI,
+-        .class_init    = uhci_data_class_init,
+-    };
+-    int i;
+-
+-    type_register_static(&uhci_pci_type_info);
+-
+-    for (i = 0; i < ARRAY_SIZE(uhci_info); i++) {
+-        uhci_type_info.name = uhci_info[i].name;
+-        uhci_type_info.class_data = uhci_info + i;
+-        type_register(&uhci_type_info);
+-    }
+-}
+-
+-type_init(uhci_register_types)
+diff --git a/hw/usb/hcd-uhci.h b/hw/usb/hcd-uhci.h
+index 6d26b94e92..1ffa93f703 100644
+--- a/hw/usb/hcd-uhci.h
++++ b/hw/usb/hcd-uhci.h
+@@ -32,6 +32,7 @@
+ #include "qemu/timer.h"
+ #include "hw/pci/pci_device.h"
+ #include "hw/usb.h"
++#include "hw/sysbus.h"
  
-@@ -593,6 +646,19 @@ static void usb_hub_realize(USBDevice *dev, Error **errp)
-     USBHubPort *port;
-     int i;
+ typedef struct UHCIQueue UHCIQueue;
  
-+    switch (s->usb_version) {
-+    case 1:
-+        dev->usb_desc = &desc_hub;
-+        break;
-+    case 2:
-+        dev->usb_desc = &desc_hub_v2;
-+        break;
-+    default:
-+        error_setg(errp, "Unsupported usb version %d for usb hub",
-+                   s->usb_version);
-+        return;
-+    }
+@@ -42,9 +43,12 @@ typedef struct UHCIPort {
+     uint16_t ctrl;
+ } UHCIPort;
+ 
+-typedef struct UHCIState {
+-    PCIDevice dev;
+-    MemoryRegion io_bar;
++typedef struct UHCIState UHCIState;
 +
-     if (s->num_ports < 1 || s->num_ports > MAX_PORTS) {
-         error_setg(errp, "num_ports (%d) out of range (1..%d)",
-                    s->num_ports, MAX_PORTS);
-@@ -613,7 +679,8 @@ static void usb_hub_realize(USBDevice *dev, Error **errp)
-         port = &s->ports[i];
-         usb_register_port(usb_bus_from_device(dev),
-                           &port->port, s, i, &usb_hub_port_ops,
--                          USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL);
-+                          USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL |
-+                          ((s->usb_version == 2) ? USB_SPEED_MASK_HIGH : 0));
-         usb_port_location(&port->port, dev->port, i+1);
-     }
-     usb_hub_handle_reset(dev);
-@@ -650,7 +717,7 @@ static const VMStateDescription vmstate_usb_hub_port_timer = {
++struct UHCIState {
++    MemoryRegion mem;
++    AddressSpace *as;
++    void (*uhci_reset)(UHCIState *);
+     USBBus bus; /* Note unused when we're a companion controller */
+     uint16_t cmd; /* cmd register */
+     uint16_t status;
+@@ -72,24 +76,18 @@ typedef struct UHCIState {
+     char *masterbus;
+     uint32_t firstport;
+     uint32_t maxframes;
+-} UHCIState;
++};
  
- static const VMStateDescription vmstate_usb_hub = {
-     .name = "usb-hub",
--    .version_id = 1,
-+    .version_id = 2,
-     .minimum_version_id = 1,
-     .fields = (const VMStateField[]) {
-         VMSTATE_USB_DEVICE(dev, USBHubState),
-@@ -667,6 +734,7 @@ static const VMStateDescription vmstate_usb_hub = {
- static Property usb_hub_properties[] = {
-     DEFINE_PROP_UINT32("ports", USBHubState, num_ports, 8),
-     DEFINE_PROP_BOOL("port-power", USBHubState, port_power, false),
-+    DEFINE_PROP_UINT32("usb_version", USBHubState, usb_version, 1),
-     DEFINE_PROP_END_OF_LIST(),
+-#define TYPE_UHCI "pci-uhci-usb"
+-OBJECT_DECLARE_TYPE(UHCIState, UHCIPCIDeviceClass, UHCI)
++#define TYPE_UHCI "uhci-usb"
++OBJECT_DECLARE_TYPE(UHCIState, UHCIDeviceClass, UHCI)
+ 
+-typedef struct UHCIInfo {
+-    const char *name;
+-    uint16_t   vendor_id;
+-    uint16_t   device_id;
+-    uint8_t    revision;
+-    uint8_t    irq_pin;
+-    void       (*realize)(PCIDevice *dev, Error **errp);
+-    bool       unplug;
+-    bool       notuser; /* disallow user_creatable */
+-} UHCIInfo;
++extern const VMStateDescription vmstate_uhci_state;
+ 
+ void uhci_data_class_init(ObjectClass *klass, void *data);
+ void usb_uhci_common_realize(PCIDevice *dev, Error **errp);
++void usb_uhci_init(UHCIState *s, DeviceState *dev, Error **errp);
++void uhci_state_reset(UHCIState *s);
++void usb_uhci_exit(UHCIState *s);
+ 
+ #define TYPE_PIIX3_USB_UHCI "piix3-usb-uhci"
+ #define TYPE_PIIX4_USB_UHCI "piix4-usb-uhci"
+diff --git a/hw/usb/meson.build b/hw/usb/meson.build
+index 1b4d1507e4..dc36e2d490 100644
+--- a/hw/usb/meson.build
++++ b/hw/usb/meson.build
+@@ -13,6 +13,7 @@ system_ss.add(when: 'CONFIG_USB', if_true: files(
+ 
+ # usb host adapters
+ system_ss.add(when: 'CONFIG_USB_UHCI', if_true: files('hcd-uhci.c'))
++system_ss.add(when: 'CONFIG_USB_UHCI_PCI', if_true: files('hcd-uhci-pci.c'))
+ system_ss.add(when: 'CONFIG_USB_OHCI', if_true: files('hcd-ohci.c'))
+ system_ss.add(when: 'CONFIG_USB_OHCI_PCI', if_true: files('hcd-ohci-pci.c'))
+ system_ss.add(when: 'CONFIG_USB_OHCI_SYSBUS', if_true: files('hcd-ohci-sysbus.c'))
+diff --git a/hw/usb/vt82c686-uhci-pci.c b/hw/usb/vt82c686-uhci-pci.c
+index 6162806172..fe757c59dd 100644
+--- a/hw/usb/vt82c686-uhci-pci.c
++++ b/hw/usb/vt82c686-uhci-pci.c
+@@ -1,17 +1,17 @@
+ #include "qemu/osdep.h"
+ #include "hw/irq.h"
+ #include "hw/isa/vt82c686.h"
+-#include "hcd-uhci.h"
++#include "hcd-uhci-pci.h"
+ 
+ static void uhci_isa_set_irq(void *opaque, int irq_num, int level)
+ {
+-    UHCIState *s = opaque;
++    UHCIPCIState *s = opaque;
+     via_isa_set_irq(&s->dev, 0, level);
+ }
+ 
+ static void usb_uhci_vt82c686b_realize(PCIDevice *dev, Error **errp)
+ {
+-    UHCIState *s = UHCI(dev);
++    UHCIPCIState *s = UHCI_PCI(dev);
+     uint8_t *pci_conf = s->dev.config;
+ 
+     /* USB misc control 1/2 */
+@@ -21,12 +21,12 @@ static void usb_uhci_vt82c686b_realize(PCIDevice *dev, Error **errp)
+     /* USB legacy support  */
+     pci_set_long(pci_conf + 0xc0, 0x00002000);
+ 
+-    usb_uhci_common_realize(dev, errp);
+-    object_unref(s->irq);
+-    s->irq = qemu_allocate_irq(uhci_isa_set_irq, s, 0);
++    usb_uhci_common_realize_pci(dev, errp);
++    object_unref(s->state.irq);
++    s->state.irq = qemu_allocate_irq(uhci_isa_set_irq, s, 0);
+ }
+ 
+-static UHCIInfo uhci_info[] = {
++static UHCIPCIInfo uhci_info[] = {
+     {
+         .name      = TYPE_VT82C686B_USB_UHCI,
+         .vendor_id = PCI_VENDOR_ID_VIA,
+@@ -41,9 +41,9 @@ static UHCIInfo uhci_info[] = {
  };
  
-@@ -677,12 +745,12 @@ static void usb_hub_class_initfn(ObjectClass *klass, void *data)
+ static const TypeInfo vt82c686b_usb_uhci_type_info = {
+-    .parent         = TYPE_UHCI,
++    .parent         = TYPE_UHCI_PCI,
+     .name           = TYPE_VT82C686B_USB_UHCI,
+-    .class_init     = uhci_data_class_init,
++    .class_init     = uhci_pci_data_class_init,
+     .class_data     = uhci_info,
+ };
  
-     uc->realize        = usb_hub_realize;
-     uc->product_desc   = "QEMU USB Hub";
--    uc->usb_desc       = &desc_hub;
-     uc->find_device    = usb_hub_find_device;
-     uc->handle_reset   = usb_hub_handle_reset;
-     uc->handle_control = usb_hub_handle_control;
-     uc->handle_data    = usb_hub_handle_data;
-     uc->unrealize      = usb_hub_unrealize;
-+    uc->handle_attach  = usb_desc_attach;
-     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-     dc->fw_name = "hub";
-     dc->vmsd = &vmstate_usb_hub;
+diff --git a/include/hw/southbridge/piix.h b/include/hw/southbridge/piix.h
+index 86709ba2e4..ceb05548fe 100644
+--- a/include/hw/southbridge/piix.h
++++ b/include/hw/southbridge/piix.h
+@@ -16,7 +16,7 @@
+ #include "hw/acpi/piix4.h"
+ #include "hw/ide/pci.h"
+ #include "hw/rtc/mc146818rtc.h"
+-#include "hw/usb/hcd-uhci.h"
++#include "hw/usb/hcd-uhci-pci.h"
+ 
+ /* PIRQRC[A:D]: PIRQx Route Control Registers */
+ #define PIIX_PIRQCA 0x60
+@@ -57,7 +57,7 @@ struct PIIXState {
+ 
+     MC146818RtcState rtc;
+     PCIIDEState ide;
+-    UHCIState uhci;
++    UHCIPCIState uhci;
+     PIIX4PMState pm;
+ 
+     uint32_t smb_io_base;
 -- 
 2.45.2
 

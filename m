@@ -1,95 +1,97 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7485602njc;
-        Tue, 12 Nov 2024 09:03:45 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUoxmpAWXhnWA0DtjYu+1a5PgVlGUT5Dok+mJMxNbQECfUO+SQEyCkZxONV2XZiXdzWxVIDDBdFRnbb+w==@linaro.org
-X-Google-Smtp-Source: AGHT+IH/IlSFNUi7bmPvGpdX84WHxJD/Obmc+a28ROla5ka1iWoiGuf8cz9vsMePz56+olYsLZwD
-X-Received: by 2002:a05:6102:94b:b0:4a4:97bc:c0d7 with SMTP id ada2fe7eead31-4aae138cc7dmr15454362137.8.1731431025689;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7485605njc;
+        Tue, 12 Nov 2024 09:03:46 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWzJ6tlVXRd3kEYbxYulcgN+l0Dh3T6o/RYWu+peAROy0SLwscPitHKJopAaWbKs2/1zONCKnrJCSKzBA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF2SaiEKqRKEiVjooh53p8C4po47GByMbcyy8oTC3WjDmHzJ7/097Qyx6oWF0jXFzrJZrcJ
+X-Received: by 2002:a05:622a:144a:b0:45d:aa0c:2e12 with SMTP id d75a77b69052e-4630940f19fmr297154941cf.39.1731431025710;
         Tue, 12 Nov 2024 09:03:45 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1731431025; cv=none;
         d=google.com; s=arc-20240605;
-        b=CKkOWdBlPwuRufrrcW5NN+tamia8j5sfHCAXMMsOdpd8gsZoQCe7qELgFn7vznE1vl
-         WL/EL7hc5cHDZYC13rvoDSpYQ82TqGQuvP+4Mj6aFICFS+eR+kuEZ1oKieU276pjQyDW
-         QA3daM+/VFxjtWQD5I+ZKgVOWu2RSeOBvOkwbB6QK1u/6uZb/wEjXhR44yC10BAK2cHj
-         9v65O9Mcr9zi6IuKyDKyJqaAd4ZmnHeYAIMY0U9g/hKD5ou6GDmxaGpjrqofP3UgaE4p
-         eM03wDLn/fI1GKLleoMPc0TAtb/uJ60g6vwb+nPkQxFtz2JmguCSydtICljNhaxHWxPs
-         pozw==
+        b=ftqUZenNG8Zc4RHbjeDfYbKxr1yGzTBlW+927lgVbNLhCvSCW1gOC1wzW9JuFFptH1
+         EL9Kr9zflRtR85OZke3FfLuAgfKr5oY4K5SxH70f6p0NClZlvhUQf6goRjm8itQPDAJ/
+         m15RgIKzT+sRIhCFi1Tg4QArGLDKDdHw2NDOQtuT59tI2rqoRfcXtWq9ZJJi27oXlm/k
+         ZMpQn3UJn1rAl6KQ3iLj2Nch9ZNMno3x2QiD+IIb+MwGBAXx5MjrlOEv1vR/gTbf+vWM
+         1XNO++p1EdqhCmEdCpr5CIYUGj20lHiEGqkv5di5GM1DeXQwD6eNNsrnjKxhyevPuAou
+         41BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=wpdtWALVC9Zb2PdRWt2qNAXWCEw8toj+5ihbBNs4L+s=;
-        fh=qWLLDIblqwFV6NpyDOQrOkXRaqGOfz2ipxRLO4wkF7U=;
-        b=b1MphOj1B3O0TF23+1PNFTEpDlOithQI+AJty7E2zb3OgsohxOiROFdUOnygnso7n7
-         PfumKdP/ZJv+cSMk5ERxpJ2oKplAW+K7QvuELvmvgpfw+2Wpuar6cVos+NC9RilGXk+p
-         6MUS2JQxPbGldEeOETJirQS8OWJKEMQ2ysy/S1E3XLuWamNLj1cjHj9ihyIo6La4lvaj
-         SKAE2X9BZ64SZB5xHQUHCIJ+e+VkAzQ8tMeH5S9Vv3R9Zzm0Qwxp0Y9AB26I079m2AXv
-         9uGEtyD1yGmkKLukaLlmJ1mvH4lv7OhWbtRUsZH5d4cvq5eYQ+yo4irStf53bz6Cf3NJ
-         OX5g==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=/hZzxUmUzbT/8mTdrh3yFpC6EpDXg/pxic3wE6lH+qI=;
+        fh=xEYjnwxMXxZcjL8d2xgS6WXA0DeW00FAbV0IEthqQKU=;
+        b=PpQxRCuCOZZfML8BLjCGcpB4rYQZEvf20DbZsYCgFIRWMZ8U9MGv4Y8DU6ySC+opeX
+         3gzFgtmekJSADBbpWG7VAOyAT+NWjBJhQyYOTFWaTAgK/KIKYtrVRZzvsPz/GWFtywOF
+         ePg7wbo9x3fPHv8kAQ2fhX/UOuvFKpW/YiKAsgg+/rbdHeUWrxmaDegQv03MP6RDUGiX
+         Cup76dKQsnN7b6IYQDxe/k4fWsaOrt5DxWtrjJ6he7NTXkoH/B3jhnb0PxTwl5+Z8j/M
+         YUUSdcSGqcp1mghtSurVfXQ/BUS3dq3p7DqT2tK0yHumFPHbcnW3bi8ocOmVqDyynJYW
+         2mIQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=Fl5jmXAC;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=e7VcE7Tg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4aaa7c0d72bsi3188510137.569.2024.11.12.09.03.45
+        by mx.google.com with ESMTPS id d75a77b69052e-462ff6ce6c1si149893951cf.708.2024.11.12.09.03.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Tue, 12 Nov 2024 09:03:45 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20230601 header.b=Fl5jmXAC;
+       dkim=fail header.i=@gmail.com header.s=20230601 header.b=e7VcE7Tg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tAuHW-0003C5-Gz; Tue, 12 Nov 2024 12:02:24 -0500
+	id 1tAuHw-0003K0-Hk; Tue, 12 Nov 2024 12:02:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1tAuHT-00033D-TT; Tue, 12 Nov 2024 12:02:19 -0500
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ id 1tAuHV-00039G-KY; Tue, 12 Nov 2024 12:02:21 -0500
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1tAuHR-0001S5-Rq; Tue, 12 Nov 2024 12:02:19 -0500
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-20c805a0753so57826865ad.0; 
- Tue, 12 Nov 2024 09:02:16 -0800 (PST)
+ id 1tAuHT-0001SD-Lm; Tue, 12 Nov 2024 12:02:21 -0500
+Received: by mail-pf1-x430.google.com with SMTP id
+ d2e1a72fcca58-71e592d7f6eso4436772b3a.3; 
+ Tue, 12 Nov 2024 09:02:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1731430935; x=1732035735; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:sender:from:to:cc:subject:date:message-id:reply-to;
- bh=wpdtWALVC9Zb2PdRWt2qNAXWCEw8toj+5ihbBNs4L+s=;
- b=Fl5jmXACZ09kz/9C2J51oZABCi+n2MzPqvqkeRXb4ouIfLFFBWfwDNNf4PRwf6lZpS
- lmElNl36E0dMy2GtWLGMZ8mjDTEuvRbdE3Ydf3lv7TZf1JIbFW5K/lUDOj70aO42L7gF
- uue8H8WjC1q0G/eepJmqmllPX5ucynMLeHIRoij54yNhXLtZA4u11afAWe0/EfW1cOTF
- RSeEALVnI9vkd/Qr+nDKMK8CiWqLxPB9RINNj0Q+3iBFAUslc3lPSKj8VaMKSe6kB98y
- n5Uhpfxu6cnzN3G+juo89/eHI8ksVXv8JtD9sg0zS203othkfgsjWrsFZmfHdPL9qz2X
- pjdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731430935; x=1732035735;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:sender:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1731430936; x=1732035736; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wpdtWALVC9Zb2PdRWt2qNAXWCEw8toj+5ihbBNs4L+s=;
- b=JcJro1glp6wNfjeExGcdGxEp9pA+pEHzFxE35RYZtv6Y1cc/c6Ln0aoU/m1K1CVEB1
- uWGtWUPDXmX8BA34CJZNInEiIV8bhYt1Iu8MlMQpNbWKjfRmL0cpSRuFC1ZZka5wJbq0
- nEg0O8rDooCjq8PVBCGohJKIqdDJL7M7RjX/hRMxkogTZUqWPrRJFtuqcrjPOkvfpE+f
- iOBV/qkP8C6+0ObsIfPCXDSugeuxFIY6Fxc20Xh9QcdQy6owCDV7dg4zbjSYFonnTvsQ
- TpyVOzDl/sV9XwGAtuOREUNSJWmYmR3TJTHrxt27qu6P4pv2Spq/AJ2E+9BUCojC5RWV
- aNeA==
+ bh=/hZzxUmUzbT/8mTdrh3yFpC6EpDXg/pxic3wE6lH+qI=;
+ b=e7VcE7Tgt18IwbqKKo+NTeICTeHe72/34yB5WVnnpN2imN7wmUQ1le1rz3RZpa77Dq
+ hnlUzXJr4YCT7ZxQZDQv+gBIqMdkWJaZLwlyb0CyMU0qK2nOhLEV9wGR93FMPz53eIOc
+ 2AauGn11tAfSEj5LOxhN3NmJtgJPxtO5Kv1ObajAvdLWynLwDmp4srhAATA/RaBNalRK
+ +JRytB67g/uv0YROtae45b7Cdy0EOyvkdrjo9eL6Jh5qbeWbquIXz0+6BNniy/3cmGYT
+ xK5RPM6HLkhvUvnUtFEi0lbsd4hkvoR0xSk8krPBPcjzgVY1MoEvjdDzNcl+JqQ/wzqo
+ f34Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1731430936; x=1732035736;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:sender:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=/hZzxUmUzbT/8mTdrh3yFpC6EpDXg/pxic3wE6lH+qI=;
+ b=X9uzIim9MoQwzzBTCjFITqcqDomMcf7VKDeaui8QfwGzPBncNNxeXWWCh9vyYwsy78
+ fDNfguHlltTEXsU4cU8qbX4aWE+GkyuTmwLOMWMx6ImjK1M6fXzX5VOgMnRG31gt66x2
+ /4n+DXEfbfw6YJg4f9FpTyEkr31FngGx2w7A0mgSwz/WxwZcT2JUCwxo0mabUdk9PFSO
+ lZJSUS73zw/3yh1pTHV7c2Mk1rAPqeQcB2mrNt8jGsNFIrFT/wcr2lILYD8H7J4z67eQ
+ QXN/cOriNexJdZTwcGrJ6bQNPoF9o3/MCNU+QMmEbG4vEXWsL/PBYvHD+FJG08i6xvtS
+ a/UQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWnVLHlJzkFK2mCwUaH42PDSA7vGFRnMSfhEgUYus/q0Ewvi2rbserQD5f4kQNnW4kBJDOP62tQDg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx4B+NmGC3TdTkS6Oc7nUCIICmTTfl/jwLqpKewR9AUhrcApLdz
- WPGfSQW9PWhE0SlhYkGeeq/6hFJEq98m0Lm29B3o8tiP7MK8GDuslf3ILA==
-X-Received: by 2002:a17:902:f541:b0:20d:1866:ed6f with SMTP id
- d9443c01a7336-21183ccf11bmr232226175ad.4.1731430934730; 
- Tue, 12 Nov 2024 09:02:14 -0800 (PST)
+ AJvYcCUCbDJn5+ywiGYr8TUR5IqblrUZWmgKzesEyZ8qXo4VURcyW4hsyavHznle5ec8ZWKjjZplwHvdCQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwVTlDmgJBVebyIVYuHV2gh0mFI1voMBJCcou2RjVSThsZrYzKu
+ Jyug9uMvtUU+wIrNm4UwtzE7/1TjjMai1QlRbYwpiIzDisp+b/DHQjMEhg==
+X-Received: by 2002:a05:6a00:c89:b0:71e:6eb:786e with SMTP id
+ d2e1a72fcca58-724132cd14amr22086885b3a.13.1731430936539; 
+ Tue, 12 Nov 2024 09:02:16 -0800 (PST)
 Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-21177e5c3eesm96448055ad.216.2024.11.12.09.02.12
+ 41be03b00d2f7-7f41f5bee9asm10768956a12.28.2024.11.12.09.02.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Nov 2024 09:02:12 -0800 (PST)
+ Tue, 12 Nov 2024 09:02:15 -0800 (PST)
 From: Guenter Roeck <linux@roeck-us.net>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
@@ -103,16 +105,19 @@ Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, Guenter Roeck <linux@roeck-us.net>
-Subject: [RESEND PATCH 00/10] usb/uhci: Add UHCI sysbus support,
- and enable for AST machines
-Date: Tue, 12 Nov 2024 09:01:42 -0800
-Message-ID: <20241112170152.217664-1-linux@roeck-us.net>
+ qemu-arm@nongnu.org, Guenter Roeck <linux@roeck-us.net>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [RESEND PATCH 01/10] usb/uhci: checkpatch cleanup
+Date: Tue, 12 Nov 2024 09:01:43 -0800
+Message-ID: <20241112170152.217664-2-linux@roeck-us.net>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241112170152.217664-1-linux@roeck-us.net>
+References: <20241112170152.217664-1-linux@roeck-us.net>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=groeck7@gmail.com; helo=mail-pl1-x630.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=groeck7@gmail.com; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
@@ -135,75 +140,270 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PJSf6boKiJIH
+X-TUID: ABeleAYA0VTb
 
-[ Trying again, with updated subject ]
+Fix reported checkpatch issues to prepare for next patches
+in the series.
 
-Some machines (like Aspeed ARM) only support a sysbus UHCI controller.
-The current UHCI implementation in qemu only supports PCI based UHCI
-controllers.
+No functional change.
 
-This patch series separates basic and PCI functionality from the hcd-uhci
-implementation and then adds uhci-sysbus support. This is then used
-to implement and enable sysbus based UHCI support for Aspeed machines.
-
-The series is submitted as RFC since I am quite sure that I didn't get
-everything right. All code surrounding VMStates deserves special scrutiny,
-as well as the changes outside hw/usb/ and hw/arm/.
-
-A side effect of this patch series is that Aspeed AST2400/2500 machines
-will now instantiate UHCI, even if the machine does not actually support
-it (it also always instantiates both EHCI ports, so that is not really
-different). This means that the default USB bus is now the UHCI bus,
-not the second EHCI bus. The bus number must therefore now be specified
-explicitly when attaching a device unless attaching it to the UHCI port
-is ok. I don't know if it is possible to avoid that and to ensure that
-the default USB port is still the second EHCI port.
-
-The code was tested on x86 machines to ensure that the existing UHCI
-implementation still works. It was also tested on various Aspeed machines
-with enabled UHCI ports (ast2500-evb, ast2600-evb, and rainier-bmc).
-
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+---
 Changes since RFC:
 - Rebased to v9.1.0-1673-g134b443512
-- Added Reviewed-by: tags
-- Fixed bug in interrupt initialization of vt82c686-uhci-pci.c
-  which if instantiated caused a machine crash
-- Instantiate UHCI controllers as companion devices on AST2600 machines
+- Added Reviewed-by: tag
 
-----------------------------------------------------------------
-Guenter Roeck (10):
-      usb/uhci: checkpatch cleanup
-      usb/uhci: Introduce and use register defines
-      usb/uhci: Move PCI-related code into a separate file
-      usb/uhci: enlarge uhci memory space
-      usb/uhci: Add support for usb-uhci-sysbus
-      usb/uhci: Add aspeed specific read and write functions
-      aspeed: Add uhci support for ast2600
-      aspeed: Add uhci support for ast2400 and ast2500
-      usb-hub: Add support for v2.0 hubs
-      usb-hub: Fix handling port power control messages
+ hw/usb/hcd-uhci.c | 90 +++++++++++++++++++++++++++++------------------
+ 1 file changed, 56 insertions(+), 34 deletions(-)
 
- hw/arm/Kconfig                |   1 +
- hw/arm/aspeed_ast2400.c       |  14 ++
- hw/arm/aspeed_ast2600.c       |  20 +++
- hw/isa/Kconfig                |   4 +-
- hw/isa/vt82c686.c             |   4 +-
- hw/usb/Kconfig                |  10 +-
- hw/usb/dev-hub.c              |  85 ++++++++++-
- hw/usb/hcd-uhci-pci.c         | 255 ++++++++++++++++++++++++++++++++
- hw/usb/hcd-uhci-pci.h         |  63 ++++++++
- hw/usb/hcd-uhci-sysbus.c      | 202 +++++++++++++++++++++++++
- hw/usb/hcd-uhci-sysbus.h      |  34 +++++
- hw/usb/hcd-uhci.c             | 337 +++++++++++++-----------------------------
- hw/usb/hcd-uhci.h             |  30 ++--
- hw/usb/meson.build            |   2 +
- hw/usb/vt82c686-uhci-pci.c    |  18 +--
- include/hw/arm/aspeed_soc.h   |   3 +
- include/hw/southbridge/piix.h |   4 +-
- include/hw/usb/uhci-regs.h    |  11 ++
- 18 files changed, 822 insertions(+), 275 deletions(-)
- create mode 100644 hw/usb/hcd-uhci-pci.c
- create mode 100644 hw/usb/hcd-uhci-pci.h
- create mode 100644 hw/usb/hcd-uhci-sysbus.c
- create mode 100644 hw/usb/hcd-uhci-sysbus.h
+diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
+index 3d0339af7b..50d488d6fb 100644
+--- a/hw/usb/hcd-uhci.c
++++ b/hw/usb/hcd-uhci.c
+@@ -67,7 +67,7 @@ struct UHCIPCIDeviceClass {
+     UHCIInfo       info;
+ };
+ 
+-/* 
++/*
+  * Pending async transaction.
+  * 'packet' must be the first field because completion
+  * handler does "(UHCIAsync *) pkt" cast.
+@@ -220,8 +220,9 @@ static void uhci_async_cancel(UHCIAsync *async)
+     uhci_async_unlink(async);
+     trace_usb_uhci_packet_cancel(async->queue->token, async->td_addr,
+                                  async->done);
+-    if (!async->done)
++    if (!async->done) {
+         usb_cancel_packet(&async->packet);
++    }
+     uhci_async_free(async);
+ }
+ 
+@@ -322,7 +323,7 @@ static void uhci_reset(DeviceState *dev)
+     s->fl_base_addr = 0;
+     s->sof_timing = 64;
+ 
+-    for(i = 0; i < UHCI_PORTS; i++) {
++    for (i = 0; i < UHCI_PORTS; i++) {
+         port = &s->ports[i];
+         port->ctrl = 0x0080;
+         if (port->port.dev && port->port.dev->attached) {
+@@ -387,7 +388,7 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+ 
+     trace_usb_uhci_mmio_writew(addr, val);
+ 
+-    switch(addr) {
++    switch (addr) {
+     case 0x00:
+         if ((val & UHCI_CMD_RS) && !(s->cmd & UHCI_CMD_RS)) {
+             /* start frame processing */
+@@ -404,7 +405,7 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+             int i;
+ 
+             /* send reset on the USB bus */
+-            for(i = 0; i < UHCI_PORTS; i++) {
++            for (i = 0; i < UHCI_PORTS; i++) {
+                 port = &s->ports[i];
+                 usb_device_reset(port->port.dev);
+             }
+@@ -425,10 +426,13 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+         break;
+     case 0x02:
+         s->status &= ~val;
+-        /* XXX: the chip spec is not coherent, so we add a hidden
+-           register to distinguish between IOC and SPD */
+-        if (val & UHCI_STS_USBINT)
++        /*
++         * XXX: the chip spec is not coherent, so we add a hidden
++         * register to distinguish between IOC and SPD
++         */
++        if (val & UHCI_STS_USBINT) {
+             s->status2 = 0;
++        }
+         uhci_update_irq(s);
+         break;
+     case 0x04:
+@@ -436,8 +440,9 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+         uhci_update_irq(s);
+         break;
+     case 0x06:
+-        if (s->status & UHCI_STS_HCHALTED)
++        if (s->status & UHCI_STS_HCHALTED) {
+             s->frnum = val & 0x7ff;
++        }
+         break;
+     case 0x08:
+         s->fl_base_addr &= 0xffff0000;
+@@ -464,8 +469,8 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+             dev = port->port.dev;
+             if (dev && dev->attached) {
+                 /* port reset */
+-                if ( (val & UHCI_PORT_RESET) &&
+-                     !(port->ctrl & UHCI_PORT_RESET) ) {
++                if ((val & UHCI_PORT_RESET) &&
++                     !(port->ctrl & UHCI_PORT_RESET)) {
+                     usb_device_reset(dev);
+                 }
+             }
+@@ -487,7 +492,7 @@ static uint64_t uhci_port_read(void *opaque, hwaddr addr, unsigned size)
+     UHCIState *s = opaque;
+     uint32_t val;
+ 
+-    switch(addr) {
++    switch (addr) {
+     case 0x00:
+         val = s->cmd;
+         break;
+@@ -533,12 +538,13 @@ static uint64_t uhci_port_read(void *opaque, hwaddr addr, unsigned size)
+ }
+ 
+ /* signal resume if controller suspended */
+-static void uhci_resume (void *opaque)
++static void uhci_resume(void *opaque)
+ {
+     UHCIState *s = (UHCIState *)opaque;
+ 
+-    if (!s)
++    if (!s) {
+         return;
++    }
+ 
+     if (s->cmd & UHCI_CMD_EGSM) {
+         s->cmd |= UHCI_CMD_FGR;
+@@ -674,7 +680,8 @@ static int uhci_handle_td_error(UHCIState *s, UHCI_TD *td, uint32_t td_addr,
+     return ret;
+ }
+ 
+-static int uhci_complete_td(UHCIState *s, UHCI_TD *td, UHCIAsync *async, uint32_t *int_mask)
++static int uhci_complete_td(UHCIState *s, UHCI_TD *td, UHCIAsync *async,
++                            uint32_t *int_mask)
+ {
+     int len = 0, max_len;
+     uint8_t pid;
+@@ -682,8 +689,9 @@ static int uhci_complete_td(UHCIState *s, UHCI_TD *td, UHCIAsync *async, uint32_
+     max_len = ((td->token >> 21) + 1) & 0x7ff;
+     pid = td->token & 0xff;
+ 
+-    if (td->ctrl & TD_CTRL_IOS)
++    if (td->ctrl & TD_CTRL_IOS) {
+         td->ctrl &= ~TD_CTRL_ACTIVE;
++    }
+ 
+     if (async->packet.status != USB_RET_SUCCESS) {
+         return uhci_handle_td_error(s, td, async->td_addr,
+@@ -693,12 +701,15 @@ static int uhci_complete_td(UHCIState *s, UHCI_TD *td, UHCIAsync *async, uint32_
+     len = async->packet.actual_length;
+     td->ctrl = (td->ctrl & ~0x7ff) | ((len - 1) & 0x7ff);
+ 
+-    /* The NAK bit may have been set by a previous frame, so clear it
+-       here.  The docs are somewhat unclear, but win2k relies on this
+-       behavior.  */
++    /*
++     * The NAK bit may have been set by a previous frame, so clear it
++     * here.  The docs are somewhat unclear, but win2k relies on this
++     * behavior.
++     */
+     td->ctrl &= ~(TD_CTRL_ACTIVE | TD_CTRL_NAK);
+-    if (td->ctrl & TD_CTRL_IOC)
++    if (td->ctrl & TD_CTRL_IOC) {
+         *int_mask |= 0x01;
++    }
+ 
+     if (pid == USB_TOKEN_IN) {
+         pci_dma_write(&s->dev, td->buffer, async->buf, len);
+@@ -780,9 +791,11 @@ static int uhci_handle_td(UHCIState *s, UHCIQueue *q, uint32_t qh_addr,
+ 
+     if (async) {
+         if (queuing) {
+-            /* we are busy filling the queue, we are not prepared
+-               to consume completed packages then, just leave them
+-               in async state */
++            /*
++             * we are busy filling the queue, we are not prepared
++             * to consume completed packages then, just leave them
++             * in async state
++             */
+             return TD_RESULT_ASYNC_CONT;
+         }
+         if (!async->done) {
+@@ -832,7 +845,7 @@ static int uhci_handle_td(UHCIState *s, UHCIQueue *q, uint32_t qh_addr,
+     }
+     usb_packet_addbuf(&async->packet, async->buf, max_len);
+ 
+-    switch(pid) {
++    switch (pid) {
+     case USB_TOKEN_OUT:
+     case USB_TOKEN_SETUP:
+         pci_dma_read(&s->dev, td->buffer, async->buf, max_len);
+@@ -911,12 +924,15 @@ static void qhdb_reset(QhDb *db)
+ static int qhdb_insert(QhDb *db, uint32_t addr)
+ {
+     int i;
+-    for (i = 0; i < db->count; i++)
+-        if (db->addr[i] == addr)
++    for (i = 0; i < db->count; i++) {
++        if (db->addr[i] == addr) {
+             return 1;
++        }
++    }
+ 
+-    if (db->count >= UHCI_MAX_QUEUES)
++    if (db->count >= UHCI_MAX_QUEUES) {
+         return 1;
++    }
+ 
+     db->addr[db->count++] = addr;
+     return 0;
+@@ -970,8 +986,10 @@ static void uhci_process_frame(UHCIState *s)
+ 
+     for (cnt = FRAME_MAX_LOOPS; is_valid(link) && cnt; cnt--) {
+         if (!s->completions_only && s->frame_bytes >= s->frame_bandwidth) {
+-            /* We've reached the usb 1.1 bandwidth, which is
+-               1280 bytes/frame, stop processing */
++            /*
++             * We've reached the usb 1.1 bandwidth, which is
++             * 1280 bytes/frame, stop processing
++             */
+             trace_usb_uhci_frame_stop_bandwidth();
+             break;
+         }
+@@ -1120,8 +1138,10 @@ static void uhci_frame_timer(void *opaque)
+         uhci_async_validate_begin(s);
+         uhci_process_frame(s);
+         uhci_async_validate_end(s);
+-        /* The spec says frnum is the frame currently being processed, and
+-         * the guest must look at frnum - 1 on interrupt, so inc frnum now */
++        /*
++         * The spec says frnum is the frame currently being processed, and
++         * the guest must look at frnum - 1 on interrupt, so inc frnum now
++         */
+         s->frnum = (s->frnum + 1) & 0x7ff;
+         s->expire_time += frame_t;
+     }
+@@ -1174,7 +1194,7 @@ void usb_uhci_common_realize(PCIDevice *dev, Error **errp)
+ 
+     if (s->masterbus) {
+         USBPort *ports[UHCI_PORTS];
+-        for(i = 0; i < UHCI_PORTS; i++) {
++        for (i = 0; i < UHCI_PORTS; i++) {
+             ports[i] = &s->ports[i].port;
+         }
+         usb_register_companion(s->masterbus, ports, UHCI_PORTS,
+@@ -1200,8 +1220,10 @@ void usb_uhci_common_realize(PCIDevice *dev, Error **errp)
+     memory_region_init_io(&s->io_bar, OBJECT(s), &uhci_ioport_ops, s,
+                           "uhci", 0x20);
+ 
+-    /* Use region 4 for consistency with real hardware.  BSD guests seem
+-       to rely on this.  */
++    /*
++     * Use region 4 for consistency with real hardware.  BSD guests seem
++     * to rely on this.
++     */
+     pci_register_bar(&s->dev, 4, PCI_BASE_ADDRESS_SPACE_IO, &s->io_bar);
+ }
+ 
+-- 
+2.45.2
+

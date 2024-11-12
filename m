@@ -1,112 +1,113 @@
-Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7167700njc;
-        Tue, 12 Nov 2024 00:02:22 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV15vPp9tnrebF4lrjpNjhDWT3NlvDSYlp/QS4JMyPw68fspepo8BuvVASMGph9GGmkJy99PcpTlBdeIw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGVqxyrdwKI+DJeFX4TGKwvo9tie3hc0Vzg5rxxOiwjbrEh1uirSUECsJskUWqZhrQ9vbbT
-X-Received: by 2002:a05:6214:2d46:b0:6d3:5138:7c39 with SMTP id 6a1803df08f44-6d3d03a9d67mr23344866d6.44.1731398542423;
-        Tue, 12 Nov 2024 00:02:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731398542; cv=none;
+Received: by 2002:a17:505:610b:b0:1be9:327d:8ee3 with SMTP id tt11csp7168187njc;
+        Tue, 12 Nov 2024 00:03:17 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXvK4jbJKRfKEhRZ0jrg7B6v5fSCyfP9GRTkI7a7Qm6pzR27j2cpArzida0Bo4UoikMW9s9fKryVZCX0w==@linaro.org
+X-Google-Smtp-Source: AGHT+IEuA5GsrALyt2hM6HJJ/239vPhEGe0VlSFIrrJ6pHSDOjlMLGqCwwv1pGuIvswvULpUpNWL
+X-Received: by 2002:ac8:59c7:0:b0:460:95b7:bb0e with SMTP id d75a77b69052e-463093f0012mr194172151cf.34.1731398597423;
+        Tue, 12 Nov 2024 00:03:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731398597; cv=none;
         d=google.com; s=arc-20240605;
-        b=YAf5Q7cyJS41ffEtNj5KBO+AgT19ojXepEjztCH4MjDc4UQ8CnN9hAplF55C9Wap64
-         4HCoSsMV7bKJNiwxn36ocB8z41kII5dtQgd34XAumZT6wWYCstT7o5CFJDfun3VRv8nH
-         XaOzzlq1dxtX3220N8sIpYVZGWXX83y45X6wHHoJx4Ces1A+Ex0+QwxmkU8OclLbISHY
-         wuaPMH3kAdvgig9KAZ28xLRmJyFXGjWDFJAl/K3YN461BoPv6BwOOsvm2c+XswbGnN84
-         adixsL3VVaOJC/D1zHE5vRPM36O9fVJ6VnaAT21XaP4PuuvTV5tF4Z0/irhbAeN5hi/W
-         MUnQ==
+        b=i1ezNrnMdIk9uL9igGXOQtRS/Rvm2v+uTLwmOmalW5NVQwpKsAD4gyM7ObX14m700r
+         pPFnHEK1/5GRNumyZ4F4tahgqcjaid0MK3dNUIeIHeXRQyYmRG1cncLWSD2Ng1gxnxFg
+         Bs02Xc9PuYDG7lW2nA8Y1JGew2sfC0k/OxEpoPBVqHGAIGxc0Mxv55J4BNhCuvWpJ2XL
+         ZG+zWp3KC6JlZxQQ6GTtVwEOgC3H83o2XX4AManrZDReoL67J5g77og2WFFhkW5dO2jg
+         kOSQL4XOXtUId+IYbQmczjtglocwpqMROKpmmjk38HFKYEuezFqYWo2r8S/nEYNmEhck
+         u7aQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:autocrypt:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=xn1Qjs/PYtU/aSg+0PL60+R7uDxL90Q0YwjYY3lU/hI=;
-        fh=iElP3LRUSw31jZPiMNqK9fUj+tEUulpNmNVg/qTyaxs=;
-        b=fDVk2+AaPQcv7qO8xSiCehelTt02Silv4ZFPKbOSQdawbaBlXYWUfm8S7plnOceziR
-         vWYJr863UKa1btFEnepM+E5bD2e1C04bC317dGLTMGpdv7Sjwv/p8Ez1B04LBIS7jQHK
-         0CGxc7QGQzlSLFCpQeI8gMOi4oTrX536n7AAuaD3JJcGGNTVicKjRMRTY/Lde9PocHwo
-         M6FKPSseRfhJWPrfEG3MvwuuaelyKkXmrUmgIEjEOjzasLf8xznsOJ1LfeMFzY4dISnO
-         GLzpPZQ1xBij1loIW298IpDGSm4dzLWc073AFoiVgZJ+EONu06MpJcVN4w3fLYICh2cZ
-         4vzQ==;
+        bh=OLXm3dM9IWRmjC5GqP6gJvlm5hVvCX41HwRzZBIJpPA=;
+        fh=nelKLULPFemx8fHhHwxnc8hG++fFVZT/WTcugqB2MhA=;
+        b=Wee9j5FIWkxW4YVVxhqT4zMZbhxB30PboQEKCSO4YDdgVnaype0BClt3JxOOgWMPhr
+         v3u/FrgERusKFw5Cp61crVC+sxS7swWdNGWEqs1+fMZnnVTPj5u0c5dbNubiG/GAzzzL
+         LFx14uC0E0EHYDfCoUpTqffQ4+Fa8NlnvF5a2PIV7wQO5Mn4+QeaaSL/OoTG1ao5xXaY
+         S30vnXjbztJCBuU1Q5+CzLPz1wCMrdpLnIdUtEHlYaYsyNwXeEy6zyyClM7k46HnJUMa
+         q+uK2ipbKKEgMLuWCXvuZppOy0rdAs2cTqmKdSLkAkl/d+KdAgkYXbAC7SH+IXgr0vDu
+         AyKQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OklZpiyw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LwS7Gf0I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d39664ce45si128207866d6.275.2024.11.12.00.02.22
+        by mx.google.com with ESMTPS id d75a77b69052e-462ff45af55si139559531cf.175.2024.11.12.00.03.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 12 Nov 2024 00:02:22 -0800 (PST)
+        Tue, 12 Nov 2024 00:03:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OklZpiyw;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LwS7Gf0I;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tAlqu-0001YU-1S; Tue, 12 Nov 2024 03:02:20 -0500
+	id 1tAlrh-0002iP-Gq; Tue, 12 Nov 2024 03:03:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tAlqp-0001WE-Es
- for qemu-arm@nongnu.org; Tue, 12 Nov 2024 03:02:15 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tAlrf-0002e2-9W
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 03:03:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tAlql-0006uw-8u
- for qemu-arm@nongnu.org; Tue, 12 Nov 2024 03:02:14 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tAlrd-0006xE-FW
+ for qemu-arm@nongnu.org; Tue, 12 Nov 2024 03:03:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1731398530;
+ s=mimecast20190719; t=1731398584;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=xn1Qjs/PYtU/aSg+0PL60+R7uDxL90Q0YwjYY3lU/hI=;
- b=OklZpiywnqNnQXzcfzgBJx7yDoeGKk7CfApPOLi+FzdvuqrhEpV0ZRbAbA6xWSP2BCLuah
- EQ+4xBTIJNOscaSU7AHHQTz1quLdtRHwTXEkmqJq1Hcqtx/mZdicvve/hgp3okT2az4N5M
- MsL5q3MKgLBiuwBxwz+tThGbU0T6Kxg=
-Received: from mail-oi1-f200.google.com (mail-oi1-f200.google.com
- [209.85.167.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=OLXm3dM9IWRmjC5GqP6gJvlm5hVvCX41HwRzZBIJpPA=;
+ b=LwS7Gf0IWp7pPHxs8Tl9UJW7junJtK+K/e82X/R5+rKdZY3G2hXs7jQwVNSR0+aOW7Y+eL
+ aWmrCqD/tYnXYcWjyb0JpVM4DuvY3GJKi0vbhy8xVgmRk0LryJnMywqSPEGUUsWeWgVOTf
+ QbM9p1KQS3HKQ/nlB4zphD6+sjqneAI=
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-151-AaMeQcg6NjmZ2epZch4vLg-1; Tue, 12 Nov 2024 03:02:08 -0500
-X-MC-Unique: AaMeQcg6NjmZ2epZch4vLg-1
-X-Mimecast-MFC-AGG-ID: AaMeQcg6NjmZ2epZch4vLg
-Received: by mail-oi1-f200.google.com with SMTP id
- 5614622812f47-3e790cb28a8so4348930b6e.1
- for <qemu-arm@nongnu.org>; Tue, 12 Nov 2024 00:02:08 -0800 (PST)
+ us-mta-490-11wAxgmBMeugHpvC4z3S8A-1; Tue, 12 Nov 2024 03:03:03 -0500
+X-MC-Unique: 11wAxgmBMeugHpvC4z3S8A-1
+X-Mimecast-MFC-AGG-ID: 11wAxgmBMeugHpvC4z3S8A
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-7b1581d41dcso798015685a.2
+ for <qemu-arm@nongnu.org>; Tue, 12 Nov 2024 00:03:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731398527; x=1732003327;
+ d=1e100.net; s=20230601; t=1731398583; x=1732003383;
  h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xn1Qjs/PYtU/aSg+0PL60+R7uDxL90Q0YwjYY3lU/hI=;
- b=gbN+zYI5yTYPB+0l2ZPT8KMgLB8DLiYP8pO5ucZK4YasHWxnUKIyxHDmE9ztgSOM9q
- uNxUrsJz+msUsV8y5Pfk/f1dYTSE0nCU7FW0PH+cTlXQA2sTJa4/ZHPO3zMtMUdK6uqz
- ldNMtbL2f0CffdvR/M/VHPGk812/lrpjmrFKJGInc90U1wuaK/hTkAzRtC1o7EznvrbE
- SAnog4qPWsYWn40D+NmaxafUapItbYvsXYlC/F2UNIpATMCDcKzqnS+eaLdrvcAp/vgg
- 6skB097juRnPw3mDCK6p1Onc53+XSruLVDB0izaD/RRQPVex64dmP1xIsFIgKIFjRRaO
- Sv1A==
+ bh=OLXm3dM9IWRmjC5GqP6gJvlm5hVvCX41HwRzZBIJpPA=;
+ b=kcKu/bKdjsgEo/jhP4CVIODt8WY0meD2g1d0u94GYLAVxL+9of2VAoEj0qbjwmzLFM
+ TvlWpxxq9l7hRtLYTut9w3aafccQV5lCgVQm9eOcdDdoUvMXCAMy9AHJh4L9kilVIhBV
+ f3DjBipsy7/I9l8avS49ALDNgYDgT0+U1CGprBGVeQQhH47WbX2ESuZSsPE3QPYASBow
+ ZB9mwP0BlazMV6zlUOA5sJitEzi6vR3v92mMsec+VDj1za/R7j/YcW4N4LIr0hPCFJpx
+ 2TZ7pC3nv1xSwXSzPZGmfogGLpM2zQfqp6xTQG77CrpDshL4ayranDjEuRvFscBYCNe1
+ RSDw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWV7sADx85ZIwe2s18Bmk5lTxvAXxClW40nlTDYRuM+fyrimd+IuF+RNxfkqYwyvXdRTYvoqtDMNA==@nongnu.org
-X-Gm-Message-State: AOJu0YwN8bMYuB3mRq1DJGYIYOdyq5ZgQjKSFXwsTopbY6u6HHagX1mr
- zaoRAoASoPg0DVimLwWAiFSBkamj4jYITWsWtcEdEF16nlp33i7YOiPNWEWrfCu+z73d/fVjpQz
- Rxwp3ASJfCEYXH4FjHIOnxfvtaXZ0CRq/4CahZWoOkYFlJ3PuOA==
-X-Received: by 2002:a05:6808:2212:b0:3e0:c13:9837 with SMTP id
- 5614622812f47-3e7aae09629mr1637704b6e.37.1731398525876; 
- Tue, 12 Nov 2024 00:02:05 -0800 (PST)
-X-Received: by 2002:a05:6808:2212:b0:3e0:c13:9837 with SMTP id
- 5614622812f47-3e7aae09629mr1637687b6e.37.1731398525537; 
- Tue, 12 Nov 2024 00:02:05 -0800 (PST)
+ AJvYcCV6vrqUfBAF/HLL/Sx61wRebo2GIrDfUA66lOW+EVrbxPXUi2fLrrPPytvbgvjrVUmuKGh6fi4fsQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxiMA8a9A5HxvdOAEDfF2//q/PqMU7TLxQ6Tq1dmvMBzq/Ho/jA
+ EWoRDfjMlzRvSWAn7mQali1J4TDl3Eo3MeVGGlYy0/CT2Mf6BwPSMsoG9JMMFMHZcVpM0p0QLGX
+ 3L5nCyexFx/iGSB/hoy79vEaoUX6qzTuoQ84Bo6QtoSMCTtVKG9tTgKiEYw==
+X-Received: by 2002:a05:620a:3704:b0:7b1:4fcc:5483 with SMTP id
+ af79cd13be357-7b331ebfcfcmr2443665785a.27.1731398582956; 
+ Tue, 12 Nov 2024 00:03:02 -0800 (PST)
+X-Received: by 2002:a05:620a:3704:b0:7b1:4fcc:5483 with SMTP id
+ af79cd13be357-7b331ebfcfcmr2443663485a.27.1731398582696; 
+ Tue, 12 Nov 2024 00:03:02 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
  ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6d396630f80sm68758176d6.103.2024.11.12.00.02.03
+ af79cd13be357-7b32ac427dasm568506185a.27.2024.11.12.00.03.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Nov 2024 00:02:05 -0800 (PST)
-Message-ID: <75861f28-5215-4435-a474-be8545640357@redhat.com>
-Date: Tue, 12 Nov 2024 09:02:02 +0100
+ Tue, 12 Nov 2024 00:03:02 -0800 (PST)
+Message-ID: <c30daec1-b897-4190-a8d1-d07561d78778@redhat.com>
+Date: Tue, 12 Nov 2024 09:03:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/4] tests/functional: Convert Aspeed aarch64 SDK tests
+Subject: Re: [PATCH v1 4/4] tests/functional: Remove sleep workarounds from
+ Aspeed tests
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -114,8 +115,8 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 References: <20241112062806.838717-1-clg@redhat.com>
- <20241112062806.838717-3-clg@redhat.com>
- <e556df7b-86c6-487d-b64a-03d0e698f973@redhat.com>
+ <20241112062806.838717-5-clg@redhat.com>
+ <f97df212-9094-4ea4-ab9a-3ca3f88a0c81@redhat.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -160,23 +161,23 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <e556df7b-86c6-487d-b64a-03d0e698f973@redhat.com>
+In-Reply-To: <f97df212-9094-4ea4-ab9a-3ca3f88a0c81@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: KXVva-8bmruBuxVpf8V1H0FH81DADAemJv7r_c10awc_1731398527
+X-Mimecast-MFC-PROC-ID: y-9gQkpirBaTZpayVLtslDOoH4lJwKgrIn2SAw44x5o_1731398583
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.122,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.122,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.671,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -191,171 +192,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TvMdx1CWYc2w
+X-TUID: Ck+kYqH0bxNq
 
-On 11/12/24 07:53, Thomas Huth wrote:
+On 11/12/24 08:14, Thomas Huth wrote:
 > On 12/11/2024 07.28, Cédric Le Goater wrote:
->> Drop the SSH connection which was introduced in the avocado tests to
->> workaround read issues when interacting with console.
+>> These were introduced in the avocado tests to workaround read issues
+>> when interacting with console. They are no longer necessary.
 >>
 >> Signed-off-by: Cédric Le Goater <clg@redhat.com>
 >> ---
->>   tests/avocado/machine_aspeed.py         | 78 --------------------
->>   tests/functional/meson.build            |  2 +
->>   tests/functional/test_aarch64_aspeed.py | 97 +++++++++++++++++++++++++
->>   3 files changed, 99 insertions(+), 78 deletions(-)
->>   create mode 100644 tests/functional/test_aarch64_aspeed.py
+>>   tests/functional/test_arm_aspeed.py | 7 ++-----
+>>   1 file changed, 2 insertions(+), 5 deletions(-)
 >>
->> diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
->> index 241ef180affc..2240c82abff9 100644
->> --- a/tests/avocado/machine_aspeed.py
->> +++ b/tests/avocado/machine_aspeed.py
->> @@ -59,17 +59,6 @@ def do_test_arm_aspeed_sdk_start(self, image):
->>               self, 'boot', '## Loading kernel from FIT Image')
->>           self.wait_for_console_pattern('Starting kernel ...')
->> -    def do_test_aarch64_aspeed_sdk_start(self, image):
->> -        self.vm.set_console()
->> -        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
->> -                         '-net', 'nic', '-net', 'user,hostfwd=:127.0.0.1:0-:22')
->> -
->> -        self.vm.launch()
->> -
->> -        self.wait_for_console_pattern('U-Boot 2023.10')
->> -        self.wait_for_console_pattern('## Loading kernel from FIT Image')
->> -        self.wait_for_console_pattern('Starting kernel ...')
->> -
->>       @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
->>       def test_arm_ast2500_evb_sdk(self):
->>           """
->> @@ -133,70 +122,3 @@ def test_arm_ast2600_evb_sdk(self):
->>           year = time.strftime("%Y")
->>           self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
->> -    def test_aarch64_ast2700_evb_sdk_v09_02(self):
->> -        """
->> -        :avocado: tags=arch:aarch64
->> -        :avocado: tags=machine:ast2700-evb
->> -        """
->> -
->> -        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
->> -                     'download/v09.02/ast2700-default-obmc.tar.gz')
->> -        image_hash = 'ac969c2602f4e6bdb69562ff466b89ae3fe1d86e1f6797bb7969d787f82116a7'
->> -        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
->> -                                      algorithm='sha256')
->> -        archive.extract(image_path, self.workdir)
->> -
->> -        num_cpu = 4
->> -        image_dir = self.workdir + '/ast2700-default/'
->> -        uboot_size = os.path.getsize(image_dir + 'u-boot-nodtb.bin')
->> -        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
->> -
->> -        load_images_list = [
->> -            {
->> -                'addr': '0x400000000',
->> -                'file': image_dir + 'u-boot-nodtb.bin'
->> -            },
->> -            {
->> -                'addr': str(uboot_dtb_load_addr),
->> -                'file': image_dir + 'u-boot.dtb'
->> -            },
->> -            {
->> -                'addr': '0x430000000',
->> -                'file': image_dir + 'bl31.bin'
->> -            },
->> -            {
->> -                'addr': '0x430080000',
->> -                'file': image_dir + 'optee/tee-raw.bin'
->> -            }
->> -        ]
->> -
->> -        for load_image in load_images_list:
->> -            addr = load_image['addr']
->> -            file = load_image['file']
->> -            self.vm.add_args('-device',
->> -                             f'loader,force-raw=on,addr={addr},file={file}')
->> -
->> -        for i in range(num_cpu):
->> -            self.vm.add_args('-device',
->> -                             f'loader,addr=0x430000000,cpu-num={i}')
->> -
->> -        self.vm.add_args('-smp', str(num_cpu))
->> -        self.vm.add_args('-device',
->> -                         'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
->> -        self.do_test_aarch64_aspeed_sdk_start(image_dir + 'image-bmc')
->> -        self.wait_for_console_pattern('nodistro.0 ast2700-default ttyS12')
->> -
->> -        self.ssh_connect('root', '0penBmc', False)
->> -        self.ssh_command('dmesg -c > /dev/null')
->> -
->> -        self.ssh_command_output_contains(
->> -            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device '
->> -            '&& dmesg -c',
->> -            'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d');
->> -
->> -        self.ssh_command_output_contains(
->> -            'cat /sys/class/hwmon/hwmon20/temp1_input', '0')
->> -        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
->> -                    property='temperature', value=18000)
->> -        self.ssh_command_output_contains(
->> -            'cat /sys/class/hwmon/hwmon20/temp1_input', '18000')
->> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
->> index 758145d1e5fa..c035eba4f9b8 100644
->> --- a/tests/functional/meson.build
->> +++ b/tests/functional/meson.build
->> @@ -11,6 +11,7 @@ endif
->>   # Timeouts for individual tests that can be slow e.g. with debugging enabled
->>   test_timeouts = {
->> +  'aarch64_aspeed' : 600,
->>     'aarch64_raspi4' : 480,
->>     'aarch64_sbsaref_alpine' : 720,
->>     'aarch64_sbsaref_freebsd' : 720,
->> @@ -47,6 +48,7 @@ tests_generic_bsduser = [
->>   ]
->>   tests_aarch64_system_thorough = [
->> +  'aarch64_aspeed',
->>     'aarch64_raspi3',
->>     'aarch64_raspi4',
->>     'aarch64_sbsaref',
->> diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
->> new file mode 100644
->> index 000000000000..c61e34242d5a
->> --- /dev/null
->> +++ b/tests/functional/test_aarch64_aspeed.py
->> @@ -0,0 +1,97 @@
->> +#!/usr/bin/env python3
->> +#
->> +# Functional test that boots the ASPEED SoCs with firmware
->> +#
->> +# Copyright (C) 2022 ASPEED Technology Inc
->> +#
->> +# SPDX-License-Identifier: GPL-2.0-or-later
->> +
->> +import sys
->> +import os
->> +
->> +from qemu_test import QemuSystemTest, Asset
->> +from qemu_test import wait_for_console_pattern
->> +from qemu_test import exec_command_and_wait_for_pattern
->> +from qemu_test.utils import archive_extract
->> +
->> +class AST2x00MachineSDK(QemuSystemTest):
->> +
->> +    def do_test_aarch64_aspeed_sdk_start(self, image):
->> +        self.vm.set_console()
->> +        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
->> +                         '-net', 'nic', '-snapshot')
+>> diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
+>> index bdd5771a794e..07a8905e2365 100755
+>> --- a/tests/functional/test_arm_aspeed.py
+>> +++ b/tests/functional/test_arm_aspeed.py
+>> @@ -136,10 +136,8 @@ def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'
+>>           self.wait_for_console_pattern('lease of 10.0.2.15')
+>>           # the line before login:
+>>           self.wait_for_console_pattern(pattern)
 > 
-> Running QEMU with just "-net nic" but no other "-net" option normally produces a warning à la "warning: hub 0 is not connected to host network" ... it's likely hidden in a log file here, so it does not really matter, but in case you respin the series anyway, you could maybe also try without the "-net nic" here.
+> Could we please wait for the "login:" string now instead, to make sure that there is no race between detecting the previous line and the real login prompt?
 
-
-I will add a user netdev.
-
-
-
-
-> Anyway,
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
-
+Yes. I have done that in other tests. I should do it in this test also.
 
 Thanks,
 

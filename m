@@ -1,127 +1,131 @@
-Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp405259njc;
-        Wed, 13 Nov 2024 06:33:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUvpjIVSPwFslomXKsfarEbbxkb92I/9j5Lftrw/aBBmPwyi/ne8YjZY4XCeIuIPc6e3i9HMXM3o6htSg==@linaro.org
-X-Google-Smtp-Source: AGHT+IE7B7V5qlfXe5hqE/PU+9mX1Qq/ndCQbfoG4s+wd4XrqYzDbzcSYpbADDsEo/akTYY23q9i
-X-Received: by 2002:a05:6808:1a21:b0:3e6:b46:4f76 with SMTP id 5614622812f47-3e7946853edmr17631155b6e.1.1731508428953;
-        Wed, 13 Nov 2024 06:33:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731508428; cv=none;
+Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp434106njc;
+        Wed, 13 Nov 2024 07:12:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXlywDewUKQ8O2EZmoTNwSh+tLS9PQPDmyhw1kpjXl4jU5D3IwUszQ6/INr+qgqveORkOnk1k9Y12Ea4A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgoB+M13mVky4NVnlD56CgJgdZtGXoXKjivzISSl/RWBxmMP83YzjfDR7iwCBAL5t1T0uQ
+X-Received: by 2002:ac8:5756:0:b0:461:4f03:dbf0 with SMTP id d75a77b69052e-4630942c734mr282830021cf.48.1731510735418;
+        Wed, 13 Nov 2024 07:12:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731510735; cv=none;
         d=google.com; s=arc-20240605;
-        b=R+Jr1jAqdKthTP4poq9jrmwiD0PTVkQFY6UWVW6AlVzlGQfP8+HeLdeOsUKnxUMznT
-         bVbExckhtrZwWc1q8kFZUk0V0XDyivQVxhTGQ6yejNT39jK5TLOlhvZ2kzH+MdCq6dh0
-         iuDN28dHX8rUploNy/AYk1z6Ld73fg1aNkgzlcdAJ+OL4DpufK3wPVSaIW2cycsvE3Uk
-         mIV0aj0vwnpUqMe6GTrFnKfbOoW0imsLjkeEAPaS4u3BWPJMBQjPkjH/eIrATCC4zEyu
-         udld+mbVvQXOYLVEeThloAMimEcmpyJLfMsjpFb1Br4TCS7T3EA2A5YXT5tNBR1FPWVU
-         lSDA==
+        b=GC1JTb2BSRwjmvB1dem+ZXeq7fLu+QYaYZW3+B86IVd0gZjntdDs/PTQgA6inWWi6H
+         wlPa1nq7SQCt4FB+WstngrRCX0xi5Giw4wjy+UhAG6HE6DMIlowoLQeAUY6ccSlklgDk
+         a9te6XfBl2rZu1p21Qu1xYncFG6xmtLemoqCWKTtYD9y4GQRK+49RGzdogRjhvfz9prD
+         XSbtvenNfNUyK6gruNfLAdWiWpTsUOdRhO0vefgxuFf5o4vRW0K82CSHqtEol2xCd60T
+         o1zVse3qrt4rXTPl0h8sw65XN/1FdRRiVgiBsyzDDdVzbkqwLtnCIZqo/6eBZnDzznUD
+         3hbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=HUjOA4iDWhfXNiw2Eu17I+CzyL1lt4NF2uRutadg+M4=;
-        fh=5quikMcG1LNW3xPJLyuGWZw2xuVDjvqgOKC3Tst2hfY=;
-        b=OSLDqOKEn3pIt7Ko7ti6BbySX3n/CBhySIyr7Ln0zlQ0knT1voK1H4EJZJUwzgFdn8
-         hda/x63qy9PvlGQjuyQG4o5Dggas6lLSuA2+nwV1sjB2zkgDUTdmvXUs7wnUoxYy5OUH
-         D8ZQbAHsl8tVgK+O8GWT7CK2YsBLtHaPZCVorA5hb6FtmEg3+fvwqmt3u2rSF9SIN8AP
-         omPZSwF7R0rrSWOXpFkkKeG39rR4uUeEbKcqQY2aXU9YqH9on6X5jDPVrzLeEfbH3GHc
-         n/qWWWxmZnpY88qosyf9JJwHFdE1qA1Dd028eR0hxonIgLx7byB+q6tjr9DtBwPDEIOb
-         1FPA==;
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=Pu8vAtDyx0cTAVjc4mfmckt3I4l8nZ76x4Flog8u25I=;
+        fh=m3YgD1pGUVDzSmoBYn04Q4hPXOdGaXJ7BqB8z8J3V3c=;
+        b=QDiPAwo+70kXSF6wvCFZCHvzwBfic/CMY4v6DWT4lGR44OvWU81A1Hz/76haQpQQQV
+         fVXbbwwcDD3JSpL/xA7L7rX8DuwX7l+Jx0M9Qc/c/k2pYL6umkQB38d/zK/l95qHC2lC
+         rtL7CPvVqDrNesb4HNzRgrSIJWgLG2DjsV1LqEp8bPOeJ25oMyycSk7VkKP4l/It+3nh
+         iMvPKx3xPXZma33fM8M3lv1J33RUuTu4H8tflkTk6VCq3g5jprb9/fB7t/YOHurt8J09
+         87o8g+clO3SmcorIh82pAT3+5w7FIxZC11z9Gtk/D28cIlOSvdAVFb3RGk4E/yoXQThd
+         uLKQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=3POqhkB3;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gh2oyLEz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4ad4f77fa67si197283137.643.2024.11.13.06.33.48
+        by mx.google.com with ESMTPS id d75a77b69052e-4634b1f369asi23025251cf.79.2024.11.13.07.12.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Nov 2024 06:33:48 -0800 (PST)
+        Wed, 13 Nov 2024 07:12:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=3POqhkB3;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=gh2oyLEz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBEQs-0001jv-Ta; Wed, 13 Nov 2024 09:33:22 -0500
+	id 1tBF26-0000Qm-EF; Wed, 13 Nov 2024 10:11:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lists@philjordan.eu>)
- id 1tBEQr-0001iu-6b
- for qemu-arm@nongnu.org; Wed, 13 Nov 2024 09:33:21 -0500
-Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1tBF23-0000Px-BI; Wed, 13 Nov 2024 10:11:47 -0500
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lists@philjordan.eu>)
- id 1tBEQm-0001SA-Sf
- for qemu-arm@nongnu.org; Wed, 13 Nov 2024 09:33:20 -0500
-Received: by mail-pg1-x536.google.com with SMTP id
- 41be03b00d2f7-7ee6edc47abso4586752a12.3
- for <qemu-arm@nongnu.org>; Wed, 13 Nov 2024 06:33:15 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1tBF21-0005xp-1L; Wed, 13 Nov 2024 10:11:46 -0500
+Received: by mail-lf1-x12e.google.com with SMTP id
+ 2adb3069b0e04-53da24e9673so622938e87.2; 
+ Wed, 13 Nov 2024 07:11:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731508387; x=1732113187;
- darn=nongnu.org; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=HUjOA4iDWhfXNiw2Eu17I+CzyL1lt4NF2uRutadg+M4=;
- b=3POqhkB3EeHxBSQ1sb62CPphF96xH+eZenSVnjv0Q2IWHcKMFrX4RrcO6BkmIGHF/M
- QnfWtjW6X6Zb2zbLlS9ma1pNrxGhJ5ozT7WZoN4Z/grrrUXdziIkH/Gjn6A/kNVRn8G7
- zAKngu3UhPSJZTzg6Elg3CfOEzSV1QRxWBAvk/++WEL/7LzhOIIaqCM+lhcTzUBObBKV
- 5VyE6+QoRN6r2u/l/XTtmE7uD0C/gXt+DWtDbZtGU8JUKuXeE5S/CAQT3FXVlFJvOADt
- hbnQAWZxXGY611Lp2QNUtUT4RqAepQncDHh1ch4Pf06y1oVr7oTiNVx7HhJxFxOvz1RJ
- xXsA==
+ d=gmail.com; s=20230601; t=1731510702; x=1732115502; darn=nongnu.org;
+ h=user-agent:in-reply-to:content-transfer-encoding
+ :content-disposition:mime-version:references:message-id:subject:cc
+ :to:from:date:from:to:cc:subject:date:message-id:reply-to;
+ bh=Pu8vAtDyx0cTAVjc4mfmckt3I4l8nZ76x4Flog8u25I=;
+ b=gh2oyLEzHDQmlfopp9awDvj/uYYnJFw3ZeEw039NBzzGMZuqZZuEUkpnfa2SB/CfrC
+ XivHylpzorvlwkb4N2oKTjZQUySMxmbaKfmEpCmg4rndWh+veS3EartJnX5/RCbQ/q8I
+ x0gCGa65zrzC8apJYZuCQQoEAP4XPObH4NmxqTgslDnZvTOZUd3fu6tREQJVon3ZQFwN
+ ELEXI9KxzQaR19WdXrWt9Qta+MuwPg9g/rFjYGhBhAkjWw1c+I03Y2aAGJ4Y2n6D/3D8
+ YUGhy8qVBHbvn5LPb0crJWArk84TxT2urG9BjT9T57Doz2lw8aEo7CSYx8jP7DLW3vWW
+ JmJw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731508387; x=1732113187;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1731510702; x=1732115502;
+ h=user-agent:in-reply-to:content-transfer-encoding
+ :content-disposition:mime-version:references:message-id:subject:cc
+ :to:from:date:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=HUjOA4iDWhfXNiw2Eu17I+CzyL1lt4NF2uRutadg+M4=;
- b=eg8o/VyFRiDmsAmojrPZgsLBIRdo/DagzL03ta8MQBcIA9cLpz7wwmGEvY5TIps1GF
- m4/MnvnUaJcVg3ipYKxyQW6rrWaxsR2WAlM3RPvsWn42PRFUbicamqCgYyeA/hOxRUs7
- bqsDp11iQMo4Yq3G6HAskR+AUVkTEsMuapcWlZOTA2BIpKQ9DKDet+/HmzPwDB9mmnF7
- X2ipH+qeisv0PNvhlUEBVBr58zQsmwhBacyltNGhPYpKFYfImDe4LvD5egiMs76ZRHZG
- Ac9X53OPlsVUtQwaO3Dyi1Cn3jIsWlnB/67zj8kiaj6296CTKWrej5PC9Vr9N87JXCDj
- +kuA==
+ bh=Pu8vAtDyx0cTAVjc4mfmckt3I4l8nZ76x4Flog8u25I=;
+ b=wFdkHoJK6zq6apmiCO8vMGP25jyeuaNwNjDau+STavYW1YXMl3C9po1itacza2c6hA
+ jOx+YPNo6Gxq1xio4a2Bg35lWbjFCGOsLIc0mPdQD2iobs0jLznV8XQUAn7tWuW8XnPL
+ L9/jNKCt8wPUOSGqv6CLrgZ6ptMwXFdswH1o7zmMa61KKmGbhb7AW6r5/hVaWg9E4mCC
+ AvMEa0tGo8zBMLf3zGg3P0/UoGvnNZhvrpZqMvi8MO9u16dN9H7AWk/7drCOR68ac4QL
+ 7ovs12zlcrRAOOXvLofnULPzHqv1lU5IwZtQVaYGRXPDovub3xZ+DyPjXMBr8bBoQXsk
+ ++0A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXsHdWPLa+fZ66yQvA9sTok+ERxwc9d1meYaz8MPK/ntLYxoH3QJcDMR1tJghMRgNRlyxCBeYmDFg==@nongnu.org
-X-Gm-Message-State: AOJu0Yzh2fya+//BKlzlCs3XP9eQODkZwjIC5MDcz8sN6nnZb5cywo00
- szJNNeo1vtjxf/MoPwOuhMdIBSKWnLWbab/Zb2kqIyVCIwgRRsxTRoMy8F/xtDpmZPzRYH3Slkk
- 5qGArVMzpl/dFBoP74IVKZb5wtraGeBlWObaY
-X-Received: by 2002:a17:90b:2692:b0:2e2:d1c9:95c with SMTP id
- 98e67ed59e1d1-2e9b1715bd0mr28894383a91.16.1731508387442; Wed, 13 Nov 2024
- 06:33:07 -0800 (PST)
+ AJvYcCX5pBDNv1tE+qe9Fq8MSFHbxfCi98wO1WtfN2RN/b3xKWwL/K5uKsb8f7rGYPniJuGe+17ivQepig==@nongnu.org
+X-Gm-Message-State: AOJu0YwYjsK94XCNs77een8UiJO86WjwU6HV5kVY/t5Umo6pf7ET9huG
+ kSleLHwx1cALN+RzebeTOf80rEL7ZtIM7DSsWfVvAS8X6SleMN9K
+X-Received: by 2002:a05:6512:b17:b0:539:fc75:99c4 with SMTP id
+ 2adb3069b0e04-53d862c6fbfmr9912727e87.20.1731510702022; 
+ Wed, 13 Nov 2024 07:11:42 -0800 (PST)
+Received: from gmail.com (213-67-3-247-no600.tbcn.telia.com. [213.67.3.247])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-53d826a71acsm2181224e87.126.2024.11.13.07.11.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 13 Nov 2024 07:11:40 -0800 (PST)
+Date: Wed, 13 Nov 2024 16:11:40 +0100
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Anton Johansson <anjo@rev.ng>, Jason Wang <jasowang@redhat.com>,
+ qemu-arm@nongnu.org,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Gustavo Romero <gustavo.romero@linaro.org>
+Subject: Re: [PATCH 02/20] hw/net/xilinx_ethlite: Convert some debug logs to
+ trace events
+Message-ID: <ZzTBrP1tZYaFzbN-@zapote>
+References: <20241112181044.92193-1-philmd@linaro.org>
+ <20241112181044.92193-3-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20241108144709.95498-1-phil@philjordan.eu>
- <20241108144709.95498-13-phil@philjordan.eu>
- <49a1d82f-2464-4e10-b932-733e94be31b2@daynix.com>
- <CAGCz3vt_HuXu9uPwrOQkgE84-8nTgEQXST-BbXXc=FsEx_Wx2w@mail.gmail.com>
- <d245e6b2-f089-42e6-9614-947192fc96d8@daynix.com>
-In-Reply-To: <d245e6b2-f089-42e6-9614-947192fc96d8@daynix.com>
-From: Phil Dennis-Jordan <lists@philjordan.eu>
-Date: Wed, 13 Nov 2024 15:32:56 +0100
-Message-ID: <CAGCz3vsntN13pK+C_meqLkM0uku4JFq=_9DjBUObe4Vq--FH+w@mail.gmail.com>
-Subject: Re: [PATCH v8 12/15] hw/vmapple/cfg: Introduce vmapple cfg region
-To: Akihiko Odaki <akihiko.odaki@daynix.com>
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org,
- agraf@csgraf.de, 
- peter.maydell@linaro.org, pbonzini@redhat.com, rad@semihalf.com, 
- quic_llindhol@quicinc.com, stefanha@redhat.com, mst@redhat.com, 
- slp@redhat.com, richard.henderson@linaro.org, eduardo@habkost.net, 
- marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com, 
- chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com, philmd@linaro.org, 
- shorne@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com, 
- bmeng.cn@gmail.com, liwei1518@gmail.com, dbarboza@ventanamicro.com, 
- zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, 
- berrange@redhat.com, qemu-arm@nongnu.org, qemu-block@nongnu.org, 
- qemu-riscv@nongnu.org, Alexander Graf <graf@amazon.com>
-Content-Type: multipart/alternative; boundary="0000000000005c115c0626cc362d"
-Received-SPF: neutral client-ip=2607:f8b0:4864:20::536;
- envelope-from=lists@philjordan.eu; helo=mail-pg1-x536.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20241112181044.92193-3-philmd@linaro.org>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x12e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,803 +140,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: H+OPLEhmg//n
+X-TUID: nP1ECPSLVHmw
 
---0000000000005c115c0626cc362d
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Tue, Nov 12, 2024 at 07:10:26PM +0100, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-On Mon, 11 Nov 2024 at 05:21, Akihiko Odaki <akihiko.odaki@daynix.com>
-wrote:
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 
-> On 2024/11/11 0:01, Phil Dennis-Jordan wrote:
-> > On Sun, 10 Nov 2024 at 08:15, Akihiko Odaki <akihiko.odaki@daynix.com>
-> wrote:
-> >>
-> >> On 2024/11/08 23:47, Phil Dennis-Jordan wrote:
-> >>> From: Alexander Graf <graf@amazon.com>
-> >>>
-> >>> Instead of device tree or other more standardized means, VMApple pass=
-es
-> >>> platform configuration to the first stage boot loader in a binary
-> encoded
-> >>> format that resides at a dedicated RAM region in physical address
-> space.
-> >>>
-> >>> This patch models this configuration space as a qdev device which we
-> can
-> >>> then map at the fixed location in the address space. That way, we can
-> >>> influence and annotate all configuration fields easily.
-> >>>
-> >>> Signed-off-by: Alexander Graf <graf@amazon.com>
-> >>> Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
-> >>> ---
-> >>>
-> >>> v3:
-> >>>
-> >>>    * Replaced legacy device reset method with Resettable method
-> >>>
-> >>> v4:
-> >>>
-> >>>    * Fixed initialisation of default values for properties
-> >>>    * Dropped superfluous endianness conversions
-> >>>    * Moved most header code to .c, device name #define goes in
-> vmapple.h
-> >>>
-> >>> v5:
-> >>>
-> >>>    * Improved error reporting in case of string property buffer
-> overflow.
-> >>>
-> >>> v7:
-> >>>
-> >>>    * Changed error messages for overrun of properties with
-> >>>      fixed-length strings to be more useful to users than developers.
-> >>>
-> >>> v8:
-> >>>
-> >>>    * Consistent parenthesising of macro arguments for better safety.
-> >>>
-> >>>    hw/vmapple/Kconfig           |   3 +
-> >>>    hw/vmapple/cfg.c             | 196
-> +++++++++++++++++++++++++++++++++++
-> >>>    hw/vmapple/meson.build       |   1 +
-> >>>    include/hw/vmapple/vmapple.h |   2 +
-> >>>    4 files changed, 202 insertions(+)
-> >>>    create mode 100644 hw/vmapple/cfg.c
-> >>>
-> >>> diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
-> >>> index 68f88876eb9..8bbeb9a9237 100644
-> >>> --- a/hw/vmapple/Kconfig
-> >>> +++ b/hw/vmapple/Kconfig
-> >>> @@ -4,3 +4,6 @@ config VMAPPLE_AES
-> >>>    config VMAPPLE_BDIF
-> >>>        bool
-> >>>
-> >>> +config VMAPPLE_CFG
-> >>> +    bool
-> >>> +
-> >>> diff --git a/hw/vmapple/cfg.c b/hw/vmapple/cfg.c
-> >>> new file mode 100644
-> >>> index 00000000000..787e2505d57
-> >>> --- /dev/null
-> >>> +++ b/hw/vmapple/cfg.c
-> >>> @@ -0,0 +1,196 @@
-> >>> +/*
-> >>> + * VMApple Configuration Region
-> >>> + *
-> >>> + * Copyright =C2=A9 2023 Amazon.com, Inc. or its affiliates. All Rig=
-hts
-> Reserved.
-> >>> + *
-> >>> + * SPDX-License-Identifier: GPL-2.0-or-later
-> >>> + *
-> >>> + * This work is licensed under the terms of the GNU GPL, version 2 o=
-r
-> later.
-> >>> + * See the COPYING file in the top-level directory.
-> >>> + */
-> >>> +
-> >>> +#include "qemu/osdep.h"
-> >>> +#include "hw/vmapple/vmapple.h"
-> >>> +#include "hw/sysbus.h"
-> >>> +#include "qemu/log.h"
-> >>> +#include "qemu/module.h"
-> >>> +#include "qapi/error.h"
-> >>> +#include "net/net.h"
-> >>> +
-> >>> +OBJECT_DECLARE_SIMPLE_TYPE(VMAppleCfgState, VMAPPLE_CFG)
-> >>> +
-> >>> +#define VMAPPLE_CFG_SIZE 0x00010000
-> >>> +
-> >>> +typedef struct VMAppleCfg {
-> >>> +    uint32_t version;         /* 0x000 */
-> >>> +    uint32_t nr_cpus;         /* 0x004 */
-> >>> +    uint32_t unk1;            /* 0x008 */
-> >>> +    uint32_t unk2;            /* 0x00c */
-> >>> +    uint32_t unk3;            /* 0x010 */
-> >>> +    uint32_t unk4;            /* 0x014 */
-> >>> +    uint64_t ecid;            /* 0x018 */
-> >>> +    uint64_t ram_size;        /* 0x020 */
-> >>> +    uint32_t run_installer1;  /* 0x028 */
-> >>> +    uint32_t unk5;            /* 0x02c */
-> >>> +    uint32_t unk6;            /* 0x030 */
-> >>> +    uint32_t run_installer2;  /* 0x034 */
-> >>> +    uint32_t rnd;             /* 0x038 */
-> >>> +    uint32_t unk7;            /* 0x03c */
-> >>> +    MACAddr mac_en0;          /* 0x040 */
-> >>> +    uint8_t pad1[2];
-> >>> +    MACAddr mac_en1;          /* 0x048 */
-> >>> +    uint8_t pad2[2];
-> >>> +    MACAddr mac_wifi0;        /* 0x050 */
-> >>> +    uint8_t pad3[2];
-> >>> +    MACAddr mac_bt0;          /* 0x058 */
-> >>> +    uint8_t pad4[2];
-> >>> +    uint8_t reserved[0xa0];   /* 0x060 */
-> >>> +    uint32_t cpu_ids[0x80];   /* 0x100 */
-> >>> +    uint8_t scratch[0x200];   /* 0x180 */
-> >>> +    char serial[32];          /* 0x380 */
-> >>> +    char unk8[32];            /* 0x3a0 */
-> >>> +    char model[32];           /* 0x3c0 */
-> >>> +    uint8_t unk9[32];         /* 0x3e0 */
-> >>> +    uint32_t unk10;           /* 0x400 */
-> >>> +    char soc_name[32];        /* 0x404 */
-> >>> +} VMAppleCfg;
-> >>> +
-> >>> +struct VMAppleCfgState {
-> >>> +    SysBusDevice parent_obj;
-> >>> +    VMAppleCfg cfg;
-> >>> +
-> >>> +    MemoryRegion mem;
-> >>> +    char *serial;
-> >>> +    char *model;
-> >>> +    char *soc_name;
-> >>> +};
-> >>> +
-> >>> +static void vmapple_cfg_reset(Object *obj, ResetType type)
-> >>> +{
-> >>> +    VMAppleCfgState *s =3D VMAPPLE_CFG(obj);
-> >>> +    VMAppleCfg *cfg;
-> >>> +
-> >>> +    cfg =3D memory_region_get_ram_ptr(&s->mem);
-> >>> +    memset(cfg, 0, VMAPPLE_CFG_SIZE);
-> >>> +    *cfg =3D s->cfg;
-> >>> +}
-> >>> +
-> >>> +static bool set_fixlen_property_or_error(char *restrict dst,
-> >>> +                                         const char *restrict src,
-> >>> +                                         size_t dst_size, Error
-> **errp,
-> >>> +                                         const char *property_name)
-> >>> +{
-> >>> +    size_t len;
-> >>> +
-> >>> +    len =3D g_strlcpy(dst, src, dst_size);
-> >>> +    if (len < dst_size) { /* len does not count nul terminator */
-> >>> +        return true;
-> >>> +    }
-> >>> +
-> >>> +    error_setg(errp,
-> >>> +               "Failed to set property '%s' on VMApple 'cfg' device:
-> length "
-> >>> +               "(%zu) exceeds maximum of %zu",
-> >>
-> >> Don't print the device name here as it will be automatically printed.
-> >
-> > That's not what I'm seeing in tests. With code as-is, and setting an
-> > overly long value from create_cfg() in the vmapple machine type
-> > startup, I get the following output:
-> >
-> > qemu-system-aarch64: Failed to set property 'soc_name' on VMApple
-> > 'cfg' device: length (50) exceeds maximum of 31
-> >
-> > I don't see any redundant mention of an object or property name. Of
-> > course, this error occurs during the cfg device's realize(), not
-> > immediately when setting the property. I can't see a built-in way to
-> > explicitly limit the length of a string property.
->
-> I was thinking of the scenario where the device is added with the
-> -device option. It seems the device name is not printed when it is
-> realized by the machine, but in that case the user will not be aware of
-> the 'cfg' device so it is not helpful. A proper way to add a context
-> here is calling error_prepend() in the vmapple machine to tell that it
-> is a failure in that machine type.
->
 
-I couldn't find any error_prepend() uses in existing machine types to work
-from as examples, but I hope I've got it right now. I've made create_cfg()
-accept an errp (pass &error_fatal); inside create_cfg, check whether
-sysbus_realize_and_unref() succeeded, and if not, apply error_prepend
-before returning.
 
-It's in v10 of the patch set, which I've just posted.
-
->
-> >>> +               property_name, len, dst_size - 1);
-> >>> +    return false;
-> >>> +}
-> >>> +
-> >>> +#define set_fixlen_property_or_return(dst_array, src, errp,
-> property_name) \
-> >>> +    do { \
-> >>> +        if (!set_fixlen_property_or_error((dst_array), (src), \
-> >>> +                                          ARRAY_SIZE(dst_array), \
-> >>> +                                          (errp), (property_name))) =
-{
-> \
-> >>> +            return; \
-> >>> +        } \
-> >>> +    } while (0)
-> >>> +
-> >>> +static void vmapple_cfg_realize(DeviceState *dev, Error **errp)
-> >>> +{
-> >>> +    VMAppleCfgState *s =3D VMAPPLE_CFG(dev);
-> >>> +    uint32_t i;
-> >>> +
-> >>> +    if (!s->serial) {
-> >>> +        s->serial =3D g_strdup("1234");
-> >>> +    }
-> >>> +    if (!s->model) {
-> >>> +        s->model =3D g_strdup("VM0001");
-> >>> +    }
-> >>> +    if (!s->soc_name) {
-> >>> +        s->soc_name =3D g_strdup("Apple M1 (Virtual)");
-> >>> +    }
-> >>> +
-> >>> +    set_fixlen_property_or_return(s->cfg.serial, s->serial, errp,
-> "serial");
-> >>> +    set_fixlen_property_or_return(s->cfg.model, s->model, errp,
-> "model");
-> >>> +    set_fixlen_property_or_return(s->cfg.soc_name, s->soc_name, errp=
-,
-> "soc_name");
-> >>> +    set_fixlen_property_or_return(s->cfg.unk8, "D/A", errp, "unk8");
-> >>> +    s->cfg.version =3D 2;
-> >>> +    s->cfg.unk1 =3D 1;
-> >>> +    s->cfg.unk2 =3D 1;
-> >>> +    s->cfg.unk3 =3D 0x20;
-> >>> +    s->cfg.unk4 =3D 0;
-> >>> +    s->cfg.unk5 =3D 1;
-> >>> +    s->cfg.unk6 =3D 1;
-> >>> +    s->cfg.unk7 =3D 0;
-> >>> +    s->cfg.unk10 =3D 1;
-> >>> +
-> >>> +    if (s->cfg.nr_cpus > ARRAY_SIZE(s->cfg.cpu_ids)) {
-> >>> +        error_setg(errp,
-> >>> +                   "Failed to create %u CPUs, vmapple machine
-> supports %zu max",
-> >>> +                   s->cfg.nr_cpus, ARRAY_SIZE(s->cfg.cpu_ids));
-> >>> +        return;
-> >>> +    }
-> >>> +    for (i =3D 0; i < s->cfg.nr_cpus; i++) {
-> >>> +        s->cfg.cpu_ids[i] =3D i;
-> >>> +    }
-> >>> +}
-> >>> +
-> >>> +static void vmapple_cfg_init(Object *obj)
-> >>> +{
-> >>> +    VMAppleCfgState *s =3D VMAPPLE_CFG(obj);
-> >>> +
-> >>> +    memory_region_init_ram(&s->mem, obj, "VMApple Config",
-> VMAPPLE_CFG_SIZE,
-> >>> +                           &error_fatal);
-> >>> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mem);
-> >>> +}
-> >>> +
-> >>> +static Property vmapple_cfg_properties[] =3D {
-> >>> +    DEFINE_PROP_UINT32("nr-cpus", VMAppleCfgState, cfg.nr_cpus, 1),
-> >>> +    DEFINE_PROP_UINT64("ecid", VMAppleCfgState, cfg.ecid, 0),
-> >>> +    DEFINE_PROP_UINT64("ram-size", VMAppleCfgState, cfg.ram_size, 0)=
-,
-> >>> +    DEFINE_PROP_UINT32("run_installer1", VMAppleCfgState,
-> cfg.run_installer1, 0),
-> >>> +    DEFINE_PROP_UINT32("run_installer2", VMAppleCfgState,
-> cfg.run_installer2, 0),
-> >>> +    DEFINE_PROP_UINT32("rnd", VMAppleCfgState, cfg.rnd, 0),
-> >>> +    DEFINE_PROP_MACADDR("mac-en0", VMAppleCfgState, cfg.mac_en0),
-> >>> +    DEFINE_PROP_MACADDR("mac-en1", VMAppleCfgState, cfg.mac_en1),
-> >>> +    DEFINE_PROP_MACADDR("mac-wifi0", VMAppleCfgState, cfg.mac_wifi0)=
-,
-> >>> +    DEFINE_PROP_MACADDR("mac-bt0", VMAppleCfgState, cfg.mac_bt0),
-> >>> +    DEFINE_PROP_STRING("serial", VMAppleCfgState, serial),
-> >>> +    DEFINE_PROP_STRING("model", VMAppleCfgState, model),
-> >>> +    DEFINE_PROP_STRING("soc_name", VMAppleCfgState, soc_name),
-> >>> +    DEFINE_PROP_END_OF_LIST(),
-> >>> +};
-> >>> +
-> >>> +static void vmapple_cfg_class_init(ObjectClass *klass, void *data)
-> >>> +{
-> >>> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >>> +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
-> >>> +
-> >>> +    dc->realize =3D vmapple_cfg_realize;
-> >>> +    dc->desc =3D "VMApple Configuration Region";
-> >>> +    device_class_set_props(dc, vmapple_cfg_properties);
-> >>> +    rc->phases.hold =3D vmapple_cfg_reset;
-> >>> +}
-> >>> +
-> >>> +static const TypeInfo vmapple_cfg_info =3D {
-> >>> +    .name          =3D TYPE_VMAPPLE_CFG,
-> >>> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
-> >>> +    .instance_size =3D sizeof(VMAppleCfgState),
-> >>> +    .instance_init =3D vmapple_cfg_init,
-> >>> +    .class_init    =3D vmapple_cfg_class_init,
-> >>> +};
-> >>> +
-> >>> +static void vmapple_cfg_register_types(void)
-> >>> +{
-> >>> +    type_register_static(&vmapple_cfg_info);
-> >>> +}
-> >>> +
-> >>> +type_init(vmapple_cfg_register_types)
-> >>> diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
-> >>> index d4624713deb..64b78693a31 100644
-> >>> --- a/hw/vmapple/meson.build
-> >>> +++ b/hw/vmapple/meson.build
-> >>> @@ -1,2 +1,3 @@
-> >>>    system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c')=
-)
-> >>>    system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'=
-))
-> >>> +system_ss.add(when: 'CONFIG_VMAPPLE_CFG',  if_true: files('cfg.c'))
-> >>> diff --git a/include/hw/vmapple/vmapple.h
-> b/include/hw/vmapple/vmapple.h
-> >>> index 9090e9c5ac8..3bba59f5ec7 100644
-> >>> --- a/include/hw/vmapple/vmapple.h
-> >>> +++ b/include/hw/vmapple/vmapple.h
-> >>> @@ -16,4 +16,6 @@
-> >>>
-> >>>    #define TYPE_VMAPPLE_BDIF "vmapple-bdif"
-> >>>
-> >>> +#define TYPE_VMAPPLE_CFG "vmapple-cfg"
-> >>> +
-> >>>    #endif /* HW_VMAPPLE_VMAPPLE_H */
-> >>
-> >>
->
->
-
---0000000000005c115c0626cc362d
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Mon, 11 Nov 2024 at 05:21, Akihiko=
- Odaki &lt;<a href=3D"mailto:akihiko.odaki@daynix.com">akihiko.odaki@daynix=
-.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
-ex">On 2024/11/11 0:01, Phil Dennis-Jordan wrote:<br>
-&gt; On Sun, 10 Nov 2024 at 08:15, Akihiko Odaki &lt;<a href=3D"mailto:akih=
-iko.odaki@daynix.com" target=3D"_blank">akihiko.odaki@daynix.com</a>&gt; wr=
-ote:<br>
-&gt;&gt;<br>
-&gt;&gt; On 2024/11/08 23:47, Phil Dennis-Jordan wrote:<br>
-&gt;&gt;&gt; From: Alexander Graf &lt;<a href=3D"mailto:graf@amazon.com" ta=
-rget=3D"_blank">graf@amazon.com</a>&gt;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Instead of device tree or other more standardized means, VMApp=
-le passes<br>
-&gt;&gt;&gt; platform configuration to the first stage boot loader in a bin=
-ary encoded<br>
-&gt;&gt;&gt; format that resides at a dedicated RAM region in physical addr=
-ess space.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; This patch models this configuration space as a qdev device wh=
-ich we can<br>
-&gt;&gt;&gt; then map at the fixed location in the address space. That way,=
- we can<br>
-&gt;&gt;&gt; influence and annotate all configuration fields easily.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; Signed-off-by: Alexander Graf &lt;<a href=3D"mailto:graf@amazo=
-n.com" target=3D"_blank">graf@amazon.com</a>&gt;<br>
-&gt;&gt;&gt; Signed-off-by: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil@p=
-hiljordan.eu" target=3D"_blank">phil@philjordan.eu</a>&gt;<br>
-&gt;&gt;&gt; ---<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; v3:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 * Replaced legacy device reset method with Resett=
-able method<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; v4:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 * Fixed initialisation of default values for prop=
-erties<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 * Dropped superfluous endianness conversions<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 * Moved most header code to .c, device name #defi=
-ne goes in vmapple.h<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; v5:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 * Improved error reporting in case of string prop=
-erty buffer overflow.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; v7:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 * Changed error messages for overrun of propertie=
-s with<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 fixed-length strings to be more useful to =
-users than developers.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; v8:<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 * Consistent parenthesising of macro arguments fo=
-r better safety.<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 hw/vmapple/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0|=C2=A0 =C2=A03 +<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 hw/vmapple/cfg.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0| 196 +++++++++++++++++++++++++++++++++++<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 hw/vmapple/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0=
-|=C2=A0 =C2=A01 +<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 include/hw/vmapple/vmapple.h |=C2=A0 =C2=A02 +<br=
->
-&gt;&gt;&gt;=C2=A0 =C2=A0 4 files changed, 202 insertions(+)<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 create mode 100644 hw/vmapple/cfg.c<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig<br>
-&gt;&gt;&gt; index 68f88876eb9..8bbeb9a9237 100644<br>
-&gt;&gt;&gt; --- a/hw/vmapple/Kconfig<br>
-&gt;&gt;&gt; +++ b/hw/vmapple/Kconfig<br>
-&gt;&gt;&gt; @@ -4,3 +4,6 @@ config VMAPPLE_AES<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 config VMAPPLE_BDIF<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 bool<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; +config VMAPPLE_CFG<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 bool<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; diff --git a/hw/vmapple/cfg.c b/hw/vmapple/cfg.c<br>
-&gt;&gt;&gt; new file mode 100644<br>
-&gt;&gt;&gt; index 00000000000..787e2505d57<br>
-&gt;&gt;&gt; --- /dev/null<br>
-&gt;&gt;&gt; +++ b/hw/vmapple/cfg.c<br>
-&gt;&gt;&gt; @@ -0,0 +1,196 @@<br>
-&gt;&gt;&gt; +/*<br>
-&gt;&gt;&gt; + * VMApple Configuration Region<br>
-&gt;&gt;&gt; + *<br>
-&gt;&gt;&gt; + * Copyright =C2=A9 2023 Amazon.com, Inc. or its affiliates. =
-All Rights Reserved.<br>
-&gt;&gt;&gt; + *<br>
-&gt;&gt;&gt; + * SPDX-License-Identifier: GPL-2.0-or-later<br>
-&gt;&gt;&gt; + *<br>
-&gt;&gt;&gt; + * This work is licensed under the terms of the GNU GPL, vers=
-ion 2 or later.<br>
-&gt;&gt;&gt; + * See the COPYING file in the top-level directory.<br>
-&gt;&gt;&gt; + */<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +#include &quot;qemu/osdep.h&quot;<br>
-&gt;&gt;&gt; +#include &quot;hw/vmapple/vmapple.h&quot;<br>
-&gt;&gt;&gt; +#include &quot;hw/sysbus.h&quot;<br>
-&gt;&gt;&gt; +#include &quot;qemu/log.h&quot;<br>
-&gt;&gt;&gt; +#include &quot;qemu/module.h&quot;<br>
-&gt;&gt;&gt; +#include &quot;qapi/error.h&quot;<br>
-&gt;&gt;&gt; +#include &quot;net/net.h&quot;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +OBJECT_DECLARE_SIMPLE_TYPE(VMAppleCfgState, VMAPPLE_CFG)<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +#define VMAPPLE_CFG_SIZE 0x00010000<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +typedef struct VMAppleCfg {<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t version;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0/* 0x000 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t nr_cpus;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0/* 0x004 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t unk1;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 /* 0x008 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t unk2;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 /* 0x00c */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t unk3;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 /* 0x010 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t unk4;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 /* 0x014 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint64_t ecid;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 /* 0x018 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint64_t ram_size;=C2=A0 =C2=A0 =C2=A0 =C2=A0 /=
-* 0x020 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t run_installer1;=C2=A0 /* 0x028 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t unk5;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 /* 0x02c */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t unk6;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 /* 0x030 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t run_installer2;=C2=A0 /* 0x034 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t rnd;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0/* 0x038 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t unk7;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 /* 0x03c */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 MACAddr mac_en0;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 /* 0x040 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint8_t pad1[2];<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 MACAddr mac_en1;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 /* 0x048 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint8_t pad2[2];<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 MACAddr mac_wifi0;=C2=A0 =C2=A0 =C2=A0 =C2=A0 /=
-* 0x050 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint8_t pad3[2];<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 MACAddr mac_bt0;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 /* 0x058 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint8_t pad4[2];<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint8_t reserved[0xa0];=C2=A0 =C2=A0/* 0x060 */=
-<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t cpu_ids[0x80];=C2=A0 =C2=A0/* 0x100 */=
-<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint8_t scratch[0x200];=C2=A0 =C2=A0/* 0x180 */=
-<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 char serial[32];=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 /* 0x380 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 char unk8[32];=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 /* 0x3a0 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 char model[32];=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0/* 0x3c0 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint8_t unk9[32];=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0/* 0x3e0 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t unk10;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0/* 0x400 */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 char soc_name[32];=C2=A0 =C2=A0 =C2=A0 =C2=A0 /=
-* 0x404 */<br>
-&gt;&gt;&gt; +} VMAppleCfg;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +struct VMAppleCfgState {<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 SysBusDevice parent_obj;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 VMAppleCfg cfg;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 MemoryRegion mem;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 char *serial;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 char *model;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 char *soc_name;<br>
-&gt;&gt;&gt; +};<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static void vmapple_cfg_reset(Object *obj, ResetType type)<br=
->
-&gt;&gt;&gt; +{<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 VMAppleCfgState *s =3D VMAPPLE_CFG(obj);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 VMAppleCfg *cfg;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 cfg =3D memory_region_get_ram_ptr(&amp;s-&gt;me=
-m);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 memset(cfg, 0, VMAPPLE_CFG_SIZE);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 *cfg =3D s-&gt;cfg;<br>
-&gt;&gt;&gt; +}<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static bool set_fixlen_property_or_error(char *restrict dst,<=
-br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0const char *restrict src,<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0size_t dst_size, Error **errp,<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0const char *property_name)<br>
-&gt;&gt;&gt; +{<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 size_t len;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 len =3D g_strlcpy(dst, src, dst_size);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 if (len &lt; dst_size) { /* len does not count =
-nul terminator */<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return true;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 error_setg(errp,<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;=
-Failed to set property &#39;%s&#39; on VMApple &#39;cfg&#39; device: length=
- &quot;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;=
-(%zu) exceeds maximum of %zu&quot;,<br>
-&gt;&gt;<br>
-&gt;&gt; Don&#39;t print the device name here as it will be automatically p=
-rinted.<br>
-&gt; <br>
-&gt; That&#39;s not what I&#39;m seeing in tests. With code as-is, and sett=
-ing an<br>
-&gt; overly long value from create_cfg() in the vmapple machine type<br>
-&gt; startup, I get the following output:<br>
-&gt; <br>
-&gt; qemu-system-aarch64: Failed to set property &#39;soc_name&#39; on VMAp=
-ple<br>
-&gt; &#39;cfg&#39; device: length (50) exceeds maximum of 31<br>
-&gt; <br>
-&gt; I don&#39;t see any redundant mention of an object or property name. O=
-f<br>
-&gt; course, this error occurs during the cfg device&#39;s realize(), not<b=
-r>
-&gt; immediately when setting the property. I can&#39;t see a built-in way =
-to<br>
-&gt; explicitly limit the length of a string property.<br>
-<br>
-I was thinking of the scenario where the device is added with the <br>
--device option. It seems the device name is not printed when it is <br>
-realized by the machine, but in that case the user will not be aware of <br=
->
-the &#39;cfg&#39; device so it is not helpful. A proper way to add a contex=
-t <br>
-here is calling error_prepend() in the vmapple machine to tell that it <br>
-is a failure in that machine type.<br></blockquote><div><br></div><div>I co=
-uldn&#39;t find any error_prepend() uses in existing machine types to work =
-from as examples, but I hope I&#39;ve got it right now. I&#39;ve made creat=
-e_cfg() accept an errp (pass &amp;error_fatal); inside create_cfg, check wh=
-ether sysbus_realize_and_unref() succeeded, and if not, apply error_prepend=
- before returning.<br></div><div><br></div><div>It&#39;s in v10 of the patc=
-h set, which I&#39;ve just posted.<br></div><div><br></div><blockquote clas=
-s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
-gb(204,204,204);padding-left:1ex">
-&gt; <br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0proper=
-ty_name, len, dst_size - 1);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 return false;<br>
-&gt;&gt;&gt; +}<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +#define set_fixlen_property_or_return(dst_array, src, errp, p=
-roperty_name) \<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 do { \<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (!set_fixlen_property_or_error=
-((dst_array), (src), \<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 ARRAY_SIZE(dst_array), \<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 (errp), (property_name))) { \<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return; \<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 } \<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 } while (0)<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static void vmapple_cfg_realize(DeviceState *dev, Error **err=
-p)<br>
-&gt;&gt;&gt; +{<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 VMAppleCfgState *s =3D VMAPPLE_CFG(dev);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 uint32_t i;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 if (!s-&gt;serial) {<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;serial =3D g_strdup(&quot;1=
-234&quot;);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 if (!s-&gt;model) {<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;model =3D g_strdup(&quot;VM=
-0001&quot;);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 if (!s-&gt;soc_name) {<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;soc_name =3D g_strdup(&quot=
-;Apple M1 (Virtual)&quot;);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 set_fixlen_property_or_return(s-&gt;cfg.serial,=
- s-&gt;serial, errp, &quot;serial&quot;);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 set_fixlen_property_or_return(s-&gt;cfg.model, =
-s-&gt;model, errp, &quot;model&quot;);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 set_fixlen_property_or_return(s-&gt;cfg.soc_nam=
-e, s-&gt;soc_name, errp, &quot;soc_name&quot;);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 set_fixlen_property_or_return(s-&gt;cfg.unk8, &=
-quot;D/A&quot;, errp, &quot;unk8&quot;);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;cfg.version =3D 2;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;cfg.unk1 =3D 1;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;cfg.unk2 =3D 1;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;cfg.unk3 =3D 0x20;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;cfg.unk4 =3D 0;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;cfg.unk5 =3D 1;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;cfg.unk6 =3D 1;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;cfg.unk7 =3D 0;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 s-&gt;cfg.unk10 =3D 1;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 if (s-&gt;cfg.nr_cpus &gt; ARRAY_SIZE(s-&gt;cfg=
-.cpu_ids)) {<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp,<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0&quot;Failed to create %u CPUs, vmapple machine supports %zu max&=
-quot;,<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0s-&gt;cfg.nr_cpus, ARRAY_SIZE(s-&gt;cfg.cpu_ids));<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 for (i =3D 0; i &lt; s-&gt;cfg.nr_cpus; i++) {<=
-br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;cfg.cpu_ids[i] =3D i;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 }<br>
-&gt;&gt;&gt; +}<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static void vmapple_cfg_init(Object *obj)<br>
-&gt;&gt;&gt; +{<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 VMAppleCfgState *s =3D VMAPPLE_CFG(obj);<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 memory_region_init_ram(&amp;s-&gt;mem, obj, &qu=
-ot;VMApple Config&quot;, VMAPPLE_CFG_SIZE,<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&amp;error_fatal);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 sysbus_init_mmio(SYS_BUS_DEVICE(obj), &amp;s-&g=
-t;mem);<br>
-&gt;&gt;&gt; +}<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static Property vmapple_cfg_properties[] =3D {<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_UINT32(&quot;nr-cpus&quot;, VMApple=
-CfgState, cfg.nr_cpus, 1),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_UINT64(&quot;ecid&quot;, VMAppleCfg=
-State, cfg.ecid, 0),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_UINT64(&quot;ram-size&quot;, VMAppl=
-eCfgState, cfg.ram_size, 0),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_UINT32(&quot;run_installer1&quot;, =
-VMAppleCfgState, cfg.run_installer1, 0),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_UINT32(&quot;run_installer2&quot;, =
-VMAppleCfgState, cfg.run_installer2, 0),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_UINT32(&quot;rnd&quot;, VMAppleCfgS=
-tate, cfg.rnd, 0),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_MACADDR(&quot;mac-en0&quot;, VMAppl=
-eCfgState, cfg.mac_en0),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_MACADDR(&quot;mac-en1&quot;, VMAppl=
-eCfgState, cfg.mac_en1),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_MACADDR(&quot;mac-wifi0&quot;, VMAp=
-pleCfgState, cfg.mac_wifi0),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_MACADDR(&quot;mac-bt0&quot;, VMAppl=
-eCfgState, cfg.mac_bt0),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_STRING(&quot;serial&quot;, VMAppleC=
-fgState, serial),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_STRING(&quot;model&quot;, VMAppleCf=
-gState, model),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_STRING(&quot;soc_name&quot;, VMAppl=
-eCfgState, soc_name),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DEFINE_PROP_END_OF_LIST(),<br>
-&gt;&gt;&gt; +};<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static void vmapple_cfg_class_init(ObjectClass *klass, void *=
-data)<br>
-&gt;&gt;&gt; +{<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 ResettableClass *rc =3D RESETTABLE_CLASS(klass)=
-;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 dc-&gt;realize =3D vmapple_cfg_realize;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 dc-&gt;desc =3D &quot;VMApple Configuration Reg=
-ion&quot;;<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 device_class_set_props(dc, vmapple_cfg_properti=
-es);<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 rc-&gt;phases.hold =3D vmapple_cfg_reset;<br>
-&gt;&gt;&gt; +}<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static const TypeInfo vmapple_cfg_info =3D {<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 .name=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYP=
-E_VMAPPLE_CFG,<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 .parent=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D TYPE_SYS=
-_BUS_DEVICE,<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 .instance_size =3D sizeof(VMAppleCfgState),<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 .instance_init =3D vmapple_cfg_init,<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 .class_init=C2=A0 =C2=A0 =3D vmapple_cfg_class_=
-init,<br>
-&gt;&gt;&gt; +};<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +static void vmapple_cfg_register_types(void)<br>
-&gt;&gt;&gt; +{<br>
-&gt;&gt;&gt; +=C2=A0 =C2=A0 type_register_static(&amp;vmapple_cfg_info);<br=
->
-&gt;&gt;&gt; +}<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt; +type_init(vmapple_cfg_register_types)<br>
-&gt;&gt;&gt; diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build<b=
-r>
-&gt;&gt;&gt; index d4624713deb..64b78693a31 100644<br>
-&gt;&gt;&gt; --- a/hw/vmapple/meson.build<br>
-&gt;&gt;&gt; +++ b/hw/vmapple/meson.build<br>
-&gt;&gt;&gt; @@ -1,2 +1,3 @@<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 system_ss.add(when: &#39;CONFIG_VMAPPLE_AES&#39;,=
-=C2=A0 if_true: files(&#39;aes.c&#39;))<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 system_ss.add(when: &#39;CONFIG_VMAPPLE_BDIF&#39;=
-, if_true: files(&#39;bdif.c&#39;))<br>
-&gt;&gt;&gt; +system_ss.add(when: &#39;CONFIG_VMAPPLE_CFG&#39;,=C2=A0 if_tr=
-ue: files(&#39;cfg.c&#39;))<br>
-&gt;&gt;&gt; diff --git a/include/hw/vmapple/vmapple.h b/include/hw/vmapple=
-/vmapple.h<br>
-&gt;&gt;&gt; index 9090e9c5ac8..3bba59f5ec7 100644<br>
-&gt;&gt;&gt; --- a/include/hw/vmapple/vmapple.h<br>
-&gt;&gt;&gt; +++ b/include/hw/vmapple/vmapple.h<br>
-&gt;&gt;&gt; @@ -16,4 +16,6 @@<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 #define TYPE_VMAPPLE_BDIF &quot;vmapple-bdif&quot=
-;<br>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; +#define TYPE_VMAPPLE_CFG &quot;vmapple-cfg&quot;<br>
-&gt;&gt;&gt; +<br>
-&gt;&gt;&gt;=C2=A0 =C2=A0 #endif /* HW_VMAPPLE_VMAPPLE_H */<br>
-&gt;&gt;<br>
-&gt;&gt;<br>
-<br>
-</blockquote></div></div>
-
---0000000000005c115c0626cc362d--
+> ---
+>  hw/net/xilinx_ethlite.c | 5 +++--
+>  hw/net/trace-events     | 4 ++++
+>  2 files changed, 7 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
+> index e84b4cdd35..bb330a233f 100644
+> --- a/hw/net/xilinx_ethlite.c
+> +++ b/hw/net/xilinx_ethlite.c
+> @@ -30,6 +30,7 @@
+>  #include "hw/irq.h"
+>  #include "hw/qdev-properties.h"
+>  #include "net/net.h"
+> +#include "trace.h"
+>  
+>  #define D(x)
+>  #define R_TX_BUF0     0
+> @@ -198,13 +199,13 @@ static ssize_t eth_rx(NetClientState *nc, const uint8_t *buf, size_t size)
+>          return size;
+>  
+>      if (s->regs[rxbase + R_RX_CTRL0] & CTRL_S) {
+> -        D(qemu_log("ethlite lost packet %x\n", s->regs[R_RX_CTRL0]));
+> +        trace_ethlite_pkt_lost(s->regs[R_RX_CTRL0]);
+>          return -1;
+>      }
+>  
+>      D(qemu_log("%s %zd rxbase=%x\n", __func__, size, rxbase));
+>      if (size > (R_MAX - R_RX_BUF0 - rxbase) * 4) {
+> -        D(qemu_log("ethlite packet is too big, size=%x\n", size));
+> +        trace_ethlite_pkt_size_too_big(size);
+>          return -1;
+>      }
+>      memcpy(&s->regs[rxbase + R_RX_BUF0], buf, size);
+> diff --git a/hw/net/trace-events b/hw/net/trace-events
+> index d0f1d8c0fb..2b36cd967e 100644
+> --- a/hw/net/trace-events
+> +++ b/hw/net/trace-events
+> @@ -511,3 +511,7 @@ xen_netdev_connect(int dev, unsigned int tx, unsigned int rx, int port) "vif%u t
+>  xen_netdev_frontend_changed(const char *dev, int state) "vif%s state %d"
+>  xen_netdev_tx(int dev, int ref, int off, int len, unsigned int flags, const char *c, const char *d, const char *m, const char *e) "vif%u ref %u off %u len %u flags 0x%x%s%s%s%s"
+>  xen_netdev_rx(int dev, int idx, int status, int flags) "vif%u idx %d status %d flags 0x%x"
+> +
+> +# xilinx_ethlite.c
+> +ethlite_pkt_lost(uint32_t rx_ctrl) "rx_ctrl:0x%" PRIx32
+> +ethlite_pkt_size_too_big(uint64_t size) "size:0x%" PRIx64
+> -- 
+> 2.45.2
+> 

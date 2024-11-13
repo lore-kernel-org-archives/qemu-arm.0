@@ -1,385 +1,233 @@
-Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp558699njc;
-        Wed, 13 Nov 2024 10:01:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX7pwQh1bfeC6u5wiAO7eHescaLEnmvCl4KHXJfUV3CL6yz0SFQ3eexstwdUeU5Kg/IIbtHEbbo9Z7LVQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHjLqnbFQt+tMMZKyYoncyZSKIl7XkgdTd3DFhwMqTbLtOrDx6Gju0ZT5M6mmVS3dT3Ncya
-X-Received: by 2002:a05:6122:1827:b0:50c:9834:57b3 with SMTP id 71dfb90a1353d-51401bca168mr22729188e0c.4.1731520880589;
-        Wed, 13 Nov 2024 10:01:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731520880; cv=none;
+Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp563263njc;
+        Wed, 13 Nov 2024 10:06:07 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUsmKW9NaqjqKIcL80mbBRTKJ2Slok7F00xc0Nhgp2SV0YXw6Y/DHq4FL9CjmNL5VnBIl1CDIeEKbkH7w==@linaro.org
+X-Google-Smtp-Source: AGHT+IFPleBsMnBDkcwvlLCGxV4VDl4XW95ALbAIzNr80sJQWVGQS84nQF/4NXkZoGFCdHwxj+Y7
+X-Received: by 2002:a05:6122:2010:b0:4fc:e3c2:2c71 with SMTP id 71dfb90a1353d-51401ba19bcmr19781657e0c.2.1731521167094;
+        Wed, 13 Nov 2024 10:06:07 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1731521167; cv=pass;
         d=google.com; s=arc-20240605;
-        b=IYgugb4ABLm+X1N/F5ZBhjvccuDGD/HHa50UtZJQbaQwta/nZA/TVePWmQVoah719X
-         1CGzjdheOssaaL72tMgsdCvoSkKflo3DpQZs3StcMxTRlxw66hzoiS1qZ6WhH8+mzFXJ
-         FrVfOGd1U4W1+v2CjEzvrLQDLc8v0Gnq7JxjT3BGgfv8i/sVcnPUIGQqeW1U2q7QMJKN
-         TcnR20EmMe/3ItEZGiplXSBJINAy3z9KWrfyNEh2Y0SKdsfAEd7HT0gdA1OyGw3YlTth
-         0A0vCXVUsB6w9X7lCfKcQ4WqmpQhI2FWmY0MTlbqSh3M4AP5OCJrAxf0fIoECh6GlOaB
-         KcMw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        b=Orqim1JhF6s2OAZSnDlhIpVaJn+ZSxQKgv5ZZ9rMmHrJW40drKY5YanylFwTyDbCOo
+         HIkTF6WMKps3tkHZq7pSwRUFmT05UHH55Cxrlcxb7N9TUjxbgvSVJ3wjq/4E2GXY47hx
+         N13E4J4JuBXpCGodKN6EHBcV9bOMqQAxRSHEF030t72XPf32Qk7k5K0OpS2tPZ2SUFrc
+         rSCkB4UOMpzxkYM6e12KKdn7JErXEygotiC1tQCU/NdUzkMJqzHzhAtBZnFyODsa4Kdj
+         SzvLtsJ7VU4tdN5IBF7yILswHM31GUqdLS6c25ljdznUs1VXjS2BiV++VT/WbQmF161S
+         OO5g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=q96V3Vi1t766xQh7am498hmWQcF9Cd8a8uGYTFIL4t4=;
-        fh=9xI2US5/nziw7nwvPl54HstfPsyPRwl5GDSBFBLY3Gw=;
-        b=bFiVZPkWuW32rYYEY8b7MWGU0cvltcjazZcpOG5s0daarnirS8nmpysbwGXa3NOri6
-         jyE94HoaaUW1EVGcG/lCdyrSjJS1ahgOhP72wXttrVALaomKec1yuHmU62W7wH013rbK
-         rAXY6ER656AtschCSC06Ec1Ge7/you5prv30wawtFT3lr7MfoGHlIz/0kaE2iPTE749n
-         VVwfwHXnEsLMvJ/g/OU7I+Hm9CIc3/XMYAmPfJnkRkxNRuDTcHOszshyxFpLSk/07Ave
-         re38u0fAR7zuH9pFlCzMap+PlkyPYHj8E0E1p11u7lPeNZsO1C2rkIxYH7F25hkfRA7g
-         VuoQ==;
+        bh=F2SKCnrOCfLE7+Ng6CpN5RyOzm5Lde+Arkzq8Mo21J4=;
+        fh=P3nLyDh786l3ctw8dm+9PEHIFZHVfnO+PH1TnXcCVDI=;
+        b=jlT0O554ZHiYtY9SUY1zDH7nggHlfFizaCqwzXt+geGbNaNwzn/aYT9/J37F5h/PV9
+         rYhzB90sn+95xFs6h+/8o7G+1tjR4eztHq1UM77s/Xg2v4ImgOd2NEPgpEW20q2LsgpX
+         096xuShU52VwyRZ77C88dI2516NqTrt90SrH6hn6dHQI+MFXWBENdl/wl+ffZ9faPTgS
+         PaNS51q4L7MyW5fWbWXui47TjCk/sd7TSKQpoVdrKGusiuURM+sIHrMCfSRtDw1j6liz
+         j6yJm1a8cBRmCJuHfNqu2b/IBSddX0YShQ1Li21pKiT9gDKu0BYnafAyc5RASaTuQpTv
+         3ysQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/TokkbD";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=cnbmQet+;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-513f3181735si4983382e0c.95.2024.11.13.10.01.20
+        by mx.google.com with ESMTPS id 71dfb90a1353d-513f321c15fsi4726524e0c.129.2024.11.13.10.06.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Nov 2024 10:01:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Nov 2024 10:06:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/TokkbD";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=cnbmQet+;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tBHfY-0005G8-1A; Wed, 13 Nov 2024 13:00:44 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tBHkc-00078s-Vz; Wed, 13 Nov 2024 13:05:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tBHfW-0005Dp-I9
- for qemu-devel@nongnu.org; Wed, 13 Nov 2024 13:00:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tBHkb-00078b-N5; Wed, 13 Nov 2024 13:05:57 -0500
+Received: from mail-dm3nam02on20613.outbound.protection.outlook.com
+ ([2a01:111:f403:2405::613]
+ helo=NAM02-DM3-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tBHfU-0000B4-MW
- for qemu-devel@nongnu.org; Wed, 13 Nov 2024 13:00:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1731520839;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=q96V3Vi1t766xQh7am498hmWQcF9Cd8a8uGYTFIL4t4=;
- b=K/TokkbDjcn4VM7iNOA/nu3euWR3SEfUmhPw4jE3io8Yk0BAtIPkr8kkA2/IgMHVZuVI8W
- XPXpVhNxMdNza3Ueddp0b9Morxi8Iz5o9hiNh7+gB66QxrMR9wtEmp5vzubAE2FyJd457E
- gUOEy3gw9426jvJZhJgDfqJQSBfV2MM=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-114-Epae-bC6P2aNGg3EkYlsXQ-1; Wed, 13 Nov 2024 13:00:36 -0500
-X-MC-Unique: Epae-bC6P2aNGg3EkYlsXQ-1
-X-Mimecast-MFC-AGG-ID: Epae-bC6P2aNGg3EkYlsXQ
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4315af466d9so50135585e9.3
- for <qemu-devel@nongnu.org>; Wed, 13 Nov 2024 10:00:36 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731520835; x=1732125635;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=q96V3Vi1t766xQh7am498hmWQcF9Cd8a8uGYTFIL4t4=;
- b=ldY8nSLQ9NmgZi55MKug4CdtWsfDW8XaTofiHscTumcHVH+X1G15F2S6x3TyBVBICm
- 41FZTiG2J8s++SMDyS7PxUtEJ8zdbNB/GBF5IKMdSPhkMNsmOut78PawdkI4PBBRuJu2
- vyCCMNlZOq9uLFgamSzI/nUsjq+n03YzInRLUYhZnxGUkgQnRiVjMNMBqWFpTzlJT9ml
- TGAll5mgTAQd4ZKCxG0QqrG+4ZHKQDtJdrjBVdXTN6ku3ANYPNFLCvl5qhB1+KtOxRFj
- IzWzpANjCeTGUBuUMO5TEOogxA8BhzrGf4ccjRtzntnHGP4pufLKbpyErUeNAGnm1A/b
- JtLA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVSLFbvflXofCxexoFMMLE8GWVsJcUoKIB6wcyGzQmym444CwypoO69ogoWigTfUUxjK0xNo+nuGaJy@nongnu.org
-X-Gm-Message-State: AOJu0YxQ7H78xTnlnTDs+hnTs+rQ8DxxxL4+mRhmjzEfcdK0C9PtrRMi
- K0S1adXssG7ATQtPU8pLhRu6OhmXZc8CLcXHavG7VEb/HJVznSqaq5p/5cjyofnAoYdJUh3PUFK
- Rl1em41w1dafdAJeD8j8yS8w8msZcmbrobE0Mgu9+CR+xCXf3H0yL
-X-Received: by 2002:a05:600c:1f88:b0:425:80d5:b8b2 with SMTP id
- 5b1f17b1804b1-432b7509ac4mr191988675e9.16.1731520835551; 
- Wed, 13 Nov 2024 10:00:35 -0800 (PST)
-X-Received: by 2002:a05:600c:1f88:b0:425:80d5:b8b2 with SMTP id
- 5b1f17b1804b1-432b7509ac4mr191988155e9.16.1731520835154; 
- Wed, 13 Nov 2024 10:00:35 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-432d4788c2asm26150885e9.0.2024.11.13.10.00.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Nov 2024 10:00:34 -0800 (PST)
-Message-ID: <c3c3d515-1014-47fa-9c45-a7d61c7d4770@redhat.com>
-Date: Wed, 13 Nov 2024 19:00:32 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tBHkZ-0000ei-Ev; Wed, 13 Nov 2024 13:05:57 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=QdEwpBsQLh4XiJ2oiIwDYKxvY9MQD0IAA0UCIPAwzzQNI4k3Hfi8d4zQ+QeOZ+R8z4xwhPLlJz7HnXtVO2Yg6s2wvPdotpdOMtwJEf7j41I1OGvtK2xG86xzteVyHPYbPeNS6q50YTmjqWeXut4MIftfz+OUWLZukSdtOqe30pF+roBi5QE3gM3g9Zx2S2fnap0oyPlK0qHD/pMtt1Y05fHtx6AnZyNNPFrzslNtlCNJPVaVOEERgPOAWx7X02kE24V9Upk9u4dXnQXLBLgFQZmxKaq2vaQM455RVK/qsqcjUCAkSD45KMXH+wY10lFh7BomGkj4NNUNZ17G5U5k7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=F2SKCnrOCfLE7+Ng6CpN5RyOzm5Lde+Arkzq8Mo21J4=;
+ b=DsNqRJldDORpfNF7h9RfpTQomJkGuwzFIijDAVmwhyM8RfGfqF44/J/hv4OFrsbwHTqSJcC4K47toS6H5EMTkJLMzPDO30OgRf7tMfDO9nQ1GZglpKhZrfLr6Cx+NO9g+nIJGRpRD4uef68USpIoLLyqYBLAyr1j2pnVvXwXJ6p4crNlX21ppp5OKoYuVQDIR3QmPNp5p9aUziqELuaEIRfDMvgB2+svx5dtFHv5KEcjySfWZ8SzqZxZODBuLV8Vm5u1EF/yRE6blN+aMN9PD0A1I6eZzmy/QYgmtdkx3aQSF0FPiaB8/a0cAg/ZxdjcotC8Ft48Y/EGWkbhybEYug==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=F2SKCnrOCfLE7+Ng6CpN5RyOzm5Lde+Arkzq8Mo21J4=;
+ b=cnbmQet+08wCUhFccsWx9t7y3bwxnxlGtWoSFBnKO1ywSH89eB9E/NLFRf3fOjseYwvsjAtba///hz0k/eH1r0RcT9g4J6WrdN7H0vQLZHN1vax2W28AmsVv3ECqPCshoQ2ggZNH1VWxYHFjSoqus5yMcc4TJaF/Q3eBqBGrYg0pFf2V2AZ6BnNT2GsVBvl2flzjkdOqAd5IX9uwNzrZQJuuM3XLbjOQGr7US1iedyV7j0Wj1c8pRM0mQfXp0epDjc4jSylRh63tdNkiEyoW39FfX0WKYLUK8wR8kaHFN73OfOz1/f0TPhl6DQgjXauVic3OyILjeNPVP4Iz5ZfkKA==
+Received: from SJ0PR03CA0031.namprd03.prod.outlook.com (2603:10b6:a03:33e::6)
+ by SA3PR12MB7806.namprd12.prod.outlook.com (2603:10b6:806:31d::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8137.28; Wed, 13 Nov
+ 2024 18:05:46 +0000
+Received: from SJ1PEPF000023D7.namprd21.prod.outlook.com
+ (2603:10b6:a03:33e::4) by SJ0PR03CA0031.outlook.office365.com
+ (2603:10b6:a03:33e::6) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8137.28 via Frontend
+ Transport; Wed, 13 Nov 2024 18:05:46 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ SJ1PEPF000023D7.mail.protection.outlook.com (10.167.244.72) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8182.1 via Frontend Transport; Wed, 13 Nov 2024 18:05:46 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 13 Nov
+ 2024 10:05:19 -0800
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 13 Nov
+ 2024 10:05:18 -0800
+Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.6)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
+ Transport; Wed, 13 Nov 2024 10:05:17 -0800
+Date: Wed, 13 Nov 2024 10:05:16 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Eric Auger <eric.auger@redhat.com>
+CC: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>,
+ <jgg@nvidia.com>, <ddutile@redhat.com>, <linuxarm@huawei.com>,
+ <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
+ <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
 Subject: Re: [RFC PATCH 2/5] hw/arm/smmuv3: Add initial support for SMMUv3
  Nested device
-Content-Language: en-US
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
+Message-ID: <ZzTqXCFKV9s++C2N@Asurada-Nvidia>
 References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
  <20241108125242.60136-3-shameerali.kolothum.thodi@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20241108125242.60136-3-shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+ <00e8a5d6-c926-44bb-8d11-dab4ddc4820d@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <00e8a5d6-c926-44bb-8d11-dab4ddc4820d@redhat.com>
+X-NV-OnPremToCloud: ExternallySecured
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ1PEPF000023D7:EE_|SA3PR12MB7806:EE_
+X-MS-Office365-Filtering-Correlation-Id: 275e0605-80db-4d99-00ee-08dd040dcc38
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|36860700013|7416014|82310400026|376014; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?QJh+UgdG7foyRfXfYtBhCZOVieQPIvpsKJDcF16i59rBF3kdW1l7FMLTkXVp?=
+ =?us-ascii?Q?Sxoqu7l0BOaEI37QP8l7khD5z3Dr8lMs3j6V5MP0pppKxqNXHyj8Z95oPZ3N?=
+ =?us-ascii?Q?WXOjL/k4y3DtHakmzHi+vf0C0K3zzmb0V6VuLpVbLch19uV8fbAR7Ds9TmMy?=
+ =?us-ascii?Q?gLKe80yEby7LW6jGnGpKveDB9eNgEU0P9bZrqTUevyPw/jczt8K5tOmHSo42?=
+ =?us-ascii?Q?Yk/EfakOg8LH22FiE+YmqeAfQvjTAbilQFMNjqCrhdEkP8yAAFMjZAZhRMEc?=
+ =?us-ascii?Q?jtCw6InrztOPC7Q1YHJrDAQZqknMSfdponyagGtguEo3Y3dfMLLL4VkrixPE?=
+ =?us-ascii?Q?NbksfXJDA4ack8YyO5PhF8aSbfgPqBYYlvVVVnYU/UTdTbpCEbsNohboHCeV?=
+ =?us-ascii?Q?WG6XDZsDZLMUazLSbAQvM6YeUSAJ8BdRfEVPaB/JyXO5NEonUX271hLo2IwN?=
+ =?us-ascii?Q?zp9J+ps4yBpRPCoLq40wIAUOKU4ugZvJcEQwH5ggcaOaVk+61Hhuo3s5f+/b?=
+ =?us-ascii?Q?2/LcrSNa3XbzTpH5ZZS0QsDCOHWARO2hJrFF+BCZaYYtBGMr+Zrr0HqEmS+j?=
+ =?us-ascii?Q?uiw9TDnR5p9WRMvCuCdw/FRS0Is+Yn5/7Z66dDK9YXce6pRP6GKMseXA2QSn?=
+ =?us-ascii?Q?JmA2goH9FvodGMyDaJxMER5jH/QaikKj3rUVWZi2C5Fs6+QcDZGI28y1SR68?=
+ =?us-ascii?Q?chUoPk06SPXr6yr65ugSsRvy+EMv35/lGKLQz09qx5Ub1mVb37+OarLoB53Z?=
+ =?us-ascii?Q?FtW9a7j5VMeVXRf0mX7AI99/JOekZg9COMkwxXcZ3A4OuwRR9/gjEsdGA1xt?=
+ =?us-ascii?Q?i6HNR7/NM2t1vzNhbsq+AD4CNrGTJpuNdYoIobjubq7sfow8DBZUr/zXPUQ/?=
+ =?us-ascii?Q?nEpV55PAB3lSnqkHMVWnEL1jciIq1NWB8xWkgaN497hbzmpRjkqG/tnl/XxJ?=
+ =?us-ascii?Q?tc16S6shREaWx+a0pw8hplor4CXZt0DChiX2l6T0QdxXRxY/Aseoezkl89da?=
+ =?us-ascii?Q?FYTCQGUDc/z1n5OWbLTwdQKI0Um6Sj8utI5DSi9caHrKtnQyERfxRaZpCa2a?=
+ =?us-ascii?Q?ohB+dOUYLi7y+YBmWm46uCgTwARPN8MTxtMjA1wrtTIbTHlrbmk9+wSnx/uE?=
+ =?us-ascii?Q?L1lTOogCS0FNbIJHcj/wty9P6/XRe3pBRJvLYhWuAIIkOszV8JoTWXSx3PcA?=
+ =?us-ascii?Q?VCJLxnJOE4lNLpz5o5aUKN/bLu95hyZF+fwiQUAWIWe0N/+XlaQ/evo8HiFG?=
+ =?us-ascii?Q?JrsxcDYdVWMAjqniPVSRFpYOTiCE+FptqLRqA+FCyRK3WeRw5LpnQFtGitCb?=
+ =?us-ascii?Q?/2bZN7RwwwDWlvDsnPsSuPwlbbNekh13FgYyjCt6oZOH2SM5Z/5884FRjrc6?=
+ =?us-ascii?Q?cbESKEpSPjW8jEpfZpHodJXl7SGw3vQ5ehq8Zwqsvm7wxHe2AQ=3D=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(1800799024)(36860700013)(7416014)(82310400026)(376014); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2024 18:05:46.1911 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 275e0605-80db-4d99-00ee-08dd040dcc38
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000023D7.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB7806
+Received-SPF: softfail client-ip=2a01:111:f403:2405::613;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM02-DM3-obe.outbound.protection.outlook.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.119,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TWCxipUIK89q
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OaOvaxk3wGqw
 
+Hi Eric,
 
+On Wed, Nov 13, 2024 at 06:12:15PM +0100, Eric Auger wrote:
+> On 11/8/24 13:52, Shameer Kolothum wrote:
+> > @@ -181,6 +181,7 @@ static const MemMapEntry base_memmap[] = {
+> >      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+> >      [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
+> >      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+> > +    [VIRT_SMMU_NESTED] =        { 0x0b000000, 0x01000000 },
 
-On 11/8/24 13:52, Shameer Kolothum wrote:
-> Based on SMMUv3 as a parent device, add a user-creatable
-> smmuv3-nested device. Subsequent patches will add support to
-> specify a PCI bus for this device.
->
-> Currently only supported for "virt", so hook up the sybus mem & irq
-> for that  as well.
->
-> No FDT support is added for now.
->
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
->  hw/arm/smmuv3.c         | 34 ++++++++++++++++++++++++++++++++++
->  hw/arm/virt.c           | 31 +++++++++++++++++++++++++++++--
->  hw/core/sysbus-fdt.c    |  1 +
->  include/hw/arm/smmuv3.h | 15 +++++++++++++++
->  include/hw/arm/virt.h   |  6 ++++++
->  5 files changed, 85 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 2101031a8f..0033eb8125 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -2201,6 +2201,19 @@ static void smmu_realize(DeviceState *d, Error **errp)
->      smmu_init_irq(s, dev);
->  }
->  
-> +static void smmu_nested_realize(DeviceState *d, Error **errp)
-> +{
-> +    SMMUv3NestedState *s_nested = ARM_SMMUV3_NESTED(d);
-> +    SMMUv3NestedClass *c = ARM_SMMUV3_NESTED_GET_CLASS(s_nested);
-> +    Error *local_err = NULL;
-> +
-> +    c->parent_realize(d, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
-> +}
-> +
->  static const VMStateDescription vmstate_smmuv3_queue = {
->      .name = "smmuv3_queue",
->      .version_id = 1,
-> @@ -2299,6 +2312,18 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
->      device_class_set_props(dc, smmuv3_properties);
->  }
->  
-> +static void smmuv3_nested_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    SMMUv3NestedClass *c = ARM_SMMUV3_NESTED_CLASS(klass);
-> +
-> +    dc->vmsd = &vmstate_smmuv3;
-> +    device_class_set_parent_realize(dc, smmu_nested_realize,
-> +                                    &c->parent_realize);
-> +    dc->user_creatable = true;
-this may be set at the very end of the series eventually.
+> I agree with Mostafa that the _NESTED terminology may not be the best
+> choice.
+> The motivation behind that multi-instance attempt, as introduced in
+> https://lore.kernel.org/all/ZEcT%2F7erkhHDaNvD@Asurada-Nvidia/
+> was:
+> - SMMUs with different feature bits
+> - support of VCMDQ HW extension for SMMU CMDQ
+> - need for separate S1 invalidation paths
+> 
+> If I understand correctly this is mostly wanted for VCMDQ handling? if
+> this is correct we may indicate that somehow in the terminology.
+> 
+> If I understand correctly VCMDQ terminology is NVidia specific while
+> ECMDQ is the baseline (?).
 
-Eric
-> +    dc->hotpluggable = false;
-> +}
-> +
->  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
->                                        IOMMUNotifierFlag old,
->                                        IOMMUNotifierFlag new,
-> @@ -2337,6 +2362,14 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
->      imrc->notify_flag_changed = smmuv3_notify_flag_changed;
->  }
->  
-> +static const TypeInfo smmuv3_nested_type_info = {
-> +    .name          = TYPE_ARM_SMMUV3_NESTED,
-> +    .parent        = TYPE_ARM_SMMUV3,
-> +    .instance_size = sizeof(SMMUv3NestedState),
-> +    .class_size    = sizeof(SMMUv3NestedClass),
-> +    .class_init    = smmuv3_nested_class_init,
-> +};
-> +
->  static const TypeInfo smmuv3_type_info = {
->      .name          = TYPE_ARM_SMMUV3,
->      .parent        = TYPE_ARM_SMMU,
-> @@ -2355,6 +2388,7 @@ static const TypeInfo smmuv3_iommu_memory_region_info = {
->  static void smmuv3_register_types(void)
->  {
->      type_register(&smmuv3_type_info);
-> +    type_register(&smmuv3_nested_type_info);
->      type_register(&smmuv3_iommu_memory_region_info);
->  }
->  
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 780bcff77c..38075f9ab2 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -181,6 +181,7 @@ static const MemMapEntry base_memmap[] = {
->      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
->      [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
->      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-> +    [VIRT_SMMU_NESTED] =        { 0x0b000000, 0x01000000 },
->      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
->      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
->      [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
-> @@ -226,6 +227,7 @@ static const int a15irqmap[] = {
->      [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
->      [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
->      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
-> +    [VIRT_SMMU_NESTED] = 200,
->  };
->  
->  static void create_randomness(MachineState *ms, const char *node)
-> @@ -2883,10 +2885,34 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
->                                          DeviceState *dev, Error **errp)
->  {
->      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
->  
-> -    if (vms->platform_bus_dev) {
-> -        MachineClass *mc = MACHINE_GET_CLASS(vms);
-> +    /* For smmuv3-nested devices we need to set the mem & irq */
-> +    if (device_is_dynamic_sysbus(mc, dev) &&
-> +        object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_NESTED)) {
-> +        hwaddr base = vms->memmap[VIRT_SMMU_NESTED].base;
-> +        int irq =  vms->irqmap[VIRT_SMMU_NESTED];
-> +
-> +        if (vms->smmu_nested_count >= MAX_SMMU_NESTED) {
-> +            error_setg(errp, "smmuv3-nested max count reached!");
-> +            return;
-> +        }
-> +
-> +        base += (vms->smmu_nested_count * SMMU_IO_LEN);
-> +        irq += (vms->smmu_nested_count * NUM_SMMU_IRQS);
->  
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-> +        for (int i = 0; i < 4; i++) {
-> +            sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-> +                               qdev_get_gpio_in(vms->gic, irq + i));
-> +        }
-> +        if (vms->iommu != VIRT_IOMMU_SMMUV3_NESTED) {
-> +            vms->iommu = VIRT_IOMMU_SMMUV3_NESTED;
-> +        }
-> +        vms->smmu_nested_count++;
-> +    }
-> +
-> +    if (vms->platform_bus_dev) {
->          if (device_is_dynamic_sysbus(mc, dev)) {
->              platform_bus_link_device(PLATFORM_BUS_DEVICE(vms->platform_bus_dev),
->                                       SYS_BUS_DEVICE(dev));
-> @@ -3067,6 +3093,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
-> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3_NESTED);
->  #ifdef CONFIG_TPM
->      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
->  #endif
-> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
-> index eebcd28f9a..0f0d0b3e58 100644
-> --- a/hw/core/sysbus-fdt.c
-> +++ b/hw/core/sysbus-fdt.c
-> @@ -489,6 +489,7 @@ static const BindingEntry bindings[] = {
->  #ifdef CONFIG_LINUX
->      TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node),
->      TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
-> +    TYPE_BINDING("arm-smmuv3-nested", no_fdt_node),
->      VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
->  #endif
->  #ifdef CONFIG_TPM
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index d183a62766..87e628be7a 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -84,6 +84,21 @@ struct SMMUv3Class {
->  #define TYPE_ARM_SMMUV3   "arm-smmuv3"
->  OBJECT_DECLARE_TYPE(SMMUv3State, SMMUv3Class, ARM_SMMUV3)
->  
-> +#define TYPE_ARM_SMMUV3_NESTED   "arm-smmuv3-nested"
-> +OBJECT_DECLARE_TYPE(SMMUv3NestedState, SMMUv3NestedClass, ARM_SMMUV3_NESTED)
-> +
-> +struct SMMUv3NestedState {
-> +    SMMUv3State smmuv3_state;
-> +};
-> +
-> +struct SMMUv3NestedClass {
-> +    /*< private >*/
-> +    SMMUv3Class smmuv3_class;
-> +    /*< public >*/
-> +
-> +    DeviceRealize parent_realize;
-> +};
-> +
->  #define STAGE1_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S1P)
->  #define STAGE2_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S2P)
->  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 46f48fe561..50e47a4ef3 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -50,6 +50,9 @@
->  /* MMIO region size for SMMUv3 */
->  #define SMMU_IO_LEN 0x20000
->  
-> +/* Max supported nested SMMUv3 */
-> +#define MAX_SMMU_NESTED 128
-> +
->  enum {
->      VIRT_FLASH,
->      VIRT_MEM,
-> @@ -62,6 +65,7 @@ enum {
->      VIRT_GIC_ITS,
->      VIRT_GIC_REDIST,
->      VIRT_SMMU,
-> +    VIRT_SMMU_NESTED,
->      VIRT_UART0,
->      VIRT_MMIO,
->      VIRT_RTC,
-> @@ -92,6 +96,7 @@ enum {
->  typedef enum VirtIOMMUType {
->      VIRT_IOMMU_NONE,
->      VIRT_IOMMU_SMMUV3,
-> +    VIRT_IOMMU_SMMUV3_NESTED,
->      VIRT_IOMMU_VIRTIO,
->  } VirtIOMMUType;
->  
-> @@ -155,6 +160,7 @@ struct VirtMachineState {
->      bool mte;
->      bool dtb_randomness;
->      bool second_ns_uart_present;
-> +    int smmu_nested_count;
->      OnOffAuto acpi;
->      VirtGICType gic_version;
->      VirtIOMMUType iommu;
+VCMDQ makes a multi-vSMMU-instance design a hard requirement, yet
+the point (3) for separate invalidation paths also matters. Jason
+suggested VMM in base case to create multi vSMMU instances as the
+kernel doc mentioned here:
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/Documentation/userspace-api/iommufd.rst#n84
 
+W.r.t naming, maybe something related to "hardware-accelerated"?
+
+Thanks
+Nicolin

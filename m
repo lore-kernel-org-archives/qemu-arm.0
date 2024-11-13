@@ -1,116 +1,142 @@
-Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp515293njc;
-        Wed, 13 Nov 2024 09:02:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV8uFCygH7Lb3jdGRlKAbXare0P3/0g1acX6a/pzb+rtsK/ksNd0PWhjsn/RsBL2leVHfmpjTMTT8aDHg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF5axmQRWu6aa54Flue+dnc79biHZFZ0+6zWGtD1o4ELfhpE+T7Eh+UjrpHOMT4N7T2NyCy
-X-Received: by 2002:ac8:748c:0:b0:461:48f9:425b with SMTP id d75a77b69052e-46312180ccfmr232054571cf.10.1731517358562;
-        Wed, 13 Nov 2024 09:02:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731517358; cv=none;
+Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp524714njc;
+        Wed, 13 Nov 2024 09:12:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVjve3eIBQCMmLLPSeGrFZSjRuo55TmAraRRWMWHZoFFXmsHjxeXLSCDnVZ8tLFLl5kGD2YTdJt/XVfAA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFIyMflpadZHXWM15ekKCO+nQLaUCx99dZtmrevPyKld24+eVaH9hWjpXgPxynrycPhi2+n
+X-Received: by 2002:a05:6830:600d:b0:718:99a0:2168 with SMTP id 46e09a7af769-71a1c1de347mr18393005a34.4.1731517973611;
+        Wed, 13 Nov 2024 09:12:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731517973; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZDGkb/N6Tf4dVMTWmC61IVgJnrh/s72MkUWQG4xQkbAClHr8XdlbQV50eP2O8dKRlb
-         wYWeOsWC4iKRtaHNKrPceSbCbxUwFSQsIhUaCeJ8S86nxCTW31ATPauI70CGB6tXwx02
-         3Eunns2XUi+6pFFofzjCNqcoOOAndpA9RrfIZAjxZ5HXZ8PYgoqeVLxq0XZMKbQGQNQk
-         aWvuHbYc/wDLZo+w2ldT8Z6qXQwUdn1d6SyeI8HMxmDbhlAyfWVrWevN4oZu0dTe11ZV
-         NniwynxvwXL2oPZZHtpGoUgtg7cjQ3nIpiDnSRMiFPcraXSxptyoVt75qvTw9rCaUKQx
-         XO+g==
+        b=iudBEMdnOtXZqsvExapwOAgkua81yQcOeOZQtlBTL3HF2DmX4hj1hMuAPl+3uT3Ep3
+         6dOnPLIAyLOHDKxKn8IzNFXoT7PjZUaohuswM6LyUbtWn/7aIVX+siGrPam2pJlXTlkU
+         GvU2ePKvNsUySdzNZAk5ZD9Dz9WV9wKdnmLNEg0YoHlW7GUokQrzJbYH2lX8neqYQ8a+
+         QGdIDMsLJYY0I0x8K7SGHnTlJt55cNp/kVjIzpY8qKCSN0RKIpa/UlxK34Rh74q9hwO9
+         nV2V+0bQdCpbaDuGSIDLzKIHIay1qsIJtdlKzYrCTGkkUaAY6uw+43G4x0Yjy0UwMpHP
+         54/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WSp7SVLPpgH6DgPCNIeqyEN0q4+H1pUqmrEd5VrzYU0=;
-        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=bQBbAG7Kahw2t7+jNNPvKiixv+7AHRqUHetre58kcGetREH7cG2dXWKFNml688oTGV
-         F1pXM1V6zM8u0RDWJh1v22BMOssaU+WwvzsddEDAcIB8J/OanmKLrV4Ahnu4OnAvA7ck
-         RR+xoFDW5c6gDgNEsze+E5vvW/tqBl1+LtGN8UVpWg2EcbKEhPXfZLFFOVDi4ahXoi6C
-         FSf5MPmTcJC0hjkze/XN+51phef7+nrNYpyGwJLSRltuR6xPCyb4ecDk90yNEAbfppyn
-         7LA05VlE1KKT4fxF1LbtNMhA3puTZTo+laZJW0JwAKWfxNlT/Ub2ZdPGUVxjZ1j7e1Yg
-         acWA==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=n6koPpJJ8nkCB/30IGHQUexkuxL1i0yyX86NOcLiFAE=;
+        fh=POlJ5isSJTu15KqCnhbdXwRC9/fN6lTLc5SDTcwW9l0=;
+        b=XfM0VtZhkIJDGe/KaQKNUP52izNo/ejdk1Fq8VPOAR9PtQxuIy6p1jJ28jOaxRns+8
+         FZhKJ06ycbgd0c5CD5Eu6YxtLjMP2mHS5ZQZ4l7CfNJ4yZBaXshPg9oIXwG1RxWO9Frs
+         PypRS0xqWYzzq/zc5M38ZFUMNKxWmfAGHf0n67tPjPFPkq2pLa10Vv1HAwwVbbnT2zmc
+         ZCF8GZzXaxOT7vf6WW8OVBi3BRinwa+YWbDcQq0n/xK0aqUdLetN+EeHjYN2zpuvRjpj
+         eio6zIhYciScGK9z+SMBIh5f1w8omkjWrikewTw1Ihv4XccbFbJkARNxl/UybFR07POQ
+         MIEw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xXIWfRER;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XipLcupi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-462ff680b82si163238491cf.586.2024.11.13.09.02.38
+        by mx.google.com with ESMTPS id ada2fe7eead31-4ad4bfd640esi505816137.80.2024.11.13.09.12.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Nov 2024 09:02:38 -0800 (PST)
+        Wed, 13 Nov 2024 09:12:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xXIWfRER;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XipLcupi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBGkI-00030s-An; Wed, 13 Nov 2024 12:01:34 -0500
+	id 1tBGuu-0007FZ-Tc; Wed, 13 Nov 2024 12:12:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tBGkF-0002yB-6k
- for qemu-arm@nongnu.org; Wed, 13 Nov 2024 12:01:31 -0500
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tBGkC-0001wF-O6
- for qemu-arm@nongnu.org; Wed, 13 Nov 2024 12:01:30 -0500
-Received: by mail-pg1-x52d.google.com with SMTP id
- 41be03b00d2f7-7ee020ec76dso5335434a12.3
- for <qemu-arm@nongnu.org>; Wed, 13 Nov 2024 09:01:27 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1731517286; x=1732122086; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=WSp7SVLPpgH6DgPCNIeqyEN0q4+H1pUqmrEd5VrzYU0=;
- b=xXIWfRER7wKlciI1WoGKrR1kAbPVpbfDPNthqpzc417nfrCbmtmxy6lwXc6AsGtwzY
- Co2QrcCn58xWS0uBM6qIyOzix857TKpJFBbZarx2btjSqBjqvWkEOUCIopLA2/LJjEFz
- SLX4gt3Sru89m9XT/JDFlAao50t90HwYWWAXZkj+IG7vCzGPtdn04eoAJc5hf1sW2zy3
- qudyltJTOEL2x0Jt9G6QD3hGtPEcDwBrPPR6xjyjbBo8X3uR/D9TC5dOSNa7nlMQpUC0
- oFX/TnU7gE8HU7cw7sbvo+0z+Kz+6E7iBP/6JjLdY0kCkunWCJa6UL+k+G9LwYaUuNEp
- PSFA==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tBGut-0007FE-E0
+ for qemu-arm@nongnu.org; Wed, 13 Nov 2024 12:12:31 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tBGur-000360-Co
+ for qemu-arm@nongnu.org; Wed, 13 Nov 2024 12:12:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1731517946;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=n6koPpJJ8nkCB/30IGHQUexkuxL1i0yyX86NOcLiFAE=;
+ b=XipLcupiQWqqjJzbpHZh4LxxpOZwfURgh0ktrB1/NJcZDx7admz1+a6+uwpyULuamKWS2e
+ i5w/JVC6iSjgDyfSfjFgjVl4SZEVP8gRAfViitN/90/UaI+2BD3twidyV49Ef8hHc2vkRb
+ vwsmJwaSd44ehz9tuhsSlRRKuXgWTD0=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-203-XKF2QM-eOtu8SWMchpVuRg-1; Wed, 13 Nov 2024 12:12:20 -0500
+X-MC-Unique: XKF2QM-eOtu8SWMchpVuRg-1
+X-Mimecast-MFC-AGG-ID: XKF2QM-eOtu8SWMchpVuRg
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-6cbe77eeeadso103204686d6.0
+ for <qemu-arm@nongnu.org>; Wed, 13 Nov 2024 09:12:20 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731517286; x=1732122086;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1731517940; x=1732122740;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=WSp7SVLPpgH6DgPCNIeqyEN0q4+H1pUqmrEd5VrzYU0=;
- b=H8H22sPoII3jBWUNsFmQuW2RmIl74R5NE5vGsuSQpDgzFQyUcnjt3Ny6HLSeu+unVv
- s6ajT/ZMGGuBO+3uokU+jWNn0f7A+Tl96Y5hF2GnBqU4AffdXJcn0PHD3SzZubXB6mkc
- KufhNAOibn8FhqElJOH1G5D86u4LbZfiTBffciSCEglCuj7l2LuPh9Slr0SSZ6BjT8MA
- aJcDjiLjJwBv6NGg4pV652ZN8XouQuniu1ekhZRwIPXN6MZmA/WHJhMxJ+UuPNqJmOtK
- b1k73uIqNTl9ucnOHp5+sh7McRon3anehHR+lWaAYk7lycrlRxxKY5OP1te/V+VFYjoZ
- HglQ==
-X-Gm-Message-State: AOJu0YzB4JgRBPICDje+dnoV6mgG28Hd7rDBUbRjpGLQcqJHRB6CumDF
- WlcKtP8aE4vO1wXO46yBRBmZPcoTUma8DlZGdZVpGnmEV29b+8ha2/PRPGo5NvcUHHxyT3XBCb2
- o
-X-Received: by 2002:a05:6a20:9150:b0:1db:eeb3:d06d with SMTP id
- adf61e73a8af0-1dc229b02e9mr27211065637.21.1731517286187; 
- Wed, 13 Nov 2024 09:01:26 -0800 (PST)
-Received: from stoup.. (wsip-24-120-228-34.lv.lv.cox.net. [24.120.228.34])
+ bh=n6koPpJJ8nkCB/30IGHQUexkuxL1i0yyX86NOcLiFAE=;
+ b=l1rbMNNB0O5HMbm2oHXNNLjVBSDQ11VRM4HT/df0Ia0MHGNVbzb+jlQeJlc2shvkwI
+ EpMGeVZ44DxwftVJFaPDrFcwa8HbMs3nrJd83YYsTotUx8mxt3DMhQTVUHUzryx3WF3f
+ Pwwl5mm9NVMQgvJcRWUHhLKqb7DDz7VDpt2pvpVh1sHgg0d0b8AUPSeyJy7GWMP8baDe
+ QU6hYeQleNvtKtwqjlS5y+f064VzgpEg/seseig4yPsRqtuJieMolnKrAalxZ27lnI5M
+ SYvKRZcNLWkVMu8iLwISBk56Cg0wTILyChBy8m/Fpl/orvkyHwSun+nicWBEZy86QXI9
+ CNJA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXwBmz+G12ovJVI6bYGjAXEDczEOlQPy/P3gzgOsGR5JqxCvMVE5+6Ojbk6wpW/CHAzSlMdZq2MVg==@nongnu.org
+X-Gm-Message-State: AOJu0Ywb8f7sXvgaXIQvHkTMTbPCW9zXYUdpHJH72HpuznLXuG0lTp9X
+ SYniIw6vuyEnASMnmfGfgB7nkFxagWZKWoONeZD3ucVyi2Y8ANFPR1iL3T9oMjOE19sNvr7tKvJ
+ GJKpy4Zdh+5lPFDezHn/q5QB1C2yC3P9IJzXFZib+aDoFZeosEg==
+X-Received: by 2002:a05:6214:5884:b0:6cb:fb6b:841a with SMTP id
+ 6a1803df08f44-6d39e101c0amr251762816d6.6.1731517940264; 
+ Wed, 13 Nov 2024 09:12:20 -0800 (PST)
+X-Received: by 2002:a05:6214:5884:b0:6cb:fb6b:841a with SMTP id
+ 6a1803df08f44-6d39e101c0amr251762426d6.6.1731517939911; 
+ Wed, 13 Nov 2024 09:12:19 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-7f41f5df1cdsm12629166a12.39.2024.11.13.09.01.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 13 Nov 2024 09:01:25 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH for-9.2] linux-user/arm: Select vdso for be8 and be32 modes
-Date: Wed, 13 Nov 2024 09:01:24 -0800
-Message-ID: <20241113170124.1944984-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ 6a1803df08f44-6d3961ecc85sm86772866d6.39.2024.11.13.09.12.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 13 Nov 2024 09:12:19 -0800 (PST)
+Message-ID: <00e8a5d6-c926-44bb-8d11-dab4ddc4820d@redhat.com>
+Date: Wed, 13 Nov 2024 18:12:15 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 2/5] hw/arm/smmuv3: Add initial support for SMMUv3
+ Nested device
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
+ ddutile@redhat.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
+ jiangkunkun@huawei.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <20241108125242.60136-3-shameerali.kolothum.thodi@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20241108125242.60136-3-shameerali.kolothum.thodi@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: n-ZDuzDoN85f7_NNcJqfyt2sQd_hNN1VTWNLLi55o6o_1731517940
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.119,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.738,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,197 +149,264 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X1Kjs9x0Kga/
+X-TUID: asXq0FkEq44q
 
-In be8 mode, instructions are little-endian.
-In be32 mode, instructions are big-endian.
+Hi Shameer,
+On 11/8/24 13:52, Shameer Kolothum wrote:
+> Based on SMMUv3 as a parent device, add a user-creatable
+> smmuv3-nested device. Subsequent patches will add support to
+> specify a PCI bus for this device.
+>
+> Currently only supported for "virt", so hook up the sybus mem & irq
+> for that  as well.
+>
+> No FDT support is added for now.
+>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+>  hw/arm/smmuv3.c         | 34 ++++++++++++++++++++++++++++++++++
+>  hw/arm/virt.c           | 31 +++++++++++++++++++++++++++++--
+>  hw/core/sysbus-fdt.c    |  1 +
+>  include/hw/arm/smmuv3.h | 15 +++++++++++++++
+>  include/hw/arm/virt.h   |  6 ++++++
+>  5 files changed, 85 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 2101031a8f..0033eb8125 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -2201,6 +2201,19 @@ static void smmu_realize(DeviceState *d, Error **errp)
+>      smmu_init_irq(s, dev);
+>  }
+>  
+> +static void smmu_nested_realize(DeviceState *d, Error **errp)
+> +{
+> +    SMMUv3NestedState *s_nested = ARM_SMMUV3_NESTED(d);
+nit: s/s_nested/ns or just s?
+> +    SMMUv3NestedClass *c = ARM_SMMUV3_NESTED_GET_CLASS(s_nested);
+> +    Error *local_err = NULL;
+> +
+> +    c->parent_realize(d, &local_err);
+I think it is safe to use errp directly here.
+> +    if (local_err) {
+> +        error_propagate(errp, local_err);
+> +        return;
+> +    }
+> +}
+> +
+>  static const VMStateDescription vmstate_smmuv3_queue = {
+>      .name = "smmuv3_queue",
+>      .version_id = 1,
+> @@ -2299,6 +2312,18 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
+>      device_class_set_props(dc, smmuv3_properties);
+>  }
+>  
+> +static void smmuv3_nested_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    SMMUv3NestedClass *c = ARM_SMMUV3_NESTED_CLASS(klass);
+> +
+> +    dc->vmsd = &vmstate_smmuv3;
+> +    device_class_set_parent_realize(dc, smmu_nested_realize,
+> +                                    &c->parent_realize);
+> +    dc->user_creatable = true;
+> +    dc->hotpluggable = false;
+> +}
+> +
+>  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+>                                        IOMMUNotifierFlag old,
+>                                        IOMMUNotifierFlag new,
+> @@ -2337,6 +2362,14 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+>      imrc->notify_flag_changed = smmuv3_notify_flag_changed;
+>  }
+>  
+> +static const TypeInfo smmuv3_nested_type_info = {
+> +    .name          = TYPE_ARM_SMMUV3_NESTED,
+> +    .parent        = TYPE_ARM_SMMUV3,
+> +    .instance_size = sizeof(SMMUv3NestedState),
+> +    .class_size    = sizeof(SMMUv3NestedClass),
+> +    .class_init    = smmuv3_nested_class_init,
+> +};
+> +
+>  static const TypeInfo smmuv3_type_info = {
+>      .name          = TYPE_ARM_SMMUV3,
+>      .parent        = TYPE_ARM_SMMU,
+> @@ -2355,6 +2388,7 @@ static const TypeInfo smmuv3_iommu_memory_region_info = {
+>  static void smmuv3_register_types(void)
+>  {
+>      type_register(&smmuv3_type_info);
+> +    type_register(&smmuv3_nested_type_info);
+>      type_register(&smmuv3_iommu_memory_region_info);
+>  }
+>  
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 780bcff77c..38075f9ab2 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -181,6 +181,7 @@ static const MemMapEntry base_memmap[] = {
+>      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+>      [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+> +    [VIRT_SMMU_NESTED] =        { 0x0b000000, 0x01000000 },
+I agree with Mostafa that the _NESTED terminology may not be the best
+choice.
+The motivation behind that multi-instance attempt, as introduced in
+https://lore.kernel.org/all/ZEcT%2F7erkhHDaNvD@Asurada-Nvidia/
+was:
+- SMMUs with different feature bits
+- support of VCMDQ HW extension for SMMU CMDQ
+- need for separate S1 invalidation paths
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2333
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
-Based-on: 20241112203757.804320-1-richard.henderson@linaro.org
-("linux-user: Fix elf load and vdso alignment")
----
- linux-user/elfload.c                       |  31 +++++++++++++++++----
- linux-user/arm/Makefile.vdso               |   9 ++++--
- linux-user/arm/meson.build                 |  13 +++++++--
- linux-user/arm/vdso-be32.so                | Bin 0 -> 2648 bytes
- linux-user/arm/{vdso-be.so => vdso-be8.so} | Bin 2648 -> 2648 bytes
- 5 files changed, 41 insertions(+), 12 deletions(-)
- create mode 100755 linux-user/arm/vdso-be32.so
- rename linux-user/arm/{vdso-be.so => vdso-be8.so} (95%)
+If I understand correctly this is mostly wanted for VCMDQ handling? if
+this is correct we may indicate that somehow in the terminology.
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index ef9cffbe4a..471a384b22 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -659,6 +659,23 @@ static const char *get_elf_platform(void)
- #undef END
- }
- 
-+#if TARGET_BIG_ENDIAN
-+#include "elf.h"
-+#include "vdso-be8.c.inc"
-+#include "vdso-be32.c.inc"
-+
-+static const VdsoImageInfo *vdso_image_info(uint32_t elf_flags)
-+{
-+    return (EF_ARM_EABI_VERSION(elf_flags) >= EF_ARM_EABI_VER4
-+            && (elf_flags & EF_ARM_BE8)
-+            ? &vdso_be8_image_info
-+            : &vdso_be32_image_info);
-+}
-+#define vdso_image_info vdso_image_info
-+#else
-+# define VDSO_HEADER  "vdso-le.c.inc"
-+#endif
-+
- #else
- /* 64 bit ARM definitions */
- 
-@@ -958,14 +975,14 @@ const char *elf_hwcap2_str(uint32_t bit)
- 
- #undef GET_FEATURE_ID
- 
--#endif /* not TARGET_AARCH64 */
--
- #if TARGET_BIG_ENDIAN
- # define VDSO_HEADER  "vdso-be.c.inc"
- #else
- # define VDSO_HEADER  "vdso-le.c.inc"
- #endif
- 
-+#endif /* not TARGET_AARCH64 */
-+
- #endif /* TARGET_ARM */
- 
- #ifdef TARGET_SPARC
-@@ -3524,12 +3541,14 @@ static void load_elf_interp(const char *filename, struct image_info *info,
-     load_elf_image(filename, &src, info, &ehdr, NULL);
- }
- 
-+#ifndef vdso_image_info
- #ifdef VDSO_HEADER
- #include VDSO_HEADER
--#define  vdso_image_info()  &vdso_image_info
-+#define  vdso_image_info(flags)  &vdso_image_info
- #else
--#define  vdso_image_info()  NULL
--#endif
-+#define  vdso_image_info(flags)  NULL
-+#endif /* VDSO_HEADER */
-+#endif /* vdso_image_info */
- 
- static void load_elf_vdso(struct image_info *info, const VdsoImageInfo *vdso)
- {
-@@ -3860,7 +3879,7 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
-      * Load a vdso if available, which will amongst other things contain the
-      * signal trampolines.  Otherwise, allocate a separate page for them.
-      */
--    const VdsoImageInfo *vdso = vdso_image_info();
-+    const VdsoImageInfo *vdso = vdso_image_info(info->elf_flags);
-     if (vdso) {
-         load_elf_vdso(&vdso_info, vdso);
-         info->vdso = vdso_info.load_bias;
-diff --git a/linux-user/arm/Makefile.vdso b/linux-user/arm/Makefile.vdso
-index 8a24b0e534..ede489e236 100644
---- a/linux-user/arm/Makefile.vdso
-+++ b/linux-user/arm/Makefile.vdso
-@@ -3,15 +3,18 @@ include $(BUILD_DIR)/tests/tcg/arm-linux-user/config-target.mak
- SUBDIR = $(SRC_PATH)/linux-user/arm
- VPATH += $(SUBDIR)
- 
--all: $(SUBDIR)/vdso-be.so $(SUBDIR)/vdso-le.so
-+all: $(SUBDIR)/vdso-be8.so $(SUBDIR)/vdso-be32.so $(SUBDIR)/vdso-le.so
- 
- # Adding -use-blx disables unneeded interworking without actually using blx.
- LDFLAGS = -nostdlib -shared -Wl,-use-blx -Wl,-z,max-page-size=4096 \
- 	  -Wl,-h,linux-vdso.so.1 -Wl,--build-id=sha1 \
- 	  -Wl,--hash-style=both -Wl,-T,$(SUBDIR)/vdso.ld
- 
--$(SUBDIR)/vdso-be.so: vdso.S vdso.ld vdso-asmoffset.h
--	$(CC) -o $@ $(LDFLAGS) -mbig-endian $<
-+$(SUBDIR)/vdso-be8.so: vdso.S vdso.ld vdso-asmoffset.h
-+	$(CC) -o $@ $(LDFLAGS) -mbig-endian -mbe8 $<
-+
-+$(SUBDIR)/vdso-be32.so: vdso.S vdso.ld vdso-asmoffset.h
-+	$(CC) -o $@ $(LDFLAGS) -mbig-endian -mbe32 $<
- 
- $(SUBDIR)/vdso-le.so: vdso.S vdso.ld vdso-asmoffset.h
- 	$(CC) -o $@ $(LDFLAGS) -mlittle-endian $<
-diff --git a/linux-user/arm/meson.build b/linux-user/arm/meson.build
-index c4bb9af5b8..348ffb810d 100644
---- a/linux-user/arm/meson.build
-+++ b/linux-user/arm/meson.build
-@@ -10,10 +10,17 @@ syscall_nr_generators += {
- # is always true as far as source_set.apply() is concerned.  Always build
- # both header files and include the right one via #if.
- 
--vdso_be_inc = gen_vdso.process('vdso-be.so',
--                               extra_args: ['-s', 'sigreturn_codes'])
-+vdso_be8_inc = gen_vdso.process('vdso-be8.so',
-+                               extra_args: ['-s', 'sigreturn_codes',
-+                                            '-p', 'vdso_be8'])
-+
-+vdso_be32_inc = gen_vdso.process('vdso-be32.so',
-+                               extra_args: ['-s', 'sigreturn_codes',
-+                                            '-p', 'vdso_be32'])
- 
- vdso_le_inc = gen_vdso.process('vdso-le.so',
-                                extra_args: ['-s', 'sigreturn_codes'])
- 
--linux_user_ss.add(when: 'TARGET_ARM', if_true: [vdso_be_inc, vdso_le_inc])
-+linux_user_ss.add(when: 'TARGET_ARM', if_true: [
-+    vdso_be8_inc, vdso_be32_inc, vdso_le_inc
-+])
-diff --git a/linux-user/arm/vdso-be32.so b/linux-user/arm/vdso-be32.so
-new file mode 100755
-index 0000000000000000000000000000000000000000..b896d3d545ebf91942038831a9535b023137a86b
-GIT binary patch
-literal 2648
-zcmbtVO-x)>6h3eM80atz#?V$w#FU7s?MrPY6@OwJ7zS#9;uIpr#K$o6U?zom&CCPA
-z_(K)jYPEI2#x#u>*BWAK(oG}X7}JGu(U>kYb%7gWj2bmA)bac7dzTK##(3a+=YHp$
-zd+&Sqo^$4vzQK$UFl1ALazDn}kQ8ZH3rj#GDIF4quT>K8M*#RXv5GMf@}cL0QbMa9
-zq(RhlE+~K0VF_bG%`dp$jfe!`*N`-Pg!23P2DC;e#zejUPViv=@R<Cvd*J4^Txa)J
-z@7#0Z+Iu5y`)ZH;3||}=^X3>EPVMjCuphrI44sC?HyR7jO@IUJ0uoNG_9y)7(0_pk
-zpnrn8jPd`K6kebEMDGxZK_3LSp__c(2L5av#~Fv7s^g4R(keB6AJ11y5Ch&BHHGIy
-z!MCcr=6z^k4DXK!hxdkb4CjQ`+OJFT(1mRCl`nhCy&vqo@3Z~q#IoiKRmaNDIQbLS
-zwC%d3S$jw0k>tP36}zf!{!C}8kXw|QQh9FSAlEhV|DX&W9UdFE4x2~t7C7+DKLhWH
-zzvdr5eIIt-`P~5TRezZg{AliXF#0I!oQ(G1qZmH{ASaD+Xuz0+J_$VoeHMBidKLO*
-zXxy{00z?7Y4#38I5#xod1YV3A?XhN3?z0Er`8P=_9z7E{&$Fcc5b*sD_5s+w-oZWr
-z+ZRBzZk;4J_dJeGTe#`OQsPw0tMS*Gmt(K*I^A@p@oe;shBqVU!f%D%4xSHO;N}qS
-z{}^x@Xp{c<x4yjt{BvL#h)E(Ie(Be6B$8-spxzf^+DHfR1Hf~MdNC0{CZc2D68U7Q
-ztM*XzmRwy@qm|83qdyv^&aCUduIFzF$6X(K`r_5=vCO;uiHqNOI)ycN=j_~M3AZfL
-z98Qi(B+%%;I(OV6H^`8{+Rr;64^YFrz$Z9!9Aez$6U46vW5egnd5G!<^s7SvPtyvH
-zoS}Gi500Ere4S75Mr!!={_G);AkUwE_7X^Fgir7owH9zDlKuv~oT_KUc=7Ntz6CSY
-ze2o3|FoO8;Xd7M+FueKg@SK9J1Bb!+59s&9nD6(vJ`X>B6gDM(KY0%G>-$p$oVBF;
-z6Y^?Hf4T&IyFcagBjZl~;aSs>PFFe$Vx^xMP7NLHm1=3aV!LydvXyrVsvDqbTYUpo
-zCYu`Svj);xvHAy(^`r)^W0}nHzENv5)ic;<)wKk_0c~j@+nZ8dquJ7^cIZi}e~DRL
-zoON@P&~C-kMLjAzt}SL^v7DPN<<$VO&^b3J=5%?^Eas|3&+b+{%e-BwmYnhyVim-+
-zi`G;nH)~tP0wOgN)3p~|F;m$gGv~UM(&U_rqxnyQ`&N0%+-F@7oq!fU=jC1)nBPb{
-zl`qWMCBV;dq?4E5`=Oa<SdVq2YH0$Tam-c5u^%4xIo4x+sT!-#Z^jX<1=bnY+wdR<
-z!1*2&9oLQDSoUwku^v@TCc(GI_4qc%r9G(MZJ3qldU_J;)nH-VWe=(z^m?$<Cr|6&
-zc+hnZ(hWPmmwvt<WeVWhTn}fbY99M<ijH$(@#EMB2xI%Xa1wuO7>7Gyy{nqnbxuFe
-zn6iBG_8EYNR`J*aXyF<Ze@~Af?g~t6VCWzC9e@Ggn(SHn3^0ro@%R|fqStGMp)RiB
-MF7Oo{1g+x!0gGmCQ~&?~
+If I understand correctly VCMDQ terminology is NVidia specific while
+ECMDQ is the baseline (?).
+>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+>      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+>      [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
+> @@ -226,6 +227,7 @@ static const int a15irqmap[] = {
+>      [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+>      [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+> +    [VIRT_SMMU_NESTED] = 200,
+What is the max IRQs expected to be consumed. Wother to comment for next
+interrupt user.
+>  };
+>  
+>  static void create_randomness(MachineState *ms, const char *node)
+> @@ -2883,10 +2885,34 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>                                          DeviceState *dev, Error **errp)
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
+>  
+> -    if (vms->platform_bus_dev) {
+> -        MachineClass *mc = MACHINE_GET_CLASS(vms);
+> +    /* For smmuv3-nested devices we need to set the mem & irq */
+> +    if (device_is_dynamic_sysbus(mc, dev) &&
+> +        object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_NESTED)) {
+why did you choose not using the PLATFORM BUS infra which does that kind
+of binding automatically (also it provisions for dedicated MMIOs and
+IRQs). At least you would need to justify in the commit msg I think
+> +        hwaddr base = vms->memmap[VIRT_SMMU_NESTED].base;
+> +        int irq =  vms->irqmap[VIRT_SMMU_NESTED];
+> +
+> +        if (vms->smmu_nested_count >= MAX_SMMU_NESTED) {
+> +            error_setg(errp, "smmuv3-nested max count reached!");
+> +            return;
+> +        }
+> +
+> +        base += (vms->smmu_nested_count * SMMU_IO_LEN);
+> +        irq += (vms->smmu_nested_count * NUM_SMMU_IRQS);
+>  
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+> +        for (int i = 0; i < 4; i++) {
+> +            sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+> +                               qdev_get_gpio_in(vms->gic, irq + i));
+> +        }
+> +        if (vms->iommu != VIRT_IOMMU_SMMUV3_NESTED) {
+> +            vms->iommu = VIRT_IOMMU_SMMUV3_NESTED;
+> +        }
+> +        vms->smmu_nested_count++;
+this kind of check would definitively not integrated in the platform bus
+but this could be introduced generically in the framework though or
+special cased after the platform_bus_link_device
+> +    }
+> +
+> +    if (vms->platform_bus_dev) {
+>          if (device_is_dynamic_sysbus(mc, dev)) {
+>              platform_bus_link_device(PLATFORM_BUS_DEVICE(vms->platform_bus_dev),
+>                                       SYS_BUS_DEVICE(dev));
+> @@ -3067,6 +3093,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3_NESTED);
+>  #ifdef CONFIG_TPM
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+>  #endif
+> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> index eebcd28f9a..0f0d0b3e58 100644
+> --- a/hw/core/sysbus-fdt.c
+> +++ b/hw/core/sysbus-fdt.c
+> @@ -489,6 +489,7 @@ static const BindingEntry bindings[] = {
+>  #ifdef CONFIG_LINUX
+>      TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node),
+>      TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
+> +    TYPE_BINDING("arm-smmuv3-nested", no_fdt_node),
+>      VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
+>  #endif
+>  #ifdef CONFIG_TPM
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index d183a62766..87e628be7a 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -84,6 +84,21 @@ struct SMMUv3Class {
+>  #define TYPE_ARM_SMMUV3   "arm-smmuv3"
+>  OBJECT_DECLARE_TYPE(SMMUv3State, SMMUv3Class, ARM_SMMUV3)
+>  
+> +#define TYPE_ARM_SMMUV3_NESTED   "arm-smmuv3-nested"
+> +OBJECT_DECLARE_TYPE(SMMUv3NestedState, SMMUv3NestedClass, ARM_SMMUV3_NESTED)
+> +
+> +struct SMMUv3NestedState {
+> +    SMMUv3State smmuv3_state;
+> +};
+> +
+> +struct SMMUv3NestedClass {
+> +    /*< private >*/
+> +    SMMUv3Class smmuv3_class;
+> +    /*< public >*/
+> +
+> +    DeviceRealize parent_realize;
+> +};
+> +
+>  #define STAGE1_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S1P)
+>  #define STAGE2_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S2P)
+>  
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 46f48fe561..50e47a4ef3 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -50,6 +50,9 @@
+>  /* MMIO region size for SMMUv3 */
+>  #define SMMU_IO_LEN 0x20000
+>  
+> +/* Max supported nested SMMUv3 */
+> +#define MAX_SMMU_NESTED 128
+Ouch, that many?!
+> +
+>  enum {
+>      VIRT_FLASH,
+>      VIRT_MEM,
+> @@ -62,6 +65,7 @@ enum {
+>      VIRT_GIC_ITS,
+>      VIRT_GIC_REDIST,
+>      VIRT_SMMU,
+> +    VIRT_SMMU_NESTED,
+>      VIRT_UART0,
+>      VIRT_MMIO,
+>      VIRT_RTC,
+> @@ -92,6 +96,7 @@ enum {
+>  typedef enum VirtIOMMUType {
+>      VIRT_IOMMU_NONE,
+>      VIRT_IOMMU_SMMUV3,
+> +    VIRT_IOMMU_SMMUV3_NESTED,
+>      VIRT_IOMMU_VIRTIO,
+>  } VirtIOMMUType;
+>  
+> @@ -155,6 +160,7 @@ struct VirtMachineState {
+>      bool mte;
+>      bool dtb_randomness;
+>      bool second_ns_uart_present;
+> +    int smmu_nested_count;
+>      OnOffAuto acpi;
+>      VirtGICType gic_version;
+>      VirtIOMMUType iommu;
+Thanks
 
-literal 0
-HcmV?d00001
-
-diff --git a/linux-user/arm/vdso-be.so b/linux-user/arm/vdso-be8.so
-similarity index 95%
-rename from linux-user/arm/vdso-be.so
-rename to linux-user/arm/vdso-be8.so
-index bed02804a4bd367eb9fd8ca54d0c980103c02245..784b7bdb2a9308671bbc4c1e38ab4eac568ea6f7 100755
-GIT binary patch
-delta 19
-acmca1azkW8HXECHj$?pF(B?w6=ga^|Lk8ji
-
-delta 19
-acmca1azkW8HXB=JPDHqi;pRfN=ga^~jt30@
-
--- 
-2.43.0
+Eric
 

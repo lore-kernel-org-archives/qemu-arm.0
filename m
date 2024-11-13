@@ -1,185 +1,178 @@
-Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp563263njc;
-        Wed, 13 Nov 2024 10:06:07 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUsmKW9NaqjqKIcL80mbBRTKJ2Slok7F00xc0Nhgp2SV0YXw6Y/DHq4FL9CjmNL5VnBIl1CDIeEKbkH7w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFPleBsMnBDkcwvlLCGxV4VDl4XW95ALbAIzNr80sJQWVGQS84nQF/4NXkZoGFCdHwxj+Y7
-X-Received: by 2002:a05:6122:2010:b0:4fc:e3c2:2c71 with SMTP id 71dfb90a1353d-51401ba19bcmr19781657e0c.2.1731521167094;
-        Wed, 13 Nov 2024 10:06:07 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1731521167; cv=pass;
+Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp574842njc;
+        Wed, 13 Nov 2024 10:21:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVSu4x/ivv6QciKKbFNYas8GlObhsCA6lt4LvMnX6+FVN7AEy4rJwg4bUxyQb1E5MDON1pAutuL1+MocA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFAJPfeGKeCejN693KXGy04qf2vWxtfrwY1HEPCJF0GtEZndcWzLNOWkaXNwojZcu/7insg
+X-Received: by 2002:a05:6358:ed12:b0:1aa:c4b4:b26f with SMTP id e5c5f4694b2df-1c641f7c9bamr1004362855d.26.1731522096692;
+        Wed, 13 Nov 2024 10:21:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731522096; cv=none;
         d=google.com; s=arc-20240605;
-        b=Orqim1JhF6s2OAZSnDlhIpVaJn+ZSxQKgv5ZZ9rMmHrJW40drKY5YanylFwTyDbCOo
-         HIkTF6WMKps3tkHZq7pSwRUFmT05UHH55Cxrlcxb7N9TUjxbgvSVJ3wjq/4E2GXY47hx
-         N13E4J4JuBXpCGodKN6EHBcV9bOMqQAxRSHEF030t72XPf32Qk7k5K0OpS2tPZ2SUFrc
-         rSCkB4UOMpzxkYM6e12KKdn7JErXEygotiC1tQCU/NdUzkMJqzHzhAtBZnFyODsa4Kdj
-         SzvLtsJ7VU4tdN5IBF7yILswHM31GUqdLS6c25ljdznUs1VXjS2BiV++VT/WbQmF161S
-         OO5g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=Z65oZEYD67x/e9azCfYX2DO6rBS8ciKF+QQ2C1ZEv97HXBlDi+CpRkjISgeKS1B0/0
+         UVjjMZ+wZmQDti+eIwbWsJZhQdnRZT6z9V6lf8+EjNMy2kH09I6ZBexYpbFu6UHB4zAs
+         5aoqjo5JJzGRUV2hXu/4Dq6oJsPBLt5TSx0Fq+2cCto8R8mc6X7vynm4kM54jdGHd2Gv
+         oLXEkXzWMTzntWgh7/iFOApC6IMCKZLcofwesup60zAQyrKkVIAv1+1kfyYCz2sD9RUm
+         1ka3Sqeo0ReRi/my7ZXLFGJj/Dt3q/UUMjYwj1ef15r5jgDWerraTS4bIvU2Ih1erPqD
+         FTag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=F2SKCnrOCfLE7+Ng6CpN5RyOzm5Lde+Arkzq8Mo21J4=;
-        fh=P3nLyDh786l3ctw8dm+9PEHIFZHVfnO+PH1TnXcCVDI=;
-        b=jlT0O554ZHiYtY9SUY1zDH7nggHlfFizaCqwzXt+geGbNaNwzn/aYT9/J37F5h/PV9
-         rYhzB90sn+95xFs6h+/8o7G+1tjR4eztHq1UM77s/Xg2v4ImgOd2NEPgpEW20q2LsgpX
-         096xuShU52VwyRZ77C88dI2516NqTrt90SrH6hn6dHQI+MFXWBENdl/wl+ffZ9faPTgS
-         PaNS51q4L7MyW5fWbWXui47TjCk/sd7TSKQpoVdrKGusiuURM+sIHrMCfSRtDw1j6liz
-         j6yJm1a8cBRmCJuHfNqu2b/IBSddX0YShQ1Li21pKiT9gDKu0BYnafAyc5RASaTuQpTv
-         3ysQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=B163VpaRJXxp3b2iqYNrwHU/NDgSITNT/KiNnMB0IkU=;
+        fh=qIMyZCYGPd5wgfcVfJpUhuse7NMXqnjW177x0nVQTNU=;
+        b=gkDS990T8yAbODCZQBcVXRvIvj1X2qmnW1bKQT1czxSInSamWVdqDnymlgMZeTbu61
+         U8s3BPqBzFAblZQe4uw5yWJsHlcikTB05sk7cR3TtcKkLGYF+cuNBNp6NBvKTuZb1uWa
+         8TJ1xVJqzr//VK+a3+xu8WBKpviZEsfbrGxEsheVpTILDCHQteY0SEJa1gZAJm8asga2
+         7Z3lVe1dyJFJ4HYSBXexYg1W/jB2GVR55P5p5Nqzvgj3Ovbu0B5RiNGqoIK4XKCy8vHp
+         FmckTlznFuR80tm1DMKpOCCQ426AFoiFgP29WkAJ+g6gyk4F213ohYmZphBg8E+l/6yC
+         cNwg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=cnbmQet+;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FWzQz+NC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-513f321c15fsi4726524e0c.129.2024.11.13.10.06.06
+        by mx.google.com with ESMTPS id d75a77b69052e-462ff4101c6si160989261cf.42.2024.11.13.10.21.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Nov 2024 10:06:06 -0800 (PST)
+        Wed, 13 Nov 2024 10:21:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=cnbmQet+;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FWzQz+NC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBHkc-00078s-Vz; Wed, 13 Nov 2024 13:05:59 -0500
+	id 1tBHzV-0004ui-7h; Wed, 13 Nov 2024 13:21:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1tBHkb-00078b-N5; Wed, 13 Nov 2024 13:05:57 -0500
-Received: from mail-dm3nam02on20613.outbound.protection.outlook.com
- ([2a01:111:f403:2405::613]
- helo=NAM02-DM3-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1tBHzT-0004uX-82
+ for qemu-arm@nongnu.org; Wed, 13 Nov 2024 13:21:19 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1tBHkZ-0000ei-Ev; Wed, 13 Nov 2024 13:05:57 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=QdEwpBsQLh4XiJ2oiIwDYKxvY9MQD0IAA0UCIPAwzzQNI4k3Hfi8d4zQ+QeOZ+R8z4xwhPLlJz7HnXtVO2Yg6s2wvPdotpdOMtwJEf7j41I1OGvtK2xG86xzteVyHPYbPeNS6q50YTmjqWeXut4MIftfz+OUWLZukSdtOqe30pF+roBi5QE3gM3g9Zx2S2fnap0oyPlK0qHD/pMtt1Y05fHtx6AnZyNNPFrzslNtlCNJPVaVOEERgPOAWx7X02kE24V9Upk9u4dXnQXLBLgFQZmxKaq2vaQM455RVK/qsqcjUCAkSD45KMXH+wY10lFh7BomGkj4NNUNZ17G5U5k7w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=F2SKCnrOCfLE7+Ng6CpN5RyOzm5Lde+Arkzq8Mo21J4=;
- b=DsNqRJldDORpfNF7h9RfpTQomJkGuwzFIijDAVmwhyM8RfGfqF44/J/hv4OFrsbwHTqSJcC4K47toS6H5EMTkJLMzPDO30OgRf7tMfDO9nQ1GZglpKhZrfLr6Cx+NO9g+nIJGRpRD4uef68USpIoLLyqYBLAyr1j2pnVvXwXJ6p4crNlX21ppp5OKoYuVQDIR3QmPNp5p9aUziqELuaEIRfDMvgB2+svx5dtFHv5KEcjySfWZ8SzqZxZODBuLV8Vm5u1EF/yRE6blN+aMN9PD0A1I6eZzmy/QYgmtdkx3aQSF0FPiaB8/a0cAg/ZxdjcotC8Ft48Y/EGWkbhybEYug==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.161) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F2SKCnrOCfLE7+Ng6CpN5RyOzm5Lde+Arkzq8Mo21J4=;
- b=cnbmQet+08wCUhFccsWx9t7y3bwxnxlGtWoSFBnKO1ywSH89eB9E/NLFRf3fOjseYwvsjAtba///hz0k/eH1r0RcT9g4J6WrdN7H0vQLZHN1vax2W28AmsVv3ECqPCshoQ2ggZNH1VWxYHFjSoqus5yMcc4TJaF/Q3eBqBGrYg0pFf2V2AZ6BnNT2GsVBvl2flzjkdOqAd5IX9uwNzrZQJuuM3XLbjOQGr7US1iedyV7j0Wj1c8pRM0mQfXp0epDjc4jSylRh63tdNkiEyoW39FfX0WKYLUK8wR8kaHFN73OfOz1/f0TPhl6DQgjXauVic3OyILjeNPVP4Iz5ZfkKA==
-Received: from SJ0PR03CA0031.namprd03.prod.outlook.com (2603:10b6:a03:33e::6)
- by SA3PR12MB7806.namprd12.prod.outlook.com (2603:10b6:806:31d::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8137.28; Wed, 13 Nov
- 2024 18:05:46 +0000
-Received: from SJ1PEPF000023D7.namprd21.prod.outlook.com
- (2603:10b6:a03:33e::4) by SJ0PR03CA0031.outlook.office365.com
- (2603:10b6:a03:33e::6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8137.28 via Frontend
- Transport; Wed, 13 Nov 2024 18:05:46 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.161) by
- SJ1PEPF000023D7.mail.protection.outlook.com (10.167.244.72) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8182.1 via Frontend Transport; Wed, 13 Nov 2024 18:05:46 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 13 Nov
- 2024 10:05:19 -0800
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail201.nvidia.com
- (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 13 Nov
- 2024 10:05:18 -0800
-Received: from Asurada-Nvidia (10.127.8.12) by mail.nvidia.com (10.129.68.6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
- Transport; Wed, 13 Nov 2024 10:05:17 -0800
-Date: Wed, 13 Nov 2024 10:05:16 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Eric Auger <eric.auger@redhat.com>
-CC: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <peter.maydell@linaro.org>,
- <jgg@nvidia.com>, <ddutile@redhat.com>, <linuxarm@huawei.com>,
- <wangzhou1@hisilicon.com>, <jiangkunkun@huawei.com>,
- <jonathan.cameron@huawei.com>, <zhangfei.gao@linaro.org>
-Subject: Re: [RFC PATCH 2/5] hw/arm/smmuv3: Add initial support for SMMUv3
- Nested device
-Message-ID: <ZzTqXCFKV9s++C2N@Asurada-Nvidia>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <20241108125242.60136-3-shameerali.kolothum.thodi@huawei.com>
- <00e8a5d6-c926-44bb-8d11-dab4ddc4820d@redhat.com>
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1tBHzR-0002QI-7D
+ for qemu-arm@nongnu.org; Wed, 13 Nov 2024 13:21:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1731522076;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=B163VpaRJXxp3b2iqYNrwHU/NDgSITNT/KiNnMB0IkU=;
+ b=FWzQz+NCWXVu1RsYWv+kVq2WYvQ6S+/f0c2N3EznD0nUw3wE52xVDKJMF9WtmHMLGP/14V
+ 741CM+xOkdytEGXoQJap3+NIfKksg8amoWcuiMiTQCyHkHq931fzbYbB2vJFN4GQrI7pAV
+ O/YMZf8J74aS6v8pipN6fhqpJcvVAKw=
+Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
+ [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-554-wya1f-B0O4O1D-NfHI9vfA-1; Wed, 13 Nov 2024 13:21:10 -0500
+X-MC-Unique: wya1f-B0O4O1D-NfHI9vfA-1
+X-Mimecast-MFC-AGG-ID: wya1f-B0O4O1D-NfHI9vfA
+Received: by mail-lf1-f70.google.com with SMTP id
+ 2adb3069b0e04-53da283f583so701575e87.3
+ for <qemu-arm@nongnu.org>; Wed, 13 Nov 2024 10:21:09 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1731522068; x=1732126868;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=B163VpaRJXxp3b2iqYNrwHU/NDgSITNT/KiNnMB0IkU=;
+ b=QtzqTHT5SDci0pj4g8RMuNe0dJ13+dwNKOVOhdjAhJyepDqHUuxbDU7thWel55cKMV
+ b0okB2WMIM9iJ3R+Ol6rx/t/KNSYIjS3UMDgMvPEgX4MHGeCGE1/Y8eA+lFNROPKdc43
+ aKloVEhN6U2MhIbOMvCeO5Q4rwXxOKzSua+yeclDNKOWGLZZ1ihgxO369rdn8hAFmR0/
+ sEaANAFx5tIKDQdUDzo3VFiVDTF3z64ZksLolyrZy0DzNXMmccJs1GDqxeArgaeVDi8g
+ R+Sa7lSxSQExv3BAKe4i0IH80uAEeDaNx0ZwMCMlyVxgaJS47XH6XWZZkuHQnDPBub+Q
+ gHBA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX6S6MD2vKyF4XwU8OQm0cHpUWTc1ZII/kJMkekh3+HUSAei7VBJ3H6sEBMsaC7Re890bCQoDPvmw==@nongnu.org
+X-Gm-Message-State: AOJu0YyOstoyLPy4BFiGxUcI5pLVOH3mVefsaOOiXgPYZpvbF5Yg5cit
+ Lz6nSq1m7T4Hk1csSWWO+mokh04QvUsm4Oflp7EBPD2Olu7xPtMJO1OKXWZHxodK9GhhXp2QI22
+ 9CDs/w5zLZg4/nJqEULFsWSKLUXzEYd6IvUUPvOQXn8yGkkjGSA==
+X-Received: by 2002:a05:6512:3a88:b0:536:a6c6:33f with SMTP id
+ 2adb3069b0e04-53d862bb481mr10575539e87.13.1731522068301; 
+ Wed, 13 Nov 2024 10:21:08 -0800 (PST)
+X-Received: by 2002:a05:6512:3a88:b0:536:a6c6:33f with SMTP id
+ 2adb3069b0e04-53d862bb481mr10575516e87.13.1731522067790; 
+ Wed, 13 Nov 2024 10:21:07 -0800 (PST)
+Received: from [192.168.10.47] ([151.49.84.243])
+ by smtp.googlemail.com with ESMTPSA id
+ 5b1f17b1804b1-432d54f75f9sm32575485e9.17.2024.11.13.10.21.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 13 Nov 2024 10:21:07 -0800 (PST)
+Message-ID: <5a3d70f5-e135-4450-aed4-eac03abc58c0@redhat.com>
+Date: Wed, 13 Nov 2024 19:21:06 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <00e8a5d6-c926-44bb-8d11-dab4ddc4820d@redhat.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF000023D7:EE_|SA3PR12MB7806:EE_
-X-MS-Office365-Filtering-Correlation-Id: 275e0605-80db-4d99-00ee-08dd040dcc38
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|36860700013|7416014|82310400026|376014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?QJh+UgdG7foyRfXfYtBhCZOVieQPIvpsKJDcF16i59rBF3kdW1l7FMLTkXVp?=
- =?us-ascii?Q?Sxoqu7l0BOaEI37QP8l7khD5z3Dr8lMs3j6V5MP0pppKxqNXHyj8Z95oPZ3N?=
- =?us-ascii?Q?WXOjL/k4y3DtHakmzHi+vf0C0K3zzmb0V6VuLpVbLch19uV8fbAR7Ds9TmMy?=
- =?us-ascii?Q?gLKe80yEby7LW6jGnGpKveDB9eNgEU0P9bZrqTUevyPw/jczt8K5tOmHSo42?=
- =?us-ascii?Q?Yk/EfakOg8LH22FiE+YmqeAfQvjTAbilQFMNjqCrhdEkP8yAAFMjZAZhRMEc?=
- =?us-ascii?Q?jtCw6InrztOPC7Q1YHJrDAQZqknMSfdponyagGtguEo3Y3dfMLLL4VkrixPE?=
- =?us-ascii?Q?NbksfXJDA4ack8YyO5PhF8aSbfgPqBYYlvVVVnYU/UTdTbpCEbsNohboHCeV?=
- =?us-ascii?Q?WG6XDZsDZLMUazLSbAQvM6YeUSAJ8BdRfEVPaB/JyXO5NEonUX271hLo2IwN?=
- =?us-ascii?Q?zp9J+ps4yBpRPCoLq40wIAUOKU4ugZvJcEQwH5ggcaOaVk+61Hhuo3s5f+/b?=
- =?us-ascii?Q?2/LcrSNa3XbzTpH5ZZS0QsDCOHWARO2hJrFF+BCZaYYtBGMr+Zrr0HqEmS+j?=
- =?us-ascii?Q?uiw9TDnR5p9WRMvCuCdw/FRS0Is+Yn5/7Z66dDK9YXce6pRP6GKMseXA2QSn?=
- =?us-ascii?Q?JmA2goH9FvodGMyDaJxMER5jH/QaikKj3rUVWZi2C5Fs6+QcDZGI28y1SR68?=
- =?us-ascii?Q?chUoPk06SPXr6yr65ugSsRvy+EMv35/lGKLQz09qx5Ub1mVb37+OarLoB53Z?=
- =?us-ascii?Q?FtW9a7j5VMeVXRf0mX7AI99/JOekZg9COMkwxXcZ3A4OuwRR9/gjEsdGA1xt?=
- =?us-ascii?Q?i6HNR7/NM2t1vzNhbsq+AD4CNrGTJpuNdYoIobjubq7sfow8DBZUr/zXPUQ/?=
- =?us-ascii?Q?nEpV55PAB3lSnqkHMVWnEL1jciIq1NWB8xWkgaN497hbzmpRjkqG/tnl/XxJ?=
- =?us-ascii?Q?tc16S6shREaWx+a0pw8hplor4CXZt0DChiX2l6T0QdxXRxY/Aseoezkl89da?=
- =?us-ascii?Q?FYTCQGUDc/z1n5OWbLTwdQKI0Um6Sj8utI5DSi9caHrKtnQyERfxRaZpCa2a?=
- =?us-ascii?Q?ohB+dOUYLi7y+YBmWm46uCgTwARPN8MTxtMjA1wrtTIbTHlrbmk9+wSnx/uE?=
- =?us-ascii?Q?L1lTOogCS0FNbIJHcj/wty9P6/XRe3pBRJvLYhWuAIIkOszV8JoTWXSx3PcA?=
- =?us-ascii?Q?VCJLxnJOE4lNLpz5o5aUKN/bLu95hyZF+fwiQUAWIWe0N/+XlaQ/evo8HiFG?=
- =?us-ascii?Q?JrsxcDYdVWMAjqniPVSRFpYOTiCE+FptqLRqA+FCyRK3WeRw5LpnQFtGitCb?=
- =?us-ascii?Q?/2bZN7RwwwDWlvDsnPsSuPwlbbNekh13FgYyjCt6oZOH2SM5Z/5884FRjrc6?=
- =?us-ascii?Q?cbESKEpSPjW8jEpfZpHodJXl7SGw3vQ5ehq8Zwqsvm7wxHe2AQ=3D=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(1800799024)(36860700013)(7416014)(82310400026)(376014); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Nov 2024 18:05:46.1911 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 275e0605-80db-4d99-00ee-08dd040dcc38
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF000023D7.namprd21.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB7806
-Received-SPF: softfail client-ip=2a01:111:f403:2405::613;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM02-DM3-obe.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 19/20] hw/net/xilinx_ethlite: Map the RAM buffer as RAM
+ memory region
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>, Anton Johansson <anjo@rev.ng>,
+ Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ Gustavo Romero <gustavo.romero@linaro.org>
+References: <20241112181044.92193-1-philmd@linaro.org>
+ <20241112181044.92193-20-philmd@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
+ CxXPkIBTvYY+ZPkoTh5xF9oS1jqI8iRLzouzF8yXs3QjQIZ2SfuCxSVwlV65jotcjD2FTN04
+ hVopm9llFijNZpVIOGUTqzM4U55sdsCcZUluWM6x4HSOdw5F5Utxfp1wOjD/v92Lrax0hjiX
+ DResHSt48q+8FrZzY+AUbkUS+Jm34qjswdrgsC5uxeVcLkBgWLmov2kMaMROT0YmFY6A3m1S
+ P/kXmHDXxhe23gKb3dgwxUTpENDBGcfEzrzilWueOeUWiOcWuFOed/C3SyijBx3Av/lbCsHU
+ Vx6pMycNTdzU1BuAroB+Y3mNEuW56Yd44jlInzG2UOwt9XjjdKkJZ1g0P9dwptwLEgTEd3Fo
+ UdhAQyRXGYO8oROiuh+RZ1lXp6AQ4ZjoyH8WLfTLf5g1EKCTc4C1sy1vQSdzIRu3rBIjAvnC
+ tGZADei1IExLqB3uzXKzZ1BZ+Z8hnt2og9hb7H0y8diYfEk2w3R7wEr+Ehk5NQsT2MPI2QBd
+ wEv1/Aj1DgUHZAHzG1QN9S8wNWQ6K9DqHZTBnI1hUlkp22zCSHK/6FwUCuYp1zcAEQEAAc0j
+ UGFvbG8gQm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT7CwU0EEwECACMFAlRCcBICGwMH
+ CwkIBwMCAQYVCAIJCgsEFgIDAQIeAQIXgAAKCRB+FRAMzTZpsbceDp9IIN6BIA0Ol7MoB15E
+ 11kRz/ewzryFY54tQlMnd4xxfH8MTQ/mm9I482YoSwPMdcWFAKnUX6Yo30tbLiNB8hzaHeRj
+ jx12K+ptqYbg+cevgOtbLAlL9kNgLLcsGqC2829jBCUTVeMSZDrzS97ole/YEez2qFpPnTV0
+ VrRWClWVfYh+JfzpXmgyhbkuwUxNFk421s4Ajp3d8nPPFUGgBG5HOxzkAm7xb1cjAuJ+oi/K
+ CHfkuN+fLZl/u3E/fw7vvOESApLU5o0icVXeakfSz0LsygEnekDbxPnE5af/9FEkXJD5EoYG
+ SEahaEtgNrR4qsyxyAGYgZlS70vkSSYJ+iT2rrwEiDlo31MzRo6Ba2FfHBSJ7lcYdPT7bbk9
+ AO3hlNMhNdUhoQv7M5HsnqZ6unvSHOKmReNaS9egAGdRN0/GPDWr9wroyJ65ZNQsHl9nXBqE
+ AukZNr5oJO5vxrYiAuuTSd6UI/xFkjtkzltG3mw5ao2bBpk/V/YuePrJsnPFHG7NhizrxttB
+ nTuOSCMo45pfHQ+XYd5K1+Cv/NzZFNWscm5htJ0HznY+oOsZvHTyGz3v91pn51dkRYN0otqr
+ bQ4tlFFuVjArBZcapSIe6NV8C4cEiSTOwE0EVEJx7gEIAMeHcVzuv2bp9HlWDp6+RkZe+vtl
+ KwAHplb/WH59j2wyG8V6i33+6MlSSJMOFnYUCCL77bucx9uImI5nX24PIlqT+zasVEEVGSRF
+ m8dgkcJDB7Tps0IkNrUi4yof3B3shR+vMY3i3Ip0e41zKx0CvlAhMOo6otaHmcxr35sWq1Jk
+ tLkbn3wG+fPQCVudJJECvVQ//UAthSSEklA50QtD2sBkmQ14ZryEyTHQ+E42K3j2IUmOLriF
+ dNr9NvE1QGmGyIcbw2NIVEBOK/GWxkS5+dmxM2iD4Jdaf2nSn3jlHjEXoPwpMs0KZsgdU0pP
+ JQzMUMwmB1wM8JxovFlPYrhNT9MAEQEAAcLBMwQYAQIACQUCVEJx7gIbDAAKCRB+FRAMzTZp
+ sadRDqCctLmYICZu4GSnie4lKXl+HqlLanpVMOoFNnWs9oRP47MbE2wv8OaYh5pNR9VVgyhD
+ OG0AU7oidG36OeUlrFDTfnPYYSF/mPCxHttosyt8O5kabxnIPv2URuAxDByz+iVbL+RjKaGM
+ GDph56ZTswlx75nZVtIukqzLAQ5fa8OALSGum0cFi4ptZUOhDNz1onz61klD6z3MODi0sBZN
+ Aj6guB2L/+2ZwElZEeRBERRd/uommlYuToAXfNRdUwrwl9gRMiA0WSyTb190zneRRDfpSK5d
+ usXnM/O+kr3Dm+Ui+UioPf6wgbn3T0o6I5BhVhs4h4hWmIW7iNhPjX1iybXfmb1gAFfjtHfL
+ xRUr64svXpyfJMScIQtBAm0ihWPltXkyITA92ngCmPdHa6M1hMh4RDX+Jf1fiWubzp1voAg0
+ JBrdmNZSQDz0iKmSrx8xkoXYfA3bgtFN8WJH2xgFL28XnqY4M6dLhJwV3z08tPSRqYFm4NMP
+ dRsn0/7oymhneL8RthIvjDDQ5ktUjMe8LtHr70OZE/TT88qvEdhiIVUogHdo4qBrk41+gGQh
+ b906Dudw5YhTJFU3nC6bbF2nrLlB4C/XSiH76ZvqzV0Z/cAMBo5NF/w=
+In-Reply-To: <20241112181044.92193-20-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: bGHmtVBruGz9nivTtZC7i6HmL0GoHWVQ9FH0LLj0_-Y_1731522068
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.119,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -194,40 +187,202 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: OaOvaxk3wGqw
+X-TUID: X86W+QhBsdSi
 
-Hi Eric,
-
-On Wed, Nov 13, 2024 at 06:12:15PM +0100, Eric Auger wrote:
-> On 11/8/24 13:52, Shameer Kolothum wrote:
-> > @@ -181,6 +181,7 @@ static const MemMapEntry base_memmap[] = {
-> >      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
-> >      [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
-> >      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-> > +    [VIRT_SMMU_NESTED] =        { 0x0b000000, 0x01000000 },
-
-> I agree with Mostafa that the _NESTED terminology may not be the best
-> choice.
-> The motivation behind that multi-instance attempt, as introduced in
-> https://lore.kernel.org/all/ZEcT%2F7erkhHDaNvD@Asurada-Nvidia/
-> was:
-> - SMMUs with different feature bits
-> - support of VCMDQ HW extension for SMMU CMDQ
-> - need for separate S1 invalidation paths
+On 11/12/24 19:10, Philippe Mathieu-Daudé wrote:
+> Rather than using I/O registers for RAM buffer, having to
+> swap endianness back and forth (because the core memory layer
+> automatically swaps endiannes for us), declare the buffers
+> as RAM regions. Remove the now unused s->regs[] array.
 > 
-> If I understand correctly this is mostly wanted for VCMDQ handling? if
-> this is correct we may indicate that somehow in the terminology.
+> The memory flat view becomes:
 > 
-> If I understand correctly VCMDQ terminology is NVidia specific while
-> ECMDQ is the baseline (?).
+>    FlatView #0
+>     Root memory region: system
+>      0000000081000000-00000000810007f3 (prio 0, ram): ethlite.tx[0]buf
+>      00000000810007f4-00000000810007ff (prio 0, i/o): ethlite.tx[0]io
+>      0000000081000800-0000000081000ff3 (prio 0, ram): ethlite.tx[1]buf
+>      0000000081000ff4-0000000081000fff (prio 0, i/o): ethlite.tx[1]io
+>      0000000081001000-00000000810017f3 (prio 0, ram): ethlite.rx[0]buf
+>      00000000810017fc-00000000810017ff (prio 0, i/o): ethlite.rx[0]io
+>      0000000081001800-0000000081001ff3 (prio 0, ram): ethlite.rx[1]buf
+>      0000000081001ffc-0000000081001fff (prio 0, i/o): ethlite.rx[1]io
 
-VCMDQ makes a multi-vSMMU-instance design a hard requirement, yet
-the point (3) for separate invalidation paths also matters. Jason
-suggested VMM in base case to create multi vSMMU instances as the
-kernel doc mentioned here:
-https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/Documentation/userspace-api/iommufd.rst#n84
+The receive buffers should end at 7fb and ffb; no need to repost of course.
 
-W.r.t naming, maybe something related to "hardware-accelerated"?
+Paolo
 
-Thanks
-Nicolin
+> 
+> Mention the device datasheet in the file header.
+> 
+> Reported-by: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/net/xilinx_ethlite.c | 79 +++++++++++------------------------------
+>   1 file changed, 20 insertions(+), 59 deletions(-)
+> 
+> diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
+> index f681b91769..da453465ca 100644
+> --- a/hw/net/xilinx_ethlite.c
+> +++ b/hw/net/xilinx_ethlite.c
+> @@ -2,6 +2,10 @@
+>    * QEMU model of the Xilinx Ethernet Lite MAC.
+>    *
+>    * Copyright (c) 2009 Edgar E. Iglesias.
+> + * Copyright (c) 2024 Linaro, Ltd
+> + *
+> + * DS580: https://docs.amd.com/v/u/en-US/xps_ethernetlite
+> + * LogiCORE IP XPS Ethernet Lite Media Access Controller
+>    *
+>    * Permission is hereby granted, free of charge, to any person obtaining a copy
+>    * of this software and associated documentation files (the "Software"), to deal
+> @@ -27,7 +31,6 @@
+>   #include "qemu/bitops.h"
+>   #include "qom/object.h"
+>   #include "qapi/error.h"
+> -#include "exec/tswap.h"
+>   #include "hw/sysbus.h"
+>   #include "hw/irq.h"
+>   #include "hw/qdev-properties.h"
+> @@ -46,7 +49,6 @@
+>   #define A_RX_BASE0    0x17fc
+>   #define R_RX_BUF1     (0x1800 / 4)
+>   #define A_RX_BASE1    0x1ffc
+> -#define R_MAX         (0x2000 / 4)
+>   
+>   #define RX_BUFSZ_MAX  0x07e0
+>   
+> @@ -72,6 +74,8 @@ typedef struct XlnxXpsEthLitePort
+>   {
+>       MemoryRegion txio;
+>       MemoryRegion rxio;
+> +    MemoryRegion txbuf;
+> +    MemoryRegion rxbuf;
+>   
+>       struct {
+>           uint32_t tx_len;
+> @@ -100,7 +104,6 @@ struct XlnxXpsEthLite
+>   
+>       UnimplementedDeviceState mdio;
+>       XlnxXpsEthLitePort port[2];
+> -    uint32_t regs[R_MAX];
+>   };
+>   
+>   static inline void eth_pulse_irq(XlnxXpsEthLite *s)
+> @@ -118,16 +121,12 @@ static unsigned addr_to_port_index(hwaddr addr)
+>   
+>   static void *txbuf_ptr(XlnxXpsEthLite *s, unsigned port_index)
+>   {
+> -    unsigned int rxbase = port_index * (0x800 / 4);
+> -
+> -    return &s->regs[rxbase + R_TX_BUF0];
+> +    return memory_region_get_ram_ptr(&s->port[port_index].txbuf);
+>   }
+>   
+>   static void *rxbuf_ptr(XlnxXpsEthLite *s, unsigned port_index)
+>   {
+> -    unsigned int rxbase = port_index * (0x800 / 4);
+> -
+> -    return &s->regs[rxbase + R_RX_BUF0];
+> +    return memory_region_get_ram_ptr(&s->port[port_index].rxbuf);
+>   }
+>   
+>   static uint64_t port_tx_read(void *opaque, hwaddr addr, unsigned int size)
+> @@ -252,53 +251,6 @@ static const MemoryRegionOps eth_portrx_ops = {
+>           },
+>   };
+>   
+> -static uint64_t
+> -eth_read(void *opaque, hwaddr addr, unsigned int size)
+> -{
+> -    XlnxXpsEthLite *s = opaque;
+> -    uint32_t r = 0;
+> -
+> -    addr >>= 2;
+> -
+> -    switch (addr)
+> -    {
+> -        default:
+> -            r = tswap32(s->regs[addr]);
+> -            break;
+> -    }
+> -    return r;
+> -}
+> -
+> -static void
+> -eth_write(void *opaque, hwaddr addr,
+> -          uint64_t val64, unsigned int size)
+> -{
+> -    XlnxXpsEthLite *s = opaque;
+> -    uint32_t value = val64;
+> -
+> -    addr >>= 2;
+> -    switch (addr)
+> -    {
+> -        default:
+> -            s->regs[addr] = tswap32(value);
+> -            break;
+> -    }
+> -}
+> -
+> -static const MemoryRegionOps eth_ops = {
+> -    .read = eth_read,
+> -    .write = eth_write,
+> -    .endianness = DEVICE_NATIVE_ENDIAN,
+> -    .impl = {
+> -        .min_access_size = 4,
+> -        .max_access_size = 4,
+> -    },
+> -    .valid = {
+> -        .min_access_size = 4,
+> -        .max_access_size = 4
+> -    }
+> -};
+> -
+>   static bool eth_can_rx(NetClientState *nc)
+>   {
+>       XlnxXpsEthLite *s = qemu_get_nic_opaque(nc);
+> @@ -354,6 +306,9 @@ static void xilinx_ethlite_realize(DeviceState *dev, Error **errp)
+>   {
+>       XlnxXpsEthLite *s = XILINX_ETHLITE(dev);
+>   
+> +    memory_region_init(&s->mmio, OBJECT(dev),
+> +                       "xlnx.xps-ethernetlite", 0x2000);
+> +
+>       object_initialize_child(OBJECT(dev), "ethlite.mdio", &s->mdio,
+>                              TYPE_UNIMPLEMENTED_DEVICE);
+>       qdev_prop_set_string(DEVICE(&s->mdio), "name", "ethlite.mdio");
+> @@ -363,6 +318,10 @@ static void xilinx_ethlite_realize(DeviceState *dev, Error **errp)
+>                               sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->mdio), 0));
+>   
+>       for (unsigned i = 0; i < 2; i++) {
+> +        memory_region_init_ram(&s->port[i].txbuf, OBJECT(dev),
+> +                               i ? "ethlite.tx[1]buf" : "ethlite.tx[0]buf",
+> +                               0x07f4, &error_abort);
+> +        memory_region_add_subregion(&s->mmio, 0x0800 * i, &s->port[i].txbuf);
+>           memory_region_init_io(&s->port[i].txio, OBJECT(dev),
+>                                 &eth_porttx_ops, s,
+>                                 i ? "ethlite.tx[1]io" : "ethlite.tx[0]io",
+> @@ -370,6 +329,11 @@ static void xilinx_ethlite_realize(DeviceState *dev, Error **errp)
+>           memory_region_add_subregion(&s->mmio, i ? A_TX_BASE1 : A_TX_BASE0,
+>                                       &s->port[i].txio);
+>   
+> +        memory_region_init_ram(&s->port[i].rxbuf, OBJECT(dev),
+> +                               i ? "ethlite.rx[1]buf" : "ethlite.rx[0]buf",
+> +                               0x07f4, &error_abort);
+> +        memory_region_add_subregion(&s->mmio, 0x1000 + 0x0800 * i,
+> +                                    &s->port[i].rxbuf);
+>           memory_region_init_io(&s->port[i].rxio, OBJECT(dev),
+>                                 &eth_portrx_ops, s,
+>                                 i ? "ethlite.rx[1]io" : "ethlite.rx[0]io",
+> @@ -390,9 +354,6 @@ static void xilinx_ethlite_init(Object *obj)
+>       XlnxXpsEthLite *s = XILINX_ETHLITE(obj);
+>   
+>       sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
+> -
+> -    memory_region_init_io(&s->mmio, obj, &eth_ops, s,
+> -                          "xlnx.xps-ethernetlite", R_MAX * 4);
+>       sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+>   }
+>   
+

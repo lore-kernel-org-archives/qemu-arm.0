@@ -1,130 +1,127 @@
-Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp557047njc;
-        Wed, 13 Nov 2024 09:59:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVNR4Oq7jIg8AltdSICn7qwp0RqV9jfKwkOZMKQXI4TBtaoKsPUtYHc0ErXa1FyiAST/cKDkggw5XgcbA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG/l46cFHPfr9O6Wy0XDP1z7/eBmOmF4/F828XpJVfhGGaqs3CD5rP09RQGoMZwKQsrbXuV
-X-Received: by 2002:a05:6214:3290:b0:6cb:f039:85a0 with SMTP id 6a1803df08f44-6d39e1acea5mr303599366d6.40.1731520779011;
-        Wed, 13 Nov 2024 09:59:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731520778; cv=none;
+Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp558699njc;
+        Wed, 13 Nov 2024 10:01:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX7pwQh1bfeC6u5wiAO7eHescaLEnmvCl4KHXJfUV3CL6yz0SFQ3eexstwdUeU5Kg/IIbtHEbbo9Z7LVQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHjLqnbFQt+tMMZKyYoncyZSKIl7XkgdTd3DFhwMqTbLtOrDx6Gju0ZT5M6mmVS3dT3Ncya
+X-Received: by 2002:a05:6122:1827:b0:50c:9834:57b3 with SMTP id 71dfb90a1353d-51401bca168mr22729188e0c.4.1731520880589;
+        Wed, 13 Nov 2024 10:01:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731520880; cv=none;
         d=google.com; s=arc-20240605;
-        b=fOMVvsCLnVJaaDeanXrpD7u7cRJ10OxtECc9bZYoVPF3JSnMgsobZx5rYKICMV6qez
-         6USZFkxhoKpWrlRP3jietMu+xNkdt5L2801wkDTjXSvBp5QiceMd8J0aAoOvDCBssOFL
-         nUBa3Vpt7D2MxJP3qPyJu/jnIIWT/DueJbaZCrk2kSbDQqMf37d1c7C3bx1317cfDp09
-         4AFP3rMVLI0XdtPM83kJb8tl+lbE4xdh1lpo/dgZtkYkWrd2LRvwV+P6EQ/Q8a6S+M7k
-         4E5E+nt6zYwjNNJE2kTrpkA/ts7uhExOVY8y6kxnA3tToC9cXWQRE7bhWRRq4vwx7O8X
-         fXzg==
+        b=IYgugb4ABLm+X1N/F5ZBhjvccuDGD/HHa50UtZJQbaQwta/nZA/TVePWmQVoah719X
+         1CGzjdheOssaaL72tMgsdCvoSkKflo3DpQZs3StcMxTRlxw66hzoiS1qZ6WhH8+mzFXJ
+         FrVfOGd1U4W1+v2CjEzvrLQDLc8v0Gnq7JxjT3BGgfv8i/sVcnPUIGQqeW1U2q7QMJKN
+         TcnR20EmMe/3ItEZGiplXSBJINAy3z9KWrfyNEh2Y0SKdsfAEd7HT0gdA1OyGw3YlTth
+         0A0vCXVUsB6w9X7lCfKcQ4WqmpQhI2FWmY0MTlbqSh3M4AP5OCJrAxf0fIoECh6GlOaB
+         KcMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=OVrqIYGS7NdD6eeIG6USycWyaacM+KCIZBbybQp0F2Q=;
-        fh=+hRw58Ar2rgV9syUjCRj3hKnQ3at23RBjst6VsAKhEE=;
-        b=PjeGeTltTL4LTTxcfY2Mv+dIeee6QwUwO4+rwr+eb4gZx5oDxPCnMMrxzUqxSURBeu
-         71E2rcWis2R8t2+LHeaWp/9YGR6SvplDWgJdlt+Z9gH6N/O7S2g7cFvhkMmVEdiVbCI8
-         nZKNxvnTx28KIL3iX1fFE3xEIwUE2RuF7Eiq9aD4NfQN3azvCWqGHI9AM3LmfXw+jmZo
-         WW1MrevdxnBIdeOyJbqyi8k91vp+T/s1vxFwnotRFHk99GHEjbpFfUukowGCMkwp05rJ
-         23nsi1e90qTEnkVyOKxiecbPsRW0WewGNt85/InGcePf3mXJF5o8iOZ73XqkDDGykFa/
-         ll1w==;
+        bh=q96V3Vi1t766xQh7am498hmWQcF9Cd8a8uGYTFIL4t4=;
+        fh=9xI2US5/nziw7nwvPl54HstfPsyPRwl5GDSBFBLY3Gw=;
+        b=bFiVZPkWuW32rYYEY8b7MWGU0cvltcjazZcpOG5s0daarnirS8nmpysbwGXa3NOri6
+         jyE94HoaaUW1EVGcG/lCdyrSjJS1ahgOhP72wXttrVALaomKec1yuHmU62W7wH013rbK
+         rAXY6ER656AtschCSC06Ec1Ge7/you5prv30wawtFT3lr7MfoGHlIz/0kaE2iPTE749n
+         VVwfwHXnEsLMvJ/g/OU7I+Hm9CIc3/XMYAmPfJnkRkxNRuDTcHOszshyxFpLSk/07Ave
+         re38u0fAR7zuH9pFlCzMap+PlkyPYHj8E0E1p11u7lPeNZsO1C2rkIxYH7F25hkfRA7g
+         VuoQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M0qzkV4X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/TokkbD";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d396211fc4si167474986d6.101.2024.11.13.09.59.38
+        by mx.google.com with ESMTPS id 71dfb90a1353d-513f3181735si4983382e0c.95.2024.11.13.10.01.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Nov 2024 09:59:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 13 Nov 2024 10:01:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=M0qzkV4X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/TokkbD";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBHe5-0004Qx-76; Wed, 13 Nov 2024 12:59:13 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tBHfY-0005G8-1A; Wed, 13 Nov 2024 13:00:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tBHdw-0004PX-D9
- for qemu-arm@nongnu.org; Wed, 13 Nov 2024 12:59:04 -0500
+ id 1tBHfW-0005Dp-I9
+ for qemu-devel@nongnu.org; Wed, 13 Nov 2024 13:00:42 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tBHdu-0008K9-Jd
- for qemu-arm@nongnu.org; Wed, 13 Nov 2024 12:59:04 -0500
+ id 1tBHfU-0000B4-MW
+ for qemu-devel@nongnu.org; Wed, 13 Nov 2024 13:00:42 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1731520741;
+ s=mimecast20190719; t=1731520839;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OVrqIYGS7NdD6eeIG6USycWyaacM+KCIZBbybQp0F2Q=;
- b=M0qzkV4X9kGZymOgZV7tybtF1VlGCHlpsQWE7zqmq3acTJe53rw5kN4M6luqak1bXpmkZ/
- 9rDkrgTcwb2zAcmO0JFhbeC2f4xwLwqErdg6rRgxoJ7K+ty5cC7pslOR3zIpytmdKzjlyp
- rluvGTwslbAvFdQUhfmcrNoLqZ8daro=
-Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
- [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=q96V3Vi1t766xQh7am498hmWQcF9Cd8a8uGYTFIL4t4=;
+ b=K/TokkbDjcn4VM7iNOA/nu3euWR3SEfUmhPw4jE3io8Yk0BAtIPkr8kkA2/IgMHVZuVI8W
+ XPXpVhNxMdNza3Ueddp0b9Morxi8Iz5o9hiNh7+gB66QxrMR9wtEmp5vzubAE2FyJd457E
+ gUOEy3gw9426jvJZhJgDfqJQSBfV2MM=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-594-CyQxodC4NQ26T8SjtVdLzQ-1; Wed, 13 Nov 2024 12:58:58 -0500
-X-MC-Unique: CyQxodC4NQ26T8SjtVdLzQ-1
-X-Mimecast-MFC-AGG-ID: CyQxodC4NQ26T8SjtVdLzQ
-Received: by mail-lf1-f70.google.com with SMTP id
- 2adb3069b0e04-539eaa0561bso5341547e87.0
- for <qemu-arm@nongnu.org>; Wed, 13 Nov 2024 09:58:57 -0800 (PST)
+ us-mta-114-Epae-bC6P2aNGg3EkYlsXQ-1; Wed, 13 Nov 2024 13:00:36 -0500
+X-MC-Unique: Epae-bC6P2aNGg3EkYlsXQ-1
+X-Mimecast-MFC-AGG-ID: Epae-bC6P2aNGg3EkYlsXQ
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4315af466d9so50135585e9.3
+ for <qemu-devel@nongnu.org>; Wed, 13 Nov 2024 10:00:36 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731520736; x=1732125536;
+ d=1e100.net; s=20230601; t=1731520835; x=1732125635;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:reply-to:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=OVrqIYGS7NdD6eeIG6USycWyaacM+KCIZBbybQp0F2Q=;
- b=WAOqFAL3YatbizMcVe2eeVDnX5Gp/WFvPVWF+VoW1bzVYE5DEf7zJWtHU+UN3XAFle
- ce97YSxoLFelZexKpFfLZsSZY/oPHBOa9nyT9tvKcJ9GcxdDRok6kIqpDwSeQQfj1Id2
- jMYtRBJ8xHF2CdLV3/hiyvu0de9JSUcFhqVZQpz0cYZe/nB5PPXKigveWKNMHoQ9QqiQ
- co0/JBmpO2raagGzpHgRmebrNcCgkuMHEJb9BpsKufY0lgAlkKJsQuKMmRc2/JIRNfMW
- UoCdt7C8SBJowb8JEKhkPKsRxcZ7DZTrW+cfmfgQriXr6E+1McFUOQHWyw61zs5MIILV
- gzFA==
+ bh=q96V3Vi1t766xQh7am498hmWQcF9Cd8a8uGYTFIL4t4=;
+ b=ldY8nSLQ9NmgZi55MKug4CdtWsfDW8XaTofiHscTumcHVH+X1G15F2S6x3TyBVBICm
+ 41FZTiG2J8s++SMDyS7PxUtEJ8zdbNB/GBF5IKMdSPhkMNsmOut78PawdkI4PBBRuJu2
+ vyCCMNlZOq9uLFgamSzI/nUsjq+n03YzInRLUYhZnxGUkgQnRiVjMNMBqWFpTzlJT9ml
+ TGAll5mgTAQd4ZKCxG0QqrG+4ZHKQDtJdrjBVdXTN6ku3ANYPNFLCvl5qhB1+KtOxRFj
+ IzWzpANjCeTGUBuUMO5TEOogxA8BhzrGf4ccjRtzntnHGP4pufLKbpyErUeNAGnm1A/b
+ JtLA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX3wRTAIJELzh/adNzE25fiCZuandn2Rn+Ph86qT287gBbp/eJ0upL8irqHyhZglgWNzzikwuH/iQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwtekhfJUQBk13LC48KbuJA22YBLSBKKrpuGH6YBH2exfzbUVcC
- tXBfmxCyHPNtFC6In/cf3M16tbugrlW6r+xJ4BMEpfa7bd5wKqai44cLVYP6lbiRGiUS6XOGYoe
- Px38QHLGZkdx8HfhG36AH0Oue5kyZXlA7Uv+5w7PkVaSpJ2vuDw==
-X-Received: by 2002:a05:6512:12d1:b0:53d:a422:e826 with SMTP id
- 2adb3069b0e04-53da422e940mr657666e87.2.1731520736428; 
- Wed, 13 Nov 2024 09:58:56 -0800 (PST)
-X-Received: by 2002:a05:6512:12d1:b0:53d:a422:e826 with SMTP id
- 2adb3069b0e04-53da422e940mr657643e87.2.1731520736010; 
- Wed, 13 Nov 2024 09:58:56 -0800 (PST)
+ AJvYcCVSLFbvflXofCxexoFMMLE8GWVsJcUoKIB6wcyGzQmym444CwypoO69ogoWigTfUUxjK0xNo+nuGaJy@nongnu.org
+X-Gm-Message-State: AOJu0YxQ7H78xTnlnTDs+hnTs+rQ8DxxxL4+mRhmjzEfcdK0C9PtrRMi
+ K0S1adXssG7ATQtPU8pLhRu6OhmXZc8CLcXHavG7VEb/HJVznSqaq5p/5cjyofnAoYdJUh3PUFK
+ Rl1em41w1dafdAJeD8j8yS8w8msZcmbrobE0Mgu9+CR+xCXf3H0yL
+X-Received: by 2002:a05:600c:1f88:b0:425:80d5:b8b2 with SMTP id
+ 5b1f17b1804b1-432b7509ac4mr191988675e9.16.1731520835551; 
+ Wed, 13 Nov 2024 10:00:35 -0800 (PST)
+X-Received: by 2002:a05:600c:1f88:b0:425:80d5:b8b2 with SMTP id
+ 5b1f17b1804b1-432b7509ac4mr191988155e9.16.1731520835154; 
+ Wed, 13 Nov 2024 10:00:35 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
  ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-432d4788c2asm26150885e9.0.2024.11.13.09.58.53
+ 5b1f17b1804b1-432d4788c2asm26150885e9.0.2024.11.13.10.00.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 13 Nov 2024 09:58:54 -0800 (PST)
-Message-ID: <a1edc7ec-6450-4409-b8b2-b4026baee242@redhat.com>
-Date: Wed, 13 Nov 2024 18:58:52 +0100
+ Wed, 13 Nov 2024 10:00:34 -0800 (PST)
+Message-ID: <c3c3d515-1014-47fa-9c45-a7d61c7d4770@redhat.com>
+Date: Wed, 13 Nov 2024 19:00:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 3/5] hw/arm/smmuv3: Associate a pci bus with a SMMUv3
+Subject: Re: [RFC PATCH 2/5] hw/arm/smmuv3: Add initial support for SMMUv3
  Nested device
+Content-Language: en-US
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
  ddutile@redhat.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
  jiangkunkun@huawei.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
 References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <20241108125242.60136-4-shameerali.kolothum.thodi@huawei.com>
+ <20241108125242.60136-3-shameerali.kolothum.thodi@huawei.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20241108125242.60136-4-shameerali.kolothum.thodi@huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: UNbMP7q2qfCZBdu2MtXm85gn6jAIPXkNhtu73lk29SE_1731520736
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+In-Reply-To: <20241108125242.60136-3-shameerali.kolothum.thodi@huawei.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124;
@@ -138,118 +135,251 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.119,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-To: eric.auger@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HOAcxT+xdNLe
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: TWCxipUIK89q
 
-Hi Shameer,
+
 
 On 11/8/24 13:52, Shameer Kolothum wrote:
-> Subsequent patches will add IORT modifications to get this working.
-add a proper commit msg once non RFC ;-)
+> Based on SMMUv3 as a parent device, add a user-creatable
+> smmuv3-nested device. Subsequent patches will add support to
+> specify a PCI bus for this device.
+>
+> Currently only supported for "virt", so hook up the sybus mem & irq
+> for that  as well.
+>
+> No FDT support is added for now.
 >
 > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 > ---
->  hw/arm/smmuv3.c         | 27 +++++++++++++++++++++++++++
->  include/hw/arm/smmuv3.h |  2 ++
->  2 files changed, 29 insertions(+)
+>  hw/arm/smmuv3.c         | 34 ++++++++++++++++++++++++++++++++++
+>  hw/arm/virt.c           | 31 +++++++++++++++++++++++++++++--
+>  hw/core/sysbus-fdt.c    |  1 +
+>  include/hw/arm/smmuv3.h | 15 +++++++++++++++
+>  include/hw/arm/virt.h   |  6 ++++++
+>  5 files changed, 85 insertions(+), 2 deletions(-)
 >
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 0033eb8125..9b0a776769 100644
+> index 2101031a8f..0033eb8125 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -24,6 +24,7 @@
->  #include "hw/qdev-properties.h"
->  #include "hw/qdev-core.h"
->  #include "hw/pci/pci.h"
-> +#include "hw/pci/pci_bridge.h"
->  #include "cpu.h"
->  #include "trace.h"
->  #include "qemu/log.h"
-> @@ -2201,12 +2202,32 @@ static void smmu_realize(DeviceState *d, Error **errp)
+> @@ -2201,6 +2201,19 @@ static void smmu_realize(DeviceState *d, Error **errp)
 >      smmu_init_irq(s, dev);
 >  }
 >  
-> +static int smmuv3_nested_pci_host_bridge(Object *obj, void *opaque)
+> +static void smmu_nested_realize(DeviceState *d, Error **errp)
 > +{
-> +    DeviceState *d = opaque;
 > +    SMMUv3NestedState *s_nested = ARM_SMMUV3_NESTED(d);
+> +    SMMUv3NestedClass *c = ARM_SMMUV3_NESTED_GET_CLASS(s_nested);
+> +    Error *local_err = NULL;
 > +
-> +    if (object_dynamic_cast(obj, TYPE_PCI_HOST_BRIDGE)) {
-> +        PCIBus *bus = PCI_HOST_BRIDGE(obj)->bus;
-> +        if (s_nested->pci_bus && !strcmp(bus->qbus.name, s_nested->pci_bus)) {
-> +            object_property_set_link(OBJECT(d), "primary-bus", OBJECT(bus),
-> +                                     &error_abort);
-> +        }
+> +    c->parent_realize(d, &local_err);
+> +    if (local_err) {
+> +        error_propagate(errp, local_err);
+> +        return;
 > +    }
-> +    return 0;
 > +}
 > +
->  static void smmu_nested_realize(DeviceState *d, Error **errp)
->  {
->      SMMUv3NestedState *s_nested = ARM_SMMUV3_NESTED(d);
->      SMMUv3NestedClass *c = ARM_SMMUV3_NESTED_GET_CLASS(s_nested);
-> +    SysBusDevice *dev = SYS_BUS_DEVICE(d);
->      Error *local_err = NULL;
->  
-> +    object_child_foreach_recursive(object_get_root(),
-> +                                   smmuv3_nested_pci_host_bridge, d);
-Using a different opaque struct pointer you may properly use the errp
-and nicely fail if the bus is not found (avoid using error_abort).
-> +    object_property_set_bool(OBJECT(dev), "nested", true, &error_abort);
-why do you need that nested property as the SMMU is already type'd
-differently.
-> +
->      c->parent_realize(d, &local_err);
->      if (local_err) {
->          error_propagate(errp, local_err);
-> @@ -2293,6 +2314,11 @@ static Property smmuv3_properties[] = {
->      DEFINE_PROP_END_OF_LIST()
->  };
->  
-> +static Property smmuv3_nested_properties[] = {
-> +    DEFINE_PROP_STRING("pci-bus", SMMUv3NestedState, pci_bus),
-nit: maybe we can use the "bus" name instead of pci-bus
-> +    DEFINE_PROP_END_OF_LIST()
-> +};
-> +
->  static void smmuv3_instance_init(Object *obj)
->  {
->      /* Nothing much to do here as of now */
-> @@ -2320,6 +2346,7 @@ static void smmuv3_nested_class_init(ObjectClass *klass, void *data)
->      dc->vmsd = &vmstate_smmuv3;
->      device_class_set_parent_realize(dc, smmu_nested_realize,
->                                      &c->parent_realize);
-> +    device_class_set_props(dc, smmuv3_nested_properties);
->      dc->user_creatable = true;
->      dc->hotpluggable = false;
+>  static const VMStateDescription vmstate_smmuv3_queue = {
+>      .name = "smmuv3_queue",
+>      .version_id = 1,
+> @@ -2299,6 +2312,18 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
+>      device_class_set_props(dc, smmuv3_properties);
 >  }
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index 87e628be7a..96513fce56 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -89,6 +89,8 @@ OBJECT_DECLARE_TYPE(SMMUv3NestedState, SMMUv3NestedClass, ARM_SMMUV3_NESTED)
 >  
->  struct SMMUv3NestedState {
->      SMMUv3State smmuv3_state;
+> +static void smmuv3_nested_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    SMMUv3NestedClass *c = ARM_SMMUV3_NESTED_CLASS(klass);
 > +
-> +    char *pci_bus;
->  };
->  
->  struct SMMUv3NestedClass {
-Thanks
+> +    dc->vmsd = &vmstate_smmuv3;
+> +    device_class_set_parent_realize(dc, smmu_nested_realize,
+> +                                    &c->parent_realize);
+> +    dc->user_creatable = true;
+this may be set at the very end of the series eventually.
 
 Eric
+> +    dc->hotpluggable = false;
+> +}
+> +
+>  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+>                                        IOMMUNotifierFlag old,
+>                                        IOMMUNotifierFlag new,
+> @@ -2337,6 +2362,14 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+>      imrc->notify_flag_changed = smmuv3_notify_flag_changed;
+>  }
+>  
+> +static const TypeInfo smmuv3_nested_type_info = {
+> +    .name          = TYPE_ARM_SMMUV3_NESTED,
+> +    .parent        = TYPE_ARM_SMMUV3,
+> +    .instance_size = sizeof(SMMUv3NestedState),
+> +    .class_size    = sizeof(SMMUv3NestedClass),
+> +    .class_init    = smmuv3_nested_class_init,
+> +};
+> +
+>  static const TypeInfo smmuv3_type_info = {
+>      .name          = TYPE_ARM_SMMUV3,
+>      .parent        = TYPE_ARM_SMMU,
+> @@ -2355,6 +2388,7 @@ static const TypeInfo smmuv3_iommu_memory_region_info = {
+>  static void smmuv3_register_types(void)
+>  {
+>      type_register(&smmuv3_type_info);
+> +    type_register(&smmuv3_nested_type_info);
+>      type_register(&smmuv3_iommu_memory_region_info);
+>  }
+>  
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 780bcff77c..38075f9ab2 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -181,6 +181,7 @@ static const MemMapEntry base_memmap[] = {
+>      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+>      [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+> +    [VIRT_SMMU_NESTED] =        { 0x0b000000, 0x01000000 },
+>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+>      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+>      [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
+> @@ -226,6 +227,7 @@ static const int a15irqmap[] = {
+>      [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+>      [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+> +    [VIRT_SMMU_NESTED] = 200,
+>  };
+>  
+>  static void create_randomness(MachineState *ms, const char *node)
+> @@ -2883,10 +2885,34 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>                                          DeviceState *dev, Error **errp)
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
+>  
+> -    if (vms->platform_bus_dev) {
+> -        MachineClass *mc = MACHINE_GET_CLASS(vms);
+> +    /* For smmuv3-nested devices we need to set the mem & irq */
+> +    if (device_is_dynamic_sysbus(mc, dev) &&
+> +        object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_NESTED)) {
+> +        hwaddr base = vms->memmap[VIRT_SMMU_NESTED].base;
+> +        int irq =  vms->irqmap[VIRT_SMMU_NESTED];
+> +
+> +        if (vms->smmu_nested_count >= MAX_SMMU_NESTED) {
+> +            error_setg(errp, "smmuv3-nested max count reached!");
+> +            return;
+> +        }
+> +
+> +        base += (vms->smmu_nested_count * SMMU_IO_LEN);
+> +        irq += (vms->smmu_nested_count * NUM_SMMU_IRQS);
+>  
+> +        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+> +        for (int i = 0; i < 4; i++) {
+> +            sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+> +                               qdev_get_gpio_in(vms->gic, irq + i));
+> +        }
+> +        if (vms->iommu != VIRT_IOMMU_SMMUV3_NESTED) {
+> +            vms->iommu = VIRT_IOMMU_SMMUV3_NESTED;
+> +        }
+> +        vms->smmu_nested_count++;
+> +    }
+> +
+> +    if (vms->platform_bus_dev) {
+>          if (device_is_dynamic_sysbus(mc, dev)) {
+>              platform_bus_link_device(PLATFORM_BUS_DEVICE(vms->platform_bus_dev),
+>                                       SYS_BUS_DEVICE(dev));
+> @@ -3067,6 +3093,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+> +    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_ARM_SMMUV3_NESTED);
+>  #ifdef CONFIG_TPM
+>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+>  #endif
+> diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+> index eebcd28f9a..0f0d0b3e58 100644
+> --- a/hw/core/sysbus-fdt.c
+> +++ b/hw/core/sysbus-fdt.c
+> @@ -489,6 +489,7 @@ static const BindingEntry bindings[] = {
+>  #ifdef CONFIG_LINUX
+>      TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC, add_calxeda_midway_xgmac_fdt_node),
+>      TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
+> +    TYPE_BINDING("arm-smmuv3-nested", no_fdt_node),
+>      VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
+>  #endif
+>  #ifdef CONFIG_TPM
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index d183a62766..87e628be7a 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -84,6 +84,21 @@ struct SMMUv3Class {
+>  #define TYPE_ARM_SMMUV3   "arm-smmuv3"
+>  OBJECT_DECLARE_TYPE(SMMUv3State, SMMUv3Class, ARM_SMMUV3)
+>  
+> +#define TYPE_ARM_SMMUV3_NESTED   "arm-smmuv3-nested"
+> +OBJECT_DECLARE_TYPE(SMMUv3NestedState, SMMUv3NestedClass, ARM_SMMUV3_NESTED)
+> +
+> +struct SMMUv3NestedState {
+> +    SMMUv3State smmuv3_state;
+> +};
+> +
+> +struct SMMUv3NestedClass {
+> +    /*< private >*/
+> +    SMMUv3Class smmuv3_class;
+> +    /*< public >*/
+> +
+> +    DeviceRealize parent_realize;
+> +};
+> +
+>  #define STAGE1_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S1P)
+>  #define STAGE2_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S2P)
+>  
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 46f48fe561..50e47a4ef3 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -50,6 +50,9 @@
+>  /* MMIO region size for SMMUv3 */
+>  #define SMMU_IO_LEN 0x20000
+>  
+> +/* Max supported nested SMMUv3 */
+> +#define MAX_SMMU_NESTED 128
+> +
+>  enum {
+>      VIRT_FLASH,
+>      VIRT_MEM,
+> @@ -62,6 +65,7 @@ enum {
+>      VIRT_GIC_ITS,
+>      VIRT_GIC_REDIST,
+>      VIRT_SMMU,
+> +    VIRT_SMMU_NESTED,
+>      VIRT_UART0,
+>      VIRT_MMIO,
+>      VIRT_RTC,
+> @@ -92,6 +96,7 @@ enum {
+>  typedef enum VirtIOMMUType {
+>      VIRT_IOMMU_NONE,
+>      VIRT_IOMMU_SMMUV3,
+> +    VIRT_IOMMU_SMMUV3_NESTED,
+>      VIRT_IOMMU_VIRTIO,
+>  } VirtIOMMUType;
+>  
+> @@ -155,6 +160,7 @@ struct VirtMachineState {
+>      bool mte;
+>      bool dtb_randomness;
+>      bool second_ns_uart_present;
+> +    int smmu_nested_count;
+>      OnOffAuto acpi;
+>      VirtGICType gic_version;
+>      VirtIOMMUType iommu;
 

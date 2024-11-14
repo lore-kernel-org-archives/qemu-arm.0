@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp543385njc;
-        Thu, 14 Nov 2024 12:47:45 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXo3Ycs4WmZgtzwGWNEbozS5XFAFI/Sg023l7zCBHwH0f1yG/3du6AfnSK1mA9A5RH846yddUxocT+glQ==@linaro.org
-X-Received: by 2002:a17:902:d505:b0:20c:cf39:fe3c with SMTP id d9443c01a7336-211d0ebf209mr2649495ad.41.1731617265084;
-        Thu, 14 Nov 2024 12:47:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731617265; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp543869njc;
+        Thu, 14 Nov 2024 12:48:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWTS5TQlYKo3M5EvQoUFw7lfjJAQbTS/SMHFABHOoF+XC8hbDAJ/2XJXDSY82xEkPMxFsOS7BmX9c5pwQ==@linaro.org
+X-Received: by 2002:a17:90b:1e41:b0:2e2:e6bf:cd64 with SMTP id 98e67ed59e1d1-2ea154b5755mr412426a91.5.1731617338472;
+        Thu, 14 Nov 2024 12:48:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731617338; cv=none;
         d=google.com; s=arc-20240605;
-        b=ki6JadBI6OsEi5+vl19TxPx9PcYQ7mpiJnz66VGq6H8FPrLJMavXG2lLPKu5/bF7oJ
-         osH5K4Quvxr0LLZzhKVGreOZGtTHEQRiUZDKqvoRsfMM73zEAfKhZwBqdeMuPIJY1US4
-         CwpmO3El8FIJ44mHX9bLesCH0GJHOHQV/k5x5EyVw/HHCaBIiTbUPGd2z2M7/eX8qMgO
-         BOFTAjoLTxEBPo1LXBNbUn+Wi/070V30GaLzcVi9HoM/8DIg2FUpW69s/1C7t5N/7Aly
-         dUllrVM3bzoWrt6Z/AU3v4z9j19eSadciLkJlkpzWX1qzEZKzot3wd4qHK1ySSmExcCz
-         qqUQ==
+        b=bBXQGgGgA81v5uUVOCHYNFuK2cV6qi0vEH5MC8LW0Ih+rkOZzJaPkBwOP5FL/XGRF8
+         awScHTYePHkgoy/2bmBnybYd2yr+G660UEEslkrIqkRXRTDcNmoLm6AjF3PEWHS1Xv7M
+         8nUvcoBTfa5IE8h+Ia8qp65U7Efn+ebf8dXMfUn5SgvKcltKVJQXhH2zBYYSBjh6jFLQ
+         rutpdJcyio1PK3lg6GP8Hd62u2gddTyo68cHDPE/bMcyNRJvyZLXj8vrT2sDLzkb7YO/
+         hiOlOeRmTZlYmxScHG2jloMJTS7NwQZ/MXSZiHeYx0lGJjFU8V2VaurRHrrKHFiZyi6X
+         wmbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=TQAffY6Jbc3yb4+aNdQcKrEa6FnLgG8CT4LXibiEXls=;
-        fh=kL4fjZ13U6j5Zo1g6RY/Ax6P/dMdNjjSJ86QNkamx+o=;
-        b=jKcOlVX2dP6NotcdfTxvly6TSwbQFf+b1EgpmncEnFAYdXK+Gm1PXkHSHmJVlT7j3n
-         NaWLWSTrbCWnmnvK271D0znDoe/CNxyOS2D5zDtRe0vJx6ttPYHK8EP0lMU7u2be4cdf
-         OZ6kT39U6aWVlWXh3Pja5gIUYmr9zJ3p6EWfQ0+IjRhc7fEGin32ABa03D59J3LdkFjE
-         IFoZ/iLV/uqmqRhfbiqv3FYNmqTFTqlrkdzDFQv2QuDCsYU51TnTNUCQYYkMnAs4VVQb
-         Xk+Cx/kviUHGPSB4PNXQQ8tmLi1f74TC6KKZAUDJ+DjDzaTHlPFO5DPK2u7yRof4FnEF
-         On/g==;
+        bh=NvT91xuPxiPPi83Z5rvcALQMp9g2aGeDYw5FZ2UVvgA=;
+        fh=V5zm0jNq1jheaLtycm4NCH/OSdO7OAtwHT+DZwjw6zE=;
+        b=BeySVrc4P3BlY/49dTiP6s6kAQ9prutGSrnpZib5T2v820iX7vWM6pSQxG3ft/NlOt
+         Nobjs+6V6WmmvLPhb86TjB9vrAvX40HXbo8r4rIHnE9IqZLKrKHHQVQ3MFikGO88DQyZ
+         so9ECJuX3OXPDI+FL27V55MRiS8b7WWfnTDKcky2Rw6UaSMFDG7v5DPXNzp6svPmaMFf
+         CIHG+2NsjM9WsFY46AY2zDSX/6idYOTFB13Zeb0OlGUe0zKIMbHvtuBxXXH1TrMj5e5+
+         N9fng+bdsDs3ARwUSQ64dkVW9mBzHG6pNMIeAVufqy1U0vfiDpW8rfOH5rpGUxj0g53L
+         Dyiw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vxAGIVAp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vo9lCmLE;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-211c7c33357sor13762835ad.3.2024.11.14.12.47.44
+        by mx.google.com with SMTPS id 98e67ed59e1d1-2ea07e6a859sor1462779a91.1.2024.11.14.12.48.58
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 14 Nov 2024 12:47:44 -0800 (PST)
+        Thu, 14 Nov 2024 12:48:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vxAGIVAp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vo9lCmLE;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731617264; x=1732222064; darn=linaro.org;
+        d=linaro.org; s=google; t=1731617338; x=1732222138; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=TQAffY6Jbc3yb4+aNdQcKrEa6FnLgG8CT4LXibiEXls=;
-        b=vxAGIVAp2cY1CcxQNnKN8qzzM587G8Oh3CWKViaDTv8J0hz0nO/Sm+49O57nxG3XvZ
-         8OY6fxNM/l/PHa2yu4m7qfBW4mz2Meq+09AiKCe1M5wG7EwHeSMtZWk/CcW1FKryv2cu
-         WFw6j+fcUQUckDh4rzdmgf77X6XnrQi43bOzaOXq43bDJjNLYm2kkOAXvFlIF/ps8Vm7
-         bp4xZk54rkmMPPz4Mq9O4IghH+Ssu0ynJGUgOrxHlry31yf8WuTkaDT4x0+3QWZUAL9B
-         1kUZCQ77S2zxpHJDZ4L36CIH3jVh33WaCC/UjGm24QbZjl0Ed1IkP48YzG871f4ZwDV3
-         h3+w==
+        bh=NvT91xuPxiPPi83Z5rvcALQMp9g2aGeDYw5FZ2UVvgA=;
+        b=vo9lCmLEWSM93zIDNd6ubsvVGdvNyztvOmSLUVqlbCIR/AoUMVKj0kopdB4T7rqfea
+         hpiETUJg01pRxfL1fi4ib4w0wyZgHIeP92bxD51JrQNyAoGDbfsKvw0Ey2eqNYYj7Lsn
+         X0Yop+TZ7ROsRBHXCiyS9ASkESXkqFPVj8MT0sMhpoRS10XoNviysEeuv15iz3bqn6Nn
+         LO7l6KEgeFwc1yNV9vl2DgPR6T0XhBxKttk5+czj5J0to+OxLEs4Fdld6FRoUzEwOE4y
+         2S3PVuVrvbOopiCRAsyt9HwA0EkKk5vQfPcPOE3oxSSMQfSZ/RcWjI4i3Qe3oVjfSeDT
+         blJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731617264; x=1732222064;
+        d=1e100.net; s=20230601; t=1731617338; x=1732222138;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=TQAffY6Jbc3yb4+aNdQcKrEa6FnLgG8CT4LXibiEXls=;
-        b=TggTHvoFoZtxwkZThZYLwejTzXV1x9Wjq74KyklIgFnEN3it+QLHE/bHeJ5TxQyXcy
-         CdGkGHJpzXRWIrnBe1BKHEavCF49xhYYpsT+XFRaNkOj5lsEANUGOgjUDACIq1ztIh2M
-         vye/6cN7vZXbxN+hLoNAlbeEcl4JjaWzvc5VVcb7iBg8mp/37O8ur5yJxQ2fa+hO/R+V
-         JQeeBes2H3vi1vSLS6uVsqfWKxjwvwDANlC/T6xBE003EywNhYwJ2OXD4wNFH3OaNZcI
-         pXFdDRsA7at8T3kPjzvlqo3DqJ2DxrIDs86OoVEwySfKTZDtFVI6KWszBg9hV0w8p/cs
-         sJcQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXztsk+n02sNKY2ifna3mJLKO7lXdtbOk7Q+26uxl1TjbB7euytC2ktJEBcVb0iaQ1Lb+N2RhmOSAPFxw==@linaro.org
-X-Gm-Message-State: AOJu0Yz0bqP4SqhGIlEEWory2LMdEohlddQXaK5Ku6m0p7AUdpeJajJS
-	1WVm1aIa72w1FI1EoD2vz9CTMOyzGqQL/iBxo73GraFK2MY6JYFv6zqdlKQu0sS7Ew==
-X-Google-Smtp-Source: AGHT+IHFS/Bm4/pxG4GRtDM6hsm+A2K8VwDnl7hMoSxJRFz1VyyGEhA0kRuDPq8Vmn7VYqOggaB2eQ==
-X-Received: by 2002:a17:902:c950:b0:20b:b93f:300a with SMTP id d9443c01a7336-211d0d62833mr2748365ad.7.1731617264508;
-        Thu, 14 Nov 2024 12:47:44 -0800 (PST)
+        bh=NvT91xuPxiPPi83Z5rvcALQMp9g2aGeDYw5FZ2UVvgA=;
+        b=cazkB3drpgQb2rRK9f42eC/sDE3zTVZVPvKiqbtnFCZPyIDpvLc2rISup3TZgkCEEq
+         4W5QFPfevJhaX60e5UWOjvbrGybCnEMoaH0latho2e8Q5YG6FUtmqL3IQHEXG9xf6nwl
+         Y5D+sahq9735B4xVgOnPBQ16snLR0e0WnmsGYr+E93JL1NH1uo/rHCYZg5oz+cXE2dbA
+         RVbC01vCSpbqBWZMRxDxX1D2MnuSUy6O30K4RTrHfhK+HtG7kabvo9GeNxudUueq+tjh
+         bfdPzQQy7v7GAwYQKE+bVyAPu23Zs7yTyadIlvKKFHJ023dyn13D4E4el5WJaeCPkRVg
+         b+eQ==
+X-Forwarded-Encrypted: i=1; AJvYcCURRd46+1ooXhJ6t0Hk4jh3XkK0upSzwTtPpB5QailP/rW3n93xkwjk/jQvzlsXlCI3Cx1GXowAhd/VmA==@linaro.org
+X-Gm-Message-State: AOJu0Yyfol47D/mFGUgpR/BKJam9aub32Hs96n/LmWncyGK4PkWX1VeW
+	aLsWRioREJP+4wjK3uQuaTwSZKFW1lhT8Aulw/MnGRbVx59w9ETsO22rVjN9BnqM4A==
+X-Google-Smtp-Source: AGHT+IE91X7Fcv7dxFSDLh9EGDMQ7wgTgogGy4GFohsdJZGpjj6piuiO4JPRxltr2nHCoXNPK4VLlg==
+X-Received: by 2002:a17:90b:1c0c:b0:2e2:e2f1:aee with SMTP id 98e67ed59e1d1-2ea154fc4a5mr343688a91.22.1731617337991;
+        Thu, 14 Nov 2024 12:48:57 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.0.4] ([71.212.136.242])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-211d0f46843sm463015ad.186.2024.11.14.12.47.43
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2ea024ee428sm1731777a91.50.2024.11.14.12.48.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Nov 2024 12:47:44 -0800 (PST)
-Message-ID: <00fa4af8-e9a7-4e9f-8c93-86582739fff0@linaro.org>
-Date: Thu, 14 Nov 2024 12:47:42 -0800
+        Thu, 14 Nov 2024 12:48:57 -0800 (PST)
+Message-ID: <a1db36ca-47db-41c2-a60f-59514b33b757@linaro.org>
+Date: Thu, 14 Nov 2024 12:48:55 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 22/24] exec/cpu-common: Move ram_addr_t related methods to
+Subject: Re: [PATCH 23/24] exec/memory: Move qemu_map_ram_ptr() declaration to
  'exec/ram_addr.h'
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Anton Johansson <anjo@rev.ng>,
@@ -92,25 +92,56 @@ Cc: qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-s390x@nongnu.org
 References: <20241114011310.3615-1-philmd@linaro.org>
- <20241114011310.3615-23-philmd@linaro.org>
+ <20241114011310.3615-24-philmd@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20241114011310.3615-23-philmd@linaro.org>
+In-Reply-To: <20241114011310.3615-24-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: A3GMA9nbSzU4
+X-TUID: Mkr3uMpaNjwa
 
 On 11/13/24 17:13, Philippe Mathieu-Daudé wrote:
-> Move methods related to the ram_addr_t type to
-> the specific "exec/ram_addr.h" header.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   include/exec/cpu-common.h        | 56 +-------------------------------
->   include/exec/ram_addr.h          | 56 ++++++++++++++++++++++++++++++++
->   include/exec/translation-block.h |  2 +-
->   3 files changed, 58 insertions(+), 56 deletions(-)
+>   include/exec/memory.h   | 2 +-
+>   include/exec/ram_addr.h | 1 +
+>   2 files changed, 2 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
+
 r~
+
+> 
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index 9458e2801d..58faa3eb08 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -28,6 +28,7 @@
+>   #include "qemu/notify.h"
+>   #include "qom/object.h"
+>   #include "qemu/rcu.h"
+> +#include "exec/ram_addr.h"
+>   
+>   #define RAM_ADDR_INVALID (~(ram_addr_t)0)
+>   
+> @@ -2973,7 +2974,6 @@ MemTxResult flatview_read_continue(FlatView *fv, hwaddr addr,
+>                                      MemTxAttrs attrs, void *buf,
+>                                      hwaddr len, hwaddr addr1, hwaddr l,
+>                                      MemoryRegion *mr);
+> -void *qemu_map_ram_ptr(RAMBlock *ram_block, ram_addr_t addr);
+>   
+>   /* Internal functions, part of the implementation of address_space_read_cached
+>    * and address_space_write_cached.  */
+> diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+> index e0620ddb03..c4f220ae93 100644
+> --- a/include/exec/ram_addr.h
+> +++ b/include/exec/ram_addr.h
+> @@ -73,6 +73,7 @@ void qemu_ram_set_migratable(RAMBlock *rb);
+>   void qemu_ram_unset_migratable(RAMBlock *rb);
+>   bool qemu_ram_is_named_file(RAMBlock *rb);
+>   int qemu_ram_get_fd(RAMBlock *rb);
+> +void *qemu_map_ram_ptr(RAMBlock *ram_block, ram_addr_t addr);
+>   
+>   size_t qemu_ram_pagesize(RAMBlock *block);
+>   size_t qemu_ram_pagesize_largest(void);

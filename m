@@ -1,178 +1,403 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp175091njc;
-        Thu, 14 Nov 2024 00:33:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUg3jx4oYP7zMBhLLTN3DPp/ORzxu9j/2zcT/hkQpeZugOKbpqXacflxHHMyuVf7xjRPfc0e3SuL2UF9g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFgqZ9QZQilNLgQ5rhbmQFQlOBBgwEgsXKCQIBVdRyuwQm1dhHJpnDDoBjTxujdmr5IhUJM
-X-Received: by 2002:a05:620a:bc5:b0:7af:ceb8:13db with SMTP id af79cd13be357-7b331f20cdbmr3310076385a.41.1731573219239;
-        Thu, 14 Nov 2024 00:33:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731573219; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp225022njc;
+        Thu, 14 Nov 2024 02:33:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXabYW44JBj13gQTmi/r7O81mRD0e0shlRruAWjJv7oEjjxmN9RSDhBnOcuax+vaOXs0RKZW9KdcwOsZw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFdC/xdGG1N3H2UbreDbYwHJ+AWbcAlHd6Hr01csa6MsSeOEoS8e8N9RdZ5CIsTq86lCJMV
+X-Received: by 2002:a05:620a:258b:b0:7b1:1b47:213c with SMTP id af79cd13be357-7b331e88e6emr2931066685a.10.1731580417713;
+        Thu, 14 Nov 2024 02:33:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731580417; cv=none;
         d=google.com; s=arc-20240605;
-        b=YIgDA2LpPzvBIyrNSwksDPxBXZ4syspn1Q1KKejbTemFY5of6NhxXi8ehzDkXup9ml
-         jz85QCGtfpISOPRYT6BSV1EOYoohbm7GDkhu5LLf2n0CfQ1Kk0jGWJEyD0h0uztZq6Ml
-         4VVizdndwNR972b0kY45S0BLJ9iQgissVOkKg2UYtNkAltg5KI5tFagVduSjqH8RvE30
-         WfipMSlseWwRyCmvMYy13BlB0+lG1x/uiXLrFNDsjxAcDHYByzo/yLNrYW8tVC0QsFGm
-         pqwCjpyQsz+FId5FiIfbN9ggU10aaH+HJg40j0pFe/v6IOWkqHEmylguyfRfJhSUUggm
-         mn5w==
+        b=emQfTZJoYgLKECLUMu7w3C1kMzrHkOUVt4hMjjJFKxYiQsEJrB7SrrVke84f/GR1vf
+         nFORHoagEiHVgt0ySwdCI4DfKVghh6+lcopYQil436TCPEFyCgzYjMuIDfZlUiZYkZCB
+         +0dMrlWO8XrpQzJ5BX3reIQOlPmXCFHn+Y7cJmslC8u1oHVwhuVIQNwnnsNkG5WPA7lJ
+         GBRBba169mMpcydT78RlQ0d7mbF61bLelvzVEPdwYADnY79S1GEbTj7tudDyGybrbBbF
+         n5DpeXvGi8sfVB9SwAllDyzi9BWXNp3l2akMi6Br6YhMKrfXVmc0mZ35KCHBBfBukmHW
+         QtHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=z2JUGD1FdISLg8yGUupnvIgAzOhJ6vDUlvcn82eWaA4=;
-        fh=Ca9p2atFejJgp19ebOz7xRAqPrl7kYxxafWLkGcYfAc=;
-        b=JT8OikxI8l+e6YiosAf2fIvuGxSmy9c3CDwkXkG5cNCKAI9hXLr1+TFzi3RHSVN/DR
-         g+/uH/myqRLoI/RIp8evrv1cqUHzbRC62/zbXQmVzEipL4b6w9NgF3KoElXUXUQEuUQc
-         1tWQzT60DCKr8XEfjsburffQcqi6z/VjSLAcZetmjK0RT6sIhvnsFza0/GmrX+43uCnr
-         p9levVTstngWB+GbQ/aVnymFzNrdKwy2osZfJKjynVpi5dEeVE+8ql7RjzMKhUdzRRj+
-         mvkWnVU6DWYJT8byBknLR+bVRN3ffJGKlMiSgPzhipf9lBhbhbeeZ9IA+rCW42lcfDsa
-         GV/w==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=eUcS7xHNS/AIdEVeGwDv8iR0VwSii73wpmKr9mrhXzw=;
+        fh=4YEpTZL9GJhGX4GyHtrL/hGWBCTLfL5EfQwjBEl8/NQ=;
+        b=Au9JGBzo+9kasoAJ3T9VvKrSg/IE6S5jN+olAsS8vBcHxfxC7HLltQyDn47F1PI+6P
+         xSQwmpoBN/zLRvJG6TwIqpU431g/9Eq34uH4XXzxh1k4GM61y81Dv6gur99PPkRiVhhi
+         rS9fxM0df4prXV3o4/LkBgfU4OamShx8GWuhc/8sg7vw4ovooCtO7dqk77ydeewg/8cb
+         3puMXAjoP00ZfnVM+tX9FrRfegONFDpNUjWDHOW9uIiogVmW72+0KciixbnlE4ZZsTD0
+         sKy3vK++H97G6gxvOiUKse7qEw4CTkV19Ua1PKb6Tv1OxkhBlJqJys9aoIHpXzGtlqDy
+         Iwkw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FMVBwf2K;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b35cacaa69si67300985a.558.2024.11.14.00.33.39
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=bo+3iveu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b35cab17bcsi94160685a.485.2024.11.14.02.33.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 14 Nov 2024 00:33:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 Nov 2024 02:33:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FMVBwf2K;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1731573218;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=z2JUGD1FdISLg8yGUupnvIgAzOhJ6vDUlvcn82eWaA4=;
-	b=FMVBwf2KZMOu7FFcb+5cbXYgINTLunIxLP2npzn/hhvCloDSozSd0Ws3XVqG5YogTynMyS
-	DdyDkct6U8W774bOIqbY67AEV+PJXLVOECzXAvXBhLgMPRd95pnNfxtzl62B9BDeTXX4lT
-	dTc/ZYTULhbshMrDze9JM/KINGgJ1XU=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-648-Uq9EDx0vMSKKakLIA_FpJA-1; Thu, 14 Nov 2024 03:33:37 -0500
-X-MC-Unique: Uq9EDx0vMSKKakLIA_FpJA-1
-X-Mimecast-MFC-AGG-ID: Uq9EDx0vMSKKakLIA_FpJA
-Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-7b14fc05206so46067585a.2
-        for <alex.bennee@linaro.org>; Thu, 14 Nov 2024 00:33:37 -0800 (PST)
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=bo+3iveu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tBX9k-0003UH-JR; Thu, 14 Nov 2024 05:32:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lists@philjordan.eu>)
+ id 1tBX9j-0003Ty-Hd
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2024 05:32:55 -0500
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <lists@philjordan.eu>)
+ id 1tBX9V-0005tc-Nk
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2024 05:32:45 -0500
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-20c7ee8fe6bso4274175ad.2
+ for <qemu-arm@nongnu.org>; Thu, 14 Nov 2024 02:32:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731580359; x=1732185159;
+ darn=nongnu.org; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=eUcS7xHNS/AIdEVeGwDv8iR0VwSii73wpmKr9mrhXzw=;
+ b=bo+3iveuIgIK3JYZl0s7903i9jRjCCE++R6l64OeEU7mKIeDuaNz3b5VMWLjvr6nzI
+ ggKZ9e2QP2Wjp5zwXp0IORPwzmi5vrhZqiK8DSfUxZWQ+bp7O2eZ5tPgadC6WMfFxM9L
+ SAOgaa3WebZ0fiI+OGYbTOt1u49iQiWPfaLoxy9ktLeQSWUH316K9JaQ2LHEk/O9iNht
+ ysycV4bXFaJ8G88DWL5Yu11VuG6QS0sBJz1uwVz5eg/za8eWsKuFQa5T3UuFWjzpKRfL
+ uYY4CPjDfvowPF/cxxqk/jmNXw6/zrBMy8KVFY6wUT0NmtZo3tyRfnEXMqdHsqaiAKp5
+ xntA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731573217; x=1732178017;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=z2JUGD1FdISLg8yGUupnvIgAzOhJ6vDUlvcn82eWaA4=;
-        b=p1epBpQMFBaWb5uj3ys7r2j74nQ3lRnCd3dM4dk8MVAMawafJNkIL8ogkTW9MsQG9n
-         tiEOWTZy7jNGIaqE03pCUzqiCFwCs/ZU3aqmJYdigE0ZpAp3Z1NhJk7kcRmvZxGd5+ZL
-         6H3YHPZBdPQ0MHxTt4R+ebAKo3HHXstkatrlWsEhDmvRcrRz23IpncNvhDVhk+q8f028
-         ziHiQbHspp2R6Hq0XWvdfeL8CTCz1q3PAjLHo675448CUPnWIGRsxWPooP9+0RxU3YQZ
-         IZqi3qL3pjPK6vvvmh/A0Y++J8evaOtHnZ7+y1VSB3+tOmEYlJU8a9sNKAqv979oScC3
-         MhXA==
-X-Forwarded-Encrypted: i=1; AJvYcCUqmLX94HC4CWHIawSq2zpf8gcA5qwydI19wB0Jvm2KTqGA9GCiEi7qO20y9Jruis6dwmb543RiJb+TZQ==@linaro.org
-X-Gm-Message-State: AOJu0YyxDLFy9tjWE+MfMIpes90S/uTbIfQylIzbGYi2at7zcioVC6Mh
-	7/Qrqa0iQX5k3FRKSP6r1u1lfk5JHwLd/zuqkWX6wtg+UtH1HL2nJj2v8qVA6jumj7O2o8PUDFm
-	LNh57DIxPHQ/46J1MpyhUOtrnS1fSqP+sdN/PVKTY2NlSgzMdTWT8ow==
-X-Received: by 2002:a05:620a:178b:b0:7a9:b8dd:eb96 with SMTP id af79cd13be357-7b331ebff74mr2703925985a.30.1731573217104;
-        Thu, 14 Nov 2024 00:33:37 -0800 (PST)
-X-Received: by 2002:a05:620a:178b:b0:7a9:b8dd:eb96 with SMTP id af79cd13be357-7b331ebff74mr2703923885a.30.1731573216816;
-        Thu, 14 Nov 2024 00:33:36 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.7] (ip-109-42-49-115.web.vodafone.de. [109.42.49.115])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7b35ca30ea8sm25994585a.90.2024.11.14.00.33.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Nov 2024 00:33:36 -0800 (PST)
-Message-ID: <7bf93a20-a134-4bb7-a572-e74ca357e602@redhat.com>
-Date: Thu, 14 Nov 2024 09:33:30 +0100
+ d=1e100.net; s=20230601; t=1731580359; x=1732185159;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=eUcS7xHNS/AIdEVeGwDv8iR0VwSii73wpmKr9mrhXzw=;
+ b=P8S8ZdH2l30cuIpq1deZBfwyHYRjFsVeab5M3+5BU+2vj+kh2iBmHZdHLvWLyr6y3/
+ zoWbq8qOoBS4I3RkuQ+vymnZ/wuc+xnvOWKCk7G5hqjpmHz86LoTwWDgHCmaXsTk6WCP
+ 1pktSVhZB8r14NmCK/1W7T0CPKjr6q7Ak2OQFeCaSf4NBd9BncRkbLcwflQRjWlA2pLj
+ dlHMYHuuxzY2Cj/vHoj4XaEwvboKl7ckPaaNU0IUFbco0ccvRuOc05CaYcU3f1U1DATP
+ J8tUOY7ASqSxm9LnCCdtIIMzN5pCOzQ9WZ7Q0Brbg02TSq4OGjjgYHY7z6vnxxPjLSSq
+ Z5hA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXXMTZSNj2qdl81a/1puDLKeQjC07I1/EEk+JiHXOyyWhvvfiJMOAEcJJ0swTjwpl3FCi9lE93B3w==@nongnu.org
+X-Gm-Message-State: AOJu0YzA1mJq6K247F57Z0pR2Xrkhz74I8kAZ0zDigos9ZUFQOy74I9O
+ DoysougmwwFhziCOqybHbtfMComUIfbyvorKlahhW4DiR9KudAqMmxrQqyKLad7ZLXbGdFj1b5o
+ QQ/J9XtR8Bv8RYpN6OS8CANR5Sw+5Ztf48lbi
+X-Received: by 2002:a17:902:facf:b0:210:e75f:e6b0 with SMTP id
+ d9443c01a7336-21183e0dd11mr238339635ad.40.1731580358775; Thu, 14 Nov 2024
+ 02:32:38 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/24] exec/cpu-defs: Remove unnecessary headers
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Anton Johansson <anjo@rev.ng>, qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Peter Xu <peterx@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
- David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-s390x@nongnu.org
-References: <20241114011310.3615-1-philmd@linaro.org>
- <20241114011310.3615-3-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20241114011310.3615-3-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tAExL2j5q_gDDhQUoyv94_E5orbXhO4oV4046f74wyE_1731573217
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: qLldnHFIUGbD
+References: <20241113142343.40832-1-phil@philjordan.eu>
+ <20241113142343.40832-2-phil@philjordan.eu>
+ <c0983059-ab11-4bc5-ab60-c5b23d1c290e@redhat.com>
+In-Reply-To: <c0983059-ab11-4bc5-ab60-c5b23d1c290e@redhat.com>
+From: Phil Dennis-Jordan <lists@philjordan.eu>
+Date: Thu, 14 Nov 2024 11:32:27 +0100
+Message-ID: <CAGCz3vv+5y=YGqZaXnGkVj0zA9fX-n3BOZyuPQC+dRMKN8VJZw@mail.gmail.com>
+Subject: Re: [PATCH v10 01/15] ui & main loop: Redesign of system-specific
+ main thread event handling
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org,
+ agraf@csgraf.de, 
+ peter.maydell@linaro.org, rad@semihalf.com, quic_llindhol@quicinc.com, 
+ stefanha@redhat.com, mst@redhat.com, slp@redhat.com, 
+ richard.henderson@linaro.org, eduardo@habkost.net, marcel.apfelbaum@gmail.com, 
+ gaosong@loongson.cn, jiaxun.yang@flygoat.com, chenhuacai@kernel.org, 
+ kwolf@redhat.com, hreitz@redhat.com, philmd@linaro.org, shorne@gmail.com, 
+ palmer@dabbelt.com, alistair.francis@wdc.com, bmeng.cn@gmail.com, 
+ liwei1518@gmail.com, dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, 
+ jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com, 
+ akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org, 
+ qemu-riscv@nongnu.org, balaton@eik.bme.hu
+Content-Type: multipart/alternative; boundary="0000000000002f73e90626dcf89e"
+Received-SPF: neutral client-ip=2607:f8b0:4864:20::635;
+ envelope-from=lists@philjordan.eu; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: bQNN38DgByPP
 
-On 14/11/2024 02.12, Philippe Mathieu-Daudé wrote:
-> "exec/cpu-defs.h" should be kept as minimal as possible;
-> besides these includes don't seem necessay. Remove them.
+--0000000000002f73e90626dcf89e
+Content-Type: text/plain; charset="UTF-8"
 
-s/necessay/necessary/
+On Wed, 13 Nov 2024 at 17:38, Paolo Bonzini <pbonzini@redhat.com> wrote:
 
-> diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
-> --- a/include/exec/cpu-defs.h
-> +++ b/include/exec/cpu-defs.h
-> @@ -23,14 +23,6 @@
->   #error cpu.h included from common code
->   #endif
->   
-> -#include "qemu/host-utils.h"
-> -#include "qemu/thread.h"
-> -#ifndef CONFIG_USER_ONLY
-> -#include "exec/hwaddr.h"
-> -#endif
-> -#include "exec/memattrs.h"
-> -#include "hw/core/cpu.h"
+> On 11/13/24 15:23, Phil Dennis-Jordan wrote:
+> > macOS's Cocoa event handling must be done on the initial (main) thread
+> > of the process. Furthermore, if library or application code uses
+> > libdispatch, the main dispatch queue must be handling events on the main
+> > thread as well.
+> >
+> > So far, this has affected Qemu in both the Cocoa and SDL UIs, although
+> > in different ways: the Cocoa UI replaces the default qemu_main function
+> > with one that spins Qemu's internal main event loop off onto a
+> > background thread. SDL (which uses Cocoa internally) on the other hand
+> > uses a polling approach within Qemu's main event loop. Events are
+> > polled during the SDL UI's dpy_refresh callback, which happens to run
+> > on the main thread by default.
+> >
+> > As UIs are mutually exclusive, this works OK as long as nothing else
+> > needs platform-native event handling. In the next patch, a new device is
+> > introduced based on the ParavirtualizedGraphics.framework in macOS.
+> > This uses libdispatch internally, and only works when events are being
+> > handled on the main runloop. With the current system, it works when
+> > using either the Cocoa or the SDL UI. However, it does not when running
+> > headless. Moreover, any attempt to install a similar scheme to the
+> > Cocoa UI's main thread replacement fails when combined with the SDL
+> > UI.
+> >
+> > This change tidies up main thread management to be more flexible.
+> >
+> >   * The qemu_main global function pointer is a custom function for the
+> >     main thread, and it may now be NULL. When it is, the main thread
+> >     runs the main Qemu loop. This represents the traditional setup.
+> >   * When non-null, spawning the main Qemu event loop on a separate
+> >     thread is now done centrally rather than inside the Cocoa UI code.
+> >   * For most platforms, qemu_main is indeed NULL by default, but on
+> >     Darwin, it defaults to a function that runs the CFRunLoop.
+> >   * The Cocoa UI sets qemu_main to a function which runs the
+> >     NSApplication event handling runloop, as is usual for a Cocoa app.
+> >   * The SDL UI overrides the qemu_main function to NULL, thus
+> >     specifying that Qemu's main loop must run on the main
+> >     thread.
+> >   * The GTK UI also overrides the qemu_main function to NULL.
+> >   * For other UIs, or in the absence of UIs, the platform's default
+> >     behaviour is followed.
+> >
+> > This means that on macOS, the platform's runloop events are always
+> > handled, regardless of chosen UI. The new PV graphics device will
+> > thus work in all configurations. There is no functional change on other
+> > operating systems.
+> >
+> > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+> > Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+>
+> I checked what GTK+ does and, either way, you have to create another
+> thread: timers are handled with a CFRunLoopTimer, but file descriptors
+> are polled in a separate thread and sent to the main thread with a
+> single CFRunLoopSource.  It's a bit nicer that the main thread is in
+> charge, but it's more complex and probably slower too.
+>
 
-Seems to work. Good catch!
+Just to clarify: is this supposed to be happening inside the GTK+ library
+itself? i.e. GTK should spawn its own thread to poll file descriptors that
+are owned by GTK? (As opposed to the file descriptors used by QEMU's own
+event loop - what on Linux are eventfds, but on macOS I think are just
+pipes*.)
 
-Tested-by: Thomas Huth <thuth@redhat.com>
+This doesn't describe what I'm seeing when I run with -display gtk on
+macOS. There's no extra thread created. There's a dock icon, but it's
+non-interactive ("Application not responding"), there aren't any menus, and
+there's no window. QEMU's own simulation is running in the background - I
+can reach a guest via the network. So I guess there's some function in GTK
+we're supposed to be calling that will make it crank the native event loop
+on macOS, but this isn't being done?
+
+Or do you mean there exists a global "block here forever" function in GTK
+we can call from the main thread and which will make everything spring into
+life, but that brings with it the same requirement as with the Cocoa UI:
+moving everything that was originally on the main thread onto a background
+thread. (I've done some searching for GTK docs and other background info
+but anything I've found has been rather thin on this topic. The ui/gtk*.c
+source is also not particularly enlightening - it seems to imply that
+something in the background ought to be handling events somewhere.)
+
+[* The event loop in QEMU on macOS probably ought to use a kqueue, with
+EVFILT_USER where eventfds are used on Linux, except the rough equivalent
+of ioeventfds are Mach ports which can be handled via EVFILT_MACHPORT, but
+I digress.]
+
+As long as it's clear that any handlers that go through the CFRunLoop
+> run outside the BQL, as is already the case for the Cocoa UI, I see no
+> problem with this approach.
+>
+
+I'm not entirely sure what you're getting at here, to be honest. The UI
+thread can definitely not assume to be holding the BQL all the time; we'd
+have to treat it more like an AIOContext. It could pave the way towards
+putting the display and UI subsystems on their own AIOContext or
+AIOContext-like-thing, rather than hogging the BQL for expensive image
+operations.
+
+(*By the sound of it, Win32 has an all-UI-calls-on-one-thread requirement
+as well which we may be violating to some degree via the GTK and/or SDL
+backends as well; my adventures with Win32 are almost 20 years back now so
+I'm a bit out of the loop there.)
+
+
+> Acked-by: Paolo Bonzini <pbonzini@redhat.com>
+>
+> Paolo
+>
+>
+>
+
+--0000000000002f73e90626dcf89e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, 13 Nov 2024 =
+at 17:38, Paolo Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com" target=
+=3D"_blank">pbonzini@redhat.com</a>&gt; wrote:<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">On 11/13/24 15:23, Phil Dennis-Jordan wrot=
+e:<br>
+&gt; macOS&#39;s Cocoa event handling must be done on the initial (main) th=
+read<br>
+&gt; of the process. Furthermore, if library or application code uses<br>
+&gt; libdispatch, the main dispatch queue must be handling events on the ma=
+in<br>
+&gt; thread as well.<br>
+&gt; <br>
+&gt; So far, this has affected Qemu in both the Cocoa and SDL UIs, although=
+<br>
+&gt; in different ways: the Cocoa UI replaces the default qemu_main functio=
+n<br>
+&gt; with one that spins Qemu&#39;s internal main event loop off onto a<br>
+&gt; background thread. SDL (which uses Cocoa internally) on the other hand=
+<br>
+&gt; uses a polling approach within Qemu&#39;s main event loop. Events are<=
+br>
+&gt; polled during the SDL UI&#39;s dpy_refresh callback, which happens to =
+run<br>
+&gt; on the main thread by default.<br>
+&gt; <br>
+&gt; As UIs are mutually exclusive, this works OK as long as nothing else<b=
+r>
+&gt; needs platform-native event handling. In the next patch, a new device =
+is<br>
+&gt; introduced based on the ParavirtualizedGraphics.framework in macOS.<br=
+>
+&gt; This uses libdispatch internally, and only works when events are being=
+<br>
+&gt; handled on the main runloop. With the current system, it works when<br=
+>
+&gt; using either the Cocoa or the SDL UI. However, it does not when runnin=
+g<br>
+&gt; headless. Moreover, any attempt to install a similar scheme to the<br>
+&gt; Cocoa UI&#39;s main thread replacement fails when combined with the SD=
+L<br>
+&gt; UI.<br>
+&gt; <br>
+&gt; This change tidies up main thread management to be more flexible.<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0* The qemu_main global function pointer is a custom functi=
+on for the<br>
+&gt;=C2=A0 =C2=A0 =C2=A0main thread, and it may now be NULL. When it is, th=
+e main thread<br>
+&gt;=C2=A0 =C2=A0 =C2=A0runs the main Qemu loop. This represents the tradit=
+ional setup.<br>
+&gt;=C2=A0 =C2=A0* When non-null, spawning the main Qemu event loop on a se=
+parate<br>
+&gt;=C2=A0 =C2=A0 =C2=A0thread is now done centrally rather than inside the=
+ Cocoa UI code.<br>
+&gt;=C2=A0 =C2=A0* For most platforms, qemu_main is indeed NULL by default,=
+ but on<br>
+&gt;=C2=A0 =C2=A0 =C2=A0Darwin, it defaults to a function that runs the CFR=
+unLoop.<br>
+&gt;=C2=A0 =C2=A0* The Cocoa UI sets qemu_main to a function which runs the=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0NSApplication event handling runloop, as is usual f=
+or a Cocoa app.<br>
+&gt;=C2=A0 =C2=A0* The SDL UI overrides the qemu_main function to NULL, thu=
+s<br>
+&gt;=C2=A0 =C2=A0 =C2=A0specifying that Qemu&#39;s main loop must run on th=
+e main<br>
+&gt;=C2=A0 =C2=A0 =C2=A0thread.<br>
+&gt;=C2=A0 =C2=A0* The GTK UI also overrides the qemu_main function to NULL=
+.<br>
+&gt;=C2=A0 =C2=A0* For other UIs, or in the absence of UIs, the platform&#3=
+9;s default<br>
+&gt;=C2=A0 =C2=A0 =C2=A0behaviour is followed.<br>
+&gt; <br>
+&gt; This means that on macOS, the platform&#39;s runloop events are always=
+<br>
+&gt; handled, regardless of chosen UI. The new PV graphics device will<br>
+&gt; thus work in all configurations. There is no functional change on othe=
+r<br>
+&gt; operating systems.<br>
+&gt; <br>
+&gt; Signed-off-by: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil@philjorda=
+n.eu" target=3D"_blank">phil@philjordan.eu</a>&gt;<br>
+&gt; Reviewed-by: Akihiko Odaki &lt;<a href=3D"mailto:akihiko.odaki@daynix.=
+com" target=3D"_blank">akihiko.odaki@daynix.com</a>&gt;<br>
+<br>
+I checked what GTK+ does and, either way, you have to create another <br>
+thread: timers are handled with a CFRunLoopTimer, but file descriptors <br>
+are polled in a separate thread and sent to the main thread with a <br>
+single CFRunLoopSource.=C2=A0 It&#39;s a bit nicer that the main thread is =
+in <br>
+charge, but it&#39;s more complex and probably slower too.<br></blockquote>=
+<div><br></div><div>Just to clarify: is this supposed to be happening insid=
+e the GTK+ library itself? i.e. GTK should spawn its own thread to poll fil=
+e descriptors that are owned by GTK? (As opposed to the file descriptors us=
+ed by QEMU&#39;s own event loop - what on Linux are eventfds, but on macOS =
+I think are just pipes*.)</div><div><br></div>This doesn&#39;t describe wha=
+t I&#39;m seeing when I run with -display gtk on macOS. There&#39;s no extr=
+a thread created. There&#39;s a dock icon, but it&#39;s non-interactive (&q=
+uot;Application not responding&quot;), there aren&#39;t any menus, and ther=
+e&#39;s no window. QEMU&#39;s own simulation is running in the background -=
+ I can reach a guest via the network. So I guess there&#39;s some function =
+in GTK we&#39;re supposed to be calling that will make it crank the native =
+event loop on macOS, but this isn&#39;t being done?</div><div class=3D"gmai=
+l_quote"><br></div><div class=3D"gmail_quote">Or do you mean there exists a=
+ global &quot;block here forever&quot; function in GTK we can call from the=
+ main thread and which will make everything spring into life, but that brin=
+gs with it the same requirement as with the Cocoa UI: moving everything tha=
+t was originally on the main thread onto a background thread. (I&#39;ve don=
+e some searching for GTK docs and other background info but anything I&#39;=
+ve found has been rather thin on this topic. The ui/gtk*.c source is also n=
+ot particularly enlightening - it seems to imply that something in the back=
+ground ought to be handling events somewhere.)<br></div><div class=3D"gmail=
+_quote"><div><br></div><div>[* The event loop in QEMU on macOS probably oug=
+ht to use a kqueue, with EVFILT_USER where eventfds are used on Linux, exce=
+pt the rough equivalent of ioeventfds are Mach ports which can be handled v=
+ia EVFILT_MACHPORT, but I digress.]</div><div><br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">
+As long as it&#39;s clear that any handlers that go through the CFRunLoop <=
+br>
+run outside the BQL, as is already the case for the Cocoa UI, I see no <br>
+problem with this approach.<br></blockquote><div>=C2=A0</div><div>I&#39;m n=
+ot entirely sure what you&#39;re getting at here, to be honest. The UI thre=
+ad can definitely not assume to be holding the BQL all the time; we&#39;d h=
+ave to treat it more like an AIOContext. It could pave the way towards putt=
+ing the display and UI subsystems on their own AIOContext or AIOContext-lik=
+e-thing, rather than hogging the BQL for expensive image operations.<br></d=
+iv><div><br></div><div>(*By the sound of it, Win32 has an all-UI-calls-on-o=
+ne-thread requirement as well which we may be violating to some degree via =
+the GTK and/or SDL backends as well; my adventures with Win32 are almost 20=
+ years back now so I&#39;m a bit out of the loop there.)<br></div><div>=C2=
+=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8e=
+x;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+Acked-by: Paolo Bonzini &lt;<a href=3D"mailto:pbonzini@redhat.com" target=
+=3D"_blank">pbonzini@redhat.com</a>&gt;<br>
+<br>
+Paolo<br>
+<br>
+<br>
+</blockquote></div></div>
+</div>
+
+--0000000000002f73e90626dcf89e--

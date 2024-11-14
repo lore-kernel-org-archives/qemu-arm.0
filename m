@@ -1,90 +1,147 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp205811njc;
-        Thu, 14 Nov 2024 01:50:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWIzGcaG9K1ztbl1OBaqeA88u2gTGwEnIHzuA9HiBT+EGBSroeNBYcYcdbmcil/4ZfWBTXu8wqxZDN59g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHMkj1WK58Gs9Hwu0LvNd9SgmZO+s+7Aljuj/0AUNKwprc7Jf9SX0VuAjxWuvlPb5ci+DbW
-X-Received: by 2002:a0c:f209:0:b0:6cc:a17:ba65 with SMTP id 6a1803df08f44-6d3dd073ab3mr83106466d6.39.1731577810837;
-        Thu, 14 Nov 2024 01:50:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731577810; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp228598njc;
+        Thu, 14 Nov 2024 02:42:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVbtdyyf5Ztve7LdaDMBdojty6V6YNcOu+ndQzDzkz3eTkDQfh0TgnN9hsdh8SO1CAmCpTvzoPEfHBqkw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEnV5RKbr3zoQyFJTaiKqaacyGKujrbz2DMpzGQ/zTOcTkrHUoJh1z5ZFS0UcuHiVHNVJox
+X-Received: by 2002:a05:620a:44c2:b0:7ae:310a:84e5 with SMTP id af79cd13be357-7b34baf0fadmr1157019685a.8.1731580963471;
+        Thu, 14 Nov 2024 02:42:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731580963; cv=none;
         d=google.com; s=arc-20240605;
-        b=Twh8HmSYTjisNnIaXFpj0l9icoYudhQkaCNlaLQ98AVaKjYxvxA6D43hrNO5drfLzJ
-         8Nev3eDmwUz23B2/LBeKvUhxLrDIZvuWc60Y/CRQ7YfCI9LVq4m3xpMDEOW+h+WX40zM
-         xlX+TJn/rj0VLve1mIfB/G9nttr+OAamEJcsCNyt593QyU+4PsIeomcx7TMfpATYKs9n
-         20U6rsZ6j2sDBYtxrOM41NMJ95OsDkWDpvSfBMtkU6n4ATudE7opxzJXo5pw6ShQcjMa
-         z1O1fzGj5cCj/qQSx/F5FV+plaI41my+t+tM3osW8a9QO1FIoJ2+4HkNcmzgDDD8PBMJ
-         un7g==
+        b=jTxQB0IhAcwKkj2PjLwF1j+iaMhqbtCGi/FMsn9F/Szd7x0cQ4yrt/5oeJOdhLjhFl
+         AO81Ipa3zpayPMp0UGTO+2nVd7gPvYpPeTUheg2SU+UzmKcuwjoETBrMX25s6eKb61kr
+         VWBLsMknAU2SAGOLKZnqsPMDgwoaVHbGd1f+d/uXb7IebO2AJA3fN2mvIbmJpABzOPgr
+         NsLiXhtZRpMFL7s6kSjSFn6JW8jJay3TUgw7EEJwuUqseQcKrs6WTNXUmQ0tBQ961LZk
+         UyJzcWzeZIL8A5OlDOsYnSxAlsYuVXTSoLnE2ocLR6HjbC1Ao9CY1jvOKDFKOIJYFA3v
+         UU8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=srwT36a1dEm+DWPAXk4bFaWJ05tOSxutZC64GkVhh0c=;
-        fh=4rHsaFhVkVMXk5u1IVZO4usPBujjRbqK1KMv0eZ+6CI=;
-        b=kvHLDRlEM5FHBrv8ya5bqSj2F6e4tH0GaDN11vuK/E1Uyezyx6F+W7vDbJref6p1Mn
-         38+d1UW1B4zPM656pf2oBmMwtz1RN9K2ckaH61EN0houLwgE0UhQKzhlDkf6fSCrSZ/g
-         KqtPiJgER0bqqJdKzXeeMaGfLx5V4htUHa4IrRspPW4mcj0rujU02gTZrzSCNANjpuhT
-         8KPaLtQttBi/CgQSgTfSVY6LHUfQTM+ge1yKi+9crF1QvfAnoY7G1SB+mVGEHTqRKdZD
-         61LE919YO8SyYDhjWRFh+AtRYAJAV0Pno8PzWWOGFu9qCCaguo/+MvmdoVMxuFfd8Awc
-         RBTw==;
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=uFDFfa8BumsYNrA9VM6cY1bLhqLeRJ9r5PDt7Li9+cw=;
+        fh=oLjAFIAAhHXJPfQYXmXEd10vQvtpq7NT1qZL+8b+ED0=;
+        b=hIh3b7Hxj3znxoubt4Nb4sISOaFr/c2wuETuyx8dnL7Us/Af01uHAgxkM9znck5DeS
+         435ONtUky4lcWk3EMOyM9KoV5vRwRKh0keHWtEuQnfqDcgt22RrUjlFdy9lUwJcVr4DR
+         0VdokJAb0pLwjKiBpycf9Q/BOojBqTX58Tm3qomrhd5gfvvjGPw15drbPfrHmivhz63L
+         nNOFguCo64dbtkfdbVQaoIi/3Dp5SvHIzThAy6DI1EPYflc/s0n8Ou6ZNbeVAxp4aKtr
+         WIN4rbXtHg0iOeJ0IznNghK5I6yOPKAwKNh9kwe1tOpf4CVYBvKpUv744lk1PtNRNVaj
+         kK7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UC8kmiJr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d3ee75e7efsi8306256d6.82.2024.11.14.01.50.10
+        by mx.google.com with ESMTPS id af79cd13be357-7b35cae2777si88690085a.579.2024.11.14.02.42.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Nov 2024 01:50:10 -0800 (PST)
+        Thu, 14 Nov 2024 02:42:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UC8kmiJr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tBWTU-0002Sn-G9; Thu, 14 Nov 2024 04:49:16 -0500
+	id 1tBXIk-0005Su-So; Thu, 14 Nov 2024 05:42:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tBWTQ-0002Qy-Ah; Thu, 14 Nov 2024 04:49:12 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tBXIh-0005SS-Cn
+ for qemu-devel@nongnu.org; Thu, 14 Nov 2024 05:42:11 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tBWTO-0000F8-N8; Thu, 14 Nov 2024 04:49:11 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 14 Nov
- 2024 17:48:40 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Thu, 14 Nov 2024 17:48:40 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Bin Meng <bmeng.cn@gmail.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v3 3/3] hw/arm/aspeed: Invert sdhci write protected pin for
- AST2600 EVB
-Date: Thu, 14 Nov 2024 17:48:39 +0800
-Message-ID: <20241114094839.4128404-4-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241114094839.4128404-1-jamin_lin@aspeedtech.com>
-References: <20241114094839.4128404-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tBXIf-0001uI-Lx
+ for qemu-devel@nongnu.org; Thu, 14 Nov 2024 05:42:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1731580924;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=uFDFfa8BumsYNrA9VM6cY1bLhqLeRJ9r5PDt7Li9+cw=;
+ b=UC8kmiJrY5XRgNJv11c6E5iaJ3rkbvX+hK9XZKp747jVkxHt5W4rfClALL32xjb0bILCrd
+ gg211c/vb/rHb8x+0oknF9xFTrwB3Iayn7UBFq2SlC/WvfRMJ2DynV31YLoTtVYIjFS2Ds
+ y4xtKVyUrUjv7I50fVqkeL/+DBpGtL8=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-645-QHO9v36TN_iSco3oBDVNSQ-1; Thu, 14 Nov 2024 05:42:03 -0500
+X-MC-Unique: QHO9v36TN_iSco3oBDVNSQ-1
+X-Mimecast-MFC-AGG-ID: QHO9v36TN_iSco3oBDVNSQ
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-382219f45baso7241f8f.1
+ for <qemu-devel@nongnu.org>; Thu, 14 Nov 2024 02:42:02 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1731580922; x=1732185722;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=uFDFfa8BumsYNrA9VM6cY1bLhqLeRJ9r5PDt7Li9+cw=;
+ b=ueLSSxC3iF+/FHu6BKkKatSQDqE76tnmLnH/Yz7AUEuMSxD8bvM9MwQwvSavz14DHF
+ 6R/1f5XG8Dn34gsAF4kKTJUqagGq4fjkwyzu483GSWyaQIASIYr6sybaj58vLjFJK6Lz
+ 6+dyH4ryJuoxljkpakxdl1fuGp3h1EvAGFCrbi0Mv0pDd19Mr2DeyU8tVy7qDYG7+xmL
+ DsHQbQwcpJBPBhorEllPSAOaHUYxejWs3WZUlcMeKMVCpwKLDf5J26BNSgqim0zwq4gd
+ tpMTHJr5DYw1WO4VMHtDpkN5bwFMXYLJ+xV5b/UxHHGKEc61YjnN34E2jxKhzEPufEb7
+ PjGg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXOzE5ratbKI6HnE9Xqi+RAph1FdqjfEUK/oxbxYQkP14urA6tvzeeRpAMS8lvw0YjojyrdfKDaMATu@nongnu.org
+X-Gm-Message-State: AOJu0Yz03jODu2SEx3to4nU1+vuwCh23gDRSeFHXsHDPlYhhIhWyt2go
+ ieq5zLUSDxs2/EJ+WVkoR054XXHkU85MrK5t9B77YjxfF6x3ICvGaeKfFfS0chT/VJl2oVqA+qf
+ T+wwrcz72DpHcKvl0zk2N2aLqo3y7W+IKZd7oS1xw/nINvDzzHjzC
+X-Received: by 2002:a5d:64e2:0:b0:381:f08b:71a4 with SMTP id
+ ffacd0b85a97d-3820833ad72mr7984230f8f.45.1731580921916; 
+ Thu, 14 Nov 2024 02:42:01 -0800 (PST)
+X-Received: by 2002:a5d:64e2:0:b0:381:f08b:71a4 with SMTP id
+ ffacd0b85a97d-3820833ad72mr7984199f8f.45.1731580921520; 
+ Thu, 14 Nov 2024 02:42:01 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3821ae15d95sm1125291f8f.85.2024.11.14.02.41.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 14 Nov 2024 02:42:00 -0800 (PST)
+Message-ID: <a30e5df1-3dcc-48c9-b632-861dbeee7886@redhat.com>
+Date: Thu, 14 Nov 2024 11:41:58 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 5/5] hw/arm/virt-acpi-build: Add IORT RMR regions to
+ handle MSI nested binding
+Content-Language: en-US
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Nicolin Chen <nicolinc@nvidia.com>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "ddutile@redhat.com"
+ <ddutile@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <20241108125242.60136-6-shameerali.kolothum.thodi@huawei.com>
+ <ZzTwZWXp0dIZB3E4@Asurada-Nvidia>
+ <cf0d88bc649344a4b396575cc58394ac@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <cf0d88bc649344a4b396575cc58394ac@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.119,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.738,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,65 +154,59 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /N/2bdMsqDKi
+X-TUID: +Dc84dUX5lc0
 
-The Write Protect pin of SDHCI model is default active low to match the SDHCI
-spec. So, write enable the bit 19 should be 1 and write protected the bit 19
-should be 0 at the Present State Register (0x24).
+Hi Shameer,
 
-According to the design of AST2600 EVB, the Write Protected pin is active
-high by default. To support it, introduces a new "sdhci_wp_inverted"
-property in ASPEED MACHINE State and set it true for AST2600 EVB
-and set "wp_inverted" property true of sdhci-generic model.
+On 11/14/24 09:48, Shameerali Kolothum Thodi wrote:
+>
+>> -----Original Message-----
+>> From: Nicolin Chen <nicolinc@nvidia.com>
+>> Sent: Wednesday, November 13, 2024 6:31 PM
+>> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+>> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
+>> eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
+>> ddutile@redhat.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
+>> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
+>> Jonathan Cameron <jonathan.cameron@huawei.com>;
+>> zhangfei.gao@linaro.org
+>> Subject: Re: [RFC PATCH 5/5] hw/arm/virt-acpi-build: Add IORT RMR regions
+>> to handle MSI nested binding
+>>
+>> On Fri, Nov 08, 2024 at 12:52:42PM +0000, Shameer Kolothum wrote:
+>>> From: Eric Auger <eric.auger@redhat.com>
+>>>
+>>> To handle SMMUv3 nested stage support it is practical to expose the
+>>> guest with reserved memory regions (RMRs) covering the IOVAs used by
+>>> the host kernel to map physical MSI doorbells.
+>> There has been an ongoing solution for MSI alternative:
+>> https://lore.kernel.org/kvm/cover.1731130093.git.nicolinc@nvidia.com/
+>>
+>> So, I think we should keep this patch out of this series, instead put it on top
+>> of the testing branch.
+> Yes. I think then we can support DT solution as well. 
+>
+> On that MSI RFC above, have you seen Eric's earlier/initial proposal to bind the Guest MSI in
+> nested cases. IIRC, it was providing an IOCTL and then creating a mapping in the host.
+>
+> I think this is the latest on that.
+> https://lore.kernel.org/linux-iommu/20210411114659.15051-4-eric.auger@redhat.com/
+yes this is the latest before I stopped my VFIO integration efforts.
+>
+> But not sure, why we then moved to RMR approach. Eric?
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
----
- hw/arm/aspeed.c         | 7 +++++++
- include/hw/arm/aspeed.h | 1 +
- 2 files changed, 8 insertions(+)
+This was indeed the 1st integration approach. Using RMR instead was
+suggested by Jean-Philippe and I considered it as simpler (because we
+needed the SET_MSI_BINDING iotcl) so I changed the approach.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 6ca145362c..a58b7160cd 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -413,6 +413,12 @@ static void aspeed_machine_init(MachineState *machine)
-                              OBJECT(get_system_memory()), &error_abort);
-     object_property_set_link(OBJECT(bmc->soc), "dram",
-                              OBJECT(machine->ram), &error_abort);
-+    if (amc->sdhci_wp_inverted) {
-+        for (i = 0; i < bmc->soc->sdhci.num_slots; i++) {
-+            object_property_set_bool(OBJECT(&bmc->soc->sdhci.slots[i]),
-+                                     "wp-inverted", true, &error_abort);
-+        }
-+    }
-     if (machine->kernel_filename) {
-         /*
-          * When booting with a -kernel command line there is no u-boot
-@@ -1419,6 +1425,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 1;
-     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
-                      ASPEED_MAC3_ON;
-+    amc->sdhci_wp_inverted = true;
-     amc->i2c_init  = ast2600_evb_i2c_init;
-     mc->default_ram_size = 1 * GiB;
-     aspeed_machine_class_init_cpus_defaults(mc);
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index cbeacb214c..9cae45a1c9 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -39,6 +39,7 @@ struct AspeedMachineClass {
-     uint32_t macs_mask;
-     void (*i2c_init)(AspeedMachineState *bmc);
-     uint32_t uart_default;
-+    bool sdhci_wp_inverted;
- };
- 
- 
--- 
-2.34.1
+Thanks
+
+Eric
+>
+> Thanks,
+> Shameer
+>
 

@@ -1,41 +1,41 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp160372njc;
-        Wed, 13 Nov 2024 23:57:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX7OuxTJKt4jBry54vHu3thlLqJPf1eOtwkDwmKnXIlsegCo7GNEdHRvAp0TxYYmCidyi87hBs/qJtrwQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFgGW3Chl5e7Nc1Rro3XZkf/rZOM11m13Os7kyOeOOUbF+dYqVMFuLfKRLlFytagwVNNB/P
-X-Received: by 2002:a05:620a:2993:b0:7ae:6ba2:faba with SMTP id af79cd13be357-7b331ebfb17mr3180495985a.28.1731571033494;
-        Wed, 13 Nov 2024 23:57:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731571033; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp162315njc;
+        Thu, 14 Nov 2024 00:01:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWZ2aTEvNFvR0lBbqiRo106xsEsL5rIeJbX/W4amJXNI6Fn9WQqFkeOIHWbRRk7cd1SQfKIKQQRc1gkcQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFavD4Fmlar+k/1K7anRRVdzXqc0M4UCyUpvSaCoCtnk1CCG5Uy7KFCkgJPZSS/KajPlgGw
+X-Received: by 2002:a05:6808:200c:b0:3e6:5347:8e17 with SMTP id 5614622812f47-3e79470a1f6mr24995113b6e.31.1731571313524;
+        Thu, 14 Nov 2024 00:01:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731571313; cv=none;
         d=google.com; s=arc-20240605;
-        b=cDtipE5FtWZXEimrpvUioLhLB/u5QefuDQ8gQEaIKYT/UPwmn29Xee23w3rtw7FaW6
-         ciLlVhW5zjjdlpXgHuhGUhQT2G7KXu+ov4HlgaaeMz0XERSftkZJi+xIu2lOHbJQOBEE
-         z0c1BZU/nnwS6LTwvWoMYLQCGWEDHNHWmZNwFm/IA+UrVMnKuGNe98343JYZd7i9I19f
-         sWaI0ZhOmhbaiDn0CYbGk48mig7r+J/qncls6OlA0bNbEqfqh0pLiuQ/Tizn5AjVGhD4
-         Eg2JdO4MqMM0xYL75Y7BktOdp6pS6iSyHrdUJJ8bt00cjJn6gXcaApEA1GTBWixitceU
-         OPfQ==
+        b=Qc4d4uuEP7FAEnIjJ8Jw/4VrFNz0o+047y+J3ZlzH+Y0aPNzZmHa9GSgpgtfNYz2zC
+         3/1ETqsDNpbGtPSPhW0t9ITELc8+/3WOw6Ee//QnMWZRMwWC6BjPvNdd8rSfiSy6+u7p
+         vA7ETjLKqKrBBaMj85i2GIwyFaEcMOFYo3uJBIa4zQ3Qw+VLxqGFra05KGemEzcOCZIx
+         kGUiA4GhH3DqVgWdaAMPAvUO7P+zV/iB6ofUDT4oFcEVUjoGl4k08v6ZNJrWSHI2Dxgw
+         QhVvaew0nPKHdGBjFe1lBfzKFld96XYhCVCKsSi38FfYiPVgx/wRLRVIdwkGjCh19q/N
+         c+vA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:mime-version
          :content-transfer-encoding:content-language:accept-language
          :in-reply-to:references:message-id:date:thread-index:thread-topic
          :subject:cc:to;
-        bh=nztLxirVfDgyxprkqI3no1atki5Cu05BMZJ79ItSI38=;
-        fh=wE/dDj8rmfNPfpfhC/FvqCZaCCKDHoKqSQlRmuKzqCk=;
-        b=BQzbbszlMsVduIT2Z8LQ3jOhqI7PXhSDM82qFZ4kBt3gIWoAiEW5Mb6Cu9hiMgVcrP
-         6jl/x81Y7IXoatH2gx66x6VML57WxkPhJze7CnApXs21DNMg5geFKi9EupY39z2PBUBM
-         SDtqnCfpwOyVBGz2rOqiBNfwgvJpZxxbANJ04010v9rVTDELld1ovSTAu/jn/BLEBZo+
-         5WNyaYYqkZra8/BDfgpOuUoyVgYTsdn8i68LSuRLCn/SQ/XhB7dqgzV7W4/s/gWDUZGe
-         NRg8gw7dJ1KMa9ZDcRxUM2ikdt++UGsKbfxUDjXhaS92Maw3e30xtRcKZvp2pL+/HXSN
-         OyOw==;
+        bh=iEiXflid8zB7uV74HeCRNQqo/8YpPfYiYNbYneYXkiw=;
+        fh=x0GfwJZL9sKMawJWDxK69B0nTIE1xQuGFi17xCt7ST4=;
+        b=lCvRZZT5RFsmomxp5MTQzhfpaciavV8GdzVa1+MSBTJsoyZFTCDqj+G0u4f1G5C50F
+         oj4YQTXek70naPVl4Ex8UIzqCadYmbuSEBGT61dU5TsVklLPyMmNh8B8fe+hq2Jj0m55
+         73W+Ztd3vhLD5zjuOP/iJoG3xNjVznQp3Np4+EhAXGLtTdYiVaXZQzPC2ET6N0w3WwZl
+         tElquYiO8kdC6A0+8fyG1sirt8CrSu3PMAzXVqqK9axMsJuD/7Z/CRcTpNxoDF5szZGK
+         3Sj51/fXCVyKv3RgVPy2WnPNdVrMV+kcaZS7JCJaNLKJhXgkj+yfWHzGH97XQd2XuLFI
+         R6Sw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b35c9703c8si65993285a.43.2024.11.13.23.57.13
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d3ee75eb5esi6545116d6.38.2024.11.14.00.01.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Nov 2024 23:57:13 -0800 (PST)
+        Thu, 14 Nov 2024 00:01:53 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -43,47 +43,47 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBUir-0005Ww-Tg; Thu, 14 Nov 2024 02:57:01 -0500
+	id 1tBUnL-0006Y8-Gw; Thu, 14 Nov 2024 03:01:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tBUio-0005T5-8I; Thu, 14 Nov 2024 02:56:59 -0500
+ id 1tBUnI-0006Xc-6m; Thu, 14 Nov 2024 03:01:36 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tBUim-0000gu-Aw; Thu, 14 Nov 2024 02:56:58 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xpspj1hL5z6J65C;
- Thu, 14 Nov 2024 15:53:33 +0800 (CST)
-Received: from frapeml100008.china.huawei.com (unknown [7.182.85.131])
- by mail.maildlp.com (Postfix) with ESMTPS id 2F923140257;
- Thu, 14 Nov 2024 15:56:45 +0800 (CST)
+ id 1tBUnE-0001tX-PI; Thu, 14 Nov 2024 03:01:35 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.231])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XpsxY5RdJz6K9Ff;
+ Thu, 14 Nov 2024 15:59:29 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id 42D23140B55;
+ Thu, 14 Nov 2024 16:01:29 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml100008.china.huawei.com (7.182.85.131) with Microsoft SMTP Server
+ frapeml500008.china.huawei.com (7.182.85.71) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 14 Nov 2024 08:56:44 +0100
+ 15.1.2507.39; Thu, 14 Nov 2024 09:01:29 +0100
 Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
  frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Thu, 14 Nov 2024 08:56:44 +0100
-To: Nicolin Chen <nicolinc@nvidia.com>, "nathanc@nvidia.com"
- <nathanc@nvidia.com>
+ Thu, 14 Nov 2024 09:01:29 +0100
+To: Mostafa Saleh <smostafa@google.com>
 CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
  <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
  "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm
- <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
+ <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm <linuxarm@huawei.com>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
  <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
  "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
 Subject: RE: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
  nested SMMUv3
 Thread-Topic: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
  nested SMMUv3
-Thread-Index: AQHbMeB0+Q5BEZc9JkeH/U6Jz+dF4rK0OI0AgAI473A=
-Date: Thu, 14 Nov 2024 07:56:44 +0000
-Message-ID: <13d6ed940bd44b3fa46aa9bc11f36bb5@huawei.com>
+Thread-Index: AQHbMeB0+Q5BEZc9JkeH/U6Jz+dF4rK1Wk4AgAEXftA=
+Date: Thu, 14 Nov 2024 08:01:28 +0000
+Message-ID: <200df57473694689a914e16f3db8db59@huawei.com>
 References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <ZzPd1F/UA2MKMbwl@Asurada-Nvidia>
-In-Reply-To: <ZzPd1F/UA2MKMbwl@Asurada-Nvidia>
+ <ZzTQ5Dn8ckIJjxc-@google.com>
+In-Reply-To: <ZzTQ5Dn8ckIJjxc-@google.com>
 Accept-Language: en-GB, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -118,97 +118,46 @@ Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
 From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QLERcT2Jqqa4
+X-TUID: 78EgQzN1cIaw
 
-
+Hi Mostafa,
 
 > -----Original Message-----
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: Tuesday, November 12, 2024 11:00 PM
-> To: Shameerali Kolothum Thodi
-> <shameerali.kolothum.thodi@huawei.com>; nathanc@nvidia.com
+> From: Mostafa Saleh <smostafa@google.com>
+> Sent: Wednesday, November 13, 2024 4:17 PM
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
 > Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
 > eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
-> ddutile@redhat.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
-> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
-> Jonathan Cameron <jonathan.cameron@huawei.com>;
-> zhangfei.gao@linaro.org
+> nicolinc@nvidia.com; ddutile@redhat.com; Linuxarm
+> <linuxarm@huawei.com>; Wangzhou (B) <wangzhou1@hisilicon.com>;
+> jiangkunkun <jiangkunkun@huawei.com>; Jonathan Cameron
+> <jonathan.cameron@huawei.com>; zhangfei.gao@linaro.org
 > Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
 > nested SMMUv3
 >=20
-> On Fri, Nov 08, 2024 at 12:52:37PM +0000, Shameer Kolothum wrote:
-> > Few ToDos to note,
-> > 1. At present default-bus-bypass-iommu=3Don should be set when
-> >    arm-smmuv3-nested dev is specified. Otherwise you may get an IORT
-> >    related boot error.  Requires fixing.
-> > 2. Hot adding a device is not working at the moment. Looks like pcihp i=
-rq
-> issue.
-> >    Could be a bug in IORT id mappings.
+> Hi Shameer,
 >=20
-> Do we have enough bus number space for each pbx bus in IORT?
->=20
-> The bus range is defined by min_/max_bus in hort_host_bridges(),
-> where the pci_bus_range() function call might not leave enough
-> space in the range for hotplugs IIRC.
-
-Ok. Thanks for the pointer. I will debug that.
-
-> > ./qemu-system-aarch64 -machine virt,gic-version=3D3,default-bus-bypass-
-> iommu=3Don \
-> > -enable-kvm -cpu host -m 4G -smp cpus=3D8,maxcpus=3D8 \
-> > -object iommufd,id=3Diommufd0 \
-> > -bios QEMU_EFI.fd \
-> > -kernel Image \
-> > -device virtio-blk-device,drive=3Dfs \
-> > -drive if=3Dnone,file=3Drootfs.qcow2,id=3Dfs \
-> > -device pxb-pcie,id=3Dpcie.1,bus_nr=3D8,bus=3Dpcie.0 \
-> > -device pcie-root-port,id=3Dpcie.port1,bus=3Dpcie.1,chassis=3D1 \
-> > -device arm-smmuv3-nested,id=3Dsmmuv1,pci-bus=3Dpcie.1 \
-> > -device vfio-pci,host=3D0000:7d:02.1,bus=3Dpcie.port1,iommufd=3Diommufd=
-0 \
-> > -device pxb-pcie,id=3Dpcie.2,bus_nr=3D16,bus=3Dpcie.0 \
-> > -device pcie-root-port,id=3Dpcie.port2,bus=3Dpcie.2,chassis=3D2 \
-> > -device arm-smmuv3-nested,id=3Dsmmuv2,pci-bus=3Dpcie.2 \
-> > -device vfio-pci,host=3D0000:75:00.1,bus=3Dpcie.port2,iommufd=3Diommufd=
-0 \
-> > -append "rdinit=3Dinit console=3DttyAMA0 root=3D/dev/vda2 rw
-> earlycon=3Dpl011,0x9000000" \
-> > -device virtio-9p-pci,fsdev=3Dp9fs2,mount_tag=3Dp9,bus=3Dpcie.0 \
-> > -fsdev local,id=3Dp9fs2,path=3Dp9root,security_model=3Dmapped \
-> > -net none \
-> > -nographic
-> ..
-> > With a pci topology like below,
-> > [root@localhost ~]# lspci -tv
-> > -+-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
-> >  |           +-01.0  Red Hat, Inc. QEMU PCIe Expander bridge
-> >  |           +-02.0  Red Hat, Inc. QEMU PCIe Expander bridge
-> >  |           \-03.0  Virtio: Virtio filesystem
-> >  +-[0000:08]---00.0-[09]----00.0  Huawei Technologies Co., Ltd. HNS
-> Network Controller (Virtual Function)
-> >  \-[0000:10]---00.0-[11]----00.0  Huawei Technologies Co., Ltd. HiSilic=
-on ZIP
-> Engine(Virtual Function)
-> > [root@localhost ~]#
+> On Fri, Nov 08, 2024 at 12:52:37PM +0000, Shameer Kolothum via wrote:
+> > Hi,
 > >
-> > And if you want to add another HNS VF, it should be added to the same
-> SMMUv3
-> > as of the first HNS dev,
+> > This series adds initial support for a user-creatable "arm-smmuv3-neste=
+d"
+> > device to Qemu. At present the Qemu ARM SMMUv3 emulation is per
+> machine
+> > and cannot support multiple SMMUv3s.
 > >
-> > -device pcie-root-port,id=3Dpcie.port3,bus=3Dpcie.1,chassis=3D3 \
-> > -device vfio-pci,host=3D0000:7d:02.2,bus=3Dpcie.port3,iommufd=3Diommufd=
-0 \
-> ..
-> > At present Qemu is not doing any extra validation other than the above
-> > failure to make sure the user configuration is correct or not. The
-> > assumption is libvirt will take care of this.
 >=20
-> Nathan from NVIDIA side is working on the libvirt. And he already
-> did some prototype coding in libvirt that could generate required
-> PCI topology. I think he can take this patches for a combined test.
+> I had a quick look at the SMMUv3 files, as now SMMUv3 supports nested
+> translation emulation, would it make sense to rename this? As AFAIU,
+> this is about virt (stage-1) SMMUv3 that is emulated to a guest.
+> Including vSMMU or virt would help distinguish the code, as now
+> some new function as smmu_nested_realize() looks confusing.
 
-Cool. That's good to know.
+Yes. I have noticed that. We need to call it something else to avoid the=20
+confusion. Not sure including "virt" is a good idea as it may indicate virt
+machine. Probably "acc" as Nicolin suggested to indicate hw accelerated.=20
+I will think about a better one. Open to suggestions.
 
 Thanks,
-SHameer
+Shameer
+

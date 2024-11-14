@@ -1,107 +1,149 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp173706njc;
-        Thu, 14 Nov 2024 00:30:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVpxirhZvyPM2YYjjUAgz02x7pzHYXh9riHkXOWbvBJP3WrJb9t9urJQqlex1FAYc2cAHG01dsl7DEtbw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHEdUt5TFNPQ20eWVvh5TaOOLwYU8W0Vfp6jeX2dDA6+YQml8X/Tqknz4V8iCNZRe7JXJvl
-X-Received: by 2002:a05:6214:2e47:b0:6d3:45cb:40f0 with SMTP id 6a1803df08f44-6d3eddf61b3mr14645476d6.45.1731573034022;
-        Thu, 14 Nov 2024 00:30:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731573034; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp178283njc;
+        Thu, 14 Nov 2024 00:42:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUwMQlcDWyCi55t1TwM71EiK4HgTfBVwOBbNtxZ2P42Ui/JmWmeGyS58qp4iLirp/95V5cVETYEEebxHg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG3EJziGxwXRbmiFD3UXxs5tNgkwakCaxeW4kmW33+bqgHj6YFMmQlenEbAM3/1PnojkiH8
+X-Received: by 2002:a05:620a:29ca:b0:7b1:4940:e9f5 with SMTP id af79cd13be357-7b331eb2e8bmr3302654485a.18.1731573745926;
+        Thu, 14 Nov 2024 00:42:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731573745; cv=none;
         d=google.com; s=arc-20240605;
-        b=VADThZu5rd4yTXGtdvElGmze7KklgN3ZbqnI9reLlen+x+1bTvns/PY+g0v8Uez9Vm
-         masqL7ORNOLdQZNHx1PMd/C7ptWN79mbPfzmzHNWd4us2E2Zhl4z5ROV2jGjwoOx4UVj
-         ZtZ9O9RNa4X8SCZ8UdjEko1naS9WKGGtbzJ25zDWord8YIfhYuw303fo+wNDIbYGexrd
-         0EBxs5pWTzCQ4iUBDAjBetOjndo4BX8R3qEYEQsnymzKAuNNdPe5c13kBZZs7thvmuDW
-         SgHfLgiD+F/cxcMOehm9bABlnnjm1wYG7hy1dzdYdDMEOjl3xPOWyXHuZFtFJ6u72asP
-         mP0w==
+        b=eE/1mtFwHsmJ+sBxaCWxKFNgTO6Cyewgv2hRmm74h9U7fdmu3BzUVqBsotF4Z5TrJt
+         hbjA9R+v8EDPRe+spLeqLk4quGeIla/wOruWlLuYXXjSRj7ZRTYlPx3nCiySn9lkVNQD
+         g0LwAENYY4nCJkbjNNWgR6euucP9rFUI3m5gtLd62/mpYnE2Or7kMqJEVS+sDcQ/eokc
+         fvO/idafLrjBqm/ogvHc+gSJg7EJ8n+pRwI0NSODGH4fOhnhv9rrGqMqrwKpp8DvUP2S
+         4UCX/EzxRQqp8Jvnp+GM7FVlUNgcq2TutC1iBn5L6FIX9MS/YiWeV9Zh2MIHQPv7zTqr
+         lRrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=RicXbZa1/BO0UKV9FyBZwW9ZvNJQCltE2TtaZFdVjoY=;
-        fh=9DqYCFHKnmQ5+VgCN0UIIIa1J2fwcFK/sgrwSCMoxxU=;
-        b=S5XsFNCHv5OJoRnKcHXZPWq2F0WbEIpPQ6KFJv570sL4Y7fsjW59OimoP8pEjpwNnE
-         lF2YlbIGw7LgMLjkCAkmCvCSW5umvX4o/FKB3feT3vieJxKggubLMFppjtGcPswdKy29
-         UV21YR6QjpUzJe8xzdXab8Dq58NZV4PTelvqA8+XG0PBZELPePo/w4kARRQO9zW8rsJL
-         Z2oktW+/gY5Dtfl9R41Ybns9ndclfsHWdEykzNIdk0yzUc7Oa9L7ubqqQ1jXBXIEI3Hc
-         1F2i/k3o9qh2IewgfSZNQt24KjkyTBXQJk2m/YxWXNfp6nQgLshFMksfk3yCcy5CecDf
-         bk0w==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=zQkc4NSGH486X0NuA7/FDzdTttRtFmtgf7xbXoHO2wI=;
+        fh=qgKI20/9A+b+oMvVOtlHAxPVx4D3O6i85LdIlROlF5U=;
+        b=NKDzHiBUJv08QKg5Z5hjRP5DPrKufZjEO+n4xk7TmwW2N6cbMeyoGpEudZ18VxPoft
+         9Lo/1z4nuGyIcyJ6GuRIH+Y2GA7362b3/GGh/3LDh4zZLbyJfo5xMprS+uRyTsCRWb1K
+         B6owhuQO1aVYq76xu7EWWtRrWBJubRHZSyP1NHSY/vfFFpLCop5OUHQmAfWwo4NeUu+S
+         y8kl8K+njDTS6tb81NABaAxsQh0oSaHQXHFheM5qb8vG7SVWTLpW3WWgCBqoiBv1qmL6
+         2/NS1PwKloa9RLn70gqWtDVpl7iYG66cbCLLLF+0Fq/IWiqZkSNiSNDjsEPtUvG0bu/d
+         IOLQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GiZkJFpA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d3ee8b79d2si7507416d6.223.2024.11.14.00.30.33
+        by mx.google.com with ESMTPS id af79cd13be357-7b35cae0d51si65985485a.573.2024.11.14.00.42.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Nov 2024 00:30:34 -0800 (PST)
+        Thu, 14 Nov 2024 00:42:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GiZkJFpA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBVFH-0003ml-L2; Thu, 14 Nov 2024 03:30:32 -0500
+	id 1tBVQh-0007JG-QA; Thu, 14 Nov 2024 03:42:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tBVEz-0003RZ-5L; Thu, 14 Nov 2024 03:30:17 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tBVQb-0007Im-Nj
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2024 03:42:13 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tBVEv-0002tF-Ll; Thu, 14 Nov 2024 03:30:12 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.231])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xptcb5j16z6K8s5;
- Thu, 14 Nov 2024 16:29:51 +0800 (CST)
-Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
- by mail.maildlp.com (Postfix) with ESMTPS id D6C67140A30;
- Thu, 14 Nov 2024 16:30:05 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 14 Nov 2024 09:30:05 +0100
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Thu, 14 Nov 2024 09:30:05 +0100
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
- "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm <linuxarm@huawei.com>,
- "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
- <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-Subject: RE: [RFC PATCH 3/5] hw/arm/smmuv3: Associate a pci bus with a SMMUv3
- Nested device
-Thread-Topic: [RFC PATCH 3/5] hw/arm/smmuv3: Associate a pci bus with a SMMUv3
- Nested device
-Thread-Index: AQHbMd20WuQYJ64eBk2hccc55H+W27K1duYAgAEBjkA=
-Date: Thu, 14 Nov 2024 08:30:05 +0000
-Message-ID: <90d72b3d74f94ed7b47c0d1cb8c0984f@huawei.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <20241108125242.60136-4-shameerali.kolothum.thodi@huawei.com>
- <a1edc7ec-6450-4409-b8b2-b4026baee242@redhat.com>
-In-Reply-To: <a1edc7ec-6450-4409-b8b2-b4026baee242@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tBVQZ-00064e-BD
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2024 03:42:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1731573728;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zQkc4NSGH486X0NuA7/FDzdTttRtFmtgf7xbXoHO2wI=;
+ b=GiZkJFpAkTkCL5035QKESxQ+EZPHKDhI3rSX8kyMg0EohmruS2i/XLmIjnv9Ep2G4e88iB
+ SZJiNFZQEgcWbNF+A+g4U2fSxNU8fmFKxPBcx1ih9tgMociUZfSGqMDB7k/4W0KhdoPhfk
+ nvDwB+gClznPwJ0sqDA8KcFqWbJHj1o=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-34-UoJGZs0DPBOFtEBZjrnDeQ-1; Thu, 14 Nov 2024 03:42:05 -0500
+X-MC-Unique: UoJGZs0DPBOFtEBZjrnDeQ-1
+X-Mimecast-MFC-AGG-ID: UoJGZs0DPBOFtEBZjrnDeQ
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-6cbf039dccfso4931986d6.0
+ for <qemu-arm@nongnu.org>; Thu, 14 Nov 2024 00:42:05 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1731573725; x=1732178525;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zQkc4NSGH486X0NuA7/FDzdTttRtFmtgf7xbXoHO2wI=;
+ b=pkBEld85az8536QW20XWo3Z5Y3jhQMwapLa6+h3DZ30Jh0Ulgtwsmkf+Duigv3oZd5
+ sjJjrol35quKAis9oeyFAnmIHguMl/yPt9zDOX5lv5ynqpwqRZT7iIiMSazfAh4nrXFX
+ cbID3vMDQ+b15XUf4uHhBy5tR/2GoPwPgZJe81YAOZCB4rckB4TyKvrzrFHZYkGBs7v0
+ 6dIM1irqjcvTNw9bL6eRgsOdG9HLZf1xKRgl4LMWGTGHni2yn1EGRpOeJYHAn+PNXBoW
+ bYN8T/fjBXsguG/PeFPfcVsE1zC7QYbc0p5CZYpzq9DMXsAngO5MsFASLRE4RWXs+YeO
+ khig==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUVQscehd6TZxIp6yFaZV8XtXsikvHnTQE2S/3vgRbtKq9Qdn4gH7NmAE1006MP93q/pCd3KzIs5w==@nongnu.org
+X-Gm-Message-State: AOJu0YwRUZNskNsOWX2vfLNFjuddVVFcyyNUJ9EYLq8MjGzsr5IwA2x4
+ 7V0fDyUHaxhOU4dN6Tmxj+NZ48+rbxiEsi4LAW8CcKshF/n09mPC9aly0ggqTChefy1WWgAfOGW
+ dHV/TyC+dyXt2KPCFkQrLg82gKc/3aZoT5BGsGxkLO6q8mDNFZA==
+X-Received: by 2002:a05:6214:469b:b0:6cb:f0ec:b31e with SMTP id
+ 6a1803df08f44-6d39e1e92bdmr341064406d6.42.1731573724728; 
+ Thu, 14 Nov 2024 00:42:04 -0800 (PST)
+X-Received: by 2002:a05:6214:469b:b0:6cb:f0ec:b31e with SMTP id
+ 6a1803df08f44-6d39e1e92bdmr341064186d6.42.1731573724224; 
+ Thu, 14 Nov 2024 00:42:04 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-6d3ee7ab148sm3135426d6.41.2024.11.14.00.42.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 14 Nov 2024 00:42:03 -0800 (PST)
+Message-ID: <991e3963-245e-41af-b128-431520c7d4e3@redhat.com>
+Date: Thu, 14 Nov 2024 09:41:59 +0100
 MIME-Version: 1.0
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.738, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 2/5] hw/arm/smmuv3: Add initial support for SMMUv3
+ Nested device
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "nicolinc@nvidia.com"
+ <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <20241108125242.60136-3-shameerali.kolothum.thodi@huawei.com>
+ <00e8a5d6-c926-44bb-8d11-dab4ddc4820d@redhat.com>
+ <7a3b6dcb5db349f5a7e718784ef46c97@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <7a3b6dcb5db349f5a7e718784ef46c97@huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 9B-adPYj2WcOAZ7YFh-Bz-zyszyhvl8Dth3lPTbdHJg_1731573725
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.119,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,72 +156,318 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I2wzPHvXQF4B
+X-TUID: RGxWykzG+FKh
 
-DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogRXJpYyBBdWdlciA8ZXJp
-Yy5hdWdlckByZWRoYXQuY29tPg0KPiBTZW50OiBXZWRuZXNkYXksIE5vdmVtYmVyIDEzLCAyMDI0
-IDU6NTkgUE0NCj4gVG86IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkNCj4gPHNoYW1lZXJhbGku
-a29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT47IHFlbXUtYXJtQG5vbmdudS5vcmc7DQo+IHFlbXUt
-ZGV2ZWxAbm9uZ251Lm9yZw0KPiBDYzogcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBqZ2dAbnZp
-ZGlhLmNvbTsgbmljb2xpbmNAbnZpZGlhLmNvbTsNCj4gZGR1dGlsZUByZWRoYXQuY29tOyBMaW51
-eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47IFdhbmd6aG91IChCKQ0KPiA8d2FuZ3pob3UxQGhp
-c2lsaWNvbi5jb20+OyBqaWFuZ2t1bmt1biA8amlhbmdrdW5rdW5AaHVhd2VpLmNvbT47DQo+IEpv
-bmF0aGFuIENhbWVyb24gPGpvbmF0aGFuLmNhbWVyb25AaHVhd2VpLmNvbT47DQo+IHpoYW5nZmVp
-Lmdhb0BsaW5hcm8ub3JnDQo+IFN1YmplY3Q6IFJlOiBbUkZDIFBBVENIIDMvNV0gaHcvYXJtL3Nt
-bXV2MzogQXNzb2NpYXRlIGEgcGNpIGJ1cyB3aXRoIGENCj4gU01NVXYzIE5lc3RlZCBkZXZpY2UN
-Cj4gDQo+IEhpIFNoYW1lZXIsDQo+IA0KPiBPbiAxMS84LzI0IDEzOjUyLCBTaGFtZWVyIEtvbG90
-aHVtIHdyb3RlOg0KPiA+IFN1YnNlcXVlbnQgcGF0Y2hlcyB3aWxsIGFkZCBJT1JUIG1vZGlmaWNh
-dGlvbnMgdG8gZ2V0IHRoaXMgd29ya2luZy4NCj4gYWRkIGEgcHJvcGVyIGNvbW1pdCBtc2cgb25j
-ZSBub24gUkZDIDstKQ0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogU2hhbWVlciBLb2xvdGh1bQ0K
-PiA8c2hhbWVlcmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tPg0KPiA+IC0tLQ0KPiA+ICBo
-dy9hcm0vc21tdXYzLmMgICAgICAgICB8IDI3ICsrKysrKysrKysrKysrKysrKysrKysrKysrKw0K
-PiA+ICBpbmNsdWRlL2h3L2FybS9zbW11djMuaCB8ICAyICsrDQo+ID4gIDIgZmlsZXMgY2hhbmdl
-ZCwgMjkgaW5zZXJ0aW9ucygrKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2h3L2FybS9zbW11djMu
-YyBiL2h3L2FybS9zbW11djMuYw0KPiA+IGluZGV4IDAwMzNlYjgxMjUuLjliMGE3NzY3NjkgMTAw
-NjQ0DQo+ID4gLS0tIGEvaHcvYXJtL3NtbXV2My5jDQo+ID4gKysrIGIvaHcvYXJtL3NtbXV2My5j
-DQo+ID4gQEAgLTI0LDYgKzI0LDcgQEANCj4gPiAgI2luY2x1ZGUgImh3L3FkZXYtcHJvcGVydGll
-cy5oIg0KPiA+ICAjaW5jbHVkZSAiaHcvcWRldi1jb3JlLmgiDQo+ID4gICNpbmNsdWRlICJody9w
-Y2kvcGNpLmgiDQo+ID4gKyNpbmNsdWRlICJody9wY2kvcGNpX2JyaWRnZS5oIg0KPiA+ICAjaW5j
-bHVkZSAiY3B1LmgiDQo+ID4gICNpbmNsdWRlICJ0cmFjZS5oIg0KPiA+ICAjaW5jbHVkZSAicWVt
-dS9sb2cuaCINCj4gPiBAQCAtMjIwMSwxMiArMjIwMiwzMiBAQCBzdGF0aWMgdm9pZCBzbW11X3Jl
-YWxpemUoRGV2aWNlU3RhdGUgKmQsDQo+IEVycm9yICoqZXJycCkNCj4gPiAgICAgIHNtbXVfaW5p
-dF9pcnEocywgZGV2KTsNCj4gPiAgfQ0KPiA+DQo+ID4gK3N0YXRpYyBpbnQgc21tdXYzX25lc3Rl
-ZF9wY2lfaG9zdF9icmlkZ2UoT2JqZWN0ICpvYmosIHZvaWQgKm9wYXF1ZSkNCj4gPiArew0KPiA+
-ICsgICAgRGV2aWNlU3RhdGUgKmQgPSBvcGFxdWU7DQo+ID4gKyAgICBTTU1VdjNOZXN0ZWRTdGF0
-ZSAqc19uZXN0ZWQgPSBBUk1fU01NVVYzX05FU1RFRChkKTsNCj4gPiArDQo+ID4gKyAgICBpZiAo
-b2JqZWN0X2R5bmFtaWNfY2FzdChvYmosIFRZUEVfUENJX0hPU1RfQlJJREdFKSkgew0KPiA+ICsg
-ICAgICAgIFBDSUJ1cyAqYnVzID0gUENJX0hPU1RfQlJJREdFKG9iaiktPmJ1czsNCj4gPiArICAg
-ICAgICBpZiAoc19uZXN0ZWQtPnBjaV9idXMgJiYgIXN0cmNtcChidXMtPnFidXMubmFtZSwgc19u
-ZXN0ZWQtDQo+ID5wY2lfYnVzKSkgew0KPiA+ICsgICAgICAgICAgICBvYmplY3RfcHJvcGVydHlf
-c2V0X2xpbmsoT0JKRUNUKGQpLCAicHJpbWFyeS1idXMiLCBPQkpFQ1QoYnVzKSwNCj4gPiArICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZlcnJvcl9hYm9ydCk7DQo+ID4gKyAg
-ICAgICAgfQ0KPiA+ICsgICAgfQ0KPiA+ICsgICAgcmV0dXJuIDA7DQo+ID4gK30NCj4gPiArDQo+
-ID4gIHN0YXRpYyB2b2lkIHNtbXVfbmVzdGVkX3JlYWxpemUoRGV2aWNlU3RhdGUgKmQsIEVycm9y
-ICoqZXJycCkNCj4gPiAgew0KPiA+ICAgICAgU01NVXYzTmVzdGVkU3RhdGUgKnNfbmVzdGVkID0g
-QVJNX1NNTVVWM19ORVNURUQoZCk7DQo+ID4gICAgICBTTU1VdjNOZXN0ZWRDbGFzcyAqYyA9DQo+
-IEFSTV9TTU1VVjNfTkVTVEVEX0dFVF9DTEFTUyhzX25lc3RlZCk7DQo+ID4gKyAgICBTeXNCdXNE
-ZXZpY2UgKmRldiA9IFNZU19CVVNfREVWSUNFKGQpOw0KPiA+ICAgICAgRXJyb3IgKmxvY2FsX2Vy
-ciA9IE5VTEw7DQo+ID4NCj4gPiArICAgIG9iamVjdF9jaGlsZF9mb3JlYWNoX3JlY3Vyc2l2ZShv
-YmplY3RfZ2V0X3Jvb3QoKSwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICBzbW11djNfbmVzdGVkX3BjaV9ob3N0X2JyaWRnZSwgZCk7DQo+IFVzaW5nIGEgZGlmZmVyZW50
-IG9wYXF1ZSBzdHJ1Y3QgcG9pbnRlciB5b3UgbWF5IHByb3Blcmx5IHVzZSB0aGUgZXJycA0KPiBh
-bmQgbmljZWx5IGZhaWwgaWYgdGhlIGJ1cyBpcyBub3QgZm91bmQgKGF2b2lkIHVzaW5nIGVycm9y
-X2Fib3J0KS4NCg0KT2suDQoNCj4gPiArICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfYm9vbChPQkpF
-Q1QoZGV2KSwgIm5lc3RlZCIsIHRydWUsICZlcnJvcl9hYm9ydCk7DQo+IHdoeSBkbyB5b3UgbmVl
-ZCB0aGF0IG5lc3RlZCBwcm9wZXJ0eSBhcyB0aGUgU01NVSBpcyBhbHJlYWR5IHR5cGUnZA0KPiBk
-aWZmZXJlbnRseS4NCg0KSSB0aGluayBpdCBpcyBiZWNhdXNlIHRoZXJlIGFyZSBwcmV2aW91cyBw
-YXRjaGVzIGluIE5pY29saW4ncyBicmFuY2ggdGhhdCB1c2VkIHRoaXMNCiJuZXN0ZWQiIHByb3Bl
-cnR5IHRvIGRpZmZlcmVudGlhdGUgdGhlIGFkZHJlc3MgcGFjZS4gSSB3aWxsIGNoZWNrIGFuZCB1
-cGRhdGUuDQoNCj4gPiArDQo+ID4gICAgICBjLT5wYXJlbnRfcmVhbGl6ZShkLCAmbG9jYWxfZXJy
-KTsNCj4gPiAgICAgIGlmIChsb2NhbF9lcnIpIHsNCj4gPiAgICAgICAgICBlcnJvcl9wcm9wYWdh
-dGUoZXJycCwgbG9jYWxfZXJyKTsNCj4gPiBAQCAtMjI5Myw2ICsyMzE0LDExIEBAIHN0YXRpYyBQ
-cm9wZXJ0eSBzbW11djNfcHJvcGVydGllc1tdID0gew0KPiA+ICAgICAgREVGSU5FX1BST1BfRU5E
-X09GX0xJU1QoKQ0KPiA+ICB9Ow0KPiA+DQo+ID4gK3N0YXRpYyBQcm9wZXJ0eSBzbW11djNfbmVz
-dGVkX3Byb3BlcnRpZXNbXSA9IHsNCj4gPiArICAgIERFRklORV9QUk9QX1NUUklORygicGNpLWJ1
-cyIsIFNNTVV2M05lc3RlZFN0YXRlLCBwY2lfYnVzKSwNCj4gbml0OiBtYXliZSB3ZSBjYW4gdXNl
-IHRoZSAiYnVzIiBuYW1lIGluc3RlYWQgb2YgcGNpLWJ1cw0KDQpPay4NCg0KVGhhbmtzLA0KU2hh
-bWVlcg0K
+Hi Shameer,
+
+On 11/14/24 09:20, Shameerali Kolothum Thodi wrote:
+> Hi Eric,
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: Wednesday, November 13, 2024 5:12 PM
+>> To: Shameerali Kolothum Thodi
+>> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+>> qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
+>> ddutile@redhat.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
+>> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
+>> Jonathan Cameron <jonathan.cameron@huawei.com>;
+>> zhangfei.gao@linaro.org
+>> Subject: Re: [RFC PATCH 2/5] hw/arm/smmuv3: Add initial support for
+>> SMMUv3 Nested device
+>>
+>> Hi Shameer,
+>> On 11/8/24 13:52, Shameer Kolothum wrote:
+>>> Based on SMMUv3 as a parent device, add a user-creatable smmuv3-
+>> nested
+>>> device. Subsequent patches will add support to specify a PCI bus for
+>>> this device.
+>>>
+>>> Currently only supported for "virt", so hook up the sybus mem & irq
+>>> for that  as well.
+>>>
+>>> No FDT support is added for now.
+>>>
+>>> Signed-off-by: Shameer Kolothum
+>> <shameerali.kolothum.thodi@huawei.com>
+>>> ---
+>>>  hw/arm/smmuv3.c         | 34 ++++++++++++++++++++++++++++++++++
+>>>  hw/arm/virt.c           | 31 +++++++++++++++++++++++++++++--
+>>>  hw/core/sysbus-fdt.c    |  1 +
+>>>  include/hw/arm/smmuv3.h | 15 +++++++++++++++
+>>>  include/hw/arm/virt.h   |  6 ++++++
+>>>  5 files changed, 85 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c index
+>>> 2101031a8f..0033eb8125 100644
+>>> --- a/hw/arm/smmuv3.c
+>>> +++ b/hw/arm/smmuv3.c
+>>> @@ -2201,6 +2201,19 @@ static void smmu_realize(DeviceState *d, Error
+>> **errp)
+>>>      smmu_init_irq(s, dev);
+>>>  }
+>>>
+>>> +static void smmu_nested_realize(DeviceState *d, Error **errp) {
+>>> +    SMMUv3NestedState *s_nested = ARM_SMMUV3_NESTED(d);
+>> nit: s/s_nested/ns or just s?
+>>> +    SMMUv3NestedClass *c =
+>> ARM_SMMUV3_NESTED_GET_CLASS(s_nested);
+>>> +    Error *local_err = NULL;
+>>> +
+>>> +    c->parent_realize(d, &local_err);
+>> I think it is safe to use errp directly here.
+> Ok.
+>
+>>> +    if (local_err) {
+>>> +        error_propagate(errp, local_err);
+>>> +        return;
+>>> +    }
+>>> +}
+>>> +
+>>>  static const VMStateDescription vmstate_smmuv3_queue = {
+>>>      .name = "smmuv3_queue",
+>>>      .version_id = 1,
+>>> @@ -2299,6 +2312,18 @@ static void smmuv3_class_init(ObjectClass
+>> *klass, void *data)
+>>>      device_class_set_props(dc, smmuv3_properties);  }
+>>>
+>>> +static void smmuv3_nested_class_init(ObjectClass *klass, void *data)
+>>> +{
+>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+>>> +    SMMUv3NestedClass *c = ARM_SMMUV3_NESTED_CLASS(klass);
+>>> +
+>>> +    dc->vmsd = &vmstate_smmuv3;
+>>> +    device_class_set_parent_realize(dc, smmu_nested_realize,
+>>> +                                    &c->parent_realize);
+>>> +    dc->user_creatable = true;
+>>> +    dc->hotpluggable = false;
+>>> +}
+>>> +
+>>>  static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+>>>                                        IOMMUNotifierFlag old,
+>>>                                        IOMMUNotifierFlag new, @@
+>>> -2337,6 +2362,14 @@ static void
+>> smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+>>>      imrc->notify_flag_changed = smmuv3_notify_flag_changed;  }
+>>>
+>>> +static const TypeInfo smmuv3_nested_type_info = {
+>>> +    .name          = TYPE_ARM_SMMUV3_NESTED,
+>>> +    .parent        = TYPE_ARM_SMMUV3,
+>>> +    .instance_size = sizeof(SMMUv3NestedState),
+>>> +    .class_size    = sizeof(SMMUv3NestedClass),
+>>> +    .class_init    = smmuv3_nested_class_init,
+>>> +};
+>>> +
+>>>  static const TypeInfo smmuv3_type_info = {
+>>>      .name          = TYPE_ARM_SMMUV3,
+>>>      .parent        = TYPE_ARM_SMMU,
+>>> @@ -2355,6 +2388,7 @@ static const TypeInfo
+>>> smmuv3_iommu_memory_region_info = {  static void
+>>> smmuv3_register_types(void)  {
+>>>      type_register(&smmuv3_type_info);
+>>> +    type_register(&smmuv3_nested_type_info);
+>>>      type_register(&smmuv3_iommu_memory_region_info);
+>>>  }
+>>>
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c index
+>>> 780bcff77c..38075f9ab2 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -181,6 +181,7 @@ static const MemMapEntry base_memmap[] = {
+>>>      [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+>>>      [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
+>>>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+>>> +    [VIRT_SMMU_NESTED] =        { 0x0b000000, 0x01000000 },
+>> I agree with Mostafa that the _NESTED terminology may not be the best
+>> choice.
+> Yes. Agree.
+Nicolin's suggestion to use a reference to HW acceleration looks
+sensible to me.
+>
+>> The motivation behind that multi-instance attempt, as introduced in
+>> https://lore.kernel.org/all/ZEcT%2F7erkhHDaNvD@Asurada-Nvidia/
+>> was:
+>> - SMMUs with different feature bits
+>> - support of VCMDQ HW extension for SMMU CMDQ
+>> - need for separate S1 invalidation paths
+>>
+>> If I understand correctly this is mostly wanted for VCMDQ handling? if this
+>> is correct we may indicate that somehow in the terminology.
+>>
+> Not just for VCMDQ, but it benefits when we have multiple physical SMMUv3
+> instances as well.
+>
+>> If I understand correctly VCMDQ terminology is NVidia specific while ECMDQ
+>> is the baseline (?).
+> Yes, VCMDQ is NVIDIA specific. And ECMDQ is ARM SMMUv3, but don’t think we
+> can associate ECMDQ with a virtual SMMUv3.
+ok
+>
+>>>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that
+>> size */
+>>>      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+>>>      [VIRT_SECURE_MEM] =         { 0x0e000000, 0x01000000 },
+>>> @@ -226,6 +227,7 @@ static const int a15irqmap[] = {
+>>>      [VIRT_GIC_V2M] = 48, /* ...to 48 + NUM_GICV2M_SPIS - 1 */
+>>>      [VIRT_SMMU] = 74,    /* ...to 74 + NUM_SMMU_IRQS - 1 */
+>>>      [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS
+>>> -1 */
+>>> +    [VIRT_SMMU_NESTED] = 200,
+>> What is the max IRQs expected to be consumed. Wother to comment for
+>> next interrupt user.
+> Depends on how many we plan to support max  and each requires minimum 4. I will
+> update with a  comment here.
+>
+>>>  };
+>>>
+>>>  static void create_randomness(MachineState *ms, const char *node) @@
+>>> -2883,10 +2885,34 @@ static void
+>> virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+>>>                                          DeviceState *dev, Error
+>>> **errp)  {
+>>>      VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
+>>> +    MachineClass *mc = MACHINE_GET_CLASS(vms);
+>>>
+>>> -    if (vms->platform_bus_dev) {
+>>> -        MachineClass *mc = MACHINE_GET_CLASS(vms);
+>>> +    /* For smmuv3-nested devices we need to set the mem & irq */
+>>> +    if (device_is_dynamic_sysbus(mc, dev) &&
+>>> +        object_dynamic_cast(OBJECT(dev), TYPE_ARM_SMMUV3_NESTED)) {
+>> why did you choose not using the PLATFORM BUS infra which does that
+>> kind of binding automatically (also it provisions for dedicated MMIOs and
+>> IRQs). At least you would need to justify in the commit msg I think
+> Because I was not  sure how to do this binding otherwise. I couldn't find
+> any such precedence  for a  dynamic platform bus dev binding 
+> MMIOs/IRQs(May be I didn't look hard). I mentioned it in cover letter.
+>
+> Could you please give me some pointers/example for this? I will also
+> take another look.
+vfio platform users such automatic binding (however you must check that
+vfio platform bus mmio and irq space is large enough for your needs).
+
+the binding is transparently handled by
+    if (vms->platform_bus_dev) {
+        if (device_is_dynamic_sysbus(mc, dev)) {
+           
+platform_bus_link_device(PLATFORM_BUS_DEVICE(vms->platform_bus_dev),
+                                     SYS_BUS_DEVICE(dev));
+        }
+    }
+
+
+>
+>>> +        hwaddr base = vms->memmap[VIRT_SMMU_NESTED].base;
+>>> +        int irq =  vms->irqmap[VIRT_SMMU_NESTED];
+>>> +
+>>> +        if (vms->smmu_nested_count >= MAX_SMMU_NESTED) {
+>>> +            error_setg(errp, "smmuv3-nested max count reached!");
+>>> +            return;
+>>> +        }
+>>> +
+>>> +        base += (vms->smmu_nested_count * SMMU_IO_LEN);
+>>> +        irq += (vms->smmu_nested_count * NUM_SMMU_IRQS);
+>>>
+>>> +        sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+>>> +        for (int i = 0; i < 4; i++) {
+>>> +            sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+>>> +                               qdev_get_gpio_in(vms->gic, irq + i));
+>>> +        }
+>>> +        if (vms->iommu != VIRT_IOMMU_SMMUV3_NESTED) {
+>>> +            vms->iommu = VIRT_IOMMU_SMMUV3_NESTED;
+>>> +        }
+>>> +        vms->smmu_nested_count++;
+>> this kind of check would definitively not integrated in the platform bus but
+>> this could be introduced generically in the framework though or special
+>> cased after the platform_bus_link_device
+> Ok. So I assume there is a better way to link the MMIOs/IRQs as you mentioned 
+> above and we can add another helper to track this count as well.
+>
+>>> +    }
+>>> +
+>>> +    if (vms->platform_bus_dev) {
+>>>          if (device_is_dynamic_sysbus(mc, dev)) {
+>>>              platform_bus_link_device(PLATFORM_BUS_DEVICE(vms-
+>>> platform_bus_dev),
+>>>                                       SYS_BUS_DEVICE(dev)); @@ -3067,6
+>>> +3093,7 @@ static void virt_machine_class_init(ObjectClass *oc, void
+>> *data)
+>>>      machine_class_allow_dynamic_sysbus_dev(mc,
+>> TYPE_VFIO_AMD_XGBE);
+>>>      machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
+>>>      machine_class_allow_dynamic_sysbus_dev(mc,
+>> TYPE_VFIO_PLATFORM);
+>>> +    machine_class_allow_dynamic_sysbus_dev(mc,
+>>> + TYPE_ARM_SMMUV3_NESTED);
+>>>  #ifdef CONFIG_TPM
+>>>      machine_class_allow_dynamic_sysbus_dev(mc,
+>> TYPE_TPM_TIS_SYSBUS);
+>>> #endif diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c index
+>>> eebcd28f9a..0f0d0b3e58 100644
+>>> --- a/hw/core/sysbus-fdt.c
+>>> +++ b/hw/core/sysbus-fdt.c
+>>> @@ -489,6 +489,7 @@ static const BindingEntry bindings[] = {  #ifdef
+>>> CONFIG_LINUX
+>>>      TYPE_BINDING(TYPE_VFIO_CALXEDA_XGMAC,
+>> add_calxeda_midway_xgmac_fdt_node),
+>>>      TYPE_BINDING(TYPE_VFIO_AMD_XGBE, add_amd_xgbe_fdt_node),
+>>> +    TYPE_BINDING("arm-smmuv3-nested", no_fdt_node),
+>>>      VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a",
+>>> add_amd_xgbe_fdt_node),  #endif  #ifdef CONFIG_TPM diff --git
+>>> a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h index
+>>> d183a62766..87e628be7a 100644
+>>> --- a/include/hw/arm/smmuv3.h
+>>> +++ b/include/hw/arm/smmuv3.h
+>>> @@ -84,6 +84,21 @@ struct SMMUv3Class {
+>>>  #define TYPE_ARM_SMMUV3   "arm-smmuv3"
+>>>  OBJECT_DECLARE_TYPE(SMMUv3State, SMMUv3Class, ARM_SMMUV3)
+>>>
+>>> +#define TYPE_ARM_SMMUV3_NESTED   "arm-smmuv3-nested"
+>>> +OBJECT_DECLARE_TYPE(SMMUv3NestedState, SMMUv3NestedClass,
+>>> +ARM_SMMUV3_NESTED)
+>>> +
+>>> +struct SMMUv3NestedState {
+>>> +    SMMUv3State smmuv3_state;
+>>> +};
+>>> +
+>>> +struct SMMUv3NestedClass {
+>>> +    /*< private >*/
+>>> +    SMMUv3Class smmuv3_class;
+>>> +    /*< public >*/
+>>> +
+>>> +    DeviceRealize parent_realize;
+>>> +};
+>>> +
+>>>  #define STAGE1_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S1P)
+>>>  #define STAGE2_SUPPORTED(s)      FIELD_EX32(s->idr[0], IDR0, S2P)
+>>>
+>>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h index
+>>> 46f48fe561..50e47a4ef3 100644
+>>> --- a/include/hw/arm/virt.h
+>>> +++ b/include/hw/arm/virt.h
+>>> @@ -50,6 +50,9 @@
+>>>  /* MMIO region size for SMMUv3 */
+>>>  #define SMMU_IO_LEN 0x20000
+>>>
+>>> +/* Max supported nested SMMUv3 */    if (vms->platform_bus_dev) {
+>>>         if (device_is_dynamic_sysbus(mc, dev)) {
+>>>             platform_bus_link_device(PLATFORM_BUS_DEVICE(vms->platform_bus_dev),
+>>>                                      SYS_BUS_DEVICE(dev));
+>>>         }
+>>>     }
+>>>
+>>> +#define MAX_SMMU_NESTED 128
+>> Ouch, that many?!
+> 😊. I just came up with the max we can support the allocated MMIO space.
+> We do have systems at present which has 8 physical SMMUv3s at the moment.
+> Probably 16/32 would be a better number I guess.
+OK thanks
+
+Eric
+>
+> Thanks,
+> Shameer
+

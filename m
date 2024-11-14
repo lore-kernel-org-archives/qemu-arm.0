@@ -1,656 +1,254 @@
-Received: by 2002:a17:505:7d82:b0:1be9:327d:8ee3 with SMTP id wv2csp639383njc;
-        Wed, 13 Nov 2024 12:07:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWLE7cyxt5/xLfj/L6NvrWlIIPGDKWhJSYR789h1OIZHkql1rA8NwdNPykti0iaF3VR5bIdhXx37RgnJQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFqwetGGgZJno2CbRvfQSGqAnQrSFRnj01GgLduOBtR1HNWC+OJnmPnZuObq/c+gSyWzFJN
-X-Received: by 2002:a05:620a:2403:b0:7b1:880c:57fa with SMTP id af79cd13be357-7b34bbf9232mr790315685a.52.1731528479190;
-        Wed, 13 Nov 2024 12:07:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731528479; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp25563njc;
+        Wed, 13 Nov 2024 17:13:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX07NB0Jkl9KsFIfQUYcTIMMpdPLTVxdDqsJlhceF5txyVJ1bZOIuc6N97H/TMczKlUZ6MaT9gblCWj9w==@linaro.org
+X-Received: by 2002:a05:600c:3514:b0:42f:4f6:f8f3 with SMTP id 5b1f17b1804b1-432b74fde60mr187571415e9.7.1731546810130;
+        Wed, 13 Nov 2024 17:13:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731546810; cv=none;
         d=google.com; s=arc-20240605;
-        b=lmhR3UABgptrompeIynGHUk8feQRcpSBDGuFLnEaPaHCwp8qNO/5EKscMeTtVfwASP
-         9rsP1TRwuDDp3KJ6fxX2LXUrTU9wzpYVGnf1tNfxuIVVM8jSVOnfR+oUdi9Vy6IRLaOC
-         LqRnn6Orc4A8y1aQ/26ZAXxrXxREqtQAmHflokYozevwZh1BDpHZlR2j4awftZ/DVLJ1
-         CLwJKG1GNLHvArXQC9bQqvj6BMG3bxHEOZmnY76rUsb2uSBnmu7YA9nQbEJYfoblTrYp
-         I37dJYPAgx1cGz9qAtlC7aSPcAnKkSHVTttQBq7w3+zl7UnW9062B1mRRALzxSDml2My
-         s5CA==
+        b=b7rqHXmV1YbdXhy19WF8OW9pKsQauqAwss6Sds5fWg1gTmLP3oWrrk0/RYXd5ru/Gn
+         m2JFdhAR3c1nPsYWKFxthKmASZ7o2WYkAgu6r1pZssvPHoPzQwL2SdxmMpcPeFUIpelX
+         vNyh1RQfQHTAy0d6Kh9HQXsmDOBHpFdreEna6sXdqhOEktvYWRnfog/+ZwoR6RjBCioZ
+         g+xgHKjTj0IkgDDwDPpTB718/OoEKaA5P/qxfInhUY7VvNgMxO2u0GKOwDQyd1pao9Qk
+         0+ZCmP6KVtd8MYBZfhrQ/KSm9a82I22Sh/r96IRripc15LOjcPefFCLQNMRSCPEXyoTI
+         8MpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=P0p/ygDgvsCLmEFXP4oawAmFjFJhKFFd/SgliTl4ghM=;
-        fh=HicvCSNMO9wswV5uKNMYd3VV/HhxTlLADG1fQO5Z6lA=;
-        b=SCvhgghiYhHmsPz+8YjX3bb/UoQOoIGl6Vag4MnOKt+U5EK0CKVDgGA4MSTKXauOXi
-         mrkOEYDFR3XcabJVg7rF6zun70N5RWPYkMalTdo1+iMlbqlUCgDvzOiAXHdqxQYG3u/1
-         wrAyUdZtyirGZbjTsWm1uHhURuENVoEfJvMAu8oh4KLkKT/SRh8iteA4C3Serx8BqA1r
-         nGuxTUMnfHn5RcXo1FWQzcjfMxmckeCZwUv5pHbcq7Z811V32ZHRbx96VgQ0nCCXlXWn
-         QvrfVlp6+pxu6qqPn3z925vWXhGRMMk/3BWRrPl9uDovomx/DxBjsw9CCbGKaUtwOO0q
-         sWGA==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=1EwqjnIRPctj4Nq1APqJi9S66/euonofsINQc3qIQuI=;
+        fh=zd4Ivf9xndtNhofX8IDPNIWQ0Zi/rwWYHK/xTUmTOy0=;
+        b=M7wOYvq5FZYNZgbdV8HYRoaOSPNwhx7Ylrr31E3QLff9NCXTSeurgmStgkKjeQDUHX
+         kzaCr1jgKfRIIRwZRsGeHc7tcz2YnWfl14HvBoL1arT9j065X5M02SohOAwEtC48TzuN
+         2nVdQfIXxBVRvUBlJ+QVhG7iXhArLO/H5PbxDkyJ1D2JSlig2kBpk9iPeSDYG2QqxfNh
+         j3+nVKxPBX+KvYg65pSct9RD/w60VbqiQLnzvhqNy7jxyyIGdXhnpIzGcDa3A9/gdDqc
+         SvbgIObIN1Sag+FOq4qwTPZUdMaPqOdYLV3ZXc/as6wjLfktPTApccJk0wDalsGG9UBE
+         o0LA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=iMoQz01G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BiPNzCo4;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4630be89797si149175121cf.7.2024.11.13.12.07.59
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-432b0b156c6sor59949605e9.3.2024.11.13.17.13.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Nov 2024 12:07:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 13 Nov 2024 17:13:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=iMoQz01G;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BiPNzCo4;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tBJeJ-0005Cf-TA; Wed, 13 Nov 2024 15:07:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lists@philjordan.eu>)
- id 1tBJeI-0005Bs-1F
- for qemu-devel@nongnu.org; Wed, 13 Nov 2024 15:07:34 -0500
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <lists@philjordan.eu>)
- id 1tBJeF-0005Fp-Er
- for qemu-devel@nongnu.org; Wed, 13 Nov 2024 15:07:33 -0500
-Received: by mail-pj1-x1035.google.com with SMTP id
- 98e67ed59e1d1-2e2a97c2681so5715052a91.2
- for <qemu-devel@nongnu.org>; Wed, 13 Nov 2024 12:07:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1731528450; x=1732133250;
- darn=nongnu.org; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=P0p/ygDgvsCLmEFXP4oawAmFjFJhKFFd/SgliTl4ghM=;
- b=iMoQz01GrSNrbOomK9hnl4s+ecBsiEcHg46zx5FCU+Ecf4lndsVKltWR3kPn8vntNK
- q3RoNvIiIX0rGxIM5Zu5wcee6f6djrjrliigmomK31HVpFr/eI7BJcg9+z67HTewaLxT
- kpPnwMU3vmWCmEc/GhTiPsEICErEEUjctKfOe7PfI4nNMP0Vl05aAGRX1l2vEtIwLats
- T4Gu7yEcGGkt9qVQmdsdZphR4Ae6XuO4qyDYgOwgUOIJh/2QexVVodQIOZwYf7mKvBqe
- LBfBAXv1PIpUNCximPfVTOcO3xyZa2uQIzy1emirK2YxciMCmvVLpBOnUVSyY6Jow2ee
- UpKQ==
+        d=linaro.org; s=google; t=1731546809; x=1732151609; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=1EwqjnIRPctj4Nq1APqJi9S66/euonofsINQc3qIQuI=;
+        b=BiPNzCo4wZ5c6UM3xTGjGuOflmVdLi2vM71t9ZEaxBIA6bWoM+/63K73ohfnlQpLSu
+         YukNdpZhPrN68JvQGWWJ3cF4/V/6M7Dr3d+JPBUvAWrc1aKNwCeDQZLTQ/I3RPYk9CHo
+         9nLAXZIMCZh7C/qgLGLnd0UpJo9S63Mzs6MA8hy73fyg4SnxcVEii5cHUnczaUUwUMf1
+         yb/pRPkhuaqNESeORZdjMZHiNmqPv3F6PfgMRKY1qEbHx3tHVL/SVEY0ZH0sl2xnjtxW
+         5QEI+hzsLeCddnlbyySo7gIvkc/6NdZgqcVBYz+R7amLrnxOYoEC8+Xho0p1EtGdFT6O
+         pBFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731528450; x=1732133250;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=P0p/ygDgvsCLmEFXP4oawAmFjFJhKFFd/SgliTl4ghM=;
- b=hkOcNmIGKwgKw5Q47Zu0JJhLFyuSPuY7bx7TUOfzf0/vEuV69iZDrNTiTJ2SLL76py
- dCZnIccoZ1+NJXauJ3Lt1yheeg9QNT8kiOQZ1Mg9vIE9J/tZ/3TFB9y1Gj07Td9b+GTb
- D+EhcQCJ/CAC4DQ9+N0noH4lwPNOH4CrbSqQ3cO1rTe/LG8ZBHvGk01KO/D6dASd+BAS
- 7wxAjTikUuYEXzRPcweYLphezSNh3VCSOUstz1QsvpSrlDVs6aMzCFWMCXx9pwc910m5
- sBHvI5MKyeLxdE6c7S/IyKO1yaUs5FbjuQc31fbYe+0NcJsuXOkqKcAtD6YtPu0yj+cc
- OWJg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU/IOM9inQqqPEUdUCcs1YnEaRFJ9yE24HDFoz4Yhsj27r5H/ls0AsdTsdPL2Bf0l/XoCZMO34fdBLf@nongnu.org
-X-Gm-Message-State: AOJu0YxcTM1kGhvIobj5YOMIpREY24/GBTY2/0G1rD7yBMyQmh4+EsyM
- fdhw4My6otnwXq+s9krhMDHyOus+ODeT59q1gjZBA2IflQn1XmqCpWcY4sB+ycmJ/OsUIUCb+ay
- gDoglKBG9EIRwlf0dxil/XkoLHRY5mvCI3Ofv
-X-Received: by 2002:a17:90b:35c9:b0:2e2:8fb4:502d with SMTP id
- 98e67ed59e1d1-2e9e4adeffcmr10861507a91.16.1731528449634; Wed, 13 Nov 2024
- 12:07:29 -0800 (PST)
+        d=1e100.net; s=20230601; t=1731546809; x=1732151609;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=1EwqjnIRPctj4Nq1APqJi9S66/euonofsINQc3qIQuI=;
+        b=iap6Ik2l7cwb2t/0SkQccQ2fFqCdJEoBA9aNZZTHddISRRlh3iu2XTdPixhDU+t32E
+         DAxzgGYof+SWOUTw719bbxZ+++NdqMjhIAe29AmTpuEdMnMvW2utcxkMGnCJL+MazJJv
+         /sLZk2xIt83F5NSesaeXIuJYfntf53qfYebfXqxMoeFR43p7c9ZV/rj1yFiRVmI0wCEX
+         c5mqNt6IvEXDC8/rjbOakfIcjmoE80uhA9hLOoorzlKWv+nRteaz7yyAl8n2AzH2V5M2
+         MSnqtDWmkABCwsjebDUol4SplWoS3LjudHm1VrMyIk1hvuZQ/+TkTEqchOri1Pr9xwVq
+         MQTw==
+X-Forwarded-Encrypted: i=1; AJvYcCWX0bBH2FWyMngN9SR2ltUYZIQouiTRUG29ANvJh16v+NVTwqEW+J26NO7MIzRHMYeXTP+1ATtwY285lg==@linaro.org
+X-Gm-Message-State: AOJu0YyePGJupN7+GEgysK8mNVacKydFBXENClml+hOAf9MWpmX5XvEU
+	wOhSPWye3ohJiGmCMrSsGSKCeoeBShA6harGiFt+n2mvFHRYWhLTAuGiTyHlhrnRmA==
+X-Google-Smtp-Source: AGHT+IGZ4mtQztDulS9O9dxe4sHklabKWPOdh+RwHBXIF1ImFkUSMTktTv3L7h4tm6Iw0lzhApxUAQ==
+X-Received: by 2002:a05:6000:70d:b0:37d:3e6d:3c2f with SMTP id ffacd0b85a97d-381f1883bc1mr18783646f8f.47.1731546809627;
+        Wed, 13 Nov 2024 17:13:29 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from localhost.localdomain ([176.187.209.238])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-381eda13780sm19409085f8f.109.2024.11.13.17.13.26
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 13 Nov 2024 17:13:28 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Anton Johansson <anjo@rev.ng>,
+	qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org,
+	Thomas Huth <thuth@redhat.com>,
+	qemu-arm@nongnu.org,
+	Peter Xu <peterx@redhat.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	qemu-riscv@nongnu.org,
+	David Hildenbrand <david@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-s390x@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/24] exec: Build up 'cputlb.h' and 'ram_addr.h' headers
+Date: Thu, 14 Nov 2024 02:12:45 +0100
+Message-ID: <20241114011310.3615-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20241113142343.40832-1-phil@philjordan.eu>
- <20241113142343.40832-2-phil@philjordan.eu>
- <9dd5c736-e1b8-a025-745a-52e9aacb4b9b@eik.bme.hu>
- <CABgObfbCF7q_ATWmWw2yCmYhTQK7tKmgGKR73s4u3W5Kvqj2Cw@mail.gmail.com>
-In-Reply-To: <CABgObfbCF7q_ATWmWw2yCmYhTQK7tKmgGKR73s4u3W5Kvqj2Cw@mail.gmail.com>
-From: Phil Dennis-Jordan <lists@philjordan.eu>
-Date: Wed, 13 Nov 2024 21:07:18 +0100
-Message-ID: <CAGCz3vu6oCnMu8nirRc7bSJyKeEmJrC0xRHYdK-7T3v-teJ4Ag@mail.gmail.com>
-Subject: Re: [PATCH v10 01/15] ui & main loop: Redesign of system-specific
- main thread event handling
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>,
- Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org, 
- agraf@csgraf.de, peter.maydell@linaro.org, rad@semihalf.com, 
- quic_llindhol@quicinc.com, stefanha@redhat.com, mst@redhat.com, 
- slp@redhat.com, richard.henderson@linaro.org, eduardo@habkost.net, 
- marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com, 
- chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com, philmd@linaro.org, 
- shorne@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com, 
- bmeng.cn@gmail.com, liwei1518@gmail.com, dbarboza@ventanamicro.com, 
- zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, 
- berrange@redhat.com, akihiko.odaki@daynix.com, qemu-arm@nongnu.org, 
- qemu-block@nongnu.org, qemu-riscv@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000028cb630626d0e276"
-Received-SPF: neutral client-ip=2607:f8b0:4864:20::1035;
- envelope-from=lists@philjordan.eu; helo=mail-pj1-x1035.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2TAv/qHmWfpv
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: v/zEd2a6aL/6
 
---00000000000028cb630626d0e276
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hi,
 
-On Wed, 13 Nov 2024 at 19:36, Paolo Bonzini <pbonzini@redhat.com> wrote:
+"exec/exec-all.h" and "exec/cpu-all.h" both contains a mess
+of unrelated APIs. More importantly, they contain target
+specific declarations, making any file including them to
+become target specific, thus not buildable in common meson
+sets.
 
-> On Wed, Nov 13, 2024 at 7:16=E2=80=AFPM BALATON Zoltan <balaton@eik.bme.h=
-u> wrote:
-> > > int main(int argc, char **argv)
-> > > {
-> > > +    QemuThread main_loop_thread;
-> > > +
-> > >     qemu_init(argc, argv);
-> > > -    return qemu_main();
-> > > +    if (qemu_main) {
-> > > +        qemu_thread_create(&main_loop_thread, "qemu_main",
-> > > +                           call_qemu_default_main, NULL,
-> QEMU_THREAD_DETACHED);
-> > > +        bql_unlock();
-> > > +        return qemu_main();
-> > > +    } else {
-> > > +        qemu_default_main();
-> >
-> > I think you need 'return qemu_default_main()' here but I'm a bit confus=
-ed
-> > by all this wrapping of qemu_default_main in call_qemu_default_main. I
-> see
-> > that may be needed because qemu_thread_create takes a different functio=
-n
-> > but now that qemu_default main is static and not replaced externally
-> could
-> > that be changed to the right type and avoid this confusion and simplify
-> > this a bit?
->
-> Note that qemu_default_main() expects the BQL to be locked, whereas
-> qemu_main() and call_qemu_default_main() do not (because they run in a
-> separate thread).
->
-> But you're right, we could push bql_lock()/bql_unlock() into
-> qemu_default_main(), and do
->
->      bql_unlock();
->      if (qemu_main) {
->         qemu_thread_create(&main_loop_thread, "qemu_main",
->                            call_qemu_default_main, NULL,
-> QEMU_THREAD_DETACHED);
->         return qemu_main();
->     } else {
->         return qemu_default_main();
->     }
->
->
-Good point, if it's safe to drop the lock on thread 0 and re-lock it on
-another thread before running qemu_main_loop() there, it's also safe to
-momentarily drop the lock on thread 0 and re-take it before calling into
-qemu_main_loop(). I'll take that as a starting point and see how far I can
-simplify things.
+This series first extract the CPU TLB API scattered in various
+headers, then similarly strengthen the ram_addr_t API. Doing
+so we figured extracting "user/guest-host.h" was necessary.
 
-Thanks to both of you for the feedback!
+Before we have to include various missing headers to avoid
+compilation breakage when refactoring.
 
-Paolo
->
-> > Regards,
-> > BALATON Zoltan
-> >
-> > > +    }
-> > > }
-> > > diff --git a/ui/cocoa.m b/ui/cocoa.m
-> > > index 4c2dd335323..30b8920d929 100644
-> > > --- a/ui/cocoa.m
-> > > +++ b/ui/cocoa.m
-> > > @@ -73,6 +73,8 @@
-> > >     int height;
-> > > } QEMUScreen;
-> > >
-> > > +@class QemuCocoaPasteboardTypeOwner;
-> > > +
-> > > static void cocoa_update(DisplayChangeListener *dcl,
-> > >                          int x, int y, int w, int h);
-> > >
-> > > @@ -107,6 +109,7 @@ static void cocoa_switch(DisplayChangeListener
-> *dcl,
-> > > static NSInteger cbchangecount =3D -1;
-> > > static QemuClipboardInfo *cbinfo;
-> > > static QemuEvent cbevent;
-> > > +static QemuCocoaPasteboardTypeOwner *cbowner;
-> > >
-> > > // Utility functions to run specified code block with the BQL held
-> > > typedef void (^CodeBlock)(void);
-> > > @@ -1321,8 +1324,10 @@ - (void) dealloc
-> > > {
-> > >     COCOA_DEBUG("QemuCocoaAppController: dealloc\n");
-> > >
-> > > -    if (cocoaView)
-> > > -        [cocoaView release];
-> > > +    [cocoaView release];
-> > > +    [cbowner release];
-> > > +    cbowner =3D nil;
-> > > +
-> > >     [super dealloc];
-> > > }
-> > >
-> > > @@ -1938,8 +1943,6 @@ - (void)pasteboard:(NSPasteboard *)sender
-> provideDataForType:(NSPasteboardType)t
-> > >
-> > > @end
-> > >
-> > > -static QemuCocoaPasteboardTypeOwner *cbowner;
-> > > -
-> > > static void cocoa_clipboard_notify(Notifier *notifier, void *data);
-> > > static void cocoa_clipboard_request(QemuClipboardInfo *info,
-> > >                                     QemuClipboardType type);
-> > > @@ -2002,43 +2005,8 @@ static void
-> cocoa_clipboard_request(QemuClipboardInfo *info,
-> > >     }
-> > > }
-> > >
-> > > -/*
-> > > - * The startup process for the OSX/Cocoa UI is complicated, because
-> > > - * OSX insists that the UI runs on the initial main thread, and so w=
-e
-> > > - * need to start a second thread which runs the qemu_default_main():
-> > > - * in main():
-> > > - *  in cocoa_display_init():
-> > > - *   assign cocoa_main to qemu_main
-> > > - *   create application, menus, etc
-> > > - *  in cocoa_main():
-> > > - *   create qemu-main thread
-> > > - *   enter OSX run loop
-> > > - */
-> > > -
-> > > -static void *call_qemu_main(void *opaque)
-> > > -{
-> > > -    int status;
-> > > -
-> > > -    COCOA_DEBUG("Second thread: calling qemu_default_main()\n");
-> > > -    bql_lock();
-> > > -    status =3D qemu_default_main();
-> > > -    bql_unlock();
-> > > -    COCOA_DEBUG("Second thread: qemu_default_main() returned,
-> exiting\n");
-> > > -    [cbowner release];
-> > > -    exit(status);
-> > > -}
-> > > -
-> > > static int cocoa_main(void)
-> > > {
-> > > -    QemuThread thread;
-> > > -
-> > > -    COCOA_DEBUG("Entered %s()\n", __func__);
-> > > -
-> > > -    bql_unlock();
-> > > -    qemu_thread_create(&thread, "qemu_main", call_qemu_main,
-> > > -                       NULL, QEMU_THREAD_DETACHED);
-> > > -
-> > > -    // Start the main event loop
-> > >     COCOA_DEBUG("Main thread: entering OSX run loop\n");
-> > >     [NSApp run];
-> > >     COCOA_DEBUG("Main thread: left OSX run loop, which should never
-> happen\n");
-> > > @@ -2120,8 +2088,6 @@ static void cocoa_display_init(DisplayState *ds=
-,
-> DisplayOptions *opts)
-> > >
-> > >     COCOA_DEBUG("qemu_cocoa: cocoa_display_init\n");
-> > >
-> > > -    qemu_main =3D cocoa_main;
-> > > -
-> > >     // Pull this console process up to being a fully-fledged graphica=
-l
-> > >     // app with a menubar and Dock icon
-> > >     ProcessSerialNumber psn =3D { 0, kCurrentProcess };
-> > > @@ -2185,6 +2151,12 @@ static void cocoa_display_init(DisplayState
-> *ds, DisplayOptions *opts)
-> > >     qemu_clipboard_peer_register(&cbpeer);
-> > >
-> > >     [pool release];
-> > > +
-> > > +    /*
-> > > +     * The Cocoa UI will run the NSApplication runloop on the main
-> thread
-> > > +     * rather than the default Core Foundation one.
-> > > +     */
-> > > +    qemu_main =3D cocoa_main;
-> > > }
-> > >
-> > > static QemuDisplay qemu_display_cocoa =3D {
-> > > diff --git a/ui/gtk.c b/ui/gtk.c
-> > > index bf9d3dd679a..fbf20161f36 100644
-> > > --- a/ui/gtk.c
-> > > +++ b/ui/gtk.c
-> > > @@ -38,6 +38,7 @@
-> > > #include "qemu/cutils.h"
-> > > #include "qemu/error-report.h"
-> > > #include "qemu/main-loop.h"
-> > > +#include "qemu-main.h"
-> > >
-> > > #include "ui/console.h"
-> > > #include "ui/gtk.h"
-> > > @@ -2485,6 +2486,13 @@ static void gtk_display_init(DisplayState *ds,
-> DisplayOptions *opts)
-> > > #ifdef CONFIG_GTK_CLIPBOARD
-> > >     gd_clipboard_init(s);
-> > > #endif /* CONFIG_GTK_CLIPBOARD */
-> > > +
-> > > +    /*
-> > > +     * GTK+ calls must happen on the main thread at least on some
-> platforms,
-> > > +     * and on macOS the main runloop is polled via GTK+'s event
-> handling.
-> > > +     * Don't allow QEMU's event loop to be moved off the main thread=
-.
-> > > +     */
-> > > +    qemu_main =3D NULL;
-> > > }
-> > >
-> > > static void early_gtk_display_init(DisplayOptions *opts)
-> > > diff --git a/ui/sdl2.c b/ui/sdl2.c
-> > > index bd4f5a9da14..44ab2762262 100644
-> > > --- a/ui/sdl2.c
-> > > +++ b/ui/sdl2.c
-> > > @@ -34,6 +34,7 @@
-> > > #include "sysemu/sysemu.h"
-> > > #include "ui/win32-kbd-hook.h"
-> > > #include "qemu/log.h"
-> > > +#include "qemu-main.h"
-> > >
-> > > static int sdl2_num_outputs;
-> > > static struct sdl2_console *sdl2_console;
-> > > @@ -965,6 +966,9 @@ static void sdl2_display_init(DisplayState *ds,
-> DisplayOptions *o)
-> > >     }
-> > >
-> > >     atexit(sdl_cleanup);
-> > > +
-> > > +    /* SDL's event polling (in dpy_refresh) must happen on the main
-> thread. */
-> > > +    qemu_main =3D NULL;
-> > > }
-> > >
-> > > static QemuDisplay qemu_display_sdl2 =3D {
-> > >
-> >
->
->
->
+The relevant part of the diff-stat is:
 
---00000000000028cb630626d0e276
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+ include/exec/cpu-all.h        |  59 +-------------------
+ include/exec/cpu-common.h     |  56 +------------------
+ include/exec/cpu_ldst.h       |  73 +------------------------
+ include/exec/exec-all.h       | 259 ------------------------------------------
+ include/exec/ram_addr.h       | 56 ++-----------------
+ include/sysemu/ram_addr.h     | 129 ++++++++++++++++++++++++++++++++++++++
+ include/exec/cputlb.h         | 310 ++++++++++++++++++++++++++++++++++++++++++
+ include/user/guest-host.h     |  87 +++++++++++++++++++++++++++++
 
-<div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail=
-_attr">On Wed, 13 Nov 2024 at 19:36, Paolo Bonzini &lt;<a href=3D"mailto:pb=
-onzini@redhat.com">pbonzini@redhat.com</a>&gt; wrote:<br></div><blockquote =
-class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px sol=
-id rgb(204,204,204);padding-left:1ex">On Wed, Nov 13, 2024 at 7:16=E2=80=AF=
-PM BALATON Zoltan &lt;<a href=3D"mailto:balaton@eik.bme.hu" target=3D"_blan=
-k">balaton@eik.bme.hu</a>&gt; wrote:<br>
-&gt; &gt; int main(int argc, char **argv)<br>
-&gt; &gt; {<br>
-&gt; &gt; +=C2=A0 =C2=A0 QemuThread main_loop_thread;<br>
-&gt; &gt; +<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0qemu_init(argc, argv);<br>
-&gt; &gt; -=C2=A0 =C2=A0 return qemu_main();<br>
-&gt; &gt; +=C2=A0 =C2=A0 if (qemu_main) {<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_thread_create(&amp;main_loop_th=
-read, &quot;qemu_main&quot;,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0call_qemu_default_main, NULL, QEMU_THREAD=
-_DETACHED);<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 bql_unlock();<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return qemu_main();<br>
-&gt; &gt; +=C2=A0 =C2=A0 } else {<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_default_main();<br>
-&gt;<br>
-&gt; I think you need &#39;return qemu_default_main()&#39; here but I&#39;m=
- a bit confused<br>
-&gt; by all this wrapping of qemu_default_main in call_qemu_default_main. I=
- see<br>
-&gt; that may be needed because qemu_thread_create takes a different functi=
-on<br>
-&gt; but now that qemu_default main is static and not replaced externally c=
-ould<br>
-&gt; that be changed to the right type and avoid this confusion and simplif=
-y<br>
-&gt; this a bit?<br>
-<br>
-Note that qemu_default_main() expects the BQL to be locked, whereas<br>
-qemu_main() and call_qemu_default_main() do not (because they run in a<br>
-separate thread).<br>
-<br>
-But you&#39;re right, we could push bql_lock()/bql_unlock() into<br>
-qemu_default_main(), and do<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0bql_unlock();<br>
-=C2=A0 =C2=A0 =C2=A0if (qemu_main) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_thread_create(&amp;main_loop_thread, &quot=
-;qemu_main&quot;,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0call_qemu_default_main, NULL, QEMU_THREAD_DETACHED)=
-;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 return qemu_main();<br>
-=C2=A0 =C2=A0 } else {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 return qemu_default_main();<br>
-=C2=A0 =C2=A0 }<br>
-<br></blockquote><div><br></div><div>Good point, if it&#39;s safe to drop t=
-he lock on thread 0 and re-lock it on another thread before running qemu_ma=
-in_loop() there, it&#39;s also safe to momentarily drop the lock on thread =
-0 and re-take it before calling into qemu_main_loop(). I&#39;ll take that a=
-s a starting point and see how far I can simplify things.</div><div><br></d=
-iv><div>Thanks to both of you for the feedback!</div><div><br></div><blockq=
-uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
-x solid rgb(204,204,204);padding-left:1ex">
-Paolo<br>
-<br>
-&gt; Regards,<br>
-&gt; BALATON Zoltan<br>
-&gt;<br>
-&gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt; &gt; }<br>
-&gt; &gt; diff --git a/ui/cocoa.m b/ui/cocoa.m<br>
-&gt; &gt; index 4c2dd335323..30b8920d929 100644<br>
-&gt; &gt; --- a/ui/cocoa.m<br>
-&gt; &gt; +++ b/ui/cocoa.m<br>
-&gt; &gt; @@ -73,6 +73,8 @@<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0int height;<br>
-&gt; &gt; } QEMUScreen;<br>
-&gt; &gt;<br>
-&gt; &gt; +@class QemuCocoaPasteboardTypeOwner;<br>
-&gt; &gt; +<br>
-&gt; &gt; static void cocoa_update(DisplayChangeListener *dcl,<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 int x, int y, int w, int h);<br>
-&gt; &gt;<br>
-&gt; &gt; @@ -107,6 +109,7 @@ static void cocoa_switch(DisplayChangeListene=
-r *dcl,<br>
-&gt; &gt; static NSInteger cbchangecount =3D -1;<br>
-&gt; &gt; static QemuClipboardInfo *cbinfo;<br>
-&gt; &gt; static QemuEvent cbevent;<br>
-&gt; &gt; +static QemuCocoaPasteboardTypeOwner *cbowner;<br>
-&gt; &gt;<br>
-&gt; &gt; // Utility functions to run specified code block with the BQL hel=
-d<br>
-&gt; &gt; typedef void (^CodeBlock)(void);<br>
-&gt; &gt; @@ -1321,8 +1324,10 @@ - (void) dealloc<br>
-&gt; &gt; {<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0COCOA_DEBUG(&quot;QemuCocoaAppController: deal=
-loc\n&quot;);<br>
-&gt; &gt;<br>
-&gt; &gt; -=C2=A0 =C2=A0 if (cocoaView)<br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 [cocoaView release];<br>
-&gt; &gt; +=C2=A0 =C2=A0 [cocoaView release];<br>
-&gt; &gt; +=C2=A0 =C2=A0 [cbowner release];<br>
-&gt; &gt; +=C2=A0 =C2=A0 cbowner =3D nil;<br>
-&gt; &gt; +<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0[super dealloc];<br>
-&gt; &gt; }<br>
-&gt; &gt;<br>
-&gt; &gt; @@ -1938,8 +1943,6 @@ - (void)pasteboard:(NSPasteboard *)sender p=
-rovideDataForType:(NSPasteboardType)t<br>
-&gt; &gt;<br>
-&gt; &gt; @end<br>
-&gt; &gt;<br>
-&gt; &gt; -static QemuCocoaPasteboardTypeOwner *cbowner;<br>
-&gt; &gt; -<br>
-&gt; &gt; static void cocoa_clipboard_notify(Notifier *notifier, void *data=
-);<br>
-&gt; &gt; static void cocoa_clipboard_request(QemuClipboardInfo *info,<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0QemuClipb=
-oardType type);<br>
-&gt; &gt; @@ -2002,43 +2005,8 @@ static void cocoa_clipboard_request(QemuCl=
-ipboardInfo *info,<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; &gt; }<br>
-&gt; &gt;<br>
-&gt; &gt; -/*<br>
-&gt; &gt; - * The startup process for the OSX/Cocoa UI is complicated, beca=
-use<br>
-&gt; &gt; - * OSX insists that the UI runs on the initial main thread, and =
-so we<br>
-&gt; &gt; - * need to start a second thread which runs the qemu_default_mai=
-n():<br>
-&gt; &gt; - * in main():<br>
-&gt; &gt; - *=C2=A0 in cocoa_display_init():<br>
-&gt; &gt; - *=C2=A0 =C2=A0assign cocoa_main to qemu_main<br>
-&gt; &gt; - *=C2=A0 =C2=A0create application, menus, etc<br>
-&gt; &gt; - *=C2=A0 in cocoa_main():<br>
-&gt; &gt; - *=C2=A0 =C2=A0create qemu-main thread<br>
-&gt; &gt; - *=C2=A0 =C2=A0enter OSX run loop<br>
-&gt; &gt; - */<br>
-&gt; &gt; -<br>
-&gt; &gt; -static void *call_qemu_main(void *opaque)<br>
-&gt; &gt; -{<br>
-&gt; &gt; -=C2=A0 =C2=A0 int status;<br>
-&gt; &gt; -<br>
-&gt; &gt; -=C2=A0 =C2=A0 COCOA_DEBUG(&quot;Second thread: calling qemu_defa=
-ult_main()\n&quot;);<br>
-&gt; &gt; -=C2=A0 =C2=A0 bql_lock();<br>
-&gt; &gt; -=C2=A0 =C2=A0 status =3D qemu_default_main();<br>
-&gt; &gt; -=C2=A0 =C2=A0 bql_unlock();<br>
-&gt; &gt; -=C2=A0 =C2=A0 COCOA_DEBUG(&quot;Second thread: qemu_default_main=
-() returned, exiting\n&quot;);<br>
-&gt; &gt; -=C2=A0 =C2=A0 [cbowner release];<br>
-&gt; &gt; -=C2=A0 =C2=A0 exit(status);<br>
-&gt; &gt; -}<br>
-&gt; &gt; -<br>
-&gt; &gt; static int cocoa_main(void)<br>
-&gt; &gt; {<br>
-&gt; &gt; -=C2=A0 =C2=A0 QemuThread thread;<br>
-&gt; &gt; -<br>
-&gt; &gt; -=C2=A0 =C2=A0 COCOA_DEBUG(&quot;Entered %s()\n&quot;, __func__);=
-<br>
-&gt; &gt; -<br>
-&gt; &gt; -=C2=A0 =C2=A0 bql_unlock();<br>
-&gt; &gt; -=C2=A0 =C2=A0 qemu_thread_create(&amp;thread, &quot;qemu_main&qu=
-ot;, call_qemu_main,<br>
-&gt; &gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0NULL, QEMU_THREAD_DETACHED);<br>
-&gt; &gt; -<br>
-&gt; &gt; -=C2=A0 =C2=A0 // Start the main event loop<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0COCOA_DEBUG(&quot;Main thread: entering OSX ru=
-n loop\n&quot;);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0[NSApp run];<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0COCOA_DEBUG(&quot;Main thread: left OSX run lo=
-op, which should never happen\n&quot;);<br>
-&gt; &gt; @@ -2120,8 +2088,6 @@ static void cocoa_display_init(DisplayState=
- *ds, DisplayOptions *opts)<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0COCOA_DEBUG(&quot;qemu_cocoa: cocoa_display_in=
-it\n&quot;);<br>
-&gt; &gt;<br>
-&gt; &gt; -=C2=A0 =C2=A0 qemu_main =3D cocoa_main;<br>
-&gt; &gt; -<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0// Pull this console process up to being a ful=
-ly-fledged graphical<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0// app with a menubar and Dock icon<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0ProcessSerialNumber psn =3D { 0, kCurrentProce=
-ss };<br>
-&gt; &gt; @@ -2185,6 +2151,12 @@ static void cocoa_display_init(DisplayStat=
-e *ds, DisplayOptions *opts)<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0qemu_clipboard_peer_register(&amp;cbpeer);<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0[pool release];<br>
-&gt; &gt; +<br>
-&gt; &gt; +=C2=A0 =C2=A0 /*<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0* The Cocoa UI will run the NSApplication ru=
-nloop on the main thread<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0* rather than the default Core Foundation on=
-e.<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; &gt; +=C2=A0 =C2=A0 qemu_main =3D cocoa_main;<br>
-&gt; &gt; }<br>
-&gt; &gt;<br>
-&gt; &gt; static QemuDisplay qemu_display_cocoa =3D {<br>
-&gt; &gt; diff --git a/ui/gtk.c b/ui/gtk.c<br>
-&gt; &gt; index bf9d3dd679a..fbf20161f36 100644<br>
-&gt; &gt; --- a/ui/gtk.c<br>
-&gt; &gt; +++ b/ui/gtk.c<br>
-&gt; &gt; @@ -38,6 +38,7 @@<br>
-&gt; &gt; #include &quot;qemu/cutils.h&quot;<br>
-&gt; &gt; #include &quot;qemu/error-report.h&quot;<br>
-&gt; &gt; #include &quot;qemu/main-loop.h&quot;<br>
-&gt; &gt; +#include &quot;qemu-main.h&quot;<br>
-&gt; &gt;<br>
-&gt; &gt; #include &quot;ui/console.h&quot;<br>
-&gt; &gt; #include &quot;ui/gtk.h&quot;<br>
-&gt; &gt; @@ -2485,6 +2486,13 @@ static void gtk_display_init(DisplayState =
-*ds, DisplayOptions *opts)<br>
-&gt; &gt; #ifdef CONFIG_GTK_CLIPBOARD<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0gd_clipboard_init(s);<br>
-&gt; &gt; #endif /* CONFIG_GTK_CLIPBOARD */<br>
-&gt; &gt; +<br>
-&gt; &gt; +=C2=A0 =C2=A0 /*<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0* GTK+ calls must happen on the main thread =
-at least on some platforms,<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0* and on macOS the main runloop is polled vi=
-a GTK+&#39;s event handling.<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0* Don&#39;t allow QEMU&#39;s event loop to b=
-e moved off the main thread.<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; &gt; +=C2=A0 =C2=A0 qemu_main =3D NULL;<br>
-&gt; &gt; }<br>
-&gt; &gt;<br>
-&gt; &gt; static void early_gtk_display_init(DisplayOptions *opts)<br>
-&gt; &gt; diff --git a/ui/sdl2.c b/ui/sdl2.c<br>
-&gt; &gt; index bd4f5a9da14..44ab2762262 100644<br>
-&gt; &gt; --- a/ui/sdl2.c<br>
-&gt; &gt; +++ b/ui/sdl2.c<br>
-&gt; &gt; @@ -34,6 +34,7 @@<br>
-&gt; &gt; #include &quot;sysemu/sysemu.h&quot;<br>
-&gt; &gt; #include &quot;ui/win32-kbd-hook.h&quot;<br>
-&gt; &gt; #include &quot;qemu/log.h&quot;<br>
-&gt; &gt; +#include &quot;qemu-main.h&quot;<br>
-&gt; &gt;<br>
-&gt; &gt; static int sdl2_num_outputs;<br>
-&gt; &gt; static struct sdl2_console *sdl2_console;<br>
-&gt; &gt; @@ -965,6 +966,9 @@ static void sdl2_display_init(DisplayState *d=
-s, DisplayOptions *o)<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0}<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0atexit(sdl_cleanup);<br>
-&gt; &gt; +<br>
-&gt; &gt; +=C2=A0 =C2=A0 /* SDL&#39;s event polling (in dpy_refresh) must h=
-appen on the main thread. */<br>
-&gt; &gt; +=C2=A0 =C2=A0 qemu_main =3D NULL;<br>
-&gt; &gt; }<br>
-&gt; &gt;<br>
-&gt; &gt; static QemuDisplay qemu_display_sdl2 =3D {<br>
-&gt; &gt;<br>
-&gt;<br>
-<br>
-<br>
-</blockquote></div></div>
+Hoping it makes sense!
 
---00000000000028cb630626d0e276--
+Please review,
+
+Phil.
+
+Philippe Mathieu-Daudé (24):
+  exec/cpu-all: Include missing 'exec/cpu-defs.h' header
+  exec/cpu-defs: Remove unnecessary headers
+  exec/translation-block: Include missing 'exec/vaddr.h' header
+  accel/tcg: Include missing 'exec/translation-block.h' header
+  target/i386/helper: Include missing 'exec/translation-block.h' header
+  target/rx/cpu: Include missing 'exec/translation-block.h' header
+  system/watchpoint: Include missing 'exec/cpu-all.h' header
+  linux-user/aarch64/mte: Include missing 'user/abitypes.h' header
+  target/arm/mte: Restrict 'exec/ram_addr.h' to system emulation
+  target/arm/cpu: Restrict cpu_untagged_addr() to user emulation
+  exec: Introduce 'user/guest-host.h' header
+  accel/tcg: Have tlb_vaddr_to_host() use vaddr type
+  exec: Declare tlb_reset_dirty*() in 'exec/cputlb.h'
+  exec: Declare tlb_init/destroy() in 'exec/cputlb.h'
+  exec: Declare tlb_set_page_full() in 'exec/cputlb.h'
+  exec: Declare tlb_set_page_with_attrs() in 'exec/cputlb.h'
+  exec: Declare tlb_set_page() in 'exec/cputlb.h'
+  exec: Declare tlb_flush*() in 'exec/cputlb.h'
+  exec: Declare tlb_hit*() in 'exec/cputlb.h'
+  exec: Declare tlb_vaddr_to_host() in 'exec/cputlb.h'
+  exec: Extract CPU physical memory API to 'sysemu/physmem-target.h'
+  exec/cpu-common: Move ram_addr_t related methods to 'exec/ram_addr.h'
+  exec/memory: Move qemu_map_ram_ptr() declaration to 'exec/ram_addr.h'
+  exec: Move 'ram_addr.h' header under sysemu/ namespace
+
+ MAINTAINERS                                   |   3 +-
+ include/exec/cpu-all.h                        |  59 +---
+ include/exec/cpu-common.h                     |  56 +---
+ include/exec/cpu-defs.h                       |   8 -
+ include/exec/cpu_ldst.h                       |  73 +----
+ include/exec/cputlb.h                         | 310 +++++++++++++++++-
+ include/exec/exec-all.h                       | 259 ---------------
+ include/exec/memory.h                         |   2 +-
+ include/exec/translation-block.h              |   3 +-
+ .../ram_addr.h => sysemu/physmem-target.h}    |  56 +---
+ include/sysemu/ram_addr.h                     | 129 ++++++++
+ include/user/guest-host.h                     |  87 +++++
+ linux-user/aarch64/mte_user_helper.h          |   2 +
+ target/arm/cpu.h                              |   5 +-
+ accel/kvm/kvm-all.c                           |   3 +-
+ accel/tcg/cpu-exec.c                          |   1 +
+ accel/tcg/cputlb.c                            |  28 +-
+ accel/tcg/tcg-accel-ops.c                     |   2 +
+ accel/tcg/translate-all.c                     |   3 +-
+ cpu-target.c                                  |   1 +
+ hw/intc/armv7m_nvic.c                         |   2 +-
+ hw/ppc/spapr.c                                |   3 +-
+ hw/ppc/spapr_caps.c                           |   3 +-
+ hw/ppc/spapr_nested.c                         |   1 +
+ hw/ppc/spapr_pci.c                            |   3 +-
+ hw/remote/memory.c                            |   3 +-
+ hw/remote/proxy-memory-listener.c             |   3 +-
+ hw/s390x/s390-stattrib-kvm.c                  |   3 +-
+ hw/s390x/s390-stattrib.c                      |   3 +-
+ hw/s390x/s390-virtio-ccw.c                    |   3 +-
+ hw/sh4/sh7750.c                               |   1 +
+ hw/vfio/common.c                              |   3 +-
+ hw/vfio/container.c                           |   3 +-
+ hw/vfio/iommufd.c                             |   3 +-
+ hw/vfio/migration.c                           |   3 +-
+ hw/vfio/spapr.c                               |   3 +-
+ hw/virtio/virtio-mem.c                        |   3 +-
+ migration/ram.c                               |   3 +-
+ plugins/api.c                                 |   3 +-
+ system/memory.c                               |   3 +-
+ system/physmem.c                              |   4 +-
+ system/watchpoint.c                           |   3 +-
+ target/alpha/helper.c                         |   2 +-
+ target/alpha/sys_helper.c                     |   2 +-
+ target/arm/helper.c                           |   1 +
+ target/arm/tcg/helper-a64.c                   |   1 +
+ target/arm/tcg/mte_helper.c                   |   5 +-
+ target/avr/helper.c                           |   2 +-
+ target/hppa/mem_helper.c                      |   1 +
+ target/i386/helper.c                          |   2 +
+ target/i386/machine.c                         |   2 +-
+ target/i386/tcg/fpu_helper.c                  |   2 +-
+ target/i386/tcg/misc_helper.c                 |   2 +-
+ target/i386/tcg/sysemu/excp_helper.c          |   2 +-
+ target/i386/tcg/sysemu/misc_helper.c          |   2 +-
+ target/i386/tcg/sysemu/svm_helper.c           |   2 +-
+ target/loongarch/tcg/csr_helper.c             |   2 +-
+ target/loongarch/tcg/tlb_helper.c             |   2 +-
+ target/m68k/helper.c                          |   2 +-
+ target/microblaze/helper.c                    |   2 +-
+ target/microblaze/mmu.c                       |   2 +-
+ target/mips/sysemu/cp0.c                      |   2 +-
+ target/mips/tcg/sysemu/cp0_helper.c           |   2 +-
+ target/mips/tcg/sysemu/tlb_helper.c           |   2 +-
+ target/openrisc/mmu.c                         |   2 +-
+ target/openrisc/sys_helper.c                  |   1 +
+ target/ppc/helper_regs.c                      |   2 +-
+ target/ppc/kvm.c                              |   3 +-
+ target/ppc/mem_helper.c                       |   1 +
+ target/ppc/misc_helper.c                      |   1 +
+ target/ppc/mmu_helper.c                       |   1 +
+ target/riscv/cpu_helper.c                     |   2 +-
+ target/riscv/csr.c                            |   1 +
+ target/riscv/op_helper.c                      |   1 +
+ target/riscv/pmp.c                            |   2 +-
+ target/rx/cpu.c                               |   3 +-
+ target/s390x/gdbstub.c                        |   2 +-
+ target/s390x/kvm/kvm.c                        |   3 +-
+ target/s390x/sigp.c                           |   2 +-
+ target/s390x/tcg/excp_helper.c                |   1 +
+ target/s390x/tcg/mem_helper.c                 |   1 +
+ target/s390x/tcg/misc_helper.c                |   1 +
+ target/sh4/helper.c                           |   2 +-
+ target/sparc/ldst_helper.c                    |   1 +
+ target/sparc/mmu_helper.c                     |   2 +-
+ target/tricore/helper.c                       |   2 +-
+ target/xtensa/helper.c                        |   2 +-
+ target/xtensa/mmu_helper.c                    |   1 +
+ 88 files changed, 670 insertions(+), 566 deletions(-)
+ rename include/{exec/ram_addr.h => sysemu/physmem-target.h} (88%)
+ create mode 100644 include/sysemu/ram_addr.h
+ create mode 100644 include/user/guest-host.h
+
+-- 
+2.45.2

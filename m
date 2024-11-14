@@ -1,96 +1,99 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp548904njc;
-        Thu, 14 Nov 2024 13:00:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVYGa33rZGmT2flZiuELxphHRPtiFDD7fi8/uNWzdj5kykVeqWv5gdz214Yzr+7tXXWXzijOejXBbNMeg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEv98zSGRtkyyu5r6wyiGmZpklK0lTjMdRHm2NuYq0wlivaz5Paa2TBQ0XQDHEfhqj1Jhpi
-X-Received: by 2002:a05:6102:54a1:b0:4aa:f6bc:3b95 with SMTP id ada2fe7eead31-4ad62aed0bamr772022137.3.1731618038389;
-        Thu, 14 Nov 2024 13:00:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731618038; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp549061njc;
+        Thu, 14 Nov 2024 13:00:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX89/BO0xkmHZwL2QXnC4IYImSeynMq7VH9wbJnvQ4ibu0coeWeawQlpSswGfIzvb8b4oL3u7gccvYJxg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGrszWNobnFhwsn6sLZM05Y5OAPF1faF99B708SByb/j2Z/RQP4wSJglKmkofoiRdOZtBrs
+X-Received: by 2002:a05:6102:4422:b0:4ad:5c41:d1b with SMTP id ada2fe7eead31-4ad62b481acmr742766137.12.1731618048371;
+        Thu, 14 Nov 2024 13:00:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731618048; cv=none;
         d=google.com; s=arc-20240605;
-        b=K3ou/luB8t1nqrnbajecTDTLVVIl7wHWfxQ1efQDSVba2h/fAolvSLoJUSO9FDNtQW
-         4R5jLN/xAsTQ219RcdphR1uIw1sj4/bu+V6wQ7GwA7JTQ3eIpdyRWNQh9YVKgmQsPHtJ
-         DE5ZTE3Fff5vVbRPT7jcxbaopJlW+ab6nWTDI1lNQRIQV0kALXCwS4sczLqfpfvdMtu6
-         S0lUm1Bg8tCF+yjRmbPel6Akeo8xCZY4irdKQxEn27mYXLadxYhuceEeINVu3RLTJqJE
-         m2AEitzUWKshHEs0NEW+53bRSte4gBbPMBDSp2ce7OcBFKvQ0s9q5M14fkUh8hFXtvY4
-         nmXw==
+        b=kS+kN6z0Qxu9jfXiEWlW/SUuQDuO+YCFglsne2nRMg+8KT/1fJYlWKyuU8/rlWxxQ8
+         lFRanxvuGfKIK1MRBXtHrLtS4h1H5KbbLz4whYxB+JtpsaB86bVCMfei/KZUj7yW2uFa
+         DN1Ksk0Sp0B0pA1zpWRHcYfFL8XkNTPa2JrEPHY3son+iFt+ZLogERHvejqRkzRl2BWS
+         EqeUEUkbTjYpr2bRaKpEY8ncMaq/jueelE16IawimeNsluzmXaIXT6LssXLdKxMbqdsp
+         tPiyyC1VFGuFrP42ZswYpjlXjYUh6/MEv3orLDLICvdZK8N0SSIfSILKuRCxEqpIuK7k
+         doTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=LwtKlFyLirVGmcUUsZN1RQkG5HiIWs+0ZyXLJLGhGNs=;
-        fh=5jk8UxAyCIlFm5FJTrcugn+mYgKxg5oCAlh/+aIwL9w=;
-        b=jfehOZOiC72lgUxyweIK740d9x9RO8fEaszEmWxHD6m2q9qDz+neC25D/vT0C2uV/+
-         2ngk4kS8FT65tLgn0OSHRBOHe03VomrgHsFoi9mfPzqoeVtNcm1vqGygp6SivX6oXRee
-         nDz6LS4iFOTTq0Wo6ZjxHwSnhgzUEAYkZVqdBXHnEGlBjv2tg2jQc5Yo8ybF8NSK8ays
-         SneMeibmSTnf+sfmx5H1D1Sq1YKnfC2hVK3Cy6/4qza2hx48y/l87b3OLWSatiBmIhV6
-         TW2RDHnk9Zfjulj8LzXJjsdMEBFFyYk6ZycmfYAgLbyfHFhWk4aCT8Yf8BbPSKfAfmeG
-         1ABA==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=dxalhuJA3V9Mf8DxAADrs85j1mYwG4uCtR+wwxiXnFU=;
+        fh=0xatxj4OzDuPzz9ohsUVwDA2hHz9oEYpGaZXdg02hgE=;
+        b=ZXW1wlKxTFU9ijQYIQQONeef8xDkaballFaBBZTAfw1C0QmRB08MKpcL9AUd1mOvaP
+         154Q/1a7EQoDm2fc1zknuL/IxUVouThB1TqQcVdkRP1bp7TWuAZfLwWT1SdVjqDlZ3hw
+         pmmE2nepV5TUJr1Hq7w+0O0Y9pdsR5y7fVDOPr293242nuniull5oXT3V5y+j6nnxiO/
+         uNE/Vysp5fCuHXkQK8deQpeh3OWf9zTufOSecMfKYA7MP5mjefojavp4WILvYCe1ulBR
+         qD1opO7boGAkla5f7SDHJSTLXh0gAhDENrRAbYl92mpuC1ckZ7UYRB29B2VablDwm6ej
+         cXyw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s6PvdGYn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=cx41yGx3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-856dfb672b9si46726241.9.2024.11.14.13.00.38
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-856dfd58d2csi33961241.119.2024.11.14.13.00.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Nov 2024 13:00:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Nov 2024 13:00:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s6PvdGYn;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=cx41yGx3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tBgwv-00080e-HE; Thu, 14 Nov 2024 16:00:21 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tBgx1-0008Dq-US; Thu, 14 Nov 2024 16:00:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tBgwt-0007va-PY
- for qemu-devel@nongnu.org; Thu, 14 Nov 2024 16:00:20 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tBgx0-0008C9-1z
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2024 16:00:26 -0500
+Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tBgws-0007ss-02
- for qemu-devel@nongnu.org; Thu, 14 Nov 2024 16:00:19 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4315f24a6bbso8938795e9.1
- for <qemu-devel@nongnu.org>; Thu, 14 Nov 2024 13:00:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tBgwy-0007uM-I7
+ for qemu-arm@nongnu.org; Thu, 14 Nov 2024 16:00:25 -0500
+Received: by mail-wr1-x435.google.com with SMTP id
+ ffacd0b85a97d-37d49ffaba6so709362f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 14 Nov 2024 13:00:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1731618015; x=1732222815; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=LwtKlFyLirVGmcUUsZN1RQkG5HiIWs+0ZyXLJLGhGNs=;
- b=s6PvdGYn3CN48S4Effqx5D1I1n4zX3eArpEKxyJNJwNtVga1dLc4/azlQa81QchkF+
- /ex4uEdHsXgHJhrArXHcZKUEyPpIB2ExKMI0bQbvUOjY9GDJpDXFBkKdwb3VVcleU+dH
- hH0RzsQ5BiDOEStncH+/3hsJS2sEO3bbV6oyiE8rS86lmGtmDz6E0yoXCJMne8PxAdxT
- 7M/8lI1Y2kwxWF1FCTTnjvAQy3vxnKLILMAsjqIvj45kn53mZVzTggi5FMVpcZhh+YnO
- AponhmEHjqmmY0u/hVRDql2XS1FIVQAF+rwnV4LHASJv+y/Wjiz1/75wPp6b2P1xDC4f
- m19Q==
+ d=linaro.org; s=google; t=1731618023; x=1732222823; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dxalhuJA3V9Mf8DxAADrs85j1mYwG4uCtR+wwxiXnFU=;
+ b=cx41yGx3ew8rlJ4Cxv3ogkRDgC2SfNrX8u9YYSdhNhtU90cxa6DMlk1hHC/ciKbvpj
+ ZiHmSkfWi7s8mIiLrD3zw0U2g6vtxkEjbpWJN3nLp6st7LzDjQHL8BQdmpZBg7u9kc8S
+ 0ZsDMM5yRMOIn/RMhjWZvLTL1SABDonCfXbVziTGQf4knd6NWHGhdKzSQ6ZsO6TVnvF7
+ HxAwxjOK0puUh7Z5kwx+FQ2kvqAvi01LnQ2LfJzdsCtvAQ5auEQwInwlJxDnnFltURlF
+ 2rXfLxuom5oLX+/8WhZEh+6UPlaql/oq4W4HA1zqA0ZPcssklYtVQGCnyTLOWs+YcW/l
+ DBxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731618015; x=1732222815;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=LwtKlFyLirVGmcUUsZN1RQkG5HiIWs+0ZyXLJLGhGNs=;
- b=rnlUbJPkmF6QcPUa9IuCH1/x1aOiYXs4FQRfIO14pqPicwZAf3UqXJBy7DhnV+RWzi
- ZWgW2No15+9ce0+CITH2eijJTVaahprdcVZYjvfwl5Moc3sKhlIHq/Xu4bmjs+ZYyV4N
- KvlVdjE5Y1kzxt5DjwhFyLD64KN1U0/RgEHGWp3X+aYCkf75wHZhF3YJhXR/3+XvnZwa
- W7ZNfVBu81/7kiYMCILte4F46JKoichXxiRMWtsXglhR5W5BkL4R5LJ/hBG8MuA9cu5A
- l/xEAgIHjLmmI/q+qL4VxwXPoKARuRJb4cbC9MsqG1B5bAm/ifMTFlG9Uh/5SpKUXTY4
- RtYA==
-X-Gm-Message-State: AOJu0YwCsvOwdi2iuKa21Gr0L5/LlwF2tGAHC6hYDKKe+8l0iDbk4V20
- PX3qSklxfvh9/W7mi+x19g3O0C28H7JzLDlNEb6zJee7wRvEpjis8IIEte3aqZYJ7DC+zPue9+J
- X
-X-Received: by 2002:a05:600c:198a:b0:426:60b8:d8ba with SMTP id
- 5b1f17b1804b1-432df78f0abmr1187295e9.28.1731618015615; 
- Thu, 14 Nov 2024 13:00:15 -0800 (PST)
+ d=1e100.net; s=20230601; t=1731618023; x=1732222823;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=dxalhuJA3V9Mf8DxAADrs85j1mYwG4uCtR+wwxiXnFU=;
+ b=bY4UHu9G5dVcKzoEDaHd1BzEZtWkTHyRqcnuJiykukAvZ6+Yb47Aa+o2oIztHN5AuO
+ Cjda2sgRs9gRqtt9kvKKzUWWTaRO9/yJy2j4A5FgcEb2qg+s5uVnVj/Dcaqw42WF/IgJ
+ jSLs+73vVLTBSOOunPIETuBBFcX80efPzGaX1ZeaN7d99VmPBkJlGmNOas2wFC5L3YpW
+ UNDR+6DZ/wtHFKuycbLMB7ua7u3B6CFGFDMe0C58mTwBZPdDI6ZZTIQG0SowREaEsnR+
+ j/kqsCSST9G0+zx+2Gs9c0ykGEpUIL82kL8256r7jsle2NQQN2zwJ3I40TBzRkF7IlPB
+ 9J1w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUgykcQ236xL+/PfbH8Yr8QIhxU7sRmR2c4Y25H06CUbw2RX4YZeHD7gbnwLeaz086sk9iViH4+jw==@nongnu.org
+X-Gm-Message-State: AOJu0YyLZ7l5oGJEROCm2m1qhmWqfAJyhBgLOVno0rI4dFB6D8/rknFo
+ qUJRHof+vKT+/okAa8+zX23zo6XDS5tBd4ZvazZPpUCnv0oNXdrw5weJKD2uTR8=
+X-Received: by 2002:a05:6000:2a01:b0:37d:4332:e91d with SMTP id
+ ffacd0b85a97d-38225aa6246mr158254f8f.52.1731618022950; 
+ Thu, 14 Nov 2024 13:00:22 -0800 (PST)
 Received: from localhost.localdomain ([176.187.209.228])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-432dac223e6sm32380635e9.43.2024.11.14.13.00.12
+ ffacd0b85a97d-3821ada2da2sm2430618f8f.15.2024.11.14.13.00.20
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 14 Nov 2024 13:00:14 -0800 (PST)
+ Thu, 14 Nov 2024 13:00:21 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
@@ -103,101 +106,114 @@ Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH RESEND v2 00/19] hw/net/xilinx_ethlite: Map RAM buffers as RAM
- and remove tswap() calls
-Date: Thu, 14 Nov 2024 21:59:51 +0100
-Message-ID: <20241114210010.34502-1-philmd@linaro.org>
+Subject: [PATCH RESEND v2 01/19] hw/microblaze: Restrict MemoryRegionOps are
+ implemented as 32-bit
+Date: Thu, 14 Nov 2024 21:59:52 +0100
+Message-ID: <20241114210010.34502-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241114210010.34502-1-philmd@linaro.org>
+References: <20241114210010.34502-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::435;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wwR5pAdhUoJI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: V1oWUN71VoPe
 
-Missing review: patch #19 (new)
+All these MemoryRegionOps read() and write() handlers are
+implemented expecting 32-bit accesses. Clarify that setting
+.impl.min/max_access_size fields.
 
-Since v1:
-- Addressed Edgar review comments
-- New patch to map RSVD I/O region (Paolo)
-- Added Edgar R-b tags
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Anton Johansson <anjo@rev.ng>
+---
+ hw/char/xilinx_uartlite.c | 4 ++++
+ hw/intc/xilinx_intc.c     | 4 ++++
+ hw/net/xilinx_ethlite.c   | 4 ++++
+ hw/timer/xilinx_timer.c   | 4 ++++
+ 4 files changed, 16 insertions(+)
 
-This is the result of a long discussion with Edgar (started few
-years ago!) and Paolo:
-https://lore.kernel.org/qemu-devel/34f6fe2f-06e0-4e2a-a361-2d662f6814b5@redhat.com/
-After clarification from Richard on MMIO/RAM accesses, I figured
-strengthening the model regions would make things obvious,
-eventually allowing to remove the tswap() calls for good.
-
-This costly series mostly plays around with MemoryRegions.
-
-The model has a mix of RAM/MMIO in its address range. Currently
-they are implemented as a MMIO array of u32. Since the core
-memory layer swaps accesses for MMIO, the device implementation
-has to swap them back.
-In order to avoid that, we'll map the RAM regions as RAM MRs.
-First we move each MMIO register to new MMIO regions (RX and TX).
-Then what is left are the RAM buffers; we convert them to RAM MRs,
-removing the need for tswap() at all.
-
-Once reviewed, I'll respin my "hw/microblaze: Allow running
-cross-endian vCPUs" series based on this.
-
-Tested using 'make check-functional-microblaze{,el}'.
-
-Please review,
-
-Phil.
-
-Philippe Mathieu-Daudé (19):
-  hw/microblaze: Restrict MemoryRegionOps are implemented as 32-bit
-  hw/net/xilinx_ethlite: Convert some debug logs to trace events
-  hw/net/xilinx_ethlite: Remove unuseful debug logs
-  hw/net/xilinx_ethlite: Update QOM style
-  hw/net/xilinx_ethlite: Correct maximum RX buffer size
-  hw/net/xilinx_ethlite: Map MDIO registers (as unimplemented)
-  hw/net/xilinx_ethlite: Rename rxbuf -> port_index
-  hw/net/xilinx_ethlite: Introduce txbuf_ptr() helper
-  hw/net/xilinx_ethlite: Introduce rxbuf_ptr() helper
-  hw/net/xilinx_ethlite: Access TX_GIE register for each port
-  hw/net/xilinx_ethlite: Access TX_LEN register for each port
-  hw/net/xilinx_ethlite: Access TX_CTRL register for each port
-  hw/net/xilinx_ethlite: Map RX_CTRL as MMIO
-  hw/net/xilinx_ethlite: Map TX_LEN as MMIO
-  hw/net/xilinx_ethlite: Map TX_GIE as MMIO
-  hw/net/xilinx_ethlite: Map TX_CTRL as MMIO
-  hw/net/xilinx_ethlite: Map the RAM buffer as RAM memory region
-  hw/net/xilinx_ethlite: Rename 'mmio' MR as 'container'
-  hw/net/xilinx_ethlite: Map RESERVED I/O as unimplemented
-
- hw/char/xilinx_uartlite.c |   4 +
- hw/intc/xilinx_intc.c     |   4 +
- hw/net/xilinx_ethlite.c   | 371 ++++++++++++++++++++++++--------------
- hw/timer/xilinx_timer.c   |   4 +
- hw/net/trace-events       |   4 +
- 5 files changed, 256 insertions(+), 131 deletions(-)
-
+diff --git a/hw/char/xilinx_uartlite.c b/hw/char/xilinx_uartlite.c
+index f325084f8b..3022b3d8ef 100644
+--- a/hw/char/xilinx_uartlite.c
++++ b/hw/char/xilinx_uartlite.c
+@@ -170,6 +170,10 @@ static const MemoryRegionOps uart_ops = {
+     .read = uart_read,
+     .write = uart_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
+     .valid = {
+         .min_access_size = 1,
+         .max_access_size = 4
+diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
+index 6e5012e66e..8fb6b4f1a5 100644
+--- a/hw/intc/xilinx_intc.c
++++ b/hw/intc/xilinx_intc.c
+@@ -144,6 +144,10 @@ static const MemoryRegionOps pic_ops = {
+     .read = pic_read,
+     .write = pic_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4
+diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
+index bd81290808..e84b4cdd35 100644
+--- a/hw/net/xilinx_ethlite.c
++++ b/hw/net/xilinx_ethlite.c
+@@ -170,6 +170,10 @@ static const MemoryRegionOps eth_ops = {
+     .read = eth_read,
+     .write = eth_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4
+diff --git a/hw/timer/xilinx_timer.c b/hw/timer/xilinx_timer.c
+index 32a9df69e0..383fc8b3c8 100644
+--- a/hw/timer/xilinx_timer.c
++++ b/hw/timer/xilinx_timer.c
+@@ -193,6 +193,10 @@ static const MemoryRegionOps timer_ops = {
+     .read = timer_read,
+     .write = timer_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
+     .valid = {
+         .min_access_size = 4,
+         .max_access_size = 4
 -- 
 2.45.2
 

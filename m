@@ -1,80 +1,84 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp154267njc;
-        Wed, 13 Nov 2024 23:36:53 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUrAUgsoFU/mFq2UlgsATI9R0qTgyWaJNpVc93gL54t7P7ak0unPzu45xJtyFsMFwbDPP5G4Eh58/nP1g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGAGDaWV8nMC5WQYQO0aqkQFuu9sHs7u09aOol5oqtIO4WNMQ/l45J5pWt1eslC9bz/rcor
-X-Received: by 2002:a05:620a:1a9f:b0:79f:67b:4fdc with SMTP id af79cd13be357-7b35c0a22f7mr110651485a.2.1731569813508;
-        Wed, 13 Nov 2024 23:36:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731569813; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp155030njc;
+        Wed, 13 Nov 2024 23:39:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXqxOCBP9M7EJeyQoRmuFWz4ql0NIVy9/B0G9XAB8ghSUyY96btrd9KMDJPgQ4IY9qXRPHnld5wnwPX0A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEXX/lobY/XLOPg51TLyZcgr0gPxNBETP1u6dwzIo8tQbuvp+4PiDcc8FOWkGpejF2O7LZf
+X-Received: by 2002:a05:622a:1988:b0:461:9d9:15c2 with SMTP id d75a77b69052e-463401610e0mr128903351cf.1.1731569965512;
+        Wed, 13 Nov 2024 23:39:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731569965; cv=none;
         d=google.com; s=arc-20240605;
-        b=FGLOfl5hz4NH4/e4Zdjjibl1T8DQ4A6VA5Xr4OT1CLkxZarbrRBNGPAe0enEwOpXPJ
-         SwYBaznREOnMbGc40cg6WxM1iMjWfMBFuAlTyB58xZ85MdfX24+aoaevR4GadaHGTjU2
-         R016rSJxZDn0GQhNT6Biz+pOwQlYntibeZmdqLr8f7f6hkiMj5xW7IR+ddxLNsOFcrJ/
-         fUCr0RzZML2DdcFE0TKPxxnA39RKq6yhCNtUR1siaRuWcnbfmehdsGiRA9GIDPtnxJHw
-         jF1HIMg92ZQ59inBotr5JqxDCW4Ht/HEUm6mt9a42EuC8/pH1jENZADsJUzOKNEeRjAw
-         HF/w==
+        b=kZp4k9+7KXK06izQVrg3B3eavfmZfViq+SH9rIZOdh6VUZzm5t5Xx79lIkpTarbk2K
+         mT7QCAoM02wm0PPOQs/+0VVtR/TXXKp+aZO490g8c3U3oEEs4AI05c5zDfgW0h0TBtMH
+         TA39fwKzpNUsu4miLPyphx5gdH7e3QgWhXKNXuiXgLZ11ofscDOxI2Jba4z90YDjYnOr
+         vUTDb6S4HBUkwCrn5/AY/4EG5l7j/LL9tqmNxmRDGlWQA1hJmEP9Cg356vaoDyYqFNrI
+         fNytsjDbZJYbv5vAc2abvs8fm9R3w3+EBEUrDndb2aQ1UTjzZfBmALm9SIHUlKazoehy
+         XPVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=L0ry+9GxUoUjrRB30Tz2ZFEnMyVafv2EVmqacQQOsG4=;
-        fh=98dZCMvX+NqbPkRXvFJNDIlyaWZH4tCfmKGJXDrbs8k=;
-        b=Ugbh26oDfKCz8kwBGoag7fn5ppE/2+8TY4KssJw5DnYcbK84/CXu5jacpzJW9tFbu8
-         TTbyIkdMr6XWI2IzzmjlPMlhgIQmAHxb7x48Ghx1oX/+zUdQaE9EQMYFKN3u/kR3kKzO
-         0BZBNFt2HDg35Q/j/PqToEVj+M8AjONHR/6JJQ1WD52UPCDRqrDDaLNqmHjfyPxAdiH0
-         0HGCkN+LYhZ/9LygX6Ai5bg+5y2zrf18pop+j90GPNBzfuDmlWJko8s0GESHNGGujGoE
-         XW/cm2JRovAJqsFaXUyfJlmPm3AA2mxn8Bq4oVP9Hgej4/0iOCUG2HShiaeTUQTzsHdb
-         OxOw==;
+        bh=CGUFON/8zkiOfY/iJlx6Q4cqXnmPVFmHrNJY2sB9lmQ=;
+        fh=oYAkwPHFdJ9u0eDvwJfliFAiwUWbZzxx8J31NdrWVOo=;
+        b=fNynvrS6BX5lZy3l888R/AdoAICTfkOicQ8Cf/+QydnKONYduasxMDzoPOInvifDgw
+         NejQviEa4AxK/y+CR1QSmJ8UK8srQgByP0XqPjf/PeVTvyK9MdzcYFr6afn2DW4NpVll
+         OKfSu/rUSazWDTqwNz/sy9RaMPqe5IwADe/IXQUlt77TxLdgqdlUZHRYxSUhbGBpebi/
+         ltnCD0YLvSFfZ9PJ1EiTQzGQom+no6NdxeCc+O+CotiaI2qM/6Q+K2waDstyh2Jgh2LL
+         byk0Z+W6L2Hmj86W0FsAs0Znqeu23ahUb1ACAJOUjl9ICuxRTlOSd0SFvcOF7F5DIzPq
+         uZ5g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b35caad8f1si60042285a.477.2024.11.13.23.36.53
+        by mx.google.com with ESMTPS id d75a77b69052e-4635aa96d46si5275151cf.327.2024.11.13.23.39.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 13 Nov 2024 23:36:53 -0800 (PST)
+        Wed, 13 Nov 2024 23:39:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tBUP1-0000ir-Mq; Thu, 14 Nov 2024 02:36:31 -0500
+	id 1tBURJ-0001nv-IF; Thu, 14 Nov 2024 02:38:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=qUE+=SJ=kaod.org=clg@ozlabs.org>)
- id 1tBUP0-0000iY-1k; Thu, 14 Nov 2024 02:36:30 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1tBURH-0001mh-OZ; Thu, 14 Nov 2024 02:38:51 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=qUE+=SJ=kaod.org=clg@ozlabs.org>)
- id 1tBUOx-0001ZZ-SA; Thu, 14 Nov 2024 02:36:29 -0500
+ id 1tBURF-0001vb-QP; Thu, 14 Nov 2024 02:38:51 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4XpsQq3ygFz4wyh;
- Thu, 14 Nov 2024 18:36:19 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4XpsTZ1Rsfz4x9G;
+ Thu, 14 Nov 2024 18:38:42 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4XpsQk6zJkz4wcy;
- Thu, 14 Nov 2024 18:36:14 +1100 (AEDT)
-Message-ID: <01d12ff8-a570-4876-af0b-add3bccd12ae@kaod.org>
-Date: Thu, 14 Nov 2024 08:36:15 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4XpsTS4LYTz4wcy;
+ Thu, 14 Nov 2024 18:38:36 +1100 (AEDT)
+Message-ID: <ed89cef1-96cc-49f1-8f22-655fe0677f2b@kaod.org>
+Date: Thu, 14 Nov 2024 08:38:36 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] hw/sd/sdhci: Introduce a new Write Protected pin
- inverted property
+Subject: Re: [PATCH v2 00/18] Fix write incorrect data into flash in user mode
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Bin Meng <bmeng.cn@gmail.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20241104032104.2784183-1-jamin_lin@aspeedtech.com>
- <20241104032104.2784183-3-jamin_lin@aspeedtech.com>
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:Block layer core" <qemu-block@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ Yunlin Tang <yunlin.tang@aspeedtech.com>
+References: <20241022094110.1574011-1-jamin_lin@aspeedtech.com>
+ <9fe3e1cd-6aed-473f-9193-8541a202b7a0@kaod.org>
+ <SI2PR06MB50419A139B7233B352CD1E31FC4E2@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ <SI2PR06MB50413F4922CA4FD3F61E12CBFC5B2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,16 +123,17 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20241104032104.2784183-3-jamin_lin@aspeedtech.com>
+In-Reply-To: <SI2PR06MB50413F4922CA4FD3F61E12CBFC5B2@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=qUE+=SJ=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -144,74 +149,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Gi8OHY8/TxJJ
+X-TUID: 3JNwPyLBz0eM
 
-On 11/4/24 04:21, Jamin Lin wrote:
-> The Write Protect pin of SDHCI model is default active low to match the SDHCI
-> spec. So, write enable the bit 19 should be 1 and write protected the bit 19
-> should be 0 at the Present State Register (0x24). However, some boards are
-> design Write Protected pin active high. In other words, write enable the bit 19
-> should be 0 and write protected the bit 19 should be 1 at the
-> Present State Register (0x24). To support it, introduces a new "wp-inverted"
-> property and set it false by default.
+Hello Jamin,
+
+On 11/14/24 06:30, Jamin Lin wrote:
+> Hi Cedric,
 > 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-
-Acked-by: Cédric Le Goater <clg@redhat.com>
-
-> ---
->   hw/sd/sdhci.c         | 6 ++++++
->   include/hw/sd/sdhci.h | 5 +++++
->   2 files changed, 11 insertions(+)
+>> Subject: RE: [PATCH v2 00/18] Fix write incorrect data into flash in user mode
+>>
+>> Hi Cedric,
+>>
+>>> Subject: Re: [PATCH v2 00/18] Fix write incorrect data into flash in
+>>> user mode
+>>>
+>>> Hello Jamin,
+>>>
+>>> On 10/22/24 11:40, Jamin Lin wrote:
+>>>> change from v1:
+>>>>    1. Fix write incorrect data into flash in user mode.
+>>>>    2. Refactor aspeed smc qtest testcases to support AST2600, AST2500
+>>>> and AST1030.
+>>>>    3. Add ast2700 smc qtest testcase to support AST2700.
+>>>>
+>>>> change from v2:
+>>>> 1. Introduce a new aspeed-smc-utils.c to place common testcases.
+>>>> 2. Fix hardcode attach flash model of spi controllers 3. Add
+>>>> reviewers suggestion and fix review issue.
+>>> I have applied 1-6,8 to aspeed-next and should send a PR with them. I
+>>> kept the test extensions for later, to take a closer a look and also
+>>> because I will be on PTO next week. Tests can be merged in the next PR
+>>> if we have time in this cycle or in QEMU 10.0.
+>>>
+>> Got it and thanks for help.
+>> Jamin
+>>> Thanks,
 > 
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index db7d547156..c675543873 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -275,6 +275,10 @@ static void sdhci_set_readonly(DeviceState *dev, bool level)
->   {
->       SDHCIState *s = (SDHCIState *)dev;
->   
-> +    if (s->wp_inverted) {
-> +        level = !level;
-> +    }
-> +
->       if (level) {
->           s->prnsts &= ~SDHC_WRITE_PROTECT;
->       } else {
-> @@ -1551,6 +1555,8 @@ static Property sdhci_sysbus_properties[] = {
->                        false),
->       DEFINE_PROP_LINK("dma", SDHCIState,
->                        dma_mr, TYPE_MEMORY_REGION, MemoryRegion *),
-> +    DEFINE_PROP_BOOL("wp-inverted", SDHCIState,
-> +                     wp_inverted, false),
->       DEFINE_PROP_END_OF_LIST(),
->   };
->   
-> diff --git a/include/hw/sd/sdhci.h b/include/hw/sd/sdhci.h
-> index 6cd2822f1d..25ad9ed778 100644
-> --- a/include/hw/sd/sdhci.h
-> +++ b/include/hw/sd/sdhci.h
-> @@ -100,6 +100,11 @@ struct SDHCIState {
->       uint8_t sd_spec_version;
->       uint8_t uhs_mode;
->       uint8_t vendor;        /* For vendor specific functionality */
-> +    /*
-> +     * Write Protect pin default active low for detecting SD card
-> +     * to be protected. Set wp_inverted to true inverted the signal.
+> Could you please help to review patch 17 and 18 ?
+> Do I need to re-send patch from 9 to 18 of this patch series?
 
-In case you respin, may be you could change the last sentence to :
-"Set wp_inverted to invert the signal."
+Not yet. I have some comments to send but I am busy on another topic.
 
+We have some time before QEMU 10.0. They are in my aspeed-9.2 branch,
+so that I don't forget about them.
 
 Thanks,
 
 C.
 
-
-> +     */
-> +    bool wp_inverted;
->   };
->   typedef struct SDHCIState SDHCIState;
->   
 

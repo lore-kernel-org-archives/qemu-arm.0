@@ -1,111 +1,111 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp298385njc;
-        Thu, 14 Nov 2024 04:56:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU55rkTFuWsedeQpEveqBE6sOfWvSXw81RcItmkT+JWv4bYTNYUn20hSLtBjX6o0NSt2bL7iLrSKFGi/w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFRPQM8p0etFOd6kjGCreMbsN86Xa0Uf3mX2aUnffc3citaVKfPg4O/dtxpXihApazP+UDf
-X-Received: by 2002:a05:620a:448e:b0:7b1:36b7:3fad with SMTP id af79cd13be357-7b35a4c5dc5mr547987185a.13.1731588989730;
-        Thu, 14 Nov 2024 04:56:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731588989; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp302774njc;
+        Thu, 14 Nov 2024 05:02:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVnY7jddWrlFammkP+9NMgvEyvIY8m533etXoEqMulAZJowq8ewxvLmJWrxc4rLH1d4iogtEa/khIhIpg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHZsrDZZ+F6ZH9zWMhZ2Sykf5JflHNN5F8w9S2Svw4K69iOJM+IdV4ULYL7zK87V2xU+WEk
+X-Received: by 2002:a5d:6c69:0:b0:37d:41df:136b with SMTP id ffacd0b85a97d-3820df60fdfmr5292030f8f.13.1731589368368;
+        Thu, 14 Nov 2024 05:02:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731589368; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZPg8ZGhiUSRyvWThGOimvLEUkdBG/WDZcEU0tOIGH5DvC2vA4S74W9FMIIgmTbZVMZ
-         cqQGfTMo98lRxY4dC2dFQnHQnmue5aN+uBmPUkRc28S6ej+g1rLKeevw3gLyJU+1daUj
-         cfHzjjtVj3wLbzYVHWOTOXXgFwFgec4n+zbf3MepPDyRW14rfjMh5U30jbgQQFbgVu7y
-         3UUTLmL+cB6iRZiKxKitaQTxCEELjuVi5GxZNHhB5KX7M99xG2WReu9JBUyn3F/N2PQk
-         p/zPWwNjA5rXIwxCnI+KT+bhfsJhr0kJhb5KxUfP4Zvp9/ejkXRwp2ws6pCML4A+dlFY
-         5sYg==
+        b=dV29FVkN+lgwWmdc/ZGmO1yxM1e8giVRj0vCVGSErITXH+hzP1NO+hCH4xjQJnzP0v
+         5TD6DuBtGeawP9DK97rXdsJEXeayge9R5P6Pc5cS024iIvHJmMTv6i9jLdmluoD4yAGa
+         Q3RiGfyjJCJvbWi43ALAA3UofdmcgSxuHwEOXojmvAZoueqy2bL+9AAaOHWnrCgzT41H
+         OoAEMOyI5CWenN9vvKybeerEwiheANaCxBMzEP/CDvSwKbEqA8LsuOYl33On51OoFeDN
+         O3Wz1igH/TdCgAvM5dc2UePfNwc2FIiZ4J/3Vbb0PEXwI/ZkPz+xOaw8QX8mhl+SdgAF
+         Pkqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=5MvH3s2lSF0+0zasS3GpvyupzRWEqKzpJ6G1VW6KDyg=;
-        fh=ogC767x6Sj/YnEY26AOoWoNiWqOAtuQ7b6vOwlEAkqQ=;
-        b=AzdLGMCmXEZGdJPspRzCDKBtWytDqxpMdszJZQLUx14m5thlFCa7S0714iXk8c/5A+
-         kJa7fFBeldb1Osckd7o2fvpPEjBsIPAq21s7uwjFnBx2frOTf4lxH9Ikr/l8nXlFQLOe
-         4kalaCftek/6cgPKvKdl0YpbWvlnnN6nMybyU3O0Gjx1VjzfVVUS3EZmZkPAdu/dn00j
-         w0NbnLD6I6p8U+1zksyxwZ2WY1amNHpfDrRtuPmGc1Sls2/BxT9rZ+m4TfUb1VAYEGyC
-         dNWFrtyY2lEQIqRtppZLfWWtmJUO6vzvAEDLW/L8XLMnxBS28zg9qVjTu8POTEnxlRHZ
-         NWrQ==;
+        bh=d6zhytplbAJK9UHZiJT4K7CXB6jTQ/D6FzQ5I4GUl4s=;
+        fh=rlKf68pNrLfBMqNMGhjKpU9FcUqqRyr+74ypteyMi4A=;
+        b=Pt0kX9Dnc9jUQtcnWBQAkuAeFydquwSuO3HPw79ph+1BJk5omlOfmEQ3QjNnxdOigJ
+         V/U4WbGSRH8Y0I83MVoFYGnqcJse0cy+0u9fERP1tR9I+yDZGYQx3dBLSgWrq5mIYlbA
+         C81IHvXhoAJDzakFvEWBOmMJsxV1Zy9MbE1GSht4cM6X/VIfyP7pIpAkFbFUPtzVhyzr
+         L0HsPpDOSGeCDXCTaeG7WrA5SgUT34vN9ia7WUTbBM5YJW1f5KuTXeUseHjPyGMz3KI8
+         PfeupGsA7b1k8xuqnOb9Df+nnLNCh7PWYSyXwfKZvXqApAKSXWn0nUTdHbM8f2Z/bmEV
+         /Zhw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LGvR90Cd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mDEwODrF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4635ab78eedsi11120201cf.679.2024.11.14.04.56.29
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3821ae3292fsi690651f8f.574.2024.11.14.05.02.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Nov 2024 04:56:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 14 Nov 2024 05:02:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LGvR90Cd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=mDEwODrF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBZO5-0006sS-Ib; Thu, 14 Nov 2024 07:55:55 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tBZUC-0001RV-Oy; Thu, 14 Nov 2024 08:02:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tBZNx-0006qr-Om
- for qemu-arm@nongnu.org; Thu, 14 Nov 2024 07:55:46 -0500
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ id 1tBZTa-0001Kb-Ue
+ for qemu-devel@nongnu.org; Thu, 14 Nov 2024 08:01:40 -0500
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tBZNw-0006US-4Z
- for qemu-arm@nongnu.org; Thu, 14 Nov 2024 07:55:45 -0500
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-5cedf5fe237so735804a12.3
- for <qemu-arm@nongnu.org>; Thu, 14 Nov 2024 04:55:35 -0800 (PST)
+ id 1tBZTT-0000kM-F9
+ for qemu-devel@nongnu.org; Thu, 14 Nov 2024 08:01:32 -0500
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-5cef772621eso772944a12.3
+ for <qemu-devel@nongnu.org>; Thu, 14 Nov 2024 05:01:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1731588935; x=1732193735; darn=nongnu.org;
+ d=linaro.org; s=google; t=1731589284; x=1732194084; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5MvH3s2lSF0+0zasS3GpvyupzRWEqKzpJ6G1VW6KDyg=;
- b=LGvR90Cd4hdiAlJUnWk84FbPfu+1JbKZ7Dtz3lLxYwBK9sp3iUgmGcHtm3kNvLPNB8
- cJ62f3p2BfITQdoZ0mTnurx7RTQD/XbQbrbv9FkAzxGb7mFAqtH5LAHblnnhg7GyxxHq
- xlXDQQM4AzlSepc/zqQkYbF4c4zKCxAH9ko/25GJ0cZKWdf1e+oolLza2lL/Uzq1kwhv
- NHsOmJNqsF2zVkF77f0Ftv+D922kFM4d5uj1syUvx1dvb8Yv5RhMFBC9Idav4NHgcNIq
- j3STbdOtDTc0rUbv2eVDlmQvfQQQlEwUI526DZH7Us28UHHB59tvoboqfh8aJSqZ/91E
- X1gQ==
+ bh=d6zhytplbAJK9UHZiJT4K7CXB6jTQ/D6FzQ5I4GUl4s=;
+ b=mDEwODrFB24eM+9nJxHB/yXJfqxtg9RPJ1kCQBZ8iP03flEwrRn7x06gpoe8XoeUex
+ 9mMRADkaNSJ6XAJmiLKcMoyunN3uppozWxa4BmZ97nd6evaaGd/ew+uD0GliixHhkmUN
+ K6NkTCz55ClnvOsMSTYI1fQNJfyrekcjk54FJzZHgdB8suF/PF/Q4IdDJLjmpw+S+vNT
+ jdCeiqVtkMICl0dvit8eFBN2RQbRWPxXapL1F6qV97gqxxZ3uBhHeHh/2Z9Rx39iVOTR
+ 1+1O7F/vuOHwipxIf/cRxs0Ho7zNR4m+MlllNEpFKapTTQW/PVedi/ja8II6Yw6s9Sml
+ D9bA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731588935; x=1732193735;
+ d=1e100.net; s=20230601; t=1731589284; x=1732194084;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=5MvH3s2lSF0+0zasS3GpvyupzRWEqKzpJ6G1VW6KDyg=;
- b=NSOxwXp9YTxObRXNIuqH1KPlBkfTDt6LnTEcODp5xLlttRk/Q2r3vu6662zjd3Rrw7
- 5UVgxSKr9PJtVed47FjMPwqRATQZdObfJ9Giy2rtXXTj+mxgk99UlH1Sh/y2veJnJ1Rx
- 9bZDjTxnAxCyt6CRbntekET/dGz5dZEUhZ8qI8gh8FEM0rIurEmt5gRnivQ6egnxFnzA
- NUGcCSUjRtMYFsu4QZPpB0oM2MUDDXAsFK0aEBu4f4iQ8hAI/3JKj2inVXW6xXFKDN3k
- VSwsPP1ZU5Csqu1tUXWCC+9Z0M3800uRM2Ze0uyWbDTWX3DWnh/wGky/23PjZTvqQqJj
- dKIQ==
+ bh=d6zhytplbAJK9UHZiJT4K7CXB6jTQ/D6FzQ5I4GUl4s=;
+ b=tAnUaVoTuBpB9ccyPjjHcM3bAsNg2YkZ7WDge0gkwHZYs0/QISUos/ruAxRuq6MqGy
+ lzapc87BoYucCKuRXrzzZTG++yjEjdEtlxGOg9wiQxDyJi8Xw2U94bYrwX99z1q+bgeF
+ pWDME7o5yJwTUKKReFuOE9oIOXsH+w180lFv4/P+N4N83qLc87PecdVsdwYUE9eDriVp
+ apIQmyHD8QQDl+n2lsMNqR/RXY7yNpc81NZ2AdVdhpnu7N3fQ7h4wcn8+FWw+r4WZZsZ
+ /3xXfbUNCiAadl00eJ97Pp8cOF6FzqGlXk3gZa8eKuu7tvNe2da4kqIDl8rx3ipHqn4s
+ shuA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUKVxu3ns8ccQDXUYkcujVIv/bq5FoZnHfgGrBncBsqHVvkvqEwQJS8SgFFzEcvuv+jCr9CN3pwWQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxKL16lUWPD01pIOpCUaM/4RRDM+3kVpfAcVJdja4NFyI7qHZm4
- DNrKIQxQ9AfFfcblFYemRKdiRj62C/VKrl4xUe7d636nURzrMVrgCEofJZJynaPFsL2a1bvlqh0
- 0pZP1wujM6uJNtrpPk+ELit6frMc4rgabawF0gg==
-X-Received: by 2002:a05:6402:5cb:b0:5cf:255e:1919 with SMTP id
- 4fb4d7f45d1cf-5cf77ed46d1mr1626965a12.24.1731588934601; Thu, 14 Nov 2024
- 04:55:34 -0800 (PST)
+ AJvYcCUDuZz0T68y1RSE7Q5zBEVSwkkkoFvpyMaotlyGs3Pb0/9FZsF7JV56tEYYYM6BSoqVY5ZqBgIDsccm@nongnu.org
+X-Gm-Message-State: AOJu0Yyy7Ae2qzrF2K9544h1rmOmvo2XAzqulgisFpOJnL4AIE3WUct0
+ SwqA3NUxSbAqtwM0TZjB025t6AbybmPy8b2UIs1BF0w5nMS+Pj9DUmOeq4uSdP0zcBUj3f8BYFQ
+ PGT+m8/B/OlsMbhO8cwfY99XYQwxfGKGB7HvQ5w==
+X-Received: by 2002:aa7:c90f:0:b0:5cf:67c1:69e5 with SMTP id
+ 4fb4d7f45d1cf-5cf67c16ef9mr3537833a12.4.1731589283739; Thu, 14 Nov 2024
+ 05:01:23 -0800 (PST)
 MIME-Version: 1.0
 References: <20241108191024.2931097-1-roqueh@google.com>
- <20241108191024.2931097-3-roqueh@google.com>
-In-Reply-To: <20241108191024.2931097-3-roqueh@google.com>
+ <20241108191024.2931097-4-roqueh@google.com>
+In-Reply-To: <20241108191024.2931097-4-roqueh@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 14 Nov 2024 12:55:23 +0000
-Message-ID: <CAFEAcA8W2nfhmB8o3ECMwkj3_v7e0bz=Qxs=LCEui4LdBVHQNQ@mail.gmail.com>
-Subject: Re: [PATCH 2/3] tests/qtest/cmsdk-apb-watchdog-test: Parameterize
- tests
+Date: Thu, 14 Nov 2024 13:01:12 +0000
+Message-ID: <CAFEAcA9DDVqgOs7B3kC30=OgJ8iLZ3R3RB6BdEBMEKNxx0LAjQ@mail.gmail.com>
+Subject: Re: [PATCH 3/3] tests/qtest/cmsdk-apb-watchdog-test: Test INTEN as
+ counter enable
 To: Roque Arcudia Hernandez <roqueh@google.com>
 Cc: farosas@suse.de, lvivier@redhat.com, slongfield@google.com, 
  komlodi@google.com, pbonzini@redhat.com, venture@google.com, 
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,60 +114,67 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LXYBO4irWBFq
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +nTJDsUeHMCu
 
 On Fri, 8 Nov 2024 at 19:10, Roque Arcudia Hernandez <roqueh@google.com> wrote:
 >
-> Currently the CMSDK APB watchdog tests target an specialized version
-> of the device (luminaris using the lm3s811evb machine) that prevents
-> the development of tests for the more generic device documented in:
+> The following tests focus on making sure the counter is not running
+> out of reset and the proper use of INTEN as the counter enable. As
+> described in:
 >
 > https://developer.arm.com/documentation/ddi0479/d/apb-components/apb-watchdog/programmers-model
 >
-> This patch allows the execution of the watchdog tests in an MPS2
-> machine (when applicable) which uses the generic version of the CMSDK
-> APB watchdog.
->
-> Finally the rules for compiling the test have to change because it is
-> possible not to have CONFIG_STELLARIS (required for the lm3s811evb
-> machine) while still having CONFIG_CMSDK_APB_WATCHDOG and the test
-> will fail. Due to the addition of the MPS2 machine CONFIG_MPS2
-> becomes also a dependency for the test compilation.
+> The new tests have to target an MPS2 machine because the original
+> machine used by the test (stellaris) has a variation of the
+> cmsdk_apb_watchdog that locks INTEN when it is programmed to 1. The
+> stellaris machine also does not reproduce the problem of the counter
+> running out of cold reset due to the way the clocks are initialized.
 >
 > Signed-off-by: Roque Arcudia Hernandez <roqueh@google.com>
 > Reviewed-by: Stephen Longfield <slongfield@google.com>
-
-
-This refactoring mostly looks good.
-
-> @@ -116,16 +164,21 @@ int main(int argc, char **argv)
->      int r;
+> ---
+>  tests/qtest/cmsdk-apb-watchdog-test.c | 214 ++++++++++++++++++++++++++
+>  1 file changed, 214 insertions(+)
 >
->      g_test_init(&argc, &argv, NULL);
-> -
-> -    qtest_start("-machine lm3s811evb");
-> -
-> -    qtest_add_func("/cmsdk-apb-watchdog/watchdog", test_watchdog);
-> -    qtest_add_func("/cmsdk-apb-watchdog/watchdog_clock_change",
-> -                   test_clock_change);
-> +    g_test_set_nonfatal_assertions();
+> diff --git a/tests/qtest/cmsdk-apb-watchdog-test.c b/tests/qtest/cmsdk-apb-watchdog-test.c
+> index fe535a553c..3777b7bd59 100644
+> --- a/tests/qtest/cmsdk-apb-watchdog-test.c
+> +++ b/tests/qtest/cmsdk-apb-watchdog-test.c
+> @@ -68,6 +68,15 @@ static const CMSDKAPBWatchdogTestArgs machine_info[] = {
+>      },
+>  };
+>
+> +static void system_reset(QTestState *qtest)
+> +{
+> +    QDict *resp;
+> +
+> +    resp = qtest_qmp(qtest, "{'execute': 'system_reset'}");
+> +    g_assert(qdict_haskey(resp, "return"));
+> +    qobject_unref(resp);
+> +}
 
-But this addition of g_test_set_nonfatal_assertions() is
-not related to the refactoring and not mentioned in the
-commit message.
+The system_reset QMP command only requests a reset; it does
+not wait for it to actually happen. For that you need to
+   qtest_qmp_eventwait(qtest, "RESET");
+
+We seem to already have several implementations of this
+kind of "reset the system under test" function, several
+of which have this bug. That suggests to me that we ought
+to provide it as a utility method qtest_system_reset()
+in libqtest.
 
 thanks
 -- PMM

@@ -1,41 +1,40 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp190802njc;
-        Thu, 14 Nov 2024 01:11:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXIrybUTJfGthljbPLJ7asF9CS1rxCtpWB22+cvbhoj26BSgDY3OKTjcBoGhj/ctp8Srj2VIoDtv32Wdw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFZ0E2Mn8ju/2c1Zd9jL0YaCI4MTqUDVtYe016AF8yBdvUWXf61zas/mjQuTjEhVuNqBEpe
-X-Received: by 2002:a05:6214:1c43:b0:6cc:819:5075 with SMTP id 6a1803df08f44-6d3e906af86mr36717216d6.18.1731575519086;
-        Thu, 14 Nov 2024 01:11:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731575519; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp205470njc;
+        Thu, 14 Nov 2024 01:49:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXDkxYQQXsUQ5cjYBa0gRI6asiqAutlaahTUUYuCSkcj1NSrzJ9+cz6cLcQOrbcWJ23IbNCct4wkpELPA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF15Y1IBn5IK6ciMmYzl3OPerOJ3PpdogfPcsAYoxchmkwNW4LFh6Ra0ekBdKUGa2AIaKoE
+X-Received: by 2002:a0c:d850:0:b0:6d3:ec06:5b17 with SMTP id 6a1803df08f44-6d3ec065beemr12373716d6.34.1731577752293;
+        Thu, 14 Nov 2024 01:49:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731577752; cv=none;
         d=google.com; s=arc-20240605;
-        b=EITNxy8+8upHyYkEPN5AN9orSqIiPhnKZXKGSF2ts2+TWojUKrgPkrr2HZl7AJCnlZ
-         GwQ6WQPK2K1v0NzLMFshGliSWPeYnge3Iz8+rVrorODxey5HHLaocaINXsI6/N3x2QGd
-         3B3OCheoMZ/iKAAuF1IPCrdi4D19AFy6QiAMqFPFd65xcEe1ObNR96joD3+C7PqnOaFw
-         pfAnf/L4/r/N6B6tNGI48x1JEgZaxKMye1d9h4OMki9r7+1YnEezOF9v/MMfpg2vbjr9
-         LE3vKaMXvCYhV2bikaSa9pPLxxpNcVMawIlMiHxjEEgbwUqmnn7ldrluJmhbMAzOHzct
-         T0Rg==
+        b=SCTFwqvHZ6BrMKD+dCbe2PTKulX/O2dDIwyL3t3Tv53hz14PMXKQt7F/s1QIT9LcBy
+         oCjKyiRDSKvClLoqcfG6SvijlCovY3Vs7gbn1bBa7aPmnJwaqjnaFH6bdEw2QahkQJlD
+         QVOhAwCtp1A6xadwWCSVPz9bb65J/hZ6Y/55IFE7ksaIm08k+UtkqWA1Wj2ePo0Cn4ZS
+         4KUUJ3qGGPRVgRIa392cAv3CLMwn1w05tFi+zXlmrl77eC87gEjWKOF4kgMolJV6sB84
+         /iGea4h9nt9EFIlhA2r8h27jZ7yEpVhxe7LxK4OE1SxMT9HA8xghbH3OoWz3Sz1Ufum2
+         EcGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=SqskdsKcqu7U1KsrUktkXzHzHYXjFd9yKEue5uZ7ENA=;
-        fh=SxKlX6GqXD55EMB3sC/XQHOKdHr3I93AWwhAE1qtX1w=;
-        b=kNjjCia31TiDKtS/MEoYnuocSYs9YO3eHgK0R0wWLF83kzPunEOiyBzUkhrtIcLHCe
-         gl8P4gfwaSpaosOd+ZyC02IMYqeguknMxGF4Vf9J0mxwYblSJnlssG8MFdoOdEjOE5jh
-         4b53kc5yAoGVg4b+mg8ES8eAxUxylEb5TZk0OOZz3xHvNVrpJO06ow32SoPvR1dIeiSd
-         cmiH2fuJ1v5hPYI/Gs8hobk+8iKz7TW4iLFiGKd57MSYLKztL5pvWZvSv53bJq09BCDg
-         f8xDtRX/N6Le7xtNqsU37jBiFQXFUIOk2sJL3q10eEpj7ZvAqVfH4XrDNB6uzVOSnNJw
-         VLgw==;
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=qXVVJFVlksQMaHHqVhdI4VyVtbZtsFFfMj5MNhJZqNU=;
+        fh=4rHsaFhVkVMXk5u1IVZO4usPBujjRbqK1KMv0eZ+6CI=;
+        b=VyrnNAL6kCFqd44eFxbj4ZFN3ZOL2gAbeX8jUWS/5O2YLNh6e9njQmynb4Y/bwN9Kt
+         tYziTid5yekUGTY3yW4vpCtGAs3fw8JOOtElvI20qMpTl73JibBYtx6LeITL5pl/Fr8F
+         Ih1+TpFKCAJ8lhWM7x+2vCL4C1BBo+tjpli/2y23alfEBuUaqJ2nmO9A1iSh2t6sScN4
+         K16pFHE+ZNbttCY2NGZxrXfbHWYVXF/0SRl/WubFF8ymNaXOZ51oJlcqDL1H/AtGmAq5
+         ZdETc/IpZoYJKuSr5SQd9/MbyQkeiW4n0uYsJCMXeniaFP6lwopES4SqFxtdZeoTnw58
+         y5Bw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d3ee75ecf1si7744126d6.83.2024.11.14.01.11.58
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d3ee9bd9basi8362396d6.467.2024.11.14.01.49.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 14 Nov 2024 01:11:59 -0800 (PST)
+        Thu, 14 Nov 2024 01:49:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -43,64 +42,46 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBVt3-0007Wv-3l; Thu, 14 Nov 2024 04:11:37 -0500
+	id 1tBWTA-0002OM-Tk; Thu, 14 Nov 2024 04:48:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tBVt1-0007Vi-EJ; Thu, 14 Nov 2024 04:11:35 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1tBWT5-0002Nq-7b; Thu, 14 Nov 2024 04:48:51 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tBVsz-0006zv-9a; Thu, 14 Nov 2024 04:11:35 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XpvXJ5LbXz6K95v;
- Thu, 14 Nov 2024 17:11:12 +0800 (CST)
-Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
- by mail.maildlp.com (Postfix) with ESMTPS id D48F5140C72;
- Thu, 14 Nov 2024 17:11:26 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 14 Nov 2024 10:11:26 +0100
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Thu, 14 Nov 2024 10:11:26 +0100
-To: Nicolin Chen <nicolinc@nvidia.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm
- <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
- <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-Subject: RE: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Thread-Topic: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Thread-Index: AQHbMeB0+Q5BEZc9JkeH/U6Jz+dF4rK1tXyAgADOPsA=
-Date: Thu, 14 Nov 2024 09:11:26 +0000
-Message-ID: <a42e6e282fa745c0b2047d8b100daad6@huawei.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <ZzUdYWad9HLo/w6t@Asurada-Nvidia>
-In-Reply-To: <ZzUdYWad9HLo/w6t@Asurada-Nvidia>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1tBWT3-0000F8-50; Thu, 14 Nov 2024 04:48:50 -0500
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Thu, 14 Nov
+ 2024 17:48:39 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Thu, 14 Nov 2024 17:48:39 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Bin Meng <bmeng.cn@gmail.com>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v3 0/3] Introduce a new Write Protected pin inverted property
+Date: Thu, 14 Nov 2024 17:48:36 +0800
+Message-ID: <20241114094839.4128404-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.738, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,43 +94,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-arm@nongnu.org>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Gm8Khjb3vxj8
+X-TUID: 2S2rWygVFXYX
 
+change from v1:
+1. Support RTC for AST2700.
+2. Support SDHCI write protected pin inverted for AST2500 and AST2600.
+3. Introduce Capabilities Register 2 for SD slot 0 and 1.
+4. Support create flash devices via command line for AST1030.
 
+change from v2:
+replace wp-invert with wp-inverted and fix review issues.
 
-> -----Original Message-----
-> From: Nicolin Chen <nicolinc@nvidia.com>
-> Sent: Wednesday, November 13, 2024 9:43 PM
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: qemu-arm@nongnu.org; qemu-devel@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org; jgg@nvidia.com;
-> ddutile@redhat.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
-> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
-> Jonathan Cameron <jonathan.cameron@huawei.com>;
-> zhangfei.gao@linaro.org
-> Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
-> nested SMMUv3
->=20
-> On Fri, Nov 08, 2024 at 12:52:37PM +0000, Shameer Kolothum wrote:
-> > This RFC is for initial discussion/test purposes only and includes
-> > patches that are only relevant for adding the "arm-smmuv3-nested"
-> > support. For the complete branch please find,
-> > https://github.com/hisilicon/qemu/commits/private-smmuv3-nested-dev-
-> rf
-> > c-v1/
->=20
-> I guess the QEMU branch above pairs with this (vIOMMU v6)?
-> https://github.com/nicolinc/iommufd/commits/smmuv3_nesting-with-rmr
+change from v3:
+1. add reviewer suggestion about wp_inverted comment
+2. AST2500 EVB does not need to set wp-inverted property of sdhci model 
+   https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm/boot/dts/aspeed/aspeed-ast2500-evb.dts#L110
 
-I actually based it on top of a kernel branch that Zhangfei is keeping for =
-his verification tests.
-https://github.com/Linaro/linux-kernel-uadk/commits/6.12-wip-10.26/
+Jamin Lin (3):
+  hw/sd/sdhci: Fix coding style
+  hw/sd/sdhci: Introduce a new Write Protected pin inverted property
+  hw/arm/aspeed: Invert sdhci write protected pin for AST2600 EVB
 
-But yes, it indeed looks like based on the branch you mentioned above.
+ hw/arm/aspeed.c         |  7 +++++
+ hw/sd/sdhci.c           | 70 ++++++++++++++++++++++++++++-------------
+ include/hw/arm/aspeed.h |  1 +
+ include/hw/sd/sdhci.h   |  5 +++
+ 4 files changed, 61 insertions(+), 22 deletions(-)
 
-Thanks,
-Shameer.
+-- 
+2.34.1
+

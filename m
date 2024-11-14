@@ -1,160 +1,214 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp405033njc;
-        Thu, 14 Nov 2024 07:23:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUWfF8L6kdKjn7Vqjr3E17ncTqfnYs43pyUsSsF9HBQkvNIsUIwmbcdWwfeGAr5Kh0+BMYfwPqIPmfZAg==@linaro.org
-X-Received: by 2002:a17:906:3613:b0:aa1:e050:89 with SMTP id a640c23a62f3a-aa1e05001a6mr780389466b.25.1731597837340;
-        Thu, 14 Nov 2024 07:23:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731597837; cv=none;
+Received: by 2002:a05:7022:213:b0:8f:43c:4b5e with SMTP id 19csp1668dll;
+        Thu, 14 Nov 2024 09:00:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX93bXkZrDMVCW2xTsGV8EQ0GnKpAOzYxf0dD8BU0IoPTTsGSxerf21isMcSdls/1V27cGk1QWOeBjuPQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH1zzV4NiEQpA3wMFz+5tPKq50zAdQyu7wZ7nVnSFOfe5mVY1eHdtYhCTSgwdxQWTJkhnxk
+X-Received: by 2002:a05:6808:1823:b0:3e7:9f14:26cd with SMTP id 5614622812f47-3e7b0a6bebcmr8584052b6e.8.1731603602094;
+        Thu, 14 Nov 2024 09:00:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731603602; cv=none;
         d=google.com; s=arc-20240605;
-        b=bF2Q+9OIsNXSktXWHoV4gE6/Bbcokt0j0GYOf7j1MIuU/esAve7rxzsWaSJ0huue/r
-         HBRb9ryiq0PC0DhK0ln7V4Ck9+cQyxiJa2/uycNsjYhN8XCR6d3NR8WQAOWv1GvscW/J
-         khMv+QuJFPHqZM64Lf5ku2Z7uWuhyzyTpBbPuyMv7mpKjn/OJ6sWva1rFz8JHJYFLope
-         MXSwLD7wpp/0EHl9MEa6StnmTaQGp3vkpVdKLDGqZ6MahgubWGNiKN3tH7Ubm7mNUOR+
-         pftMwf7xBxOZwEArUd2NXNhl4/JaT3wHau5YIakRVOpdArTUdPFWweBs2Vu8glbsNO2r
-         HQZQ==
+        b=O05Yutsgq+ifH8NHNnyPvcYqVgVkueyLx+AZBGsu6zeW3hg88urSBHkA/LZtTHy2TB
+         mvOPRWicHqzOor3D1nywJzlRcILae8WH5nx3QdODuENtRZN/VfYb9RPTHfTiNZvFieTn
+         RVAJR6bytCJPajBx7gaYncsVLqCKSgsBpRAaUWMDnCBno/zm7rIhhetsOXammoCJ2t4n
+         QzsATfRMOy59aX/sJJNW8BTo6D2bnoRbrXteeek4sBahk7Qs6CJzd9LSyGHejdhdHWeS
+         N2pBfsGZnm0pJJNMHkrWXC0ZA4idxp/6gw419FRgdeQM425S39zLmHhB8zvRcWsSACRC
+         ZxGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Psa2/rvf8Lbi+UL8r1q4T33qhcyAOZrvng/4IgPHqco=;
-        fh=hcTiOf5QAFbrN828grBFaU/V/8MheMre8XlbxqLS2XA=;
-        b=ZsvoNMCqtBKrOvLjmVkAe30ykP9oB6FbcquwdrHDBIB2De9v0Jfm8yMt8RSYZ1u6PX
-         HFvcdtyknh9HKPXpyuOBCNMsTvGUjnbJv0nZFFPoX51OXuFqbIGz7YKQCWSNUO0jT4ut
-         kW56k/eDW0LTLdumL3jaQvL43in+lxjoH81ydXiOEgksnMFxEDj2DyGYd8RQolXSCB4U
-         IgaABotSZoFQ5RUxS7iGY5PgJwW9mhquh/RkIA6vzhZifgtNxsTdu0mIlxwZRcwoKtvi
-         Ekqyl4xKFBfS9onJ8up4tYpcZDTaMSLZGO4r6Z0Xbe9Wslv2m84hAa/AQfwBYRAFeD5O
-         kDlQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=OjqNSEAeDqZHUwaEAq62cXj/YVXs2ncKcqAnAF2TK3M=;
+        fh=l6RXg3Sw3NMG7UoXaZ0w901vnDiIEoCTmpNx9U4UlA0=;
+        b=K03Y5MjInQvjPhWSWzd4mMA/fuQLq0ql7gTwS16zKlLK/oP1HnwboMG+mZaQnbtMgu
+         TmaEGYHqbvPPIlKsj3kFsS8g/L0Zrvz5qNtMX0G8KbE1OA6HmeMF7MNeqxdJOJ/XbdnU
+         7JiaqxBaI9VjgjPu70oD9G+buHy7K3f7NdmygccPxChFHU3HTK7aRg89QcEqpcNmOXPt
+         OnEGUVk5QC3VJdDAQBLdAQfUx9HXArKulEeW8PQof8lRjB/PysjVuRQM3oX34ZhhdYrs
+         RnEb8KejnCs9oO7bs2z+/E60z6eFgpMh0cQhWI/X+yE80DSTSHfLWWJ9WPRdKhDL3psv
+         uOHg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BN4n9J27;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ApNjciHF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-aa20e035df5sor77840266b.13.2024.11.14.07.23.57
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d3ee7a6ef3si15627356d6.174.2024.11.14.08.59.41
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 14 Nov 2024 07:23:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 Nov 2024 09:00:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BN4n9J27;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ApNjciHF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tBdBw-00048i-OL; Thu, 14 Nov 2024 11:59:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <paskripkin@gmail.com>)
+ id 1tBdBa-0003mY-Qw; Thu, 14 Nov 2024 11:59:16 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <paskripkin@gmail.com>)
+ id 1tBdBZ-0002lP-9S; Thu, 14 Nov 2024 11:59:14 -0500
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-539e4b7409fso786482e87.0; 
+ Thu, 14 Nov 2024 08:59:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731597837; x=1732202637; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=Psa2/rvf8Lbi+UL8r1q4T33qhcyAOZrvng/4IgPHqco=;
-        b=BN4n9J27MgJayP/znVhmZwIF2dXLFiznrYgZtxzFmwp3L0rXmzyXvkKMTZ1vdDtiV1
-         RYDqqVTsYDAIoEpKtRhJxnOT6hst5ElFQmnOrbqkEWlwS848tlaRKvClaPpEnITGdTXH
-         iQxVoCNyrjfJwcvkwFhij6mOsSShcJ39SMOZS8lHOktL491EFcz953XOuL3GYHLRvWDa
-         xRxru5AvPg+XhunBGjudOH+UWsi3HO+73WdE7eeZJ400ma4uBp+I4c/lVQadhi1J+XFK
-         owkpDAeHe0TjbtnSQtIxb5bRSBoP7D2u4P0Dzt3n8wCsrB48Po4OVtPWIT4kAHVHfJmM
-         11wQ==
+ d=gmail.com; s=20230601; t=1731603550; x=1732208350; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=OjqNSEAeDqZHUwaEAq62cXj/YVXs2ncKcqAnAF2TK3M=;
+ b=ApNjciHF1H96EaU0+SbiC8Pm7QennBIQbXUOTYWbJqrFkEbwEvvbxh6Nz21H5U+h7A
+ VemdhCaNCbNHgLiyPQJ+kuow6KiKgRjUz6hrjUYwvUrmeOymUGUAfTokeeeJqFo+ygu9
+ wFdE46qdQw1Xe6O6aiD+zr/SckrQaE8eIy+iNjnwbDidTskdQb9pI9Npdh0Ou0ACG+Xq
+ JOoEjMw1d3UJFpaRj24YjlqCh9MzJa5yGHPkCAMzgLJmYOW4IdH2En2EVjW3TsIuMV9N
+ Un3/S7QxePG/xyf0y0cFEGv1aOToVA3ur+EfIaUM2+4gCWWnyDAP71CyeMWmyPosLSMe
+ FGUQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731597837; x=1732202637;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Psa2/rvf8Lbi+UL8r1q4T33qhcyAOZrvng/4IgPHqco=;
-        b=Zf63D2Pj02JSkIETz0V7V5fzYji3mGt08Srl8NQUdWAKoBa8ThQ78CGpYobRZo5UDP
-         FbZsAm0BsBvraj8rcgi7AMuALJEoLdAcmQvn2MhE1U6DvoSP5aVs8MzZ+FvuSgdUq0K3
-         nF0bGhkmV8hbDG5sOByXFy0yRwDPuTQwNf9dB6gyGozL82+z35EI2mWi5gnxhStKkOId
-         OSgfHrNW0ck2NpNaErpRVDQ/Xk92dYbuGOMDgAN1fbA6Lf4+kSvh3J6ek57rYuHIcw5I
-         c3nAhsAAfJLWZt1dv0DBS/BxD67rtGP25+ldLQxB8MscQZj1e+RbgXRyIkDXYy/nXJWY
-         hHNA==
-X-Forwarded-Encrypted: i=1; AJvYcCVzQSKbJlXaCzd1j1nBcmm7WJyc0SPFslO6K82AZm768/0XICWRdYzxLBOv89yPiORTIbUMuVNV3D1+qA==@linaro.org
-X-Gm-Message-State: AOJu0Yza8QQZa7oAhT6Vb7G9l8svwuDaJx5hL3H8bN5CvacSbDmZXB9j
-	N7HUIXRFgZjzsG7n7k9fqPfTgEpQ/Lw82tYAdFFQ0FBD3SerPfw4zsGYARs5huthyg==
-X-Google-Smtp-Source: AGHT+IFFKT+995jjict75ZuqspeB+Rm5nBD/Y9eqEryE1HRq0+Uwt5QGvTOl0uTxZY81UYqEzAsalg==
-X-Received: by 2002:a05:6402:354f:b0:5cf:3d22:6dd9 with SMTP id 4fb4d7f45d1cf-5cf3d226e2emr13033518a12.0.1731597836713;
-        Thu, 14 Nov 2024 07:23:56 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.126] ([176.187.209.228])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5cf79b89d67sm660333a12.11.2024.11.14.07.23.54
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Nov 2024 07:23:56 -0800 (PST)
-Message-ID: <50fac36d-86af-48ce-890a-033887da05e1@linaro.org>
-Date: Thu, 14 Nov 2024 16:23:54 +0100
+ d=1e100.net; s=20230601; t=1731603550; x=1732208350;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=OjqNSEAeDqZHUwaEAq62cXj/YVXs2ncKcqAnAF2TK3M=;
+ b=iMTNjSoNTMS7GNMEJ4wml1BOhB4LY7SKE8NkUMm9cDaNXgkUhp5MibIpTgag8I3XPJ
+ zyYRqHZKl69SYxWKRKYJp8vwFeIW3YQwo82V/5sx3Ak+ZSMJ7q1eS+27W1I1JdLBqwTo
+ 8Ca7HOA+JslaPkaZy75Cy1ICq4WbqTqPxfS5IC9bVxFhXxfTwDxw/nibXajiqKgOyHkc
+ 9CWxONQtL5bL+8osb8cx/K4qiKmw+1yjzxyjdUZO1wp6HcRx+pakQlBenfWOYqoi7oaO
+ IVOiRiyocu+0KAzlcnPhL3tkLyXBE0+FUlaLrK3aYTqnY5YU8Dt0S8QJRib4jhX1FVu+
+ UYoQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWpyeaSG96u1ouilesuKcE9is16hxfIdF5XhuNJN4xKJV3o0JR0onA5LU+S6oTWC0vwwR2LuS04jKDN@nongnu.org
+X-Gm-Message-State: AOJu0YwzjOUZTXzUmQ0sCOk5l1PRHL3/F6e9t4g0Qv7j86yZN8cszm+4
+ Bo5vJ6mENk8F/+rgRa2TnO6NK6v0p/7LqTdU87lFrlXm9ql0LAeG
+X-Received: by 2002:a05:6512:3da4:b0:53d:a550:1efa with SMTP id
+ 2adb3069b0e04-53da5501f63mr1123684e87.11.1731603549524; 
+ Thu, 14 Nov 2024 08:59:09 -0800 (PST)
+Received: from fedora.. ([2a00:1370:8180:90b:6639:2dc0:6fb5:8401])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-53da64f2a33sm243453e87.16.2024.11.14.08.59.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 14 Nov 2024 08:59:07 -0800 (PST)
+From: Pavel Skripkin <paskripkin@gmail.com>
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Pavel Skripkin <paskripkin@gmail.com>
+Subject: [PATCH 1/2] arm/ptw: factor out wxn logic to separate functions
+Date: Thu, 14 Nov 2024 19:59:00 +0300
+Message-ID: <20241114165900.6399-1-paskripkin@gmail.com>
+X-Mailer: git-send-email 2.46.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/24] exec/translation-block: Include missing
- 'exec/vaddr.h' header
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Anton Johansson <anjo@rev.ng>, qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Peter Xu <peterx@redhat.com>, qemu-riscv@nongnu.org,
- David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-s390x@nongnu.org
-References: <20241114011310.3615-1-philmd@linaro.org>
- <20241114011310.3615-4-philmd@linaro.org>
- <8406e329-5b09-4960-b5b7-baca62d3747c@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <8406e329-5b09-4960-b5b7-baca62d3747c@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: puk7Hh5Qx+5a
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=paskripkin@gmail.com; helo=mail-lf1-x130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EZyPysJ3CfYh
 
-On 14/11/24 04:10, Pierrick Bouvier wrote:
-> On 11/13/24 17:12, Philippe Mathieu-Daudé wrote:
->> 'vaddr' is declared in "exec/vaddr.h".
->> Include it in order to avoid when refactoring:
->>
->>    include/exec/translation-block.h:56:5: error: unknown type name 
->> 'vaddr'
->>       56 |     vaddr pc;
->>          |     ^
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/exec/translation-block.h | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/include/exec/translation-block.h 
->> b/include/exec/translation-block.h
->> index a6d1af6e9b..b99afb0077 100644
->> --- a/include/exec/translation-block.h
->> +++ b/include/exec/translation-block.h
->> @@ -9,6 +9,7 @@
->>   #include "qemu/thread.h"
->>   #include "exec/cpu-common.h"
->> +#include "exec/vaddr.h"
->>   #ifdef CONFIG_USER_ONLY
->>   #include "qemu/interval-tree.h"
->>   #endif
-> 
-> I'm a bit confused by commit message, but it seems that this series has 
-> some commits that will not compile. Is that something acceptable?
+The next patch will add support for WXN for short descriptor format. To
+prevent code duplication, wxn logic was factored out to separate
+functions.
 
-Because commits must be bisect-able, that is not acceptable.
-
-I took a lot of care to make this series builable on each step,
-but might have missed something. Can you point me at the
-configuration used and broken patch?
-
-I'll reword the commit description as:
-
+Signed-off-by: Pavel Skripkin <paskripkin@gmail.com>
 ---
-'vaddr' type is declared in "exec/vaddr.h".
-"exec/translation-block.h" uses this type without including
-the corresponding header. It works because this header is
-indirectly included, but won't work when the other headers
-are refactored:
+ target/arm/ptw.c | 41 +++++++++++++++++++++++------------------
+ 1 file changed, 23 insertions(+), 18 deletions(-)
 
-   [error]
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 9849949508..2a3933adec 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -1130,6 +1130,26 @@ do_fault:
+     return true;
+ }
+ 
++static bool arm_has_wxn(CPUARMState *env)
++{
++    /* TODO have_wxn should be replaced with
++     *   ARM_FEATURE_V8 || (ARM_FEATURE_V7 && ARM_FEATURE_EL2)
++     * when ARM_FEATURE_EL2 starts getting set. For now we assume all LPAE
++     * compatible processors have EL2, which is required for [U]WXN.
++     */
++    return arm_feature(env, ARM_FEATURE_LPAE);
++}
++
++static bool arm_wxn_enabled(CPUARMState *env, ARMMMUIdx mmu_idx)
++{
++    return arm_has_wxn(env) && (regime_sctlr(env, mmu_idx) & SCTLR_WXN);
++}
++
++static bool arm_uwxn_enabled(CPUARMState *env, ARMMMUIdx mmu_idx)
++{
++    return arm_has_wxn(env) && (regime_sctlr(env, mmu_idx) & SCTLR_UWXN);
++}
++
+ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+                              uint32_t address, MMUAccessType access_type,
+                              GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+@@ -1370,8 +1390,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+     ARMCPU *cpu = env_archcpu(env);
+     bool is_user = regime_is_user(env, mmu_idx);
+     int prot_rw, user_rw;
+-    bool have_wxn;
+-    int wxn = 0;
++    int wxn = arm_wxn_enabled(env, mmu_idx);
+ 
+     assert(!regime_is_stage2(mmu_idx));
+ 
+@@ -1432,18 +1451,6 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+             g_assert_not_reached();
+         }
+     }
+-
+-    /* TODO have_wxn should be replaced with
+-     *   ARM_FEATURE_V8 || (ARM_FEATURE_V7 && ARM_FEATURE_EL2)
+-     * when ARM_FEATURE_EL2 starts getting set. For now we assume all LPAE
+-     * compatible processors have EL2, which is required for [U]WXN.
+-     */
+-    have_wxn = arm_feature(env, ARM_FEATURE_LPAE);
+-
+-    if (have_wxn) {
+-        wxn = regime_sctlr(env, mmu_idx) & SCTLR_WXN;
+-    }
+-
+     if (is_aa64) {
+         if (regime_has_2_ranges(mmu_idx) && !is_user) {
+             xn = pxn || (user_rw & PAGE_WRITE);
+@@ -1455,10 +1462,8 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+             if (is_user) {
+                 xn = xn || !(user_rw & PAGE_READ);
+             } else {
+-                int uwxn = 0;
+-                if (have_wxn) {
+-                    uwxn = regime_sctlr(env, mmu_idx) & SCTLR_UWXN;
+-                }
++                int uwxn = arm_uwxn_enabled(env, mmu_idx);
++
+                 xn = xn || !(prot_rw & PAGE_READ) || pxn ||
+                      (uwxn && (user_rw & PAGE_WRITE));
+             }
+-- 
+2.46.0
 
-Explitly include "exec/vaddr.h" to avoid such problem in a
-few commits.
----
-
-Does it clarify?
-
-> If it's ok,
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> 

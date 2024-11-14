@@ -1,120 +1,417 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp556904njc;
-        Thu, 14 Nov 2024 13:13:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUEL5jJL+XkajNEmTgiuhLb+RBkHuMVlh8RvkKrp9Kt1STg09v04ks8zzBsS/XrvdlkGug9co9bwL7Qsg==@linaro.org
-X-Received: by 2002:a05:600c:3b99:b0:431:5aea:95f with SMTP id 5b1f17b1804b1-432df74c6c7mr2064995e9.16.1731618788490;
-        Thu, 14 Nov 2024 13:13:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731618788; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp599013njc;
+        Thu, 14 Nov 2024 14:44:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX40w0ejC2CDV82VZVplg89oAnMr38hmCzf9SRDc5qI4V9mk3OLCO1abWmA6EzBWpY/YoeA+mbLmk7dFw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH1DKrhSQZO+WhkY/G22J1ckjQxtvqQZ234FtmBoS95MYJIQSG/csu0aKfODwfQr3JQx3fu
+X-Received: by 2002:a05:620a:454c:b0:79f:148:d834 with SMTP id af79cd13be357-7b362343f43mr77197685a.59.1731624256291;
+        Thu, 14 Nov 2024 14:44:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731624256; cv=none;
         d=google.com; s=arc-20240605;
-        b=VPhIuidMMp8NMLtybpecZvI2Ez1EjWlkBYyae0LhXwnShUAskFQTVNlkEDulycgpiU
-         D/EukC8o6vok6jYHOIQHQ2ilo0+yNtrJh91HRypZ74zMGaQjrE7TwqFlnZeFsS1TQTsl
-         DACF4Y3QNjbfqOoIi48+JlDwWd1bwqJbQo1jbKD5W6+ADsb2aZWy4iyLeZknMMCdyFM9
-         aJFZFW3pb2rO7eedHWWPUa4BACrxuNNijmV9wcpYz6jrLqvAInXNGVk0yqrq5M+vs2+m
-         a+u6H8df4NTw4J7mPOAsq1qgZbgtdh/3M+48OxWfjTeAyTPxqU3igct8mYteSiO0sJQx
-         Plmg==
+        b=dkrQLswXWGTMfApZdgYc86zezBOvAUIcpPTzUtA/gx/+tcTkVYGToR8vNS5xe5HVBY
+         WNZhPQLg1Wsfq7dtUPVcK95QFotPOJi2CrsGgGAiRHoG5w+T7du/F19QBYICn4EcInn9
+         JCLkYYzm639XVqmRLK3GnUtJV/MXqM1BkLj0gnoBUSxD+Xj/pNFdVdDeTovRho6xnZHk
+         9KQ0ZJlxLm6AhKBROOk8C3UrHa/vm8Q+vl3H5abzvn1XuKcWOTNsFBWdW7lIeNVTvKbh
+         1P5crTSjNhjbPqI0uZCKUB6NTy1jEgAg2g9Bb6dFaLMQ90gyoKgwdGzBHquO4X1baSVu
+         UBxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=BhQoEz1AwEdA7j3JwLiWaYoSglgpi7vLBsBQwLuEyRk=;
-        fh=8RRSnWbS5zzTUz+qp/1FSjJgNvIdlF2Xu9Eop5ZCnGU=;
-        b=QfM0apIoZxWAiX2Ixr+QDjm6JazkoGVjyNyjCVw5dXqrAsQOqC8fEu8zvYnELptZ3g
-         36i3RaMeDyZxr4mv46t/jKp+27xx5FY11kUYVlPeuhIHaHoxOECdu6JGv3WcbaTie28V
-         ry6loMjCoU/IrhbX3vRLPvBU7t51mejNRNvxVPwad/6FsBQGsl9YABkDXah3LpF5JhKJ
-         Q+LAnsQuLmupixVZxW/fDBkN3kABS2QJANH0/9BYIKm8un4jdA7m8T8O5VvABrR2Zo3g
-         xOKDN3ESdkaSXJHBGBTbxb8xylvY/kwtoOcowgyrPx9urX7sINu5UeFf/3hyPF75UDu+
-         X/rg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=3dmN4K+AXFCuWdm/78nDnzAE0l1Q+L1Whi+FzalH3pI=;
+        fh=4GsIOdCKtKizivTeNfv67o/fmXhAKKvnXZPPWwh5xgw=;
+        b=Tya/KKh+BJ5/OgPCpZoC3ucL4x9oBK9fy+AZt9QJhSrHSxiwdajZdxMjZAIq77CNRp
+         8v9g8wIQ+TYKYLiXWaaSW5Wk+/LhpRBDy6eT6iJOIy3OANdLaGAXPOj1PbKrNWA1+hQP
+         BwGUJKsLGXJPjaFqTjeE0OMp5HCn89c7CSdShQ+DncH8chD1TKeL99HwUEXTKOv0KszK
+         Ts+fGkGjmTomofqSfv+Hsne+XrY0YRhW52Gd/YjGE6f2kFvtCK4SPvzStn2wnefhIDxv
+         NFFTdo5sxnJAGsMjMmgPGECRoG8xt3qXOSSHgCNJB4ISfyzY5OWR7a7fykakShhKjVTs
+         S1cQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rlx1GNqs;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OXZW4aYt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-432db233353sor8836545e9.12.2024.11.14.13.13.08
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b35caf5b16si211270385a.642.2024.11.14.14.44.16
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 14 Nov 2024 13:13:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 14 Nov 2024 14:44:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rlx1GNqs;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OXZW4aYt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tBiYx-00063z-7g; Thu, 14 Nov 2024 17:43:43 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tBiYw-00063g-54
+ for qemu-devel@nongnu.org; Thu, 14 Nov 2024 17:43:42 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tBiYu-00081D-2o
+ for qemu-devel@nongnu.org; Thu, 14 Nov 2024 17:43:41 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-a9a0c7abaa6so141180866b.2
+ for <qemu-devel@nongnu.org>; Thu, 14 Nov 2024 14:43:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731618788; x=1732223588; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=BhQoEz1AwEdA7j3JwLiWaYoSglgpi7vLBsBQwLuEyRk=;
-        b=rlx1GNqsKyWE4MsLOUjJd+Ct0TpQx/YDL6PRzc/06Q0sXdppBnGao7xsonhzskcEsa
-         +JHkvAozPpr1O48jVIa8ezpC8t+h6hxe0k7FZxEb+0E39DwtPWDY7/OhTimYnzloz1G4
-         T7c25Anl+qzTkT/BRmVTNCNLkIn1JIya/RmDENVsTQDejY5DWSp1Y250gbxA4DD7TZ+S
-         KdIeLxz1ZQ2EM+J/jJ3HAY6H9EelgEdLdUmsx27xZKHTVsgXuaXBPe0zsXbqKhC52w+e
-         w40ydESJPylX7sUggZ3weaRsxJo/K+wE1yoBy4AMUP8/rCtHsL+CUPYbR24zkSAkb1Xx
-         XPvQ==
+ d=linaro.org; s=google; t=1731624217; x=1732229017; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=3dmN4K+AXFCuWdm/78nDnzAE0l1Q+L1Whi+FzalH3pI=;
+ b=OXZW4aYt1Sncna3s4zt3X3l/+1L8qixXaXXMl1uoou5cvF0vFlCs70L3ewxdCwsO4F
+ WdTdchNqhrFKrT61XoxyEJgwRlKXDD2k52Q3mQC6FDPy05hIG0gHfd9PCpYbEvJaNxs7
+ 0JAYbjJxjjG48syPcvRvyhqVCvyutTn7NplTIWrd3wH3KGPEFxpWvHI6cqwqEDtmHKdN
+ FE4/KRmUIgtwzo7N4SJZEEfy1BPfE+4z3rHdrWn+wQjo8xNLaotGMIrAIcsl+1FAe9ax
+ w7cUj7XNhPX5nAcIEx4NYOEOV5CTwuX3sp9CHPHRHtcdDjL45UNOevF5qfs/Hd1WwEkQ
+ WDAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731618788; x=1732223588;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=BhQoEz1AwEdA7j3JwLiWaYoSglgpi7vLBsBQwLuEyRk=;
-        b=wLXkJp6ppyG7UK6mveNh/fLzvEX5CrMC2JaVXja97yVDeVlHjh1L3hVR8UButGcFLl
-         xOn5pruk5kUmTjrtvWNqaSS0zjcJCkDK3iMLOXSKuzyS/zsQZHaUXnr9mxcQPtC/Vy32
-         8XZcGvvH2edBJhGlZh71vCMzjU8lh3ad6xmhJSMeV1N1unBS/ARH8mkKTMM+DanJfcv0
-         aOKOA51ThOWhrMEMsCG6murSlEHVdnh/zSB/AiKkekGYPEwikohyVfyRcevv4xbosIEt
-         Oojp5P39jpEnZ5YlSrDz0i7tFTO3X6lpFp2+ieoWKRFHV18f1wdzHptaBv6qR+cvOPaX
-         vodA==
-X-Forwarded-Encrypted: i=1; AJvYcCUOTPjIHQrQ9fnbsfc+VVaPyV+mCDSyb3xcM5KsqrLIKOVEIna1zchVK2gCFSKOr8Cd2ee2aFxRbFoyLg==@linaro.org
-X-Gm-Message-State: AOJu0YxDQZCCURI1hj1zGUoZ4yu4rxr2cejGP2qI8dFtVgbLVE/3UGTh
-	b8Jd+Ho5zejtw4Rpxz1cg9zyY4a9QNKjbX6PHOQe6socSEGmkTbORLbF/MdaFybMvw==
-X-Google-Smtp-Source: AGHT+IECB3IOQPU8siDOvfjZDXK4zBWBRULODoRPPgw7oH+uWjCXOpwtKqXOcu5PAMOTNYT7ETulOw==
-X-Received: by 2002:a05:600c:4713:b0:42f:823d:dddd with SMTP id 5b1f17b1804b1-432df78d34amr1572435e9.27.1731618787971;
-        Thu, 14 Nov 2024 13:13:07 -0800 (PST)
-Return-Path: <philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1731624217; x=1732229017;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=3dmN4K+AXFCuWdm/78nDnzAE0l1Q+L1Whi+FzalH3pI=;
+ b=OL8Zcz1cAADa4BvzmlT4Oj39Rd5SYr1Ue6D9etsHomaHUopRr8+Xzg8jPzYsFk2IDS
+ CJlmxX3XTTfRmTZUAJejk4DgVEuALTKG5ZbX71pCVlJUqtuQjjPqGc3FoIq95lpR0ekn
+ VSjPquENYW44abcjBf9qkY/qKqAuGXkflZiKKybdEEj3zfwDNW6ZCL9H63I7ACJQ5HQ9
+ uHjTEPIf4BR30872GYuUp7QTrHRVWmSH2aXEJ/TlleFQ+N4en4j3Zmtgpz9CaQZ6iUs4
+ rBvRbvTH0o0lW1jEpukLytiTM1NiPLk5FFIypQrwqmwXCsezzUSoxXY4AnHow61fEEGv
+ SAyg==
+X-Gm-Message-State: AOJu0YxfsDDoaChXhVnNzjkMU7M7Q6y34Dm6gmcyW0Y4L0whx/Cqk3Hi
+ hbubeljl9dHqiGVQhAKZP4IETWsZd4DGvkEpKWo7rB8baa9xQGlUr46inrSBb9g=
+X-Received: by 2002:a17:907:1c8e:b0:a9a:c57f:964f with SMTP id
+ a640c23a62f3a-aa483421690mr30343866b.16.1731624217001; 
+ Thu, 14 Nov 2024 14:43:37 -0800 (PST)
 Received: from [192.168.69.126] ([176.187.209.228])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432da28b698sm35778495e9.27.2024.11.14.13.13.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 14 Nov 2024 13:13:06 -0800 (PST)
-Message-ID: <2ff772ee-5abd-40a2-b672-b1189db36e35@linaro.org>
-Date: Thu, 14 Nov 2024 22:13:03 +0100
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-aa20df26fc4sm109472466b.12.2024.11.14.14.43.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 14 Nov 2024 14:43:36 -0800 (PST)
+Message-ID: <1625bc6b-8951-414c-88c0-62061289fdb5@linaro.org>
+Date: Thu, 14 Nov 2024 23:43:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 14/24] exec: Declare tlb_init/destroy() in 'exec/cputlb.h'
-To: Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Anton Johansson <anjo@rev.ng>,
- qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Peter Xu <peterx@redhat.com>, Pierrick Bouvier
- <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
- David Hildenbrand <david@redhat.com>,
+Subject: Re: [PATCH 09/19] hw/intc/xilinx_intc: Only expect big-endian accesses
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Cc: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-s390x@nongnu.org
-References: <20241114011310.3615-1-philmd@linaro.org>
- <20241114011310.3615-15-philmd@linaro.org>
- <d6a52090-a8d3-4cb6-881f-071a5668f1d3@linaro.org>
+ Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, devel@lists.libvirt.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Michal Simek <michal.simek@amd.com>, Luc Michel <luc@lmichel.fr>
+References: <20241105130431.22564-1-philmd@linaro.org>
+ <20241105130431.22564-10-philmd@linaro.org> <ZyqletOJvt3nD_L4@zapote>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <d6a52090-a8d3-4cb6-881f-071a5668f1d3@linaro.org>
+In-Reply-To: <ZyqletOJvt3nD_L4@zapote>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: ARU6S8EGZ7M1
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Rde0IsDv6kcr
 
-On 14/11/24 19:21, Richard Henderson wrote:
-> On 11/13/24 17:12, Philippe Mathieu-Daudé wrote:
->> Move CPU TLB related methods to "exec/cputlb.h".
++Michal for Linux driver
+
+On 5/11/24 23:08, Edgar E. Iglesias wrote:
+> On Tue, Nov 05, 2024 at 02:04:21PM +0100, Philippe Mathieu-Daudé wrote:
+>> Per the datasheet (reference added in file header, p.9)
+>> 'Programming Model' -> 'Register Data Types and Organization':
+>>
+>>      "The XPS INTC registers are read as big-endian data"
+> 
+> Hi Phil,
+> 
+> Some of these devices exist in both big and little endian versions.
+> So far we've reused the same model by using DEVICE_NATIVE_ENDIAN.
+> 
+> Here's the little endian version:
+> https://docs.amd.com/v/u/en-US/ds747_axi_intc
+
+This model is specified as:
+
+- https://docs.amd.com/v/u/en-US/xps_intc
+   LogiCORE IP XPS Interrupt Controller (v2.01a)
+   DS572 April 19, 2010
+
+Spec is from 2010, you added it in 2009:
+
+   commit 17628bc642260df3a07b9df8b8a9ca7da2e7e87c
+   Author: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+   Date:   Wed May 20 20:11:30 2009 +0200
+
+       xilinx: Add interrupt controller.
+
+The spec is explicit:
+
+   "The XPS INTC registers are read as big-endian data"
+
+
+The other model you mention is:
+
+- https://docs.amd.com/v/u/en-US/ds747_axi_intc
+   LogiCORE IP AXI INTC (v1.04a)
+   DS747 June 19, 2013
+
+The spec is more recent than your addition, and contains
+the Interrupt Vector Address Register (IVAR) which is not
+present in our model.
+
+
+Indeed the latter seems to extend the former, but they are
+not the same and we need some work to model the latter.
+
+The endianness explicit for each model (and is not listed
+in the "IP Configurable Design Parameters" tables).
+
+
+That said, let's look at Linux use. Driver was added in:
+
+   commit eedbdab99fffb8ed71cac75a722088b8ace2583c
+   Author: Michal Simek <monstr@monstr.eu>
+   Date:   Fri Mar 27 14:25:49 2009 +0100
+
+       microblaze_v8: Interrupt handling and timer support
+
+Using explicit big-endian API:
+
+   +void __init init_IRQ(void)
+   +{
+   ...
+   +       /*
+   +        * Disable all external interrupts until they are
+   +        * explicity requested.
+   +        */
+   +       out_be32(intc_baseaddr + IER, 0);
+   +
+   +       /* Acknowledge any pending interrupts just in case. */
+   +       out_be32(intc_baseaddr + IAR, 0xffffffff);
+   +
+   +       /* Turn on the Master Enable. */
+   +       out_be32(intc_baseaddr + MER, MER_HIE | MER_ME);
+
+Then the driver became clever in:
+
+   commit 1aa1243c339d4c902c0f9c1ced45742729a86e6a
+   Author: Michal Simek <michal.simek@amd.com>
+   Date:   Mon Feb 24 14:56:32 2014 +0100
+
+       microblaze: Make intc driver endian aware
+
+       Detect endianess directly on the hardware and use
+       ioread/iowrite functions.
+
+   +static void intc_write32(u32 val, void __iomem *addr)
+   +{
+   +       iowrite32(val, addr);
+   +}
+   +
+   +static void intc_write32_be(u32 val, void __iomem *addr)
+   +{
+   +       iowrite32be(val, addr);
+   +}
+
+@@ -140,17 +163,25 @@ static int __init xilinx_intc_of_init(struct 
+device_node *intc,
+
+   +       write_fn = intc_write32;
+   +       read_fn = intc_read32;
+   +
+           /*
+            * Disable all external interrupts until they are
+            * explicity requested.
+            */
+   -       out_be32(intc_baseaddr + IER, 0);
+   +       write_fn(0, intc_baseaddr + IER);
+
+           /* Acknowledge any pending interrupts just in case. */
+   -       out_be32(intc_baseaddr + IAR, 0xffffffff);
+   +       write_fn(0xffffffff, intc_baseaddr + IAR);
+
+           /* Turn on the Master Enable. */
+   -       out_be32(intc_baseaddr + MER, MER_HIE | MER_ME);
+   +       write_fn(MER_HIE | MER_ME, intc_baseaddr + MER);
+   +       if (!(read_fn(intc_baseaddr + MER) & (MER_HIE | MER_ME))) {
+   +               write_fn = intc_write32_be;
+   +               read_fn = intc_read32_be;
+   +               write_fn(MER_HIE | MER_ME, intc_baseaddr + MER);
+   +       }
+
+Interestingly little endianness became the default, although
+the driver detect it on init.
+
+This is from 2014, maybe to work with the "LogiCORE IP AXI INTC"
+you mentioned, which spec date is 2013.
+
+
+Indeed when forcing different endianness [*], the Linux kernel used
+in our tests (tests/functional/test_microblaze*) does the check
+and ends up using the correct INTC endianness:
+
+LE CPU, LE INTC model
+pic_write addr=8 val=0
+pic_write addr=c val=ffffffff
+pic_write addr=1c val=3           <- LE
+pic_read 1c=3
+pic_write addr=c val=1
+pic_write addr=10 val=1
+pic_read 18=0
+
+LE CPU, BE INTC model
+pic_write addr=8 val=0
+pic_write addr=c val=ffffffff
+pic_write addr=1c val=3000000     <- LE test
+pic_read 1c=0
+pic_write addr=1c val=3           <- BE
+pic_write addr=c val=1
+pic_write addr=10 val=1
+pic_read 18=0
+
+BE CPU, BE INTC model
+pic_write addr=8 val=0
+pic_write addr=c val=ffffffff
+pic_write addr=1c val=3000000     <- LE test
+pic_read 1c=0
+pic_write addr=1c val=3           <- BE
+pic_write addr=c val=1
+pic_write addr=10 val=1
+pic_read 18=0
+
+BE CPU, LE INTC model
+pic_write addr=8 val=0
+pic_write addr=c val=ffffffff
+pic_write addr=1c val=3           <- LE
+pic_read 1c=3
+pic_write addr=c val=1
+pic_write addr=10 val=1
+pic_read 18=0
+
+
+IMHO this patch behavior is correct. Besides, I don't expect
+firmwares to be as clever as Linux.
+
+> Can we have add property to select the endianess?
+> For the Xilinx use-cases I think it may be a good idea to default it
+> to little endian and have the big-endian machines explicitly set it.
+
+What you suggested is implemented in v3:
+https://lore.kernel.org/qemu-devel/20241108154317.12129-4-philmd@linaro.org/
+but after the analysis, I wonder if it isn't safer to not
+make the endianness configurable, but expose as 2 models:
+- xlnx,xps_intc (2010) in BE
+- xlnx,axi_intc (2013) in LE
+
+> 
+> Cheers,
+> Edgar
+> 
+> 
 >>
 >> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 >> ---
->>   include/exec/cputlb.h   | 28 +++++++++++++++++++++++-----
->>   include/exec/exec-all.h | 17 -----------------
->>   accel/tcg/cpu-exec.c    |  1 +
->>   3 files changed, 24 insertions(+), 22 deletions(-)
-> 
-> This is only within accel/tcg/.  Better to move to 
-> accel/tcg/internal-common.h.
+>>   hw/intc/xilinx_intc.c | 13 ++++++++++++-
+>>   1 file changed, 12 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
+>> index 1762b34564e..71f743a1f14 100644
+>> --- a/hw/intc/xilinx_intc.c
+>> +++ b/hw/intc/xilinx_intc.c
+>> @@ -3,6 +3,9 @@
+>>    *
+>>    * Copyright (c) 2009 Edgar E. Iglesias.
+>>    *
+>> + * https://docs.amd.com/v/u/en-US/xps_intc
+>> + * DS572: LogiCORE IP XPS Interrupt Controller (v2.01a)
+>> + *
+>>    * Permission is hereby granted, free of charge, to any person obtaining a copy
+>>    * of this software and associated documentation files (the "Software"), to deal
+>>    * in the Software without restriction, including without limitation the rights
+>> @@ -143,12 +146,20 @@ static void pic_write(void *opaque, hwaddr addr,
+>>   static const MemoryRegionOps pic_ops = {
+>>       .read = pic_read,
+>>       .write = pic_write,
+>> -    .endianness = DEVICE_NATIVE_ENDIAN,
+>> +    /* The XPS INTC registers are read as big-endian data. */
+>> +    .endianness = DEVICE_BIG_ENDIAN,
+>>       .impl = {
+>>           .min_access_size = 4,
+>>           .max_access_size = 4,
+>>       },
+>>       .valid = {
+>> +        /*
+>> +         * All XPS INTC registers are accessed through the PLB interface.
+>> +         * The base address for these registers is provided by the
+>> +         * configuration parameter, C_BASEADDR. Each register is 32 bits
+>> +         * although some bits may be unused and is accessed on a 4-byte
+>> +         * boundary offset from the base address.
+>> +         */
+>>           .min_access_size = 4,
+>>           .max_access_size = 4,
+>>       },
+>> -- 
+>> 2.45.2
+>>
 
-Yeah, and IIRC this is also true for some other helpers.
-My thought was "better keep all the API public" but I
-don't remember why I decided to go this way, since this
-is of no use outside of accel/tcg/.
+[*] diff used:
+
+-- >8 --
+@@ -32,7 +45,7 @@
+diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
+index fc55c8afca..883ec685f4 100644
+--- a/hw/intc/xilinx_intc.c
++++ b/hw/intc/xilinx_intc.c
+  #include "hw/qdev-properties.h"
+  #include "qom/object.h"
+
+-#define D(x)
++#define D(x) x
+
+  #define R_ISR       0
+  #define R_IPR       1
+@@ -105,7 +122,7 @@ static uint64_t pic_read(void *opaque, hwaddr addr, 
+unsigned int size)
+              break;
+
+      }
+-    D(printf("%s %x=%x\n", __func__, addr * 4, r));
++    D(printf("%s %llx=%x\n", __func__, addr * 4, r));
+      return r;
+  }
+
+@@ -116,7 +133,7 @@ static void pic_write(void *opaque, hwaddr addr,
+      uint32_t value = val64;
+
+      addr >>= 2;
+-    D(qemu_log("%s addr=%x val=%x\n", __func__, addr * 4, value));
++    D(printf("%s addr=%llx val=%x\n", __func__, addr * 4, value));
+      switch (addr)
+      {
+          case R_IAR:
+---

@@ -1,106 +1,111 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp959471njc;
-        Fri, 15 Nov 2024 05:23:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWJVX533FDvdrkRvMNj8XFxyrFtZqY2jTxSdG+BlqM0H8Admoi1I/sc5slb/zX4yGbGqyHLPu9/TJclAg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEsu1xUNSNLpe1ME/w18911vU01BVWXGmh0jW+gwpGTDPyURngJX2pxrxSAF6S9rnn8DGBP
-X-Received: by 2002:a05:622a:6107:b0:458:294c:39e7 with SMTP id d75a77b69052e-46363ea7c9cmr36563971cf.38.1731676994455;
-        Fri, 15 Nov 2024 05:23:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731676994; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp1125206njc;
+        Fri, 15 Nov 2024 09:25:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVXIga/EkE5EHHlRTJAmBgAjVqKcraNKV4mHjrUj0E/VlmUVJr7K26U475UIsStBp7/3PDgtQLrwds0+A==@linaro.org
+X-Google-Smtp-Source: AGHT+IF/rsF0VnhA0CkLkOHL9Z+uJKqEwQJTlzhTarW3mHchUiSghwhv+zECLbUiVR6QN2C6UgBn
+X-Received: by 2002:a05:622a:1488:b0:458:4eae:6c6c with SMTP id d75a77b69052e-46363e31385mr38938331cf.30.1731691543764;
+        Fri, 15 Nov 2024 09:25:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731691543; cv=none;
         d=google.com; s=arc-20240605;
-        b=SPaWsSnyvbRAreGtlh91UG0dcZaUzui+0+JtJ7HeYkvtPNN0MX3JeFd7Wl1BQXC3eH
-         JsWu+pUG9V5SR0KIsd9/BpHgCL9D9Z2sU6YJRYj4ECngk9Lf4GaOKJlFycqOkSHHTVr+
-         i9hGf+a9NTYM89dbZkiHScOQoGAdk2aQjV3WlK9H3+5xBGfJ/GlwCJ6ZoCEm3JsLVJHu
-         vgqwkwQcMDtdzn2Aln4efEkGMjrq08YOob3Lx3H9VUklBxcmP4AIJ66THtIsIvl24rL5
-         ifV8gGfsUuu8A14sP/0tuKx4wjFki/vd+CNlAuVi/fFK3xXIIV9oEtw1q0P5ZV3NcOd3
-         G0cg==
+        b=lhi++5TskcYzX9TnCW9ISNChE2FO19RaUJp9qcnFrdPUDe4MP5l7CVe02KHqvBsNz0
+         P+rSMpwzL0Q/Z8fb4MogeuNkhKCSpTwRLuxVj04ogrm+/KWmQkMCY/24t6Ac06NoTN1q
+         7aEXW7/zoc01ZLghGGQEto+MIh49mkWE9HkQL1GLDc23RQs7qaVppZagsBHecq2Ky6AV
+         SXRt1sxtd5KAP74jI77prSiuh9qRn7+9HohbBTbMxLTPvIEwwLRX6uLhRwaGioWQFMOx
+         LMxk4QkZhWUh6XjVUtaBcJ2mUGVtCRlERkqwVuRAGLY8XGVhHvhoqRCKfuPzj9D0Nf0U
+         EaQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=NGPP4i7QbtYZwZYRq93bb60RZTSsE/TgJjIB0NxYoKI=;
-        fh=adDlGcu0xHQur9DKbGnup3yOLwrFV1y0o7L74W+8hbE=;
-        b=BVoksUhkSfh3LVT+u++QIO6niXHQ+kVO5Xnjar5ItSsI6zT1NF+pEx5Q+htuwNrL4Y
-         mYuPbK7kDg16GyshGOhcpnyshMhWafwXNhIDdOBkIOvi14P7ydd13JoiF+1uWpsAspWd
-         HJirhulkJEuwfkF3EZTEri1k1gT8Ijnt6/gv44F5oYkw9uKyIHziayFwjdU5e5/oZKF1
-         eyLv6TWOQmpUepq96XTyk/+MxNUgqqw7wFb56NC1OuzeiTvlV2GTmM34jwKimMtHE9nC
-         GLoQyRqSFiHdi1tgm8yLNzbV4pmyanPq6N8o0UVBzP3biJb9XMlHzJ9OESJokKJfoj+p
-         RhpQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=7Y0AMU/ttgRURqOnN0XPhkHG3hk3G+OF7iF0mZeXnJQ=;
+        fh=XMB9Wf1/jrQ7o1xaTk3ZKLqQh2fM/ewh49ngy6iT0rU=;
+        b=cSjEfyibcdcEppv+uXer95DMOVUTovjs2ICE+Rd63GFHxlxWiSbZTGeGbawRDH2J9J
+         xc7OnOmgVH8NmmLnk7If0Jn1RYnlBaQQH5jFkA3PncYqoih3xwmiH1hwSi5U72cuqWn7
+         5sEZTcEc2SXTIYESleryhZNnnmaVvcDCorYeyqrGKyzmQkVwQOWs3ARBzwBhlP0EU5p9
+         rK/8SfIpiN7+9vB41ikEVx5uHRhDPWj6l1cgX9iJwuimQR5N3w0w6vtUQBhwtoXkw4u4
+         OnJgxJjn/w7C93CfxRbGQUPz91DmqfP9v++E6jaU3fWbCTsgCo1UjVW5YpaUwY+WTAH6
+         nIdA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rPLDjCJq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=n8STFGwn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4635aa9f378si38197751cf.248.2024.11.15.05.23.14
+        by mx.google.com with ESMTPS id d75a77b69052e-4635a9c80e0si45176571cf.164.2024.11.15.09.25.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Nov 2024 05:23:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 15 Nov 2024 09:25:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rPLDjCJq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=n8STFGwn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBwHk-0004mk-9P; Fri, 15 Nov 2024 08:22:52 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tC04P-0003zG-Oi; Fri, 15 Nov 2024 12:25:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tBwHi-0004mM-Bv
- for qemu-arm@nongnu.org; Fri, 15 Nov 2024 08:22:50 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ id 1tC04O-0003yz-VD
+ for qemu-devel@nongnu.org; Fri, 15 Nov 2024 12:25:20 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tBwHf-0006mK-Cx
- for qemu-arm@nongnu.org; Fri, 15 Nov 2024 08:22:49 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-5ceb03aaddeso2202822a12.2
- for <qemu-arm@nongnu.org>; Fri, 15 Nov 2024 05:22:46 -0800 (PST)
+ id 1tC04M-0001UW-GL
+ for qemu-devel@nongnu.org; Fri, 15 Nov 2024 12:25:20 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-3822ba3cdbcso366188f8f.0
+ for <qemu-devel@nongnu.org>; Fri, 15 Nov 2024 09:25:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1731676965; x=1732281765; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=NGPP4i7QbtYZwZYRq93bb60RZTSsE/TgJjIB0NxYoKI=;
- b=rPLDjCJq/oFelSV8n2WedtlK3sUPV1xJa+yf/w64ezXpJ2EddjigoKxCgs5tbCU/m0
- gCWf/Ca2nfPMRP5Xka61n0PZ2Yw7cM4x5gEgWYFfj9Qe5KP6mGRjQB/iC7uupyinuKeJ
- e3+GoMxakjViBkIBXhjYtaPJj3E7xSE1xJc6GoH1LPKQEA0avfT3fCLLZaIxfmRMOAO0
- PRbFrH0sSyADP5V0ML/yTmj5k9rlGfCHRT0bzkb5LVEbD08Kanqc1LU/D/BnnozTU7mF
- JgWhbX+WP8dqE4mtZtK3LwwF88rugVbZAIOhK8oRI9T5OUxqHYObEEBWiwy9wVCjFik+
- HX+Q==
+ d=linaro.org; s=google; t=1731691517; x=1732296317; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=7Y0AMU/ttgRURqOnN0XPhkHG3hk3G+OF7iF0mZeXnJQ=;
+ b=n8STFGwn/3EbTsIFfPrxlCpGz3g2Cab4bihNWvoGpv2uklYj6TLxsPptNw+iAnAyBc
+ VgDVrSfv1oA/T1TgSnUR46yjqJ57jQaERu4+QkHroQen07PhgmsSBDQ0daBbqEy7JaPv
+ ecGjZotU4cs3k7OIatfDNOm4esgSeguzRpFTUPpldtmlyJUiagk7EoGfb8pHRzeJ3Ci8
+ 3pTFHtrB/XJbgK3H40xJzLYI1CnkVPty3qVvJ35ed74Zzj2L0YQWU6QNdMzTCsYFdvWB
+ BOAujlDl/b4epOtOzobvb3KFFJNCibiyLx6SVfxvZjdbCHUbPeXkUUKdDyul1t9yqCh8
+ ANWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731676965; x=1732281765;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1731691517; x=1732296317;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=NGPP4i7QbtYZwZYRq93bb60RZTSsE/TgJjIB0NxYoKI=;
- b=fKWBrKtfnxQ5i/BScAk8/faaP+1WZ4fDmLP0P35eum2hh0ILKyflCqix14ZRz+WzJM
- zIGGpd0XUIXSDa1xRJ4QTUpdNdVYVN2/aNwADkd+AVYBi2Ms2eRka6SJGN3SA1LFAbCR
- z/eH+firpcQgVc/ZoLocC4TLtfV3X3y5QxQuBjmkloIQKVrIO0kyJGAgphipsPDOicXu
- sN149M+8e6GxTc0BNws7sWZTjjfuYQFebPgwqnKtYZsWCHvuSuFfZYKrMFocGfPHWFUH
- u06l5sHENBXmzhWECUfmZyuLGbxH9uCjLk59fMDOW43AOHC0IMNj6DM3gCBT6RdWErI9
- 1lHQ==
-X-Gm-Message-State: AOJu0YxM5dE4XgPzGqrXloa5FmihhiaCnKJBr+BtiLAuYuencNrNmXS0
- IvHe5yPCpYav+UFfY6/3hFouDcfw+yTnsBry2D3vv7udhZwIGSzCBAeJRWHTDjWCFLuQ7QJdIaN
- mgaHIhj5WqagiFA4RyHEqbEDS9FJ18BkhAJ0ZXQ==
-X-Received: by 2002:a05:6402:4309:b0:5cf:704d:238d with SMTP id
- 4fb4d7f45d1cf-5cf8fbfe648mr1897399a12.1.1731676964999; Fri, 15 Nov 2024
- 05:22:44 -0800 (PST)
-MIME-Version: 1.0
-References: <20241114165900.6399-1-paskripkin@gmail.com>
- <20241114165953.6894-1-paskripkin@gmail.com>
-In-Reply-To: <20241114165953.6894-1-paskripkin@gmail.com>
+ bh=7Y0AMU/ttgRURqOnN0XPhkHG3hk3G+OF7iF0mZeXnJQ=;
+ b=VLlil8B0m1/1nylhpZItTqj/12nEzNAF5orTmOr3jgdZe+QDUKtDrlq7CupHffo5lb
+ ppNOFr4OBJIOQ3RiNSuuKkFs1tNPuI32rcrWAwqYfXuiSGod8G5M1Q0KpFlKuafJgs2H
+ UZdSG/lrHy05e+Z2mLSwunr1sArh9ZXGO71dCTOQZhvsc8K2IzwD/dPIM8hirAur1/I4
+ e71QIDSxCcRa+nQBdSVJrCL0mfy+W30XspjRqpuE0ionk1pl3rmmVfLdKkB9JXqH2gTJ
+ FQ7dPTcLqjupHXzbHV27jNGbdnipUbyd6ipajs+v8+B941XhmA1uwsAjhvEN7YCNnuTm
+ K5/A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV78VMakTVoSqg2LtgjqLmNi6jiKrNGKPxOCnw0kd9i4L8YNQZcr78wy0GR6CEoofP48oTqxyFETm//@nongnu.org
+X-Gm-Message-State: AOJu0Yxlg32PSAPs7rZozN9nZKb+K25Q/X4hrK9zOAg04KcsxMtgoQUt
+ 1Bl85/D9hdVIIHTqsMMYp16t+FKroKt5jFzvDEQT7ovMl9m121+FV6CNP7m93cQ=
+X-Received: by 2002:a05:6000:1884:b0:37d:9476:45f6 with SMTP id
+ ffacd0b85a97d-38225901ed5mr2721510f8f.7.1731691516759; 
+ Fri, 15 Nov 2024 09:25:16 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3821ae3128bsm4815080f8f.102.2024.11.15.09.25.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 15 Nov 2024 09:25:16 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 15 Nov 2024 13:22:34 +0000
-Message-ID: <CAFEAcA9i+YmGj5tznoc9FQkDQKqN4vx_0grOjh_ZFGyj-aPgng@mail.gmail.com>
-Subject: Re: [PATCH 2/2] arm/ptw: respect sctlr.{u}wxn in get_phys_addr_v6
-To: Pavel Skripkin <paskripkin@gmail.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH] tcg: Allow top bit of SIMD_DATA_BITS to be set in simd_desc()
+Date: Fri, 15 Nov 2024 17:25:15 +0000
+Message-Id: <20241115172515.1229393-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,52 +114,78 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: feQ9WyKsDGZA
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: b9Rkvkh3Io4y
 
-On Thu, 14 Nov 2024 at 16:59, Pavel Skripkin <paskripkin@gmail.com> wrote:
->
-> get_phys_addr_v6() is used for decoding armv7's short descriptor format.
-> Based on ARM ARM AArch32.S1SDHasPermissionsFault(), WXN should be
-> respected in !LPAE mode as well.
->
-> Signed-off-by: Pavel Skripkin <paskripkin@gmail.com>
-> ---
->  target/arm/ptw.c | 11 +++++++++++
->  1 file changed, 11 insertions(+)
+In simd_desc() we create a SIMD descriptor from various pieces
+including an arbitrary data value from the caller.  We try to
+sanitize these to make sure everything will fit: the 'data' value
+needs to fit in the SIMD_DATA_BITS (== 22) sized field.  However we
+do that sanitizing with:
+   tcg_debug_assert(data == sextract32(data, 0, SIMD_DATA_BITS));
 
-Instead of this, would it be possible to have get_phys_addr_v6()
-call get_S1prot() (replacing most of the existing open-coded
-handling of PAN, simple vs classing AP model, etc) ? I haven't
-looked at the fine detail, so we might need to tweak get_S1prot()
-if it's missing logic that only matters in the short-descriptor
-case, but I think that would be better than having two places
-that need updating for new architectural features.
+This works for the case where the data is supposed to be considered
+as a signed integer (which can then be returned via simd_data()).
+However, some callers want to treat the data value as unsigned.
 
-For instance, we are also missing the handling for SCR.SIF with
-short descriptors which you can see in the S1SDHasPermissionsFault()
-pseudocode and which we would get if we could make the
-short-descriptor code call get_S1Prot().
+Specifically, for the Arm SVE operations, make_svemte_desc()
+assembles a data value as a collection of fields, and it needs to use
+all 22 bits.  Currently if MTE is enabled then its MTEDESC SIZEM1
+field may have the most significant bit set, and then it will trip
+this assertion.
 
-Couple of minor notes for v2:
- * if you're sending a multi-patch patchset, please use a
-   cover-letter email. Some of our automated tooling gets
-   confused by multi-patch patches without cover letters
-   (and, conversely, by single-patches with cover letters)
- * our coding style says all if() statements should have
-   braces, even for single-line bodies
+Loosen the assertion so that we only check that the data value will
+fit into the field in some way, either as a signed or as an unsigned
+value.  This means we will fail to detect some kinds of bug in the
+callers, but we won't spuriously assert for intentional use of the
+data field as unsigned.
 
-thanks
--- PMM
+Cc: qemu-stable@nongnu.org
+Fixes: db432672dc50e ("tcg: Add generic vector expanders")
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2601
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ tcg/tcg-op-gvec.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
+
+diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
+index 78ee1ced80f..97e4df221a4 100644
+--- a/tcg/tcg-op-gvec.c
++++ b/tcg/tcg-op-gvec.c
+@@ -88,7 +88,20 @@ uint32_t simd_desc(uint32_t oprsz, uint32_t maxsz, int32_t data)
+     uint32_t desc = 0;
+ 
+     check_size_align(oprsz, maxsz, 0);
+-    tcg_debug_assert(data == sextract32(data, 0, SIMD_DATA_BITS));
++
++    /*
++     * We want to check that 'data' will fit into SIMD_DATA_BITS.
++     * However, some callers want to treat the data as a signed
++     * value (which they can later get back with simd_data())
++     * and some want to treat it as an unsigned value.
++     * So here we assert only that the data will fit into the
++     * field in at least one way. This means that some invalid
++     * values from the caller will not be detected, e.g. if the
++     * caller wants to handle the value as a signed integer but
++     * incorrectly passes us 1 << (SIMD_DATA_BITS - 1).
++     */
++    tcg_debug_assert(data == sextract32(data, 0, SIMD_DATA_BITS) ||
++                     data == extract32(data, 0, SIMD_DATA_BITS));
+ 
+     oprsz = (oprsz / 8) - 1;
+     maxsz = (maxsz / 8) - 1;
+-- 
+2.34.1
+

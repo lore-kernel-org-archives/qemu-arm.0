@@ -1,105 +1,106 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp1069876njc;
-        Fri, 15 Nov 2024 08:04:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWashugzjRrLsYqGMO+1VX34do2r1dDGsrcpgZeBHutp4QSu0Gb42hnzh73f4Yra38Gi1syZTqu7K+FDA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFAeUM62a0/kKGJ7eBx7OP4Ga/gwlV/R0jpC6BoKCl9KFZdM+Z/SYZTEeTsp04cB678Xnkf
-X-Received: by 2002:a17:906:478c:b0:a99:e850:deb3 with SMTP id a640c23a62f3a-aa48341020dmr316681966b.18.1731686636443;
-        Fri, 15 Nov 2024 08:03:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731686636; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp1070293njc;
+        Fri, 15 Nov 2024 08:04:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXDxaHLFVGKoVb7g6WjGNCeKC5D2Yv5fthDSBX+9Bdu4i0ma09qdjX7S7tZI+4K4/fph3Xuf7aHnfQAXQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEPsGADAoQsMFg8pGJO/lCigeQjkJrdvWRfHyv0SFfc0g2J1MJMDJJ9i5c2HmaYKq36X6ly
+X-Received: by 2002:a05:6402:50d3:b0:5cf:707f:a123 with SMTP id 4fb4d7f45d1cf-5cf8fc1406bmr2595283a12.5.1731686675197;
+        Fri, 15 Nov 2024 08:04:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731686675; cv=none;
         d=google.com; s=arc-20240605;
-        b=Nv+kUGg26CL63zcNOO+d4RN9aHjU/79AIophUECP1RgGhWrPA2G5jqRk36H/tQJJuw
-         oZUt/5M5ujQ/+ssDi6cKtIpREsD0t7luYeqWYWfyJ5iG7AV/87DVDiM12rnh1QJsRqit
-         cVUwVpFPBKJcbM1Q+FNF5/nC/mF/fRb82op2ZLFrNi0W6wbm/Or3OSda+WEc21eM53Ll
-         3I3cHrv7mbv919uxZdsXLm0RH2CPGU+E+h5MJYZqbzwB7fkyMkvBnZA8d4oc8BNXusLs
-         DIWWwZ9lxyJwJ+L+EzEeujq6g3jMzit0VS1HFTT1iu0JxmKaqKiQ6aqiWd/yxoj7CJzE
-         qiaQ==
+        b=e8Yl+7mS2CeZ8dMURB8kthukSMSX6+lTfNXlXxsQXuFxcwrEjnFm6ahiTSpA617muz
+         EqHD+84mAH3aex38l9E+6DO9t45aGYTUq1gGAbibZhmtcaS/GcmZqAk4oXbAsj9E4UDi
+         EpV+GbdwyUBVa2UvBhmoHAmx/z3GifiI7k7vjpG9ZQJKIhjaLSHoen1OOON2swOn1Byv
+         2O0++QP1cVF1aJ30monbJXe33E2Fs4zjqPmjHbTRpQCdg6m5GJypnKB+Xf0BLxFmJ7un
+         3H0X76ViggQnPaVay6P/smnwUVhS3gJL+It/rhPFFFUaqe4XG/hMC3M/BiA48GWksfpL
+         oPHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=CaMy4sZhLruE2/rOqIYreQpf3lX4IZAEpEV0rXHSsk0=;
-        fh=HMovQkLS6umLohQB1Vt2EYFaZL1ic2NNjUU/o6eD1i0=;
-        b=ICNs+mdI/6B7D2jmwHrmYmF55wqlbD3JqHfWMNz6tnNC1OJGxKAPs8qURmIDswUWmg
-         VH2824WNWeXkttrTaJ6JeZVwjn5o0MVMkwKhG7L/wQdhooY33oisYG7rvXsBgAqZ1rZb
-         8PGU4IzjNR3zN4ju2pK2LBo/ToZLT6WssSo78vgbDFA8GqSxQ6Vi1Uaot1206FmmyWf1
-         CI8pP4DP+4aLoiMsrCZhBd7gai0C3aQXJNojSeprJddH8WeCipoOQOfNoMj8x4AspvB8
-         +aRtBeIqViJfwGY9dPoZ3N/wzxkfX8EYq1O9XHQsZtavrfPNnF3dBrrnnL+LZM7HqrJT
-         /ljA==;
+        bh=HYD6Oh0snMVDE5n3YbBrC3LNYted9IIM3hf4WZIwNL0=;
+        fh=bTtjrP8VSvfvZZLs35T7oWqHVRazx2QBBF4sLU/b80E=;
+        b=cGryqmZOmBBLcjdIqmgTWHqWncQ/AzoAs2ZxruM9pgla/J3g+aanUOeWJXhdROsuDY
+         2iTQKKCVGdjxjiXX8iF5X28cxP3zL5Avo5YtkdcGGyc3diAe7Kk6HiibTCdOKdL7XQAE
+         60JzmgvRYTEaM3TlwWTSp7/wpIm3nDxeiyjlJROiyiGIgvCBJNdNHBqwFt4pRt6uUZYZ
+         P8bmw4EgQy/QcdaW0lHW5k4geo80b5+hglo1/kDRqWI9MY3TT6UkDkBCZKxtM/CP9sVk
+         jjdyNPqygXXrl0+zP0MSrp/wUAqbABLs3/7mnheK2OPf23d5slWWWOWmAC34ZkArAcHc
+         T34Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=MpcRTnCe;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=zohZPZKn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a640c23a62f3a-aa20e103892si221822566b.862.2024.11.15.08.03.55
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5cf8b768477si1397936a12.92.2024.11.15.08.04.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Nov 2024 08:03:55 -0800 (PST)
+        Fri, 15 Nov 2024 08:04:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=MpcRTnCe;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=zohZPZKn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tBynR-00049W-Md; Fri, 15 Nov 2024 11:03:46 -0500
+	id 1tByne-0004Dm-8f; Fri, 15 Nov 2024 11:03:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <32nA3ZwYKCNkMJLP9CBJJBG9.7JHL9HP-5MHIJIBIP.JMB@flex--roqueh.bounces.google.com>)
- id 1tBynO-000497-QL
- for qemu-arm@nongnu.org; Fri, 15 Nov 2024 11:03:42 -0500
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ <35HA3ZwYKCOMWTVZJMLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--roqueh.bounces.google.com>)
+ id 1tBynW-0004Bo-Ug
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2024 11:03:52 -0500
+Received: from mail-yw1-x114a.google.com ([2607:f8b0:4864:20::114a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <32nA3ZwYKCNkMJLP9CBJJBG9.7JHL9HP-5MHIJIBIP.JMB@flex--roqueh.bounces.google.com>)
- id 1tBynM-0003ub-V2
- for qemu-arm@nongnu.org; Fri, 15 Nov 2024 11:03:42 -0500
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-e2b9f2c6559so1172167276.2
- for <qemu-arm@nongnu.org>; Fri, 15 Nov 2024 08:03:40 -0800 (PST)
+ <35HA3ZwYKCOMWTVZJMLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--roqueh.bounces.google.com>)
+ id 1tBynV-000436-Hm
+ for qemu-arm@nongnu.org; Fri, 15 Nov 2024 11:03:50 -0500
+Received: by mail-yw1-x114a.google.com with SMTP id
+ 00721157ae682-6e59dc7df64so20684267b3.1
+ for <qemu-arm@nongnu.org>; Fri, 15 Nov 2024 08:03:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1731686619; x=1732291419; darn=nongnu.org;
+ d=google.com; s=20230601; t=1731686628; x=1732291428; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=CaMy4sZhLruE2/rOqIYreQpf3lX4IZAEpEV0rXHSsk0=;
- b=MpcRTnCe9iD4bRLSAgtIRtwoJAJJVxyfUkvfTYUOwrTUM0Kz9IwJZKQ8AR98Ui9doD
- hCc6XbFI7hMQnVPzkaKPNAyBwwuU1MqxBu2jLNd8ko0RA55T+E6J2lcnBkR2gM8gJ4bf
- YYAIWxfGVWUAKQAG/QoWpx7iWY8uWvRrkuTEBvfgfrzIavNkuQ1w9ZpkHQcMjy2+UBYy
- y+iTKJUhyW1d85aEPaVWza+aUJpTamrTDhId4PK4SVsFrPNeAHNK+zIHeelqnx0PhiNq
- ZnkxBatE5idJtbsO5XgXDWPO+22PwU7317gDbSY/hVx4dJGMCtP+woIf14XOLuOfAGLP
- nqrA==
+ bh=HYD6Oh0snMVDE5n3YbBrC3LNYted9IIM3hf4WZIwNL0=;
+ b=zohZPZKnNTrQAHnADcLT4Gwtuika1F0DtHV40zSXw2qhTHwYQd6p4Ivr4Dd69kWgG6
+ vpU/aRTahD1jcwg9hstK5QQU10RkphuB+IOdBNfb0+pvC/QGzqu6ebjBTSMxBkpZ2FtD
+ LxHvGvUwqYZVbDL2jGbgWW5yynaF/gQoaBMivVGd6ZubWN4R6yadBq3q83lX63sasa4T
+ hUSpAGY6FW7qTWqghTlcf6zAN/IVnfbxdMV1QrNbks3bo89EQwPPsDWc1WWNnOagLOts
+ rupNCbsj3J3sXvyb+IqPwPlwx9oSzQK3QuFUYodaDsZrRmZDz6+KOq/GNIaJjWQ3IhXm
+ P8OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731686619; x=1732291419;
+ d=1e100.net; s=20230601; t=1731686628; x=1732291428;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CaMy4sZhLruE2/rOqIYreQpf3lX4IZAEpEV0rXHSsk0=;
- b=G2tkQkO8su8ASa3zQDdVckeO7rgPL2KeT8BU3zmHTVvAXxsVzn1f916P4U8b1RDJTH
- yfXli4nBuwbsG4l/iv6zZlKT2TYFfX1x693AK8yAbBvI8uc+a/gNMPzjUk6RhO6jG0qe
- ZYEv1NrEFQkNkOfFeiieluCQ5z6cNRC+4ZZG5xLJne5rd0DuwfyOt0371Y1rRlBq481L
- ET1+fFYuVu/pW8y7V/wWW2qbYzIeMFM673sLHns0v/mDYEtiSinVRMaEnJNZwJQhV38A
- QEBLQDIzYfXPLxiSKJ2IGESmsdAXDEx1BG1RYh6Ho/q/bCxmxYy5bz8t6U76hBjo8DAJ
- 89tg==
+ bh=HYD6Oh0snMVDE5n3YbBrC3LNYted9IIM3hf4WZIwNL0=;
+ b=rIn1hphPjanRua92ajeuNxH/bStTu1ipi+stl+WvEUQp67yXZg8LrpX1UpfUqWoOVs
+ mTWlldrQPBhHlxAVT+ylMh28HUcYip5VbK+zxpBVK7jZztUoG3tbZvFakeN4bdHPeFkR
+ 8UsPuFQgMgtMlanlgbZn6W6TGkftvURVN5RqTsh89iezwdvV5IpIO9iDMOnP08w1akgV
+ PM/UzRiutq78NhcHnpE0MXS2iwhFgxI4IBnvAgHJHNYUvYIR+9wviFurzoKpNiWEYZhc
+ trTNrQTpXSR6a3/x2O23NHtdNGl2V2Ng8B4fSuXP8X5F7j8CJrXd5sEox0QK4xa63Q7f
+ yIkA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWszWijv86HOFDkd6wwA3qVxzu83xi8cQ8Tynrm8+ZLnT7Or3LP0h9VSup1SWqPx5UAsOrzdcb3Ag==@nongnu.org
-X-Gm-Message-State: AOJu0YxUbJCJuVG+hF7AOknMlJjnkV6QmODWU9kBuuZHP/BVmDvuQ/vl
- K7Amr3mO2L6f7NlX0aCFHUEHycrHvWO95+859ISV7u0L3o9YuYLlmJgoEFfIONz0mM/aLV+mogP
- KZQ==
+ AJvYcCWTwt2aREzziIElv6rGFk+ajIH6xKegbwlTAOTr+mNDuGs90rWaa70xNSdmRGDeu9slKarTq/HsXw==@nongnu.org
+X-Gm-Message-State: AOJu0YyiY6qCRyuwkVxkjFgOk97Iw2d3Fgg45iHAXPev6PcFtC0ZEFVq
+ HlSbgnOpaCTBw+owFgWObJC5tFfXc2L2/cUmo7HB1DX/KN/A6sag59qByt5ctDefoUVUd5Yt0GO
+ o8Q==
 X-Received: from roqueh.c.googlers.com ([fda3:e722:ac3:cc00:4e:3bc9:ac1c:1ab])
- (user=roqueh job=sendgmr) by 2002:a05:6902:72f:b0:e2b:da82:f695
+ (user=roqueh job=sendgmr) by 2002:a05:690c:9003:b0:6ee:3f39:493e
  with SMTP id
- 3f1490d57ef6-e3826394879mr3594276.6.1731686618635; Fri, 15 Nov 2024 08:03:38
- -0800 (PST)
-Date: Fri, 15 Nov 2024 16:03:24 +0000
+ 00721157ae682-6ee3f394c55mr592627b3.5.1731686628131; Fri, 15 Nov 2024
+ 08:03:48 -0800 (PST)
+Date: Fri, 15 Nov 2024 16:03:27 +0000
 In-Reply-To: <20241115160328.1650269-1-roqueh@google.com>
 Mime-Version: 1.0
 References: <20241115160328.1650269-1-roqueh@google.com>
 X-Mailer: git-send-email 2.47.0.338.g60cca15819-goog
-Message-ID: <20241115160328.1650269-2-roqueh@google.com>
-Subject: [PATCH 1/5] hw/watchdog/cmsdk_apb_watchdog: Fix broken link
+Message-ID: <20241115160328.1650269-5-roqueh@google.com>
+Subject: [PATCH 4/5] tests/qtest/cmsdk-apb-watchdog-test: Don't abort on
+ assertion failure
 From: Roque Arcudia Hernandez <roqueh@google.com>
 To: peter.maydell@linaro.org, farosas@suse.de, lvivier@redhat.com, 
  slongfield@google.com, komlodi@google.com, pbonzini@redhat.com, 
@@ -107,9 +108,9 @@ To: peter.maydell@linaro.org, farosas@suse.de, lvivier@redhat.com,
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  Roque Arcudia Hernandez <roqueh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=32nA3ZwYKCNkMJLP9CBJJBG9.7JHL9HP-5MHIJIBIP.JMB@flex--roqueh.bounces.google.com;
- helo=mail-yb1-xb49.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::114a;
+ envelope-from=35HA3ZwYKCOMWTVZJMLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--roqueh.bounces.google.com;
+ helo=mail-yw1-x114a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -131,31 +132,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: l/vIB1RVRjxX
+X-TUID: hamLZoxoDi7I
 
-The patch changes the comments to point to the latest Design Kit
-Technical Reference Manual.
+Currently the watchdog test has a behavior in which the first test
+assertion that fails will make the test abort making it impossible to
+see the result of other tests:
+
+ # ERROR:../tests/qtest/cmsdk-apb-watchdog-test.c:87:test_watchdog:
+ assertion failed ...
+ Bail out!
+ Aborted
+
+Changing the behavior in order to let the test finish other tests and
+report the ones that pass and fail:
+
+ # ERROR:../tests/qtest/cmsdk-apb-watchdog-test.c:101:test_watchdog:
+ assertion failed ...
+ not ok 1 /arm/cmsdk-apb-watchdog/watchdog
 
 Signed-off-by: Roque Arcudia Hernandez <roqueh@google.com>
 ---
- hw/watchdog/cmsdk-apb-watchdog.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/qtest/cmsdk-apb-watchdog-test.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/watchdog/cmsdk-apb-watchdog.c b/hw/watchdog/cmsdk-apb-watchdog.c
-index 7ad46f9410..e4d25a25f7 100644
---- a/hw/watchdog/cmsdk-apb-watchdog.c
-+++ b/hw/watchdog/cmsdk-apb-watchdog.c
-@@ -12,8 +12,8 @@
- /*
-  * This is a model of the "APB watchdog" which is part of the Cortex-M
-  * System Design Kit (CMSDK) and documented in the Cortex-M System
-- * Design Kit Technical Reference Manual (ARM DDI0479C):
-- * https://developer.arm.com/products/system-design/system-design-kits/cortex-m-system-design-kit
-+ * Design Kit Technical Reference Manual (ARM DDI0479):
-+ * https://developer.arm.com/documentation/ddi0479/
-  *
-  * We also support the variant of this device found in the TI
-  * Stellaris/Luminary boards and documented in:
+diff --git a/tests/qtest/cmsdk-apb-watchdog-test.c b/tests/qtest/cmsdk-apb-watchdog-test.c
+index bdf6cfa256..fe535a553c 100644
+--- a/tests/qtest/cmsdk-apb-watchdog-test.c
++++ b/tests/qtest/cmsdk-apb-watchdog-test.c
+@@ -164,6 +164,7 @@ int main(int argc, char **argv)
+     int r;
+ 
+     g_test_init(&argc, &argv, NULL);
++    g_test_set_nonfatal_assertions();
+ 
+     if (qtest_has_machine(machine_info[MACHINE_LM3S811EVB].machine)) {
+         qtest_add_data_func("/cmsdk-apb-watchdog/watchdog",
 -- 
 2.47.0.338.g60cca15819-goog
 

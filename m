@@ -1,398 +1,270 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp1243627njc;
-        Fri, 15 Nov 2024 13:04:39 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXSf5BnSGSgDsFsTnCnbaajvC/4hBXLjRdKSihaJYPuTZ/HZbwBhgsTBk5Nd8tKgJ6uD1zNefacD/WYVA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHRAywH4BgRqFZYnUcmgwdPSyV9mMK3hDkA1+yOEqtDBvXd/KmXgobKU9dR8vRBzfC0DRi4
-X-Received: by 2002:a05:6102:3a44:b0:4ad:63b2:c3 with SMTP id ada2fe7eead31-4ad63b20f1emr3717824137.1.1731704679492;
-        Fri, 15 Nov 2024 13:04:39 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1731704679; cv=pass;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp1713405njc;
+        Sat, 16 Nov 2024 10:15:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXs2i2QlnhGRjgwRHBOw46Sr+pTG0piseAEWurJxE7rPvwAgnw8JtrpMyom+MAYK+mdZVntb6wCgxRW8g==@linaro.org
+X-Received: by 2002:a17:907:7f23:b0:a9e:f28c:374a with SMTP id a640c23a62f3a-aa4834544a3mr528310766b.32.1731780952714;
+        Sat, 16 Nov 2024 10:15:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731780952; cv=none;
         d=google.com; s=arc-20240605;
-        b=JMvse6pX5j82uy2MnF62pN5rH6jX4eKQe4C67t2UK7OEGp0wyDc1Tl8F9t/n2ykJGI
-         mChOKwxdtqhqVbJmTuD21pIJHZBG9+Js0jEF60lfzJIQueMI/h0lxliCUmPwUzgV1uPT
-         RSA0UoYhQ87SUMcGtdOkJhDK5UvEBmcWYNCtugXyzqXYuUssLAuplbL/YQwn1y8I08wb
-         AKVm7XFr9JsbMcr1WQuymV4if63T9asqTwHQYF3erzx6qVXmeTV0XeCuYXOBfCmduMld
-         F2mnk1M+KmdTEuLCxsXFUGJvgGxml1KRTbo1SQL6sHPUgAPG0Bt0K2e53iA8uNnj7rU3
-         qPXw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:date:message-id:dkim-signature
-         :dkim-signature;
-        bh=lxd7PbXuBa2CBiklUB8QMYyv9koAREe/ZrlBf4Z94fE=;
-        fh=kMKV+c09NC6fjHcNG8ijk9cmk3kAk5WtbMV2HsQrlqo=;
-        b=g0xO16HrSDkoALtQOWUJHvYK3HsAUE1rwD8Yo1eBMxAi43pV8S+MB8C60AjazHC/Ez
-         xUqq1U6gtH4e9ODG6rMzsLl+XId0nKuJAunOtzm5SU+Gn/BJjD78n+OSZl0r8Pm5bnlb
-         BMWS5tBKG5T/Iid4FUxpHGrToTP7soBbuwuvgZka3r+luPQQKCzvm9Jkep5i1qAOkTdV
-         PIxUCyoSEL4Rz83ASbFVftWMLaDXAVrZsS/VW6nhSWnYRxsSHzH9itVHmQRw6sEarxeE
-         NlOsQ5oykHKLrvmVBJ9Sgr0SQlWteLcqCYyFNyzafGEin1+agJuTWZ5573/kSSfLC9c4
-         ngqQ==;
+        b=d5DaWhMENPeFAb8iR2cftjqnbSo6QTw4Opi8YXRl4X5U3SZPvOJ0crj0OYy400vHwt
+         i9RukbJpvYW+BEI0cUPl4ogBGqT5Bj0EyGHXpx0ZWgLtndw7wdP37SDt/MMb9uLTTioQ
+         lXBFi1dg0jWC+3ArITHkMYYTtHNCrd4aNA8/uTrNnsUCsWexqUVByAVhmtZ0oWcXFIp7
+         /+dc91TjHn4CekT1jZnAHTHtf9o6NlVUNEDMyuntITWN03z0HiLV9OGwNxhfK2ls7iJs
+         YJcp0AitfvtFV85KUIbUqYrZWI9rpqZvdC3xbwUXMQwcyyxK+Qq+W2i+hemfL1GF0NEV
+         7UNQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=q6tr4L5Awk6MF5nkShlTZsV/p9lj5pTzBeIQEchqGPY=;
+        fh=hvyrtWtYr45gg0LR9Lufu+jIpW29BHGNrpInu/17ang=;
+        b=kAKpvEOQ1GFywsNeKm0f+ISJ05tUULaETa3rzD/03AHWZw2rG2mEuMV7oc8nPuQj6+
+         YruTP4kmn2tSkzCEdNLOcjH3rur5v0cqkU3Bkujj9Po1scWiS6ERHtlmRfrIKDioKj+M
+         V8OcW7lJhLUZT0n/eAGB0VfsHNFCBFqUE7ArT7bamz1SeOXy3xeSRhIiFOaC0yLf44IH
+         EUtgLUKI/HHCeRaHA1GDN0NS3L04wcMpvbto/DkZvCWQOV+COXb/1q+loNOZJ9jCg1fq
+         V55frjhVWkIRDNzG+12cr7/zDPsPMKqH7RxpwQnh+fq/mEupkb0Jr9r8BwgJOvOZOBcQ
+         92qw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=ZlRUDnDt;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=Q2g3ndU3;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4ad64866c31si965818137.350.2024.11.15.13.04.39
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HM8oLDc5;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-aa20df56fd2sor250206266b.8.2024.11.16.10.15.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 15 Nov 2024 13:04:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 16 Nov 2024 10:15:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=ZlRUDnDt;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=Q2g3ndU3;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tC3UW-0008GF-Ev; Fri, 15 Nov 2024 16:04:33 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1tC3UT-0008Bp-9f; Fri, 15 Nov 2024 16:04:29 -0500
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1tC3UQ-00050b-JE; Fri, 15 Nov 2024 16:04:29 -0500
-Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4AFKMgul027018;
- Fri, 15 Nov 2024 21:03:50 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=
- corp-2023-11-20; bh=lxd7PbXuBa2CBiklUB8QMYyv9koAREe/ZrlBf4Z94fE=; b=
- ZlRUDnDt81sCMmTgEC30cvpQdjf4sX84zE0lh6vWbn8aZUSu+HB9AJfTz+ngrhfN
- 516sfztP6eQ6WkLe8skIRYayWC4bcsbH2Ub4UUWgMq6LPfMxxAyR6EDXkoBJp4RR
- fVI7QJ7emroNuHVbAd6u6tt7vOCUiFqsOTvSDFq0Aadk9FaFw0tAyB644sGr2xMb
- LpwDJukvw5xaIWOuhGBJAJAIvdMWI5966TsMbfVhlATuYeP9g2vDqwrp3gkJMTGu
- 14GgVV05Azgx8DGOV7x3BC9p4YwnolASXX1sMi2vGYWpZilQF5zd5/R6P0CWYz8z
- eXDupf005oQpahiarMQxpA==
-Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 42t0k5m3n9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 15 Nov 2024 21:03:49 +0000 (GMT)
-Received: from pps.filterd
- (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
- with ESMTP id 4AFKJ1O5022776; Fri, 15 Nov 2024 21:03:48 GMT
-Received: from nam11-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam11lp2172.outbound.protection.outlook.com [104.47.57.172])
- by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 42vuw361eb-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 15 Nov 2024 21:03:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=NJGUtQIEhjQ3Pies7KDV6iRPUWrGC4krBMJ6loXq6Q8QxjYABg1R59/CXjaE+zhV1rrCe0bnegURm+zpLfmqeJz5HHA7qo25jgIhR6VfZztgEpgM8YqdT2iIoTMieVLJnG5na6WNMuC+c547WOroo0T7dpNfsSslN72NrXqKbjsQdOYjB/lUax/PHp9LcQ+eVhX+ypUUudRn0jcDM3ao+ojJx5J2djzv5HEjamPqs9rXmFd31Y9QEa8fMU9J8u480KgAB6CMG85c0do6QUPUFrEWvIGImLwdHNFk/rE0jo+fF+VFh8Tbs05gVamGfgYeb1oJPKkMFsRBHo7a+txahQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=lxd7PbXuBa2CBiklUB8QMYyv9koAREe/ZrlBf4Z94fE=;
- b=xu5YfgLUDNgTopaSq10c+GX7OhjgxUtjcS7tcX453+T/famuKbadG7vBxhFPVrjQOrpbzZ4X5DbOS2YT+nUpWX4EUdykhgE+3Xm3fb2HmpG+t3pS0i7RkAo5h4NS6MUp0TU0cXxkax0pnjuwaZ8C9y7rUEV9PxMD/i9ZXR8QPRaNvK4xn4iJXsk/yMeH5F520kcGkF3Bulzt2BiMWEbwb9NDX2qqLMkOiEdq1uKR4z/YYxplnUJG8sXnAotDgOP7ITP5IuL1A6S3d826ruhcVblkSD1bUzW9wKDPDEiuMf/cUp5sMnmPSxci8HhXYqKu6D56wt//cOS8JFmPbR8zpw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+       dkim=pass header.i=@linaro.org header.s=google header.b=HM8oLDc5;
+       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=lxd7PbXuBa2CBiklUB8QMYyv9koAREe/ZrlBf4Z94fE=;
- b=Q2g3ndU3atsOT1nEVz66oYeIR73CDgeBQgfJo2QXfiFOI49WNU0FFdJyPZXB6iEJsn6gPE1+dqFjpVBT24pnOfotGmV/lU/enHm7kiRPdXEkGkDl8uJjByOO8s3u2Y018OBuxsb4TV5mJUTyd+ljIcNJbwiG97VxySsbVXhcO2Q=
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
- by PH0PR10MB5796.namprd10.prod.outlook.com (2603:10b6:510:da::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8158.18; Fri, 15 Nov
- 2024 21:03:39 +0000
-Received: from CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
- ([fe80::f238:6143:104c:da23%3]) with mapi id 15.20.8158.017; Fri, 15 Nov 2024
- 21:03:39 +0000
-Message-ID: <386af93d-5a61-4a90-9af0-1f33fa04b0bd@oracle.com>
-Date: Fri, 15 Nov 2024 22:03:34 +0100
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/7] accel/kvm: Report the loss of a large memory page
-To: David Hildenbrand <david@redhat.com>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
- imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
- wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
-References: <e2ac7ad0-aa26-4af2-8bb3-825cba4ffca0@redhat.com>
- <20241107102126.2183152-1-william.roche@oracle.com>
- <20241107102126.2183152-4-william.roche@oracle.com>
- <f5b43126-acbd-4e3f-8ec4-3a5c20957445@redhat.com>
- <08e03987-3c9a-49b2-adf5-fd40e7ede0c0@oracle.com>
- <e5d6bae8-a3bd-4225-b38f-65de6b1a2b54@redhat.com>
-Content-Language: en-US, fr
-From: William Roche <william.roche@oracle.com>
-In-Reply-To: <e5d6bae8-a3bd-4225-b38f-65de6b1a2b54@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: AM8P190CA0006.EURP190.PROD.OUTLOOK.COM
- (2603:10a6:20b:219::11) To CH3PR10MB7329.namprd10.prod.outlook.com
- (2603:10b6:610:12c::16)
+        d=linaro.org; s=google; t=1731780952; x=1732385752; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=q6tr4L5Awk6MF5nkShlTZsV/p9lj5pTzBeIQEchqGPY=;
+        b=HM8oLDc50RZ1t2gfpDbqFtb1PKcUcVXE/FDAsLcDyuWQjZGzfZtXfBfMOwpa0xyj9a
+         OI71x4+AU9JBmQlpaH5lYQfG3I8vSylMNe1ywkkA1TAeU//zl4C24e6gv7L2/F7RUZNO
+         sAydauIwpBIGPYaOQ4MfM7fzczN6NP3S3Gqzrt/+eo+s2nyH0K6kdxYMTNbKvF80hW0h
+         KEE1eMGBdsxRkXoF0o2XoSU0aSwnit2W0tJNXefSHwGgWzPdpq3zrK8E5bNQrMp0ZX8Y
+         O8Fp9nAVXz/2gi/gcES3+hrWhXMZR4ITt9sCwXyRTVzXnP/U+KNws4xA7jffoTuhhnoy
+         vBgQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731780952; x=1732385752;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=q6tr4L5Awk6MF5nkShlTZsV/p9lj5pTzBeIQEchqGPY=;
+        b=sC3q+DTp2eG+is8MgpR8+BywnLrih/4rL9k+h0eu+pmbwzNyUsSJZzB8Ab/NOq9zbO
+         9C+mAwV1MjMI4QLOEGvYhJabl6upJOMBdIxXT42hkXXfsflFWeoPyELvRU5D1JPVYEgP
+         abTl0HC6Uzv0VHZ+IbOSUi03cqE51BKy5qwRDDcKl41umIGoHYQheYS4QnDBmg8dDJ7i
+         xU2OLHQ5MO7ufCQY4/abx0GBxLwauEPKjlZS53MXUQYGGlGZDzG1wiqm5AdRLIiEnKGu
+         F0S+UXrxiNzEynJvNpR763RFHCMYTPlRYQTT9ylb8Z2YpnbkbGQgFDETX8iKaa2Gx0tp
+         oVIA==
+X-Forwarded-Encrypted: i=1; AJvYcCUJmvY3Ud9dRZ94pyCGdkNCQp1tziBe5FEoh2l9effwbAqJLMuJ4i4BqNJrI3w0LfBJgvBTxVLF+tVLUQ==@linaro.org
+X-Gm-Message-State: AOJu0YwzCuwEGuA2w0RUKUPvA0/dmUubtOVAN/2MPQMDZsrLg8z/4n+N
+	3oS30Lq3RamTpzcRyhnQOUfiPxR5Kit7ejxPvKk8I9fD2fWaa4yQYm7PIzeH263Brw==
+X-Google-Smtp-Source: AGHT+IFQHfHmFdH8kcxV7YarABAGbtbo1ZDIj3wmKqiWDqSgoUYUTwslymTqBxEUcp7Vj8TlZ3eouw==
+X-Received: by 2002:a17:907:a4b:b0:aa1:e04f:e37f with SMTP id a640c23a62f3a-aa4833e9adamr558597966b.6.1731780952164;
+        Sat, 16 Nov 2024 10:15:52 -0800 (PST)
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from localhost.localdomain (adsl-27.37.6.161.tellas.gr. [37.6.161.27])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20df508f8sm337078666b.63.2024.11.16.10.15.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 16 Nov 2024 10:15:51 -0800 (PST)
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	qemu-rust@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Gustavo Romero <gustavo.romero@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v1] rust/pl011: Fix DeviceID reads
+Date: Sat, 16 Nov 2024 20:15:47 +0200
+Message-ID: <20241116181549.3430225-1-manos.pitsidianakis@linaro.org>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|PH0PR10MB5796:EE_
-X-MS-Office365-Filtering-Correlation-Id: 78bb8d40-5531-403f-4172-08dd05b8fa46
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?eFVnUFZ3dGE5WWlTQWZXLytWUkRjZlpJVGJacmY4d3VVKzFrOW9RSlc2U2c4?=
- =?utf-8?B?K084bkNlcWlCeFlRTytNMzdydEtoc2xsU00rTFM3eEl2TzNmVUZQQ1cvYjcy?=
- =?utf-8?B?MW1LcmpCL0ZjeXpwYzZ0bjRGN29uT3hCaWF2bFJKaC9QcDIyYU5lOTEvb3JH?=
- =?utf-8?B?ZVFQUURubFpMTHpDK29NSEQ0Z1dRM3NEL2FnWmZ5cXBuKzhtTWFuNXNMNTcw?=
- =?utf-8?B?Vm9SeEpwMFRsOVVldEw3dDRXeDdvV3o0ZWJKUVBtMWtEMldvV0Ewa0NFcjJ0?=
- =?utf-8?B?NUdpeGRXd3VDaUNLSDJMK3VGSU5XdXk5N0NrU0JYMzhEcUtaQnNUUkJRYm44?=
- =?utf-8?B?a3R0Q213MGFBL0U0OTRLdlNuU1VCR2lYYVdIK0dlTVFSOW0yR0g0UXRzOFox?=
- =?utf-8?B?SUtQcnV5VUhRUnNUbXIwbVBDb0tyeHQxYXpMdFM2cHExaVdUR1FUbHJGeVZV?=
- =?utf-8?B?N3VqWHpQUmN6OWlySlk3Wk9oYktZR0ZJRlRIeWhkaEFpbmwyWjFmeE1nK29Z?=
- =?utf-8?B?bGFhUUxaQ09qWkJHR1VoeWVhZzloUCtMbG9USEpLMTZaMFNOaTV1TnltaUhz?=
- =?utf-8?B?L2lQZ3ZKMHpxU2huMGFaUGdwZlhTcS9OaHpFZnZ6Nk5qTGFQY3cwN3ZMeEFS?=
- =?utf-8?B?MU9sMWtFNEdZclJtd3BEckUrQzJNclN5Tk1XTVlkK293bmczWEhoRWdWZFFo?=
- =?utf-8?B?M1NyZzZqLzVEUXFPWTlwVnhHeVdyN1dQeE5JZmRpaWsvSFZlVlorZ1YwSVhO?=
- =?utf-8?B?RnF6dE15UFE5L2Z5KzFtMVplNnBySjgyNktqaHJldzJTZW52RGlCY3ZaWDJz?=
- =?utf-8?B?UXIyRHQ2NGZNUzd1TmlsK3VLak9kU2hkb1lmd1FLRU5wR2Y2d3crZjNHcVMy?=
- =?utf-8?B?a3VWS25TQU1vOXJ6UHRSN2hHYk5KYUFzcGt5dXVSSXZTZ3pSaHN3RUV5QllW?=
- =?utf-8?B?NDVLamFoMjJtM3VMR2FwVnVUZWdNMGdXdHhLL2tLQ1BtYitFaTR6T2hWWW9H?=
- =?utf-8?B?OUU3UFlqb2UyZys1bzJmNVJYUG1TSEZtV1FwR1ovODlueEV1K09tQ2JIOTNq?=
- =?utf-8?B?Z3ZNc0wxcEpkbGNOTzZjNkJ3RXhpOXZJQU1lVi9CV3VoOW5aMlI5TlMrV21y?=
- =?utf-8?B?V0pCd0FtMmNJcHd6bGNCTllEODEva1ZYeUUyVTN2azhNcXVyZGhpdGZ5Qksx?=
- =?utf-8?B?SjBmUFpqVEhORVd2eURJMkw4WTZ3ZEk2bDhUQzNGSVZqQWZ1dW9tenVUOWFS?=
- =?utf-8?B?aUxpWDNLa0dEVFBwMTI1QVVFaDNLVWErQmFENmxrY2J5cFhZcGtkRk93Sjh0?=
- =?utf-8?B?YWNib1puOExHYzl2Z2tDQXI2T1hHdThpMWxsQmJPMGM4M3UyYW1aVkQzSUFo?=
- =?utf-8?B?T1VFMVlrSDV0N3ZLTVNDQlBRbDlrNnRkelBoV29EbzlCTFFXRDE1Sy9ET1N3?=
- =?utf-8?B?Z25Nd1E4OE5OMldXNEhJY3crNlo2THVvU1AyblhVbzRkSVIxTmRwbk9laE5K?=
- =?utf-8?B?STNlRjVuc1QrTDVsUHJ1Rmt1bUJrdld3ZHg2UU9FaVRkZEVWcmpMNjBFakZw?=
- =?utf-8?B?dWpyUDdWV05FTDludEE4S3pncHFiT2tDWDZKaFNLUnpYNEN5Qm0vaWlMNm5r?=
- =?utf-8?B?SzBZaEVKOElUb3R1ZllBMlBWUEVlcFEycTdURjZhZ1h3V2hmZVJjTjBDUkRW?=
- =?utf-8?Q?JN6mdLX5EjESy4OUrWYs?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR10MB7329.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(1800799024)(366016); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NEpQTStBazI0S2dUeFhLM3hRWkZ2VllKeDlLcG1WY1VQTVc5dDhlOXBDckxD?=
- =?utf-8?B?em81SjlWQWR4NlpOdUZRMGZCOTM3RlFrd0ZaZVk0V0lGa1dZV3lTZzF5MWhv?=
- =?utf-8?B?SHg2K3djcnZhNWNWbGpqcmZwREpFT05jQ20vQ2t0WEcwczZqRVZkOUR1NVU3?=
- =?utf-8?B?R2gwMWxRWENNS0RCeXlMVHR4R0pWYXpyMW5OdWhHTVRzbi9sMUN3MmdxcUVT?=
- =?utf-8?B?VXRyMTQzSVJSeVE1Qjd4RkxvZksvaGoycXdBNHNKTmxSMkhVay9ZeGZSaVFw?=
- =?utf-8?B?TXdBYlVOaDlDWDFIUlNQYmNjRXJRcisrUU4wcFFpSS9kWFlqdkNMOUQ0VTBt?=
- =?utf-8?B?TWJQUGdBbVNnZ3pQVjE2eGRLU09JWE1mS3ZjMXdlZm5nemNmR3ZmZUc4TWJW?=
- =?utf-8?B?amZZR1Znak5SVVB1eGxtYWJWZ2cvVHd6elhwMXJSV3JOMSthWEZBSXhyVlk4?=
- =?utf-8?B?cFhtMzE4SzRtNUVtSE8vYXV3SENjRmMvYTIyN25Bb0ZuZkIrdTBkdlk4ekcz?=
- =?utf-8?B?a0xNTnk4YzdxVUtzbmoybVBBajlEdFc0Y0s4dFdjdURVVEh2WkpmUUhCb2ln?=
- =?utf-8?B?MldTNk5zRFlKMkk5ZUhGRHV2VFJuWFMvaExwZWpJL2JlMEdzR1kxTk5Jd0FK?=
- =?utf-8?B?Zy9PaTVtUXJQcmVnY0VLM3o5TVMvSXAxRGtpUzZHTXE0R2x6RXgxMTFCWFdI?=
- =?utf-8?B?Smowb0RYaDhkaElHYWJsdS8rdXJZNk9jaDdORVdhakpuMHg5b01vNS9PenNZ?=
- =?utf-8?B?MmlCaVYrOWlENG44eGhjZGdVRzhTRGsyc2RINURwMVVlQ0h1MGdRSmVwSUVN?=
- =?utf-8?B?ODEwSmEzYWtUeXRiUExSSDRYTlY4VENJRy83NHBiWVJ6NWUxemFxUjROU2dU?=
- =?utf-8?B?V0xzcmxtM3B4MXh6elBEZVo0UVZHWFIwV0E4U1REK3JNVWk5aisxNmV2dm1y?=
- =?utf-8?B?UlhZaUZ1NHFqREx5SGtVdGxnOFVXZHpJUEMyZFlSZjYxbmFCSFpqRDMwNDF4?=
- =?utf-8?B?L0hnQkVldFVRQ2x3TEJSdWtOS1lEV05xa2ljV3A4VjV5NzR6R0xBRnJxRlNu?=
- =?utf-8?B?M3ZwSXV1Yko0dTZSZUNOZHQvVytCTXRWaXJ2UzdBUmVTS0h1eGhpRlJCd2h6?=
- =?utf-8?B?OStYQnlnMFRZb0JrR0x6QS90bjZMRFBFb0VZRUhTVnZBdnVlS3NUK0xUU0VS?=
- =?utf-8?B?dlpHaC9kY1pjWUNxcVFpYzQreXNLVlJzR0xjV2Y3Z1R6Zk9aei9sQjBFV3dP?=
- =?utf-8?B?b1lpOGxlYmR0UDdNaUY3OXdHeXJ6QkpHeWcvSlpNbTFPUTNnWjJydWNmS2Ru?=
- =?utf-8?B?RXBtdUlVU2tReUhsbVZNelhmeGxIK05kWldRV2hyaUUyUThkaDk4WFVOM2VN?=
- =?utf-8?B?Qmh1TjdGanhNVTgwM0VEZmYrYUJsSCs3cW9ocmpMdzVhZWxxbDgwbXk4SG9u?=
- =?utf-8?B?dWJZbTZmUEgxMXdvd3owQWdSSDdVbHY0cVJKdmx2RGV6cWEzSDN6dWt0QTAw?=
- =?utf-8?B?azg0b1JTVjk5NUJieVZPeS9hU3RvNTl2bVpJYVVBVnI4Kzc2NXFVSlM4UHhC?=
- =?utf-8?B?SWJDaWNxWUNOaWdteTlRU1hvMkdvTmpkWnVzMGNCWnRvK0xUWnV5Sm16Q08x?=
- =?utf-8?B?cFYwSjltSHcydTJ2Qms2NW53MUROVlJ5N0pjVEh4eWlvZXdOZHNEMnRhSFFR?=
- =?utf-8?B?MUdqU3JXYVhBOVcvblNFNnA2VkhvVnMvNkxGdytsNkl1K3dnNkl5VXM1Vit4?=
- =?utf-8?B?VDNDQUpaRG90R1FGNWV5YjdWNjkrWk84NkFkRm5xTjVGWGdWcTV3YkZ4aVpH?=
- =?utf-8?B?ajFzYUlvM1U0c09CMjd5VWsvK2IzbmhCOHErVVdJZHZxNzJ5Z0F1Q0tVK3dF?=
- =?utf-8?B?dDJWSXFiYWthSTFzUlVUcHdlTHhET25OV2NvbVFLUS9KanlkdkxrTWFOL0Qw?=
- =?utf-8?B?cWVWY05JVE9LNjJGQ1REcERDQ0c1SzFhdXBXeDh4VlRrMHhLdmVLOXZuMjky?=
- =?utf-8?B?M09wZys5MFF6NE1qeGVVVGMzTnd5eVV2elZjempHZEp1eStHL3hEL05JM2Nm?=
- =?utf-8?B?b0l6OFFKRTZzY21zYlNrSC96TWxvNHhSSEtJSVNBTUZiTzBMNlhmQnNUUTJH?=
- =?utf-8?B?VXlJZkk1RElBU2k2SUwvMnR1NzJnS1BjSkV5TUZObm80NFBJdXJnaUtiMmxQ?=
- =?utf-8?B?UWc9PQ==?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: MVHn8kOcKkvvlYmSQ2tvAU/BnoIGdZRtFQ3gefpoEsfLZupOvlTMqLLLUf2qMeUFGp/OdE0HM/L6gMtVlYeEhYfDf0ZPWbMCdeSW5jDmxTDUjluTMmINq5Bf2FUq3I0Xcm70uDN0YzN20ola3KlyddVyaVCg+jBv4tlfz+qZxk/x36j2jAZeNE6G3OzqSzjo/dnxcfY0+H2vWjJMcPWCOWNL9I8YdtcszuEI/jft/jsXj+78zBO0qysIHdH6e4KYWSWbpHv+xOMv4ArsC+nJ8RROiE/zDYaneiTKFpnocqmpn+QH8jdQ4+WPzS/vaQhBaqJMOjZG3E7W0SFzK/KdrcChPHqFcIZ+RsvphQP4XIxCHV00JlnmT3HQi2TpYGK7iFzhtGlZVH7GWSnZeos3X88+ZfDRjdJUL2JDCCdZ24bA6Oc19zd1LgC/xwWFDLDtm3h3/xwR5qRM2DaRG3CpYBM13PnogP9qcFBqApUHdvQaj20z6/LvFWI9Isv3fIsVgkRkKLvYF75MlWaDkzkG4gQjxJwtj6AqsJ4o1vw5MhmKbp5rUqPfCDRNdxqnBbeYR1/qrsQNeaCdrekNOe/NandWN4+jsXN7JpV2XutLAl8=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 78bb8d40-5531-403f-4172-08dd05b8fa46
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Nov 2024 21:03:39.0368 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: wrMrHBlFbkMtunv6U9l/1mONBuppWibZThTAUPAu8tj7WkULVAwABPi1Uy8vejuunVM20T0nITITt5QBoEDKblhQPYRl5cskJ16nnTQIgMg=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB5796
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.62.30
- definitions=2024-11-15_08,2024-11-14_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
- mlxscore=0 spamscore=0
- adultscore=0 phishscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2409260000
- definitions=main-2411150177
-X-Proofpoint-ORIG-GUID: dOPcH0dCQciLHuyALVrUWOC263LgTYFy
-X-Proofpoint-GUID: dOPcH0dCQciLHuyALVrUWOC263LgTYFy
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=william.roche@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZMvROOviz26Y
+Content-Type: text/plain; charset=UTF8
+Content-Transfer-Encoding: 8bit
+X-TUID: zuQw/TJVp+wJ
 
-Thanks for the feedback on the patches, I'll send a new version in the 
-coming week.
+DeviceId, which maps the peripheral and PCell registers of a PL011
+device, was not treating each register value as a 32 bit value.
 
-But I just wanted to answer now the questions you asked on this specific 
-one as they are related to the importance of fixing the large page 
-failures handling.
+Change DeviceId enum to return register values via constified getter
+functions instead of leveraging the std::ops::Index<_> trait.
 
-On 11/12/24 23:22, David Hildenbrand wrote:
-> On 12.11.24 19:17, William Roche wrote:
->> On 11/12/24 12:13, David Hildenbrand wrote:
->>> On 07.11.24 11:21, “William Roche wrote:
->>>> From: William Roche <william.roche@oracle.com>
->>>>
->>>> When an entire large page is impacted by an error (hugetlbfs case),
->>>> report better the size and location of this large memory hole, so
->>>> give a warning message when this page is first hit:
->>>> Memory error: Loosing a large page (size: X) at QEMU addr Y and GUEST
->>>> addr Z
->>>>
->>>
->>> Hm, I wonder if we really want to special-case hugetlb here.
->>>
->>> Why not make the warning independent of the underlying page size?
->>
->> We already have a warning provided by Qemu (in 
->> kvm_arch_on_sigbus_vcpu()):
->>
->> Guest MCE Memory Error at QEMU addr Y and GUEST addr Z of type
->> BUS_MCEERR_AR/_AO injected
->>
->> The one I suggest is an additional message provided before the above
->> message.
->>
->> Here is an example:
->> qemu-system-x86_64: warning: Memory error: Loosing a large page (size:
->> 2097152) at QEMU addr 0x7fdd7d400000 and GUEST addr 0x11600000
->> qemu-system-x86_64: warning: Guest MCE Memory Error at QEMU addr
->> 0x7fdd7d400000 and GUEST addr 0x11600000 of type BUS_MCEERR_AO injected
->>
-> 
-> Hm, I think we should definitely be including the size in the existing 
-> one. That code was written without huge pages in mind.
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+---
+ rust/hw/char/pl011/src/device.rs | 79 +++++++++++++++++++++++++-------
+ rust/hw/char/pl011/src/lib.rs    | 22 ++++++++-
+ 2 files changed, 83 insertions(+), 18 deletions(-)
 
-Yes we can do that, and get the page size at this level to pass as a 
-'page_sise' argument to kvm_hwpoison_page_add().
+diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/device.rs
+index 2a85960b81..98dd97dbfd 100644
+--- a/rust/hw/char/pl011/src/device.rs
++++ b/rust/hw/char/pl011/src/device.rs
+@@ -5,7 +5,7 @@
+ use core::ptr::{addr_of, addr_of_mut, NonNull};
+ use std::{
+     ffi::CStr,
+-    os::raw::{c_int, c_uchar, c_uint, c_void},
++    os::raw::{c_int, c_uint, c_void},
+ };
+ 
+ use qemu_api::{
+@@ -32,6 +32,7 @@
+ /// QEMU sourced constant.
+ pub const PL011_FIFO_DEPTH: usize = 16_usize;
+ 
++/// State enum that represents the values of the peripheral and PCell registers of a PL011 device.
+ #[derive(Clone, Copy, Debug)]
+ enum DeviceId {
+     #[allow(dead_code)]
+@@ -39,20 +40,55 @@ enum DeviceId {
+     Luminary,
+ }
+ 
+-impl std::ops::Index<hwaddr> for DeviceId {
+-    type Output = c_uchar;
+-
+-    fn index(&self, idx: hwaddr) -> &Self::Output {
+-        match self {
+-            Self::Arm => &Self::PL011_ID_ARM[idx as usize],
+-            Self::Luminary => &Self::PL011_ID_LUMINARY[idx as usize],
+-        }
+-    }
+-}
+-
+ impl DeviceId {
+-    const PL011_ID_ARM: [c_uchar; 8] = [0x11, 0x10, 0x14, 0x00, 0x0d, 0xf0, 0x05, 0xb1];
+-    const PL011_ID_LUMINARY: [c_uchar; 8] = [0x11, 0x00, 0x18, 0x01, 0x0d, 0xf0, 0x05, 0xb1];
++    /// Value of `UARTPeriphID0` register, which contains the `PartNumber0` value.
++    const fn uart_periph_id0(self) -> u64 {
++        0x11
++    }
++
++    /// Value of `UARTPeriphID1` register, which contains the `Designer0` and `PartNumber1` values.
++    const fn uart_periph_id1(self) -> u64 {
++        (match self {
++            Self::Arm => 0x10,
++            Self::Luminary => 0x00,
++        }) as u64
++    }
++
++    /// Value of `UARTPeriphID2` register, which contains the `Revision` and `Designer1` values.
++    const fn uart_periph_id2(self) -> u64 {
++        (match self {
++            Self::Arm => 0x14,
++            Self::Luminary => 0x18,
++        }) as u64
++    }
++
++    /// Value of `UARTPeriphID3` register, which contains the `Configuration` value.
++    const fn uart_periph_id3(self) -> u64 {
++        (match self {
++            Self::Arm => 0x0,
++            Self::Luminary => 0x1,
++        }) as u64
++    }
++
++    /// Value of `UARTPCellID0` register.
++    const fn uart_pcell_id0(self) -> u64 {
++        0x0d
++    }
++
++    /// Value of `UARTPCellID1` register.
++    const fn uart_pcell_id1(self) -> u64 {
++        0xf0
++    }
++
++    /// Value of `UARTPCellID2` register.
++    const fn uart_pcell_id2(self) -> u64 {
++        0x05
++    }
++
++    /// Value of `UARTPCellID3` register.
++    const fn uart_pcell_id3(self) -> u64 {
++        0xb1
++    }
+ }
+ 
+ #[repr(C)]
+@@ -182,9 +218,14 @@ pub fn read(&mut self, offset: hwaddr, _size: c_uint) -> std::ops::ControlFlow<u
+         use RegisterOffset::*;
+ 
+         std::ops::ControlFlow::Break(match RegisterOffset::try_from(offset) {
+-            Err(v) if (0x3f8..0x400).contains(&v) => {
+-                u64::from(self.device_id[(offset - 0xfe0) >> 2])
+-            }
++            Ok(PeriphID0) => self.device_id.uart_periph_id0(),
++            Ok(PeriphID1) => self.device_id.uart_periph_id1(),
++            Ok(PeriphID2) => self.device_id.uart_periph_id2(),
++            Ok(PeriphID3) => self.device_id.uart_periph_id3(),
++            Ok(PCellID0) => self.device_id.uart_pcell_id0(),
++            Ok(PCellID1) => self.device_id.uart_pcell_id1(),
++            Ok(PCellID2) => self.device_id.uart_pcell_id2(),
++            Ok(PCellID3) => self.device_id.uart_pcell_id3(),
+             Err(_) => {
+                 // qemu_log_mask(LOG_GUEST_ERROR, "pl011_read: Bad offset 0x%x\n", (int)offset);
+                 0
+@@ -236,6 +277,10 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
+         use RegisterOffset::*;
+         let value: u32 = value as u32;
+         match RegisterOffset::try_from(offset) {
++            Ok(PeriphID0) | Ok(PeriphID1) | Ok(PeriphID2) | Ok(PeriphID3) | Ok(PCellID0)
++            | Ok(PCellID1) | Ok(PCellID2) | Ok(PCellID3) => {
++                // Ignore writes to read-only registers.
++            }
+             Err(_bad_offset) => {
+                 eprintln!("write bad offset {offset} value {value}");
+             }
+diff --git a/rust/hw/char/pl011/src/lib.rs b/rust/hw/char/pl011/src/lib.rs
+index cd0a49acb9..1f305aa13f 100644
+--- a/rust/hw/char/pl011/src/lib.rs
++++ b/rust/hw/char/pl011/src/lib.rs
+@@ -111,6 +111,22 @@ pub enum RegisterOffset {
+     /// DMA control Register
+     #[doc(alias = "UARTDMACR")]
+     DMACR = 0x048,
++    #[doc(alias = "UARTPeriphID0")]
++    PeriphID0 = 0xFE0,
++    #[doc(alias = "UARTPeriphID1")]
++    PeriphID1 = 0xFE4,
++    #[doc(alias = "UARTPeriphID2")]
++    PeriphID2 = 0xFE8,
++    #[doc(alias = "UARTPeriphID3")]
++    PeriphID3 = 0xFEC,
++    #[doc(alias = "UARTPCellID0")]
++    PCellID0 = 0xFF0,
++    #[doc(alias = "UARTPCellID1")]
++    PCellID1 = 0xFF4,
++    #[doc(alias = "UARTPCellID2")]
++    PCellID2 = 0xFF8,
++    #[doc(alias = "UARTPCellID3")]
++    PCellID3 = 0xFFC,
+     ///// Reserved, offsets `0x04C` to `0x07C`.
+     //Reserved = 0x04C,
+ }
+@@ -137,7 +153,11 @@ const fn _assert_exhaustive(val: RegisterOffset) {
+                 }
+             }
+         }
+-        case! { DR, RSR, FR, FBRD, ILPR, IBRD, LCR_H, CR, FLS, IMSC, RIS, MIS, ICR, DMACR }
++        case! {
++            DR, RSR, FR, FBRD, ILPR, IBRD, LCR_H, CR, FLS, IMSC, RIS, MIS, ICR, DMACR,
++            PeriphID0, PeriphID1, PeriphID2, PeriphID3,
++            PCellID0, PCellID1, PCellID2, PCellID3,
++        }
+     }
+ }
+ 
 
-It would make the message longer as we will have the extra information 
-about the large page on all messages when an error impacts a large page.
-We could change the messages only when we are dealing with a large page, 
-so that the standard (4k) case isn't modified.
-
-
-> 
-> We should similarly warn in the arm implementation (where I don't see a 
-> similar message yet).
-
-Ok, I'll also add a message for the ARM platform.
-
->>
->> According to me, this large page case additional message will help to
->> better understand the probable sudden proliferation of memory errors
->> that can be reported by Qemu on the impacted range.
->> Not only will the machine administrator identify better that a single
->> memory error had this large impact, it can also help us to better
->> measure the impact of fixing the large page memory error support in the
->> field (in the future).
-> 
-> What about extending the existing one to something like
-> 
-> warning: Guest MCE Memory Error at QEMU addr $ADDR and GUEST $PADDR of 
-> type BUS_MCEERR_AO and size $SIZE (large page) injected
-> 
-> 
-> With the "large page" hint you can highlight that this is special.
-
-Right, we can do it that way. It also gives the impression that we 
-somehow inject errors on a large range of the memory. Which is not the 
-case. I'll send a proposal with a different formulation, so that you can 
-choose.
-
-
-
-> On a related note ...I think we have a problem. Assume we got a SIGBUS 
-> on a huge page (e.g., somewhere in a 1 GiB page).
-> 
-> We will call kvm_mce_inject(cpu, paddr, code) / 
-> acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)
-> 
-> But where is the size information? :// Won't the VM simply assume that 
-> there was a MCE on a single 4k page starting at paddr?
-
-This is absolutely right !
-It's exactly what happens: The VM kernel received the information and 
-considers that only the impacted page has to be poisoned.
-
-That's also the reason why Qemu repeats the error injections every time 
-the poisoned large page is accessed (for all other touched 4k pages 
-located on this "memory hole").
-
-> 
-> I'm not sure if we can inject ranges, or if we would have to issue one 
-> MCE per page ... hm, what's your take on this?
-
-I don't know of any size information about a memory error reported by 
-the hardware. The kernel doesn't seem to expect any such information.
-It explains why there is no impact/blast size information provided when 
-an error is relayed to the VM.
-
-We could take the "memory hole" size into account in Qemu, but repeating 
-error injections is not going to help a lot either: We'd need to give 
-the VM some time to deal with an error injection before producing a new 
-error for the next page etc... in the case (x86 only) where an 
-asynchronous error is relayed with BUS_MCEERR_AO, we would also have to 
-repeat the error for all the 4k pages located on the lost large page too.
-
-We can see that the Linux kernel has some mechanisms to deal with a 
-seldom 4k page loss, but a larger blast is very likely to crash the VM 
-(which is fine). And as a significant part of the memory is no longer 
-accessible, dealing with the error itself can be impaired and we 
-increase the risk of loosing data, even though most of the memory on the 
-large page could still be used.
-
-Now if we can recover the 'still valid' memory of the impacted large 
-page, we can significantly reduce this blast and give a much better 
-chance to the VM to survive the incident or crash more gracefully.
-
-I've looked at the project you indicated me, which is not ready to be 
-adopted:
-https://lore.kernel.org/linux-mm/20240924043924.3562257-2-jiaqiyan@google.com/T/
-
-But we see that, this large page enhancement is needed, sometimes just 
-to give a chance to the VM to survive a little longer before being 
-terminated or moved.
-Injecting multiple MCEs or ACPI error records doesn't help, according to me.
-
-William.
-
+base-commit: 43f2def68476697deb0d119cbae51b20019c6c86
+-- 
+γαῖα πυρί μιχθήτω

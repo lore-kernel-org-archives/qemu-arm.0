@@ -1,188 +1,364 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp1786241njc;
-        Sat, 16 Nov 2024 13:49:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVloW40cCAPkizPwsCuYDl3du7R01zkt6MMBAlOGreUPnrqb+iJxaAlfHZtZGqukvxP7+z2sAJQQSWBFg==@linaro.org
-X-Received: by 2002:a17:907:3e10:b0:a99:368d:dad3 with SMTP id a640c23a62f3a-aa483480c6cmr646400766b.30.1731793769534;
-        Sat, 16 Nov 2024 13:49:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731793769; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp1794286njc;
+        Sat, 16 Nov 2024 14:18:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWv+01ALZLXsIU6yPpwHTCEeVtUEZCYl+YNi4yYMkEuLG7QJnfKhCcIQN50WzzSaiA07VhRgrrU+fOWGA==@linaro.org
+X-Received: by 2002:a05:600c:4685:b0:431:47e7:9f45 with SMTP id 5b1f17b1804b1-432d9762455mr106097425e9.11.1731795481328;
+        Sat, 16 Nov 2024 14:18:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731795481; cv=none;
         d=google.com; s=arc-20240605;
-        b=FT4BBTU9gIG64KFFHXe1RYIA82K+LG8c4QINvpyHKm5JahO2ahSf9fyoz4PigXDGpk
-         AlG94DojFvduwiNYayJ7v5i2wZlg86EAdW0g38q9fCaSvXv7X5sjp0VTqx7GPOlqhJDy
-         1YAjjyTT1oLFfFEeWvj+Nz++qFGQo/KGxxxXlMZw2zctSfKddrpP7V1KeH/xyRvlHW/l
-         1aHDUMQyUbKYZ57UDEI6JuCMqT+lNhgapZuxknOJO5UIGmYOP/cumJdn8TAS+FZBYOLq
-         VRzHMFJBvRhxcuvELGFNrU8OgmKy7g5lbUi1UaWYGFO3ZmP9Irx+Z0fgZUTswN52+KTH
-         FuRA==
+        b=HDvfTbVSZ7DyQlE4c86g/hBqn8ZvCd/2b2fV7bCaOkrKNhsKpRb/TSyvbCv4fyIxc0
+         yahDVVv27L3wPrQX0w+B7JQHGm6le8+qAR6+LvyCp/tPBH/UWmBKo8u5K/oYKwAI77rp
+         JajSaaZTjeVWRptEqY9ottgs/DTTNdevMgwsyoFU6d87Ezi9843L0r4cPnlh4FtR3B/h
+         EnpGauUv8Vzzs3Yb5CReJy67GhHnDpV9EaUZu+k8XqCk+jqfGGlZxhIKl8rA+2B9nd6f
+         27eSD6BFpudFCqOR7LL2ozi4dpdcrIvPXoLhr20mKd/mIUJKgNxa8XWyMh+Qu1cTsvCp
+         btow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=1F9zdRoKsUu5zPMH8J+dMjv84QztGXv+9RWvY9Lye2s=;
-        fh=ZyjUWUBg3iW8mCuRWouDPxluX9H1O81bUJSvgxmfMes=;
-        b=iDtHyzDQyfPiHCifbUdz++NfkVm/KGsk91tAMLACZ/A/Nu3pidfjTxr+uL4BVAmwQZ
-         MPy0+Xu74/9+doB63U/hb4X7EPGdtCdOnUEquQYeE2b/BNbOE4/3RmbQ8utpuoHk+CWF
-         kwfNCcd5E2yuB44JY+Tx5qEo/xANAzpAbprztUEunG5ipogNmKaJEj/X2Vkw0lJodxZb
-         UiePQj/1xNvUvovsD5jfxQLjOs8P1sYgeAQJ5eClYety0E+EEddfKGhyHrDgVXaB0XbZ
-         UXubCJ4OF5GKb+Od2GLyqTJcWYVxZPYUDS3U2HrvKkvFQQ1OCoKJdku8V3cIp5FDzqoC
-         Q/Ug==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=90Z+uTvpepQAFzVHsVOwH1Xe3Nr8l4nE4g3HPoVibmQ=;
+        fh=lXbN2OAkf9ZPCxIEcZHfFtkvQFEUCCNJtOnBHlI6SII=;
+        b=cnsFsHODxzhzd223GjvzDsBjzdo+wyvwmhlmxkNcdwXGrpv51GpICrxQKGxvWTctQI
+         LjVEu/U9bml7+jGMxWkirpXNWREhjlGSyQb6zN2MGTi0padzjA817/HUvoDChu2lx8jR
+         iQ8EiBhYWwbuzebSOvFReRKrV1r0owPutePUXCMU+hHcW82m7dWOG1AkvZqHNemsgRTu
+         TonJZQwVcC+D4/6p1nvBhnyeRBVDytiVDIKh6fgCATbJ3MK+wpl/nhVGMOxp2Q8y/pSS
+         UR/qyMDtTryqOB9uNslFzUghIwXI0AEw7H6f8wpsCijuno+WZ0MfCTNpOdJCQ5eh06vy
+         8n3A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bc6COsoh;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Y/EWG8bh";
        spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <manos.pitsidianakis@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-aa20df263edsor231550466b.2.2024.11.16.13.49.29
+        by mx.google.com with SMTPS id 5b1f17b1804b1-432dfd4bfc1sor11611555e9.0.2024.11.16.14.18.01
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 16 Nov 2024 13:49:29 -0800 (PST)
+        Sat, 16 Nov 2024 14:18:01 -0800 (PST)
 Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Bc6COsoh;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Y/EWG8bh";
        spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731793769; x=1732398569; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=1F9zdRoKsUu5zPMH8J+dMjv84QztGXv+9RWvY9Lye2s=;
-        b=Bc6COsohgvll+kbBTofR2RM7mmg5exiCNxTMjgAUFv5EFi/SqycRf9J+ToVX9eTA9y
-         KZEfAEEKkpcAqQ6jCqOTMRO69AHFa8qMmm8YpFYRL6J9dMJW9zzO9B5y0elSi49WczWZ
-         dDaboqzXTqZb1dSXMmqQfyv/hEDGLFYF3EDrWMSojfs69N6sparz3JXcrWKQS3oZHSOa
-         x1ixKTSsAbPFnIejc3j1LDQLPE/2x3nXa6HcbD7DgSHoiuSzFBXvqLUdn5uKNbIY2HWb
-         2fdU5PkzL2zy7+NrFN/OZEVOFKy7oagXgB1WYqvPR3WXfppMvEn7WvZsYLPQxrKiR4nQ
-         nqNQ==
+        d=linaro.org; s=google; t=1731795481; x=1732400281; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=90Z+uTvpepQAFzVHsVOwH1Xe3Nr8l4nE4g3HPoVibmQ=;
+        b=Y/EWG8bhxp4yUdYn5JueA6n7yKcqTl7Crg9LICw7a3GeszCgptXj4lGUYFHh2CirfL
+         SrxTrN3W1gKxoBv9c14+5CBm8wUvHVnjSUcOFjVn/umpql5APwdThkSTxqHAT2lJXZQz
+         i/GXXb+fWvNe5UyXRa8olSMfndU48F37WW/Ev/XYb1P1XD5O8gmJYfdfYYjtxIFTE3nB
+         Ml3TnprR8wR+hiv01fNcW16NnDdhzQZJBChcSMk406Gnov2uEwKcFPiTG3PvScBeEonX
+         Jh17Ek7DeTfPb4JGKse7+QV5oGZLP3fVRrIeDjI/i6sEtCM+06Ke0FrW2Ei4Ht2+sbnM
+         yk1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731793769; x=1732398569;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=1F9zdRoKsUu5zPMH8J+dMjv84QztGXv+9RWvY9Lye2s=;
-        b=ftEv/yafQZx1GiKXIdMdCA+14CokXSd5BwfLTspxXz93ipTgEaep5YS+mvJMcj6DKj
-         0FGCiMNOm/dOJvSMajXPTFH3IgZCMu11yixkK0mbdMPcpdsS/cgmm1quUQYZZP9N2l27
-         qt/cdcqUHF2uggpI1HqzjS3k5w2d254JgSWlgUu1zzmurLG+vwKfrMukVhe5OjVMx87H
-         kuwDKpDAA8UWEeoGmlXF8ai8dJ03KBW+CywJUl7xn6DMWBikLRhlIHDcRKnAWaYj2hlI
-         7rmomO+yaflgmNOe/9fFGCQofNRB7AJK98+xXr7H/VdzoJooALJg++2PWlvhFBtW7FLl
-         9XnA==
-X-Forwarded-Encrypted: i=1; AJvYcCW4f0PiM6k9dKZXJm5ZlUfhWK7JDHyhU5ItjAHdPB0V/+kzb2olUrTTtmAD3LMBDfw8aBP3jfAZ3fdyxQ==@linaro.org
-X-Gm-Message-State: AOJu0YwSDZhbHJhvayaA4ApvL0E9NVpNxBn9JBQfSKstepJa6qbR+fkT
-	xC/lMBMypBCB3rXEsU6OMrXJK+hbarvO8/iZdE6nru+ijdCff6z/WrZKAL21bCNefVu2Cq2YT4s
-	1jlgZGvDpKhlz5bxIaeVWu8gyslXkFfw1eXzzft9TZWppXq6WPHcETA==
-X-Google-Smtp-Source: AGHT+IGWpcdmm6OgXJahFIA8EpOPwogqZ0PduvIjW+BkVl7pq6Ur3ZXhnj2JOkaOiJYLxwQNW1DuYMZKYxYOzuy11Zk=
-X-Received: by 2002:a17:906:1c0e:b0:aa4:9ab1:19d5 with SMTP id
- a640c23a62f3a-aa49ab11b5dmr212192866b.42.1731793768916; Sat, 16 Nov 2024
- 13:49:28 -0800 (PST)
-MIME-Version: 1.0
-References: <20241116181549.3430225-1-manos.pitsidianakis@linaro.org> <7d835e14-c3d4-4aba-b4a9-eeb06f56fdde@redhat.com>
-In-Reply-To: <7d835e14-c3d4-4aba-b4a9-eeb06f56fdde@redhat.com>
+        d=1e100.net; s=20230601; t=1731795481; x=1732400281;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=90Z+uTvpepQAFzVHsVOwH1Xe3Nr8l4nE4g3HPoVibmQ=;
+        b=SUkBuTHIdVvIAYdxhUh8x6N4A6dDVNp2LfBkmCrCzFSvrhBs+OP8omBDzebDDY+3qP
+         nzEmJyFT1tGqjYBPfDaJlaLzZoEeiOB5xGt2W2cSpaujB1BfKQyhzbBdGaGT29JLK1iW
+         60grpTEnn/tW6cCgLyhFip5eF0dBPqD+K2sHuMhtWvVuGBDQ5/WXoekHOANkQaFDzlta
+         oyVHgj2Kj2AE0XH23d57vusEAtD4c8wgCT2rN/axx0zsfrioQeMwdP1x+cpd9pFm10Bw
+         VF0FvZitxStW3iqNF65rXGp4SoYWwu4LAUzfE8FbsUQZYE7OXfq8wmkaVTDGbEz8MhV1
+         8Z9Q==
+X-Forwarded-Encrypted: i=1; AJvYcCUGeJAcvIQwzSkl0wu0WpVchpg9pwepCXfABJAbWul3flO8m98K4CF49ypXm8mHmodDYsnXVMotAehfcw==@linaro.org
+X-Gm-Message-State: AOJu0YyPldq9aXvHAdZgAGJusv4OAWjj9Bck1VFkLcBo7ELmrVVuEVmG
+	DyjnMpF9/0Jr9YyrGvXU4nPbw+O8boxsTWYmSPCGpcO+QVA0eQ2iPdRb8FKut7wSgA==
+X-Google-Smtp-Source: AGHT+IE5Je1M/0sWbe3jl0H2L89jhWdgktlP6oktsPYUPJQBrF5vkAjkUnrY+zUFiUy0aJXZUd3HaA==
+X-Received: by 2002:a05:600c:3c9e:b0:431:52da:9d89 with SMTP id 5b1f17b1804b1-432defc8b2bmr66927325e9.1.1731795480613;
+        Sat, 16 Nov 2024 14:18:00 -0800 (PST)
+Return-Path: <manos.pitsidianakis@linaro.org>
+Received: from localhost.localdomain (adsl-99.109.242.224.tellas.gr. [109.242.224.99])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432da28b76fsm105752685e9.28.2024.11.16.14.17.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 16 Nov 2024 14:18:00 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Sat, 16 Nov 2024 23:49:03 +0200
-Message-ID: <CAAjaMXZxcT-+iJDpbSbFWuTF_Ci1iAgOUHLSbngR8rB9w2W5qQ@mail.gmail.com>
-Subject: Re: [PATCH v1] rust/pl011: Fix DeviceID reads
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-rust@nongnu.org, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Gustavo Romero <gustavo.romero@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	qemu-rust@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Gustavo Romero <gustavo.romero@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 3Cm+1HgDwthP
+Subject: [PATCH v2] rust/pl011: Fix DeviceID reads
+Date: Sun, 17 Nov 2024 00:17:56 +0200
+Message-ID: <20241116221757.3501603-1-manos.pitsidianakis@linaro.org>
+X-Mailer: git-send-email 2.45.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF8
+Content-Transfer-Encoding: 8bit
+X-TUID: lV066+bddBAH
 
-On Sat, Nov 16, 2024 at 10:24=E2=80=AFPM Paolo Bonzini <pbonzini@redhat.com=
-> wrote:
->
-> On 11/16/24 19:15, Manos Pitsidianakis wrote:
-> >   impl DeviceId {
-> > -    const PL011_ID_ARM: [c_uchar; 8] =3D [0x11, 0x10, 0x14, 0x00, 0x0d=
-, 0xf0, 0x05, 0xb1];
-> > -    const PL011_ID_LUMINARY: [c_uchar; 8] =3D [0x11, 0x00, 0x18, 0x01,=
- 0x0d, 0xf0, 0x05, 0xb1];
-> > +    /// Value of `UARTPeriphID0` register, which contains the `PartNum=
-ber0` value.
-> > +    const fn uart_periph_id0(self) -> u64 {
-> > +        0x11
-> > +    }
-> > +
-> > +    /// Value of `UARTPeriphID1` register, which contains the `Designe=
-r0` and `PartNumber1` values.
-> > +    const fn uart_periph_id1(self) -> u64 {
-> > +        (match self {
-> > +            Self::Arm =3D> 0x10,
-> > +            Self::Luminary =3D> 0x00,
-> > +        }) as u64
-> > +    }
-> >
-> > +
-> > +    /// Value of `UARTPeriphID2` register, which contains the `Revisio=
-n` and `Designer1` values.
-> > +    const fn uart_periph_id2(self) -> u64 {
-> > +        (match self {
-> > +            Self::Arm =3D> 0x14,
-> > +            Self::Luminary =3D> 0x18,
-> > +        }) as u64
-> > +    }
-> > +
-> > +    /// Value of `UARTPeriphID3` register, which contains the `Configu=
-ration` value.
-> > +    const fn uart_periph_id3(self) -> u64 {
-> > +        (match self {
-> > +            Self::Arm =3D> 0x0,
-> > +            Self::Luminary =3D> 0x1,
-> > +        }) as u64
-> > +    }
->
-> If I understand correctly, these are two reasons why you did not go with
-> the simple adjustment to the Err(v) pattern:
->
-> * the separate registers match the datasheet more
->
-> * given the bug that you are fixing in the write function, you want to
-> avoid duplicating "Err(v) if (0xfe0..=3D0xffc).contains(&v)" between read
-> and write; instead, you rely on exhaustive enums for error checking.
->
-> I wonder if we can keep these improvements while making the
-> implementation a bit more concise...  The eight const getter functions
-> are quite verbose, and having the device type match inside each function
-> is repetitive and hard to verify.  Maybe something like
->
->      const UART_PCELL_ID: [u8; 4] =3D [0x0d, 0xf0, 0x05, 0xb1];
->      const ARM_UART_PERIPH_ID: [u8; 4] =3D [0x11, 0x10, 0x14, 0x00];
->      const LUMINARY_UART_PERIPH_ID: [u8; 4] =3D [0x11, 0x00, 0x18, 0x01];
->
->      /// Value of `UARTPeriphID0` through `UARTPeriphID3` registers
->      const fn uart_periph_id(&self, idx: usize) -> u8 {
->          match self {
->              Self::Arm =3D> ARM_UART_PERIPH_ID,
->              Self::Luminary =3D> LUMINARY_UART_PERIPH_ID,
->          }[idx]
->      }
->
->      /// Value of `UARTPCellID0` through `UARTPCellID3` registers
->      const fn uart_pcell_id(idx: usize) -> u8 {
->          Self::UART_PCELL_ID[idx]
->      }
->
-> could be the best of both worlds?
+DeviceId, which maps the peripheral and PCell registers of a PL011
+device, was not treating each register value as a 32 bit value.
 
-Eh, there's no real reason to do that though. I prefer verbosity and
-static checking with symbols rather than indexing; we're not writing C
-here.
+Change DeviceId enum to return register values via constified getter
+functions instead of leveraging the std::ops::Index<_> trait.
 
->
-> >           match RegisterOffset::try_from(offset) {
-> > +            Ok(PeriphID0) | Ok(PeriphID1) | Ok(PeriphID2) | Ok(PeriphI=
-D3) | Ok(PCellID0)
-> > +            | Ok(PCellID1) | Ok(PCellID2) | Ok(PCellID3) =3D> {
-> > +                // Ignore writes to read-only registers.
-> > +            }
->
-> This is indeed an improvement over the patches that Junjie and I had
-> sent, because the writes would have gone down the eprintln! path.
+While at it, print errors when guest attempts to write to other RO
+registers as well.
 
-I will send a v2 to print them anyway as guest errors like Peter requested.
+Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+---
 
---=20
-Manos Pitsidianakis
-Emulation and Virtualization Engineer at Linaro Ltd
+Notes:
+    Changes from v1:
+    
+    - Print error when guest attempts to write to RO registers (Peter
+      Maydell)
+    
+    Version 1:
+     <20241116181549.3430225-1-manos.pitsidianakis@linaro.org/raw>
+
+Interdiff against v1:
+  diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/device.rs
+  index 98dd97dbfd..fc6f3f394d 100644
+  --- a/rust/hw/char/pl011/src/device.rs
+  +++ b/rust/hw/char/pl011/src/device.rs
+  @@ -277,13 +277,15 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
+           use RegisterOffset::*;
+           let value: u32 = value as u32;
+           match RegisterOffset::try_from(offset) {
+  -            Ok(PeriphID0) | Ok(PeriphID1) | Ok(PeriphID2) | Ok(PeriphID3) | Ok(PCellID0)
+  -            | Ok(PCellID1) | Ok(PCellID2) | Ok(PCellID3) => {
+  -                // Ignore writes to read-only registers.
+  -            }
+  -            Err(_bad_offset) => {
+  +            Err(_) => {
+                   eprintln!("write bad offset {offset} value {value}");
+               }
+  +            Ok(
+  +                dev_id @ (PeriphID0 | PeriphID1 | PeriphID2 | PeriphID3 | PCellID0 | PCellID1
+  +                | PCellID2 | PCellID3),
+  +            ) => {
+  +                eprintln!("write bad offset {offset} at RO register {dev_id:?} value {value}");
+  +            }
+               Ok(DR) => {
+                   // ??? Check if transmitter is enabled.
+                   let ch: u8 = value as u8;
+  @@ -303,7 +305,7 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
+                   self.receive_status_error_clear = 0.into();
+               }
+               Ok(FR) => {
+  -                // flag writes are ignored
+  +                eprintln!("write bad offset {offset} at RO register UARTFR value {value}");
+               }
+               Ok(ILPR) => {
+                   self.ilpr = value;
+  @@ -353,8 +355,12 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
+                   self.int_enabled = value;
+                   self.update();
+               }
+  -            Ok(RIS) => {}
+  -            Ok(MIS) => {}
+  +            Ok(RIS) => {
+  +                eprintln!("write bad offset {offset} at RO register UARTRIS value {value}");
+  +            }
+  +            Ok(MIS) => {
+  +                eprintln!("write bad offset {offset} at RO register UARTMIS value {value}");
+  +            }
+               Ok(ICR) => {
+                   self.int_level &= !value;
+                   self.update();
+
+ rust/hw/char/pl011/src/device.rs | 93 ++++++++++++++++++++++++--------
+ rust/hw/char/pl011/src/lib.rs    | 22 +++++++-
+ 2 files changed, 93 insertions(+), 22 deletions(-)
+
+diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/device.rs
+index 2a85960b81..fc6f3f394d 100644
+--- a/rust/hw/char/pl011/src/device.rs
++++ b/rust/hw/char/pl011/src/device.rs
+@@ -5,7 +5,7 @@
+ use core::ptr::{addr_of, addr_of_mut, NonNull};
+ use std::{
+     ffi::CStr,
+-    os::raw::{c_int, c_uchar, c_uint, c_void},
++    os::raw::{c_int, c_uint, c_void},
+ };
+ 
+ use qemu_api::{
+@@ -32,6 +32,7 @@
+ /// QEMU sourced constant.
+ pub const PL011_FIFO_DEPTH: usize = 16_usize;
+ 
++/// State enum that represents the values of the peripheral and PCell registers of a PL011 device.
+ #[derive(Clone, Copy, Debug)]
+ enum DeviceId {
+     #[allow(dead_code)]
+@@ -39,20 +40,55 @@ enum DeviceId {
+     Luminary,
+ }
+ 
+-impl std::ops::Index<hwaddr> for DeviceId {
+-    type Output = c_uchar;
+-
+-    fn index(&self, idx: hwaddr) -> &Self::Output {
+-        match self {
+-            Self::Arm => &Self::PL011_ID_ARM[idx as usize],
+-            Self::Luminary => &Self::PL011_ID_LUMINARY[idx as usize],
+-        }
+-    }
+-}
+-
+ impl DeviceId {
+-    const PL011_ID_ARM: [c_uchar; 8] = [0x11, 0x10, 0x14, 0x00, 0x0d, 0xf0, 0x05, 0xb1];
+-    const PL011_ID_LUMINARY: [c_uchar; 8] = [0x11, 0x00, 0x18, 0x01, 0x0d, 0xf0, 0x05, 0xb1];
++    /// Value of `UARTPeriphID0` register, which contains the `PartNumber0` value.
++    const fn uart_periph_id0(self) -> u64 {
++        0x11
++    }
++
++    /// Value of `UARTPeriphID1` register, which contains the `Designer0` and `PartNumber1` values.
++    const fn uart_periph_id1(self) -> u64 {
++        (match self {
++            Self::Arm => 0x10,
++            Self::Luminary => 0x00,
++        }) as u64
++    }
++
++    /// Value of `UARTPeriphID2` register, which contains the `Revision` and `Designer1` values.
++    const fn uart_periph_id2(self) -> u64 {
++        (match self {
++            Self::Arm => 0x14,
++            Self::Luminary => 0x18,
++        }) as u64
++    }
++
++    /// Value of `UARTPeriphID3` register, which contains the `Configuration` value.
++    const fn uart_periph_id3(self) -> u64 {
++        (match self {
++            Self::Arm => 0x0,
++            Self::Luminary => 0x1,
++        }) as u64
++    }
++
++    /// Value of `UARTPCellID0` register.
++    const fn uart_pcell_id0(self) -> u64 {
++        0x0d
++    }
++
++    /// Value of `UARTPCellID1` register.
++    const fn uart_pcell_id1(self) -> u64 {
++        0xf0
++    }
++
++    /// Value of `UARTPCellID2` register.
++    const fn uart_pcell_id2(self) -> u64 {
++        0x05
++    }
++
++    /// Value of `UARTPCellID3` register.
++    const fn uart_pcell_id3(self) -> u64 {
++        0xb1
++    }
+ }
+ 
+ #[repr(C)]
+@@ -182,9 +218,14 @@ pub fn read(&mut self, offset: hwaddr, _size: c_uint) -> std::ops::ControlFlow<u
+         use RegisterOffset::*;
+ 
+         std::ops::ControlFlow::Break(match RegisterOffset::try_from(offset) {
+-            Err(v) if (0x3f8..0x400).contains(&v) => {
+-                u64::from(self.device_id[(offset - 0xfe0) >> 2])
+-            }
++            Ok(PeriphID0) => self.device_id.uart_periph_id0(),
++            Ok(PeriphID1) => self.device_id.uart_periph_id1(),
++            Ok(PeriphID2) => self.device_id.uart_periph_id2(),
++            Ok(PeriphID3) => self.device_id.uart_periph_id3(),
++            Ok(PCellID0) => self.device_id.uart_pcell_id0(),
++            Ok(PCellID1) => self.device_id.uart_pcell_id1(),
++            Ok(PCellID2) => self.device_id.uart_pcell_id2(),
++            Ok(PCellID3) => self.device_id.uart_pcell_id3(),
+             Err(_) => {
+                 // qemu_log_mask(LOG_GUEST_ERROR, "pl011_read: Bad offset 0x%x\n", (int)offset);
+                 0
+@@ -236,9 +277,15 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
+         use RegisterOffset::*;
+         let value: u32 = value as u32;
+         match RegisterOffset::try_from(offset) {
+-            Err(_bad_offset) => {
++            Err(_) => {
+                 eprintln!("write bad offset {offset} value {value}");
+             }
++            Ok(
++                dev_id @ (PeriphID0 | PeriphID1 | PeriphID2 | PeriphID3 | PCellID0 | PCellID1
++                | PCellID2 | PCellID3),
++            ) => {
++                eprintln!("write bad offset {offset} at RO register {dev_id:?} value {value}");
++            }
+             Ok(DR) => {
+                 // ??? Check if transmitter is enabled.
+                 let ch: u8 = value as u8;
+@@ -258,7 +305,7 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
+                 self.receive_status_error_clear = 0.into();
+             }
+             Ok(FR) => {
+-                // flag writes are ignored
++                eprintln!("write bad offset {offset} at RO register UARTFR value {value}");
+             }
+             Ok(ILPR) => {
+                 self.ilpr = value;
+@@ -308,8 +355,12 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
+                 self.int_enabled = value;
+                 self.update();
+             }
+-            Ok(RIS) => {}
+-            Ok(MIS) => {}
++            Ok(RIS) => {
++                eprintln!("write bad offset {offset} at RO register UARTRIS value {value}");
++            }
++            Ok(MIS) => {
++                eprintln!("write bad offset {offset} at RO register UARTMIS value {value}");
++            }
+             Ok(ICR) => {
+                 self.int_level &= !value;
+                 self.update();
+diff --git a/rust/hw/char/pl011/src/lib.rs b/rust/hw/char/pl011/src/lib.rs
+index cd0a49acb9..1f305aa13f 100644
+--- a/rust/hw/char/pl011/src/lib.rs
++++ b/rust/hw/char/pl011/src/lib.rs
+@@ -111,6 +111,22 @@ pub enum RegisterOffset {
+     /// DMA control Register
+     #[doc(alias = "UARTDMACR")]
+     DMACR = 0x048,
++    #[doc(alias = "UARTPeriphID0")]
++    PeriphID0 = 0xFE0,
++    #[doc(alias = "UARTPeriphID1")]
++    PeriphID1 = 0xFE4,
++    #[doc(alias = "UARTPeriphID2")]
++    PeriphID2 = 0xFE8,
++    #[doc(alias = "UARTPeriphID3")]
++    PeriphID3 = 0xFEC,
++    #[doc(alias = "UARTPCellID0")]
++    PCellID0 = 0xFF0,
++    #[doc(alias = "UARTPCellID1")]
++    PCellID1 = 0xFF4,
++    #[doc(alias = "UARTPCellID2")]
++    PCellID2 = 0xFF8,
++    #[doc(alias = "UARTPCellID3")]
++    PCellID3 = 0xFFC,
+     ///// Reserved, offsets `0x04C` to `0x07C`.
+     //Reserved = 0x04C,
+ }
+@@ -137,7 +153,11 @@ const fn _assert_exhaustive(val: RegisterOffset) {
+                 }
+             }
+         }
+-        case! { DR, RSR, FR, FBRD, ILPR, IBRD, LCR_H, CR, FLS, IMSC, RIS, MIS, ICR, DMACR }
++        case! {
++            DR, RSR, FR, FBRD, ILPR, IBRD, LCR_H, CR, FLS, IMSC, RIS, MIS, ICR, DMACR,
++            PeriphID0, PeriphID1, PeriphID2, PeriphID3,
++            PCellID0, PCellID1, PCellID2, PCellID3,
++        }
+     }
+ }
+ 
+
+base-commit: 43f2def68476697deb0d119cbae51b20019c6c86
+-- 
+γαῖα πυρί μιχθήτω

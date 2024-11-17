@@ -1,113 +1,113 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2052303njc;
-        Sun, 17 Nov 2024 05:50:25 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWf3tTIRRTrks1RiPdPQOfsl65EsUobKUqypHAhCf1KsFnSFe3NnMC3ivLbDTrZM2reK8KmwErazSMF6w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFvk0GInUyeEOAF0YdvrC8FSwxbFVjcZMWqnpfArLiS+9Znz37Q+ENxudDnvfXhLr33fUVn
-X-Received: by 2002:a05:6214:428a:b0:6d3:b571:5cdd with SMTP id 6a1803df08f44-6d3fb7497bamr149144696d6.2.1731851425183;
-        Sun, 17 Nov 2024 05:50:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731851425; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2052468njc;
+        Sun, 17 Nov 2024 05:51:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV+VXhepJ8WY6cWosp/pELxS2OixllBG382mHW4Q8ouB2dYVtrDy2dgGG5rTnA8Kss4UBXCV4j11AsWDg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGQer6hVwwKnNuM5hB6nAk8osnZwJpaXJUgaK2Iics06Mg4L/CJ8KJaQbT+pyf2S5tSh+Qb
+X-Received: by 2002:a05:622a:540f:b0:460:3f14:89e2 with SMTP id d75a77b69052e-46363546164mr158906771cf.15.1731851461630;
+        Sun, 17 Nov 2024 05:51:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731851461; cv=none;
         d=google.com; s=arc-20240605;
-        b=lvNZYUruz7RsD4u5cCmM/8ynk2MxJfs0IoO/cH8kOtdUXXL30/CgoOImd/82XFuhBD
-         mENxn3AxxiwKIKXTBjT2Lekr5Jy08aq8bVOwUHsH4MwfwYUjcfqQQulWdtjGKxxxteTQ
-         y/r4YIRDHvy4u4rsQIx+Y2MZyFzRVhDpL5egeeXeughTwkj+Kj4bOj9DkG1O/3USy4b3
-         MhtEYdQUd75QUgHmcRsDuTHtUm2qamqIvYxP4/2C8IG9jNIaaw8AblY//+leX5dPq7Pf
-         9zm05tqZ5UuqocV/pay6q4GNPA0S+5/kBHJtQDoxkmyQ74gvEdIlfVWDH2h+WNPNaQj3
-         rquQ==
+        b=cRcPOyos45BmMI2I3Yve7Lv8WyCCERNSp0Pi7Ghho3rYsN9wef6UnP1KhZj/XYcDRf
+         IYoXAzE0jMrJO6W73WaJ4mzBC5OF9aI4UsiQ6QDUxL3IjZlgo7owwUpBFl2BXtS1Vw3E
+         opxrXHfHXTDYTB54hlmYpaTnQBDKAzjr7s72hMYGmIZpo1/S8IUEeDA22KtMvS7lA72J
+         AoUDRBNVHn/bPQeKxJG7wdGOWw/3mc4VHkDhSpoTbKF7yOv/v/6Ea80T65vYPWgG7eQS
+         0xOocvTxA+u7QfKZfZMRoLatjbvgTQ8Urj8XcOA4e9v/6755lvOxlz9TtCi3ddl9SSDN
+         mjJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gjWfFSgM5KEzdl52FE7hGAgllBGqgBXace3aPtnBxZo=;
-        fh=74Scric1GX0tTMHEfM0IO5CkTffYdSJm60xCkDkXWg8=;
-        b=KsQT919NrBEiEYDaUNm7y8i2Z0MlGdroVWH/G0HDZINrVF/LbCEW0MVyj34KKloyRb
-         11K+4j1FAOYQ5w4Csy57jY+gwsNDGa8w1S8Lf+AgNDyzYZ0ckvCTMA7PT90DKAO77S0h
-         jAi4EIC1eYXXtIt6OIfMGbjG9R2b5YMEIVDc7RxtIIhntsHZ6XSFAb5k0Z/D4HwPXEVa
-         iWdI4W96QC9oP2Tcf241G4DA0GDnv9Z/fDc9dT/7xu4kzY8oBrtLilYJlVcSbN1ewJKj
-         1PMMVsvOMMBxLPnl2WfJQiBcYLy5llCNVGpYrJUYEVxsZY7S3XbNgDHDwdqTR+1OWYON
-         iO2w==;
+        bh=/c3hbRcpnvd9se7nBaaHtOqLgezKzESTCDuZRz+zEik=;
+        fh=pdVBdSybK4qMKTvwsRQPjS5wWDBUI9OHvdpqUWQ88hE=;
+        b=DznCRxTeV58chxwl+YDaXJJ3M+1tpwkUB78fvu2sPWpEbjMR3Jq5dFHp0focz6qqIT
+         ynJjd2IB6ibE8CXB9389Sq4BBJy/+TuVZCkQAwEA9K5hUYoUqfutonzfm/c2PP63hI/6
+         MI8Mf6UXO06upgqBmu9URDlOouLXa7c86U1wYOegGL3pAuyPwYWPa7dZxyr5wtn990eI
+         dfnG2mY4Lb39xuNCkeB9gJ76crBRk7fiZUXRaqhVURX8NGa4LwA/SeixrpP0u6gnK2Q2
+         Zths5Hf8XHmSnS4nzT18iTpuaUjY0teSUYoLfWKhOMV+J91Kq3sf2/agEod+sf+3L7fk
+         qZXw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=N3HudcZL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ErcRpUJa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d40dd01edcsi40206586d6.464.2024.11.17.05.50.25
+        by mx.google.com with ESMTPS id d75a77b69052e-4635a9890c3si79563451cf.57.2024.11.17.05.50.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Nov 2024 05:50:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 17 Nov 2024 05:51:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=N3HudcZL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ErcRpUJa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tCffT-00064c-7C; Sun, 17 Nov 2024 08:50:23 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tCffe-0006Ak-Oj; Sun, 17 Nov 2024 08:50:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <paskripkin@gmail.com>)
- id 1tCffS-00064K-3s; Sun, 17 Nov 2024 08:50:22 -0500
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ id 1tCffc-00069i-Km; Sun, 17 Nov 2024 08:50:32 -0500
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <paskripkin@gmail.com>)
- id 1tCffQ-0002HK-HX; Sun, 17 Nov 2024 08:50:21 -0500
-Received: by mail-lj1-x229.google.com with SMTP id
- 38308e7fff4ca-2fb561f273eso31862121fa.2; 
- Sun, 17 Nov 2024 05:50:19 -0800 (PST)
+ id 1tCffa-0002I6-Rj; Sun, 17 Nov 2024 08:50:32 -0500
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-53da3b911b9so2438725e87.2; 
+ Sun, 17 Nov 2024 05:50:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1731851418; x=1732456218; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1731851429; x=1732456229; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=gjWfFSgM5KEzdl52FE7hGAgllBGqgBXace3aPtnBxZo=;
- b=N3HudcZLrV456Wbgpl0lsX3JIcV8znvXZIrr5issKus75Ocg7fIpmeDVPpx1/R+fEv
- GvkHi8NA6Jg2olwArSd5OMPUxijw6GrG0bLY1aRiqEVfOtJsuPkqoEPdO0b8Xxg12bdn
- gy6nt8wlkv3D0e/soZySdw0rFyYvaSCfj+jX9gUUuwrBmwlyWzVV9lPF6A4N7Xa7kuL6
- wjmqwx3d5wgI6mM1wMvoMQOBdX1/G5B3LRN+sPL7mlhXdp0/NnZyRc6O/XijQNlS98BA
- DbTZyE4U/ukglXN+rGNXu3dQlLTO0LaOVMEgc0jsuI46J8J1nb9bl0djGQ4P7hOvQABo
- jp1Q==
+ bh=/c3hbRcpnvd9se7nBaaHtOqLgezKzESTCDuZRz+zEik=;
+ b=ErcRpUJar5PiYlN0RpNaFNg0GYD6oH9qb9RnV2o8nsr9pWSeW2Xbj0L+hwpxhB4Pek
+ xO5anMFeDo99N8qeDKFRdNXh4f/dUIdAPYpHwGxPmVnNei6GCKvD+w0q0q0VOZYWVae2
+ oNlH5pntd6+MAiDo/lvE7TSEOAE0TixcStHpWtNlHIr4bitdTzDMa54k7nEAOTWC9MXW
+ JKyC6Kv/MPOBc9QMdp1nBV+19qhr9mw95vazPaw81cj8WntpQofTYh41ooWuzU9YprWB
+ AamtNYHX4V3HPbOURH/7ihXv4apRn7udKwbHoKAiC02ydhGa6tV9knBkis/YsNUsuaWh
+ c20A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731851418; x=1732456218;
+ d=1e100.net; s=20230601; t=1731851429; x=1732456229;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=gjWfFSgM5KEzdl52FE7hGAgllBGqgBXace3aPtnBxZo=;
- b=tT5SSoegc4hdxSaubiamTBRhOrowJE2K8p+QGibvX2fNJzykO0RB+8BTqmy19a4WwW
- EoFVNzo6F/AZWKbNZoEZH5UjUvcciviQg/AoC/lFZ18j6uqS0vevgkBmAPD9VK9T+z20
- 4XAviISTDxl4Is3NHeA1l9by0dJzg4qQYsmsuwCZXxSNqOdaxFJYsTu9T3VthjNCH5oh
- RJxHYGSn48TAC0KFKeO2SPTF1/Xmk7psazM0hSTCjpBRnlkri2eBWEyYelt6R5YkZAHi
- 2cfjmGN6uu5BRasHL09+DGCD9nwxkMtE79Y5x1TOvS5WvyBwiArRYXirPStjALVCdJpa
- 2ohg==
+ bh=/c3hbRcpnvd9se7nBaaHtOqLgezKzESTCDuZRz+zEik=;
+ b=dkIAclqz2fsEj7cB5n2WPr6vbsb+wUwZbPlc9g7pGXa6ZkL7a0UBC0wwWfAbIs0YQA
+ 5EGN/AKrwsb8hMiH+FEYnaUHMUNe/qmCjlHUqW+RbyEHm6yzP0tXyP0ONLaU+VO2F4yt
+ NSw5eYcwZH+Xxi47GfqX+zT5l17zwQ/165NiJ13Zes0CTWF+8XPqvNn0absqk7R3iktb
+ KE86PvKuKEUDaCcv55C2cYZ3LR4ymN2jR4GhbLayI4LJYv1ANqUkq722Xala6hk1bwDA
+ fAQDfiDjvN//9qWwgk/K6yaSummAacQB9g2CH4ZvxiCYYdpCn+oo83fYL5/r2yrMXAAI
+ unNA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUGz8LInRRJSsAfMoVsPq1Fwefb631U/jVTIcrio3sMMT6zNUhzsEsT9I4gVUhw5iNtM+LAXlP9OK7x@nongnu.org
-X-Gm-Message-State: AOJu0YwsutGohUUYZEkNRar1l8CtM10aLQ3b+z/BLtaP3PEUPd69wT2j
- 6IcoOY/3IDG7BqXMiXBnR8td/+frQr3S/zWeVIAUDw6Ib63EUbAr
-X-Received: by 2002:a2e:b896:0:b0:2fb:403c:268b with SMTP id
- 38308e7fff4ca-2ff606fd49fmr42420011fa.34.1731851417825; 
- Sun, 17 Nov 2024 05:50:17 -0800 (PST)
+ AJvYcCUxoOhT7FYzSRYcyyZ2y0evytssiLWISerRAwRRhoG+Raw0v0f76tpLdMVIS7/48/nZyWwREYVTLKPu@nongnu.org
+X-Gm-Message-State: AOJu0YzUGgdc9GClQ1tawXHvLXrLAhAOPLJllwCZ8RxI0LZmsMQevUqs
+ SnX6tZMBLU2AMPWPMncH9db1LSNTBw2z/FY93gaHb8mkFm5QRS5BcRGdTGII
+X-Received: by 2002:a05:6512:239a:b0:539:f7ab:e161 with SMTP id
+ 2adb3069b0e04-53dab3bf59amr3430659e87.45.1731851428494; 
+ Sun, 17 Nov 2024 05:50:28 -0800 (PST)
 Received: from fedora.. ([2a00:1370:8180:90b:d00f:257f:ffb:ac70])
  by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-2ff698515e6sm6229361fa.25.2024.11.17.05.50.13
+ 2adb3069b0e04-53da65019ccsm1293764e87.110.2024.11.17.05.50.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Nov 2024 05:50:15 -0800 (PST)
+ Sun, 17 Nov 2024 05:50:27 -0800 (PST)
 From: Pavel Skripkin <paskripkin@gmail.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Pavel Skripkin <paskripkin@gmail.com>
-Subject: [PATCH v2 1/2] arm/ptw: make get_S1prot accept decoded AP
-Date: Sun, 17 Nov 2024 08:50:10 -0500
-Message-ID: <20241117135010.37410-1-paskripkin@gmail.com>
+Subject: [PATCH v2 2/2] arm/ptw: use get_S1prot in get_phys_addr_v6
+Date: Sun, 17 Nov 2024 08:50:22 -0500
+Message-ID: <20241117135022.37508-1-paskripkin@gmail.com>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241117134931.37249-1-paskripkin@gmail.com>
 References: <20241117134931.37249-1-paskripkin@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::229;
- envelope-from=paskripkin@gmail.com; helo=mail-lj1-x229.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=paskripkin@gmail.com; helo=mail-lf1-x12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,93 +116,109 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T5sPuv7T/o4+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 5U5t3xD/q+A5
 
-AP in armv7 short descriptor mode has 3 bits and also domain, which
-makes it incompatible with other arm schemas.
-
-To make it possible to share get_S1prot between armv8, armv7 long
-format, armv7 short format and armv6 it's easier to make caller
-decode AP.
+To share missing SCTRL.{U}WXN and SCR.SIF in short format walker, use
+get_S1prot instead of open-coded checks.
 
 Signed-off-by: Pavel Skripkin <paskripkin@gmail.com>
 ---
- target/arm/ptw.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+ target/arm/ptw.c | 41 ++++++++++++++++++-----------------------
+ 1 file changed, 18 insertions(+), 23 deletions(-)
 
 diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 9849949508..50eed0f811 100644
+index 50eed0f811..0d003a9f7d 100644
 --- a/target/arm/ptw.c
 +++ b/target/arm/ptw.c
-@@ -1357,25 +1357,24 @@ static int get_S2prot(CPUARMState *env, int s2ap, int xn, bool s1_is_el0)
-  * @env:     CPUARMState
-  * @mmu_idx: MMU index indicating required translation regime
-  * @is_aa64: TRUE if AArch64
-- * @ap:      The 2-bit simple AP (AP[2:1])
-+ * @user_rw: Translated AP for user access
-+ * @prot_rw: Translated AP for privileged access
-  * @xn:      XN (execute-never) bit
-  * @pxn:     PXN (privileged execute-never) bit
-  * @in_pa:   The original input pa space
-  * @out_pa:  The output pa space, modified by NSTable, NS, and NSE
-  */
- static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
--                      int ap, int xn, int pxn,
+@@ -85,6 +85,10 @@ static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
+                               GetPhysAddrResult *result,
+                               ARMMMUFaultInfo *fi);
+ 
++static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
 +                      int user_rw, int prot_rw, int xn, int pxn,
-                       ARMSecuritySpace in_pa, ARMSecuritySpace out_pa)
- {
-     ARMCPU *cpu = env_archcpu(env);
-     bool is_user = regime_is_user(env, mmu_idx);
--    int prot_rw, user_rw;
-     bool have_wxn;
-     int wxn = 0;
++                      ARMSecuritySpace in_pa, ARMSecuritySpace out_pa);
++
+ /* This mapping is common between ID_AA64MMFR0.PARANGE and TCR_ELx.{I}PS. */
+ static const uint8_t pamax_map[] = {
+     [0] = 32,
+@@ -1148,7 +1152,6 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+     hwaddr phys_addr;
+     uint32_t dacr;
+     bool ns;
+-    int user_prot;
  
-     assert(!regime_is_stage2(mmu_idx));
- 
--    user_rw = simple_ap_to_rw_prot_is_user(ap, true);
-     if (is_user) {
-         prot_rw = user_rw;
+     /* Pagetable walk.  */
+     /* Lookup l1 descriptor.  */
+@@ -1243,13 +1246,13 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+     if (domain_prot == 3) {
+         result->f.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
      } else {
-@@ -1393,8 +1392,6 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-                    regime_is_pan(env, mmu_idx) &&
-                    (regime_sctlr(env, mmu_idx) & SCTLR_EPAN) && !xn) {
-             prot_rw = 0;
--        } else {
--            prot_rw = simple_ap_to_rw_prot_is_user(ap, false);
+-        if (pxn && !regime_is_user(env, mmu_idx)) {
+-            xn = 1;
+-        }
+-        if (xn && access_type == MMU_INST_FETCH) {
+-            fi->type = ARMFault_Permission;
+-            goto do_fault;
+-        }
++        int ap_usr;
++        int ap_priv;
++        ARMSecuritySpace out_space = ARMSS_NonSecure;
++
++        /* NS bit is ignored in NWd. */
++        if (result->f.attrs.space == ARMSS_Secure && !ns)
++            out_space = ARMSS_Secure;
+ 
+         if (arm_feature(env, ARM_FEATURE_V6K) &&
+                 (regime_sctlr(env, mmu_idx) & SCTLR_AFE)) {
+@@ -1259,28 +1262,20 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+                 fi->type = ARMFault_AccessFlag;
+                 goto do_fault;
+             }
+-            result->f.prot = simple_ap_to_rw_prot(env, mmu_idx, ap >> 1);
+-            user_prot = simple_ap_to_rw_prot_is_user(ap >> 1, 1);
++            ap_priv = simple_ap_to_rw_prot(env, mmu_idx, ap >> 1);
++            ap_usr = simple_ap_to_rw_prot_is_user(ap >> 1, 1);
+         } else {
+-            result->f.prot = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
+-            user_prot = ap_to_rw_prot_is_user(env, mmu_idx, ap, domain_prot, 1);
+-        }
+-        if (result->f.prot && !xn) {
+-            result->f.prot |= PAGE_EXEC;
++            ap_priv = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
++            ap_usr = ap_to_rw_prot_is_user(env, mmu_idx, ap, domain_prot, 1);
          }
++
++        result->f.prot = get_S1prot(env, mmu_idx, false, ap_usr, ap_priv, xn, pxn,
++                                    result->f.attrs.space, out_space);
+         if (!(result->f.prot & (1 << access_type))) {
+             /* Access permission fault.  */
+             fi->type = ARMFault_Permission;
+             goto do_fault;
+         }
+-        if (regime_is_pan(env, mmu_idx) &&
+-            !regime_is_user(env, mmu_idx) &&
+-            user_prot &&
+-            access_type != MMU_INST_FETCH) {
+-            /* Privileged Access Never fault */
+-            fi->type = ARMFault_Permission;
+-            goto do_fault;
+-        }
      }
- 
-@@ -2044,6 +2041,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-         int nse, ns = extract32(attrs, 5, 1);
-         uint8_t attrindx;
-         uint64_t mair;
-+        int ap_usr = simple_ap_to_rw_prot_is_user(ap, true);
-+        int ap_priv = simple_ap_to_rw_prot_is_user(ap, false);
- 
-         switch (out_space) {
-         case ARMSS_Root:
-@@ -2114,7 +2113,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
-          * Note that we modified ptw->in_space earlier for NSTable, but
-          * result->f.attrs retains a copy of the original security space.
-          */
--        result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap, xn, pxn,
-+        result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap_usr, ap_priv, xn, pxn,
-                                     result->f.attrs.space, out_space);
- 
-         /* Index into MAIR registers for cache attributes */
+     if (ns) {
+         /* The NS bit will (as required by the architecture) have no effect if
 -- 
 2.46.0
 

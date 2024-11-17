@@ -1,398 +1,188 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp1975710njc;
-        Sun, 17 Nov 2024 02:20:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX7zh8Wu8HOc0LEL8bLz9pbTWNj/S+CU4TN7xZCg6Y5v0fPO2P/BLDuqvdtrQN2mDJQAD9yzLjiuv8SNw==@linaro.org
-X-Received: by 2002:a17:907:1c29:b0:a9e:df65:3a81 with SMTP id a640c23a62f3a-aa483554f81mr599287966b.59.1731838848950;
-        Sun, 17 Nov 2024 02:20:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731838848; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp1992207njc;
+        Sun, 17 Nov 2024 03:16:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXHGjNtfwvvmAWb2mmRZfH9x6tLA0+W5e/CwDErdUmyYAK4DlB2tMlMvChKus6VFSf1aAjPy5qw7zxITA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGsP0CR8nhw8QjqLUpkvvuRdEe1O8uz3Em9sMSB3TL0V4de5d29BmBCuhiJtXhnb67nvjz5
+X-Received: by 2002:a05:622a:5919:b0:460:ad8e:f5ae with SMTP id d75a77b69052e-46363e063c0mr140179441cf.19.1731842194256;
+        Sun, 17 Nov 2024 03:16:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731842194; cv=none;
         d=google.com; s=arc-20240605;
-        b=kHn4cTZ7EinE12OBtjQU21ds8K0uEDVXFhytlsW2+xeJui2ttDpqIxqaAWTv+EXc9F
-         n/I/kbPr4tYQNMjzaJaSJDgoo3ublBJ4io499RXtaAdW354Sp30y9IBami61TA9sDh5r
-         AhcjUArTBwkD34pXX98XCcJWrFcNL2zlMBX5ad3Asx/YFkQQmtm51T3y8oRPKd7/m5XP
-         7RNHcZ0H/oU/3KDOwvLGU/8WuobNcPKoczKr9qZT1Nieo788GmJcqw7GusCmzkVNBrUo
-         VteIA9ODyJeDbRl081f5miCGoJh3E7H0jRfAs6Xa5fLo9cZPurvxT+1NYz4Jhmv3wuuW
-         bXcg==
+        b=TFOrBDwVmPtE/kIlrdFxe64I534Sh01kLS37EwxvV3IAYg6ihxSLPqFLNO5FP8jd/a
+         Pmf6dH8k010xXg5eKpv1BLBl3LxLW3NiGi/HV0Ew8XFHGNihkP+0txNeklXsRs2DZmOY
+         EMsNaVmPxjn61xeDQdPX8sh6pvd0h+FJWtQ7g5SYausXXntyW22YaCwwf0QQUVZxmzFS
+         GV1tCJ61T7BNCISnh3kNHi3fpsiuctXddG+CV4BNwbLoAXJ7RV39bwq/XHUE14zuyG2S
+         VLQJa69BTLk7xN+4Y6twqGBePcxxTfhEw8PPgsyjOIo43JCbb/D9PJgdvpC9sG3VJMFG
+         K+tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=5TFie3jflLdTWu1yrKd+zm0CeFLD0NoKa4Ds0DfigUY=;
-        fh=fy8MgIW2d396/idg+u6YoVSgglTFGX1u7a4I9zHp7AY=;
-        b=fBxGDw6mM/W1nIwmL8LFL6EED8yHQZ7KUM6XEbbzUedA2hahpkZhBcZ95nuiKZED7r
-         m/KuH31uumx1Q11cLFArHzNkbQNfPmwwLK72aFlHXxo5sDxWoPkoBLi/nDhTg0o5sHtD
-         MJY/211GoeZ/uiakhUQt1V/pIjup/X8M9gGumGHTsM0klcpDDFfqHz3dMLn8w4uEnRt2
-         H3Dg261n2mK4COf2kIjO/QC5SkTB/twDGBQIC3R1do7NxHJMH6lCXr1K5PVmyaSBBXkQ
-         B42Lx2mOEbw4Mk0VO7zZXE8p353p/+ufLghaWk9ilPN1t/a1H5gk9HZgBjj2q+lcM87k
-         PL1Q==;
+        bh=Akw0Jpsvyllf2/gLpC1tMXDGBC/KDHr+UbcU6YPA/WU=;
+        fh=g28+ku+iT7V5FiMGoxI3xD5fC0QcwFyoAM5HEvVgaEo=;
+        b=AMm6eD8Ax8YAmaIaLXj1uBCJPAgHqEq7QrjWLEQ927KPkVMABllY16UH0NdOjqV3dx
+         6vp05RmUpbwaPk+nUDyg4tRZ601wncmYZOPO2u1Qo0EQ/2HndMXjFMkNl3fUwfCMVMq2
+         fvF/8Y7mY8URSZft3NNSDVOSfOVmq5Dw3a18VpuhUMlYMSIPuX1IfIX+ZH1AwJDDocRq
+         kzd2TauDybKQ205acuKbO+TjHH++0IwWOI5oxMyHX9lDNiCBjZ38HKQ7KgrV6JRpJuyi
+         MzYmS5A+IJY9xXwuLY3bbfkR7rEAfFCHHzdoqrbC5QLMxmrCS7juVQyHFa5OBM8Og9G9
+         IsbQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QdoUoApt;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <manos.pitsidianakis@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-aa48296ddffsor113147666b.3.2024.11.17.02.20.48
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="dzS0fg/c";
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7b35cab2633si811603585a.487.2024.11.17.03.16.34
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sun, 17 Nov 2024 02:20:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 17 Nov 2024 03:16:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QdoUoApt;
-       spf=pass (google.com: domain of manos.pitsidianakis@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=manos.pitsidianakis@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731838848; x=1732443648; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=5TFie3jflLdTWu1yrKd+zm0CeFLD0NoKa4Ds0DfigUY=;
-        b=QdoUoApth5R2byCrum0cvvBlmzDsTc7tQhoIgrB4u51SU39Q4cZ0uCYwI1zZks7Zdz
-         EioJpzeAwL53iU8IvDjcnWVPTxP/hQzHOo/YhAZ7pw3S+s7nLBVolaCOwD1shTrVy0/b
-         gwtkK5cuGSWYqiuKkx6uwwGCJwC3GRuged9TMrQxaHWA0QnuWoPglNGLVTVo5fJlvwNH
-         Efm/AwXTGP55rR2rXpHhBtYrQiXEze9I9LN9STj6rHuwKDPqNCOCWs6f7a/hqfuIjLDr
-         N4w6Myk/1hF8ZkoSlJn9r6UlWcNYDFJlLY9RDzFmMor42PL0W20tr31LxNwNHfHBT8m/
-         Wzjw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="dzS0fg/c";
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1731842193;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Akw0Jpsvyllf2/gLpC1tMXDGBC/KDHr+UbcU6YPA/WU=;
+	b=dzS0fg/czVrXZfot5kKtCTPztS4qM4OkV0RRa6gRN9HDWAl9AenMOMxcf5JaQHeRmTQXMF
+	BIP3r7DuXsmOp2hNi+LzZLGo13/6ebT0BcN3frupntfsbrnEqiAc5OlzAdgvIrLmRbEfLe
+	kabEi4sy1g1aRVviV4MkTK9IqqB4g7k=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-182-Fw-_89rzM8SCYj7RlfeciA-1; Sun, 17 Nov 2024 06:16:32 -0500
+X-MC-Unique: Fw-_89rzM8SCYj7RlfeciA-1
+X-Mimecast-MFC-AGG-ID: Fw-_89rzM8SCYj7RlfeciA
+Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-382440c1f83so98592f8f.1
+        for <alex.bennee@linaro.org>; Sun, 17 Nov 2024 03:16:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731838848; x=1732443648;
+        d=1e100.net; s=20230601; t=1731842191; x=1732446991;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=5TFie3jflLdTWu1yrKd+zm0CeFLD0NoKa4Ds0DfigUY=;
-        b=u6p0DOEEn+th9/QkAuAdW+qZrh4RmiiJRRZMBDAo0O3+OyFaHX4hOLGK7ROIJe6C4G
-         g95sBo2n0jl65BvFeTBPR8cwVcRibx9D3O7LQ+T54x7tfOH20o8+1oWwxV23bqH0EIrj
-         du8102EnZpgSmdAN6q5clTj2z1mXpPwE3sgcPl3zr9lS28D3m7aEw5jf6xnIFS8lWOtT
-         u9u38i6k7DdKsKgd0lEAgZxUGivQaBDN2Zb4nR0lVhhmO8KZw6Hjh/GayqAawBndALGW
-         AvWPT5dv/1r5ettqreY+qFUdehGw5LTEfFjclXg6D82mdf3oTjYUsfzBxgtp7oeEkTvA
-         AVgw==
-X-Forwarded-Encrypted: i=1; AJvYcCW6sDIVPMApESVYX2mLrokCO7V8kHld+ZDwr8eQabHCh6LboyiGxmWN7BsLeRcP0DyKG4nxY2A0CyIHVw==@linaro.org
-X-Gm-Message-State: AOJu0YyV9FasVuOeCk1E50OsEGoJ22Az8Lgv0oJEgKE5d3txuvwWQsiU
-	cQ36hulHKuLg/qNXB3fYCKZfKR0wBQyKXEDf7s3qOsmKWYNhfahsfl/f0pLJR6SVm9Ww8+UlDFH
-	qbMlTrHcrBzJrNT3oa6kMAbgnswJCelzTEbt+5d3L
-X-Google-Smtp-Source: AGHT+IHdu/CFI1ysFJWFGIZRibMDNuA7EEvc2+XuiqkNnAO5db6DIx65j/F7HA9s9K5WsvKqGn+S7WwHik5Phco1V4s=
-X-Received: by 2002:a17:907:96ab:b0:a99:ec3c:15cd with SMTP id
- a640c23a62f3a-aa483552e2amr797050466b.54.1731838848335; Sun, 17 Nov 2024
- 02:20:48 -0800 (PST)
+        bh=Akw0Jpsvyllf2/gLpC1tMXDGBC/KDHr+UbcU6YPA/WU=;
+        b=uEyYFZogu5bLs7EbUTXOoorY34519Dj7LxjO8l2SCuYIgRHQPbu3P9V4Nzr6W92sbe
+         h3uhuZUaMPstTXHrXZ9ZfZ4BTsUtWr3M/1lwtjrbffhR+2Uar2cVgI3EtxvwLC+U7nOG
+         gMYuJv19Sh8KfKYG6mUWD6tUfjST4jBNv2AvYvDoSajQBhYn6idoBTOqEyLZJnYsXBOv
+         wxIXzdJKmqbgck1aI0Zl0YOuxEg0T29hj94zqF8VV9NYnNmprPwE/IVHfoE58qZCJbxf
+         z6Mjn7iBlHYY+akpY9U17lzlKMgp2Ip9vVV85XozARpulvdTxKZmdXLlUgroExphmdmP
+         GKOQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUoPp4tugQ+CQuY9LdZBs07JXom8Peak5p6XeU+hmGrBKPwYLamS2V6pzWouHWq4F18ne6MSt0daiS/AQ==@linaro.org
+X-Gm-Message-State: AOJu0YxH6ftYxpn/oypRqLBPDA9doIWqexHj9HB6T9rUOOK7lUM/moov
+	7bRUw8xFyfRL9k1HSJ9MUwP5Tw0ii27RhADtbxSz5sAuZ3jjb4mUgnIklng6l8S2n01ylL4LuTE
+	yYLtXpoQBtSro8LYdx1YAI7Y4Mpl4LlM0BsiALmL8SmHBuczs8OaDWyr09WMX7su1LQNkQIj4eT
+	7jddAiH/WiGN5ijvy+bFnzYh8Ty4vW
+X-Received: by 2002:a5d:59a2:0:b0:37d:47ef:17d0 with SMTP id ffacd0b85a97d-38224f861c6mr7780336f8f.13.1731842190817;
+        Sun, 17 Nov 2024 03:16:30 -0800 (PST)
+X-Received: by 2002:a5d:59a2:0:b0:37d:47ef:17d0 with SMTP id
+ ffacd0b85a97d-38224f861c6mr7780320f8f.13.1731842190516; Sun, 17 Nov 2024
+ 03:16:30 -0800 (PST)
 MIME-Version: 1.0
-References: <20241116221757.3501603-1-manos.pitsidianakis@linaro.org> <CAFEAcA9m7EnMX+=T0TL2R_NCJqaPUPCUcoYzAo4P2oRUZbM6Kg@mail.gmail.com>
-In-Reply-To: <CAFEAcA9m7EnMX+=T0TL2R_NCJqaPUPCUcoYzAo4P2oRUZbM6Kg@mail.gmail.com>
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Date: Sun, 17 Nov 2024 12:20:37 +0200
-Message-ID: <CAAjaMXZE+KKJnvcMpmpaH+dmO7MQVmJm7pD+i1yo_5Wb9-ERcQ@mail.gmail.com>
+References: <20241116221757.3501603-1-manos.pitsidianakis@linaro.org>
+ <CAFEAcA9m7EnMX+=T0TL2R_NCJqaPUPCUcoYzAo4P2oRUZbM6Kg@mail.gmail.com> <CAAjaMXZE+KKJnvcMpmpaH+dmO7MQVmJm7pD+i1yo_5Wb9-ERcQ@mail.gmail.com>
+In-Reply-To: <CAAjaMXZE+KKJnvcMpmpaH+dmO7MQVmJm7pD+i1yo_5Wb9-ERcQ@mail.gmail.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Sun, 17 Nov 2024 12:16:16 +0100
+Message-ID: <CABgObfadfaohQNf5AheVAUSL5G8i9+zeTOwXRPhOwC_6NpTvmQ@mail.gmail.com>
 Subject: Re: [PATCH v2] rust/pl011: Fix DeviceID reads
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "open list:ARM SMMU <qemu-arm@nongnu.org>," <qemu-devel@nongnu.org>, "open list:ARM SMMU" <qemu-arm@nongnu.org>, qemu-rust@nongnu.org, 
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, 
+	"open list:ARM SMMU <qemu-arm@nongnu.org>," <qemu-devel@nongnu.org>, "open list:ARM SMMU" <qemu-arm@nongnu.org>, qemu-rust@nongnu.org, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	Gustavo Romero <gustavo.romero@linaro.org>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
 	Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000005d20b80627192758"
-X-TUID: OgfsPHGRsrb/
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: y1aIIMKMAVjsWsf2u2IJFQN3eb3GjyYxA51AtciRvak_1731842191
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="00000000000092c2d5062719ee65"
+X-TUID: CCwl9l1h/KJq
 
---0000000000005d20b80627192758
+--00000000000092c2d5062719ee65
 Content-Type: text/plain; charset="UTF-8"
 
-On Sun, Nov 17, 2024, 12:14 PM Peter Maydell <peter.maydell@linaro.org>
-wrote:
+Il dom 17 nov 2024, 11:21 Manos Pitsidianakis <
+manos.pitsidianakis@linaro.org> ha scritto:
 
-> On Sat, 16 Nov 2024 at 22:18, Manos Pitsidianakis
-> <manos.pitsidianakis@linaro.org> wrote:
-> >
-> > DeviceId, which maps the peripheral and PCell registers of a PL011
-> > device, was not treating each register value as a 32 bit value.
-> >
-> > Change DeviceId enum to return register values via constified getter
-> > functions instead of leveraging the std::ops::Index<_> trait.
-> >
-> > While at it, print errors when guest attempts to write to other RO
-> > registers as well.
-> >
-> > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
->
->
->
-> >  rust/hw/char/pl011/src/device.rs | 93 ++++++++++++++++++++++++--------
-> >  rust/hw/char/pl011/src/lib.rs    | 22 +++++++-
-> >  2 files changed, 93 insertions(+), 22 deletions(-)
-> >
-> > diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/
-> device.rs
-> > index 2a85960b81..fc6f3f394d 100644
-> > --- a/rust/hw/char/pl011/src/device.rs
-> > +++ b/rust/hw/char/pl011/src/device.rs
-> > @@ -5,7 +5,7 @@
-> >  use core::ptr::{addr_of, addr_of_mut, NonNull};
-> >  use std::{
-> >      ffi::CStr,
-> > -    os::raw::{c_int, c_uchar, c_uint, c_void},
-> > +    os::raw::{c_int, c_uint, c_void},
-> >  };
-> >
-> >  use qemu_api::{
-> > @@ -32,6 +32,7 @@
-> >  /// QEMU sourced constant.
-> >  pub const PL011_FIFO_DEPTH: usize = 16_usize;
-> >
-> > +/// State enum that represents the values of the peripheral and PCell
-> registers of a PL011 device.
-> >  #[derive(Clone, Copy, Debug)]
-> >  enum DeviceId {
-> >      #[allow(dead_code)]
-> > @@ -39,20 +40,55 @@ enum DeviceId {
-> >      Luminary,
-> >  }
-> >
-> > -impl std::ops::Index<hwaddr> for DeviceId {
-> > -    type Output = c_uchar;
-> > -
-> > -    fn index(&self, idx: hwaddr) -> &Self::Output {
-> > -        match self {
-> > -            Self::Arm => &Self::PL011_ID_ARM[idx as usize],
-> > -            Self::Luminary => &Self::PL011_ID_LUMINARY[idx as usize],
-> > -        }
-> > -    }
-> > -}
-> > -
-> >  impl DeviceId {
-> > -    const PL011_ID_ARM: [c_uchar; 8] = [0x11, 0x10, 0x14, 0x00, 0x0d,
-> 0xf0, 0x05, 0xb1];
-> > -    const PL011_ID_LUMINARY: [c_uchar; 8] = [0x11, 0x00, 0x18, 0x01,
-> 0x0d, 0xf0, 0x05, 0xb1];
-> > +    /// Value of `UARTPeriphID0` register, which contains the
-> `PartNumber0` value.
-> > +    const fn uart_periph_id0(self) -> u64 {
-> > +        0x11
-> > +    }
-> > +
-> > +    /// Value of `UARTPeriphID1` register, which contains the
-> `Designer0` and `PartNumber1` values.
-> > +    const fn uart_periph_id1(self) -> u64 {
-> > +        (match self {
-> > +            Self::Arm => 0x10,
-> > +            Self::Luminary => 0x00,
-> > +        }) as u64
-> > +    }
-> > +
-> > +    /// Value of `UARTPeriphID2` register, which contains the
-> `Revision` and `Designer1` values.
-> > +    const fn uart_periph_id2(self) -> u64 {
-> > +        (match self {
-> > +            Self::Arm => 0x14,
-> > +            Self::Luminary => 0x18,
-> > +        }) as u64
-> > +    }
-> > +
-> > +    /// Value of `UARTPeriphID3` register, which contains the
-> `Configuration` value.
-> > +    const fn uart_periph_id3(self) -> u64 {
-> > +        (match self {
-> > +            Self::Arm => 0x0,
-> > +            Self::Luminary => 0x1,
-> > +        }) as u64
-> > +    }
-> > +
-> > +    /// Value of `UARTPCellID0` register.
-> > +    const fn uart_pcell_id0(self) -> u64 {
-> > +        0x0d
-> > +    }
-> > +
-> > +    /// Value of `UARTPCellID1` register.
-> > +    const fn uart_pcell_id1(self) -> u64 {
-> > +        0xf0
-> > +    }
-> > +
-> > +    /// Value of `UARTPCellID2` register.
-> > +    const fn uart_pcell_id2(self) -> u64 {
-> > +        0x05
-> > +    }
-> > +
-> > +    /// Value of `UARTPCellID3` register.
-> > +    const fn uart_pcell_id3(self) -> u64 {
-> > +        0xb1
-> > +    }
->
 > This seems extremely verbose and rather obscures the fact that these
-> registers are a set of adjacent simple ID registers, compared to
-> the previous code which defined them as an array of values.
+>> registers are a set of adjacent simple ID registers, compared to
+>> the previous code which defined them as an array of values.
 >
-> Isn't there some way to write this that doesn't need so much code to do it?
-> All the PLxxx devices and various others have this set of standard
-> ID registers, because it's part of a standardized scheme, so we're
-> going to end up with similar code in multiple device models. I would
-> hope that Rust offers us ways to avoid having boilerplate code
-> where you need to write dozens of lines to express this.
 >
-> thanks
-> -- PMM
+> One could abstract them with declarative macros to reduce the line count.
+> WDYT about that approach?
 >
 
+No, this is just overcomplicating things. Like Peter said, just use arrays.
+Copying from the V1 review for reference:
 
-One could abstract them with declarative macros to reduce the line count.
-WDYT about that approach?
+     const UART_PCELL_ID: [u8; 4] = [0x0d, 0xf0, 0x05, 0xb1];
+     const ARM_UART_PERIPH_ID: [u8; 4] = [0x11, 0x10, 0x14, 0x00];
+     const LUMINARY_UART_PERIPH_ID: [u8; 4] = [0x11, 0x00, 0x18, 0x01];
+
+     /// Value of `UARTPeriphID0` through `UARTPeriphID3` registers
+     const fn uart_periph_id(&self, idx: usize) -> u8 {
+         match self {
+             Self::Arm => ARM_UART_PERIPH_ID,
+             Self::Luminary => LUMINARY_UART_PERIPH_ID,
+         }[idx]
+     }
+
+     /// Value of `UARTPCellID0` through `UARTPCellID3` registers
+     const fn uart_pcell_id(idx: usize) -> u8 {
+         Self::UART_PCELL_ID[idx]
+     }
+
+Paolo
 
 >
 
---0000000000005d20b80627192758
+--00000000000092c2d5062719ee65
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Sun, Nov 17, 2024, 12:14 PM Peter Maydell &lt;<a hr=
-ef=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wro=
-te:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
-0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Sat, 16 N=
-ov 2024 at 22:18, Manos Pitsidianakis<br>
-&lt;<a href=3D"mailto:manos.pitsidianakis@linaro.org" target=3D"_blank" rel=
-=3D"noreferrer">manos.pitsidianakis@linaro.org</a>&gt; wrote:<br>
-&gt;<br>
-&gt; DeviceId, which maps the peripheral and PCell registers of a PL011<br>
-&gt; device, was not treating each register value as a 32 bit value.<br>
-&gt;<br>
-&gt; Change DeviceId enum to return register values via constified getter<b=
-r>
-&gt; functions instead of leveraging the std::ops::Index&lt;_&gt; trait.<br=
->
-&gt;<br>
-&gt; While at it, print errors when guest attempts to write to other RO<br>
-&gt; registers as well.<br>
-&gt;<br>
-&gt; Signed-off-by: Manos Pitsidianakis &lt;<a href=3D"mailto:manos.pitsidi=
-anakis@linaro.org" target=3D"_blank" rel=3D"noreferrer">manos.pitsidianakis=
-@linaro.org</a>&gt;<br>
-<br>
-<br>
-<br>
-&gt;=C2=A0 rust/hw/char/pl011/src/<a href=3D"http://device.rs" rel=3D"noref=
-errer noreferrer" target=3D"_blank">device.rs</a> | 93 ++++++++++++++++++++=
-++++--------<br>
-&gt;=C2=A0 rust/hw/char/pl011/src/<a href=3D"http://lib.rs" rel=3D"noreferr=
-er noreferrer" target=3D"_blank">lib.rs</a>=C2=A0 =C2=A0 | 22 +++++++-<br>
-&gt;=C2=A0 2 files changed, 93 insertions(+), 22 deletions(-)<br>
-&gt;<br>
-&gt; diff --git a/rust/hw/char/pl011/src/<a href=3D"http://device.rs" rel=
-=3D"noreferrer noreferrer" target=3D"_blank">device.rs</a> b/rust/hw/char/p=
-l011/src/<a href=3D"http://device.rs" rel=3D"noreferrer noreferrer" target=
-=3D"_blank">device.rs</a><br>
-&gt; index 2a85960b81..fc6f3f394d 100644<br>
-&gt; --- a/rust/hw/char/pl011/src/<a href=3D"http://device.rs" rel=3D"noref=
-errer noreferrer" target=3D"_blank">device.rs</a><br>
-&gt; +++ b/rust/hw/char/pl011/src/<a href=3D"http://device.rs" rel=3D"noref=
-errer noreferrer" target=3D"_blank">device.rs</a><br>
-&gt; @@ -5,7 +5,7 @@<br>
-&gt;=C2=A0 use core::ptr::{addr_of, addr_of_mut, NonNull};<br>
-&gt;=C2=A0 use std::{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 ffi::CStr,<br>
-&gt; -=C2=A0 =C2=A0 os::raw::{c_int, c_uchar, c_uint, c_void},<br>
-&gt; +=C2=A0 =C2=A0 os::raw::{c_int, c_uint, c_void},<br>
-&gt;=C2=A0 };<br>
-&gt;<br>
-&gt;=C2=A0 use qemu_api::{<br>
-&gt; @@ -32,6 +32,7 @@<br>
-&gt;=C2=A0 /// QEMU sourced constant.<br>
-&gt;=C2=A0 pub const PL011_FIFO_DEPTH: usize =3D 16_usize;<br>
-&gt;<br>
-&gt; +/// State enum that represents the values of the peripheral and PCell=
- registers of a PL011 device.<br>
-&gt;=C2=A0 #[derive(Clone, Copy, Debug)]<br>
-&gt;=C2=A0 enum DeviceId {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 #[allow(dead_code)]<br>
-&gt; @@ -39,20 +40,55 @@ enum DeviceId {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 Luminary,<br>
-&gt;=C2=A0 }<br>
-&gt;<br>
-&gt; -impl std::ops::Index&lt;hwaddr&gt; for DeviceId {<br>
-&gt; -=C2=A0 =C2=A0 type Output =3D c_uchar;<br>
-&gt; -<br>
-&gt; -=C2=A0 =C2=A0 fn index(&amp;self, idx: hwaddr) -&gt; &amp;Self::Outpu=
-t {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 match self {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Self::Arm =3D&gt; &amp;Self=
-::PL011_ID_ARM[idx as usize],<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Self::Luminary =3D&gt; &amp=
-;Self::PL011_ID_LUMINARY[idx as usize],<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; -=C2=A0 =C2=A0 }<br>
-&gt; -}<br>
-&gt; -<br>
-&gt;=C2=A0 impl DeviceId {<br>
-&gt; -=C2=A0 =C2=A0 const PL011_ID_ARM: [c_uchar; 8] =3D [0x11, 0x10, 0x14,=
- 0x00, 0x0d, 0xf0, 0x05, 0xb1];<br>
-&gt; -=C2=A0 =C2=A0 const PL011_ID_LUMINARY: [c_uchar; 8] =3D [0x11, 0x00, =
-0x18, 0x01, 0x0d, 0xf0, 0x05, 0xb1];<br>
-&gt; +=C2=A0 =C2=A0 /// Value of `UARTPeriphID0` register, which contains t=
-he `PartNumber0` value.<br>
-&gt; +=C2=A0 =C2=A0 const fn uart_periph_id0(self) -&gt; u64 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x11<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /// Value of `UARTPeriphID1` register, which contains t=
-he `Designer0` and `PartNumber1` values.<br>
-&gt; +=C2=A0 =C2=A0 const fn uart_periph_id1(self) -&gt; u64 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (match self {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Self::Arm =3D&gt; 0x10,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Self::Luminary =3D&gt; 0x00=
-,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }) as u64<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /// Value of `UARTPeriphID2` register, which contains t=
-he `Revision` and `Designer1` values.<br>
-&gt; +=C2=A0 =C2=A0 const fn uart_periph_id2(self) -&gt; u64 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (match self {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Self::Arm =3D&gt; 0x14,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Self::Luminary =3D&gt; 0x18=
-,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }) as u64<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /// Value of `UARTPeriphID3` register, which contains t=
-he `Configuration` value.<br>
-&gt; +=C2=A0 =C2=A0 const fn uart_periph_id3(self) -&gt; u64 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 (match self {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Self::Arm =3D&gt; 0x0,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Self::Luminary =3D&gt; 0x1,=
-<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }) as u64<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /// Value of `UARTPCellID0` register.<br>
-&gt; +=C2=A0 =C2=A0 const fn uart_pcell_id0(self) -&gt; u64 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x0d<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /// Value of `UARTPCellID1` register.<br>
-&gt; +=C2=A0 =C2=A0 const fn uart_pcell_id1(self) -&gt; u64 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 0xf0<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /// Value of `UARTPCellID2` register.<br>
-&gt; +=C2=A0 =C2=A0 const fn uart_pcell_id2(self) -&gt; u64 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 0x05<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /// Value of `UARTPCellID3` register.<br>
-&gt; +=C2=A0 =C2=A0 const fn uart_pcell_id3(self) -&gt; u64 {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 0xb1<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-<br>
-This seems extremely verbose and rather obscures the fact that these<br>
+<div dir=3D"auto"><br><br><div class=3D"gmail_quote" dir=3D"auto"><div dir=
+=3D"ltr" class=3D"gmail_attr">Il dom 17 nov 2024, 11:21 Manos Pitsidianakis=
+ &lt;<a href=3D"mailto:manos.pitsidianakis@linaro.org">manos.pitsidianakis@=
+linaro.org</a>&gt; ha scritto:<br></div><blockquote class=3D"gmail_quote" s=
+tyle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);pad=
+ding-left:1ex"><div dir=3D"auto"><div><div class=3D"gmail_quote"><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px s=
+olid rgb(204,204,204);padding-left:1ex">This seems extremely verbose and ra=
+ther obscures the fact that these<br>
 registers are a set of adjacent simple ID registers, compared to<br>
-the previous code which defined them as an array of values.<br>
-<br>
-Isn&#39;t there some way to write this that doesn&#39;t need so much code t=
-o do it?<br>
-All the PLxxx devices and various others have this set of standard<br>
-ID registers, because it&#39;s part of a standardized scheme, so we&#39;re<=
-br>
-going to end up with similar code in multiple device models. I would<br>
-hope that Rust offers us ways to avoid having boilerplate code<br>
-where you need to write dozens of lines to express this.<br>
-<br>
-thanks<br>
--- PMM<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"=
-auto"><br></div><div dir=3D"auto">One could abstract them with declarative =
-macros to reduce the line count. WDYT about that approach?</div><div dir=3D=
-"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
+the previous code which defined them as an array of values.</blockquote></d=
+iv></div><div dir=3D"auto"><br></div><div dir=3D"auto">One could abstract t=
+hem with declarative macros to reduce the line count. WDYT about that appro=
+ach?</div></div></blockquote></div><div dir=3D"auto"><br></div><div dir=3D"=
+auto"><div dir=3D"auto">No, this is just overcomplicating things. Like Pete=
+r said, just use arrays. Copying from the V1 review for reference:</div><di=
+v dir=3D"auto"><br></div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0const UART_P=
+CELL_ID: [u8; 4] =3D [0x0d, 0xf0, 0x05, 0xb1];</div><div dir=3D"auto">=C2=
+=A0 =C2=A0 =C2=A0const ARM_UART_PERIPH_ID: [u8; 4] =3D [0x11, 0x10, 0x14, 0=
+x00];</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0const LUMINARY_UART_PERIPH=
+_ID: [u8; 4] =3D [0x11, 0x00, 0x18, 0x01];</div><div dir=3D"auto"><br></div=
+><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0/// Value of `UARTPeriphID0` through=
+ `UARTPeriphID3` registers</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0const=
+ fn uart_periph_id(&amp;self, idx: usize) -&gt; u8 {</div><div dir=3D"auto"=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0match self {</div><div dir=3D"auto">=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Self::Arm =3D&gt; ARM_UART_PER=
+IPH_ID,</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0Self::Luminary =3D&gt; LUMINARY_UART_PERIPH_ID,</div><div dir=3D"auto=
+">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}[idx]</div><div dir=3D"auto">=C2=A0 =
+=C2=A0 =C2=A0}</div><div dir=3D"auto"><br></div><div dir=3D"auto">=C2=A0 =
+=C2=A0 =C2=A0/// Value of `UARTPCellID0` through `UARTPCellID3` registers</=
+div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0const fn uart_pcell_id(idx: usize=
+) -&gt; u8 {</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Self:=
+:UART_PCELL_ID[idx]</div><div dir=3D"auto">=C2=A0 =C2=A0 =C2=A0}</div><div =
+dir=3D"auto"><br></div><div dir=3D"auto">Paolo</div></div><div class=3D"gma=
+il_quote" dir=3D"auto"><blockquote class=3D"gmail_quote" style=3D"margin:0p=
+x 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><d=
+iv dir=3D"auto"><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote cl=
+ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
+ rgb(204,204,204);padding-left:1ex">
 </blockquote></div></div></div>
+</blockquote></div></div>
 
---0000000000005d20b80627192758--
+--00000000000092c2d5062719ee65--

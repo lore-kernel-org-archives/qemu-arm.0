@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2742990njc;
-        Mon, 18 Nov 2024 09:24:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWTw2+LBKTzzdbqQ5HZ4uuViIr7aDFDnxRa19HjpA96IdGRgYoNmW+LroEsukj2Onh+zEeFnLisMKuK5A==@linaro.org
-X-Received: by 2002:a17:902:ccce:b0:20b:775f:506d with SMTP id d9443c01a7336-21248a1be67mr12784685ad.34.1731950656688;
-        Mon, 18 Nov 2024 09:24:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731950656; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2743017njc;
+        Mon, 18 Nov 2024 09:24:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU2wPoyjSU2c9CNASk0D1eMWHlH4SCHZONhx/FjKss37sSSTI9i3kbR6w5NQ+V1/sLLYpFRVAGe0Qj/kQ==@linaro.org
+X-Received: by 2002:a17:902:ecc4:b0:212:12a2:4007 with SMTP id d9443c01a7336-21212a24570mr65129385ad.34.1731950658933;
+        Mon, 18 Nov 2024 09:24:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731950658; cv=none;
         d=google.com; s=arc-20240605;
-        b=LOXaB+BrLDbHnOgJoIKU6FPfBYGwbG85zDiq6ynDYsIcx/6EzJ1CaOGTbipXJrqIu1
-         MWGNDnps52RXEsWgKK/8geFYziE0B657hpkANgZ7xMhhpIBxJfNG6gTBfWwHNqX9gsVC
-         qWYKBCUk6ENYneE/dX7kV1lX/oK6MIujppXbaLlddmWSvCW6G5Mj6KVB02xHHGjwYykO
-         hL6keyThTHTtBALKoTwweHKXNSEsKIaYrzKXBvg/tupcHsupiz6MZomzJGKGO/YVdBw7
-         phGhBTWtDvzY3WnIrsWNJKgci2Wn4UlKxsCpFSbDW7vyiHWm/d3sCmUPrFWce6ZEdW2e
-         ynDg==
+        b=Hm5/47Hw8JQ5XmJCCFisAeHyM0TXsIOSuRDJivS/Up5v1cuiPiAcA6gjwfM5e69sf1
+         LBhVfKTzXI4YEIJmCnR+Czf5ruiloyAe3qggPy8ae6XDGrNh7P4q6VZC9pPIGGLXZVso
+         nkDXRAy0qLuFrie7ctgvC5zcwfLph/qt9QFpx482xcvFdqLsHDjXyHN4jCowv+Lul9Fj
+         kfLhF9jLcY47ebaZNuNNt7/Yv34JH9astFmJ4gYuqliTMPergQSMLltoGsqmTfBa1Eqy
+         FRaFb9HGmu4ysNE8axrLTBForlVFHcHhCzeI7I4hi4bpGgT2TVn0yJ4zbzHrj363DuCb
+         Vj4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=QaxpMkzADG4IGRoaMKuDLbk1XxCkXT1oglYVymp2yRk=;
-        fh=a8VQiHFq83iVzqjxX1yCsC0biqYcl2OdijpxzWQfuJU=;
-        b=jslmB48cjVHjfk5qcsJKLxUEGN8bE2I4pQJeqvwcOidKs7LGdnUXKwvYJHabggOuLb
-         hDLYE7uwJ0dOvYlqOw0ighwzvjWaMX4JXDy42A9rvuRaa5XZPGfklRvekGkEZ78d+ryi
-         jVR+x2b+xJCNO4szHv7vyXG8WTDj5TPUxjk3y2BTimWqOzwvzutKdSy4hRU7R+lAMfYE
-         SegV5sanIWbAoNfikYcoVGOtX1g4p35Yip9zxvX+pL7qejaKu91P3otbGylZ7EVSpnCP
-         s34WkNdFdqmJCzPGxMSz5ZUusAF8ZXZofaWI1FEsZKMKQHZnust5wZmEeK+8sMpJxHo+
-         GDcg==;
+        bh=zrtTSIAZyM7Cil0D9jbVirGKiaDBwbsx28N7FRyo/s0=;
+        fh=ecSRmFy0n+JgzrQb5f4+eBGvkGfiK5DjZ+ZhuetgVq0=;
+        b=hkgHVuugrsx3dUwoi+cxKfQD3PF/xi2suSzB2z28h685bYU+3/vNeUva1M1bT9pMd2
+         aMywkoysmARn9LLqRA3VGpE6n8F6slCaBqktW9XsWeoceyWojgiq9kzVNnA3kSDJwkTp
+         rx3c9+LXTbZRT/XyCTPIHpQ8et3IDTVRpvbGonuf5V1vJ+IGxr5qw4y3GFX8nzxZe6r7
+         3m+VC7ao57013CQ1OBhn4OYFu9JPzen7grf2hWwfak+pxKzRQ2Srq0FHxiQ59kC5sztf
+         SMIt3EwVfaZdAdb1MINgZcJIMlpAR9/tNuz16Ot178gKZkkATMAsgkPX2IygyF09D50Q
+         GF6w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=opqxhO+y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZiB1u7hD;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-211e99b7ff1sor41522735ad.11.2024.11.18.09.24.16
+        by mx.google.com with SMTPS id d9443c01a7336-211c7c7f780sor58705885ad.9.2024.11.18.09.24.18
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Nov 2024 09:24:16 -0800 (PST)
+        Mon, 18 Nov 2024 09:24:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=opqxhO+y;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZiB1u7hD;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731950656; x=1732555456; darn=linaro.org;
+        d=linaro.org; s=google; t=1731950658; x=1732555458; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=QaxpMkzADG4IGRoaMKuDLbk1XxCkXT1oglYVymp2yRk=;
-        b=opqxhO+yS7NnLUV+OH3P7sCcacIQcpn9QjYva4vduXXtww758o9gT5S7pKY92v7WLe
-         zOxQ/1E1JjlLM/f9BNNHuzU+HzlB3tD2C2GAkjS+oTY2innujW0OspBEJ5eho7T8/1fj
-         WCr0e65Q43kPVAFM4QWeHCycAgcPnvdzy1KOlfQsfVQ4gsdb8QTSainRYRCyV3XWlBmJ
-         UDyWC04aRJpberQb8v/7NSlWBX99/20maOupe243jdjzZWDKNG711iGGnePil82cwKvz
-         F2XCiNHe0WfLE1d7Janw+Boxn/rtIkAYEE6iY0Bvt/aJdoDYZZUP5eWypRu94g0qv1rq
-         QyOw==
+        bh=zrtTSIAZyM7Cil0D9jbVirGKiaDBwbsx28N7FRyo/s0=;
+        b=ZiB1u7hDwgD33/uV1xLC0gWZ8Uhpoz4E0TlRGBzs4y5MWPLEhhHfGcIzg7o/NwTK0r
+         NwRdQxOTCCg89X0CPae9TaPgQxL0prrcI3sTRsX207+FUGx4JHfAi7B9PvOZhdPxyMS4
+         OiQZlNUhPt0nCc/K1IZXcuNrKI33TWIWBxZC8xpIF/KQ4b4x++E+uYmedH4D8m3JoZzX
+         JJDMr060TPu/E4h0M8U2Fatwrx4AxyUrgl4Dhq4M3OgriLDoXhR3Qm9je2Zieeyl1OAe
+         mIzLa1lpWTQdmpTVFgPjL8U+MV0pwg8tjHdc25e0ayqTqt0VoPgrx7qeBn5zuLzf3dY7
+         2kMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731950656; x=1732555456;
+        d=1e100.net; s=20230601; t=1731950658; x=1732555458;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=QaxpMkzADG4IGRoaMKuDLbk1XxCkXT1oglYVymp2yRk=;
-        b=G74HmOvvlJYma8AtTK+xF7KlUdSzNzVXAHOiqeLhGiZR7QH7yYXghoEjfgT7lHnrQI
-         tUIm/j+zFIPv+bBzdop9levSTtZNoPvKIphEjhlYpJ1sHa7Ltxk6fCaqXHXKy4jWA6S+
-         fuAA1u260RFe1sW0Rjb7+M8n+y+14o4S+RmRfJ92hWYASaMYRF0pExRa+rVJW+9FpxWC
-         pDXub9pAGMoGb80b26cqc2uxdjWt3DAbqZ+tdfnEK+6LdRUzwuf8OcZdvfC/eY5ObEaJ
-         iWXzCASzCoi1geS4UikZQHXi5SKrZIujRul0zdsDNlBO6M2QI9uT/tQxIooUYkoBWfcT
-         oSAQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUPOcASeOHdivb5WQTuMMHCNSs9chYrNSJjT7WKXf262AbGSADlOU2O5p7TWneslNNoQ/tFX8rPjTJGOw==@linaro.org
-X-Gm-Message-State: AOJu0YwkI+ge/Lfcecxdxkg/NIM6Z3r85H//RW4NRW7NexVWySlYsxWW
-	Jm8B+EIIaEZzA6d/VjDDAZ8BeEy/pNo8M/zQq8Ji5UiR8rxChlRMtBZSYCNr1ocD0g==
-X-Google-Smtp-Source: AGHT+IFnMWEzRgiYq/B3mYM/U/z+PUqF1APKbd5/ZA8bwDsu0j2FORNnIWlcrwKq/X5tQE+U6piRrg==
-X-Received: by 2002:a17:902:d508:b0:20c:5c13:732e with SMTP id d9443c01a7336-211d0ebf9ffmr195717105ad.38.1731950656051;
-        Mon, 18 Nov 2024 09:24:16 -0800 (PST)
+        bh=zrtTSIAZyM7Cil0D9jbVirGKiaDBwbsx28N7FRyo/s0=;
+        b=Ova9ezrstkxUUMZUa5GGe7iP1zCdYHjc7ljCZlp/4QXJNB1hBrkm8aDKS6FkmOFMTq
+         /KxJF/HVJi+SLOk++GzYCDfQwzCeGrlL4Y5F1xT4Vxk92+FgKjIyJJL1d3B9TrIX5spm
+         mpaKbTI4OF0+lmC54RUSXDmRtkMi6mTHfKIHBIUq/4kxuAQghGNm9xYbTdZWWDvKdhSF
+         jbGVVaYLv2jpkRTBRf9Ikrg7a2lxjyqQCNqrFGfbVdHltJMWS1AYYlTF8W9Ki0lCUVT0
+         BsXzebGLTGWMY8yTM7zErop2a+Ta/lOye9XoZYeuYLqQkY9tw26WzEjGPdc/WoUtZqkx
+         0u1g==
+X-Forwarded-Encrypted: i=1; AJvYcCVgt6tqqvvVj130xHYZGbrMW34vQkM4FqlyJlnzSKbxbAHq8tPd2GMsoI+ZYY3htXVlRzoXHXlilfPWMQ==@linaro.org
+X-Gm-Message-State: AOJu0YzQDeRvPMjK9FZ+oOZ1TiU65Sjl06RzKVrX8fThnOgbnzxi3ug9
+	eQwMseWV5Vl30BncKRGnmO0aCQW0Qz97d0J38rJTO9dcXBN93CU67YI7WQtE5MOaNA==
+X-Google-Smtp-Source: AGHT+IGHEKlIRWL+XYdRBjSjr+8KS7IdhoUvTf18r/81DSRfBRUnTVVNUgJVrL0Adv0eAFM3HfQNwQ==
+X-Received: by 2002:a17:902:da92:b0:20c:c694:f6c6 with SMTP id d9443c01a7336-211d0ed25e5mr183981405ad.49.1731950658440;
+        Mon, 18 Nov 2024 09:24:18 -0800 (PST)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-211d0f55d04sm59469765ad.264.2024.11.18.09.24.15
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-211d0f55d04sm59469765ad.264.2024.11.18.09.24.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 09:24:15 -0800 (PST)
+        Mon, 18 Nov 2024 09:24:18 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -100,45 +100,180 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	gustavo.romero@linaro.org,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 2/7] docs/devel: add git-publish for patch submitting
-Date: Mon, 18 Nov 2024 09:23:52 -0800
-Message-Id: <20241118172357.475281-3-pierrick.bouvier@linaro.org>
+Subject: [PATCH 4/7] docs/devel: add information on how to setup build environments
+Date: Mon, 18 Nov 2024 09:23:54 -0800
+Message-Id: <20241118172357.475281-5-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
 References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: b9L/PbU2uHpB
+X-TUID: uihOnQ+o3n/y
+
+MacOS and Linux are straightforward, but Windows needs a bit more
+details.
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- docs/devel/submitting-a-patch.rst | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ docs/about/build-platforms.rst   |   4 +-
+ docs/devel/build-environment.rst | 114 +++++++++++++++++++++++++++++++
+ docs/devel/index-build.rst       |   1 +
+ 3 files changed, 118 insertions(+), 1 deletion(-)
+ create mode 100644 docs/devel/build-environment.rst
 
-diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
-index 349c32ee3a9..953682f20cb 100644
---- a/docs/devel/submitting-a-patch.rst
-+++ b/docs/devel/submitting-a-patch.rst
-@@ -237,6 +237,20 @@ attachments can be used as a last resort on a first-time submission.
+diff --git a/docs/about/build-platforms.rst b/docs/about/build-platforms.rst
+index 6102f00aec0..c1ea53db834 100644
+--- a/docs/about/build-platforms.rst
++++ b/docs/about/build-platforms.rst
+@@ -29,6 +29,9 @@ The `Repology`_ site is a useful resource to identify
+ currently shipped versions of software in various operating systems,
+ though it does not cover all distros listed below.
  
- .. _if_you_cannot_send_patch_emails:
- 
-+Use git-publish
-+~~~~~~~~~~~~~~~
++You can find how to install build dependencies for different systems on the
++:ref:`setup-build-env` page.
 +
-+If you already configured git send-email, you can simply use `git-publish
-+<https://github.com/stefanha/git-publish>`__ to send series.
+ Supported host architectures
+ ----------------------------
+ 
+@@ -130,7 +133,6 @@ Optional build dependencies
+   cross compilation using ``docker`` or ``podman``, or to use pre-built
+   binaries distributed with QEMU.
+ 
+-
+ Windows
+ -------
+ 
+diff --git a/docs/devel/build-environment.rst b/docs/devel/build-environment.rst
+new file mode 100644
+index 00000000000..d9a66f5fcc6
+--- /dev/null
++++ b/docs/devel/build-environment.rst
+@@ -0,0 +1,114 @@
++
++.. _setup-build-env:
++
++Setup build environment
++=======================
++
++QEMU uses a lot of dependencies on the host system. glib2 is used everywhere in
++the code base, and most of the other dependencies are optional.
++
++We present here simple instructions to enable native builds on most popular
++systems.
++
++You can find additional instructions on `QEMU wiki <https://wiki.qemu.org/>`_:
++
++- `Linux <https://wiki.qemu.org/Hosts/Linux>`_
++- `MacOS <https://wiki.qemu.org/Hosts/Mac>`_
++- `Windows <https://wiki.qemu.org/Hosts/W32>`_
++- `BSD <https://wiki.qemu.org/Hosts/BSD>`_
++
++Linux
++-----
++
++Fedora
++++++++
 +
 +::
 +
-+    $ git checkout master -b my-feature
-+    $ # work on new commits, add your 'Signed-off-by' lines to each
-+    $ git publish
-+    $ ... more work, rebase on master, ...
-+    $ git publish # will send a v2
++    sudo dnf update && sudo dnf builddep qemu
 +
- If you cannot send patch emails
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++Debian/Ubuntu
+++++++++++++++
++
++You first need to enable `Sources List <https://wiki.debian.org/SourcesList>`_.
++Then, use apt to install dependencies:
++
++::
++
++    sudo apt update && sudo apt build-dep qemu
++
++MacOS
++-----
++
++You first need to install `Homebrew <https://brew.sh/>`_. Then, use it to
++install dependencies:
++
++::
++
++    brew update && brew install $(brew deps --include-build qemu)
++
++Windows
++-------
++
++You first need to install `MSYS2 <https://www.msys2.org/>`_.
++MSYS2 offers `different environments <https://www.msys2.org/docs/environments/>`_.
++x86_64 environments are based on GCC, while aarch64 is based on Clang.
++
++We recommend to use MINGW64 for windows-x86_64 and CLANGARM64 for windows-aarch64
++(only available on windows-aarch64 hosts).
++
++Then, you can open a windows shell, and enter msys2 env using:
++
++::
++
++    c:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64
++    # Replace -ucrt64 by -clangarm64 or -ucrt64 for other environments.
++
++MSYS2 package manager does not offer a built-in way to install build
++dependencies. You can start with this list of packages using pacman:
++
++Note: Dependencies need to be installed again if you use a different MSYS2
++environment.
++
++::
++
++    # update MSYS2 itself, you need to reopen your shell at the end.
++    pacman -Syu
++    pacman -S \
++        base-devel binutils bison diffutils flex git grep make sed \
++        ${MINGW_PACKAGE_PREFIX}-toolchain \
++        ${MINGW_PACKAGE_PREFIX}-glib2 \
++        ${MINGW_PACKAGE_PREFIX}-gtk3 \
++        ${MINGW_PACKAGE_PREFIX}-libnfs \
++        ${MINGW_PACKAGE_PREFIX}-libssh \
++        ${MINGW_PACKAGE_PREFIX}-ninja \
++        ${MINGW_PACKAGE_PREFIX}-pixman \
++        ${MINGW_PACKAGE_PREFIX}-pkgconf \
++        ${MINGW_PACKAGE_PREFIX}-python \
++        ${MINGW_PACKAGE_PREFIX}-SDL2 \
++        ${MINGW_PACKAGE_PREFIX}-zstd
++
++If you want to install all dependencies, it's possible to use recipe used to
++build QEMU in MSYS2 itself.
++
++::
++
++    pacman -S wget
++    wget https://raw.githubusercontent.com/msys2/MINGW-packages/refs/heads/master/mingw-w64-qemu/PKGBUILD
++    # Some packages may be missing for your environment, installation will still
++    # be done though.
++    makepkg -s PKGBUILD || true
++
++Build on windows-aarch64
++++++++++++++++++++++++++
++
++When trying to cross compile meson for x86_64 using UCRT64 or MINGW64 env,
++configure will run into an error because the cpu detected is not correct.
++
++Meson detects x86_64 processes emulated, so you need to manually set the cpu,
++and force a cross compilation (with empty prefix).
++
++::
++
++    ./configure --cpu=x86_64 --cross-prefix=
++
+diff --git a/docs/devel/index-build.rst b/docs/devel/index-build.rst
+index 0023953be36..0745c81a264 100644
+--- a/docs/devel/index-build.rst
++++ b/docs/devel/index-build.rst
+@@ -8,6 +8,7 @@ some of the basics if you are adding new files and targets to the build.
+    :maxdepth: 3
  
+    build-system
++   build-environment
+    kconfig
+    docs
+    qapi-code-gen
 -- 
 2.39.5

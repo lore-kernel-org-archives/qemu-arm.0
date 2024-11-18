@@ -1,176 +1,226 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2573230njc;
-        Mon, 18 Nov 2024 05:21:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCURFf467eZTKyaqWsuFHu5jwMal2WM6f+BjIm/qMe1uUEx0xbf0w58+FJJAq4QvBl7jNK61I9cGlGD+tQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEXnxpkK46UcqFAzwcBlHyxTkCbwNpHFctvnKhhoI6QJcre+gCRAWESHdwLfVL/Bv4KmQjf
-X-Received: by 2002:a05:622a:298f:b0:463:16e:c5d2 with SMTP id d75a77b69052e-46363de1fcbmr165948221cf.11.1731936075082;
-        Mon, 18 Nov 2024 05:21:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731936075; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2587862njc;
+        Mon, 18 Nov 2024 05:46:38 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV6gEkXWgJZDa6Wk/J68BNVug44S41KoL+MiYq7ntQUoflzGXsguU8OHOYqhlzDfuMSUjqOaeX+0THuNg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG77pLmnNlmFWIl+drCkUJetYm3IbZmsQhOS9/Ih6YNJ6ochqlZlC6NBa2iVNVHFIe737bG
+X-Received: by 2002:a05:6214:319f:b0:6d3:fa03:23f1 with SMTP id 6a1803df08f44-6d3fb76d898mr180413906d6.13.1731937598113;
+        Mon, 18 Nov 2024 05:46:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731937598; cv=none;
         d=google.com; s=arc-20240605;
-        b=GqA0LmRcP7mFk+H5jpQOOQS1HAKQ03699luAraNeqs7SVxFnBZ39tQrqXNxomUVxde
-         0SPwxCSjbdVvLhzL+ydp5qD0F+FVNGhO5G4Wwzb0U+qRe5Uk+yE2cro+g+gg5vCmTAHZ
-         4m0rGThd4sjJXoJp1hkkGVQj+SSA+z7KkCPrnmJgw/fa3DWwd86mtAOEP3seeIDnQkuz
-         DMi/w9ETtx7lHBrwP5OMVKm88fjrLnSSahkksqQZ+shlUl+t6kvWSPXOieEg585OLQqB
-         SqzDgKEG+4eM0DgDXYsF4odZvbMMx7D010R0XrWbVPqM4yZB+b3sQlX+ulkEX+DqsKqy
-         A7jA==
+        b=KoBJ+euycbC3CZWU0FZNr0GXNRYt2SN8F451Ja/SYnMi9A9IIf/Eyggc3KNJwTbVxD
+         DSXvTYNkN42YwkdwedPXCOWfs51L5OC/dYeR9kcKCR0adA1am1e4UIANvD7218l9U6a0
+         tDLUaFcrmVtldHzq5VZBwK+gaQxzDonSoihwHAK9HzIfyqEfW39GpPOB96lQAvXZBJZq
+         ZsdRIkohz/JstJZ502iIQRHxEMl1WSWEQgcXRia6FF9tUy28cGj2TYcDPhKpV5dVd9BK
+         XuDmvZXzYrEIBcc1xC1yVOkNZNDh5LPljt7l1ZKSf7dS6kZpco3GsV98dwf4388jd/o2
+         3/ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ZZRL82nACjZeHEn3zTfFNgDHsmHEaxj0UkIBt/Rf+rU=;
-        fh=GKtMJkZEQSP3TcLyc0grEzMd7PUjXGgwfc97H7lAsls=;
-        b=fLwcuZEv56JNAQbIq09PcNakMKvuZ6V4oqKSfJBWb3EeBjh371fa9t7LGG8BpH4QUt
-         IG0LZ2H28L12koDnjia7cpDc2l4CNMxT3DsxtTp7ccI4Gxj04dIzaFIUO/BaPyyybnQB
-         Acbu8Zn7bBnqcD1fgf4jz1rwHyZmHcrBbV/+oBlb+gE009iBLS4lcmWYPwwDtUn7F98r
-         LAlmoUrvK5qQHQaJTZfdSSlEXaQ8hmrkLpznhp8TQuNGJsG6trB2QQqkdDw+P+jdr2Jh
-         zx9wDb6wwrnS4T5wtMDTcTlsvvZ8xIm0GnX5Ih6G3bbw0mRQ0ZWeMD9eGS2XmXklgfCv
-         gvCw==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=4aXRwMuXZA9xXLR2PBwNDTi0Od7kPErzY7NzN0KuU8c=;
+        fh=WVoRb4skAQnBn3yvLSNHivUQlrxT7jXJTD34meBKAcE=;
+        b=kKW3/JCbDl9Om3Q492YgR1dOVr8PhCT4W/5jimROUUmxdEiKoAOCGtq4NFwKNYEk6j
+         CTQ0Ehsasvjrv1ryBhdCaCuW32xhuTf6YE5HzjVi0khbmGEL9wkvdkIHHfmYhnKpMkdo
+         d633QUoX1PDADSYMbz7na7DOZ/4y/EtlcrChJeknzp2KH4aPGsY3aTEDnKxKm/SbDYEF
+         ofFZ8gkYCGIH7hOxc77G/9eZ0jvv5ubdQXKwN/2xfWLNc9L1p6+5ZPuIKFgT5GHnrtM4
+         +o5NoK5egQ4xVV88LPIztrK3sqA8CfQ1b00PTkVgUgF8b5WmTeNIXT92WN4FXV4Qj10s
+         eEXQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fn0STWrt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CdaiS87y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4635aaedafbsi116426121cf.406.2024.11.18.05.21.14
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d40dd7879bsi66313266d6.506.2024.11.18.05.46.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2024 05:21:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Nov 2024 05:46:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fn0STWrt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CdaiS87y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tD1gf-0004mp-Q1; Mon, 18 Nov 2024 08:21:05 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tD24p-0002Zb-4X; Mon, 18 Nov 2024 08:46:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tD1ge-0004mX-6y
- for qemu-arm@nongnu.org; Mon, 18 Nov 2024 08:21:04 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tD1gc-0002Gi-9d
- for qemu-arm@nongnu.org; Mon, 18 Nov 2024 08:21:03 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5cfd3a7e377so463533a12.2
- for <qemu-arm@nongnu.org>; Mon, 18 Nov 2024 05:21:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1731936060; x=1732540860; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ZZRL82nACjZeHEn3zTfFNgDHsmHEaxj0UkIBt/Rf+rU=;
- b=fn0STWrtVHoR+aBmi4Sd6z4kyPQ5LYejqcDJ9tsGwDIXe4XI2evWl5kzagm+VR3JYS
- LtlwBGXyNxt85QBntsOfayHVyMRX3P4dEc8SWuQAixypSfWEy99f/N1KQaYoSGqAZBZM
- Y573gyMQ6/VRO3zGfI7Tng1hIcbLjr+mnb5enPpYIgKfeAqAbXUSXjsAiblesuq1Vk8A
- 1nUVmyvjbMfKp8N7xys9TEa9CvTnOdW9OYhuT6/e1B88RDb1CPXwc4mrqqdEwhCtEIOl
- y++dSVDg1xKZqvBjWw802bDWh+KEtpGIOXCY7reVgqsXudbDzo4w2Unxuwf9H1SreFUG
- KGWw==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tD24l-0002YR-Ar
+ for qemu-devel@nongnu.org; Mon, 18 Nov 2024 08:46:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1tD24j-00065s-2M
+ for qemu-devel@nongnu.org; Mon, 18 Nov 2024 08:45:58 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1731937555;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=4aXRwMuXZA9xXLR2PBwNDTi0Od7kPErzY7NzN0KuU8c=;
+ b=CdaiS87yhbnITTF/7Mwg58rOXWzu3dSRUbHaJ6K0Xl0PrfBWw3ndGc47m2J4BJFpWQMmZ8
+ BkVvSOwQfcJQXMeQ8+wzREw/GgUuv9bGmwqQRbNtAwueRGGTcCj0S58Tr98BlXyzxHeGsc
+ sp64bFfIbFgL+PEsEVQmN2/P/NYALDA=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-97-dtac_isaM76n2VomqzLwKA-1; Mon, 18 Nov 2024 08:45:54 -0500
+X-MC-Unique: dtac_isaM76n2VomqzLwKA-1
+X-Mimecast-MFC-AGG-ID: dtac_isaM76n2VomqzLwKA
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4316655b2f1so20566155e9.0
+ for <qemu-devel@nongnu.org>; Mon, 18 Nov 2024 05:45:53 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731936060; x=1732540860;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1731937553; x=1732542353;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:reply-to:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ZZRL82nACjZeHEn3zTfFNgDHsmHEaxj0UkIBt/Rf+rU=;
- b=X3d+ie+QJkCdimST5JMCuMwEgjgC3InEBiW6uTmfHJz80yzpgzzCQsYVSN+6oXrf0g
- 9wO4mMqZBW4t/enx4SvsI+KQsPpGHcDEZNcyGwO+6Gvw1e7dMqwktv/tev9ZwQHaifwG
- q78u8V6p/JU1Xs99P16/K7D5Tl5kOFecmvy6RVQcj0uTJOJCBP23h5kME7iJg0OfC5bq
- DarohQzug/NXEYs7ITcvY+I2lAYB9QPTcoQ01KjG8A0KboYUtF/oK6OKS1y3YEpv8hXK
- x0GivAbVQxUEt68hZgzRHpGMauBEWGjeV4z5Yr+WcL5TqvYzYFva5VXxX2t6PFlkHpyk
- GrCA==
+ bh=4aXRwMuXZA9xXLR2PBwNDTi0Od7kPErzY7NzN0KuU8c=;
+ b=uwAOAk0iZUS93DdufeeLcO7+HMW5KszjLnTcHA1M8mtHd+K0dzSpwNHaFjksu/K7ST
+ ZsGmqWtOoQoyR9l9iIOJ2ijE5InoPvNAzMRsFYv+BlQ4UgomtbVj9U1T9i+E1dK3I0h2
+ UREWjdLvvkQKR6loByOEHLoR4+iCRWQEWcootdh1tUUthBrTsuBinxHbxnw5Ouu3X6Ao
+ Om0i7iXfSBJAyntSa5i5934ZT7zsNu4XHYFOIAaZwQJdlHTdPFg9YGp0BEL5QtSL8Dy9
+ dfa09TYGV65tFkNv3TWcVLG0R6URiNyYd8j5Ro2IySQUzNe2ZjubgPJXxdOuv7sa0W5g
+ Iy3g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXStz4kc+20PT2TYJPQ8+QTKteTl347UIBHoOf+srLLXEPBl9iZUqQFVwXttOvwxtsY+m9OjPZoQg==@nongnu.org
-X-Gm-Message-State: AOJu0YxiLp41AVOzxkcwCko83hprIYstuFJ6tHheO8zVUT9fXxSQV0uq
- ILW/yMZAD+tgR+WIFhb6IcU2iDIwZ6TzCarBnVx4euFL5Hrb5NwZnq1JM79/NKCZjICZl+hyi8u
- sK+s2ywBOVmHl/d7wN0gNboOMP8uDNC4PCbgLEA==
-X-Received: by 2002:a05:6402:d06:b0:5c9:59e6:e908 with SMTP id
- 4fb4d7f45d1cf-5cf8fc14246mr9277984a12.6.1731936060436; Mon, 18 Nov 2024
- 05:21:00 -0800 (PST)
+ AJvYcCXIONqmpJpEJj4CSAthlJrMIM4e2V3IaNPUMLAEsdEUFdXGhA/fiCgHKTWM4pyMphm/VtYfKK/Yp5VH@nongnu.org
+X-Gm-Message-State: AOJu0YwOOBml7CxKkHrN23fZySRficBbjfkqbp5FAtUDXPFvN64rD3mz
+ O3Hu3rPlDrFeJcz9RUFXq9rzYopw5ge/pYomZDJKv0HIJ+tl55/XuJyZR5zGVdwUSQk/QZFhOjD
+ B71Uv4kxuKos0UEu5f/wQH/fGR4GDErKCEZ/BY4af8yLWSFg/3CV/
+X-Received: by 2002:a05:600c:5492:b0:431:5d89:646e with SMTP id
+ 5b1f17b1804b1-432df792df0mr91996335e9.32.1731937552982; 
+ Mon, 18 Nov 2024 05:45:52 -0800 (PST)
+X-Received: by 2002:a05:600c:5492:b0:431:5d89:646e with SMTP id
+ 5b1f17b1804b1-432df792df0mr91995995e9.32.1731937552676; 
+ Mon, 18 Nov 2024 05:45:52 -0800 (PST)
+Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
+ ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-432da28b76fsm163395515e9.28.2024.11.18.05.45.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 Nov 2024 05:45:52 -0800 (PST)
+Message-ID: <48bb0455-7c2e-4cc6-aa15-ebe4311d8430@redhat.com>
+Date: Mon, 18 Nov 2024 14:45:50 +0100
 MIME-Version: 1.0
-References: <20241115160328.1650269-1-roqueh@google.com>
-In-Reply-To: <20241115160328.1650269-1-roqueh@google.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 Nov 2024 13:20:49 +0000
-Message-ID: <CAFEAcA9-pusQVN7k8PkUvLvzpxvNEyRuK-A2iS_a_5W_WwNPMQ@mail.gmail.com>
-Subject: Re: [PATCH 0/5] Make WDOGCONTROL.INTEN the counter enable of the
- CMSDK APB Watchdog
-To: Roque Arcudia Hernandez <roqueh@google.com>
-Cc: farosas@suse.de, lvivier@redhat.com, slongfield@google.com, 
- komlodi@google.com, pbonzini@redhat.com, venture@google.com, 
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 4/5] hw/arm/virt-acpi-build: Build IORT with multiple
+ SMMU nodes
+Content-Language: en-US
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, "nicolinc@nvidia.com"
+ <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
+ Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <20241108125242.60136-5-shameerali.kolothum.thodi@huawei.com>
+ <1dcea5ca-806f-4f51-8b13-faf5d62eb086@redhat.com>
+ <efb9fb7fb0f04d92b7776cdbc474585d@huawei.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <efb9fb7fb0f04d92b7776cdbc474585d@huawei.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sgbxsa0wOsBS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: w1gVzXf0/TOG
 
-On Fri, 15 Nov 2024 at 16:03, Roque Arcudia Hernandez <roqueh@google.com> wrote:
->
-> The following patchset tries to address an issue where the watchdog
-> counter was running as soon as the device is out of reset. This
-> created a few problems with the firmware under test. It was pointed
-> out that the firmware under test was already working on an emulator
-> using the real RTL. Further review showed that the WDOGCONTROL.INTEN
-> is also expected to be the counter enable as it is defined in this
-> page from ARM:
->
-> https://developer.arm.com/documentation/ddi0479/d/apb-components/apb-watchdog/programmers-model?lang=en
->
->      |       | Enable the interrupt event, WDOGINT. Set to 1 to
->      |       | enable the counter and the interrupt, or to 0 to
->  [0] | INTEN | disable the counter and interrupt. Reloads the
->      |       | counter from the value in WDOGLOAD when the interrupt
->      |       | is enabled, after previously being disabled.
->
-> The second half of the patch is focused on adding tests for this
-> behavior. It was required to modify the test to be able to run some
-> test cases in the MPS2 since the the stellaris machine had 2 issues:
->
->   - The stellaris machine did not run the counter out of reset
->     because of the way it is reset. The function
->     ssys_calculate_system_clock is not called until the reset phase
->     stellaris_sys_reset_hold which is after the watchdog executes its
->     reset, so the watchdog would not start the counter due to the
->     clock not being set up at the time of reset.
->
->   - The Stellaris machine uses a derived watchdog and not the
->     original CMSDK one which has a special behavior where it cannot
->     be stopped.
->
-> The MPS2 machine on the other hand uses the standard CMSDK watchdog
-> and could expose the problems we were dealing with.
->
-> Roque Arcudia Hernandez (5):
->   hw/watchdog/cmsdk_apb_watchdog: Fix broken link
->   hw/watchdog/cmsdk_apb_watchdog: Fix INTEN issues
->   tests/qtest/cmsdk-apb-watchdog-test: Parameterize tests
->   tests/qtest/cmsdk-apb-watchdog-test: Don't abort on assertion failure
->   tests/qtest/cmsdk-apb-watchdog-test: Test INTEN as counter enable
+Hi Shameer,
 
-Applied to target-arm.next for 9.2, thanks.
+On 11/18/24 12:44, Shameerali Kolothum Thodi wrote:
+>
+>> -----Original Message-----
+>> From: Eric Auger <eric.auger@redhat.com>
+>> Sent: Monday, November 18, 2024 10:02 AM
+>> To: Shameerali Kolothum Thodi
+>> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
+>> qemu-devel@nongnu.org
+>> Cc: peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
+>> ddutile@redhat.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
+>> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
+>> Jonathan Cameron <jonathan.cameron@huawei.com>;
+>> zhangfei.gao@linaro.org
+>> Subject: Re: [RFC PATCH 4/5] hw/arm/virt-acpi-build: Build IORT with
+>> multiple SMMU nodes
+>>
+>>>      /* Number of IORT Nodes */
+>>> @@ -342,10 +356,9 @@ build_iort(GArray *table_data, BIOSLinker
+>> *linker, VirtMachineState *vms)
+>>>      /* GIC ITS Identifier Array */
+>>>      build_append_int_noprefix(table_data, 0 /* MADT translation_id */,
+>> 4);
+>>> -    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
+>>> -        int irq =  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
+>>> +    for (i = 0; i < num_smmus; i++) {
+>>> +        smmu_offset[i] = table_data->len - table.table_offset;
+>>>
+>> I would have expected changes in the smmu idmap has well. If a given
+>> SMMU instance now protects a given bus hierarchy shouldn't it be
+>> reflected in a differentiated SMMU idmap for each of them (RID subset of
+>> SMMU->pci-bus mapping to a specific IORT SMMU node)? How is it done
+>> currently?
+> I thought that smmu_idmaps will be handled by this ?
+>
+> object_child_foreach_recursive(object_get_root(),
+>                                        iort_host_bridges, smmu_idmaps);
+to me this traverses the qemu object hierarchy to find all host bridges
+and for each of them builds an idmap array (smmu_idmaps mapping this RC
+RID range to this SMMU). But to me those idmaps will be assigned to
+*all* SMMU insteaces leading to a wong IORT description because all
+SMMUs will be protecting all devices. You shall only retain idmaps which
+correspond to the pci_bus a given vSMMU is attached to. Then each SMMU
+will protect a distinct PCIe subtree which does not seem the case today.
+At least that's my current understanding.
 
--- PMM
+Eric
+
+
+>
+> But it is possible that, there is a bug in this IORT generation here as I am not
+> able to hot add  devices. It looks like the pciehp interrupt is not generated/received
+> for some reason. Nicolin[0] is suspecting the min/max bus range in
+> iort_host_bridges() may not leave enough ranges for hot add later.
+>
+> Cold plugging devices to different SMMUv3/pcie-pxb seems to be alright.
+>
+> I will debug that soon.
+>
+> Thanks,
+> Shameer
+> [0] https://lore.kernel.org/qemu-devel/ZzPd1F%2FUA2MKMbwl@Asurada-Nvidia/
+>
+>
+

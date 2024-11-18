@@ -1,224 +1,263 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2052468njc;
-        Sun, 17 Nov 2024 05:51:02 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV+VXhepJ8WY6cWosp/pELxS2OixllBG382mHW4Q8ouB2dYVtrDy2dgGG5rTnA8Kss4UBXCV4j11AsWDg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGQer6hVwwKnNuM5hB6nAk8osnZwJpaXJUgaK2Iics06Mg4L/CJ8KJaQbT+pyf2S5tSh+Qb
-X-Received: by 2002:a05:622a:540f:b0:460:3f14:89e2 with SMTP id d75a77b69052e-46363546164mr158906771cf.15.1731851461630;
-        Sun, 17 Nov 2024 05:51:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731851461; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2453256njc;
+        Mon, 18 Nov 2024 01:15:29 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWkm9bSqq2ObsbAbmtU5kDDjHboHElG65oAx/uYy449s77eBgtkHsCI+pcyXDgJc/x/OebkcdkBTNEF7A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFB82taDZdkazaWA8qRzG3EAxlgbbTM8JVJdxc3sonUpIXAcERewNxEqVMUuxdSqSyq9z4I
+X-Received: by 2002:a05:6214:5687:b0:6ce:3af7:3593 with SMTP id 6a1803df08f44-6d3fb847018mr141426996d6.29.1731921329588;
+        Mon, 18 Nov 2024 01:15:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731921329; cv=none;
         d=google.com; s=arc-20240605;
-        b=cRcPOyos45BmMI2I3Yve7Lv8WyCCERNSp0Pi7Ghho3rYsN9wef6UnP1KhZj/XYcDRf
-         IYoXAzE0jMrJO6W73WaJ4mzBC5OF9aI4UsiQ6QDUxL3IjZlgo7owwUpBFl2BXtS1Vw3E
-         opxrXHfHXTDYTB54hlmYpaTnQBDKAzjr7s72hMYGmIZpo1/S8IUEeDA22KtMvS7lA72J
-         AoUDRBNVHn/bPQeKxJG7wdGOWw/3mc4VHkDhSpoTbKF7yOv/v/6Ea80T65vYPWgG7eQS
-         0xOocvTxA+u7QfKZfZMRoLatjbvgTQ8Urj8XcOA4e9v/6755lvOxlz9TtCi3ddl9SSDN
-         mjJA==
+        b=LPDhrw4aT6gLwODx/LqVh7raHbUpFRoEmQScjBvsVSBNmTPE+ESvB4SOIekoX4Epy8
+         0GmJgBbcr7A5QUnNDlfhfG8MluWq//WeYcfsJlrjWgNd0mGlzmexqPSaTbAuBHQ+lGg3
+         XOYs5PhRZuBMvDbhK/HLSefaqMJyq9lq61D/93xJtbmBN8j8DMMr6gKLqStGMCPKTIV8
+         7hQlyfRTnGENjKaehdE3pJcE5JB54Y9IG3IVk9KzePd3i9YbWrs7wNmPUeKOws+PsR1T
+         xThA/N/MgHvTnZjhTr8oHjGlNTISealruj1HmHQuwuxezJ1OL1bpfVfsrJj7HyW3daUj
+         1ipQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=/c3hbRcpnvd9se7nBaaHtOqLgezKzESTCDuZRz+zEik=;
-        fh=pdVBdSybK4qMKTvwsRQPjS5wWDBUI9OHvdpqUWQ88hE=;
-        b=DznCRxTeV58chxwl+YDaXJJ3M+1tpwkUB78fvu2sPWpEbjMR3Jq5dFHp0focz6qqIT
-         ynJjd2IB6ibE8CXB9389Sq4BBJy/+TuVZCkQAwEA9K5hUYoUqfutonzfm/c2PP63hI/6
-         MI8Mf6UXO06upgqBmu9URDlOouLXa7c86U1wYOegGL3pAuyPwYWPa7dZxyr5wtn990eI
-         dfnG2mY4Lb39xuNCkeB9gJ76crBRk7fiZUXRaqhVURX8NGa4LwA/SeixrpP0u6gnK2Q2
-         Zths5Hf8XHmSnS4nzT18iTpuaUjY0teSUYoLfWKhOMV+J91Kq3sf2/agEod+sf+3L7fk
-         qZXw==;
+         :in-reply-to:autocrypt:content-language:references:cc:to:subject
+         :from:user-agent:mime-version:date:message-id;
+        bh=IB2Ld8QsxBQ0nYZXw2Tx7QdgiAhW5HvU7BVF90kei6U=;
+        fh=TURViqy3K1XvuNZe84OqoeD7o7EPiMW5S65v9dvDmlk=;
+        b=Eu01boOCyBjo9MZn4hcsguDM9XCIyKh2+Ux3dTdbKygUQuZowaq0rrCFZ9BBPemZey
+         lRayQHds62q++uwEJRC2I3ZKmhwDYsp5cOCheqhiMpzYpyppIDEI1VszenBn81Ml4Ixg
+         GMs99/9pkvhvuDGyeo7aiwVhfs6xxPXSycWxfBLbQfg2gcDcyEY9y5cUGAufa3VYyGpE
+         tiTIowGtB1+VVGsAsd9s3glbKD59aARoGP3T0/rPYSyGJ29qhehnIOpDB7IpA7Gum62X
+         7Umyq07xeAThaRbMLX2LaMIP61t+UGjaQ7E65AtfPrvjIoLzkzf+qZBCp2/AfmWJQ124
+         3eCQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ErcRpUJa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4635a9890c3si79563451cf.57.2024.11.17.05.50.59
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d40ddbe749si58496776d6.562.2024.11.18.01.15.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Nov 2024 05:51:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Nov 2024 01:15:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=ErcRpUJa;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tCffe-0006Ak-Oj; Sun, 17 Nov 2024 08:50:34 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tCxqo-0002jg-CJ; Mon, 18 Nov 2024 04:15:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paskripkin@gmail.com>)
- id 1tCffc-00069i-Km; Sun, 17 Nov 2024 08:50:32 -0500
-Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paskripkin@gmail.com>)
- id 1tCffa-0002I6-Rj; Sun, 17 Nov 2024 08:50:32 -0500
-Received: by mail-lf1-x12c.google.com with SMTP id
- 2adb3069b0e04-53da3b911b9so2438725e87.2; 
- Sun, 17 Nov 2024 05:50:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1731851429; x=1732456229; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=/c3hbRcpnvd9se7nBaaHtOqLgezKzESTCDuZRz+zEik=;
- b=ErcRpUJar5PiYlN0RpNaFNg0GYD6oH9qb9RnV2o8nsr9pWSeW2Xbj0L+hwpxhB4Pek
- xO5anMFeDo99N8qeDKFRdNXh4f/dUIdAPYpHwGxPmVnNei6GCKvD+w0q0q0VOZYWVae2
- oNlH5pntd6+MAiDo/lvE7TSEOAE0TixcStHpWtNlHIr4bitdTzDMa54k7nEAOTWC9MXW
- JKyC6Kv/MPOBc9QMdp1nBV+19qhr9mw95vazPaw81cj8WntpQofTYh41ooWuzU9YprWB
- AamtNYHX4V3HPbOURH/7ihXv4apRn7udKwbHoKAiC02ydhGa6tV9knBkis/YsNUsuaWh
- c20A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731851429; x=1732456229;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=/c3hbRcpnvd9se7nBaaHtOqLgezKzESTCDuZRz+zEik=;
- b=dkIAclqz2fsEj7cB5n2WPr6vbsb+wUwZbPlc9g7pGXa6ZkL7a0UBC0wwWfAbIs0YQA
- 5EGN/AKrwsb8hMiH+FEYnaUHMUNe/qmCjlHUqW+RbyEHm6yzP0tXyP0ONLaU+VO2F4yt
- NSw5eYcwZH+Xxi47GfqX+zT5l17zwQ/165NiJ13Zes0CTWF+8XPqvNn0absqk7R3iktb
- KE86PvKuKEUDaCcv55C2cYZ3LR4ymN2jR4GhbLayI4LJYv1ANqUkq722Xala6hk1bwDA
- fAQDfiDjvN//9qWwgk/K6yaSummAacQB9g2CH4ZvxiCYYdpCn+oo83fYL5/r2yrMXAAI
- unNA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUxoOhT7FYzSRYcyyZ2y0evytssiLWISerRAwRRhoG+Raw0v0f76tpLdMVIS7/48/nZyWwREYVTLKPu@nongnu.org
-X-Gm-Message-State: AOJu0YzUGgdc9GClQ1tawXHvLXrLAhAOPLJllwCZ8RxI0LZmsMQevUqs
- SnX6tZMBLU2AMPWPMncH9db1LSNTBw2z/FY93gaHb8mkFm5QRS5BcRGdTGII
-X-Received: by 2002:a05:6512:239a:b0:539:f7ab:e161 with SMTP id
- 2adb3069b0e04-53dab3bf59amr3430659e87.45.1731851428494; 
- Sun, 17 Nov 2024 05:50:28 -0800 (PST)
-Received: from fedora.. ([2a00:1370:8180:90b:d00f:257f:ffb:ac70])
- by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-53da65019ccsm1293764e87.110.2024.11.17.05.50.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 17 Nov 2024 05:50:27 -0800 (PST)
-From: Pavel Skripkin <paskripkin@gmail.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Pavel Skripkin <paskripkin@gmail.com>
-Subject: [PATCH v2 2/2] arm/ptw: use get_S1prot in get_phys_addr_v6
-Date: Sun, 17 Nov 2024 08:50:22 -0500
-Message-ID: <20241117135022.37508-1-paskripkin@gmail.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241117134931.37249-1-paskripkin@gmail.com>
-References: <20241117134931.37249-1-paskripkin@gmail.com>
+ (Exim 4.90_1) (envelope-from <SRS0=CkxU=SN=kaod.org=clg@ozlabs.org>)
+ id 1tCxqD-0002fC-7U; Mon, 18 Nov 2024 04:14:41 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <SRS0=CkxU=SN=kaod.org=clg@ozlabs.org>)
+ id 1tCxq9-0000cE-NF; Mon, 18 Nov 2024 04:14:40 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4XsMQ10p99z4xg6;
+ Mon, 18 Nov 2024 20:14:17 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4XsMPx2wsRz4xfs;
+ Mon, 18 Nov 2024 20:14:13 +1100 (AEDT)
+Message-ID: <7c8658ef-e61b-4a46-91cf-6dc26e78158c@kaod.org>
+Date: Mon, 18 Nov 2024 10:14:11 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Subject: Re: backing storage for eMMC boot partitions
+To: =?UTF-8?Q?Jan_L=C3=BCbbe?= <jlu@pengutronix.de>,
+ Guenter Roeck <linux@roeck-us.net>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, Joel Stanley <joel@jms.id.au>,
+ qemu-block <qemu-block@nongnu.org>
+References: <20241017163247.711244-1-peter.maydell@linaro.org>
+ <d9f18091-aee1-4b32-ba72-e1028fe433c9@roeck-us.net>
+ <5262a33d-d0c5-452b-9869-f8f482b1c857@linaro.org>
+ <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
+ <600baa43c3dd3547338934717cfb57c5e12b0d23.camel@pengutronix.de>
+ <84c32f2d-7d9a-4e5a-8b67-1f954dd493f6@roeck-us.net>
+ <b67f302a11a679c3fdb02318eb9ef0be559d14ce.camel@pengutronix.de>
+ <53cbb597-e7f2-4742-bf85-928c704ddbcf@linaro.org>
+ <443f1b0c-8184-4bf4-9f68-c23d7de3bc36@roeck-us.net>
+ <1bce4c22-9281-44c5-8acb-860881dc271c@kaod.org>
+ <c27fbed6-596e-4ce7-a6ca-6d12d7205e99@roeck-us.net>
+ <86fa6e68-5861-4d4d-941f-95b278074eb6@kaod.org>
+ <1c917e4a-de50-45b9-ac9c-eb04d51401a2@roeck-us.net>
+ <00997cca-6f4a-4b99-9616-2af6a25cd4fb@kaod.org>
+ <4246f82b-597c-4a5d-9a55-18a584e7d8c7@roeck-us.net>
+ <670fa7bf052d8f292f9bd25c330c8d7bdba02770.camel@pengutronix.de>
+ <b6641b83-33dc-46f8-b61b-fbdb9ab9bc40@roeck-us.net>
+ <9046a4327336d4425f1e7e7a973edef9e9948e80.camel@pengutronix.de>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <9046a4327336d4425f1e7e7a973edef9e9948e80.camel@pengutronix.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
- envelope-from=paskripkin@gmail.com; helo=mail-lf1-x12c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=CkxU=SN=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5U5t3xD/q+A5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: W6MWvQPjidnK
 
-To share missing SCTRL.{U}WXN and SCR.SIF in short format walker, use
-get_S1prot instead of open-coded checks.
+Hello,
 
-Signed-off-by: Pavel Skripkin <paskripkin@gmail.com>
----
- target/arm/ptw.c | 41 ++++++++++++++++++-----------------------
- 1 file changed, 18 insertions(+), 23 deletions(-)
+[ ... ]
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 50eed0f811..0d003a9f7d 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -85,6 +85,10 @@ static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
-                               GetPhysAddrResult *result,
-                               ARMMMUFaultInfo *fi);
- 
-+static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-+                      int user_rw, int prot_rw, int xn, int pxn,
-+                      ARMSecuritySpace in_pa, ARMSecuritySpace out_pa);
-+
- /* This mapping is common between ID_AA64MMFR0.PARANGE and TCR_ELx.{I}PS. */
- static const uint8_t pamax_map[] = {
-     [0] = 32,
-@@ -1148,7 +1152,6 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
-     hwaddr phys_addr;
-     uint32_t dacr;
-     bool ns;
--    int user_prot;
- 
-     /* Pagetable walk.  */
-     /* Lookup l1 descriptor.  */
-@@ -1243,13 +1246,13 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
-     if (domain_prot == 3) {
-         result->f.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
-     } else {
--        if (pxn && !regime_is_user(env, mmu_idx)) {
--            xn = 1;
--        }
--        if (xn && access_type == MMU_INST_FETCH) {
--            fi->type = ARMFault_Permission;
--            goto do_fault;
--        }
-+        int ap_usr;
-+        int ap_priv;
-+        ARMSecuritySpace out_space = ARMSS_NonSecure;
-+
-+        /* NS bit is ignored in NWd. */
-+        if (result->f.attrs.space == ARMSS_Secure && !ns)
-+            out_space = ARMSS_Secure;
- 
-         if (arm_feature(env, ARM_FEATURE_V6K) &&
-                 (regime_sctlr(env, mmu_idx) & SCTLR_AFE)) {
-@@ -1259,28 +1262,20 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
-                 fi->type = ARMFault_AccessFlag;
-                 goto do_fault;
-             }
--            result->f.prot = simple_ap_to_rw_prot(env, mmu_idx, ap >> 1);
--            user_prot = simple_ap_to_rw_prot_is_user(ap >> 1, 1);
-+            ap_priv = simple_ap_to_rw_prot(env, mmu_idx, ap >> 1);
-+            ap_usr = simple_ap_to_rw_prot_is_user(ap >> 1, 1);
-         } else {
--            result->f.prot = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
--            user_prot = ap_to_rw_prot_is_user(env, mmu_idx, ap, domain_prot, 1);
--        }
--        if (result->f.prot && !xn) {
--            result->f.prot |= PAGE_EXEC;
-+            ap_priv = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
-+            ap_usr = ap_to_rw_prot_is_user(env, mmu_idx, ap, domain_prot, 1);
-         }
-+
-+        result->f.prot = get_S1prot(env, mmu_idx, false, ap_usr, ap_priv, xn, pxn,
-+                                    result->f.attrs.space, out_space);
-         if (!(result->f.prot & (1 << access_type))) {
-             /* Access permission fault.  */
-             fi->type = ARMFault_Permission;
-             goto do_fault;
-         }
--        if (regime_is_pan(env, mmu_idx) &&
--            !regime_is_user(env, mmu_idx) &&
--            user_prot &&
--            access_type != MMU_INST_FETCH) {
--            /* Privileged Access Never fault */
--            fi->type = ARMFault_Permission;
--            goto do_fault;
--        }
-     }
-     if (ns) {
-         /* The NS bit will (as required by the architecture) have no effect if
--- 
-2.46.0
+>> also boots from the emmc controller. How do I provide the
+>> bus and bus index ? "bus=sdhci-bus.2" doesn't work for me.
+>> There is "sd-bus", but it does not have an index.
+
+Yes. Changes are required in the sdhci model and in the boards using it.
+
+> I've not really understood how to assemble more complex setups using
+> qemu's commandline when the board already creates some of the devices.
+
+Yes. That's a "problem" to fix for emmc/sd devices. They should only
+be created when defaults_enabled(), just like the flash devices.
+
+> Perhaps Cédric can explain how the different boot options are
+> configured for aspeed?
+
+See https://qemu.readthedocs.io/en/v9.1.0/system/arm/aspeed.html#boot-options
+and the avocado/functional tests for examples.
+
+The eMMC case is missing from the docs. Here is a proposal :
+
+   https://lore.kernel.org/qemu-devel/20241118090648.187720-1-clg@redhat.com/
+
+Thanks,
+
+C.
+
+
+> 
+> I see three cases:
+> 1. specify the blockdev driver and options in the simple case where the
+> board already creates the SD or eMMC device
+> 2. specify some custom options for the eMMC
+> 3. create a custom eMMC config on a generic machine via sdhci-pci
+> 
+> 
+> Case 1 is probably most common. The user has chosen a board and just
+> wants to boot a rootfs image and doesn't care about boot partitions or
+> anything else eMMC-specific.
+> 
+> 
+> Some users may want to emulate an eMMC with boot partitions, as that
+> allows them to emulate their physical boards more closely (case 2).
+> Note that eMMC boot partitions are usually *not* used for storing a
+> Linux kernel, but for the bootloader (including things like u-boot, TF-
+> A, OP-TEE, ...). The ROM-code on many SoCs supports loading directly
+> from eMMC boot partitions. One of the two boot partitions can be
+> activated with an atomic eMMC EXT CSD register write, allowing atomic
+> bootloader updates. I think this case was the motivation for Cédric's
+> eea55625df83 ("aspeed: Introduce a AspeedSoCClass 'boot_from_emmc'
+> handler").
+>
+> 
+> These users are likely fine with assembling a backing file consisting
+> of e.g.
+> - bootloader image (boot0) @ offset 0MiB
+> - empty space for bootloader updates (boot1) @ offset 1MiB
+> - partitioned disk image (rootfs, ...) @ offset 2MiB
+> to get the same setup as their real hardware.
+> 
+> 
+> Case 3 is what I want to use the eMMC emulator for: Test eMMC-specific
+> functionality in Linux userspace, specifically the boot partition
+> update backend for RAUC, in a CI setup. To improve performance and
+> because we don't need to emulate any specific board for CI, we use an
+> x86 guest (q35). As it has PCIe, the easiest way to add the necessary
+> eMMC emulation is to use sdhci-pci. That was the motivation behind my
+> patch "hw/sd/sdcard: Allow user creation of eMMCs" [1].
+> 
+> For that case, having one backing file for boot partitions + main area
+> is fine as well.
+> 
+> 
+> If we wanted more flexibility via separate backing files per eMMC
+> partitions, it might work similar to NVMe Namespaces [2]. For me, that
+> seems like a lot of complexity a very niche case like eMMC boot
+> partitions.
+> 
+> 
+> Potential future features such as more eMMC data partitions, RPMB
+> support or separate backing files could be support in QEMU by new eMCC
+> device options or even additional devices (following the NVMe
+> approach), without breaking backwards compatibility.
+> 
+> So it seems to me, that Cédric's approach of enabling boot partitions
+> in hw/arm/aspeed.c only when configured to boot from them via the "hw-
+> strap1" property should solve cases 1 and 2 without introducing
+> backwards compatibility issues. Case 3 has explicit configuration (if a
+> boot partition is emulated), so shouldn't be a problem either.
+> 
+> 
+> Thanks,
+> Jan
+> 
+> [1] https://lore.kernel.org/qemu-devel/20241015135649.4189256-1-jlu@pengutronix.de/T/
+> [2] https://qemu-project.gitlab.io/qemu/system/devices/nvme.html#additional-namespaces
+> 
+
 

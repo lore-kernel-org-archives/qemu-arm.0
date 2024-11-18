@@ -1,80 +1,80 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2743034njc;
-        Mon, 18 Nov 2024 09:24:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVbRm44Xz4lzJJGkk+vCkW5eIWcmai7lhKeSKKKJ3ZhJktvCke5tMQd2LEftpwauLdnQzfYF1Td5NuxQg==@linaro.org
-X-Received: by 2002:a17:90b:4a4a:b0:2ea:77c5:e877 with SMTP id 98e67ed59e1d1-2ea77c5ef82mr4854882a91.24.1731950660289;
-        Mon, 18 Nov 2024 09:24:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731950660; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2743053njc;
+        Mon, 18 Nov 2024 09:24:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX71cYAnIFZA6S1J7+L2Gq25/YgEfCIdH16ellV3SmzfWlkIC2G4918giuHGW3dYy6ZpG+IngQ+fqCBUw==@linaro.org
+X-Received: by 2002:a17:902:f545:b0:20c:6399:d637 with SMTP id d9443c01a7336-211d0ed9371mr203338675ad.40.1731950661590;
+        Mon, 18 Nov 2024 09:24:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731950661; cv=none;
         d=google.com; s=arc-20240605;
-        b=jff8ug6ha//qToDqehNy4zbPD7asmbCu2stM7q1W0sZ0Sb+qGYJ/UFUWnfpvY1SH1t
-         /X1ufUalGuDkWyBfjemz6xCVTxHzbPvu4U9YH5zW5JR/ii1OhZBh+GvgK/vDom/0c0c7
-         AzfXzmL8XJM7cQSht4HpcdcrYh+7Gf6hKDEnnvr+lpmfwcZt41umz1/SzT07xRqKf0A6
-         Y+/x3oIPK8dL5v6zd7Qk8NJilb3vvo2l3NiIbQxpanX7UUvdZQ4XgcvdI5GC9vDHJXO1
-         4f3/NE1m7Pb17/OHopjv5PySL/1V72aSs7duE+0H6BrgAZsDDBNmsmn6jHg8vQfWO51z
-         9gkg==
+        b=MoPOHtcluL9AYt1mZpIzR7HqgRecvwAG6diAvPtHasNUWvIkJaFMlFt5BYL88qdKSY
+         z+RZQFPqaQbVnNuuBEdKziBmXB0bBPIaGraEYhU1+bciU4vc15DxTkzzMHCjo9C/xwer
+         QJaR+jkPvKZ0wbDwj61lV6m8No6VGPRf4T4trV6vwr0NJQ8Yw3xf8ZIzoNYi3TiH5lSg
+         uXpTPXDfLDfZwaPr6YTcE0N1AIAIa8144938rXjndwFSNj0rHPmkR2ioQK22SIC6Y2VL
+         cuGaBd0J3E4y8wNoM5CM4eByHy13lG/3zJTSUzqu4KdL2/cnNCMe2AuuUjE/0N7z5FbG
+         N/rg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=h9HxfRSColzyRgnWUxT3Gaflq7HL/y/zcwmFE95sLP8=;
-        fh=/sg5QOJdUun7JsMPAuSUatshGHqFB971VfyMm33+Uc8=;
-        b=Of7PG96hD2OJgmCgWCan13v5vvXIBiMk9IcrCfgrXCshCVr8OIQx+wZq9wxnNiWFjJ
-         4Ap0ba/y+NBqJffV7X85FSW9u0O7VBGBTZ6+CMvcldEET43O8/DKjthDed7zMNaw/EPw
-         VtKj/V5JEtvLnA/jQsW6Ss/RwwC4wBY0VCKmabP3ebYbduUkg6P9drhml4a08/v0rAfa
-         eFDwVlvWPqHw72fjS52BobA+QDYjK66JMGnFMaA1Y9ozkI7sk6+2OgffkyV9V/m9HVgG
-         KlnbDVV3JNNyz5jp4qq12ixCPjViZvLjBbOz3FNBXuAJdUx4NStgSdW55yQnAAUH64yu
-         iGeg==;
+        bh=VBgtkjSEbYTTKzs2OsUJSbyBpcPy82P3Qfcz05KH5DM=;
+        fh=NUhK4v8A7vcBbVut3cEFljDtjcHNll3UEepfQQGso/U=;
+        b=bp/06k1p7mj8iogoEy46v/1j1uQAZDFmn3j6LOSG6t8LohihOi+xSzBEfzQGdHSS0C
+         9ZZJ/rBlY0+u4pPIT5wQ4xfTPoviGAvaE0XLSUMGihPyg92jIRY3c4L50ODpl0LRVlKX
+         f2dFhNYRS1YS9gNMmr4gPvqtba2Y9Z7ZOyoYcz0n4A2VkpwPjyOzTpdGsnBnNEAIjhzy
+         JAWjMkLjDFvys1RJjyWaAtIBK/YGFLR6Lt10wJUtrS3yDQdYYPu0RDDx0v88H8s69SYg
+         +Lie60++89xGFWb2xASbuh5eY1qEkd8d0XxyHpyBdRNdn14fU/J1hqd75kzZ8ZDywy+8
+         P2Iw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="x/YVmbIv";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HbMfeTQf;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-211ef9b7c03sor26658765ad.5.2024.11.18.09.24.20
+        by mx.google.com with SMTPS id d9443c01a7336-211c7d05aeasor76767555ad.16.2024.11.18.09.24.21
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Nov 2024 09:24:20 -0800 (PST)
+        Mon, 18 Nov 2024 09:24:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="x/YVmbIv";
+       dkim=pass header.i=@linaro.org header.s=google header.b=HbMfeTQf;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731950660; x=1732555460; darn=linaro.org;
+        d=linaro.org; s=google; t=1731950661; x=1732555461; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=h9HxfRSColzyRgnWUxT3Gaflq7HL/y/zcwmFE95sLP8=;
-        b=x/YVmbIvEAM56pBkab4UOULKvONcz0twtDhF5fftzEc2Zl34J4smIU4q2YcggwECMf
-         EYwdvkjcADp3xGpNdsmpyyB+nXs7x5vilEfgXco8IKtLRqIooH8sRJpJZlEIEYRYojwT
-         O8jKYEgZOZOEOACQbtkvfGYLPr9e1A6KSjksDiqHNmEgGJtOLoHGQjfS1xpLqpGJcg34
-         xgFmwGGKmKj0iOTFsrwOBETwHVKZpiMAeSGwlag2gbRbOif0ElBT6LzMqAqc7T1qA3+m
-         NDcZ4DKZtiIISKCfO+I8AQNXPfCkOgFsu7rXmXYhYHT7FhkfRFJNY0F3UVVhKNHOANT2
-         wnwQ==
+        bh=VBgtkjSEbYTTKzs2OsUJSbyBpcPy82P3Qfcz05KH5DM=;
+        b=HbMfeTQfzPxdUBv9hkhHC3OaeH21XSiWy9z1a0jbSpBxa6t473Pr1L520DpSUo/dt6
+         aP3TJwhB5v+OXMtK0ogmfL1Q1E+ypPig8oFHFF28SVT7igSC5zA+oKBG4YOlTgfiw/bb
+         gJnT+GmpjDBgKcIyYNpGZCxvUBv50PjmxvmSFiMfMnhhq0m4sSOKxU+ojQ5QE4kDDfkh
+         Q9ehCaQRfJ+EItEjMBLq/Z64/gc2rwdZaitl35ahEy9xHfBGSlMkpN98KFrnrVi3IWUp
+         z+d7JFTAi+f3O9Fj8bC/TxU8WSAHROjsWOBuDuXgxioPASjHxGZsUZtdglKBRMYhezP1
+         ZwkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731950660; x=1732555460;
+        d=1e100.net; s=20230601; t=1731950661; x=1732555461;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=h9HxfRSColzyRgnWUxT3Gaflq7HL/y/zcwmFE95sLP8=;
-        b=ppD4V0VOVFyPLFMnlWYga6Gnv2XX6nFNvMIWkVCt3F4vPdzSOQUvWL8wk4wYhYJT7u
-         tO7Pe8MIqaPCSR8yvtuYFcoU4yXR4UyOnBytTu14D7x+w0vnSmBp1DOOFKzovPW7ZnbV
-         QQhWIGepW1J+w3Tzrr6uoJ5e38rOg6eamOzxNW/kRsSWlFuh72trQL3v3OsWsh1XH8ZB
-         erVE3DAlRnP2yRpfy3AY/I1FCItzI4qY9RHDywPqxtkEYsPPvZEZ8aZ53wUL5jr9WKCl
-         GrN8Bx8az68ddRTfi3TAE8YXB/sBftgktpv7QCQg6pOxOUN5oXUVvS+BJmDQDEGVXr2f
-         bTbw==
-X-Forwarded-Encrypted: i=1; AJvYcCWyew9ij+BfeORIAlmFlRwR5pL2WHcIYZvbLNODUjoxJ0M7QdMSsXX9fKNKCSHkWnNgRKJDbihegiGqMA==@linaro.org
-X-Gm-Message-State: AOJu0YxVvFiGRUZjRVMo4PBeF87ZbkaGqzeZqhnUoHxChebrEjnvnl/3
-	l90PZCSxiK9x/vlnWUeN8g9JoeZPQrQ80ZTT28dISRFowi9fQqIyRtby+dCYoAqqMA==
-X-Google-Smtp-Source: AGHT+IF7HS6uFcioplhZUs49S35wYy0zZzw62AaMee3JVDFU8J+BCULEA3+acYCmj7LGlhCIzF/JVA==
-X-Received: by 2002:a17:902:f551:b0:212:13e5:3ba4 with SMTP id d9443c01a7336-21213e543ccmr50232465ad.21.1731950659604;
-        Mon, 18 Nov 2024 09:24:19 -0800 (PST)
+        bh=VBgtkjSEbYTTKzs2OsUJSbyBpcPy82P3Qfcz05KH5DM=;
+        b=CrezUFDniAle2cvLdK0FaWrIt0kKfw15DxGfXVMuAJLQlQf+hmmkMbG02TAFTrnTcC
+         mWrAi1YGFzMQOpV7DUjDLr5IJwcFNb7F0vpI2QLhIabqMvdvD+yACOQof2ZqOTeZ1tYp
+         eh6W1sV4anAVxVPbIYgx2J+42U79o3II+LNBX+lr/2dg936evXayUmmGzXUMFhAfCaUO
+         x3PVx10YjLsLxVM//AbhT4yHtTzhF+0xQ0uLQ75ZlkjOt7ZzlqDIU2ftW2qI/GrQe18y
+         wXWn8K/oiXbwzhe9SFSP2X//b5kz7rq4RBQjQEXc3Cz+y8KO9URHwXYvMvWoxo1cZ62e
+         vRQw==
+X-Forwarded-Encrypted: i=1; AJvYcCWU4Xb0aLRsmwdfdK4LBmbCHB67DJ19X9dKHDk+QCd+gJCf/pqjOBGkDWaFZPQ9zN08x8pFT9pT7HV+Sw==@linaro.org
+X-Gm-Message-State: AOJu0YxmF2rdC3fNKE2pPBsYiFUr6sXQc+W4e6wUoZv6rN3Cd+ShO+bW
+	cqitJm0jKxpJpDJFXTXFILwaBR9/vb2oKGmXPnDTPZusnoF2Dl1l2q9ahoW8lUCPgw==
+X-Google-Smtp-Source: AGHT+IEtfHUwMv6Qgz1+4IxX3nYSm1Xv9+hPyGeTbVfIa6T3JJYCwtxXSq0Y6cpRHlWh5/YdsgTf/g==
+X-Received: by 2002:a17:902:d2c1:b0:20c:a174:f77 with SMTP id d9443c01a7336-212348d39c1mr39617695ad.32.1731950660835;
+        Mon, 18 Nov 2024 09:24:20 -0800 (PST)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-211d0f55d04sm59469765ad.264.2024.11.18.09.24.18
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-211d0f55d04sm59469765ad.264.2024.11.18.09.24.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 09:24:19 -0800 (PST)
+        Mon, 18 Nov 2024 09:24:20 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -100,455 +100,334 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	gustavo.romero@linaro.org,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 5/7] docs: add a codebase section
-Date: Mon, 18 Nov 2024 09:23:55 -0800
-Message-Id: <20241118172357.475281-6-pierrick.bouvier@linaro.org>
+Subject: [PATCH 6/7] docs: add a glossary
+Date: Mon, 18 Nov 2024 09:23:56 -0800
+Message-Id: <20241118172357.475281-7-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
 References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: YHAxMisOaLn1
-
-Present the various parts of QEMU and organization of codebase.
+X-TUID: mo5A3fLjSEp0
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- docs/about/emulation.rst               |   2 +
- docs/codebase/index.rst                | 211 +++++++++++++++++++++++++
- docs/devel/decodetree.rst              |   2 +
- docs/devel/ebpf_rss.rst                |   2 +
- docs/devel/index-internals.rst         |   2 +
- docs/devel/migration/main.rst          |   2 +
- docs/devel/qapi-code-gen.rst           |   1 +
- docs/devel/testing/main.rst            |   9 +-
- docs/devel/testing/qtest.rst           |   2 +
- docs/index.rst                         |   3 +
- docs/interop/qemu-ga.rst               |   2 +
- docs/system/qemu-block-drivers.rst.inc |   2 +
- docs/tools/qemu-storage-daemon.rst     |   2 +
- docs/user/main.rst                     |   6 +
- 14 files changed, 247 insertions(+), 1 deletion(-)
- create mode 100644 docs/codebase/index.rst
+ docs/devel/control-flow-integrity.rst |   2 +
+ docs/devel/multi-thread-tcg.rst       |   2 +
+ docs/glossary/index.rst               | 238 ++++++++++++++++++++++++++
+ docs/index.rst                        |   1 +
+ docs/system/arm/virt.rst              |   2 +
+ docs/system/images.rst                |   2 +
+ docs/tools/qemu-nbd.rst               |   2 +
+ 7 files changed, 249 insertions(+)
+ create mode 100644 docs/glossary/index.rst
 
-diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
-index 3028d5fff7a..3bc3579434f 100644
---- a/docs/about/emulation.rst
-+++ b/docs/about/emulation.rst
-@@ -176,6 +176,8 @@ for that architecture.
-     - System
-     - Tensilica ISS SIMCALL
- 
-+.. _tcg-plugins:
+diff --git a/docs/devel/control-flow-integrity.rst b/docs/devel/control-flow-integrity.rst
+index e6b73a4fe1a..3d5702fa4cc 100644
+--- a/docs/devel/control-flow-integrity.rst
++++ b/docs/devel/control-flow-integrity.rst
+@@ -1,3 +1,5 @@
++.. _cfi:
 +
- TCG Plugins
- -----------
+ ============================
+ Control-Flow Integrity (CFI)
+ ============================
+diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tcg.rst
+index d706c27ea74..7fd0a07633d 100644
+--- a/docs/devel/multi-thread-tcg.rst
++++ b/docs/devel/multi-thread-tcg.rst
+@@ -4,6 +4,8 @@
+   This work is licensed under the terms of the GNU GPL, version 2 or
+   later. See the COPYING file in the top-level directory.
  
-diff --git a/docs/codebase/index.rst b/docs/codebase/index.rst
++.. _mttcg:
++
+ ==================
+ Multi-threaded TCG
+ ==================
+diff --git a/docs/glossary/index.rst b/docs/glossary/index.rst
 new file mode 100644
-index 00000000000..353830ef175
+index 00000000000..a2d4f3eae16
 --- /dev/null
-+++ b/docs/codebase/index.rst
-@@ -0,0 +1,211 @@
-+========
-+Codebase
-+========
++++ b/docs/glossary/index.rst
+@@ -0,0 +1,238 @@
++.. _Glossary:
 +
-+This section present the various parts of QEMU and how codebase is organized.
++--------
++Glossary
++--------
 +
-+Beyond giving succint descriptions, the goal is to offer links to various
-+parts of the documentation/codebase.
++This section of the manual presents *simply* acronyms and terms QEMU developers
++use.
 +
-+Subsystems
++Accelerator
++-----------
++
++A specific API used to accelerate execution of guest instructions. It can be
++hardware-based, through a virtualization API provided by the host OS (kvm, hvf,
++whpx, ...) or software-based (tcg). See this description of `supported
++accelerators<Accelerators>`.
++
++Board
++-----
++
++QEMU system defines board models for various architectures. It's a description
++of a SoC (system-on-chip) with various devices pre-configured, and can be
++selected with the option ``-machine`` of qemu-system.
++For virtual machines, you'll use ``virt`` board model, designed for this use
++case. As an example, for Arm architecture, you can find the `model code
++<https://gitlab.com/qemu-project/qemu/-/blob/master/hw/arm/virt.c>`_ and
++associated `documentation <arm-virt>`.
++
++Block
++-----
++
++Block drivers are the available `disk formats <block-drivers>` available, and
++block devices `(see Block device section on options page)<sec_005finvocation>`
++are using them to implement disks for a virtual machine.
++
++CFI
++---
++
++Control Flow Integrity is a hardening technique used to prevent exploits
++targeting QEMU by detecting unexpected branches during execution. QEMU `actively
++supports<cfi>` being compiled with CFI enabled.
++
++Device
++------
++
++QEMU is able to emulate a CPU, and all the hardware interacting with it,
++including many devices. When QEMU runs a virtual machine using a hardware-based
++accelerator, it is responsible for emulating, using software, all devices.
++
++EDK2
++----
++
++EDK2, as known as `TianoCore <https://www.tianocore.org/>`_, is an open source
++implementation of UEFI standard. It's ran by QEMU to support UEFI for virtual
++machines.
++
++gdbstub
++-------
++
++QEMU implements a `gdb server <GDB usage>`, allowing gdb to attach to it and
++debug a running virtual machine, or a program in user-mode. This allows to debug
++a given architecture without having access to hardware.
++
++glib2
++-----
++
++`GLib2 <https://docs.gtk.org/glib/>`_ is one of the most important library we
++are using through the codebase. It provides many data structures, macros, string
++and thread utilities and portable functions across different OS. It's required
++to build QEMU.
++
++Guest agent
++-----------
++
++`QEMU Guest agent <qemu-ga>` is a daemon intended to be executed by guest
++virtual machines and providing various services to help QEMU to interact with
++it.
++
++Guest/Host
 +----------
 +
-+An exhaustive list of subsystems and files associated can be found in
-+`MAINTAINERS <https://gitlab.com/qemu-project/qemu/-/blob/master/MAINTAINERS>`_
-+file.
++Guest is the architecture of the virtual machine, which is emulated.
++Host is the architecture on which QEMU is running on, which is native.
 +
-+Some of the main QEMU subsystems are:
++Hypervisor
++----------
 +
-+- `Accelerators<Accelerators>`
-+- Block devices and `disk images<disk images>` support
-+- `CI<ci>` and `Tests<testing>`
-+- `Devices<device-emulation>` & Board models
-+- `Documentation <documentation-root>`
-+- `GDB support<GDB usage>`
-+- `Migration<migration>`
-+- `Monitor<QEMU monitor>`
-+- `QOM (QEMU Object Model)<qom>`
-+- `System mode<System emulation>`
-+- `TCG (Tiny Code Generator)<tcg>`
-+- `User mode<user-mode>` (`Linux<linux-user-mode>` & `BSD<bsd-user-mode>`)
-+- User Interfaces
++The formal definition of an hypervisor is a program than can be used to manage a
++virtual machine. QEMU itself is an hypervisor.
 +
-+More documentation on QEMU subsystems can be found on :ref:`internal-subsystem`
-+page.
++In the context of QEMU, an hypervisor is an API, provided by the Host OS,
++allowing to execute virtual machines. Linux implementation is KVM (and supports
++Xen as well). For MacOS, it's HVF. Windows defines WHPX. And NetBSD provides
++NVMM.
 +
-+The Grand tour
-+--------------
++Migration
++---------
 +
-+We present briefly here what every folder of the codebase contains. Hop on!
++QEMU can save and restore the execution of a virtual machine, including across
++different machines. This is provided by the `Migration framework<migration>`.
 +
-+* `accel <https://gitlab.com/qemu-project/qemu/-/tree/master/accel>`_:
-+  Infrastructure and architecture agnostic code related to the various
-+  `accelerators <Accelerators>` supported by QEMU
-+  (TCG, KVM, hvf, whpx, xen, nvmm).
-+  Contains interfaces for operations that will be implemented per
-+  `target <https://gitlab.com/qemu-project/qemu/-/tree/master/target>`_.
-+* `audio <https://gitlab.com/qemu-project/qemu/-/tree/master/audio>`_:
-+  Audio (host) support.
-+* `authz <https://gitlab.com/qemu-project/qemu/-/tree/master/authz>`_:
-+  `QEMU Authorization framework<client authorization>`.
-+* `backends <https://gitlab.com/qemu-project/qemu/-/tree/master/backends>`_:
-+  Various backends used for device emulation.
-+* `block <https://gitlab.com/qemu-project/qemu/-/tree/master/block>`_:
-+  Block devices and `image formats<disk images>` implementation.
-+* `bsd-user <https://gitlab.com/qemu-project/qemu/-/tree/master/bsd-user>`_:
-+  `BSD User mode<bsd-user-mode>`.
-+* build: Where the code built goes!
-+* `chardev <https://gitlab.com/qemu-project/qemu/-/tree/master/chardev>`_:
-+  Various backends used by char devices.
-+* `common-user <https://gitlab.com/qemu-project/qemu/-/tree/master/common-user>`_:
-+  User-mode assembly code for dealing with signals occuring during syscalls.
-+* `configs <https://gitlab.com/qemu-project/qemu/-/tree/master/configs>`_:
-+  Makefiles defining configurations to build QEMU.
-+* `contrib <https://gitlab.com/qemu-project/qemu/-/tree/master/contrib>`_:
-+  Community contributed devices/plugins/tools.
-+* `crypto <https://gitlab.com/qemu-project/qemu/-/tree/master/crypto>`_:
-+  Cryptographic algorithms used in QEMU.
-+* `disas <https://gitlab.com/qemu-project/qemu/-/tree/master/disas>`_:
-+  Disassembly functions used by QEMU target code.
-+* `docs <https://gitlab.com/qemu-project/qemu/-/tree/master/docs>`_:
-+  QEMU Documentation.
-+* `dump <https://gitlab.com/qemu-project/qemu/-/tree/master/dump>`_:
-+  Code to dump memory of a running VM.
-+* `ebpf <https://gitlab.com/qemu-project/qemu/-/tree/master/ebpf>`_:
-+  eBPF program support in QEMU. `virtio-net RSS<ebpf-rss>` uses it.
-+* `fpu <https://gitlab.com/qemu-project/qemu/-/tree/master/fpu>`_:
-+  Floating-point software emulation.
-+* `fsdev <https://gitlab.com/qemu-project/qemu/-/tree/master/fsdev>`_:
-+  `VirtFS <https://www.linux-kvm.org/page/VirtFS>`_ support.
-+* `gdbstub <https://gitlab.com/qemu-project/qemu/-/tree/master/gdbstub>`_:
-+  `GDB <GDB usage>` support.
-+* `gdb-xml <https://gitlab.com/qemu-project/qemu/-/tree/master/gdb-xml>`_:
-+  Set of XML files describing architectures and used by `gdbstub <GDB usage>`.
-+* `host <https://gitlab.com/qemu-project/qemu/-/tree/master/host>`_:
-+  Various architecture specific header files (crypto, atomic, memory
-+  operations).
-+* `linux-headers <https://gitlab.com/qemu-project/qemu/-/tree/master/linux-headers>`_:
-+  A subset of headers imported from Linux kernel and used for implementing
-+  KVM support and user-mode.
-+* `linux-user <https://gitlab.com/qemu-project/qemu/-/tree/master/linux-user>`_:
-+  `User mode <user-mode>` implementation. Contains one folder per target
-+  architecture.
-+* `.gitlab-ci.d <https://gitlab.com/qemu-project/qemu/-/tree/master/.gitlab-ci.d>`_:
-+  `CI <ci>` yaml and scripts.
-+* `include <https://gitlab.com/qemu-project/qemu/-/tree/master/include>`_:
-+  All headers associated to different subsystems in QEMU. Hierachy used mirrors
-+  source code organization and naming.
-+* `hw <https://gitlab.com/qemu-project/qemu/-/tree/master/hw>`_:
-+  `Devices <device-emulation>` and boards emulation. Devices are categorized by
-+  type/protocol/architecture and located in associated subfolder.
-+* `io <https://gitlab.com/qemu-project/qemu/-/tree/master/io>`_:
-+  QEMU `I/O channels <https://lists.gnu.org/archive/html/qemu-devel/2015-11/msg04208.html>`_.
-+* `libdecnumber <https://gitlab.com/qemu-project/qemu/-/tree/master/libdecnumber>`_:
-+  Import of gcc library, used to implement decimal number arithmetic.
-+* `migration <https://gitlab.com/qemu-project/qemu/-/tree/master/migration>`__:
-+  `Migration framework <migration>`.
-+* `monitor <https://gitlab.com/qemu-project/qemu/-/tree/master/monitor>`_:
-+  `Monitor <QEMU monitor>` implementation (HMP & QMP).
-+* `nbd <https://gitlab.com/qemu-project/qemu/-/tree/master/nbd>`_:
-+  QEMU `NBD (Network Block Device) <nbd>` server.
-+* `net <https://gitlab.com/qemu-project/qemu/-/tree/master/net>`_:
-+  Network (host) support.
-+* `pc-bios <https://gitlab.com/qemu-project/qemu/-/tree/master/pc-bios>`_:
-+  Contains pre-built firmware binaries and boot images, ready to use in
-+  QEMU without compilation.
-+* `plugins <https://gitlab.com/qemu-project/qemu/-/tree/master/plugins>`_:
-+  `TCG plugins <tcg-plugins>` core implementation. Plugins can be found in
-+  `tests <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/tcg/plugins>`__
-+  and `contrib <https://gitlab.com/qemu-project/qemu/-/tree/master/contrib/plugins>`__
-+  folders.
-+* `po <https://gitlab.com/qemu-project/qemu/-/tree/master/po>`_:
-+  Translation files.
-+* `python <https://gitlab.com/qemu-project/qemu/-/tree/master/python>`_:
-+  Python part of our build/test system.
-+* `qapi <https://gitlab.com/qemu-project/qemu/-/tree/master/qapi>`_:
-+  `QAPI <qapi>` implementation.
-+* `qobject <https://gitlab.com/qemu-project/qemu/-/tree/master/qobject>`_:
-+  QEMU Object implementation.
-+* `qga <https://gitlab.com/qemu-project/qemu/-/tree/master/qga>`_:
-+  QEMU `Guest agent <qemu-ga>` implementation.
-+* `qom <https://gitlab.com/qemu-project/qemu/-/tree/master/qom>`_:
-+  QEMU `Object model <qom>` implementation, with monitor associated commands.
-+* `replay <https://gitlab.com/qemu-project/qemu/-/tree/master/replay>`_:
-+  QEMU `record/replay <replay>` implementation.
-+* `roms <https://gitlab.com/qemu-project/qemu/-/tree/master/roms>`_:
-+  Contains source code for various firmware and ROMs, which can be compiled if
-+  custom or updated versions are needed.
-+* `rust <https://gitlab.com/qemu-project/qemu/-/tree/master/rust>`_:
-+  Rust integration in QEMU. It contains the new interfaces defined and
-+  associated devices using it.
-+* `scripts <https://gitlab.com/qemu-project/qemu/-/tree/master/scripts>`_:
-+  Collection of scripts used in build and test systems, and various
-+  tools for QEMU codebase and execution traces.
-+* `scsi <https://gitlab.com/qemu-project/qemu/-/tree/master/scsi>`_:
-+  Code related to SCSI support, used by SCSI devices.
-+* `semihosting <https://gitlab.com/qemu-project/qemu/-/tree/master/semihosting>`_:
-+  QEMU `Semihosting <Semihosting>` implementation.
-+* `stats <https://gitlab.com/qemu-project/qemu/-/tree/master/stats>`_:
-+  `Monitor <QEMU monitor>` stats commands implementation.
-+* `storage-daemon <https://gitlab.com/qemu-project/qemu/-/tree/master/storage-daemon>`_:
-+  QEMU `Storage daemon <storage-daemon>` implementation.
-+* `stubs <https://gitlab.com/qemu-project/qemu/-/tree/master/stubs>`_:
-+  Various stubs (empty functions) used to compile QEMU with specific
-+  configurations.
-+* `subprojects <https://gitlab.com/qemu-project/qemu/-/tree/master/subprojects>`_:
-+  QEMU submodules used by QEMU build system.
-+* `system <https://gitlab.com/qemu-project/qemu/-/tree/master/system>`_:
-+  QEMU `system mode <System emulation>` implementation (cpu, mmu, boot support).
-+* `target <https://gitlab.com/qemu-project/qemu/-/tree/master/target>`_:
-+  Contains code for all target architectures supported (one subfolder
-+  per arch). For every architecture, you can find accelerator specific
-+  implementations.
-+* `tcg <https://gitlab.com/qemu-project/qemu/-/tree/master/tcg>`_:
-+  `TCG <tcg>` related code.
-+  Contains one subfolder per host supported architecture.
-+* `tests <https://gitlab.com/qemu-project/qemu/-/tree/master/tests>`_:
-+  QEMU `test <testing>` suite
++NBD
++---
 +
-+  - `avocado <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/avocado>`_:
-+    Functional tests booting full VM using `Avocado framework <checkavocado-ref>`.
-+    Those tests will be transformed and moved into
-+    `tests/functional <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/functional>`_
-+    in the future.
-+  - `data <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/data>`_:
-+    Data for various tests.
-+  - `decode <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/decode>`_:
-+    Testsuite for `decodetree <decodetree>` implementation.
-+  - `docker <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/docker>`_:
-+    Code and scripts to create `containers <container-ref>` used in `CI <ci>`.
-+  - `fp <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/fp>`_:
-+    QEMU testsuite for soft float implementation.
-+  - `functional <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/functional>`_:
-+    `Functional tests <checkfunctional-ref>` (full VM boot).
-+  - `lcitool <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/lcitool>`_:
-+    Generate dockerfiles for CI containers.
-+  - `migration <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/migration>`_:
-+    Test scripts and data for `Migration framework <migration>`.
-+  - `multiboot <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/multiboot>`_:
-+    Test multiboot functionality for x86_64/i386.
-+  - `qapi-schema <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/qapi-schema>`_:
-+    Test scripts and data for `QAPI <qapi-tests>`.
-+  - `qemu-iotests <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/qemu-iotests>`_:
-+    `Disk image and block tests <qemu-iotests>`.
-+  - `qtest <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/qtest>`_:
-+    `Device emulation testing <qtest>`.
-+  - `tcg <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/tcg>`__:
-+    `TCG related tests <checktcg-ref>`. Contains code per architecture
-+    (subfolder) and multiarch tests as well.
-+  - `tsan <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/tsan>`_:
-+    `Suppressions <tsan-suppressions>` for thread sanitizer.
-+  - `uefi-test-tools <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/uefi-test-tools>`_:
-+    Test tool for UEFI support.
-+  - `unit <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/unit>`_:
-+    QEMU `Unit tests <unit-tests>`.
-+* `trace <https://gitlab.com/qemu-project/qemu/-/tree/master/trace>`_:
-+  `Tracing framework <tracing>`. Used to print information associated to various
-+  events during execution.
-+* `ui <https://gitlab.com/qemu-project/qemu/-/tree/master/ui>`_:
-+  QEMU User interfaces.
-+* `util <https://gitlab.com/qemu-project/qemu/-/tree/master/util>`_:
-+  Utility code used by other parts of QEMU.
-diff --git a/docs/devel/decodetree.rst b/docs/devel/decodetree.rst
-index e3392aa7057..98ad33a4870 100644
---- a/docs/devel/decodetree.rst
-+++ b/docs/devel/decodetree.rst
-@@ -1,3 +1,5 @@
-+.. _decodetree:
++`QEMU Network Block Device server <qemu-nbd>` is a tool that can be used to
++mount and access QEMU images, providing functionality similar to a loop device.
 +
- ========================
- Decodetree Specification
- ========================
-diff --git a/docs/devel/ebpf_rss.rst b/docs/devel/ebpf_rss.rst
-index 4a68682b31a..ed5d33767bd 100644
---- a/docs/devel/ebpf_rss.rst
-+++ b/docs/devel/ebpf_rss.rst
-@@ -1,3 +1,5 @@
-+.. _ebpf-rss:
++Mailing List
++------------
 +
- ===========================
- eBPF RSS virtio-net support
- ===========================
-diff --git a/docs/devel/index-internals.rst b/docs/devel/index-internals.rst
-index ab9fbc44826..bca597c6589 100644
---- a/docs/devel/index-internals.rst
-+++ b/docs/devel/index-internals.rst
-@@ -1,3 +1,5 @@
-+.. _internal-subsystem:
++This is `where <https://wiki.qemu.org/Contribute/MailingLists>`_ all the
++development happens! Changes are posted as series, that all developers can
++review and share feedback for.
 +
- Internal Subsystem Information
- ------------------------------
- 
-diff --git a/docs/devel/migration/main.rst b/docs/devel/migration/main.rst
-index c2857fc2446..cdd4f4a6d7e 100644
---- a/docs/devel/migration/main.rst
-+++ b/docs/devel/migration/main.rst
-@@ -1,3 +1,5 @@
-+.. _migration:
++For reporting issues, our `GitLab
++<https://gitlab.com/qemu-project/qemu/-/issues>`_ tracker is the best place.
 +
- ===================
- Migration framework
- ===================
-diff --git a/docs/devel/qapi-code-gen.rst b/docs/devel/qapi-code-gen.rst
-index 583207a8ec2..3e26d2d1047 100644
---- a/docs/devel/qapi-code-gen.rst
-+++ b/docs/devel/qapi-code-gen.rst
-@@ -9,6 +9,7 @@ How to use the QAPI code generator
-    This work is licensed under the terms of the GNU GPL, version 2 or
-    later.  See the COPYING file in the top-level directory.
- 
-+.. _qapi:
- 
- Introduction
- ============
-diff --git a/docs/devel/testing/main.rst b/docs/devel/testing/main.rst
-index 91f4dc61fb5..9869bcf0341 100644
---- a/docs/devel/testing/main.rst
-+++ b/docs/devel/testing/main.rst
-@@ -39,6 +39,8 @@ Before running tests, it is best to build QEMU programs first. Some tests
- expect the executables to exist and will fail with obscure messages if they
- cannot find them.
- 
-+.. _unit-tests:
++MMU / softmmu
++-------------
 +
- Unit tests
- ~~~~~~~~~~
- 
-@@ -126,6 +128,8 @@ successfully on various hosts. The following list shows some best practices:
-   #ifdef in the codes. If the whole test suite cannot run on Windows, disable
-   the build in the meson.build file.
- 
-+.. _qapi-tests:
++The Memory Management Unit is responsible for translating virtual addresses to
++physical addresses and managing memory protection. QEMU system mode is named
++"softmmu" precisely because it implements this in software, including a TLB
++(Translation lookaside buffer), for the guest virtual machine.
 +
- QAPI schema tests
- ~~~~~~~~~~~~~~~~~
- 
-@@ -160,6 +164,8 @@ check-block
- are in the "auto" group).
- See the "QEMU iotests" section below for more information.
- 
-+.. _qemu-iotests:
++QEMU user-mode does not implement a full software MMU, but "simply" translates
++virtual addresses by adding a specific offset, and relying on host MMU/OS
++instead.
 +
- QEMU iotests
- ------------
- 
-@@ -679,6 +685,8 @@ The above exitcode=0 has TSan continue without error if any warnings are found.
- This allows for running the test and then checking the warnings afterwards.
- If you want TSan to stop and exit with error on warnings, use exitcode=66.
- 
-+.. _tsan-suppressions:
++Monitor / QMP / HMP
++-------------------
 +
- TSan Suppressions
- ~~~~~~~~~~~~~~~~~
- Keep in mind that for any data race warning, although there might be a data race
-@@ -901,7 +909,6 @@ You can run the avocado tests simply by executing:
- 
- See :ref:`checkavocado-ref` for more details.
- 
--
- .. _checktcg-ref:
- 
- Testing with "make check-tcg"
-diff --git a/docs/devel/testing/qtest.rst b/docs/devel/testing/qtest.rst
-index c5b8546b3eb..73ef7702b7b 100644
---- a/docs/devel/testing/qtest.rst
-+++ b/docs/devel/testing/qtest.rst
-@@ -1,3 +1,5 @@
-+.. _qtest:
++`QEMU Monitor <QEMU monitor>` is a text interface which can be used to interact
++with a running virtual machine.
 +
- ========================================
- QTest Device Emulation Testing Framework
- ========================================
++QMP stands for QEMU Monitor Protocol and is a json based interface.
++HMP stands for Human Monitor Protocol and is a set of text commands available
++for users who prefer natural language to json.
++
++MTTCG
++-----
++
++Multiple cpus support was first implemented using a round-robin algorithm
++running on a single thread. Later on, `Multi-threaded TCG <mttcg>` was developed
++to benefit from multiple cores to speed up execution.
++
++Plugins
++-------
++
++`TCG Plugins <TCG Plugins>` is an API used to instrument guest code, in system
++and user mode. The end goal is to have a similar set of functionality compared
++to `DynamoRIO <https://dynamorio.org/>`_ or `valgrind <https://valgrind.org/>`_.
++
++One key advantage of QEMU plugins is that they can be used to perform
++architecture agnostic instrumentation.
++
++Patchwork
++---------
++
++`Patchwork <https://patchew.org/QEMU/>`_ is a website that tracks
++patches on the Mailing List.
++
++PR
++--
++
++Once a series is reviewed and accepted by a subsystem maintainer, it will be
++included in a PR (Pull Request) that the project maintainer will merge into QEMU
++main branch, after running tests.
++
++QCOW
++----
++
++QEMU Copy On Write is a disk format developed by QEMU. It provides transparent
++compression, automatic extension, and many other advantages over a raw image.
++
++QEMU
++----
++
++`QEMU (Quick Emulator) <https://www.qemu.org/>`_ is a generic and open source
++machine emulator and virtualizer.
++
++QOM
++---
++
++`QEMU Object Model <qom>` is an object oriented API used to define various
++devices and hardware in the QEMU codebase.
++
++Record/replay
++-------------
++
++`Record/replay <replay>` is a feature of QEMU allowing to have a deterministic
++and reproducible execution of a virtual machine.
++
++Rust
++----
++
++`A new programming language <https://www.rust-lang.org/>`_, memory safe by
++default. We didn't see a more efficient way to create debates and tensions in
++a community of C programmers since the birth of C++.
++
++System mode
++-----------
++
++QEMU System mode emulates a full machine, including its cpu, memory and devices.
++It can be accelerated to hardware speed by using one of the hypervisors QEMU
++supports. It is referenced as softmmu as well.
++
++TCG
++---
++
++`Tiny Code Generator <tcg>` is an intermediate representation (IR) used to run
++guest instructions on host cpu, with both architectures possibly being
++different.
++
++It is one of the accelerator supported by QEMU, and supports a lot of
++guest/host architectures.
++
++User mode
++---------
++
++QEMU User mode allows to run programs for a guest architecture, on a host
++architecture, by translating system calls and using TCG. It is available for
++Linux and BSD.
++
++VirtIO
++------
++
++VirtIO is an open standard used to define and implement virtual devices with a
++minimal overhead, defining a set of data structures and hypercalls (similar to
++system calls, but targeting an hypervisor, which happens to be QEMU in our
++case). It's designed to be more efficient than emulating a real device, by
++minimizing the amount of interactions between a guest VM and its hypervisor.
++
++vhost-user
++----------
++
++`Vhost-user <vhost_user>` is an interface used to implement VirtIO devices
++outside of QEMU itself.
 diff --git a/docs/index.rst b/docs/index.rst
-index 0b9ee9901d9..cb5e5098b65 100644
+index cb5e5098b65..2cad84cd77c 100644
 --- a/docs/index.rst
 +++ b/docs/index.rst
-@@ -3,6 +3,8 @@
-    You can adapt this file completely to your liking, but it should at least
-    contain the root `toctree` directive.
- 
-+.. _documentation-root:
-+
- ================================
- Welcome to QEMU's documentation!
- ================================
-@@ -18,3 +20,4 @@ Welcome to QEMU's documentation!
-    interop/index
+@@ -21,3 +21,4 @@ Welcome to QEMU's documentation!
     specs/index
     devel/index
-+   codebase/index
-diff --git a/docs/interop/qemu-ga.rst b/docs/interop/qemu-ga.rst
-index 11f7bae4600..d16cc1b9f07 100644
---- a/docs/interop/qemu-ga.rst
-+++ b/docs/interop/qemu-ga.rst
+    codebase/index
++   glossary/index
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index e67e7f0f7c5..11ceb898264 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
 @@ -1,3 +1,5 @@
-+.. _qemu-ga:
++.. _arm-virt:
 +
- QEMU Guest Agent
- ================
+ 'virt' generic virtual platform (``virt``)
+ ==========================================
  
-diff --git a/docs/system/qemu-block-drivers.rst.inc b/docs/system/qemu-block-drivers.rst.inc
-index 384e95ba765..cfe1acb78ae 100644
---- a/docs/system/qemu-block-drivers.rst.inc
-+++ b/docs/system/qemu-block-drivers.rst.inc
-@@ -500,6 +500,8 @@ What you should *never* do:
- - expect it to work when loadvm'ing
- - write to the FAT directory on the host system while accessing it with the guest system
+diff --git a/docs/system/images.rst b/docs/system/images.rst
+index d000bd6b6f1..a5551173c97 100644
+--- a/docs/system/images.rst
++++ b/docs/system/images.rst
+@@ -82,4 +82,6 @@ VM snapshots currently have the following known limitations:
+ -  A few device drivers still have incomplete snapshot support so their
+    state is not saved or restored properly (in particular USB).
  
-+.. _nbd:
++.. _block-drivers:
 +
- NBD access
- ~~~~~~~~~~
- 
-diff --git a/docs/tools/qemu-storage-daemon.rst b/docs/tools/qemu-storage-daemon.rst
-index ea00149a63a..35ab2d78074 100644
---- a/docs/tools/qemu-storage-daemon.rst
-+++ b/docs/tools/qemu-storage-daemon.rst
+ .. include:: qemu-block-drivers.rst.inc
+diff --git a/docs/tools/qemu-nbd.rst b/docs/tools/qemu-nbd.rst
+index 329f44d9895..4f21b7904ac 100644
+--- a/docs/tools/qemu-nbd.rst
++++ b/docs/tools/qemu-nbd.rst
 @@ -1,3 +1,5 @@
-+.. _storage-daemon:
++.. _qemu-nbd:
 +
- ===================
- QEMU Storage Daemon
- ===================
-diff --git a/docs/user/main.rst b/docs/user/main.rst
-index 7a126ee8093..80a77f0a0c9 100644
---- a/docs/user/main.rst
-+++ b/docs/user/main.rst
-@@ -1,3 +1,5 @@
-+.. _user-mode:
-+
- QEMU User space emulator
- ========================
- 
-@@ -42,6 +44,8 @@ QEMU was conceived so that ultimately it can emulate itself. Although it
- is not very useful, it is an important test to show the power of the
- emulator.
- 
-+.. _linux-user-mode:
-+
- Linux User space emulator
- -------------------------
- 
-@@ -175,6 +179,8 @@ Other binaries
-    * ``qemu-sparc64`` can execute some Sparc64 (Sparc64 CPU, 64 bit ABI) and
-      SPARC32PLUS binaries (Sparc64 CPU, 32 bit ABI).
- 
-+.. _bsd-user-mode:
-+
- BSD User space emulator
- -----------------------
- 
+ =====================================
+ QEMU Disk Network Block Device Server
+ =====================================
 -- 
 2.39.5

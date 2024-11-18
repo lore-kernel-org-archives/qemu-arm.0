@@ -1,295 +1,111 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2743153njc;
-        Mon, 18 Nov 2024 09:24:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWt5wU75LrrY2hHzhzR/thXJueQZJTpVj81Uqyy+Z2C/jAD04YElwsUAEArHxt8eGSz6o63VNEnUBAfTg==@linaro.org
-X-Received: by 2002:a17:902:d505:b0:20c:af5d:2ed8 with SMTP id d9443c01a7336-211d0ebf9f2mr205661415ad.36.1731950663999;
-        Mon, 18 Nov 2024 09:24:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731950663; cv=none;
+Received: by 2002:a05:7022:213:b0:8f:43c:4b5e with SMTP id 19csp2054722dll;
+        Mon, 18 Nov 2024 10:12:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUAbP6A3x81ESGr0ZLSJcktSbSUHpzl+A9g24qzFTZ7wrBYwYehmlxabSLvOf+hxPb7EcTR3Sd5ricoKA==@linaro.org
+X-Received: by 2002:a17:902:d482:b0:20c:7eaf:8945 with SMTP id d9443c01a7336-211d0d8fff5mr183687985ad.28.1731953528075;
+        Mon, 18 Nov 2024 10:12:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731953528; cv=none;
         d=google.com; s=arc-20240605;
-        b=aN6ilfyCX9LXRIdbRh+z5lKRMwyD9w9V1LTR5koHgfnO8bt3oxloU7y2o03nRP/H+1
-         /nkvbCRSN5JSEbMQUwQ9xmF+S/xrIn0Hn/thqQCDsNqF+pqKWFlHOLrKlG+xa4DbmrI8
-         ffzq8X6BRSWT0R9+++h/Rp3nvgmpen0lKzfatmYLFkYVzT+2/msuSt1X/OxVOZmAfHMu
-         wq53CxtaQDy0g63MsIxmH3PTSONecSAhkcocfEPDJsNlVUDf6fKcID0cH1OTXBrVjqF/
-         5neLojB9ejlMpe52XvDxebUjqfXTS0v0uzcU6ACkrutY+shagy9MvFrwzJu9xbMxACwj
-         0K5Q==
+        b=MO8bisIj5Jk8oaNbxK9U44aN24CbHaVqTbeE4St4KM/bYSZBTt3V1ejDWDBigUzLCX
+         ikXDs7jmsLVaJnKAyR21yt2t10Y3qGd0tOPTeN7F6z5vLAd6r9ylqbwlGyND9zbA4rJu
+         /3pn9ylfSlAPKp/0+rXAMHB6IefuR7clp6T7ljnJ/IK9Swpm22SctkOmX9La3zTOrKay
+         hO+mZlvm6gGIoB18C7mQY6i+MpKse4M3cX1lt6qSBd/3TRG1XN7ddBVhNY/esTokQnwd
+         VeBD9E+w3cTGXj9c3J+5itmBTEeq1YhTePGcPAXg+s2o5/+qGw8XlUSKvt4posNBWwnP
+         /pzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=O5xaWyMs57+hnnqWUIpSm0cVCeYUwv1WfgxLMkRlc7c=;
-        fh=FasV2IlvIlOgAi2Tkj+2H+FKlRa0R0qeCOxLY+wYU40=;
-        b=R4IMlo+prjxk2ngCMnbbrjWDFZxt5gvki175X5svcUp1maA/psSpe1YEkkj8WwCk9N
-         8mmQD5XFJcG/SGxrEU4dB24Ze+yjPNUZhKzyowCUNrQnVGO8asHrMDYKsziAVrbj5hGb
-         X60npK4MGDpqWns1m29FElEnFx0+BBy0TmMVnxh65qVR4Sbp4taZUuRa4ETe2lrmADRT
-         6YoZSFNALoBJ+1TYIoQ2Ifb26bb3XAjSJ8o7avooelKM/H2ea+DaB8MaC6kXSpDfdyLr
-         HPUkpOq4JquOdVTvrn1+du/QQFY3p8gaX82UrEteMQN9Y8WfwJDGcL4viFTErnL6FpYt
-         6g2A==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=oEe4aKYCCqICkCpHHVQQhZO5iDc/lYj0mFzN2UGt0QU=;
+        fh=bN4JjLjEcBecITZY/YvagL82upwhz04uOfc0g3vRKNY=;
+        b=e99vKB4XDT8Oi8EEXZoiJnBcTvQsLNYw/JPigu2mTpTmxvc17x6fzZNfQ0ddT7CPdb
+         KdgVr6cMy4X/NcAyq8BTJh4rfI5aIK/cHsqMv+8mRSfgx0CKMhMV5xguP8DZxWQLfVmk
+         KSn6dEBZvtXRQIC/OhvgRH/J7kBzGdG2CksObL9TsJeob0a1xDjvQfIbGdzBt+GGYPA7
+         /xpMl7PpyXgHVDwFA4LBFqVFKHuq5VLpA6l27sFYleDRWsx4q3bJ6QmaavFPinsElYEZ
+         lWEsI6DiBdUay/0ca79TzlPMKmTm8WcIOQ02fqiYwiyR8uDm1pQcDB/+yiNwaG9z5E3y
+         7Wkg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qpApYIda;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mK56D6gb;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-211f5162bb3sor24692515ad.15.2024.11.18.09.24.23
+        by mx.google.com with SMTPS id d9443c01a7336-2124d054691sor339195ad.16.2024.11.18.10.12.07
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 18 Nov 2024 09:24:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 18 Nov 2024 10:12:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qpApYIda;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=mK56D6gb;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731950663; x=1732555463; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=O5xaWyMs57+hnnqWUIpSm0cVCeYUwv1WfgxLMkRlc7c=;
-        b=qpApYIda/KBYdmDWsICvWyZ8mBSaf54RqOvmuPa9q4wC/Y1PddblnzDg48TzIpi+i5
-         jB+5GBt/B9xBI5Vv6iAyWWBF9nIU4aQUgITn5j7JLYGjEwfdcKAejMIWwA4c/69nsIyK
-         S7vGbv+QmiSwHjHrWCPp0EmeAsfz2VipWpgzAMEod7ib0lFwsZKjeJs+1KaLuI9gkTi0
-         1U65ho9kpf7WDvmZ00TjqT26bIs0CXwZT5zyULuAPs8yc09XD2tmnS40ZLCbnddU0deA
-         GJbebjNzqRlay7sv9fFxRmZS30/PXEbZP294Zbfhur4CyBkxOEZa0reqKNYp7GOKy+BJ
-         Z+jg==
+        d=linaro.org; s=google; t=1731953527; x=1732558327; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=oEe4aKYCCqICkCpHHVQQhZO5iDc/lYj0mFzN2UGt0QU=;
+        b=mK56D6gbzQRnzgyxVbFQ6BuyLKLTGOOpWGdbENtiloOa5q0xtm6Adt1Ubvg3OrT2QY
+         w27JU2P88rwUbGr4986cMe6LzASuJ7SbmIvYf1SmQwrPgSRqeZU9t9cRQuC97D7+t16S
+         d7y8RxpYEeahZm3MRQ7cDDSd/QIGHhFTqXocShdezSZxymMmW0ciAQ3E0yIYYzuZziPs
+         XKiFcLaRifMSlZVIFvKbKXr4s7B79aN5yJxF8nwWz4O9j83NSEuxv9WHxAAXXuAkcllG
+         UCHW9BPW805SGV+XWztpp8jDcRTjVJsuQXpk+XfW5a9LJ8+VwWFujWTc6wvpNV36FjWk
+         t9Ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731950663; x=1732555463;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=O5xaWyMs57+hnnqWUIpSm0cVCeYUwv1WfgxLMkRlc7c=;
-        b=pKGEGt7qqqivIj7tskHdV+q+4MPQv5SLM8Fi6wWFJBfAOrP2zatQTfPU5M17INUdjn
-         nXpoUwhCauxbaCfWapsXyb04DfBzqBYnF/doRlJEiVhwN5Tl9Fkhtlvu5PcaIBGxkrZS
-         U7GyMx+BbLJyyMd0mkfXQ08FwroiWrYFgLmRHfuxdckwQ3cvBcsjs6tqYn55bmwZlvLY
-         1HnRFIPWjZ9gm0O9wvDM4C06wd6NPVx94yVxKI/8vIcnnfZcSJt34nyp9qjYLzCBj3ii
-         /Xg9YEqgTj6QmEllUwDyacfINfmwt3/Bev1YiOghfZ91xuUc2WXnXCDvvNR2CCDS1hXc
-         5EYg==
-X-Forwarded-Encrypted: i=1; AJvYcCUr/MfpUZM+4wZoPqwVHhwMKIW8SYYDKJj1CgXnQFzplfSo90p3dBhmA1YgTn9Pr3rhQQPGp3HY9F7A9w==@linaro.org
-X-Gm-Message-State: AOJu0YxG7OjIYYjgk4Y9fnqXVB0mSZJqWnTe7dogXVL9K/Oi2yvDFWeV
-	YBzqMoaxdzHiXUokCehteDrempvleAyLxxH/UDqHg4OxlFYga/przTXQ3KKyJR0dTQ==
-X-Google-Smtp-Source: AGHT+IFd+isfj+MijvIfhlYm0YwRz6KEGHY0eaL6yeO5vKqUx6emPrFwrqa4l0559t1iCFG6uOulPQ==
-X-Received: by 2002:a05:6a21:3985:b0:1dc:7907:6d67 with SMTP id adf61e73a8af0-1dc90bf49b3mr24723643637.40.1731950662036;
-        Mon, 18 Nov 2024 09:24:22 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-211d0f55d04sm59469765ad.264.2024.11.18.09.24.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 09:24:21 -0800 (PST)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Andrew Melnychenko <andrew@daynix.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	alex.bennee@linaro.org,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	Fabiano Rosas <farosas@suse.de>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	qemu-arm@nongnu.org,
-	Yuri Benditovich <yuri.benditovich@daynix.com>,
-	manos.pitsidianakis@linaro.org,
-	qemu-block@nongnu.org,
-	Michael Roth <michael.roth@amd.com>,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Xu <peterx@redhat.com>,
-	gustavo.romero@linaro.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 7/7] docs: add a how to section
-Date: Mon, 18 Nov 2024 09:23:57 -0800
-Message-Id: <20241118172357.475281-8-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
-References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
+        d=1e100.net; s=20230601; t=1731953527; x=1732558327;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oEe4aKYCCqICkCpHHVQQhZO5iDc/lYj0mFzN2UGt0QU=;
+        b=pZax6J+zvW7b0wFQLBQ69OHH8jnH0FTk61jDMY/JV+bmlrZ6y7ntZCH/zDOsnaWs48
+         4ncVWIgz4i5A5Emy3A3xej04N5oZ0Jh31A6xV6uLyGizyeXkAat4pV03OiT6zl/4oWTM
+         qi92fw9YXfBFcLTtoFNSknNgk4YpBJaOWxszondKjUbI9QD4gYVtMs02tlgcxnm+MCQm
+         C/6CmfJsaYJ+GflFyT681xml/k9FsrK24b2lD2I8415yoo+3z9zG5m+AxsTmqQclzBGx
+         fhAqzdqFxHtsJZESHufCS4aW2K+Pa6sT4RRDZQeLnGnfK74rMVlRvi3szzz6rMUr1HCl
+         7FjA==
+X-Forwarded-Encrypted: i=1; AJvYcCWqeWemc0F3tuh34dUF67Jnu9+7l5SCAM6P+NdK4mMF6i8oZ48EcOhx7KMeWKFvnsilHLQP4w4F9hKdnA==@linaro.org
+X-Gm-Message-State: AOJu0Yzw0BG/5lxIPqfm/U/Nkf6DTnFEjlZa7u63psCJMkKsZU5r60xY
+	tTKqg4DVGI98c+EPgpq3c+cw6LMMa7y82g+SORqYNWVK1lldeh/MTmLpy2Ut5ksSEA==
+X-Google-Smtp-Source: AGHT+IHSJ2CzbkLZQ6mYUghdw6lw24R6B+3Ki9pAyw/aND8qpkQStUGSMwd/hokjCVVg/gmp+4IYNA==
+X-Received: by 2002:a17:902:f60e:b0:212:4582:37fa with SMTP id d9443c01a7336-21245823ca3mr21334845ad.53.1731953527615;
+        Mon, 18 Nov 2024 10:12:07 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] ([71.212.139.183])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72477200e52sm6751269b3a.180.2024.11.18.10.12.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 18 Nov 2024 10:12:07 -0800 (PST)
+Message-ID: <54fa63c5-e20a-4fc6-9b71-d918dadc26df@linaro.org>
+Date: Mon, 18 Nov 2024 10:12:05 -0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: ufuihYO+D9gi
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] rust/pl011: Fix DeviceID reads
+To: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-rust@nongnu.org,
+ Gustavo Romero <gustavo.romero@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20241117161039.3758840-1-manos.pitsidianakis@linaro.org>
+ <875xoku5vd.fsf@draig.linaro.org>
+ <CABgObfaVs-3aXKXtQRLDbzCL56gbimWZoMchYi5G+QGu8r0AxA@mail.gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CABgObfaVs-3aXKXtQRLDbzCL56gbimWZoMchYi5G+QGu8r0AxA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: lXPRgNFhZjEA
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- docs/devel/build-system.rst |   2 +
- docs/how-to/index.rst       | 146 ++++++++++++++++++++++++++++++++++++
- docs/index.rst              |   1 +
- 3 files changed, 149 insertions(+)
- create mode 100644 docs/how-to/index.rst
+On 11/18/24 04:40, Paolo Bonzini wrote:
+> More reviews are welcome; in general, we should define a convention
+> for Rust functions and constants (is it okay to rename constants in
+> the Rust bindings if their C name is ugly? should functions keep or
+> lose the "qemu_*" prefixes?).
 
-diff --git a/docs/devel/build-system.rst b/docs/devel/build-system.rst
-index d42045a2325..db444787e37 100644
---- a/docs/devel/build-system.rst
-+++ b/docs/devel/build-system.rst
-@@ -1,3 +1,5 @@
-+.. _build:
-+
- ==================================
- The QEMU build system architecture
- ==================================
-diff --git a/docs/how-to/index.rst b/docs/how-to/index.rst
-new file mode 100644
-index 00000000000..3a9d4d777df
---- /dev/null
-+++ b/docs/how-to/index.rst
-@@ -0,0 +1,146 @@
-+.. _how-to:
-+
-+------
-+How to
-+------
-+
-+This section of the manual will give you some commands to do various tasks with
-+QEMU. It does not intend to be complete, but to be simple.
-+
-+Build
-+-----
-+
-+First you need setup your `build environment <setup-build-env>`.
-+
-+Then, you can build QEMU using:
-+
-+::
-+
-+    git clone https://gitlab.com/qemu-project/qemu
-+    cd qemu
-+    ./configure
-+    ninja -C build
-+    # all binaries are in ./build
-+
-+By default, QEMU build is optimized. You may want to switch to debug builds
-+instead (non optimized, and with more runtime checks enabled):
-+
-+::
-+
-+    ./configure --enable-debug
-+
-+It's recommended to use sanitizers to catch issues when developing your change.
-+
-+::
-+
-+    ./configure --enable-asan --enable-ubsan
-+    # Of course, you can combine debug and sanitizers if needed
-+
-+You can find more information on `build page <build>`.
-+
-+Test
-+----
-+
-+QEMU has a lot of tests, mainly in 4 categories:
-+
-+::
-+
-+    # run tests related to TCG. They are based on Makefiles.
-+    make check-tcg
-+    # run system tests, running a full VM, with avocado framework
-+    make check-avocado
-+    # run functional tests, running a full VM, integrated with Meson
-+    make check-functional
-+    # run all other tests, integrated with Meson
-+    make check
-+
-+You can find more information on `testing page<testing>`.
-+
-+Use QEMU
-+--------
-+
-+To create a 20 gigabytes disk image usable with qemu-system:
-+
-+::
-+
-+    qemu-img create system.img 20g
-+
-+To run an x86_64 system emulated, with 4 cpus, 8G of memory and an install iso:
-+
-+::
-+
-+    qemu-system-x86_64 -smp 4 -m 8G system.img -cdrom install.iso
-+
-+To boot directly a Linux Kernel:
-+
-+::
-+
-+    qemu-system-x86_64 -kernel bzImage -hda system.img -append "root=/dev/hda"
-+
-+To boot an aarch64 system emulated, you need to specify a UEFI and associated
-+pflash. Once started, you can switch to Serial output by clicking on View ->
-+Serial0.
-+
-+::
-+
-+    # UEFI can be obtained from debian package qemu-efi-aarch64.
-+    # First, we need to copy a file to save UEFI variables:
-+    # cp /usr/share/AAVMF/AAVMF_VARS.fd .
-+    qemu-system-aarch64 \
-+        -m 8G \
-+        -smp 4 \
-+        -M virt \
-+        -cpu max \
-+        -device virtio-blk-pci,drive=root \
-+        -drive if=none,id=root,file=system.img \
-+        -drive if=pflash,readonly=on,file=/usr/share/AAVMF/AAVMF_CODE.fd \
-+        -drive if=pflash,file=AAVMF_VARS.fd \
-+        -cdrom install.iso
-+
-+To run git using QEMU user-mode:
-+
-+::
-+
-+    qemu-x86_64 /usr/bin/git --version
-+
-+Contribute
-+----------
-+
-+We recommend using `git-publish <https://github.com/stefanha/git-publish>`_ for
-+contributing. You need to configure `git send-email
-+<https://git-send-email.io/>`_ first.
-+
-+::
-+
-+    git checkout -b my_feature
-+    ... # edit, build, test
-+    # When ready to send the series...
-+
-+    # Add upstream QEMU repo as a remote.
-+    git remote add upstream https://gitlab.com/qemu-project/qemu
-+    # Fetch all new content.
-+    git fetch -a upstream
-+
-+    # Rebase your branch on top of upstream master, and include a signoff.
-+    git rebase -i upstream/master --signoff
-+    # Check your patches are correct.
-+    ./scripts/checkpatch.pl $(git merge-base upstream/master HEAD)..HEAD
-+
-+    # Send your series, you'll be given a chance to edit cover letter for it.
-+    git-publish
-+
-+    # After review, and other changes, you can send a v2 simply by using:
-+    git-publish
-+
-+If you need to apply locally an existing series, you can use `b4
-+<https://github.com/mricon/b4>`_ (installable via pip) to retrieve it:
-+
-+::
-+
-+    b4 shazam <series_msg_id>
-+    # message id is an identifier present in email sent.
-+    # when using patchwork, it is the last part of a series url (2024...):
-+    # https://patchew.org/QEMU/20241118021820.4928-1-joel@jms.id.au/
-+
-+More complete information is available on our `Submit a patch page
-+<submitting-a-patch>`.
-diff --git a/docs/index.rst b/docs/index.rst
-index 2cad84cd77c..e275a9223dd 100644
---- a/docs/index.rst
-+++ b/docs/index.rst
-@@ -20,5 +20,6 @@ Welcome to QEMU's documentation!
-    interop/index
-    specs/index
-    devel/index
-+   how-to/index
-    codebase/index
-    glossary/index
--- 
-2.39.5
+If the C name is ugly, feel free to fix that too.  :-)
+
+
+r~

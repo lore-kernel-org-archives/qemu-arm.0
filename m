@@ -1,116 +1,132 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2533439njc;
-        Mon, 18 Nov 2024 04:16:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXVDQ+BhZkBg8GYzzlaUWQKabqfTLHvuwnT1ZFMpJ2xgLMdwhiPy6SwVF42HugjpVxTxtESg5RLkbt5+g==@linaro.org
-X-Google-Smtp-Source: AGHT+IHgBiaPnyPmgtb0M+/9BnJfNWBTStFTU4XWIX69LOUSDrQ3GxQhYoBa77xYlbndcIKUVCX/
-X-Received: by 2002:a05:6214:5bc2:b0:6cb:ee08:c1e8 with SMTP id 6a1803df08f44-6d3fb7c5ca4mr227665286d6.23.1731932187996;
-        Mon, 18 Nov 2024 04:16:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731932187; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2543645njc;
+        Mon, 18 Nov 2024 04:34:14 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVMzsl6is2RvmkQCmRfMDVokbtH4/D5wIdnhHXMjAYULeSKqTCYmDc1U1/pbdkrCQjLZx4a2za7BZXM9g==@linaro.org
+X-Google-Smtp-Source: AGHT+IEAyY5DmTtqd2RW2o3O6fS6rhsuOZ/go4BbGwscOQhoZff4qKA2+3Lja8G+BGArLBPQm491
+X-Received: by 2002:a05:620a:2495:b0:7b1:4174:ac78 with SMTP id af79cd13be357-7b3621c59f7mr1724620585a.0.1731933253984;
+        Mon, 18 Nov 2024 04:34:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731933253; cv=none;
         d=google.com; s=arc-20240605;
-        b=em94bkhWkgmYEivujhPVBsxopRI+9HpNvwfgEjVGlshJcIr+YeVaGJ1U1IEXZYfNsv
-         lmUDKCf4oVTbfWJjavBNMFLklj70Xeo/m3ZM9us1zYXU8N6GCPJn+IdhhiymxHLwHVpK
-         ZMyga7Py2hbgROlhdXDGC0lZwSeRErErM4Dfmnc+2aFHKIREZDmp0bERuB12gpx5KrAX
-         xjXJe4wrOFCoSd7PbJAu8UfgFazJD0vXkok5OVGO2tElBfXi9X5Mj9oypRzVegiTFpGX
-         BRunxVztT4ugnnN6PmhW3KvHporm2WpApAIhkbI7IJOd3OMfuYwxg7hemvkiTpLPTZsO
-         D68A==
+        b=C5ii4ETQvfwAqeYIV89GIwMg65LWxJfYyrrHOUvEDwy8dJ9rM8+7RSCZa4e5Kr+4E/
+         cZgLDTTajdzLZOxYSNFAKdgdxYZShC49Oxj3iXinPtVol21JXX3RkRtLrt8Te863eIct
+         heA98R55NpDmeg/kDE/e5p4v+z8NkvUKluGAywF2uu5tdPG5FSvG8mo8kGNkS8OuR0g2
+         +OajAJFH34z1uHGFwMkjzrpcU9fRXGGc0Uh5hvj3Tmy+109DVEBRGJ5Bwuk6i23szwdK
+         ftBxxeVmWQTnwDj7TBV8Wq9ApX3emREQ0JzDDdTTaddETQ7CeeYK76KKV4LdSkHdk08W
+         7TZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
-         :subject:message-id;
-        bh=n1Ln2iiquUNzKFRIJmqbXsKSiav+3QsxArEI37YO20U=;
-        fh=/0iCECF544qkrE6X+sFxmz8wmEL5BBJv3+C7p25e4J4=;
-        b=W+UVxRTA8N6fgCdP28ZyfxVM9V/dqzbgf62L0ByTFl3BZ1mh7KSzEpF59cZkJBbkA1
-         ZHTaCYTBCcGeWC3J8m4OBrraq+gDXltN1+R/NY5DaW1JeUA6h8x+Ov4/xbju7Jq4cXLY
-         mA71hSpIYRVFpowm5AhT3BZ3cotTkJuDCQHkE2gB2Tp36GCYCAd0xX1SPmmk+EwH34Pp
-         hF+T68ZzS7BEvkWuJRUVV2poC60RnMbO5vxPMYCiW2Q4fV9U3mRkD+IIwGHf0RVhSVK1
-         12WVb8AlSmo1OXM4VLAngcMOEPCJObqHYqb4lnvLAWLzU0HazGS4tqjBJrVQ/ICWguk0
-         viWw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=nGg2eK6wTyqA9lcCKvM26995UkQxhpHyN1kHub7HXIA=;
+        fh=VrMFgI0saQN5DEqVQyLhzu1HNloooffzOJ2FPt0o9Yc=;
+        b=dUNEMYZSDruwM+88Br7zKsTseku8BAIvSQ0+JEsYlgLAoRXBXMusOn1f+ZNKEdVXEn
+         BdwnP5dH/mKVT71zIcn1+P0vyXHfntQWYL35Zv+jEcgesGk7UIOiwVEjAqZ/mgsiZHfa
+         BYUnFU4aUVB+9vvPb0r6QTSQ9QmAlI7k+xSof86wKb7iSJrIqOx2Ipia9czpnV9cxhmW
+         oq18/do/V52ecJAh9syjYyv8TMi6cmM9S7n1uW2ytj5QDFh8NVMYtNWOS+uzT3CNR/Nj
+         De84LYcJgsUiQ37bfFIwr8bWc7chfBa/MyeYnECXxETgW0LBL5BoZtnhkBtRJxcgRT/S
+         Qk4Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=lV4q8wqV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d40db71e1fsi63019326d6.55.2024.11.18.04.16.27
+        by mx.google.com with ESMTPS id af79cd13be357-7b35ca2883esi1028063485a.221.2024.11.18.04.34.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2024 04:16:27 -0800 (PST)
+        Mon, 18 Nov 2024 04:34:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=lV4q8wqV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tD0fo-0005Yf-5n; Mon, 18 Nov 2024 07:16:08 -0500
+	id 1tD0wl-0000ub-8L; Mon, 18 Nov 2024 07:33:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
- id 1tD0fe-0005WN-DZ
- for qemu-arm@nongnu.org; Mon, 18 Nov 2024 07:16:05 -0500
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
- id 1tD0fb-0000oF-L1
- for qemu-arm@nongnu.org; Mon, 18 Nov 2024 07:15:57 -0500
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
- by metis.whiteo.stw.pengutronix.de with esmtps
- (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
- (envelope-from <jlu@pengutronix.de>)
- id 1tD0fK-0001jL-Cx; Mon, 18 Nov 2024 13:15:38 +0100
-Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77])
- by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.96)
- (envelope-from <jlu@pengutronix.de>) id 1tD0fJ-001ORb-39;
- Mon, 18 Nov 2024 13:15:37 +0100
-Received: from localhost ([127.0.0.1])
- by ptz.office.stw.pengutronix.de with esmtp (Exim 4.96)
- (envelope-from <jlu@pengutronix.de>) id 1tD0fJ-0069h9-2k;
- Mon, 18 Nov 2024 13:15:37 +0100
-Message-ID: <dc456cff7aa40543ac245ccfd9bf504f3c114a9f.camel@pengutronix.de>
-Subject: Re: backing storage for eMMC boot partitions
-From: Jan =?ISO-8859-1?Q?L=FCbbe?= <jlu@pengutronix.de>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Guenter Roeck
- <linux@roeck-us.net>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
- <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
- <thuth@redhat.com>,  Joel Stanley <joel@jms.id.au>, qemu-block
- <qemu-block@nongnu.org>
-Date: Mon, 18 Nov 2024 13:15:37 +0100
-In-Reply-To: <7c8658ef-e61b-4a46-91cf-6dc26e78158c@kaod.org>
-References: <20241017163247.711244-1-peter.maydell@linaro.org>
- <d9f18091-aee1-4b32-ba72-e1028fe433c9@roeck-us.net>
- <5262a33d-d0c5-452b-9869-f8f482b1c857@linaro.org>
- <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
- <600baa43c3dd3547338934717cfb57c5e12b0d23.camel@pengutronix.de>
- <84c32f2d-7d9a-4e5a-8b67-1f954dd493f6@roeck-us.net>
- <b67f302a11a679c3fdb02318eb9ef0be559d14ce.camel@pengutronix.de>
- <53cbb597-e7f2-4742-bf85-928c704ddbcf@linaro.org>
- <443f1b0c-8184-4bf4-9f68-c23d7de3bc36@roeck-us.net>
- <1bce4c22-9281-44c5-8acb-860881dc271c@kaod.org>
- <c27fbed6-596e-4ce7-a6ca-6d12d7205e99@roeck-us.net>
- <86fa6e68-5861-4d4d-941f-95b278074eb6@kaod.org>
- <1c917e4a-de50-45b9-ac9c-eb04d51401a2@roeck-us.net>
- <00997cca-6f4a-4b99-9616-2af6a25cd4fb@kaod.org>
- <4246f82b-597c-4a5d-9a55-18a584e7d8c7@roeck-us.net>
- <670fa7bf052d8f292f9bd25c330c8d7bdba02770.camel@pengutronix.de>
- <b6641b83-33dc-46f8-b61b-fbdb9ab9bc40@roeck-us.net>
- <9046a4327336d4425f1e7e7a973edef9e9948e80.camel@pengutronix.de>
- <7c8658ef-e61b-4a46-91cf-6dc26e78158c@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.54.1 (by Flathub.org) 
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tD0wk-0000uG-0A
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 07:33:38 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tD0wi-0003WA-FA
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 07:33:37 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-432d9b8558aso23533525e9.0
+ for <qemu-arm@nongnu.org>; Mon, 18 Nov 2024 04:33:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1731933214; x=1732538014; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=nGg2eK6wTyqA9lcCKvM26995UkQxhpHyN1kHub7HXIA=;
+ b=lV4q8wqV1FlRVNtQo43D+TiKobeGVip3kvFQmqi7TW1dqh8yIjK9dF+OjSPWzSsKn2
+ j7enrtJAlE3MASndMg5nm0M5hHGQq1yjWpL95LHFpaFK0d8+WsSTen3ZFJ5U98Yz1WJF
+ qsUEmYeNa7cwnGZ7G6MowAFfLdaJTtt0sh9r8YYSW7QLBtuQ7LuGt+AE8CoTlJQhb4wB
+ ZMWY4NfUGPmGHLcrO01kxgROZkaiIVMiMgF14bsQrYxrlzYA/7dUhS0eCRKIpEt9hnJw
+ 3YjjtMe8VpeMHZFy+lbO8lKYIBXVC2n7NwR3SbTdu+uSty1jmI8uN3+7SAft0Kwxp0ov
+ zYyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1731933214; x=1732538014;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=nGg2eK6wTyqA9lcCKvM26995UkQxhpHyN1kHub7HXIA=;
+ b=ukx/Oy3UXumm4mm9jMq6Larl/EbIQzYiBgXNS7eJrq8vbtjKtUh/WeSpwv/c5n5BzG
+ kmtnwA+p4+oYPIuPGk5vCaJTpSACbC5deJaw10RjQoeuyWN/w1WvxeVgeYRuH/G2yU+J
+ A8xyHVgp69iNG4Rfw09+L9vj7cTGPaPsfQheKwQISIX6hoPCuHuHNJqnB+arGciwQBtY
+ xCavWQDW+7NPAsizolzWmQ3OQb4wM5q7gwELB9CxO8NrB9K+8/2j5CVk7mrqko1fTbTb
+ D0yEUH+YKkfTYvdcIvr3cVGUWUyofV4NgG7XfnAP/WQ9gBcBPr0mIjxfbgxQYuAGuFfC
+ Xwwg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVwENDgXaAE6DNB26JVvSvx5OVmQYdkuCIpV57jvmH1u6XGOfm1KkEEJslb+qMXuo1GESg0BtlO4A==@nongnu.org
+X-Gm-Message-State: AOJu0Yz4qrqHF1W1G/Jbsk7bVC+gMPtZ/wtj8hb5IozmlPuqBQm5Hf6c
+ KTmmdhK6cao+Kcu4rGZfp6cy7tN0yk5eY7JEbANFmD2nG/7kMM0O/gnEEh9VAb4=
+X-Received: by 2002:a05:600c:1f88:b0:426:5e32:4857 with SMTP id
+ 5b1f17b1804b1-432def7e5e8mr96698635e9.0.1731933214124; 
+ Mon, 18 Nov 2024 04:33:34 -0800 (PST)
+Received: from [192.168.69.197] ([176.187.198.1])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-432dac0aef0sm156980065e9.28.2024.11.18.04.33.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 Nov 2024 04:33:33 -0800 (PST)
+Message-ID: <c98e31f1-2017-48bf-bf3e-02594d58a8e4@linaro.org>
+Date: Mon, 18 Nov 2024 13:33:31 +0100
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: jlu@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
- SAEximRunCond expanded to false
-X-PTX-Original-Recipient: qemu-arm@nongnu.org
-Received-SPF: pass client-ip=2a0a:edc0:2:b01:1d::104;
- envelope-from=jlu@pengutronix.de; helo=metis.whiteo.stw.pengutronix.de
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND PATCH 10/10] usb-hub: Fix handling port power control
+ messages
+To: Guenter Roeck <linux@roeck-us.net>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ BALATON Zoltan <balaton@eik.bme.hu>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org
+References: <20241112170152.217664-1-linux@roeck-us.net>
+ <20241112170152.217664-11-linux@roeck-us.net>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241112170152.217664-11-linux@roeck-us.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,61 +141,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZAEhTaZj4hC0
+X-TUID: DUJEdgobDPQp
 
-Hi,
+On 12/11/24 17:01, Guenter Roeck wrote:
+> The ClearPortFeature control message fails for PORT_POWER because there
+> is no break; at the end of the case statement, causing it to fall through
+> to the failure handler. Add the missing break; to solve the problem.
+> 
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+> Change from RFC:
+>      New patch
+> 
+>   hw/usb/dev-hub.c | 1 +
+>   1 file changed, 1 insertion(+)
 
-On Mon, 2024-11-18 at 10:14 +0100, C=C3=A9dric Le Goater wrote:
-> > > also boots from the emmc controller. How do I provide the
-> > > bus and bus index ? "bus=3Dsdhci-bus.2" doesn't work for me.
-> > > There is "sd-bus", but it does not have an index.
->=20
-> Yes. Changes are required in the sdhci model and in the boards using
-> it.
->=20
-> > I've not really understood how to assemble more complex setups
-> > using qemu's commandline when the board already creates some of the
-> > devices.
->=20
-> Yes. That's a "problem" to fix for emmc/sd devices. They should only
-> be created when defaults_enabled(), just like the flash devices.
+Fixes: 1cc403eb21 ("usb-hub: emulate per port power switching")
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-This is -nodefaults, right? The man-page for that says:
-  -nodefaults
-         Don't  create default devices. Normally, QEMU sets the de=E2=80=90
-         fault devices like serial  port,  parallel  port,  virtual
-         console,  monitor  device,  VGA adapter, floppy and CD-ROM
-         drive and others. The -nodefaults option will disable  all
-         those default devices.
 
-That sounds like it would require explicit configuration of the devices
-on the SoC (such as UARTs) as well? Having to specify them (perhaps
-even with their MMIO addresses) doesn't seem convenient. :)
-
-aspeed seems to only (or additionally?) skip creation of the flash
-devices with -nodefaults.
-
-Isn't there a way to configure only default devices as disabled? Or to
-dynamically attach a user-created SD/eMMC device to an existing SD
-controller?
-
-In system/vl.c, I found 'default_sdcard', which is disabled in some
-cases. I wasn't able to figure out how to use it or if it would help
-for this use-case.
-
-Jan
-
-> > Perhaps C=C3=A9dric can explain how the different boot options are
-> > configured for aspeed?
->=20
-> See
-> https://qemu.readthedocs.io/en/v9.1.0/system/arm/aspeed.html#boot-options
-> and the avocado/functional tests for examples.
->=20
-> The eMMC case is missing from the docs. Here is a proposal :
-> https://lore.kernel.org/qemu-devel/20241118090648.187720-1-clg@redhat.com=
-/
->=20
-> Thanks,
->=20
-> C.

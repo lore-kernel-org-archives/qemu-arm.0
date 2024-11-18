@@ -1,164 +1,135 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2679632njc;
-        Mon, 18 Nov 2024 07:54:35 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGRAJZCq4At3zwn/GT5bJZSdPkww27X8Ar8TUy2IaFI6qgkvTkUn57/fMiBGiZFTT1o2u8X
-X-Received: by 2002:a05:622a:1455:b0:461:2b8b:52db with SMTP id d75a77b69052e-46363e944a9mr209538741cf.37.1731945275160;
-        Mon, 18 Nov 2024 07:54:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731945275; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2742969njc;
+        Mon, 18 Nov 2024 09:24:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWuTUPACTO98TFNMdqcOZcjfRcBYTqzankbtJUROyelH3y3Kfq5HPGBFAhW8seFDPjbzuybbBYGDQnRvw==@linaro.org
+X-Received: by 2002:a17:903:1110:b0:20c:a0a5:a181 with SMTP id d9443c01a7336-211d0d724efmr177182365ad.19.1731950655377;
+        Mon, 18 Nov 2024 09:24:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731950655; cv=none;
         d=google.com; s=arc-20240605;
-        b=KkL5DoXAhTgNhJOeF+cllWgLRUFQ/bCEa+xsjPTwOElcJO+x8O3h7OWu+r2revtk1V
-         H3MXy3wx17Prh0dYfceXea1F5eEe4t5TctzkmirOtop/QgLMCymt27ykoENhYlG22nDr
-         dMhDIec6unOtw+My6tbGbsVr8R9SvcQvGb1sv58nWgWzpxSlqyEm6T/s1djX9CYe5mhE
-         CeGiD6QROOGnl/+rehrdcDZ6Cf5WywBb4KrH+d14TKhzqdR++wPzwgUzsF1S4bbAJwbn
-         VNzSpf7AaGwZWMtEELIxQn5NkOoA1vWdmTiD/BIoCfu3JyLUqlQp8+U6VKD/LOJlq00V
-         Mamg==
+        b=Y9LVSQROFRf6JmVLnH6rEVJ7Ty8lvDWLDRLyg0WSe//g2uQfBI/Q1zgyNkIk42hHCu
+         OwhBRF9mnl4LIKvc7nGzjrIYbzSCpJ1mWmuS5IqkK8oxb0pYp+PgPnW+gFhdXfmIwpcg
+         38T1GFcyBZTdCFBgbs4L1IjmuS4jn7yzVuTNYIbq4duWafJWoiy7wIs1nuOHervym44w
+         fMIllZiNZw0SiKlBO/O9d0FgVAaX8ZTmQ25nxeLXsXJaqLRLL1sBUOeM0jfGuC3MeSpX
+         d9tdkgXyW6PaVtMkNnL+xoAv0jzNU+wjAz7Nz5bnJb1FluXevTSzjJR7OSMIwfxXygIe
+         HWtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Wa1r9aZImSfGgniRWdh7zmJr4Ai6Q7DzylMHq8VWga8=;
-        fh=yRPYJMpCFfsMzYGtxoZIVOEqgSWxs0L87n+SAUvZeNI=;
-        b=ED3YiNE/f+P0fK885K9gN+ZRJ3S7ROABk4o4No/ismNTpjCdd7s+QJInSgnM6Qy8ym
-         BiTAycsyCSxSmHD0WOwbvDqdKok4NfyRTwffjoEDwt1IrFwXV75E1GtSoJwaL035batH
-         MsyU5c0449NveR4hygMa/Rm8q0z1FgLfUvM2VJkFniyyOk621wgjdiK7/UjscviWEOQM
-         SJkYxKl3SXwEx6aAVqNqHMaUaj9I8CRfY39vEGzy59HLntKFobx5AZcurPodT8nJQBJj
-         V1gt/XXAyTEeHlh3Ofi0voHGD+OXBBL+v8kuq1VBKDKVrnnIXDGP9bhRY2aNC96au74/
-         nSYw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=i4RsMVroYRLEeyBEwglGNgeTU+l2C3LQibeRDMRaXh0=;
+        fh=67advxr84qbGHx83xeMiEeE0XAtDJIZ8+BOUIBsXrMU=;
+        b=RxkdfHxB83VALSRGJc3BKkSyhCWRcduusTA/bhyMx9e3nIEfyhdYcviW0KfhSmtWsX
+         EdY+3xWQq9oAFuns7f56pc8RNO/NVmso9qKZR76eG5t2GvSs8CXBCkztEkEDe2A4svXl
+         J9kb3rCG49tl8P2l/rTE5yjBvJoZrBsW5l8ktld06Qx0ZePc80nVNkBw2zJ76h+2KPMj
+         8KICCJ87Z0TY6Dgf7t76U5pWYYo8z8Sb6k1MQnmuSZz9jHnMv1uUCq4K2eT0y8VRZcQs
+         yZK9hapBMTeV7DelU4cPkm6f3PPThPRss2Fh4Mt90KMLdJJpzRCyQPCFmP2ogeBr7PWg
+         bY9Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KSBY6ZXZ;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4635aa97288si106415101cf.229.2024.11.18.07.54.34
+       dkim=pass header.i=@linaro.org header.s=google header.b="Q4L4P/aO";
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-211c784d260sor59478845ad.0.2024.11.18.09.24.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 07:54:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (Google Transport Security);
+        Mon, 18 Nov 2024 09:24:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KSBY6ZXZ;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1731945274;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Wa1r9aZImSfGgniRWdh7zmJr4Ai6Q7DzylMHq8VWga8=;
-	b=KSBY6ZXZWdNQh4V7/wDqPsA2gBenRLtVNKh3cfcrG9fw/GKL+AanwqPJBSVxOdwsv8de1d
-	cWJC8CzfUmGOqVahJeIC6MI3lmpHfwJevh3vbuNjU8Qvw+2lFUv3gtjq7+GkMsXl5g8WRE
-	tar2ekUtPRFYDRVqiiBdXuzGqMrqJoU=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-118-S85Mh7OXPBO_kDUn8Qe0vw-1; Mon, 18 Nov 2024 10:54:33 -0500
-X-MC-Unique: S85Mh7OXPBO_kDUn8Qe0vw-1
-X-Mimecast-MFC-AGG-ID: S85Mh7OXPBO_kDUn8Qe0vw
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-381d0582ad3so1689723f8f.0
-        for <alex.bennee@linaro.org>; Mon, 18 Nov 2024 07:54:33 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b="Q4L4P/aO";
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1731950655; x=1732555455; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=i4RsMVroYRLEeyBEwglGNgeTU+l2C3LQibeRDMRaXh0=;
+        b=Q4L4P/aOyQR2YsuL9JeU7HXdV991QpHhcZQCG7bAtLWBiw9lDVHwoRDBRRPUIkh9Ub
+         ffhiP/fjyiOxQbWewNPkkh+waygJRslsCZ0fHfwTd76DeKBXhbO5052fRRbBQgh767kk
+         GVdQOABY8nD5GjiPySIJmSsvQkqjUSBvgMKgInDnxb5cre343m5vIk/WE6IIN3tPPaPE
+         dx5joYmM42prUWeP6XCcsbuYmQ4q/slkNZ65sk2hXM7nFXD/YJzufvAzGVFLmfoLC1gK
+         mVwbguJk4gR0pX0cmYeYkxt0oNqOGTbmvpO7blUyQ3xC2eT5GGal2VHetrkIiXpiWbEp
+         i09Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731945272; x=1732550072;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20230601; t=1731950655; x=1732555455;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Wa1r9aZImSfGgniRWdh7zmJr4Ai6Q7DzylMHq8VWga8=;
-        b=piBik97X8RE+Kz0tmQ1ohUKzMd47hhp08fT2QnN4Afj3i0jJ2bqGFbqBYtmoIFH4pE
-         G8G5Pxv4q+kcrpbnF3uPyJ8L7ur0wazw3f/hoJPluQih5kHNbMy0AbC3FuK+GCMGp7BK
-         bwMW2NJVdEuyzwgryuvymAEf3F/q3qyZyIRvktM5tginhpyt1AXJOYsXEkS7drXn2aEQ
-         UHF2AN9/tuYpWc8qpyYG0I05YiT8VNWdqB2PxkZVPCqaM3PpH0vXvOlmzt2UXwSpsDza
-         SlNQ3SwbHRQpUPtBblaMFyTWRXRPDO3IovjNDfa3GQg/dlvyJJPCW1K60pQQ/5/0Zh9P
-         NiwA==
-X-Gm-Message-State: AOJu0YxR5OZGSBCVZNgYlarSN05AKmFWHMHNC5OgVTR8Dpu141eNDFJq
-	aJ3WcZgKQyWbbzhTS1J9Rkvn3iCq9esr9Z0j60eYGG5Kt86kbLhLuDivhMnlbaVj6aM61Uy/26T
-	tDLzepQ0ICNfGxnE3imrfiO7E29iG2I2LVz+bbbFc5QXEdHHKFk1rEBSj8tkHvVZE/0xciqwlvi
-	66E2ydeYeS/8JTN0rkYbnsV9g5oBi0
-X-Received: by 2002:a05:6000:2ac:b0:382:2f62:bd3c with SMTP id ffacd0b85a97d-3822f62bf96mr9747287f8f.19.1731945272378;
-        Mon, 18 Nov 2024 07:54:32 -0800 (PST)
-X-Received: by 2002:a05:6000:2ac:b0:382:2f62:bd3c with SMTP id
- ffacd0b85a97d-3822f62bf96mr9747269f8f.19.1731945272025; Mon, 18 Nov 2024
- 07:54:32 -0800 (PST)
+        bh=i4RsMVroYRLEeyBEwglGNgeTU+l2C3LQibeRDMRaXh0=;
+        b=ehtKC4jIe9WDjBTiOQP+cZtoKyr6MxVBo7f2/nHrCdYEVWb12PyeJE6LSJA/MFEv1f
+         c/wMGXj5AjJxmcGyjMMprrBxRK3trcez1nfTTycVKtiVCXmODzSWm4c9HkJaFmpEWKuZ
+         xPF2Qdopdi6y56A5ehHe7XTrDhkdMrcNMrkr3fdh/g7MSBXLitjRbgA0uWYiLtsCzTrq
+         l45mih0faIjUK+DzCIukKWJCHGegeal2TKFMJ1njt6siq9T+9x+WcJKp0loF8GBD1QMA
+         +d/RFWNc+JOL/Tk09OtPpjURuCrN49BpG+Tu9CAeaUCAj9ish0Rfd8BNuygfxTJKdhHy
+         Rx0A==
+X-Forwarded-Encrypted: i=1; AJvYcCVnKdT+k1FaccD6AdfrvUf1sjp9gmGdr1V5CBuTpsKHzTPG8VuvCC5Lc1CQc2g+FCgMYcvqN4Ae/llMEg==@linaro.org
+X-Gm-Message-State: AOJu0Yz97rwVci+CNWjMP5kVg49K31ffYHC+58EQVK0sbZdMCD95GYLU
+	04nwlmhrjyxE9tVLz7igzzZ84SPgJGGZyc+hr+V5JAJTzU8BYeaJqekFl0XVB4p6Rg==
+X-Google-Smtp-Source: AGHT+IFBygmmPIfGUz8O9UWqNtcVccOTwB5Fr5+w+tOYYwbTSp47Wyg/hcvxZd8kCJUQ/HvoeEuAJw==
+X-Received: by 2002:a17:902:e74e:b0:211:f52d:4dfb with SMTP id d9443c01a7336-211f52d50e8mr141024505ad.34.1731950654881;
+        Mon, 18 Nov 2024 09:24:14 -0800 (PST)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-211d0f55d04sm59469765ad.264.2024.11.18.09.24.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 Nov 2024 09:24:14 -0800 (PST)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Andrew Melnychenko <andrew@daynix.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	alex.bennee@linaro.org,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	Fabiano Rosas <farosas@suse.de>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	qemu-arm@nongnu.org,
+	Yuri Benditovich <yuri.benditovich@daynix.com>,
+	manos.pitsidianakis@linaro.org,
+	qemu-block@nongnu.org,
+	Michael Roth <michael.roth@amd.com>,
+	Konstantin Kostiuk <kkostiuk@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Peter Xu <peterx@redhat.com>,
+	gustavo.romero@linaro.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH 1/7] docs/devel: remove dead video link for sourcehut submit process
+Date: Mon, 18 Nov 2024 09:23:51 -0800
+Message-Id: <20241118172357.475281-2-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
+References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-References: <20241117161039.3758840-1-manos.pitsidianakis@linaro.org>
- <875xoku5vd.fsf@draig.linaro.org> <n5ibr.51opa2z9dha@linaro.org>
-In-Reply-To: <n5ibr.51opa2z9dha@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Mon, 18 Nov 2024 16:54:19 +0100
-Message-ID: <CABgObfaO0eppxerv=VDy7D9dhHJyUtqiQQn0ZWDNsaZpuBXmRQ@mail.gmail.com>
-Subject: Re: [PATCH v3] rust/pl011: Fix DeviceID reads
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9_e?= <alex.bennee@linaro.org>, 
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-rust@nongnu.org, 
-	Gustavo Romero <gustavo.romero@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: nsRba3PWnS0CkTZRRvHDnnEO0yBjNOwMEFfcqMdCbaA_1731945272
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: EbQINEICr+iJ
+Content-Transfer-Encoding: 8bit
+X-TUID: 2EDPITPOwCm9
 
-On Mon, Nov 18, 2024 at 3:46=E2=80=AFPM Manos Pitsidianakis
-<manos.pitsidianakis@linaro.org> wrote:
-> Yep, const fns are evaluated at compile time
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ docs/devel/submitting-a-patch.rst | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-This is not correct; "const fn"s *can* be evaluated at compile time.
-In this case they won't since "self" is only available at run time.
-The match statements persist in the final compiled code.
-
-> >Perhaps this comes down to unfamiliarity with the way macros are working
-> >here but in general macros should be eliding boilerplate to allow us to
-> >concisely represent the relevant data and functionality. Here it adds an
-> >additional indirection when reading the code just to see what is going
-> >on.
->
-> Well in the previous patch versions the concern was that it was
-> "verbose". But even if the registers are available as memory mapped in
-> the device it's the wrong abstraction to use here; this is a higher
-> level language than C and using indices is a "when you have a hammer
-> everything looks like a nail" situation.
->
-> We have different programming paradigms in Rust, allowing as to have
-> documented code (via rustdoc), so either we take advantage of Rust or we
-> don't.
-
-Your usage of macros also is a "when you have a hammer everything
-looks like a nail" situation. You're going straight from code that
-might be a bit C-like to code that looks like Perl. Rust macros can be
-useful to reduce boilerplate, but in this case the macro-based
-solution does not make it much easier to see all values at once for
-verification purposes, and makes it harder to understand the code's
-behavior.
-
-What makes code more "Rusty" would be things like using Result for
-error handling, taking advantage of the type system, using traits for
-polymorphism, using references to guarantee memory safety. QEMU is
-hardly doing any of this, and the rustdoc for qemu_api is also just
-starting, so maybe this patch is getting a bit ahead of ourselves?
-
-It's not reasonable to use 50 lines of code just for eight
-identification bytes. Even the spec says "The registers can
-conceptually be treated as a 32-bit register", which to me suggests
-making its contents a u32 const and calling it a day. But if you want
-to make it overengineered but sensible, then do this:
-
-const fn getPartNumber(self) -> u12 {0x11}
-const fn getDesignerID(self) -> u8 {match ...}
-const fn getRevision(self) -> u4 {0x1}
-const fn getConfiguration(self) -> u8 {match ...}
-
-and then a getPeriphId(idx: u8) that puts the four together in a u32
-and returns ((val32 >> (8 * idx)) & 255) as u8.
-
-For PCellID, the spec itself says the value is 0xB105F00D, so *please*
-just hardcode them in the read method. Anything else is a waste of
-everybody's time. And since we're in hard freeze, maybe we should
-reconsider the one line fix and leave everything for later.
-
-> I had sent patches on a previous patch series that only some patches of
-> them were picked up for merging, I plan to send a new revision soon
-
-Cool, thanks.
-
-Paolo
+diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
+index 83e9092b8c0..349c32ee3a9 100644
+--- a/docs/devel/submitting-a-patch.rst
++++ b/docs/devel/submitting-a-patch.rst
+@@ -252,10 +252,7 @@ patches to the QEMU mailing list by following these steps:
+ #. Send your patches to the QEMU mailing list using the web-based
+    ``git-send-email`` UI at https://git.sr.ht/~USERNAME/qemu/send-email
+ 
+-`This video
+-<https://spacepub.space/videos/watch/ad258d23-0ac6-488c-83fc-2bacf578de3a>`__
+-shows the web-based ``git-send-email`` workflow. Documentation is
+-available `here
++Documentation for sourcehut is available `here
+ <https://man.sr.ht/git.sr.ht/#sending-patches-upstream>`__.
+ 
+ .. _cc_the_relevant_maintainer:
+-- 
+2.39.5

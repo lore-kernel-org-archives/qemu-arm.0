@@ -1,308 +1,125 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2490279njc;
-        Mon, 18 Nov 2024 02:51:25 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXKJBGADWs2Wgdnm5GdxWw4TwV7GYk3+TlwDDBtV77N8pzPXXvs936Ab4qV0uDb2GtoIo+9j2hnr9Z04Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IF1b0TXghlXhwA3J2tKiBjsHNUtQtWrfqXmnBqopCy4nJzchfk0Vf6jXZiaUVXOEAxEmzIo
-X-Received: by 2002:a05:622a:1442:b0:460:a4dd:35fe with SMTP id d75a77b69052e-46363df1746mr179219201cf.6.1731927085055;
-        Mon, 18 Nov 2024 02:51:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731927085; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2511209njc;
+        Mon, 18 Nov 2024 03:35:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUpEcIQKTStEycooC9asCZL5hNDW/tkY83i+SKyCJ5Eznkn4PIgFO8vCpeLKtTvj9mHvC22ljaoXIwjDQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHVv8ZzKzUc3uXi5bWaf11O6ooBLW+VRvJ4OErwux0mUXIacR0LmJSYWyILlyWV6Lfj/LYx
+X-Received: by 2002:a05:690c:7246:b0:6ea:8cb3:32e6 with SMTP id 00721157ae682-6ee55cbbef0mr101018647b3.33.1731929733223;
+        Mon, 18 Nov 2024 03:35:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731929733; cv=none;
         d=google.com; s=arc-20240605;
-        b=CyW4Hg7MXCzB2gbhz+dOn1DZdQR1t+ChecGGdIO0M7xSQVi+0YoQa7Xm6hzxV/y84x
-         fMNFiiI7WizHJPcDz/HWmeLvITE+x2cKFJhn/XeWu6PxZyVsHFZ8pKqeVaErs8Ks6kbU
-         X6RW1pW85QE4QtfA1Glp9l1bpxvRCntE5nYtXBeZKWLI4H0WFmM1Q8PJDACGMu5VciVl
-         TicIUlJJu5lT9Dd1yjWD+j422MB+mT9IFDO/4e7zMvCHaqBTumjoXn/i7jDIA/cFu16i
-         f0pCMsZFpZ6GvNhsR4iKv3eYyJOT61FFzVN3LEi7yKb9dB9j2lh3PIow7YqNgIRhd6QL
-         jNow==
+        b=Exp60haHU6LHT8Ufwihn1hEMYfbNOZk2BsvZO6aCl2djK7M0bE3MFWCvWbWs6u/5DC
+         SyVTHAetSYFQWAyMngcrtly/f6aTt9bVKxACoKlOxKdmPHnEMObP37f2iXpRBNXe1xWa
+         iqnKHqD4Fd/N2xEVEmAszJrOqy7SVXlX/GsUjEkV0EjiZpY59Q+4Gv6QK/3OnbWc3jir
+         WsS82CwL7gxn+fhfjNtHYwVq6Tl0mejqmDqaoIV71nMsYZO3pn38dSaIY2rpuKpMhLu1
+         2YZ7CL3u1GnRNZz7eTeCNimwaR8aAkIpiD84/tl+PBeLM5OSLqXvc11HgtzMk/yRuKzs
+         LBgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=oaeFAzdxsX+dqU1kQ1prltk/oaieuo84DGrcSqOPNIE=;
-        fh=7DCJj37XkMVIOEgpM4M9C+43mnUScCeD0+InZeqgg5I=;
-        b=DWaNOozUVJ1jztPzAFlLmaD1PcGeuyNNI+5q2p586e6/oWnyhIZQ/4ZMMfhLK1uUlS
-         6PzPbK1LADUuaG4hOEvL22SZL4N2K+m9DrHooNgvjG5OOGufppf2H7DtFZsedR82KPOM
-         nik1kXpPcFWzQ5Bk+J+QgRlZGB0uMh3tD3R5df2R96JqJtk7/cvm6nPejb+VwU5wd5f4
-         Ei25pJwl5Eb6KLq6BnTtCOOWj1FBAVk80dRYS9Jv0KF4kUktqrBxxqBlpivzJlNWelv/
-         UsJgeTWoNZg7tJObWafmnnP6XH+GA0v9y/xXbw7nMIvcCNs+XqTFc7waQ/I/pq93iat9
-         pIbg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id;
+        bh=EVdittT2XGstllSLQTZj/29l4tXGmYDlWNa7MjypwMM=;
+        fh=MuVlT0612ll2I0z4FzZHnI/k8kSGkk0mKb/dwqbnNaM=;
+        b=j83CopS3UL2W76u+75e5uqQpGSeaCF1Vyj4V9tgg+SfF1HraVF4VdBywImq7nxpn4H
+         t3ZpaT/yiz7RpuCryE2JMAz5bdpHD8z2PbNzCEPWt1hRt8XEcgvbaUVC/yx2fAV/gE1M
+         JYnNWHQrwo3SsahNzvrAANGJSVQ5QOdCPjssNg5/pHA0+9BMX4BOt6s/YboMG05wfMf2
+         yUnKQnQ9NVB7creSUkbVd5kSCHImh2ElPxRZ5tstI7P5kQYI6QhCHYALnqrl5wVvyGwn
+         XAQVFz4m63XGiA3NPf08CG4B5/oUlBnxDBFQvzAMrBG5ryq99nSH45wnKJynYRjaahnR
+         y40w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="N5/UKaqb";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4635ab3ccedsi102378211cf.579.2024.11.18.02.51.24
+        by mx.google.com with ESMTPS id d75a77b69052e-4635aaf4663si101951981cf.476.2024.11.18.03.35.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2024 02:51:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Nov 2024 03:35:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="N5/UKaqb";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tCzLQ-0008Go-Pq; Mon, 18 Nov 2024 05:51:00 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tD02I-0001Rb-JA; Mon, 18 Nov 2024 06:35:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tCzLO-0008GI-7p
- for qemu-devel@nongnu.org; Mon, 18 Nov 2024 05:50:58 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
+ id 1tD02G-0001Q8-OK
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 06:35:16 -0500
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tCzLL-0003sn-U8
- for qemu-devel@nongnu.org; Mon, 18 Nov 2024 05:50:57 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1731927054;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oaeFAzdxsX+dqU1kQ1prltk/oaieuo84DGrcSqOPNIE=;
- b=N5/UKaqbBGOIsWR9xYPcVBIx/NXTysLzufvGykgkgjQYWyg1SuYYmGtHpHeJx/EMwPNseE
- 68p9VQBtPqImXIZ1cFUCp0tDRs6oaXMwRNvMm4elcAYe6hr+Yc/si7rXMQI95vqUY8Jqtj
- msLPq6gtjWOIrbbVjgQGfc/gfO7XzAY=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-389-1hUbS_1tOc-L-P5O9LItfg-1; Mon, 18 Nov 2024 05:50:52 -0500
-X-MC-Unique: 1hUbS_1tOc-L-P5O9LItfg-1
-X-Mimecast-MFC-AGG-ID: 1hUbS_1tOc-L-P5O9LItfg
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-6d4189482d8so27826946d6.1
- for <qemu-devel@nongnu.org>; Mon, 18 Nov 2024 02:50:52 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731927052; x=1732531852;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=oaeFAzdxsX+dqU1kQ1prltk/oaieuo84DGrcSqOPNIE=;
- b=hZuwQaQ1VGfXWYAHTiU+fTCEwZR/xDWtiMXvvXuxe/1eoSfpHQ89YgTjQnTLHLerE3
- d60buuHGatdUnbX8lTso6MGZbAm6UiPe77G2J+wMKigRGlEvw5oHn3s7RtBJt8nSDFyQ
- n+YPdF7E86UwZhqf5GDLwTvtg17JhQ2xUUmCa0y2CMMjV0aGQZ5ruwrNblJCIc7sLPlB
- XTcJHR2G3A9urRu+OE8K+aqO2ODzKHIGNa08huHbaE9bd+t4Tmy/gFwWOzrLbG2BiRL1
- LVZVIFXlsXTPyhFvLT077yDMMcfMoij6QmEM6tDM/X0Ih6fPeduKSSaesvGeW5UllOyu
- 025w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVmVFQ0Uy4Z5pQplY3BsrMzBdvUmkMbfXjlaOHXBXnoHah96FgSqAgcdXe3kR2Madg833ZZGFkB471K@nongnu.org
-X-Gm-Message-State: AOJu0Yy3q0oD09hBaEWvQe2VlimOniKWYA4PLn+pUxAltE8eiDt7UU/z
- gHahy/XMbZAPUQAh0UW5GxjE/gmPZEE2JYJMtwn4Sz1tV91hegBpXGsssXO3UNd6HGMZe5xT+wl
- DlcwgiE+3q9qqNQ3o48wmleM1D0gplXyfghurmOk3Ve03ijXiLHr1
-X-Received: by 2002:a05:6214:4282:b0:6d3:f671:8913 with SMTP id
- 6a1803df08f44-6d3fb8590b2mr183285226d6.35.1731927051842; 
- Mon, 18 Nov 2024 02:50:51 -0800 (PST)
-X-Received: by 2002:a05:6214:4282:b0:6d3:f671:8913 with SMTP id
- 6a1803df08f44-6d3fb8590b2mr183284956d6.35.1731927051493; 
- Mon, 18 Nov 2024 02:50:51 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6d40dc48b9asm34217276d6.65.2024.11.18.02.50.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Nov 2024 02:50:50 -0800 (PST)
-Message-ID: <8ce24003-66ad-43da-b68a-14686758a85a@redhat.com>
-Date: Mon, 18 Nov 2024 11:50:46 +0100
+ (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
+ id 1tD02E-0001Bm-SM
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 06:35:16 -0500
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.whiteo.stw.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <jlu@pengutronix.de>)
+ id 1tD029-0001u8-4e; Mon, 18 Nov 2024 12:35:09 +0100
+Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77])
+ by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.96)
+ (envelope-from <jlu@pengutronix.de>) id 1tD025-001O2W-30;
+ Mon, 18 Nov 2024 12:35:05 +0100
+Received: from localhost ([127.0.0.1])
+ by ptz.office.stw.pengutronix.de with esmtp (Exim 4.96)
+ (envelope-from <jlu@pengutronix.de>) id 1tD025-006914-2b;
+ Mon, 18 Nov 2024 12:35:05 +0100
+Message-ID: <3bb20561d50f28cb34ec51d64981b9aaf7f95ccd.camel@pengutronix.de>
+Subject: Re: [PATCH] docs: aspeed: Reorganize the "Boot options" section
+From: Jan =?ISO-8859-1?Q?L=FCbbe?= <jlu@pengutronix.de>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>, 
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>,  Steven Lee <steven_lee@aspeedtech.com>, Troy
+ Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,  Andrew
+ Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Guenter Roeck <linux@roeck-us.net>
+Date: Mon, 18 Nov 2024 12:35:05 +0100
+In-Reply-To: <20241118090648.187720-1-clg@redhat.com>
+References: <20241118090648.187720-1-clg@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.1 (by Flathub.org) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Content-Language: en-US
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org, Andrea Bolognani <abologna@redhat.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: jlu@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: qemu-arm@nongnu.org
+Received-SPF: pass client-ip=2a0a:edc0:2:b01:1d::104;
+ envelope-from=jlu@pengutronix.de; helo=metis.whiteo.stw.pengutronix.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hUJS9kZz+85o
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: fOV7CdYnflLT
 
-Hi Shameer,
+On Mon, 2024-11-18 at 10:06 +0100, C=C3=A9dric Le Goater wrote:
+> Add subsubsections for possible boot methods and introduce a new
+> section on eMMC boot support for the ast2600-evb and rainier-emmc
+> machines, boot partitions assumptions and limitations.
+>=20
+> Signed-off-by: C=C3=A9dric Le Goater <clg@redhat.com>
+> ---
+> =C2=A0docs/system/arm/aspeed.rst | 99 +++++++++++++++++++++++++++++++++--=
+---
+> =C2=A01 file changed, 86 insertions(+), 13 deletions(-)
 
-On 11/8/24 13:52, Shameer Kolothum wrote:
-> Hi,
->
-> This series adds initial support for a user-creatable "arm-smmuv3-nested"
-> device to Qemu. At present the Qemu ARM SMMUv3 emulation is per machine
-> and cannot support multiple SMMUv3s.
->
-> In order to support vfio-pci dev assignment with vSMMUv3, the physical
-> SMMUv3 has to be configured in nested mode. Having a pluggable
-> "arm-smmuv3-nested" device enables us to have multiple vSMMUv3 for Guests
-> running on a host with multiple physical SMMUv3s. A few benefits of doing
-> this are,
->
-> 1. Avoid invalidation broadcast or lookup in case devices are behind
->    multiple phys SMMUv3s.
-> 2. Makes it easy to handle phys SMMUv3s that differ in features.
-> 3. Easy to handle future requirements such as vCMDQ support.
->
-> This is based on discussions/suggestions received for a previous RFC by
-> Nicolin here[0].
->
-> This series includes,
->  -Adds support for "arm-smmuv3-nested" device. At present only virt is
->   supported and is using _plug_cb() callback to hook the sysbus mem
->   and irq (Not sure this has any negative repercussions). Patch #3.
->  -Provides a way to associate a pci-bus(pxb-pcie) to the above device.
->   Patch #3.
->  -The last patch is adding RMR support for MSI doorbell handling. Patch #5.
->   This may change in future[1].
->
-> This RFC is for initial discussion/test purposes only and includes patches
-> that are only relevant for adding the "arm-smmuv3-nested" support. For the
-> complete branch please find,
-> https://github.com/hisilicon/qemu/tree/private-smmuv3-nested-dev-rfc-v1
->
-> Few ToDos to note,
-> 1. At present default-bus-bypass-iommu=on should be set when
->    arm-smmuv3-nested dev is specified. Otherwise you may get an IORT
->    related boot error.  Requires fixing.
-> 2. Hot adding a device is not working at the moment. Looks like pcihp irq issue.
->    Could be a bug in IORT id mappings.
-> 3. The above branch doesn't support vSVA yet.
->
-> Hopefully this is helpful in taking the discussion forward. Please take a
-> look and let me know.
->
-> How to use it(Eg:):
->
-> On a HiSilicon platform that has multiple physical SMMUv3s, the ACC ZIP VF
-> devices and HNS VF devices are behind different SMMUv3s. So for a Guest,
-> specify two smmuv3-nested devices each behind a pxb-pcie as below,
->
-> ./qemu-system-aarch64 -machine virt,gic-version=3,default-bus-bypass-iommu=on \
-> -enable-kvm -cpu host -m 4G -smp cpus=8,maxcpus=8 \
-> -object iommufd,id=iommufd0 \
-> -bios QEMU_EFI.fd \
-> -kernel Image \
-> -device virtio-blk-device,drive=fs \
-> -drive if=none,file=rootfs.qcow2,id=fs \
-> -device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \
-> -device pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1 \
-> -device arm-smmuv3-nested,id=smmuv1,pci-bus=pcie.1 \
-> -device vfio-pci,host=0000:7d:02.1,bus=pcie.port1,iommufd=iommufd0 \
-> -device pxb-pcie,id=pcie.2,bus_nr=16,bus=pcie.0 \
-> -device pcie-root-port,id=pcie.port2,bus=pcie.2,chassis=2 \
-> -device arm-smmuv3-nested,id=smmuv2,pci-bus=pcie.2 \
-> -device vfio-pci,host=0000:75:00.1,bus=pcie.port2,iommufd=iommufd0 \
-> -append "rdinit=init console=ttyAMA0 root=/dev/vda2 rw earlycon=pl011,0x9000000" \
-> -device virtio-9p-pci,fsdev=p9fs2,mount_tag=p9,bus=pcie.0 \
-> -fsdev local,id=p9fs2,path=p9root,security_model=mapped \
-This kind of instantiation matches what I had in mind. It is
-questionable whether the legacy SMMU shouldn't be migrated to that mode
-too (instead of using a machine option setting), depending on Peter's
-feedbacks and also comments from Libvirt guys. Adding Andrea in the loop.
-
-Thanks
-
-Eric
-> -net none \
-> -nographic
->
-> Guest will boot with two SMMuv3s,
-> [    1.608130] arm-smmu-v3 arm-smmu-v3.0.auto: option mask 0x0
-> [    1.609655] arm-smmu-v3 arm-smmu-v3.0.auto: ias 48-bit, oas 48-bit (features 0x00020b25)
-> [    1.612475] arm-smmu-v3 arm-smmu-v3.0.auto: allocated 65536 entries for cmdq
-> [    1.614444] arm-smmu-v3 arm-smmu-v3.0.auto: allocated 32768 entries for evtq
-> [    1.617451] arm-smmu-v3 arm-smmu-v3.1.auto: option mask 0x0
-> [    1.618842] arm-smmu-v3 arm-smmu-v3.1.auto: ias 48-bit, oas 48-bit (features 0x00020b25)
-> [    1.621366] arm-smmu-v3 arm-smmu-v3.1.auto: allocated 65536 entries for cmdq
-> [    1.623225] arm-smmu-v3 arm-smmu-v3.1.auto: allocated 32768 entries for evtq
->
-> With a pci topology like below,
-> [root@localhost ~]# lspci -tv
-> -+-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
->  |           +-01.0  Red Hat, Inc. QEMU PCIe Expander bridge
->  |           +-02.0  Red Hat, Inc. QEMU PCIe Expander bridge
->  |           \-03.0  Virtio: Virtio filesystem
->  +-[0000:08]---00.0-[09]----00.0  Huawei Technologies Co., Ltd. HNS Network Controller (Virtual Function)
->  \-[0000:10]---00.0-[11]----00.0  Huawei Technologies Co., Ltd. HiSilicon ZIP Engine(Virtual Function)
-> [root@localhost ~]#
->
-> And if you want to add another HNS VF, it should be added to the same SMMUv3
-> as of the first HNS dev,
->
-> -device pcie-root-port,id=pcie.port3,bus=pcie.1,chassis=3 \
-> -device vfio-pci,host=0000:7d:02.2,bus=pcie.port3,iommufd=iommufd0 \
->
-> [root@localhost ~]# lspci -tv
-> -+-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
->  |           +-01.0  Red Hat, Inc. QEMU PCIe Expander bridge
->  |           +-02.0  Red Hat, Inc. QEMU PCIe Expander bridge
->  |           \-03.0  Virtio: Virtio filesystem
->  +-[0000:08]-+-00.0-[09]----00.0  Huawei Technologies Co., Ltd. HNS Network Controller (Virtual Function)
->  |           \-01.0-[0a]----00.0  Huawei Technologies Co., Ltd. HNS Network Controller (Virtual Function)
->  \-[0000:10]---00.0-[11]----00.0  Huawei Technologies Co., Ltd. HiSilicon ZIP Engine(Virtual Function)
-> [root@localhost ~]#
->
-> Attempt to add the HNS VF to a different SMMUv3 will result in,
->
-> -device vfio-pci,host=0000:7d:02.2,bus=pcie.port3,iommufd=iommufd0: Unable to attach viommu
-> -device vfio-pci,host=0000:7d:02.2,bus=pcie.port3,iommufd=iommufd0: vfio 0000:7d:02.2:
->    Failed to set iommu_device: [iommufd=29] error attach 0000:7d:02.2 (38) to id=11: Invalid argument
->
-> At present Qemu is not doing any extra validation other than the above
-> failure to make sure the user configuration is correct or not. The
-> assumption is libvirt will take care of this.
->
-> Thanks,
-> Shameer
-> [0] https://lore.kernel.org/qemu-devel/cover.1719361174.git.nicolinc@nvidia.com/
-> [1] https://lore.kernel.org/linux-iommu/ZrVN05VylFq8lK4q@Asurada-Nvidia/
->
-> Eric Auger (1):
->   hw/arm/virt-acpi-build: Add IORT RMR regions to handle MSI nested
->     binding
->
-> Nicolin Chen (2):
->   hw/arm/virt: Add an SMMU_IO_LEN macro
->   hw/arm/virt-acpi-build: Build IORT with multiple SMMU nodes
->
-> Shameer Kolothum (2):
->   hw/arm/smmuv3: Add initial support for SMMUv3 Nested device
->   hw/arm/smmuv3: Associate a pci bus with a SMMUv3 Nested device
->
->  hw/arm/smmuv3.c          |  61 ++++++++++++++++++++++
->  hw/arm/virt-acpi-build.c | 109 ++++++++++++++++++++++++++++++++-------
->  hw/arm/virt.c            |  33 ++++++++++--
->  hw/core/sysbus-fdt.c     |   1 +
->  include/hw/arm/smmuv3.h  |  17 ++++++
->  include/hw/arm/virt.h    |  15 ++++++
->  6 files changed, 215 insertions(+), 21 deletions(-)
->
+Reviewed-by: Jan Luebbe <jlu@pengutronix.de>
 

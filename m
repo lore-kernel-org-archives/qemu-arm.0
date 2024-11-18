@@ -1,187 +1,162 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2742953njc;
-        Mon, 18 Nov 2024 09:24:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWqWvTkA38nz4x82s2f3T/hiKBn509sOl8FuDJUguJhTjZXCpMRqJ6v1qqkBR4+iOPtf5YDTpAOTyMsYg==@linaro.org
-X-Received: by 2002:a17:903:22c3:b0:20c:7ee8:fc3c with SMTP id d9443c01a7336-211d0d70eedmr179792135ad.22.1731950654178;
-        Mon, 18 Nov 2024 09:24:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731950654; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2762379njc;
+        Mon, 18 Nov 2024 09:52:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXTSa3pEIY4w0NpcPYm/kZW1SgvDlFIrTcV0zE/jxp0eFGGuflm/Q1K9zq/RNOOcbHsUoR4GBNLobNXNg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH6DbTsfcaWlozMiMSSyLrpRyHuz6a75+QW9MJWLt1l/kjIpl5cWGMKuWAHk8y8ogZox3qJ
+X-Received: by 2002:a05:622a:4d4b:b0:462:f685:3c29 with SMTP id d75a77b69052e-46363e95508mr191012741cf.42.1731952376376;
+        Mon, 18 Nov 2024 09:52:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731952376; cv=none;
         d=google.com; s=arc-20240605;
-        b=AnHgTgbbTUDxlrzacNFV+gB4TsrSHovINkeV6UKJVUGE1vbFW02elZ99+8QELr8V+W
-         yHB2MQGFclFIvdQgRjzyPayiGaW9Hq+j+Gck+l/DQFXpzHamgSc8634vpsZW1k2t7I7y
-         JtwTrObkjplbMtMsu/+F47UbBLJqzZ4OHEoIQn81Xm0OlrTPdvGKCS8YuiXJVCcLcb1n
-         JctfZ6chJzy0AzgwjLFoKhDJCDmQW0IKa2SIMfoBJ/8rbshEAwGUPH9cPgvi18oTL8cj
-         XvqA2w4btyvt6jTu371PCofHeOG57JfXTFALfFnL8hpv11ySzlYfd+PLxZnLPUvXmUDT
-         Xycw==
+        b=KzmYZT+Ns8gf0vInJbg8Woer4/EdHtdGjuafRDONTWWVqxLjWq6II8t4dpFC4wpFaA
+         kYQR6rpEuGq3luHw2+ysPAzuU4PVIBCEYR/Rj01KH3nCr7TAkTpyev5d8WWRyADFfDFS
+         WJzXaDQ1SipoKUqdKVU4SIT1YU8Gk5A7KjY3HsH1tkzL49LHCLMVYpJcnPaRRUtcTG7+
+         CXzT+QPig3skT/3uvHJp8QMKozSTDIa/+9rXtTpOXLvePOlNAha+UetN16WDv7YA7f1v
+         YGrMAwuFVb6BcOXpuEb0AH8CGkgbY27Bo+umk1k9gABuoJPz/rPDz2vy+nVNjDuXYYBG
+         OONQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=e4XkJsAE/EFpWJE1zVEboiYzZ4XYd9X73tpjRSnXg6Y=;
-        fh=P31AJsUvSFr/Daed2bFEN7kXNGha+Zim9r6dNww+w1c=;
-        b=j0xsmHJC3EVakUW5E4nIDsLB2OHVQKgSLbZ7m1BT7ZN3Us1geQOaeCFfSPggSq3ISC
-         v7G2H4il4J2MaXnT8auPVUs9d2UbFRlWl3I1bAQv66PaRHYbRl0JyROj6mQdghCl091C
-         eYUMJNJ2kr3PSXhc1m/FzSzNkoOYdMWeZjClezbbrIGSgVJQSVTkz4WqnYSnHLbgQwCW
-         RCG32JcGN6yzr0ewDQ5Q+lJ7Y76103gqRzoN0HYwOFjqII7qhK9Ewm3EflzIeX5sU2YP
-         yPiCo2ol9ZpV8qbP2nASqJFz7k0mXKlCg8YyQOad6mpVeDBNcfxvF12PwuqkJB0vgooI
-         ohGg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=FzB3uG2YzDJYNup3z5b1idalppx7G1F6If9BrKWJBWI=;
+        fh=adDlGcu0xHQur9DKbGnup3yOLwrFV1y0o7L74W+8hbE=;
+        b=NxbiGzfZRBTGBtPZs2caYQIgCoI2Cwv78B7LMYlFZ6irS6k9nddUmXs+Xcn8ylFxDA
+         R34fLGMndnxjM4gLbpT59yDHFPvqx8ViLaXzNv6lc4ung6FH6x1dlCoxdVjCTXWxSb9/
+         kapgo15H9wPnQ7bjZ2iw4bzrXVXYMq6HYaPXSRyRaBjJAX7TkDHeK+vs8t422JnDcXe9
+         /l+dbvGNr5LJpZUOCMrOZkN2WVRxGZ4t+1TrV/MVK1gvKnUCRH56639nWDrjtTv203OL
+         Vrwn7FG4LrcPMXEOZkHUTmAZsJsTpWldVWBCAhPpRHQJHrEvQo4djy18rMqeRDgU5ikL
+         6K3g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fUjFpJRk;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="n/AeZiBU";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-2124bf3efeesor547345ad.11.2024.11.18.09.24.14
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-46392c79c42si1478521cf.692.2024.11.18.09.52.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 18 Nov 2024 09:24:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 18 Nov 2024 09:52:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fUjFpJRk;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="n/AeZiBU";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tD5vP-0001d1-2t; Mon, 18 Nov 2024 12:52:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tD5vL-0001cW-AP
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 12:52:31 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tD5vH-0006bg-Ax
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 12:52:29 -0500
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-a9ee097a478so172139666b.2
+ for <qemu-arm@nongnu.org>; Mon, 18 Nov 2024 09:52:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731950654; x=1732555454; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=e4XkJsAE/EFpWJE1zVEboiYzZ4XYd9X73tpjRSnXg6Y=;
-        b=fUjFpJRkDjUwMKQ7N0fK4Dgqp5R6ep+bcq81smC4/cjIQ05fDnbUHM1IPfXclGw/Iq
-         8Tr/Ih+jEGq+WI1ZiaHTARsGBsCKjH0Byvzla26fNTAy5zrMG77e/OI+C3oRGXviZfqr
-         Ci0ssZpGVXkHSWo4kVdIlSdMHH4ze+X/7XRGsOUX7Aoirn+xUgCh9dLRJw5Ydiz72crI
-         phVAY6GDc7hpXchjgRa2jUdVPvVHAfZmifetuhpcAV5D7NcLG+5CEHyHmSG/WQN7oPaL
-         Z9H6x2yWfgf/38QQj5/EHWfV3y6EY1K41VKnx2cCm/J6ZQ3OwenpmR2xkESrQlUUTk65
-         QS3g==
+ d=linaro.org; s=google; t=1731952344; x=1732557144; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=FzB3uG2YzDJYNup3z5b1idalppx7G1F6If9BrKWJBWI=;
+ b=n/AeZiBU65fFfIvzNvdKbhfvWPIw+rU6319HHSTGzU5UGDnYYO4eoLg80KEF2KS3ts
+ ruodhKMnuhn1x5XnuXZdu/BTD9cGiSowXH+TUoXc2HbuHSB0azAB4ZqMx8o0WdWyrrYr
+ M3p9NAtYT4ZyNa46epZdd+27In7vK5fhBjo1f03S5DZocjWo1LUCK6xiY1E+Gs2peXrk
+ +t7n5mzlXumCDWonDzwxpEcBLiaZtFPbK0gpRFgTPe/yW4SMwFAdmVucJ115H+RDaDk/
+ Rtm/M0xfQton2bY2xzZDvd2DnPAqx1iYoZvH9sTom44v/7hieONzYq0mEWmUJ/VVWMPT
+ RtOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731950654; x=1732555454;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=e4XkJsAE/EFpWJE1zVEboiYzZ4XYd9X73tpjRSnXg6Y=;
-        b=VpMDMvxA/VBIURWGPPOQe6WvlPX0fQWqZ/2oWxR3gyyPUHcnoZbzsWB/pQhGBYCfeI
-         8P7+w+wNGmfSGsLhSZSGaToO6IYpgTxC79lV7jP4KcmQ9gBmLmbRFiy5iU9AVTHn7gTY
-         KFD3bXP9BU9ly6xElZKVny1YiEDtzbxJuahYYZak+lVZFRO0qXzBrcNxYnQnnlnLVNgr
-         fK/6PQ4gapZ76L9RRXniOMfcgvqtTPMlN6ljQE37xF598zCIskr0L7IZCIsg29hVjkuo
-         QQ9hK61D+bHNvoCMgW6IGJ02elZvb5UawsuBI7s1Jdwgwz2Tps0qFA9w+AEhXGAEdIVJ
-         88pA==
-X-Forwarded-Encrypted: i=1; AJvYcCXViCDUzYv1tADZwemRl8jDHdjvIe5GN+EptmB5mDqbpg1MOKTWDVqN9CEY4uPArLmkPXDW3JA6vuHo6g==@linaro.org
-X-Gm-Message-State: AOJu0YwRDVj9R/jUxQl5/qyxpgF7Feu8DYunEUqObqHFHFxmINy40X9k
-	cuB6+Z29BEQ7Cq2+7+Cq4DnjS0eJpYlELyvBQcf/uuseJSQdojks/QxDu3p8mpIGnw==
-X-Google-Smtp-Source: AGHT+IGCNPa5oEuHAc4+eGbiDJ9GjGH5o5xmHOYseloT5NM0kDwDS1L6jCoWMaLdELUpPJahY/WmhQ==
-X-Received: by 2002:a17:902:e843:b0:210:f6ba:a8e9 with SMTP id d9443c01a7336-211d0d70e62mr184708445ad.19.1731950653665;
-        Mon, 18 Nov 2024 09:24:13 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-211d0f55d04sm59469765ad.264.2024.11.18.09.24.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 09:24:13 -0800 (PST)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Andrew Melnychenko <andrew@daynix.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	alex.bennee@linaro.org,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	Fabiano Rosas <farosas@suse.de>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	qemu-arm@nongnu.org,
-	Yuri Benditovich <yuri.benditovich@daynix.com>,
-	manos.pitsidianakis@linaro.org,
-	qemu-block@nongnu.org,
-	Michael Roth <michael.roth@amd.com>,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Peter Xu <peterx@redhat.com>,
-	gustavo.romero@linaro.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 0/7] Enhance documentation for new developers
-Date: Mon, 18 Nov 2024 09:23:50 -0800
-Message-Id: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
-Content-Type: text/plain; charset="utf-8"
+ d=1e100.net; s=20230601; t=1731952344; x=1732557144;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FzB3uG2YzDJYNup3z5b1idalppx7G1F6If9BrKWJBWI=;
+ b=jXmwJ4M0hW7xliwD15XCG+/ELYB/Zg/dn0Cc+CmWgwXYx09wTSl6bPKyfQZy9y20em
+ aHjTgPezTguiB+dSxRA00NQ3Ot02cPziJbnbaAsZ7pP56F3MghB6hjF2Gm9zZcGRA8Kh
+ zWuRQNOqB0nZSRPIHQAXyJiovVquf12lNHIjRs/ofZbYKBM16Np5r5/m6f8DrKtrTXgZ
+ skdmnLwkPJxt1g4MfYkrkpNKDoEtGyWaVTDilPlhRvXlvDr0px2+stH2LpDHwHmsnm+/
+ QnrUNam+y2MqtelkfQygKo7inn5/ifLBPXQ9/mtlfeYn3/kWc2eAewg8Uyv/iNwi3xcW
+ 7coA==
+X-Gm-Message-State: AOJu0YyOSXFkO9p+OZ9ctQK3s9IhOdConZzw0dnXN2MqJWNlRkNWmF+M
+ yNZJh6ZIRAS5IXDQsYWsHdLA222tyor43DX4v73ftKw3MJGfRYyNoD8WwNwC+kJ2mFV37V6SaXe
+ 0ST54wfZnunAzRH8gA7DXhOSaJ8XB2WoEIpfhJg==
+X-Received: by 2002:a05:6402:50cb:b0:5cf:c22f:524a with SMTP id
+ 4fb4d7f45d1cf-5cfc22f524fmr7684102a12.8.1731952344657; Mon, 18 Nov 2024
+ 09:52:24 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: BmFjl+wBdsa9
+References: <20241118152507.45046-1-paskripkin@gmail.com>
+In-Reply-To: <20241118152507.45046-1-paskripkin@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 18 Nov 2024 17:52:13 +0000
+Message-ID: <CAFEAcA_mEmC3M0VP=BGQ5sikroMA_8DXPwXz7QXwgyXQ5vkHYg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/2] arm/ptw: fix missing sctlr.{u}wxn handling in
+ get_phys_addr_v6
+To: Pavel Skripkin <paskripkin@gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: /VhZq3blSAk1
 
-This series extends our documentation with new pages to help developers
-onboarding on QEMU. It focuses on providing a big picture of QEMU (to a
-modest extend).
+On Mon, 18 Nov 2024 at 15:25, Pavel Skripkin <paskripkin@gmail.com> wrote:
+>
+> We observed failing WXN tests in our OS which we tracked down to missing
+> WXN handling in qemu.
+>
+> The problem was in that short descriptor format walker did not respect WXN
+> bit. To fix it, make it possible to call get_S1prot() from
+> get_phys_addr_v6().
+>
+> Tested localy that all permission-related tests in our OS passed on
+> following platforms:
+>
+> - arm64-virt
+> - arm-vexpress (v7)
+> - arm-virt     (v7)
+>
+> Changes from v2:
+>   - Fix naming
+>   - Fix too early ap decoding in get_phys_addr_lpae
+>   - Refactor a bit security-space related code in get_phys_addr_v6()
+>
+> Changes from v1:
+>   - Fix style errors
+>   - Add cover letter
+>   - Use get_S1prot() instead of open-coded checks
+>
+> v2: https://lore.kernel.org/qemu-devel/20241117134931.37249-1-paskripkin@gmail.com/
+> v1: https://lore.kernel.org/qemu-devel/20241114165900.6399-1-paskripkin@gmail.com/
+>
+> Pavel Skripkin (2):
+>   arm/ptw: make get_S1prot accept decoded AP
+>   arm/ptw: use get_S1prot in get_phys_addr_v6
 
-As such, it was written to be simple, short, easy to understand, and pointing to
-more details. It provides another way to dive into details instead of simply
-hitting the "search" box.
+Applied to target-arm.next, thanks.
 
-The first patches enhance the existing developer section. They provide
-information about b4 and git-publish, two important tools that I learnt from my
-coworkers, and were not presented anywhere, and were really missing IMHO.
-
-Then, we introduce a new Codebase page, presenting (succintly) the various parts
-of QEMU, and what every folder of the codebase contains.
-We then add a glossary with the most recurrent acronyms we hear in our daily
-conversations on the mailing list.
-Finally, we add an "How-to" page which present how to build and test qemu, and
-how to contribute a patch. It's definitely a repetition of existing information,
-but the goal was to have a self contained page with all the commands I run
-daily personally, and that someone would be interested to have.
-
-When reviewing, please keep in mind this is targeting someone who discovers
-QEMU, and not someone who contributed to the project for several years. What is
-obvious for you will not be obvious for a random young developer.
-
-That said, please free to point if something is "false", or "really incomplete".
-It can be hard to summarize in one or two sentences complex parts, but that's
-the intent here.
-
-Your feedback on content or organization is very welcome!
-
-Thanks,
-Pierrick
-
-Pierrick Bouvier (7):
-  docs/devel: remove dead video link for sourcehut submit process
-  docs/devel: add git-publish for patch submitting
-  docs/devel: add b4 for patch retrieval
-  docs/devel: add information on how to setup build environments
-  docs: add a codebase section
-  docs: add a glossary
-  docs: add a how to section
-
- docs/about/build-platforms.rst         |   4 +-
- docs/about/emulation.rst               |   2 +
- docs/codebase/index.rst                | 211 ++++++++++++++++++++++
- docs/devel/build-environment.rst       | 114 ++++++++++++
- docs/devel/build-system.rst            |   2 +
- docs/devel/control-flow-integrity.rst  |   2 +
- docs/devel/decodetree.rst              |   2 +
- docs/devel/ebpf_rss.rst                |   2 +
- docs/devel/index-build.rst             |   1 +
- docs/devel/index-internals.rst         |   2 +
- docs/devel/migration/main.rst          |   2 +
- docs/devel/multi-thread-tcg.rst        |   2 +
- docs/devel/qapi-code-gen.rst           |   1 +
- docs/devel/submitting-a-patch.rst      |  29 ++-
- docs/devel/testing/main.rst            |   9 +-
- docs/devel/testing/qtest.rst           |   2 +
- docs/glossary/index.rst                | 238 +++++++++++++++++++++++++
- docs/how-to/index.rst                  | 146 +++++++++++++++
- docs/index.rst                         |   5 +
- docs/interop/qemu-ga.rst               |   2 +
- docs/system/arm/virt.rst               |   2 +
- docs/system/images.rst                 |   2 +
- docs/system/qemu-block-drivers.rst.inc |   2 +
- docs/tools/qemu-nbd.rst                |   2 +
- docs/tools/qemu-storage-daemon.rst     |   2 +
- docs/user/main.rst                     |   6 +
- 26 files changed, 788 insertions(+), 6 deletions(-)
- create mode 100644 docs/codebase/index.rst
- create mode 100644 docs/devel/build-environment.rst
- create mode 100644 docs/glossary/index.rst
- create mode 100644 docs/how-to/index.rst
-
--- 
-2.39.5
+-- PMM

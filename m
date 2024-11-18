@@ -1,256 +1,185 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2517690njc;
-        Mon, 18 Nov 2024 03:49:38 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWyDQSFJUXz6xDKUGHqHeZRS+yRsgXoRyram59ppDNoJbOjgIipkAyOb6woFZ5aJmpPq/L7b1HZqz0CFw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE/0g+G+0Y+8LHHn7bBSStJIbes9IteZnrCXzK1E9YyjH8yRP+u9EKLLd03Z4dG0qNmy+U/
-X-Received: by 2002:a05:6122:20a6:b0:50c:eb10:9799 with SMTP id 71dfb90a1353d-51477e7dbadmr10930468e0c.1.1731930578014;
-        Mon, 18 Nov 2024 03:49:38 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1731930577; cv=pass;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2533439njc;
+        Mon, 18 Nov 2024 04:16:28 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXVDQ+BhZkBg8GYzzlaUWQKabqfTLHvuwnT1ZFMpJ2xgLMdwhiPy6SwVF42HugjpVxTxtESg5RLkbt5+g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHgBiaPnyPmgtb0M+/9BnJfNWBTStFTU4XWIX69LOUSDrQ3GxQhYoBa77xYlbndcIKUVCX/
+X-Received: by 2002:a05:6214:5bc2:b0:6cb:ee08:c1e8 with SMTP id 6a1803df08f44-6d3fb7c5ca4mr227665286d6.23.1731932187996;
+        Mon, 18 Nov 2024 04:16:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731932187; cv=none;
         d=google.com; s=arc-20240605;
-        b=iUAEfZ4rwC5Ztbi7hPwRVKUqD5VdCTpun6AbjD9iLB5Fd7L/NEPS9++vG2pS4TJX83
-         kxBTNc+IsdFkDsP+FgYDLAQkDU0vGOX88529IAuWwXEvao9XIB1lyBoV5/lphzW+mlwd
-         8MclYyqVY9uPt7bdRU97WLKZ4dYs62IS1nvGgVp5Tw2HAuUY05vUaq7FV0jvFtIMZswH
-         3lIHKU3ZOLbLu+ItB3DIJ+S85nUTN0lu2jp7vsSKioL0GipPtlnW+5a7JStBVmdT8ULU
-         17Jn0zZoQnJsCMVnXpzSc1dwii3AfuNDUNxG+F0+wk0cKzXXlHthexWiVZvTUouhOGQA
-         NTaA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=em94bkhWkgmYEivujhPVBsxopRI+9HpNvwfgEjVGlshJcIr+YeVaGJ1U1IEXZYfNsv
+         lmUDKCf4oVTbfWJjavBNMFLklj70Xeo/m3ZM9us1zYXU8N6GCPJn+IdhhiymxHLwHVpK
+         ZMyga7Py2hbgROlhdXDGC0lZwSeRErErM4Dfmnc+2aFHKIREZDmp0bERuB12gpx5KrAX
+         xjXJe4wrOFCoSd7PbJAu8UfgFazJD0vXkok5OVGO2tElBfXi9X5Mj9oypRzVegiTFpGX
+         BRunxVztT4ugnnN6PmhW3KvHporm2WpApAIhkbI7IJOd3OMfuYwxg7hemvkiTpLPTZsO
+         D68A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=A1NWygWwr0X6XNGAjmwmU58VF9RftDRAT8j6yFpAoi0=;
-        fh=ybjpsDkOdn3ejlXhfVxdlGAGvNyKoarJyEiJ2V0NFiE=;
-        b=bDDkJ0GWcV5XRlSXERL8r98kpnNavZ7gSy+YQjlV+zbXD7I82pG/SeifoEiJaIcAx2
-         quYw4VQdKRrI2OTGhkWPXhm5v1mgNN9snZwqML72YJO/e0hR6CnJxuZl6iFcDEaSSgu+
-         VT4YwZgzEsmLY6HQyEiOhG8xqd+I2SAuxLxP15DybU/jBpqDMw2nqk0aLRvvFtYO0OLj
-         mVskktZLedvKV1hSxJvu7hL3f+WPxbfPx/RO02KlK6zXsCNbpyvzbX9jh9IbJfwlLJ+4
-         6zgTKJIeiunq4O5La0KUja/GC/CdD1kOHbNR3uEEuB4FG8JmueIK623XvNS0ptsuRuI9
-         o6gg==;
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id;
+        bh=n1Ln2iiquUNzKFRIJmqbXsKSiav+3QsxArEI37YO20U=;
+        fh=/0iCECF544qkrE6X+sFxmz8wmEL5BBJv3+C7p25e4J4=;
+        b=W+UVxRTA8N6fgCdP28ZyfxVM9V/dqzbgf62L0ByTFl3BZ1mh7KSzEpF59cZkJBbkA1
+         ZHTaCYTBCcGeWC3J8m4OBrraq+gDXltN1+R/NY5DaW1JeUA6h8x+Ov4/xbju7Jq4cXLY
+         mA71hSpIYRVFpowm5AhT3BZ3cotTkJuDCQHkE2gB2Tp36GCYCAd0xX1SPmmk+EwH34Pp
+         hF+T68ZzS7BEvkWuJRUVV2poC60RnMbO5vxPMYCiW2Q4fV9U3mRkD+IIwGHf0RVhSVK1
+         12WVb8AlSmo1OXM4VLAngcMOEPCJObqHYqb4lnvLAWLzU0HazGS4tqjBJrVQ/ICWguk0
+         viWw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@jaguarmicro.com header.s=selector2 header.b=LMCsPzf0;
-       arc=pass (i=1 spf=pass spfdomain=jaguarmicro.com dkim=pass dkdomain=jaguarmicro.com dmarc=pass fromdomain=jaguarmicro.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jaguarmicro.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4635a9c83e8si114575251cf.207.2024.11.18.03.49.37
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d40db71e1fsi63019326d6.55.2024.11.18.04.16.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2024 03:49:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Nov 2024 04:16:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jaguarmicro.com header.s=selector2 header.b=LMCsPzf0;
-       arc=pass (i=1 spf=pass spfdomain=jaguarmicro.com dkim=pass dkdomain=jaguarmicro.com dmarc=pass fromdomain=jaguarmicro.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=jaguarmicro.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tD0Fb-0006sS-K6; Mon, 18 Nov 2024 06:49:03 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tD0fo-0005Yf-5n; Mon, 18 Nov 2024 07:16:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew.yuan@jaguarmicro.com>)
- id 1tD0FZ-0006sC-U3; Mon, 18 Nov 2024 06:49:01 -0500
-Received: from mail-psaapc01on20717.outbound.protection.outlook.com
- ([2a01:111:f403:200e::717]
- helo=APC01-PSA-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
+ id 1tD0fe-0005WN-DZ
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 07:16:05 -0500
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew.yuan@jaguarmicro.com>)
- id 1tD0FX-0003XH-MJ; Mon, 18 Nov 2024 06:49:01 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tO95k4XzBNvaSGOGqVKzpsLGkm7jFGq29+Vx0htRAYv524/1+FQ+0DPRlShY/Lel1ffwwknanpcYnl4J4GjYAJcPCZuu1EQ3nrQwgxpRoNPQjXzWgr6PEkJzp80KkqIc5h14InueCLjnP+ktpLfNw+kBSFu1u7k43Ty+0TcCALrI+7yiF2AmXQhaAThr0RSDZV1w8b7+zP/v+8S/IlaLvTS1ACxy317mtek67a0CMnoSgw+paFq8Xxpr3K6BKKalXug1/XK3YYm0MQs+l671XlIlCsHTSa7cI+krQAHCpUe21/eI2XnSRDG6Sw/23uFjYzU3StesIwgNhboIDWn0rg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=A1NWygWwr0X6XNGAjmwmU58VF9RftDRAT8j6yFpAoi0=;
- b=BOzyiVm7/UchzX832qZ1k46COXSVttUD+25rrEI8A510Rt/h8HluWtnEoixPqlC/xwgsq+KYAiP84pwnVtiEiEQDYpSVfZ0agii2Ply/ysHvFetvgnPJp+NtAnAxFz7mNDNrG5Smkk/V7Q5P65UjaTxexV8E4tnsgeJdqjo679wlT5dqkcgWBFYsNDyQLpdVg56geyn1hVmXacWP6n3PW/3KhEQ8WY6NlxkgXFZSg6ao3VxjEzc/9pYKvMLmTvZJdsTgq1d3H1K36RVoC5DoylXFFRcMDHlHfBwlQCVtOjPt9Nqa7aTFiPhGec8p5h06Kf/pPLAPQRqPpSVYjVuFqw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=jaguarmicro.com; dmarc=pass action=none
- header.from=jaguarmicro.com; dkim=pass header.d=jaguarmicro.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jaguarmicro.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=A1NWygWwr0X6XNGAjmwmU58VF9RftDRAT8j6yFpAoi0=;
- b=LMCsPzf0QJMnnHTtiReGIDjZjg00dV9vMEpdA3CLfl0rUCgJF8B2+0jRucpaDR0iwAmOa+ZXKTB2saR1L/N/3xBsS5B4vzSMZRAI6Hrv5h/lSsVtwxNSX2LSQesUCH+Hw4vlL4KbFe1LAnTyBWTGykwaoiSzE492xS1aBSDnAEvSfUaUhL0ckgPt8tEBTHAsDmGaLKaO8w4ok3Gav8gOF/B03jyXKyw07ljibd8V30u1DPvy6/b5rX3XDbGEm05tPPmGfbLPai+chfeq1eeFHjKFdpC4LsnM4g57eNfQ9tsKnxmASsxh0tS9s5iP116SFfV+das9kowcrdcsuQgGRA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=jaguarmicro.com;
-Received: from KL1PR0601MB4891.apcprd06.prod.outlook.com (2603:1096:820:ae::7)
- by TYUPR06MB5925.apcprd06.prod.outlook.com (2603:1096:400:354::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8182.11; Mon, 18 Nov
- 2024 11:48:42 +0000
-Received: from KL1PR0601MB4891.apcprd06.prod.outlook.com
- ([fe80::8950:42de:2354:91b2]) by KL1PR0601MB4891.apcprd06.prod.outlook.com
- ([fe80::8950:42de:2354:91b2%3]) with mapi id 15.20.8182.013; Mon, 18 Nov 2024
- 11:48:42 +0000
-From: "Andrew.Yuan" <andrew.yuan@jaguarmicro.com>
-To: edgar.iglesias@gmail.com, alistair@alistair23.me, jasowang@redhat.com,
- peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Andrew Yuan <andrew.yuan@jaguarmicro.com>
-Subject: [PATCH] hw/net: cadence_gem: feat: add logic for the DISABLE_MASK bit
- in type2_compare_x_word_1
-Date: Mon, 18 Nov 2024 19:48:06 +0800
-Message-Id: <20241118114806.1119-1-andrew.yuan@jaguarmicro.com>
-X-Mailer: git-send-email 2.37.0.windows.1
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SG2PR06CA0242.apcprd06.prod.outlook.com
- (2603:1096:4:ac::26) To KL1PR0601MB4891.apcprd06.prod.outlook.com
- (2603:1096:820:ae::7)
+ (Exim 4.90_1) (envelope-from <jlu@pengutronix.de>)
+ id 1tD0fb-0000oF-L1
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 07:15:57 -0500
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+ by metis.whiteo.stw.pengutronix.de with esmtps
+ (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256) (Exim 4.92)
+ (envelope-from <jlu@pengutronix.de>)
+ id 1tD0fK-0001jL-Cx; Mon, 18 Nov 2024 13:15:38 +0100
+Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77])
+ by drehscheibe.grey.stw.pengutronix.de with esmtps (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (Exim 4.96)
+ (envelope-from <jlu@pengutronix.de>) id 1tD0fJ-001ORb-39;
+ Mon, 18 Nov 2024 13:15:37 +0100
+Received: from localhost ([127.0.0.1])
+ by ptz.office.stw.pengutronix.de with esmtp (Exim 4.96)
+ (envelope-from <jlu@pengutronix.de>) id 1tD0fJ-0069h9-2k;
+ Mon, 18 Nov 2024 13:15:37 +0100
+Message-ID: <dc456cff7aa40543ac245ccfd9bf504f3c114a9f.camel@pengutronix.de>
+Subject: Re: backing storage for eMMC boot partitions
+From: Jan =?ISO-8859-1?Q?L=FCbbe?= <jlu@pengutronix.de>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, Guenter Roeck
+ <linux@roeck-us.net>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
+ <philmd@linaro.org>, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Thomas Huth
+ <thuth@redhat.com>,  Joel Stanley <joel@jms.id.au>, qemu-block
+ <qemu-block@nongnu.org>
+Date: Mon, 18 Nov 2024 13:15:37 +0100
+In-Reply-To: <7c8658ef-e61b-4a46-91cf-6dc26e78158c@kaod.org>
+References: <20241017163247.711244-1-peter.maydell@linaro.org>
+ <d9f18091-aee1-4b32-ba72-e1028fe433c9@roeck-us.net>
+ <5262a33d-d0c5-452b-9869-f8f482b1c857@linaro.org>
+ <07664ec3-6b46-4b27-9d8c-9e2ff34c9dbe@kaod.org>
+ <600baa43c3dd3547338934717cfb57c5e12b0d23.camel@pengutronix.de>
+ <84c32f2d-7d9a-4e5a-8b67-1f954dd493f6@roeck-us.net>
+ <b67f302a11a679c3fdb02318eb9ef0be559d14ce.camel@pengutronix.de>
+ <53cbb597-e7f2-4742-bf85-928c704ddbcf@linaro.org>
+ <443f1b0c-8184-4bf4-9f68-c23d7de3bc36@roeck-us.net>
+ <1bce4c22-9281-44c5-8acb-860881dc271c@kaod.org>
+ <c27fbed6-596e-4ce7-a6ca-6d12d7205e99@roeck-us.net>
+ <86fa6e68-5861-4d4d-941f-95b278074eb6@kaod.org>
+ <1c917e4a-de50-45b9-ac9c-eb04d51401a2@roeck-us.net>
+ <00997cca-6f4a-4b99-9616-2af6a25cd4fb@kaod.org>
+ <4246f82b-597c-4a5d-9a55-18a584e7d8c7@roeck-us.net>
+ <670fa7bf052d8f292f9bd25c330c8d7bdba02770.camel@pengutronix.de>
+ <b6641b83-33dc-46f8-b61b-fbdb9ab9bc40@roeck-us.net>
+ <9046a4327336d4425f1e7e7a973edef9e9948e80.camel@pengutronix.de>
+ <7c8658ef-e61b-4a46-91cf-6dc26e78158c@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.54.1 (by Flathub.org) 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR0601MB4891:EE_|TYUPR06MB5925:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9478fc05-5be5-47a9-76b0-08dd07c6f359
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|366016|376014|52116014|38350700014; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?mYCksT8BdVlqI/NafcNJLcr2dWwz9R+vRF+4p8uaZsuFo+s7XBt/pAAkdqzl?=
- =?us-ascii?Q?jL1WZ1yYJdivDDErYp4+8NmLIwhmvsWhUGHgVW+LDYYKMnBHR/acat7+raM9?=
- =?us-ascii?Q?k+BborSWv2uNI15lPG5U8zaSSiYRiQOnWAq8t5pNv/5fJqsXkgHKHvvnai63?=
- =?us-ascii?Q?eMkfsM+BPZPY1cvDsS6eLrNOSTbWK7cwLy/jlp/5iggZCKsZ+ADH5/MeDLQr?=
- =?us-ascii?Q?IOxnJyJ6co+f+hA7s6cKGvtcRjadO7U9s31w0Y5UgAKMmg4oI53skOg8Bior?=
- =?us-ascii?Q?qQL1Ec2k9fMuDSfHe5bHdALS02yxTvoKMWSnU7NYXCJyMjHbkAw+nH/VvrXf?=
- =?us-ascii?Q?V7/wY4hbgSRvPujZWt+PRs9DE4pxjRtNbi0+WbhZ1ZfBRqB5NLiezKkv/OHu?=
- =?us-ascii?Q?/bHmUoaOIbSrERKoHhNIf+jLZfTH8wsLF2wpVE8yO3ZRE+LYY4mFLw7u+Zvu?=
- =?us-ascii?Q?tiTVcDPjknkgGGzxTtinZqYKjMTtHtwKzRt/2WAcAIoIR7kaBxexsdFUmfTh?=
- =?us-ascii?Q?rbW7Ky7kY35AUfnhZpYWCuppEpsp3urBsQxwubw7/ES/n+9QH/zNXKG6LoWC?=
- =?us-ascii?Q?c1/UVh+CeXlhGEI/4L2vP27VKc8aNCEO4aaBYBgn4DWGnxTlUjp7fHTxEYe8?=
- =?us-ascii?Q?adjUXHV64tB1TBCwcR1Weh1Qrsx9QkakLZV46UoIw1j4b3Q9XTRFy2sxuQMB?=
- =?us-ascii?Q?FDBtd2kpq1cohY5riAntdq0QFUWFl9Rj6Vg8ETF0CUwAbA+BatDGLpD8Y/FG?=
- =?us-ascii?Q?Z0Ek1Ue0+NXl5uk6Wx048l3hAl2jY2VrTr85MaN6YXiLXu1s+BSU/KKMdu5c?=
- =?us-ascii?Q?UnTcz1sjLjbnjDUbazbnZ1UJxA3HoIrlLAVo8mlSQJnel9By/usETETeHsT0?=
- =?us-ascii?Q?Shdc3ZPM4XOOV8fvCUlRGuaL7v2h32AfWWQs/YsV58nSQ84D3LqS/nf2cFb2?=
- =?us-ascii?Q?ToFeRYSRwdrnJ/nD3O2LCMdl8T4EevceVI2S6H1tJ4R+bYsJG1ZrP/kmK1OE?=
- =?us-ascii?Q?NA3u3Rj2lM81HCKLMvN2tvazEcENA5AcLtYwJ4/T9AZ3MGIE5Aeyns4/Rg44?=
- =?us-ascii?Q?eDr3MyqSFvhBWVHhVW2Qqzj9Wm43u+UlexzsKJ+7U6gyoFwNZ30QlV2Zad4Y?=
- =?us-ascii?Q?E84Tci/4wh6NmKUxgY3tdEkcVSwi9wTnzTMhvvMb9LAlzeFHt7jg2c7M82Fu?=
- =?us-ascii?Q?HTwXQBY/DjxX+5qwljHFpyGdFa5Is5QaTfdUNnQLwU6fNNU2xavwaiyLHAva?=
- =?us-ascii?Q?9IplPm0+UViqwFQui/Ibt5JZVepE6UUSCGfsa1r4ooNzhvwFIpp5W+NUcL1H?=
- =?us-ascii?Q?esbM7FRKgf4kkSlsqi4OkJUBq0KZbB9IFH0PzmEsPJ4eRfve/L4V7R3RmGUC?=
- =?us-ascii?Q?neqaIfI=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:KL1PR0601MB4891.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(376014)(52116014)(38350700014); DIR:OUT;
- SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?IDD/mASO06nPfVR+SeR7VO3XBufzQFch3+LjcpXo/OtMC596+1VQwvV3aXUB?=
- =?us-ascii?Q?skmmBq5rN4nHNjp6SWF7Yrr1neT/LNyv7OXrCglZ3U2V8gF+p+YpbLMZDAxy?=
- =?us-ascii?Q?WaKRzr3RHH8yVH8n34RTnzN4nUiWlG9yA3WY7vzv6kmBiJwR35KDNAR6mo1v?=
- =?us-ascii?Q?ebhboaCEROp57US/2LL/xAY6nXsw3PLHT06gek+OqJY45TRMemtHI+o3F2Lf?=
- =?us-ascii?Q?5sTKNiclvznCfPPZ9fbbIwTmWMykKOjb8HMwQi6POe1r+lQJC+2XKz+ukFaG?=
- =?us-ascii?Q?9DiyNWH/u41LHyJ4J/hHKAsNxUUlWs8ywCTTFTI4TpIC/dXgEGk5LTeIRFCb?=
- =?us-ascii?Q?LfamBEsGMqdX0oC+qWzwcsG+6l9gigtKe0qB9NWaqlS0EQbPw7aR0ecmRe0P?=
- =?us-ascii?Q?ShNshWRLoP38jJOg9ZBHu72Erx6xRcF7GNKTNXM8exzRq4eUTAk2ugkRi8Dr?=
- =?us-ascii?Q?AgEEwON2qPwYSATZzp9mSWoJc11/G6wTGdOs1SBVLvLskUnfEc+Sb2IjZhyB?=
- =?us-ascii?Q?Alahu73OFOCX1LTsflte0bpZY/wyYqC/F7CrKtovLo4Bdw3oKNNAFDrBOfTg?=
- =?us-ascii?Q?ADxONvgy6UDt1e7R00zxlnZvlfUSghW27PcFstegP85bFk+p/J/skDjQ3szv?=
- =?us-ascii?Q?bLB8x3P0Pl7OoIA69aKch3GzatqOInD2GT83ogKriGBZy6DnAMq0I7J4Mqjj?=
- =?us-ascii?Q?ikHVREhlSQE/QBFlEPzEUjmjg2qYL8tmR6b6Qt6CD0DHLx60y5Nsr/bnSaxA?=
- =?us-ascii?Q?O2jo1h82gmXsFpn0m2q3UrgQ4BlzAeXLVFUL4m4zLwzsHWinBzYB2YxhP5s/?=
- =?us-ascii?Q?G/hHIzIP/VW4LnLo4A1I3YOuV1AaB6PgCmPkh78rNBu8EoI9/Mubgr4MXJru?=
- =?us-ascii?Q?fvFoOflfMVdPoEEllVy2IUqpvZfs0vOEpPP0djC+Y1JPozlIW9IhROMz155f?=
- =?us-ascii?Q?EYA6Y0EQJwsAESCFH2yU8My3uYKz3wN0t6OFEQvWMcyn6Y5f55X9KgoD0NoZ?=
- =?us-ascii?Q?Ws0O4q8CHXaKjJi+XD4osyMPRmvCI8WoaeLv/CWw1h800AVw91rgxEKv2rPN?=
- =?us-ascii?Q?0msBio3ZW90RwmHOFYMBiJfxsNyqC0YL2TGE979sLmNvofVJcjwNQIQ5DyGq?=
- =?us-ascii?Q?TWfMPIicG/i2nn08rZGc0tSSH6z9lCqyNf6I76zbdrOZ7Xf1rftUSeeCBV1f?=
- =?us-ascii?Q?M+lrZDuLE8HldqRCqsq3PfBi1sBV14XqQ+qMs0K3qfXPrjDUrNQ/qpR+FDFl?=
- =?us-ascii?Q?k8KOtj0/vXvi+YnakXsv4flahw0cTWPde2rzN34i/MCLElA8PInWdjoUncsD?=
- =?us-ascii?Q?XBrbUm5VUgXWFbAmochyddDHaKSN9RV3MZdFWMhKwpLZGsugHvM11ljCjnBi?=
- =?us-ascii?Q?wONZTCdskjYUNi1PmlV7SWkTE8CePm2Hh6k03pfYSSoyLYCfVAvGPcbJcyih?=
- =?us-ascii?Q?86PaiRDdJrXjCRN4JKpp3VsBUTiLS2NLublwUyk3iLcCZP4QR1VJx2nLIVxl?=
- =?us-ascii?Q?jzcsVUqMjOMN+8tZuCWCGatJMdGkxHcczvwonthwz3m2EpVkVJuYLmaCD8H8?=
- =?us-ascii?Q?7H7cVRyTKyEbQei3CU/FfwNQVDy+cc+0+5OD4x2BxhAagtWnTNN3hF1tGLxh?=
- =?us-ascii?Q?wA=3D=3D?=
-X-OriginatorOrg: jaguarmicro.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9478fc05-5be5-47a9-76b0-08dd07c6f359
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR0601MB4891.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Nov 2024 11:48:42.5786 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 1e45a5c2-d3e1-46b3-a0e6-c5ebf6d8ba7b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3NZ176UR0fnGxwlpnBrOI9pe06Luqz7cOS9SrPGzWV6YDVmFPNPqXDevmZLEC4ybRx4dyNGzAP2DLJ2/LoRENDut/+7UFWczmAzgS/0GS34=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYUPR06MB5925
-Received-SPF: pass client-ip=2a01:111:f403:200e::717;
- envelope-from=andrew.yuan@jaguarmicro.com;
- helo=APC01-PSA-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: jlu@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de);
+ SAEximRunCond expanded to false
+X-PTX-Original-Recipient: qemu-arm@nongnu.org
+Received-SPF: pass client-ip=2a0a:edc0:2:b01:1d::104;
+ envelope-from=jlu@pengutronix.de; helo=metis.whiteo.stw.pengutronix.de
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7mewwXI3lUGk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZAEhTaZj4hC0
 
-From: Andrew Yuan <andrew.yuan@jaguarmicro.com>
+Hi,
 
-As in the Cadence IP for Gigabit Ethernet MAC Part Number: IP7014 IP Rev: R1p12 - Doc Rev: 1.3 User Guide,
-if the DISABLE_MASK bit in type2_compare_x_word_1 is set,
-mask_value in type2_compare_x_word_0 is used as an additional 2 byte Compare Value
+On Mon, 2024-11-18 at 10:14 +0100, C=C3=A9dric Le Goater wrote:
+> > > also boots from the emmc controller. How do I provide the
+> > > bus and bus index ? "bus=3Dsdhci-bus.2" doesn't work for me.
+> > > There is "sd-bus", but it does not have an index.
+>=20
+> Yes. Changes are required in the sdhci model and in the boards using
+> it.
+>=20
+> > I've not really understood how to assemble more complex setups
+> > using qemu's commandline when the board already creates some of the
+> > devices.
+>=20
+> Yes. That's a "problem" to fix for emmc/sd devices. They should only
+> be created when defaults_enabled(), just like the flash devices.
 
-Signed-off-by: Andrew Yuan <andrew.yuan@jaguarmicro.com>
----
- hw/net/cadence_gem.c | 25 ++++++++++++++++++++-----
- 1 file changed, 20 insertions(+), 5 deletions(-)
+This is -nodefaults, right? The man-page for that says:
+  -nodefaults
+         Don't  create default devices. Normally, QEMU sets the de=E2=80=90
+         fault devices like serial  port,  parallel  port,  virtual
+         console,  monitor  device,  VGA adapter, floppy and CD-ROM
+         drive and others. The -nodefaults option will disable  all
+         those default devices.
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 526739887c..7ec5dbaa9c 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -909,8 +909,8 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
- 
-         /* Compare A, B, C */
-         for (j = 0; j < 3; j++) {
--            uint32_t cr0, cr1, mask, compare;
--            uint16_t rx_cmp;
-+            uint32_t cr0, cr1, mask, compare, disable_mask;
-+            uint32_t rx_cmp;
-             int offset;
-             int cr_idx = extract32(reg, R_SCREENING_TYPE2_REG0_COMPARE_A_SHIFT + j * 6,
-                                    R_SCREENING_TYPE2_REG0_COMPARE_A_LENGTH);
-@@ -946,9 +946,24 @@ static int get_queue_from_screen(CadenceGEMState *s, uint8_t *rxbuf_ptr,
-                 break;
-             }
- 
--            rx_cmp = rxbuf_ptr[offset] << 8 | rxbuf_ptr[offset];
--            mask = FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, MASK_VALUE);
--            compare = FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, COMPARE_VALUE);
-+            disable_mask =
-+                FIELD_EX32(cr1, TYPE2_COMPARE_0_WORD_1, DISABLE_MASK);
-+            if (disable_mask) {
-+                /*
-+                 * If disable_mask is set,
-+                 * mask_value is used as an additional 2 byte Compare Value.
-+                 * To simple, set mask = 0xFFFFFFFF, if disable_maks is set.
-+                 */
-+                rx_cmp = rxbuf_ptr[offset + 3] << 8 | rxbuf_ptr[offset + 2] |\
-+                         rxbuf_ptr[offset + 1] << 8 | rxbuf_ptr[offset];
-+                mask = 0xFFFFFFFF;
-+                compare = cr0;
-+            } else {
-+                rx_cmp = rxbuf_ptr[offset + 1] << 8 | rxbuf_ptr[offset];
-+                mask = FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, MASK_VALUE);
-+                compare =
-+                    FIELD_EX32(cr0, TYPE2_COMPARE_0_WORD_0, COMPARE_VALUE);
-+            }
- 
-             if ((rx_cmp & mask) == (compare & mask)) {
-                 matched = true;
--- 
-2.25.1
+That sounds like it would require explicit configuration of the devices
+on the SoC (such as UARTs) as well? Having to specify them (perhaps
+even with their MMIO addresses) doesn't seem convenient. :)
 
+aspeed seems to only (or additionally?) skip creation of the flash
+devices with -nodefaults.
+
+Isn't there a way to configure only default devices as disabled? Or to
+dynamically attach a user-created SD/eMMC device to an existing SD
+controller?
+
+In system/vl.c, I found 'default_sdcard', which is disabled in some
+cases. I wasn't able to figure out how to use it or if it would help
+for this use-case.
+
+Jan
+
+> > Perhaps C=C3=A9dric can explain how the different boot options are
+> > configured for aspeed?
+>=20
+> See
+> https://qemu.readthedocs.io/en/v9.1.0/system/arm/aspeed.html#boot-options
+> and the avocado/functional tests for examples.
+>=20
+> The eMMC case is missing from the docs. Here is a proposal :
+> https://lore.kernel.org/qemu-devel/20241118090648.187720-1-clg@redhat.com=
+/
+>=20
+> Thanks,
+>=20
+> C.

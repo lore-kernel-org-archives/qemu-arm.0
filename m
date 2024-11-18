@@ -1,226 +1,215 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2587862njc;
-        Mon, 18 Nov 2024 05:46:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV6gEkXWgJZDa6Wk/J68BNVug44S41KoL+MiYq7ntQUoflzGXsguU8OHOYqhlzDfuMSUjqOaeX+0THuNg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG77pLmnNlmFWIl+drCkUJetYm3IbZmsQhOS9/Ih6YNJ6ochqlZlC6NBa2iVNVHFIe737bG
-X-Received: by 2002:a05:6214:319f:b0:6d3:fa03:23f1 with SMTP id 6a1803df08f44-6d3fb76d898mr180413906d6.13.1731937598113;
-        Mon, 18 Nov 2024 05:46:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731937598; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2610063njc;
+        Mon, 18 Nov 2024 06:17:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVexsKNy3xMca7s9PNLzjDcA2515Yj7N6EJbWTLPUfCCT8K4pVZyZUxx8FSs3eZuHMzr5Ha9IgJnJQWKg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEHCL3oxM4G3RBJrBetFrBiMzYHp5nwzeT2++7fgmy4pedeikcLpDKJ2kt7BwZZQIA5EZdw
+X-Received: by 2002:a05:620a:4544:b0:7b1:55b6:409a with SMTP id af79cd13be357-7b35a5701afmr2549758685a.30.1731939470449;
+        Mon, 18 Nov 2024 06:17:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731939470; cv=none;
         d=google.com; s=arc-20240605;
-        b=KoBJ+euycbC3CZWU0FZNr0GXNRYt2SN8F451Ja/SYnMi9A9IIf/Eyggc3KNJwTbVxD
-         DSXvTYNkN42YwkdwedPXCOWfs51L5OC/dYeR9kcKCR0adA1am1e4UIANvD7218l9U6a0
-         tDLUaFcrmVtldHzq5VZBwK+gaQxzDonSoihwHAK9HzIfyqEfW39GpPOB96lQAvXZBJZq
-         ZsdRIkohz/JstJZ502iIQRHxEMl1WSWEQgcXRia6FF9tUy28cGj2TYcDPhKpV5dVd9BK
-         XuDmvZXzYrEIBcc1xC1yVOkNZNDh5LPljt7l1ZKSf7dS6kZpco3GsV98dwf4388jd/o2
-         3/ww==
+        b=YkQ7U40YfNNv83k443xnOj6hSWDzNlDHCYSwXpd7n90ehL+cx1APSz8ePaxyvgz0vy
+         X1PdcxY+0cvqXXfujG5QZCb0UmQBsRK97UZPPt5Yxwp+rMjSkfy71c3AAJ3IQ6mgI23x
+         HjtqJQWIRTYNLtishurRz1OM09FoFmiSmKBQfrhW4xq3H+peIppZqo65pEXgtNPAWbwq
+         frMi+yg5EJtnJoJL8V3VJjuViRIkh7VIiRBQ9W0xxeV48yXgAaBMbfIqiu4du2l6l+xV
+         T0xRid6hIQu2/H6WMtzDT7u/3voxIcnjhR5O0V/csMF/jD0xDP9657L4QLCuk98sAd+X
+         l37A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=4aXRwMuXZA9xXLR2PBwNDTi0Od7kPErzY7NzN0KuU8c=;
-        fh=WVoRb4skAQnBn3yvLSNHivUQlrxT7jXJTD34meBKAcE=;
-        b=kKW3/JCbDl9Om3Q492YgR1dOVr8PhCT4W/5jimROUUmxdEiKoAOCGtq4NFwKNYEk6j
-         CTQ0Ehsasvjrv1ryBhdCaCuW32xhuTf6YE5HzjVi0khbmGEL9wkvdkIHHfmYhnKpMkdo
-         d633QUoX1PDADSYMbz7na7DOZ/4y/EtlcrChJeknzp2KH4aPGsY3aTEDnKxKm/SbDYEF
-         ofFZ8gkYCGIH7hOxc77G/9eZ0jvv5ubdQXKwN/2xfWLNc9L1p6+5ZPuIKFgT5GHnrtM4
-         +o5NoK5egQ4xVV88LPIztrK3sqA8CfQ1b00PTkVgUgF8b5WmTeNIXT92WN4FXV4Qj10s
-         eEXQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=aqzGsTgtyA6Ez50IcLDrQTa93sp/XXFy2Ws6Vm2I8M0=;
+        fh=adDlGcu0xHQur9DKbGnup3yOLwrFV1y0o7L74W+8hbE=;
+        b=dicKlS0EXKXTI3GXEix2ve0c26I5iB4p3pKfkm4ysaD9tmkvgQGcfG94iYcVjgORZF
+         nx40UR5NpYVlRcRlPkk53IkRvwcWeRT/t2LP/K1VYX1RkHAB1abhqcUnL6rWqAeLIWnI
+         nYOBFQi4lQbsU759L7swXSEXhj5JpM7C4AOd8FyCFlxu7Fe+0hXDlwM2d76s3zupl4xn
+         A8bD+6tmfe9dxtL72edmvtXDDTLfsIGaCbPk4YuUx3rNsovFJ8WZIkqJUdcN7rs8y2ks
+         RgNEXDA0NHRqrMbwyF+Fbc4u7ah05Fyvv7Ye2S4eDlytA0Qry0yvYLjPkMll41iT3cNf
+         G/Xg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CdaiS87y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=VWQzJKTx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d40dd7879bsi66313266d6.506.2024.11.18.05.46.37
+        by mx.google.com with ESMTPS id ada2fe7eead31-4ad6490aa36si2114931137.622.2024.11.18.06.17.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2024 05:46:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 18 Nov 2024 06:17:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CdaiS87y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=VWQzJKTx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tD24p-0002Zb-4X; Mon, 18 Nov 2024 08:46:03 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tD2Z7-0000oJ-SN; Mon, 18 Nov 2024 09:17:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tD24l-0002YR-Ar
- for qemu-devel@nongnu.org; Mon, 18 Nov 2024 08:46:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1tD24j-00065s-2M
- for qemu-devel@nongnu.org; Mon, 18 Nov 2024 08:45:58 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1731937555;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4aXRwMuXZA9xXLR2PBwNDTi0Od7kPErzY7NzN0KuU8c=;
- b=CdaiS87yhbnITTF/7Mwg58rOXWzu3dSRUbHaJ6K0Xl0PrfBWw3ndGc47m2J4BJFpWQMmZ8
- BkVvSOwQfcJQXMeQ8+wzREw/GgUuv9bGmwqQRbNtAwueRGGTcCj0S58Tr98BlXyzxHeGsc
- sp64bFfIbFgL+PEsEVQmN2/P/NYALDA=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-97-dtac_isaM76n2VomqzLwKA-1; Mon, 18 Nov 2024 08:45:54 -0500
-X-MC-Unique: dtac_isaM76n2VomqzLwKA-1
-X-Mimecast-MFC-AGG-ID: dtac_isaM76n2VomqzLwKA
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4316655b2f1so20566155e9.0
- for <qemu-devel@nongnu.org>; Mon, 18 Nov 2024 05:45:53 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tD2Z6-0000nh-6H
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 09:17:20 -0500
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tD2Z3-0002vs-91
+ for qemu-arm@nongnu.org; Mon, 18 Nov 2024 09:17:19 -0500
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-5cfc19065ffso1630063a12.3
+ for <qemu-arm@nongnu.org>; Mon, 18 Nov 2024 06:17:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1731939435; x=1732544235; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=aqzGsTgtyA6Ez50IcLDrQTa93sp/XXFy2Ws6Vm2I8M0=;
+ b=VWQzJKTxwO0aivulis3+3GQlu2xxf+L6UisJQxtaQ0cAHgBmHHCtd/jGNmhk2ulaoe
+ vaZGXOKHQVCu4FkCxxvtOlkktQTDvimfSAmYg/pzfAvIHuefvy/luOlg/1N/9dMyb3mw
+ AZlWHM0jpWYCLZCDeDcBu3apP8snV7JJpuXKmnA/iGpbck9p9Js3YiArq/NG5c+a/JLY
+ XGUNmUAqTP30Z4wt50mVfQIY7ydTSN3PxMPWkMHZjuKakv7sqWna4v9AMR0XJmVhmx5b
+ nBXjXjZfFEnjzgDhw/nKQ5EMMg3pFPoiPVxdpXdIzGnfusW950Gj5YtUsQKAiUUnt2r/
+ 8trg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731937553; x=1732542353;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1731939435; x=1732544235;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=4aXRwMuXZA9xXLR2PBwNDTi0Od7kPErzY7NzN0KuU8c=;
- b=uwAOAk0iZUS93DdufeeLcO7+HMW5KszjLnTcHA1M8mtHd+K0dzSpwNHaFjksu/K7ST
- ZsGmqWtOoQoyR9l9iIOJ2ijE5InoPvNAzMRsFYv+BlQ4UgomtbVj9U1T9i+E1dK3I0h2
- UREWjdLvvkQKR6loByOEHLoR4+iCRWQEWcootdh1tUUthBrTsuBinxHbxnw5Ouu3X6Ao
- Om0i7iXfSBJAyntSa5i5934ZT7zsNu4XHYFOIAaZwQJdlHTdPFg9YGp0BEL5QtSL8Dy9
- dfa09TYGV65tFkNv3TWcVLG0R6URiNyYd8j5Ro2IySQUzNe2ZjubgPJXxdOuv7sa0W5g
- Iy3g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXIONqmpJpEJj4CSAthlJrMIM4e2V3IaNPUMLAEsdEUFdXGhA/fiCgHKTWM4pyMphm/VtYfKK/Yp5VH@nongnu.org
-X-Gm-Message-State: AOJu0YwOOBml7CxKkHrN23fZySRficBbjfkqbp5FAtUDXPFvN64rD3mz
- O3Hu3rPlDrFeJcz9RUFXq9rzYopw5ge/pYomZDJKv0HIJ+tl55/XuJyZR5zGVdwUSQk/QZFhOjD
- B71Uv4kxuKos0UEu5f/wQH/fGR4GDErKCEZ/BY4af8yLWSFg/3CV/
-X-Received: by 2002:a05:600c:5492:b0:431:5d89:646e with SMTP id
- 5b1f17b1804b1-432df792df0mr91996335e9.32.1731937552982; 
- Mon, 18 Nov 2024 05:45:52 -0800 (PST)
-X-Received: by 2002:a05:600c:5492:b0:431:5d89:646e with SMTP id
- 5b1f17b1804b1-432df792df0mr91995995e9.32.1731937552676; 
- Mon, 18 Nov 2024 05:45:52 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-432da28b76fsm163395515e9.28.2024.11.18.05.45.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Nov 2024 05:45:52 -0800 (PST)
-Message-ID: <48bb0455-7c2e-4cc6-aa15-ebe4311d8430@redhat.com>
-Date: Mon, 18 Nov 2024 14:45:50 +0100
+ bh=aqzGsTgtyA6Ez50IcLDrQTa93sp/XXFy2Ws6Vm2I8M0=;
+ b=iHrhRvzPtEm8pjZJH/U6l5nOFlcwECpeekVBwf9DgfDNBY9GX5dUU+B4ZBJALOfl3a
+ Ya9qQdNiVRUVFE8qtJtuD1PwB8dnER61QTBQ4AG9yhntOI4owUu/dsQ3Tzrl+l7/ypw5
+ Rea6P54e5MwBuUKTKxtKCGl2XgZFY7CPIaiD+cpYPuJ/Jdctybl2d2sgqSN9HgzEojtZ
+ swWJPSqub0+58RjyFC6dgkzWmCPZ3ZmpNXcoH5Z5Rzjy5xKX7G8utXWaNWGXjSe8CCq1
+ qDPXBLtdg9xSJis+zpyPVm3IxbbL3XsNnX+Ioux62BUlcRtdpblBf+KluQKA1dpaZAo7
+ nDBA==
+X-Gm-Message-State: AOJu0YzeCD9xI1S1eXzUwdwEeUQPDea1hZDIm1EPRXrNoN/mpz51hrBw
+ f0M4PTTqX+bCbAi0aEQxorXJZnyH9x+G5nEATKl24XpWQ/vsW3vEuunB3OPGLGGLiX0AVSwXRxf
+ /S7SNF8+1BudywrAGV6QReYfHaEL+4/qRDQFuag==
+X-Received: by 2002:a05:6402:90e:b0:5cb:7295:49b with SMTP id
+ 4fb4d7f45d1cf-5cf8fd26620mr9026304a12.34.1731939435280; Mon, 18 Nov 2024
+ 06:17:15 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 4/5] hw/arm/virt-acpi-build: Build IORT with multiple
- SMMU nodes
-Content-Language: en-US
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "jgg@nvidia.com" <jgg@nvidia.com>, "nicolinc@nvidia.com"
- <nicolinc@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>,
- Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
- jiangkunkun <jiangkunkun@huawei.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <20241108125242.60136-5-shameerali.kolothum.thodi@huawei.com>
- <1dcea5ca-806f-4f51-8b13-faf5d62eb086@redhat.com>
- <efb9fb7fb0f04d92b7776cdbc474585d@huawei.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <efb9fb7fb0f04d92b7776cdbc474585d@huawei.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20241117134931.37249-1-paskripkin@gmail.com>
+ <20241117135010.37410-1-paskripkin@gmail.com>
+In-Reply-To: <20241117135010.37410-1-paskripkin@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 18 Nov 2024 14:17:04 +0000
+Message-ID: <CAFEAcA_N+Vs_oxLXtw3Sz85GYg=xeNeDMU9oCu7mHJCYyn1PAQ@mail.gmail.com>
+Subject: Re: [PATCH v2 1/2] arm/ptw: make get_S1prot accept decoded AP
+To: Pavel Skripkin <paskripkin@gmail.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w1gVzXf0/TOG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: srHeb/0Qr36N
 
-Hi Shameer,
+On Sun, 17 Nov 2024 at 13:50, Pavel Skripkin <paskripkin@gmail.com> wrote:
+>
+> AP in armv7 short descriptor mode has 3 bits and also domain, which
+> makes it incompatible with other arm schemas.
+>
+> To make it possible to share get_S1prot between armv8, armv7 long
+> format, armv7 short format and armv6 it's easier to make caller
+> decode AP.
 
-On 11/18/24 12:44, Shameerali Kolothum Thodi wrote:
->
->> -----Original Message-----
->> From: Eric Auger <eric.auger@redhat.com>
->> Sent: Monday, November 18, 2024 10:02 AM
->> To: Shameerali Kolothum Thodi
->> <shameerali.kolothum.thodi@huawei.com>; qemu-arm@nongnu.org;
->> qemu-devel@nongnu.org
->> Cc: peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
->> ddutile@redhat.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
->> <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
->> Jonathan Cameron <jonathan.cameron@huawei.com>;
->> zhangfei.gao@linaro.org
->> Subject: Re: [RFC PATCH 4/5] hw/arm/virt-acpi-build: Build IORT with
->> multiple SMMU nodes
->>
->>>      /* Number of IORT Nodes */
->>> @@ -342,10 +356,9 @@ build_iort(GArray *table_data, BIOSLinker
->> *linker, VirtMachineState *vms)
->>>      /* GIC ITS Identifier Array */
->>>      build_append_int_noprefix(table_data, 0 /* MADT translation_id */,
->> 4);
->>> -    if (vms->iommu == VIRT_IOMMU_SMMUV3) {
->>> -        int irq =  vms->irqmap[VIRT_SMMU] + ARM_SPI_BASE;
->>> +    for (i = 0; i < num_smmus; i++) {
->>> +        smmu_offset[i] = table_data->len - table.table_offset;
->>>
->> I would have expected changes in the smmu idmap has well. If a given
->> SMMU instance now protects a given bus hierarchy shouldn't it be
->> reflected in a differentiated SMMU idmap for each of them (RID subset of
->> SMMU->pci-bus mapping to a specific IORT SMMU node)? How is it done
->> currently?
-> I thought that smmu_idmaps will be handled by this ?
->
-> object_child_foreach_recursive(object_get_root(),
->                                        iort_host_bridges, smmu_idmaps);
-to me this traverses the qemu object hierarchy to find all host bridges
-and for each of them builds an idmap array (smmu_idmaps mapping this RC
-RID range to this SMMU). But to me those idmaps will be assigned to
-*all* SMMU insteaces leading to a wong IORT description because all
-SMMUs will be protecting all devices. You shall only retain idmaps which
-correspond to the pci_bus a given vSMMU is attached to. Then each SMMU
-will protect a distinct PCIe subtree which does not seem the case today.
-At least that's my current understanding.
+Yep, I agree that this is the best approach to sharing the
+function between short and long desc.
 
-Eric
+> Signed-off-by: Pavel Skripkin <paskripkin@gmail.com>
+> ---
+>  target/arm/ptw.c | 13 ++++++-------
+>  1 file changed, 6 insertions(+), 7 deletions(-)
+>
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index 9849949508..50eed0f811 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -1357,25 +1357,24 @@ static int get_S2prot(CPUARMState *env, int s2ap, int xn, bool s1_is_el0)
+>   * @env:     CPUARMState
+>   * @mmu_idx: MMU index indicating required translation regime
+>   * @is_aa64: TRUE if AArch64
+> - * @ap:      The 2-bit simple AP (AP[2:1])
+> + * @user_rw: Translated AP for user access
+> + * @prot_rw: Translated AP for privileged access
+>   * @xn:      XN (execute-never) bit
+>   * @pxn:     PXN (privileged execute-never) bit
+>   * @in_pa:   The original input pa space
+>   * @out_pa:  The output pa space, modified by NSTable, NS, and NSE
+>   */
+>  static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+> -                      int ap, int xn, int pxn,
+> +                      int user_rw, int prot_rw, int xn, int pxn,
+>                        ARMSecuritySpace in_pa, ARMSecuritySpace out_pa)
+>  {
+>      ARMCPU *cpu = env_archcpu(env);
+>      bool is_user = regime_is_user(env, mmu_idx);
+> -    int prot_rw, user_rw;
+>      bool have_wxn;
+>      int wxn = 0;
+>
+>      assert(!regime_is_stage2(mmu_idx));
+>
+> -    user_rw = simple_ap_to_rw_prot_is_user(ap, true);
+>      if (is_user) {
+>          prot_rw = user_rw;
+>      } else {
+> @@ -1393,8 +1392,6 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+>                     regime_is_pan(env, mmu_idx) &&
+>                     (regime_sctlr(env, mmu_idx) & SCTLR_EPAN) && !xn) {
+>              prot_rw = 0;
+> -        } else {
+> -            prot_rw = simple_ap_to_rw_prot_is_user(ap, false);
+>          }
+>      }
+>
+> @@ -2044,6 +2041,8 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>          int nse, ns = extract32(attrs, 5, 1);
+>          uint8_t attrindx;
+>          uint64_t mair;
+> +        int ap_usr = simple_ap_to_rw_prot_is_user(ap, true);
+> +        int ap_priv = simple_ap_to_rw_prot_is_user(ap, false);
 
+Doing the calls here is too early, because after this point
+there is a FEAT_NV case which may change the value of ap.
 
->
-> But it is possible that, there is a bug in this IORT generation here as I am not
-> able to hot add  devices. It looks like the pciehp interrupt is not generated/received
-> for some reason. Nicolin[0] is suspecting the min/max bus range in
-> iort_host_bridges() may not leave enough ranges for hot add later.
->
-> Cold plugging devices to different SMMUv3/pcie-pxb seems to be alright.
->
-> I will debug that soon.
->
-> Thanks,
-> Shameer
-> [0] https://lore.kernel.org/qemu-devel/ZzPd1F%2FUA2MKMbwl@Asurada-Nvidia/
->
->
+Also, could we give the variables the same name as the
+get_S1prot() argument names, for consistency? (The return
+values from simple_ap_to_rw_prot_is_user() are not ap bit
+fields, they're rw indications, so the S1prot argument names
+seem more appropriate here anyway.)
 
+>          switch (out_space) {
+>          case ARMSS_Root:
+> @@ -2114,7 +2113,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, S1Translate *ptw,
+>           * Note that we modified ptw->in_space earlier for NSTable, but
+>           * result->f.attrs retains a copy of the original security space.
+>           */
+> -        result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap, xn, pxn,
+> +        result->f.prot = get_S1prot(env, mmu_idx, aarch64, ap_usr, ap_priv, xn, pxn,
+>                                      result->f.attrs.space, out_space);
+>
+>          /* Index into MAIR registers for cache attributes */
+
+thanks
+-- PMM

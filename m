@@ -1,271 +1,128 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-382331a90a5sm7540533f8f.21.2024.11.18.03.40.55
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2547298njc;
+        Mon, 18 Nov 2024 04:40:48 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFHdqQO4jV76CTVrhHp0uzc2rjIMhKjqrL5dQMWxcRsmhDe6COpFsiLts0pA6jc3dzD5a9r
+X-Received: by 2002:ac8:544f:0:b0:461:17e6:2650 with SMTP id d75a77b69052e-4636b0d6ec1mr117690331cf.14.1731933648665;
+        Mon, 18 Nov 2024 04:40:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731933648; cv=none;
+        d=google.com; s=arc-20240605;
+        b=aMu5SJ3RLs5LL5rD2/nnxUaz+VLOL/r6felLQwai1q+5YvfLYf1x2CPbDkephHO+GN
+         qnGlSyb5wtBQomQB7CTJTIzv3GXti1QOM3UJd0Ls4pOOXqsJo82T10LELobjsZuGaQSK
+         JS8c1BS0z//Ad0LZFfPlTNNxyQAw3GQuuYYZ8QXRY9Er0sMedxUj8bER7mBBNDsxW/lW
+         soiOfHqRhDJ6OAFEF6oAk2El0q5MBaK+MhO55wXmCEaH8a+TokQ4X0l3jSTIOvIELWxA
+         u/ixnmlHtinZ7jjzL/LUFWGtnt3ttbAJ+Z3RCgF4eYXPRIEd0Rz/5jLc9SSFSvOoXeRS
+         TMrA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=+Ca0cxM3UlWVse/L3ofROZ5zzW/nq8lsxvLIZ+MdO/Y=;
+        fh=xFxz7OY6HI48SAWowo6vhBpVUwtKk5JWufzA4iLGjLw=;
+        b=O98c1fBjIsfvylmpkC/TiLBTTSVTHpw952tCgi6lva105Fll9OUcwr96PW4QyOZ+GU
+         DP+wG0zubi6pvukuUgWGiMv5AppxhvkNDvdFEUe+nSNgRFZ/RCRa8p1cRtS0843OPPaE
+         TT6f8erEthSwGzuq67EMZ6EXkIWWMX5rV79GW97nZHbSw3CbuxtFBtz/b6U1KVDbKkRT
+         vGD+8BPuqiv78LySypSDwsmoYZz1HgkuuVmNZvsCVe6o2plYljGcjDrWNYrK8jjjq5dv
+         Cft3t4s7q9pc1J20S4YkivuaIHl75HoQJz3bodyd3dkj/mRxJDPgv1hwYRGs6Jfks3fQ
+         Wq1w==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X5XlH7p1;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4635a989c9dsi104343221cf.2.2024.11.18.04.40.48
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 Nov 2024 03:40:55 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6B7235F7C6;
-	Mon, 18 Nov 2024 11:40:54 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  qemu-rust@nongnu.org,
-  Gustavo Romero <gustavo.romero@linaro.org>,  Peter Maydell
- <peter.maydell@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
-  Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Richard Henderson
- <richard.henderson@linaro.org>
-Subject: Re: [PATCH v3] rust/pl011: Fix DeviceID reads
-In-Reply-To: <20241117161039.3758840-1-manos.pitsidianakis@linaro.org> (Manos
-	Pitsidianakis's message of "Sun, 17 Nov 2024 18:10:36 +0200")
-References: <20241117161039.3758840-1-manos.pitsidianakis@linaro.org>
-User-Agent: mu4e 1.12.7; emacs 29.4
-Date: Mon, 18 Nov 2024 11:40:54 +0000
-Message-ID: <875xoku5vd.fsf@draig.linaro.org>
+        Mon, 18 Nov 2024 04:40:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=X5XlH7p1;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1731933648;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=+Ca0cxM3UlWVse/L3ofROZ5zzW/nq8lsxvLIZ+MdO/Y=;
+	b=X5XlH7p1zO7xzSes3cs/r3fwUhyyofcGE+lyxwCNIHzywRi2JX1WnfgIgngRzL5TySsHld
+	tUAQWLHGazDVU+EvCTdd9BJoNjFGZ7WFlQPlCB2Zq5MY2vIN7UYnRf1mujm4sNh2MS60qe
+	M4QdVkEQtpETTtOhqiar0CnvkZAWqPI=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-237-s_hx-KeuM3KenEl0GQ60xA-1; Mon, 18 Nov 2024 07:40:47 -0500
+X-MC-Unique: s_hx-KeuM3KenEl0GQ60xA-1
+X-Mimecast-MFC-AGG-ID: s_hx-KeuM3KenEl0GQ60xA
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4315ad4938fso29779635e9.0
+        for <alex.bennee@linaro.org>; Mon, 18 Nov 2024 04:40:47 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1731933645; x=1732538445;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=+Ca0cxM3UlWVse/L3ofROZ5zzW/nq8lsxvLIZ+MdO/Y=;
+        b=vBXDJ+D7CxSZOTJCZp5bkXLj5IEpcCvbXo3kVrcnPqismEpRG5dtM3NL3/G7qQKyoe
+         b7ppqJBAniokRny54jmnJlXNkqZITr59OcGdJEGb6xo3qk/o5a2Fakb+UNc5XyBC1Gri
+         S9bPtyDzcyy+8IiY3jdXylgYILGa+/K8R3bMjWJ3HqD5NMOC7TBQkDK23fqyFjslTrNa
+         2TxwumoDKCJ50VrxfmWbszt/Sn+lspGSyucsIOmjvYz8BZMsSmo1TV1BfgaJq+46SOyE
+         eLysYwTJiRsxYdklPto6aUHf4ns7vfYA0PaEzkmMgHCuvUM8K5Cnk7vvB90wMOHoNyI1
+         7qbw==
+X-Gm-Message-State: AOJu0YwlOnJMbs1wmlTarLxeM48dZXMRLmnop/t9c9mihlN88k4/FMHY
+	AzoDwLPX9LLWos0Pc+t14Y8f2Vv2ff8a9h66Y3GaF1BwSjYoiR2x2pLln5EdboQUiCOCjnMnOZR
+	LDHROb9sn626L2mkN4IWOPqnDJdoUAxVb+izosb54aLTkZ/QWq22CwV8J4M9bSJZ0B+f0bhb1aJ
+	0af1Kv3Sl4yE+qq1ZAQ6f8xXqhH5cBJkNfMga4bL8=
+X-Received: by 2002:a05:600c:a4c:b0:42c:a580:71cf with SMTP id 5b1f17b1804b1-432df78f0f9mr115423445e9.30.1731933645644;
+        Mon, 18 Nov 2024 04:40:45 -0800 (PST)
+X-Received: by 2002:a05:600c:a4c:b0:42c:a580:71cf with SMTP id
+ 5b1f17b1804b1-432df78f0f9mr115423175e9.30.1731933645387; Mon, 18 Nov 2024
+ 04:40:45 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20241117161039.3758840-1-manos.pitsidianakis@linaro.org> <875xoku5vd.fsf@draig.linaro.org>
+In-Reply-To: <875xoku5vd.fsf@draig.linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Mon, 18 Nov 2024 13:40:33 +0100
+Message-ID: <CABgObfaVs-3aXKXtQRLDbzCL56gbimWZoMchYi5G+QGu8r0AxA@mail.gmail.com>
+Subject: Re: [PATCH v3] rust/pl011: Fix DeviceID reads
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org, 
+	qemu-arm@nongnu.org, qemu-rust@nongnu.org, 
+	Gustavo Romero <gustavo.romero@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: rICpL_odWuuvVhKvvbg6OymHO2o5Kfa2Lq_JQBomUJo_1731933646
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 1/qYo5dKe3U4
+X-TUID: vFLFS2VOKj+G
 
-Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
-
-> DeviceId, which maps the peripheral and PCell registers of a PL011
-> device, was not treating each register value as a 32 bit value.
+On Mon, Nov 18, 2024 at 12:41=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@lina=
+ro.org> wrote:
+> This is a nice improvement in conciseness over the separate legs removed =
+bellow.
 >
-> Change DeviceId enum to return register values via constified getter
-> functions instead of leveraging the std::ops::Index<_> trait.
+> > +                eprintln!("write bad offset {offset} at RO register {d=
+ev_id:?} value {value}");
+> > +            }
 >
-> While at it, print errors when guest attempts to write to other RO
-> registers as well.
->
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> ---
->
-> Notes:
->     Changes from v2:
->=20=20=20=20=20
->     - Group invalid write case matches (Paolo)
->     - Reduce register getter line count to aid review (Peter Maydell)
->=20=20=20=20=20
-<snip>
-> diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/de=
-vice.rs
-> index 2a85960b81..f1d959ca28 100644
-> --- a/rust/hw/char/pl011/src/device.rs
-> +++ b/rust/hw/char/pl011/src/device.rs
-> @@ -5,7 +5,7 @@
->  use core::ptr::{addr_of, addr_of_mut, NonNull};
->  use std::{
->      ffi::CStr,
-> -    os::raw::{c_int, c_uchar, c_uint, c_void},
-> +    os::raw::{c_int, c_uint, c_void},
->  };
->=20=20
->  use qemu_api::{
-> @@ -32,6 +32,7 @@
->  /// QEMU sourced constant.
->  pub const PL011_FIFO_DEPTH: usize =3D 16_usize;
->=20=20
-> +/// State enum that represents the values of the peripheral and PCell re=
-gisters of a PL011 device.
->  #[derive(Clone, Copy, Debug)]
->  enum DeviceId {
->      #[allow(dead_code)]
-> @@ -39,20 +40,51 @@ enum DeviceId {
->      Luminary,
->  }
->=20=20
-> -impl std::ops::Index<hwaddr> for DeviceId {
-> -    type Output =3D c_uchar;
-> +macro_rules! pcell_reg_getter {
-> +    ($($(#[$attrs:meta])* fn $getter_fn:ident -> $value:literal),*$(,)?)=
- =3D> {
-> +        $($(#[$attrs])* const fn $getter_fn(self) -> u64 { $value })*
-> +    };
-> +}
->=20=20
-> -    fn index(&self, idx: hwaddr) -> &Self::Output {
-> -        match self {
-> -            Self::Arm =3D> &Self::PL011_ID_ARM[idx as usize],
-> -            Self::Luminary =3D> &Self::PL011_ID_LUMINARY[idx as usize],
-> -        }
-> -    }
-> +macro_rules! periph_reg_getter {
-> +    ($($(#[$attrs:meta])* fn $getter_fn:ident -> { Arm =3D> $arm:literal=
-, Luminary =3D> $lum:literal$(,)?}),*$(,)?) =3D> {
-> +        $(
-> +            $(#[$attrs])*
-> +            const fn $getter_fn(self) -> u64 {
-> +                (match self {
-> +                    Self::Arm =3D> $arm,
-> +                    Self::Luminary =3D> $lum,
-> +                }) as u64
-> +            }
-> +        )*
-> +    };
->  }
->=20=20
->  impl DeviceId {
-> -    const PL011_ID_ARM: [c_uchar; 8] =3D [0x11, 0x10, 0x14, 0x00, 0x0d, =
-0xf0, 0x05, 0xb1];
-> -    const PL011_ID_LUMINARY: [c_uchar; 8] =3D [0x11, 0x00, 0x18, 0x01, 0=
-x0d, 0xf0, 0x05, 0xb1];
-> +    /// Value of `UARTPeriphID0` register, which contains the `PartNumbe=
-r0` value.
-> +    const fn uart_periph_id0(self) -> u64 {
-> +        0x11
-> +    }
-> +
-> +    periph_reg_getter! {
-> +        /// Value of `UARTPeriphID1` register, which contains the `Desig=
-ner0` and `PartNumber1` values.
-> +        fn uart_periph_id1 -> { Arm =3D> 0x10, Luminary =3D> 0x00 },
-> +        /// Value of `UARTPeriphID2` register, which contains the `Revis=
-ion` and `Designer1` values.
-> +        fn uart_periph_id2 -> { Arm =3D> 0x14, Luminary =3D> 0x18 },
-> +        /// Value of `UARTPeriphID3` register, which contains the `Confi=
-guration` value.
-> +        fn uart_periph_id3 -> { Arm =3D> 0x0, Luminary =3D> 0x1 }
-> +    }
-> +
-> +    pcell_reg_getter! {
-> +        /// Value of `UARTPCellID0` register.
-> +        fn uart_pcell_id0 -> 0x0d,
-> +        /// Value of `UARTPCellID1` register.
-> +        fn uart_pcell_id1 -> 0xf0,
-> +        /// Value of `UARTPCellID2` register.
-> +        fn uart_pcell_id2 -> 0x05,
-> +        /// Value of `UARTPCellID3` register.
-> +        fn uart_pcell_id3 -> 0xb1,
-> +    }
+> Is a binding for qemu_log and friends on the todo list?
 
-I share the concern that this is quite a verbose way of handling a
-fairly simple set of read-only constants. Is the end result really
-folded away to a simple const lookup?
+Yes, see https://lore.kernel.org/qemu-devel/20241024-rust-round-2-v1-10-051=
+e7a25b978@linaro.org/
+and my concerns at
+https://lore.kernel.org/qemu-devel/e8e55772-906b-42cb-a744-031e6ae65f16@red=
+hat.com/.
 
-Perhaps this comes down to unfamiliarity with the way macros are working
-here but in general macros should be eliding boilerplate to allow us to
-concisely represent the relevant data and functionality. Here it adds an
-additional indirection when reading the code just to see what is going
-on.
+More reviews are welcome; in general, we should define a convention
+for Rust functions and constants (is it okay to rename constants in
+the Rust bindings if their C name is ugly? should functions keep or
+lose the "qemu_*" prefixes?).
 
->  }
->=20=20
->  #[repr(C)]
-> @@ -182,9 +214,14 @@ pub fn read(&mut self, offset: hwaddr, _size: c_uint=
-) -> std::ops::ControlFlow<u
->          use RegisterOffset::*;
->=20=20
->          std::ops::ControlFlow::Break(match RegisterOffset::try_from(offs=
-et) {
-> -            Err(v) if (0x3f8..0x400).contains(&v) =3D> {
-> -                u64::from(self.device_id[(offset - 0xfe0) >> 2])
-> -            }
-> +            Ok(PeriphID0) =3D> self.device_id.uart_periph_id0(),
-> +            Ok(PeriphID1) =3D> self.device_id.uart_periph_id1(),
-> +            Ok(PeriphID2) =3D> self.device_id.uart_periph_id2(),
-> +            Ok(PeriphID3) =3D> self.device_id.uart_periph_id3(),
-> +            Ok(PCellID0) =3D> self.device_id.uart_pcell_id0(),
-> +            Ok(PCellID1) =3D> self.device_id.uart_pcell_id1(),
-> +            Ok(PCellID2) =3D> self.device_id.uart_pcell_id2(),
-> +            Ok(PCellID3) =3D> self.device_id.uart_pcell_id3(),
->              Err(_) =3D> {
->                  // qemu_log_mask(LOG_GUEST_ERROR, "pl011_read: Bad offse=
-t 0x%x\n", (int)offset);
->                  0
-> @@ -236,9 +273,15 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
->          use RegisterOffset::*;
->          let value: u32 =3D value as u32;
->          match RegisterOffset::try_from(offset) {
-> -            Err(_bad_offset) =3D> {
-> +            Err(_) =3D> {
->                  eprintln!("write bad offset {offset} value {value}");
->              }
-> +            Ok(
-> +                dev_id @ (PeriphID0 | PeriphID1 | PeriphID2 | PeriphID3 =
-| PCellID0 | PCellID1
-> +                | PCellID2 | PCellID3 | FR | RIS | MIS),
-> +            ) =3D> {
+The corresponding patch to move from "eprintln!" to the logging
+functions is at
+https://lore.kernel.org/qemu-devel/20241024-rust-round-2-v1-11-051e7a25b978=
+@linaro.org/.
 
-This is a nice improvement in conciseness over the separate legs removed be=
-llow.
-
-> +                eprintln!("write bad offset {offset} at RO register {dev=
-_id:?} value {value}");
-> +            }
-
-Is a binding for qemu_log and friends on the todo list?
-
->              Ok(DR) =3D> {
->                  // ??? Check if transmitter is enabled.
->                  let ch: u8 =3D value as u8;
-> @@ -257,9 +300,6 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
->              Ok(RSR) =3D> {
->                  self.receive_status_error_clear =3D 0.into();
->              }
-> -            Ok(FR) =3D> {
-> -                // flag writes are ignored
-> -            }
->              Ok(ILPR) =3D> {
->                  self.ilpr =3D value;
->              }
-> @@ -308,8 +348,6 @@ pub fn write(&mut self, offset: hwaddr, value: u64) {
->                  self.int_enabled =3D value;
->                  self.update();
->              }
-> -            Ok(RIS) =3D> {}
-> -            Ok(MIS) =3D> {}
->              Ok(ICR) =3D> {
->                  self.int_level &=3D !value;
->                  self.update();
-> diff --git a/rust/hw/char/pl011/src/lib.rs b/rust/hw/char/pl011/src/lib.rs
-> index cd0a49acb9..1f305aa13f 100644
-> --- a/rust/hw/char/pl011/src/lib.rs
-> +++ b/rust/hw/char/pl011/src/lib.rs
-> @@ -111,6 +111,22 @@ pub enum RegisterOffset {
->      /// DMA control Register
->      #[doc(alias =3D "UARTDMACR")]
->      DMACR =3D 0x048,
-> +    #[doc(alias =3D "UARTPeriphID0")]
-> +    PeriphID0 =3D 0xFE0,
-> +    #[doc(alias =3D "UARTPeriphID1")]
-> +    PeriphID1 =3D 0xFE4,
-> +    #[doc(alias =3D "UARTPeriphID2")]
-> +    PeriphID2 =3D 0xFE8,
-> +    #[doc(alias =3D "UARTPeriphID3")]
-> +    PeriphID3 =3D 0xFEC,
-> +    #[doc(alias =3D "UARTPCellID0")]
-> +    PCellID0 =3D 0xFF0,
-> +    #[doc(alias =3D "UARTPCellID1")]
-> +    PCellID1 =3D 0xFF4,
-> +    #[doc(alias =3D "UARTPCellID2")]
-> +    PCellID2 =3D 0xFF8,
-> +    #[doc(alias =3D "UARTPCellID3")]
-> +    PCellID3 =3D 0xFFC,
-
-Why do we have specific doc aliases rather than just naming the
-registers with the full name?
-
->      ///// Reserved, offsets `0x04C` to `0x07C`.
->      //Reserved =3D 0x04C,
->  }
-> @@ -137,7 +153,11 @@ const fn _assert_exhaustive(val: RegisterOffset) {
->                  }
->              }
->          }
-> -        case! { DR, RSR, FR, FBRD, ILPR, IBRD, LCR_H, CR, FLS, IMSC, RIS=
-, MIS, ICR, DMACR }
-> +        case! {
-> +            DR, RSR, FR, FBRD, ILPR, IBRD, LCR_H, CR, FLS, IMSC, RIS, MI=
-S, ICR, DMACR,
-> +            PeriphID0, PeriphID1, PeriphID2, PeriphID3,
-> +            PCellID0, PCellID1, PCellID2, PCellID3,
-> +        }
->      }
->  }
->=20=20
->
-> base-commit: 43f2def68476697deb0d119cbae51b20019c6c86
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Paolo

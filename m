@@ -1,120 +1,136 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2660976njc;
-        Mon, 18 Nov 2024 07:26:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUrfT3wG4L7wwJZsMY3PhlLuYwBwbf47XEkqX0faIGYRRowOH8GaXa3p5qkFYX/laLdbrMLHQ2ySbaVzw==@linaro.org
-X-Google-Smtp-Source: AGHT+IErV9inFTS/POT2QoxpsrCiJ3kFyng1Ak461GyXRx3DcCCA3gO6KGcO3X68AHEjVrRULdq+
-X-Received: by 2002:a05:622a:1c19:b0:461:1734:37e8 with SMTP id d75a77b69052e-46363ec1001mr207152811cf.55.1731943568685;
-        Mon, 18 Nov 2024 07:26:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731943568; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp2710971njc;
+        Mon, 18 Nov 2024 08:37:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWov6TBddnIjKckLY0sJZm3WrlosetWCWgyy0bThaqQoWd+CoYQ93+nOX/f39xXEnR1Ny1jOo0JeJ0VMQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFJAIPQySRdokJGxG9O1HW1DopbJPzoVCcioy8nE+T6XZFDwUfyBk3HKyExqI1dTGzFzYmq
+X-Received: by 2002:ac8:5a52:0:b0:460:edba:3696 with SMTP id d75a77b69052e-46363e2833fmr190675071cf.29.1731947876977;
+        Mon, 18 Nov 2024 08:37:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731947876; cv=none;
         d=google.com; s=arc-20240605;
-        b=BQMzNfb493SfyyPg361kE4de1BYD8hjvBjluvUskbrNrP8n/gDiOeQGkZXhiJSmiMV
-         cAPj+FK+818B3kh4PYz8mM5H3qYCZvAVt6gm1iVICOFl1IFlTiVjpmnD3qU3TDI57Gw3
-         0Ez271ex5SNYqFaQD/2z18mxaD5T4Ebi75P2sLdEErNdp20XnMy1siPrLUYd1qr1DjUG
-         Zfg4WYbkHrmatxPploWahQ4yUr4i8+QU8ty/gIKlyEtckEw/8YmsDULLnAgybR8hX8h2
-         XDRkQOcamPrFy7cmnbM32fInkeLEOSV8nCJIPumWkgnnluMobAAHxHL+az1vVrMpdvZU
-         QNBg==
+        b=QvQ1nrHP98qQgF33iU7Q8a8F2e8xNNY7CSNAhhf/IpNQGJMjtGL2/UclrBeuxFI3Ns
+         zpSkbnXmvt+tZ1NJZdCpWy1ghJSsqm2Wm0gan9k7SMbuoWMwg3DP/gnCpsUsGLugf3+Z
+         il2BoAZgfP7VPoNx8OKPrkZGJHp1CyPU2044Zxo62ekYKgt7U/3pCc6VIQN88bP8X2lE
+         +3u5Z6BxsVlo8bkvHuvSaSMUxPxDalfP4nvQoFsXpDn32dz46602AorE4IMvONkJARAl
+         5O1qRFZWNurIy5FMuC/pIN+eR1uHD5NS6QM2iDAt1KLV/gDJ/y4H2s0dmdhaimGVBaBD
+         lU1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=K12m86+3CyNiSslbgGmodn9GxajRPUsJHFARu9nTIbs=;
-        fh=emLNxJJ/5NHJ1XfpjgGmBEPCCv38sAcWwUVWIqqceGU=;
-        b=G+uJNuxgJjvRXd/B+/5gd45fNavoxPZmzTtgCvcIQfj9T+J6gf6KaWseA63HZsa+9u
-         90loIO7I7oEQf2yCkJuyWq0YA0cgL54bJ2+PkK2orI4zL4xFgS1fSCeqR/DB9uGQjzFq
-         5hwSEuyxsfQqtYa48VHZUh64odlIfv/hl6ZioA99A/0q/RgqlcZZYGFelLhhJjUUx3Zd
-         0aBpa7taUVUBlYiehAp8UF/bG7AxCzTZgZ9LaE5VbSkAsNFxQXrJsnah0taVYyrpmoch
-         DXv7yyc76zl3JNOlWioEWSgk59DTZVJe8GlH5HYIPR5xe/04eVHx6fYV81QPnG4LBGNB
-         0unw==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=CNpmywdi5EGDaAzig0UPNjnGN5QKzN2yLozzHu4YCzA=;
+        fh=j8Rt7C8ScLjcfRkSTfbwoyZLqSnz5MU6P5HaUFjWqxA=;
+        b=b//w322Q1mGRfwsQySqya4qYcMO6wWw8A76ukCFpqq5Tj/lM5w5MCWU6rXNUDccYPZ
+         waQibtNSrrFY7eebk1c356zNqpnNXIhp0yAtZmEIRlmHpccFKvsAeUasJY10Gut4GtGW
+         c9PGGwSQLVkz3pm9oqk+WwakmyQkBcvU8ZrJ6myjAeCQr+Ek9cnAl83niuoRCc/6ROwT
+         QZviAzu6+gWKSqRiCXrZIXW60g6gHTsxV6sT6EkUVl81dJIrUl3ndGlGnuUWs9CwA4jO
+         4d6KWFiQQhbloCesJSffy9zSA5qJGE1uexIF40ZvXe1qryEKSsFqJra/zXaQq+0bIp7v
+         rSGg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=KKs9Itxn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4635a988ed1si108248881cf.120.2024.11.18.07.26.08
+        by mx.google.com with ESMTPS id d75a77b69052e-46392c1e82csi264831cf.236.2024.11.18.08.37.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 18 Nov 2024 07:26:08 -0800 (PST)
+        Mon, 18 Nov 2024 08:37:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=KKs9Itxn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tD3db-00036i-EP; Mon, 18 Nov 2024 10:26:04 -0500
+	id 1tD4kl-0004bc-SH; Mon, 18 Nov 2024 11:37:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <paskripkin@gmail.com>)
- id 1tD3dM-0002z5-TG; Mon, 18 Nov 2024 10:25:49 -0500
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <paskripkin@gmail.com>)
- id 1tD3dL-0004bl-42; Mon, 18 Nov 2024 10:25:48 -0500
-Received: by mail-lf1-x136.google.com with SMTP id
- 2adb3069b0e04-539f84907caso4703332e87.3; 
- Mon, 18 Nov 2024 07:25:45 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1731943544; x=1732548344; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=K12m86+3CyNiSslbgGmodn9GxajRPUsJHFARu9nTIbs=;
- b=KKs9ItxnvZdyOZ87T1m1HJ5m/tHkyDjcuEeXNzAzUGap41RNz0vuUeSQUEmOxctjOs
- cEYCMjIjbpYdn8tWwBz7OhYyp/AD9O1yN+YrcMscV7Uzp9nXVPzYHBLbQzAdpRyjjUl0
- dkS2CfU2qQq22kKGJV6qzV/5jImTjBa/sPITyiH7nnJWU4cOVQuEDHDtBPqq0FsiIYBU
- kg0V0+D5/NPnat55kYyHs4eN5pXTKWKH34FAvqyB1kjL+4Cpq0PflVLZ3SEXAqbb4bYu
- /Bim2BXoA3W13yj5ZTirDll8mJZIpn89Qlsh+O2H8FBRs3wIc6Iacyotj8oGbuBMhhnZ
- CruQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1731943544; x=1732548344;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=K12m86+3CyNiSslbgGmodn9GxajRPUsJHFARu9nTIbs=;
- b=P6KFzkydclzcMy+iNlJf9+jNbdjrwOEMNFO6eHdno2P1NVtxik3Nc2G9lE+SW3u6qx
- VQlTeO3xkhqCLMVwR9DtRcyfEVZT/iEdotUtd5JXjq69bLE8DxQ9Az7FilEmeWjXLy2C
- +31Gy0LzjvkllvF/yYDbfrISFi+2xw/i7S/eOYxwYgvfOkUQhFizdVEe8rIsj/CCc5L3
- VHyNyhHBI00shi9cFaczyfJYNGagNLt+fEHcI6xzFmpTWG6FXZKNpdCA3fEgmi8bwWIy
- sBoowPoqD4HvNVmL1gyT3q/hgwHPm0RmZ2Wam1XpoHzYOQv/ryrLdQrqubjAVC5FPAtJ
- 2kiw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUYPeHdJ3GOd1D882OM1PS7+yOdHkyCoPXkxMNF/H+Ehu3392YDt6XF0/ofvCJ3cChxgLQOEHzjI/a+@nongnu.org
-X-Gm-Message-State: AOJu0YzPu+UhBD+ArIYm/kHFhoBxyH4OIlqeS2I0oCj0bgKcuC4d3xDT
- JRHFFTBVg2La+ATWGo1O996EGJUtV+Uh+0isN8RNnyPVFS9yKTBYJ/xnh75b
-X-Received: by 2002:a05:6512:224b:b0:539:e776:71f7 with SMTP id
- 2adb3069b0e04-53dab3b0843mr4984525e87.37.1731943543709; 
- Mon, 18 Nov 2024 07:25:43 -0800 (PST)
-Received: from fedora.. ([2a00:1370:8180:90b:d00f:257f:ffb:ac70])
- by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-53da64f2108sm1654514e87.17.2024.11.18.07.25.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 18 Nov 2024 07:25:42 -0800 (PST)
-From: Pavel Skripkin <paskripkin@gmail.com>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Pavel Skripkin <paskripkin@gmail.com>
-Subject: [PATCH v3 2/2] arm/ptw: use get_S1prot in get_phys_addr_v6
-Date: Mon, 18 Nov 2024 10:25:37 -0500
-Message-ID: <20241118152537.45277-1-paskripkin@gmail.com>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241118152507.45046-1-paskripkin@gmail.com>
-References: <20241118152507.45046-1-paskripkin@gmail.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1tD4kk-0004a2-5j; Mon, 18 Nov 2024 11:37:30 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1tD4ki-0005ee-A1; Mon, 18 Nov 2024 11:37:29 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id F10DDA52A2;
+ Mon, 18 Nov 2024 19:37:18 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 24DE41734A7;
+ Mon, 18 Nov 2024 19:37:22 +0300 (MSK)
+Message-ID: <08224ca3-5c31-41c5-8041-30e686fe33b1@tls.msk.ru>
+Date: Mon, 18 Nov 2024 19:37:22 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=paskripkin@gmail.com; helo=mail-lf1-x136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RESEND PATCH 10/10] usb-hub: Fix handling port power control
+ messages
+To: Guenter Roeck <linux@roeck-us.net>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ BALATON Zoltan <balaton@eik.bme.hu>, "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org
+References: <20241112170152.217664-1-linux@roeck-us.net>
+ <20241112170152.217664-11-linux@roeck-us.net>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20241112170152.217664-11-linux@roeck-us.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,113 +145,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: o4InWO26dQVk
+X-TUID: ZGY+PCHP0707
 
-To share missing SCTRL.{U}WXN and SCR.SIF in short format walker, use
-get_S1prot instead of open-coded checks.
+12.11.2024 20:01, Guenter Roeck wrote:
+> The ClearPortFeature control message fails for PORT_POWER because there
+> is no break; at the end of the case statement, causing it to fall through
+> to the failure handler. Add the missing break; to solve the problem.
+> 
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+> ---
+> Change from RFC:
+>      New patch
+> 
+>   hw/usb/dev-hub.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/usb/dev-hub.c b/hw/usb/dev-hub.c
+> index 4da91d151c..2872c6712a 100644
+> --- a/hw/usb/dev-hub.c
+> +++ b/hw/usb/dev-hub.c
+> @@ -532,6 +532,7 @@ static void usb_hub_handle_control(USBDevice *dev, USBPacket *p,
+>                       usb_hub_port_clear(port, PORT_STAT_SUSPEND);
+>                       port->wPortChange = 0;
+>                   }
+> +                break;
+>               default:
+>                   goto fail;
+>               }
 
-Signed-off-by: Pavel Skripkin <paskripkin@gmail.com>
----
- target/arm/ptw.c | 54 +++++++++++++++++++++---------------------------
- 1 file changed, 23 insertions(+), 31 deletions(-)
+This is wonderful :)
 
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index 86d6255713..8150410eff 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -85,6 +85,10 @@ static bool get_phys_addr_gpc(CPUARMState *env, S1Translate *ptw,
-                               GetPhysAddrResult *result,
-                               ARMMMUFaultInfo *fi);
- 
-+static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-+                      int user_rw, int prot_rw, int xn, int pxn,
-+                      ARMSecuritySpace in_pa, ARMSecuritySpace out_pa);
-+
- /* This mapping is common between ID_AA64MMFR0.PARANGE and TCR_ELx.{I}PS. */
- static const uint8_t pamax_map[] = {
-     [0] = 32,
-@@ -1148,7 +1152,7 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
-     hwaddr phys_addr;
-     uint32_t dacr;
-     bool ns;
--    int user_prot;
-+    ARMSecuritySpace out_space;
- 
-     /* Pagetable walk.  */
-     /* Lookup l1 descriptor.  */
-@@ -1240,16 +1244,18 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
-             g_assert_not_reached();
-         }
-     }
-+    out_space = ptw->in_space;
-+    if (ns) {
-+        /* The NS bit will (as required by the architecture) have no effect if
-+         * the CPU doesn't support TZ or this is a non-secure translation
-+         * regime, because the attribute will already be non-secure.
-+         */
-+        out_space = ARMSS_NonSecure;
-+    }
-     if (domain_prot == 3) {
-         result->f.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
-     } else {
--        if (pxn && !regime_is_user(env, mmu_idx)) {
--            xn = 1;
--        }
--        if (xn && access_type == MMU_INST_FETCH) {
--            fi->type = ARMFault_Permission;
--            goto do_fault;
--        }
-+        int user_rw, prot_rw;
- 
-         if (arm_feature(env, ARM_FEATURE_V6K) &&
-                 (regime_sctlr(env, mmu_idx) & SCTLR_AFE)) {
-@@ -1259,37 +1265,23 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
-                 fi->type = ARMFault_AccessFlag;
-                 goto do_fault;
-             }
--            result->f.prot = simple_ap_to_rw_prot(env, mmu_idx, ap >> 1);
--            user_prot = simple_ap_to_rw_prot_is_user(ap >> 1, 1);
-+            prot_rw = simple_ap_to_rw_prot(env, mmu_idx, ap >> 1);
-+            user_rw = simple_ap_to_rw_prot_is_user(ap >> 1, 1);
-         } else {
--            result->f.prot = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
--            user_prot = ap_to_rw_prot_is_user(env, mmu_idx, ap, domain_prot, 1);
--        }
--        if (result->f.prot && !xn) {
--            result->f.prot |= PAGE_EXEC;
-+            prot_rw = ap_to_rw_prot(env, mmu_idx, ap, domain_prot);
-+            user_rw = ap_to_rw_prot_is_user(env, mmu_idx, ap, domain_prot, 1);
-         }
-+
-+        result->f.prot = get_S1prot(env, mmu_idx, false, user_rw, prot_rw, xn, pxn,
-+                                    result->f.attrs.space, out_space);
-         if (!(result->f.prot & (1 << access_type))) {
-             /* Access permission fault.  */
-             fi->type = ARMFault_Permission;
-             goto do_fault;
-         }
--        if (regime_is_pan(env, mmu_idx) &&
--            !regime_is_user(env, mmu_idx) &&
--            user_prot &&
--            access_type != MMU_INST_FETCH) {
--            /* Privileged Access Never fault */
--            fi->type = ARMFault_Permission;
--            goto do_fault;
--        }
--    }
--    if (ns) {
--        /* The NS bit will (as required by the architecture) have no effect if
--         * the CPU doesn't support TZ or this is a non-secure translation
--         * regime, because the attribute will already be non-secure.
--         */
--        result->f.attrs.secure = false;
--        result->f.attrs.space = ARMSS_NonSecure;
-     }
-+    result->f.attrs.space = out_space;
-+    result->f.attrs.secure = arm_space_is_secure(out_space);
-     result->f.phys_addr = phys_addr;
-     return false;
- do_fault:
--- 
-2.47.0
+Picking this up for stable series, though it looks like this is
+a very minor issue in practice?
 
+Thanks,
+
+/mjt

@@ -1,111 +1,194 @@
-Received: by 2002:a05:7022:213:b0:8f:43c:4b5e with SMTP id 19csp2054722dll;
-        Mon, 18 Nov 2024 10:12:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUAbP6A3x81ESGr0ZLSJcktSbSUHpzl+A9g24qzFTZ7wrBYwYehmlxabSLvOf+hxPb7EcTR3Sd5ricoKA==@linaro.org
-X-Received: by 2002:a17:902:d482:b0:20c:7eaf:8945 with SMTP id d9443c01a7336-211d0d8fff5mr183687985ad.28.1731953528075;
-        Mon, 18 Nov 2024 10:12:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1731953528; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp3010496njc;
+        Mon, 18 Nov 2024 18:54:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVe7IeZw3Lv8Gbge0/HNHzP9n3T/4jGoW3sPo1didUgmn2vMT+Gmx+g+aoAMeTzA1m/L4UrO+1vBn4U5g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFSkBcoVdeRkj+Pvvnf5FKGCmvgTjEKRzB6vxGdtoIiE0NE9StyD7aY/Fxw3K5Y4T1oiAS8
+X-Received: by 2002:a05:6102:d8e:b0:4a5:b003:41bd with SMTP id ada2fe7eead31-4ad6318e901mr13875727137.22.1731984866921;
+        Mon, 18 Nov 2024 18:54:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1731984866; cv=none;
         d=google.com; s=arc-20240605;
-        b=MO8bisIj5Jk8oaNbxK9U44aN24CbHaVqTbeE4St4KM/bYSZBTt3V1ejDWDBigUzLCX
-         ikXDs7jmsLVaJnKAyR21yt2t10Y3qGd0tOPTeN7F6z5vLAd6r9ylqbwlGyND9zbA4rJu
-         /3pn9ylfSlAPKp/0+rXAMHB6IefuR7clp6T7ljnJ/IK9Swpm22SctkOmX9La3zTOrKay
-         hO+mZlvm6gGIoB18C7mQY6i+MpKse4M3cX1lt6qSBd/3TRG1XN7ddBVhNY/esTokQnwd
-         VeBD9E+w3cTGXj9c3J+5itmBTEeq1YhTePGcPAXg+s2o5/+qGw8XlUSKvt4posNBWwnP
-         /pzA==
+        b=Q0H4kkP0ngFWrseCGZDxnj/AL8EZQ5CC8vE2NJSH7QlNiRiHfZotjSZJVQlTRblhCi
+         pI5Su7O8nxOHDcGNqC/WaCKvrH4VTAML4grM7aXSgqdC8z1qiNS0x2paTB7E8P6c/1R+
+         MOTWmv5UPezXPwHPgrfhDvznfiKrk9K10QXMqX1+yhHXpFVi4pBrCdV1Jyq8S/KW0QOd
+         0F/av4x4iwlwvVxmHmkHabs6qnZ83eJ8g2nLbdSMF9S9C1hxpZghhGVM1ptlR6yCmRjN
+         4tacUE6G8DXXR4dcmmlNWaXAxHPJqFfVyfTo2bU2yRnWEp9lpLMb4fVS2TrlkwePfUtw
+         qnKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=oEe4aKYCCqICkCpHHVQQhZO5iDc/lYj0mFzN2UGt0QU=;
-        fh=bN4JjLjEcBecITZY/YvagL82upwhz04uOfc0g3vRKNY=;
-        b=e99vKB4XDT8Oi8EEXZoiJnBcTvQsLNYw/JPigu2mTpTmxvc17x6fzZNfQ0ddT7CPdb
-         KdgVr6cMy4X/NcAyq8BTJh4rfI5aIK/cHsqMv+8mRSfgx0CKMhMV5xguP8DZxWQLfVmk
-         KSn6dEBZvtXRQIC/OhvgRH/J7kBzGdG2CksObL9TsJeob0a1xDjvQfIbGdzBt+GGYPA7
-         /xpMl7PpyXgHVDwFA4LBFqVFKHuq5VLpA6l27sFYleDRWsx4q3bJ6QmaavFPinsElYEZ
-         lWEsI6DiBdUay/0ca79TzlPMKmTm8WcIOQ02fqiYwiyR8uDm1pQcDB/+yiNwaG9z5E3y
-         7Wkg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=+1CkV48Xky8tzsEiAMgHndI4yPyDnWgRemMh68yVn7w=;
+        fh=xXjO1J6nB6i+nAzEnxPnmCNIYV1ycDCUQSU7gNoZzpo=;
+        b=H03q9i/jRolp3L4sIM5m4/6K1EkvoDMJiBB/6QBLSCaPDaWy/rf78jIumUBquXUTyp
+         8QL2+quHOFtZeoat5JZvZCvPtLtm+G0G6Mkxqk3+sMYDQHmhlXSNIAfSvWjekHAuyKjK
+         HZwKZFtKak3YuCkBNsGHUa4LQ1HOpamNqDYsoFJ5hM1kKTChuagFHksnVdNw3hotPsUZ
+         FGughBclIYX5BhAMyKloLiwAxvNg2wOSZEIXI0cJVZqQOz3t1OlYYR91fR+oFSvJzYRK
+         U+1VotMAt4DNBpyVEkLnEX8kc2Ow8uVUWRBB7CZVm6sdBdKQQWM7rBZP8zk3frFJS96x
+         zqXA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mK56D6gb;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=lLc9AZcb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-2124d054691sor339195ad.16.2024.11.18.10.12.07
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d40ddbeae2si83983226d6.557.2024.11.18.18.54.26
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 18 Nov 2024 10:12:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 18 Nov 2024 18:54:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mK56D6gb;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@jms.id.au header.s=google header.b=lLc9AZcb;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tDENK-0004k1-De; Mon, 18 Nov 2024 21:53:58 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1tDENH-0004j7-9r; Mon, 18 Nov 2024 21:53:55 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1tDENF-0005Z1-51; Mon, 18 Nov 2024 21:53:55 -0500
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-aa4833e9c44so56280866b.2; 
+ Mon, 18 Nov 2024 18:53:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1731953527; x=1732558327; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=oEe4aKYCCqICkCpHHVQQhZO5iDc/lYj0mFzN2UGt0QU=;
-        b=mK56D6gbzQRnzgyxVbFQ6BuyLKLTGOOpWGdbENtiloOa5q0xtm6Adt1Ubvg3OrT2QY
-         w27JU2P88rwUbGr4986cMe6LzASuJ7SbmIvYf1SmQwrPgSRqeZU9t9cRQuC97D7+t16S
-         d7y8RxpYEeahZm3MRQ7cDDSd/QIGHhFTqXocShdezSZxymMmW0ciAQ3E0yIYYzuZziPs
-         XKiFcLaRifMSlZVIFvKbKXr4s7B79aN5yJxF8nwWz4O9j83NSEuxv9WHxAAXXuAkcllG
-         UCHW9BPW805SGV+XWztpp8jDcRTjVJsuQXpk+XfW5a9LJ8+VwWFujWTc6wvpNV36FjWk
-         t9Ng==
+ d=jms.id.au; s=google; t=1731984828; x=1732589628; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=+1CkV48Xky8tzsEiAMgHndI4yPyDnWgRemMh68yVn7w=;
+ b=lLc9AZcbxLo5aqyR1n4WAN73EABdULcoGaymhw/VBjPmP4+xVQ/icSREGeFujQmkrJ
+ 8Eo3fpxvjG7GeOkJlgR42/2c1RM81twwV+0YYDR2nxbADt1rVvJ5spLQjBL/TniAS2Sq
+ Vc1Wn15YbBazP4fBefVhx+H2JWo+8kQbHEH70=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1731953527; x=1732558327;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=oEe4aKYCCqICkCpHHVQQhZO5iDc/lYj0mFzN2UGt0QU=;
-        b=pZax6J+zvW7b0wFQLBQ69OHH8jnH0FTk61jDMY/JV+bmlrZ6y7ntZCH/zDOsnaWs48
-         4ncVWIgz4i5A5Emy3A3xej04N5oZ0Jh31A6xV6uLyGizyeXkAat4pV03OiT6zl/4oWTM
-         qi92fw9YXfBFcLTtoFNSknNgk4YpBJaOWxszondKjUbI9QD4gYVtMs02tlgcxnm+MCQm
-         C/6CmfJsaYJ+GflFyT681xml/k9FsrK24b2lD2I8415yoo+3z9zG5m+AxsTmqQclzBGx
-         fhAqzdqFxHtsJZESHufCS4aW2K+Pa6sT4RRDZQeLnGnfK74rMVlRvi3szzz6rMUr1HCl
-         7FjA==
-X-Forwarded-Encrypted: i=1; AJvYcCWqeWemc0F3tuh34dUF67Jnu9+7l5SCAM6P+NdK4mMF6i8oZ48EcOhx7KMeWKFvnsilHLQP4w4F9hKdnA==@linaro.org
-X-Gm-Message-State: AOJu0Yzw0BG/5lxIPqfm/U/Nkf6DTnFEjlZa7u63psCJMkKsZU5r60xY
-	tTKqg4DVGI98c+EPgpq3c+cw6LMMa7y82g+SORqYNWVK1lldeh/MTmLpy2Ut5ksSEA==
-X-Google-Smtp-Source: AGHT+IHSJ2CzbkLZQ6mYUghdw6lw24R6B+3Ki9pAyw/aND8qpkQStUGSMwd/hokjCVVg/gmp+4IYNA==
-X-Received: by 2002:a17:902:f60e:b0:212:4582:37fa with SMTP id d9443c01a7336-21245823ca3mr21334845ad.53.1731953527615;
-        Mon, 18 Nov 2024 10:12:07 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.0.4] ([71.212.139.183])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72477200e52sm6751269b3a.180.2024.11.18.10.12.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 18 Nov 2024 10:12:07 -0800 (PST)
-Message-ID: <54fa63c5-e20a-4fc6-9b71-d918dadc26df@linaro.org>
-Date: Mon, 18 Nov 2024 10:12:05 -0800
+ d=1e100.net; s=20230601; t=1731984828; x=1732589628;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+1CkV48Xky8tzsEiAMgHndI4yPyDnWgRemMh68yVn7w=;
+ b=nDYQO76yh/E8Eu4wtRwhqQL/OxEw7dKsUtxVrbVICGQc/C8uNKYruXq0vNoEH3BpHF
+ miYPrnNVYsUld8L5oiqvdIvnxM9bw8p6S+jNFF+fPJQgcCNo4YxKpwTv7HsLx5n4PsKn
+ 1TL2fc8Ej3NQ5lYtyqVrl2weWNJwUy8CJ3GsoGGmJB7ipCWbWjhisgmhyj4BQQlCEnMt
+ /5YV/b8J/Vx7otsc5egpOsfAUAQf2ONemydDUchfDAr3WS2MfFadKoJlH4FF1jNBFeU/
+ Aubiwr5EW+Lf47VYpUwbEaxg8xRn20nUuxOVxj1dCh5lBDhEsSDnWZED/KSFN4kX/WOE
+ Ju9A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX9RJ1brRIYNzDVv738TSiL7WRa9OF4aNG7FDSjXKAtfm/3TxKXDFoJnvbqgl9i/O7W1GcwP2jRPQ==@nongnu.org,
+ AJvYcCXkIrtbkmY+dneciooxQyClDBjYRu2RmqE+vqaS3/GQKpYC6vHIYasrTIvt8xLI4S4o81HiOF+m3lTFsg==@nongnu.org
+X-Gm-Message-State: AOJu0YxsK0Btie/++r6D98hhgbILxGmYBVkPETEU8Uaa7X1Uk5yeQfw4
+ KSalN79s5Lb7cWzovHLlntXY96IAItFPuk4vQx9b8W+XJkFTHCoOpBgHW64bFoJw+bSMnPELq5o
+ YDzE2xwpCbxYeOSBXxrUDeUZzQwk=
+X-Received: by 2002:a17:906:fe01:b0:a9e:b2da:b4a3 with SMTP id
+ a640c23a62f3a-aa48352b5d9mr1361083866b.42.1731984828144; Mon, 18 Nov 2024
+ 18:53:48 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] rust/pl011: Fix DeviceID reads
-To: Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-rust@nongnu.org,
- Gustavo Romero <gustavo.romero@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20241117161039.3758840-1-manos.pitsidianakis@linaro.org>
- <875xoku5vd.fsf@draig.linaro.org>
- <CABgObfaVs-3aXKXtQRLDbzCL56gbimWZoMchYi5G+QGu8r0AxA@mail.gmail.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <CABgObfaVs-3aXKXtQRLDbzCL56gbimWZoMchYi5G+QGu8r0AxA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: lXPRgNFhZjEA
+References: <20241118021820.4928-1-joel@jms.id.au>
+ <CAFEAcA9tPhbjnJ6XjMcZq6iWS4i1BdrTB+=391L5UgaVSMkCLQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9tPhbjnJ6XjMcZq6iWS4i1BdrTB+=391L5UgaVSMkCLQ@mail.gmail.com>
+From: Joel Stanley <joel@jms.id.au>
+Date: Tue, 19 Nov 2024 13:23:36 +1030
+Message-ID: <CACPK8XeFP+fmws+tcG-qgz1WXyKAtMicpfcgDG-pd_jp8PLXwQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/aspeed: Correct minimum access size for all models
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ BMC-SW@aspeedtech.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: m5dWEASG+urM
 
-On 11/18/24 04:40, Paolo Bonzini wrote:
-> More reviews are welcome; in general, we should define a convention
-> for Rust functions and constants (is it okay to rename constants in
-> the Rust bindings if their C name is ugly? should functions keep or
-> lose the "qemu_*" prefixes?).
+On Mon, 18 Nov 2024 at 20:40, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Mon, 18 Nov 2024 at 02:19, Joel Stanley <joel@jms.id.au> wrote:
+> >
+> > Guest code was performing a byte load to the SCU MMIO region, leading to
+> > the guest code crashing (it should be using proper accessors, but
+> > that is not Qemu's bug). Hardware and the documentation[1] both agree that
+> > byte loads are okay, so change all of the aspeed devices to accept a
+> > minimum access size of 1.
+> >
+> > [1] See the 'ARM Address Space Mapping' table in the ASPEED docs. This
+> > is section 6.1 in the ast2400 and ast2700, and 7.1 in the ast2500 and
+> > ast2600 datasheets.
+> >
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2636
+> > Signed-off-by: Joel Stanley <joel@jms.id.au>
+> > ---
+> >  hw/fsi/aspeed_apb2opb.c  | 2 +-
+> >  hw/gpio/aspeed_gpio.c    | 4 ++--
+> >  hw/intc/aspeed_vic.c     | 2 +-
+> >  hw/misc/aspeed_scu.c     | 4 ++--
+> >  hw/misc/aspeed_sdmc.c    | 2 +-
+> >  hw/misc/aspeed_xdma.c    | 2 +-
+> >  hw/net/ftgmac100.c       | 4 ++--
+> >  hw/sd/aspeed_sdhci.c     | 2 +-
+> >  hw/timer/aspeed_timer.c  | 2 +-
+> >  hw/watchdog/wdt_aspeed.c | 2 +-
+> >  10 files changed, 13 insertions(+), 13 deletions(-)
+> >
+> > diff --git a/hw/fsi/aspeed_apb2opb.c b/hw/fsi/aspeed_apb2opb.c
+> > index 0e2cc143f105..855dccf6094c 100644
+> > --- a/hw/fsi/aspeed_apb2opb.c
+> > +++ b/hw/fsi/aspeed_apb2opb.c
+> > @@ -259,7 +259,7 @@ static const struct MemoryRegionOps aspeed_apb2opb_ops = {
+> >      .read = fsi_aspeed_apb2opb_read,
+> >      .write = fsi_aspeed_apb2opb_write,
+> >      .valid.max_access_size = 4,
+> > -    .valid.min_access_size = 4,
+> > +    .valid.min_access_size = 1,
+> >      .impl.max_access_size = 4,
+> >      .impl.min_access_size = 4,
+> >      .endianness = DEVICE_LITTLE_ENDIAN,
+>
+> Have you reviewed all the device read/write function
+> implementations for these devices to check whether
+> (a) changing the .valid value does the right thing, or
 
-If the C name is ugly, feel free to fix that too.  :-)
+I read the implementation of the read/write memory ops and I believe
+it does the right thing. We want devices to accept reads that are of
+any size, instead of returning an error.
 
+> (b) whether there are cases where we should instead
+> be updating the implementation and setting the .impl
+> min access size ?
 
-r~
+Reading the documentation for impl vs valid, we definitely want to set
+valid to 1. There should be no machine check when performing byte
+reads.
+
+I don't think we want to change .impl.min from the default of 1.
+
+I'm not sure if I've missed something that you're trying to point out.
+Are there gotchas about setting valid.min=1 that I should know about?
+
+Cheers,
+
+Joel

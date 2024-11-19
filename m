@@ -1,288 +1,200 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp3142641njc;
-        Tue, 19 Nov 2024 01:30:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU6ZlZNMsAQmA2lNaBpCWUvYMRrvYUVl+5M9n8+rB7lQT3gyPuEbmutSP0RrjcY0g0sobKwwXzPysBAhA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGOd6ccOL8uG8l4FuIk3keYLWr/0fjfqjhJLYuT/uFNzmOA4VhPMu5qEY0U3GqdJVBqd8kr
-X-Received: by 2002:a05:622a:6186:b0:462:b7c9:10e with SMTP id d75a77b69052e-46392d8853cmr45563221cf.13.1732008627103;
-        Tue, 19 Nov 2024 01:30:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732008627; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp3167499njc;
+        Tue, 19 Nov 2024 02:30:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVsz2dI6/foC7lV8U21h5Uc5hbmVKxQDjASimFqhUXjZmOo5PbqSvzg/fLAUyviFhBTHFi6u8aoj2qniQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHHfvXq4G0R746sXG/mOSUbnhKFk9v0BcHZbebIUfzjElKTjQpKSx1M9exU3laOZc3mbjCD
+X-Received: by 2002:a05:6102:5114:b0:4a3:ed09:4746 with SMTP id ada2fe7eead31-4ad62e5fa11mr14932727137.0.1732012224260;
+        Tue, 19 Nov 2024 02:30:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732012224; cv=none;
         d=google.com; s=arc-20240605;
-        b=CJm1MJX7wLn1JNYc5H664piYHDu10qCJq7B3azbmAtPo4HpYqzwTI2+Y637RJSdPoy
-         gaCrJG85bTcJAhMUImqaTuOeTKdoDKAUAQLS3++d8quu/cXfzNAx/ZZeOp11XrhX1lUh
-         5oIfQZIOHLW23MwLI+uOi8lRJWzzzNIdcJ9VCfXvuxsZIrBTO3UdDs8wS8GbRqDeXHM0
-         K+pAu7Od8FMWK4mVTtz+vmNNItJWFGT0D4vvgPKVoPbitQCt7C7Zge2nHhh2sT9+m18F
-         gFyBav7e0BreAy1Li/lFrlznZZOFVqA6laJnqH6DkTKzva2I1KXd3vNar/QmVIankjWL
-         UXbg==
+        b=fPb2YS1p1Y62s7Jv2TTrBIzmEtOzBMil5IN/sOIqN+OPbborE+QnyDl0UnOMuo8nAp
+         uOJ8WZvXN83fF0iAel4HJGE2QdCucaa9QCfXRLfE4Cs4vAoNyBMmHZqLSzZU04B1IXYl
+         hch9KDMGbl9ZNK22qb4lJ8i8V7OEV8Ro0Mu/CbBT58TeD1XhnSYk2jscVAgwU3TEtjyf
+         /yGtAStqNnRWWsWiy6O61nbtX1Q2byMK0PQ3nYwPDyOn5SbaMRX4K9B8hD7ZJs4PHIOU
+         g/7PxNcvxWtROvlZuMY6p6eHBOygye/6Nt7+PMBxHtwi8+5kmzZT9hMTL/M3SSMj6odC
+         nIvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=pbrFuRvlSoBrax+dNrdrJ+i1Nm/UCsWKgPqZajRJrd0=;
-        fh=WJz52vBu+3z+gNkVlP3Z86wMXoTAqIijq+liUzcSZqA=;
-        b=ai2RbvFuNHJFx15axPBaYDfJmfHiz3/w1UeNagHzltq7qdPE4d2s5mIGJxOmOqgLoz
-         4sDxWlI7q/zB6KfsZLzkbAbz13aJGJVcR8ioyr2EU0dP9sOFHGtU571JUPSGNj9ZAuEa
-         +UYabLblR1dwwVUJo7z7ZMaoG/DifyWyHakQ/x+6dWS6QvtsaCCrXIuctswN09qNR29c
-         Vr2HjRlyzWcumYw2K2qVc7vWSzOApvQlYKTE3D79qVztrkKPCt6K9oEgYEeq+mF0w2lu
-         TksTSbz9yHxmg5elhEbFkvwR4Pz+IH9tZwsJJQSvu+BpQX4aeoxTKBYDz/hSKdS5I4uK
-         eORA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=31S/gPBx567OTdkVGKSNuBJlJHg1VUWDKIvZRCSBvUE=;
+        fh=dhWrJZNkxpXlZnBbBJ/MCSDef0P+g1dZQUbpD8kxZj8=;
+        b=LrpEWpPSja6wf8jMQ9b1rj2thAcPMZwzscbacdeaMNi/50d7o82XCwcOjbF0Sr9g9Z
+         BjEx4iYXSCW6GxiqB301C/Gia0CyiC8vHkjOKuhFHeXAhSpFZ203cRbVUNC0v8hmC+Pp
+         a0wWuOIQwQdDlwPnN8kmMILGbIebLyqyIfC6pSZXkeLuwSD3fVCIC3DWZ5Jtn576rxsf
+         pooz+wjWQLbCq4tQFDGrMNLhuEoUgfALqMYPc6jps72UmTg3IJ/uahvFPLGnv2ap2+HC
+         ojyeiopZ2d42fXSAA4G1vS2vljw8ZZCxAO85A5ZB3RzZrkfLAl9qGjO03kM/qFOFK1vA
+         8J8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OxgASJas;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-46392baf6d0si20088681cf.209.2024.11.19.01.30.26
+       dkim=pass header.i=@linaro.org header.s=google header.b=nIRKKUQS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4ad646fa9b5si2434569137.115.2024.11.19.02.30.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Nov 2024 01:30:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 19 Nov 2024 02:30:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OxgASJas;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1732008626;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=pbrFuRvlSoBrax+dNrdrJ+i1Nm/UCsWKgPqZajRJrd0=;
-	b=OxgASJaseM4AjzJxoss9Xaz3/wD5Cs9OjUnjfoYBrwqYPYxU8CHmSmsD85G3U+KGrn6Z/5
-	grdWcFMJ9+4ub/wuwlhG/pk8J+bgGlnNVQVNARRvL1+u3OjUqgSEbW3XrZx/c6x/ZP45KK
-	juQ8kgQ7IZYKt6AzZC+el2jpmvxf7QY=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-681-P4sedATyOqGyw-LItvtS2A-1; Tue,
- 19 Nov 2024 04:30:21 -0500
-X-MC-Unique: P4sedATyOqGyw-LItvtS2A-1
-X-Mimecast-MFC-AGG-ID: P4sedATyOqGyw-LItvtS2A
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0F34319540F0;
-	Tue, 19 Nov 2024 09:30:19 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.110])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 344341956054;
-	Tue, 19 Nov 2024 09:30:00 +0000 (UTC)
-Date: Tue, 19 Nov 2024 09:29:52 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Andrew Melnychenko <andrew@daynix.com>,
-	Jason Wang <jasowang@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	alex.bennee@linaro.org,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	Fabiano Rosas <farosas@suse.de>, Kevin Wolf <kwolf@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org,
-	Yuri Benditovich <yuri.benditovich@daynix.com>,
-	manos.pitsidianakis@linaro.org, qemu-block@nongnu.org,
-	Michael Roth <michael.roth@amd.com>,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
-	gustavo.romero@linaro.org, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 7/7] docs: add a how to section
-Message-ID: <ZzxakHNsVA9cKIyA@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
- <20241118172357.475281-8-pierrick.bouvier@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=nIRKKUQS;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tDLUa-0002uL-VH; Tue, 19 Nov 2024 05:29:56 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tDLUW-0002tE-0s
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2024 05:29:53 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tDLUU-0002Mi-5A
+ for qemu-arm@nongnu.org; Tue, 19 Nov 2024 05:29:51 -0500
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-5cfd3a7e377so1824651a12.2
+ for <qemu-arm@nongnu.org>; Tue, 19 Nov 2024 02:29:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1732012188; x=1732616988; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=31S/gPBx567OTdkVGKSNuBJlJHg1VUWDKIvZRCSBvUE=;
+ b=nIRKKUQSex8AV5fxBMl+ixAwzQEKcVaxE6x2cw/i3dk6RfLSk8sjdNNiz8oLIaPx/S
+ jbOIEfNPkUSW7qOXkplr0arB0XULZgCIf+BEH4y6QSI7Yri2Ct0UUny6GfxYv7+pYOx/
+ lC7OXyWq+4tqwAQZARiUK142EYNIxtQ/Wr0aUcoCL5HdWW/cJ8v+T6pTxRw7D+Hd55GR
+ PWHHv8mci3+d3CsRmcGQki1/hJqLvYUt4FMaaKZRjOR1IUQSr3WIGHXNpIz6tNrFdmjx
+ 3ggG93unneUOqpkYQbDDIMCQ+6jP3vuOY+J2GLwNe4RRZiFr3LhdgkanrtH+T+AsgQxE
+ p5iQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1732012188; x=1732616988;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=31S/gPBx567OTdkVGKSNuBJlJHg1VUWDKIvZRCSBvUE=;
+ b=TPaDCEDfG3da+F83SzqnIZuED015lVj3vTiX/EZSN1MUYWoU850GbUF7O6eltSSdtj
+ UpvTdmTsGujDw5e2ftHjTMcIE2YiAybPsMcaFE+rHVHyOeIVuS1J3htC/DBmGTURxTX3
+ umpnSAWwbmPdPkB174KoyWwPDZAsaYlssmjSUlmckYVs9luALMk5zIpKngArCpVQBLym
+ IK47gwWYnrCt3pClo6yGCH9TkDLGZU+eS6mnNm9opz1AUBTO0N2Dnnkwkf1S09y3lEu6
+ W0KGuPFSKBhHi0DQlwMaHPPCXowFdKs25lU2mK/qVlKkGcWTTahOYrA0Ni2NvV74vIUF
+ sw0g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU/z0QEmFyuI6QbC9n6GNoRI1DZ1n4mT/bse1AOE8SYuxspT3xrHx7/OF/UHq1VIh5cLWTsWqKpDw==@nongnu.org
+X-Gm-Message-State: AOJu0Yzu1F3SSaLuwR2EWoDAMKbnnx/JI3weM7mDF9ansDwlDP8aAoSP
+ 54pjcBwGtHe2lSdfOFJEdss020uyNNFkdjPZDp6tuE29Ft5IDi2/TmgYz/Cp05TrxPE4mMJ8J9y
+ Xdhu1Kg/d1WSW356wqkJiON4nnvdz2gB0/2SePg==
+X-Received: by 2002:a05:6402:40d2:b0:5cf:ddc5:b6e with SMTP id
+ 4fb4d7f45d1cf-5cfddc50e50mr2095705a12.1.1732012187768; Tue, 19 Nov 2024
+ 02:29:47 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20241118172357.475281-8-pierrick.bouvier@linaro.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: gneLKMtw4YNY
+References: <20241118021820.4928-1-joel@jms.id.au>
+ <CAFEAcA9tPhbjnJ6XjMcZq6iWS4i1BdrTB+=391L5UgaVSMkCLQ@mail.gmail.com>
+ <CACPK8XeFP+fmws+tcG-qgz1WXyKAtMicpfcgDG-pd_jp8PLXwQ@mail.gmail.com>
+In-Reply-To: <CACPK8XeFP+fmws+tcG-qgz1WXyKAtMicpfcgDG-pd_jp8PLXwQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 19 Nov 2024 10:29:36 +0000
+Message-ID: <CAFEAcA_+YvS7zTuosAxK8zMgBTD01SRheAat7WbHsfLHCCFGcA@mail.gmail.com>
+Subject: Re: [PATCH] hw/aspeed: Correct minimum access size for all models
+To: Joel Stanley <joel@jms.id.au>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ BMC-SW@aspeedtech.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Evm18v56aXok
 
-On Mon, Nov 18, 2024 at 09:23:57AM -0800, Pierrick Bouvier wrote:
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->  docs/devel/build-system.rst |   2 +
->  docs/how-to/index.rst       | 146 ++++++++++++++++++++++++++++++++++++
->  docs/index.rst              |   1 +
->  3 files changed, 149 insertions(+)
->  create mode 100644 docs/how-to/index.rst
-> 
-> diff --git a/docs/devel/build-system.rst b/docs/devel/build-system.rst
-> index d42045a2325..db444787e37 100644
-> --- a/docs/devel/build-system.rst
-> +++ b/docs/devel/build-system.rst
-> @@ -1,3 +1,5 @@
-> +.. _build:
-> +
->  ==================================
->  The QEMU build system architecture
->  ==================================
-> diff --git a/docs/how-to/index.rst b/docs/how-to/index.rst
-> new file mode 100644
-> index 00000000000..3a9d4d777df
-> --- /dev/null
-> +++ b/docs/how-to/index.rst
-> @@ -0,0 +1,146 @@
-> +.. _how-to:
-> +
-> +------
-> +How to
-> +------
-> +
-> +This section of the manual will give you some commands to do various tasks with
-> +QEMU. It does not intend to be complete, but to be simple.
-> +
-> +Build
-> +-----
-> +
-> +First you need setup your `build environment <setup-build-env>`.
-> +
-> +Then, you can build QEMU using:
-> +
-> +::
-> +
-> +    git clone https://gitlab.com/qemu-project/qemu
-> +    cd qemu
-> +    ./configure
-> +    ninja -C build
-> +    # all binaries are in ./build
-> +
-> +By default, QEMU build is optimized. You may want to switch to debug builds
-> +instead (non optimized, and with more runtime checks enabled):
-> +
-> +::
-> +
-> +    ./configure --enable-debug
-> +
-> +It's recommended to use sanitizers to catch issues when developing your change.
-> +
-> +::
-> +
-> +    ./configure --enable-asan --enable-ubsan
-> +    # Of course, you can combine debug and sanitizers if needed
-> +
-> +You can find more information on `build page <build>`.
-> +
-> +Test
-> +----
-> +
-> +QEMU has a lot of tests, mainly in 4 categories:
-> +
-> +::
-> +
-> +    # run tests related to TCG. They are based on Makefiles.
-> +    make check-tcg
-> +    # run system tests, running a full VM, with avocado framework
-> +    make check-avocado
-> +    # run functional tests, running a full VM, integrated with Meson
-> +    make check-functional
-> +    # run all other tests, integrated with Meson
-> +    make check
-> +
-> +You can find more information on `testing page<testing>`.
-> +
-> +Use QEMU
-> +--------
-> +
-> +To create a 20 gigabytes disk image usable with qemu-system:
-> +
-> +::
-> +
-> +    qemu-img create system.img 20g
-> +
-> +To run an x86_64 system emulated, with 4 cpus, 8G of memory and an install iso:
-> +
-> +::
-> +
-> +    qemu-system-x86_64 -smp 4 -m 8G system.img -cdrom install.iso
-> +
-> +To boot directly a Linux Kernel:
-> +
-> +::
-> +
-> +    qemu-system-x86_64 -kernel bzImage -hda system.img -append "root=/dev/hda"
-> +
-> +To boot an aarch64 system emulated, you need to specify a UEFI and associated
-> +pflash. Once started, you can switch to Serial output by clicking on View ->
-> +Serial0.
-> +
-> +::
-> +
-> +    # UEFI can be obtained from debian package qemu-efi-aarch64.
-> +    # First, we need to copy a file to save UEFI variables:
-> +    # cp /usr/share/AAVMF/AAVMF_VARS.fd .
-> +    qemu-system-aarch64 \
-> +        -m 8G \
-> +        -smp 4 \
-> +        -M virt \
-> +        -cpu max \
-> +        -device virtio-blk-pci,drive=root \
-> +        -drive if=none,id=root,file=system.img \
-> +        -drive if=pflash,readonly=on,file=/usr/share/AAVMF/AAVMF_CODE.fd \
-> +        -drive if=pflash,file=AAVMF_VARS.fd \
-> +        -cdrom install.iso
-> +
-> +To run git using QEMU user-mode:
-> +
-> +::
-> +
-> +    qemu-x86_64 /usr/bin/git --version
-> +
-> +Contribute
-> +----------
-> +
-> +We recommend using `git-publish <https://github.com/stefanha/git-publish>`_ for
-> +contributing. You need to configure `git send-email
-> +<https://git-send-email.io/>`_ first.
-> +
-> +::
-> +
-> +    git checkout -b my_feature
-> +    ... # edit, build, test
-> +    # When ready to send the series...
-> +
-> +    # Add upstream QEMU repo as a remote.
-> +    git remote add upstream https://gitlab.com/qemu-project/qemu
-> +    # Fetch all new content.
-> +    git fetch -a upstream
-> +
-> +    # Rebase your branch on top of upstream master, and include a signoff.
-> +    git rebase -i upstream/master --signoff
-> +    # Check your patches are correct.
-> +    ./scripts/checkpatch.pl $(git merge-base upstream/master HEAD)..HEAD
-> +
-> +    # Send your series, you'll be given a chance to edit cover letter for it.
-> +    git-publish
-> +
-> +    # After review, and other changes, you can send a v2 simply by using:
-> +    git-publish
-> +
-> +If you need to apply locally an existing series, you can use `b4
-> +<https://github.com/mricon/b4>`_ (installable via pip) to retrieve it:
-> +
-> +::
-> +
-> +    b4 shazam <series_msg_id>
-> +    # message id is an identifier present in email sent.
-> +    # when using patchwork, it is the last part of a series url (2024...):
-> +    # https://patchew.org/QEMU/20241118021820.4928-1-joel@jms.id.au/
-> +
-> +More complete information is available on our `Submit a patch page
-> +<submitting-a-patch>`.
+On Tue, 19 Nov 2024 at 02:53, Joel Stanley <joel@jms.id.au> wrote:
+>
+> On Mon, 18 Nov 2024 at 20:40, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > Have you reviewed all the device read/write function
+> > implementations for these devices to check whether
+> > (a) changing the .valid value does the right thing, or
+>
+> I read the implementation of the read/write memory ops and I believe
+> it does the right thing. We want devices to accept reads that are of
+> any size, instead of returning an error.
+>
+> > (b) whether there are cases where we should instead
+> > be updating the implementation and setting the .impl
+> > min access size ?
+>
+> Reading the documentation for impl vs valid, we definitely want to set
+> valid to 1. There should be no machine check when performing byte
+> reads.
+>
+> I don't think we want to change .impl.min from the default of 1.
+>
+> I'm not sure if I've missed something that you're trying to point out.
+> Are there gotchas about setting valid.min=1 that I should know about?
 
-I'm far from convinced any of the above content is a good idea, given
-it is duplicating stuff we've already got elsewhere in our manual.
-This gives us the extra burden of ensuring different parts of the
-manual are consistent in what they're recommending which is something
-we are historically bad at doing.
+The "gotcha" is that the memory system's implementation of the
+size 1 and 2 reads when .impl.min is 4 and .valid.min is 1
+(as for instance with aspeed_apb2opb_ops after this patch)
+is "read 4 bytes, return the relevant portion"
+and the implementation of size 1 and 2 writes is "pad the
+small value with zeroes at either end appropriately so it is
+4 bytes and write that". That is often the right thing for
+the required behaviour of the device registers, but it is
+also quite common that it is the wrong behaviour. For instance
+for some devices the write of a byte is supposed to only modify
+that byte, and leave the other bytes of a 4-byte register alone.
+Or if the device has bit-clears-on-read behaviour for a register
+then the default handling will incorrectly do that for bits
+that the guest didn't actually read.
 
-I think there is scope for having a "how-tos" section, but this particular
-choices of examples are not the best place to kick it off with IMHO. Also,
-for the sake of scalability, I'd suggest that each "how to" is a standalone
-file in the how-tos/ sub-directory, otherwise the index.rst will quickly
-become enourmous.
+Conversely if the device leaves the .impl.min at its default 1
+and moves .valid.min from 4 to 1 (as with eg ftgmac100_ops)
+the device will now be called for byte reads and writes at any
+address in its range. If a write to, say, byte 3 of a 32-bit
+register is supposed to update bits [31:24], that won't happen
+unless the write function is changed (usually if there's a switch
+on offset the write to something that's not at a multiple-of-4
+will end up in the default "log an error" code path).
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+What this adds up to is that it's a bit misleading to have
+a single patch which changes the minimum access size for lots
+of devices at once, because for each device you need to look
+at QEMU's implementation of the read and write functions
+together with the spec of the device, and confirm that the
+right way to implement "byte writes are supported" for this
+particular device is to change .valid.min, and that you don't
+also need to make changes to the read or write function code
+at the same time or adjust .impl.min. Putting them all in one
+patch with no discussion in the commit message of the device
+behaviour and implementation was just a bit of a yellow flag
+to me that maybe this complexity wasn't considered.
+
+If we get this wrong for one of these devices, it's also likely
+to be rather easier to bisect the problem if bisection
+can track it down to "we made this change to aspeed_timer"
+rather than "we made this change to a dozen devices all at once".
+
+-- PMM

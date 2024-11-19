@@ -1,76 +1,73 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp3135780njc;
-        Tue, 19 Nov 2024 01:12:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU3MslMx6JnnjT5LsVys/i9cC3fzPBoTFgNLDK053uYRylSeHHOdGdfU9Kf3A7JhtwuYwbLMPgAadf+mQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFDLsLgPjgkRBleWCLf67RhBUWHbhuP3qYp1Ndcy+mXNHwEYZ6rtl6oX3c6hK70Ure7+DFF
-X-Received: by 2002:a05:622a:1442:b0:45f:20b:c1c8 with SMTP id d75a77b69052e-46363debd00mr223919401cf.9.1732007562131;
-        Tue, 19 Nov 2024 01:12:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732007562; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp3136775njc;
+        Tue, 19 Nov 2024 01:15:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVIwjSp57/sFtML3sjqcG7FGEXDYM0nF+vXU4BSioDRZ5L1VdyrcSk0AU+HiFGtS7x5dLeMvr0J2m6/Ew==@linaro.org
+X-Google-Smtp-Source: AGHT+IG4xqwYkrv4HtOgG+lhwD6iFegM1dM7oWbIDlvrtX9T11o2jQTD4dNhxNdqJYVMVHpYxfiK
+X-Received: by 2002:a05:620a:489a:b0:7ac:dd88:cc80 with SMTP id af79cd13be357-7b37aa270ffmr412833685a.8.1732007702502;
+        Tue, 19 Nov 2024 01:15:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732007702; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ga/NgYrLGgxuBenmZuB8B+0Km7Dtd8JAzEl+koQvSSO7Cstn80cH6KvMU4jLMX6pj+
-         8D5bhWh1fhEZBcRZUfqh7quUmETOz9NkI694SqQhL398MWI3GlQ7YtsRJ9KBZWFxeEeD
-         DhgvJ1Mv0BxyrTVAt2Zz8iirVNYmOCTOchBqOhKhm5F0lrv8TApCh3ze/1syxe3SLmxy
-         IKWcJV5Mda0W57+mzzylbWUxhTxJqOiKGfNgfG/ZkEXXQqEjh3dbXu6MLgUgQ0ZxkcsN
-         m+kgPgiLaPPpQcLWSnXhSXLAHRiqlv83wvNvBqCfr/LMmZc26srxD+BCRAYZ7CB31Mdg
-         wfdw==
+        b=R98nK55kCKQ/uurgwXKorUSIY1CIvayZ8FGQDROJrRhxAHBdx+gyesM7TnM2sJeGOC
+         BwuVOa1ibl36VdKDMKsbMnWQxK/mPq6pyEwV1nbxQxDMNef9rHFmSBBOAd/goChc690k
+         Ie+fDKL0DBqn5lrJTqhRnHBLHzS56rcDG7AH7eo6sMj2Wgm+cPDM9g0HVSQnoJYjybEp
+         NHbCC0sdnj+ac0JvzuLWgwpqxSfJMEp/X8tDj8OeknNQzgAVhbBPTALOZokRuip2DHH0
+         V78xIR1slR+PxiJZNMlo3GjHHwCd1CNs/wfFCFUorunLrxjiw0UENM5uaZNU0dykvOXQ
+         seTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=axxdCSVMVXPIgO9acZUtuxAKuCPl+sQtmavnQTTcXaQ=;
-        fh=30BWWxFEPRBRkwSS+WV8DjZjVENAIGl+6U45p3ia4cg=;
-        b=E4QU0bHX/4cVvPeBHmLyreJ7J+7x5SIdHjkZBHyS7QIta70qEloewqre+WZNWMwvaY
-         u5+FqERaAiDom7RxyJd9Wcoz/EbZRO6J4SWYMLYHGmKzofcTDrJcxRGpmB6ru61/do8C
-         oNgBBWf3LX0Ge2zQp2kytiOcl+L/CxkBxrK+iS8IyuuXvz9RLyMvyg3eEBoXgzi2cEgG
-         NaYezUF/kwT1h+HnqTQgAkwOrJcbLf0on9lh+eUfE/8N7IxBgraP9WEAwiq7y7xVq35O
-         85fHEs931jXAVjjPeP6N1l3PkXeZyRtBPexaa+lVJeV0k5S0saAUkKoh9EMVyzIRpnVU
-         gg/A==;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=98NPj4J60QqOveqcuJWt6u02CJSv2wA5n6N1Msl2s70=;
+        fh=WJz52vBu+3z+gNkVlP3Z86wMXoTAqIijq+liUzcSZqA=;
+        b=SMZgW4nLEhEsk6H1t9LtfIYwi/fzvHYLGLnrx28uojkF7RPOYZIoaW5nhxISUaLDFv
+         291J8Nh2weJ1K71tyESM+WztPf6wAPa73AIdi0417W+SfDSzT1ssk0OBEJOU+BPMuVS+
+         2q0X9Ib8IsXvmnooahFKz3RDg01FJN7SzsdANuj49zo7OnMQxgAoM5aeFw8wt4iQJ0D9
+         UfYJTDUoVEHyvUN9JeoGgHw5287lyKdugnaQQCJZZ4mmqiVdpGk6q/De1EH9UN0RTbgM
+         nlsNwOQdiJ3QwQPCtkNPz+78GTFahyJK1UlMWtdbCezv7g6b2AMIVWvFMEeWbPXVcXRp
+         pwjw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SBxF71gE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GubucmMw;
        spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <berrange@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-46392c472fesi19336871cf.471.2024.11.19.01.12.41
+        by mx.google.com with ESMTPS id af79cd13be357-7b37a8ad9c8si191925285a.701.2024.11.19.01.15.02
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 19 Nov 2024 01:12:42 -0800 (PST)
+        Tue, 19 Nov 2024 01:15:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SBxF71gE;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GubucmMw;
        spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1732007561;
+	s=mimecast20190719; t=1732007702;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=axxdCSVMVXPIgO9acZUtuxAKuCPl+sQtmavnQTTcXaQ=;
-	b=SBxF71gEwv3j5f+fIH5E0GCZnx2YK06TMBVHQ8aHgEpYqHAH7NJG9WBmAu6AXLC4FfuxAD
-	shIACCkx+yJYSk8Xwt9FWlYOmH3ggk9dCIINgd/AuNMlr0ZDzvTmQxsZT9MkcrAvq8iu49
-	WEqyolFMyQiQQG0aQb1ECqWolq6bCzI=
+	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
+	bh=98NPj4J60QqOveqcuJWt6u02CJSv2wA5n6N1Msl2s70=;
+	b=GubucmMwIPzBb6UiAF/DJcB61mp9GmGOcaPuUR191KwYy8YBba3JAV+h9J6FebGOO0l+VQ
+	3ffzEZTVd/Pa7x+SFU2+euam1w+BXg0RZx3ZV5nu8xbAic2adUd2NsGd7QO+AYabopFHaQ
+	ejByQqaT+/bm4v3voxrzP0nuaXgwMFg=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-32-37ONWuuyO_aEgJF3o4xcqg-1; Tue,
- 19 Nov 2024 04:12:38 -0500
-X-MC-Unique: 37ONWuuyO_aEgJF3o4xcqg-1
-X-Mimecast-MFC-AGG-ID: 37ONWuuyO_aEgJF3o4xcqg
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-348-a_B0eLs8Obiy-Ffe1QWlKg-1; Tue,
+ 19 Nov 2024 04:15:00 -0500
+X-MC-Unique: a_B0eLs8Obiy-Ffe1QWlKg-1
+X-Mimecast-MFC-AGG-ID: a_B0eLs8Obiy-Ffe1QWlKg
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E39DB19560B8;
-	Tue, 19 Nov 2024 09:12:35 +0000 (UTC)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BB5241955E94;
+	Tue, 19 Nov 2024 09:14:57 +0000 (UTC)
 Received: from redhat.com (unknown [10.42.28.110])
-	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 21DE11956054;
-	Tue, 19 Nov 2024 09:12:27 +0000 (UTC)
-Date: Tue, 19 Nov 2024 09:12:24 +0000
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 0EAB030001A0;
+	Tue, 19 Nov 2024 09:14:45 +0000 (UTC)
+Date: Tue, 19 Nov 2024 09:14:42 +0000
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org,
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org,
 	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Andrew Melnychenko <andrew@daynix.com>,
@@ -86,63 +83,45 @@ Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org,
 	Konstantin Kostiuk <kkostiuk@redhat.com>,
 	Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
 	gustavo.romero@linaro.org, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 2/7] docs/devel: add git-publish for patch submitting
-Message-ID: <ZzxWeG-UKT0odfL8@redhat.com>
+Subject: Re: [PATCH 3/7] docs/devel: add b4 for patch retrieval
+Message-ID: <ZzxXAtuRowg8hp9u@redhat.com>
 Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
- <20241118172357.475281-3-pierrick.bouvier@linaro.org>
- <ce090d62-89a8-4f1a-a864-add24704dd11@linaro.org>
+ <20241118172357.475281-4-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ce090d62-89a8-4f1a-a864-add24704dd11@linaro.org>
+In-Reply-To: <20241118172357.475281-4-pierrick.bouvier@linaro.org>
 User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-X-TUID: zeEGiuRELETi
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: XAWYEzvLZa3g
 
-On Tue, Nov 19, 2024 at 09:41:40AM +0100, Marcin Juszkiewicz wrote:
-> W dniu 18.11.2024 o 18:23, Pierrick Bouvier pisze:
-> > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> > ---
-> >   docs/devel/submitting-a-patch.rst | 14 ++++++++++++++
-> >   1 file changed, 14 insertions(+)
-> > 
-> > diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
-> > index 349c32ee3a9..953682f20cb 100644
-> > --- a/docs/devel/submitting-a-patch.rst
-> > +++ b/docs/devel/submitting-a-patch.rst
-> > @@ -237,6 +237,20 @@ attachments can be used as a last resort on a first-time submission.
-> >   .. _if_you_cannot_send_patch_emails:
-> > +Use git-publish
-> > +~~~~~~~~~~~~~~~
-> > +
-> > +If you already configured git send-email, you can simply use `git-publish
-> > +<https://github.com/stefanha/git-publish>`__ to send series.
-> > +
-> > +::
-> > +
-> > +    $ git checkout master -b my-feature
-> > +    $ # work on new commits, add your 'Signed-off-by' lines to each
-> > +    $ git publish
-> > +    $ ... more work, rebase on master, ...
-> > +    $ git publish # will send a v2
+On Mon, Nov 18, 2024 at 09:23:53AM -0800, Pierrick Bouvier wrote:
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  docs/devel/submitting-a-patch.rst | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
 > 
-> You recommend 'b4 shazam' in 3/7 patch so why not here? Both 'b4' and
-> 'git-publish' seem to do same stuff - handle patch series and send them
-> upstream.
+> diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
+> index 953682f20cb..d25c677d996 100644
+> --- a/docs/devel/submitting-a-patch.rst
+> +++ b/docs/devel/submitting-a-patch.rst
+> @@ -417,6 +417,16 @@ For more details on how QEMU's stable process works, refer to the
+>  
+>  .. _participating_in_code_review:
+>  
+> +Retrieve an existing series
+> +---------------------------
+> +
+> +If you want to apply an existing series on top of your tree, you can simply use
+> +`b4 <https://github.com/mricon/b4>`__.
+> +
+> +::
+> +
+> +    b4 shazam $msg-id
 
-git-publish is what we already recommended to people both elsewhere in
-this file, and more prominently in the README.rst file, so maintaining
-that practice is correct.
+I'm wondering how b4 knows where to find the mails for $msg-id  for QEMU ?
 
-> b4 allows to keep To/Cc emails inside of cover letter which makes it easy to
-> not miss anyone needed.
-
-git-publish automatically CC's people by correlating the files touched in
-the commits against our MAINTAINERS file, so it "does the right thing"
-in the majority of cases. We recommend it because it makes it much harder
-for novice users to mess up patch series submission.
 
 With regards,
 Daniel

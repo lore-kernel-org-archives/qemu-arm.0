@@ -1,127 +1,145 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp3171502njc;
-        Tue, 19 Nov 2024 02:40:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVAAJezOtk9Un7lWOvLLKQ29d+TFmXIkEH/N9Wun1r35EjlBNjLKbVgbVcqHtABoN07u4K2RMf74duRgQ==@linaro.org
-X-Received: by 2002:a17:907:2d0a:b0:a9a:4120:c107 with SMTP id a640c23a62f3a-aa48354d8a7mr1547417666b.60.1732012812014;
-        Tue, 19 Nov 2024 02:40:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732012811; cv=none;
-        d=google.com; s=arc-20240605;
-        b=dQzDeKNnNjFyxMQc7cnUX98TsS+lWK5vAFaMOd+QbbUdb+WakHsFMXkgl15YjxhMNl
-         HXFtAtCfPJD4f+gFMFsCsk48IYVK1BlqJjy8DqNGP6O5tcuFlySCifeAG31bNtGJtO0B
-         lhT2VWNrvUUs/ofXndj6WkTIRwPJc+w8v9Bk1SZbmF+Q+YvmakzotB9WtEUXgZ3P1G/v
-         T4el4XdG+7tyWS5HDE8Fu87oWDQM2JnyLQHLutoxzvyDi5ALdS+x7JITuOZLrpdyYpwy
-         d0hvGxAKMVSimg365zQXNksU+E8aWqoizZCUwWCGo+p8wR0GRv/aZzyZzYtVJV/JpUVK
-         K0sg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=THtpbfJdln95maIr7ixA/yr0koffmRe+qHEjDjkjA8c=;
-        fh=R6OTSfUbB7je2qpT3roS4UUamRH/nzW35A8ZcnSjU8c=;
-        b=WL3lHopRx4jXOHF5tOVbMGQV5if4h1tdB0CYbK+aoUOCE0xeCqI+2T9ptKpLpUHBow
-         quhBg08Ru/5B/CphlQbVShUcVU9pktM9Q4qwivnG8SldyWhkDOeK+ZdWTnL3k90hGKKY
-         BTKv7mc5lOFolYptSTbDQVMjC9FWyHSkZ7yflie0U44CVUHIenTyM6WjPIbI8McCmAvm
-         2V334LcYDkeME94PU+YU/NCQpNOnx8oRh8lvtVd1JaUguZ1WvOhcwVraffZW9FC2PXU7
-         QrBchJLPf9YOQbSzXanarlZQj6XYNa36hRR992pX6PlCa9JWjBFFwNTbDReMyevL/ksm
-         qlxQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eGPw3DVM;
-       spf=pass (google.com: domain of marcin.juszkiewicz@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <marcin.juszkiewicz@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-aa4c7ea722asor61224066b.0.2024.11.19.02.40.11
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 19 Nov 2024 02:40:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of marcin.juszkiewicz@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eGPw3DVM;
-       spf=pass (google.com: domain of marcin.juszkiewicz@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=marcin.juszkiewicz@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732012811; x=1732617611; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:organization:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=THtpbfJdln95maIr7ixA/yr0koffmRe+qHEjDjkjA8c=;
-        b=eGPw3DVMpClZLvt0ntid3HHekZlIvffN14qvmaHRAP3f8LoLhdn/GbVHDZrZaK883q
-         udSU10BNnyuG2YamPWDNQlDMJzqEIeqNgLttWgaKW2afZvZrGY4wQc5NRJRhP8aARyF3
-         s7pToo0hXuXL2XVuKDyRkv7erHlvztY9v+a9vRzV6z/+I7uMfaCHVHEfu71ErKneKlsg
-         QUCZ0upOnQ7fTLUyyPu8JvHXmWzQtd4Bl86JQqv2R6tSOcrFysj1ZAId8xLpBRAw1iiY
-         ILjalEwkIIp6Iq/tpB1R+noZr1iLr7rt5w/xWVAUL3u210pocG+3i9lfn/DT3431dKCA
-         xLCA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732012811; x=1732617611;
-        h=content-transfer-encoding:in-reply-to:organization:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=THtpbfJdln95maIr7ixA/yr0koffmRe+qHEjDjkjA8c=;
-        b=ZcJRHYz+nEpPn7wFZo8WrqLozsrcfwDWjiWQRkQsrpZ+3XYk4FcC8/nrQ1dGLQ2j30
-         jdKa9DDX+lS3V98URUXw9jANL7aPZj5/nvsTSOOCjjsSiRER+65sQMDe1FDOdPKn8tOG
-         C/cjndfWc3I04rJXVliLWK4yiyXmoSLmQB15gZPk+3RP81rxcXL1DYj/ewThIOzttyUN
-         3cKq0831rlH08xafhP+HdboJH5PdR0CuWxfDYjjzngmhy4ue/6KxRAz2w2X8zWIzOGb7
-         iXVSDDDjd+AstkYB7BSQKQfOftjlF8hZgVd7gjY7vKukoRUXLXpGAv+ZKyCkvm2rIbR2
-         94zQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUFyADjfAUZXDxWdJzL2UXZWp3yBaSXOWmqkEI7eK+LAZEWkWDfAv4pP4rFjpcmHk/Gp8DNTXCHb3j1Mg==@linaro.org
-X-Gm-Message-State: AOJu0Yy5gzN1X1EIvjl55xZIpFDfj7iTlWZyqNjcynosgMR/kmc/reUj
-	nT6cwkola51Q4KbeKQ93qdqJbvQ5XlXfLUSF0cQXd9Y22T5m/K7oDBpB9eYp3WpOxA==
-X-Google-Smtp-Source: AGHT+IG0lQcj0gAaodVVWuBBo0NDzm1D1vtzciBlmBFGIGoFGj580jCq0HIZquTD3Mr1ulBx9UIiVw==
-X-Received: by 2002:a17:906:c081:b0:a9a:c03:ebc8 with SMTP id a640c23a62f3a-aa4a2d0a3d1mr710289766b.37.1732012811506;
-        Tue, 19 Nov 2024 02:40:11 -0800 (PST)
-Return-Path: <marcin.juszkiewicz@linaro.org>
-Received: from [192.168.210.26] (83.11.2.232.ipv4.supernova.orange.pl. [83.11.2.232])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa20e0016a7sm636826466b.116.2024.11.19.02.40.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 Nov 2024 02:40:11 -0800 (PST)
-Message-ID: <58dbb4ef-62d3-445e-b891-04a9027d63d8@linaro.org>
-Date: Tue, 19 Nov 2024 11:40:08 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/7] docs/devel: add b4 for patch retrieval
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Andrew Melnychenko <andrew@daynix.com>, Jason Wang <jasowang@redhat.com>,
- Thomas Huth <thuth@redhat.com>, alex.bennee@linaro.org,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Fabiano Rosas <farosas@suse.de>, Kevin Wolf <kwolf@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
- qemu-arm@nongnu.org, Yuri Benditovich <yuri.benditovich@daynix.com>,
- manos.pitsidianakis@linaro.org, qemu-block@nongnu.org,
- Michael Roth <michael.roth@amd.com>, Konstantin Kostiuk
- <kkostiuk@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Xu <peterx@redhat.com>, gustavo.romero@linaro.org,
- Peter Maydell <peter.maydell@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-432dab788a2sm187715225e9.11.2024.11.19.03.08.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 19 Nov 2024 03:08:13 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id E380F5F769;
+	Tue, 19 Nov 2024 11:08:12 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,  qemu-devel@nongnu.org,
+  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Richard
+ Henderson
+ <richard.henderson@linaro.org>,  Andrew Melnychenko <andrew@daynix.com>,
+  Jason Wang <jasowang@redhat.com>,  Thomas Huth <thuth@redhat.com>,
+  Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  Fabiano Rosas
+ <farosas@suse.de>,  Kevin Wolf <kwolf@redhat.com>,  Markus Armbruster
+ <armbru@redhat.com>,  Eric Blake <eblake@redhat.com>,
+  qemu-arm@nongnu.org,  Yuri Benditovich <yuri.benditovich@daynix.com>,
+  manos.pitsidianakis@linaro.org,  qemu-block@nongnu.org,  Michael Roth
+ <michael.roth@amd.com>,  Konstantin Kostiuk <kkostiuk@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Peter Xu <peterx@redhat.com>,
+  gustavo.romero@linaro.org,  Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 4/7] docs/devel: add information on how to setup build
+ environments
+In-Reply-To: <ZzxZRwXAIlMt6SNA@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
+ =?utf-8?Q?=C3=A9=22's?= message of
+	"Tue, 19 Nov 2024 09:24:23 +0000")
 References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
- <20241118172357.475281-4-pierrick.bouvier@linaro.org>
- <ZzxXAtuRowg8hp9u@redhat.com>
- <47831adc-26f7-4633-a371-975c97e8dae7@linaro.org>
- <ZzxjciUGNIVoUuVC@redhat.com>
-From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-Content-Language: pl-PL, en-GB
-Organization: Linaro
-In-Reply-To: <ZzxjciUGNIVoUuVC@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: HFKxO+epn79c
+	<20241118172357.475281-5-pierrick.bouvier@linaro.org>
+	<ZzxZRwXAIlMt6SNA@redhat.com>
+User-Agent: mu4e 1.12.7; emacs 29.4
+Date: Tue, 19 Nov 2024 11:08:12 +0000
+Message-ID: <87mshvqy5f.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: y7Su8PXyntpp
 
-W dniu 19.11.2024 o 11:07, Daniel P. Berrangé pisze:
-> On Tue, Nov 19, 2024 at 10:56:36AM +0100, Marcin Juszkiewicz wrote:
->> W dniu 19.11.2024 o 10:14, Daniel P. Berrangé pisze:
->>
->>>> +    b4 shazam $msg-id
->>>
->>> I'm wondering how b4 knows where to find the mails for $msg-id  for QEMU ?
->>
->> It goes for https://lore.kernel.org/qemu-devel/$msg-id by default or checks
->> b4.midmask in git config.
-> 
-> How does it figure out to look at  '/qemu-devel/' by default  ?
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
-Sorry, was wrong. It goes to https://lore.kernel.org/$msg-id as this is 
-enough to get mail.
+> On Mon, Nov 18, 2024 at 09:23:54AM -0800, Pierrick Bouvier wrote:
+>> MacOS and Linux are straightforward, but Windows needs a bit more
+>> details.
+>>=20
+>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>  docs/about/build-platforms.rst   |   4 +-
+>>  docs/devel/build-environment.rst | 114 +++++++++++++++++++++++++++++++
+>>  docs/devel/index-build.rst       |   1 +
+>>  3 files changed, 118 insertions(+), 1 deletion(-)
+>>  create mode 100644 docs/devel/build-environment.rst
+>>=20
+<snip>
+>> +Fedora
+>> +++++++
+>> +
+>> +::
+>> +
+>> +    sudo dnf update && sudo dnf builddep qemu
+>> +
+>> +Debian/Ubuntu
+>> ++++++++++++++
+>> +
+>> +You first need to enable `Sources List <https://wiki.debian.org/Sources=
+List>`_.
+>> +Then, use apt to install dependencies:
+>> +
+>> +::
+>> +
+>> +    sudo apt update && sudo apt build-dep qemu
+>> +
+>> +MacOS
+>> +-----
+>> +
+>> +You first need to install `Homebrew <https://brew.sh/>`_. Then, use it =
+to
+>> +install dependencies:
+>> +
+>> +::
+>> +
+>> +    brew update && brew install $(brew deps --include-build qemu)
+>
+>
+> The downside in recommending the 'build dep' approach is that it misses
+> out on deps that have been newly introduced in qemu.git, since whatever
+> old version of QEMU the distros are shipping.  It also misses deps for
+> any features the distro vendor has decided to exclude.
+>
+> Can we put a caveat describing this limitation at the top, so that users
+> have pointer if things don't quite go the way we expected.
+
+At a recent QEMU workshop I presented I pointed to lcitool as a way to
+list the minimal dependencies QEMU needs:
+
+  ./tests/lcitool/libvirt-ci/bin/lcitool variables -f yaml debian-12 ./test=
+s/lcitool/projects/qemu-minimal.yml
+
+It wouldn't be the hardest thing to extend lcitool to generate a pkg
+install line instead of a list. Although I notice it fails with the full
+set of dependancies:
+
+  =E2=9C=97  ./tests/lcitool/libvirt-ci/bin/lcitool -d tests/lcitool variab=
+les -f shell debian-12 ./tests/lcitool/projects/qemu.yml
+  Package generic name resolution error: Package libcbor not present in map=
+pings
+
+I note there is already an "install" action but I'm wary of what it does.
+
+>
+>> +
+>> +Windows
+>> +-------
+>> +
+>> +You first need to install `MSYS2 <https://www.msys2.org/>`_.
+>> +MSYS2 offers `different environments <https://www.msys2.org/docs/enviro=
+nments/>`_.
+>> +x86_64 environments are based on GCC, while aarch64 is based on Clang.
+>> +
+>> +We recommend to use MINGW64 for windows-x86_64 and CLANGARM64 for windo=
+ws-aarch64
+>> +(only available on windows-aarch64 hosts).
+>
+> Does CLANGARM64 really work with QEMU ?   We go out of our way to actively
+> block the use of CLang for Windows because of its lack of support for
+> 'gcc_struct' attributes, so I would have expected it to fail
+>
+>> +
+>> +Then, you can open a windows shell, and enter msys2 env using:
+>> +
+>> +::
+>> +
+>> +    c:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64
+>> +    # Replace -ucrt64 by -clangarm64 or -ucrt64 for other environments.
+>> +
+>> +MSYS2 package manager does not offer a built-in way to install build
+>> +dependencies. You can start with this list of packages using pacman:
+>> +
+>
+> With regards,
+> Daniel
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

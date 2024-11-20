@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp4001995njc;
-        Wed, 20 Nov 2024 07:00:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXobjb0AhNZOThueEJkcoPb8fvVuxN4+JDwTJeb0BVceXr1/BYk6LKNesnOlozXFs3+w/qza2Wge/y+rA==@linaro.org
-X-Google-Smtp-Source: AGHT+IH7BSLdlC/bOwvdFi1n46KToqzVWRDh4AqKPWPC+DmrddskpalIldR0C55tv9OUFzO5VMSi
-X-Received: by 2002:a05:622a:4295:b0:461:57f9:6294 with SMTP id d75a77b69052e-4647965ee3fmr37892941cf.38.1732114812451;
-        Wed, 20 Nov 2024 07:00:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732114812; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp4011387njc;
+        Wed, 20 Nov 2024 07:09:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXSiTTrKNlvltefiVVlLJuJ8q43V8ca2Ey/uwoJTzendrfCFzkRQprLUYlPquzSwvbaV9VCvrD+0gaTNw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHMpjnoNl9UOF/XZeAjsnp7T7aftUfeUnBTeCnoe1tL3WXNM1yQ9dFlvEXDoJWd+zsB2j4r
+X-Received: by 2002:a05:6358:7288:b0:1b5:f95a:5a67 with SMTP id e5c5f4694b2df-1ca664a2216mr150488055d.15.1732115389113;
+        Wed, 20 Nov 2024 07:09:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732115389; cv=none;
         d=google.com; s=arc-20240605;
-        b=Vflmk2r7AdHRwUWz+9DzEgGKP9jkatPQ4jjoz1s1GhP/uXZj3Y7RxUW4wqZri3oVsy
-         uheT+Ztz/R1N0tUwfu0gT228cWOJY7q6Me7e15DccXCmlYosFj0qdnO+qcLOoEaFFhON
-         ywcexGLwp1+So8IrgR0eCP0BAcROr0HfiOltCoRy7fFeYOsdyo0oEgDCC/YM+8+tDhhQ
-         CaI7RLaMJii+y2i3Cu0wViZxXIT52KTdABRmuxbKM6uBIFG5rc++M38XLS9df6ARYuo8
-         136FpOFQ8i4quAOTjQi06w49zZStbUM53z45nUz9UpTOgnEd6tCID9tNYefRvktp0Txc
-         JZtA==
+        b=UN2uGmbl2r46o+h9SEKsHcgggWi7DyJZCe+0efJEQ4+svSARcNKpUxEeCAYdNk2bFm
+         DKT9b3E1lL6axseY6paFfhcctyJfysoWhR6swh2HhiNDnsfV69tNb3mYfABPC1uPbGjO
+         gPi3zcJEvq7BxXPl05wfZ4VKiyj6b9fv+xgk48/aEltwDz4rxw7xtV8n1RenGyWcw5Uu
+         0t9dimgETN9SfaEV/vStKtvZKsOs39FacbnmkJcXflqTtEmQUKTwA3GDYUeHASg8Msia
+         WHzkW2fGCnw+H/0X7XFjcdfZMfZT+PGu9cFMAQvxvFwTPypXWMErUOk/WjuaJX5xMc1S
+         xS+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:date;
-        bh=lwHl5rfquVzE7cs9u5RmNYVvQv1NkFvZPgcoK9Oxxcw=;
-        fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
-        b=YY4dkt+kdJ3ndUelDyZRjjvjXfts8aOp7nt9Ka7txxoPHl6GB8to0mSpQRBwkq/k+o
-         1slsn0t+NJI5wunMe8fdsQTjXAHrnwbtYvvWYeXuGIZK8P2sO/fgtfCkBZgaXhjP14z0
-         U8ZUA+99IrzCbGWCrBioWsjDlLYJYe/xHwLy9u+UW/rTM9czuQvhPI4nYDwaxgDVDnm2
-         /mzfIMUgUZM+R66RSvVp7pKy68g/W8vPwH9FWQzN7XXBs9Mv5htT8m1/KksJDWXErPSG
-         cSEa+5zchp3TMjAcy6rwSGeMLdLa6nqxzG3EA/6EfpOxz4YnXgFzjyC7IQ6WsHCwHTdV
-         lBeQ==;
+        bh=Oqol2x4lJN9D6tWhmq0aSH+ftlzTaS/xosmPSXOHKGo=;
+        fh=Y4mkk80SYzC6pPdAHn8c6jPp//k/fEvb32jx45v2XC8=;
+        b=R2xynxxF/FVjqZCwSe+vkf85FRZD+ShyIs66aUcgwlhcRLyZS8RdlFzsaMacpPEYRO
+         UPAR1nl0LtO9CpjJaXKDOByBMOOtJ2Xe18VvaqABZ6vQldcoMRvoeoSOoG7R9n/lKRFj
+         Ucg1kN5OQzYiw9SZ4h3iFm8lNA2Molsp1EQi26gvltwXAYW9IIRmVk9xRsRzYPaseWPB
+         VeYw6dnbi+UPGJZ75fwD+4r5c5/F3YdMQ74+dTXJlk39B9Ssjxn2IoSrHj+ITmn3z8wM
+         FoEtZ7ZUIsw8RghqLnmNlZss5YeqdKIhPD/vBJ2slp9viqEdrX6Xl7D+FV2Rx1/1XA9i
+         lbZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-464678d7141si20421731cf.66.2024.11.20.07.00.11
+        by mx.google.com with ESMTPS id 71dfb90a1353d-514dcbebde7si108644e0c.94.2024.11.20.07.09.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Nov 2024 07:00:12 -0800 (PST)
+        Wed, 20 Nov 2024 07:09:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,37 +42,42 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tDmBD-00048J-05; Wed, 20 Nov 2024 09:59:43 -0500
+	id 1tDmKl-0006Bk-Ld; Wed, 20 Nov 2024 10:09:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tDmBB-000487-MJ; Wed, 20 Nov 2024 09:59:41 -0500
+ id 1tDmKj-0006B2-Gr; Wed, 20 Nov 2024 10:09:33 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tDmB9-0003nV-6T; Wed, 20 Nov 2024 09:59:41 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xtkwq2JTMz6GD2P;
- Wed, 20 Nov 2024 22:57:15 +0800 (CST)
+ id 1tDmKh-0005NT-Pf; Wed, 20 Nov 2024 10:09:33 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XtlBV2KDdz6LD78;
+ Wed, 20 Nov 2024 23:09:06 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 92410140114;
- Wed, 20 Nov 2024 22:59:32 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id ED86C140D26;
+ Wed, 20 Nov 2024 23:09:28 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 20 Nov
- 2024 15:59:32 +0100
-Date: Wed, 20 Nov 2024 14:59:30 +0000
+ 2024 16:09:28 +0100
+Date: Wed, 20 Nov 2024 15:09:26 +0000
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 4/6] acpi/ghes: Use HEST table offsets when preparing
- GHES records
-Message-ID: <20241120145930.00003895@huawei.com>
-In-Reply-To: <cf60aee0059d12755c1b9deb2dddb355d8543297.1731486604.git.mchehab+huawei@kernel.org>
+ "Michael S. Tsirkin" <mst@redhat.com>, Philippe =?ISO-8859-1?Q?Mathieu-Da?=
+ =?ISO-8859-1?Q?ud=E9?= <philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, "Eduardo Habkost"
+ <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Peter
+ Maydell <peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ <linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 6/6] acpi/generic_event_device: add logic to detect if
+ HEST addr is available
+Message-ID: <20241120150926.00003db6@huawei.com>
+In-Reply-To: <92fdd4cbfb0b52450cd0a2abac0a3227458c9618.1731486604.git.mchehab+huawei@kernel.org>
 References: <cover.1731486604.git.mchehab+huawei@kernel.org>
- <cf60aee0059d12755c1b9deb2dddb355d8543297.1731486604.git.mchehab+huawei@kernel.org>
+ <92fdd4cbfb0b52450cd0a2abac0a3227458c9618.1731486604.git.mchehab+huawei@kernel.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
@@ -105,157 +110,97 @@ Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
 From:  Jonathan Cameron via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iI9bjRTgw7MD
+X-TUID: hIWb/joZuBoe
 
-On Wed, 13 Nov 2024 09:37:01 +0100
+On Wed, 13 Nov 2024 09:37:03 +0100
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> There are two pointers that are needed during error injection:
+> Create a new property (x-has-hest-addr) and use it to detect if
+> the GHES table offsets can be calculated from the HEST address
+> (qemu 9.2 and upper) or via the legacy way via an offset obtained
+> from the hardware_errors firmware file.
 > 
-> 1. The start address of the CPER block to be stored;
-> 2. The address of the ack, which needs a reset before next error.
-> 
-> Calculate them preferrable from the HEST table, as this allows
-> checking the source ID, the size of the table and the type of
-> HEST error block structures.
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Comments inline.
 
-It is preferable to calculate them from the HEST table.  This allows
-checking the source ID, the size of the table and the type of the
-HEST error block structures.
+Nice work hammering all this into shape.
 
-A few comments inline.
+Thanks,
 
 Jonathan
 
-
-> 
-> Yet, keep the old code, as this is needed for migration purposes.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 > ---
->  hw/acpi/ghes.c | 98 ++++++++++++++++++++++++++++++++++++++++++++------
->  1 file changed, 88 insertions(+), 10 deletions(-)
+>  hw/acpi/generic_event_device.c |  1 +
+>  hw/acpi/ghes.c                 | 27 ++++++++++++++++++++-------
+>  hw/arm/virt-acpi-build.c       | 30 ++++++++++++++++++++++++++----
+>  hw/core/machine.c              |  2 ++
+>  include/hw/acpi/ghes.h         |  1 +
+>  5 files changed, 50 insertions(+), 11 deletions(-)
 > 
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index c1116dd8d7ae..df6b4fab2d30 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -318,6 +318,7 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+>  
+>  static Property acpi_ged_properties[] = {
+>      DEFINE_PROP_UINT32("ged-event", AcpiGedState, ged_event_bitmap, 0),
+> +    DEFINE_PROP_BOOL("x-has-hest-addr", AcpiGedState, ghes_state.hest_lookup, true),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
+>  
 > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index c93bbaf1994a..9ee25efe8abf 100644
+> index 9ee25efe8abf..2d34a6ddf133 100644
 > --- a/hw/acpi/ghes.c
 > +++ b/hw/acpi/ghes.c
-> @@ -61,6 +61,23 @@
->   */
->  #define ACPI_GHES_GESB_SIZE                 20
+> @@ -365,6 +365,8 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+>  {
+>      AcpiTable table = { .sig = "HEST", .rev = 1,
+>                          .oem_id = oem_id, .oem_table_id = oem_table_id };
+> +    AcpiGedState *acpi_ged_state;
+> +    AcpiGhesState *ags = NULL;
+>      int i;
 >  
-> +/*
-> + * Offsets with regards to the start of the HEST table stored at
-> + * ags->hest_addr_le, according with the memory layout map at
-> + * docs/specs/acpi_hest_ghes.rst.
-> + */
+>      build_ghes_error_table(hardware_errors, linker, num_sources);
+> @@ -385,10 +387,19 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+>       * tell firmware to write into GPA the address of HEST via fw_cfg,
+>       * once initialized.
+>       */
+> -    bios_linker_loader_write_pointer(linker,
+> -                                     ACPI_HEST_ADDR_FW_CFG_FILE, 0,
+> -                                     sizeof(uint64_t),
+> -                                     ACPI_BUILD_TABLE_FILE, hest_offset);
 > +
-/*
- * ACPI 6.2:
+> +    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+> +                                                       NULL));
+> +    if (acpi_ged_state) {
 
-to be consistent with local style.
+Won't fail, but if it did (And given you have a check you are assuming
+it might).
 
-> +/* ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
-> + * Table 18-382 Generic Hardware Error Source version 2 (GHESv2) Structure
-> + */
-> +#define HEST_GHES_V2_TABLE_SIZE  92
-> +#define GHES_ACK_OFFSET          (64 + GAS_ADDR_OFFSET)
-> +
-/*
- * ACPI 6.2: 
-> +/* ACPI 6.2: 18.3.2.7: Generic Hardware Error Source
-> + * Table 18-380: 'Error Status Address' field
-> + */
-
-> +static void get_ghes_source_offsets(uint16_t source_id, uint64_t hest_addr,
-> +                                    uint64_t *cper_addr,
-> +                                    uint64_t *read_ack_start_addr,
-> +                                    Error **errp)
-> +{
-> +    uint64_t hest_err_block_addr, hest_read_ack_addr;
-> +    uint64_t err_source_struct, error_block_addr;
-> +    uint32_t num_sources, i;
-> +
-> +    if (!hest_addr) {
-
-Trivial but I wonder if this should be named to indicate that it sin't the start
-of HEST but the first bit of the header.
-hest_body_address or something like that maybe?  I don't care that much
-though if you prefer to keep as is.
-
-
-> +        return;
+> +        ags = &acpi_ged_state->ghes_state;
 > +    }
 > +
-> +    cpu_physical_memory_read(hest_addr, &num_sources, sizeof(num_sources));
-> +    num_sources = le32_to_cpu(num_sources);
-> +
-> +    err_source_struct = hest_addr + sizeof(num_sources);
-> +
-> +    /*
-> +     * Currently, HEST Error source navigates only for GHESv2 tables
-> +     */
+Then ags is NULL and boom.
 
-Feels like duplication of the comment below where the type check is.
-Maybe drop this one?
-
-> +
-> +    for (i = 0; i < num_sources; i++) {
-> +        uint64_t addr = err_source_struct;
-> +        uint16_t type, src_id;
-> +
-> +        cpu_physical_memory_read(addr, &type, sizeof(type));
-> +        type = le16_to_cpu(type);
-> +
-> +        /* For now, we only know the size of GHESv2 table */
-> +        if (type != ACPI_GHES_SOURCE_GENERIC_ERROR_V2) {
-> +            error_setg(errp, "HEST: type %d not supported.", type);
-> +            return;
-> +        }
-> +
-> +        /* It is GHES. Compare CPER source address */
-
-It's GHESv2 (of course this bit is the same, but none the less comment
-is misleading). I'd just go with
-        /* Compare CPER source address */
-
-> +        addr += sizeof(type);
-> +        cpu_physical_memory_read(addr, &src_id, sizeof(src_id));
-> +
-> +        if (src_id == source_id) {
-> +            break;
-> +        }
-> +
-> +        err_source_struct += HEST_GHES_V2_TABLE_SIZE;
+> +    if (ags->hest_lookup) {
+> +        bios_linker_loader_write_pointer(linker,
+> +                                         ACPI_HEST_ADDR_FW_CFG_FILE, 0,
+> +                                         sizeof(uint64_t),
+> +                                         ACPI_BUILD_TABLE_FILE, hest_offset);
 > +    }
-> +    if (i == num_sources) {
-> +        error_setg(errp, "HEST: Source %d not found.", source_id);
-> +        return;
-> +    }
-> +
-> +    /* Navigate though table address pointers */
-> +    hest_err_block_addr = err_source_struct + GHES_ERR_ST_ADDR_OFFSET;
-> +    hest_read_ack_addr = err_source_struct + GHES_ACK_OFFSET;
+>  }
 
-> +
-> +    cpu_physical_memory_read(hest_err_block_addr, &error_block_addr,
-> +                             sizeof(error_block_addr));
-So this points to a registers
-> +
-> +    cpu_physical_memory_read(error_block_addr, cper_addr,
-> +                             sizeof(*cper_addr));
-and this reads the register. I'm not sure the spec defines the
-contents of that register to be constant.  Maybe we should avoid
-reading the register here and do it instead at read of the record?
-I 'think' you could in theory use different storage for the CPER
-depending on other unhandled errors or whatever else meant you didn't
-want a fixed location.
-
-Or maybe just add a comment to say that the location of CPER storage
-is fixed.
-
-> +
-> +    cpu_physical_memory_read(hest_read_ack_addr, read_ack_start_addr,
-> +                             sizeof(*read_ack_start_addr));
-> +}
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 40f66792570c..930ba9e0a14c 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -893,6 +893,10 @@ static const AcpiNotificationSourceId hest_ghes_notify[] = {
+>      {ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA},
+>  };
+>  
+> +static const AcpiNotificationSourceId hest_ghes_notify_9_1[] = {
+> +    {ACPI_HEST_SRC_ID_SYNC, ACPI_GHES_NOTIFY_SEA},
+{ ACPI...
+> +};
 

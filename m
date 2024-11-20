@@ -1,178 +1,111 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp3985261njc;
-        Wed, 20 Nov 2024 06:32:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU+MB3hCg3kB1XfOp8sEXh4CVaN7m3SkLX2RX7UCn7STBkT6LvnCp1sZk+yZ2oPUSxW2+2mDzKoYPpB6g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFWNS1uHdo7flRTXb94/bG15lmqkUpo+zhhfgr5f+pG/xXor+fJ2PQZriluisvychZxnetS
-X-Received: by 2002:a05:6122:3c53:b0:50d:35d9:ad60 with SMTP id 71dfb90a1353d-514cf8b7348mr3630861e0c.5.1732113176073;
-        Wed, 20 Nov 2024 06:32:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732113176; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp3985544njc;
+        Wed, 20 Nov 2024 06:33:19 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWJrYlWPzRzzwkELM3wLYR7OEQJYNqHldF7TTV5T5jHSDsZw/83JhRwru9lYSLaR2JdSg/Acl4fhkCkTw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEwD9XRjIjccX0gJt/qJ459gOpG+WAt7TIhECOnh0AqUoap5IH/CfvHagbeeDjp38Y+nk2B
+X-Received: by 2002:a9d:7387:0:b0:710:e667:1ca0 with SMTP id 46e09a7af769-71ab319be52mr2821310a34.21.1732113199481;
+        Wed, 20 Nov 2024 06:33:19 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1732113199; cv=pass;
         d=google.com; s=arc-20240605;
-        b=EjawgF3xfTiXZUKzeA7SNZHE3LPX+yj0+HZJJmRBoSKVm3vvdZIM2TzaAlphKR7fFR
-         L5AyYvbujjQrXugajaTxmb6YUO9wSQOHPeIUhK1fsZudIInfvOc13X0TpO4/N93AI0rJ
-         w8iLOFPz2iKBZIU6vkAydxu1OtTDO79p2AvsqvnWcVR9bMx3ZcZpoBr+gcKI4EABTzZl
-         c4uFzufSnhgoow/XL+4QDQhMrem9L/vUDPINfmA6TuKEpuHQ9tme1spvG9IvyhYgoZYg
-         meoO3nv6qrU2bjopjMattqDLsr4igtuS+6KH8LrXK4HtCDdHpmQzhRC4Rf3A69DWHUBo
-         bWow==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:date;
-        bh=Ct31PivH/n2xOzfp64SY14vzPY3UuVjOOedJQfaKlDE=;
+        b=jclqNGXfgWscHZMqLYT1fgPozqfeJ66WWAKwtUoRSbdoMNE18Ya2wgsxbTY6I6IHS6
+         a2T+b/i8LKRrZFDHBuQrE3ysJ7+gFg5Xh/Ul5+d2yTijjEE7atCcDNJ1X7LmBWXkyIbz
+         51tKp9DUnw+8CmGP5JdZFFbY39eydg4kQGEBWTlFrwULiPNtNtiEai4O3z1TXrrHa3VJ
+         yPMSop/cJ0NPyqGDdKQd3E5WwSGmIfSw7e+fIDotlqyVbdQ10MHz2x61QqQPqgqhuLNI
+         9bi9u5ZQ7dZhoaMiDpE+UEgS/P9g5iRMpgVAMmI2aLZW45o/DeSHx14Qh+R69uBnl7/2
+         sEgQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date;
+        bh=P/j2b6kgkPSw2xX+OTUWKiVbbnCXtQn8Il5viywCT3g=;
         fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
-        b=XP6ilAW+sojBFJ/TidmTBYxpiVWmNyq+7JVhF5YfgxzTJqQaBV9pWtnDdx3QorfSid
-         n/EoMEy5GfXDgR7gQeZbNIQsDrOgV9/TdcKA+n897e380WouxaeKyy5b4PW1Qi5euCYy
-         ffQIeBrBIXECTvC2DT9MPD4dZJ5o8O0uVHsGZf62sNDebmPEQuC1g+q0uSUmA2H58I3f
-         3duyf4/6zOkXQ6xDKG1HS+87H0B4/7ex9WmRjIJBnSkhBzBuOQnlDfJxWXd4zbxrkdC+
-         os42WfWRBRBB/9Qm/egCt2ayG7AbQOpTKV1vn3G28d8wrC3mxPdr0zMzSmQt0hfiR8+N
-         J6zw==;
+        b=ck1i4DuUcn5Vja6trYshF4/39V5rRDp/mBnPPinr0/znej8BjOlrGV9Wp3yjQ3QO31
+         nrk/j61H8Ox5+2lSCbxzWwmHBacgmOrBGyHvyvVRxCO7OsLPJp4r+d/Cz/eT0e+jhfXR
+         9k48SVTU9rqiEtV2Cu9lNJg/Ncoa/YeIZKCnaWtWoRR7wTlhIxql9L1f1LLA0m+bRKQW
+         9DgNDG37FOGuJ33cTifgGvU668xKgKdb9R11IJrEPEsrkApvHuD3orKwZVvvH8UBLfmg
+         HBYjfLdB4YJ3SoznS3voztzkx/QVpeyn7nFrQ+xGnescq9OSk0tentqyji9tKS8DWjhD
+         5ZAg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-514dccb53e4si63463e0c.189.2024.11.20.06.32.55
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-415890-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-415890-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-415890-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 46e09a7af769-71abaa8bfc0si72178a34.190.2024.11.20.06.33.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 20 Nov 2024 06:32:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 20 Nov 2024 06:33:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-415890-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tDlkm-0006CQ-1u; Wed, 20 Nov 2024 09:32:24 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tDlkj-0006CB-CR; Wed, 20 Nov 2024 09:32:22 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1tDlkh-0003b3-SF; Wed, 20 Nov 2024 09:32:21 -0500
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-415890-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-415890-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 032C22814DE
+	for <alex.bennee@linaro.org>; Wed, 20 Nov 2024 14:33:19 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 20C4F1AA783;
+	Wed, 20 Nov 2024 14:33:15 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2031BA939
+	for <linux-kernel@vger.kernel.org>; Wed, 20 Nov 2024 14:33:12 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1732113195; cv=none; b=J5+ybhu8rYpmeba30p6EhRDPsuuza0wa9DrqDnDpD4MkXdn1r2teHPEHjuDOmg81ti2qPOUM7WRf1u2TQEKnnkMX8/QYhlbbIRgVryp34h/HNK32tJCwIezJwhmRyQ/1ODB6Jx96tfQTpPOe+bhCBru2qtZRGuJWv16zxe+QfQs=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1732113195; c=relaxed/simple;
+	bh=tpwHXt9OjnubS8VGjaLMRiwcCx1f7NKywEcpbcAammk=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=Uu4Jylg2BZv7OZNsN1V969GNXyZK3Ngp6sFv7ai9UZhuXaAWXAETS/Yx0EVyNC3Rdo4e8HVbAesLUMiJNZWR7i6o8fBEPJA8Wv6t8MiOBkJKRpKCFHN/fzXMnOou4Mdajso69DLohSms8ejG/EupXu4ZKz5ctVAtF8D09qUVU0g=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
 Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XtkHx0VJfz6J6tf;
- Wed, 20 Nov 2024 22:28:45 +0800 (CST)
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XtkJz1qLpz6J6q2;
+	Wed, 20 Nov 2024 22:29:39 +0800 (CST)
 Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
- by mail.maildlp.com (Postfix) with ESMTPS id 9495B140119;
- Wed, 20 Nov 2024 22:32:16 +0800 (CST)
+	by mail.maildlp.com (Postfix) with ESMTPS id C3633140D1A;
+	Wed, 20 Nov 2024 22:33:10 +0800 (CST)
 Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
  (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Wed, 20 Nov
- 2024 15:32:16 +0100
-Date: Wed, 20 Nov 2024 14:32:14 +0000
+ 2024 15:33:10 +0100
+Date: Wed, 20 Nov 2024 14:33:08 +0000
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 2/6] acpi/ghes: add a firmware file with HEST address
-Message-ID: <20241120143214.00003570@huawei.com>
-In-Reply-To: <70ed97b5b335a3e399121be988bf37136aaaa7fd.1731486604.git.mchehab+huawei@kernel.org>
+	"Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
+	<qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 3/6] acpi/ghes: rename the function which gets hw error
+ offsets
+Message-ID: <20241120143308.00005c31@huawei.com>
+In-Reply-To: <3dccd08b82755bd42ab61408d5d86b2bfe2f2f01.1731486604.git.mchehab+huawei@kernel.org>
 References: <cover.1731486604.git.mchehab+huawei@kernel.org>
- <70ed97b5b335a3e399121be988bf37136aaaa7fd.1731486604.git.mchehab+huawei@kernel.org>
+	<3dccd08b82755bd42ab61408d5d86b2bfe2f2f01.1731486604.git.mchehab+huawei@kernel.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.203.177.66]
 X-ClientProxiedBy: lhrpeml100012.china.huawei.com (7.191.174.184) To
  frapeml500008.china.huawei.com (7.182.85.71)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
-From:  Jonathan Cameron via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +NpfZEBM2LJa
+X-TUID: J/dUbZQ61YP2
 
-On Wed, 13 Nov 2024 09:36:59 +0100
+On Wed, 13 Nov 2024 09:37:00 +0100
 Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> Store HEST table address at GPA, placing its content at
-> hest_addr_le variable.
+> Rename: get_ghes_offsets->get_hw_error_offsets
+> to make clear that this function return offsets based on the
+> hardware error firmware.
 > 
 > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> 
-> ---
-> 
-> Change from v8:
-> - hest_addr_lr is now pointing to the error source size and data.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Drop the extra SoB. Doesn't matter really but looks strange in the
-patch.
-
-One trivial inline.
-
-This stuff always gives me a headache, so with that in mind, looks
-fine to me.
-
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
-
-> ---
->  hw/acpi/ghes.c         | 15 +++++++++++++++
->  include/hw/acpi/ghes.h |  1 +
->  2 files changed, 16 insertions(+)
-> 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index a590b0f6f85f..4cd79d42cd04 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -30,6 +30,7 @@
->  
->  #define ACPI_HW_ERROR_FW_CFG_FILE           "etc/hardware_errors"
->  #define ACPI_HW_ERROR_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
-> +#define ACPI_HEST_ADDR_FW_CFG_FILE          "etc/acpi_table_hest_addr"
->  
->  /* The max size in bytes for one error block */
->  #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
-> @@ -361,6 +362,8 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
->  
->      acpi_table_begin(&table, table_data);
->  
-> +    int hest_offset = table_data->len;
-> +
->      /* Error Source Count */
->      build_append_int_noprefix(table_data, num_sources, 4);
->      for (i = 0; i < num_sources; i++) {
-> @@ -368,6 +371,15 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
->      }
->  
->      acpi_table_end(linker, &table);
-> +
-> +    /*
-> +     * tell firmware to write into GPA the address of HEST via fw_cfg,
-Tell
-
-File is inconsistent but mostly uses a capital to start.
-> +     * once initialized.
-> +     */
-> +    bios_linker_loader_write_pointer(linker,
-> +                                     ACPI_HEST_ADDR_FW_CFG_FILE, 0,
-> +                                     sizeof(uint64_t),
-> +                                     ACPI_BUILD_TABLE_FILE, hest_offset);
->  }
-esState;
-

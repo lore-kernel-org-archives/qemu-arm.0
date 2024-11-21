@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fb25d74sm31746f8f.47.2024.11.21.08.58.11
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbc44f7sm18708f8f.82.2024.11.21.08.58.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Nov 2024 08:58:14 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A119E603D2;
+	by draig.lan (Postfix) with ESMTP id 7AA3D60357;
 	Thu, 21 Nov 2024 16:58:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -46,45 +46,50 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Ani Sinha <anisinha@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH 13/39] tests/functional: don't try to wait for the empty string
-Date: Thu, 21 Nov 2024 16:57:40 +0000
-Message-Id: <20241121165806.476008-14-alex.bennee@linaro.org>
+Subject: [PATCH 11/39] tests/functional: enable debug logging for QEMUMachine
+Date: Thu, 21 Nov 2024 16:57:38 +0000
+Message-Id: <20241121165806.476008-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241121165806.476008-1-alex.bennee@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vOl99Slafiox
+X-TUID: e3kElklE7xQe
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-Telling exec_command_wand_wait_for_pattern to wait for the empty
-string does not make any conceptual sense, as a check for empty
-string will always succeed. It makes even less sense when followed
-by a call to wait_for_console_pattern() with a real match.
+Set the 'qemu.machine' logger to 'DEBUG' level, to ensure we see log
+messages related to the QEMUMachine class. Most importantly this
+ensures we capture the full QEMU command line args for instances we
+spawn.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20241121154218.1423005-14-berrange@redhat.com>
+Message-Id: <20241121154218.1423005-12-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/test_virtio_gpu.py | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ tests/functional/qemu_test/testcase.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/tests/functional/test_virtio_gpu.py b/tests/functional/test_virtio_gpu.py
-index 441cbdcf2d..d5027487ac 100755
---- a/tests/functional/test_virtio_gpu.py
-+++ b/tests/functional/test_virtio_gpu.py
-@@ -80,9 +80,8 @@ def test_virtio_vga_virgl(self):
+diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
+index f9c9de1166..e2a329c3e5 100644
+--- a/tests/functional/qemu_test/testcase.py
++++ b/tests/functional/qemu_test/testcase.py
+@@ -57,9 +57,15 @@ def setUp(self, bin_prefix):
+         self._log_fh.setFormatter(fileFormatter)
+         self.log.addHandler(self._log_fh)
  
-         self.wait_for_console_pattern("as init process")
-         exec_command_and_wait_for_pattern(
--            self, "/usr/sbin/modprobe virtio_gpu", ""
-+            self, "/usr/sbin/modprobe virtio_gpu", "features: +virgl +edid"
-         )
--        self.wait_for_console_pattern("features: +virgl +edid")
++        # Capture QEMUMachine logging
++        self.machinelog = logging.getLogger('qemu.machine')
++        self.machinelog.setLevel(logging.DEBUG)
++        self.machinelog.addHandler(self._log_fh)
++
+     def tearDown(self):
+         if "QEMU_TEST_KEEP_SCRATCH" not in os.environ:
+             shutil.rmtree(self.workdir)
++        self.machinelog.removeHandler(self._log_fh)
+         self.log.removeHandler(self._log_fh)
  
-     def test_vhost_user_vga_virgl(self):
-         # FIXME: should check presence of vhost-user-gpu, virgl, memfd etc
+     def main():
 -- 
 2.39.5

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbed99dsm7650f8f.94.2024.11.21.08.58.09
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fb30bfdsm30067f8f.56.2024.11.21.08.58.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Nov 2024 08:58:10 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 04FE25FBE1;
+	by draig.lan (Postfix) with ESMTP id 4C84E5FC95;
 	Thu, 21 Nov 2024 16:58:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -46,41 +46,52 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Ani Sinha <anisinha@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH 06/39] tests/functional: remove obsolete reference to avocado bug
-Date: Thu, 21 Nov 2024 16:57:33 +0000
-Message-Id: <20241121165806.476008-7-alex.bennee@linaro.org>
+Subject: [PATCH 09/39] tests/functional: put QEMUMachine logs in testcase log directory
+Date: Thu, 21 Nov 2024 16:57:36 +0000
+Message-Id: <20241121165806.476008-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241121165806.476008-1-alex.bennee@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: MOv5IzKh7QTb
+X-TUID: qNNt/rEB5YoI
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-Historical bugs in avocado related to zstd support are not relevant to
-the code now that it uses QEMU's native test harness.
+We are not passing the 'log_dir' parameter to QEMUMachine, so the
+QEMU stdout/err logs are being placed in a temp directory and thus
+deleted after execution. This makes them inaccessible as gitlab
+CI artifacts.
+
+Pass the testcase log directory path into QEMUMachine to make the
+logs persistent.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20241121154218.1423005-7-berrange@redhat.com>
+Message-Id: <20241121154218.1423005-10-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/qemu_test/tuxruntest.py | 1 -
- 1 file changed, 1 deletion(-)
+ tests/functional/qemu_test/testcase.py | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/tests/functional/qemu_test/tuxruntest.py b/tests/functional/qemu_test/tuxruntest.py
-index f05aa96ad7..ed2b238c92 100644
---- a/tests/functional/qemu_test/tuxruntest.py
-+++ b/tests/functional/qemu_test/tuxruntest.py
-@@ -39,7 +39,6 @@ def setUp(self):
-         super().setUp()
+diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
+index b9418e2ac0..ca13af244b 100644
+--- a/tests/functional/qemu_test/testcase.py
++++ b/tests/functional/qemu_test/testcase.py
+@@ -163,10 +163,11 @@ def require_device(self, devicename):
+             self.skipTest('no support for device ' + devicename)
  
-         # We need zstd for all the tuxrun tests
--        # See https://github.com/avocado-framework/avocado/issues/5609
-         (has_zstd, msg) = has_cmd('zstd')
-         if has_zstd is False:
-             self.skipTest(msg)
+     def _new_vm(self, name, *args):
+-        vm = QEMUMachine(self.qemu_bin, base_temp_dir=self.workdir)
++        vm = QEMUMachine(self.qemu_bin,
++                         base_temp_dir=self.workdir,
++                         log_dir=self.logdir)
+         self.log.debug('QEMUMachine "%s" created', name)
+         self.log.debug('QEMUMachine "%s" temp_dir: %s', name, vm.temp_dir)
+-        self.log.debug('QEMUMachine "%s" log_dir: %s', name, vm.log_dir)
+         if args:
+             vm.add_args(*args)
+         return vm
 -- 
 2.39.5

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-433b463ab37sm61332365e9.28.2024.11.21.09.06.25
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbee043sm33245f8f.104.2024.11.21.09.06.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Nov 2024 09:06:28 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 6BFF560439;
-	Thu, 21 Nov 2024 16:58:08 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id CB893603DB;
+	Thu, 21 Nov 2024 16:58:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -46,45 +46,154 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Ani Sinha <anisinha@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
-	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH 22/39] tests/functional: update the i386 tuxrun tests
-Date: Thu, 21 Nov 2024 16:57:49 +0000
-Message-Id: <20241121165806.476008-23-alex.bennee@linaro.org>
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH 15/39] tests/functional: rewrite console handling to be bytewise
+Date: Thu, 21 Nov 2024 16:57:42 +0000
+Message-Id: <20241121165806.476008-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241121165806.476008-1-alex.bennee@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: JChMkECxVLao
+X-TUID: m0PvREy/BeVF
 
-Now there are new upto date images available we should update to them.
+From: Daniel P. Berrangé <berrange@redhat.com>
 
+The console interaction that waits for predicted strings uses
+readline(), and thus is only capable of waiting for strings
+that are followed by a newline.
+
+This is inconvenient when needing to match on some things,
+particularly login prompts, or shell prompts, causing tests
+to use time.sleep(...) instead, which is unreliable.
+
+Switch to reading the console 1 byte at a time, comparing
+against the success/failure messages until we see a match,
+regardless of whether a newline is encountered.
+
+The success/failure comparisons are done with the python bytes
+type, rather than strings, to avoid the problem of needing to
+decode partially received multibyte utf8 characters.
+
+Heavily inspired by a patch proposed by Cédric, but written
+again to work in bytes, rather than strings.
+
+Co-developed-by: Cédric Le Goater <clg@redhat.com>
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-Id: <20241121154218.1423005-16-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Anders Roxell <anders.roxell@linaro.org>
 ---
- tests/functional/test_i386_tuxrun.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ tests/functional/qemu_test/cmd.py | 79 +++++++++++++++++++++++++------
+ 1 file changed, 64 insertions(+), 15 deletions(-)
 
-diff --git a/tests/functional/test_i386_tuxrun.py b/tests/functional/test_i386_tuxrun.py
-index c593ffbe8c..f3ccf11ae8 100755
---- a/tests/functional/test_i386_tuxrun.py
-+++ b/tests/functional/test_i386_tuxrun.py
-@@ -17,11 +17,11 @@
- class TuxRunI386Test(TuxRunBaselineTest):
+diff --git a/tests/functional/qemu_test/cmd.py b/tests/functional/qemu_test/cmd.py
+index f6c4e4dda1..11c8334a7c 100644
+--- a/tests/functional/qemu_test/cmd.py
++++ b/tests/functional/qemu_test/cmd.py
+@@ -78,6 +78,54 @@ def run_cmd(args):
+ def is_readable_executable_file(path):
+     return os.path.isfile(path) and os.access(path, os.R_OK | os.X_OK)
  
-     ASSET_I386_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/i386/bzImage',
--        'a3e5b32a354729e65910f5a1ffcda7c14a6c12a55e8213fb86e277f1b76ed956')
-+        'https://storage.tuxboot.com/buildroot/20241119/i386/bzImage',
-+        '47fb44e38e34101eb0f71a2a01742b959d40ed5fd67cefb5608a39be11d3b74e')
-     ASSET_I386_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/i386/rootfs.ext4.zst',
--        'f15e66b2bf673a210ec2a4b2e744a80530b36289e04f5388aab812b97f69754a')
-+        'https://storage.tuxboot.com/buildroot/20241119/i386/rootfs.ext4.zst',
-+        'a1a3b3b4c9dccd6475b58db95c107b468b736b700f6620985a8ed050a73d51c8')
++# @test: functional test to fail if @failure is seen
++# @vm: the VM whose console to process
++# @success: a non-None string to look for
++# @failure: a string to look for that triggers test failure, or None
++#
++# Read up to 1 line of text from @vm, looking for @success
++# and optionally @failure.
++#
++# If @success or @failure are seen, immediately return True,
++# even if end of line is not yet seen. ie remainder of the
++# line is left unread.
++#
++# If end of line is seen, with neither @success or @failure
++# return False
++#
++# If @failure is seen, then mark @test as failed
++def _console_read_line_until_match(test, vm, success, failure):
++    msg = bytes([])
++    done = False
++    while True:
++        c = vm.console_socket.recv(1)
++        if c is None:
++            done = True
++            test.fail(
++                f"EOF in console, expected '{success}'")
++            break
++        msg += c
++
++        if success in msg:
++            done = True
++            break
++        if failure and failure in msg:
++            done = True
++            vm.console_socket.close()
++            test.fail(
++                f"'{failure}' found in console, expected '{success}'")
++
++        if c == b'\n':
++            break
++
++    console_logger = logging.getLogger('console')
++    try:
++        console_logger.debug(msg.decode().strip())
++    except:
++        console_logger.debug(msg)
++
++    return done
++
+ def _console_interaction(test, success_message, failure_message,
+                          send_string, keep_sending=False, vm=None):
+     assert not keep_sending or send_string
+@@ -85,11 +133,22 @@ def _console_interaction(test, success_message, failure_message,
  
-     def test_i386(self):
-         self.set_machine('q35')
+     if vm is None:
+         vm = test.vm
+-    console = vm.console_file
+-    console_logger = logging.getLogger('console')
++
+     test.log.debug(
+         f"Console interaction: success_msg='{success_message}' " +
+         f"failure_msg='{failure_message}' send_string='{send_string}'")
++
++    # We'll process console in bytes, to avoid having to
++    # deal with unicode decode errors from receiving
++    # partial utf8 byte sequences
++    success_message_b = None
++    if success_message is not None:
++        success_message_b = success_message.encode()
++
++    failure_message_b = None
++    if failure_message is not None:
++        failure_message_b = failure_message.encode()
++
+     while True:
+         if send_string:
+             vm.console_socket.sendall(send_string.encode())
+@@ -102,20 +161,10 @@ def _console_interaction(test, success_message, failure_message,
+                 break
+             continue
+ 
+-        try:
+-            msg = console.readline().decode().strip()
+-        except UnicodeDecodeError:
+-            msg = None
+-        if not msg:
+-            continue
+-        console_logger.debug(msg)
+-        if success_message in msg:
++        if _console_read_line_until_match(test, vm,
++                                          success_message_b,
++                                          failure_message_b):
+             break
+-        if failure_message and failure_message in msg:
+-            console.close()
+-            fail = 'Failure message found in console: "%s". Expected: "%s"' % \
+-                    (failure_message, success_message)
+-            test.fail(fail)
+ 
+ def interrupt_interactive_console_until_pattern(test, success_message,
+                                                 failure_message=None,
 -- 
 2.39.5

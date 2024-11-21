@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbee043sm33245f8f.104.2024.11.21.09.06.28
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-433b45d170esm61613865e9.3.2024.11.21.09.06.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Nov 2024 09:06:28 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id CB893603DB;
-	Thu, 21 Nov 2024 16:58:07 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id C9DEA5F77B;
+	Thu, 21 Nov 2024 16:58:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -45,155 +45,92 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Ani Sinha <anisinha@redhat.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH 15/39] tests/functional: rewrite console handling to be bytewise
-Date: Thu, 21 Nov 2024 16:57:42 +0000
-Message-Id: <20241121165806.476008-16-alex.bennee@linaro.org>
+	Alistair Francis <alistair.francis@wdc.com>
+Subject: [PATCH 37/39] plugins: eradicate qemu-plugins.symbols static file
+Date: Thu, 21 Nov 2024 16:58:04 +0000
+Message-Id: <20241121165806.476008-38-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241121165806.476008-1-alex.bennee@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: m0PvREy/BeVF
+X-TUID: cG9UBA743mzn
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-The console interaction that waits for predicted strings uses
-readline(), and thus is only capable of waiting for strings
-that are followed by a newline.
-
-This is inconvenient when needing to match on some things,
-particularly login prompts, or shell prompts, causing tests
-to use time.sleep(...) instead, which is unreliable.
-
-Switch to reading the console 1 byte at a time, comparing
-against the success/failure messages until we see a match,
-regardless of whether a newline is encountered.
-
-The success/failure comparisons are done with the python bytes
-type, rather than strings, to avoid the problem of needing to
-decode partially received multibyte utf8 characters.
-
-Heavily inspired by a patch proposed by Cédric, but written
-again to work in bytes, rather than strings.
-
-Co-developed-by: Cédric Le Goater <clg@redhat.com>
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20241121154218.1423005-16-berrange@redhat.com>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20241112212622.3590693-4-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/qemu_test/cmd.py | 79 +++++++++++++++++++++++++------
- 1 file changed, 64 insertions(+), 15 deletions(-)
+ plugins/qemu-plugins.symbols | 59 ------------------------------------
+ 1 file changed, 59 deletions(-)
+ delete mode 100644 plugins/qemu-plugins.symbols
 
-diff --git a/tests/functional/qemu_test/cmd.py b/tests/functional/qemu_test/cmd.py
-index f6c4e4dda1..11c8334a7c 100644
---- a/tests/functional/qemu_test/cmd.py
-+++ b/tests/functional/qemu_test/cmd.py
-@@ -78,6 +78,54 @@ def run_cmd(args):
- def is_readable_executable_file(path):
-     return os.path.isfile(path) and os.access(path, os.R_OK | os.X_OK)
- 
-+# @test: functional test to fail if @failure is seen
-+# @vm: the VM whose console to process
-+# @success: a non-None string to look for
-+# @failure: a string to look for that triggers test failure, or None
-+#
-+# Read up to 1 line of text from @vm, looking for @success
-+# and optionally @failure.
-+#
-+# If @success or @failure are seen, immediately return True,
-+# even if end of line is not yet seen. ie remainder of the
-+# line is left unread.
-+#
-+# If end of line is seen, with neither @success or @failure
-+# return False
-+#
-+# If @failure is seen, then mark @test as failed
-+def _console_read_line_until_match(test, vm, success, failure):
-+    msg = bytes([])
-+    done = False
-+    while True:
-+        c = vm.console_socket.recv(1)
-+        if c is None:
-+            done = True
-+            test.fail(
-+                f"EOF in console, expected '{success}'")
-+            break
-+        msg += c
-+
-+        if success in msg:
-+            done = True
-+            break
-+        if failure and failure in msg:
-+            done = True
-+            vm.console_socket.close()
-+            test.fail(
-+                f"'{failure}' found in console, expected '{success}'")
-+
-+        if c == b'\n':
-+            break
-+
-+    console_logger = logging.getLogger('console')
-+    try:
-+        console_logger.debug(msg.decode().strip())
-+    except:
-+        console_logger.debug(msg)
-+
-+    return done
-+
- def _console_interaction(test, success_message, failure_message,
-                          send_string, keep_sending=False, vm=None):
-     assert not keep_sending or send_string
-@@ -85,11 +133,22 @@ def _console_interaction(test, success_message, failure_message,
- 
-     if vm is None:
-         vm = test.vm
--    console = vm.console_file
--    console_logger = logging.getLogger('console')
-+
-     test.log.debug(
-         f"Console interaction: success_msg='{success_message}' " +
-         f"failure_msg='{failure_message}' send_string='{send_string}'")
-+
-+    # We'll process console in bytes, to avoid having to
-+    # deal with unicode decode errors from receiving
-+    # partial utf8 byte sequences
-+    success_message_b = None
-+    if success_message is not None:
-+        success_message_b = success_message.encode()
-+
-+    failure_message_b = None
-+    if failure_message is not None:
-+        failure_message_b = failure_message.encode()
-+
-     while True:
-         if send_string:
-             vm.console_socket.sendall(send_string.encode())
-@@ -102,20 +161,10 @@ def _console_interaction(test, success_message, failure_message,
-                 break
-             continue
- 
--        try:
--            msg = console.readline().decode().strip()
--        except UnicodeDecodeError:
--            msg = None
--        if not msg:
--            continue
--        console_logger.debug(msg)
--        if success_message in msg:
-+        if _console_read_line_until_match(test, vm,
-+                                          success_message_b,
-+                                          failure_message_b):
-             break
--        if failure_message and failure_message in msg:
--            console.close()
--            fail = 'Failure message found in console: "%s". Expected: "%s"' % \
--                    (failure_message, success_message)
--            test.fail(fail)
- 
- def interrupt_interactive_console_until_pattern(test, success_message,
-                                                 failure_message=None,
+diff --git a/plugins/qemu-plugins.symbols b/plugins/qemu-plugins.symbols
+deleted file mode 100644
+index 032661f9ea..0000000000
+--- a/plugins/qemu-plugins.symbols
++++ /dev/null
+@@ -1,59 +0,0 @@
+-{
+-  qemu_plugin_bool_parse;
+-  qemu_plugin_end_code;
+-  qemu_plugin_entry_code;
+-  qemu_plugin_get_hwaddr;
+-  qemu_plugin_get_registers;
+-  qemu_plugin_hwaddr_device_name;
+-  qemu_plugin_hwaddr_is_io;
+-  qemu_plugin_hwaddr_phys_addr;
+-  qemu_plugin_insn_data;
+-  qemu_plugin_insn_disas;
+-  qemu_plugin_insn_haddr;
+-  qemu_plugin_insn_size;
+-  qemu_plugin_insn_symbol;
+-  qemu_plugin_insn_vaddr;
+-  qemu_plugin_mem_get_value;
+-  qemu_plugin_mem_is_big_endian;
+-  qemu_plugin_mem_is_sign_extended;
+-  qemu_plugin_mem_is_store;
+-  qemu_plugin_mem_size_shift;
+-  qemu_plugin_num_vcpus;
+-  qemu_plugin_outs;
+-  qemu_plugin_path_to_binary;
+-  qemu_plugin_read_memory_vaddr;
+-  qemu_plugin_read_register;
+-  qemu_plugin_register_atexit_cb;
+-  qemu_plugin_register_flush_cb;
+-  qemu_plugin_register_vcpu_exit_cb;
+-  qemu_plugin_register_vcpu_idle_cb;
+-  qemu_plugin_register_vcpu_init_cb;
+-  qemu_plugin_register_vcpu_insn_exec_cb;
+-  qemu_plugin_register_vcpu_insn_exec_cond_cb;
+-  qemu_plugin_register_vcpu_insn_exec_inline_per_vcpu;
+-  qemu_plugin_register_vcpu_mem_cb;
+-  qemu_plugin_register_vcpu_mem_inline_per_vcpu;
+-  qemu_plugin_register_vcpu_resume_cb;
+-  qemu_plugin_register_vcpu_syscall_cb;
+-  qemu_plugin_register_vcpu_syscall_ret_cb;
+-  qemu_plugin_register_vcpu_tb_exec_cb;
+-  qemu_plugin_register_vcpu_tb_exec_cond_cb;
+-  qemu_plugin_register_vcpu_tb_exec_inline_per_vcpu;
+-  qemu_plugin_register_vcpu_tb_trans_cb;
+-  qemu_plugin_request_time_control;
+-  qemu_plugin_reset;
+-  qemu_plugin_scoreboard_free;
+-  qemu_plugin_scoreboard_find;
+-  qemu_plugin_scoreboard_new;
+-  qemu_plugin_start_code;
+-  qemu_plugin_tb_get_insn;
+-  qemu_plugin_tb_n_insns;
+-  qemu_plugin_tb_vaddr;
+-  qemu_plugin_u64_add;
+-  qemu_plugin_u64_get;
+-  qemu_plugin_u64_set;
+-  qemu_plugin_u64_sum;
+-  qemu_plugin_uninstall;
+-  qemu_plugin_update_ns;
+-  qemu_plugin_vcpu_for_each;
+-};
 -- 
 2.39.5

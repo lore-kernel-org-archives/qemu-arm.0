@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43366cbcd17sm45828635e9.1.2024.11.21.08.58.07
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbc38afsm17867f8f.67.2024.11.21.08.58.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Nov 2024 08:58:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 863075F92B;
+	by draig.lan (Postfix) with ESMTP id C8B1F5FA88;
 	Thu, 21 Nov 2024 16:58:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -46,43 +46,43 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Ani Sinha <anisinha@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH 01/39] tests/functional: fix mips64el test to honour workdir
-Date: Thu, 21 Nov 2024 16:57:28 +0000
-Message-Id: <20241121165806.476008-2-alex.bennee@linaro.org>
+Subject: [PATCH 04/39] tests/functional: remove todo wrt avocado.utils.wait_for
+Date: Thu, 21 Nov 2024 16:57:31 +0000
+Message-Id: <20241121165806.476008-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241121165806.476008-1-alex.bennee@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vHRueUGITVP8
+X-TUID: p85xU8wTta6k
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The missing directory separator resulted in the kernel file being
-created 1 level higher than expected.
+We're not using avocado anymore, so while the TODO item is still
+relevant, suggesting use of avocado.utils is not.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20241121154218.1423005-2-berrange@redhat.com>
+Message-Id: <20241121154218.1423005-5-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/test_mips64el_malta.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/functional/test_m68k_nextcube.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/tests/functional/test_mips64el_malta.py b/tests/functional/test_mips64el_malta.py
-index 6c6355b131..24ebcdb9c1 100755
---- a/tests/functional/test_mips64el_malta.py
-+++ b/tests/functional/test_mips64el_malta.py
-@@ -129,7 +129,7 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
-         screendump_path = os.path.join(self.workdir, 'screendump.pbm')
+diff --git a/tests/functional/test_m68k_nextcube.py b/tests/functional/test_m68k_nextcube.py
+index 89385a134a..0124622c40 100755
+--- a/tests/functional/test_m68k_nextcube.py
++++ b/tests/functional/test_m68k_nextcube.py
+@@ -37,8 +37,7 @@ def check_bootrom_framebuffer(self, screenshot_path):
+         self.vm.launch()
  
-         kernel_path_gz = self.ASSET_KERNEL_4_7_0.fetch()
--        kernel_path = self.workdir + "vmlinux"
-+        kernel_path = self.workdir + "/vmlinux"
-         gzip_uncompress(kernel_path_gz, kernel_path)
+         self.log.info('VM launched, waiting for display')
+-        # TODO: Use avocado.utils.wait.wait_for to catch the
+-        #       'displaysurface_create 1120x832' trace-event.
++        # TODO: wait for the 'displaysurface_create 1120x832' trace-event.
+         time.sleep(2)
  
-         tuxlogo_path = self.ASSET_TUXLOGO.fetch()
+         self.vm.cmd('human-monitor-command',
 -- 
 2.39.5

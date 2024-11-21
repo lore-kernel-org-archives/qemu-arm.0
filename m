@@ -1,99 +1,99 @@
-Received: by 2002:a05:7022:213:b0:8f:43c:4b5e with SMTP id 19csp4344639dll;
-        Thu, 21 Nov 2024 11:02:21 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEF4hDwNgpwJNnWS83gMeHpPHCn6S0IbApASk8/zqg37eVqDn+Sg8IfpCSxWeKIj+8LskCy
-X-Received: by 2002:a05:600c:3b12:b0:42f:75cd:2566 with SMTP id 5b1f17b1804b1-433489878cemr76398055e9.2.1732215741301;
-        Thu, 21 Nov 2024 11:02:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732215741; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp4913359njc;
+        Thu, 21 Nov 2024 11:41:41 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEPdx0kQiQ9/V72e+WMRK7Z+hiGbCAQzqGImpbKuqERgg2VMvjO5MnNvH1a/LYcr+bTrQeR
+X-Received: by 2002:a05:622a:107:b0:465:2fba:71b5 with SMTP id d75a77b69052e-4653cbbbf0emr7069821cf.13.1732218101024;
+        Thu, 21 Nov 2024 11:41:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732218101; cv=none;
         d=google.com; s=arc-20240605;
-        b=IE2Xp+44I54sl5MekTzmkMGi+Av1GMbsLBbTOKQOvthe8vLEvJVUFcZ+gkLY7TobnB
-         BObFcQR7eCKhgSjEVadyGlRu3Qqr1jLFk8CzJYlW1C8uwddQWZrRxQcaNEf4MrcTs+W6
-         TL8svnhsHsf3hdH9dddn18LbdOAxlDXPSzHdIH/kYscGVr6AcVvSeB+18/PUmm1roM7G
-         oQqR81VTu3KWSWyrNql/e15wWSqQNRFkjxfQghBeXQVAeUEenGfT1SNRZcG4B13Sipzu
-         NnR5iKS68lNN6tqkbiAwhifDDTlzc+G6Pdv9R9adIUz1e9T9p6f48T2udtoT+mZPqSNj
-         1CJg==
+        b=F9qqxserdJeXqf7ECRyoD50Ux7iPyF7oRDcp0kKLup5YBm/ClXXdYu/xgoBJ1uwBJ/
+         v0Sj6evvBSW2vZKBvHSzRROu5PhN2yzRRH4+8AM1VJ99pnKE+qkGqHdj5jXgq4AdLffH
+         85gc4r1PM2puaxtXtix+JQkG2//J8SqeXJOHnt4FtHMnYp/aEUHtqdiV7vit9k4ftrQi
+         7pqhyrAJyi5+u2DSY1aBgsBk6VEg3iCyYXKmuYi7/4vUNkZ7baUqETSCo7PNjzPHMQqR
+         6SnIySuOeKMmgb/MceUjuuPQjGZFTscPgx5q+wiZsflU4funIQ+vs4uVyk33IZzuBwUA
+         plrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=Mhl4JBBgEDPMNbSymbtoH0R+ERhP+4wdK9miXYr5aak=;
+        bh=U+74IKXBfX76Hsz8vjGkl972OkUA9XQ4WAykI0zzAQw=;
         fh=wVPQWqTxHsMhgDFUYzS4WRCfPsDqkM1sZVnXLJCyo1A=;
-        b=agHvcj8cVJBHLZGbf17F0Q5cnQD1VsoeGLVJTRy2qnlzZ7iyJgg9KikJOGdTW9gxyT
-         nXqmqonG2tquUCFBZKR/OjHJuiaulPdw/lWAm4km7atwrqJTflTNY8PiTkWhrDwMjA3X
-         0YRghZGF/bjxmB3sGlcWh6jjJXX3EB8/nugL7Y4SGoudKIyawTUxgjDvjTEF7cCaL+BC
-         /NoQUovVxH44WQA4+bzBquyUjgMuJm1pzBGlvl8qCUNYzNpddRz3MrJ4KGitRHQfBG7M
-         zKjzTSTRNl4AAiA12GD6Pzv8dggduTZjn1/4W4W3O/goW7cCBdfuBZtN95eRPVkkB6k+
-         UWXA==;
+        b=A5ITonhWPRcuYv/6KIVHwCMNLmr2KgT2NnSRE0l4ho8yCPEQe4TiAfCbhBqINcFIVh
+         kvDvDHabZgi3Ey8+wTgSIi7Rpb8pyQOrGF5C+BGE+GBHqXDUFSkfzVWdR2kwVYHxWwfj
+         t3Y5Z3oARzIBKWgCPe0fJr0O0VPe/9FC/MLncxYK+CAHcO4kZC8gzgLA11sAozGbDWm8
+         V23hWQxmX0GjQcysmWpzHDEoOGcdIjE0ExRuD2yb+zdccf8duiTBM12K/3DiO/bCsa/E
+         ISQFx+I2DJ8IDpXSlqljAieTAiR+dkvRkWnpG/VTClCxsm3TxUOOgitWsHu/I2x6ZCyT
+         x9Vg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dCohTbSo;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SswMr51i;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3825fd277dasi151986f8f.422.2024.11.21.11.02.20
+        by mx.google.com with ESMTPS id d75a77b69052e-4653c4a0809si4008251cf.521.2024.11.21.11.41.40
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 21 Nov 2024 11:02:21 -0800 (PST)
+        Thu, 21 Nov 2024 11:41:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dCohTbSo;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SswMr51i;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1732215740;
+	s=mimecast20190719; t=1732218100;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=Mhl4JBBgEDPMNbSymbtoH0R+ERhP+4wdK9miXYr5aak=;
-	b=dCohTbSoNYhmyd+bOLzSTTZHZ6Cm+bocnM7k5igWpv2GKezXzPD/Hwjkudr8aUhWJi3LnW
-	p8WoI+6c4+r+LYdPNaOIaiXPJZ1BlPjeQYtfrLmgGjxm0Z+rtX5tIrYmaaawaNSbILKfFG
-	pEH3+PJrsUIKLsB69xvkhlGTwl81b7I=
-Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
- [209.85.208.198]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=U+74IKXBfX76Hsz8vjGkl972OkUA9XQ4WAykI0zzAQw=;
+	b=SswMr51ixxyCRFwgCpuvzu/EpGJAEG8kbHVZxjyOg42f3/PbY1uqvzrlvPC2kJ3C80m8fv
+	WkXl1D3u/qyou8WugLtDfDC5pe+cysbL9wDN1dfNySEmbn6RwLcMshOPnxfVLzQe4C/jJJ
+	c90X4fqyCudjbIRHKrE/6VPpeODLFA8=
+Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
+ [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-461-HAGAcaNhOHa80tmCU_Ydpw-1; Thu, 21 Nov 2024 14:02:19 -0500
-X-MC-Unique: HAGAcaNhOHa80tmCU_Ydpw-1
-X-Mimecast-MFC-AGG-ID: HAGAcaNhOHa80tmCU_Ydpw
-Received: by mail-lj1-f198.google.com with SMTP id 38308e7fff4ca-2fb58c0df21so8114991fa.2
-        for <alex.bennee@linaro.org>; Thu, 21 Nov 2024 11:02:18 -0800 (PST)
+ us-mta-621-OdFiowMVOuqyryZcu4bY8g-1; Thu, 21 Nov 2024 14:41:39 -0500
+X-MC-Unique: OdFiowMVOuqyryZcu4bY8g-1
+X-Mimecast-MFC-AGG-ID: OdFiowMVOuqyryZcu4bY8g
+Received: by mail-lf1-f72.google.com with SMTP id 2adb3069b0e04-539fb5677c9so1196182e87.0
+        for <alex.bennee@linaro.org>; Thu, 21 Nov 2024 11:41:38 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732215737; x=1732820537;
+        d=1e100.net; s=20230601; t=1732218094; x=1732822894;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=Mhl4JBBgEDPMNbSymbtoH0R+ERhP+4wdK9miXYr5aak=;
-        b=cFqSA8Pu4bX/bddxAjHczWSx2YowN2bmYs+i6EPr+svn4luXMg0aQKyZcBq7Dojq+1
-         CsYiLFzdVxwzBOUkWcrgiWdI2/NsmKgtqAZVmjcx+xwxU1hovL6IBtj9ch+Fq8MhDttJ
-         82cUx8yzO1IIg98GR4ZREupYj7ISqjwIq9ku3rSZvRK/1Nr2O6fBzs2LL5sA5y0A/xkc
-         ng9Dx8dyW5a0x3nJ7kjUlowYZNfQsUVlKYGJWdkPISnaEe0cWoBO9cG5MVoqB2nIdi+e
-         JiBuBGFfcivS9YUAHtX7tqCVEd+KXG6QDHkB/JAGslNZlChYahUFSZbBuTVdtn2iEjKS
-         bj7g==
-X-Gm-Message-State: AOJu0Ywqk15Ul9GL1zEIYfpkiZthuY5xRak084Ma5NDzM15fjThxG2ws
-	9Pz7Bzxdc+8QfaiJrPndv98J0nAxZJsSEIM0yN3LkzPI41ezaIDybPDlNQa6MtpBWexf//JNt/d
-	F++276XHEtWLuz3ZsfsLOrlIwWnrAKXzgQJtMyP2+m7Of+4+DRPMf+0DmnYNvC/8JPfVVyBhaOg
-	vIWHHMRvuHsAJrFxEDUl2e9DHMGBchN22uMQ==
-X-Gm-Gg: ASbGncu/VJGxAswBPq+M13rwp4/ZEhFBRmyE9OTqYo5T7aQjOsEOymWkESMrzgXMmyp
-	Jr98gabnQO2rG3VaOJCYJyiib88pmVQBi9Mb/vSsF7Z1o0926ETRkE4kwLUiUErmQ9Bq/gJAdzN
-	rKjaJE092sllK2od5SkoJzILTle7eMy9xcE5xFgbpAZVJ9fp34HZpJOsa0eQ2Rhy83OwwEXDPjn
-	HgDeBvuKlYsto+ELOJlfMtfdQVckQVrnq6oqhcfG5yN0RwTnROauYUxmDYNlOH9H/OM27ZnzstP
-	5hY=
-X-Received: by 2002:a05:651c:50b:b0:2ff:58e5:2adc with SMTP id 38308e7fff4ca-2ff8db6631dmr47035181fa.1.1732215737130;
-        Thu, 21 Nov 2024 11:02:17 -0800 (PST)
-X-Received: by 2002:a05:651c:50b:b0:2ff:58e5:2adc with SMTP id 38308e7fff4ca-2ff8db6631dmr47034371fa.1.1732215736488;
-        Thu, 21 Nov 2024 11:02:16 -0800 (PST)
+        bh=U+74IKXBfX76Hsz8vjGkl972OkUA9XQ4WAykI0zzAQw=;
+        b=sk3DI+WxKC0jD7ntimkGIya2PZ4reMAQUz+XgRUth4FBEDSOC1nz6E8m2HJs6vbZUw
+         Q/UiAjj0w8I+IAK7hiBN7kIW5AC8Y2TzIwvI9fygzzEiAsP5Vt60rwAlS9l9EGeEjgHt
+         F54Xc5OPo8LNm4FmGIt5vIe5w3ElUbvec+3ebcxGeL5amP4EUXFF/i94CmP5f8w/mhAI
+         PT+fQOzRdZpjJqyLPPCxy2kJdGtrn2oGmrTS2LuxiCkga6CEhbyQZ/d0G2RGcPeWrIcv
+         y58jMDcWVJAKD+A6aI2vh46ewI6hty4SrmvvgPS6f8KBW1B4oto3flyGzzzwnSpR/SEF
+         AYKg==
+X-Gm-Message-State: AOJu0YxcI8rSEtEw83qq9QcbS4pYE3cSbpDqDY6xB1yCrlmRgVKxdhyX
+	fFSSxtWggotnSEiu8nIfox146M0jG0e+MJOBmvZV2JJWU9iodmuxVpCUdlX7iaZpMduxyFZeaBL
+	A6EBdzvqpRduEXe0xukakIi6frbC9D9qToO/tD9equQ9di5pncxMFS8wRO1YWTQ4OiRSegjQdwF
+	J8kTiyfAvuusUnJm8jC/7b00WVQvxjbKPpgQ==
+X-Gm-Gg: ASbGncvmaDjLHpe2wa/6cGkyJUE8M/srB5qH1Vle354xx6xjyRoGUr9S1zNGN6V9Vga
+	9892G73jbIol3XaccnzOTYrISVTFK62XJW+2z556FTLWY0EFTAabkN0A2ChEkeAYG1rzbRqIpRo
+	b2golUgEAkCNAcKvC8LjGV8gnpE9KicDL4NZWDJEtYtg4/Ypx/12zf84ADCXrLN4K4kjRPDIq99
+	8ujyd5kWjZ2iiA5wU5iwqGD5zQuEB02VlkGJlgVwFEnWxsnk/QYNe4LyYMxI8Z/cW8fz7Ze2X4F
+	Pzg=
+X-Received: by 2002:a05:6512:3e09:b0:539:9524:92bc with SMTP id 2adb3069b0e04-53dc136de98mr4591542e87.55.1732218093942;
+        Thu, 21 Nov 2024 11:41:33 -0800 (PST)
+X-Received: by 2002:a05:6512:3e09:b0:539:9524:92bc with SMTP id 2adb3069b0e04-53dc136de98mr4591490e87.55.1732218093423;
+        Thu, 21 Nov 2024 11:41:33 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.7] (ip-109-42-51-70.web.vodafone.de. [109.42.51.70])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d01d3a3451sm85455a12.4.2024.11.21.11.02.13
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa50b2f5402sm7750366b.68.2024.11.21.11.41.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 21 Nov 2024 11:02:16 -0800 (PST)
-Message-ID: <8b027418-6555-40c5-a9e3-5fd0d66ef399@redhat.com>
-Date: Thu, 21 Nov 2024 20:02:11 +0100
+        Thu, 21 Nov 2024 11:41:33 -0800 (PST)
+Message-ID: <abaf7618-96dc-416a-b0dc-2ead6c16e45b@redhat.com>
+Date: Thu, 21 Nov 2024 20:41:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/39] tests/functional: enable debug logging for
- QEMUMachine
+Subject: Re: [PATCH 17/39] tests/functional: add a QMP backdoor for debugging
+ stalled tests
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -122,7 +122,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aurelien Jarno <aurelien@aurel32.net>, Ani Sinha <anisinha@redhat.com>,
  Alistair Francis <alistair.francis@wdc.com>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
- <20241121165806.476008-12-alex.bennee@linaro.org>
+ <20241121165806.476008-18-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -166,51 +166,77 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20241121165806.476008-12-alex.bennee@linaro.org>
+In-Reply-To: <20241121165806.476008-18-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LPXKc03wnrGC6Xh99QRMeX8130oE47e0M5L10zDXER4_1732215737
+X-Mimecast-MFC-PROC-ID: tA3WSVP2pXf6zdmjhIW2eHqJxnpcvILHEjMOm_I_Gec_1732218097
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: jLNT/e9s1nzX
+X-TUID: /daqFNHVi1/9
 
 On 21/11/2024 17.57, Alex Bennée wrote:
 > From: Daniel P. Berrangé <berrange@redhat.com>
 > 
-> Set the 'qemu.machine' logger to 'DEBUG' level, to ensure we see log
-> messages related to the QEMUMachine class. Most importantly this
-> ensures we capture the full QEMU command line args for instances we
-> spawn.
+> Support the QEMU_TEST_QMP_BACKDOOR=backdoor.sock env variable as a
+> way to get a QMP backdoor for debugging a stalled QEMU test. Most
+> typically this would be used if running the tests directly:
+> 
+>   $ QEMU_TEST_QMP_BACKDOOR=backdoor.sock \
+>     QEMU_TEST_QEMU_BINARY=./build/qemu-system-arm \
+>     PYTHONPATH=./python \
+>     ./tests/functional/test_arm_tuxrun.py
+> 
+> And then, when the test stalls, in a second shell run:
+> 
+>   $ ./scripts/qmp/qmp-shell backdoor.sock
 > 
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> Message-Id: <20241121154218.1423005-12-berrange@redhat.com>
+> Message-Id: <20241121154218.1423005-18-berrange@redhat.com>
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > ---
->   tests/functional/qemu_test/testcase.py | 6 ++++++
->   1 file changed, 6 insertions(+)
+>   docs/devel/testing/functional.rst      | 10 ++++++++++
+>   tests/functional/qemu_test/testcase.py |  7 +++++++
+>   2 files changed, 17 insertions(+)
 > 
+> diff --git a/docs/devel/testing/functional.rst b/docs/devel/testing/functional.rst
+> index 6b5d0c5b98..b8ad7b0bf7 100644
+> --- a/docs/devel/testing/functional.rst
+> +++ b/docs/devel/testing/functional.rst
+> @@ -176,6 +176,16 @@ primarily depend on the value of the ``qemu_bin`` class attribute.
+>   If it is not explicitly set by the test code, its default value will
+>   be the result the QEMU_TEST_QEMU_BINARY environment variable.
+>   
+> +Debugging hung QEMU
+> +^^^^^^^^^^^^^^^^^^^
+> +
+> +When test cases go wrong it may be helpful to debug a stalled QEMU
+> +process. While the QEMUMachine class owns the primary QMP monitor
+> +socket, it is possible to request a second QMP monitor be created
+> +by setting the ``QEMU_TEST_QMP_BACKDOOR`` env variable to refer
+> +to a UNIX socket name. The ``qmp-shell`` command can then be
+> +attached to the stalled QEMU to examine its live state.
+> +
+>   Attribute reference
+>   -------------------
+>   
 > diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
-> index f9c9de1166..e2a329c3e5 100644
+> index e2a329c3e5..fceafb32b0 100644
 > --- a/tests/functional/qemu_test/testcase.py
 > +++ b/tests/functional/qemu_test/testcase.py
-> @@ -57,9 +57,15 @@ def setUp(self, bin_prefix):
->           self._log_fh.setFormatter(fileFormatter)
->           self.log.addHandler(self._log_fh)
->   
-> +        # Capture QEMUMachine logging
-> +        self.machinelog = logging.getLogger('qemu.machine')
-> +        self.machinelog.setLevel(logging.DEBUG)
-> +        self.machinelog.addHandler(self._log_fh)
+> @@ -175,6 +175,13 @@ def _new_vm(self, name, *args):
+>                            log_dir=self.logdir)
+>           self.log.debug('QEMUMachine "%s" created', name)
+>           self.log.debug('QEMUMachine "%s" temp_dir: %s', name, vm.temp_dir)
 > +
->       def tearDown(self):
->           if "QEMU_TEST_KEEP_SCRATCH" not in os.environ:
->               shutil.rmtree(self.workdir)
-> +        self.machinelog.removeHandler(self._log_fh)
->           self.log.removeHandler(self._log_fh)
->   
->       def main():
+> +        sockpath = os.environ.get("QEMU_TEST_QMP_BACKDOOR", None)
+> +        if sockpath is not None:
+> +            vm.add_args("-chardev",
+> +                        f"socket,id=backdoor,path={sockpath},server=on,wait=off",
+> +                        "-mon", "chardev=backdoor,mode=control")
+> +
+>           if args:
+>               vm.add_args(*args)
+>           return vm
 
-
-Tested-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>

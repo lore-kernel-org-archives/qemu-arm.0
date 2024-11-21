@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-433b4616636sm61146695e9.19.2024.11.21.09.06.25
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fad627bsm56549f8f.12.2024.11.21.09.06.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Nov 2024 09:06:25 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id F412A603F4;
-	Thu, 21 Nov 2024 16:58:07 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 13BE460406;
+	Thu, 21 Nov 2024 16:58:08 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -46,78 +46,53 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Ani Sinha <anisinha@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH 17/39] tests/functional: add a QMP backdoor for debugging stalled tests
-Date: Thu, 21 Nov 2024 16:57:44 +0000
-Message-Id: <20241121165806.476008-18-alex.bennee@linaro.org>
+Subject: [PATCH 18/39] tests/functional: avoid accessing log_filename on earlier failures
+Date: Thu, 21 Nov 2024 16:57:45 +0000
+Message-Id: <20241121165806.476008-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241121165806.476008-1-alex.bennee@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 9BYD0c496JgD
+X-TUID: xUShC6fdVHOB
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-Support the QEMU_TEST_QMP_BACKDOOR=backdoor.sock env variable as a
-way to get a QMP backdoor for debugging a stalled QEMU test. Most
-typically this would be used if running the tests directly:
-
- $ QEMU_TEST_QMP_BACKDOOR=backdoor.sock \
-   QEMU_TEST_QEMU_BINARY=./build/qemu-system-arm \
-   PYTHONPATH=./python \
-   ./tests/functional/test_arm_tuxrun.py
-
-And then, when the test stalls, in a second shell run:
-
- $ ./scripts/qmp/qmp-shell backdoor.sock
+If a failure occurs early in the QemuBaseTest constructor, the
+'log_filename' object atttribute may not exist yet. This happens
+most notably if the QEMU_TEST_QEMU_BINARY is not set. We can't
+initialize 'log_filename' earlier as we use the binary to identify
+the architecture which is then used to build the path in which the
+logs are stored.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20241121154218.1423005-18-berrange@redhat.com>
+Message-Id: <20241121154218.1423005-19-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/devel/testing/functional.rst      | 10 ++++++++++
- tests/functional/qemu_test/testcase.py |  7 +++++++
- 2 files changed, 17 insertions(+)
+ tests/functional/qemu_test/testcase.py | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-diff --git a/docs/devel/testing/functional.rst b/docs/devel/testing/functional.rst
-index 6b5d0c5b98..b8ad7b0bf7 100644
---- a/docs/devel/testing/functional.rst
-+++ b/docs/devel/testing/functional.rst
-@@ -176,6 +176,16 @@ primarily depend on the value of the ``qemu_bin`` class attribute.
- If it is not explicitly set by the test code, its default value will
- be the result the QEMU_TEST_QEMU_BINARY environment variable.
- 
-+Debugging hung QEMU
-+^^^^^^^^^^^^^^^^^^^
-+
-+When test cases go wrong it may be helpful to debug a stalled QEMU
-+process. While the QEMUMachine class owns the primary QMP monitor
-+socket, it is possible to request a second QMP monitor be created
-+by setting the ``QEMU_TEST_QMP_BACKDOOR`` env variable to refer
-+to a UNIX socket name. The ``qmp-shell`` command can then be
-+attached to the stalled QEMU to examine its live state.
-+
- Attribute reference
- -------------------
- 
 diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
-index e2a329c3e5..fceafb32b0 100644
+index fceafb32b0..90ae59eb54 100644
 --- a/tests/functional/qemu_test/testcase.py
 +++ b/tests/functional/qemu_test/testcase.py
-@@ -175,6 +175,13 @@ def _new_vm(self, name, *args):
-                          log_dir=self.logdir)
-         self.log.debug('QEMUMachine "%s" created', name)
-         self.log.debug('QEMUMachine "%s" temp_dir: %s', name, vm.temp_dir)
+@@ -81,10 +81,12 @@ def main():
+         res = unittest.main(module = None, testRunner = tr, exit = False,
+                             argv=["__dummy__", path])
+         for (test, message) in res.result.errors + res.result.failures:
+-            print('More information on ' + test.id() + ' could be found here:'
+-                  '\n %s' % test.log_filename, file=sys.stderr)
+-            if hasattr(test, 'console_log_name'):
+-                print(' %s' % test.console_log_name, file=sys.stderr)
 +
-+        sockpath = os.environ.get("QEMU_TEST_QMP_BACKDOOR", None)
-+        if sockpath is not None:
-+            vm.add_args("-chardev",
-+                        f"socket,id=backdoor,path={sockpath},server=on,wait=off",
-+                        "-mon", "chardev=backdoor,mode=control")
-+
-         if args:
-             vm.add_args(*args)
-         return vm
++            if hasattr(test, "log_filename"):
++                print('More information on ' + test.id() + ' could be found here:'
++                      '\n %s' % test.log_filename, file=sys.stderr)
++                if hasattr(test, 'console_log_name'):
++                    print(' %s' % test.console_log_name, file=sys.stderr)
+         sys.exit(not res.result.wasSuccessful())
+ 
+ 
 -- 
 2.39.5

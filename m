@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbc3531sm37567f8f.80.2024.11.21.09.06.28
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fafeceesm53837f8f.37.2024.11.21.09.06.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Nov 2024 09:06:30 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id CB11E6046F;
-	Thu, 21 Nov 2024 16:58:08 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id DDBC660500;
+	Thu, 21 Nov 2024 16:58:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -46,45 +46,56 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Ani Sinha <anisinha@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
-	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH 26/39] tests/functional: update the mips64 tuxrun tests
-Date: Thu, 21 Nov 2024 16:57:53 +0000
-Message-Id: <20241121165806.476008-27-alex.bennee@linaro.org>
+	Junjie Mao <junjie.mao@hotmail.com>,
+	Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Subject: [PATCH 38/39] rust/pl011: Fix range checks for device ID accesses
+Date: Thu, 21 Nov 2024 16:58:05 +0000
+Message-Id: <20241121165806.476008-39-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241121165806.476008-1-alex.bennee@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: tTm9Cenk5uff
+X-TUID: Wo8BQXYsNyF/
 
-Now there are new upto date images available we should update to them.
+From: Junjie Mao <junjie.mao@hotmail.com>
 
+The peripheral and PrimeCell identification registers of pl011 are located at
+offset 0xFE0 - 0xFFC. To check if a read falls to such registers, the C
+implementation checks if the offset-shifted-by-2 (not the offset itself) is in
+the range 0x3F8 - 0x3FF.
+
+Use the same check in the Rust implementation.
+
+This fixes the timeout of the following avocado tests:
+
+  * tests/avocado/boot_linux_console.py:BootLinuxConsole.test_arm_virt
+  * tests/avocado/replay_kernel.py:ReplayKernelNormal.test_arm_virt
+  * tests/avocado/replay_kernel.py:ReplayKernelNormal.test_arm_vexpressa9
+
+Reported-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Junjie Mao <junjie.mao@hotmail.com>
+Tested-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <SY0P300MB102644C4AC34A3AAD75DC4D5955C2@SY0P300MB1026.AUSP300.PROD.OUTLOOK.COM>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Anders Roxell <anders.roxell@linaro.org>
 ---
- tests/functional/test_mips64_tuxrun.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ rust/hw/char/pl011/src/device.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/functional/test_mips64_tuxrun.py b/tests/functional/test_mips64_tuxrun.py
-index 54af1ae794..0e4c65961d 100755
---- a/tests/functional/test_mips64_tuxrun.py
-+++ b/tests/functional/test_mips64_tuxrun.py
-@@ -17,11 +17,11 @@
- class TuxRunMips64Test(TuxRunBaselineTest):
+diff --git a/rust/hw/char/pl011/src/device.rs b/rust/hw/char/pl011/src/device.rs
+index 2a85960b81..476cacc844 100644
+--- a/rust/hw/char/pl011/src/device.rs
++++ b/rust/hw/char/pl011/src/device.rs
+@@ -182,7 +182,7 @@ pub fn read(&mut self, offset: hwaddr, _size: c_uint) -> std::ops::ControlFlow<u
+         use RegisterOffset::*;
  
-     ASSET_MIPS64_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/mips64/vmlinux',
--        '09010e51e4b8bcbbd2494786ffb48eca78f228e96e5c5438344b0eac4029dc61')
-+        'https://storage.tuxboot.com/buildroot/20241119/mips64/vmlinux',
-+        'fe2882d216898ba2c56b49ba59f46ad392f36871f7fe325373cd926848b9dbdc')
-     ASSET_MIPS64_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/mips64/rootfs.ext4.zst',
--        '69d91eeb04df3d8d172922c6993bb37d4deeb6496def75d8580f6f9de3e431da')
-+        'https://storage.tuxboot.com/buildroot/20241119/mips64/rootfs.ext4.zst',
-+        'b8c98400216b6d4fb3b3ff05e9929aa015948b596cf0b82234813c84a4f7f4d5')
- 
-     def test_mips64(self):
-         self.set_machine('malta')
+         std::ops::ControlFlow::Break(match RegisterOffset::try_from(offset) {
+-            Err(v) if (0x3f8..0x400).contains(&v) => {
++            Err(v) if (0x3f8..0x400).contains(&(v >> 2)) => {
+                 u64::from(self.device_id[(offset - 0xfe0) >> 2])
+             }
+             Err(_) => {
 -- 
 2.39.5

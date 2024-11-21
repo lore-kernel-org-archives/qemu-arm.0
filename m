@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbedfccsm14917f8f.101.2024.11.21.08.58.11
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-433b463439esm61337745e9.31.2024.11.21.08.58.14
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Nov 2024 08:58:14 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id B718F603D3;
-	Thu, 21 Nov 2024 16:58:07 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 07F4B5F95A;
+	Thu, 21 Nov 2024 16:58:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -45,94 +45,46 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Ani Sinha <anisinha@redhat.com>,
-	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH 14/39] tests/functional: require non-NULL success_message for console wait
-Date: Thu, 21 Nov 2024 16:57:41 +0000
-Message-Id: <20241121165806.476008-15-alex.bennee@linaro.org>
+	Alistair Francis <alistair.francis@wdc.com>,
+	Anders Roxell <anders.roxell@linaro.org>
+Subject: [PATCH 28/39] tests/functional: update the ppc32 tuxrun tests
+Date: Thu, 21 Nov 2024 16:57:55 +0000
+Message-Id: <20241121165806.476008-29-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241121165806.476008-1-alex.bennee@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vtXunpbr4F/1
+X-TUID: PqbyCjna3Z5Y
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+Now there are new upto date images available we should update to them.
 
-When waiting for expected output, the 'success_message' is a mandatory
-parameter, with 'failure_message' defaulting to None.
-
-The code has logic which indicates it was trying to cope with
-'success_message' being None and 'failure_message' being non-None but
-it does not appear able to actually do anything useful. The check for
-'success_message is None' will break out of the loop before any check
-for 'failure_message' has been performed.
-
-IOW, for practcal purposes 'success_message' must be non-None unless
-'send_string' is set. Assert this expectation and simplify the loop
-logic.
-
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20241121154218.1423005-15-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Anders Roxell <anders.roxell@linaro.org>
 ---
- tests/functional/qemu_test/cmd.py | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ tests/functional/test_ppc_tuxrun.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/qemu_test/cmd.py b/tests/functional/qemu_test/cmd.py
-index 98722a9cf6..f6c4e4dda1 100644
---- a/tests/functional/qemu_test/cmd.py
-+++ b/tests/functional/qemu_test/cmd.py
-@@ -81,6 +81,8 @@ def is_readable_executable_file(path):
- def _console_interaction(test, success_message, failure_message,
-                          send_string, keep_sending=False, vm=None):
-     assert not keep_sending or send_string
-+    assert success_message or send_string
-+
-     if vm is None:
-         vm = test.vm
-     console = vm.console_file
-@@ -95,7 +97,7 @@ def _console_interaction(test, success_message, failure_message,
-                 send_string = None # send only once
+diff --git a/tests/functional/test_ppc_tuxrun.py b/tests/functional/test_ppc_tuxrun.py
+index 50b76946c4..5458a7fb71 100755
+--- a/tests/functional/test_ppc_tuxrun.py
++++ b/tests/functional/test_ppc_tuxrun.py
+@@ -17,11 +17,11 @@
+ class TuxRunPPC32Test(TuxRunBaselineTest):
  
-         # Only consume console output if waiting for something
--        if success_message is None and failure_message is None:
-+        if success_message is None:
-             if send_string is None:
-                 break
-             continue
-@@ -107,7 +109,7 @@ def _console_interaction(test, success_message, failure_message,
-         if not msg:
-             continue
-         console_logger.debug(msg)
--        if success_message is None or success_message in msg:
-+        if success_message in msg:
-             break
-         if failure_message and failure_message in msg:
-             console.close()
-@@ -138,6 +140,7 @@ def interrupt_interactive_console_until_pattern(test, success_message,
-     :param interrupt_string: a string to send to the console before trying
-                              to read a new line
-     """
-+    assert success_message
-     _console_interaction(test, success_message, failure_message,
-                          interrupt_string, True)
+     ASSET_PPC32_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/ppc32/uImage',
+-        '1a68f74b860fda022fb12e03c5efece8c2b8b590d96cca37a8481a3ae0b3f81f')
++        'https://storage.tuxboot.com/buildroot/20241119/ppc32/uImage',
++        'aa5d81deabdb255a318c4bc5ffd6fdd2b5da1ef39f1955dcc35b671d258b68e9')
+     ASSET_PPC32_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/ppc32/rootfs.ext4.zst',
+-        '8885b9d999cc24d679542a02e9b6aaf48f718f2050ece6b8347074b6ee41dd09')
++        'https://storage.tuxboot.com/buildroot/20241119/ppc32/rootfs.ext4.zst',
++        '67554f830269d6bf53b67c7dd206bcc821e463993d526b1644066fea8117019b')
  
-@@ -152,6 +155,7 @@ def wait_for_console_pattern(test, success_message, failure_message=None,
-     :param success_message: if this message appears, test succeeds
-     :param failure_message: if this message appears, test fails
-     """
-+    assert success_message
-     _console_interaction(test, success_message, failure_message, None, vm=vm)
- 
- def exec_command(test, command):
-@@ -180,6 +184,7 @@ def exec_command_and_wait_for_pattern(test, command,
-     :param success_message: if this message appears, test succeeds
-     :param failure_message: if this message appears, test fails
-     """
-+    assert success_message
-     _console_interaction(test, success_message, failure_message, command + '\r')
- 
- def get_qemu_img(test):
+     def test_ppc32(self):
+         self.set_machine('ppce500')
 -- 
 2.39.5

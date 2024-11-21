@@ -1,101 +1,90 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp4540611njc;
-        Thu, 21 Nov 2024 02:13:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUQu3IZWvSt6vqeuP1O+snJywkEcnnR+yjVkjDThmvVNCBFTzmGyFSKGv7TbvLmeJBTD72p9WEWpI5FIg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHLshEjr2ArqXKP7oLTTPidEMf0fTHAMD6xAZd9dAyzrnE2S4oQiKlZvnRnbAK4PGfoBOyu
-X-Received: by 2002:a05:6102:2b90:b0:4ad:4736:ba16 with SMTP id ada2fe7eead31-4adaf5ea614mr7488763137.20.1732184003574;
-        Thu, 21 Nov 2024 02:13:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732184003; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp4797074njc;
+        Thu, 21 Nov 2024 08:56:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW2j3jZWgwSI4ONulMQHLZo+glbTOI0VY/Av7Q6FDmo24K9/1Bhznf3gnsrZJZ5doubo2hhar6koUn36w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGlJunFSysvfOJgUKiGIPPa7V6WacEOJTubV2efZmVSYKwd7t/UeAtZ13fNllQGu7npSea3
+X-Received: by 2002:a05:622a:124c:b0:461:1734:37e6 with SMTP id d75a77b69052e-46479b40427mr97357691cf.49.1732208193841;
+        Thu, 21 Nov 2024 08:56:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732208193; cv=none;
         d=google.com; s=arc-20240605;
-        b=DGdAC3qB6b+gFRA6ECltLBiAFTl+FaQGFME9MgjtUUUV4ZkTskBbn4PYb6WB9nZ7Az
-         BRx9Ajjk+kH4uxE//znVf7TYb32l7Q4cybiGVTumiPuvkKUPKLNcvPH2ZhOOoqoiFxth
-         DxE4kcclshFFXrbZGXxYvfJRVX0Pl3KJy1fhCbgubtG+XgG58NAS3YKC7BlsT2bk2Vtz
-         LNN3EoRERn/xa070S3QXyLx1HGfkzuQphsH0bFnEkOzwl9E/hg3hGsmwfolzH+MOLl6j
-         jGOL8bBMi06DvMJd/rAZEVKMEcPsThiIPBywQ7LP0A5mq7Yk/EbAp3wins6MmeXpUtPm
-         uPvA==
+        b=GSHcML8FIxlqSOjekGwzTzzihSkkcJiuV29mI2mrV1oIv0EG57G6RP/g5w6BDFqtIF
+         yrkvZjGXNfLdLATBTSt3EvC92PI+mGwntUNbZGAPFENRTH6jHHzRKPGWElVhGZuOofQk
+         2NBRPxTGIU9+dfELFpZdi4UkBqFbp+ryrR0YL69TnIRoYp76Mqf/S/xR8CwNENPuCyr+
+         YaulDWY6PGNOmxYv9Ly21/JTVILrSTigHGvfQd9rdWbJpUzM59kYaUkBvjtnxMSqAs6N
+         3luwqwSo+HS0cfwsA10uC8YaSShFHtklrSY1fO6JEvH2cr0/FxIXf/cXWGAgKtmWFvjg
+         mgXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:cc:to;
-        bh=x8p+rrW96eNr6Sr9uy9cl33OiNiu7s//LhWvPl1Epl8=;
-        fh=bcOtg6wvC7mjYLKJXpkmBVl3eYEfrauvJfZlgP5gXy0=;
-        b=Sufwr4XDzBuT5Y7SdOjW1uACfwmKjhDriF5h7wXCwILzaV8eblvZ0MT9tF0ngwrVtF
-         +U1/xg0fulJR41ks+MmN2VWmlH44wqODOYR2b3X36ZSlGwXz87hBfcfgHC5Sjoeuu5q2
-         B318Z+5XE8bo2hwLb5MSw+O9Sr/knbaftuBinR3RHdwoyXqYOOnhesKpwq6dL8vCnbgH
-         hmIebCgz/EfK5u99UGdeHmbKkLiwsBzYvI3jiTEPICJZ+yjKl91UreGxqBz2eIHh0FOL
-         +bdTvotedXpPXsgVV7R9H+72yUi1lNn20TEY1co2lS4DDPrvz+4o/t2ecHr9uEELWQxN
-         nhBg==;
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:date;
+        bh=bCCWpvyOTz5+qbDSwsUBBANScho/EZas5QYzrVlkD18=;
+        fh=kz4tWyMh2X94Yafk3D0YjdPyHLbf64+ZYYyQKah3JOg=;
+        b=BOkO1OBrLOoUSKQ+qEqo3l1oAC3d1poJ/PF2zAhPaqzo4mWtA5J3o29+bDLyQ8W9E1
+         di/cSC2LOKYmI6K27GxLpjzgZ6RVzR5FgU+DOWsIFG8WbMo3N560iWXaXNafElsC1azB
+         oTEkPFO2yr5+FPT8PGDDbLSlJx67INTsFnxcHB1JXklctO+nIWE2/tUewrnkzOykie5j
+         uURL3FE82c/bv45XFYAH1MpYEyB4Md3/5aGjqUNuRLHw7K8qestBgKFMVV8Abpcf7UzK
+         z3+km8btpewONC8R5LCFuwE/5XzWkeK20SQ0SbAJcyKsBqOgVrIYTucneQl6BMrSny/0
+         MFXA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b4852927a5si402695385a.231.2024.11.21.02.13.23
+        by mx.google.com with ESMTPS id d75a77b69052e-4653c3d711dsi1094161cf.24.2024.11.21.08.56.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 21 Nov 2024 02:13:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 21 Nov 2024 08:56:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tE4BR-0002Rl-Ed; Thu, 21 Nov 2024 05:13:09 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tEATW-0003hW-MW; Thu, 21 Nov 2024 11:56:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tE4BP-0002RT-4e; Thu, 21 Nov 2024 05:13:08 -0500
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tEATV-0003hI-9g; Thu, 21 Nov 2024 11:56:13 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1tE4BM-0008Mn-Jn; Thu, 21 Nov 2024 05:13:06 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XvDYx05Nsz6L6yV;
- Thu, 21 Nov 2024 18:12:37 +0800 (CST)
-Received: from frapeml100005.china.huawei.com (unknown [7.182.85.132])
- by mail.maildlp.com (Postfix) with ESMTPS id D180E140157;
- Thu, 21 Nov 2024 18:13:00 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (7.182.85.71) by
- frapeml100005.china.huawei.com (7.182.85.132) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Thu, 21 Nov 2024 11:13:00 +0100
-Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
- frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
- Thu, 21 Nov 2024 11:13:00 +0100
-To: Nathan Chen <nathanc@nvidia.com>
-CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
- <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm
- <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
- <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>, Nicolin Chen
- <nicolinc@nvidia.com>
-Subject: RE: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Thread-Topic: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Thread-Index: AQHbMeB0+Q5BEZc9JkeH/U6Jz+dF4rK0OI0AgAyjUACAALVrYA==
-Date: Thu, 21 Nov 2024 10:12:59 +0000
-Message-ID: <04024d09ebad4d83ab0679f6bb3b3774@huawei.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <ZzPd1F/UA2MKMbwl@Asurada-Nvidia>
- <2a61079f-a919-43b1-906a-bae8390bf733@nvidia.com>
-In-Reply-To: <2a61079f-a919-43b1-906a-bae8390bf733@nvidia.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.203.177.241]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1tEATS-0007pZ-Ht; Thu, 21 Nov 2024 11:56:12 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4XvPSh2RXrz6K5qR;
+ Fri, 22 Nov 2024 00:53:40 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+ by mail.maildlp.com (Postfix) with ESMTPS id ADDA7140A70;
+ Fri, 22 Nov 2024 00:56:00 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 21 Nov
+ 2024 17:56:00 +0100
+Date: Thu, 21 Nov 2024 16:55:58 +0000
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+CC: Yuquan Wang <wangyuquan1236@phytium.com.cn>, <devel@edk2.groups.io>,
+ <ardb+tianocore@kernel.org>, <quic_llindhol@quicinc.com>,
+ <peter.maydell@linaro.org>, <chenbaozi@phytium.com.cn>,
+ <linux-cxl@vger.kernel.org>, <asa-dev@op-lists.linaro.org>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: Re: [edk2-devel] [RFC PATCH v2 1/1] hw/arm/sbsa-ref: Support CXL
+ Host Bridge & CFMW
+Message-ID: <20241121165558.00005f1b@huawei.com>
+In-Reply-To: <90513bfa-0888-44fe-8cd0-7b2e7518a41f@linaro.org>
+References: <20241105104346.417102-1-wangyuquan1236@phytium.com.cn>
+ <20241105104346.417102-2-wangyuquan1236@phytium.com.cn>
+ <20241107120457.00006024@Huawei.com>
+ <90513bfa-0888-44fe-8cd0-7b2e7518a41f@linaro.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.203.177.66]
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ frapeml500008.china.huawei.com (7.182.85.71)
 Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=shameerali.kolothum.thodi@huawei.com;
- helo=frasgout.his.huawei.com
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
@@ -104,90 +93,67 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-From:  Shameerali Kolothum Thodi via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3hP8SyAn4qMC
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From:  Jonathan Cameron via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: djjN9P+Khxqp
 
-SGkgTmF0aGFuLA0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IE5hdGhh
-biBDaGVuIDxuYXRoYW5jQG52aWRpYS5jb20+DQo+IFNlbnQ6IFdlZG5lc2RheSwgTm92ZW1iZXIg
-MjAsIDIwMjQgMTE6NTkgUE0NCj4gVG86IFNoYW1lZXJhbGkgS29sb3RodW0gVGhvZGkgPHNoYW1l
-ZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbT4NCj4gQ2M6IHFlbXUtYXJtQG5vbmdudS5v
-cmc7IHFlbXUtZGV2ZWxAbm9uZ251Lm9yZzsNCj4gZXJpYy5hdWdlckByZWRoYXQuY29tOyBwZXRl
-ci5tYXlkZWxsQGxpbmFyby5vcmc7IGpnZ0BudmlkaWEuY29tOw0KPiBkZHV0aWxlQHJlZGhhdC5j
-b207IExpbnV4YXJtIDxsaW51eGFybUBodWF3ZWkuY29tPjsgV2FuZ3pob3UgKEIpDQo+IDx3YW5n
-emhvdTFAaGlzaWxpY29uLmNvbT47IGppYW5na3Vua3VuIDxqaWFuZ2t1bmt1bkBodWF3ZWkuY29t
-PjsNCj4gSm9uYXRoYW4gQ2FtZXJvbiA8am9uYXRoYW4uY2FtZXJvbkBodWF3ZWkuY29tPjsNCj4g
-emhhbmdmZWkuZ2FvQGxpbmFyby5vcmc7IE5pY29saW4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNv
-bT4NCj4gU3ViamVjdDogUmU6IFtSRkMgUEFUQ0ggMC81XSBody9hcm0vdmlydDogQWRkIHN1cHBv
-cnQgZm9yIHVzZXItY3JlYXRhYmxlDQo+IG5lc3RlZCBTTU1VdjMNCj4gDQo+IEhpIFNoYW1lZXIs
-DQo+IA0KPiAgPiAgQXR0ZW1wdCB0byBhZGQgdGhlIEhOUyBWRiB0byBhIGRpZmZlcmVudCBTTU1V
-djMgd2lsbCByZXN1bHQgaW4sDQo+ICA+DQo+ICA+IC1kZXZpY2UgdmZpby1wY2ksaG9zdD0wMDAw
-OjdkOjAyLjIsYnVzPXBjaWUucG9ydDMsaW9tbXVmZD1pb21tdWZkMDoNCj4gVW5hYmxlIHRvIGF0
-dGFjaCB2aW9tbXUNCj4gID4gLWRldmljZSB2ZmlvLXBjaSxob3N0PTAwMDA6N2Q6MDIuMixidXM9
-cGNpZS5wb3J0Myxpb21tdWZkPWlvbW11ZmQwOg0KPiB2ZmlvIDAwMDA6N2Q6MDIuMjoNCj4gID4g
-ICAgRmFpbGVkIHRvIHNldCBpb21tdV9kZXZpY2U6IFtpb21tdWZkPTI5XSBlcnJvciBhdHRhY2gg
-MDAwMDo3ZDowMi4yDQo+ICgzOCkgdG8gaWQ9MTE6IEludmFsaWQgYXJndW1lbnQNCj4gID4NCj4g
-ID4gQXQgcHJlc2VudCBRZW11IGlzIG5vdCBkb2luZyBhbnkgZXh0cmEgdmFsaWRhdGlvbiBvdGhl
-ciB0aGFuIHRoZSBhYm92ZQ0KPiAgPiBmYWlsdXJlIHRvIG1ha2Ugc3VyZSB0aGUgdXNlciBjb25m
-aWd1cmF0aW9uIGlzIGNvcnJlY3Qgb3Igbm90LiBUaGUNCj4gID4gYXNzdW1wdGlvbiBpcyBsaWJ2
-aXJ0IHdpbGwgdGFrZSBjYXJlIG9mIHRoaXMuDQo+IFdvdWxkIHlvdSBiZSBhYmxlIHRvIGVsYWJv
-cmF0ZSB3aGF0IFFlbXUgaXMgdmFsaWRhdGluZyB3aXRoIHRoaXMgZXJyb3INCj4gbWVzc2FnZT8g
-SSdtIG5vdCBzZWVpbmcgdGhlc2UgZXJyb3JzIHdoZW4gYXNzaWduaW5nIGEgR1BVJ3MNCj4gcGNp
-ZS1yb290LXBvcnQgdG8gZGlmZmVyZW50IFBYQnMgKHdpdGggZGlmZmVyZW50IGFzc29jaWF0ZWQg
-U01NVSBub2RlcykuDQoNCllvdSBzaG91bGQgc2VlIHRoYXQgZXJyb3Igd2hlbiB5b3UgaGF2ZSB0
-d28gZGV2aWNlcyB0aGF0IGJlbG9uZ3MgdG8gdHdvDQpkaWZmZXJlbnQgcGh5c2ljYWwgU01NVXYz
-cyBpbiB0aGUgaG9zdCBrZXJuZWwsIGlzIGFzc2lnbmVkIHRvIGEgc2luZ2xlDQpQWEIvU01NVXYz
-IGZvciBHdWVzdC4NCg0KU29tZXRoaW5nIGxpa2UsDQoNCi1kZXZpY2UgcHhiLXBjaWUsaWQ9cGNp
-ZS4xLGJ1c19ucj04LGJ1cz1wY2llLjAgXA0KLWRldmljZSBhcm0tc21tdXYzLW5lc3RlZCxpZD1z
-bW11djEscGNpLWJ1cz1wY2llLjEgXA0KLWRldmljZSBwY2llLXJvb3QtcG9ydCxpZD1wY2llLnBv
-cnQxLGJ1cz1wY2llLjEsY2hhc3Npcz0xIFwNCi1kZXZpY2UgcGNpZS1yb290LXBvcnQsaWQ9cGNp
-ZS5wb3J0MixidXM9cGNpZS4xLGNoYXNzaXM9MSBcDQotZGV2aWNlIHZmaW8tcGNpLGhvc3Q9MDAw
-MDo3ZDowMi4xLGJ1cz1wY2llLnBvcnQxLGlvbW11ZmQ9aW9tbXVmZDAgXCAgLS0+IFRoaXMgZGV2
-aWNlIGJlbG9uZ3MgdG8gcGh5cyBTTU1VdjNfMA0KLWRldmljZSB2ZmlvLXBjaSxob3N0PTAwMDA6
-NzU6MDIuMSxidXM9cGNpZS5wb3J0Mixpb21tdWZkPWlvbW11ZmQwIFwgIC0tPiBUaGlzIGRldmlj
-ZSBiZWxvbmdzIHRvIHBoeXMgU01NVXYzXzENCg0KU28gdGhlIGFzc3VtcHRpb24gYWJvdmUgaXMg
-dGhhdCBsaWJ2aXJ0IHdpbGwgYmUgYWJsZSB0byBkZXRlY3Qgd2hpY2ggZGV2aWNlcyBiZWxvbmdz
-DQp0byB0aGUgc2FtZSBwaHlzaWNhbCBTTU1VdjMgYW5kIGRvIHRoZSBhc3NpZ25tZW50IGZvciBH
-dWVzdHMgY29ycmVjdGx5Lg0KDQo+IEkgbGF1bmNoZWQgYSBWTSB1c2luZyBteSBsaWJ2aXJ0IHBy
-b3RvdHlwZSBjb2RlICsgeW91ciBxZW11IGJyYW5jaCBhbmQNCj4gbm90ZWQgYSBmZXcgc21hbGwg
-dGhpbmdzOg0KDQpUaGFua3MgZm9yIGdpdmluZyB0aGlzIGEgc3BpbiB3aXRoIGxpYnZpcnQuDQoN
-Cj4gMS4gQXJlIHRoZXJlIHBsYW5zIHRvIHN1cHBvcnQgIi1kZXZpY2UgYWRkciIgZm9yIGFybS1z
-bW11djMtbmVzdGVkJ3MNCj4gUENJZSBzbG90IGFuZCBmdW5jdGlvbiBsaWtlIGFueSBvdGhlciBk
-ZXZpY2U/IElmIG5vdCBJJ2xsIGV4Y2x1ZGUgaXQNCj4gZnJvbSBteSBsaWJ2aXJ0IHByb3RvdHlw
-ZS4NCg0KTm90IGF0IHRoZSBtb21lbnQuIGFybS1zbW11djMtbmVzdGVkIGF0IHRoZSBtb21lbnQg
-aXMgbm90IG1ha2luZyBhbnkgdXNlDQpvZiBQQ0kgc2xvdCBhbmQgIGZ1bmMgaW5mbyBzcGVjaWZp
-Y2FsbHkuIEkgYW0gbm90IHN1cmUgaG93IHRoYXQgd2lsbCBiZSB1c2VmdWwNCmZvciB0aGlzIHRo
-b3VnaC4NCg0KPiAyLiBJcyAiaWQiIGZvciAgIi1kZXZpY2UgYXJtLXNtbXV2My1uZXN0ZWQiIG5l
-Y2Vzc2FyeSBmb3IgYW55IHNvcnQgb2YNCj4gZnVuY3Rpb25hbGl0eT8gSWYgc28sIEknbGwgbWFr
-ZSBhIGNoYW5nZSB0byBteSBsaWJ2aXJ0IHByb3RvdHlwZSB0bw0KPiBzdXBwb3J0IHRoaXMuIEkg
-d2FzIGFibGUgdG8gYm9vdCBhIFZNIGFuZCBzZWUgYSBzaW1pbGFyIFZNIFBDSSB0b3BvbG9neQ0K
-PiBhcyB5b3VyIGV4YW1wbGUgd2l0aG91dCBzcGVjaWZ5aW5nICJpZCIuDQoNClllcywgImlkIiBu
-b3QgdXNlZCBhbmQgd2l0aG91dCBpdCwgaXQgd2lsbCB3b3JrLg0KDQo+IE90aGVyd2lzZSwgdGhl
-IFZNIHRvcG9sb2d5IGxvb2tzIE9LIHdpdGggeW91ciBxZW11IGJyYW5jaCArIG15IGxpYnZpcnQN
-Cj4gcHJvdG90eXBlLg0KDQpUaGF0IGlzIGdvb2QgdG8ga25vdy4NCiANCj4gQWxzbyBhcyBhIGhl
-YWRzIHVwLCBJJ3ZlIGFkZGVkIHN1cHBvcnQgZm9yIGF1dG8taW5zZXJ0aW5nIFBDSWUgc3dpdGNo
-DQo+IGJldHdlZW4gdGhlIFBYQiBhbmQgR1BVcyBpbiBsaWJ2aXJ0IHRvIGF0dGFjaCBtdWx0aXBs
-ZSBkZXZpY2VzIHRvIGEgU01NVQ0KPiBub2RlIHBlciBsaWJ2aXJ0J3MgZG9jdW1lbnRhdGlvbiAt
-ICJJZiB5b3UgaW50ZW5kIHRvIHBsdWcgbXVsdGlwbGUNCj4gZGV2aWNlcyBpbnRvIGEgcGNpZS1l
-eHBhbmRlci1idXMsIHlvdSBtdXN0IGNvbm5lY3QgYQ0KPiBwY2llLXN3aXRjaC11cHN0cmVhbS1w
-b3J0IHRvIHRoZSBwY2llLXJvb3QtcG9ydCB0aGF0IGlzIHBsdWdnZWQgaW50byB0aGUNCj4gcGNp
-ZS1leHBhbmRlci1idXMsIGFuZCBtdWx0aXBsZSBwY2llLXN3aXRjaC1kb3duc3RyZWFtLXBvcnRz
-IHRvIHRoZQ0KPiBwY2llLXN3aXRjaC11cHN0cmVhbS1wb3J0Ii4gRnV0dXJlIHVuaXQtdGVzdHMg
-c2hvdWxkIGZvbGxvdyB0aGlzDQo+IHRvcG9sb2d5IGNvbmZpZ3VyYXRpb24uDQoNCk9rLiBDb3Vs
-ZCB5b3UgcGxlYXNlIGdpdmUgbWUgYW4gZXhhbXBsZSBRZW11IGVxdWl2YWxlbnQgY29tbWFuZCBv
-cHRpb24sDQppZiBwb3NzaWJsZSwgZm9yIHRoZSBhYm92ZSBjYXNlLiBJIGFtIG5vdCB0aGF0IGZh
-bWlsaWFyIHdpdGggbGlidmlydCBhbmQgSSB3b3VsZA0KYWxzbyBsaWtlIHRvIHRlc3QgdGhlIGFi
-b3ZlIHNjZW5hcmlvLg0KDQpUaGFua3MsDQpTaGFtZWVyDQo=
+On Tue, 12 Nov 2024 18:10:56 +0100
+Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org> wrote:
+
+> W dniu 7.11.2024 o=A013:04, Jonathan Cameron pisze:
+> > On Tue,  5 Nov 2024 18:43:46 +0800
+> > "Yuquan Wang"<wangyuquan1236@phytium.com.cn> wrote:
+> >  =20
+> >> This creates a default pxb-cxl (bus_nr=3D0xc0) bridge with two
+> >> cxl root ports on sbsa-ref. And the memory layout places 64K
+> >> space for the cxl host bridge register regions(CHBCR) in the
+> >> sbsa-ref memmap.
+> >>
+> >> In addition, this support indepentent mmio32(32M) & mmio64(1M)
+> >> space for cxl components. =20
+>=20
+> > Those are too small.  Might work today but not sustainable.
+> >=20
+> > I'm a bit surprised it was this simple to move the MMIO Space away
+> > from what is normally done for PXBs.
+> > I think it might work because the GPEX memory windows are effectively
+> > unlimited in size but I'd like some more eyes on this from people
+> > familiar with how all that works and whether there might be some
+> > corner cases that you haven't seen yet. =20
+>=20
+> I see the same problem as with multiple PCIe buses (for NUMA systems):
+>=20
+> pci 0000:c0:00.0: bridge window [io  size 0x1000]: can't assign; no space
+> pci 0000:c0:00.0: bridge window [io  size 0x1000]: failed to assign
+> pci 0000:c0:01.0: bridge window [io  size 0x1000]: can't assign; no space
+> pci 0000:c0:01.0: bridge window [io  size 0x1000]: failed to assign
+>=20
+> I do not know how it looks on real hardware (all my systems have one
+> PCIe bus) but shouldn't each host bridge have own separate resource
+> windows for config space, buses, mmio etc.?
+>=20
+> Now we squeeze all pcie buses as pcie-pxb devices and this patch adds
+> cxl to the combo.
+
+In theory fine to break them up because each can have a smaller window
+they just happen to be next to each other in this configuration.
+
+CXL PXB (maybe the pcie one was well) doesn't IIRC support IO regions
+in general.  So that above is kind of normal and shouldn't matter
+unless you emulate an ancient PCI device.
+
+Jonathan
+

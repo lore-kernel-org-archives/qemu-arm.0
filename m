@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbc44f7sm18708f8f.82.2024.11.21.08.58.10
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fb2679dsm31790f8f.45.2024.11.21.08.58.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 21 Nov 2024 08:58:14 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 7AA3D60357;
+	by draig.lan (Postfix) with ESMTP id DF4D1603EA;
 	Thu, 21 Nov 2024 16:58:07 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -46,50 +46,71 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Ani Sinha <anisinha@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH 11/39] tests/functional: enable debug logging for QEMUMachine
-Date: Thu, 21 Nov 2024 16:57:38 +0000
-Message-Id: <20241121165806.476008-12-alex.bennee@linaro.org>
+Subject: [PATCH 16/39] tests/functional: remove time.sleep usage from tuxrun tests
+Date: Thu, 21 Nov 2024 16:57:43 +0000
+Message-Id: <20241121165806.476008-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241121165806.476008-1-alex.bennee@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: e3kElklE7xQe
+X-TUID: szcWXEFyFUeB
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-Set the 'qemu.machine' logger to 'DEBUG' level, to ensure we see log
-messages related to the QEMUMachine class. Most importantly this
-ensures we capture the full QEMU command line args for instances we
-spawn.
+The tuxrun tests send a series of strings to the guest to login
+and then run commands. Since we have been unable to match on
+console output that isn't followed by a newline, the test used
+many time.sleep() statements to pretend to synchronize with
+the guest.
 
+This has proved to be unreliable for the aarch64be instance of
+the tuxrun tests, with the test often hanging. The hang is a
+very subtle timing problem, and it is suspected that some
+(otherwise apparently harmless) I/O error messages could be
+resulting in full FIFO buffers, stalling interaction with
+the guest.
+
+With the newly rewritten console interaction able to match
+strings that don't have a following newline, the tux run
+tests can now match directly on the login prompt, and/or
+shell PS1 prompt.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2689
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20241121154218.1423005-12-berrange@redhat.com>
+Message-Id: <20241121154218.1423005-17-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/qemu_test/testcase.py | 6 ++++++
- 1 file changed, 6 insertions(+)
+ tests/functional/qemu_test/tuxruntest.py | 16 ++++++----------
+ 1 file changed, 6 insertions(+), 10 deletions(-)
 
-diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
-index f9c9de1166..e2a329c3e5 100644
---- a/tests/functional/qemu_test/testcase.py
-+++ b/tests/functional/qemu_test/testcase.py
-@@ -57,9 +57,15 @@ def setUp(self, bin_prefix):
-         self._log_fh.setFormatter(fileFormatter)
-         self.log.addHandler(self._log_fh)
+diff --git a/tests/functional/qemu_test/tuxruntest.py b/tests/functional/qemu_test/tuxruntest.py
+index ed2b238c92..ab3b27da43 100644
+--- a/tests/functional/qemu_test/tuxruntest.py
++++ b/tests/functional/qemu_test/tuxruntest.py
+@@ -124,16 +124,12 @@ def run_tuxtest_tests(self, haltmsg):
+         then do a few things on the console. Trigger a shutdown and
+         wait to exit cleanly.
+         """
+-        self.wait_for_console_pattern("Welcome to TuxTest")
+-        time.sleep(0.2)
+-        exec_command(self, 'root')
+-        time.sleep(0.2)
+-        exec_command(self, 'cat /proc/interrupts')
+-        time.sleep(0.1)
+-        exec_command(self, 'cat /proc/self/maps')
+-        time.sleep(0.1)
+-        exec_command(self, 'uname -a')
+-        time.sleep(0.1)
++        ps1='root@tuxtest:~#'
++        self.wait_for_console_pattern('tuxtest login:')
++        exec_command_and_wait_for_pattern(self, 'root', ps1)
++        exec_command_and_wait_for_pattern(self, 'cat /proc/interrupts', ps1)
++        exec_command_and_wait_for_pattern(self, 'cat /proc/self/maps', ps1)
++        exec_command_and_wait_for_pattern(self, 'uname -a', ps1)
+         exec_command_and_wait_for_pattern(self, 'halt', haltmsg)
  
-+        # Capture QEMUMachine logging
-+        self.machinelog = logging.getLogger('qemu.machine')
-+        self.machinelog.setLevel(logging.DEBUG)
-+        self.machinelog.addHandler(self._log_fh)
-+
-     def tearDown(self):
-         if "QEMU_TEST_KEEP_SCRATCH" not in os.environ:
-             shutil.rmtree(self.workdir)
-+        self.machinelog.removeHandler(self._log_fh)
-         self.log.removeHandler(self._log_fh)
- 
-     def main():
+         # Wait for VM to shut down gracefully if it can
 -- 
 2.39.5

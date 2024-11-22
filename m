@@ -1,85 +1,86 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5748634njc;
-        Fri, 22 Nov 2024 14:52:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWAFMo1pUShsiNEINOrMdVfHqMCkFf2vp3ea/3EyogeC0/350mUmpHShP96RT0LwDvNAfeNpc4lP7Z7Ag==@linaro.org
-X-Received: by 2002:a17:902:d48a:b0:20c:79bf:6793 with SMTP id d9443c01a7336-2129f66ee66mr59303695ad.3.1732315932243;
-        Fri, 22 Nov 2024 14:52:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732315932; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5748649njc;
+        Fri, 22 Nov 2024 14:52:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWL2IFh3b8mhVlqqMMoTCZzuhIcdDNNhy9qn1gLcPmGY5mddx6grD3vdZbN1DIwB0FWirzFa+L/KpRpkA==@linaro.org
+X-Received: by 2002:a17:902:dad1:b0:20c:b052:7e14 with SMTP id d9443c01a7336-2129f28eca5mr44726765ad.50.1732315933248;
+        Fri, 22 Nov 2024 14:52:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732315933; cv=none;
         d=google.com; s=arc-20240605;
-        b=fBwptqZ7X19KZUjHuBj4/xGrjhnpjnAoKnbBBKIEJbgOzMkb4uHlWYna8lvn6bhxQH
-         NYxFdaMCx5dCF1MgSxH+8DbSHsznSf0XDi+xgQlRmUrOTBzRPju9vfmmNSZbOE2i4+UF
-         NxHeY7Trew6aZtaF6mvFJkAB6hW+PkkDu8NgkWO6D/NJbPNe2l47B81DPHzT5nzW61Y5
-         xDchgbhtlWR62QbnEvDRAPlEXGDBqEkG1Lw3ANrMLFRZbbiKC4bvSJL51KUT3kOcUMyw
-         HSnDE98z1HEIPHh942UEc8QwiZTkKiAjpMW2WvEc2Bs5+i6yandZ8M2fBv6hXnFuuWNU
-         sdHQ==
+        b=d7X/I/uER/pelfAtDlfuun14TQY9zqxnrvg2jk4+Ij/Rrk8OBbAdn8LaWVBuMQt27w
+         /5BbhegrBTWbxA8Nccq+VNG9MEM0lBSPfOXkR0IORcscsb/f/OfRnP7zpmy1q4v+i27t
+         F3kbUPTxtyC22qafoqLEJOKgyrvjXhhMbI6XdfPv6OHUDwVK26+INp+47gLwAY8Vv9Of
+         P8C7NPb/bTkzoTsNks0fACBCWpwjDYyiEvGhzqHmFXdBzQh7GYb714ky/+ZdK2LcSRIf
+         Z7eDQdJAqX37siNI81hAUM8k3p7cMU8/tCtl2QIFEfZUn+8Nktm1BVh1+9Jbo8zYF5sE
+         yMlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=MnekImMLpmnqj2ki5QRB6e1OkoxsbRA1JDfNzoJ9KgA=;
-        fh=70NueBtJF3omSdd8xEH3OFVSU8vbIMPYtSzJKN11XM8=;
-        b=I9CT8djXmFZDkKjbIf44th7d1qdlGKQ90cM+sUGXZgkle2ZgIG437+vH1KJb6JEmLo
-         W0x8wM5H6VgJdRIMnjn+SiBCFF9pRnbhjUPLko9cbowCyDlf37OQFf+DH8ty38sYAFEC
-         n0vE0qe2jD3iKTOSvA+w5q7iIIHoy6pRcE8gixiFmWDmjNsZktu4Ls0ZOMwiSO9VspXu
-         FPXnb1BSZkqZVylFuCYerhb3mQ2b0uTGxxiallIOcpRcNBIMDvVzpp57csx74RaPVAJf
-         4wGW9hg/09jme5XCwbxsP3TLN0u2q1Dtc7JkwAvvyKrzGRoTAnxSeKfp1jDqvOZaC+dU
-         +QTw==;
+        bh=bWdFX19LP1eO2d2hfCa/1XQLyxsvMQu6F75MlNcMwzA=;
+        fh=K0pLxXWotk5b6eshQq31JS5p8gj8s7vXra8Jeq/Uia8=;
+        b=f5okEPzW2K8pCn+fal0g+Lg26YkhN46eaXPOCtCj2aW3tiQoKAgRe8/fx3mGP/U9xa
+         2tjIeyWbZYm+Abukx1iQc1gFjRpabHg2bDUpfijRNCQt4CD2n2jKf/nrhxZf1CW2Hke9
+         N7+UdjFwSCyudhdyocFBHA+bmlZPOO4P/BlgxfLpN1/XzF0mnEewgMCzCjGs/bBlEd4b
+         wXPKBBV6S8xz+KCw2uD7Apc4/2CcdY5G7iViuiScR+fNqU9T7N4IK0bYjsdnqJI1et+D
+         2n3qKJuqLtrkHl+v6Ck5b64kUvwSLKSiyxoLdk8ATFrh+OKsBG040YpCeXda6LWTMDij
+         XV8g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fWBq/iDj";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JtiSCI0q;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-2129dba5b90sor20793655ad.6.2024.11.22.14.52.12
+        by mx.google.com with SMTPS id d9443c01a7336-2129db4aad2sor20297755ad.2.2024.11.22.14.52.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 22 Nov 2024 14:52:12 -0800 (PST)
+        Fri, 22 Nov 2024 14:52:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="fWBq/iDj";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JtiSCI0q;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732315932; x=1732920732; darn=linaro.org;
+        d=linaro.org; s=google; t=1732315933; x=1732920733; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=MnekImMLpmnqj2ki5QRB6e1OkoxsbRA1JDfNzoJ9KgA=;
-        b=fWBq/iDjGZXElMe9XW+rkZD1qe+uhbwdH8DL5n4rwFaeopmUMej6naY1L4z33UOdmE
-         rb7+wtcnO/YKnOHvIX0BTkd9/XKLBjXBZWKNw83rDe0vieekNC9t9XWZUE/AMVjE7jU9
-         pFJtxKLmSPW4+ozv74Q5e84L8UfXPGpqrubs3DLbW120TpvhYtdiw99r5EUrvx6DvEwN
-         z5KRNQ0CuzPYlqBJUz5OKWbDiwbwi1suLaAHs66EuKXN2gO/ZuO1XQ+2CWtGflcGk0Kf
-         OXePDRCh1b2f6/qsIgOrUtGQ/xcGyw8h586oVa1I/eGtjDH0i5PeNCenf5d3KjZAKOJ/
-         6K7Q==
+        bh=bWdFX19LP1eO2d2hfCa/1XQLyxsvMQu6F75MlNcMwzA=;
+        b=JtiSCI0qpqSUkVnN28UKtVjGkXJcaWbbQi9uP4GUhFkIVdul8HYBOTanu3w3aItyca
+         v48nSJUaOTb0XILCujFRXSDUxMldSP1dYWqrz+x6gj12q5GiK3Ftr+cYhMPZ5K91xO+u
+         3C8Mhaj5tXOS5ib8bMNN2d+W+zoaTPiA+qhD9ZI/N13117J+TJlFioMEkNSdImPw5eHI
+         a2ETMMzASlxm3qGuD0cNMsFuPpQRcvKWZyzJGgyTo2SbBS2dFMZPuQZ8a2LNC3drF9JD
+         s6WGyU60eHrbCMklrgpEawun0hpZGfQzsAOmWcGAZ6scnZKXWf4cZAQ8ypqFYxQjo4N9
+         nCfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732315932; x=1732920732;
+        d=1e100.net; s=20230601; t=1732315933; x=1732920733;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=MnekImMLpmnqj2ki5QRB6e1OkoxsbRA1JDfNzoJ9KgA=;
-        b=T3DAnTqoZkDEPM2TzB+nMLbLP7sthtvnq6t39it/qmAGVCKvxQWHfbzKYo1tfGDqic
-         N4+Bm6xLFMrtLXhCLcCxiytWRtdKAxlLZfURfQZhmZAczT+xg72DtFMRrm9uLhJR/HBk
-         8X0n7fUGVqocepfEH8D5qNsVwbLlP+GSt9vbS7fMHJj0TkIX83W2Ep20dca7KCvwaPKh
-         Hb4vjTmlxLSD1EC51AbGU+x44Q506jNCuq1502ADXFG3wpgMvprbnq0Bgd/z1VHK9t/T
-         UpedgP5q8kktbKsjnCo3zGOKDSEJErfp2fmatfmQuZiE/XA9Tgr0z0SPeravitPS9pmy
-         KjVA==
-X-Forwarded-Encrypted: i=1; AJvYcCXUrAJc5OEDsyUxZsuL47SL6tsMO9jg7SjmL3DcfJh0IuAwCokgDI2E6OUJuff49SK9il+ZM1xlQFRmWg==@linaro.org
-X-Gm-Message-State: AOJu0YwpDWCGrNtPrGZqMnKaGKPrav8ZknCiQxaFE8w22RU3IDp+TbqN
-	ItppBQQqzN7U9+IO+bRU9sX4uVuvtRUsNI4axd9yYkD6sUSO0J0kJv8b15ihzPrCDg==
-X-Gm-Gg: ASbGncvmes/VnXgFeVwx+A2OzruPPQg6Bun8Q5OVpTZD4qjVDvpAqz6QykdcbbnEyJJ
-	jiv3wS+4/rod6UPoUyj+LtNSDvPdo8wOfAX2p8/Q2gKnoscIdlcYnTAfRR4kk9DAwyVuY7mQp3f
-	ETFBB6LvFdj7oAWko6w6pAhMSlqxpwzfzpqZDCoYbbT0K6UNPS5WuECw2AUBPs5ZIbjZToTEGX0
-	RtwNnWsaZP5PsDFINzEUWEsDjbdoPwGnO7cSm1bO2tFOVkDowLTso+d5LoPieJgE+MVGCni8QFE
-	oA+KwiiC+fg1Vg==
-X-Google-Smtp-Source: AGHT+IE3corzaIp2Z8UzNSQyE2uX12n/ene/FKjh2tER+aNBiHAxc0gWDTTlK1TJ9t/l7sI+I1MsRg==
-X-Received: by 2002:a17:902:d4cb:b0:20c:8331:cb6e with SMTP id d9443c01a7336-2129f53714cmr60798735ad.19.1732315931867;
-        Fri, 22 Nov 2024 14:52:11 -0800 (PST)
+        bh=bWdFX19LP1eO2d2hfCa/1XQLyxsvMQu6F75MlNcMwzA=;
+        b=AH88fhLImOL8sOSytJxc5lsaXO4YdE0vLbhRFw8ARbHb7HL3hGcYz4RkB5/SEkqcOv
+         1nnjHxJx9iksN3vuak9/c+rd2mMC7AkkILZrfHzCf7P2r0L8I+AXfLPq0flMyvPWhXwG
+         ESYfYHKAM0HiwhYBVm0vEjjbhSozwQRzCSlTnrkmZx/IVSwEVL+exaLa1PTefleGn026
+         zlcMVnMgpQFZtoWwSgxAlU4CbaiyxeBo/W+FP9P3HPmkO2NAI8NogIVWlQuuISbB3eTh
+         Ft+6nrdS3cmwteKVC7xooSmfSK8tlUH2m2wuyK52QdQNvkSxPCqBVjax3S+rrkjgCHrF
+         p62Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVIkwZWeQb/imRoFkYU6djzSOiCM/YztluQYBLHjD6A8bRDDlw6p1U+ZrK5Qd4rmP7PPMG1xaR2yUb0Gw==@linaro.org
+X-Gm-Message-State: AOJu0YysiVTCKeSuMMTX7DYFjmJ296L5f+t3hRUJacnIr7lniNEM8wI+
+	pfks3ENOhX54ubS/fNiPRw1/L8ScXX5pGvaWdWNsHC/0M+UxQbkCC98XgAoNE81kAknDQycxGn8
+	SZvM=
+X-Gm-Gg: ASbGncs17wy1oY24MjyajW+UoIm7+lqG/+jxC5XbCiYV6P1XIkvrYhSQLPoaoiB1l1L
+	WfmMmT3tpOqAW8LqX0rFmClb0XUGpLGHbXvl6QbPi3IdBhhmMwEad2RI50Gs49bIPN2EwJ1cnvW
+	OhBsIolJh5maJ2FHnvTE3bk7ap/fjgSyC6khkVvPQdRWUZDfkVd2uwf+rUpYEUEcW+EH/EzbsiR
+	sRvvSRvm/OErXDg2ScJ9vkDZEyWb3iBDIOVDuoijmOSm8TdF5XvY+68QpnIWbcucWouSSt+4IgS
+	TebqHNTo8j4CaA==
+X-Google-Smtp-Source: AGHT+IFHxlPkXIfpi2NECT/B2lMRj6kiopG/6qpcD/87ID64JCiOua19NjTqI6jGE68bP+p+XbwTbA==
+X-Received: by 2002:a17:902:ea03:b0:20c:6bff:fcae with SMTP id d9443c01a7336-2129f217f69mr62632455ad.5.1732315932863;
+        Fri, 22 Nov 2024 14:52:12 -0800 (PST)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2129dc1539fsm21450335ad.192.2024.11.22.14.52.10
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2129dc1539fsm21450335ad.192.2024.11.22.14.52.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Nov 2024 14:52:11 -0800 (PST)
+        Fri, 22 Nov 2024 14:52:12 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -97,42 +98,31 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
 	Joel Stanley <joel@jms.id.au>,
 	Alistair Francis <alistair@alistair23.me>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 08/12] docs/system/arm/orangepi: update links
-Date: Fri, 22 Nov 2024 14:50:45 -0800
-Message-Id: <20241122225049.1617774-9-pierrick.bouvier@linaro.org>
+Subject: [PATCH 09/12] docs/system/arm/fby35: document execute-in-place property
+Date: Fri, 22 Nov 2024 14:50:46 -0800
+Message-Id: <20241122225049.1617774-10-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241122225049.1617774-1-pierrick.bouvier@linaro.org>
 References: <20241122225049.1617774-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: +iX8VsMq1P2P
+X-TUID: K2z3khU83VcX
 
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- docs/system/arm/orangepi.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ docs/system/arm/fby35.rst | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
-index 9afa54213b0..db87e81fec4 100644
---- a/docs/system/arm/orangepi.rst
-+++ b/docs/system/arm/orangepi.rst
-@@ -119,7 +119,7 @@ Orange Pi PC images
- Note that the mainline kernel does not have a root filesystem. You may provide it
- with an official Orange Pi PC image from the official website:
- 
--  http://www.orangepi.org/downloadresources/
-+  http://www.orangepi.org/html/serviceAndSupport/index.html
- 
- Another possibility is to run an Armbian image for Orange Pi PC which
- can be downloaded from:
-@@ -213,7 +213,7 @@ including the Orange Pi PC. NetBSD 9.0 is known to work best for the Orange Pi P
- board and provides a fully working system with serial console, networking and storage.
- For the Orange Pi PC machine, get the 'evbarm-earmv7hf' based image from:
- 
--  https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0/evbarm-earmv7hf/binary/gzimg/armv7.img.gz
-+  https://archive.netbsd.org/pub/NetBSD-archive/NetBSD-9.0/evbarm-earmv7hf/binary/gzimg/armv7.img.gz
- 
- The image requires manually installing U-Boot in the image. Build U-Boot with
- the orangepi_pc_defconfig configuration as described in the previous section.
+diff --git a/docs/system/arm/fby35.rst b/docs/system/arm/fby35.rst
+index bf6da6baa2a..ed9faef363c 100644
+--- a/docs/system/arm/fby35.rst
++++ b/docs/system/arm/fby35.rst
+@@ -45,3 +45,6 @@ process starts.
+     $ screen /dev/tty0 # In a separate TMUX pane, terminal window, etc.
+     $ screen /dev/tty1
+     $ (qemu) c		   # Start the boot process once screen is setup.
++
++This machine model supports emulation of the boot from the CEO flash device by
++setting option ``execute-in-place``.
 -- 
 2.39.5

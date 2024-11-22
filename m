@@ -1,116 +1,120 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5352933njc;
-        Fri, 22 Nov 2024 04:37:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU6b+PBgdyfd2xNdI1Zo3ujnusFVVyK39bvQtKwq/ofF3nQfh54qsEwFvvnKt0tp8go/LROg+FDcey3bg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFrsdDyeMjyYtzk5H28C5JoDouyOije13YneIW+m+t9Hlq/ODxhRKF8kKrgu0QrDvqGPf8e
-X-Received: by 2002:a05:6358:949f:b0:1ba:4c2a:7675 with SMTP id e5c5f4694b2df-1ca7954ef5dmr238185855d.0.1732279048885;
-        Fri, 22 Nov 2024 04:37:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732279048; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5362599njc;
+        Fri, 22 Nov 2024 04:54:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUPIvtayghJjtWjgvrmkjeA7u967u95XTAOBz1MgMF5XJaJgzVQjHmgELR1WnwR7+NngU6KlzaVZ4kBwg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHAS8d8ib9jIoJ0SIaZzMdERoFyX/j3o/Qediln3dNyBzQM98M5NsWaERpB0dloQeRyhjf/
+X-Received: by 2002:a05:6122:2806:b0:507:81f0:f952 with SMTP id 71dfb90a1353d-515008985d2mr2462922e0c.9.1732280050086;
+        Fri, 22 Nov 2024 04:54:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732280050; cv=none;
         d=google.com; s=arc-20240605;
-        b=HZ9Oq+506e0klejkp6fuDuZ9E5U6bs4fbD+iqO7vpfdx+oN3vjwEzLCCrNF44vNPsM
-         ODkGpYZfROcGj44ONOF/10dsx9UtwxL4yHHx1V+UD/J1ep4wh5uXipa11OYRU8lFAZ0X
-         K3ragEAVlDrU7X98pZG6pYRLpexx73LaRTgS69l0xvFnZfowHTmeFHLbPDwNbIszMYBI
-         yL8eASbEPoHw1qwDX9T9l7vU1+XBLoSiN71Ln+iJR6aeOIXZorEg+gbyAMJJpBMHK1dX
-         uxoVk6Y9mDwfCcCk5MO54YR/KrwMrGthikZPt2alEv2YaeqsONrmabS4bFzGrfgIFzN3
-         dCZw==
+        b=gr5l84XCizUy6ZuKKkDqNXFmV8Vw4VfY4V8fLN88C8fiiD20N7CLRfyAKXJvPkhnmE
+         2MrkUOiQeU+iNExOWwK71Y73ScwfHXFTJ8oB59/dvYmRssQsO1BDVI8dFKrZ0dm5a9Ka
+         gYsZjtUHzca66vmAF1RPaMX2mPVuR8mxIiSnkXO8Xir4Hyp92mxns7SOQrQZkcSlezId
+         kg6ATTsmHx1taJxOB01MHcicuvvL+n0zatLJbctgl935IxTbhM30mZTy4bkpyP7X9dGo
+         gSPwfJYsBqUexJzGdtmgSshP/ZLK0rNsYjHOd+etsRGhv2kKlc2Sp55jO+ka2ZqZTaJW
+         RQ6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :in-reply-to:autocrypt:content-language:from:references:cc:to
          :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=CyQKgN06PGUD+AXir6DHOe7QB+SHUhoCcRgC8Zwcdyc=;
-        fh=HLDj+aexicyZahEPtL4/EkEhwZphqrTtEWrJxboQLM4=;
-        b=A3S/bFFEPv1fCNxcUZTtt7maiBc3feKX6EA/tdxCbn2EvYfgVgAQm8B5C3aQB0xtQS
-         S8Z28OkWYE66p93XCqNGDE779WGyM4ck8TajmYfaW3yanBHMHTQqyQk6Xl06rZLQjQNm
-         V+ITz05zkL4H268v8GnDnr/CsZgWYHkbY6szdboASmZQ7qIfJmwNtlIEFJDgomJmolgC
-         5P6Sx8KI825ndaZNbKXZ3Yzjalc5azUF2fkwZILaIYTwIMKQUPb+XJhvjL6pue4LEgA6
-         CSwMgU8hRSvWWUzSw7k3PjpFXQ8HD13yAgx5nbzP9YiGyAWIJsyj9cYgsRsm9W5I+pEF
-         +CJw==;
+        bh=FaKzPoIOcbnLE2rqBstv5iMoKQD/qR7qhwV5rj6dPOo=;
+        fh=oCDOethcfCI562FWAmEmh6BowO8dBjGUSibPUxO8KdM=;
+        b=kHJrp6/pttZ1laRoTffqgdLiTrsbZ5EDkgNwFwCydaCTDKKKuoLf1PovRVJnt2mFZ/
+         3KP0c0CLwy4C8mqMgESrMQK5q1dIayH8v4iMcGbuCNvwlE0duLtsTYeXp+rkatGwNxta
+         Oh1cR27MM6/7/gm2ikH6DtN/3VCtD5LB1/Uk8x9WJE+W70uuyXuydg1ZlbRz8CJhKVAQ
+         vZ7XSN9Py3yR/gB89weSA7VqGfLaVncjgm98YsKEapfZFoEG7k8RxA2gr0Fkiveq0qcB
+         xfI4zGKvAthX3GCpRfsgJDJi3lso3/YFj1QJcHuoIZgP8gnCGOdBpE6HUIVnjsElhfMK
+         DdwQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HQ3FraRT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MDdDaqts;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-85b11691e6dsi530234241.136.2024.11.22.04.37.28
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d451a86077si19301816d6.78.2024.11.22.04.54.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Nov 2024 04:37:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 22 Nov 2024 04:54:10 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HQ3FraRT;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MDdDaqts;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tESuY-0007s2-Jt; Fri, 22 Nov 2024 07:37:24 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tETAF-0004my-27; Fri, 22 Nov 2024 07:53:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tESuT-0007rU-UU
- for qemu-arm@nongnu.org; Fri, 22 Nov 2024 07:37:17 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1tETAD-0004mS-Mk
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2024 07:53:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tESuS-0005Jl-GK
- for qemu-arm@nongnu.org; Fri, 22 Nov 2024 07:37:17 -0500
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1tETA8-0001io-4b
+ for qemu-devel@nongnu.org; Fri, 22 Nov 2024 07:53:33 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1732279035;
+ s=mimecast20190719; t=1732280006;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=CyQKgN06PGUD+AXir6DHOe7QB+SHUhoCcRgC8Zwcdyc=;
- b=HQ3FraRTOmK7MXH0FHSCbWyCH9GZLPdlaTJMkj0uEEhDwsd++H9cbp6JIgvAQ8kYJP0sq0
- Fw3bHow/uVQk21Z8Z0QCT50Cm1ff91O/yiErIN/NRYk+8YKtGAIdneJlqTzG8EVqh14YAj
- yKuhvYVb+TiKtZjuyZc5YgsTv1FGHwA=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=FaKzPoIOcbnLE2rqBstv5iMoKQD/qR7qhwV5rj6dPOo=;
+ b=MDdDaqtseCUKkg/OGntvtwtpDzokZuBf563XTizjN3dgctbf7/Zq/pxMoH+jKwaYsmoWKn
+ ATq5dPRmKxb+ojZ7cyEuwgiVGn1jyg4MKoArf7d3QWYAvpAE6cn5D8xbCdxji6o/Afo8iT
+ oesvZO/oOAcUfHpYTjmjM4EAFM4uazo=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-633-iInUuy0DOO-Yb6a_U5jR5A-1; Fri, 22 Nov 2024 07:37:14 -0500
-X-MC-Unique: iInUuy0DOO-Yb6a_U5jR5A-1
-X-Mimecast-MFC-AGG-ID: iInUuy0DOO-Yb6a_U5jR5A
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4314a22ed8bso14495915e9.1
- for <qemu-arm@nongnu.org>; Fri, 22 Nov 2024 04:37:14 -0800 (PST)
+ us-mta-688-SQoTPVVSOqOllTRg9nFAeQ-1; Fri, 22 Nov 2024 07:53:25 -0500
+X-MC-Unique: SQoTPVVSOqOllTRg9nFAeQ-1
+X-Mimecast-MFC-AGG-ID: SQoTPVVSOqOllTRg9nFAeQ
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4314f1e0f2bso15638245e9.1
+ for <qemu-devel@nongnu.org>; Fri, 22 Nov 2024 04:53:25 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1732279033; x=1732883833;
+ d=1e100.net; s=20230601; t=1732280004; x=1732884804;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=CyQKgN06PGUD+AXir6DHOe7QB+SHUhoCcRgC8Zwcdyc=;
- b=uKNRSBEE13PvAZhNqM9gX7tVVzq359WE1M4EcVvUFfdPRaTY6qhM9vsIJNN9uECUVr
- RvvURcxq0X1DU7MjCggrSy+DQ9D+Unkgi8b6VWQ0W4rsRzwKUT+Qjm/UrFnjekAlz/f6
- dDFlOTlYuCXswTTyKw4bjnA9z92s6qugOfK0IwdHZd+wQAxpRDQNRpn/rdsYCIUDIhkv
- RZ3BhCx00RXk2epLTbe3bzCsaMUdsjUk/YLZcB92BXdzWME38zNyvLA9EwKBXKuwJBSs
- pnjxb2QnzeqVoc1tZjsEb9C74QjWpBWX7GMgpEz7vFUcJRSLeK1m2eFZrLf3PgydvymQ
- fgOA==
-X-Gm-Message-State: AOJu0YxxpdXI6vyw2DTQHsFcMye5yA2I9jcJh2nWZrwqcPGCU8QbQXbB
- 7O/ZXWOmS50kG5JXOW4rI1cjg8N0K+Of/uzNh16DLyE3h7VQ+3w9H5QCMwir6o/Ecgm1wQu+Ru0
- PoTJGFRGVyWBI8B3O0iTbbbtDRIbgwiQyutLDVET4aRDhsyeB2Q==
-X-Gm-Gg: ASbGncs2B+FS82pnN5t6zYMhP2rBSDXqRqnNYSA/R4TikqhYhh/xDm9dGljxK4oWDjv
- ZZdXi8cdRRxPZoY7LRzOb2ceqJuQZkUzLkP1DvUnML2jTz+FbMowpxBlfKR+WHTli4H4EP8gUor
- y2CRyDW6jq1F9QgW/yCDPbimskluVLC3oalkDYbYSfcNEFmEdJy7kspmbrZtv43kDix/Pq/Chdm
- yhs7l12O8qarTUP3+Y1tT24nNA4jHOWPvYkN22NUkwa8pc3rNYbtd/ecIHEgqeS2ten7YUiSUE=
-X-Received: by 2002:a05:600c:3593:b0:431:55af:a22f with SMTP id
- 5b1f17b1804b1-433ce425069mr24304735e9.13.1732279033478; 
- Fri, 22 Nov 2024 04:37:13 -0800 (PST)
-X-Received: by 2002:a05:600c:3593:b0:431:55af:a22f with SMTP id
- 5b1f17b1804b1-433ce425069mr24304515e9.13.1732279033080; 
- Fri, 22 Nov 2024 04:37:13 -0800 (PST)
-Received: from [10.33.192.206] (nat-pool-str-t.redhat.com. [149.14.88.106])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-433cde0db3csm26076995e9.10.2024.11.22.04.37.12
+ bh=FaKzPoIOcbnLE2rqBstv5iMoKQD/qR7qhwV5rj6dPOo=;
+ b=BJX5ueWhf3XtwJy5HV+nUm1ni2lqC67WHfjp6wXrW5nux6O8hZ6u++SVO8TQLVGNMG
+ V/jCk+bip8IM5oDVobIpD9tz5DR5NUdTtphvl5UZPPKjblBBlkyk6BLptNem1hPvsMk3
+ PHitNmLCNHrL8Xb0YyYnRnTLq3LD7EepAk7wqF9PUeVXffUiRKin4lMlcDXlSF2T71JN
+ vndQtD2yVPxa92TDkbmNey/9gu5iNA1/i4PX+jr1/ab/p1vEE0r0zygoZY3yQZaLmuPV
+ LrVT/xC5SZIfv5J99b/GZ5/RoVRD2dUz9L30aEIBo6oiqzH0qxmnSKdMa1ZFWNTdSbDu
+ CSyQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXUtb6wvBlr69Tu//tBDhQOuZM5BUTgJ8+yf5dKEIP1qLdgBPELqwwm+4/Nv76Dnal45Nnk0AHLnP0H@nongnu.org
+X-Gm-Message-State: AOJu0YxulDvWhktGSvK1klfWypuoctf/LV5+M9500ttN2tHHX5G/VHof
+ rDuxfCjyQI6SXmTipR2cLYBp591RBMg86PY+3lhzr9Bv3kgG/KHV1NQW9ibjBTDjISQPTQJ3Hk4
+ QnwyMJKHyz0QwpTFTTzCTKODB+0QPsBYzXoc0qGNDv4IJDBMALxDE
+X-Gm-Gg: ASbGncsHFeMrlPVeSwEwlML6l58TIfX2/Vfw1f7luKIGJlu/+0wvRt9QK+Och7EGnSF
+ yRV+xaptgI0O7DeTPOSKAGcFO9hzSPuJHR3v/yI1ps6VTZRN8Ss4+KEpi0j3HZEoKpvfxLXatlV
+ rJfyEQ9GF7AtDpbe46ZWzzpSnIlp0aJaOjr6o03N2QksChko25/a2Bi8K8hweoPGOr4b7KBTfgd
+ mmNpu6OzjBs+o9DSKuy3NJ0+uXtlHECMBCm32nq9gxyvrNKXQV3rxI=
+X-Received: by 2002:a05:600c:3b94:b0:431:51c0:c90f with SMTP id
+ 5b1f17b1804b1-433ce4c1e59mr21630505e9.21.1732280004042; 
+ Fri, 22 Nov 2024 04:53:24 -0800 (PST)
+X-Received: by 2002:a05:600c:3b94:b0:431:51c0:c90f with SMTP id
+ 5b1f17b1804b1-433ce4c1e59mr21630205e9.21.1732280003664; 
+ Fri, 22 Nov 2024 04:53:23 -0800 (PST)
+Received: from [192.168.10.28] ([151.49.204.250])
+ by smtp.googlemail.com with ESMTPSA id
+ ffacd0b85a97d-3825faf9be8sm2334323f8f.24.2024.11.22.04.53.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 22 Nov 2024 04:37:12 -0800 (PST)
-Message-ID: <f18c00d1-1ae3-4f14-9e6e-5fa1fb09b1d5@redhat.com>
-Date: Fri, 22 Nov 2024 13:37:11 +0100
+ Fri, 22 Nov 2024 04:53:23 -0800 (PST)
+Message-ID: <5b91eba1-be60-48b9-ab6c-9f483601e36e@redhat.com>
+Date: Fri, 22 Nov 2024 13:53:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 0/3] hw/scsi: Cleanup around
  scsi_bus_legacy_handle_cmdline()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Aleksandar Rikalo <arikalo@gmail.com>,
@@ -119,107 +123,117 @@ Cc: qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  <hpoussin@reactos.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Thomas Huth <huth@tuxfamily.org>, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- Helge Deller <deller@gmx.de>, Daniel Henrique Barboza
- <danielhb413@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Fam Zheng <fam@euphon.net>, Helge Deller <deller@gmx.de>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 References: <20241122111939.11936-1-philmd@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20241122111939.11936-1-philmd@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: YpBI1p_WZAQ5ausmfEi_DnSYqJf8MaCVsLWzx0KRSzQ_1732279033
-X-Mimecast-Originator: redhat.com
+ <f18c00d1-1ae3-4f14-9e6e-5fa1fb09b1d5@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
 Content-Language: en-US
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <f18c00d1-1ae3-4f14-9e6e-5fa1fb09b1d5@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 3LW87A2N7Rpo
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YNcJSOCWH1AU
 
-On 22/11/2024 12.19, Philippe Mathieu-Daudé wrote:
-> When a device model requires legacy command line handling,
-> call scsi_bus_legacy_handle_cmdline() in its realize handler
-> instead of having each user call it.
+On 11/22/24 13:37, Thomas Huth wrote:
+> On 22/11/2024 12.19, Philippe Mathieu-Daudé wrote:
+>> When a device model requires legacy command line handling,
+>> call scsi_bus_legacy_handle_cmdline() in its realize handler
+>> instead of having each user call it.
+>>
+>> This applies to:
+>>   - spapr_vscsi
+>>   - lsi53c810 / lsi53c895a
+>>   - sysbus_esp
+>>
+>> Note, scsi_bus_legacy_handle_cmdline() prototype could be
+>> made private to hw/scsi/ to restrict its use to scsi device
+>> implementations.
 > 
-> This applies to:
->   - spapr_vscsi
->   - lsi53c810 / lsi53c895a
->   - sysbus_esp
-> 
-> Note, scsi_bus_legacy_handle_cmdline() prototype could be
-> made private to hw/scsi/ to restrict its use to scsi device
-> implementations.
+> Not sure whether this is the right way to go ... shouldn't the handling 
+> of the legacy command line be rather part of the machine than being part 
+> of the SCSI controller device? Imagine for example a machine that has 
+> multiple, different SCSI controllers - I think you'd rather want to let 
+> the machine decide where the legacy devices should be grabbed from than 
+> having the SCSI controller devices fight for them...?
 
-Not sure whether this is the right way to go ... shouldn't the handling of 
-the legacy command line be rather part of the machine than being part of the 
-SCSI controller device? Imagine for example a machine that has multiple, 
-different SCSI controllers - I think you'd rather want to let the machine 
-decide where the legacy devices should be grabbed from than having the SCSI 
-controller devices fight for them...?
+I agree that it should be done in the machines generally:
 
-  Thomas
+1) if the machine creates a SCSI controller, it should then call
+scsi_bus_legacy_handle_cmdline().  This is the case for esp and for
+spapr-vscsi (so spapr_vscsi_create() could be inlined in its caller).
+
+2) lsi53c* is the odd one out because it was "the" way to add "-drive
+if=scsi" to the PC machine.
+
+For case (2) it's okay to call it in the realize function, I guess.
+However, let's only process -drive if=scsi for devices added on the
+command-line.
+
+The LSI HBA should not call  scsi_bus_legacy_handle_cmdline() if
+dev->hotplugged.  I think we can do it without a deprecation period,
+and in fact assert that !phase_check(PHASE_MACHINE_READY) in
+scsi_bus_legacy_handle_cmdline().
+
+Paolo
 

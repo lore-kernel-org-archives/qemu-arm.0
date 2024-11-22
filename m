@@ -1,336 +1,399 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5225749njc;
-        Fri, 22 Nov 2024 00:21:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUoW6l8LT2jPs0P0pN8JcCECsaaFiIxw94P4O1eV6B7UjOAa5ybmhW5fHDw2+6XBzHVf4GW88jJrKvggw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHRg5bbKKOtri5hSeTrHJ30/KuTgkCDZMFQoYGMT1O7OrE4VS4zkkZNynfz60ESTTtowziv
-X-Received: by 2002:a05:620a:2406:b0:7af:cd3c:1f2e with SMTP id af79cd13be357-7b51453a420mr238004585a.26.1732263696815;
-        Fri, 22 Nov 2024 00:21:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732263696; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5227333njc;
+        Fri, 22 Nov 2024 00:25:08 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCW7JFrsA7zytwUcYouk48i+LUKWoND2YE96eWWZjn9IFP4y9Q6jV5UOZbOswFEhYRBl0Ro6uYSVeynBNA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHk+tHyrum26G0G3EWhWiFu5IQuh3rXIrl2Ei5kEZSbCBkcdEEZxzOAYM529WqJXWl4EjYk
+X-Received: by 2002:a05:6808:1881:b0:3e7:63ce:2025 with SMTP id 5614622812f47-3e915b323d8mr2114111b6e.37.1732263908847;
+        Fri, 22 Nov 2024 00:25:08 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1732263908; cv=pass;
         d=google.com; s=arc-20240605;
-        b=AByJHW9fTy/01qrLY+QunepL1yL/CkOc4NtBRJIuIMk9XYgW5rgjKpUw2hbTIGIA7P
-         belTzsEaIFS/6Cbq+CS6UmYVnGiKgazsGkj6J/Cydd0bflrDOe/CWFjZKhmEx2D7yTkr
-         DmwThiN43mQmIqwHZZYbZQWdckxZjSqOPd5+bCm4mdM5pMaaBbp3GpQCRxu0ODHGrQnD
-         4gW3215yesRrHIgrATVo3jfk7JvXVR3JoEcvg0J1Sv+egE5ciNjWefpNwbtL0rJ9gN/T
-         xHkM4iyd2S8mS0aB9n6LZ39Nkxk2I/o/BkYPGgoCq6TmA4Rm9ydyfumFtdNuh3a3RZwv
-         dziQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=pdHXf7bdQWNwC0IHZFz5RGSWoCd2ZJXMrUIo60PbqTw=;
-        fh=F0sDAcW8vqbcySvF3/XP/p5MwFX16PwOeBrRnUZVtfM=;
-        b=ixdGFO1JoZYH+HL4quUvGgBEmzS7bkCqma83nYm06SlR+MDaBPxlviidinJu6MWGZV
-         1MtCM9DZJqdw9HzoRpu7j5Abc3Wm01LGvWe9uPnni/GJoMZLwITT0XEC4CjEwS2l6lPV
-         nlOct3JSHPg95N96TmlZfKwSqRCL9EUDDA0dsoqt+YDGl6r2rhgFPX0oCm/vs2Yziktr
-         UUofNaBNfg1ieRDFEGSWiCiGzjHruBwipWuQS4MqVhn0rZ029a4hNQSYHpx0a0/bgpja
-         V3O4CBYEQm8Ch9SdhUkZmK7ABBbUyrFhxwcN56UBt+Mlniy9Yphro85d7HY04XRejEoA
-         yIHA==;
+        b=AoMgngl8560mzZ+i3mdKRIG2/7/vMHMH3zFEqmWhCQ8xNtelyV7hBPuwz/pFJfabm9
+         +15Mj5YSeDXi9XAy8nnPxFtPjEJy+oxNLtNJSIaBlvKo+4vZovg8eqNuy/8GB2qqod0O
+         mG7rgYVHtSaK1pxpGdFFr6fokQG8uq2tLYqjmC4WESIFy259io752KsFulUjIrGfjStq
+         aNEJrG+YBu8hih/csjqbRbVQq4UXKKe8Vt5pbtoCqWuO2+9QX0YbpIXDx+6ov/Mo7qFC
+         wy5q+pGk/cn2MdC5inCKQ514MybkcJDNIhUzMCoSMngyuUpfBTRX8KVnbSXw6cm32W9D
+         tRTA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=kvnJin1aWmAqf2dGU/E1E9XOL/7BlOy0MNy2XERzwo8=;
+        fh=n65LQmJYxgizjZI6fWMaZcyyBB4igajCwQxeHjFFIJA=;
+        b=N5xyWa85QrPZ+KSwfVZsgGDE0C66dvfktNEe55XSnxmgWyhT3d+Ko9DmrpoFRwzZsx
+         iSeJeYHB0IJzpCe1ZVqQg0LW/ai3VcS0Ds9WRQv5y7gVmvvYenlhbWQcieXjFnNdFTKT
+         9wl+qoaoIgWilx7FWR+5vBttueDV7NwKQXXBcOysdJ+diK6ZX08UYubDCkhUxRP76z5p
+         WO3YKjiFejEeqm0qkSVLPhOLcG2lHr+2eB14x86LDqlE27OoqoLli6U3WM13QsDdWwyz
+         ixIOCQiwpE6LjVSt3KEqR0pyz4B/eRQsLJLR5LSgkbMGl97sFFJcS84B4vo3GQxD5wH6
+         3Bsg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PftTj4Po;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b5143c2168si154629085a.708.2024.11.22.00.21.36
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=p4b68gjf;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-417935-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-417935-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-417935-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [147.75.48.161])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7fbcc76ed20si1719776a12.786.2024.11.22.00.25.08
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Nov 2024 00:21:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Fri, 22 Nov 2024 00:25:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-417935-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) client-ip=147.75.48.161;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PftTj4Po;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1732263696;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=pdHXf7bdQWNwC0IHZFz5RGSWoCd2ZJXMrUIo60PbqTw=;
-	b=PftTj4PoxAIIJdX3RacaWloBjZx4teEg9HxUHk7FOnpwXS07RtLizlHTpHMFla+6kY1KMT
-	CPwPNdVHldZNPul+gaXdPi8SSi1IRbAjh3u3wPa9NU0VwkEfT4qGi6SglbuQvi7jDYp/A5
-	QpobieGyOJm+w0JxRPnANckhGlt5v24=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-59-e3l1B8M7OtyfQZx6xjTwzA-1; Fri, 22 Nov 2024 03:21:35 -0500
-X-MC-Unique: e3l1B8M7OtyfQZx6xjTwzA-1
-X-Mimecast-MFC-AGG-ID: e3l1B8M7OtyfQZx6xjTwzA
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-4317391101aso13834575e9.2
-        for <alex.bennee@linaro.org>; Fri, 22 Nov 2024 00:21:34 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732263694; x=1732868494;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=pdHXf7bdQWNwC0IHZFz5RGSWoCd2ZJXMrUIo60PbqTw=;
-        b=KJr9JLK0N/uwE9lEqtJA/k8Y0zKaTa3ZfPD2uGhHAh+Y5ooOwWMeU4Z/4D/ixpT8GJ
-         c6V5oPtBGQVy92qVKfQouhGxVI7+xuOt+GXi01eAjalIjF1pzB+eMesrwl9adMGYMIfk
-         6dOVRbvWtVh2nztMZ5Tgu/BgXhDCJSwlnqvtgxEAAN7zidIU9xPFB1jYyBRFWYpaGNSP
-         yP4WDrlJK98O5hdUrstQBjSqqfipvcIbZ/iKL+Yi4Ns6e5+911dnihMOgwizx+Q3aoy0
-         WMtYzHfBLwRKVrEjoeUxiKK7LC1A5pToGggYizpIpnJaLg2eEzXfjl0JK6M2au+TCp52
-         tKzQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWHcv2CVbG2VumGKbUzbeOx9FkaDF1RbCnv3f2ALx/vH4U7wVeR7kdoklN6EI7/waFdhIqe/GQMHZMTlw==@linaro.org
-X-Gm-Message-State: AOJu0YzsBl65ETnc1EU8xZa29BF9kDiEpA+rygiFiNLDF5H7TzYYsnU3
-	1Zv5CBZhno4J5ySLYgOZ4Y8QLycpNLMYRq3NFpZ5PA7+yxMiyOD5iPHDYpnLmb1Wu0ATh0DCPd6
-	wpWfDZz+WQ7mAJHZwFCAOKdzekvfMZa6b07XQ2jQ5ol/R5dHMga9gGQ==
-X-Gm-Gg: ASbGncvvs3mED3rgq0TitRmdtdlWKV/6aCpB7H+GQtaVnBopUbXBiH17v7Ey9M/h0dr
-	aDW2p2zWEmbsMfMDb6OQwWJaZfjjT0R6Fz/oK9HLSjrEH9Pe9hrmML8nfaLdb+qyoWrdXkAUk8S
-	hvmW769blC4OhFqF6DpCsyTUE9DIdnOoIZSL9wiov2t8NmLp1MltTN4xHxm51JTMUnzMRmJEPBb
-	2aiDsdpqdLCWfyYc4+At4/+nkMpSsEOuECQYoukEDUClORhRuKvkFTYVQF+cz/4ggtIFTngK5s=
-X-Received: by 2002:a05:600c:a02:b0:431:4a5a:f09a with SMTP id 5b1f17b1804b1-433ce4b2f62mr14332935e9.24.1732263693907;
-        Fri, 22 Nov 2024 00:21:33 -0800 (PST)
-X-Received: by 2002:a05:600c:a02:b0:431:4a5a:f09a with SMTP id 5b1f17b1804b1-433ce4b2f62mr14332665e9.24.1732263693488;
-        Fri, 22 Nov 2024 00:21:33 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [10.33.192.206] (nat-pool-str-t.redhat.com. [149.14.88.106])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-433cde05898sm19459475e9.9.2024.11.22.00.21.32
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Nov 2024 00:21:33 -0800 (PST)
-Message-ID: <fa39d761-91c5-4cb6-93b3-c077ce51a989@redhat.com>
-Date: Fri, 22 Nov 2024 09:21:31 +0100
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=p4b68gjf;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-417935-alex.bennee=linaro.org@vger.kernel.org designates 147.75.48.161 as permitted sender) smtp.mailfrom="linux-kernel+bounces-417935-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 9CC80B21DB2
+	for <alex.bennee@linaro.org>; Fri, 22 Nov 2024 08:25:06 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5E808176FD2;
+	Fri, 22 Nov 2024 08:25:01 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="p4b68gjf"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F537230999
+	for <linux-kernel@vger.kernel.org>; Fri, 22 Nov 2024 08:25:00 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1732263901; cv=none; b=nz/deIb3VCo+NYfYiyttVonGJX6rPD6CzUcx6n4d6vgZ90DNBKffgRspArDUO2obeWwJNM1AdseaQtX8Xr7pUb1f45Rv0BLalwb0hVGn1qpBRtMYRlqk5DxUcMvwCGU233FhgxC4kyHSYx3jMeQrM5u5oexDL9lfhI/CfkFqqTg=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1732263901; c=relaxed/simple;
+	bh=82IqythBJBaMRewCz8uu1EinmQlUf337AmmiKnmg5dM=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=TKdo1bDhu+ewUvU3ep9d/l1DV4k/3fADfPVW93HZ36homoJBx5mDHC5KX3RU8AdWu7hEtxVvfu9g4jDsXJgKwfT0FrbB7+iP56sv+B0zLjVZ0sCjUaKxdWSARogkLhnFWg349xT3Joxb6MOw8nrDc24BoDJWPAKM+6PpSadeb9M=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=p4b68gjf; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAA0EC4CECE;
+	Fri, 22 Nov 2024 08:24:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1732263900;
+	bh=82IqythBJBaMRewCz8uu1EinmQlUf337AmmiKnmg5dM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=p4b68gjfp3GfkyCiomz72kMFMhKhM4Abm53VM+JhoW+TWgiSH9ggd7O5jeg8Ah/2u
+	 Aegw0QHOWbhFsmHURlsDB6jcre9xLlyCDHhyxb3aVlNLnEbAjSWnY61lYCJGkDoIhC
+	 FrJLVgDW6k2WwOqxWbMM83+GzeukwrSI6pOcGI29pStY22VEzQ4A+4iQPYQTCfR5Ol
+	 dEIyDiyU5Q1EB8KRuugXcji81YATsEdmWVkz+uNtQwwQrYYqZaiMR6qoVWsIVRmJhe
+	 ymb4sfwl6R9kLhihnJRrNNh/N1qlOja0VLp3pcUNVjkJr+Q5AiArlbj9QKvyzt9XlN
+	 mU5+aKZZccOew==
+Date: Fri, 22 Nov 2024 09:24:55 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v3 08/15] acpi/ghes: make the GHES record generation
+ more generic
+Message-ID: <20241122092455.5e2584a4@foz.lan>
+In-Reply-To: <20241120141838.000070c1@huawei.com>
+References: <cover.1731406254.git.mchehab+huawei@kernel.org>
+	<8227e881bec84f27861f04c7af62667eef2708e7.1731406254.git.mchehab+huawei@kernel.org>
+	<20241120141838.000070c1@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/3] tests/functional: Convert Aspeed arm SDK tests
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20241122073309.1897944-1-clg@redhat.com>
- <20241122073309.1897944-3-clg@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20241122073309.1897944-3-clg@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -Fsn8BA2s35y1U20MwpkIhg7hVAUn2HUb3-I98SiSQA_1732263694
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: t1K/+VWGRSVW
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: NSxEm8j5CBcd
 
-On 22/11/2024 08.33, Cédric Le Goater wrote:
-> Drop the SSH connection which was introduced in the avocado tests to
-> workaround read issues when interacting with console.
+Em Wed, 20 Nov 2024 14:18:38 +0000
+Jonathan Cameron <Jonathan.Cameron@huawei.com> escreveu:
+
+> On Tue, 12 Nov 2024 11:14:52 +0100
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 > 
-> EXTRA_BOOTARGS was introduced to reduce the console output at Linux
-> boot time. This didn't have the desired effect as we still had issues
-> when trying to match patterns on the console and we had to use the ssh
-> connection as a workaround.
+> > Split the code into separate functions to allow using the
+> > common CPER filling code by different error sources.
+> > 
+> > The generic code was moved to ghes_record_cper_errors(),
+> > and ghes_gen_err_data_uncorrectable_recoverable() now contains
+> > only a logic to fill GEGB part of the record.  
+> GESB?
+
+This name came from this part of the code at hw/acpi/ghes.c:
+
+	/*
+	 * Total size for Generic Error Status Block except Generic Error Data Entries
+	 * ACPI 6.2: 18.3.2.7.1 Generic Error Data,
+	 * Table 18-380 Generic Error Status Block
+	 */
+	#define ACPI_GHES_GESB_SIZE                 20
+
+I replaced it to:
+
+	The generic code was moved to ghes_record_cper_errors(),
+	and ghes_gen_err_data_uncorrectable_recoverable() now contains
+	only a logic to fill the Generic Error Data part of the record,
+	as described at:                            
+
+	        ACPI 6.2: 18.3.2.7.1 Generic Error Data
+
+to make it clearer.
+
+> > 
+> > The remaining code to generate a memory error now belongs to
+> > acpi_ghes_record_errors() function.
+> > 
+> > A further patch will give it a better name.
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
+> Hi Mauro,
 > 
-> While at it, remove the U-Boot EXTRA_BOOTARGS variable which has
-> become useless.
+> I've kind of forgotten how all this works. Anyhow, looking afresh
+> I think there is a functional change in her which I wasn't expecting
+> to see.
 > 
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
-> ---
-...
-> -    def do_test_arm_aspeed_sdk_start(self, image):
-> -        self.require_netdev('user')
+> > ---
+> >  hw/acpi/ghes.c         | 122 +++++++++++++++++++++++------------------
+> >  include/hw/acpi/ghes.h |   3 +
+> >  2 files changed, 73 insertions(+), 52 deletions(-)
+> > 
+> > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> > index edc74c38bf8a..0eb874a11ff7 100644
+> > --- a/hw/acpi/ghes.c
+> > +++ b/hw/acpi/ghes.c
+> > @@ -181,51 +181,30 @@ static void acpi_ghes_build_append_mem_cper(GArray *table,
+> >      build_append_int_noprefix(table, 0, 7);
+> >  }
+> >  
+> > -static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+> > -                                      uint64_t error_physical_addr)
+> > +static void
+> > +ghes_gen_err_data_uncorrectable_recoverable(GArray *block,
+> > +                                            const uint8_t *section_type,
+> > +                                            int data_length)
+> >  {
+> > -    GArray *block;
+> > -
+> > -    /* Memory Error Section Type */
+> > -    const uint8_t uefi_cper_mem_sec[] =
+> > -          UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+> > -                  0xED, 0x7C, 0x83, 0xB1);
+> > -
+> >      /* invalid fru id: ACPI 4.0: 17.3.2.6.1 Generic Error Data,
+> >       * Table 17-13 Generic Error Data Entry
+> >       */
+> >      QemuUUID fru_id = {};
+> > -    uint32_t data_length;
+> >  
+> > -    block = g_array_new(false, true /* clear */, 1);
+> > -
+> > -    /* This is the length if adding a new generic error data entry*/
+> > -    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
+> >      /*
+> > -     * It should not run out of the preallocated memory if adding a new generic
+> > -     * error data entry
+> > +     * Calculate the size with this block. No need to check for
+> > +     * too big CPER, as CPER size is checked at ghes_record_cper_errors()
+> >       */
+> > -    assert((data_length + ACPI_GHES_GESB_SIZE) <=
+> > -            ACPI_GHES_MAX_RAW_DATA_LENGTH);
+> > +    data_length += ACPI_GHES_GESB_SIZE;  
+> 
+> After this change the data length passe dto acpi_ghes_generic_error_status is
+> ACPI_GHES_MAX_RAW_DATA_LENGTH + ACPI_GHES_GESB_SIZE;
+> I can't see why that would be the same as previous value of
+>  ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH
+> 
+> So is this a functional change?  If so please call it out in the patch
+> description with some info on why it doesn't matter.
 
-The require_netdev('user') is gone in the new code, but it still uses "-net 
-user" ... so I'd like to suggest to add it in the new code, too?
+Good point.
 
-With that nit fixed:
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+My understanding from the specs is that the generic error data part
+is meant to contain the size of the entire space, and not only the
+payload part.
+
+Such change used to make more sense on some previous versions of the 
+series, where ghes_gen_err_data_uncorrectable_recoverable() was called
+by error injection. However, now the only place where this is used is
+inside the code to return QEMU memory errors via SEA.
+
+So, I removed the functional change from the series I'm currently
+submitting, as it doesn't belong here. It could be relevant only when
+we decide to implement other internal errors on QEMU that would reuse
+ghes_gen_err_data_uncorrectable_recoverable() function.
+
+So, I'll keep on my pile of QEMU patches, at the end, to be submitted
+if/when we need it.
+
+> >  
+> >      /* Build the new generic error status block header */
+> >      acpi_ghes_generic_error_status(block, ACPI_GEBS_UNCORRECTABLE,
+> >          0, 0, data_length, ACPI_CPER_SEV_RECOVERABLE);
+> >  
+> >      /* Build this new generic error data entry header */
+> > -    acpi_ghes_generic_error_data(block, uefi_cper_mem_sec,
+> > +    acpi_ghes_generic_error_data(block, section_type,
+> >          ACPI_CPER_SEV_RECOVERABLE, 0, 0,
+> >          ACPI_GHES_MEM_CPER_LENGTH, fru_id, 0);
+> > -
+> > -    /* Build the memory section CPER for above new generic error data entry */
+> > -    acpi_ghes_build_append_mem_cper(block, error_physical_addr);
+> > -
+> > -    /* Write the generic error data entry into guest memory */
+> > -    cpu_physical_memory_write(error_block_address, block->data, block->len);
+> > -
+> > -    g_array_free(block, true);
+> > -
+> > -    return 0;
+> >  }
+> >  
+> >  /*
+> > @@ -383,15 +362,18 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+> >      ags->present = true;
+> >  }
+> >  
+> > -int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+> > +void ghes_record_cper_errors(const void *cper, size_t len,
+> > +                             uint16_t source_id, Error **errp)
+> >  {
+> >      uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
+> >      uint64_t start_addr;
+> > -    bool ret = -1;
+> >      AcpiGedState *acpi_ged_state;
+> >      AcpiGhesState *ags;
+> >  
+> > -    assert(source_id < ACPI_GHES_ERROR_SOURCE_COUNT);
+> > +    if (len > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
+> > +        error_setg(errp, "GHES CPER record is too big: %ld", len);
+> > +        return;
+> > +    }
+> >  
+> >      acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+> >                                                         NULL));
+> > @@ -400,16 +382,16 @@ int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+> >  
+> >      start_addr = le64_to_cpu(ags->ghes_addr_le);
+> >  
+> > -    if (!physical_address) {
+> > -        return -1;
+> > -    }
+> > -
+> >      start_addr += source_id * sizeof(uint64_t);
+> >  
+> >      cpu_physical_memory_read(start_addr, &error_block_addr,
+> >                               sizeof(error_block_addr));
+> >  
+> >      error_block_addr = le64_to_cpu(error_block_addr);
+> > +    if (!error_block_addr) {
+> > +        error_setg(errp, "can not find Generic Error Status Block");
+> > +        return;
+> > +    }
+> >  
+> >      read_ack_register_addr = start_addr +
+> >                               ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
+> > @@ -419,24 +401,60 @@ int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+> >  
+> >      /* zero means OSPM does not acknowledge the error */
+> >      if (!read_ack_register) {
+> > -        error_report("OSPM does not acknowledge previous error,"
+> > -                     " so can not record CPER for current error anymore");
+> > -    } else if (error_block_addr) {
+> > -        read_ack_register = cpu_to_le64(0);
+> > -        /*
+> > -         * Clear the Read Ack Register, OSPM will write it to 1 when
+> > -         * it acknowledges this error.
+> > -         */
+> > -        cpu_physical_memory_write(read_ack_register_addr,
+> > -                                  &read_ack_register, sizeof(uint64_t));
+> > -
+> > -        ret = acpi_ghes_record_mem_error(error_block_addr,
+> > -                                         physical_address);
+> > -    } else {
+> > -        error_report("can not find Generic Error Status Block");
+> > +        error_setg(errp,
+> > +                   "OSPM does not acknowledge previous error,"
+> > +                   " so can not record CPER for current error anymore");
+> > +        return;
+> >      }
+> >  
+> > -    return ret;
+> > +    read_ack_register = cpu_to_le64(0);
+> > +    /*
+> > +     * Clear the Read Ack Register, OSPM will write it to 1 when
+> > +     * it acknowledges this error.
+> > +     */
+> > +    cpu_physical_memory_write(read_ack_register_addr,
+> > +        &read_ack_register, sizeof(uint64_t));  
+> Alignment of this could be more consistent with rest of the code around it.
+> So perhaps align after (
+> 
+> > +
+> > +    /* Write the generic error data entry into guest memory */
+> > +    cpu_physical_memory_write(error_block_addr, cper, len);
+> > +
+> > +    return;
+> > +}
+> > +
+> > +int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+> > +{
+> > +    /* Memory Error Section Type */
+> > +    const uint8_t guid[] =
+> > +          UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+> > +                  0xED, 0x7C, 0x83, 0xB1);
+> > +    Error *errp = NULL;
+> > +    GArray *block;
+> > +
+> > +    if (!physical_address) {
+> > +        error_report("can not find Generic Error Status Block for source id %d",
+> > +                     source_id);
+> > +        return -1;
+> > +    }
+> > +
+> > +    block = g_array_new(false, true /* clear */, 1);
+> > +
+> > +    ghes_gen_err_data_uncorrectable_recoverable(block, guid,
+> > +                                                ACPI_GHES_MAX_RAW_DATA_LENGTH);
+> > +
+> > +    /* Build the memory section CPER for above new generic error data entry */
+> > +    acpi_ghes_build_append_mem_cper(block, physical_address);
+> > +
+> > +    /* Report the error */
+> > +    ghes_record_cper_errors(block->data, block->len, source_id, &errp);
+> > +
+> > +    g_array_free(block, true);
+> > +
+> > +    if (errp) {
+> > +        error_report_err(errp);
+> > +        return -1;
+> > +    }
+> > +
+> > +    return 0;
+> >  }
+> >  
+> >  bool acpi_ghes_present(void)
+> > diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> > index 9295e46be25e..8859346af51a 100644
+> > --- a/include/hw/acpi/ghes.h
+> > +++ b/include/hw/acpi/ghes.h
+> > @@ -23,6 +23,7 @@
+> >  #define ACPI_GHES_H
+> >  
+> >  #include "hw/acpi/bios-linker-loader.h"
+> > +#include "qapi/error.h"
+> >  
+> >  /*
+> >   * Values for Hardware Error Notification Type field
+> > @@ -73,6 +74,8 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+> >                       const char *oem_id, const char *oem_table_id);
+> >  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+> >                            GArray *hardware_errors);
+> > +void ghes_record_cper_errors(const void *cper, size_t len,
+> > +                             uint16_t source_id, Error **errp);
+> >  int acpi_ghes_record_errors(uint16_t source_id, uint64_t error_physical_addr);
+> >  
+> >  /**  
+> 
 
 
-> -        self.vm.set_console()
-> -        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
-> -                         '-net', 'nic', '-net', 'user,hostfwd=:127.0.0.1:0-:22')
-> -        self.vm.launch()
-> -
-> -        self.wait_for_console_pattern('U-Boot 2019.04')
-> -        interrupt_interactive_console_until_pattern(
-> -            self, 'Hit any key to stop autoboot:', 'ast#')
-> -        exec_command_and_wait_for_pattern(
-> -            self, 'setenv bootargs ${bootargs} ' + self.EXTRA_BOOTARGS, 'ast#')
-> -        exec_command_and_wait_for_pattern(
-> -            self, 'boot', '## Loading kernel from FIT Image')
-> -        self.wait_for_console_pattern('Starting kernel ...')
-> -
-> -    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
-> -    def test_arm_ast2500_evb_sdk(self):
-> -        """
-> -        :avocado: tags=arch:arm
-> -        :avocado: tags=machine:ast2500-evb
-> -        :avocado: tags=flaky
-> -        """
-> -
-> -        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
-> -                     'download/v08.06/ast2500-default-obmc.tar.gz')
-> -        image_hash = ('e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
-> -        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-> -                                      algorithm='sha256')
-> -        archive.extract(image_path, self.workdir)
-> -
-> -        self.do_test_arm_aspeed_sdk_start(
-> -            self.workdir + '/ast2500-default/image-bmc')
-> -        self.wait_for_console_pattern('nodistro.0 ast2500-default ttyS4')
-> -
-> -    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
-> -    def test_arm_ast2600_evb_sdk(self):
-> -        """
-> -        :avocado: tags=arch:arm
-> -        :avocado: tags=machine:ast2600-evb
-> -        :avocado: tags=flaky
-> -        """
-> -
-> -        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
-> -                     'download/v08.06/ast2600-a2-obmc.tar.gz')
-> -        image_hash = ('9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
-> -        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-> -                                      algorithm='sha256')
-> -        archive.extract(image_path, self.workdir)
-> -
-> -        self.vm.add_args('-device',
-> -                         'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test');
-> -        self.vm.add_args('-device',
-> -                         'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
-> -        self.do_test_arm_aspeed_sdk_start(
-> -            self.workdir + '/ast2600-a2/image-bmc')
-> -        self.wait_for_console_pattern('nodistro.0 ast2600-a2 ttyS4')
-> -
-> -        self.ssh_connect('root', '0penBmc', False)
-> -        self.ssh_command('dmesg -c > /dev/null')
-> -
-> -        self.ssh_command_output_contains(
-> -             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device ; '
-> -             'dmesg -c',
-> -             'i2c i2c-5: new_device: Instantiated device lm75 at 0x4d');
-> -        self.ssh_command_output_contains(
-> -                             'cat /sys/class/hwmon/hwmon19/temp1_input', '0')
-> -        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
-> -                    property='temperature', value=18000);
-> -        self.ssh_command_output_contains(
-> -                             'cat /sys/class/hwmon/hwmon19/temp1_input', '18000')
-> -
-> -        self.ssh_command_output_contains(
-> -             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device ; '
-> -             'dmesg -c',
-> -             'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
-> -        year = time.strftime("%Y")
-> -        self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
-> -
-> diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
-> index 5fb1adf46439..7644ecbae750 100755
-> --- a/tests/functional/test_arm_aspeed.py
-> +++ b/tests/functional/test_arm_aspeed.py
-> @@ -252,6 +252,73 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
->   
->           self.do_test_arm_aspeed_buildroot_poweroff()
->   
-> +    def do_test_arm_aspeed_sdk_start(self, image):
-> +        self.vm.set_console()
-> +        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
-> +                         '-net', 'nic', '-net', 'user', '-snapshot')
-> +        self.vm.launch()
-> +
-> +        self.wait_for_console_pattern('U-Boot 2019.04')
-> +        self.wait_for_console_pattern('## Loading kernel from FIT Image')
-> +        self.wait_for_console_pattern('Starting kernel ...')
-> +
-> +    ASSET_SDK_V806_AST2500 = Asset(
-> +        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2500-default-obmc.tar.gz',
-> +        'e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
-> +
-> +    def test_arm_ast2500_evb_sdk(self):
-> +        self.set_machine('ast2500-evb')
-> +
-> +        image_path = self.ASSET_SDK_V806_AST2500.fetch()
-> +
-> +        archive_extract(image_path, self.workdir)
-> +
-> +        self.do_test_arm_aspeed_sdk_start(
-> +            self.workdir + '/ast2500-default/image-bmc')
-> +
-> +        self.wait_for_console_pattern('ast2500-default login:')
-> +
-> +    ASSET_SDK_V806_AST2600_A2 = Asset(
-> +        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2600-a2-obmc.tar.gz',
-> +        '9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
-> +
-> +    def test_arm_ast2600_evb_sdk(self):
-> +        self.set_machine('ast2600-evb')
-> +
-> +        image_path = self.ASSET_SDK_V806_AST2600_A2.fetch()
-> +
-> +        archive_extract(image_path, self.workdir)
-> +
-> +        self.vm.add_args('-device',
-> +            'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test');
-> +        self.vm.add_args('-device',
-> +            'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
-> +        self.do_test_arm_aspeed_sdk_start(
-> +            self.workdir + '/ast2600-a2/image-bmc')
-> +
-> +        self.wait_for_console_pattern('ast2600-a2 login:')
-> +
-> +        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
-> +        exec_command_and_wait_for_pattern(self, '0penBmc', 'root@ast2600-a2:~#')
-> +
-> +        exec_command_and_wait_for_pattern(self,
-> +            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device',
-> +            'i2c i2c-5: new_device: Instantiated device lm75 at 0x4d');
-> +        exec_command_and_wait_for_pattern(self,
-> +             'cat /sys/class/hwmon/hwmon19/temp1_input', '0')
-> +        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
-> +                    property='temperature', value=18000);
-> +        exec_command_and_wait_for_pattern(self,
-> +             'cat /sys/class/hwmon/hwmon19/temp1_input', '18000')
-> +
-> +        exec_command_and_wait_for_pattern(self,
-> +             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device',
-> +             'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
-> +        year = time.strftime("%Y")
-> +        exec_command_and_wait_for_pattern(self,
-> +             '/sbin/hwclock -f /dev/rtc1', year);
-> +
-> +
->   class AST2x00MachineMMC(LinuxKernelTest):
->   
->       ASSET_RAINIER_EMMC = Asset(
+
+Thanks,
+Mauro

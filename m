@@ -1,97 +1,97 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5298993njc;
-        Fri, 22 Nov 2024 03:02:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHjy/EdlkB2Oc0+prSCQRnlD9PgqvQPIZl6Z1wkL6nFkgnDe2uitj3/+q3OTzNUXjtIQcn2
-X-Received: by 2002:a05:6830:631b:b0:717:f666:9559 with SMTP id 46e09a7af769-71c04b8ad74mr2509690a34.9.1732273364195;
-        Fri, 22 Nov 2024 03:02:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732273364; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5306761njc;
+        Fri, 22 Nov 2024 03:15:37 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEb65xH1alXR3Y95aQOfzYgr18wUEBpoJsGvFmY59isnzQga6lBdHs3lJB+SNqIjV/DVJsJ
+X-Received: by 2002:a05:6102:2ad0:b0:4ae:f181:d2f2 with SMTP id ada2fe7eead31-4aef181d9e3mr1306452137.18.1732274137265;
+        Fri, 22 Nov 2024 03:15:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732274137; cv=none;
         d=google.com; s=arc-20240605;
-        b=T26IzAUNKPFsFmPdmm9wTNIUY8qB0ZoM6inKIhzvN+ohyVzW5MNrEfA0O+0toIJZGw
-         9ZSxXMr9tVPfB1iuX4yenaRKyosEuc+GM9Z57zEW8NW1vAwyMnUcR8DPa89gJsMrA0lz
-         qCaUZJ9obaFeD9DuwLxHsd1+eHdWKm6CyIUBkvXJLmpPNqMQOAgx2SdmFH7pQ0v9UwGv
-         BHsK7bGeOoPrORIx8MIDBIbiP2yNVlPyuFvOlck8CEp7ExDpzjlFoHp3SW7ivwpzWPxH
-         2XXIGUECP7ZUqFtN2/UvgSZnW2O0LjH5RbQQeGK3Dt0/F+ppYo+6LwovRNZY5+isrPgt
-         7rsg==
+        b=UMEkJjfr9fUzz4TI+1zkCOngaApfoX2CcsiDt4M9BYf9t1X2eIEFKY8dWga/yFwb8g
+         eWN12YxUen7Rec7pjEZJLb4Ger7SQFxk6K5DvV7qGZP6Jbi5tgIxsB1aPaqudwswBs5g
+         USniA1R6zmSnHRl/U31HZUBRppViG6idThZiNInJK/gnU0gGsIJwWdtK4d+Kd0kkxR9G
+         QVM7FW1zTKLTdTrYNTgR9wcPqJ9o+7NwUQN9IE37kgCQuWgQ1q0zFjTmiQ1uE0WMou32
+         6XRHmepzd0dcpSmilZdEjUn/7fL/Xf/B/hW2JASn1h2bfxLTyf3NIM78JuELcwY/6eLk
+         YVyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=tRU3Pl1CnWZWTXmMyR9NrQkdjty4F9mnR2dBNNg/6ls=;
+        bh=7mSVl39VBnFPHdBLBl5pCBHanoi/sUg+nU86wXsMt6I=;
         fh=wyrMqsRQzp9wn+9ic3ETyfTwhE/ffyQObIHI5bvyAZ4=;
-        b=lPZJzcQU79ZTotLnetNEHOAaylbwHWWpAVJkNVMxb/2qbH5jEKchbyd863g45QCcUJ
-         4FLcnbm6TH/Ol3qLtUFrdS/wbTZCurBtcbXLBXRC2se4Lwg4ZpB6O2yJz3tCHftIDf0c
-         XGJCv1hgct5pGjFJ3ghkLfxPsjy5enFXR9TT1p//nCRgu0kFyr1AQTIzbrolICGlcQxw
-         T5meC7mg8sIqBFi0JnzAjyEF4PEufexynl+Eajt15seqJyJnid8RT/zh4Z+qPyorfybQ
-         zXWgWYuqoUYFCtJm40KW86BoXQtiXgBRUbfcfnkWtS4vqwh6zzBOQTZPlA47tI7gmGk2
-         R9ig==;
+        b=YVx7wToXg8UrCSw0wJ+U978XPxntJzf845Rx8Y1xQe/jYVK/AaujIrMyzqS3Nw9EbV
+         AX/HJN1SgeLkgW4z/lhD7kdsvKMSImFiJCH4nXune2+KJ6ByKt13zFBQ10PjCNjSAhQn
+         mbuPVy6Mv3lBUdqVwyu6MFeiEHp/63os0AiCBeABv4Zr9m6QGajai9rzLQwXADt1vKfA
+         yQjIPr+T9HzQK4OVsoO75o1rP69r4xVsUDCwIhg9KEG81WOPHlwplrLgifmEYi7uLtsB
+         iPGo2J5uvTvBUpAlkkNCTSOTCgUnWNzW1TySKthX031rdDwa6Cd7DYMUzKepI6C/b6Lg
+         Qqdg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aG1OMWCg;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PfpU3aLY;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4adda798097si527154137.728.2024.11.22.03.02.43
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4adda5543c6si611456137.209.2024.11.22.03.15.37
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Nov 2024 03:02:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Fri, 22 Nov 2024 03:15:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aG1OMWCg;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PfpU3aLY;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1732273363;
+	s=mimecast20190719; t=1732274136;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=tRU3Pl1CnWZWTXmMyR9NrQkdjty4F9mnR2dBNNg/6ls=;
-	b=aG1OMWCgijM8ntMpLPZBtx6ngJ/6N3H/gI81j1O8SKFI03g8xgzNhFzR2cXr2YUCWgGe8t
-	VU6I1HLee55bGmth8KNqtg6GOuP0j5xMrNR5X7hbPcV8eXZkz6zx0B0Dmon5tRXeLUOdf+
-	dyY0/kpOXfkFSQBghlY1JzT95BVxF9s=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=7mSVl39VBnFPHdBLBl5pCBHanoi/sUg+nU86wXsMt6I=;
+	b=PfpU3aLYuVgvzbK7hZYs0vXiA8WDZnz0iHntsTxPx9wb6CrbO4n+IBr1JP4soLZr+1LmRB
+	NciOBnBVrriw80qFZVF1y2TDCcaOzAMnA5hg/YwucKjAisfPwvX+VRqMfxPrX9LtnV4a0X
+	NlUGC8LmzxAfVBY0118hpSBssEQv79E=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-1-x8Lvr-J0OtynhEdH50O7EQ-1; Fri, 22 Nov 2024 06:02:42 -0500
-X-MC-Unique: x8Lvr-J0OtynhEdH50O7EQ-1
-X-Mimecast-MFC-AGG-ID: x8Lvr-J0OtynhEdH50O7EQ
-Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-3824395a677so896393f8f.0
-        for <alex.bennee@linaro.org>; Fri, 22 Nov 2024 03:02:42 -0800 (PST)
+ us-mta-558-AEQ144p8NXmxDEupPq1w7Q-1; Fri, 22 Nov 2024 06:15:35 -0500
+X-MC-Unique: AEQ144p8NXmxDEupPq1w7Q-1
+X-Mimecast-MFC-AGG-ID: AEQ144p8NXmxDEupPq1w7Q
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4314a22ed8bso13995655e9.1
+        for <alex.bennee@linaro.org>; Fri, 22 Nov 2024 03:15:35 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732273361; x=1732878161;
+        d=1e100.net; s=20230601; t=1732274134; x=1732878934;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=tRU3Pl1CnWZWTXmMyR9NrQkdjty4F9mnR2dBNNg/6ls=;
-        b=lGDQH8vDJLm9n5IrYdwjQhDTXld7TP4eo/f7VdmAEl8trp5JzMxfTXv/GOZACXw53m
-         Tba3qvxycJEPqxomDRPitIW7GbaxMLS0umk27VFeCOXALHXgN72eSPp5u7HiY4izI+HP
-         PBc1kDUWm8H86cQS+MqpYxWMkMUeYsH7hu2D1pT3p7Ls3h6MU1+PcxRmXH7DI+XHPZ+r
-         lnFr1owvtalFpEZJMzqimzFrdBUZHPZC9aVxJ4rHqO4kb7PmL3JeSJsQ63VM/c+t0CD0
-         b5KjbIfFsBeka8dltqVsOcu7pmxgaDZhAumMEhi1ffzgCXbIRGUW9co0U5eJA1aViCMq
-         siOA==
-X-Gm-Message-State: AOJu0YxI9y6ZRJ2bSuE8O4OwC6xH5ntvUbgpBUxQS8qbRluGqJev6xGt
-	WWMHcdz6vwMkIVZSpruRWEZyvUVPUWEHSOZ4DEtP09pSeoh6ZsjijyLsRLkUcDzSjg/JT6qgw0R
-	WLs+vbeykTlhp9T56nHIVYYLpjdAhAz+yKQFb3DsuIZUumEfxqQSYlXvIusL9DcJJEw+9wXjKYU
-	0ujl8OaCZfBeoIECDBSG+sTKO6tsRBluEtf/Ed
-X-Gm-Gg: ASbGncvdfYQwVOo88R6Kzu5ela6zx8kERHjLhT8J3XmxyQ3/d/8Gy8+fOEm/GEjKvSH
-	WfHELjX3qgrUMaeahFVWGU/ISHeC/kpMuXPp0BsC6SLclIDISiovGcP/X44vQ55OaYEcj+Iy63J
-	fP43lyNjIrE0MmO6jPEIeQKbbltcKimrHDH3h/cJyvvtWxOOvB72L+nD1mB44dUxmlcWDuREW2E
-	VJgMrk6RrWzQjSKjaCz4Ev19LeFmP9G3rmL1oDMvdiJDg+CJsO4WqN+IEGZlZ/EvX0x2fELGWk=
-X-Received: by 2002:a05:6000:1867:b0:37d:53dd:4dec with SMTP id ffacd0b85a97d-38260b59cc8mr2307020f8f.15.1732273361153;
-        Fri, 22 Nov 2024 03:02:41 -0800 (PST)
-X-Received: by 2002:a05:6000:1867:b0:37d:53dd:4dec with SMTP id ffacd0b85a97d-38260b59cc8mr2306939f8f.15.1732273360636;
-        Fri, 22 Nov 2024 03:02:40 -0800 (PST)
+        bh=7mSVl39VBnFPHdBLBl5pCBHanoi/sUg+nU86wXsMt6I=;
+        b=p9PQnMCBUWxHBqQja1lkbC32MxKMg7avaQIe4xacD6OtbSJXnugjb7Vu9vPLAwfPN/
+         WQc5BSVMPzaMbHnsoKLznll/lVV9PDKvvJSJc33cSJ8zW3ku/b16CWQN7a5Ze4HAuvg9
+         6/cfT51GX3Qd5XK3QqY+jZGooE8wDSs3qu/5y8t5tlftenqBv7eS2JCPW4yYv3e50VmX
+         AYZ24UvPk3DHz522TpJCMsXNJJvT4fcCtfo5iqMycwdNegWktDtW3YrTxCNlSPNiAp37
+         OEbsTqioJTRGw3+A1+Cev/NJ6WD9GLvTHqHed0AOIoNCHyZxysYlnEOa2eg4zn63unpa
+         X4Xg==
+X-Gm-Message-State: AOJu0YwGh9crGq3OjpfGnbyB9pDyKSydYfnL4ge7ynn3ntmgtw4uuWxP
+	iRo4akjRY1VsplJ0rVo8SjOvjPl+dU6HnQyKXS+tfZpV/bu5xBjV0sTpAhroYLOQkUMiAGXNEDG
+	RHUGmMcQREkmghGO8dpU8QIf/gXzkajXs6kp6e4al6ZWnxsHuQFO2joMXQ42ktWJnds5ReEzcoT
+	cJJklTMF6rjMbxfHKXPp+lMODgrR4PbcA/eSI/
+X-Gm-Gg: ASbGnctkGf6eg8CIMyl9v1sdx/OOyWYmuu5aFHPpCQn8Ya715IRRYr0EjBQ5Zfo4eG1
+	W4/+0FbdgMZ3kxAOaXM7SkBZElxGTjHg9ez0LAgj2Lhp4xOuZvdwS8DI2DFDMyORBcedFWMRkMx
+	PFpt8zgcb7d+o3ecjr2YBWtSevp7JC/59Gbi0sET+CpSORy9OvujaPwys54TATJFkVlfRuW1l0t
+	gNmnmtlFQ0oyq/T8LUJ64Oz7wkQL7S6yDWtgX8888rHjjaaaV5/OceoVokhFGQXQD72Ar6nK+Y=
+X-Received: by 2002:a05:600c:3ca9:b0:431:40ca:ce5d with SMTP id 5b1f17b1804b1-433ce4912a3mr17420745e9.23.1732274134480;
+        Fri, 22 Nov 2024 03:15:34 -0800 (PST)
+X-Received: by 2002:a05:600c:3ca9:b0:431:40ca:ce5d with SMTP id 5b1f17b1804b1-433ce4912a3mr17420185e9.23.1732274134126;
+        Fri, 22 Nov 2024 03:15:34 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [10.33.192.206] (nat-pool-str-t.redhat.com. [149.14.88.106])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbe91a6sm2107129f8f.86.2024.11.22.03.02.39
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-433b464310csm87396405e9.42.2024.11.22.03.15.32
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 22 Nov 2024 03:02:40 -0800 (PST)
-Message-ID: <fc3c8b76-5fed-4045-8f64-0521463949d9@redhat.com>
-Date: Fri, 22 Nov 2024 12:02:38 +0100
+        Fri, 22 Nov 2024 03:15:33 -0800 (PST)
+Message-ID: <cf3bec65-2454-425f-a9e0-332d6960e899@redhat.com>
+Date: Fri, 22 Nov 2024 12:15:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 33/39] tests/functional: update the sparc64 tuxrun tests
+Subject: Re: [PATCH 34/39] tests/functional: update the x86_64 tuxrun tests
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -121,7 +121,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair.francis@wdc.com>,
  Anders Roxell <anders.roxell@linaro.org>
 References: <20241121165806.476008-1-alex.bennee@linaro.org>
- <20241121165806.476008-34-alex.bennee@linaro.org>
+ <20241121165806.476008-35-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -165,14 +165,14 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20241121165806.476008-34-alex.bennee@linaro.org>
+In-Reply-To: <20241121165806.476008-35-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 94-el5_KfKNPizJeCfAroWr72YXBaCeWzrd9GeGqEz0_1732273361
+X-Mimecast-MFC-PROC-ID: deaRBKO2uf6cIvLb_tOEqVgMZeWRY-2ZBB2QVwho8HM_1732274134
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 4Kjl8zIS7ope
+X-TUID: 8llsnJdYpb1a
 
 On 21/11/2024 17.58, Alex Bennée wrote:
 > Now there are new upto date images available we should update to them.
@@ -180,7 +180,7 @@ On 21/11/2024 17.58, Alex Bennée wrote:
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 > Cc: Anders Roxell <anders.roxell@linaro.org>
 > ---
->   tests/functional/test_sparc64_tuxrun.py | 8 ++++----
+>   tests/functional/test_x86_64_tuxrun.py | 8 ++++----
 >   1 file changed, 4 insertions(+), 4 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>

@@ -1,203 +1,125 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5249244njc;
-        Fri, 22 Nov 2024 01:13:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVHLFfRMWlOgZ0jqTsXL0xaxsWwQBfm1F+umSVfdxIv3l5p29DsYsK7SUDByvsB26MQt7ZGL3g3ZWUWqw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGf0G8ZIxYCGS9G8p3rCX4lgV1+kytt75fln5I6x6hYreBf5ifHEVyJ3X6DD2kv8VmnDWTT
-X-Received: by 2002:a05:690c:74c7:b0:6e3:37a7:8a98 with SMTP id 00721157ae682-6eee08a4daamr24143567b3.14.1732266822080;
-        Fri, 22 Nov 2024 01:13:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732266822; cv=none;
+Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5258185njc;
+        Fri, 22 Nov 2024 01:33:06 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUdgBMoT3Zxg1xDp10RGXhpBsQvVO+JwbOuscuw7vg2DiccU4cqwNr1+uAcNJPCWKaiSZdGL7TwNLHF8A==@linaro.org
+X-Google-Smtp-Source: AGHT+IHvMXB+yBbCCbus+cAHMC5ldwbBoWKzJeiZHHkMFG+zatGwi19g0DgQBefPypLLjJz6dZ+H
+X-Received: by 2002:a05:6830:6288:b0:718:12af:7f01 with SMTP id 46e09a7af769-71c04b9ac1cmr2722185a34.13.1732267986472;
+        Fri, 22 Nov 2024 01:33:06 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1732267986; cv=pass;
         d=google.com; s=arc-20240605;
-        b=cfpubHhYx2VmFlNkgz1bypqIKS9xEHFeVaR7BbfVKltXq3TVttrhTio89NB46hCyC7
-         CJlcPZI8uXs8pxjh2ITvEx+Dtm4k2L2lkhSjh/jau1cehycEz/yo62b+u5d/RJ9guTnY
-         n2S8O/I9I+H6jfPdKUpvn3g23X55lmtryniUV9x20T312Les6FbwEJEalaPEdUN1hah1
-         kKuPeXw5cvvrbWgJGBqpkFfjUzKUzvKjOoAgGAX8w45wUv2YIpB6sruBWuw4fJGxrow6
-         soXzEy/e+icHicV74bzk0GQwO5hRlTT/1mBCFenMwF8PxtpXMYYVJTaxPkKOwm39cU38
-         6vTw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=WhwCdiL5xqOeEi/QBJu622p0Wb3wSO+CYfeX33qfrLQ=;
-        fh=cHr103FZjxYpnzWV8HEdBbSUHzARr8y7HHMCd+4YRdE=;
-        b=Hl5WXQC7KAPoMPEO+ezpTPfAi6TKE29G6rkaRuTtjMgnGU44cJvKer3MSBhvakijgN
-         YFMBW5yMzNqZy+E77BxAg93cSNJ22ydxan3aMKharIo4EkQuN9yORELIvhXLNxjUpS3V
-         vyCzITj0JEZYafMF/k8nazkDyoPjSD7oF97PmDcV1dADMVrBjCVmMTlU8z41naemFAQp
-         Ub15ne2n8KAS0VYC5JWuOK4n55bBY3d1QNVRZT+dYua8ktp7mzyMVqrluXEq73dlVwwy
-         0e8EwCaNJMjWogDEd80fwHf5h7oI9AZnnVy0YFeBXnWLN9LqXSsWKKUj737vuSd65bOr
-         KQ6w==;
+        b=jZraQ9dSfZ+xILUJsOLu9polCbwnoVjJd3bCTm4e4ItjfVoRucMK0VQIGqdgOTnfHk
+         GI1eXAhIiaoZ8d+SPU5oDebo5aUJBZOgVQ0UvJ4xwJ1z3KZW0cm8NLnJ+xky6CkQKFrf
+         9OUbZ7LMcweS8eLsbzHbNkdFyRnWqb2aKlKqF3VdvasC/BO+gQ00VMOYXHkinkrET0c4
+         cwOb8cbfC4mgOmlTA3bYtJUqAayGy83HE1UAOTKtR8eridBMhr4YLd0pOLQH3YowSpGT
+         6ODtYsPS4SD2/g64ILrAo4TyR8pDAMXCk8AapFnaKWg4ImpCU9ra4q8Xy9/zzGMqIenJ
+         SbEQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=9T8+4jAI5TpZWqz6YH9WIIcLPT2hvAOXw/DxIZy35L4=;
+        fh=n65LQmJYxgizjZI6fWMaZcyyBB4igajCwQxeHjFFIJA=;
+        b=cUXDcMM4gkS2mWdStk6Ye4asURSBqU1vjhY+XNPKJKNKFuvtDZW8iqxmxQG5QpZW3Y
+         iGSKpY+RRxfXSDfaDeRQg5RDzNhzg4aJwiaFn1b7HKub/zD0nCH+GH3EVa+UgenJnOZ6
+         nF/lbIWqpAjkeb7RQChI/HRa+m8srR5ncBg7MD/hViQzWaWToVtRExcwN5dwN5J0x+Gm
+         xXrfwU5DEKT+gLBVwYT3nhBNseCcfVn6u/Y83RAIfL3DinoRTQgdsrd3vcc7SdMeAKtl
+         HfM8GtvRn/eA0op62dDGXKqX9QmnvL78kgGl3O84vDkHg07kD8gF7AZw4dU/MLGvxkBy
+         QH8A==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=SFraNgWm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=dFnVG9Jy;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-418027-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-418027-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d451a8387dsi15342856d6.87.2024.11.22.01.13.42
+Return-Path: <linux-kernel+bounces-418027-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-7fbcc53b81esi1796195a12.555.2024.11.22.01.33.05
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 22 Nov 2024 01:13:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 22 Nov 2024 01:33:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-418027-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=SFraNgWm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=dFnVG9Jy;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-418027-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-418027-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tEPj0-0003GP-Kz; Fri, 22 Nov 2024 04:13:15 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tEPho-0002CJ-82; Fri, 22 Nov 2024 04:12:00 -0500
-Received: from dfw.source.kernel.org ([139.178.84.217])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tEPhl-0000vY-B4; Fri, 22 Nov 2024 04:11:59 -0500
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 45D2D5C5A10;
- Fri, 22 Nov 2024 09:11:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4F8FC4CED7;
- Fri, 22 Nov 2024 09:11:49 +0000 (UTC)
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 60EA4B22CA7
+	for <alex.bennee@linaro.org>; Fri, 22 Nov 2024 09:33:04 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 3C27118B48A;
+	Fri, 22 Nov 2024 09:32:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="dFnVG9Jy"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EF21F165EE6
+	for <linux-kernel@vger.kernel.org>; Fri, 22 Nov 2024 09:32:58 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1732267979; cv=none; b=Z2vUbk9BO31bpVpriIUxEbvWwPfTgNIxIylEcUoveU18qLjNhHt1/Zkcqunn5JqULmaYIMUF3l/eJKbrPUPsBfdv7goXUvQOhLJIyL4Vl9XRBJVgcv3B3bBeTlDsovZmtepaRb5d70JhXFNU6N4OJsU/eVtZtTab1e7muBzuMs4=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1732267979; c=relaxed/simple;
+	bh=T7xjCoT1gSzZczvGnuo2h0UKlSlVQBVAb2ODDoOJw7E=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=pVM8ytDoNeTOEWv+sxhzCsa3aS97AW+j3Sw7oxE/zB5QXPE+TSMebspLnZI/5IS3qaei0tEqu97K4sYNcCA9GZkdw0tpNj2Fm6Q+6+M6vipDdsq4kBeEBmUCRQCiN9dP8N7LQwq3kqqnUSulnIX9rZfcgLGG61z7vp6rica6BH4=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=dFnVG9Jy; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 834DAC4CECE;
+	Fri, 22 Nov 2024 09:32:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1732266709;
- bh=/J8Ik2gV7ARAny61vMhfWIVszDkkmW/W+wjqFlb9x4g=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=SFraNgWmycLEBmSZeTbU6FaFmwpA6+S2emG81D+VIn0Y96qJN84pldb/55xtKKquz
- 7nyZGDEj9J7/D8FMfABrk4I/CgzMXpC4TPSsp2sqgdJ2NRXcHS/9bWswdZq08km4lN
- JlspEpoljbtvIgNNYXkASJAXPitbLBW90Y4FP4eUAu6oelzTHZUCJEMqMP86jTuf6r
- ROl5muLdvox5UtGTpNVtAlZoS8HFyYdPwL4Ai+3jyq1VMxksS0HdnzVh2j42IUhUZK
- dmnYSKm7Rx2gpDh5LQitqeDVJzOsDAfaPbeD169k21/yHAlbLU0gLcK75cztfTmip4
- NHHEh57Egn5UQ==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98)
- (envelope-from <mchehab+huawei@kernel.org>)
- id 1tEPhX-00000006l3h-0CNf; Fri, 22 Nov 2024 10:11:43 +0100
+	s=k20201202; t=1732267978;
+	bh=T7xjCoT1gSzZczvGnuo2h0UKlSlVQBVAb2ODDoOJw7E=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=dFnVG9JydNxOkI9IcMrc6tSSTfPvRY820z//xZiXM4LRhOBK+QSHOpoFShEPZT8Rd
+	 7X1GkaMEoMRoXSQPvfj4VZtQU3Bmt6+33MThK64Hravl8VsDY1j3xhbirZvVoeTQMy
+	 H8dntZIOKz4lxxrDjyS0x06f5jixwX5pghf+nBhGsNn3nsXGfFWNjhMr59nzKYXK8d
+	 YRYDHXuljFYtsK6WNv5G6svznNOCNI7zuEhNOixw0bP/fe9nGTPwraA5bki/fLUKYh
+	 6X4TRI3IIrO7/mj5xJqgaPJtjU16MioxcQvwcGApzEHGyxLMhm8ihewj0UfDBzMxXI
+	 urpExye60hXOA==
+Date: Fri, 22 Nov 2024 10:32:53 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v4 04/15] acpi/ghes: better handle source_id and notification
-Date: Fri, 22 Nov 2024 10:11:21 +0100
-Message-ID: <0ad66ed39b357d5fbf2e4a6d1fa47d310796cc1c.1732266152.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <cover.1732266152.git.mchehab+huawei@kernel.org>
-References: <cover.1732266152.git.mchehab+huawei@kernel.org>
+ Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: Re: [PATCH 3/6] acpi/ghes: rename the function which gets hw error
+ offsets
+Message-ID: <20241122103253.1a1e7551@foz.lan>
+In-Reply-To: <20241120143308.00005c31@huawei.com>
+References: <cover.1731486604.git.mchehab+huawei@kernel.org>
+	<3dccd08b82755bd42ab61408d5d86b2bfe2f2f01.1731486604.git.mchehab+huawei@kernel.org>
+	<20241120143308.00005c31@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=139.178.84.217;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -71
-X-Spam_score: -7.2
-X-Spam_bar: -------
-X-Spam_report: (-7.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.14,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_HI=-5, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: gHR2r2mSj/Di
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: 5oR6pULbmEag
 
-GHES has two fields that are stored on HEST error source
-blocks associated with notifications:
+Em Wed, 20 Nov 2024 14:33:08 +0000
+Jonathan Cameron <Jonathan.Cameron@huawei.com> escreveu:
 
-- notification type, which is a number defined at the ACPI spec
-  containing several arch-specific synchronous and assynchronous
-  types;
-- source id, which is a HW/FW defined number, used to distinguish
-  between different implemented sources.
+> On Wed, 13 Nov 2024 09:37:00 +0100
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> > Rename: get_ghes_offsets->get_hw_error_offsets
+> > to make clear that this function return offsets based on the
+> > hardware error firmware.
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-There could be several sources with the same notification type,
-which is dependent of the way each architecture maps notifications.
+As there were changes at the cleanup series, I ended merging this one
+there on patch 13/15:
 
-Right now, build_ghes_v2() hardcodes a 1:1 mapping between such
-fields. Move it to two independent parameters, allowing the
-caller function to fill both.
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
----
-
-Chenges from v10:
-
-- Some changes got moved to the previous patch.
-
-Changes from v8:
-- Non-rename/cleanup changes merged altogether;
-- source ID is now more generic, defined per guest target.
-  That should make easier to add support for 86.
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
----
- hw/acpi/ghes.c | 23 +++++++++--------------
- 1 file changed, 9 insertions(+), 14 deletions(-)
-
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index 4a6c45bcb4be..29cd7e4d8171 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -284,9 +284,13 @@ static void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker)
- }
- 
- /* Build Generic Hardware Error Source version 2 (GHESv2) */
--static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-+static void build_ghes_v2(GArray *table_data,
-+                          BIOSLinker *linker,
-+                          enum AcpiGhesNotifyType notify,
-+                          uint16_t source_id)
- {
-     uint64_t address_offset;
-+
-     /*
-      * Type:
-      * Generic Hardware Error Source version 2(GHESv2 - Type 10)
-@@ -316,18 +320,8 @@ static void build_ghes_v2(GArray *table_data, int source_id, BIOSLinker *linker)
-         address_offset + GAS_ADDR_OFFSET, sizeof(uint64_t),
-         ACPI_GHES_ERRORS_FW_CFG_FILE, source_id * sizeof(uint64_t));
- 
--    switch (source_id) {
--    case ACPI_HEST_SRC_ID_SEA:
--        /*
--         * Notification Structure
--         * Now only enable ARMv8 SEA notification type
--         */
--        build_ghes_hw_error_notification(table_data, ACPI_GHES_NOTIFY_SEA);
--        break;
--    default:
--        error_report("Not support this error source");
--        abort();
--    }
-+    /* Notification Structure */
-+    build_ghes_hw_error_notification(table_data, notify);
- 
-     /* Error Status Block Length */
-     build_append_int_noprefix(table_data, ACPI_GHES_MAX_RAW_DATA_LENGTH, 4);
-@@ -369,7 +363,8 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
- 
-     /* Error Source Count */
-     build_append_int_noprefix(table_data, ACPI_GHES_ERROR_SOURCE_COUNT, 4);
--    build_ghes_v2(table_data, ACPI_HEST_SRC_ID_SEA, linker);
-+    build_ghes_v2(table_data, linker,
-+                  ACPI_GHES_NOTIFY_SEA, ACPI_HEST_SRC_ID_SEA);
- 
-     acpi_table_end(linker, &table);
- }
--- 
-2.47.0
-
+	https://lore.kernel.org/qemu-devel/e5661a6383449675b28e15c8479ebca42c939368.1732266152.git.mchehab+huawei@kernel.org/T/#u
+	
+Thanks,
+Mauro

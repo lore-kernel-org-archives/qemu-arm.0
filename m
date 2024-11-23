@@ -1,164 +1,116 @@
-Received: by 2002:a17:505:a60a:b0:1be9:327d:8ee3 with SMTP id qv10csp5748672njc;
-        Fri, 22 Nov 2024 14:52:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXtxV107Jgg11DrnrI02eA7HDBFd2a91wnt4W5gxF8CE2BuuqPhCW7Y5q4i1lMYhG7U8MjyPmxwlkEoSA==@linaro.org
-X-Received: by 2002:a17:902:aa4a:b0:211:e812:3920 with SMTP id d9443c01a7336-2129f65e359mr44378625ad.7.1732315935372;
-        Fri, 22 Nov 2024 14:52:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732315935; cv=none;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp59446njc;
+        Fri, 22 Nov 2024 21:43:31 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXVzDeKkD2ORmEvJ4M68vcm9qttDbsC0DRL3DWgO1KqXWQ7pPBwpcRqdj7PpmyG9+itb8OpMgbPV3KoRw==@linaro.org
+X-Received: by 2002:a05:600c:458a:b0:431:93dd:8e77 with SMTP id 5b1f17b1804b1-433ce4ea027mr53240975e9.31.1732340611059;
+        Fri, 22 Nov 2024 21:43:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732340611; cv=none;
         d=google.com; s=arc-20240605;
-        b=JTBdc4wEIlz04WJi4sp5BnGV0RyAlaqasoXqyt7r7TFj26DgYQwJuSACN5g1B6wAGh
-         e1JTjFnD2x5fHiWdQyR9twxaVB8rhONo0usAJ+WSb7og49gII74w64fLLlAUxBBgs3iv
-         g3BxMBfwzb+NG95nCYuFI25Yq0MeAMxRLzAbDP5tm0aUl6CXGRGpOQ1VEKbOvQYgybN8
-         MnokxWYhAStVk2esSQAIfrimbMwKVL+evrXgYOtn0VdoFSkejnzC6n34DEoxrNt6kfyG
-         J+zqRsJjayL/9xPEZiVR6GjDgKB9LG7qm0lfpWWdiPTTH272X4qz0UUghK3hm/afH95k
-         Tu6w==
+        b=gFnBuY7c/6IsBjB0w7+uYlRFX19dZ51M5mCGK2MBGRRxCeomLm6glDqGSoBtbqyTaR
+         Hee+82WSpK3gkn+9dQHeSzrfp5zNlNyhm6RhdYZsMMnpdrsNob4fkYq3U2NJ4YFnGAZB
+         sIBAxIaFK1pF9Fkp5QgSJ3DyyNhaGYn/OxPHliBhDw3tNiprUOFlrVfNCUGm7jBkWIz9
+         n8RmWqEDOmaKojR3xfyjUUNa/XZoj+abB/Em1fEwl5XNCK0m8KjdX32FiN+ZGG7/GwkQ
+         nFdpnNO3jnhwS/X3fnFElOVd+tAXe/IfcxH15j+LEel/dIKlRLYFQDCKf26XCQ1S/4bO
+         elQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=QyMS62Wj2zk+Bd6PpwrWdVnzgE/eSQ4f9nG6xzbtWnU=;
-        fh=TxjUjuqo7Okbwtw6iSegRvpUgajYSj8OBTUqDJPBl3w=;
-        b=GZ7lL0G9tDWtiNFwoX6PRvi70w81tQ7+Ow/ViR+/uyjk4f0jiOaSXPR3l1+x2lwxlJ
-         D/HLWqWw7QmXafeVvohXWk9E5VONIXo9H1i5G+DEFyB7ba3T6/sNVwtYhwWaPf6B00Lf
-         PoMFo9nN9VeQX4I/SBmjYcv+mObcGxXJMAYoFNAU2IvlBHXwQoqMHz5b/o+zaYVp8xKT
-         c5KJyaCAFUTje8MLhs5R441mcuZIyszOFoWzi4H9jVgnV6qdV7r50tSLw99Etrj694s8
-         DoB63iGQ2vtKBSQwO/sxGUUDUoIHh7NoQjrlHmVBgYlg9D5xoszMe528+KTBjt7AKDDq
-         1FyA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=r5SLiEGNtParUpdQqTXob+tTfQ1hQU6vL+CHZB9nKXE=;
+        fh=ykmMMos8dLJo+cet3TQfpAUc0Mi2J08YPpsEXzo6DDk=;
+        b=gTMzs2AJTPlkpIuLqTabbZOOiZWR3UizyJIxsxOAAH78Ayuy2v11670zonkP6+bs+v
+         KbEYJFiAObg4aNYFJYB61LEi4Uu/aFvVUjzvCm9L0T2MdZv84CbirelccuAQr9C9yx1b
+         GloNd7g9v5P4KbGOCfG/fQW7l//Ys2350pePMaBj/NQ18XnblZOJXSs9xmJml3iOGCYM
+         nvYgCpyy59flWxofODYsrsrgZkaZ+S7AUsYZWYfhj4nKKYUlfBMeFJMGjcDNLJF10N6X
+         inerLRc2A2l/+POoEHleuyIkbGTZTPArDKKfyHiwYdJa+P23UZ0hehuPGOfREQkwD8YL
+         BG/Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CRKx+2Ua;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=moQJbhV4;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-21492934213sor7689985ad.15.2024.11.22.14.52.15
+        by mx.google.com with SMTPS id 5b1f17b1804b1-433cd7e5ec4sor15126185e9.6.2024.11.22.21.43.30
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 22 Nov 2024 14:52:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 22 Nov 2024 21:43:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CRKx+2Ua;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=moQJbhV4;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732315935; x=1732920735; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=QyMS62Wj2zk+Bd6PpwrWdVnzgE/eSQ4f9nG6xzbtWnU=;
-        b=CRKx+2UapyfjFmBXHERWX6wDyoJj5VUn0wA2lSGpiHeeMHBBshZ2jTU2fvRkaVtj9O
-         wYZgsCNO6xu/Wzs7g9JoP2KVn//PLWUG59VWOXINc6BtQopJQUwtpzrsGRGop6+CK8mn
-         uemkaCWrLS7UcA+IpJOqIlGncV8uSB3AFUQ/fNaGHBfHg1oTv2tMAClv2DjLiOWPbx9A
-         6YKnnqt9qP/ZpO6tTUS7dNDOGfLET242Z9PvlHZUurGeu/009+vs7eQdMWyXQmFVJu1q
-         gPP7MJbVd1HB3+SP8y6Ru97PBbHvKYg3o5vEhd0g8rnQCvXYee/uaYzWlCSZ28R+pdoV
-         BXxg==
+        d=linaro.org; s=google; t=1732340610; x=1732945410; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=r5SLiEGNtParUpdQqTXob+tTfQ1hQU6vL+CHZB9nKXE=;
+        b=moQJbhV4oi9XDSwlAXGxOvRjazml9jjzQtus+bGmXWOyN4Zkst18krpYxC1HE55mnL
+         cfzwEYcD5Q1h4mbThBrj5EkV5tWeK5dGO+29P4Aj6u3rxJawJZjN0iu7pOq2t3Dtye9G
+         GVhuaamUFQpe72zOMQrSnTRL2uVsHMBv+i7xQWYxDhKhGTVce743nedeospq4/b7NyCX
+         +FrZ48KgzJBXsNhCJdT9N5OoFK7bPxhsQfJDZi6tIjChMbtfYeu0JTLUMquDnBvP/733
+         XTUpWM4ZeZN+3qUAZm8xtPnsjTgd24qee9yb5XsWwdSGQUD5EEVRmjwiwYLQ7LjSwizi
+         oNkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732315935; x=1732920735;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=QyMS62Wj2zk+Bd6PpwrWdVnzgE/eSQ4f9nG6xzbtWnU=;
-        b=I8KP4pDzF7ZbdKQgZf+uVgi4rcmVHANLQnXk9suBhlkjWJZ1Ystl//4ZMYqZcz8c3o
-         az2/3AaCkvpC2PeEG5UAzjdq7DOX0jbSUd/nYdqpDEJADL4IqRe1s9T1IfD/CXuXR9UI
-         JtKcaNKy2o4G/WuGnqv3mDlBYZBXMiDsq+U7Aqb9JzazCJVVBtpdE05An8SLb8djV/Hs
-         5h+SfroNeAAyc9SSU9GBudnj1BwU96jQBY4dC5bg5zc4uDRdL/NDVglDFTf/SVBm5IAq
-         qSkuD7YeGqzW3RENN1EYAeTSPWh6qHBM71Ikbo715Z1PVC8on3r2oOob3tAjbP93sER2
-         RnaQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWrwHY3JJslyZ0SwDeypvAddM3locyE3UD9aUs0vzWnzEvFs9ioCdrv+sBCyaSfsAMlz9l88xtpuK+jlA==@linaro.org
-X-Gm-Message-State: AOJu0YzYArSNhpJofH8urhwrGz5ZEltQS+F4gtgNcZ4tUA4eb0WoZY9q
-	5gxImDjNMjhyAE6J5fUh6AzIYYWt9yOHWZ9X4AB0YXOT1M04sjfQMQY/2EsL3grYtA==
-X-Gm-Gg: ASbGncuH+qiK1m+SnQQSbquq/fEpX/x6k3BngnAzpLVvNFkYyyJWcOXyverXVzHChVH
-	Bd+Ldx0H9pYYTGHYo5DNL9B5brINOn8njq+X98TgaINBcOR5PhUHE/zUlGj2ClKeodAGG2ucRpx
-	kDI3/YsPvtJPKOgpodgFqN/Gz+/6nk/HFltVTvWfCmiOrcqdDOPuWxM6TkHp64gNEg0F1y8T1B1
-	rlNJPx/Dj5KvTB33g6+3AX0Qrr0XEj73QLJgV8D1KKlQ6G/TrpyxMrstdamruYYphMSI9HhXDEG
-	70R1I0wdfye8CA==
-X-Google-Smtp-Source: AGHT+IGqHqmgIMXwvUq61VXajd8KTbEubCufIExybbU0aXk2k1aZnPkuFwsh8/O1Ap0RUIbGKO8U5A==
-X-Received: by 2002:a17:902:ce91:b0:20b:c287:202d with SMTP id d9443c01a7336-2129f75ca43mr45276485ad.55.1732315934976;
-        Fri, 22 Nov 2024 14:52:14 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2129dc1539fsm21450335ad.192.2024.11.22.14.52.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 22 Nov 2024 14:52:14 -0800 (PST)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	alex.bennee@linaro.org,
-	Steven Lee <steven_lee@aspeedtech.com>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Niek Linnenbank <nieklinnenbank@gmail.com>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Troy Lee <leetroy@gmail.com>,
-	Jamin Lin <jamin_lin@aspeedtech.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Joel Stanley <joel@jms.id.au>,
-	Alistair Francis <alistair@alistair23.me>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH 11/12] docs/system/arm/virt: document missing properties
-Date: Fri, 22 Nov 2024 14:50:48 -0800
-Message-Id: <20241122225049.1617774-12-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241122225049.1617774-1-pierrick.bouvier@linaro.org>
-References: <20241122225049.1617774-1-pierrick.bouvier@linaro.org>
+        d=1e100.net; s=20230601; t=1732340610; x=1732945410;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=r5SLiEGNtParUpdQqTXob+tTfQ1hQU6vL+CHZB9nKXE=;
+        b=h1zU8g5xf4C1e9c/juBWY7n9AFiE6Kjai0lYdl49KRPH1PvfDPO5YPKN0YAych3hdB
+         MWaR0sCmJjbjvzMrlBVkFCF++Fq0OpKtKsbJYSmxSzqdmARC7DZ0V9jXZmwRrioAYxQ9
+         DIiv/dBYrcgVTAcL9Afoymxs/8ai4iCsnGe1+gSzE0pEFsDyWppuIRA/iyqt7gvrmw47
+         CZYAHQmlbv0g4RngPmrNY+Ztb9O1H1f9vr7jHDd/LRUrym6PAEo/7DyzDq5CMZTD3MOA
+         x5vfiHxJ1lt/l/GY+p6stP9mDDs+RomAUxaayjLEp5lPeILEqgvuAh008jXjgkLjoCXr
+         DwVg==
+X-Forwarded-Encrypted: i=1; AJvYcCU/O15gcmF6CArlLbGTFqf/7B2axlI5a3fVoqAJ7rNmxlF9/GG1BC0QhK+wzf+RXK1V6xVrC07ZBFtOWQ==@linaro.org
+X-Gm-Message-State: AOJu0YxFxLvoRc4jHxURMDuBSth0pslD02rFBML8SKgOj6bUSrRAht6G
+	tmS06TrXQjl/5r3QlT0orBrdmYbdWEMD6hoPCgTIupnNdeYGIqG4/8muxsJqAvCNAw==
+X-Gm-Gg: ASbGnctDZGTdUK53I/x0y7rFF3bGf0r8Z0+MPOVDdewl0zuztYiSc4FZku+yVYn3wBr
+	ocO6JQU8l+NmPGIVGDed9Enc7U9GU5QLm+gsOgyKgycA4WxiL15/lr5tweKClLOVJCDVuQBD3X9
+	cHGz70tTyetQXAjy54PXVIN7IgaCijdE1/UtY8AH6jIPwlKOf6FKKVT7omQBWwqUOjBJTXYkZpD
+	fOiG/f2V7X/ieUuIR3haAIyYKsitc+TaPSj+fWtqYNRUI3nz9vop2ufjfkoZg1w
+X-Google-Smtp-Source: AGHT+IE8Wg57mjIzY0mhnkATiRJGWpn9diflj9MO7BV2LI99tFAQLzLi1Jjalvzf31SupX8Ga0LjDg==
+X-Received: by 2002:a05:6000:18a2:b0:382:496e:8784 with SMTP id ffacd0b85a97d-38260b6eb06mr4893319f8f.26.1732340610512;
+        Fri, 22 Nov 2024 21:43:30 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.146] ([176.187.206.76])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fafe158sm4230401f8f.27.2024.11.22.21.43.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 22 Nov 2024 21:43:29 -0800 (PST)
+Message-ID: <2088d990-eeff-4305-9629-be87e60f1e9d@linaro.org>
+Date: Sat, 23 Nov 2024 06:43:27 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 07/12] docs/system/arm/fby35: update link to product page
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, alex.bennee@linaro.org,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
+ Alistair Francis <alistair@alistair23.me>
+References: <20241122225049.1617774-1-pierrick.bouvier@linaro.org>
+ <20241122225049.1617774-8-pierrick.bouvier@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241122225049.1617774-8-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: oiVIp4iDPkdb
+X-TUID: rAQF5bb1L0Oj
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- docs/bypass-iommu.txt    |  2 ++
- docs/system/arm/virt.rst | 15 +++++++++++++++
- 2 files changed, 17 insertions(+)
+On 22/11/24 23:50, Pierrick Bouvier wrote:
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>   docs/system/arm/fby35.rst | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/bypass-iommu.txt b/docs/bypass-iommu.txt
-index e6677bddd32..62818e44ed9 100644
---- a/docs/bypass-iommu.txt
-+++ b/docs/bypass-iommu.txt
-@@ -1,3 +1,5 @@
-+.. _bypass_iommu:
-+
- BYPASS IOMMU PROPERTY
- =====================
- 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 11ceb898264..d3d21499ff5 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -169,10 +169,17 @@ iommu
-   ``smmuv3``
-     Create an SMMUv3
- 
-+default-bus-bypass-iommu
-+  Set ``on``/``off`` to enable/disable `bypass_iommu <bypass_iommu>`_ for
-+  default root bus.
-+
- ras
-   Set ``on``/``off`` to enable/disable reporting host memory errors to a guest
-   using ACPI and guest external abort exceptions. The default is off.
- 
-+acpi
-+  Set ``on``/``off``/``auto`` to enable/disable ACPI.
-+
- dtb-randomness
-   Set ``on``/``off`` to pass random seeds via the guest DTB
-   rng-seed and kaslr-seed nodes (in both "/chosen" and
-@@ -186,6 +193,14 @@ dtb-randomness
- dtb-kaslr-seed
-   A deprecated synonym for dtb-randomness.
- 
-+x-oem-id
-+  Set string (up to 6 bytes) to override the default value of field OEMID in ACPI
-+  table header.
-+
-+x-oem-table-id
-+  Set string (up to 8 bytes) to override the default value of field OEM Table ID
-+  in ACPI table header.
-+
- Linux guest kernel configuration
- """"""""""""""""""""""""""""""""
- 
--- 
-2.39.5
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+

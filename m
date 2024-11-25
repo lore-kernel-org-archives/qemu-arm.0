@@ -1,436 +1,315 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1328513njc;
-        Mon, 25 Nov 2024 06:27:50 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVUXE0eliYnetGNAGsbcxWmmb8nuZ6FWlpAp4o+nG8tbSeLdTrusUOl8Y02/sFLm/YzrGrkML9o+HoczQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE5rOL4J+MXFm9tzFxO5NHDVoriPRSD7cEwB0MGHV2WyPT5Iaq/SdnrbqPiYYC81/zLMBiP
-X-Received: by 2002:a05:620a:720b:b0:7b1:1366:c251 with SMTP id af79cd13be357-7b51450d33amr955389485a.34.1732544870081;
-        Mon, 25 Nov 2024 06:27:50 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1732544870; cv=pass;
-        d=google.com; s=arc-20240605;
-        b=LbF5PJyPaO1kezZkIkPgLbaqcYLsdhHibtXLOegMXklTkIqMGq9Z25U1H/5HWm6w5B
-         HEEjWwqkWA3uxx42G4Zkt6DEdSsIh/wL1c6BP7CR60kzaZnarVQ7f5gGLbcdHHJ27qv/
-         E/uDIACRg3JvA06ecfyo8jKi7FzBgmVHOdPtLXeTBxXN+AZGM/qvL85Y2XUI/xhcxEM5
-         hpjJ897tH9F5YdPGDYSJ3uDUota02/MSJQosWwfCz9tJQrpd7+RCD/TuydgLP/ipNbC4
-         5iYoURBl0yw1iEM7i7jYcoSV7n3qjGQdTG180whxycfJ77IOnp3x+0oAwXX5rZgi9S11
-         0RYg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:references:in-reply-to:message-id:date
-         :subject:cc:to:from:dkim-signature:dkim-signature;
-        bh=tMm7sfsa5tMZm+9vPsMqJy+JU6H3ZOklscSFRUBodPg=;
-        fh=Z+NaJ0QNosbufPzebcTCu4q4wRKVPX0/mnNr9cL7roM=;
-        b=TPgSG1UczkiFQAxJw6lmwTB4iUuOEuO77O7PS7ysdPGoyFMhnfm5XVC2g5cZUnGMNm
-         t+TTWODD+ueqPSW7WFychVj06dVihvIego1laWkKZTmTgak1RA2ZC/WZLGSZZzh1B9ka
-         dK2SOKP0SzGXbAjVoYEHhVm4zmPtWhzz4pMCzOuzQdZ6rJYvSYhrPg4qnN6EvDbLDNZ1
-         IRM+2NhRfTCI3ZtohnkhCrUdH7jd1oOfNB3L6ODoK3D1o9V3BvNP8zDwMNeOL6KD2nX/
-         SP0t9HiUCWBmqSFZph+GX2kFxCwxeamfi6Y8Y8Vv29nmaBFKZbxVYRQ5Xf+HQaAkFAxb
-         XPIg==;
-        dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=dyAlblfL;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=ItrXmzZI;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b66829cdafsi325083285a.133.2024.11.25.06.27.49
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1328622njc;
+        Mon, 25 Nov 2024 06:28:02 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVdSpQsB6Cul/TsehthCWElGBGh9gth8V0xIy59h488jwpj+ObMtHOJHP6lF2neklvJ5itwgAmBTJWy7g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGjmi2D875jpE0IfvXL73BzAQCNRC4hAjSgB3/jIQ557NR5OuF87Csc8l9tF6DPeDv5iynQ
+X-Received: by 2002:a05:6122:521c:10b0:515:25f5:46f6 with SMTP id 71dfb90a1353d-51525f558b1mr1949539e0c.4.1732544881836;
+        Mon, 25 Nov 2024 06:28:01 -0800 (PST)
+Return-Path: <kvm+bounces-32446-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id 71dfb90a1353d-514fb256b16si2657681e0c.242.2024.11.25.06.28.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Nov 2024 06:27:50 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Nov 2024 06:28:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-32446-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=dyAlblfL;
-       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=ItrXmzZI;
-       arc=pass (i=1 spf=pass spfdomain=oracle.com dkim=pass dkdomain=oracle.com dmarc=pass fromdomain=oracle.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=fS8mnoCW;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=IKz8XjLn;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of kvm+bounces-32446-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="kvm+bounces-32446-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tFa41-0007dC-Ar; Mon, 25 Nov 2024 09:27:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1tFa3w-0007Zy-6G; Mon, 25 Nov 2024 09:27:40 -0500
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <william.roche@oracle.com>)
- id 1tFa3u-0001VO-C1; Mon, 25 Nov 2024 09:27:39 -0500
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id B7C4516826B
+	for <alex.bennee@linaro.org>; Mon, 25 Nov 2024 14:27:53 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id A238D1AF0DC;
+	Mon, 25 Nov 2024 14:27:42 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="fS8mnoCW";
+	dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b="IKz8XjLn"
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B840185B54
+	for <kvm@vger.kernel.org>; Mon, 25 Nov 2024 14:27:39 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=205.220.177.32
+ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1732544862; cv=fail; b=jRlLiGywR7LNJ6a8O6ZQZ6z7tX49YqZR1pAyWX+hO6Tb0Ms8wPQQefkCXD+uAPRg37lD4ZkFhzfl0LENYiq4/jobMW+CcH5+BoMirMOjUIKLj6iOodyils9+uEU9leE8PlmZPg/bUDUr2OvsyAffsv3PxLLxZ2+1fgWSE8blUI8=
+ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1732544862; c=relaxed/simple;
+	bh=c94GuPQlD86wwAKo2wUGTHGMlb38pzbNQlgk1SojkyY=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 Content-Type:MIME-Version; b=T6eLUGCt+sF8YrCxXUn8PYbk/LqRtQcDgxgp6X7bJ/59Xc7Im5F0oqE+Ba+AKs5gGqK2uN+fg+dMLXUVQOuvhal9FaZT7Sh+uNd61hWKjpv2b0PTJZgB/z71/HoIXLSqXCJlnyolDiPPXh29j7/D3ZO9xh5uwVguJDRci6Nj1JM=
+ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=fS8mnoCW; dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b=IKz8XjLn; arc=fail smtp.client-ip=205.220.177.32
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
 Received: from pps.filterd (m0246631.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4AP6fcpS006728;
- Mon, 25 Nov 2024 14:27:31 GMT
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4AP6fcpQ006728;
+	Mon, 25 Nov 2024 14:27:28 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=
- corp-2023-11-20; bh=tMm7sfsa5tMZm+9vPsMqJy+JU6H3ZOklscSFRUBodPg=; b=
- dyAlblfLsgGCFiIaJjIu+9ai/k1VUQ5bKoBDDxDQch/7JsUebco3RS6ZnimrFy2c
- +d1a4ua8T1eLiPOMflLM4VDnRVdH+pJ0oPQP9JSQTY5sqAMbIZi/VJgrHCRAorYy
- dey426FvkgFHrhjUzkhZ8J5RwOTRDXqKXYwxvTS9pr9/7vX3dxrVQ+fbcSuk1pxv
- +B7lquUJn9ci5E47ysxMplXeYS12lF8fvfs72wlPcAcXulAIRpFO1JOtekNIs/6U
- K3ZcxznLdHgC/JnhN05lzJl8LEClBhWxtUB38sfV0dhm0z9M/A993/txy/SJfZIr
- jQJgCKKb43lAPERCmBmO8A==
-Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com
- (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 43384au7aj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 25 Nov 2024 14:27:31 +0000 (GMT)
-Received: from pps.filterd
- (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
- by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
- with ESMTP id 4APENbjt023448; Mon, 25 Nov 2024 14:27:30 GMT
-Received: from nam12-dm6-obe.outbound.protection.outlook.com
- (mail-dm6nam12lp2169.outbound.protection.outlook.com [104.47.59.169])
- by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id
- 4335g7k1py-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 25 Nov 2024 14:27:30 +0000
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2023-11-20; bh=5A679e/2eKPMHKee/atd42aBQUwZQOa2Q2ipO/drAnU=; b=
+	fS8mnoCWDxPD4D7IbS6ZmTD6KMxswooS3NMRrr1PQHMrctCAQEZH6xQ30y6+s9pq
+	4w11xL8Po3/cDKdZAhaJpYY02BPDgBw+dPebsWbU7jPzwd9F86eWkr1dmgMIEwEx
+	BQAso5q+TgKx0JFR6/aukiGYO1pVEzOjQZPGbHoWPB3EtKYmaHjo8hAMDRvHTvYv
+	aG6x5Le0U6Dtt/O3lbnDIQHhibZ8iKpR7DZ6/ih2CnoU3JwQOgOTwSGAEfQPEGLY
+	Y9DEnN0GZ4clcebfer7tSffEivJ1dVYIcT2VliJ2jtYMxiQt4FG8pGvDC33JmNls
+	SakicwgcPTUM5VDBVWbk/A==
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 43384au7a5-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 25 Nov 2024 14:27:28 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 4APE8bJ8023429;
+	Mon, 25 Nov 2024 14:27:27 GMT
+Received: from nam12-mw2-obe.outbound.protection.outlook.com (mail-mw2nam12lp2048.outbound.protection.outlook.com [104.47.66.48])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4335g7k1m7-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 25 Nov 2024 14:27:27 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=bf9mBq76uxsPPpDOthxcOOfAvBPLvYnldyFqrs3LhogjbAIj1KAYeBpbc40F6jpnMlr8dU1XHOddhyEUvH0lcErWCXQCnvxavzLOVYcUZCJ0bMPJNMYpi7NJQzWt1BrYGeV+KJns80Z/xjAnoA4kWOrsMr5kTCoUf+mxNsIno4Ef2Q1WQTXY4B/lYp9j1/ANzSV7wXQXt24oXwpNa23bVwBeaEmqQqtF4jRFUL9ruvkjstNiWDJrNvK1Tl4ptjgNW4sVBjaQhZjWhNqUnEIj/FfriIgMfy0ZHcjiM8d7j8gJ7DMJKkUMsDokjzZHcXpraWBA0meubnF/ibiSPxYcSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ b=rg2v6gWs7BotvhmioxEi1gIjPugmiBiKb+OZamyKeNZ3IfTTcyvhI7fxMjjmUz9nbyQpI/fbc4QmOI7RpTQdp8Pb14IJes3CjjFjnrV6UL/YfLfIvOeB6+Kqs7EXWoq7QrfZC0TSFQ9Z8zwO6ezrEO1nnAcDyGrvOnxJqLyDv+yIaN4CRBsYnZdXXst1gusxVyJD6fk0o0s3aBSUQL1y2DxU/LI5p9VZCyu23HURMWq8skFUU/eFYpOOfzvvdsW/gnefZ7gzvS3Xw9kWCfT2o5fl6ADQaW1jze3nZYm1nPKJzfy0oofaiam8pYi5QnzowqoGvF7Tlypj9pKKXlPR0w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tMm7sfsa5tMZm+9vPsMqJy+JU6H3ZOklscSFRUBodPg=;
- b=VUy+NV4SeSE1roQiW1ABgO3Jj5QERjZiJnbOALI79bEb2z7S//BezqxjnE8suppIXy80JjBlF121QDGfNvhVeq//bxRITQbKGd+rEhSO6Is55ikd9a9Z0METNdpmwcWncLaPncfURjx2DNstIOPLS9cG6tKFbySJj6Z1F4QsPrLGfNe2O9HXqBsvMYWtzmVS3yHREzRVqd8LhbVVEqsWLO9+URiI36/Wp1gp0Fqt/dIJzPItwSSPQUnG/5tz76bPRUTNevSqoPy9u9z7hwVzAafAqWESGKsxy/VDJ1OKCVVlblKkOLmJc2j+j9bypw9IOdSvgeuMlWeXsU7rR/nwwQ==
+ bh=5A679e/2eKPMHKee/atd42aBQUwZQOa2Q2ipO/drAnU=;
+ b=neP/EE9CxwxiObHr43g5fCMzJ0WpVAThWUMMMgqR6MKSxEnK1lvGBLmyGJ+8Tqkf629ngDk0lGZfFv6V2nT2ceZ5X2xKHtD/+bvbvsLfeyizsHL6ZMqwFm21Pz6tI32FSaogPBHpzyF0V4sf0GV+bVNIUGOaCueYOwkwhH6oWMUOkeI9UWcQbHcaBrtNOKnEn3/CZBw6cILN+Hwj9V+XcF7qcMxfjHlXrYoAiFuVyhDvDsgn1gEhpVD9q+haxfrUvPPNp+Mcx50QlWugmjYkrE0f/oqV2eM6jtQBRUtGsenCUcPxp4bfNcy4jQSz8+V2AtQFGkmG2hUc//zNnBud3g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
  dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tMm7sfsa5tMZm+9vPsMqJy+JU6H3ZOklscSFRUBodPg=;
- b=ItrXmzZIijZXt0eccTSA0AzsnDbpfxhQG9pCu2VFfBFFyGrEMKgYD2PKUihmSVX6oQWEQxKywm5snN/31tVIQEHJ9G95x21wR44U4h5FY7mS2TSom2z9pX0aW4SdUr+UolGGgbIK0C20Pon6QMv18k5uXmaa32Ro98uiQjPxn+o=
+ bh=5A679e/2eKPMHKee/atd42aBQUwZQOa2Q2ipO/drAnU=;
+ b=IKz8XjLna9T3HnN10McmnY2yJp4TpVz+FctYooKeA/ReBnYQpMi/g3sDQI9MCvfmDwCsNFGMO//ugATfmP6qOC9c3Irn2OJgOYLB/cXzUTUGEPaGVjqCVOr2xsONCj39jXiTDAom0sMeEGFcVyaibrJBR0EVxD1NRX5P/fEDL/I=
 Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
- by IA1PR10MB5995.namprd10.prod.outlook.com (2603:10b6:208:3ed::17)
- with Microsoft SMTP Server (version=TLS1_2,
+ by IA1PR10MB5995.namprd10.prod.outlook.com (2603:10b6:208:3ed::17) with
+ Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8182.21; Mon, 25 Nov
- 2024 14:27:28 +0000
+ 2024 14:27:23 +0000
 Received: from CH3PR10MB7329.namprd10.prod.outlook.com
  ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
  ([fe80::f238:6143:104c:da23%4]) with mapi id 15.20.8182.018; Mon, 25 Nov 2024
- 14:27:28 +0000
+ 14:27:23 +0000
 From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
 To: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
+        qemu-arm@nongnu.org
 Cc: william.roche@oracle.com, peterx@redhat.com, pbonzini@redhat.com,
- richard.henderson@linaro.org, philmd@linaro.org,
- peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com,
- wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
-Subject: [PATCH v3 5/7] hostmem: Factor out applying settings
-Date: Mon, 25 Nov 2024 14:27:16 +0000
-Message-ID: <20241125142718.3373203-6-william.roche@oracle.com>
+        richard.henderson@linaro.org, philmd@linaro.org,
+        peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
+        eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+        wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
+Subject: [PATCH v3 2/7] system/physmem: poisoned memory discard on reboot
+Date: Mon, 25 Nov 2024 14:27:13 +0000
+Message-ID: <20241125142718.3373203-3-william.roche@oracle.com>
 X-Mailer: git-send-email 2.43.5
 In-Reply-To: <20241125142718.3373203-1-william.roche@oracle.com>
 References: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
  <20241125142718.3373203-1-william.roche@oracle.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-ClientProxiedBy: CY5PR17CA0018.namprd17.prod.outlook.com
- (2603:10b6:930:17::28) To CH3PR10MB7329.namprd10.prod.outlook.com
+X-ClientProxiedBy: CY5PR19CA0084.namprd19.prod.outlook.com
+ (2603:10b6:930:69::20) To CH3PR10MB7329.namprd10.prod.outlook.com
  (2603:10b6:610:12c::16)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|IA1PR10MB5995:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0b920879-52f0-45d4-91f0-08dd0d5d4a20
+X-MS-Office365-Filtering-Correlation-Id: 09049a0e-94ea-4702-976f-08dd0d5d471e
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|7416014|376014|366016|1800799024|7053199007; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?nol3CV5FOuL0MM/dXQudAlCt2afV+WN2CUPVEM1mHivm5PX0+8H6UmatY+gF?=
- =?us-ascii?Q?KTakGZPWqmIM/w5zbhPXz1lyhWlgl5G666QPM+xafgYRM0IWjjm6dJo8H9Ru?=
- =?us-ascii?Q?AMdIQYMcw9cQ+N4fZtEFb/wJEY74I+C4KImBmsdf/N5BX7BsPHCiFgh3ClVc?=
- =?us-ascii?Q?4B0dPPlf+pZlW4OYJ8puh8Cwt7kcLCC4OBFEQWb2yHSLUpAsoeHK/QmCjtsx?=
- =?us-ascii?Q?0tUPF0Wwi/qAthPTv9zTWLVJNQ9UUCOHfn19ZVZbt3+4q4Ksixg0iRwDI8Q3?=
- =?us-ascii?Q?/vYK9ohxmfnwVqax1eZePNePvHNXAo7rY1X8IWayQcpzI30bXxgkUD4XTRLK?=
- =?us-ascii?Q?93Fh7wIe0+U/FzEj6xAREwF/JDlxFxDqPWHgiv4Wd62Ut2C3V6S2bwnqXMR7?=
- =?us-ascii?Q?8n3fdvBu9P9CL4HePVufyFEryAHh8fWVyij8KEUoiXC3AdRfKn8rvx7Ukxvm?=
- =?us-ascii?Q?13hrGGrA1yGU1JF5D2EPiSXQ/etkUByEVZdp0E4dZa5JqmVkEB1erZAB3TD7?=
- =?us-ascii?Q?T3C5OyFD7MmpPCwxBjZH1eGae5ZOoAo2pIU+VyNpwjuOBAaZc97lH7QOga8M?=
- =?us-ascii?Q?pmLYtf6hn4kvK9rlSZzeR3c/xDq6P7fCj6oRJ0TkNGDHi5FkEVvL2IniPgKU?=
- =?us-ascii?Q?BChxq7AOZVmp2bwfTWnLBK0JPj/MQH/wtGglNVbl5Rn1VV6EZCZOT8rB2oU/?=
- =?us-ascii?Q?Dq6tZW0ZiG9+U6ORNKtTqn7gaUH10KVdvSiQsY/XWLktbwkq6LzJIlMg8IFx?=
- =?us-ascii?Q?256/IE+zGGYpdzuniA9KLmVx2QDMC6Q4Kobha7M0tVPqi14TCMl98rHA/aIp?=
- =?us-ascii?Q?M4LyeHDUl6DQbtOdfD0We0XjRRr/fWHUG/DYYXfp/8713KeamiDBgawZKBNx?=
- =?us-ascii?Q?vvi7rQ6N2imrHrXcozpv7TIQf1/pVDhxQiIvEWfvhmxGSfJuANZmW3Fh4eEX?=
- =?us-ascii?Q?MIlMQFbOWYtAxrm1u252uGKVV6qekl4iMYVeYDbxgPfqWwCeFHs6VhpFYnKk?=
- =?us-ascii?Q?xaX5otGJyQqflD25xOBtB7BsfdVQ7OrieoVF/w67R+ajVbAmkVcH9ccfB3xa?=
- =?us-ascii?Q?PIyAdBj8ZcMQM2j4QJK1LjU3UuAOEmWetHyjJ0oIp64oliMZI1HcLjC4PhEN?=
- =?us-ascii?Q?gmfi3tVhFXC6QqeErFYR88n8ihcwdR2ZR+iD8TvXM3dZcSd6O/sS6rmNOa+Y?=
- =?us-ascii?Q?aVAD5TYT0WNdZQJl+VpaCvFVgoaQzqg6RM3nVKfCSuQrnBUCH8DqhT4rIQ8l?=
- =?us-ascii?Q?SM03q2oaBWDWDpKP1lkWPg1PNzhMDAqIEIlDljW0Apt1UrKUWd2TYjxJkPC1?=
- =?us-ascii?Q?5MF5Pdnog+t+0hurYjmXLCLBaZs62On0ptmfEqSYVlQ5hQ=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR10MB7329.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(366016)(1800799024)(7053199007); DIR:OUT;
- SFP:1101; 
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info:
+	=?us-ascii?Q?pilFt6GvHd3DCimyKy1A277mcVavihIo6hFA48TO/qct5or2QzGwW5ixmCpR?=
+ =?us-ascii?Q?E+h72N7k/c9/sGZLzbOv7abiIpLu8KlK21eLVxcgYCKQ6zy3JEUP+JVbraxw?=
+ =?us-ascii?Q?TnUXFBDe1Dn/sstMeGRzYsit9WFFA5An05WtvqFXrMl+rJO1lf4W8I3RNMXK?=
+ =?us-ascii?Q?hLrz/6X0IS+lSkzK5h2z7nMPzGMloOYqqr+nFgzIEZA5jixPUNCpUiTbHM3x?=
+ =?us-ascii?Q?zLZnnWO6a8KfAoYBMk7mYiYkfg/3nSgEhfgsp6fr5Ca+H6A9uNk+/3P0JSxH?=
+ =?us-ascii?Q?gii92tMdGPaEdPCZaQ0mrSNnJadLglzFS72Qp45BaaPHPl0HAewZ8D/gTYNz?=
+ =?us-ascii?Q?jPIljvpLzlHN+PYgCkpXpEQoWhIYlWpGoG9o+itIKuIJUqRoKldf60T8XTPa?=
+ =?us-ascii?Q?ue9C5smBsdxM90zNjLr1NGP0sR1xmpGFJofxXGiAAsRuyEj5kw6eFHQ7YNcQ?=
+ =?us-ascii?Q?8X0EaNCVSQ6fc04mOHzGIc0pcAFk/aOPQZRScmmIiQllHOR1SX0utyXKjpdi?=
+ =?us-ascii?Q?VjEu6UR4wllOAiK30WvfXSxTQ5Af1Y+of0GvImOdX+RckrqJtGCOLfD7b6OM?=
+ =?us-ascii?Q?8Pr8j1w+luv5SBs91AT9EM26uPEVw/Jpl2BZer0yzuuv6wQ8uzYcT8vvIxwf?=
+ =?us-ascii?Q?glN3kl+OdtF35J2jqUX9S5nOMEi0T7aVMgbVnUCoElGFcVKHLr5u9wATnEz3?=
+ =?us-ascii?Q?TeTadnlEmBKw3MLDaKnDbDdnLrsa9kX2SPI5NvmmcJ7QGZ9doF2rnmp8Itoy?=
+ =?us-ascii?Q?Fm5j/rDvwTbOBbvO8IHuBtvMftGYRS38OTR8n1n0VChoQPB6AJTSw4lqBPL3?=
+ =?us-ascii?Q?PHdH7oZwiNq8CT9XE3tnD84Tr90Hwmd8ncj9msTbztNk0Bj79ur54e4SKmJp?=
+ =?us-ascii?Q?lNM5xgSwDsdUDoBOentq+KkffeygGRLvtA3gokCuMvMSreoelGscHd95xFKg?=
+ =?us-ascii?Q?Eu8h/Hta/eOiFhHLZ4n02k0oUIRVEZrA5ZOK+xqTyMIyvUkNM0Nl8dtElCdV?=
+ =?us-ascii?Q?Blnb9cVrgcGuzbQJcbeUAe8Waw/9mg9Ne/Nth0Oogfq1tHSs7nSCOXAZV+m8?=
+ =?us-ascii?Q?jsWImBq2MEmRCTn0zuyoCQJi1JvxQnVM+OnCSYKQVcfFRb06XXb282W4cil/?=
+ =?us-ascii?Q?bWw4Zm+CyYMLjCoUvrSyAk6TNkgBS7MKjSe5W7ou43cPea12L8r3otKnnx2F?=
+ =?us-ascii?Q?xSp+T5jT5S2WFx2DPUFrQTcPJFPXWz86kytGRZ24YI27vN5rSlJZBCmuOjoQ?=
+ =?us-ascii?Q?15YV6wbwLOHcZtXYcCWtdkyFEpKp736qz337mjJbrdvIj36rBDy22lzXYiND?=
+ =?us-ascii?Q?CZsVT89WgGqWhqqfLzmlCB40FbnhnULNdAI0h3m5A+SNwA=3D=3D?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR10MB7329.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(366016)(1800799024);DIR:OUT;SFP:1101;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?IO4IS9ecFK9vWFef2QQBg6pODatgIxNHlpmln9JJr6xaGoPwXxlJOj3zSArl?=
- =?us-ascii?Q?EUU3yD8G9naXHpCeSPpj80KvDrmZM+5tCrW2v4aYR5pfwN8uapCNne03ysyL?=
- =?us-ascii?Q?qlPGMybfExEHLFehY7i77sqKO4PuMFUqCq4QzIs+2PShcCv4q5yjPysdNiMe?=
- =?us-ascii?Q?4IkX+iqp49Ri04145r3LufXOLEiYhFIF2aaqtfn1wC686SaY9k255rd6dmyt?=
- =?us-ascii?Q?Y/Nu/Skoc8+sRHIi/iOMpkA7gLkuXumu85TJZpdnkRjayyYekWmWcoqacfWI?=
- =?us-ascii?Q?1ykRjdf80WFcQ3ecf4tF8sapgF1j+j+ob1j1D964XGuNGmlLPT53cqzeIdff?=
- =?us-ascii?Q?jpUIkYHK0/3UX18AAF/J46znUNnpPNPdsznPNlffjXwKZRNUBIZZjrqNxWZa?=
- =?us-ascii?Q?OqbJlp1SQ5rIwQnlWFpcOT4aXAnJ3hIxBRvPJpz+6LuZC71J1FsBUTldn2J5?=
- =?us-ascii?Q?fBI1Rr+p32eH86zmAS2bVTFPTQjIQrau762f+Mqzrd1gDbUYygGWfgsIeAqc?=
- =?us-ascii?Q?Quwl2X+xZNjkjfQR+PKTS7N6BXw9j50PyFxQdljEkWgHqSv8NwbEPNiCYAdo?=
- =?us-ascii?Q?YlRRKmL/1Zq0Kz1SM+zPu06Uih+Bga1w1zVqq6M9L3pNC6YbzM8KuXM/wscm?=
- =?us-ascii?Q?Nb/ZKRjuoheJX5XmzjeJrAIlAYjAVdKpMaKxJ1AtginXOh6fhe2Ki5xSx0Nj?=
- =?us-ascii?Q?gNxWdglstXK5wKk//WNvezDGe21u/jr/XXRgnanBYPuxpSR0mTb90Z+rkP8J?=
- =?us-ascii?Q?ajrG4q4HtakybfObc21P0HstZSHezlPfmqtP+OljrrLK1c7SY+YUXguBT5Uu?=
- =?us-ascii?Q?0OrsLgcaf6mOStBvwrclRQAw1+I/A+rVHWIW/7bgS5xDL4LBQhrLOIxiq3LE?=
- =?us-ascii?Q?iNpqXP6YfRfAP7x2oTsmOf2R07TeNXaUafc/sydK+qv5IC0Ar6R1gwYkeIju?=
- =?us-ascii?Q?93MsbLz86S71fAKyEbKOWFaC3OdaWuoZcugJEwfoGtj1f9v047Pd+2PMjglx?=
- =?us-ascii?Q?MIcSCu/FF+lbUG6NMXo8ns+p00JD2RBlBABRn50sftrMKNbI9+zFJ4EGRkbe?=
- =?us-ascii?Q?IayiIIxq0UeXcSrHvjahPRAqKRqC7Tx70BCj79PHfqYRwvJHod2N9TKaucmN?=
- =?us-ascii?Q?GBAyazoFZq602P7M3idh+djWu/8PkpfLo3PK+alxItP9BMgw/6tPBHHGwTKU?=
- =?us-ascii?Q?wit6cZekycsUEtqy2fWyg/niB2nrNy1CPyYJsrN6e/mc6jnmL6VHfeyNq/X9?=
- =?us-ascii?Q?u9Uf8v4I4S9F9Govned6zLrGYezZyVwIrGcWZ9JeMw6XQj+PJHSbI52mBP/L?=
- =?us-ascii?Q?KM1G9h6RfV8WLHiIi4xvUmYpmMNLTsdijHTxXrNOpAuAI3UpM2c30y7GqJf8?=
- =?us-ascii?Q?U56sCcbZ2Ca28PSKmMYAu3QNI2ldS9R4djYU5Z1wEsFDdne+su1Nau9wsITk?=
- =?us-ascii?Q?1x2MGgKVggwm1gvIBdNDWSZ2L54owsyvbbFstuBGG2txRJNDGw+Kzb6lsTTQ?=
- =?us-ascii?Q?xYGV6BTmWv/9z215g0wvgTwBs8SorsS4em4lb3djYuCDi2dpZTIBrTcxmukQ?=
- =?us-ascii?Q?U+eQq9l+oYaMmLwFPmNrXnbpAKUQLXDIO00eZqL1SYHL7+/s4AY4aB8UU5BM?=
- =?us-ascii?Q?3g=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?us-ascii?Q?RPzxHquCn6+4M3wqKZWcYYoJzmx4M+iWN3Nf3ifR4QPHnlLKdiViWZpA0tRb?=
+ =?us-ascii?Q?Dns/7VC9VEkHgvBYNZsmm3qWdRHByk7DsZ19MbgWOq7RaYPiHB7II6L0km7N?=
+ =?us-ascii?Q?z/vWoj1BP09RM09YaRm2DsqwHdnXBUDVxjphioZAc1Ae3VY+VYQQ/8w7LuZW?=
+ =?us-ascii?Q?2t0csaGgvZlShrrqEpc4Lk8dZS9IgsJX7cnrpxBXjexOO9IV1rL5xfaaWWe2?=
+ =?us-ascii?Q?lVIZhIyrqTxpssSXi4Fxo97kY1sIW5JTkItibAVkhgnXtiOUC98aaqI2eYu2?=
+ =?us-ascii?Q?X+DjyJshjYRopWviG+TaPH6wTKFRduaBBu9VcT3GKjFV2xV6OiwoShZ5vjNf?=
+ =?us-ascii?Q?T2iEW0hiYLLrEP03HbyIa4qXRGq7EMY9WkM2lBQQoApzV6vn0rucBYLazTac?=
+ =?us-ascii?Q?Y2vz/amefg8ME7tWIjUB9WpP7kNTYK3FzCLftHtO8nfIEzYS5w59yjWwCewx?=
+ =?us-ascii?Q?G3WvaSTvLL47E9D89WJeHD7rm+pFk94wsFxp+yL0/WgYji3owabT2t0nw47a?=
+ =?us-ascii?Q?Dh6Tyb/cq/j3JGo3hkxnK1CZUvYU2MnpAkpb5o5C4av+NkL3xERX4aCSY3ir?=
+ =?us-ascii?Q?c1X6v90+UGjcDJEOg5h1625i3IwSUKgYVekYwPJL3oJu8a170ee54MYThcS/?=
+ =?us-ascii?Q?10/DmC+re/vumDB9lj55orXa566Iqyr2F/0CdX7BXATDm4M6Apmxr0b75JB1?=
+ =?us-ascii?Q?vnqw6AFlUdsDNr1nsMJqoRihbSVJOz+EqYLnveUM526RKyxBuHmpEKeZ4FPN?=
+ =?us-ascii?Q?Yf7IJHfO1BK++/MnfGHJPJfdH4jJiNKhGdXXQseqy7MQKE7xFeOeqEgEaJID?=
+ =?us-ascii?Q?+wvhBJg1ynnxDCjcwguo0x8Rw3Hq8w1LxgquFnvHiTMjGcLjz7XjuJADeXs9?=
+ =?us-ascii?Q?iubTNkUBga2TvuJpCrST7ZJqune8Tqxz50aYmERiWmlPZd/2rtOUhtpCs2oz?=
+ =?us-ascii?Q?nlvudB6It9r734opVHnBomf36v17u3th1ImVmTpkluC48Q/q5ZqOj64xZE7n?=
+ =?us-ascii?Q?9kC7biCNcB2tVugCOmIisXg8ABIhS07rdYsm8lVUL4gBteYMoMYyKB3M7/kc?=
+ =?us-ascii?Q?ZHOTkVuj58HdjpJUX0PIXBvuOAQ2aaYj37asoEqq/BW2QoL+5VC8eaUQordb?=
+ =?us-ascii?Q?3ZbPL+QfLJprZWWk1i/p3S3zVAw+6JJ1s8+PbMWTNDk/VSz+wumb6KM3MLwY?=
+ =?us-ascii?Q?5TfIyiF1BPAHUZkFTZN1LAf8knngW6qC2R3+sEQZVyqtSStzB7lMHXiEECIG?=
+ =?us-ascii?Q?A0HO03eWTcSUIzP6bB3HK/MVHAqqiqIwa6QNci+qU+/0oLJjl2iD7UUw0cVU?=
+ =?us-ascii?Q?+EHv0vb21cYFwPlYJBpKsp1vAD8ZknnFWR4tlWcK7B0665oMrjd4z0jfmZyv?=
+ =?us-ascii?Q?HUwq/Udh+eupVKAyTD8d1NkbsGlYeFS8FsYYUaH3jqguDAw5q3BW55haxlLg?=
+ =?us-ascii?Q?4/FBdVK/XywceGB1KWCTvZiOFY40xCmqfxvSgIzUXFLJBsIy6vxr8JXlfWQa?=
+ =?us-ascii?Q?Wus825nbai+igr/Rc6IQZEQIopkU7bKdTnODQle0vYN5Rolu5qEKP3XPc8zX?=
+ =?us-ascii?Q?MvSwcM5ZinL6WhNx4Ll1aNUA8w+N+XYQDQNM8XRb1ksVm355JTM00mpRQE4E?=
+ =?us-ascii?Q?Rw=3D=3D?=
 X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: SLrSTZ7f4mpNpJQqlQCtVMXMknqJnXvjry9//6HwSIOTvLpTDzQz+eE7ySBltm5uE+dnY9hUNTu7ao0KQ8SGZM6dZzTBAWoCXaI8oRxROJl6Eb+w1KdePLa2jV4YsQzvyny4ExaMjqZ98L82FaP6PfCRCMVXUsTQMAxqWgclqsW5WUCLe/C9+d78n/jXmouSCGDvo7v8RAUSOzUCj+GNMd9eRl4QEupL30MzcfHaQ89kaPD4F8JjA1z5Avrj589NaLb552BbgT9R1oN+Kh55e8ComQMbsV7Z9BRPUcLNQMGZXcEzx/R7gNhCN7ytWBLJ2oY4fWYLq4+QKOP2I8sBLaOERyiFflO5tmibwE0XHF95CZPxMh41GmpZL5SAOhX3IjnKFTHOYsl78jzN7c8EWKSfYymIe7QjtsNFo3fwcd63yR2ZB7kGlQVxvEaG15Bnt4OjFjMp/xSLxR0QniBTeb0tNsCDORVLDtD1UfoYwJG/R2T5P0zs7U4REqgHQgsi3tHJCjXlpAkZpm4AJ2UegdLxjCHobK1bv7tSU7qaPHy25yaigIVcuPdfIvraYCVsxEn91eDr/qCpUtqe7bMzm/rhXKv8sGRspanUrf0e77c=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
+	eVXE1CAPJ7oIf4EtVqrt2wXfFVTkRftmd8Jd1+MUQbUJvhjH9nnuRWXMFzLkWUccz6QVFCwFrgjmpvjrZis1t0xq74rTmSKy3x9byvX96XCUC+20VlpbRDdrcFX7hkCPLf0XN3JXBWhbmixp117e63nZy/W/0pSE4s0lOohCUB/y7Lp4h6CFvtF0Vzvr3Si2TxWWa7KfL/7PQuCuoX4TEhAg1bFU1PIMGOKcXIwRvJTnYAVGOhVFFz/D2M27uJ3y3gI9txjIxlg4Pu8xLxlEJAypgmetpS4nwfvurONOns7xybCdsU/BJlTREUyKXhv4VmAHsfyfsUQPrdDdM/AT9ffJ7WCd4yB4Izc+2+paIsG7FiXhg67b++QQZcYvonD0omImDmKgwlpMK/Mnwi5B7A7F6vmfief1eKoPcxGdE1GHVwGFU2HOdMJoT80fBRRA2A5XL4N8pK6Wir4vgkypzXNqf9feoruyIjnEaMTv1R1qRRHWx5F21mHkhCbv+kDnroK+ixqDtCoNz0RXidlDTuj/grujxEFydlP/m9nWuGVdgtj4m7SCm2Gxetx3PKJenCBvDxVWUBesHip+J6wcGL79Yjx5n8CcDbYCh6qlsxQ=
 X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0b920879-52f0-45d4-91f0-08dd0d5d4a20
+X-MS-Exchange-CrossTenant-Network-Message-Id: 09049a0e-94ea-4702-976f-08dd0d5d471e
 X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Nov 2024 14:27:28.4881 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Nov 2024 14:27:23.4404
+ (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: e4Blo6kK4eN/AFqATgTjeyHqiAne1hEDFLCTIHZqc3Z0GIuhu4Oh2A+U5KDVG2ivYRz5lnepiYQs1J4x8Y0IGIhPUPjh6zcA9R5ki/B5TAA=
+X-MS-Exchange-CrossTenant-UserPrincipalName: /AkAggE2991FepsoP8oGJdA8kOjL+cEl9UA6TzEm7W3qpP3mdljkVvPyycg5CGVr3GgkNBQ/kCG8vf+VlBq9+uVGeysPhELmZlu5+1iOkQ0=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR10MB5995
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.62.30
  definitions=2024-11-25_09,2024-11-25_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0
- spamscore=0 suspectscore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 spamscore=0 suspectscore=0
  mlxlogscore=999 phishscore=0 adultscore=0 malwarescore=0 bulkscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2409260000
  definitions=main-2411250122
-X-Proofpoint-ORIG-GUID: uVWDEO6C_G4ekZmF_Y69t0MhLgViO8aq
-X-Proofpoint-GUID: uVWDEO6C_G4ekZmF_Y69t0MhLgViO8aq
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=william.roche@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 5h22eIA4KNek
+X-Proofpoint-ORIG-GUID: lyZC0jhQefSxZsPpAel929IbpQeXg13r
+X-Proofpoint-GUID: lyZC0jhQefSxZsPpAel929IbpQeXg13r
+X-TUID: WER4mEORjXqF
 
-From: David Hildenbrand <david@redhat.com>
+From: William Roche <william.roche@oracle.com>
 
-We want to reuse the functionality when remapping or resizing RAM.
+Repair memory locations, calling ram_block_discard_range(),
+punching a hole in the backend file when necessary and regenerate
+a usable memory.
+Fall back to unmap/remap the memory location(s) if the kernel doesn't
+support the madvise calls used by ram_block_discard_range().
 
-Signed-off-by: David Hildenbrand <david@redhat.com>
 Signed-off-by: William Roche <william.roche@oracle.com>
 ---
- backends/hostmem.c | 155 ++++++++++++++++++++++++---------------------
- 1 file changed, 82 insertions(+), 73 deletions(-)
+ system/physmem.c | 69 ++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 46 insertions(+), 23 deletions(-)
 
-diff --git a/backends/hostmem.c b/backends/hostmem.c
-index 181446626a..bf85d716e5 100644
---- a/backends/hostmem.c
-+++ b/backends/hostmem.c
-@@ -36,6 +36,87 @@ QEMU_BUILD_BUG_ON(HOST_MEM_POLICY_BIND != MPOL_BIND);
- QEMU_BUILD_BUG_ON(HOST_MEM_POLICY_INTERLEAVE != MPOL_INTERLEAVE);
- #endif
+diff --git a/system/physmem.c b/system/physmem.c
+index 410eabd29d..26711df2d2 100644
+--- a/system/physmem.c
++++ b/system/physmem.c
+@@ -2180,13 +2180,37 @@ void qemu_ram_free(RAMBlock *block)
+ }
  
-+static void host_memory_backend_apply_settings(HostMemoryBackend *backend,
-+                                               void *ptr, uint64_t size,
-+                                               Error **errp)
+ #ifndef _WIN32
++/* Try to recover the given location using mmap */
++static void qemu_ram_remap_mmap(RAMBlock *block, void* vaddr, size_t size,
++                                ram_addr_t offset)
 +{
-+    bool async = !phase_check(PHASE_LATE_BACKENDS_CREATED);
++    int flags, prot;
++    void *area;
 +
-+    if (backend->merge) {
-+        qemu_madvise(ptr, size, QEMU_MADV_MERGEABLE);
++    flags = MAP_FIXED;
++    flags |= block->flags & RAM_SHARED ? MAP_SHARED : MAP_PRIVATE;
++    flags |= block->flags & RAM_NORESERVE ? MAP_NORESERVE : 0;
++    prot = PROT_READ;
++    prot |= block->flags & RAM_READONLY ? 0 : PROT_WRITE;
++    if (block->fd >= 0) {
++        area = mmap(vaddr, size, prot, flags, block->fd,
++                    offset + block->fd_offset);
++    } else {
++        flags |= MAP_ANONYMOUS;
++        area = mmap(vaddr, size, prot, flags, -1, 0);
 +    }
-+    if (!backend->dump) {
-+        qemu_madvise(ptr, size, QEMU_MADV_DONTDUMP);
-+    }
-+#ifdef CONFIG_NUMA
-+    unsigned long lastbit = find_last_bit(backend->host_nodes, MAX_NODES);
-+    /* lastbit == MAX_NODES means maxnode = 0 */
-+    unsigned long maxnode = (lastbit + 1) % (MAX_NODES + 1);
-+    /*
-+     * Ensure policy won't be ignored in case memory is preallocated
-+     * before mbind(). note: MPOL_MF_STRICT is ignored on hugepages so
-+     * this doesn't catch hugepage case.
-+     */
-+    unsigned flags = MPOL_MF_STRICT | MPOL_MF_MOVE;
-+    int mode = backend->policy;
-+
-+    /*
-+     * Check for invalid host-nodes and policies and give more verbose
-+     * error messages than mbind().
-+     */
-+    if (maxnode && backend->policy == MPOL_DEFAULT) {
-+        error_setg(errp, "host-nodes must be empty for policy default,"
-+                   " or you should explicitly specify a policy other"
-+                   " than default");
-+        return;
-+    } else if (maxnode == 0 && backend->policy != MPOL_DEFAULT) {
-+        error_setg(errp, "host-nodes must be set for policy %s",
-+                   HostMemPolicy_str(backend->policy));
-+        return;
-+    }
-+
-+    /*
-+     * We can have up to MAX_NODES nodes, but we need to pass maxnode+1
-+     * as argument to mbind() due to an old Linux bug (feature?) which
-+     * cuts off the last specified node. This means backend->host_nodes
-+     * must have MAX_NODES+1 bits available.
-+     */
-+    assert(sizeof(backend->host_nodes) >=
-+           BITS_TO_LONGS(MAX_NODES + 1) * sizeof(unsigned long));
-+    assert(maxnode <= MAX_NODES);
-+
-+#ifdef HAVE_NUMA_HAS_PREFERRED_MANY
-+    if (mode == MPOL_PREFERRED && numa_has_preferred_many() > 0) {
-+        /*
-+         * Replace with MPOL_PREFERRED_MANY otherwise the mbind() below
-+         * silently picks the first node.
-+         */
-+        mode = MPOL_PREFERRED_MANY;
-+    }
-+#endif
-+
-+    if (maxnode &&
-+        mbind(ptr, size, mode, backend->host_nodes, maxnode + 1, flags)) {
-+        if (backend->policy != MPOL_DEFAULT || errno != ENOSYS) {
-+            error_setg_errno(errp, errno,
-+                             "cannot bind memory to host NUMA nodes");
-+            return;
-+        }
-+    }
-+#endif
-+    /*
-+     * Preallocate memory after the NUMA policy has been instantiated.
-+     * This is necessary to guarantee memory is allocated with
-+     * specified NUMA policy in place.
-+     */
-+    if (backend->prealloc &&
-+        !qemu_prealloc_mem(memory_region_get_fd(&backend->mr),
-+                           ptr, size, backend->prealloc_threads,
-+                           backend->prealloc_context, async, errp)) {
-+        return;
++    if (area != vaddr) {
++        error_report("Could not remap addr: " RAM_ADDR_FMT "@" RAM_ADDR_FMT "",
++                     size, addr);
++        exit(1);
 +    }
 +}
 +
- char *
- host_memory_backend_get_name(HostMemoryBackend *backend)
+ void qemu_ram_remap(ram_addr_t addr)
  {
-@@ -337,7 +418,6 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
-     void *ptr;
-     uint64_t sz;
-     size_t pagesize;
--    bool async = !phase_check(PHASE_LATE_BACKENDS_CREATED);
+     RAMBlock *block;
+     ram_addr_t offset;
+-    int flags;
+-    void *area, *vaddr;
+-    int prot;
++    void *vaddr;
+     size_t page_size;
  
-     if (!bc->alloc) {
-         return;
-@@ -357,78 +437,7 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
-         return;
-     }
+     RAMBLOCK_FOREACH(block) {
+@@ -2202,27 +2226,26 @@ void qemu_ram_remap(ram_addr_t addr)
+             } else if (xen_enabled()) {
+                 abort();
+             } else {
+-                flags = MAP_FIXED;
+-                flags |= block->flags & RAM_SHARED ?
+-                         MAP_SHARED : MAP_PRIVATE;
+-                flags |= block->flags & RAM_NORESERVE ? MAP_NORESERVE : 0;
+-                prot = PROT_READ;
+-                prot |= block->flags & RAM_READONLY ? 0 : PROT_WRITE;
+-                if (block->fd >= 0) {
+-                    area = mmap(vaddr, page_size, prot, flags, block->fd,
+-                                offset + block->fd_offset);
+-                } else {
+-                    flags |= MAP_ANONYMOUS;
+-                    area = mmap(vaddr, page_size, prot, flags, -1, 0);
+-                }
+-                if (area != vaddr) {
+-                    error_report("Could not remap addr: "
+-                                 RAM_ADDR_FMT "@" RAM_ADDR_FMT "",
+-                                 page_size, addr);
+-                    exit(1);
++                if (ram_block_discard_range(block, offset + block->fd_offset,
++                                            length) != 0) {
++                    /*
++                     * Fold back to using mmap(), but it cannot zap pagecache
++                     * pages, only anonymous pages. As soon as we might have
++                     * pagecache pages involved (either private or shared
++                     * mapping), we must be careful.
++                     * We don't take the risk of using mmap and fail now.
++                     */
++                    if (block->fd >= 0 && (qemu_ram_is_shared(block) ||
++                        (length > TARGET_PAGE_SIZE))) {
++                        error_report("Memory poison recovery failure addr: "
++                                     RAM_ADDR_FMT "@" RAM_ADDR_FMT "",
++                                     length, addr);
++                        exit(1);
++                    }
++                    qemu_ram_remap_mmap(block, vaddr, page_size, offset);
++                    memory_try_enable_merging(vaddr, size);
++                    qemu_ram_setup_dump(vaddr, size);
+                 }
+-                memory_try_enable_merging(vaddr, page_size);
+-                qemu_ram_setup_dump(vaddr, page_size);
+             }
  
--    if (backend->merge) {
--        qemu_madvise(ptr, sz, QEMU_MADV_MERGEABLE);
--    }
--    if (!backend->dump) {
--        qemu_madvise(ptr, sz, QEMU_MADV_DONTDUMP);
--    }
--#ifdef CONFIG_NUMA
--    unsigned long lastbit = find_last_bit(backend->host_nodes, MAX_NODES);
--    /* lastbit == MAX_NODES means maxnode = 0 */
--    unsigned long maxnode = (lastbit + 1) % (MAX_NODES + 1);
--    /*
--     * Ensure policy won't be ignored in case memory is preallocated
--     * before mbind(). note: MPOL_MF_STRICT is ignored on hugepages so
--     * this doesn't catch hugepage case.
--     */
--    unsigned flags = MPOL_MF_STRICT | MPOL_MF_MOVE;
--    int mode = backend->policy;
--
--    /* check for invalid host-nodes and policies and give more verbose
--     * error messages than mbind(). */
--    if (maxnode && backend->policy == MPOL_DEFAULT) {
--        error_setg(errp, "host-nodes must be empty for policy default,"
--                   " or you should explicitly specify a policy other"
--                   " than default");
--        return;
--    } else if (maxnode == 0 && backend->policy != MPOL_DEFAULT) {
--        error_setg(errp, "host-nodes must be set for policy %s",
--                   HostMemPolicy_str(backend->policy));
--        return;
--    }
--
--    /*
--     * We can have up to MAX_NODES nodes, but we need to pass maxnode+1
--     * as argument to mbind() due to an old Linux bug (feature?) which
--     * cuts off the last specified node. This means backend->host_nodes
--     * must have MAX_NODES+1 bits available.
--     */
--    assert(sizeof(backend->host_nodes) >=
--           BITS_TO_LONGS(MAX_NODES + 1) * sizeof(unsigned long));
--    assert(maxnode <= MAX_NODES);
--
--#ifdef HAVE_NUMA_HAS_PREFERRED_MANY
--    if (mode == MPOL_PREFERRED && numa_has_preferred_many() > 0) {
--        /*
--         * Replace with MPOL_PREFERRED_MANY otherwise the mbind() below
--         * silently picks the first node.
--         */
--        mode = MPOL_PREFERRED_MANY;
--    }
--#endif
--
--    if (maxnode &&
--        mbind(ptr, sz, mode, backend->host_nodes, maxnode + 1, flags)) {
--        if (backend->policy != MPOL_DEFAULT || errno != ENOSYS) {
--            error_setg_errno(errp, errno,
--                             "cannot bind memory to host NUMA nodes");
--            return;
--        }
--    }
--#endif
--    /*
--     * Preallocate memory after the NUMA policy has been instantiated.
--     * This is necessary to guarantee memory is allocated with
--     * specified NUMA policy in place.
--     */
--    if (backend->prealloc && !qemu_prealloc_mem(memory_region_get_fd(&backend->mr),
--                                                ptr, sz,
--                                                backend->prealloc_threads,
--                                                backend->prealloc_context,
--                                                async, errp)) {
--        return;
--    }
-+    host_memory_backend_apply_settings(backend, ptr, sz, errp);
- }
- 
- static bool
+             break;
 -- 
 2.43.5
 

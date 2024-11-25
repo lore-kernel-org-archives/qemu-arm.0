@@ -1,180 +1,315 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1570740njc;
-        Mon, 25 Nov 2024 12:01:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXF1qWxKCdKtkre6ZxLtO5i8jQfEamp5RpRephzijieK9iXNss4EaTdtF3u5qVKYNt1M+zJJgmAHxJCvg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEK4fexCg3Z6lEnWOxbpkruVU0tSfjW3G59PdSuZwkAQtj6t3PYb2DYfO4zajRXIEWKoqR2
-X-Received: by 2002:a05:6359:4c8e:b0:1ca:a3e9:8669 with SMTP id e5c5f4694b2df-1caa3e986e6mr239875955d.6.1732564868897;
-        Mon, 25 Nov 2024 12:01:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732564868; cv=none;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1571136njc;
+        Mon, 25 Nov 2024 12:01:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUeoZbGnw+aiLuF34Tjwqg1JZ10MPWSWFo0r207FJAGg4R9F02wdGeSpHF11rRcXWVezYTn/5yQXI2Btg==@linaro.org
+X-Received: by 2002:a05:600c:46c4:b0:432:cbe5:4f09 with SMTP id 5b1f17b1804b1-433ce411003mr128107135e9.4.1732564770818;
+        Mon, 25 Nov 2024 11:59:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732564770; cv=none;
         d=google.com; s=arc-20240605;
-        b=X0hAQrkyccnLEoviA9FLxITOszTl300NHUWuxrZPiOw4P1AL8EQJt121roKJm3budj
-         jIk9JFWts4V2dTceCTzKnsGmwbIvCKmpFeaY4iB/XCBt2BZTnriF+ueBluMlrukDWuwf
-         ipOzbSq+ulmxNz8qqWY2hzckCgsUwsQYYs9UZBe+SvMU5Z2KFpt0Qy4Hhb8VO3QoMHc9
-         0KPsyOsWgUIE5LZ/7xaiXfHJ3S5t3EyKTd4AZ/uK5QMDX472OYI788bTkc447JCTsBn2
-         KqJ5PbEt96lKGYfCRCWVcIRUrA+K6bwawK3tGdFoOOX48NHftSkO6Ep/mIXKZrOVsom6
-         anqQ==
+        b=brllX5seFpO/wzQPr7m72RMp6ebi0TywA4y3k0ktkzOZLPecPqiOpDomcuBFUG3ecx
+         ptRooJFEUPgA9JsYAtPOYKYLXasy0RN69sBm3EJQQWevKwpDpuFQcIWNGrnRwdh+6c/1
+         DKlYsYjRN8lf5y8z4TnMQrzqBbzssItg9m0vOMq1LPDG60hCxpbPMi7jf/93pACpLXLa
+         ejQ939gQoRev1ejGcEkqYAK0gKW3zFokhLa/FT7ysC9McMb56hOoHsMMp9LsW6ua966J
+         QgW4gO/bujFvze2pa6tWNQle/sVyYorLIO+xSVdIEK+3+TfouQNZEsansaZi+bR/BvPf
+         hb7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=l6ECEauevFEDuaDl5024iGUaHxmj6lx8VtL68hjVAuI=;
-        fh=OcoTwEuNOtlHkUOoWTWrOHkoJLAdkLhKQMEMTLoYPJg=;
-        b=CQ+K9KI7G5fL1OJbhiXc8DvmIca8witmK+UCagIWUwztXB/zYsx1Vsyaj17sSjbAYv
-         X0TrehI9KwVx8NZwNUwpm2gp0AAfxMRXKbqaS1hqZx8jJsTpvUy0tBC34N7R190BIylC
-         4X3qeH0cljq7+LfBnMqqhuOZevS1hM/XLLGkgjQuuC6qnmvt6JEZrjWouiyoBMPIlNsL
-         FlhJscIUxjIFpJqTHFAXaX2oF/FEKuj0MlUOqA5CddMQryCFlSxperHYF5guD339jirs
-         4PU4iDjvJNXfDa9/nNO7zpRyL6c6fZZj3BpZr2f9+2887vUN0QEjZCQkqYlL+OcKlDK9
-         64Ig==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=0m2/9HP5vLC3hqAB+yCWUJo/ObLxgmWN4DQPmhXmpqg=;
+        fh=0qmnrhgR2zXM3zNdhwF78DfpBfVjrFQujq+Ma1eqb+g=;
+        b=btB9KyGuXJdHIs8cGl02GyxhkB+Frzh34Zq1OHNY3pry1hLaWarAHT9I8L2JHW9LW3
+         OFQE7XusmRat8gaXUVyRZE2MENJpMU2QwbN+PQzSc1cYQppPAFkOfXVu61RvInRlBZGy
+         lrQzALMt8ZvE2M5Z4bTOoCpcAXuOrqR71f4K/g2cJwjZ9Sl3Jz7g26CGbtM717xd8ZCG
+         kUlcHhTA4dlqYGpamchY1B0COMpU46cFu/WSiiGXx4I8X5i5ivM0a1d2kzIg495vqfEw
+         7Tj4pWcK0a7pj5SoOgQXShh3esim/oKRR2bAk01tCo01FJsIocDPNdYb/hVsp5VyoYHN
+         fxrA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iuLxBJMG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=akWE0Wa5;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4af3590cdb5si322558137.403.2024.11.25.12.01.07
+Return-Path: <jean-philippe@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-434a02d8cbesor11412725e9.6.2024.11.25.11.59.30
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Nov 2024 12:01:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 25 Nov 2024 11:59:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=iuLxBJMG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=akWE0Wa5;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tFfFD-00055x-4h; Mon, 25 Nov 2024 14:59:39 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1tFfFA-000530-1T
- for qemu-devel@nongnu.org; Mon, 25 Nov 2024 14:59:36 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1tFfF4-0004m3-2H
- for qemu-devel@nongnu.org; Mon, 25 Nov 2024 14:59:35 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-382411ea5eeso2754575f8f.0
- for <qemu-devel@nongnu.org>; Mon, 25 Nov 2024 11:59:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1732564768; x=1733169568; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=l6ECEauevFEDuaDl5024iGUaHxmj6lx8VtL68hjVAuI=;
- b=iuLxBJMGVBoxPF1UJDbA2Vv1OBWYbTtYScfkXCV61/kiTyEQAXG+SZfOPyBxJ0dHhP
- SPG5Mft6seqGOH4r3oPqIM00JwRAvMI29cbNnu1YpXzeMfssxWxo3wl5N8npQEMJtE9N
- Lm7KoK8eJn9xjEZ1krDjp89YU4EzGE9Zax4jSXZrNH6IBWgVgrN/OLfops3AxTLXqWmP
- PThUevk7U+onNLC0GKMePt92PK+BNNr4yuiwDyUPT951UHuAPfPP08wLBOzIUHRmjtcn
- xnTqeI+W6Ovn5ZgpDryC9n2BsR/rsbdNpnh86NPTuv6ZrO6i91xEEpBTT7MU2QyoyBBQ
- Jg8g==
+        d=linaro.org; s=google; t=1732564770; x=1733169570; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0m2/9HP5vLC3hqAB+yCWUJo/ObLxgmWN4DQPmhXmpqg=;
+        b=akWE0Wa5WwB63uIVcI6BOA2lW03GNjcv3+W4BmVHXH47WY0E9B0CUDygH6FOf3MIh6
+         KcpYorQ4KJIRuJV7wR3aURwaRVrW06PsUiNso9WB5qjEnqlz8PEnvKL8dARR4M8Uw6Bd
+         dyDP2ztWiScHw+cw+0HYfMh90ffm8+3AEgNrQ6kd94W+LddMxVYqTR0nAW4QoHDmlU0s
+         qdx8wNwMnUr9BJIOn+EziWxaGeE3+3yUtTCs5OdapNVLPc0084NXJZkhz5Z2iP3LTMKw
+         f/goi2fqX3gkRPa2qESwmN52wE7RlvDHDNhbxI48KLT4JuskWSMkWA1PXZIUy+pebCy9
+         ycLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1732564768; x=1733169568;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=l6ECEauevFEDuaDl5024iGUaHxmj6lx8VtL68hjVAuI=;
- b=B2n/b3yVWaHhR/PWi2JEM/vKxSLuo6qnbg09zAo5GeeiGboKG4PY0Xrt07yQGPX8QE
- CP63gKl267E7659ovEa3HBdMNB2Ql2r+VfvJpRZbUQw5un6ELBQ4KFDUuUqs/6McaJzX
- 7sWJgDkElDfdwlUQ851lGXjRtSm/0dGzCT1Cqk8O0NMyZP+EjktoPa+s+2sjPhRtOs7f
- gL+GeqwWOSFswrq+k0ajcOAtWhmgu/Eoyo0ZaW3OcxrGayENv36KmNF8Hsua01m4k4NY
- PAUOvNQxOZ1I4wMagre6Heu3cV1CWrZHsebXbMMSr+ZOwNcXpppHXecAebUE+1yP1cfW
- HSwQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVrt/2VTRYLDn1Hv0BEWv118BH9QrbYV+ErTitKWxh9pS0/F4K/s+pLmElz1xz0HO5WGgB5YLbIo1Ih@nongnu.org
-X-Gm-Message-State: AOJu0YwjY1+1Cc4owolfyTJy5CINn5oJowimNEha5j1bUT0q36M/Nbq+
- x4FmvYEdyHBR0jxuA/G8sg23E5JKtJ5vSe3eUn5hCLcsMp4vri61SKsWPFJ7nkE=
-X-Gm-Gg: ASbGnctV3tjwo2G5gD1WKMs4OWVEKEHfSHWNbN12/8/78ha9qwxuKYvEk9Lpg/Olauk
- ox+ZthZrDYlJEr63vKuTpNwlfTrOrCqlbU0/o0Q5ex0GLyzO45XqF/LuzDGsP32S4fj0p2IrvHg
- ag9WC7B19R3xTO5OAywbP5WRQFOK9grsnRadobgyEDaIV6doBi1T5C/mwwqUvniYyi9AHpGZCXi
- /h9oD268lhOsPyJ0S1HYzIOEcF2Q/lL60GeA8thiTlJvvlBB07HWONJt5mhZO9ugPbE
-X-Received: by 2002:a5d:6d84:0:b0:37d:3780:31d2 with SMTP id
- ffacd0b85a97d-385bfaf0c1bmr602579f8f.15.1732564768631; 
- Mon, 25 Nov 2024 11:59:28 -0800 (PST)
+        d=1e100.net; s=20230601; t=1732564770; x=1733169570;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=0m2/9HP5vLC3hqAB+yCWUJo/ObLxgmWN4DQPmhXmpqg=;
+        b=uOe2CNCPVqnb4AWisRrmF4PwRljcgt+r74ZW6tVRbmJMmfCfnzlTKCNUENnFiwhxUO
+         R0YqPm4EVJPh0fmfqNHspVdQ1Uw5uwRFwaOLoc4wy4MFtQXRbpzOO5mKw4k2sW4/RUxO
+         6WT2k10kyGWu8IkMBZ9IUWbXHJi1EtscGnApvYzlgF1XOWVJh8REwDQSNCUM9PDkyw2F
+         O54QxBAnNKeK38mgup5/eLfCrzq3kq4aJBDzP/Eo4eRJ81PGRiuFqZ6oAaOYi4X0743W
+         HE9DqQHAYn23xLmFGP3VhCARUdom4v9VNgCDVeQRN+HTOgUzWQfrZt7tuC6UpGlAr08p
+         /Ibw==
+X-Forwarded-Encrypted: i=1; AJvYcCW/3oafEWWygG9hLwMyeKeCHz+bSK6ke3gZ37tbzYfAuBSV7eh/XulXD31N23GUKSg1HyoS+iQ1Zbs02g==@linaro.org
+X-Gm-Message-State: AOJu0YyntWMpuapuZAP9oEVoL3nHjxNsPZZKwlhbKn36gZSNmeAIEWX7
+	L0Y4NUW4pOk6NmJKHq8jGxFtAxJzJHo14bEXYIOess27XADc8sZ+dNv+9mosWooBDw==
+X-Gm-Gg: ASbGncuMgpCbuwwU6v2pMH+E2kFY23x1hyAM0OueigUJxxeEhrMCaIpCYuq71+2KC9w
+	d3LMcW4sturFHmfDNOmVwx5GMqrfyUmkSLYv9gdJ+/YinW/7Yi32ZPW0FK20TI5t3JtBiX/P3Cd
+	zo4DWoN1Lvx9bp5SLLByEUvmh6UdPNBHveT6Rv3kDZHlhi0OaCP3K61wXod8qIWaoMgE60wyL6N
+	VeiRRUh6d7si2gQh5zM66zt8Zzk9FWOiftIKjpkmkL6t6XBQAtqtmu1pZEshLVFN4wT
+X-Google-Smtp-Source: AGHT+IHIgHFWvVyyJCi5WA7qSU1TvSslIX+EBQ+ux7JHA9WcmEKKX7xGvPmRb34R9SzN6GO/cTMdzA==
+X-Received: by 2002:a05:6000:2d08:b0:382:50d9:bc7c with SMTP id ffacd0b85a97d-38260be6bfamr7331722f8f.58.1732564770312;
+        Mon, 25 Nov 2024 11:59:30 -0800 (PST)
+Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain ([2.221.137.100])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Nov 2024 11:59:28 -0800 (PST)
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Nov 2024 11:59:30 -0800 (PST)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
-Cc: richard.henderson@linaro.org, philmd@linaro.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, alex.bennee@linaro.org,
- Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 07/26] target/arm/kvm: Create scratch VM as Realm if
- necessary
-Date: Mon, 25 Nov 2024 19:56:06 +0000
-Message-ID: <20241125195626.856992-9-jean-philippe@linaro.org>
+Cc: richard.henderson@linaro.org,
+	philmd@linaro.org,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	alex.bennee@linaro.org,
+	Jean-Philippe Brucker <jean-philippe@linaro.org>,
+	Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>
+Subject: [PATCH v3 10/26] target/arm/kvm-rme: Add Realm Personalization Value parameter
+Date: Mon, 25 Nov 2024 19:56:09 +0000
+Message-ID: <20241125195626.856992-12-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241125195626.856992-2-jean-philippe@linaro.org>
 References: <20241125195626.856992-2-jean-philippe@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=jean-philippe@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G5KQChSNsuZb
+X-TUID: YhHMV0dSLDYY
 
-Some ID registers have a different value for a Realm VM, for example
-ID_AA64DFR0_EL1 contains the number of breakpoints/watchpoints
-implemented by RMM instead of the hardware.
+The Realm Personalization Value (RPV) is provided by the user to
+distinguish Realms that have the same initial measurement.
 
-Even though RMM is in charge of setting up most Realm registers, KVM
-still provides GET_ONE_REG interface on a Realm VM to probe the VM's
-capabilities.
+The user provides up to 64 hexadecimal bytes. They are stored into the
+RPV in the same order, zero-padded on the right.
 
+Cc: Eric Blake <eblake@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>
+Cc: Daniel P. Berrangé <berrange@redhat.com>
+Cc: Eduardo Habkost <eduardo@habkost.net>
+Acked-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- target/arm/kvm.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+v2->v3: Fix documentation
+---
+ qapi/qom.json        |  15 ++++++
+ target/arm/kvm-rme.c | 111 +++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 126 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index a0de2efc41..870f51bf02 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -106,6 +106,7 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
- {
-     int ret = 0, kvmfd = -1, vmfd = -1, cpufd = -1;
-     int max_vm_pa_size;
-+    int vm_type;
+diff --git a/qapi/qom.json b/qapi/qom.json
+index a8beeabf1f..f982850bca 100644
+--- a/qapi/qom.json
++++ b/qapi/qom.json
+@@ -1068,6 +1068,19 @@
+   'data': { '*cpu-affinity': ['uint16'],
+             '*node-affinity': ['uint16'] } }
  
-     kvmfd = qemu_open_old("/dev/kvm", O_RDWR);
-     if (kvmfd < 0) {
-@@ -115,8 +116,9 @@ bool kvm_arm_create_scratch_host_vcpu(const uint32_t *cpus_to_try,
-     if (max_vm_pa_size < 0) {
-         max_vm_pa_size = 0;
++##
++# @RmeGuestProperties:
++#
++# Properties for rme-guest objects.
++#
++# @personalization-value: Realm personalization value, as a 64-byte
++#     hex string. This optional parameter allows to uniquely identify
++#     the VM instance during attestation. (default: 0)
++#
++# Since: 9.3
++##
++{ 'struct': 'RmeGuestProperties',
++  'data': { '*personalization-value': 'str' } }
+ 
+ ##
+ # @ObjectType:
+@@ -1121,6 +1134,7 @@
+     { 'name': 'pr-manager-helper',
+       'if': 'CONFIG_LINUX' },
+     'qtest',
++    'rme-guest',
+     'rng-builtin',
+     'rng-egd',
+     { 'name': 'rng-random',
+@@ -1195,6 +1209,7 @@
+       'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
+                                       'if': 'CONFIG_LINUX' },
+       'qtest':                      'QtestProperties',
++      'rme-guest':                  'RmeGuestProperties',
+       'rng-builtin':                'RngProperties',
+       'rng-egd':                    'RngEgdProperties',
+       'rng-random':                 { 'type': 'RngRandomProperties',
+diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+index 83a29421df..0be55867ee 100644
+--- a/target/arm/kvm-rme.c
++++ b/target/arm/kvm-rme.c
+@@ -23,11 +23,15 @@ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
+ 
+ #define RME_PAGE_SIZE qemu_real_host_page_size()
+ 
++#define RME_MAX_CFG         1
++
+ struct RmeGuest {
+     ConfidentialGuestSupport parent_obj;
+     Notifier rom_load_notifier;
+     GSList *ram_regions;
+ 
++    uint8_t *personalization_value;
++
+     hwaddr ram_base;
+     size_t ram_size;
+ };
+@@ -43,6 +47,48 @@ typedef struct {
+ 
+ static RmeGuest *rme_guest;
+ 
++static int rme_configure_one(RmeGuest *guest, uint32_t cfg, Error **errp)
++{
++    int ret;
++    const char *cfg_str;
++    struct kvm_cap_arm_rme_config_item args = {
++        .cfg = cfg,
++    };
++
++    switch (cfg) {
++    case KVM_CAP_ARM_RME_CFG_RPV:
++        if (!guest->personalization_value) {
++            return 0;
++        }
++        memcpy(args.rpv, guest->personalization_value, KVM_CAP_ARM_RME_RPV_SIZE);
++        cfg_str = "personalization value";
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_RME, 0,
++                            KVM_CAP_ARM_RME_CONFIG_REALM, (intptr_t)&args);
++    if (ret) {
++        error_setg_errno(errp, -ret, "failed to configure %s", cfg_str);
++    }
++    return ret;
++}
++
++static int rme_configure(Error **errp)
++{
++    int ret;
++    int cfg;
++
++    for (cfg = 0; cfg < RME_MAX_CFG; cfg++) {
++        ret = rme_configure_one(rme_guest, cfg, errp);
++        if (ret) {
++            return ret;
++        }
++    }
++    return 0;
++}
++
+ static int rme_init_ram(hwaddr base, size_t size, Error **errp)
+ {
+     int ret;
+@@ -123,6 +169,10 @@ static int rme_create_realm(Error **errp)
+ {
+     int ret;
+ 
++    if (rme_configure(errp)) {
++        return -1;
++    }
++
+     ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_RME, 0,
+                             KVM_CAP_ARM_RME_CREATE_RD);
+     if (ret) {
+@@ -168,8 +218,69 @@ static void rme_vm_state_change(void *opaque, bool running, RunState state)
      }
-+    vm_type = kvm_arm_rme_vm_type(MACHINE(qdev_get_machine()));
-     do {
--        vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
-+        vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size | vm_type);
-     } while (vmfd == -1 && errno == EINTR);
-     if (vmfd < 0) {
-         goto err;
+ }
+ 
++static char *rme_get_rpv(Object *obj, Error **errp)
++{
++    RmeGuest *guest = RME_GUEST(obj);
++    GString *s;
++    int i;
++
++    if (!guest->personalization_value) {
++        return NULL;
++    }
++
++    s = g_string_sized_new(KVM_CAP_ARM_RME_RPV_SIZE * 2 + 1);
++
++    for (i = 0; i < KVM_CAP_ARM_RME_RPV_SIZE; i++) {
++        g_string_append_printf(s, "%02x", guest->personalization_value[i]);
++    }
++
++    return g_string_free(s, /* free_segment */ false);
++}
++
++static void rme_set_rpv(Object *obj, const char *value, Error **errp)
++{
++    RmeGuest *guest = RME_GUEST(obj);
++    size_t len = strlen(value);
++    uint8_t *out;
++    int i = 1;
++    int ret;
++
++    g_free(guest->personalization_value);
++    guest->personalization_value = out = g_malloc0(KVM_CAP_ARM_RME_RPV_SIZE);
++
++    /* Two chars per byte */
++    if (len > KVM_CAP_ARM_RME_RPV_SIZE * 2) {
++        error_setg(errp, "Realm Personalization Value is too large");
++        return;
++    }
++
++    /* First byte may have a single char */
++    if (len % 2) {
++        ret = sscanf(value, "%1hhx", out++);
++    } else {
++        ret = sscanf(value, "%2hhx", out++);
++        i++;
++    }
++    if (ret != 1) {
++        error_setg(errp, "Invalid Realm Personalization Value");
++        return;
++    }
++
++    for (; i < len; i += 2) {
++        ret = sscanf(value + i, "%2hhx", out++);
++        if (ret != 1) {
++            error_setg(errp, "Invalid Realm Personalization Value");
++            return;
++        }
++    }
++}
++
+ static void rme_guest_class_init(ObjectClass *oc, void *data)
+ {
++    object_class_property_add_str(oc, "personalization-value", rme_get_rpv,
++                                  rme_set_rpv);
++    object_class_property_set_description(oc, "personalization-value",
++            "Realm personalization value (512-bit hexadecimal number)");
+ }
+ 
+ static void rme_guest_init(Object *obj)
 -- 
 2.47.0
-

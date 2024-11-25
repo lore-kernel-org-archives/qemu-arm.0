@@ -1,84 +1,84 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1569312njc;
-        Mon, 25 Nov 2024 11:59:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUxJ4lOA2of4BtrtlJsvMZCusm1CCbzXV45epky9sdIwFgey3Z4t8D7IMfNAypf//bUUzLxp8JblfszCQ==@linaro.org
-X-Received: by 2002:a05:600c:3b9b:b0:431:4c14:abf4 with SMTP id 5b1f17b1804b1-433ce427c60mr128857255e9.14.1732564771446;
-        Mon, 25 Nov 2024 11:59:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732564771; cv=none;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1569339njc;
+        Mon, 25 Nov 2024 11:59:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW2Q4HVOKWB71CNLwZ92TfP83iwu1lzDYmHLxo800azwyjybU/72xg6kE82do8yriMyCkPjl99lfg/37A==@linaro.org
+X-Received: by 2002:a5d:584f:0:b0:381:f443:21d3 with SMTP id ffacd0b85a97d-38260be3e78mr11998089f8f.57.1732564773705;
+        Mon, 25 Nov 2024 11:59:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732564773; cv=none;
         d=google.com; s=arc-20240605;
-        b=MYfH4MAjgU9CKQQbwCwK157AVDL3xp/lrAdhlJTPqDiKnA4gpQk192OdghcPFXiRc8
-         6DwGVakPThfwNVOB4ihmHLgw2AUrAsOfYXI9ozsPAdmRWB8tuHv2MHeJ6obvBKCFOvgZ
-         duNOWcDXX8Msr7cd+2Yza8SLfPDvi26dq3maM6tnTg4KfEiuPP+EOOz3RUmjF5rjz7aG
-         iTsda6qjavtdFzkVxAJO8sSGq2Kd9ABZ3juvwMYAI+tp3TZmneVu/6CF1RRfYmMKuqYv
-         /RYKgurozwIR5qZQgTkFgX+q1f1BrVzHBZ+28P2uNBlrg26Oouvv4pB026MphyN3B4mZ
-         Dz7g==
+        b=ANvnTOVE2rq4sWdHLiVCXwwa63SJCNC2/Z+W4jIoIjjQQ+R0TODWw7U3gGZPxwxlDG
+         RL3wQDrZ74JWp0tdjTYectMHgVAvlosodEpEYcTOB2VPhw37RjYkqlfUvXMA6NLCLopi
+         ekLIGnpqUnicceVatyG0ewlH7yqvauHDk0dE64cm+TfR+o1mS59VfnZ2ouYcWPZ2JtGJ
+         WarlXGZ4lCUN5YLuBVSp2Akk/RWb5Bus6YBqhSJlYdxyS/Cr91Ty50FzxmMyxhcxyCyU
+         OnPKb0H42aL7lx/lQ/HElQ7lD1uHBow34RexkNxnaAYqny2dOipxHE7tHC5iLBXfmJUO
+         kH1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DFJSI53cHJ1N3Z+oLQAsbnNAF3KjE8o1K+yxUpabOQA=;
-        fh=/PwzwnGAnZFPod9izoHEbGm57IauAf+H74LQa4obr9c=;
-        b=XiEpwb4kNF5xMsbwTQw0BNJHX3TpQy905unV0VRnVTYRwJfIRUaDcHNeAkORCfTlSV
-         g/B1TSAe0+Zw9VFhG4qevNk1rAR8406etd6TkAg6mLpTDNFiC1b+X+7py4gDRhg/8crB
-         MBkLgWNRDjtMNU3jARh/gh7dERPgzFmu3P/C5YHYpbidDqYc0y36lrnDJ4k9N3Fmej54
-         j8l8CR8NmdvtBsDkR3ERmbhCQB3p24Sz5zAm8qAOXb11cuxlcA+8yAnkxSMYzlbF82aN
-         OOhtN67EixYhFz4FpCJ9GeWonoTL8Go2NKA1XzN4g5Z8elh3cZ4qbll0dyFb4E+EdziG
-         7dVg==;
+        bh=AM9CmiES+peuGOYCBRYh0Z2NclowtBsfFXloH3BjlTc=;
+        fh=JqGI9kAdjnBdjmCW9VLytjUryrbsJ/cvmDupjjSZRqg=;
+        b=VQZLGi4e2fMy+7V4029muCBkoYkV6mp/3+nAwZ1O596DKV8KRBj/1ZEKHYkJ/IbX3u
+         KCMRtH2N9e9oJiZgqvBm2nC/QjC/NA0WQqvS3f5vQiNfVGBy16uoK+/ufS1YgoBb+uyu
+         lPf+WuyzN91gunHAbYhi5EmoF24UCaiz7Qx9XP9J+mm3h4zcC8bffx5Yimd0D+g46kh1
+         gyGm++aTr/QTpBfDj2itACGcC5eSz1o/PCdXschIv6n6lSTO+OfZiJk7bkSe76/dbGss
+         6Zl02VFQpmv8vsgnSX+wTr/DP5JB0O3KrLlw5FK8DeIzUlgVkbNfknCnNhwWJG81i6sF
+         ovXg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T4SSKkVa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wCmPn6h9;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-433cd6193efsor37216245e9.0.2024.11.25.11.59.31
+        by mx.google.com with SMTPS id ffacd0b85a97d-3825fd3067dsor2252638f8f.9.2024.11.25.11.59.33
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 25 Nov 2024 11:59:31 -0800 (PST)
+        Mon, 25 Nov 2024 11:59:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=T4SSKkVa;
+       dkim=pass header.i=@linaro.org header.s=google header.b=wCmPn6h9;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732564771; x=1733169571; darn=linaro.org;
+        d=linaro.org; s=google; t=1732564773; x=1733169573; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=DFJSI53cHJ1N3Z+oLQAsbnNAF3KjE8o1K+yxUpabOQA=;
-        b=T4SSKkVaUqSwuWp3gOnxcQvoFhUZ+Pm3UOQSvRCgZUA+pOt/2Df5b5dOigdgPwRNf4
-         Lt4mCFiHPA8+K7MT4SW9wa+1rB52sHQI7BT7cQifUdVBNpmx9rbJBTzA46OEJ9Uaeudl
-         dRfsM82BtJXztysw3jDgEedAQXs9D5e3ljkJkcgIT3NXVHc5Hk6737U0E6XtGvpXITZ/
-         si4lv8rPbO2JI+HjsNloX7RX7y885vy6b+WuR+fJ5tAuANFCMTZLc6gQW+rqYVTrwSo8
-         aPN7n0kgDE+11EUn5R/h1ZCRsMseeNCnCP3n4GQBmZchvA5ZklyY2k6QlI7jbCkjp2m7
-         jnwg==
+        bh=AM9CmiES+peuGOYCBRYh0Z2NclowtBsfFXloH3BjlTc=;
+        b=wCmPn6h9N9SYuTGGbqxc68MiWU2hkhBeDoIVlGIxIi8t7txBgCr4zIRVxMdVISurTP
+         aL8pzTQmo65j9M/W1Y/3oyxRhPONIbe2iaKLthhoILpFsHrlcptfVxhg6yZ+Bx6oCl6E
+         MT3QO7qu6HACqjNfF9q6UJISpv0zJQAPznYDCYCKQsh8zwdekKVDjD+WYfPdkiEiKl5s
+         ygXltfuhf+TxuFN2IGjW/nIhtQThHmnvVLFFbkrHhXpohLnoyIov25RviWd8QhT34u2A
+         YHShkFXnGnB7NPvrJjf4BVAnhSXyYOKkP80JpntQjgM8GTSiv02ct/+GOflxyHE+9nbZ
+         yoMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732564771; x=1733169571;
+        d=1e100.net; s=20230601; t=1732564773; x=1733169573;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=DFJSI53cHJ1N3Z+oLQAsbnNAF3KjE8o1K+yxUpabOQA=;
-        b=tw90u8l8w8dx2Fr03ifu47Oy19OYvdCWLG5Me//GVmjTcMGqNzLbWB/neBsnkGulvJ
-         qrpfGI1SLYFqna8OgsDTmJC+nF+aUftbnrWneu6g88iUpr0IntWQFISM/bmw0/WiGSuC
-         xwreAd2HGEhSdu2R1XVCiiQzTgk/IiuWalfPhT52YlwmBw8v/w0bMC/AyOvjmNXSAaXe
-         Bysxbli7rNd9yUnxThy4DXu6zygv33mVhCjNQfA3QptqUI8ncP9VfVltLThiSB3mXwtA
-         v5/6hBp6lScrLmBx+N6kkScO0q8qUeLK8wvwfUlevDS7eMgdKMD3PiD27iknwryzAj5B
-         QSKQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUwTDbufeHgU6EBU/F/2psbaTIFa6hCBjO8gv/uLxA3LEyhk86K5+OZrmKrY3tsYqsJ5Q9M/ODG0BYaVA==@linaro.org
-X-Gm-Message-State: AOJu0YydOV27eaPhiJEWYmP7/YoUqPb54GWiFcdSXkm7xK/BLq+3bL5v
-	Yv9exzPvyif7NlTmQQ/p9VYZHJpVreyE7enF92OjrGqsr8xJD9xrUOYVOq+spxa5iQ==
-X-Gm-Gg: ASbGncsCww3D74i6Q9lSpidp3ULFFD0j2yK3gf4hsNXg7sQxQ0yK4z7ybNv/glI7/1U
-	7xgYPDdArTFo5K389LIpKaaN7eTdyX1izJV8YehgWj5xAaM15Z6hE1aUhdTNF0cUu+N0RZAcyMX
-	vGx7a2s13LzpkCRssDJvqoyVygwqpjP9fA/Hr6w9PP3M0ziYg6ebAov/na2hNGKh70CO3OrJAhZ
-	6tlG+zj6QNc5swG0yaRR++QQiQ27fls0dpkfAdpXXxcv5VcHJ/8mpwTP1B4mho1JW4U
-X-Google-Smtp-Source: AGHT+IFReC0jAoBg3T5lkRnllyjlOiG9tzJlifErfsEXB7qfxFxhKbbca1oQPz7uQOdlOYwByoQPlw==
-X-Received: by 2002:a05:600c:1990:b0:434:a555:d0d with SMTP id 5b1f17b1804b1-434a5551bbamr2381835e9.29.1732564770965;
-        Mon, 25 Nov 2024 11:59:30 -0800 (PST)
+        bh=AM9CmiES+peuGOYCBRYh0Z2NclowtBsfFXloH3BjlTc=;
+        b=QgmzoJviBT80pI5F6ghH0Hl8npE3aO7j/ppNDJpxQBytuuPci7JJR4Tir45orhcrjC
+         gxLOPeRRpIlNpHtd9BFl2yJ99memm0Ij1lRGOY0jMXLeTVmNEgMJGKrt49EbclGsIByI
+         qctBjf7OjiM5x9WvT5tXJCWbgSKqynjxjhRxV/0Qvkre6RbV6dD4Byz3CPCAM8QKBmFt
+         DT94w69+o32iwqY1x72MyXYKxEKLasTVu19DXXqQXpphlxiyEZ9yHxWNiK9zKiBbR5A7
+         xjZhNLkMYqOO9vannjR67DQe43/O24fZwkCy554d2meHPSu5OfuXACj8WFVbAmRrBzus
+         s6ug==
+X-Forwarded-Encrypted: i=1; AJvYcCXl65/Aak3xFDeCH9P84k/04r1RIXOsPhFGaZyGX64o7Ofi6NtADhOSBXGIO26A04nNJIxnPCqPJ2AU8Q==@linaro.org
+X-Gm-Message-State: AOJu0YzgvtLS1lgU/PCyGFlxNjX9GF2nKj7e+dSU6aF/4X0h+ndwTpwb
+	MJAx55OsJmRyJbJB6iiCDF5fvP3r+HvHu4jqUBBgcpiK6pM95PhZrBrgVXk/sVWEBg==
+X-Gm-Gg: ASbGncuHAwTAVZxCjjdWmsHsIyZfEAJFrXedtKWRvHJaRWHu/f9qVHnYK3p2r21V1uO
+	F7QpvsYy4TDyrz3M/ovlx3TySB0YqNYVX+DxKEN1gfL+e3JROBxQpPO+Fp4A8vRR8p/qgANCyXR
+	/odHRvdz+B8JJgQ0fK6xJ78igo5+qUadrxZNPB4svesGHifAhvrWcPJ4DoWKKymFrlSpL7ZkmLN
+	KT0m3zXaJdelN/yspKgFLsqUK1BzA7LVIvdwGlDeWfZ22K7yUtsotn6zOvu7CLTe5bI
+X-Google-Smtp-Source: AGHT+IG8nC95KgxPOV4gNNszZYNmR7epAcoJPgXz8ijIjcuMTQZVqQBxAAlIVhMM0m+tNLQY0PCvEQ==
+X-Received: by 2002:a05:6000:2ae:b0:382:4378:4652 with SMTP id ffacd0b85a97d-38260bcb8b4mr11780186f8f.45.1732564773213;
+        Mon, 25 Nov 2024 11:59:33 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.30
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Nov 2024 11:59:30 -0800 (PST)
+        Mon, 25 Nov 2024 11:59:32 -0800 (PST)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org,
@@ -86,168 +86,76 @@ Cc: richard.henderson@linaro.org,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH v3 11/26] target/arm/kvm-rme: Add measurement algorithm property
-Date: Mon, 25 Nov 2024 19:56:10 +0000
-Message-ID: <20241125195626.856992-13-jean-philippe@linaro.org>
+	Jean-Philippe Brucker <jean-philippe@linaro.org>
+Subject: [PATCH v3 15/26] hw/arm/virt: Add support for Arm RME
+Date: Mon, 25 Nov 2024 19:56:14 +0000
+Message-ID: <20241125195626.856992-17-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241125195626.856992-2-jean-philippe@linaro.org>
 References: <20241125195626.856992-2-jean-philippe@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: zDudO81hLMGX
+X-TUID: EQIpla5WA0zo
 
-This option selects which measurement algorithm to use for attestation.
-Supported values are SHA256 and SHA512. Default to SHA512 arbitrarily.
+When confidential-guest-support is enabled for the virt machine, add the
+RME flag to the VM type.
 
-SHA512 is generally faster on 64-bit architectures. On a few arm64 CPUs
-I tested SHA256 is much faster, but that's most likely because they only
-support acceleration via FEAT_SHA256 (Armv8.0) and not FEAT_SHA512
-(Armv8.2). Future CPUs supporting RME are likely to also support
-FEAT_SHA512.
+The HVC conduit for PSCI is not supported for Realms.
 
-Cc: Eric Blake <eblake@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>
-Cc: Daniel P. Berrangé <berrange@redhat.com>
-Cc: Eduardo Habkost <eduardo@habkost.net>
-Acked-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
-v2->v3: Rename measurement-algorithm
----
- qapi/qom.json        | 20 +++++++++++++++++++-
- target/arm/kvm-rme.c | 39 ++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 57 insertions(+), 2 deletions(-)
+ hw/arm/virt.c | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
 
-diff --git a/qapi/qom.json b/qapi/qom.json
-index f982850bca..901ba67634 100644
---- a/qapi/qom.json
-+++ b/qapi/qom.json
-@@ -1068,6 +1068,20 @@
-   'data': { '*cpu-affinity': ['uint16'],
-             '*node-affinity': ['uint16'] } }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 1a381e9a2b..2d36640733 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -229,6 +229,11 @@ static const int a15irqmap[] = {
+     [VIRT_PLATFORM_BUS] = 112, /* ...to 112 + PLATFORM_BUS_NUM_IRQS -1 */
+ };
  
-+##
-+# @RmeGuestMeasurementAlgorithm:
-+#
-+# @sha256: Use the SHA256 algorithm
-+#
-+# @sha512: Use the SHA512 algorithm
-+#
-+# Algorithm to use for realm measurements
-+#
-+# Since: 9.3
-+##
-+{ 'enum': 'RmeGuestMeasurementAlgorithm',
-+  'data': ['sha256', 'sha512'] }
-+
- ##
- # @RmeGuestProperties:
- #
-@@ -1077,10 +1091,14 @@
- #     hex string. This optional parameter allows to uniquely identify
- #     the VM instance during attestation. (default: 0)
- #
-+# @measurement-algorithm: Realm measurement algorithm
-+#     (default: sha512)
-+#
- # Since: 9.3
- ##
- { 'struct': 'RmeGuestProperties',
--  'data': { '*personalization-value': 'str' } }
-+  'data': { '*personalization-value': 'str',
-+            '*measurement-algorithm': 'RmeGuestMeasurementAlgorithm' } }
- 
- ##
- # @ObjectType:
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-index 0be55867ee..bf0bcf9a38 100644
---- a/target/arm/kvm-rme.c
-+++ b/target/arm/kvm-rme.c
-@@ -23,7 +23,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
- 
- #define RME_PAGE_SIZE qemu_real_host_page_size()
- 
--#define RME_MAX_CFG         1
-+#define RME_MAX_CFG         2
- 
- struct RmeGuest {
-     ConfidentialGuestSupport parent_obj;
-@@ -31,6 +31,7 @@ struct RmeGuest {
-     GSList *ram_regions;
- 
-     uint8_t *personalization_value;
-+    RmeGuestMeasurementAlgorithm measurement_algo;
- 
-     hwaddr ram_base;
-     size_t ram_size;
-@@ -63,6 +64,19 @@ static int rme_configure_one(RmeGuest *guest, uint32_t cfg, Error **errp)
-         memcpy(args.rpv, guest->personalization_value, KVM_CAP_ARM_RME_RPV_SIZE);
-         cfg_str = "personalization value";
-         break;
-+    case KVM_CAP_ARM_RME_CFG_HASH_ALGO:
-+        switch (guest->measurement_algo) {
-+        case RME_GUEST_MEASUREMENT_ALGORITHM_SHA256:
-+            args.hash_algo = KVM_CAP_ARM_RME_MEASUREMENT_ALGO_SHA256;
-+            break;
-+        case RME_GUEST_MEASUREMENT_ALGORITHM_SHA512:
-+            args.hash_algo = KVM_CAP_ARM_RME_MEASUREMENT_ALGO_SHA512;
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+        cfg_str = "hash algorithm";
-+        break;
-     default:
-         g_assert_not_reached();
-     }
-@@ -275,12 +289,34 @@ static void rme_set_rpv(Object *obj, const char *value, Error **errp)
-     }
- }
- 
-+static int rme_get_measurement_algo(Object *obj, Error **errp)
++static bool virt_machine_is_confidential(VirtMachineState *vms)
 +{
-+    RmeGuest *guest = RME_GUEST(obj);
-+
-+    return guest->measurement_algo;
++    return MACHINE(vms)->cgs;
 +}
 +
-+static void rme_set_measurement_algo(Object *obj, int algo, Error **errp)
-+{
-+    RmeGuest *guest = RME_GUEST(obj);
-+
-+    guest->measurement_algo = algo;
-+}
-+
- static void rme_guest_class_init(ObjectClass *oc, void *data)
+ static void create_randomness(MachineState *ms, const char *node)
  {
-     object_class_property_add_str(oc, "personalization-value", rme_get_rpv,
-                                   rme_set_rpv);
-     object_class_property_set_description(oc, "personalization-value",
-             "Realm personalization value (512-bit hexadecimal number)");
+     struct {
+@@ -2165,10 +2170,11 @@ static void machvirt_init(MachineState *machine)
+      * if the guest has EL2 then we will use SMC as the conduit,
+      * and otherwise we will use HVC (for backwards compatibility and
+      * because if we're using KVM then we must use HVC).
++     * Realm guests must also use SMC.
+      */
+     if (vms->secure && firmware_loaded) {
+         vms->psci_conduit = QEMU_PSCI_CONDUIT_DISABLED;
+-    } else if (vms->virt) {
++    } else if (vms->virt || virt_machine_is_confidential(vms)) {
+         vms->psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+     } else {
+         vms->psci_conduit = QEMU_PSCI_CONDUIT_HVC;
+@@ -3013,6 +3019,7 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
+ static int virt_kvm_type(MachineState *ms, const char *type_str)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(ms);
++    int rme_vm_type = kvm_arm_rme_vm_type(ms);
+     int max_vm_pa_size, requested_pa_size;
+     bool fixed_ipa;
+ 
+@@ -3042,7 +3049,11 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
+      * the implicit legacy 40b IPA setting, in which case the kvm_type
+      * must be 0.
+      */
+-    return fixed_ipa ? 0 : requested_pa_size;
++    if (fixed_ipa) {
++        return 0;
++    }
 +
-+    object_class_property_add_enum(oc, "measurement-algorithm",
-+                                   "RmeGuestMeasurementAlgorithm",
-+                                   &RmeGuestMeasurementAlgorithm_lookup,
-+                                   rme_get_measurement_algo,
-+                                   rme_set_measurement_algo);
-+    object_class_property_set_description(oc, "measurement-algorithm",
-+            "Realm measurement algorithm ('sha256', 'sha512')");
++    return requested_pa_size | rme_vm_type;
  }
  
- static void rme_guest_init(Object *obj)
-@@ -290,6 +326,7 @@ static void rme_guest_init(Object *obj)
-         exit(1);
-     }
-     rme_guest = RME_GUEST(obj);
-+    rme_guest->measurement_algo = RME_GUEST_MEASUREMENT_ALGORITHM_SHA512;
- }
- 
- static void rme_guest_finalize(Object *obj)
+ static int virt_hvf_get_physical_address_range(MachineState *ms)
 -- 
 2.47.0

@@ -1,740 +1,195 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1569395njc;
-        Mon, 25 Nov 2024 11:59:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXeJy08j/c4ECngF5giLUHA4WDIftEAThYRHhOYgvEa+WfbYgEGm7l1pxb9WNbNv8acV+Hf1vk4FT+Dkg==@linaro.org
-X-Received: by 2002:a5d:6d8f:0:b0:382:4f9e:711f with SMTP id ffacd0b85a97d-38260b4724bmr12228484f8f.6.1732564779807;
-        Mon, 25 Nov 2024 11:59:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732564779; cv=none;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1652987njc;
+        Mon, 25 Nov 2024 14:43:04 -0800 (PST)
+X-Received: by 2002:a17:90b:3b41:b0:2ea:9bdc:8f96 with SMTP id 98e67ed59e1d1-2eb0e86ad1dmr19003393a91.30.1732574584630;
+        Mon, 25 Nov 2024 14:43:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732574584; cv=none;
         d=google.com; s=arc-20240605;
-        b=bNaimX8Ml06nnp+F2JwcTTWFnX3Qb+RywtFnueEmpXSXZgJATbp5oBJnFt9dLyQ0Hb
-         i1Id5JMTrUwLDxgtXeBYtperGDi8W9w6v0K9c+2Qb66tZg4C9UGtZ1KcejePVLN/BwCd
-         L8hfhd3aQcL/YhsedxjGjRZjlNXMeBXJJ5yeOetXeLkPzuoRf9r5Dj5Yd/craNGXOgLR
-         W+iWpmdHLRqMUADDLEs4c8hf3g7Azw9k3lRal36XHmIUBjRdnDlmsVAYX6StSdzCm80z
-         LvIp64pWz26ryT5kRpnRY8ShE4UDZAxtRw4LrRre217+psVYqhLFW7tiKu+n94UhOSfC
-         MpyA==
+        b=BRpmLZKAf/ajDn+qCiylPVQs8wiJFSVWwIlfN1aIDJypkKFx4N4i6b7gC0HXggogaK
+         J4d5ef6B9XQ1WFZkvOm5Z6+swEDvUdErWSDoGq/Vfn/sE5ph6eco6UvyIrhUW5T7dok2
+         RSjGs9TtB2lFa+nq4QpaeQ40Fc9wooemq0Pjw/c2o2P+FwtavRyHFQuT9VQcQoDptY3v
+         oPUHEek5aJhaBlTAKeKjwmUbgAXGwzhaivshnJfXnXi8Kn9Uwg5go8b6nuDv9gIiWt7q
+         BUZXjFQQkD62gCcx1Byy/23G9l7AVS0TbRJh6ofpQvKOr5kIR4mXYFtoEO0EJ4Cy4t7p
+         9+nQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ALXm5gT4o4ottyTAX8gsvkIohjiJpUzrZLVD6VBNRS8=;
-        fh=FCFUjTIHrJfPET8hLZKU1VDJsQ5VH/h1iqxB8bl0ZwQ=;
-        b=eWmVde40hZu12UTV5hPcJ1DqVropPBH3SwflgC6N3gP5pSjruGIJ1Aww/6DT1SQCiO
-         vKApf+knpqwfJktIA/wzuZHNjAzdQKpjpBRm0h0L2LWHZcCpE4t5qDFmSNiWmxT2rSrj
-         ojyyUsYGUkr827LPrC2zaAZ0dbBjI7j1Np+YfH3h6yKE30fgf6aYgxlEII5qdu9mOsRI
-         T51DMyOiGiwmjp9Ervzodp7r/i9iq41zM4NtuniRNN61IZ4WJ6x06gCF63VKQw7gj/m5
-         HB/qncEO7YRdQECBuTKpQK56lo2wiloG5915/tSG/I/IUipvLCAeO3u0GRep2tu5+4Ao
-         Zg0w==;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=qp/Ssi2EiEYElMKWF3TPN7CXg08InF0z6+d9XXvEw/8=;
+        fh=OzCCcSemt4cggwfEOuFlHLxcao5YkuImRsb4Ytvep5g=;
+        b=UwtpmhGVO8RreTxRbzWmEfb47tD1Cvu2/xFuH5SAG1BV2XtDSob//KSYhvFQAIZ9Tj
+         NMqJIYS5166CDWaVDunuefXtP3kIMNaoppSFxkLIue7aR/F517lu8X0pubD03tE9NaU5
+         JlzZrEho3PrFwAfdNH5wA5ZUA5qvTM10B+R+dBmu3Zo1DNsa+Eb30yx2MIa1Tn4E0VaU
+         38gTaNVXNpjzPph/x/26MKfPNzDJwbyFqyxKI+Tij0rs10K5IXy58aWYIw3mTUW98ZQ7
+         XnEdSG60HDOlC6xkiEKNd6xzEfJyo6VxRccZrXU+56lx+qEcSsjexpLFOcP3anCCoQ21
+         n8DA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J5k32mTG;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ypL11q11;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <jean-philippe@linaro.org>
+Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38398587efesor2244232f8f.0.2024.11.25.11.59.39
+        by mx.google.com with SMTPS id 98e67ed59e1d1-2eb0d1e2243sor6351407a91.5.2024.11.25.14.43.04
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 25 Nov 2024 11:59:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 25 Nov 2024 14:43:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=J5k32mTG;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ypL11q11;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732564779; x=1733169579; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ALXm5gT4o4ottyTAX8gsvkIohjiJpUzrZLVD6VBNRS8=;
-        b=J5k32mTGqoC9baf7velnk00s8y47B2chWxZGgTbL7kdr8FRq9ARy0YdjE3OucjBHt+
-         5uuw7Sh1DLiRDWK2Rxc3mzdp+AQ5gWBX7ioa8yUFi5bM4QDZozHql/qti5UnQRflghz7
-         4GmVJZ2JvYW7j4+c0oOFfNpb5awLbnkOna6QbNOKYYwKWwgQm39A+gwqcIHk49G9A9Ei
-         CG6rId/WFmxt6m1llIg0DfjQqTP4wWpl+qYrtj4H5fTMRkeMPwJRy7F5P00ms6Kt5F8a
-         mTsfEoAIGJL6ReUAL9h9ja2WknF6TzcatqHS3AmgFzZIJ72DiIqpgYE4UyYVqT9hDTcp
-         OJyQ==
+        d=linaro.org; s=google; t=1732574584; x=1733179384; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=qp/Ssi2EiEYElMKWF3TPN7CXg08InF0z6+d9XXvEw/8=;
+        b=ypL11q11w4s7v7LvlTSiMixtiYfN9qNyGEVRuOtHmMlp/g5qIpVWJAZIDMGN1Xoh22
+         U66HwzEtx2MpF3VCYewhs9eyLZgvMahrdwiJvpAv8yvDz8q9wwOZ4F3OC11vdsy6dCQE
+         5vGpEae6tB/Ikis7t0PvIRScHUd9CUNvGPSoUPgcuxeibArJbkSsjCP5uHqAXVpZ2BpL
+         fNlz7kDAT4FySxrsWJrNL5oW2ZQMVIR/FpY24ibOAev+1aL+8kKj4BaxvOSatUk49P7f
+         inLxI2ke4JksGma2gU2SCVPgmwXKAv9CeDbscdBWvUIUydi3sOvSisSEABrO0gwyyqiA
+         YKAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732564779; x=1733169579;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=ALXm5gT4o4ottyTAX8gsvkIohjiJpUzrZLVD6VBNRS8=;
-        b=PtTTiKjqcZIvIcBUZJFi0l3doCQG5u8Bo4AwWA29Z3uiBTXw3JO3hVpyZtpC4KQNUb
-         ipbKtqJFBnPd28lkmV/S25sm/kV3QbY3CakmtrpzhZRDMaFlhzfPyKXFRd2o2gKSEU6+
-         r/laX0Quii3ksvDQaMvioATzM/VHZVpGLDYjPFu3jIeI7WYauHBbUfjQ+KojcQ0f4CGw
-         EE7STPpwBnJfmQjjIV9p6KEowvwBDBKBGrMXrprnK0R277gtBvVsoYPSWn+yymfNCRzU
-         6dTP8t8zlh3RltFLEp6SH3LOUa5b6rpS6GCn1Ru+COe1TZXBLof3TJ2J5n9Tf3KDIes0
-         70nw==
-X-Forwarded-Encrypted: i=1; AJvYcCVp7ZRCbVj3iZ0yE7S5OcFC9Pqx1835ejYJ/OAR0YSdXb+tMMpCbfMQzrqnD0sgm86RAFyJKIG1wccoWQ==@linaro.org
-X-Gm-Message-State: AOJu0YwSYpHqohQm8fMe03xiszDUvmeuZZjpLTBgJNMxMy+aRxbHFUpx
-	4ZjzUKmPiX0kzOELd7M+w+6wKz2yJPJMPa4+4kwTNDV5vfiF00v0lgAsd/Aodth4QQ==
-X-Gm-Gg: ASbGnctG9jbeJdeRN79iZgfnALwTautg2m+oMY3V3gkxyAZKqGcIFjVv/mWb3u2tD9s
-	qVCxa2BHp1PmX5SNGiPJV02ZDNlgdKURYexh5dZ/OUT3TlSauwNBAeVqe/s9INbmjpOCs4gmOrX
-	6cWnBKTZ6Wq/ZEfAWMADsf6EgyQBIdO/2/Y/83/KJ2aVA6SnCovH0CwfmfzwYZhp3Wlj3EMVJ8c
-	F4n6ohENWpSxjwQl8RsNAwH73lnTKyK3apg9+FHtcoH1EafBFKFAvUbCH26XctCu6Sx
-X-Google-Smtp-Source: AGHT+IFdM1ybdFtANnY9CTfKcwxW+1igpXzLDtGHgjomaSS2YBTfeFzVZDrWVuBP9gt7reepJifQMQ==
-X-Received: by 2002:a5d:59a3:0:b0:382:5036:d1f2 with SMTP id ffacd0b85a97d-38260be3fbbmr13015033f8f.54.1732564779026;
-        Mon, 25 Nov 2024 11:59:39 -0800 (PST)
-Return-Path: <jean-philippe@linaro.org>
-Received: from localhost.localdomain ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Nov 2024 11:59:38 -0800 (PST)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: peter.maydell@linaro.org
-Cc: richard.henderson@linaro.org,
-	philmd@linaro.org,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	alex.bennee@linaro.org,
-	Jean-Philippe Brucker <jean-philippe@linaro.org>,
-	Stefan Berger <stefanb@linux.vnet.ibm.com>
-Subject: [RFC PATCH v3 25/26] target/arm/kvm-rme: Add measurement log
-Date: Mon, 25 Nov 2024 19:56:24 +0000
-Message-ID: <20241125195626.856992-27-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.47.0
-In-Reply-To: <20241125195626.856992-2-jean-philippe@linaro.org>
-References: <20241125195626.856992-2-jean-philippe@linaro.org>
+        d=1e100.net; s=20230601; t=1732574584; x=1733179384;
+        h=content-transfer-encoding:in-reply-to:content-language:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=qp/Ssi2EiEYElMKWF3TPN7CXg08InF0z6+d9XXvEw/8=;
+        b=cl+nGaq4MZxYbhzoXU9XCCcqlXHKaQyMNddfkaO4rdW5hKYA8xTU7xlhxEurITQMKH
+         GuSaRQEFWBvodBbs7Mn34gJcMzQ6UsRJIqOvTTMawlWymRwEjsRMfR6KuS0Xa76HEouR
+         PC+tocv1cKTWsJD9xr7U0EeAMKDc7eVzpJ8BQ/ZnTLVfqxRtQRtY71xGJxyTys1WDp2U
+         rIjSQvz61k0ActdFByz8ll69CmJf7NXSOvQqb9hfhRomi2tvk6He1DPe4gJ6V8pjpfDN
+         CD27i6ncUa1hPkGUwgii8oYXzQo9po24ScEfDU0UFuduQTyrIGaCMx1U6LWOFCmMFeBi
+         B/zA==
+X-Gm-Message-State: AOJu0Yyhus2AFewVHT88rt7XL7iuj0PCeU8x3WHZFNdgrWgFrOnv+j8+
+	BQGPVl99gsVSgfofdvcW/YswXIR5ZvQcFDP9tJj+CKWEISIL5G2VWKClQsolfBWBhnRV3JBGSP4
+	9dBacUpWs
+X-Gm-Gg: ASbGncvk21YKvqxko3NlVFHbIZ5eO2agAG5xtxBRwfLTQD6l3BEh+DG/TsKJ6YsHYeX
+	nSF6sgBLuZLNDH4Rt2+6pz48rQ68F0z0aL18A5azs+6klQceqh6VipKDhEvUWSn0dY+806+fwWE
+	DfXAIATtscMMW70O0nf6mpS7Fnu/j18sdP5oYYNSityXl+0WI+VUoKJdPrkkq6Yo91HQObL71Nq
+	Vt86U2Xx+z9mDQCVH5+ppycBghnDzT1/bMSSorLFK1FXbM4qT+Yh7gdttMSRDZvMpixE0LRAW3K
+	mehmiK9GztBgARTkjh64bQ==
+X-Google-Smtp-Source: AGHT+IGNz/ZuNWTYvuAr1x3OZ4TXvjup+bo6/0RT6SjDY8DrDWXEhnwlwZkgGTf6aJ/6hi03/WNBXw==
+X-Received: by 2002:a17:90b:1b46:b0:2ea:5fed:4a2b with SMTP id 98e67ed59e1d1-2eb0e2303e4mr20002544a91.15.1732574584227;
+        Mon, 25 Nov 2024 14:43:04 -0800 (PST)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-724de47e4dcsm7246676b3a.67.2024.11.25.14.43.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 25 Nov 2024 14:43:03 -0800 (PST)
+Message-ID: <01d49b94-c341-4311-88fe-f7962c117336@linaro.org>
+Date: Mon, 25 Nov 2024 14:43:03 -0800
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: kc46TV2g4FdT
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/functional/aarch64_virt: add test for FEAT_RME
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, mathieu.poirier@linaro.org,
+ gustavo.romero@linaro.org, jean-philippe@linaro.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20241125065950.1179068-1-pierrick.bouvier@linaro.org>
+ <8734jfchxe.fsf@draig.linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Content-Language: en-US
+In-Reply-To: <8734jfchxe.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: LWuBpiuiHwAh
 
-Create an event log, in the format defined by Trusted Computing Group
-for TPM2. It contains information about the VMM, the Realm parameters,
-any data loaded into guest memory before boot and the initial vCPU
-state.
-
-The guest can access this log from RAM and send it to a verifier, to
-help the verifier independently compute the Realm Initial Measurement,
-and check that the data we load into guest RAM is known-good images.
-Without this log, the verifier has to guess where everything is loaded
-and in what order.
-
-Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
----
-v2->v3: New
----
- qapi/qom.json        |   9 +-
- target/arm/kvm_arm.h |  27 +++
- target/arm/kvm-rme.c | 415 ++++++++++++++++++++++++++++++++++++++++++-
- target/arm/Kconfig   |   1 +
- 4 files changed, 449 insertions(+), 3 deletions(-)
-
-diff --git a/qapi/qom.json b/qapi/qom.json
-index 901ba67634..1de1b0d8af 100644
---- a/qapi/qom.json
-+++ b/qapi/qom.json
-@@ -1094,11 +1094,18 @@
- # @measurement-algorithm: Realm measurement algorithm
- #     (default: sha512)
- #
-+# @measurement-log: Enable a measurement log for the Realm. All events
-+#     that contribute to the Realm Initial Measurement (RIM) are added
-+#     to a log in TCG TPM2 format, which is itself loaded into Realm
-+#     memory (unmeasured) and can then be read by a verifier to
-+#     reconstruct the RIM.
-+#
- # Since: 9.3
- ##
- { 'struct': 'RmeGuestProperties',
-   'data': { '*personalization-value': 'str',
--            '*measurement-algorithm': 'RmeGuestMeasurementAlgorithm' } }
-+            '*measurement-algorithm': 'RmeGuestMeasurementAlgorithm',
-+            '*measurement-log': 'bool'} }
- 
- ##
- # @ObjectType:
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 77680f238a..44e95a034b 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -268,6 +268,24 @@ int kvm_arm_rme_vcpu_init(CPUState *cs);
-  */
- void kvm_arm_rme_init_guest_ram(hwaddr base, size_t size);
- 
-+/**
-+ * kvm_arm_rme_get_measurement_log
-+ *
-+ * Obtain the measurement log object if enabled, in order to get its size and
-+ * set its base address.
-+ *
-+ * Returns NULL if measurement log is disabled.
-+ */
-+Object *kvm_arm_rme_get_measurement_log(void);
-+
-+/**
-+ * kvm_arm_rme_set_ipa_size
-+ * @ipa_bits: number of guest physical address bits
-+ *
-+ * Set the GPA size, not counting the bit reserved for shared address range.
-+ */
-+void kvm_arm_rme_set_ipa_size(uint8_t ipa_bits);
-+
- #else
- 
- /*
-@@ -298,6 +316,15 @@ static inline void kvm_arm_rme_init_guest_ram(hwaddr base, size_t size)
- {
- }
- 
-+static inline Object *kvm_arm_rme_get_measurement_log(void)
-+{
-+    return NULL;
-+}
-+
-+static inline void kvm_arm_rme_set_ipa_size(uint8_t ipa_size)
-+{
-+}
-+
- /*
-  * These functions should never actually be called without KVM support.
-  */
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-index bf0bcf9a38..f92cfdb5f3 100644
---- a/target/arm/kvm-rme.c
-+++ b/target/arm/kvm-rme.c
-@@ -10,10 +10,12 @@
- #include "hw/boards.h"
- #include "hw/core/cpu.h"
- #include "hw/loader.h"
-+#include "hw/tpm/tpm_log.h"
- #include "kvm_arm.h"
- #include "migration/blocker.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
-+#include "qemu/units.h"
- #include "qom/object_interfaces.h"
- #include "sysemu/kvm.h"
- #include "sysemu/runstate.h"
-@@ -25,6 +27,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
- 
- #define RME_MAX_CFG         2
- 
-+#define RME_MEASUREMENT_LOG_SIZE    (64 * KiB)
-+
- struct RmeGuest {
-     ConfidentialGuestSupport parent_obj;
-     Notifier rom_load_notifier;
-@@ -32,22 +36,344 @@ struct RmeGuest {
- 
-     uint8_t *personalization_value;
-     RmeGuestMeasurementAlgorithm measurement_algo;
-+    bool use_measurement_log;
- 
-+    size_t num_cpus;
-+    uint8_t ipa_bits;
-     hwaddr ram_base;
-     size_t ram_size;
-+
-+    TpmLog *log;
-+    GHashTable *images;
- };
- 
- OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
-                                           CONFIDENTIAL_GUEST_SUPPORT,
-                                           { TYPE_USER_CREATABLE }, { })
- 
-+typedef struct RmeLogFiletype {
-+    uint32_t event_type;
-+    /* Description copied into the log event */
-+    const char *desc;
-+} RmeLogFiletype;
-+
- typedef struct {
-     hwaddr base;
-     hwaddr size;
-+    uint8_t *data;
-+    RmeLogFiletype *filetype;
- } RmeRamRegion;
- 
-+typedef struct {
-+    char        signature[16];
-+    char        name[32];
-+    char        version[40];
-+    uint64_t    ram_size;
-+    uint32_t    num_cpus;
-+    uint64_t    flags;
-+} EventLogVmmVersion;
-+
-+typedef struct {
-+    uint32_t    id;
-+    uint32_t    data_size;
-+    uint8_t     data[];
-+} EventLogTagged;
-+
-+#define EVENT_LOG_TAG_REALM_CREATE  1
-+#define EVENT_LOG_TAG_INIT_RIPAS    2
-+#define EVENT_LOG_TAG_REC_CREATE    3
-+
-+#define REALM_PARAMS_FLAG_SVE       (1 << 1)
-+#define REALM_PARAMS_FLAG_PMU       (1 << 2)
-+
-+#define REC_CREATE_FLAG_RUNNABLE    (1 << 0)
-+
- static RmeGuest *rme_guest;
- 
-+static int rme_init_measurement_log(MachineState *ms)
-+{
-+    Object *log;
-+    gpointer filename;
-+    TpmLogDigestAlgo algo;
-+    RmeLogFiletype *filetype;
-+
-+    if (!rme_guest->use_measurement_log) {
-+        return 0;
-+    }
-+
-+    switch (rme_guest->measurement_algo) {
-+    case RME_GUEST_MEASUREMENT_ALGORITHM_SHA256:
-+        algo = TPM_LOG_DIGEST_ALGO_SHA256;
-+        break;
-+    case RME_GUEST_MEASUREMENT_ALGORITHM_SHA512:
-+        algo = TPM_LOG_DIGEST_ALGO_SHA512;
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    log = object_new_with_props(TYPE_TPM_LOG, OBJECT(rme_guest),
-+                                "log", &error_fatal,
-+                                "digest-algo", TpmLogDigestAlgo_str(algo),
-+                                NULL);
-+
-+    tpm_log_create(TPM_LOG(log), RME_MEASUREMENT_LOG_SIZE, &error_fatal);
-+    rme_guest->log = TPM_LOG(log);
-+
-+    /*
-+     * Write down the image names we're expecting to encounter when handling the
-+     * ROM load notifications, so we can record the type of image being loaded
-+     * to help the verifier.
-+     */
-+    rme_guest->images = g_hash_table_new_full(g_str_hash, g_str_equal, g_free,
-+                                              g_free);
-+
-+    filename = g_strdup(ms->kernel_filename);
-+    if (filename) {
-+        filetype = g_new0(RmeLogFiletype, 1);
-+        filetype->event_type = TCG_EV_POST_CODE2;
-+        filetype->desc = "KERNEL";
-+        g_hash_table_insert(rme_guest->images, filename, (gpointer)filetype);
-+    }
-+
-+    filename = g_strdup(ms->initrd_filename);
-+    if (filename) {
-+        filetype = g_new0(RmeLogFiletype, 1);
-+        filetype->event_type = TCG_EV_POST_CODE2;
-+        filetype->desc = "INITRD";
-+        g_hash_table_insert(rme_guest->images, filename, (gpointer)filetype);
-+    }
-+
-+    filename = g_strdup(ms->firmware);
-+    if (filename) {
-+        filetype = g_new0(RmeLogFiletype, 1);
-+        filetype->event_type = TCG_EV_EFI_PLATFORM_FIRMWARE_BLOB2;
-+        filetype->desc = "FIRMWARE";
-+        g_hash_table_insert(rme_guest->images, filename, filetype);
-+    }
-+
-+    filename = g_strdup(ms->dtb);
-+    if (!filename) {
-+        filename = g_strdup("dtb");
-+    }
-+    filetype = g_new0(RmeLogFiletype, 1);
-+    filetype->event_type = TCG_EV_POST_CODE2;
-+    filetype->desc = "DTB";
-+    g_hash_table_insert(rme_guest->images, filename, filetype);
-+
-+    return 0;
-+}
-+
-+static int rme_log_event_tag(uint32_t id, uint8_t *data, size_t size,
-+                             Error **errp)
-+{
-+    int ret;
-+    EventLogTagged event = {
-+        .id = id,
-+        .data_size = size,
-+    };
-+    GByteArray *bytes = g_byte_array_new();
-+
-+    if (!rme_guest->log) {
-+        return 0;
-+    }
-+
-+    g_byte_array_append(bytes, (uint8_t *)&event, sizeof(event));
-+    g_byte_array_append(bytes, data, size);
-+    ret = tpm_log_add_event(rme_guest->log, TCG_EV_EVENT_TAG, bytes->data,
-+                             bytes->len, NULL, 0, errp);
-+    g_byte_array_free(bytes, true);
-+    return ret;
-+}
-+
-+/* Log VM type and Realm Descriptor create */
-+static int rme_log_realm_create(Error **errp)
-+{
-+    int ret;
-+    ARMCPU *cpu;
-+    EventLogVmmVersion vmm_version = {
-+        .signature = "VM VERSION",
-+        .name = "QEMU",
-+        .version = "9.1", /* TODO: dynamic */
-+        .ram_size = cpu_to_le64(rme_guest->ram_size),
-+        .num_cpus = cpu_to_le32(rme_guest->num_cpus),
-+        .flags = 0,
-+    };
-+    struct {
-+        uint64_t    flags;
-+        uint8_t     s2sz;
-+        uint8_t     sve_vl;
-+        uint8_t     num_bps;
-+        uint8_t     num_wps;
-+        uint8_t     pmu_num_ctrs;
-+        uint8_t     hash_algo;
-+    } params = {
-+        .s2sz = rme_guest->ipa_bits,
-+    };
-+
-+    if (!rme_guest->log) {
-+        return 0;
-+    }
-+
-+    ret = tpm_log_add_event(rme_guest->log, TCG_EV_NO_ACTION,
-+                            (uint8_t *)&vmm_version, sizeof(vmm_version),
-+                            NULL, 0, errp);
-+    if (ret) {
-+        return ret;
-+    }
-+
-+    /* With KVM all CPUs have the same capability */
-+    cpu = ARM_CPU(first_cpu);
-+    if (cpu->has_pmu) {
-+        params.flags |= REALM_PARAMS_FLAG_PMU;
-+        params.pmu_num_ctrs = FIELD_EX64(cpu->isar.reset_pmcr_el0, PMCR, N);
-+    }
-+
-+    if (cpu->sve_max_vq) {
-+        params.flags |= REALM_PARAMS_FLAG_SVE;
-+        params.sve_vl = cpu->sve_max_vq - 1;
-+    }
-+    params.num_bps = FIELD_EX64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, BRPS);
-+    params.num_wps = FIELD_EX64(cpu->isar.id_aa64dfr0, ID_AA64DFR0, WRPS);
-+
-+    switch (rme_guest->measurement_algo) {
-+    case RME_GUEST_MEASUREMENT_ALGORITHM_SHA256:
-+        params.hash_algo = KVM_CAP_ARM_RME_MEASUREMENT_ALGO_SHA256;
-+        break;
-+    case RME_GUEST_MEASUREMENT_ALGORITHM_SHA512:
-+        params.hash_algo = KVM_CAP_ARM_RME_MEASUREMENT_ALGO_SHA512;
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    return rme_log_event_tag(EVENT_LOG_TAG_REALM_CREATE, (uint8_t *)&params,
-+                             sizeof(params), errp);
-+}
-+
-+/* unmeasured images are logged with @data == NULL */
-+static int rme_log_image(RmeLogFiletype *filetype, uint8_t *data, hwaddr base,
-+                          size_t size, Error **errp)
-+{
-+    int ret;
-+    size_t desc_size;
-+    GByteArray *event = g_byte_array_new();
-+    struct UefiPlatformFirmwareBlob2Head head = {0};
-+    struct UefiPlatformFirmwareBlob2Tail tail = {0};
-+
-+    if (!rme_guest->log) {
-+        return 0;
-+    }
-+
-+    if (!filetype) {
-+        error_setg(errp, "cannot log image without a filetype");
-+        return -1;
-+    }
-+
-+    /* EV_POST_CODE2 strings are not NUL-terminated */
-+    desc_size = strlen(filetype->desc);
-+    head.blob_description_size = desc_size;
-+    tail.blob_base = cpu_to_le64(base);
-+    tail.blob_size = cpu_to_le64(size);
-+
-+    g_byte_array_append(event, (guint8 *)&head, sizeof(head));
-+    g_byte_array_append(event, (guint8 *)filetype->desc, desc_size);
-+    g_byte_array_append(event, (guint8 *)&tail, sizeof(tail));
-+
-+    ret = tpm_log_add_event(rme_guest->log, filetype->event_type, event->data,
-+                            event->len, data, size, errp);
-+    g_byte_array_free(event, true);
-+    return ret;
-+}
-+
-+static int rme_log_ripas(hwaddr base, size_t size, Error **errp)
-+{
-+    struct {
-+        uint64_t base;
-+        uint64_t size;
-+    } init_ripas = {
-+        .base = cpu_to_le64(base),
-+        .size = cpu_to_le64(size),
-+    };
-+
-+    return rme_log_event_tag(EVENT_LOG_TAG_INIT_RIPAS, (uint8_t *)&init_ripas,
-+                             sizeof(init_ripas), errp);
-+}
-+
-+static int rme_log_rec(uint64_t flags, uint64_t pc, uint64_t gprs[8], Error **errp)
-+{
-+    struct {
-+        uint64_t flags;
-+        uint64_t pc;
-+        uint64_t gprs[8];
-+    } rec_create = {
-+        .flags = cpu_to_le64(flags),
-+        .pc = cpu_to_le64(pc),
-+        .gprs[0] = cpu_to_le64(gprs[0]),
-+        .gprs[1] = cpu_to_le64(gprs[1]),
-+        .gprs[2] = cpu_to_le64(gprs[2]),
-+        .gprs[3] = cpu_to_le64(gprs[3]),
-+        .gprs[4] = cpu_to_le64(gprs[4]),
-+        .gprs[5] = cpu_to_le64(gprs[5]),
-+        .gprs[6] = cpu_to_le64(gprs[6]),
-+        .gprs[7] = cpu_to_le64(gprs[7]),
-+    };
-+
-+    return rme_log_event_tag(EVENT_LOG_TAG_REC_CREATE, (uint8_t *)&rec_create,
-+                             sizeof(rec_create), errp);
-+}
-+
-+static int rme_populate_range(hwaddr base, size_t size, bool measure,
-+                              Error **errp);
-+
-+static int rme_close_measurement_log(Error **errp)
-+{
-+    int ret;
-+    hwaddr base;
-+    size_t size;
-+    RmeLogFiletype filetype = {
-+        .event_type = TCG_EV_POST_CODE2,
-+        .desc = "LOG",
-+    };
-+
-+    if (!rme_guest->log) {
-+        return 0;
-+    }
-+
-+    base = object_property_get_uint(OBJECT(rme_guest->log), "load-addr", errp);
-+    if (*errp) {
-+        return -1;
-+    }
-+
-+    size = object_property_get_uint(OBJECT(rme_guest->log), "max-size", errp);
-+    if (*errp) {
-+        return -1;
-+    }
-+
-+    /* Log the log itself */
-+    ret = rme_log_image(&filetype, NULL, base, size, errp);
-+    if (ret) {
-+        return ret;
-+    }
-+
-+    ret = tpm_log_write_and_close(rme_guest->log, errp);
-+    if (ret) {
-+        return ret;
-+    }
-+
-+    ret = rme_populate_range(base, size, /* measure */ false, errp);
-+    if (ret) {
-+        return ret;
-+    }
-+
-+    g_hash_table_destroy(rme_guest->images);
-+
-+    /* The log is now in the guest. Free this object */
-+    object_unparent(OBJECT(rme_guest->log));
-+    rme_guest->log = NULL;
-+    return 0;
-+}
-+
- static int rme_configure_one(RmeGuest *guest, uint32_t cfg, Error **errp)
- {
-     int ret;
-@@ -120,9 +446,10 @@ static int rme_init_ram(hwaddr base, size_t size, Error **errp)
-         error_setg_errno(errp, -ret,
-                          "failed to init RAM [0x%"HWADDR_PRIx", 0x%"HWADDR_PRIx")",
-                          start, end);
-+        return ret;
-     }
- 
--    return ret;
-+    return rme_log_ripas(base, size, errp);
- }
- 
- static int rme_populate_range(hwaddr base, size_t size, bool measure,
-@@ -158,23 +485,42 @@ static void rme_populate_ram_region(gpointer data, gpointer err)
-     }
- 
-     rme_populate_range(region->base, region->size, /* measure */ true, errp);
-+    if (*errp) {
-+        return;
-+    }
-+
-+    rme_log_image(region->filetype, region->data, region->base, region->size,
-+                  errp);
- }
- 
- static int rme_init_cpus(Error **errp)
- {
-     int ret;
-     CPUState *cs;
-+    bool logged_primary_cpu = false;
- 
-     /*
-      * Now that do_cpu_reset() initialized the boot PC and
-      * kvm_cpu_synchronize_post_reset() registered it, we can finalize the REC.
-      */
-     CPU_FOREACH(cs) {
--        ret = kvm_arm_vcpu_finalize(ARM_CPU(cs), KVM_ARM_VCPU_REC);
-+        ARMCPU *cpu = ARM_CPU(cs);
-+
-+        ret = kvm_arm_vcpu_finalize(cpu, KVM_ARM_VCPU_REC);
-         if (ret) {
-             error_setg_errno(errp, -ret, "failed to finalize vCPU");
-             return ret;
-         }
-+
-+        if (!logged_primary_cpu) {
-+            ret = rme_log_rec(REC_CREATE_FLAG_RUNNABLE, cpu->env.pc,
-+                              cpu->env.xregs, errp);
-+            if (ret) {
-+                return ret;
-+            }
-+
-+            logged_primary_cpu = true;
-+        }
-     }
-     return 0;
- }
-@@ -194,6 +540,10 @@ static int rme_create_realm(Error **errp)
-         return -1;
-     }
- 
-+    if (rme_log_realm_create(errp)) {
-+        return -1;
-+    }
-+
-     if (rme_init_ram(rme_guest->ram_base, rme_guest->ram_size, errp)) {
-         return -1;
-     }
-@@ -208,6 +558,10 @@ static int rme_create_realm(Error **errp)
-         return -1;
-     }
- 
-+    if (rme_close_measurement_log(errp)) {
-+        return -1;
-+    }
-+
-     ret = kvm_vm_enable_cap(kvm_state, KVM_CAP_ARM_RME, 0,
-                             KVM_CAP_ARM_RME_ACTIVATE_REALM);
-     if (ret) {
-@@ -303,6 +657,20 @@ static void rme_set_measurement_algo(Object *obj, int algo, Error **errp)
-     guest->measurement_algo = algo;
- }
- 
-+static bool rme_get_measurement_log(Object *obj, Error **errp)
-+{
-+    RmeGuest *guest = RME_GUEST(obj);
-+
-+    return guest->use_measurement_log;
-+}
-+
-+static void rme_set_measurement_log(Object *obj, bool value, Error **errp)
-+{
-+    RmeGuest *guest = RME_GUEST(obj);
-+
-+    guest->use_measurement_log = value;
-+}
-+
- static void rme_guest_class_init(ObjectClass *oc, void *data)
- {
-     object_class_property_add_str(oc, "personalization-value", rme_get_rpv,
-@@ -317,6 +685,12 @@ static void rme_guest_class_init(ObjectClass *oc, void *data)
-                                    rme_set_measurement_algo);
-     object_class_property_set_description(oc, "measurement-algorithm",
-             "Realm measurement algorithm ('sha256', 'sha512')");
-+
-+    object_class_property_add_bool(oc, "measurement-log",
-+                                   rme_get_measurement_log,
-+                                   rme_set_measurement_log);
-+    object_class_property_set_description(oc, "measurement-log",
-+            "Enable/disable Realm measurement log");
- }
- 
- static void rme_guest_init(Object *obj)
-@@ -359,6 +733,20 @@ static void rme_rom_load_notify(Notifier *notifier, void *data)
-     region = g_new0(RmeRamRegion, 1);
-     region->base = rom->addr;
-     region->size = rom->len;
-+    /*
-+     * TODO: double-check lifetime. Is data is still available when we measure
-+     * it, while writing the log. Should be fine since data is kept for the next
-+     * reset.
-+     */
-+    region->data = rom->data;
-+
-+    /*
-+     * rme_guest->images is destroyed after ram_regions, so we can store
-+     * filetype even if we don't own the struct.
-+     */
-+    if (rme_guest->images) {
-+        region->filetype = g_hash_table_lookup(rme_guest->images, rom->name);
-+    }
- 
-     /*
-      * The Realm Initial Measurement (RIM) depends on the order in which we
-@@ -388,6 +776,13 @@ int kvm_arm_rme_init(MachineState *ms)
-         return -ENODEV;
-     }
- 
-+    if (rme_init_measurement_log(ms)) {
-+        return -ENODEV;
-+    }
-+
-+    rme_guest->ram_size = ms->ram_size;
-+    rme_guest->num_cpus = ms->smp.max_cpus;
-+
-     error_setg(&rme_mig_blocker, "RME: migration is not implemented");
-     migrate_add_blocker(&rme_mig_blocker, &error_fatal);
- 
-@@ -430,3 +825,19 @@ int kvm_arm_rme_vm_type(MachineState *ms)
-     }
-     return 0;
- }
-+
-+void kvm_arm_rme_set_ipa_size(uint8_t ipa_bits)
-+{
-+    if (rme_guest) {
-+        /* We request one more bit to KVM as the NS flag */
-+        rme_guest->ipa_bits = ipa_bits + 1;
-+    }
-+}
-+
-+Object *kvm_arm_rme_get_measurement_log(void)
-+{
-+    if (rme_guest) {
-+        return OBJECT(rme_guest->log);
-+    }
-+    return NULL;
-+}
-diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-index 7f8a2217ae..ee3a2184d0 100644
---- a/target/arm/Kconfig
-+++ b/target/arm/Kconfig
-@@ -13,3 +13,4 @@ config AARCH64
-     select ARM
-     # kvm_arch_fixup_msi_route() needs to access PCIDevice
-     select PCI if KVM
-+    select TPM_LOG if KVM
--- 
-2.47.0
+T24gMTEvMjUvMjQgMTA6MDAsIEFsZXggQmVubsOpZSB3cm90ZToNCj4gUGllcnJpY2sgQm91
+dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPiB3cml0ZXM6DQo+IA0KPj4gVGhp
+cyBib290IGFuIE9QLVRFRSBlbnZpcm9ubWVudCwgYW5kIGxhdW5jaCBhIG5lc3RlZCBndWVz
+dCBWTSBpbnNpZGUgaXQNCj4+IHVzaW5nIHRoZSBSZWFsbXMgZmVhdHVyZS4NCj4+DQo+PiBT
+aWduZWQtb2ZmLWJ5OiBQaWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFy
+by5vcmc+DQo+PiAtLS0NCj4+ICAgdGVzdHMvZnVuY3Rpb25hbC90ZXN0X2FhcmNoNjRfdmly
+dC5weSB8IDYyICsrKysrKysrKysrKysrKysrKysrKysrKysrKw0KPj4gICAxIGZpbGUgY2hh
+bmdlZCwgNjIgaW5zZXJ0aW9ucygrKQ0KPj4NCj4+IGRpZmYgLS1naXQgYS90ZXN0cy9mdW5j
+dGlvbmFsL3Rlc3RfYWFyY2g2NF92aXJ0LnB5IGIvdGVzdHMvZnVuY3Rpb25hbC90ZXN0X2Fh
+cmNoNjRfdmlydC5weQ0KPj4gaW5kZXggMzBiYWI1YTY3N2MuLjNlOGY5MzcyMTMyIDEwMDc1
+NQ0KPj4gLS0tIGEvdGVzdHMvZnVuY3Rpb25hbC90ZXN0X2FhcmNoNjRfdmlydC5weQ0KPj4g
+KysrIGIvdGVzdHMvZnVuY3Rpb25hbC90ZXN0X2FhcmNoNjRfdmlydC5weQ0KPj4gQEAgLTE4
+LDYgKzE4LDcgQEANCj4+ICAgZnJvbSBxZW11X3Rlc3QgaW1wb3J0IFFlbXVTeXN0ZW1UZXN0
+LCBBc3NldA0KPj4gICBmcm9tIHFlbXVfdGVzdCBpbXBvcnQgZXhlY19jb21tYW5kLCB3YWl0
+X2Zvcl9jb25zb2xlX3BhdHRlcm4NCj4+ICAgZnJvbSBxZW11X3Rlc3QgaW1wb3J0IGdldF9x
+ZW11X2ltZywgcnVuX2NtZA0KPj4gK2Zyb20gcWVtdV90ZXN0LnV0aWxzIGltcG9ydCBhcmNo
+aXZlX2V4dHJhY3QNCj4+ICAgDQo+PiAgIA0KPj4gICBjbGFzcyBBYXJjaDY0VmlydE1hY2hp
+bmUoUWVtdVN5c3RlbVRlc3QpOg0KPj4gQEAgLTEyOSw2ICsxMzAsNjcgQEAgZGVmIHRlc3Rf
+YWFyY2g2NF92aXJ0X2dpY3YyKHNlbGYpOg0KPj4gICAgICAgICAgIHJldHVybg0KPj4gICAg
+ICAgICAgIHNlbGYuY29tbW9uX2FhcmNoNjRfdmlydCgidmlydCxnaWMtdmVyc2lvbj0yIikN
+Cj4+ICAgDQo+PiArICAgICMgU3RhY2sgaXMgYnVpbHQgd2l0aCBPUC1URUUgYnVpbGQgZW52
+aXJvbm1lbnQgZnJvbSB0aG9zZSBpbnN0cnVjdGlvbnM6DQo+PiArICAgICMgaHR0cHM6Ly9s
+aW5hcm8uYXRsYXNzaWFuLm5ldC93aWtpL3NwYWNlcy9RRU1VL3BhZ2VzLzI5MDUxMDI3NDU5
+Lw0KPj4gKyAgICAjIGh0dHBzOi8vZ2l0aHViLmNvbS9wYm8tbGluYXJvL3FlbXUtcm1lLXN0
+YWNrDQo+PiArICAgIEFTU0VUX1JNRV9TVEFDSyA9IEFzc2V0KA0KPj4gKyAgICAgICAgKCdo
+dHRwczovL2ZpbGVzZXJ2ZXIubGluYXJvLm9yZy9zL0pYN29OZ2ZEZUdYU3hjWS8nDQo+PiAr
+ICAgICAgICAgJ2Rvd25sb2FkL3JtZS1zdGFjay1vcC10ZWUtNC4yLjAudGFyLmd6JyksDQo+
+PiArICAgICAgICAgJzFmMjQwZjU1ZThhN2E2NjQ4OWMyYjdkYjVkNDAzOTFlNWRjZmRkNTRj
+ODI2MDBiZDBkNGIyMTQ1YjlhMGZiZmInKQ0KPj4gKw0KPj4gKyAgICAjIFRoaXMgdGVzdHMg
+dGhlIEZFQVRfUk1FIGNwdSBpbXBsZW1lbnRhdGlvbiwgYnkgYm9vdGluZyBhIFZNIHN1cHBv
+cnRpbmcgaXQsDQo+PiArICAgICMgYW5kIGxhdW5jaGluZyBhIG5lc3RlZCBWTSB1c2luZyBp
+dC4NCj4+ICsgICAgZGVmIHRlc3RfYWFyY2g2NF92aXJ0X3JtZShzZWxmKToNCj4+ICsgICAg
+ICAgIHN0YWNrX3BhdGhfdGFyX2d6ID0gc2VsZi5BU1NFVF9STUVfU1RBQ0suZmV0Y2goKQ0K
+Pj4gKyAgICAgICAgYXJjaGl2ZV9leHRyYWN0KHN0YWNrX3BhdGhfdGFyX2d6LCBzZWxmLndv
+cmtkaXIpDQo+PiArDQo+PiArICAgICAgICBzZWxmLnNldF9tYWNoaW5lKCd2aXJ0JykNCj4+
+ICsgICAgICAgIHNlbGYudm0uc2V0X2NvbnNvbGUoKQ0KPj4gKyAgICAgICAgc2VsZi5yZXF1
+aXJlX2FjY2VsZXJhdG9yKCd0Y2cnKQ0KPj4gKw0KPj4gKyAgICAgICAgcm1lX3N0YWNrID0g
+b3MucGF0aC5qb2luKHNlbGYud29ya2RpciwgJ3JtZS1zdGFjaycpDQo+PiArICAgICAgICBr
+ZXJuZWwgPSBvcy5wYXRoLmpvaW4ocm1lX3N0YWNrLCAnb3V0JywgJ2JpbicsICdJbWFnZScp
+DQo+PiArICAgICAgICBiaW9zID0gb3MucGF0aC5qb2luKHJtZV9zdGFjaywgJ291dCcsICdi
+aW4nLCAnZmxhc2guYmluJykNCj4+ICsgICAgICAgIGRyaXZlID0gb3MucGF0aC5qb2luKHJt
+ZV9zdGFjaywgJ291dC1icicsICdpbWFnZXMnLCAncm9vdGZzLmV4dDQnKQ0KPj4gKw0KPj4g
+KyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWFjY2VsJywgJ3RjZycpDQo+PiArICAgICAg
+ICBzZWxmLnZtLmFkZF9hcmdzKCctY3B1JywgJ21heCx4LXJtZT1vbicpDQo+PiArICAgICAg
+ICBzZWxmLnZtLmFkZF9hcmdzKCctbScsICcyMDQ4JykNCj4+ICsgICAgICAgIHNlbGYudm0u
+YWRkX2FyZ3MoJy1NJywgJ3ZpcnQsYWNwaT1vZmYsJw0KPj4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgICAndmlydHVhbGl6YXRpb249b24sJw0KPj4gKyAgICAgICAgICAgICAgICAgICAg
+ICAgICAnc2VjdXJlPW9uLCcNCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgJ2dpYy12
+ZXJzaW9uPTMnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWJpb3MnLCBiaW9z
+KQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWtlcm5lbCcsIGtlcm5lbCkNCj4+
+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1kcml2ZScsIGYnZm9ybWF0PXJhdyxpZj1u
+b25lLGZpbGU9e2RyaXZlfSxpZD1oZDAnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJn
+cygnLWRldmljZScsICd2aXJ0aW8tYmxrLXBjaSxkcml2ZT1oZDAnKQ0KPj4gKyAgICAgICAg
+c2VsZi52bS5hZGRfYXJncygnLWRldmljZScsICd2aXJ0aW8tOXAtZGV2aWNlLGZzZGV2PXNo
+cjAsbW91bnRfdGFnPXNocjAnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWZz
+ZGV2JywgZidsb2NhbCxzZWN1cml0eV9tb2RlbD1ub25lLHBhdGg9e3JtZV9zdGFja30saWQ9
+c2hyMCcpDQo+PiArICAgICAgICBzZWxmLnZtLmFkZF9hcmdzKCctZGV2aWNlJywgJ3ZpcnRp
+by1uZXQtcGNpLG5ldGRldj1uZXQwJykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3Mo
+Jy1uZXRkZXYnLCAndXNlcixpZD1uZXQwJykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRkX2Fy
+Z3MoJy1hcHBlbmQnLCAncm9vdD0vZGV2L3ZkYScpDQo+PiArDQo+PiArICAgICAgICBzZWxm
+LnZtLmxhdW5jaCgpDQo+PiArICAgICAgICBzZWxmLndhaXRfZm9yX2NvbnNvbGVfcGF0dGVy
+bignV2VsY29tZSB0byBCdWlsZHJvb3QnKQ0KPj4gKyAgICAgICAgdGltZS5zbGVlcCgwLjEp
+DQo+PiArICAgICAgICBleGVjX2NvbW1hbmQoc2VsZiwgJ3Jvb3QnKQ0KPj4gKyAgICAgICAg
+dGltZS5zbGVlcCgwLjEpDQo+PiArDQo+PiArICAgICAgICAjIFdlIG5vdyBib290IHRoZSAo
+bmVzdGVkKSBndWVzdCBWTQ0KPj4gKyAgICAgICAgZXhlY19jb21tYW5kKHNlbGYsDQo+PiAr
+ICAgICAgICAgICAgICAgICAgICAgJ3FlbXUtc3lzdGVtLWFhcmNoNjQgLU0gdmlydCxnaWMt
+dmVyc2lvbj0zICcNCj4+ICsgICAgICAgICAgICAgICAgICAgICAnLWNwdSBob3N0IC1lbmFi
+bGUta3ZtIC1tIDUxMk0gJw0KPj4gKyAgICAgICAgICAgICAgICAgICAgICctTSBjb25maWRl
+bnRpYWwtZ3Vlc3Qtc3VwcG9ydD1ybWUwICcNCj4+ICsgICAgICAgICAgICAgICAgICAgICAn
+LW9iamVjdCBybWUtZ3Vlc3QsaWQ9cm1lMCxtZWFzdXJlbWVudC1hbGdvPXNoYTUxMiAnDQo+
+PiArICAgICAgICAgICAgICAgICAgICAgJy1kZXZpY2UgdmlydGlvLW5ldC1wY2ksbmV0ZGV2
+PW5ldDAscm9tZmlsZT0gJw0KPj4gKyAgICAgICAgICAgICAgICAgICAgICctbmV0ZGV2IHVz
+ZXIsaWQ9bmV0MCAnDQo+PiArICAgICAgICAgICAgICAgICAgICAgJy1rZXJuZWwgL21udC9v
+dXQvYmluL0ltYWdlICcNCj4+ICsgICAgICAgICAgICAgICAgICAgICAnLWluaXRyZCAvbW50
+L291dC1ici9pbWFnZXMvcm9vdGZzLmNwaW8gJw0KPj4gKyAgICAgICAgICAgICAgICAgICAg
+ICctc2VyaWFsIHN0ZGlvJykNCj4+ICsgICAgICAgICMgRGV0ZWN0IFJlYWxtIGFjdGl2YXRp
+b24gZHVyaW5nIGJvb3QuDQo+PiArICAgICAgICBzZWxmLndhaXRfZm9yX2NvbnNvbGVfcGF0
+dGVybignU01DX1JNSV9SRUFMTV9BQ1RJVkFURScpDQo+PiArICAgICAgICAjIFdhaXQgZm9y
+IGJvb3QgdG8gY29tcGxldGUuDQo+PiArICAgICAgICBzZWxmLndhaXRfZm9yX2NvbnNvbGVf
+cGF0dGVybignV2VsY29tZSB0byBCdWlsZHJvb3QnKQ0KPiANCj4gVGhpcyBpcyB0aGUgc2Ft
+ZSBhcyBhYm92ZT8gT3IgdGhlIGNvbnNvbGUgb2YgdGhlIGd1ZXN0Pw0KPiANCg0KSXQncyB0
+aGUgZ3Vlc3QgeWVzLCBhcyB0aGUgY29tbWVudCB0cnkgdG8gZXhwbGFpbi4NCkkgY2hvc2Ug
+dG8gaW1wbGVtZW50IGl0IHRoaXMgd2F5LCBpbnN0ZWFkIG9mIGdvaW5nIHdpdGggYSBzZXBh
+cmF0ZSANCnNvY2tldCwgYmVjYXVzZSBpdCB3b3VsZCBtYWtlIHRoZSB0ZXN0IGNvZGUgbXVj
+aCBtb3JlIGNvbXBsaWNhdGVkIHdpdGggDQpubyByZWFsIGJlbmVmaXQuDQoNCj4gQ291bGQg
+d2UgYWxzbyBjaGVjayB0aGUgb3V0cHV0IG9mIHRoZSBvdGhlciBzZXJpYWwgcG9zdHM/DQo+
+IA0KDQpIb3N0IGRvZXMgbm90IHByaW50IGFueXRoaW5nLg0KV2UgYWxyZWFkeSBjaGVjayBn
+dWVzdC4NCk1lc3NhZ2UgJ1NNQ19STUlfUkVBTE1fQUNUSVZBVEUnIGNvbWVzIGZyb20gdGhl
+IGZpcm13YXJlLg0KU2VjdXJlIHRlcm1pbmFsIGlzIGNvbXBsZXRlbHkgc2lsZW50Lg0KDQpX
+ZXJlIHlvdSB0aGlua2luZyB0byBzb21ldGhpbmcgZWxzZT8NCg0KRmVlbCBmcmVlIHRvIHRy
+eSBbMV0sIHlvdSBjYW4gYnVpbGQgYW5kIGxhdW5jaCB0aGUgdm0gaW4gdHdvIGNvbW1hbmRz
+IA0Kd2l0aG91dCBoYXZpbmcgdG8gaW5zdGFsbCBhbnl0aGluZyBvbiB5b3VyIG1hY2hpbmUu
+DQoNClsxXSBodHRwczovL2dpdGh1Yi5jb20vcGJvLWxpbmFyby9xZW11LXJtZS1zdGFjaw0K
+DQo+PiAgIA0KPj4gICBpZiBfX25hbWVfXyA9PSAnX19tYWluX18nOg0KPj4gICAgICAgUWVt
+dVN5c3RlbVRlc3QubWFpbigpDQo+IA0KDQo=

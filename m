@@ -1,84 +1,84 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1569275njc;
-        Mon, 25 Nov 2024 11:59:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWbfL2W34mubhvqiJ6A2qLrEVym4HayLwL/lhTT+5iEeYyPu1IRtrd4S3GiARA6kJZ7aeiqJhhim5RxQw==@linaro.org
-X-Received: by 2002:a5d:6c6a:0:b0:382:40cc:5057 with SMTP id ffacd0b85a97d-38260b46461mr9592135f8f.8.1732564768612;
-        Mon, 25 Nov 2024 11:59:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732564768; cv=none;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1569295njc;
+        Mon, 25 Nov 2024 11:59:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUA5/+YkAxon2ZjBknqTzel1YKriOzcxcwD1GC9CJMYzeiWSPNolgSScnO3wBOqBy95LgS5wmAtnaUYuA==@linaro.org
+X-Received: by 2002:a5d:5f89:0:b0:382:43ab:7d68 with SMTP id ffacd0b85a97d-38260b46e1fmr11698062f8f.12.1732564769681;
+        Mon, 25 Nov 2024 11:59:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732564769; cv=none;
         d=google.com; s=arc-20240605;
-        b=Zz7nCtjIJhpOBYjZ8YxzE/T5AMxLETpElTDgpR+uL23VPCKj2ngnWIKct5kyuMGX/Q
-         w/gqrFvMm8Bl5zHifU9KtzddLmHAOjNsrNg6jjS83FT5bbmHJOSCHLWAzjUXO4PHrK8s
-         J7c0+BI/dMA4q4gIU5dWsnEc7JDRmQwTq/RNRPzLfW8O/2HXk9MEpsuDat5xhgh1V4BP
-         gnddwKJMmQyoBzA+YGiuhZhz8THpc5fdxkQuzutzrcDsyc4VqPKkAGy6lY+ycH5OpI5a
-         uaEoqFw7Vlqr3ZkMHyARYYEDoMXbtbyBntYF3VIpYnrArKiByXDRFrlJBHjoL3Y1or0z
-         jkKQ==
+        b=RvtYjeXwTsNJ03VKpiHQH64XNuOsVj4o+K1qhnGvSXMsz2+ex9nSNko0/ZCqhFO/c9
+         uI/6KoKFJfgI4IDEm6WtomwycaBMg/vdmEBIbGIa96IlT6OuBpqPW/8geOlX0r5HNK69
+         zmIhJkeWEMZDToxyngvWUcIydymc1x5e0G/mf6RZ8YqFrN7PvYnwbYFb0AsGzDmIzwPa
+         1A8vr3/dtZtuBorRIgtZg3a3uPzJFvkfIQIA4M4rX61VBWBngKea2uTNscUcv+V/8Z0J
+         kdpZVQjJn0+B7z8/Ma5lG9wZdIEOS0459dXUQegO/EQsw9pbKZ1gnPwdCuyZxSkwK+K3
+         XUTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=tQShuah4RPH85LfDxttMiyLaDhN+5oe8+p7fsP3yrqw=;
-        fh=9TXKkgRrn5w6HWkHT3L/aJoWaLT0mHoNbtm1xwgFJog=;
-        b=dkSZ7cDRvD24frKlDtngDDoWWxt1YzQzzzzRS6/yEpn8I0BERutyzR9zdpWfeFWN9F
-         nambqBNHBGDn5zvbeFo28eyHofHQQoTLl/Szl6DhV/yCL3Ro46+ix8RpWeIVHG8kVEYR
-         0JBOKrpKIkyl/EIDr39wxvCUL2X+gJJOJkN1qUWzOQYnj0mEoYJeAqCILlvMkKDGLeKK
-         P4OmN+IWpE2XjRqCjuOVCaCKSJh6qSkONn6GzEJfP8ePws8hQMqvSj6Akiwu//5enSEI
-         Rckqoxl9DGQFlcf2xBXkVMUXWSe+AlWoEj5/+8yQTPJimka2AQEfzKiz0lFwvVBthEod
-         v0kA==;
+        bh=JcJPrbjMCLmh0eNMSHwL1G2MB7wFRr0T2Y0cUgmEayE=;
+        fh=Amv8T+Wg+FJBQQJADCSWfTXz8aSQtTFLPKCy+qrw21I=;
+        b=d15RYcqNXl8/VPW/YnWCD1ZrtSlkfOIxHE3/vdB82RhF+GeI775NC/+J2jj1h9a1b5
+         NO8ygCTJEJoSGDV9YHSeNiOYAmqdoQetkLk/SPvfHoQF/Vst+A/TL8NgbAqEEma1PR8n
+         smMHX43KM3FR/ZU3gagznsksP9ijkOrYymgjB1JVgWTAwJ/XhfafVuR8Q+tnodJeha9s
+         MG3FZeyNFVLlfPNFTT6q3UoP93rRVdCpUjY0OXXg6jC9gSxpRAyH0/PY57ghOJqVBwbV
+         Sj9uU43ITTWBl3ZtdVTd6RYOA2kDWh+jvhdxUjS97ZzrAzNNYhFUFwcSKQqqA5iQPSCo
+         jjOw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AAhscYcf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=X6nvf3F4;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-385be98dd89sor372030f8f.6.2024.11.25.11.59.28
+        by mx.google.com with SMTPS id ffacd0b85a97d-3825fb09d4bsor2230022f8f.1.2024.11.25.11.59.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 25 Nov 2024 11:59:28 -0800 (PST)
+        Mon, 25 Nov 2024 11:59:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AAhscYcf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=X6nvf3F4;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732564768; x=1733169568; darn=linaro.org;
+        d=linaro.org; s=google; t=1732564769; x=1733169569; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=tQShuah4RPH85LfDxttMiyLaDhN+5oe8+p7fsP3yrqw=;
-        b=AAhscYcfS56nKUCxqfsggacmlpop4BOvkUrhRdlqtOMUawb4lWiN/pIHTAt6uCHB57
-         BifmOG6hr5v29kaG6MhcNXmCTOE4AIax8G2yuc/870nVk3CRB24dRcOktClUfVyZ0jmz
-         qtNF1yeSRidw/4eVLYFgFbIbUU5l5TgRbhkOyifDmY4bP5+CErdDI9D7Yjp3JuXsBG6L
-         UgETRxgb7wysyUVBMKYMEj+QArdshDpujmcKGBK0GA7Pf6lILmfCxF/J8dFmkaES80EG
-         KKbYXX7xm9D3TjfVskpkaH39rLfkLMyLmGgGEM6o/av7+Mfp/r9ZRkafvrzqnC0m2c7w
-         KxKw==
+        bh=JcJPrbjMCLmh0eNMSHwL1G2MB7wFRr0T2Y0cUgmEayE=;
+        b=X6nvf3F46b0rLnYFh3/GI5VB8+JUkHHnHMo+pfGu8vfKlqAe/B79h03kAVpcN/fs3k
+         L03DMz8DcrPbYUhsSEWXuTtAnoqdXdMNsF7En9UqrVIBTKkUhrLIRU4EYFENQ6OapV8o
+         Rw8Jj9ALD2jsDrH6sXwlAuy55saMOzVu7VIvnvwtNKafa4MbjnTdwfHdsjZHe8wyv1Mm
+         wCdCtJjm1QGtDaV5/mQPY3VkiwSl83BYGUD1nnDaQqhwSqLvOLdd3qhaR2sVOIKqUOPC
+         kLtWj0L1yLVlvB89AAlE38yoGRXacLqW+5TMYpbnBUw9gcM4L61tKHNW8vtZ/ft8niWM
+         eJpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732564768; x=1733169568;
+        d=1e100.net; s=20230601; t=1732564769; x=1733169569;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=tQShuah4RPH85LfDxttMiyLaDhN+5oe8+p7fsP3yrqw=;
-        b=EtjxzPEajH+LqwuaH4OJmPWTUgOxBBwOsf0MF2ewlI3xALgcvlEq8NmotXx4BTMg+C
-         FcqgMh7Fc4UtzYr9unkCfii71ePjZ/ZrkLfflFZolTilI/9co4M3eS096Sw5zt7KyNRB
-         0EdS/4mXFKtg8gewMZvV8tFrTG2mb46TGzokipuUswya1lWMnClVJ02hFpsZDFfOMmkT
-         EtF7BnXcVuBLQC8i75J9Z6m2cDr3MmeaoQTRcldQ1l4lrg26kEo1bHGt3x4cA8aaNJ0o
-         1ouYsQlMDda54PuZsPTlSe/dT4rOzaLHPsz55/7LH1HGqC0+oYio83lBDP2AB4LKrdUT
-         6Nsg==
-X-Forwarded-Encrypted: i=1; AJvYcCXiUTDjUhyPDaa+HU3suYVHPaH1ClyiOXPtxXZcDZGqTmcVNiTMvtO2RvNL2fFkVkiDVhybcePq9MDtjQ==@linaro.org
-X-Gm-Message-State: AOJu0Yw5g3xMSFDZb1/E/BdfTuY2OjvIIMSk7r/PB/MCxBFB/ziStida
-	5/mahHRdrCb7lET+CJx9TdqbplLdRVO0Nx9Y4pAbbtkwwSfFLDdna2Ui1KJoNmZdVQ==
-X-Gm-Gg: ASbGnctNB5icWzJpoOE/6W9eb/Iz6jR5RWZC5xTjEypuss0CEnlTECTGmFn5MHm9V19
-	bGS8U0fb6+73uJ+99NERc8uFMK3oTKjuSohMcozSFqPTWpHV6h5QR2d44PkVT934RoZRNN8ccCP
-	jNpoEMrbdhGK3lkrYVOTN8MYgy7Izf5dukVaaKqgGxD0vfJQjtSiJcJ4ueTBNtMp68EnAG9xg5s
-	X0Zj3/FyhEdTI4m3ZaKW7cpsbk/7s1ZJtcPaXGOPkeN1bYtTgsMr4TYIZs89mH3TRXx
-X-Google-Smtp-Source: AGHT+IHu0epn53EoPbJ5rBYNXd0hSz17fN6MkrV+SiPxv6AdYWmai7LEbVLtwK/yGBV3nNkYp1vi2g==
-X-Received: by 2002:a05:6000:1f82:b0:37d:5364:d738 with SMTP id ffacd0b85a97d-38260bcc4cemr12792210f8f.45.1732564768083;
-        Mon, 25 Nov 2024 11:59:28 -0800 (PST)
+        bh=JcJPrbjMCLmh0eNMSHwL1G2MB7wFRr0T2Y0cUgmEayE=;
+        b=PoBQTvcLUIavJlnhsWKVkkDFaDIBFOSlCN/wm4kkbBc/r2EFF4PgvDerkyZfB8yYsN
+         yk9DsMr6alQXt+qYR5YlruwZ5I/0gHkBL9vuHDhhHN9rX7K4IbMoYk9QINRof3bQJ2GC
+         xgN7vXm99HORloscQtYjToWO7l11yUxMheCq47IL6TJvk0qoQBMpKyc1j5Dcr2cGyxDF
+         oVUAmhFtsy4bV/iRenMu3pd6K8phb7ptRLjuW3YniovkX8sAtmGcth7Y6yOOSllG3jYi
+         AKrMWvpC9m004/tjepOXcJqSHNnjVTYrOxXu52uPXmxKXJb2rjkaODwhERN0ftvK9O5N
+         ckKA==
+X-Forwarded-Encrypted: i=1; AJvYcCXpy2R/O9i1mgVUu1ve36SPFbhk92A0VVUKe2Ghc/niuZnzFMfWjoSIX/ayuwActo5IGWycgyJQfmDK+g==@linaro.org
+X-Gm-Message-State: AOJu0Yz8l5RgjqcHQBqnOViu3Q8xpvbX09vsmV8bADpmSCdJChfPzBt0
+	/AbHL4Dr5dorDZRfZst13G8OBUwe/o9RqAZiIppzSvu6KvfzVSCcrJ6DNdVHxhH0ZA==
+X-Gm-Gg: ASbGnct24J/M137aRsBnJUFma+9xqZ6XUil1ZW834+R3JM0IulvdaSVGRBTTg46UQ53
+	dS9bIEU0FFnSBRZm4CYk+W7mgAD0vK0uwsJEd6Ks0UsKYwmFsWWI/a37xALjupGyfeG/EoTvluH
+	lp9Yokh/IJ5TajnnK7aCNxb1doALlI/LIyd2S1B7cIT0rWoZ/hFJyJNwr4yHxmJqhaNUoZmqu5m
+	VClsyUOk9DIfjl9ccwNpoze6pIKDQ8KfyjzRUNSoJxuBR/1aZOO7AXqGy3X0MZkiHpK
+X-Google-Smtp-Source: AGHT+IEg6YuxoILvMPLYuVly61vnvw6FfSnv0Ejz5HnIAwlyt73nF1r2uz5gua2PinPmEU6MzS2shQ==
+X-Received: by 2002:a05:6000:1fab:b0:382:4aa0:e728 with SMTP id ffacd0b85a97d-38260b46dd6mr12738762f8f.1.1732564769159;
+        Mon, 25 Nov 2024 11:59:29 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.27
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Nov 2024 11:59:27 -0800 (PST)
+        Mon, 25 Nov 2024 11:59:28 -0800 (PST)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org,
@@ -87,197 +87,101 @@ Cc: richard.henderson@linaro.org,
 	qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
 	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 06/26] target/arm/kvm-rme: Initialize vCPU
-Date: Mon, 25 Nov 2024 19:56:05 +0000
-Message-ID: <20241125195626.856992-8-jean-philippe@linaro.org>
+Subject: [PATCH v3 08/26] hw/core/loader: Add ROM loader notifier
+Date: Mon, 25 Nov 2024 19:56:07 +0000
+Message-ID: <20241125195626.856992-10-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241125195626.856992-2-jean-philippe@linaro.org>
 References: <20241125195626.856992-2-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: /vYmwnrkAhLf
+X-TUID: 4nqD0o6uaiX8
 
-The target code calls kvm_arm_vcpu_init() to mark the vCPU as part of a
-Realm. For a Realm vCPU, only x0-x7 can be set at runtime. Before boot,
-the PC can also be set, and is ignored at runtime. KVM also accepts a
-few system register changes during initial configuration, as returned by
-KVM_GET_REG_LIST.
+Add a function to register a notifier, that is invoked after a ROM gets
+loaded into guest memory.
+
+It will be used by Arm confidential guest support, in order to register
+all blobs loaded into memory with KVM, so that their content is moved
+into Realm state and measured into the initial VM state.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- target/arm/cpu.h     |  3 +++
- target/arm/kvm_arm.h | 15 +++++++++++
- target/arm/kvm-rme.c | 10 ++++++++
- target/arm/kvm.c     | 61 ++++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 89 insertions(+)
+ include/hw/loader.h | 15 +++++++++++++++
+ hw/core/loader.c    | 15 +++++++++++++++
+ 2 files changed, 30 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index d86e641280..f617591921 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -961,6 +961,9 @@ struct ArchCPU {
-     OnOffAuto kvm_steal_time;
- #endif /* CONFIG_KVM */
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 7f6d06b956..0cd9905f97 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -353,6 +353,21 @@ void *rom_ptr_for_as(AddressSpace *as, hwaddr addr, size_t size);
+ ssize_t rom_add_vga(const char *file);
+ ssize_t rom_add_option(const char *file, int32_t bootindex);
  
-+    /* Realm Management Extension */
-+    bool kvm_rme;
++typedef struct RomLoaderNotify {
++    /* Parameters passed to rom_add_blob() */
++    hwaddr addr;
++    size_t len;
++    size_t max_len;
++} RomLoaderNotify;
 +
-     /* Uniprocessor system with MP extensions */
-     bool mp_is_up;
- 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 9d6a89f9b1..8b52a881b0 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -245,6 +245,16 @@ int kvm_arm_rme_init(MachineState *ms);
-  */
- int kvm_arm_rme_vm_type(MachineState *ms);
- 
 +/**
-+ * kvm_arm_rme_vcpu_init
-+ * @cs: the CPU
++ * rom_add_load_notifier - Add a notifier for loaded images
 + *
-+ * If the user requested a Realm, setup the given vCPU accordingly. Realm vCPUs
-+ * behave a little differently, for example most of their register state is
-+ * hidden from the host.
++ * Add a notifier that will be invoked with a RomLoaderNotify structure for each
++ * blob loaded into guest memory, after the blob is loaded.
 + */
-+int kvm_arm_rme_vcpu_init(CPUState *cs);
++void rom_add_load_notifier(Notifier *notifier);
 +
- #else
+ /* This is the usual maximum in uboot, so if a uImage overflows this, it would
+  * overflow on real hardware too. */
+ #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 31593a1171..759a62cf58 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -67,6 +67,8 @@
+ #include <zlib.h>
  
- /*
-@@ -339,6 +349,11 @@ static inline int kvm_arm_rme_vm_type(MachineState *ms)
-     g_assert_not_reached();
+ static int roms_loaded;
++static NotifierList rom_loader_notifier =
++    NOTIFIER_LIST_INITIALIZER(rom_loader_notifier);
+ 
+ /* return the size or -1 if error */
+ int64_t get_image_size(const char *filename)
+@@ -1179,6 +1181,11 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+     return mr;
  }
  
-+static inline int kvm_arm_rme_vcpu_init(CPUState *cs)
++void rom_add_load_notifier(Notifier *notifier)
 +{
-+    g_assert_not_reached();
++    notifier_list_add(&rom_loader_notifier, notifier);
 +}
 +
- #endif
- 
- #endif
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-index 60d967a842..e3cc37538a 100644
---- a/target/arm/kvm-rme.c
-+++ b/target/arm/kvm-rme.c
-@@ -137,6 +137,16 @@ int kvm_arm_rme_init(MachineState *ms)
-     return 0;
- }
- 
-+int kvm_arm_rme_vcpu_init(CPUState *cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+    if (rme_guest) {
-+        cpu->kvm_rme = true;
-+    }
-+    return 0;
-+}
-+
- int kvm_arm_rme_vm_type(MachineState *ms)
+ /* This function is specific for elf program because we don't need to allocate
+  * all the rom. We just allocate the first part and the rest is just zeros. This
+  * is why romsize and datasize are different. Also, this function takes its own
+@@ -1220,6 +1227,7 @@ ssize_t rom_add_option(const char *file, int32_t bootindex)
+ static void rom_reset(void *unused)
  {
-     if (rme_guest) {
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 0c80992f7c..a0de2efc41 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -1926,6 +1926,11 @@ int kvm_arch_init_vcpu(CPUState *cs)
-         return ret;
+     Rom *rom;
++    RomLoaderNotify notify;
+ 
+     QTAILQ_FOREACH(rom, &roms, next) {
+         if (rom->fw_file) {
+@@ -1268,6 +1276,13 @@ static void rom_reset(void *unused)
+         cpu_flush_icache_range(rom->addr, rom->datasize);
+ 
+         trace_loader_write_rom(rom->name, rom->addr, rom->datasize, rom->isrom);
++
++        notify = (RomLoaderNotify) {
++            .addr = rom->addr,
++            .len = rom->datasize,
++            .max_len = rom->romsize,
++        };
++        notifier_list_notify(&rom_loader_notifier, &notify);
      }
- 
-+    ret = kvm_arm_rme_vcpu_init(cs);
-+    if (ret) {
-+        return ret;
-+    }
-+
-     if (cpu_isar_feature(aa64_sve, cpu)) {
-         ret = kvm_arm_sve_set_vls(cpu);
-         if (ret) {
-@@ -2062,6 +2067,35 @@ static int kvm_arch_put_sve(CPUState *cs)
-     return 0;
  }
  
-+static int kvm_arm_rme_put_core_regs(CPUState *cs, Error **errp)
-+{
-+    int i, ret;
-+    struct kvm_one_reg reg;
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    /*
-+     * The RME ABI only allows us to set 8 GPRs and the PC
-+     */
-+    for (i = 0; i < 8; i++) {
-+        reg.id = AARCH64_CORE_REG(regs.regs[i]);
-+        reg.addr = (uintptr_t) &env->xregs[i];
-+        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+        if (ret) {
-+            return ret;
-+        }
-+    }
-+
-+    reg.id = AARCH64_CORE_REG(regs.pc);
-+    reg.addr = (uintptr_t) &env->pc;
-+    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-+    if (ret) {
-+        return ret;
-+    }
-+
-+    return 0;
-+}
-+
- static int kvm_arm_put_core_regs(CPUState *cs, int level, Error **errp)
- {
-     uint64_t val;
-@@ -2072,6 +2106,10 @@ static int kvm_arm_put_core_regs(CPUState *cs, int level, Error **errp)
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
- 
-+    if (cpu->kvm_rme) {
-+        return kvm_arm_rme_put_core_regs(cs, errp);
-+    }
-+
-     /* If we are in AArch32 mode then we need to copy the AArch32 regs to the
-      * AArch64 registers before pushing them out to 64-bit KVM.
-      */
-@@ -2259,6 +2297,25 @@ static int kvm_arch_get_sve(CPUState *cs)
-     return 0;
- }
- 
-+static int kvm_arm_rme_get_core_regs(CPUState *cs, Error **errp)
-+{
-+    int i, ret;
-+    struct kvm_one_reg reg;
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+
-+    for (i = 0; i < 8; i++) {
-+        reg.id = AARCH64_CORE_REG(regs.regs[i]);
-+        reg.addr = (uintptr_t) &env->xregs[i];
-+        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-+        if (ret) {
-+            return ret;
-+        }
-+    }
-+
-+    return 0;
-+}
-+
- static int kvm_arm_get_core_regs(CPUState *cs, Error **errp)
- {
-     uint64_t val;
-@@ -2269,6 +2326,10 @@ static int kvm_arm_get_core_regs(CPUState *cs, Error **errp)
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
- 
-+    if (cpu->kvm_rme) {
-+        return kvm_arm_rme_get_core_regs(cs, errp);
-+    }
-+
-     for (i = 0; i < 31; i++) {
-         ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
-                               &env->xregs[i]);
 -- 
 2.47.0

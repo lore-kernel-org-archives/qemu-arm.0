@@ -1,186 +1,208 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1223839njc;
-        Mon, 25 Nov 2024 03:56:54 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXUxTBg67aZjbExj4Al0g6sSJ237bX0BIqfvOmJl2WPtTL/o+1f1QqbdxN0ylNQq7eewT4z2uKHrstnTw==@linaro.org
-X-Google-Smtp-Source: AGHT+IE83RvAWPR/6ioNXRsO9GgI3V/C3OzycCyywE3GlI/LauoQ01nYDJ/d1pgCCK2dbbCyPfmU
-X-Received: by 2002:a05:622a:1b1f:b0:460:9da7:92ff with SMTP id d75a77b69052e-4653d53436bmr228691681cf.4.1732535814489;
-        Mon, 25 Nov 2024 03:56:54 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1732535814; cv=pass;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1260369njc;
+        Mon, 25 Nov 2024 04:55:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVQ797IwHdbtgaJPFS4X9rl8VuDz+aZIS2flEniav7a1amPkl++revnBSkPl4XH6BRaOMlYEpCim31rQQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHc0It63MCfK4U8skpwXB5z/98+VuBuKcYKvoYXSCZWvvG2gcU34X1/41EzEPJoZF3hMh2Y
+X-Received: by 2002:a05:6358:6e92:b0:1ca:9aed:cb8b with SMTP id e5c5f4694b2df-1ca9aedcbc2mr36188255d.8.1732539312109;
+        Mon, 25 Nov 2024 04:55:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732539312; cv=none;
         d=google.com; s=arc-20240605;
-        b=NdfjPI1IoGq9LiGCadBZPj1fffoi+msmezyyTNxNGn6MoAvc5T/i9v5iYWSRvFAHYn
-         D7POAmr1428jHoTVlYHb1+NIOYCfaBmu3V4Iurld5RGw7m3PQ1lHDrfzPeOFLdOw3YGU
-         /8EbeAaE14HWFN1M+84tTJ/PpwcBwfM9bTyRvPGEMtWtPQlx++OeafW/3PI+QsIgEuQ7
-         wVe2e3yGgmdmE3r/v/DlGw4yHxyDzOMQscQMmY2gGsixxuQqUUzEvSexWoKWHiOI3+Dy
-         0y0yU9TvJzaRTbA0iD9gEBFpt2qvNutiYFkCwfWSxU2lzDPM6ZVLUeiM8zso2run2I3Z
-         8jfQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date;
-        bh=TGykOHBHclxNFZ9ZK+5GD131EofMWwqi7LNOjJFpquY=;
-        fh=sk20niJjP+LyGcAC6rY5I61AlgNCIPpR6UIhxIWLYTI=;
-        b=SA8VYkJhYF3oRH4a95RAMnUejLygfUp0GHmPsGlEyJI9ocW9qCsYTECB0l154pht4u
-         FaR3m+X75VueGswONwYPtC3j2Xvg5zDrY+K4KLImWHAsO1Uc0EgD3n8eRoEBMWiO3pZo
-         F1MoBF/NFl+YDMMAu2a9dkOkFvXDybIY5W3kQBJKj7a8RlnoOQhUtFYcToLiELImCCTa
-         oAT+Hsqgy+RRn8DONt9lnrex5RDXLUiwIa794uU6psFMtj5mykcgk8KN/yH37DuUZEXP
-         t5728q9h9IdnOG9m/ibLUSxr0Ho+VU67nS8xmppAi7cH5E4Ufr57P6XFBXNtRLvgmi8Y
-         x4Fg==;
+        b=k//3Dm6R8ynm4T6NrNhcH69Q/NFGwQT7kgOA9K8ZBRW9HQl68+qZbOF2ot9XEwTEuz
+         6lagk1CwGccjacUofSKru+AJBhjITUq0mS2U4ki0MJHFY64Zr/EaX300mU1I2Xlq4e7h
+         YF5WRZyOrWP74XvaGRuIsrJM84i1ncUM+LIVbveyc/VBO7eMA+GXU0MYyE0A+kTQehf9
+         vxxEjYVZ/YgOsumjiXwDReS1qvmgvHFlY4Pm3SJrpNKtb9h/spkwg4rb1Jb683Wc1WeZ
+         1hkAowoTxe7ANKXyn3yuernURtl9OHUAaq3zisJYza4asThVqOb5vF3aCbxugmtgBlg7
+         mO8g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=dwwwu87koNylv50baHmKnTD/nJXqdX01a12g01r7Nmo=;
+        fh=3QSpWkHbQUO8+9IhAt7aHRPvZIwx0TlqlgNfao9XvNY=;
+        b=NcDqaNMmBpy1NtKGMLAI+n/i9P+hH2u7cp6DYhV+Bb2ZgzqIg2T+6OA0LQmSsm/nhh
+         zd3HxnfrT0U6HNLkzD3nJl3ltCwca4nOqUBlNSxzRYmXOyQ74STw3rbHT2xH8/KrQMu/
+         oJcEeJhB3OCgogkjVOW8SVHDP74g+Ztr493DQIS1PpMxTQzx/VUbG5RyAVAeB7V2hJbl
+         FpJRaAXiZLbyukqeu/AqNEnJyj1uJ8C6eABaRlMjC+lriXZuo8xWLpHtS1LFdoU3Otwe
+         2u7pc5B3EVhgLOg37KtFXbHvpF2rgBHSJZ+p7ntL/l1W8uf2sjrxbb55LD8URBIIZUTk
+         MTng==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-420968-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-420968-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <linux-kernel+bounces-420968-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id d75a77b69052e-4669a1b49fasi10281831cf.163.2024.11.25.03.56.54
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OtI23E9V;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-466a170a905si357241cf.86.2024.11.25.04.55.12
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Nov 2024 03:56:54 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-420968-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 25 Nov 2024 04:55:12 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-420968-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-420968-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 92E1D16921C
-	for <alex.bennee@linaro.org>; Mon, 25 Nov 2024 11:56:51 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id A88FE186294;
-	Mon, 25 Nov 2024 11:56:50 +0000 (UTC)
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 095D6376E0
-	for <linux-kernel@vger.kernel.org>; Mon, 25 Nov 2024 11:56:47 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1732535810; cv=none; b=nLh9dg0jQRUg3nzNOB1SbGeuwjK4mWo4kbUWFhSMMO5kPDF1iNE7IAKwh5uv4IKZ1V50y6g8k0DdCHIfrWXe4tDom6UqKw7kxvVvw4n001CrjLsQxJ7mfmhRh7+afxU710ZNSYB3fb1BbVqN2GK7Y2kS2PeorieDXQuG19aiHcw=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1732535810; c=relaxed/simple;
-	bh=dyGAREdF6wLZko5THPZ7TK3rOCw1V/U5p4cXPE5bkXE=;
-	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=qY7+WT9S4zv7IBx0lhgHMJ9i25cKZUdqJ6dc50FmbnS50w/7xjiL76t7PASOcx+8yaVI8U9m58sDSQry2RqZC8QZoMKDr4VC7ZDWeZpM3NYQHaA1Sxx5/Mn4OTnpuaQ/l794kUy6PiXw7mNIEUFulwmZGrJ56uATbE0FJMoibnY=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Xxkgg4lh4z6LDHJ;
-	Mon, 25 Nov 2024 19:56:15 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id C523E140C98;
-	Mon, 25 Nov 2024 19:56:45 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 25 Nov
- 2024 12:56:45 +0100
-Date: Mon, 25 Nov 2024 11:56:43 +0000
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: Igor Mammedov <imammedo@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
-	Dongjiu Geng <gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>,
-	<qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v4 08/15] acpi/ghes: make the GHES record generation
- more generic
-Message-ID: <20241125115643.00002923@huawei.com>
-In-Reply-To: <b3845a8c78ef36c633d5e20af868de4ed16650a4.1732266152.git.mchehab+huawei@kernel.org>
-References: <cover.1732266152.git.mchehab+huawei@kernel.org>
-	<b3845a8c78ef36c633d5e20af868de4ed16650a4.1732266152.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=OtI23E9V;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tFYcD-0006B1-UP; Mon, 25 Nov 2024 07:54:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1tFYcC-0006AH-7x
+ for qemu-arm@nongnu.org; Mon, 25 Nov 2024 07:54:56 -0500
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcin.juszkiewicz@linaro.org>)
+ id 1tFYc9-0000QR-Vc
+ for qemu-arm@nongnu.org; Mon, 25 Nov 2024 07:54:56 -0500
+Received: by mail-lj1-x233.google.com with SMTP id
+ 38308e7fff4ca-2fc968b3545so45865441fa.2
+ for <qemu-arm@nongnu.org>; Mon, 25 Nov 2024 04:54:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1732539291; x=1733144091; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=dwwwu87koNylv50baHmKnTD/nJXqdX01a12g01r7Nmo=;
+ b=OtI23E9V2ZdIE+csjDlp/vULuRjAnsaaGFvg2aGgitM9mnDUaUiKbrIKhkT8oNnG+4
+ e+9RUJiv41Q2vCWzOT4K5FjIPHRSkDl+UaTOE0/bNzejG6OND3w6HYllKTjJC/niBEYE
+ wdFQqqoAPbXlMAHqT/5d32PFNk+PlsSJhWIfr+IZcFD3nDkuIkyhBupPIvF7pYLfUyvj
+ cXNNuFi+v7pNhrM1eVE1uYMC3/L3QRov5Qs0njnZh3FSxysZbqEB7nTXByJVI64dD5da
+ uKB+UwEa7XtHIUxkPFnIuSgtBS3llCKMv1vHWnLVDhIwpyywuka4qQTM7VmrbeYI4V6C
+ SXuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1732539291; x=1733144091;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=dwwwu87koNylv50baHmKnTD/nJXqdX01a12g01r7Nmo=;
+ b=p5kh+LqT5N7AcNTCCkKrHE4PM9K8QNXfEzxCSmH8VKVwUuhJOZrzwisgJceOzvi/a1
+ ktleMYc9v/f/GNwy6Cd3n9vVUZR8y2xvn65xGcDYkwd8HhgtufWw9GDJru5wMkeCZBaI
+ 3sAJQR2rbFmMvGM+GDzieywQh0UyJvL34Wi/4h1fHGK1IUMFFim6ApdOUAAfasTs38pX
+ Wep4OtIs+aDH4AttZCMeHCY2nTuX8dXncnDDve6RKA7UHa88B5tK+fq1hWNbCp1P9z2r
+ qTKUKHLprG6C/gNkV7bqY7QTudMfUJZGSMq63gUtr6p5KYZNk2b2Ek5PR7UqrCVdcFe/
+ KvYw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVR1vXN5fx/Bgso3DkBtkPO1UGtV0F5wb1T1kQNMcitV1n5mlKv95P7JXWFtzGIi/+Zizyf2HlgAw==@nongnu.org
+X-Gm-Message-State: AOJu0YyxRVnuTZZ4MGwrUM5GsJtE0udNRfuzr55ZF6KI3LL3GKRAmsjD
+ iHU4JQP0C2mS29etMgHZtN50STK/u15SaSvSvogLen/xeXfFipWlRXAdRlWgF20=
+X-Gm-Gg: ASbGncvPThzwlvVNTG7QjBtleWblecNlz5akEu2Te7IewiL8Tulx4lrlNW51k1GJeR8
+ W2djKag1f8wKVLAqQ0J6tuR9t/WE1v9Oj8JoH34ZQPyAf4SguyLZhqDYxG7yuHIvIjAVCwbAjtm
+ ncoy3FljJtfOk4c+3AlpAxjj2mCn2ZSx9/wEACN9P0kInja6GEg+2hcwUHQ95Hfm4pqGmZlyuoh
+ GrvBCsbFv/qK2phdve8D7Jwr1oH/5u7qzmcFn7/5QhTUzlM4NR3P70AHDaBslVK/xx+6851prIT
+ J5SjIhDMLRDsS1glPwjY5YM+Hg==
+X-Received: by 2002:a05:6512:3b0a:b0:53d:d68b:501e with SMTP id
+ 2adb3069b0e04-53dd68b5041mr5158989e87.15.1732539291007; 
+ Mon, 25 Nov 2024 04:54:51 -0800 (PST)
+Received: from applejack.lan (83.11.10.28.ipv4.supernova.orange.pl.
+ [83.11.10.28]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-aa54e15c169sm156764566b.67.2024.11.25.04.54.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 25 Nov 2024 04:54:50 -0800 (PST)
+From: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Radoslaw Biernacki <rad@semihalf.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Subject: [PATCH 1/1] tests/avocado: update sbsa-ref firmware
+Date: Mon, 25 Nov 2024 13:54:48 +0100
+Message-ID: <20241125125448.185504-1-marcin.juszkiewicz@linaro.org>
+X-Mailer: git-send-email 2.47.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: lhrpeml100010.china.huawei.com (7.191.174.197) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: 0BupIqH93LVZ
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::233;
+ envelope-from=marcin.juszkiewicz@linaro.org; helo=mail-lj1-x233.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: MkTVxwiit9+x
 
-On Fri, 22 Nov 2024 10:11:25 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Firmware is built using Debian 'bookworm' cross toolchain (gcc 12.2.0).
 
-> Split the code into separate functions to allow using the
-> common CPER filling code by different error sources.
-> 
-> The generic code was moved to ghes_record_cper_errors(),
-> and ghes_gen_err_data_uncorrectable_recoverable() now contains
-> only a logic to fill the Generic Error Data part of the record,
-> as described at:
-> 
-> 	ACPI 6.2: 18.3.2.7.1 Generic Error Data
-> 
-> The remaining code to generate a memory error now belongs to
-> acpi_ghes_record_errors() function.
-> 
-> A further patch will give it a better name.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Used versions:
 
-One trivial follow up that is enabled by the change you are discussing with Igor.
-Up to you that one.
+- Trusted Firmware v2.12.0
+- Tianocore EDK2 stable202411
+- Tianocore EDK2 Platforms code commit 4b3530d
 
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> +
-> +int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
-> +{
-> +    /* Memory Error Section Type */
-> +    const uint8_t guid[] =
-> +          UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
-> +                  0xED, 0x7C, 0x83, 0xB1);
-> +    Error *errp = NULL;
-> +    int data_length;
-> +    GArray *block;
-> +
-> +    if (!physical_address) {
-> +        error_report("can not find Generic Error Status Block for source id %d",
-> +                     source_id);
-> +        return -1;
-> +    }
+Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+---
+ tests/functional/test_aarch64_sbsaref.py | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-With this error check gone (as per discussion with Igor) you could use
-g_autofree to deal with freeing block.
-
-That would bring the errp check right next to the call that would result
-in errp potentially being set and slightly improve readability.
-
-Mind you there are no uses of this in hw/acpi currently so maybe this
-isn't a good time to start :)
-
-
-
-
-> +
-> +    block = g_array_new(false, true /* clear */, 1);
-> +
-> +    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
-> +    /*
-> +     * It should not run out of the preallocated memory if adding a new generic
-> +     * error data entry
-> +     */
-> +    assert((data_length + ACPI_GHES_GESB_SIZE) <=
-> +            ACPI_GHES_MAX_RAW_DATA_LENGTH);
-> +
-> +    ghes_gen_err_data_uncorrectable_recoverable(block, guid,
-> +                                                data_length);
-> +
-> +    /* Build the memory section CPER for above new generic error data entry */
-> +    acpi_ghes_build_append_mem_cper(block, physical_address);
-> +
-> +    /* Report the error */
-> +    ghes_record_cper_errors(block->data, block->len, source_id, &errp);
-> +
-> +    g_array_free(block, true);
-> +
-> +    if (errp) {
-> +        error_report_err(errp);
-> +        return -1;
-> +    }
-> +
-> +    return 0;
->  }
-
+diff --git a/tests/functional/test_aarch64_sbsaref.py b/tests/functional/test_aarch64_sbsaref.py
+index 9fda396b3a..3a09523265 100755
+--- a/tests/functional/test_aarch64_sbsaref.py
++++ b/tests/functional/test_aarch64_sbsaref.py
+@@ -25,9 +25,9 @@ def fetch_firmware(test):
+ 
+     Used components:
+ 
+-    - Trusted Firmware         v2.11.0
+-    - Tianocore EDK2           4d4f569924
+-    - Tianocore EDK2-platforms 3f08401
++    - Trusted Firmware         v2.12.0
++    - Tianocore EDK2           edk2-stable202411
++    - Tianocore EDK2-platforms 4b3530d
+ 
+     """
+ 
+@@ -63,13 +63,13 @@ class Aarch64SbsarefMachine(QemuSystemTest):
+ 
+     ASSET_FLASH0 = Asset(
+         ('https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/'
+-         '20240619-148232/edk2/SBSA_FLASH0.fd.xz'),
+-        '0c954842a590988f526984de22e21ae0ab9cb351a0c99a8a58e928f0c7359cf7')
++         '20241122-189881/edk2/SBSA_FLASH0.fd.xz'),
++        '76eb89d42eebe324e4395329f47447cda9ac920aabcf99aca85424609c3384a5')
+ 
+     ASSET_FLASH1 = Asset(
+         ('https://artifacts.codelinaro.org/artifactory/linaro-419-sbsa-ref/'
+-         '20240619-148232/edk2/SBSA_FLASH1.fd.xz'),
+-        'c6ec39374c4d79bb9e9cdeeb6db44732d90bb4a334cec92002b3f4b9cac4b5ee')
++         '20241122-189881/edk2/SBSA_FLASH1.fd.xz'),
++        'f850f243bd8dbd49c51e061e0f79f1697546938f454aeb59ab7d93e5f0d412fc')
+ 
+     def test_sbsaref_edk2_firmware(self):
+ 
+@@ -87,15 +87,15 @@ def test_sbsaref_edk2_firmware(self):
+ 
+         # AP Trusted ROM
+         wait_for_console_pattern(self, "Booting Trusted Firmware")
+-        wait_for_console_pattern(self, "BL1: v2.11.0(release):")
++        wait_for_console_pattern(self, "BL1: v2.12.0(release):")
+         wait_for_console_pattern(self, "BL1: Booting BL2")
+ 
+         # Trusted Boot Firmware
+-        wait_for_console_pattern(self, "BL2: v2.11.0(release)")
++        wait_for_console_pattern(self, "BL2: v2.12.0(release)")
+         wait_for_console_pattern(self, "Booting BL31")
+ 
+         # EL3 Runtime Software
+-        wait_for_console_pattern(self, "BL31: v2.11.0(release)")
++        wait_for_console_pattern(self, "BL31: v2.12.0(release)")
+ 
+         # Non-trusted Firmware
+         wait_for_console_pattern(self, "UEFI firmware (version 1.0")
+-- 
+2.47.0
 

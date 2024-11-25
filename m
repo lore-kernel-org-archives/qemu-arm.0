@@ -1,84 +1,84 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1569247njc;
-        Mon, 25 Nov 2024 11:59:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWkCIXcqew4ZFnIhYr21fz6qzwbSfPcmNanjaluuVb0WQsFuPPE+csECUl6Z/k0ONlfYmqlVydVM5PJNQ==@linaro.org
-X-Received: by 2002:a05:600c:1e10:b0:434:9c3b:7564 with SMTP id 5b1f17b1804b1-4349c3b764dmr58639895e9.20.1732564766824;
-        Mon, 25 Nov 2024 11:59:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732564766; cv=none;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1569275njc;
+        Mon, 25 Nov 2024 11:59:28 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWbfL2W34mubhvqiJ6A2qLrEVym4HayLwL/lhTT+5iEeYyPu1IRtrd4S3GiARA6kJZ7aeiqJhhim5RxQw==@linaro.org
+X-Received: by 2002:a5d:6c6a:0:b0:382:40cc:5057 with SMTP id ffacd0b85a97d-38260b46461mr9592135f8f.8.1732564768612;
+        Mon, 25 Nov 2024 11:59:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732564768; cv=none;
         d=google.com; s=arc-20240605;
-        b=Iy0T3yo2Q/oAlQUhlT3TqSg+QLndrn8BsPH8yN/KuKv8NzNdYuvV/fTbU7lMMG5nYe
-         EAsdoT6qtJjS91NFa9HVi6Klws8SkP7qhKBomGnpmqWgfAh5sST9eU5uzKrNAZJR9kdA
-         cJY4Pwvlpw6YvBVCHEVWv1ipIEv9wLINO9Xqvy6JZO30DFYZe93k6UdUyUYVdUrXkciM
-         +TB0LQRGAAf2bidBOhOjWpP2cwQElGOt9dg59ritdl9oemnl2V9hch1+jC5TJW/snTxx
-         /LTmr8Okh1iptA4yt9ZJe9qXbwpBA4LZN45F2zxHroGyg8RjyDmSFQFSFXLZeVjjTXQT
-         nYMw==
+        b=Zz7nCtjIJhpOBYjZ8YxzE/T5AMxLETpElTDgpR+uL23VPCKj2ngnWIKct5kyuMGX/Q
+         w/gqrFvMm8Bl5zHifU9KtzddLmHAOjNsrNg6jjS83FT5bbmHJOSCHLWAzjUXO4PHrK8s
+         J7c0+BI/dMA4q4gIU5dWsnEc7JDRmQwTq/RNRPzLfW8O/2HXk9MEpsuDat5xhgh1V4BP
+         gnddwKJMmQyoBzA+YGiuhZhz8THpc5fdxkQuzutzrcDsyc4VqPKkAGy6lY+ycH5OpI5a
+         uaEoqFw7Vlqr3ZkMHyARYYEDoMXbtbyBntYF3VIpYnrArKiByXDRFrlJBHjoL3Y1or0z
+         jkKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=AUUGPkOeOTTu2+NC5FrYwYu1VqmCribZfZ+rxUCPPlM=;
-        fh=M+rvFRatTQL4YrvDNQ0n6yaO/GUTu7jQMqcsTJ9XeJM=;
-        b=Btj7GZCyejz/aDzGhLCyIBULJNRfNuqbcsFR9fbSK+FTMxwCFcZlM2scxGWo8v4NkQ
-         CwCvuWvSPTD3xnDM8qEzJOeMAumZgRxX7cYi0pbtq2pDbRMavy0GLVH8OWQQsPR+lam3
-         Tr5ptVu/DhICdxVlAeo9HoHoZNFh1/kaEJ2whaWOeJRYjwmgA2xTJFUBV9Kf0UV5ar/1
-         UpZwk9K+n0nO0NLYzhviVmyjDQnJVmwsdrCqilGjK/eGFnoyIKNnAy+RD/eISEBF23Uy
-         HB35KZRmEQdbCkZJvjqrVb7MDiWEEdNGR40s8rF0fV7U3I/o2qi1du7CwKuxJ/gYS+Yi
-         Ic/g==;
+        bh=tQShuah4RPH85LfDxttMiyLaDhN+5oe8+p7fsP3yrqw=;
+        fh=9TXKkgRrn5w6HWkHT3L/aJoWaLT0mHoNbtm1xwgFJog=;
+        b=dkSZ7cDRvD24frKlDtngDDoWWxt1YzQzzzzRS6/yEpn8I0BERutyzR9zdpWfeFWN9F
+         nambqBNHBGDn5zvbeFo28eyHofHQQoTLl/Szl6DhV/yCL3Ro46+ix8RpWeIVHG8kVEYR
+         0JBOKrpKIkyl/EIDr39wxvCUL2X+gJJOJkN1qUWzOQYnj0mEoYJeAqCILlvMkKDGLeKK
+         P4OmN+IWpE2XjRqCjuOVCaCKSJh6qSkONn6GzEJfP8ePws8hQMqvSj6Akiwu//5enSEI
+         Rckqoxl9DGQFlcf2xBXkVMUXWSe+AlWoEj5/+8yQTPJimka2AQEfzKiz0lFwvVBthEod
+         v0kA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vLCyAa8a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AAhscYcf;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-434a4a654cfsor2557615e9.7.2024.11.25.11.59.26
+        by mx.google.com with SMTPS id ffacd0b85a97d-385be98dd89sor372030f8f.6.2024.11.25.11.59.28
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 25 Nov 2024 11:59:26 -0800 (PST)
+        Mon, 25 Nov 2024 11:59:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vLCyAa8a;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AAhscYcf;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732564766; x=1733169566; darn=linaro.org;
+        d=linaro.org; s=google; t=1732564768; x=1733169568; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=AUUGPkOeOTTu2+NC5FrYwYu1VqmCribZfZ+rxUCPPlM=;
-        b=vLCyAa8aPXwvWCOUhwYplsfGUH+0S8Nhm2eXkXFVc7Z9ZXPHuhqwLOMk/MkcYRqNN0
-         Mjj2i35FkE+vk8evrzpoNxS9oR9n07FATUBH3o1mh0YlWpM61uVnGJBhvHUIoiDDY9Tl
-         2zTdujhNH/b+G16U8RyNiBW904IUIjr7wDUh7uCHV3NsWbEbBNMOvW9rUtYfFEBzeWVS
-         aJ0yySlzijZmJQUfOWh4/wUnICl8GwKXwn+ONjgU3ojuCaixhvt795S2jja33MHIlgjf
-         /+5YQxEAhpDNq2uDqEs/cDjDwdEC8Nwpi2BuBCa0N43lnyhqZI0GUTZaNzLth270f20n
-         8z0Q==
+        bh=tQShuah4RPH85LfDxttMiyLaDhN+5oe8+p7fsP3yrqw=;
+        b=AAhscYcfS56nKUCxqfsggacmlpop4BOvkUrhRdlqtOMUawb4lWiN/pIHTAt6uCHB57
+         BifmOG6hr5v29kaG6MhcNXmCTOE4AIax8G2yuc/870nVk3CRB24dRcOktClUfVyZ0jmz
+         qtNF1yeSRidw/4eVLYFgFbIbUU5l5TgRbhkOyifDmY4bP5+CErdDI9D7Yjp3JuXsBG6L
+         UgETRxgb7wysyUVBMKYMEj+QArdshDpujmcKGBK0GA7Pf6lILmfCxF/J8dFmkaES80EG
+         KKbYXX7xm9D3TjfVskpkaH39rLfkLMyLmGgGEM6o/av7+Mfp/r9ZRkafvrzqnC0m2c7w
+         KxKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732564766; x=1733169566;
+        d=1e100.net; s=20230601; t=1732564768; x=1733169568;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=AUUGPkOeOTTu2+NC5FrYwYu1VqmCribZfZ+rxUCPPlM=;
-        b=We2kvv9BZHnG2vTQ1dHkAUvIxQ2UivjPtMb15x31/U//AbTqcLakFUsagNLuNLr23u
-         t/Ux+ICK4V2l2JA1gTuXsmdZScgp1JGd+NnlXTBBsw/hi8xRNOTpTbr8QLubSASgdXuL
-         jeATfhb71c6IG/Uv3O9DiDdzyCZQg8mBFNMPKrYbCeHgDbRN5Wc5Lo489v0Kj4Ts3iNg
-         drdwDR+bchrU0QNjYMeQdKR7LI5J8X9aVJHPUI8erGWB/X7jLr74iSzQClxmtGQtYLne
-         tuP0lEnGL/qyC+WKaDeFq5spQO73URomOgU7TSSn0Dqq06v8IPxdkCltezMmlO9xf9fb
-         uKpw==
-X-Forwarded-Encrypted: i=1; AJvYcCWb+H+P0KG0pSCRrgz1jKlc+B8i1ZDc1I+yxVeMZDBkE6zblMG+wxkq39n4YvMbq9McD0S/P2x18xLMgA==@linaro.org
-X-Gm-Message-State: AOJu0YxdLACv3a6sxEgN5ngtXb4WWw8VxvfzOLOBJpqN4i3cAzXiH5Pf
-	OtPG0EG/RxXr+CZwcupw7gp/NDawtzPHLK04ww+h2GiHELrDmR5uJcVYsmPazIBDQQ==
-X-Gm-Gg: ASbGncvr10ZchelsA5TXd47z0PpDtH+w3LBVX89TamQrL57R0AtjTSLuX24qO8njfFJ
-	1ZiN/eg1dmiF8wnd1VIN/Y0RVaTQZmWYdiR6naEXmh5m8ZnmyeM6bZIgbkonbIoHEwYY0EO1o5i
-	gDGh1b+Ak5o/Vq2ZiPl08rXpHa3+Nsn2U3ukhCBaW8JGRQ6vD8/7Sl6r0GgTeGPipTqoTjjj0z2
-	GGgpuQzgHK+RXenhd0hyQ6S6mgYynip/XGHowWO/nxcBkUOZ1CrCuQQSgnYy5tfgQ+v
-X-Google-Smtp-Source: AGHT+IEKfTHdZFW+oj4dYHwYt+075eZ/vDoe3cPOa5Tj6NfVEo8CowgGjm+2FvHfVf6gMGEwUzHcFw==
-X-Received: by 2002:a05:600c:3b25:b0:430:5760:2fe with SMTP id 5b1f17b1804b1-433ce4c2218mr111110665e9.22.1732564766349;
-        Mon, 25 Nov 2024 11:59:26 -0800 (PST)
+        bh=tQShuah4RPH85LfDxttMiyLaDhN+5oe8+p7fsP3yrqw=;
+        b=EtjxzPEajH+LqwuaH4OJmPWTUgOxBBwOsf0MF2ewlI3xALgcvlEq8NmotXx4BTMg+C
+         FcqgMh7Fc4UtzYr9unkCfii71ePjZ/ZrkLfflFZolTilI/9co4M3eS096Sw5zt7KyNRB
+         0EdS/4mXFKtg8gewMZvV8tFrTG2mb46TGzokipuUswya1lWMnClVJ02hFpsZDFfOMmkT
+         EtF7BnXcVuBLQC8i75J9Z6m2cDr3MmeaoQTRcldQ1l4lrg26kEo1bHGt3x4cA8aaNJ0o
+         1ouYsQlMDda54PuZsPTlSe/dT4rOzaLHPsz55/7LH1HGqC0+oYio83lBDP2AB4LKrdUT
+         6Nsg==
+X-Forwarded-Encrypted: i=1; AJvYcCXiUTDjUhyPDaa+HU3suYVHPaH1ClyiOXPtxXZcDZGqTmcVNiTMvtO2RvNL2fFkVkiDVhybcePq9MDtjQ==@linaro.org
+X-Gm-Message-State: AOJu0Yw5g3xMSFDZb1/E/BdfTuY2OjvIIMSk7r/PB/MCxBFB/ziStida
+	5/mahHRdrCb7lET+CJx9TdqbplLdRVO0Nx9Y4pAbbtkwwSfFLDdna2Ui1KJoNmZdVQ==
+X-Gm-Gg: ASbGnctNB5icWzJpoOE/6W9eb/Iz6jR5RWZC5xTjEypuss0CEnlTECTGmFn5MHm9V19
+	bGS8U0fb6+73uJ+99NERc8uFMK3oTKjuSohMcozSFqPTWpHV6h5QR2d44PkVT934RoZRNN8ccCP
+	jNpoEMrbdhGK3lkrYVOTN8MYgy7Izf5dukVaaKqgGxD0vfJQjtSiJcJ4ueTBNtMp68EnAG9xg5s
+	X0Zj3/FyhEdTI4m3ZaKW7cpsbk/7s1ZJtcPaXGOPkeN1bYtTgsMr4TYIZs89mH3TRXx
+X-Google-Smtp-Source: AGHT+IHu0epn53EoPbJ5rBYNXd0hSz17fN6MkrV+SiPxv6AdYWmai7LEbVLtwK/yGBV3nNkYp1vi2g==
+X-Received: by 2002:a05:6000:1f82:b0:37d:5364:d738 with SMTP id ffacd0b85a97d-38260bcc4cemr12792210f8f.45.1732564768083;
+        Mon, 25 Nov 2024 11:59:28 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.25
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Nov 2024 11:59:26 -0800 (PST)
+        Mon, 25 Nov 2024 11:59:27 -0800 (PST)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org,
@@ -87,70 +87,197 @@ Cc: richard.henderson@linaro.org,
 	qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
 	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 03/26] target/arm/kvm: Return immediately on error in kvm_arch_init()
-Date: Mon, 25 Nov 2024 19:56:02 +0000
-Message-ID: <20241125195626.856992-5-jean-philippe@linaro.org>
+Subject: [PATCH v3 06/26] target/arm/kvm-rme: Initialize vCPU
+Date: Mon, 25 Nov 2024 19:56:05 +0000
+Message-ID: <20241125195626.856992-8-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241125195626.856992-2-jean-philippe@linaro.org>
 References: <20241125195626.856992-2-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: ejO5UsNrg2zs
+X-TUID: /vYmwnrkAhLf
 
-Returning an error to kvm_init() is fatal anyway, no need to continue
-the initialization.
+The target code calls kvm_arm_vcpu_init() to mark the vCPU as part of a
+Realm. For a Realm vCPU, only x0-x7 can be set at runtime. Before boot,
+the PC can also be set, and is ignored at runtime. KVM also accepts a
+few system register changes during initial configuration, as returned by
+KVM_GET_REG_LIST.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- target/arm/kvm.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ target/arm/cpu.h     |  3 +++
+ target/arm/kvm_arm.h | 15 +++++++++++
+ target/arm/kvm-rme.c | 10 ++++++++
+ target/arm/kvm.c     | 61 ++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 89 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 8bdf4abeb6..95bcecf804 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -563,7 +563,7 @@ int kvm_arch_get_default_type(MachineState *ms)
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index d86e641280..f617591921 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -961,6 +961,9 @@ struct ArchCPU {
+     OnOffAuto kvm_steal_time;
+ #endif /* CONFIG_KVM */
  
- int kvm_arch_init(MachineState *ms, KVMState *s)
- {
--    int ret = 0;
-+    int ret;
-     /* For ARM interrupt delivery is always asynchronous,
-      * whether we are using an in-kernel VGIC or not.
-      */
-@@ -585,7 +585,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         !kvm_check_extension(s, KVM_CAP_ARM_IRQ_LINE_LAYOUT_2)) {
-         error_report("Using more than 256 vcpus requires a host kernel "
-                      "with KVM_CAP_ARM_IRQ_LINE_LAYOUT_2");
--        ret = -EINVAL;
-+        return -EINVAL;
-     }
++    /* Realm Management Extension */
++    bool kvm_rme;
++
+     /* Uniprocessor system with MP extensions */
+     bool mp_is_up;
  
-     if (kvm_check_extension(s, KVM_CAP_ARM_NISV_TO_USER)) {
-@@ -607,13 +607,14 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-             warn_report("Eager Page Split support not available");
-         } else if (!(s->kvm_eager_split_size & sizes)) {
-             error_report("Eager Page Split requested chunk size not valid");
--            ret = -EINVAL;
-+            return -EINVAL;
-         } else {
-             ret = kvm_vm_enable_cap(s, KVM_CAP_ARM_EAGER_SPLIT_CHUNK_SIZE, 0,
-                                     s->kvm_eager_split_size);
-             if (ret < 0) {
-                 error_report("Enabling of Eager Page Split failed: %s",
-                              strerror(-ret));
-+                return ret;
-             }
-         }
-     }
-@@ -626,7 +627,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-     hw_breakpoints = g_array_sized_new(true, true,
-                                        sizeof(HWBreakpoint), max_hw_bps);
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 9d6a89f9b1..8b52a881b0 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -245,6 +245,16 @@ int kvm_arm_rme_init(MachineState *ms);
+  */
+ int kvm_arm_rme_vm_type(MachineState *ms);
  
--    return ret;
-+    return 0;
++/**
++ * kvm_arm_rme_vcpu_init
++ * @cs: the CPU
++ *
++ * If the user requested a Realm, setup the given vCPU accordingly. Realm vCPUs
++ * behave a little differently, for example most of their register state is
++ * hidden from the host.
++ */
++int kvm_arm_rme_vcpu_init(CPUState *cs);
++
+ #else
+ 
+ /*
+@@ -339,6 +349,11 @@ static inline int kvm_arm_rme_vm_type(MachineState *ms)
+     g_assert_not_reached();
  }
  
- unsigned long kvm_arch_vcpu_id(CPUState *cpu)
++static inline int kvm_arm_rme_vcpu_init(CPUState *cs)
++{
++    g_assert_not_reached();
++}
++
+ #endif
+ 
+ #endif
+diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+index 60d967a842..e3cc37538a 100644
+--- a/target/arm/kvm-rme.c
++++ b/target/arm/kvm-rme.c
+@@ -137,6 +137,16 @@ int kvm_arm_rme_init(MachineState *ms)
+     return 0;
+ }
+ 
++int kvm_arm_rme_vcpu_init(CPUState *cs)
++{
++    ARMCPU *cpu = ARM_CPU(cs);
++
++    if (rme_guest) {
++        cpu->kvm_rme = true;
++    }
++    return 0;
++}
++
+ int kvm_arm_rme_vm_type(MachineState *ms)
+ {
+     if (rme_guest) {
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 0c80992f7c..a0de2efc41 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -1926,6 +1926,11 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         return ret;
+     }
+ 
++    ret = kvm_arm_rme_vcpu_init(cs);
++    if (ret) {
++        return ret;
++    }
++
+     if (cpu_isar_feature(aa64_sve, cpu)) {
+         ret = kvm_arm_sve_set_vls(cpu);
+         if (ret) {
+@@ -2062,6 +2067,35 @@ static int kvm_arch_put_sve(CPUState *cs)
+     return 0;
+ }
+ 
++static int kvm_arm_rme_put_core_regs(CPUState *cs, Error **errp)
++{
++    int i, ret;
++    struct kvm_one_reg reg;
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    /*
++     * The RME ABI only allows us to set 8 GPRs and the PC
++     */
++    for (i = 0; i < 8; i++) {
++        reg.id = AARCH64_CORE_REG(regs.regs[i]);
++        reg.addr = (uintptr_t) &env->xregs[i];
++        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
++        if (ret) {
++            return ret;
++        }
++    }
++
++    reg.id = AARCH64_CORE_REG(regs.pc);
++    reg.addr = (uintptr_t) &env->pc;
++    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
++    if (ret) {
++        return ret;
++    }
++
++    return 0;
++}
++
+ static int kvm_arm_put_core_regs(CPUState *cs, int level, Error **errp)
+ {
+     uint64_t val;
+@@ -2072,6 +2106,10 @@ static int kvm_arm_put_core_regs(CPUState *cs, int level, Error **errp)
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+ 
++    if (cpu->kvm_rme) {
++        return kvm_arm_rme_put_core_regs(cs, errp);
++    }
++
+     /* If we are in AArch32 mode then we need to copy the AArch32 regs to the
+      * AArch64 registers before pushing them out to 64-bit KVM.
+      */
+@@ -2259,6 +2297,25 @@ static int kvm_arch_get_sve(CPUState *cs)
+     return 0;
+ }
+ 
++static int kvm_arm_rme_get_core_regs(CPUState *cs, Error **errp)
++{
++    int i, ret;
++    struct kvm_one_reg reg;
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    for (i = 0; i < 8; i++) {
++        reg.id = AARCH64_CORE_REG(regs.regs[i]);
++        reg.addr = (uintptr_t) &env->xregs[i];
++        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++        if (ret) {
++            return ret;
++        }
++    }
++
++    return 0;
++}
++
+ static int kvm_arm_get_core_regs(CPUState *cs, Error **errp)
+ {
+     uint64_t val;
+@@ -2269,6 +2326,10 @@ static int kvm_arm_get_core_regs(CPUState *cs, Error **errp)
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+ 
++    if (cpu->kvm_rme) {
++        return kvm_arm_rme_get_core_regs(cs, errp);
++    }
++
+     for (i = 0; i < 31; i++) {
+         ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
+                               &env->xregs[i]);
 -- 
 2.47.0

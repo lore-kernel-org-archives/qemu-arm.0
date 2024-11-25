@@ -1,155 +1,264 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbedebfsm10679155f8f.100.2024.11.25.07.21.07
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbedfb2sm10633531f8f.105.2024.11.25.07.21.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Nov 2024 07:21:09 -0800 (PST)
+        Mon, 25 Nov 2024 07:21:15 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 43C725F9CF;
-	Mon, 25 Nov 2024 15:21:06 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 2DD7363937;
+	Mon, 25 Nov 2024 15:21:08 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Niek Linnenbank <nieklinnenbank@gmail.com>,
-	qemu-arm@nongnu.org (open list:Allwinner-h3)
-Subject: [PULL 05/28] tests/functional: remove leftover :avocado: tags
-Date: Mon, 25 Nov 2024 15:20:42 +0000
-Message-Id: <20241125152105.2100395-6-alex.bennee@linaro.org>
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Steven Lee <steven_lee@aspeedtech.com>,
+	Troy Lee <leetroy@gmail.com>,
+	Jamin Lin <jamin_lin@aspeedtech.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Joel Stanley <joel@jms.id.au>,
+	Cleber Rosa <crosa@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	qemu-arm@nongnu.org (open list:ASPEED BMCs)
+Subject: [PULL 26/28] tests/functional: Convert Aspeed aarch64 SDK tests
+Date: Mon, 25 Nov 2024 15:21:03 +0000
+Message-Id: <20241125152105.2100395-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241125152105.2100395-1-alex.bennee@linaro.org>
 References: <20241125152105.2100395-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: aGW77MZcetfW
+X-TUID: la2P6CLdkiUu
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+From: Cédric Le Goater <clg@redhat.com>
 
-These tags are not honoured under the new functional test harness.
+Drop the SSH connection which was introduced in the avocado tests to
+workaround read issues when interacting with console.
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Message-Id: <20241121154218.1423005-6-berrange@redhat.com>
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20241122090322.1934697-2-clg@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-6-alex.bennee@linaro.org>
 
-diff --git a/tests/functional/test_arm_bpim2u.py b/tests/functional/test_arm_bpim2u.py
-index 2f9fa145e3..35ea58d46c 100755
---- a/tests/functional/test_arm_bpim2u.py
-+++ b/tests/functional/test_arm_bpim2u.py
-@@ -37,11 +37,6 @@ class BananaPiMachine(LinuxKernelTest):
-         '5b41b4e11423e562c6011640f9a7cd3bdd0a3d42b83430f7caa70a432e6cd82c')
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
+index 241ef180af..2240c82abf 100644
+--- a/tests/avocado/machine_aspeed.py
++++ b/tests/avocado/machine_aspeed.py
+@@ -59,17 +59,6 @@ def do_test_arm_aspeed_sdk_start(self, image):
+             self, 'boot', '## Loading kernel from FIT Image')
+         self.wait_for_console_pattern('Starting kernel ...')
  
-     def test_arm_bpim2u(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:bpim2u
--        :avocado: tags=accel:tcg
--        """
-         self.set_machine('bpim2u')
-         deb_path = self.ASSET_DEB.fetch()
-         kernel_path = self.extract_from_deb(deb_path,
-@@ -64,11 +59,6 @@ def test_arm_bpim2u(self):
-         os.remove(dtb_path)
+-    def do_test_aarch64_aspeed_sdk_start(self, image):
+-        self.vm.set_console()
+-        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+-                         '-net', 'nic', '-net', 'user,hostfwd=:127.0.0.1:0-:22')
+-
+-        self.vm.launch()
+-
+-        self.wait_for_console_pattern('U-Boot 2023.10')
+-        self.wait_for_console_pattern('## Loading kernel from FIT Image')
+-        self.wait_for_console_pattern('Starting kernel ...')
+-
+     @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
+     def test_arm_ast2500_evb_sdk(self):
+         """
+@@ -133,70 +122,3 @@ def test_arm_ast2600_evb_sdk(self):
+         year = time.strftime("%Y")
+         self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
  
-     def test_arm_bpim2u_initrd(self):
+-    def test_aarch64_ast2700_evb_sdk_v09_02(self):
 -        """
--        :avocado: tags=arch:arm
--        :avocado: tags=accel:tcg
--        :avocado: tags=machine:bpim2u
+-        :avocado: tags=arch:aarch64
+-        :avocado: tags=machine:ast2700-evb
 -        """
-         self.set_machine('bpim2u')
-         deb_path = self.ASSET_DEB.fetch()
-         kernel_path = self.extract_from_deb(deb_path,
-@@ -105,11 +95,6 @@ def test_arm_bpim2u_initrd(self):
-         os.remove(initrd_path)
+-
+-        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+-                     'download/v09.02/ast2700-default-obmc.tar.gz')
+-        image_hash = 'ac969c2602f4e6bdb69562ff466b89ae3fe1d86e1f6797bb7969d787f82116a7'
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-        archive.extract(image_path, self.workdir)
+-
+-        num_cpu = 4
+-        image_dir = self.workdir + '/ast2700-default/'
+-        uboot_size = os.path.getsize(image_dir + 'u-boot-nodtb.bin')
+-        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
+-
+-        load_images_list = [
+-            {
+-                'addr': '0x400000000',
+-                'file': image_dir + 'u-boot-nodtb.bin'
+-            },
+-            {
+-                'addr': str(uboot_dtb_load_addr),
+-                'file': image_dir + 'u-boot.dtb'
+-            },
+-            {
+-                'addr': '0x430000000',
+-                'file': image_dir + 'bl31.bin'
+-            },
+-            {
+-                'addr': '0x430080000',
+-                'file': image_dir + 'optee/tee-raw.bin'
+-            }
+-        ]
+-
+-        for load_image in load_images_list:
+-            addr = load_image['addr']
+-            file = load_image['file']
+-            self.vm.add_args('-device',
+-                             f'loader,force-raw=on,addr={addr},file={file}')
+-
+-        for i in range(num_cpu):
+-            self.vm.add_args('-device',
+-                             f'loader,addr=0x430000000,cpu-num={i}')
+-
+-        self.vm.add_args('-smp', str(num_cpu))
+-        self.vm.add_args('-device',
+-                         'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
+-        self.do_test_aarch64_aspeed_sdk_start(image_dir + 'image-bmc')
+-        self.wait_for_console_pattern('nodistro.0 ast2700-default ttyS12')
+-
+-        self.ssh_connect('root', '0penBmc', False)
+-        self.ssh_command('dmesg -c > /dev/null')
+-
+-        self.ssh_command_output_contains(
+-            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device '
+-            '&& dmesg -c',
+-            'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d');
+-
+-        self.ssh_command_output_contains(
+-            'cat /sys/class/hwmon/hwmon20/temp1_input', '0')
+-        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+-                    property='temperature', value=18000)
+-        self.ssh_command_output_contains(
+-            'cat /sys/class/hwmon/hwmon20/temp1_input', '18000')
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 923f9e7078..d6d2c0196c 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -11,6 +11,7 @@ endif
  
-     def test_arm_bpim2u_gmac(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:bpim2u
--        :avocado: tags=device:sd
--        """
-         self.set_machine('bpim2u')
-         self.require_netdev('user')
+ # Timeouts for individual tests that can be slow e.g. with debugging enabled
+ test_timeouts = {
++  'aarch64_aspeed' : 600,
+   'aarch64_raspi4' : 480,
+   'aarch64_sbsaref_alpine' : 720,
+   'aarch64_sbsaref_freebsd' : 720,
+@@ -48,6 +49,7 @@ tests_generic_bsduser = [
+ ]
  
-@@ -160,11 +145,6 @@ def test_arm_bpim2u_gmac(self):
- 
-     @skipUnless(os.getenv('QEMU_TEST_ALLOW_LARGE_STORAGE'), 'storage limited')
-     def test_arm_bpim2u_openwrt_22_03_3(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:bpim2u
--        :avocado: tags=device:sd
--        """
-         self.set_machine('bpim2u')
-         # This test download a 8.9 MiB compressed image and expand it
-         # to 127 MiB.
-diff --git a/tests/functional/test_arm_orangepi.py b/tests/functional/test_arm_orangepi.py
-index d2ed5fcc82..6d57223a03 100755
---- a/tests/functional/test_arm_orangepi.py
-+++ b/tests/functional/test_arm_orangepi.py
-@@ -49,11 +49,6 @@ class BananaPiMachine(LinuxKernelTest):
-         '20d3e07dc057e15c12452620e90ecab2047f0f7940d9cba8182ebc795927177f')
- 
-     def test_arm_orangepi(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:orangepi-pc
--        :avocado: tags=accel:tcg
--        """
-         self.set_machine('orangepi-pc')
-         deb_path = self.ASSET_DEB.fetch()
-         kernel_path = self.extract_from_deb(deb_path,
-@@ -75,11 +70,6 @@ def test_arm_orangepi(self):
-         os.remove(dtb_path)
- 
-     def test_arm_orangepi_initrd(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=accel:tcg
--        :avocado: tags=machine:orangepi-pc
--        """
-         self.set_machine('orangepi-pc')
-         deb_path = self.ASSET_DEB.fetch()
-         kernel_path = self.extract_from_deb(deb_path,
-@@ -115,12 +105,6 @@ def test_arm_orangepi_initrd(self):
-         os.remove(initrd_path)
- 
-     def test_arm_orangepi_sd(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=accel:tcg
--        :avocado: tags=machine:orangepi-pc
--        :avocado: tags=device:sd
--        """
-         self.set_machine('orangepi-pc')
-         self.require_netdev('user')
-         deb_path = self.ASSET_DEB.fetch()
-@@ -167,11 +151,6 @@ def test_arm_orangepi_sd(self):
- 
-     @skipUnless(os.getenv('QEMU_TEST_ALLOW_LARGE_STORAGE'), 'storage limited')
-     def test_arm_orangepi_armbian(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:orangepi-pc
--        :avocado: tags=device:sd
--        """
-         self.set_machine('orangepi-pc')
-         # This test download a 275 MiB compressed image and expand it
-         # to 1036 MiB, but the underlying filesystem is 1552 MiB...
-@@ -208,12 +187,6 @@ def test_arm_orangepi_armbian(self):
- 
-     @skipUnless(os.getenv('QEMU_TEST_ALLOW_LARGE_STORAGE'), 'storage limited')
-     def test_arm_orangepi_uboot_netbsd9(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:orangepi-pc
--        :avocado: tags=device:sd
--        :avocado: tags=os:netbsd
--        """
-         self.set_machine('orangepi-pc')
-         # This test download a 304MB compressed image and expand it to 2GB
-         deb_path = self.ASSET_UBOOT.fetch()
+ tests_aarch64_system_thorough = [
++  'aarch64_aspeed',
+   'aarch64_raspi3',
+   'aarch64_raspi4',
+   'aarch64_sbsaref',
+diff --git a/tests/functional/test_aarch64_aspeed.py b/tests/functional/test_aarch64_aspeed.py
+new file mode 100644
+index 0000000000..59916efd71
+--- /dev/null
++++ b/tests/functional/test_aarch64_aspeed.py
+@@ -0,0 +1,98 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the ASPEED SoCs with firmware
++#
++# Copyright (C) 2022 ASPEED Technology Inc
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import sys
++import os
++
++from qemu_test import QemuSystemTest, Asset
++from qemu_test import wait_for_console_pattern
++from qemu_test import exec_command_and_wait_for_pattern
++from qemu_test.utils import archive_extract
++
++class AST2x00MachineSDK(QemuSystemTest):
++
++    def do_test_aarch64_aspeed_sdk_start(self, image):
++        self.require_netdev('user')
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic', '-net', 'user', '-snapshot')
++
++        self.vm.launch()
++
++        wait_for_console_pattern(self, 'U-Boot 2023.10')
++        wait_for_console_pattern(self, '## Loading kernel from FIT Image')
++        wait_for_console_pattern(self, 'Starting kernel ...')
++
++    ASSET_SDK_V902_AST2700 = Asset(
++            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.02/ast2700-default-obmc.tar.gz',
++            'ac969c2602f4e6bdb69562ff466b89ae3fe1d86e1f6797bb7969d787f82116a7')
++
++    def test_aarch64_ast2700_evb_sdk_v09_02(self):
++        self.set_machine('ast2700-evb')
++
++        image_path = self.ASSET_SDK_V902_AST2700.fetch()
++        archive_extract(image_path, self.workdir)
++
++        num_cpu = 4
++        image_dir = self.workdir + '/ast2700-default/'
++        uboot_size = os.path.getsize(image_dir + 'u-boot-nodtb.bin')
++        uboot_dtb_load_addr = hex(0x400000000 + uboot_size)
++
++        load_images_list = [
++            {
++                'addr': '0x400000000',
++                'file': image_dir + 'u-boot-nodtb.bin'
++            },
++            {
++                'addr': str(uboot_dtb_load_addr),
++                'file': image_dir + 'u-boot.dtb'
++            },
++            {
++                'addr': '0x430000000',
++                'file': image_dir + 'bl31.bin'
++            },
++            {
++                'addr': '0x430080000',
++                'file': image_dir + 'optee/tee-raw.bin'
++            }
++        ]
++
++        for load_image in load_images_list:
++            addr = load_image['addr']
++            file = load_image['file']
++            self.vm.add_args('-device',
++                             f'loader,force-raw=on,addr={addr},file={file}')
++
++        for i in range(num_cpu):
++            self.vm.add_args('-device',
++                             f'loader,addr=0x430000000,cpu-num={i}')
++
++        self.vm.add_args('-smp', str(num_cpu))
++        self.vm.add_args('-device',
++                         'tmp105,bus=aspeed.i2c.bus.1,address=0x4d,id=tmp-test')
++        self.do_test_aarch64_aspeed_sdk_start(image_dir + 'image-bmc')
++
++        wait_for_console_pattern(self, 'ast2700-default login:')
++
++        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
++        exec_command_and_wait_for_pattern(self,
++            '0penBmc', 'root@ast2700-default:~#')
++
++        exec_command_and_wait_for_pattern(self,
++            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-1/device/new_device ',
++            'i2c i2c-1: new_device: Instantiated device lm75 at 0x4d');
++        exec_command_and_wait_for_pattern(self,
++            'cat /sys/class/hwmon/hwmon20/temp1_input', '0')
++        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
++                    property='temperature', value=18000)
++        exec_command_and_wait_for_pattern(self,
++            'cat /sys/class/hwmon/hwmon20/temp1_input', '18000')
++
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
 -- 
 2.39.5

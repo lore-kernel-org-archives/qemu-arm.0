@@ -1,42 +1,42 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1569368njc;
-        Mon, 25 Nov 2024 11:59:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUAtfUdQ6ja0Z17s5UpiWV+O65KSrmLoEp1zPMsta4c4pRcdKTlFQhotGT5gyIDjg9rLtpb/qUXDm1SPw==@linaro.org
-X-Received: by 2002:a05:600c:1d22:b0:431:3bf9:3ebb with SMTP id 5b1f17b1804b1-433ce4c1f63mr125214615e9.24.1732564776615;
-        Mon, 25 Nov 2024 11:59:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732564776; cv=none;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1569371njc;
+        Mon, 25 Nov 2024 11:59:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX2uZf2PcHb8NdSMJi9YhCND9CDkwkSjLdkE0SOS0Vc3Ta2chuerO10sb7tcl60xADAAHlC4etFX7ZjNA==@linaro.org
+X-Received: by 2002:a05:6000:389:b0:382:37b2:87ee with SMTP id ffacd0b85a97d-38260b581b7mr12213951f8f.21.1732564777121;
+        Mon, 25 Nov 2024 11:59:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732564777; cv=none;
         d=google.com; s=arc-20240605;
-        b=MRpLQ7o/wI/+txCz02Ji/DHtn33Om7HTcHhHnDFwRd77mKBC26LVrC/cuPMW2hgXcr
-         kb0qY/CULAlOmLDGLWyrl6SD1wclv4hrK/n24teO3xcuWTNz//1INBw9tagfMvKfIIJS
-         RMW3dpJW/VLeMfNdl8LTIsp4+eY3rwmsc46mt2OxiKm3MwkStlZTQ3Vn+v7aHd9BEFie
-         B6q1y1/UChC6mmU/CsXppPL/CLr0kra+p1e5q4rOPd7QgDdfnQv2LA4IfSGGREW+h6uj
-         yHF7ghC7VQU/F7W68PdtGB4k/ZwMKnt/luNEklv8QZV8muMmW9i1x95VT4UKCoaPvClB
-         5M2g==
+        b=jyT2mw7kiBA96cv9Hb/1ZcqHzLk1UO+Il0LKx5hVOvBs8fELdx/KV9Uc2l/3eVZQPg
+         BTyvCxaJKco+wQuspbp7ClbBaoDIXh2xti4dVXvO6pJyXqRklwqXEizxMunkErtoSUrM
+         oVKDUZ6IBtxfX5Nn6vH/UwyO8arf9KhinYNPP7evNE3njI1HgY9haGOAKiN93ehwhHdD
+         izZy62Hphl/2Ik3FPe6riD/EesrG1MTcPHq9NRMOQE9rAmKz18RANfM2vb+9YYoXQLKD
+         Jf0gm3xIL0oIZOWgbdQDedYNw8Uyhxf+IlZTaShnjkKexTtkMpSHTcMyCJYOXgWoKqtp
+         c7dA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/1bXq+74SiZeUGfQFbFaJNCrHb1OmghaBQp3KgUN++M=;
-        fh=N4xF2a6naWSUXQrviAiGHffH+LHVdyU46C4Cm2+uGAU=;
-        b=LX2BKwMbs1TaQvs7v5cQvqh34psxO2DWZm0xyq+E7AhMQ0t+Pms5xvCZ+MEJfdHuhb
-         9PIq9haUQGu9CDzyMyv/eCcZIPt8UTJ35mb/Nfd+2W6vfcPdc1Aw23zw27xDMnbNMHb2
-         /RxgXPsWcguoy/hROg9jQdwP/79sh+SY9XOsYuygrwk7L73V4Oq4pwtiSpmHa0Lk1MgY
-         9gT6P+q4UmAmockpgNxpH9ZSEGpGSQ+9iHzL2MrArk9l+dGjWCWLMWTMP7PAjHCPdUUu
-         K7CId+/LAuVgdBMgZmxGwq8ZjOluM/XDuXz7dzyslaQG2og+a9zpwYsahk5w8+nNn7yW
-         FRHQ==;
+        bh=EExZMgepRcWmxIXjjA6QAMdeM+PVS7qSljKvbhpCK2g=;
+        fh=4L0BhTaOrQnWsoR7ad419vNBSyMsVrvzsNwl8q5Qd4c=;
+        b=LTGPPBkIUjqnW8bfQwpnbBkRg2Xq5fHAkMeoXslKudXqsYgON4YoMpbDvW0AYK+jLm
+         AcSbZlTMJJYpICtl02nbel+nVyLMJDr4Vl7/FDrlZPphGHgF9L80bJsjOSDSgCSAc9F0
+         4XAQ430DCn5olC0iQFis+PDftwNV/qFIiWfUwwt4lscupd8vbQZ+5nvjXZSMjQvLPqcX
+         gbQLa9oiCWNLFZ12cCjcF2xRfHBBTenB8HQdn7gQcURZqt187HGyE75lMgAGN5Czaax1
+         GV9LfnI/DB9voU26W+B/C9SNDglyoejGq8GicvQvnnLB++DGq88KDkI6P8VPZ3YPZl8+
+         fXYA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lyUs2JAq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YlNX4yIR;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-433cd84fe51sor37039515e9.12.2024.11.25.11.59.36
+        by mx.google.com with SMTPS id ffacd0b85a97d-383986dc41fsor2401093f8f.6.2024.11.25.11.59.36
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 25 Nov 2024 11:59:36 -0800 (PST)
+        Mon, 25 Nov 2024 11:59:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lyUs2JAq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YlNX4yIR;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
@@ -45,41 +45,40 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/1bXq+74SiZeUGfQFbFaJNCrHb1OmghaBQp3KgUN++M=;
-        b=lyUs2JAqN6HujImALpDL+k7g4ZV6wuIDGyVuYsC3DfbpRSL5TnKpzNQoB2ZXY+RQR3
-         p40u/XuJxSVenftPNY5Pa9FtKHkjfOEqXNG785HIecvmMGYhoclsv1SNTY0ipZyca6Vx
-         40gLWdNJgm6oOkC1h6rnmixNjsJ9qbOSZaMsJY2RR5v3HzvZYy8jSuaIZZzlEgfZ+pal
-         TsQtNHtvoPkhG/0H0AwFOyT+3bqlQP3y38cuj/EZzQTomwicACQXqUNQ5dIWM/NahHEG
-         pRW3zHsoV30RKMq9FEJz9mCJHAEtfR8mOqEurPtPK/onpGUEQXl/i0FX1o5GZAv702Ip
-         Fhdw==
+        bh=EExZMgepRcWmxIXjjA6QAMdeM+PVS7qSljKvbhpCK2g=;
+        b=YlNX4yIRMP/EV1pnmT2vN9XIgekVvyfnu3ROd0p0ceT+nmiGZkAKmesuK+CgT0/YcE
+         EPNkxXZzFKrSCoOJwA7mNhVTqLglzMYKbtgQPYLOXJzkWbvtmWLQTYGRgxe3AuN2D+2i
+         /OpVYrUB72ukbvTJJlBFe9ZhLgakjFVhr1WQsKcIKpq8+RF9FiRZsQ7lw8cOPk0wwVaF
+         XAZBKph/erZkv9eIZn10Yk+8JhUlXvnc9V2jGBzWfeunktgDFDAZzsCtp3vasGv7bHr7
+         7A43lPIX7E0MaOtbdLfG6ObqMHp/qMA1aIGGBH6tnolYVRRWjIeVHPgo+bjV5W4+9hB1
+         klTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1732564776; x=1733169576;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/1bXq+74SiZeUGfQFbFaJNCrHb1OmghaBQp3KgUN++M=;
-        b=CgAQaKNjH5qbcZU5S+iAXEyIiqnP/yJbLcMzROKaHdeCerZ2SGn0RTh7biOw1C5HSe
-         YjTfP1dxlARIuV0jw8jtm7p/C91siMSRjaa3sMaWKV8uwR+5SEs2I+N2pGpGm92JmAaH
-         UAjwpvBj/tMemUdjJxWDyQHSqYHOuGFkM/pOfrS5H/aE1/nlI6nzl3L64xX6bD8xITSn
-         hmd1ZwXRo/OJd6DKosgO2syMouSECoDFIOgWsBKu3HAxUAh4BZ0Y1DvN/V9KPXdXoJLG
-         DudN9rQ6/EhGNo2WCSTCcSlnett+5d6qwTkq6vAGzdp4xnLaS2hyfmyYknnsjG9ZJU1N
-         IxTA==
-X-Forwarded-Encrypted: i=1; AJvYcCXj4YaGQuBq+aamHr0d+6T7malZil2vMt/7QFB+nVpSZo30uP5b9DzgmsSizhxDJRwfl7diGU5VeNqhHA==@linaro.org
-X-Gm-Message-State: AOJu0YzQmQRv3AxL59PUdJSFmVflKcJlfYsOV1RUP6uCk7nFv9jxI/ue
-	voeV53/eAULunbwtBhxrJS6wtG2YNxwV2ZV8zhAtHJZ/w9fUIU3OVQjYTGdHYkT+YictbUnmLoi
-	ZCkY=
-X-Gm-Gg: ASbGncvgWVutFjYf8tDZY91aeSWrdsBcm9rnhWV/8U7XYyA7y5/sLe2Iv2KtjbA3KBP
-	ENBqKwITPiKYYXX6N8GLBloXJWxMeBQullT73ZrzBcv/qgj9fL7u82vc8OT37P7lrwDIkn4Dsc/
-	wCei4Z+3I2QKGcLNKNjzpjF9Bnxp7Nicf3G83XaknbY/Q/Ok+GVC0ACVGRtzvNlqu88CrVIITe0
-	UyRD/8Ct8zDYy2zc4l1ImeO4c9fRqCXSLMD17ciAQCpcX9WSDsT3HagZwph1nJq784I
-X-Google-Smtp-Source: AGHT+IFQgR9S9GvWuMKUvIDpUn9BlZAf2a1+Fz9wP/Nv1NRFaz6POwZPlcO/sIKSbai/bFFqVIoa7g==
-X-Received: by 2002:a05:6000:4026:b0:382:3400:1ee9 with SMTP id ffacd0b85a97d-38260b5d6c1mr13383314f8f.14.1732564775976;
-        Mon, 25 Nov 2024 11:59:35 -0800 (PST)
+        bh=EExZMgepRcWmxIXjjA6QAMdeM+PVS7qSljKvbhpCK2g=;
+        b=lVHjSHsM/8fGWUpScD4t7cDYVsa3zubOmdFtgjeM36mL/K/TdJUePDedXw6o2NQB9T
+         NxTuUXZqjProwhkGiSytJPyahLBplZRWFlrDQJ/Df6gB1Y0MRlhR4xHyDlAt6Bkpyv8n
+         23m236uQo4D/95yOUWnFVManegJzXUzwcRzMthokf5C6WsIw7NoTMaowEliBx19yTBpn
+         fgf6vZidIrlCiBo/SoHkEognzOxGmR3vP+/Ru01ECpsnseaonuIpOwT/RVqJTyvqc7pZ
+         sHjnibHhuAAUtk9Oq0YNe++N5R2yYPfbf1fCPEhjJ5a57CJb1jSnkd7tDbHIGOwJnEti
+         GaPg==
+X-Forwarded-Encrypted: i=1; AJvYcCXRgkcers88kAaSjzh3JMPj0LXB8WgHibv5FfME149N4vpP2hfL0Tf6Ft4JX75eml6q1PtYSkGH1jHYoA==@linaro.org
+X-Gm-Message-State: AOJu0YxKMfv46lyuwqvW0iVdr1NCNOmxZ2oxKKpesrbbdMvFzSB0Q0nT
+	mQyAau4FLln9l0jOYaKkgxQxhpsrkYIxPLc2sNPDrVrpaCa/+zAq4E16mWL4UQ2EKw==
+X-Gm-Gg: ASbGnctInV23TqR/l1rHashVTPBue+K8VQfD1mgaNMfl6Qztjnqz/y5+BhK8Y7wy5ri
+	RrBAWAS7+Z8sEYQ9fJbxffzA5xBAgHDMf5smRngMhSsK0rQaBCfvfuk/4DjBHvR4HLuVJ/GlQWE
+	X3as6Oj+O63XVx36CLJBR6IyKUf/KLLhSjwkqCyuyx7qfzu2HMqcMyOCK5Ufomim+cU5+Pboqcz
+	MnnfNTCvZxeo1ikKxCF3214NknZu4ymrLYrMdeSRfQTISWsbVDh4myX2KVB9UQgN1tW
+X-Google-Smtp-Source: AGHT+IEpRKX4vqQ5F4ReAVoyjQEr4k+dgtHCLaUTopY3J7lBIhLeQk4UiEwxtDtCCt9+elRt/DkjZA==
+X-Received: by 2002:a5d:6dad:0:b0:381:b68f:d14b with SMTP id ffacd0b85a97d-38260bc860dmr13424465f8f.45.1732564776596;
+        Mon, 25 Nov 2024 11:59:36 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from localhost.localdomain ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.35
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fd0fbdcsm11237971f8f.109.2024.11.25.11.59.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Nov 2024 11:59:35 -0800 (PST)
+        Mon, 25 Nov 2024 11:59:36 -0800 (PST)
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 To: peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org,
@@ -88,208 +87,47 @@ Cc: richard.henderson@linaro.org,
 	qemu-devel@nongnu.org,
 	alex.bennee@linaro.org,
 	Jean-Philippe Brucker <jean-philippe@linaro.org>
-Subject: [PATCH v3 20/26] hw/arm/virt: Use RAM instead of flash for confidential guest firmware
-Date: Mon, 25 Nov 2024 19:56:19 +0000
-Message-ID: <20241125195626.856992-22-jean-philippe@linaro.org>
+Subject: [RFC PATCH v3 21/26] hw/arm/boot: Load DTB as is for confidential VMs
+Date: Mon, 25 Nov 2024 19:56:20 +0000
+Message-ID: <20241125195626.856992-23-jean-philippe@linaro.org>
 X-Mailer: git-send-email 2.47.0
 In-Reply-To: <20241125195626.856992-2-jean-philippe@linaro.org>
 References: <20241125195626.856992-2-jean-philippe@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 8Xkk+yr4k22j
+X-TUID: Lz3rF147bsni
 
-The flash device that holds firmware code relies on read-only stage-2
-mappings. Read accesses behave as RAM and write accesses as MMIO. Since
-the RMM does not support read-only mappings we cannot use the flash
-device as-is.
-
-That isn't a problem because the firmware does not want to disclose any
-information to the host, hence will not store its variables in clear
-persistent memory. We can therefore replace the flash device with RAM,
-and load the firmware there.
+For confidential VMs it may be necessary to measure the DTB, to ensure a
+malicious host does not insert harmful information in there. In case an
+external tool can generated and measured the DTB, load it as is without
+patching it.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 ---
- include/hw/arm/boot.h |  9 +++++++++
- hw/arm/boot.c         | 32 ++++++++++++++++++++++++++++--
- hw/arm/virt.c         | 45 +++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 84 insertions(+), 2 deletions(-)
+v2->v3: new
+---
+ hw/arm/boot.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/arm/boot.h b/include/hw/arm/boot.h
-index 80c492d742..d91cfc6942 100644
---- a/include/hw/arm/boot.h
-+++ b/include/hw/arm/boot.h
-@@ -112,6 +112,10 @@ struct arm_boot_info {
-      */
-     bool firmware_loaded;
- 
-+    /* Used when loading firmware into RAM */
-+    hwaddr firmware_base;
-+    hwaddr firmware_max_size;
-+
-     /* Address at which board specific loader/setup code exists. If enabled,
-      * this code-blob will run before anything else. It must return to the
-      * caller via the link register. There is no stack set up. Enabled by
-@@ -132,6 +136,11 @@ struct arm_boot_info {
-     bool secure_board_setup;
- 
-     arm_endianness endianness;
-+
-+    /*
-+     * Confidential guest boot loads everything into RAM so it can be measured.
-+     */
-+    bool confidential;
- };
- 
- /**
 diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index a2414b1f98..4cf7dd5b4d 100644
+index 4cf7dd5b4d..20b3071339 100644
 --- a/hw/arm/boot.c
 +++ b/hw/arm/boot.c
-@@ -1150,7 +1150,31 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
-     }
- }
+@@ -523,7 +523,14 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+     char **node_path;
+     Error *err = NULL;
  
--static void arm_setup_firmware_boot(ARMCPU *cpu, struct arm_boot_info *info)
-+static void arm_setup_confidential_firmware_boot(ARMCPU *cpu,
-+                                                 struct arm_boot_info *info,
-+                                                 const char *firmware_filename)
-+{
-+    ssize_t fw_size;
-+    const char *fname;
-+    AddressSpace *as = arm_boot_address_space(cpu, info);
-+
-+    fname = qemu_find_file(QEMU_FILE_TYPE_BIOS, firmware_filename);
-+    if (!fname) {
-+        error_report("Could not find firmware image '%s'", firmware_filename);
-+        exit(1);
-+    }
-+
-+    fw_size = load_image_targphys_as(firmware_filename,
-+                                     info->firmware_base,
-+                                     info->firmware_max_size, as);
-+    if (fw_size <= 0) {
-+        error_report("could not load firmware '%s'", firmware_filename);
-+        exit(1);
-+    }
-+}
-+
-+static void arm_setup_firmware_boot(ARMCPU *cpu, struct arm_boot_info *info,
-+                                    const char *firmware_filename)
- {
-     /* Set up for booting firmware (which might load a kernel via fw_cfg) */
- 
-@@ -1201,6 +1225,10 @@ static void arm_setup_firmware_boot(ARMCPU *cpu, struct arm_boot_info *info)
-         }
-     }
- 
-+    if (info->confidential) {
-+        arm_setup_confidential_firmware_boot(cpu, info, firmware_filename);
-+    }
-+
-     /*
-      * We will start from address 0 (typically a boot ROM image) in the
-      * same way as hardware. Leave env->boot_info NULL, so that
-@@ -1244,7 +1272,7 @@ void arm_load_kernel(ARMCPU *cpu, MachineState *ms, struct arm_boot_info *info)
- 
-     /* Load the kernel.  */
-     if (!info->kernel_filename || info->firmware_loaded) {
--        arm_setup_firmware_boot(cpu, info);
-+        arm_setup_firmware_boot(cpu, info, ms->firmware);
-     } else {
-         arm_setup_direct_kernel_boot(cpu, info);
-     }
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index c4cf69ea33..0750c83fae 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1228,6 +1228,10 @@ static PFlashCFI01 *virt_flash_create1(VirtMachineState *vms,
- 
- static void virt_flash_create(VirtMachineState *vms)
- {
-+    if (virt_machine_is_confidential(vms)) {
-+        return;
-+    }
-+
-     vms->flash[0] = virt_flash_create1(vms, "virt.flash0", "pflash0");
-     vms->flash[1] = virt_flash_create1(vms, "virt.flash1", "pflash1");
- }
-@@ -1263,6 +1267,10 @@ static void virt_flash_map(VirtMachineState *vms,
-     hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
-     hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
- 
-+    if (virt_machine_is_confidential(vms)) {
-+        return;
-+    }
-+
-     virt_flash_map1(vms->flash[0], flashbase, flashsize,
-                     secure_sysmem);
-     virt_flash_map1(vms->flash[1], flashbase + flashsize, flashsize,
-@@ -1278,6 +1286,10 @@ static void virt_flash_fdt(VirtMachineState *vms,
-     MachineState *ms = MACHINE(vms);
-     char *nodename;
- 
-+    if (virt_machine_is_confidential(vms)) {
-+        return;
-+    }
-+
-     if (sysmem == secure_sysmem) {
-         /* Report both flash devices as a single node in the DT */
-         nodename = g_strdup_printf("/flash@%" PRIx64, flashbase);
-@@ -1313,6 +1325,27 @@ static void virt_flash_fdt(VirtMachineState *vms,
-     }
- }
- 
-+static bool virt_confidential_firmware_init(VirtMachineState *vms,
-+                                            MemoryRegion *sysmem)
-+{
-+    MemoryRegion *fw_ram;
-+    hwaddr fw_base = vms->memmap[VIRT_FLASH].base;
-+    hwaddr fw_size = vms->memmap[VIRT_FLASH].size;
-+
-+    if (!MACHINE(vms)->firmware) {
-+        return false;
-+    }
-+
-+    assert(machine_require_guest_memfd(MACHINE(vms)));
-+
-+    fw_ram = g_new(MemoryRegion, 1);
-+    memory_region_init_ram_guest_memfd(fw_ram, NULL, "fw_ram", fw_size,
-+                                       &error_fatal);
-+    memory_region_add_subregion(sysmem, fw_base, fw_ram);
-+
-+    return true;
-+}
-+
- static bool virt_firmware_init(VirtMachineState *vms,
-                                MemoryRegion *sysmem,
-                                MemoryRegion *secure_sysmem)
-@@ -1321,6 +1354,15 @@ static bool virt_firmware_init(VirtMachineState *vms,
-     const char *bios_name;
-     BlockBackend *pflash_blk0;
- 
-+    /*
-+     * For a confidential VM, the firmware image and any boot information,
-+     * including EFI variables, are stored in RAM in order to be measurable and
-+     * private. Create a RAM region and load the firmware image there.
-+     */
-+    if (virt_machine_is_confidential(vms)) {
-+        return virt_confidential_firmware_init(vms, sysmem);
-+    }
-+
-     /* Map legacy -drive if=pflash to machine properties */
-     for (i = 0; i < ARRAY_SIZE(vms->flash); i++) {
-         pflash_cfi01_legacy_drive(vms->flash[i],
-@@ -2463,7 +2505,10 @@ static void machvirt_init(MachineState *machine)
-     vms->bootinfo.get_dtb = machvirt_dtb;
-     vms->bootinfo.skip_dtb_autoload = true;
-     vms->bootinfo.firmware_loaded = firmware_loaded;
-+    vms->bootinfo.firmware_base = vms->memmap[VIRT_FLASH].base;
-+    vms->bootinfo.firmware_max_size = vms->memmap[VIRT_FLASH].size;
-     vms->bootinfo.psci_conduit = vms->psci_conduit;
-+    vms->bootinfo.confidential = virt_machine_is_confidential(vms);
-     arm_load_kernel(ARM_CPU(first_cpu), machine, &vms->bootinfo);
- 
-     vms->machine_done.notify = virt_machine_done;
+-    if (binfo->dtb_filename) {
++    if (binfo->dtb_filename && binfo->confidential) {
++        /*
++         * If the user is providing a DTB for a confidential VM, it is already
++         * tailored to this configuration and measured. Load it as is, without
++         * any modification.
++         */
++        return rom_add_file_fixed_as(binfo->dtb_filename, addr, -1, as);
++    } else if (binfo->dtb_filename) {
+         char *filename;
+         filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, binfo->dtb_filename);
+         if (!filename) {
 -- 
 2.47.0

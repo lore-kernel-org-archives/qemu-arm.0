@@ -1,198 +1,155 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1345371njc;
-        Mon, 25 Nov 2024 06:50:18 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVTPNNsdO55k9EhfiGMTybVopb4LBhd6UhJdZ6hRAo1cRyscSUmVTerR1K8vexBBauIe7C+hyi9rRQcxg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFMq1sXwUbmwtGGjxhavdtd4p25ENJZJKnqfrhCRXgXII8nkL/tOsrqM286HEjXuvqU1+sj
-X-Received: by 2002:a05:6358:ca8:b0:1ca:a296:f6f2 with SMTP id e5c5f4694b2df-1caa296fa37mr106593755d.15.1732546218659;
-        Mon, 25 Nov 2024 06:50:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732546218; cv=none;
-        d=google.com; s=arc-20240605;
-        b=GlW8ZMYaTFCwqtW8kbQk6Lx179fc7fDWdTT2+L3ZXUtBupL8kfiJIa6+k5jfKzuhNO
-         TfdUXCDfkS5ZLn/NHWHL+eBFTJ4kOs0JOp1TXMi6ATbw64p+ZO2c0ZfIk4+2BM2HvCuz
-         19kXsrDlb66gL4I1Dn5ZNMaUiC2L2Ov7GVfbcK6lvIzUjkY5y3iL0v5I8Zy9686SuveU
-         LLexo6T6Z58vES3uGPiIWeZsygq40Zykj+1mwJyoy3Au4QKDODOwbEyH40UsSe8DWP1X
-         8n6IAqwwb+aa/SMR5H1qgGxUI4fBWblgxXgQ9i/Dyj6hFarF2i0xUmUdHOHnJ+J9iUIZ
-         5IlQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=tc5LnuLllGpjp6P/blJEhjyQ5ysxLb95rGV+9PCZXGU=;
-        fh=MVhaVLy9czgDXZdIOHU1eqwLoc75GTd+mFwQzaG74XE=;
-        b=TRWwUolPnvyC3MAYJscypnvDp2QJYmjwlQxI4bt0k6KPfXh69Tl5UzUoDqp++ky/XX
-         4QoWNonSz+2kOeqlsXqMr7MLc7Mhe2yEO6l/wmfL6NGZ6Ewnt0gEsAgu8VBbESBOSKro
-         Xm1DpM4A81L6EgB85J6OnUoONFuiO6VEVlsfoO1e6nGpC89dlo4YCCay/s9S/CQ0s/Lw
-         2frAsUMVdvHJP9KhWa3wYWYSXZjtSYi7PmlANZ717YKSAgzkpmJqAZJ3hYUlkdGZapKZ
-         miOofLWXP9duUerJE5t6YWgJKRxWJBCSvNFaHxv/erLOZSbpxzU220jLcjvswLGBumJY
-         Qb8w==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u+mzm3FF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-85b11460cfasi2532318241.111.2024.11.25.06.50.18
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 25 Nov 2024 06:50:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=u+mzm3FF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tFaPk-0003DM-Cw; Mon, 25 Nov 2024 09:50:12 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tFaPa-0003BI-6l
- for qemu-devel@nongnu.org; Mon, 25 Nov 2024 09:50:03 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tFaPX-0004bS-QN
- for qemu-devel@nongnu.org; Mon, 25 Nov 2024 09:50:01 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-434a10588f3so5881515e9.1
- for <qemu-devel@nongnu.org>; Mon, 25 Nov 2024 06:49:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1732546197; x=1733150997; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tc5LnuLllGpjp6P/blJEhjyQ5ysxLb95rGV+9PCZXGU=;
- b=u+mzm3FFjv7+mKhSPnVDJf5pJZblbaHTTLB+x5CYkWKYh5/tlFgJJLmhrQObtFKQlb
- WAD2OOoRBo5LynpLYJcmTLLIiWS3FUtRfz8JOo36bbN5qrLZRGUh4zPmwfhpigTL0HRG
- 5Hk9ebA0ZLPadX8NTXgXK343Nl84U9RO+oSBmlQicDw2pwSg5f0ZS1FfZurGc4nCCBdP
- e9QGsZ9dvYNnCQ0/cmzkxHKOoiFECj2sUV0zxI/CNjWbIq99O2KH26h0DVp6KU+PvpvF
- p2+zG4xG8E5K9rukj0qbOPfsZOqBR1G6pOVGmWK5MKnFPwDxPYkjmSb9uqkN6u4GLC1q
- Hr2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1732546197; x=1733150997;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tc5LnuLllGpjp6P/blJEhjyQ5ysxLb95rGV+9PCZXGU=;
- b=C+G9c+2GoSl6flo7bQfOvd28eMoCkK8ugJ4q1cJLIocpsC+T2yI/MEewB0Ld3R8CFZ
- 088C/x0J/lWiiPvZy321LqkHiczFTpDWiBlp5CXj7FIXR8hopv4MLvTbS532jA6iDd0v
- AMBjvtBbDFqvr0WcXgT67IwdH4Kva4vn5FcJSPWOM/do6L8jb2kSFiq7vSKWOg3c7iGc
- 7+hG15+LAnBxfEq0gQSdfVwhRHDCtzHqkPDDl40cORBYSXGhYA0SKauc5mi3wFcZUQRJ
- 8F9e7/pXj4FFJ6ndauCNLGCnJSM4bcxqWEwGKngpvuVs7akQUtdw3MuoDG4wpcbbsKE3
- K+Sw==
-X-Gm-Message-State: AOJu0Yzf1qD+erDQXCe91ptrHros13dwEFrTlg7RY74JrT9Q7F0Cpp0M
- L30qk18mHDXfKsbDN6p7C6lEOg+lLhSLjDQAgEznbDBdCkhkvJ8Q3MyUJimLnps=
-X-Gm-Gg: ASbGncswnfAiTGaMztvevO6Z0YpOggKun8h33uhxh6dYYNByMOwjNbINapDliE2JXzc
- JzkZgRG/yLlCcC6IBe3sPjKeL9vCafmb8sjLa7qTO7OF+2MKlbQK4RZRW8+LUD6x49b6mChgatx
- oLVoqPHu75LVPNzSxpuxnTRcp+jKNn7Ele27H8EOGs8GoE6I7sz873rAFmc7EiUxQVYC13T26d3
- kJHd6LOYzV37cw1pQhINerz8IzNuyVhYe97H5c/Hv5BFd4TqP3IUvqR7RVPlJcOZQ==
-X-Received: by 2002:a05:600c:1d1e:b0:434:a1d3:a30f with SMTP id
- 5b1f17b1804b1-434a1d3a4ecmr14475935e9.6.1732546197259; 
- Mon, 25 Nov 2024 06:49:57 -0800 (PST)
-Received: from [192.168.69.146] ([176.176.170.239])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4349d3f4b7bsm60218105e9.6.2024.11.25.06.49.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 25 Nov 2024 06:49:56 -0800 (PST)
-Message-ID: <748eb21d-4b73-4d2a-8058-b3a79d4fb802@linaro.org>
-Date: Mon, 25 Nov 2024 15:49:53 +0100
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fbedebfsm10679155f8f.100.2024.11.25.07.21.07
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Nov 2024 07:21:09 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 43C725F9CF;
+	Mon, 25 Nov 2024 15:21:06 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Niek Linnenbank <nieklinnenbank@gmail.com>,
+	qemu-arm@nongnu.org (open list:Allwinner-h3)
+Subject: [PULL 05/28] tests/functional: remove leftover :avocado: tags
+Date: Mon, 25 Nov 2024 15:20:42 +0000
+Message-Id: <20241125152105.2100395-6-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241125152105.2100395-1-alex.bennee@linaro.org>
+References: <20241125152105.2100395-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.0 0/8] hw/boards: Remove legacy
- MachineClass::pci_allow_0_address flag
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Bin Meng <bmeng.cn@gmail.com>, Alistair Francis <alistair.francis@wdc.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, Zhao Liu <zhao1.liu@intel.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>, qemu-riscv@nongnu.org,
- Weiwei Li <liwei1518@gmail.com>, Radoslaw Biernacki <rad@semihalf.com>,
- Thomas Huth <thuth@redhat.com>, Yanan Wang <wangyanan55@huawei.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>, Alexander Gordeev <agordeev@redhat.com>
-References: <20241125140535.4526-1-philmd@linaro.org>
- <CAFEAcA9vS-9u282Jr+_QaGZT6vD4cpmh0wjuYPQSPLZQw30e4Q@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA9vS-9u282Jr+_QaGZT6vD4cpmh0wjuYPQSPLZQw30e4Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FfLOg6uyV6Tq
+X-TUID: aGW77MZcetfW
 
-On 25/11/24 15:14, Peter Maydell wrote:
-> On Mon, 25 Nov 2024 at 14:06, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> This series aims to remove a legacy field from
->> MachineClass.
->>
->> Rather than a global exposed to all machines,
->> use a pci-bus specific flag on each machine
->> requiering it.
-> 
-> Should this be a property of the PCI controller, rather
-> than on the PCI bus? Presumably on the machines that
-> don't allow a 0 PCI BAR address this happens because the
-> PCI controller refuses to map BARs at that address.
-> 
-> TBH the commit message for e402463073 suggests to me
-> that "allow address zero" should be the default and
-> either specific machines should forbid it or else we
-> should figure out what goes wrong with them, if the
-> problem is caused by some bug in QEMU. The commit message's
-> mention of "fix PCI memory priorities" suggests to me
-> that this is a QEMU bug, and that it ought to be possible
-> to have the machine set up such that you *can* map the
-> BAR at address 0, it's merely invisible to the guest because
-> some other machine devices have higher priority and are
-> visible "on top" of it instead.
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-You are probably right, the following comment ...:
+These tags are not honoured under the new functional test harness.
 
-  pcibus_t pci_bar_address(PCIDevice *d,
-                           int reg, uint8_t type, pcibus_t size)
-  {
-      ...
-      /* NOTE: we do not support wrapping */
-      /* XXX: as we cannot support really dynamic
-         mappings, we handle specific values as invalid
-         mappings. */
-      if (last_addr <= new_addr || last_addr == PCI_BAR_UNMAPPED ||
-          (!allow_0_address && new_addr == 0)) {
-          return PCI_BAR_UNMAPPED;
-      }
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-Id: <20241121154218.1423005-6-berrange@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20241121165806.476008-6-alex.bennee@linaro.org>
 
-... is from 20 years ago at the beginning of PCI in QEMU, commit
-0ac32c8375 ("PCI interrupt support - PCI BIOS interrupt remapping
-- more accurate memory mapping - 'info pci' monitor command") which
-suggest the implementation is incomplete here.
+diff --git a/tests/functional/test_arm_bpim2u.py b/tests/functional/test_arm_bpim2u.py
+index 2f9fa145e3..35ea58d46c 100755
+--- a/tests/functional/test_arm_bpim2u.py
++++ b/tests/functional/test_arm_bpim2u.py
+@@ -37,11 +37,6 @@ class BananaPiMachine(LinuxKernelTest):
+         '5b41b4e11423e562c6011640f9a7cd3bdd0a3d42b83430f7caa70a432e6cd82c')
+ 
+     def test_arm_bpim2u(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:bpim2u
+-        :avocado: tags=accel:tcg
+-        """
+         self.set_machine('bpim2u')
+         deb_path = self.ASSET_DEB.fetch()
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -64,11 +59,6 @@ def test_arm_bpim2u(self):
+         os.remove(dtb_path)
+ 
+     def test_arm_bpim2u_initrd(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=accel:tcg
+-        :avocado: tags=machine:bpim2u
+-        """
+         self.set_machine('bpim2u')
+         deb_path = self.ASSET_DEB.fetch()
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -105,11 +95,6 @@ def test_arm_bpim2u_initrd(self):
+         os.remove(initrd_path)
+ 
+     def test_arm_bpim2u_gmac(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:bpim2u
+-        :avocado: tags=device:sd
+-        """
+         self.set_machine('bpim2u')
+         self.require_netdev('user')
+ 
+@@ -160,11 +145,6 @@ def test_arm_bpim2u_gmac(self):
+ 
+     @skipUnless(os.getenv('QEMU_TEST_ALLOW_LARGE_STORAGE'), 'storage limited')
+     def test_arm_bpim2u_openwrt_22_03_3(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:bpim2u
+-        :avocado: tags=device:sd
+-        """
+         self.set_machine('bpim2u')
+         # This test download a 8.9 MiB compressed image and expand it
+         # to 127 MiB.
+diff --git a/tests/functional/test_arm_orangepi.py b/tests/functional/test_arm_orangepi.py
+index d2ed5fcc82..6d57223a03 100755
+--- a/tests/functional/test_arm_orangepi.py
++++ b/tests/functional/test_arm_orangepi.py
+@@ -49,11 +49,6 @@ class BananaPiMachine(LinuxKernelTest):
+         '20d3e07dc057e15c12452620e90ecab2047f0f7940d9cba8182ebc795927177f')
+ 
+     def test_arm_orangepi(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:orangepi-pc
+-        :avocado: tags=accel:tcg
+-        """
+         self.set_machine('orangepi-pc')
+         deb_path = self.ASSET_DEB.fetch()
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -75,11 +70,6 @@ def test_arm_orangepi(self):
+         os.remove(dtb_path)
+ 
+     def test_arm_orangepi_initrd(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=accel:tcg
+-        :avocado: tags=machine:orangepi-pc
+-        """
+         self.set_machine('orangepi-pc')
+         deb_path = self.ASSET_DEB.fetch()
+         kernel_path = self.extract_from_deb(deb_path,
+@@ -115,12 +105,6 @@ def test_arm_orangepi_initrd(self):
+         os.remove(initrd_path)
+ 
+     def test_arm_orangepi_sd(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=accel:tcg
+-        :avocado: tags=machine:orangepi-pc
+-        :avocado: tags=device:sd
+-        """
+         self.set_machine('orangepi-pc')
+         self.require_netdev('user')
+         deb_path = self.ASSET_DEB.fetch()
+@@ -167,11 +151,6 @@ def test_arm_orangepi_sd(self):
+ 
+     @skipUnless(os.getenv('QEMU_TEST_ALLOW_LARGE_STORAGE'), 'storage limited')
+     def test_arm_orangepi_armbian(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:orangepi-pc
+-        :avocado: tags=device:sd
+-        """
+         self.set_machine('orangepi-pc')
+         # This test download a 275 MiB compressed image and expand it
+         # to 1036 MiB, but the underlying filesystem is 1552 MiB...
+@@ -208,12 +187,6 @@ def test_arm_orangepi_armbian(self):
+ 
+     @skipUnless(os.getenv('QEMU_TEST_ALLOW_LARGE_STORAGE'), 'storage limited')
+     def test_arm_orangepi_uboot_netbsd9(self):
+-        """
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:orangepi-pc
+-        :avocado: tags=device:sd
+-        :avocado: tags=os:netbsd
+-        """
+         self.set_machine('orangepi-pc')
+         # This test download a 304MB compressed image and expand it to 2GB
+         deb_path = self.ASSET_UBOOT.fetch()
+-- 
+2.39.5

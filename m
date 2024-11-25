@@ -1,368 +1,261 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-433b45bdbabsm194746775e9.18.2024.11.25.07.26.14
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3825fafe338sm10582103f8f.33.2024.11.25.07.26.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 25 Nov 2024 07:26:14 -0800 (PST)
+        Mon, 25 Nov 2024 07:26:16 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 861D7620B7;
-	Mon, 25 Nov 2024 15:21:07 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 467D863A55;
+	Mon, 25 Nov 2024 15:21:08 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	qemu-arm@nongnu.org (open list:Virt)
-Subject: [PULL 19/28] tests/functional: Convert the Avocado aarch64 tuxrun tests
-Date: Mon, 25 Nov 2024 15:20:56 +0000
-Message-Id: <20241125152105.2100395-20-alex.bennee@linaro.org>
+	Steven Lee <steven_lee@aspeedtech.com>,
+	Troy Lee <leetroy@gmail.com>,
+	Jamin Lin <jamin_lin@aspeedtech.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Joel Stanley <joel@jms.id.au>,
+	qemu-arm@nongnu.org (open list:ASPEED BMCs)
+Subject: [PULL 27/28] tests/functional: Convert Aspeed arm SDK tests
+Date: Mon, 25 Nov 2024 15:21:04 +0000
+Message-Id: <20241125152105.2100395-28-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241125152105.2100395-1-alex.bennee@linaro.org>
 References: <20241125152105.2100395-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 6xFK5Z9++vRx
+X-TUID: LdXwUA5TSPDv
 
-From: Thomas Huth <thuth@redhat.com>
+From: Cédric Le Goater <clg@redhat.com>
 
-Move the tests to a new file so that they can be run via
-qemu-system-aarch64 in the functional framework.
+Drop the SSH connection which was introduced in the avocado tests to
+workaround read issues when interacting with console.
 
-Since these were the last tests in tests/avocado/tuxrun_baselines.py,
-we can now remove that file, too.
+EXTRA_BOOTARGS was introduced to reduce the console output at Linux
+boot time. This didn't have the desired effect as we still had issues
+when trying to match patterns on the console and we had to use the ssh
+connection as a workaround.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+While at it, remove the U-Boot EXTRA_BOOTARGS variable which has
+become useless.
+
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20241122090322.1934697-3-clg@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-20-alex.bennee@linaro.org>
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index acc7405aed..eb7149bf1a 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -994,6 +994,7 @@ F: hw/arm/virt*
- F: include/hw/arm/virt.h
- F: docs/system/arm/virt.rst
- F: tests/functional/test_aarch64_virt.py
-+F: tests/functional/test_aarch64_tuxrun.py
- F: tests/functional/test_arm_tuxrun.py
- 
- Xilinx Zynq
-@@ -4129,7 +4130,7 @@ F: scripts/ci/
- F: tests/docker/
- F: tests/vm/
- F: tests/lcitool/
--F: tests/avocado/tuxrun_baselines.py
-+F: tests/functional/test_*_tuxrun.py
- F: scripts/archive-source.sh
- F: docs/devel/testing.rst
- W: https://gitlab.com/qemu-project/qemu/pipelines
-diff --git a/tests/avocado/tuxrun_baselines.py b/tests/avocado/tuxrun_baselines.py
+diff --git a/tests/avocado/machine_aspeed.py b/tests/avocado/machine_aspeed.py
 deleted file mode 100644
-index 38064840da..0000000000
---- a/tests/avocado/tuxrun_baselines.py
+index 2240c82abf..0000000000
+--- a/tests/avocado/machine_aspeed.py
 +++ /dev/null
-@@ -1,224 +0,0 @@
--# Functional test that boots known good tuxboot images the same way
--# that tuxrun (www.tuxrun.org) does. This tool is used by things like
--# the LKFT project to run regression tests on kernels.
+@@ -1,124 +0,0 @@
+-# Functional test that boots the ASPEED SoCs with firmware
 -#
--# Copyright (c) 2023 Linaro Ltd.
+-# Copyright (C) 2022 ASPEED Technology Inc
 -#
--# Author:
--#  Alex Bennée <alex.bennee@linaro.org>
--#
--# SPDX-License-Identifier: GPL-2.0-or-later
+-# This work is licensed under the terms of the GNU GPL, version 2 or
+-# later.  See the COPYING file in the top-level directory.
 -
--import os
 -import time
+-import os
 -import tempfile
+-import subprocess
 -
--from avocado import skip, skipUnless
+-from avocado_qemu import LinuxSSHMixIn
 -from avocado_qemu import QemuSystemTest
--from avocado_qemu import exec_command, exec_command_and_wait_for_pattern
 -from avocado_qemu import wait_for_console_pattern
--from avocado.utils import process
--from avocado.utils.path import find_command
+-from avocado_qemu import exec_command
+-from avocado_qemu import exec_command_and_wait_for_pattern
+-from avocado_qemu import interrupt_interactive_console_until_pattern
+-from avocado_qemu import has_cmd
+-from avocado.utils import archive
+-from avocado import skipUnless
 -
--class TuxRunBaselineTest(QemuSystemTest):
--    """
--    :avocado: tags=accel:tcg
--    """
+-class AST2x00MachineSDK(QemuSystemTest, LinuxSSHMixIn):
 -
--    KERNEL_COMMON_COMMAND_LINE = 'printk.time=0'
--    # Tests are ~10-40s, allow for --debug/--enable-gcov overhead
--    timeout = 100
+-    EXTRA_BOOTARGS = (
+-        'quiet '
+-        'systemd.mask=org.openbmc.HostIpmi.service '
+-        'systemd.mask=xyz.openbmc_project.Chassis.Control.Power@0.service '
+-        'systemd.mask=modprobe@fuse.service '
+-        'systemd.mask=rngd.service '
+-        'systemd.mask=obmc-console@ttyS2.service '
+-    )
 -
--    def get_tag(self, tagname, default=None):
--        """
--        Get the metadata tag or return the default.
--        """
--        utag = self._get_unique_tag_val(tagname)
--        print(f"{tagname}/{default} -> {utag}")
--        if utag:
--            return utag
--
--        return default
--
--    def setUp(self):
--        super().setUp()
--
--        # We need zstd for all the tuxrun tests
--        # See https://github.com/avocado-framework/avocado/issues/5609
--        zstd = find_command('zstd', False)
--        if zstd is False:
--            self.cancel('Could not find "zstd", which is required to '
--                        'decompress rootfs')
--        self.zstd = zstd
--
--        # Process the TuxRun specific tags, most machines work with
--        # reasonable defaults but we sometimes need to tweak the
--        # config. To avoid open coding everything we store all these
--        # details in the metadata for each test.
--
--        # The tuxboot tag matches the root directory
--        self.tuxboot = self.get_tag('tuxboot')
--
--        # Most Linux's use ttyS0 for their serial port
--        self.console = self.get_tag('console', "ttyS0")
--
--        # Does the machine shutdown QEMU nicely on "halt"
--        self.shutdown = self.get_tag('shutdown')
--
--        # The name of the kernel Image file
--        self.image = self.get_tag('image', "Image")
--
--        self.root = self.get_tag('root', "vda")
--
--        # Occasionally we need extra devices to hook things up
--        self.extradev = self.get_tag('extradev')
--
--        self.qemu_img = super().get_qemu_img()
+-    # FIXME: Although these tests boot a whole distro they are still
+-    # slower than comparable machine models. There may be some
+-    # optimisations which bring down the runtime. In the meantime they
+-    # have generous timeouts and are disable for CI which aims for all
+-    # tests to run in less than 60 seconds.
+-    timeout = 240
 -
 -    def wait_for_console_pattern(self, success_message, vm=None):
 -        wait_for_console_pattern(self, success_message,
 -                                 failure_message='Kernel panic - not syncing',
 -                                 vm=vm)
 -
--    def fetch_tuxrun_assets(self, csums=None, dt=None):
+-    def do_test_arm_aspeed_sdk_start(self, image):
+-        self.require_netdev('user')
+-        self.vm.set_console()
+-        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
+-                         '-net', 'nic', '-net', 'user,hostfwd=:127.0.0.1:0-:22')
+-        self.vm.launch()
+-
+-        self.wait_for_console_pattern('U-Boot 2019.04')
+-        interrupt_interactive_console_until_pattern(
+-            self, 'Hit any key to stop autoboot:', 'ast#')
+-        exec_command_and_wait_for_pattern(
+-            self, 'setenv bootargs ${bootargs} ' + self.EXTRA_BOOTARGS, 'ast#')
+-        exec_command_and_wait_for_pattern(
+-            self, 'boot', '## Loading kernel from FIT Image')
+-        self.wait_for_console_pattern('Starting kernel ...')
+-
+-    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
+-    def test_arm_ast2500_evb_sdk(self):
 -        """
--        Fetch the TuxBoot assets. They are stored in a standard way so we
--        use the per-test tags to fetch details.
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:ast2500-evb
+-        :avocado: tags=flaky
 -        """
--        base_url = f"https://storage.tuxboot.com/20230331/{self.tuxboot}/"
 -
--        # empty hash if we weren't passed one
--        csums = {} if csums is None else csums
--        ksum = csums.get(self.image, None)
--        isum = csums.get("rootfs.ext4.zst", None)
+-        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+-                     'download/v08.06/ast2500-default-obmc.tar.gz')
+-        image_hash = ('e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-        archive.extract(image_path, self.workdir)
 -
--        kernel_image =  self.fetch_asset(base_url + self.image,
--                                         asset_hash = ksum,
--                                         algorithm = "sha256")
--        disk_image_zst = self.fetch_asset(base_url + "rootfs.ext4.zst",
--                                         asset_hash = isum,
--                                         algorithm = "sha256")
+-        self.do_test_arm_aspeed_sdk_start(
+-            self.workdir + '/ast2500-default/image-bmc')
+-        self.wait_for_console_pattern('nodistro.0 ast2500-default ttyS4')
 -
--        cmd = f"{self.zstd} -d {disk_image_zst} -o {self.workdir}/rootfs.ext4"
--        process.run(cmd)
--
--        if dt:
--            dsum = csums.get(dt, None)
--            dtb = self.fetch_asset(base_url + dt,
--                                   asset_hash = dsum,
--                                   algorithm = "sha256")
--        else:
--            dtb = None
--
--        return (kernel_image, self.workdir + "/rootfs.ext4", dtb)
--
--    def prepare_run(self, kernel, disk, drive, dtb=None, console_index=0):
+-    @skipUnless(os.getenv('QEMU_TEST_FLAKY_TESTS'), 'Test is unstable on GitLab')
+-    def test_arm_ast2600_evb_sdk(self):
 -        """
--        Setup to run and add the common parameters to the system
+-        :avocado: tags=arch:arm
+-        :avocado: tags=machine:ast2600-evb
+-        :avocado: tags=flaky
 -        """
--        self.vm.set_console(console_index=console_index)
 -
--        # all block devices are raw ext4's
--        blockdev = "driver=raw,file.driver=file," \
--            + f"file.filename={disk},node-name=hd0"
--
--        kcmd_line = self.KERNEL_COMMON_COMMAND_LINE
--        kcmd_line += f" root=/dev/{self.root}"
--        kcmd_line += f" console={self.console}"
--
--        self.vm.add_args('-kernel', kernel,
--                         '-append', kcmd_line,
--                         '-blockdev', blockdev)
--
--        # Sometimes we need extra devices attached
--        if self.extradev:
--            self.vm.add_args('-device', self.extradev)
+-        image_url = ('https://github.com/AspeedTech-BMC/openbmc/releases/'
+-                     'download/v08.06/ast2600-a2-obmc.tar.gz')
+-        image_hash = ('9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
+-        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
+-                                      algorithm='sha256')
+-        archive.extract(image_path, self.workdir)
 -
 -        self.vm.add_args('-device',
--                         f"{drive},drive=hd0")
+-                         'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test');
+-        self.vm.add_args('-device',
+-                         'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
+-        self.do_test_arm_aspeed_sdk_start(
+-            self.workdir + '/ast2600-a2/image-bmc')
+-        self.wait_for_console_pattern('nodistro.0 ast2600-a2 ttyS4')
 -
--        # Some machines need an explicit DTB
--        if dtb:
--            self.vm.add_args('-dtb', dtb)
+-        self.ssh_connect('root', '0penBmc', False)
+-        self.ssh_command('dmesg -c > /dev/null')
 -
--    def run_tuxtest_tests(self, haltmsg):
--        """
--        Wait for the system to boot up, wait for the login prompt and
--        then do a few things on the console. Trigger a shutdown and
--        wait to exit cleanly.
--        """
--        self.wait_for_console_pattern("Welcome to TuxTest")
--        time.sleep(0.2)
--        exec_command(self, 'root')
--        time.sleep(0.2)
--        exec_command(self, 'cat /proc/interrupts')
--        time.sleep(0.1)
--        exec_command(self, 'cat /proc/self/maps')
--        time.sleep(0.1)
--        exec_command(self, 'uname -a')
--        time.sleep(0.1)
--        exec_command_and_wait_for_pattern(self, 'halt', haltmsg)
+-        self.ssh_command_output_contains(
+-             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device ; '
+-             'dmesg -c',
+-             'i2c i2c-5: new_device: Instantiated device lm75 at 0x4d');
+-        self.ssh_command_output_contains(
+-                             'cat /sys/class/hwmon/hwmon19/temp1_input', '0')
+-        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+-                    property='temperature', value=18000);
+-        self.ssh_command_output_contains(
+-                             'cat /sys/class/hwmon/hwmon19/temp1_input', '18000')
 -
--        # Wait for VM to shut down gracefully if it can
--        if self.shutdown == "nowait":
--            self.vm.shutdown()
--        else:
--            self.vm.wait()
+-        self.ssh_command_output_contains(
+-             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device ; '
+-             'dmesg -c',
+-             'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
+-        year = time.strftime("%Y")
+-        self.ssh_command_output_contains('/sbin/hwclock -f /dev/rtc1', year);
 -
--    def common_tuxrun(self,
--                      csums=None,
--                      dt=None,
--                      drive="virtio-blk-device",
--                      haltmsg="reboot: System halted",
--                      console_index=0):
--        """
--        Common path for LKFT tests. Unless we need to do something
--        special with the command line we can process most things using
--        the tag metadata.
--        """
--        (kernel, disk, dtb) = self.fetch_tuxrun_assets(csums, dt)
--
--        self.prepare_run(kernel, disk, drive, dtb, console_index)
--        self.vm.launch()
--        self.run_tuxtest_tests(haltmsg)
--
--
--    #
--    # The tests themselves. The configuration is derived from how
--    # tuxrun invokes qemu (with minor tweaks like using -blockdev
--    # consistently). The tuxrun equivalent is something like:
--    #
--    # tuxrun --device qemu-{ARCH} \
--    #        --kernel https://storage.tuxboot.com/{TUXBOOT}/{IMAGE}
--    #
--
--    def test_arm64(self):
--        """
--        :avocado: tags=arch:aarch64
--        :avocado: tags=cpu:cortex-a57
--        :avocado: tags=machine:virt
--        :avocado: tags=tuxboot:arm64
--        :avocado: tags=console:ttyAMA0
--        :avocado: tags=shutdown:nowait
--        """
--        sums = {"Image" :
--                "ce95a7101a5fecebe0fe630deee6bd97b32ba41bc8754090e9ad8961ea8674c7",
--                "rootfs.ext4.zst" :
--                "bbd5ed4b9c7d3f4ca19ba71a323a843c6b585e880115df3b7765769dbd9dd061"}
--        self.common_tuxrun(csums=sums)
--
--    def test_arm64be(self):
--        """
--        :avocado: tags=arch:aarch64
--        :avocado: tags=cpu:cortex-a57
--        :avocado: tags=endian:big
--        :avocado: tags=machine:virt
--        :avocado: tags=tuxboot:arm64be
--        :avocado: tags=console:ttyAMA0
--        :avocado: tags=shutdown:nowait
--        """
--        sums = { "Image" :
--                 "e0df4425eb2cd9ea9a283e808037f805641c65d8fcecc8f6407d8f4f339561b4",
--                 "rootfs.ext4.zst" :
--                 "e6ffd8813c8a335bc15728f2835f90539c84be7f8f5f691a8b01451b47fb4bd7"}
--        self.common_tuxrun(csums=sums)
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 758145d1e5..923f9e7078 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -14,6 +14,7 @@ test_timeouts = {
-   'aarch64_raspi4' : 480,
-   'aarch64_sbsaref_alpine' : 720,
-   'aarch64_sbsaref_freebsd' : 720,
-+  'aarch64_tuxrun' : 240,
-   'aarch64_virt' : 720,
-   'acpi_bits' : 420,
-   'arm_aspeed' : 600,
-@@ -52,6 +53,7 @@ tests_aarch64_system_thorough = [
-   'aarch64_sbsaref',
-   'aarch64_sbsaref_alpine',
-   'aarch64_sbsaref_freebsd',
-+  'aarch64_tuxrun',
-   'aarch64_virt',
-   'multiprocess',
- ]
-diff --git a/tests/functional/test_aarch64_tuxrun.py b/tests/functional/test_aarch64_tuxrun.py
-new file mode 100755
-index 0000000000..da56aee4ed
---- /dev/null
-+++ b/tests/functional/test_aarch64_tuxrun.py
-@@ -0,0 +1,50 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots known good tuxboot images the same way
-+# that tuxrun (www.tuxrun.org) does. This tool is used by things like
-+# the LKFT project to run regression tests on kernels.
-+#
-+# Copyright (c) 2023 Linaro Ltd.
-+#
-+# Author:
-+#  Alex Bennée <alex.bennee@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
+index 5fb1adf464..c2c152229b 100755
+--- a/tests/functional/test_arm_aspeed.py
++++ b/tests/functional/test_arm_aspeed.py
+@@ -252,6 +252,74 @@ def test_arm_ast2600_evb_buildroot_tpm(self):
+ 
+         self.do_test_arm_aspeed_buildroot_poweroff()
+ 
++    def do_test_arm_aspeed_sdk_start(self, image):
++        self.require_netdev('user')
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic', '-net', 'user', '-snapshot')
++        self.vm.launch()
 +
-+from qemu_test import Asset
-+from qemu_test.tuxruntest import TuxRunBaselineTest
++        self.wait_for_console_pattern('U-Boot 2019.04')
++        self.wait_for_console_pattern('## Loading kernel from FIT Image')
++        self.wait_for_console_pattern('Starting kernel ...')
 +
-+class TuxRunAarch64Test(TuxRunBaselineTest):
++    ASSET_SDK_V806_AST2500 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2500-default-obmc.tar.gz',
++        'e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
 +
-+    ASSET_ARM64_KERNEL = Asset(
-+        'https://storage.tuxboot.com/20230331/arm64/Image',
-+        'ce95a7101a5fecebe0fe630deee6bd97b32ba41bc8754090e9ad8961ea8674c7')
-+    ASSET_ARM64_ROOTFS = Asset(
-+        'https://storage.tuxboot.com/20230331/arm64/rootfs.ext4.zst',
-+        'bbd5ed4b9c7d3f4ca19ba71a323a843c6b585e880115df3b7765769dbd9dd061')
++    def test_arm_ast2500_evb_sdk(self):
++        self.set_machine('ast2500-evb')
 +
-+    def test_arm64(self):
-+        self.set_machine('virt')
-+        self.cpu='cortex-a57'
-+        self.console='ttyAMA0'
-+        self.wait_for_shutdown=False
-+        self.common_tuxrun(kernel_asset=self.ASSET_ARM64_KERNEL,
-+                           rootfs_asset=self.ASSET_ARM64_ROOTFS)
++        image_path = self.ASSET_SDK_V806_AST2500.fetch()
 +
-+    ASSET_ARM64BE_KERNEL = Asset(
-+        'https://storage.tuxboot.com/20230331/arm64be/Image',
-+        'e0df4425eb2cd9ea9a283e808037f805641c65d8fcecc8f6407d8f4f339561b4')
-+    ASSET_ARM64BE_ROOTFS = Asset(
-+        'https://storage.tuxboot.com/20230331/arm64be/rootfs.ext4.zst',
-+        'e6ffd8813c8a335bc15728f2835f90539c84be7f8f5f691a8b01451b47fb4bd7')
++        archive_extract(image_path, self.workdir)
 +
-+    def test_arm64be(self):
-+        self.set_machine('virt')
-+        self.cpu='cortex-a57'
-+        self.console='ttyAMA0'
-+        self.wait_for_shutdown=False
-+        self.common_tuxrun(kernel_asset=self.ASSET_ARM64BE_KERNEL,
-+                           rootfs_asset=self.ASSET_ARM64BE_ROOTFS)
++        self.do_test_arm_aspeed_sdk_start(
++            self.workdir + '/ast2500-default/image-bmc')
 +
-+if __name__ == '__main__':
-+    TuxRunBaselineTest.main()
++        self.wait_for_console_pattern('ast2500-default login:')
++
++    ASSET_SDK_V806_AST2600_A2 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2600-a2-obmc.tar.gz',
++        '9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
++
++    def test_arm_ast2600_evb_sdk(self):
++        self.set_machine('ast2600-evb')
++
++        image_path = self.ASSET_SDK_V806_AST2600_A2.fetch()
++
++        archive_extract(image_path, self.workdir)
++
++        self.vm.add_args('-device',
++            'tmp105,bus=aspeed.i2c.bus.5,address=0x4d,id=tmp-test');
++        self.vm.add_args('-device',
++            'ds1338,bus=aspeed.i2c.bus.5,address=0x32');
++        self.do_test_arm_aspeed_sdk_start(
++            self.workdir + '/ast2600-a2/image-bmc')
++
++        self.wait_for_console_pattern('ast2600-a2 login:')
++
++        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
++        exec_command_and_wait_for_pattern(self, '0penBmc', 'root@ast2600-a2:~#')
++
++        exec_command_and_wait_for_pattern(self,
++            'echo lm75 0x4d > /sys/class/i2c-dev/i2c-5/device/new_device',
++            'i2c i2c-5: new_device: Instantiated device lm75 at 0x4d');
++        exec_command_and_wait_for_pattern(self,
++             'cat /sys/class/hwmon/hwmon19/temp1_input', '0')
++        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
++                    property='temperature', value=18000);
++        exec_command_and_wait_for_pattern(self,
++             'cat /sys/class/hwmon/hwmon19/temp1_input', '18000')
++
++        exec_command_and_wait_for_pattern(self,
++             'echo ds1307 0x32 > /sys/class/i2c-dev/i2c-5/device/new_device',
++             'i2c i2c-5: new_device: Instantiated device ds1307 at 0x32');
++        year = time.strftime("%Y")
++        exec_command_and_wait_for_pattern(self,
++             '/sbin/hwclock -f /dev/rtc1', year);
++
++
+ class AST2x00MachineMMC(LinuxKernelTest):
+ 
+     ASSET_RAINIER_EMMC = Asset(
 -- 
 2.39.5

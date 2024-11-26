@@ -1,199 +1,247 @@
-Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp287191njb;
-        Tue, 26 Nov 2024 10:46:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXNSkUgcTzpd4GLfZz5ONe8nx0tn9ucUJ+9pHpCmVugbdRFrVHrs2dRHutN+xmv3ImV2xeNjkK0A2AZXQ==@linaro.org
-X-Received: by 2002:a05:6a21:33a4:b0:1d9:21a0:14e0 with SMTP id adf61e73a8af0-1e0e0abe0demr760094637.12.1732646779960;
-        Tue, 26 Nov 2024 10:46:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732646779; cv=none;
+Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp373189njb;
+        Tue, 26 Nov 2024 13:27:15 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHkyxkw50pqHbMWSrjQUkan+pmcCv5Xxv1xzY7dPw3+4zlbIzHF5YtYVrbUuhQKYbspNoBQ
+X-Received: by 2002:a05:6358:5bc5:b0:1be:de52:97b9 with SMTP id e5c5f4694b2df-1cab15a5ecdmr141954855d.2.1732656435642;
+        Tue, 26 Nov 2024 13:27:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732656435; cv=none;
         d=google.com; s=arc-20240605;
-        b=TUPgCqbygKly15LfTUYJkyphzLAP9bAbZal7/67fuduGdmPpIudfKUZnd5Wu4VYQeO
-         eeFQF524rU4Ef1znCh0+eae8qn+ihjNKLIcXf0ukkwAZqdCwiTBNvMtLmg17+EUpMsQz
-         s0uBJi0QzdMm75/mbfj8W1wUDnAPnlwr6sbIyVFv/DE0cQKpzrnafybt+uc0yXgF0wA6
-         smuCMxjrIVuYUCYr8vJC78ZS0PZyYTWmykAO4rUgQfvuK58qjrcAftAg4B4SB3/uptUT
-         tSSIT6VcccPXP3BaeJ5/HoeDVWE2Xp9Ly0xGKPg4jLZCQvXb8x24HIV3iRIIidEYr1xD
-         fngQ==
+        b=Uf60ILRa7rc54zonTkEiSYCNT8w+V3v/aykjFgtDjH0ew6TrhiuJyqXUNu+nLYzSAf
+         u4jGxBZVVG1YOfP2u3DnVvZL0TfEYZrSuEDF0i2hm2SIBllYc347lnX+VJoTl9KxRko/
+         M0yZnnotuS+fbZCc0jahtPbfrs5NL8YN22bBRfKmlv0rF8lNTvBFokTSbGPZaCXm4rbc
+         fyLW3UNN6Xd/4FPKIka2bJ48lrQJVSDhoAPxqg0mRlfAN71XC+yDBLvLiBSdReOa1PCB
+         vPEBa4tE2VeRaME1b1TQXieCkz02tJ1x94wEptRWH4orxZoqXLjcWzM9s5jnYpdpwIxj
+         6a/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=UOpd5qH5FKDNIIyv/+T3MFR9WErF9xtDaxWzlZNNZ5g=;
-        fh=u/+EokaAevNVB0ufdjwxkWR2yo/bHAZ57uRNmPtIi1Y=;
-        b=iUUGuIPikEn3o87/m3du7vIMqhr19V5mLxN+yJi4nMDdWgHhtxGESIzXAXK7qKE+FA
-         /FDV2/p8/Z+wl3EN+YOZH9eA4WM1+p0cwyaRhC0tGs1aU+OxOgoO0IN4GYS++dCGdTUG
-         cX8edMxNZUDSYK8pilu1in8QwbszfO5T9fvRufLxq97C4h55njv3B0gCQIY2sp4KoC2i
-         j27fF5J8M3529PZvao4QREKFqy9v+9fDeMJEB3wEk2kPWxBZBfVxH0O4nJ/DBfRDsxjX
-         wE+JTASf5V/6igzrwoUsgP8+pH29Uowpsb5vMdc9Q1M45BQsplMUH/0sVGUFpTRhlYcE
-         2fTg==;
+        bh=2bVfuVSIsMKCKvriHIIacA8lNNZ42nxSlyRz3CpsIdY=;
+        fh=2/VQF0v7jmkhNtE945WOt7ugov0tjBIOogjJ39ElaQs=;
+        b=Zu3G3hSjro0pI+lN2zlJeRuAMv/twnbMWg0YE1dT8zgNEAnfNZ2oIW3+7+AEeQqnrt
+         9GXubr6hRAwoevOT2Mw/mGbJ39dwLAhuatBqTwonCjQxX68iJ4dJnZSXTSTyQteXhUFM
+         nFFZg/+alMHwRwtpUHZvJNWPkbhFjrUq2p+d8k/XTc23fcc72KUAOblVOICK3/YaBSRW
+         dbfo7oFYjrvXQFw1KJeqljiiTQ4V3XMInLHVPRQhDp6sKJaRIq8WWCpWlHNOxSaSkKYX
+         AeoqWsoPYHVb2xGoVxksfvFy8tt4lrBHCpGMJc98ePBvLKQ53FAuGYMA6lPyG8KM7rZb
+         q1Jw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vDZ6tT+q;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-72519bd768fsor2232845b3a.1.2024.11.26.10.46.19
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LkKuaLb+;
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <mst@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-466a7d9698csi23481291cf.619.2024.11.26.13.27.15
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 26 Nov 2024 10:46:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Nov 2024 13:27:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vDZ6tT+q;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732646779; x=1733251579; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=UOpd5qH5FKDNIIyv/+T3MFR9WErF9xtDaxWzlZNNZ5g=;
-        b=vDZ6tT+qhIc9wQt7WlKPGUf7qzo6mM4+93g5OYwVpkgtYh7OOccZJqgqM//cJU0lOP
-         90x2bFFC3EHvJ5pXyGtX7K57YOH9A0FreM6pyMSCvuZkt8BXFHA+uEmqsr2tCx8ojek9
-         2WYy6+/Ym3l3K1AIzV8xr7pl5Mq6sFd51+4YhZfcCrrfx6NL5mDhSo5HX0bkV7PqxAMm
-         Fak97ORnuG/l4erAnQRGFCli2vydALJ2osj8Gf3rTrC9DZSagy7HbYMBGCDHfoPdnV96
-         Pvk53Vo5m97yFNOtUpywNFawo9VblcWt7kEwAnECnNSzE6ZoCYZ0Afaatvy0vQi27tLF
-         hNVw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LkKuaLb+;
+       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1732656435;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=2bVfuVSIsMKCKvriHIIacA8lNNZ42nxSlyRz3CpsIdY=;
+	b=LkKuaLb+SmCQwLYB/uG74RmTElYfNa1HZVhZ1A3q8zGDPPZN4YM+8+EpHOdJEccPDpDheo
+	2TB+P3RgJZEmVwYP/p+u+UIKEpAF1OUPb70tshIoW+/xapDMzIni5wRZTAax5Q4EA7As1C
+	8VmXmDPDMAZHjQs8tZpgudlJR/OHcgU=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-157-_Ao6g2UkMeqW--G2zI4MAg-1; Tue, 26 Nov 2024 16:27:14 -0500
+X-MC-Unique: _Ao6g2UkMeqW--G2zI4MAg-1
+X-Mimecast-MFC-AGG-ID: _Ao6g2UkMeqW--G2zI4MAg
+Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-4349df2d87dso27927325e9.2
+        for <alex.bennee@linaro.org>; Tue, 26 Nov 2024 13:27:13 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732646779; x=1733251579;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
+        d=1e100.net; s=20230601; t=1732656432; x=1733261232;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=UOpd5qH5FKDNIIyv/+T3MFR9WErF9xtDaxWzlZNNZ5g=;
-        b=KwnOhLPk2QaxxU3wZaXBL9iyCOl1xjZoTWXWaxgnzspmBDBdHunAf4BzZqXyHT9qg4
-         n6MOglM/GXZ0HDNdqB53zDnirKXSDF2d75+9ARxv7xTdwcRgxEcOoS8Tq1o902lyqxab
-         0qmiZwNYsCFrVkrqo2VeRlyGZv59wm4bn37Vtr+FWKNUZSwDfAR1hMgO5vLPQfdhBmqQ
-         ZYJcZorHuzSbvjJne6D/fvxdBBP7mmcbBibMwVtrmhSAciIbtT7IAUO/9cZ9+prQFaJh
-         QboAlMNByk5M4lTZbT1IFSTyFY5sCQi23F12kh/1akvA6jcV1h8439sAZMvPqBr4DRfb
-         bV0g==
-X-Forwarded-Encrypted: i=1; AJvYcCVrVKNnQ0H1YPO0niX/dD2uNorFj2PT+ywEIAxQSecAvYMH5rl0cMOcPfZksZ868giHQCivtOhP6Ey7hA==@linaro.org
-X-Gm-Message-State: AOJu0YwN/g096hSfcD3nTxt6OjFHFOupNKIFGP12cr7RYU+168wyGlte
-	5IALlZE+dVECGFGvFqSVwf8WbcyPnMPpb4VJgD5h3r6qCJv6daTUfA+HGLX92tqn/A==
-X-Gm-Gg: ASbGncsqdHABF44Ux33n3mFDbI7usRp1s5zmO5oQO7uiFHP5SAzNlAKc9trorKA2Law
-	USfJjRFPFRreBmr6c1WGKgNOFnOE4lMgwN5vM+blLZo7FeFbE0t2/4mXLGH3GpXi/+4s5ZwMnk+
-	GXIy9WI+tOk9zHflz7OdrOR2UCAR8/HwxABfbe4NItgp4ozcymAsrO1P3lcpWTEsUm76dDo+/3c
-	tTyQfRZhg80lGO/0nDOz69J+phOlASx0Br1isrGRQIRE5QPPsXmLbd/LrcNgrWPIsrpSHdJrWkE
-	asl4GalZqAD3OY6uritYgQ==
-X-Google-Smtp-Source: AGHT+IEbmFnweVpN7jJs/qvwQ83rTa7DycOQ4BOpWX4LxHlFTSFZc15SeL547IIIUGbPtZ6r9volfg==
-X-Received: by 2002:a05:6a00:889:b0:71d:fe64:e3fa with SMTP id d2e1a72fcca58-7253014c84amr208515b3a.19.1732646778002;
-        Tue, 26 Nov 2024 10:46:18 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-724de55b4c8sm8762893b3a.164.2024.11.26.10.46.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 26 Nov 2024 10:46:17 -0800 (PST)
-Message-ID: <561761eb-4068-4b09-84ce-56e98dd3d23d@linaro.org>
-Date: Tue, 26 Nov 2024 10:46:16 -0800
+        bh=2bVfuVSIsMKCKvriHIIacA8lNNZ42nxSlyRz3CpsIdY=;
+        b=QeC8THGBpECUWCzfzc6gGw2GImOuKIKP/GbUSZLdIiLdhPNeO08k2ilLGbdLojyn8o
+         nd1q7pqapA1jhS/WY1a9llsxgy0OYLdpXSBh7gM94LebOrbQdwZGIO2AY8W6XWw3xrHS
+         r9jkWNQoxhjJ4cRtyMUMnn81eMPfHTngTv/3EHtFKgViuDs0AO9P/dcKF+mTRpP742h2
+         cCTQ/9kUI9jUU5b24r1dLbWwkfhDaKeoOcc6FzAseguVbxd7LHJb7o3amV+0RtGb1yDJ
+         UcP7gx9M8oRzAXtAtf0fLA/MF/KtUpTkMyKHTSU0Dk8FrGHuxmdErc+0zcgm51cujH38
+         zuNA==
+X-Gm-Message-State: AOJu0YzZ1YIazYtrlC6vMGNKrXjjREv9emVkikRZxxVIM1VgBPphVXzp
+	LDngOG/0U8J/bdokXCKQkymo8Kw/bK3EKNdw1W1Sasj20cLsppHOYEp7zM2HeCgPBAisVGK+LyH
+	tzCJKuYsJw8jN5Ri+Cwl8Z1ryyZO5HDQDszSx4Kqdc3vSyuZlmiDDjXFhjJXV3mCY6/TS16K7Cr
+	UAwCZP/LHDLQE+rMkTaUWlvlX0eopOmeY=
+X-Gm-Gg: ASbGncu9iSVf5jU+OARyBaYtwVo14JEraFsHl/Dl2TR0W03YQhidybuM9Wff99i8hYh
+	4pFZXKR7vWkQDyLxIgy39M6rRH0BusWqjCTYwkeWNC02tYZUPoFVc62VkpJBok7uNx3uGb1teXx
+	9ncGYO1fAzRI9Hj5IRRVBF5uSBrvvpn04LNtcrZflqIN8dOLxZLO0w6EiNZQ+zX1Wp+OqJd3Qfj
+	wjNMDTH4Sd9OyGqqplmQC83AG+oLd8l5tbtqI8U5A==
+X-Received: by 2002:a05:600c:2244:b0:434:a8ef:442e with SMTP id 5b1f17b1804b1-434a9dfbafamr7729305e9.31.1732656432564;
+        Tue, 26 Nov 2024 13:27:12 -0800 (PST)
+X-Received: by 2002:a05:600c:2244:b0:434:a8ef:442e with SMTP id 5b1f17b1804b1-434a9dfbafamr7728705e9.31.1732656432034;
+        Tue, 26 Nov 2024 13:27:12 -0800 (PST)
+Return-Path: <mst@redhat.com>
+Received: from redhat.com ([2a02:14f:1f0:4654:4e59:b33:d0e:9273])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4349ea54e13sm95116915e9.34.2024.11.26.13.27.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Nov 2024 13:27:10 -0800 (PST)
+Date: Tue, 26 Nov 2024 16:27:00 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	qemu-ppc@nongnu.org,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Alexandre Iooss <erdnaxe@crans.org>, qemu-riscv@nongnu.org,
+	Thomas Huth <huth@tuxfamily.org>,
+	Bernhard Beschow <shentey@gmail.com>,
+	Thomas Huth <thuth@redhat.com>, Eric Farman <farman@linux.ibm.com>,
+	Bin Meng <bmeng.cn@gmail.com>, qemu-s390x@nongnu.org,
+	Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+	John Snow <jsnow@redhat.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Cleber Rosa <crosa@redhat.com>, qemu-rust@nongnu.org,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Ani Sinha <anisinha@redhat.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH 39/39] docs: explicitly permit a "commonly known
+ identity" with SoB
+Message-ID: <20241126162651-mutt-send-email-mst@kernel.org>
+References: <20241121165806.476008-1-alex.bennee@linaro.org>
+ <20241121165806.476008-40-alex.bennee@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/12] docs/system/arm/virt: document missing properties
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- alex.bennee@linaro.org, Steven Lee <steven_lee@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Richard Henderson <richard.henderson@linaro.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Joel Stanley <joel@jms.id.au>, Alistair Francis <alistair@alistair23.me>
-References: <20241122225049.1617774-1-pierrick.bouvier@linaro.org>
- <20241122225049.1617774-12-pierrick.bouvier@linaro.org>
- <CAFEAcA8BhxbGH7xD8rpwRq2yG-FCef2yiNc6DWVmPgTFXEbLKA@mail.gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <CAFEAcA8BhxbGH7xD8rpwRq2yG-FCef2yiNc6DWVmPgTFXEbLKA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: LJuCU1TQ7KUN
+In-Reply-To: <20241121165806.476008-40-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: ARH7lvOYyhDg48CeR8lpg8iLuvqAKy-SPuSFjKU5xoY_1732656433
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-TUID: P5L3y2/I9RIp
 
-On 11/25/24 09:02, Peter Maydell wrote:
-> On Fri, 22 Nov 2024 at 22:52, Pierrick Bouvier
-> <pierrick.bouvier@linaro.org> wrote:
->>
->> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>   docs/bypass-iommu.txt    |  2 ++
->>   docs/system/arm/virt.rst | 15 +++++++++++++++
->>   2 files changed, 17 insertions(+)
->>
->> diff --git a/docs/bypass-iommu.txt b/docs/bypass-iommu.txt
->> index e6677bddd32..62818e44ed9 100644
->> --- a/docs/bypass-iommu.txt
->> +++ b/docs/bypass-iommu.txt
->> @@ -1,3 +1,5 @@
->> +.. _bypass_iommu:
->> +
+On Thu, Nov 21, 2024 at 04:58:06PM +0000, Alex Bennée wrote:
+> From: Daniel P. Berrangé <berrange@redhat.com>
 > 
-> This is a .txt file -- adding rST markup to it won't do anything :-)
+> The docs for submitting a patch describe using your "Real Name" with
+> the Signed-off-by line. Although somewhat ambiguous, this has often
+> been interpreted to mean someone's legal name.
 > 
-> (It's one of the remaining legacy .txt files that we haven't
-> yet converted to .rst and moved to the right place in the
-> documentation. The .txt files in the /docs/ directory are
-> mostly the awkward ones to convert because they are a mishmash
-> of internal info about the implementation and stuff that is user
-> facing, that needs to be pulled apart by somebody with some
-> familiarity with the feature and moved into the right places,
-> or in some cases simply deleted as unnecessary.)
+> In recent times, there's been a general push back[1] against the notion
+> that use of Signed-off-by in a project automatically requires / implies
+> the use of legal ("real") names and greater awareness of the downsides.
 > 
-
-Oops.
-I was very unlucky because it's the only place where I did the mistake 
-to use an anonymous link >`_, instead of ref link, so I missed it.
-Adding too many rst links is bad for your (mental) health :)
-
-I'll update the bypass_iommu link to refer to the file (upstream) instead.
-
->>   BYPASS IOMMU PROPERTY
->>   =====================
->>
->> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
->> index 11ceb898264..d3d21499ff5 100644
->> --- a/docs/system/arm/virt.rst
->> +++ b/docs/system/arm/virt.rst
->> @@ -169,10 +169,17 @@ iommu
->>     ``smmuv3``
->>       Create an SMMUv3
->>
->> +default-bus-bypass-iommu
->> +  Set ``on``/``off`` to enable/disable `bypass_iommu <bypass_iommu>`_ for
->> +  default root bus.
->> +
->>   ras
->>     Set ``on``/``off`` to enable/disable reporting host memory errors to a guest
->>     using ACPI and guest external abort exceptions. The default is off.
->>
->> +acpi
->> +  Set ``on``/``off``/``auto`` to enable/disable ACPI.
->> +
->>   dtb-randomness
->>     Set ``on``/``off`` to pass random seeds via the guest DTB
->>     rng-seed and kaslr-seed nodes (in both "/chosen" and
->> @@ -186,6 +193,14 @@ dtb-randomness
->>   dtb-kaslr-seed
->>     A deprecated synonym for dtb-randomness.
->>
->> +x-oem-id
->> +  Set string (up to 6 bytes) to override the default value of field OEMID in ACPI
->> +  table header.
->> +
->> +x-oem-table-id
->> +  Set string (up to 8 bytes) to override the default value of field OEM Table ID
->> +  in ACPI table header.
+> Full discussion of the problems of such policies is beyond the scope of
+> this commit message, but at a high level they are liable to marginalize,
+> disadvantage, and potentially result in harm, to contributors.
 > 
-> Do we have a policy about whether we should explicitly note that
-> x- options are not ABI-stable when we document them?
->
+> TL;DR: there are compelling reasons for a person to choose distinct
+> identities in different contexts & a decision to override that choice
+> should not be taken lightly.
+> 
+> A number of key projects have responded to the issues raised by making
+> it clear that a contributor is free to determine the identity used in
+> SoB lines:
+> 
+>  * Linux has clarified[2] that they merely expect use of the
+>    contributor's "known identity", removing the previous explicit
+>    rejection of pseudonyms.
+> 
+>  * CNCF has clarified[3] that the real name is simply the identity
+>    the contributor chooses to use in the context of the community
+>    and does not have to be a legal name, nor birth name, nor appear
+>    on any government ID.
+> 
+> Since we have no intention of ever routinely checking any form of ID
+> documents for contributors[4], realistically we have no way of knowing
+> anything about the name they are using, except through chance, or
+> through the contributor volunteering the information. IOW, we almost
+> certainly already have people using pseudonyms for contributions.
+> 
+> This proposes to accept that reality and eliminate unnecessary friction,
+> by following Linux & the CNCF in merely asking that a contributors'
+> commonly known identity, of their choosing, be used with the SoB line.
+> 
+> [1] Raised in many contexts at many times, but a decent overall summary
+>     can be read at https://drewdevault.com/2023/10/31/On-real-names.html
+> [2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4563201f33a022fc0353033d9dfeb1606a88330
+> [3] https://github.com/cncf/foundation/blob/659fd32c86dc/dco-guidelines.md
+> [4] Excluding the rare GPG key signing parties for regular maintainers
+> 
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Acked-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+> Acked-by: Richard Henderson <richard.henderson@linaro.org>
+> Message-Id: <20241021190939.1482466-1-berrange@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-I noticed that x-rme was documented, so took it as an implicit yes.
 
- From the commit that introduce them [1], it seems to be more a 
-workaround than proper experimental options, which is a bit debatable to 
-be honest.
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 
-If you prefer to not include x-oem-* options, let me know.
-
-[1] 
-https://gitlab.com/qemu-project/qemu/-/commit/90a66f48471975fd46f1caab1574679f0a0ef74b
-
-> thanks
-> -- PMM
+> ---
+>  docs/devel/submitting-a-patch.rst | 7 ++++++-
+>  .gitlab-ci.d/check-dco.py         | 5 ++++-
+>  2 files changed, 10 insertions(+), 2 deletions(-)
+> 
+> diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
+> index 83e9092b8c..10b062eec2 100644
+> --- a/docs/devel/submitting-a-patch.rst
+> +++ b/docs/devel/submitting-a-patch.rst
+> @@ -18,7 +18,7 @@ one-shot fix, the bare minimum we ask is that:
+>  
+>     * - Check
+>       - Reason
+> -   * - Patches contain Signed-off-by: Real Name <author@email>
+> +   * - Patches contain Signed-off-by: Your Name <author@email>
+>       - States you are legally able to contribute the code. See :ref:`patch_emails_must_include_a_signed_off_by_line`
+>     * - Sent as patch emails to ``qemu-devel@nongnu.org``
+>       - The project uses an email list based workflow. See :ref:`submitting_your_patches`
+> @@ -335,6 +335,11 @@ include a "From:" line in the body of the email (different from your
+>  envelope From:) that will give credit to the correct author; but again,
+>  that author's Signed-off-by: line is mandatory, with the same spelling.
+>  
+> +The name used with "Signed-off-by" does not need to be your legal name,
+> +nor birth name, nor appear on any government ID. It is the identity you
+> +choose to be known by in the community, but should not be anonymous,
+> +nor misrepresent whom you are.
+> +
+>  There are various tooling options for automatically adding these tags
+>  include using ``git commit -s`` or ``git format-patch -s``. For more
+>  information see `SubmittingPatches 1.12
+> diff --git a/.gitlab-ci.d/check-dco.py b/.gitlab-ci.d/check-dco.py
+> index d221b16bd5..70dec7d6ee 100755
+> --- a/.gitlab-ci.d/check-dco.py
+> +++ b/.gitlab-ci.d/check-dco.py
+> @@ -78,7 +78,10 @@
+>  
+>  To indicate acceptance of the DCO every commit must have a tag
+>  
+> -  Signed-off-by: REAL NAME <EMAIL>
+> +  Signed-off-by: YOUR NAME <EMAIL>
+> +
+> +where "YOUR NAME" is your commonly known identity in the context
+> +of the community.
+>  
+>  This can be achieved by passing the "-s" flag to the "git commit" command.
+>  
+> -- 
+> 2.39.5

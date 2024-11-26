@@ -1,511 +1,461 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1937532njc;
-        Tue, 26 Nov 2024 03:27:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX18kNaDrB3Q0HibrX6+N88Xk9JMhmw2OcEYU5lQaAEJM1YPdzE88do1R/v5hwSKFWpPky7gCXLfNwM3A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFhBJLPDRLuu8D57iqfBCDQTBC2Y2RngcyTdrTZcuAYJ9iXhoUJSlkmH8CIMv8Knomcgs98
-X-Received: by 2002:a05:622a:2309:b0:466:98e8:4b19 with SMTP id d75a77b69052e-46698e85005mr81214731cf.36.1732620454428;
-        Tue, 26 Nov 2024 03:27:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732620454; cv=none;
+Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp12293njb;
+        Tue, 26 Nov 2024 04:29:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU+vMvOn2LADuD1OFi2m2L4s/HFvTLHPuT1CRvMnA9G8Q7UZHLCNynEpk57/qagLyVSvs+UGwXbibLtAQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHnpwFyGUc+YNNz9EUxiWDGMvdYLcScO7BOyGDaUpvskTcRRulswGPrXMe5enqzjZygWO0V
+X-Received: by 2002:a05:6102:3713:b0:4af:3f53:1a17 with SMTP id ada2fe7eead31-4af3f531b78mr697958137.4.1732624190609;
+        Tue, 26 Nov 2024 04:29:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732624190; cv=none;
         d=google.com; s=arc-20240605;
-        b=TgLLEaqlHoffJ5gCbiictI29g11XxLodQWQHJQzjIjpXxIXEc2MNUc/5McGWBYqxUZ
-         FF7WycKOIBsSz05BGtCYjmbo8WInyO40CuTvJTohgOY0cwOVomhKJIJIHLKJOwdS7OQf
-         ErDYEmsigNwJCc1kXN8mzh0M8mAljYXTkWpmXAe4M+RkAsDyQ+jeTB3Sje+AsQA9eWqZ
-         5XnIx7Ejq8wKGMtgCaSTp5jhdFp1tX0Oc4RQM/u3AEQHNm96Vu/WzoFjX9QEZwu4E2l3
-         QkvrjTMYXk5mYI1aaCtHHN5iZZon7460cvW8RyLXeRGCmPW15snAnbFcyzBNWAptkC41
-         M+6A==
+        b=KLrYds5/v31ZR5nr/p8e3lKCHGPwYA9uDuH3RMT2E2oOlRQLegS6B/1fBt9d/PS696
+         iV3ozj6D2ztwe1xvEdJa0CWFZ6tpbHxr3eJgIZWr/y0MfDF6fXfyitMkxx9x4iT8vZFQ
+         sKu6iMXA9hfF7/a8LJ+5l+MZzx4SukGqPuyFIKG/af2Reyeu32icPs+BLOrU/e6RK0S+
+         5hjuNQHcZ2uPeqTsV/r+twQd3ydBcgenAngOwbMqOotL9uCCEj7TNu6GFKUifpiJCeeH
+         +sxWLjlH7lPy8cX2l3Z3Q6l3BZM+rYhDyB2C9QAz/NqWrXKuidQyMQoohI9vxNnN8Kr5
+         rAew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=RnoyXVdD8DdnXViSwr+RJ/lWQxJ2OgIe+SEcc7eHt/g=;
-        fh=siS/4HMv/4Bjpv+J3MqwgZ5TPB6jtxhL8giIGJt6+cQ=;
-        b=IAdsInS6LUtmkUlp18sPxP+I54O8vJcmfRohnXheX0mtxMHpEYE0O7sPSypiPAFj2G
-         2toTCzLQ0JYka2rpwUIylK5lfIFqsZwPCma00KtHpcPp0mb1oI2o2QlQXcUKdmqt0NUj
-         YUrVDnVaGq9hMIQUfgikekKEC0duo5mB4nzBI7a2fwCbJSHZoTjGvpmufTBJw3XcqHyL
-         MxVkqDhwHB2yEXca3HhrNQ5jt8JRlI7a8B6yKsczQ5TtSJpCPB3Wv5UVqK+P+ZJwtdny
-         WIhnGT4Hc6pV9SzGycCKKYQZ/eYXIvenrhRMYuGbxs5W75tDFforaPwXHEuva2yG7cyy
-         aD5w==;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=/f7migpoAjI+6uWpyiOvqWxuYbOQzorRP1rW3RqEoZo=;
+        fh=l/QZi3MdFBVBlVPSuwmYza2FrphFww3bzktx8yeznjw=;
+        b=dT9dObLI16WVIMShiyvhKOCZ03vctESxb5R9AfpiNWjMG94hchEJLir+c/eWuO9FKp
+         BxViPpSYKW4tUyRnkYKuUdlazzwNf0Uf3wjLr9kobf39omxflW0ywBKMkyix0YgoSe3k
+         c/ZNU17xkvpiKOwN76rnWQh1s05vcIMjl21DNLL8qDXcbJ+04Y2IzpwtJrO4cfsEx6PN
+         Wc9x7rr4AmIOynQMvISPfvf2fUU7GktRKslYxYYbFZjP3TGQrXAz5r7RHpE4pEMY8VXp
+         4uLRlda2Mqo0jOKXsvvfnefqhV265jFPknIjIcHkAVEyeinpvRb8xTbEbJbpum3wnqq3
+         Bcfw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jrWUtcKr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4668c7be0f3si56513961cf.383.2024.11.26.03.27.34
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eZzfuRo6;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id a1e0cc1a2514c-85b4e9125dbsi650198241.123.2024.11.26.04.29.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Nov 2024 03:27:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 26 Nov 2024 04:29:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jrWUtcKr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tFtgV-0006g4-V7; Tue, 26 Nov 2024 06:24:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tFtfL-00047B-OI
- for qemu-devel@nongnu.org; Tue, 26 Nov 2024 06:23:36 -0500
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tFtfG-0002sa-3n
- for qemu-devel@nongnu.org; Tue, 26 Nov 2024 06:23:35 -0500
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-432d866f70fso50748995e9.2
- for <qemu-devel@nongnu.org>; Tue, 26 Nov 2024 03:23:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1732620207; x=1733225007; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=RnoyXVdD8DdnXViSwr+RJ/lWQxJ2OgIe+SEcc7eHt/g=;
- b=jrWUtcKrnOGHzzC8zLhDSafXS9MMzFnvZfLpz/MlsRTWzJl6mNicR8lVmdFHEjwq7e
- uOMhNSbAZdMNvsKhztPx+f7WSoBZvljYQwkgP1IGzmraeLj0mFF4dVt26iAsGckwz4Gk
- XOzoCxdKJuuSDU9McEorzMbueXaTjhYbqb2IQCl+A44/6BD5bTqlKd8K8m6hN/ezYluW
- WZUqOnNsFLYqd7cXQaBUzjnfu9ayK63BLiW57CfpMYqQH2Or4670FgnyIIOc3YLrKysU
- W/1j3Xat5M3doUlVDJilmJPI2dJMuJ0K3Q7HjCtOexQtV5XPsbzBPCHH4AA0CPqfVPAd
- Rldw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1732620207; x=1733225007;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=RnoyXVdD8DdnXViSwr+RJ/lWQxJ2OgIe+SEcc7eHt/g=;
- b=Q7WlusNrzOO1YX5VgM7J4jY871WAjU0DRCfIgWMEMF9I9AXIpLNhtt/qIL2VSHHayk
- s3+D2IbGPn3MSJgZII/3vSwNPx1uprMAGxwgfLmLTm9IbwMgK0gT+lRpMZZxM++swWel
- Rsg20YI2vgCd291/t2pXC3tG4iqUu7AgM669qh1ROCTreAtHliOoQSNUBwdCVBQ2ux0p
- Aq95FrwvBcSFD8urtrjJayoNAHs3QRY5xeraixDA+VU6vCrW8ZbEHLG7N26untFRe/0i
- oF6VWQT2LDwEaIB8FdV2v35/qAgfJXTe0T6jLb8GEeviCtDtEdLbuK3WNELnT9ommNGv
- 7MoA==
-X-Gm-Message-State: AOJu0YxXppUpQCcGVTZZ2wPcIFpi3K3H+zH5E6bSG1QXaSJsdPfEbJP0
- N8Mhmj2B9V43xxvJu/9WXs5VMa2ek2A/kbmicWeWGjw6iBWkupSHHjzUadsYkSH2IWyTreI9mnw
- h
-X-Gm-Gg: ASbGncvWHaf45T6LSG79u939cPe75B7eIl6MpXTBYk26rX7jPha0ef3xzNvfm+xM7jT
- +ylrkL2jbXOPbIMTMJwbM6osqKjmEc4KdzhpLQHekZkSL0yTfOe2CFSaDrRo+8POU+kKCBv56YB
- 1NNIGDaIo+Kftn5Pf20zsPdNmzVL+tP4YpCv2hLpwDnzsHXKUFiCxBcqVzBP3dn2D8V5XX0rqhG
- rQZ5Yo+k/NgqCVs7VhJ10nL2i+jnMKVZS0I/Bf2YmZ/4dU3e6jHJsqMJqqVF2b7GYLX0tmC
-X-Received: by 2002:a05:600c:6a06:b0:434:9fb5:fe04 with SMTP id
- 5b1f17b1804b1-4349fb5ff09mr50911695e9.28.1732620207379; 
- Tue, 26 Nov 2024 03:23:27 -0800 (PST)
-Received: from localhost.localdomain ([176.176.143.205])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-433b46430f1sm225022165e9.43.2024.11.26.03.23.20
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 26 Nov 2024 03:23:26 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, Thomas Huth <thuth@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-riscv@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.0 v2 08/13] hw/pci: Propagate bar_at_addr_0_refused to
- pci_register_root_bus()
-Date: Tue, 26 Nov 2024 12:22:07 +0100
-Message-ID: <20241126112212.64524-9-philmd@linaro.org>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241126112212.64524-1-philmd@linaro.org>
-References: <20241126112212.64524-1-philmd@linaro.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eZzfuRo6;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1732624190;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
+	bh=/f7migpoAjI+6uWpyiOvqWxuYbOQzorRP1rW3RqEoZo=;
+	b=eZzfuRo68U8w/Q9fHTAKfl5pJAB3ctGxHhk6Pj1XaqFdsw+PuDHiGfsDsqmSypTsz1tRun
+	VOHU0jxJvB8m877RjUoa+3iAsjm943zriodUMzitajiUp8eUHq1709FqDaIEu61M826Vg+
+	vRLvhyi1MLY8S5c6dUFWhi/T1w0pMu4=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-642-oi14gRdgNcinSlOXBLsvhA-1; Tue,
+ 26 Nov 2024 07:29:46 -0500
+X-MC-Unique: oi14gRdgNcinSlOXBLsvhA-1
+X-Mimecast-MFC-AGG-ID: oi14gRdgNcinSlOXBLsvhA
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 081151955E94;
+	Tue, 26 Nov 2024 12:29:44 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.147])
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 04A4519560A3;
+	Tue, 26 Nov 2024 12:29:38 +0000 (UTC)
+Date: Tue, 26 Nov 2024 12:29:35 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+	philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	alex.bennee@linaro.org, Marcelo Tosatti <mtosatti@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>
+Subject: Re: [PATCH v3 01/26] kvm: Merge kvm_check_extension() and
+ kvm_vm_check_extension()
+Message-ID: <Z0W_LzcGOfoBveKA@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20241125195626.856992-2-jean-philippe@linaro.org>
+ <20241125195626.856992-3-jean-philippe@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WkgFQp9MFfCg
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20241125195626.856992-3-jean-philippe@linaro.org>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: zagIFeJvbs4W
 
-Have pci_register_root_bus() callers set the
-'bar_at_addr_0_refused' argument. No logical change.
+On Mon, Nov 25, 2024 at 07:56:00PM +0000, Jean-Philippe Brucker wrote:
+> The KVM_CHECK_EXTENSION ioctl can be issued either on the global fd
+> (/dev/kvm), or on the VM fd obtained with KVM_CREATE_VM. For most
+> extensions, KVM returns the same value with either method, but for some
+> of them it can refine the returned value depending on the VM type. The
+> KVM documentation [1] advises to use the VM fd:
+> 
+>   Based on their initialization different VMs may have different
+>   capabilities. It is thus encouraged to use the vm ioctl to query for
+>   capabilities (available with KVM_CAP_CHECK_EXTENSION_VM on the vm fd)
+> 
+> Ongoing work on Arm confidential VMs confirms this, as some capabilities
+> become unavailable to confidential VMs, requiring changes in QEMU to use
+> kvm_vm_check_extension() instead of kvm_check_extension() [2]. Rather
+> than changing each check one by one, change kvm_check_extension() to
+> always issue the ioctl on the VM fd when available, and remove
+> kvm_vm_check_extension().
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/pci/pci.h      | 2 +-
- hw/alpha/typhoon.c        | 2 +-
- hw/pci-host/articia.c     | 3 ++-
- hw/pci-host/astro.c       | 3 ++-
- hw/pci-host/bonito.c      | 2 +-
- hw/pci-host/designware.c  | 2 +-
- hw/pci-host/dino.c        | 2 +-
- hw/pci-host/gpex.c        | 3 ++-
- hw/pci-host/grackle.c     | 2 +-
- hw/pci-host/mv64361.c     | 2 +-
- hw/pci-host/pnv_phb3.c    | 2 +-
- hw/pci-host/pnv_phb4.c    | 2 +-
- hw/pci-host/ppc440_pcix.c | 2 +-
- hw/pci-host/ppc4xx_pci.c  | 2 +-
- hw/pci-host/ppce500.c     | 3 ++-
- hw/pci-host/sabre.c       | 2 +-
- hw/pci-host/sh_pci.c      | 2 +-
- hw/pci-host/uninorth.c    | 8 ++++----
- hw/pci-host/xilinx-pcie.c | 2 +-
- hw/pci/pci.c              | 5 +++--
- hw/ppc/ppc440_uc.c        | 2 +-
- hw/ppc/spapr_pci.c        | 2 +-
- hw/s390x/s390-pci-bus.c   | 2 +-
- 23 files changed, 32 insertions(+), 27 deletions(-)
+The downside I see of this approach is that it can potentially
+mask mistakes / unexpected behaviour.
 
-diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-index f5454db0eb5..216b1cbc13a 100644
---- a/include/hw/pci/pci.h
-+++ b/include/hw/pci/pci.h
-@@ -310,7 +310,7 @@ PCIBus *pci_register_root_bus(DeviceState *parent, const char *name,
-                               void *irq_opaque,
-                               MemoryRegion *mem, MemoryRegion *io,
-                               uint8_t devfn_min, int nirq,
--                              const char *typename);
-+                              const char *typename, bool bar_at_addr_0_refused);
- void pci_unregister_root_bus(PCIBus *bus);
- void pci_bus_set_route_irq_fn(PCIBus *, pci_route_irq_fn);
- PCIINTxRoute pci_device_route_intx_to_irq(PCIDevice *dev, int pin);
-diff --git a/hw/alpha/typhoon.c b/hw/alpha/typhoon.c
-index e8711ae16a3..37f5e07e726 100644
---- a/hw/alpha/typhoon.c
-+++ b/hw/alpha/typhoon.c
-@@ -891,7 +891,7 @@ PCIBus *typhoon_init(MemoryRegion *ram, qemu_irq *p_isa_irq,
-     b = pci_register_root_bus(dev, "pci",
-                               typhoon_set_irq, sys_map_irq, s,
-                               &s->pchip.reg_mem, &s->pchip.reg_io,
--                              devfn_min, 64, TYPE_PCI_BUS);
-+                              devfn_min, 64, TYPE_PCI_BUS, true);
-     phb->bus = b;
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
- 
-diff --git a/hw/pci-host/articia.c b/hw/pci-host/articia.c
-index f3fcc49f812..847b4c54e2a 100644
---- a/hw/pci-host/articia.c
-+++ b/hw/pci-host/articia.c
-@@ -184,7 +184,8 @@ static void articia_realize(DeviceState *dev, Error **errp)
-     /* devfn_min is 8 that matches first PCI slot in AmigaOne */
-     h->bus = pci_register_root_bus(dev, NULL, articia_pcihost_set_irq,
-                                    amigaone_pcihost_bus0_map_irq, dev, &s->mem,
--                                   &s->io, PCI_DEVFN(8, 0), 4, TYPE_PCI_BUS);
-+                                   &s->io, PCI_DEVFN(8, 0), 4, TYPE_PCI_BUS,
-+                                   true);
-     pdev = pci_create_simple_multifunction(h->bus, PCI_DEVFN(0, 0),
-                                            TYPE_ARTICIA_PCI_HOST);
-     ARTICIA_PCI_HOST(pdev)->as = s;
-diff --git a/hw/pci-host/astro.c b/hw/pci-host/astro.c
-index 379095b3566..1831646f9e7 100644
---- a/hw/pci-host/astro.c
-+++ b/hw/pci-host/astro.c
-@@ -454,7 +454,8 @@ static void elroy_pcihost_init(Object *obj)
-     phb->bus = pci_register_root_bus(DEVICE(s), "pci",
-                                      elroy_set_irq, elroy_pci_map_irq, s,
-                                      &s->pci_mmio, &s->pci_io,
--                                     PCI_DEVFN(0, 0), ELROY_IRQS, TYPE_PCI_BUS);
-+                                     PCI_DEVFN(0, 0), ELROY_IRQS, TYPE_PCI_BUS,
-+                                     true);
- 
-     sysbus_init_mmio(sbd, &s->this_mem);
- 
-diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-index 1516d0074dd..b2c931bacdb 100644
---- a/hw/pci-host/bonito.c
-+++ b/hw/pci-host/bonito.c
-@@ -635,7 +635,7 @@ static void bonito_host_realize(DeviceState *dev, Error **errp)
-     phb->bus = pci_register_root_bus(dev, "pci",
-                                      pci_bonito_set_irq, pci_bonito_map_irq,
-                                      dev, &bs->pci_mem, get_system_io(),
--                                     PCI_DEVFN(5, 0), 32, TYPE_PCI_BUS);
-+                                     PCI_DEVFN(5, 0), 32, TYPE_PCI_BUS, true);
- 
-     for (size_t i = 0; i < 3; i++) {
-         char *name = g_strdup_printf("pci.lomem%zu", i);
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index c3fc37b9047..eb6d995d3ed 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -700,7 +700,7 @@ static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
-                                      &s->pci.memory,
-                                      &s->pci.io,
-                                      0, 4,
--                                     TYPE_PCIE_BUS);
-+                                     TYPE_PCIE_BUS, true);
-     pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
- 
-     memory_region_init(&s->pci.address_space_root,
-diff --git a/hw/pci-host/dino.c b/hw/pci-host/dino.c
-index 283fc0dc575..8c01372e18c 100644
---- a/hw/pci-host/dino.c
-+++ b/hw/pci-host/dino.c
-@@ -473,7 +473,7 @@ static void dino_pcihost_init(Object *obj)
-     phb->bus = pci_register_root_bus(DEVICE(s), "pci",
-                                      dino_set_irq, dino_pci_map_irq, s,
-                                      &s->pci_mem, get_system_io(),
--                                     PCI_DEVFN(0, 0), 32, TYPE_PCI_BUS);
-+                                     PCI_DEVFN(0, 0), 32, TYPE_PCI_BUS, true);
- 
-     /* Set up windows into PCI bus memory.  */
-     for (i = 1; i < 31; i++) {
-diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
-index e9cf455bf52..299f4d4f840 100644
---- a/hw/pci-host/gpex.c
-+++ b/hw/pci-host/gpex.c
-@@ -135,7 +135,8 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
- 
-     pci->bus = pci_register_root_bus(dev, "pcie.0", gpex_set_irq,
-                                      pci_swizzle_map_irq_fn, s, &s->io_mmio,
--                                     &s->io_ioport, 0, 4, TYPE_PCIE_BUS);
-+                                     &s->io_ioport, 0, 4, TYPE_PCIE_BUS,
-+                                     true);
- 
-     pci_bus_set_route_irq_fn(pci->bus, gpex_route_intx_pin_to_irq);
-     qdev_realize(DEVICE(&s->gpex_root), BUS(pci->bus), &error_fatal);
-diff --git a/hw/pci-host/grackle.c b/hw/pci-host/grackle.c
-index 8e589ff2c9e..2934da19bee 100644
---- a/hw/pci-host/grackle.c
-+++ b/hw/pci-host/grackle.c
-@@ -58,7 +58,7 @@ static void grackle_realize(DeviceState *dev, Error **errp)
-                                      s,
-                                      &s->pci_mmio,
-                                      &s->pci_io,
--                                     0, 4, TYPE_PCI_BUS);
-+                                     0, 4, TYPE_PCI_BUS, true);
- 
-     pci_create_simple(phb->bus, 0, "grackle");
- }
-diff --git a/hw/pci-host/mv64361.c b/hw/pci-host/mv64361.c
-index 1036d8600d7..d61e3ecc0a7 100644
---- a/hw/pci-host/mv64361.c
-+++ b/hw/pci-host/mv64361.c
-@@ -92,7 +92,7 @@ static void mv64361_pcihost_realize(DeviceState *dev, Error **errp)
-     name = g_strdup_printf("pci.%d", s->index);
-     h->bus = pci_register_root_bus(dev, name, mv64361_pcihost_set_irq,
-                                    pci_swizzle_map_irq_fn, dev,
--                                   &s->mem, &s->io, 0, 4, TYPE_PCI_BUS);
-+                                   &s->mem, &s->io, 0, 4, TYPE_PCI_BUS, true);
-     g_free(name);
-     pci_create_simple(h->bus, 0, TYPE_MV64361_PCI_BRIDGE);
- }
-diff --git a/hw/pci-host/pnv_phb3.c b/hw/pci-host/pnv_phb3.c
-index 2a74dbe45f5..633c92c6a56 100644
---- a/hw/pci-host/pnv_phb3.c
-+++ b/hw/pci-host/pnv_phb3.c
-@@ -1009,7 +1009,7 @@ void pnv_phb3_bus_init(DeviceState *dev, PnvPHB3 *phb)
-                                      dev->id ? dev->id : NULL,
-                                      pnv_phb3_set_irq, pnv_phb3_map_irq, phb,
-                                      &phb->pci_mmio, &phb->pci_io,
--                                     0, 4, TYPE_PNV_PHB3_ROOT_BUS);
-+                                     0, 4, TYPE_PNV_PHB3_ROOT_BUS, true);
- 
-     object_property_set_int(OBJECT(pci->bus), "phb-id", phb->phb_id,
-                             &error_abort);
-diff --git a/hw/pci-host/pnv_phb4.c b/hw/pci-host/pnv_phb4.c
-index 99991008c13..a9b46af564f 100644
---- a/hw/pci-host/pnv_phb4.c
-+++ b/hw/pci-host/pnv_phb4.c
-@@ -1563,7 +1563,7 @@ void pnv_phb4_bus_init(DeviceState *dev, PnvPHB4 *phb)
-     pci->bus = pci_register_root_bus(dev, dev->id ? dev->id : NULL,
-                                      pnv_phb4_set_irq, pnv_phb4_map_irq, phb,
-                                      &phb->pci_mmio, &phb->pci_io,
--                                     0, 4, TYPE_PNV_PHB4_ROOT_BUS);
-+                                     0, 4, TYPE_PNV_PHB4_ROOT_BUS, true);
- 
-     object_property_set_int(OBJECT(pci->bus), "phb-id", phb->phb_id,
-                             &error_abort);
-diff --git a/hw/pci-host/ppc440_pcix.c b/hw/pci-host/ppc440_pcix.c
-index 07924bce28a..b0e2aa96872 100644
---- a/hw/pci-host/ppc440_pcix.c
-+++ b/hw/pci-host/ppc440_pcix.c
-@@ -498,7 +498,7 @@ static void ppc440_pcix_realize(DeviceState *dev, Error **errp)
-     memory_region_init(&s->iomem, OBJECT(dev), "pci-io", 64 * KiB);
-     h->bus = pci_register_root_bus(dev, NULL, ppc440_pcix_set_irq,
-                          ppc440_pcix_map_irq, &s->irq, &s->busmem, &s->iomem,
--                         PCI_DEVFN(1, 0), 1, TYPE_PCI_BUS);
-+                         PCI_DEVFN(1, 0), 1, TYPE_PCI_BUS, true);
- 
-     memory_region_init(&s->bm, OBJECT(s), "bm-ppc440-pcix", UINT64_MAX);
-     memory_region_add_subregion(&s->bm, 0x0, &s->busmem);
-diff --git a/hw/pci-host/ppc4xx_pci.c b/hw/pci-host/ppc4xx_pci.c
-index b6c6c8993c4..9c17e3c655e 100644
---- a/hw/pci-host/ppc4xx_pci.c
-+++ b/hw/pci-host/ppc4xx_pci.c
-@@ -329,7 +329,7 @@ static void ppc4xx_pcihost_realize(DeviceState *dev, Error **errp)
-     b = pci_register_root_bus(dev, NULL, ppc4xx_pci_set_irq,
-                               ppc4xx_pci_map_irq, s->irq, get_system_memory(),
-                               get_system_io(), 0, ARRAY_SIZE(s->irq),
--                              TYPE_PCI_BUS);
-+                              TYPE_PCI_BUS, true);
-     h->bus = b;
- 
-     pci_create_simple(b, 0, TYPE_PPC4xx_HOST_BRIDGE);
-diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
-index b70631045a0..fb659d4c707 100644
---- a/hw/pci-host/ppce500.c
-+++ b/hw/pci-host/ppce500.c
-@@ -465,7 +465,8 @@ static void e500_pcihost_realize(DeviceState *dev, Error **errp)
- 
-     b = pci_register_root_bus(dev, NULL, mpc85xx_pci_set_irq,
-                               mpc85xx_pci_map_irq, s, &s->busmem, &s->pio,
--                              PCI_DEVFN(s->first_slot, 0), 4, TYPE_PCI_BUS);
-+                              PCI_DEVFN(s->first_slot, 0), 4, TYPE_PCI_BUS,
-+                              true);
-     h->bus = b;
- 
-     /* Set up PCI view of memory */
-diff --git a/hw/pci-host/sabre.c b/hw/pci-host/sabre.c
-index 1707feb9513..06f6a15bf2d 100644
---- a/hw/pci-host/sabre.c
-+++ b/hw/pci-host/sabre.c
-@@ -381,7 +381,7 @@ static void sabre_realize(DeviceState *dev, Error **errp)
-                                      pci_sabre_set_irq, pci_sabre_map_irq, s,
-                                      &s->pci_mmio,
-                                      &s->pci_ioport,
--                                     0, 0x40, TYPE_PCI_BUS);
-+                                     0, 0x40, TYPE_PCI_BUS, true);
- 
-     pci_create_simple(phb->bus, 0, TYPE_SABRE_PCI_DEVICE);
- 
-diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
-index 4edebced5eb..8da59ad573d 100644
---- a/hw/pci-host/sh_pci.c
-+++ b/hw/pci-host/sh_pci.c
-@@ -132,7 +132,7 @@ static void sh_pcic_host_realize(DeviceState *dev, Error **errp)
-                                      get_system_memory(),
-                                      get_system_io(),
-                                      PCI_DEVFN(0, 0), PCI_NUM_PINS,
--                                     TYPE_PCI_BUS);
-+                                     TYPE_PCI_BUS, true);
-     memory_region_init_io(&s->memconfig_p4, OBJECT(s), &sh_pci_reg_ops, s,
-                           "sh_pci", 0x224);
-     memory_region_init_alias(&s->memconfig_a7, OBJECT(s), "sh_pci.2",
-diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
-index e4c1abd8715..f2d410fa4aa 100644
---- a/hw/pci-host/uninorth.c
-+++ b/hw/pci-host/uninorth.c
-@@ -124,7 +124,7 @@ static void pci_unin_main_realize(DeviceState *dev, Error **errp)
-                                    s,
-                                    &s->pci_mmio,
-                                    &s->pci_io,
--                                   PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS);
-+                                   PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS, true);
- 
-     pci_create_simple(h->bus, PCI_DEVFN(11, 0), "uni-north-pci");
- 
-@@ -174,7 +174,7 @@ static void pci_u3_agp_realize(DeviceState *dev, Error **errp)
-                                    s,
-                                    &s->pci_mmio,
-                                    &s->pci_io,
--                                   PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS);
-+                                   PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS, false);
- 
-     pci_create_simple(h->bus, PCI_DEVFN(11, 0), "u3-agp");
- }
-@@ -218,7 +218,7 @@ static void pci_unin_agp_realize(DeviceState *dev, Error **errp)
-                                    s,
-                                    &s->pci_mmio,
-                                    &s->pci_io,
--                                   PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS);
-+                                   PCI_DEVFN(11, 0), 4, TYPE_PCI_BUS, false);
- 
-     pci_create_simple(h->bus, PCI_DEVFN(11, 0), "uni-north-agp");
- }
-@@ -251,7 +251,7 @@ static void pci_unin_internal_realize(DeviceState *dev, Error **errp)
-                                    s,
-                                    &s->pci_mmio,
-                                    &s->pci_io,
--                                   PCI_DEVFN(14, 0), 4, TYPE_PCI_BUS);
-+                                   PCI_DEVFN(14, 0), 4, TYPE_PCI_BUS, false);
- 
-     pci_create_simple(h->bus, PCI_DEVFN(14, 0), "uni-north-internal-pci");
- }
-diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
-index 24f691ea829..634d24c479b 100644
---- a/hw/pci-host/xilinx-pcie.c
-+++ b/hw/pci-host/xilinx-pcie.c
-@@ -135,7 +135,7 @@ static void xilinx_pcie_host_realize(DeviceState *dev, Error **errp)
- 
-     pci->bus = pci_register_root_bus(dev, s->name, xilinx_pcie_set_irq,
-                                      pci_swizzle_map_irq_fn, s, &s->mmio,
--                                     &s->io, 0, 4, TYPE_PCIE_BUS);
-+                                     &s->io, 0, 4, TYPE_PCIE_BUS, true);
- 
-     qdev_realize(DEVICE(&s->root), BUS(pci->bus), &error_fatal);
- }
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index 5fea39e4dfa..889821f64c0 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -619,11 +619,12 @@ PCIBus *pci_register_root_bus(DeviceState *parent, const char *name,
-                               void *irq_opaque,
-                               MemoryRegion *mem, MemoryRegion *io,
-                               uint8_t devfn_min, int nirq,
--                              const char *typename)
-+                              const char *typename, bool bar_at_addr_0_refused)
- {
-     PCIBus *bus;
- 
--    bus = pci_root_bus_new(parent, name, mem, io, devfn_min, typename, true);
-+    bus = pci_root_bus_new(parent, name, mem, io, devfn_min, typename,
-+                           bar_at_addr_0_refused);
-     pci_bus_irqs(bus, set_irq, irq_opaque, nirq);
-     pci_bus_map_irqs(bus, map_irq);
-     return bus;
-diff --git a/hw/ppc/ppc440_uc.c b/hw/ppc/ppc440_uc.c
-index 1312aa2080e..c93a7744dc1 100644
---- a/hw/ppc/ppc440_uc.c
-+++ b/hw/ppc/ppc440_uc.c
-@@ -1016,7 +1016,7 @@ static void ppc460ex_pcie_realize(DeviceState *dev, Error **errp)
-     snprintf(buf, sizeof(buf), "pcie.%d", s->num);
-     pci->bus = pci_register_root_bus(DEVICE(s), buf, ppc460ex_set_irq,
-                                 pci_swizzle_map_irq_fn, s, &s->busmem,
--                                &s->iomem, 0, 4, TYPE_PCIE_BUS);
-+                                &s->iomem, 0, 4, TYPE_PCIE_BUS, true);
-     ppc460ex_pcie_register_dcrs(s);
- }
- 
-diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
-index 7e24084673f..e6e8018c1cd 100644
---- a/hw/ppc/spapr_pci.c
-+++ b/hw/ppc/spapr_pci.c
-@@ -1886,7 +1886,7 @@ static void spapr_phb_realize(DeviceState *dev, Error **errp)
-                                 pci_spapr_set_irq, pci_swizzle_map_irq_fn, sphb,
-                                 &sphb->memspace, &sphb->iospace,
-                                 PCI_DEVFN(0, 0), PCI_NUM_PINS,
--                                TYPE_PCI_BUS);
-+                                TYPE_PCI_BUS, true);
- 
-     /*
-      * Despite resembling a vanilla PCI bus in most ways, the PAPR
-diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
-index 40b2567aa70..1ca9df42c5a 100644
---- a/hw/s390x/s390-pci-bus.c
-+++ b/hw/s390x/s390-pci-bus.c
-@@ -834,7 +834,7 @@ static void s390_pcihost_realize(DeviceState *dev, Error **errp)
- 
-     b = pci_register_root_bus(dev, NULL, s390_pci_set_irq, s390_pci_map_irq,
-                               NULL, get_system_memory(), get_system_io(), 0,
--                              64, TYPE_PCI_BUS);
-+                              64, TYPE_PCI_BUS, true);
-     pci_setup_iommu(b, &s390_iommu_ops, s);
- 
-     bus = BUS(b);
+eg, consider you are in a code path where you /think/ the VM fd
+is available, but for some unexpected reason it is NOT in fact
+available. The code silently falls back to the global FD, thus
+giving a potentially incorrect extension check answer.
+
+Having separate check methods with no fallback ensures that we
+are checking exactly what we /intend/ to be checking, or will
+see an error
+
+> 
+> Fall back to the global fd when the VM check is unavailable:
+> 
+> * Ancient kernels do not support KVM_CHECK_EXTENSION on the VM fd, since
+>   it was added by commit 92b591a4c46b ("KVM: Allow KVM_CHECK_EXTENSION
+>   on the vm fd") in Linux 3.17 [3]. Support for Linux 3.16 ended in June
+>   2020, but there may still be old images around.
+> 
+> * A couple of calls must be issued before the VM fd is available, since
+>   they determine the VM type: KVM_CAP_MIPS_VZ and KVM_CAP_ARM_VM_IPA_SIZE
+> 
+> Does any user actually depend on the check being done on the global fd
+> instead of the VM fd?  I surveyed all cases where KVM presently returns
+> different values depending on the query method. Luckily QEMU already
+> calls kvm_vm_check_extension() for most of those. Only three of them are
+> ambiguous, because currently done on the global fd:
+> 
+> * KVM_CAP_MAX_VCPUS and KVM_CAP_MAX_VCPU_ID on Arm, changes value if the
+>   user requests a vGIC different from the default. But QEMU queries this
+>   before vGIC configuration, so the reported value will be the same.
+> 
+> * KVM_CAP_SW_TLB on PPC. When issued on the global fd, returns false if
+>   the kvm-hv module is loaded; when issued on the VM fd, returns false
+>   only if the VM type is HV instead of PR. If this returns false, then
+>   QEMU will fail to initialize a BOOKE206 MMU model.
+> 
+>   So this patch supposedly improves things, as it allows to run this
+>   type of vCPU even when both KVM modules are loaded.
+> 
+> * KVM_CAP_PPC_SECURE_GUEST. Similarly, doing this check on a VM fd
+>   refines the returned value, and ensures that SVM is actually
+>   supported. Since QEMU follows the check with kvm_vm_enable_cap(), this
+>   patch should only provide better error reporting.
+> 
+> [1] https://www.kernel.org/doc/html/latest/virt/kvm/api.html#kvm-check-extension
+> [2] https://lore.kernel.org/kvm/875ybi0ytc.fsf@redhat.com/
+> [3] https://github.com/torvalds/linux/commit/92b591a4c46b
+> 
+> Cc: Marcelo Tosatti <mtosatti@redhat.com>
+> Cc: Nicholas Piggin <npiggin@gmail.com>
+> Cc: Daniel Henrique Barboza <danielhb413@gmail.com>
+> Cc: qemu-ppc@nongnu.org
+> Suggested-by: Cornelia Huck <cohuck@redhat.com>
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> ---
+>  include/sysemu/kvm.h     |  2 --
+>  include/sysemu/kvm_int.h |  1 +
+>  accel/kvm/kvm-all.c      | 41 +++++++++++++++++++---------------------
+>  target/arm/kvm.c         |  2 +-
+>  target/i386/kvm/kvm.c    |  6 +++---
+>  target/ppc/kvm.c         | 36 +++++++++++++++++------------------
+>  6 files changed, 42 insertions(+), 46 deletions(-)
+> 
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index c3a60b2890..63c96d0096 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -437,8 +437,6 @@ bool kvm_arch_stop_on_emulation_error(CPUState *cpu);
+>  
+>  int kvm_check_extension(KVMState *s, unsigned int extension);
+>  
+> -int kvm_vm_check_extension(KVMState *s, unsigned int extension);
+> -
+>  #define kvm_vm_enable_cap(s, capability, cap_flags, ...)             \
+>      ({                                                               \
+>          struct kvm_enable_cap cap = {                                \
+> diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
+> index a1e72763da..cb38085d54 100644
+> --- a/include/sysemu/kvm_int.h
+> +++ b/include/sysemu/kvm_int.h
+> @@ -166,6 +166,7 @@ struct KVMState
+>      uint16_t xen_gnttab_max_frames;
+>      uint16_t xen_evtchn_max_pirq;
+>      char *device;
+> +    bool check_extension_vm;
+>  };
+>  
+>  void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 801cff16a5..7ea016d598 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -1238,7 +1238,11 @@ int kvm_check_extension(KVMState *s, unsigned int extension)
+>  {
+>      int ret;
+>  
+> -    ret = kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+> +    if (!s->check_extension_vm) {
+> +        ret = kvm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+> +    } else {
+> +        ret = kvm_vm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+> +    }
+>      if (ret < 0) {
+>          ret = 0;
+>      }
+> @@ -1246,19 +1250,6 @@ int kvm_check_extension(KVMState *s, unsigned int extension)
+>      return ret;
+>  }
+>  
+> -int kvm_vm_check_extension(KVMState *s, unsigned int extension)
+> -{
+> -    int ret;
+> -
+> -    ret = kvm_vm_ioctl(s, KVM_CHECK_EXTENSION, extension);
+> -    if (ret < 0) {
+> -        /* VM wide version not implemented, use global one instead */
+> -        ret = kvm_check_extension(s, extension);
+> -    }
+> -
+> -    return ret;
+> -}
+> -
+>  /*
+>   * We track the poisoned pages to be able to:
+>   * - replace them on VM reset
+> @@ -1622,10 +1613,10 @@ static int kvm_dirty_ring_init(KVMState *s)
+>       * Read the max supported pages. Fall back to dirty logging mode
+>       * if the dirty ring isn't supported.
+>       */
+> -    ret = kvm_vm_check_extension(s, capability);
+> +    ret = kvm_check_extension(s, capability);
+>      if (ret <= 0) {
+>          capability = KVM_CAP_DIRTY_LOG_RING_ACQ_REL;
+> -        ret = kvm_vm_check_extension(s, capability);
+> +        ret = kvm_check_extension(s, capability);
+>      }
+>  
+>      if (ret <= 0) {
+> @@ -1648,7 +1639,7 @@ static int kvm_dirty_ring_init(KVMState *s)
+>      }
+>  
+>      /* Enable the backup bitmap if it is supported */
+> -    ret = kvm_vm_check_extension(s, KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP);
+> +    ret = kvm_check_extension(s, KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP);
+>      if (ret > 0) {
+>          ret = kvm_vm_enable_cap(s, KVM_CAP_DIRTY_LOG_RING_WITH_BITMAP, 0);
+>          if (ret) {
+> @@ -2404,7 +2395,7 @@ static void kvm_irqchip_create(KVMState *s)
+>   */
+>  static int kvm_recommended_vcpus(KVMState *s)
+>  {
+> -    int ret = kvm_vm_check_extension(s, KVM_CAP_NR_VCPUS);
+> +    int ret = kvm_check_extension(s, KVM_CAP_NR_VCPUS);
+>      return (ret) ? ret : 4;
+>  }
+>  
+> @@ -2625,7 +2616,12 @@ static int kvm_init(MachineState *ms)
+>  
+>      s->vmfd = ret;
+>  
+> -    s->nr_as = kvm_vm_check_extension(s, KVM_CAP_MULTI_ADDRESS_SPACE);
+> +    ret = kvm_vm_ioctl(s, KVM_CHECK_EXTENSION, KVM_CAP_CHECK_EXTENSION_VM);
+> +    if (ret > 0) {
+> +        s->check_extension_vm = true;
+> +    }
+> +
+> +    s->nr_as = kvm_check_extension(s, KVM_CAP_MULTI_ADDRESS_SPACE);
+>      if (s->nr_as <= 1) {
+>          s->nr_as = 1;
+>      }
+> @@ -2683,7 +2679,7 @@ static int kvm_init(MachineState *ms)
+>      }
+>  
+>      kvm_readonly_mem_allowed =
+> -        (kvm_vm_check_extension(s, KVM_CAP_READONLY_MEM) > 0);
+> +        (kvm_check_extension(s, KVM_CAP_READONLY_MEM) > 0);
+>  
+>      kvm_resamplefds_allowed =
+>          (kvm_check_extension(s, KVM_CAP_IRQFD_RESAMPLE) > 0);
+> @@ -2717,7 +2713,8 @@ static int kvm_init(MachineState *ms)
+>          goto err;
+>      }
+>  
+> -    kvm_supported_memory_attributes = kvm_vm_check_extension(s, KVM_CAP_MEMORY_ATTRIBUTES);
+> +    kvm_supported_memory_attributes =
+> +        kvm_check_extension(s, KVM_CAP_MEMORY_ATTRIBUTES);
+>      kvm_guest_memfd_supported =
+>          kvm_check_extension(s, KVM_CAP_GUEST_MEMFD) &&
+>          kvm_check_extension(s, KVM_CAP_USER_MEMORY2) &&
+> @@ -2743,7 +2740,7 @@ static int kvm_init(MachineState *ms)
+>      memory_listener_register(&kvm_io_listener,
+>                               &address_space_io);
+>  
+> -    s->sync_mmu = !!kvm_vm_check_extension(kvm_state, KVM_CAP_SYNC_MMU);
+> +    s->sync_mmu = !!kvm_check_extension(kvm_state, KVM_CAP_SYNC_MMU);
+>      if (!s->sync_mmu) {
+>          ret = ram_block_discard_disable(true);
+>          assert(!ret);
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 7b6812c0de..8bdf4abeb6 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -601,7 +601,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>      if (s->kvm_eager_split_size) {
+>          uint32_t sizes;
+>  
+> -        sizes = kvm_vm_check_extension(s, KVM_CAP_ARM_SUPPORTED_BLOCK_SIZES);
+> +        sizes = kvm_check_extension(s, KVM_CAP_ARM_SUPPORTED_BLOCK_SIZES);
+>          if (!sizes) {
+>              s->kvm_eager_split_size = 0;
+>              warn_report("Eager Page Split support not available");
+> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+> index 8e17942c3b..2f35e7468c 100644
+> --- a/target/i386/kvm/kvm.c
+> +++ b/target/i386/kvm/kvm.c
+> @@ -244,7 +244,7 @@ bool kvm_enable_hypercall(uint64_t enable_mask)
+>  
+>  bool kvm_has_smm(void)
+>  {
+> -    return kvm_vm_check_extension(kvm_state, KVM_CAP_X86_SMM);
+> +    return kvm_check_extension(kvm_state, KVM_CAP_X86_SMM);
+>  }
+>  
+>  bool kvm_has_adjust_clock_stable(void)
+> @@ -3320,7 +3320,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>          }
+>      }
+>  
+> -    if (kvm_vm_check_extension(s, KVM_CAP_X86_USER_SPACE_MSR)) {
+> +    if (kvm_check_extension(s, KVM_CAP_X86_USER_SPACE_MSR)) {
+>          ret = kvm_vm_enable_userspace_msr(s);
+>          if (ret < 0) {
+>              return ret;
+> @@ -5936,7 +5936,7 @@ static bool __kvm_enable_sgx_provisioning(KVMState *s)
+>  {
+>      int fd, ret;
+>  
+> -    if (!kvm_vm_check_extension(s, KVM_CAP_SGX_ATTRIBUTE)) {
+> +    if (!kvm_check_extension(s, KVM_CAP_SGX_ATTRIBUTE)) {
+>          return false;
+>      }
+>  
+> diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+> index 3efc28f18b..8bcb0368ce 100644
+> --- a/target/ppc/kvm.c
+> +++ b/target/ppc/kvm.c
+> @@ -110,7 +110,7 @@ static uint32_t debug_inst_opcode;
+>  static bool kvmppc_is_pr(KVMState *ks)
+>  {
+>      /* Assume KVM-PR if the GET_PVINFO capability is available */
+> -    return kvm_vm_check_extension(ks, KVM_CAP_PPC_GET_PVINFO) != 0;
+> +    return kvm_check_extension(ks, KVM_CAP_PPC_GET_PVINFO) != 0;
+>  }
+>  
+>  static int kvm_ppc_register_host_cpu_type(void);
+> @@ -127,11 +127,11 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>      cap_interrupt_unset = kvm_check_extension(s, KVM_CAP_PPC_UNSET_IRQ);
+>      cap_segstate = kvm_check_extension(s, KVM_CAP_PPC_SEGSTATE);
+>      cap_booke_sregs = kvm_check_extension(s, KVM_CAP_PPC_BOOKE_SREGS);
+> -    cap_ppc_smt_possible = kvm_vm_check_extension(s, KVM_CAP_PPC_SMT_POSSIBLE);
+> +    cap_ppc_smt_possible = kvm_check_extension(s, KVM_CAP_PPC_SMT_POSSIBLE);
+>      cap_spapr_tce = kvm_check_extension(s, KVM_CAP_SPAPR_TCE);
+>      cap_spapr_tce_64 = kvm_check_extension(s, KVM_CAP_SPAPR_TCE_64);
+>      cap_spapr_multitce = kvm_check_extension(s, KVM_CAP_SPAPR_MULTITCE);
+> -    cap_spapr_vfio = kvm_vm_check_extension(s, KVM_CAP_SPAPR_TCE_VFIO);
+> +    cap_spapr_vfio = kvm_check_extension(s, KVM_CAP_SPAPR_TCE_VFIO);
+>      cap_one_reg = kvm_check_extension(s, KVM_CAP_ONE_REG);
+>      cap_hior = kvm_check_extension(s, KVM_CAP_PPC_HIOR);
+>      cap_epr = kvm_check_extension(s, KVM_CAP_PPC_EPR);
+> @@ -140,23 +140,23 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>       * Note: we don't set cap_papr here, because this capability is
+>       * only activated after this by kvmppc_set_papr()
+>       */
+> -    cap_htab_fd = kvm_vm_check_extension(s, KVM_CAP_PPC_HTAB_FD);
+> +    cap_htab_fd = kvm_check_extension(s, KVM_CAP_PPC_HTAB_FD);
+>      cap_fixup_hcalls = kvm_check_extension(s, KVM_CAP_PPC_FIXUP_HCALL);
+> -    cap_ppc_smt = kvm_vm_check_extension(s, KVM_CAP_PPC_SMT);
+> -    cap_htm = kvm_vm_check_extension(s, KVM_CAP_PPC_HTM);
+> -    cap_mmu_radix = kvm_vm_check_extension(s, KVM_CAP_PPC_MMU_RADIX);
+> -    cap_mmu_hash_v3 = kvm_vm_check_extension(s, KVM_CAP_PPC_MMU_HASH_V3);
+> -    cap_xive = kvm_vm_check_extension(s, KVM_CAP_PPC_IRQ_XIVE);
+> -    cap_resize_hpt = kvm_vm_check_extension(s, KVM_CAP_SPAPR_RESIZE_HPT);
+> +    cap_ppc_smt = kvm_check_extension(s, KVM_CAP_PPC_SMT);
+> +    cap_htm = kvm_check_extension(s, KVM_CAP_PPC_HTM);
+> +    cap_mmu_radix = kvm_check_extension(s, KVM_CAP_PPC_MMU_RADIX);
+> +    cap_mmu_hash_v3 = kvm_check_extension(s, KVM_CAP_PPC_MMU_HASH_V3);
+> +    cap_xive = kvm_check_extension(s, KVM_CAP_PPC_IRQ_XIVE);
+> +    cap_resize_hpt = kvm_check_extension(s, KVM_CAP_SPAPR_RESIZE_HPT);
+>      kvmppc_get_cpu_characteristics(s);
+> -    cap_ppc_nested_kvm_hv = kvm_vm_check_extension(s, KVM_CAP_PPC_NESTED_HV);
+> +    cap_ppc_nested_kvm_hv = kvm_check_extension(s, KVM_CAP_PPC_NESTED_HV);
+>      cap_large_decr = kvmppc_get_dec_bits();
+> -    cap_fwnmi = kvm_vm_check_extension(s, KVM_CAP_PPC_FWNMI);
+> +    cap_fwnmi = kvm_check_extension(s, KVM_CAP_PPC_FWNMI);
+>      /*
+>       * Note: setting it to false because there is not such capability
+>       * in KVM at this moment.
+>       *
+> -     * TODO: call kvm_vm_check_extension() with the right capability
+> +     * TODO: call kvm_check_extension() with the right capability
+>       * after the kernel starts implementing it.
+>       */
+>      cap_ppc_pvr_compat = false;
+> @@ -166,8 +166,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>          exit(1);
+>      }
+>  
+> -    cap_rpt_invalidate = kvm_vm_check_extension(s, KVM_CAP_PPC_RPT_INVALIDATE);
+> -    cap_ail_mode_3 = kvm_vm_check_extension(s, KVM_CAP_PPC_AIL_MODE_3);
+> +    cap_rpt_invalidate = kvm_check_extension(s, KVM_CAP_PPC_RPT_INVALIDATE);
+> +    cap_ail_mode_3 = kvm_check_extension(s, KVM_CAP_PPC_AIL_MODE_3);
+>      kvm_ppc_register_host_cpu_type();
+>  
+>      return 0;
+> @@ -1976,7 +1976,7 @@ static int kvmppc_get_pvinfo(CPUPPCState *env, struct kvm_ppc_pvinfo *pvinfo)
+>  {
+>      CPUState *cs = env_cpu(env);
+>  
+> -    if (kvm_vm_check_extension(cs->kvm_state, KVM_CAP_PPC_GET_PVINFO) &&
+> +    if (kvm_check_extension(cs->kvm_state, KVM_CAP_PPC_GET_PVINFO) &&
+>          !kvm_vm_ioctl(cs->kvm_state, KVM_PPC_GET_PVINFO, pvinfo)) {
+>          return 0;
+>      }
+> @@ -2298,7 +2298,7 @@ int kvmppc_reset_htab(int shift_hint)
+>          /* Full emulation, tell caller to allocate htab itself */
+>          return 0;
+>      }
+> -    if (kvm_vm_check_extension(kvm_state, KVM_CAP_PPC_ALLOC_HTAB)) {
+> +    if (kvm_check_extension(kvm_state, KVM_CAP_PPC_ALLOC_HTAB)) {
+>          int ret;
+>          ret = kvm_vm_ioctl(kvm_state, KVM_PPC_ALLOCATE_HTAB, &shift);
+>          if (ret == -ENOTTY) {
+> @@ -2507,7 +2507,7 @@ static void kvmppc_get_cpu_characteristics(KVMState *s)
+>      cap_ppc_safe_bounds_check = 0;
+>      cap_ppc_safe_indirect_branch = 0;
+>  
+> -    ret = kvm_vm_check_extension(s, KVM_CAP_PPC_GET_CPU_CHAR);
+> +    ret = kvm_check_extension(s, KVM_CAP_PPC_GET_CPU_CHAR);
+>      if (!ret) {
+>          return;
+>      }
+> -- 
+> 2.47.0
+> 
+> 
+
+With regards,
+Daniel
 -- 
-2.45.2
-
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

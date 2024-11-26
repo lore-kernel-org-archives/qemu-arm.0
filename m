@@ -1,103 +1,102 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1935623njc;
-        Tue, 26 Nov 2024 03:23:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWAYDy5sTDgAJgHwTRJ1THNTLnHzg8kGNRAr/KAd/lKIFueoiWvoG0NCdUFkzbc/KUQ+jY2vx+hj0lBxw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEyNFn1BsbxwTqi4iJ+0qGoZZ+xifi7c7vL1spI+BXDmF171OvQn4reBQL2/5Z+az370aqo
-X-Received: by 2002:a05:6214:27e5:b0:6d4:262d:da6c with SMTP id 6a1803df08f44-6d856c7ac90mr43794696d6.24.1732620200216;
-        Tue, 26 Nov 2024 03:23:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732620200; cv=none;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1935989njc;
+        Tue, 26 Nov 2024 03:24:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV2Crj6apwFafIArF8SaTFUn1FWi9VwAUljhmS5VtWGyjCoEiKk28Wv8bdyx0gA8TU/zHPsY/GczffS0A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGxHEpSFb8tlPwNTpMCDIWYkdjL58vPgZ7jhxjBBtvZBho4OWnrtKQ4RJLXvfPxB+gG6IcM
+X-Received: by 2002:a05:620a:19a2:b0:7ac:b95b:7107 with SMTP id af79cd13be357-7b67451f261mr461788385a.12.1732620251071;
+        Tue, 26 Nov 2024 03:24:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732620251; cv=none;
         d=google.com; s=arc-20240605;
-        b=fOIuBfDIxtKEC+xBpHaIzsbOZY43becYfM9fa4JJxtB2Z/cdEuhOyt4EYmVkVYpR6h
-         wRk3vov4RIkXwHHByD2x+Wa5FH8PEhW77UZbm7lar1r2i+90aaGuRUZG7DfbId9ccXhH
-         W9PKdblVgQHfoI0RVIFZIHT9/FB4mliz+XT5j6IYNAaSM4KNHvbnTXHnRBQx9MYBIgtn
-         DFmN18E3nu34q+lDfLxHceVvInXbz3PzDFrU8S5v/NSkYMo5d9q+/GURFBHmwrcVo/Ah
-         ZNgPtXp8tpSFDdemc4sns3Pfs53L4wAtB89mzqyV3hsWS9u7BKumcQaOn4AKD1fFYdpr
-         Xsvw==
+        b=EH7g9vhpRNu5ycRv6B+VTa5oNxqM3Ljow9S9FDBcYqZtrgrnzJ73fVQOj94MH0kZq9
+         f1ShoO22l9Znfhaem7euayfHvwH9TgPpJFxWmOUvxKkRrHqdJSB1rt4MeW+V8vol51MC
+         L04DWRTUwe20MIdAAGWJOUhB34aTxFkFkK17ShbKTx5GhewdxMHjQJHobC1LvT0dSA7I
+         CeRT60w461rDN8yfkLgoaSkgFxhX+t0xRfC4NoHLjW0s3K9z7StZZEidzM2ycWfddGyr
+         Sa2tCM9Zxb7SB8zGbClqromkDv7KWMfqFsPeXUtKZSbXL/YuWIhdW/VsYeovi8OL0EXP
+         dsvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+qPY7Uz0dqRmk2gQ1cO3DBCcFXLLvxMC18yQC1ilSgA=;
-        fh=yxukv0UjYgP8dJ2IfXGWhknMJJ9vhvd3rjyEM/51RGU=;
-        b=E4L3/dCBzTBQTw2zik+SL1H+o5ZiAx9e9l/UFwNjfY2FjM0dsmbAfYnTPSN50hmXLK
-         M+skJIDqc3qG/rcYpDtHwnmjjoGd42dzkQDL9A/DstW4OAw/Ipq9xUcDOwbwdm+kaW3B
-         fup6pheeAz0DjFecrDO+tus4V97mLCrfooHyIwZ0ieSJahk2wfFYwyOssqPB4SGSgZDC
-         ai5rzF6Cg98MqMLsEbHkPu1TE9el4Tqsu1QeHdmjIsBzln3NU3uU0hgfeZ1XCEwKmKy7
-         afaGHH90Dznxy+oziF3lQDJsEFQ1m9MT1mrXnXulDYWJm33Rl8c2l5GjmaamLyp4a/vB
-         Pxwg==;
+        bh=ym7MlPUFYz2GU5YCplhDtE7b6ovE3xgVe6aZRCcPdv4=;
+        fh=siS/4HMv/4Bjpv+J3MqwgZ5TPB6jtxhL8giIGJt6+cQ=;
+        b=GJDygW0DfbtMSkmCfgPFxoF7Zo0++ku5Sw9+rBJN3xtvpTaGsJc4g0dJwLxTth6wES
+         IofzDbefEWX/kxpEYb5CXNkxSMeSKckfbtQV3XnvSKojgdA43A08DKtixT4gaLci+MOp
+         FclO8aVB6kYzLB6Yj4vXe7zU6bbNyk6w6GmVlFN/y74OZTlfasgcOzYmCgoIdlTHWkzj
+         exmCc+XVGpx/ftdc2VgvJV6Hm6NJaxNJFfjhnvJXPiVU5cINyKY7LN/KaaMwEGxDDqgL
+         XBQ1yqM3X5kOdoKT0azKpteJvDTWpkL2g/eB5dXgEapSVe3ixXpB+9C4AjJXSXiABD9c
+         W+KA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G31NQHlv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=O269jXpe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d854389316si30645646d6.69.2024.11.26.03.23.20
+        by mx.google.com with ESMTPS id af79cd13be357-7b65d87565esi777024785a.333.2024.11.26.03.24.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 26 Nov 2024 03:23:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 26 Nov 2024 03:24:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=G31NQHlv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=O269jXpe;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tFteE-0003ht-Fp; Tue, 26 Nov 2024 06:22:26 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tFteX-0003ok-W1; Tue, 26 Nov 2024 06:22:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tFteC-0003h7-60
- for qemu-arm@nongnu.org; Tue, 26 Nov 2024 06:22:24 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tFteS-0003mu-L0
+ for qemu-devel@nongnu.org; Tue, 26 Nov 2024 06:22:43 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tFteA-0002XH-Hb
- for qemu-arm@nongnu.org; Tue, 26 Nov 2024 06:22:23 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-434a766b475so3618065e9.1
- for <qemu-arm@nongnu.org>; Tue, 26 Nov 2024 03:22:22 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tFteM-0002dm-Tg
+ for qemu-devel@nongnu.org; Tue, 26 Nov 2024 06:22:37 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-434a8b94fb5so1170305e9.0
+ for <qemu-devel@nongnu.org>; Tue, 26 Nov 2024 03:22:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1732620141; x=1733224941; darn=nongnu.org;
+ d=linaro.org; s=google; t=1732620152; x=1733224952; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+qPY7Uz0dqRmk2gQ1cO3DBCcFXLLvxMC18yQC1ilSgA=;
- b=G31NQHlvGZkGawebft97sYhAhilqUvGvkbd1zMeMwhwlN14M5eRWiTdyyCvvbnxC4R
- RP34PkS1VK4rlcCJ/lPYuUJR1oGU2dbuBxD8DbTBC/kIlCS8YWBugmj496sPikjghPQZ
- w8jdIfgZIUwIT9xpBaE+LWrmstHQDEk573vvWcVNlOqpgEd+oKx31Ge3/EUqrg1BZ4R1
- oQmGr1FdTou24m7GXGJtJ2gnhCVZIOQ8MyvVsLEZW6eSXAsfHn5FY6LXLW0iTGF3hnoU
- WKGAmMMyFBQ61vrXbrC+fAX43htEOU62rrRhwji0xmbnQ83nZb9KIhRF+XXZhBwMMnqp
- KJSw==
+ bh=ym7MlPUFYz2GU5YCplhDtE7b6ovE3xgVe6aZRCcPdv4=;
+ b=O269jXpeoMK9d1++iTv+YTvOFcSfjM9awFg3fi93MDx5LY5PIBYYL2fxJTNi/PeMWK
+ x2kewtuNbVV/z1r6AvUz2mE8nnoIq27syZTxNoddQktPcmloj1pmUQjuFdR78DlCsOyN
+ qjD3N0wCN4BXh/mWKHZYo19e3OsqHUC35LlXpXIteTjvVTBo06DaQHd1M2V3k3GJMbZo
+ JsEeAtCeKrVL1ZmCAsz8mgrJqS+aHGbAgIzsytwNqskzatFWdf9oX6KUy5eSLVAYza0y
+ S1xyhxT51OyYJTmSyUpSn/9iUDwkN5CYQT8mWDUn+4Rgf/edkkQqEIzdgoH4nq77KKN7
+ FFqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1732620141; x=1733224941;
+ d=1e100.net; s=20230601; t=1732620152; x=1733224952;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+qPY7Uz0dqRmk2gQ1cO3DBCcFXLLvxMC18yQC1ilSgA=;
- b=G+sIqVnajwU8n3PAp23dh0xG49NpBP2faVU4TBPYvPJi/78uNqkYQ71kLyX0cb+cVI
- mIEEvlZ68QwSvmIEnFNqeZQmhAqrlNvdaLBOIaTNplIyXeaFgWgNLVJmrJVrmEpuwHXU
- F77ubPOP8qyJIbL4uq0Q+tjFaj+jUOdl/aOWfMC8U2oyCu30EQ9fuXvmYPRwLBplZqEF
- itV3lLXbc2uK2Qx8hbZOOK6xfKhX59RT8+U46rCqeeHrzmEMTT6zdp4RySDkqdyjKE1j
- aqG03eBYhjr/s2K3AgnwMmtRP0RJtBslc9FDw/W+84WhvKZGUf+nsEzflRgb77QM6jtd
- tqQA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVMXqEY1TLMxY5fc37vofjzkKL6rTMQSU0EWsUzoJG5quA1EIE7IahYva6Lz6i8BfosgRM+2K8N/g==@nongnu.org
-X-Gm-Message-State: AOJu0Yy9t3jsTHS1+//YAMHejMkEXGNqoqpYxQX1VyHEE39xaIuyTMz/
- 1vqONuahwl9TZewHADDL8RhkViZNr/uFJxo5/F4e/lqob9Jizwx9MUrPRPUEqxU=
-X-Gm-Gg: ASbGncsJyvO+H7hzihGfbuepBMZ6Pm+WLsQL7Mobg41LwcGp1Qmb+Eob+wABvYa24MW
- /peTkNILKGVo47WNwmH2E3Afk0yYNvQt45yBPWaYEqIpCThuwWGSr0OgASX5Pc0zJ8RiVGXzCF7
- sn5TJciThxz8PFcVZ3Vq4fqiIE7203ptb5hNh/pQBFaymCSoJ0epbI/Y+pDvns7CY8xSE0U8rZ2
- HuOZCxpggpUeAt+W9IG828xyGHUFUzdqrTRWGKonBwlPeT4rcv9oHPtGiYkGn6I7sO8QPWZ
-X-Received: by 2002:a05:600c:a12:b0:434:a19a:5965 with SMTP id
- 5b1f17b1804b1-434a19a5bf9mr43582535e9.6.1732620141039; 
- Tue, 26 Nov 2024 03:22:21 -0800 (PST)
+ bh=ym7MlPUFYz2GU5YCplhDtE7b6ovE3xgVe6aZRCcPdv4=;
+ b=rKGiiqfEM2WqwRnq5WjlBvtohAPAWM8dUgR2lEtG3WITwOSow7w0Bj6yDYSKA+lbI+
+ xP4EjUDEFnY1eZZY2tNrYMCsCKl0u87MQQBoKfSEI1E8JOQAzwJxBQKE4ZeDYG1w+1Cl
+ j0r+pF+q/zn4PpY2tfnUSqznDjqHPk2n38GD+lNuKl7efSYzgUP//z/ZeMmXpXHlOKvj
+ c0rejp9FM1zt/3ib8BCd9gYXJaDXfLDXknwiKpTDYSWymX9LqsbFR72bsdG/igUDeTxf
+ GBYfOo3qWryr1BWSQa8Y/msn4DmpQeYTQu/Sh8uG6CAWCq5vjWkWx2H1zZwngwU2b4a+
+ 8J/w==
+X-Gm-Message-State: AOJu0YzwLYZoh5n3X2KrlX5g8DVd7TkE58j9l9fAZLQmS7qiZ7lDUfvV
+ njpQzeq3djOwFV2nokLUfqPwx0SlhFbKsiYuphTSLajoChy8Bon/ivE5Z6KJh6W5Lbn2A/r/PRf
+ s
+X-Gm-Gg: ASbGncvi2ZczQ4XJIWT6jjGCEmoaezyEXiUeOQvedoON+6SjPvwsooTdcLW1X97/R8h
+ zZ/Bl4LVQOMEW+GSrjiRHLfOLFaZl4M/tR0NKbd9F4eT14nldejEwyJIIts/W1tZx6cnKk9c5RO
+ 3oqLqha1OTTv4K6ATRPrl6LgntkYmvt1vDQR4SyVNRv+h0x4A/dw71MsgS06kWCVDe1daNp7CUR
+ xrYvBjM0wetYvjZhw0v6pb2YecuHAXhJLj8jAwZqtLcyUjA6o690L5CBeRWiqgfc/mgyNAt
+X-Received: by 2002:a7b:c85a:0:b0:431:15f1:421d with SMTP id
+ 5b1f17b1804b1-434a4eb786dmr23408865e9.16.1732620152605; 
+ Tue, 26 Nov 2024 03:22:32 -0800 (PST)
 Received: from localhost.localdomain ([176.176.143.205])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-434a50613c5sm25019945e9.0.2024.11.26.03.22.19
+ ffacd0b85a97d-3825fb3134bsm12970699f8f.58.2024.11.26.03.22.31
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 26 Nov 2024 03:22:20 -0800 (PST)
+ Tue, 26 Nov 2024 03:22:32 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, Thomas Huth <thuth@redhat.com>,
@@ -106,18 +105,18 @@ Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, Thomas Huth <thuth@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.0 v2 01/13] hw/pci: Do not declare PCIBus::flags mask
- as enum
-Date: Tue, 26 Nov 2024 12:22:00 +0100
-Message-ID: <20241126112212.64524-2-philmd@linaro.org>
+Subject: [PATCH-for-10.0 v2 03/13] hw/pci: Factor
+ machine_refuses_bar_at_addr_0() helper out
+Date: Tue, 26 Nov 2024 12:22:02 +0100
+Message-ID: <20241126112212.64524-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241126112212.64524-1-philmd@linaro.org>
 References: <20241126112212.64524-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -126,53 +125,78 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zs16XHFUUKUw
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 0mOY4uxxv5tF
 
-We use PCIBus::flags to mask various flags. It is not
-an enum, and doing so confuses static analyzers. Rename
-the enum as singular. Use a generic unsigned type for
-the mask.
+Since we are going to re-use access to the
+MachineClass::pci_allow_0_address field, factor the
+current code as a new machine_refuses_bar_at_addr_0()
+helper. In pci_bar_address() invert 'allow_0_address'
+logic as 'bar_at_addr_0_refused'.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/pci/pci_bus.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/pci/pci.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/pci/pci_bus.h b/include/hw/pci/pci_bus.h
-index 22613125462..6ecfe2e06d5 100644
---- a/include/hw/pci/pci_bus.h
-+++ b/include/hw/pci/pci_bus.h
-@@ -19,7 +19,7 @@ struct PCIBusClass {
-     uint16_t (*numa_node)(PCIBus *bus);
- };
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 1416ae202c3..e05f8a828bb 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -520,6 +520,13 @@ bool pci_bus_bypass_iommu(PCIBus *bus)
+     return host_bridge->bypass_iommu;
+ }
  
--enum PCIBusFlags {
-+enum PCIBusFlag {
-     /* This bus is the root of a PCI domain */
-     PCI_BUS_IS_ROOT                                         = 0x0001,
-     /* PCIe extended configuration space is accessible on this bus */
-@@ -32,7 +32,7 @@ enum PCIBusFlags {
++static bool machine_refuses_bar_at_addr_0(void)
++{
++    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
++
++    return !mc->pci_allow_0_address;
++}
++
+ static void pci_root_bus_internal_init(PCIBus *bus, DeviceState *parent,
+                                        MemoryRegion *mem, MemoryRegion *io,
+                                        uint8_t devfn_min)
+@@ -1472,8 +1479,7 @@ pcibus_t pci_bar_address(PCIDevice *d,
+ {
+     pcibus_t new_addr, last_addr;
+     uint16_t cmd = pci_get_word(d->config + PCI_COMMAND);
+-    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
+-    bool allow_0_address = mc->pci_allow_0_address;
++    bool bar_at_addr_0_refused = machine_refuses_bar_at_addr_0();
  
- struct PCIBus {
-     BusState qbus;
--    enum PCIBusFlags flags;
-+    unsigned flags;
-     const PCIIOMMUOps *iommu_ops;
-     void *iommu_opaque;
-     uint8_t devfn_min;
+     if (type & PCI_BASE_ADDRESS_SPACE_IO) {
+         if (!(cmd & PCI_COMMAND_IO)) {
+@@ -1485,7 +1491,7 @@ pcibus_t pci_bar_address(PCIDevice *d,
+          * TODO: make priorities correct and remove this work around.
+          */
+         if (last_addr <= new_addr || last_addr >= UINT32_MAX ||
+-            (!allow_0_address && new_addr == 0)) {
++            (bar_at_addr_0_refused && new_addr == 0)) {
+             return PCI_BAR_UNMAPPED;
+         }
+         return new_addr;
+@@ -1506,7 +1512,7 @@ pcibus_t pci_bar_address(PCIDevice *d,
+        mappings, we handle specific values as invalid
+        mappings. */
+     if (last_addr <= new_addr || last_addr == PCI_BAR_UNMAPPED ||
+-        (!allow_0_address && new_addr == 0)) {
++        (bar_at_addr_0_refused && new_addr == 0)) {
+         return PCI_BAR_UNMAPPED;
+     }
+ 
 -- 
 2.45.2
 

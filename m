@@ -1,195 +1,265 @@
-Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1652987njc;
-        Mon, 25 Nov 2024 14:43:04 -0800 (PST)
-X-Received: by 2002:a17:90b:3b41:b0:2ea:9bdc:8f96 with SMTP id 98e67ed59e1d1-2eb0e86ad1dmr19003393a91.30.1732574584630;
-        Mon, 25 Nov 2024 14:43:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732574584; cv=none;
+Received: by 2002:a17:505:4c56:b0:1be9:327d:8ee3 with SMTP id do22csp1789092njc;
+        Mon, 25 Nov 2024 20:55:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGZAhK6OBqkowKMKQvN85H9ImdutfWmvSwG7LX/KokVGZNNpMufxRh6bfOFVu/D9bhHTE8w
+X-Received: by 2002:a05:620a:6014:b0:7b6:6e3f:49e0 with SMTP id af79cd13be357-7b66e3f4b97mr643732785a.41.1732596929485;
+        Mon, 25 Nov 2024 20:55:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732596929; cv=none;
         d=google.com; s=arc-20240605;
-        b=BRpmLZKAf/ajDn+qCiylPVQs8wiJFSVWwIlfN1aIDJypkKFx4N4i6b7gC0HXggogaK
-         J4d5ef6B9XQ1WFZkvOm5Z6+swEDvUdErWSDoGq/Vfn/sE5ph6eco6UvyIrhUW5T7dok2
-         RSjGs9TtB2lFa+nq4QpaeQ40Fc9wooemq0Pjw/c2o2P+FwtavRyHFQuT9VQcQoDptY3v
-         oPUHEek5aJhaBlTAKeKjwmUbgAXGwzhaivshnJfXnXi8Kn9Uwg5go8b6nuDv9gIiWt7q
-         BUZXjFQQkD62gCcx1Byy/23G9l7AVS0TbRJh6ofpQvKOr5kIR4mXYFtoEO0EJ4Cy4t7p
-         9+nQ==
+        b=d3JxyuFx0Zo6lwWbbz+QYmeYmNbngzR2LOWaRMKjs2C/b3hv+z3hzmldv0Wd+yZi1H
+         EyXIL9Ig9S1rEBi5trLtBUax518U3eBDE99B6M0U+hgyQZtVvdN3HiZYier2EEEygRyQ
+         QVALiVSYwhqIJxXwXN25kDTne3FTDaPzUlVUTTRmQwvyLOK3gsb/3axViVDJy9hWtsXN
+         jUKXg2W64zq/A1t8ZRH/cxhOiFO/tdlc1QcNsdZIz3wDNr8f1lDkXlRleUcfJtERhFTc
+         0amq2DZcl1V8u/mIT1a6PidYBf8sl1Heprd25W4Er2sxhPjN60+unhccrgjRapbE2u9U
+         J++Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=qp/Ssi2EiEYElMKWF3TPN7CXg08InF0z6+d9XXvEw/8=;
-        fh=OzCCcSemt4cggwfEOuFlHLxcao5YkuImRsb4Ytvep5g=;
-        b=UwtpmhGVO8RreTxRbzWmEfb47tD1Cvu2/xFuH5SAG1BV2XtDSob//KSYhvFQAIZ9Tj
-         NMqJIYS5166CDWaVDunuefXtP3kIMNaoppSFxkLIue7aR/F517lu8X0pubD03tE9NaU5
-         JlzZrEho3PrFwAfdNH5wA5ZUA5qvTM10B+R+dBmu3Zo1DNsa+Eb30yx2MIa1Tn4E0VaU
-         38gTaNVXNpjzPph/x/26MKfPNzDJwbyFqyxKI+Tij0rs10K5IXy58aWYIw3mTUW98ZQ7
-         XnEdSG60HDOlC6xkiEKNd6xzEfJyo6VxRccZrXU+56lx+qEcSsjexpLFOcP3anCCoQ21
-         n8DA==;
+        h=content-transfer-encoding:to:references:message-id:cc:date
+         :in-reply-to:from:subject:mime-version:dkim-signature;
+        bh=qSaTMPbLh+/G8hvgbbGFPh/Ds4pXGkRFAz+AHaii6WY=;
+        fh=2X1HOgnBPvsDtbVIMWvrMZqL/zr/DmDFX9f9Bb810dk=;
+        b=KKY7Jiz54915dGnv5jU3M7WcC2NgQ73XWFsTQ9NS1CbhAa3WQOrzaaPXqYM5cdtNAo
+         ZvP5OLuP/1GNUbBclUCPOINFO4lxNdcPL3gdLwWnLdH3zGgVDTV40qJk49DEns7n6DbF
+         l6tnwMb+YIYvfDLGkRh9vCPS2FT+81BiJqcvsT67fTuqwyKmPBMvPT+Cl1+KRhSXARJF
+         LGd3XxGbhrq6AN/etavXGYuFMHHXOhdcPxQ9poa+eEYyRgWYYIaVHBf8c9EFJoZDGx6t
+         JE/936OF18BN2LPFP+tCUfY75/ji4EVKwJy11X/mMt1srz23IQrHb5YF8rSL8bS8N5P9
+         m2fg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ypL11q11;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 98e67ed59e1d1-2eb0d1e2243sor6351407a91.5.2024.11.25.14.43.04
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cYQTKDwS;
+       spf=pass (google.com: domain of anisinha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=anisinha@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <anisinha@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7b65751b87esi978309285a.172.2024.11.25.20.55.29
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 25 Nov 2024 14:43:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 25 Nov 2024 20:55:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of anisinha@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ypL11q11;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732574584; x=1733179384; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=qp/Ssi2EiEYElMKWF3TPN7CXg08InF0z6+d9XXvEw/8=;
-        b=ypL11q11w4s7v7LvlTSiMixtiYfN9qNyGEVRuOtHmMlp/g5qIpVWJAZIDMGN1Xoh22
-         U66HwzEtx2MpF3VCYewhs9eyLZgvMahrdwiJvpAv8yvDz8q9wwOZ4F3OC11vdsy6dCQE
-         5vGpEae6tB/Ikis7t0PvIRScHUd9CUNvGPSoUPgcuxeibArJbkSsjCP5uHqAXVpZ2BpL
-         fNlz7kDAT4FySxrsWJrNL5oW2ZQMVIR/FpY24ibOAev+1aL+8kKj4BaxvOSatUk49P7f
-         inLxI2ke4JksGma2gU2SCVPgmwXKAv9CeDbscdBWvUIUydi3sOvSisSEABrO0gwyyqiA
-         YKAw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cYQTKDwS;
+       spf=pass (google.com: domain of anisinha@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=anisinha@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1732596929;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qSaTMPbLh+/G8hvgbbGFPh/Ds4pXGkRFAz+AHaii6WY=;
+	b=cYQTKDwSvTe/qXEmM/yYRICWab6e27ojpY3/22YT+xAmoKThPQgRQ3lkKVzizQWKCXC6Ch
+	tISKJp2ggzSLFLuVbu2KP/vSHfdLfoqesxSspDhyaJymxMFRmEeDAG6NmLD61Wv3zRRXP0
+	Z1Y9tJ/JQzv0raEvWHiZOdOb2F5aAoY=
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-644-0rhdJC9HNUm6kLEwlm66fw-1; Mon, 25 Nov 2024 23:55:28 -0500
+X-MC-Unique: 0rhdJC9HNUm6kLEwlm66fw-1
+X-Mimecast-MFC-AGG-ID: 0rhdJC9HNUm6kLEwlm66fw
+Received: by mail-pl1-f200.google.com with SMTP id d9443c01a7336-211fcbd2325so60318635ad.1
+        for <alex.bennee@linaro.org>; Mon, 25 Nov 2024 20:55:27 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732574584; x=1733179384;
-        h=content-transfer-encoding:in-reply-to:content-language:from
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=qp/Ssi2EiEYElMKWF3TPN7CXg08InF0z6+d9XXvEw/8=;
-        b=cl+nGaq4MZxYbhzoXU9XCCcqlXHKaQyMNddfkaO4rdW5hKYA8xTU7xlhxEurITQMKH
-         GuSaRQEFWBvodBbs7Mn34gJcMzQ6UsRJIqOvTTMawlWymRwEjsRMfR6KuS0Xa76HEouR
-         PC+tocv1cKTWsJD9xr7U0EeAMKDc7eVzpJ8BQ/ZnTLVfqxRtQRtY71xGJxyTys1WDp2U
-         rIjSQvz61k0ActdFByz8ll69CmJf7NXSOvQqb9hfhRomi2tvk6He1DPe4gJ6V8pjpfDN
-         CD27i6ncUa1hPkGUwgii8oYXzQo9po24ScEfDU0UFuduQTyrIGaCMx1U6LWOFCmMFeBi
-         B/zA==
-X-Gm-Message-State: AOJu0Yyhus2AFewVHT88rt7XL7iuj0PCeU8x3WHZFNdgrWgFrOnv+j8+
-	BQGPVl99gsVSgfofdvcW/YswXIR5ZvQcFDP9tJj+CKWEISIL5G2VWKClQsolfBWBhnRV3JBGSP4
-	9dBacUpWs
-X-Gm-Gg: ASbGncvk21YKvqxko3NlVFHbIZ5eO2agAG5xtxBRwfLTQD6l3BEh+DG/TsKJ6YsHYeX
-	nSF6sgBLuZLNDH4Rt2+6pz48rQ68F0z0aL18A5azs+6klQceqh6VipKDhEvUWSn0dY+806+fwWE
-	DfXAIATtscMMW70O0nf6mpS7Fnu/j18sdP5oYYNSityXl+0WI+VUoKJdPrkkq6Yo91HQObL71Nq
-	Vt86U2Xx+z9mDQCVH5+ppycBghnDzT1/bMSSorLFK1FXbM4qT+Yh7gdttMSRDZvMpixE0LRAW3K
-	mehmiK9GztBgARTkjh64bQ==
-X-Google-Smtp-Source: AGHT+IGNz/ZuNWTYvuAr1x3OZ4TXvjup+bo6/0RT6SjDY8DrDWXEhnwlwZkgGTf6aJ/6hi03/WNBXw==
-X-Received: by 2002:a17:90b:1b46:b0:2ea:5fed:4a2b with SMTP id 98e67ed59e1d1-2eb0e2303e4mr20002544a91.15.1732574584227;
-        Mon, 25 Nov 2024 14:43:04 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-724de47e4dcsm7246676b3a.67.2024.11.25.14.43.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 25 Nov 2024 14:43:03 -0800 (PST)
-Message-ID: <01d49b94-c341-4311-88fe-f7962c117336@linaro.org>
-Date: Mon, 25 Nov 2024 14:43:03 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/functional/aarch64_virt: add test for FEAT_RME
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, mathieu.poirier@linaro.org,
- gustavo.romero@linaro.org, jean-philippe@linaro.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20241125065950.1179068-1-pierrick.bouvier@linaro.org>
- <8734jfchxe.fsf@draig.linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Content-Language: en-US
-In-Reply-To: <8734jfchxe.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: LWuBpiuiHwAh
+        d=1e100.net; s=20230601; t=1732596925; x=1733201725;
+        h=to:references:message-id:content-transfer-encoding:cc:date
+         :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=crgtnuFSn4RKN1oCL5EUeP8sV5iqv+TSrOEjccDNx+0=;
+        b=MmepbMoOVQnRyVfeA7jtsKjPVpCoc57gK8mptMZZSiTfnNxbO8V+DUb00FXmJkgUue
+         yMT80L9Dk0Coy8fOcI+EDD62W0mkmUj/Ac1UFSVLtwvRFoAWvHB2kh1Xwd2sXVB69oHt
+         +HrcUPBVsypvfzlo6lj1nKG1+kRZbGRz75Pfgvj9bMfB+ZZg+Rsf7aXAonrqbFkEasE7
+         y4wwYvG1B2dUngkGW90nuV/IuFzihJsr5C4HGCDw5NPXrVKmrbMPH3JoA35sXZkAN38Z
+         aLlbk8PczHMl1aBovMen3HpJgoDGkd8AMdjKjGAj9n1L9+cLlaE5/P6/5zuROoD3SdF5
+         QFlg==
+X-Gm-Message-State: AOJu0YxfnFEyC4uSaZ5/yul8Ah/EXjp8QYzQvUYLOFNs0d6cAY7hVw9N
+	ofXe8vXsvRSCXcRZKletS0CXlDu23T429yHUclr8MFzoEvHqhoqf4NChOXbRzlruWLCCP144o5i
+	9B8pHLOOWtj8aBt/VRW9EHPm+nhEfFENoycroTc0BqyRAvVJK4S27ZZnA1/I7zX1rIumJnLHCvb
+	OZaWCSJxK0d4h+WhR2zHhdnqgUucROc0BRbify4KuIu5Y=
+X-Gm-Gg: ASbGncuUGjmtgyf5KHXLgVa3bcTzBtQa8uYh/p06QIHBmmIta6ycjE0LjAMT2vTtBeI
+	uOPDJxmQIWxd2bqmscIaKGB2Xpx8U/ow+W/k31suFOtttqId+rBPQ8ziS7k1szdZNiyPPuaUbFo
+	vURfaUOKQEyky/OvdoH4JqHX7FOJdMvGFxPmYeEFFADHC4WghTqbHBKWpif18zJ55Xze5FffqrK
+	iUhmuEf3e4xan4XFXtBLh38VSA2zp3tjF2SeXybFX7BAhCjoi6Ml7HkIp67HSDIRA==
+X-Received: by 2002:a17:902:da87:b0:211:ce94:866a with SMTP id d9443c01a7336-2129f27edbcmr208019895ad.40.1732596925638;
+        Mon, 25 Nov 2024 20:55:25 -0800 (PST)
+X-Received: by 2002:a17:902:da87:b0:211:ce94:866a with SMTP id d9443c01a7336-2129f27edbcmr208019295ad.40.1732596925091;
+        Mon, 25 Nov 2024 20:55:25 -0800 (PST)
+Return-Path: <anisinha@redhat.com>
+Received: from smtpclient.apple ([115.96.111.99])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2129dbff4basm74873375ad.116.2024.11.25.20.55.14
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 25 Nov 2024 20:55:24 -0800 (PST)
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3776.700.51.11.1\))
+Subject: Re: [PATCH 39/39] docs: explicitly permit a "commonly known identity"
+ with SoB
+From: Ani Sinha <anisinha@redhat.com>
+In-Reply-To: <20241121165806.476008-40-alex.bennee@linaro.org>
+Date: Tue, 26 Nov 2024 10:25:01 +0530
+Cc: qemu-devel <qemu-devel@nongnu.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Michael Tsirkin <mst@redhat.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ qemu-ppc@nongnu.org,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Alexandre Iooss <erdnaxe@crans.org>,
+ qemu-riscv@nongnu.org,
+ Thomas Huth <huth@tuxfamily.org>,
+ Bernhard Beschow <shentey@gmail.com>,
+ Thomas Huth <thuth@redhat.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Bin Meng <bmeng.cn@gmail.com>,
+ qemu-s390x@nongnu.org,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ John Snow <jsnow@redhat.com>,
+ Wainer Moschetta <wainersm@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>,
+ qemu-rust@nongnu.org,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Berrange <berrange@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <FF4D6240-DB71-4111-B7A6-E95E2C5ECF7B@redhat.com>
+References: <20241121165806.476008-1-alex.bennee@linaro.org>
+ <20241121165806.476008-40-alex.bennee@linaro.org>
+To: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+X-Mailer: Apple Mail (2.3776.700.51.11.1)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: rtKLENbNTBpzIDavLBrhWs2bSUK4bD-n4nY66CnFSRU_1732596927
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain;
+	charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 6IHkq4ZebrKp
 
-T24gMTEvMjUvMjQgMTA6MDAsIEFsZXggQmVubsOpZSB3cm90ZToNCj4gUGllcnJpY2sgQm91
-dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPiB3cml0ZXM6DQo+IA0KPj4gVGhp
-cyBib290IGFuIE9QLVRFRSBlbnZpcm9ubWVudCwgYW5kIGxhdW5jaCBhIG5lc3RlZCBndWVz
-dCBWTSBpbnNpZGUgaXQNCj4+IHVzaW5nIHRoZSBSZWFsbXMgZmVhdHVyZS4NCj4+DQo+PiBT
-aWduZWQtb2ZmLWJ5OiBQaWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFy
-by5vcmc+DQo+PiAtLS0NCj4+ICAgdGVzdHMvZnVuY3Rpb25hbC90ZXN0X2FhcmNoNjRfdmly
-dC5weSB8IDYyICsrKysrKysrKysrKysrKysrKysrKysrKysrKw0KPj4gICAxIGZpbGUgY2hh
-bmdlZCwgNjIgaW5zZXJ0aW9ucygrKQ0KPj4NCj4+IGRpZmYgLS1naXQgYS90ZXN0cy9mdW5j
-dGlvbmFsL3Rlc3RfYWFyY2g2NF92aXJ0LnB5IGIvdGVzdHMvZnVuY3Rpb25hbC90ZXN0X2Fh
-cmNoNjRfdmlydC5weQ0KPj4gaW5kZXggMzBiYWI1YTY3N2MuLjNlOGY5MzcyMTMyIDEwMDc1
-NQ0KPj4gLS0tIGEvdGVzdHMvZnVuY3Rpb25hbC90ZXN0X2FhcmNoNjRfdmlydC5weQ0KPj4g
-KysrIGIvdGVzdHMvZnVuY3Rpb25hbC90ZXN0X2FhcmNoNjRfdmlydC5weQ0KPj4gQEAgLTE4
-LDYgKzE4LDcgQEANCj4+ICAgZnJvbSBxZW11X3Rlc3QgaW1wb3J0IFFlbXVTeXN0ZW1UZXN0
-LCBBc3NldA0KPj4gICBmcm9tIHFlbXVfdGVzdCBpbXBvcnQgZXhlY19jb21tYW5kLCB3YWl0
-X2Zvcl9jb25zb2xlX3BhdHRlcm4NCj4+ICAgZnJvbSBxZW11X3Rlc3QgaW1wb3J0IGdldF9x
-ZW11X2ltZywgcnVuX2NtZA0KPj4gK2Zyb20gcWVtdV90ZXN0LnV0aWxzIGltcG9ydCBhcmNo
-aXZlX2V4dHJhY3QNCj4+ICAgDQo+PiAgIA0KPj4gICBjbGFzcyBBYXJjaDY0VmlydE1hY2hp
-bmUoUWVtdVN5c3RlbVRlc3QpOg0KPj4gQEAgLTEyOSw2ICsxMzAsNjcgQEAgZGVmIHRlc3Rf
-YWFyY2g2NF92aXJ0X2dpY3YyKHNlbGYpOg0KPj4gICAgICAgICAgIHJldHVybg0KPj4gICAg
-ICAgICAgIHNlbGYuY29tbW9uX2FhcmNoNjRfdmlydCgidmlydCxnaWMtdmVyc2lvbj0yIikN
-Cj4+ICAgDQo+PiArICAgICMgU3RhY2sgaXMgYnVpbHQgd2l0aCBPUC1URUUgYnVpbGQgZW52
-aXJvbm1lbnQgZnJvbSB0aG9zZSBpbnN0cnVjdGlvbnM6DQo+PiArICAgICMgaHR0cHM6Ly9s
-aW5hcm8uYXRsYXNzaWFuLm5ldC93aWtpL3NwYWNlcy9RRU1VL3BhZ2VzLzI5MDUxMDI3NDU5
-Lw0KPj4gKyAgICAjIGh0dHBzOi8vZ2l0aHViLmNvbS9wYm8tbGluYXJvL3FlbXUtcm1lLXN0
-YWNrDQo+PiArICAgIEFTU0VUX1JNRV9TVEFDSyA9IEFzc2V0KA0KPj4gKyAgICAgICAgKCdo
-dHRwczovL2ZpbGVzZXJ2ZXIubGluYXJvLm9yZy9zL0pYN29OZ2ZEZUdYU3hjWS8nDQo+PiAr
-ICAgICAgICAgJ2Rvd25sb2FkL3JtZS1zdGFjay1vcC10ZWUtNC4yLjAudGFyLmd6JyksDQo+
-PiArICAgICAgICAgJzFmMjQwZjU1ZThhN2E2NjQ4OWMyYjdkYjVkNDAzOTFlNWRjZmRkNTRj
-ODI2MDBiZDBkNGIyMTQ1YjlhMGZiZmInKQ0KPj4gKw0KPj4gKyAgICAjIFRoaXMgdGVzdHMg
-dGhlIEZFQVRfUk1FIGNwdSBpbXBsZW1lbnRhdGlvbiwgYnkgYm9vdGluZyBhIFZNIHN1cHBv
-cnRpbmcgaXQsDQo+PiArICAgICMgYW5kIGxhdW5jaGluZyBhIG5lc3RlZCBWTSB1c2luZyBp
-dC4NCj4+ICsgICAgZGVmIHRlc3RfYWFyY2g2NF92aXJ0X3JtZShzZWxmKToNCj4+ICsgICAg
-ICAgIHN0YWNrX3BhdGhfdGFyX2d6ID0gc2VsZi5BU1NFVF9STUVfU1RBQ0suZmV0Y2goKQ0K
-Pj4gKyAgICAgICAgYXJjaGl2ZV9leHRyYWN0KHN0YWNrX3BhdGhfdGFyX2d6LCBzZWxmLndv
-cmtkaXIpDQo+PiArDQo+PiArICAgICAgICBzZWxmLnNldF9tYWNoaW5lKCd2aXJ0JykNCj4+
-ICsgICAgICAgIHNlbGYudm0uc2V0X2NvbnNvbGUoKQ0KPj4gKyAgICAgICAgc2VsZi5yZXF1
-aXJlX2FjY2VsZXJhdG9yKCd0Y2cnKQ0KPj4gKw0KPj4gKyAgICAgICAgcm1lX3N0YWNrID0g
-b3MucGF0aC5qb2luKHNlbGYud29ya2RpciwgJ3JtZS1zdGFjaycpDQo+PiArICAgICAgICBr
-ZXJuZWwgPSBvcy5wYXRoLmpvaW4ocm1lX3N0YWNrLCAnb3V0JywgJ2JpbicsICdJbWFnZScp
-DQo+PiArICAgICAgICBiaW9zID0gb3MucGF0aC5qb2luKHJtZV9zdGFjaywgJ291dCcsICdi
-aW4nLCAnZmxhc2guYmluJykNCj4+ICsgICAgICAgIGRyaXZlID0gb3MucGF0aC5qb2luKHJt
-ZV9zdGFjaywgJ291dC1icicsICdpbWFnZXMnLCAncm9vdGZzLmV4dDQnKQ0KPj4gKw0KPj4g
-KyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWFjY2VsJywgJ3RjZycpDQo+PiArICAgICAg
-ICBzZWxmLnZtLmFkZF9hcmdzKCctY3B1JywgJ21heCx4LXJtZT1vbicpDQo+PiArICAgICAg
-ICBzZWxmLnZtLmFkZF9hcmdzKCctbScsICcyMDQ4JykNCj4+ICsgICAgICAgIHNlbGYudm0u
-YWRkX2FyZ3MoJy1NJywgJ3ZpcnQsYWNwaT1vZmYsJw0KPj4gKyAgICAgICAgICAgICAgICAg
-ICAgICAgICAndmlydHVhbGl6YXRpb249b24sJw0KPj4gKyAgICAgICAgICAgICAgICAgICAg
-ICAgICAnc2VjdXJlPW9uLCcNCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgJ2dpYy12
-ZXJzaW9uPTMnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWJpb3MnLCBiaW9z
-KQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWtlcm5lbCcsIGtlcm5lbCkNCj4+
-ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1kcml2ZScsIGYnZm9ybWF0PXJhdyxpZj1u
-b25lLGZpbGU9e2RyaXZlfSxpZD1oZDAnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJn
-cygnLWRldmljZScsICd2aXJ0aW8tYmxrLXBjaSxkcml2ZT1oZDAnKQ0KPj4gKyAgICAgICAg
-c2VsZi52bS5hZGRfYXJncygnLWRldmljZScsICd2aXJ0aW8tOXAtZGV2aWNlLGZzZGV2PXNo
-cjAsbW91bnRfdGFnPXNocjAnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWZz
-ZGV2JywgZidsb2NhbCxzZWN1cml0eV9tb2RlbD1ub25lLHBhdGg9e3JtZV9zdGFja30saWQ9
-c2hyMCcpDQo+PiArICAgICAgICBzZWxmLnZtLmFkZF9hcmdzKCctZGV2aWNlJywgJ3ZpcnRp
-by1uZXQtcGNpLG5ldGRldj1uZXQwJykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3Mo
-Jy1uZXRkZXYnLCAndXNlcixpZD1uZXQwJykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRkX2Fy
-Z3MoJy1hcHBlbmQnLCAncm9vdD0vZGV2L3ZkYScpDQo+PiArDQo+PiArICAgICAgICBzZWxm
-LnZtLmxhdW5jaCgpDQo+PiArICAgICAgICBzZWxmLndhaXRfZm9yX2NvbnNvbGVfcGF0dGVy
-bignV2VsY29tZSB0byBCdWlsZHJvb3QnKQ0KPj4gKyAgICAgICAgdGltZS5zbGVlcCgwLjEp
-DQo+PiArICAgICAgICBleGVjX2NvbW1hbmQoc2VsZiwgJ3Jvb3QnKQ0KPj4gKyAgICAgICAg
-dGltZS5zbGVlcCgwLjEpDQo+PiArDQo+PiArICAgICAgICAjIFdlIG5vdyBib290IHRoZSAo
-bmVzdGVkKSBndWVzdCBWTQ0KPj4gKyAgICAgICAgZXhlY19jb21tYW5kKHNlbGYsDQo+PiAr
-ICAgICAgICAgICAgICAgICAgICAgJ3FlbXUtc3lzdGVtLWFhcmNoNjQgLU0gdmlydCxnaWMt
-dmVyc2lvbj0zICcNCj4+ICsgICAgICAgICAgICAgICAgICAgICAnLWNwdSBob3N0IC1lbmFi
-bGUta3ZtIC1tIDUxMk0gJw0KPj4gKyAgICAgICAgICAgICAgICAgICAgICctTSBjb25maWRl
-bnRpYWwtZ3Vlc3Qtc3VwcG9ydD1ybWUwICcNCj4+ICsgICAgICAgICAgICAgICAgICAgICAn
-LW9iamVjdCBybWUtZ3Vlc3QsaWQ9cm1lMCxtZWFzdXJlbWVudC1hbGdvPXNoYTUxMiAnDQo+
-PiArICAgICAgICAgICAgICAgICAgICAgJy1kZXZpY2UgdmlydGlvLW5ldC1wY2ksbmV0ZGV2
-PW5ldDAscm9tZmlsZT0gJw0KPj4gKyAgICAgICAgICAgICAgICAgICAgICctbmV0ZGV2IHVz
-ZXIsaWQ9bmV0MCAnDQo+PiArICAgICAgICAgICAgICAgICAgICAgJy1rZXJuZWwgL21udC9v
-dXQvYmluL0ltYWdlICcNCj4+ICsgICAgICAgICAgICAgICAgICAgICAnLWluaXRyZCAvbW50
-L291dC1ici9pbWFnZXMvcm9vdGZzLmNwaW8gJw0KPj4gKyAgICAgICAgICAgICAgICAgICAg
-ICctc2VyaWFsIHN0ZGlvJykNCj4+ICsgICAgICAgICMgRGV0ZWN0IFJlYWxtIGFjdGl2YXRp
-b24gZHVyaW5nIGJvb3QuDQo+PiArICAgICAgICBzZWxmLndhaXRfZm9yX2NvbnNvbGVfcGF0
-dGVybignU01DX1JNSV9SRUFMTV9BQ1RJVkFURScpDQo+PiArICAgICAgICAjIFdhaXQgZm9y
-IGJvb3QgdG8gY29tcGxldGUuDQo+PiArICAgICAgICBzZWxmLndhaXRfZm9yX2NvbnNvbGVf
-cGF0dGVybignV2VsY29tZSB0byBCdWlsZHJvb3QnKQ0KPiANCj4gVGhpcyBpcyB0aGUgc2Ft
-ZSBhcyBhYm92ZT8gT3IgdGhlIGNvbnNvbGUgb2YgdGhlIGd1ZXN0Pw0KPiANCg0KSXQncyB0
-aGUgZ3Vlc3QgeWVzLCBhcyB0aGUgY29tbWVudCB0cnkgdG8gZXhwbGFpbi4NCkkgY2hvc2Ug
-dG8gaW1wbGVtZW50IGl0IHRoaXMgd2F5LCBpbnN0ZWFkIG9mIGdvaW5nIHdpdGggYSBzZXBh
-cmF0ZSANCnNvY2tldCwgYmVjYXVzZSBpdCB3b3VsZCBtYWtlIHRoZSB0ZXN0IGNvZGUgbXVj
-aCBtb3JlIGNvbXBsaWNhdGVkIHdpdGggDQpubyByZWFsIGJlbmVmaXQuDQoNCj4gQ291bGQg
-d2UgYWxzbyBjaGVjayB0aGUgb3V0cHV0IG9mIHRoZSBvdGhlciBzZXJpYWwgcG9zdHM/DQo+
-IA0KDQpIb3N0IGRvZXMgbm90IHByaW50IGFueXRoaW5nLg0KV2UgYWxyZWFkeSBjaGVjayBn
-dWVzdC4NCk1lc3NhZ2UgJ1NNQ19STUlfUkVBTE1fQUNUSVZBVEUnIGNvbWVzIGZyb20gdGhl
-IGZpcm13YXJlLg0KU2VjdXJlIHRlcm1pbmFsIGlzIGNvbXBsZXRlbHkgc2lsZW50Lg0KDQpX
-ZXJlIHlvdSB0aGlua2luZyB0byBzb21ldGhpbmcgZWxzZT8NCg0KRmVlbCBmcmVlIHRvIHRy
-eSBbMV0sIHlvdSBjYW4gYnVpbGQgYW5kIGxhdW5jaCB0aGUgdm0gaW4gdHdvIGNvbW1hbmRz
-IA0Kd2l0aG91dCBoYXZpbmcgdG8gaW5zdGFsbCBhbnl0aGluZyBvbiB5b3VyIG1hY2hpbmUu
-DQoNClsxXSBodHRwczovL2dpdGh1Yi5jb20vcGJvLWxpbmFyby9xZW11LXJtZS1zdGFjaw0K
-DQo+PiAgIA0KPj4gICBpZiBfX25hbWVfXyA9PSAnX19tYWluX18nOg0KPj4gICAgICAgUWVt
-dVN5c3RlbVRlc3QubWFpbigpDQo+IA0KDQo=
+
+
+> On 21 Nov 2024, at 10:28=E2=80=AFPM, Alex Benn=C3=A9e <alex.bennee@linaro=
+.org> wrote:
+>=20
+> From: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+>=20
+> The docs for submitting a patch describe using your "Real Name" with
+> the Signed-off-by line. Although somewhat ambiguous, this has often
+> been interpreted to mean someone's legal name.
+>=20
+> In recent times, there's been a general push back[1] against the notion
+> that use of Signed-off-by in a project automatically requires / implies
+> the use of legal ("real") names and greater awareness of the downsides.
+>=20
+> Full discussion of the problems of such policies is beyond the scope of
+> this commit message, but at a high level they are liable to marginalize,
+> disadvantage, and potentially result in harm, to contributors.
+>=20
+> TL;DR: there are compelling reasons for a person to choose distinct
+> identities in different contexts & a decision to override that choice
+> should not be taken lightly.
+>=20
+> A number of key projects have responded to the issues raised by making
+> it clear that a contributor is free to determine the identity used in
+> SoB lines:
+>=20
+> * Linux has clarified[2] that they merely expect use of the
+>   contributor's "known identity", removing the previous explicit
+>   rejection of pseudonyms.
+>=20
+> * CNCF has clarified[3] that the real name is simply the identity
+>   the contributor chooses to use in the context of the community
+>   and does not have to be a legal name, nor birth name, nor appear
+>   on any government ID.
+>=20
+> Since we have no intention of ever routinely checking any form of ID
+> documents for contributors[4], realistically we have no way of knowing
+> anything about the name they are using, except through chance, or
+> through the contributor volunteering the information. IOW, we almost
+> certainly already have people using pseudonyms for contributions.
+>=20
+> This proposes to accept that reality and eliminate unnecessary friction,
+> by following Linux & the CNCF in merely asking that a contributors'
+> commonly known identity, of their choosing, be used with the SoB line.
+>=20
+> [1] Raised in many contexts at many times, but a decent overall summary
+>    can be read at https://drewdevault.com/2023/10/31/On-real-names.html
+> [2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/co=
+mmit/?id=3Dd4563201f33a022fc0353033d9dfeb1606a88330
+> [3] https://github.com/cncf/foundation/blob/659fd32c86dc/dco-guidelines.m=
+d
+> [4] Excluding the rare GPG key signing parties for regular maintainers
+>=20
+> Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+> Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
+> Acked-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Acked-by: Richard Henderson <richard.henderson@linaro.org>
+> Message-Id: <20241021190939.1482466-1-berrange@redhat.com>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+Acked-by: Ani Sinha <anisinha@redhat.com>
+
+
+> ---
+> docs/devel/submitting-a-patch.rst | 7 ++++++-
+> .gitlab-ci.d/check-dco.py         | 5 ++++-
+> 2 files changed, 10 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-=
+patch.rst
+> index 83e9092b8c..10b062eec2 100644
+> --- a/docs/devel/submitting-a-patch.rst
+> +++ b/docs/devel/submitting-a-patch.rst
+> @@ -18,7 +18,7 @@ one-shot fix, the bare minimum we ask is that:
+>=20
+>    * - Check
+>      - Reason
+> -   * - Patches contain Signed-off-by: Real Name <author@email>
+> +   * - Patches contain Signed-off-by: Your Name <author@email>
+>      - States you are legally able to contribute the code. See :ref:`patc=
+h_emails_must_include_a_signed_off_by_line`
+>    * - Sent as patch emails to ``qemu-devel@nongnu.org``
+>      - The project uses an email list based workflow. See :ref:`submittin=
+g_your_patches`
+> @@ -335,6 +335,11 @@ include a "From:" line in the body of the email (dif=
+ferent from your
+> envelope From:) that will give credit to the correct author; but again,
+> that author's Signed-off-by: line is mandatory, with the same spelling.
+>=20
+> +The name used with "Signed-off-by" does not need to be your legal name,
+> +nor birth name, nor appear on any government ID. It is the identity you
+> +choose to be known by in the community, but should not be anonymous,
+> +nor misrepresent whom you are.
+> +
+> There are various tooling options for automatically adding these tags
+> include using ``git commit -s`` or ``git format-patch -s``. For more
+> information see `SubmittingPatches 1.12
+> diff --git a/.gitlab-ci.d/check-dco.py b/.gitlab-ci.d/check-dco.py
+> index d221b16bd5..70dec7d6ee 100755
+> --- a/.gitlab-ci.d/check-dco.py
+> +++ b/.gitlab-ci.d/check-dco.py
+> @@ -78,7 +78,10 @@
+>=20
+> To indicate acceptance of the DCO every commit must have a tag
+>=20
+> -  Signed-off-by: REAL NAME <EMAIL>
+> +  Signed-off-by: YOUR NAME <EMAIL>
+> +
+> +where "YOUR NAME" is your commonly known identity in the context
+> +of the community.
+>=20
+> This can be achieved by passing the "-s" flag to the "git commit" command=
+.
+>=20
+> --=20
+> 2.39.5
+>=20

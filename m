@@ -1,247 +1,248 @@
-Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp373189njb;
-        Tue, 26 Nov 2024 13:27:15 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHkyxkw50pqHbMWSrjQUkan+pmcCv5Xxv1xzY7dPw3+4zlbIzHF5YtYVrbUuhQKYbspNoBQ
-X-Received: by 2002:a05:6358:5bc5:b0:1be:de52:97b9 with SMTP id e5c5f4694b2df-1cab15a5ecdmr141954855d.2.1732656435642;
-        Tue, 26 Nov 2024 13:27:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732656435; cv=none;
+Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp335362njb;
+        Tue, 26 Nov 2024 12:10:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUjIpBYYlnyzcWUVzffjeqK7eTkXcnpvseymNm5j109KHPDlHBIFLs6kHUwg3iA4q8zCtUlL1gRw0M/PA==@linaro.org
+X-Received: by 2002:a92:c243:0:b0:3a7:65fb:b3da with SMTP id e9e14a558f8ab-3a7c55cff9fmr3995515ab.15.1732651840802;
+        Tue, 26 Nov 2024 12:10:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732651840; cv=none;
         d=google.com; s=arc-20240605;
-        b=Uf60ILRa7rc54zonTkEiSYCNT8w+V3v/aykjFgtDjH0ew6TrhiuJyqXUNu+nLYzSAf
-         u4jGxBZVVG1YOfP2u3DnVvZL0TfEYZrSuEDF0i2hm2SIBllYc347lnX+VJoTl9KxRko/
-         M0yZnnotuS+fbZCc0jahtPbfrs5NL8YN22bBRfKmlv0rF8lNTvBFokTSbGPZaCXm4rbc
-         fyLW3UNN6Xd/4FPKIka2bJ48lrQJVSDhoAPxqg0mRlfAN71XC+yDBLvLiBSdReOa1PCB
-         vPEBa4tE2VeRaME1b1TQXieCkz02tJ1x94wEptRWH4orxZoqXLjcWzM9s5jnYpdpwIxj
-         6a/g==
+        b=EQVmZGuwljz6YMmExrdDgfBzRcjXfrb5sJqsEjaznbFIolYv+eZg7/hkM8XpSFub10
+         DJbL/1/9Nenu9ZNql11D/0oL3SghBlXU5PdfPg+2hYmVp+0ky0HioKhXPb8TWLGqOm7y
+         B8XOHDVLTlEv5bbkYdEGcdURHII6tjTPJzDVL4VuwpOEcrXhkbElYloIoePjqa5YhZbq
+         VOHJB5tCrBr0zjOk20E7zMP7SHfERMKeuPlcLYWJiHItHF/VZhkI6S9qWyXVNn+PEqY6
+         yVtymp4praImN/LavAPtaCnZVCpeBpxqsAH9x4jjmEFHKos372dFyx8nG+hy+y81f1kd
+         BN2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=2bVfuVSIsMKCKvriHIIacA8lNNZ42nxSlyRz3CpsIdY=;
-        fh=2/VQF0v7jmkhNtE945WOt7ugov0tjBIOogjJ39ElaQs=;
-        b=Zu3G3hSjro0pI+lN2zlJeRuAMv/twnbMWg0YE1dT8zgNEAnfNZ2oIW3+7+AEeQqnrt
-         9GXubr6hRAwoevOT2Mw/mGbJ39dwLAhuatBqTwonCjQxX68iJ4dJnZSXTSTyQteXhUFM
-         nFFZg/+alMHwRwtpUHZvJNWPkbhFjrUq2p+d8k/XTc23fcc72KUAOblVOICK3/YaBSRW
-         dbfo7oFYjrvXQFw1KJeqljiiTQ4V3XMInLHVPRQhDp6sKJaRIq8WWCpWlHNOxSaSkKYX
-         AeoqWsoPYHVb2xGoVxksfvFy8tt4lrBHCpGMJc98ePBvLKQ53FAuGYMA6lPyG8KM7rZb
-         q1Jw==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=OZcPBE+v7KMTwCQ8k9OZyOuvM0Ux/flzgVHYBPLK/rU=;
+        fh=Jiawyf+SA2F1ZgMH8jnobe+uVT3GJkf5J5unX4L3kRA=;
+        b=RK3pNcW3DwAQLHCnEuv+kISKi36VsTh3ctZdJc3tqxP+zHlhIFL2AIbXNqsccSHiV/
+         pWOSo5yMrWO4oeQnfDv6yvUraBKHiFCLVA3oCI/pkVZww8ApIHOFDsODdd2J3eI/BqG6
+         OS+uiL5Ukz6VIJGztlx6fj9RxND8Ib4g0DI4mYNqZO6bNlUFdBHmcLwyns7YCAuAXvOf
+         wi00oW9L48QXyIS0LiKbW8OJurCnGQUWdFVoy7Uy7nI0OcTjYRQMrVIBER9NAIE/J+N1
+         cXt+THPypHxAl0UFqwsfnKmP8f/ecImg+JxU6eja38JhCoqnx0K9jfWaqGhboqRiIyiZ
+         v8EQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LkKuaLb+;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <mst@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-466a7d9698csi23481291cf.619.2024.11.26.13.27.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Nov 2024 13:27:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ahWIQ7/k";
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <nieklinnenbank@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id e9e14a558f8ab-3a7ba4bd64csor15908305ab.7.2024.11.26.12.10.40
+        (Google Transport Security);
+        Tue, 26 Nov 2024 12:10:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LkKuaLb+;
-       spf=pass (google.com: domain of mst@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=mst@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1732656435;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=2bVfuVSIsMKCKvriHIIacA8lNNZ42nxSlyRz3CpsIdY=;
-	b=LkKuaLb+SmCQwLYB/uG74RmTElYfNa1HZVhZ1A3q8zGDPPZN4YM+8+EpHOdJEccPDpDheo
-	2TB+P3RgJZEmVwYP/p+u+UIKEpAF1OUPb70tshIoW+/xapDMzIni5wRZTAax5Q4EA7As1C
-	8VmXmDPDMAZHjQs8tZpgudlJR/OHcgU=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-157-_Ao6g2UkMeqW--G2zI4MAg-1; Tue, 26 Nov 2024 16:27:14 -0500
-X-MC-Unique: _Ao6g2UkMeqW--G2zI4MAg-1
-X-Mimecast-MFC-AGG-ID: _Ao6g2UkMeqW--G2zI4MAg
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-4349df2d87dso27927325e9.2
-        for <alex.bennee@linaro.org>; Tue, 26 Nov 2024 13:27:13 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ahWIQ7/k";
+       spf=pass (google.com: domain of nieklinnenbank@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=nieklinnenbank@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1732651840; x=1733256640; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=OZcPBE+v7KMTwCQ8k9OZyOuvM0Ux/flzgVHYBPLK/rU=;
+        b=ahWIQ7/kw3Qr1/95ojNUTKeFCXoJ8fZMu4Av6bNRbVmUeMC9Sxwt0uFpbQnMsMxPy5
+         fWO2FTOpt8AIoNtneNa/2ave6oOVU40P8R8SXXGZKZOhG2Vasb7xwDJiRMBPpXXzMsqn
+         XavqLTkWTaHkRKjp8zocAnsElRXDMZjtMzPavZkr/W7VrAjRwLibCLO9oO9nBTwSj2Kg
+         v7ocd5o1Q1yMRIbizimez+U1UCwIDY4O2K/Mi3HgEyztjHSnq7vjaE+iIqdtFdV1LAyT
+         wh4ucotwwHD1yK/pxdXyjV5B1ZLZaJj+sTktzo4YAem6qIh3tCuiti4KM3hJiWYZRYEI
+         3S1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732656432; x=1733261232;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=2bVfuVSIsMKCKvriHIIacA8lNNZ42nxSlyRz3CpsIdY=;
-        b=QeC8THGBpECUWCzfzc6gGw2GImOuKIKP/GbUSZLdIiLdhPNeO08k2ilLGbdLojyn8o
-         nd1q7pqapA1jhS/WY1a9llsxgy0OYLdpXSBh7gM94LebOrbQdwZGIO2AY8W6XWw3xrHS
-         r9jkWNQoxhjJ4cRtyMUMnn81eMPfHTngTv/3EHtFKgViuDs0AO9P/dcKF+mTRpP742h2
-         cCTQ/9kUI9jUU5b24r1dLbWwkfhDaKeoOcc6FzAseguVbxd7LHJb7o3amV+0RtGb1yDJ
-         UcP7gx9M8oRzAXtAtf0fLA/MF/KtUpTkMyKHTSU0Dk8FrGHuxmdErc+0zcgm51cujH38
-         zuNA==
-X-Gm-Message-State: AOJu0YzZ1YIazYtrlC6vMGNKrXjjREv9emVkikRZxxVIM1VgBPphVXzp
-	LDngOG/0U8J/bdokXCKQkymo8Kw/bK3EKNdw1W1Sasj20cLsppHOYEp7zM2HeCgPBAisVGK+LyH
-	tzCJKuYsJw8jN5Ri+Cwl8Z1ryyZO5HDQDszSx4Kqdc3vSyuZlmiDDjXFhjJXV3mCY6/TS16K7Cr
-	UAwCZP/LHDLQE+rMkTaUWlvlX0eopOmeY=
-X-Gm-Gg: ASbGncu9iSVf5jU+OARyBaYtwVo14JEraFsHl/Dl2TR0W03YQhidybuM9Wff99i8hYh
-	4pFZXKR7vWkQDyLxIgy39M6rRH0BusWqjCTYwkeWNC02tYZUPoFVc62VkpJBok7uNx3uGb1teXx
-	9ncGYO1fAzRI9Hj5IRRVBF5uSBrvvpn04LNtcrZflqIN8dOLxZLO0w6EiNZQ+zX1Wp+OqJd3Qfj
-	wjNMDTH4Sd9OyGqqplmQC83AG+oLd8l5tbtqI8U5A==
-X-Received: by 2002:a05:600c:2244:b0:434:a8ef:442e with SMTP id 5b1f17b1804b1-434a9dfbafamr7729305e9.31.1732656432564;
-        Tue, 26 Nov 2024 13:27:12 -0800 (PST)
-X-Received: by 2002:a05:600c:2244:b0:434:a8ef:442e with SMTP id 5b1f17b1804b1-434a9dfbafamr7728705e9.31.1732656432034;
-        Tue, 26 Nov 2024 13:27:12 -0800 (PST)
-Return-Path: <mst@redhat.com>
-Received: from redhat.com ([2a02:14f:1f0:4654:4e59:b33:d0e:9273])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4349ea54e13sm95116915e9.34.2024.11.26.13.27.02
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 26 Nov 2024 13:27:10 -0800 (PST)
-Date: Tue, 26 Nov 2024 16:27:00 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	qemu-ppc@nongnu.org,
-	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	Alexandre Iooss <erdnaxe@crans.org>, qemu-riscv@nongnu.org,
-	Thomas Huth <huth@tuxfamily.org>,
-	Bernhard Beschow <shentey@gmail.com>,
-	Thomas Huth <thuth@redhat.com>, Eric Farman <farman@linux.ibm.com>,
-	Bin Meng <bmeng.cn@gmail.com>, qemu-s390x@nongnu.org,
-	Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
-	John Snow <jsnow@redhat.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	Cleber Rosa <crosa@redhat.com>, qemu-rust@nongnu.org,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
-	Palmer Dabbelt <palmer@dabbelt.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Weiwei Li <liwei1518@gmail.com>,
-	Mahmoud Mandour <ma.mandourr@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Ani Sinha <anisinha@redhat.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Stefan Hajnoczi <stefanha@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH 39/39] docs: explicitly permit a "commonly known
- identity" with SoB
-Message-ID: <20241126162651-mutt-send-email-mst@kernel.org>
-References: <20241121165806.476008-1-alex.bennee@linaro.org>
- <20241121165806.476008-40-alex.bennee@linaro.org>
+        d=1e100.net; s=20230601; t=1732651840; x=1733256640;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=OZcPBE+v7KMTwCQ8k9OZyOuvM0Ux/flzgVHYBPLK/rU=;
+        b=Iw/+Uhfx3Ehzn2DveFCnQyizxyPiR0SdRlNB3lU+SeHDAqE7KeBUInDLIZopHzFKeM
+         Ba9dsU8m+Uz05TGDWhQMPL9s2HY8VzWackEIwPn37HoW6XjH0f4vU3UNjWsFFKfHY04o
+         0KDCrtOl1EN5RzXkew+c0zyQBqz2H4LImX0MM15pPpRYgWNx5rXHMfMJ+57+wTbbkrjG
+         sDpDDMgjxsrfmcvGD0iFbwe/S+IeelIix1FyQEaRX5CR0ZFzaEPx/z53i2AZYVRxztlR
+         pHAN3mTSX2XprtUzP8jCWUlIAxSCoVrAWJla7KqO1A2CLx2dvYAGuXH9qMdWXACaD30U
+         g3Sw==
+X-Forwarded-Encrypted: i=1; AJvYcCWpYv8GoIHRzsxYsNAIvA/bCexNVYU9f7ncNWL7fCfvY5ZQK02bwzU+bnnTZKmcI7rPMHv96pSyjvK9TPd0/G2VarQ=@linaro.org, AJvYcCXCBpywjNrgqDjGaaLKve677uisQqA7K2N0NLv/qBDavrbDV6njOWQ7KfwYP2q0WIW3Pp8jwJKq+WrggLG/fQ==@linaro.org, AJvYcCXhlJOquggSgPwG9swZNOOPUJxAaA0mEaErN1kr4FWlZO8SJSzum5Hj8e56o43Lol/Wc4Une0DG5l34VQ==@linaro.org
+X-Gm-Message-State: AOJu0Yx6jvW7+Q7KXv5GnzJ1gWR1BuAiwk0ukPwPtXOWgv5grYw2kdXX
+	TyiJfRV20rAsy5waKaMgMNnQAsUAGcYJrC5tFV1lkrrg2rlW5fUB0Snt0Ef6EL2LMsKRjqjM/3U
+	2Hb5VoKM+jdtcTW1yQIXvIBM/WKTuvg==
+X-Gm-Gg: ASbGncttWEfNGqP6gD3EMrNs73D5qqXC0J7ZK6naWo1+JY+wQrQ1XjHM4lgZueCyZQH
+	SwSEzqTL3W2ZERI1CWRJt4CrkF3LNgPcllSV6byAyNo8wc5j84VugCgYbfdveaA==
+X-Google-Smtp-Source: AGHT+IHGkVovRLTc9S8HzRFYl+KODBFIBIgOxgtVslpQuXwW+3p9gnBcneyFvj8OWSGZoxtiAdX4ghkN09xcvjBep50=
+X-Received: by 2002:a92:c243:0:b0:3a7:65fb:b3da with SMTP id
+ e9e14a558f8ab-3a7c55cff9fmr3995005ab.15.1732651840028; Tue, 26 Nov 2024
+ 12:10:40 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20241121165806.476008-40-alex.bennee@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ARH7lvOYyhDg48CeR8lpg8iLuvqAKy-SPuSFjKU5xoY_1732656433
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-X-TUID: P5L3y2/I9RIp
+References: <20241122225049.1617774-1-pierrick.bouvier@linaro.org>
+ <20241122225049.1617774-9-pierrick.bouvier@linaro.org> <c18bc538-2036-49ad-b629-ae40486934cc@linaro.org>
+In-Reply-To: <c18bc538-2036-49ad-b629-ae40486934cc@linaro.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Tue, 26 Nov 2024 21:10:29 +0100
+Message-ID: <CAPan3Wqw+LG1hNx3RFR6SbN4FGzO+fCZvgDNfcPG=dU3heU5yQ@mail.gmail.com>
+Subject: Re: [PATCH 08/12] docs/system/arm/orangepi: update links
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, alex.bennee@linaro.org, 
+	Steven Lee <steven_lee@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, 
+	Richard Henderson <richard.henderson@linaro.org>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org, 
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+	Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>, 
+	Alistair Francis <alistair@alistair23.me>
+Content-Type: multipart/alternative; boundary="00000000000071cf1d0627d67107"
+X-TUID: 3jkGWEpHNktv
 
-On Thu, Nov 21, 2024 at 04:58:06PM +0000, Alex Bennée wrote:
-> From: Daniel P. Berrangé <berrange@redhat.com>
-> 
-> The docs for submitting a patch describe using your "Real Name" with
-> the Signed-off-by line. Although somewhat ambiguous, this has often
-> been interpreted to mean someone's legal name.
-> 
-> In recent times, there's been a general push back[1] against the notion
-> that use of Signed-off-by in a project automatically requires / implies
-> the use of legal ("real") names and greater awareness of the downsides.
-> 
-> Full discussion of the problems of such policies is beyond the scope of
-> this commit message, but at a high level they are liable to marginalize,
-> disadvantage, and potentially result in harm, to contributors.
-> 
-> TL;DR: there are compelling reasons for a person to choose distinct
-> identities in different contexts & a decision to override that choice
-> should not be taken lightly.
-> 
-> A number of key projects have responded to the issues raised by making
-> it clear that a contributor is free to determine the identity used in
-> SoB lines:
-> 
->  * Linux has clarified[2] that they merely expect use of the
->    contributor's "known identity", removing the previous explicit
->    rejection of pseudonyms.
-> 
->  * CNCF has clarified[3] that the real name is simply the identity
->    the contributor chooses to use in the context of the community
->    and does not have to be a legal name, nor birth name, nor appear
->    on any government ID.
-> 
-> Since we have no intention of ever routinely checking any form of ID
-> documents for contributors[4], realistically we have no way of knowing
-> anything about the name they are using, except through chance, or
-> through the contributor volunteering the information. IOW, we almost
-> certainly already have people using pseudonyms for contributions.
-> 
-> This proposes to accept that reality and eliminate unnecessary friction,
-> by following Linux & the CNCF in merely asking that a contributors'
-> commonly known identity, of their choosing, be used with the SoB line.
-> 
-> [1] Raised in many contexts at many times, but a decent overall summary
->     can be read at https://drewdevault.com/2023/10/31/On-real-names.html
-> [2] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d4563201f33a022fc0353033d9dfeb1606a88330
-> [3] https://github.com/cncf/foundation/blob/659fd32c86dc/dco-guidelines.md
-> [4] Excluding the rare GPG key signing parties for regular maintainers
-> 
-> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> Acked-by: Stefan Hajnoczi <stefanha@redhat.com>
-> Acked-by: Peter Maydell <peter.maydell@linaro.org>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-> Acked-by: Richard Henderson <richard.henderson@linaro.org>
-> Message-Id: <20241021190939.1482466-1-berrange@redhat.com>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+--00000000000071cf1d0627d67107
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+Hello Pierrick,
 
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Thanks for including orangepi documentation in your updates.
 
-> ---
->  docs/devel/submitting-a-patch.rst | 7 ++++++-
->  .gitlab-ci.d/check-dco.py         | 5 ++++-
->  2 files changed, 10 insertions(+), 2 deletions(-)
-> 
-> diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
-> index 83e9092b8c..10b062eec2 100644
-> --- a/docs/devel/submitting-a-patch.rst
-> +++ b/docs/devel/submitting-a-patch.rst
-> @@ -18,7 +18,7 @@ one-shot fix, the bare minimum we ask is that:
->  
->     * - Check
->       - Reason
-> -   * - Patches contain Signed-off-by: Real Name <author@email>
-> +   * - Patches contain Signed-off-by: Your Name <author@email>
->       - States you are legally able to contribute the code. See :ref:`patch_emails_must_include_a_signed_off_by_line`
->     * - Sent as patch emails to ``qemu-devel@nongnu.org``
->       - The project uses an email list based workflow. See :ref:`submitting_your_patches`
-> @@ -335,6 +335,11 @@ include a "From:" line in the body of the email (different from your
->  envelope From:) that will give credit to the correct author; but again,
->  that author's Signed-off-by: line is mandatory, with the same spelling.
->  
-> +The name used with "Signed-off-by" does not need to be your legal name,
-> +nor birth name, nor appear on any government ID. It is the identity you
-> +choose to be known by in the community, but should not be anonymous,
-> +nor misrepresent whom you are.
-> +
->  There are various tooling options for automatically adding these tags
->  include using ``git commit -s`` or ``git format-patch -s``. For more
->  information see `SubmittingPatches 1.12
-> diff --git a/.gitlab-ci.d/check-dco.py b/.gitlab-ci.d/check-dco.py
-> index d221b16bd5..70dec7d6ee 100755
-> --- a/.gitlab-ci.d/check-dco.py
-> +++ b/.gitlab-ci.d/check-dco.py
-> @@ -78,7 +78,10 @@
->  
->  To indicate acceptance of the DCO every commit must have a tag
->  
-> -  Signed-off-by: REAL NAME <EMAIL>
-> +  Signed-off-by: YOUR NAME <EMAIL>
-> +
-> +where "YOUR NAME" is your commonly known identity in the context
-> +of the community.
->  
->  This can be achieved by passing the "-s" flag to the "git commit" command.
->  
-> -- 
-> 2.39.5
+On Tue, Nov 26, 2024 at 8:00=E2=80=AFPM Pierrick Bouvier <
+pierrick.bouvier@linaro.org> wrote:
+
+> On 11/22/24 14:50, Pierrick Bouvier wrote:
+> > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> > ---
+> >   docs/system/arm/orangepi.rst | 4 ++--
+> >   1 file changed, 2 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rs=
+t
+> > index 9afa54213b0..db87e81fec4 100644
+> > --- a/docs/system/arm/orangepi.rst
+> > +++ b/docs/system/arm/orangepi.rst
+> > @@ -119,7 +119,7 @@ Orange Pi PC images
+> >   Note that the mainline kernel does not have a root filesystem. You ma=
+y
+> provide it
+> >   with an official Orange Pi PC image from the official website:
+> >
+> > -  http://www.orangepi.org/downloadresources/
+> > +  http://www.orangepi.org/html/serviceAndSupport/index.html
+> >
+> >   Another possibility is to run an Armbian image for Orange Pi PC which
+> >   can be downloaded from:
+> > @@ -213,7 +213,7 @@ including the Orange Pi PC. NetBSD 9.0 is known to
+> work best for the Orange Pi P
+> >   board and provides a fully working system with serial console,
+> networking and storage.
+> >   For the Orange Pi PC machine, get the 'evbarm-earmv7hf' based image
+> from:
+> >
+> > -
+> https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0/evbarm-earmv7hf/binary/gzimg=
+/armv7.img.gz
+> > +
+> https://archive.netbsd.org/pub/NetBSD-archive/NetBSD-9.0/evbarm-earmv7hf/=
+binary/gzimg/armv7.img.gz
+> >
+> >   The image requires manually installing U-Boot in the image. Build
+> U-Boot with
+> >   the orangepi_pc_defconfig configuration as described in the previous
+> section.
+>
+> Regarding our conversation on IRC with Peter, is seems that google
+> reference www.orangepi.org only through http, and not https.
+> As the host is currently down, I'm not sure if https really works or
+> not. So maybe it's better to stick with http for now.
+>
+
+Yes, I also just noted that the orangepi.org website is not responding.
+However earlier this week, I was able to load the new URL above to the
+official website.
+Perhaps it is only temporary down, but we can only be sure once it comes
+back up.
+The NetBSD image URL is OK, ive also verified that the hash is the same.
+
+So for me:
+
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+Regards,
+Niek
+
+--=20
+Niek Linnenbank
+
+--00000000000071cf1d0627d67107
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div>Hello Pierrick,</div><div><br></div>=
+<div>Thanks for including orangepi documentation in your updates.<br></div>=
+</div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">=
+On Tue, Nov 26, 2024 at 8:00=E2=80=AFPM Pierrick Bouvier &lt;<a href=3D"mai=
+lto:pierrick.bouvier@linaro.org">pierrick.bouvier@linaro.org</a>&gt; wrote:=
+<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8=
+ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 11/22/24 14:=
+50, Pierrick Bouvier wrote:<br>
+&gt; Signed-off-by: Pierrick Bouvier &lt;<a href=3D"mailto:pierrick.bouvier=
+@linaro.org" target=3D"_blank">pierrick.bouvier@linaro.org</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 =C2=A0docs/system/arm/orangepi.rst | 4 ++--<br>
+&gt;=C2=A0 =C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.r=
+st<br>
+&gt; index 9afa54213b0..db87e81fec4 100644<br>
+&gt; --- a/docs/system/arm/orangepi.rst<br>
+&gt; +++ b/docs/system/arm/orangepi.rst<br>
+&gt; @@ -119,7 +119,7 @@ Orange Pi PC images<br>
+&gt;=C2=A0 =C2=A0Note that the mainline kernel does not have a root filesys=
+tem. You may provide it<br>
+&gt;=C2=A0 =C2=A0with an official Orange Pi PC image from the official webs=
+ite:<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; -=C2=A0 <a href=3D"http://www.orangepi.org/downloadresources/" rel=3D"=
+noreferrer" target=3D"_blank">http://www.orangepi.org/downloadresources/</a=
+><br>
+&gt; +=C2=A0 <a href=3D"http://www.orangepi.org/html/serviceAndSupport/inde=
+x.html" rel=3D"noreferrer" target=3D"_blank">http://www.orangepi.org/html/s=
+erviceAndSupport/index.html</a><br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0Another possibility is to run an Armbian image for Orange =
+Pi PC which<br>
+&gt;=C2=A0 =C2=A0can be downloaded from:<br>
+&gt; @@ -213,7 +213,7 @@ including the Orange Pi PC. NetBSD 9.0 is known to=
+ work best for the Orange Pi P<br>
+&gt;=C2=A0 =C2=A0board and provides a fully working system with serial cons=
+ole, networking and storage.<br>
+&gt;=C2=A0 =C2=A0For the Orange Pi PC machine, get the &#39;evbarm-earmv7hf=
+&#39; based image from:<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; -=C2=A0 <a href=3D"https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0/evbarm=
+-earmv7hf/binary/gzimg/armv7.img.gz" rel=3D"noreferrer" target=3D"_blank">h=
+ttps://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0/evbarm-earmv7hf/binary/gzimg/ar=
+mv7.img.gz</a><br>
+&gt; +=C2=A0 <a href=3D"https://archive.netbsd.org/pub/NetBSD-archive/NetBS=
+D-9.0/evbarm-earmv7hf/binary/gzimg/armv7.img.gz" rel=3D"noreferrer" target=
+=3D"_blank">https://archive.netbsd.org/pub/NetBSD-archive/NetBSD-9.0/evbarm=
+-earmv7hf/binary/gzimg/armv7.img.gz</a><br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0The image requires manually installing U-Boot in the image=
+. Build U-Boot with<br>
+&gt;=C2=A0 =C2=A0the orangepi_pc_defconfig configuration as described in th=
+e previous section.<br>
+<br>
+Regarding our conversation on IRC with Peter, is seems that google <br>
+reference <a href=3D"http://www.orangepi.org" rel=3D"noreferrer" target=3D"=
+_blank">www.orangepi.org</a> only through http, and not https.<br>
+As the host is currently down, I&#39;m not sure if https really works or <b=
+r>
+not. So maybe it&#39;s better to stick with http for now.<br></blockquote><=
+div>=C2=A0</div><div>Yes, I also just noted that the <a href=3D"http://oran=
+gepi.org">orangepi.org</a> website is not responding. However earlier this =
+week, I was able to load the new URL above to the official website.</div><d=
+iv>Perhaps it is only temporary down, but we can only be sure once it comes=
+ back up.</div><div>The NetBSD image URL is OK, ive also verified that the =
+hash is the same.</div><div><br></div><div>So for me:<br></div><div><br></d=
+iv><div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@g=
+mail.com">nieklinnenbank@gmail.com</a>&gt;<br></div></div><div><br></div><d=
+iv>Regards,</div><div>Niek<br clear=3D"all"></div><br><span class=3D"gmail_=
+signature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature">=
+<div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
+
+--00000000000071cf1d0627d67107--

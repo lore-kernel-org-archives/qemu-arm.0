@@ -1,183 +1,432 @@
-Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp652462njb;
-        Wed, 27 Nov 2024 01:45:24 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVKKb8w5t7l6VndOk6KN/LwBhbsSwOp4AvmB0hejOhwyJMgr6SThyEH3UVgFGSw/s1Cl4pc9Em4kgLEgA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG/8GELfH4NARtCMxj7GP3GjcARhie/P3EGbgA+hRTDen6EFto/PSKNdO3eL8rp/lCNLJCR
-X-Received: by 2002:a05:6214:490:b0:6d4:2b4b:a2b5 with SMTP id 6a1803df08f44-6d856c54847mr99442746d6.17.1732700724031;
-        Wed, 27 Nov 2024 01:45:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732700724; cv=none;
+Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp666105njb;
+        Wed, 27 Nov 2024 02:16:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVg87xxzq6lLo6bpm6dpwq56uf77keF6TPlB9lKFIaqR5GyCQtDlFfoA/zV5RUGm9voNVsQSi4PZcii/g==@linaro.org
+X-Google-Smtp-Source: AGHT+IEbsmzY+xMGyOyg54ji8IyvEqk5mfQ2WICVMguuQjWDG16OwmA7FoOWsIb4y0n4txDEl/+2
+X-Received: by 2002:ad4:5ce5:0:b0:6d4:2c85:a9a with SMTP id 6a1803df08f44-6d864e0232emr36828326d6.44.1732702612697;
+        Wed, 27 Nov 2024 02:16:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732702612; cv=none;
         d=google.com; s=arc-20240605;
-        b=JK1nSYxrlojUnTQfXun16jDzh456RPWL1uLEqsLY63bDsRdYCy5Ga2PIGA+H67eB/H
-         TOcVTvBmhulcuWASd4te7468ouUvO0X6HTJw0sufOa90VauWIg+LvasT+x02POozst/m
-         Xh3+fG7djwlPah3qCfAOPGnQk6JPqGA67Vutkz7HJsKinR1j2aZUkQj2BZsNacVbRWnf
-         tanSg1U63j7bCPTU36icIr389pdH4RLovv6Gzv7gnsT+uoxkEFMIrT0VQyXvMFVYd42F
-         CvjcuE30S8fIW6nFyT5Gf0Gpeh3iko/0sZABWqB7WQ1l19ZLLwTddlGDlZC0w6Nt2197
-         5YiA==
+        b=QKSdJcLrieylAUY77Mq4u+mAmfEMlId+oHB2osyYZJ40a/F4FtEN/9Wj/VP41W8pde
+         S1HYvzqH4mXyEa/7OdKnLFtnWfOpON9u6djQlp5KjL4oBBL6oOHx3mrsByEWKVd6qpO7
+         GUrActSHGkYYVjoUJ18JWwPTrr8hU3tgIv478Ucz8qJHW9y1RuEX+pw4a7jXAOewjUWx
+         Xj44wYyDjy77M5M0zZ4PiOyisy3YgQp86YUv9vSmO5Hiwk5rHQkts6X6QWOxOnz3VWvK
+         IZp4/YkerdOjv5JBY95G/L1nNiq9LYP/d+sxnoSJnLtRWkeyr3MkqNOpvcPYA29CffgG
+         0pOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=zfdQSarFySRvvFXOkGuNmOmad8VNJV7u+gRKxy0Bh0Y=;
-        fh=98dZCMvX+NqbPkRXvFJNDIlyaWZH4tCfmKGJXDrbs8k=;
-        b=a1FIB/tPOHFfB8DdOarHY38IYaybmjF11WmjDAJse9AgEjawWtrIi9aQY6rLN6CARa
-         43lBY08xAjAzzy6O8Slf2Dgh6smFqFhmWxrrqQqJ62gU6udnEY2Zbx5w4zlyYJjbL+mC
-         dpBlvCRXs7AQd/8+F+xtEY0qQ4ctdYaTZm32RqVi4emyQF0+Ct0lVXpdbB29lbQujefc
-         o3vBSijlB0c35gJW2nJ9UUx52ggkBh8IDqDN06il2qC4XtS6pR+s+laNQGXJSZ0hG4B8
-         GkMajwRTLOYmDefkCOt+jrN+9OrHEFaYNxAz4T+dvj0OoL9JlevPO3QLutpBkZW1LHCA
-         BWlQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=a+hUjgE0CAKr3uN/Dtmw/JvDmx8Fmd9e/oWNu/3aw0I=;
+        fh=q9BxdiodYqAQdSm3s5TtAd7KqPjVHLWEw8OUvjsQshA=;
+        b=E4q4MbOdDmQEK6xS5ZNQ92Ftq13uhzptcHQQLaAkNiBD3ZLGfraChz/52zPThnd5Lh
+         GbdgiDAn0G86h+7tR71I6MFFD6bIFKcUVSazSlScxksVsiKD5jWfNkZcYpefr3xIsBeM
+         l3QcoeRuyLlvp/2LrSxoyWaxkEvqaJAsvWzaxayoWPWWbEIv06ie4HRiVQcltACrIY2s
+         OBW6QFWzY/S1snDLhxE/re5PGgbXNRovJAyhFpYMvo7MvbEcnDTlz5cuZaW33cmKn9IB
+         jkxZwyeaKetS9uvC84Y+FVGb4bvUQcYZP2O+NYAaobD0tS0cJuYem5yeG6x6NJV4kFyR
+         Hygw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=quRKOzs9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d451b6bd5asi144811196d6.438.2024.11.27.01.45.23
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d451a97d31si138006826d6.151.2024.11.27.02.16.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Nov 2024 01:45:24 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 27 Nov 2024 02:16:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=quRKOzs9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tGEbV-0007ui-QR; Wed, 27 Nov 2024 04:45:01 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tGF5Y-0007ne-Og; Wed, 27 Nov 2024 05:16:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=9yFr=SW=kaod.org=clg@ozlabs.org>)
- id 1tGEbT-0007t1-Ol; Wed, 27 Nov 2024 04:44:59 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=9yFr=SW=kaod.org=clg@ozlabs.org>)
- id 1tGEbR-0006qN-Tc; Wed, 27 Nov 2024 04:44:59 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Xyvg23WYLz4xgK;
- Wed, 27 Nov 2024 20:44:46 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Xyvfy05hDz4xgB;
- Wed, 27 Nov 2024 20:44:41 +1100 (AEDT)
-Message-ID: <2e956389-289a-4806-8985-ab846d808736@kaod.org>
-Date: Wed, 27 Nov 2024 10:44:40 +0100
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tGF5V-0007mx-7F
+ for qemu-devel@nongnu.org; Wed, 27 Nov 2024 05:16:01 -0500
+Received: from mail-ua1-x92b.google.com ([2607:f8b0:4864:20::92b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tGF5S-0000nq-RN
+ for qemu-devel@nongnu.org; Wed, 27 Nov 2024 05:16:00 -0500
+Received: by mail-ua1-x92b.google.com with SMTP id
+ a1e0cc1a2514c-85715f21c82so1642168241.3
+ for <qemu-devel@nongnu.org>; Wed, 27 Nov 2024 02:15:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1732702557; x=1733307357;
+ darn=nongnu.org; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=a+hUjgE0CAKr3uN/Dtmw/JvDmx8Fmd9e/oWNu/3aw0I=;
+ b=quRKOzs9L6miRvXx0Boj5u22U/w7X4vUtTvtJ9xafc1uy0jL/x/km4y6JTDi4AJQbe
+ 9tN8C16+U3eys+tby5/elhoIAnfLpc2kSNVl9+PIUSMt9umv9s/3cwFgtbFDLWhFVKnS
+ 3irkOXQwBUaWxc0wQSGW2wrS9G1MK/Xi/Mfjj2Lb67j4qvqL7eyOPt7HU1IiGyjD8tWZ
+ MIPXFsVAVEeD/d8P2D6cX3IltbQGISnaHFrjbjHCRTJnVWqBrqlAcUB7N2uOx2nvhVpr
+ CrBI7ojKfN4h+0ZKT67ZIvnSjIDrmysrM3MbdjI0AyASc0lYVOos71AcY3ODgD3X6JCz
+ HV1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1732702557; x=1733307357;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=a+hUjgE0CAKr3uN/Dtmw/JvDmx8Fmd9e/oWNu/3aw0I=;
+ b=sqKCVArgYwZl09TjTJsny0hnLIc6NwwPfpyjmGa0QYNWYS8W2irckKgYxa3kkv1atM
+ 1VpL9TGM32sHsa6NplqSwHJl5Q/QrKBklEIE0TcdOxU+h9JCHkhoSNQGsPVGQRWbvKrW
+ 7CCOPEjedi0NmgNIxMJzUE2MhC1s8muITPbCpqMbDgOUXW2x2yrGE0uFHr+AkdQIG9pi
+ uXIgmNhKyw7h+zkGL3MBKtptX3z0ZPpaS/2BegrGqrFEwCtvH1xuP5Rdfub6qWWaYyvD
+ c8ph9zoyufQX8ZO7d9ALJ6EwGWt6Ak6npnPJUYDWp1w7xjoMbpTT295WtJHYC1kpO+NE
+ qamw==
+X-Gm-Message-State: AOJu0YzNpNfsnEkvBU8d5nRB+XA19qC6bWakmAZjiszYVNWD1APZjZgQ
+ 1/KXKWfmcCofS65LvMazlGn+GC2GFNBWdK8/rxpznqbbBMIujOYF1WZdqVg9f2eSs0zWcDC7vpe
+ df2j3+7h1hzjHB6EJlZbNUmnBC+mEMBq1YNaV
+X-Gm-Gg: ASbGncvyhwoCn8ur+uL5nCA9gdMrcmNjyPKpnpAJszOPROH02SGIuqdXzijYYVtganc
+ KpeByS0Fs1RlfFnr7de+ZARecU4O33CM=
+X-Received: by 2002:a05:6102:1899:b0:4af:469b:d3b8 with SMTP id
+ ada2fe7eead31-4af469bd4d8mr1776569137.25.1732702556966; Wed, 27 Nov 2024
+ 02:15:56 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/3] Introduce a new Write Protected pin inverted
- property
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Bin Meng <bmeng.cn@gmail.com>, "open list:ASPEED BMCs"
- <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20241114094839.4128404-1-jamin_lin@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20241114094839.4128404-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=9yFr=SW=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20241113142343.40832-1-phil@philjordan.eu>
+ <20241113142343.40832-3-phil@philjordan.eu>
+ <c2fed303-b79b-4a1b-b360-914522125650@daynix.com>
+In-Reply-To: <c2fed303-b79b-4a1b-b360-914522125650@daynix.com>
+From: Phil Dennis-Jordan <phil@philjordan.eu>
+Date: Wed, 27 Nov 2024 11:15:46 +0100
+Message-ID: <CAAibmn0PR=om9pEgbnp6iJsnP56ro10M+YZkEhv-5T92y6QcKA@mail.gmail.com>
+Subject: Re: [PATCH v10 02/15] hw/display/apple-gfx: Introduce
+ ParavirtualizedGraphics.Framework support
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org, 
+ pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com, 
+ stefanha@redhat.com, mst@redhat.com, slp@redhat.com, 
+ richard.henderson@linaro.org, eduardo@habkost.net, marcel.apfelbaum@gmail.com, 
+ gaosong@loongson.cn, jiaxun.yang@flygoat.com, chenhuacai@kernel.org, 
+ kwolf@redhat.com, hreitz@redhat.com, philmd@linaro.org, shorne@gmail.com, 
+ palmer@dabbelt.com, alistair.francis@wdc.com, bmeng.cn@gmail.com, 
+ liwei1518@gmail.com, dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, 
+ jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com, 
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org, 
+ balaton@eik.bme.hu, Alexander Graf <graf@amazon.com>
+Content-Type: multipart/alternative; boundary="00000000000068e8c00627e24015"
+Received-SPF: neutral client-ip=2607:f8b0:4864:20::92b;
+ envelope-from=phil@philjordan.eu; helo=mail-ua1-x92b.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: I+RVW+XsY3jW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: akGV3fe+Tt0+
 
-On 11/14/24 10:48, Jamin Lin wrote:
-> change from v1:
-> 1. Support RTC for AST2700.
-> 2. Support SDHCI write protected pin inverted for AST2500 and AST2600.
-> 3. Introduce Capabilities Register 2 for SD slot 0 and 1.
-> 4. Support create flash devices via command line for AST1030.
-> 
-> change from v2:
-> replace wp-invert with wp-inverted and fix review issues.
-> 
-> change from v3:
-> 1. add reviewer suggestion about wp_inverted comment
-> 2. AST2500 EVB does not need to set wp-inverted property of sdhci model
->     https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm/boot/dts/aspeed/aspeed-ast2500-evb.dts#L110
-> 
-> Jamin Lin (3):
->    hw/sd/sdhci: Fix coding style
->    hw/sd/sdhci: Introduce a new Write Protected pin inverted property
->    hw/arm/aspeed: Invert sdhci write protected pin for AST2600 EVB
-> 
->   hw/arm/aspeed.c         |  7 +++++
->   hw/sd/sdhci.c           | 70 ++++++++++++++++++++++++++++-------------
->   include/hw/arm/aspeed.h |  1 +
->   include/hw/sd/sdhci.h   |  5 +++
->   4 files changed, 61 insertions(+), 22 deletions(-)
-> 
+--00000000000068e8c00627e24015
+Content-Type: text/plain; charset="UTF-8"
 
-Philippe,
+On Wed, 27 Nov 2024 at 07:45, Akihiko Odaki <akihiko.odaki@daynix.com>
+wrote:
 
-I plan to queue patch 2-3 for QEMU 10.0. Is that ok for you ?
+> > +    s->pgdev = PGNewDeviceWithDescriptor(desc);
+> > +
+> > +    disp_desc = apple_gfx_prepare_display_descriptor(s);
+> > +    s->pgdisp = [s->pgdev newDisplayWithDescriptor:disp_desc
+> > +                                              port:0 serialNum:1234];
+>
+> port has a fixed number, but I don't think there is anything that
+> prevents plugging multiple apple-gfx devices.
+>
 
-Thanks,
+The port number is PGDevice instance specific, so 0 is safe here. I've
+actually now tested with 2 apple-gfx-pci devices, and it's technically
+possible and the guest picks them both up. But it's actually the serial
+number that ends up being a problem, because macOS ignores "duplicate"
+displays with identical vendor/product/serial number tuples.
 
-C.
+So I suggest a static integer variable for the display serial number that
+we initialise to 1 and increment every time an apple-gfx device is realized.
 
 
+> > +    [disp_desc release];
+> > +    s->pgdisp.modeList = apple_gfx_prepare_display_mode_array();
+> > +
+> > +    s->con = graphic_console_init(dev, 0, &apple_gfx_fb_ops, s);
+> > +    return true;
+> > +}
+> > diff --git a/hw/display/meson.build b/hw/display/meson.build
+> > index 20a94973fa2..cf9e6dd35d2 100644
+> > --- a/hw/display/meson.build
+> > +++ b/hw/display/meson.build
+> > @@ -61,6 +61,12 @@ system_ss.add(when: 'CONFIG_ARTIST', if_true:
+> files('artist.c'))
+> >
+> >   system_ss.add(when: 'CONFIG_ATI_VGA', if_true: [files('ati.c',
+> 'ati_2d.c', 'ati_dbg.c'), pixman])
+> >
+> > +if host_os == 'darwin'
+> > +  system_ss.add(when: 'CONFIG_MAC_PVG',         if_true:
+> [files('apple-gfx.m'), pvg, metal])
+> > +  if cpu == 'aarch64'
+> > +    system_ss.add(when: 'CONFIG_MAC_PVG_MMIO',  if_true:
+> [files('apple-gfx-mmio.m'), pvg, metal])
+> > +  endif
+> > +endif
+> >
+> >   if config_all_devices.has_key('CONFIG_VIRTIO_GPU')
+> >     virtio_gpu_ss = ss.source_set()
+> > diff --git a/hw/display/trace-events b/hw/display/trace-events
+> > index d26d663f963..a50e4eea0c0 100644
+> > --- a/hw/display/trace-events
+> > +++ b/hw/display/trace-events
+> > @@ -194,3 +194,31 @@ dm163_bits_ppi(unsigned dest_width) "dest_width :
+> %u"
+> >   dm163_leds(int led, uint32_t value) "led %d: 0x%x"
+> >   dm163_channels(int channel, uint8_t value) "channel %d: 0x%x"
+> >   dm163_refresh_rate(uint32_t rr) "refresh rate %d"
+> > +
+> > +# apple-gfx.m
+> > +apple_gfx_read(uint64_t offset, uint64_t res) "offset=0x%"PRIx64"
+> res=0x%"PRIx64
+> > +apple_gfx_write(uint64_t offset, uint64_t val) "offset=0x%"PRIx64"
+> val=0x%"PRIx64
+> > +apple_gfx_create_task(uint32_t vm_size, void *va) "vm_size=0x%x
+> base_addr=%p"
+> > +apple_gfx_destroy_task(void *task, unsigned int num_mapped_regions)
+> "task=%p, task->mapped_regions->len=%u"
+> > +apple_gfx_map_memory(void *task, uint32_t range_count, uint64_t
+> virtual_offset, uint32_t read_only) "task=%p range_count=0x%x
+> virtual_offset=0x%"PRIx64" read_only=%d"
+> > +apple_gfx_map_memory_range(uint32_t i, uint64_t phys_addr, uint64_t
+> phys_len) "[%d] phys_addr=0x%"PRIx64" phys_len=0x%"PRIx64
+> > +apple_gfx_remap(uint64_t retval, void *source_ptr, uint64_t target)
+> "retval=%"PRId64" source=%p target=0x%"PRIx64
+> > +apple_gfx_unmap_memory(void *task, uint64_t virtual_offset, uint64_t
+> length) "task=%p virtual_offset=0x%"PRIx64" length=0x%"PRIx64
+> > +apple_gfx_read_memory(uint64_t phys_address, uint64_t length, void
+> *dst) "phys_addr=0x%"PRIx64" length=0x%"PRIx64" dest=%p"
+> > +apple_gfx_raise_irq(uint32_t vector) "vector=0x%x"
+> > +apple_gfx_new_frame(void) ""
+> > +apple_gfx_mode_change(uint64_t x, uint64_t y) "x=%"PRId64" y=%"PRId64
+> > +apple_gfx_cursor_set(uint32_t bpp, uint64_t width, uint64_t height)
+> "bpp=%d width=%"PRId64" height=0x%"PRId64
+> > +apple_gfx_cursor_show(uint32_t show) "show=%d"
+> > +apple_gfx_cursor_move(void) ""
+> > +apple_gfx_common_init(const char *device_name, size_t mmio_size)
+> "device: %s; MMIO size: %zu bytes"
+> > +
+> > +# apple-gfx-mmio.m
+> > +apple_gfx_mmio_iosfc_read(uint64_t offset, uint64_t res)
+> "offset=0x%"PRIx64" res=0x%"PRIx64
+> > +apple_gfx_mmio_iosfc_write(uint64_t offset, uint64_t val)
+> "offset=0x%"PRIx64" val=0x%"PRIx64
+> > +apple_gfx_iosfc_map_memory(uint64_t phys, uint64_t len, uint32_t ro,
+> void *va, void *e, void *f, void* va_result) "phys=0x%"PRIx64"
+> len=0x%"PRIx64" ro=%d va=%p e=%p f=%p -> *va=%p"
+> > +apple_gfx_iosfc_map_memory_new_region(size_t i, void *region, uint64_t
+> start, uint64_t end) "index=%zu, region=%p, 0x%"PRIx64"-0x%"PRIx64
+> > +apple_gfx_iosfc_unmap_memory(void *a, void *b, void *c, void *d, void
+> *e, void *f) "a=%p b=%p c=%p d=%p e=%p f=%p"
+> > +apple_gfx_iosfc_unmap_memory_region(void* mem, void *region) "unmapping
+> @ %p from memory region %p"
+> > +apple_gfx_iosfc_raise_irq(uint32_t vector) "vector=0x%x"
+> > +
+> > diff --git a/meson.build b/meson.build
+> > index e0b880e4e13..3c61238bc77 100644
+> > --- a/meson.build
+> > +++ b/meson.build
+> > @@ -794,6 +794,8 @@ socket = []
+> >   version_res = []
+> >   coref = []
+> >   iokit = []
+> > +pvg = not_found
+> > +metal = []
+> >   emulator_link_args = []
+> >   midl = not_found
+> >   widl = not_found
+> > @@ -815,6 +817,8 @@ elif host_os == 'darwin'
+> >     coref = dependency('appleframeworks', modules: 'CoreFoundation')
+> >     iokit = dependency('appleframeworks', modules: 'IOKit', required:
+> false)
+> >     host_dsosuf = '.dylib'
+> > +  pvg = dependency('appleframeworks', modules:
+> 'ParavirtualizedGraphics')
+> > +  metal = dependency('appleframeworks', modules: 'Metal')
+> >   elif host_os == 'sunos'
+> >     socket = [cc.find_library('socket'),
+> >               cc.find_library('nsl'),
+>
+>
+
+--00000000000068e8c00627e24015
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"g=
+mail_attr">On Wed, 27 Nov 2024 at 07:45, Akihiko Odaki &lt;<a href=3D"mailt=
+o:akihiko.odaki@daynix.com">akihiko.odaki@daynix.com</a>&gt; wrote:<br></di=
+v><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;borde=
+r-left:1px solid rgb(204,204,204);padding-left:1ex">
+&gt; +=C2=A0 =C2=A0 s-&gt;pgdev =3D PGNewDeviceWithDescriptor(desc);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 disp_desc =3D apple_gfx_prepare_display_descriptor(s);<=
+br>
+&gt; +=C2=A0 =C2=A0 s-&gt;pgdisp =3D [s-&gt;pgdev newDisplayWithDescriptor:=
+disp_desc<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 port:0 serialNum:1234];<br>
+<br>
+port has a fixed number, but I don&#39;t think there is anything that <br>
+prevents plugging multiple apple-gfx devices.<br></blockquote><div><br></di=
+v><div>The port number is PGDevice instance specific, so 0 is safe here. I&=
+#39;ve actually now tested with 2 apple-gfx-pci devices, and it&#39;s techn=
+ically possible and the guest picks them both up. But it&#39;s actually the=
+ serial number that ends up being a problem, because macOS ignores &quot;du=
+plicate&quot; displays with identical vendor/product/serial number tuples.<=
+/div><div><br></div><div>So I suggest a static integer variable for the dis=
+play serial number that we initialise to 1 and increment every time an appl=
+e-gfx device is realized.<br></div><div>=C2=A0</div><blockquote class=3D"gm=
+ail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,=
+204,204);padding-left:1ex">
+&gt; +=C2=A0 =C2=A0 [disp_desc release];<br>
+&gt; +=C2=A0 =C2=A0 s-&gt;pgdisp.modeList =3D apple_gfx_prepare_display_mod=
+e_array();<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 s-&gt;con =3D graphic_console_init(dev, 0, &amp;apple_g=
+fx_fb_ops, s);<br>
+&gt; +=C2=A0 =C2=A0 return true;<br>
+&gt; +}<br>
+&gt; diff --git a/hw/display/meson.build b/hw/display/meson.build<br>
+&gt; index 20a94973fa2..cf9e6dd35d2 100644<br>
+&gt; --- a/hw/display/meson.build<br>
+&gt; +++ b/hw/display/meson.build<br>
+&gt; @@ -61,6 +61,12 @@ system_ss.add(when: &#39;CONFIG_ARTIST&#39;, if_tru=
+e: files(&#39;artist.c&#39;))<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0system_ss.add(when: &#39;CONFIG_ATI_VGA&#39;, if_true: [fi=
+les(&#39;ati.c&#39;, &#39;ati_2d.c&#39;, &#39;ati_dbg.c&#39;), pixman])<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt; +if host_os =3D=3D &#39;darwin&#39;<br>
+&gt; +=C2=A0 system_ss.add(when: &#39;CONFIG_MAC_PVG&#39;,=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0if_true: [files(&#39;apple-gfx.m&#39;), pvg, metal])<br>
+&gt; +=C2=A0 if cpu =3D=3D &#39;aarch64&#39;<br>
+&gt; +=C2=A0 =C2=A0 system_ss.add(when: &#39;CONFIG_MAC_PVG_MMIO&#39;,=C2=
+=A0 if_true: [files(&#39;apple-gfx-mmio.m&#39;), pvg, metal])<br>
+&gt; +=C2=A0 endif<br>
+&gt; +endif<br>
+&gt;=C2=A0 =C2=A0<br>
+&gt;=C2=A0 =C2=A0if config_all_devices.has_key(&#39;CONFIG_VIRTIO_GPU&#39;)=
+<br>
+&gt;=C2=A0 =C2=A0 =C2=A0virtio_gpu_ss =3D ss.source_set()<br>
+&gt; diff --git a/hw/display/trace-events b/hw/display/trace-events<br>
+&gt; index d26d663f963..a50e4eea0c0 100644<br>
+&gt; --- a/hw/display/trace-events<br>
+&gt; +++ b/hw/display/trace-events<br>
+&gt; @@ -194,3 +194,31 @@ dm163_bits_ppi(unsigned dest_width) &quot;dest_wi=
+dth : %u&quot;<br>
+&gt;=C2=A0 =C2=A0dm163_leds(int led, uint32_t value) &quot;led %d: 0x%x&quo=
+t;<br>
+&gt;=C2=A0 =C2=A0dm163_channels(int channel, uint8_t value) &quot;channel %=
+d: 0x%x&quot;<br>
+&gt;=C2=A0 =C2=A0dm163_refresh_rate(uint32_t rr) &quot;refresh rate %d&quot=
+;<br>
+&gt; +<br>
+&gt; +# apple-gfx.m<br>
+&gt; +apple_gfx_read(uint64_t offset, uint64_t res) &quot;offset=3D0x%&quot=
+;PRIx64&quot; res=3D0x%&quot;PRIx64<br>
+&gt; +apple_gfx_write(uint64_t offset, uint64_t val) &quot;offset=3D0x%&quo=
+t;PRIx64&quot; val=3D0x%&quot;PRIx64<br>
+&gt; +apple_gfx_create_task(uint32_t vm_size, void *va) &quot;vm_size=3D0x%=
+x base_addr=3D%p&quot;<br>
+&gt; +apple_gfx_destroy_task(void *task, unsigned int num_mapped_regions) &=
+quot;task=3D%p, task-&gt;mapped_regions-&gt;len=3D%u&quot;<br>
+&gt; +apple_gfx_map_memory(void *task, uint32_t range_count, uint64_t virtu=
+al_offset, uint32_t read_only) &quot;task=3D%p range_count=3D0x%x virtual_o=
+ffset=3D0x%&quot;PRIx64&quot; read_only=3D%d&quot;<br>
+&gt; +apple_gfx_map_memory_range(uint32_t i, uint64_t phys_addr, uint64_t p=
+hys_len) &quot;[%d] phys_addr=3D0x%&quot;PRIx64&quot; phys_len=3D0x%&quot;P=
+RIx64<br>
+&gt; +apple_gfx_remap(uint64_t retval, void *source_ptr, uint64_t target) &=
+quot;retval=3D%&quot;PRId64&quot; source=3D%p target=3D0x%&quot;PRIx64<br>
+&gt; +apple_gfx_unmap_memory(void *task, uint64_t virtual_offset, uint64_t =
+length) &quot;task=3D%p virtual_offset=3D0x%&quot;PRIx64&quot; length=3D0x%=
+&quot;PRIx64<br>
+&gt; +apple_gfx_read_memory(uint64_t phys_address, uint64_t length, void *d=
+st) &quot;phys_addr=3D0x%&quot;PRIx64&quot; length=3D0x%&quot;PRIx64&quot; =
+dest=3D%p&quot;<br>
+&gt; +apple_gfx_raise_irq(uint32_t vector) &quot;vector=3D0x%x&quot;<br>
+&gt; +apple_gfx_new_frame(void) &quot;&quot;<br>
+&gt; +apple_gfx_mode_change(uint64_t x, uint64_t y) &quot;x=3D%&quot;PRId64=
+&quot; y=3D%&quot;PRId64<br>
+&gt; +apple_gfx_cursor_set(uint32_t bpp, uint64_t width, uint64_t height) &=
+quot;bpp=3D%d width=3D%&quot;PRId64&quot; height=3D0x%&quot;PRId64<br>
+&gt; +apple_gfx_cursor_show(uint32_t show) &quot;show=3D%d&quot;<br>
+&gt; +apple_gfx_cursor_move(void) &quot;&quot;<br>
+&gt; +apple_gfx_common_init(const char *device_name, size_t mmio_size) &quo=
+t;device: %s; MMIO size: %zu bytes&quot;<br>
+&gt; +<br>
+&gt; +# apple-gfx-mmio.m<br>
+&gt; +apple_gfx_mmio_iosfc_read(uint64_t offset, uint64_t res) &quot;offset=
+=3D0x%&quot;PRIx64&quot; res=3D0x%&quot;PRIx64<br>
+&gt; +apple_gfx_mmio_iosfc_write(uint64_t offset, uint64_t val) &quot;offse=
+t=3D0x%&quot;PRIx64&quot; val=3D0x%&quot;PRIx64<br>
+&gt; +apple_gfx_iosfc_map_memory(uint64_t phys, uint64_t len, uint32_t ro, =
+void *va, void *e, void *f, void* va_result) &quot;phys=3D0x%&quot;PRIx64&q=
+uot; len=3D0x%&quot;PRIx64&quot; ro=3D%d va=3D%p e=3D%p f=3D%p -&gt; *va=3D=
+%p&quot;<br>
+&gt; +apple_gfx_iosfc_map_memory_new_region(size_t i, void *region, uint64_=
+t start, uint64_t end) &quot;index=3D%zu, region=3D%p, 0x%&quot;PRIx64&quot=
+;-0x%&quot;PRIx64<br>
+&gt; +apple_gfx_iosfc_unmap_memory(void *a, void *b, void *c, void *d, void=
+ *e, void *f) &quot;a=3D%p b=3D%p c=3D%p d=3D%p e=3D%p f=3D%p&quot;<br>
+&gt; +apple_gfx_iosfc_unmap_memory_region(void* mem, void *region) &quot;un=
+mapping @ %p from memory region %p&quot;<br>
+&gt; +apple_gfx_iosfc_raise_irq(uint32_t vector) &quot;vector=3D0x%x&quot;<=
+br>
+&gt; +<br>
+&gt; diff --git a/meson.build b/meson.build<br>
+&gt; index e0b880e4e13..3c61238bc77 100644<br>
+&gt; --- a/meson.build<br>
+&gt; +++ b/meson.build<br>
+&gt; @@ -794,6 +794,8 @@ socket =3D []<br>
+&gt;=C2=A0 =C2=A0version_res =3D []<br>
+&gt;=C2=A0 =C2=A0coref =3D []<br>
+&gt;=C2=A0 =C2=A0iokit =3D []<br>
+&gt; +pvg =3D not_found<br>
+&gt; +metal =3D []<br>
+&gt;=C2=A0 =C2=A0emulator_link_args =3D []<br>
+&gt;=C2=A0 =C2=A0midl =3D not_found<br>
+&gt;=C2=A0 =C2=A0widl =3D not_found<br>
+&gt; @@ -815,6 +817,8 @@ elif host_os =3D=3D &#39;darwin&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0coref =3D dependency(&#39;appleframeworks&#39;, mod=
+ules: &#39;CoreFoundation&#39;)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0iokit =3D dependency(&#39;appleframeworks&#39;, mod=
+ules: &#39;IOKit&#39;, required: false)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0host_dsosuf =3D &#39;.dylib&#39;<br>
+&gt; +=C2=A0 pvg =3D dependency(&#39;appleframeworks&#39;, modules: &#39;Pa=
+ravirtualizedGraphics&#39;)<br>
+&gt; +=C2=A0 metal =3D dependency(&#39;appleframeworks&#39;, modules: &#39;=
+Metal&#39;)<br>
+&gt;=C2=A0 =C2=A0elif host_os =3D=3D &#39;sunos&#39;<br>
+&gt;=C2=A0 =C2=A0 =C2=A0socket =3D [cc.find_library(&#39;socket&#39;),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0cc.find_library(=
+&#39;nsl&#39;),<br>
+<br>
+</blockquote></div></div>
+
+--00000000000068e8c00627e24015--

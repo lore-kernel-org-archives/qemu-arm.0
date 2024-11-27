@@ -1,89 +1,132 @@
-Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp641771njb;
-        Wed, 27 Nov 2024 01:18:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW2hyQZc3fMWC+9797W9ulCBsBTdkhFF/EgZnOoi7ZoQ89yNi0EesV1hRcBowUIXxlD78olJr9qSbp0HA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHofg18UiMA8Ct7PmrUlAGcPbwoN3X7l49rc49Aciz1zqELFM6pYnz9WdTga37VGwXScm5L
-X-Received: by 2002:a05:620a:1a93:b0:7a9:afef:33e6 with SMTP id af79cd13be357-7b67c2ed114mr271602185a.34.1732699089051;
-        Wed, 27 Nov 2024 01:18:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732699089; cv=none;
+Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp649554njb;
+        Wed, 27 Nov 2024 01:37:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXAw5j2qDyFtonW9DeAQz1jaCdDVDHRJ11n0PaZl4jHVjCIL1lEz59D3vI7n67OpJ5b3LpoYokcgACZ/Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGpmAjXlYPsQmm9BRBz1Nq3nR07BN1hOLX8QhpZB5xVgKNGGmPc6UIill56tEXWDpPWDo6C
+X-Received: by 2002:a05:622a:14cb:b0:466:8cc1:623b with SMTP id d75a77b69052e-466b3546f1bmr28149611cf.28.1732700250250;
+        Wed, 27 Nov 2024 01:37:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732700250; cv=none;
         d=google.com; s=arc-20240605;
-        b=ExKaOikS4XK9lHHsk9i7KBpwlXmJ36nmBZPl66wSkGe52c15cwEZYVPwyT/tmihMAc
-         OWFh6mvJi6CZQYdzYziE6bQneRyCL6Le8uBDgynZCKInDndIz6PNlGOmSR10F6MDHEcW
-         0xL1SZEcq4b79beL8ShdxoJARXxyEFwvI7kYwsR82F7xI2xkWYgsBUUlYhjX96AeFGxt
-         byrGrY02GWqI0Tv0MwcWf/NoLkm/NwoAmw/31JBWeJVtl1CJAdEcprg49VrQgc5WxYfG
-         now5ap4JSx/38MZkMEx9CJVG5brjmzaUgIGHBzU81nLqDurp/oRl/ytuFz0WyKGER8Xv
-         yh2w==
+        b=KpKjC103ByOeHgegmWgwsUl3gOPlcEal0lYM84QhHctkwa+i88khoM+P/Lx+R2AcNq
+         aqxXRmnamCxJs9dcl1frqQIP9oDyA9TW3IbYDhOnKSvgeMKKZCOzuk7W8BbTQi1kWsJx
+         ew+UC9Vq2hv1wJPFnpBqsqPWgCxN7pzH05/Sg6VHJxBQ1qjSyYC+8TyhRyNCi7l5OUxL
+         XwmeKB7xdje9dX6i6VACgq08oxnQFVYnFP60MAl6RCKY4UP55jd5jO+BCPubqCHBJZsX
+         NUCla9oN5EG2gz2GTnOwvmoF3qop++cbwNY234otLl8zedQSlISd2YgBTzufdX/05/SV
+         Iplg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=DtOLqGvzTQY9+6rEbjhYQwtvxyJ/SgZJfARcYUnB51s=;
-        fh=0qytIn8qIo3O2ioMBXDhPd+VFcV9yTlaki0kk0ux4hY=;
-        b=JAxXXizBUeqoAHV9UUn7Vb0Sq8gYk8QOi5FMluizB+gacOiBuxTlJqlm/V5WN8D2gr
-         s3tD4qzVfj9uxsKhONneVNl7ZEw2YprhpN8QPl/r8Eo8+nlmo6Jj+aRRdbgtUP8iObv+
-         qe62aAEo1Hbt6+PimN7g6Jl+jdnX5zDYxYceIag1doTIKuK3ul41A9BZxIMjnAVramhN
-         Q/RfKFHxnwAxaPt5QHOzNB+zbxrEPKDRp9yRk+201SuVyo71WEyrV9yrOrnRGpD96K1u
-         8nZr9yx0ZeWc8aNISD3pY+Xa9uG/RWP/tbbz0XartmCOS039UyI0898EDcEiYmNhQrOE
-         o0hg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=p5t1nm3lrboc04MW5xLqPV5c3uzCGvTHQy7ci+25SCc=;
+        fh=fnYgLzqRN1LtZALqvaRMqs8lW0bcWkq3JbH/7W2AV1w=;
+        b=e5lR6UAwtmqcCyh/CudlG0+HaiZMmZGzkN3MitoLZlJl2j+ASOR0Umuozx0teWHBp+
+         G8lMycN2b2nkvUEs9xQrS/OpDmrRqk7gMBZhBwJGII06NqeRz2OHUt3sEwsFBey6PWux
+         vwfZFmaf1/2bqCC6nKvW+nY+ImIaWtlj3sPmXLlsgEY1Xzr75+Y9vAkr6/5RuJyi2rgR
+         QrjJrEZOxHChk+98BvG+8TczQo12q3h4ahChJzDao2QMRXolhN7x2nhKAkNA7es7mEMF
+         ElXvwOK7UVPHg4ppEwwxpt/Az5CiNms83bGLHys3zfOwVgM/dJv2V6l4Vl0Iar2OXfBq
+         JnfA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=I1aqNsUm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b67a78b6e5si224793385a.350.2024.11.27.01.18.08
+        by mx.google.com with ESMTPS id d75a77b69052e-466a0bb3c14si46769891cf.299.2024.11.27.01.37.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 27 Nov 2024 01:18:09 -0800 (PST)
+        Wed, 27 Nov 2024 01:37:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=I1aqNsUm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tGEA3-0002yK-1z; Wed, 27 Nov 2024 04:16:39 -0500
+	id 1tGEU0-0004cy-Iw; Wed, 27 Nov 2024 04:37:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tGEA0-0002pY-9t; Wed, 27 Nov 2024 04:16:36 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tGE9y-0004aA-KK; Wed, 27 Nov 2024 04:16:36 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 27 Nov
- 2024 17:15:47 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 27 Nov 2024 17:15:47 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v3 10/10] test/qtest/ast2700-smc-test: Support to test AST2700
-Date: Wed, 27 Nov 2024 17:15:43 +0800
-Message-ID: <20241127091543.1243114-11-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241127091543.1243114-1-jamin_lin@aspeedtech.com>
-References: <20241127091543.1243114-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tGETy-0004by-Ge
+ for qemu-arm@nongnu.org; Wed, 27 Nov 2024 04:37:14 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tGETw-0003f6-VL
+ for qemu-arm@nongnu.org; Wed, 27 Nov 2024 04:37:14 -0500
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-53df1d1b6f8so279723e87.3
+ for <qemu-arm@nongnu.org>; Wed, 27 Nov 2024 01:37:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1732700231; x=1733305031; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=p5t1nm3lrboc04MW5xLqPV5c3uzCGvTHQy7ci+25SCc=;
+ b=I1aqNsUmreOdK3Djahrh73uvBKMfu1IiyBZYB3SngX2Ec267DM6dt3FUBiOQyNCV1n
+ FcVzyfRo27+IwlWzghaBGrB9I37KVtZCA8qc/yJijMd2qc+bPMB4OerREx+O0VGVOEOO
+ n4h8XwxZ57NXDe+kfwE7OKRTxZfK+aHefn0s/TbQxpBfhmkQbqBjmkEca0+3/ykeA92f
+ rXI8aUZeQBcS4qZVVXHgwsWpZC18SafDc7fsO+dxUi4J9yetJ1Msc7wHD5Kfzu5rVidu
+ aMZJ3PVYcX1sBgZxhs6+l57YvO0NgZnNz2y8AzKlZ4dAxV0f4RBe3OGKkRtaH2xwhayb
+ yVRw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1732700231; x=1733305031;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=p5t1nm3lrboc04MW5xLqPV5c3uzCGvTHQy7ci+25SCc=;
+ b=pyDU54w03fpqK/Q0Onu+NKa0TWLvQYKqtzSOt/rn+qZcEJ6WEhCoUduP4VyC10IBl6
+ 855RH7GoDv++OwBZDdN8h2BxW5bRKLd07A/VIOnK5RFjyFmTNoafSCdkct943rJX4C4L
+ q7IhGNpTI7aFbOQIfUbYECER0yqQpqb0ekKVC5Ec0uVokHJsGCA79b0v9fdUXeL6ykQl
+ jHutNKdu6As6uvgd6Ylwmr5BtMyx5C0oiw34ctWye6mdLnhpQXf8bgIZLAoG9KPGvpNv
+ 1vyZwTjiIlt4a2ljp2NUyI+n33sZCAqfIRTtVmibTErAc9twt4rFFn2vkNeWK4vckh3w
+ ON8g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVtf8plRTpmbBUd77x3QxOldwdsmblzWqbwtEQ60Hitjubli66+DuTqSr3IEnU9T2w6VjvfwCfmkA==@nongnu.org
+X-Gm-Message-State: AOJu0YzSvsZZ+YXvC7GHc9kdi3ps/BtC5GO4R7nitWDUEIjk2AZ+PVGg
+ kQUO6yiw4TFzSx87RZDrNY5Wh7OiZq19OMX/xH8TEmn1oghbVoHQqGuouogNm/U=
+X-Gm-Gg: ASbGncuJBkfeYmrkT5nKZ4sQo71NV0uBCZTW3XLTrqAjxyl/3n9472SmCQs78c8GSTM
+ q1cophDDywdA43sJix6SAUyvWXzCnU82hRj9qngWXDGOaWkcTpf4oTEjBZez2JmOEKqtJCGgHxR
+ eFoAW5vYxRTAGt1qSPla3rcnjw1jDZ5C9InefsXnJmSLX+fY0LJE5ef1jP6vYfu3qVsFGHJYYQU
+ YuqD/yqzr5R5MQw8/v5oJ1Ob1DEdeLL6mOYRgqZP07FW/YcTIuVBJFcVmyNVu6qudE0VhjQ8oFc
+ oZrd27Tk/YEvA1ZqIUcWJnWZt9TvXxyakRax
+X-Received: by 2002:a05:6512:3b12:b0:53d:a4d7:1a8b with SMTP id
+ 2adb3069b0e04-53df00d3db0mr1249244e87.24.1732700230736; 
+ Wed, 27 Nov 2024 01:37:10 -0800 (PST)
+Received: from [192.168.69.146] (plb95-h02-176-184-14-96.dsl.sta.abo.bbox.fr.
+ [176.184.14.96]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3825fbc38afsm15730751f8f.67.2024.11.27.01.37.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 27 Nov 2024 01:37:09 -0800 (PST)
+Message-ID: <ab884d96-6648-4888-962c-35a6b1d90857@linaro.org>
+Date: Wed, 27 Nov 2024 10:37:08 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-10.0 v2 01/13] hw/pci: Do not declare PCIBus::flags
+ mask as enum
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org, Thomas Huth
+ <thuth@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-riscv@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20241126112212.64524-1-philmd@linaro.org>
+ <20241126112212.64524-2-philmd@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241126112212.64524-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,124 +139,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2j5Nzm6k/T0K
+X-TUID: mN6L7ev6xlRJ
 
-Add test_ast2700_evb function and reused testcases which are from
-aspeed_smc-test.c for AST2700 testing. The base address, flash base address
-and ce index of fmc_cs0 are 0x14000000, 0x100000000 and 0, respectively.
-The default flash model of fmc_cs0 is "w25q01jvq" whose size is 128MB,
-so set jedec_id 0xef4021.
+On 26/11/24 12:22, Philippe Mathieu-Daudé wrote:
+> We use PCIBus::flags to mask various flags. It is not
+> an enum, and doing so confuses static analyzers. Rename
+> the enum as singular. Use a generic unsigned type for
+> the mask.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/pci/pci_bus.h | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/include/hw/pci/pci_bus.h b/include/hw/pci/pci_bus.h
+> index 22613125462..6ecfe2e06d5 100644
+> --- a/include/hw/pci/pci_bus.h
+> +++ b/include/hw/pci/pci_bus.h
+> @@ -19,7 +19,7 @@ struct PCIBusClass {
+>       uint16_t (*numa_node)(PCIBus *bus);
+>   };
+>   
+> -enum PCIBusFlags {
+> +enum PCIBusFlag {
+>       /* This bus is the root of a PCI domain */
+>       PCI_BUS_IS_ROOT                                         = 0x0001,
+>       /* PCIe extended configuration space is accessible on this bus */
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- tests/qtest/ast2700-smc-test.c | 71 ++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build        |  4 +-
- 2 files changed, 74 insertions(+), 1 deletion(-)
- create mode 100644 tests/qtest/ast2700-smc-test.c
+(more diff context:)
 
-diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-test.c
-new file mode 100644
-index 0000000000..d1c4856307
---- /dev/null
-+++ b/tests/qtest/ast2700-smc-test.c
-@@ -0,0 +1,71 @@
-+/*
-+ * QTest testcase for the M25P80 Flash using the ASPEED SPI Controller since
-+ * AST2700.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ * Copyright (C) 2024 ASPEED Technology Inc.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/bswap.h"
-+#include "libqtest-single.h"
-+#include "qemu/bitops.h"
-+#include "aspeed-smc-utils.h"
-+
-+static void test_ast2700_evb(AspeedSMCTestData *data)
-+{
-+    int ret;
-+    int fd;
-+
-+    fd = g_file_open_tmp("qtest.m25p80.w25q01jvq.XXXXXX",
-+                         &data->tmp_path, NULL);
-+    g_assert(fd >= 0);
-+    ret = ftruncate(fd, 128 * 1024 * 1024);
-+    g_assert(ret == 0);
-+    close(fd);
-+
-+    data->s = qtest_initf("-machine ast2700-evb "
-+                          "-drive file=%s,format=raw,if=mtd",
-+                          data->tmp_path);
-+
-+    /* fmc cs0 with w25q01jvq flash */
-+    data->flash_base = 0x100000000;
-+    data->spi_base = 0x14000000;
-+    data->jedec_id = 0xef4021;
-+    data->cs = 0;
-+    data->node = "/machine/soc/fmc/ssi.0/child[0]";
-+    /* beyond 64MB */
-+    data->page_addr = 0x40000 * FLASH_PAGE_SIZE;
-+
-+    qtest_add_data_func("/ast2700/smc/read_jedec",
-+                        data, aspeed_smc_test_read_jedec);
-+    qtest_add_data_func("/ast2700/smc/erase_sector",
-+                        data, aspeed_smc_test_erase_sector);
-+    qtest_add_data_func("/ast2700/smc/erase_all",
-+                        data, aspeed_smc_test_erase_all);
-+    qtest_add_data_func("/ast2700/smc/write_page",
-+                        data, aspeed_smc_test_write_page);
-+    qtest_add_data_func("/ast2700/smc/read_page_mem",
-+                        data, aspeed_smc_test_read_page_mem);
-+    qtest_add_data_func("/ast2700/smc/write_page_mem",
-+                        data, aspeed_smc_test_write_page_mem);
-+    qtest_add_data_func("/ast2700/smc/read_status_reg",
-+                        data, aspeed_smc_test_read_status_reg);
-+    qtest_add_data_func("/ast2700/smc/write_page_qpi",
-+                        data, aspeed_smc_test_write_page_qpi);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    AspeedSMCTestData ast2700_evb_data;
-+    int ret;
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    test_ast2700_evb(&ast2700_evb_data);
-+    ret = g_test_run();
-+
-+    qtest_quit(ast2700_evb_data.s);
-+    unlink(ast2700_evb_data.tmp_path);
-+    return ret;
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index ea68ec1441..21e9320a95 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -214,7 +214,8 @@ qtests_aspeed = \
-    'aspeed_smc-test',
-    'aspeed_gpio-test']
- qtests_aspeed64 = \
--  ['ast2700-gpio-test']
-+  ['ast2700-gpio-test',
-+   'ast2700-smc-test']
- 
- qtests_stm32l4x5 = \
-   ['stm32l4x5_exti-test',
-@@ -361,6 +362,7 @@ qtests = {
-   'vmgenid-test': files('boot-sector.c', 'acpi-utils.c'),
-   'netdev-socket': files('netdev-socket.c', '../unit/socket-helpers.c'),
-   'aspeed_smc-test': files('aspeed-smc-utils.c', 'aspeed_smc-test.c'),
-+  'ast2700-smc-test': files('aspeed-smc-utils.c', 'ast2700-smc-test.c'),
- }
- 
- if vnc.found()
--- 
-2.34.1
+         PCI_BUS_EXTENDED_CONFIG_SPACE                           = 0x0002,
+        /* This is a CXL Type BUS */
+        PCI_BUS_CXL                                          = 0x0004,
+
+Enum would be the [0, 1, 2] bits. Since we define bitmask and use
+bitmask arguments in the code, shouldn't we simply replace that
+enum by #define?
+
+> @@ -32,7 +32,7 @@ enum PCIBusFlags {
+>   
+>   struct PCIBus {
+>       BusState qbus;
+> -    enum PCIBusFlags flags;
+> +    unsigned flags;
+>       const PCIIOMMUOps *iommu_ops;
+>       void *iommu_opaque;
+>       uint8_t devfn_min;
 

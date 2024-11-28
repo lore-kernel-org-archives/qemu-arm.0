@@ -1,84 +1,84 @@
-Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp1413121njb;
-        Thu, 28 Nov 2024 02:43:25 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXhCSociEFnXW0Ha2GBy3c4oHl8LzcOa67KverES++Le9c9PtOFI5VZygdwJqHzQR7WXf+Rv9Ppao6giw==@linaro.org
-X-Received: by 2002:a5d:5983:0:b0:37d:4fab:c198 with SMTP id ffacd0b85a97d-385c6ec0cfcmr4302870f8f.26.1732790605131;
-        Thu, 28 Nov 2024 02:43:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732790605; cv=none;
+Received: by 2002:a17:504:794b:b0:1be9:327d:8ee3 with SMTP id uo11csp1413130njb;
+        Thu, 28 Nov 2024 02:43:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXqOhgldCChHkKqDOKJeaOuYziFKW43XQy7GvZTFqeGua5dr3BYVOLttFJLL9jgC5UxuoNUngXqIMCLjg==@linaro.org
+X-Received: by 2002:a5d:64ab:0:b0:385:d525:c8f5 with SMTP id ffacd0b85a97d-385d525cc07mr343338f8f.7.1732790606149;
+        Thu, 28 Nov 2024 02:43:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732790606; cv=none;
         d=google.com; s=arc-20240605;
-        b=JpntfHa978x8L29ITsSHCZXzUvDzRcJcp472pet6O/YU8fqHY9JYaka03/GxLHINFf
-         jTREO4a8zU8He7qnN5nOFEfIYCX7DQby2DRkfeEhkFxJCGs6dbyAs8djc2UOtoBrqO//
-         nXcJ11jsYnHMR8xVoZl0IZUVs8sV47rrwP7no9FLgG7JsxsOuMAjJDpwWpmqHJ1Ns9m1
-         1A+ZBhhCcH6a4oUnLAhtAll3tJ2Nyy2sEoWfNI30tiHTxW1rVS1XBiWHKp4CvlC6TevU
-         z1vF69Jn3yN3pEC5vQjdwn9Iz2T976jyPi30f+ma8amkBtUi/eDjlXm/VV9+CL7N5Asd
-         c+TQ==
+        b=jhOIfK5y+gOrq0G/35r2cfI5rcr69mIK36HeUxSq5Pd6qQNys02TXNEPMX33EcHchp
+         RIdpk+ZyyhKrbJiORuWYqtiZbedawBImF47qv/umPJ1vMSsCvFSds+c4mVOvHNX0Kgnq
+         iv+MwslK1FB4kdbSxmj6VYug6HFDGA3UuB9sOSNGivjSxAUWFtS20fazDjte04q/trt1
+         NlY0NUzHosFNs3YuMWHO1Nz0LUtnfjJ34Hm9JNxoiZzMmtcoaSZNlr5FL4mWqrn9JaUv
+         9GgaY+BCpZW2Evh3+WmhIJnoYumA+lqZE5vIuLnuKI+s5svcqUcm2d3VEgFOxUx5E1AN
+         PmQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=hyYEZNn0XnxoTIdyelbgzeOaKzs7K1fWizjpa6l6dh0=;
-        fh=HHYwKoGXVtK9zFtVlZFOLccLIdSI2T+mJ/i+hmkfJIU=;
-        b=JTtVD2/0+CSPvRJa08ihVvVxhwsz5cZt4YPeHj5EtsK423CSBKpjfy0li7q1ra6mPo
-         MeVkI13VoKrkLNiH6CcL4gOwzeyHMnl6ArsLvB+Cci6XnmTxIUv2x+nyXorCEl3U0rEM
-         ZqoHzxO9pgcQmsQF4bo7wUY+RH9lIWUfbL6Pz+K1C0OlL6NPqMJYhJvZ8giMwzJX1q1S
-         6tKhFl6DHhwJ3DOfwzEd1SUiGk4ieQfMdOq10DuKLszwgE60lKKvp/hLC1U5EEecAylj
-         ymeHFyMFTxn0Du0+TLpbNEjKGgNUJySaAz0tZ5oWqjq4ZVPmHPIQ/v4vSkXleaW1o5pH
-         6PeQ==;
+        bh=BAfGDHXWne3fztjzcjDJwPhcKYYDiakCa5ET2Yl4WTw=;
+        fh=AJdFG3Eqzzsy/vHxM7ukfYXiuZa71boJx44dedz/YtM=;
+        b=bDjIVSWZwN/lLC3jiakzME7hge93GioNPpG1qTZ5ePb/aNgzhwgnOZExSRoSD5PMBG
+         G7Yp67cQ5XBg3gm2WkB2kF1HkkreTiDCuVkcncrNuqWBgkSbGApZZQ5PFATMaOLfFw8e
+         rFmsoIKlppAkLoOh3yYRDed+WP3L+dHb/C/+rGT4LIfKfsJjbsYcyK4m5+mM5kCM09AM
+         BXPczcjBCBLIYi3OxkxNE3O5Aan/RzXZu8FVDKcHqgzcXXCJwW34ssn3+A/I1gEF/Vhp
+         GRxr7/IBRWf1p3M1cAJK4qKCBUYREcrk8m3e1F3ti+Pn+4MKEZERskfbxcA+rgU3XNCz
+         tR5Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IIL2eiJs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NWR1r+Tg;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-434b1044f3dsor5136955e9.3.2024.11.28.02.43.24
+        by mx.google.com with SMTPS id ffacd0b85a97d-385ccd35fb3sor332592f8f.3.2024.11.28.02.43.25
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 28 Nov 2024 02:43:25 -0800 (PST)
+        Thu, 28 Nov 2024 02:43:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=IIL2eiJs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NWR1r+Tg;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732790604; x=1733395404; darn=linaro.org;
+        d=linaro.org; s=google; t=1732790605; x=1733395405; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=hyYEZNn0XnxoTIdyelbgzeOaKzs7K1fWizjpa6l6dh0=;
-        b=IIL2eiJsPCMoQFtGq5HbclElyV56ZxNqB6kFd8frqSOr9I5SQ6kkOa+9sMiGsghGvd
-         fCxUbm25MSZ4V1MGuMje/Xn+aeISC42NWHHTOcasHNiJzLi7d9AL5gE9557UhOOC7iaS
-         TvGnDPKMGougFBAlPlQEtJCpE5VvxJR/MULJG+UgTx5zh++tZuxKzHhyK9f5Pu2iA1P4
-         fQwvdnCspunUsr1235HPkMkZfm5Z9sDx3JhdzqtnYwucScn/3mQfiI2qJTNgoZez4VQD
-         /Hi3heBhqBp50JiNg5hoPKfiFD8itoi8nYpDX8OCk3nZvnKIu2HLa17Yjgs3QjZr2ANN
-         VLAA==
+        bh=BAfGDHXWne3fztjzcjDJwPhcKYYDiakCa5ET2Yl4WTw=;
+        b=NWR1r+Tgz++WwATpFo8d/QldoqnnbDv54qdaUYgnVIbj0XFM6Brzkkxfc4ygVog1An
+         hWvAtcgZsZBL9/36ATWWXOpozdrMJQP6Qxxt2UhG5LxnlZviYMQ8YIagBgsn6khYsPLq
+         WoSwgLbpUwBKak1tI+eszGy46z29yjc3+TOLiTpY3bmCQE2Nhv5q3Ny0FtbaWr2T90LQ
+         meD7K53KjWPZ2AKhJGK+K75pX4NiIUEBBQXDRY377fq032hosdkkllOYgJSbBexpm1D1
+         hTZre7bABUc1UsaBjAmmdq/FxnuLa71oFTYDYBlOo6Yeg3gz/uomCxLog6RJiVgqBHdD
+         1oVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732790604; x=1733395404;
+        d=1e100.net; s=20230601; t=1732790605; x=1733395405;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=hyYEZNn0XnxoTIdyelbgzeOaKzs7K1fWizjpa6l6dh0=;
-        b=QFtP6qaveoXQOm6feKGjR/2ymxEV+1SVhPsA5eARxYev4lX6SQ+4JzykBxHBRIEAv5
-         cPeh4/xPIsYRDCVtKdRkWrUbOSLs6anXQUy7I71c7DtipJooeJm1ytJ44C3fzBIRraOQ
-         kzo//JEVCLvJFcZkvUTEj4jso37lOzYQVVRHOuIt/fxpV6x9QP1/yo2vdFJy2COKxGix
-         IhPTdmM8MMdBBPwZFo9vXOCyAPWZHnYx+Y43HOJKAkTRx0k03PCks/1fAieNGRWQwuBS
-         CX1MuX0oqgO01lQjDlkbPwEbl59NnXa1ecAmSp216odboFBnHEXXcWOawrDTnORJeFv1
-         nP0Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVJsrUYeWBvljXG+mRp24XaSPTZEKUCCD/5yON+PtIjs5Uu4bHfLwp808WMp1qMYkeNoEUk/RIZFU8/Nw==@linaro.org
-X-Gm-Message-State: AOJu0YzMz1dA63+i2Y2tSaBLeTiYxxa5Chnv8KHxMfD9oiOBzkUFMdnY
-	xN9geTpITlrWZ865/GpIodZhfD3/QvBO4/T4eOjqTBbxDBM5gayd+HNttea8Eh16SQ==
-X-Gm-Gg: ASbGncviwzWXgYeGZZCJ+wPlntKaStiFFjyvuLlAg49F4/NcmSsdFPNQRg/z7tOD7ig
-	ZNrpkrZkjVrCcl6GVuHiDNTVlqL9Fz6t9rEp2Zbp4Junr9HQ7MP93UMvF2+fers3x293LEqiLNP
-	7jC/gd2VhecVREzm0G4BGUzLPc4w4IANMp6mUW9GafVX9lc89SUtHe7psu+4WN5bj8H9sPfBLWJ
-	3Y+LPQRc/g2zCMUzovJOb3/o7SIfPtocqndpvQ60n5Rp6yLmiqz81Q=
-X-Google-Smtp-Source: AGHT+IGbzy7EzKb4dzUEAavEzzJsSYKrO6t+vXSJ9MO8ux6hcDinUpScoS9ZCNZkY9iXna2ctNwC7A==
-X-Received: by 2002:a05:6000:2c8:b0:382:4792:a48e with SMTP id ffacd0b85a97d-385c6ef39b2mr5795236f8f.48.1732790604581;
-        Thu, 28 Nov 2024 02:43:24 -0800 (PST)
+        bh=BAfGDHXWne3fztjzcjDJwPhcKYYDiakCa5ET2Yl4WTw=;
+        b=Fg25/jtAk4MF11XPtbPST0MJoa7Z4rATl7bSw7gKfk9O1QyLiAJaAjzvJ9/oJCHr49
+         vtDExvyeW6CYwQltYhZkK9RPLoRrO3sEd934aKXOuzduxSIaw+PIsvCacncsgb8UpGzz
+         0CmTV9A00dwjvcoVwA/EPYbCquE7cW91bteEydJRSMBcmmsd0tqyv1LlxnZJBkQqpUfJ
+         nuE2phLTfaxyxoj2uQwRIr5tzrlHOMX7P/avgcV6AeKBK6kreRXQ1KxV2CDJqSP9GDcg
+         RshC2NG6aO1/V8rKcGgWS4Ke/TBRn4HI2t0v0BwacoHb8tejLEsabf88zdUsApulI8r1
+         jL5A==
+X-Forwarded-Encrypted: i=1; AJvYcCUqs9bkj+yo5FhlUjSOn3gJcurGssOBuSd4NUFIrvFXOsI9+EBwCTKBpL75pmJDgEShuEQspbBjFieyxA==@linaro.org
+X-Gm-Message-State: AOJu0YzwCG2Eucyqp+5Xx7hWj5B477c20wVAkuYezIcTKoKUzCuznRHW
+	Li8jlibsG+xHGRAMJFrxkz8DUPnnPKvNH8Y0ajfLE5HWCsxbB2kLF7DL4WCfXGLB/Q==
+X-Gm-Gg: ASbGnctZCfj0dRuYEAa6T8Ybzc1GpKCpSWCTqLoUcnVex+XMpY2IuC9zcDwv49Vljx3
+	chJohWMaVvbk5mrqt2JxuHXvnR9UP/VajP30Egz3I/TvARKjNKZVeZ7oOila3KGCcN2mJnuSavN
+	8IW7hefMoYgWm+6Z5bI6No0BCmSziFASe0TuvzdQ2NFh74SRgY9nSn8XxLxDjKRh+tGesUW/1DH
+	BC4N/WAODq4d5G2w3hG0Nu6M+/Fi4XIgR61NhF4GBKE7icylwYNKqg=
+X-Google-Smtp-Source: AGHT+IF9NBOcitC4nIP+QcER1/u30JABGG9B8fbDoXJRqPKqrPkYIpnhfRfjvnQEOI1z2Tf/I2u4sg==
+X-Received: by 2002:a5d:6487:0:b0:382:5030:7b94 with SMTP id ffacd0b85a97d-385c6eb8f37mr4826560f8f.13.1732790605524;
+        Thu, 28 Nov 2024 02:43:25 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385ccd68958sm1292959f8f.67.2024.11.28.02.43.23
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385ccd68958sm1292959f8f.67.2024.11.28.02.43.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Nov 2024 02:43:24 -0800 (PST)
+        Thu, 28 Nov 2024 02:43:25 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -100,77 +100,338 @@ Cc: qemu-arm@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH for-10.0 13/25] target/hppa: Set FloatInfZeroNaNRule explicitly
-Date: Thu, 28 Nov 2024 10:42:58 +0000
-Message-Id: <20241128104310.3452934-14-peter.maydell@linaro.org>
+Subject: [PATCH for-10.0 14/25] softfloat: Allow runtime choice of NaN propagation for muladd
+Date: Thu, 28 Nov 2024 10:42:59 +0000
+Message-Id: <20241128104310.3452934-15-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241128104310.3452934-1-peter.maydell@linaro.org>
 References: <20241128104310.3452934-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: hJsVClbmXIoD
+X-TUID: NPF+ubQ64YHL
 
-Set the FloatInfZeroNaNRule explicitly for the HPPA target,
-so we can remove the ifdef from pickNaNMulAdd().
+IEEE 758 does not define a fixed rule for which NaN to pick as the
+result if both operands of a 3-operand fused multiply-add operation
+are NaNs.  As a result different architectures have ended up with
+different rules for propagating NaNs.
 
-As this is the last target to be converted to explicitly setting
-the rule, we can remove the fallback code in pickNaNMulAdd()
-entirely.
+QEMU currently hardcodes the NaN propagation logic into the binary
+because pickNaNMulAdd() has an ifdef ladder for different targets.
+We want to make the propagation rule instead be selectable at
+runtime, because:
+ * this will let us have multiple targets in one QEMU binary
+ * the Arm FEAT_AFP architectural feature includes letting
+   the guest select a NaN propagation rule at runtime
+
+In this commit we add an enum for the propagation rule, the field in
+float_status, and the corresponding getters and setters.  We change
+pickNaNMulAdd to honour this, but because all targets still leave
+this field at its default 0 value, the fallback logic will pick the
+rule type with the old ifdef ladder.
+
+It's valid not to set a propagation rule if default_nan_mode is
+enabled, because in that case there's no need to pick a NaN; all the
+callers of pickNaNMulAdd() catch this case and skip calling it.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/hppa/fpu_helper.c       |  2 ++
- fpu/softfloat-specialize.c.inc | 13 +------------
- 2 files changed, 3 insertions(+), 12 deletions(-)
+ include/fpu/softfloat-helpers.h |  11 +++
+ include/fpu/softfloat-types.h   |  37 ++++++++
+ fpu/softfloat-specialize.c.inc  | 160 +++++++++++++-------------------
+ 3 files changed, 112 insertions(+), 96 deletions(-)
 
-diff --git a/target/hppa/fpu_helper.c b/target/hppa/fpu_helper.c
-index 0e44074ba82..393cae33bf9 100644
---- a/target/hppa/fpu_helper.c
-+++ b/target/hppa/fpu_helper.c
-@@ -55,6 +55,8 @@ void HELPER(loaded_fr0)(CPUHPPAState *env)
-      * HPPA does note implement a CPU reset method at all...
-      */
-     set_float_2nan_prop_rule(float_2nan_prop_s_ab, &env->fp_status);
-+    /* For inf * 0 + NaN, return the input NaN */
-+    set_float_infzeronan_rule(float_infzeronan_dnan_never, &env->fp_status);
+diff --git a/include/fpu/softfloat-helpers.h b/include/fpu/softfloat-helpers.h
+index 0bf44dc6087..cf06b4e16bf 100644
+--- a/include/fpu/softfloat-helpers.h
++++ b/include/fpu/softfloat-helpers.h
+@@ -81,6 +81,12 @@ static inline void set_float_2nan_prop_rule(Float2NaNPropRule rule,
+     status->float_2nan_prop_rule = rule;
  }
  
- void cpu_hppa_loaded_fr0(CPUHPPAState *env)
++static inline void set_float_3nan_prop_rule(Float3NaNPropRule rule,
++                                            float_status *status)
++{
++    status->float_3nan_prop_rule = rule;
++}
++
+ static inline void set_float_infzeronan_rule(FloatInfZeroNaNRule rule,
+                                              float_status *status)
+ {
+@@ -143,6 +149,11 @@ static inline Float2NaNPropRule get_float_2nan_prop_rule(float_status *status)
+     return status->float_2nan_prop_rule;
+ }
+ 
++static inline Float3NaNPropRule get_float_3nan_prop_rule(float_status *status)
++{
++    return status->float_3nan_prop_rule;
++}
++
+ static inline FloatInfZeroNaNRule get_float_infzeronan_rule(float_status *status)
+ {
+     return status->float_infzeronan_rule;
+diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
+index 27a1c96754d..79220f8c67f 100644
+--- a/include/fpu/softfloat-types.h
++++ b/include/fpu/softfloat-types.h
+@@ -207,6 +207,42 @@ typedef enum __attribute__((__packed__)) {
+     float_2nan_prop_x87,
+ } Float2NaNPropRule;
+ 
++/*
++ * 3-input NaN propagation rule, for fused multiply-add. Individual
++ * architectures have different rules for which input NaN is
++ * propagated to the output when there is more than one NaN on the
++ * input.
++ *
++ * If default_nan_mode is enabled then it is valid not to set a NaN
++ * propagation rule, because the softfloat code guarantees not to try
++ * to pick a NaN to propagate in default NaN mode.  When not in
++ * default-NaN mode, it is an error for the target not to set the rule
++ * in float_status if it uses a muladd, and we will assert if we need
++ * to handle an input NaN and no rule was selected.
++ *
++ * For QEMU, the multiply-add operation is A * B + C.
++ *
++ * NB: we don't list all 12 possibilities here or implement them
++ * in pickNaNMulAdd; if your architecture needs one of the missing
++ * combinations you should add it.
++ */
++typedef enum __attribute__((__packed__)) {
++    /* No propagation rule specified */
++    float_3nan_prop_none = 0,
++    /* Prefer SNaN over QNaN, then operand A over B over C */
++    float_3nan_prop_s_abc,
++    /* Prefer SNaN over QNaN, then operand C over A over B */
++    float_3nan_prop_s_cab,
++    /* Prefer SNaN over QNaN, then operand C over B over A */
++    float_3nan_prop_s_cba,
++    /* Prefer A over B over C regardless of SNaN vs QNaN */
++    float_3nan_prop_abc,
++    /* Prefer A over C over B regardless of SNaN vs QNaN */
++    float_3nan_prop_acb,
++    /* Prefer C over B over A regardless of SNaN vs QNaN */
++    float_3nan_prop_cba,
++} Float3NaNPropRule;
++
+ /*
+  * Rule for result of fused multiply-add 0 * Inf + NaN.
+  * This must be a NaN, but implementations differ on whether this
+@@ -241,6 +277,7 @@ typedef struct float_status {
+     FloatRoundMode float_rounding_mode;
+     FloatX80RoundPrec floatx80_rounding_precision;
+     Float2NaNPropRule float_2nan_prop_rule;
++    Float3NaNPropRule float_3nan_prop_rule;
+     FloatInfZeroNaNRule float_infzeronan_rule;
+     bool tininess_before_rounding;
+     /* should denormalised results go to zero and set the inexact flag? */
 diff --git a/fpu/softfloat-specialize.c.inc b/fpu/softfloat-specialize.c.inc
-index 05dec2fcb4c..3e4ec938b25 100644
+index 3e4ec938b25..d7c0c90ea65 100644
 --- a/fpu/softfloat-specialize.c.inc
 +++ b/fpu/softfloat-specialize.c.inc
-@@ -475,8 +475,6 @@ static int pickNaN(FloatClass a_cls, FloatClass b_cls,
+@@ -475,6 +475,7 @@ static int pickNaN(FloatClass a_cls, FloatClass b_cls,
  static int pickNaNMulAdd(FloatClass a_cls, FloatClass b_cls, FloatClass c_cls,
                           bool infzero, float_status *status)
  {
--    FloatInfZeroNaNRule rule = status->float_infzeronan_rule;
--
++    Float3NaNPropRule rule = status->float_3nan_prop_rule;
      /*
       * We guarantee not to require the target to tell us how to
       * pick a NaN if we're always returning the default NaN.
-@@ -485,21 +483,12 @@ static int pickNaNMulAdd(FloatClass a_cls, FloatClass b_cls, FloatClass c_cls,
-      */
-     assert(!status->default_nan_mode);
+@@ -500,27 +501,44 @@ static int pickNaNMulAdd(FloatClass a_cls, FloatClass b_cls, FloatClass c_cls,
+         }
+     }
  
--    if (rule == float_infzeronan_none) {
--        /*
--         * Temporarily fall back to ifdef ladder
--         */
--#if defined(TARGET_HPPA)
--        rule = float_infzeronan_dnan_never;
--#endif
--    }
++    if (rule == float_3nan_prop_none) {
+ #if defined(TARGET_ARM)
 -
-     if (infzero) {
-         /*
-          * Inf * 0 + NaN -- some implementations return the default NaN here,
-          * and some return the input NaN.
-          */
--        switch (rule) {
-+        switch (status->float_infzeronan_rule) {
-         case float_infzeronan_dnan_never:
+-    /* This looks different from the ARM ARM pseudocode, because the ARM ARM
+-     * puts the operands to a fused mac operation (a*b)+c in the order c,a,b.
+-     */
+-    if (is_snan(c_cls)) {
+-        return 2;
+-    } else if (is_snan(a_cls)) {
+-        return 0;
+-    } else if (is_snan(b_cls)) {
+-        return 1;
+-    } else if (is_qnan(c_cls)) {
+-        return 2;
+-    } else if (is_qnan(a_cls)) {
+-        return 0;
+-    } else {
+-        return 1;
+-    }
++        /*
++         * This looks different from the ARM ARM pseudocode, because the ARM ARM
++         * puts the operands to a fused mac operation (a*b)+c in the order c,a,b
++         */
++        rule = float_3nan_prop_s_cab;
+ #elif defined(TARGET_MIPS)
+-    if (snan_bit_is_one(status)) {
+-        /* Prefer sNaN over qNaN, in the a, b, c order. */
++        if (snan_bit_is_one(status)) {
++            rule = float_3nan_prop_s_abc;
++        } else {
++            rule = float_3nan_prop_s_cab;
++        }
++#elif defined(TARGET_LOONGARCH64)
++        rule = float_3nan_prop_s_cab;
++#elif defined(TARGET_PPC)
++        /*
++         * If fRA is a NaN return it; otherwise if fRB is a NaN return it;
++         * otherwise return fRC. Note that muladd on PPC is (fRA * fRC) + frB
++         */
++        rule = float_3nan_prop_acb;
++#elif defined(TARGET_S390X)
++        rule = float_3nan_prop_s_abc;
++#elif defined(TARGET_SPARC)
++        rule = float_3nan_prop_s_cba;
++#elif defined(TARGET_XTENSA)
++        if (status->use_first_nan) {
++            rule = float_3nan_prop_abc;
++        } else {
++            rule = float_3nan_prop_cba;
++        }
++#else
++        rule = float_3nan_prop_abc;
++#endif
++    }
++
++    switch (rule) {
++    case float_3nan_prop_s_abc:
+         if (is_snan(a_cls)) {
+             return 0;
+         } else if (is_snan(b_cls)) {
+@@ -534,8 +552,7 @@ static int pickNaNMulAdd(FloatClass a_cls, FloatClass b_cls, FloatClass c_cls,
+         } else {
              return 2;
-         case float_infzeronan_dnan_always:
+         }
+-    } else {
+-        /* Prefer sNaN over qNaN, in the c, a, b order. */
++    case float_3nan_prop_s_cab:
+         if (is_snan(c_cls)) {
+             return 2;
+         } else if (is_snan(a_cls)) {
+@@ -549,68 +566,21 @@ static int pickNaNMulAdd(FloatClass a_cls, FloatClass b_cls, FloatClass c_cls,
+         } else {
+             return 1;
+         }
+-    }
+-#elif defined(TARGET_LOONGARCH64)
+-    /* Prefer sNaN over qNaN, in the c, a, b order. */
+-    if (is_snan(c_cls)) {
+-        return 2;
+-    } else if (is_snan(a_cls)) {
+-        return 0;
+-    } else if (is_snan(b_cls)) {
+-        return 1;
+-    } else if (is_qnan(c_cls)) {
+-        return 2;
+-    } else if (is_qnan(a_cls)) {
+-        return 0;
+-    } else {
+-        return 1;
+-    }
+-#elif defined(TARGET_PPC)
+-    /* If fRA is a NaN return it; otherwise if fRB is a NaN return it;
+-     * otherwise return fRC. Note that muladd on PPC is (fRA * fRC) + frB
+-     */
+-    if (is_nan(a_cls)) {
+-        return 0;
+-    } else if (is_nan(c_cls)) {
+-        return 2;
+-    } else {
+-        return 1;
+-    }
+-#elif defined(TARGET_S390X)
+-    if (is_snan(a_cls)) {
+-        return 0;
+-    } else if (is_snan(b_cls)) {
+-        return 1;
+-    } else if (is_snan(c_cls)) {
+-        return 2;
+-    } else if (is_qnan(a_cls)) {
+-        return 0;
+-    } else if (is_qnan(b_cls)) {
+-        return 1;
+-    } else {
+-        return 2;
+-    }
+-#elif defined(TARGET_SPARC)
+-    /* Prefer SNaN over QNaN, order C, B, A. */
+-    if (is_snan(c_cls)) {
+-        return 2;
+-    } else if (is_snan(b_cls)) {
+-        return 1;
+-    } else if (is_snan(a_cls)) {
+-        return 0;
+-    } else if (is_qnan(c_cls)) {
+-        return 2;
+-    } else if (is_qnan(b_cls)) {
+-        return 1;
+-    } else {
+-        return 0;
+-    }
+-#elif defined(TARGET_XTENSA)
+-    /*
+-     * For Xtensa, the (inf,zero,nan) case sets InvalidOp and returns
+-     * an input NaN if we have one (ie c).
+-     */
+-    if (status->use_first_nan) {
++    case float_3nan_prop_s_cba:
++        if (is_snan(c_cls)) {
++            return 2;
++        } else if (is_snan(b_cls)) {
++            return 1;
++        } else if (is_snan(a_cls)) {
++            return 0;
++        } else if (is_qnan(c_cls)) {
++            return 2;
++        } else if (is_qnan(b_cls)) {
++            return 1;
++        } else {
++            return 0;
++        }
++    case float_3nan_prop_abc:
+         if (is_nan(a_cls)) {
+             return 0;
+         } else if (is_nan(b_cls)) {
+@@ -618,7 +588,15 @@ static int pickNaNMulAdd(FloatClass a_cls, FloatClass b_cls, FloatClass c_cls,
+         } else {
+             return 2;
+         }
+-    } else {
++    case float_3nan_prop_acb:
++        if (is_nan(a_cls)) {
++            return 0;
++        } else if (is_nan(c_cls)) {
++            return 2;
++        } else {
++            return 1;
++        }
++    case float_3nan_prop_cba:
+         if (is_nan(c_cls)) {
+             return 2;
+         } else if (is_nan(b_cls)) {
+@@ -626,19 +604,9 @@ static int pickNaNMulAdd(FloatClass a_cls, FloatClass b_cls, FloatClass c_cls,
+         } else {
+             return 0;
+         }
++    default:
++        g_assert_not_reached();
+     }
+-#else
+-    /* A default implementation: prefer a to b to c.
+-     * This is unlikely to actually match any real implementation.
+-     */
+-    if (is_nan(a_cls)) {
+-        return 0;
+-    } else if (is_nan(b_cls)) {
+-        return 1;
+-    } else {
+-        return 2;
+-    }
+-#endif
+ }
+ 
+ /*----------------------------------------------------------------------------
 -- 
 2.34.1

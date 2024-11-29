@@ -1,255 +1,215 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp110325njk;
-        Thu, 28 Nov 2024 10:22:37 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVnPPcJEjPOC9SRsFg0MpkXDGh+/IX4tyKhHjY4+QZ+Vw6ugSF4S4L8PsEsb8gkK8LX+ytoq1R3VAx2iQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGD+Q5t9Jtwr4R9R7pq9VZaiGafmIDTuTDn5Wp8iZqq1EX7JehpcTl2UrFeqq2RNYws8Qfy
-X-Received: by 2002:a05:6122:a05:b0:50d:5095:f01c with SMTP id 71dfb90a1353d-5156a8a2f9fmr4433762e0c.7.1732818157352;
-        Thu, 28 Nov 2024 10:22:37 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1732818157; cv=pass;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp791983njk;
+        Fri, 29 Nov 2024 07:10:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXAcJn2K+p6vlYRRnysDTfUiYmH9+9uWRYCeKZDAHX/JWLxNZQdQ0WB1jaH41ulr2KkfEdXMURkVihoMg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGfKByes5Za2AtCPUHskf7NJK87TbqcZLDoy1+AhoRbXJetpxj+y26l7/sm0JU+1CKar1x8
+X-Received: by 2002:a05:6214:acb:b0:6d3:f1ff:f8d7 with SMTP id 6a1803df08f44-6d864d1f56emr183022736d6.19.1732893037488;
+        Fri, 29 Nov 2024 07:10:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732893037; cv=none;
         d=google.com; s=arc-20240605;
-        b=YL/xB/MTtyIaYpU72iWNFCEkDuaNXvQxKMknMc/UsScpg8MSOzzM4Fo7YxW7svfyoi
-         rXv5KOt2C9xycl0O2zNuKPUjYENrJ2LSKbmcWJ69C4Fw6NNlIM6FY9t1ljn1EKgFylbf
-         87olxO0MctWq/7NzsAuc4xY/pSMTvPmgRdlo0CcVJEoohO+FkTh2RapPhNgk9ayDNxzi
-         A8VPbpQib13KpvMJx3/1J4X55PcmiU0wKkMOwOmAk9XAUPLPNmukwu9uaVhPa7j+wrST
-         O5Gw+Dl1vKTUEX+Yw6RmtdFgwUc2dCuXAfeoNcYZ+zeFn/QqiNQ+AKTV8wODDv1mFlyR
-         9xxw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=c+GYn7tgyQiYGOT4naAs16XTwn6CLmhJTdcl9s2il50=;
-        fh=m++/DZg8KHA25s7bLnVMmz/XOPLxnJxr2otY0y9PdwU=;
-        b=YNMSW56XLs7XMWe92SD0ixKkabBvX4EaroOgNbZYATIv5hLSjYzdTta3cRViDjTMwL
-         nzuurb5E656RrCiNzcAwdlTMpX7sVTPx3Oz13GOIPVS7Rn8qFrUggzh2YFbDyDNtgpxj
-         8xX4fSBkzsCZziViZy3QOp31CngtcWOZhZ2LACIKD1r6J97hZOKnFfSb2sWFZoxBQeI5
-         pPxzfI5kimiCuVmwdzMzmcqAW0qHVrP4K99xw+RMlIGN0DNUFQRVpJ1pTWNVs6M9FRqd
-         jQrJSLZc8XOmQx6AOGeJQ3on7zXYu7DAS4XgP2OpAwC94bWkTQZVUXb/ucVTzGKSZlcX
-         HPjg==;
+        b=SPcgzZMfZ+A4Gtxog3srRlOwIFRnrhrR68jpy6CjNqsxD3CoC/N+hNbtOjNXEcZrd7
+         0pi/103s/q2RSHKRd/rbn7wtwWLewTvuBeD+yU7r9xdGSyQEVLdSiLr91KnIRlV0Icdn
+         wMB8aSw12hIi68vFTFSdkRBRIahG/ubIL0YT6vBXlTmp7zuqI8mx39ZZ7iiv8nvx8rrP
+         J9PVeRGBxD3xOdPP1OjqiqLRPPds0T7z7r9c1iQiq5HqOlrrBVVv0iW6XSXngSDeQYPB
+         27C7Lf8+j9SSsjG/Yo84mt5gEYqN7ljv4Slq5ZdfMv5sxG25wrGyQ3lwK80XwiGHOmjH
+         9gsQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=fSyJcMTVp+SmKM3QylQZyVp/qDUGBvFM5wftYV/Cb7E=;
+        fh=4Qf3bieO7/HzT9rRl7RHSSrgu0L2PAuaH7h5Ds/Uyik=;
+        b=UELzZCpcmybakYBalLfjsf8sF1Ra55jtzNxjeoFhdzHVUHEuQRtFaq3HIAGo8jtPcx
+         /eXnQxjztHstOVYEeiqojBU4TUME4z25/FWAforgw9Pjob88E8kugRT3kfvh3xvJJonk
+         nPpGE9GRgBPox2/z69G7wYexMmjV2ujW7U/q4v9xY51VaOAKD9Uq/DWEidTRIUt0nuU7
+         0O4PSnSnKFDfsqtsgq0Yvd3/WI3MKvkAukqtHDhfcw6ctgvt8NQpI06wGdwqMaNIUPv9
+         3EFWnyu/VazzXTnI6vzSGpXbDe2lUZx51470Beih2PjJRPuw8pYDp+NUPNcvkrOGH4oV
+         mMTw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=RqwrhK74;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4af590d8b4csi796291137.14.2024.11.28.10.22.37
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mz2HExLz;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d875639cc6si48501916d6.401.2024.11.29.07.10.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Nov 2024 10:22:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 29 Nov 2024 07:10:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=RqwrhK74;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tGj9i-0002J2-NJ; Thu, 28 Nov 2024 13:22:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1tGj9h-0002Io-Eu; Thu, 28 Nov 2024 13:22:21 -0500
-Received: from mail-bn8nam11on20627.outbound.protection.outlook.com
- ([2a01:111:f403:2414::627]
- helo=NAM11-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1tGj9f-0004TW-IQ; Thu, 28 Nov 2024 13:22:21 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=aYYBPMM3Cdkhy0hHNXRBT+YA4XLoTMx2YcIDACiVpbs7jP9ZeD0CVQnOK6YzoH2H5UcoLsjyuqz/b6LwuOphU0RrOLZHDlaVFKPVbRksrZKyz4yWj8smEr4J+YUTWcNZFdvbpHiZoUA7vycOsM8jgEBzBL2iXj06215m/W4/ktOEwC8SXlgdhx2Va2200Wwa5zA1sQqH+xM2K5DZIcUlMCIWhVQFORQySWC4GxwNoHVpvOLkOVeA1z1bNFNu8kEa+ehr9O1HY4+rC+6Yk57RfFZtUcb4a9YvR4yU9tBV3Km37ZK4doRVhFUy0ZasXi1KQmmd2vVWP7ceWZBw8UzF0Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=c+GYn7tgyQiYGOT4naAs16XTwn6CLmhJTdcl9s2il50=;
- b=fjT2BkOPj4SMOlX/Qo6VrL+mW9K2Ew7roDlaUFDJd2c7xktZoVsiO7qHv6mbPeNHiZViOMWOgOy733Nb2fTVnU0fw6Pxndzo9Pl2TSokuIwnBSo+/sNCfabcD/KxgcWgvCUHQ1TxH+v9R/UdjFdWupsSdV/6KJCg2e5B7RhCKi2z3DKeGazNMShl+QOCObF/uNkhdgbAh5cq+L2ND+6IEyRf/S4r+q8aDzw+6MEo0A8DvshhrrpSV8zNB2VVN0aSp/WOztPhzNBKfDi0maOeRMVZEwaC4yA2C+h2Y7fdo6gBYiFAZBdp1l8VW9Y3HOQRzTNRHK++8kyTp5XZmLLqaQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=c+GYn7tgyQiYGOT4naAs16XTwn6CLmhJTdcl9s2il50=;
- b=RqwrhK74xizyOt8iMyApehL6MwdjtuQ/enTh/H4ZVWS/Uv4rP1zBpS0WadnudIp8E5qTq8cCOdo2AcWTSJumJnDMiI1Xf9hQZYnnQdRsYkO7Ypy3aZSLRoojJ2D5n6bMbIuXqW7fKbkHxTKO2lW/LyrEub4a9qtJAmvb2jbXKQUofWIYEoS9KXS3wXjTP3f5ml+11Pa6/Keqc+wi9aRC45wChGQNmtOP9ST0QbdND42nlNteg6nF+taM/fu39lDlLtRA22drvNODQyf43AXXmqMwRx87/y6Jg9bbiDxrbZ5DEihLT6e2JOqT719zQyClFRZXC+5zIl6Al+4nNW+U2Q==
-Received: from BL0PR02CA0122.namprd02.prod.outlook.com (2603:10b6:208:35::27)
- by SA3PR12MB7858.namprd12.prod.outlook.com (2603:10b6:806:306::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8207.13; Thu, 28 Nov
- 2024 18:22:12 +0000
-Received: from BL02EPF00021F6A.namprd02.prod.outlook.com
- (2603:10b6:208:35:cafe::99) by BL0PR02CA0122.outlook.office365.com
- (2603:10b6:208:35::27) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8207.14 via Frontend Transport; Thu,
- 28 Nov 2024 18:22:12 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- BL02EPF00021F6A.mail.protection.outlook.com (10.167.249.6) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8207.12 via Frontend Transport; Thu, 28 Nov 2024 18:22:12 +0000
-Received: from rnnvmail205.nvidia.com (10.129.68.10) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Thu, 28 Nov
- 2024 10:22:05 -0800
-Received: from rnnvmail202.nvidia.com (10.129.68.7) by rnnvmail205.nvidia.com
- (10.129.68.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Thu, 28 Nov
- 2024 10:22:05 -0800
-Received: from nvidia.com (10.127.8.14) by mail.nvidia.com (10.129.68.7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
- Transport; Thu, 28 Nov 2024 10:22:04 -0800
-Date: Thu, 28 Nov 2024 10:22:02 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-CC: Donald Dutile <ddutile@redhat.com>, Shameerali Kolothum Thodi
- <shameerali.kolothum.thodi@huawei.com>, Eric Auger <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)"
- <wangzhou1@hisilicon.com>, jiangkunkun <jiangkunkun@huawei.com>, "Jonathan
- Cameron" <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
- <zhangfei.gao@linaro.org>
-Subject: Re: [RFC PATCH 2/5] hw/arm/smmuv3: Add initial support for SMMUv3
- Nested device
-Message-ID: <Z0i0ytKDroF0zx+Y@nvidia.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <20241108125242.60136-3-shameerali.kolothum.thodi@huawei.com>
- <00e8a5d6-c926-44bb-8d11-dab4ddc4820d@redhat.com>
- <ZzTqXCFKV9s++C2N@Asurada-Nvidia>
- <cfe8864c-f830-4b39-b4d5-f219f5a42eea@redhat.com>
- <d8fbaa677771425dac985438b4b1db59@huawei.com>
- <04c73d87-35ce-4e11-a906-17c1e2961387@redhat.com>
- <Z0f1P/Tie2Yhe1dv@Asurada-Nvidia>
- <20241128125426.GD1253388@nvidia.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Mz2HExLz;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1732893037;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=fSyJcMTVp+SmKM3QylQZyVp/qDUGBvFM5wftYV/Cb7E=;
+	b=Mz2HExLzYAi1LNbComCE3sYRPLF1Jrup1hmKNmw+vltyIAVC88KzN41JckB96lf2xGyKrj
+	HKacy0RxhbT7PEPeYC171uIiAdBpNFLMKJpa1c72XhKKOTcP+RKjvJ8Nzd7SdgY97fWViU
+	xgRid5gGTm6YRUlhpQD/1iO8xBX8REQ=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-499-pebAgQsZPM6jKHQLKh7dWw-1; Fri,
+ 29 Nov 2024 10:10:33 -0500
+X-MC-Unique: pebAgQsZPM6jKHQLKh7dWw-1
+X-Mimecast-MFC-AGG-ID: pebAgQsZPM6jKHQLKh7dWw
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 7CFC01954AEC;
+	Fri, 29 Nov 2024 15:10:31 +0000 (UTC)
+Received: from localhost (dhcp-192-244.str.redhat.com [10.33.192.244])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E37EE300018D;
+	Fri, 29 Nov 2024 15:10:28 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger@redhat.com, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ sebott@redhat.com, shameerali.kolothum.thodi@huawei.com,
+ armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+ shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
+ pbonzini@redhat.com
+Subject: Re: [RFC 18/21] arm/cpu: Introduce a customizable kvm host cpu model
+In-Reply-To: <b7f25d3b-6ba7-4924-9383-74c1169dfe86@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
+References: <20241025101959.601048-1-eric.auger@redhat.com>
+ <20241025101959.601048-19-eric.auger@redhat.com>
+ <ZxuX4i9NjVRizB72@redhat.com>
+ <cb6c8f62-c5dc-416d-865f-fbdf96164dac@redhat.com>
+ <Zxub7ol4p8P_sWF8@redhat.com>
+ <CAFEAcA_wQu17y0PyQwxw0wuf2H5y2VE5aX16nLP2-u7QUP2ggA@mail.gmail.com>
+ <Zx-9WxXkmkMuGIlQ@redhat.com>
+ <CAFEAcA9w0mb5bcU8p+fScQony-=oqLmNurGWpnL_sBneQCzxUg@mail.gmail.com>
+ <Zx_EGxj2aqc_2-kY@redhat.com>
+ <63c232c2-a325-48d6-8ed4-753a7c6e3b4e@redhat.com>
+ <87ikstn8sc.fsf@redhat.com> <87frnwmn2v.fsf@redhat.com>
+ <b7f25d3b-6ba7-4924-9383-74c1169dfe86@redhat.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Fri, 29 Nov 2024 16:10:26 +0100
+Message-ID: <87ldx2krdp.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20241128125426.GD1253388@nvidia.com>
-X-NV-OnPremToCloud: ExternallySecured
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL02EPF00021F6A:EE_|SA3PR12MB7858:EE_
-X-MS-Office365-Filtering-Correlation-Id: ccbbce65-2781-40bd-b38b-08dd0fd99466
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|82310400026|7416014|1800799024|36860700013; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?iBarN6PP1u5wxpW9by7PrbJfGrnp/qAulyFKthHx8AofrDvZF4ClSaMXNtrC?=
- =?us-ascii?Q?4rvtubpnSGroFalL2HjjCZv8K6kltCkL5ib3HejzE2hOQI5xBZfSG9VwLt2v?=
- =?us-ascii?Q?lpKtRnT4p4z0gLvqAOXgjh9oQVejzKFIQh3H7XZsMEgPk2zteMV21la5eL/d?=
- =?us-ascii?Q?2e2EqV9V8+gp0MFoWmFB8xrMJekpHP+hsyOMvwalel2fkmxGYBKo7mlbmE2J?=
- =?us-ascii?Q?osVJucydYaYH1h89mivtZKTcXFwUwcZ6w4B7y9DbgqGKVzuq+ovjAXhMbdKb?=
- =?us-ascii?Q?kmzakGxv4RYX4VgUKeTXZ7A4pBLz0r6t7l5w9iSWTto0cjQLRxfFNblBmWlQ?=
- =?us-ascii?Q?L8wLWxcu/HjAdVuKMrvplxZYUS4U/X/QjF07FUNdRi28rf+wRK+Gwu0lZPAk?=
- =?us-ascii?Q?sE9IEUJFgwbnM9tUGsHdRYPfIqpSQAJ81P2XuuCuZ/JSeZLnhzp3WH6RH7Ym?=
- =?us-ascii?Q?nra0WhZd5vq/OWgA3EUqTOYSHxRk3x7bHzDt2NMF0iLAvmjxaGHD7itP9O1h?=
- =?us-ascii?Q?UNG/agXoDefkLm4ZD6p4n96uI7YievZvQm1iF5fSrgcpH2yZAOqxmtLLzmoQ?=
- =?us-ascii?Q?C0F8F5cBujtd1n9/eYRUAz32u8gjSV7pSXAN7Q2HeJo2pzyn6pHw6RFcKvjf?=
- =?us-ascii?Q?4mLTnREzSbGypdg6dRdyd1vhHQvxFLEIkpawTEDECsuUALDn4ptvw+4vil0J?=
- =?us-ascii?Q?aaTk3cilw88pdoBjT1gSVdZ7XkOlpWcpN3LSxoutHualrzgxHViBQDZhQOHh?=
- =?us-ascii?Q?I3/L1eplJSuptPtB6bXF/jCyQU1Qsa9iRxTk7LxlTDiesVZ+0UpHnFM4rCW8?=
- =?us-ascii?Q?6CarloN/vJ47ssMpM+rYtewXJWBmexyoXeXrDXuA5ZgviGnc4CwaOdLY9X0V?=
- =?us-ascii?Q?Q15Va55oFsrW5amBvvoHPFDgmnvGma0Jahi01WfppLX44xLXZbvamxC89ylE?=
- =?us-ascii?Q?dHU3pAQZbPOCKRXQGt2X63kg4x/9Fp0rrKedn/K8IqfFj6rnclBDPr1ezdOp?=
- =?us-ascii?Q?xg5XdMEqGCIyQyyIrqm8KGE0xq4ARFpzuUVK459L7ibcKpjna44WABQ3R7FK?=
- =?us-ascii?Q?efiRyeTyQ91sjoGFgjoGIhk2Lo1OdeaMoEH2vuNkVcZN/q5Wf3nxjh2NZCab?=
- =?us-ascii?Q?Mj6a1UjM88rzd1/EB7vcVVXqwNOpK/gMdNan+CNfG2spO/U3LcUBB53OnEjU?=
- =?us-ascii?Q?ZtOSShawoQW70ws0Ypkw41hfMD+VYm4LHqA6Rs6xJjuPAGzn8EoqaIifrsK/?=
- =?us-ascii?Q?4kUk0Tu/GDJgH5+hX2QFe1uet37pwJ6oI2P9SJ2pAbcydMQrDw5lIPcrIjzm?=
- =?us-ascii?Q?OCThoyqpQ2PZtK5VbhqK7iEzTahQWnw1ImR7xu9oBl9/4t9LsXpJMRmm4+qE?=
- =?us-ascii?Q?PcJ6pEQRk97lm+rOFnZuiYkQU0nubODfxkGi84buhIAXaAYwjY1OX/KO8vp1?=
- =?us-ascii?Q?t4F4tc/b/B4TlI83qjrbKSfMtXzq/6zl?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(376014)(82310400026)(7416014)(1800799024)(36860700013); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Nov 2024 18:22:12.6525 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: ccbbce65-2781-40bd-b38b-08dd0fd99466
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL02EPF00021F6A.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB7858
-Received-SPF: softfail client-ip=2a01:111:f403:2414::627;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM11-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VVDxs85rp4fY
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: qhz0sWRshOtM
 
-On Thu, Nov 28, 2024 at 08:54:26AM -0400, Jason Gunthorpe wrote:
-> On Wed, Nov 27, 2024 at 08:44:47PM -0800, Nicolin Chen wrote:
-> > On Wed, Nov 27, 2024 at 11:29:06PM -0500, Donald Dutile wrote:
-> > > On 11/27/24 5:21 AM, Shameerali Kolothum Thodi wrote:
-> > > > > > W.r.t naming, maybe something related to "hardware-accelerated"?
-> > > > > > 
-> > > > > Given that 'accel' has been used for hw-acceleration elsewhere, that seems
-> > > > > like a reasonable 'mode'.
-> > > > > But, it needs a paramater to state was is being accelerated.
-> > > > > i.e., the more global 'accel=kvm' has 'kvm'.
-> > > > 
-> > > > I was thinking more like calling this hw accelerated nested SMMUv3 emulation
-> > > > as 'smmuv3-accel'.  This avoids confusion with the already existing
-> > > > 'iommu=smmuv3' that also has a nested emulation support.
-> > > > 
-> > > > ie,
-> > > > -device arm-smmuv3-accel,id=smmuv1,bus=pcie.1 \
-> > > > 
-> > ..
-> > > I -think- you are saying below, that we have to think a bit more about this
-> > > device tagging.  I'm thinking more like
-> > >  - device arm-smmuv3,accel=<vcmdq>,id=smmu1,bus=pcie.1 \
-> > 
-> > I wonder if we really need a "vcmdq" enabling/disabling option?
-> > 
-> > Jason's suggested approach for a vIOMMU allocation is to retry-
-> > on-failure, so my draft patches allocate a TEGRA241_CMDQV type
-> > of vIOMMU first, and then fall back to a regular SMMUV3 type if
-> > it fails. So, a host that doesn't have a VCMDQ capability could
-> > still work with the fallback/default pathway.
-> 
-> It needs to be configurable so the VM can be configured in a
-> consistent way across nodes
-> 
-> autodetection of host features is nice for experimenting but scale
-> deployments should precisely specify every detail about the VM and not
-> rely on host detection. Otherwise the VM instance type will be ill
-> defined..
+On Tue, Nov 12 2024, Eric Auger <eric.auger@redhat.com> wrote:
+> I am scared about the overall implementation/test matrix. Can we afford
+> supporting that many setups, revision based models, named models with
+> all kinds of features optim-in/opt-out. We should also keep in mind what
+> is our current goal, ie. supporting migration between different machines
+> but still with sufficient commonalities.
+>
+> Shouldn't we try to collect community needs in that regard. I don't know
+> if people will/can tell us what they want to migrate from/to. At least
+> do the machines comply with the same spec rev or how large is the gap.
+> How many ID regs/features do mismatch in general. Are those ID regs
+> currently writable? What would be the best grouping model for them?
+>
+> Also many ID regs are not writable, because we have not turned them yet
+> as writable or because they are not that much a problem at the moment.
+> Maybe some features are not fully turned as writable. I mean some ID
+> regs they depend on are but not all of them.
+>
+> So maybe we should reduce the complexity by reducing the scope to the 16
+> writable regs we have atm (~ 126 writable ID reg fields).
 
-In that case, we'd need to expose a vcmdq capability somewhere.
-We do for vIOMMU via hw_info. Should we keep the consistency?
+Reducing scope is definetely needed here, I agree. Probably best to put
+the design of named models on the backburner for now, until we've
+figured out what we actually need/want to support.
 
-Otherwise, some sysfs nodes (easier for libvirt) could do the
-job too: num_available_vintfs, max_vcmdqs_per_vintf, and etc.
+In order to figure out how difficult/problematic mapping ID register
+contents to features would be, I've been looking at some real world
+examples, i.e. looking at register dumps on some servers that should be
+reasonably close in capabilities and where we would like to be able to
+migrate between them. "Reasonably close" is mostly "not more than two
+handfuls of differences"; sometimes derived from a common base
+(e.g. Neoverse-V2.)
 
-Thanks
-Nicolin
+The good news is that in many cases we only have differences in bits
+that map to a feature (and are actually writable in current KVM.) The
+bad news is that we have a number of exceptions.
+
+Comparison #1:
+
+ID_AA64DFR0
+f010307009	#of breakpoints:7
+f010305009	#of breakpoints:5
+
+BRPs does not match to any feature (but has a different meaning when we
+have FEAT_Debugv8p9 and 16+ breakpoints)
+[this is a whole can of worms in general]
+
+ID_AA64MMFR0
+2100022200101026	FEAT_ECV, FEAT_FGT, 4PB
+0000022200101125	mixed endian, 256TB
+
+FEAT_ECV -> may be 1 or 2 in ECV, with different capabilities (I guess
+we would need to allow something like FEAT_ECV=2 to expess this?)
+support for mixed endian -> indicated in BigEnd, no feature (how
+relevant is this in practice?)
+PARange (52 bits/4PB vs 48 bits/256TB) -> no feature, but some values
+depend on other features -- we care about this when creating a cpu, but
+migrating to another system with a mismatched range would be
+problematic, unless configuration outside of the cpu model would take
+care of it
+
+Comparison #2:
+
+ID_AA64PFR0
+1101011021111111	FEAT_AMUv1, GIC v3.0/4.0
+1101001020111111
+
+GIC == 1 indicates GIC CPU sysreg interface for 3.0/4.0, but no feature
+(I'm not quite sure how we handle this in QEMU)
+
+ID_AA64MMFR1
+1000000010312122	FEAT_ECBHB, !FEAT_ETS2, FEAT_PAN3, FEAT_HPDS2, FEAT_HAFDBS
+0000001010211120	!FEAT_ETS2, FEAT_PAN2, FEAT_HPDS
+
+both ETS == 0 and ETS == 1 indicate that FEAT_ETS2 is not implememented
+(ETS == 2 would indicate FEAT_ETS2) -- I guess we would want to
+standardize on ETS == 0
+FEAT_PAN3 implies FEAT_PAN2, and FEAT_HPDS2 implies FEAT_HPDS2, so
+probably fine
+
+ID_AA64MMFR2
+1221011112001011	FEAT_BBM=2
+1211011112011011	FEAT_BBM=1, FEAT_LVA
+
+FEAT_BBM can have different values -- so not a neat boolean
+
+So in summary, we have
+(a) a few features that look a bit funky, but should be managable,
+    especially if we accept non-boolean values
+(b) things that are indicated in ID registers but do not map to any
+    feature like mixed endian support
+(c) things in (b) that we already know to be problematic, like the
+    number of breakpoints
+(d) things in (b) that actually interact with other configurations we
+    might do via the commandline (PARange, probably GIC?)
+
+and that's just from a sample of existing systems I was able to get data
+from; I think we don't expect that there aren't any more of these in the
+remainder of the architecture. (I'm excluding not-yet writable bits, as
+I assume we'll eventually render everything writable that is feasible
+and needed, although I suspect that there are problems lurking in there
+as well.)
+
+[I completely ignored aarch32 registers.]
+
+My current plan is to push off features vs id regs into the future and
+do a new version of this patch set that keeps id regs, but drops the
+'custom' model, and that can be used to try migration between some hand
+picked systems (to find out what other problems we will need to deal
+with.)

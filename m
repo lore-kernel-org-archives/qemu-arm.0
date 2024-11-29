@@ -1,357 +1,616 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp205392njk;
-        Thu, 28 Nov 2024 13:37:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWIaF4jVRINBGdWObGebMNuoCWfkJ021aOoXRbcSfhsPL0eJ3Pzas12tGYo2K5CTuLPAHL50RvqQt5ZXA==@linaro.org
-X-Received: by 2002:a17:903:98f:b0:215:401b:9535 with SMTP id d9443c01a7336-215401b96b9mr3763975ad.47.1732829860310;
-        Thu, 28 Nov 2024 13:37:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732829860; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp541497njk;
+        Fri, 29 Nov 2024 02:07:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX97Kdcj06UcuLC5xtcGHRavfFLMis0Lq34Kux7MJRnM5FfqT4FJSm9oe7X2nJQ2G4bUJapFHKi6QDraw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHNNX481tXrl7om3a/8mbN6M34dkvUH8c5jN6Im8JSRDuFiLFFMsUDLy/JvQwKeezpTo+4I
+X-Received: by 2002:a05:6102:954:b0:4af:3fc1:e02 with SMTP id ada2fe7eead31-4af449ded3emr13101760137.27.1732874871678;
+        Fri, 29 Nov 2024 02:07:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732874871; cv=none;
         d=google.com; s=arc-20240605;
-        b=SK6NZ6qMXy8p7ziYYVJ0vwspkEhfNgdyfzm9CzJ0HWcy0Hx7ZRRCZIPMib+YJnhqb3
-         9z0ewR+PATExzxBgHWih0VqEaDjDyXuNIoUSwqEbqf/qAiPbi/bCeMVAYQQgBEbfPhKD
-         DY6oxTNRN44eVbjWxhExZ8CQxdsS9FmYEMcA7lAiZKS0elNYWQ6/8b7y8POFfwueFTIW
-         uDAhXe+l8L23DdcGPlC7NUJd3FuxVtwHt8MNRDenlj6aQ/2w+HzMOqWhPHoaJweuijbo
-         2gCBp2YkHK/dkiQ3A31a9j2BJTofyjWvbexTjzNpr8s5CHcw9wj9CL1TmuA+nb1eHuqV
-         D0Iw==
+        b=Ye6iL3kqum0oe5OLahdMe4m+YefYFlQS1QepvDZTAVZW9BtKJNW+fI+SmycM8ZyR5V
+         b9MzKNF1sl5jg0t+Q4/8StsTN/fObriFCJ/bQRdGzpEUGYbz6p1Q3nUeWe2A5YU3gf/x
+         QrqT2mPfVDRljgW8rzkkWy74rBq1GMzX442xeHR3JywLoJb3KyFOxolcFg2dEcD3H8Jc
+         aE21B0Nc2YtZ6vaaneubCcJ0/Ntt44ObsY2CG6W0TpOxNeK9dcqbF9Oonn3CdfUL1o9O
+         OpKwaR2F57Gtc4YCzg/rCMLGM8dYQYr/SFu/uKPO4q+Rl+MHRB1e+kQstqWD9sVECWb8
+         yH2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=AIljxQ5lKy1BxzhydrV476Rj0l67EivfvuNeq97pdhg=;
-        fh=6Z4EcxeCnrp8BqsfoeVbtn5XKubh5xtig+LWVc6GwD8=;
-        b=S7iVn7FJY4tiDwD2DTX2GX49g59kbAVBqRoH6kpId7Hal23pFPyrH0H6sV889eabVX
-         rHktkKKCCZ3heoOzZQyYpCPbDV/k3MysQTu7m3CwI0fWVFt3o3UcBJxXw5ByJW1ulSuj
-         vNZOTnupP6bXpMS/Wk28gI1uxma7SYlWGHQ6hC8PMj/5VAQnX9GQXTlkF0CHwrLVKcns
-         EN54KlA0D3bbz2HOcVTrHaAQ8yfHYWbo5ZPimhjxgrNOwMh4GQ0yVjlYEAfC88PaoTpB
-         KjJk9YnA1JbwOInDDHJQa5RlgO4XMO8GO29/jeS2l3mk1zM96j4FWzl5yr8TR5KjJ+7a
-         iukQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=gCouXFAgRSPl1keET6ZkquD/rEcwBqF+lmz+skZPw6A=;
+        fh=xYjNOZoC8U8Rq1rEqiT0H0uVgXq9GxypkMT6U8l4SeI=;
+        b=MopVOgxUydh0jxTa33JpVZhpSiPIYS0JZjj9fHcV0oO5FNjAJmyc5noGlHilVbsiw2
+         SL6qTLf+/8FN+64qLSApUr+LU+IWkJvUYeI+WLUxc5v9vd9s2JS3WfE8dIlyKcrZCnXI
+         gPk9D7YqEtBoSpa+MX9YmHbxwevY2HYCMdtyQA6i06mjcE+Ojozjjdux+DAIIM0a0oGf
+         m1Sd6Eti22MPyuI38VtPLp0ERqIvHdDZBP70jdMStXQkeQ64pvyuSnZ4RJA1fdzZO+bu
+         fUzOXYye+Kxl+I7cnFki9TXl4zn8WmM/VGMSRHdpqs28Gn1H+nuBwOOMepdS8nBBLiH0
+         46pQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gb7gytmb;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=xISABsxO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-21521931c0dsor16278115ad.4.2024.11.28.13.37.40
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4af59361edasi927060137.410.2024.11.29.02.07.51
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 28 Nov 2024 13:37:40 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 29 Nov 2024 02:07:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gb7gytmb;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=xISABsxO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tGxu7-0007Nv-Sl; Fri, 29 Nov 2024 05:07:15 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1tGxu5-0007Mn-B6
+ for qemu-devel@nongnu.org; Fri, 29 Nov 2024 05:07:13 -0500
+Received: from mail-oa1-x2d.google.com ([2001:4860:4864:20::2d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1tGxtz-0007G5-1t
+ for qemu-devel@nongnu.org; Fri, 29 Nov 2024 05:07:12 -0500
+Received: by mail-oa1-x2d.google.com with SMTP id
+ 586e51a60fabf-296b0d23303so652768fac.2
+ for <qemu-devel@nongnu.org>; Fri, 29 Nov 2024 02:07:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732829860; x=1733434660; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=AIljxQ5lKy1BxzhydrV476Rj0l67EivfvuNeq97pdhg=;
-        b=gb7gytmbO9wHFAF4DyV8NnaxjhrHP2DDLVqRx2OK48+xNgCP2gQtuo/mZ+0QhfnUi2
-         C4881gjw8pEt4QnQOAv8I2K8YavNNCYWD38Q5PYo6aJ7RXsp4q0lX5DJSQALlDiOOX5i
-         s2xzkoZciMZQBGMN4GEcSIEpUa0XyMgpkNud58rmkjPreac3Tg094cITmpt3DmJ9vgvU
-         jAcRtiqDWmfIAetuB8GSupCFrGFh4StMJDf2AuW5w1R0Z/6oR2zu63y4MlCEU5cd/SnD
-         SoJvNXsnf1ZipJuFU0W5WbXNsSF2RmYskAXMBf06TzGXypyHvjUDHrW4akxhbTFczadB
-         KHKQ==
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1732874826; x=1733479626;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=gCouXFAgRSPl1keET6ZkquD/rEcwBqF+lmz+skZPw6A=;
+ b=xISABsxOcWZcNJs4hP+I3MmYZ5ACUCMPPAHcF+4LMjpQwZzP6EbhJSC9lWrlk9NHrp
+ gun4D1xii79RWFPlXeul2gBgzmu5levDuzFa45OYl9D+cF7vQ89aqzt6OmR7e7mICSPQ
+ WW3aEE0oXIQeq6/qXmL4CRh8fHk7zSZdCDaM9Yy2XzIecz3W65Q1p0W6neQPFBrbGh+e
+ j/kBeGTYZ1+yDToTdajmiVB6Mz8ARZ8MKwibWVn/UCfUeT5XmKytVS0Ne3oYV51pVoUv
+ 5OSBC2aD5CFibsYR1dQkZfRF1NjyAVrd9hUIoJegvvAVL5fXCSG+4TPPM/GA5sFlIL3p
+ ElnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732829860; x=1733434660;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=AIljxQ5lKy1BxzhydrV476Rj0l67EivfvuNeq97pdhg=;
-        b=DIT1BBZy9Eb3Vq2qhlYuu1hlXJkSsAAZ/bIMdcw6DM+H3qyXAmPTcuTAUaItIngss0
-         a8YW6X8kdgSsyXiMlwiDzBCDbBm47kyKfuD7ws9tQ8/E0Pz87VtAO87haE6d7S08pjNQ
-         HLFnaW3xNi96BeHRJTGWkTuL3R+0GZkQ04y1WwBCl8n1oUpOhmIdJI+oYtRRRlTwA33/
-         fcCODa5hpntirBTRZd7H+3drWQ5mxa3nt3G0bpESvNlkA1GMxOaUk2sOC00Q5J0y2Pd2
-         fYXX00cQGtE0KwFKpBseW+YZJ0hyq8aNsKlvGA3RtXrvnq6pgnrt3JCScPU85sAtpe30
-         Y9Vw==
-X-Forwarded-Encrypted: i=1; AJvYcCUYPojb/tbxQiVa/gfmKacbpjyrtvKiYmYzyarKU4vONkUhIktiLoHzbtdYsH8CBLAgI5YFYxlxnZWQYA==@linaro.org
-X-Gm-Message-State: AOJu0YwvITvVNAViDJzuO/rtuCTc2RHmCY2gxZA5SXgIFqjAiC5DHgfZ
-	IXyxy5VIf3Ug60/WHdx/Of3jNV9ZCRBJsI3LiqNX8c5kJMjylwo9FvYyeBZQRFJWkw==
-X-Gm-Gg: ASbGncvYge57CekovYHkzgTsbvN/Si1zRvz1JmACGyd2L/dADRK4sMTXIeFaWRMgDpV
-	hvPWPBvj4MPMXcC8RtXluKiq9q/VxkFPo5Hh0j8G9AA32U2ML9j1AYXupnGHY9bTw9K4CJ4M4GL
-	profXg6sHzCkIjsSkQMIMjAWXH/zgIfTUwff+Cf1mWydAp/Efz4AjmXOu2os5+kz48s0uy/1DVJ
-	m6SHTKg9kaaTEi7RU1UxnUTET33OPbDNTOi53XDmNonoXXnDLLq0b16UYvJmlnt33YrfJrq87QD
-	iHJj5JxVXnIZBg==
-X-Google-Smtp-Source: AGHT+IEfHiE7BkLVEuxz6qacW2t5x+JBoCKDQLlKaYT/42zCYPDR2kYMLDavin8029nHD7xPKQwz2A==
-X-Received: by 2002:a17:902:d50e:b0:212:20c2:5fcd with SMTP id d9443c01a7336-21501385212mr99573495ad.26.1732829859763;
-        Thu, 28 Nov 2024 13:37:39 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from linaro.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2152198a386sm17812675ad.209.2024.11.28.13.37.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 28 Nov 2024 13:37:39 -0800 (PST)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Troy Lee <leetroy@gmail.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	alex.bennee@linaro.org,
-	Jamin Lin <jamin_lin@aspeedtech.com>,
-	qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Steven Lee <steven_lee@aspeedtech.com>,
-	Niek Linnenbank <nieklinnenbank@gmail.com>,
-	Joel Stanley <joel@jms.id.au>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2] tests/functional/aarch64: add tests for FEAT_RME
-Date: Thu, 28 Nov 2024 13:37:29 -0800
-Message-Id: <20241128213729.1021961-1-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
+ d=1e100.net; s=20230601; t=1732874826; x=1733479626;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=gCouXFAgRSPl1keET6ZkquD/rEcwBqF+lmz+skZPw6A=;
+ b=MPrp48nQ+kqsq9uFrhZRjESPmNKr0eVJEJfkRHjv2/oGnfjHZW20GsptXnaUv3zqCT
+ hVAMNQWBOGePZRsp7Uy4hBfA6HIcbRHT/c13iElGLgda+9N4V75rwuH4T942z6SFf7hG
+ D7nM6XpY7Ml6BaxwrOwyPY6BB+uN8sK4Z8OKpH+1F9UB/ziMd0yTsjm0bGcdQn3Vhanr
+ 3XVThIdlA3JAHOGObI6nznA4p5RnhttBWXESgLGtP0pqxKwyMrYpDDb2DFupvwOSdd5j
+ 1ryxNkz6+KnoUYV4bMYLFCpIvAe1tBGlJB2Ar7O6bftPC5ylhBdMm9R24NYhvv0e4RNz
+ cBXg==
+X-Gm-Message-State: AOJu0YwrJfL46GIxuGRAVgjj0s6H2M6OoAqJadvfdk6jC/aqTczmkGTr
+ QqvK4IZMyDRoSwatSiNzUSIuJzSkC7oK+/F4+cPjQHR1J66kys71wU39uKT4pPU=
+X-Gm-Gg: ASbGncv8leNHt5gvxrvRf8ULYE8EKi3JjpDLCCUIS7pnp5DviONs3LH0v6RNRgtP2lW
+ 0QIh7+dS1TcmQ1LMuEt85q++tyiMhKS3N1X3OrNy5rP0AQeW7uYspHeviOrAwWSpCHWaoPpJqfH
+ +kYo1OICi7mqs9SMtI++4mO1XqTqS/eZrkfo8HbA7wR7Mo2KKOQuylEG8ZUEShRCuiZmlS4jfuF
+ abjx9dISIr8SHHDrV89/xKaY87K/gOz2UYMdkVGCxVhcIUJGw3Nrs2k6xJiIYc=
+X-Received: by 2002:a05:6870:3c05:b0:270:1352:6c10 with SMTP id
+ 586e51a60fabf-29dc4370a0dmr8903020fac.37.1732874825608; 
+ Fri, 29 Nov 2024 02:07:05 -0800 (PST)
+Received: from [157.82.207.167] ([157.82.207.167])
+ by smtp.gmail.com with ESMTPSA id
+ 586e51a60fabf-29de92c4564sm938780fac.26.2024.11.29.02.06.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 Nov 2024 02:07:05 -0800 (PST)
+Message-ID: <6dc2b6a9-d7b4-43f8-95fd-4fc8699db68a@daynix.com>
+Date: Fri, 29 Nov 2024 19:06:58 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 01/15] ui & main loop: Redesign of system-specific
+ main thread event handling
+To: Phil Dennis-Jordan <phil@philjordan.eu>
+Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
+ pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com,
+ stefanha@redhat.com, mst@redhat.com, slp@redhat.com,
+ richard.henderson@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
+ chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
+ philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org, balaton@eik.bme.hu
+References: <20241127150249.50767-1-phil@philjordan.eu>
+ <20241127150249.50767-2-phil@philjordan.eu>
+ <0533bb69-6f3a-4ebf-ae0c-99b569e61ba3@daynix.com>
+ <CAAibmn26tZneZHytkYCgd4oT8Yx465i=3wu8cYXTwu3Ki8pAJw@mail.gmail.com>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <CAAibmn26tZneZHytkYCgd4oT8Yx465i=3wu8cYXTwu3Ki8pAJw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: a9FspOv6gKO6
+Received-SPF: pass client-ip=2001:4860:4864:20::2d;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-oa1-x2d.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: YExzL2dcWS6i
 
-This boot an OP-TEE environment, and launch a nested guest VM inside it
-using the Realms feature. We do it for virt and sbsa-ref platforms.
+On 2024/11/29 4:43, Phil Dennis-Jordan wrote:
+> 
+> 
+> On Thu, 28 Nov 2024 at 12:17, Akihiko Odaki <akihiko.odaki@daynix.com 
+> <mailto:akihiko.odaki@daynix.com>> wrote:
+> 
+>     On 2024/11/28 0:02, Phil Dennis-Jordan wrote:
+>      > macOS's Cocoa event handling must be done on the initial (main)
+>     thread
+>      > of the process. Furthermore, if library or application code uses
+>      > libdispatch, the main dispatch queue must be handling events on
+>     the main
+>      > thread as well.
+>      >
+>      > So far, this has affected Qemu in both the Cocoa and SDL UIs,
+>     although
+>      > in different ways: the Cocoa UI replaces the default qemu_main
+>     function
+>      > with one that spins Qemu's internal main event loop off onto a
+>      > background thread. SDL (which uses Cocoa internally) on the other
+>     hand
+>      > uses a polling approach within Qemu's main event loop. Events are
+>      > polled during the SDL UI's dpy_refresh callback, which happens to run
+>      > on the main thread by default.
+>      >
+>      > As UIs are mutually exclusive, this works OK as long as nothing else
+>      > needs platform-native event handling. In the next patch, a new
+>     device is
+>      > introduced based on the ParavirtualizedGraphics.framework in macOS.
+>      > This uses libdispatch internally, and only works when events are
+>     being
+>      > handled on the main runloop. With the current system, it works when
+>      > using either the Cocoa or the SDL UI. However, it does not when
+>     running
+>      > headless. Moreover, any attempt to install a similar scheme to the
+>      > Cocoa UI's main thread replacement fails when combined with the SDL
+>      > UI.
+>      >
+>      > This change tidies up main thread management to be more flexible.
+>      >
+>      >   * The qemu_main global function pointer is a custom function
+>     for the
+>      >     main thread, and it may now be NULL. When it is, the main thread
+>      >     runs the main Qemu loop. This represents the traditional setup.
+>      >   * When non-null, spawning the main Qemu event loop on a separate
+>      >     thread is now done centrally rather than inside the Cocoa UI
+>     code.
+>      >   * For most platforms, qemu_main is indeed NULL by default, but on
+>      >     Darwin, it defaults to a function that runs the CFRunLoop.
+>      >   * The Cocoa UI sets qemu_main to a function which runs the
+>      >     NSApplication event handling runloop, as is usual for a Cocoa
+>     app.
+>      >   * The SDL UI overrides the qemu_main function to NULL, thus
+>      >     specifying that Qemu's main loop must run on the main
+>      >     thread.
+>      >   * The GTK UI also overrides the qemu_main function to NULL.
+>      >   * For other UIs, or in the absence of UIs, the platform's default
+>      >     behaviour is followed.
+>      >
+>      > This means that on macOS, the platform's runloop events are always
+>      > handled, regardless of chosen UI. The new PV graphics device will
+>      > thus work in all configurations. There is no functional change on
+>     other
+>      > operating systems.
+>      >
+>      > Implementing this via a global function pointer variable is a bit
+>      > ugly, but it's probably worth investigating the existing UI
+>     thread rule
+>      > violations in the SDL (e.g. #2537) and GTK+ back-ends. Fixing those
+>      > issues might precipitate requirements similar but not identical
+>     to those
+>      > of the Cocoa UI; hopefully we'll see some kind of pattern emerge,
+>     which
+>      > can then be used as a basis for an overhaul. (In fact, it may turn
+>      > out to be simplest to split the UI/native platform event thread
+>     from the
+>      > QEMU main event loop on all platforms, with any UI or even none
+>     at all.)
+>      >
+>      > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu
+>     <mailto:phil@philjordan.eu>>
+>      > ---
+>      >
+>      > v5:
+>      >
+>      >   * Simplified the way of setting/clearing the main loop by going
+>     back
+>      >     to setting qemu_main directly, but narrowing the scope of what it
+>      >     needs to do, and it can now be NULL.
+>      >
+>      > v6:
+>      >
+>      >   * Folded function qemu_run_default_main_on_new_thread's code into
+>      >     main()
+>      >   * Removed whitespace changes left over on lines near code removed
+>      >     between v4 and v5
+>      >
+>      > v9:
+>      >
+>      >   * Set qemu_main to NULL for GTK UI as well.
+>      >
+>      > v10:
+>      >
+>      >   * Added comments clarifying the functionality and purpose of
+>     qemu_main.
+>      >
+>      > v11:
+>      >
+>      >   * Removed the qemu_main_fn typedef again.
+>      >   * Consolidation of main, qemu_default_main, and
+>     call_qemu_default_main
+>      >     so that the latter has been eliminated altogether.
+>      >   * Reinstated the #include <SDL.h> directive, added comment saying
+>      >     why it's needed.
+>      >   * Improved the comment on the qemu_main global variable.
+>      >   * Expanded the commit message.
+>      >
+>      >   include/qemu-main.h | 14 +++++++++++-
+>      >   system/main.c       | 37 +++++++++++++++++++++++++++----
+>      >   ui/cocoa.m          | 54 ++++++++++
+>     +----------------------------------
+>      >   ui/gtk.c            |  8 +++++++
+>      >   ui/sdl2.c           |  4 ++++
+>      >   5 files changed, 71 insertions(+), 46 deletions(-)
+>      >
+>      > diff --git a/include/qemu-main.h b/include/qemu-main.h
+>      > index 940960a7dbc..a926def7526 100644
+>      > --- a/include/qemu-main.h
+>      > +++ b/include/qemu-main.h
+>      > @@ -5,7 +5,19 @@
+>      >   #ifndef QEMU_MAIN_H
+>      >   #define QEMU_MAIN_H
+>      >
+>      > -int qemu_default_main(void);
+>      > +/*
+>      > + * The function to run on the main (initial) thread of the process.
+>      > + * NULL means QEMU's main event loop.
+>      > + * When non-NULL, QEMU's main event loop will run on a purposely
+>     created
+>      > + * thread, after which the provided function pointer will be
+>     invoked on
+>      > + * the initial thread.
+>      > + * This is useful on platforms which treat the main thread as
+>     special
+>      > + * (macOS/Darwin) and/or require all UI API calls to occur from a
+>      > + * specific thread. Those platforms can initialise it to a
+>     specific function,
+> 
+>     Although the change from v10 looks good, I have a few comments:
+> 
+>     Here, it says "require all UI API calls to occur from a specific
+>     thread", but it is clearer to say "require all UI API calls to occur
+>     from *the main thread*". If we only need to ensure all UI API calls to
+>     occur from one thread, arranging all calls to happen in the thread
+>     running QEMU's main loop is sufficient. This variable is necessary only
+>     when the thread is the one that called main().
+> 
+> 
+> Is there a simple way to reliably run a block of code on the thread 
+> running QEMU's main loop? (*) BHs will run on any thread that's blocked 
+> in AIO_WAIT_WHILE(NULL, …) or similar, so those are not suitable. 
+> Apparently GTK+ on Win32 requires all API calls to originate from one 
+> thread, but it doesn't need to be the main thread, which is why I chose 
+> that phrasing. But I suppose if that's the only restriction, the UI can 
+> spawn its own thread and leave the main thread alone.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Setting qemu_main does not help in such a case because BHs may still run 
+on other threads so it needs another approach.
 
------
+I think iohandler_get_aio_context() does what we want, but it is not 
+intended to be used to identify the thread to run the UI so using it is 
+like a hack. Spawning a thread dedicated for UI is more appropriate.
 
-v2:
-- move test to its own file
-- add sbsa test
-- check output of `cca-workload-attestation report`
+> 
+> (*) This would be good to know for fixing this bug https://gitlab.com/ 
+> qemu-project/qemu/-/issues/2537 <https://gitlab.com/qemu-project/qemu/-/ 
+> issues/2537> where the SDL UI code causes a hang by calling into 
+> SDL_SetWindowSize() from a CPU thread. My current thinking on that one 
+> is to use SDL_PushEvent() with a custom event type generated by 
+> SDL_RegisterEvents(), which then will be handled via the standard SDL 
+> event polling mechanism; but that seems awkward.
+I think it's totally fine. If SDL (backed by Cocoa) insists to own the 
+main thread, let it do so.
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
----
- tests/functional/meson.build                 |  4 +
- tests/functional/test_aarch64_rme_sbsaref.py | 96 +++++++++++++++++++
- tests/functional/test_aarch64_rme_virt.py    | 98 ++++++++++++++++++++
- 3 files changed, 198 insertions(+)
- create mode 100755 tests/functional/test_aarch64_rme_sbsaref.py
- create mode 100755 tests/functional/test_aarch64_rme_virt.py
+> 
+>      > + * while UI implementations may reset it to NULL during their
+>     init if they
+>      > + * will handle system and UI events on the main thread via
+>     QEMU's own main
+>      > + * event loop.> + */
+>      >   extern int (*qemu_main)(void);
+>      >
+>      >   #endif /* QEMU_MAIN_H */
+>      > diff --git a/system/main.c b/system/main.c
+>      > index 9b91d21ea8c..668d0ecfe8c 100644
+>      > --- a/system/main.c
+>      > +++ b/system/main.c
+>      > @@ -24,26 +24,55 @@
+>      >
+>      >   #include "qemu/osdep.h"
+>      >   #include "qemu-main.h"
+>      > +#include "qemu/main-loop.h"
+>      >   #include "sysemu/sysemu.h"
+>      >
+>      >   #ifdef CONFIG_SDL
+>      > +/*
+>      > + * SDL insists on wrapping the main() function with its own
+>     implementation on
+>      > + * some platforms; it does so via a macro that renames our main
+>     function, so
+>      > + * <SDL.h> must be #included here even with no SDL code called
+>     from this file.
+>      > + */
+>      >   #include <SDL.h>
+>      >   #endif
+>      >
+>      > -int qemu_default_main(void)
+>      > +#ifdef CONFIG_DARWIN
+>      > +#include <CoreFoundation/CoreFoundation.h>
+>      > +#endif
+>      > +
+>      > +static void *qemu_default_main(void *opaque)
+>      >   {
+>      >       int status;
+>      >
+>      > +    bql_lock();
+>      >       status = qemu_main_loop();
+>      >       qemu_cleanup(status);
+>      > +    bql_unlock();
+>      >
+>      > -    return status;
+>      > +    exit(status);
+>      >   }
+>      >
+>      > -int (*qemu_main)(void) = qemu_default_main;
+>      > +int (*qemu_main)(void);
+>      > +
+>      > +#ifdef CONFIG_DARWIN
+>      > +static int os_darwin_cfrunloop_main(void)
+>      > +{
+>      > +    CFRunLoopRun();
+>      > +    g_assert_not_reached();
+>      > +}
+>      > +int (*qemu_main)(void) = os_darwin_cfrunloop_main;
+>      > +#endif
+>      >
+>      >   int main(int argc, char **argv)
+>      >   {
+>      >       qemu_init(argc, argv);
+>      > -    return qemu_main();
+>      > +    bql_unlock();
+>      > +    if (qemu_main) {
+>      > +        QemuThread main_loop_thread;
+>      > +        qemu_thread_create(&main_loop_thread, "qemu_main",
+>      > +                           qemu_default_main, NULL,
+>     QEMU_THREAD_DETACHED);
+>      > +        return qemu_main();
+>      > +    } else {
+>      > +        qemu_default_main(NULL);
+>      > +    }
+>      >   }
+>      > diff --git a/ui/cocoa.m b/ui/cocoa.m
+>      > index 4c2dd335323..30b8920d929 100644
+>      > --- a/ui/cocoa.m
+>      > +++ b/ui/cocoa.m
+>      > @@ -73,6 +73,8 @@
+>      >       int height;
+>      >   } QEMUScreen;
+>      >
+>      > +@class QemuCocoaPasteboardTypeOwner;
+>      > +
+>      >   static void cocoa_update(DisplayChangeListener *dcl,
+>      >                            int x, int y, int w, int h);
+>      >
+>      > @@ -107,6 +109,7 @@ static void
+>     cocoa_switch(DisplayChangeListener *dcl,
+>      >   static NSInteger cbchangecount = -1;
+>      >   static QemuClipboardInfo *cbinfo;
+>      >   static QemuEvent cbevent;
+>      > +static QemuCocoaPasteboardTypeOwner *cbowner;
+>      >
+>      >   // Utility functions to run specified code block with the BQL held
+>      >   typedef void (^CodeBlock)(void);
+>      > @@ -1321,8 +1324,10 @@ - (void) dealloc
+>      >   {
+>      >       COCOA_DEBUG("QemuCocoaAppController: dealloc\n");
+>      >
+>      > -    if (cocoaView)
+>      > -        [cocoaView release];
+>      > +    [cocoaView release];
+>      > +    [cbowner release];
+>      > +    cbowner = nil;
+>      > +
+>      >       [super dealloc];
+>      >   }
+>      >
+>      > @@ -1938,8 +1943,6 @@ - (void)pasteboard:(NSPasteboard *)sender
+>     provideDataForType:(NSPasteboardType)t
+>      >
+>      >   @end
+>      >
+>      > -static QemuCocoaPasteboardTypeOwner *cbowner;
+>      > -
+>      >   static void cocoa_clipboard_notify(Notifier *notifier, void *data);
+>      >   static void cocoa_clipboard_request(QemuClipboardInfo *info,
+>      >                                       QemuClipboardType type);
+>      > @@ -2002,43 +2005,8 @@ static void
+>     cocoa_clipboard_request(QemuClipboardInfo *info,
+>      >       }
+>      >   }
+>      >
+>      > -/*
+>      > - * The startup process for the OSX/Cocoa UI is complicated, because
+>      > - * OSX insists that the UI runs on the initial main thread, and
+>     so we
+>      > - * need to start a second thread which runs the qemu_default_main():
+>      > - * in main():
+>      > - *  in cocoa_display_init():
+>      > - *   assign cocoa_main to qemu_main
+>      > - *   create application, menus, etc
+>      > - *  in cocoa_main():
+>      > - *   create qemu-main thread
+>      > - *   enter OSX run loop
+>      > - */
+>      > -
+>      > -static void *call_qemu_main(void *opaque)
+>      > -{
+>      > -    int status;
+>      > -
+>      > -    COCOA_DEBUG("Second thread: calling qemu_default_main()\n");
+>      > -    bql_lock();
+>      > -    status = qemu_default_main();
+>      > -    bql_unlock();
+>      > -    COCOA_DEBUG("Second thread: qemu_default_main() returned,
+>     exiting\n");
+>      > -    [cbowner release];
+>      > -    exit(status);
+>      > -}
+>      > -
+>      >   static int cocoa_main(void)
+>      >   {
+>      > -    QemuThread thread;
+>      > -
+>      > -    COCOA_DEBUG("Entered %s()\n", __func__);
+>      > -
+>      > -    bql_unlock();
+>      > -    qemu_thread_create(&thread, "qemu_main", call_qemu_main,
+>      > -                       NULL, QEMU_THREAD_DETACHED);
+>      > -
+>      > -    // Start the main event loop
+>      >       COCOA_DEBUG("Main thread: entering OSX run loop\n");
+>      >       [NSApp run];
+>      >       COCOA_DEBUG("Main thread: left OSX run loop, which should
+>     never happen\n");
+>      > @@ -2120,8 +2088,6 @@ static void cocoa_display_init(DisplayState
+>     *ds, DisplayOptions *opts)
+>      >
+>      >       COCOA_DEBUG("qemu_cocoa: cocoa_display_init\n");
+>      >
+>      > -    qemu_main = cocoa_main;
+>      > -
+>      >       // Pull this console process up to being a fully-fledged
+>     graphical
+>      >       // app with a menubar and Dock icon
+>      >       ProcessSerialNumber psn = { 0, kCurrentProcess };
+>      > @@ -2185,6 +2151,12 @@ static void
+>     cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
+>      >       qemu_clipboard_peer_register(&cbpeer);
+>      >
+>      >       [pool release];
+>      > +
+>      > +    /*
+>      > +     * The Cocoa UI will run the NSApplication runloop on the
+>     main thread
+>      > +     * rather than the default Core Foundation one.
+>      > +     */
+>      > +    qemu_main = cocoa_main;
+>      >   }
+>      >
+>      >   static QemuDisplay qemu_display_cocoa = {
+>      > diff --git a/ui/gtk.c b/ui/gtk.c
+>      > index bf9d3dd679a..5e6ee5c12a2 100644
+>      > --- a/ui/gtk.c
+>      > +++ b/ui/gtk.c
+>      > @@ -38,6 +38,7 @@
+>      >   #include "qemu/cutils.h"
+>      >   #include "qemu/error-report.h"
+>      >   #include "qemu/main-loop.h"
+>      > +#include "qemu-main.h"
+>      >
+>      >   #include "ui/console.h"
+>      >   #include "ui/gtk.h"
+>      > @@ -2485,6 +2486,13 @@ static void gtk_display_init(DisplayState
+>     *ds, DisplayOptions *opts)
+>      >   #ifdef CONFIG_GTK_CLIPBOARD
+>      >       gd_clipboard_init(s);
+>      >   #endif /* CONFIG_GTK_CLIPBOARD */
+>      > +
+>      > +    /*
+>      > +     * GTK+ calls must happen on the main thread at least on
+>     some platforms,
+>      > +     * and on macOS the main runloop is polled via GTK+'s event
+>     handling.
+>      > +     * Don't allow QEMU's event loop to be moved off the main
+>     thread.
+>      > +     */
+>      > +    qemu_main = NULL;
+>      >   }
+>      >
+>      >   static void early_gtk_display_init(DisplayOptions *opts)
+>      > diff --git a/ui/sdl2.c b/ui/sdl2.c
+>      > index bd4f5a9da14..44ab2762262 100644
+>      > --- a/ui/sdl2.c
+>      > +++ b/ui/sdl2.c
+>      > @@ -34,6 +34,7 @@
+>      >   #include "sysemu/sysemu.h"
+>      >   #include "ui/win32-kbd-hook.h"
+>      >   #include "qemu/log.h"
+>      > +#include "qemu-main.h"
+>      >
+>      >   static int sdl2_num_outputs;
+>      >   static struct sdl2_console *sdl2_console;
+>      > @@ -965,6 +966,9 @@ static void sdl2_display_init(DisplayState
+>     *ds, DisplayOptions *o)
+>      >       }
+>      >
+>      >       atexit(sdl_cleanup);
+>      > +
+>      > +    /* SDL's event polling (in dpy_refresh) must happen on the
+>     main thread. */
+> 
+>     ui/gtk.c and ui/sdl2.c have the same background so the comments should
+>     also be identical except names.
+> 
+> 
+> Well, GTK doesn't currently do this, which is why it doesn't work on 
+> macOS, but hopefully this patch will be merged in some form, at which 
+> point it will:
+> 
+> https://patchew.org/QEMU/20241121162146.53643-1-charmitro@posteo.net/ 
+> <https://patchew.org/QEMU/20241121162146.53643-1-charmitro@posteo.net/>
+> 
+> But yeah, thanks to this patch we know that's a solution for GTK as 
+> well, and I can update the comment.
 
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 5c048cfac6d..b975a1560df 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -13,6 +13,8 @@ endif
- test_timeouts = {
-   'aarch64_aspeed' : 600,
-   'aarch64_raspi4' : 480,
-+  'aarch64_rme_virt' : 720,
-+  'aarch64_rme_sbsaref' : 720,
-   'aarch64_sbsaref_alpine' : 720,
-   'aarch64_sbsaref_freebsd' : 720,
-   'aarch64_tuxrun' : 240,
-@@ -52,6 +54,8 @@ tests_aarch64_system_thorough = [
-   'aarch64_aspeed',
-   'aarch64_raspi3',
-   'aarch64_raspi4',
-+  'aarch64_rme_virt',
-+  'aarch64_rme_sbsaref',
-   'aarch64_sbsaref',
-   'aarch64_sbsaref_alpine',
-   'aarch64_sbsaref_freebsd',
-diff --git a/tests/functional/test_aarch64_rme_sbsaref.py b/tests/functional/test_aarch64_rme_sbsaref.py
-new file mode 100755
-index 00000000000..af3f9fb2d64
---- /dev/null
-+++ b/tests/functional/test_aarch64_rme_sbsaref.py
-@@ -0,0 +1,96 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots a Realms environment on sbsa-ref machine and a
-+# nested guest VM using it.
-+#
-+# Copyright (c) 2024 Linaro Ltd.
-+#
-+# Author: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import time
-+import os
-+import logging
-+
-+from qemu_test import QemuSystemTest, Asset
-+from qemu_test import exec_command, wait_for_console_pattern
-+from qemu_test import exec_command_and_wait_for_pattern
-+from qemu_test.utils import archive_extract
-+
-+
-+class Aarch64RMESbsaRefMachine(QemuSystemTest):
-+    def wait_for_console_pattern(self, success_message, vm=None):
-+        wait_for_console_pattern(self, success_message,
-+                                 failure_message='Kernel panic - not syncing',
-+                                 vm=vm)
-+
-+    # Stack is built with OP-TEE build environment from those instructions:
-+    # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # https://github.com/pbo-linaro/qemu-rme-stack
-+    ASSET_RME_STACK_SBSA = Asset(
-+        ('https://fileserver.linaro.org/s/pBCeJktME2T5ikj/'
-+         'download/rme-stack-op-tee-4.2.0-cca-v3-sbsa.tar.gz'),
-+         '67542c80e5cfa84494f757bbee80b3535946c74666b8b82681f8eceb0e91d4ef')
-+
-+    # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-+    # and launching a nested VM using it.
-+    def test_aarch64_rme_sbsaref(self):
-+        stack_path_tar_gz = self.ASSET_RME_STACK_SBSA.fetch()
-+        archive_extract(stack_path_tar_gz, self.workdir)
-+
-+        self.set_machine('sbsa-ref')
-+        self.vm.set_console()
-+        self.require_accelerator('tcg')
-+
-+        rme_stack = os.path.join(self.workdir,
-+                                 'rme-stack-op-tee-4.2.0-cca-v3-sbsa')
-+        pflash0 = os.path.join(rme_stack, 'images', 'SBSA_FLASH0.fd')
-+        pflash1 = os.path.join(rme_stack, 'images', 'SBSA_FLASH1.fd')
-+        virtual = os.path.join(rme_stack, 'images', 'disks', 'virtual')
-+        drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
-+
-+        self.vm.add_args('-accel', 'tcg')
-+        self.vm.add_args('-cpu', 'max,x-rme=on')
-+        self.vm.add_args('-m', '2G')
-+        self.vm.add_args('-M', 'sbsa-ref')
-+        self.vm.add_args('-drive', f'file={pflash0},format=raw,if=pflash')
-+        self.vm.add_args('-drive', f'file={pflash1},format=raw,if=pflash')
-+        self.vm.add_args('-drive', f'file=fat:rw:{virtual},format=raw')
-+        self.vm.add_args('-drive', f'format=raw,if=none,file={drive},id=hd0')
-+        self.vm.add_args('-device', 'virtio-blk-pci,drive=hd0')
-+        self.vm.add_args('-device', 'virtio-9p-pci,fsdev=shr0,mount_tag=shr0')
-+        self.vm.add_args('-fsdev', f'local,security_model=none,path={rme_stack},id=shr0')
-+        self.vm.add_args('-device', 'virtio-net-pci,netdev=net0')
-+        self.vm.add_args('-netdev', 'user,id=net0')
-+
-+        self.vm.launch()
-+        # Wait for host VM boot to complete.
-+        self.wait_for_console_pattern('Welcome to Buildroot')
-+        exec_command_and_wait_for_pattern(self, 'root', '#')
-+
-+        # We now boot the (nested) guest VM
-+        exec_command(self,
-+                     'qemu-system-aarch64 -M virt,gic-version=3 '
-+                     '-cpu host -enable-kvm -m 512M '
-+                     '-M confidential-guest-support=rme0 '
-+                     '-object rme-guest,id=rme0,measurement-algo=sha256 '
-+                     '-device virtio-net-pci,netdev=net0,romfile= '
-+                     '-netdev user,id=net0 '
-+                     '-kernel /mnt/out/bin/Image '
-+                     '-initrd /mnt/out-br/images/rootfs.cpio '
-+                     '-serial stdio')
-+        # Detect Realm activation during (nested) guest boot.
-+        self.wait_for_console_pattern('SMC_RMI_REALM_ACTIVATE')
-+        # Wait for (nested) guest boot to complete.
-+        self.wait_for_console_pattern('Welcome to Buildroot')
-+        exec_command_and_wait_for_pattern(self, 'root', '#')
-+
-+        # query (nested) guest cca report
-+        exec_command(self, 'cca-workload-attestation report')
-+        self.wait_for_console_pattern('"cca-platform-hash-algo-id": "sha-256"')
-+        self.wait_for_console_pattern('"cca-realm-hash-algo-id": "sha-256"')
-+        self.wait_for_console_pattern('"cca-realm-public-key-hash-algo-id": "sha-256"')
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
-diff --git a/tests/functional/test_aarch64_rme_virt.py b/tests/functional/test_aarch64_rme_virt.py
-new file mode 100755
-index 00000000000..cd895da46b6
---- /dev/null
-+++ b/tests/functional/test_aarch64_rme_virt.py
-@@ -0,0 +1,98 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots a Realms environment on virt machine and a nested
-+# guest VM using it.
-+#
-+# Copyright (c) 2024 Linaro Ltd.
-+#
-+# Author: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import time
-+import os
-+import logging
-+
-+from qemu_test import QemuSystemTest, Asset
-+from qemu_test import exec_command, wait_for_console_pattern
-+from qemu_test import exec_command_and_wait_for_pattern
-+from qemu_test.utils import archive_extract
-+
-+
-+class Aarch64RMEVirtMachine(QemuSystemTest):
-+    def wait_for_console_pattern(self, success_message, vm=None):
-+        wait_for_console_pattern(self, success_message,
-+                                 failure_message='Kernel panic - not syncing',
-+                                 vm=vm)
-+
-+    # Stack is built with OP-TEE build environment from those instructions:
-+    # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # https://github.com/pbo-linaro/qemu-rme-stack
-+    ASSET_RME_STACK_VIRT = Asset(
-+        ('https://fileserver.linaro.org/s/7dsXdtbDfBZbCTC/'
-+         'download/rme-stack-op-tee-4.2.0-cca-v3-qemu_v8.tar.gz'),
-+         '0b49f2652a7201d100365b8ccc6c317f1f8f2f4de6feed084080f52fe1b5fadc')
-+
-+    # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-+    # and launching a nested VM using it.
-+    def test_aarch64_rme_virt(self):
-+        stack_path_tar_gz = self.ASSET_RME_STACK_VIRT.fetch()
-+        archive_extract(stack_path_tar_gz, self.workdir)
-+
-+        self.set_machine('virt')
-+        self.vm.set_console()
-+        self.require_accelerator('tcg')
-+
-+        rme_stack = os.path.join(self.workdir,
-+                                 'rme-stack-op-tee-4.2.0-cca-v3-qemu_v8')
-+        kernel = os.path.join(rme_stack, 'out', 'bin', 'Image')
-+        bios = os.path.join(rme_stack, 'out', 'bin', 'flash.bin')
-+        drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
-+
-+        self.vm.add_args('-accel', 'tcg')
-+        self.vm.add_args('-cpu', 'max,x-rme=on')
-+        self.vm.add_args('-m', '2G')
-+        self.vm.add_args('-M', 'virt,acpi=off,'
-+                         'virtualization=on,'
-+                         'secure=on,'
-+                         'gic-version=3')
-+        self.vm.add_args('-bios', bios)
-+        self.vm.add_args('-kernel', kernel)
-+        self.vm.add_args('-drive', f'format=raw,if=none,file={drive},id=hd0')
-+        self.vm.add_args('-device', 'virtio-blk-pci,drive=hd0')
-+        self.vm.add_args('-device', 'virtio-9p-device,fsdev=shr0,mount_tag=shr0')
-+        self.vm.add_args('-fsdev', f'local,security_model=none,path={rme_stack},id=shr0')
-+        self.vm.add_args('-device', 'virtio-net-pci,netdev=net0')
-+        self.vm.add_args('-netdev', 'user,id=net0')
-+        self.vm.add_args('-append', 'root=/dev/vda')
-+
-+        self.vm.launch()
-+        # Wait for host VM boot to complete.
-+        self.wait_for_console_pattern('Welcome to Buildroot')
-+        exec_command_and_wait_for_pattern(self, 'root', '#')
-+
-+        # We now boot the (nested) guest VM
-+        exec_command(self,
-+                     'qemu-system-aarch64 -M virt,gic-version=3 '
-+                     '-cpu host -enable-kvm -m 512M '
-+                     '-M confidential-guest-support=rme0 '
-+                     '-object rme-guest,id=rme0,measurement-algo=sha512 '
-+                     '-device virtio-net-pci,netdev=net0,romfile= '
-+                     '-netdev user,id=net0 '
-+                     '-kernel /mnt/out/bin/Image '
-+                     '-initrd /mnt/out-br/images/rootfs.cpio '
-+                     '-serial stdio')
-+        # Detect Realm activation during (nested) guest boot.
-+        self.wait_for_console_pattern('SMC_RMI_REALM_ACTIVATE')
-+        # Wait for (nested) guest boot to complete.
-+        self.wait_for_console_pattern('Welcome to Buildroot')
-+        exec_command_and_wait_for_pattern(self, 'root', '#')
-+
-+        # query (nested) guest cca report
-+        exec_command(self, 'cca-workload-attestation report')
-+        self.wait_for_console_pattern('"cca-platform-hash-algo-id": "sha-256"')
-+        self.wait_for_console_pattern('"cca-realm-hash-algo-id": "sha-512"')
-+        self.wait_for_console_pattern('"cca-realm-public-key-hash-algo-id": "sha-256"')
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
--- 
-2.39.5
+I only meant that SDL is not different from GTK in terms that its call 
+and event handling needs to be done in the main thread.
+
+I was not paying attention to the mention of dpy_refresh(). It is 
+another topic whether dpy_refresh() is the best place for event 
+handling, and I don't think so. dpy_refresh() is triggered when 
+refreshing the display output, but event handling is not specific to the 
+display output so it is awkward to handle events there.
+
+The best approach is to do the same with ui/cocoa; override qemu_main to 
+dedicate the main thread for the UI and decouple the UI from the BQL by 
+calling GTK with g_main_context_invoke(), which corresponds to 
+SDL_RegisterEvents() in SDL.
+
+> 
+>      > +    qemu_main = NULL;
+>      >   }
+>      >
+>      >   static QemuDisplay qemu_display_sdl2 = {
+> 
+

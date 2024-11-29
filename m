@@ -1,476 +1,442 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp816867njk;
-        Fri, 29 Nov 2024 07:32:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUOot31tKtI1RQzoPOHDpySnI88yQhrulREYQhnJrTdxP4ydyqJuMK3e74jwO/A0jOQtYl46pfnNmDEWQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH+EyGQtBJPtdUzznOoLqe9KMCbpjr4adj3XZT7lu+W9aaPh1quRlPzBUrLxdl1pUQ18VPZ
-X-Received: by 2002:a05:622a:1892:b0:466:a2c2:f372 with SMTP id d75a77b69052e-466b3647458mr163318251cf.37.1732894341102;
-        Fri, 29 Nov 2024 07:32:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732894341; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp899048njk;
+        Fri, 29 Nov 2024 09:02:07 -0800 (PST)
+X-Received: by 2002:a05:6000:381:b0:382:4ab4:b3e5 with SMTP id ffacd0b85a97d-385c6ba6e3dmr10957904f8f.0.1732899726016;
+        Fri, 29 Nov 2024 09:02:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732899725; cv=none;
         d=google.com; s=arc-20240605;
-        b=J86LCq/cbzmvKabbmkP6Pcm5XvCT8j0yMpzmhFaSv/MrthRWVsSclsMzAKSOuP4PG7
-         Eo+hO73ErI43DsFJuSkaXbBK/fh9VXIBWStuz+SxjWP/MWz6AMqJOCUW+C3QNcxMM0S/
-         m1mFHTWXOIBsb4pH46HacdArYXV3nAsTaKITX22AehepgM+i+81Mry7OchRxl37wrj+l
-         PzCPfRD+ftN8dLNHHJ1O7/3hmYSbZRQHpSgpn/LDIOLMUoL/z/NbSzzrigI1CcQnY+qY
-         c28YzdbJGc+/qT9I7xz9HZOiOakIapoI77M4iyI2ji+s2faeNDHzXbKkX4EO1O5m/2qJ
-         qJyw==
+        b=dGVLFDOIptqfxcybqVvOq4LiFsijtgdzK8nbHT5ERpuw9lCks7rDihHFbDNvwKETQj
+         lWvXqhBSMF4HdYl0MiwWGi1SLnHcktc1WHVl1ySHmFmBeshhV9W24Mc2GL42A88QBpZU
+         YkYV5MCMt6kfsWXJVYMKnowpaDskBBPlBNCUqOmM3SLhb16I+uOBSKpfYdjedTSj55F/
+         glMf4BGbufa7qwVwO2lLdX7z1QKvQuBR4Nly/YCzEcyzJZ0Ps4ro8cItQcpSQir6UrzV
+         CPr710byM79+riWtGrmix+/zLQgz1+1BNGaaI6t/RWj+KlMpSDgGq9AEqNKXpB0VdlvR
+         0uvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=hAxyHBLVuXINxjfw/gTsVGwBfnK7JfuWoNlNIPiZenY=;
-        fh=XgncJnChD89f8YcbUPv/zS+JHnV3t/pCNdyLfi17LkQ=;
-        b=Q7BLBtajMhbfO5UnOMvfhkZPoUQ1moO5Sox1BobzRFMwYKs/lzey+HZQFXTsRsK6Up
-         4MJZfiCG548U9WkdI2LI20tJIjSwfb0EPFtpHVtlOzIgZbAqttbaCWt7A8/LAsL7lJ0t
-         v2zJ3zawlKI+D6ldz1gVdd3gSEU0ARdUAsn6v4lout8vMvEWD2pRhol+vKExfWzYuc/O
-         x7XkwP7dOjuJLfT3CcF3gHqAqFEb/o6tJ36YXOmB1wuKFHfvLLtceqmE3WiivENerB+/
-         5TVTHgQd7BwC+dXD+hUhq2P0Ko5dbNJCy527WFU6RGDfFRGxAswmz5NavjfaMwMyCWOT
-         DyQg==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=RHo8K0Rqtg9qhR5+I18DYilOtsmmfysbbakGl8pgDvY=;
+        fh=qmM12d+1xidmImI4RmcuIfs+jt60oHlG/gVCfJCxELE=;
+        b=FV6YF9l38wTJ31I9ntiuh3PR2clRZaYvxwzHJa1SU5QzrSyO7R2bRliGVLwj1Mj8zZ
+         zjXENpas0M9JWFMq2alDleLdTiXziYRFiClkacCNXR2WWYIFG7NgH15Y7W1PjARMGr/c
+         d/20XZY8l9EmEJQUi0IcPiiEwOBoBgPm56mWgp/aou3HQr71cICtrDGFAjKkYhz5Gj5Z
+         VsMzYSEQCUd50rucIFKvLoaWvInNTVuvYpTVDUfSCzSlvRW5C6L/yuo96n32YYLx0Inm
+         vrbv7cnoGzoUUhi12Xnf3DuFzoPnom3xFJJviqiouQIdWEbXra5m8256y998rOKmC+eR
+         j7ZQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=tvQO47vb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JXDkP0A9;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-466c42583bdsi44290241cf.517.2024.11.29.07.32.20
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-385ccd81922sor1465158f8f.8.2024.11.29.09.02.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Nov 2024 07:32:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 29 Nov 2024 09:02:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=tvQO47vb;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=JXDkP0A9;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tH2s2-0008PP-4O; Fri, 29 Nov 2024 10:25:26 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tH2s0-0008Mi-Gh
- for qemu-devel@nongnu.org; Fri, 29 Nov 2024 10:25:24 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tH2rv-00024d-Uk
- for qemu-devel@nongnu.org; Fri, 29 Nov 2024 10:25:24 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-37ed3bd6114so1498337f8f.2
- for <qemu-devel@nongnu.org>; Fri, 29 Nov 2024 07:25:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1732893918; x=1733498718;
- darn=nongnu.org; 
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=hAxyHBLVuXINxjfw/gTsVGwBfnK7JfuWoNlNIPiZenY=;
- b=tvQO47vbhMtVSwaBQMgtd4412RYVnRt/TuQy3sL49Z8hVICUxfRWQbY2uTUD90gKgZ
- 68+9DRAvRM1vBPLFiSWxmmXK59LQISseJoiQoLjwNo30VcD8mtVX/5vRcPX2k6ygSPaz
- +/O12CvsaC160SnUki/OY68dkkewA2FxWgVwGprx8fEYW+QfXkTka9IJg+luL8Bo30Gy
- RZUy/4+/V1CAzZAQtsToDusM8qdCJpxzr7IVm6f97myPsuGIZMiqjz7BB+D0/NBMETMJ
- OFd8BCbr+WXnM7Y4XQD5091Dj0+2GsNUNxcLA9CLZAEsSZLBA4j6b1J0g9CASuhTrXOl
- GB3Q==
+        d=linaro.org; s=google; t=1732899724; x=1733504524; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=RHo8K0Rqtg9qhR5+I18DYilOtsmmfysbbakGl8pgDvY=;
+        b=JXDkP0A9PgFIpL1xWySjFicvIHK33b9Z+0HImhGeiS7hPqkPqkKpg/4iGqXsOo4czO
+         ug0oGUxrdBX20gPe1L3BlbZC28U/WmfKus5+EUfc16eqc28HcTG1zReflXYsEr5/5gN9
+         MRWNbA0pXNaiNJ5NvNmdOAy7vUoVzugmNRat3FYLoM5YSeFO4ZzeiPIg1q0dz1nj+QtB
+         Dqp5TlcMte4S+ehee6QeY4RB5jxNG2iONXhrWwVWIds8j+BwzsoDRG7STOq9H6cqrUNt
+         HxnhCF4TXp9OWFQI56GNQRCOx9PW33uPtkg564CqMWkXpvjljm+tJCJ+qojynKdKt6Us
+         VVkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1732893918; x=1733498718;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=hAxyHBLVuXINxjfw/gTsVGwBfnK7JfuWoNlNIPiZenY=;
- b=f+aJn+vcJa9kdV0pqnfjADpEPnAiX2eCMsajzF766CqiJcNyUBbBZoE+wr80E+kWJe
- 3vCz0vpBg0Q83NJJ6EC6qUGwEGxH+yfHEYjqR+hKRZtug6hLGAgDG/603luWw6ksrFLY
- 0bOWsFSSpLO22g+7TJ6Cx1dgevWJ8nbM81phKu3Pxj9CXE1afUU97soPZ3GBbIJ2twOU
- otZ1nb2APv/YNE3OnlVb7t0YhUZVU8PT1iYQyya+K188Uk/V+BT2yT7kJM+NN2CBByfc
- 25u8gd3Zz/QVHkZyqHFcalvG47v3PzU4eMXDdfNIo3CRPMMxzJ/smgWk56BIV3EXTpEs
- cx1Q==
-X-Gm-Message-State: AOJu0YytTBlkdXbDNdjTQUboV8OrQ6AXhfBMdHWiT2vfq4BgOELZuzjB
- 28kGvW0CWfDxDgQGC3DpXw8lyyuL2Z+a4hbZNTGsIVeKtRwCne+Hmu0/tcyLtt3zIlmNzATlfYN
- QQg==
-X-Gm-Gg: ASbGncuP9bE+GL7cn2NVQaFnADF6M6gS4ZlD7msfJUTwse2TjDlERiKqzzUxf4bcbtT
- 5+TuD/oKiToviIuh9qnQ1bmjX1m15ppHIDXU+o52eCgXoFImGS6bmwPVsLiZhjSRdz6ruosYDx/
- KptxdJJ9XMVDnt0gt5OgH0LshMbud4h45Gk+B0xxLCHR8DlXRxD3+55IKIrXs/GVTOdvp9R1CTu
- 4BRoRV0+pasNtBgqyeRmTe5o0N5kMePUrKWueokY1xuSLPAkKQ6cJgpW9v2WIRBFKQ2dX8WNYgF
- JD4iOiWtmaYkXF/0Ng3nE/cGjg==
-X-Received: by 2002:a05:6000:4408:b0:382:2a2b:f81e with SMTP id
- ffacd0b85a97d-385c6edc4a3mr8165889f8f.51.1732893918354; 
- Fri, 29 Nov 2024 07:25:18 -0800 (PST)
-Received: from localhost.localdomain (h082218084190.host.wavenet.at.
- [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-385ccd2db2dsm4685119f8f.14.2024.11.29.07.25.16
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 29 Nov 2024 07:25:17 -0800 (PST)
-From: Phil Dennis-Jordan <phil@philjordan.eu>
-To: qemu-devel@nongnu.org
-Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
- pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com,
- stefanha@redhat.com, mst@redhat.com, slp@redhat.com,
- richard.henderson@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
- philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
- jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, balaton@eik.bme.hu
-Subject: [PATCH v12 04/15] hw/display/apple-gfx: Adds configurable mode list
-Date: Fri, 29 Nov 2024 16:24:55 +0100
-Message-Id: <20241129152506.59390-5-phil@philjordan.eu>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
-In-Reply-To: <20241129152506.59390-1-phil@philjordan.eu>
-References: <20241129152506.59390-1-phil@philjordan.eu>
+        d=1e100.net; s=20230601; t=1732899724; x=1733504524;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=RHo8K0Rqtg9qhR5+I18DYilOtsmmfysbbakGl8pgDvY=;
+        b=N/1xrNdJCQKRdzbEnlYMNWr37TqjifEZzdWgw4b6CrvWsmiXfTtfUbQrAAo3v5Dh8L
+         0inXZ8GB8vJCjjaLECrVkYU40rGIG9QwptaJkancXOXYsoyi49b0bi6smjut1wr/xxoW
+         NKCu6i+pR/ZSS3CNV3+wZtwdco8VXWOSlhILvkWuCm8Q1xKdSEH123WiZk+GlmMyjdC3
+         1yE0oRh35Wvoe60noqHe0D4RXQns+J4c6HAdddCsSUrTHFuFQxrAuDau+qCeDtvwh8Dw
+         gmntF9130MdkVOIYvG0riKYSak6SYwIDvfvK/W3G0yTnTWQqw9MeXlodakjTWFqQ1YGD
+         SmQg==
+X-Gm-Message-State: AOJu0YxW1Un+Br4yGrApsf0NYW723p5G+7RGFPRRVwzyNihrR5MxYGtJ
+	9Ccjtiomwcz/beItVYvF3zzTIb6EY6KJGcGKufsZ0lZJe1MuU4uf2LXdOfrkARVfRVtJxB6wZ9/
+	2hLoPmpNXhepCq4D/TrFq3hnbwdvLA76Iz+8ExaDMGFAIOxHtteY=
+X-Gm-Gg: ASbGnctju1ftjzg9xHfJCe+vcPMXP0mfOHxrr0n5xu9OaG247Nybzci8yscKoQ4kbDx
+	mXzpTOD163989dsz92uqb4xDE2AUcWmj6
+X-Google-Smtp-Source: AGHT+IE9yuQ15jSycnqCz+XaDKN9D+7vMeUTpWFyg8Ejbr0lYjuZS+3ezEkMvmvgxdGIEg3ZSBaf8uNq9vIBlUEHfr4=
+X-Received: by 2002:a5d:5f54:0:b0:382:46ea:1113 with SMTP id
+ ffacd0b85a97d-385c6ccaf4bmr12292196f8f.4.1732899722636; Fri, 29 Nov 2024
+ 09:02:02 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::42c;
- envelope-from=phil@philjordan.eu; helo=mail-wr1-x42c.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Hglf83aLJnW7
+References: <20241127170143.1664829-1-alex.bennee@linaro.org>
+In-Reply-To: <20241127170143.1664829-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 29 Nov 2024 17:01:51 +0000
+Message-ID: <CAFEAcA-xFF1dEE=8dpfu2COBH9m0J_MWxworYqSk2hOf2KD2bw@mail.gmail.com>
+Subject: Re: [RFC PATCH] target/arm: implement SEL2 physical and virtual timers
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Andrei Homescu <ahomescu@google.com>, 
+	=?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@google.com>, 
+	=?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi.denis.courmont@huawei.com>, 
+	"open list:Virt" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: pPvnSjTNpsTr
 
-This change adds a property 'display_modes' on the graphics device
-which permits specifying a list of display modes. (screen resolution
-and refresh rate)
+On Wed, 27 Nov 2024 at 17:01, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> When FEAT_SEL2 was implemented the SEL2 timers where missed. This
+> shows up when building the latest Hafnium with SPMC_AT_EL=3D2. The
+> actual implementation utilises the same logic as the rest of the
+> timers so all we need to do is:
+>
+>   - define the timers and their access functions
+>   - conditionally add the correct system registers
+>   - create a new accessfn as the rules are subtly different to the
+>     existing secure timer
+>
+> Fixes: e9152ee91c (target/arm: add ARMv8.4-SEL2 system registers)
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: Andrei Homescu <ahomescu@google.com>
+> Cc: Arve Hj=C3=B8nnev=C3=A5g <arve@google.com>
+> Cc: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
+> ---
+>  include/hw/arm/bsa.h |   2 +
+>  target/arm/cpu.h     |   2 +
+>  target/arm/gtimer.h  |   4 +-
+>  hw/arm/virt.c        |   2 +
+>  target/arm/cpu.c     |   8 +++
+>  target/arm/helper.c  | 155 +++++++++++++++++++++++++++++++++++++++++++
+>  6 files changed, 172 insertions(+), 1 deletion(-)
+>
+> diff --git a/include/hw/arm/bsa.h b/include/hw/arm/bsa.h
+> index 8eaab603c0..b4ecca1b1c 100644
+> --- a/include/hw/arm/bsa.h
+> +++ b/include/hw/arm/bsa.h
+> @@ -22,6 +22,8 @@
+>  #define QEMU_ARM_BSA_H
+>
+>  /* These are architectural INTID values */
+> +#define ARCH_TIMER_S_VIRT_EL2_IRQ  19
+> +#define ARCH_TIMER_S_EL2_IRQ       20
+>  #define VIRTUAL_PMU_IRQ            23
+>  #define ARCH_GIC_MAINT_IRQ         25
+>  #define ARCH_TIMER_NS_EL2_IRQ      26
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index d86e641280..10b5354d6f 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1139,6 +1139,8 @@ void arm_gt_vtimer_cb(void *opaque);
+>  void arm_gt_htimer_cb(void *opaque);
+>  void arm_gt_stimer_cb(void *opaque);
+>  void arm_gt_hvtimer_cb(void *opaque);
+> +void arm_gt_sel2timer_cb(void *opaque);
+> +void arm_gt_sel2vtimer_cb(void *opaque);
+>
+>  unsigned int gt_cntfrq_period_ns(ARMCPU *cpu);
+>  void gt_rme_post_el_change(ARMCPU *cpu, void *opaque);
+> diff --git a/target/arm/gtimer.h b/target/arm/gtimer.h
+> index b992941bef..3c097c59c7 100644
+> --- a/target/arm/gtimer.h
+> +++ b/target/arm/gtimer.h
+> @@ -15,7 +15,9 @@ enum {
+>      GTIMER_HYP      =3D 2,
+>      GTIMER_SEC      =3D 3,
+>      GTIMER_HYPVIRT  =3D 4,
+> -#define NUM_GTIMERS   5
+> +    GTIMER_SEC_PEL2 =3D 5,
+> +    GTIMER_SEC_VEL2 =3D 6,
+> +#define NUM_GTIMERS   7
 
-The property is an array of a custom type to make the syntax slightly
-less awkward to use, for example:
+Maybe we should add comments to this enum giving the architectural
+names of these timers?
 
--device '{"driver":"apple-gfx-pci", "display-modes":["1920x1080@60", "3840x2160@60"]}'
+    GTIMER_PHYS     =3D 0, /* EL1 physical timer */
+    GTIMER_VIRT     =3D 1, /* EL1 virtual timer */
+    GTIMER_HYP      =3D 2, /* EL2 physical timer */
+    GTIMER_SEC      =3D 3, /* EL3 physical timer */
+    GTIMER_HYPVIRT  =3D 4, /* EL2 virtual timer */
+    GTIMER_SEC_PEL2 =3D 5, /* Secure EL2 physical timer */
+    GTIMER_SEC_VEL2 =3D 6, /* Secure EL2 virtual timer */
 
-Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
-Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
----
+>  };
+>
+>  #endif
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 1a381e9a2b..451d154459 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -873,6 +873,8 @@ static void create_gic(VirtMachineState *vms, MemoryR=
+egion *mem)
+>              [GTIMER_HYP]  =3D ARCH_TIMER_NS_EL2_IRQ,
+>              [GTIMER_SEC]  =3D ARCH_TIMER_S_EL1_IRQ,
+>              [GTIMER_HYPVIRT] =3D ARCH_TIMER_NS_EL2_VIRT_IRQ,
+> +            [GTIMER_SEC_PEL2] =3D ARCH_TIMER_S_EL2_IRQ,
+> +            [GTIMER_SEC_VEL2] =3D ARCH_TIMER_S_VIRT_EL2_IRQ,
+>          };
+>
+>          for (unsigned irq =3D 0; irq < ARRAY_SIZE(timer_irq); irq++) {
 
-v4:
+We probably need to also update at least sbsa-ref for this new
+pair of interrupts, and perhaps others (if they allow CPUs
+with FEAT_SEL2).
 
- * Switched to the native array property type, which recently gained
-	 command line support.
- * The property has also been added to the -mmio variant.
- * Tidied up the code a little.
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 6938161b95..e42ab8ce8b 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2078,6 +2078,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Er=
+ror **errp)
+>                                                arm_gt_stimer_cb, cpu);
+>          cpu->gt_timer[GTIMER_HYPVIRT] =3D timer_new(QEMU_CLOCK_VIRTUAL, =
+scale,
+>                                                    arm_gt_hvtimer_cb, cpu=
+);
+> +
+> +        /* FEAT_SEL2 also has physical and virtual timers */
+> +        if (cpu_isar_feature(aa64_sel2, cpu)) {
+> +            cpu->gt_timer[GTIMER_SEC_PEL2] =3D timer_new(QEMU_CLOCK_VIRT=
+UAL, scale,
+> +                                                       arm_gt_sel2timer_=
+cb, cpu);
+> +            cpu->gt_timer[GTIMER_SEC_VEL2] =3D timer_new(QEMU_CLOCK_VIRT=
+UAL, scale,
+> +                                                       arm_gt_sel2vtimer=
+_cb, cpu);
+> +        }
 
-v5:
+We create all the other gt_timer[] entries regardless of whether the
+feature that uses them exists, and I think we should do the same
+here. It's pretty harmless and it means code elsewhere doesn't
+have to be super-careful about "is cpu->gt_timer[n] valid or is
+it zeroed out memory?".
 
- * Better error handling and buffer management in property parsing and
-   output.
+>      }
+>  #endif
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index f38eb054c0..b5a8a5846e 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -2668,6 +2668,41 @@ static CPAccessResult gt_stimer_access(CPUARMState=
+ *env,
+>      }
+>  }
+>
+> +static CPAccessResult gt_sel2timer_access(CPUARMState *env,
+> +                                          const ARMCPRegInfo *ri,
+> +                                          bool isread)
+> +{
+> +    /*
+> +     * The AArch64 register view of the secure EL2 timers are mostly
+> +     * accessible from EL3 and EL2 although can also be trapped to EL2
+> +     * from EL1 depending on nested virt config.
+> +     */
+> +    switch (arm_current_el(env)) {
+> +    case 0:
+> +        return CP_ACCESS_TRAP;
+> +    case 1:
+> +        if (!arm_is_secure(env)) {
+> +            return CP_ACCESS_TRAP;
+> +        } else if (arm_hcr_el2_eff(env) & HCR_NV) {
+> +            return CP_ACCESS_TRAP_EL2;
+> +        }
+> +        return CP_ACCESS_TRAP;
+> +    case 2:
+> +        if (!arm_is_secure(env)) {
+> +            return CP_ACCESS_TRAP;
+> +        }
+> +        return CP_ACCESS_OK;
+> +    case 3:
+> +        if (env->cp15.scr_el3 & SCR_EEL2) {
+> +            return CP_ACCESS_OK;
+> +        } else {
+> +            return CP_ACCESS_TRAP;
+> +        }
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+> +}
+> +
+>  uint64_t gt_get_countervalue(CPUARMState *env)
+>  {
+>      ARMCPU *cpu =3D env_archcpu(env);
+> @@ -3175,6 +3210,62 @@ static void gt_sec_ctl_write(CPUARMState *env, con=
+st ARMCPRegInfo *ri,
+>      gt_ctl_write(env, ri, GTIMER_SEC, value);
+>  }
+>
+> +static void gt_sec_pel2_timer_reset(CPUARMState *env, const ARMCPRegInfo=
+ *ri)
+> +{
+> +    gt_timer_reset(env, ri, GTIMER_SEC_PEL2);
+> +}
+> +
+> +static void gt_sec_pel2_cval_write(CPUARMState *env, const ARMCPRegInfo =
+*ri,
+> +                                   uint64_t value)
+> +{
+> +    gt_cval_write(env, ri, GTIMER_SEC_PEL2, value);
+> +}
+> +
+> +static uint64_t gt_sec_pel2_tval_read(CPUARMState *env, const ARMCPRegIn=
+fo *ri)
+> +{
+> +    return gt_tval_read(env, ri, GTIMER_SEC_PEL2);
+> +}
+> +
+> +static void gt_sec_pel2_tval_write(CPUARMState *env, const ARMCPRegInfo =
+*ri,
+> +                              uint64_t value)
+> +{
+> +    gt_tval_write(env, ri, GTIMER_SEC_PEL2, value);
+> +}
 
-v6:
+gt_tval_read() and gt_tval_write() have a switch which
+determines whether they obey the physical offset (CNTPOFF_EL2)
+or the virtual offset (CNTVOFF_EL2) or neither. For GTIMER_SEC_PEL2
+the correct answer is "neither", which is what you get by default,
+but for GTIMER_SEC_VEL2 we should be honouring CNTVOFF_EL2,
+so you need to add a case to the switch for that.
 
- * Switched to using NSMutableArray for the mode list to avoid need for
-   allocating a temporary array - previously done with alloca.
+We also need to fix a pre-existing bug in gt_recalc_timer(),
+which does
+        uint64_t offset =3D timeridx =3D=3D GTIMER_VIRT ?
+            cpu->env.cp15.cntvoff_el2 : gt_phys_raw_cnt_offset(&cpu->env);
+and so fails to include CNTVOFF_EL2 when working with
+GTIMER_HYPVIRT; then you can also add GTIMER_SEC_VEL2 to that.
 
-v7:
-
- * Simplified error handling in property parsing
-
-v8:
-
- * More consistent integer variable types.
-
-v9:
-
- * Re-ordered type definitions so we can drop a 'struct' keyword.
-
- hw/display/apple-gfx-mmio.m |   8 +++
- hw/display/apple-gfx-pci.m  |   9 ++-
- hw/display/apple-gfx.h      |  11 +++
- hw/display/apple-gfx.m      | 135 +++++++++++++++++++++++++++++++-----
- hw/display/trace-events     |   2 +
- 5 files changed, 145 insertions(+), 20 deletions(-)
-
-diff --git a/hw/display/apple-gfx-mmio.m b/hw/display/apple-gfx-mmio.m
-index 1a46ff48b75..13052419f09 100644
---- a/hw/display/apple-gfx-mmio.m
-+++ b/hw/display/apple-gfx-mmio.m
-@@ -258,6 +258,12 @@ static void apple_gfx_mmio_reset(Object *obj, ResetType type)
-     [s->common.pgdev reset];
- }
- 
-+static Property apple_gfx_mmio_properties[] = {
-+    DEFINE_PROP_ARRAY("display-modes", AppleGFXMMIOState,
-+                      common.num_display_modes, common.display_modes,
-+                      qdev_prop_display_mode, AppleGFXDisplayMode),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
- 
- static void apple_gfx_mmio_class_init(ObjectClass *klass, void *data)
+> +
+> +static void gt_sec_pel2_ctl_write(CPUARMState *env, const ARMCPRegInfo *=
+ri,
+> +                              uint64_t value)
+> +{
+> +    gt_ctl_write(env, ri, GTIMER_SEC_PEL2, value);
+> +}
+> +
+> +static void gt_sec_vel2_timer_reset(CPUARMState *env, const ARMCPRegInfo=
+ *ri)
+> +{
+> +    gt_timer_reset(env, ri, GTIMER_SEC_VEL2);
+> +}
+> +
+> +static void gt_sec_vel2_cval_write(CPUARMState *env, const ARMCPRegInfo =
+*ri,
+> +                              uint64_t value)
+> +{
+> +    gt_cval_write(env, ri, GTIMER_SEC_VEL2, value);
+> +}
+> +
+> +static uint64_t gt_sec_vel2_tval_read(CPUARMState *env, const ARMCPRegIn=
+fo *ri)
+> +{
+> +    return gt_tval_read(env, ri, GTIMER_SEC_VEL2);
+> +}
+> +
+> +static void gt_sec_vel2_tval_write(CPUARMState *env, const ARMCPRegInfo =
+*ri,
+> +                                   uint64_t value)
+> +{
+> +    gt_tval_write(env, ri, GTIMER_SEC_VEL2, value);
+> +}
+> +
+> +static void gt_sec_vel2_ctl_write(CPUARMState *env, const ARMCPRegInfo *=
+ri,
+> +                              uint64_t value)
+> +{
+> +    gt_ctl_write(env, ri, GTIMER_SEC_VEL2, value);
+> +}
+> +
+>  static void gt_hv_timer_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+>  {
+>      gt_timer_reset(env, ri, GTIMER_HYPVIRT);
+> @@ -3231,6 +3322,20 @@ void arm_gt_stimer_cb(void *opaque)
+>      gt_recalc_timer(cpu, GTIMER_SEC);
+>  }
+>
+> +void arm_gt_sel2timer_cb(void *opaque)
+> +{
+> +    ARMCPU *cpu =3D opaque;
+> +
+> +    gt_recalc_timer(cpu, GTIMER_SEC_PEL2);
+> +}
+> +
+> +void arm_gt_sel2vtimer_cb(void *opaque)
+> +{
+> +    ARMCPU *cpu =3D opaque;
+> +
+> +    gt_recalc_timer(cpu, GTIMER_SEC_VEL2);
+> +}
+> +
+>  void arm_gt_hvtimer_cb(void *opaque)
+>  {
+>      ARMCPU *cpu =3D opaque;
+> @@ -6613,6 +6718,56 @@ static const ARMCPRegInfo el2_sec_cp_reginfo[] =3D=
  {
-@@ -267,6 +273,8 @@ static void apple_gfx_mmio_class_init(ObjectClass *klass, void *data)
-     rc->phases.hold = apple_gfx_mmio_reset;
-     dc->hotpluggable = false;
-     dc->realize = apple_gfx_mmio_realize;
-+
-+    device_class_set_props(dc, apple_gfx_mmio_properties);
- }
- 
- static TypeInfo apple_gfx_mmio_types[] = {
-diff --git a/hw/display/apple-gfx-pci.m b/hw/display/apple-gfx-pci.m
-index 5ff6a487cfc..765b210287d 100644
---- a/hw/display/apple-gfx-pci.m
-+++ b/hw/display/apple-gfx-pci.m
-@@ -114,6 +114,13 @@ static void apple_gfx_pci_reset(Object *obj, ResetType type)
-     [s->common.pgdev reset];
- }
- 
-+static Property apple_gfx_pci_properties[] = {
-+    DEFINE_PROP_ARRAY("display-modes", AppleGFXPCIState,
-+                      common.num_display_modes, common.display_modes,
-+                      qdev_prop_display_mode, AppleGFXDisplayMode),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -130,7 +137,7 @@ static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
-     pci->class_id = PCI_CLASS_DISPLAY_OTHER;
-     pci->realize = apple_gfx_pci_realize;
- 
--    /* TODO: Property for setting mode list */
-+    device_class_set_props(dc, apple_gfx_pci_properties);
- }
- 
- static TypeInfo apple_gfx_pci_types[] = {
-diff --git a/hw/display/apple-gfx.h b/hw/display/apple-gfx.h
-index ef2455e3bdc..a1160bf6619 100644
---- a/hw/display/apple-gfx.h
-+++ b/hw/display/apple-gfx.h
-@@ -16,6 +16,7 @@
- #import <ParavirtualizedGraphics/ParavirtualizedGraphics.h>
- #include "qemu/typedefs.h"
- #include "exec/memory.h"
-+#include "hw/qdev-properties.h"
- #include "ui/surface.h"
- 
- @class PGDeviceDescriptor;
-@@ -27,6 +28,12 @@
- 
- typedef QTAILQ_HEAD(, PGTask_s) PGTaskList;
- 
-+typedef struct AppleGFXDisplayMode {
-+    uint16_t width_px;
-+    uint16_t height_px;
-+    uint16_t refresh_rate_hz;
-+} AppleGFXDisplayMode;
-+
- typedef struct AppleGFXState {
-     /* Initialised on init/realize() */
-     MemoryRegion iomem_gfx;
-@@ -35,6 +42,8 @@ typedef struct AppleGFXState {
-     QemuConsole *con;
-     id<MTLDevice> mtl;
-     id<MTLCommandQueue> mtl_queue;
-+    AppleGFXDisplayMode *display_modes;
-+    uint32_t num_display_modes;
- 
-     /* List `tasks` is protected by task_mutex */
-     QemuMutex task_mutex;
-@@ -62,5 +71,7 @@ void *apple_gfx_host_ptr_for_gpa_range(uint64_t guest_physical,
-                                        uint64_t length, bool read_only,
-                                        MemoryRegion **mapping_in_region);
- 
-+extern const PropertyInfo qdev_prop_display_mode;
-+
- #endif
- 
-diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
-index bfaff2b2be2..f83ef497bf8 100644
---- a/hw/display/apple-gfx.m
-+++ b/hw/display/apple-gfx.m
-@@ -31,9 +31,10 @@
- #include "sysemu/dma.h"
- #include "ui/console.h"
- 
--static const PGDisplayCoord_t apple_gfx_modes[] = {
--    { .x = 1440, .y = 1080 },
--    { .x = 1280, .y = 1024 },
-+static const AppleGFXDisplayMode apple_gfx_default_modes[] = {
-+    { 1920, 1080, 60 },
-+    { 1440, 1080, 60 },
-+    { 1280, 1024, 60 },
- };
- 
- static Error *apple_gfx_mig_blocker;
-@@ -690,22 +691,24 @@ static void new_frame_handler_bh(void *opaque)
-     return disp_desc;
- }
- 
--static NSArray<PGDisplayMode*>* apple_gfx_prepare_display_mode_array(void)
-+static NSArray<PGDisplayMode *> *apple_gfx_create_display_mode_array(
-+    const AppleGFXDisplayMode display_modes[], uint32_t display_mode_count)
- {
--    PGDisplayMode *modes[ARRAY_SIZE(apple_gfx_modes)];
--    NSArray<PGDisplayMode*>* mode_array;
--    int i;
--
--    for (i = 0; i < ARRAY_SIZE(apple_gfx_modes); i++) {
--        modes[i] =
--            [[PGDisplayMode alloc] initWithSizeInPixels:apple_gfx_modes[i] refreshRateInHz:60.];
--    }
--
--    mode_array = [NSArray arrayWithObjects:modes count:ARRAY_SIZE(apple_gfx_modes)];
--
--    for (i = 0; i < ARRAY_SIZE(apple_gfx_modes); i++) {
--        [modes[i] release];
--        modes[i] = nil;
-+    uint32_t i;
-+    PGDisplayMode *mode_obj;
-+    NSMutableArray<PGDisplayMode *> *mode_array =
-+        [[NSMutableArray alloc] initWithCapacity:display_mode_count];
-+
-+    for (i = 0; i < display_mode_count; i++) {
-+        const AppleGFXDisplayMode *mode = &display_modes[i];
-+        trace_apple_gfx_display_mode(i, mode->width_px, mode->height_px);
-+        PGDisplayCoord_t mode_size = { mode->width_px, mode->height_px };
-+
-+        mode_obj =
-+            [[PGDisplayMode alloc] initWithSizeInPixels:mode_size
-+                                        refreshRateInHz:mode->refresh_rate_hz];
-+        [mode_array addObject:mode_obj];
-+        [mode_obj release];
-     }
- 
-     return mode_array;
-@@ -741,6 +744,9 @@ bool apple_gfx_common_realize(AppleGFXState *s, DeviceState *dev,
-                               PGDeviceDescriptor *desc, Error **errp)
- {
-     PGDisplayDescriptor *disp_desc;
-+    const AppleGFXDisplayMode *display_modes = apple_gfx_default_modes;
-+    uint32_t num_display_modes = ARRAY_SIZE(apple_gfx_default_modes);
-+    NSArray<PGDisplayMode *> *mode_array;
- 
-     if (apple_gfx_mig_blocker == NULL) {
-         error_setg(&apple_gfx_mig_blocker,
-@@ -776,8 +782,99 @@ bool apple_gfx_common_realize(AppleGFXState *s, DeviceState *dev,
-                                               port:0
-                                          serialNum:next_pgdisplay_serial_num++];
-     [disp_desc release];
--    s->pgdisp.modeList = apple_gfx_prepare_display_mode_array();
-+
-+    if (s->display_modes != NULL && s->num_display_modes > 0) {
-+        trace_apple_gfx_common_realize_modes_property(s->num_display_modes);
-+        display_modes = s->display_modes;
-+        num_display_modes = s->num_display_modes;
-+    }
-+    s->pgdisp.modeList = mode_array =
-+        apple_gfx_create_display_mode_array(display_modes, num_display_modes);
-+    [mode_array release];
- 
-     s->con = graphic_console_init(dev, 0, &apple_gfx_fb_ops, s);
-     return true;
- }
-+
-+/* ------ Display mode list device property ------ */
-+
-+static void apple_gfx_get_display_mode(Object *obj, Visitor *v,
-+                                       const char *name, void *opaque,
-+                                       Error **errp)
-+{
-+    Property *prop = opaque;
-+    AppleGFXDisplayMode *mode = object_field_prop_ptr(obj, prop);
-+    /* 3 uint16s (max 5 digits) + 2 separator characters + nul. */
-+    char buffer[5 * 3 + 2 + 1];
-+    char *pos = buffer;
-+
-+    int rc = snprintf(buffer, sizeof(buffer),
-+                      "%"PRIu16"x%"PRIu16"@%"PRIu16,
-+                      mode->width_px, mode->height_px,
-+                      mode->refresh_rate_hz);
-+    assert(rc < sizeof(buffer));
-+
-+    visit_type_str(v, name, &pos, errp);
-+}
-+
-+static void apple_gfx_set_display_mode(Object *obj, Visitor *v,
-+                                       const char *name, void *opaque,
-+                                       Error **errp)
-+{
-+    Property *prop = opaque;
-+    AppleGFXDisplayMode *mode = object_field_prop_ptr(obj, prop);
-+    const char *endptr;
-+    g_autofree char *str = NULL;
-+    int ret;
-+    int val;
-+
-+    if (!visit_type_str(v, name, &str, errp)) {
-+        return;
-+    }
-+
-+    endptr = str;
-+
-+    ret = qemu_strtoi(endptr, &endptr, 10, &val);
-+    if (ret || val > UINT16_MAX || val <= 0) {
-+        error_setg(errp, "width in '%s' must be a decimal integer number "
-+                   "of pixels in the range 1..65535", name);
-+        return;
-+    }
-+    mode->width_px = val;
-+    if (*endptr != 'x') {
-+        goto separator_error;
-+    }
-+
-+    ret = qemu_strtoi(endptr + 1, &endptr, 10, &val);
-+    if (ret || val > UINT16_MAX || val <= 0) {
-+        error_setg(errp, "height in '%s' must be a decimal integer number "
-+                   "of pixels in the range 1..65535", name);
-+        return;
-+    }
-+    mode->height_px = val;
-+    if (*endptr != '@') {
-+        goto separator_error;
-+    }
-+
-+    ret = qemu_strtoi(endptr + 1, &endptr, 10, &val);
-+    if (ret || val > UINT16_MAX || val <= 0) {
-+        error_setg(errp, "refresh rate in '%s'"
-+                   " must be a positive decimal integer (Hertz)", name);
-+        return;
-+    }
-+    mode->refresh_rate_hz = val;
-+    return;
-+
-+separator_error:
-+    error_setg(errp, "Each display mode takes the format "
-+               "'<width>x<height>@<rate>'");
-+}
-+
-+const PropertyInfo qdev_prop_display_mode = {
-+    .name  = "display_mode",
-+    .description =
-+        "Display mode in pixels and Hertz, as <width>x<height>@<refresh-rate> "
-+        "Example: 3840x2160@60",
-+    .get   = apple_gfx_get_display_mode,
-+    .set   = apple_gfx_set_display_mode,
-+};
-diff --git a/hw/display/trace-events b/hw/display/trace-events
-index a50e4eea0c0..52786e6e184 100644
---- a/hw/display/trace-events
-+++ b/hw/display/trace-events
-@@ -212,6 +212,8 @@ apple_gfx_cursor_set(uint32_t bpp, uint64_t width, uint64_t height) "bpp=%d widt
- apple_gfx_cursor_show(uint32_t show) "show=%d"
- apple_gfx_cursor_move(void) ""
- apple_gfx_common_init(const char *device_name, size_t mmio_size) "device: %s; MMIO size: %zu bytes"
-+apple_gfx_common_realize_modes_property(uint32_t num_modes) "using %u modes supplied by 'display-modes' device property"
-+apple_gfx_display_mode(uint32_t mode_idx, uint16_t width_px, uint16_t height_px) "mode %2"PRIu32": %4"PRIu16"x%4"PRIu16
- 
- # apple-gfx-mmio.m
- apple_gfx_mmio_iosfc_read(uint64_t offset, uint64_t res) "offset=0x%"PRIx64" res=0x%"PRIx64
--- 
-2.39.5 (Apple Git-154)
+>        .access =3D PL2_RW, .accessfn =3D sel2_access,
+>        .nv2_redirect_offset =3D 0x48,
+>        .fieldoffset =3D offsetof(CPUARMState, cp15.vstcr_el2) },
+> +#ifndef CONFIG_USER_ONLY
+> +    /* Secure EL2 Physical Timer */
+> +    { .name =3D "CNTHPS_TVAL_EL2", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 5, .opc2 =3D 0,
+> +      .type =3D ARM_CP_NO_RAW | ARM_CP_IO, .access =3D PL2_RW,
+> +      .accessfn =3D gt_sel2timer_access,
+> +      .readfn =3D gt_sec_pel2_tval_read,
+> +      .writefn =3D gt_sec_pel2_tval_write,
+> +      .resetfn =3D gt_sec_pel2_timer_reset,
+> +    },
+> +    { .name =3D "CNTHPS_CTL_EL2", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 5, .opc2 =3D 1,
+> +      .type =3D ARM_CP_IO, .access =3D PL2_RW,
+> +      .accessfn =3D gt_sel2timer_access,
+> +      .fieldoffset =3D offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_P=
+EL2].ctl),
+> +      .resetvalue =3D 0,
+> +      .writefn =3D gt_sec_pel2_ctl_write, .raw_writefn =3D raw_write,
+> +    },
+> +    { .name =3D "CNTHPS_CVAL_EL2", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 5, .opc2 =3D 2,
+> +      .type =3D ARM_CP_IO, .access =3D PL2_RW,
+> +      .accessfn =3D gt_sel2timer_access,
+> +      .fieldoffset =3D offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_P=
+EL2].cval),
+> +      .writefn =3D gt_sec_pel2_cval_write, .raw_writefn =3D raw_write,
+> +    },
+> +    /* Secure EL2 Virtual Timer */
+> +    { .name =3D "CNTHVS_TVAL_EL2", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 4, .opc2 =3D 0,
+> +      .type =3D ARM_CP_NO_RAW | ARM_CP_IO, .access =3D PL2_RW,
+> +      .accessfn =3D gt_sel2timer_access,
+> +      .readfn =3D gt_sec_vel2_tval_read,
+> +      .writefn =3D gt_sec_vel2_tval_write,
+> +      .resetfn =3D gt_sec_vel2_timer_reset,
+> +    },
+> +    { .name =3D "CNTHVS_CTL_EL2", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 4, .opc2 =3D 1,
+> +      .type =3D ARM_CP_IO, .access =3D PL2_RW,
+> +      .accessfn =3D gt_sel2timer_access,
+> +      .fieldoffset =3D offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_V=
+EL2].ctl),
+> +      .resetvalue =3D 0,
+> +      .writefn =3D gt_sec_vel2_ctl_write, .raw_writefn =3D raw_write,
+> +    },
+> +    { .name =3D "CNTHVS_CVAL_EL2", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 4, .opc2 =3D 2,
+> +      .type =3D ARM_CP_IO, .access =3D PL2_RW,
+> +      .accessfn =3D gt_sel2timer_access,
+> +      .fieldoffset =3D offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_V=
+EL2].cval),
+> +      .writefn =3D gt_sec_vel2_cval_write, .raw_writefn =3D raw_write,
+> +    },
+> +#endif
+>  };
 
+thanks
+-- PMM

@@ -1,442 +1,739 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp899048njk;
-        Fri, 29 Nov 2024 09:02:07 -0800 (PST)
-X-Received: by 2002:a05:6000:381:b0:382:4ab4:b3e5 with SMTP id ffacd0b85a97d-385c6ba6e3dmr10957904f8f.0.1732899726016;
-        Fri, 29 Nov 2024 09:02:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732899725; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp1298356njk;
+        Fri, 29 Nov 2024 21:51:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX1iszWaFpQU+uHoI9da3/Qq8VOaEQ3hV8+u0C6yZFg/+ukQaARcA2CUG+I9n4IP6VVUhQDgkJJ9SKu3Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgj+rr94OvA/Xnl4T8RvlCJCc9OrOyTho1J6LzmiHSpkj/JN1Nlll3G8kQAOSRthGNJmA2
+X-Received: by 2002:a05:622a:1a13:b0:466:a0cf:b06c with SMTP id d75a77b69052e-466b367aa6bmr262851171cf.56.1732945903754;
+        Fri, 29 Nov 2024 21:51:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732945903; cv=none;
         d=google.com; s=arc-20240605;
-        b=dGVLFDOIptqfxcybqVvOq4LiFsijtgdzK8nbHT5ERpuw9lCks7rDihHFbDNvwKETQj
-         lWvXqhBSMF4HdYl0MiwWGi1SLnHcktc1WHVl1ySHmFmBeshhV9W24Mc2GL42A88QBpZU
-         YkYV5MCMt6kfsWXJVYMKnowpaDskBBPlBNCUqOmM3SLhb16I+uOBSKpfYdjedTSj55F/
-         glMf4BGbufa7qwVwO2lLdX7z1QKvQuBR4Nly/YCzEcyzJZ0Ps4ro8cItQcpSQir6UrzV
-         CPr710byM79+riWtGrmix+/zLQgz1+1BNGaaI6t/RWj+KlMpSDgGq9AEqNKXpB0VdlvR
-         0uvw==
+        b=RWSiPyy4rhy0u2Puhw0AZ9xo2gzulUuQ+lHaDrO4k0xXCC8oG8zjgXfjwoZnjCzBAY
+         Q0iDP6Ps7qleGYFZ+Ob0iJCtPiX9WS/g3HIs73/XgQeXo/EvtJaWkM14igPShcMO1nt6
+         mnlnOUNdyU/1oPuDuclJrvPIcpPIjDczqWe4eAe6oF00vL9zj51dsFDthdeuPNZg0gjX
+         lnwTO7VTMQ3MzOVY/dIFrMHKgRzuSQ3vUkIDDe6W1Zj4JJxa8tf49Zvi5LJnynBc31eM
+         cUKyGMOavRLFtHdYR0MuiXmJ7AEo7fzsAChYUKOPqh6xY3sGDS0+9341SMb82DeJSU0c
+         DA+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=RHo8K0Rqtg9qhR5+I18DYilOtsmmfysbbakGl8pgDvY=;
-        fh=qmM12d+1xidmImI4RmcuIfs+jt60oHlG/gVCfJCxELE=;
-        b=FV6YF9l38wTJ31I9ntiuh3PR2clRZaYvxwzHJa1SU5QzrSyO7R2bRliGVLwj1Mj8zZ
-         zjXENpas0M9JWFMq2alDleLdTiXziYRFiClkacCNXR2WWYIFG7NgH15Y7W1PjARMGr/c
-         d/20XZY8l9EmEJQUi0IcPiiEwOBoBgPm56mWgp/aou3HQr71cICtrDGFAjKkYhz5Gj5Z
-         VsMzYSEQCUd50rucIFKvLoaWvInNTVuvYpTVDUfSCzSlvRW5C6L/yuo96n32YYLx0Inm
-         vrbv7cnoGzoUUhi12Xnf3DuFzoPnom3xFJJviqiouQIdWEbXra5m8256y998rOKmC+eR
-         j7ZQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=JLd5CR7EaWHT8IFqBj/6ICdviHp9JIPCKLheUpMRpJ4=;
+        fh=AlTPcEoTOjW1pFIj4++cm/ih6+P4A0xoSWpmRQTN9EY=;
+        b=Szm3YW/QLNX5Fqseus5xYCQJnQ3ClEDZzYaOJ9U9BzlPwu/r6HFih/aev9pBl4ZZg0
+         ievTTzBjQL9/hADA5/Q26nw2LDu1rTFsJaSnNyiFML6+UDidO9ObeoLOtLe8EitPKOh5
+         GXh6eIRwKsdmtmIoMcJ1DooWVCn0Sd83c/zF7r4L4IOLCHNSkG8qmW16MdBWDo9ztMYz
+         zGoRNaS6PrmdHKY7mq2v/FxOCSUs6a0MwRhr9OGi3xVn7UcirNURhPUPX6Tx1kbbGZit
+         PWeiKpzT6/1/G5RR66lo1CViu1jCPaLR+UdDliIyj7hmjnifuBbgs6Fb3twK6Z4ffz00
+         Or6A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JXDkP0A9;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=1hufOS5G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-385ccd81922sor1465158f8f.8.2024.11.29.09.02.04
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-466c4258041si57035191cf.569.2024.11.29.21.51.43
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 29 Nov 2024 09:02:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 29 Nov 2024 21:51:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JXDkP0A9;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=1hufOS5G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tHGNS-0000mP-JL; Sat, 30 Nov 2024 00:50:46 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1tHGNQ-0000l4-94
+ for qemu-arm@nongnu.org; Sat, 30 Nov 2024 00:50:44 -0500
+Received: from mail-oa1-x31.google.com ([2001:4860:4864:20::31])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1tHGNK-0002zA-Eo
+ for qemu-arm@nongnu.org; Sat, 30 Nov 2024 00:50:44 -0500
+Received: by mail-oa1-x31.google.com with SMTP id
+ 586e51a60fabf-2968322f5feso1377067fac.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Nov 2024 21:50:37 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1732899724; x=1733504524; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=RHo8K0Rqtg9qhR5+I18DYilOtsmmfysbbakGl8pgDvY=;
-        b=JXDkP0A9PgFIpL1xWySjFicvIHK33b9Z+0HImhGeiS7hPqkPqkKpg/4iGqXsOo4czO
-         ug0oGUxrdBX20gPe1L3BlbZC28U/WmfKus5+EUfc16eqc28HcTG1zReflXYsEr5/5gN9
-         MRWNbA0pXNaiNJ5NvNmdOAy7vUoVzugmNRat3FYLoM5YSeFO4ZzeiPIg1q0dz1nj+QtB
-         Dqp5TlcMte4S+ehee6QeY4RB5jxNG2iONXhrWwVWIds8j+BwzsoDRG7STOq9H6cqrUNt
-         HxnhCF4TXp9OWFQI56GNQRCOx9PW33uPtkg564CqMWkXpvjljm+tJCJ+qojynKdKt6Us
-         VVkg==
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1732945837; x=1733550637;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=JLd5CR7EaWHT8IFqBj/6ICdviHp9JIPCKLheUpMRpJ4=;
+ b=1hufOS5GHeutaDTzcOpgTA2z3CGThlDJMm84EEf5ne7Z91xWx1ONMGGtzHEOTVCxmW
+ esPR0aEElKruXlYxjc+UWRRK/O5G9IOJmeYw7HdqN+vTc51eNpnOAMkg0t7BRps5/Xe/
+ SnN9gpF6KrtQKwnTBSpUzDmYjidBDhrPoOYKF1Zy1qMpLAroqsHjorTn8Vj1LTzUZusr
+ G9S9+xSkbzGh+Mb9pYfiTOjyYOdAV58bV3rDcnZC3Q4nEc+nKR1Fz6gLFXEtMgmxZ8D8
+ Iy+qoaotX2AxrxeusxIu/TEu86+z7g5C5Ls2dGXunuNeWMA6BRgUI1ypIvQ/eNdU3UBK
+ SdiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1732899724; x=1733504524;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=RHo8K0Rqtg9qhR5+I18DYilOtsmmfysbbakGl8pgDvY=;
-        b=N/1xrNdJCQKRdzbEnlYMNWr37TqjifEZzdWgw4b6CrvWsmiXfTtfUbQrAAo3v5Dh8L
-         0inXZ8GB8vJCjjaLECrVkYU40rGIG9QwptaJkancXOXYsoyi49b0bi6smjut1wr/xxoW
-         NKCu6i+pR/ZSS3CNV3+wZtwdco8VXWOSlhILvkWuCm8Q1xKdSEH123WiZk+GlmMyjdC3
-         1yE0oRh35Wvoe60noqHe0D4RXQns+J4c6HAdddCsSUrTHFuFQxrAuDau+qCeDtvwh8Dw
-         gmntF9130MdkVOIYvG0riKYSak6SYwIDvfvK/W3G0yTnTWQqw9MeXlodakjTWFqQ1YGD
-         SmQg==
-X-Gm-Message-State: AOJu0YxW1Un+Br4yGrApsf0NYW723p5G+7RGFPRRVwzyNihrR5MxYGtJ
-	9Ccjtiomwcz/beItVYvF3zzTIb6EY6KJGcGKufsZ0lZJe1MuU4uf2LXdOfrkARVfRVtJxB6wZ9/
-	2hLoPmpNXhepCq4D/TrFq3hnbwdvLA76Iz+8ExaDMGFAIOxHtteY=
-X-Gm-Gg: ASbGnctju1ftjzg9xHfJCe+vcPMXP0mfOHxrr0n5xu9OaG247Nybzci8yscKoQ4kbDx
-	mXzpTOD163989dsz92uqb4xDE2AUcWmj6
-X-Google-Smtp-Source: AGHT+IE9yuQ15jSycnqCz+XaDKN9D+7vMeUTpWFyg8Ejbr0lYjuZS+3ezEkMvmvgxdGIEg3ZSBaf8uNq9vIBlUEHfr4=
-X-Received: by 2002:a5d:5f54:0:b0:382:46ea:1113 with SMTP id
- ffacd0b85a97d-385c6ccaf4bmr12292196f8f.4.1732899722636; Fri, 29 Nov 2024
- 09:02:02 -0800 (PST)
+ d=1e100.net; s=20230601; t=1732945837; x=1733550637;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=JLd5CR7EaWHT8IFqBj/6ICdviHp9JIPCKLheUpMRpJ4=;
+ b=vwGimvtOIPlkjzjFxEYMg7n981v1Qb8V+nEab94kyKC0p1rvZuXWPbV3Z/FpR6t+TF
+ QzqnC3XOyN1YQm2hIVdo4EKjTtlS3vQVNeXEhdAdv0BCeSxFpfzDDdIfMOp1qRF/BakN
+ tAndok9RkBaDrmkmciL5OMmVmubZSu84ZlRP2/bLTphXOhWo9oP5vgRra94pYGNlXamA
+ L9wvAqErcjibfWLD1WRDg7xlYrXu0yZ+rtYliobOqFEOA3qM9I0eIt/XgF7aBKMmulvt
+ gjFJXu2E9J3OGhh7wH+m+zvzj38KuPDNOQVuzpbaRaadbrrfcm0SCtDd3tn/RjIN3J4F
+ r4+g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCURp2nn3dcsEKJcdMVvhTUu4F0gJ106KFISN5euktUEBV3mR2wr5zPTEMti9sFJSGBs2qiCA7UluA==@nongnu.org
+X-Gm-Message-State: AOJu0YwYeSbTtxIbt7cOsxy/a3WHB4UUYcOcGp5vs0e+IjiIKalcA35s
+ JFZj32y3t3w3r/oqrB3w0VUBqPyi8Np0m1gAZajNpA08ro54PYyf7YSpvwA46t4=
+X-Gm-Gg: ASbGnctWT7Ov2EZR82fmV5yqLJngB40Md8Xb+sa0EjwEATFxz+sP/Db/K2ogaEo2qLw
+ dW50dTPITruxa7v96biks/6wCEpFLygD+bubCnziX+eyQskUGpPKIHbm5PudA+fjbVXpffjXR1j
+ cR6EKKU45YWhznpNa1k8Y0m5BQyPHa/0YSWxa9As6F1AvfutrYHqPxfXGqw06AcORNciTVIV4hx
+ 4palpIngLCPylFxs26zLquPTGrhM0eY+rqR8FDXybhePprmbCsRbn094AE0gJI=
+X-Received: by 2002:a05:6870:aa0d:b0:277:cc6e:15de with SMTP id
+ 586e51a60fabf-29dc3fb925amr11259342fac.4.1732945836555; 
+ Fri, 29 Nov 2024 21:50:36 -0800 (PST)
+Received: from [157.82.207.167] ([157.82.207.167])
+ by smtp.gmail.com with ESMTPSA id
+ 586e51a60fabf-29e20a1e6efsm842170fac.24.2024.11.29.21.50.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 Nov 2024 21:50:35 -0800 (PST)
+Message-ID: <307aee04-9019-4108-b99c-a187215ccf0b@daynix.com>
+Date: Sat, 30 Nov 2024 14:50:29 +0900
 MIME-Version: 1.0
-References: <20241127170143.1664829-1-alex.bennee@linaro.org>
-In-Reply-To: <20241127170143.1664829-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 29 Nov 2024 17:01:51 +0000
-Message-ID: <CAFEAcA-xFF1dEE=8dpfu2COBH9m0J_MWxworYqSk2hOf2KD2bw@mail.gmail.com>
-Subject: Re: [RFC PATCH] target/arm: implement SEL2 physical and virtual timers
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Andrei Homescu <ahomescu@google.com>, 
-	=?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@google.com>, 
-	=?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi.denis.courmont@huawei.com>, 
-	"open list:Virt" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: pPvnSjTNpsTr
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v11 01/15] ui & main loop: Redesign of system-specific
+ main thread event handling
+To: Phil Dennis-Jordan <phil@philjordan.eu>
+Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
+ pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com,
+ stefanha@redhat.com, mst@redhat.com, slp@redhat.com,
+ richard.henderson@linaro.org, eduardo@habkost.net,
+ marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
+ chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
+ philmd@linaro.org, shorne@gmail.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org, balaton@eik.bme.hu
+References: <20241127150249.50767-1-phil@philjordan.eu>
+ <20241127150249.50767-2-phil@philjordan.eu>
+ <0533bb69-6f3a-4ebf-ae0c-99b569e61ba3@daynix.com>
+ <CAAibmn26tZneZHytkYCgd4oT8Yx465i=3wu8cYXTwu3Ki8pAJw@mail.gmail.com>
+ <6dc2b6a9-d7b4-43f8-95fd-4fc8699db68a@daynix.com>
+ <CAAibmn3X7e5MAQWKEm7u8yAntL2HVBavRFKxFE5sizFpqFqeaQ@mail.gmail.com>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <CAAibmn3X7e5MAQWKEm7u8yAntL2HVBavRFKxFE5sizFpqFqeaQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2001:4860:4864:20::31;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-oa1-x31.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HQAdAZ98kuGd
 
-On Wed, 27 Nov 2024 at 17:01, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> When FEAT_SEL2 was implemented the SEL2 timers where missed. This
-> shows up when building the latest Hafnium with SPMC_AT_EL=3D2. The
-> actual implementation utilises the same logic as the rest of the
-> timers so all we need to do is:
->
->   - define the timers and their access functions
->   - conditionally add the correct system registers
->   - create a new accessfn as the rules are subtly different to the
->     existing secure timer
->
-> Fixes: e9152ee91c (target/arm: add ARMv8.4-SEL2 system registers)
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: Andrei Homescu <ahomescu@google.com>
-> Cc: Arve Hj=C3=B8nnev=C3=A5g <arve@google.com>
-> Cc: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
-> ---
->  include/hw/arm/bsa.h |   2 +
->  target/arm/cpu.h     |   2 +
->  target/arm/gtimer.h  |   4 +-
->  hw/arm/virt.c        |   2 +
->  target/arm/cpu.c     |   8 +++
->  target/arm/helper.c  | 155 +++++++++++++++++++++++++++++++++++++++++++
->  6 files changed, 172 insertions(+), 1 deletion(-)
->
-> diff --git a/include/hw/arm/bsa.h b/include/hw/arm/bsa.h
-> index 8eaab603c0..b4ecca1b1c 100644
-> --- a/include/hw/arm/bsa.h
-> +++ b/include/hw/arm/bsa.h
-> @@ -22,6 +22,8 @@
->  #define QEMU_ARM_BSA_H
->
->  /* These are architectural INTID values */
-> +#define ARCH_TIMER_S_VIRT_EL2_IRQ  19
-> +#define ARCH_TIMER_S_EL2_IRQ       20
->  #define VIRTUAL_PMU_IRQ            23
->  #define ARCH_GIC_MAINT_IRQ         25
->  #define ARCH_TIMER_NS_EL2_IRQ      26
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index d86e641280..10b5354d6f 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -1139,6 +1139,8 @@ void arm_gt_vtimer_cb(void *opaque);
->  void arm_gt_htimer_cb(void *opaque);
->  void arm_gt_stimer_cb(void *opaque);
->  void arm_gt_hvtimer_cb(void *opaque);
-> +void arm_gt_sel2timer_cb(void *opaque);
-> +void arm_gt_sel2vtimer_cb(void *opaque);
->
->  unsigned int gt_cntfrq_period_ns(ARMCPU *cpu);
->  void gt_rme_post_el_change(ARMCPU *cpu, void *opaque);
-> diff --git a/target/arm/gtimer.h b/target/arm/gtimer.h
-> index b992941bef..3c097c59c7 100644
-> --- a/target/arm/gtimer.h
-> +++ b/target/arm/gtimer.h
-> @@ -15,7 +15,9 @@ enum {
->      GTIMER_HYP      =3D 2,
->      GTIMER_SEC      =3D 3,
->      GTIMER_HYPVIRT  =3D 4,
-> -#define NUM_GTIMERS   5
-> +    GTIMER_SEC_PEL2 =3D 5,
-> +    GTIMER_SEC_VEL2 =3D 6,
-> +#define NUM_GTIMERS   7
+On 2024/11/29 23:12, Phil Dennis-Jordan wrote:
+> 
+> 
+> On Fri, 29 Nov 2024 at 11:07, Akihiko Odaki <akihiko.odaki@daynix.com 
+> <mailto:akihiko.odaki@daynix.com>> wrote:
+> 
+>     On 2024/11/29 4:43, Phil Dennis-Jordan wrote:
+>      >
+>      >
+>      > On Thu, 28 Nov 2024 at 12:17, Akihiko Odaki
+>     <akihiko.odaki@daynix.com <mailto:akihiko.odaki@daynix.com>
+>      > <mailto:akihiko.odaki@daynix.com
+>     <mailto:akihiko.odaki@daynix.com>>> wrote:
+>      >
+>      >     On 2024/11/28 0:02, Phil Dennis-Jordan wrote:
+>      >      > macOS's Cocoa event handling must be done on the initial
+>     (main)
+>      >     thread
+>      >      > of the process. Furthermore, if library or application
+>     code uses
+>      >      > libdispatch, the main dispatch queue must be handling
+>     events on
+>      >     the main
+>      >      > thread as well.
+>      >      >
+>      >      > So far, this has affected Qemu in both the Cocoa and SDL UIs,
+>      >     although
+>      >      > in different ways: the Cocoa UI replaces the default qemu_main
+>      >     function
+>      >      > with one that spins Qemu's internal main event loop off onto a
+>      >      > background thread. SDL (which uses Cocoa internally) on
+>     the other
+>      >     hand
+>      >      > uses a polling approach within Qemu's main event loop.
+>     Events are
+>      >      > polled during the SDL UI's dpy_refresh callback, which
+>     happens to run
+>      >      > on the main thread by default.
+>      >      >
+>      >      > As UIs are mutually exclusive, this works OK as long as
+>     nothing else
+>      >      > needs platform-native event handling. In the next patch, a new
+>      >     device is
+>      >      > introduced based on the ParavirtualizedGraphics.framework
+>     in macOS.
+>      >      > This uses libdispatch internally, and only works when
+>     events are
+>      >     being
+>      >      > handled on the main runloop. With the current system, it
+>     works when
+>      >      > using either the Cocoa or the SDL UI. However, it does not
+>     when
+>      >     running
+>      >      > headless. Moreover, any attempt to install a similar
+>     scheme to the
+>      >      > Cocoa UI's main thread replacement fails when combined
+>     with the SDL
+>      >      > UI.
+>      >      >
+>      >      > This change tidies up main thread management to be more
+>     flexible.
+>      >      >
+>      >      >   * The qemu_main global function pointer is a custom function
+>      >     for the
+>      >      >     main thread, and it may now be NULL. When it is, the
+>     main thread
+>      >      >     runs the main Qemu loop. This represents the
+>     traditional setup.
+>      >      >   * When non-null, spawning the main Qemu event loop on a
+>     separate
+>      >      >     thread is now done centrally rather than inside the
+>     Cocoa UI
+>      >     code.
+>      >      >   * For most platforms, qemu_main is indeed NULL by
+>     default, but on
+>      >      >     Darwin, it defaults to a function that runs the CFRunLoop.
+>      >      >   * The Cocoa UI sets qemu_main to a function which runs the
+>      >      >     NSApplication event handling runloop, as is usual for
+>     a Cocoa
+>      >     app.
+>      >      >   * The SDL UI overrides the qemu_main function to NULL, thus
+>      >      >     specifying that Qemu's main loop must run on the main
+>      >      >     thread.
+>      >      >   * The GTK UI also overrides the qemu_main function to NULL.
+>      >      >   * For other UIs, or in the absence of UIs, the
+>     platform's default
+>      >      >     behaviour is followed.
+>      >      >
+>      >      > This means that on macOS, the platform's runloop events
+>     are always
+>      >      > handled, regardless of chosen UI. The new PV graphics
+>     device will
+>      >      > thus work in all configurations. There is no functional
+>     change on
+>      >     other
+>      >      > operating systems.
+>      >      >
+>      >      > Implementing this via a global function pointer variable
+>     is a bit
+>      >      > ugly, but it's probably worth investigating the existing UI
+>      >     thread rule
+>      >      > violations in the SDL (e.g. #2537) and GTK+ back-ends.
+>     Fixing those
+>      >      > issues might precipitate requirements similar but not
+>     identical
+>      >     to those
+>      >      > of the Cocoa UI; hopefully we'll see some kind of pattern
+>     emerge,
+>      >     which
+>      >      > can then be used as a basis for an overhaul. (In fact, it
+>     may turn
+>      >      > out to be simplest to split the UI/native platform event
+>     thread
+>      >     from the
+>      >      > QEMU main event loop on all platforms, with any UI or even
+>     none
+>      >     at all.)
+>      >      >
+>      >      > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu
+>     <mailto:phil@philjordan.eu>
+>      >     <mailto:phil@philjordan.eu <mailto:phil@philjordan.eu>>>
+>      >      > ---
+>      >      >
+>      >      > v5:
+>      >      >
+>      >      >   * Simplified the way of setting/clearing the main loop
+>     by going
+>      >     back
+>      >      >     to setting qemu_main directly, but narrowing the scope
+>     of what it
+>      >      >     needs to do, and it can now be NULL.
+>      >      >
+>      >      > v6:
+>      >      >
+>      >      >   * Folded function qemu_run_default_main_on_new_thread's
+>     code into
+>      >      >     main()
+>      >      >   * Removed whitespace changes left over on lines near
+>     code removed
+>      >      >     between v4 and v5
+>      >      >
+>      >      > v9:
+>      >      >
+>      >      >   * Set qemu_main to NULL for GTK UI as well.
+>      >      >
+>      >      > v10:
+>      >      >
+>      >      >   * Added comments clarifying the functionality and purpose of
+>      >     qemu_main.
+>      >      >
+>      >      > v11:
+>      >      >
+>      >      >   * Removed the qemu_main_fn typedef again.
+>      >      >   * Consolidation of main, qemu_default_main, and
+>      >     call_qemu_default_main
+>      >      >     so that the latter has been eliminated altogether.
+>      >      >   * Reinstated the #include <SDL.h> directive, added
+>     comment saying
+>      >      >     why it's needed.
+>      >      >   * Improved the comment on the qemu_main global variable.
+>      >      >   * Expanded the commit message.
+>      >      >
+>      >      >   include/qemu-main.h | 14 +++++++++++-
+>      >      >   system/main.c       | 37 +++++++++++++++++++++++++++----
+>      >      >   ui/cocoa.m          | 54 ++++++++++
+>      >     +----------------------------------
+>      >      >   ui/gtk.c            |  8 +++++++
+>      >      >   ui/sdl2.c           |  4 ++++
+>      >      >   5 files changed, 71 insertions(+), 46 deletions(-)
+>      >      >
+>      >      > diff --git a/include/qemu-main.h b/include/qemu-main.h
+>      >      > index 940960a7dbc..a926def7526 100644
+>      >      > --- a/include/qemu-main.h
+>      >      > +++ b/include/qemu-main.h
+>      >      > @@ -5,7 +5,19 @@
+>      >      >   #ifndef QEMU_MAIN_H
+>      >      >   #define QEMU_MAIN_H
+>      >      >
+>      >      > -int qemu_default_main(void);
+>      >      > +/*
+>      >      > + * The function to run on the main (initial) thread of
+>     the process.
+>      >      > + * NULL means QEMU's main event loop.
+>      >      > + * When non-NULL, QEMU's main event loop will run on a
+>     purposely
+>      >     created
+>      >      > + * thread, after which the provided function pointer will be
+>      >     invoked on
+>      >      > + * the initial thread.
+>      >      > + * This is useful on platforms which treat the main thread as
+>      >     special
+>      >      > + * (macOS/Darwin) and/or require all UI API calls to
+>     occur from a
+>      >      > + * specific thread. Those platforms can initialise it to a
+>      >     specific function,
+>      >
+>      >     Although the change from v10 looks good, I have a few comments:
+>      >
+>      >     Here, it says "require all UI API calls to occur from a specific
+>      >     thread", but it is clearer to say "require all UI API calls
+>     to occur
+>      >     from *the main thread*". If we only need to ensure all UI API
+>     calls to
+>      >     occur from one thread, arranging all calls to happen in the
+>     thread
+>      >     running QEMU's main loop is sufficient. This variable is
+>     necessary only
+>      >     when the thread is the one that called main().
+>      >
+>      >
+>      > Is there a simple way to reliably run a block of code on the thread
+>      > running QEMU's main loop? (*) BHs will run on any thread that's
+>     blocked
+>      > in AIO_WAIT_WHILE(NULL, …) or similar, so those are not suitable.
+>      > Apparently GTK+ on Win32 requires all API calls to originate from
+>     one
+>      > thread, but it doesn't need to be the main thread, which is why I
+>     chose
+>      > that phrasing. But I suppose if that's the only restriction, the
+>     UI can
+>      > spawn its own thread and leave the main thread alone.
+> 
+>     Setting qemu_main does not help in such a case because BHs may still
+>     run
+>     on other threads so it needs another approach.
+> 
+>     I think iohandler_get_aio_context() does what we want, but it is not
+>     intended to be used to identify the thread to run the UI so using it is
+>     like a hack. Spawning a thread dedicated for UI is more appropriate.
+> 
+> 
+> Ultimately, it may make sense to put the whole display and UI subsystem 
+> on its own dedicated AioContext and thread (main thread on macOS)… But 
+> that might require some tweaks to the AioContext system - I really don't 
+> know it (or the SDL and GTK code base) well enough to say with any 
+> certainty what the best approach would be right now.
 
-Maybe we should add comments to this enum giving the architectural
-names of these timers?
+SDL has its own event mechanism so having AioContext makes duplication 
+of work. We can use SDL_PushEvent() for that platform to avoid that. The 
+situation of GTK is no different except it will involve 
+g_main_context_invoke() instead of SDL_PushEvent().
 
-    GTIMER_PHYS     =3D 0, /* EL1 physical timer */
-    GTIMER_VIRT     =3D 1, /* EL1 virtual timer */
-    GTIMER_HYP      =3D 2, /* EL2 physical timer */
-    GTIMER_SEC      =3D 3, /* EL3 physical timer */
-    GTIMER_HYPVIRT  =3D 4, /* EL2 virtual timer */
-    GTIMER_SEC_PEL2 =3D 5, /* Secure EL2 physical timer */
-    GTIMER_SEC_VEL2 =3D 6, /* Secure EL2 virtual timer */
+> 
+>      > (*) This would be good to know for fixing this bug https://
+>     gitlab.com/ <https://gitlab.com/>
+>      > qemu-project/qemu/-/issues/2537 <https://gitlab.com/qemu-project/
+>     qemu/-/ <https://gitlab.com/qemu-project/qemu/-/>
+>      > issues/2537> where the SDL UI code causes a hang by calling into
+>      > SDL_SetWindowSize() from a CPU thread. My current thinking on
+>     that one
+>      > is to use SDL_PushEvent() with a custom event type generated by
+>      > SDL_RegisterEvents(), which then will be handled via the standard
+>     SDL
+>      > event polling mechanism; but that seems awkward.
+>     I think it's totally fine. If SDL (backed by Cocoa) insists to own the
+>     main thread, let it do so.
+> 
+>      >
+>      >      > + * while UI implementations may reset it to NULL during their
+>      >     init if they
+>      >      > + * will handle system and UI events on the main thread via
+>      >     QEMU's own main
+>      >      > + * event loop.> + */
+>      >      >   extern int (*qemu_main)(void);
+>      >      >
+>      >      >   #endif /* QEMU_MAIN_H */
+>      >      > diff --git a/system/main.c b/system/main.c
+>      >      > index 9b91d21ea8c..668d0ecfe8c 100644
+>      >      > --- a/system/main.c
+>      >      > +++ b/system/main.c
+>      >      > @@ -24,26 +24,55 @@
+>      >      >
+>      >      >   #include "qemu/osdep.h"
+>      >      >   #include "qemu-main.h"
+>      >      > +#include "qemu/main-loop.h"
+>      >      >   #include "sysemu/sysemu.h"
+>      >      >
+>      >      >   #ifdef CONFIG_SDL
+>      >      > +/*
+>      >      > + * SDL insists on wrapping the main() function with its own
+>      >     implementation on
+>      >      > + * some platforms; it does so via a macro that renames
+>     our main
+>      >     function, so
+>      >      > + * <SDL.h> must be #included here even with no SDL code
+>     called
+>      >     from this file.
+>      >      > + */
+>      >      >   #include <SDL.h>
+>      >      >   #endif
+>      >      >
+>      >      > -int qemu_default_main(void)
+>      >      > +#ifdef CONFIG_DARWIN
+>      >      > +#include <CoreFoundation/CoreFoundation.h>
+>      >      > +#endif
+>      >      > +
+>      >      > +static void *qemu_default_main(void *opaque)
+>      >      >   {
+>      >      >       int status;
+>      >      >
+>      >      > +    bql_lock();
+>      >      >       status = qemu_main_loop();
+>      >      >       qemu_cleanup(status);
+>      >      > +    bql_unlock();
+>      >      >
+>      >      > -    return status;
+>      >      > +    exit(status);
+>      >      >   }
+>      >      >
+>      >      > -int (*qemu_main)(void) = qemu_default_main;
+>      >      > +int (*qemu_main)(void);
+>      >      > +
+>      >      > +#ifdef CONFIG_DARWIN
+>      >      > +static int os_darwin_cfrunloop_main(void)
+>      >      > +{
+>      >      > +    CFRunLoopRun();
+>      >      > +    g_assert_not_reached();
+>      >      > +}
+>      >      > +int (*qemu_main)(void) = os_darwin_cfrunloop_main;
+>      >      > +#endif
+>      >      >
+>      >      >   int main(int argc, char **argv)
+>      >      >   {
+>      >      >       qemu_init(argc, argv);
+>      >      > -    return qemu_main();
+>      >      > +    bql_unlock();
+>      >      > +    if (qemu_main) {
+>      >      > +        QemuThread main_loop_thread;
+>      >      > +        qemu_thread_create(&main_loop_thread, "qemu_main",
+>      >      > +                           qemu_default_main, NULL,
+>      >     QEMU_THREAD_DETACHED);
+>      >      > +        return qemu_main();
+>      >      > +    } else {
+>      >      > +        qemu_default_main(NULL);
+>      >      > +    }
+>      >      >   }
+>      >      > diff --git a/ui/cocoa.m b/ui/cocoa.m
+>      >      > index 4c2dd335323..30b8920d929 100644
+>      >      > --- a/ui/cocoa.m
+>      >      > +++ b/ui/cocoa.m
+>      >      > @@ -73,6 +73,8 @@
+>      >      >       int height;
+>      >      >   } QEMUScreen;
+>      >      >
+>      >      > +@class QemuCocoaPasteboardTypeOwner;
+>      >      > +
+>      >      >   static void cocoa_update(DisplayChangeListener *dcl,
+>      >      >                            int x, int y, int w, int h);
+>      >      >
+>      >      > @@ -107,6 +109,7 @@ static void
+>      >     cocoa_switch(DisplayChangeListener *dcl,
+>      >      >   static NSInteger cbchangecount = -1;
+>      >      >   static QemuClipboardInfo *cbinfo;
+>      >      >   static QemuEvent cbevent;
+>      >      > +static QemuCocoaPasteboardTypeOwner *cbowner;
+>      >      >
+>      >      >   // Utility functions to run specified code block with
+>     the BQL held
+>      >      >   typedef void (^CodeBlock)(void);
+>      >      > @@ -1321,8 +1324,10 @@ - (void) dealloc
+>      >      >   {
+>      >      >       COCOA_DEBUG("QemuCocoaAppController: dealloc\n");
+>      >      >
+>      >      > -    if (cocoaView)
+>      >      > -        [cocoaView release];
+>      >      > +    [cocoaView release];
+>      >      > +    [cbowner release];
+>      >      > +    cbowner = nil;
+>      >      > +
+>      >      >       [super dealloc];
+>      >      >   }
+>      >      >
+>      >      > @@ -1938,8 +1943,6 @@ - (void)pasteboard:(NSPasteboard
+>     *)sender
+>      >     provideDataForType:(NSPasteboardType)t
+>      >      >
+>      >      >   @end
+>      >      >
+>      >      > -static QemuCocoaPasteboardTypeOwner *cbowner;
+>      >      > -
+>      >      >   static void cocoa_clipboard_notify(Notifier *notifier,
+>     void *data);
+>      >      >   static void cocoa_clipboard_request(QemuClipboardInfo *info,
+>      >      >                                       QemuClipboardType type);
+>      >      > @@ -2002,43 +2005,8 @@ static void
+>      >     cocoa_clipboard_request(QemuClipboardInfo *info,
+>      >      >       }
+>      >      >   }
+>      >      >
+>      >      > -/*
+>      >      > - * The startup process for the OSX/Cocoa UI is
+>     complicated, because
+>      >      > - * OSX insists that the UI runs on the initial main
+>     thread, and
+>      >     so we
+>      >      > - * need to start a second thread which runs the
+>     qemu_default_main():
+>      >      > - * in main():
+>      >      > - *  in cocoa_display_init():
+>      >      > - *   assign cocoa_main to qemu_main
+>      >      > - *   create application, menus, etc
+>      >      > - *  in cocoa_main():
+>      >      > - *   create qemu-main thread
+>      >      > - *   enter OSX run loop
+>      >      > - */
+>      >      > -
+>      >      > -static void *call_qemu_main(void *opaque)
+>      >      > -{
+>      >      > -    int status;
+>      >      > -
+>      >      > -    COCOA_DEBUG("Second thread: calling
+>     qemu_default_main()\n");
+>      >      > -    bql_lock();
+>      >      > -    status = qemu_default_main();
+>      >      > -    bql_unlock();
+>      >      > -    COCOA_DEBUG("Second thread: qemu_default_main() returned,
+>      >     exiting\n");
+>      >      > -    [cbowner release];
+>      >      > -    exit(status);
+>      >      > -}
+>      >      > -
+>      >      >   static int cocoa_main(void)
+>      >      >   {
+>      >      > -    QemuThread thread;
+>      >      > -
+>      >      > -    COCOA_DEBUG("Entered %s()\n", __func__);
+>      >      > -
+>      >      > -    bql_unlock();
+>      >      > -    qemu_thread_create(&thread, "qemu_main", call_qemu_main,
+>      >      > -                       NULL, QEMU_THREAD_DETACHED);
+>      >      > -
+>      >      > -    // Start the main event loop
+>      >      >       COCOA_DEBUG("Main thread: entering OSX run loop\n");
+>      >      >       [NSApp run];
+>      >      >       COCOA_DEBUG("Main thread: left OSX run loop, which
+>     should
+>      >     never happen\n");
+>      >      > @@ -2120,8 +2088,6 @@ static void
+>     cocoa_display_init(DisplayState
+>      >     *ds, DisplayOptions *opts)
+>      >      >
+>      >      >       COCOA_DEBUG("qemu_cocoa: cocoa_display_init\n");
+>      >      >
+>      >      > -    qemu_main = cocoa_main;
+>      >      > -
+>      >      >       // Pull this console process up to being a fully-fledged
+>      >     graphical
+>      >      >       // app with a menubar and Dock icon
+>      >      >       ProcessSerialNumber psn = { 0, kCurrentProcess };
+>      >      > @@ -2185,6 +2151,12 @@ static void
+>      >     cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
+>      >      >       qemu_clipboard_peer_register(&cbpeer);
+>      >      >
+>      >      >       [pool release];
+>      >      > +
+>      >      > +    /*
+>      >      > +     * The Cocoa UI will run the NSApplication runloop on the
+>      >     main thread
+>      >      > +     * rather than the default Core Foundation one.
+>      >      > +     */
+>      >      > +    qemu_main = cocoa_main;
+>      >      >   }
+>      >      >
+>      >      >   static QemuDisplay qemu_display_cocoa = {
+>      >      > diff --git a/ui/gtk.c b/ui/gtk.c
+>      >      > index bf9d3dd679a..5e6ee5c12a2 100644
+>      >      > --- a/ui/gtk.c
+>      >      > +++ b/ui/gtk.c
+>      >      > @@ -38,6 +38,7 @@
+>      >      >   #include "qemu/cutils.h"
+>      >      >   #include "qemu/error-report.h"
+>      >      >   #include "qemu/main-loop.h"
+>      >      > +#include "qemu-main.h"
+>      >      >
+>      >      >   #include "ui/console.h"
+>      >      >   #include "ui/gtk.h"
+>      >      > @@ -2485,6 +2486,13 @@ static void
+>     gtk_display_init(DisplayState
+>      >     *ds, DisplayOptions *opts)
+>      >      >   #ifdef CONFIG_GTK_CLIPBOARD
+>      >      >       gd_clipboard_init(s);
+>      >      >   #endif /* CONFIG_GTK_CLIPBOARD */
+>      >      > +
+>      >      > +    /*
+>      >      > +     * GTK+ calls must happen on the main thread at least on
+>      >     some platforms,
+>      >      > +     * and on macOS the main runloop is polled via GTK+'s
+>     event
+>      >     handling.
+>      >      > +     * Don't allow QEMU's event loop to be moved off the main
+>      >     thread.
+>      >      > +     */
+>      >      > +    qemu_main = NULL;
+>      >      >   }
+>      >      >
+>      >      >   static void early_gtk_display_init(DisplayOptions *opts)
+>      >      > diff --git a/ui/sdl2.c b/ui/sdl2.c
+>      >      > index bd4f5a9da14..44ab2762262 100644
+>      >      > --- a/ui/sdl2.c
+>      >      > +++ b/ui/sdl2.c
+>      >      > @@ -34,6 +34,7 @@
+>      >      >   #include "sysemu/sysemu.h"
+>      >      >   #include "ui/win32-kbd-hook.h"
+>      >      >   #include "qemu/log.h"
+>      >      > +#include "qemu-main.h"
+>      >      >
+>      >      >   static int sdl2_num_outputs;
+>      >      >   static struct sdl2_console *sdl2_console;
+>      >      > @@ -965,6 +966,9 @@ static void sdl2_display_init(DisplayState
+>      >     *ds, DisplayOptions *o)
+>      >      >       }
+>      >      >
+>      >      >       atexit(sdl_cleanup);
+>      >      > +
+>      >      > +    /* SDL's event polling (in dpy_refresh) must happen
+>     on the
+>      >     main thread. */
+>      >
+>      >     ui/gtk.c and ui/sdl2.c have the same background so the
+>     comments should
+>      >     also be identical except names.
+>      >
+>      >
+>      > Well, GTK doesn't currently do this, which is why it doesn't work on
+>      > macOS, but hopefully this patch will be merged in some form, at
+>     which
+>      > point it will:
+>      >
+>      > https://patchew.org/QEMU/20241121162146.53643-1-
+>     charmitro@posteo.net/ <https://patchew.org/
+>     QEMU/20241121162146.53643-1-charmitro@posteo.net/>
+>      > <https://patchew.org/QEMU/20241121162146.53643-1-
+>     charmitro@posteo.net/ <https://patchew.org/
+>     QEMU/20241121162146.53643-1-charmitro@posteo.net/>>
+>      >
+>      > But yeah, thanks to this patch we know that's a solution for GTK as
+>      > well, and I can update the comment.
+> 
+>     I only meant that SDL is not different from GTK in terms that its call
+>     and event handling needs to be done in the main thread.
+> 
+>     I was not paying attention to the mention of dpy_refresh(). It is
+>     another topic whether dpy_refresh() is the best place for event
+>     handling, and I don't think so. dpy_refresh() is triggered when
+>     refreshing the display output, but event handling is not specific to
+>     the
+>     display output so it is awkward to handle events there.
+> 
+>     The best approach is to do the same with ui/cocoa; override
+>     qemu_main to
+>     dedicate the main thread for the UI and decouple the UI from the BQL by
+>     calling GTK with g_main_context_invoke(), which corresponds to
+>     SDL_RegisterEvents() in SDL.
+> 
+> 
+> It seems like a cleaner approach it theory, but QEMU's modified 
+> reimplementation of the GLib event loop could complicate matters, so I'm 
+> not sure it would be a quick or easy change to make. It's probably worth 
+> accepting the conceptually uglier fix via dpy_refresh() or an explicit 
+> timer for the moment, in preference to GTK not working at all on macOS. 
+> That is especially considering the SDL UI currently successfully does 
+> the exact same thing on all platforms at the moment. In any case, all of 
+> these considerations are beyond the scope of this immediate patch. I 
+> think the patch as is (with the proposed tweaks to the wording of 
+> comments) is a step in the right direction by pulling the main thread 
+> replacement logic out of the Cocoa UI code and making it generally 
+> available. The qemu_main = NULL; assignments can easily be amended in 
+> future.
 
->  };
->
->  #endif
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 1a381e9a2b..451d154459 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -873,6 +873,8 @@ static void create_gic(VirtMachineState *vms, MemoryR=
-egion *mem)
->              [GTIMER_HYP]  =3D ARCH_TIMER_NS_EL2_IRQ,
->              [GTIMER_SEC]  =3D ARCH_TIMER_S_EL1_IRQ,
->              [GTIMER_HYPVIRT] =3D ARCH_TIMER_NS_EL2_VIRT_IRQ,
-> +            [GTIMER_SEC_PEL2] =3D ARCH_TIMER_S_EL2_IRQ,
-> +            [GTIMER_SEC_VEL2] =3D ARCH_TIMER_S_VIRT_EL2_IRQ,
->          };
->
->          for (unsigned irq =3D 0; irq < ARRAY_SIZE(timer_irq); irq++) {
+I think we can rule out the possible complication due to the event loop 
+reimplementation if a thread is dedicated for GTK.
 
-We probably need to also update at least sbsa-ref for this new
-pair of interrupts, and perhaps others (if they allow CPUs
-with FEAT_SEL2).
+SDL's success is somewhat imperfect due to the lack of guarantee that 
+its code runs in the main thread, but certainly the imperfect is better 
+than the complete breakage.
 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 6938161b95..e42ab8ce8b 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -2078,6 +2078,14 @@ static void arm_cpu_realizefn(DeviceState *dev, Er=
-ror **errp)
->                                                arm_gt_stimer_cb, cpu);
->          cpu->gt_timer[GTIMER_HYPVIRT] =3D timer_new(QEMU_CLOCK_VIRTUAL, =
-scale,
->                                                    arm_gt_hvtimer_cb, cpu=
-);
-> +
-> +        /* FEAT_SEL2 also has physical and virtual timers */
-> +        if (cpu_isar_feature(aa64_sel2, cpu)) {
-> +            cpu->gt_timer[GTIMER_SEC_PEL2] =3D timer_new(QEMU_CLOCK_VIRT=
-UAL, scale,
-> +                                                       arm_gt_sel2timer_=
-cb, cpu);
-> +            cpu->gt_timer[GTIMER_SEC_VEL2] =3D timer_new(QEMU_CLOCK_VIRT=
-UAL, scale,
-> +                                                       arm_gt_sel2vtimer=
-_cb, cpu);
-> +        }
+> 
+>      >
+>      >      > +    qemu_main = NULL;
+>      >      >   }
+>      >      >
+>      >      >   static QemuDisplay qemu_display_sdl2 = {
+>      >
+> 
 
-We create all the other gt_timer[] entries regardless of whether the
-feature that uses them exists, and I think we should do the same
-here. It's pretty harmless and it means code elsewhere doesn't
-have to be super-careful about "is cpu->gt_timer[n] valid or is
-it zeroed out memory?".
-
->      }
->  #endif
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index f38eb054c0..b5a8a5846e 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -2668,6 +2668,41 @@ static CPAccessResult gt_stimer_access(CPUARMState=
- *env,
->      }
->  }
->
-> +static CPAccessResult gt_sel2timer_access(CPUARMState *env,
-> +                                          const ARMCPRegInfo *ri,
-> +                                          bool isread)
-> +{
-> +    /*
-> +     * The AArch64 register view of the secure EL2 timers are mostly
-> +     * accessible from EL3 and EL2 although can also be trapped to EL2
-> +     * from EL1 depending on nested virt config.
-> +     */
-> +    switch (arm_current_el(env)) {
-> +    case 0:
-> +        return CP_ACCESS_TRAP;
-> +    case 1:
-> +        if (!arm_is_secure(env)) {
-> +            return CP_ACCESS_TRAP;
-> +        } else if (arm_hcr_el2_eff(env) & HCR_NV) {
-> +            return CP_ACCESS_TRAP_EL2;
-> +        }
-> +        return CP_ACCESS_TRAP;
-> +    case 2:
-> +        if (!arm_is_secure(env)) {
-> +            return CP_ACCESS_TRAP;
-> +        }
-> +        return CP_ACCESS_OK;
-> +    case 3:
-> +        if (env->cp15.scr_el3 & SCR_EEL2) {
-> +            return CP_ACCESS_OK;
-> +        } else {
-> +            return CP_ACCESS_TRAP;
-> +        }
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +}
-> +
->  uint64_t gt_get_countervalue(CPUARMState *env)
->  {
->      ARMCPU *cpu =3D env_archcpu(env);
-> @@ -3175,6 +3210,62 @@ static void gt_sec_ctl_write(CPUARMState *env, con=
-st ARMCPRegInfo *ri,
->      gt_ctl_write(env, ri, GTIMER_SEC, value);
->  }
->
-> +static void gt_sec_pel2_timer_reset(CPUARMState *env, const ARMCPRegInfo=
- *ri)
-> +{
-> +    gt_timer_reset(env, ri, GTIMER_SEC_PEL2);
-> +}
-> +
-> +static void gt_sec_pel2_cval_write(CPUARMState *env, const ARMCPRegInfo =
-*ri,
-> +                                   uint64_t value)
-> +{
-> +    gt_cval_write(env, ri, GTIMER_SEC_PEL2, value);
-> +}
-> +
-> +static uint64_t gt_sec_pel2_tval_read(CPUARMState *env, const ARMCPRegIn=
-fo *ri)
-> +{
-> +    return gt_tval_read(env, ri, GTIMER_SEC_PEL2);
-> +}
-> +
-> +static void gt_sec_pel2_tval_write(CPUARMState *env, const ARMCPRegInfo =
-*ri,
-> +                              uint64_t value)
-> +{
-> +    gt_tval_write(env, ri, GTIMER_SEC_PEL2, value);
-> +}
-
-gt_tval_read() and gt_tval_write() have a switch which
-determines whether they obey the physical offset (CNTPOFF_EL2)
-or the virtual offset (CNTVOFF_EL2) or neither. For GTIMER_SEC_PEL2
-the correct answer is "neither", which is what you get by default,
-but for GTIMER_SEC_VEL2 we should be honouring CNTVOFF_EL2,
-so you need to add a case to the switch for that.
-
-We also need to fix a pre-existing bug in gt_recalc_timer(),
-which does
-        uint64_t offset =3D timeridx =3D=3D GTIMER_VIRT ?
-            cpu->env.cp15.cntvoff_el2 : gt_phys_raw_cnt_offset(&cpu->env);
-and so fails to include CNTVOFF_EL2 when working with
-GTIMER_HYPVIRT; then you can also add GTIMER_SEC_VEL2 to that.
-
-> +
-> +static void gt_sec_pel2_ctl_write(CPUARMState *env, const ARMCPRegInfo *=
-ri,
-> +                              uint64_t value)
-> +{
-> +    gt_ctl_write(env, ri, GTIMER_SEC_PEL2, value);
-> +}
-> +
-> +static void gt_sec_vel2_timer_reset(CPUARMState *env, const ARMCPRegInfo=
- *ri)
-> +{
-> +    gt_timer_reset(env, ri, GTIMER_SEC_VEL2);
-> +}
-> +
-> +static void gt_sec_vel2_cval_write(CPUARMState *env, const ARMCPRegInfo =
-*ri,
-> +                              uint64_t value)
-> +{
-> +    gt_cval_write(env, ri, GTIMER_SEC_VEL2, value);
-> +}
-> +
-> +static uint64_t gt_sec_vel2_tval_read(CPUARMState *env, const ARMCPRegIn=
-fo *ri)
-> +{
-> +    return gt_tval_read(env, ri, GTIMER_SEC_VEL2);
-> +}
-> +
-> +static void gt_sec_vel2_tval_write(CPUARMState *env, const ARMCPRegInfo =
-*ri,
-> +                                   uint64_t value)
-> +{
-> +    gt_tval_write(env, ri, GTIMER_SEC_VEL2, value);
-> +}
-> +
-> +static void gt_sec_vel2_ctl_write(CPUARMState *env, const ARMCPRegInfo *=
-ri,
-> +                              uint64_t value)
-> +{
-> +    gt_ctl_write(env, ri, GTIMER_SEC_VEL2, value);
-> +}
-> +
->  static void gt_hv_timer_reset(CPUARMState *env, const ARMCPRegInfo *ri)
->  {
->      gt_timer_reset(env, ri, GTIMER_HYPVIRT);
-> @@ -3231,6 +3322,20 @@ void arm_gt_stimer_cb(void *opaque)
->      gt_recalc_timer(cpu, GTIMER_SEC);
->  }
->
-> +void arm_gt_sel2timer_cb(void *opaque)
-> +{
-> +    ARMCPU *cpu =3D opaque;
-> +
-> +    gt_recalc_timer(cpu, GTIMER_SEC_PEL2);
-> +}
-> +
-> +void arm_gt_sel2vtimer_cb(void *opaque)
-> +{
-> +    ARMCPU *cpu =3D opaque;
-> +
-> +    gt_recalc_timer(cpu, GTIMER_SEC_VEL2);
-> +}
-> +
->  void arm_gt_hvtimer_cb(void *opaque)
->  {
->      ARMCPU *cpu =3D opaque;
-> @@ -6613,6 +6718,56 @@ static const ARMCPRegInfo el2_sec_cp_reginfo[] =3D=
- {
->        .access =3D PL2_RW, .accessfn =3D sel2_access,
->        .nv2_redirect_offset =3D 0x48,
->        .fieldoffset =3D offsetof(CPUARMState, cp15.vstcr_el2) },
-> +#ifndef CONFIG_USER_ONLY
-> +    /* Secure EL2 Physical Timer */
-> +    { .name =3D "CNTHPS_TVAL_EL2", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 5, .opc2 =3D 0,
-> +      .type =3D ARM_CP_NO_RAW | ARM_CP_IO, .access =3D PL2_RW,
-> +      .accessfn =3D gt_sel2timer_access,
-> +      .readfn =3D gt_sec_pel2_tval_read,
-> +      .writefn =3D gt_sec_pel2_tval_write,
-> +      .resetfn =3D gt_sec_pel2_timer_reset,
-> +    },
-> +    { .name =3D "CNTHPS_CTL_EL2", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 5, .opc2 =3D 1,
-> +      .type =3D ARM_CP_IO, .access =3D PL2_RW,
-> +      .accessfn =3D gt_sel2timer_access,
-> +      .fieldoffset =3D offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_P=
-EL2].ctl),
-> +      .resetvalue =3D 0,
-> +      .writefn =3D gt_sec_pel2_ctl_write, .raw_writefn =3D raw_write,
-> +    },
-> +    { .name =3D "CNTHPS_CVAL_EL2", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 5, .opc2 =3D 2,
-> +      .type =3D ARM_CP_IO, .access =3D PL2_RW,
-> +      .accessfn =3D gt_sel2timer_access,
-> +      .fieldoffset =3D offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_P=
-EL2].cval),
-> +      .writefn =3D gt_sec_pel2_cval_write, .raw_writefn =3D raw_write,
-> +    },
-> +    /* Secure EL2 Virtual Timer */
-> +    { .name =3D "CNTHVS_TVAL_EL2", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 4, .opc2 =3D 0,
-> +      .type =3D ARM_CP_NO_RAW | ARM_CP_IO, .access =3D PL2_RW,
-> +      .accessfn =3D gt_sel2timer_access,
-> +      .readfn =3D gt_sec_vel2_tval_read,
-> +      .writefn =3D gt_sec_vel2_tval_write,
-> +      .resetfn =3D gt_sec_vel2_timer_reset,
-> +    },
-> +    { .name =3D "CNTHVS_CTL_EL2", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 4, .opc2 =3D 1,
-> +      .type =3D ARM_CP_IO, .access =3D PL2_RW,
-> +      .accessfn =3D gt_sel2timer_access,
-> +      .fieldoffset =3D offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_V=
-EL2].ctl),
-> +      .resetvalue =3D 0,
-> +      .writefn =3D gt_sec_vel2_ctl_write, .raw_writefn =3D raw_write,
-> +    },
-> +    { .name =3D "CNTHVS_CVAL_EL2", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 14, .crm =3D 4, .opc2 =3D 2,
-> +      .type =3D ARM_CP_IO, .access =3D PL2_RW,
-> +      .accessfn =3D gt_sel2timer_access,
-> +      .fieldoffset =3D offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_V=
-EL2].cval),
-> +      .writefn =3D gt_sec_vel2_cval_write, .raw_writefn =3D raw_write,
-> +    },
-> +#endif
->  };
-
-thanks
--- PMM

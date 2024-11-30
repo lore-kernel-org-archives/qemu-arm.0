@@ -1,110 +1,109 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp1308961njk;
-        Fri, 29 Nov 2024 22:20:45 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWQV8OyX1QS2dTQ7WSDnIsQZH90hKW/B4XOT3NvM1AINPuHw1Q6mpJXk4rakF3J1tSABQvqKYpCgoiEZw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEIU3Zb18ZZ53B93SEP+I2VKU6SAdlNg4bVk89KUCqiIKZOdFOXuKEiyNQZTFr+TFnMcP50
-X-Received: by 2002:a05:6214:20c4:b0:6d8:932a:eaa3 with SMTP id 6a1803df08f44-6d8932aee5amr22627036d6.3.1732947645773;
-        Fri, 29 Nov 2024 22:20:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1732947645; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp1312692njk;
+        Fri, 29 Nov 2024 22:34:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXgsboh0h7iGawxV5BgxmS/ITYs9um/Pk/2vsclv7VaPXMSeQUwF7xX6Vtl+f9VY2s0a8FE/95ynuSsLw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGqg+4cNACkv2/S0Lvi5yoN06xpESKMWEzEUIyQT6beLKMabiN1sVgBcCi98FjQEcPXRB8Q
+X-Received: by 2002:a05:6214:1248:b0:6d4:10b0:c249 with SMTP id 6a1803df08f44-6d864d3ec0cmr220653286d6.22.1732948443613;
+        Fri, 29 Nov 2024 22:34:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1732948443; cv=none;
         d=google.com; s=arc-20240605;
-        b=Xy4IgBJ+IK9/Q0S/poddkhuwSdJmWwxjQOm2muwpwcui3lVh5nr50yxhGkMIVaQxsY
-         esvhCvxcUBGzUwsZ1kOc7sNTtm+4LoSj6obvPsK+tPHbQ+iNaninRzq7miBDHMA20y5L
-         mJfI1PM0nNfeMPtfjgrzQn34B1WELhT8ShWtLZNmvCkHFuT+ff8S2xC/ENbJrj3pWFo2
-         NbYz/ky0A8r0bxr7oUkxVZ15ufu17tM16dI/YmvjRMp0H6B3/xB/97aLmJlXeCV4nGEy
-         KOLCqOYBtqD/PSeNtZAIDuhScpOT3o9D8kxnaLVQ9NVxH0A7wXCiVAYJo7SLPjOejGd8
-         mNZw==
+        b=TZ6fKU5iZUJvU/Q/idJUBrkeD9vmpYwbnsQ3hVwmuMiqY5a66S1ni9YySqwsIjfOD9
+         uVtG/tK+HiwgpWdLrQo/FZNnZQTfb6g6UsJIn3KKR5ibRQ0O3blsdkhh06O7uxfA2q4d
+         X1Faj4HQNAfwCdALfwkUvtkBjD6n+mm8JRWb8kPxJr88wPavKeZelR/jTTn1ZTb2CwDQ
+         tIXVvPoYlFsKeF/1sg7ALjqSFwtN/AayfJlsj1DqMZZRWRJUikK7rbzLdvL0Jhc1DrQE
+         Epw8rHTb3UpV2YkBt/YS+b4LvKpHgW7BNixnq9GWvosNp8vitfYK47Kew+t3Qr+sPH71
+         J4lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=UaU0zOmZ0YAsn6aSvaKXwr7t6amJcWxMlrxWLIfv/DA=;
-        fh=YDHB/mdhCpEyeoWxsnzlKKpBYTYoRddObBDTPVgaxdg=;
-        b=YYEZUgEBN5hqk1bn1S/ihPKtst1a4oMghnKKyg2rKKv1/xIEcFJ8qG/hwToQrzHH8o
-         58HIMTIShkh2Ka7+tK1yfE98/HZkWFy6OZTNvCYBej7Cyvxxc+i95xMHPHlsvG1F1SbJ
-         7/jk6ztwga9xxSgo2vD1tnVKQ07kp8UmdtfYS5syqlaWRn1pQ7K72UtIWzRSzHCb9CtF
-         zCdPrrTde6ntv2FYw9/Y9Oc6TIHSX5jJDxhhWY1zkSQJ2AO71mpwmXYLVufb3uMFZ/r0
-         JwuX3JXAV3nAoU79Cgi9+ltEpqS0QJbfohafmEDkvsn50iL0LqFIEKkxOLbkFH9+77Cy
-         LMBQ==;
+        bh=pM8dkH9Xm9NMSKkBjI7FXIWEGQ74p/jYqNbXEgV8iyA=;
+        fh=dXVDXz3Bc+7aOu0rLqoOQTY34pgeQfiNG6tyP+kwb9U=;
+        b=RK8HcTDmI0au75SsmUN4QRQZ9OFGLEkej+d3fF4eCKG1V+eNDxylkOamAnl/SeNqHq
+         8zVSA3SU0UJOI2OOgUtrmiH2h1WM3ww9tHXz6pTTDAoTaz5xpSSoyYMtsh5V7BgrMnNm
+         zRU2z79YcKIXlIniYMSA+U8kMpAjezeVFMMhuIzh3TVcYvSadZN3WOhbUAteiGXVbZUw
+         hKp11idBJ2a1EtkyLqzoXsCQrFGuIg1rdDFCQUtAQb9ygkeXTppIRYPA+Je4aVrYXYoh
+         BmBhaqowrUp3ufXjZFqzUhi1CvrdQ6Pz3k+Cpv+mytwUl8PifkxkSHX4oFGQqhfQ5eke
+         aC8w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Acrcms97;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=21EkloIh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8754595cbsi68856696d6.372.2024.11.29.22.20.45
+        by mx.google.com with ESMTPS id af79cd13be357-7b6849fad8fsi609939285a.706.2024.11.29.22.34.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Nov 2024 22:20:45 -0800 (PST)
+        Fri, 29 Nov 2024 22:34:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=Acrcms97;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=21EkloIh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tHGqO-0004Oi-1V; Sat, 30 Nov 2024 01:20:41 -0500
+	id 1tHH2w-0005uk-5D; Sat, 30 Nov 2024 01:33:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1tHGqJ-0004O5-MQ
- for qemu-arm@nongnu.org; Sat, 30 Nov 2024 01:20:35 -0500
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1tHH2u-0005u1-Je
+ for qemu-arm@nongnu.org; Sat, 30 Nov 2024 01:33:36 -0500
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1tHGqE-0004YF-2e
- for qemu-arm@nongnu.org; Sat, 30 Nov 2024 01:20:33 -0500
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-7250844b0ecso2167235b3a.1
- for <qemu-arm@nongnu.org>; Fri, 29 Nov 2024 22:20:29 -0800 (PST)
+ id 1tHH2s-0008Od-OA
+ for qemu-arm@nongnu.org; Sat, 30 Nov 2024 01:33:36 -0500
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-21145812538so19998615ad.0
+ for <qemu-arm@nongnu.org>; Fri, 29 Nov 2024 22:33:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1732947629; x=1733552429;
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1732948413; x=1733553213;
  darn=nongnu.org; 
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=UaU0zOmZ0YAsn6aSvaKXwr7t6amJcWxMlrxWLIfv/DA=;
- b=Acrcms97wL2b61kWh10SRWWr9Aalck37P3b8Pec2gIOMYv7zTKZuGFYMT9yh/V15GA
- eB5x7v2LZkhJOiR/Bw1eFWSDmaQ2mrdy+PzkDiEDlzvtWtncU/3SFCZHvVB2P3RVq8kv
- nGjA/hskohvkbsjHYLNv17Bs3fQommrc72eB+vNVwAxuOqLvbhMZz5ris0dQzMXQJYWi
- HwhdW9By851I6Iooqem174mbzRgLGeW8y9gyTpBmubA1SxO/2h/t8uDLoE+PPXkwJQ8c
- Bm0DABxWlbzR1yRZapD2xEiRyvUrdWU2/ULZimIq3Imc/j+hUlYpDzEatLcUzSLPsV9H
- bl8g==
+ bh=pM8dkH9Xm9NMSKkBjI7FXIWEGQ74p/jYqNbXEgV8iyA=;
+ b=21EkloIh1a9CV2bfPQs4hU0o8DLSAYjSAZr/LUeQCqpu/WQpGANO5UW4rOvjdDgf9V
+ Ix1ii6PyCt2ViMeXW92rmm1+5cbUspKPaDJD1sZygGh2qCudqHM5WTsDRu0T2Ih5gJPg
+ ovT3rMvwn75fzuiFjom/l/zRpDyBigs0078pIJBBHL3pN0Way0lgZ+LJwCpPo3C1qoGj
+ fnbHXrOplAhVKpLHouBFvwsAJ9srCazspE9mQ4kb8AYZMK5fspK0lQdvdkduaePQ5Tf3
+ 0YE2d9trIT237ETk8e7YxmFeglr1GFOUVdn4wS11hEHxhJ2w6hVsuOj3alzkFm2DLtPN
+ qPlw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1732947629; x=1733552429;
+ d=1e100.net; s=20230601; t=1732948413; x=1733553213;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=UaU0zOmZ0YAsn6aSvaKXwr7t6amJcWxMlrxWLIfv/DA=;
- b=oztLQjOlmKWq1heoQ73q+AtoHK2Jg3j+uSEtvo6bFsrHQGtoCW+6F/ukuAycLoPpQp
- ItsCBz9Dd0/uLsqcOa47fu+9PeyK7+N7oDNDsvhAubokjTRAcXWX6oCwpMThWuK1NPXq
- rDsjoLRnNNzVPLq9++n1q2RwZg5NjWcJ4THl4dI3+Tmi3TcA07cuDwIjbi1S5WkktFr1
- /pU5Hs22HDMno2UWiaLaRraZj6Z43tBe/RF1wLEfNdVAvxld0xoBo5SmLv5dRpVDuv2n
- ZMe7x4CImWR68aehEvFXgxchkdEojT24+OnT+2KlSSl/xp239GBJ02/qjIiizXJXSBKG
- 7Ddg==
+ bh=pM8dkH9Xm9NMSKkBjI7FXIWEGQ74p/jYqNbXEgV8iyA=;
+ b=IvQO4e+nsfJw3yRiUW3g1BA44UyUwqqKmOXoKCgin/3SXN+D2zOI9ZwZjeO9u15nnv
+ I6jO0cmVYAmTAxkGTn1Vv70gqWaeIu1Oki1EnDqrKLJokpvnRqn7rl4nYSYK9RUki+pz
+ LLxRLbeOKPVUja3co5N9y9D54RGe3IfNbTTKdwt2J8aCy73SYmTAsMuknKIp8/96S3pR
+ JXxwX/CoLP36QpZXZukejrKoGNWwNb7AVzS11vFLQ3FzPGb7NcgKg9n4EXHFFUZi6oTo
+ +F8wUGX5k83ka0ybgLoBEuJjPJL8d2hK2jlR5+TGdvx5eex8DXOphB7gvukDGnrBCMpL
+ n6gA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUu54L+ZF1zyD/28j/K38apPN/nXbCcr9AOVtnRnkVaTsbI1RSDJFxOEyNoB/IYudgZVqh8VwsheQ==@nongnu.org
-X-Gm-Message-State: AOJu0Ywhi99ZD7n098F+gIGkok1bC+Yxl93j9OE919JYC8kszRzVxvDt
- 735/V3Zcpo0C+o5fN9xkgrRy9a1Tun6y5UiXwkAU/sKdag7JqEPMt5uScEXvLWM=
-X-Gm-Gg: ASbGncsWNU63mdf9/709+jd8uCvLBMpiAwc7rcQk4hZErV3a6LToa29xt89y8E4qx1+
- z4yiB20jRPq9nzNoJwfFLIRjzf1VbdCQMQWTYO2OKfvBd/STJsZNHji3wbQHsmHH4p/iVp1g5az
- TY9ZFeeHUJ9hWQKJJ4wdOZDs+WAuBsJN8ixrCUs0axcnsu+DRLP+Xe+WbXo8nZhU2bbUPN60SXJ
- X+D84frdmTxvo0yH9Qop6nwSUirIKDNIIS6v0DiESyz/rnYcIsuSaCU+bH+Ttc=
-X-Received: by 2002:a05:6a00:4f88:b0:724:5aac:1687 with SMTP id
- d2e1a72fcca58-72530142fcfmr20927802b3a.20.1732947628647; 
- Fri, 29 Nov 2024 22:20:28 -0800 (PST)
+ AJvYcCWRj8USYmYt7JbfSW4+J0xFcPJnavIy8wc6zW5kcIHUqDWH3hzvw57MEWKqN9Y2XBSq6IwUtFrliw==@nongnu.org
+X-Gm-Message-State: AOJu0YxL9zKpBX2pEFVH6YG9GvyEaHSlD+yeAFi7Zh+wsv4MYgymlnft
+ D0YbG3S9AnVbpVIuFgHGm/KA7OOoA7+6ieHS4eesya1P+miTnhjokD4ZS5FqvG4=
+X-Gm-Gg: ASbGncuxJH4tpmDPllbq8dBGXraNx8VnSAIvJvhoP97A9eeVxNoShwWj8yjhLWtC+3g
+ f2/5oWhPn+8GW/BsYMArD+7fj8lJtyDoZ3qxgp0UY3H72u/YKaIMaKzHiCz9P8Za7KWimTwElAU
+ UTElFl9RJyyn5qLTcmVPbiMAHO36Qvj1trkt6RcZrqtpbK6AhaAgVnjAKq26Yx2+v/RNUFfNB8O
+ yrmyVHDS5tlcPHeAgiOjHV93HIsxBuIT7esVkrjwPvf8+Tg3Wyjwq5bPJoqFng=
+X-Received: by 2002:a17:902:e811:b0:211:f81f:8949 with SMTP id
+ d9443c01a7336-21500fdd6aemr194269255ad.0.1732948413121; 
+ Fri, 29 Nov 2024 22:33:33 -0800 (PST)
 Received: from [157.82.207.167] ([157.82.207.167])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-725442c086csm4374934b3a.189.2024.11.29.22.20.22
+ d9443c01a7336-2152f06a4f5sm34566795ad.86.2024.11.29.22.33.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 29 Nov 2024 22:20:28 -0800 (PST)
-Message-ID: <1e437634-ea0c-48cc-a2ab-2ad3c6256fc4@daynix.com>
-Date: Sat, 30 Nov 2024 15:20:21 +0900
+ Fri, 29 Nov 2024 22:33:32 -0800 (PST)
+Message-ID: <aa724c83-df51-48a4-a697-586b90ed3f0e@daynix.com>
+Date: Sat, 30 Nov 2024 15:33:25 +0900
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 14/15] hw/block/virtio-blk: Replaces request free
- function with g_free
+Subject: Re: [PATCH v12 15/15] hw/vmapple/vmapple: Add vmapple machine type
 To: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com,
  rad@semihalf.com, quic_llindhol@quicinc.com, stefanha@redhat.com,
@@ -115,16 +114,17 @@ Cc: agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com,
  alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
  marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
- qemu-block@nongnu.org, qemu-riscv@nongnu.org, balaton@eik.bme.hu
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org, balaton@eik.bme.hu,
+ Alexander Graf <graf@amazon.com>
 References: <20241129152506.59390-1-phil@philjordan.eu>
- <20241129152506.59390-15-phil@philjordan.eu>
+ <20241129152506.59390-16-phil@philjordan.eu>
 Content-Language: en-US
 From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20241129152506.59390-15-phil@philjordan.eu>
+In-Reply-To: <20241129152506.59390-16-phil@philjordan.eu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pl1-x631.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -145,14 +145,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SElRkNt74WUx
+X-TUID: uq0Ne2leV5Ds
 
 On 2024/11/30 0:25, Phil Dennis-Jordan wrote:
-> The virtio_blk_free_request() function has been a 1-liner forwarding
-> to g_free() for a while now. We may as well call g_free on the request
-> pointer directly.
+> From: Alexander Graf <graf@amazon.com>
 > 
+> Apple defines a new "vmapple" machine type as part of its proprietary
+> macOS Virtualization.Framework vmm. This machine type is similar to the
+> virt one, but with subtle differences in base devices, a few special
+> vmapple device additions and a vastly different boot chain.
+> 
+> This patch reimplements this machine type in QEMU. To use it, you
+> have to have a readily installed version of macOS for VMApple,
+> run on macOS with -accel hvf, pass the Virtualization.Framework
+> boot rom (AVPBooter) in via -bios, pass the aux and root volume as pflash
+> and pass aux and root volume as virtio drives. In addition, you also
+> need to find the machine UUID and pass that as -M vmapple,uuid= parameter:
+> 
+> $ qemu-system-aarch64 -accel hvf -M vmapple,uuid=0x1234 -m 4G \
+>      -bios /System/Library/Frameworks/Virtualization.framework/Versions/A/Resources/AVPBooter.vmapple2.bin
+>      -drive file=aux,if=pflash,format=raw \
+>      -drive file=root,if=pflash,format=raw \
+>      -drive file=aux,if=none,id=aux,format=raw \
+>      -device vmapple-virtio-aux,drive=aux \
+>      -drive file=root,if=none,id=root,format=raw \
+>      -device vmapple-virtio-root,drive=root
+> 
+> With all these in place, you should be able to see macOS booting
+> successfully.
+> 
+> Known issues:
+>   - Keyboard and mouse/tablet input is laggy. The reason for this is
+>     either that macOS's XHCI driver is broken when the device/platform
+>     does not support MSI/MSI-X, or there's some unfortunate interplay
+>     with Qemu's XHCI implementation in this scenario.
+>   - Currently only macOS 12 guests are supported. The boot process for
+>     13+ will need further investigation and adjustment.
+> 
+> Signed-off-by: Alexander Graf <graf@amazon.com>
+> Co-authored-by: Phil Dennis-Jordan <phil@philjordan.eu>
 > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
 > Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+
+Finally I confirmed macOS 12 boots on M2 MacBook Air. Thank you for 
+keeping working on this series!
 
 Tested-by: Akihiko Odaki <akihiko.odaki@daynix.com>

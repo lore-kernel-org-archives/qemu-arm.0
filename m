@@ -1,125 +1,126 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2150548njk;
-        Sun, 1 Dec 2024 07:12:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVUnyCaMbtIuWZwGdW6noaJYGv3pNFLFz9VkYa2ipSBDgVJt1Wf/1J4BB+Jf7ms8Bt8Q/8KmOmWyEGAeg==@linaro.org
-X-Google-Smtp-Source: AGHT+IF98Yz+qZtjLYKyEUU90L7I+tzKwPaZn8j8drGCH5ovE/o9pgINqBGxfi3Jg5zE1FNKjVRu
-X-Received: by 2002:a05:620a:40c5:b0:7b6:773f:4bd9 with SMTP id af79cd13be357-7b67c44623emr2692094785a.42.1733065925457;
-        Sun, 01 Dec 2024 07:12:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733065925; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2150664njk;
+        Sun, 1 Dec 2024 07:12:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXb4WpdQ9Rx4D02qHKnOHKv8kYHXyd+9hCUsR4I5VG273Snw3mbe10NEZ+zjvM/ua8kGMnybrvdFM90tQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHnSlC23bdTdxctUECj7XlIfrMlaN32A4t9ZvIEtv6cSHSPXK6CLKMfThTwwoGLKNCyBeIp
+X-Received: by 2002:a05:6214:19e4:b0:6d8:963e:b4c3 with SMTP id 6a1803df08f44-6d8963ebf54mr100562686d6.11.1733065935916;
+        Sun, 01 Dec 2024 07:12:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733065935; cv=none;
         d=google.com; s=arc-20240605;
-        b=G5h1OuSrP3x1i2ytDAwqL9wOnQohtjPnv5YU0RLtGZq2tEh+zvwXZ4O3HUI2eCksHC
-         VxEgoUGrk1bf9AyWjVyVNHBUzZp+QRHYkwxXSp1fBavCu0/SQclZ9zw95kskS3PEwzqQ
-         wwRbws1fqUg7oA1WILPsZCRpWWXjIQ+/DyeW+f8bkyrRLMw5+YnhlL4VMogvPganA5SW
-         uXnPGHJP2Yd1sDwV9BbEOXWl0PmZu9WyIImPJtAgTKMTIvLO7R00WT6a9AgOfkermE+5
-         JwH5u1IzfjLMaCsH1Ej/0SFUmqCfk1ce3Vpkux7MqPd7yuEIg0crluToH9OLG/lG+a82
-         l5DQ==
+        b=egNu2duz/Y2K5mMujWpEQbluADf8gOWAuW7ZwUs+oEYDAA07lt/JpbfYbFIlVHB5ff
+         N2w3lfCQ5jPOB+PW32dm5m0O5nEciYD1YLLz/G63I6SKinbACyZWrqFsOAajCNLse5ol
+         dr/M4cutqgzr57jCKICNf/LD4ewbt0X7xV2+XiwJjm5eyEx1RpN2ujf1FnZsNk7kZm9h
+         J0M+9hivUH1r5e7YPUWpe3VSb9ziU9tkHv8M2d44l7c0k1N2Mg2aYljyLwQZ9/WtntB0
+         09hNJVyJsJQFzp77pl4DFqVo0pAj5PWlnTOSsF6/l8/VKBqb4eGfS7/iANSQxb3lYEbj
+         nazQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=K96QLs+zfxQ8t/7EKBzD/pLvl9nlUU6j6N8gKw/ic4M=;
+        bh=vs1A3RHcACoGULTwDSuyWgmFAKJoxObVS6XkdoRByFU=;
         fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=PJ10sWiBRmjANu67hIhtPqon3DzRV6lgJL6RCcS/63YFLho/ESkeX9fOaqc7fEtAqF
-         eclEXK67imG1Hpx4OdmpcbrD2c/2SXFyCGHV7WD5l4uVsdI+jdErfbNxr2mpexeOLzIg
-         JslliITxb/pakQhRMj5JJczZgKsHwqMg/zf/mZcugeyVYkXYXloHt7cNDvQ9P0e2Q5SH
-         w7gY69KsNEOZvFXDE8iYk5exRL5iFxXh7ioMg+V+ifU5Vi9tvrnHqwUfsKqMHi9dyUTM
-         A00VVFA+rFdoWtudUYZytDN12MS7OaDbI0pbIBdSztjT2rFCBldrefZAz990XWbQgOqY
-         jp3g==;
+        b=OTweJ/zl4olQul0mxHwyLF+x/4vAVNKwlI228RrqUMnj/KgYacl62hIDzmmcckWg3R
+         YpH3wDqXlUOZbkvUkRa6nf+lUKSnZ2Da/zYJUrRy1lHruaw7dylUMyWgte3wOaOWR6up
+         ZFt55tP24UohSMgFQ3wJRrYp/C3N0hHoh0VfKv2YvQb7Fh3IxW8NGax/Q5b8KwdZ9Ax8
+         iyRb0uF4LI14fnBF4H5YyuYkJ8HcOgH5wq/7OamVNkxUzc7SIqDe2ib+tgdhDwWs0A+Y
+         RpL9JBbdVF6CyVp7x5MCCg5UruSzv7EW1/Q3nlFYXYJhtDedsB/ujhAhFbusP4XPyRLR
+         Z/Iw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UJx0Bgz9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BAOmR+o9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6849f2661si954062485a.637.2024.12.01.07.12.05
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d87dcc0dbesi79254236d6.517.2024.12.01.07.12.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 01 Dec 2024 07:12:05 -0800 (PST)
+        Sun, 01 Dec 2024 07:12:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UJx0Bgz9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BAOmR+o9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tHlWl-0001HZ-F7; Sun, 01 Dec 2024 10:06:27 -0500
+	id 1tHlbZ-0004H1-U6; Sun, 01 Dec 2024 10:11:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tHlWh-0001Eb-KC
- for qemu-devel@nongnu.org; Sun, 01 Dec 2024 10:06:23 -0500
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
+ id 1tHlaU-00089q-FJ
+ for qemu-devel@nongnu.org; Sun, 01 Dec 2024 10:10:19 -0500
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tHlWf-000482-GF
- for qemu-devel@nongnu.org; Sun, 01 Dec 2024 10:06:23 -0500
-Received: by mail-ot1-x330.google.com with SMTP id
- 46e09a7af769-71d579d9658so1156397a34.2
- for <qemu-devel@nongnu.org>; Sun, 01 Dec 2024 07:06:21 -0800 (PST)
+ id 1tHlaS-0005GP-86
+ for qemu-devel@nongnu.org; Sun, 01 Dec 2024 10:10:17 -0500
+Received: by mail-ot1-x332.google.com with SMTP id
+ 46e09a7af769-71d5984e56fso1526945a34.3
+ for <qemu-devel@nongnu.org>; Sun, 01 Dec 2024 07:10:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733065580; x=1733670380; darn=nongnu.org;
+ d=linaro.org; s=google; t=1733065815; x=1733670615; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=K96QLs+zfxQ8t/7EKBzD/pLvl9nlUU6j6N8gKw/ic4M=;
- b=UJx0Bgz9sKsJuO7k7nkfUZmaVefvGaJB2Ts7y1Aqxt4UPG+kmpKw6OXC7lARMFVjmB
- MaeLJvQ9tOEHwi7ou4j3JCONmCDzQwUx0/cpNVCELTrsatLvXjO7F2sBV/hPiunzOGpX
- iRVwRteR7EL/H4IKpwKavlvKKmDnRlEPfZNY2LVz2GtZ6RASifUeLmvRUXc9/rjEIhCZ
- 4QQxDRU2q6wIvWMax8wvoZYA0Trf9WwARFvvsldVhRYdO+khw0PsEsiMkN+n/kLgmI6J
- 6x0lZOZQOxsWk/6Ss1R6a993iRoNUMWKB/NYUvq+AHzFaosCuRIwMVETcYTnmlf/kHbB
- C8qg==
+ bh=vs1A3RHcACoGULTwDSuyWgmFAKJoxObVS6XkdoRByFU=;
+ b=BAOmR+o9cHpRQ1+fizPddZ1LYJb75DS+S8nRhxJKHZ2nV92Dwv2QTcfdF4nVRLcg7T
+ yXFwzDCw5ZQUf1dO/2TPekHIBBnggs2fT8/TJAz/6YaAMo6ikZAonJEfFQNgRbgGEsbY
+ kxHhO57EAJjxoEkEakPh6PxZrRhn+kGXUmjvts/bavVq8Gzmzp7N9rXdBouFgHyNiM14
+ 8AyFLUrGICOoTwPL3+T78uBM6VLyXJnt6ujzQBugEM9UgL2+kOgiR9Ge347k+umrRNtm
+ hUQPCoYpU/JsS2GDuZ05xwj1LdtWVoKV28xoOnb85F12osmgHbNdQB61iPLontsdxCr0
+ RY3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733065580; x=1733670380;
+ d=1e100.net; s=20230601; t=1733065815; x=1733670615;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=K96QLs+zfxQ8t/7EKBzD/pLvl9nlUU6j6N8gKw/ic4M=;
- b=hj/D6vPDCPxeAx1/xsVf8AhLMFABXLdzRnzlh8TwhS57Bf7X+IWXXRwdrDkhDlIPLg
- Ev9cRop2/ea0b/uuIM+wB23uTGJ4p9emEpAj4I1zsO5cAHnMqEgNM6fxfzDOJ/u2TA9U
- BjLXZ84m3jAJ0hlelOAIbIm72fwRDXFa+fr8TvOnXePsEz05yvIbgj3QrHHLYvOkq4lx
- EGSNZ4zsQtSOp3oVbUDeyJDH935DvZwGiAvPxZapjZ3nqEp6q5US/PytRjse4iidKyhL
- tn7yjKBuoOFo3qR4/T9lZMqakhQ4wejgf5JjnmQ32uq3nOIiwseJaCJdiiPc7cOhiafL
- uIeQ==
-X-Gm-Message-State: AOJu0YzmtN8Ni8Ogfig5a7PjzxGpb6JPK83g5+2DDw9PsZEPO6fDNiMR
- Ku0pmtS9dI4FVF2qUcBaQEpfJu50j7I/AmNL1MYSmCUL85psvnHik2AXJ2uyz6gCeH9ztsL08+v
- nmBs=
-X-Gm-Gg: ASbGncsF22KBGJ1/wajnTlIYfyz9D777OZomWlo0+THt8G6CHIyq4khw6ohKTKAgc1J
- Qb6jQlz95tUvjVgGcvUEehgUVHWyePKdhbmfSNTjrvSsN9u6JwYwKgwZ1E+5SOBD4nc0DG7yN2j
- meypiEa8crTfJxu92NlMj4y2FsFllZq6ekBwaOS9lLZIh7GNWEWg3fZ/EOQ5ubPgz0jFJwJaus/
- QIC/oLBvmp+PC1cNag97VAJCIthK5qGGMLI2Jp4WZwCBprOQRq8G5WcZN9BrFfa7da/7MehfGaK
- XRmG4o1NwO/7mp/Czgns813P1Je5OkSFfzyN
-X-Received: by 2002:a05:6830:2aa8:b0:71d:4196:d92e with SMTP id
- 46e09a7af769-71d65cc2d84mr13820098a34.18.1733065580397; 
- Sun, 01 Dec 2024 07:06:20 -0800 (PST)
+ bh=vs1A3RHcACoGULTwDSuyWgmFAKJoxObVS6XkdoRByFU=;
+ b=DFD1RwMfH1dWy4QnAbm5P+apHfW34HdiqLkLOn3U81RtlDiyWKzmFXjDtzpaYPeyEz
+ eSXd8rdC2Md4zcEyh0Hy5kU3FWksPvdHadkc11xRudjlBfkMaLljBcQYvm2305Fp03/N
+ 82M4a0YS6dS44i61YQ9T5bnHKJiecP7CKSNF38F2X7PxW39V/8UzmGRsuNBg03ZFdas+
+ 4sIUXeZPAwjvJGrmScNfhfuz4b/d4kg63staDZzILLj8uQ3dCc95FkThCCAkSjOahQE9
+ 8oU0qJbFESlWZOj93XYfBts45iuTeYbpALaF8nxIqYQX7HKKO3Nqr4SsIScY7+Ffbz/3
+ 6Zgg==
+X-Gm-Message-State: AOJu0YyZ+A5h9nJ5EtSmnC+nvEKRbTfXb8eVZRCjy4/StWkijU8C4Xt9
+ QKVbsmyMpMOvQmNQaDoSEhjcAUhW7uEISxREfCRXiwu/Dmdkcqjl5imrlokjMlzArbyVugBMA7T
+ SEqU=
+X-Gm-Gg: ASbGncuTjcZIQYWeRJpZVvQZ65rUHHawlW+bHVuG+KYW30eEPYBLneCXw2krLowPc+r
+ MEUb6rn0liaGkqe3xFhiU6edccm08xQu9MM2AhRhW/TFpNYxDtByUVgSfNTKj24dWeAc2fCbMQY
+ DnUc2Vz9b0w+yL6FD5w1CALaCJkOI0pMEroHRJ9QX3Q4CyeEDq+3RtdaeXW4BtLBp6ddJiOu8do
+ Qs7x7eJpHozmugkXX3KPOF08V8GSIaM2pF+Yu2Ot1KDRjPjbTdI0YUdPDK2671FmECb8bpsK5Kj
+ xcCdLd2PoAgREH9xqXE1YkJubr6opTfoJSyN
+X-Received: by 2002:a05:6830:6f8c:b0:71d:4385:665e with SMTP id
+ 46e09a7af769-71d65c93a1bmr10803522a34.9.1733065814943; 
+ Sun, 01 Dec 2024 07:10:14 -0800 (PST)
 Received: from localhost.localdomain (fixed-187-189-51-143.totalplay.net.
  [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-71d7254473asm1822220a34.27.2024.12.01.07.06.19
+ 006d021491bc7-5f21a4cd78fsm1807008eaf.32.2024.12.01.07.10.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 01 Dec 2024 07:06:19 -0800 (PST)
+ Sun, 01 Dec 2024 07:10:14 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 09/67] target/arm: Convert PAC[ID]*, AUT[ID]* to decodetree
-Date: Sun,  1 Dec 2024 09:05:08 -0600
-Message-ID: <20241201150607.12812-10-richard.henderson@linaro.org>
+Subject: [PATCH 58/67] target/arm: Convert [US]CVTF (vector,
+ fixed-point) scalar to decodetree
+Date: Sun,  1 Dec 2024 09:05:57 -0600
+Message-ID: <20241201150607.12812-59-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241201150607.12812-1-richard.henderson@linaro.org>
 References: <20241201150607.12812-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::330;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x330.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,239 +135,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vFnb5qijoCcB
+X-TUID: qtmVQ8I0YofD
 
-This includes PACIA, PACIZA, PACIB, PACIZB, PACDA, PACDZA, PACDB,
-PACDZB, AUTIA, AUTIZA, AUTIB, AUTIZB, AUTDA, AUTDZA, AUTDB, AUTDZB.
+Remove disas_simd_scalar_shift_imm as these were the
+last insns decoded by that function.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-a64.c | 173 +++++++++------------------------
- target/arm/tcg/a64.decode      |  13 +++
- 2 files changed, 58 insertions(+), 128 deletions(-)
+ target/arm/tcg/translate-a64.c | 47 ----------------------------------
+ target/arm/tcg/a64.decode      |  8 ++++++
+ 2 files changed, 8 insertions(+), 47 deletions(-)
 
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 552b45b4e2..852545dfcc 100644
+index 9808b976fd..ea178f85c2 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -7764,6 +7764,35 @@ static void gen_cls32(TCGv_i64 tcg_rd, TCGv_i64 tcg_rn)
- TRANS(CLZ, gen_rr, a->rd, a->rn, a->sf ? gen_clz64 : gen_clz32)
- TRANS(CLS, gen_rr, a->rd, a->rn, a->sf ? tcg_gen_clrsb_i64 : gen_cls32)
+@@ -9543,52 +9543,6 @@ static void handle_simd_shift_fpint_conv(DisasContext *s, bool is_scalar,
+     gen_restore_rmode(tcg_rmode, tcg_fpstatus);
+ }
  
-+static bool gen_pacaut(DisasContext *s, arg_pacaut *a, NeonGenTwo64OpEnvFn fn)
-+{
-+    TCGv_i64 tcg_rd, tcg_rn;
-+
-+    if (a->z) {
-+        if (a->rn != 31) {
-+            return false;
-+        }
-+        tcg_rn = tcg_constant_i64(0);
-+    } else {
-+        tcg_rn = cpu_reg_sp(s, a->rn);
-+    }
-+    if (s->pauth_active) {
-+        tcg_rd = cpu_reg(s, a->rd);
-+        fn(tcg_rd, tcg_env, tcg_rd, tcg_rn);
-+    }
-+    return true;
-+}
-+
-+TRANS_FEAT(PACIA, aa64_pauth, gen_pacaut, a, gen_helper_pacia)
-+TRANS_FEAT(PACIB, aa64_pauth, gen_pacaut, a, gen_helper_pacib)
-+TRANS_FEAT(PACDA, aa64_pauth, gen_pacaut, a, gen_helper_pacda)
-+TRANS_FEAT(PACDB, aa64_pauth, gen_pacaut, a, gen_helper_pacdb)
-+
-+TRANS_FEAT(AUTIA, aa64_pauth, gen_pacaut, a, gen_helper_autia)
-+TRANS_FEAT(AUTIB, aa64_pauth, gen_pacaut, a, gen_helper_autib)
-+TRANS_FEAT(AUTDA, aa64_pauth, gen_pacaut, a, gen_helper_autda)
-+TRANS_FEAT(AUTDB, aa64_pauth, gen_pacaut, a, gen_helper_autdb)
-+
- /* Logical (shifted register)
-  *   31  30 29 28       24 23   22 21  20  16 15    10 9    5 4    0
-  * +----+-----+-----------+-------+---+------+--------+------+------+
-@@ -8373,134 +8402,6 @@ static void disas_data_proc_1src(DisasContext *s, uint32_t insn)
- #define MAP(SF, O2, O1) ((SF) | (O1 << 1) | (O2 << 7))
- 
-     switch (MAP(sf, opcode2, opcode)) {
--    case MAP(1, 0x01, 0x00): /* PACIA */
--        if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_pacia(tcg_rd, tcg_env, tcg_rd, cpu_reg_sp(s, rn));
--        } else if (!dc_isar_feature(aa64_pauth, s)) {
--            goto do_unallocated;
--        }
+-/* AdvSIMD scalar shift by immediate
+- *  31 30  29 28         23 22  19 18  16 15    11  10 9    5 4    0
+- * +-----+---+-------------+------+------+--------+---+------+------+
+- * | 0 1 | U | 1 1 1 1 1 0 | immh | immb | opcode | 1 |  Rn  |  Rd  |
+- * +-----+---+-------------+------+------+--------+---+------+------+
+- *
+- * This is the scalar version so it works on a fixed sized registers
+- */
+-static void disas_simd_scalar_shift_imm(DisasContext *s, uint32_t insn)
+-{
+-    int rd = extract32(insn, 0, 5);
+-    int rn = extract32(insn, 5, 5);
+-    int opcode = extract32(insn, 11, 5);
+-    int immb = extract32(insn, 16, 3);
+-    int immh = extract32(insn, 19, 4);
+-    bool is_u = extract32(insn, 29, 1);
+-
+-    if (immh == 0) {
+-        unallocated_encoding(s);
+-        return;
+-    }
+-
+-    switch (opcode) {
+-    case 0x1c: /* SCVTF, UCVTF */
+-        handle_simd_shift_intfp_conv(s, true, false, is_u, immh, immb,
+-                                     opcode, rn, rd);
 -        break;
--    case MAP(1, 0x01, 0x01): /* PACIB */
--        if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_pacib(tcg_rd, tcg_env, tcg_rd, cpu_reg_sp(s, rn));
--        } else if (!dc_isar_feature(aa64_pauth, s)) {
--            goto do_unallocated;
--        }
+-    default:
+-    case 0x00: /* SSHR / USHR */
+-    case 0x02: /* SSRA / USRA */
+-    case 0x04: /* SRSHR / URSHR */
+-    case 0x06: /* SRSRA / URSRA */
+-    case 0x08: /* SRI */
+-    case 0x0a: /* SHL / SLI */
+-    case 0x0c: /* SQSHLU */
+-    case 0x0e: /* SQSHL, UQSHL */
+-    case 0x10: /* SQSHRUN */
+-    case 0x11: /* SQRSHRUN */
+-    case 0x12: /* SQSHRN, UQSHRN */
+-    case 0x13: /* SQRSHRN, UQRSHRN */
+-    case 0x1f: /* FCVTZS, FCVTZU */
+-        unallocated_encoding(s);
 -        break;
--    case MAP(1, 0x01, 0x02): /* PACDA */
--        if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_pacda(tcg_rd, tcg_env, tcg_rd, cpu_reg_sp(s, rn));
--        } else if (!dc_isar_feature(aa64_pauth, s)) {
--            goto do_unallocated;
--        }
--        break;
--    case MAP(1, 0x01, 0x03): /* PACDB */
--        if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_pacdb(tcg_rd, tcg_env, tcg_rd, cpu_reg_sp(s, rn));
--        } else if (!dc_isar_feature(aa64_pauth, s)) {
--            goto do_unallocated;
--        }
--        break;
--    case MAP(1, 0x01, 0x04): /* AUTIA */
--        if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_autia(tcg_rd, tcg_env, tcg_rd, cpu_reg_sp(s, rn));
--        } else if (!dc_isar_feature(aa64_pauth, s)) {
--            goto do_unallocated;
--        }
--        break;
--    case MAP(1, 0x01, 0x05): /* AUTIB */
--        if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_autib(tcg_rd, tcg_env, tcg_rd, cpu_reg_sp(s, rn));
--        } else if (!dc_isar_feature(aa64_pauth, s)) {
--            goto do_unallocated;
--        }
--        break;
--    case MAP(1, 0x01, 0x06): /* AUTDA */
--        if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_autda(tcg_rd, tcg_env, tcg_rd, cpu_reg_sp(s, rn));
--        } else if (!dc_isar_feature(aa64_pauth, s)) {
--            goto do_unallocated;
--        }
--        break;
--    case MAP(1, 0x01, 0x07): /* AUTDB */
--        if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_autdb(tcg_rd, tcg_env, tcg_rd, cpu_reg_sp(s, rn));
--        } else if (!dc_isar_feature(aa64_pauth, s)) {
--            goto do_unallocated;
--        }
--        break;
--    case MAP(1, 0x01, 0x08): /* PACIZA */
--        if (!dc_isar_feature(aa64_pauth, s) || rn != 31) {
--            goto do_unallocated;
--        } else if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_pacia(tcg_rd, tcg_env, tcg_rd, tcg_constant_i64(0));
--        }
--        break;
--    case MAP(1, 0x01, 0x09): /* PACIZB */
--        if (!dc_isar_feature(aa64_pauth, s) || rn != 31) {
--            goto do_unallocated;
--        } else if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_pacib(tcg_rd, tcg_env, tcg_rd, tcg_constant_i64(0));
--        }
--        break;
--    case MAP(1, 0x01, 0x0a): /* PACDZA */
--        if (!dc_isar_feature(aa64_pauth, s) || rn != 31) {
--            goto do_unallocated;
--        } else if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_pacda(tcg_rd, tcg_env, tcg_rd, tcg_constant_i64(0));
--        }
--        break;
--    case MAP(1, 0x01, 0x0b): /* PACDZB */
--        if (!dc_isar_feature(aa64_pauth, s) || rn != 31) {
--            goto do_unallocated;
--        } else if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_pacdb(tcg_rd, tcg_env, tcg_rd, tcg_constant_i64(0));
--        }
--        break;
--    case MAP(1, 0x01, 0x0c): /* AUTIZA */
--        if (!dc_isar_feature(aa64_pauth, s) || rn != 31) {
--            goto do_unallocated;
--        } else if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_autia(tcg_rd, tcg_env, tcg_rd, tcg_constant_i64(0));
--        }
--        break;
--    case MAP(1, 0x01, 0x0d): /* AUTIZB */
--        if (!dc_isar_feature(aa64_pauth, s) || rn != 31) {
--            goto do_unallocated;
--        } else if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_autib(tcg_rd, tcg_env, tcg_rd, tcg_constant_i64(0));
--        }
--        break;
--    case MAP(1, 0x01, 0x0e): /* AUTDZA */
--        if (!dc_isar_feature(aa64_pauth, s) || rn != 31) {
--            goto do_unallocated;
--        } else if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_autda(tcg_rd, tcg_env, tcg_rd, tcg_constant_i64(0));
--        }
--        break;
--    case MAP(1, 0x01, 0x0f): /* AUTDZB */
--        if (!dc_isar_feature(aa64_pauth, s) || rn != 31) {
--            goto do_unallocated;
--        } else if (s->pauth_active) {
--            tcg_rd = cpu_reg(s, rd);
--            gen_helper_autdb(tcg_rd, tcg_env, tcg_rd, tcg_constant_i64(0));
--        }
--        break;
-     case MAP(1, 0x01, 0x10): /* XPACI */
-         if (!dc_isar_feature(aa64_pauth, s) || rn != 31) {
-             goto do_unallocated;
-@@ -8530,6 +8431,22 @@ static void disas_data_proc_1src(DisasContext *s, uint32_t insn)
-     case MAP(1, 0x00, 0x04):
-     case MAP(0, 0x00, 0x05): /* CLS */
-     case MAP(1, 0x00, 0x05):
-+    case MAP(1, 0x01, 0x00): /* PACIA */
-+    case MAP(1, 0x01, 0x01): /* PACIB */
-+    case MAP(1, 0x01, 0x02): /* PACDA */
-+    case MAP(1, 0x01, 0x03): /* PACDB */
-+    case MAP(1, 0x01, 0x04): /* AUTIA */
-+    case MAP(1, 0x01, 0x05): /* AUTIB */
-+    case MAP(1, 0x01, 0x06): /* AUTDA */
-+    case MAP(1, 0x01, 0x07): /* AUTDB */
-+    case MAP(1, 0x01, 0x08): /* PACIZA */
-+    case MAP(1, 0x01, 0x09): /* PACIZB */
-+    case MAP(1, 0x01, 0x0a): /* PACDZA */
-+    case MAP(1, 0x01, 0x0b): /* PACDZB */
-+    case MAP(1, 0x01, 0x0c): /* AUTIZA */
-+    case MAP(1, 0x01, 0x0d): /* AUTIZB */
-+    case MAP(1, 0x01, 0x0e): /* AUTDZA */
-+    case MAP(1, 0x01, 0x0f): /* AUTDZB */
-         unallocated_encoding(s);
-         break;
-     }
+-    }
+-}
+-
+ static void handle_2misc_64(DisasContext *s, int opcode, bool u,
+                             TCGv_i64 tcg_rd, TCGv_i64 tcg_rn,
+                             TCGv_i32 tcg_rmode, TCGv_ptr tcg_fpstatus)
+@@ -10489,7 +10443,6 @@ static const AArch64DecodeTable data_proc_simd[] = {
+     { 0x0e200800, 0x9f3e0c00, disas_simd_two_reg_misc },
+     { 0x0f000400, 0x9f800400, disas_simd_shift_imm },
+     { 0x5e200800, 0xdf3e0c00, disas_simd_scalar_two_reg_misc },
+-    { 0x5f000400, 0xdf800400, disas_simd_scalar_shift_imm },
+     { 0x0e780800, 0x8f7e0c00, disas_simd_two_reg_misc_fp16 },
+     { 0x00000000, 0x00000000, NULL }
+ };
 diff --git a/target/arm/tcg/a64.decode b/target/arm/tcg/a64.decode
-index 410eaa9333..9083ac4ac3 100644
+index 707715f433..197555555e 100644
 --- a/target/arm/tcg/a64.decode
 +++ b/target/arm/tcg/a64.decode
-@@ -699,6 +699,19 @@ REV64           1 10 11010110 00000 000011 ..... .....  @rr
- CLZ             . 10 11010110 00000 000100 ..... .....  @rr_sf
- CLS             . 10 11010110 00000 000101 ..... .....  @rr_sf
+@@ -1699,6 +1699,14 @@ FCVTAU_f        0111 1110 0.1 00001 11001 0 ..... .....     @icvt_sd
+ @fcvt_fixed_d   .... .... . 1 ...... ...... rn:5 rd:5       \
+                 &fcvt sf=0 esz=3 shift=%fcvt_f_sh_d
  
-+&pacaut         rd rn z
-+@pacaut         . .. ........ ..... .. z:1 ... rn:5 rd:5  &pacaut
++SCVTF_f         0101 1111 0 ....... 111001 ..... .....      @fcvt_fixed_h
++SCVTF_f         0101 1111 0 ....... 111001 ..... .....      @fcvt_fixed_s
++SCVTF_f         0101 1111 0 ....... 111001 ..... .....      @fcvt_fixed_d
 +
-+PACIA           1 10 11010110 00001 00.000 ..... .....  @pacaut
-+PACIB           1 10 11010110 00001 00.001 ..... .....  @pacaut
-+PACDA           1 10 11010110 00001 00.010 ..... .....  @pacaut
-+PACDB           1 10 11010110 00001 00.011 ..... .....  @pacaut
++UCVTF_f         0111 1111 0 ....... 111001 ..... .....      @fcvt_fixed_h
++UCVTF_f         0111 1111 0 ....... 111001 ..... .....      @fcvt_fixed_s
++UCVTF_f         0111 1111 0 ....... 111001 ..... .....      @fcvt_fixed_d
 +
-+AUTIA           1 10 11010110 00001 00.100 ..... .....  @pacaut
-+AUTIB           1 10 11010110 00001 00.101 ..... .....  @pacaut
-+AUTDA           1 10 11010110 00001 00.110 ..... .....  @pacaut
-+AUTDB           1 10 11010110 00001 00.111 ..... .....  @pacaut
-+
- # Logical (shifted reg)
- # Add/subtract (shifted reg)
- # Add/subtract (extended reg)
+ FCVTZS_f        0101 1111 0 ....... 111111 ..... .....      @fcvt_fixed_h
+ FCVTZS_f        0101 1111 0 ....... 111111 ..... .....      @fcvt_fixed_s
+ FCVTZS_f        0101 1111 0 ....... 111111 ..... .....      @fcvt_fixed_d
 -- 
 2.43.0
 

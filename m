@@ -1,168 +1,233 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3105936njk;
-        Mon, 2 Dec 2024 10:36:09 -0800 (PST)
-X-Received: by 2002:a05:6a21:3947:b0:1d9:c4e0:140c with SMTP id adf61e73a8af0-1e0e0ac31d1mr32286516637.1.1733164569195;
-        Mon, 02 Dec 2024 10:36:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733164569; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3144257njk;
+        Mon, 2 Dec 2024 11:27:14 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWBZfljf/iakHhxGjTgEKFZIZZne5+RhGniqbP+zqqLH/zdX6wCEunfetDr1fjh7/BK2pdbjjGU34SmDg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFeCEk/n58YWhf8a1jDs1xvAGbamkX7Ky0yR+RrybkbyhY+GeoC2lg3OAzDXQ3/KnwXcZHb
+X-Received: by 2002:a5d:6daf:0:b0:385:fa2e:a33e with SMTP id ffacd0b85a97d-385fa2ea6admr2668914f8f.43.1733167634460;
+        Mon, 02 Dec 2024 11:27:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733167634; cv=none;
         d=google.com; s=arc-20240605;
-        b=OElw3wXvVTXZFAat2TuTIL+PuDJ3ZHRkUMNWDaPNobWVamCDocgHVWozHh6UbexiYl
-         PTtdb/6E01MeeZ8ZCZZp1Js5vr828HWh32c7GPyNXAF2fmTooxe5xaEfUPZcS/SDqomg
-         EE5wanmqPRmxEnDQwfLonlDGTLRq+5d/HBpJyLey9mS826aFoKjEMj8yCwHO6tGTXALn
-         8S5hj1rW9In4iy1LBOXKkS8Web+sIKpywWHM/iNslb+QMShRE9hxp5qjz62m95uld8rZ
-         nuagEBl5BJu4zByTk75d/PHEjVkESlHJE2/DewcZQ+GITFHUVlfmdhDBjrEp8QNW/y7X
-         6/dQ==
+        b=dk7xxPiL6PYLNvVN58RHAEm1bXH/Xk6/zddy4Nq8x9G3xH8356jVtc6cvQFOkEXuQB
+         HoeQDtMIXSIDQ7nedlxHV/DTXJrBc9i9OoeagewPYdTVNQ6eOgUtdi2bYmtgLwy6rsm9
+         dUfyIIH8AOa7u/6nL82e6CirC366f3jr59/0sxd5wbLJ0NWuTyDfAUupN4PXs6vqUtcE
+         Xd3hWaa/XfPJ/I85XRblKzvEYK4g5rh2i9hzI1ZuVqPV5g6LkcNMvAb0JC47zu+U6UPJ
+         wstciyKPfr8noWw38JO/XnLHI5k+MoEMh/tekrjxa/0drkzfbccE282a5PYcpdEmzdeD
+         dHmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=oivYi+ksQkL9zqgH9QocSn+LXHGuCHFx2hL505Chc9I=;
-        fh=QdoAlgt1GTWiBy8XY2eKDHfz5/vWXvnkz6f6iJJ9E1c=;
-        b=DFDCoiVhs1tGLWWKf3+XGNG3XxBJnOV5MoIWJh21ECxPwLeoOEHDT3FoCdnz8B8jGc
-         oXTG7adI+/Eg+0yJVDOSQ2/CoY+jI0nJr1qXWRHs0rhIAMT2o8KBuziKpR5MAAKSDVDI
-         Tx+QRjcIcF5QzE9EyPhAV5OCmcnLi6YxvVurfP5JVnViS5rCai+NM6itNRf7j/S44A4C
-         Esu9MdilLxutXwIdeUcxAYdT6QthtYI4XgpJcOP4DDScQUG4WXLq6eTL+PIv4527Jh0Z
-         9aM9isX5J0g6OX8/rZi1h6wnIESy0GtAh6qBXzo6sm391KWAHQ1pYIlRqOnvKE8q7ZEG
-         gtVw==;
+        h=dkim-signature:content-transfer-encoding:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from;
+        bh=mBuN8+qvmlRd8d51iRoCgolDd4Xvq8M4rGmOQ4alJtM=;
+        fh=eATtOrfecfUzsNWosLfMf+5V2Xi7YTIiwYFKPL+m2BI=;
+        b=YqsBKHrdsNjMa4UNV34LgpMWP31BlETK7zFW9H9GyrvzR97Q579a+E64Wrn03FZ4dO
+         BUpOucF9CB2VeWRZ1cmnezDTj42VhTd/jcDwmaaazUgx9dXZaL4bB8yUM/KbFKJo9qNn
+         UKqCjk/2joc/bl7e8h8Y+Qxb8E68C9vLggQcu1UXTEObt95aHMKSCLLgG6J8U3XYBWCE
+         xk7HOkJfUV3+H1/pdl3UAbZS9rimOUKEdfUhvVIxMHdiPRTgFrFcVaCPUNoxRrzT3P1x
+         Rk7seJ94JblHy/iNfNxU3NvPGBd3YEiJyHiGn2AOl6LMTJyIVUVoDqMx3pXr/vhPrfeY
+         qakQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lcGkVdtU;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 41be03b00d2f7-7fc9c353be0sor6049628a12.9.2024.12.02.10.36.09
+       dkim=pass header.i=@nut.email header.s=uberspace header.b=Qxuwp23H;
+       spf=pass (google.com: domain of neither@nut.email designates 2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4 as permitted sender) smtp.mailfrom=neither@nut.email
+Return-Path: <neither@nut.email>
+Received: from mailgate02.uberspace.is (mailgate02.uberspace.is. [2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-385e45badc2si3260125f8f.77.2024.12.02.11.27.14
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 02 Dec 2024 10:36:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Dec 2024 11:27:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of neither@nut.email designates 2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4 as permitted sender) client-ip=2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lcGkVdtU;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733164569; x=1733769369; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=oivYi+ksQkL9zqgH9QocSn+LXHGuCHFx2hL505Chc9I=;
-        b=lcGkVdtU3xUhE8L2JxCo4UZ2QAJ92RpkTzYa8FQ9lVlwbvU26HFuscPirlSIbCwcFk
-         0Mx9HMZGu0J/8ZycstpvnABb3JAU7q6eJok5gtLgswWoet7d/8DMvzi7sjMl7EdpBA0I
-         OCXsgCf9TNnz9FRhLJMwq9w2lhRJhGTxldxboYdfOTg4uFoaW+yb/KZw/9KopdltfCxh
-         t72ivF+zLifgnVK9Xhx1gJYmilnBKWS1OJglktOmIYOtUhKYUDrXIwKjqJ1/R+JSYqBo
-         zLtS57KJ/CLX3CIiXj219mN3ypoDtjWV7gYRcjEhangkTLu9XRzT85TiJ++9e+Yu8h99
-         /9VA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733164569; x=1733769369;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=oivYi+ksQkL9zqgH9QocSn+LXHGuCHFx2hL505Chc9I=;
-        b=pp6C/R+qxRDNliAZj0xn/PcWyt20+gAJ0xi+HGRoPwgO08wie7IVh0LJxiOr+MV3dn
-         qvgbA5xAL8+vRgSvpyb9hn5qzl3msgcfINc3eyQ8X3lZlMDKf281h+iLwhw9EuMJpMso
-         p3MUDY2avnGxOqUiMXRYb3ucZwnh8KRL85+ZXJ2Kfq1Y5JyiLQyFui+eJYeg2NwzRmVn
-         JGq3huP3i7NZeeS6s1aatrDkrIOxKGC6d+WncwbhWUEpjNFxIDkESAun/GCb7pRW3IJw
-         vUxmBQVzTjIm9o1oSScPcZxsLBO0f/J+gPPfy8HPLVPVWpWt+1kxWJBlv2E0yrdhr0Zf
-         1Smg==
-X-Gm-Message-State: AOJu0YwVrtNqHDYxx+pobBEBEqMFUvUXy0MzVOwsMWrb4CgP65ZpX6jI
-	vIf4u5Ego+ajTzkVdnLo3c8J+0a5DS9Lg2UvwpBP0nMO8+wQ34QR6HV55ELDHH0rBh0aApUjtNo
-	881PK4giV
-X-Gm-Gg: ASbGncvTxeUsL8apKkUODkf43mvyn1HtqoIdAccv8rDSK8ZwOX6RUr+Itxz/vQ3TVYG
-	GG3JGo3so4IlP7NuhKveV1BtgfqOwaZoB0olN/uBB9BV/a5A1OVmBKmBYVJHjd/RHUn9AssqxNM
-	lkXK8GCUoBquFHS3v6A5V8qdcpel7aYNPfiTZ3/+o+lFd4CbOaO4F//3CmZxw3Rem6pIoLq12iY
-	Bvs3B7XpRXu1/s3mPEjj6SDXeGhjsQhSKt44kimzLhDzsyHSeTnMepsqnGDu6AQZ9lgjoU8qP6x
-	UKc5YIbQmKfKzZiLa1jSnA==
-X-Google-Smtp-Source: AGHT+IFEI0IPcpn3W47lqoMIQGPFLqP1rC8pv6/veul69ZM4PKM0kHe9IgYQfWMXFy7R93sbjm+bjA==
-X-Received: by 2002:a05:6a20:2583:b0:1e0:d380:fe71 with SMTP id adf61e73a8af0-1e0e09e2467mr34719207637.0.1733164568560;
-        Mon, 02 Dec 2024 10:36:08 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725417fba22sm8827623b3a.113.2024.12.02.10.36.07
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 02 Dec 2024 10:36:08 -0800 (PST)
-Message-ID: <a26e2a3d-d915-4e84-9b8e-dd5935049f31@linaro.org>
-Date: Mon, 2 Dec 2024 10:36:06 -0800
+       dkim=pass header.i=@nut.email header.s=uberspace header.b=Qxuwp23H;
+       spf=pass (google.com: domain of neither@nut.email designates 2a00:d0c0:200:0:1c7b:a6ff:fee0:8ea4 as permitted sender) smtp.mailfrom=neither@nut.email
+Received: from skiff.uberspace.de (skiff.uberspace.de [185.26.156.131])
+	by mailgate02.uberspace.is (Postfix) with ESMTPS id 202EC180C43
+	for <alex.bennee@linaro.org>; Mon,  2 Dec 2024 20:27:14 +0100 (CET)
+Received: (qmail 7181 invoked by uid 990); 2 Dec 2024 19:27:14 -0000
+Authentication-Results: skiff.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unkown) (::1)
+	by skiff.uberspace.de (Haraka/3.0.1) with ESMTPSA; Mon, 02 Dec 2024 20:27:13 +0100
+From: Julian Ganz <neither@nut.email>
+To: qemu-devel@nongnu.org
+Cc: Julian Ganz <neither@nut.email>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Alexandre Iooss <erdnaxe@crans.org>,
+	Mahmoud Mandour <ma.mandourr@gmail.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC PATCH v3 06/11] target/arm: call plugin trap callbacks
+Date: Mon,  2 Dec 2024 20:26:47 +0100
+Message-ID: <5c4b8e6f913e3257fee662708a69902676edc628.1733063076.git.neither@nut.email>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <cover.1733063076.git.neither@nut.email>
+References: <cover.1733063076.git.neither@nut.email>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] tests/functional/aarch64: add tests for FEAT_RME
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Troy Lee <leetroy@gmail.com>, Alistair Francis <alistair@alistair23.me>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, Joel Stanley <joel@jms.id.au>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20241128213729.1021961-1-pierrick.bouvier@linaro.org>
- <4b3180bd-8054-4431-a594-0445ce4837aa@linaro.org>
- <5620efa2-98c6-4613-b866-67e91ac6acf8@linaro.org>
- <CAFEAcA-xa1AKf2GAv7go5wdu+Td=4jf7Nriin-Oe3S6qEV6X0g@mail.gmail.com>
- <fd7ad48e-1e72-4735-8064-7039eedc00ae@linaro.org>
- <87ser6c5be.fsf@draig.linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <87ser6c5be.fsf@draig.linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: quQvB2z7m88h
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Bar: ----
+X-Rspamd-Report: REPLY(-4) SUSPICIOUS_RECIPS(1.5) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) BAYES_HAM(-2.999999) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -4.099999
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=nut.email; s=uberspace;
+	h=from:to:cc:subject:date;
+	bh=n9gM0kBmO83WxtZS2NBl9dSShYXqE3eiFoCKNq/tViA=;
+	b=Qxuwp23H6cgGzKlkzOADioJ0R0jHv2nPMzgCIY3OPj4UuYV6eO//sTyjc9gVjfKPMcmNcxlHSn
+	qo/nsDxI00UZbaTYDN5sz75C3AMupRMK94EPcAdeGn1HP7OGACBW1TJKqSU/IKnbzGiGLX8VS3Ds
+	NeSXVp6EumTrEVn4MgQ9WghRvQtyJQ4HoZDqKvvQw57x+IFkcnCmkt439IiUPPa5byek2iT2q9gs
+	pkYsoHam2jO21gU4d+B6RNYPe++4DJufyix7Uoj1Q4zvk76tGTyrfrh08N+YRv0pKXDb9UuuRiRX
+	1Gh8OWtDAEVBHUiHm1gavTJQKOcN+mtJeqjzO0w2Xzc45QSMMotoZcWXUlbgMRuNTqH5qGNEvTCb
+	AfaoVBZwrC69yQuqfLGkXv7wRLjdET7hNyt+cqSnc21ArpXR3jMXYn0ntEJkj4JDxU0qGRDsaxEv
+	yV8cpmbUMlFqk9z2/XnEDodGbKU4EY5ScVf9FLldontf0RrwQs3DvjSCLNcIHbt36+XbistADyqo
+	uqshKlE0bjmWYUHoCil7KOPYDhdzF/VLhao82Zj4mBG+GFiJ7kY31XRtb90TartdYWsmBWLyvlb5
+	jLVglESze1TN65VObf9PkpuCgNUur2/cqHuktBQyPxd1vfmQ8WPRQFox4JAA7sEmo5/c3XMQIzSU
+	0=
+X-TUID: 53z1JxMl2WxL
 
-T24gMTIvMi8yNCAxMDoyMywgQWxleCBCZW5uw6llIHdyb3RlOg0KPiBQaWVycmljayBCb3V2
-aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+IHdyaXRlczoNCj4gDQo+PiBPbiAx
-Mi8yLzI0IDAyOjU3LCBQZXRlciBNYXlkZWxsIHdyb3RlOg0KPj4+IE9uIFN1biwgMSBEZWMg
-MjAyNCBhdCAxODowOSwgUGllcnJpY2sgQm91dmllcg0KPj4+IDxwaWVycmljay5ib3V2aWVy
-QGxpbmFyby5vcmc+IHdyb3RlOg0KPj4+Pg0KPj4+PiBIaSBNYXJjaW4sDQo+Pj4+DQo+Pj4+
-IE9uIDEyLzEvMjQgMDU6MzQsIE1hcmNpbiBKdXN6a2lld2ljeiB3cm90ZToNCj4+Pj4+IFcg
-ZG5pdSAyOC4xMS4yMDI0IG8gMjI6MzcsIFBpZXJyaWNrIEJvdXZpZXIgcGlzemU6DQo+Pj4+
-Pj4gVGhpcyBib290IGFuIE9QLVRFRSBlbnZpcm9ubWVudCwgYW5kIGxhdW5jaCBhIG5lc3Rl
-ZCBndWVzdCBWTSBpbnNpZGUgaXQNCj4+Pj4+PiB1c2luZyB0aGUgUmVhbG1zIGZlYXR1cmUu
-IFdlIGRvIGl0IGZvciB2aXJ0IGFuZCBzYnNhLXJlZiBwbGF0Zm9ybXMuDQo+Pj4+Pj4NCj4+
-Pj4+PiBTaWduZWQtb2ZmLWJ5OiBQaWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVy
-QGxpbmFyby5vcmc+DQo+Pj4+Pg0KPj4+Pj4+IGRpZmYgLS1naXQgYS90ZXN0cy9mdW5jdGlv
-bmFsL21lc29uLmJ1aWxkIGIvdGVzdHMvZnVuY3Rpb25hbC9tZXNvbi5idWlsZA0KPj4+Pj4+
-IGluZGV4IDVjMDQ4Y2ZhYzZkLi5iOTc1YTE1NjBkZiAxMDA2NDQNCj4+Pj4+PiAtLS0gYS90
-ZXN0cy9mdW5jdGlvbmFsL21lc29uLmJ1aWxkDQo+Pj4+Pj4gKysrIGIvdGVzdHMvZnVuY3Rp
-b25hbC9tZXNvbi5idWlsZA0KPj4+Pj4+IEBAIC0xMyw2ICsxMyw4IEBAIGVuZGlmDQo+Pj4+
-Pj4gICAgICB0ZXN0X3RpbWVvdXRzID0gew0KPj4+Pj4+ICAgICAgICAnYWFyY2g2NF9hc3Bl
-ZWQnIDogNjAwLA0KPj4+Pj4+ICAgICAgICAnYWFyY2g2NF9yYXNwaTQnIDogNDgwLA0KPj4+
-Pj4NCj4+Pj4+PiArICAnYWFyY2g2NF9ybWVfdmlydCcgOiA3MjAsDQo+Pj4+Pg0KPj4+Pj4g
-VG9vayAyOTc0Ljk1cyBvbiBNMSBQcm8gbWFjYm9vay4NCj4+Pj4+DQo+Pj4+Pj4gKyAgJ2Fh
-cmNoNjRfcm1lX3Nic2FyZWYnIDogNzIwLA0KPj4+Pj4NCj4+Pj4+IFRoaXMgb25lIG5lZWRl
-ZCAyMjg4LjI5cy4NCj4+Pj4+DQo+Pj4+Pj4gICAgICAgICdhYXJjaDY0X3Nic2FyZWZfYWxw
-aW5lJyA6IDcyMCwNCj4+Pj4+DQo+Pj4+PiBIYXZlIHRvIGNoZWNrIGNhdXNlIHRpbWVkIG91
-dC4NCj4+Pj4+DQo+Pj4+Pj4gICAgICAgICdhYXJjaDY0X3Nic2FyZWZfZnJlZWJzZCcgOiA3
-MjAsDQo+Pj4+Pg0KPj4+Pj4gMzMxLjY1cw0KPj4+Pj4NCj4+Pj4+IFNvIFJNRSB0ZXN0cyBw
-cm9iYWJseSBuZWVkIGxvbmdlciB0aW1lb3V0cyBvciB3b3VsZCBub3QgcnVuIGF0IGFsbC4N
-Cj4+Pj4+DQo+Pj4+DQo+Pj4+IEJ5IGFueSBjaGFuY2UsIGFyZSB5b3UgcnVubmluZyB0aG9z
-ZSB0ZXN0cyBpbiBkZWJ1ZyBtb2RlPw0KPj4+PiBJdCBzZWVtcyB0byBtZSB0aGF0IENJIGlz
-IHJ1bm5pbmcgZnVuY3Rpb25hbCB0ZXN0cyB3aXRoIG9wdGltaXplZA0KPj4+PiBidWlsZHMs
-IHNvIEknbSBub3Qgc3VyZSB3ZSB3YW50IHRvIHN1cHBvcnQgZGVidWcgInRpbWVzIiBoZXJl
-Lg0KPj4+IFdlIGRvIG5lZWQgdG8gc3VwcG9ydCBkZWJ1ZyB0aW1lcywgYmVjYXVzZSBhIGNv
-bW1vbiBkZXZlbG9wZXINCj4+PiB1c2UgY2FzZSBpcyAiZG9pbmcgYSBkZWJ1ZyBidWlsZCwg
-cnVuICdtYWtlIGNoZWNrLWZ1bmN0aW9uYWwnDQo+Pj4gdG8gY2hlY2sgd2hldGhlciBhbnl0
-aGluZyBpcyBicm9rZW4uIFRoZSBkZWJ1ZyB0aW1lcyBhbHNvDQo+Pj4gYXJlIHVzZWZ1bCBi
-ZWNhdXNlIHRoZSBDSSBydW5uZXJzIGNhbiBoYXZlIGhpZ2hseSB2YXJpYWJsZQ0KPj4+IHBl
-cmZvcm1hbmNlIC0tIGlmIGEgdGVzdCBpcyBzbG93IGVub3VnaCB0byBoaXQgdGhlIHRpbWVv
-dXQNCj4+PiBmb3IgYSBkZWJ1ZyBidWlsZCBsb2NhbGx5LCBpdCdzIHByb2JhYmx5IGdvaW5n
-IHRvIGFsc28gaGl0DQo+Pj4gdGhlIHRpbWVvdXQgYXQgbGVhc3Qgc29tZXRpbWVzIGluIENJ
-Lg0KPj4+DQo+Pg0KPj4gSSB1bmRlcnN0YW5kIHRoZSBzY2VuYXJpbywgYnV0IGdpdmVuIGhv
-dyBzbG93IGRlYnVnIGJ1aWxkcyBhcmUsIGl0DQo+PiB3b3VsZCBwcm9iYWJseSBiZSBmYXN0
-ZXIgdG8gYWR2aXNlIGRldmVsb3BlciB0byByZWNvbXBpbGUgaW4gcmVsZWFzZQ0KPj4gbW9k
-ZS4NCj4+IFRoZSBvdmVyYWxsIHRpbWUgb2YgY29tcGlsZSArIHRlc3QgaXMgc2xvd2VyIHRo
-YW4gd2FpdGluZyBmb3IgZGVidWcuDQo+Pg0KPj4gQmV5b25kIHVzaW5nIGEgZGVidWdnZXIs
-IHdoYXQgaXMgdGhlIGFkdmFudGFnZSB0byBjb21waWxlIHdpdGggLU8wPw0KPiANCj4gLS1l
-bmFibGUtZGVidWcNCj4gDQo+ICAgIC0gZW5hYmxlcyAtMDAgd2l0aCAtZzMgZm9yIHN5bWJv
-bHMNCj4gICAgLSBhbmQgZW5hYmxlcyBhZGRpdGlvbmFsIGNoZWNrcyB0byB2YWxpZGF0ZSBU
-Q0cNCj4gDQoNCkknbSBhd2FyZSB0aGlzIGlzIHRoZSBjb21iaW5hdGlvbiBvZiBib3RoLCBh
-bmQgaW5kZWVkLCBydW50aW1lIGNoZWNrcyANCmNhbiBiZSBkb25lIG9uIG9wdGltaXplZCBi
-dWlsZHMgYXMgd2VsbCAoaXQncyB0aGUgY29tYmluYXRpb24gSSB1c2UgDQpwZXJzb25hbGx5
-KS4NCg0KTWF5YmUgb3VyIGVuYWJsZS1kZWJ1ZyBzaG91bGQgcHJvZHVjZWQgb3B0aW1pemVk
-IGJ1aWxkcyBieSBkZWZhdWx0LCBhbmQgDQp3ZSBjb3VsZCBoYXZlIGEgbmV3IC0tZW5hYmxl
-LWRlYnVnLXVub3B0IGZvciB0aGUgIkkgbmVlZCB0byB1c2UgYSANCmRlYnVnZ2VyIiB1c2Ug
-Y2FzZS4gV291bGQgc2F2ZSBhIGxvdCBvZiB0aW1lIGZvciBkZXZzLCBhbmQgaW4gQ0kgd2hl
-cmUgDQptaW51dGVzIGFyZSBwcmVjaW91cy4NCg0KPiBZb3UgY2FuIHVzZSAtLWVuYWJsZS1k
-ZWJ1Zy1pbmZvIGZvciBqdXN0IGRlYnVnIGluZm8gd2l0aG91dCB0aGUgb3ZlcmhlYWQuDQo+
-IA0KPj4NCj4+PiB0aGFua3MNCj4+PiAtLSBQTU0NCj4gDQoNCg==
+We recently introduced API for registering callbacks for trap related
+events as well as the corresponding hook functions. Due to differences
+between architectures, the latter need to be called from target specific
+code.
+
+This change places hooks for ARM (and Aarch64) targets. We decided to
+treat the (V)IRQ, (VI/VF)NMI, (V)FIQ and VSERR exceptions as interrupts
+since they are, presumably, async in nature.
+---
+ contrib/plugins/traps.c   |  2 +-
+ target/arm/helper.c       | 25 +++++++++++++++++++++++++
+ target/arm/tcg/m_helper.c | 18 ++++++++++++++++++
+ 3 files changed, 44 insertions(+), 1 deletion(-)
+
+diff --git a/contrib/plugins/traps.c b/contrib/plugins/traps.c
+index ecd4beac5f..cdb503e499 100644
+--- a/contrib/plugins/traps.c
++++ b/contrib/plugins/traps.c
+@@ -87,7 +87,7 @@ int qemu_plugin_install(qemu_plugin_id_t id, const qemu_info_t *info,
+     qemu_plugin_register_vcpu_init_cb(id, vcpu_init);
+     qemu_plugin_vcpu_for_each(id, vcpu_init);
+ 
+-    qemu_plugin_register_vcpu_discon_cb(id, QEMU_PLUGIN_DISCON_TRAPS,
++    qemu_plugin_register_vcpu_discon_cb(id, QEMU_PLUGIN_DISCON_ALL,
+                                         vcpu_discon);
+ 
+     qemu_plugin_register_atexit_cb(id, plugin_exit, NULL);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index f38eb054c0..57f274a037 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -31,6 +31,7 @@
+ #endif
+ #include "cpregs.h"
+ #include "target/arm/gtimer.h"
++#include "qemu/plugin.h"
+ 
+ #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable */
+ 
+@@ -11166,6 +11167,25 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
+     }
+ }
+ 
++static void arm_do_plugin_vcpu_interrupt_cb(CPUState *cs, uint64_t from,
++                                            uint64_t to)
++{
++    switch (cs->exception_index) {
++    case EXCP_IRQ:
++    case EXCP_VIRQ:
++    case EXCP_NMI:
++    case EXCP_VINMI:
++    case EXCP_FIQ:
++    case EXCP_VFIQ:
++    case EXCP_VFNMI:
++    case EXCP_VSERR:
++        qemu_plugin_vcpu_interrupt_cb(cs, from, to);
++        break;
++    default:
++        qemu_plugin_vcpu_exception_cb(cs, from, to);
++    }
++}
++
+ static void arm_cpu_do_interrupt_aarch32_hyp(CPUState *cs)
+ {
+     /*
+@@ -11822,6 +11842,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
+     unsigned int new_el = env->exception.target_el;
++    uint64_t last_pc = env->pc;
+ 
+     assert(!arm_feature(env, ARM_FEATURE_M));
+ 
+@@ -11838,6 +11859,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     if (tcg_enabled() && arm_is_psci_call(cpu, cs->exception_index)) {
+         arm_handle_psci_call(cpu);
+         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
++        qemu_plugin_vcpu_hostcall_cb(cs, last_pc, env->pc);
+         return;
+     }
+ 
+@@ -11849,6 +11871,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+ #ifdef CONFIG_TCG
+     if (cs->exception_index == EXCP_SEMIHOST) {
+         tcg_handle_semihosting(cs);
++        qemu_plugin_vcpu_hostcall_cb(cs, last_pc, env->pc);
+         return;
+     }
+ #endif
+@@ -11874,6 +11897,8 @@ void arm_cpu_do_interrupt(CPUState *cs)
+     if (!kvm_enabled()) {
+         cs->interrupt_request |= CPU_INTERRUPT_EXITTB;
+     }
++
++    arm_do_plugin_vcpu_interrupt_cb(cs, last_pc, env->pc);
+ }
+ #endif /* !CONFIG_USER_ONLY */
+ 
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index f7354f3c6e..3a8b55db82 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -24,6 +24,7 @@
+ #if !defined(CONFIG_USER_ONLY)
+ #include "hw/intc/armv7m_nvic.h"
+ #endif
++#include "qemu/plugin.h"
+ 
+ static void v7m_msr_xpsr(CPUARMState *env, uint32_t mask,
+                          uint32_t reg, uint32_t val)
+@@ -2186,6 +2187,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+     CPUARMState *env = &cpu->env;
+     uint32_t lr;
+     bool ignore_stackfaults;
++    uint64_t last_pc = env->pc;
+ 
+     arm_log_exception(cs);
+ 
+@@ -2353,6 +2355,7 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+         g_assert_not_reached();
+ #endif
+         env->regs[15] += env->thumb ? 2 : 4;
++        qemu_plugin_vcpu_hostcall_cb(cs, last_pc, env->pc);
+         return;
+     case EXCP_BKPT:
+         armv7m_nvic_set_pending(env->nvic, ARMV7M_EXCP_DEBUG, false);
+@@ -2419,6 +2422,21 @@ void arm_v7m_cpu_do_interrupt(CPUState *cs)
+ 
+     ignore_stackfaults = v7m_push_stack(cpu);
+     v7m_exception_taken(cpu, lr, false, ignore_stackfaults);
++
++    switch (cs->exception_index) {
++    case EXCP_IRQ:
++    case EXCP_VIRQ:
++    case EXCP_NMI:
++    case EXCP_VINMI:
++    case EXCP_FIQ:
++    case EXCP_VFIQ:
++    case EXCP_VFNMI:
++    case EXCP_VSERR:
++        qemu_plugin_vcpu_interrupt_cb(cs, last_pc, env->pc);
++        break;
++    default:
++        qemu_plugin_vcpu_exception_cb(cs, last_pc, env->pc);
++    }
+ }
+ 
+ uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+-- 
+2.45.2

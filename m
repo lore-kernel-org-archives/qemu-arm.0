@@ -1,170 +1,309 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2957863njk;
-        Mon, 2 Dec 2024 07:58:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX5p/129hOI/RkqKvdZX7667blJojOhDuPbONFPHHTJhD2d/HKAWtP7CX2RZH1nBnR1W90lhIl/m3vmBg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHXUtIUQrs4Vsq9r0CbjG+ZzVvHwFYXi+4V3Q6BuFDRpnIU3Uh/lsgDL2/LBTZDHjrzxrtW
-X-Received: by 2002:a92:c26b:0:b0:3a7:99a5:a207 with SMTP id e9e14a558f8ab-3a7c5525310mr202187225ab.5.1733155085834;
-        Mon, 02 Dec 2024 07:58:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733155085; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2959767njk;
+        Mon, 2 Dec 2024 08:00:28 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWVqN8TNWtvr5nduRnYHCnwKNXzXzdBBVecffj1wPuvcFNkRNvtsvA6x+O+iPuQpVMaMcAHh0rLuIFo7Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEOs55L/pZbsUadzbB7DT8VAQmNEq2DVOP8E8a+GBn078o9jttNxJfl8pRfT8/Qg+SYxLQD
+X-Received: by 2002:a05:6808:1996:b0:3ea:3dc5:61c6 with SMTP id 5614622812f47-3ea6dc178a9mr20122678b6e.23.1733155228047;
+        Mon, 02 Dec 2024 08:00:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733155228; cv=none;
         d=google.com; s=arc-20240605;
-        b=Tnl75KGAwBtDdRrSDPOEs7U75yAIhxGZVemXx0cxveBKsfL9GTcQrEBCyaBwtER0df
-         /Ym2/bPaEaUQts88KDkEKS7w9rJnMKDWcrHAQsI26aU5XMsc7Rtd4tXWpblgGdFG9kES
-         kunomsarhytjD313xTzIEe5Vy1K+YvmJlTouw86JXIZqgNOgo0zvr8BWp/1TtuzaeQOF
-         YsNjQjSenZPyf2h8MZD6LWxQlm+QjL/a2ySTtzZl+w6ye7W7Me87w7WxYzwLHjh8sLQK
-         1BgZ4ni31KgG89PDwhc5Wf5FPkxlFkWFT6tlSpGEKDDz9XsEp7kMoZ9s04bTce2hJd/y
-         Ocig==
+        b=DgJkG55AwiawWrcBO8MsGV0M7sRJ8mRMQdlLHYBxfLg5n8eSSMMbHY9ciXOU9bOB3x
+         0fGllPdc8atwMFCxt2n5JPKLoHokvY0aXKJDqLmnB8FCnPa7SY7KVe59ZPpeIpF8UzNQ
+         grDnYdov3JgOZAsz3sS02hrTfUGz/Vhha9jC8pWLenxP0E5uz8JB5f7thLzcU0/BUjwe
+         yRqQ7EIGXozJ91k9RjtuPERXOlPY8t5wWm36C6flae6n4Qf3F768zFNH6o60otknCmFh
+         jcBR8gHWw2WqM9eUziefltPU79J699/3It6kD6fdZnX3g57qpD9Y3sHltnFVyoWlD9y/
+         b1/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:organization:autocrypt:content-language:from:references
+         :cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=xZQ69xaoMi3/lep/8B0Spc4dK/U0wslRbBIr2NlAxPQ=;
-        fh=0mMrDapNFRIZvbzTuq+shsOta3WUjLCte8vKaHcfbPM=;
-        b=RD6nR9fmlWdvxZ0IygIb3Eq6o8c0H/tDGlVfo5EvPcI74nj8pDC4JHCBO8jKw8cyD2
-         HkarV5IaJJPw59umNBndMRAHyu2TesS1VG5yvAdMYX11AHUz8zfhUVOhEVTCmw8eBjA8
-         JnE6waeW1UWa1wYFTsvDZluwuN+0+ZBP6dewkhn1lBOWM/rEVvntXtTnZHUcj8GPztyN
-         aUUQb7ZOY0mJ+Yp7hNNTXPsYLCiLtAfMk15EnlM9mJ58MKyCiou11qhm5A5XcEKt7mLo
-         w+xPAhC5rTBA0d+Kuf+a8axnEAWkzqAHGcMQaPahB8z4w84xfiA/u5vXSDajgw5oKd+X
-         Lpsw==;
+        bh=Z5yIa0WtRtrn8Wu/RsXzZ/EiInFH4pnH8ZIR5t8pGeE=;
+        fh=YnHZqo9WQgGNzgmYn+ke0w7FN1Q2b1DdigiJt/Wyp04=;
+        b=LV+ObJZVc59EE6es+hg3/tdkdVBi+aQ1WyUGbzvHUNVl+SOrYpzluBRZduRb5QcuqB
+         Q1YqeMo5scsbuXmXZiuvv5CFiTr+Teu8wTcTFHtk8mIAxAybxO/hdPGG9Vb31poOJSfW
+         P5ZL4cVGeJUN7105lludEK1I4P7wTiW9KMldl3kvcLZkPRFgyD5bEGrv1qbgipXzrS12
+         46mAwxH4LpSxxv/uzO/cyp3ZMiox+IbKu6J51BnrotOe4m7Moa7LsvcBexiOPuYCGiUO
+         82b95IAewHqT+nw53IfsGxFD/7lzL/3pHe3dtJCsT0zRy+qooZ4Pufr4LdemxmSm0RbM
+         TvfA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b="QQVrv/Fs";
-       spf=pass (google.com: domain of stefanb@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=stefanb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <stefanb@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id e9e14a558f8ab-3a7ccbd3e37si63077585ab.13.2024.12.02.07.58.05
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 02 Dec 2024 07:58:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of stefanb@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GDOazT0B;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d8a9483e21si24591716d6.116.2024.12.02.08.00.27
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 02 Dec 2024 08:00:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b="QQVrv/Fs";
-       spf=pass (google.com: domain of stefanb@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=stefanb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4B2AcqmQ019533;
-	Mon, 2 Dec 2024 15:58:05 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=pp1; bh=xZQ69x
-	aoMi3/lep/8B0Spc4dK/U0wslRbBIr2NlAxPQ=; b=QQVrv/FspMRWy2N6+o0I1e
-	itt0mkuSPgPAQgj3XScTl/9F84F9kpJ8KfJ0oX42OdM+I1TjpYgxyqyeNuqXmEWN
-	7mHtUqWdFf18DJqh3BW4cFOUF4nMPq15SFW8/3on+A64ls4Wwb08BfNb2NtcdXSF
-	jJQ3WY5SYx3ELiC41VX7calvQLXJGxccjaGr/lWd79+tXetWaZr916EBz6Y9VYLA
-	NStljwRZO1BiN23o47YSR+B7E2PzjpA/ZPOAGPkH46wshskpQTWEnLZFjr/E7u6v
-	HlM7PzVrJl5Ol5/civw7NHtuFroXbj5fj9JEA4rOuJT+/ZDVvvufc+0kCXSzox1w
-	==
-Received: from ppma21.wdc07v.mail.ibm.com (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 438kfge5kf-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 02 Dec 2024 15:58:04 +0000 (GMT)
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma21.wdc07v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 4B26gxai023634;
-	Mon, 2 Dec 2024 15:58:03 GMT
-Received: from smtprelay04.wdc07v.mail.ibm.com ([172.16.1.71])
-	by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 438e1mtkvh-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 02 Dec 2024 15:58:03 +0000
-Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com [10.39.53.229])
-	by smtprelay04.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 4B2Fw29i51053028
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 2 Dec 2024 15:58:03 GMT
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id DFC1758059;
-	Mon,  2 Dec 2024 15:58:02 +0000 (GMT)
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 25BC75805C;
-	Mon,  2 Dec 2024 15:58:02 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
-	by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
-	Mon,  2 Dec 2024 15:58:02 +0000 (GMT)
-Message-ID: <d3d73795-3f59-490c-9e54-c6c358af62d0@linux.ibm.com>
-Date: Mon, 2 Dec 2024 10:58:01 -0500
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GDOazT0B;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tI8qP-00064F-Mx; Mon, 02 Dec 2024 11:00:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tI8qO-00061I-Pf
+ for qemu-devel@nongnu.org; Mon, 02 Dec 2024 11:00:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1tI8qM-0008GB-L1
+ for qemu-devel@nongnu.org; Mon, 02 Dec 2024 11:00:16 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1733155213;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Z5yIa0WtRtrn8Wu/RsXzZ/EiInFH4pnH8ZIR5t8pGeE=;
+ b=GDOazT0B+XiyjCNX7TV1FKf/qpWs0OElgscy9wYfay0l4yucZGtUi0xm7MYF530yb3zZMh
+ 3AHn4io5+v8FGIpo1ObzD3jQVimwwD92TY1xZbJXH3VjaIWQfKwKCxyz3ITDbgUWDK1q3P
+ duFJF80IUBcg5Ps+xNzicD3yFAAKox0=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-332-WFmvk3RuPMuZJcIsoNa1Lg-1; Mon, 02 Dec 2024 11:00:10 -0500
+X-MC-Unique: WFmvk3RuPMuZJcIsoNa1Lg-1
+X-Mimecast-MFC-AGG-ID: WFmvk3RuPMuZJcIsoNa1Lg
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-434a9861222so36929345e9.2
+ for <qemu-devel@nongnu.org>; Mon, 02 Dec 2024 08:00:08 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1733155208; x=1733760008;
+ h=content-transfer-encoding:in-reply-to:organization:autocrypt
+ :content-language:from:references:cc:to:subject:user-agent
+ :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=Z5yIa0WtRtrn8Wu/RsXzZ/EiInFH4pnH8ZIR5t8pGeE=;
+ b=DO5OzATeWYjFgeKvXSC7laT7DUa7RhJNejtBema9AzOOEEyeYUgGm/l7qjz8blh2Pd
+ NYyHdGmRgxz8cNNdoYy0bWVw/suVa2LkFbxTr7PD+mIGhulSygBvnjIkoyIj52nvm0IL
+ whnF0Y+4A4h5NBtNU1gLRy9CXhn4GGxTmrhFyGXPY2PxvmpUKbCZUMs4ri4PecKg0hPG
+ TxUkNGA4sbGVBC7MbI+63c7t5pTK2ZJPWZZqLKdtha6qqf3tMNg8uOuCXBBcFwQB9z+M
+ iq2sA3XWNtLJw98mIfYKjz0e6t+TSp3tqRNjoxc+pDE1QwxX0azIAa9NmfH3lRlLHgZs
+ M76A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXJc7x+lrdz9tkZz2oZCm6yaMbOF+s4ArbvMBqJsjtPRoihIHViaqw6wKpbhjGbxrCU/tnpkFbal4e3@nongnu.org
+X-Gm-Message-State: AOJu0YwYkj20VmWdG8ieH/8xOFkXTdTadS3in//uHjproxxmBsEb7rO8
+ TsNQKh1gQDDQ73zDxz32QovhrBQDdFx5PxGv6RUXo33VKzrk1r9HbGk1iR90kpSAxouHXQlB3lt
+ ksts0ze84p/FvZyDiePsdu11vz9yys50T4gqm4Yjjw1FexCALOrXF
+X-Gm-Gg: ASbGncvVfgzpvActbpKD6LDzW3SMLgihJ5ScNbRn5Y+Ddulf8BidYtJ6WMXlUfp2xXc
+ gAzMCWqmGElbnYONHKZF2kqNqtRfc/fQzHRLDR9flisbeMtgKIWOxgTot5CSApCiwrX4McSeuI9
+ 15WkwNF9USa7S1baO9tyqwdxn+xfT6egLoij7zsZvg4DIONqkhB1C8o8skUADMqt9rvPdn2ujxN
+ W+XLtdhsCp7pyqpB6sWvY/8K/vxs1Ln5ocoMQXqoD6//pNEpteU74KNQRG9r4ujWqHJFxCzqL0n
+ gz5jea6dNPpU/CFm0RDBkMbRgy0LfSgbKG5vFe4xtgzHbC2OYHYIlVHr/a/aPJESv08UuwVkRTv
+ NYQ==
+X-Received: by 2002:a05:600c:5490:b0:434:a815:2b5d with SMTP id
+ 5b1f17b1804b1-434a9de43cfmr204559155e9.24.1733155207768; 
+ Mon, 02 Dec 2024 08:00:07 -0800 (PST)
+X-Received: by 2002:a05:600c:5490:b0:434:a815:2b5d with SMTP id
+ 5b1f17b1804b1-434a9de43cfmr204558725e9.24.1733155207404; 
+ Mon, 02 Dec 2024 08:00:07 -0800 (PST)
+Received: from ?IPV6:2003:cb:c73b:ba00:bcff:e7c1:84bd:9486?
+ (p200300cbc73bba00bcffe7c184bd9486.dip0.t-ipconnect.de.
+ [2003:cb:c73b:ba00:bcff:e7c1:84bd:9486])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-434b0d9bec1sm159953105e9.5.2024.12.02.08.00.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Dec 2024 08:00:06 -0800 (PST)
+Message-ID: <874e2625-b5e7-4247-994a-9b341abbdceb@redhat.com>
+Date: Mon, 2 Dec 2024 17:00:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 25/26] target/arm/kvm-rme: Add measurement log
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>,
-        =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org, philmd@linaro.org,
-        qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.bennee@linaro.org,
-        Stefan Berger <stefanb@linux.vnet.ibm.com>
-References: <20241125195626.856992-2-jean-philippe@linaro.org>
- <20241125195626.856992-27-jean-philippe@linaro.org>
- <02b90518-2996-4231-bee9-43ce313669b0@linux.ibm.com>
- <Z0XREyMovNyB4s6t@redhat.com> <20241126162149.GC956991@myrica>
+Subject: Re: [PATCH v3 0/7] hugetlbfs memory HW error fixes
+To: William Roche <william.roche@oracle.com>, kvm@vger.kernel.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+ philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
+ imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+ wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
+References: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
+ <20241125142718.3373203-1-william.roche@oracle.com>
+ <48b09647-d2ba-43e5-8e73-16fb4ace6da5@oracle.com>
+From: David Hildenbrand <david@redhat.com>
 Content-Language: en-US
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <20241126162149.GC956991@myrica>
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ WNyWQQ==
+Organization: Red Hat
+In-Reply-To: <48b09647-d2ba-43e5-8e73-16fb4ace6da5@oracle.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: e_Dqq_xwypzIbdYGytPkyHoRdqonJ3CH
-X-Proofpoint-GUID: e_Dqq_xwypzIbdYGytPkyHoRdqonJ3CH
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
- definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- spamscore=0 clxscore=1011 malwarescore=0 bulkscore=0 adultscore=0
- priorityscore=1501 mlxlogscore=999 impostorscore=0 phishscore=0 mlxscore=0
- suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2411120000 definitions=main-2412020133
-X-TUID: Z2sqn76m22vc
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ixau2FUWP1e+
 
+On 02.12.24 16:41, William Roche wrote:
+> Hello David,
 
+Hi,
 
-On 11/26/24 11:21 AM, Jean-Philippe Brucker wrote:
-> On Tue, Nov 26, 2024 at 01:45:55PM +0000, Daniel P. Berrangé wrote:
->> On Mon, Nov 25, 2024 at 05:23:44PM -0500, Stefan Berger wrote:
->>>
->>>
->>> On 11/25/24 2:56 PM, Jean-Philippe Brucker wrote:
->>>> Create an event log, in the format defined by Trusted Computing Group
->>>> for TPM2. It contains information about the VMM, the Realm parameters,
->>>> any data loaded into guest memory before boot and the initial vCPU
->>>> state.
->>>>
->>>> The guest can access this log from RAM and send it to a verifier, to
->>>> help the verifier independently compute the Realm Initial Measurement,
->>>> and check that the data we load into guest RAM is known-good images.
->>>> Without this log, the verifier has to guess where everything is loaded>
->>> and in what order.
->>>
->>> Typically these logs are backed by extensions of TPM PCRs and when you send
->>> a log to a verifier you send a TPM quote along with it for the verifer to
->>> replay the log and check the TPM quote. Also, early code in the firmware is
->>> typically serving as a root of trust that starts the chain of measurements
->>> of code and data, first measuring itself and then other parts of the
->>> firmware before it jumps into the other parts. Now here you seem to just
->>> have a log and no PCR extensions and therefore no quote over PCRs can be
->>> used.
+sorry for reviewing yet, I was rather sick the last 1.5 weeks.
+
 > 
-> Indeed, in our case it's the trusted hypervisor (RMM) that provides the
-> equivalent to TPM quote and PCRs. In more details:
+> I've finally tested many page mapping possibilities and tried to
+> identify the error injection reaction on these pages to see if mmap()
+> can be used to recover the impacted area.
+ > I'm using the latest upstream kernel I have for that:> 
+6.12.0-rc7.master.20241117.ol9.x86_64
+> But I also got similar results with a kernel not supporting
+> MADV_DONTNEED, for example: 5.15.0-301.163.5.2.el9uek.x86_64
 > 
-> 1. QEMU loads images into guest RAM by calling KVM, which calls RMM.
-> 2. RMM calculates a hash of the image content, adds it to a rolling hash
->     the "Realm Initial Measurement" (RIM), which I believe is equivalent to
->     a PCR.
-
-I am not familiar with RIM. A link to read more about it would be helpful.
-
-> 3. During remote attestation, the guest sends evidence containing this RIM
->     signed by the root of trust, along with a signed token identifying the
->     platform (hardware, firmware, RMM).
-
-Is this a well known manufacturer key that one would expect for 
-signature verification or is it locally created?
-
-> 4. The verifier checks the signature and the platform token, so it trusts
->     the RMM and the RIM.
 > 
->>> Then what prevents anyone from faking this log and presenting a
->>> completely fake log to the verifier?
+> Let's start with mapping a file without modifying the mapped area:
+> In this case we should have a clean page cache mapped in the process.
+> If an error is injected on this page, the kernel doesn't even inform the
+> process about the error as the page is replaced (no matter if the
+> mapping was shared of not).
 > 
-> Absolutely, the verifier does not trust the content of the log, it only
-> uses the log as helper to try to reconstruct the RIM. For example a log
-> event says "I loaded image XYZ at address A", then the verifier searches
-> image XYZ in its database of known-good images, calculates the hash that
-> would result from loading that image at address A. Any malformed event in
+> The kernel indicates this situation with the following messages:
+> 
+> [10759.371701] Injecting memory failure at pfn 0x10d88e
+> [10759.374922] Memory failure: 0x10d88e: corrupted page was clean:
+> dropped without side effects
+> [10759.377525] Memory failure: 0x10d88e: recovery action for clean LRU
+> page: Recovered
 
-Hopefully just calculating a hash over the image will do and the 
-location an image was loaded to, like address A (relocation?), doesn't 
-matter...
+Right. The reason here is that we can simply allocate a new page and 
+load data from disk. No corruption.
+
+> 
+> 
+> Now when the page content is modified, in the case of standard page
+> size, we need to consider a MAP_PRIVATE or MAP_SHARED
+> - in the case of a MAP_PRIVATE page, this page is corrupted and the
+> modified data are lost, the kernel will use the SIGBUS mechanism to
+> inform this process if needed.
+>     But remapping the area sweeps away the poisoned page, and allows the
+> process to use the area.
+> 
+> - In the case of a MAP_SHARED page, if the content hasn't been sync'ed
+> with the file backend, we also loose the modified data, and the kernel
+> can also raise SIGBUS.
+>     Remapping the area recreates a page cache from the "on disk" file
+> content, clearing the error.
+
+In a mmap(MAP_SHARED, fd) region that will also require fallocate IIUC.
+
+> 
+> In both cases, the kernel indicates messages like:
+> [41589.578750] Injecting memory failure for pfn 0x122105 at process
+> virtual address 0x7f13bad55000
+> [41589.582237] Memory failure: 0x122105: Sending SIGBUS to testdh:7343
+> due to hardware memory corruption
+> [41589.584907] Memory failure: 0x122105: recovery action for dirty LRU
+> page: Recovered
+ > >
+> Now in the case of hugetlbfs pages:
+> This case behaves the same way as the standard page size when using
+> MAP_PRIVATE: mmap of the underlying file is able to sweep away the
+> poisoned page.
+> But the MAP_SHARED case is different: mmap() doesn't clear anything.
+> fallocate() must be used.
+
+Yes, I recall that is what I initially said. The behavior with 
+MAP_SHARED should be consistent between hugetlb and !hugetlb.
+
+
+> 
+> 
+> In both cases, the kernel indicates messages like:
+> [89141.724295] Injecting memory failure for pfn 0x117800 at process
+> virtual address 0x7fd148800000
+> [89141.727103] Memory failure: 0x117800: Sending SIGBUS to testdh:9480
+> due to hardware memory corruption
+> [89141.729829] Memory failure: 0x117800: recovery action for huge page:
+> Recovered
+> 
+> Conclusion:
+> We can't count on the mmap() method only for the hugetlbfs case with
+> MAP_SHARED.
+> 
+> So According to these tests results, we should change the part of the
+
+> qemu_ram_remap() function (in the 2nd patch) to something like:
+> 
+> +                if (ram_block_discard_range(block, offset +
+> block->fd_offset,
+> +                                            length) != 0) {
+> +                    /*
+> +                     * Fold back to using mmap(), but it cannot repair a
+> +                     * shared hugetlbfs region. In this case we fail.
+> +                     */
+
+
+But why do we special-case hugetlb here? How would mmap(MAP_FIXED) help 
+to discard dirty pagecache data in a mmap(MAD_SHARED, fd) mapping?
+
+-- 
+Cheers,
+
+David / dhildenb
+

@@ -1,85 +1,84 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2802331njk;
-        Mon, 2 Dec 2024 05:14:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXJ9f/mEKh1lLMy6Ov2W/95N65SVNTSnsezeWpzGOJnpGbrs/Plhh+lAOtpxJM7smvVYayxlal+ZpnpWA==@linaro.org
-X-Received: by 2002:a5d:5f53:0:b0:385:e204:b30b with SMTP id ffacd0b85a97d-385e204b379mr6967548f8f.53.1733145278348;
-        Mon, 02 Dec 2024 05:14:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733145278; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2802339njk;
+        Mon, 2 Dec 2024 05:14:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU2gEAR/77DlPL0QDDEN18PtK12o6a4IDDPc5AycXczsZJIJXI4e3Z8rXQAK0ct51oQswNYEa7NgNZ/Jg==@linaro.org
+X-Received: by 2002:a05:600c:4e8b:b0:42c:de34:34be with SMTP id 5b1f17b1804b1-434a9db8393mr233611755e9.3.1733145279402;
+        Mon, 02 Dec 2024 05:14:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733145279; cv=none;
         d=google.com; s=arc-20240605;
-        b=Xbux/2EkhVU11YT0syqfRgTfqNj9snx0nCH0i+0t76MAAe8HE/YpdWOGKGDB367rfp
-         NlHEALyX9ysI9NAfIOLll3EMe3zhBjS8l1kwWJi602onm/9UCq9EPrSfK22DIH6rrtXj
-         o96z10diIMEkzy4Wu0pDI6Gp0Jpj2jEiMJvX7AK7d4LUWKCbk/5T+b556iRq7Q8WuYpE
-         qP1qtGgg+xLbdlW8aoh8WvoFbzPwUcbPBbR5h7Mo4ZoUCe6sTZJn7qjsaYeMUSxUtux5
-         DrOyMZavgnwtZro8kqkEJGfmoAM9vp++mDdPlgEcNwB2R3A8oDldd7i3Y78oW+vTnAWD
-         OoxA==
+        b=LRI3hu6pCSmWfDbNniLvqX8Q1dJuneSMQjFiQq24cX/2TNm0ATkHlvXiJ1pRb1aMDx
+         n/p5OUh0ATPuhH+vT8u955+4Ywg6ogG0MIGvaAVf5Hc9XEHyr3olgRBBuxBT0K4rCVrJ
+         NxPMruaA9MYctQQovy7ZY2dDPcuEfYvVqFS8qnkwBmkjnW1ML+DeFJZaO4cyRn2MJBaI
+         HrWoAY6lvI+ukrX0vdjihgAHbnVVLrF1sc+lBCR68RCpRZfmYG9f90FwXUuNSH82SnEC
+         Yaww9hUUH9TAuEBypp08c6QWf4gs2e8ThSOe/V+3T6/R43GA0pxOpeq2MMVqo7b/ILDb
+         bIaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=F9P3Zyg8EWDd8Ipp5Pjnvse0G07D293rwdAJ1WyzXl4=;
-        fh=QEOu9TAYgPZQ3UAu/zv/ALY27LeJqyrjF25wWv9PPFQ=;
-        b=SHujEZdgNGiGJSFgnLZlM8eN5C7kp/N1BHKZFovII15NaAXsp4EfT65uxKRTJhdls6
-         ZolfX1gftb8+u1w9HotpPAsizDj4HoExVKgiKBejwpx/UZ2m8Kra2gMGtg5Yt7Rmusoy
-         4gGiae90xaN94pEN5p12JEAQGAH565FyeFlunzIVIUiNSG4rxJRxmgOsaEsHYLY8cCMt
-         iJ14zBmCxpAIdeoHrocBkKq2j6SpYZQ0iZA6ViP6xwgOYPeKjxZtpzYNmMRoAE5u5+ac
-         T/2IlWkZ+qNfR2sbivTsvx9dLegETviaue+H8QWm8nfzWuQ51+vz645m1gOLAYmT3pRD
-         w64Q==;
+        bh=bcSQWPJxoEZ5kc/cEyAZreOowNhccL15M84TKXenqM8=;
+        fh=raBMUz886tDeYtRHm3IQKl/GQAjxEl7gMlqdEQfhJjg=;
+        b=LF5mLmQY2o2J/qsv2bfwj3Z7z9h/o3V3f2EApneVqSlY9VbvwMUm1fkRJw5F78wdxB
+         RK/YAUHbd6mfmXRzbbcj0DBRgGDPr5sP2L1d+LJ/Xki7Bp2s/1JKgFTInIoAgi+H4otN
+         7XNiBctdnpDqC31y1GupaaUzboaFaM0gIYPnA1AqLXrURNZrNnQfiPVKCLUPI3n+FUTq
+         ICN5Cvg2e1kHBiA0Yu9yGnzt10Mou9EShiqFH+r4kdDPX3Wxxbxg4q/o9PfEvu7vLvLd
+         gds2op5iDOstSv0R2k1Pg1Q+RUPOFEyYJu3WsL/Ce4JoiXi3JIgICwpJaj+HI6HX/7eb
+         wK/Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zeIvlP72;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GO5ravyw;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-385e04f5cd1sor1655749f8f.0.2024.12.02.05.14.38
+        by mx.google.com with SMTPS id ffacd0b85a97d-385f1574a2fsor660108f8f.6.2024.12.02.05.14.39
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 02 Dec 2024 05:14:38 -0800 (PST)
+        Mon, 02 Dec 2024 05:14:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zeIvlP72;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GO5ravyw;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733145278; x=1733750078; darn=linaro.org;
+        d=linaro.org; s=google; t=1733145279; x=1733750079; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=F9P3Zyg8EWDd8Ipp5Pjnvse0G07D293rwdAJ1WyzXl4=;
-        b=zeIvlP723b1je3ehzrPHjPPjRPO6vJmu7xedvRi2yzXXjgzi2JrTaotlv39BqyLk14
-         NTXFhkJnZCALAnVZBJ99xqs2z+WhoMbvODt1tid+mMcsxMbPiepRKDenMuXn1W2Aq9Xc
-         CHZoCo9EbCkHCwd+r3d3zTtPH6NIKcUHmchEAtScFiwsxEyLnomfVsMebEkZCTsE8qjd
-         YEQrvacd1SRq+HOCxf/jGxKRUqN22c/2aTV3DOiKrEW2mLJWakrUZv1GJg2o9IRszWka
-         93oLqy0drpEMvxk44a0z4lRcOwb8wPHLaKqXGTlmz4T9OedZDaDtLivgpNpW43CP8Yos
-         ii+A==
+        bh=bcSQWPJxoEZ5kc/cEyAZreOowNhccL15M84TKXenqM8=;
+        b=GO5ravywRtVwdVUJ/+cWOxGnV0jTr8sDea3D4atrT6funy3Yj02nmyJD7L+vIpj/6Z
+         5Uok0Wvnu2QIyfj1936ASYE7sTAe/O/bzvCC0D+4zxN8rbMn2Gfe7ZeLDEs45HS2jrhh
+         62y5RMmmfufwFQnWioRufW35G6PVcVTlyqOyNjHwAW6FUzF3fQRPAXeCHeC5gtvCE9PG
+         sgVUGEcE6mRfMLvaIwmQ6xq6PITiELm0l0q21302OB7fMlX6AAAkl4XGVhuBHEtpIsWN
+         1fOeJU96ckuXwgal8sYtnOHLRDwJKjWxwJ2dWMf/SZKsVHsJ2xCXtzoN/Sd4l5qKvPcK
+         xBGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733145278; x=1733750078;
+        d=1e100.net; s=20230601; t=1733145279; x=1733750079;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=F9P3Zyg8EWDd8Ipp5Pjnvse0G07D293rwdAJ1WyzXl4=;
-        b=BFL3OY5MBnFXksiZzIfScU2fYrK8lO2i2heLQRWVUJvfPe5IbY4RBsMruJp9YwFOBq
-         /3wf3zvHFWsF2SbF8zvMvDHqjknUrYMkh0FzrgUdvnWSn8F/pTIsd0hDQGVKo5akBKRn
-         i+QxAGGm/g7DH42J9oJGZ3m48eN2p6zD77eDqEHw1jPe0CWd3QVHlEkqa0t+O+/oVhbI
-         GWTYPyydWkM694rqRmARQY2n0XKhVuPXGtXzFXVpjXPXYY03+9qYO5pIbv7Ytpli/xh1
-         bRNmv/bPvsUR4+S9eJQ6Oq8x+XXkwpGXZo8TMx8gPUIwS29VetAqNG84eaGW/IB+oneO
-         Ns9Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVcccibJ2zGSB+0xIQd1hZp6TxpnIMnuH1R35k7HUYV2RFxOQE2GXhtaa9Susvm/UPEcjyRvzIXXaIC+Q==@linaro.org
-X-Gm-Message-State: AOJu0Yx+LFl7CuXLkGdCmw03by4WJ/Ufv0qYfkqgRMnpnFswQ6sf5ypD
-	kUYyzwwMmZtBibJxcdRX/pAQlkd2BLFmLWGDSHIZE2qiMo+5o4wwFU+m2FfHp+uq0M4ct/du+VG
-	kAKA=
-X-Gm-Gg: ASbGncteC2ZnIKP7HXfI6rt26ILwbhg4kHRj3iNsBsH7bSSSs1/G9x5dzKnSU7FtHp7
-	bkLsyMk0DLxwL/CGWUCN/QEeaWfT6GkvWrdBqiGUh8IQZ5wGgS8+1Ho3KqsRW8IxllxgRHXIz/7
-	UpeB7iGvnbRvUxzkF/3uiytOtKOzXAKm4v18wUikUSqgCA9hm2tfl1Gab4EYYd4C2IlI0tKsUHv
-	1DtqfG30slB40T5i/uLnSbATELjdkfGG31/3WMB8JfE1eN8i5LJh68=
-X-Google-Smtp-Source: AGHT+IFL61A+tairJzPOItayh6olQ1F+IieedrTB8+3a6uLQVDTHerrpGpRDJzdWMxXPxCl7i8SUAA==
-X-Received: by 2002:a05:6000:2d04:b0:385:e30a:394b with SMTP id ffacd0b85a97d-385e30a3bdcmr6032714f8f.16.1733145277754;
-        Mon, 02 Dec 2024 05:14:37 -0800 (PST)
+        bh=bcSQWPJxoEZ5kc/cEyAZreOowNhccL15M84TKXenqM8=;
+        b=U7bjJfbo4+GAT8Bpx2s36GjnPc9zpXCjC3g50gMkUBBR6aWvcRVo9SjzBcZtmBS4Ji
+         tyjHRzOx3RuaVkZHVfy3ZfFt3vGXyTsJvef6jd9UtvJBgkgD8uVou0CvH5ot3H/RT1In
+         EEslheLbIg+rXrXJxQpx5KPs3iRALFbVfrI4IGmOAJh99ZwmUD0DVwTXnM0dXbtkfr8a
+         hqWrAQsoDSDNagj5Ib+ONi6vmEqu3tZcjPnqwAu+Ns1avwlw7lIpuVeGPUshdIpn/1jm
+         dz3GfDpEK1gfj2KuSR89MJ9hzf5cC2ceHWM+hX3ZNMPTG1CVxBsRNTu7wF9/zEj1UJ4C
+         qe4Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXg4TbVxTzxLSuws4erLhI3wo+xnr3TZ3xHzVgIb8R3l6eZyvS44Fsqi0z2J0JVPDkNeQR6VhlB5zH7ug==@linaro.org
+X-Gm-Message-State: AOJu0YxixbcL5cgz7f5WxdSZhJIOj6TQAlqEFuwAof2rOnIfF4jNWGrn
+	9FCVYRB2yaKlUYrrYfv9SVLob5RzKa1i7hyrOOizRXtEPbBuytc1YsxkZcTImHu5vA==
+X-Gm-Gg: ASbGncs95sqbPi94eeJmRCLa6ah2xBrfk9gD3+KNhOGA0iSXj4x6MaymNnmTVJ0dYsB
+	VaPh2Q7UAfO3g1EpCJuq2lLy7BiFmPjJx1Zqw/MiZnofT/3SavyLG7fpweyzhwREaanaDrt53ib
+	WqX70uVzV6rtHf8DcEW6cuuHkPc1SRjXA/6Ew4QYHaMqAbzCK1GxADh93mX2NIe+gtAviWD3oYc
+	HZtp6vKtDuo2P8Ltpf0oZCCyam26I3O0d+Hkp29g8ByZr6FEc02KOU=
+X-Google-Smtp-Source: AGHT+IHr1vI+MOZbtPkNYb3mNUy7gWjvLx38mjS4L3RplG6H9NCgwOtAH784x77t7dH5oedV37mDOA==
+X-Received: by 2002:a5d:6d8e:0:b0:382:4b2a:4683 with SMTP id ffacd0b85a97d-385c6eb84c3mr21557497f8f.2.1733145278737;
+        Mon, 02 Dec 2024 05:14:38 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
         by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385dea1e4ebsm10160157f8f.1.2024.12.02.05.14.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Dec 2024 05:14:37 -0800 (PST)
+        Mon, 02 Dec 2024 05:14:38 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -101,53 +100,100 @@ Cc: qemu-arm@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 for-10.0 31/54] target/m68k: Init local float_status from env fp_status in gdb get/set reg
-Date: Mon,  2 Dec 2024 13:13:24 +0000
-Message-Id: <20241202131347.498124-32-peter.maydell@linaro.org>
+Subject: [PATCH v2 for-10.0 32/54] target/sparc: Initialize local scratch float_status from env->fp_status
+Date: Mon,  2 Dec 2024 13:13:25 +0000
+Message-Id: <20241202131347.498124-33-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241202131347.498124-1-peter.maydell@linaro.org>
 References: <20241202131347.498124-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: GImI+4+gTNKl
+X-TUID: aqkjdaOd02JX
 
-In cf_fpu_gdb_get_reg() and cf_fpu_gdb_set_reg() we do the conversion
-from float64 to floatx80 using a scratch float_status, because we
-don't want the conversion to affect the CPU's floating point exception
-status. Currently we use a zero-initialized float_status. This will
-get steadily more awkward as we add config knobs to float_status
-that the target must initialize. Avoid having to add any of that
-configuration here by instead initializing our local float_status
-from the env->fp_status.
+In the helper functions flcmps and flcmpd we use a scratch float_status
+so that we don't change the CPU state if the comparison raises any
+floating point exception flags. Instead of zero-initializing this
+scratch float_status, initialize it as a copy of env->fp_status. This
+avoids the need to explicitly initialize settings like the NaN
+propagation rule or others we might add to softfloat in future.
+
+To do this we need to pass the CPU env pointer in to the helper.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/m68k/helper.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ target/sparc/helper.h     | 4 ++--
+ target/sparc/fop_helper.c | 8 ++++----
+ target/sparc/translate.c  | 4 ++--
+ 3 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/target/m68k/helper.c b/target/m68k/helper.c
-index 9bfc6ae97c0..beefeb7069c 100644
---- a/target/m68k/helper.c
-+++ b/target/m68k/helper.c
-@@ -36,7 +36,8 @@ static int cf_fpu_gdb_get_reg(CPUState *cs, GByteArray *mem_buf, int n)
-     CPUM68KState *env = &cpu->env;
+diff --git a/target/sparc/helper.h b/target/sparc/helper.h
+index 134e519a377..1ae3f0c467d 100644
+--- a/target/sparc/helper.h
++++ b/target/sparc/helper.h
+@@ -51,8 +51,8 @@ DEF_HELPER_FLAGS_3(fcmpd, TCG_CALL_NO_WG, i32, env, f64, f64)
+ DEF_HELPER_FLAGS_3(fcmped, TCG_CALL_NO_WG, i32, env, f64, f64)
+ DEF_HELPER_FLAGS_3(fcmpq, TCG_CALL_NO_WG, i32, env, i128, i128)
+ DEF_HELPER_FLAGS_3(fcmpeq, TCG_CALL_NO_WG, i32, env, i128, i128)
+-DEF_HELPER_FLAGS_2(flcmps, TCG_CALL_NO_RWG_SE, i32, f32, f32)
+-DEF_HELPER_FLAGS_2(flcmpd, TCG_CALL_NO_RWG_SE, i32, f64, f64)
++DEF_HELPER_FLAGS_3(flcmps, TCG_CALL_NO_RWG_SE, i32, env, f32, f32)
++DEF_HELPER_FLAGS_3(flcmpd, TCG_CALL_NO_RWG_SE, i32, env, f64, f64)
+ DEF_HELPER_2(raise_exception, noreturn, env, int)
  
-     if (n < 8) {
--        float_status s = {};
-+        /* Use scratch float_status so any exceptions don't change CPU state */
-+        float_status s = env->fp_status;
-         return gdb_get_reg64(mem_buf, floatx80_to_float64(env->fregs[n].d, &s));
-     }
-     switch (n) {
-@@ -56,7 +57,8 @@ static int cf_fpu_gdb_set_reg(CPUState *cs, uint8_t *mem_buf, int n)
-     CPUM68KState *env = &cpu->env;
+ DEF_HELPER_FLAGS_3(faddd, TCG_CALL_NO_WG, f64, env, f64, f64)
+diff --git a/target/sparc/fop_helper.c b/target/sparc/fop_helper.c
+index 6f9ccc008a0..236d27b19c1 100644
+--- a/target/sparc/fop_helper.c
++++ b/target/sparc/fop_helper.c
+@@ -490,13 +490,13 @@ uint32_t helper_fcmpeq(CPUSPARCState *env, Int128 src1, Int128 src2)
+     return finish_fcmp(env, r, GETPC());
+ }
  
-     if (n < 8) {
--        float_status s = {};
-+        /* Use scratch float_status so any exceptions don't change CPU state */
-+        float_status s = env->fp_status;
-         env->fregs[n].d = float64_to_floatx80(ldq_be_p(mem_buf), &s);
-         return 8;
-     }
+-uint32_t helper_flcmps(float32 src1, float32 src2)
++uint32_t helper_flcmps(CPUSPARCState *env, float32 src1, float32 src2)
+ {
+     /*
+      * FLCMP never raises an exception nor modifies any FSR fields.
+      * Perform the comparison with a dummy fp environment.
+      */
+-    float_status discard = { };
++    float_status discard = env->fp_status;
+     FloatRelation r;
+ 
+     set_float_2nan_prop_rule(float_2nan_prop_s_ba, &discard);
+@@ -518,9 +518,9 @@ uint32_t helper_flcmps(float32 src1, float32 src2)
+     g_assert_not_reached();
+ }
+ 
+-uint32_t helper_flcmpd(float64 src1, float64 src2)
++uint32_t helper_flcmpd(CPUSPARCState *env, float64 src1, float64 src2)
+ {
+-    float_status discard = { };
++    float_status discard = env->fp_status;
+     FloatRelation r;
+ 
+     set_float_2nan_prop_rule(float_2nan_prop_s_ba, &discard);
+diff --git a/target/sparc/translate.c b/target/sparc/translate.c
+index cdd0a95c03d..322319a1288 100644
+--- a/target/sparc/translate.c
++++ b/target/sparc/translate.c
+@@ -5584,7 +5584,7 @@ static bool trans_FLCMPs(DisasContext *dc, arg_FLCMPs *a)
+ 
+     src1 = gen_load_fpr_F(dc, a->rs1);
+     src2 = gen_load_fpr_F(dc, a->rs2);
+-    gen_helper_flcmps(cpu_fcc[a->cc], src1, src2);
++    gen_helper_flcmps(cpu_fcc[a->cc], tcg_env, src1, src2);
+     return advance_pc(dc);
+ }
+ 
+@@ -5601,7 +5601,7 @@ static bool trans_FLCMPd(DisasContext *dc, arg_FLCMPd *a)
+ 
+     src1 = gen_load_fpr_D(dc, a->rs1);
+     src2 = gen_load_fpr_D(dc, a->rs2);
+-    gen_helper_flcmpd(cpu_fcc[a->cc], src1, src2);
++    gen_helper_flcmpd(cpu_fcc[a->cc], tcg_env, src1, src2);
+     return advance_pc(dc);
+ }
+ 
 -- 
 2.34.1

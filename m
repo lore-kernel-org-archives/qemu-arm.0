@@ -1,84 +1,84 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2802368njk;
-        Mon, 2 Dec 2024 05:14:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUMVwvH+SQ6+Nzy10L59y2IJtIdOQN56+ulhHhUUQXviUkGLTOzoW3c/y+0urbTWHpcaiakdG+Se9qGJw==@linaro.org
-X-Received: by 2002:a05:6512:124a:b0:53d:e568:ac95 with SMTP id 2adb3069b0e04-53df00de101mr10416280e87.25.1733145281422;
-        Mon, 02 Dec 2024 05:14:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733145281; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2802382njk;
+        Mon, 2 Dec 2024 05:14:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXFw8aj6c+dWTv/LS5mXVDV6rDgcPBWGdLZ7vMwgA2vj2OERdUqJ7ZlquMd4COaQrKtV16mZKWGypLyqw==@linaro.org
+X-Received: by 2002:a5d:5f83:0:b0:385:f60b:f5c4 with SMTP id ffacd0b85a97d-385f60bfa3emr2344531f8f.29.1733145282230;
+        Mon, 02 Dec 2024 05:14:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733145282; cv=none;
         d=google.com; s=arc-20240605;
-        b=cKtPAcDGT5bDsx/o9NmLj2qSnfTIMcMzA2hbbq0k4RZbm2Y4RUQ25kA47E8dQrOj0x
-         vpH0b4DAZDNgmQrlL3Ok8MrY9OARGB5S8GT5u1kZYoMiTANxzrSoQ4e44hiWpMLAOXJ1
-         GMh3gSanzZ9Qt70uFVjeCyrokE0lYLZV99jevigO0mRIGiT4mo2dxxcgisG/Y9mErPku
-         ctVyGRdZrmF1JNGqb7EXLVGrFqOuhhV2Okv2ofcdbWgHoX1xst34d0SGLMsiwltLvSCt
-         KTKzgaqlElTWrxX5n4ngtgFBpjeNCjILmBYQqmxDeSDYKpZYJL02XQxHewwqzZY6oFzW
-         cTMw==
+        b=hs5nNkyO48IQAGfd55JZGwBePDrWwSWRKfQX3lzw44sha3/rjskENsT5JceE52BHH3
+         x/wGuVVUzuuJObBh7edjdULRF+A5qfCaQbB2U6+R33QPum7WLtRvJvW+6YQy76IFlUoY
+         ijFdaZTwMJT3revu9oxPsy20C3GyVdXFyJPGONbmxbs7zy1z3sqekqZfXf51Eed8HRfR
+         uunR6Fu+NjVy/G+yWJ5qtD4h/u1mLNtKpkGmSeI7Ay+Q5BCCzImz65NelVUFPAC44Dti
+         bIRgsPUx8hjjxy/cQP6Bt49BcvHXAMBV/EHYKogqth3zsXqM/xYhkU+2M3b9v/hw3PQe
+         V6xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=yKV708lbVufub1eS0i2nRrYGl0qdKJsRNu5HvpEXaMM=;
-        fh=uo0WaSufTBwfA1RrU1imYwYiEkuqT4jrCSHNQ6Z8Pw8=;
-        b=ZXFVOnYwJ8Ov/hSmK9XmmyH0XUcKhad81R5jh4oZD4P3GlEZr4EbQ6v+uVSx3BAJaU
-         RSGn2ZKMFxzWoqYzV7kRHV6tJBq2xEIktakpcEkbdBTV71cjM4NXQbjXMru4xvZkWT7g
-         /eE8T3eWwBO+G76X79UFHDnANCyUHaaxkClLXwnOPD3OkTQI7XSdvRCiKlD73oRDC5gW
-         VQAI+nxHKhl0HGRssHvzv6xUStu2yZcQ1Eh60prc6K9fF14vS8IjutcAbPnsBXslmHbf
-         OoMDCygsR6pS9BakV3bTDBonN09M49OM3hSXvfvllphuX3J+2UP3wKzDRo9kI+UB583f
-         VuNQ==;
+        bh=q4IQwxgZ7TI3dnLUr9pZJR/1M5zZVOxtymkRhBauZGw=;
+        fh=Ldjuw230QrZTBCvOPNtdrHmq7zgb8Xek6l7HpzJAc5o=;
+        b=ZRNgXGh/gD6EwCB0bhdxJwG0w3ZmdaYg8iMo16ACNJhrrE3+zVMV6PV2yMVxj+hYIv
+         7cFt4ln5V0LrI9sObI/OuN3EK/laZVWIAvj+5JNbFJTPewS+oroOnfgY7CXGHmaS+x/u
+         xeATC77jOxux0yZOpV3hHPSyQX9laIDa3WLJABBJW8AJvVGB0xsZJNRucmKsgjr6gcHJ
+         zZ2cEw++eXBsNeX54d2MbX0bOYz2HQlrzaNzBlhHjst3BL1Uurnc6aDoMZaxbk1tp1na
+         PG+mjKJeRnse+82zzivWm6h4e1lCSgARO3fM0Bf7DEjONtinreINv3OKc2dy+Tz8pA2b
+         U2Sw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OOgubZPz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xAmcebou;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-434b10a2eb8sor32269385e9.10.2024.12.02.05.14.41
+        by mx.google.com with SMTPS id ffacd0b85a97d-385edd47d9esor777866f8f.0.2024.12.02.05.14.42
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 02 Dec 2024 05:14:41 -0800 (PST)
+        Mon, 02 Dec 2024 05:14:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OOgubZPz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xAmcebou;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733145281; x=1733750081; darn=linaro.org;
+        d=linaro.org; s=google; t=1733145282; x=1733750082; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=yKV708lbVufub1eS0i2nRrYGl0qdKJsRNu5HvpEXaMM=;
-        b=OOgubZPzwkJdExBWJtITz/mP32WaQyU5rmPBmBqK0Fj6zmdYNhjOQrH2hwkfKozd41
-         Lez6pYi9bXWzD+l6w7aCQ8qf9AOMo5TpZaZRGtkP2qeY3yiZOjqJvhaY+vI9zMTVcNRa
-         P/ABmzftobKBJhn97vjFZVqp9IvFU041JtclwJ12tDPa6JK6VSMICHQbeWUZDFlHL0yq
-         T93sXJrLpP6dt5LoAbbBUuDmecBRfxkguyhYQOyC6Oi2cYJQmX2SXZ05hUg2KYXgTM/q
-         BFSxZYWTCjMP1oFlan4SvM7q2l2UvBUlksauDvhkkDO0VD1zPcXRJccFwhBR63HRD4os
-         Mcdw==
+        bh=q4IQwxgZ7TI3dnLUr9pZJR/1M5zZVOxtymkRhBauZGw=;
+        b=xAmcebou4mOLalTEdmx1Uw15eJnRrS96Z/+DftYG0jSumsCOxvhUZPGePqTMBGT9iE
+         NiZpAru1wf3gFNTxkOkR+zzzorymM8rVFQNjayFfDfPQFFi6jZcgng1bI+4/M66m+39O
+         ukNisXb9qe+bsmIG4J+aPqla/fOxOFeU1kh7QEzMtgHW73O/oAuGE+koA2Kk6VZpnZ+i
+         4Bs6ywOxxLt+vxF6jomCuVNZeRxYTnpFboh7mtnWqHxtspCmmSIdOmdg8OIZGDCPod1k
+         d0kOfPUgbC7rJuKYLHUlZDWyuhev9ZESRQ7uGTIc+5bQV4byV0SRknvTitkq4MedI4hE
+         B/Wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733145281; x=1733750081;
+        d=1e100.net; s=20230601; t=1733145282; x=1733750082;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=yKV708lbVufub1eS0i2nRrYGl0qdKJsRNu5HvpEXaMM=;
-        b=YmZCkBlAxAVX+zLS0K0KaviZ1OjWoyOw0aIjkObUHX1uUHe4SbI6GXFoGNRjTPA67t
-         3NXZxoGkyMzNaxANC9191Y7ESND01nOYvs3VCbeVaDyr+kwprrQB1XdoGK0UrfZEckxV
-         UzMkfBZZXtLQ+cz3VDRArpx3+3csnBnjFlfWOxC0ebvX2bE1AzXMLWVn3rOfKRRnqmI7
-         cU9HnFdsGWvAwvQ9ue4M4RK2PrF69Tle4jwWdrZXPhqC4rlgRCFdEiJFOZPidbFUMFwq
-         Cor0qVPda6twTXunslXOgPvVjwarvuJo9GY6Xw4bQvbdA9/y6uYKSSWikgLG/eoh8Dn7
-         fy8g==
-X-Forwarded-Encrypted: i=1; AJvYcCX6h9B88ZkKRWAk4CtSBg4K9CrG0BW8tt2LmvF7fUpP4Hose34cQ1G22abbFpi79l9ISeAC8cEpnzvktw==@linaro.org
-X-Gm-Message-State: AOJu0YyeYqS3wpUHQxLVVJFdvM+944oWSpQLAT/Hyd72hLjumwSYwLL1
-	1cE3enfAXJQM/byGOsFEXenNGKSygTRZrjEOx91VGUeN4nPkYu7v57ElMAOWB6n72A==
-X-Gm-Gg: ASbGncu2FdwoEvF5TwmoGkg+2IhBSBpMN/Eclxkib61ydvSotshea6JI34F5EDtGVxi
-	Xuet2M2RokKbDe43JXsAnO5N3EIfFWcqgyIAuaFzZcQjXZ4ZzfLd0h4dVjMkzG8mZpDiuzUWA67
-	zp5PXvHrptUHff3W9Di+W0PIYDIk4n4a8V1BPhsmKqa3bNBVqsQLo8rRW4arOOyZssewcOGiWCX
-	z1TetTpfxvNeF8GfTUA9BzvXEaMpXcslh1WBc3kgnXEvRATkNOh0Xo=
-X-Google-Smtp-Source: AGHT+IFELuFkVQJehEVSKgoZXY73udDUueU5hfLBaI5Ys4CGnWxhP2s0m/NuLhCYSvhKN/52NWLe5A==
-X-Received: by 2002:a05:6000:42ca:b0:385:f0dc:c9fd with SMTP id ffacd0b85a97d-385f0dccb93mr2451898f8f.27.1733145280733;
-        Mon, 02 Dec 2024 05:14:40 -0800 (PST)
+        bh=q4IQwxgZ7TI3dnLUr9pZJR/1M5zZVOxtymkRhBauZGw=;
+        b=CdYfJEpVk6QL0cFk7qEoTQiZRdDQcHCYOePNLAE/iWlvXae85JYlR3PKWtTuI5jgS9
+         6dtjmWfFUVEnb47Kp5JT+3Ef6XVkxQkfWKCYp0w4gpIlzHRt4prRFiGqq4/hFkMztl17
+         Tqtr58UwD+z7A6KWgpxYqqi2N/tMESH6XRuUJ25NOA2Lx0niLNEQIZulfJo60MGmG25I
+         F/L7HV9XOkTlDqPllHo8YhKTIqQKqjj4PvGO2SCYPNVivE8vvmQcMK6DJqwsRETnKJZo
+         Bm7Tb0awhsYKKzyk3AdSy+cZslguStf/bdJKRyGFwtqfFSG+VfQEDNP4z0G+sb/0oGJI
+         FQng==
+X-Forwarded-Encrypted: i=1; AJvYcCU7YjY8ktr9P8u1X/H89n2l+LltK3gs/vb103Zmyepu8ttG22Mrkek5RcIQuwlErjkGkLJtkY48kvqGwg==@linaro.org
+X-Gm-Message-State: AOJu0YynBFXxxAbqnZfwBM519ghzE6u8BUnjEAyw48VMWA1DogHRgmHQ
+	WX48/fLw3O0EQjMidJKvjgmjVUX6LVRd7ZOgjaHqPtriUS8wN4e9g0VvB/kX2URQmA==
+X-Gm-Gg: ASbGncsGmJsSw4/ZXNRxKiG0+GSL3PtQePa/gP/1ot+vNVzfVKyEtlBmjD5arGzLc4j
+	EPQXTfsKkPneTiLEcQHmi1nMznEb+JaqNQ+2xyr2MgFZTiD6zdcnMDlu8ihRdf4FxixkBpMaCog
+	zVz67HG9pEsNd/PZ5E/F1YSI6CrfV3hq1ABOL5HY06tTaquz+IE5CgX3d3LGS7GxXbiNPl1+PKm
+	onRqE18R9B6TCDGLdjQ5wC/ygS67Of2jVjvqtYJtkFzm1YJLBhwUkg=
+X-Google-Smtp-Source: AGHT+IGBl63lSMExmDzDmz56Hi4ps6ZYUHjIAloYoP3kfaZz4pTVN4il5atAGH8qHrWm3IohWUeDQA==
+X-Received: by 2002:a5d:64c5:0:b0:385:f7b2:aadd with SMTP id ffacd0b85a97d-385f7b2add6mr1499818f8f.41.1733145281644;
+        Mon, 02 Dec 2024 05:14:41 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385dea1e4ebsm10160157f8f.1.2024.12.02.05.14.39
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385dea1e4ebsm10160157f8f.1.2024.12.02.05.14.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Dec 2024 05:14:40 -0800 (PST)
+        Mon, 02 Dec 2024 05:14:41 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -100,159 +100,60 @@ Cc: qemu-arm@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 for-10.0 34/54] fpu: Allow runtime choice of default NaN value
-Date: Mon,  2 Dec 2024 13:13:27 +0000
-Message-Id: <20241202131347.498124-35-peter.maydell@linaro.org>
+Subject: [PATCH v2 for-10.0 35/54] tests/fp: Set default NaN pattern explicitly
+Date: Mon,  2 Dec 2024 13:13:28 +0000
+Message-Id: <20241202131347.498124-36-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241202131347.498124-1-peter.maydell@linaro.org>
 References: <20241202131347.498124-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: z2iT8eLbbSPs
+X-TUID: uJX3tgtcxsv+
 
-Currently we hardcode the default NaN value in parts64_default_nan()
-using a compile-time ifdef ladder. This is awkward for two cases:
- * for single-QEMU-binary we can't hard-code target-specifics like this
- * for Arm FEAT_AFP the default NaN value depends on FPCR.AH
-   (specifically the sign bit is different)
-
-Add a field to float_status to specify the default NaN value; fall
-back to the old ifdef behaviour if these are not set.
-
-The default NaN value is specified by setting a uint8_t to a
-pattern corresponding to the sign and upper fraction parts of
-the NaN; the lower bits of the fraction are set from bit 0 of
-the pattern.
+Set the default NaN pattern explicitly for the tests/fp code.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/fpu/softfloat-helpers.h | 11 +++++++
- include/fpu/softfloat-types.h   | 10 ++++++
- fpu/softfloat-specialize.c.inc  | 55 ++++++++++++++++++++-------------
- 3 files changed, 54 insertions(+), 22 deletions(-)
+ tests/fp/fp-bench.c     | 1 +
+ tests/fp/fp-test-log2.c | 1 +
+ tests/fp/fp-test.c      | 1 +
+ 3 files changed, 3 insertions(+)
 
-diff --git a/include/fpu/softfloat-helpers.h b/include/fpu/softfloat-helpers.h
-index 10a6763532c..dceee23c823 100644
---- a/include/fpu/softfloat-helpers.h
-+++ b/include/fpu/softfloat-helpers.h
-@@ -93,6 +93,12 @@ static inline void set_float_infzeronan_rule(FloatInfZeroNaNRule rule,
-     status->float_infzeronan_rule = rule;
- }
+diff --git a/tests/fp/fp-bench.c b/tests/fp/fp-bench.c
+index 39d80c9038f..eacb39b99cb 100644
+--- a/tests/fp/fp-bench.c
++++ b/tests/fp/fp-bench.c
+@@ -495,6 +495,7 @@ static void run_bench(void)
+     set_float_2nan_prop_rule(float_2nan_prop_s_ab, &soft_status);
+     set_float_3nan_prop_rule(float_3nan_prop_s_cab, &soft_status);
+     set_float_infzeronan_rule(float_infzeronan_dnan_if_qnan, &soft_status);
++    set_float_default_nan_pattern(0b01000000, &soft_status);
  
-+static inline void set_float_default_nan_pattern(uint8_t dnan_pattern,
-+                                                 float_status *status)
-+{
-+    status->default_nan_pattern = dnan_pattern;
-+}
-+
- static inline void set_flush_to_zero(bool val, float_status *status)
- {
-     status->flush_to_zero = val;
-@@ -154,6 +160,11 @@ static inline FloatInfZeroNaNRule get_float_infzeronan_rule(float_status *status
-     return status->float_infzeronan_rule;
- }
+     f = bench_funcs[operation][precision];
+     g_assert(f);
+diff --git a/tests/fp/fp-test-log2.c b/tests/fp/fp-test-log2.c
+index de702c4c80d..79f619cdea9 100644
+--- a/tests/fp/fp-test-log2.c
++++ b/tests/fp/fp-test-log2.c
+@@ -71,6 +71,7 @@ int main(int ac, char **av)
+     int i;
  
-+static inline uint8_t get_float_default_nan_pattern(float_status *status)
-+{
-+    return status->default_nan_pattern;
-+}
-+
- static inline bool get_flush_to_zero(float_status *status)
- {
-     return status->flush_to_zero;
-diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
-index 84ba4ed20e6..79ca44dcc30 100644
---- a/include/fpu/softfloat-types.h
-+++ b/include/fpu/softfloat-types.h
-@@ -303,6 +303,16 @@ typedef struct float_status {
-     /* should denormalised inputs go to zero and set the input_denormal flag? */
-     bool flush_inputs_to_zero;
-     bool default_nan_mode;
-+    /*
-+     * The pattern to use for the default NaN. Here the high bit specifies
-+     * the default NaN's sign bit, and bits 6..0 specify the high bits of the
-+     * fractional part. The low bits of the fractional part are copies of bit 0.
-+     * The exponent of the default NaN is (as for any NaN) always all 1s.
-+     * Note that a value of 0 here is not a valid NaN. The target must set
-+     * this to the correct non-zero value, or we will assert when trying to
-+     * create a default NaN.
-+     */
-+    uint8_t default_nan_pattern;
-     /*
-      * The flags below are not used on all specializations and may
-      * constant fold away (see snan_bit_is_one()/no_signalling_nans() in
-diff --git a/fpu/softfloat-specialize.c.inc b/fpu/softfloat-specialize.c.inc
-index 9f913ce20ab..b1ec534983c 100644
---- a/fpu/softfloat-specialize.c.inc
-+++ b/fpu/softfloat-specialize.c.inc
-@@ -133,35 +133,46 @@ static void parts64_default_nan(FloatParts64 *p, float_status *status)
- {
-     bool sign = 0;
-     uint64_t frac;
-+    uint8_t dnan_pattern = status->default_nan_pattern;
+     set_float_2nan_prop_rule(float_2nan_prop_s_ab, &qsf);
++    set_float_default_nan_pattern(0b01000000, &qsf);
+     set_float_rounding_mode(float_round_nearest_even, &qsf);
  
-+    if (dnan_pattern == 0) {
- #if defined(TARGET_SPARC) || defined(TARGET_M68K)
--    /* !snan_bit_is_one, set all bits */
--    frac = (1ULL << DECOMPOSED_BINARY_POINT) - 1;
--#elif defined(TARGET_I386) || defined(TARGET_X86_64) \
-+        /* Sign bit clear, all frac bits set */
-+        dnan_pattern = 0b01111111;
-+#elif defined(TARGET_I386) || defined(TARGET_X86_64)    \
-     || defined(TARGET_MICROBLAZE)
--    /* !snan_bit_is_one, set sign and msb */
--    frac = 1ULL << (DECOMPOSED_BINARY_POINT - 1);
--    sign = 1;
-+        /* Sign bit set, most significant frac bit set */
-+        dnan_pattern = 0b11000000;
- #elif defined(TARGET_HPPA)
--    /* snan_bit_is_one, set msb-1.  */
--    frac = 1ULL << (DECOMPOSED_BINARY_POINT - 2);
-+        /* Sign bit clear, msb-1 frac bit set */
-+        dnan_pattern = 0b00100000;
- #elif defined(TARGET_HEXAGON)
--    sign = 1;
--    frac = ~0ULL;
-+        /* Sign bit set, all frac bits set. */
-+        dnan_pattern = 0b11111111;
- #else
--    /*
--     * This case is true for Alpha, ARM, MIPS, OpenRISC, PPC, RISC-V,
--     * S390, SH4, TriCore, and Xtensa.  Our other supported targets
--     * do not have floating-point.
--     */
--    if (snan_bit_is_one(status)) {
--        /* set all bits other than msb */
--        frac = (1ULL << (DECOMPOSED_BINARY_POINT - 1)) - 1;
--    } else {
--        /* set msb */
--        frac = 1ULL << (DECOMPOSED_BINARY_POINT - 1);
--    }
-+        /*
-+         * This case is true for Alpha, ARM, MIPS, OpenRISC, PPC, RISC-V,
-+         * S390, SH4, TriCore, and Xtensa.  Our other supported targets
-+         * do not have floating-point.
-+         */
-+        if (snan_bit_is_one(status)) {
-+            /* sign bit clear, set all frac bits other than msb */
-+            dnan_pattern = 0b00111111;
-+        } else {
-+            /* sign bit clear, set frac msb */
-+            dnan_pattern = 0b01000000;
-+        }
- #endif
-+    }
-+    assert(dnan_pattern != 0);
-+
-+    sign = dnan_pattern >> 7;
-+    /*
-+     * Place default_nan_pattern [6:0] into bits [62:56],
-+     * and replecate bit [0] down into [55:0]
-+     */
-+    frac = deposit64(0, DECOMPOSED_BINARY_POINT - 7, 7, dnan_pattern);
-+    frac = deposit64(frac, 0, DECOMPOSED_BINARY_POINT - 7, -(dnan_pattern & 1));
+     test.d = 0.0;
+diff --git a/tests/fp/fp-test.c b/tests/fp/fp-test.c
+index f290d523ab1..c619e5dbf72 100644
+--- a/tests/fp/fp-test.c
++++ b/tests/fp/fp-test.c
+@@ -941,6 +941,7 @@ void run_test(void)
+      */
+     set_float_2nan_prop_rule(float_2nan_prop_s_ab, &qsf);
+     set_float_3nan_prop_rule(float_3nan_prop_s_cab, &qsf);
++    set_float_default_nan_pattern(0b01000000, &qsf);
+     set_float_infzeronan_rule(float_infzeronan_dnan_if_qnan, &qsf);
  
-     *p = (FloatParts64) {
-         .cls = float_class_qnan,
+     genCases_setLevel(test_level);
 -- 
 2.34.1

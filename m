@@ -1,84 +1,84 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2801989njk;
-        Mon, 2 Dec 2024 05:14:19 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWDKlWW6+WIuYEnyHSNsSw12Yk6DpGGFZDM5gwaOrq/Kto5h3FoxdaPLYuPJWLh+c5wzpn0sU63xgHLGQ==@linaro.org
-X-Received: by 2002:a05:600c:1e03:b0:434:a805:1939 with SMTP id 5b1f17b1804b1-434a9e0a29amr178458535e9.33.1733145259423;
-        Mon, 02 Dec 2024 05:14:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733145259; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2802105njk;
+        Mon, 2 Dec 2024 05:14:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVzyCBz4I8FhDz25ipGDtH7lpnsVGZzf3SJ4XXwM6qAtAAovXNFxNW1YH61+46Bd2SniB1Eg+HBdOdbRA==@linaro.org
+X-Received: by 2002:a5d:584d:0:b0:385:f349:ffe7 with SMTP id ffacd0b85a97d-385f34a03c3mr2702963f8f.2.1733145265252;
+        Mon, 02 Dec 2024 05:14:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733145265; cv=none;
         d=google.com; s=arc-20240605;
-        b=YFLI0B1Yfh4qPcUdHsi0Xb5HuCcAbMtR6dqSYO3s8wUNx5RvXPrNlgNFIBR2AWIYQJ
-         34GtZJ8DgGVnDjFrRFqKGAbU8+rOjcuFuUiQIWPMO9ir8YhUCxn0XArx2kPw4CzG/6dO
-         PxMv48wMkTbY8Jt+qmNV5i5lEsRsp64su5lQlfnSCY8aXFwdREljwODG2LmRiM2lKwqM
-         DK6VPwvwUwTT4K88D3jJOMf2PEgKnZ0PJJ+Tm1hYSprr+KwuojQa6OgK/0OeDRf2exB1
-         M6Q5kYtQ/gUouTi46OtXhZrYl8SccMK9p4Uql2AHW6M49Px69XMwnQgSBU5uJ9XsB6dv
-         STjQ==
+        b=BkL9fzu5zWXZcWGn1FaySHz0WXrCUC/4qKrS6nnjSAUTYPKECrzS8rzXF9ZIHH+Aqa
+         yM3fGlhzkhZv3eD+RoBqXPnXqniK2Z+CbNhgs0ulQBXq5LDViUW0VeDR1X7blm/sXcBB
+         CTmB71LEm2S4/C4UfTwLCVL1wQ6zvCcT8JUcGUmeod0XV5VKTTyMTnc/L7pphKZgqlnT
+         TzRc8/ZhbJlk2jOBSoTTsq9nOEumoDgxKWcNro2APK7K+sHdUfJwXSZ/3xf2u2mmtV/z
+         F7MYR5CPuISvx99cGKhw1QJXq0oNYZfSWtYsK63j9bvcW5Ar5a5CrFIKjdFjweWAEHLV
+         z+BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=qV7tBbcBhiVlOigWvkNnjFqiUrRYKt540d7v7M5Z7xA=;
-        fh=5bCvZ2S/+tiIcZ/bUUxh7H2kQ4Ix9y0VrJAC3xoXOB0=;
-        b=VBQFLU3c2VxQslNp55j55fxsCNWoJaZx2t9cQpXn1nGHd5iTJo2xNrZqzxPZIVlkol
-         orTY31bYOkpTTgesYmQlH8QoLokkyon39lFZymnnC/Z7yTLNeAuCSf6EnRqwRY7QO1B6
-         hBjVMvjtYxlL8LuO9KNScTPjLKh01rAKKns8S2iiMfFiSbHK/OgUv8MtzWNWPqKUt58o
-         F+sldwYzm06gmU2FT3FtVyWWu9sg8qqWIcXOnCDrK3MgfFstvO5wAwIwMan2EvQVlhKP
-         1t75GshO9PsmojJW+pncwxsdC3eLHPYqUsfj6ORBr0jwzugGheP422n+ObW6RpffKazM
-         ubIQ==;
+        bh=D7hgTTAcAvvo63kNZS2ll5arN5VoViH9sR+6kv3WAC0=;
+        fh=SEWrRYqySjG0xuqI7NoAmv5+gLb44CBl2vDP4cxg0Ts=;
+        b=BAClWeSMymIx5Ps03PuWHLT0jIUORr/tCQ3ZsRZYq0OEZCaBW11qa+5SsohFyD5Y+6
+         9NTf82EyiW78nbV6SQFLJGWdqwYGc8N2JBHc1mBoAZauDwID9cA2uDgbSn4Gnmt6So1X
+         LX1tAqqmGDoLTaLUuiMvlLc7LcDSrgliHj+5AJc3RybZEfnbBEGHzvBBYfqd+AiAVcWl
+         8jr0GQa6e7Iwsy9f3T6iAw/UjdZe1RjlbtUmRRpFU1gRYYLVnFcZ4jHjBe6RMuDEH8bN
+         kaTMNrQLxpP2fAQyGAMlxNyKn17jgHDD3PJrD4gAcQk4tbfYX8Zirhk1g+74tzto0rPa
+         jYYQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="IrpyXwx/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=D6yyWjpv;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-434b10a083dsor33134305e9.12.2024.12.02.05.14.19
+        by mx.google.com with SMTPS id ffacd0b85a97d-385ea00b89bsor688616f8f.3.2024.12.02.05.14.25
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 02 Dec 2024 05:14:19 -0800 (PST)
+        Mon, 02 Dec 2024 05:14:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="IrpyXwx/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=D6yyWjpv;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733145259; x=1733750059; darn=linaro.org;
+        d=linaro.org; s=google; t=1733145265; x=1733750065; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=qV7tBbcBhiVlOigWvkNnjFqiUrRYKt540d7v7M5Z7xA=;
-        b=IrpyXwx/AUaxNKF/S6zilhbxCfL3GYXV42ntNpo1nuhlHTrpj+28WtBmPKn9H9DcpD
-         jcpalzMbS4dl2HoC6uiHJEOv/7unnJgdcWHHZGum+hTXIElKgaGHanzfGPkBAZVinIoJ
-         aa0p5vsZLK5Fg+xpJpODjLKoK0VIVFAL/0ZLVreB7HJ4HAPMHxk/8ue7Ze0C7t9lndG4
-         DNc5zRd2opPz0Zo8TxUFzsTCpgK2nXAzk3E4UTuageaX6CwdKVmo5BQ4+NbkpjzARLL+
-         9teQmnFqJDlZNjSGl0YDNd+yNvgf/Tl5tYSdUG0p84jgyDu8qdOhFYi7/TqXewh12EtH
-         Lkag==
+        bh=D7hgTTAcAvvo63kNZS2ll5arN5VoViH9sR+6kv3WAC0=;
+        b=D6yyWjpvxEw2YTFeXw7ILH3pqefoalcBz7ABzqTE+Yo+bup5OkpFHD1r1Zt9lgVCqp
+         jjjJ19PU6GDS6E54vEfYhg3f0l2EjT+jCG5cm+vEexH/TGCBDD9xG39Fthnsp9t/w2dd
+         5QsklXo2PK+yaZtvV2/4z5nxfCKGZpsJluGouAHtePrMDTzZJNVDgMa9NJVXflgRf9C0
+         t/zozrSzX458hJryS4Vjsi0m+nXb8gYdLUQ6jSDmsxyUsGN12L3NCnnQJrhPDuioM6uw
+         +0ooTGXH4IqEX2uoz7jI1o3swj76o3DVs+Osjx15lOHWz+qdVxe08xLIF1JHY+bkRRe0
+         F8EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733145259; x=1733750059;
+        d=1e100.net; s=20230601; t=1733145265; x=1733750065;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=qV7tBbcBhiVlOigWvkNnjFqiUrRYKt540d7v7M5Z7xA=;
-        b=BtJHzXk2nW63zdNsMk4P/MPNioig9AybQkwF/jzTzWVffSpY5SgqZFtDUxc7F1Ucb7
-         sTuScugd44MbvKeWXejeSEYBDlJBaMTeWhRdJ1nkbgWcm4eRcIN6l6PJOJIhfPzf41rl
-         IUP8zCpgK75flvOHBc8vZuRsqa+kOtBRr3bpv096m0bqDWuWvWDCCvnvzAsfMpk3/JRA
-         jLsqFGznDMQvKQSpTWND/KGM/t0SvJirRUpg/XS28cZ1Tu3ablhnX5hw3Ks9TCxLefxN
-         pSftvwCev1TXIdaksApZXPxd8bEHtsRz1gQD2J5ODz5Od2PV1QM1ryMiEjAWSO3rsCew
-         whRw==
-X-Forwarded-Encrypted: i=1; AJvYcCVxYfMX0HWGcik6HhP2htCOCVA5afZ3/34Ij5LMUkKalBtZ09VE95FwGIAnKI1b7i9WTkolwQbo/i3Skw==@linaro.org
-X-Gm-Message-State: AOJu0YwR7j1EVmyspnF1WibImbniS3ZUOkaaq2MHtTQl2FHQlAf3VvrY
-	VV+1YKK/Hl8iFPJJ+2UGLyYRW7QW7hWNLHdFpN4YYfx1OhEZzqqp6k2tkNeabv/Whg==
-X-Gm-Gg: ASbGnctFPfo64njQeQFNpiPElpfAG9euu3fn2mhrPskoWWPIPVqmmV0BkWfftXMrPx/
-	1Q6S1VOxUIJpvc6noMOKoVXbxOI/J/WsM0r9QCQ7Fjb7fGzexNWa9uCoL2+8Q9R356Hn6D68Arv
-	k0xrcRyDL0/6XGFDNxENltMmX4o7yXb8RH8l9kuKrfMroY7pl1D/lSncFprjLUKWCudLyk0dwzg
-	nFbL3y4jq/iTSuF34ckDvvQ3tz3gS3GtYhyAR0jJXot2x2QhhzvUA8=
-X-Google-Smtp-Source: AGHT+IFJClLlHD9zixmJJD7I8t9nu49gsXOm/M1tFSQat4cWaHqcdDYrHisGj/PdsQjH2SFUjBshhw==
-X-Received: by 2002:a05:600c:198c:b0:431:52f5:f48d with SMTP id 5b1f17b1804b1-434a9dfee3cmr216628145e9.31.1733145258795;
-        Mon, 02 Dec 2024 05:14:18 -0800 (PST)
+        bh=D7hgTTAcAvvo63kNZS2ll5arN5VoViH9sR+6kv3WAC0=;
+        b=b7uQ81BzLZwr4m4wl0TqB3mZmBIHajkRaIoo00Cp6itDEXw8SmhqbNIOob3YXwHIaf
+         BhARSC7RC2eVvukPQ5zxyqnh+VNfYiUkm6R8ils0UxjXm6EVUpy0y4ooTcit9+KLK/4C
+         2lo8NQYwUARsUy9vrb7ySceTfGUqkov9pj5bDPzcx5oqm4UMIDIX/1RJOd5J/A5Egq+k
+         RBlHkcfiZT+ih5MYGF+b327slqCjRmQMV46eoh7yXyHapnLBV8ITze51GxzcVjyiHXtg
+         0zp1qLOcAj88d1zSBZQ0dExhNRKeoYA0+N2RGyPvtB0ZCFIx3AHDoYw1pjfVI4b1tAGX
+         qtrA==
+X-Forwarded-Encrypted: i=1; AJvYcCWk+7Q0jnbxCnhGazqaFw/kLngTsiQ2ItSphP/xGbVVeR4UB+ClFUeRpI8Fk2n9zZSD5wBoHnZ/aIh/nA==@linaro.org
+X-Gm-Message-State: AOJu0YyZBgVCPW5g4OgZvvQSw3EI/Sgr2jU92QsWR2PXjWLi2c/LIUpG
+	NSFkinuBbc/+LSnGn2p7wKvI5EiG4RFZXfeiAawIbne7tS5+NgxBAUEbFcxXcjl0XQ==
+X-Gm-Gg: ASbGncuibn74Xt0k0KOohQz8P+4Fz3zpaHuqUB7mUlgHRJdf/+Cp1TVUrA80qXSPcCH
+	STnXf8xlpJh5Q95aE3tPYlXgB/1PwjVLTEfhpix5qg5V0HO8XB26FgHw/6Fz/kZ12PFO0GklaxY
+	jkvvaFU/kKzaUevTrSMe/4UDux+KHUtXZ82HyhZo4k/NBWb65FLK/em+BMwNQG8bYMeOg8DA3Zl
+	Fy7DzeJo2+H1/vMItZtVyoJqgXm0II7XldOrWeVgQ1OfIu2NJF6pw0=
+X-Google-Smtp-Source: AGHT+IEemo/kgleI2mLyCGQ61C0ZarnpS72GAYORVMtATpCawhtbXLGDqOMXKJ50Nry8KpGTlsLeDQ==
+X-Received: by 2002:a05:6000:4020:b0:382:6f3:a20f with SMTP id ffacd0b85a97d-385c6eb7c84mr16653095f8f.11.1733145259733;
+        Mon, 02 Dec 2024 05:14:19 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
         by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385dea1e4ebsm10160157f8f.1.2024.12.02.05.14.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Dec 2024 05:14:18 -0800 (PST)
+        Mon, 02 Dec 2024 05:14:19 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -100,50 +100,61 @@ Cc: qemu-arm@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 for-10.0 18/54] target/loongarch: Set Float3NaNPropRule explicitly
-Date: Mon,  2 Dec 2024 13:13:11 +0000
-Message-Id: <20241202131347.498124-19-peter.maydell@linaro.org>
+Subject: [PATCH v2 for-10.0 19/54] target/ppc: Set Float3NaNPropRule explicitly
+Date: Mon,  2 Dec 2024 13:13:12 +0000
+Message-Id: <20241202131347.498124-20-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241202131347.498124-1-peter.maydell@linaro.org>
 References: <20241202131347.498124-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: Gslzzudbpcmt
+X-TUID: u0Biebixze05
 
-Set the Float3NaNPropRule explicitly for loongarch, and remove the
+Set the Float3NaNPropRule explicitly for PPC, and remove the
 ifdef from pickNaNMulAdd().
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/loongarch/tcg/fpu_helper.c | 1 +
- fpu/softfloat-specialize.c.inc    | 2 --
- 2 files changed, 1 insertion(+), 2 deletions(-)
+ target/ppc/cpu_init.c          | 8 ++++++++
+ fpu/softfloat-specialize.c.inc | 6 ------
+ 2 files changed, 8 insertions(+), 6 deletions(-)
 
-diff --git a/target/loongarch/tcg/fpu_helper.c b/target/loongarch/tcg/fpu_helper.c
-index 6a2c4b5b1db..37a48599366 100644
---- a/target/loongarch/tcg/fpu_helper.c
-+++ b/target/loongarch/tcg/fpu_helper.c
-@@ -37,6 +37,7 @@ void restore_fp_status(CPULoongArchState *env)
-      * case sets InvalidOp and returns the input value 'c'
+diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+index f18908a643a..eb9d7b13701 100644
+--- a/target/ppc/cpu_init.c
++++ b/target/ppc/cpu_init.c
+@@ -7270,6 +7270,14 @@ static void ppc_cpu_reset_hold(Object *obj, ResetType type)
       */
-     set_float_infzeronan_rule(float_infzeronan_dnan_never, &env->fp_status);
-+    set_float_3nan_prop_rule(float_3nan_prop_s_cab, &env->fp_status);
- }
- 
- int ieee_ex_to_loongarch(int xcpt)
+     set_float_2nan_prop_rule(float_2nan_prop_ab, &env->fp_status);
+     set_float_2nan_prop_rule(float_2nan_prop_ab, &env->vec_status);
++    /*
++     * NaN propagation for fused multiply-add:
++     * if fRA is a NaN return it; otherwise if fRB is a NaN return it;
++     * otherwise return fRC. Note that muladd on PPC is (fRA * fRC) + frB
++     * whereas QEMU labels the operands as (a * b) + c.
++     */
++    set_float_3nan_prop_rule(float_3nan_prop_acb, &env->fp_status);
++    set_float_3nan_prop_rule(float_3nan_prop_acb, &env->vec_status);
+     /*
+      * For PPC, the (inf,zero,qnan) case sets InvalidOp, but we prefer
+      * to return an input NaN if we have one (ie c) rather than generating
 diff --git a/fpu/softfloat-specialize.c.inc b/fpu/softfloat-specialize.c.inc
-index 3a2d0444475..d610f460026 100644
+index d610f460026..173b9eadb57 100644
 --- a/fpu/softfloat-specialize.c.inc
 +++ b/fpu/softfloat-specialize.c.inc
-@@ -511,8 +511,6 @@ static int pickNaNMulAdd(FloatClass a_cls, FloatClass b_cls, FloatClass c_cls,
+@@ -511,12 +511,6 @@ static int pickNaNMulAdd(FloatClass a_cls, FloatClass b_cls, FloatClass c_cls,
          } else {
              rule = float_3nan_prop_s_cab;
          }
--#elif defined(TARGET_LOONGARCH64)
--        rule = float_3nan_prop_s_cab;
- #elif defined(TARGET_PPC)
-         /*
-          * If fRA is a NaN return it; otherwise if fRB is a NaN return it;
+-#elif defined(TARGET_PPC)
+-        /*
+-         * If fRA is a NaN return it; otherwise if fRB is a NaN return it;
+-         * otherwise return fRC. Note that muladd on PPC is (fRA * fRC) + frB
+-         */
+-        rule = float_3nan_prop_acb;
+ #elif defined(TARGET_S390X)
+         rule = float_3nan_prop_s_abc;
+ #elif defined(TARGET_SPARC)
 -- 
 2.34.1

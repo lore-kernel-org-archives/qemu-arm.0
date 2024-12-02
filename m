@@ -1,85 +1,84 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2802445njk;
-        Mon, 2 Dec 2024 05:14:46 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVv8iXVEq5mvYmF4T3fkx1wgt6EVURHMCtbhJjoV2w9AGOa2WbX42TdfNc3vfuVopXJW3ZEUZhmoEn/kg==@linaro.org
-X-Received: by 2002:a05:600c:3590:b0:431:5f8c:ccb9 with SMTP id 5b1f17b1804b1-434a9dcf254mr275356335e9.17.1733145286517;
-        Mon, 02 Dec 2024 05:14:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733145286; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp2802476njk;
+        Mon, 2 Dec 2024 05:14:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU7Hg7F+4USjPen82HVB7DMaqmYNO/XUTN4xGcNEQQInzAXvnnRK5a2Tbw4237xRbVfKYcwWlX76j43Bg==@linaro.org
+X-Received: by 2002:a5d:64ec:0:b0:385:f677:85a9 with SMTP id ffacd0b85a97d-385f67788a8mr1807449f8f.44.1733145283328;
+        Mon, 02 Dec 2024 05:14:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733145283; cv=none;
         d=google.com; s=arc-20240605;
-        b=e8PThWxtndv1Evl3dvNsVUWXc/iS3LHCL60+k7BOmHD8g5QHn0As1cPPOR8AtE/N/K
-         rYFuNWzocX+WMoMAFl404l5EJf/NrXz2FxN+COq1VmJZ2J4iw0a/oR554vxdkJOZnMhY
-         b2AkAV+ZFG+vVp9pw6F8/+WtzEqASwHT/RHhq4cG1ToIZOq9JgCK4QusGlkN5KI/AviQ
-         zUMTlINeOG11iREN3QgmEA+i3Lxj0PIfJ/Q9FkuXfsRnLF/SQshn1kyVFW6kTNgsQvLF
-         3/UdE2W1a2s+/y4XyZcLrAfDJeYQa+n5LN/EGcMLS2z9fpiDhGYr1mZUYItU/F41c3yg
-         pnaw==
+        b=kbcF5gZRYCtvGSDp6uRrSKR6lN+mEtBtQ3MJTuFilQ/kzmcIY0xwR5VEXwVQ1tqh6T
+         iPljxxmF47F2aH17PysuXjilhr68Sszqoy3DMNWhNjYWsiyFovZEhh+56PP2yonKMFMk
+         QrYdd/AOvO58crBk2hnvgbpxTEVXAhlGBqs3uz99OiPC/mv5Z37DmbhUX2CAKrp59lMt
+         //b4ZPS97hfbgtoU0YSEVZ4PZuVWeecUTPo3/+FI3o26hqdDkTJQuh2zOnSeUXkyZi54
+         iBvFuu1ZNpeEPWtT6GZBUoAXmLfdLOouT+6vzJYyHf3QvddtgRZVuC7P5hqOV8KFQnCG
+         Kf4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=te7O3NG5V4E3qWDfy7w3qXeqH4l7GoDjlHVXASIpOuQ=;
-        fh=D3W4WKDbaqq0NWJm0EXeHz6+B+Lz3v51rpPKIiA+Flc=;
-        b=TLpdkwqvmtpz5P5Ul6pZJfvJ2z5NHPcZKKpBj6jiBHlne+pQcLGEerPvQR1/pfV+aT
-         OpFjxtGNE/0Xk3oDHcKuRPeQukOYao6xx9OpBVg/jlB6GGQTdwbGhSohbtVRra6NDUyC
-         tXFoLG7KXdueqsv58xdAkRSBpfi+F+LSIw4d6owhdn3a3hc1pUG6zlhPUW81ypelCodE
-         m9xJ/X9eEUo68QHxv8FSLM8uX9Lr13jNJ2BPTbVUEMbqObnn1mrAw6brKa9CR54wGCY8
-         lpXVN7F4U1T+mZsleeTzsbri8oRSma3yC3JDS/Wg1gLnLQLm20fU2NEiWNMzsjLeMr95
-         rjgg==;
+        bh=eg5CLJnIGFMP+7pRukJjMkkCwPMh6g96Ep2h3Ltgz5o=;
+        fh=myh8s+AK7QvLd+GFNUsqJ92btZNRADpUoFAnkL0X83w=;
+        b=dsZx95b96AJU8F0p+iUJOoiUryJQuiAeRAvOkjYokt3eZXM8dRhmuiw8gZ9NjqmSGI
+         5/UiuJLC4Sc6Co5yDeY2n4qaaiDBFysglgVJ+TE2ggCQT1W8bqz7Y3e/XwWUpMp//kfn
+         Qp4QBkAxJz7B/gJNUbGeNGvbIb1CVjhG2VwNoHG5jxFbIkPGzccsc1HzrRZg04TRDjGI
+         lxEp59bB4mc7JwxP6HbHHf00fyA3ibsb6SlZhn+acTLPj3xChagSlnInbh1qlrcvoGtB
+         AtdWRKl1crOTd3RCDXc5UmwlFri1O9MvNmy+C1BNAXMqPIwluejDHvpzGNw5cmSYRdSa
+         iZTw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JuVM7+qA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kOFuEnEW;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-434b1044ee3sor43060535e9.2.2024.12.02.05.14.46
+        by mx.google.com with SMTPS id ffacd0b85a97d-385e4129b72sor1107932f8f.7.2024.12.02.05.14.43
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 02 Dec 2024 05:14:46 -0800 (PST)
+        Mon, 02 Dec 2024 05:14:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JuVM7+qA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kOFuEnEW;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733145286; x=1733750086; darn=linaro.org;
+        d=linaro.org; s=google; t=1733145283; x=1733750083; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=te7O3NG5V4E3qWDfy7w3qXeqH4l7GoDjlHVXASIpOuQ=;
-        b=JuVM7+qA8TghmY3MIOXIrkg5yGoI8bjdcuQvb8wewWRwC/iSIpwxWZqzmOmaFwYP15
-         4Hm01DbXFnDdx7WvCnUMA8DyU8gXH7fD9c8sm6q/Zw/DTcN+fr7REiYzJR+KCr682sav
-         LTHBi7McWJ7DkF6VKyVMhuYLATXrr/uX2fT3RwGGuGw18KtwqQecZrV932w31+sCQbRV
-         dAmu1vBGj8wFTkf4tg5VbmWyW+nMNuMWbZgHm6QcTYwUAOaPrTPBhr858ZpsbJZf1YKS
-         mIPbAgQNfhJpZcMWk4x7vl3bGAclows7vWx/waNnbFwTk9B5Uv6mPnhyG8z4gPCa1Q6N
-         8ZAg==
+        bh=eg5CLJnIGFMP+7pRukJjMkkCwPMh6g96Ep2h3Ltgz5o=;
+        b=kOFuEnEWQYqGiGjJaJLUI//o+8vhlC/4tmfbxPeD1xEwKT6F5hIxkuQaCOn+ck7foZ
+         DGzgXaTwfdiVi3N52fQfdlKKZnlwbahw2fFmdqqH1tafgMF/Ywa99/cG4G2JEJF+wVEV
+         t6fcs2vO6gnqKJsQPsVQhuw/doMYpTvT1af7UwQ0UQCxN+i5XeDWiYPwNOvZxjAIEHzC
+         Lww/E516RE5LwOwAsXEP6hyZRjmE2q/Ujg1wLpWMCvW8pS8rNx6ePqsWH74w4ouzBSrT
+         HB57aHrlZDoN6LC1I/jWHRQ8eNTZUsDVZzZHLRAK7QX/Ug2fpolBFE/Ws4Wk+j8LSKCg
+         u9+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733145286; x=1733750086;
+        d=1e100.net; s=20230601; t=1733145283; x=1733750083;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=te7O3NG5V4E3qWDfy7w3qXeqH4l7GoDjlHVXASIpOuQ=;
-        b=F68KMjPU4nHuU7McDBQdPpINhk4pGpMldFoV+yWfn5LV0cdP8EHbhqVDtZp5Q1jhO3
-         YO8S4xHZ+q0f4IIj1zDfl8fEorcG7yBc1ExsGV8wwftvss8R5JuVDYivAVPm5tOr1jQi
-         mpS7+gmzSiX7Lapkdi9qFfzwybarCqUxaxit3ScCN2n0gFKVvBkkBqhcmXjBNnV4dTkD
-         tiCGbnfPpkyBWTveRQbY5wl8z6i8/foUW1ZcVLPtMvMTRs06iPvHo9HboqIqm/dgZY2w
-         61tost4VyRc1CVDs3lTGC+Og0Xtjh3cBRMG2Bm8P2p6SwFTHk6H+4dnzXHgwHF3SB+/U
-         tOPg==
-X-Forwarded-Encrypted: i=1; AJvYcCWhVSaA7Rr3JTuZwqzqSM7/tCoK9rlkM80TWaN430mQJL3pzNQke2F+iCq0QAs3gPUzzSWillXSSkAdCQ==@linaro.org
-X-Gm-Message-State: AOJu0YxYGEVWYvQ2OX987zG+uuad4ezDdLpHlsCbz5I+pSkDJvF1TmgI
-	kOs4NSwS36sq6y5f8+7Z7y6HpiUVfvVevzXVnomwiQuiLrIEGBptOIgVJsA10rQiZBBKumFWOQ4
-	gRSk=
-X-Gm-Gg: ASbGncv9YnZAKaNcdYPSLqncwrcavx6xwubWRkIwoP6wKGah64F7YXD1EmtkwAingRy
-	y3SwRxxw/0F29hIhMRzkK2CknUQdAQ/fhTIZJRjW8CW1NzKm3GRMfmebTEq0N6lLXBs6/U6C+nU
-	A9XgazJoPz6QA+OOXt+dZ0cSRBvo4Ad1HMfOzbw6pQz+7XjA/TyquXAF1UKGIfUdGG1zuoyxDMS
-	k0ep8041uJC0/TX4P/BYyeGgRWnkJtj+4qA8FWS73I4W01uwUmvvDM=
-X-Google-Smtp-Source: AGHT+IEf4KTr6rXhAChzMFWXIj3WaT/CW+XO0OVRZDhylwrcuGoh4UWwf4XfaI2ZSMeNI4wXvw5KjA==
-X-Received: by 2002:a05:600c:5021:b0:434:9fac:b157 with SMTP id 5b1f17b1804b1-434a9dc37aamr253794695e9.13.1733145286002;
-        Mon, 02 Dec 2024 05:14:46 -0800 (PST)
+        bh=eg5CLJnIGFMP+7pRukJjMkkCwPMh6g96Ep2h3Ltgz5o=;
+        b=dHdTthLAOQl8cAqrBuEac3oo1WqyTLPi0RSbBKDP/4VOSHBvyXVNgDmVTGLVG5bdyg
+         7l8yc7J9OqrUkDAZmDLZaWgK+T3dTC3rI6q7vNVno3p+JEdSAfKkNCXtje5nOsfAxCuX
+         8d3fdVn17HVXJuB6BrRv5FWtLxNqpej9+YZ9ikZ/Tb77Tj4H/08Fl2ebTfhOBcvGGF57
+         R1GicznPGigk8dG8GfwOj1tTlREdPSL6aHJQFsfXFLBFW9KXRQxrxl3Z/gKDvVdAtDh1
+         jRLOW5lOUxauHKuHpkSyFba43vgFZ7wPutltNb8rMvvuQPASQp2wCq1bPDeuxwpKPgGA
+         aGXw==
+X-Forwarded-Encrypted: i=1; AJvYcCUF9kHGGw9TGfVWbdfk/x7HD5Pzl7G01QMUTQ7oU8KahgrJBywkyJz4YmOUGwqGSllUH3woESgoH0/SIw==@linaro.org
+X-Gm-Message-State: AOJu0YyUbOusT2SEN2eUZy3GF4qm/enwa5Q84RThcGWODd2faNoqI3L0
+	4Y2edIfG4ppZxxjiqcbeGjhF9nNyNJTynKksuqTTP0FMpP/ZpHUPbkgp6urAqUQkkQ==
+X-Gm-Gg: ASbGncvLyyJwwvRA7nAc62tws4Y4ecilT9IJrbVJMWiqHJ/ntIFtCgaRXZ+gL2rf4OG
+	pewQ2Whu0XCIyuxIbOip0yiT2x8DuKCPMYi9M02tFMgQzSjrY/S9yXd7BfNaCr9XYhGAHq2AtHZ
+	FxTMImY7ua4sow+KCgsXORqmb2tZVHsi8A2CkqiJpBIQ73931uap3P6R9iQIUrHHlMCAaN3wSNv
+	1hupwfmwUQAE/7fAumQFLm5UxHpZ7B4MHsH1u6Z9kzgnQNmPajimOg=
+X-Google-Smtp-Source: AGHT+IGmlpAUQ7RrQZuvyRgb2/PxGBA8A9Osg4UR1KnKKv3AR4gZEx/FzXh11xp1F7xPsGgXaZ4/jQ==
+X-Received: by 2002:a05:6000:1865:b0:382:4a3b:5139 with SMTP id ffacd0b85a97d-385c6ef598emr19334141f8f.59.1733145282505;
+        Mon, 02 Dec 2024 05:14:42 -0800 (PST)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385dea1e4ebsm10160157f8f.1.2024.12.02.05.14.45
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385dea1e4ebsm10160157f8f.1.2024.12.02.05.14.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Dec 2024 05:14:45 -0800 (PST)
+        Mon, 02 Dec 2024 05:14:42 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
@@ -101,62 +100,51 @@ Cc: qemu-arm@nongnu.org,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Artyom Tarasenko <atar4qemu@gmail.com>,
 	Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v2 for-10.0 40/54] target/arm: Set default NaN pattern explicitly
-Date: Mon,  2 Dec 2024 13:13:33 +0000
-Message-Id: <20241202131347.498124-41-peter.maydell@linaro.org>
+Subject: [PATCH v2 for-10.0 36/54] target/microblaze: Set default NaN pattern explicitly
+Date: Mon,  2 Dec 2024 13:13:29 +0000
+Message-Id: <20241202131347.498124-37-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241202131347.498124-1-peter.maydell@linaro.org>
 References: <20241202131347.498124-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: fqv73vO8VQDx
+X-TUID: K+KmSWmatPQo
 
-Set the default NaN pattern explicitly for the arm target.
-This includes setting it for the old linux-user nwfpe emulation.
-For nwfpe, our default doesn't match the real kernel, but we
-avoid making a behaviour change in this commit.
+Set the default NaN pattern explicitly, and remove the ifdef from
+parts64_default_nan().
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- linux-user/arm/nwfpe/fpa11.c | 5 +++++
- target/arm/cpu.c             | 2 ++
- 2 files changed, 7 insertions(+)
+ target/microblaze/cpu.c        | 2 ++
+ fpu/softfloat-specialize.c.inc | 3 +--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/linux-user/arm/nwfpe/fpa11.c b/linux-user/arm/nwfpe/fpa11.c
-index 8356beb52c6..0f1afbd91df 100644
---- a/linux-user/arm/nwfpe/fpa11.c
-+++ b/linux-user/arm/nwfpe/fpa11.c
-@@ -69,6 +69,11 @@ void resetFPA11(void)
-    * this late date.
-    */
-   set_float_2nan_prop_rule(float_2nan_prop_s_ab, &fpa11->fp_status);
-+  /*
-+   * Use the same default NaN value as Arm VFP. This doesn't match
-+   * the Linux kernel's nwfpe emulation, which uses an all-1s value.
-+   */
-+  set_float_default_nan_pattern(0b01000000, &fpa11->fp_status);
- }
+diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
+index 710eb1146c1..0e1e22d1e8e 100644
+--- a/target/microblaze/cpu.c
++++ b/target/microblaze/cpu.c
+@@ -207,6 +207,8 @@ static void mb_cpu_reset_hold(Object *obj, ResetType type)
+      * this architecture.
+      */
+     set_float_2nan_prop_rule(float_2nan_prop_x87, &env->fp_status);
++    /* Default NaN: sign bit set, most significant frac bit set */
++    set_float_default_nan_pattern(0b11000000, &env->fp_status);
  
- void SetRoundingMode(const unsigned int opcode)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index c81f6df3fca..4f7e18eb8e6 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -179,6 +179,7 @@ void arm_register_el_change_hook(ARMCPU *cpu, ARMELChangeHookFn *hook,
-  *    the pseudocode function the arguments are in the order c, a, b.
-  *  * 0 * Inf + NaN returns the default NaN if the input NaN is quiet,
-  *    and the input NaN if it is signalling
-+ *  * Default NaN has sign bit clear, msb frac bit set
-  */
- static void arm_set_default_fp_behaviours(float_status *s)
- {
-@@ -186,6 +187,7 @@ static void arm_set_default_fp_behaviours(float_status *s)
-     set_float_2nan_prop_rule(float_2nan_prop_s_ab, s);
-     set_float_3nan_prop_rule(float_3nan_prop_s_cab, s);
-     set_float_infzeronan_rule(float_infzeronan_dnan_if_qnan, s);
-+    set_float_default_nan_pattern(0b01000000, s);
- }
- 
- static void cp_reg_reset(gpointer key, gpointer value, gpointer opaque)
+ #if defined(CONFIG_USER_ONLY)
+     /* start in user mode with interrupts enabled.  */
+diff --git a/fpu/softfloat-specialize.c.inc b/fpu/softfloat-specialize.c.inc
+index b1ec534983c..d77404f0c47 100644
+--- a/fpu/softfloat-specialize.c.inc
++++ b/fpu/softfloat-specialize.c.inc
+@@ -139,8 +139,7 @@ static void parts64_default_nan(FloatParts64 *p, float_status *status)
+ #if defined(TARGET_SPARC) || defined(TARGET_M68K)
+         /* Sign bit clear, all frac bits set */
+         dnan_pattern = 0b01111111;
+-#elif defined(TARGET_I386) || defined(TARGET_X86_64)    \
+-    || defined(TARGET_MICROBLAZE)
++#elif defined(TARGET_I386) || defined(TARGET_X86_64)
+         /* Sign bit set, most significant frac bit set */
+         dnan_pattern = 0b11000000;
+ #elif defined(TARGET_HPPA)
 -- 
 2.34.1

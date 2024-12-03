@@ -1,140 +1,415 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa5996c1408sm622166466b.15.2024.12.03.07.31.21
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Dec 2024 07:31:21 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 827EA5F89C;
-	Tue,  3 Dec 2024 15:31:20 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Gustavo Romero <gustavo.romero@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,  Peter Maydell
- <peter.maydell@linaro.org>,  Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>,  qemu-devel@nongnu.org,  =?utf-8?Q?C?=
- =?utf-8?Q?=C3=A9dric?= Le Goater
- <clg@kaod.org>,  Troy Lee <leetroy@gmail.com>,  Alistair Francis
- <alistair@alistair23.me>,  Andrew Jeffery <andrew@codeconstruct.com.au>,
-  Jamin Lin <jamin_lin@aspeedtech.com>,  qemu-arm@nongnu.org,  Paolo
- Bonzini <pbonzini@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Steven Lee <steven_lee@aspeedtech.com>,
-  Niek Linnenbank <nieklinnenbank@gmail.com>,  Joel Stanley
- <joel@jms.id.au>,  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v2] tests/functional/aarch64: add tests for FEAT_RME
-In-Reply-To: <b9e375ad-2b71-48a4-8e97-2cdced17ea79@linaro.org> (Gustavo
-	Romero's message of "Tue, 3 Dec 2024 12:02:03 -0300")
-References: <20241128213729.1021961-1-pierrick.bouvier@linaro.org>
-	<4b3180bd-8054-4431-a594-0445ce4837aa@linaro.org>
-	<5620efa2-98c6-4613-b866-67e91ac6acf8@linaro.org>
-	<CAFEAcA-xa1AKf2GAv7go5wdu+Td=4jf7Nriin-Oe3S6qEV6X0g@mail.gmail.com>
-	<fd7ad48e-1e72-4735-8064-7039eedc00ae@linaro.org>
-	<87ser6c5be.fsf@draig.linaro.org>
-	<b9e375ad-2b71-48a4-8e97-2cdced17ea79@linaro.org>
-User-Agent: mu4e 1.12.7; emacs 29.4
-Date: Tue, 03 Dec 2024 15:31:20 +0000
-Message-ID: <87bjxsdbqv.fsf@draig.linaro.org>
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3796254njk;
+        Tue, 3 Dec 2024 07:53:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV5slB6BXqVGtB+JHeo1CEOrgc0RAYERQDzYA7b6OkiUjM2S2jcv26j69GlcCN05F9VF+FN0nLtMxR0vg==@linaro.org
+X-Received: by 2002:a05:6402:2554:b0:5d0:bcdd:ffa8 with SMTP id 4fb4d7f45d1cf-5d10cb4e1d7mr2577543a12.1.1733241233897;
+        Tue, 03 Dec 2024 07:53:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733241233; cv=none;
+        d=google.com; s=arc-20240605;
+        b=AzA1eaFOYUKpBupwCXujUMO2kjuqQ1vH0e0RBQCNTAPpUHKb4u2BtbhxyY4S4Ou/S/
+         hbVHU9MGB/Vl0gjL8ec3u4neza+RBE+bTFgsx9S3frF9YAURu3YPxiiKZSBwKkIoRpxh
+         w8WMJlD9syg1tM2uMFHIpAr/Jd47Up5HcfLhwlKGtmMvZQUpUtjKJDmYsMpFSj5gJOWU
+         JYXln40YgdgIL9b6HJ3l5tAGnW8FSlNhAW5mr+OXo6LVu7/fKYkaZyW3njczbORRgnkP
+         p7vlZRFOXrHjIDFtnPYasDy56RkM237ewrCZTulKKPpgE/fVL3Lt4odJsIeLdblyy9FY
+         cdzQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=z1Wtru9pvXa/IJNJN+VXW7STk8hQ+N2dJ5RSBmCeI6Y=;
+        fh=CHo33hNl48C9CBaknkWFBtrm8di9k7kBhpGBTb6OLow=;
+        b=S97OPx8Scw0D5rY7gtPuJp1vzLd8DtpmEA/Wn4A0lqRHoprmoxNsHeUk/wIy+Z9LtG
+         +6gHFcwvljm9z8FChnOJ6d2xOqroOuNg0ZT3UpAnBeq3J72PJ1CWrAHQ2uSc8D9uLphi
+         9nrt999z7Jg0l5cNIikdjk3k8i5BJzoSEoV0k4wgBpHej2jmhjwQDj2kG4GdXWNmHgDB
+         AoQKs1N2NAmr3bS8gNmbCz5dbq0SHr2KhTdZutLXXbynGwUJ5n6Oy7NoGfC/QjMJKgGg
+         q2hT03A/Qfmt1crfEgEpmOmWe9eUrX8ajUJj84ThkqAbWLF2nQBsVFutaLAhLArRWYY6
+         NwCQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CuXmTfW1;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5d0b5f1341dsor3224393a12.4.2024.12.03.07.53.53
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 03 Dec 2024 07:53:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CuXmTfW1;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733241233; x=1733846033; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=z1Wtru9pvXa/IJNJN+VXW7STk8hQ+N2dJ5RSBmCeI6Y=;
+        b=CuXmTfW1rGFnfPAgq6JpE1VpnuwrVO5MrVjqB4L1nIwY9n4RQaWiRA28ijJV+O9LlN
+         9ofQ7eIbJ/b9+xJAcOJsXO3j6ppgV54xxY11vZF7eHayjp54UH/dW8qYmr1AhWGjZV/E
+         BcGN5eaXAED1t51TPZSNrESgs4nlGztvxb0UVcm36cnRytNCNqL+m5+wYRV+M5M267/P
+         EqRKQbV84cy2AfdcHx2gXzyF6LskPJNBIrNvbE4ddaXf6LWEYfBx77vCEdtJc/+S2Pal
+         VkraQxUz7+eWZJpQRxYzAiB1Uv26k8Vo1uSSwlz0kirgnkxNEo7v5HvGH6raleAYKHrS
+         SM7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733241233; x=1733846033;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=z1Wtru9pvXa/IJNJN+VXW7STk8hQ+N2dJ5RSBmCeI6Y=;
+        b=JsBr/gT1NUAZhmBX8nE0qs7z5Ck9fojsktHS2sRPJ1SDv59wD+Z1GfbuUs0gkhC61h
+         jQONtErfsCkCmE4x/9J7xA9950Sq8xxn/XAxmYFrpbbir2i7Lvt4nrUp9vLLJWJHtIMH
+         sWVZUWp6iU/lFv6gd3uTppEV1hx+OrqM3dvOA5WluefAlG3LcEZUbW3Q69gCYVzBzOKn
+         WN0acyiXZvuhwBxHMR8IlDZ0g1OKldQ4DhsmENhK+6k4wH+hYSN+ZycbQlwE28PtwCgo
+         1TWH7g5ePcCuZcJ6ebQ1QsbKaIhIfaAeX1OAunelEQcyzW7Qm3kUW2XIUCkGGZnTYXDY
+         RSQw==
+X-Forwarded-Encrypted: i=1; AJvYcCUXHNPOzJ/U373ir2/Qei8ncIxw7s3/T0sv3vQdJOOAWXbsxgCB0Vq0dGTNhudBCpluUj9ARjS34tsFRQ==@linaro.org
+X-Gm-Message-State: AOJu0YyRFWd85r0EmFl0DS3ZrJys+ij1AsFfW0ZW3RHt8/Qqhhwwqch/
+	DqfD9QAA2KWtkK6DkwD/dEtlErzp0rSOJFVoRtrWuiOvAB3IEaADW5Bg6pce9AngDqlF/1GJxLo
+	Oc4IJcHwX8pl4NzGLlkpF1nLl7QVsdT+r61U+kvJe
+X-Gm-Gg: ASbGncvBeIgRWnG0F+tFDG5mXnmrRn2VOfa3SQXyxYLFp63bwUnDjlGKUMe8CHuP64m
+	cmKavB3Ck2ajrhvHRfb1vwYdJrPV1wTuG
+X-Google-Smtp-Source: AGHT+IEpJlFNuS+qcUgTdY1jUvamA1JJNxMOHvFgkcDtdc44QY61D9O+OSRBA/xqrV1cx1GOsnf3gGGJljwpSX6OcrY=
+X-Received: by 2002:a05:6402:13cc:b0:5d0:f718:17fd with SMTP id
+ 4fb4d7f45d1cf-5d10cb55b1cmr2208407a12.14.1733241233150; Tue, 03 Dec 2024
+ 07:53:53 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: GuAusZbFVBeV
+References: <20241118172357.475281-1-pierrick.bouvier@linaro.org> <20241118172357.475281-6-pierrick.bouvier@linaro.org>
+In-Reply-To: <20241118172357.475281-6-pierrick.bouvier@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Dec 2024 15:53:42 +0000
+Message-ID: <CAFEAcA-UkmPvyNW_6o22-WhaLxnnji55UsBp3UcPA-gYH7kvVg@mail.gmail.com>
+Subject: Re: [PATCH 5/7] docs: add a codebase section
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, Andrew Melnychenko <andrew@daynix.com>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Jason Wang <jasowang@redhat.com>, Thomas Huth <thuth@redhat.com>, alex.bennee@linaro.org, 
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, Fabiano Rosas <farosas@suse.de>, 
+	Kevin Wolf <kwolf@redhat.com>, Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
+	qemu-arm@nongnu.org, Yuri Benditovich <yuri.benditovich@daynix.com>, 
+	manos.pitsidianakis@linaro.org, qemu-block@nongnu.org, 
+	Michael Roth <michael.roth@amd.com>, Konstantin Kostiuk <kkostiuk@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>, gustavo.romero@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: r48h4sRNc8xB
 
-Gustavo Romero <gustavo.romero@linaro.org> writes:
+On Mon, 18 Nov 2024 at 17:24, Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
+>
+> Present the various parts of QEMU and organization of codebase.
+>
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-> Hi Alex,
->
-> On 12/2/24 15:23, Alex Benn=C3=A9e wrote:
->> Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
->>=20
->>> On 12/2/24 02:57, Peter Maydell wrote:
->>>> On Sun, 1 Dec 2024 at 18:09, Pierrick Bouvier
->>>> <pierrick.bouvier@linaro.org> wrote:
->>>>>
->>>>> Hi Marcin,
->>>>>
->>>>> On 12/1/24 05:34, Marcin Juszkiewicz wrote:
->>>>>> W dniu 28.11.2024 o 22:37, Pierrick Bouvier pisze:
->>>>>>> This boot an OP-TEE environment, and launch a nested guest VM insid=
-e it
->>>>>>> using the Realms feature. We do it for virt and sbsa-ref platforms.
->>>>>>>
->>>>>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->>>>>>
->>>>>>> diff --git a/tests/functional/meson.build b/tests/functional/meson.=
-build
->>>>>>> index 5c048cfac6d..b975a1560df 100644
->>>>>>> --- a/tests/functional/meson.build
->>>>>>> +++ b/tests/functional/meson.build
->>>>>>> @@ -13,6 +13,8 @@ endif
->>>>>>>      test_timeouts =3D {
->>>>>>>        'aarch64_aspeed' : 600,
->>>>>>>        'aarch64_raspi4' : 480,
->>>>>>
->>>>>>> +  'aarch64_rme_virt' : 720,
->>>>>>
->>>>>> Took 2974.95s on M1 Pro macbook.
->>>>>>
->>>>>>> +  'aarch64_rme_sbsaref' : 720,
->>>>>>
->>>>>> This one needed 2288.29s.
->>>>>>
->>>>>>>        'aarch64_sbsaref_alpine' : 720,
->>>>>>
->>>>>> Have to check cause timed out.
->>>>>>
->>>>>>>        'aarch64_sbsaref_freebsd' : 720,
->>>>>>
->>>>>> 331.65s
->>>>>>
->>>>>> So RME tests probably need longer timeouts or would not run at all.
->>>>>>
->>>>>
->>>>> By any chance, are you running those tests in debug mode?
->>>>> It seems to me that CI is running functional tests with optimized
->>>>> builds, so I'm not sure we want to support debug "times" here.
->>>> We do need to support debug times, because a common developer
->>>> use case is "doing a debug build, run 'make check-functional'
->>>> to check whether anything is broken. The debug times also
->>>> are useful because the CI runners can have highly variable
->>>> performance -- if a test is slow enough to hit the timeout
->>>> for a debug build locally, it's probably going to also hit
->>>> the timeout at least sometimes in CI.
->>>>
->>>
->>> I understand the scenario, but given how slow debug builds are, it
->>> would probably be faster to advise developer to recompile in release
->>> mode.
->>> The overall time of compile + test is slower than waiting for debug.
->>>
->>> Beyond using a debugger, what is the advantage to compile with -O0?
->> --enable-debug
->>    - enables -00 with -g3 for symbols
->>    - and enables additional checks to validate TCG
->
-> hm, do we ever used -g3 for --enable-debug?
->
-> https://gitlab.com/qemu-project/qemu/-/blob/master/configure?ref_type=3Dh=
-eads#L749
->
-> I'd love to use -g3 instead of only -g for having the macro symbols.
+I like this; it's something I've thought for a while would
+be good to have, but which I never got round to trying to
+put together. Thanks for doing this!
 
-Hmm yeah, I tend to use extra-cflags with it as well.
+Mostly my comments below are spelling/typo nits and
+other minor stuff.
 
+> ---
+>  docs/about/emulation.rst               |   2 +
+>  docs/codebase/index.rst                | 211 +++++++++++++++++++++++++
+>  docs/devel/decodetree.rst              |   2 +
+>  docs/devel/ebpf_rss.rst                |   2 +
+>  docs/devel/index-internals.rst         |   2 +
+>  docs/devel/migration/main.rst          |   2 +
+>  docs/devel/qapi-code-gen.rst           |   1 +
+>  docs/devel/testing/main.rst            |   9 +-
+>  docs/devel/testing/qtest.rst           |   2 +
+>  docs/index.rst                         |   3 +
+>  docs/interop/qemu-ga.rst               |   2 +
+>  docs/system/qemu-block-drivers.rst.inc |   2 +
+>  docs/tools/qemu-storage-daemon.rst     |   2 +
+>  docs/user/main.rst                     |   6 +
+>  14 files changed, 247 insertions(+), 1 deletion(-)
+>  create mode 100644 docs/codebase/index.rst
 >
-> In my builds I use --extra-cflags=3D"-g3" to have it but would like to dr=
-op it.
+> diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+> index 3028d5fff7a..3bc3579434f 100644
+> --- a/docs/about/emulation.rst
+> +++ b/docs/about/emulation.rst
+> @@ -176,6 +176,8 @@ for that architecture.
+>      - System
+>      - Tensilica ISS SIMCALL
 >
-> unless I'm missing some other change in the flags down the lane...
+> +.. _tcg-plugins:
+> +
+>  TCG Plugins
+>  -----------
 >
->
-> Cheers,
-> Gustavo
->
->> You can use --enable-debug-info for just debug info without the overhead.
->>=20
->>>
->>>> thanks
->>>> -- PMM
->>=20
+> diff --git a/docs/codebase/index.rst b/docs/codebase/index.rst
+> new file mode 100644
+> index 00000000000..353830ef175
+> --- /dev/null
+> +++ b/docs/codebase/index.rst
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+This is developer documentation, so I think it should
+be in docs/devel/.
+
+> @@ -0,0 +1,211 @@
+> +========
+> +Codebase
+> +========
+> +
+> +This section present the various parts of QEMU and how codebase is organized.
+
+"presents"; "how the codebase"
+
+> +
+> +Beyond giving succint descriptions, the goal is to offer links to various
+
+"succinct"
+
+> +parts of the documentation/codebase.
+> +
+> +Subsystems
+> +----------
+> +
+> +An exhaustive list of subsystems and files associated can be found in
+
+"associated files"
+
+"the MAINTAINERS file"
+
+> +`MAINTAINERS <https://gitlab.com/qemu-project/qemu/-/blob/master/MAINTAINERS>`_
+> +file.
+> +
+> +Some of the main QEMU subsystems are:
+> +
+> +- `Accelerators<Accelerators>`
+> +- Block devices and `disk images<disk images>` support
+> +- `CI<ci>` and `Tests<testing>`
+> +- `Devices<device-emulation>` & Board models
+> +- `Documentation <documentation-root>`
+> +- `GDB support<GDB usage>`
+> +- `Migration<migration>`
+> +- `Monitor<QEMU monitor>`
+> +- `QOM (QEMU Object Model)<qom>`
+> +- `System mode<System emulation>`
+> +- `TCG (Tiny Code Generator)<tcg>`
+> +- `User mode<user-mode>` (`Linux<linux-user-mode>` & `BSD<bsd-user-mode>`)
+> +- User Interfaces
+> +
+> +More documentation on QEMU subsystems can be found on :ref:`internal-subsystem`
+> +page.
+> +
+> +The Grand tour
+> +--------------
+> +
+> +We present briefly here what every folder of the codebase contains. Hop on!
+
+
+I think it would be helpful to mention at the top of this list something
+like:
+
+ The folder name links here will take you to that folder in our
+ gitlab repository; other links will take you to more detailed
+ documentation for that subsystem, where we have it. Unfortunately
+ not every subsystem has documentation yet, so sometimes the
+ source code is all you have.
+
+just so readers know that if e.g. they have a local source tree
+already there's no point in clicking on the 'crypto' link etc,
+but that other links are going to go somewhere with more
+human-written detail.
+
+> +
+> +* `accel <https://gitlab.com/qemu-project/qemu/-/tree/master/accel>`_:
+> +  Infrastructure and architecture agnostic code related to the various
+> +  `accelerators <Accelerators>` supported by QEMU
+> +  (TCG, KVM, hvf, whpx, xen, nvmm).
+> +  Contains interfaces for operations that will be implemented per
+> +  `target <https://gitlab.com/qemu-project/qemu/-/tree/master/target>`_.
+> +* `audio <https://gitlab.com/qemu-project/qemu/-/tree/master/audio>`_:
+> +  Audio (host) support.
+> +* `authz <https://gitlab.com/qemu-project/qemu/-/tree/master/authz>`_:
+> +  `QEMU Authorization framework<client authorization>`.
+> +* `backends <https://gitlab.com/qemu-project/qemu/-/tree/master/backends>`_:
+> +  Various backends used for device emulation.
+> +* `block <https://gitlab.com/qemu-project/qemu/-/tree/master/block>`_:
+> +  Block devices and `image formats<disk images>` implementation.
+> +* `bsd-user <https://gitlab.com/qemu-project/qemu/-/tree/master/bsd-user>`_:
+> +  `BSD User mode<bsd-user-mode>`.
+> +* build: Where the code built goes!
+
+The built code doesn't have to be in 'build'. We could say:
+
+ * build: You can tell the QEMU build system to put the built code
+   anywhere you like. By default it will go into a directory named
+   ``build``. Sometimes documentation will assume this default
+   for convenience when describing command lines; you can always
+   replace it with the path to your build tree.
+
+?
+
+> +* `chardev <https://gitlab.com/qemu-project/qemu/-/tree/master/chardev>`_:
+> +  Various backends used by char devices.
+> +* `common-user <https://gitlab.com/qemu-project/qemu/-/tree/master/common-user>`_:
+> +  User-mode assembly code for dealing with signals occuring during syscalls.
+> +* `configs <https://gitlab.com/qemu-project/qemu/-/tree/master/configs>`_:
+> +  Makefiles defining configurations to build QEMU.
+> +* `contrib <https://gitlab.com/qemu-project/qemu/-/tree/master/contrib>`_:
+> +  Community contributed devices/plugins/tools.
+> +* `crypto <https://gitlab.com/qemu-project/qemu/-/tree/master/crypto>`_:
+> +  Cryptographic algorithms used in QEMU.
+> +* `disas <https://gitlab.com/qemu-project/qemu/-/tree/master/disas>`_:
+> +  Disassembly functions used by QEMU target code.
+> +* `docs <https://gitlab.com/qemu-project/qemu/-/tree/master/docs>`_:
+> +  QEMU Documentation.
+> +* `dump <https://gitlab.com/qemu-project/qemu/-/tree/master/dump>`_:
+> +  Code to dump memory of a running VM.
+> +* `ebpf <https://gitlab.com/qemu-project/qemu/-/tree/master/ebpf>`_:
+> +  eBPF program support in QEMU. `virtio-net RSS<ebpf-rss>` uses it.
+> +* `fpu <https://gitlab.com/qemu-project/qemu/-/tree/master/fpu>`_:
+> +  Floating-point software emulation.
+> +* `fsdev <https://gitlab.com/qemu-project/qemu/-/tree/master/fsdev>`_:
+> +  `VirtFS <https://www.linux-kvm.org/page/VirtFS>`_ support.
+> +* `gdbstub <https://gitlab.com/qemu-project/qemu/-/tree/master/gdbstub>`_:
+> +  `GDB <GDB usage>` support.
+> +* `gdb-xml <https://gitlab.com/qemu-project/qemu/-/tree/master/gdb-xml>`_:
+> +  Set of XML files describing architectures and used by `gdbstub <GDB usage>`.
+> +* `host <https://gitlab.com/qemu-project/qemu/-/tree/master/host>`_:
+> +  Various architecture specific header files (crypto, atomic, memory
+> +  operations).
+> +* `linux-headers <https://gitlab.com/qemu-project/qemu/-/tree/master/linux-headers>`_:
+> +  A subset of headers imported from Linux kernel and used for implementing
+> +  KVM support and user-mode.
+
+We could add here
+
+ Don't change the files in here by hand; instead you can use the
+ ``scripts/update-linux-headers.sh`` script to update them from a
+ kernel source tree.
+
+But maybe that's starting to be a bit much info for an entry in this list.
+
+> +* `linux-user <https://gitlab.com/qemu-project/qemu/-/tree/master/linux-user>`_:
+> +  `User mode <user-mode>` implementation. Contains one folder per target
+> +  architecture.
+> +* `.gitlab-ci.d <https://gitlab.com/qemu-project/qemu/-/tree/master/.gitlab-ci.d>`_:
+> +  `CI <ci>` yaml and scripts.
+> +* `include <https://gitlab.com/qemu-project/qemu/-/tree/master/include>`_:
+> +  All headers associated to different subsystems in QEMU. Hierachy used mirrors
+
+"The hierarchy"
+
+> +  source code organization and naming.
+> +* `hw <https://gitlab.com/qemu-project/qemu/-/tree/master/hw>`_:
+> +  `Devices <device-emulation>` and boards emulation. Devices are categorized by
+> +  type/protocol/architecture and located in associated subfolder.
+> +* `io <https://gitlab.com/qemu-project/qemu/-/tree/master/io>`_:
+> +  QEMU `I/O channels <https://lists.gnu.org/archive/html/qemu-devel/2015-11/msg04208.html>`_.
+> +* `libdecnumber <https://gitlab.com/qemu-project/qemu/-/tree/master/libdecnumber>`_:
+> +  Import of gcc library, used to implement decimal number arithmetic.
+> +* `migration <https://gitlab.com/qemu-project/qemu/-/tree/master/migration>`__:
+> +  `Migration framework <migration>`.
+> +* `monitor <https://gitlab.com/qemu-project/qemu/-/tree/master/monitor>`_:
+> +  `Monitor <QEMU monitor>` implementation (HMP & QMP).
+> +* `nbd <https://gitlab.com/qemu-project/qemu/-/tree/master/nbd>`_:
+> +  QEMU `NBD (Network Block Device) <nbd>` server.
+> +* `net <https://gitlab.com/qemu-project/qemu/-/tree/master/net>`_:
+> +  Network (host) support.
+> +* `pc-bios <https://gitlab.com/qemu-project/qemu/-/tree/master/pc-bios>`_:
+> +  Contains pre-built firmware binaries and boot images, ready to use in
+> +  QEMU without compilation.
+> +* `plugins <https://gitlab.com/qemu-project/qemu/-/tree/master/plugins>`_:
+> +  `TCG plugins <tcg-plugins>` core implementation. Plugins can be found in
+> +  `tests <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/tcg/plugins>`__
+> +  and `contrib <https://gitlab.com/qemu-project/qemu/-/tree/master/contrib/plugins>`__
+> +  folders.
+> +* `po <https://gitlab.com/qemu-project/qemu/-/tree/master/po>`_:
+> +  Translation files.
+> +* `python <https://gitlab.com/qemu-project/qemu/-/tree/master/python>`_:
+> +  Python part of our build/test system.
+> +* `qapi <https://gitlab.com/qemu-project/qemu/-/tree/master/qapi>`_:
+> +  `QAPI <qapi>` implementation.
+> +* `qobject <https://gitlab.com/qemu-project/qemu/-/tree/master/qobject>`_:
+> +  QEMU Object implementation.
+> +* `qga <https://gitlab.com/qemu-project/qemu/-/tree/master/qga>`_:
+> +  QEMU `Guest agent <qemu-ga>` implementation.
+> +* `qom <https://gitlab.com/qemu-project/qemu/-/tree/master/qom>`_:
+> +  QEMU `Object model <qom>` implementation, with monitor associated commands.
+> +* `replay <https://gitlab.com/qemu-project/qemu/-/tree/master/replay>`_:
+> +  QEMU `record/replay <replay>` implementation.
+> +* `roms <https://gitlab.com/qemu-project/qemu/-/tree/master/roms>`_:
+> +  Contains source code for various firmware and ROMs, which can be compiled if
+> +  custom or updated versions are needed.
+> +* `rust <https://gitlab.com/qemu-project/qemu/-/tree/master/rust>`_:
+> +  Rust integration in QEMU. It contains the new interfaces defined and
+> +  associated devices using it.
+> +* `scripts <https://gitlab.com/qemu-project/qemu/-/tree/master/scripts>`_:
+> +  Collection of scripts used in build and test systems, and various
+> +  tools for QEMU codebase and execution traces.
+> +* `scsi <https://gitlab.com/qemu-project/qemu/-/tree/master/scsi>`_:
+> +  Code related to SCSI support, used by SCSI devices.
+> +* `semihosting <https://gitlab.com/qemu-project/qemu/-/tree/master/semihosting>`_:
+> +  QEMU `Semihosting <Semihosting>` implementation.
+> +* `stats <https://gitlab.com/qemu-project/qemu/-/tree/master/stats>`_:
+> +  `Monitor <QEMU monitor>` stats commands implementation.
+> +* `storage-daemon <https://gitlab.com/qemu-project/qemu/-/tree/master/storage-daemon>`_:
+> +  QEMU `Storage daemon <storage-daemon>` implementation.
+> +* `stubs <https://gitlab.com/qemu-project/qemu/-/tree/master/stubs>`_:
+> +  Various stubs (empty functions) used to compile QEMU with specific
+> +  configurations.
+> +* `subprojects <https://gitlab.com/qemu-project/qemu/-/tree/master/subprojects>`_:
+> +  QEMU submodules used by QEMU build system.
+> +* `system <https://gitlab.com/qemu-project/qemu/-/tree/master/system>`_:
+> +  QEMU `system mode <System emulation>` implementation (cpu, mmu, boot support).
+> +* `target <https://gitlab.com/qemu-project/qemu/-/tree/master/target>`_:
+> +  Contains code for all target architectures supported (one subfolder
+> +  per arch). For every architecture, you can find accelerator specific
+> +  implementations.
+> +* `tcg <https://gitlab.com/qemu-project/qemu/-/tree/master/tcg>`_:
+> +  `TCG <tcg>` related code.
+> +  Contains one subfolder per host supported architecture.
+> +* `tests <https://gitlab.com/qemu-project/qemu/-/tree/master/tests>`_:
+> +  QEMU `test <testing>` suite
+> +
+> +  - `avocado <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/avocado>`_:
+> +    Functional tests booting full VM using `Avocado framework <checkavocado-ref>`.
+> +    Those tests will be transformed and moved into
+> +    `tests/functional <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/functional>`_
+> +    in the future.
+> +  - `data <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/data>`_:
+> +    Data for various tests.
+> +  - `decode <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/decode>`_:
+> +    Testsuite for `decodetree <decodetree>` implementation.
+> +  - `docker <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/docker>`_:
+> +    Code and scripts to create `containers <container-ref>` used in `CI <ci>`.
+> +  - `fp <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/fp>`_:
+> +    QEMU testsuite for soft float implementation.
+> +  - `functional <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/functional>`_:
+> +    `Functional tests <checkfunctional-ref>` (full VM boot).
+> +  - `lcitool <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/lcitool>`_:
+> +    Generate dockerfiles for CI containers.
+> +  - `migration <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/migration>`_:
+> +    Test scripts and data for `Migration framework <migration>`.
+> +  - `multiboot <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/multiboot>`_:
+> +    Test multiboot functionality for x86_64/i386.
+> +  - `qapi-schema <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/qapi-schema>`_:
+> +    Test scripts and data for `QAPI <qapi-tests>`.
+> +  - `qemu-iotests <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/qemu-iotests>`_:
+> +    `Disk image and block tests <qemu-iotests>`.
+> +  - `qtest <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/qtest>`_:
+> +    `Device emulation testing <qtest>`.
+> +  - `tcg <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/tcg>`__:
+> +    `TCG related tests <checktcg-ref>`. Contains code per architecture
+> +    (subfolder) and multiarch tests as well.
+> +  - `tsan <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/tsan>`_:
+> +    `Suppressions <tsan-suppressions>` for thread sanitizer.
+> +  - `uefi-test-tools <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/uefi-test-tools>`_:
+> +    Test tool for UEFI support.
+> +  - `unit <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/unit>`_:
+> +    QEMU `Unit tests <unit-tests>`.
+> +* `trace <https://gitlab.com/qemu-project/qemu/-/tree/master/trace>`_:
+> +  `Tracing framework <tracing>`. Used to print information associated to various
+> +  events during execution.
+> +* `ui <https://gitlab.com/qemu-project/qemu/-/tree/master/ui>`_:
+> +  QEMU User interfaces.
+> +* `util <https://gitlab.com/qemu-project/qemu/-/tree/master/util>`_:
+> +  Utility code used by other parts of QEMU.
+
+thanks
+-- PMM

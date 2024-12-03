@@ -1,102 +1,104 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3543624njk;
-        Tue, 3 Dec 2024 01:23:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUZgEwJsK6SUPPReBoRStVkUQw8VBU+jJH1c/euzFnX5DTVm3mccThrj0F7264mbskyusKzjk68nAHB6g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFme3SSRGvsmlzDmkgxNqxb/6CE90JucogJszVRt7KHQe+weQ3SsY7maMUNEx9AaZThwb+S
-X-Received: by 2002:a05:622a:142:b0:466:9c95:81cf with SMTP id d75a77b69052e-4670c0964ffmr23052021cf.18.1733217789769;
-        Tue, 03 Dec 2024 01:23:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733217789; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3543643njk;
+        Tue, 3 Dec 2024 01:23:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWx0XZ7a7LEalE1a0Pwf1Yms5BKa6XwtGq1zEvESw0csXCN5JHQBEOTFM63+wGwtux2nHBAuuumZki9FA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGbNo4qgBOYyWOE8uqI45KvG5SuAECFBnmd0RR+U8buHl2Jgy43kDcbPvVKLrg+zQ3AmYRe
+X-Received: by 2002:a05:620a:2416:b0:7b1:f1d:d0c2 with SMTP id af79cd13be357-7b6a5d66510mr213078985a.19.1733217791039;
+        Tue, 03 Dec 2024 01:23:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733217791; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ej/MigwNSBmSLw4YRMhx+LY5B8L6rGDsUAIG4iFanP0eD9GkQNzz+37U63IIHTH4Cm
-         DU+E3aw1PeCqe2F4dfC/M7+eU6+J1JKhtRgVFATK9K4cuqOEdsnpSEh1weB5OR+4PjbB
-         No1iUCltQmz3+xftg/6uL9BZPLWYx/1ew+zW3uZs+pewKBgR622VPn2fy/YA6kBmOlEe
-         YDdqqS1jD/LwNvLt99lsPTTamDc9m7hC1YG5zrTuQjSF5lTkUpNch5lw5kj8vDX8Kb7B
-         Pb+ron4VdUaWV+waPlhVxD6Iy1r/KHUOAuOPplCbVJD3Yt2ojyTPV+UA5gzaW0LDR/lZ
-         pGdg==
+        b=WO0p/ZyQyH6WJrna6v7adGUqsMlZTuQqD9gc4JueNQYeppSX7TZtTaBEpaHGQWxntS
+         CMoIn8WmOImJvrZ6RLjqQ9WjfWuegtnpq6ej3iXGx6boY54F9sbOOboGvzIxbJGhU/pl
+         ZT3F91UTyjAIl7sj63C8Cp/YJDfk9tXqWR7IA5Ddni8TJk8cu8pJ2MrwRHWnA7+7fgo9
+         HWG9G+kD91z4XuuGkNfxQJ3EpisjGRi/NnoCZE9KV9puEriFnW+jIk0HkPhB/hYyMtsf
+         WR79EUq78eIpcaVb5teEDQw8U5wGmgMdX3NFwRA9EaXpon4GApEDTtkJ5wG3W69nVKzq
+         VItg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=PKNytw/ebCVRIpsQ9YAUBfkaMh3JJAq/QjBPjtgiz7g=;
-        fh=K4q8LGA1dTAvVw7OHYqRwA3rKlWlusrk6TGWj+g1fmU=;
-        b=RrzQJcWJ5/tjUBgSWGuDqZe2E1R815CZ2fk2w4q6hrAU2nBaJBntlGevRNN9PF58+O
-         JgwSKubHP9PtB1AZd/utiz2+9zmr2bvtClrL3s1y31xswOclG6nRZAOikEhXwnsijTLU
-         /zOVZLeB3pfvCY34o1zGv8yOMQhlK6vGj7Ep2UfjTzoyxe+kM0F4AVO6veJNn9+OklQd
-         /lC5AVRtiPwbIVvT6qLiypUYDE1GrG6DTuxLhgDmi+H8bL/FP62uyYRnQRfHCxlynY9J
-         TjL+1in4Br8f14a81CtygYBTOz0+oCXMh00RDe5Qi4XA7+9Jk9V4aSH+2EawbFSGm4qc
-         aKnA==;
+        bh=uLnillY0LwsA1bGIi96aGqNPMbJhHjhH+14EVXV96qM=;
+        fh=0+jk1ymhYegohRQFAALGZxFLj82Tdef8RDWRTNppavA=;
+        b=ePi7Tndc2lbVc5xHvKLS/PzHK4I992beuVkV7TsbuWvEtDR+Fdg8MgfcWmL5UvV5uY
+         oXH648AMxfzrN79KUi7lrzrrfMYb6tikG/z7J7KPlJYgvBEHUFZjTkTI/zXo1489MB4b
+         z/2br8zycyF/4V/XBwphD4s9+AKPUVuV0X7BhrYTEBAiRZwZGKBnPgrFeBPB1d/YFrt8
+         xE4I+FdlZorfah2UECUcClhJjLlqUn4PusrMGzJK2dIuUZV4PcxNmO548+Ou3oxHP2Xa
+         aAkqMNqW4KH3MkWIjiQmNbPoi4A4+DaZ+SdPCIe4qK8ou575O+93F5ZMQfdj5ZbH6Syq
+         CaJw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="C4ES/bYd";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=BUFd7peR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=fail header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-466c4055c52si139067201cf.24.2024.12.03.01.23.09
+        by mx.google.com with ESMTPS id af79cd13be357-7b6849b2824si1388050485a.305.2024.12.03.01.23.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2024 01:23:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Dec 2024 01:23:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="C4ES/bYd";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=BUFd7peR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=fail header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tIP76-0005o4-8b; Tue, 03 Dec 2024 04:22:36 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tIP79-0005oh-4N; Tue, 03 Dec 2024 04:22:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIP74-0005nV-FF
- for qemu-devel@nongnu.org; Tue, 03 Dec 2024 04:22:34 -0500
-Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIP78-0005oR-F5
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2024 04:22:38 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIP71-0002hv-Nf
- for qemu-devel@nongnu.org; Tue, 03 Dec 2024 04:22:34 -0500
-Received: by mail-lf1-x130.google.com with SMTP id
- 2adb3069b0e04-53dd8b7796dso5610668e87.1
- for <qemu-devel@nongnu.org>; Tue, 03 Dec 2024 01:22:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIP76-0002iV-QX
+ for qemu-arm@nongnu.org; Tue, 03 Dec 2024 04:22:38 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-5d0bd12374cso2494963a12.3
+ for <qemu-arm@nongnu.org>; Tue, 03 Dec 2024 01:22:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733217750; x=1733822550; darn=nongnu.org;
+ d=linaro.org; s=google; t=1733217755; x=1733822555; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PKNytw/ebCVRIpsQ9YAUBfkaMh3JJAq/QjBPjtgiz7g=;
- b=C4ES/bYd6CIO8uWhG9jWpVePaXTZZq2eN9nOGUP8DL/8HnrM+Wj9fCOsfBiIzZsKE8
- GB1J3Aem2YBIPebnZUlMENgLt+HMgSpTVk2q3SDW8In3QMI7xV0+gdFJOsdQ6uw0+WcX
- y2Qp5MUddxt7+LSsEftfszqEH3k5bOWm59hyCWR5sppvy6+KmwQ1Fz573LWT9O1AQOrZ
- XGhMJ5Lj96HRdS8pk/0xGGgGN2klsK7VR41jKSuxbdda31ZPLBtqwLeWIT2AGl3qBZJf
- qveoX0NKHtFowIeLcCGApOQrodsDZ/Xvou1wpjMrQpFjyZfLGBjRhtWcxyOYOKfQqmEW
- Zosg==
+ bh=uLnillY0LwsA1bGIi96aGqNPMbJhHjhH+14EVXV96qM=;
+ b=BUFd7peRHkHPYt2kSwzpNFdFK0XR/pcaoCQJDxZLDQZEG0rikY7aWkKwGjZY5TuMsj
+ jniqcUlGzNaw/mnG79PiC1kaenfa5Oc6GxfxSAWox+7zrqDQ4NKbdgwKz5oINwgyt9bo
+ Vn1cNz5ie7sf+uLQheZMjnaQvCPcTbKYnx9lY84/DEzpXBHRc3pOkEkzEmtUSpclaSrP
+ 9OtZJ9XKmQ0ZghPhXFI2HdXAC76/o4CBfkvi6Aolvu6H+6hVXqnphroXkjzALJGbLRJB
+ CkkqKbdL+eGhCmYigaZT7VvvwR/0y9ihBPPPPvtQzFWV1m2dFJZ5Ex0EK1ZQensWTLJN
+ oPYQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733217750; x=1733822550;
+ d=1e100.net; s=20230601; t=1733217755; x=1733822555;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=PKNytw/ebCVRIpsQ9YAUBfkaMh3JJAq/QjBPjtgiz7g=;
- b=uIuFiAHO6NAU56guFW4rba27OXOKguySnzrMcHo/H2D/x9Pid2L4a6K77EA4ekyibq
- ZQovNjKXSBBWZfk0zSjWiNizwXY3ydaetoWvF19Tk3NkGvXNhQ/JGDzJLfUNq5ct2AXs
- GYrXehenvGYeOmclrFWqKUr/ruslGylx4ppxZc/TobewEg8EnuQ3UQ5rcZatpNFSJnST
- mTSDiQvXJ5hwN6HeCKUmkAVpIyav+1hfCXlhj8VxpPc2c0QNcK9dwM/PTzDTQ/azZAaa
- R/LGCEkkQ3jlw6jmwwSZDs/KJa5Lu77BLRZmFVA7EAklPEXTcmYHUzpNw91zV+XhNvYH
- o1XQ==
-X-Gm-Message-State: AOJu0YzkHjb9aBrpOHmDfjQG5+R8O/U3xCjA2yr6tvvvx12xS4oiVE9i
- nN1MQn6dGHsa+x9ijLQmeuLYfuivtf77tI5bQxTXNWThxmGh56hDQpg2qNwNMZIB9qsIZsIziTW
- /HGU=
-X-Gm-Gg: ASbGncu0RvfdHJEfvcpzAPSh/cwtNMnI6aE3kGrSEUpSHSxk6ZdYPe1+HToLRlzTTlk
- u/gmMnjEhSTmmuBz8WRP9xWYSp3si32QUPAWSj7NRSXVL8QcsUcB5a9SJPTTBw/pByN7a/FAYOT
- 6R9eGJ/7DXMVaTA75frdCHcyTWm1f9ry2YrlIYqjpd+uSuyah8owt8DQFIzGlLveqCk5sB6fsPf
- Lztm/BVTfOSAAurXdOei4upzrFdaMQOXWacmm4tzH2ckYisW8PzWcAR+olDiA6YQMfzaWQ0
-X-Received: by 2002:a05:6512:3096:b0:53d:a273:7da6 with SMTP id
- 2adb3069b0e04-53e12a290b4mr863155e87.57.1733217749670; 
- Tue, 03 Dec 2024 01:22:29 -0800 (PST)
+ bh=uLnillY0LwsA1bGIi96aGqNPMbJhHjhH+14EVXV96qM=;
+ b=vEjUYOtCGffIMdLMDh5bdujV8KYKtYOlDtQxF/clKtKetp76PLSqxLwsMGgoJB+qVt
+ Q+4jEyOOWZavg4UDx4fSsTSWXkZb5MrKoAvJ4ZIxDEIfQbVO9kQATQITsXapnjhTU4ar
+ t1aprwiTegbMN97b5OuhLI/GKyM+27xJ6/b1KVksAFzC4Qc583+v4b7fkD7mj+oXXV/L
+ KPRRXzGhjpNkIh3DhTIsc1RQ2wWL+vIDEeyEanCczu1x0KiWCmYulDF9UXQD38DRyQII
+ UjG8EUKCgizdVRDBOJSmi3ekWzwHJUqpjAWnVGRiKMDVItwx2heQr6GavUgIgmyypnVh
+ rFzA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUVxbYPjXz5MTi4r5LqlpezcyB+w7ob3/IU58rPeCGinYzHkGum0+ZVync+ZshRcXw5tcgVZTr2ZA==@nongnu.org
+X-Gm-Message-State: AOJu0YxAmT8L0dwZ0Uxs9lUUq9nyveMokh+uvJvXR4gB7HMZ7wn5+aBO
+ pDH3cgIWCTS0OXm1Ze5XB5a+kDFbR6Nf38Ti2duLPADUOxHmWUZom3K2ezvbqv+C/g9h333PAV4
+ L8hA=
+X-Gm-Gg: ASbGncsuiK0XeAWG4c+tE8bF8t2My1zRW6uJTlsxahVWiNZxnZIQHwwcYSFiqvAgs4c
+ AERBwv3TJrySL//q/kqmVYbuwLJKLf7BDTg8eLU3Tbhm2srXrosCU9Wp9stYc5khwGAP9bmfwu3
+ QpKOsfU9iNqJ1ahXqvmiXiFDywETnjMv4ADteJ0ey97slA6wuW7l6IECil0Nhy1TN0XOUJ21s0D
+ mY0NiWv9bMHZJzj2kIOM620bHDolENLH+HhXqKw4vr/VNb4kFtEVavNe61fAWkaI2nmXEDZ
+X-Received: by 2002:a05:6402:34d5:b0:5d0:e9b7:170c with SMTP id
+ 4fb4d7f45d1cf-5d10cb5c39fmr1604224a12.18.1733217755400; 
+ Tue, 03 Dec 2024 01:22:35 -0800 (PST)
 Received: from localhost.localdomain ([176.187.209.146])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aa5998e6a1asm591445466b.98.2024.12.03.01.22.28
+ 4fb4d7f45d1cf-5d0bfa327dcsm4180475a12.83.2024.12.03.01.22.34
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 03 Dec 2024 01:22:29 -0800 (PST)
+ Tue, 03 Dec 2024 01:22:34 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -105,18 +107,18 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
  Thomas Huth <thuth@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 6/7] accel/kvm: Remove mentions of legacy '-machine foo,
+Subject: [PATCH 7/7] qemu-options: Remove mentions of legacy '-machine foo,
  accel=bar'
-Date: Tue,  3 Dec 2024 10:21:52 +0100
-Message-ID: <20241203092153.60590-7-philmd@linaro.org>
+Date: Tue,  3 Dec 2024 10:21:53 +0100
+Message-ID: <20241203092153.60590-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241203092153.60590-1-philmd@linaro.org>
 References: <20241203092153.60590-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::130;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x130.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,146 +127,60 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KvVse/k4FxFE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: SX+GsndYqeA1
 
 Since commit 6f6e1698a68 ("vl: configure accelerators from -accel
 options") we prefer the '-accel bar' command line option.
 
-Update the documentation when KVM is referred to.
+The new form started to be documented in commit 8d4e9146b35 ("tcg:
+add options for enabling MTTCG"); it is safe to remove the mentions
+of the legacy option.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- docs/bypass-iommu.txt            | 3 ++-
- docs/nvdimm.txt                  | 2 +-
- docs/specs/tpm.rst               | 2 +-
- docs/system/arm/cpu-features.rst | 2 +-
- docs/system/cpu-hotplug.rst      | 2 +-
- docs/system/ppc/powernv.rst      | 2 +-
- docs/system/ppc/pseries.rst      | 4 ++--
- scripts/device-crash-test        | 2 +-
- 8 files changed, 10 insertions(+), 9 deletions(-)
+ qemu-options.hx | 9 ---------
+ 1 file changed, 9 deletions(-)
 
-diff --git a/docs/bypass-iommu.txt b/docs/bypass-iommu.txt
-index e6677bddd32..2ef0e0f6a65 100644
---- a/docs/bypass-iommu.txt
-+++ b/docs/bypass-iommu.txt
-@@ -51,7 +51,8 @@ And we got:
- x86 architecture:
+diff --git a/qemu-options.hx b/qemu-options.hx
+index dacc9790a4b..11f0aab1470 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -27,8 +27,6 @@ ERST
+ DEF("machine", HAS_ARG, QEMU_OPTION_machine, \
+     "-machine [type=]name[,prop[=value][,...]]\n"
+     "                selects emulated machine ('-machine help' for list)\n"
+-    "                property accel=accel1[:accel2[:...]] selects accelerator\n"
+-    "                supported accelerators are kvm, xen, hvf, nvmm, whpx or tcg (default: tcg)\n"
+     "                vmport=on|off|auto controls emulation of vmport (default: auto)\n"
+     "                dump-guest-core=on|off include guest memory in a core dump (default=on)\n"
+     "                mem-merge=on|off controls memory merge support (default: on)\n"
+@@ -59,13 +57,6 @@ SRST
  
- qemu-system-x86_64 \
-- -machine q35,accel=kvm,default_bus_bypass_iommu=true \
-+ -accel kvm \
-+ -machine q35,default_bus_bypass_iommu=true \
-  -device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,addr=0x3 \
-  -device pxb-pcie,bus_nr=0x20,id=pci.20,bus=pcie.0,addr=0x4,bypass_iommu=true \
-  -device intel-iommu \
-diff --git a/docs/nvdimm.txt b/docs/nvdimm.txt
-index fd7773dc5ab..d589c3a9b77 100644
---- a/docs/nvdimm.txt
-+++ b/docs/nvdimm.txt
-@@ -228,7 +228,7 @@ which allows the platform to communicate what features it supports related to
- NVDIMM data persistence.  Users can provide a persistence value to a guest via
- the optional "nvdimm-persistence" machine command line option:
+     Supported machine properties are:
  
--    -machine pc,accel=kvm,nvdimm,nvdimm-persistence=cpu
-+    -machine pc,nvdimm,nvdimm-persistence=cpu
- 
- There are currently two valid values for this option:
- 
-diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
-index 1ad36ad7099..c50bb1cec01 100644
---- a/docs/specs/tpm.rst
-+++ b/docs/specs/tpm.rst
-@@ -329,7 +329,7 @@ In case a pSeries machine is emulated, use the following command line:
- 
- .. code-block:: console
- 
--  qemu-system-ppc64 -display sdl -machine pseries,accel=kvm \
-+  qemu-system-ppc64 -display sdl -accel kvm -machine pseries \
-     -m 1024 -bios slof.bin -boot menu=on \
-     -nodefaults -device VGA -device pci-ohci -device usb-kbd \
-     -chardev socket,id=chrtpm,path=/tmp/mytpm1/swtpm-sock \
-diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-index a5fb929243c..4aed91a987d 100644
---- a/docs/system/arm/cpu-features.rst
-+++ b/docs/system/arm/cpu-features.rst
-@@ -329,7 +329,7 @@ SVE CPU Property Examples
-   3) When KVM is enabled, implicitly enable all host CPU supported vector
-      lengths with the ``host`` CPU type::
- 
--     $ qemu-system-aarch64 -M virt,accel=kvm -cpu host
-+     $ qemu-system-aarch64 -M virt -accel kvm -cpu host
- 
-   4) Only enable the 128-bit vector length::
- 
-diff --git a/docs/system/cpu-hotplug.rst b/docs/system/cpu-hotplug.rst
-index cc50937c36c..64314ccfd6f 100644
---- a/docs/system/cpu-hotplug.rst
-+++ b/docs/system/cpu-hotplug.rst
-@@ -12,7 +12,7 @@ vCPU hotplug
-     allow vCPU hotplug)::
- 
-       $ qemu-system-x86_64 -display none -no-user-config -m 2048 \
--          -nodefaults -monitor stdio -machine pc,accel=kvm,usb=off \
-+          -nodefaults -monitor stdio -accel kvm -machine pc,usb=off \
-           -smp 1,maxcpus=2 -cpu IvyBridge-IBRS \
-           -qmp unix:/tmp/qmp-sock,server=on,wait=off
- 
-diff --git a/docs/system/ppc/powernv.rst b/docs/system/ppc/powernv.rst
-index de7a807ac76..689f9c81a02 100644
---- a/docs/system/ppc/powernv.rst
-+++ b/docs/system/ppc/powernv.rst
-@@ -63,7 +63,7 @@ powernv. kvm-pr in theory could be used as a valid accel option but
- this isn't supported by kvm-pr at this moment.
- 
- To spare users from dealing with not so informative errors when attempting
--to use accel=kvm, the powernv machine will throw an error informing that
-+to use '-accel kvm', the powernv machine will throw an error informing that
- KVM is not supported. This can be revisited in the future if kvm-pr (or
- any other KVM alternative) is usable as KVM accel for this machine.
- 
-diff --git a/docs/system/ppc/pseries.rst b/docs/system/ppc/pseries.rst
-index bbc51aa7fcd..3b18d2ee1ef 100644
---- a/docs/system/ppc/pseries.rst
-+++ b/docs/system/ppc/pseries.rst
-@@ -164,9 +164,9 @@ Currently, there are two implementations of KVM on Power, ``kvm_hv.ko`` and
- If a host supports both KVM modes, and both KVM kernel modules are loaded, it is
- possible to switch between the two modes with the ``kvm-type`` parameter:
- 
--* Use ``qemu-system-ppc64 -M pseries,accel=kvm,kvm-type=PR`` to use the
-+* Use ``qemu-system-ppc64 -accel kvm -M pseries,kvm-type=PR`` to use the
-   ``kvm_pr.ko`` kernel module.
--* Use ``qemu-system-ppc64 -M pseries,accel=kvm,kvm-type=HV`` to use ``kvm_hv.ko``
-+* Use ``qemu-system-ppc64 -accel kvm -M pseries,kvm-type=HV`` to use ``kvm_hv.ko``
-   instead.
- 
- KVM-PR
-diff --git a/scripts/device-crash-test b/scripts/device-crash-test
-index 2b139e29ba0..2c6fd7c6f6e 100755
---- a/scripts/device-crash-test
-+++ b/scripts/device-crash-test
-@@ -147,7 +147,7 @@ ERROR_RULE_LIST = [
-     # "spapr-cpu-core needs a pseries machine"
-     {'machine':'(?!pseries).*', 'device':'.*-spapr-cpu-core', 'expected':True},
- 
--    # KVM-specific devices shouldn't be tried without accel=kvm:
-+    # KVM-specific devices shouldn't be tried without '-accel kvm':
-     {'accel':'(?!kvm).*', 'device':'kvmclock', 'expected':True},
- 
-     # xen-specific machines and devices:
+-    ``accel=accels1[:accels2[:...]]``
+-        This is used to enable an accelerator. Depending on the target
+-        architecture, kvm, xen, hvf, nvmm, whpx or tcg can be available.
+-        By default, tcg is used. If there is more than one accelerator
+-        specified, the next one is used if the previous one fails to
+-        initialize.
+-
+     ``vmport=on|off|auto``
+         Enables emulation of VMWare IO port, for vmmouse etc. auto says
+         to select the value based on accel and i8042. For accel=xen or
 -- 
 2.45.2
 

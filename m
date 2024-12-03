@@ -1,128 +1,153 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385dfb2d7e0sm12543885f8f.44.2024.12.03.06.56.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3747199njk;
+        Tue, 3 Dec 2024 06:56:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWvTTAswPwC+EyRjDeYzBql2bjQ22UH6VJnLTP4sTHGawcvaSNaEGZZ3BLsSiTx87ZrgPFkwFtl3u9GFw==@linaro.org
+X-Received: by 2002:a05:6a00:889:b0:71e:7887:81ac with SMTP id d2e1a72fcca58-7257fcac14emr2884680b3a.16.1733237766177;
+        Tue, 03 Dec 2024 06:56:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733237766; cv=none;
+        d=google.com; s=arc-20240605;
+        b=DPmSx5PDSjhjo1FHl8RDgfvsoMKoAfVwKfp5PrkxBLIoRGYgjc1wr97woy/AHWLPR6
+         JpIYDZbmMu5wKHDfSCUms84Sj7gs0Ky4MC1dHMgfpqSta6zpJtuMcvlS2ZcSot9LT4nS
+         jYPMYgzGJYHON0N9cGIQ/aau+oBhoD1V5NAQ5y8xFf5GYYagMwkrAgZjs0WQ8VwnFUYl
+         Gghizt+knH3vwYUvnNhoejJqQrrDXUW89e4ndh3fT6tba0yZST+Z7ezh4dAYES3nKNQO
+         ZkokCsjmnIorl+KcB6ygTzzROWQnqnYCdYOh170RACu03U0/jiYSeLja1cMsBsk7iw5m
+         uxMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=q+kc96z5ScfmNUcRJ2QkY4fyC2is1v5rmCpXPKmqZAU=;
+        fh=rK/3qU4s+WvqWbO0hFJHzVt/sjys7C+nvgA+fZF+oCw=;
+        b=DY7C6iZ6JUcavFYu7t5S1bXKorL/S4EODsTJLu14OSpVzfR5NrXfSAVjgxEGIbAbgX
+         6WR4AnivMQIaquGX/naJbS+o7i4WQwllqozEUFfbz9Sy8rLLBH4acyv08iHKLwHsgNuf
+         NadUaxNSBtVMvzfHyDylzvplyuTAg5eTNcz3UrkYcVNAVopYhZRHsYFJbUSFdQf3Q3xL
+         JjuGPzxeiJ4Skyf/6IMLrawbZW0FfzfW4OoyRIZlyA8kytJjFkMPdqweVveZ/Z78ndaz
+         SnK7cMS6glElu472CtVUSMjaz1yLPGU8TY5pNMDna0CkjzBsCctOCiVofxi24ODgtBap
+         avVg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FPaXy+xR;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <gustavo.romero@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-7254176c8a2sor8087165b3a.4.2024.12.03.06.56.06
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 03 Dec 2024 06:56:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FPaXy+xR;
+       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733237766; x=1733842566; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=q+kc96z5ScfmNUcRJ2QkY4fyC2is1v5rmCpXPKmqZAU=;
+        b=FPaXy+xRZTT11Ez5OQrcYnAKv9g+DW5Jp7xWhHWF2V55n+GofjyKQ2gqMwRv3e5DPs
+         2P7vBscZBUke1p+TULJfPvGMClwpIP4GUiJrmGp5cULVz7RK81ROXIYgXMA/fHzpuMrD
+         SMLlt+pm1a3ENScTVdyf4RrDxIl4yhUsReaVKwwg9Gi5euHENcir1e9NqFZRsS34XvSj
+         /JGp2NMvsVGpowT55QyuBtQagAzP2TlzJXk6wV5zC2I1KNgalVfZlYMT7iQ9PCQhHAbg
+         NsbsYotRHbM7Pb6fxCgkn1zOV7owV7Y5/htOmzjQtkoFfwy9rUDFPCNxTWTtMD0w+cPj
+         3r8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733237766; x=1733842566;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=q+kc96z5ScfmNUcRJ2QkY4fyC2is1v5rmCpXPKmqZAU=;
+        b=uiKwd6Zplu68WEiewMDJPWQZPcJ/QKwsAspFQ+o6DP9699OISb9snOrtNoO48D4WuD
+         4U7URQhWKtsg20UZVrDSjhBMkQU1JLEk8hdLp2om0i1tta9YGZoa42WLU4tT7eE473Ae
+         752WNtg6lyPp/I8RPeLYh01FajYRvK9fxbpw8NfmIg9uSOyVGUjH1KrZa3TI4WzTmDus
+         B1CejdvLi5y96tov/wE23wNzhQi8Fr+X5mpUXLlGaJiEbsLqiPpzV0vsmlMN+zr+/SQT
+         mwGdEol4n64fwrALIAg8LO6Yi/IBIPMfgIkxm5d1aHK5LsGqv3G0jqPRx1YDcg6T4C7O
+         TSMQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU8/WfuBgma6SHkrZnv/wZ48gE4fCcD5bbu8tS+RQSH3cte9Q6ulcZzsDhC2/UxL0s054JDgQN9L/5+oA==@linaro.org
+X-Gm-Message-State: AOJu0Yy/sRij0tc1YT0UbNY7eIsbs7G5hARo8YoVY8RouoJiLnTPZbWa
+	womSU4JLbZMSomsMWUhstq2XLE2iLhz7E/fGsLB3xoGvPHwBA2uFGsG+vaKgcsHMhg==
+X-Gm-Gg: ASbGnctK6CkWgQFZv6fZ94RCPKPY8c01A8g+YTfeE/IijRkHXTCSrlJVk/WwATuGeBc
+	FOfiKOMT3RYHwh2SNeTJAaXiHSgDaQ/Z+SKm6eQz32fZu5U5ZtA+gfNe1GE3PPkPyGFK7er9dlc
+	AuoOLakH8fQBIM7eLkutBKesG7jkttDYIy2f3TzLoEoDlPxr/M5hO5Gir/47+EzNFUB/B4aKe3u
+	s323u/D44+TEzgaTXrlARoJXu1lXi5Un3ALthGvx9OLfKxR5ihHXOxi9MtTZY0=
+X-Google-Smtp-Source: AGHT+IGbeMGGFGQuKV7fKZKB/Gz+zvE+3N9o1GPUk4FHnrEyjZfW3356o9XW6Bm9pwji2oW4zgWuSw==
+X-Received: by 2002:a05:6a00:3d06:b0:71e:7cb2:57e7 with SMTP id d2e1a72fcca58-7257fa5b914mr3061343b3a.10.1733237765705;
         Tue, 03 Dec 2024 06:56:05 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id ADF915F89C;
-	Tue,  3 Dec 2024 14:56:04 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@kaod.org>,  Troy Lee
- <leetroy@gmail.com>,  Alistair Francis <alistair@alistair23.me>,  Peter
- Maydell <peter.maydell@linaro.org>,  Andrew Jeffery
- <andrew@codeconstruct.com.au>,  Jamin Lin <jamin_lin@aspeedtech.com>,
-  qemu-arm@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Richard
- Henderson <richard.henderson@linaro.org>,  Steven Lee
- <steven_lee@aspeedtech.com>,  Niek Linnenbank <nieklinnenbank@gmail.com>,
-  Joel Stanley <joel@jms.id.au>,  "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH v2] tests/functional/aarch64: add tests for FEAT_RME
-In-Reply-To: <20241128213729.1021961-1-pierrick.bouvier@linaro.org> (Pierrick
-	Bouvier's message of "Thu, 28 Nov 2024 13:37:29 -0800")
-References: <20241128213729.1021961-1-pierrick.bouvier@linaro.org>
-User-Agent: mu4e 1.12.7; emacs 29.4
-Date: Tue, 03 Dec 2024 14:56:04 +0000
-Message-ID: <87mshcdddn.fsf@draig.linaro.org>
+Return-Path: <gustavo.romero@linaro.org>
+Received: from [192.168.0.102] ([179.93.129.106])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725418148bfsm10558936b3a.164.2024.12.03.06.56.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Dec 2024 06:56:05 -0800 (PST)
+Message-ID: <f043b94a-278f-4009-87b9-9b2ba4b80c42@linaro.org>
+Date: Tue, 3 Dec 2024 11:55:59 -0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 8+qI+Trhn3oD
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] tests/functional/aarch64: add tests for FEAT_RME
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Troy Lee <leetroy@gmail.com>, Alistair Francis <alistair@alistair23.me>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, alex.bennee@linaro.org,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, Joel Stanley <joel@jms.id.au>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20241128213729.1021961-1-pierrick.bouvier@linaro.org>
+ <4b3180bd-8054-4431-a594-0445ce4837aa@linaro.org>
+ <5620efa2-98c6-4613-b866-67e91ac6acf8@linaro.org>
+ <21d8399a-91bf-4599-a73d-351f9f0c147c@linaro.org>
+ <CAFEAcA-4_tnm9iPCf_3E4HKKXJ9h6w9oMiYaN0Y4s9wmpji3Jg@mail.gmail.com>
+ <6cd6b3fd-8362-4fa8-b6e5-e0e3aded3215@linaro.org>
+Content-Language: en-US
+From: Gustavo Romero <gustavo.romero@linaro.org>
+In-Reply-To: <6cd6b3fd-8362-4fa8-b6e5-e0e3aded3215@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: 1VoHDfeyaCMw
 
-Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
+Hi Pierrick,
 
-> This boot an OP-TEE environment, and launch a nested guest VM inside it
-> using the Realms feature. We do it for virt and sbsa-ref platforms.
->
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->
-<snip>
-> +
-> +        self.vm.add_args('-accel', 'tcg')
-> +        self.vm.add_args('-cpu', 'max,x-rme=3Don')
+On 12/2/24 14:33, Pierrick Bouvier wrote:
+> On 12/2/24 03:04, Peter Maydell wrote:
+>> On Mon, 2 Dec 2024 at 10:58, Marcin Juszkiewicz
+>> <marcin.juszkiewicz@linaro.org> wrote:
+>>>
+>>> W dniu 1.12.2024 o 19:09, Pierrick Bouvier pisze:
+>>>> Hi Marcin,
+>>>>
+>>>> On 12/1/24 05:34, Marcin Juszkiewicz wrote:
+>>>
+>>>>> So RME tests probably need longer timeouts or would not run at all.
+>>>>>
+>>>>
+>>>> By any chance, are you running those tests in debug mode?
+>>>
+>>> zOMG, thanks! Turned out that I left "--enable-debug" in my local build
+>>> and forgot to remove it.
+>>>
+>>> 90s vs 2974s is a difference ;D
+>>
+>> That is a particularly awful debug-to-non-debug performance
+>> difference; it might be worth looking into what exactly
+>> is causing it.
+>>
+> 
+> Indeed.
+> 
+> This test boots a nested VM (using kvm, not tcg), do you any idea why such use case could be so slow with QEMU?
 
-With debug on the PAC function are certainly very high in the perf
-report. So pauth-impdef=3Don seems worthwhile here.
+It's not "really" using kvm acceleration right?
 
-> +        self.vm.add_args('-m', '2G')
-> +        self.vm.add_args('-M', 'sbsa-ref')
-> +        self.vm.add_args('-drive', f'file=3D{pflash0},format=3Draw,if=3D=
-pflash')
-> +        self.vm.add_args('-drive', f'file=3D{pflash1},format=3Draw,if=3D=
-pflash')
-> +        self.vm.add_args('-drive', f'file=3Dfat:rw:{virtual},format=3Dra=
-w')
-> +        self.vm.add_args('-drive', f'format=3Draw,if=3Dnone,file=3D{driv=
-e},id=3Dhd0')
-> +        self.vm.add_args('-device', 'virtio-blk-pci,drive=3Dhd0')
-> +        self.vm.add_args('-device', 'virtio-9p-pci,fsdev=3Dshr0,mount_ta=
-g=3Dshr0')
-> +        self.vm.add_args('-fsdev', f'local,security_model=3Dnone,path=3D=
-{rme_stack},id=3Dshr0')
-> +        self.vm.add_args('-device', 'virtio-net-pci,netdev=3Dnet0')
-> +        self.vm.add_args('-netdev', 'user,id=3Dnet0')
-<snip>
-> +
-> +        self.vm.add_args('-accel', 'tcg')
-> +        self.vm.add_args('-cpu', 'max,x-rme=3Don')
+It's using kvm but the kvm module in the host kernel is actually running
+fully emulated in QEMU system mode (-accel tcg is being passed to it).
 
-And here.
-
-<snip>
-
-With that the tests both pass with --enable-debug (312s, 352s) and the
-profile looks like:
-
-   6.33%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
-m_feature
-   5.66%  qemu-system-aar  qemu-system-aarch64                       [.] tc=
-g_flush_jmp_cache
-   3.44%  qemu-system-aar  qemu-system-aarch64                       [.] re=
-build_hflags_a64
-
-This I suspect is triggered by assert_hflags_rebuild_correctly() which
-is validating we've not skipped rebuilding the flags when we need to.
-It's a lot easier than debugging why your execution trace looks weird.
-
-   2.95%  qemu-system-aar  qemu-system-aarch64                       [.] ex=
-tract64
-   2.52%  qemu-system-aar  qemu-system-aarch64                       [.] ex=
-tract64
-
-This is usually triggered by translation code which uses extract64
-heavily during instruction decode.
-
-It might be useful to see if we can get functional tests run under TCG
-to dump "info jit" at the end and ensure we are not over generating code
-and exhausting the translation cache.
-
-   2.12%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
-m_el_is_aa64
-   2.11%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
-m_security_space_below_el3
-   2.11%  qemu-system-aar  qemu-system-aarch64                       [.] de=
-posit64
-   1.49%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
-m_hcr_el2_eff_secstate
-   1.46%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
-m_is_el2_enabled_secstate
-   1.38%  qemu-system-aar  qemu-system-aarch64                       [.] ex=
-tract32
-   1.34%  qemu-system-aar  qemu-system-aarch64                       [.] ex=
-tract64
-   1.30%  qemu-system-aar  qemu-system-aarch64                       [.] ge=
-t_phys_addr_lpae
-   1.23%  qemu-system-aar  qemu-system-aarch64                       [.] aa=
-64_va_parameters
-   1.09%  qemu-system-aar  qemu-system-aarch64                       [.] ro=
-l32
-   1.07%  qemu-system-aar  qemu-system-aarch64                       [.] pr=
-obe_access_internal
-   1.02%  qemu-system-aar  qemu-system-aarch64                       [.] de=
-posit32
+So I understand it's "all TCG" in the end and no HW acceleration is ever used in the tests.
 
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Cheers,
+Gustavo

@@ -1,115 +1,134 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3841692njk;
-        Tue, 3 Dec 2024 08:47:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWYQ+pYEr6f8WuwwjupHHS7/rOubuaUGrV4vfsNEMtOBF1Wx796fglhB5pRXR9WMHmRr/EHS8/jNre79w==@linaro.org
-X-Google-Smtp-Source: AGHT+IGnA9srrbpXkJQ2h8Fo/1Naf6XP0iLrbEHcXcrhHaVW2Tzi2T3+eZXEvgPT46+4XM5YIraX
-X-Received: by 2002:a05:6214:2622:b0:6d8:b3a7:75a5 with SMTP id 6a1803df08f44-6d8c46dae1bmr14100476d6.42.1733244431729;
-        Tue, 03 Dec 2024 08:47:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733244431; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3991192njk;
+        Tue, 3 Dec 2024 12:24:14 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWSM3ycPK9SXbAOb9T1qOMbsWu3Je2QDzkJ5nd7t3E9bghmSiBDpsEMGaiwvU1F1W6PFhblnOaUbinw9w==@linaro.org
+X-Google-Smtp-Source: AGHT+IHYk1KuSDI7vUROW2Xo71pr/kGgB+67NosAogakiL8Ybwt/Ur4VRGgMMuIqd+t+2+d7eJGU
+X-Received: by 2002:a05:6214:ccb:b0:6d8:ab3c:5c8 with SMTP id 6a1803df08f44-6d8b7457b96mr63900806d6.49.1733257454788;
+        Tue, 03 Dec 2024 12:24:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733257454; cv=none;
         d=google.com; s=arc-20240605;
-        b=OAKX85Y4kIyv02JbdFwh+1evA17WEqBznA30bawEJ+7EFJcnVda/vuIPnVfpWJht/E
-         v533TMMb4b8938mRJ10+YOn6lqioFm2jYF5Ap9Mg9Z39H/cTV5Dr8BT6NKsv0uKF1sGx
-         iTkcmkSmHhovOWWljTclPcnXn+0zLC20VbjDs5JnV8HW/zdodMLgop5HbLOiv49QvtK8
-         ZcVCkvNgxEeVIgB2ybmsF779yBX2UfTEyLBHcf1x7O37MATJQUBLxzXLzjHmx/rhwZPI
-         TKCfjmrqgwBA9TWShQvx0UKIe8Uwk9VgcV+5NdBKsEiG2AJZgMnvVBN8TwOk+1UVVwWm
-         +zxg==
+        b=boiiXR8558WimUlcCBFCeVC1r7DN5n/vB4NZGgUg3HmPZ3eqJvDEkogl2M/tpJNCBC
+         vxe/2xPRO6vI++xtovpmPmsH0PsD4lz5bDn7mauyijoebkaYNvJrho7JfBivy7t0U63m
+         Sh7b/Bg1CujDYzkBEbnP2sejM2iZBoyL13Xzotm56I2nYwLn0WZcFr6UdGvRI9qdEeCb
+         k5XPoy3Yuh42Mr3CAQg3cUMnlccDAZDP9ob74GqKFOtQSPLsQbyizS4lZZcuZdC/Q+2o
+         3cFmfIhMJNxmJrxrgn1XlONJbc6k8RCGtMPQzCiCZxab21T9doe4PTxth50/+a51xh3t
+         Wd+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=gu6IFtHi6NhS1YbAIlb98eMw8DAkKkiLvZulg8F6074=;
-        fh=fLIreIolfdHxAleIAzKsfrQ6rgr0brrg6DQQU9rr4+o=;
-        b=RWz6d6gLxvgIhtGCs1G0vp19I21QQQxt7jTwcCbyhfBwYgCJWxOgleaQw0y/wdjd98
-         VwZUsOrsxi+Nf83TdMtYP5+fzX32U9SHA+YDXNqnNKjG+DpUUDA8gf94MI78g9RNWrnB
-         U0YOMgwL4P2p9aG9El/iGIxt+lWxwdPxgS5IjC+vGYtYJIoG2lAWxtegmqoS8hSwjY2j
-         Ss6Izyt1csqAjG52L15mhwhEcOzWuJGD/GSDezS0Jarbgg+QL0AhK4xQIv+3GUCSdhsg
-         AuvMzDSbogGUVaglKMhQWFWotuSuVbbhytyJunQ5vsq0hjR2y4zSap8iHqh/XCcNyF0Y
-         iUHA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=vWr3B4C8bAj6BivScsjyL8ezvL1IyxopWhrxQL4rFc0=;
+        fh=1fJtAT0q0Gdzf6kXxkZf+7Bg1xfBaIz7F+Dw8aqZo+Y=;
+        b=ZQdvblsmHvpfGjHMiF5NwF7icZUZbxg4lqup++W7OfgRVQ98bj9F/+1/A1uhCBPePH
+         jegNYmKJcwO9IlLTXdoTMOX+Ti2YS5ZEeqTuOZJSq/rrUv+swndDmIglzyFzhLtS10PX
+         yHd/aLUvGlbDLZKuiGE6q8pK7bAcHJamPVNtuRYgdoPaHk4BLpRHLbKQP+PPvYtufjux
+         XBJkmuHkdInbQbCIsSVJhqJLmoJPA/bNdoi5epGjvtDbQupsGCXFuKTxtrx7pnSUlVLK
+         vlVejFaUVwC4KcqOALK/0BQqpRzRRHhHzNzLQ30hG9KSbge2qMA2Htsp/r75O2RP+ZXT
+         iFJQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RR0+Bilh;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AdoQt1+v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d89cd99fb6si75675526d6.15.2024.12.03.08.47.11
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d89489be4asi94288336d6.197.2024.12.03.12.24.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2024 08:47:11 -0800 (PST)
+        Tue, 03 Dec 2024 12:24:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=RR0+Bilh;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AdoQt1+v;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIW32-0002dZ-Mk; Tue, 03 Dec 2024 11:46:52 -0500
+	id 1tIZQx-0004Ny-Rd; Tue, 03 Dec 2024 15:23:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tIW2v-0002Z3-2U
- for qemu-arm@nongnu.org; Tue, 03 Dec 2024 11:46:47 -0500
-Received: from mail-lj1-x22a.google.com ([2a00:1450:4864:20::22a])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tIZQw-0004Nc-KB; Tue, 03 Dec 2024 15:23:46 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tIW2s-0003eL-Vg
- for qemu-arm@nongnu.org; Tue, 03 Dec 2024 11:46:44 -0500
-Received: by mail-lj1-x22a.google.com with SMTP id
- 38308e7fff4ca-2ffc80318c9so60450271fa.2
- for <qemu-arm@nongnu.org>; Tue, 03 Dec 2024 08:46:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tIZQu-0006BQ-OT; Tue, 03 Dec 2024 15:23:46 -0500
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-385de59c1a0so4459122f8f.2; 
+ Tue, 03 Dec 2024 12:23:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733244401; x=1733849201; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=gu6IFtHi6NhS1YbAIlb98eMw8DAkKkiLvZulg8F6074=;
- b=RR0+Bilh9igXLTUoQBfoubDhogMqPbJ9IjodsLUsnu8IvJDmtjLkUqBJCu3A7GDiQ+
- jYWlK5COAPNXhIk4WPcKFFa0HIqdjNb7qXJpcMeaw64G2fn9DHN6pHlark9gSQCSbU5k
- NrSqYHT9T9DMN4KKbWDXl2rAkADkY9bjhkZZ9XkXBhUQxwb/4krWaKqtjMsMWz7JhlI3
- 8pW5e/mca2dB6JV/4Tomwba4nH44a9fvn04TITdxk1PtVTYcA68S5k0WdAIHEZeF0yAd
- MYzZF80p5ID66TPFNx4IUFtYD/3UUCJm8LX7b+2yXwjNGdqmnYHlnIujI2EYesEpA4O/
- lkPg==
+ d=gmail.com; s=20230601; t=1733257423; x=1733862223; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vWr3B4C8bAj6BivScsjyL8ezvL1IyxopWhrxQL4rFc0=;
+ b=AdoQt1+vqnwEFz5/CihrWVGOuWiShIz1pjtRjy31u8/F6T3ZzeJB8Ui9ZoNc8ziHxv
+ e1sdG1zflsI9qYco5vuiPFj1G+9dt9VqicTVfSGMLsCpLnQYXgvcFtCilEq/CounkXNs
+ aqO7F+dSLnulWccUEeATCHKGqIBRfGvjGOlNinCCBgisZKVK6M9RA8ZFtHwxygCf+016
+ d5LSkUGviCpM6zGZmkPyHyRNL1EQIPmf914fSPLUIhWlzYOwhKZ+4ToKRIKDCZ1hgXWC
+ BHVdLrvZgkWsFHPJ7IlYgxe94AZNnhOpL4Udze9rHOSMWAEahRlihLYXXQk6AQGIIxkv
+ 5OMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733244401; x=1733849201;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=gu6IFtHi6NhS1YbAIlb98eMw8DAkKkiLvZulg8F6074=;
- b=BKzqyeQ6SZWfeWTSz+JO9kjZzPd+sVnixia34p0SdXVYe7oYcOUYjoFJLEk+xjrSjR
- 7v6VSGjidPEA2juVc48sJa92vqIGzYOWdB8xAQ4RncALzXgF+IUMJ9EJJqeuZ71PU3ZK
- 8C1N8AuBbocibnNV1XHFFiWHIf5SEcCt9lDuADEJl5OTGRHIf5tXJw59H4zXWaOo8tih
- HDBZniALXcstpSZr6+IhAK6gUURw7465VKAi7YJ2irh0q4JO1ab2W6j4rdJhN8KCuUFc
- tYIa/AaU51WMQLsEzgwVQNyEdbdJuXGm7ulsKNUCKVXCaRRBfHusJzJ6P/04tE2HOgxK
- l/vA==
+ d=1e100.net; s=20230601; t=1733257423; x=1733862223;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=vWr3B4C8bAj6BivScsjyL8ezvL1IyxopWhrxQL4rFc0=;
+ b=XHHQ9O/Ll4bMUad9pn1+qSm2rABgQ7WbUv68YbgKTGgZ01hdbMnkBe3EWpvUwhu2/b
+ 6fa27YaWBUChrDCA2V6o05cMM9ydSXQCYnpyFL8Wq6oHATNoEWcmM8eTKQaplgrx5Oza
+ 7etGEbFfZoPbOrkpQ8l3kyRjxL82aJ25vrZr3YGmZtDm7uxO1q56mkrgzNGTqcA9Mv1/
+ pa7Q3KJcMahqBoXLvxCNTXd5+2pd4afhAHQgfE7kadqm/kEJuqIyDY30KdURX20PR1/D
+ NbocbRqsTOrjwy6/aDoL1NAySiw7KpLFlo6VhbRs7OPPkfHvaRaV86Infc5O8dDcorth
+ dQOw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUTsn8r/7231C3/eGc+knH1+CXaDnmDPHWDrhiZCD6E4XYGa0G7dUSVK3n96K7WKpFQ8N577OSrBw==@nongnu.org
-X-Gm-Message-State: AOJu0YygGxQHJiim1A7PpMDdgovntwBrlNNMOYM71iT6jt0d3pqPDg0O
- 8Jh2hXZMTxrropA5r+0vyD6YkDpM6JVrwDW6UXdTVmF+Vy8lmnT2dQzChEHs482Xbd853GRrWji
- kNmB3sEIfVvU8PGiPLoZUQ6k6HxOdkBTZvXz4EQ==
-X-Gm-Gg: ASbGncsZaFSD6MqwGpjO6+QBwWGIXInD8QMHATByzI+W7xo4Gwia/Hra0C+s71GaCTm
- qOUeBz3R6Bf6oSA36mx9eIIbsz03a1rlr
-X-Received: by 2002:a2e:a98f:0:b0:2ff:e5fc:fd0a with SMTP id
- 38308e7fff4ca-30009c12978mr20821791fa.23.1733244400798; Tue, 03 Dec 2024
- 08:46:40 -0800 (PST)
+ AJvYcCVQQJdoam/jh0FndJ3sARujxzwclZZMn7UtBXRmdJtUpaqLuyxGC4sV831ymkZXYYLSC0SVVGcLjg==@nongnu.org,
+ AJvYcCW+aIq9HPYl1h+CaDOVRUhXheRrF5dyv4mXNF+JeKLLOx2TvLh2hQ8RsKeGDK1E64eSRFTGHfiWRQygMw==@nongnu.org
+X-Gm-Message-State: AOJu0YxmpiwGSQXbGiAamtr2WlnqL5j2f9I0qEEyFAxhIpS0kMMFpYbN
+ a0lphAp6iGK7ufaaKev96CcUKoNQJ5Qf6DZfkv+xyBjztYvkne0ObN8wQA==
+X-Gm-Gg: ASbGncvm+bXDf0zGO2V7N0u29c/u6LmpRIq0JOumug6+cDUWSxY7xZJQIMT7QTnbJ0a
+ 0mK9krKcFFnC35OW9zC9kDY+U+y+jjjvFCQp5tq8lq/SF8t4Uq02KG3BgwEUMf0zHVxknCCptV7
+ 4OQ/ueajfRavUHPxDqtlZBSlhHBdJmSr4cJeRmIQGNineq2zXE7KZncJdFkhZhJP/aobJH60/uN
+ NevUEpurBql2VwpZiUnGZdkeSGRVsZxCblb/oFfsXAhE53ivXvlqB8+hYvUAa4yklT2BqmWncJv
+ HGLnxp/G6QH5hh097wntkT0=
+X-Received: by 2002:a05:6000:2aa:b0:385:f349:fffb with SMTP id
+ ffacd0b85a97d-385fd42a35fmr3288219f8f.45.1733257422614; 
+ Tue, 03 Dec 2024 12:23:42 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-002-242-014-218.2.242.pool.telefonica.de.
+ [2.242.14.218]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-385e17574ebsm12074198f8f.30.2024.12.03.12.23.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 03 Dec 2024 12:23:42 -0800 (PST)
+Date: Tue, 03 Dec 2024 20:23:42 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Jamin Lin via <qemu-devel@nongnu.org>,
+ =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
+ yunlin.tang@aspeedtech.com
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_3/6=5D_hw=3Asdhci?=
+ =?US-ASCII?Q?=3A_Introduce_a_new_=22capareg=22_?=
+ =?US-ASCII?Q?class_member_to_set_the_different_Capability_Registers=2E?=
+In-Reply-To: <20241203021500.3986213-4-jamin_lin@aspeedtech.com>
+References: <20241203021500.3986213-1-jamin_lin@aspeedtech.com>
+ <20241203021500.3986213-4-jamin_lin@aspeedtech.com>
+Message-ID: <94E62126-BB97-465A-9021-2FB365E677A8@gmail.com>
 MIME-Version: 1.0
-References: <20241203162525.75156-1-abelova@astralinux.ru>
-In-Reply-To: <20241203162525.75156-1-abelova@astralinux.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Dec 2024 16:46:29 +0000
-Message-ID: <CAFEAcA-y2-k8HnTHwTzqL4MGqrTAC1AKD5iP1s9XOTk0OrVYTg@mail.gmail.com>
-Subject: Re: [PATCH] hw/timer/nrf51_timer: prevent integer overflow
-To: Anastasia Belova <abelova@astralinux.ru>
-Cc: Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- sdl.qemu@linuxtesting.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::22a;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x22a.google.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -126,39 +145,221 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UxxrWi/weB83
+X-TUID: dSpFej35884O
 
-On Tue, 3 Dec 2024 at 16:25, Anastasia Belova <abelova@astralinux.ru> wrote:
->
-> Both counter and tick are uint32_t and the result
-> of their addition may not fit this type. Add
-> explicit casting to uint64_t.
->
-> Found by Linux Verification Center (linuxtesting.org) with SVACE.
->
-> Fixes: c5a4829c08 ("hw/timer/nrf51_timer: Add nRF51 Timer peripheral")
-> Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
-> ---
->  hw/timer/nrf51_timer.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/timer/nrf51_timer.c b/hw/timer/nrf51_timer.c
-> index 35b0e62d5b..b5ff235eb8 100644
-> --- a/hw/timer/nrf51_timer.c
-> +++ b/hw/timer/nrf51_timer.c
-> @@ -44,7 +44,7 @@ static uint32_t update_counter(NRF51TimerState *s, int64_t now)
->  {
->      uint32_t ticks = ns_to_ticks(s, now - s->update_counter_ns);
->
-> -    s->counter = (s->counter + ticks) % BIT(bitwidths[s->bitmode]);
-> +    s->counter = ((uint64_t)s->counter + ticks) % BIT(bitwidths[s->bitmode]);
 
-Can you explain when adding the cast makes a difference?
-Since s->counter is 32 bits and ticks is 32 bits and
-the RHS of the % is a power of 2, it's not clear to
-me that keeping the top 32 bits in the addition and then
-discarding it after the % is any different from only
-taking the bottom 32 bits of the addition.
 
-thanks
--- PMM
+Am 3=2E Dezember 2024 02:14:57 UTC schrieb Jamin Lin via <qemu-devel@nongn=
+u=2Eorg>:
+>Currently, it set the hardcode value of capability registers to all ASPEE=
+D SOCs
+>However, the value of capability registers should be different for all AS=
+PEED
+>SOCs=2E For example: the bit 28 of the Capability Register 1 should be 1 =
+for
+>64-bits System Bus support for AST2700=2E
+>
+>Introduce a new "capareg" class member whose data type is uint_64 to set =
+the
+>different Capability Registers to all ASPEED SOCs=2E
+>
+>The value of Capability Register is "0x0000000001e80080" for AST2400 and
+>AST2500=2E The value of Capability Register is "0x0000000701f80080" for A=
+ST2600=2E
+>
+>Signed-off-by: Jamin Lin <jamin_lin@aspeedtech=2Ecom>
+>---
+> hw/arm/aspeed_ast2400=2Ec      |  3 +-
+> hw/arm/aspeed_ast2600=2Ec      |  7 ++--
+> hw/sd/aspeed_sdhci=2Ec         | 72 +++++++++++++++++++++++++++++++-----
+> include/hw/sd/aspeed_sdhci=2Eh | 12 +++++-
+> 4 files changed, 78 insertions(+), 16 deletions(-)
+>
+>diff --git a/hw/arm/aspeed_ast2400=2Ec b/hw/arm/aspeed_ast2400=2Ec
+>index ecc81ecc79=2E=2E3c1b419945 100644
+>--- a/hw/arm/aspeed_ast2400=2Ec
+>+++ b/hw/arm/aspeed_ast2400=2Ec
+>@@ -224,7 +224,8 @@ static void aspeed_ast2400_soc_init(Object *obj)
+>     snprintf(typename, sizeof(typename), "aspeed=2Egpio-%s", socname);
+>     object_initialize_child(obj, "gpio", &s->gpio, typename);
+>=20
+>-    object_initialize_child(obj, "sdc", &s->sdhci, TYPE_ASPEED_SDHCI);
+>+    snprintf(typename, sizeof(typename), "aspeed=2Esdhci-%s", socname);
+>+    object_initialize_child(obj, "sdc", &s->sdhci, typename);
+>=20
+>     object_property_set_int(OBJECT(&s->sdhci), "num-slots", 2, &error_ab=
+ort);
+>=20
+>diff --git a/hw/arm/aspeed_ast2600=2Ec b/hw/arm/aspeed_ast2600=2Ec
+>index c40d3d8443=2E=2Eb5703bd064 100644
+>--- a/hw/arm/aspeed_ast2600=2Ec
+>+++ b/hw/arm/aspeed_ast2600=2Ec
+>@@ -236,8 +236,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>     snprintf(typename, sizeof(typename), "aspeed=2Egpio-%s-1_8v", socnam=
+e);
+>     object_initialize_child(obj, "gpio_1_8v", &s->gpio_1_8v, typename);
+>=20
+>-    object_initialize_child(obj, "sd-controller", &s->sdhci,
+>-                            TYPE_ASPEED_SDHCI);
+>+    snprintf(typename, sizeof(typename), "aspeed=2Esdhci-%s", socname);
+>+    object_initialize_child(obj, "sd-controller", &s->sdhci, typename);
+>=20
+>     object_property_set_int(OBJECT(&s->sdhci), "num-slots", 2, &error_ab=
+ort);
+>=20
+>@@ -247,8 +247,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>                                 &s->sdhci=2Eslots[i], TYPE_SYSBUS_SDHCI)=
+;
+>     }
+>=20
+>-    object_initialize_child(obj, "emmc-controller", &s->emmc,
+>-                            TYPE_ASPEED_SDHCI);
+>+    object_initialize_child(obj, "emmc-controller", &s->emmc, typename);
+>=20
+>     object_property_set_int(OBJECT(&s->emmc), "num-slots", 1, &error_abo=
+rt);
+>=20
+>diff --git a/hw/sd/aspeed_sdhci=2Ec b/hw/sd/aspeed_sdhci=2Ec
+>index acd6538261=2E=2E93f5571021 100644
+>--- a/hw/sd/aspeed_sdhci=2Ec
+>+++ b/hw/sd/aspeed_sdhci=2Ec
+>@@ -148,6 +148,7 @@ static void aspeed_sdhci_realize(DeviceState *dev, Er=
+ror **errp)
+> {
+>     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+>     AspeedSDHCIState *sdhci =3D ASPEED_SDHCI(dev);
+>+    AspeedSDHCIClass *asc =3D ASPEED_SDHCI_GET_CLASS(sdhci);
+>=20
+>     /* Create input irqs for the slots */
+>     qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_sdhci_set_ir=
+q,
+>@@ -167,7 +168,7 @@ static void aspeed_sdhci_realize(DeviceState *dev, Er=
+ror **errp)
+>         }
+>=20
+>         if (!object_property_set_uint(sdhci_slot, "capareg",
+>-                                      ASPEED_SDHCI_CAPABILITIES, errp)) =
+{
+>+                                      asc->capareg, errp)) {
+>             return;
+>         }
+>=20
+>@@ -218,13 +219,66 @@ static void aspeed_sdhci_class_init(ObjectClass *cl=
+assp, void *data)
+>     device_class_set_props(dc, aspeed_sdhci_properties);
+> }
+>=20
+>-static const TypeInfo aspeed_sdhci_types[] =3D {
+>-    {
+>-        =2Ename           =3D TYPE_ASPEED_SDHCI,
+>-        =2Eparent         =3D TYPE_SYS_BUS_DEVICE,
+>-        =2Einstance_size  =3D sizeof(AspeedSDHCIState),
+>-        =2Eclass_init     =3D aspeed_sdhci_class_init,
+>-    },
+
+Why not just extend this array? It's made for registering multiple types, =
+exactly what this patch is introducing=2E
+
+>+static const TypeInfo aspeed_sdhci_info =3D {
+>+    =2Ename           =3D TYPE_ASPEED_SDHCI,
+>+    =2Eparent         =3D TYPE_SYS_BUS_DEVICE,
+>+    =2Einstance_size  =3D sizeof(AspeedSDHCIState),
+>+    =2Eclass_init     =3D aspeed_sdhci_class_init,
+>+    =2Eclass_size =3D sizeof(AspeedSDHCIClass),
+>+    =2Eabstract =3D true,
+>+};
+>+
+>+static void aspeed_2400_sdhci_class_init(ObjectClass *klass, void *data)
+>+{
+>+    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>+    AspeedSDHCIClass *asc =3D ASPEED_SDHCI_CLASS(klass);
+>+
+>+    dc->desc =3D "ASPEED 2400 SDHCI Controller";
+>+    asc->capareg =3D 0x0000000001e80080;
+>+}
+>+
+>+static const TypeInfo aspeed_2400_sdhci_info =3D {
+>+    =2Ename =3D TYPE_ASPEED_2400_SDHCI,
+>+    =2Eparent =3D TYPE_ASPEED_SDHCI,
+>+    =2Eclass_init =3D aspeed_2400_sdhci_class_init,
+>+};
+>+
+>+static void aspeed_2500_sdhci_class_init(ObjectClass *klass, void *data)
+>+{
+>+    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>+    AspeedSDHCIClass *asc =3D ASPEED_SDHCI_CLASS(klass);
+>+
+>+    dc->desc =3D "ASPEED 2500 SDHCI Controller";
+>+    asc->capareg =3D 0x0000000001e80080;
+>+}
+>+
+>+static const TypeInfo aspeed_2500_sdhci_info =3D {
+>+    =2Ename =3D TYPE_ASPEED_2500_SDHCI,
+>+    =2Eparent =3D TYPE_ASPEED_SDHCI,
+>+    =2Eclass_init =3D aspeed_2500_sdhci_class_init,
+> };
+>=20
+>-DEFINE_TYPES(aspeed_sdhci_types)
+>+static void aspeed_2600_sdhci_class_init(ObjectClass *klass, void *data)
+>+{
+>+    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>+    AspeedSDHCIClass *asc =3D ASPEED_SDHCI_CLASS(klass);
+>+
+>+    dc->desc =3D "ASPEED 2600 SDHCI Controller";
+>+    asc->capareg =3D 0x0000000701f80080;
+>+}
+>+
+>+static const TypeInfo aspeed_2600_sdhci_info =3D {
+>+    =2Ename =3D TYPE_ASPEED_2600_SDHCI,
+>+    =2Eparent =3D TYPE_ASPEED_SDHCI,
+>+    =2Eclass_init =3D aspeed_2600_sdhci_class_init,
+>+};
+>+
+>+static void aspeed_sdhci_register_types(void)
+>+{
+>+    type_register_static(&aspeed_sdhci_info);
+>+    type_register_static(&aspeed_2400_sdhci_info);
+>+    type_register_static(&aspeed_2500_sdhci_info);
+>+    type_register_static(&aspeed_2600_sdhci_info);
+>+}
+>+
+>+type_init(aspeed_sdhci_register_types);
+>diff --git a/include/hw/sd/aspeed_sdhci=2Eh b/include/hw/sd/aspeed_sdhci=
+=2Eh
+>index 057bc5f3d1=2E=2E8083797e25 100644
+>--- a/include/hw/sd/aspeed_sdhci=2Eh
+>+++ b/include/hw/sd/aspeed_sdhci=2Eh
+>@@ -13,9 +13,11 @@
+> #include "qom/object=2Eh"
+>=20
+> #define TYPE_ASPEED_SDHCI "aspeed=2Esdhci"
+>-OBJECT_DECLARE_SIMPLE_TYPE(AspeedSDHCIState, ASPEED_SDHCI)
+>+#define TYPE_ASPEED_2400_SDHCI TYPE_ASPEED_SDHCI "-ast2400"
+>+#define TYPE_ASPEED_2500_SDHCI TYPE_ASPEED_SDHCI "-ast2500"
+>+#define TYPE_ASPEED_2600_SDHCI TYPE_ASPEED_SDHCI "-ast2600"
+>+OBJECT_DECLARE_TYPE(AspeedSDHCIState, AspeedSDHCIClass, ASPEED_SDHCI)
+>=20
+>-#define ASPEED_SDHCI_CAPABILITIES 0x01E80080
+> #define ASPEED_SDHCI_NUM_SLOTS    2
+> #define ASPEED_SDHCI_NUM_REGS     (ASPEED_SDHCI_REG_SIZE / sizeof(uint32=
+_t))
+> #define ASPEED_SDHCI_REG_SIZE     0x100
+>@@ -32,4 +34,10 @@ struct AspeedSDHCIState {
+>     uint32_t regs[ASPEED_SDHCI_NUM_REGS];
+> };
+>=20
+>+struct AspeedSDHCIClass {
+>+    SysBusDeviceClass parent_class;
+>+
+>+    uint64_t capareg;
+>+};
+
+The struct seems not AST-specific and could be turned into a base class fo=
+r all SDHCI device models, no? That way one could also add further device-s=
+pecific constants other than capareg=2E
+
+Best regards,
+Bernhard
+
+>+
+> #endif /* ASPEED_SDHCI_H */

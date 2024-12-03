@@ -1,195 +1,128 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3701411njk;
-        Tue, 3 Dec 2024 05:59:46 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXYhpeHX7Mec3kYYocOgHZUPhU78v7gbfrikY9TEYXKqjlmOlmt8161ZU9Sr0HtfeCL+qlexnlg29AL0A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGAg7Ead8TPnqPMUfsJ4KZo9qV2xOTfChEBhkxZsQcyLXKzucZQ6ECeCq804YuAz3uGXNUR
-X-Received: by 2002:a05:6102:4421:b0:4af:400e:2a9c with SMTP id ada2fe7eead31-4af9733e158mr3170847137.25.1733234386005;
-        Tue, 03 Dec 2024 05:59:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733234385; cv=none;
-        d=google.com; s=arc-20240605;
-        b=KeyLsOYe066kZYbRsd/JIu6mGCI/0lN6yN9Y7n30pWZOeO7d7wnIZooQMN0znCTJHK
-         b+xtU6LYYKG/+i/mVeoabDuA5be0WCc8uxmcdZEaCMwG4CcPo1PvqbrDXOXWDRDs7j76
-         gxIdNOfSnv+oQ74p85mpRqTWLmIfhncK4RbuJfTjiC/KI1pPcYGpx9jw8PQJw9J1gqnK
-         mBBE692xRNw6BEHxFLCQDoxIowE1cNXgh6HbnXWWRvz/aYQUbffucaBGtJbc0m+9AbJR
-         W7nIDbra4oBBzKTu6iOuLgyuYOG4V+TGpm2KYZ9++hh8Pr2Qxi2vUzK2iyKQ6QjgpP+D
-         psUg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=XrgDicMzggOvtH/s7ury3sPZkpoXQNZGJoOY2zieXNI=;
-        fh=6D/6VQq5Q+Zja9Q7yYPz2cBlGUpAFsxG9UYP7RraElc=;
-        b=J11YatHtVTz9+bLpmaog83zXb3zB2luh+0YCj5m1EpateixJzVAYpd6JiqvQidGt8v
-         a9CeGWRW3ke2vAsvB7mXS8+eon/sZB0sA/Nq+X8skObizG+CAMRz1iTVafmAEfCwRJ3w
-         ZyzKBAWLqgsXnTiFmVd7o1kc+UYNvzvybR5vPdAPeoVX3zfIzLSWfvB61CgrCV88lVwy
-         YNDD4CafSy8LizywtXz3i61IjKI7UOLNppXbAJVWfbR4Gi5USpxRgpaoGtYZ8IE6EpSq
-         ajhROxeEuoDrNER1lqlGGlE2dAicZoRwitYszssBLqHVhColQ+JjexbZyz8ZfsvmvJbw
-         aM6w==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=VwjlDOVH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4af590d59a1si4969162137.20.2024.12.03.05.59.45
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2024 05:59:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=VwjlDOVH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tITQw-0005h0-06; Tue, 03 Dec 2024 08:59:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tITQu-0005gY-Hv; Tue, 03 Dec 2024 08:59:20 -0500
-Received: from dfw.source.kernel.org ([139.178.84.217])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tITQs-0003rQ-4w; Tue, 03 Dec 2024 08:59:20 -0500
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id 7C9D65C5A62;
- Tue,  3 Dec 2024 13:58:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A45B7C4CECF;
- Tue,  3 Dec 2024 13:59:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1733234354;
- bh=ybwMmLDPih2y8EAfYC3azst4Q0MnjEVlliaSDkdXsSs=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=VwjlDOVH1n7GGba7TRDsopIvkZvmZhHN4moFJ8pONrGP65YgmBbrAlLMXLT1jRsuf
- 5n2il0PqOsQw8KbrdZEOWXf9jVJkycCPzXiGa3NUvDtM3YKeCSXbWFxF9C0gK08VHD
- TCwXGR/3gd9GZcqBTTUv2RB0WayGtg92RbnvGBY0IfFM01PeTlY/DORc7SEnH8gY3Z
- KvZwIIT3c3Om1idwXQeRRxLga8wLtNdD2E7P8LMu8rYhNeWbMaq0wSILeNqrVvtFUH
- 9PM8PFeY5/HUOP1BbV694KCSPA5p3GR4R+9Njum62JEPVQ8jUmWJCP5V6SyQN8AvT7
- s+vG4B/35zmIw==
-Date: Tue, 3 Dec 2024 14:59:08 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
- <philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, Shannon
- Zhao <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao
- Liu <zhao1.liu@intel.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v2 0/5] Change ghes driver to use HEST-based offsets
-Message-ID: <20241203145908.06aee888@foz.lan>
-In-Reply-To: <20241203130310.0bde48c0@imammedo.users.ipa.redhat.com>
-References: <cover.1732281080.git.mchehab+huawei@kernel.org>
- <20241203130310.0bde48c0@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385dfb2d7e0sm12543885f8f.44.2024.12.03.06.56.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Dec 2024 06:56:05 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id ADF915F89C;
+	Tue,  3 Dec 2024 14:56:04 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@kaod.org>,  Troy Lee
+ <leetroy@gmail.com>,  Alistair Francis <alistair@alistair23.me>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Andrew Jeffery
+ <andrew@codeconstruct.com.au>,  Jamin Lin <jamin_lin@aspeedtech.com>,
+  qemu-arm@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Richard
+ Henderson <richard.henderson@linaro.org>,  Steven Lee
+ <steven_lee@aspeedtech.com>,  Niek Linnenbank <nieklinnenbank@gmail.com>,
+  Joel Stanley <joel@jms.id.au>,  "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>
+Subject: Re: [PATCH v2] tests/functional/aarch64: add tests for FEAT_RME
+In-Reply-To: <20241128213729.1021961-1-pierrick.bouvier@linaro.org> (Pierrick
+	Bouvier's message of "Thu, 28 Nov 2024 13:37:29 -0800")
+References: <20241128213729.1021961-1-pierrick.bouvier@linaro.org>
+User-Agent: mu4e 1.12.7; emacs 29.4
+Date: Tue, 03 Dec 2024 14:56:04 +0000
+Message-ID: <87mshcdddn.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=139.178.84.217;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -100
-X-Spam_score: -10.1
-X-Spam_bar: ----------
-X-Spam_report: (-10.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_HI=-5, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YvTgVrlNhnsp
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 8+qI+Trhn3oD
 
-Em Tue, 3 Dec 2024 13:03:10 +0100
-Igor Mammedov <imammedo@redhat.com> escreveu:
+Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
 
-> On Fri, 22 Nov 2024 14:14:10 +0100
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> 
-> > This  series was part of the previous PR to add generic error injection
-> > support on GHES. It depends on a cleanup patch series sent earlier
-> > today:
-> > 
-> > 	https://lore.kernel.org/qemu-devel/cover.1732266152.git.mchehab+huawei@kernel.org/T/#t
-> > 
-> > It contains the changes of the math used to calculate offsets at HEST table 
-> > and hardware_error firmware file. It prepares for the addition of GHES
-> > error injection.
-> > 
-> > The first patch was previously at the cleanup series. It prepares
-> > the logic to support multiple sources.
-> > 
-> > The second patch adds a new firmware file to store HEST address.
-> > 
-> > The third patch use the new firmware to calculate offsets using
-> > HEST table.
-> > 
-> > Patches 4 and 5 add migration support. They assume that this
-> > series will be merged for qemu 9.2 (maybe it is too late for that,
-> > as QEMU is now on soft freeze). 
-> > 
-> > I tested migration using both virt-9.1 and virt-9.2 machines
-> > on qemu 9.2.
-> > 
-> > I also tested migration with:
-> >   
-> 
-> > 	qemu-9.1 -M virt-9.1 -cpu cortex-a57 => qemu-9.2 -M virt-9.1 -cpu cortex-a57
-> > 	qemu-9.2 -M virt-9.1 -cpu cortex-a57 => qemu-9.1 -M virt-9.1 -cpu cortex-a57  
-> was that with HEST enabled (it's 'ras' machine option),
-> It would be better to provide full CLI used 
+> This boot an OP-TEE environment, and launch a nested guest VM inside it
+> using the Realms feature. We do it for virt and sbsa-ref platforms.
+>
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>
+<snip>
+> +
+> +        self.vm.add_args('-accel', 'tcg')
+> +        self.vm.add_args('-cpu', 'max,x-rme=3Don')
 
-Yes. This is the full command line I'm using for virt-9.2 (urls sanitized):
+With debug on the PAC function are certainly very high in the perf
+report. So pauth-impdef=3Don seems worthwhile here.
 
-~/qemu/build/qemu-system-aarch64 -m 4g,maxmem=8G,slots=8 -monitor stdio -no-reboot -bios ~/emulator/QEMU_EFI-silent.fd -kernel ~/kernel/arm64_build/arch/arm64/boot/Image.gz -device pcie-root-port,id=root_port1 -device virtio-blk-pci,drive=hd -device virtio-net-pci,netdev=mynet,id=bob -drive if=none,file=~/emulator/debian.qcow2,format=qcow2,id=hd -object memory-backend-ram,size=4G,id=mem0 -netdev type=user,id=mynet,hostfwd=tcp::5555-:22 -qmp tcp:localhost:4445,server=on,wait=off -M virt-9.2,nvdimm=on,gic-version=3,ras=on -cpu max -smp 4 -numa node,nodeid=0,cpus=0-3,memdev=mem0 -append 'earlycon nomodeset root=/dev/vda1 fsck.mode=skip tp_printk maxcpus=4'
+> +        self.vm.add_args('-m', '2G')
+> +        self.vm.add_args('-M', 'sbsa-ref')
+> +        self.vm.add_args('-drive', f'file=3D{pflash0},format=3Draw,if=3D=
+pflash')
+> +        self.vm.add_args('-drive', f'file=3D{pflash1},format=3Draw,if=3D=
+pflash')
+> +        self.vm.add_args('-drive', f'file=3Dfat:rw:{virtual},format=3Dra=
+w')
+> +        self.vm.add_args('-drive', f'format=3Draw,if=3Dnone,file=3D{driv=
+e},id=3Dhd0')
+> +        self.vm.add_args('-device', 'virtio-blk-pci,drive=3Dhd0')
+> +        self.vm.add_args('-device', 'virtio-9p-pci,fsdev=3Dshr0,mount_ta=
+g=3Dshr0')
+> +        self.vm.add_args('-fsdev', f'local,security_model=3Dnone,path=3D=
+{rme_stack},id=3Dshr0')
+> +        self.vm.add_args('-device', 'virtio-net-pci,netdev=3Dnet0')
+> +        self.vm.add_args('-netdev', 'user,id=3Dnet0')
+<snip>
+> +
+> +        self.vm.add_args('-accel', 'tcg')
+> +        self.vm.add_args('-cpu', 'max,x-rme=3Don')
 
-And this is for virt-9.1:
+And here.
 
-~/qemu/build/qemu-system-aarch64 -m 4g,maxmem=8G,slots=8 -monitor stdio -no-reboot -bios ~/emulator/QEMU_EFI-silent.fd -kernel ~/kernel/arm64_build/arch/arm64/boot/Image.gz -device pcie-root-port,id=root_port1 -device virtio-blk-pci,drive=hd -device virtio-net-pci,netdev=mynet,id=bob -drive if=none,file=~/emulator/debian.qcow2,format=qcow2,id=hd -object memory-backend-ram,size=4G,id=mem0 -netdev type=user,id=mynet,hostfwd=tcp::5555-:22 -qmp tcp:localhost:4445,server=on,wait=off -M virt-9.1,nvdimm=on,gic-version=3,ras=on -cpu max -smp 4 -numa node,nodeid=0,cpus=0-3,memdev=mem0 -append 'earlycon nomodeset root=/dev/vda1 fsck.mode=skip tp_printk maxcpus=4'
+<snip>
 
-I opted to use a shorter version just bolding the difference, as the above
-are a lot harder to see the differences.
+With that the tests both pass with --enable-debug (312s, 352s) and the
+profile looks like:
 
+   6.33%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
+m_feature
+   5.66%  qemu-system-aar  qemu-system-aarch64                       [.] tc=
+g_flush_jmp_cache
+   3.44%  qemu-system-aar  qemu-system-aarch64                       [.] re=
+build_hflags_a64
 
-> 
-> > 
-> > ---
-> > 
-> > v2:
-> >   - some whitespace and comment changes
-> >   - patch 3/6 (acpi/ghes: rename the function which gets hw error offsets)
-> >     was merged on the cleanup series.
-> > 
-> > Mauro Carvalho Chehab (5):
-> >   acpi/ghes: Prepare to support multiple sources on ghes
-> >   acpi/ghes: add a firmware file with HEST address
-> >   acpi/ghes: Use HEST table offsets when preparing GHES records
-> >   acpi/generic_event_device: Update GHES migration to cover hest addr
-> >   acpi/generic_event_device: add logic to detect if HEST addr is
-> >     available
-> > 
-> >  hw/acpi/generic_event_device.c |  30 +++++++
-> >  hw/acpi/ghes.c                 | 156 +++++++++++++++++++++++++++++----
-> >  hw/arm/virt-acpi-build.c       |  33 ++++++-
-> >  hw/core/machine.c              |   2 +
-> >  include/hw/acpi/ghes.h         |  23 +++--
-> >  5 files changed, 216 insertions(+), 28 deletions(-)
-> >   
-> 
+This I suspect is triggered by assert_hflags_rebuild_correctly() which
+is validating we've not skipped rebuilding the flags when we need to.
+It's a lot easier than debugging why your execution trace looks weird.
+
+   2.95%  qemu-system-aar  qemu-system-aarch64                       [.] ex=
+tract64
+   2.52%  qemu-system-aar  qemu-system-aarch64                       [.] ex=
+tract64
+
+This is usually triggered by translation code which uses extract64
+heavily during instruction decode.
+
+It might be useful to see if we can get functional tests run under TCG
+to dump "info jit" at the end and ensure we are not over generating code
+and exhausting the translation cache.
+
+   2.12%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
+m_el_is_aa64
+   2.11%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
+m_security_space_below_el3
+   2.11%  qemu-system-aar  qemu-system-aarch64                       [.] de=
+posit64
+   1.49%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
+m_hcr_el2_eff_secstate
+   1.46%  qemu-system-aar  qemu-system-aarch64                       [.] ar=
+m_is_el2_enabled_secstate
+   1.38%  qemu-system-aar  qemu-system-aarch64                       [.] ex=
+tract32
+   1.34%  qemu-system-aar  qemu-system-aarch64                       [.] ex=
+tract64
+   1.30%  qemu-system-aar  qemu-system-aarch64                       [.] ge=
+t_phys_addr_lpae
+   1.23%  qemu-system-aar  qemu-system-aarch64                       [.] aa=
+64_va_parameters
+   1.09%  qemu-system-aar  qemu-system-aarch64                       [.] ro=
+l32
+   1.07%  qemu-system-aar  qemu-system-aarch64                       [.] pr=
+obe_access_internal
+   1.02%  qemu-system-aar  qemu-system-aarch64                       [.] de=
+posit32
 
 
-
-Thanks,
-Mauro
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

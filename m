@@ -1,154 +1,141 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3548888njk;
-        Tue, 3 Dec 2024 01:35:19 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVk5HRDO0dmbBkkOr/GmsEI6UpcBR7vd1uaFUDje8MpUbRNYCqaEyVY81xw+8g2fMwt9HzThu3OJiwsAg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHEVrviF8YXRcyjljx486u2WE1+gVCtYnsuABM85zkVDvJg5k6zCp7bmU4y0KdeKbywOaV8
-X-Received: by 2002:a05:622a:8d:b0:466:9938:91f3 with SMTP id d75a77b69052e-4670c73aa94mr21992281cf.49.1733218519589;
-        Tue, 03 Dec 2024 01:35:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733218519; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3572738njk;
+        Tue, 3 Dec 2024 02:29:28 -0800 (PST)
+X-Received: by 2002:a05:6512:281c:b0:53d:de12:ef25 with SMTP id 2adb3069b0e04-53e129fff06mr890954e87.19.1733221768442;
+        Tue, 03 Dec 2024 02:29:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733221768; cv=none;
         d=google.com; s=arc-20240605;
-        b=gQUp8OkfPynGnMw6A7DwASvuM+tOxsxY+Eg3S0T3h4hQ3BNZBmYjarYL1FMTIGnbVF
-         CNfnQW/OsbqDHoahTNN7DEpWAdOUVIRENiNEx6IXdU3La9Qc0+t0sqKNP1QTjzStTd05
-         s/vrU1z/8cQhb4ZczTdnBXWKLadGFyhuGUzCKxjWEwtiqLPb2PCvtmnE8qvzsOQWmZTN
-         lyQkq6lroIQ1gIIBYPNZt+OoGw32ZM4dr/f75Dryhv+kuTYcLfNSlojVb6yLYi6YZbly
-         SIF5pXUDf7NXOw+v9zIBfQc59nNY38w+LIQWpJV6A80yUVaeas5f8yUIOsqC0gbOErQh
-         iPag==
+        b=GJCPA8jTEyi+ISY9p9UBGDkSoy2I11N8xuyX102cA94WQHHokKR3J0pGFv5noATH34
+         7g00nwjUiXjKrQMiruQi3YWlY8v9ERoSOJ7Vo+gnKid6TYHOWGPP8BGv5tjRtBkTHz0f
+         H9FxeY+Kh/fbJFPLtl24n5lUehPobLqXqGZaAYqMOvzsRgjcVE6spEyyP8Mj9NC2IY2e
+         K3w0YAxDLsb4MkkdAOUBc5P81aEFi8h6gH8obP+6cFuLVMQh+rJGZQqcLC+Cw0Kr24EC
+         Urm0W07ZgWHnhGGMe44QUz6Ri0slP3qfSwBucXw6i6wPtD2fgwtQ+gZ/X2NvU/3/aX0U
+         JWCQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=WbCUJ3dVExYB6bKX4zWz/GsJygEsbgGFBQybZmklhPU=;
-        fh=/qEdLwlIXb0q9N9NEMDYid9sN9rzPUN7vHyC6Fvo46U=;
-        b=CNw94Sg6kjJSSQRwZfBjcXnnO/87KXLaIL53oAJOYgWiKm9c4rGVgSTwni8BoNDUQp
-         DZRmkLE5zJyhtVLGavBvbnX7cqWN5wFMgrYhiPBKKbMXk2wKDKl0raLkQBgYkoq23dMF
-         XR2Rq9K7cOa0pmK51mzPntMBhBjzs0X05INdz6XNffuFjn9jR5xKQQlEddRdanZMyAfv
-         cOSaGQpA6azIdE35YKNFMlTtYU2be9OeV0ZCOp8ihSVBn7XeWQS4RikkOAUEuzCSNwkI
-         dvz8p8wJROdEv8zAizR/3Nf98qaz6vD41ubvnC8hmQc8IiFEhW+55wHiDtOv47i4RTuk
-         u9Ag==;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=f0Q8uqfRhDvrNswbuG1OfIJbALNB3zPXNZJaDrH+yhU=;
+        fh=jzQ4EgR8EKxK8+SMSzQ/AsNAxKgQFV1EXS1f3hVD50U=;
+        b=E1vwVLgYW0B9xedMU11PVtNjUjtVsjBMwc9wiDP6uxf1yRKIVHrw1qfCvww5EF/n3n
+         D0PG1aeqoH9j8dKn8pSyGmY9E9j63u6fzp2t0Vbwv+jvFb92opSM9LnxRFvQSgR4tZar
+         NFEmLUNHdME3T697HflEvSKifqh2ZvGn1Jn3g4yB4AZr6y8iBtBQOQEtLwimEVNQ+j/q
+         /B9A/xOW+JXavPQRvTNCeLKgM7ChcdVc8kiWSOYRDjXksnSMHY3bqq3OiaynBXEiNy6N
+         iTRPKxDdzW49tx46XtjnKuuYUaXajKaYcWAsp4hmXd6jIMUs+GpRqtX+e+i2K3FhtZQy
+         Odbw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NKUBpypC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-466c4225f2esi158110431cf.426.2024.12.03.01.35.19
+       dkim=pass header.i=@linaro.org header.s=google header.b=DIfPNq0Z;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 4fb4d7f45d1cf-5d0d45cfc49sor1489057a12.10.2024.12.03.02.29.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2024 01:35:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 03 Dec 2024 02:29:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NKUBpypC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIPJ7-0005WO-Qo; Tue, 03 Dec 2024 04:35:01 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tIPJ3-0005Sl-1L
- for qemu-arm@nongnu.org; Tue, 03 Dec 2024 04:34:57 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tIPJ1-00047n-CD
- for qemu-arm@nongnu.org; Tue, 03 Dec 2024 04:34:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1733218494;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WbCUJ3dVExYB6bKX4zWz/GsJygEsbgGFBQybZmklhPU=;
- b=NKUBpypCqadSw1HkPh6dKQDSfgYWhEylEksC6LJaflzSr1ThA8h0/FCZfhyj4oLR79zNDj
- BqVhgwFxhGZf2/Hp06SuF3y9gdW27apADUa4GbpApX8sKb79qpXdYrRlQcllOB8TQBvGTh
- rR2wljHgrnYxUXRu1qOiJCFV3MBXLLA=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-376-GoRi7I92Ofijny-Oqj7edg-1; Tue,
- 03 Dec 2024 04:34:50 -0500
-X-MC-Unique: GoRi7I92Ofijny-Oqj7edg-1
-X-Mimecast-MFC-AGG-ID: GoRi7I92Ofijny-Oqj7edg
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 508951944D1A; Tue,  3 Dec 2024 09:34:49 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.37])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9D3481956052; Tue,  3 Dec 2024 09:34:46 +0000 (UTC)
-Date: Tue, 3 Dec 2024 09:34:43 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 2/7] tests/functional/test_virtio_gpu: Remove legacy
- '-machine foo,accel=bar'
-Message-ID: <Z07Qs1ZiBXPoW4M8@redhat.com>
-References: <20241203092153.60590-1-philmd@linaro.org>
- <20241203092153.60590-3-philmd@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=DIfPNq0Z;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733221768; x=1733826568; darn=linaro.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=f0Q8uqfRhDvrNswbuG1OfIJbALNB3zPXNZJaDrH+yhU=;
+        b=DIfPNq0ZU2HrAqftIhtaII85Zt9hutO3Z6MeGk/zexBRG1zOVUBVP6uOesXF8wzhl3
+         c9Vn+1sm3SvM95RNlaA0j14CUA8lyf64FANpcSga0GIG/nxVMpFJVAKmWlAOSIlzVfM6
+         eNN40o18fRdSy9pRViGkITJT/UHeq2eOiDpaTrIr+I7S1iMaSKi3g46uIRdhgH1wUyJS
+         VimBaERhU6lRRn+dR4NHtQSjiQhbqFlmtDM93PB7+V8C69DGwqhSOhzwyawsgko8gabp
+         3YdKHQhzQcE48ia4d+R7SMInQf+nZzpSknGA/0XRa8Li4cctKkr447PU0R44geo70+AJ
+         ugkA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733221768; x=1733826568;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=f0Q8uqfRhDvrNswbuG1OfIJbALNB3zPXNZJaDrH+yhU=;
+        b=TOETrXuynIW0T7d4KjnO0lueQucsZCs3kpvpYO7LHe+tl8LT4UYtSUfc6Jtg/UaJKy
+         gC+DlFSLGkNKgpdhL9bdguesyl+GjwFfoZrZSaJHd3svBG40K4e6q9xGMrU5yahQ5bvE
+         MqzqWvgDd2sPePpuvlCfV0MHcZByBlmTM0QhCiodcU43UZFyiHhpYiJvYjG+jAY1rMXO
+         xDPfAMA8rTVy4D7bWfevsYpUUPaSkJMZH8T8mFuXCfq8ygM3AWc1P0kn8EqpGUQeF2e8
+         z3qkLhNuE/Bb5Sq2El3n2mf0s+ahwXX/AHliYXpRjjCWPFNbkzlDwPkndMspKZjSyz3t
+         t2wQ==
+X-Gm-Message-State: AOJu0YyGC4C64EdwUnBJdBmS/zsE0FBLrVrbz8Ry40YVBUtNLitahCe/
+	tLMmCy3uUJvRs/0BP4/HDX3MXtgaoOHo2fxta2p+PU7HQHOq15JXWiDW7DAgV5rfK2u/DYbcVCU
+	LaxsZRm6r2c+8d2zSDjQFfMe7UsZHxfSQLFOGJwZF
+X-Gm-Gg: ASbGncswMcH5XTVOO6X62i6tVKHtd7B2A/2cxRJBTJzhwL+tKdNZQQrk2gdL9InXome
+	1bIB8RZed0dP5saI+cc9F/l6NPDW6iYyx
+X-Google-Smtp-Source: AGHT+IGdeUQhGG6ILfuNeFl9J7s4bUy31TXtHRR0DuA6BHZtnhUZ0fTuANdTNGF5Krndlgn3AkMU6lEJf3qwCkiO7nA=
+X-Received: by 2002:a05:6402:270c:b0:5d0:d311:dd4 with SMTP id
+ 4fb4d7f45d1cf-5d10cb81b94mr1276216a12.22.1733221767859; Tue, 03 Dec 2024
+ 02:29:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20241203092153.60590-3-philmd@linaro.org>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: SaciwKKJezlA
+References: <20241128213729.1021961-1-pierrick.bouvier@linaro.org>
+ <4b3180bd-8054-4431-a594-0445ce4837aa@linaro.org> <5620efa2-98c6-4613-b866-67e91ac6acf8@linaro.org>
+ <CAFEAcA-xa1AKf2GAv7go5wdu+Td=4jf7Nriin-Oe3S6qEV6X0g@mail.gmail.com>
+ <fd7ad48e-1e72-4735-8064-7039eedc00ae@linaro.org> <87ser6c5be.fsf@draig.linaro.org>
+ <a26e2a3d-d915-4e84-9b8e-dd5935049f31@linaro.org> <CAFEAcA9q7advmbws+xx6Mgcg-=072tBfdRReSSqymYz6p9zENg@mail.gmail.com>
+ <b16724af-0758-41b0-afdf-8a6eb138dd64@linaro.org>
+In-Reply-To: <b16724af-0758-41b0-afdf-8a6eb138dd64@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Dec 2024 10:29:17 +0000
+Message-ID: <CAFEAcA-iAkyN7hPJ=ttEBwNDFwOTO8fC1H1RKSLv6uM0qzsCkg@mail.gmail.com>
+Subject: Re: [PATCH v2] tests/functional/aarch64: add tests for FEAT_RME
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, qemu-devel@nongnu.org, 
+	=?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+	Troy Lee <leetroy@gmail.com>, Alistair Francis <alistair@alistair23.me>, 
+	Andrew Jeffery <andrew@codeconstruct.com.au>, Jamin Lin <jamin_lin@aspeedtech.com>, 
+	qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
+	Richard Henderson <richard.henderson@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, 
+	Niek Linnenbank <nieklinnenbank@gmail.com>, Joel Stanley <joel@jms.id.au>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: WMcQib2fLePF
 
-On Tue, Dec 03, 2024 at 10:21:48AM +0100, Philippe Mathieu-Daudé wrote:
-> Since commit 6f6e1698a68 ("vl: configure accelerators from -accel
-> options") we prefer the '-accel bar' command line option.
-> 
-> Replace '-machine foo,accel=bar' -> '-machine foo -accel bar' in
-> functional tests.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  tests/functional/test_virtio_gpu.py | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+On Mon, 2 Dec 2024 at 20:09, Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
+>
+> On 12/2/24 11:56, Peter Maydell wrote:
+> > On Mon, 2 Dec 2024 at 18:36, Pierrick Bouvier
+> > <pierrick.bouvier@linaro.org> wrote:
+> >> Maybe our enable-debug should produced optimized builds by default, and
+> >> we could have a new --enable-debug-unopt for the "I need to use a
+> >> debugger" use case. Would save a lot of time for devs, and in CI where
+> >> minutes are precious.
+> >
+> > The whole point of --enable-debug is "I might need to use a debugger"
+> > (or a sanitizer, or anything else where you care about debug info).
+> > If you want the optimized builds, that's the default.
+> >
+>
+> It seems like we associate debug info to "I might need to use a
+> debugger". But, it's not the only use case.
+> Sanitizers for example, are usable with optimizations enabled as well
+> (with some caveats, as some errors might be optimized out).
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Yes, it's the caveats that are the problem. If compilers
+supported an optimization mode that guaranteed not to break
+the debug illusion for backtracing, interactive debug, etc,
+then we could use it. But the best they do is -O0, so that's
+what we use. (-Og sounds like it ought to be what we want,
+but unfortunately it still leaves you with "value optimized
+out" errors in debuggers, so it's no good.)
 
+> I don't have anything against what --enable-debug does, but supporting
+> this for tests (and CI) because people *might* use it is a mistake IMHO.
+> It's an opinion beyond the current series use case.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+If your test is hitting the timeouts for --enable-debug on
+a local dev machine then it has a high chance of hitting the
+timeouts in CI in a non-debug build because of the "noisy
+neighbour" problem where a CI job runs massively slower than
+usual. The fix is to make sure the timeout is high enough not
+to be hit in a debug build, and wherever possible to have tests
+that are cut down so they have short runtimes.
 
+thanks
+-- PMM

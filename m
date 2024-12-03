@@ -1,233 +1,270 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3543581njk;
-        Tue, 3 Dec 2024 01:23:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVhMhu2ljNCmPG0Hd42ozaGrCj3rFDCE8qmlVs5psZFzPUvgMeM82+aIY87uMBFWtE4IGAW4QfJ4WhUMA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGbdkXpDjE2auStKVjP6SfYoGTT78nUD1UOPU0qCV/qhZm0uZJF8bTm5Qy9NHqydJDhTrjA
-X-Received: by 2002:ac8:5d47:0:b0:463:64b2:2e0c with SMTP id d75a77b69052e-4670c740922mr20799811cf.42.1733217785974;
-        Tue, 03 Dec 2024 01:23:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733217785; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3543624njk;
+        Tue, 3 Dec 2024 01:23:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUZgEwJsK6SUPPReBoRStVkUQw8VBU+jJH1c/euzFnX5DTVm3mccThrj0F7264mbskyusKzjk68nAHB6g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFme3SSRGvsmlzDmkgxNqxb/6CE90JucogJszVRt7KHQe+weQ3SsY7maMUNEx9AaZThwb+S
+X-Received: by 2002:a05:622a:142:b0:466:9c95:81cf with SMTP id d75a77b69052e-4670c0964ffmr23052021cf.18.1733217789769;
+        Tue, 03 Dec 2024 01:23:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733217789; cv=none;
         d=google.com; s=arc-20240605;
-        b=fBFybCIMnsybSrARP0MuGz5VWWT6dG8zM87c0O0kPzF9Tze9bKbQLhFOT4MKgQPCHg
-         NyTtdKYkIBBNjwEeJBEQNF2/3mHLWQzyXTZCvv0G8Kede6zRXJ4fJ8poeJw9MCwkOrjm
-         2rpW812EfTYBvCWbt3DFCxVsnri24MiBHq2yCpaA73+S9NM/86oM0eSoBdNCTlls7U2F
-         j06qTj2Q6KK1/CnbnjvZbLfhA9HkGA3CWh+d6P2oyPyRVNfcZ+yiT5jZvw6xaHPqixOe
-         dy6HmKujCs+fTjXtIeGxDQNboCsQdu6UbBzUUlupJL2azVly+a+HrkNGLwM+YhVd7hIf
-         nHjg==
+        b=Ej/MigwNSBmSLw4YRMhx+LY5B8L6rGDsUAIG4iFanP0eD9GkQNzz+37U63IIHTH4Cm
+         DU+E3aw1PeCqe2F4dfC/M7+eU6+J1JKhtRgVFATK9K4cuqOEdsnpSEh1weB5OR+4PjbB
+         No1iUCltQmz3+xftg/6uL9BZPLWYx/1ew+zW3uZs+pewKBgR622VPn2fy/YA6kBmOlEe
+         YDdqqS1jD/LwNvLt99lsPTTamDc9m7hC1YG5zrTuQjSF5lTkUpNch5lw5kj8vDX8Kb7B
+         Pb+ron4VdUaWV+waPlhVxD6Iy1r/KHUOAuOPplCbVJD3Yt2ojyTPV+UA5gzaW0LDR/lZ
+         pGdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
-         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
-         :list-id;
-        bh=C/6Bk/TIHmUcRxz6rQ6nK013EsFPgzobZnpt1ORjNTg=;
-        fh=WUKamnQOFWaByGkNphiPQ6ES13hflzz0c6tVm1ZJT7g=;
-        b=ZsdhbrSDuCK9nNPuA0CGXFVlK6yY9+TFp+dip1v5PUpQDOm720xlG8WNvy09GARPGC
-         II/XcDAEzJqvPrHW/cisk+Z8IfIarFGcvRURv9ChO7BW9XyfnL3QZ++0bNzaRu47v0ec
-         SNKCG1RCYEL83sn5bU/f3HrhuArHjqnNTzMJz/evgAKYqjCzVRscl9nUrehcd03ipuAj
-         gacyqLaNG6GPmiNsG3wnAY8vuuaYZSfuZ6kFMiZ7r2JEr+dezffLJzPelcowPjLiDRCm
-         /LgReo1kRt8D1ojkBaziARGBUIz5J8f6coGdDwrfwmlnXs/umLg0fSIfy7imkOKurq7I
-         4vug==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=PKNytw/ebCVRIpsQ9YAUBfkaMh3JJAq/QjBPjtgiz7g=;
+        fh=K4q8LGA1dTAvVw7OHYqRwA3rKlWlusrk6TGWj+g1fmU=;
+        b=RrzQJcWJ5/tjUBgSWGuDqZe2E1R815CZ2fk2w4q6hrAU2nBaJBntlGevRNN9PF58+O
+         JgwSKubHP9PtB1AZd/utiz2+9zmr2bvtClrL3s1y31xswOclG6nRZAOikEhXwnsijTLU
+         /zOVZLeB3pfvCY34o1zGv8yOMQhlK6vGj7Ep2UfjTzoyxe+kM0F4AVO6veJNn9+OklQd
+         /lC5AVRtiPwbIVvT6qLiypUYDE1GrG6DTuxLhgDmi+H8bL/FP62uyYRnQRfHCxlynY9J
+         TjL+1in4Br8f14a81CtygYBTOz0+oCXMh00RDe5Qi4XA7+9Jk9V4aSH+2EawbFSGm4qc
+         aKnA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ns0faxOL;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <xen-devel-bounces@lists.xenproject.org>
-Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
-        by mx.google.com with ESMTPS id d75a77b69052e-466c4225d3asi143469281cf.429.2024.12.03.01.23.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Dec 2024 01:23:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
+       dkim=fail header.i=@linaro.org header.s=google header.b="C4ES/bYd";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=fail header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-466c4055c52si139067201cf.24.2024.12.03.01.23.09
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 03 Dec 2024 01:23:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ns0faxOL;
-       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from list by lists.xenproject.org with outflank-mailman.847520.1262618 (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1tIP6l-0004Ag-ES; Tue, 03 Dec 2024 09:22:15 +0000
-X-Outflank-Mailman: Message body and most headers restored to incoming version
-Received: by outflank-mailman (output) from mailman id 847520.1262618; Tue, 03 Dec 2024 09:22:15 +0000
-Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
-	by lists.xenproject.org with esmtp (Exim 4.92)
-	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
-	id 1tIP6l-0004AX-Bh; Tue, 03 Dec 2024 09:22:15 +0000
-Received: by outflank-mailman (input) for mailman id 847520;
- Tue, 03 Dec 2024 09:22:13 +0000
-Received: from se1-gles-sth1-in.inumbo.com ([159.253.27.254]
- helo=se1-gles-sth1.inumbo.com)
- by lists.xenproject.org with esmtp (Exim 4.92)
- (envelope-from <SRS0=yzh2=S4=linaro.org=philmd@srs-se1.protection.inumbo.net>)
- id 1tIP6j-0003Be-MH
- for xen-devel@lists.xenproject.org; Tue, 03 Dec 2024 09:22:13 +0000
-Received: from mail-ed1-x530.google.com (mail-ed1-x530.google.com
- [2a00:1450:4864:20::530])
- by se1-gles-sth1.inumbo.com (Halon) with ESMTPS
- id 1446cfc6-b158-11ef-a0d3-8be0dac302b0;
- Tue, 03 Dec 2024 10:22:12 +0100 (CET)
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-5cf6f367f97so6273392a12.0
- for <xen-devel@lists.xenproject.org>; Tue, 03 Dec 2024 01:22:13 -0800 (PST)
+       dkim=fail header.i=@linaro.org header.s=google header.b="C4ES/bYd";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=fail header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tIP76-0005o4-8b; Tue, 03 Dec 2024 04:22:36 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIP74-0005nV-FF
+ for qemu-devel@nongnu.org; Tue, 03 Dec 2024 04:22:34 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIP71-0002hv-Nf
+ for qemu-devel@nongnu.org; Tue, 03 Dec 2024 04:22:34 -0500
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-53dd8b7796dso5610668e87.1
+ for <qemu-devel@nongnu.org>; Tue, 03 Dec 2024 01:22:31 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1733217750; x=1733822550; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=PKNytw/ebCVRIpsQ9YAUBfkaMh3JJAq/QjBPjtgiz7g=;
+ b=C4ES/bYd6CIO8uWhG9jWpVePaXTZZq2eN9nOGUP8DL/8HnrM+Wj9fCOsfBiIzZsKE8
+ GB1J3Aem2YBIPebnZUlMENgLt+HMgSpTVk2q3SDW8In3QMI7xV0+gdFJOsdQ6uw0+WcX
+ y2Qp5MUddxt7+LSsEftfszqEH3k5bOWm59hyCWR5sppvy6+KmwQ1Fz573LWT9O1AQOrZ
+ XGhMJ5Lj96HRdS8pk/0xGGgGN2klsK7VR41jKSuxbdda31ZPLBtqwLeWIT2AGl3qBZJf
+ qveoX0NKHtFowIeLcCGApOQrodsDZ/Xvou1wpjMrQpFjyZfLGBjRhtWcxyOYOKfQqmEW
+ Zosg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1733217750; x=1733822550;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=PKNytw/ebCVRIpsQ9YAUBfkaMh3JJAq/QjBPjtgiz7g=;
+ b=uIuFiAHO6NAU56guFW4rba27OXOKguySnzrMcHo/H2D/x9Pid2L4a6K77EA4ekyibq
+ ZQovNjKXSBBWZfk0zSjWiNizwXY3ydaetoWvF19Tk3NkGvXNhQ/JGDzJLfUNq5ct2AXs
+ GYrXehenvGYeOmclrFWqKUr/ruslGylx4ppxZc/TobewEg8EnuQ3UQ5rcZatpNFSJnST
+ mTSDiQvXJ5hwN6HeCKUmkAVpIyav+1hfCXlhj8VxpPc2c0QNcK9dwM/PTzDTQ/azZAaa
+ R/LGCEkkQ3jlw6jmwwSZDs/KJa5Lu77BLRZmFVA7EAklPEXTcmYHUzpNw91zV+XhNvYH
+ o1XQ==
+X-Gm-Message-State: AOJu0YzkHjb9aBrpOHmDfjQG5+R8O/U3xCjA2yr6tvvvx12xS4oiVE9i
+ nN1MQn6dGHsa+x9ijLQmeuLYfuivtf77tI5bQxTXNWThxmGh56hDQpg2qNwNMZIB9qsIZsIziTW
+ /HGU=
+X-Gm-Gg: ASbGncu0RvfdHJEfvcpzAPSh/cwtNMnI6aE3kGrSEUpSHSxk6ZdYPe1+HToLRlzTTlk
+ u/gmMnjEhSTmmuBz8WRP9xWYSp3si32QUPAWSj7NRSXVL8QcsUcB5a9SJPTTBw/pByN7a/FAYOT
+ 6R9eGJ/7DXMVaTA75frdCHcyTWm1f9ry2YrlIYqjpd+uSuyah8owt8DQFIzGlLveqCk5sB6fsPf
+ Lztm/BVTfOSAAurXdOei4upzrFdaMQOXWacmm4tzH2ckYisW8PzWcAR+olDiA6YQMfzaWQ0
+X-Received: by 2002:a05:6512:3096:b0:53d:a273:7da6 with SMTP id
+ 2adb3069b0e04-53e12a290b4mr863155e87.57.1733217749670; 
+ Tue, 03 Dec 2024 01:22:29 -0800 (PST)
 Received: from localhost.localdomain ([176.187.209.146])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aa599801591sm590543266b.91.2024.12.03.01.22.11
+ a640c23a62f3a-aa5998e6a1asm591445466b.98.2024.12.03.01.22.28
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 03 Dec 2024 01:22:12 -0800 (PST)
-X-BeenThere: xen-devel@lists.xenproject.org
-List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
-List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
-List-Post: <mailto:xen-devel@lists.xenproject.org>
-List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
-List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
- <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
-Errors-To: xen-devel-bounces@lists.xenproject.org
-Precedence: list
-Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
-X-Inumbo-ID: 1446cfc6-b158-11ef-a0d3-8be0dac302b0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733217732; x=1733822532; darn=lists.xenproject.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=C/6Bk/TIHmUcRxz6rQ6nK013EsFPgzobZnpt1ORjNTg=;
-        b=Ns0faxOLv/DHDL/hqcwnpNQ3liJ2RfEeerFr/34ttx5RJ1+/MeAKddbDKOrl2WfG6n
-         d43uB0eBHdycZG1VAMySXGfehlWPhi9b3B9Jw4aNI/CYAuDP7ocxRYhNJnw+I5iBF/v5
-         1Vnp7RlQiJGH9byGA15iwLiwvBbwA8z7f9qgsRazuBWwzcsftQf6ijzIqLw3HH7ddYOC
-         /eHicsE6K01d2pxaEg7XLMgTIa01Yn1Z2WRNkXKCAo7ViEveCgD+sq/P9qdePe9QfLsu
-         MRTCI7nmuI8dbNweZbrgltQAToBJLa/Kk3MEh4OXoVcEij5uOKf5K19CW6ScLN+LPkW6
-         8hKQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733217732; x=1733822532;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=C/6Bk/TIHmUcRxz6rQ6nK013EsFPgzobZnpt1ORjNTg=;
-        b=PRFGVfn2u4qyHzB6Psi4MS0990fQrPPSQGviSSf313HUAPpXoV5FC3GehFczY/s9k0
-         tHFUztD/VA/r0NO92Ix+fxutAOCbG0QSlwL2ctY/nXeNauQDXfbbAT7ILNV8Omjee5IP
-         6duBsqz/8ObyF5Ih44fis/zPm3fD6vgGHjNwY+dAWzFA9IFy33a9nm35vCQtYOzuylM8
-         oqg3lDipstHfl7yAvg+GbmY8RTuq1c5c0x5vhUHdN5KeMflx3veMzcm2ZGIF6viZab2V
-         7N+H5qkuNNwTrxY/bC0/0lTUgiT4foLRhGGXR4LtDj6XoLFzWA0Zj9QHVJKXbVphX26P
-         K5gQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXsu8lwBwrh3lfJCWWcLvoEJmJMbu4rB6iVTITibiVnbwOy67CnCmiXUgORgfMuaGhh3rgRXiFD988=@lists.xenproject.org
-X-Gm-Message-State: AOJu0Yxivcle1vKA+1EMRaM+Wd8KGhn5iNDQxr/COMpgey2qLNCsQcax
-	iNaKZDSPPvb0+uLfAc0HicN/R+fte85jO3WRqdCIajM2Eyq1tgwrQUJL3bXuA08=
-X-Gm-Gg: ASbGncsqA/x2JjpFWittxkRGfq7wLC7nu7kpUWkfBf5eeUBCeMPKHDtSwx/WJ0i91GZ
-	dglcSBSjRRuoC7iZLcMudnErhBy5ROGnCmJmjDoLt8JbSvQvUpuEuyFKAE3UpflH7H6SnFLIK31
-	J6HUUj7xSQwLvp3dNE8cEwy57rZ5oafGhXjeXH+qjTb7Ppdn+hEIwQ7Gub7sHg2FTnQxwptAJc0
-	t41OZ+96dMXhim9/DY44ob29jMDR6XK1RxuUOmPy8jhdYuO0pj6dudCnKfkoVcfQIbOneWG
-X-Received: by 2002:a17:906:30cb:b0:aa5:297a:ac65 with SMTP id a640c23a62f3a-aa5f7d4ec91mr122028566b.19.1733217732604;
-        Tue, 03 Dec 2024 01:22:12 -0800 (PST)
+ Tue, 03 Dec 2024 01:22:29 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	xen-devel@lists.xenproject.org,
-	qemu-ppc@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>,
-	qemu-arm@nongnu.org,
-	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 3/7] tests/qtest/fuzz: Remove legacy '-machine foo,accel=bar'
-Date: Tue,  3 Dec 2024 10:21:49 +0100
-Message-ID: <20241203092153.60590-4-philmd@linaro.org>
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ xen-devel@lists.xenproject.org, qemu-ppc@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 6/7] accel/kvm: Remove mentions of legacy '-machine foo,
+ accel=bar'
+Date: Tue,  3 Dec 2024 10:21:52 +0100
+Message-ID: <20241203092153.60590-7-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241203092153.60590-1-philmd@linaro.org>
 References: <20241203092153.60590-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: nveT9goREshm
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KvVse/k4FxFE
 
 Since commit 6f6e1698a68 ("vl: configure accelerators from -accel
 options") we prefer the '-accel bar' command line option.
 
-Replace '-machine foo,accel=bar' -> '-machine foo -accel bar' in
-fuzzer scripts and tests.
+Update the documentation when KVM is referred to.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/qtest/fuzz/generic_fuzz.c                | 2 +-
- tests/qtest/fuzz/i440fx_fuzz.c                 | 2 +-
- tests/qtest/fuzz/qos_fuzz.c                    | 2 +-
- scripts/oss-fuzz/output_reproducer.py          | 2 --
- scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py | 6 +++---
- 5 files changed, 6 insertions(+), 8 deletions(-)
+ docs/bypass-iommu.txt            | 3 ++-
+ docs/nvdimm.txt                  | 2 +-
+ docs/specs/tpm.rst               | 2 +-
+ docs/system/arm/cpu-features.rst | 2 +-
+ docs/system/cpu-hotplug.rst      | 2 +-
+ docs/system/ppc/powernv.rst      | 2 +-
+ docs/system/ppc/pseries.rst      | 4 ++--
+ scripts/device-crash-test        | 2 +-
+ 8 files changed, 10 insertions(+), 9 deletions(-)
 
-diff --git a/tests/qtest/fuzz/generic_fuzz.c b/tests/qtest/fuzz/generic_fuzz.c
-index d107a496da6..a8737a4c463 100644
---- a/tests/qtest/fuzz/generic_fuzz.c
-+++ b/tests/qtest/fuzz/generic_fuzz.c
-@@ -919,7 +919,7 @@ static GString *generic_fuzz_cmdline(FuzzTarget *t)
-         usage();
-     }
-     g_string_append_printf(cmd_line, " -display none \
--                                      -machine accel=qtest, \
-+                                      -accel qtest \
-                                       -m 512M %s ", getenv("QEMU_FUZZ_ARGS"));
-     return cmd_line;
- }
-diff --git a/tests/qtest/fuzz/i440fx_fuzz.c b/tests/qtest/fuzz/i440fx_fuzz.c
-index 155fe018f80..b5487996625 100644
---- a/tests/qtest/fuzz/i440fx_fuzz.c
-+++ b/tests/qtest/fuzz/i440fx_fuzz.c
-@@ -145,7 +145,7 @@ static void i440fx_fuzz_qos(QTestState *s,
-     pciconfig_fuzz_qos(s, bus, Data, Size);
- }
+diff --git a/docs/bypass-iommu.txt b/docs/bypass-iommu.txt
+index e6677bddd32..2ef0e0f6a65 100644
+--- a/docs/bypass-iommu.txt
++++ b/docs/bypass-iommu.txt
+@@ -51,7 +51,8 @@ And we got:
+ x86 architecture:
  
--static const char *i440fx_qtest_argv = TARGET_NAME " -machine accel=qtest"
-+static const char *i440fx_qtest_argv = TARGET_NAME " -accel qtest"
-                                        " -m 0 -display none";
- static GString *i440fx_argv(FuzzTarget *t)
- {
-diff --git a/tests/qtest/fuzz/qos_fuzz.c b/tests/qtest/fuzz/qos_fuzz.c
-index d3839bf9994..9267e63889d 100644
---- a/tests/qtest/fuzz/qos_fuzz.c
-+++ b/tests/qtest/fuzz/qos_fuzz.c
-@@ -84,7 +84,7 @@ static GString *qos_build_main_args(void)
-     }
-     /* Prepend the arguments that we need */
-     g_string_prepend(cmd_line,
--            TARGET_NAME " -display none -machine accel=qtest -m 64 ");
-+            TARGET_NAME " -display none -accel qtest -m 64 ");
-     return cmd_line;
- }
+ qemu-system-x86_64 \
+- -machine q35,accel=kvm,default_bus_bypass_iommu=true \
++ -accel kvm \
++ -machine q35,default_bus_bypass_iommu=true \
+  -device pxb-pcie,bus_nr=0x10,id=pci.10,bus=pcie.0,addr=0x3 \
+  -device pxb-pcie,bus_nr=0x20,id=pci.20,bus=pcie.0,addr=0x4,bypass_iommu=true \
+  -device intel-iommu \
+diff --git a/docs/nvdimm.txt b/docs/nvdimm.txt
+index fd7773dc5ab..d589c3a9b77 100644
+--- a/docs/nvdimm.txt
++++ b/docs/nvdimm.txt
+@@ -228,7 +228,7 @@ which allows the platform to communicate what features it supports related to
+ NVDIMM data persistence.  Users can provide a persistence value to a guest via
+ the optional "nvdimm-persistence" machine command line option:
  
-diff --git a/scripts/oss-fuzz/output_reproducer.py b/scripts/oss-fuzz/output_reproducer.py
-index e8ef76b3413..840da3b5a5b 100755
---- a/scripts/oss-fuzz/output_reproducer.py
-+++ b/scripts/oss-fuzz/output_reproducer.py
-@@ -64,8 +64,6 @@ def c_reproducer(name, args, trace):
+-    -machine pc,accel=kvm,nvdimm,nvdimm-persistence=cpu
++    -machine pc,nvdimm,nvdimm-persistence=cpu
  
-     # libqtest will add its own qtest args, so get rid of them
-     args = args.replace("-accel qtest","")
--    args = args.replace(",accel=qtest","")
--    args = args.replace("-machine accel=qtest","")
-     args = args.replace("-qtest stdio","")
-     result.append("""QTestState *s = qtest_init("{}");""".format(args))
-     for l in trace.splitlines():
-diff --git a/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py b/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py
-index b154a25508f..f3813944d3b 100755
---- a/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py
-+++ b/scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py
-@@ -5,15 +5,15 @@
- Use this to convert qtest log info from a generic fuzzer input into a qtest
- trace that you can feed into a standard qemu-system process. Example usage:
+ There are currently two valid values for this option:
  
--QEMU_FUZZ_ARGS="-machine q35,accel=qtest" QEMU_FUZZ_OBJECTS="*" \
-+QEMU_FUZZ_ARGS="-machine q35 -accel qtest" QEMU_FUZZ_OBJECTS="*" \
-         ./i386-softmmu/qemu-fuzz-i386 --fuzz-target=generic-pci-fuzz
- # .. Finds some crash
- QTEST_LOG=1 FUZZ_SERIALIZE_QTEST=1 \
--QEMU_FUZZ_ARGS="-machine q35,accel=qtest" QEMU_FUZZ_OBJECTS="*" \
-+QEMU_FUZZ_ARGS="-machine q35 -accel qtest" QEMU_FUZZ_OBJECTS="*" \
-         ./i386-softmmu/qemu-fuzz-i386 --fuzz-target=generic-pci-fuzz
-         /path/to/crash 2> qtest_log_output
- scripts/oss-fuzz/reorder_fuzzer_qtest_trace.py qtest_log_output > qtest_trace
--./i386-softmmu/qemu-fuzz-i386 -machine q35,accel=qtest \
-+./i386-softmmu/qemu-fuzz-i386 -machine q35 -accel qtest \
-         -qtest stdio < qtest_trace
+diff --git a/docs/specs/tpm.rst b/docs/specs/tpm.rst
+index 1ad36ad7099..c50bb1cec01 100644
+--- a/docs/specs/tpm.rst
++++ b/docs/specs/tpm.rst
+@@ -329,7 +329,7 @@ In case a pSeries machine is emulated, use the following command line:
  
- ### Details ###
+ .. code-block:: console
+ 
+-  qemu-system-ppc64 -display sdl -machine pseries,accel=kvm \
++  qemu-system-ppc64 -display sdl -accel kvm -machine pseries \
+     -m 1024 -bios slof.bin -boot menu=on \
+     -nodefaults -device VGA -device pci-ohci -device usb-kbd \
+     -chardev socket,id=chrtpm,path=/tmp/mytpm1/swtpm-sock \
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index a5fb929243c..4aed91a987d 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -329,7 +329,7 @@ SVE CPU Property Examples
+   3) When KVM is enabled, implicitly enable all host CPU supported vector
+      lengths with the ``host`` CPU type::
+ 
+-     $ qemu-system-aarch64 -M virt,accel=kvm -cpu host
++     $ qemu-system-aarch64 -M virt -accel kvm -cpu host
+ 
+   4) Only enable the 128-bit vector length::
+ 
+diff --git a/docs/system/cpu-hotplug.rst b/docs/system/cpu-hotplug.rst
+index cc50937c36c..64314ccfd6f 100644
+--- a/docs/system/cpu-hotplug.rst
++++ b/docs/system/cpu-hotplug.rst
+@@ -12,7 +12,7 @@ vCPU hotplug
+     allow vCPU hotplug)::
+ 
+       $ qemu-system-x86_64 -display none -no-user-config -m 2048 \
+-          -nodefaults -monitor stdio -machine pc,accel=kvm,usb=off \
++          -nodefaults -monitor stdio -accel kvm -machine pc,usb=off \
+           -smp 1,maxcpus=2 -cpu IvyBridge-IBRS \
+           -qmp unix:/tmp/qmp-sock,server=on,wait=off
+ 
+diff --git a/docs/system/ppc/powernv.rst b/docs/system/ppc/powernv.rst
+index de7a807ac76..689f9c81a02 100644
+--- a/docs/system/ppc/powernv.rst
++++ b/docs/system/ppc/powernv.rst
+@@ -63,7 +63,7 @@ powernv. kvm-pr in theory could be used as a valid accel option but
+ this isn't supported by kvm-pr at this moment.
+ 
+ To spare users from dealing with not so informative errors when attempting
+-to use accel=kvm, the powernv machine will throw an error informing that
++to use '-accel kvm', the powernv machine will throw an error informing that
+ KVM is not supported. This can be revisited in the future if kvm-pr (or
+ any other KVM alternative) is usable as KVM accel for this machine.
+ 
+diff --git a/docs/system/ppc/pseries.rst b/docs/system/ppc/pseries.rst
+index bbc51aa7fcd..3b18d2ee1ef 100644
+--- a/docs/system/ppc/pseries.rst
++++ b/docs/system/ppc/pseries.rst
+@@ -164,9 +164,9 @@ Currently, there are two implementations of KVM on Power, ``kvm_hv.ko`` and
+ If a host supports both KVM modes, and both KVM kernel modules are loaded, it is
+ possible to switch between the two modes with the ``kvm-type`` parameter:
+ 
+-* Use ``qemu-system-ppc64 -M pseries,accel=kvm,kvm-type=PR`` to use the
++* Use ``qemu-system-ppc64 -accel kvm -M pseries,kvm-type=PR`` to use the
+   ``kvm_pr.ko`` kernel module.
+-* Use ``qemu-system-ppc64 -M pseries,accel=kvm,kvm-type=HV`` to use ``kvm_hv.ko``
++* Use ``qemu-system-ppc64 -accel kvm -M pseries,kvm-type=HV`` to use ``kvm_hv.ko``
+   instead.
+ 
+ KVM-PR
+diff --git a/scripts/device-crash-test b/scripts/device-crash-test
+index 2b139e29ba0..2c6fd7c6f6e 100755
+--- a/scripts/device-crash-test
++++ b/scripts/device-crash-test
+@@ -147,7 +147,7 @@ ERROR_RULE_LIST = [
+     # "spapr-cpu-core needs a pseries machine"
+     {'machine':'(?!pseries).*', 'device':'.*-spapr-cpu-core', 'expected':True},
+ 
+-    # KVM-specific devices shouldn't be tried without accel=kvm:
++    # KVM-specific devices shouldn't be tried without '-accel kvm':
+     {'accel':'(?!kvm).*', 'device':'kvmclock', 'expected':True},
+ 
+     # xen-specific machines and devices:
 -- 
 2.45.2
 

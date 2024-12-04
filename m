@@ -1,211 +1,195 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp443063njb;
-        Wed, 4 Dec 2024 11:11:03 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXtdFC8tnyxQzj3S73GRgStyyQNTHU44CuT4fzZeUhXE/KjX3Gr4YP0XsWHYkmXDm7Ha03VQEexPJeo6Q==@linaro.org
-X-Received: by 2002:a05:6000:2d10:b0:385:fd07:85f8 with SMTP id ffacd0b85a97d-385fd3f21aamr4111384f8f.29.1733339462733;
-        Wed, 04 Dec 2024 11:11:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733339462; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp488545njb;
+        Wed, 4 Dec 2024 12:26:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX6Y98IMxAXG5AOyRkfGt6BZ+wXDeKj8r8sZFfIjRedmMLhpGusn7rdizo2fgtgtH8XFf4w6cb/UiKHrQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHORQmbm1HyLZvkwK04HdRG5t+bLn3oKEVVLlvKl46XnMAYdQYPp/+RgpqMZHqt34DH1kHv
+X-Received: by 2002:a05:6214:d4b:b0:6d8:821d:736e with SMTP id 6a1803df08f44-6d8b73b71ddmr130078436d6.36.1733343994875;
+        Wed, 04 Dec 2024 12:26:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733343994; cv=none;
         d=google.com; s=arc-20240605;
-        b=f3oyQfnBJ+NrMpoOp8/6Nz1yBfhj09bbwCTbvtvOJPIVSez8NxfAc05zenBP/h/a4v
-         vYXpGiARU5e0qbOorngHLo3SutBsMQB1+79LNioqxmYatbcwdkRziZChIel470DxDNzK
-         Jlnv0feJWpUkGYVo4ehxsmchl2JTtvBKddbR4jUA0nXsRkXXam+BLyCHLUKyniGhWK9I
-         ojCwdsAh6jdgzsryift7zsqtZlj9jayEHqgiezMFKwfsPwOX2oJNAwTzD5wcUzcovGWN
-         RDkgfWwqBD8mlwdhQlKrJYeHrUmvX9kkQZdxi3QZelJgAjJ4k3+h+k/nwT7JlgcHTSft
-         9LdQ==
+        b=FGXxvXQ6HXCMZh8u70II3Lu4uu27zpj9OToIoq0wPxm8b55Lpivt8Sn8PEYO0rLV1G
+         tRo7P9PpkCqQwiy/BeJNf7x2jBETtf7JEBoZ2q2XUX3qBFno8FTwwRc4dmvwrRaJ6L9t
+         xzRijSk+EG8lVRIbbnTTtpvx5haWLg0sU1QgX/fS90MJkX398fu58IW75EL2A4EwtDGn
+         T7Mpf0T0tjxmKaAAgwKhYaFxKsB3J/VhUj8se+PbE5WE9GNwUNKpuhNImsY3fhNlvxyL
+         fN8ncG4xvgmNHnvPP/esvF/tIIuRsA/VTFKh1vvIAWUrCSgN5yqsd811N6Q+4kAq+SVG
+         YtbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=xJkr6X6iGm4jU0kNLf3h/3QCpkTdenPRAEhvG0eZ02w=;
-        fh=3JPv/Ppz28qUXfCKumoBQbq4lknX6uPyxTch5uDW9VI=;
-        b=HOrUtW/1WvDb09a52A+MWp/7C01ztYwc5sV1ygsXEkP0u/s2dhAe/BwLo6unooZnOj
-         Hr0MA+RmVKR6wcdf+x6GECTkHW4ZObI8rF0f3hcGsBTNlCz5UIeDWSZJUZsoDQDfoJ/o
-         /kvre8cMq7llYMD5NtG18HhuhDU2iO/8n8TINYkxroxeb1fDHRaE6y+xpbJhM5MXRpbO
-         cgujC8lpv1D40Ab0uj87RD2dZo0g16YmBboyhc0mDe+pN+hivPCMmVV75UvPoM222fBN
-         E9dGZDgIsd6z78mWlCqXDi56N2Nv6DjF+zBf0E2TkBTXaJ3Ny62XTJU/uvVGV1Cc17F2
-         Vj+A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=DPV/ubcrZI2iapAPKTXZkCgfGpvNQPE7G4ysbpy5Jw0=;
+        fh=wwkSHBikWmluHJ75hUbEToFP6W+4b2W/5FLXZYodBJ4=;
+        b=gkFSaMSZEwbeHFDQYZOA9KPNdWkONlQyobR1JZm4G9bVxSPnaje0GMH8tS/UW72o1y
+         H9sqckfRjsmJsFHYylSvlZraL3l+7uUQiayzyQou82/Lf4tbMaY+F354+ujFlrX/mPe8
+         C2B1fwR6LWTeYI6mA3wxxN1TuBytAzX+hh5PPaTmyDYFriNWy1oz2up3jWhayw1G6Uf/
+         +sTtAddIZg2dNhMr0wGLH3tnqfMlq0VMww+TaNOJyL5GZyCmgA+2o2DpwJT4kz9pkfW6
+         exJCzJJ8hWjy1fFVQhzjUwxPPkpl9TxstujHYqU1aTr8tk0n8/otAtJ14Fmb3Imtg2wK
+         /+CQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OhK7Cd3L;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dRqngvAN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <jean-philippe@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-385e9f88eb1sor2461084f8f.10.2024.12.04.11.11.02
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d88344e253si172710836d6.242.2024.12.04.12.26.34
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 04 Dec 2024 11:11:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Dec 2024 12:26:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OhK7Cd3L;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dRqngvAN;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tIvwz-0007SC-WA; Wed, 04 Dec 2024 15:26:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIvwy-0007Rv-Lu
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:26:20 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIvww-00070R-TH
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:26:20 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4349f160d62so1361405e9.2
+ for <qemu-arm@nongnu.org>; Wed, 04 Dec 2024 12:26:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733339462; x=1733944262; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=xJkr6X6iGm4jU0kNLf3h/3QCpkTdenPRAEhvG0eZ02w=;
-        b=OhK7Cd3LxyPaIOnbL2AXIR/DeiqgxpYZApVkyc7PiVahhkg5WkVzxGBeBsi/v90r9h
-         SslpBRVdd0E2Na4P6S/klqCxjEjX3E0CLnyGgZgOIrrdH96ONwA3WIhVJ7CtvJqM6voF
-         peGK4rn5Jk+5dQLNgmxOx0BWLphGx+kXc/wK9hUYYEYFH51pvKzBQmQIGMPRPYNC2SQM
-         F92/zFWe/icpQnd+LEB6DiEH0cIyqFY7vtMKNNNNzWV63MaFrooaPdhWt2pC+b4xzEQi
-         KkN77NCmgILRvsk/B2j3XRJG2w+OlgfL9OUT1Xe8CJWKKWGpHYNsy2SAEVhZF6F/esnF
-         DrhA==
+ d=linaro.org; s=google; t=1733343977; x=1733948777; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DPV/ubcrZI2iapAPKTXZkCgfGpvNQPE7G4ysbpy5Jw0=;
+ b=dRqngvANIAybBI4plRQlxbGRt7LPEOiaCux0KvE/ZHgfjadcIpzfr0vJYNoYv20AaK
+ /wZvLKovl491nwxERsQyNHincW8MTSAgH1bpoyFqa6Wsch/lUMGFjEZY/aAFsvKYXHVw
+ dxCjmzXDOgGfmonYcPcLyjF7ncHNBnCJGTBuwVxkS0/cAHoIYnsVnCH3Ivdd3BPYeD2j
+ 0Pd83NvnY49xelDwl3I8T8RBjRNUrDChC8wuQ4kYoIZTGQu0fEhduDxDAbgTtzpiS62o
+ +2vlgpGt3n6H00hJYR4Z2kWeXqxwbVQryGLCgj6/2K+yxE8pEvlhDscguxfvj52uGaaj
+ w2Yw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733339462; x=1733944262;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=xJkr6X6iGm4jU0kNLf3h/3QCpkTdenPRAEhvG0eZ02w=;
-        b=WtBTGzOUFukvDZt+lYRUSKlYre1Z+monQo+seqIz7EMj+hzBE+HbHSkUgKRkwIXPYJ
-         jA+c042Sg3vY1Br4RrASzXFiKKZ6vOZ73+IKm6ARyASDbdMC9WqkSbF8e+0ED+AagU5Q
-         /izTexD9+O3tvAztHM2WLSi6alqRjDG17fnHKQ4tzTW696tY3UD42fPdi6n+XOk8KDk9
-         ZM2uHaae8F+NzIpEs9TIVIIl/XA/8OunGhWn9VezYjKSuTXv5MpO+AfbPXAejERkDpsH
-         eEdltZ4yyysDb/mO9PtUyVHnLYfUIqUxn/k9D0MB0w6DR6Hthy6SMhW3jshK9FsHTA1q
-         5kpA==
-X-Forwarded-Encrypted: i=1; AJvYcCUHLYB3MOSMK0dUiP03LnNfJJKb9VFGezoDhbKuMwc1rNgO9A2QfUW2xuWMWyA9EUJdiomLJkomq54qDw==@linaro.org
-X-Gm-Message-State: AOJu0YzuQPUvW6myMmnWhYrfapXqzSr3R8AvT0/SKY/qTqsTBXc1r6/J
-	8JMLA21tosoLxy65p1LEEy2MFxTDo2jwxaTJ9ZVN5RFirdI97pORx9mF5OvkIQYOPA==
-X-Gm-Gg: ASbGncsSuae8+oAAia/Zm0R++Z823ArlZ4/qhkVuZ9prFEQYPqJA9MMx3OyvwvaRzU5
-	+tl6duzyXm0J3hjI7W71breoqXXx+eKe3az6UZEKhP7xT6aiqInCeTJASnjC8RhH4QTG/iTxQfm
-	SFd3aDFqutGFR4MkgsL3KnarWHx4IwzwiYOIPoxV+Jpvc0nNs1QPUnk9b0tZkoO47d6Ip3FP7Cz
-	v//hJlQt8UQArd4KWHx2JYYQJ5Pm4gpGGfZEMZaRDKqM8xi
-X-Google-Smtp-Source: AGHT+IFSE7EbJ7GAFFLFXXCfbtDYu0IPP92EWaIzpH84TAUFzF3WLmk7cmqpWzWQfvclNGQGSrizKw==
-X-Received: by 2002:a5d:6c6d:0:b0:385:f984:2cbc with SMTP id ffacd0b85a97d-385fd3f2d32mr6248857f8f.34.1733339462119;
-        Wed, 04 Dec 2024 11:11:02 -0800 (PST)
-Return-Path: <jean-philippe@linaro.org>
-Received: from myrica ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d52c0bfasm34420985e9.32.2024.12.04.11.11.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 11:11:01 -0800 (PST)
-Date: Wed, 4 Dec 2024 19:11:25 +0000
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, peter.maydell@linaro.org,
-	richard.henderson@linaro.org, philmd@linaro.org,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.bennee@linaro.org,
-	Eric Blake <eblake@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH v3 10/26] target/arm/kvm-rme: Add Realm Personalization
- Value parameter
-Message-ID: <20241204191125.GD2349278@myrica>
-References: <20241125195626.856992-2-jean-philippe@linaro.org>
- <20241125195626.856992-12-jean-philippe@linaro.org>
- <87wmgqsbp1.fsf@pond.sub.org>
- <Z0XDfyDWc3OZSoj0@redhat.com>
+ d=1e100.net; s=20230601; t=1733343977; x=1733948777;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=DPV/ubcrZI2iapAPKTXZkCgfGpvNQPE7G4ysbpy5Jw0=;
+ b=RcHxujPXb8BMSb7fkCOe1KD4coRrTf7pNkvjjhjQbH7EsBRmx0PQIUEum+bIeventi
+ FZGyBQnIwIUk4r4arfA/DOwGsvRgtni5M9cKRjc7L78HVuc2zb3IVecViWhlB3YtP/19
+ SDPo6ujURXPqZDzpwuji3otGPYYPEt3lsFSula1Exxq80qfgSHZGQmfsA1K27DgPpA3Z
+ aLjVlO3oDg9d/rQ6b4c90OmHkcR1NA/05H/PmykTbLA8tlvUSxJFZFqerNbSI10RvtcZ
+ xLpp4Uaz1ps3mIDzY+F66480ebzu+4KE60zrQmxIybaS9R2Aeyz0E4QNae7dkgLD/q7f
+ DEng==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVb/lpu1AGhhMja0p3tgacCtbFiBGLzpS4fzZMteC7to+qoNlXm2KYQl2kn0j3BeiVJNWrjj789uA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzaljp9mgEJgQBLEYuxDdAb6h60XmgOWjHXZUvhK8ij0Bwopo4E
+ xBRfNJMZXRl9CvfSieNZmIqUhfIoGz0qty58Gs1CH2aVfTaO1zNgQ1G4b9TFenU=
+X-Gm-Gg: ASbGncvdrGM4aoQCNwablJsPhmbsKDR/rrpxcCIGUrjmNrmTq9YymL8x6ku0F3tW/iO
+ T2pLHIV5Ku5mtgsrP2nhQ9eWo+R9jPaoZUbsR3SxmTSJIIk6oaYnz7nIQwawZpeCkp3nktSx/96
+ uxGOWLrUiypWHPM97iJKtKvDW5lpl+EpcyQT1GGnNy0HL6gzvH+N2OBCbDIW21sv3UJHuh9L+lM
+ Azt62k2hwl5ror+Yt0RDmGnDbDffmwT6yUCj/YnHhESW7XDVe8ryFnynj3dXTKLKIX+xTmDTzpi
+ uUIFhsdZUETSxE5eo6Fe9Zz9
+X-Received: by 2002:a05:6000:698:b0:385:dea3:6059 with SMTP id
+ ffacd0b85a97d-385fd429a01mr6525111f8f.49.1733343977503; 
+ Wed, 04 Dec 2024 12:26:17 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-385faec0c9dsm6672009f8f.20.2024.12.04.12.26.16
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 04 Dec 2024 12:26:17 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Alistair Francis <alistair.francis@wdc.com>, Anton Johansson <anjo@rev.ng>,
+ Zhao Liu <zhao1.liu@intel.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ David Hildenbrand <david@redhat.com>, qemu-s390x@nongnu.org,
+ Max Filippov <jcmvbkbc@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-arm@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, qemu-riscv@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>, qemu-ppc@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 02/20] hw/core/cpu: Introduce
+ CPUClass::datapath_is_big_endian() handler
+Date: Wed,  4 Dec 2024 21:25:44 +0100
+Message-ID: <20241204202602.58083-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241204202602.58083-1-philmd@linaro.org>
+References: <20241204202602.58083-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <Z0XDfyDWc3OZSoj0@redhat.com>
-X-TUID: Ox6oOzHfOjMW
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 204MbSCOcCTE
 
-On Tue, Nov 26, 2024 at 12:47:59PM +0000, Daniel P. Berrangé wrote:
-> On Tue, Nov 26, 2024 at 08:20:42AM +0100, Markus Armbruster wrote:
-> > Jean-Philippe Brucker <jean-philippe@linaro.org> writes:
-> > 
-> > > The Realm Personalization Value (RPV) is provided by the user to
-> > > distinguish Realms that have the same initial measurement.
-> > >
-> > > The user provides up to 64 hexadecimal bytes. They are stored into the
-> > > RPV in the same order, zero-padded on the right.
-> > >
-> > > Cc: Eric Blake <eblake@redhat.com>
-> > > Cc: Markus Armbruster <armbru@redhat.com>
-> > > Cc: Daniel P. Berrangé <berrange@redhat.com>
-> > > Cc: Eduardo Habkost <eduardo@habkost.net>
-> > > Acked-by: Markus Armbruster <armbru@redhat.com>
-> > > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > > ---
-> > > v2->v3: Fix documentation
-> > > ---
-> > >  qapi/qom.json        |  15 ++++++
-> > >  target/arm/kvm-rme.c | 111 +++++++++++++++++++++++++++++++++++++++++++
-> > >  2 files changed, 126 insertions(+)
-> > >
-> > > diff --git a/qapi/qom.json b/qapi/qom.json
-> > > index a8beeabf1f..f982850bca 100644
-> > > --- a/qapi/qom.json
-> > > +++ b/qapi/qom.json
-> > > @@ -1068,6 +1068,19 @@
-> > >    'data': { '*cpu-affinity': ['uint16'],
-> > >              '*node-affinity': ['uint16'] } }
-> > >  
-> > > +##
-> > > +# @RmeGuestProperties:
-> > > +#
-> > > +# Properties for rme-guest objects.
-> > > +#
-> > > +# @personalization-value: Realm personalization value, as a 64-byte
-> > > +#     hex string. This optional parameter allows to uniquely identify
-> > > +#     the VM instance during attestation. (default: 0)
-> > 
-> > QMP commonly uses base64 for encoding binary data.  Any particular
-> > reason to deviate?
-> > 
-> > Is the "hex string" to be mapped to binary in little or big endian?  Not
-> > an issue with base64.
-> 
-> Agreed, using base64 is preferrable for consistency.
+Introduce the CPUClass::datapath_is_big_endian() handler,
+which returns whether a vCPU expects data in memory to be
+in big endian order or not.
 
-Ack
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/core/cpu.h | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-> 
-> > 
-> > Nitpick: (default: all-zero), please, for consistency with similar
-> > documentation in SevSnpGuestProperties.
-> > 
-> > > +#
-> > > +# Since: 9.3
-> 
-> There is never any x.3 version of QEMU, as we bump the major
-> version once a year. IOW, next release you could target this
-> for will be 10.0
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index c3ca0babcb3..91c6581f814 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -105,6 +105,8 @@ struct SysemuCPUOps;
+  * @parse_features: Callback to parse command line arguments.
+  * @reset_dump_flags: #CPUDumpFlags to use for reset logging.
+  * @has_work: Callback for checking if there is work to do.
++ * @datapath_is_big_endian: Callback returning whether the vCPU expects
++ *       memory data in big endian order.
+  * @mmu_index: Callback for choosing softmmu mmu index;
+  *       may be used internally by memory_rw_debug without TCG.
+  * @memory_rw_debug: Callback for GDB memory access.
+@@ -151,6 +153,7 @@ struct CPUClass {
+     ObjectClass *(*class_by_name)(const char *cpu_model);
+     void (*parse_features)(const char *typename, char *str, Error **errp);
+ 
++    bool (*datapath_is_big_endian)(CPUState *cpu);
+     bool (*has_work)(CPUState *cpu);
+     int (*mmu_index)(CPUState *cpu, bool ifetch);
+     int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
+@@ -750,7 +753,7 @@ int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs);
+  */
+ bool cpu_virtio_is_big_endian(CPUState *cpu);
+ 
+-#endif /* CONFIG_USER_ONLY */
++#endif /* !CONFIG_USER_ONLY */
+ 
+ /**
+  * cpu_list_add:
+-- 
+2.45.2
 
-Ok good to know
-
-Thanks,
-Jean
-
-> 
-> > > +##
-> > > +{ 'struct': 'RmeGuestProperties',
-> > > +  'data': { '*personalization-value': 'str' } }
-> > >  
-> > >  ##
-> > >  # @ObjectType:
-> > > @@ -1121,6 +1134,7 @@
-> > >      { 'name': 'pr-manager-helper',
-> > >        'if': 'CONFIG_LINUX' },
-> > >      'qtest',
-> > > +    'rme-guest',
-> > >      'rng-builtin',
-> > >      'rng-egd',
-> > >      { 'name': 'rng-random',
-> > 
-> > The commit message claims the patch adds a parameter.  It actually adds
-> > an entire object type.
-> 
-> The object should be added to qom.json earlier in this series when
-> the RmeGuest class is defined, then this patch would merely be adding
-> the parameter.
-> 
-> > 
-> > > @@ -1195,6 +1209,7 @@
-> > >        'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
-> > >                                        'if': 'CONFIG_LINUX' },
-> > >        'qtest':                      'QtestProperties',
-> > > +      'rme-guest':                  'RmeGuestProperties',
-> > >        'rng-builtin':                'RngProperties',
-> > >        'rng-egd':                    'RngEgdProperties',
-> > >        'rng-random':                 { 'type': 'RngRandomProperties',
-> 
-> With regards,
-> Daniel
-> -- 
-> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-> |: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-> 

@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp49157njb;
-        Wed, 4 Dec 2024 00:45:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWeksiRYZH5jGvYZHNjDqAYXhPXWgYnSpWGW0sMO/uyVQKHk+8YFOhWJaxqP5CXQrD29MmD7txUVLxUEw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGQX2E8F2SEkd+31kj7bUcdK5jpVK1uVQ2cxDizbXtVDMUowyTWAnz4nJkZuvt3DFtK1ome
-X-Received: by 2002:a05:6214:e64:b0:6d4:2029:ead1 with SMTP id 6a1803df08f44-6d8b737bf86mr76775926d6.29.1733301949654;
-        Wed, 04 Dec 2024 00:45:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733301949; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp49220njb;
+        Wed, 4 Dec 2024 00:46:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUqWBR4h5AW7wcz3yP3oBYItiJqVgeWm6k5ABLMCvycUpvcvKTpkT5K574tzOItZr6ep5aMt/Qc/Smuyw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFklBZUdKvaxJhw9IzMZ3opHODdqE1gO2sLQH+0nGi5uJjUDfGplKmGTOZ6DSCGOA5qzgpN
+X-Received: by 2002:a05:622a:18a6:b0:466:a0c4:a6da with SMTP id d75a77b69052e-4670c3ac966mr78636391cf.31.1733301959973;
+        Wed, 04 Dec 2024 00:45:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733301959; cv=none;
         d=google.com; s=arc-20240605;
-        b=SojPSFMm9cDjWgy9qGX8zFZZh0EeAtBtAi4zAO1BH5gBDeH+jP1Ef5IwYKDIx988JP
-         ILl0H0lTcr7bWz1bA6qr1uGaMHrUapB3uxH/IUL226ojiXfUldv2kRKBc04eyksmPPbT
-         GcB07TwvqjpaTFlfDL7KMmrUa6W+sUCLpJ2Nw/6+sjsT7b5b3EFNajJ6Yxp6Nm8ftL2H
-         hJclKYk7UsoRsr9ghxBqG1dtZ1m/u3Y0coIeDBia3ypgPqSSOIH6XyiHL8D7uWgGVkx4
-         Y1OwYFOtAHarx7goowqMMVLt/0JfBPwxch3wgs8R5d0JKW2GPikL0fu4nsyH7Ogq0liB
-         wgDA==
+        b=EBbSfICcLh912ZFgf8dbsTADNH4lcR+/Sn+kf+ZdBxfAWnx3GpkMwrUZoauAkcqfcg
+         VJixxby5O38K3abHNY5YmjTenB1Mfk/+EjAGDenS0vQ9lOsVVFcqa/ArTLGmp8HJssba
+         YmY+2e4+wswyENHS2U0IJHdWicMqV775KRWeCYDVZHRRiax1aP0zcF5NQClzmezEv/Qt
+         X9eGxsZ+KuUoiRwFWHiUJvtQjziedxdlTrwzgdSR84uef9XnwCSKcdPhGATMxv9UXwME
+         scz+aghS9DMQswffNi0trMRa4AbCvWa5yYYE8fZFuJxrkz+WEKZh0DywFl3fzCMwOuz+
+         M9ZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=snwbFefOdMRzLzvIqfkCeFYOS3y+BGfQ0XnWRxy8S1g=;
+        bh=rwt9r5ItV7Z9fVPrgChTU77Q+Zksf9crxlLdcrqI7DM=;
         fh=oHzELYP6xEldnfh1elECkRDXzq+40wADKO/d7kYb8Lg=;
-        b=JdegNqqTkZoty1NQN8ptVqVhzUV/mQiJXQA+I2LmE6bdBUa5xg2jMi7f/UJ1LSCy0p
-         ZM7GE/H/dS5a+neyG/bmuuWDZ2GwpN6AaXGs0XsoznersQ/YUL5qFIcOdwMqbeBrD6cq
-         oORqcf2TgAHzS36imYzq8a5k+pPs9INRs0Vn6bo6keXddbHGBeVKH4WCBTzgJdPpWKiw
-         qwg6TuPGPFy5fNdMnZiwggeR8Ha5BGYQro1xl6Ey7Gc2hJyn89ii3URoTAD9bKDhwVOo
-         skIWyWRCm8YHavJeKihXXqGwIIpNcDPsSeZDMwYlYDN0dso96FlVN/GW9qmPFOC0tX53
-         bdNA==;
+        b=jYXx+99jAHg/vjbIy6cqwyVbCkRLoVqPvG1bsIjfMvpDF19n4gEZy5pOtZLX3wiypS
+         6TNKCk4n3tkQkTxC8a0Ay0wpQdFznL2vqSDpkd8dfeEB25JJo54+OtbzEKK6ADxEk3OO
+         GkddYB2q8rZ5HYiHyqIddU47FXBhJT1aQ1ZZqmyV+R0UtVNSY/djfEA3vMakm+yE1M3k
+         XZwX8lReEC1XSZiPiEx7W1gZB3Zq0c8TMNYU5DS/6CC3bkKknjMxWpNee/bzCr4ynGsc
+         LtJnUDKCHk383yeMnprpEaHvWrHBQWDRkc/4JyF8jd8FxxMw8l541Uq2k4ywBdK6CUda
+         AOww==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8abb4f5a0si68980016d6.104.2024.12.04.00.45.49
+        by mx.google.com with ESMTPS id d75a77b69052e-466d4b10346si128072541cf.715.2024.12.04.00.45.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2024 00:45:49 -0800 (PST)
+        Wed, 04 Dec 2024 00:45:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,22 +42,22 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIl0O-0002zk-Ir; Wed, 04 Dec 2024 03:45:08 -0500
+	id 1tIl0a-00035H-1U; Wed, 04 Dec 2024 03:45:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tIl0N-0002xi-0X; Wed, 04 Dec 2024 03:45:07 -0500
+ id 1tIl0Y-00034i-0U; Wed, 04 Dec 2024 03:45:18 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tIl0L-0006xz-Ks; Wed, 04 Dec 2024 03:45:06 -0500
+ id 1tIl0W-0006xz-J0; Wed, 04 Dec 2024 03:45:17 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 4 Dec
- 2024 16:44:54 +0800
+ 2024 16:44:55 +0800
 Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 4 Dec 2024 16:44:54 +0800
+ Transport; Wed, 4 Dec 2024 16:44:55 +0800
 To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
  <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
@@ -66,9 +66,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?=
  <clg@redhat.com>
-Subject: [PATCH v4 2/6] hw/arm/aspeed: Fix coding style
-Date: Wed, 4 Dec 2024 16:44:49 +0800
-Message-ID: <20241204084453.610660-3-jamin_lin@aspeedtech.com>
+Subject: [PATCH v4 6/6] aspeed/soc: Support eMMC for AST2700
+Date: Wed, 4 Dec 2024 16:44:53 +0800
+Message-ID: <20241204084453.610660-7-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241204084453.610660-1-jamin_lin@aspeedtech.com>
 References: <20241204084453.610660-1-jamin_lin@aspeedtech.com>
@@ -99,30 +99,51 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BJEvdySDTsbJ
+X-TUID: yCQULNUeQhrS
 
-Fix coding style issues from checkpatch.pl.
+Add SDHCI model for AST2700 eMMC support. The eMMC controller only support 1
+slot and registers base address is start at 0x1209_0000 and its interrupt is
+connected to GICINT 15.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast2600.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/arm/aspeed_ast27x0.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index be3eb70cdd..c40d3d8443 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -541,7 +541,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
-         return;
-     }
--    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0, sc->memmap[ASPEED_DEV_GPIO]);
-+    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0,
-+                    sc->memmap[ASPEED_DEV_GPIO]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
-                        aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index baddd35ecf..23571584b2 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -391,6 +391,12 @@ static void aspeed_soc_ast2700_init(Object *obj)
+     /* Init sd card slot class here so that they're under the correct parent */
+     object_initialize_child(obj, "sd-controller.sdhci",
+                             &s->sdhci.slots[0], TYPE_SYSBUS_SDHCI);
++
++    object_initialize_child(obj, "emmc-controller", &s->emmc, typename);
++    object_property_set_int(OBJECT(&s->emmc), "num-slots", 1, &error_abort);
++
++    object_initialize_child(obj, "emmc-controller.sdhci", &s->emmc.slots[0],
++                            TYPE_SYSBUS_SDHCI);
+ }
  
+ /*
+@@ -701,6 +707,15 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_SDHCI));
+ 
++    /* eMMC */
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->emmc), errp)) {
++        return;
++    }
++    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->emmc), 0,
++                    sc->memmap[ASPEED_DEV_EMMC]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
++                       aspeed_soc_get_irq(s, ASPEED_DEV_EMMC));
++
+     create_unimplemented_device("ast2700.dpmcu", 0x11000000, 0x40000);
+     create_unimplemented_device("ast2700.iomem0", 0x12000000, 0x01000000);
+     create_unimplemented_device("ast2700.iomem1", 0x14000000, 0x01000000);
 -- 
 2.34.1
 

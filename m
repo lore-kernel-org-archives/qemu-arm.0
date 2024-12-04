@@ -1,365 +1,220 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp3991192njk;
-        Tue, 3 Dec 2024 12:24:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWSM3ycPK9SXbAOb9T1qOMbsWu3Je2QDzkJ5nd7t3E9bghmSiBDpsEMGaiwvU1F1W6PFhblnOaUbinw9w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHYk1KuSDI7vUROW2Xo71pr/kGgB+67NosAogakiL8Ybwt/Ur4VRGgMMuIqd+t+2+d7eJGU
-X-Received: by 2002:a05:6214:ccb:b0:6d8:ab3c:5c8 with SMTP id 6a1803df08f44-6d8b7457b96mr63900806d6.49.1733257454788;
-        Tue, 03 Dec 2024 12:24:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733257454; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp338988njb;
+        Wed, 4 Dec 2024 08:38:21 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUDR+8yPRSoFNZpsosEF8GrZo/UPNp7HpZ26SSdozdRPmIaCZHUeXz3K+nZ1peddrTqjGg05nxD9Wjstw==@linaro.org
+X-Google-Smtp-Source: AGHT+IENbDTMfElazQ4KNZZ+Izk48rellmGLrF1YkXdxsaNZU9Ex7Ql9YiFl6NEMce7Sd1APi23V
+X-Received: by 2002:a17:90b:3891:b0:2ee:ead6:6213 with SMTP id 98e67ed59e1d1-2ef1ce96270mr7053054a91.19.1733330301672;
+        Wed, 04 Dec 2024 08:38:21 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1733330301; cv=pass;
         d=google.com; s=arc-20240605;
-        b=boiiXR8558WimUlcCBFCeVC1r7DN5n/vB4NZGgUg3HmPZ3eqJvDEkogl2M/tpJNCBC
-         vxe/2xPRO6vI++xtovpmPmsH0PsD4lz5bDn7mauyijoebkaYNvJrho7JfBivy7t0U63m
-         Sh7b/Bg1CujDYzkBEbnP2sejM2iZBoyL13Xzotm56I2nYwLn0WZcFr6UdGvRI9qdEeCb
-         k5XPoy3Yuh42Mr3CAQg3cUMnlccDAZDP9ob74GqKFOtQSPLsQbyizS4lZZcuZdC/Q+2o
-         3cFmfIhMJNxmJrxrgn1XlONJbc6k8RCGtMPQzCiCZxab21T9doe4PTxth50/+a51xh3t
-         Wd+g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=vWr3B4C8bAj6BivScsjyL8ezvL1IyxopWhrxQL4rFc0=;
-        fh=1fJtAT0q0Gdzf6kXxkZf+7Bg1xfBaIz7F+Dw8aqZo+Y=;
-        b=ZQdvblsmHvpfGjHMiF5NwF7icZUZbxg4lqup++W7OfgRVQ98bj9F/+1/A1uhCBPePH
-         jegNYmKJcwO9IlLTXdoTMOX+Ti2YS5ZEeqTuOZJSq/rrUv+swndDmIglzyFzhLtS10PX
-         yHd/aLUvGlbDLZKuiGE6q8pK7bAcHJamPVNtuRYgdoPaHk4BLpRHLbKQP+PPvYtufjux
-         XBJkmuHkdInbQbCIsSVJhqJLmoJPA/bNdoi5epGjvtDbQupsGCXFuKTxtrx7pnSUlVLK
-         vlVejFaUVwC4KcqOALK/0BQqpRzRRHhHzNzLQ30hG9KSbge2qMA2Htsp/r75O2RP+ZXT
-         iFJQ==;
+        b=RymxWwxqnc1/vC98+L/pegBaEBKgccBs29hVd3UmHrC8ks11AAs4QHC4+fJ/MGXlho
+         zzEB0dU/jJGfkR3JqTiyM3oH5on8GEA1zhq2V7vZbsUbNY4HXq6KzOej7X9713H32Svd
+         Hl8zxdNArFYtMqVwJ4PbYTZs4oYOgERnedoQO/K+c88xcgAChclia24f8Dks7xBIrlSA
+         Aog3Z5Vza12uateOkbplGzs4M6jBb3E7bX+6QNCOLjcX6kY9ObY6V6//cft+QpZSgeLZ
+         u4csSm1beqelpDP7DLFdXc6LkzzUfJqkz7Vq8B5lYCPz/AlBMGNJZ1hXU53f5xKjkMVp
+         Wxnw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=I56T0jef1B9MebW55HaogqObbHI0foL5BjBnDVvFKBY=;
+        fh=m2ZBOMbs1qPdFz3LS/scKPGBg9+JS8HnFRr6ycs7lks=;
+        b=f9FT+eiOxZ2brJ+E4QCxeSNLNip7L8jK5bsQNP1RQdQVc8KzU1UmQcV5s5vnyvFX7V
+         gnMqxVq4C0JplLA1wLaNm7yPZUkzXuNWLwCdSHFDPeU1/pv11nfRayODSKn20z9ZyuKB
+         JAqq0blGUNadIwxiVIFBVYUwAJQ0icosqZPcciNMjkVEz5Qo6mBHxhvCHFzRUy1AEu1T
+         wTkcAtUM7Flz3tI85JbBFmgKKTWw8W4LAgEj6U5ZHaHextMUzb4PBPrT73wS8lVo8+g2
+         WNekm3wwTTXqPeyzaIrefnmzrc0N1CDA8kpVoSAg+cK3nFIrovgE/H96b48syQA9TZW7
+         x5UQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AdoQt1+v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d89489be4asi94288336d6.197.2024.12.03.12.24.14
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TehPCWTl;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-431642-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-431642-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel+bounces-431642-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2ef2703e5d9si2169243a91.72.2024.12.04.08.38.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2024 12:24:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Dec 2024 08:38:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-431642-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=AdoQt1+v;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIZQx-0004Ny-Rd; Tue, 03 Dec 2024 15:23:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tIZQw-0004Nc-KB; Tue, 03 Dec 2024 15:23:46 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tIZQu-0006BQ-OT; Tue, 03 Dec 2024 15:23:46 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-385de59c1a0so4459122f8f.2; 
- Tue, 03 Dec 2024 12:23:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1733257423; x=1733862223; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vWr3B4C8bAj6BivScsjyL8ezvL1IyxopWhrxQL4rFc0=;
- b=AdoQt1+vqnwEFz5/CihrWVGOuWiShIz1pjtRjy31u8/F6T3ZzeJB8Ui9ZoNc8ziHxv
- e1sdG1zflsI9qYco5vuiPFj1G+9dt9VqicTVfSGMLsCpLnQYXgvcFtCilEq/CounkXNs
- aqO7F+dSLnulWccUEeATCHKGqIBRfGvjGOlNinCCBgisZKVK6M9RA8ZFtHwxygCf+016
- d5LSkUGviCpM6zGZmkPyHyRNL1EQIPmf914fSPLUIhWlzYOwhKZ+4ToKRIKDCZ1hgXWC
- BHVdLrvZgkWsFHPJ7IlYgxe94AZNnhOpL4Udze9rHOSMWAEahRlihLYXXQk6AQGIIxkv
- 5OMQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TehPCWTl;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-431642-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-431642-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 3522B280DC0
+	for <alex.bennee@linaro.org>; Wed,  4 Dec 2024 16:38:21 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 9E5CC20CCCC;
+	Wed,  4 Dec 2024 16:38:08 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="TehPCWTl"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E7B315B10D
+	for <linux-kernel@vger.kernel.org>; Wed,  4 Dec 2024 16:38:06 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1733330288; cv=none; b=qF0f8SiWe7EVCkxGZe2fNnloFDPghYAE40FLmTojUVfFDS0KPXAPnySuCiiFxts9lXT/BM5MjPUgamt12N4qL18qZmYA0H/BxDMqkVBFfw27OnuL9fwjZgiBc9gZjGY1XOp0595Y9Lnq/AI/0Or3Zcp+YcN3ubcdCwDXQZAe6iE=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1733330288; c=relaxed/simple;
+	bh=UsrhK2O8qYZAWeAQ04dz0BfyqgWPFxCcwLNHHtKiaJU=;
+	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=fXCxz+ZqdIi9k7gCzwOf7LOZ7qSCTOP0MRBZ+uQ9sLWei0PCtvPlkv/nSD7JYgMkgLU9Ku+NA74j9sjZFLL6HKJ7Mz4L6nbri8xtykkc1dPm2BwqelXtCLEyjAfYQL/nU8m6AkHl9GXtMdcGQTIxSUph2iIA+UcaKOkaiBcNbQo=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=TehPCWTl; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1733330285;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=I56T0jef1B9MebW55HaogqObbHI0foL5BjBnDVvFKBY=;
+	b=TehPCWTlgalxcB4ar/jXRaT2yzdBHRr9082RU0DVjZ7U8BXb9hdGXB8TSRlwOLKUf6dHy+
+	Ta902By3WFpu5dhDKBgI18/opLYoNWZ1wdjVXEtD36q/GkxsEmgUD03e2TqCWEHFGHXtP6
+	Om912VPDO1rQxCJXVxT6YB6gJ6MlxK8=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-77-GyTXbKblPjG71s5WZX8qMg-1; Wed, 04 Dec 2024 11:38:04 -0500
+X-MC-Unique: GyTXbKblPjG71s5WZX8qMg-1
+X-Mimecast-MFC-AGG-ID: GyTXbKblPjG71s5WZX8qMg
+Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-434a9861222so57159515e9.2
+        for <linux-kernel@vger.kernel.org>; Wed, 04 Dec 2024 08:38:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733257423; x=1733862223;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vWr3B4C8bAj6BivScsjyL8ezvL1IyxopWhrxQL4rFc0=;
- b=XHHQ9O/Ll4bMUad9pn1+qSm2rABgQ7WbUv68YbgKTGgZ01hdbMnkBe3EWpvUwhu2/b
- 6fa27YaWBUChrDCA2V6o05cMM9ydSXQCYnpyFL8Wq6oHATNoEWcmM8eTKQaplgrx5Oza
- 7etGEbFfZoPbOrkpQ8l3kyRjxL82aJ25vrZr3YGmZtDm7uxO1q56mkrgzNGTqcA9Mv1/
- pa7Q3KJcMahqBoXLvxCNTXd5+2pd4afhAHQgfE7kadqm/kEJuqIyDY30KdURX20PR1/D
- NbocbRqsTOrjwy6/aDoL1NAySiw7KpLFlo6VhbRs7OPPkfHvaRaV86Infc5O8dDcorth
- dQOw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVQQJdoam/jh0FndJ3sARujxzwclZZMn7UtBXRmdJtUpaqLuyxGC4sV831ymkZXYYLSC0SVVGcLjg==@nongnu.org,
- AJvYcCW+aIq9HPYl1h+CaDOVRUhXheRrF5dyv4mXNF+JeKLLOx2TvLh2hQ8RsKeGDK1E64eSRFTGHfiWRQygMw==@nongnu.org
-X-Gm-Message-State: AOJu0YxmpiwGSQXbGiAamtr2WlnqL5j2f9I0qEEyFAxhIpS0kMMFpYbN
- a0lphAp6iGK7ufaaKev96CcUKoNQJ5Qf6DZfkv+xyBjztYvkne0ObN8wQA==
-X-Gm-Gg: ASbGncvm+bXDf0zGO2V7N0u29c/u6LmpRIq0JOumug6+cDUWSxY7xZJQIMT7QTnbJ0a
- 0mK9krKcFFnC35OW9zC9kDY+U+y+jjjvFCQp5tq8lq/SF8t4Uq02KG3BgwEUMf0zHVxknCCptV7
- 4OQ/ueajfRavUHPxDqtlZBSlhHBdJmSr4cJeRmIQGNineq2zXE7KZncJdFkhZhJP/aobJH60/uN
- NevUEpurBql2VwpZiUnGZdkeSGRVsZxCblb/oFfsXAhE53ivXvlqB8+hYvUAa4yklT2BqmWncJv
- HGLnxp/G6QH5hh097wntkT0=
-X-Received: by 2002:a05:6000:2aa:b0:385:f349:fffb with SMTP id
- ffacd0b85a97d-385fd42a35fmr3288219f8f.45.1733257422614; 
- Tue, 03 Dec 2024 12:23:42 -0800 (PST)
-Received: from [127.0.0.1] (dynamic-002-242-014-218.2.242.pool.telefonica.de.
- [2.242.14.218]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-385e17574ebsm12074198f8f.30.2024.12.03.12.23.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Dec 2024 12:23:42 -0800 (PST)
-Date: Tue, 03 Dec 2024 20:23:42 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Jamin Lin via <qemu-devel@nongnu.org>,
- =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: jamin_lin@aspeedtech.com, troy_lee@aspeedtech.com,
- yunlin.tang@aspeedtech.com
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_3/6=5D_hw=3Asdhci?=
- =?US-ASCII?Q?=3A_Introduce_a_new_=22capareg=22_?=
- =?US-ASCII?Q?class_member_to_set_the_different_Capability_Registers=2E?=
-In-Reply-To: <20241203021500.3986213-4-jamin_lin@aspeedtech.com>
-References: <20241203021500.3986213-1-jamin_lin@aspeedtech.com>
- <20241203021500.3986213-4-jamin_lin@aspeedtech.com>
-Message-ID: <94E62126-BB97-465A-9021-2FB365E677A8@gmail.com>
+        d=1e100.net; s=20230601; t=1733330282; x=1733935082;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=I56T0jef1B9MebW55HaogqObbHI0foL5BjBnDVvFKBY=;
+        b=q+2KMd1k8rovIgLd/9fmu8T5/PLbRbvHzUoJA8tNYaieF/3TvCmHt+MlNJthpjW3Yj
+         fLpXsps15gpdIej5/dhXtCOKbEIZXrtYaDVP9h9e193Bgi2RQdl3qzxj4Zn8SLTAjF8C
+         27daMxOSB4teLboMQM1CSUIltflh1eNcswuaV4k0zXxSAph4H6YBYlEfObdishKPl2cB
+         dSnYE5lhTH9tyG5bPzIHs8SOFZh7JdoJGQ4ERXrOPjrixwJ8moToMyYkyFtQeDjlVCfD
+         pumk0Jl3lkIdwkYeIdksak/KcOVdEE6F4iSe1T4MO4My0Uk5kl2njTNtnoewnF2WNFk+
+         xIJg==
+X-Forwarded-Encrypted: i=1; AJvYcCVHa1OVXg9nWIg7SAB3zlV6A7PL8VnMDYBdbCssco1x0ZKzeAR+8i4XsPg2dtaQt9CXyPbi30BC3XmbUDY=@vger.kernel.org
+X-Gm-Message-State: AOJu0YyQ5mSXVjq8sKqgqYqOC8EOu7EUUq4sXAsaMKCAXYbMcSdkTsxb
+	UxCNEhMhkgaEdpTONiUkgQPiBvfdtj278lgw/AbBNhZAv1OdQTq+xp2mx04RaTwlIHuDlyaBgVW
+	Z4gRhJy0NsZxpXJ/1V1cpJuWQfwnA0jVD2kERZBRNkDanmH7Yfk3dr0kRKni0eaNXz50pZw==
+X-Gm-Gg: ASbGncstVagPnU6wIYQx34e6NpKKbiMR7j888STRUDD+fbQ58UbaAVrkjtYgcZAFsFf
+	HNa6DkNBUGnK/wT452HI9u8bWg4/3hgT94VnwA5ZNwAWMaZw31RWd0ALhvjSh4XNWtz29wDqHmX
+	MimH135U9uPgUFhLigao0Ji3Oiyh2jEdch/d8BYyXHxGIKgMcDp7p4foMfFvPbY5YOOy65mra+4
+	mtZYG2rPsfQbK20j3aDJXMSl4clbFbXM8ok1hJ8kFqj4N25zFIqZu9xEUaQcPMf1cHi2nXygpYU
+	g/tI/2+ArjF2m4NfD0vlpw==
+X-Received: by 2002:a05:600c:19d1:b0:434:a765:7f9c with SMTP id 5b1f17b1804b1-434d09acf91mr64226155e9.6.1733330282486;
+        Wed, 04 Dec 2024 08:38:02 -0800 (PST)
+X-Received: by 2002:a05:600c:19d1:b0:434:a765:7f9c with SMTP id 5b1f17b1804b1-434d09acf91mr64225985e9.6.1733330282132;
+        Wed, 04 Dec 2024 08:38:02 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d5280120sm29353435e9.20.2024.12.04.08.38.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Dec 2024 08:38:01 -0800 (PST)
+Date: Wed, 4 Dec 2024 17:37:59 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v5 13/16] acpi/ghes: better name the offset of the
+ hardware error firmware
+Message-ID: <20241204173759.6f02561a@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20b003136d8c008fd54e8d40c806f13867336e13.1733297707.git.mchehab+huawei@kernel.org>
+References: <cover.1733297707.git.mchehab+huawei@kernel.org>
+	<20b003136d8c008fd54e8d40c806f13867336e13.1733297707.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: dSpFej35884O
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: Es97O8jjbVQv
 
+On Wed,  4 Dec 2024 08:41:21 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
+> The hardware error firmware is where HEST error structures are
+      ^^^^^^^^^^^^^^^^^^^^^^^ I can't parse this, suspect you've meant something else here
 
-Am 3=2E Dezember 2024 02:14:57 UTC schrieb Jamin Lin via <qemu-devel@nongn=
-u=2Eorg>:
->Currently, it set the hardcode value of capability registers to all ASPEE=
-D SOCs
->However, the value of capability registers should be different for all AS=
-PEED
->SOCs=2E For example: the bit 28 of the Capability Register 1 should be 1 =
-for
->64-bits System Bus support for AST2700=2E
->
->Introduce a new "capareg" class member whose data type is uint_64 to set =
-the
->different Capability Registers to all ASPEED SOCs=2E
->
->The value of Capability Register is "0x0000000001e80080" for AST2400 and
->AST2500=2E The value of Capability Register is "0x0000000701f80080" for A=
-ST2600=2E
->
->Signed-off-by: Jamin Lin <jamin_lin@aspeedtech=2Ecom>
->---
-> hw/arm/aspeed_ast2400=2Ec      |  3 +-
-> hw/arm/aspeed_ast2600=2Ec      |  7 ++--
-> hw/sd/aspeed_sdhci=2Ec         | 72 +++++++++++++++++++++++++++++++-----
-> include/hw/sd/aspeed_sdhci=2Eh | 12 +++++-
-> 4 files changed, 78 insertions(+), 16 deletions(-)
->
->diff --git a/hw/arm/aspeed_ast2400=2Ec b/hw/arm/aspeed_ast2400=2Ec
->index ecc81ecc79=2E=2E3c1b419945 100644
->--- a/hw/arm/aspeed_ast2400=2Ec
->+++ b/hw/arm/aspeed_ast2400=2Ec
->@@ -224,7 +224,8 @@ static void aspeed_ast2400_soc_init(Object *obj)
->     snprintf(typename, sizeof(typename), "aspeed=2Egpio-%s", socname);
->     object_initialize_child(obj, "gpio", &s->gpio, typename);
->=20
->-    object_initialize_child(obj, "sdc", &s->sdhci, TYPE_ASPEED_SDHCI);
->+    snprintf(typename, sizeof(typename), "aspeed=2Esdhci-%s", socname);
->+    object_initialize_child(obj, "sdc", &s->sdhci, typename);
->=20
->     object_property_set_int(OBJECT(&s->sdhci), "num-slots", 2, &error_ab=
-ort);
->=20
->diff --git a/hw/arm/aspeed_ast2600=2Ec b/hw/arm/aspeed_ast2600=2Ec
->index c40d3d8443=2E=2Eb5703bd064 100644
->--- a/hw/arm/aspeed_ast2600=2Ec
->+++ b/hw/arm/aspeed_ast2600=2Ec
->@@ -236,8 +236,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
->     snprintf(typename, sizeof(typename), "aspeed=2Egpio-%s-1_8v", socnam=
-e);
->     object_initialize_child(obj, "gpio_1_8v", &s->gpio_1_8v, typename);
->=20
->-    object_initialize_child(obj, "sd-controller", &s->sdhci,
->-                            TYPE_ASPEED_SDHCI);
->+    snprintf(typename, sizeof(typename), "aspeed=2Esdhci-%s", socname);
->+    object_initialize_child(obj, "sd-controller", &s->sdhci, typename);
->=20
->     object_property_set_int(OBJECT(&s->sdhci), "num-slots", 2, &error_ab=
-ort);
->=20
->@@ -247,8 +247,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
->                                 &s->sdhci=2Eslots[i], TYPE_SYSBUS_SDHCI)=
-;
->     }
->=20
->-    object_initialize_child(obj, "emmc-controller", &s->emmc,
->-                            TYPE_ASPEED_SDHCI);
->+    object_initialize_child(obj, "emmc-controller", &s->emmc, typename);
->=20
->     object_property_set_int(OBJECT(&s->emmc), "num-slots", 1, &error_abo=
-rt);
->=20
->diff --git a/hw/sd/aspeed_sdhci=2Ec b/hw/sd/aspeed_sdhci=2Ec
->index acd6538261=2E=2E93f5571021 100644
->--- a/hw/sd/aspeed_sdhci=2Ec
->+++ b/hw/sd/aspeed_sdhci=2Ec
->@@ -148,6 +148,7 @@ static void aspeed_sdhci_realize(DeviceState *dev, Er=
-ror **errp)
-> {
->     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
->     AspeedSDHCIState *sdhci =3D ASPEED_SDHCI(dev);
->+    AspeedSDHCIClass *asc =3D ASPEED_SDHCI_GET_CLASS(sdhci);
->=20
->     /* Create input irqs for the slots */
->     qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_sdhci_set_ir=
-q,
->@@ -167,7 +168,7 @@ static void aspeed_sdhci_realize(DeviceState *dev, Er=
-ror **errp)
->         }
->=20
->         if (!object_property_set_uint(sdhci_slot, "capareg",
->-                                      ASPEED_SDHCI_CAPABILITIES, errp)) =
-{
->+                                      asc->capareg, errp)) {
->             return;
->         }
->=20
->@@ -218,13 +219,66 @@ static void aspeed_sdhci_class_init(ObjectClass *cl=
-assp, void *data)
->     device_class_set_props(dc, aspeed_sdhci_properties);
-> }
->=20
->-static const TypeInfo aspeed_sdhci_types[] =3D {
->-    {
->-        =2Ename           =3D TYPE_ASPEED_SDHCI,
->-        =2Eparent         =3D TYPE_SYS_BUS_DEVICE,
->-        =2Einstance_size  =3D sizeof(AspeedSDHCIState),
->-        =2Eclass_init     =3D aspeed_sdhci_class_init,
->-    },
+> stored. Those can be GHESv2, but they can also be other types.
+> 
+> Better name the location of the hardware error.
+> 
+> No functional changes.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  hw/acpi/generic_event_device.c | 4 ++--
+>  hw/acpi/ghes.c                 | 4 ++--
+>  include/hw/acpi/ghes.h         | 2 +-
+>  3 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+> index 663d9cb09380..17baf36132a8 100644
+> --- a/hw/acpi/generic_event_device.c
+> +++ b/hw/acpi/generic_event_device.c
+> @@ -364,7 +364,7 @@ static const VMStateDescription vmstate_ghes = {
+>      .version_id = 1,
+>      .minimum_version_id = 1,
+>      .fields = (const VMStateField[]) {
+> -        VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
+> +        VMSTATE_UINT64(hw_error_le, AcpiGhesState),
+>          VMSTATE_END_OF_LIST()
+>      },
+>  };
+> @@ -372,7 +372,7 @@ static const VMStateDescription vmstate_ghes = {
+>  static bool ghes_needed(void *opaque)
+>  {
+>      AcpiGedState *s = opaque;
+> -    return s->ghes_state.ghes_addr_le;
+> +    return s->ghes_state.hw_error_le;
+>  }
+>  
+>  static const VMStateDescription vmstate_ghes_state = {
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index 52c2b69d3664..90d76b9c2d8c 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -359,7 +359,7 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+>  
+>      /* Create a read-write fw_cfg file for Address */
+>      fw_cfg_add_file_callback(s, ACPI_HW_ERROR_ADDR_FW_CFG_FILE, NULL, NULL,
+> -        NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
+> +        NULL, &(ags->hw_error_le), sizeof(ags->hw_error_le), false);
+>  
+>      ags->present = true;
+>  }
+> @@ -385,7 +385,7 @@ void ghes_record_cper_errors(const void *cper, size_t len,
+>      }
+>      ags = &acpi_ged_state->ghes_state;
+>  
+> -    start_addr = le64_to_cpu(ags->ghes_addr_le);
+> +    start_addr = le64_to_cpu(ags->hw_error_le);
+>  
+>      start_addr += source_id * sizeof(uint64_t);
+>  
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index 21666a4bcc8b..39619a2457cb 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -65,7 +65,7 @@ enum {
+>  };
+>  
+>  typedef struct AcpiGhesState {
+> -    uint64_t ghes_addr_le;
+> +    uint64_t hw_error_le;
+>      bool present; /* True if GHES is present at all on this board */
+>  } AcpiGhesState;
+>  
 
-Why not just extend this array? It's made for registering multiple types, =
-exactly what this patch is introducing=2E
-
->+static const TypeInfo aspeed_sdhci_info =3D {
->+    =2Ename           =3D TYPE_ASPEED_SDHCI,
->+    =2Eparent         =3D TYPE_SYS_BUS_DEVICE,
->+    =2Einstance_size  =3D sizeof(AspeedSDHCIState),
->+    =2Eclass_init     =3D aspeed_sdhci_class_init,
->+    =2Eclass_size =3D sizeof(AspeedSDHCIClass),
->+    =2Eabstract =3D true,
->+};
->+
->+static void aspeed_2400_sdhci_class_init(ObjectClass *klass, void *data)
->+{
->+    DeviceClass *dc =3D DEVICE_CLASS(klass);
->+    AspeedSDHCIClass *asc =3D ASPEED_SDHCI_CLASS(klass);
->+
->+    dc->desc =3D "ASPEED 2400 SDHCI Controller";
->+    asc->capareg =3D 0x0000000001e80080;
->+}
->+
->+static const TypeInfo aspeed_2400_sdhci_info =3D {
->+    =2Ename =3D TYPE_ASPEED_2400_SDHCI,
->+    =2Eparent =3D TYPE_ASPEED_SDHCI,
->+    =2Eclass_init =3D aspeed_2400_sdhci_class_init,
->+};
->+
->+static void aspeed_2500_sdhci_class_init(ObjectClass *klass, void *data)
->+{
->+    DeviceClass *dc =3D DEVICE_CLASS(klass);
->+    AspeedSDHCIClass *asc =3D ASPEED_SDHCI_CLASS(klass);
->+
->+    dc->desc =3D "ASPEED 2500 SDHCI Controller";
->+    asc->capareg =3D 0x0000000001e80080;
->+}
->+
->+static const TypeInfo aspeed_2500_sdhci_info =3D {
->+    =2Ename =3D TYPE_ASPEED_2500_SDHCI,
->+    =2Eparent =3D TYPE_ASPEED_SDHCI,
->+    =2Eclass_init =3D aspeed_2500_sdhci_class_init,
-> };
->=20
->-DEFINE_TYPES(aspeed_sdhci_types)
->+static void aspeed_2600_sdhci_class_init(ObjectClass *klass, void *data)
->+{
->+    DeviceClass *dc =3D DEVICE_CLASS(klass);
->+    AspeedSDHCIClass *asc =3D ASPEED_SDHCI_CLASS(klass);
->+
->+    dc->desc =3D "ASPEED 2600 SDHCI Controller";
->+    asc->capareg =3D 0x0000000701f80080;
->+}
->+
->+static const TypeInfo aspeed_2600_sdhci_info =3D {
->+    =2Ename =3D TYPE_ASPEED_2600_SDHCI,
->+    =2Eparent =3D TYPE_ASPEED_SDHCI,
->+    =2Eclass_init =3D aspeed_2600_sdhci_class_init,
->+};
->+
->+static void aspeed_sdhci_register_types(void)
->+{
->+    type_register_static(&aspeed_sdhci_info);
->+    type_register_static(&aspeed_2400_sdhci_info);
->+    type_register_static(&aspeed_2500_sdhci_info);
->+    type_register_static(&aspeed_2600_sdhci_info);
->+}
->+
->+type_init(aspeed_sdhci_register_types);
->diff --git a/include/hw/sd/aspeed_sdhci=2Eh b/include/hw/sd/aspeed_sdhci=
-=2Eh
->index 057bc5f3d1=2E=2E8083797e25 100644
->--- a/include/hw/sd/aspeed_sdhci=2Eh
->+++ b/include/hw/sd/aspeed_sdhci=2Eh
->@@ -13,9 +13,11 @@
-> #include "qom/object=2Eh"
->=20
-> #define TYPE_ASPEED_SDHCI "aspeed=2Esdhci"
->-OBJECT_DECLARE_SIMPLE_TYPE(AspeedSDHCIState, ASPEED_SDHCI)
->+#define TYPE_ASPEED_2400_SDHCI TYPE_ASPEED_SDHCI "-ast2400"
->+#define TYPE_ASPEED_2500_SDHCI TYPE_ASPEED_SDHCI "-ast2500"
->+#define TYPE_ASPEED_2600_SDHCI TYPE_ASPEED_SDHCI "-ast2600"
->+OBJECT_DECLARE_TYPE(AspeedSDHCIState, AspeedSDHCIClass, ASPEED_SDHCI)
->=20
->-#define ASPEED_SDHCI_CAPABILITIES 0x01E80080
-> #define ASPEED_SDHCI_NUM_SLOTS    2
-> #define ASPEED_SDHCI_NUM_REGS     (ASPEED_SDHCI_REG_SIZE / sizeof(uint32=
-_t))
-> #define ASPEED_SDHCI_REG_SIZE     0x100
->@@ -32,4 +34,10 @@ struct AspeedSDHCIState {
->     uint32_t regs[ASPEED_SDHCI_NUM_REGS];
-> };
->=20
->+struct AspeedSDHCIClass {
->+    SysBusDeviceClass parent_class;
->+
->+    uint64_t capareg;
->+};
-
-The struct seems not AST-specific and could be turned into a base class fo=
-r all SDHCI device models, no? That way one could also add further device-s=
-pecific constants other than capareg=2E
-
-Best regards,
-Bernhard
-
->+
-> #endif /* ASPEED_SDHCI_H */

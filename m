@@ -1,208 +1,205 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp439910njb;
-        Wed, 4 Dec 2024 11:06:46 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWOs+htJLLWgpgzJgsccubhWuiqi43/NwN0uRvxXBZo7Uq6ltp1O+Eona0q/9/M50gcDYIjHx7V8mQnLg==@linaro.org
-X-Received: by 2002:a05:600c:3596:b0:431:50cb:2398 with SMTP id 5b1f17b1804b1-434d48291b5mr36052755e9.2.1733339206303;
-        Wed, 04 Dec 2024 11:06:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733339206; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp442297njb;
+        Wed, 4 Dec 2024 11:09:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUNGR5HacB0U0zHYdm4IAhsF4YzkYUTyxh4EWxllquV5sQycF/sgdFFxtCJDBwHxJNu8AQRrsrE8pV3WQ==@linaro.org
+X-Received: by 2002:a05:6000:401e:b0:385:e968:f189 with SMTP id ffacd0b85a97d-385fd5328a7mr6233677f8f.51.1733339398444;
+        Wed, 04 Dec 2024 11:09:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733339398; cv=none;
         d=google.com; s=arc-20240605;
-        b=GCIdfrbhbHHCBdWIRQ6886L97HMc5h2+PK+SqIxP/c2CBIqzVQxQ4K+pPBlI8FC4BW
-         euUPmRl9W8R1lp+TO+RjLIfELJ7xI2N7nntKatzcuxpL8BOn+dk8rYNKDRsezq64jjUm
-         ck2BfeYRTBGKBvqp3LX9xndQGGtkCJM+fQVd67aRxECmzUl2UEW2UMp5k4kbJCHTupMP
-         BYmHKFJV6SRRgkwMe8NZZBU5zJR2XhyuNf6qztZXxBA6MqsiL1PPDbMtGBQJWpIHxYK8
-         HAmOCoOfM8m1ogBQPqw/eX0IMax6aJjLayIEbw5h6e831o1Qnd9ZOz2B/0cEPGcveVFJ
-         V0nA==
+        b=SGSQzFlZZBvrUX4WRx8sW31uIQGF/qvKg/mSSEDpoi2HCqYHr1e1YySpgbVgnhknsj
+         alXtWTIkG1c70/bS4ZoZH9NiV4Osqbi0bNIAQ4PN3aPOCU+hzoOuuR9I2FmR0MA934om
+         KGDJLtKYn9QYoVTaOyldLKE7uZ6i7TUK2Qs7axheNyG8/lTUmE1wPYJo1RKP60rAeRqb
+         igKQ8TDqNgoD2FC5hwVSrGHJ5dOptrJiqR+PgWteXH7+DoXhrJb5vmik9XKse4IdqmhF
+         ZBMGFEhWLTZMo/sI8ZHhsJXs2WKYMcsvIdVZ8EMBQYVuIeoSVR6v2Ju59jxcn2jce4FB
+         fq8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=0ibIy2drWP56YRJu1nbNoc3IL9Q6+0UkelpHO9ibKjU=;
-        fh=RUKkiBfxjZX5ZZ+nC6X3t2AfSuKVu48kASggGPU6kFc=;
-        b=EIhsy3EUOfIBHaCmx7Tpb5ZEWGXuYjTyGWQ9aUH2AcBoT7/nYVLawjVATSjck/cJ6L
-         q2TazuVrpfM1Q2JTS1oYEQfUtDoFo1/ul5gxOMZX5Y2gZjdJGWBwymkDNgQDWrmt+KjX
-         9JHhdSyV8VezdDUKxGwq/0qqnOsc9uPfcf3mkZyKVg6c2U3Iv0uSxxF2jVgKhxMP3Sx+
-         rxpnPcV3eqjMVdfN/MSOA7PbRn3PyaufQxPAoUicNds8dTTf/NUhtAKjIh1S/mNdFSLa
-         xaeLRGkyYPDPSDXSoFvIFhWQuLsQs04RtxdBpzcGBoW9Le+veAXSUj09MyjT6mG2388e
-         ltNw==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=bOngM2USHeFq8uTvg6lBb0tN7fu7f0bTGVR8zQJEEB8=;
+        fh=ny40lFFwdIC330+dahmNWi0akCGcloLXfjrKzeI+0Ks=;
+        b=AeV99yrPNKAaT5QjzBrTJvb14dcmKn16yX+f21dpWvWvtVxn+5MUdV9/O78jncSCI8
+         Nt1cfsybPzeKsDHIdOgvqv/deuvl46JhbfT0GIUfqX41kxfWvAsmhaArkcuXEK5Otxzs
+         JMPYld/FNH6I1a9KOO2ScWFqrCRYk36XvQ/dILtXIGwohZaCGGwfLRWzXiIjKkcJcPaG
+         1l674i3PcTXVhpNF6gevhoyKR00J8CRbc6MuwBohht8WHwmCjssNZP2mxOCCYr6EzxUm
+         raSqWtdWrZIEbNI/I3s7YgRxQC6cwyejG4y8KX7ZF8lixcwRxVsEYY8Gq/iqraT1V+Ao
+         nhNA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="EbLAjn/K";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ODIJYyGp;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-434b109f53bsor57560725e9.10.2024.12.04.11.06.46
+        by mx.google.com with SMTPS id ffacd0b85a97d-385ebb9db68sor2076582f8f.9.2024.12.04.11.09.58
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 04 Dec 2024 11:06:46 -0800 (PST)
+        Wed, 04 Dec 2024 11:09:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="EbLAjn/K";
+       dkim=pass header.i=@linaro.org header.s=google header.b=ODIJYyGp;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733339206; x=1733944006; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=0ibIy2drWP56YRJu1nbNoc3IL9Q6+0UkelpHO9ibKjU=;
-        b=EbLAjn/Kln9d54b2QTeLnP587RkKEhHNxFmr4vRIXYGJ9CQ98KcWyJEJagoeLmxRua
-         S2F6w9t/cdegUs736lVc6SGE3vbFE8Rzf/M9BioGOeWDv7COTEZxueR40awd52sC13Dr
-         CvtElWtdq5B6Duz4ge6EPspKm8bkW00tpZvT8Jg0umazIbXDZW1Ql3y/AjPGIOou0UjF
-         8dZ5YPPmlpuRcCCU1Spb+NlB1aPcAvVeMZZeeqXoccSKmtBd9jhhmioU/Fd8FzHuuJal
-         aZrhxpD3btV2GejRA+KLpH3uBJcR3a1C3FNFkK5VWNvOPdFZ///o0HyrXb6xKx1u6apD
-         xMfg==
+        d=linaro.org; s=google; t=1733339398; x=1733944198; darn=linaro.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=bOngM2USHeFq8uTvg6lBb0tN7fu7f0bTGVR8zQJEEB8=;
+        b=ODIJYyGpHpfXMl//CQX/qQpiueFANO/cXQrAFnZ1S7iRIDX/Pzhd7rt5kb0VPTDmMa
+         V+14mLqgY/15AIJNaJ2YhxkROQFfHwKjHxnM9/VhSejf9WMERlSb3H0T2tzMYNRlyR8N
+         HmaIsPxam+XhWMNDbVTPNo8fdqInLjfAmhSn++91xc6NkRSOBIiwuCHtt0awixovmHG9
+         L0I+SWITUEraOGi6lqov2W9RsSIRXVs98QLgq5MmAsv3qDIUDZ29ij9x11V5bRmEvpTE
+         dX/ZyxEKH81eFasP7kiSgEUtABr/CN3DIHAVA4Lhn1RQeXwJb/HmAN9dmlu1LVLoaxul
+         1cbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733339206; x=1733944006;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=0ibIy2drWP56YRJu1nbNoc3IL9Q6+0UkelpHO9ibKjU=;
-        b=lM+fj8/MZnSCBsmmDGdPKE5+0wccNsJnj45ig0e/GVA2NY6/MazCh+osmkmJo8XEA4
-         Xsv+CpMh+nKap3Y8QZHbM4W04r6PffiE8InDMeGOYrqdKG1ygiAL05Rc9aMiml5Pt0he
-         raXlxn525A8c/nT/pg21eSQxpG8oG6Ularv/2mpi+Ue5NwdBLHsN1+/a2iSfcTCib/d7
-         1ZEVMB8OLuGB/AZ2Ut6ZJ7K/r9p/mLKezwGt/u6sfDtSCSilMlbltNMA6Q19m3kecALD
-         vASrNVZ2SdVSOIw7HjHZ7+zu4espydLdoS4bH0FrawdPzwinZCjFHk9AQzqCdn62e/yM
-         azOg==
-X-Forwarded-Encrypted: i=1; AJvYcCWaOzU83l/XGY4niLpg9hqrn+iqFuS01Aetmb+yjiATBgEluuzn1T7F1lC6+H7uPOHAzLn4XMkP9ZNT3Q==@linaro.org
-X-Gm-Message-State: AOJu0YzCjYG8lv0Nwizp//vPmLppeEPe+j+5oYL+QMQ169kIZcyEsgTH
-	ESvqR42gv1ytW4xG5NXstmCkwRpdpkmBSGO0lBrAl7/XShMnSfjv0+T9fwN68C4v9w==
-X-Gm-Gg: ASbGncv4lmlwIZ9Pn6AUUs4viioeWzl+4o6IA1mMaEeal3R5wg0RjKAT9D3xyt5Y5fZ
-	ZvIfmsMWxRzRHfFJSYB0t0T1c5ZAyADeYMhn3GX7cJBabGtx8H6u/NAaK8K/dw3bCx+df6Hohxz
-	OpHHf8jyoHlgnmOpgvbjrJFPWXCWIFxCHlM42HXc5DMsro35fAReG3vOJFOvQ3Nv5w1z9gXvCQF
-	tybupkJrdwM7eAMxEnFAwn78UZvQOATefjJSWrZoCPtMb9A
-X-Google-Smtp-Source: AGHT+IFQTxPt1P+huYZnrYZ9Ew3tM5Ox2QrI9oPJToAe/ipqyTN+KqSlax2aZU/GU5HwiM9aJJmhIw==
-X-Received: by 2002:a05:600c:524d:b0:431:5aea:95f with SMTP id 5b1f17b1804b1-434d09ce368mr70376045e9.16.1733339205742;
-        Wed, 04 Dec 2024 11:06:45 -0800 (PST)
+        d=1e100.net; s=20230601; t=1733339398; x=1733944198;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bOngM2USHeFq8uTvg6lBb0tN7fu7f0bTGVR8zQJEEB8=;
+        b=b4UOFybXiAZutEHWSMblL5g2FYGT71RSuamo7kLuOEnzWthw8y3/JbaCFMdb3lx4iB
+         Womwx2pUlOS+h6qY6MRjJ4xALVka0V/aXeaA3xqn08cHwQWzI6nOMopUjmyhyikf9QVz
+         U2SoZPjv7BtXztDUOHycfjoZfo+YRD2eM4U45F/E26Ob8BLX32pBZXb1h3CI43vWDwjF
+         CJx6CTQLGVkHG0oOvH/vVLuCcAvHroKG47F51tt60XFjDrTPEKuBdIjGhn1xcP29/3V2
+         pZeRfqjq/NeFD7j4YK9D7hv6rdoM4LBHWyj+3VNIulnHF+5yMrb5INzVkzMX4UQ+Y04Y
+         PcUg==
+X-Forwarded-Encrypted: i=1; AJvYcCWlkO214kadjVwVZMZprg2mXiuVLxTeycAHuCXyNUWXUAYC3Tpqr1XcbWu4ch2vO4K5Z8r4t4sVr9w3oA==@linaro.org
+X-Gm-Message-State: AOJu0YzZIwlkVl2jTffiIJPn4fy5usYkgRMpT/DE1IJZYZL77VedItkD
+	YZGDIe4nICPjDwt9BAcgDYtbs0Rai3sXr6Mz+BmOYzYb5X0zWTYFwxmLoUtbejipqw==
+X-Gm-Gg: ASbGncu/Es+VYzbLV0olEQWKwBBKFFJNAwo+S2A3QSeuAm3ZYQNhXmiafgytZ2iujdp
+	vPKsM6sLEWmCloRqdIZSdK1etQZw7/TA8yHLGdCC36Kn4qrQyyaapYyp4LGIn69cFXlzkP7n7AS
+	/IJ2DWqclH0sU5dbZpDNd3wZuIfvFmVtsGKpAfb1FlhiZyKFYLJtTJJ546Rvx8xz0CK8a//N/aH
+	MWM5/jOjv/msH8nmD0eUAQ9vZyac6fmJ5C2423qC9xTK4TK
+X-Google-Smtp-Source: AGHT+IEysxLskTX7ub6F4QI9uApjoI3rJA+U0novnGuunCkTE/hNmntYybCKTu+FYjbWjcabq6TTBw==
+X-Received: by 2002:a05:6000:2a85:b0:382:49f9:74bb with SMTP id ffacd0b85a97d-385fd3f92f8mr5259423f8f.35.1733339397938;
+        Wed, 04 Dec 2024 11:09:57 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from myrica ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d52c0bc7sm33384065e9.35.2024.12.04.11.06.44
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385e5b10478sm13531553f8f.73.2024.12.04.11.09.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 11:06:45 -0800 (PST)
-Date: Wed, 4 Dec 2024 19:07:08 +0000
+        Wed, 04 Dec 2024 11:09:57 -0800 (PST)
+Date: Wed, 4 Dec 2024 19:10:16 +0000
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
 Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
 	philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	alex.bennee@linaro.org, Marcelo Tosatti <mtosatti@redhat.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>
-Subject: Re: [PATCH v3 01/26] kvm: Merge kvm_check_extension() and
- kvm_vm_check_extension()
-Message-ID: <20241204190708.GA2349278@myrica>
+	alex.bennee@linaro.org, Eric Blake <eblake@redhat.com>,
+	Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>
+Subject: Re: [PATCH v3 10/26] target/arm/kvm-rme: Add Realm Personalization
+ Value parameter
+Message-ID: <20241204191016.GC2349278@myrica>
 References: <20241125195626.856992-2-jean-philippe@linaro.org>
- <20241125195626.856992-3-jean-philippe@linaro.org>
- <Z0W_LzcGOfoBveKA@redhat.com>
+ <20241125195626.856992-12-jean-philippe@linaro.org>
+ <87wmgqsbp1.fsf@pond.sub.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <Z0W_LzcGOfoBveKA@redhat.com>
-X-TUID: dbuaRBmXXksz
+In-Reply-To: <87wmgqsbp1.fsf@pond.sub.org>
+X-TUID: awlb4eYExUPQ
 
-On Tue, Nov 26, 2024 at 12:29:35PM +0000, Daniel P. Berrangé wrote:
-> On Mon, Nov 25, 2024 at 07:56:00PM +0000, Jean-Philippe Brucker wrote:
-> > The KVM_CHECK_EXTENSION ioctl can be issued either on the global fd
-> > (/dev/kvm), or on the VM fd obtained with KVM_CREATE_VM. For most
-> > extensions, KVM returns the same value with either method, but for some
-> > of them it can refine the returned value depending on the VM type. The
-> > KVM documentation [1] advises to use the VM fd:
-> > 
-> >   Based on their initialization different VMs may have different
-> >   capabilities. It is thus encouraged to use the vm ioctl to query for
-> >   capabilities (available with KVM_CAP_CHECK_EXTENSION_VM on the vm fd)
-> > 
-> > Ongoing work on Arm confidential VMs confirms this, as some capabilities
-> > become unavailable to confidential VMs, requiring changes in QEMU to use
-> > kvm_vm_check_extension() instead of kvm_check_extension() [2]. Rather
-> > than changing each check one by one, change kvm_check_extension() to
-> > always issue the ioctl on the VM fd when available, and remove
-> > kvm_vm_check_extension().
+On Tue, Nov 26, 2024 at 08:20:42AM +0100, Markus Armbruster wrote:
+> > +# @personalization-value: Realm personalization value, as a 64-byte
+> > +#     hex string. This optional parameter allows to uniquely identify
+> > +#     the VM instance during attestation. (default: 0)
 > 
-> The downside I see of this approach is that it can potentially
-> mask mistakes / unexpected behaviour.
+> QMP commonly uses base64 for encoding binary data.  Any particular
+> reason to deviate?
+
+No, I think base64 is fine for this
+
 > 
-> eg, consider you are in a code path where you /think/ the VM fd
-> is available, but for some unexpected reason it is NOT in fact
-> available. The code silently falls back to the global FD, thus
-> giving a potentially incorrect extension check answer.
+> Is the "hex string" to be mapped to binary in little or big endian?  Not
+> an issue with base64.
+
+(It was big endian with padding on the right)
+
 > 
-> Having separate check methods with no fallback ensures that we
-> are checking exactly what we /intend/ to be checking, or will
-> see an error
+> Nitpick: (default: all-zero), please, for consistency with similar
+> documentation in SevSnpGuestProperties.
+> 
+> > +#
+> > +# Since: 9.3
+> > +##
+> > +{ 'struct': 'RmeGuestProperties',
+> > +  'data': { '*personalization-value': 'str' } }
+> >  
+> >  ##
+> >  # @ObjectType:
+> > @@ -1121,6 +1134,7 @@
+> >      { 'name': 'pr-manager-helper',
+> >        'if': 'CONFIG_LINUX' },
+> >      'qtest',
+> > +    'rme-guest',
+> >      'rng-builtin',
+> >      'rng-egd',
+> >      { 'name': 'rng-random',
+> 
+> The commit message claims the patch adds a parameter.  It actually adds
+> an entire object type.
 
-Yes I see your point, and I'm happy dropping this patch since I'm less
-familiar with the other archs.
+Yes as Daniel noted this belongs in an earlier patch
 
-The alternative is replacing kvm_check_extension() with
-kvm_vm_check_extension() wherever the Arm ioctl handler behaves
-differently depending on the VM type. Simple enough though it does affect
-kvm-all.c too:
+> 
+> > @@ -1195,6 +1209,7 @@
+> >        'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
+> >                                        'if': 'CONFIG_LINUX' },
+> >        'qtest':                      'QtestProperties',
+> > +      'rme-guest':                  'RmeGuestProperties',
+> >        'rng-builtin':                'RngProperties',
+> >        'rng-egd':                    'RngEgdProperties',
+> >        'rng-random':                 { 'type': 'RngRandomProperties',
+> > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+> > index 83a29421df..0be55867ee 100644
+> > --- a/target/arm/kvm-rme.c
+> > +++ b/target/arm/kvm-rme.c
+> > @@ -23,11 +23,15 @@ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
+> >  
+> >  #define RME_PAGE_SIZE qemu_real_host_page_size()
+> >  
+> > +#define RME_MAX_CFG         1
+> > +
+> >  struct RmeGuest {
+> >      ConfidentialGuestSupport parent_obj;
+> >      Notifier rom_load_notifier;
+> >      GSList *ram_regions;
+> >  
+> > +    uint8_t *personalization_value;
+> > +
+> >      hwaddr ram_base;
+> >      size_t ram_size;
+> >  };
+> > @@ -43,6 +47,48 @@ typedef struct {
+> >  
+> >  static RmeGuest *rme_guest;
+> >  
+> > +static int rme_configure_one(RmeGuest *guest, uint32_t cfg, Error **errp)
+> > +{
+> > +    int ret;
+> > +    const char *cfg_str;
+> > +    struct kvm_cap_arm_rme_config_item args = {
+> > +        .cfg = cfg,
+> > +    };
+> > +
+> > +    switch (cfg) {
+> > +    case KVM_CAP_ARM_RME_CFG_RPV:
+> > +        if (!guest->personalization_value) {
+> > +            return 0;
+> > +        }
+> > +        memcpy(args.rpv, guest->personalization_value, KVM_CAP_ARM_RME_RPV_SIZE);
+> > +        cfg_str = "personalization value";
+> > +        break;
+> > +    default:
+> > +        g_assert_not_reached();
+> > +    }
+> 
+> This function gets called with @cfg arguments 0 .. RME_MAX_CFG-1, from
+> rme_configure() right below.  RME_MAX_CFG is defined to 1 above.
+> 
+> The switch assumes KVM_CAP_ARM_RME_CFG_RPV is zero.  Such assumptions
+> are ideally avoided, and alternatively checked at build time.
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 801cff16a5..a56b943f31 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2410,13 +2410,13 @@ static int kvm_recommended_vcpus(KVMState *s)
- 
- static int kvm_max_vcpus(KVMState *s)
- {
--    int ret = kvm_check_extension(s, KVM_CAP_MAX_VCPUS);
-+    int ret = kvm_vm_check_extension(s, KVM_CAP_MAX_VCPUS);
-     return (ret) ? ret : kvm_recommended_vcpus(s);
- }
- 
- static int kvm_max_vcpu_id(KVMState *s)
- {
--    int ret = kvm_check_extension(s, KVM_CAP_MAX_VCPU_ID);
-+    int ret = kvm_vm_check_extension(s, KVM_CAP_MAX_VCPU_ID);
-     return (ret) ? ret : kvm_max_vcpus(s);
- }
- 
-@@ -2693,7 +2693,7 @@ static int kvm_init(MachineState *ms)
- 
- #ifdef TARGET_KVM_HAVE_GUEST_DEBUG
-     kvm_has_guest_debug =
--        (kvm_check_extension(s, KVM_CAP_SET_GUEST_DEBUG) > 0);
-+        (kvm_vm_check_extension(s, KVM_CAP_SET_GUEST_DEBUG) > 0);
- #endif
- 
-     kvm_sstep_flags = 0;
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 7b6812c0de..609c6d4e7a 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -618,11 +618,11 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
-         }
-     }
- 
--    max_hw_wps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
-+    max_hw_wps = kvm_vm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
-     hw_watchpoints = g_array_sized_new(true, true,
-                                        sizeof(HWWatchpoint), max_hw_wps);
- 
--    max_hw_bps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_BPS);
-+    max_hw_bps = kvm_vm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_BPS);
-     hw_breakpoints = g_array_sized_new(true, true,
-                                        sizeof(HWBreakpoint), max_hw_bps);
- 
-@@ -1764,7 +1764,7 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa)
- 
- void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
- {
--    bool has_steal_time = kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
-+    bool has_steal_time = kvm_vm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
- 
-     if (cpu->kvm_steal_time == ON_OFF_AUTO_AUTO) {
-         if (!has_steal_time || !arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-@@ -1799,7 +1799,7 @@ bool kvm_arm_aarch32_supported(void)
- 
- bool kvm_arm_sve_supported(void)
- {
--    return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
-+    return kvm_vm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
- }
- 
- bool kvm_arm_mte_supported(void)
+Ok, I'll change this
+
+Thanks,
+Jean

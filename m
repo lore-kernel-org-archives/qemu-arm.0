@@ -1,253 +1,208 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp341924njb;
-        Wed, 4 Dec 2024 08:42:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXV78n6teQMxQ7Qfx8YaZQVMK0pXRjTMqEE3C9u2I2U+efmFoOYhHSsqOLCK/mTKSPtbjGeULwAUe0upg==@linaro.org
-X-Google-Smtp-Source: AGHT+IExXxSgNDpAJCfCQJdIVJuOu3zRZwsdHPxqkVCBUFUB5mP7sKHfh0+NSwXrphMLIAiBFBpc
-X-Received: by 2002:a05:620a:2409:b0:7b6:6e7c:8f00 with SMTP id af79cd13be357-7b6a619adc3mr853651085a.36.1733330569623;
-        Wed, 04 Dec 2024 08:42:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733330569; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp439910njb;
+        Wed, 4 Dec 2024 11:06:46 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWOs+htJLLWgpgzJgsccubhWuiqi43/NwN0uRvxXBZo7Uq6ltp1O+Eona0q/9/M50gcDYIjHx7V8mQnLg==@linaro.org
+X-Received: by 2002:a05:600c:3596:b0:431:50cb:2398 with SMTP id 5b1f17b1804b1-434d48291b5mr36052755e9.2.1733339206303;
+        Wed, 04 Dec 2024 11:06:46 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733339206; cv=none;
         d=google.com; s=arc-20240605;
-        b=lTJzllz2CeEKeP+XoelUYwv2dJR94LHlPEB3Ej2iCi2jFP1YiVRgDsR3p6tyVxY1GE
-         GXK32r/xgM83mPqF8YHyx4kkbjuWRHaReWt1CgLfi7xVaO2i+xv0RxTQ5PP7grvLBV1p
-         H2nXvENHHwB/KWqiPxxgqM86Ml7/s4Q/1zHRw00sK1VTuUTrC3vEBoN+LCs1zsadgPmx
-         fWDfP4C1r3TNVeXiU/cYXwxUOEK3bQPGp/7GmyBPbnIHfydh9nh8ByPHGnnlf9lkVvIl
-         lhUyH+geCxGxKkhN3h7UczjX360JWp5rNDVz/MNtCpbtvIvk8MSj57+AeoljWSlKn98O
-         a8xg==
+        b=GCIdfrbhbHHCBdWIRQ6886L97HMc5h2+PK+SqIxP/c2CBIqzVQxQ4K+pPBlI8FC4BW
+         euUPmRl9W8R1lp+TO+RjLIfELJ7xI2N7nntKatzcuxpL8BOn+dk8rYNKDRsezq64jjUm
+         ck2BfeYRTBGKBvqp3LX9xndQGGtkCJM+fQVd67aRxECmzUl2UEW2UMp5k4kbJCHTupMP
+         BYmHKFJV6SRRgkwMe8NZZBU5zJR2XhyuNf6qztZXxBA6MqsiL1PPDbMtGBQJWpIHxYK8
+         HAmOCoOfM8m1ogBQPqw/eX0IMax6aJjLayIEbw5h6e831o1Qnd9ZOz2B/0cEPGcveVFJ
+         V0nA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=aTboGuxBsv1/D7jYDtP1EAK+nV/89N3aSEIGaAgBjps=;
-        fh=FbGPB6baxl35THH6lIxLzFSKd1pP3UHm68mKwH0PG1M=;
-        b=FwtFded1KZw29WVl1WgU5RRfSm6wBqGEh1CNz0ospeKPKBgMG+SKmToiiDftlvziMP
-         AMjQzrpSDtfPxeOB+BdV43mKtjjQfKAx87T3OUAtANccSgp6o0V9B2MMIHzbWWZzcRqb
-         O3Q16pkJKiHd2m5iUe5F39aUwmm2cPrcl70ISz0OG+BExLXkGovORKr26b0Iw909hFhe
-         /3Z0KvqpHsLugrSNY8bERi9CXNpV7zZGz1i4uh/KqA0rPBn75VC0EPMOJ5dwLE+I4Vd5
-         3yCN68E6eu/yXsQVL+Z5GNR6NQI76VavBJ9ONulyUVmO2KBB0ZVQnyNbRQLt48ZDIQOP
-         YrZA==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=0ibIy2drWP56YRJu1nbNoc3IL9Q6+0UkelpHO9ibKjU=;
+        fh=RUKkiBfxjZX5ZZ+nC6X3t2AfSuKVu48kASggGPU6kFc=;
+        b=EIhsy3EUOfIBHaCmx7Tpb5ZEWGXuYjTyGWQ9aUH2AcBoT7/nYVLawjVATSjck/cJ6L
+         q2TazuVrpfM1Q2JTS1oYEQfUtDoFo1/ul5gxOMZX5Y2gZjdJGWBwymkDNgQDWrmt+KjX
+         9JHhdSyV8VezdDUKxGwq/0qqnOsc9uPfcf3mkZyKVg6c2U3Iv0uSxxF2jVgKhxMP3Sx+
+         rxpnPcV3eqjMVdfN/MSOA7PbRn3PyaufQxPAoUicNds8dTTf/NUhtAKjIh1S/mNdFSLa
+         xaeLRGkyYPDPSDXSoFvIFhWQuLsQs04RtxdBpzcGBoW9Le+veAXSUj09MyjT6mG2388e
+         ltNw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/XRXq1C";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6849db237si1761737185a.540.2024.12.04.08.42.49
+       dkim=pass header.i=@linaro.org header.s=google header.b="EbLAjn/K";
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <jean-philippe@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-434b109f53bsor57560725e9.10.2024.12.04.11.06.46
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2024 08:42:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 04 Dec 2024 11:06:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="K/XRXq1C";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIsSN-0004sJ-6y; Wed, 04 Dec 2024 11:42:31 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1tIsSG-0004rU-7k
- for qemu-arm@nongnu.org; Wed, 04 Dec 2024 11:42:24 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1tIsSA-00051H-NG
- for qemu-arm@nongnu.org; Wed, 04 Dec 2024 11:42:22 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1733330536;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=aTboGuxBsv1/D7jYDtP1EAK+nV/89N3aSEIGaAgBjps=;
- b=K/XRXq1CEW7VoqhFknXXzL5h7ow1yTOsw9q47I5xrmO1vZj9dsWcvJZes1F8EwT++219At
- Ox5m98ntQl3HfqF1Jw+NuzKVvLanASCt15rsWYIfMBpCagz9tk53wuOvy5ekiDxmmQByIB
- 0yspIOkYe1x+SWgzfUlnr8kYQF44qT4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-395-1i3i552AN2ez240T-pBBvQ-1; Wed, 04 Dec 2024 11:42:15 -0500
-X-MC-Unique: 1i3i552AN2ez240T-pBBvQ-1
-X-Mimecast-MFC-AGG-ID: 1i3i552AN2ez240T-pBBvQ
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4349c5e58a3so57465565e9.2
- for <qemu-arm@nongnu.org>; Wed, 04 Dec 2024 08:42:15 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b="EbLAjn/K";
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733339206; x=1733944006; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=0ibIy2drWP56YRJu1nbNoc3IL9Q6+0UkelpHO9ibKjU=;
+        b=EbLAjn/Kln9d54b2QTeLnP587RkKEhHNxFmr4vRIXYGJ9CQ98KcWyJEJagoeLmxRua
+         S2F6w9t/cdegUs736lVc6SGE3vbFE8Rzf/M9BioGOeWDv7COTEZxueR40awd52sC13Dr
+         CvtElWtdq5B6Duz4ge6EPspKm8bkW00tpZvT8Jg0umazIbXDZW1Ql3y/AjPGIOou0UjF
+         8dZ5YPPmlpuRcCCU1Spb+NlB1aPcAvVeMZZeeqXoccSKmtBd9jhhmioU/Fd8FzHuuJal
+         aZrhxpD3btV2GejRA+KLpH3uBJcR3a1C3FNFkK5VWNvOPdFZ///o0HyrXb6xKx1u6apD
+         xMfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733330534; x=1733935334;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=aTboGuxBsv1/D7jYDtP1EAK+nV/89N3aSEIGaAgBjps=;
- b=ePNhhAEDw3jAIwO4OilgWtKqk5AjQWpvUCo9uXRoK7UeT2ks62dGgqpDcxRIqV44US
- TdhWWdyqFFy8KTUzZb9dO4ll6DMUlNNlr9A7HMMxG4dYbIuDO3lRvXQxo8hQzCSLul7Z
- Qfb4hA9u0pSmddx+f3m103nb5Jb/3fpLLHolDJUjifBEFvh78rQsABQcLTG8I4+DuuUY
- EWj6xSx6xlwICZ9git80i7sYhvllFIOKO0Ir0N7A9uX8j10M32BbXHViPNLTHqktQGLs
- pxCpgXaKWG2ZSZK5RJf2ZmD4tNM7GDCUivGskDDKaXDpTgM5U4lU9qRIGf2zA1+EAw/+
- R9GA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVkDHC08lbvDun9hLHnoaX51lb+G7BMPtFqk6d2tGSGDYkE2a2ZnE5fBw6sAknUie4DsGyDXlZYkw==@nongnu.org
-X-Gm-Message-State: AOJu0Yy6ERXifLlWPj7H7lw+xzWcqWvoCYoGHGbXQ4XZprUlVwSBV60m
- A4wqBn9seFNz7QUKmW/a0XwFSSwYT6Gfrp2HpFn0Uayn01Qv0smwKJYBt66BzxgbSN8IhbWRv/7
- N+qY0MNuOGoWW+8+uSJpBsCKb9YywijaZtC6Kde3CoX87fuItDQ==
-X-Gm-Gg: ASbGnctVAvdVI4gXS1wM5OdLv33rUX7xbQG6FZsIgnNreQ96tI/U4zV+4UVWOLHuLSj
- N/bf0mKM7xFv1bujS+IP92zEfeF6K82BhiRXUkqg4WcBHmKiOdibsF1HIJ69hJo4LPHzpGC6jPm
- Lm/ClAL7Eh7deVXtRdqD8A8WgN/H07WRukaTPRlaKVBqGaxW0mvklpMu2Oz2+/Sa00BfmoYC0HS
- mDxwa1p+tsogvyj4XcKt4o9yb7AVOwoY+g4r5e0EysYeE5pYTKZeFPP85e1msrnTGNuJOaONN4h
- Ax8t7DNhJJw32hF1ELPERQ==
-X-Received: by 2002:a05:600c:3c9b:b0:434:a706:c0f0 with SMTP id
- 5b1f17b1804b1-434d09b5fbdmr65866605e9.14.1733330534037; 
- Wed, 04 Dec 2024 08:42:14 -0800 (PST)
-X-Received: by 2002:a05:600c:3c9b:b0:434:a706:c0f0 with SMTP id
- 5b1f17b1804b1-434d09b5fbdmr65866395e9.14.1733330533682; 
- Wed, 04 Dec 2024 08:42:13 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-434d52cbd5asm29512655e9.40.2024.12.04.08.42.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Dec 2024 08:42:13 -0800 (PST)
-Date: Wed, 4 Dec 2024 17:42:12 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v5 14/16] acpi/ghes: move offset calculus to a separate
- function
-Message-ID: <20241204174212.4c6558aa@imammedo.users.ipa.redhat.com>
-In-Reply-To: <5a2bda4722e2d45839a75f3a193f6b8f4841c773.1733297707.git.mchehab+huawei@kernel.org>
-References: <cover.1733297707.git.mchehab+huawei@kernel.org>
- <5a2bda4722e2d45839a75f3a193f6b8f4841c773.1733297707.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+        d=1e100.net; s=20230601; t=1733339206; x=1733944006;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=0ibIy2drWP56YRJu1nbNoc3IL9Q6+0UkelpHO9ibKjU=;
+        b=lM+fj8/MZnSCBsmmDGdPKE5+0wccNsJnj45ig0e/GVA2NY6/MazCh+osmkmJo8XEA4
+         Xsv+CpMh+nKap3Y8QZHbM4W04r6PffiE8InDMeGOYrqdKG1ygiAL05Rc9aMiml5Pt0he
+         raXlxn525A8c/nT/pg21eSQxpG8oG6Ularv/2mpi+Ue5NwdBLHsN1+/a2iSfcTCib/d7
+         1ZEVMB8OLuGB/AZ2Ut6ZJ7K/r9p/mLKezwGt/u6sfDtSCSilMlbltNMA6Q19m3kecALD
+         vASrNVZ2SdVSOIw7HjHZ7+zu4espydLdoS4bH0FrawdPzwinZCjFHk9AQzqCdn62e/yM
+         azOg==
+X-Forwarded-Encrypted: i=1; AJvYcCWaOzU83l/XGY4niLpg9hqrn+iqFuS01Aetmb+yjiATBgEluuzn1T7F1lC6+H7uPOHAzLn4XMkP9ZNT3Q==@linaro.org
+X-Gm-Message-State: AOJu0YzCjYG8lv0Nwizp//vPmLppeEPe+j+5oYL+QMQ169kIZcyEsgTH
+	ESvqR42gv1ytW4xG5NXstmCkwRpdpkmBSGO0lBrAl7/XShMnSfjv0+T9fwN68C4v9w==
+X-Gm-Gg: ASbGncv4lmlwIZ9Pn6AUUs4viioeWzl+4o6IA1mMaEeal3R5wg0RjKAT9D3xyt5Y5fZ
+	ZvIfmsMWxRzRHfFJSYB0t0T1c5ZAyADeYMhn3GX7cJBabGtx8H6u/NAaK8K/dw3bCx+df6Hohxz
+	OpHHf8jyoHlgnmOpgvbjrJFPWXCWIFxCHlM42HXc5DMsro35fAReG3vOJFOvQ3Nv5w1z9gXvCQF
+	tybupkJrdwM7eAMxEnFAwn78UZvQOATefjJSWrZoCPtMb9A
+X-Google-Smtp-Source: AGHT+IFQTxPt1P+huYZnrYZ9Ew3tM5Ox2QrI9oPJToAe/ipqyTN+KqSlax2aZU/GU5HwiM9aJJmhIw==
+X-Received: by 2002:a05:600c:524d:b0:431:5aea:95f with SMTP id 5b1f17b1804b1-434d09ce368mr70376045e9.16.1733339205742;
+        Wed, 04 Dec 2024 11:06:45 -0800 (PST)
+Return-Path: <jean-philippe@linaro.org>
+Received: from myrica ([2.221.137.100])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d52c0bc7sm33384065e9.35.2024.12.04.11.06.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Dec 2024 11:06:45 -0800 (PST)
+Date: Wed, 4 Dec 2024 19:07:08 +0000
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+	philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	alex.bennee@linaro.org, Marcelo Tosatti <mtosatti@redhat.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>
+Subject: Re: [PATCH v3 01/26] kvm: Merge kvm_check_extension() and
+ kvm_vm_check_extension()
+Message-ID: <20241204190708.GA2349278@myrica>
+References: <20241125195626.856992-2-jean-philippe@linaro.org>
+ <20241125195626.856992-3-jean-philippe@linaro.org>
+ <Z0W_LzcGOfoBveKA@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: DnXV5u1HWp5uPzQuPad8qKIjf3fLSYjM3vxuff1mBWM_1733330534
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /3EcUl2g6V8+
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <Z0W_LzcGOfoBveKA@redhat.com>
+X-TUID: dbuaRBmXXksz
 
-On Wed,  4 Dec 2024 08:41:22 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-
-> Currently, CPER address location is calculated as an offset of
-> the hardware_errors table. It is also badly named, as the
-> offset actually used is the address where the CPER data starts,
-> and not the beginning of the error source.
+On Tue, Nov 26, 2024 at 12:29:35PM +0000, Daniel P. Berrangé wrote:
+> On Mon, Nov 25, 2024 at 07:56:00PM +0000, Jean-Philippe Brucker wrote:
+> > The KVM_CHECK_EXTENSION ioctl can be issued either on the global fd
+> > (/dev/kvm), or on the VM fd obtained with KVM_CREATE_VM. For most
+> > extensions, KVM returns the same value with either method, but for some
+> > of them it can refine the returned value depending on the VM type. The
+> > KVM documentation [1] advises to use the VM fd:
+> > 
+> >   Based on their initialization different VMs may have different
+> >   capabilities. It is thus encouraged to use the vm ioctl to query for
+> >   capabilities (available with KVM_CAP_CHECK_EXTENSION_VM on the vm fd)
+> > 
+> > Ongoing work on Arm confidential VMs confirms this, as some capabilities
+> > become unavailable to confidential VMs, requiring changes in QEMU to use
+> > kvm_vm_check_extension() instead of kvm_check_extension() [2]. Rather
+> > than changing each check one by one, change kvm_check_extension() to
+> > always issue the ioctl on the VM fd when available, and remove
+> > kvm_vm_check_extension().
 > 
-> Move the logic which calculates such offset to a separate
-> function, in preparation for a patch that will be changing the
-> logic to calculate it from the HEST table.
+> The downside I see of this approach is that it can potentially
+> mask mistakes / unexpected behaviour.
 > 
-> While here, properly name the variable which stores the cper
-> address.
+> eg, consider you are in a code path where you /think/ the VM fd
+> is available, but for some unexpected reason it is NOT in fact
+> available. The code silently falls back to the global FD, thus
+> giving a potentially incorrect extension check answer.
 > 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Having separate check methods with no fallback ensures that we
+> are checking exactly what we /intend/ to be checking, or will
+> see an error
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Yes I see your point, and I'm happy dropping this patch since I'm less
+familiar with the other archs.
 
-> ---
->  hw/acpi/ghes.c | 40 +++++++++++++++++++++++++++++++---------
->  1 file changed, 31 insertions(+), 9 deletions(-)
-> 
-> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> index 90d76b9c2d8c..a4453ee357bc 100644
-> --- a/hw/acpi/ghes.c
-> +++ b/hw/acpi/ghes.c
-> @@ -364,10 +364,37 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
->      ags->present = true;
->  }
->  
-> +static void get_hw_error_offsets(uint64_t ghes_addr,
-> +                                 uint64_t *cper_addr,
-> +                                 uint64_t *read_ack_register_addr)
-> +{
-> +    if (!ghes_addr) {
-> +        return;
-> +    }
-> +
-> +    /*
-> +     * non-HEST version supports only one source, so no need to change
-> +     * the start offset based on the source ID. Also, we can't validate
-> +     * the source ID, as it is stored inside the HEST table.
-> +     */
-> +
-> +    cpu_physical_memory_read(ghes_addr, cper_addr,
-> +                             sizeof(*cper_addr));
-> +
-> +    *cper_addr = le64_to_cpu(*cper_addr);
-> +
-> +    /*
-> +     * As the current version supports only one source, the ack offset is
-> +     * just sizeof(uint64_t).
-> +     */
-> +    *read_ack_register_addr = ghes_addr +
-> +			      ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
-> +}
-> +
->  void ghes_record_cper_errors(const void *cper, size_t len,
->                               uint16_t source_id, Error **errp)
->  {
-> -    uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
-> +    uint64_t cper_addr = 0, read_ack_register_addr = 0, read_ack_register;
->      uint64_t start_addr;
->      AcpiGedState *acpi_ged_state;
->      AcpiGhesState *ags;
-> @@ -389,18 +416,13 @@ void ghes_record_cper_errors(const void *cper, size_t len,
->  
->      start_addr += source_id * sizeof(uint64_t);
->  
-> -    cpu_physical_memory_read(start_addr, &error_block_addr,
-> -                             sizeof(error_block_addr));
-> +    get_hw_error_offsets(start_addr, &cper_addr, &read_ack_register_addr);
->  
-> -    error_block_addr = le64_to_cpu(error_block_addr);
-> -    if (!error_block_addr) {
-> +    if (!cper_addr) {
->          error_setg(errp, "can not find Generic Error Status Block");
->          return;
->      }
->  
-> -    read_ack_register_addr = start_addr +
-> -                             ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
-> -
->      cpu_physical_memory_read(read_ack_register_addr,
->                               &read_ack_register, sizeof(read_ack_register));
->  
-> @@ -421,7 +443,7 @@ void ghes_record_cper_errors(const void *cper, size_t len,
->          &read_ack_register, sizeof(uint64_t));
->  
->      /* Write the generic error data entry into guest memory */
-> -    cpu_physical_memory_write(error_block_addr, cper, len);
-> +    cpu_physical_memory_write(cper_addr, cper, len);
->  
->      return;
->  }
+The alternative is replacing kvm_check_extension() with
+kvm_vm_check_extension() wherever the Arm ioctl handler behaves
+differently depending on the VM type. Simple enough though it does affect
+kvm-all.c too:
 
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 801cff16a5..a56b943f31 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2410,13 +2410,13 @@ static int kvm_recommended_vcpus(KVMState *s)
+ 
+ static int kvm_max_vcpus(KVMState *s)
+ {
+-    int ret = kvm_check_extension(s, KVM_CAP_MAX_VCPUS);
++    int ret = kvm_vm_check_extension(s, KVM_CAP_MAX_VCPUS);
+     return (ret) ? ret : kvm_recommended_vcpus(s);
+ }
+ 
+ static int kvm_max_vcpu_id(KVMState *s)
+ {
+-    int ret = kvm_check_extension(s, KVM_CAP_MAX_VCPU_ID);
++    int ret = kvm_vm_check_extension(s, KVM_CAP_MAX_VCPU_ID);
+     return (ret) ? ret : kvm_max_vcpus(s);
+ }
+ 
+@@ -2693,7 +2693,7 @@ static int kvm_init(MachineState *ms)
+ 
+ #ifdef TARGET_KVM_HAVE_GUEST_DEBUG
+     kvm_has_guest_debug =
+-        (kvm_check_extension(s, KVM_CAP_SET_GUEST_DEBUG) > 0);
++        (kvm_vm_check_extension(s, KVM_CAP_SET_GUEST_DEBUG) > 0);
+ #endif
+ 
+     kvm_sstep_flags = 0;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 7b6812c0de..609c6d4e7a 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -618,11 +618,11 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+         }
+     }
+ 
+-    max_hw_wps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
++    max_hw_wps = kvm_vm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_WPS);
+     hw_watchpoints = g_array_sized_new(true, true,
+                                        sizeof(HWWatchpoint), max_hw_wps);
+ 
+-    max_hw_bps = kvm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_BPS);
++    max_hw_bps = kvm_vm_check_extension(s, KVM_CAP_GUEST_DEBUG_HW_BPS);
+     hw_breakpoints = g_array_sized_new(true, true,
+                                        sizeof(HWBreakpoint), max_hw_bps);
+ 
+@@ -1764,7 +1764,7 @@ void kvm_arm_pvtime_init(ARMCPU *cpu, uint64_t ipa)
+ 
+ void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
+ {
+-    bool has_steal_time = kvm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
++    bool has_steal_time = kvm_vm_check_extension(kvm_state, KVM_CAP_STEAL_TIME);
+ 
+     if (cpu->kvm_steal_time == ON_OFF_AUTO_AUTO) {
+         if (!has_steal_time || !arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+@@ -1799,7 +1799,7 @@ bool kvm_arm_aarch32_supported(void)
+ 
+ bool kvm_arm_sve_supported(void)
+ {
+-    return kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
++    return kvm_vm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+ }
+ 
+ bool kvm_arm_mte_supported(void)

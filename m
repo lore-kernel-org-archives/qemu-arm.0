@@ -1,87 +1,130 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp33069njb;
-        Wed, 4 Dec 2024 00:05:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXwVeu1NITtVyNOT2uKdW1QyPKmfsShVFu2MLlMdStT4BpAr8x1Lsvx93Pz+wbRdzIHfx5LJk4jCyNJKA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEa1Y7C62CxLfbspEMRAIYWV8nXtIHt3WvgTS5SMpRXUJdASJ+0a+SH2wAT65lnmXNjuiW2
-X-Received: by 2002:a05:6214:518e:b0:6d8:b3a7:759e with SMTP id 6a1803df08f44-6d8b7476d9bmr79553296d6.46.1733299555856;
-        Wed, 04 Dec 2024 00:05:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733299555; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp153129njb;
+        Wed, 4 Dec 2024 04:17:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWuVoBb/hvKYp0XPNWQYHpC4QFWkpvICIoLStHiw/2GfX1p49z8v0fJOf8XpBi0O9//sL5MSAXlKGoq5g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGRTJN1gGTpH5qXteT7NNhr7+hxrVmolaTlRmYLagXdL5nZAhdTQX6hzN5vNVFUOQTS9es0
+X-Received: by 2002:a05:620a:454e:b0:7b6:7a56:dabd with SMTP id af79cd13be357-7b6a5d7794cmr864722685a.16.1733314679711;
+        Wed, 04 Dec 2024 04:17:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733314679; cv=none;
         d=google.com; s=arc-20240605;
-        b=aMx7Zwkq8/7Wu7mHPtlk1kvSVugiFc8FOTD60mI/8fXDE0AdUWw94gCezikXWWKB8F
-         K25MZ5idwyMknaHBdvucUca2axt8t0O6aTaiTa9REckdeKyjxioOv5RuxknDad0v1Cdl
-         /PzWd9FVyIUx0I8iqhYd/CYqfZUldeKcYdpxe6WytYUfJ3Y22WtNamhkK9Dxb52vCxp+
-         8pz2q+do773N2cnnAFb8YfJYt8pJKwPDDuA5W0NBbuk99cn6Up56nnkyZ0VqUsCBzHp9
-         M40bn2PCUOQO+iY+aOZ13cBLVW7vv5DOTYB5GKaAqRpc3vS7GnhF5arbC22xMabuE9zs
-         6+BQ==
+        b=hUzjkHeNcKRrhM8wFvkILnQ6/NnnSw1KNpp5ADGrpA3mFjZm98ZVGhUUI2ahEuIAX3
+         SojadXjk7+rCEE27VrEko85VaXQmiFivPT04dr6ZbqdlV7ZgrsCW5EUOVr+qbu1u28St
+         t9xRVgm1Kpx/t67cZ0KnZWTPZyzzFnhgVGwTlfzK/+b+Jlt5/ZnnbsT9rVwJf0G1usua
+         gSDLlXaUKFYZVfrYVrjEH1lm4NGooC1ZJCxKn2mwZ0e2g8Ot8473cLsNfsPbG8vybspG
+         EcBs702akZQ+OuuMqUc0EjnxcxeAvahZSRNno81kgoz+USG7HbmVrD74sAmj9DyuaOfR
+         277w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=tPzxkIRETB5WWN7u2F7fZ2Jf5zEMmaPXP72k0zz7xOM=;
-        fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=OetMi8dW+OdMbZXCnqxf7pSFFEmxfErcp6EnTZeJEcfHaoutyDgiPzrxW6kdcWhvSN
-         NpG9umq38k1qnYpZTu3hCUzYFfuXdz0p4J4ktOEJEowZexsErUkcz1McYtwcPeELDjQs
-         39yOp73brrNoHTbWw9PQvmnZzUW4CFp9dKURjF9QKe7rqH0Lhg3p+9zbAxVjW8gUQVuu
-         YnqcHfnUFYtmp1avJZs0z7qBmwMh2yNbZb8yo5fC53mwg9gbbbV9NAcTPeVtuFk2LJJ4
-         X4S05CtXpufrR+mzrkZwmxZM9f0yRmn9kI+9PZE9riF29zhZSKt8/ZhogTouhmBavUiA
-         IyLw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=4OD6H62D7Ib8iKEn3DZkv3gh31Khg4KW3CH1i2rP2D0=;
+        fh=B6MtHvwtoXCsyy3RrjgHSWJKsiRO4Tz41sQqsdW3Xuk=;
+        b=Mhxo9fUzjs7XWUY1DTqkbYNowjG7sIzlOGTORtBAibQKh/bjO5Odm/n7P6vStqiBor
+         ey9f1AwttQ4E4E+DtZVhYFnQN+0eQlaQ+ptFH1X+pZxy47ANZzAkLQiLHec2ipFu2OAk
+         voyYdN1VfBazkgLepx7sgvy9zBMFJr8R7JG1bPykciwzghV/YM4Q5KJcEJKyqEsJW+Cg
+         Y7ZX7sQtE+/6ihrmgrZWd6C7h3UsFDjjhTGEl4lpd21CSpmL8bb9mmMxIINQaZqqlZ/M
+         8+iRZTAf54IC7qtW01WvLGUeW78TDLsx7at/k1RzcJJUiqWhuIEOKh+CEXrkdU3zTZkI
+         MxvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=JloN3Rrh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=quicinc.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d88662929fsi154425956d6.429.2024.12.04.00.05.55
+        by mx.google.com with ESMTPS id af79cd13be357-7b6849b295csi26178685a.323.2024.12.04.04.17.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2024 00:05:55 -0800 (PST)
+        Wed, 04 Dec 2024 04:17:59 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@quicinc.com header.s=qcppdkim1 header.b=JloN3Rrh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dmarc=pass (p=NONE sp=REJECT dis=NONE) header.from=quicinc.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIkOF-0004CL-AS; Wed, 04 Dec 2024 03:05:43 -0500
+	id 1tIoK1-0008Ps-Hc; Wed, 04 Dec 2024 07:17:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tIkO8-0004Bp-7w; Wed, 04 Dec 2024 03:05:36 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1tIoJz-0008Pb-9E; Wed, 04 Dec 2024 07:17:35 -0500
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tIkO6-00082v-RC; Wed, 04 Dec 2024 03:05:35 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 4 Dec
- 2024 16:05:24 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 4 Dec 2024 16:05:24 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v3 1/7] hw/sd/aspeed_sdhci: Fix coding style
-Date: Wed, 4 Dec 2024 16:05:17 +0800
-Message-ID: <20241204080523.4025780-2-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241204080523.4025780-1-jamin_lin@aspeedtech.com>
-References: <20241204080523.4025780-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <quic_llindhol@quicinc.com>)
+ id 1tIoJt-0000l0-6R; Wed, 04 Dec 2024 07:17:35 -0500
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4B41tKJM027245;
+ Wed, 4 Dec 2024 12:17:24 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ 4OD6H62D7Ib8iKEn3DZkv3gh31Khg4KW3CH1i2rP2D0=; b=JloN3RrhrK/9gdFb
+ JAzfw803jxdIQ2ES8733Ol+PhEd8hdqrBgzApRqzLev6YQtZWYl99JEXthZecS08
+ MZqHsTjX8dDPnGpupUXpMLjFor7fDbpysWuFX0qO645yMeC3U2nnexEAbBwUUV9I
+ Si8Q2qBMeFhOzPbV1wByW6gQzzEJULw/6OyS4FVXWtnjGbxFgHaF/a8bEJpU2+2d
+ ww40IGfFyuUg4vkw1IQmxUKLzGx2mRUUi6Dzy0ZJQBxrsuQ20W3LZ+WkiHdhdb9Q
+ cVDkG0MB5/GNHsD/qA3dxXOnKahsyU8sYrW7MrU8R5veUf+9/fWk6D5/bkMHsOEK
+ AyQsaQ==
+Received: from nasanppmta02.qualcomm.com (i-global254.qualcomm.com
+ [199.106.103.254])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 43a1g5kcb9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 04 Dec 2024 12:17:24 +0000 (GMT)
+Received: from nasanex01c.na.qualcomm.com (nasanex01c.na.qualcomm.com
+ [10.45.79.139])
+ by NASANPPMTA02.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 4B4CHNnj010397
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 4 Dec 2024 12:17:23 GMT
+Received: from [10.111.132.184] (10.80.80.8) by nasanex01c.na.qualcomm.com
+ (10.45.79.139) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Wed, 4 Dec 2024
+ 04:17:22 -0800
+Message-ID: <2106db77-88fb-4113-ae09-9bf77bce6ad7@quicinc.com>
+Date: Wed, 4 Dec 2024 12:17:19 +0000
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: bump default memory size to 2GB
+Content-Language: en-GB
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Peter Maydell
+ <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, Mathieu Poirier
+ <mathieu.poirier@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>,
+ <leif.lindholm@oss.qualcomm.com>
+References: <20241126084928.252067-1-marcin.juszkiewicz@linaro.org>
+ <CAFEAcA_SkZ+ew8AAVpBHuw-9YW4S5wFbB0Vqx+dBzXf97JGDGw@mail.gmail.com>
+ <cd635753-4e2c-42d6-bb7b-d558d90f59d7@linaro.org>
+From: Leif Lindholm <quic_llindhol@quicinc.com>
+In-Reply-To: <cd635753-4e2c-42d6-bb7b-d558d90f59d7@linaro.org>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.80.80.8]
+X-ClientProxiedBy: nasanex01b.na.qualcomm.com (10.46.141.250) To
+ nasanex01c.na.qualcomm.com (10.45.79.139)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-GUID: szQVR_urJcrEpsWSJi90WC956mPj3V69
+X-Proofpoint-ORIG-GUID: szQVR_urJcrEpsWSJi90WC956mPj3V69
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ bulkscore=0 clxscore=1011 malwarescore=0 impostorscore=0
+ lowpriorityscore=0 suspectscore=0 mlxlogscore=545 spamscore=0 adultscore=0
+ mlxscore=0 phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2411120000 definitions=main-2412040095
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=quic_llindhol@quicinc.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,38 +137,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: u4XLrZPmg8fG
+X-TUID: lTiYMQGdkwcY
 
-Fix coding style issues from checkpatch.pl.
+On 2024-12-02 10:53, Marcin Juszkiewicz wrote:
+> W dniu 26.11.2024 o 14:14, Peter Maydell pisze:
+>> On Tue, 26 Nov 2024 at 08:49, Marcin Juszkiewicz
+>> <marcin.juszkiewicz@linaro.org> wrote:
+>>>
+>>> We are working on adding RME support to SBSA Reference Platform.
+>>> When RME is enabled then RMM (Realm Managment Monitor) takes 1072MB of
+>>> memory for own use. Which ends with firmware panic on 1GB machine.
+>>
+>> Reasonable change, but isn't it also a bug in the RMM that it
+>> grabs 1GB of RAM regardless of how much RAM the machine
+>> actually has?
+> 
+> I think that the goal is "get it working" first and then optimize.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/sd/aspeed_sdhci.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+I agree on a different platform this could feel quite hacky, but in 
+reality even 2GB falls within "ridiculously low for an SBSA platform".
 
-diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
-index 98d5460905..acd6538261 100644
---- a/hw/sd/aspeed_sdhci.c
-+++ b/hw/sd/aspeed_sdhci.c
-@@ -87,10 +87,12 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
-         sdhci->regs[TO_REG(addr)] = (uint32_t)val & ~ASPEED_SDHCI_INFO_RESET;
-         break;
-     case ASPEED_SDHCI_SDIO_140:
--        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg, 0, 32, val);
-+        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg,
-+                                            0, 32, val);
-         break;
-     case ASPEED_SDHCI_SDIO_144:
--        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg, 32, 32, val);
-+        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg,
-+                                            32, 32, val);
-         break;
-     case ASPEED_SDHCI_SDIO_148:
-         sdhci->slots[0].maxcurr = deposit64(sdhci->slots[0].maxcurr,
--- 
-2.34.1
+If we're worried about overhead for CI jobs that do not require the 
+feature, we could always conditionalize it on RME being enabled. But I'd 
+be happy to wait and see.
+
+Reviewed-by: Leif Lindholm <quic_llindhol@quicinc.com>
 

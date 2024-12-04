@@ -1,134 +1,128 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp501460njb;
-        Wed, 4 Dec 2024 12:51:22 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVMWiwr+uqtFHcDBvkpzSgHnbU8HDKxPQ86/Uf+O0M0EEB/RNj+d45sFpaJu4GKj2MJhEGoUvXRWtSYPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG+bhB025hou2xOmfCcZ0oFCZOknUTo526UmCnEKTagkmAgQEGw0cT7YzMMY42r7vYMeqPL
-X-Received: by 2002:a05:6214:27ef:b0:6d8:a730:110d with SMTP id 6a1803df08f44-6d8c420c24emr98890776d6.0.1733345482641;
-        Wed, 04 Dec 2024 12:51:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733345482; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp503803njb;
+        Wed, 4 Dec 2024 12:56:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVHx8NdVHKfrX2DwsicWUGpcePF3NUflBYhjH/x2+5uhOYOtRabQTI7iZUSNOKG+XfFzCs8H2dx3HWL1A==@linaro.org
+X-Google-Smtp-Source: AGHT+IEa/EA6h/t72wypnIbmw+hCVR7EtWMAjbuvkEMwvcesWZsM6vilC59a7yOo3CTlksZUMFjK
+X-Received: by 2002:a05:622a:64d:b0:461:2536:f226 with SMTP id d75a77b69052e-4672796a5b8mr15818261cf.12.1733345785400;
+        Wed, 04 Dec 2024 12:56:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733345785; cv=none;
         d=google.com; s=arc-20240605;
-        b=HfBBo8CbYDbR4kybZfjFQI8ITv7rXbQbu8/G1eCZoKHWJ8nwTFi/ZaELAjTWZCg4NH
-         HfUJC3bfM+n2UCJIFeuE1maVouOvMCNfHG5rBHE0j0cDHbsU3Oj750OTwTuspGKStpoP
-         NMKWew2FxxUhIiachbGk6JhT1DZibktAhpBl+0GJ8+sN6pCHpq6Je7GHaaZ3m9tShgGi
-         eSFyMsQnkwnU+0TVlK8NJCJgkMrOSAM15oPuOGEBW0gnNiGpmDD2Ke4CT1WDIVH4zkoS
-         01Pu9uz28nB/x3NGzia0ifeR8rq4reSceBkFT3PDvmV6Mst5HNLRHmDTOmXa9lUwMFWv
-         VYaw==
+        b=NVwU2l9bTptO1dEP+EFFre1gM2gd7VQEjAMGbxfB1IgbL+J1wlhXY4M66JxTTurpv/
+         JOk64bY5yw+K3VpLDWoMuK03rOielFNpIb9y3YbDYnfAYklLAzIbidEMnMBKutnHmE+S
+         G3vYyDTOYVvY4gZ4Yuh85Vn4ZPMhzZzQ3nUnBDI/jV/0CeqFKGFXb5adOnethHdXGKGl
+         Qauw/AKAILAXurzL6ut2CEhxbdP9VYx6xxs1rWh1mTblnnB8MwB7NH56XtQ0Gamswhp5
+         c/UH/OOhiHnrvEgJyjIgSMlj6wfz1xbb4QeuWEARWGjNojkFP1hwlVDP36aKaQY/oQ6m
+         nuhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ieaDmxmi/VDvGvPyu9m/mprRo5fRdXLjUqQSWTteXxQ=;
-        fh=kwaciWR4cBmnBAWEst3dvWaOsxiYIQpcr7UYuao46x8=;
-        b=Au48RcaOVmlxkBojPoHBZOQ6cB7qMCBaUNLqREFIryRd9jjHofCll2daW6XoR2wPvu
-         deQt9op6NV2QSVRH5dCW8GQNIuVuCkn98Tjy256J4fvUBpbsZJGuZjyBFtEkxuTFXuN9
-         PUnFy8mJeFklXER04Yb3tkRHP6GVw5mCLl2r+YRS9LvX4U2hvaSnG3hGPQtqKZg5/+6X
-         fKJDSH+e4CC1EFm8SNCZxugPPJzcAhvuufO5noe1vQOwNqaH6dep4aaNxCkEh/yz+71K
-         DhcxOOOkfhEHpe1c9H6On8rg90yYGh7+wmHSw8Lergfm+snz7P/utPK1RKOndgj+6Cq4
-         xKtQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=4dgzrMh++g/oTounPtmoGDAI8IhHPJPYGgHVhlbL82U=;
+        fh=AOz4PCoY8FqTuiMy3i1jptISI/Y2ya1j9LUyz9UDi1k=;
+        b=G2vj9HH0am8OzUMcjHy5wtBlml9ASA+SDjIOHjKzPFy9mopbTrjqtsqhbRqlQnt9OL
+         5gtqVFILHTUrEqnD99/+/A92M+j5fE20SOylzriq6xadXs1H2TxisUihu3/yoOlJVnI3
+         +Oz2ARQCW2z/4Jx7y7VOt7ikXQ5Ie3rXc4Yf36+wVDCuA8s3Ckc/ZdkXgDJRndlspk6i
+         +mbvjzLr02BhsSqherJrQJbBOW4uydQTvse4RXxpzZpCmLqHQsBqCdhJwdpUL41N+pIK
+         sqB0DjTzqyLv74pGp8pr4mst6LE1P2I2MbGau9gie6jGE4Mcdul6mGQjZLUt00epaMKM
+         QFCw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fDP+O5MV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VqztozFr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8a2cbddadsi93238896d6.451.2024.12.04.12.51.22
+        by mx.google.com with ESMTPS id d75a77b69052e-466c425bac8si196784851cf.634.2024.12.04.12.56.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2024 12:51:22 -0800 (PST)
+        Wed, 04 Dec 2024 12:56:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fDP+O5MV;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VqztozFr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIwKv-0006pC-IP; Wed, 04 Dec 2024 15:51:05 -0500
+	id 1tIwPu-0008K8-CU; Wed, 04 Dec 2024 15:56:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIwKs-0006ob-RA
- for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:51:03 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIwPs-0008Jv-Io
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:56:12 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIwKp-00056y-MN
- for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:51:02 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-432d86a3085so1432405e9.2
- for <qemu-arm@nongnu.org>; Wed, 04 Dec 2024 12:50:58 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIwPr-0006Q1-1M
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:56:12 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-434a852bb6eso2057515e9.3
+ for <qemu-arm@nongnu.org>; Wed, 04 Dec 2024 12:56:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733345457; x=1733950257; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=ieaDmxmi/VDvGvPyu9m/mprRo5fRdXLjUqQSWTteXxQ=;
- b=fDP+O5MVgAwczi9UI9YqTkf9H2LOlcOm/S2n5ReSRB7HmK365dxGNyvy5MdWKHWSNo
- YXP27gp6KaXJQyqCFT57KPpsqF/2mwHSJrLDYZG+xRr9pmk8fxnS1bgKol31SMj5Gr5n
- Ged9iBNH9Wwm8Sx0b7RjPPHaL4/wyyXnW5QEx3MMHegEdV6SDR7945X4llOqM1jL3Est
- YT8Hf2didnCzLJScDAKnWzGKDFtmUngKCwViodBRPefl7eEZ4oJm5M/Gzz5GpUKlkpUO
- 3eEVxazDTpjX7G9DkwlOpB3XkTM6vNJXag2fV7zECsZyhtxZUGHz7TYzuXY8nmT65CaM
- i16Q==
+ d=linaro.org; s=google; t=1733345769; x=1733950569; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=4dgzrMh++g/oTounPtmoGDAI8IhHPJPYGgHVhlbL82U=;
+ b=VqztozFrRBiyfaZRLN6CCfuQIDTD2iUO23fmPMLh75N/lwdGkM2CL1ezOmZwFjVt4Z
+ bNukhs6vsJ+OKdZcKjeniH//ZKtJJLORHPhlivQibQM3c1hct+ACikoVVAEz3KdNaADY
+ xw3QN95DZsoryD02HR2oLjczbaMPQm1uoc7mTN9fsa+kncA1TMSJVuibp70BA3V6e09q
+ MrUrwfEF6J+De5MDCkadHB8N6fzXGSFofg7tmbFCOX57KgOCkrJ0/279CI7gEWJlHRkq
+ bWaUht1p75LEbcnxh64SfcZrzIEiU+bUhC4ohSxyaBaozPT9bC97JtD/gc3b0rWMoAgf
+ STvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733345457; x=1733950257;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ieaDmxmi/VDvGvPyu9m/mprRo5fRdXLjUqQSWTteXxQ=;
- b=P4z+VJ6kSetXV0DPVW1nQnMnv+ytwVTfioW0/aUk2fp2keafgv+a4E0QWRkCIa0byy
- wJAhvmXjHKi2Is1eP4+39BArl2aPhgG7e2q8r5s18XpalnRAZHZgGKDX+t2AZ49wvBa3
- W686zXgQsXTVq9HoqxUJ2osalvLk18pk8Z4MwXxXvsNBG/mvTcy1dQs0tiVuxadq3s94
- Y3ollcZYLLiK+ANqiQIGQvGg0Km57qgcFbw8O+YQDhl/04hyda4zBL1JCiY3SjV10ine
- n9TLHcbDJH+6wA6Y8NJbKDl5FPypWILhMt4SPffUOHoA76XeGXkfUncfvJ+xkn0la+2f
- zcrg==
+ d=1e100.net; s=20230601; t=1733345769; x=1733950569;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4dgzrMh++g/oTounPtmoGDAI8IhHPJPYGgHVhlbL82U=;
+ b=WNR/Zts9BmvBLMHF5cedoXoMPPsSOpwEKX7KWxHDofWyUbMhFcluI6RiyeVM7BJHwu
+ cvsOOke3GYqd48U6kBuMIXSz+pa9ZmdMz3E4LtdoQRBCI2NgCVjI088i0iXKdWS7blKy
+ r5YWlKH6skkXgg77uCNYCSPfprFidhZF5YPyNjKuH//6TypWMJlJnZqYe7N3ra/Jei9A
+ hOuVUIuYErvHhnpTbshpcCn0lOuQtYt0xnonanxlZspCwaUHseuRsbublkEJMwpF2w4f
+ JzZbfWTYS3et7YRepJ+Fvi+pDhfGXk5OihAvnto8gmJJ8rKqLwcUUP/W4fvtGIjURKiy
+ 43vw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWK4beTI2jYw8Yufj6BY/jCfNu72eYaU2vZb+X0EDdOzRK9pQHSbav7+uAU+yjuqvD1aF7jhueydA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+6eXS4SNvoNO1TW39bZKTeBjXbP/fGmJpYh/4oaommP2tCH3/
- oXVOsYoocanbP/6frGbV/h+BacqtGY8Vofgr5xD5yLZO02lfsceytSiZq0euRtQjn53LNViDSAE
- s
-X-Gm-Gg: ASbGncuaZhiUZZgxyHeEK90g8l5KPtiX/1jFhpS74sOSMub75sua9FlB8X/ldnavR8N
- qQIcel4Y388Ytv/CYFYHmFOVJldmNzkzobIrO0SSHcA904rtVaSyhfF5okYPVOOuD1e4PRiwiRI
- PxzPMYjytGUEJ9G7Sk09CG0HvR4/+CKm8/AQfETATD6jfXJl7IO16+tMXTl0GqfliGNQISsfeKJ
- hxQwyN4ICv9Y1zm/+fehUyVf5XgUYkIz0O3+0yvFIMFoqInKYgZ2XTZBHtVvOn4o1l1X7wh3BVU
- 9BvwLUDa7y07oicb31dL2ao=
-X-Received: by 2002:a7b:c309:0:b0:434:a378:51a8 with SMTP id
- 5b1f17b1804b1-434d4177fe7mr43417455e9.27.1733345457470; 
- Wed, 04 Dec 2024 12:50:57 -0800 (PST)
-Received: from [192.168.69.223] (88-187-86-199.subs.proxad.net.
+ AJvYcCVpVcGcRrL7qmxTy6F1COMkH1sJoVu+r2g+QFT436ATER66UYoGj6jSbgORlXXjJBcUwFww74nHvg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx+sO64J9ukkkH/zMbACS78UZ7hxNBV+LFDPSo7EIr/742/p8/W
+ A0kIGjA05XSdFi29r5JY7KFYMzOmgul+rwzeNW6hOquznvh4IAHKl7oBxTUwrLs=
+X-Gm-Gg: ASbGncvRmhiskJY44RHUxsyipKJK/TF6Q/ZoIK6bDEFWF/AQGlZpwRIiMRw2d8bLCAz
+ cM8pIpLcSxmvkHQrsUIST0nw+QCmBInvzlS6b2B5N5xS/z7RkzXKIh3MOxPZjyGlvUmk0ClpSXn
+ Syfjqsnajb9fbIB2ahj01a/ko40ZSCjD7RS9SHD+R/wr5O/q5wtCrZXrOssxZs6u7HkJj4ud7vu
+ LmLODspXKyjkh+OLUmtqj9gLjYcqbqh+0yNBhNP820IHFvzYRfp3qTayzFG+3s8ettMsDpbBg1H
+ WyIwovtL5qr8AK/fKLGn82lkkwYk2w==
+X-Received: by 2002:a05:600c:5121:b0:434:a386:6cf with SMTP id
+ 5b1f17b1804b1-434d09b17c8mr69076335e9.2.1733345769180; 
+ Wed, 04 Dec 2024 12:56:09 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-434d52b841esm35712395e9.44.2024.12.04.12.50.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 04 Dec 2024 12:50:56 -0800 (PST)
-Message-ID: <c4245af0-3dd4-4cf6-a786-c15fa079ad05@linaro.org>
-Date: Wed, 4 Dec 2024 21:50:56 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: bump default memory size to 2GB
-To: Leif Lindholm <quic_llindhol@quicinc.com>,
+ 5b1f17b1804b1-434d527395csm36081685e9.17.2024.12.04.12.56.08
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 04 Dec 2024 12:56:08 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org,
  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Mathieu Poirier <mathieu.poirier@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, leif.lindholm@oss.qualcomm.com
-References: <20241126084928.252067-1-marcin.juszkiewicz@linaro.org>
- <CAFEAcA_SkZ+ew8AAVpBHuw-9YW4S5wFbB0Vqx+dBzXf97JGDGw@mail.gmail.com>
- <cd635753-4e2c-42d6-bb7b-d558d90f59d7@linaro.org>
- <2106db77-88fb-4113-ae09-9bf77bce6ad7@quicinc.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <2106db77-88fb-4113-ae09-9bf77bce6ad7@quicinc.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+Subject: [PATCH v2] hw/arm/sbsa-ref: Require at least 2 GiB of RAM when RME
+ feature enabled
+Date: Wed,  4 Dec 2024 21:56:07 +0100
+Message-ID: <20241204205607.62592-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.45.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,62 +137,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +mfp+2fCRW/t
+X-TUID: URNkG2aSBPZo
 
-On 4/12/24 13:17, Leif Lindholm wrote:
-> On 2024-12-02 10:53, Marcin Juszkiewicz wrote:
->> W dniu 26.11.2024 o 14:14, Peter Maydell pisze:
->>> On Tue, 26 Nov 2024 at 08:49, Marcin Juszkiewicz
->>> <marcin.juszkiewicz@linaro.org> wrote:
->>>>
->>>> We are working on adding RME support to SBSA Reference Platform.
->>>> When RME is enabled then RMM (Realm Managment Monitor) takes 1072MB of
->>>> memory for own use. Which ends with firmware panic on 1GB machine.
->>>
->>> Reasonable change, but isn't it also a bug in the RMM that it
->>> grabs 1GB of RAM regardless of how much RAM the machine
->>> actually has?
->>
->> I think that the goal is "get it working" first and then optimize.
-> 
-> I agree on a different platform this could feel quite hacky, but in 
-> reality even 2GB falls within "ridiculously low for an SBSA platform".
-> 
-> If we're worried about overhead for CI jobs that do not require the 
-> feature, we could always conditionalize it on RME being enabled. But I'd 
-> be happy to wait and see.
+We are working on adding RME support to SBSA Reference Platform.
+When RME is enabled then RMM (Realm Managment Monitor) takes 1072MB of
+memory for own use. Which ends with firmware panic on 1GB machine.
 
-I'd rather do that, since it is as simple as:
+Report an error so users directly start with more RAM in this case:
 
--- >8 --
+  $ qemu-system-aarch64 -M sbsa-ref -m 1G -cpu max,x-rme=on
+  qemu-system-aarch64: sbsa-ref: RME feature requires at least 2GB of RAM
+
+Reported-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Suggested-by: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+v1: https://lore.kernel.org/qemu-devel/20241126084928.252067-1-marcin.juszkiewicz@linaro.org/
+---
+ hw/arm/sbsa-ref.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
 diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
 index e3195d54497..66751d0806c 100644
 --- a/hw/arm/sbsa-ref.c
 +++ b/hw/arm/sbsa-ref.c
 @@ -51,6 +51,7 @@
-  #include "qapi/qmp/qlist.h"
-  #include "qom/object.h"
-  #include "target/arm/cpu-qom.h"
+ #include "qapi/qmp/qlist.h"
+ #include "qom/object.h"
+ #include "target/arm/cpu-qom.h"
 +#include "target/arm/cpu-features.h"
-  #include "target/arm/gtimer.h"
-
-  #define RAMLIMIT_GB 8192
+ #include "target/arm/gtimer.h"
+ 
+ #define RAMLIMIT_GB 8192
 @@ -795,6 +796,12 @@ static void sbsa_ref_init(MachineState *machine)
-          object_unref(cpuobj);
-      }
-
+         object_unref(cpuobj);
+     }
+ 
 +    if (cpu_isar_feature(aa64_rme, ARM_CPU(qemu_get_cpu(0)))
 +            && machine->ram_size < 2 * GiB) {
 +        error_report("sbsa-ref: RME feature requires at least 2GB of RAM");
 +        exit(1);
 +    }
 +
-      memory_region_add_subregion(sysmem, sbsa_ref_memmap[SBSA_MEM].base,
-                                  machine->ram);
----
+     memory_region_add_subregion(sysmem, sbsa_ref_memmap[SBSA_MEM].base,
+                                 machine->ram);
+ 
+-- 
+2.45.2
 
-$ ./qemu-system-aarch64 -M sbsa-ref -m 1G -cpu max,x-rme=on
-qemu-system-aarch64: sbsa-ref: RME feature requires at least 2GB of RAM
-
-$ ./qemu-system-aarch64 -M sbsa-ref -m 2G -cpu max,x-rme=on
-// OK

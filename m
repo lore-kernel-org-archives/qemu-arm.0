@@ -1,133 +1,178 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp33877njb;
-        Wed, 4 Dec 2024 00:07:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXHBTH17BkZqQW87uChMFB6fiOwnu82oNoOjpT1rmUDIcFi3G2I1TJZwjeq+lOutkEF9wR2xo1YEeUM8w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFsFZulZ/sme6/zrZObmniWKdTqp6MrBIygaTTCFQXZEIkaNQI84a+Rv+h99Ke3qxYxOuqP
-X-Received: by 2002:a05:622a:109:b0:461:6613:18ac with SMTP id d75a77b69052e-466c1be41e0mr467225991cf.17.1733299647036;
-        Wed, 04 Dec 2024 00:07:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733299647; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp37217njb;
+        Wed, 4 Dec 2024 00:14:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXboEwifkcyCpgPm2A3cvnPJ8XitxWSgUXjzMLpICne+m8ClPVHOIS0VmaabhzM1OPRCKJi34aLklHYEw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHoARovO7i78DBFGcG+pKPyFQKs/9Pa8+DKUX3dkEjudIQICW7to+prSOtBOIIka9f5L/dH
+X-Received: by 2002:a05:6902:144a:b0:e33:1c9e:5cf2 with SMTP id 3f1490d57ef6-e39d43716b9mr5635876276.39.1733300092511;
+        Wed, 04 Dec 2024 00:14:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733300092; cv=none;
         d=google.com; s=arc-20240605;
-        b=YliPjuNJEks2csH8GmHBTk+wY4OGjDDjZmIcQAQzdq2H5gmq9blCsKaBVHcjZW9Tf7
-         30uMsZ0Lc3W4wVkP1qt+S2r6Z0lTn0QPPOXjnid2ZE8yoTL4chwpF2yLzoDYXulKaENW
-         gl7T9tXyaNTpcuA2190A/FjhgkBd0iG1MUHJvNq7UOuoywUP63l50kmX9M2NmjTVI//c
-         XKWTzx6FU9NLFb7zb8+rBxGYueBvNq6EwrMmKpg9VP+3bN65EfhB0PDH81/qUosoSm4v
-         AJrBHFOjAwJFnT/IPvamqTj8NhwqUBYtecec1ds8XgKytuJg4BKsxCBa+ryWR4H1R0mf
-         LMVg==
+        b=V77DqZNpejM52Y9CA7zhzao/L9LVmop3rcKRW3qBI6NTmFkiArIkZTWvbKB6DPCbsy
+         CUFMEyAECy+CFTj8DevLsnIMVDjnVQ5cRsDgeau9E0AHyY56S1Fhrcpq6GC1eNfWHr4X
+         MKpatMfkya+e0ICyW8YEExZFyVhrDQ4s2DXaASqJlFwN+5HeUbsUrb6Gbk4ikygaTsps
+         M1Iyjy8+5Zn3Af2q8p3WSckstXg86TmDuGJsVk16/G75yAb8SXUNhVvYwvKxNUr19rWD
+         yUQzpGChmbIZ3dGtLsrksE6NsKb6k2eU5Oz/OzW2YRBYf9Bm+bjXspo/Jr5nKAKz1nW8
+         QY0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=iUCubCKrk1ofsgKy0DbIWvTAgFLIs9MQVXZdhO+xwqI=;
-        fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=LHYZHNetV3Mlo+i9unUZZIDVcnrUARQNmwHzG6b3QcFNq6P43cc6il9R37b8APyNRA
-         AlOHnLAiTwo6Tak5m3m6eLRxLKSuRdfcZYksqDbIZtRuA3N/DNkYIggkCnIRmMAl5rQJ
-         cfwy0U8rhqXVP935fD7aZxYrZ05xhwR8XyqCaRfq5AnVelz7/kwX//uG5+MvIFEFtida
-         vHfcQxPgNU3uesY5gx3zaGh6GtDa00itPkpisu+O7ZWB4+z4C1EeqJ5NyYRSWXlJD5EX
-         qca61G2De7NEcHHF0hlmi8/Q7+1xmPwzioSfSxnT/yt1bLlOJGqztYPrjOy01tamdOOQ
-         TrTA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=3Y6SbgKKVZiQCOIwOctXOUpq+IhBzrZsKVYSool1VXg=;
+        fh=y8UldgvBpgWdzvo0ZnT6ptMSZ9zI0pieroCu40oTsaQ=;
+        b=LdFdhKo4HHnS/I8sZ8razYVcOBNQWCojRCRvcDggf4S64t/l2JrJhM1AN4eiBdVi3c
+         CwFr+/TuyQ82IszKCfoDoljIerfBfKp6PdYLrJx03/+lvm61sJxjagFFbRWS64r6uzWs
+         xpS5SRHVxuYVMhT/WZ3+DSDmJ3gjzQ0IsdFQbap4/RBa0+uOQiendeqLWHIRkCe9N4gB
+         7A54uhH7xb+I5md44teSVUCAUl7erPTCIXYSVJ3np1jBd7nwPGeIK9CtlZMf+7cBhNqL
+         isRP6Hxo/57QDMMQDTOYnzQ93l660QXbuFSBrH+15zh3fxV3rgEgU9bNLGeQQIvM663z
+         36rw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-466c425846csi151886851cf.590.2024.12.04.00.07.26
+        by mx.google.com with ESMTPS id d75a77b69052e-466c44620ebsi150729981cf.724.2024.12.04.00.14.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2024 00:07:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Dec 2024 00:14:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tIkOP-0004Fh-Iw; Wed, 04 Dec 2024 03:05:53 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tIkWf-0001L6-B7; Wed, 04 Dec 2024 03:14:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tIkOJ-0004Dc-Rw; Wed, 04 Dec 2024 03:05:48 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ (Exim 4.90_1) (envelope-from <SRS0=RR0m=S5=kaod.org=clg@ozlabs.org>)
+ id 1tIkWd-0001KG-Rb; Wed, 04 Dec 2024 03:14:23 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tIkOH-00082v-DR; Wed, 04 Dec 2024 03:05:46 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 4 Dec
- 2024 16:05:24 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 4 Dec 2024 16:05:24 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
- Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v3 4/7] hw:sdhci: Directly set sd_spec_version instead of
- property
-Date: Wed, 4 Dec 2024 16:05:20 +0800
-Message-ID: <20241204080523.4025780-5-jamin_lin@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241204080523.4025780-1-jamin_lin@aspeedtech.com>
-References: <20241204080523.4025780-1-jamin_lin@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <SRS0=RR0m=S5=kaod.org=clg@ozlabs.org>)
+ id 1tIkWb-0003u2-H7; Wed, 04 Dec 2024 03:14:23 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Y39K94y9gz4xfr;
+ Wed,  4 Dec 2024 19:14:05 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Y39K6272Cz4xfm;
+ Wed,  4 Dec 2024 19:14:01 +1100 (AEDT)
+Message-ID: <15f4670c-967e-49a7-9032-c9233848c7ef@kaod.org>
+Date: Wed, 4 Dec 2024 09:14:02 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/7] hw/arm/aspeed: Fix coding style
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20241204080523.4025780-1-jamin_lin@aspeedtech.com>
+ <20241204080523.4025780-3-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20241204080523.4025780-3-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=RR0m=S5=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q/eBfw0+iGKg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gFJm7CvJUlad
 
-Directly set sd_spec_version instead of property and remove
-unused local variable.
+On 12/4/24 09:05, Jamin Lin wrote:
+> Fix coding style issues from checkpatch.pl.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
----
- hw/sd/aspeed_sdhci.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
-index ccaeefa75b..4e64e2537a 100644
---- a/hw/sd/aspeed_sdhci.c
-+++ b/hw/sd/aspeed_sdhci.c
-@@ -160,13 +160,9 @@ static void aspeed_sdhci_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(sbd, &sdhci->iomem);
- 
-     for (int i = 0; i < sdhci->num_slots; ++i) {
--        Object *sdhci_slot = OBJECT(&sdhci->slots[i]);
-         SysBusDevice *sbd_slot = SYS_BUS_DEVICE(&sdhci->slots[i]);
- 
--        if (!object_property_set_int(sdhci_slot, "sd-spec-version", 2, errp)) {
--            return;
--        }
--
-+        sdhci->slots[i].sd_spec_version = 2;
-         sdhci->slots[i].capareg = asc->capareg;
- 
-         if (!sysbus_realize(sbd_slot, errp)) {
--- 
-2.34.1
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
+
+
+> ---
+>   hw/arm/aspeed_ast2600.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index be3eb70cdd..c40d3d8443 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -541,7 +541,8 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>       if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio), errp)) {
+>           return;
+>       }
+> -    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0, sc->memmap[ASPEED_DEV_GPIO]);
+> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->gpio), 0,
+> +                    sc->memmap[ASPEED_DEV_GPIO]);
+>       sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
+>                          aspeed_soc_get_irq(s, ASPEED_DEV_GPIO));
+>   
 

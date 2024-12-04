@@ -1,104 +1,104 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp490059njb;
-        Wed, 4 Dec 2024 12:29:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUqRWOvk8ZvQ0Uly/CjM05GRbv/P4U5RHMRcfnvwlMmZGtGCUMn/xBvjc+NN7mWHY74IhmWV7AKpaDfWg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGbwK9VLYU0ETgE3VWh0EahWrfhVQJYJoBGnX5UAjvUkVteI3RQH5JImGq16DXMob50Hex/
-X-Received: by 2002:ac8:580c:0:b0:466:84a8:6883 with SMTP id d75a77b69052e-4670c080244mr102621001cf.12.1733344155036;
-        Wed, 04 Dec 2024 12:29:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733344155; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp490358njb;
+        Wed, 4 Dec 2024 12:29:49 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVvzVUkJwOyMy6VRmo/XxNcFFNwLTi3A5EJVmOfNpq6/L0zE1pcNgP66C85vdb2VBwVmPNyN5PHEZghtQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHNYdaD9GmVaBlylff0H2/3SgXIsTRBf3CtUH0E/767G8fVbEmXhszJr6cxJI9RLGbSyTy/
+X-Received: by 2002:ac8:5d47:0:b0:463:64b2:2e0c with SMTP id d75a77b69052e-4670c740922mr104111891cf.42.1733344189739;
+        Wed, 04 Dec 2024 12:29:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733344189; cv=none;
         d=google.com; s=arc-20240605;
-        b=TKN7MdQdU9v+vqcZXBKEHTdpZ+pTTW8LGZmNFyHdcX68fAMdOayKAAxxKX1uQzVPBt
-         fj7Bdk4qaS1MexqVkLoC1eeBtwXUGI/TXVVKsX4DmevfndYorAPrPW7Pfz7nIemAQMJF
-         moijQRbuGvaH7cFcAknyHQz3j/QXMSVaRo2FDtfDHMUN1AB1F6g3E0kfK83P3sHjsCi+
-         3AfUHKcvK8QY3DhF99F5Xx4gYPMp8tIH3xAU6muGjWDkalwCQnGEjntwYI6W+Rhya4v/
-         BdOlRm1f6HAGjVoOhYe+fKVLGIwZmZyBBPdXF+CQzZmMHXDKGBGPgsgn8yU0bOB+spIi
-         ekzg==
+        b=O7HYB0RUoS+7FFHNWFqagM1X2R01FJplrUwMDtMqJhIMAUtf24lt4JS8aonSoobun9
+         OhvbCDZFqZ4ucqlIvC4a9Sg3ByjqD3eayi6cv/YzgnNyeSzz3ZxTLujf3DbALQKpzn/T
+         Ym1sDL1QrWxyWR/ca3Zawr9GOPr0J4HZXQZ+hEdF8Y2AgBbL7YiYQ16LcCBdFJFlq/gm
+         iNFKCWBGgZyat+3ljNab3gnMkf095kDScm7knIguOtQZ5n7kGXWNgvnDutZB9trBhCal
+         eNe6DuOdTyeN+2oNWxJdTh1B13PpG32mQjMX+Jv8tg2/vR7yFbJ3dhLXKxr9aAuXd/xf
+         I8kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=nkZKIsDoSM+ma8HKWntZmvOsZaSUYdAuJc6HKLqlim0=;
-        fh=lmF7elc67EfnUByx2Lmcbselk+YSnlgKnucs7BFqGDY=;
-        b=iz+J4ZmyIvkHb+bXI/syKtGpfKUr9wqOCBjTiKMPaWe70ZdlRmHvbvnITmMiOjS0NB
-         r+GXw9pAItMEOWfOF/o+hLp5squ1MvYK2fX52ZVJJN+bjYsLokLmBv2ZVCoNkSu99hqp
-         Qw17sspUgq3NcK60HsIrCVi1qL3U8JgAqcqkTh33t91wZveU//VIykDyUc8PtErS5eWd
-         4HptUYKiVXnQAldWZobaMFYptnZbz6uPXuOlsCgoNXxlzZ3lVYTW/W5ecYZyhml0aDKa
-         3UHzRC9Pimz8wb2krLv+2GSSt37+bxd6s0br9GZmHxpjsBKfWebBRvdbfY87ahlPe8Qq
-         mg1Q==;
+        bh=GX0z7ED1fpqqEX0e3FNGIrRnTBaZqIcam5D8KFO/APw=;
+        fh=qDJXWSdbw6dylr1P8FNE+bZuQL+JRV7XKwV3H3f0I8k=;
+        b=klnzP9NlKuI2r0Il/GvBesjvZFatHuhUJCKX/962nga/L3u5ROOsbkdvpjwjxVCds3
+         bd9OjHkD+5f0XV/ePA33pj9s90Rri50itPmOFZ2Z4YTqxvCq5Mb91Q2rgOIlpTUUGsgW
+         vZMT67PxvKgSCHo1EFzx+BCNz+LJtJ3YdS/CrZF8+rIJGmVGzJ8pgFNAduPJJRDKUlMB
+         OVOyge8g/zdsZRTK+GZTPLLg2V9du/vNvZlNxwOk/gVkWpEtdmmVEQz7YzsLWvZzLpKX
+         hgIY4GByxnzU7P0VoVdRYjJY+aZ5yU49KQuK3G6zr3u7puqtIxOJya7RGHayUxO3lNq0
+         XLIg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Fuc/JnqI";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TRTYqHQE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-466c4104edfsi204137741cf.304.2024.12.04.12.29.14
+        by mx.google.com with ESMTPS id af79cd13be357-7b6849d7e44si1811617585a.509.2024.12.04.12.29.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2024 12:29:15 -0800 (PST)
+        Wed, 04 Dec 2024 12:29:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="Fuc/JnqI";
+       dkim=pass header.i=@linaro.org header.s=google header.b=TRTYqHQE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIvye-00021U-LL; Wed, 04 Dec 2024 15:28:04 -0500
+	id 1tIvyu-0002ey-NM; Wed, 04 Dec 2024 15:28:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIvyb-0001ne-Bb
- for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:28:01 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIvyq-0002SK-Ja
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:28:17 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIvyZ-0001sd-GU
- for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:28:01 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4349e4e252dso2105405e9.0
- for <qemu-arm@nongnu.org>; Wed, 04 Dec 2024 12:27:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIvyn-0002bW-JU
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2024 15:28:16 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-434a83c6b01so1480865e9.0
+ for <qemu-arm@nongnu.org>; Wed, 04 Dec 2024 12:28:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733344078; x=1733948878; darn=nongnu.org;
+ d=linaro.org; s=google; t=1733344089; x=1733948889; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nkZKIsDoSM+ma8HKWntZmvOsZaSUYdAuJc6HKLqlim0=;
- b=Fuc/JnqIq+P3ZFsiJXKia+YbnDZNJXx2TMWxs+P4uPXgYocFq3FaoBEzPaJoas2g0m
- tGy165DtIyut5TOZ5373dHiLm4igInBSCTi60EgEScAQhZwfhDXvLo+z5q46hXG+2kUX
- KXj8kejMkXQs/BUD4k2rJjnqoNsRFGuS9xcmPmP3skdrioog0UKDQ1sl4kSQaZ1FW5h0
- tbjvvEUYXZPgY7XMmmS+EU6oZbLPrWIWaaZL2a/s4nSGGsaPY4hnR++T6KMNn2jnQ4li
- HwM8+z4qIFH7j31UKjWFHxY8vbBGfIbDGZkvkSjbesPQXrozDi+6PUZ6lh8a9LR5IKcx
- faIA==
+ bh=GX0z7ED1fpqqEX0e3FNGIrRnTBaZqIcam5D8KFO/APw=;
+ b=TRTYqHQEIK04Y6ULZP4l0E5gbUgQjjF3PfhBSTltnjGYwpC/JHV4jAcApQSmXyCJCA
+ W2zIRLb4VCipt856iw/ACgg71gUSPRwWnHC1+Tx4zFDQduIl98eO4zTbUOeazaEXemCW
+ 4GSC/z5Sb46hTUkXyFbux52R0A9C4G8gk3Us45PaI4kpvQGIw8QJ1aK0m2PL9AYBj1pL
+ J4MnDOsCtfS+GEk+m9/D0yx8wMazQlltqJfRMXxiFxFKKczrhCbvqAUu+XsLsTrHVWRL
+ V6J4tFj9LWGNYLslLXxIvGiyHk9cJDPzKJ/kQgCnJh0EJhP/Tfgn4X97F0/fpA1eGWi7
+ SEaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733344078; x=1733948878;
+ d=1e100.net; s=20230601; t=1733344089; x=1733948889;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=nkZKIsDoSM+ma8HKWntZmvOsZaSUYdAuJc6HKLqlim0=;
- b=XLKkXsX7AoB0vibUZcFOpOriBws1+MApS5glkpC4nCN8mdJOSeR8v/L8u+EaLMToRn
- j8C1Ew3DwsqmAT+Aon/fNLv0klml1V/yh2uJvZio0h1b0XzhhOb0cHkdEb6b6RgIsWFb
- TTzcoLbMNzAQlRLAnpxPbsRNHnt66VnAJ+x2PhaaIvyaxqSpuMM61uRqpv8W8IqgPHoy
- tcVjZEk9DY5HgMbOgXopn1xaSD3wX0Q7yh4oADh1dEgVxOh12N3JQNBFPQuH7TvbgGRI
- LQ5Dx63v4tUYBjvFj3nuRm0AtaG+6hdUm+W0CEcseW9NoZhWTalNHGk1dDoFIWlknKvu
- y5ew==
+ bh=GX0z7ED1fpqqEX0e3FNGIrRnTBaZqIcam5D8KFO/APw=;
+ b=IFxQ0rzmv96ZFxGgfK6cMoX7khIZ4IIV3DprtqhhM4BhQMfeJ+DBTh+pMh5EQu/e6X
+ IKbOWO9C5Exb0Fa9LvHR8NoXtAr1r+I/eJmChQFHV6fiAlRkrW35FBRb5O8vYMUMRW/P
+ 2nyxIAtwDKJFv73lBz9IbC7cWkKb54YLPudo58bOVvLOLQPgA16F2qmi+UlWCQ/bwG9d
+ sJuhNHBy3DZA7iRLk/ocUEqq+sz5RO2gT0kXj0MrVBvrmK8CdTps4ERAQKwo8iEOr3A4
+ XPnkULVIFpZ+hbm/xbunIfkYYNxeyLuBCgAj0ONE1fTFpVdSJtF3Kga0VCunKd+cdDjO
+ dT3A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXxwzPtYLSyVgs71SOW1QwHO1KiBaGt2Q3l8SNm5Tp9BfyqE5uI4S5VrFVeDIfoMF0wQApYDXrA4A==@nongnu.org
-X-Gm-Message-State: AOJu0YxrU0CRvuccQIGyVxvO4z172aJuIOiEmCIfWLmpTaigvo4eSU4u
- LMgRCzew1VzJHvXRP34jPtPL1brHevvDg9prHxjlpYOCkH0nhtq5VyhOjf/7j8o=
-X-Gm-Gg: ASbGncsdTuPDl6zQ83o62eG9Szkt0mmdluNXaBXn4kwZzoOA1ffejZbHC8Jj7/LMs+m
- eHfJlt19lgssitmIPH08LSJeAHOg7ygisOa0hVajt+QogGRpSRuyym45UVVCLDyPqrQFa+khjU3
- LGLBJgDg4T6Se3w/YBtuaG7rYnQCJnFrtvCqGexKLY297gM5fbdRWOKORPLdZOlwesWWOJywcJ1
- vNIcAy1R9rEWi2HDPuFnKqbd47Ci4aec6LowxgKx5m7Jt440+FnCxGaAGwMWQr0JYkK58RWnU+w
- +NDeECX1+VeO2MBZPjBHesul
-X-Received: by 2002:a05:600c:4748:b0:431:59ab:15cf with SMTP id
- 5b1f17b1804b1-434d09c37bcmr69319945e9.19.1733344078096; 
- Wed, 04 Dec 2024 12:27:58 -0800 (PST)
+ AJvYcCWGEa9Zb+1J/w37N8QI9hh3wJvFBcUoom+9lVo8DpHum/LcgXzEMA0c8gKhzLgneQREl+Fgm9chcA==@nongnu.org
+X-Gm-Message-State: AOJu0Yyk9ScX4E3nWnMhP5IJo/lQJld7n9PfpNHlEGAfNx18qTbX07Nm
+ YfUiBWIpxtdhKD5mdKpx36SRqR5VAkMdYpKZMGQq+ZYrbHj2ivk+Nq/jc3an4AE=
+X-Gm-Gg: ASbGncu4UioztOKC/EpViln9h4RyeM+8+Wj7OGD0tTS7C0+g1tcr4ecnYhY182HLga2
+ zH+0VvlnXjj28w4eu1tBF/F+uzHZQWDattZ1AdVx5LWZZaZ4h5Yeldvtv+VKseg0xmVrrCA8iiP
+ AtdMWLnROI++jsdCe/dtVIJx9JOizyqrkEz3VFAsfaxkiLwg8I2kJ7CLMam5fOY7Le5G8bueXP2
+ qQWokusR+98b3dQhkWXKFkkB90/uRFZu8N/ZOo2zzSh/7opNKt3Kce0VOaKSIygsLPUYaKLlE7n
+ BdoT7SwO7iEv8ipqF9LchjI0
+X-Received: by 2002:a05:600c:19d1:b0:434:a4a9:5d54 with SMTP id
+ 5b1f17b1804b1-434d09bf794mr77784015e9.10.1733344089220; 
+ Wed, 04 Dec 2024 12:28:09 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-434d52cbd16sm34950775e9.41.2024.12.04.12.27.56
+ 5b1f17b1804b1-434d52c0cfdsm36598115e9.33.2024.12.04.12.28.07
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 04 Dec 2024 12:27:57 -0800 (PST)
+ Wed, 04 Dec 2024 12:28:08 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
@@ -116,25 +116,24 @@ Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  Alistair Francis <alistair@alistair23.me>, qemu-ppc@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 14/20] target: Implement CPUClass::datapath_is_big_endian
- (little-endian)
-Date: Wed,  4 Dec 2024 21:25:56 +0100
-Message-ID: <20241204202602.58083-15-philmd@linaro.org>
+Subject: [PATCH 16/20] hw/core/cpu: Expose cpu_datapath_is_big_endian() method
+Date: Wed,  4 Dec 2024 21:25:58 +0100
+Message-ID: <20241204202602.58083-17-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20241204202602.58083-1-philmd@linaro.org>
 References: <20241204202602.58083-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -149,142 +148,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: bVTiNuNCc4uc
+X-TUID: BTTdppDp/9Kn
 
-For all targets which have endianness architecturally
-predefined as little endian (built using TARGET_BIG_ENDIAN=n),
-their datapath_is_big_endian() handler simply returns %false.
+All target implement their CPUClass::datapath_is_big_endian()
+helper, we can expose the generic cpu_datapath_is_big_endian()
+method.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/alpha/cpu.c     | 6 ++++++
- target/avr/cpu.c       | 7 ++++++-
- target/i386/cpu.c      | 6 ++++++
- target/loongarch/cpu.c | 6 ++++++
- target/tricore/cpu.c   | 6 ++++++
- 5 files changed, 30 insertions(+), 1 deletion(-)
+ include/hw/core/cpu.h | 8 ++++++++
+ hw/core/cpu-common.c  | 7 +++++++
+ 2 files changed, 15 insertions(+)
 
-diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
-index 5d75c941f7a..ee844a4c455 100644
---- a/target/alpha/cpu.c
-+++ b/target/alpha/cpu.c
-@@ -27,6 +27,11 @@
- #include "fpu/softfloat.h"
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 91c6581f814..5c75fe3a842 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -611,6 +611,14 @@ extern __thread CPUState *current_cpu;
+ extern bool mttcg_enabled;
+ #define qemu_tcg_mttcg_enabled() (mttcg_enabled)
  
- 
-+static bool alpha_cpu_datapath_is_big_endian(CPUState *cs)
-+{
-+    return false;
-+}
++/**
++ * cpu_datapath_is_big_endian:
++ * @cpu: The CPU whose state is to be inspected.
++ *
++ * Returns: %true if the CPU access data in big endian order, %false otherwise.
++ */
++bool cpu_datapath_is_big_endian(CPUState *cpu);
 +
- static void alpha_cpu_set_pc(CPUState *cs, vaddr value)
- {
-     CPUAlphaState *env = cpu_env(cs);
-@@ -247,6 +252,7 @@ static void alpha_cpu_class_init(ObjectClass *oc, void *data)
-                                     &acc->parent_realize);
- 
-     cc->class_by_name = alpha_cpu_class_by_name;
-+    cc->datapath_is_big_endian = alpha_cpu_datapath_is_big_endian;
-     cc->has_work = alpha_cpu_has_work;
-     cc->mmu_index = alpha_cpu_mmu_index;
-     cc->dump_state = alpha_cpu_dump_state;
-diff --git a/target/avr/cpu.c b/target/avr/cpu.c
-index 3132842d565..f32f1bee61f 100644
---- a/target/avr/cpu.c
-+++ b/target/avr/cpu.c
-@@ -159,6 +159,11 @@ static ObjectClass *avr_cpu_class_by_name(const char *cpu_model)
-     return object_class_by_name(cpu_model);
+ /**
+  * cpu_paging_enabled:
+  * @cpu: The CPU whose state is to be inspected.
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 09c79035949..92c0c4c6125 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -66,6 +66,13 @@ CPUState *cpu_create(const char *typename)
+     return cpu;
  }
  
-+static bool avr_cpu_datapath_is_big_endian(CPUState *cs)
++bool cpu_datapath_is_big_endian(CPUState *cpu)
 +{
-+    return false;
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    return cc->datapath_is_big_endian(cpu);
 +}
 +
- static void avr_cpu_dump_state(CPUState *cs, FILE *f, int flags)
- {
-     CPUAVRState *env = cpu_env(cs);
-@@ -230,7 +235,7 @@ static void avr_cpu_class_init(ObjectClass *oc, void *data)
-                                        &mcc->parent_phases);
- 
-     cc->class_by_name = avr_cpu_class_by_name;
--
-+    cc->datapath_is_big_endian = avr_cpu_datapath_is_big_endian;
-     cc->has_work = avr_cpu_has_work;
-     cc->mmu_index = avr_cpu_mmu_index;
-     cc->dump_state = avr_cpu_dump_state;
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 3725dbbc4b3..f783d311579 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -2008,6 +2008,11 @@ static char *x86_cpu_class_get_model_name(X86CPUClass *cc)
-     return cpu_model_from_type(class_name);
- }
- 
-+static bool x86_cpu_datapath_is_big_endian(CPUState *cs)
-+{
-+    return false;
-+}
-+
- typedef struct X86CPUVersionDefinition {
-     X86CPUVersion version;
-     const char *alias;
-@@ -8588,6 +8593,7 @@ static void x86_cpu_common_class_init(ObjectClass *oc, void *data)
- 
-     cc->class_by_name = x86_cpu_class_by_name;
-     cc->parse_features = x86_cpu_parse_featurestr;
-+    cc->datapath_is_big_endian = x86_cpu_datapath_is_big_endian;
-     cc->has_work = x86_cpu_has_work;
-     cc->mmu_index = x86_cpu_mmu_index;
-     cc->dump_state = x86_cpu_dump_state;
-diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
-index 57cc4f314bf..b9cf0091546 100644
---- a/target/loongarch/cpu.c
-+++ b/target/loongarch/cpu.c
-@@ -742,6 +742,11 @@ static ObjectClass *loongarch_cpu_class_by_name(const char *cpu_model)
-     return oc;
- }
- 
-+static bool loongarch_cpu_datapath_is_big_endian(CPUState *cs)
-+{
-+    return false;
-+}
-+
- void loongarch_cpu_dump_state(CPUState *cs, FILE *f, int flags)
- {
-     CPULoongArchState *env = cpu_env(cs);
-@@ -836,6 +841,7 @@ static void loongarch_cpu_class_init(ObjectClass *c, void *data)
-                                        &lacc->parent_phases);
- 
-     cc->class_by_name = loongarch_cpu_class_by_name;
-+    cc->datapath_is_big_endian = loongarch_cpu_datapath_is_big_endian;
-     cc->has_work = loongarch_cpu_has_work;
-     cc->mmu_index = loongarch_cpu_mmu_index;
-     cc->dump_state = loongarch_cpu_dump_state;
-diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-index 1a261715907..ba53d83f662 100644
---- a/target/tricore/cpu.c
-+++ b/target/tricore/cpu.c
-@@ -29,6 +29,11 @@ static inline void set_feature(CPUTriCoreState *env, int feature)
-     env->features |= 1ULL << feature;
- }
- 
-+static bool tricore_cpu_datapath_is_big_endian(CPUState *cs)
-+{
-+    return false;
-+}
-+
- static const gchar *tricore_gdb_arch_name(CPUState *cs)
- {
-     return "tricore";
-@@ -191,6 +196,7 @@ static void tricore_cpu_class_init(ObjectClass *c, void *data)
-     resettable_class_set_parent_phases(rc, NULL, tricore_cpu_reset_hold, NULL,
-                                        &mcc->parent_phases);
-     cc->class_by_name = tricore_cpu_class_by_name;
-+    cc->datapath_is_big_endian = tricore_cpu_datapath_is_big_endian;
-     cc->has_work = tricore_cpu_has_work;
-     cc->mmu_index = tricore_cpu_mmu_index;
- 
+ /* Resetting the IRQ comes from across the code base so we take the
+  * BQL here if we need to.  cpu_interrupt assumes it is held.*/
+ void cpu_reset_interrupt(CPUState *cpu, int mask)
 -- 
 2.45.2
 

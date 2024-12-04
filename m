@@ -1,185 +1,237 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp308160njb;
-        Wed, 4 Dec 2024 08:00:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWAQDaV3iyWFwNVywXNq9VTO+JmEiWudGNPrtAEq53FeKxdlbhYBGa5rMJQROxGsVH9zDLvttZMx2gVbA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGi4SoWFap9F33b9taS+aTUHbEvVvEZCBfLZHbEycjivhBpKXMDvrEF0EIyyS74K3/JHY4n
-X-Received: by 2002:a05:6122:2212:b0:515:3bb5:8802 with SMTP id 71dfb90a1353d-515bf632480mr9724817e0c.8.1733328010998;
-        Wed, 04 Dec 2024 08:00:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733328010; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp340786njb;
+        Wed, 4 Dec 2024 08:41:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXTT4ZWOtBoxC3jj6Xk0PMYytkpV+NViy8hOcHL6Q99bDQYla+t2UXiXKdK+gVQfZTTaH7EKCP00/A5Cg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGurBxj8dg9C/pv4qAwiIXxcoCUd4hxOj7AKUr4ZrCY29Mgpl1OsfFddX9lrl/sQEHJCevU
+X-Received: by 2002:a05:620a:2a16:b0:7a9:aaef:305e with SMTP id af79cd13be357-7b6b418ce0emr4831085a.12.1733330466017;
+        Wed, 04 Dec 2024 08:41:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733330466; cv=none;
         d=google.com; s=arc-20240605;
-        b=DPcRS08qM0B0MUkvROv8zSzpCwgxfSOmOTMP7o3q+ZEkvv+1reez8NFZ2yBPXvgIAE
-         tEf0jTjHJpaW1yzoXj0/CNt3/jO92Ksqm+ZFDeU1xlsUYucOwxgfNwP1GKhzh0tdKGSa
-         X9sGKHqOjV2uPCRkeuUXjTkxksJqBEkKuN98BxZmLDqWkPfS1xv9XUISoHUTUzRivaiV
-         ljMP1eyctKloroYh5NcoTzbCfgwX5a6s/HPWFahJHpfOzuv542OFFJ5aDHuGACSCgOzv
-         aRINGxriV0w8lAASgmNRRhQe/lmvMlSP2HsjVcsPt0CLVo9Fc0kJ4vQz4n6/5HpJZxJl
-         RzzA==
+        b=ecdFAHgyXuWGeBZqLN7wDnZ3WHDDfRyiY8gTeYmKmr3atfNqX024V2v8M0cWXfhV5I
+         78Uy3+JodmQZZyyWV2xtMdQT2AX/xxgwyfzjjr+rWRAix8skZpG1vPwYdXPJCuovcCoB
+         rK4jPlJSkfra5BwIedVWXkD/0YAXKgBtCW/sIDgUCvsjq+kX8u0SekdmracL8fJJ6Etm
+         dA/5mtTiOq5XPetT3+7KuClgeVdZpbgTAiEyi3kJB5i2fnNRPrWFrhwhJJcUI99QuRvN
+         mAm476o5iaABr4rAghoY+O0d9+l1WDU++JRXgT0FI0fE/+VtEfZfYMV4TeeEZRaNsT80
+         FcGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=MCYBn8oAUoiezjFe0xxaOlmhaLLXjgAc7LQEWWepicM=;
-        fh=NUwGKPB2OQlT0sLfPAMpUPJtGunfjBtjDOvxEyEf9Yc=;
-        b=XZHSsvrVYq7PGjTz7EYq/yCQ9ymE4jxzSy2ha5eKUFZj+46vD/hcXiI+L6aYdLSUPk
-         deurkRwv40csG+4d+fPuGw50KX358VdXfijHlOp+o5oIyFRnu8695K5vvBgjs5sOncVu
-         heig0PZP60XwhRJJVoRxMMlCUYxUHLK4dow9N5eYsZFwX5VuUI1TVeYqTfpvYPSgxIv7
-         qsNaBwHKXvZcBFYFdhjpalQtfVblRxJLXrmCjyDaJVtS6lviuOAYnq4FhClr8qFDxOYh
-         +gEhlZAuR950HA8Fq7W39n4OWZFIg4g3s2gRh3dNI/h3W9ol8t1Lii3tSBFpEnKA7AAe
-         DV8g==;
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=VEeC3RYjo0ryc9cx1hBsYweGmp9PRkMA7aFXlYOXkWM=;
+        fh=/R8c79eGuSX0qNfJ6EOTjZL1U6FfyKEQXgxr7TOo2Aw=;
+        b=Ops93Ja8Yp+jCor77qxVZdn6ihTILYnwTEfS2KSf6zIGH/uvrFNOJ/IPnkdxpe3q7c
+         rClkYbixvCRJoZm29p9Lvznd2iglZcBkrU7ZLQCGFudynAVCL/6BoS8AQopnD4X0VQn1
+         vYmH0RTLo3IAP1b6MxVxBV0xN+x/Ar+Vy3V38sa67j+VD4zNnFOMxMy2f4pwgO3Me19H
+         a1nfy0zwa0Qw0aJs4Bo75LCfG01PaRiKIrtGBT94KKv5brtRm1JTmXkwKkeAqQs6hcw4
+         lmorhym8W743Xtwms2EaSiMgyEOflmx6M70n/nwhBXCxOSc6qcc2wWeRkameCxrSivZb
+         KxUA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=GhUknTQV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/4ei6LA";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-515e22a9be7si295224e0c.213.2024.12.04.08.00.10
+        by mx.google.com with ESMTPS id af79cd13be357-7b6849c24c6si1854050685a.399.2024.12.04.08.41.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2024 08:00:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Dec 2024 08:41:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=GhUknTQV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="g/4ei6LA";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIrm3-0007eH-LG; Wed, 04 Dec 2024 10:58:47 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tIsQU-0003t4-VY; Wed, 04 Dec 2024 11:40:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab@kernel.org>)
- id 1tIrly-0007bg-ME; Wed, 04 Dec 2024 10:58:43 -0500
-Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1tIsQT-0003sr-H9
+ for qemu-devel@nongnu.org; Wed, 04 Dec 2024 11:40:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab@kernel.org>)
- id 1tIrlw-000757-06; Wed, 04 Dec 2024 10:58:42 -0500
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 5A772A4086D;
- Wed,  4 Dec 2024 15:56:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 249CCC4CED2;
- Wed,  4 Dec 2024 15:58:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1733327909;
- bh=jueMBi9DqtcIAo8jCb8vFwaEcMnWhMI0+nsU7Naunbo=;
- h=From:To:Cc:Subject:Date:From;
- b=GhUknTQVxI50Jxwu9VmhFjNs3op+lf/OTVA8FmnQWxFzTsMOfExv7I1rAuKrd9a36
- oQ68qTKjBhtWueYPiTTACBtwrN4hliJm9ufJeh4FT2jGtfTcF9fzamauhRheIlmT4O
- YULaUG/LU8ictiFlD4Qo+kQlfJB4xCvfKr7gjvjtb7aUS/TlyY4MJ90+yZxGL+8bNn
- 6+ujN+JnuvLIIpNY2V8KCWA2CKqLSlTfRDka+kbtMJM9O/AWMFD7EvNm+PpHjJ1qlE
- 74T8z2Octji2s4cr6q40rrr7z7CDy4zI/jtc3l+H1M55FE8rPdOt+laRsCt6lg1Eso
- 3AjlS6gKJYtkQ==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98)
- (envelope-from <mchehab@kernel.org>) id 1tIrlf-00000000HYp-3B0D;
- Wed, 04 Dec 2024 16:58:23 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v3 0/5] Change ghes driver to use HEST-based offsets
-Date: Wed,  4 Dec 2024 16:57:54 +0100
-Message-ID: <cover.1733327276.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.47.1
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1tIsQS-0003cr-4l
+ for qemu-devel@nongnu.org; Wed, 04 Dec 2024 11:40:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1733330431;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VEeC3RYjo0ryc9cx1hBsYweGmp9PRkMA7aFXlYOXkWM=;
+ b=g/4ei6LAxOxDNQ0NmaczWCKIGLJMBnse8aUvPi2L6oRkGPPE9EnUohVaIs+k0dRpeLTuvg
+ UO3xAqZ92VfPbLf2tutBdIL6rFtBS+1dn79BGg2+I8PatnxB3/O2rAnnUcA0G32kSuNLAn
+ GXsSJso1X1J6xbfUqAw36xxL0X1Q7Fk=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-554-mfwYroNsPcWFPKvk5U4Qeg-1; Wed, 04 Dec 2024 11:40:28 -0500
+X-MC-Unique: mfwYroNsPcWFPKvk5U4Qeg-1
+X-Mimecast-MFC-AGG-ID: mfwYroNsPcWFPKvk5U4Qeg
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4349e08ae91so32985e9.0
+ for <qemu-devel@nongnu.org>; Wed, 04 Dec 2024 08:40:27 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1733330427; x=1733935227;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=VEeC3RYjo0ryc9cx1hBsYweGmp9PRkMA7aFXlYOXkWM=;
+ b=boni7+sRfnVR2Ic065BSRApiJI+GhV++GpRU68EVbVZ8vYAOTrrO1FRpGtfqwTmcih
+ Hg0IEgd5DPUZnE9+2vEq538k1gm8AQPnG01oQfbw9fG8ksAI4HWS8QlA7c7nbh/0a6ct
+ 9nM1g6Nby99qibZM7/TFLDnwolKVltEJc34jiM4jARBZZV3lFYZm32Ed2CWUfLlw13jv
+ mvUdT6Q6x15rbSEdbBNj52HrmyiSLVmPh1dNn53NzkbBRPh0eOgNmuqtO3WINlrrglqU
+ PQVxE0TAWS7KWF/DaPxp/oVDDL+YUCOUQfveA7QmNhzEjHn4HYIpTAJNTqXNaBPStnoY
+ VkSw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUh1S/sUvslqmipSnE9ZZydsH5dl2j/eCJ/FBW4dLZmBgog0bf44kKkweNsNhOoMLQZ08K8Ekky6jvi@nongnu.org
+X-Gm-Message-State: AOJu0YxorfF/v9rqYQgEnwT8Qtuc9yBIkkgHGRHew4NDiXUjpfZFmbHr
+ pGcpWKu/eZ67IyGDjqCHHu4HXmyQrw+BpuDZ7bIp8OXOKClQrIJhxoCmmaXtIM2gJdunNCG5e+0
+ /g9+mcH8eQC9adCUiWMh0Y/z+KLaEcGYHFHx8jmBlvjsMPLsI6WtP
+X-Gm-Gg: ASbGncvMjDdKJ5dW1b8yN6BR6UP2+8uwqElO5+rZre0qwAjAWXBCPjl+tCyk0JdtSRx
+ 8vZDPNohIs6H0zskZayCNTOyhWLQbabxM9MbWdjQuJo5OxAC2kg9q8SraS7V1A5WmPccDiA9EA2
+ YWR6zz8zeoWiB9m2JBGfifzYFIcp/K9UiwGEePoQ69r3Ex4dP778o6oeWDrV5FW4Mt/VgPubW9C
+ yXQhXFDYiS/9seuCFZQ/qhYX9FIlpHRYEf/Wttt3EBbU4aBdq3uIM2aq7U8GU3zYQ/CR+UtFeTW
+ gk6vc+/dotLnA9LfXsi3bw==
+X-Received: by 2002:a05:600c:35cf:b0:431:52b7:a499 with SMTP id
+ 5b1f17b1804b1-434d0a07e76mr56634695e9.20.1733330426903; 
+ Wed, 04 Dec 2024 08:40:26 -0800 (PST)
+X-Received: by 2002:a05:600c:35cf:b0:431:52b7:a499 with SMTP id
+ 5b1f17b1804b1-434d0a07e76mr56634495e9.20.1733330426521; 
+ Wed, 04 Dec 2024 08:40:26 -0800 (PST)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-434d52cbd42sm29861995e9.38.2024.12.04.08.40.25
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Dec 2024 08:40:26 -0800 (PST)
+Date: Wed, 4 Dec 2024 17:40:25 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
+ <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ kvm@vger.kernel.org, linux-kernel@vger.kernel.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH v5 10/16] acpi/ghes: better name GHES memory error function
+Message-ID: <20241204174025.52e3756a@imammedo.users.ipa.redhat.com>
+In-Reply-To: <1f16080ef9848dacb207ffdbb2716b1c928d8fad.1733297707.git.mchehab+huawei@kernel.org>
+References: <cover.1733297707.git.mchehab+huawei@kernel.org>
+ <1f16080ef9848dacb207ffdbb2716b1c928d8fad.1733297707.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2604:1380:45d1:ec00::3;
- envelope-from=mchehab@kernel.org; helo=nyc.source.kernel.org
-X-Spam_score_int: -73
-X-Spam_score: -7.4
-X-Spam_bar: -------
-X-Spam_report: (-7.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: P1zdXJ4Pdd/Z
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: z1aXp3XnexLP
 
-This  series was part of the previous PR to add generic error injection
-support on GHES. It depends on a cleanup patch series sent earlier
-today:
+On Wed,  4 Dec 2024 08:41:18 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-    https://lore.kernel.org/qemu-devel/cover.1733297707.git.mchehab+huawei@kernel.org/T/#t
+> The current function used to generate GHES data is specific for
+> memory errors. Give a better name for it, as we now have a generic
+> function as well.
+> 
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-It contains the changes of the math used to calculate offsets at HEST table 
-and hardware_error firmware file. It prepares for the addition of GHES
-error injection.
+not that it matters but for FYI
+Sign off of author goes 1st and then after it other tags
+that were added later
 
-The first patch was previously at the cleanup series. It prepares
-the logic to support multiple sources.
-
-The second patch adds a new firmware file to store HEST address.
-
-The third patch use the new firmware to calculate offsets using
-HEST table.
-
-Patches 4 and 5 add migration support. They assume that this
-series will be merged for qemu 9.2 (maybe it is too late for that,
-as QEMU is now on soft freeze). 
-
-I tested migration using both virt-9.1 and virt-9.2 machines
-on qemu 9.2.
-
-I also tested migration with:
-
-	qemu-9.1 -M virt-9.1 -cpu cortex-a57 => qemu-9.2 -M virt-9.1 -cpu cortex-a57
-	qemu-9.2 -M virt-9.1 -cpu cortex-a57 => qemu-9.1 -M virt-9.1 -cpu cortex-a57 
-
-The full qemu command when test backward-compatibility when running virt-9.1 is:
-
-
-~/qemu/build/qemu-system-aarch64 \
--m 4g,maxmem=8G,slots=8 -monitor stdio -no-reboot -bios ~/emulator/QEMU_EFI-silent.fd -kernel~/kernel/arm64_build/arch/arm64/boot/Image.gz -device pcie-root-port,id=root_port1 -device virtio-blk-pci,drive=hd -device virtio-net-pci,netdev=mynet,id=bob -drive if=none,file=~/emulator/debian.qcow2,format=qcow2,id=hd -object memory-backend-ram,size=4G,id=mem0 -netdev type=user,id=mynet,hostfwd=tcp::5555-:22 -qmp tcp:localhost:4445,server=on,wait=off -M virt-9.1,nvdimm=on,gic-version=3,ras=on -cpu max -smp 4 -numa node,nodeid=0,cpus=0-3,memdev=mem0 -append 'earlycon nomodeset root=/dev/vda1 fsck.mode=skip tp_printk maxcpus=4'
-
-(I actually call it from two different directories, one with qemu-9.1 and the other one with qemu-9.2.
-
-For tests on qemu-9.2 with virt-9.2, I used a similar command:
-
-~/qemu/build/qemu-system-aarch64 -m 4g,maxmem=8G,slots=8 -monitor stdio -no-reboot -bios ~/emulator/QEMU_EFI-silent.fd -kernel ~/kernel/arm64_build/arch/arm64/boot/Image.gz -device pcie-root-port,id=root_port1 -device virtio-blk-pci,drive=hd -device virtio-net-pci,netdev=mynet,id=bob -drive if=none,file=~/emulator/debian.qcow2,format=qcow2,id=hd -object memory-backend-ram,size=4G,id=mem0 -netdev type=user,id=mynet,hostfwd=tcp::5555-:22 -qmp tcp:localhost:4445,server=on,wait=off -M virt-9.2,nvdimm=on,gic-version=3,ras=on -cpu max -smp 4 -numa node,nodeid=0,cpus=0-3,memdev=mem0 -append 'earlycon nomodeset root=/dev/vda1 fsck.mode=skip tp_printk maxcpus=4'
-
----
-
-v3: did some minor cleanups at the code, as suggested by Jonathan Cameron.
-
-v2:
-  - some whitespace and comment changes
-  - patch 3/6 (acpi/ghes: rename the function which gets hw error offsets)
-    was merged on the cleanup series.
-
-Mauro Carvalho Chehab (5):
-  acpi/ghes: Prepare to support multiple sources on ghes
-  acpi/ghes: add a firmware file with HEST address
-  acpi/ghes: Use HEST table offsets when preparing GHES records
-  acpi/generic_event_device: Update GHES migration to cover hest addr
-  acpi/generic_event_device: add logic to detect if HEST addr is
-    available
-
- hw/acpi/generic_event_device.c |  30 +++++++
- hw/acpi/ghes.c                 | 160 +++++++++++++++++++++++++++++----
- hw/arm/virt-acpi-build.c       |  33 ++++++-
- hw/core/machine.c              |   2 +
- include/hw/acpi/ghes.h         |  23 +++--
- 5 files changed, 220 insertions(+), 28 deletions(-)
-
--- 
-2.47.1
-
+> ---
+>  hw/acpi/ghes-stub.c    | 2 +-
+>  hw/acpi/ghes.c         | 2 +-
+>  include/hw/acpi/ghes.h | 4 ++--
+>  target/arm/kvm.c       | 2 +-
+>  4 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
+> index 2b64cbd2819a..7cec1812dad9 100644
+> --- a/hw/acpi/ghes-stub.c
+> +++ b/hw/acpi/ghes-stub.c
+> @@ -11,7 +11,7 @@
+>  #include "qemu/osdep.h"
+>  #include "hw/acpi/ghes.h"
+>  
+> -int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+> +int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
+>  {
+>      return -1;
+>  }
+> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> index 4b5332f8c667..414a4a1ee00e 100644
+> --- a/hw/acpi/ghes.c
+> +++ b/hw/acpi/ghes.c
+> @@ -415,7 +415,7 @@ void ghes_record_cper_errors(const void *cper, size_t len,
+>      return;
+>  }
+>  
+> -int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+> +int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
+>  {
+>      /* Memory Error Section Type */
+>      const uint8_t guid[] =
+> diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+> index 8859346af51a..21666a4bcc8b 100644
+> --- a/include/hw/acpi/ghes.h
+> +++ b/include/hw/acpi/ghes.h
+> @@ -74,15 +74,15 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+>                       const char *oem_id, const char *oem_table_id);
+>  void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+>                            GArray *hardware_errors);
+> +int acpi_ghes_memory_errors(uint16_t source_id, uint64_t error_physical_addr);
+>  void ghes_record_cper_errors(const void *cper, size_t len,
+>                               uint16_t source_id, Error **errp);
+> -int acpi_ghes_record_errors(uint16_t source_id, uint64_t error_physical_addr);
+>  
+>  /**
+>   * acpi_ghes_present: Report whether ACPI GHES table is present
+>   *
+>   * Returns: true if the system has an ACPI GHES table and it is
+> - * safe to call acpi_ghes_record_errors() to record a memory error.
+> + * safe to call acpi_ghes_memory_errors() to record a memory error.
+>   */
+>  bool acpi_ghes_present(void);
+>  #endif
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 7b6812c0de2e..b4260467f8b9 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -2387,7 +2387,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+>               */
+>              if (code == BUS_MCEERR_AR) {
+>                  kvm_cpu_synchronize_state(c);
+> -                if (!acpi_ghes_record_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
+> +                if (!acpi_ghes_memory_errors(ACPI_HEST_SRC_ID_SEA, paddr)) {
+>                      kvm_inject_arm_sea(c);
+>                  } else {
+>                      error_report("failed to record the error");
 

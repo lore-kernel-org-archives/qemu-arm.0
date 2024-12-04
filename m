@@ -1,239 +1,159 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp66091njb;
-        Wed, 4 Dec 2024 01:24:27 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUGq7//R7NqyPLbmbn5CCsLMJjeo6z0J8FxyX3Cs4cQ2g5/Rggu4YDp1cvvz54Vmlcpos/vEqoKE4vRAw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFMh2RfQ/4JCRzVxQP1IZJjOi0vjRzZRCsbjOyGbMmw1QGFw/be8IYP1MCsh/fg6KuPtS1d
-X-Received: by 2002:a05:6214:240f:b0:6d8:8b1f:d811 with SMTP id 6a1803df08f44-6d88b1fdae1mr353998856d6.17.1733304267024;
-        Wed, 04 Dec 2024 01:24:27 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733304267; cv=pass;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp158746njb;
+        Wed, 4 Dec 2024 04:27:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVMJg3354kOvf6W3678P8fxtRWgKEAAY9iCB/LAiXXNr7m5z7xw+MFVTq0oNA5e0dw9JYjQyl2xeod63w==@linaro.org
+X-Google-Smtp-Source: AGHT+IGayVFqlh5d7naKjxJnE9IJ/rVbYHsJaVSjrTRtfwZUkkXxl3/f4r3Kgsg/1z/sHIz1Fnky
+X-Received: by 2002:a05:6902:1108:b0:e39:6e4d:32f5 with SMTP id 3f1490d57ef6-e39d436e0e8mr6098385276.40.1733315262753;
+        Wed, 04 Dec 2024 04:27:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733315262; cv=none;
         d=google.com; s=arc-20240605;
-        b=CpwTGRv7NMdxFPoFJAckcJUyeHdN6NE3SKgE5TYSdRGTPyNVq+fL1G9P1DATBd2snd
-         o46vhGBMSrZrY7LbIruiW9y88HTWwSSE4rzezS683sAATBUrXF0Cq/f13q9ScCk6NxyF
-         x3n/9kL5txzHA69ODB+TU483fpNgvCPzKdwxyTiSPuq6bYyDTmBS0BeaIh1tSuPHOtOY
-         ELfKP7Yd3rteGvevRQuSKlZPtr2jlXHfU33U0d1KsrfPS3J5J8fRbjIgxhlrirElBbPO
-         O5xz5kxdNZIkXYRaCrY2CofjOL8d3Q3uvJ27cOFJL3ftx2i3HHWQp2nF2AXZ1EPpAGEU
-         z0Bw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=0rA3Q8pSqM1dSDp1IjUijqveaLItTi22vCFk780D7MI=;
-        fh=LaRK99/DegUWp39i5Gj8ememlPEjVkI9VRJefgY38iU=;
-        b=FmTSFavOeiA6QwrkMONWZ0z3sI5+DbT41zbSyTwcXaknTcNVLZrL5viqutd7fcjDc8
-         HRJtViFVEWLeOrVWa64TzdoGpZgqjg/VskVXZpqRGxRUwqL4TjutfdWv0/3gAFwHCQRm
-         B6fF3mblFrbl+r+PJY4m+/ruR9HvUSsKkNKlFhFD2VmhOddYcDk6LpzHEuQE258q/hdh
-         KXdA6Vl4eSeOOmb2/ZXD1uHLblImamlkcN92LWlIK9cAeKIphCTUGT9ryN2rTcONBwUN
-         cvmSvCrJlC+Jl0eVe9/HMPNcn2AqGceIq7Pv9x2LkFCRvij5L/ony0gcz7ByrlywfV/C
-         WTIw==;
+        b=ZpniJBZBQJqYECr7lZ1ldoqy+LDjlfHPVrarDmjRMGY0gjapwVuKdaOJ8YDVc2YeKm
+         /2xNg0FPvKqaxvHl4bP+tBPiCyV9LFqEuWfvFd6WDF7inql/RbAMudzxkBjOPwnnwNlN
+         QcOvi4M0YRFd/nbN9DJ1hn5KzhmitxJ8rjc8jx6Nm+UrDZc87J9b0SlXOJo5kvdHqkI2
+         bLC7EntV6vhdxrC4ceg2cf8Osp5Eo+kOPJ8g2f3Vq6i8ordQkkI1pLziHKkQNXZkOblo
+         O4dTdr3fGxFvQYiicIdbCEakIew2gkdc9FKQiNEXi/sFskn+YpP5RtAnAQhxaLMwA+Ea
+         Qxaw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:references:cc:to:content-language:subject
+         :user-agent:mime-version:date:message-id;
+        bh=9etspxsB4hbS+o8/puWHKdM2tGPeaYqR1VTolBftpKo=;
+        fh=OHHX4fNlYmreQDus+BehufBsIq+e0ngZmzZReAVlLOg=;
+        b=cJhaxtmfNaP0LWiZYFLXhp2mroTpu2iApe0Xpp3Lvpep/XGSZk7fygn/AIlE73n39K
+         XbcYgbcuVmFVAR4opjy3U1EZs4foKxRW26JGaj8vY0P1DRqW27yb/q6tSPtAZAZrY7MJ
+         Ho9d2DtOu72ioQOqT+wku9EWxvWAxG+dgx5SjCQL1JO8r3rJebWIoFDGPCjxxfoT7wVe
+         cz0B9ZKaZF792Gz5s7veZ/kzBU5QH9IZyzl3PWgXMsGlafTbLC1okl5FGxLrSVBHbrl0
+         0l4DDcTQeUhjQMSEEwyPEao7nwqK6ODXuDgL6UMWALiIqMUjT4t6lxTfA7BQTv8KgB4z
+         na9w==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EuoFP7Bm;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-430850-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-430850-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-430850-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8ab336cf0si73302806d6.499.2024.12.04.01.24.26
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-466c4223769si190382281cf.362.2024.12.04.04.27.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 01:24:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-430850-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Dec 2024 04:27:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EuoFP7Bm;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-430850-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-430850-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 55B451691A4
-	for <alex.bennee@linaro.org>; Wed,  4 Dec 2024 09:24:24 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 30CE819992D;
-	Wed,  4 Dec 2024 09:24:23 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="EuoFP7Bm"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB8AF17B50E
-	for <linux-kernel@vger.kernel.org>; Wed,  4 Dec 2024 09:24:19 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1733304262; cv=none; b=k0vNpWeu+DD6ji7X5VKSBrZnL5jTKVfmYw5fmpCiOoY78Dk9ncXNhnl0GHmBP2gt3zgN0xiWKsZPadn1r0yefrnKNEil4V5skd+MbxuUXAkrUpC5DYZ1uU557BaUKv3zgG5NjP6qq5el1hq0j7cEXCScvNvWcIf6gYbGyS++fM8=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1733304262; c=relaxed/simple;
-	bh=NirhQcHh90i9gsZ0E//F2UnnEuWxbKKhuU2roeDJUoc=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=SOB9HxuSA1PU53sYaa9SZScMS0aDOzdgV/A95qJ/2e3dxG+a8E2PyMza1wF1i1xQsflJXKjNoybm432vBE2QhPyzeh/wijRKS2evpBQk1umLM1HkA2qr4Qm+ROZDzTCutNoTZlTv85t+zusqJ/gWRfQF3iV/E7u+SG4+5+irOJs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=EuoFP7Bm; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1733304258;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=0rA3Q8pSqM1dSDp1IjUijqveaLItTi22vCFk780D7MI=;
-	b=EuoFP7BmFw7dg1jT8/mUAbJ2CC6Mjmmxv/NNqS+m7qxjnmZgWhM6JIwkQchKfGyeRNsj6i
-	3oz3x/Lfa6psOw0z+gh+xpfbyQ44G1kQ9VSEE85/e8BOXfEV4wmS+/k8PeJcRxh5zAxRyH
-	Vo9K72dOgaDx9LG9931hBwGPsfPW074=
-Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
- [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-531-DpxyC6SDPqSBGVTZ8yAeqQ-1; Wed, 04 Dec 2024 04:24:17 -0500
-X-MC-Unique: DpxyC6SDPqSBGVTZ8yAeqQ-1
-X-Mimecast-MFC-AGG-ID: DpxyC6SDPqSBGVTZ8yAeqQ
-Received: by mail-lf1-f69.google.com with SMTP id 2adb3069b0e04-53e1c921604so363560e87.0
-        for <linux-kernel@vger.kernel.org>; Wed, 04 Dec 2024 01:24:16 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733304255; x=1733909055;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0rA3Q8pSqM1dSDp1IjUijqveaLItTi22vCFk780D7MI=;
-        b=mGO3X/pKSmYdqSOzg8LoJdI6+/5h3Mp0js3/jHkqWb1rcweo3YnQOzdKASXXEAilE/
-         5vyCrmnJKPKqGMoiYWmaIYToigVlfEZSMcvBr6iJtOcHjz+f0ySeNUmOLVeiIX0VnMsr
-         Y1/q3EFH/iJ2XkVO+gfWoZmNN/x/FzV0JaPDsDpPeR7djpzWeM/RD6tocaZrpkYiAFg5
-         5BQbSyTs9U0R0QQauIq/2tFRuyDEzIhhgFuESZJwmzdLPudbSxUkQPA1NQkAZyg3K0qn
-         0JzdJtZQCF/oEVpW1DPJQ4rQn/uydt6rdzD1pyvE8ANnp7I6hgNAUiWsOUmyy0ENwQ9O
-         TlsQ==
-X-Forwarded-Encrypted: i=1; AJvYcCV48t/DQHQ8lGz5onY56At6FqMqtjae1wq7Ddl9sbees9p5UBE38Jlrx1zFT6rO3a8/si1ycjAGUm0mpg4=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzuJ2qcWJ3le3rqIUQYWwFIXkrmcf8YhyAIDidwu4bdUOD1Iqq+
-	AmwT7HLBzVtgBQF4MsVkxLEYP2+HKr2MvO3vDqLVHDG7+1DDgYbeeJLHSpvBPBOjYmgyPb7O8OO
-	cCKKUoeQciVNY1suyQjHGEkF4ucqR/T9PZEFu3HWiuiH52dLjXYuYikfKPKVWHg==
-X-Gm-Gg: ASbGnct0eFMI/w3tu/QsnU5KJfMguXEjHeE562SX2sYBzZvzd/TjPiD8XWwMkSw9i3U
-	WAvpn7h4o3uQKrfvXuf4PdFTGg8qm+vNByjFLSQFAxcDWkH7ZXyfVeEvKqWcO2Eu3zwCBwHSATg
-	OzCfTkUibKrCMEW7QRuEltuGIcsD3dlwYeZArXhYw4OEyaig5qLkWQK77twqBG87nQRysXDWZ+l
-	KxQsVLBZNABxH1iOc2S0CKHbaXhNuYHwqOao2NbU9Lua07OQlgk6vijlrrsXQmRgNwoiu/mzpmz
-	sWryXbCqfOCuTKbjxxtGgg==
-X-Received: by 2002:a05:6512:10c5:b0:53e:1c3d:d1ae with SMTP id 2adb3069b0e04-53e1c3dd2c2mr1188999e87.29.1733304255436;
-        Wed, 04 Dec 2024 01:24:15 -0800 (PST)
-X-Received: by 2002:a05:6512:10c5:b0:53e:1c3d:d1ae with SMTP id 2adb3069b0e04-53e1c3dd2c2mr1188975e87.29.1733304255025;
-        Wed, 04 Dec 2024 01:24:15 -0800 (PST)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-u.redhat.com. [213.175.37.12])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d526b312sm18181805e9.6.2024.12.04.01.24.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 01:24:14 -0800 (PST)
-Date: Wed, 4 Dec 2024 10:24:13 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v4 13/15] acpi/ghes: move offset calculus to a separate
- function
-Message-ID: <20241204102413.31c8d76d@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20241204095635.512a44d5@foz.lan>
-References: <cover.1732266152.git.mchehab+huawei@kernel.org>
-	<e5661a6383449675b28e15c8479ebca42c939368.1732266152.git.mchehab+huawei@kernel.org>
-	<20241203125143.7171892a@imammedo.users.ipa.redhat.com>
-	<20241203144730.47b8ca86@foz.lan>
-	<20241204085440.4640a476@imammedo.users.ipa.redhat.com>
-	<20241204095635.512a44d5@foz.lan>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tIoTY-0001JB-Pz; Wed, 04 Dec 2024 07:27:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <abelova@astralinux.ru>)
+ id 1tIoTU-0001Iw-01; Wed, 04 Dec 2024 07:27:24 -0500
+Received: from mail-gw01.astralinux.ru ([37.230.196.243])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <abelova@astralinux.ru>)
+ id 1tIoTQ-0002MY-Pd; Wed, 04 Dec 2024 07:27:22 -0500
+Received: from gca-sc-a-srv-ksmg01.astralinux.ru (localhost [127.0.0.1])
+ by mail-gw01.astralinux.ru (Postfix) with ESMTP id 4533024CFD;
+ Wed,  4 Dec 2024 15:27:14 +0300 (MSK)
+Received: from new-mail.astralinux.ru (gca-yc-ruca-srv-mail05.astralinux.ru
+ [10.177.185.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail-gw01.astralinux.ru (Postfix) with ESMTPS;
+ Wed,  4 Dec 2024 15:27:11 +0300 (MSK)
+Received: from [10.198.36.161] (unknown [10.198.36.161])
+ by new-mail.astralinux.ru (Postfix) with ESMTPA id 4Y3Gx82Kwnz1c0sJ;
+ Wed,  4 Dec 2024 15:27:07 +0300 (MSK)
+Message-ID: <ada94c51-f334-4991-9699-9e37c42925f0@astralinux.ru>
+Date: Wed, 4 Dec 2024 15:26:59 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/timer/nrf51_timer: prevent integer overflow
+Content-Language: ru
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, sdl.qemu@linuxtesting.org
+References: <20241203162525.75156-1-abelova@astralinux.ru>
+ <CAFEAcA-y2-k8HnTHwTzqL4MGqrTAC1AKD5iP1s9XOTk0OrVYTg@mail.gmail.com>
+From: Anastasia Belova <abelova@astralinux.ru>
+In-Reply-To: <CAFEAcA-y2-k8HnTHwTzqL4MGqrTAC1AKD5iP1s9XOTk0OrVYTg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-TUID: FUD6TqyMK4CJ
+X-KSMG-AntiPhishing: NotDetected
+X-KSMG-AntiSpam-Auth: dkim=none
+X-KSMG-AntiSpam-Envelope-From: abelova@astralinux.ru
+X-KSMG-AntiSpam-Info: LuaCore: 44 0.3.44
+ 5149b91aab9eaefa5f6630aab0c7a7210c633ab6,
+ {Tracking_from_domain_doesnt_match_to},
+ d41d8cd98f00b204e9800998ecf8427e.com:7.1.1; astralinux.ru:7.1.1;
+ new-mail.astralinux.ru:7.1.1; 127.0.0.199:7.1.2, FromAlignment: s
+X-KSMG-AntiSpam-Interceptor-Info: scan successful
+X-KSMG-AntiSpam-Lua-Profiles: 189612 [Dec 04 2024]
+X-KSMG-AntiSpam-Method: none
+X-KSMG-AntiSpam-Rate: 0
+X-KSMG-AntiSpam-Status: not_detected
+X-KSMG-AntiSpam-Version: 6.1.1.7
+X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.1.0.7854,
+ bases: 2024/12/04 07:59:00 #26935148
+X-KSMG-AntiVirus-Status: NotDetected, skipped
+X-KSMG-LinksScanning: NotDetected
+X-KSMG-Message-Action: skipped
+X-KSMG-Rule-ID: 1
+Received-SPF: pass client-ip=37.230.196.243;
+ envelope-from=abelova@astralinux.ru; helo=mail-gw01.astralinux.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tnaDzucknFmZ
 
-On Wed, 4 Dec 2024 09:56:35 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> Em Wed, 4 Dec 2024 08:54:40 +0100
-> Igor Mammedov <imammedo@redhat.com> escreveu:
-> 
-> > On Tue, 3 Dec 2024 14:47:30 +0100
-> > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> >   
-> > > Em Tue, 3 Dec 2024 12:51:43 +0100
-> > > Igor Mammedov <imammedo@redhat.com> escreveu:
-> > >     
-> > > > On Fri, 22 Nov 2024 10:11:30 +0100
-> > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > >       
-> > > > > Currently, CPER address location is calculated as an offset of
-> > > > > the hardware_errors table. It is also badly named, as the
-> > > > > offset actually used is the address where the CPER data starts,
-> > > > > and not the beginning of the error source.
-> > > > > 
-> > > > > Move the logic which calculates such offset to a separate
-> > > > > function, in preparation for a patch that will be changing the
-> > > > > logic to calculate it from the HEST table.
-> > > > > 
-> > > > > While here, properly name the variable which stores the cper
-> > > > > address.
-> > > > > 
-> > > > > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > > > > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > > > > ---
-> > > > >  hw/acpi/ghes.c | 41 ++++++++++++++++++++++++++++++++---------
-> > > > >  1 file changed, 32 insertions(+), 9 deletions(-)
-> > > > > 
-> > > > > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> > > > > index 87fd3feedd2a..d99697b20164 100644
-> > > > > --- a/hw/acpi/ghes.c
-> > > > > +++ b/hw/acpi/ghes.c
-> > > > > @@ -364,10 +364,37 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
-> > > > >      ags->present = true;
-> > > > >  }
-> > > > >  
-> > > > > +static void get_hw_error_offsets(uint64_t ghes_addr,
-> > > > > +                                 uint64_t *cper_addr,
-> > > > > +                                 uint64_t *read_ack_register_addr)
-> > > > > +{        
-> > > > 
-> > > >       
-> > > > > +    if (!ghes_addr) {
-> > > > > +        return;
-> > > > > +    }        
-> > > > 
-> > > > why do we need this check?      
-> > > 
-> > > It is a safeguard measure to avoid crashes and OOM access. If fw_cfg 
-> > > callback doesn't fill it properly, this will be zero.    
-> > 
-> > shouldn't happen, but yeah it firmware job to write back addr
-> > which might happen for whatever reason (a bug for example).
-> >  
-> 
-> The main reason I added it is that, after the second series, it could 
-> also happen if there's something wrong with the backward compat logic.
-> 
-> So, both here and after switching to HEST-based offsets, I opted
-> to explicitly test.
-> 
-> > Perhaps push this up to the stack, so we don't have to deal
-> > with scattered checks in ghes code.
-> > 
-> > kvm_arch_on_sigbus_vcpu() looks like a goo candidate for check
-> > and warn_once if that ever happens.
-> > It already calls acpi_ghes_present() which resolves GED device
-> > and then later we duplicate this job in ghes_record_cper_errors()
-> > 
-> > so maybe rename acpi_ghes_present to something like AcpiGhesState* acpi_ghes_get_state()
-> > and call it instead. And then move ghes_addr check/warn_once there.
-> > This way the rest of ghes code won't have to deal handling practically
-> > impossible error conditions that cause reader to wonder why it might happen.  
-> 
-> I'll look on it. Yet, if ok for you, I would prefer dealing with this
-> once we have a bigger picture, e.g. once we merge those tree series:
-> 
-> 	- cleanup series (this one);
-> 	- HEST offset (I'll be sending a new version today);
-ok, lets revisit this point after this series.
-Since at this point we should have a clean picture of how new code
-works.
+On 12/3/24 7:46 PM, Peter Maydell wrote:
+> On Tue, 3 Dec 2024 at 16:25, Anastasia Belova <abelova@astralinux.ru> wrote:
+>> Both counter and tick are uint32_t and the result
+>> of their addition may not fit this type. Add
+>> explicit casting to uint64_t.
+>>
+>> Found by Linux Verification Center (linuxtesting.org) with SVACE.
+>>
+>> Fixes: c5a4829c08 ("hw/timer/nrf51_timer: Add nRF51 Timer peripheral")
+>> Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
+>> ---
+>>   hw/timer/nrf51_timer.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/timer/nrf51_timer.c b/hw/timer/nrf51_timer.c
+>> index 35b0e62d5b..b5ff235eb8 100644
+>> --- a/hw/timer/nrf51_timer.c
+>> +++ b/hw/timer/nrf51_timer.c
+>> @@ -44,7 +44,7 @@ static uint32_t update_counter(NRF51TimerState *s, int64_t now)
+>>   {
+>>       uint32_t ticks = ns_to_ticks(s, now - s->update_counter_ns);
+>>
+>> -    s->counter = (s->counter + ticks) % BIT(bitwidths[s->bitmode]);
+>> +    s->counter = ((uint64_t)s->counter + ticks) % BIT(bitwidths[s->bitmode]);
+> Can you explain when adding the cast makes a difference?
+> Since s->counter is 32 bits and ticks is 32 bits and
+> the RHS of the % is a power of 2, it's not clear to
+> me that keeping the top 32 bits in the addition and then
+> discarding it after the % is any different from only
+> taking the bottom 32 bits of the addition.
+>
+You're right. I was sure this situation invokes UB.
 
-> 	- error_inject.
-> 
-> Thanks,
-> Mauro
-> 
-
+Thanks for your patience,
+Anastasia Belova

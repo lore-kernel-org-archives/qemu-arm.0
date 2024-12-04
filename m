@@ -1,137 +1,194 @@
-Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp4242071njk;
-        Tue, 3 Dec 2024 22:00:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXItulOv+gnGqg2nDQUW9NQtY+u2OjjLVsWw3IFD85LL/Gbo0NjhloCVjLwg/JDrdr5eWBeH1mu6bhuKg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEx62stTrC92i3Ba7GeUDO71MKAQG9YuWeLslwoh7ZhaywK9RBHU7BvU3DB1bEd8sm2JaKh
-X-Received: by 2002:a05:6122:a25:b0:515:5008:118d with SMTP id 71dfb90a1353d-515bf2a393bmr7063271e0c.2.1733292030077;
-        Tue, 03 Dec 2024 22:00:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733292030; cv=none;
+Received: by 2002:a17:504:6601:b0:1be9:327d:8ee3 with SMTP id h1csp4253068njk;
+        Tue, 3 Dec 2024 22:29:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU44bCcJjgAevgqH3rDhcV3sy5/MSp0FG3ZabeVaADoxgzbeZAa8uG3n0jBFE+SL28L7UXHkcH02K57bA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGfJequBsyRtscyT3k61YEzNVIUb6P3WHkpDFURjtUR98mj/qRUaJGCpsJVG7y0HjrjolVN
+X-Received: by 2002:a05:620a:4009:b0:7b6:72bc:df75 with SMTP id af79cd13be357-7b6a61ca1c5mr626317285a.59.1733293782813;
+        Tue, 03 Dec 2024 22:29:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733293782; cv=none;
         d=google.com; s=arc-20240605;
-        b=HEjTCTLKdoJJUv2zllbV7viU7Sosq9ExDDM9wB61J2EU970TpBtvrnucoUvekZU7bA
-         UwF4M2pbSY4+xypV3+6P9FV49irT0Kr+qUiBZHGGDwDvz+W0wZ9HMGr/ReHL9V+i8rDt
-         dJujubdu5SvMp9q9wHJqWmWIYrwn0hlOCqDJ3wocoaJnsBz9rHhJYyxDPKOBjV5w8yJl
-         ph/6sF0L8OTcG1ZHJ48KlXcJVmSqaPasLNfzpxR5HOS1Jrs4a87uHmyBzD026cqmpRE8
-         07CuTW8CzE8DAxGqAugx8c9u84QJdKmBNqA+9KCE+ffqNFuoJ07WsKb3kV1KDlNLD+Qa
-         5QjQ==
+        b=FrCryYwD0BXs501wpo99csT0FPYXhhpyRW8XDEHQs+12893tCo0M95q40KVl2Ji3BX
+         V7EzPi3Sx+55Y169ii90bjE1jqinhUXae6oCYlOhp8rS+Ba19SD76plekcdaRXBXvjKz
+         8U2HirIEo8jN4PaxiuCTcnwgp8IdSKKZ4fchhoxtUwOCFvBudNmFt1XZm4RTJM2ygWq3
+         p+DeoJd1RJrAxgBFA2wXQ5ux1UTfj6c2uoXTQvl7WiXI2VwWozIo7Auh17Y7gAewajZZ
+         ctPoHf7VDz4BEsvv+Fy+jdPwoz0QPvBWR/yyDq1d9AsAL8bJ+PwWICmY2CgxdzylwV/x
+         dUkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=KWMxp72gDfDEbetPrP7duXBl1wy0ey/eTbWhr+s1CwU=;
-        fh=SlYKEarRkoEX5I+v/SupacZL94SBy1LbFuJOrFpIiIU=;
-        b=AWeZODKRnYBZyTifx/L2kP5QcS06PYItEIMVWAI1sOZCM2oAkU/R083QRLcxobw7+P
-         2KJrzO1DCfGubr6Q4/hnw999lU5j2FSd1n2w84wDEE8abLbsMg9wz5Hx3D0Sh65c2f7o
-         LSOkc9jQvaEZyvofowO4B3gXf3V/MyWXuu8w7WyBVIFxfoBRXGFaFTrE3gajBDrwVSYH
-         cSh8EqTM1sohb4ZJODeJTmXxvvgG4QlG4t9tZjg+BqjG5Sn6v0sSp23cLJ05u2Ex50r2
-         eR2DIEVow+VVSSfLsewQYj1mdewPP30ZY1D4Rcm49ZSOyyX3L406RfFhaywL+N89QfDS
-         T1JA==;
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=XZXuDneTyAqy8siHjeDb01Euw9X0+iiMm6RCLeCoQBc=;
+        fh=ylm8r5qrwGD5Jsh2ZKrTSEqCE55cFgiWomRAmBtT0NA=;
+        b=QZnKWNReYFSLln64ghoH+PAu6Wxlbnbcf9bysdkhh2+kP9FjBC/7D0rJo4KyDjveCC
+         Quzx3hDwRi8U/ZiQi6PDmkZhNRk0oFnMTftS78MpPJTq9l7TAOHBUL8aUheezBPdsioA
+         +PmE/mHqpHQD5lI/dJrqLamQdzf10e8dQO5aOGgIM7OYo3wRNIIWnb9gvOtCHC24Pdbm
+         ScbNuwexpwDcuWvmC/EQjDbZNDn47b2dUbDolr+VTvUOGdvRnJJwuBsdBFVW1gCInopO
+         SeSLEdiRGb33bELZ8rugIbGTy8xzLNsB0Cu0gM6nJEgb4vy8y8BfP1vD/qAGvFwas8S1
+         R/bA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X7ZNAbs7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoFcIgkm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5156cbefb73si5676204e0c.53.2024.12.03.22.00.29
+        by mx.google.com with ESMTPS id af79cd13be357-7b6849d8625si1615286085a.538.2024.12.03.22.29.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2024 22:00:29 -0800 (PST)
+        Tue, 03 Dec 2024 22:29:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=X7ZNAbs7;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MoFcIgkm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tIiQY-0005P0-A4; Wed, 04 Dec 2024 00:59:58 -0500
+	id 1tIisW-0005hx-GJ; Wed, 04 Dec 2024 01:28:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIiQM-0005Mh-1v
- for qemu-arm@nongnu.org; Wed, 04 Dec 2024 00:59:49 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tIiQJ-0004Vx-Jb
- for qemu-arm@nongnu.org; Wed, 04 Dec 2024 00:59:45 -0500
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-aa5b0d8bd41so815193366b.2
- for <qemu-arm@nongnu.org>; Tue, 03 Dec 2024 21:59:42 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733291980; x=1733896780; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=KWMxp72gDfDEbetPrP7duXBl1wy0ey/eTbWhr+s1CwU=;
- b=X7ZNAbs7GqN63nxeUtxL8KMCTFzLcVC29wOl7N08pBvrsD1TOCotj2pJSZxfYBNDZy
- haDJK0F8xfa1YZ6QgYQEfj2SR1uTv8ZKht4wcKGfMlxm1jxrp1d9QIqcydA1zgsqAtnO
- xNRbTOE2Ho0q5vwgiIh1V6wF+drSMHZgcUdkrB5Zt91xrIG3QAdG/eJgqOlhRVJDaOue
- 8Sky2W3aMUSvC5wkVLA0nwQvWJbo3sZk4RxW3zJE3bS8M3QGccU3hieJs2L2aujodCUF
- 4PBzFsUG8fTEKNwcAB26HuE5vT6pp4q1yVlzXx5FXWhDuqgs88RsRsFOkRoWr147Y6MR
- I3Ug==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tIisU-0005h8-Kb
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2024 01:28:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tIisS-0002UX-Di
+ for qemu-arm@nongnu.org; Wed, 04 Dec 2024 01:28:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1733293726;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=XZXuDneTyAqy8siHjeDb01Euw9X0+iiMm6RCLeCoQBc=;
+ b=MoFcIgkmZ1zsHEnuOJJ/NT4cL5rM8Mq3juBlRiJALHt/aLKRAx9Fy8ohTAhpQToB47XOWK
+ pu4vG9nnHsriWG1LSC7o5mq1acdcea6QICcC8+oPAFYd2mXHPfgD/euzkJhOQ2OF+LNWzJ
+ 2DenJW33VGxmiMH0diIvWPfO6zL55Ho=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-471-tv9JQCPNPg2k12AL5mH5yA-1; Wed, 04 Dec 2024 01:28:45 -0500
+X-MC-Unique: tv9JQCPNPg2k12AL5mH5yA-1
+X-Mimecast-MFC-AGG-ID: tv9JQCPNPg2k12AL5mH5yA
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-aa525192412so469518566b.0
+ for <qemu-arm@nongnu.org>; Tue, 03 Dec 2024 22:28:45 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733291980; x=1733896780;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KWMxp72gDfDEbetPrP7duXBl1wy0ey/eTbWhr+s1CwU=;
- b=R2IHVhQzdQuEj9rAIGOADfBAQioTe0oNWVEwG7vH4Niw+gSSJKHFy2GYX4VN8YnDFg
- 9O2uniA5QnmP90lnUJIhV0pTLB78yPrWtZj13XHca7iW19nJNaAqszBWSiW5tXI4HcuI
- Qo2iJHL0Wm+K7bOaUyWzEvn183wgORJ+xSEbw8wybkd2Qvg27Rbh+/Xc6/ErgQZzikZF
- avYIh7lpyYwk1eXe2n6zg1G4AHxnYa/kXI4hULsKgq5Gx4EXm8QtLSC9ho5LDoO4YDhh
- gexo7sMjVda947v7CtkaAyuQVj7tB0Tqw+JQunIWfzed6jWfqKLU3qz3sif5hEd/jaIZ
- mp7g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVXbGJJway21AnGbLk9uWT4ei41RFdQXrvY/pRnrp5ZY1Wyx3jrlc68h4V34c0/iv6izIz1yU0HoQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzB/RMMx2ds21jjqOnxcWMchTuk4Y6GKPbTueXat36Oste3/oMq
- mkIQOdOMdivLLMxcHbypNoq7qxE3F2nPguYA9UL07oGEn0vIqdtS/DtBzpeIEdk=
-X-Gm-Gg: ASbGnctURMQw704cCKmEpUVY+jDULliC84OLN1tjDIi4vqgRKF5/R8Gh6wDD8i8c1qN
- UeD2yjKnJyViF2OH/f/3RSw173b5NjZeMOV5yIzmd/1Tiy9m4oVZnlr8Zd5XczbaYyAnPI4wgub
- iX3Cai/K/gpJ94kfPgcNPQ6vMAgWxxOxl5Dy4S2LayUJqCrhJonL/Nhgl8x2/0xY1WBrDioSVWN
- bSeBRbmMSwTjTh2JziMpb92xADAyXPivgo7ZKbCGsCgoAuVkXaR6kyPkwMZqEkjdApc6xY88OJE
- /IlmlMUgtXksgR1Lwh51IMPplqv+qPM/+sc5UERO7Q==
-X-Received: by 2002:a17:907:762d:b0:aa5:1d33:dc10 with SMTP id
- a640c23a62f3a-aa5f7f0b58bmr347232666b.45.1733291979772; 
- Tue, 03 Dec 2024 21:59:39 -0800 (PST)
-Received: from [192.168.69.223] (sml13-h01-176-184-15-95.dsl.sta.abo.bbox.fr.
- [176.184.15.95]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aa5997d560asm694899866b.61.2024.12.03.21.59.36
+ d=1e100.net; s=20230601; t=1733293724; x=1733898524;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XZXuDneTyAqy8siHjeDb01Euw9X0+iiMm6RCLeCoQBc=;
+ b=e2PAEkL9p3o54cz2YZtP5F4aQsVetBjo95j/Uzto+eeVKp5xf+OwFeBMd0hARhypyC
+ 9/ZqmaY8uruF3/HxbiPrQEDVuDdk9+q2AZ/lFgwjyrv27XK4cj831ywN+uReEZCL58vw
+ /MI80Na8xApLr2VI/TNPZPWYrQAB50un4gDTy0xKu2GipGbHAJgtv6b4fBbpZQB+WkFT
+ IwjCDVmJc5hzOZX/lUfLlrQitIVLMCNQ+MKJx4E8yfhrBbw50tk1RDG0QvcS0uCVdarE
+ xT8mhPvIyfs3H525b2YnbWYiSUQCnaJqRIjZuf8ouN3GenR8P1ouJiC2iMXYjSQYe1vh
+ aN/w==
+X-Gm-Message-State: AOJu0Yzvjws6cu1ftGUbYuN5oOp5bjFKEC+vKVMdTBorORS5KRP5Yb5e
+ wNzqr+dbT1C3BLo0skI6d4/56dxEk2Y6OrVFAnajVEJGrhQBqGDWemdFhnjq9FU2L3aneU7A54P
+ 3RpcJH9QkblZO8hkPVQLNrkurM1dXJ8H7d71Lyitup9B4o/T2fg==
+X-Gm-Gg: ASbGncsF7dtqCYG8KPpQdw1mE0TaFzB3SYvUg2AVrb0oMh2cp+/z4kaK5Ma80eCp2xP
+ YiXSOaUpwmXOg+U5p3V2AhAERqP/aBAl98166SOh1RFKryw1p1ZVFaN4+0TbpvJpA60tkBBBEWA
+ 5SpjaMlmQACm4VB85bfvqfOaH5eOwTsqtuILCzbNUPEU0CziSrLIPTbf4pZKCFNyVc8jtwZuat7
+ WNy3XmDX+Ky9wZD4qr7ktEYK0uMYgU+5OVq18MB/okU+ETcIubtEANfvjXYpoYYkvHAq75uXDd8
+ DcT8sQ==
+X-Received: by 2002:a17:906:292a:b0:aa5:c20:654 with SMTP id
+ a640c23a62f3a-aa5f7f229e3mr404234666b.42.1733293723828; 
+ Tue, 03 Dec 2024 22:28:43 -0800 (PST)
+X-Received: by 2002:a17:906:292a:b0:aa5:c20:654 with SMTP id
+ a640c23a62f3a-aa5f7f229e3mr404232866b.42.1733293723438; 
+ Tue, 03 Dec 2024 22:28:43 -0800 (PST)
+Received: from [192.168.0.7] (ip-109-42-51-199.web.vodafone.de.
+ [109.42.51.199]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-aa59991f1b1sm692164166b.165.2024.12.03.22.28.41
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Dec 2024 21:59:38 -0800 (PST)
-Message-ID: <793ffece-66b6-4201-bc78-cc774d8ec35b@linaro.org>
-Date: Wed, 4 Dec 2024 06:59:36 +0100
+ Tue, 03 Dec 2024 22:28:43 -0800 (PST)
+Message-ID: <3047c455-b67e-46d4-bf69-7477fcb752f7@redhat.com>
+Date: Wed, 4 Dec 2024 07:28:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/6] hw:sdhci: Introduce a new "capareg" class member
- to set the different Capability Registers.
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Bernhard Beschow
- <shentey@gmail.com>, Jamin Lin via <qemu-devel@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+Subject: Re: [PATCH for-10.0 2/2] hw: add compat machines for 10.0
+To: Cornelia Huck <cohuck@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>,
- Yunlin Tang <yunlin.tang@aspeedtech.com>
-References: <20241203021500.3986213-1-jamin_lin@aspeedtech.com>
- <20241203021500.3986213-4-jamin_lin@aspeedtech.com>
- <94E62126-BB97-465A-9021-2FB365E677A8@gmail.com>
- <SI2PR06MB5041216ED78069F9BBE4275FFC372@SI2PR06MB5041.apcprd06.prod.outlook.com>
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, Halil Pasic
+ <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+References: <20241126103005.3794748-1-cohuck@redhat.com>
+ <20241126103005.3794748-3-cohuck@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20241126103005.3794748-3-cohuck@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: ktMOv0nPICWsf_qCXySuZOHYb6E67Ko5A9a2f-uG5fw_1733293724
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <SI2PR06MB5041216ED78069F9BBE4275FFC372@SI2PR06MB5041.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -146,88 +203,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QHrKvKo67RYl
+X-TUID: HhifWxpeSFxe
 
-On 4/12/24 04:14, Jamin Lin wrote:
-> Hi Bernhard,
+On 26/11/2024 11.30, Cornelia Huck wrote:
+> Add 10.0 machine types for arm/i440fx/m68k/q35/s390x/spapr.
 > 
->> Subject: Re: [PATCH v2 3/6] hw:sdhci: Introduce a new "capareg" class member
->> to set the different Capability Registers.
-> 
->> Am 3. Dezember 2024 02:14:57 UTC schrieb Jamin Lin via
->> <qemu-devel@nongnu.org>:
->>> Currently, it set the hardcode value of capability registers to all
->>> ASPEED SOCs However, the value of capability registers should be
->>> different for all ASPEED SOCs. For example: the bit 28 of the
->>> Capability Register 1 should be 1 for 64-bits System Bus support for AST2700.
->>>
->>> Introduce a new "capareg" class member whose data type is uint_64 to
->>> set the different Capability Registers to all ASPEED SOCs.
->>>
->>> The value of Capability Register is "0x0000000001e80080" for AST2400
->>> and AST2500. The value of Capability Register is "0x0000000701f80080" for
->> AST2600.
->>>
->>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->>> ---
->>> hw/arm/aspeed_ast2400.c      |  3 +-
->>> hw/arm/aspeed_ast2600.c      |  7 ++--
->>> hw/sd/aspeed_sdhci.c         | 72
->> +++++++++++++++++++++++++++++++-----
->>> include/hw/sd/aspeed_sdhci.h | 12 +++++-
->>> 4 files changed, 78 insertions(+), 16 deletions(-)
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>   hw/arm/virt.c              |  9 ++++++++-
+>   hw/core/machine.c          |  3 +++
+>   hw/i386/pc.c               |  3 +++
+>   hw/i386/pc_piix.c          | 13 +++++++++++--
+>   hw/i386/pc_q35.c           | 13 +++++++++++--
+>   hw/m68k/virt.c             |  9 ++++++++-
+>   hw/ppc/spapr.c             | 15 +++++++++++++--
+>   hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>   include/hw/boards.h        |  3 +++
+>   include/hw/i386/pc.h       |  3 +++
+>   10 files changed, 76 insertions(+), 9 deletions(-)
 
-
->>> diff --git a/include/hw/sd/aspeed_sdhci.h
->>> b/include/hw/sd/aspeed_sdhci.h index 057bc5f3d1..8083797e25 100644
->>> --- a/include/hw/sd/aspeed_sdhci.h
->>> +++ b/include/hw/sd/aspeed_sdhci.h
->>> @@ -13,9 +13,11 @@
->>> #include "qom/object.h"
->>>
->>> #define TYPE_ASPEED_SDHCI "aspeed.sdhci"
->>> -OBJECT_DECLARE_SIMPLE_TYPE(AspeedSDHCIState, ASPEED_SDHCI)
->>> +#define TYPE_ASPEED_2400_SDHCI TYPE_ASPEED_SDHCI "-ast2400"
->>> +#define TYPE_ASPEED_2500_SDHCI TYPE_ASPEED_SDHCI "-ast2500"
->>> +#define TYPE_ASPEED_2600_SDHCI TYPE_ASPEED_SDHCI "-ast2600"
->>> +OBJECT_DECLARE_TYPE(AspeedSDHCIState, AspeedSDHCIClass,
->> ASPEED_SDHCI)
->>>
->>> -#define ASPEED_SDHCI_CAPABILITIES 0x01E80080
->>> #define ASPEED_SDHCI_NUM_SLOTS    2
->>> #define ASPEED_SDHCI_NUM_REGS     (ASPEED_SDHCI_REG_SIZE /
->> sizeof(uint32_t))
->>> #define ASPEED_SDHCI_REG_SIZE     0x100
->>> @@ -32,4 +34,10 @@ struct AspeedSDHCIState {
->>>      uint32_t regs[ASPEED_SDHCI_NUM_REGS];  };
->>>
->>> +struct AspeedSDHCIClass {
->>> +    SysBusDeviceClass parent_class;
->>> +
->>> +    uint64_t capareg;
->>> +};
->>
->> The struct seems not AST-specific and could be turned into a base class for all
->> SDHCI device models, no? That way one could also add further device-specific
->> constants other than capareg.
->>
-> 
-> Thanks for suggestion and review.
-> 
-> The common sdhci model(sdhci-internal.h) had this "capareg" property to make specific SDHCI model of ASPEED SOCs
-> to set the different value Capability Register such as aspeed_sdhci.c
-> https://github.com/qemu/qemu/blob/master/hw/sd/sdhci-internal.h#L318
-
-DEFINE_SDHCI_COMMON_PROPERTIES() only sets default values,
-you can overwrite them in your class_init().
-
-> 
-> In the previous design of aspeed_sdhci.c, it set the hardcode value of Capability Registers for all ASPEED SOCs.
-> This patch set the different value of SDHCI Capability for AST2400, AST2500, AST2600 and AST2700.
-> Thanks-Jamin
->> Best regards,
->> Bernhard
->>
->>> +
->>> #endif /* ASPEED_SDHCI_H */
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 

@@ -1,68 +1,69 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp37421njb;
-        Wed, 4 Dec 2024 00:15:18 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXd5jOw/j+TD2aLy734SkOftyup6iv2d36DS6o42ElKys/3iwXybNTJRuf37SZnNj2taVcuO3pJH6IGFw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFRhVyFJqebDsNT8ZgImJpDQsjyHsJ5Z/RkIjFfGgi7oQAGLDdSOhu3vqWVGVU6xzF8MGsR
-X-Received: by 2002:a05:622a:190c:b0:466:c7c5:ac53 with SMTP id d75a77b69052e-4670c39a96fmr85438601cf.36.1733300118309;
-        Wed, 04 Dec 2024 00:15:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733300118; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp37563njb;
+        Wed, 4 Dec 2024 00:15:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUXM1VT8VUDP8vtiNdD1uCApMqJ0TIoolcHfgDSPjvsHwJO0ZdT2kHvS60PCCIsDXvrH8OUvK538mIXIA==@linaro.org
+X-Google-Smtp-Source: AGHT+IED5F4UJluopSla2yd9OheF2wXGMtk8QpXk+HRxk2zzUEOChaFYCVuUBQmBYkAK1TbYGAqv
+X-Received: by 2002:a05:620a:40c2:b0:7b6:6b07:e80d with SMTP id af79cd13be357-7b6abbb7350mr516715885a.57.1733300136849;
+        Wed, 04 Dec 2024 00:15:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733300136; cv=none;
         d=google.com; s=arc-20240605;
-        b=X4zFxIMW9COjNslz98FX+kFVez1fAmxhbJ/ZJ37ebEmSlL12rdo+K2BL58phEPe/OW
-         FnUsWNmH+S839iHE+lO8/6OYwaaDSCxKztotkBlA8dj+ivsS6LMcfrgW9FvgvdQr7LWy
-         2xHnX6CI/JSyOwezmf80SYqUtmCjfRvPUv6DCzwrVnuwZqL33qJBiU+gt8dbGzH3cTSS
-         ce8VA3b66k9xmb4SMa8l+Dceh62si4W6BA+DquZDX1TK3mRZDJjIttglx8JaN+MHvhqx
-         /Jgv+qbUII0Grehh8//i0xpI04RRv91my0ikw9xS8oxmKUyS9puq4r98T/ceyM5MK349
-         b0Fw==
+        b=gPatm96NiR17MZDqVUzYPcIus5DJA1+fwAEedH6og/Us/jEiv3u66ZnYXY37N2f7He
+         VMxNEZ/b1oCaHFzNRWxHv2FBWADg8rCwwXIKNJmeeVUufG8TWCq3uMtkgH5UXrg12BbP
+         AH9fCYxPf/EDA/zivZmJEmaAkWacMytNUUmDOPo3ZpwIY2XPfGUNW9IM2EewRqo6b9v8
+         XLzwwsMfx9J5sRaoZyNFkg1eEQUEupfq6cUw/dS/O0PvxsuT/LrXlyefRL1kPjG0GSTv
+         HM90OfXgZGxKy3iA00gH9Tv8pFcV37CICjLGRG5V4i6lxASNg/U/54xiOya3cjLG59BH
+         Vatg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=h4KqUqMFZSdLq4kopZNMC4sq/zS9SXK8XV0i9un//28=;
+        bh=CYqfKf0ESSkYhfPYYUFqRNI7tfe/228xXegXrC5JTpU=;
         fh=y8UldgvBpgWdzvo0ZnT6ptMSZ9zI0pieroCu40oTsaQ=;
-        b=PG8vxT3Kw5BclHc88MxogpVZxaVVOnHsO+DLCbQVveggpmPVTNJFpmnfesjUhaCwfK
-         ThExGgn82TuZRoYREvzGBYfmKCnA179jU7EGHCpXoY3OHa3DFXo3tocC4l26DLzRHzSc
-         E3P+SijWbtoVIoV7BkDuUrFrDvdowQkPjQAIbs5YEwV48fMvqZJOcfKknOLLuP8IdsN+
-         isMGc0x5lMGErAYCY15lRnJBUYhDaPb9uSdkUYrBeajHI1H0iL+EgLIf7EQAU322xjqe
-         HbZo8B9uBT0xwAYpkF2xIH3jC+EPWpGRYfoycrYlhZHPZrpz2gV0koJY/JC8iYTeDUdT
-         yghw==;
+        b=fJo7ufsvtqOUQruajpt7yAihAihdzPCJMM0HIj4sGeT7LA9m0FvCFbpZHY9haTU1mR
+         V/et0z3y6D8KOtynY0izCbk/g0/8C2VAqyS8wk81ZCeRHvuqldQeS5LOcOS6i1ztlqxE
+         Gv1dsdjZL1SGTfdTZ+nDzdBW3d8wqrttYfowWohZ7bPHP8hCMZiczaxZvJf2ZqtdfaWA
+         e2xG+qoi/mdnzaPcBbrrD8dTGOEwUQmMUjzjLGVvEy1BTMMwpO0piMPoFDJ8+RPkyVjD
+         t69Ks4opdQ1T6c8whMXdXlkBRi6/eRq99aZLp1OfqI8xTTYPIqjm+eMLWAVAw/C/6st8
+         enbg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-466c42583d9si156380181cf.598.2024.12.04.00.15.18
+        by mx.google.com with ESMTPS id af79cd13be357-7b6849c1247si243419385a.389.2024.12.04.00.15.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Dec 2024 00:15:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Dec 2024 00:15:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tIkWk-0001M0-DX; Wed, 04 Dec 2024 03:14:30 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tIkXe-0001pk-86; Wed, 04 Dec 2024 03:15:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=RR0m=S5=kaod.org=clg@ozlabs.org>)
- id 1tIkWd-0001KF-OP; Wed, 04 Dec 2024 03:14:23 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
+ id 1tIkXT-0001ec-R6; Wed, 04 Dec 2024 03:15:15 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=RR0m=S5=kaod.org=clg@ozlabs.org>)
- id 1tIkWb-0003tj-KE; Wed, 04 Dec 2024 03:14:23 -0500
+ id 1tIkXR-0004Am-JQ; Wed, 04 Dec 2024 03:15:15 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Y39K54qTLz4xfp;
- Wed,  4 Dec 2024 19:14:01 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Y39LL400xz4x63;
+ Wed,  4 Dec 2024 19:15:06 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Y39Jz3Zcsz4x63;
- Wed,  4 Dec 2024 19:13:55 +1100 (AEDT)
-Message-ID: <ef648e28-7407-4ec2-b1bc-353f756e9d81@kaod.org>
-Date: Wed, 4 Dec 2024 09:13:54 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Y39LH1988z4wcZ;
+ Wed,  4 Dec 2024 19:15:02 +1100 (AEDT)
+Message-ID: <1b0dee29-ed90-49f6-9c61-7bc27f3b674a@kaod.org>
+Date: Wed, 4 Dec 2024 09:15:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/7] hw/sd/aspeed_sdhci: Fix coding style
+Subject: Re: [PATCH v3 3/7] hw:sdhci: Introduce a new "capareg" class member
+ to set the different Capability Registers
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -71,7 +72,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20241204080523.4025780-1-jamin_lin@aspeedtech.com>
- <20241204080523.4025780-2-jamin_lin@aspeedtech.com>
+ <20241204080523.4025780-4-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -116,67 +117,228 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20241204080523.4025780-2-jamin_lin@aspeedtech.com>
+In-Reply-To: <20241204080523.4025780-4-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
  envelope-from=SRS0=RR0m=S5=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_MED=-2.3,
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: hAcNGRGb+nh5
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DtZ2TaXLRTTW
 
 On 12/4/24 09:05, Jamin Lin wrote:
-> Fix coding style issues from checkpatch.pl.
+> Currently, it set the hardcode value of capability registers to all ASPEED SOCs
+> However, the value of capability registers should be different for all ASPEED
+> SOCs. For example: the bit 28 of the Capability Register 1 should be 1 for
+> 64-bits System Bus support for AST2700.
+> 
+> Introduce a new "capareg" class member whose data type is uint_64 to set the
+> different Capability Registers to all ASPEED SOCs.
+> 
+> The value of Capability Register is "0x0000000001e80080" for AST2400 and
+> AST2500. The value of Capability Register is "0x0000000701f80080" for AST2600.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/arm/aspeed_ast2400.c      |  3 ++-
+>   hw/arm/aspeed_ast2600.c      |  7 +++--
+>   hw/sd/aspeed_sdhci.c         | 52 +++++++++++++++++++++++++++++++++---
+>   include/hw/sd/aspeed_sdhci.h | 12 +++++++--
+>   4 files changed, 63 insertions(+), 11 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed_ast2400.c b/hw/arm/aspeed_ast2400.c
+> index ecc81ecc79..3c1b419945 100644
+> --- a/hw/arm/aspeed_ast2400.c
+> +++ b/hw/arm/aspeed_ast2400.c
+> @@ -224,7 +224,8 @@ static void aspeed_ast2400_soc_init(Object *obj)
+>       snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
+>       object_initialize_child(obj, "gpio", &s->gpio, typename);
+>   
+> -    object_initialize_child(obj, "sdc", &s->sdhci, TYPE_ASPEED_SDHCI);
+> +    snprintf(typename, sizeof(typename), "aspeed.sdhci-%s", socname);
+> +    object_initialize_child(obj, "sdc", &s->sdhci, typename);
+>   
+>       object_property_set_int(OBJECT(&s->sdhci), "num-slots", 2, &error_abort);
+>   
+> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+> index c40d3d8443..b5703bd064 100644
+> --- a/hw/arm/aspeed_ast2600.c
+> +++ b/hw/arm/aspeed_ast2600.c
+> @@ -236,8 +236,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>       snprintf(typename, sizeof(typename), "aspeed.gpio-%s-1_8v", socname);
+>       object_initialize_child(obj, "gpio_1_8v", &s->gpio_1_8v, typename);
+>   
+> -    object_initialize_child(obj, "sd-controller", &s->sdhci,
+> -                            TYPE_ASPEED_SDHCI);
+> +    snprintf(typename, sizeof(typename), "aspeed.sdhci-%s", socname);
+> +    object_initialize_child(obj, "sd-controller", &s->sdhci, typename);
+>   
+>       object_property_set_int(OBJECT(&s->sdhci), "num-slots", 2, &error_abort);
+>   
+> @@ -247,8 +247,7 @@ static void aspeed_soc_ast2600_init(Object *obj)
+>                                   &s->sdhci.slots[i], TYPE_SYSBUS_SDHCI);
+>       }
+>   
+> -    object_initialize_child(obj, "emmc-controller", &s->emmc,
+> -                            TYPE_ASPEED_SDHCI);
+> +    object_initialize_child(obj, "emmc-controller", &s->emmc, typename);
+>   
+>       object_property_set_int(OBJECT(&s->emmc), "num-slots", 1, &error_abort);
+>   
+> diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+> index acd6538261..ccaeefa75b 100644
+> --- a/hw/sd/aspeed_sdhci.c
+> +++ b/hw/sd/aspeed_sdhci.c
+> @@ -148,6 +148,7 @@ static void aspeed_sdhci_realize(DeviceState *dev, Error **errp)
+>   {
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>       AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
+> +    AspeedSDHCIClass *asc = ASPEED_SDHCI_GET_CLASS(sdhci);
+>   
+>       /* Create input irqs for the slots */
+>       qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_sdhci_set_irq,
+> @@ -166,10 +167,7 @@ static void aspeed_sdhci_realize(DeviceState *dev, Error **errp)
+>               return;
+>           }
+>   
+> -        if (!object_property_set_uint(sdhci_slot, "capareg",
+> -                                      ASPEED_SDHCI_CAPABILITIES, errp)) {
+> -            return;
+> -        }
+> +        sdhci->slots[i].capareg = asc->capareg;
 
+I think we want to keep :
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+         if (!object_property_set_uint(sdhci_slot, "capareg",
+                                       asc->capareg, errp)) {
+             return;
+         }
+
 
 Thanks,
 
 C.
 
 
-> ---
->   hw/sd/aspeed_sdhci.c | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
-> index 98d5460905..acd6538261 100644
-> --- a/hw/sd/aspeed_sdhci.c
-> +++ b/hw/sd/aspeed_sdhci.c
-> @@ -87,10 +87,12 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
->           sdhci->regs[TO_REG(addr)] = (uint32_t)val & ~ASPEED_SDHCI_INFO_RESET;
->           break;
->       case ASPEED_SDHCI_SDIO_140:
-> -        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg, 0, 32, val);
-> +        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg,
-> +                                            0, 32, val);
->           break;
->       case ASPEED_SDHCI_SDIO_144:
-> -        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg, 32, 32, val);
-> +        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg,
-> +                                            32, 32, val);
->           break;
->       case ASPEED_SDHCI_SDIO_148:
->           sdhci->slots[0].maxcurr = deposit64(sdhci->slots[0].maxcurr,
+>   
+>           if (!sysbus_realize(sbd_slot, errp)) {
+>               return;
+> @@ -218,13 +216,59 @@ static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
+>       device_class_set_props(dc, aspeed_sdhci_properties);
+>   }
+>   
+> +static void aspeed_2400_sdhci_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedSDHCIClass *asc = ASPEED_SDHCI_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2400 SDHCI Controller";
+> +    asc->capareg = 0x0000000001e80080;
+> +}
+> +
+> +static void aspeed_2500_sdhci_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedSDHCIClass *asc = ASPEED_SDHCI_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2500 SDHCI Controller";
+> +    asc->capareg = 0x0000000001e80080;
+> +}
+> +
+> +static void aspeed_2600_sdhci_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    AspeedSDHCIClass *asc = ASPEED_SDHCI_CLASS(klass);
+> +
+> +    dc->desc = "ASPEED 2600 SDHCI Controller";
+> +    asc->capareg = 0x0000000701f80080;
+> +}
+> +
+>   static const TypeInfo aspeed_sdhci_types[] = {
+>       {
+>           .name           = TYPE_ASPEED_SDHCI,
+>           .parent         = TYPE_SYS_BUS_DEVICE,
+>           .instance_size  = sizeof(AspeedSDHCIState),
+>           .class_init     = aspeed_sdhci_class_init,
+> +        .class_size = sizeof(AspeedSDHCIClass),
+> +        .abstract = true,
+> +    },
+> +    {
+> +        .name = TYPE_ASPEED_2400_SDHCI,
+> +        .parent = TYPE_ASPEED_SDHCI,
+> +        .class_init = aspeed_2400_sdhci_class_init,
+> +    },
+> +    {
+> +        .name = TYPE_ASPEED_2500_SDHCI,
+> +        .parent = TYPE_ASPEED_SDHCI,
+> +        .class_init = aspeed_2500_sdhci_class_init,
+> +    },
+> +    {
+> +        .name = TYPE_ASPEED_2600_SDHCI,
+> +        .parent = TYPE_ASPEED_SDHCI,
+> +        .class_init = aspeed_2600_sdhci_class_init,
+>       },
+>   };
+>   
+>   DEFINE_TYPES(aspeed_sdhci_types)
+> +
+> +
+
+Drop the extra lines please.
+
+
+Thanks,
+
+C.
+
+
+
+> diff --git a/include/hw/sd/aspeed_sdhci.h b/include/hw/sd/aspeed_sdhci.h
+> index 057bc5f3d1..8083797e25 100644
+> --- a/include/hw/sd/aspeed_sdhci.h
+> +++ b/include/hw/sd/aspeed_sdhci.h
+> @@ -13,9 +13,11 @@
+>   #include "qom/object.h"
+>   
+>   #define TYPE_ASPEED_SDHCI "aspeed.sdhci"
+> -OBJECT_DECLARE_SIMPLE_TYPE(AspeedSDHCIState, ASPEED_SDHCI)
+> +#define TYPE_ASPEED_2400_SDHCI TYPE_ASPEED_SDHCI "-ast2400"
+> +#define TYPE_ASPEED_2500_SDHCI TYPE_ASPEED_SDHCI "-ast2500"
+> +#define TYPE_ASPEED_2600_SDHCI TYPE_ASPEED_SDHCI "-ast2600"
+> +OBJECT_DECLARE_TYPE(AspeedSDHCIState, AspeedSDHCIClass, ASPEED_SDHCI)
+>   
+> -#define ASPEED_SDHCI_CAPABILITIES 0x01E80080
+>   #define ASPEED_SDHCI_NUM_SLOTS    2
+>   #define ASPEED_SDHCI_NUM_REGS     (ASPEED_SDHCI_REG_SIZE / sizeof(uint32_t))
+>   #define ASPEED_SDHCI_REG_SIZE     0x100
+> @@ -32,4 +34,10 @@ struct AspeedSDHCIState {
+>       uint32_t regs[ASPEED_SDHCI_NUM_REGS];
+>   };
+>   
+> +struct AspeedSDHCIClass {
+> +    SysBusDeviceClass parent_class;
+> +
+> +    uint64_t capareg;
+> +};
+> +
+>   #endif /* ASPEED_SDHCI_H */
 

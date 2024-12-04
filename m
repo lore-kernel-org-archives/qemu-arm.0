@@ -1,236 +1,170 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp4072njb;
-        Tue, 3 Dec 2024 22:50:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUDJaIGh4hGO8g7SqPDqRwHlBTTolQSQHR3AGGuE6++gv5G0aqO2nnQkeSNQ7g8OUBA7RGix5vqq7SM4g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGR0Bh+j39UXJXiXijE8j7xZleFaQK6SvN2AQzi79mavaFtbQN0/OfNjKvycxuSTH00zGT6
-X-Received: by 2002:a05:620a:372c:b0:7ac:d663:f664 with SMTP id af79cd13be357-7b6a5d283d1mr679437585a.1.1733295055951;
-        Tue, 03 Dec 2024 22:50:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733295055; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp24038njb;
+        Tue, 3 Dec 2024 23:42:46 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUaMYqthz8JiUv0Xp74I60XLCoDWIpXdPUR4L4vcez2RrNF3Lag2OI9mLJ3KlcaXfmhacWVEabDgrIsAw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFUASNLwdzNtE675fU0ANVZtz2rZWPhhVNnmxwHYvoQwPKIHLiLLl9/ioDHGl4c/yflYNR1
+X-Received: by 2002:a17:902:ec81:b0:215:76c7:451d with SMTP id d9443c01a7336-215bd1c9e43mr59090615ad.13.1733298165903;
+        Tue, 03 Dec 2024 23:42:45 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1733298165; cv=pass;
         d=google.com; s=arc-20240605;
-        b=goJqiBXxB6qKDri7yMY1alIk1N0gzsoF9WaqNBZvoAIf4Hgtx2/5sOYXlhxD6ULoOq
-         j1VGzBynw07+T8yltMD63LwunPlFtXsYhoYF15AvR2EKJBcxOXs46yFYL8IPV7aK3W0X
-         5b200pNydDHF7h4dMQ2ETuQ+0yurnWw9ZjWzJbciWTjWxBeewCdFhgp/VR0uiEsTMIKf
-         I3FchoklSua9YSbsk6VgLocL3i54wItVGv3rhV6OM7i7VDT19bH7rQHv9RAIdAF2uNnp
-         xUMpkLwZL1p7h2s9hGvMFCllOG1Z+v05qWEtU+lSHPUt964XL8QQVlD3D1Ik4ItD67UT
-         aU+w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:content-language:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=J1E8R3dW6tV138ZRkbVrPlUAn7vvGa4J37rC1Eiqw2c=;
-        fh=TB+1bQmCWdpucFWpf0zTPqvI1I+CKqK6RfsGRCf/Aas=;
-        b=hGppmJqQdRJCjr5iwp4YPzcPkzxgFFJcQMj4+HF+vsr2TYLBRKGUi5z7d+unFS4ef9
-         a17VmxCKfcRfjVfZaH5f0SawrLzIqE8OR4uvQHKpYn2I0IoeEGNUCFnoWg9AtTT1KeZl
-         Tc8our1lt1/mUq3xNF5yKuBGfs6f+EXXU1wVSzphdTyrpqses3gRMQPvVd47n9jtbiWG
-         6FIr4/NXbRFCzgn43Ef23FH3Rkkh0K3d+aUqABR0hXzz/iYH8aflYua5M1qDbI/MLqTg
-         OzK3GJr+KB2TbjEXAlaat13K1MT1Dxzd1NfuOado8NkHsgEABc5JHBjI3EAZgafs0yv/
-         nUwg==;
+        b=PvOU7cW476s61UFvXceDXprXsYPTQUiPEs14Rff0oHbrh4F06jTLMz2+wPdOP4xrmH
+         YIgrrCYHytBaYtZ8ThP+L63GJZN+RxpDHwWDPR2XEWoTyDfp8lkQv/dYGl9E+av0Z2mE
+         jxRYn+54f5LFot0gR3YkUK2oxTHyzU2REx7LxhGZgx5RV4+NGFaZTatiJ0ZBChpciDn5
+         SmRu0yVjcN5+kXYVQjL7It0izF25UDGzRy8LjwSZF9WfbLvmZs0V2pytWqc5F1+6ljqx
+         EqRYwp4O+GswII6RbGuXIxLTcCcypsU5AQTnefI4lvOQm0ueB4oFs12jTi6j6LNhJAgY
+         w5Cg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=9NPImbi+qmHfm0peItbw1IVDMU/YiIq1D0ieA6XltRw=;
+        fh=cHr103FZjxYpnzWV8HEdBbSUHzARr8y7HHMCd+4YRdE=;
+        b=dxhx1hftWDCy59TGKIlef8eVNHtQKCDZaI/SbupgTCRJ4acSWjpKl/AT4w3issDFj+
+         pHSbaEvvooS0yuzb0xM5PAn3x/zQFrvj0eBQUMyMOzCn4w6rBwU+3AHII8v572r/wyPg
+         ir58zpaZNQ5L3lOf5J7P8oswhQTt/tIjcTkC7mMLpYmJC7QVUnSIjrZZUJkBYJCh89a7
+         4UC3zjShpJms0IttVHMBdYOO6Lr8OIQnwPfsT1zDpSTD2uESwWufRe+mY9amCYYIHO9d
+         IT51WAZFE6AvAGZJnRr1EN5RCLV+YPorkTiqPFQvUZDnr2tF+hIscV96zlDSCk/w3crD
+         Mwxg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ClMdFs3S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6849e0cf0si1962924085a.546.2024.12.03.22.50.55
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DJ8XBERW;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-430664-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-430664-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-430664-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id d9443c01a7336-21582750c9esi17693465ad.74.2024.12.03.23.42.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Dec 2024 22:50:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Dec 2024 23:42:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-430664-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ClMdFs3S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tIjD8-0008I1-CX; Wed, 04 Dec 2024 01:50:11 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tIjD2-0008H9-M1
- for qemu-devel@nongnu.org; Wed, 04 Dec 2024 01:50:04 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tIjCz-0008MW-1C
- for qemu-devel@nongnu.org; Wed, 04 Dec 2024 01:50:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1733294999;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=J1E8R3dW6tV138ZRkbVrPlUAn7vvGa4J37rC1Eiqw2c=;
- b=ClMdFs3SesxtjoUsJYrPcq+ldg3Nai2JSZod8S4uNFgm0vAkpfFNkqo3FvCKxPvcGCmsUh
- B/6+ihr9S0ZBlp5jIcodRgkCWdJCJ1zGjyxlbIGsHSc/6nYm1x0lT8L/NrwyYfuipEaCbE
- mk0Lug0LxVMPqCnKma0r2sJmth2eNac=
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-2-M3yjpoqEPy-79y8TPPFksQ-1; Wed, 04 Dec 2024 01:49:58 -0500
-X-MC-Unique: M3yjpoqEPy-79y8TPPFksQ-1
-X-Mimecast-MFC-AGG-ID: M3yjpoqEPy-79y8TPPFksQ
-Received: by mail-lj1-f200.google.com with SMTP id
- 38308e7fff4ca-2ffd953e192so51756921fa.3
- for <qemu-devel@nongnu.org>; Tue, 03 Dec 2024 22:49:57 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733294997; x=1733899797;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=J1E8R3dW6tV138ZRkbVrPlUAn7vvGa4J37rC1Eiqw2c=;
- b=nPA4m//vny2DL96YdBsRc3dtclQSmWcqLw06nuw+wC1pwYrENINNQNGbvtgSblHy1I
- aZxcI4S44eIswRbnQTOnlzIt+iAP9Y7JG2qscgsY2YX+JVfl7gDjbi51TC1OaqTjfwr+
- O87kbCn2C8jgnhcYjuJe1VfXqN486rAbcxsBcM/wCk2KHv/+p1NJ2vCFY/5ASPYUFwtz
- 5AnthaXkI2Kk3lLYzqRZdugO3JR97OTh3ktMA/v0M5dydgrj+6IrbTAmUGeWh/C7Rzvi
- lQwH/z8SBE46M3tEhPcCEwzobe6/tHh2JG5LctX5R69BoR+gWpVwYr5jDZqiOgX+UG8y
- o23w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWrfvs8X6Zm19tNuzyAX4GQMFPS3s3mjNwr/vCwJvOHaYs6bSEhTI1c9HF4Gawus3XvCKcec6ENSEcR@nongnu.org
-X-Gm-Message-State: AOJu0YwQhJAg2keIz2xSi1jtMwEkAHkAUZl+1uHopzMlNV4v0ojp/iGi
- Q8Q6VDVrUKDeK86JxPLRPmNDle8Co8JaO1rxidTTtjkjp3kN/g7NfQ3NQRkGh2Lg3rjZ0cTRCRg
- oZ77wjblm8/Vxd/IHiFyEVMPndOYDWXoDkGvTgtEm/X9szxHKYD35
-X-Gm-Gg: ASbGnctFFwshk2oglH+610SA5ZtTYfyd/e9AQJ4dSFl3lQtB4CYJGSmHz9mrVVOuxuU
- ZoYvGX90OTuZ0YiKvjRNitaG5oEyC7C6selnlwCbnUU4p3W75WfolP7375uXF6tctNnFkp5k/DA
- LYBvmAeQpHuWqjsKIAPL/uHxJpTq5R8HD0N/sxZgVDKL1Uzc8kn7COIkDS4qHMCtLgKVceFoCj8
- JBrpRrYxY6GDA69BgpCi580ubPK568a0/BpiJVxLUOKGrFphK1AVOkJCKoSTH40imgT551RzF8u
- ukBVzw==
-X-Received: by 2002:a05:6512:1048:b0:53e:1c7b:618e with SMTP id
- 2adb3069b0e04-53e1c7b6255mr1023186e87.10.1733294996623; 
- Tue, 03 Dec 2024 22:49:56 -0800 (PST)
-X-Received: by 2002:a05:6512:1048:b0:53e:1c7b:618e with SMTP id
- 2adb3069b0e04-53e1c7b6255mr1023167e87.10.1733294996241; 
- Tue, 03 Dec 2024 22:49:56 -0800 (PST)
-Received: from [192.168.0.7] (ip-109-42-51-199.web.vodafone.de.
- [109.42.51.199]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aa5997d5646sm697355766b.62.2024.12.03.22.49.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Dec 2024 22:49:55 -0800 (PST)
-Message-ID: <d24c3fb5-4edd-491d-b651-a13a1f7aacec@redhat.com>
-Date: Wed, 4 Dec 2024 07:49:53 +0100
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DJ8XBERW;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-430664-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-430664-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 68458285B4A
+	for <alex.bennee@linaro.org>; Wed,  4 Dec 2024 07:42:45 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id AC60718EFD4;
+	Wed,  4 Dec 2024 07:42:33 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="DJ8XBERW"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 67B5218E028
+	for <linux-kernel@vger.kernel.org>; Wed,  4 Dec 2024 07:42:33 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1733298153; cv=none; b=j+seSHFoUAd9u8S97lkHYu2egtijjTyc3GAjJDLtVfB3ylfjbHTlju9r9fo3yqG0wXnrccjS+rfspGaI7wexoVR8/PjLSGQmYjI73rLbBnPl310Fm98WYwzwT2gbid/JkF6ma+9EDjf5t5OTz4i3fd6AVE9b9A9sYs+g9xr5wms=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1733298153; c=relaxed/simple;
+	bh=PPyhW6VsW+yo+jj9o/izTT956e12rFUm5rYlBvONhoQ=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=itTqUhyE84lhC5Xfveg6m2xEHjf/fqyWwGAGZ+VPmfYJb8CcEyPc4n+vQFsbKTvntx4vd6KjY7qVXc4IyTMUTNWXTVJbFEwcSAv8SY4a82PDcJc3IZUPBgI5ptHVe3dKObjpA8SoGqzzwfTRxNv13ZFPTQxjc6/9KSpTtjVu4xI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=DJ8XBERW; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08CA9C4CEE3;
+	Wed,  4 Dec 2024 07:42:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1733298153;
+	bh=PPyhW6VsW+yo+jj9o/izTT956e12rFUm5rYlBvONhoQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=DJ8XBERWRFmjXTGFjdtz+V4WEC/5Pv4Nd9dmhR5QRKDHErXAg1C3smig7ab9ZRAOY
+	 hUZ5LBbcxP73LIiByGw8DJkp3Z0CK+IXm35xC10xoT+3gRv8Rm3cKAZlWZGpzpQTdO
+	 a3itGBiIArjJ/Wnju0gqTlVRBF6RCxU2sUhguwmVLxaeklvh3lHUYIIkpL+dkx2mYL
+	 hbsFAIBIq+TNgwHDeFBvx7JeyPho6FnH8ZwxXA+JImrfiQEsVEmp7+TUvZ+SLKNCqs
+	 /ltZI8BVingWE8TjFnqYEYejJr0QZOkBQwJU6++B0beyKlRvHbpOWA5XVUHkCg4dD4
+	 vKXbIp0oRfG8A==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1tIk1n-00000004Kj6-0Tim;
+	Wed, 04 Dec 2024 08:42:31 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Shiju Jose <shiju.jose@huawei.com>,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>,
+	linux-kernel@vger.kernel.org,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH v5 07/16] acpi/ghes: Change the type for source_id
+Date: Wed,  4 Dec 2024 08:41:15 +0100
+Message-ID: <905c6c7329c39bde6f67f6f6636245de8baeca14.1733297707.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <cover.1733297707.git.mchehab+huawei@kernel.org>
+References: <cover.1733297707.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.0 v2 01/13] hw/pci: Do not declare PCIBus::flags
- mask as enum
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-riscv@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20241126112212.64524-1-philmd@linaro.org>
- <20241126112212.64524-2-philmd@linaro.org>
- <ab884d96-6648-4888-962c-35a6b1d90857@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <ab884d96-6648-4888-962c-35a6b1d90857@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: s3babaQj5Sfr
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: ydHAlgTDqsE1
 
-On 27/11/2024 10.37, Philippe Mathieu-Daudé wrote:
-> On 26/11/24 12:22, Philippe Mathieu-Daudé wrote:
->> We use PCIBus::flags to mask various flags. It is not
->> an enum, and doing so confuses static analyzers. Rename
->> the enum as singular. Use a generic unsigned type for
->> the mask.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/hw/pci/pci_bus.h | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/include/hw/pci/pci_bus.h b/include/hw/pci/pci_bus.h
->> index 22613125462..6ecfe2e06d5 100644
->> --- a/include/hw/pci/pci_bus.h
->> +++ b/include/hw/pci/pci_bus.h
->> @@ -19,7 +19,7 @@ struct PCIBusClass {
->>       uint16_t (*numa_node)(PCIBus *bus);
->>   };
->> -enum PCIBusFlags {
->> +enum PCIBusFlag {
->>       /* This bus is the root of a PCI domain */
->>       PCI_BUS_IS_ROOT                                         = 0x0001,
->>       /* PCIe extended configuration space is accessible on this bus */
-> 
-> (more diff context:)
-> 
->          PCI_BUS_EXTENDED_CONFIG_SPACE                           = 0x0002,
->         /* This is a CXL Type BUS */
->         PCI_BUS_CXL                                          = 0x0004,
-> 
-> Enum would be the [0, 1, 2] bits. Since we define bitmask and use
-> bitmask arguments in the code, shouldn't we simply replace that
-> enum by #define?
+As described at: ACPI 6.5 spec at:
+	18.3.2. ACPI Error Source
 
-Agreed, this rather sounds like #defines than an enum to me, too.
+In particular at GHES/GHESv2 table:
+	Table 18.10 Generic Hardware Error Source Structure
 
-  Thomas
+HEST source ID is actually a 16-bit value.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+---
+ hw/acpi/ghes-stub.c    | 2 +-
+ hw/acpi/ghes.c         | 2 +-
+ include/hw/acpi/ghes.h | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
+index c315de1802d6..2b64cbd2819a 100644
+--- a/hw/acpi/ghes-stub.c
++++ b/hw/acpi/ghes-stub.c
+@@ -11,7 +11,7 @@
+ #include "qemu/osdep.h"
+ #include "hw/acpi/ghes.h"
+ 
+-int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
++int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+ {
+     return -1;
+ }
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index 5f67322bf0f2..edc74c38bf8a 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -383,7 +383,7 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+     ags->present = true;
+ }
+ 
+-int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
++int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+ {
+     uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
+     uint64_t start_addr;
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index 50e3a25ea384..9295e46be25e 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -73,7 +73,7 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+                      const char *oem_id, const char *oem_table_id);
+ void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+                           GArray *hardware_errors);
+-int acpi_ghes_record_errors(uint8_t source_id, uint64_t error_physical_addr);
++int acpi_ghes_record_errors(uint16_t source_id, uint64_t error_physical_addr);
+ 
+ /**
+  * acpi_ghes_present: Report whether ACPI GHES table is present
+-- 
+2.47.1
 

@@ -1,205 +1,211 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp442297njb;
-        Wed, 4 Dec 2024 11:09:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUNGR5HacB0U0zHYdm4IAhsF4YzkYUTyxh4EWxllquV5sQycF/sgdFFxtCJDBwHxJNu8AQRrsrE8pV3WQ==@linaro.org
-X-Received: by 2002:a05:6000:401e:b0:385:e968:f189 with SMTP id ffacd0b85a97d-385fd5328a7mr6233677f8f.51.1733339398444;
-        Wed, 04 Dec 2024 11:09:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733339398; cv=none;
+Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp443063njb;
+        Wed, 4 Dec 2024 11:11:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXtdFC8tnyxQzj3S73GRgStyyQNTHU44CuT4fzZeUhXE/KjX3Gr4YP0XsWHYkmXDm7Ha03VQEexPJeo6Q==@linaro.org
+X-Received: by 2002:a05:6000:2d10:b0:385:fd07:85f8 with SMTP id ffacd0b85a97d-385fd3f21aamr4111384f8f.29.1733339462733;
+        Wed, 04 Dec 2024 11:11:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733339462; cv=none;
         d=google.com; s=arc-20240605;
-        b=SGSQzFlZZBvrUX4WRx8sW31uIQGF/qvKg/mSSEDpoi2HCqYHr1e1YySpgbVgnhknsj
-         alXtWTIkG1c70/bS4ZoZH9NiV4Osqbi0bNIAQ4PN3aPOCU+hzoOuuR9I2FmR0MA934om
-         KGDJLtKYn9QYoVTaOyldLKE7uZ6i7TUK2Qs7axheNyG8/lTUmE1wPYJo1RKP60rAeRqb
-         igKQ8TDqNgoD2FC5hwVSrGHJ5dOptrJiqR+PgWteXH7+DoXhrJb5vmik9XKse4IdqmhF
-         ZBMGFEhWLTZMo/sI8ZHhsJXs2WKYMcsvIdVZ8EMBQYVuIeoSVR6v2Ju59jxcn2jce4FB
-         fq8Q==
+        b=f3oyQfnBJ+NrMpoOp8/6Nz1yBfhj09bbwCTbvtvOJPIVSez8NxfAc05zenBP/h/a4v
+         vYXpGiARU5e0qbOorngHLo3SutBsMQB1+79LNioqxmYatbcwdkRziZChIel470DxDNzK
+         Jlnv0feJWpUkGYVo4ehxsmchl2JTtvBKddbR4jUA0nXsRkXXam+BLyCHLUKyniGhWK9I
+         ojCwdsAh6jdgzsryift7zsqtZlj9jayEHqgiezMFKwfsPwOX2oJNAwTzD5wcUzcovGWN
+         RDkgfWwqBD8mlwdhQlKrJYeHrUmvX9kkQZdxi3QZelJgAjJ4k3+h+k/nwT7JlgcHTSft
+         9LdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=bOngM2USHeFq8uTvg6lBb0tN7fu7f0bTGVR8zQJEEB8=;
-        fh=ny40lFFwdIC330+dahmNWi0akCGcloLXfjrKzeI+0Ks=;
-        b=AeV99yrPNKAaT5QjzBrTJvb14dcmKn16yX+f21dpWvWvtVxn+5MUdV9/O78jncSCI8
-         Nt1cfsybPzeKsDHIdOgvqv/deuvl46JhbfT0GIUfqX41kxfWvAsmhaArkcuXEK5Otxzs
-         JMPYld/FNH6I1a9KOO2ScWFqrCRYk36XvQ/dILtXIGwohZaCGGwfLRWzXiIjKkcJcPaG
-         1l674i3PcTXVhpNF6gevhoyKR00J8CRbc6MuwBohht8WHwmCjssNZP2mxOCCYr6EzxUm
-         raSqWtdWrZIEbNI/I3s7YgRxQC6cwyejG4y8KX7ZF8lixcwRxVsEYY8Gq/iqraT1V+Ao
-         nhNA==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=xJkr6X6iGm4jU0kNLf3h/3QCpkTdenPRAEhvG0eZ02w=;
+        fh=3JPv/Ppz28qUXfCKumoBQbq4lknX6uPyxTch5uDW9VI=;
+        b=HOrUtW/1WvDb09a52A+MWp/7C01ztYwc5sV1ygsXEkP0u/s2dhAe/BwLo6unooZnOj
+         Hr0MA+RmVKR6wcdf+x6GECTkHW4ZObI8rF0f3hcGsBTNlCz5UIeDWSZJUZsoDQDfoJ/o
+         /kvre8cMq7llYMD5NtG18HhuhDU2iO/8n8TINYkxroxeb1fDHRaE6y+xpbJhM5MXRpbO
+         cgujC8lpv1D40Ab0uj87RD2dZo0g16YmBboyhc0mDe+pN+hivPCMmVV75UvPoM222fBN
+         E9dGZDgIsd6z78mWlCqXDi56N2Nv6DjF+zBf0E2TkBTXaJ3Ny62XTJU/uvVGV1Cc17F2
+         Vj+A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ODIJYyGp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OhK7Cd3L;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <jean-philippe@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-385ebb9db68sor2076582f8f.9.2024.12.04.11.09.58
+        by mx.google.com with SMTPS id ffacd0b85a97d-385e9f88eb1sor2461084f8f.10.2024.12.04.11.11.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 04 Dec 2024 11:09:58 -0800 (PST)
+        Wed, 04 Dec 2024 11:11:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ODIJYyGp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OhK7Cd3L;
        spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733339398; x=1733944198; darn=linaro.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=bOngM2USHeFq8uTvg6lBb0tN7fu7f0bTGVR8zQJEEB8=;
-        b=ODIJYyGpHpfXMl//CQX/qQpiueFANO/cXQrAFnZ1S7iRIDX/Pzhd7rt5kb0VPTDmMa
-         V+14mLqgY/15AIJNaJ2YhxkROQFfHwKjHxnM9/VhSejf9WMERlSb3H0T2tzMYNRlyR8N
-         HmaIsPxam+XhWMNDbVTPNo8fdqInLjfAmhSn++91xc6NkRSOBIiwuCHtt0awixovmHG9
-         L0I+SWITUEraOGi6lqov2W9RsSIRXVs98QLgq5MmAsv3qDIUDZ29ij9x11V5bRmEvpTE
-         dX/ZyxEKH81eFasP7kiSgEUtABr/CN3DIHAVA4Lhn1RQeXwJb/HmAN9dmlu1LVLoaxul
-         1cbQ==
+        d=linaro.org; s=google; t=1733339462; x=1733944262; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=xJkr6X6iGm4jU0kNLf3h/3QCpkTdenPRAEhvG0eZ02w=;
+        b=OhK7Cd3LxyPaIOnbL2AXIR/DeiqgxpYZApVkyc7PiVahhkg5WkVzxGBeBsi/v90r9h
+         SslpBRVdd0E2Na4P6S/klqCxjEjX3E0CLnyGgZgOIrrdH96ONwA3WIhVJ7CtvJqM6voF
+         peGK4rn5Jk+5dQLNgmxOx0BWLphGx+kXc/wK9hUYYEYFH51pvKzBQmQIGMPRPYNC2SQM
+         F92/zFWe/icpQnd+LEB6DiEH0cIyqFY7vtMKNNNNzWV63MaFrooaPdhWt2pC+b4xzEQi
+         KkN77NCmgILRvsk/B2j3XRJG2w+OlgfL9OUT1Xe8CJWKKWGpHYNsy2SAEVhZF6F/esnF
+         DrhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733339398; x=1733944198;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bOngM2USHeFq8uTvg6lBb0tN7fu7f0bTGVR8zQJEEB8=;
-        b=b4UOFybXiAZutEHWSMblL5g2FYGT71RSuamo7kLuOEnzWthw8y3/JbaCFMdb3lx4iB
-         Womwx2pUlOS+h6qY6MRjJ4xALVka0V/aXeaA3xqn08cHwQWzI6nOMopUjmyhyikf9QVz
-         U2SoZPjv7BtXztDUOHycfjoZfo+YRD2eM4U45F/E26Ob8BLX32pBZXb1h3CI43vWDwjF
-         CJx6CTQLGVkHG0oOvH/vVLuCcAvHroKG47F51tt60XFjDrTPEKuBdIjGhn1xcP29/3V2
-         pZeRfqjq/NeFD7j4YK9D7hv6rdoM4LBHWyj+3VNIulnHF+5yMrb5INzVkzMX4UQ+Y04Y
-         PcUg==
-X-Forwarded-Encrypted: i=1; AJvYcCWlkO214kadjVwVZMZprg2mXiuVLxTeycAHuCXyNUWXUAYC3Tpqr1XcbWu4ch2vO4K5Z8r4t4sVr9w3oA==@linaro.org
-X-Gm-Message-State: AOJu0YzZIwlkVl2jTffiIJPn4fy5usYkgRMpT/DE1IJZYZL77VedItkD
-	YZGDIe4nICPjDwt9BAcgDYtbs0Rai3sXr6Mz+BmOYzYb5X0zWTYFwxmLoUtbejipqw==
-X-Gm-Gg: ASbGncu/Es+VYzbLV0olEQWKwBBKFFJNAwo+S2A3QSeuAm3ZYQNhXmiafgytZ2iujdp
-	vPKsM6sLEWmCloRqdIZSdK1etQZw7/TA8yHLGdCC36Kn4qrQyyaapYyp4LGIn69cFXlzkP7n7AS
-	/IJ2DWqclH0sU5dbZpDNd3wZuIfvFmVtsGKpAfb1FlhiZyKFYLJtTJJ546Rvx8xz0CK8a//N/aH
-	MWM5/jOjv/msH8nmD0eUAQ9vZyac6fmJ5C2423qC9xTK4TK
-X-Google-Smtp-Source: AGHT+IEysxLskTX7ub6F4QI9uApjoI3rJA+U0novnGuunCkTE/hNmntYybCKTu+FYjbWjcabq6TTBw==
-X-Received: by 2002:a05:6000:2a85:b0:382:49f9:74bb with SMTP id ffacd0b85a97d-385fd3f92f8mr5259423f8f.35.1733339397938;
-        Wed, 04 Dec 2024 11:09:57 -0800 (PST)
+        d=1e100.net; s=20230601; t=1733339462; x=1733944262;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=xJkr6X6iGm4jU0kNLf3h/3QCpkTdenPRAEhvG0eZ02w=;
+        b=WtBTGzOUFukvDZt+lYRUSKlYre1Z+monQo+seqIz7EMj+hzBE+HbHSkUgKRkwIXPYJ
+         jA+c042Sg3vY1Br4RrASzXFiKKZ6vOZ73+IKm6ARyASDbdMC9WqkSbF8e+0ED+AagU5Q
+         /izTexD9+O3tvAztHM2WLSi6alqRjDG17fnHKQ4tzTW696tY3UD42fPdi6n+XOk8KDk9
+         ZM2uHaae8F+NzIpEs9TIVIIl/XA/8OunGhWn9VezYjKSuTXv5MpO+AfbPXAejERkDpsH
+         eEdltZ4yyysDb/mO9PtUyVHnLYfUIqUxn/k9D0MB0w6DR6Hthy6SMhW3jshK9FsHTA1q
+         5kpA==
+X-Forwarded-Encrypted: i=1; AJvYcCUHLYB3MOSMK0dUiP03LnNfJJKb9VFGezoDhbKuMwc1rNgO9A2QfUW2xuWMWyA9EUJdiomLJkomq54qDw==@linaro.org
+X-Gm-Message-State: AOJu0YzuQPUvW6myMmnWhYrfapXqzSr3R8AvT0/SKY/qTqsTBXc1r6/J
+	8JMLA21tosoLxy65p1LEEy2MFxTDo2jwxaTJ9ZVN5RFirdI97pORx9mF5OvkIQYOPA==
+X-Gm-Gg: ASbGncsSuae8+oAAia/Zm0R++Z823ArlZ4/qhkVuZ9prFEQYPqJA9MMx3OyvwvaRzU5
+	+tl6duzyXm0J3hjI7W71breoqXXx+eKe3az6UZEKhP7xT6aiqInCeTJASnjC8RhH4QTG/iTxQfm
+	SFd3aDFqutGFR4MkgsL3KnarWHx4IwzwiYOIPoxV+Jpvc0nNs1QPUnk9b0tZkoO47d6Ip3FP7Cz
+	v//hJlQt8UQArd4KWHx2JYYQJ5Pm4gpGGfZEMZaRDKqM8xi
+X-Google-Smtp-Source: AGHT+IFSE7EbJ7GAFFLFXXCfbtDYu0IPP92EWaIzpH84TAUFzF3WLmk7cmqpWzWQfvclNGQGSrizKw==
+X-Received: by 2002:a5d:6c6d:0:b0:385:f984:2cbc with SMTP id ffacd0b85a97d-385fd3f2d32mr6248857f8f.34.1733339462119;
+        Wed, 04 Dec 2024 11:11:02 -0800 (PST)
 Return-Path: <jean-philippe@linaro.org>
 Received: from myrica ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-385e5b10478sm13531553f8f.73.2024.12.04.11.09.57
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d52c0bfasm34420985e9.32.2024.12.04.11.11.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 11:09:57 -0800 (PST)
-Date: Wed, 4 Dec 2024 19:10:16 +0000
+        Wed, 04 Dec 2024 11:11:01 -0800 (PST)
+Date: Wed, 4 Dec 2024 19:11:25 +0000
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
-	philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	alex.bennee@linaro.org, Eric Blake <eblake@redhat.com>,
-	Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, peter.maydell@linaro.org,
+	richard.henderson@linaro.org, philmd@linaro.org,
+	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.bennee@linaro.org,
+	Eric Blake <eblake@redhat.com>,
 	Eduardo Habkost <eduardo@habkost.net>
 Subject: Re: [PATCH v3 10/26] target/arm/kvm-rme: Add Realm Personalization
  Value parameter
-Message-ID: <20241204191016.GC2349278@myrica>
+Message-ID: <20241204191125.GD2349278@myrica>
 References: <20241125195626.856992-2-jean-philippe@linaro.org>
  <20241125195626.856992-12-jean-philippe@linaro.org>
  <87wmgqsbp1.fsf@pond.sub.org>
+ <Z0XDfyDWc3OZSoj0@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <87wmgqsbp1.fsf@pond.sub.org>
-X-TUID: awlb4eYExUPQ
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <Z0XDfyDWc3OZSoj0@redhat.com>
+X-TUID: Ox6oOzHfOjMW
 
-On Tue, Nov 26, 2024 at 08:20:42AM +0100, Markus Armbruster wrote:
-> > +# @personalization-value: Realm personalization value, as a 64-byte
-> > +#     hex string. This optional parameter allows to uniquely identify
-> > +#     the VM instance during attestation. (default: 0)
+On Tue, Nov 26, 2024 at 12:47:59PM +0000, Daniel P. Berrangé wrote:
+> On Tue, Nov 26, 2024 at 08:20:42AM +0100, Markus Armbruster wrote:
+> > Jean-Philippe Brucker <jean-philippe@linaro.org> writes:
+> > 
+> > > The Realm Personalization Value (RPV) is provided by the user to
+> > > distinguish Realms that have the same initial measurement.
+> > >
+> > > The user provides up to 64 hexadecimal bytes. They are stored into the
+> > > RPV in the same order, zero-padded on the right.
+> > >
+> > > Cc: Eric Blake <eblake@redhat.com>
+> > > Cc: Markus Armbruster <armbru@redhat.com>
+> > > Cc: Daniel P. Berrangé <berrange@redhat.com>
+> > > Cc: Eduardo Habkost <eduardo@habkost.net>
+> > > Acked-by: Markus Armbruster <armbru@redhat.com>
+> > > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > > ---
+> > > v2->v3: Fix documentation
+> > > ---
+> > >  qapi/qom.json        |  15 ++++++
+> > >  target/arm/kvm-rme.c | 111 +++++++++++++++++++++++++++++++++++++++++++
+> > >  2 files changed, 126 insertions(+)
+> > >
+> > > diff --git a/qapi/qom.json b/qapi/qom.json
+> > > index a8beeabf1f..f982850bca 100644
+> > > --- a/qapi/qom.json
+> > > +++ b/qapi/qom.json
+> > > @@ -1068,6 +1068,19 @@
+> > >    'data': { '*cpu-affinity': ['uint16'],
+> > >              '*node-affinity': ['uint16'] } }
+> > >  
+> > > +##
+> > > +# @RmeGuestProperties:
+> > > +#
+> > > +# Properties for rme-guest objects.
+> > > +#
+> > > +# @personalization-value: Realm personalization value, as a 64-byte
+> > > +#     hex string. This optional parameter allows to uniquely identify
+> > > +#     the VM instance during attestation. (default: 0)
+> > 
+> > QMP commonly uses base64 for encoding binary data.  Any particular
+> > reason to deviate?
+> > 
+> > Is the "hex string" to be mapped to binary in little or big endian?  Not
+> > an issue with base64.
 > 
-> QMP commonly uses base64 for encoding binary data.  Any particular
-> reason to deviate?
+> Agreed, using base64 is preferrable for consistency.
 
-No, I think base64 is fine for this
+Ack
 
 > 
-> Is the "hex string" to be mapped to binary in little or big endian?  Not
-> an issue with base64.
+> > 
+> > Nitpick: (default: all-zero), please, for consistency with similar
+> > documentation in SevSnpGuestProperties.
+> > 
+> > > +#
+> > > +# Since: 9.3
+> 
+> There is never any x.3 version of QEMU, as we bump the major
+> version once a year. IOW, next release you could target this
+> for will be 10.0
 
-(It was big endian with padding on the right)
-
-> 
-> Nitpick: (default: all-zero), please, for consistency with similar
-> documentation in SevSnpGuestProperties.
-> 
-> > +#
-> > +# Since: 9.3
-> > +##
-> > +{ 'struct': 'RmeGuestProperties',
-> > +  'data': { '*personalization-value': 'str' } }
-> >  
-> >  ##
-> >  # @ObjectType:
-> > @@ -1121,6 +1134,7 @@
-> >      { 'name': 'pr-manager-helper',
-> >        'if': 'CONFIG_LINUX' },
-> >      'qtest',
-> > +    'rme-guest',
-> >      'rng-builtin',
-> >      'rng-egd',
-> >      { 'name': 'rng-random',
-> 
-> The commit message claims the patch adds a parameter.  It actually adds
-> an entire object type.
-
-Yes as Daniel noted this belongs in an earlier patch
-
-> 
-> > @@ -1195,6 +1209,7 @@
-> >        'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
-> >                                        'if': 'CONFIG_LINUX' },
-> >        'qtest':                      'QtestProperties',
-> > +      'rme-guest':                  'RmeGuestProperties',
-> >        'rng-builtin':                'RngProperties',
-> >        'rng-egd':                    'RngEgdProperties',
-> >        'rng-random':                 { 'type': 'RngRandomProperties',
-> > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> > index 83a29421df..0be55867ee 100644
-> > --- a/target/arm/kvm-rme.c
-> > +++ b/target/arm/kvm-rme.c
-> > @@ -23,11 +23,15 @@ OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
-> >  
-> >  #define RME_PAGE_SIZE qemu_real_host_page_size()
-> >  
-> > +#define RME_MAX_CFG         1
-> > +
-> >  struct RmeGuest {
-> >      ConfidentialGuestSupport parent_obj;
-> >      Notifier rom_load_notifier;
-> >      GSList *ram_regions;
-> >  
-> > +    uint8_t *personalization_value;
-> > +
-> >      hwaddr ram_base;
-> >      size_t ram_size;
-> >  };
-> > @@ -43,6 +47,48 @@ typedef struct {
-> >  
-> >  static RmeGuest *rme_guest;
-> >  
-> > +static int rme_configure_one(RmeGuest *guest, uint32_t cfg, Error **errp)
-> > +{
-> > +    int ret;
-> > +    const char *cfg_str;
-> > +    struct kvm_cap_arm_rme_config_item args = {
-> > +        .cfg = cfg,
-> > +    };
-> > +
-> > +    switch (cfg) {
-> > +    case KVM_CAP_ARM_RME_CFG_RPV:
-> > +        if (!guest->personalization_value) {
-> > +            return 0;
-> > +        }
-> > +        memcpy(args.rpv, guest->personalization_value, KVM_CAP_ARM_RME_RPV_SIZE);
-> > +        cfg_str = "personalization value";
-> > +        break;
-> > +    default:
-> > +        g_assert_not_reached();
-> > +    }
-> 
-> This function gets called with @cfg arguments 0 .. RME_MAX_CFG-1, from
-> rme_configure() right below.  RME_MAX_CFG is defined to 1 above.
-> 
-> The switch assumes KVM_CAP_ARM_RME_CFG_RPV is zero.  Such assumptions
-> are ideally avoided, and alternatively checked at build time.
-
-Ok, I'll change this
+Ok good to know
 
 Thanks,
 Jean
+
+> 
+> > > +##
+> > > +{ 'struct': 'RmeGuestProperties',
+> > > +  'data': { '*personalization-value': 'str' } }
+> > >  
+> > >  ##
+> > >  # @ObjectType:
+> > > @@ -1121,6 +1134,7 @@
+> > >      { 'name': 'pr-manager-helper',
+> > >        'if': 'CONFIG_LINUX' },
+> > >      'qtest',
+> > > +    'rme-guest',
+> > >      'rng-builtin',
+> > >      'rng-egd',
+> > >      { 'name': 'rng-random',
+> > 
+> > The commit message claims the patch adds a parameter.  It actually adds
+> > an entire object type.
+> 
+> The object should be added to qom.json earlier in this series when
+> the RmeGuest class is defined, then this patch would merely be adding
+> the parameter.
+> 
+> > 
+> > > @@ -1195,6 +1209,7 @@
+> > >        'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
+> > >                                        'if': 'CONFIG_LINUX' },
+> > >        'qtest':                      'QtestProperties',
+> > > +      'rme-guest':                  'RmeGuestProperties',
+> > >        'rng-builtin':                'RngProperties',
+> > >        'rng-egd':                    'RngEgdProperties',
+> > >        'rng-random':                 { 'type': 'RngRandomProperties',
+> 
+> With regards,
+> Daniel
+> -- 
+> |: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+> |: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+> |: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> 

@@ -1,553 +1,201 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp48938njb;
-        Thu, 5 Dec 2024 03:34:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVcFE+8lfsenRiNcD5eHSnpqu/LeTazXgytsr+eAcTYHmPkw5DycP9w3243HsBSIIhkpHYogOZutkLW8A==@linaro.org
-X-Google-Smtp-Source: AGHT+IF9jtks0x2xbDvxFvNZuMP/hcICFk9G/HuHoN/XoYHTkoxlHSjM6dYwNYNS3hWVoCR6XuX/
-X-Received: by 2002:ad4:5aa1:0:b0:6d8:a64d:da51 with SMTP id 6a1803df08f44-6d8b72e0333mr161734476d6.8.1733398462947;
-        Thu, 05 Dec 2024 03:34:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733398462; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp84329njb;
+        Thu, 5 Dec 2024 04:32:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWB7AEduAFFjeSvYPolT7QWsGenLEU33DKQiLdEqPmpX9NNf7jwW8bVeEBAfhpObN/XBsaSrk+ATX29hw==@linaro.org
+X-Received: by 2002:a05:6000:1fab:b0:385:f9db:3c4c with SMTP id ffacd0b85a97d-385fd3f237cmr9353423f8f.9.1733401972972;
+        Thu, 05 Dec 2024 04:32:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733401972; cv=none;
         d=google.com; s=arc-20240605;
-        b=OceHcN7PIWX9gkOduxD155znT6lsLnZE2S9zaQ2UATl6lBJLSTCyJ88tKLcN87XQGZ
-         Lz8i9QlxVMnp5ZJfXUq0Tz5D7yDoYt96TPDvq8kKOJtukbproBLpZnE0L36sPil3c6da
-         Lo/6eYEnbY8uw6pj2mJ7ty2+hb3p13wJw5WIKH7wmd9dVVt4XpeIfG46QpBV0Xpg+NsH
-         JoBgKsoxin/XjLpUNt6OoSWtSXAF7xhvPwBsOCzZ7XQnIjKY2dzSlSFsFuGtiJyUTTkP
-         XKX7r5LIPiFQnICTDxc1lvVvpZny9tqu8hWflfv+QiRQKO/ux3TSP/K1UtZ9RbnAOeq4
-         2GPQ==
+        b=ewjaHFLU72P3UdBtHwdH1yO1WYDUUpIu3odnMTTbet9KQDnSO15QIwMmhxoDq6uuLi
+         Pgm0P02iSgYxWGUtSX4U+WL0NA+4hMZXNYb/fLrMm/Yi/hcmJW9DbW9ooZB2VpVnuZ2K
+         HkdHhENq2DXS6mY8SJGOcOcUU8Z2k836DMtZ9YzQfHw/sWinvtlPa2uAjWObbBO7udax
+         dTPGotIVqeojinvRDUhWe0J+x+vCXxPMC+89uplOVEG0mCTlgm7iIlNI7Ne2TqbOq/F8
+         Ll2G0cdO+X4oREu0WHEz/AWdvTLK/203IJepMTy2M1wAj6hc3la5HOwYY8+PIKkDA8bD
+         GfaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=tNgO0USsu4Lnd05SB+M1YB3FnzM57oIe76OJNs8HPG8=;
-        fh=fQPx/rTyKaD3jV35R7mQtKM8leaazPAR4Yu7rSDGHV8=;
-        b=bE45zNymfjax4R/y3u8Ba/fO37iXzP5eE4q1IHqpyKtnhg4odFl+wQDkrZk8dXG5yh
-         J/iHVB7djXZde4qrSlCf0F6zSyxzwYkAIkDSqEP/B8sbdJyH9DXcDNDaOF7wztZ1SpXW
-         W1Qq81crOR5K8vmgdvaUeV+8w/Hk3imQez0zb40AUBtRCpxBCtSI7+NllsYDiyNW1uv7
-         KtSoYnAYvE7QZ0moe9cP0dp8/SQIb1/cMTdz45vn0HYiYuW0qezV/kWdpAhdWW2YN+Ia
-         qChuEZQ+tFKB3pMQ7SHBa+iQxT5AFaxMdITO5XCr2omV/9T3Fq9/MFmyf3UXqz8bDHyd
-         yKeQ==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=7QatEww3p5uincMuCHGM2HklsAUuluoA0dTIGETLpfY=;
+        fh=WZEzW2I1F47EGfpGdtezbEgO3ooTckmaxOVG2hycXM4=;
+        b=VPEprLtMUeMHGJomLEMyaZDvLRBcg+7lrvqYr/TWsy9y0j7QyBVmRf9UbD7emq7MYD
+         emIcmdvf0XpL4GpD0L3fbYHp32Kb0I/J2nTR0QzviVF2G8Q3I+CTK4GdKleWdaCrzv6D
+         vu+Xv9sUcHgTuNrp8vghy1RyOkE7jfjAOBy5EVoAc+Wfks4a6n79aAnCZLGUVgBo5LIU
+         ia0FvLQidROyhAZyUpKie9lfSjxr4X0+paUFnyWRuXnlJLwiKZoUaVaGx+cL5a3KAO8n
+         goRvv8Jiz8O/l/IZNMAfYpzd1rxbLy/JCcOjRMYd/1BOHtNN+8odBSiJ7Va5AaR1pKLt
+         jYTA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8da67b206si14143106d6.41.2024.12.05.03.34.22
+       dkim=pass header.i=@linaro.org header.s=google header.b=yarTESK+;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <jean-philippe@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-3861ecf33ecsor410465f8f.1.2024.12.05.04.32.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Dec 2024 03:34:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 05 Dec 2024 04:32:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tJA7c-0006Wf-1l; Thu, 05 Dec 2024 06:34:17 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1tJA7Q-0006Uh-52
- for qemu-arm@nongnu.org; Thu, 05 Dec 2024 06:34:06 -0500
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>) id 1tJA7N-0001QR-EM
- for qemu-arm@nongnu.org; Thu, 05 Dec 2024 06:34:03 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwD3_2+ej1FnceplBw--.39188S2;
- Thu, 05 Dec 2024 19:33:50 +0800 (CST)
-Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwAHW3eYj1FnCEljAA--.7475S4;
- Thu, 05 Dec 2024 19:33:49 +0800 (CST)
-From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-To: jonathan.cameron@huawei.com, fan.ni@samsung.com, mst@redhat.com,
- marcel.apfelbaum@gmail.com
-Cc: marcin.juszkiewicz@linaro.org, qemu-arm@nongnu.org,
- Yuquan Wang <wangyuquan1236@phytium.com.cn>
-Subject: [PATCH 1/1] cxl/cxl-host: Support creation of a new CXL Host Bridge
-Date: Thu,  5 Dec 2024 19:33:30 +0800
-Message-Id: <20241205113330.818888-2-wangyuquan1236@phytium.com.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241205113330.818888-1-wangyuquan1236@phytium.com.cn>
-References: <20241205113330.818888-1-wangyuquan1236@phytium.com.cn>
+       dkim=pass header.i=@linaro.org header.s=google header.b=yarTESK+;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733401972; x=1734006772; darn=linaro.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=7QatEww3p5uincMuCHGM2HklsAUuluoA0dTIGETLpfY=;
+        b=yarTESK+s2u9xtxkIbhPjrXTVpsfIlu1RwSsj4SqkeXVsUe5dug7AELEVEwWy5xHYf
+         TMz2ZdFC6frVmYcKQY+RLLhH1Zg7b4KEH2cufAas8hjHi7W8vTav7k5i0QfGcN20SxbH
+         92Wn6BUwDVlj/pypqiazRNMuB23H2nxPKHCWgcFReKQpQpyK3GRiikZnA7OhV7KFgtni
+         EZR9CV2s3YESaB+tFToitDNXgreg/grju3hUBDGSlbpLd2Xi1iYGv7UCUQJcSDxQkqcq
+         xvBu0gCI+PAHnrMyO/wlOmHXIsWDRv683Jdd+KCg4ocV52FffrrYSs87e4FMuevtF+pn
+         Grew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733401972; x=1734006772;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=7QatEww3p5uincMuCHGM2HklsAUuluoA0dTIGETLpfY=;
+        b=e/qDWcHrURI2JTrG/FzTX3d6RDmyx/j/mnZhhVWSUJ/HhjXtV2NhFQClSY2iOVI31O
+         YaEHb2wVGoP5TGpCJkOmekUrNthmcSrsTqWs6u/0FgNJ238FD+hVgopxkJjUXozmotpR
+         TgxBu3tQ9BJMzcBeJs5mOcV4EpbDlL2ZZe5NPr8HwK1neJZZ3Z1AU8d5NnF7zkdKucUR
+         95iZiJxNF1lci1YOrNwDqwVgtcShuk41VaZ9OAlx5hmHyuOPEbQCdzMKp1IUO4tVpZM3
+         du6wVrvJoOFeMqhHuxIIQTMBpFuWM5KjZPvcMKDEjBLECb3z2HIqcyubv7kGO0cSgc0T
+         PkEg==
+X-Forwarded-Encrypted: i=1; AJvYcCV2AicVcRcSXxZgs1+B3PQXq1GD3HtFkeSSufygjoyMmsmOuiVAvi/yoQtOl1puAiJaVoMKvIDVfzysjg==@linaro.org
+X-Gm-Message-State: AOJu0YyWMP2vpK/vA7BEKHUK7E7llCDUGntPdiMgdVbypwNnHCrFPMJW
+	AzYmOHT3d8jBRUCsJGkuHzikjPSw6v/guYU4/4ajzg7UdCJ9Eztg5W6XZRSa6cK0Qw==
+X-Gm-Gg: ASbGncvwty24qil0OaG6tZq3YjynJLSMDHbzMpAdIYgAzj1DHRkfKaNxXKUNwyvO0km
+	SU+AvN0EBG9F0CXj8MpVlqUcqKJAn2dh7OUvy4E2TBq3pLfrMjuhtcweHpm6SMzgJ/iIsYC92u1
+	wqf0qPC3yb8Txs8pY/wppPwtM6wxyyHwOi8uOH0uWaISfNt3iWvWkL2AilCpzdJouWZ8BelM4LU
+	2THQmPg/sA/izz3hTEaJb/8zRfu16mB9ZIZNTyQzxwezziq
+X-Google-Smtp-Source: AGHT+IGar0137GZGyq7fuSkakPayO2Iyooo2G413DupBnmFkgyBbqvY41v8oylXSRRfL9xdD31tQeQ==
+X-Received: by 2002:a05:6000:1faa:b0:386:1c13:30d5 with SMTP id ffacd0b85a97d-3861c133159mr2116689f8f.7.1733401972303;
+        Thu, 05 Dec 2024 04:32:52 -0800 (PST)
+Return-Path: <jean-philippe@linaro.org>
+Received: from myrica ([2.221.137.100])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434da113508sm22623965e9.35.2024.12.05.04.32.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Dec 2024 04:32:51 -0800 (PST)
+Date: Thu, 5 Dec 2024 12:33:16 +0000
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Stefan Berger <stefanb@linux.ibm.com>
+Cc: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+	peter.maydell@linaro.org, richard.henderson@linaro.org,
+	philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	alex.bennee@linaro.org, Stefan Berger <stefanb@linux.vnet.ibm.com>
+Subject: Re: [RFC PATCH v3 25/26] target/arm/kvm-rme: Add measurement log
+Message-ID: <20241205123316.GA567753@myrica>
+References: <20241125195626.856992-2-jean-philippe@linaro.org>
+ <20241125195626.856992-27-jean-philippe@linaro.org>
+ <02b90518-2996-4231-bee9-43ce313669b0@linux.ibm.com>
+ <Z0XREyMovNyB4s6t@redhat.com>
+ <20241126162149.GC956991@myrica>
+ <d3d73795-3f59-490c-9e54-c6c358af62d0@linux.ibm.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwAHW3eYj1FnCEljAA--.7475S4
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAKAWdQsnoFiQAFs8
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvAXoW3KFyDCF1DKrykCFyxWry5XFb_yoW8Gw1xto
- W3Xa45Xr48JF1fCFyvkwnayr9rGrWUKF4rXF4FkFWqk3W7CwsxX348tan3Ca9xKF1ftFZ8
- WrWfA343GFZ7AF18n29KB7ZKAUJUUUU5529EdanIXcx71UUUUU7KY7ZEXasCq-sGcSsGvf
- J3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UU
- UUUUUUU==
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TVvKQFzgJWG/
+In-Reply-To: <d3d73795-3f59-490c-9e54-c6c358af62d0@linux.ibm.com>
+X-TUID: sL+xJc7lTmvW
 
-This work defines a new cxl host bridge type (TYPE_CXL_HOST). This
-could be considered as a prototype of an independent cxl host bridge
-which combines gpex features (ecam, mmio windows & irq) and pxb-cxl
-features(CHBCR) at meanwhile.
+On Mon, Dec 02, 2024 at 10:58:01AM -0500, Stefan Berger wrote:
+> 
+> 
+> On 11/26/24 11:21 AM, Jean-Philippe Brucker wrote:
+> > On Tue, Nov 26, 2024 at 01:45:55PM +0000, Daniel P. Berrangé wrote:
+> > > On Mon, Nov 25, 2024 at 05:23:44PM -0500, Stefan Berger wrote:
+> > > > 
+> > > > 
+> > > > On 11/25/24 2:56 PM, Jean-Philippe Brucker wrote:
+> > > > > Create an event log, in the format defined by Trusted Computing Group
+> > > > > for TPM2. It contains information about the VMM, the Realm parameters,
+> > > > > any data loaded into guest memory before boot and the initial vCPU
+> > > > > state.
+> > > > > 
+> > > > > The guest can access this log from RAM and send it to a verifier, to
+> > > > > help the verifier independently compute the Realm Initial Measurement,
+> > > > > and check that the data we load into guest RAM is known-good images.
+> > > > > Without this log, the verifier has to guess where everything is loaded>
+> > > > and in what order.
+> > > > 
+> > > > Typically these logs are backed by extensions of TPM PCRs and when you send
+> > > > a log to a verifier you send a TPM quote along with it for the verifer to
+> > > > replay the log and check the TPM quote. Also, early code in the firmware is
+> > > > typically serving as a root of trust that starts the chain of measurements
+> > > > of code and data, first measuring itself and then other parts of the
+> > > > firmware before it jumps into the other parts. Now here you seem to just
+> > > > have a log and no PCR extensions and therefore no quote over PCRs can be
+> > > > used.
+> > 
+> > Indeed, in our case it's the trusted hypervisor (RMM) that provides the
+> > equivalent to TPM quote and PCRs. In more details:
+> > 
+> > 1. QEMU loads images into guest RAM by calling KVM, which calls RMM.
+> > 2. RMM calculates a hash of the image content, adds it to a rolling hash
+> >     the "Realm Initial Measurement" (RIM), which I believe is equivalent to
+> >     a PCR.
+> 
+> I am not familiar with RIM. A link to read more about it would be helpful.
 
-The root bus path of CXL_HOST is "0001:00", that would not affect the
-original pcie host topology. In the previous, the pxb-cxl-host with
-any cxl root ports and cxl endpoint devices would occupy the BDF
-number of the original pcie domain. This new type provide a solution
-to resolve the problem.
+The "Learn the architecture" documentation might be a good introduction
+https://developer.arm.com/documentation/den0127/0200/Overview
+In particular the part about Realm creation:
+https://developer.arm.com/documentation/den0127/0200/Realm-management/Realm-creation-and-attestation
 
-Also the CXLFixedWindow struct adds a new member 'target_chb' to
-record the target list of CXLHostBridge. And necessary is to adjust
-the logic of 'cxl_cfmws_find_device' and 'cxl_fmws_link_targets' to
-allow different types of cxl host bridge.
+The RMM specification describes exactly how the RIM is calculated, but
+is less palatable:
+https://developer.arm.com/documentation/den0137/1-0rel0/?lang=en
+A7.1.1 Realm Initial Measurement
 
-Move 'cxl_get_hb_cstate' & 'cxl_get_hb_passthrough' from pxb code
-into cxl-host code.
+More specialized resource are the attestation token documentation:
+[1] https://datatracker.ietf.org/doc/html/draft-ffm-rats-cca-token-00
+and CCA Security Model:
+https://developer.arm.com/documentation/DEN0096/latest/
 
-Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
----
- hw/cxl/cxl-host-stubs.c             |   2 +
- hw/cxl/cxl-host.c                   | 220 ++++++++++++++++++++++++++--
- hw/pci-bridge/pci_expander_bridge.c |  20 +--
- include/hw/cxl/cxl.h                |  23 +++
- include/hw/cxl/cxl_component.h      |   4 +-
- include/hw/cxl/cxl_host.h           |   6 +
- 6 files changed, 242 insertions(+), 33 deletions(-)
+> 
+> > 3. During remote attestation, the guest sends evidence containing this RIM
+> >     signed by the root of trust, along with a signed token identifying the
+> >     platform (hardware, firmware, RMM).
+> 
+> Is this a well known manufacturer key that one would expect for signature
+> verification or is it locally created?
 
-diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
-index cae4afcdde..aea94933ba 100644
---- a/hw/cxl/cxl-host-stubs.c
-+++ b/hw/cxl/cxl-host-stubs.c
-@@ -11,5 +11,7 @@
- void cxl_fmws_link_targets(CXLState *stat, Error **errp) {};
- void cxl_machine_init(Object *obj, CXLState *state) {};
- void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp) {};
-+void cxl_fixed_memory_window_config(CXLState *cxl_state,
-+                        CXLFixedMemoryWindowOptions *object, Error **errp) {};
- 
- const MemoryRegionOps cfmws_ops;
-diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
-index e9f2543c43..81a5948874 100644
---- a/hw/cxl/cxl-host.c
-+++ b/hw/cxl/cxl-host.c
-@@ -16,15 +16,37 @@
- #include "qapi/qapi-visit-machine.h"
- #include "hw/cxl/cxl.h"
- #include "hw/cxl/cxl_host.h"
-+#include "hw/irq.h"
- #include "hw/pci/pci_bus.h"
- #include "hw/pci/pci_bridge.h"
- #include "hw/pci/pci_host.h"
- #include "hw/pci/pcie_port.h"
- #include "hw/pci-bridge/pci_expander_bridge.h"
- 
--static void cxl_fixed_memory_window_config(CXLState *cxl_state,
--                                           CXLFixedMemoryWindowOptions *object,
--                                           Error **errp)
-+CXLComponentState *cxl_get_hb_cstate(PCIHostState *hb, int type)
-+{
-+    if (type == 0) {
-+        CXLHost *pxbhost = PXB_CXL_HOST(hb);
-+        return &pxbhost->cxl_cstate;
-+    } else {
-+        CXLHostBridge *cxlhost = CXL_HOST(hb);
-+        return &cxlhost->cxl_cstate;
-+    }
-+}
-+
-+bool cxl_get_hb_passthrough(PCIHostState *hb, int type)
-+{
-+    if (type == 0) {
-+        CXLHost *pxbhost = PXB_CXL_HOST(hb);
-+        return pxbhost->passthrough;
-+    } else {
-+        return false;
-+    }
-+}
-+
-+void cxl_fixed_memory_window_config(CXLState *cxl_state,
-+                                    CXLFixedMemoryWindowOptions *object,
-+                                    Error **errp)
- {
-     ERRP_GUARD();
-     g_autofree CXLFixedWindow *fw = g_malloc0(sizeof(*fw));
-@@ -81,18 +103,24 @@ void cxl_fmws_link_targets(CXLState *cxl_state, Error **errp)
-             int i;
- 
-             for (i = 0; i < fw->num_targets; i++) {
--                Object *o;
-+                Object *pxb_cxl, *cxl_host;
-                 bool ambig;
- 
--                o = object_resolve_path_type(fw->targets[i],
-+                pxb_cxl = object_resolve_path_type(fw->targets[i],
-                                              TYPE_PXB_CXL_DEV,
-                                              &ambig);
--                if (!o) {
--                    error_setg(errp, "Could not resolve CXLFM target %s",
--                               fw->targets[i]);
-+                if (!pxb_cxl) {
-+                    cxl_host = object_resolve_path_type(fw->targets[i],
-+                                             TYPE_CXL_HOST,
-+                                             &ambig);
-+                    if (!cxl_host) {
-+                        error_setg(errp, "Could not resolve CXLFM target %s",
-+                                   fw->targets[i]);
-                     return;
-+                    }
-+                    fw->target_chb[i] = CXL_HOST(cxl_host);
-                 }
--                fw->target_hbs[i] = PXB_CXL_DEV(o);
-+                fw->target_hbs[i] = PXB_CXL_DEV(pxb_cxl);
-             }
-         }
-     }
-@@ -162,23 +190,36 @@ static PCIDevice *cxl_cfmws_find_device(CXLFixedWindow *fw, hwaddr addr)
-     uint8_t target;
-     bool target_found;
-     PCIDevice *rp, *d;
-+    int type;
- 
-     /* Address is relative to memory region. Convert to HPA */
-     addr += fw->base;
- 
-     rb_index = (addr / cxl_decode_ig(fw->enc_int_gran)) % fw->num_targets;
--    hb = PCI_HOST_BRIDGE(fw->target_hbs[rb_index]->cxl_host_bridge);
--    if (!hb || !hb->bus || !pci_bus_is_cxl(hb->bus)) {
--        return NULL;
-+    if (fw->target_chb[rb_index]) {
-+        type = CXL_HOST_BRIDGE_TYPE;
-+        hb = PCI_HOST_BRIDGE(fw->target_chb[rb_index]);
-+        CXLHostBridge *host = fw->target_chb[rb_index];
-+
-+        hb_cstate = &host->cxl_cstate;
-+        cache_mem = hb_cstate->crb.cache_mem_registers;
-+        target_found = cxl_hdm_find_target(cache_mem, addr, &target);
-+        rp = pcie_find_port_by_pn(hb->bus, target);
-+    } else {
-+        type = PXB_CXL_HOST_TYPE;
-+        hb = PCI_HOST_BRIDGE(fw->target_hbs[rb_index]->cxl_host_bridge);
-+        if (!hb || !hb->bus || !pci_bus_is_cxl(hb->bus)) {
-+            return NULL;
-+        }
-     }
- 
--    if (cxl_get_hb_passthrough(hb)) {
-+    if (cxl_get_hb_passthrough(hb, type)) {
-         rp = pcie_find_port_first(hb->bus);
-         if (!rp) {
-             return NULL;
-         }
-     } else {
--        hb_cstate = cxl_get_hb_cstate(hb);
-+        hb_cstate = cxl_get_hb_cstate(hb, type);
-         if (!hb_cstate) {
-             return NULL;
-         }
-@@ -372,3 +413,154 @@ void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp)
-         }
-     }
- }
-+
-+static void cxl_host_set_irq(void *opaque, int irq_num, int level)
-+{
-+    CXLHostBridge *host = opaque;
-+
-+    qemu_set_irq(host->irq[irq_num], level);
-+}
-+
-+int cxl_host_set_irq_num(CXLHostBridge *host, int index, int gsi)
-+{
-+    if (index >= CXL_HOST_NUM_IRQS) {
-+        return -EINVAL;
-+    }
-+
-+    host->irq_num[index] = gsi;
-+    return 0;
-+}
-+
-+static PCIINTxRoute cxl_host_route_intx_pin_to_irq(void *opaque, int pin)
-+{
-+    PCIINTxRoute route;
-+    CXLHostBridge *host = opaque;
-+    int gsi = host->irq_num[pin];
-+
-+    route.irq = gsi;
-+    if (gsi < 0) {
-+        route.mode = PCI_INTX_DISABLED;
-+    } else {
-+        route.mode = PCI_INTX_ENABLED;
-+    }
-+
-+    return route;
-+}
-+
-+static const char *cxl_host_root_bus_path(PCIHostState *host_bridge,
-+                                          PCIBus *rootbus)
-+{
-+    return "0001:00";
-+}
-+
-+void cxl_host_hook_up_registers(CXLState *cxl_state, CXLHostBridge *host,
-+                                Error **errp)
-+{
-+    CXLComponentState *cxl_cstate = &host->cxl_cstate;
-+    struct MemoryRegion *mr = &cxl_cstate->crb.component_registers;
-+    hwaddr offset;
-+
-+    offset = memory_region_size(mr) * cxl_state->next_mr_idx;
-+    if (offset > memory_region_size(&cxl_state->host_mr)) {
-+        error_setg(errp, "Insufficient space for sbsa cxl host register space");
-+        return;
-+    }
-+
-+    memory_region_add_subregion(&cxl_state->host_mr, offset, mr);
-+    cxl_state->next_mr_idx++;
-+}
-+
-+static void cxl_host_reset(CXLHostBridge *host)
-+{
-+    CXLComponentState *cxl_cstate = &host->cxl_cstate;
-+    uint32_t *reg_state = cxl_cstate->crb.cache_mem_registers;
-+    uint32_t *write_msk = cxl_cstate->crb.cache_mem_regs_write_mask;
-+
-+    cxl_component_register_init_common(reg_state, write_msk, CXL2_RC);
-+
-+    ARRAY_FIELD_DP32(reg_state, CXL_HDM_DECODER_CAPABILITY, TARGET_COUNT,
-+                     8);
-+}
-+
-+static void cxl_host_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    CXLHostBridge *host = CXL_HOST(dev);
-+    CXLComponentState *cxl_cstate = &host->cxl_cstate;
-+    struct MemoryRegion *mr = &cxl_cstate->crb.component_registers;
-+    PCIBus *cxlbus;
-+    PCIHostState *pci = PCI_HOST_BRIDGE(dev);
-+    PCIExpressHost *pex = PCIE_HOST_BRIDGE(dev);
-+    int i;
-+
-+    /* CHBCR MMIO init */
-+    cxl_host_reset(host);
-+    cxl_component_register_block_init(OBJECT(dev), cxl_cstate, TYPE_CXL_HOST);
-+    sysbus_init_mmio(sbd, mr);
-+
-+    /* MMFG window init */
-+    pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
-+    sysbus_init_mmio(sbd, &pex->mmio);
-+
-+    /* mmio window init */
-+    memory_region_init(&host->io_mmio, OBJECT(host), "cxl_host_mmio",
-+                        UINT64_MAX);
-+
-+    memory_region_init_io(&host->io_mmio_window, OBJECT(host),
-+                              &unassigned_io_ops, OBJECT(host),
-+                              "cxl_host_mmio_window", UINT64_MAX);
-+
-+    memory_region_add_subregion(&host->io_mmio_window, 0, &host->io_mmio);
-+    sysbus_init_mmio(sbd, &host->io_mmio_window);
-+
-+    /* ioport window init, 64K is the legacy size in x86 */
-+    memory_region_init(&host->io_ioport, OBJECT(host), "cxl_host_ioport",
-+                        64 * 1024);
-+
-+    memory_region_init_io(&host->io_ioport_window, OBJECT(host),
-+                              &unassigned_io_ops, OBJECT(host),
-+                              "cxl_host_ioport_window", 64 * 1024);
-+
-+    memory_region_add_subregion(&host->io_ioport_window, 0, &host->io_ioport);
-+    sysbus_init_mmio(sbd, &host->io_ioport_window);
-+
-+    /* PCIe host bridge use 4 legacy IRQ lines */
-+    for (i = 0; i < CXL_HOST_NUM_IRQS; i++) {
-+        sysbus_init_irq(sbd, &host->irq[i]);
-+        host->irq_num[i] = -1;
-+    }
-+
-+    pci->bus = pci_register_root_bus(dev, "cxlhost.0", cxl_host_set_irq,
-+                                 pci_swizzle_map_irq_fn, host, &host->io_mmio,
-+                                 &host->io_ioport, 0, 4, TYPE_CXL_BUS);
-+    cxlbus = pci->bus;
-+    cxlbus->flags |= PCI_BUS_CXL;
-+
-+    pci_bus_set_route_irq_fn(pci->bus, cxl_host_route_intx_pin_to_irq);
-+}
-+
-+static void cxl_host_class_init(ObjectClass *class, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(class);
-+    PCIHostBridgeClass *hc = PCI_HOST_BRIDGE_CLASS(class);
-+
-+    hc->root_bus_path = cxl_host_root_bus_path;
-+    dc->realize = cxl_host_realize;
-+    dc->desc = "CXL Host Bridge";
-+    set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
-+    dc->fw_name = "cxl";
-+}
-+
-+static const TypeInfo cxl_host_info = {
-+    .name          = TYPE_CXL_HOST,
-+    .parent        = TYPE_PCIE_HOST_BRIDGE,
-+    .instance_size = sizeof(CXLHostBridge),
-+    .class_init    = cxl_host_class_init,
-+};
-+
-+static void cxl_host_register(void)
-+{
-+    type_register_static(&cxl_host_info);
-+}
-+
-+type_init(cxl_host_register)
-diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
-index 07d411cff5..2f1b26256b 100644
---- a/hw/pci-bridge/pci_expander_bridge.c
-+++ b/hw/pci-bridge/pci_expander_bridge.c
-@@ -56,20 +56,6 @@ static GList *pxb_dev_list;
- 
- #define TYPE_PXB_HOST "pxb-host"
- 
--CXLComponentState *cxl_get_hb_cstate(PCIHostState *hb)
--{
--    CXLHost *host = PXB_CXL_HOST(hb);
--
--    return &host->cxl_cstate;
--}
--
--bool cxl_get_hb_passthrough(PCIHostState *hb)
--{
--    CXLHost *host = PXB_CXL_HOST(hb);
--
--    return host->passthrough;
--}
--
- static int pxb_bus_num(PCIBus *bus)
- {
-     PXBDev *pxb = PXB_DEV(bus->parent_dev);
-@@ -240,7 +226,7 @@ static void pxb_cxl_host_class_init(ObjectClass *class, void *data)
-  * This is a device to handle the MMIO for a CXL host bridge. It does nothing
-  * else.
-  */
--static const TypeInfo cxl_host_info = {
-+static const TypeInfo pxb_cxl_host_info = {
-     .name          = TYPE_PXB_CXL_HOST,
-     .parent        = TYPE_PCI_HOST_BRIDGE,
-     .instance_size = sizeof(CXLHost),
-@@ -524,7 +510,7 @@ static void pxb_cxl_dev_class_init(ObjectClass *klass, void *data)
-      * vendor, device, class, etc. ids are intentionally left out.
-      */
- 
--    dc->desc = "CXL Host Bridge";
-+    dc->desc = "PXB CXL Host Bridge";
-     device_class_set_props(dc, pxb_cxl_dev_properties);
-     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
- 
-@@ -551,7 +537,7 @@ static void pxb_register_types(void)
-     type_register_static(&pxb_pcie_bus_info);
-     type_register_static(&pxb_cxl_bus_info);
-     type_register_static(&pxb_host_info);
--    type_register_static(&cxl_host_info);
-+    type_register_static(&pxb_cxl_host_info);
-     type_register_static(&pxb_dev_info);
-     type_register_static(&pxb_pcie_dev_info);
-     type_register_static(&pxb_cxl_dev_info);
-diff --git a/include/hw/cxl/cxl.h b/include/hw/cxl/cxl.h
-index 75e47b6864..548a1bd28c 100644
---- a/include/hw/cxl/cxl.h
-+++ b/include/hw/cxl/cxl.h
-@@ -17,6 +17,7 @@
- #include "cxl_pci.h"
- #include "cxl_component.h"
- #include "cxl_device.h"
-+#include "hw/pci/pcie_host.h"
- 
- #define CXL_CACHE_LINE_SIZE 64
- #define CXL_COMPONENT_REG_BAR_IDX 0
-@@ -24,12 +25,34 @@
- 
- #define CXL_WINDOW_MAX 10
- 
-+#define PXB_CXL_HOST_TYPE 0
-+#define CXL_HOST_BRIDGE_TYPE 1
-+
-+#define TYPE_CXL_HOST "cxl-host"
-+OBJECT_DECLARE_SIMPLE_TYPE(CXLHostBridge, CXL_HOST)
-+
-+#define CXL_HOST_NUM_IRQS 4
-+
- typedef struct PXBCXLDev PXBCXLDev;
- 
-+typedef struct CXLHostBridge {
-+    PCIExpressHost parent_obj;
-+
-+    CXLComponentState cxl_cstate;
-+
-+    MemoryRegion io_ioport;
-+    MemoryRegion io_mmio;
-+    MemoryRegion io_ioport_window;
-+    MemoryRegion io_mmio_window;
-+    qemu_irq irq[CXL_HOST_NUM_IRQS];
-+    int irq_num[CXL_HOST_NUM_IRQS];
-+} CXLHostBridge;
-+
- typedef struct CXLFixedWindow {
-     uint64_t size;
-     char **targets;
-     PXBCXLDev *target_hbs[16];
-+    CXLHostBridge *target_chb[16];
-     uint8_t num_targets;
-     uint8_t enc_int_ways;
-     uint8_t enc_int_gran;
-diff --git a/include/hw/cxl/cxl_component.h b/include/hw/cxl/cxl_component.h
-index 945ee6ffd0..953521d601 100644
---- a/include/hw/cxl/cxl_component.h
-+++ b/include/hw/cxl/cxl_component.h
-@@ -270,8 +270,8 @@ uint8_t cxl_interleave_granularity_enc(uint64_t gran, Error **errp);
- 
- hwaddr cxl_decode_ig(int ig);
- 
--CXLComponentState *cxl_get_hb_cstate(PCIHostState *hb);
--bool cxl_get_hb_passthrough(PCIHostState *hb);
-+CXLComponentState *cxl_get_hb_cstate(PCIHostState *hb, int type);
-+bool cxl_get_hb_passthrough(PCIHostState *hb, int type);
- 
- bool cxl_doe_cdat_init(CXLComponentState *cxl_cstate, Error **errp);
- void cxl_doe_cdat_release(CXLComponentState *cxl_cstate);
-diff --git a/include/hw/cxl/cxl_host.h b/include/hw/cxl/cxl_host.h
-index c9bc9c7c50..d6d915141a 100644
---- a/include/hw/cxl/cxl_host.h
-+++ b/include/hw/cxl/cxl_host.h
-@@ -16,6 +16,12 @@
- void cxl_machine_init(Object *obj, CXLState *state);
- void cxl_fmws_link_targets(CXLState *stat, Error **errp);
- void cxl_hook_up_pxb_registers(PCIBus *bus, CXLState *state, Error **errp);
-+void cxl_fixed_memory_window_config(CXLState *cxl_state,
-+                        CXLFixedMemoryWindowOptions *object, Error **errp);
-+
-+int cxl_host_set_irq_num(CXLHostBridge *host, int index, int gsi);
-+void cxl_host_hook_up_registers(CXLState *cxl_state, CXLHostBridge *host,
-+                                Error **errp);
- 
- extern const MemoryRegionOps cfmws_ops;
- 
--- 
-2.34.1
+It comes from a well known manufacturer key, although the signing can be
+delegated in some models (like in the current demos):
 
+The hardware RoT creates a key pair for the RMM, which the RMM uses to
+sign the RIM. The RoT then signs the RMM pubkey, using the well-known key
+(see [1] 4.10 Token Binding).
+
+> 
+> > 4. The verifier checks the signature and the platform token, so it trusts
+> >     the RMM and the RIM.
+> > 
+> > > > Then what prevents anyone from faking this log and presenting a
+> > > > completely fake log to the verifier?
+> > 
+> > Absolutely, the verifier does not trust the content of the log, it only
+> > uses the log as helper to try to reconstruct the RIM. For example a log
+> > event says "I loaded image XYZ at address A", then the verifier searches
+> > image XYZ in its database of known-good images, calculates the hash that
+> > would result from loading that image at address A. Any malformed event in
+> 
+> Hopefully just calculating a hash over the image will do and the location an
+> image was loaded to, like address A (relocation?), doesn't matter...
+
+In this case it does matter because we don't trust the host VMM which
+instructs RMM where to load the images. So we need to verify that the
+image is in the correct location, otherwise the VM could be executing the
+wrong part of the code, or using the wrong part of the data loaded into
+RAM.
+
+When loading an image the RMM hashes its content, then hashes a structure
+that contains both the content hash and the address, and it is that hash
+that is added to the RIM.
+
+Thanks,
+Jean

@@ -1,120 +1,145 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp452716njb;
-        Thu, 5 Dec 2024 14:03:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWW5M2lLVJDrfj/UQ+TNx0x1UN9DKAYBB09geV/kI3/caccsrq7ywS+I2QFuOnUfkW7ZgDQRm5tfk1BJA==@linaro.org
-X-Received: by 2002:a05:600c:1f81:b0:434:a7e3:db5c with SMTP id 5b1f17b1804b1-434ddeb48aemr7141375e9.11.1733436223512;
-        Thu, 05 Dec 2024 14:03:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733436223; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp457504njb;
+        Thu, 5 Dec 2024 14:13:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVgc7KarNos3v2P9gHu9/WGUWwdS7jeXXTsGJYqNtpgzhYojpHQ0bZ2lhc/xnHaNm6bEeR0YXpc/E8riA==@linaro.org
+X-Received: by 2002:a5d:588f:0:b0:385:d143:138b with SMTP id ffacd0b85a97d-3862b3db6f0mr507276f8f.51.1733436784960;
+        Thu, 05 Dec 2024 14:13:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733436784; cv=none;
         d=google.com; s=arc-20240605;
-        b=Eqnoa9SKmwaM6cPlHDI3O5O1g+/6lPNmNPUAUGGClYWVQ42DXfmSrPbM9NEYlpMT4o
-         SVefuW526Thu8DitiCIesQbIiUVBL+qr0oYDPrmxZuPG8d4sGXPZsgpnrUQchqAN9Pwp
-         YOOXUpr7O9KOrXhdNbLG0vd6aJ87pi/O4NzvbK5GQqx4qM1zyWhHYE9T9MkKMXP8yK1L
-         KrQUyY7WcSGk8fGpS7/BW2NeNi++19V6vZojIPumFF6XABal2m3JBHF2QIyHn6eoPqF0
-         0SmyOgkKNVpN4XayEsRFjRZT9fJo8zLwZB5ky5tLyJLQOgIAYPDtt3UQvJdKmkEwjDZ9
-         cDiw==
+        b=bK/yhiPo1wQte9FoSpOnh2mCwL+I9M1CbrAEZQwplYqYz3w+Et+Cs/CORwTLT98nem
+         waKI3eYNYLnxq6Nm65EQ7OOU8LLy40+zaf9NNbj0Ni09UZIampTD0ChsPreKPH1oI9bZ
+         hF8RytFAY+iTWjeTNGduk7F0k3Bp+gBteRNhS66H40tp6ytWne6eD5/F3vFssLJlHufY
+         fcKaeg0jo7WJkGT34xsmo5SX9gWYATnxeCI1TGxfAAkn9bxU9zacGeTnclNHzPL4P8Lj
+         4fubXFMJxeQ2h7A2RwpySkvxKAdjo3OU3fgm5H2twhdVI4cBoP0s2yKG3l5+i3qVe54g
+         Z7SQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=JkKt6OdZT5hMip/aCluKuPmTaua7wLiTWB62lQ4JtdY=;
-        fh=lrAi5wkbL77qd61DTS86UEk9+tYCQKZxC/b1zo8LlRo=;
-        b=Ln9hGwZzZATS0Fvz8u+bIb9wNaHsfrQiHRtCTE5tiD/BieNcr/MsvYKfN/zvMnlZhS
-         A1HfZaj+owKbw2ICcvqghvK45VGRyL610AA5csg6DUG8Web8Dm6YqeygE9vpKEJW0ZbB
-         Fn4c9yQR16sn46tOQH0/+xnUEMFYWpyqnu02rLmTY/TjLAgqj6fpebK/eCsCDEmCyZEF
-         lZqLMOqf0XhyhCU2LHBPuAFgtHD5e9gMFiZ4EclpJVDQBf2p5Qb5u0gC82D/X1KNpfyo
-         ZNTJp4sMc8eN1ceT8c0SeYl2j63S+81eUnTmRyuLO4Lcb9fVqnv7dy+8hyXr6Tofo+zU
-         CZ/A==;
+        bh=vHmmfy7MY/nxP0JFjq1JP8jgOvU9Pbqs9DUdVUT7J2k=;
+        fh=G8h+Puv62IBWd7rIetP87v3Ha8E8t4SHNhPsgp5gFTo=;
+        b=Qofc9g3w5AjJ/Rg2JFiK8XszMz8hT6LOXQHANCEuHwYHx3wHj4LK8XOIXFtbHxWrW4
+         hwGrNQD5p3piMOTMNH0KKec+quWd58ZwIE+088/xaUWYnjDG6KVQDYaXj4uXf+qMXu+j
+         19BRDJLkkCgv6P7hOXQehCEgNxTIk21ohKd7gjVW+rslWQ24cjGFQ/PJdKOZFvSihX3f
+         84ifeBGq2ZOv8/sgT+2UbdARKq9KTEBTLVuYbRu0FWLRi73nd1uXcaIZNJE74/85B581
+         jMEobA2W01SqkvW6cWfdJivqToQI7CbGhMAPnI1h3KTxMLtvMqqn8YoCBdpDAxO4DCFk
+         unKg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rx138lMm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ydZ3S3lV;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-434d9e9cae1sor10091125e9.8.2024.12.05.14.03.43
+        by mx.google.com with SMTPS id ffacd0b85a97d-3862cd411efsor18747f8f.1.2024.12.05.14.13.04
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 05 Dec 2024 14:03:43 -0800 (PST)
+        Thu, 05 Dec 2024 14:13:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rx138lMm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ydZ3S3lV;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733436223; x=1734041023; darn=linaro.org;
+        d=linaro.org; s=google; t=1733436784; x=1734041584; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=JkKt6OdZT5hMip/aCluKuPmTaua7wLiTWB62lQ4JtdY=;
-        b=rx138lMm669K1h8xSu+ljH2GpDIBoBe4mCxriSvlnaJ691eG3WFliv68y2pd5vWWhn
-         Pb4ZCABiFWFXVWw+KZvQblG76KIAbRd9e0dDzPjfBjoHj0bBUmnuX+JMOE79cXdccHT6
-         E5ORLhquMm9KeYmMFUEI6VXhfJQhnpWKv55XHa4QGtB8ZnTh1xjReJ/7RjJECOqmTGFs
-         qUcfr2IYgrzpIAtJGEPmMb2ztGQIFp+350UOpTg8BRglfjkfrS/gcaquPtv7wZbPVFPJ
-         X7z2EcAEpJE9qzlG83kePUyS7W493r47w2T7HIr2AbwtPmYHkLic7NNVXTWLf114awUR
-         CTog==
+        bh=vHmmfy7MY/nxP0JFjq1JP8jgOvU9Pbqs9DUdVUT7J2k=;
+        b=ydZ3S3lVL6RK+8b7tLfxJq8I8IZW50TXdDxH6dKeOL6gIolzAhPenxYJntYqpiZZuu
+         Hs7yvG4RZ19K6Zv4uFZlDS8TAhn/JLxoO/XoWfEYUDs7sIASzq8GRL0k+tJWERgrI1G4
+         QyVQVYefwE6bh0brGL6zkLefm+0gHnMJ7J4vC0+pfm87EbRFhbGIuRY9pOVzr5SZRONQ
+         +RGMY/WwZzQf7lPSAdMWdwxQNI9H+tDnBR9C7MfiBaBS6kzBL+3Ok1r5lOwY93qGgrHL
+         p+omoZoGaBiI8m+ER1ARt+U0Kiss4l5lgOvKMfgjPkE9CQ6dx2SElvlIUSqSGerMTaFL
+         cmew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733436223; x=1734041023;
+        d=1e100.net; s=20230601; t=1733436784; x=1734041584;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=JkKt6OdZT5hMip/aCluKuPmTaua7wLiTWB62lQ4JtdY=;
-        b=RZ1o0oHE+/7+0IVC7S+Tn5+XnjdYxuJ5HVocb89Z1SoltgcbHt4AlmbBmvvIZja8+/
-         uvd8AwG8pM3TNA5OCi2V9f5oALsgFvN9yLWkiG8V7tm4gjBYvhkiPgXCzHyyfBh5v+F2
-         qFQpFg+UvpOFuYr+hb4yTmEPC8rcrA6ORwjlWKMnlmPkSx66EHKN95qUwTIOIy90DWSx
-         F1dearBn07ukvOoCBE6CP5ddApgfUmzUzB79jkD9basf+r70io0AvfRpxcqfSQL1Xiv6
-         AtzTfxnolaDQv/pwpYwEgg8TqYonHZ2wdMavHe2CoWRZCmsZVeZz4iKGqY+/G36TtaAn
-         t1gg==
-X-Forwarded-Encrypted: i=1; AJvYcCUY/ZWnBe24EHXze216AJiAotK1RsB+LuHcjcGKx3fh7XRPmELF2egqoIIGXn9Z1XsnrRluMtlXpQFXSw==@linaro.org
-X-Gm-Message-State: AOJu0YxZCsxxrkUnsKfCw4vCm2M9tfVFWSx0t0GAqQGUVjclwfHXaxSX
-	1PKMs/9s74t4wyLpiHv2DuY+C5QAMXYeAFD9RulD7Pu9rnGD9YShpvyXG8NT5mzvng==
-X-Gm-Gg: ASbGncsJ2GZdtdzZaHDt1Skzb7vFYghhdTnRiXAt2Ma94LZGE9T+rUmy3iIf42CiX+M
-	IgqYo62meOhCAYkerteasEZzmFo92SPUGInvta7bgX+b9x/cH00ZhnzzHxXBQBwM20peIBA27hv
-	5nHZm7zezcv8wE4GASd5yl1AHmtFE6Y6B1akKBXo9fxOkbC5DDDrpZAXS43ddNrkF/DXPlOgtff
-	+EvhE5Ftzcs4herkF4jG1Yf/WjvqCoAZVtdRdyUwhLm1s/1HIqLXpJn0FXDohwJgV9BqUEaSB7z
-	+7iQw1rIK0urF3lBFw==
-X-Google-Smtp-Source: AGHT+IGrz+ES8JLbYNN/i4EayGyiD4lgwSFAHv9NpWILXRrEYx5gVEVj1IAccetlOM9xVnnDpdlThg==
-X-Received: by 2002:a5d:47af:0:b0:385:d852:29ed with SMTP id ffacd0b85a97d-3862b3d0a3fmr398203f8f.36.1733436222889;
-        Thu, 05 Dec 2024 14:03:42 -0800 (PST)
+        bh=vHmmfy7MY/nxP0JFjq1JP8jgOvU9Pbqs9DUdVUT7J2k=;
+        b=I0HQ6Qm6frlcBlET57r3U78k+xsH4l4kQnJwDYvouYuM5QUTcBThke2ZteCdO7yG24
+         KqB7rJ3HdkI88OZjgzWoKV5WE7EJU0uKz/VrIzygjvfCrlnwy4jrObxkjH/vTZjTHKhK
+         I4AJzFtjnsh/sOVoIc9AhEVUO+MhNYMhyLsGJBy4y4bLh8mxa34n1R34efJFSjB4DRM6
+         B6b8+i8Mi6EqBIa8nUqyJXwQ5Xa5H9o+xYPmoNLIZBxB19YjXb8fQTGv1Ij1vwNniizu
+         eCEh4H2SpfFAeWczoQNk/aJJ7nqnMJ+WSaXKx38w9WLKn8HFQLugxhQCEZPBYYQdIR6Q
+         0i6g==
+X-Forwarded-Encrypted: i=1; AJvYcCWhh5AWCwM7XoenDAoD2WY3nS3KyUJDqw3refsqEX2qV5segOhzBFx86CyCaAaAKAQkM9CeyEYfY0nReg==@linaro.org
+X-Gm-Message-State: AOJu0Yxhv8lQkKHKwxnDKfDbMxqB3AXM3VjJCG+nDhMBoaYZ2PnDj2vV
+	+ZUo2xzlLJw9VvoU83oC0TfNjJHupguJGezjFtYJOnMqVq/nSsV0A8DtP3L5f/FYQQ==
+X-Gm-Gg: ASbGncuvXic0QCKI8Cc9eicKHiwwwq61VvYhmrAM42RupkhtYEWDyR/PYEI3skBFUr5
+	Kf/HWFGZBoAAbI9iL95yA3W+nBFA36iybKUhRQIj51AbnYxYXAXJ+WOnrKgJT8ZSDoF2x8XEpi7
+	hGeujm0vY8toqFsbptfvEYqZlQV3ZjCZWfFdNrA3OL1p8CIh7jrz7S3jyz6oY82CTp9H2gtfbEf
+	9DplQp8/aHWmsH8HWYKPV5ATT/qBVF8YYb0n1c9K4JBl57wsQuQ9khe2Q4tPBsfv4WEPtLF5ueA
+	vuoxNB0F7v6QY/cANg==
+X-Google-Smtp-Source: AGHT+IFeIKnQ8ZbnWENTbu03WGnI/TH668TtvXlQuDf/jS8X++X0fypC63/il0OHLvviE1J7v3bDIQ==
+X-Received: by 2002:a5d:5f8c:0:b0:385:fd24:3317 with SMTP id ffacd0b85a97d-3862b33cfbemr538072f8f.1.1733436784368;
+        Thu, 05 Dec 2024 14:13:04 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.223] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3861f59ccd6sm3002857f8f.32.2024.12.05.14.03.40
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3862c611242sm191319f8f.36.2024.12.05.14.13.03
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Dec 2024 14:03:41 -0800 (PST)
-Message-ID: <d80be891-e0f3-46c0-8cb1-7ed1df8e223a@linaro.org>
-Date: Thu, 5 Dec 2024 23:03:40 +0100
+        Thu, 05 Dec 2024 14:13:03 -0800 (PST)
+Message-ID: <9823e0e8-3d91-46db-969d-42344cefa301@linaro.org>
+Date: Thu, 5 Dec 2024 23:13:03 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 16/26] hw/arm/virt: Disable DTB randomness for
- confidential VMs
+Subject: Re: [RFC PATCH v3 23/26] hw/tpm: Add TPM event log
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>, peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- alex.bennee@linaro.org
+ alex.bennee@linaro.org, Stefan Berger <stefanb@linux.vnet.ibm.com>
 References: <20241125195626.856992-2-jean-philippe@linaro.org>
- <20241125195626.856992-18-jean-philippe@linaro.org>
+ <20241125195626.856992-25-jean-philippe@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241125195626.856992-18-jean-philippe@linaro.org>
+In-Reply-To: <20241125195626.856992-25-jean-philippe@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: PrIwDz0Yv1eS
+Content-Transfer-Encoding: 7bit
+X-TUID: Hz/pa903m0Xf
 
 On 25/11/24 20:56, Jean-Philippe Brucker wrote:
-> The dtb-randomness feature, which adds random seeds to the DTB, isn't
-> really compatible with confidential VMs since it randomizes the Realm
-> Initial Measurement. Enabling it is not an error, but it prevents
-> attestation. It also isn't useful to a Realm, which doesn't trust host
-> input.
+> Provide a library allowing the VMM to create an event log that describes
+> what is loaded into memory. During remote attestation in confidential
+> computing this helps an independent verifier reconstruct the initial
+> measurements of a VM, which contain the initial state of memory and
+> CPUs.
 > 
-> Currently the feature is automatically enabled, unless the user disables
-> it on the command-line. Change it to OnOffAuto, and automatically
-> disable it for confidential VMs, unless the user explicitly enables it.
+> We provide some definitions and structures described by the Trusted
+> Computing Group (TCG) in "TCG PC Client Platform Firmware Profile
+> Specification" Level 00 Version 1.06 Revision 52 [1]. This is the same
+> format used by UEFI, and UEFI could reuse this log after finding it in
+> DT or ACPI tables, but can also copy its content into a new one.
 > 
+> [1] https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/
+> 
+> Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>
 > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 > ---
->   docs/system/arm/virt.rst |  9 +++++----
->   include/hw/arm/virt.h    |  2 +-
->   hw/arm/virt.c            | 41 +++++++++++++++++++++++++---------------
->   3 files changed, 32 insertions(+), 20 deletions(-)
+> v2->v3: New
+> ---
+>   qapi/tpm.json            |  14 ++
+>   include/hw/tpm/tpm_log.h |  89 +++++++++++
+>   hw/tpm/tpm_log.c         | 325 +++++++++++++++++++++++++++++++++++++++
+>   hw/tpm/Kconfig           |   4 +
+>   hw/tpm/meson.build       |   1 +
+>   5 files changed, 433 insertions(+)
+>   create mode 100644 include/hw/tpm/tpm_log.h
+>   create mode 100644 hw/tpm/tpm_log.c
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+> +/*
+> + * Defined in: TCG PC Client Platform Firmware Profile Specification
+> + * Version 1.06 revision 52
+> + */
+> +#define TCG_EV_NO_ACTION                        0x00000003
+> +#define TCG_EV_EVENT_TAG                        0x00000006
+> +#define TCG_EV_POST_CODE2                       0x00000013
+> +#define TCG_EV_EFI_PLATFORM_FIRMWARE_BLOB2      0x8000000A
+> +
+> +struct UefiPlatformFirmwareBlob2Head {
+> +        uint8_t blob_description_size;
+> +        uint8_t blob_description[];
+> +} __attribute__((packed));
+
+We use QEMU_PACKED.

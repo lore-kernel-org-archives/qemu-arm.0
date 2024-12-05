@@ -1,202 +1,120 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp449890njb;
-        Thu, 5 Dec 2024 13:59:55 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVxvl4tBnfhDocPoA2cc040fkzcTAVB6EX3Jwi+LmjoyUf5uJMB2ZMVczjQDxasLqSYs7PTMwKyO4irBA==@linaro.org
-X-Received: by 2002:a05:6000:188f:b0:385:f409:b4c with SMTP id ffacd0b85a97d-3862b3f52b9mr386860f8f.54.1733435995228;
-        Thu, 05 Dec 2024 13:59:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733435995; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp452716njb;
+        Thu, 5 Dec 2024 14:03:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWW5M2lLVJDrfj/UQ+TNx0x1UN9DKAYBB09geV/kI3/caccsrq7ywS+I2QFuOnUfkW7ZgDQRm5tfk1BJA==@linaro.org
+X-Received: by 2002:a05:600c:1f81:b0:434:a7e3:db5c with SMTP id 5b1f17b1804b1-434ddeb48aemr7141375e9.11.1733436223512;
+        Thu, 05 Dec 2024 14:03:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733436223; cv=none;
         d=google.com; s=arc-20240605;
-        b=gVkbGqHp6wGExH0qnZuFxARImxgn1iIG9c71q72ZFgoDnB7US0FWKyGQtWjkMruMj5
-         0nay54VcuILzo+Bn9hS9NZZ4Jc0lUuvQHhGvWiP3q3jAwhyuLvqkGPRo2gg3lkS7iamg
-         7lzM7u4S8qxtk3rw4KfZDnQJucsyMljLnG2VmfMwhDDpYcwZHkS84VDf1/rQ1ItTq1EX
-         R8j9GfZ9hhax8CtS67Tbhmwx5eH5JpGYKm4LVrEB6/gocdk2cEnMNJy8WuVZAWWYVPWY
-         5RYKS+J/sW6UgiKJeRDkh/7oAc8DFWjkwztYzV0c9L5hrUutcE0tw/WD8TAjkaTPf39I
-         yljg==
+        b=Eqnoa9SKmwaM6cPlHDI3O5O1g+/6lPNmNPUAUGGClYWVQ42DXfmSrPbM9NEYlpMT4o
+         SVefuW526Thu8DitiCIesQbIiUVBL+qr0oYDPrmxZuPG8d4sGXPZsgpnrUQchqAN9Pwp
+         YOOXUpr7O9KOrXhdNbLG0vd6aJ87pi/O4NzvbK5GQqx4qM1zyWhHYE9T9MkKMXP8yK1L
+         KrQUyY7WcSGk8fGpS7/BW2NeNi++19V6vZojIPumFF6XABal2m3JBHF2QIyHn6eoPqF0
+         0SmyOgkKNVpN4XayEsRFjRZT9fJo8zLwZB5ky5tLyJLQOgIAYPDtt3UQvJdKmkEwjDZ9
+         cDiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=XGf03nzHAWGwYGnYhWNnoe3LnELscMFwzsl0qyNy81s=;
-        fh=tM4GzuFNSC/JOdrve/nwnj8vzyCJPjmkEF48SaRgNSI=;
-        b=khBI84eRNmw211v2eY1XeTBDVoY6zuwheTs4LfI0Ny1ufhVt9gtmrisj+LX/dn+Svd
-         RJ94U3jlOndbZvfk3oz4Wa5mDOCzcscMs6FqMHOrL0v4VQmM0JzPKnutsMIAw2HcZ9hm
-         CN25NCOECDuWBHUYxeeQK2j8tKfICwWdi+BvYrAbE822PUEXymCBihCfgW9upKFRZHg1
-         /VpXWL7079X7d4ZG2dnAyI7arhBJ/8si3SShbrcqjp09JP8UJ+gbayAuHEnxi60XBA0a
-         LGMFfllqfCNGrkDYX2GbYYmMvyyHbK1tnBfhGAZIA3+P9CWB5PltIVJePjbAuvXSqmig
-         gxiQ==;
+        bh=JkKt6OdZT5hMip/aCluKuPmTaua7wLiTWB62lQ4JtdY=;
+        fh=lrAi5wkbL77qd61DTS86UEk9+tYCQKZxC/b1zo8LlRo=;
+        b=Ln9hGwZzZATS0Fvz8u+bIb9wNaHsfrQiHRtCTE5tiD/BieNcr/MsvYKfN/zvMnlZhS
+         A1HfZaj+owKbw2ICcvqghvK45VGRyL610AA5csg6DUG8Web8Dm6YqeygE9vpKEJW0ZbB
+         Fn4c9yQR16sn46tOQH0/+xnUEMFYWpyqnu02rLmTY/TjLAgqj6fpebK/eCsCDEmCyZEF
+         lZqLMOqf0XhyhCU2LHBPuAFgtHD5e9gMFiZ4EclpJVDQBf2p5Qb5u0gC82D/X1KNpfyo
+         ZNTJp4sMc8eN1ceT8c0SeYl2j63S+81eUnTmRyuLO4Lcb9fVqnv7dy+8hyXr6Tofo+zU
+         CZ/A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GEtD9U2H;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rx138lMm;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-3861f970990sor743239f8f.3.2024.12.05.13.59.55
+        by mx.google.com with SMTPS id 5b1f17b1804b1-434d9e9cae1sor10091125e9.8.2024.12.05.14.03.43
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 05 Dec 2024 13:59:55 -0800 (PST)
+        Thu, 05 Dec 2024 14:03:43 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GEtD9U2H;
+       dkim=pass header.i=@linaro.org header.s=google header.b=rx138lMm;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733435995; x=1734040795; darn=linaro.org;
+        d=linaro.org; s=google; t=1733436223; x=1734041023; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=XGf03nzHAWGwYGnYhWNnoe3LnELscMFwzsl0qyNy81s=;
-        b=GEtD9U2Hq3L5PrE/kDOTOw+6lYjLDJJZlNdnSB863MMj3AErXG1ImgGplKKHd9fA2N
-         gJBbJuU+K/J1HKPhViAKP0EPSlUbdIytTpDBjTmjvV1Tl2RuR3SMdFUR7Vbj4M/0Xrjh
-         yN+jj9aAea1b5lpGFeW4yrUjp5iAqAkX8O2tQK85QonwG1OWfywYPQfkB4eVuG065Ano
-         kdz856EMpcviTKfme0Jf2lISdJc/cwdyjGDp4Utb9lGhDag4plihiAQ9Q70ABDq0RXfK
-         kEsqnV15Ga4SHnvVOS4pCf5+LKxiWo8DEQPfqpgVNNt8AC9j62tT1GvV4jbw/3PTbWoK
-         NJqA==
+        bh=JkKt6OdZT5hMip/aCluKuPmTaua7wLiTWB62lQ4JtdY=;
+        b=rx138lMm669K1h8xSu+ljH2GpDIBoBe4mCxriSvlnaJ691eG3WFliv68y2pd5vWWhn
+         Pb4ZCABiFWFXVWw+KZvQblG76KIAbRd9e0dDzPjfBjoHj0bBUmnuX+JMOE79cXdccHT6
+         E5ORLhquMm9KeYmMFUEI6VXhfJQhnpWKv55XHa4QGtB8ZnTh1xjReJ/7RjJECOqmTGFs
+         qUcfr2IYgrzpIAtJGEPmMb2ztGQIFp+350UOpTg8BRglfjkfrS/gcaquPtv7wZbPVFPJ
+         X7z2EcAEpJE9qzlG83kePUyS7W493r47w2T7HIr2AbwtPmYHkLic7NNVXTWLf114awUR
+         CTog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733435995; x=1734040795;
+        d=1e100.net; s=20230601; t=1733436223; x=1734041023;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=XGf03nzHAWGwYGnYhWNnoe3LnELscMFwzsl0qyNy81s=;
-        b=Y9CJ0p8V2AhvJ4y4EpgL9MnpNn33ZfjXHhzQkalDWyu1mbDeIDQtLsYPuuPIOFkjq7
-         SILix8xR59y0jHlY6JfouLIYyyGwgrjNDfek657up8L5Z/FpTQjOulh1CwyDE46xLwbh
-         pqn51Jp5a92f4Lo8OtHm/McFjtsNG/ENplkJmcHlUlwQAcg294n+SLgIeQ+VqEcfu1q6
-         PmkfT5XOyDDZQhKiFS1HEoogXpOsrlwVuTphDyP58wMw2JXfh3RWwsBYJxtIAD65+Mj+
-         MHK8dHT9DG5KDTneL7Zw1i1BVTHzRMw7ukme1HW9s0z5kg+w1IALZ9v6mJKBY21ynslw
-         KOWw==
-X-Forwarded-Encrypted: i=1; AJvYcCWIaairxs7SuBR0Z4ilU02WyrpOy2Zhcz8v3eGzbjwS2PScQGXnWV8wugw3bGEVjuonGM+5opkzqlrbeQ==@linaro.org
-X-Gm-Message-State: AOJu0YzgUuKhkDNCOiNKvL7lOZ2PyQa51ppH9XqkdxR81jmlJkwhq508
-	D4H0EWjsqyab3chEfq7GkAyHDzPQGYL2m7AbqNkpgm2MVYSeBURLaxKHCnCkQKvDwhjzQYT0Vvn
-	fzA0=
-X-Gm-Gg: ASbGnctuVaosqYqVWqRNzms44btVG/sXy8tLWboiMzJAC3hv5ut/qTfvYc5kfbi0aww
-	ps8MNczcgj0kDjSJpFSCv81RMkTkSbXSnjGotGnKCc0cL3nDIKz94IuP1qKJSL8hzMi2719IkAI
-	Whkvjl+3rSJCV7Pt+IqDpLHGS9zaeVcW9XSJ6FJ2OIulLkiMxIqCo3UHdogfmjOuPuXysfVNKiH
-	jjI1FdN+1Xz5Qg7ajXqH4D5L0LplSnKfVNHFpT8aNy7Yi+saky3NE3tKMClSjg0i0tfPoJYXbfv
-	85ce9SRQKNq0t3JRig==
-X-Google-Smtp-Source: AGHT+IFfsj7oglQJaZj64jQW53x0qDcr57liYsCT64pEl87oeDBXk+V2SZtm5P461qbVXcOl1tN58w==
-X-Received: by 2002:a05:6000:1448:b0:385:f00a:a45b with SMTP id ffacd0b85a97d-3862b3560damr560287f8f.21.1733435994457;
-        Thu, 05 Dec 2024 13:59:54 -0800 (PST)
+        bh=JkKt6OdZT5hMip/aCluKuPmTaua7wLiTWB62lQ4JtdY=;
+        b=RZ1o0oHE+/7+0IVC7S+Tn5+XnjdYxuJ5HVocb89Z1SoltgcbHt4AlmbBmvvIZja8+/
+         uvd8AwG8pM3TNA5OCi2V9f5oALsgFvN9yLWkiG8V7tm4gjBYvhkiPgXCzHyyfBh5v+F2
+         qFQpFg+UvpOFuYr+hb4yTmEPC8rcrA6ORwjlWKMnlmPkSx66EHKN95qUwTIOIy90DWSx
+         F1dearBn07ukvOoCBE6CP5ddApgfUmzUzB79jkD9basf+r70io0AvfRpxcqfSQL1Xiv6
+         AtzTfxnolaDQv/pwpYwEgg8TqYonHZ2wdMavHe2CoWRZCmsZVeZz4iKGqY+/G36TtaAn
+         t1gg==
+X-Forwarded-Encrypted: i=1; AJvYcCUY/ZWnBe24EHXze216AJiAotK1RsB+LuHcjcGKx3fh7XRPmELF2egqoIIGXn9Z1XsnrRluMtlXpQFXSw==@linaro.org
+X-Gm-Message-State: AOJu0YxZCsxxrkUnsKfCw4vCm2M9tfVFWSx0t0GAqQGUVjclwfHXaxSX
+	1PKMs/9s74t4wyLpiHv2DuY+C5QAMXYeAFD9RulD7Pu9rnGD9YShpvyXG8NT5mzvng==
+X-Gm-Gg: ASbGncsJ2GZdtdzZaHDt1Skzb7vFYghhdTnRiXAt2Ma94LZGE9T+rUmy3iIf42CiX+M
+	IgqYo62meOhCAYkerteasEZzmFo92SPUGInvta7bgX+b9x/cH00ZhnzzHxXBQBwM20peIBA27hv
+	5nHZm7zezcv8wE4GASd5yl1AHmtFE6Y6B1akKBXo9fxOkbC5DDDrpZAXS43ddNrkF/DXPlOgtff
+	+EvhE5Ftzcs4herkF4jG1Yf/WjvqCoAZVtdRdyUwhLm1s/1HIqLXpJn0FXDohwJgV9BqUEaSB7z
+	+7iQw1rIK0urF3lBFw==
+X-Google-Smtp-Source: AGHT+IGrz+ES8JLbYNN/i4EayGyiD4lgwSFAHv9NpWILXRrEYx5gVEVj1IAccetlOM9xVnnDpdlThg==
+X-Received: by 2002:a5d:47af:0:b0:385:d852:29ed with SMTP id ffacd0b85a97d-3862b3d0a3fmr398203f8f.36.1733436222889;
+        Thu, 05 Dec 2024 14:03:42 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from [192.168.69.223] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-386220b071dsm2948809f8f.101.2024.12.05.13.59.52
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-3861f59ccd6sm3002857f8f.32.2024.12.05.14.03.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Dec 2024 13:59:53 -0800 (PST)
-Message-ID: <564df018-6d47-4cb6-b781-5a2e58669da6@linaro.org>
-Date: Thu, 5 Dec 2024 22:59:52 +0100
+        Thu, 05 Dec 2024 14:03:41 -0800 (PST)
+Message-ID: <d80be891-e0f3-46c0-8cb1-7ed1df8e223a@linaro.org>
+Date: Thu, 5 Dec 2024 23:03:40 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 08/26] hw/core/loader: Add ROM loader notifier
+Subject: Re: [PATCH v3 16/26] hw/arm/virt: Disable DTB randomness for
+ confidential VMs
 To: Jean-Philippe Brucker <jean-philippe@linaro.org>, peter.maydell@linaro.org
 Cc: richard.henderson@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  alex.bennee@linaro.org
 References: <20241125195626.856992-2-jean-philippe@linaro.org>
- <20241125195626.856992-10-jean-philippe@linaro.org>
+ <20241125195626.856992-18-jean-philippe@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241125195626.856992-10-jean-philippe@linaro.org>
+In-Reply-To: <20241125195626.856992-18-jean-philippe@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: ejSnALxa+65+
+Content-Transfer-Encoding: 8bit
+X-TUID: PrIwDz0Yv1eS
 
 On 25/11/24 20:56, Jean-Philippe Brucker wrote:
-> Add a function to register a notifier, that is invoked after a ROM gets
-> loaded into guest memory.
+> The dtb-randomness feature, which adds random seeds to the DTB, isn't
+> really compatible with confidential VMs since it randomizes the Realm
+> Initial Measurement. Enabling it is not an error, but it prevents
+> attestation. It also isn't useful to a Realm, which doesn't trust host
+> input.
 > 
-> It will be used by Arm confidential guest support, in order to register
-> all blobs loaded into memory with KVM, so that their content is moved
-> into Realm state and measured into the initial VM state.
+> Currently the feature is automatically enabled, unless the user disables
+> it on the command-line. Change it to OnOffAuto, and automatically
+> disable it for confidential VMs, unless the user explicitly enables it.
 > 
 > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 > ---
->   include/hw/loader.h | 15 +++++++++++++++
->   hw/core/loader.c    | 15 +++++++++++++++
->   2 files changed, 30 insertions(+)
-> 
-> diff --git a/include/hw/loader.h b/include/hw/loader.h
-> index 7f6d06b956..0cd9905f97 100644
-> --- a/include/hw/loader.h
-> +++ b/include/hw/loader.h
-> @@ -353,6 +353,21 @@ void *rom_ptr_for_as(AddressSpace *as, hwaddr addr, size_t size);
->   ssize_t rom_add_vga(const char *file);
->   ssize_t rom_add_option(const char *file, int32_t bootindex);
->   
-> +typedef struct RomLoaderNotify {
-> +    /* Parameters passed to rom_add_blob() */
-> +    hwaddr addr;
+>   docs/system/arm/virt.rst |  9 +++++----
+>   include/hw/arm/virt.h    |  2 +-
+>   hw/arm/virt.c            | 41 +++++++++++++++++++++++++---------------
+>   3 files changed, 32 insertions(+), 20 deletions(-)
 
-This is the buffer (blob) address in guest physical memory.
-
-> +    size_t len;
-
-This is the buffer length.
-
-> +    size_t max_len;
-
-This is the size of the MemoryRegion ROM containing the buffer.
-
-Do we need to notify it? You don't use it in your next patch.
-If so, I'd rather have this API returns a MemoryRegion (Rom->mr),
-max_len can be retrieved using memory_region_size(mr); but I
-don't think we need this at all (at least for now).
-
-> +} RomLoaderNotify;
-> +
-> +/**
-> + * rom_add_load_notifier - Add a notifier for loaded images
-> + *
-> + * Add a notifier that will be invoked with a RomLoaderNotify structure for each
-> + * blob loaded into guest memory, after the blob is loaded.
-> + */
-> +void rom_add_load_notifier(Notifier *notifier);
-> +
->   /* This is the usual maximum in uboot, so if a uImage overflows this, it would
->    * overflow on real hardware too. */
->   #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index 31593a1171..759a62cf58 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -67,6 +67,8 @@
->   #include <zlib.h>
->   
->   static int roms_loaded;
-> +static NotifierList rom_loader_notifier =
-> +    NOTIFIER_LIST_INITIALIZER(rom_loader_notifier);
->   
->   /* return the size or -1 if error */
->   int64_t get_image_size(const char *filename)
-> @@ -1179,6 +1181,11 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
->       return mr;
->   }
->   
-> +void rom_add_load_notifier(Notifier *notifier)
-> +{
-> +    notifier_list_add(&rom_loader_notifier, notifier);
-> +}
-> +
->   /* This function is specific for elf program because we don't need to allocate
->    * all the rom. We just allocate the first part and the rest is just zeros. This
->    * is why romsize and datasize are different. Also, this function takes its own
-> @@ -1220,6 +1227,7 @@ ssize_t rom_add_option(const char *file, int32_t bootindex)
->   static void rom_reset(void *unused)
->   {
->       Rom *rom;
-> +    RomLoaderNotify notify;
->   
->       QTAILQ_FOREACH(rom, &roms, next) {
->           if (rom->fw_file) {
-> @@ -1268,6 +1276,13 @@ static void rom_reset(void *unused)
->           cpu_flush_icache_range(rom->addr, rom->datasize);
->   
->           trace_loader_write_rom(rom->name, rom->addr, rom->datasize, rom->isrom);
-> +
-> +        notify = (RomLoaderNotify) {
-> +            .addr = rom->addr,
-> +            .len = rom->datasize,
-> +            .max_len = rom->romsize,
-> +        };
-> +        notifier_list_notify(&rom_loader_notifier, &notify);
->       }
->   }
->   
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>

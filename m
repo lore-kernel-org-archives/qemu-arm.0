@@ -1,342 +1,452 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp18087njb;
-        Thu, 5 Dec 2024 02:29:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVPjj1NQCj3LD96qdH8TcIrqMpYx8g8mqP5hGOxVN3SX3z5vUEv7d6LWikZPsLcIjn7ZQSoYepnbvFxPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEMAYtEZ7PlZF9DGb4n/NTcssnMeLs3F/p3GxqgBr1SLOSnK14zSU363akmRciZbS0x93VU
-X-Received: by 2002:ad4:5bec:0:b0:6d8:8c51:5589 with SMTP id 6a1803df08f44-6d8b74062f2mr128355196d6.37.1733394551331;
-        Thu, 05 Dec 2024 02:29:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733394551; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp204779njb;
+        Thu, 5 Dec 2024 07:23:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUU/DHtYLwJNKmqNyP6Pdep7t6OQOlPfZANA84S9ybxgtF52rJGMmduLHxK44K6ElRYzUZ1uK3PVl6wJw==@linaro.org
+X-Received: by 2002:a05:6402:51d3:b0:5d2:7270:6128 with SMTP id 4fb4d7f45d1cf-5d272706647mr3879667a12.25.1733412221913;
+        Thu, 05 Dec 2024 07:23:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733412221; cv=none;
         d=google.com; s=arc-20240605;
-        b=PAabciD70QPsamKS2pSJU2bg3c84YBfSrDNrhNLl8AmsnvK2gVBCXqj9cv19BHmq/M
-         cdOti+pb+3W7i7QBtapURtThbFl10T6iRQcVmZKhzDi/vpWk3UIHMKuwjIT0D/p2tKgP
-         O41dGlZfQWVnmvOe5upfYfeahX0Gy9ycQjZBZrbEZeWdcWcykL8HeiqtqEdM9ksugV0W
-         ec8iDcMu37ue7faUg/w7qvfGIurxfcIfc9oBYuxbMIiZwAWFN6OFdspI+Bzd4g5HD0IN
-         TyBJEnIOkVBtn0eG5dJfTsKOAEKzca8f2AJIdpaIrzSM2IShXzb2Fp9FjLXn5YkdF/k5
-         H7Sw==
+        b=DBbxUHfdN76MWd769gRBEiGPl+irtMav25lrsxSesEC4arGafJmItWkLF8sIqXPOJj
+         5RX6mhB9zjsvnMhWs3547an7hGsoRbXsMqqFoJD2+5nuCP9/CGiyYDOWe8wIvH3nZZWs
+         Ah4dw0pgjVzBhk5oLaZhMkrw0SuIdx5PX9sbE+sHiWYSe/01N/JlA12JS19ud2ZhJgml
+         BSADZpncDcrLc+MAKHiOZk5y/eFh7irlN5onzkoPo3vQA6HUaGvJwcHgdCBSPAN/yIQt
+         efdwhDGHRpbVX+fa/dJlYKfMXLYdJ5nUuDMpqLDs+gPejsuQ6uUuOsf+j8TCT6m5r4+C
+         HdkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=yoGg0i1yuJIE4i716VsMsY8Hrg6b//pfuqDhx7v9BDk=;
-        fh=O485HAk81L8O7hDSOldwKuM3WsL+Yeo9Og4ljJsgiXk=;
-        b=jYmM9Yw68hNsCq8ifySDwei3QXSGdfvET5nE/qHa5I2MEVrj6Yqrwwr7K4DrIglmQ3
-         qjMQRC3NB6YpEBr9mK5R5059To54jEaw6soC1jyJL1DPEpl3zlIfQ6oS9HWfTqHS9uxh
-         nUBg9tAiaQ4MRouFOGl7QXsPROCBOZemPK4/gYuuMBtjjCkmJp2ldXhu18v7XTPwmhYy
-         4XrHjmG6TKR3Ps4I1/dzwUu36bFQ2NlHgsQaOjC32zIJMx3ZY6Dv851SlIvFl+kOoTXh
-         QCIrfK6wmYyWy6mqB4MpXUPGyCGy6jdCyQ27tOUV8+qVU7GkFMrrT14LG+UV/bmFhP1c
-         VYbw==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=2o0BOwxkDSCufIXkZ4f5R0oc042vUvihYxGeEHkXCng=;
+        fh=LsB0bIDt+9SpIOagdASbcUyhESgoUwM6UHSkknQ5RpU=;
+        b=lUVRcOGwxxLhesIHT12WaGNkSGU0ddiulP+556lkInl1NgrZq8HyeVrnW0Tv0X7CxA
+         wFqEde+EDM22NWTNjQthmFvQcQlggYi25hch2NzCqTs8249u5rPGca9dpfJocc/upv1j
+         spyTKcwaIo8NptSVtYK1EQQEfMJkp7hNrvlVzeLgVBZ7IXPd6748/3o3ZXcpKJmmQxgf
+         8ga0nJo9c8v6z5hNAaxvZrro0Xe+s8zdhg+dW1xtcOPRCDfN7lG/CJUoFNF2eMlqm4Xo
+         cxiR9gtCVN6zxhIYNgfyIpYwuzdL/tcF9s74RCPhds7oWLjfFHtUFfF8edjVJr93ZmXA
+         iwSA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="XiMoc5/6";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8dac0960csi12698696d6.353.2024.12.05.02.29.11
+       dkim=pass header.i=@linaro.org header.s=google header.b=YHwsiM+e;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a640c23a62f3a-aa626030bf7sor58425266b.14.2024.12.05.07.23.41
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Dec 2024 02:29:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Thu, 05 Dec 2024 07:23:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="XiMoc5/6";
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1733394551;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
-	bh=yoGg0i1yuJIE4i716VsMsY8Hrg6b//pfuqDhx7v9BDk=;
-	b=XiMoc5/6k2UvR7IMw6RXwMugRRy0FppoVDHPHRB47CZJMEEKigVtzL+jHUg7Djn2qH7kOA
-	97Kg0xcMnEHhfEa3njfxy+jLKpC2/MBnOEFGWH6bqjNHOVh3fMXn+R54Lh/zqZDJye+vF/
-	CYhNh7H9ToHdHOxNe3pzKJxEJohAaUc=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-599-WkhLvZYjOHS0GWv4uxMjTA-1; Thu,
- 05 Dec 2024 05:29:05 -0500
-X-MC-Unique: WkhLvZYjOHS0GWv4uxMjTA-1
-X-Mimecast-MFC-AGG-ID: WkhLvZYjOHS0GWv4uxMjTA
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id F32E81964CC6;
-	Thu,  5 Dec 2024 10:29:02 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.137])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id DDA041956095;
-	Thu,  5 Dec 2024 10:28:58 +0000 (UTC)
-Date: Thu, 5 Dec 2024 10:28:55 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	mathieu.poirier@linaro.org, jean-philippe@linaro.org,
-	marcin.juszkiewicz@linaro.org, alex.bennee@linaro.org,
-	gustavo.romero@linaro.org
-Subject: Re: [PATCH v4] tests/functional/aarch64: add tests for FEAT_RME
-Message-ID: <Z1GAZxhiQ0jN1-a0@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20241203213629.2482806-1-pierrick.bouvier@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=YHwsiM+e;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733412221; x=1734017021; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=2o0BOwxkDSCufIXkZ4f5R0oc042vUvihYxGeEHkXCng=;
+        b=YHwsiM+eUhHT2ng0E8JicW3Mojg+OcvfB4UWBVGwfbScuIS9pxq+2WAWTOMu9HDtcj
+         G8IrKGSsO7Zu2nRwzyhDZXuVnLXG6P+RKs3OMvyMUOG3y+d7xIHTfCT6jqcuhUDejMbn
+         SdiGymQdt+/dJAiQ/SULqv1rGezFCYF94rGy5GDY6kb/9+l2TXZSjCQ1OIXZRcq/Yfkz
+         fEVN3GyvvMbaXXB/AUq73hEFtTmM/mp8NcL2EI0PKaYXe/y83GMo61eomtEcwSNPnoxE
+         u7hSRDd0tqp1armFeweIsZti9LVQuV9e+muthfPwGqyRXXnZnjZBLGBPCzFzjpUnjHtL
+         vaRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733412221; x=1734017021;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=2o0BOwxkDSCufIXkZ4f5R0oc042vUvihYxGeEHkXCng=;
+        b=jTF7PU93Mcsidzt2y90hWyOwEW75l1QfXK6J8TSUJdZ9/WMcqcSStGe1slwBwLKs1i
+         vR2P37o6ac6U+51LTO8gIA3ra1mu1FPEPT5WKtMFiNxQjyBCbdjGDeOB6GZuRLIww6DD
+         atxg3d2CPFxjAbfEk0+uEmXZdWO216ErMLrYKEmodtcTHXOsu8vpiTArkV6gwSW4iAjG
+         XUFJr4+ihq280LjpGVcPxQs1OJRCcG2CgxzFzX4+MhwvEWguo1Q1CrnpLAmxj8NaeOV9
+         gYBwiZP1QLx7mbEXK7QP/S3U3OhUz7jn/dKyuDXiMWn3Ujna1GzJmv6n5TsrL1kSYvxT
+         CE3Q==
+X-Forwarded-Encrypted: i=1; AJvYcCVIM4NXCXu657hJjocTYjXcFaK05aQ+iiccDkNcWmbyLxos62kcQbfGxO6mI7whpYi8JURNWJEMxbwl5g==@linaro.org
+X-Gm-Message-State: AOJu0Yw0STIkh5cB1ssMNbCUXM3j9mpJBuV4cKvA2cFwQu2VtMfiSQXS
+	mxjBIL12lJWIDnSibYiVoJs8hpyM6SLCxt2UA+b3bpidToOwOeQqIgHhb5MNQ8GJ8/A46TNDmjP
+	zKa1D6HBkDJnkC15uCQs+k/G1pZM7Kg/CeUwxokvc
+X-Gm-Gg: ASbGncuyAbzP5+9K2hackRKPbuXAC2WOh9NjI5jjpkroxTqkG3cl7WUSpWm9v+t02WK
+	9O9+9qO/IkV/2p6TL1qK+C0OcpC1Xwqov
+X-Google-Smtp-Source: AGHT+IG8NJmTbbacd/8LR2gPy/2hPCKBTxHEX7mIRpnGShOO2RWc+Mzj7/NaGoNqlqSw6es86YRBj//ckoHRuBboDg0=
+X-Received: by 2002:a05:6402:3506:b0:5d0:9054:b119 with SMTP id
+ 4fb4d7f45d1cf-5d10cb80133mr13614218a12.21.1733412221125; Thu, 05 Dec 2024
+ 07:23:41 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20241203213629.2482806-1-pierrick.bouvier@linaro.org>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: pfFgnrsIVX91
+References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
+ <20241118172357.475281-7-pierrick.bouvier@linaro.org> <CAFEAcA9JdLxi5cr-Z2-YX6Q8nv=j0O3k=f9u6gS-CzSf5BH7Ug@mail.gmail.com>
+ <bdefc0ac-311b-4820-913f-e21d753890fa@linaro.org>
+In-Reply-To: <bdefc0ac-311b-4820-913f-e21d753890fa@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Dec 2024 15:23:30 +0000
+Message-ID: <CAFEAcA-go4GccLwNvdrL0iMpDSmCcrD5J9R3=3BnT5t7tf=Fiw@mail.gmail.com>
+Subject: Re: [PATCH 6/7] docs: add a glossary
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, Andrew Melnychenko <andrew@daynix.com>, 
+	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+	Jason Wang <jasowang@redhat.com>, Thomas Huth <thuth@redhat.com>, alex.bennee@linaro.org, 
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, Fabiano Rosas <farosas@suse.de>, 
+	Kevin Wolf <kwolf@redhat.com>, Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
+	qemu-arm@nongnu.org, Yuri Benditovich <yuri.benditovich@daynix.com>, 
+	manos.pitsidianakis@linaro.org, qemu-block@nongnu.org, 
+	Michael Roth <michael.roth@amd.com>, Konstantin Kostiuk <kkostiuk@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>, gustavo.romero@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: GcaX5uq40Qjn
 
-On Tue, Dec 03, 2024 at 01:36:29PM -0800, Pierrick Bouvier wrote:
-> This boot an OP-TEE environment, and launch a nested guest VM inside it
-> using the Realms feature. We do it for virt and sbsa-ref platforms.
-> 
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> 
-> -----
-> 
-> v2:
-> - move test to its own file
-> - add sbsa test
-> - check output of `cca-workload-attestation report`
-> 
-> v3:
-> - build and run test with cca-v4 images
-> - factorize nested guest test between both tests
-> - remove accel tcg option as it is the default when running tests
-> Note: It's a long test and there is a work in progress to understand why
-> debug build is so slow (x12 vs optimized).
-> 
-> v4:
-> - use pauth-impdef=on to speed up build time execution (x2.5 faster)
-> - increase timeout value
-> 
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->  tests/functional/meson.build                 |   4 +
->  tests/functional/test_aarch64_rme_sbsaref.py |  70 +++++++++++++
->  tests/functional/test_aarch64_rme_virt.py    | 100 +++++++++++++++++++
->  3 files changed, 174 insertions(+)
->  create mode 100755 tests/functional/test_aarch64_rme_sbsaref.py
->  create mode 100755 tests/functional/test_aarch64_rme_virt.py
-> 
-> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-> index 5c048cfac6d..60ae7bbd3d6 100644
-> --- a/tests/functional/meson.build
-> +++ b/tests/functional/meson.build
-> @@ -13,6 +13,8 @@ endif
->  test_timeouts = {
->    'aarch64_aspeed' : 600,
->    'aarch64_raspi4' : 480,
-> +  'aarch64_rme_virt' : 1200,
-> +  'aarch64_rme_sbsaref' : 1200,
+On Tue, 3 Dec 2024 at 20:32, Pierrick Bouvier
+<pierrick.bouvier@linaro.org> wrote:
+>
+> On 12/3/24 09:37, Peter Maydell wrote:
+> > On Mon, 18 Nov 2024 at 17:24, Pierrick Bouvier
+> > <pierrick.bouvier@linaro.org> wrote:
+> >>
+> >> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> >> ---
+> >>   docs/devel/control-flow-integrity.rst |   2 +
+> >>   docs/devel/multi-thread-tcg.rst       |   2 +
+> >>   docs/glossary/index.rst               | 238 ++++++++++++++++++++++++=
+++
+> >>   docs/index.rst                        |   1 +
+> >>   docs/system/arm/virt.rst              |   2 +
+> >>   docs/system/images.rst                |   2 +
+> >>   docs/tools/qemu-nbd.rst               |   2 +
+> >>   7 files changed, 249 insertions(+)
+> >>   create mode 100644 docs/glossary/index.rst
+> >
+> > I think this is a good idea; we've had at least one bug
+> > report from a user pointing out that we had a term in
+> > our docs which we didn't define ("block driver"):
+> > https://gitlab.com/qemu-project/qemu/-/issues/2611
+> > I have some comments on specific entries below.
+> >
+>
+> And people can be free to add new entries later. However, we should
+> resist the temptation to add too many details. It should stay simple and
+> understandable, even if not all technical nuances are not represented.
+>
+> >> diff --git a/docs/devel/control-flow-integrity.rst b/docs/devel/contro=
+l-flow-integrity.rst
+> >> index e6b73a4fe1a..3d5702fa4cc 100644
+> >> --- a/docs/devel/control-flow-integrity.rst
+> >> +++ b/docs/devel/control-flow-integrity.rst
+> >> @@ -1,3 +1,5 @@
+> >> +.. _cfi:
+> >> +
+> >>   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D
+> >>   Control-Flow Integrity (CFI)
+> >>   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D
+> >> diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread=
+-tcg.rst
+> >> index d706c27ea74..7fd0a07633d 100644
+> >> --- a/docs/devel/multi-thread-tcg.rst
+> >> +++ b/docs/devel/multi-thread-tcg.rst
+> >> @@ -4,6 +4,8 @@
+> >>     This work is licensed under the terms of the GNU GPL, version 2 or
+> >>     later. See the COPYING file in the top-level directory.
+> >>
+> >> +.. _mttcg:
+> >> +
+> >>   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> >>   Multi-threaded TCG
+> >>   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+> >> diff --git a/docs/glossary/index.rst b/docs/glossary/index.rst
+> >> new file mode 100644
+> >> index 00000000000..a2d4f3eae16
+> >> --- /dev/null
+> >> +++ b/docs/glossary/index.rst
+> >
+> > I guess it makes sense to give this its own subdir, since we want
+> > it to come at the end of the manual. The other option would be
+> > to put it directly into docs/.
+> >
+>
+>  From your comment, it's not clear for me if it's ok as it is, or if you
+> want a change.
+> Can you elaborate on that?
 
-These 20 minute timeouts seem rather excessive.
+It means I'm not sure. We end up with a subdirectory with only
+one file in it and where there's no expectation we'd ever want
+to add any more files to it. On the other hand it does keep it
+out of the docs/ top level directory, which currently has a
+fair amount of cruft awaiting cleanup.
 
-On my test machines _virt runs in 45 seconds, and _sbsaref
-runs in 2m20. The latter is slow, but not dramatically
-different from our other slow tests. It doesn't feel like
-it justifies a 20 minute timeout ?
+I guess on balance I would make this docs/glossary.rst,
+unless you anticipate wanting to split this into multiple
+files or have something else in docs/glossary/ later.
 
->    'aarch64_sbsaref_alpine' : 720,
->    'aarch64_sbsaref_freebsd' : 720,
->    'aarch64_tuxrun' : 240,
-> @@ -52,6 +54,8 @@ tests_aarch64_system_thorough = [
->    'aarch64_aspeed',
->    'aarch64_raspi3',
->    'aarch64_raspi4',
-> +  'aarch64_rme_virt',
-> +  'aarch64_rme_sbsaref',
->    'aarch64_sbsaref',
->    'aarch64_sbsaref_alpine',
->    'aarch64_sbsaref_freebsd',
-> diff --git a/tests/functional/test_aarch64_rme_sbsaref.py b/tests/functional/test_aarch64_rme_sbsaref.py
-> new file mode 100755
-> index 00000000000..c136b5ce178
-> --- /dev/null
-> +++ b/tests/functional/test_aarch64_rme_sbsaref.py
-> @@ -0,0 +1,70 @@
-> +#!/usr/bin/env python3
-> +#
-> +# Functional test that boots a Realms environment on sbsa-ref machine and a
-> +# nested guest VM using it.
-> +#
-> +# Copyright (c) 2024 Linaro Ltd.
-> +#
-> +# Author: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +import time
-> +import os
-> +import logging
-> +
-> +from qemu_test import QemuSystemTest, Asset
-> +from qemu_test import exec_command, wait_for_console_pattern
-> +from qemu_test import exec_command_and_wait_for_pattern
-> +from qemu_test.utils import archive_extract
-> +from test_aarch64_rme_virt import test_realms_guest
-> +
-> +class Aarch64RMESbsaRefMachine(QemuSystemTest):
-> +
-> +    # Stack is built with OP-TEE build environment from those instructions:
-> +    # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-> +    # https://github.com/pbo-linaro/qemu-rme-stack
-> +    ASSET_RME_STACK_SBSA = Asset(
-> +        ('https://fileserver.linaro.org/s/KJyeBxL82mz2r7F/'
-> +         'download/rme-stack-op-tee-4.2.0-cca-v4-sbsa.tar.gz'),
-> +         'dd9ab28ec869bdf3b5376116cb3689103b43433fd5c4bca0f4a8d8b3c104999e')
-> +
-> +    # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-> +    # and launching a nested VM using it.
-> +    def test_aarch64_rme_sbsaref(self):
-> +        stack_path_tar_gz = self.ASSET_RME_STACK_SBSA.fetch()
-> +        archive_extract(stack_path_tar_gz, self.workdir)
-> +
-> +        self.set_machine('sbsa-ref')
-> +        self.vm.set_console()
-> +        self.require_accelerator('tcg')
-> +
-> +        rme_stack = os.path.join(self.workdir,
-> +                                 'rme-stack-op-tee-4.2.0-cca-v4-sbsa')
-> +        pflash0 = os.path.join(rme_stack, 'images', 'SBSA_FLASH0.fd')
-> +        pflash1 = os.path.join(rme_stack, 'images', 'SBSA_FLASH1.fd')
-> +        virtual = os.path.join(rme_stack, 'images', 'disks', 'virtual')
-> +        drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
-> +
-> +        self.vm.add_args('-cpu', 'max,x-rme=on,pauth-impdef=on')
-> +        self.vm.add_args('-m', '2G')
-> +        self.vm.add_args('-M', 'sbsa-ref')
-> +        self.vm.add_args('-drive', f'file={pflash0},format=raw,if=pflash')
-> +        self.vm.add_args('-drive', f'file={pflash1},format=raw,if=pflash')
-> +        self.vm.add_args('-drive', f'file=fat:rw:{virtual},format=raw')
-> +        self.vm.add_args('-drive', f'format=raw,if=none,file={drive},id=hd0')
-> +        self.vm.add_args('-device', 'virtio-blk-pci,drive=hd0')
-> +        self.vm.add_args('-device', 'virtio-9p-pci,fsdev=shr0,mount_tag=shr0')
-> +        self.vm.add_args('-fsdev', f'local,security_model=none,path={rme_stack},id=shr0')
-> +        self.vm.add_args('-device', 'virtio-net-pci,netdev=net0')
-> +        self.vm.add_args('-netdev', 'user,id=net0')
-> +
-> +        self.vm.launch()
-> +        # Wait for host VM boot to complete.
-> +        wait_for_console_pattern(self, 'Welcome to Buildroot')
-> +        exec_command_and_wait_for_pattern(self, 'root', '#')
-> +
-> +        test_realms_guest(self)
-> +
-> +if __name__ == '__main__':
-> +    QemuSystemTest.main()
-> diff --git a/tests/functional/test_aarch64_rme_virt.py b/tests/functional/test_aarch64_rme_virt.py
-> new file mode 100755
-> index 00000000000..39e4e4adb5f
-> --- /dev/null
-> +++ b/tests/functional/test_aarch64_rme_virt.py
-> @@ -0,0 +1,100 @@
-> +#!/usr/bin/env python3
-> +#
-> +# Functional test that boots a Realms environment on virt machine and a nested
-> +# guest VM using it.
-> +#
-> +# Copyright (c) 2024 Linaro Ltd.
-> +#
-> +# Author: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +import time
-> +import os
-> +import logging
-> +
-> +from qemu_test import QemuSystemTest, Asset
-> +from qemu_test import exec_command, wait_for_console_pattern
-> +from qemu_test import exec_command_and_wait_for_pattern
-> +from qemu_test.utils import archive_extract
-> +
-> +def test_realms_guest(test_rme_instance):
-> +
-> +    # Boot the (nested) guest VM
-> +    exec_command(test_rme_instance,
-> +                 'qemu-system-aarch64 -M virt,gic-version=3 '
-> +                 '-cpu host -enable-kvm -m 512M '
-> +                 '-M confidential-guest-support=rme0 '
-> +                 '-object rme-guest,id=rme0 '
-> +                 '-device virtio-net-pci,netdev=net0,romfile= '
-> +                 '-netdev user,id=net0 '
-> +                 '-kernel /mnt/out/bin/Image '
-> +                 '-initrd /mnt/out-br/images/rootfs.cpio '
-> +                 '-serial stdio')
-> +    # Detect Realm activation during (nested) guest boot.
-> +    wait_for_console_pattern(test_rme_instance,
-> +                             'SMC_RMI_REALM_ACTIVATE')
-> +    # Wait for (nested) guest boot to complete.
-> +    wait_for_console_pattern(test_rme_instance,
-> +                             'Welcome to Buildroot')
-> +    exec_command_and_wait_for_pattern(test_rme_instance, 'root', '#')
-> +    # query (nested) guest cca report
-> +    exec_command(test_rme_instance, 'cca-workload-attestation report')
-> +    wait_for_console_pattern(test_rme_instance,
-> +                             '"cca-platform-hash-algo-id": "sha-256"')
-> +    wait_for_console_pattern(test_rme_instance,
-> +                             '"cca-realm-hash-algo-id": "sha-512"')
-> +    wait_for_console_pattern(test_rme_instance,
-> +                             '"cca-realm-public-key-hash-algo-id": "sha-256"')
-> +
-> +class Aarch64RMEVirtMachine(QemuSystemTest):
-> +
-> +    # Stack is built with OP-TEE build environment from those instructions:
-> +    # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-> +    # https://github.com/pbo-linaro/qemu-rme-stack
-> +    ASSET_RME_STACK_VIRT = Asset(
-> +        ('https://fileserver.linaro.org/s/iaRsNDJp2CXHMSJ/'
-> +         'download/rme-stack-op-tee-4.2.0-cca-v4-qemu_v8.tar.gz'),
-> +         '1851adc232b094384d8b879b9a2cfff07ef3d6205032b85e9b3a4a9ae6b0b7ad')
-> +
-> +    # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-> +    # and launching a nested VM using it.
-> +    def test_aarch64_rme_virt(self):
-> +        stack_path_tar_gz = self.ASSET_RME_STACK_VIRT.fetch()
-> +        archive_extract(stack_path_tar_gz, self.workdir)
-> +
-> +        self.set_machine('virt')
-> +        self.vm.set_console()
-> +        self.require_accelerator('tcg')
-> +
-> +        rme_stack = os.path.join(self.workdir,
-> +                                 'rme-stack-op-tee-4.2.0-cca-v4-qemu_v8')
-> +        kernel = os.path.join(rme_stack, 'out', 'bin', 'Image')
-> +        bios = os.path.join(rme_stack, 'out', 'bin', 'flash.bin')
-> +        drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
-> +
-> +        self.vm.add_args('-cpu', 'max,x-rme=on,pauth-impdef=on')
-> +        self.vm.add_args('-m', '2G')
-> +        self.vm.add_args('-M', 'virt,acpi=off,'
-> +                         'virtualization=on,'
-> +                         'secure=on,'
-> +                         'gic-version=3')
-> +        self.vm.add_args('-bios', bios)
-> +        self.vm.add_args('-kernel', kernel)
-> +        self.vm.add_args('-drive', f'format=raw,if=none,file={drive},id=hd0')
-> +        self.vm.add_args('-device', 'virtio-blk-pci,drive=hd0')
-> +        self.vm.add_args('-device', 'virtio-9p-device,fsdev=shr0,mount_tag=shr0')
-> +        self.vm.add_args('-fsdev', f'local,security_model=none,path={rme_stack},id=shr0')
-> +        self.vm.add_args('-device', 'virtio-net-pci,netdev=net0')
-> +        self.vm.add_args('-netdev', 'user,id=net0')
-> +        self.vm.add_args('-append', 'root=/dev/vda')
-> +
-> +        self.vm.launch()
-> +        # Wait for host VM boot to complete.
-> +        wait_for_console_pattern(self, 'Welcome to Buildroot')
-> +        exec_command_and_wait_for_pattern(self, 'root', '#')
-> +
-> +        test_realms_guest(self)
-> +
-> +if __name__ == '__main__':
-> +    QemuSystemTest.main()
-> -- 
-> 2.39.5
-> 
-> 
+> >> @@ -0,0 +1,238 @@
+> >> +.. _Glossary:
+> >> +
+> >> +--------
+> >> +Glossary
+> >> +--------
+> >> +
+> >> +This section of the manual presents *simply* acronyms and terms QEMU =
+developers
+> >> +use.
+> >
+> > What's "simply" intended to mean here?
+> >
+>
+> "in a straightforward or plain manner".
+> I can remove this word if you think it does not serve any purpose.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+You could phrase it as "presents brief definitions of acronyms
+and terms", I think.
+
+> >> +QEMU system defines board models for various architectures. It's a de=
+scription
+> >> +of a SoC (system-on-chip) with various devices pre-configured, and ca=
+n be
+> >> +selected with the option ``-machine`` of qemu-system.
+> >
+> > SoCs are not the same as boards.
+> >
+> > We could say something like:
+> >
+> > QEMU's system emulation models many different types of hardware.
+> > A machine model (sometimes called a board model) is the model
+> > of a complete virtual system with RAM, one or more CPUs, and
+> > various devices.
+> >
+> > We could also put in a link to
+> > https://www.qemu.org/docs/master/system/targets.html
+> > which is where we document what our machine types are.
+> >
+>
+> How do you distinguish a SoC and cpu? Is a SoC cpu + devices?
+> Isn't a board/machine a set of SoC + devices attached?
+
+An SoC is a "system on chip". To quote wikipedia's definition:
+
+"A system on a chip or system-on-chip is an integrated circuit that
+integrates most or all components of a computer or electronic system.
+These components usually include an on-chip central processing unit
+(CPU), memory interfaces, input/output devices and interfaces, and
+secondary storage interfaces, often alongside other components such
+as radio modems and a graphics processing unit (GPU) =E2=80=93 all on a
+single substrate or microchip."
+
+An SoC always contains a CPU, but it will have a lot more
+than that built into it too. And the SoC only has "most"
+of the system components, so the whole machine will be
+an SoC plus some other things.
+
+Generally a board/machine that uses an SoC will have on it:
+ * an SoC
+ * the actual memory
+ * perhaps one or two extra devices external to the SoC
+ * connectors for things like serial ports, SD cards, etc
+   (which generally wire up to SoC pins)
+ * a crystal or similar to act as the main clock source
+
+So if you look at a photo of a development board that uses
+an SoC, there will be one large chip which is the SoC,
+some RAM chips, a bunch of connectors and one or two smaller
+chips. Not every device will be inside the SoC, but
+generally almost all of them are.
+
+QEMU's machine models for this kind of board match the
+organization of the hardware; looking at hw/arm/sabrelite.c
+which is a machine model you can see that it has:
+ * an instance of the fsl-imx6 SoC device object
+ * the main memory
+ * some NOR flash memory
+ * some configuration and wiring up of things
+
+And the SoC itself is in hw/arm/fsl-imx6.c, and is a
+QOM device object that creates and wires up the CPUs,
+UARTs, USB controller, and various other devices that
+this particular SoC includes. In this case we only have
+one board model using this SoC, but for some SoCs we
+have several board models that all use the same SoC
+but wire up different external devices to it.
+
+Some of our machine models are models of systems that
+don't use an SoC at all. This is rare in the Arm world,
+but for instance the SPARC machines like the SS-5 are
+like that -- the real hardware had a discrete CPU chip
+and a bunch of devices in their own chips on the
+motherboard, and QEMU's model of that hardware has
+a machine model which directly creates the CPU and
+the various devices. (And some of our older machine
+models are models of hardware that *does* have an SoC
+but where we didn't model that level of abstraction,
+so they directly create devices in the machine model
+that really ought to be inside an SoC object.
+hw/arm/stellaris.c is one example of that.)
+
+> >> +
+> >> +Block
+> >> +-----
+> >> +
+> >> +Block drivers are the available `disk formats <block-drivers>` availa=
+ble, and
+> >> +block devices `(see Block device section on options page)<sec_005finv=
+ocation>`
+> >> +are using them to implement disks for a virtual machine.
+> >
+> > Block drivers aren't just disk formats; there are some filter
+> > drivers too. Somebody on the block side could probably
+> > provide a better definition here.
+> >
+>
+> I'm open to a more exact definition. The two terms (drivers and devices)
+> seem to overlap on some parts, so I came up with this trivial definition.
+
+Yeah, the driver vs device split is a good one (basically
+the device is the front-end visible to the guest, and the
+driver is the back-end that provides it with storage
+via an abstracted API). The nit I'm picking here is that
+not every block driver is there to provide support for
+an on-host disk format.
+
+> >> +
+> >> +CFI
+> >> +---
+> >> +
+> >> +Control Flow Integrity is a hardening technique used to prevent explo=
+its
+> >> +targeting QEMU by detecting unexpected branches during execution. QEM=
+U `actively
+> >> +supports<cfi>` being compiled with CFI enabled.
+> >> +
+> >> +Device
+> >> +------
+> >> +
+> >> +QEMU is able to emulate a CPU, and all the hardware interacting with =
+it,
+> >> +including many devices. When QEMU runs a virtual machine using a hard=
+ware-based
+> >> +accelerator, it is responsible for emulating, using software, all dev=
+ices.
+> >
+> > This definition doesn't actually define what a device is :-)
+> >
+>
+> Indeed :)
+> Should we explain what is a computer device?
+> The goal was just to say that QEMU can emulate hardware interacting with
+> the cpu, which could be a possible definition. So people can associate
+> that QEMU devices are nothing else than a "normal" computer device.
+
+We could say, perhaps:
+
+In QEMU, a device is a piece of hardware visible to the guest.
+Examples include UARTs, PCI controllers, PCI cards, VGA controllers,
+and many more.
+
+
+
+> >> +
+> >> +Hypervisor
+> >> +----------
+> >> +
+> >> +The formal definition of an hypervisor is a program than can be used =
+to manage a
+> >> +virtual machine. QEMU itself is an hypervisor.
+> >
+> > "a hypervisor". QEMU isn't really a hypervisor, though...
+> >
+>
+> It's a shortcut, and I'm open to change it. It brings an interesting
+> question though.
+>
+> Technically, QEMU interacts with hypervisor APIs built in various OSes.
+> On the other hand, when we use TCG, it's an emulator instead.
+>
+> But as you can't use KVM/hvf/whpx by itself, how do you name the program
+> interacting with it, and emulating the rest of the VM?
+>
+> The correct word is probably "virtualizer", but from searching on
+> Internet, it seems that "vmm" and "virtualizer" are considered the same
+> as an "hypervisor". The difference is subtle, and maybe we have an
+> opportunity here to clarify it.
+
+
+> >> +Patchwork
+> >> +---------
+> >> +
+> >> +`Patchwork <https://patchew.org/QEMU/>`_ is a website that tracks
+> >> +patches on the Mailing List.
+> >
+> > Patchwork and patchew are different systems. Patchew's URL is
+> > https://patchew.org/QEMU/
+> >
+> > (There is a patchwork instance that tracks qemu-devel patches,
+> > at https://patchwork.kernel.org/project/qemu-devel/list/ , but
+> > I'm not aware of any developers that are actively using it, so
+> > I don't think it merits being mentioned in the glossary.)
+> >
+>
+> I've been confused by that, and just thought it was two different
+> instances (fork me if you can) of the "same" thing.
+> How would you define patchew?
+> When we say patchwork, do we implicitely mean patchew?
+
+No. patchwork is patchwork, and patchew is patchew -- these
+are entirely different pieces of software that happen to do
+similar jobs.
+
+> if I understand currently, patchew is what we want to mention in our
+> doc? (and mention it's not associated to patchwork).
+
+We don't use patchwork, so we don't need to mention it anywhere.
+
+> >> +Once a series is reviewed and accepted by a subsystem maintainer, it =
+will be
+> >> +included in a PR (Pull Request) that the project maintainer will merg=
+e into QEMU
+> >> +main branch, after running tests.
+> >
+> > I think we could probably also usefully say
+> >
+> > "The QEMU project doesn't currently expect most developers to
+> > directly submit pull requests."
+> >
+> > just to flag up that our development model isn't like the
+> > currently-popular github/gitlab one where a PR is how you
+> > send contributions.
+> >
+>
+> This is interesting.
+>
+> For the majority of developers nowadays, a PR is a GitHub/GitLab PR.
+> Despite the fact we use the original PR meaning (in git terms), it's
+> probably confusing when new comers hear pull request.
+>
+> >> +
+> >> +QCOW
+> >> +----
+> >> +
+> >> +QEMU Copy On Write is a disk format developed by QEMU. It provides tr=
+ansparent
+> >> +compression, automatic extension, and many other advantages over a ra=
+w image.
+> >
+> > We want to be a bit careful here, because the "qcow" format
+> > is not something we recommend for new use -- "qcow2" is what
+> > you actually want.
+> >
+> > https://www.qemu.org/docs/master/system/qemu-block-drivers.html#cmdopti=
+on-image-formats-arg-qcow2
+> >
+>
+> Sounds good.
+>
+> For my personal knowledge: during this work I discovered that we had
+> qcow3. From what I understood, it seems to be included in what we called
+> qcow2 today. Is that correct?
+
+I have no idea -- you'd need to ask somebody who works on the
+block layer
+
+thanks
+-- PMM

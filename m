@@ -1,211 +1,193 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp770322njb;
-        Thu, 5 Dec 2024 00:00:09 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVZR1Q4u5j12XeU78Cg/jt9PWNpEtEpVQfVID4jEIT6vhBb6FVnqBqTU7mL0RWx9SRDJzHYgsiVbhgaLA==@linaro.org
-X-Google-Smtp-Source: AGHT+IG09Xlze49tzkniRIBT9vzaQyvmOjY8t6ihYCqslpMa+XRRu9nwEn0yGlHjQhUk/LPlFrhJ
-X-Received: by 2002:a05:620a:44d6:b0:7b6:701c:9e3 with SMTP id af79cd13be357-7b6a61c3fe3mr1184494285a.45.1733385608824;
-        Thu, 05 Dec 2024 00:00:08 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733385608; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp179140njb;
+        Thu, 5 Dec 2024 06:53:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUWePeP46fBUpVYeoM47erNrX8HAwE3n8ITjtruVwm4Y5dlpQaOdV7Fp80+USMqiiILx6tcJHr1hhMn7A==@linaro.org
+X-Google-Smtp-Source: AGHT+IGk75hE3Lf8cZdo2xcJkr7KiIrbE6S3foIcu+uc7hOT3OirUxpJ6qn13IQI/j/DcyIcKfsS
+X-Received: by 2002:a05:620a:4721:b0:7af:cdf9:88df with SMTP id af79cd13be357-7b6a61eeb12mr960317085a.49.1733410424533;
+        Thu, 05 Dec 2024 06:53:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733410424; cv=none;
         d=google.com; s=arc-20240605;
-        b=Kl7tY7W6JNClPAUB9uHdvU1bhPIFz+pVB1DEyxuV5jHzCPI/KUAUefnDSHYcDhgWii
-         6JGve13vFHynr7ZHY0FCtW6E5byRBGP5PMm5iOAQvR4n+PivzwfVeKWL5ZJJomniYzNL
-         GE492EATgoW0QWo29ECeI/VzS/pyiUlAfOGKVJlNs8J8ZL3/cHkrlle8hPxSG+vUulT4
-         4zp/rqTMvlvPABONJBLHwGELW0PkvHA8nNg6J4ID9xCfsJCgvrgi8eRGbwKE3p8G2Bwr
-         GoV/GDltDO4pl3kDcT51oDfWIpqxLqIIHwggdRd0+3jWbn62v34kdYtCTRBqiVD9bryt
-         Bhiw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=HqXvmhBigsRisuXDUexahntBLmvIJdwXX1sEsNn7x6Y=;
-        fh=AJ8hn4ioKJA5lsG3NCMNx8yhntdFUmRi9f6dN5eYbeg=;
-        b=X0Dwfj9t8v15WzTZuVrnwzYp12FFc4eJTTdoFWV3mD39ar7a7r+U7Vuz0K9F84AikC
-         Ng6FuJSOkD2k9ImqJwY4gkZG5ScVbLuZdUy3txg/BGL4A+w1usZ8IokMhpf2uSrxM/nG
-         f3l0PeH7UQp2TYAI6alZ9OWUE5r+2E1WUYKDZFuEzUNfoiJ4AEOVjlE9eHEdL3cbxBGe
-         /NF1BUFbY/FXzd3DeVRtJTE3DSZVKjTMDHS/OsrDe9orFhoerYDF68pKn+QKG/C+pfxa
-         F3ZnAJz6K3vyu3+AKcAMqbNjyHltKwJPxfUSIK5UdyHl2GNuIlCKdQFTIYF3iBuFIJ+O
-         m+Pw==;
+        b=Hw+v73mCWfVoaonkNpQk923P9t5YMWYvqeuATfwdnOu0Fns9Qg+Ktp/XNBg+eiMvGK
+         P4QzEEIOxFfQa7poeLU0lo/6BcY5h1moeLPgVBmVinVK9xnxeklP0NyFaW3eoSS0AYfx
+         OL4zACf9zMBIMjiNAz1R5Qcgrd+B/jn3N8yNjiGqNXctyOuu1TxjxIHxZKJZCymChmKe
+         48hAv5pzwkPn+4CPKtikOxfYa9t5TwHi/kZgE0ynrb5S7m1sSmlJW6Pc8DH3qof97LQC
+         U4eMzpFVAT/TN/uTZZHBN09u4NBBR26957Z/8NhirXCPQuVuCxxjIINmRe9Or2A2WV5G
+         pSkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=DgbjCCB16SErebcpkCcosJNhLesM5Vw3w3bIxhw/pzQ=;
+        fh=/x/10RE2sEL1Vneakh/uo6S8HD4J/J173sPvuFrXUrI=;
+        b=RT4+NmytnqDBD2yqaJKv2ibHQrG6vQTPL8uTf0nm+GWKcV1jo8NGp8vdhdOEnAFwCV
+         SOAWDnh/FInLULaeLq6klyzl/yoNsUBvxbD8VvoO0+4XA5lP6pRHc43x4bCMeA01RkNn
+         e6o3yvGSuo7M6ZtYZ5cHLuyu5osXRN4pmick2pLwkx2/zBujFSSzUf0aJRgSey9bmqny
+         TJUPDU8gvw5sdwAwykXJw51KVIij5QE1d9ttcE9DleZIeWxFs7uo3UUrSIYxOTNfXKI+
+         /umluLvCLRCFtmlhlt+91L82e40d/VwtUw+hmiAfhPCU2TnL2imjx1k13Mty3/p/Q/0U
+         w/dw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jVlXlbqH;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-432706-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-432706-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-432706-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6b5a51915si105221185a.133.2024.12.05.00.00.08
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=kn7hAABt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b6b5abd4b5si173714485a.536.2024.12.05.06.53.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Dec 2024 00:00:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-432706-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 05 Dec 2024 06:53:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=jVlXlbqH;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-432706-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-432706-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 3448516164C
-	for <alex.bennee@linaro.org>; Thu,  5 Dec 2024 08:00:06 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5C3131C1F13;
-	Thu,  5 Dec 2024 08:00:06 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="jVlXlbqH"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 18C121C3C15
-	for <linux-kernel@vger.kernel.org>; Thu,  5 Dec 2024 08:00:05 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1733385606; cv=none; b=PozqLubbK8u5N9FDsoXDX/6AY8D/CLhrdgBTpmUICC6xaO4mXKIjIMjuOBRFwgjfvZVXHCqDa1gCGvQbJjqlfI32a6bNZBacrkUopwOJ+zK0WmIPFn16EfkaiiWQmp72epfjgn6Oyr5F0/r/Plv4WbMHZJz6O6bPMdm09qgACJI=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1733385606; c=relaxed/simple;
-	bh=q7ysq63iGMnUWGArTOv4L3H5qVOaDhKU0OUZpTni/Xg=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=G4MXKmxMBtmDU/sk24eFpSLrwwOHx0Nb0laAmkHSIga6ICtQXQwYAUwOTw6mtO4mnO5Sj8/AlPxNuwYXIUqbmJBbFQm+8pUa6BgFoZDXyQnLsCFHj2zVs4I0eF87iNDvuUqhcR9EOFj0xXhBNZ/qZvnOjNQqyqrFwU4hUVDJ0HA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=jVlXlbqH; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 820FBC4CED1;
-	Thu,  5 Dec 2024 08:00:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733385605;
-	bh=q7ysq63iGMnUWGArTOv4L3H5qVOaDhKU0OUZpTni/Xg=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=jVlXlbqH6PR+Y396UgJAD97rcUiSCOmuBQtf1jEZvS3SAIn00BDsYr88FpVpPIZHt
-	 7mmi0arZ61XfJVSxN9nPdsGuztCxaS9OvLcDEG0ddlTNxf50eNfexvTbBGrvG1QvmM
-	 lvi3rO2j0X3iCPj0+Gpbl9iz2wokXZcOD8rg3IL6Im0MgbJdbYgQ5m92RHGwBgNI+E
-	 TyJMqg/SlcodLQCcpUziYZB9cYaqNBltsr0SVpunycEDlchCIZLF0WddiMxKcFAV7+
-	 oDB5Jmqm6mYDMq7odpIghOm31cR/8XBkh9bhdYXfKvD7/ftn43aQFS2gDNB5C8JJTG
-	 IuG6/oD8ktDjQ==
-Date: Thu, 5 Dec 2024 08:59:59 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Igor Mammedov <imammedo@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v5 13/16] acpi/ghes: better name the offset of the
- hardware error firmware
-Message-ID: <20241205085959.2223d079@foz.lan>
-In-Reply-To: <20241204173759.6f02561a@imammedo.users.ipa.redhat.com>
-References: <cover.1733297707.git.mchehab+huawei@kernel.org>
-	<20b003136d8c008fd54e8d40c806f13867336e13.1733297707.git.mchehab+huawei@kernel.org>
-	<20241204173759.6f02561a@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=kn7hAABt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tJDEK-0001RE-N1; Thu, 05 Dec 2024 09:53:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tJDEI-0001QO-Uf
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2024 09:53:23 -0500
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tJDEG-0007TP-FD
+ for qemu-arm@nongnu.org; Thu, 05 Dec 2024 09:53:22 -0500
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-5d12709e1c1so1177744a12.3
+ for <qemu-arm@nongnu.org>; Thu, 05 Dec 2024 06:53:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1733410398; x=1734015198; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DgbjCCB16SErebcpkCcosJNhLesM5Vw3w3bIxhw/pzQ=;
+ b=kn7hAABt2bIW6UpOdYlFJ7Qy1j2OhXlLnITc9DJ5/zEU1I3v58KdgoM7SQM8uJxrRP
+ H6PSGdd+kMS3l2WF6JgfgodjWKIo7DIW7TOjjjl7oGxuzBZcVd0RB0yxGXcsgu97mWCC
+ Hhx8wBFgovIX3fxoUSDuibFX2DrYVquiAcVTEQuMQ7JKky3NY2W/Ghjsh8zi7vzJgL9a
+ e6VByeUZwhuqdRcRGNV8L9pE8hct1WtKBOefTIdxbwWGWnQnMgIRoxM1LR4F6UdUVWOk
+ 2e1n40T4PifEAVs/rRslAUakqWJxb2MB7YPfyEI/hQcDgxhx79tMzlVuCj767Zb7gnpI
+ fPpg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1733410398; x=1734015198;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=DgbjCCB16SErebcpkCcosJNhLesM5Vw3w3bIxhw/pzQ=;
+ b=U9H6SqELdFPjkJiKGW4xve8n5Vwb0BrbIbVulqIjcuBw4CokDEBGSCZOxan01TUIVx
+ CqiFOj+H+V2A4JLTyxS+UIHclEY1uUwUdSijnzIdOR8cwmcgWLeWWlnPmZuFM6upjsyu
+ yqXV6LpJxbS2jQHaVC5uzsLdy+AUWApR9UdrFictFxX51W0GPaM4vjltmFur7LzBy170
+ 6Nq6zyC6AGFfNYuZQyKKNUDMjFhBY+PF/3Bo55oMnNgLcO9x1ofFCNL8Xkh6uAqDCsmA
+ ygF96cWWmrna/QrE54DDEzsqGKrx6u/uW07iDHFUWsx9kTfQ5f2KoYVOBmy2yUu5MHN7
+ 3qtA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUA9PHcu42pwhd38kES7s/xZF3SCfsBAY+O5fMSyaUcbczHl96e75tf6RXeD+3dWvS8jrFRsd5TSw==@nongnu.org
+X-Gm-Message-State: AOJu0YzOn9ciACw0rnbIHXip2d+wVJedmEApgWY47/wYmn4+33yplaQH
+ 7ScnaHzp/Vwb/tTRbRHhz1vekF4oQpgE9mLJhlhb6tNmgdrOQygbYG5PawZEUE7QZ92lmX4aRTG
+ zzSXl2QAi7FGnQVJ37ba1yfGfTgZS+vEEIuVbyA==
+X-Gm-Gg: ASbGncvY2KgJUDQAAxoJF0yNpYCBckiDuuQH9HmrcD4TWzLHuAxpA3nH0ZdJW1C8p8W
+ EQZGHLS0MHWmrb/6UtAYK2wmooiRvqKSF
+X-Received: by 2002:a05:6402:5206:b0:5d1:3da:e6c with SMTP id
+ 4fb4d7f45d1cf-5d10cb556b8mr12211020a12.10.1733410398025; Thu, 05 Dec 2024
+ 06:53:18 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: lXneXkXj3twr
+References: <20241126084928.252067-1-marcin.juszkiewicz@linaro.org>
+ <CAFEAcA_SkZ+ew8AAVpBHuw-9YW4S5wFbB0Vqx+dBzXf97JGDGw@mail.gmail.com>
+ <cd635753-4e2c-42d6-bb7b-d558d90f59d7@linaro.org>
+ <2106db77-88fb-4113-ae09-9bf77bce6ad7@quicinc.com>
+ <c4245af0-3dd4-4cf6-a786-c15fa079ad05@linaro.org>
+ <18ba737f-d669-4e6a-8319-fb5052223b26@linaro.org>
+In-Reply-To: <18ba737f-d669-4e6a-8319-fb5052223b26@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 5 Dec 2024 14:53:07 +0000
+Message-ID: <CAFEAcA-P5P4AJidWcGgUScBTe9-K_C4Qm9N2o2XWnfiT81LU=A@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/arm/sbsa-ref: bump default memory size to 2GB
+To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Leif Lindholm <quic_llindhol@quicinc.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Mathieu Poirier <mathieu.poirier@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, leif.lindholm@oss.qualcomm.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: +bgvw03Ym7Qm
 
-Em Wed, 4 Dec 2024 17:37:59 +0100
-Igor Mammedov <imammedo@redhat.com> escreveu:
+On Thu, 5 Dec 2024 at 10:14, Marcin Juszkiewicz
+<marcin.juszkiewicz@linaro.org> wrote:
+>
+> W dniu 4.12.2024 o 21:50, Philippe Mathieu-Daud=C3=A9 pisze:
+> > On 4/12/24 13:17, Leif Lindholm wrote:
+> >> On 2024-12-02 10:53, Marcin Juszkiewicz wrote:
+> >>> W dniu 26.11.2024 o 14:14, Peter Maydell pisze:
+> >>>> On Tue, 26 Nov 2024 at 08:49, Marcin Juszkiewicz
+> >>>> <marcin.juszkiewicz@linaro.org> wrote:
+> >>>>>
+> >>>>> We are working on adding RME support to SBSA Reference Platform.
+> >>>>> When RME is enabled then RMM (Realm Managment Monitor) takes 1072MB=
+ of
+> >>>>> memory for own use. Which ends with firmware panic on 1GB machine.
+> >>>>
+> >>>> Reasonable change, but isn't it also a bug in the RMM that it
+> >>>> grabs 1GB of RAM regardless of how much RAM the machine
+> >>>> actually has?
+> >>>
+> >>> I think that the goal is "get it working" first and then optimize.
+> >>
+> >> I agree on a different platform this could feel quite hacky, but in
+> >> reality even 2GB falls within "ridiculously low for an SBSA platform".
+> >>
+> >> If we're worried about overhead for CI jobs that do not require the
+> >> feature, we could always conditionalize it on RME being enabled. But
+> >> I'd be happy to wait and see.
+> >
+> > I'd rather do that, since it is as simple as:
+>
+> This is sbsa-ref not sbc-ref. Let it just have that 2GB of ram. None of
+> existing SBSA systems comes with such low amount.
 
-> On Wed,  4 Dec 2024 08:41:21 +0100
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> 
-> > The hardware error firmware is where HEST error structures are  
->       ^^^^^^^^^^^^^^^^^^^^^^^ I can't parse this, suspect you've meant something else here
-> 
-> > stored. Those can be GHESv2, but they can also be other types.
-> > 
-> > Better name the location of the hardware error.
-> > 
-> > No functional changes.
+Yes, I think I agree here. Changing the default RAM size
+based on whether the CPU does or does not have a particular
+feature is unusual and not something we do on other board
+types, and it definitely doesn't match the general intention
+that sbsa-ref is a "looks like real hardware" machine.
 
-I meant this fw_cfg file:
-#define ACPI_HW_ERROR_FW_CFG_FILE           "etc/hardware_errors"
-#define ACPI_HW_ERROR_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
+The problem with using 2GB, though, is that it doesn't
+work on 32-bit hosts, which have a max of 2047MB (and
+if you try larger then hw/core/machine.c will error out with
+"at most 2047 MB RAM can be simulated").
 
-What about changing description to:
+As a result we have several board types which have an ifdef
+to say "limit the RAM size to 1GB if HOST_LONG_BITS is 32".
 
-	The etc/hardware_errors fw_cfg file is where the HEST error
-	source structures are stored. Those can be GHESv2, but they can also
-	be other types.
+(I think this limit primarily derives from ramptr_t
+being defined as a uintptr_t, but also trying to malloc
+2GB on a 32-bit host is unlikely to work very well.)
 
-	For more details about error source structure, see:
-	https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#acpi-error-source
-
-	Better name the address variable from ghes_error_le to hw_error_le
-	to better reflect that.
-
-	No functional changes.
-
-> > 
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> >  hw/acpi/generic_event_device.c | 4 ++--
-> >  hw/acpi/ghes.c                 | 4 ++--
-> >  include/hw/acpi/ghes.h         | 2 +-
-> >  3 files changed, 5 insertions(+), 5 deletions(-)
-> > 
-> > diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> > index 663d9cb09380..17baf36132a8 100644
-> > --- a/hw/acpi/generic_event_device.c
-> > +++ b/hw/acpi/generic_event_device.c
-> > @@ -364,7 +364,7 @@ static const VMStateDescription vmstate_ghes = {
-> >      .version_id = 1,
-> >      .minimum_version_id = 1,
-> >      .fields = (const VMStateField[]) {
-> > -        VMSTATE_UINT64(ghes_addr_le, AcpiGhesState),
-> > +        VMSTATE_UINT64(hw_error_le, AcpiGhesState),
-> >          VMSTATE_END_OF_LIST()
-> >      },
-> >  };
-> > @@ -372,7 +372,7 @@ static const VMStateDescription vmstate_ghes = {
-> >  static bool ghes_needed(void *opaque)
-> >  {
-> >      AcpiGedState *s = opaque;
-> > -    return s->ghes_state.ghes_addr_le;
-> > +    return s->ghes_state.hw_error_le;
-> >  }
-> >  
-> >  static const VMStateDescription vmstate_ghes_state = {
-> > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> > index 52c2b69d3664..90d76b9c2d8c 100644
-> > --- a/hw/acpi/ghes.c
-> > +++ b/hw/acpi/ghes.c
-> > @@ -359,7 +359,7 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
-> >  
-> >      /* Create a read-write fw_cfg file for Address */
-> >      fw_cfg_add_file_callback(s, ACPI_HW_ERROR_ADDR_FW_CFG_FILE, NULL, NULL,
-> > -        NULL, &(ags->ghes_addr_le), sizeof(ags->ghes_addr_le), false);
-> > +        NULL, &(ags->hw_error_le), sizeof(ags->hw_error_le), false);
-> >  
-> >      ags->present = true;
-> >  }
-> > @@ -385,7 +385,7 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-> >      }
-> >      ags = &acpi_ged_state->ghes_state;
-> >  
-> > -    start_addr = le64_to_cpu(ags->ghes_addr_le);
-> > +    start_addr = le64_to_cpu(ags->hw_error_le);
-> >  
-> >      start_addr += source_id * sizeof(uint64_t);
-> >  
-> > diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-> > index 21666a4bcc8b..39619a2457cb 100644
-> > --- a/include/hw/acpi/ghes.h
-> > +++ b/include/hw/acpi/ghes.h
-> > @@ -65,7 +65,7 @@ enum {
-> >  };
-> >  
-> >  typedef struct AcpiGhesState {
-> > -    uint64_t ghes_addr_le;
-> > +    uint64_t hw_error_le;
-> >      bool present; /* True if GHES is present at all on this board */
-> >  } AcpiGhesState;
-> >    
-> 
-
-
-
-Thanks,
-Mauro
+thanks
+-- PMM

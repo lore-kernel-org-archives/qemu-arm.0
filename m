@@ -1,362 +1,571 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp369623njb;
-        Thu, 5 Dec 2024 11:21:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUXLyzSskfaZjaJ37UWxTJlySu+146iEtyzRjhivRqY6b6lVU1Mo/A+6Ih9OHztwwBecMgDEjALR5llhA==@linaro.org
-X-Received: by 2002:a17:902:cec1:b0:215:b18d:e1 with SMTP id d9443c01a7336-21614d757d4mr480815ad.24.1733426473412;
-        Thu, 05 Dec 2024 11:21:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733426473; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp462237njb;
+        Thu, 5 Dec 2024 14:22:55 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWppKJKPL3U7mcaX0l5sHg+eG9R0BFYrma4iT2MPQjufFrjsl6Q8hxeHxDIvpQ73F9Wr7OMaZtnP2l9xA==@linaro.org
+X-Received: by 2002:a17:902:f60b:b0:215:8270:77e2 with SMTP id d9443c01a7336-2161394468dmr10261765ad.0.1733437375067;
+        Thu, 05 Dec 2024 14:22:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733437375; cv=none;
         d=google.com; s=arc-20240605;
-        b=Wk9GxBUcxYHOv1jX3Btr7mlocx9tX8LH1Ie9xue4+HZ0/GwUkGp6ns5G3OO50RL+Ws
-         5pLfOzVYG/oDRXsYB2fulLdvlMkx+XjD8BvhPdyUJeVCBA5KA+WOGsIj82+w2msgCa57
-         22qUOhCcadHuWjr7HG8nxDVcv+EntiCM+Ol0rgDuCTk/RDyGnju0ORP9sfKtstbL0fKT
-         HYnQMq3MlPe0fBuQU9a526OVHcrK/hbYovyroBCNoP2qm0XKsRpNI4T+TEkvhUzmN/zd
-         WENAyBK7sijVTYF+YnFr1MfXXvTRUzxOgJuyDE9oE/3BL1+71IpVmvOFPz9mwuBcYYV3
-         8YOA==
+        b=RDxTdzgWlNV+rYr0Bv90H6jS1aZJXe1Uj+ALVorS3dukzOD7BuxNNo7BhKARH89SqH
+         zRB4Sd7/TJ7ogZGzrl61gxY6s8w2bJgukvk3MVy6X+bOkJaHvpg75W5qpWGw7dU8RQG4
+         P06bCQ4DZ3joJLZWcX4mhLAt9WyMjspKdD+Yk3Yy7Q+x+dUpgqiE6i9BDJGr5XwrSWRq
+         f4dSBwDjwBvqIOhxHnUZRUMyDQh/WKclA3jFukGKRG42a7Yk/cgE30jN6WZ/QPYDXNDB
+         g9wccS1wi7KhKDTtKR1yA0ofvBEa8g8D4CPiLibWwSkhDI6S59n7sOx+PFYe1aLdG6Qz
+         3H+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=uliqIs6mpeDxcx3U8sOLSuoOR+gBi+Eu+PIf+iwhVXA=;
-        fh=ZxQZfnPHpv2kNy/eiqv9QHiIwZ9DpqqOSTOG6hjYqvY=;
-        b=IUVzwmRJYDCp2jhR1znTTHwI7gOROKCnFPq3hZ9L/Wic0zIeBXaiuV9bzxuXgOb0Z5
-         YcQ7m8nZNBD92Vjw0nN0BbdrTYFC6t9Nc6+SVyFoIQAwXF+8w2eabDdjC2Q2S8q1yxmF
-         sgTJWP4Pt+Ozg4fCFLE7luwnxB7HpVK0o5vOHUjW0BchY8do+ssjZMnhUStN/QaaLExV
-         +ZJCntKv8ETxa/KnOHJ7n/1OUTzm3AiAF/QxoUTkQk0U4OI+HAQ/xf6XAiKLucEbxhfC
-         0PwF7KOa0pN5km3GyJ+kz1OvAqXNscFLThB9Q/Wg9lBlBuW7K9fyrmbPM4afzVeg+slF
-         jVxA==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=psPQ9/kLRzl9aDWDZsvLNVKSyFO68oycKe3IaPSK7ys=;
+        fh=G0zL3L2UtQ7+SVDc3NT+abPoJPGD1h5vNl+xPDCO4ds=;
+        b=BRd+WQ45Gn0nthRQgCM3ew34g+rCVhVxOvgRAJd9C34lyTeot0/FbOMGrDXjmNFiz7
+         Wv3MAmsskqQdyXzgXXtOkMn7RjYxhtKSNW9ERM+6VcvhVW/KNfgW/v/McebQk6jLFYSq
+         voPys+ilJFLeOYLfCz54IubdtLpYncct4VzH1EoYFFA+pDGCd5qWP9YYcsvP0VnZ7NoW
+         PoPgQqTHu8v5OS//BYZRaEXqJ3N0jYo8RzsHPb9ORMIyVbV029rFh42ABWzQ95yaZ6D2
+         +n2C4YLYe9tXiKMvlgWqarbKeK6cbWm3gBIc5D/OGlXSGQc1j2kBH5xxPdByTSqH79jo
+         j6ig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sRrZkiKP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d+SERL+Z;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-215f8eb9a97sor13769395ad.8.2024.12.05.11.21.13
+        by mx.google.com with SMTPS id d9443c01a7336-215f8f31a65sor14878215ad.17.2024.12.05.14.22.54
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 05 Dec 2024 11:21:13 -0800 (PST)
+        Thu, 05 Dec 2024 14:22:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sRrZkiKP;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d+SERL+Z;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733426473; x=1734031273; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=uliqIs6mpeDxcx3U8sOLSuoOR+gBi+Eu+PIf+iwhVXA=;
-        b=sRrZkiKPxLRcEbUCVaixjOPQFMkgrj5RYyZgLnLlX00R33Vu3/VPub7B9ws5khhV58
-         QG3ArEyHPTaZrGcGPWIYOeXqcNmWsVaNRt60sOTuyeR8gXZq8vw5WbFMNc9mVJAhYfHD
-         jaC6U7yJwY23e+xJQcE/rMAAJo1VFdyWXIV/1Hf8IdNEksxu/Iigre6wotCwENpA2/QB
-         lzdw5fCSIXbTsqRLkAS1OD5bVXBz/83XUYDqqUDKnmavyP/oYUpetWsWDW7u+YmviDrv
-         DbUyLpugvdpAv0uaivWORTUBipPVkwjxQh7R3+WOIrPmQ+6nLyWdCZlOS8mxJFF7tcN0
-         AOoA==
+        d=linaro.org; s=google; t=1733437374; x=1734042174; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=psPQ9/kLRzl9aDWDZsvLNVKSyFO68oycKe3IaPSK7ys=;
+        b=d+SERL+ZxOJ7+fot8EQX6LVSn6vxUnYZPAQug9DeuVmEZJEYKSC/VpIRvzA/Th2sNi
+         OzUwH6yIQfVf7XWCXKk7HxfPHjxW35VB2PXflBte+VE9DcxgOy9XxLd8hl9wIAPxhPN4
+         GpMQlmXJGCl9pbW6vYiy7uQXjh8wKDD1YJGAoDPnVxrGcKgnO4FwtqS+YQJBWgNMxzMP
+         XsN9CRn/JnR9NFUEXj0fyuxQK+jpJXCdNb8i1lQZqJV8tw4C1AFBf0J3xaCx+tO7M+Z7
+         DF7q2DmX2kpv8Fh9lcBeaZFKf4EQxHgcHzvzOgPWX9X7keP298jpmb2Z+snUQ/DHLRty
+         OnZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733426473; x=1734031273;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=uliqIs6mpeDxcx3U8sOLSuoOR+gBi+Eu+PIf+iwhVXA=;
-        b=Pwwn2WVu8VV2mqO/IInT06qoesDS0jExsI9mRbmpZTYlbFsU0H/LFhrtu+h2aSWY5z
-         VxDxIKiyH+Yt3PbRMTdgzhs//2Q8rFCii3kB4x0hMSZwL8sCbupNP/rA+l4kfCgDttRJ
-         bt01QuTKtiZ3dXqipm9iQDPNL6aIvWzy1lHgFKkt4BL73hQxpF5u/57/IAt+f8LB179n
-         z9RBRsLYFW8jWAhX/lHVSs+aiSciEDoMPjfDxPJABdQO7YiofBNhWAaMRpBsmpfZbvpc
-         5j7gIWncLMRUrUZ+80Fjocs0sFXFekQRgqMfgP2l59k3JbK943REN1HLzeo6/eWmVKCA
-         2YVA==
-X-Forwarded-Encrypted: i=1; AJvYcCW+EZCfMVgQcK2XyXPy75trz5W39UUt3xIJPoP9u9IPA34uyHSvRJFV8Xq5iTezxWVQhyv6XqVdaO5/XQ==@linaro.org
-X-Gm-Message-State: AOJu0YwChO1pbiQJRpsJBdRg/s2iqYVV1SZE8fQNQNs1T+k9cBcNp2bq
-	cNrTXHIdTrOX6Gn4ZmaBbCCXBX6indZ0heUPEMRzJ0YzqGAfWt4DS148IHkj5GHdwA==
-X-Gm-Gg: ASbGncuFfoIAntf4JJmUx0a6t+7czPloC8/i40VAWTYrILhgn4umiDzkKNwyiR690xW
-	cs1hM1hojBNZBYZosnCFDkiewU71LgXSiNruAn4V54syuLETVOgfuBHGoEmtOOxKIJ8nkxac6Dc
-	ZVpVAIe+DSgb9hRAlSN+1uhOMY1GiB412M3QwitUp3kS+torYqp2sbZQ3auimeqMMBxm+TVW9PH
-	zzHYWfhluXGbNrqKnLyw/oe3QvTKoBeEhHklilkfgyp4fg1YALGU3YtP4NaPhWU53CFcQxV5G8L
-	7dJIvgFLnDwEYZypVvJ0fw==
-X-Google-Smtp-Source: AGHT+IGVUCD7Z1Ind8Pnh4NFrVJVelfI2n+I/zeF6P4G6FHosRHrgWWJhenl+U1tzOyJfUsEQ3kY2Q==
-X-Received: by 2002:a17:90a:c105:b0:2ee:db8a:29d0 with SMTP id 98e67ed59e1d1-2ef6ab07f61mr410279a91.26.1733426472724;
-        Thu, 05 Dec 2024 11:21:12 -0800 (PST)
+        d=1e100.net; s=20230601; t=1733437374; x=1734042174;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=psPQ9/kLRzl9aDWDZsvLNVKSyFO68oycKe3IaPSK7ys=;
+        b=S8GGh66cIfx3U80RY2UahbuoakYft1G9tiHPe+Fg5zZPUTTscR2SMwM/Ko8MIhjd98
+         lTgZBpdsrD31qloR04S2BuQb8daM1pq5SxTBIwuDV6f32tABSoUjk3obhuBa88XpNuUW
+         ckCVKwsoOFIipFSH1qAzNda6KcJOpon75E2IUu5n1bYVa+orZ+munrNSRuy5DuroeKBl
+         tGYOGEESd6uCZE0ZOUZuAP/OquMg8MNJ3nnLTPrlxX8gzox36kckbjtjFMuoUn+R2B/S
+         90uoQy2dGfi94lD0+8UoQf7Rby5EASRmROK/eqU2mLLJ7bzoFWiKJ7j6V4uNkHSysaBE
+         mdmg==
+X-Forwarded-Encrypted: i=1; AJvYcCVSxpA8X/hOU/UEYtZA13Vsi557aepfYqhY4gT4zY2eTOH/j05CMvRRlJow52TNsCcnt230OYtvzsNFXw==@linaro.org
+X-Gm-Message-State: AOJu0YwKGvmqMELYlDOchnqYSVF+w49gzOjRR5zQfU91lOunZxXfDIGk
+	z7kvuhy3LnUYN1xG4sBqugbWz75heOmPBEMh/5HmWlcqAEW4qFC3BseyUK/3rh443w==
+X-Gm-Gg: ASbGncs8kDOYlynlLLdNOL/tGPKQH0fl5XYzX4EqtocZV/Lib54rDBq7+8frLpbzJnm
+	Xw3KhF/vAZKy984hAXyKVg6d0tjO+2Al2juC41fTqdqUIb01NAv37aXOFlOn+LWQH533iV9uOi+
+	3uXl9JUgCTfgYaH1HMtnP5o8Im5eNGiTz8JkYkPoBdytflFwa5Rjq1WvHITf9pPN08cKImiPk1/
+	MNj/Sp8T3hUnB/TtzPwZTML9sARt6HXjjkMEGKqE67cUAYpwUy8P7IpXE0psNWqc7WzgmpW0szt
+	SsJrAfDL
+X-Google-Smtp-Source: AGHT+IE9EMYi/cLnTP5fYs1fTTEAK5edefx0b654vu67DRKtBYAdzr+eEFat0eJBJI7ZdNR3uDW5ng==
+X-Received: by 2002:a17:902:cf4b:b0:212:5786:7bbe with SMTP id d9443c01a7336-21614d607e2mr8928715ad.24.1733437374466;
+        Thu, 05 Dec 2024 14:22:54 -0800 (PST)
 Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2ef45fa64d2sm1743033a91.28.2024.12.05.11.21.11
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 05 Dec 2024 11:21:12 -0800 (PST)
-Message-ID: <e24623df-b9e4-4ed9-8a78-9a60780c72c3@linaro.org>
-Date: Thu, 5 Dec 2024 11:21:11 -0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/7] docs: add a glossary
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Richard Henderson <richard.henderson@linaro.org>,
- Andrew Melnychenko <andrew@daynix.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Thomas Huth <thuth@redhat.com>,
- alex.bennee@linaro.org,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Fabiano Rosas <farosas@suse.de>, Kevin Wolf <kwolf@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
- qemu-arm@nongnu.org, Yuri Benditovich <yuri.benditovich@daynix.com>,
- manos.pitsidianakis@linaro.org, qemu-block@nongnu.org,
- Michael Roth <michael.roth@amd.com>, Konstantin Kostiuk
- <kkostiuk@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Xu <peterx@redhat.com>, gustavo.romero@linaro.org
-References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
- <20241118172357.475281-7-pierrick.bouvier@linaro.org>
- <CAFEAcA9JdLxi5cr-Z2-YX6Q8nv=j0O3k=f9u6gS-CzSf5BH7Ug@mail.gmail.com>
- <bdefc0ac-311b-4820-913f-e21d753890fa@linaro.org>
- <CAFEAcA-go4GccLwNvdrL0iMpDSmCcrD5J9R3=3BnT5t7tf=Fiw@mail.gmail.com>
+Received: from pc.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-215f8f0b571sm17310435ad.183.2024.12.05.14.22.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Dec 2024 14:22:54 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <CAFEAcA-go4GccLwNvdrL0iMpDSmCcrD5J9R3=3BnT5t7tf=Fiw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: 5f0gqLymNRGJ
+To: qemu-devel@nongnu.org
+Cc: Fabiano Rosas <farosas@suse.de>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	gustavo.romero@linaro.org,
+	Andrew Melnychenko <andrew@daynix.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	Konstantin Kostiuk <kkostiuk@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Peter Xu <peterx@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Yuri Benditovich <yuri.benditovich@daynix.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	manos.pitsidianakis@linaro.org,
+	qemu-block@nongnu.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 5/6] docs: add a codebase section
+Date: Thu,  5 Dec 2024 14:22:40 -0800
+Message-Id: <20241205222241.3789437-6-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241205222241.3789437-1-pierrick.bouvier@linaro.org>
+References: <20241205222241.3789437-1-pierrick.bouvier@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TUID: JXm0be6LvuqH
 
-T24gMTIvNS8yNCAwNzoyMywgUGV0ZXIgTWF5ZGVsbCB3cm90ZToNCj4gT24gVHVlLCAzIERl
-YyAyMDI0IGF0IDIwOjMyLCBQaWVycmljayBCb3V2aWVyDQo+IDxwaWVycmljay5ib3V2aWVy
-QGxpbmFyby5vcmc+IHdyb3RlOg0KPj4NCj4+IE9uIDEyLzMvMjQgMDk6MzcsIFBldGVyIE1h
-eWRlbGwgd3JvdGU6DQo+Pj4gT24gTW9uLCAxOCBOb3YgMjAyNCBhdCAxNzoyNCwgUGllcnJp
-Y2sgQm91dmllcg0KPj4+IDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+IHdyb3RlOg0K
-Pj4+Pg0KPj4+PiBTaWduZWQtb2ZmLWJ5OiBQaWVycmljayBCb3V2aWVyIDxwaWVycmljay5i
-b3V2aWVyQGxpbmFyby5vcmc+DQo+Pj4+IC0tLQ0KPj4+PiAgICBkb2NzL2RldmVsL2NvbnRy
-b2wtZmxvdy1pbnRlZ3JpdHkucnN0IHwgICAyICsNCj4+Pj4gICAgZG9jcy9kZXZlbC9tdWx0
-aS10aHJlYWQtdGNnLnJzdCAgICAgICB8ICAgMiArDQo+Pj4+ICAgIGRvY3MvZ2xvc3Nhcnkv
-aW5kZXgucnN0ICAgICAgICAgICAgICAgfCAyMzggKysrKysrKysrKysrKysrKysrKysrKysr
-KysNCj4+Pj4gICAgZG9jcy9pbmRleC5yc3QgICAgICAgICAgICAgICAgICAgICAgICB8ICAg
-MSArDQo+Pj4+ICAgIGRvY3Mvc3lzdGVtL2FybS92aXJ0LnJzdCAgICAgICAgICAgICAgfCAg
-IDIgKw0KPj4+PiAgICBkb2NzL3N5c3RlbS9pbWFnZXMucnN0ICAgICAgICAgICAgICAgIHwg
-ICAyICsNCj4+Pj4gICAgZG9jcy90b29scy9xZW11LW5iZC5yc3QgICAgICAgICAgICAgICB8
-ICAgMiArDQo+Pj4+ICAgIDcgZmlsZXMgY2hhbmdlZCwgMjQ5IGluc2VydGlvbnMoKykNCj4+
-Pj4gICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRvY3MvZ2xvc3NhcnkvaW5kZXgucnN0DQo+Pj4N
-Cj4+PiBJIHRoaW5rIHRoaXMgaXMgYSBnb29kIGlkZWE7IHdlJ3ZlIGhhZCBhdCBsZWFzdCBv
-bmUgYnVnDQo+Pj4gcmVwb3J0IGZyb20gYSB1c2VyIHBvaW50aW5nIG91dCB0aGF0IHdlIGhh
-ZCBhIHRlcm0gaW4NCj4+PiBvdXIgZG9jcyB3aGljaCB3ZSBkaWRuJ3QgZGVmaW5lICgiYmxv
-Y2sgZHJpdmVyIik6DQo+Pj4gaHR0cHM6Ly9naXRsYWIuY29tL3FlbXUtcHJvamVjdC9xZW11
-Ly0vaXNzdWVzLzI2MTENCj4+PiBJIGhhdmUgc29tZSBjb21tZW50cyBvbiBzcGVjaWZpYyBl
-bnRyaWVzIGJlbG93Lg0KPj4+DQo+Pg0KPj4gQW5kIHBlb3BsZSBjYW4gYmUgZnJlZSB0byBh
-ZGQgbmV3IGVudHJpZXMgbGF0ZXIuIEhvd2V2ZXIsIHdlIHNob3VsZA0KPj4gcmVzaXN0IHRo
-ZSB0ZW1wdGF0aW9uIHRvIGFkZCB0b28gbWFueSBkZXRhaWxzLiBJdCBzaG91bGQgc3RheSBz
-aW1wbGUgYW5kDQo+PiB1bmRlcnN0YW5kYWJsZSwgZXZlbiBpZiBub3QgYWxsIHRlY2huaWNh
-bCBudWFuY2VzIGFyZSBub3QgcmVwcmVzZW50ZWQuDQo+Pg0KPj4+PiBkaWZmIC0tZ2l0IGEv
-ZG9jcy9kZXZlbC9jb250cm9sLWZsb3ctaW50ZWdyaXR5LnJzdCBiL2RvY3MvZGV2ZWwvY29u
-dHJvbC1mbG93LWludGVncml0eS5yc3QNCj4+Pj4gaW5kZXggZTZiNzNhNGZlMWEuLjNkNTcw
-MmZhNGNjIDEwMDY0NA0KPj4+PiAtLS0gYS9kb2NzL2RldmVsL2NvbnRyb2wtZmxvdy1pbnRl
-Z3JpdHkucnN0DQo+Pj4+ICsrKyBiL2RvY3MvZGV2ZWwvY29udHJvbC1mbG93LWludGVncml0
-eS5yc3QNCj4+Pj4gQEAgLTEsMyArMSw1IEBADQo+Pj4+ICsuLiBfY2ZpOg0KPj4+PiArDQo+
-Pj4+ICAgID09PT09PT09PT09PT09PT09PT09PT09PT09PT0NCj4+Pj4gICAgQ29udHJvbC1G
-bG93IEludGVncml0eSAoQ0ZJKQ0KPj4+PiAgICA9PT09PT09PT09PT09PT09PT09PT09PT09
-PT09DQo+Pj4+IGRpZmYgLS1naXQgYS9kb2NzL2RldmVsL211bHRpLXRocmVhZC10Y2cucnN0
-IGIvZG9jcy9kZXZlbC9tdWx0aS10aHJlYWQtdGNnLnJzdA0KPj4+PiBpbmRleCBkNzA2YzI3
-ZWE3NC4uN2ZkMGEwNzYzM2QgMTAwNjQ0DQo+Pj4+IC0tLSBhL2RvY3MvZGV2ZWwvbXVsdGkt
-dGhyZWFkLXRjZy5yc3QNCj4+Pj4gKysrIGIvZG9jcy9kZXZlbC9tdWx0aS10aHJlYWQtdGNn
-LnJzdA0KPj4+PiBAQCAtNCw2ICs0LDggQEANCj4+Pj4gICAgICBUaGlzIHdvcmsgaXMgbGlj
-ZW5zZWQgdW5kZXIgdGhlIHRlcm1zIG9mIHRoZSBHTlUgR1BMLCB2ZXJzaW9uIDIgb3INCj4+
-Pj4gICAgICBsYXRlci4gU2VlIHRoZSBDT1BZSU5HIGZpbGUgaW4gdGhlIHRvcC1sZXZlbCBk
-aXJlY3RvcnkuDQo+Pj4+DQo+Pj4+ICsuLiBfbXR0Y2c6DQo+Pj4+ICsNCj4+Pj4gICAgPT09
-PT09PT09PT09PT09PT09DQo+Pj4+ICAgIE11bHRpLXRocmVhZGVkIFRDRw0KPj4+PiAgICA9
-PT09PT09PT09PT09PT09PT0NCj4+Pj4gZGlmZiAtLWdpdCBhL2RvY3MvZ2xvc3NhcnkvaW5k
-ZXgucnN0IGIvZG9jcy9nbG9zc2FyeS9pbmRleC5yc3QNCj4+Pj4gbmV3IGZpbGUgbW9kZSAx
-MDA2NDQNCj4+Pj4gaW5kZXggMDAwMDAwMDAwMDAuLmEyZDRmM2VhZTE2DQo+Pj4+IC0tLSAv
-ZGV2L251bGwNCj4+Pj4gKysrIGIvZG9jcy9nbG9zc2FyeS9pbmRleC5yc3QNCj4+Pg0KPj4+
-IEkgZ3Vlc3MgaXQgbWFrZXMgc2Vuc2UgdG8gZ2l2ZSB0aGlzIGl0cyBvd24gc3ViZGlyLCBz
-aW5jZSB3ZSB3YW50DQo+Pj4gaXQgdG8gY29tZSBhdCB0aGUgZW5kIG9mIHRoZSBtYW51YWwu
-IFRoZSBvdGhlciBvcHRpb24gd291bGQgYmUNCj4+PiB0byBwdXQgaXQgZGlyZWN0bHkgaW50
-byBkb2NzLy4NCj4+Pg0KPj4NCj4+ICAgRnJvbSB5b3VyIGNvbW1lbnQsIGl0J3Mgbm90IGNs
-ZWFyIGZvciBtZSBpZiBpdCdzIG9rIGFzIGl0IGlzLCBvciBpZiB5b3UNCj4+IHdhbnQgYSBj
-aGFuZ2UuDQo+PiBDYW4geW91IGVsYWJvcmF0ZSBvbiB0aGF0Pw0KPiANCj4gSXQgbWVhbnMg
-SSdtIG5vdCBzdXJlLiBXZSBlbmQgdXAgd2l0aCBhIHN1YmRpcmVjdG9yeSB3aXRoIG9ubHkN
-Cj4gb25lIGZpbGUgaW4gaXQgYW5kIHdoZXJlIHRoZXJlJ3Mgbm8gZXhwZWN0YXRpb24gd2Un
-ZCBldmVyIHdhbnQNCj4gdG8gYWRkIGFueSBtb3JlIGZpbGVzIHRvIGl0LiBPbiB0aGUgb3Ro
-ZXIgaGFuZCBpdCBkb2VzIGtlZXAgaXQNCj4gb3V0IG9mIHRoZSBkb2NzLyB0b3AgbGV2ZWwg
-ZGlyZWN0b3J5LCB3aGljaCBjdXJyZW50bHkgaGFzIGENCj4gZmFpciBhbW91bnQgb2YgY3J1
-ZnQgYXdhaXRpbmcgY2xlYW51cC4NCj4gDQo+IEkgZ3Vlc3Mgb24gYmFsYW5jZSBJIHdvdWxk
-IG1ha2UgdGhpcyBkb2NzL2dsb3NzYXJ5LnJzdCwNCj4gdW5sZXNzIHlvdSBhbnRpY2lwYXRl
-IHdhbnRpbmcgdG8gc3BsaXQgdGhpcyBpbnRvIG11bHRpcGxlDQo+IGZpbGVzIG9yIGhhdmUg
-c29tZXRoaW5nIGVsc2UgaW4gZG9jcy9nbG9zc2FyeS8gbGF0ZXIuDQo+IA0KPj4+PiBAQCAt
-MCwwICsxLDIzOCBAQA0KPj4+PiArLi4gX0dsb3NzYXJ5Og0KPj4+PiArDQo+Pj4+ICstLS0t
-LS0tLQ0KPj4+PiArR2xvc3NhcnkNCj4+Pj4gKy0tLS0tLS0tDQo+Pj4+ICsNCj4+Pj4gK1Ro
-aXMgc2VjdGlvbiBvZiB0aGUgbWFudWFsIHByZXNlbnRzICpzaW1wbHkqIGFjcm9ueW1zIGFu
-ZCB0ZXJtcyBRRU1VIGRldmVsb3BlcnMNCj4+Pj4gK3VzZS4NCj4+Pg0KPj4+IFdoYXQncyAi
-c2ltcGx5IiBpbnRlbmRlZCB0byBtZWFuIGhlcmU/DQo+Pj4NCj4+DQo+PiAiaW4gYSBzdHJh
-aWdodGZvcndhcmQgb3IgcGxhaW4gbWFubmVyIi4NCj4+IEkgY2FuIHJlbW92ZSB0aGlzIHdv
-cmQgaWYgeW91IHRoaW5rIGl0IGRvZXMgbm90IHNlcnZlIGFueSBwdXJwb3NlLg0KPiANCj4g
-WW91IGNvdWxkIHBocmFzZSBpdCBhcyAicHJlc2VudHMgYnJpZWYgZGVmaW5pdGlvbnMgb2Yg
-YWNyb255bXMNCj4gYW5kIHRlcm1zIiwgSSB0aGluay4NCj4gDQo+Pj4+ICtRRU1VIHN5c3Rl
-bSBkZWZpbmVzIGJvYXJkIG1vZGVscyBmb3IgdmFyaW91cyBhcmNoaXRlY3R1cmVzLiBJdCdz
-IGEgZGVzY3JpcHRpb24NCj4+Pj4gK29mIGEgU29DIChzeXN0ZW0tb24tY2hpcCkgd2l0aCB2
-YXJpb3VzIGRldmljZXMgcHJlLWNvbmZpZ3VyZWQsIGFuZCBjYW4gYmUNCj4+Pj4gK3NlbGVj
-dGVkIHdpdGggdGhlIG9wdGlvbiBgYC1tYWNoaW5lYGAgb2YgcWVtdS1zeXN0ZW0uDQo+Pj4N
-Cj4+PiBTb0NzIGFyZSBub3QgdGhlIHNhbWUgYXMgYm9hcmRzLg0KPj4+DQo+Pj4gV2UgY291
-bGQgc2F5IHNvbWV0aGluZyBsaWtlOg0KPj4+DQo+Pj4gUUVNVSdzIHN5c3RlbSBlbXVsYXRp
-b24gbW9kZWxzIG1hbnkgZGlmZmVyZW50IHR5cGVzIG9mIGhhcmR3YXJlLg0KPj4+IEEgbWFj
-aGluZSBtb2RlbCAoc29tZXRpbWVzIGNhbGxlZCBhIGJvYXJkIG1vZGVsKSBpcyB0aGUgbW9k
-ZWwNCj4+PiBvZiBhIGNvbXBsZXRlIHZpcnR1YWwgc3lzdGVtIHdpdGggUkFNLCBvbmUgb3Ig
-bW9yZSBDUFVzLCBhbmQNCj4+PiB2YXJpb3VzIGRldmljZXMuDQo+Pj4NCj4+PiBXZSBjb3Vs
-ZCBhbHNvIHB1dCBpbiBhIGxpbmsgdG8NCj4+PiBodHRwczovL3d3dy5xZW11Lm9yZy9kb2Nz
-L21hc3Rlci9zeXN0ZW0vdGFyZ2V0cy5odG1sDQo+Pj4gd2hpY2ggaXMgd2hlcmUgd2UgZG9j
-dW1lbnQgd2hhdCBvdXIgbWFjaGluZSB0eXBlcyBhcmUuDQo+Pj4NCj4+DQo+PiBIb3cgZG8g
-eW91IGRpc3Rpbmd1aXNoIGEgU29DIGFuZCBjcHU/IElzIGEgU29DIGNwdSArIGRldmljZXM/
-DQo+PiBJc24ndCBhIGJvYXJkL21hY2hpbmUgYSBzZXQgb2YgU29DICsgZGV2aWNlcyBhdHRh
-Y2hlZD8NCj4gDQo+IEFuIFNvQyBpcyBhICJzeXN0ZW0gb24gY2hpcCIuIFRvIHF1b3RlIHdp
-a2lwZWRpYSdzIGRlZmluaXRpb246DQo+IA0KPiAiQSBzeXN0ZW0gb24gYSBjaGlwIG9yIHN5
-c3RlbS1vbi1jaGlwIGlzIGFuIGludGVncmF0ZWQgY2lyY3VpdCB0aGF0DQo+IGludGVncmF0
-ZXMgbW9zdCBvciBhbGwgY29tcG9uZW50cyBvZiBhIGNvbXB1dGVyIG9yIGVsZWN0cm9uaWMg
-c3lzdGVtLg0KPiBUaGVzZSBjb21wb25lbnRzIHVzdWFsbHkgaW5jbHVkZSBhbiBvbi1jaGlw
-IGNlbnRyYWwgcHJvY2Vzc2luZyB1bml0DQo+IChDUFUpLCBtZW1vcnkgaW50ZXJmYWNlcywg
-aW5wdXQvb3V0cHV0IGRldmljZXMgYW5kIGludGVyZmFjZXMsIGFuZA0KPiBzZWNvbmRhcnkg
-c3RvcmFnZSBpbnRlcmZhY2VzLCBvZnRlbiBhbG9uZ3NpZGUgb3RoZXIgY29tcG9uZW50cyBz
-dWNoDQo+IGFzIHJhZGlvIG1vZGVtcyBhbmQgYSBncmFwaGljcyBwcm9jZXNzaW5nIHVuaXQg
-KEdQVSkg4oCTIGFsbCBvbiBhDQo+IHNpbmdsZSBzdWJzdHJhdGUgb3IgbWljcm9jaGlwLiIN
-Cj4gDQo+IEFuIFNvQyBhbHdheXMgY29udGFpbnMgYSBDUFUsIGJ1dCBpdCB3aWxsIGhhdmUg
-YSBsb3QgbW9yZQ0KPiB0aGFuIHRoYXQgYnVpbHQgaW50byBpdCB0b28uIEFuZCB0aGUgU29D
-IG9ubHkgaGFzICJtb3N0Ig0KPiBvZiB0aGUgc3lzdGVtIGNvbXBvbmVudHMsIHNvIHRoZSB3
-aG9sZSBtYWNoaW5lIHdpbGwgYmUNCj4gYW4gU29DIHBsdXMgc29tZSBvdGhlciB0aGluZ3Mu
-DQo+IA0KPiBHZW5lcmFsbHkgYSBib2FyZC9tYWNoaW5lIHRoYXQgdXNlcyBhbiBTb0Mgd2ls
-bCBoYXZlIG9uIGl0Og0KPiAgICogYW4gU29DDQo+ICAgKiB0aGUgYWN0dWFsIG1lbW9yeQ0K
-PiAgICogcGVyaGFwcyBvbmUgb3IgdHdvIGV4dHJhIGRldmljZXMgZXh0ZXJuYWwgdG8gdGhl
-IFNvQw0KPiAgICogY29ubmVjdG9ycyBmb3IgdGhpbmdzIGxpa2Ugc2VyaWFsIHBvcnRzLCBT
-RCBjYXJkcywgZXRjDQo+ICAgICAod2hpY2ggZ2VuZXJhbGx5IHdpcmUgdXAgdG8gU29DIHBp
-bnMpDQo+ICAgKiBhIGNyeXN0YWwgb3Igc2ltaWxhciB0byBhY3QgYXMgdGhlIG1haW4gY2xv
-Y2sgc291cmNlDQo+IA0KPiBTbyBpZiB5b3UgbG9vayBhdCBhIHBob3RvIG9mIGEgZGV2ZWxv
-cG1lbnQgYm9hcmQgdGhhdCB1c2VzDQo+IGFuIFNvQywgdGhlcmUgd2lsbCBiZSBvbmUgbGFy
-Z2UgY2hpcCB3aGljaCBpcyB0aGUgU29DLA0KPiBzb21lIFJBTSBjaGlwcywgYSBidW5jaCBv
-ZiBjb25uZWN0b3JzIGFuZCBvbmUgb3IgdHdvIHNtYWxsZXINCj4gY2hpcHMuIE5vdCBldmVy
-eSBkZXZpY2Ugd2lsbCBiZSBpbnNpZGUgdGhlIFNvQywgYnV0DQo+IGdlbmVyYWxseSBhbG1v
-c3QgYWxsIG9mIHRoZW0gYXJlLg0KPiANCj4gUUVNVSdzIG1hY2hpbmUgbW9kZWxzIGZvciB0
-aGlzIGtpbmQgb2YgYm9hcmQgbWF0Y2ggdGhlDQo+IG9yZ2FuaXphdGlvbiBvZiB0aGUgaGFy
-ZHdhcmU7IGxvb2tpbmcgYXQgaHcvYXJtL3NhYnJlbGl0ZS5jDQo+IHdoaWNoIGlzIGEgbWFj
-aGluZSBtb2RlbCB5b3UgY2FuIHNlZSB0aGF0IGl0IGhhczoNCj4gICAqIGFuIGluc3RhbmNl
-IG9mIHRoZSBmc2wtaW14NiBTb0MgZGV2aWNlIG9iamVjdA0KPiAgICogdGhlIG1haW4gbWVt
-b3J5DQo+ICAgKiBzb21lIE5PUiBmbGFzaCBtZW1vcnkNCj4gICAqIHNvbWUgY29uZmlndXJh
-dGlvbiBhbmQgd2lyaW5nIHVwIG9mIHRoaW5ncw0KPiANCj4gQW5kIHRoZSBTb0MgaXRzZWxm
-IGlzIGluIGh3L2FybS9mc2wtaW14Ni5jLCBhbmQgaXMgYQ0KPiBRT00gZGV2aWNlIG9iamVj
-dCB0aGF0IGNyZWF0ZXMgYW5kIHdpcmVzIHVwIHRoZSBDUFVzLA0KPiBVQVJUcywgVVNCIGNv
-bnRyb2xsZXIsIGFuZCB2YXJpb3VzIG90aGVyIGRldmljZXMgdGhhdA0KPiB0aGlzIHBhcnRp
-Y3VsYXIgU29DIGluY2x1ZGVzLiBJbiB0aGlzIGNhc2Ugd2Ugb25seSBoYXZlDQo+IG9uZSBi
-b2FyZCBtb2RlbCB1c2luZyB0aGlzIFNvQywgYnV0IGZvciBzb21lIFNvQ3Mgd2UNCj4gaGF2
-ZSBzZXZlcmFsIGJvYXJkIG1vZGVscyB0aGF0IGFsbCB1c2UgdGhlIHNhbWUgU29DDQo+IGJ1
-dCB3aXJlIHVwIGRpZmZlcmVudCBleHRlcm5hbCBkZXZpY2VzIHRvIGl0Lg0KPiANCj4gU29t
-ZSBvZiBvdXIgbWFjaGluZSBtb2RlbHMgYXJlIG1vZGVscyBvZiBzeXN0ZW1zIHRoYXQNCj4g
-ZG9uJ3QgdXNlIGFuIFNvQyBhdCBhbGwuIFRoaXMgaXMgcmFyZSBpbiB0aGUgQXJtIHdvcmxk
-LA0KPiBidXQgZm9yIGluc3RhbmNlIHRoZSBTUEFSQyBtYWNoaW5lcyBsaWtlIHRoZSBTUy01
-IGFyZQ0KPiBsaWtlIHRoYXQgLS0gdGhlIHJlYWwgaGFyZHdhcmUgaGFkIGEgZGlzY3JldGUg
-Q1BVIGNoaXANCj4gYW5kIGEgYnVuY2ggb2YgZGV2aWNlcyBpbiB0aGVpciBvd24gY2hpcHMg
-b24gdGhlDQo+IG1vdGhlcmJvYXJkLCBhbmQgUUVNVSdzIG1vZGVsIG9mIHRoYXQgaGFyZHdh
-cmUgaGFzDQo+IGEgbWFjaGluZSBtb2RlbCB3aGljaCBkaXJlY3RseSBjcmVhdGVzIHRoZSBD
-UFUgYW5kDQo+IHRoZSB2YXJpb3VzIGRldmljZXMuIChBbmQgc29tZSBvZiBvdXIgb2xkZXIg
-bWFjaGluZQ0KPiBtb2RlbHMgYXJlIG1vZGVscyBvZiBoYXJkd2FyZSB0aGF0ICpkb2VzKiBo
-YXZlIGFuIFNvQw0KPiBidXQgd2hlcmUgd2UgZGlkbid0IG1vZGVsIHRoYXQgbGV2ZWwgb2Yg
-YWJzdHJhY3Rpb24sDQo+IHNvIHRoZXkgZGlyZWN0bHkgY3JlYXRlIGRldmljZXMgaW4gdGhl
-IG1hY2hpbmUgbW9kZWwNCj4gdGhhdCByZWFsbHkgb3VnaHQgdG8gYmUgaW5zaWRlIGFuIFNv
-QyBvYmplY3QuDQo+IGh3L2FybS9zdGVsbGFyaXMuYyBpcyBvbmUgZXhhbXBsZSBvZiB0aGF0
-LikNCj4gDQoNClRoYW5rcyBmb3IgdGhlIGFuc3dlciBvbiB0aGlzLg0KTXkgc3BlY2lmaWMg
-aW1wbGljaXQgcXVlc3Rpb24gd2FzOiBkbyB3ZSBoYXZlIGJvYXJkcyB3aXRoIGNwdSBvbmx5
-IChhbmQgDQpub3QgYSBTb0MpLCB3aGljaCB5b3UgYW5zd2VyZWQuDQoNCj4+Pj4gKw0KPj4+
-PiArQmxvY2sNCj4+Pj4gKy0tLS0tDQo+Pj4+ICsNCj4+Pj4gK0Jsb2NrIGRyaXZlcnMgYXJl
-IHRoZSBhdmFpbGFibGUgYGRpc2sgZm9ybWF0cyA8YmxvY2stZHJpdmVycz5gIGF2YWlsYWJs
-ZSwgYW5kDQo+Pj4+ICtibG9jayBkZXZpY2VzIGAoc2VlIEJsb2NrIGRldmljZSBzZWN0aW9u
-IG9uIG9wdGlvbnMgcGFnZSk8c2VjXzAwNWZpbnZvY2F0aW9uPmANCj4+Pj4gK2FyZSB1c2lu
-ZyB0aGVtIHRvIGltcGxlbWVudCBkaXNrcyBmb3IgYSB2aXJ0dWFsIG1hY2hpbmUuDQo+Pj4N
-Cj4+PiBCbG9jayBkcml2ZXJzIGFyZW4ndCBqdXN0IGRpc2sgZm9ybWF0czsgdGhlcmUgYXJl
-IHNvbWUgZmlsdGVyDQo+Pj4gZHJpdmVycyB0b28uIFNvbWVib2R5IG9uIHRoZSBibG9jayBz
-aWRlIGNvdWxkIHByb2JhYmx5DQo+Pj4gcHJvdmlkZSBhIGJldHRlciBkZWZpbml0aW9uIGhl
-cmUuDQo+Pj4NCj4+DQo+PiBJJ20gb3BlbiB0byBhIG1vcmUgZXhhY3QgZGVmaW5pdGlvbi4g
-VGhlIHR3byB0ZXJtcyAoZHJpdmVycyBhbmQgZGV2aWNlcykNCj4+IHNlZW0gdG8gb3Zlcmxh
-cCBvbiBzb21lIHBhcnRzLCBzbyBJIGNhbWUgdXAgd2l0aCB0aGlzIHRyaXZpYWwgZGVmaW5p
-dGlvbi4NCj4gDQo+IFllYWgsIHRoZSBkcml2ZXIgdnMgZGV2aWNlIHNwbGl0IGlzIGEgZ29v
-ZCBvbmUgKGJhc2ljYWxseQ0KPiB0aGUgZGV2aWNlIGlzIHRoZSBmcm9udC1lbmQgdmlzaWJs
-ZSB0byB0aGUgZ3Vlc3QsIGFuZCB0aGUNCj4gZHJpdmVyIGlzIHRoZSBiYWNrLWVuZCB0aGF0
-IHByb3ZpZGVzIGl0IHdpdGggc3RvcmFnZQ0KPiB2aWEgYW4gYWJzdHJhY3RlZCBBUEkpLiBU
-aGUgbml0IEknbSBwaWNraW5nIGhlcmUgaXMgdGhhdA0KPiBub3QgZXZlcnkgYmxvY2sgZHJp
-dmVyIGlzIHRoZXJlIHRvIHByb3ZpZGUgc3VwcG9ydCBmb3INCj4gYW4gb24taG9zdCBkaXNr
-IGZvcm1hdC4NCj4gDQo+Pj4+ICsNCj4+Pj4gK0NGSQ0KPj4+PiArLS0tDQo+Pj4+ICsNCj4+
-Pj4gK0NvbnRyb2wgRmxvdyBJbnRlZ3JpdHkgaXMgYSBoYXJkZW5pbmcgdGVjaG5pcXVlIHVz
-ZWQgdG8gcHJldmVudCBleHBsb2l0cw0KPj4+PiArdGFyZ2V0aW5nIFFFTVUgYnkgZGV0ZWN0
-aW5nIHVuZXhwZWN0ZWQgYnJhbmNoZXMgZHVyaW5nIGV4ZWN1dGlvbi4gUUVNVSBgYWN0aXZl
-bHkNCj4+Pj4gK3N1cHBvcnRzPGNmaT5gIGJlaW5nIGNvbXBpbGVkIHdpdGggQ0ZJIGVuYWJs
-ZWQuDQo+Pj4+ICsNCj4+Pj4gK0RldmljZQ0KPj4+PiArLS0tLS0tDQo+Pj4+ICsNCj4+Pj4g
-K1FFTVUgaXMgYWJsZSB0byBlbXVsYXRlIGEgQ1BVLCBhbmQgYWxsIHRoZSBoYXJkd2FyZSBp
-bnRlcmFjdGluZyB3aXRoIGl0LA0KPj4+PiAraW5jbHVkaW5nIG1hbnkgZGV2aWNlcy4gV2hl
-biBRRU1VIHJ1bnMgYSB2aXJ0dWFsIG1hY2hpbmUgdXNpbmcgYSBoYXJkd2FyZS1iYXNlZA0K
-Pj4+PiArYWNjZWxlcmF0b3IsIGl0IGlzIHJlc3BvbnNpYmxlIGZvciBlbXVsYXRpbmcsIHVz
-aW5nIHNvZnR3YXJlLCBhbGwgZGV2aWNlcy4NCj4+Pg0KPj4+IFRoaXMgZGVmaW5pdGlvbiBk
-b2Vzbid0IGFjdHVhbGx5IGRlZmluZSB3aGF0IGEgZGV2aWNlIGlzIDotKQ0KPj4+DQo+Pg0K
-Pj4gSW5kZWVkIDopDQo+PiBTaG91bGQgd2UgZXhwbGFpbiB3aGF0IGlzIGEgY29tcHV0ZXIg
-ZGV2aWNlPw0KPj4gVGhlIGdvYWwgd2FzIGp1c3QgdG8gc2F5IHRoYXQgUUVNVSBjYW4gZW11
-bGF0ZSBoYXJkd2FyZSBpbnRlcmFjdGluZyB3aXRoDQo+PiB0aGUgY3B1LCB3aGljaCBjb3Vs
-ZCBiZSBhIHBvc3NpYmxlIGRlZmluaXRpb24uIFNvIHBlb3BsZSBjYW4gYXNzb2NpYXRlDQo+
-PiB0aGF0IFFFTVUgZGV2aWNlcyBhcmUgbm90aGluZyBlbHNlIHRoYW4gYSAibm9ybWFsIiBj
-b21wdXRlciBkZXZpY2UuDQo+IA0KPiBXZSBjb3VsZCBzYXksIHBlcmhhcHM6DQo+IA0KPiBJ
-biBRRU1VLCBhIGRldmljZSBpcyBhIHBpZWNlIG9mIGhhcmR3YXJlIHZpc2libGUgdG8gdGhl
-IGd1ZXN0Lg0KPiBFeGFtcGxlcyBpbmNsdWRlIFVBUlRzLCBQQ0kgY29udHJvbGxlcnMsIFBD
-SSBjYXJkcywgVkdBIGNvbnRyb2xsZXJzLA0KPiBhbmQgbWFueSBtb3JlLg0KPiANCj4gDQo+
-IA0KPj4+PiArDQo+Pj4+ICtIeXBlcnZpc29yDQo+Pj4+ICstLS0tLS0tLS0tDQo+Pj4+ICsN
-Cj4+Pj4gK1RoZSBmb3JtYWwgZGVmaW5pdGlvbiBvZiBhbiBoeXBlcnZpc29yIGlzIGEgcHJv
-Z3JhbSB0aGFuIGNhbiBiZSB1c2VkIHRvIG1hbmFnZSBhDQo+Pj4+ICt2aXJ0dWFsIG1hY2hp
-bmUuIFFFTVUgaXRzZWxmIGlzIGFuIGh5cGVydmlzb3IuDQo+Pj4NCj4+PiAiYSBoeXBlcnZp
-c29yIi4gUUVNVSBpc24ndCByZWFsbHkgYSBoeXBlcnZpc29yLCB0aG91Z2guLi4NCj4+Pg0K
-Pj4NCj4+IEl0J3MgYSBzaG9ydGN1dCwgYW5kIEknbSBvcGVuIHRvIGNoYW5nZSBpdC4gSXQg
-YnJpbmdzIGFuIGludGVyZXN0aW5nDQo+PiBxdWVzdGlvbiB0aG91Z2guDQo+Pg0KPj4gVGVj
-aG5pY2FsbHksIFFFTVUgaW50ZXJhY3RzIHdpdGggaHlwZXJ2aXNvciBBUElzIGJ1aWx0IGlu
-IHZhcmlvdXMgT1Nlcy4NCj4+IE9uIHRoZSBvdGhlciBoYW5kLCB3aGVuIHdlIHVzZSBUQ0cs
-IGl0J3MgYW4gZW11bGF0b3IgaW5zdGVhZC4NCj4+DQo+PiBCdXQgYXMgeW91IGNhbid0IHVz
-ZSBLVk0vaHZmL3docHggYnkgaXRzZWxmLCBob3cgZG8geW91IG5hbWUgdGhlIHByb2dyYW0N
-Cj4+IGludGVyYWN0aW5nIHdpdGggaXQsIGFuZCBlbXVsYXRpbmcgdGhlIHJlc3Qgb2YgdGhl
-IFZNPw0KPj4NCj4+IFRoZSBjb3JyZWN0IHdvcmQgaXMgcHJvYmFibHkgInZpcnR1YWxpemVy
-IiwgYnV0IGZyb20gc2VhcmNoaW5nIG9uDQo+PiBJbnRlcm5ldCwgaXQgc2VlbXMgdGhhdCAi
-dm1tIiBhbmQgInZpcnR1YWxpemVyIiBhcmUgY29uc2lkZXJlZCB0aGUgc2FtZQ0KPj4gYXMg
-YW4gImh5cGVydmlzb3IiLiBUaGUgZGlmZmVyZW5jZSBpcyBzdWJ0bGUsIGFuZCBtYXliZSB3
-ZSBoYXZlIGFuDQo+PiBvcHBvcnR1bml0eSBoZXJlIHRvIGNsYXJpZnkgaXQuDQo+IA0KPiAN
-Cj4+Pj4gK1BhdGNod29yaw0KPj4+PiArLS0tLS0tLS0tDQo+Pj4+ICsNCj4+Pj4gK2BQYXRj
-aHdvcmsgPGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8+YF8gaXMgYSB3ZWJzaXRlIHRoYXQg
-dHJhY2tzDQo+Pj4+ICtwYXRjaGVzIG9uIHRoZSBNYWlsaW5nIExpc3QuDQo+Pj4NCj4+PiBQ
-YXRjaHdvcmsgYW5kIHBhdGNoZXcgYXJlIGRpZmZlcmVudCBzeXN0ZW1zLiBQYXRjaGV3J3Mg
-VVJMIGlzDQo+Pj4gaHR0cHM6Ly9wYXRjaGV3Lm9yZy9RRU1VLw0KPj4+DQo+Pj4gKFRoZXJl
-IGlzIGEgcGF0Y2h3b3JrIGluc3RhbmNlIHRoYXQgdHJhY2tzIHFlbXUtZGV2ZWwgcGF0Y2hl
-cywNCj4+PiBhdCBodHRwczovL3BhdGNod29yay5rZXJuZWwub3JnL3Byb2plY3QvcWVtdS1k
-ZXZlbC9saXN0LyAsIGJ1dA0KPj4+IEknbSBub3QgYXdhcmUgb2YgYW55IGRldmVsb3BlcnMg
-dGhhdCBhcmUgYWN0aXZlbHkgdXNpbmcgaXQsIHNvDQo+Pj4gSSBkb24ndCB0aGluayBpdCBt
-ZXJpdHMgYmVpbmcgbWVudGlvbmVkIGluIHRoZSBnbG9zc2FyeS4pDQo+Pj4NCj4+DQo+PiBJ
-J3ZlIGJlZW4gY29uZnVzZWQgYnkgdGhhdCwgYW5kIGp1c3QgdGhvdWdodCBpdCB3YXMgdHdv
-IGRpZmZlcmVudA0KPj4gaW5zdGFuY2VzIChmb3JrIG1lIGlmIHlvdSBjYW4pIG9mIHRoZSAi
-c2FtZSIgdGhpbmcuDQo+PiBIb3cgd291bGQgeW91IGRlZmluZSBwYXRjaGV3Pw0KPj4gV2hl
-biB3ZSBzYXkgcGF0Y2h3b3JrLCBkbyB3ZSBpbXBsaWNpdGVseSBtZWFuIHBhdGNoZXc/DQo+
-IA0KPiBOby4gcGF0Y2h3b3JrIGlzIHBhdGNod29yaywgYW5kIHBhdGNoZXcgaXMgcGF0Y2hl
-dyAtLSB0aGVzZQ0KPiBhcmUgZW50aXJlbHkgZGlmZmVyZW50IHBpZWNlcyBvZiBzb2Z0d2Fy
-ZSB0aGF0IGhhcHBlbiB0byBkbw0KPiBzaW1pbGFyIGpvYnMuDQo+IA0KPj4gaWYgSSB1bmRl
-cnN0YW5kIGN1cnJlbnRseSwgcGF0Y2hldyBpcyB3aGF0IHdlIHdhbnQgdG8gbWVudGlvbiBp
-biBvdXINCj4+IGRvYz8gKGFuZCBtZW50aW9uIGl0J3Mgbm90IGFzc29jaWF0ZWQgdG8gcGF0
-Y2h3b3JrKS4NCj4gDQo+IFdlIGRvbid0IHVzZSBwYXRjaHdvcmssIHNvIHdlIGRvbid0IG5l
-ZWQgdG8gbWVudGlvbiBpdCBhbnl3aGVyZS4NCj4gDQo+Pj4+ICtPbmNlIGEgc2VyaWVzIGlz
-IHJldmlld2VkIGFuZCBhY2NlcHRlZCBieSBhIHN1YnN5c3RlbSBtYWludGFpbmVyLCBpdCB3
-aWxsIGJlDQo+Pj4+ICtpbmNsdWRlZCBpbiBhIFBSIChQdWxsIFJlcXVlc3QpIHRoYXQgdGhl
-IHByb2plY3QgbWFpbnRhaW5lciB3aWxsIG1lcmdlIGludG8gUUVNVQ0KPj4+PiArbWFpbiBi
-cmFuY2gsIGFmdGVyIHJ1bm5pbmcgdGVzdHMuDQo+Pj4NCj4+PiBJIHRoaW5rIHdlIGNvdWxk
-IHByb2JhYmx5IGFsc28gdXNlZnVsbHkgc2F5DQo+Pj4NCj4+PiAiVGhlIFFFTVUgcHJvamVj
-dCBkb2Vzbid0IGN1cnJlbnRseSBleHBlY3QgbW9zdCBkZXZlbG9wZXJzIHRvDQo+Pj4gZGly
-ZWN0bHkgc3VibWl0IHB1bGwgcmVxdWVzdHMuIg0KPj4+DQo+Pj4ganVzdCB0byBmbGFnIHVw
-IHRoYXQgb3VyIGRldmVsb3BtZW50IG1vZGVsIGlzbid0IGxpa2UgdGhlDQo+Pj4gY3VycmVu
-dGx5LXBvcHVsYXIgZ2l0aHViL2dpdGxhYiBvbmUgd2hlcmUgYSBQUiBpcyBob3cgeW91DQo+
-Pj4gc2VuZCBjb250cmlidXRpb25zLg0KPj4+DQo+Pg0KPj4gVGhpcyBpcyBpbnRlcmVzdGlu
-Zy4NCj4+DQo+PiBGb3IgdGhlIG1ham9yaXR5IG9mIGRldmVsb3BlcnMgbm93YWRheXMsIGEg
-UFIgaXMgYSBHaXRIdWIvR2l0TGFiIFBSLg0KPj4gRGVzcGl0ZSB0aGUgZmFjdCB3ZSB1c2Ug
-dGhlIG9yaWdpbmFsIFBSIG1lYW5pbmcgKGluIGdpdCB0ZXJtcyksIGl0J3MNCj4+IHByb2Jh
-Ymx5IGNvbmZ1c2luZyB3aGVuIG5ldyBjb21lcnMgaGVhciBwdWxsIHJlcXVlc3QuDQo+Pg0K
-Pj4+PiArDQo+Pj4+ICtRQ09XDQo+Pj4+ICstLS0tDQo+Pj4+ICsNCj4+Pj4gK1FFTVUgQ29w
-eSBPbiBXcml0ZSBpcyBhIGRpc2sgZm9ybWF0IGRldmVsb3BlZCBieSBRRU1VLiBJdCBwcm92
-aWRlcyB0cmFuc3BhcmVudA0KPj4+PiArY29tcHJlc3Npb24sIGF1dG9tYXRpYyBleHRlbnNp
-b24sIGFuZCBtYW55IG90aGVyIGFkdmFudGFnZXMgb3ZlciBhIHJhdyBpbWFnZS4NCj4+Pg0K
-Pj4+IFdlIHdhbnQgdG8gYmUgYSBiaXQgY2FyZWZ1bCBoZXJlLCBiZWNhdXNlIHRoZSAicWNv
-dyIgZm9ybWF0DQo+Pj4gaXMgbm90IHNvbWV0aGluZyB3ZSByZWNvbW1lbmQgZm9yIG5ldyB1
-c2UgLS0gInFjb3cyIiBpcyB3aGF0DQo+Pj4geW91IGFjdHVhbGx5IHdhbnQuDQo+Pj4NCj4+
-PiBodHRwczovL3d3dy5xZW11Lm9yZy9kb2NzL21hc3Rlci9zeXN0ZW0vcWVtdS1ibG9jay1k
-cml2ZXJzLmh0bWwjY21kb3B0aW9uLWltYWdlLWZvcm1hdHMtYXJnLXFjb3cyDQo+Pj4NCj4+
-DQo+PiBTb3VuZHMgZ29vZC4NCj4+DQo+PiBGb3IgbXkgcGVyc29uYWwga25vd2xlZGdlOiBk
-dXJpbmcgdGhpcyB3b3JrIEkgZGlzY292ZXJlZCB0aGF0IHdlIGhhZA0KPj4gcWNvdzMuIEZy
-b20gd2hhdCBJIHVuZGVyc3Rvb2QsIGl0IHNlZW1zIHRvIGJlIGluY2x1ZGVkIGluIHdoYXQg
-d2UgY2FsbGVkDQo+PiBxY293MiB0b2RheS4gSXMgdGhhdCBjb3JyZWN0Pw0KPiANCj4gSSBo
-YXZlIG5vIGlkZWEgLS0geW91J2QgbmVlZCB0byBhc2sgc29tZWJvZHkgd2hvIHdvcmtzIG9u
-IHRoZQ0KPiBibG9jayBsYXllcg0KPiANCj4gdGhhbmtzDQo+IC0tIFBNTQ0KDQpUaGFua3Mg
-Zm9yIGFsbCB0aGUgc3VnZ2VzdGlvbnMsIEknbGwgaW50ZWdyYXRlIHRob3NlIGluIG5leHQg
-dmVyc2lvbi4NCg==
+Present the various parts of QEMU and organization of codebase.
+
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ docs/about/emulation.rst               |   2 +
+ docs/devel/codebase.rst                | 218 +++++++++++++++++++++++++
+ docs/devel/decodetree.rst              |   2 +
+ docs/devel/ebpf_rss.rst                |   2 +
+ docs/devel/index-internals.rst         |   2 +
+ docs/devel/index.rst                   |   1 +
+ docs/devel/migration/main.rst          |   2 +
+ docs/devel/qapi-code-gen.rst           |   1 +
+ docs/devel/testing/main.rst            |   9 +-
+ docs/devel/testing/qtest.rst           |   2 +
+ docs/index.rst                         |   2 +
+ docs/interop/qemu-ga.rst               |   2 +
+ docs/system/qemu-block-drivers.rst.inc |   2 +
+ docs/tools/qemu-storage-daemon.rst     |   2 +
+ docs/user/main.rst                     |   6 +
+ 15 files changed, 254 insertions(+), 1 deletion(-)
+ create mode 100644 docs/devel/codebase.rst
+
+diff --git a/docs/about/emulation.rst b/docs/about/emulation.rst
+index 3028d5fff7a..3bc3579434f 100644
+--- a/docs/about/emulation.rst
++++ b/docs/about/emulation.rst
+@@ -176,6 +176,8 @@ for that architecture.
+     - System
+     - Tensilica ISS SIMCALL
+ 
++.. _tcg-plugins:
++
+ TCG Plugins
+ -----------
+ 
+diff --git a/docs/devel/codebase.rst b/docs/devel/codebase.rst
+new file mode 100644
+index 00000000000..e926ef4e92e
+--- /dev/null
++++ b/docs/devel/codebase.rst
+@@ -0,0 +1,218 @@
++========
++Codebase
++========
++
++This section presents the various parts of QEMU and how the codebase is
++organized.
++
++Beyond giving succint descriptions, the goal is to offer links to various
++parts of the documentation/codebase.
++
++Subsystems
++----------
++
++An exhaustive list of subsystems and associated files can be found in the
++`MAINTAINERS <https://gitlab.com/qemu-project/qemu/-/blob/master/MAINTAINERS>`_
++file.
++
++Some of the main QEMU subsystems are:
++
++- `Accelerators<Accelerators>`
++- Block devices and `disk images<disk images>` support
++- `CI<ci>` and `Tests<testing>`
++- `Devices<device-emulation>` & Board models
++- `Documentation <documentation-root>`
++- `GDB support<GDB usage>`
++- `Migration<migration>`
++- `Monitor<QEMU monitor>`
++- :ref:`QOM (QEMU Object Model)<qom>`
++- `System mode<System emulation>`
++- :ref:`TCG (Tiny Code Generator)<tcg>`
++- `User mode<user-mode>` (`Linux<linux-user-mode>` & `BSD<bsd-user-mode>`)
++- User Interfaces
++
++More documentation on QEMU subsystems can be found on :ref:`internal-subsystem`
++page.
++
++The Grand tour
++--------------
++
++We present briefly here what every folder of the codebase contains. Hop on!
++
++The folder name links here will take you to that folder in our gitlab
++repository. Other links will take you to more detailed documentation for that
++subsystem, where we have it. Unfortunately not every subsystem has documentation
++yet, so sometimes the source code is all you have.
++
++* `accel <https://gitlab.com/qemu-project/qemu/-/tree/master/accel>`_:
++  Infrastructure and architecture agnostic code related to the various
++  `accelerators <Accelerators>` supported by QEMU
++  (TCG, KVM, hvf, whpx, xen, nvmm).
++  Contains interfaces for operations that will be implemented per
++  `target <https://gitlab.com/qemu-project/qemu/-/tree/master/target>`_.
++* `audio <https://gitlab.com/qemu-project/qemu/-/tree/master/audio>`_:
++  Audio (host) support.
++* `authz <https://gitlab.com/qemu-project/qemu/-/tree/master/authz>`_:
++  `QEMU Authorization framework<client authorization>`.
++* `backends <https://gitlab.com/qemu-project/qemu/-/tree/master/backends>`_:
++  Various backends used for device emulation.
++* `block <https://gitlab.com/qemu-project/qemu/-/tree/master/block>`_:
++  Block devices and `image formats<disk images>` implementation.
++* `bsd-user <https://gitlab.com/qemu-project/qemu/-/tree/master/bsd-user>`_:
++  `BSD User mode<bsd-user-mode>`.
++* build: Where the code built goes by default. You can tell the QEMU build
++  system to put the built code anywhere else you like.
++* `chardev <https://gitlab.com/qemu-project/qemu/-/tree/master/chardev>`_:
++  Various backends used by char devices.
++* `common-user <https://gitlab.com/qemu-project/qemu/-/tree/master/common-user>`_:
++  User-mode assembly code for dealing with signals occuring during syscalls.
++* `configs <https://gitlab.com/qemu-project/qemu/-/tree/master/configs>`_:
++  Makefiles defining configurations to build QEMU.
++* `contrib <https://gitlab.com/qemu-project/qemu/-/tree/master/contrib>`_:
++  Community contributed devices/plugins/tools.
++* `crypto <https://gitlab.com/qemu-project/qemu/-/tree/master/crypto>`_:
++  Cryptographic algorithms used in QEMU.
++* `disas <https://gitlab.com/qemu-project/qemu/-/tree/master/disas>`_:
++  Disassembly functions used by QEMU target code.
++* `docs <https://gitlab.com/qemu-project/qemu/-/tree/master/docs>`_:
++  QEMU Documentation.
++* `dump <https://gitlab.com/qemu-project/qemu/-/tree/master/dump>`_:
++  Code to dump memory of a running VM.
++* `ebpf <https://gitlab.com/qemu-project/qemu/-/tree/master/ebpf>`_:
++  eBPF program support in QEMU. `virtio-net RSS<ebpf-rss>` uses it.
++* `fpu <https://gitlab.com/qemu-project/qemu/-/tree/master/fpu>`_:
++  Floating-point software emulation.
++* `fsdev <https://gitlab.com/qemu-project/qemu/-/tree/master/fsdev>`_:
++  `VirtFS <https://www.linux-kvm.org/page/VirtFS>`_ support.
++* `gdbstub <https://gitlab.com/qemu-project/qemu/-/tree/master/gdbstub>`_:
++  `GDB <GDB usage>` support.
++* `gdb-xml <https://gitlab.com/qemu-project/qemu/-/tree/master/gdb-xml>`_:
++  Set of XML files describing architectures and used by `gdbstub <GDB usage>`.
++* `host <https://gitlab.com/qemu-project/qemu/-/tree/master/host>`_:
++  Various architecture specific header files (crypto, atomic, memory
++  operations).
++* `linux-headers <https://gitlab.com/qemu-project/qemu/-/tree/master/linux-headers>`_:
++  A subset of headers imported from Linux kernel and used for implementing
++  KVM support and user-mode.
++* `linux-user <https://gitlab.com/qemu-project/qemu/-/tree/master/linux-user>`_:
++  `User mode <user-mode>` implementation. Contains one folder per target
++  architecture.
++* `.gitlab-ci.d <https://gitlab.com/qemu-project/qemu/-/tree/master/.gitlab-ci.d>`_:
++  `CI <ci>` yaml and scripts.
++* `include <https://gitlab.com/qemu-project/qemu/-/tree/master/include>`_:
++  All headers associated to different subsystems in QEMU. The hierachy used
++  mirrors source code organization and naming.
++* `hw <https://gitlab.com/qemu-project/qemu/-/tree/master/hw>`_:
++  `Devices <device-emulation>` and boards emulation. Devices are categorized by
++  type/protocol/architecture and located in associated subfolder.
++* `io <https://gitlab.com/qemu-project/qemu/-/tree/master/io>`_:
++  QEMU `I/O channels <https://lists.gnu.org/archive/html/qemu-devel/2015-11/msg04208.html>`_.
++* `libdecnumber <https://gitlab.com/qemu-project/qemu/-/tree/master/libdecnumber>`_:
++  Import of gcc library, used to implement decimal number arithmetic.
++* `migration <https://gitlab.com/qemu-project/qemu/-/tree/master/migration>`__:
++  `Migration framework <migration>`.
++* `monitor <https://gitlab.com/qemu-project/qemu/-/tree/master/monitor>`_:
++  `Monitor <QEMU monitor>` implementation (HMP & QMP).
++* `nbd <https://gitlab.com/qemu-project/qemu/-/tree/master/nbd>`_:
++  QEMU `NBD (Network Block Device) <nbd>` server.
++* `net <https://gitlab.com/qemu-project/qemu/-/tree/master/net>`_:
++  Network (host) support.
++* `pc-bios <https://gitlab.com/qemu-project/qemu/-/tree/master/pc-bios>`_:
++  Contains pre-built firmware binaries and boot images, ready to use in
++  QEMU without compilation.
++* `plugins <https://gitlab.com/qemu-project/qemu/-/tree/master/plugins>`_:
++  :ref:`TCG plugins <tcg-plugins>` core implementation. Plugins can be found in
++  `tests <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/tcg/plugins>`__
++  and `contrib <https://gitlab.com/qemu-project/qemu/-/tree/master/contrib/plugins>`__
++  folders.
++* `po <https://gitlab.com/qemu-project/qemu/-/tree/master/po>`_:
++  Translation files.
++* `python <https://gitlab.com/qemu-project/qemu/-/tree/master/python>`_:
++  Python part of our build/test system.
++* `qapi <https://gitlab.com/qemu-project/qemu/-/tree/master/qapi>`_:
++  `QAPI <qapi>` implementation.
++* `qobject <https://gitlab.com/qemu-project/qemu/-/tree/master/qobject>`_:
++  QEMU Object implementation.
++* `qga <https://gitlab.com/qemu-project/qemu/-/tree/master/qga>`_:
++  QEMU `Guest agent <qemu-ga>` implementation.
++* `qom <https://gitlab.com/qemu-project/qemu/-/tree/master/qom>`_:
++  QEMU :ref:`Object model <qom>` implementation, with monitor associated commands.
++* `replay <https://gitlab.com/qemu-project/qemu/-/tree/master/replay>`_:
++  QEMU :ref:`Record/replay <replay>` implementation.
++* `roms <https://gitlab.com/qemu-project/qemu/-/tree/master/roms>`_:
++  Contains source code for various firmware and ROMs, which can be compiled if
++  custom or updated versions are needed.
++* `rust <https://gitlab.com/qemu-project/qemu/-/tree/master/rust>`_:
++  Rust integration in QEMU. It contains the new interfaces defined and
++  associated devices using it.
++* `scripts <https://gitlab.com/qemu-project/qemu/-/tree/master/scripts>`_:
++  Collection of scripts used in build and test systems, and various
++  tools for QEMU codebase and execution traces.
++* `scsi <https://gitlab.com/qemu-project/qemu/-/tree/master/scsi>`_:
++  Code related to SCSI support, used by SCSI devices.
++* `semihosting <https://gitlab.com/qemu-project/qemu/-/tree/master/semihosting>`_:
++  QEMU `Semihosting <Semihosting>` implementation.
++* `stats <https://gitlab.com/qemu-project/qemu/-/tree/master/stats>`_:
++  `Monitor <QEMU monitor>` stats commands implementation.
++* `storage-daemon <https://gitlab.com/qemu-project/qemu/-/tree/master/storage-daemon>`_:
++  QEMU `Storage daemon <storage-daemon>` implementation.
++* `stubs <https://gitlab.com/qemu-project/qemu/-/tree/master/stubs>`_:
++  Various stubs (empty functions) used to compile QEMU with specific
++  configurations.
++* `subprojects <https://gitlab.com/qemu-project/qemu/-/tree/master/subprojects>`_:
++  QEMU submodules used by QEMU build system.
++* `system <https://gitlab.com/qemu-project/qemu/-/tree/master/system>`_:
++  QEMU `system mode <System emulation>` implementation (cpu, mmu, boot support).
++* `target <https://gitlab.com/qemu-project/qemu/-/tree/master/target>`_:
++  Contains code for all target architectures supported (one subfolder
++  per arch). For every architecture, you can find accelerator specific
++  implementations.
++* `tcg <https://gitlab.com/qemu-project/qemu/-/tree/master/tcg>`_:
++  :ref:`TCG <tcg>` related code.
++  Contains one subfolder per host supported architecture.
++* `tests <https://gitlab.com/qemu-project/qemu/-/tree/master/tests>`_:
++  QEMU `test <testing>` suite
++
++  - `avocado <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/avocado>`_:
++    Functional tests booting full VM using `Avocado framework <checkavocado-ref>`.
++    Those tests will be transformed and moved into
++    `tests/functional <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/functional>`_
++    in the future.
++  - `data <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/data>`_:
++    Data for various tests.
++  - `decode <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/decode>`_:
++    Testsuite for :ref:`decodetree <decodetree>` implementation.
++  - `docker <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/docker>`_:
++    Code and scripts to create `containers <container-ref>` used in `CI <ci>`.
++  - `fp <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/fp>`_:
++    QEMU testsuite for soft float implementation.
++  - `functional <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/functional>`_:
++    `Functional tests <checkfunctional-ref>` (full VM boot).
++  - `lcitool <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/lcitool>`_:
++    Generate dockerfiles for CI containers.
++  - `migration <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/migration>`_:
++    Test scripts and data for `Migration framework <migration>`.
++  - `multiboot <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/multiboot>`_:
++    Test multiboot functionality for x86_64/i386.
++  - `qapi-schema <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/qapi-schema>`_:
++    Test scripts and data for `QAPI <qapi-tests>`.
++  - `qemu-iotests <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/qemu-iotests>`_:
++    `Disk image and block tests <qemu-iotests>`.
++  - `qtest <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/qtest>`_:
++    `Device emulation testing <qtest>`.
++  - `tcg <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/tcg>`__:
++    `TCG related tests <checktcg-ref>`. Contains code per architecture
++    (subfolder) and multiarch tests as well.
++  - `tsan <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/tsan>`_:
++    `Suppressions <tsan-suppressions>` for thread sanitizer.
++  - `uefi-test-tools <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/uefi-test-tools>`_:
++    Test tool for UEFI support.
++  - `unit <https://gitlab.com/qemu-project/qemu/-/tree/master/tests/unit>`_:
++    QEMU `Unit tests <unit-tests>`.
++* `trace <https://gitlab.com/qemu-project/qemu/-/tree/master/trace>`_:
++  :ref:`Tracing framework <tracing>`. Used to print information associated to various
++  events during execution.
++* `ui <https://gitlab.com/qemu-project/qemu/-/tree/master/ui>`_:
++  QEMU User interfaces.
++* `util <https://gitlab.com/qemu-project/qemu/-/tree/master/util>`_:
++  Utility code used by other parts of QEMU.
+diff --git a/docs/devel/decodetree.rst b/docs/devel/decodetree.rst
+index e3392aa7057..98ad33a4870 100644
+--- a/docs/devel/decodetree.rst
++++ b/docs/devel/decodetree.rst
+@@ -1,3 +1,5 @@
++.. _decodetree:
++
+ ========================
+ Decodetree Specification
+ ========================
+diff --git a/docs/devel/ebpf_rss.rst b/docs/devel/ebpf_rss.rst
+index 4a68682b31a..ed5d33767bd 100644
+--- a/docs/devel/ebpf_rss.rst
++++ b/docs/devel/ebpf_rss.rst
+@@ -1,3 +1,5 @@
++.. _ebpf-rss:
++
+ ===========================
+ eBPF RSS virtio-net support
+ ===========================
+diff --git a/docs/devel/index-internals.rst b/docs/devel/index-internals.rst
+index ab9fbc44826..bca597c6589 100644
+--- a/docs/devel/index-internals.rst
++++ b/docs/devel/index-internals.rst
+@@ -1,3 +1,5 @@
++.. _internal-subsystem:
++
+ Internal Subsystem Information
+ ------------------------------
+ 
+diff --git a/docs/devel/index.rst b/docs/devel/index.rst
+index a53f1bfda5d..29f032d6a82 100644
+--- a/docs/devel/index.rst
++++ b/docs/devel/index.rst
+@@ -35,3 +35,4 @@ the :ref:`tcg_internals`.
+    index-api
+    index-internals
+    index-tcg
++   codebase
+diff --git a/docs/devel/migration/main.rst b/docs/devel/migration/main.rst
+index c2857fc2446..cdd4f4a6d7e 100644
+--- a/docs/devel/migration/main.rst
++++ b/docs/devel/migration/main.rst
+@@ -1,3 +1,5 @@
++.. _migration:
++
+ ===================
+ Migration framework
+ ===================
+diff --git a/docs/devel/qapi-code-gen.rst b/docs/devel/qapi-code-gen.rst
+index 583207a8ec2..3e26d2d1047 100644
+--- a/docs/devel/qapi-code-gen.rst
++++ b/docs/devel/qapi-code-gen.rst
+@@ -9,6 +9,7 @@ How to use the QAPI code generator
+    This work is licensed under the terms of the GNU GPL, version 2 or
+    later.  See the COPYING file in the top-level directory.
+ 
++.. _qapi:
+ 
+ Introduction
+ ============
+diff --git a/docs/devel/testing/main.rst b/docs/devel/testing/main.rst
+index 91f4dc61fb5..9869bcf0341 100644
+--- a/docs/devel/testing/main.rst
++++ b/docs/devel/testing/main.rst
+@@ -39,6 +39,8 @@ Before running tests, it is best to build QEMU programs first. Some tests
+ expect the executables to exist and will fail with obscure messages if they
+ cannot find them.
+ 
++.. _unit-tests:
++
+ Unit tests
+ ~~~~~~~~~~
+ 
+@@ -126,6 +128,8 @@ successfully on various hosts. The following list shows some best practices:
+   #ifdef in the codes. If the whole test suite cannot run on Windows, disable
+   the build in the meson.build file.
+ 
++.. _qapi-tests:
++
+ QAPI schema tests
+ ~~~~~~~~~~~~~~~~~
+ 
+@@ -160,6 +164,8 @@ check-block
+ are in the "auto" group).
+ See the "QEMU iotests" section below for more information.
+ 
++.. _qemu-iotests:
++
+ QEMU iotests
+ ------------
+ 
+@@ -679,6 +685,8 @@ The above exitcode=0 has TSan continue without error if any warnings are found.
+ This allows for running the test and then checking the warnings afterwards.
+ If you want TSan to stop and exit with error on warnings, use exitcode=66.
+ 
++.. _tsan-suppressions:
++
+ TSan Suppressions
+ ~~~~~~~~~~~~~~~~~
+ Keep in mind that for any data race warning, although there might be a data race
+@@ -901,7 +909,6 @@ You can run the avocado tests simply by executing:
+ 
+ See :ref:`checkavocado-ref` for more details.
+ 
+-
+ .. _checktcg-ref:
+ 
+ Testing with "make check-tcg"
+diff --git a/docs/devel/testing/qtest.rst b/docs/devel/testing/qtest.rst
+index c5b8546b3eb..73ef7702b7b 100644
+--- a/docs/devel/testing/qtest.rst
++++ b/docs/devel/testing/qtest.rst
+@@ -1,3 +1,5 @@
++.. _qtest:
++
+ ========================================
+ QTest Device Emulation Testing Framework
+ ========================================
+diff --git a/docs/index.rst b/docs/index.rst
+index 0b9ee9901d9..78285ebd6a4 100644
+--- a/docs/index.rst
++++ b/docs/index.rst
+@@ -3,6 +3,8 @@
+    You can adapt this file completely to your liking, but it should at least
+    contain the root `toctree` directive.
+ 
++.. _documentation-root:
++
+ ================================
+ Welcome to QEMU's documentation!
+ ================================
+diff --git a/docs/interop/qemu-ga.rst b/docs/interop/qemu-ga.rst
+index 11f7bae4600..d16cc1b9f07 100644
+--- a/docs/interop/qemu-ga.rst
++++ b/docs/interop/qemu-ga.rst
+@@ -1,3 +1,5 @@
++.. _qemu-ga:
++
+ QEMU Guest Agent
+ ================
+ 
+diff --git a/docs/system/qemu-block-drivers.rst.inc b/docs/system/qemu-block-drivers.rst.inc
+index 384e95ba765..cfe1acb78ae 100644
+--- a/docs/system/qemu-block-drivers.rst.inc
++++ b/docs/system/qemu-block-drivers.rst.inc
+@@ -500,6 +500,8 @@ What you should *never* do:
+ - expect it to work when loadvm'ing
+ - write to the FAT directory on the host system while accessing it with the guest system
+ 
++.. _nbd:
++
+ NBD access
+ ~~~~~~~~~~
+ 
+diff --git a/docs/tools/qemu-storage-daemon.rst b/docs/tools/qemu-storage-daemon.rst
+index ea00149a63a..35ab2d78074 100644
+--- a/docs/tools/qemu-storage-daemon.rst
++++ b/docs/tools/qemu-storage-daemon.rst
+@@ -1,3 +1,5 @@
++.. _storage-daemon:
++
+ ===================
+ QEMU Storage Daemon
+ ===================
+diff --git a/docs/user/main.rst b/docs/user/main.rst
+index 7a126ee8093..80a77f0a0c9 100644
+--- a/docs/user/main.rst
++++ b/docs/user/main.rst
+@@ -1,3 +1,5 @@
++.. _user-mode:
++
+ QEMU User space emulator
+ ========================
+ 
+@@ -42,6 +44,8 @@ QEMU was conceived so that ultimately it can emulate itself. Although it
+ is not very useful, it is an important test to show the power of the
+ emulator.
+ 
++.. _linux-user-mode:
++
+ Linux User space emulator
+ -------------------------
+ 
+@@ -175,6 +179,8 @@ Other binaries
+    * ``qemu-sparc64`` can execute some Sparc64 (Sparc64 CPU, 64 bit ABI) and
+      SPARC32PLUS binaries (Sparc64 CPU, 32 bit ABI).
+ 
++.. _bsd-user-mode:
++
+ BSD User space emulator
+ -----------------------
+ 
+-- 
+2.39.5

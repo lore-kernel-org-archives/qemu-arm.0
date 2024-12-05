@@ -1,452 +1,312 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp204779njb;
-        Thu, 5 Dec 2024 07:23:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUU/DHtYLwJNKmqNyP6Pdep7t6OQOlPfZANA84S9ybxgtF52rJGMmduLHxK44K6ElRYzUZ1uK3PVl6wJw==@linaro.org
-X-Received: by 2002:a05:6402:51d3:b0:5d2:7270:6128 with SMTP id 4fb4d7f45d1cf-5d272706647mr3879667a12.25.1733412221913;
-        Thu, 05 Dec 2024 07:23:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733412221; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp251345njb;
+        Thu, 5 Dec 2024 08:26:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW8QIYiAAxyQijM6eZk5nCFDSglSkP0r6ac9iRtswzT+h3ilKsU5300P5e55WwiKWMzGxft0NaD4P+MdQ==@linaro.org
+X-Received: by 2002:a05:6808:1510:b0:3ea:4e7c:a924 with SMTP id 5614622812f47-3eae5059f24mr14009668b6e.34.1733415976334;
+        Thu, 05 Dec 2024 08:26:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733415976; cv=none;
         d=google.com; s=arc-20240605;
-        b=DBbxUHfdN76MWd769gRBEiGPl+irtMav25lrsxSesEC4arGafJmItWkLF8sIqXPOJj
-         5RX6mhB9zjsvnMhWs3547an7hGsoRbXsMqqFoJD2+5nuCP9/CGiyYDOWe8wIvH3nZZWs
-         Ah4dw0pgjVzBhk5oLaZhMkrw0SuIdx5PX9sbE+sHiWYSe/01N/JlA12JS19ud2ZhJgml
-         BSADZpncDcrLc+MAKHiOZk5y/eFh7irlN5onzkoPo3vQA6HUaGvJwcHgdCBSPAN/yIQt
-         efdwhDGHRpbVX+fa/dJlYKfMXLYdJ5nUuDMpqLDs+gPejsuQ6uUuOsf+j8TCT6m5r4+C
-         HdkA==
+        b=JQPBZQZ+zTwKYy6qUhww8txNjP+6edix+AfBB9b9hC947oB+XqyOpt+0q+oNFlAHmL
+         XrF/Cf56H94V59CsC9G41Bx8pjZnuWdywMOsovpypl+n7uHaPlso3W5fkyiOtIA0hkND
+         xws8l3NQWVnCwzgxaS64AAi5BM4o+hAfPA4PyjxHFeVghy45so1sB+zchpp1nSVwGoqw
+         ysswdmBzPdFXshYF9syVFUQS08c/uBwjsKVNsjDOBLwHc97neb16zxFSlo+uHgpMJ2nC
+         UoE3Cx8ptYWgQQYWDIYu33JfsWxVi/fl9Z12pPRpx4BWP2mRRR5oFKsxZTtOjFfeODxe
+         5dAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=2o0BOwxkDSCufIXkZ4f5R0oc042vUvihYxGeEHkXCng=;
-        fh=LsB0bIDt+9SpIOagdASbcUyhESgoUwM6UHSkknQ5RpU=;
-        b=lUVRcOGwxxLhesIHT12WaGNkSGU0ddiulP+556lkInl1NgrZq8HyeVrnW0Tv0X7CxA
-         wFqEde+EDM22NWTNjQthmFvQcQlggYi25hch2NzCqTs8249u5rPGca9dpfJocc/upv1j
-         spyTKcwaIo8NptSVtYK1EQQEfMJkp7hNrvlVzeLgVBZ7IXPd6748/3o3ZXcpKJmmQxgf
-         8ga0nJo9c8v6z5hNAaxvZrro0Xe+s8zdhg+dW1xtcOPRCDfN7lG/CJUoFNF2eMlqm4Xo
-         cxiR9gtCVN6zxhIYNgfyIpYwuzdL/tcF9s74RCPhds7oWLjfFHtUFfF8edjVJr93ZmXA
-         iwSA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=4nJfxIxXj+c01/d5lWy6rqlaZqWnjNKyFRtZKliZTuM=;
+        fh=fE4qSWz6To9ZUg/fCd4AnkHug7536ANTVQpg53ahyvU=;
+        b=LxRzqzez/sUsn6ntbMh2o9rID6Gh1JmuAUlilEq1HFbjhzivnU4XANFGToGEaec4o6
+         IEF5+uC77pNaAe4Rtl8sF+lVgC/pgfWBbVKBjjhewLnjk28cdvsOfR0cjwCaScXVbA0R
+         aG5pT0u6DJM40lFM7AJl90PDBzGQqP0AqCditkkBKSyVt0Zkt0jfBHoLHuNQlctDKFDe
+         zENeUD0vg9HkMCfxExLN8sf/7Jyxr+0y+qoolcsr6BDOOK7k3sBwS89REN22moTgksVv
+         a5Amu3t1c/n/180xAFIXTDC13nTCrFJyP9YGfNp89AkUylTvTA9WwUrdQw4YiIYFjlkS
+         RUDg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YHwsiM+e;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GxAf0iFa;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id a640c23a62f3a-aa626030bf7sor58425266b.14.2024.12.05.07.23.41
+        by mx.google.com with SMTPS id 5614622812f47-3eb076b8bf0sor611539b6e.8.2024.12.05.08.26.16
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 05 Dec 2024 07:23:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Thu, 05 Dec 2024 08:26:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YHwsiM+e;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GxAf0iFa;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733412221; x=1734017021; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=2o0BOwxkDSCufIXkZ4f5R0oc042vUvihYxGeEHkXCng=;
-        b=YHwsiM+eUhHT2ng0E8JicW3Mojg+OcvfB4UWBVGwfbScuIS9pxq+2WAWTOMu9HDtcj
-         G8IrKGSsO7Zu2nRwzyhDZXuVnLXG6P+RKs3OMvyMUOG3y+d7xIHTfCT6jqcuhUDejMbn
-         SdiGymQdt+/dJAiQ/SULqv1rGezFCYF94rGy5GDY6kb/9+l2TXZSjCQ1OIXZRcq/Yfkz
-         fEVN3GyvvMbaXXB/AUq73hEFtTmM/mp8NcL2EI0PKaYXe/y83GMo61eomtEcwSNPnoxE
-         u7hSRDd0tqp1armFeweIsZti9LVQuV9e+muthfPwGqyRXXnZnjZBLGBPCzFzjpUnjHtL
-         vaRQ==
+        d=linaro.org; s=google; t=1733415976; x=1734020776; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=4nJfxIxXj+c01/d5lWy6rqlaZqWnjNKyFRtZKliZTuM=;
+        b=GxAf0iFarbkhi0RhK1WIddfBiezBeNF7wLexlZS4Ppyh+xMJVqbVPj0i54djxUHbpB
+         pIf+yiRk1IgK4/a8fZhuW25ZwTGL5wgzic6/179AmLuRogm7gPeq9DQWYHmFLodA4WG0
+         /KtTR9oN79wrMt+57laNJjfC08vN+3ATSkm8tDaK27Y3M1YaFvOVyG0wdasaIuMtuz8T
+         ILP1G0+IGHv3G2bI4n8tTfIxdCegvILwIp/K0Jf5pTwLhu+OFH9IMKw32qQtL9en/Lwp
+         U27Y3CGaKuGqOavapyetyK8g33V7lOmBPLN47TOGG0+Fni3VJNjBJQCuAA9CxV2EeJI0
+         gIeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733412221; x=1734017021;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=2o0BOwxkDSCufIXkZ4f5R0oc042vUvihYxGeEHkXCng=;
-        b=jTF7PU93Mcsidzt2y90hWyOwEW75l1QfXK6J8TSUJdZ9/WMcqcSStGe1slwBwLKs1i
-         vR2P37o6ac6U+51LTO8gIA3ra1mu1FPEPT5WKtMFiNxQjyBCbdjGDeOB6GZuRLIww6DD
-         atxg3d2CPFxjAbfEk0+uEmXZdWO216ErMLrYKEmodtcTHXOsu8vpiTArkV6gwSW4iAjG
-         XUFJr4+ihq280LjpGVcPxQs1OJRCcG2CgxzFzX4+MhwvEWguo1Q1CrnpLAmxj8NaeOV9
-         gYBwiZP1QLx7mbEXK7QP/S3U3OhUz7jn/dKyuDXiMWn3Ujna1GzJmv6n5TsrL1kSYvxT
-         CE3Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVIM4NXCXu657hJjocTYjXcFaK05aQ+iiccDkNcWmbyLxos62kcQbfGxO6mI7whpYi8JURNWJEMxbwl5g==@linaro.org
-X-Gm-Message-State: AOJu0Yw0STIkh5cB1ssMNbCUXM3j9mpJBuV4cKvA2cFwQu2VtMfiSQXS
-	mxjBIL12lJWIDnSibYiVoJs8hpyM6SLCxt2UA+b3bpidToOwOeQqIgHhb5MNQ8GJ8/A46TNDmjP
-	zKa1D6HBkDJnkC15uCQs+k/G1pZM7Kg/CeUwxokvc
-X-Gm-Gg: ASbGncuyAbzP5+9K2hackRKPbuXAC2WOh9NjI5jjpkroxTqkG3cl7WUSpWm9v+t02WK
-	9O9+9qO/IkV/2p6TL1qK+C0OcpC1Xwqov
-X-Google-Smtp-Source: AGHT+IG8NJmTbbacd/8LR2gPy/2hPCKBTxHEX7mIRpnGShOO2RWc+Mzj7/NaGoNqlqSw6es86YRBj//ckoHRuBboDg0=
-X-Received: by 2002:a05:6402:3506:b0:5d0:9054:b119 with SMTP id
- 4fb4d7f45d1cf-5d10cb80133mr13614218a12.21.1733412221125; Thu, 05 Dec 2024
- 07:23:41 -0800 (PST)
+        d=1e100.net; s=20230601; t=1733415976; x=1734020776;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=4nJfxIxXj+c01/d5lWy6rqlaZqWnjNKyFRtZKliZTuM=;
+        b=uNgaTrXSl+djcNuFlvEhf16oXI30eWPMm6A8r7gkitXqzZ5uOvKG+hmmThBtagHy74
+         xWO+XOzOtti53cdGAPekamQYMALHxlcjrUOqW1eVvIApwOh5bJqG9bWrlT0dNLQKPJEt
+         zVb+GfNI//JiNSROCZAvWqMsPnCyg3elP7huUcGcjrM1u/weHsVQg7Kc1llGwhntzDo8
+         W92rS6ETH6S1PAuT6gPErW2q8ivTu/qfz0zQExh8qCB05embLEG8g/kzcvZnFWYToNhR
+         Zoq7cJh8+eaRz4rHGatMRRk5awrlPONm3reiQBqwR5JByTgJ3OjTsLKCkVfF8YQU/+gv
+         MQsw==
+X-Forwarded-Encrypted: i=1; AJvYcCUU1a4mMTBM6jBW63QVS+JvimkdCf/qsXfM2HzKDuK6etSsVlgDi46PlyWLImMu1k65eqbgeGybtIp3Uw==@linaro.org
+X-Gm-Message-State: AOJu0Yyi1DTUa3PO3OJJIscf82hodkuapSOmn+KUQwqJ9rTa60o95f2T
+	6wqJLHo3bL2VyjQKIsBw4s2H3otNiQdyUACrAoRP72cv3BhJwkXM47p02tKuCRbe6A==
+X-Gm-Gg: ASbGncvcYaXmoKhGNO6vHlO3cxUhtuxaX3tN1cRjOslj01rUh8S4Rpgj5+1Dqri071b
+	1YdxfiCJ3b64kbm8fqUJ30yPv2D7Obv++KHGBs7LfOfy+NYrA1SGiqHEQZUbeL9uDg7V4V3PQ+X
+	lVFwMU3PacSXSIux8bWlOFCPDtdm1XDhQXM4AzJCQD5K8Ylydlf4tg3V/O4+6YX+zLUHtUi3/YZ
+	dnQ7BBWlrB/t0GIjO7R4/P3jIPURDW8RIJObzZA/klrb9H8KTMiXsAU1fjJuhkdZ6XuoFcMIwMW
+	aheszOSmNDqW2W6CfQjw7w==
+X-Google-Smtp-Source: AGHT+IFnSiksASa32K/J3zfgElyd+cyVTNs4b76B89bhKXNzd6MaaGBCbz1kl8lT3dsfTFJ6oVBAUQ==
+X-Received: by 2002:a05:6808:219f:b0:3e7:f151:caef with SMTP id 5614622812f47-3eae50de970mr10980091b6e.43.1733415975730;
+        Thu, 05 Dec 2024 08:26:15 -0800 (PST)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-7fd157db3c1sm1325433a12.81.2024.12.05.08.26.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 05 Dec 2024 08:26:15 -0800 (PST)
+Message-ID: <772188ec-18ea-411c-aee1-54ee99597fe7@linaro.org>
+Date: Thu, 5 Dec 2024 08:26:14 -0800
 MIME-Version: 1.0
-References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
- <20241118172357.475281-7-pierrick.bouvier@linaro.org> <CAFEAcA9JdLxi5cr-Z2-YX6Q8nv=j0O3k=f9u6gS-CzSf5BH7Ug@mail.gmail.com>
- <bdefc0ac-311b-4820-913f-e21d753890fa@linaro.org>
-In-Reply-To: <bdefc0ac-311b-4820-913f-e21d753890fa@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 5 Dec 2024 15:23:30 +0000
-Message-ID: <CAFEAcA-go4GccLwNvdrL0iMpDSmCcrD5J9R3=3BnT5t7tf=Fiw@mail.gmail.com>
-Subject: Re: [PATCH 6/7] docs: add a glossary
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, Andrew Melnychenko <andrew@daynix.com>, 
-	=?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
-	Jason Wang <jasowang@redhat.com>, Thomas Huth <thuth@redhat.com>, alex.bennee@linaro.org, 
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, Fabiano Rosas <farosas@suse.de>, 
-	Kevin Wolf <kwolf@redhat.com>, Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
-	qemu-arm@nongnu.org, Yuri Benditovich <yuri.benditovich@daynix.com>, 
-	manos.pitsidianakis@linaro.org, qemu-block@nongnu.org, 
-	Michael Roth <michael.roth@amd.com>, Konstantin Kostiuk <kkostiuk@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>, gustavo.romero@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: GcaX5uq40Qjn
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4] tests/functional/aarch64: add tests for FEAT_RME
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, mathieu.poirier@linaro.org,
+ jean-philippe@linaro.org, marcin.juszkiewicz@linaro.org,
+ alex.bennee@linaro.org, gustavo.romero@linaro.org
+References: <20241203213629.2482806-1-pierrick.bouvier@linaro.org>
+ <Z1GAZxhiQ0jN1-a0@redhat.com>
+Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <Z1GAZxhiQ0jN1-a0@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: base64
+X-TUID: CHzcy/lwejw0
 
-On Tue, 3 Dec 2024 at 20:32, Pierrick Bouvier
-<pierrick.bouvier@linaro.org> wrote:
->
-> On 12/3/24 09:37, Peter Maydell wrote:
-> > On Mon, 18 Nov 2024 at 17:24, Pierrick Bouvier
-> > <pierrick.bouvier@linaro.org> wrote:
-> >>
-> >> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> >> ---
-> >>   docs/devel/control-flow-integrity.rst |   2 +
-> >>   docs/devel/multi-thread-tcg.rst       |   2 +
-> >>   docs/glossary/index.rst               | 238 ++++++++++++++++++++++++=
-++
-> >>   docs/index.rst                        |   1 +
-> >>   docs/system/arm/virt.rst              |   2 +
-> >>   docs/system/images.rst                |   2 +
-> >>   docs/tools/qemu-nbd.rst               |   2 +
-> >>   7 files changed, 249 insertions(+)
-> >>   create mode 100644 docs/glossary/index.rst
-> >
-> > I think this is a good idea; we've had at least one bug
-> > report from a user pointing out that we had a term in
-> > our docs which we didn't define ("block driver"):
-> > https://gitlab.com/qemu-project/qemu/-/issues/2611
-> > I have some comments on specific entries below.
-> >
->
-> And people can be free to add new entries later. However, we should
-> resist the temptation to add too many details. It should stay simple and
-> understandable, even if not all technical nuances are not represented.
->
-> >> diff --git a/docs/devel/control-flow-integrity.rst b/docs/devel/contro=
-l-flow-integrity.rst
-> >> index e6b73a4fe1a..3d5702fa4cc 100644
-> >> --- a/docs/devel/control-flow-integrity.rst
-> >> +++ b/docs/devel/control-flow-integrity.rst
-> >> @@ -1,3 +1,5 @@
-> >> +.. _cfi:
-> >> +
-> >>   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D
-> >>   Control-Flow Integrity (CFI)
-> >>   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D
-> >> diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread=
--tcg.rst
-> >> index d706c27ea74..7fd0a07633d 100644
-> >> --- a/docs/devel/multi-thread-tcg.rst
-> >> +++ b/docs/devel/multi-thread-tcg.rst
-> >> @@ -4,6 +4,8 @@
-> >>     This work is licensed under the terms of the GNU GPL, version 2 or
-> >>     later. See the COPYING file in the top-level directory.
-> >>
-> >> +.. _mttcg:
-> >> +
-> >>   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> >>   Multi-threaded TCG
-> >>   =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> >> diff --git a/docs/glossary/index.rst b/docs/glossary/index.rst
-> >> new file mode 100644
-> >> index 00000000000..a2d4f3eae16
-> >> --- /dev/null
-> >> +++ b/docs/glossary/index.rst
-> >
-> > I guess it makes sense to give this its own subdir, since we want
-> > it to come at the end of the manual. The other option would be
-> > to put it directly into docs/.
-> >
->
->  From your comment, it's not clear for me if it's ok as it is, or if you
-> want a change.
-> Can you elaborate on that?
-
-It means I'm not sure. We end up with a subdirectory with only
-one file in it and where there's no expectation we'd ever want
-to add any more files to it. On the other hand it does keep it
-out of the docs/ top level directory, which currently has a
-fair amount of cruft awaiting cleanup.
-
-I guess on balance I would make this docs/glossary.rst,
-unless you anticipate wanting to split this into multiple
-files or have something else in docs/glossary/ later.
-
-> >> @@ -0,0 +1,238 @@
-> >> +.. _Glossary:
-> >> +
-> >> +--------
-> >> +Glossary
-> >> +--------
-> >> +
-> >> +This section of the manual presents *simply* acronyms and terms QEMU =
-developers
-> >> +use.
-> >
-> > What's "simply" intended to mean here?
-> >
->
-> "in a straightforward or plain manner".
-> I can remove this word if you think it does not serve any purpose.
-
-You could phrase it as "presents brief definitions of acronyms
-and terms", I think.
-
-> >> +QEMU system defines board models for various architectures. It's a de=
-scription
-> >> +of a SoC (system-on-chip) with various devices pre-configured, and ca=
-n be
-> >> +selected with the option ``-machine`` of qemu-system.
-> >
-> > SoCs are not the same as boards.
-> >
-> > We could say something like:
-> >
-> > QEMU's system emulation models many different types of hardware.
-> > A machine model (sometimes called a board model) is the model
-> > of a complete virtual system with RAM, one or more CPUs, and
-> > various devices.
-> >
-> > We could also put in a link to
-> > https://www.qemu.org/docs/master/system/targets.html
-> > which is where we document what our machine types are.
-> >
->
-> How do you distinguish a SoC and cpu? Is a SoC cpu + devices?
-> Isn't a board/machine a set of SoC + devices attached?
-
-An SoC is a "system on chip". To quote wikipedia's definition:
-
-"A system on a chip or system-on-chip is an integrated circuit that
-integrates most or all components of a computer or electronic system.
-These components usually include an on-chip central processing unit
-(CPU), memory interfaces, input/output devices and interfaces, and
-secondary storage interfaces, often alongside other components such
-as radio modems and a graphics processing unit (GPU) =E2=80=93 all on a
-single substrate or microchip."
-
-An SoC always contains a CPU, but it will have a lot more
-than that built into it too. And the SoC only has "most"
-of the system components, so the whole machine will be
-an SoC plus some other things.
-
-Generally a board/machine that uses an SoC will have on it:
- * an SoC
- * the actual memory
- * perhaps one or two extra devices external to the SoC
- * connectors for things like serial ports, SD cards, etc
-   (which generally wire up to SoC pins)
- * a crystal or similar to act as the main clock source
-
-So if you look at a photo of a development board that uses
-an SoC, there will be one large chip which is the SoC,
-some RAM chips, a bunch of connectors and one or two smaller
-chips. Not every device will be inside the SoC, but
-generally almost all of them are.
-
-QEMU's machine models for this kind of board match the
-organization of the hardware; looking at hw/arm/sabrelite.c
-which is a machine model you can see that it has:
- * an instance of the fsl-imx6 SoC device object
- * the main memory
- * some NOR flash memory
- * some configuration and wiring up of things
-
-And the SoC itself is in hw/arm/fsl-imx6.c, and is a
-QOM device object that creates and wires up the CPUs,
-UARTs, USB controller, and various other devices that
-this particular SoC includes. In this case we only have
-one board model using this SoC, but for some SoCs we
-have several board models that all use the same SoC
-but wire up different external devices to it.
-
-Some of our machine models are models of systems that
-don't use an SoC at all. This is rare in the Arm world,
-but for instance the SPARC machines like the SS-5 are
-like that -- the real hardware had a discrete CPU chip
-and a bunch of devices in their own chips on the
-motherboard, and QEMU's model of that hardware has
-a machine model which directly creates the CPU and
-the various devices. (And some of our older machine
-models are models of hardware that *does* have an SoC
-but where we didn't model that level of abstraction,
-so they directly create devices in the machine model
-that really ought to be inside an SoC object.
-hw/arm/stellaris.c is one example of that.)
-
-> >> +
-> >> +Block
-> >> +-----
-> >> +
-> >> +Block drivers are the available `disk formats <block-drivers>` availa=
-ble, and
-> >> +block devices `(see Block device section on options page)<sec_005finv=
-ocation>`
-> >> +are using them to implement disks for a virtual machine.
-> >
-> > Block drivers aren't just disk formats; there are some filter
-> > drivers too. Somebody on the block side could probably
-> > provide a better definition here.
-> >
->
-> I'm open to a more exact definition. The two terms (drivers and devices)
-> seem to overlap on some parts, so I came up with this trivial definition.
-
-Yeah, the driver vs device split is a good one (basically
-the device is the front-end visible to the guest, and the
-driver is the back-end that provides it with storage
-via an abstracted API). The nit I'm picking here is that
-not every block driver is there to provide support for
-an on-host disk format.
-
-> >> +
-> >> +CFI
-> >> +---
-> >> +
-> >> +Control Flow Integrity is a hardening technique used to prevent explo=
-its
-> >> +targeting QEMU by detecting unexpected branches during execution. QEM=
-U `actively
-> >> +supports<cfi>` being compiled with CFI enabled.
-> >> +
-> >> +Device
-> >> +------
-> >> +
-> >> +QEMU is able to emulate a CPU, and all the hardware interacting with =
-it,
-> >> +including many devices. When QEMU runs a virtual machine using a hard=
-ware-based
-> >> +accelerator, it is responsible for emulating, using software, all dev=
-ices.
-> >
-> > This definition doesn't actually define what a device is :-)
-> >
->
-> Indeed :)
-> Should we explain what is a computer device?
-> The goal was just to say that QEMU can emulate hardware interacting with
-> the cpu, which could be a possible definition. So people can associate
-> that QEMU devices are nothing else than a "normal" computer device.
-
-We could say, perhaps:
-
-In QEMU, a device is a piece of hardware visible to the guest.
-Examples include UARTs, PCI controllers, PCI cards, VGA controllers,
-and many more.
-
-
-
-> >> +
-> >> +Hypervisor
-> >> +----------
-> >> +
-> >> +The formal definition of an hypervisor is a program than can be used =
-to manage a
-> >> +virtual machine. QEMU itself is an hypervisor.
-> >
-> > "a hypervisor". QEMU isn't really a hypervisor, though...
-> >
->
-> It's a shortcut, and I'm open to change it. It brings an interesting
-> question though.
->
-> Technically, QEMU interacts with hypervisor APIs built in various OSes.
-> On the other hand, when we use TCG, it's an emulator instead.
->
-> But as you can't use KVM/hvf/whpx by itself, how do you name the program
-> interacting with it, and emulating the rest of the VM?
->
-> The correct word is probably "virtualizer", but from searching on
-> Internet, it seems that "vmm" and "virtualizer" are considered the same
-> as an "hypervisor". The difference is subtle, and maybe we have an
-> opportunity here to clarify it.
-
-
-> >> +Patchwork
-> >> +---------
-> >> +
-> >> +`Patchwork <https://patchew.org/QEMU/>`_ is a website that tracks
-> >> +patches on the Mailing List.
-> >
-> > Patchwork and patchew are different systems. Patchew's URL is
-> > https://patchew.org/QEMU/
-> >
-> > (There is a patchwork instance that tracks qemu-devel patches,
-> > at https://patchwork.kernel.org/project/qemu-devel/list/ , but
-> > I'm not aware of any developers that are actively using it, so
-> > I don't think it merits being mentioned in the glossary.)
-> >
->
-> I've been confused by that, and just thought it was two different
-> instances (fork me if you can) of the "same" thing.
-> How would you define patchew?
-> When we say patchwork, do we implicitely mean patchew?
-
-No. patchwork is patchwork, and patchew is patchew -- these
-are entirely different pieces of software that happen to do
-similar jobs.
-
-> if I understand currently, patchew is what we want to mention in our
-> doc? (and mention it's not associated to patchwork).
-
-We don't use patchwork, so we don't need to mention it anywhere.
-
-> >> +Once a series is reviewed and accepted by a subsystem maintainer, it =
-will be
-> >> +included in a PR (Pull Request) that the project maintainer will merg=
-e into QEMU
-> >> +main branch, after running tests.
-> >
-> > I think we could probably also usefully say
-> >
-> > "The QEMU project doesn't currently expect most developers to
-> > directly submit pull requests."
-> >
-> > just to flag up that our development model isn't like the
-> > currently-popular github/gitlab one where a PR is how you
-> > send contributions.
-> >
->
-> This is interesting.
->
-> For the majority of developers nowadays, a PR is a GitHub/GitLab PR.
-> Despite the fact we use the original PR meaning (in git terms), it's
-> probably confusing when new comers hear pull request.
->
-> >> +
-> >> +QCOW
-> >> +----
-> >> +
-> >> +QEMU Copy On Write is a disk format developed by QEMU. It provides tr=
-ansparent
-> >> +compression, automatic extension, and many other advantages over a ra=
-w image.
-> >
-> > We want to be a bit careful here, because the "qcow" format
-> > is not something we recommend for new use -- "qcow2" is what
-> > you actually want.
-> >
-> > https://www.qemu.org/docs/master/system/qemu-block-drivers.html#cmdopti=
-on-image-formats-arg-qcow2
-> >
->
-> Sounds good.
->
-> For my personal knowledge: during this work I discovered that we had
-> qcow3. From what I understood, it seems to be included in what we called
-> qcow2 today. Is that correct?
-
-I have no idea -- you'd need to ask somebody who works on the
-block layer
-
-thanks
--- PMM
+T24gMTIvNS8yNCAwMjoyOCwgRGFuaWVsIFAuIEJlcnJhbmfDqSB3cm90ZToNCj4gT24gVHVl
+LCBEZWMgMDMsIDIwMjQgYXQgMDE6MzY6MjlQTSAtMDgwMCwgUGllcnJpY2sgQm91dmllciB3
+cm90ZToNCj4+IFRoaXMgYm9vdCBhbiBPUC1URUUgZW52aXJvbm1lbnQsIGFuZCBsYXVuY2gg
+YSBuZXN0ZWQgZ3Vlc3QgVk0gaW5zaWRlIGl0DQo+PiB1c2luZyB0aGUgUmVhbG1zIGZlYXR1
+cmUuIFdlIGRvIGl0IGZvciB2aXJ0IGFuZCBzYnNhLXJlZiBwbGF0Zm9ybXMuDQo+Pg0KPj4g
+U2lnbmVkLW9mZi1ieTogUGllcnJpY2sgQm91dmllciA8cGllcnJpY2suYm91dmllckBsaW5h
+cm8ub3JnPg0KPj4NCj4+IC0tLS0tDQo+Pg0KPj4gdjI6DQo+PiAtIG1vdmUgdGVzdCB0byBp
+dHMgb3duIGZpbGUNCj4+IC0gYWRkIHNic2EgdGVzdA0KPj4gLSBjaGVjayBvdXRwdXQgb2Yg
+YGNjYS13b3JrbG9hZC1hdHRlc3RhdGlvbiByZXBvcnRgDQo+Pg0KPj4gdjM6DQo+PiAtIGJ1
+aWxkIGFuZCBydW4gdGVzdCB3aXRoIGNjYS12NCBpbWFnZXMNCj4+IC0gZmFjdG9yaXplIG5l
+c3RlZCBndWVzdCB0ZXN0IGJldHdlZW4gYm90aCB0ZXN0cw0KPj4gLSByZW1vdmUgYWNjZWwg
+dGNnIG9wdGlvbiBhcyBpdCBpcyB0aGUgZGVmYXVsdCB3aGVuIHJ1bm5pbmcgdGVzdHMNCj4+
+IE5vdGU6IEl0J3MgYSBsb25nIHRlc3QgYW5kIHRoZXJlIGlzIGEgd29yayBpbiBwcm9ncmVz
+cyB0byB1bmRlcnN0YW5kIHdoeQ0KPj4gZGVidWcgYnVpbGQgaXMgc28gc2xvdyAoeDEyIHZz
+IG9wdGltaXplZCkuDQo+Pg0KPj4gdjQ6DQo+PiAtIHVzZSBwYXV0aC1pbXBkZWY9b24gdG8g
+c3BlZWQgdXAgYnVpbGQgdGltZSBleGVjdXRpb24gKHgyLjUgZmFzdGVyKQ0KPj4gLSBpbmNy
+ZWFzZSB0aW1lb3V0IHZhbHVlDQo+Pg0KPj4gU2lnbmVkLW9mZi1ieTogUGllcnJpY2sgQm91
+dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPg0KPj4gLS0tDQo+PiAgIHRlc3Rz
+L2Z1bmN0aW9uYWwvbWVzb24uYnVpbGQgICAgICAgICAgICAgICAgIHwgICA0ICsNCj4+ICAg
+dGVzdHMvZnVuY3Rpb25hbC90ZXN0X2FhcmNoNjRfcm1lX3Nic2FyZWYucHkgfCAgNzAgKysr
+KysrKysrKysrKw0KPj4gICB0ZXN0cy9mdW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9ybWVfdmly
+dC5weSAgICB8IDEwMCArKysrKysrKysrKysrKysrKysrDQo+PiAgIDMgZmlsZXMgY2hhbmdl
+ZCwgMTc0IGluc2VydGlvbnMoKykNCj4+ICAgY3JlYXRlIG1vZGUgMTAwNzU1IHRlc3RzL2Z1
+bmN0aW9uYWwvdGVzdF9hYXJjaDY0X3JtZV9zYnNhcmVmLnB5DQo+PiAgIGNyZWF0ZSBtb2Rl
+IDEwMDc1NSB0ZXN0cy9mdW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9ybWVfdmlydC5weQ0KPj4N
+Cj4+IGRpZmYgLS1naXQgYS90ZXN0cy9mdW5jdGlvbmFsL21lc29uLmJ1aWxkIGIvdGVzdHMv
+ZnVuY3Rpb25hbC9tZXNvbi5idWlsZA0KPj4gaW5kZXggNWMwNDhjZmFjNmQuLjYwYWU3YmJk
+M2Q2IDEwMDY0NA0KPj4gLS0tIGEvdGVzdHMvZnVuY3Rpb25hbC9tZXNvbi5idWlsZA0KPj4g
+KysrIGIvdGVzdHMvZnVuY3Rpb25hbC9tZXNvbi5idWlsZA0KPj4gQEAgLTEzLDYgKzEzLDgg
+QEAgZW5kaWYNCj4+ICAgdGVzdF90aW1lb3V0cyA9IHsNCj4+ICAgICAnYWFyY2g2NF9hc3Bl
+ZWQnIDogNjAwLA0KPj4gICAgICdhYXJjaDY0X3Jhc3BpNCcgOiA0ODAsDQo+PiArICAnYWFy
+Y2g2NF9ybWVfdmlydCcgOiAxMjAwLA0KPj4gKyAgJ2FhcmNoNjRfcm1lX3Nic2FyZWYnIDog
+MTIwMCwNCj4gDQo+IFRoZXNlIDIwIG1pbnV0ZSB0aW1lb3V0cyBzZWVtIHJhdGhlciBleGNl
+c3NpdmUuDQo+IA0KPiBPbiBteSB0ZXN0IG1hY2hpbmVzIF92aXJ0IHJ1bnMgaW4gNDUgc2Vj
+b25kcywgYW5kIF9zYnNhcmVmDQo+IHJ1bnMgaW4gMm0yMC4gVGhlIGxhdHRlciBpcyBzbG93
+LCBidXQgbm90IGRyYW1hdGljYWxseQ0KPiBkaWZmZXJlbnQgZnJvbSBvdXIgb3RoZXIgc2xv
+dyB0ZXN0cy4gSXQgZG9lc24ndCBmZWVsIGxpa2UNCj4gaXQganVzdGlmaWVzIGEgMjAgbWlu
+dXRlIHRpbWVvdXQgPw0KPiANCg0KWW91IGNhbiB0cnkgYWdhaW4gd2l0aCBhIGRlYnVnIGJ1
+aWxkLCBhbmQgeW91J2xsIG9ic2VydmUgdGhhdCAyMCBtaW51dGVzIA0KaXMgbm90IHNvIGNv
+bnNlcnZhdGl2ZSAoSSBoaXQgOCB0byAxMCBtaW4gb24gbXkgbWFjaGluZSBlYXNpbHksIHNv
+IA0KdGFraW5nIHRoZSBkb3VibGUgY29uc2lkZXJpbmcgdGhlIHgyL3gzICJDSSBzbG93bmVz
+cyIgZmFjdG9yIGlzIG5vdCBzbyANCmNyYXp5KS4NClRoZSB2MiBhbmQgdjMgdmVyc2lvbnMg
+b2YgdGhlIHBhdGNoIGNvbnRhaW4gbW9yZSBkZXRhaWxzLg0KDQo+PiAgICAgJ2FhcmNoNjRf
+c2JzYXJlZl9hbHBpbmUnIDogNzIwLA0KPj4gICAgICdhYXJjaDY0X3Nic2FyZWZfZnJlZWJz
+ZCcgOiA3MjAsDQo+PiAgICAgJ2FhcmNoNjRfdHV4cnVuJyA6IDI0MCwNCj4+IEBAIC01Miw2
+ICs1NCw4IEBAIHRlc3RzX2FhcmNoNjRfc3lzdGVtX3Rob3JvdWdoID0gWw0KPj4gICAgICdh
+YXJjaDY0X2FzcGVlZCcsDQo+PiAgICAgJ2FhcmNoNjRfcmFzcGkzJywNCj4+ICAgICAnYWFy
+Y2g2NF9yYXNwaTQnLA0KPj4gKyAgJ2FhcmNoNjRfcm1lX3ZpcnQnLA0KPj4gKyAgJ2FhcmNo
+NjRfcm1lX3Nic2FyZWYnLA0KPj4gICAgICdhYXJjaDY0X3Nic2FyZWYnLA0KPj4gICAgICdh
+YXJjaDY0X3Nic2FyZWZfYWxwaW5lJywNCj4+ICAgICAnYWFyY2g2NF9zYnNhcmVmX2ZyZWVi
+c2QnLA0KPj4gZGlmZiAtLWdpdCBhL3Rlc3RzL2Z1bmN0aW9uYWwvdGVzdF9hYXJjaDY0X3Jt
+ZV9zYnNhcmVmLnB5IGIvdGVzdHMvZnVuY3Rpb25hbC90ZXN0X2FhcmNoNjRfcm1lX3Nic2Fy
+ZWYucHkNCj4+IG5ldyBmaWxlIG1vZGUgMTAwNzU1DQo+PiBpbmRleCAwMDAwMDAwMDAwMC4u
+YzEzNmI1Y2UxNzgNCj4+IC0tLSAvZGV2L251bGwNCj4+ICsrKyBiL3Rlc3RzL2Z1bmN0aW9u
+YWwvdGVzdF9hYXJjaDY0X3JtZV9zYnNhcmVmLnB5DQo+PiBAQCAtMCwwICsxLDcwIEBADQo+
+PiArIyEvdXNyL2Jpbi9lbnYgcHl0aG9uMw0KPj4gKyMNCj4+ICsjIEZ1bmN0aW9uYWwgdGVz
+dCB0aGF0IGJvb3RzIGEgUmVhbG1zIGVudmlyb25tZW50IG9uIHNic2EtcmVmIG1hY2hpbmUg
+YW5kIGENCj4+ICsjIG5lc3RlZCBndWVzdCBWTSB1c2luZyBpdC4NCj4+ICsjDQo+PiArIyBD
+b3B5cmlnaHQgKGMpIDIwMjQgTGluYXJvIEx0ZC4NCj4+ICsjDQo+PiArIyBBdXRob3I6IFBp
+ZXJyaWNrIEJvdXZpZXIgPHBpZXJyaWNrLmJvdXZpZXJAbGluYXJvLm9yZz4NCj4+ICsjDQo+
+PiArIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMC1vci1sYXRlcg0KPj4gKw0K
+Pj4gK2ltcG9ydCB0aW1lDQo+PiAraW1wb3J0IG9zDQo+PiAraW1wb3J0IGxvZ2dpbmcNCj4+
+ICsNCj4+ICtmcm9tIHFlbXVfdGVzdCBpbXBvcnQgUWVtdVN5c3RlbVRlc3QsIEFzc2V0DQo+
+PiArZnJvbSBxZW11X3Rlc3QgaW1wb3J0IGV4ZWNfY29tbWFuZCwgd2FpdF9mb3JfY29uc29s
+ZV9wYXR0ZXJuDQo+PiArZnJvbSBxZW11X3Rlc3QgaW1wb3J0IGV4ZWNfY29tbWFuZF9hbmRf
+d2FpdF9mb3JfcGF0dGVybg0KPj4gK2Zyb20gcWVtdV90ZXN0LnV0aWxzIGltcG9ydCBhcmNo
+aXZlX2V4dHJhY3QNCj4+ICtmcm9tIHRlc3RfYWFyY2g2NF9ybWVfdmlydCBpbXBvcnQgdGVz
+dF9yZWFsbXNfZ3Vlc3QNCj4+ICsNCj4+ICtjbGFzcyBBYXJjaDY0Uk1FU2JzYVJlZk1hY2hp
+bmUoUWVtdVN5c3RlbVRlc3QpOg0KPj4gKw0KPj4gKyAgICAjIFN0YWNrIGlzIGJ1aWx0IHdp
+dGggT1AtVEVFIGJ1aWxkIGVudmlyb25tZW50IGZyb20gdGhvc2UgaW5zdHJ1Y3Rpb25zOg0K
+Pj4gKyAgICAjIGh0dHBzOi8vbGluYXJvLmF0bGFzc2lhbi5uZXQvd2lraS9zcGFjZXMvUUVN
+VS9wYWdlcy8yOTA1MTAyNzQ1OS8NCj4+ICsgICAgIyBodHRwczovL2dpdGh1Yi5jb20vcGJv
+LWxpbmFyby9xZW11LXJtZS1zdGFjaw0KPj4gKyAgICBBU1NFVF9STUVfU1RBQ0tfU0JTQSA9
+IEFzc2V0KA0KPj4gKyAgICAgICAgKCdodHRwczovL2ZpbGVzZXJ2ZXIubGluYXJvLm9yZy9z
+L0tKeWVCeEw4Mm16MnI3Ri8nDQo+PiArICAgICAgICAgJ2Rvd25sb2FkL3JtZS1zdGFjay1v
+cC10ZWUtNC4yLjAtY2NhLXY0LXNic2EudGFyLmd6JyksDQo+PiArICAgICAgICAgJ2RkOWFi
+MjhlYzg2OWJkZjNiNTM3NjExNmNiMzY4OTEwM2I0MzQzM2ZkNWM0YmNhMGY0YThkOGIzYzEw
+NDk5OWUnKQ0KPj4gKw0KPj4gKyAgICAjIFRoaXMgdGVzdHMgdGhlIEZFQVRfUk1FIGNwdSBp
+bXBsZW1lbnRhdGlvbiwgYnkgYm9vdGluZyBhIFZNIHN1cHBvcnRpbmcgaXQsDQo+PiArICAg
+ICMgYW5kIGxhdW5jaGluZyBhIG5lc3RlZCBWTSB1c2luZyBpdC4NCj4+ICsgICAgZGVmIHRl
+c3RfYWFyY2g2NF9ybWVfc2JzYXJlZihzZWxmKToNCj4+ICsgICAgICAgIHN0YWNrX3BhdGhf
+dGFyX2d6ID0gc2VsZi5BU1NFVF9STUVfU1RBQ0tfU0JTQS5mZXRjaCgpDQo+PiArICAgICAg
+ICBhcmNoaXZlX2V4dHJhY3Qoc3RhY2tfcGF0aF90YXJfZ3osIHNlbGYud29ya2RpcikNCj4+
+ICsNCj4+ICsgICAgICAgIHNlbGYuc2V0X21hY2hpbmUoJ3Nic2EtcmVmJykNCj4+ICsgICAg
+ICAgIHNlbGYudm0uc2V0X2NvbnNvbGUoKQ0KPj4gKyAgICAgICAgc2VsZi5yZXF1aXJlX2Fj
+Y2VsZXJhdG9yKCd0Y2cnKQ0KPj4gKw0KPj4gKyAgICAgICAgcm1lX3N0YWNrID0gb3MucGF0
+aC5qb2luKHNlbGYud29ya2RpciwNCj4+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAncm1lLXN0YWNrLW9wLXRlZS00LjIuMC1jY2EtdjQtc2JzYScpDQo+PiArICAgICAg
+ICBwZmxhc2gwID0gb3MucGF0aC5qb2luKHJtZV9zdGFjaywgJ2ltYWdlcycsICdTQlNBX0ZM
+QVNIMC5mZCcpDQo+PiArICAgICAgICBwZmxhc2gxID0gb3MucGF0aC5qb2luKHJtZV9zdGFj
+aywgJ2ltYWdlcycsICdTQlNBX0ZMQVNIMS5mZCcpDQo+PiArICAgICAgICB2aXJ0dWFsID0g
+b3MucGF0aC5qb2luKHJtZV9zdGFjaywgJ2ltYWdlcycsICdkaXNrcycsICd2aXJ0dWFsJykN
+Cj4+ICsgICAgICAgIGRyaXZlID0gb3MucGF0aC5qb2luKHJtZV9zdGFjaywgJ291dC1icics
+ICdpbWFnZXMnLCAncm9vdGZzLmV4dDQnKQ0KPj4gKw0KPj4gKyAgICAgICAgc2VsZi52bS5h
+ZGRfYXJncygnLWNwdScsICdtYXgseC1ybWU9b24scGF1dGgtaW1wZGVmPW9uJykNCj4+ICsg
+ICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1tJywgJzJHJykNCj4+ICsgICAgICAgIHNlbGYu
+dm0uYWRkX2FyZ3MoJy1NJywgJ3Nic2EtcmVmJykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRk
+X2FyZ3MoJy1kcml2ZScsIGYnZmlsZT17cGZsYXNoMH0sZm9ybWF0PXJhdyxpZj1wZmxhc2gn
+KQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWRyaXZlJywgZidmaWxlPXtwZmxh
+c2gxfSxmb3JtYXQ9cmF3LGlmPXBmbGFzaCcpDQo+PiArICAgICAgICBzZWxmLnZtLmFkZF9h
+cmdzKCctZHJpdmUnLCBmJ2ZpbGU9ZmF0OnJ3Ont2aXJ0dWFsfSxmb3JtYXQ9cmF3JykNCj4+
+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1kcml2ZScsIGYnZm9ybWF0PXJhdyxpZj1u
+b25lLGZpbGU9e2RyaXZlfSxpZD1oZDAnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJn
+cygnLWRldmljZScsICd2aXJ0aW8tYmxrLXBjaSxkcml2ZT1oZDAnKQ0KPj4gKyAgICAgICAg
+c2VsZi52bS5hZGRfYXJncygnLWRldmljZScsICd2aXJ0aW8tOXAtcGNpLGZzZGV2PXNocjAs
+bW91bnRfdGFnPXNocjAnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWZzZGV2
+JywgZidsb2NhbCxzZWN1cml0eV9tb2RlbD1ub25lLHBhdGg9e3JtZV9zdGFja30saWQ9c2hy
+MCcpDQo+PiArICAgICAgICBzZWxmLnZtLmFkZF9hcmdzKCctZGV2aWNlJywgJ3ZpcnRpby1u
+ZXQtcGNpLG5ldGRldj1uZXQwJykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1u
+ZXRkZXYnLCAndXNlcixpZD1uZXQwJykNCj4+ICsNCj4+ICsgICAgICAgIHNlbGYudm0ubGF1
+bmNoKCkNCj4+ICsgICAgICAgICMgV2FpdCBmb3IgaG9zdCBWTSBib290IHRvIGNvbXBsZXRl
+Lg0KPj4gKyAgICAgICAgd2FpdF9mb3JfY29uc29sZV9wYXR0ZXJuKHNlbGYsICdXZWxjb21l
+IHRvIEJ1aWxkcm9vdCcpDQo+PiArICAgICAgICBleGVjX2NvbW1hbmRfYW5kX3dhaXRfZm9y
+X3BhdHRlcm4oc2VsZiwgJ3Jvb3QnLCAnIycpDQo+PiArDQo+PiArICAgICAgICB0ZXN0X3Jl
+YWxtc19ndWVzdChzZWxmKQ0KPj4gKw0KPj4gK2lmIF9fbmFtZV9fID09ICdfX21haW5fXyc6
+DQo+PiArICAgIFFlbXVTeXN0ZW1UZXN0Lm1haW4oKQ0KPj4gZGlmZiAtLWdpdCBhL3Rlc3Rz
+L2Z1bmN0aW9uYWwvdGVzdF9hYXJjaDY0X3JtZV92aXJ0LnB5IGIvdGVzdHMvZnVuY3Rpb25h
+bC90ZXN0X2FhcmNoNjRfcm1lX3ZpcnQucHkNCj4+IG5ldyBmaWxlIG1vZGUgMTAwNzU1DQo+
+PiBpbmRleCAwMDAwMDAwMDAwMC4uMzllNGU0YWRiNWYNCj4+IC0tLSAvZGV2L251bGwNCj4+
+ICsrKyBiL3Rlc3RzL2Z1bmN0aW9uYWwvdGVzdF9hYXJjaDY0X3JtZV92aXJ0LnB5DQo+PiBA
+QCAtMCwwICsxLDEwMCBAQA0KPj4gKyMhL3Vzci9iaW4vZW52IHB5dGhvbjMNCj4+ICsjDQo+
+PiArIyBGdW5jdGlvbmFsIHRlc3QgdGhhdCBib290cyBhIFJlYWxtcyBlbnZpcm9ubWVudCBv
+biB2aXJ0IG1hY2hpbmUgYW5kIGEgbmVzdGVkDQo+PiArIyBndWVzdCBWTSB1c2luZyBpdC4N
+Cj4+ICsjDQo+PiArIyBDb3B5cmlnaHQgKGMpIDIwMjQgTGluYXJvIEx0ZC4NCj4+ICsjDQo+
+PiArIyBBdXRob3I6IFBpZXJyaWNrIEJvdXZpZXIgPHBpZXJyaWNrLmJvdXZpZXJAbGluYXJv
+Lm9yZz4NCj4+ICsjDQo+PiArIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMC1v
+ci1sYXRlcg0KPj4gKw0KPj4gK2ltcG9ydCB0aW1lDQo+PiAraW1wb3J0IG9zDQo+PiAraW1w
+b3J0IGxvZ2dpbmcNCj4+ICsNCj4+ICtmcm9tIHFlbXVfdGVzdCBpbXBvcnQgUWVtdVN5c3Rl
+bVRlc3QsIEFzc2V0DQo+PiArZnJvbSBxZW11X3Rlc3QgaW1wb3J0IGV4ZWNfY29tbWFuZCwg
+d2FpdF9mb3JfY29uc29sZV9wYXR0ZXJuDQo+PiArZnJvbSBxZW11X3Rlc3QgaW1wb3J0IGV4
+ZWNfY29tbWFuZF9hbmRfd2FpdF9mb3JfcGF0dGVybg0KPj4gK2Zyb20gcWVtdV90ZXN0LnV0
+aWxzIGltcG9ydCBhcmNoaXZlX2V4dHJhY3QNCj4+ICsNCj4+ICtkZWYgdGVzdF9yZWFsbXNf
+Z3Vlc3QodGVzdF9ybWVfaW5zdGFuY2UpOg0KPj4gKw0KPj4gKyAgICAjIEJvb3QgdGhlIChu
+ZXN0ZWQpIGd1ZXN0IFZNDQo+PiArICAgIGV4ZWNfY29tbWFuZCh0ZXN0X3JtZV9pbnN0YW5j
+ZSwNCj4+ICsgICAgICAgICAgICAgICAgICdxZW11LXN5c3RlbS1hYXJjaDY0IC1NIHZpcnQs
+Z2ljLXZlcnNpb249MyAnDQo+PiArICAgICAgICAgICAgICAgICAnLWNwdSBob3N0IC1lbmFi
+bGUta3ZtIC1tIDUxMk0gJw0KPj4gKyAgICAgICAgICAgICAgICAgJy1NIGNvbmZpZGVudGlh
+bC1ndWVzdC1zdXBwb3J0PXJtZTAgJw0KPj4gKyAgICAgICAgICAgICAgICAgJy1vYmplY3Qg
+cm1lLWd1ZXN0LGlkPXJtZTAgJw0KPj4gKyAgICAgICAgICAgICAgICAgJy1kZXZpY2Ugdmly
+dGlvLW5ldC1wY2ksbmV0ZGV2PW5ldDAscm9tZmlsZT0gJw0KPj4gKyAgICAgICAgICAgICAg
+ICAgJy1uZXRkZXYgdXNlcixpZD1uZXQwICcNCj4+ICsgICAgICAgICAgICAgICAgICcta2Vy
+bmVsIC9tbnQvb3V0L2Jpbi9JbWFnZSAnDQo+PiArICAgICAgICAgICAgICAgICAnLWluaXRy
+ZCAvbW50L291dC1ici9pbWFnZXMvcm9vdGZzLmNwaW8gJw0KPj4gKyAgICAgICAgICAgICAg
+ICAgJy1zZXJpYWwgc3RkaW8nKQ0KPj4gKyAgICAjIERldGVjdCBSZWFsbSBhY3RpdmF0aW9u
+IGR1cmluZyAobmVzdGVkKSBndWVzdCBib290Lg0KPj4gKyAgICB3YWl0X2Zvcl9jb25zb2xl
+X3BhdHRlcm4odGVzdF9ybWVfaW5zdGFuY2UsDQo+PiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAnU01DX1JNSV9SRUFMTV9BQ1RJVkFURScpDQo+PiArICAgICMgV2FpdCBmb3Ig
+KG5lc3RlZCkgZ3Vlc3QgYm9vdCB0byBjb21wbGV0ZS4NCj4+ICsgICAgd2FpdF9mb3JfY29u
+c29sZV9wYXR0ZXJuKHRlc3Rfcm1lX2luc3RhbmNlLA0KPj4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgJ1dlbGNvbWUgdG8gQnVpbGRyb290JykNCj4+ICsgICAgZXhlY19jb21t
+YW5kX2FuZF93YWl0X2Zvcl9wYXR0ZXJuKHRlc3Rfcm1lX2luc3RhbmNlLCAncm9vdCcsICcj
+JykNCj4+ICsgICAgIyBxdWVyeSAobmVzdGVkKSBndWVzdCBjY2EgcmVwb3J0DQo+PiArICAg
+IGV4ZWNfY29tbWFuZCh0ZXN0X3JtZV9pbnN0YW5jZSwgJ2NjYS13b3JrbG9hZC1hdHRlc3Rh
+dGlvbiByZXBvcnQnKQ0KPj4gKyAgICB3YWl0X2Zvcl9jb25zb2xlX3BhdHRlcm4odGVzdF9y
+bWVfaW5zdGFuY2UsDQo+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAnImNjYS1w
+bGF0Zm9ybS1oYXNoLWFsZ28taWQiOiAic2hhLTI1NiInKQ0KPj4gKyAgICB3YWl0X2Zvcl9j
+b25zb2xlX3BhdHRlcm4odGVzdF9ybWVfaW5zdGFuY2UsDQo+PiArICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAnImNjYS1yZWFsbS1oYXNoLWFsZ28taWQiOiAic2hhLTUxMiInKQ0K
+Pj4gKyAgICB3YWl0X2Zvcl9jb25zb2xlX3BhdHRlcm4odGVzdF9ybWVfaW5zdGFuY2UsDQo+
+PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAnImNjYS1yZWFsbS1wdWJsaWMta2V5
+LWhhc2gtYWxnby1pZCI6ICJzaGEtMjU2IicpDQo+PiArDQo+PiArY2xhc3MgQWFyY2g2NFJN
+RVZpcnRNYWNoaW5lKFFlbXVTeXN0ZW1UZXN0KToNCj4+ICsNCj4+ICsgICAgIyBTdGFjayBp
+cyBidWlsdCB3aXRoIE9QLVRFRSBidWlsZCBlbnZpcm9ubWVudCBmcm9tIHRob3NlIGluc3Ry
+dWN0aW9uczoNCj4+ICsgICAgIyBodHRwczovL2xpbmFyby5hdGxhc3NpYW4ubmV0L3dpa2kv
+c3BhY2VzL1FFTVUvcGFnZXMvMjkwNTEwMjc0NTkvDQo+PiArICAgICMgaHR0cHM6Ly9naXRo
+dWIuY29tL3Biby1saW5hcm8vcWVtdS1ybWUtc3RhY2sNCj4+ICsgICAgQVNTRVRfUk1FX1NU
+QUNLX1ZJUlQgPSBBc3NldCgNCj4+ICsgICAgICAgICgnaHR0cHM6Ly9maWxlc2VydmVyLmxp
+bmFyby5vcmcvcy9pYVJzTkRKcDJDWEhNU0ovJw0KPj4gKyAgICAgICAgICdkb3dubG9hZC9y
+bWUtc3RhY2stb3AtdGVlLTQuMi4wLWNjYS12NC1xZW11X3Y4LnRhci5neicpLA0KPj4gKyAg
+ICAgICAgICcxODUxYWRjMjMyYjA5NDM4NGQ4Yjg3OWI5YTJjZmZmMDdlZjNkNjIwNTAzMmI4
+NWU5YjNhNGE5YWU2YjBiN2FkJykNCj4+ICsNCj4+ICsgICAgIyBUaGlzIHRlc3RzIHRoZSBG
+RUFUX1JNRSBjcHUgaW1wbGVtZW50YXRpb24sIGJ5IGJvb3RpbmcgYSBWTSBzdXBwb3J0aW5n
+IGl0LA0KPj4gKyAgICAjIGFuZCBsYXVuY2hpbmcgYSBuZXN0ZWQgVk0gdXNpbmcgaXQuDQo+
+PiArICAgIGRlZiB0ZXN0X2FhcmNoNjRfcm1lX3ZpcnQoc2VsZik6DQo+PiArICAgICAgICBz
+dGFja19wYXRoX3Rhcl9neiA9IHNlbGYuQVNTRVRfUk1FX1NUQUNLX1ZJUlQuZmV0Y2goKQ0K
+Pj4gKyAgICAgICAgYXJjaGl2ZV9leHRyYWN0KHN0YWNrX3BhdGhfdGFyX2d6LCBzZWxmLndv
+cmtkaXIpDQo+PiArDQo+PiArICAgICAgICBzZWxmLnNldF9tYWNoaW5lKCd2aXJ0JykNCj4+
+ICsgICAgICAgIHNlbGYudm0uc2V0X2NvbnNvbGUoKQ0KPj4gKyAgICAgICAgc2VsZi5yZXF1
+aXJlX2FjY2VsZXJhdG9yKCd0Y2cnKQ0KPj4gKw0KPj4gKyAgICAgICAgcm1lX3N0YWNrID0g
+b3MucGF0aC5qb2luKHNlbGYud29ya2RpciwNCj4+ICsgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAncm1lLXN0YWNrLW9wLXRlZS00LjIuMC1jY2EtdjQtcWVtdV92OCcpDQo+
+PiArICAgICAgICBrZXJuZWwgPSBvcy5wYXRoLmpvaW4ocm1lX3N0YWNrLCAnb3V0JywgJ2Jp
+bicsICdJbWFnZScpDQo+PiArICAgICAgICBiaW9zID0gb3MucGF0aC5qb2luKHJtZV9zdGFj
+aywgJ291dCcsICdiaW4nLCAnZmxhc2guYmluJykNCj4+ICsgICAgICAgIGRyaXZlID0gb3Mu
+cGF0aC5qb2luKHJtZV9zdGFjaywgJ291dC1icicsICdpbWFnZXMnLCAncm9vdGZzLmV4dDQn
+KQ0KPj4gKw0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWNwdScsICdtYXgseC1y
+bWU9b24scGF1dGgtaW1wZGVmPW9uJykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3Mo
+Jy1tJywgJzJHJykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1NJywgJ3ZpcnQs
+YWNwaT1vZmYsJw0KPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAndmlydHVhbGl6YXRp
+b249b24sJw0KPj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAnc2VjdXJlPW9uLCcNCj4+
+ICsgICAgICAgICAgICAgICAgICAgICAgICAgJ2dpYy12ZXJzaW9uPTMnKQ0KPj4gKyAgICAg
+ICAgc2VsZi52bS5hZGRfYXJncygnLWJpb3MnLCBiaW9zKQ0KPj4gKyAgICAgICAgc2VsZi52
+bS5hZGRfYXJncygnLWtlcm5lbCcsIGtlcm5lbCkNCj4+ICsgICAgICAgIHNlbGYudm0uYWRk
+X2FyZ3MoJy1kcml2ZScsIGYnZm9ybWF0PXJhdyxpZj1ub25lLGZpbGU9e2RyaXZlfSxpZD1o
+ZDAnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWRldmljZScsICd2aXJ0aW8t
+YmxrLXBjaSxkcml2ZT1oZDAnKQ0KPj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWRl
+dmljZScsICd2aXJ0aW8tOXAtZGV2aWNlLGZzZGV2PXNocjAsbW91bnRfdGFnPXNocjAnKQ0K
+Pj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWZzZGV2JywgZidsb2NhbCxzZWN1cml0
+eV9tb2RlbD1ub25lLHBhdGg9e3JtZV9zdGFja30saWQ9c2hyMCcpDQo+PiArICAgICAgICBz
+ZWxmLnZtLmFkZF9hcmdzKCctZGV2aWNlJywgJ3ZpcnRpby1uZXQtcGNpLG5ldGRldj1uZXQw
+JykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1uZXRkZXYnLCAndXNlcixpZD1u
+ZXQwJykNCj4+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1hcHBlbmQnLCAncm9vdD0v
+ZGV2L3ZkYScpDQo+PiArDQo+PiArICAgICAgICBzZWxmLnZtLmxhdW5jaCgpDQo+PiArICAg
+ICAgICAjIFdhaXQgZm9yIGhvc3QgVk0gYm9vdCB0byBjb21wbGV0ZS4NCj4+ICsgICAgICAg
+IHdhaXRfZm9yX2NvbnNvbGVfcGF0dGVybihzZWxmLCAnV2VsY29tZSB0byBCdWlsZHJvb3Qn
+KQ0KPj4gKyAgICAgICAgZXhlY19jb21tYW5kX2FuZF93YWl0X2Zvcl9wYXR0ZXJuKHNlbGYs
+ICdyb290JywgJyMnKQ0KPj4gKw0KPj4gKyAgICAgICAgdGVzdF9yZWFsbXNfZ3Vlc3Qoc2Vs
+ZikNCj4+ICsNCj4+ICtpZiBfX25hbWVfXyA9PSAnX19tYWluX18nOg0KPj4gKyAgICBRZW11
+U3lzdGVtVGVzdC5tYWluKCkNCj4+IC0tIA0KPj4gMi4zOS41DQo+Pg0KPj4NCj4gDQo+IFdp
+dGggcmVnYXJkcywNCj4gRGFuaWVsDQoNCg==

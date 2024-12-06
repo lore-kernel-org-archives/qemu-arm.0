@@ -1,70 +1,70 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp770980njb;
-        Fri, 6 Dec 2024 03:24:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXCeb+ZVPRwgnwN5ZGIO3nv4Tj+iJsI3PqcVtz/ri0jMyRSLkI/JBs0EoN8ZwwWZV80srAlYv41NuZG2w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFwR6uuUTchYA1KDVrvDza0v9zVNqkZT/qPHaRnaSi7iRI00J3OgxzUWdP6jEhI75ewXAo7
-X-Received: by 2002:a05:622a:1789:b0:466:a0c4:a6da with SMTP id d75a77b69052e-46734d18695mr42211261cf.31.1733484246729;
-        Fri, 06 Dec 2024 03:24:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733484246; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp771041njb;
+        Fri, 6 Dec 2024 03:24:14 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVt8Xz+eGAC7GCjahNrdsQ1h4fiw+Ic1gIbpHdSbxIYPFN+2UIZ4oObyI96hYc4PyDOwskWBWDNy8zhAg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHVX1hN1xHViamJqdFPfS0T2sY0yL1KUuPqZRcr7fNI28d1ilG1f3T/v4o3Azkz1IA16xc2
+X-Received: by 2002:a05:6102:3707:b0:4af:ae02:d3bc with SMTP id ada2fe7eead31-4afca8e8592mr3377666137.5.1733484254360;
+        Fri, 06 Dec 2024 03:24:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733484254; cv=none;
         d=google.com; s=arc-20240605;
-        b=h/ZVe9aq9XS5pYnAhIe7hnojSrdViCJClLKEj2CVtpvx7UrXSAWhLouwuKd8lMtlt/
-         NK7GqkBjZJMHkOjTtZU3rNVBB36OhgZteI+svrOXXdlu8so8gmj3bfozCncsfOUk6rN+
-         QTc/Z5byrquvT0dagMAu2IsSUfg3deIeUsJdy2mNLjniZIhBJNj2qr/uh55y9Yjzk/aF
-         KdzjsXvPO+GWS5+3BI77Ze8LWtccsxtKWvuQvZRl1RUqNeHvh8r29PzsocG1o+E08umC
-         VJs7YfU4GjFXDYuqDnPrmjm2Hp96HLb0fM+nck9t/yiuGpKyG5v8N10VLepSBn/knBsc
-         FW4w==
+        b=kf7MOIQ73j4SbftJcXrgOeGhZdbhhDG9ctNz09HL/1P6p9qiGXZXdvmWictOGOQD7/
+         I4PVis/0WAkbDw8Nm17iLIStN5svmFE0MLKytcvGOVxL5kUzcJizNYlWc6DfpJ6xLMmr
+         CzYY2xMqUw/Wi03YQtP43j5lEc6tpyds2MANy63yLHU0ZKWR52Dc742LZXL6ugi5Qv1O
+         wTMytkuldLfDg8L8pu443phhlYXuIPCyoe2Hfv3C2NdCY36Vq4yuTHPc68lkvDmtDtv4
+         FT8SoiMjVa0QZ+DmBigKvSb5qAxeLE+sAePZRjZX25nyLryCTcd8x67FISv1SnuvBmkQ
+         6TwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Rrr75tMi6MUZHf8+tlCHv0SNjLxc/na9BJMnFfneCQs=;
+        bh=lFWn0G2Z/v7JVK2itFan8SiYF0Cp3PsLypgq8Fk6Lqk=;
         fh=ou9WwAWkFbBDtrYluijzdFLlSJKncehGww8dMC2w/x0=;
-        b=k7Ju8Pb8LpROmJ+iGQUHmltnTPtv3S/xLJqm0klgajktioD8U3ggvk+beesmv13PZV
-         SxbZCgIwWcltd+OvCQF9RLv8wXG3nUZRiZ0avETbdgLkXB8igUdyDDx8Rc+y+wbmNDEj
-         myfcCOI6HHhSnZIPeZ7eVZO2uiGo/WjEBigNtPF/2xscTIePRhuHf5WcGQcZltstxESl
-         mNmqVsg01C49wUwlpcCB/gDQabjqj4eOzSYFGIcvFvYV6gLCU5S1dGZdRI9lZ/s3TkkV
-         CeILXjn9W2izTptvZpnbCRHWepqlSE/jj1hfTTtpYSt18B/eOQS99bQLxQds+68L1WKj
-         drRQ==;
+        b=Hnyaq/LKvhZM/EKzekX5YSmsHEXZ3ljx4AOYZpCfiB93sB78CW7pg/LUbNu5O6Bvwm
+         bymCasDP5Wb/YXLLb6lS2XoDzlde1E56LHJE0cQzs32wZf+dmoz7MOEIUDjhIYevFm1x
+         bT1hYikM/sxsIT1n2rVzU6S7hQHFNSFmUKBh16gIPxouratKR5E/yYiqsEiyMS6meF7p
+         Mh9SkKC6D1uwRjUWSGVkCPGRF66qutd+dCZvGgQmWXkk3Crof/XTE59SxvlDO1W14npp
+         J25BhDav38hu4AD0W5sIcJezoBmlg3guIdNhdYCK565lpBx1WhbRXYF/LWKl+sJmXas9
+         39bA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=clyGyOth;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=igpFT2JU;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-4672984015asi29459891cf.566.2024.12.06.03.24.06
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-467296b9ee1si47558751cf.118.2024.12.06.03.24.14
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Dec 2024 03:24:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Fri, 06 Dec 2024 03:24:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=clyGyOth;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=igpFT2JU;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1733484246;
+	s=mimecast20190719; t=1733484254;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=Rrr75tMi6MUZHf8+tlCHv0SNjLxc/na9BJMnFfneCQs=;
-	b=clyGyOthCrDNk2Isa7BDUF77SwCnnkIzQC1EEScYzEm2b/mFK4E3G8bMw7k0MOyBKZTz7e
-	2EMCkc3ffXQN/vQeZEOiTd5mPiF7g2mOHYC31lNHxwoix4tN4CKXej8u0pwmHEQEl4f7/F
-	pN/JpjkeinKIH7WZaiVb4PULaZKsUIc=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+	bh=lFWn0G2Z/v7JVK2itFan8SiYF0Cp3PsLypgq8Fk6Lqk=;
+	b=igpFT2JUg6csrUxAfD/dH4VQqC3WzF8fiHh0DGg3gn9p+bsY4ggUARlGbCsdzoGbZTKzON
+	EfOdKu79YrQwGNzukB+Kbcrq/EX99UAourCve+YaQ42Y2AIgD92Qfg0cL/LssurD7qdW0O
+	uGRPczyTcSJ9yqTdtohK6Lb+I0szunA=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-520-ry4BAw7PNjKd8xZPWHv6iA-1; Fri,
- 06 Dec 2024 06:24:05 -0500
-X-MC-Unique: ry4BAw7PNjKd8xZPWHv6iA-1
-X-Mimecast-MFC-AGG-ID: ry4BAw7PNjKd8xZPWHv6iA
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-145-GdQTn2BbMV65ulZhsKL94A-1; Fri,
+ 06 Dec 2024 06:24:10 -0500
+X-MC-Unique: GdQTn2BbMV65ulZhsKL94A-1
+X-Mimecast-MFC-AGG-ID: GdQTn2BbMV65ulZhsKL94A
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 548591955EB3;
-	Fri,  6 Dec 2024 11:24:03 +0000 (UTC)
+	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 3686E1955F40;
+	Fri,  6 Dec 2024 11:24:09 +0000 (UTC)
 Received: from gondolin.str.redhat.com (dhcp-192-244.str.redhat.com [10.33.192.244])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 2122519560A2;
-	Fri,  6 Dec 2024 11:23:57 +0000 (UTC)
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id BC7FC19560A2;
+	Fri,  6 Dec 2024 11:24:03 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
 To: eric.auger.pro@gmail.com,
 	eric.auger@redhat.com,
@@ -87,205 +87,97 @@ Cc: shahuang@redhat.com,
 	philmd@linaro.org,
 	pbonzini@redhat.com,
 	Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH RFCv2 16/20] arm/kvm: Allow reading all the writable ID registers
-Date: Fri,  6 Dec 2024 12:22:09 +0100
-Message-ID: <20241206112213.88394-17-cohuck@redhat.com>
+Subject: [PATCH RFCv2 17/20] arm/kvm: write back modified ID regs to KVM
+Date: Fri,  6 Dec 2024 12:22:10 +0100
+Message-ID: <20241206112213.88394-18-cohuck@redhat.com>
 In-Reply-To: <20241206112213.88394-1-cohuck@redhat.com>
 References: <20241206112213.88394-1-cohuck@redhat.com>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: jTbpBU6OjShm
+X-TUID: 5jTAKaQXXlZR
 
 From: Eric Auger <eric.auger@redhat.com>
 
-At the moment kvm_arm_get_host_cpu_features() reads a subset of the
-ID regs. As we want to introduce properties for all writable ID reg
-fields, we want more genericity and read more default host register
-values.
+We want to give a chance to override the value of host ID regs.
+In a previous patch we made sure all their values could be fetched
+through kvm_get_one_reg() calls before their modification. After
+their potential modification we need to make sure we write back
+the values through kvm_set_one_reg() calls.
 
-Introduce a new get_host_cpu_idregs() helper and add a new exhaustive
-boolean parameter to kvm_arm_get_host_cpu_features() and
-kvm_arm_set_cpu_features_from_host() to select the right behavior.
-The host cpu model will keep the legacy behavior unless the writable
-id register interface is available.
-
-A writable_map IdRegMap is introduced in the CPU object. A subsequent
-patch will populate it.
+Make sure the cpreg_list is modified with updated values and
+transfer those values back to kvm.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- target/arm/cpu.h        |  3 +++
- target/arm/cpu64.c      |  4 ++--
- target/arm/kvm.c        | 53 ++++++++++++++++++++++++++++++++++++++---
- target/arm/kvm_arm.h    |  9 +++++--
+ target/arm/kvm.c        | 36 +++++++++++++++++++++++++++++++++++-
  target/arm/trace-events |  1 +
- 5 files changed, 63 insertions(+), 7 deletions(-)
+ 2 files changed, 36 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c803d191e84d..1ae482aac6a7 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1054,6 +1054,9 @@ struct ArchCPU {
-      */
-     ARMIdRegsState writable_id_regs;
- 
-+    /* ID reg writable bitmask (KVM only) */
-+    IdRegMap *writable_map;
-+
-     /* QOM property to indicate we should use the back-compat CNTFRQ default */
-     bool backcompat_cntfrq;
- 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 29558cda8186..e23df993e00e 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -717,14 +717,14 @@ static void aarch64_host_initfn(Object *obj)
- {
- #if defined(CONFIG_KVM)
-     ARMCPU *cpu = ARM_CPU(obj);
--    kvm_arm_set_cpu_features_from_host(cpu);
-+    kvm_arm_set_cpu_features_from_host(cpu, false);
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         aarch64_add_sve_properties(obj);
-         aarch64_add_pauth_properties(obj);
-     }
- #elif defined(CONFIG_HVF)
-     ARMCPU *cpu = ARM_CPU(obj);
--    hvf_arm_set_cpu_features_from_host(cpu);
-+    hvf_arm_set_cpu_features_from_host(cpu, false);
-     aarch64_add_pauth_properties(obj);
- #else
-     g_assert_not_reached();
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index f11d512388b8..4bb8094e846f 100644
+index 4bb8094e846f..3b2f98041484 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -41,6 +41,7 @@
- #include "hw/acpi/ghes.h"
- #include "target/arm/gtimer.h"
- #include "migration/blocker.h"
-+#include "cpu-custom.h"
- 
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_INFO(DEVICE_CTRL),
-@@ -272,8 +273,49 @@ static int get_host_cpu_reg64(int fd, ARMHostCPUFeatures *ahcf, ARMSysReg sr)
-     return ret;
+@@ -1061,6 +1061,31 @@ void kvm_arm_cpu_post_load(ARMCPU *cpu)
+     }
  }
  
-+/*
-+ * get_host_cpu_idregs: Read all the writable ID reg host values
-+ *
-+ * Need to be called once the writable mask has been populated
-+ * Note we may want to read all the known id regs but some of them are not
-+ * writable and return an error, hence the choice of reading only those which
-+ * are writable. Those are aslo readable!
-+ */
-+static int get_host_cpu_idregs(ARMCPU *cpu, int fd, ARMHostCPUFeatures *ahcf)
++static void kvm_arm_writable_idregs_to_cpreg_list(ARMCPU *cpu)
 +{
-+    int err = 0;
-+    int i;
-+
-+    for (i = 0; i < NR_ID_REGS; i++) {
-+        ARM64SysReg *sysregdesc = &arm64_id_regs[i];
-+        ARMSysReg *sysreg = sysregdesc->sysreg;
++    for (int i = 0; i < NR_ID_REGS; i++) {
 +        uint64_t writable_mask = cpu->writable_map->regs[i];
-+        uint64_t *reg;
-+        int ret;
++        uint64_t *cpreg;
 +
-+        if (!sysreg || !writable_mask) {
-+            continue;
-+        }
++        if (writable_mask) {
++            uint64_t regidx;
++            uint64_t previous, new;
++            ARM64SysReg *sysregdesc = &arm64_id_regs[i];
++            ARMSysReg *sr = sysregdesc->sysreg;
 +
-+        reg = &ahcf->isar.idregs.regs[i];
-+        ret = read_sys_reg64(fd, reg,
-+                             ARM64_SYS_REG(sysreg->op0, sysreg->op1,
-+                                           sysreg->crn, sysreg->crm,
-+                                           sysreg->op2));
-+        trace_get_host_cpu_idregs(sysregdesc->name, *reg);
-+        if (ret) {
-+            error_report("%s error reading value of host %s register (%m)",
-+                         __func__, sysregdesc->name);
- 
--static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-+            err = ret;
++            regidx = ARM64_SYS_REG(sr->op0, sr->op1, sr->crn, sr->crm, sr->op2);
++            cpreg = kvm_arm_get_cpreg_ptr(cpu, regidx);
++            previous = *cpreg;
++            new = cpu->isar.idregs.regs[i];
++            if (previous != new) {
++                *cpreg = new;
++                trace_kvm_arm_writable_idregs_to_cpreg_list(sysregdesc->name,
++                                                            previous, new);
++            }
 +        }
 +    }
-+    return err;
 +}
 +
-+static bool
-+kvm_arm_get_host_cpu_features(ARMCPU *cpu, ARMHostCPUFeatures *ahcf,
-+                              bool exhaustive)
+ void kvm_arm_reset_vcpu(ARMCPU *cpu)
  {
-     /* Identify the feature bits corresponding to the host CPU, and
-      * fill out the ARMHostCPUClass fields accordingly. To do this
-@@ -401,6 +443,11 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-         err |= get_host_cpu_reg32(fd, ahcf, SYS_ID_DFR1_EL1);
-         err |= get_host_cpu_reg32(fd, ahcf, SYS_ID_MMFR5_EL1);
+     int ret;
+@@ -2028,7 +2053,16 @@ int kvm_arch_init_vcpu(CPUState *cs)
+     }
+     cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
  
-+        /* Make sure writable ID reg values are read */
-+        if (exhaustive) {
-+            err |= get_host_cpu_idregs(cpu, fd, ahcf);
-+        }
+-    return kvm_arm_init_cpreg_list(cpu);
++    ret = kvm_arm_init_cpreg_list(cpu);
++    if (ret) {
++        return ret;
++    }
++    /* overwrite writable ID regs with their updated property values */
++    kvm_arm_writable_idregs_to_cpreg_list(cpu);
 +
-         /*
-          * DBGDIDR is a bit complicated because the kernel doesn't
-          * provide an accessor for it in 64-bit mode, which is what this
-@@ -470,13 +517,13 @@ static bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     return true;
++    write_list_to_kvmstate(cpu, 3);
++
++    return 0;
  }
  
--void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-+void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool exhaustive)
- {
-     CPUARMState *env = &cpu->env;
- 
-     if (!arm_host_cpu_features.dtb_compatible) {
-         if (!kvm_enabled() ||
--            !kvm_arm_get_host_cpu_features(&arm_host_cpu_features)) {
-+            !kvm_arm_get_host_cpu_features(cpu, &arm_host_cpu_features, exhaustive)) {
-             /* We can't report this error yet, so flag that we need to
-              * in arm_cpu_realizefn().
-              */
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 426816ad3a74..035eedf82ff1 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -141,8 +141,12 @@ uint32_t kvm_arm_sve_get_vls(ARMCPU *cpu);
-  *
-  * Set up the ARMCPU struct fields up to match the information probed
-  * from the host CPU.
-+ *
-+ * @cpu: cpu object
-+ * @exhaustive: if true, all the feature ID regs are queried instead of
-+ *              a subset
-  */
--void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
-+void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu, bool exhaustive);
- 
- /**
-  * kvm_arm_add_vcpu_properties:
-@@ -257,7 +261,8 @@ static inline int kvm_arm_get_writable_id_regs(ARMCPU *cpu, IdRegMap *idregmap)
- /*
-  * These functions should never actually be called without KVM support.
-  */
--static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-+static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu,
-+                                                      bool exhaustive)
- {
-     g_assert_not_reached();
- }
+ int kvm_arch_destroy_vcpu(CPUState *cs)
 diff --git a/target/arm/trace-events b/target/arm/trace-events
-index 4438dce7becc..0df3bfafffcc 100644
+index 0df3bfafffcc..668acf94ab60 100644
 --- a/target/arm/trace-events
 +++ b/target/arm/trace-events
-@@ -13,3 +13,4 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
- 
+@@ -14,3 +14,4 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
  # kvm.c
  kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
-+get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu gost value for %s is 0x%"PRIx64
+ get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu gost value for %s is 0x%"PRIx64
++kvm_arm_writable_idregs_to_cpreg_list(const char *name, uint64_t previous, uint64_t new) "%s overwrite default 0x%"PRIx64" with 0x%"PRIx64
 -- 
 2.47.0

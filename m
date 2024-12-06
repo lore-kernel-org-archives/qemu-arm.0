@@ -1,164 +1,196 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1015716njb;
-        Fri, 6 Dec 2024 09:25:21 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCU7aDep+fFUUWw+dAwKcspC7h05aNTQXx/AsU1agM5hsDhbSsjJsUP5zMBD4qYDiPWD+Uy4BJbWK3rDcQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH16KElgQppX7HYGShm3lui963XROpICsMnr/mI0VZ5y5VYdNaBAyQrxgl/+7pPDpNuwnj0
-X-Received: by 2002:a05:6402:2350:b0:5d1:f009:925f with SMTP id 4fb4d7f45d1cf-5d3be6afa17mr4752124a12.15.1733505921618;
-        Fri, 06 Dec 2024 09:25:21 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733505921; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1046412njb;
+        Fri, 6 Dec 2024 10:12:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVwEKcIvwoy6wPS5cN835EARsiwDhpJWhxmczQdbfODPTw8ymeyjKMAfmXtchqAJctn3LZvVkd4b9i7mQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGF6sai+f8grkXhtrtCHT9cYjAZ+lqgfEML8WJ4IcKp7l/nRr+EIcp3CTm5ohMqglsrrVB/
+X-Received: by 2002:a05:620a:28c6:b0:7b1:49f7:90ba with SMTP id af79cd13be357-7b6bcac6062mr663533785a.8.1733508773270;
+        Fri, 06 Dec 2024 10:12:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733508773; cv=none;
         d=google.com; s=arc-20240605;
-        b=EfSJw4o2PvJzIJy5sjRzzKsMuTHdT4ci0jxKjx6ujQZwa9iFcAwI2fnX/UW3ptWxwk
-         Xl101+SETxxYjkV432fo8pRUthziit6gdqGp2z1Q/3ZJZHlG5AUd7iTKj9xCirYRQ6x7
-         rfIcpqX/AK38Q32aCwDpqhDrnTkCJbH951nfLj7EXla8sFPISq1Q4YLuur+HzPgsaZ1u
-         JvlioRn0+JWVdxuB0+ecdksO5KmdnMb0OdeXVnI8dp603A2hwzGKaSyFH2MOsEKYuLKY
-         YRhEVq91kT/GEe6qwSwdaYZVCfVHdMO3Iu9Q8/O0tTlk/0IIVHcbtHV4qbYbYUV9pPR/
-         4LKQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=86D5w03GN46N4hQDaUq12ULG4qFYMYOyr19ho9PI6qM=;
-        fh=iUMV9EEFXu4MlKxCNfodurzM1E/+GIYNLUanQFJhC2M=;
-        b=H0uxn2nVWcRxafYnX79UxumkqB2lESrCzuWvoVIus0vb2KCl1T0NySE0VSPb/v2dqK
-         pdNKs4kJWnjirPOOocaIBfht1Pbb2wKXv9dmu7PobvjDfjVYqg7dALeD34sEDVoPXBjb
-         egBNIEdeECS5UnxTgjZJv5v4BczDelDp5+LVrQ6bOW+9RzZNf6E/B/jbJJ1GsM9KcxvW
-         LNbdIlUaJXeJelT74W3xfq3Eq16G7nI8Go0ZPOtxTJtiVfVp9CxQi3l5m6U6qLxCMLd8
-         zgiYjPkUnApsiRWD2YVQpAGrMxWcpSZdGWUspCqH5vagJRIiITU1ucgb7P3CeHxsEuCu
-         e1AA==;
+        b=YGZL8dPYi/5pOnYryrPwu7duQi/3tmbjIqgTsCP4DQDYp8XapImgRjgGddfYJBbC2g
+         ePArryvz5Ao+RaVo4hXjxDDtGYauFQP/edWdY+6i3LtwKOoeEqbrYVs9AGCPzky2l6ge
+         vIRoMX5AZCSRyaHvQ2WHzCHtsSCkPMCeu0fjWsO4t4Ko3dRYyrZwY4pdhXBH31jcjCkD
+         k6fSKvkXkA0uXh/3E+ropKEs1iTB+G242TGmCecRkb6XWVeIvUivoVjGS6jEaPwa38LE
+         whmNWkKxCee3qVSi6T/F8e765Y6LCvRKXmylnlknwxoHhz2D9HxrFo+pKAyo965eAy11
+         uTrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=k6E3qAVznoEijWOtVEbkazIWLn1pMfIIPzCq5oKqgnE=;
+        fh=fDx56RpbcRhxw99v/mctPrlTWMLkN8BzashsB1yApaQ=;
+        b=QOoamg+LFCk0Xhhqt+sFiMXWmSlvH1NswKW3+UVaT2zJkRbGIuvCV5lCeym+YiUhTP
+         AQRBbupzB7bEGVfFSkjCpbvkpANQCBF2nGOfG1jiow8rn0k/Nk4yWrR/Zied380rTzca
+         lNvKmnRoQ+3Rsdmsc6874HWZVRPx5Pse5wVJDhrwIXR2lrdMB6QMnYmsZB5g8Zx6toqx
+         pfirPxTTOhV9c9tMXVVYno6wCuoOegjXdokTkLaqJJqGI68+o8vIhXEZziRSlyZCNISp
+         XH8mofMf7vRkU8NtC6LYAXLT8qdLxBqvJ2VCJoUuHMd9PGlKJQ4OMOoVmow/yEFnWBg5
+         0mRg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=tNLjMhV2;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-435410-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435410-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-435410-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5d14c74ace6si1961746a12.149.2024.12.06.09.25.21
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LDn2SldM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b6b5a5164esi474215085a.73.2024.12.06.10.12.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Dec 2024 09:25:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-435410-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 06 Dec 2024 10:12:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=tNLjMhV2;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-435410-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435410-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 27BF6188213F
-	for <alex.bennee@linaro.org>; Fri,  6 Dec 2024 17:25:10 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 469A6215BC5;
-	Fri,  6 Dec 2024 17:21:36 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="tNLjMhV2"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CBD5920459D
-	for <linux-kernel@vger.kernel.org>; Fri,  6 Dec 2024 17:21:28 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1733505688; cv=none; b=LY60n2o1UNaXZslZIguYsm4MH81USY+rGxh67jW5vNc+EQYbTWhB55w1y/QlCwM0D93D/NUOVBkOyb1rNYsP5ZxIUnAwxTzKRTboDX53zOjZD7QAVTHuHj+4U1ngWXcpdXQXmOBQVSN9pTO8HX2+Zg3pGoPYrgg1mlL79xWTqeo=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1733505688; c=relaxed/simple;
-	bh=0CyS+5uMH4bliw7AWJd+kEIWAWXpqKGP1aXYbGP2T70=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=A5liVQDZULa8mYVFzNW/jAkNuXn8IftsHzrdPodwwxABv01vcswYI5Bq1sSVoqWSmgOUtCw85mgycSIfgw9ThPRdU7McBMQIAx4pTtbBatEI24lzyE6PjbQyNT3WyfQmPOdbukHIvmCB4bJKLiGSmauDF8gH8V4hImQKkQorJFQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=tNLjMhV2; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 198DAC2BC86;
-	Fri,  6 Dec 2024 17:21:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733505688;
-	bh=0CyS+5uMH4bliw7AWJd+kEIWAWXpqKGP1aXYbGP2T70=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=tNLjMhV25h/XaHHCCxu1uBpv6vnxVFDBVsaazCdVnHBCAsQOFklBt1ro/ehr7Y2Ep
-	 ekiOeW3nQGxVEj9wjFhS706bV79oVPugDEX8livXjyxDob10KT5Uki2YY2++Gf78FR
-	 FIyZONMMlKroqMIwWklKGutgqLH/n8Fv7MXETSK/a6koXa0ViiuGdu0cVgnsvCfMVI
-	 MRcoO7LYmI2MlAO21IEKemJTu+8IuFXAWc0MDZtCMDStk9KlkEeRwZm2Rxq6U56MCE
-	 pe/XIc5nS0e5x8XIW1DX4clmC52WxWc/DkYH0hu1URsB2lbjj5EoQA6o4zOwhwJxFK
-	 kIDlEIrulh9iA==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98)
-	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1tJc18-00000005RLK-11kL;
-	Fri, 06 Dec 2024 18:21:26 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: "Michael S . Tsirkin" <mst@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Shiju Jose <shiju.jose@huawei.com>,
-	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
-	Ani Sinha <anisinha@redhat.com>,
-	Dongjiu Geng <gengdongjiu1@gmail.com>,
-	Igor Mammedov <imammedo@redhat.com>,
-	linux-kernel@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 28/31] acpi/ghes: Change ghes fill logic to work with only one source
-Date: Fri,  6 Dec 2024 18:12:50 +0100
-Message-ID: <ac26f611d58b467643ded09b64bf5149fb48800c.1733504943.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <cover.1733504943.git.mchehab+huawei@kernel.org>
-References: <cover.1733504943.git.mchehab+huawei@kernel.org>
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=LDn2SldM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tJcob-0000br-BU; Fri, 06 Dec 2024 13:12:33 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tJcoW-0000ad-4R
+ for qemu-arm@nongnu.org; Fri, 06 Dec 2024 13:12:28 -0500
+Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tJcoT-0005HO-S9
+ for qemu-arm@nongnu.org; Fri, 06 Dec 2024 13:12:27 -0500
+Received: by mail-oa1-x34.google.com with SMTP id
+ 586e51a60fabf-29e5bf419ebso804015fac.1
+ for <qemu-arm@nongnu.org>; Fri, 06 Dec 2024 10:12:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1733508744; x=1734113544; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=k6E3qAVznoEijWOtVEbkazIWLn1pMfIIPzCq5oKqgnE=;
+ b=LDn2SldMQZ7VAle14DHmNymceOipgUaq1xrk0AWP2RNMz1bFekEo9854476DUfMJIa
+ v2jhGF+6cbP3NUMI5TvozbcVQH/AkNGd3c8UPeCXLbMZ+lMznva7Ryy+v+68yix9udy6
+ dm5Z6VzDZClSpcQ3XHeQI+BOHT8O0sWJzZ3uWwKDaWYCDB0GeBFailASr6dJAJVtKAoR
+ oIvDxNIdJ4Xy3vsQRnKrUQbp7h15KlUbVXLL63ixbl8+SGiIRvlOdlLOFLBf0wYWfQU7
+ w86RuTePRxUOFrw35+adHv39VYbdURroCFDVdderUIvP9x2cwTk7eaUADZECaslP+uPR
+ lBHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1733508744; x=1734113544;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=k6E3qAVznoEijWOtVEbkazIWLn1pMfIIPzCq5oKqgnE=;
+ b=ThqCKjAeJMTADKRTcXbHM0nQIdsU8Gze8yw0jLgxkidtdhpROvEe6yw4sfmkqL7ctr
+ B90rO3SBhUWUR3LGzMGvbCXnDATc8x1+Lj6StJGDvfyQpWwSvFHZCTBRbsMFtcS9eWq5
+ Bd57v4d655rHAwhj6d9mCrUNuc5g6wZpjOt1mvYCm7L48Bj6wWA3WS35Lx8UMKi9IwJk
+ U1oeEuNVU7fTNpbFkxJxw/lGdolySmnwF61Lr8XS/j1vli0BhT2AnVa1d2YGvw/CIZuf
+ PM8Z5GnXSjKOE9Eh4x9EjtYn1l3dX/sSEVdpQMbE25gLEqVFK2gMt0y0KVpSVbGydg2B
+ Pjvw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVA3IGB484gBGkBwzwPM/qV+YHauLQJRj0MMD74U7VC47xKnq1xs3cychJYrmjoqXodmHPVrfDCig==@nongnu.org
+X-Gm-Message-State: AOJu0Yw3ufbnJ8+Ca9JpbiONQ7bGwJM+5VwW+8bLlVbKAJjPOVfEPH7/
+ 9cUGihFkXV8VxWROEvpD88jq/SFOmKfGMbaNTHi9915CI0OvWf0nHrZUc5kSOgE=
+X-Gm-Gg: ASbGncsY1D0GmqbA6dyABlN8ylsxA0aZ7cY0y/TKgataidcCxjs1HFyG6PVqx1LAaDY
+ e5beSPvBYLn70DsByKYJIsQyuGW4C9xcMcWbMXPFtbBeVxlWE6tMEXAjDqObRgqQMWTOie2b6/h
+ /fWSY8Rs9+tG7IF1o63JnaMQ65z3ARjWYRcGpjXZAx6BvX9z311lCMz7TGSlypxcjrl2jkRQh1J
+ 00GWhoZqvP4DB9kWUm8uBtrlgXEePw2BV3rjmlFGx+qPlWkc7jkB+yV5Qi7urnGwCWqCEQO1rql
+ xqDSmn/F8MYrofwqV7kpV/M0bF53
+X-Received: by 2002:a05:6870:7e16:b0:29e:76d1:db3b with SMTP id
+ 586e51a60fabf-29f731b3772mr2283492fac.5.1733508742792; 
+ Fri, 06 Dec 2024 10:12:22 -0800 (PST)
+Received: from [192.168.4.112] (fixed-187-189-51-143.totalplay.net.
+ [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
+ 586e51a60fabf-29f787f90d7sm452912fac.31.2024.12.06.10.12.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 06 Dec 2024 10:12:22 -0800 (PST)
+Message-ID: <9afbb53a-ab5a-44c4-b486-b947b7c3429e@linaro.org>
+Date: Fri, 6 Dec 2024 12:12:19 -0600
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: 9rc9Pfx1uaXv
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 55/67] target/arm: Convert FCVT* (vector, integer) scalar
+ to decodetree
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20241201150607.12812-1-richard.henderson@linaro.org>
+ <20241201150607.12812-56-richard.henderson@linaro.org>
+ <CAFEAcA8GO=NjWpoOM7mG5j-+4JXfx5qEK1_YwQHNmuFt3yH=Ag@mail.gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <CAFEAcA8GO=NjWpoOM7mG5j-+4JXfx5qEK1_YwQHNmuFt3yH=Ag@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2001:4860:4864:20::34;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x34.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2vTZ3EyqkdG/
 
-Extending to multiple sources require a BIOS pointer to the
-beginning of the HEST table, which in turn requires a backward-compatible
-code.
+On 12/6/24 10:23, Peter Maydell wrote:
+> On Sun, 1 Dec 2024 at 15:21, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Arm silliness with naming, the scalar insns described
+>> as part of the vector instructions, as separate from
+>> the "regular" scalar insns which output to general registers.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/tcg/translate-a64.c | 135 ++++++++++++++-------------------
+>>   target/arm/tcg/a64.decode      |  30 ++++++++
+>>   2 files changed, 87 insertions(+), 78 deletions(-)
+>>
+>> diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+>> index 98a42feb7d..ad245f2c26 100644
+>> --- a/target/arm/tcg/translate-a64.c
+>> +++ b/target/arm/tcg/translate-a64.c
+>> @@ -8678,6 +8678,16 @@ static void do_fcvt_scalar(DisasContext *s, MemOp out, MemOp esz,
+>>                                    tcg_shift, tcg_fpstatus);
+>>               tcg_gen_extu_i32_i64(tcg_out, tcg_single);
+>>               break;
+>> +        case MO_16 | MO_SIGN:
+>> +            gen_helper_vfp_toshh(tcg_single, tcg_single,
+>> +                                 tcg_shift, tcg_fpstatus);
+>> +            tcg_gen_extu_i32_i64(tcg_out, tcg_single);
+>> +            break;
+>> +        case MO_16:
+>> +            gen_helper_vfp_touhh(tcg_single, tcg_single,
+>> +                                 tcg_shift, tcg_fpstatus);
+>> +            tcg_gen_extu_i32_i64(tcg_out, tcg_single);
+>> +            break;
+> 
+> This hunk adds calls to the toshh and touhh helpers,
+> but as far as I can see it doesn't remove any calls to
+> those helpers that were in the old decode functions or
+> any calls to the handle_simd_shift_fpint_conv() function
+> which was the only one that did call them. Should this
+> be in a different patch?
 
-So, the current code supports only one source. Ensure that and simplify
-the code.
+Removing those happens in patch 61, with FCVTZ* (vector, fixed-point).
+Here we're only converting the scalar path.
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
----
- hw/acpi/ghes.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+> (Conversely, we remove calls to gen_helper_advsimd_f16tosinth
+> and gen_helper_advsimd_f16touinth but don't have those here.)
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index a4453ee357bc..5efa50413af3 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -387,15 +387,13 @@ static void get_hw_error_offsets(uint64_t ghes_addr,
-      * As the current version supports only one source, the ack offset is
-      * just sizeof(uint64_t).
-      */
--    *read_ack_register_addr = ghes_addr +
--			      ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
-+    *read_ack_register_addr = ghes_addr + sizeof(uint64_t);
- }
- 
- void ghes_record_cper_errors(const void *cper, size_t len,
-                              uint16_t source_id, Error **errp)
- {
-     uint64_t cper_addr = 0, read_ack_register_addr = 0, read_ack_register;
--    uint64_t start_addr;
-     AcpiGedState *acpi_ged_state;
-     AcpiGhesState *ags;
- 
-@@ -412,11 +410,9 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-     }
-     ags = &acpi_ged_state->ghes_state;
- 
--    start_addr = le64_to_cpu(ags->hw_error_le);
--
--    start_addr += source_id * sizeof(uint64_t);
--
--    get_hw_error_offsets(start_addr, &cper_addr, &read_ack_register_addr);
-+    assert(ACPI_GHES_ERROR_SOURCE_COUNT == 1);
-+    get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
-+                         &cper_addr, &read_ack_register_addr);
- 
-     if (!cper_addr) {
-         error_setg(errp, "can not find Generic Error Status Block");
--- 
-2.47.1
+With the conversion I'm sharing more code.  So we (eventially) remove advsimd_f16to*inth 
+entirely and use only vfp_to*hh.  They both call the same float16_to_*int16_scalbn 
+function in the end.
 
+
+r~

@@ -1,480 +1,176 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp462249njb;
-        Thu, 5 Dec 2024 14:22:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXDEimWNnxeqYZV+nuS7tyHZ9X3dsogvsshTXEA7LNYg64feROM41po9htdodlGxhXJnr0+KR3CucoAaA==@linaro.org
-X-Received: by 2002:a17:902:e888:b0:208:d856:dbb7 with SMTP id d9443c01a7336-21614dcd826mr4596005ad.39.1733437376347;
-        Thu, 05 Dec 2024 14:22:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733437376; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp586606njb;
+        Thu, 5 Dec 2024 19:14:40 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVolCHwRGseHM0vohpmPZhYDxrKu1ZZrdgCm5Pkq9i1X7FH+r5HVYVQuGa46ihCH8F6SDAkvUyRh9Lr+Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHxGSBGb5smBesY6kUosIKFX0SEKxyEIQ5vZFaGaxkm+cnDNG1CQ7ILgedpXFOIo7H/87sl
+X-Received: by 2002:a05:6214:5086:b0:6d8:7a1d:4e95 with SMTP id 6a1803df08f44-6d8e71abd1bmr26700396d6.29.1733454880544;
+        Thu, 05 Dec 2024 19:14:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733454880; cv=none;
         d=google.com; s=arc-20240605;
-        b=UBU3Z03TJVtvG0msERd6uatTyCV/bJycWDc4Z87ZXEHlUm7WA6VTFtMIcs0LIGBsai
-         tPWcbN56F7d8UYJcXuCaSuDwSoEQSuD11kFndOp/odnPH1aXTAZ+o4OCw1xw2HKR1XeE
-         FCfmGQs/8tU9cEAxixlEc2s4iqEJt8UIs3kTBIPK9q11GL2PjFiULJlidJpfoq/gPrpw
-         fxRsX1mhQehGPMHH9jdZFcBRX/cANWPJTOUVVQRTqBYYaZ4q4gZP0g7lBuJ8lRoTqs/H
-         Ssi8Ls+AKf1MCng7xyjt+3+Y6TFnIyKYdQeqtWVzwC9R1sva4BiIMrwS/Q9rA8rjh2oN
-         5Jkg==
+        b=lDqG6rHHtVGJGeqnvS/IxB+mHRO9rW62zAXORkbsX6i/GAxuJtUo3yHQWXg14mGk1+
+         Bc6iZwS861eQORBZ060S51yfYB6zJ/w8WL+F7lZhtFdagwK9dB8S63g4hDe6O37dEJq6
+         A3y1b1aH32G9Y6ueCcb5wqfgsfjdn7mIxRgqCPJQLxcRE6PnNuZVMRlhGEVYOq67Ow1m
+         D/lD+sGL0qWygmk89dFkEUkpGEea84CjwK62a5nywnTjgRK0BdnlIpMVJU/mtU4pSwpZ
+         41APTggeJKLQ4zRhyhJjJbzh/4BQ9fBbQCNoXYeMd0gMzyR3TS8hFgeu2pnl1nihzevW
+         4Bmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=quNdZOi6vs/DfPqpA5a+RAcvgntK93hl6bq6i2nnsOE=;
-        fh=xQERbvdye+aDLfTaapJ5PQ3ISZ7JhN7JvHJASCdOWms=;
-        b=kLwOdmeSPkKLOYjy7Yw9zkRF/XG2B/Umv8aAoZQZ5CUPLN99sYEI0NeWsCTlkUD+ZT
-         6KrTaDf4wr3bBhCAndiUZUjuSvUVYoa3JjccG/YCIEvTXJPDUgzPu/NzTL77JHm+X8w2
-         Dx1z7G+qeX/zEMjZyC3ERNvsGWECYk9oUbAFjL+rNrkBuCNY4AFstndfVU9XYIiGgTuM
-         SYeDcLRyUBjqil+FrxMNf3jZFpjdmkdVUR2h+BXhtcfGDR3lk2x+TLurUx11yp75TSm5
-         wT7LgmPSha1NtKnsSb8V00ezpAFzYn4KU7G3pvtqeN+aXtU7b4sUDRRbnJP0fSMWkiD9
-         y/hQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=jWsAgdjbqze/KpwUsly9HuM39GzG0bcUuYjHr9574Rw=;
+        fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
+        b=MeaU/ayma3AUwPP7ATvwYwUpXMDE0PukPu3bS8JYqj78qWeLUhRMKBwuFzek0Kb0Ju
+         jixZGWl5rXXVopp7SCUo6n8uKBG/QPQn8QfX/li/b0TtzpWGBroz+/pe6rsnRf9qd2da
+         RgyMdZcHBbsCNtQw2qJ0hxFfmhy+f84J0ifEcY5R3h1Lzf0lwV4MiiDsCRnseKdIiMNS
+         pynFJjmPLQlDPUZi1wsZX2wbZ95/JG9lqa1dj1hv7i6nnx+/SJA3B5GRxAWjNK7y/vbm
+         5Kkr6mFiBDD3UiDeKVndFvWx8f1ResCzO2hXX0AOO/nbD4uobGSq7S6LKMJq20InFKJl
+         9nvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AydFUkNu;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OYNiq7Sv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-215f8ec837dsor17969265ad.9.2024.12.05.14.22.56
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d8da67b1f0si32840476d6.56.2024.12.05.19.14.40
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 05 Dec 2024 14:22:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 05 Dec 2024 19:14:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AydFUkNu;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=OYNiq7Sv;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tJOnb-0002ZT-Ql; Thu, 05 Dec 2024 22:14:35 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tJOnZ-0002Qr-Oc
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2024 22:14:33 -0500
+Received: from mail-oo1-xc32.google.com ([2607:f8b0:4864:20::c32])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1tJOnX-0004b8-VR
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2024 22:14:33 -0500
+Received: by mail-oo1-xc32.google.com with SMTP id
+ 006d021491bc7-5f1f1da0c8eso484478eaf.1
+ for <qemu-devel@nongnu.org>; Thu, 05 Dec 2024 19:14:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733437376; x=1734042176; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=quNdZOi6vs/DfPqpA5a+RAcvgntK93hl6bq6i2nnsOE=;
-        b=AydFUkNullKar/CSQExgzEJijbzFuuhvl0HcxQ+0S+KPCRafL9RwCF36H5fsrTpaW2
-         CZ7xCcOg3thXUV0JBTMKScweSxWaFnbrRFF8nuiD/TpuzPjyzcRh4uCTQi/YJyfEBVDp
-         Ntmkgf+WCYBdfMHMN5iZpuA5SMHQP7Cya04Qkl3ZokuPMHhEiTwYUQdZwDEdzTEIHERq
-         JNJU9cK/uhqSQSlVtsrTDm+7GRvo/K5C2EVf8cViTaihXetQ9SeHFLkgN3Na3Kein9Dy
-         +ykeo+/9xYqQP3iV9XASIgEmFB6WlvoqmFzx/Ok9YMxnQFU2vKjGWIk080fPg4BzSJhG
-         GoSw==
+ d=linaro.org; s=google; t=1733454870; x=1734059670; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=jWsAgdjbqze/KpwUsly9HuM39GzG0bcUuYjHr9574Rw=;
+ b=OYNiq7SvbKZWxL05Lw2aSvNRcoLZOYYyprq3a+1u9GDeGVGyr4OeKAbEbgo36eqY53
+ szmO4Yc/X0i5e8kelSEQDaaU1o5xIR4lD8BmEMJIhPTrk/K6WdKLuXs+RinK+YIRXPsu
+ 86Q+FQcTDB4llrtFQs1F5EuWYfkbmi6YIrPL7Zo2EThsL610b4z1qhru8zbZMTnCNmJD
+ Oe3LaiHDKgJ6t1nTiVPG9NtsgexMRdwC7tobEYwIyp3J2wuuVJHFn6yqxvBwep6rRlpD
+ zVV9yvZkc8ZTsG9ejp1iqvljtY1h7GG59sObDIu0XAdKYP8Qr1iHthGJ29LUtsmptngu
+ 0a0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733437376; x=1734042176;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=quNdZOi6vs/DfPqpA5a+RAcvgntK93hl6bq6i2nnsOE=;
-        b=hSAfDwaUsICkdIZ8GqKeEX0P1xcjAE2fK8bZxZGIy/1LSMg3eICDiUb9COROAOL2CT
-         VGQ6vJNP694+hPcqqsYu8W88YaeP6/Z+RfO2r7q2qUMPBzsX/4wBHBOZm0nYEJEK/gme
-         3eBLlwexbZfhNUe/V5wfYY75DCV1MEy+iQod+48JrD9XEUhgUlDmtmkq5z7+Bqb42E6e
-         pl8zzmsNIC05VMVLkQKS03KGcmJLd2wzGUwiIjMfLhglEoah+2ga1PnPtRbaV7LsWh6L
-         ok3CLgXSyyQ201GUVsmhe59MzJYPxpGRA9RJyK9v+E2D1Np88vpRFpM4cSNMqbrzPQiO
-         lcfw==
-X-Forwarded-Encrypted: i=1; AJvYcCXxi0Tv5aZdBzB1wqonDzEllAZ65EIvhbD2UscGCbSp9j6xN2MyDYuQVlEpaGE9FKys9QhqEB26iMfZ1Q==@linaro.org
-X-Gm-Message-State: AOJu0YwyTg4YA99aF5Bm37qBS8KJ//WooWsLHsYjzPKdtLVNJEiAWOTZ
-	eE9aHW3j3SKDCyNnl/CQARCXGJIoN02/dpf7S/XOtYI42nB1DAFGuc1oQfAwFHaPAw==
-X-Gm-Gg: ASbGncsf1P6EwB+f/8urQAvvhhEpNCsIIcnUYcm+HlJe3OoxvIO1BEHUR5wixKQ+PXy
-	B+GoRztmuM5Al5OM+sP+FKv1BqYLNxfbA5qXLFtbJFlp27M2F8AZi4ou0oub83JLmypATeE9jVG
-	av3qrPFEjK5/AHAAcBikJwiLAGYt3Yb62HPk+kELKxB7typmASlehvMo91QgQHcrdHYD5s8c2qG
-	SNAABqIh9uDTsE6dKYjIpcqr8SoNIUhwnaJoCstQLGd7ci+kbU/kcKZbSrzzvM7OUT1mgnIKJYP
-	LmGwSFFM
-X-Google-Smtp-Source: AGHT+IGxrEzNdHCY9p3nI5Ms6sVCuD31aqxjxI6slOF9WgZZXewzF6L6NV8Tgvt2851VlTVvJfDYVg==
-X-Received: by 2002:a17:902:e888:b0:208:d856:dbb7 with SMTP id d9443c01a7336-21614dcd826mr4595785ad.39.1733437375699;
-        Thu, 05 Dec 2024 14:22:55 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from pc.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-215f8f0b571sm17310435ad.183.2024.12.05.14.22.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Dec 2024 14:22:55 -0800 (PST)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+ d=1e100.net; s=20230601; t=1733454870; x=1734059670;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jWsAgdjbqze/KpwUsly9HuM39GzG0bcUuYjHr9574Rw=;
+ b=URVMipgrofAM84jYaJUwzDHe8+x1KebfjNbMHxoutKcny2qSmuUnTI12DhROetjG4j
+ WFTp4T/nkFDjBDQIwgmmIavTXC4aAbphqcMi3dlkOzAjwmoy5VKHu+XCPxwLExq5vKAR
+ +cGB7L/vMtAbsZc28CugnViAcKCaBDXbTq1+KYrDqbrD8/qfMm7++ha1P34Wq+b3znA2
+ SVOdYnBGBC7alRFE9n3IjdoGvHsaIuG+rDl1IH6hNz2I9sipfopqzNoreguRFbzZ98ka
+ fgEpfTTp1hp9OhFo+k9+afCO+ifNyax+W10G9Zm0ShACL9eJgoMBqs18tMysEcrwCkCn
+ SXWQ==
+X-Gm-Message-State: AOJu0YzFVCyFCyQggL6tX7cS86Zkk8tdZUlnQR5OZCiM5srYifsBjfrV
+ DeHBMblXC8i87echO95lNB0BqPjGMH9o3u5JQe9AiKdEALSJ9TvcquR0IobLfBjlTJlSjl+sSxz
+ yzJmwih3y
+X-Gm-Gg: ASbGncuT1TsdIjsnso5UW+1mzn94X0rAlKt8wUClY18aD1+kwZZuKjhs0Om9EkqrVXz
+ Vig7IfBAF8EosQC9aQf5GC6bfCb0VwbV9C4GmE3OXiZ6hNisEqgaPy7tpbHwun8pYEfJ5kJOW7n
+ P7MLR8gPKcGl+7DNFsHK6RBUybHlvrh6AhTgx0gJcnIR8SLGaA431uwJ9PsphZKnV3VnufDte0I
+ 7KouQLzHzPPx8pFrjUScgBZ40zNQjLQVuPrn4IFnvq9AWEPTMDN4q43vTbJ6j3G1xL/387X9W9c
+ uZcM3XrMZKSiCZU2FM7BknNqQhyhfjtUkK/p
+X-Received: by 2002:a05:6820:607:b0:5f1:e3d1:b994 with SMTP id
+ 006d021491bc7-5f286b74c1fmr1030055eaf.0.1733454870582; 
+ Thu, 05 Dec 2024 19:14:30 -0800 (PST)
+Received: from localhost.localdomain (fixed-187-189-51-143.totalplay.net.
+ [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
+ 006d021491bc7-5f2793249e8sm548936eaf.39.2024.12.05.19.14.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 05 Dec 2024 19:14:30 -0800 (PST)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Fabiano Rosas <farosas@suse.de>,
-	Kevin Wolf <kwolf@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	gustavo.romero@linaro.org,
-	Andrew Melnychenko <andrew@daynix.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org,
-	alex.bennee@linaro.org,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Xu <peterx@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Yuri Benditovich <yuri.benditovich@daynix.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	manos.pitsidianakis@linaro.org,
-	qemu-block@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v2 6/6] docs: add a glossary
-Date: Thu,  5 Dec 2024 14:22:41 -0800
-Message-Id: <20241205222241.3789437-7-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241205222241.3789437-1-pierrick.bouvier@linaro.org>
-References: <20241205222241.3789437-1-pierrick.bouvier@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH] target/arm: Use float_round_to_odd in helper_fcvtx_f64_to_f32
+Date: Thu,  5 Dec 2024 21:14:28 -0600
+Message-ID: <20241206031428.78634-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: QmTnlKrB2EKb
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c32;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc32.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZYntd595GT01
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Softfloat has native support for round-to-odd.  Use it.
+
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- docs/devel/control-flow-integrity.rst |   2 +
- docs/devel/multi-thread-tcg.rst       |   2 +
- docs/glossary.rst                     | 280 ++++++++++++++++++++++++++
- docs/index.rst                        |   1 +
- docs/system/arm/virt.rst              |   2 +
- docs/system/images.rst                |   2 +
- docs/tools/qemu-nbd.rst               |   2 +
- 7 files changed, 291 insertions(+)
- create mode 100644 docs/glossary.rst
+ target/arm/tcg/helper-a64.c | 18 ++++--------------
+ 1 file changed, 4 insertions(+), 14 deletions(-)
 
-diff --git a/docs/devel/control-flow-integrity.rst b/docs/devel/control-flow-integrity.rst
-index e6b73a4fe1a..3d5702fa4cc 100644
---- a/docs/devel/control-flow-integrity.rst
-+++ b/docs/devel/control-flow-integrity.rst
-@@ -1,3 +1,5 @@
-+.. _cfi:
-+
- ============================
- Control-Flow Integrity (CFI)
- ============================
-diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tcg.rst
-index d706c27ea74..7fd0a07633d 100644
---- a/docs/devel/multi-thread-tcg.rst
-+++ b/docs/devel/multi-thread-tcg.rst
-@@ -4,6 +4,8 @@
-   This work is licensed under the terms of the GNU GPL, version 2 or
-   later. See the COPYING file in the top-level directory.
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index 1daf3f27c0..ff48bac1a8 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -386,23 +386,13 @@ float64 HELPER(frecpx_f64)(float64 a, float_status *fpst)
  
-+.. _mttcg:
-+
- ==================
- Multi-threaded TCG
- ==================
-diff --git a/docs/glossary.rst b/docs/glossary.rst
-new file mode 100644
-index 00000000000..693d9855dd1
---- /dev/null
-+++ b/docs/glossary.rst
-@@ -0,0 +1,280 @@
-+.. _Glossary:
-+
-+--------
-+Glossary
-+--------
-+
-+This section of the manual presents brief definitions of acronyms and terms used
-+by QEMU developers.
-+
-+Accelerator
-+-----------
-+
-+A specific API used to accelerate execution of guest instructions. It can be
-+hardware-based, through a virtualization API provided by the host OS (kvm, hvf,
-+whpx, ...), or software-based (tcg). See this description of `supported
-+accelerators<Accelerators>`.
-+
-+Board
-+-----
-+
-+Another name for :ref:`machine`.
-+
-+Block
-+-----
-+
-+Block drivers are the available `disk formats and front-ends
-+<block-drivers>` available, and block devices `(see Block device section on
-+options page)<sec_005finvocation>` are using them to implement disks for a
-+virtual machine.
-+
-+CFI
-+---
-+
-+Control Flow Integrity is a hardening technique used to prevent exploits
-+targeting QEMU by detecting unexpected branches during execution. QEMU `actively
-+supports<cfi>` being compiled with CFI enabled.
-+
-+Device
-+------
-+
-+In QEMU, a device is a piece of hardware visible to the guest. Examples include
-+UARTs, PCI controllers, PCI cards, VGA controllers, and many more.
-+
-+QEMU is able to emulate a CPU, and all the hardware interacting with it,
-+including `many devices<device-emulation>`. When QEMU runs a virtual machine
-+using a hardware-based accelerator, it is responsible for emulating, using
-+software, all devices.
-+
-+EDK2
-+----
-+
-+EDK2, as known as `TianoCore <https://www.tianocore.org/>`_, is an open source
-+implementation of UEFI standard. QEMU virtual machines that boot a UEFI firmware
-+usually use EDK2.
-+
-+gdbstub
-+-------
-+
-+QEMU implements a `gdb server <GDB usage>`, allowing gdb to attach to it and
-+debug a running virtual machine, or a program in user-mode. This allows
-+debugging the guest code that is running inside QEMU.
-+
-+glib2
-+-----
-+
-+`GLib2 <https://docs.gtk.org/glib/>`_ is one of the most important libraries we
-+are using through the codebase. It provides many data structures, macros, string
-+and thread utilities and portable functions across different OS. It's required
-+to build QEMU.
-+
-+Guest agent
-+-----------
-+
-+The `QEMU Guest Agent <qemu-ga>` is a daemon intended to be run within virtual
-+machines. It provides various services to help QEMU to interact with it.
-+
-+.. _guest:
-+
-+Guest
-+-----
-+
-+Guest is the architecture of the virtual machine, which is emulated.
-+See also :ref:`host`.
-+
-+Sometimes this is called the :ref:`target` architecture, but that term
-+can be ambiguous.
-+
-+.. _host:
-+
-+Host
-+----
-+
-+Host is the architecture on which QEMU is running on, which is native.
-+See also :ref:`guest`.
-+
-+Hypervisor
-+----------
-+
-+The formal definition of an hypervisor is a program or API than can be used to
-+manage a virtual machine. QEMU is a virtualizer, that interacts with various
-+hypervisors.
-+
-+In the context of QEMU, an hypervisor is an API, provided by the Host OS,
-+allowing to execute virtual machines. Linux implementation is KVM (and supports
-+Xen as well). For MacOS, it's HVF. Windows defines WHPX. And NetBSD provides
-+NVMM.
-+
-+.. _machine:
-+
-+Machine
-+-------
-+
-+QEMU's system emulation models many different types of hardware. A machine model
-+(sometimes called a board model) is the model of a complete virtual system with
-+RAM, one or more CPUs, and various devices. It can be selected with the option
-+``-machine`` of qemu-system. Our machine models can be found on this `page
-+<system-targets-ref>`.
-+
-+Migration
-+---------
-+
-+QEMU can save and restore the execution of a virtual machine between different
-+host systems. This is provided by the `Migration framework<migration>`.
-+
-+NBD
-+---
-+
-+The `QEMU Network Block Device server <qemu-nbd>` is a tool that can be used to
-+mount and access QEMU images, providing functionality similar to a loop device.
-+
-+Mailing List
-+------------
-+
-+This is `where <https://wiki.qemu.org/Contribute/MailingLists>`_ all the
-+development happens! Changes are posted as series, that all developers can
-+review and share feedback for.
-+
-+For reporting issues, our `GitLab
-+<https://gitlab.com/qemu-project/qemu/-/issues>`_ tracker is the best place.
-+
-+.. _softmmu:
-+
-+MMU / softmmu
-+-------------
-+
-+The Memory Management Unit is responsible for translating virtual addresses to
-+physical addresses and managing memory protection. QEMU system mode is named
-+"softmmu" precisely because it implements this in software, including a TLB
-+(Translation lookaside buffer), for the guest virtual machine.
-+
-+QEMU user-mode does not implement a full software MMU, but "simply" translates
-+virtual addresses by adding a specific offset, and relying on host MMU/OS
-+instead.
-+
-+Monitor / QMP / HMP
-+-------------------
-+
-+The `QEMU Monitor <QEMU monitor>` is a text interface which can be used to interact
-+with a running virtual machine.
-+
-+QMP stands for QEMU Monitor Protocol and is a json based interface.
-+HMP stands for Human Monitor Protocol and is a set of text commands available
-+for users who prefer natural language to json.
-+
-+MTTCG
-+-----
-+
-+Multiple CPU support was first implemented using a round-robin algorithm
-+running on a single thread. Later on, `Multi-threaded TCG <mttcg>` was developed
-+to benefit from multiple cores to speed up execution.
-+
-+Plugins
-+-------
-+
-+`TCG Plugins <TCG Plugins>` is an API used to instrument guest code, in system
-+and user mode. The end goal is to have a similar set of functionality compared
-+to `DynamoRIO <https://dynamorio.org/>`_ or `valgrind <https://valgrind.org/>`_.
-+
-+One key advantage of QEMU plugins is that they can be used to perform
-+architecture agnostic instrumentation.
-+
-+Patchew
-+-------
-+
-+`Patchew <https://patchew.org/QEMU/>`_ is a website that tracks patches on the
-+Mailing List.
-+
-+PR
-+--
-+
-+Once a series is reviewed and accepted by a subsystem maintainer, it will be
-+included in a PR (Pull Request) that the project maintainer will merge into QEMU
-+main branch, after running tests.
-+
-+The QEMU project doesn't currently expect most developers to directly submit
-+pull requests.
-+
-+QCOW2
-+-----
-+
-+QEMU Copy On Write is a disk format developed by QEMU. It provides transparent
-+compression, automatic extension, and many other advantages over a raw image.
-+
-+qcow2 is the recommended format to use.
-+
-+QEMU
-+----
-+
-+`QEMU (Quick Emulator) <https://www.qemu.org/>`_ is a generic and open source
-+machine emulator and virtualizer.
-+
-+QOM
-+---
-+
-+`QEMU Object Model <qom>` is an object oriented API used to define various
-+devices and hardware in the QEMU codebase.
-+
-+Record/replay
-+-------------
-+
-+`Record/replay <replay>` is a feature of QEMU allowing to have a deterministic
-+and reproducible execution of a virtual machine.
-+
-+Rust
-+----
-+
-+`A new programming language <https://www.rust-lang.org/>`_, memory safe by
-+default. There is a work in progress to integrate it in QEMU codebase for
-+various subsystems.
-+
-+System mode
-+-----------
-+
-+QEMU System mode provides a virtual model of an entire machine (CPU, memory and
-+emulated devices) to run a guest OS. In this mode the CPU may be fully emulated,
-+or it may work with a hypervisor such as KVM, Xen or Hypervisor.Framework to
-+allow the guest to run directly on the host CPU.
-+
-+QEMU System mode is called :ref:`softmmu <softmmu>` as well.
-+
-+.. _target:
-+
-+Target
-+------
-+
-+The term "target" can be ambiguous. In most places in QEMU it is used as a
-+synonym for :ref:`guest`. For example the code for emulating Arm CPUs is in
-+``target/arm/``. However in the :ref:`TCG subsystem <tcg>` "target" refers to the
-+architecture which QEMU is running on, i.e. the :ref:`host`.
-+
-+TCG
-+---
-+
-+TCG is the QEMU `Tiny Code Generator <tcg>`. It is the JIT (just-in-time)
-+compiler we use to emulate a guest CPU in software.
-+
-+It is one of the accelerators supported by QEMU, and supports a lot of
-+guest/host architectures.
-+
-+User mode
-+---------
-+
-+QEMU User mode can launch processes compiled for one CPU on another CPU. In this
-+mode the CPU is always emulated. In this mode, QEMU translate system calls from
-+guest to host kernel. It is available for Linux and BSD.
-+
-+VirtIO
-+------
-+
-+VirtIO is an open standard used to define and implement virtual devices with a
-+minimal overhead, defining a set of data structures and hypercalls (similar to
-+system calls, but targeting an hypervisor, which happens to be QEMU in our
-+case). It's designed to be more efficient than emulating a real device, by
-+minimizing the amount of interactions between a guest VM and its hypervisor.
-+
-+vhost-user
-+----------
-+
-+`Vhost-user <vhost_user>` is an interface used to implement VirtIO devices
-+outside of QEMU itself.
-diff --git a/docs/index.rst b/docs/index.rst
-index 78285ebd6a4..5665de85cab 100644
---- a/docs/index.rst
-+++ b/docs/index.rst
-@@ -20,3 +20,4 @@ Welcome to QEMU's documentation!
-    interop/index
-    specs/index
-    devel/index
-+   glossary
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index e67e7f0f7c5..11ceb898264 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -1,3 +1,5 @@
-+.. _arm-virt:
-+
- 'virt' generic virtual platform (``virt``)
- ==========================================
+ float32 HELPER(fcvtx_f64_to_f32)(float64 a, CPUARMState *env)
+ {
+-    /* Von Neumann rounding is implemented by using round-to-zero
+-     * and then setting the LSB of the result if Inexact was raised.
+-     */
+     float32 r;
+     float_status *fpst = &env->vfp.fp_status;
+-    float_status tstat = *fpst;
+-    int exflags;
++    int old = get_float_rounding_mode(fpst);
  
-diff --git a/docs/system/images.rst b/docs/system/images.rst
-index d000bd6b6f1..a5551173c97 100644
---- a/docs/system/images.rst
-+++ b/docs/system/images.rst
-@@ -82,4 +82,6 @@ VM snapshots currently have the following known limitations:
- -  A few device drivers still have incomplete snapshot support so their
-    state is not saved or restored properly (in particular USB).
+-    set_float_rounding_mode(float_round_to_zero, &tstat);
+-    set_float_exception_flags(0, &tstat);
+-    r = float64_to_float32(a, &tstat);
+-    exflags = get_float_exception_flags(&tstat);
+-    if (exflags & float_flag_inexact) {
+-        r = make_float32(float32_val(r) | 1);
+-    }
+-    exflags |= get_float_exception_flags(fpst);
+-    set_float_exception_flags(exflags, fpst);
++    set_float_rounding_mode(float_round_to_odd, fpst);
++    r = float64_to_float32(a, fpst);
++    set_float_rounding_mode(old, fpst);
+     return r;
+ }
  
-+.. _block-drivers:
-+
- .. include:: qemu-block-drivers.rst.inc
-diff --git a/docs/tools/qemu-nbd.rst b/docs/tools/qemu-nbd.rst
-index 329f44d9895..4f21b7904ac 100644
---- a/docs/tools/qemu-nbd.rst
-+++ b/docs/tools/qemu-nbd.rst
-@@ -1,3 +1,5 @@
-+.. _qemu-nbd:
-+
- =====================================
- QEMU Disk Network Block Device Server
- =====================================
 -- 
-2.39.5
+2.43.0
+

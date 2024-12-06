@@ -1,510 +1,245 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp743441njb;
-        Fri, 6 Dec 2024 02:25:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUiJzm0BGkBypW1pqQJ0tnNiL9mBkaZYoAbO5L0pRW1Z2GrfFt7Gd35tHO3RpSWBPc2s/vJegUTFnLeGg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEY74EjMdQtOrgk8SYBHceBUvSFEsyuBkoPo3Nl/B8xOwVkzMk4FnWekuJFYTaWCJHyowUo
-X-Received: by 2002:a05:6214:d4e:b0:6d3:f1ff:f8d6 with SMTP id 6a1803df08f44-6d8e720b45fmr43406766d6.40.1733480757684;
-        Fri, 06 Dec 2024 02:25:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733480757; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp770244njb;
+        Fri, 6 Dec 2024 03:22:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVXyTxrSHk2RxKlYsRQ5imi16S4b22ibFPS1KzM1iO/HoJlHg/FPn2B6YQQrLc6d3Ncz9xlDqvQ7MrQuA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE4WbqhRM+FyFUJarFKrIe+/lg0J1mf89/RHk9vxk5caa5cb5q1iqfICe3U8OuoM80ZxB+l
+X-Received: by 2002:a05:6902:1b84:b0:e38:19a6:bbb7 with SMTP id 3f1490d57ef6-e3a0b0c50ccmr2770702276.18.1733484162603;
+        Fri, 06 Dec 2024 03:22:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733484162; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZMoX4wsZQbvqoDjB+abbUv/dxLrlM7Lz4kEq0wOPDqPusXgv9jxPr86fghJ/WnoCCX
-         3+RvLXuGzlWPvAjWd3O6FAnO3zVzQISbr1A1uBVXtETstzGCWHegRKJnWLdWNi8tDFoQ
-         nB1MHbewnBZD8n75dHbyrvMdoMPSQd29+y6XqSCVP03BojHYtqxlUQMR19+WBextG8qE
-         99rBM7J5vtgIrUAioC1G0onBS8TqGwpWmf6+AkT3fhdOqpmPg33TM8Jr/K0rh9cvXUmv
-         GYevpVk3hlcWcAzFsYtEjHi/ZJhUpSnsU2Txpg8dJrAeg1m5ExJqq5Lw2fziVBjOKD7Y
-         v0kQ==
+        b=eZYclPK/yW9rkSK7l8WhDj2BBW7tgAMeywya6LiiHcQ61vvdjsFqEl50SD0rl4nsnH
+         PI/SKDUtw6KZg8aRdB19rmrEV+gz4GOZSQeqvJp37jmSBH5PM6Sigy3Q6Z0kpKb7w1F+
+         pUE6TIVbrCmmuEIaxr4IpK4VzDMA4gxt4bIkvFOCT7b5meqWyg6F86Gw3+ie5rUSJwmI
+         a90eNILUgPl1zwUWrtZZ5vIGDOKbTeNdGKQeBiqE8xqpbPoguZso0K97w4Dt9NFlY6D6
+         TxFf+6eA69ZbqRRYofPPECFoUJmB4WC1FqoRnrNEjuQfxwfdNJWyXbzTPeI3tTdw1nGL
+         WwyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=s+im4OO3hCjJQgqD3GiQCbQKHWzu0C0Dxbxj7TZu/uQ=;
-        fh=KGTz8GQ381t6rGFFm+jOvwZM6v3ThNKgE8ZjcBmC+VA=;
-        b=UJ0pIxxagcjfv9NHgok1ay3FeZqKO/UUHrstIMAmxZdX0VyVYrqeI/37WB0JSUuq9c
-         laj85+F6zUCAY0EmdI3Utez5DMzywaMNzKnagSsKWFFv2yHC+j35Qx7XurvPddZ1aTpm
-         oMz86dXPgkw1TGJpaaO+lirItK0CxK8cdxm67NCkEUGu8DSUgHkACJQhIqBhJArBInpg
-         ov4sYVJyG5tMwqQa6i+brHdkzCZMTN3+nNZL3XXcOEqR3IBG+5MVbJnEko0O9uHMXaC/
-         g62DrzmlTSWjn6UgD7/84+PoF5wYjnVyl+sFPXEXjWQ4689m3kbOdTcOp59DmqGHSQLM
-         PXPw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=qmjoLu6lY502Dk2o1GeUKH/NYKFssFYjNhZ6QNGQyQg=;
+        fh=ou9WwAWkFbBDtrYluijzdFLlSJKncehGww8dMC2w/x0=;
+        b=eWz0wjKAj7ggu9ZUUmXV/bsFCrN1p2LG+tNrfsNIpqYGrCpMx7JUhatpTs60A9DEIY
+         O/2BQIB38+8O+PR+koNbXcyVSK3VPcRtJ1SbDEDtjeFvSQwIrAOkj0l9dp2q/gv6OmCV
+         M9AdVG5GV9d/2wVnRkLWn2EZWsslcGied1GhRvyh7cQuyf1QOK6S/nDmDhyx4Aq+f4nL
+         hghnS4JIA+kkcnAdxj8OmlZsIRhs7lGCkHHcp4m3FSsHuWHOeP8ZRpJkGcFMMaic93Jq
+         d1xNaklb5UFp/FWtj09O/vTDRrhkForCAt99xcH4gViU3zYm7URD9oSCD/kzXFScOkh5
+         HynA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Rin7AQ4Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K9dIbNDv;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8daa0813bsi38841656d6.252.2024.12.06.02.25.57
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4672986f090si40710391cf.711.2024.12.06.03.22.42
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Dec 2024 02:25:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 06 Dec 2024 03:22:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Rin7AQ4Y;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=K9dIbNDv;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tJVVl-0001SF-UO; Fri, 06 Dec 2024 05:24:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tJVVk-0001RP-BO
- for qemu-arm@nongnu.org; Fri, 06 Dec 2024 05:24:36 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tJVVi-00049u-26
- for qemu-arm@nongnu.org; Fri, 06 Dec 2024 05:24:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1733480673;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=s+im4OO3hCjJQgqD3GiQCbQKHWzu0C0Dxbxj7TZu/uQ=;
- b=Rin7AQ4YNiHcIBQl6g6SWbWxM8o/Z00t3Zbz/uTRoJDLqmKKDKnwwE5+Xye230O2g4un25
- hJ0+C5a7Yz2nTAJYwRWGoPIHpZRcssnrBTnw2EEDMqHFurrNcqE11/F11XTRvtKpsFlOdS
- kQRYYjsLbsvgZ71sXQ64YM9jjq7p9uA=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+	s=mimecast20190719; t=1733484162;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qmjoLu6lY502Dk2o1GeUKH/NYKFssFYjNhZ6QNGQyQg=;
+	b=K9dIbNDvkYzNlGeecUMZ6vUKgK4oexGdBUU1jNPMlhYSJb8c5kHpPYouR57xkMbMteSdHj
+	RwMr58Kfw7uIBvfIun/6VSD00QMdJvzUe11zXUJjuLjpXh9SeXdb6PeJwMrceOCJ0JqRCb
+	jF6xcvrVzBT+1azFuRa+iXsku2DQ3O0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-619-Gus4826VPUOV6GlZiaQs4w-1; Fri,
- 06 Dec 2024 05:24:30 -0500
-X-MC-Unique: Gus4826VPUOV6GlZiaQs4w-1
-X-Mimecast-MFC-AGG-ID: Gus4826VPUOV6GlZiaQs4w
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A6E9D1955F39; Fri,  6 Dec 2024 10:24:28 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.66])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C18BF3000238; Fri,  6 Dec 2024 10:24:23 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-arm@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Tyrone Ting <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 4/6] tests/functional: Convert the cubieboard avocado tests
-Date: Fri,  6 Dec 2024 11:23:54 +0100
-Message-ID: <20241206102358.1186644-5-thuth@redhat.com>
-In-Reply-To: <20241206102358.1186644-1-thuth@redhat.com>
-References: <20241206102358.1186644-1-thuth@redhat.com>
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-453-pRJRNUj1PWO-fXvFAraEtQ-1; Fri,
+ 06 Dec 2024 06:22:41 -0500
+X-MC-Unique: pRJRNUj1PWO-fXvFAraEtQ-1
+X-Mimecast-MFC-AGG-ID: pRJRNUj1PWO-fXvFAraEtQ
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B5D2319560A3;
+	Fri,  6 Dec 2024 11:22:38 +0000 (UTC)
+Received: from gondolin.str.redhat.com (dhcp-192-244.str.redhat.com [10.33.192.244])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP id 98EC519560AD;
+	Fri,  6 Dec 2024 11:22:32 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger.pro@gmail.com,
+	eric.auger@redhat.com,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	maz@kernel.org,
+	oliver.upton@linux.dev,
+	sebott@redhat.com,
+	shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com,
+	berrange@redhat.com,
+	abologna@redhat.com,
+	jdenemar@redhat.com
+Cc: shahuang@redhat.com,
+	mark.rutland@arm.com,
+	philmd@linaro.org,
+	pbonzini@redhat.com,
+	Cornelia Huck <cohuck@redhat.com>
+Subject: [PATCH RFCv2 02/20] arm/cpu: Add sysreg definitions in cpu-sysregs.h
+Date: Fri,  6 Dec 2024 12:21:55 +0100
+Message-ID: <20241206112213.88394-3-cohuck@redhat.com>
+In-Reply-To: <20241206112213.88394-1-cohuck@redhat.com>
+References: <20241206112213.88394-1-cohuck@redhat.com>
 MIME-Version: 1.0
+Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QEj9jEjVkAXh
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: r9Zin9iVmAai
 
-Straight forward conversion, just the hashsums needed to be
-updated to sha256 now.
+From: Eric Auger <eric.auger@redhat.com>
 
-These were the last tests that used image_pow2ceil_expand in
-boot_linux_console.py, so we can remove that function from that
-file now, too.
+This new header contains macros that define aarch64 registers.
+In a subsequent patch, this will be replaced by a more exhaustive
+version that will be generated from linux arch/arm64/tools/sysreg
+file. Those macros are sufficient to migrate the storage of those
+ID regs from named fields in isar struct to an array cell.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 ---
- MAINTAINERS                             |   1 +
- tests/avocado/boot_linux_console.py     | 157 ------------------------
- tests/functional/meson.build            |   2 +
- tests/functional/test_arm_cubieboard.py | 150 ++++++++++++++++++++++
- 4 files changed, 153 insertions(+), 157 deletions(-)
- create mode 100755 tests/functional/test_arm_cubieboard.py
+ target/arm/cpu-sysregs.h | 42 +++++++++++++++++++++++++++++++
+ target/arm/cpu.h         | 54 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 96 insertions(+)
+ create mode 100644 target/arm/cpu-sysregs.h
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9b1c3459b4..dc583d5853 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -633,6 +633,7 @@ F: include/hw/*/allwinner*
- F: hw/arm/cubieboard.c
- F: docs/system/arm/cubieboard.rst
- F: hw/misc/axp209.c
-+F: tests/functional/test_arm_cubieboard.py
- 
- Allwinner-h3
- M: Niek Linnenbank <nieklinnenbank@gmail.com>
-diff --git a/tests/avocado/boot_linux_console.py b/tests/avocado/boot_linux_console.py
-index 3250168ccf..ea31f154e3 100644
---- a/tests/avocado/boot_linux_console.py
-+++ b/tests/avocado/boot_linux_console.py
-@@ -24,22 +24,6 @@
- from avocado.utils import process
- from avocado.utils import archive
- 
--"""
--Round up to next power of 2
--"""
--def pow2ceil(x):
--    return 1 if x == 0 else 2**(x - 1).bit_length()
--
--"""
--Expand file size to next power of 2
--"""
--def image_pow2ceil_expand(path):
--        size = os.path.getsize(path)
--        size_aligned = pow2ceil(size)
--        if size != size_aligned:
--            with open(path, 'ab+') as fd:
--                fd.truncate(size_aligned)
--
- class LinuxKernelTest(QemuSystemTest):
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
- 
-@@ -132,147 +116,6 @@ def test_arm_virt(self):
-         console_pattern = 'Kernel command line: %s' % kernel_command_line
-         self.wait_for_console_pattern(console_pattern)
- 
--    def test_arm_cubieboard_initrd(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:cubieboard
--        :avocado: tags=accel:tcg
--        """
--        deb_url = ('https://apt.armbian.com/pool/main/l/'
--                   'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
--        deb_hash = 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
--        kernel_path = self.extract_from_deb(deb_path,
--                                            '/boot/vmlinuz-6.6.16-current-sunxi')
--        dtb_path = '/usr/lib/linux-image-6.6.16-current-sunxi/sun4i-a10-cubieboard.dtb'
--        dtb_path = self.extract_from_deb(deb_path, dtb_path)
--        initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
--                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
--                      'arm/rootfs-armv5.cpio.gz')
--        initrd_hash = '2b50f1873e113523967806f4da2afe385462ff9b'
--        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
--        initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
--        archive.gzip_uncompress(initrd_path_gz, initrd_path)
--
--        self.vm.set_console()
--        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
--                               'console=ttyS0,115200 '
--                               'usbcore.nousb '
--                               'panic=-1 noreboot')
--        self.vm.add_args('-kernel', kernel_path,
--                         '-dtb', dtb_path,
--                         '-initrd', initrd_path,
--                         '-append', kernel_command_line,
--                         '-no-reboot')
--        self.vm.launch()
--        self.wait_for_console_pattern('Boot successful.')
--
--        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
--                                                'Allwinner sun4i/sun5i')
--        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
--                                                'system-control@1c00000')
--        exec_command_and_wait_for_pattern(self, 'reboot',
--                                                'reboot: Restarting system')
--        # Wait for VM to shut down gracefully
--        self.vm.wait()
--
--    def test_arm_cubieboard_sata(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:cubieboard
--        :avocado: tags=accel:tcg
--        """
--        deb_url = ('https://apt.armbian.com/pool/main/l/'
--                   'linux-6.6.16/linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb')
--        deb_hash = 'f7c3c8c5432f765445dc6e7eab02f3bbe668256b'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
--        kernel_path = self.extract_from_deb(deb_path,
--                                            '/boot/vmlinuz-6.6.16-current-sunxi')
--        dtb_path = '/usr/lib/linux-image-6.6.16-current-sunxi/sun4i-a10-cubieboard.dtb'
--        dtb_path = self.extract_from_deb(deb_path, dtb_path)
--        rootfs_url = ('https://github.com/groeck/linux-build-test/raw/'
--                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
--                      'arm/rootfs-armv5.ext2.gz')
--        rootfs_hash = '093e89d2b4d982234bf528bc9fb2f2f17a9d1f93'
--        rootfs_path_gz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
--        rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
--        archive.gzip_uncompress(rootfs_path_gz, rootfs_path)
--
--        self.vm.set_console()
--        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
--                               'console=ttyS0,115200 '
--                               'usbcore.nousb '
--                               'root=/dev/sda ro '
--                               'panic=-1 noreboot')
--        self.vm.add_args('-kernel', kernel_path,
--                         '-dtb', dtb_path,
--                         '-drive', 'if=none,format=raw,id=disk0,file='
--                                   + rootfs_path,
--                         '-device', 'ide-hd,bus=ide.0,drive=disk0',
--                         '-append', kernel_command_line,
--                         '-no-reboot')
--        self.vm.launch()
--        self.wait_for_console_pattern('Boot successful.')
--
--        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
--                                                'Allwinner sun4i/sun5i')
--        exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
--                                                'sda')
--        exec_command_and_wait_for_pattern(self, 'reboot',
--                                                'reboot: Restarting system')
--        # Wait for VM to shut down gracefully
--        self.vm.wait()
--
--    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
--    def test_arm_cubieboard_openwrt_22_03_2(self):
--        """
--        :avocado: tags=arch:arm
--        :avocado: tags=machine:cubieboard
--        :avocado: tags=device:sd
--        """
--
--        # This test download a 7.5 MiB compressed image and expand it
--        # to 126 MiB.
--        image_url = ('https://downloads.openwrt.org/releases/22.03.2/targets/'
--                     'sunxi/cortexa8/openwrt-22.03.2-sunxi-cortexa8-'
--                     'cubietech_a10-cubieboard-ext4-sdcard.img.gz')
--        image_hash = ('94b5ecbfbc0b3b56276e5146b899eafa'
--                      '2ac5dc2d08733d6705af9f144f39f554')
--        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash,
--                                         algorithm='sha256')
--        image_path = archive.extract(image_path_gz, self.workdir)
--        image_pow2ceil_expand(image_path)
--
--        self.vm.set_console()
--        self.vm.add_args('-drive', 'file=' + image_path + ',if=sd,format=raw',
--                         '-nic', 'user',
--                         '-no-reboot')
--        self.vm.launch()
--
--        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
--                               'usbcore.nousb '
--                               'noreboot')
--
--        self.wait_for_console_pattern('U-Boot SPL')
--
--        interrupt_interactive_console_until_pattern(
--                self, 'Hit any key to stop autoboot:', '=>')
--        exec_command_and_wait_for_pattern(self, "setenv extraargs '" +
--                                                kernel_command_line + "'", '=>')
--        exec_command_and_wait_for_pattern(self, 'boot', 'Starting kernel ...');
--
--        self.wait_for_console_pattern(
--            'Please press Enter to activate this console.')
--
--        exec_command_and_wait_for_pattern(self, ' ', 'root@')
--
--        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
--                                                'Allwinner sun4i/sun5i')
--        exec_command_and_wait_for_pattern(self, 'reboot',
--                                                'reboot: Restarting system')
--        # Wait for VM to shut down gracefully
--        self.vm.wait()
--
-     @skipUnless(os.getenv('AVOCADO_TIMEOUT_EXPECTED'), 'Test might timeout')
-     def test_arm_quanta_gsj(self):
-         """
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 905afba4a6..8457b14b37 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -21,6 +21,7 @@ test_timeouts = {
-   'arm_aspeed' : 600,
-   'arm_bpim2u' : 500,
-   'arm_collie' : 180,
-+  'arm_cubieboard' : 360,
-   'arm_orangepi' : 540,
-   'arm_raspi2' : 120,
-   'arm_tuxrun' : 240,
-@@ -75,6 +76,7 @@ tests_arm_system_thorough = [
-   'arm_bpim2u',
-   'arm_canona1100',
-   'arm_collie',
-+  'arm_cubieboard',
-   'arm_emcraft_sf2',
-   'arm_integratorcp',
-   'arm_orangepi',
-diff --git a/tests/functional/test_arm_cubieboard.py b/tests/functional/test_arm_cubieboard.py
-new file mode 100755
-index 0000000000..2b33a1b50b
+diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
+new file mode 100644
+index 000000000000..f4b63a3af77b
 --- /dev/null
-+++ b/tests/functional/test_arm_cubieboard.py
-@@ -0,0 +1,150 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots a Linux kernel and checks the console
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
++++ b/target/arm/cpu-sysregs.h
+@@ -0,0 +1,42 @@
++#ifndef ARM_CPU_SYSREGS_H
++#define ARM_CPU_SYSREGS_H
 +
-+import os
-+import shutil
++/* to be generated */
 +
-+from qemu_test import LinuxKernelTest, Asset, exec_command_and_wait_for_pattern
-+from qemu_test import interrupt_interactive_console_until_pattern
-+from qemu_test.utils import gzip_uncompress, image_pow2ceil_expand
-+from unittest import skipUnless
++#define SYS_ID_AA64PFR0_EL1                             sys_reg(3, 0, 0, 4, 0)
++#define SYS_ID_AA64PFR1_EL1                             sys_reg(3, 0, 0, 4, 1)
++#define SYS_ID_AA64SMFR0_EL1                            sys_reg(3, 0, 0, 4, 5)
++#define SYS_ID_AA64DFR0_EL1                             sys_reg(3, 0, 0, 5, 0)
++#define SYS_ID_AA64DFR1_EL1                             sys_reg(3, 0, 0, 5, 1)
++#define SYS_ID_AA64ISAR0_EL1                            sys_reg(3, 0, 0, 6, 0)
++#define SYS_ID_AA64ISAR1_EL1                            sys_reg(3, 0, 0, 6, 1)
++#define SYS_ID_AA64ISAR2_EL1                            sys_reg(3, 0, 0, 6, 2)
++#define SYS_ID_AA64MMFR0_EL1                            sys_reg(3, 0, 0, 7, 0)
++#define SYS_ID_AA64MMFR1_EL1                            sys_reg(3, 0, 0, 7, 1)
++#define SYS_ID_AA64MMFR2_EL1                            sys_reg(3, 0, 0, 7, 2)
++#define SYS_ID_AA64MMFR3_EL1                            sys_reg(3, 0, 0, 7, 3)
 +
-+class CubieboardMachine(LinuxKernelTest):
++#define SYS_ID_PFR0_EL1                                 sys_reg(3, 0, 0, 1, 0)
++#define SYS_ID_PFR1_EL1                                 sys_reg(3, 0, 0, 1, 1)
++#define SYS_ID_DFR0_EL1                                 sys_reg(3, 0, 0, 1, 2)
++#define SYS_ID_MMFR0_EL1                                sys_reg(3, 0, 0, 1, 4)
++#define SYS_ID_MMFR1_EL1                                sys_reg(3, 0, 0, 1, 5)
++#define SYS_ID_MMFR2_EL1                                sys_reg(3, 0, 0, 1, 6)
++#define SYS_ID_MMFR3_EL1                                sys_reg(3, 0, 0, 1, 7)
++#define SYS_ID_ISAR0_EL1                                sys_reg(3, 0, 0, 2, 0)
++#define SYS_ID_ISAR1_EL1                                sys_reg(3, 0, 0, 2, 1)
++#define SYS_ID_ISAR2_EL1                                sys_reg(3, 0, 0, 2, 2)
++#define SYS_ID_ISAR3_EL1                                sys_reg(3, 0, 0, 2, 3)
++#define SYS_ID_ISAR4_EL1                                sys_reg(3, 0, 0, 2, 4)
++#define SYS_ID_ISAR5_EL1                                sys_reg(3, 0, 0, 2, 5)
++#define SYS_ID_MMFR4_EL1                                sys_reg(3, 0, 0, 2, 6)
++#define SYS_ID_ISAR6_EL1                                sys_reg(3, 0, 0, 2, 7)
++#define SYS_MVFR0_EL1                                   sys_reg(3, 0, 0, 3, 0)
++#define SYS_MVFR1_EL1                                   sys_reg(3, 0, 0, 3, 1)
++#define SYS_MVFR2_EL1                                   sys_reg(3, 0, 0, 3, 2)
++#define SYS_ID_PFR2_EL1                                 sys_reg(3, 0, 0, 3, 4)
++#define SYS_ID_DFR1_EL1                                 sys_reg(3, 0, 0, 3, 5)
++#define SYS_ID_MMFR5_EL1                                sys_reg(3, 0, 0, 3, 6)
++#define SYS_ID_AA64ZFR0_EL1                             sys_reg(3, 0, 0, 4, 4)
 +
-+    ASSET_DEB = Asset(
-+        ('https://apt.armbian.com/pool/main/l/linux-6.6.16/'
-+         'linux-image-current-sunxi_24.2.1_armhf__6.6.16-Seb3e-D6b4a-P2359-Ce96bHfe66-HK01ba-V014b-B067e-R448a.deb'),
-+        '3d968c15b121ede871dce49d13ee7644d6f74b6b121b84c9a40f51b0c80d6d22')
++#endif
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index e359152a4dbc..9e0403c9810a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -144,6 +144,14 @@ typedef struct ARMGenericTimer {
+     uint64_t ctl; /* Timer Control register */
+ } ARMGenericTimer;
+ 
++typedef struct ARMSysReg {
++    int op0;
++    int op1;
++    int crn;
++    int crm;
++    int op2;
++} ARMSysReg;
 +
-+    ASSET_INITRD = Asset(
-+        ('https://github.com/groeck/linux-build-test/raw/'
-+         '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
-+         'arm/rootfs-armv5.cpio.gz'),
-+        '334b8d256db67a3f2b3ad070aa08b5ade39624e0e7e35b02f4359a577bc8f39b')
+ /* Define a maximum sized vector register.
+  * For 32-bit, this is a 128-bit NEON/AdvSIMD register.
+  * For 64-bit, this is a 2048-bit SVE register.
+@@ -841,6 +849,51 @@ typedef struct IdRegMap {
+     uint64_t regs[NR_ID_REGS];
+ } IdRegMap;
+ 
++#define ARM_FEATURE_ID_RANGE_IDX(op0, op1, crn, crm, op2)               \
++        ({                                                              \
++                __u64 __op1 = (op1) & 3;                                \
++                __op1 -= (__op1 == 3);                                  \
++                (__op1 << 6 | ((crm) & 7) << 3 | (op2));                \
++        })
 +
-+    ASSET_SATA_ROOTFS = Asset(
-+        ('https://github.com/groeck/linux-build-test/raw/'
-+         '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
-+         'arm/rootfs-armv5.ext2.gz'),
-+        '17fc750da568580b39372133051ef2f0a963c0c0b369b845614442d025701745')
++static inline uint64_t _get_idreg(const IdRegMap *map, ARMSysReg sr)
++{
++    int index = ARM_FEATURE_ID_RANGE_IDX(sr.op0, sr.op1, sr.crn, sr.crm, sr.op2);
 +
-+    ASSET_OPENWRT = Asset(
-+        ('https://downloads.openwrt.org/releases/22.03.2/targets/sunxi/cortexa8/'
-+         'openwrt-22.03.2-sunxi-cortexa8-cubietech_a10-cubieboard-ext4-sdcard.img.gz'),
-+        '94b5ecbfbc0b3b56276e5146b899eafa2ac5dc2d08733d6705af9f144f39f554')
++    return map->regs[index];
++}
 +
-+    def test_arm_cubieboard_initrd(self):
-+        self.set_machine('cubieboard')
-+        deb_path = self.ASSET_DEB.fetch()
-+        kernel_path = self.extract_from_deb(deb_path,
-+                                            '/boot/vmlinuz-6.6.16-current-sunxi')
-+        dtb_path = '/usr/lib/linux-image-6.6.16-current-sunxi/sun4i-a10-cubieboard.dtb'
-+        dtb_path = self.extract_from_deb(deb_path, dtb_path)
-+        initrd_path_gz = self.ASSET_INITRD.fetch()
-+        initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
-+        gzip_uncompress(initrd_path_gz, initrd_path)
++static inline void _set_idreg(IdRegMap *map, ARMSysReg sr, uint64_t value)
++{
++    int index = ARM_FEATURE_ID_RANGE_IDX(sr.op0, sr.op1, sr.crn, sr.crm, sr.op2);
 +
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyS0,115200 '
-+                               'usbcore.nousb '
-+                               'panic=-1 noreboot')
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
-+                         '-initrd', initrd_path,
-+                         '-append', kernel_command_line,
-+                         '-no-reboot')
-+        self.vm.launch()
-+        self.wait_for_console_pattern('Boot successful.')
++    map->regs[index] = value;
++}
 +
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-+                                                'Allwinner sun4i/sun5i')
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/iomem',
-+                                                'system-control@1c00000')
-+        exec_command_and_wait_for_pattern(self, 'reboot',
-+                                                'reboot: Restarting system')
-+        # Wait for VM to shut down gracefully
-+        self.vm.wait()
++/* REG is ID_XXX */
++#define FIELD_DP64_IDREG(MAP, REG, FIELD, VALUE)              \
++{                                                             \
++uint64_t regval = _get_idreg(MAP, SYS_ ## REG ## _EL1);       \
++regval = FIELD_DP64(regval, REG, FIELD, VALUE);               \
++_set_idreg(MAP, SYS_ ## REG ## _EL1, regval);                 \
++}
 +
-+    def test_arm_cubieboard_sata(self):
-+        self.set_machine('cubieboard')
-+        deb_path = self.ASSET_DEB.fetch()
-+        kernel_path = self.extract_from_deb(deb_path,
-+                                            '/boot/vmlinuz-6.6.16-current-sunxi')
-+        dtb_path = '/usr/lib/linux-image-6.6.16-current-sunxi/sun4i-a10-cubieboard.dtb'
-+        dtb_path = self.extract_from_deb(deb_path, dtb_path)
++#define FIELD_EX64_IDREG(MAP, REG, FIELD)                     \
++FIELD_EX64(_get_idreg(MAP, SYS_ ## REG ## _EL1), REG, FIELD)  \
 +
-+        rootfs_path_gz = self.ASSET_SATA_ROOTFS.fetch()
-+        rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
-+        gzip_uncompress(rootfs_path_gz, rootfs_path)
++#define SET_IDREG(MAP, REG, VALUE)                            \
++_set_idreg(MAP, SYS_ ## REG ## _EL1, VALUE)
 +
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyS0,115200 '
-+                               'usbcore.nousb '
-+                               'root=/dev/sda ro '
-+                               'panic=-1 noreboot')
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
-+                         '-drive', 'if=none,format=raw,id=disk0,file='
-+                                   + rootfs_path,
-+                         '-device', 'ide-hd,bus=ide.0,drive=disk0',
-+                         '-append', kernel_command_line,
-+                         '-no-reboot')
-+        self.vm.launch()
-+        self.wait_for_console_pattern('Boot successful.')
++#define GET_IDREG(MAP, REG)                                   \
++_get_idreg(MAP, SYS_ ## REG ## _EL1)
 +
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-+                                                'Allwinner sun4i/sun5i')
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/partitions',
-+                                                'sda')
-+        exec_command_and_wait_for_pattern(self, 'reboot',
-+                                                'reboot: Restarting system')
-+        # Wait for VM to shut down gracefully
-+        self.vm.wait()
++static inline ARMSysReg sys_reg(int op0, int op1, int crn, int crm, int op2)
++{
++        ARMSysReg sr = {op0, op1, crn, crm, op2};
 +
-+    @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
-+    def test_arm_cubieboard_openwrt_22_03_2(self):
-+        # This test download a 7.5 MiB compressed image and expand it
-+        # to 126 MiB.
-+        self.set_machine('cubieboard')
-+        image_path_gz = self.ASSET_OPENWRT.fetch()
-+        image_path = os.path.join(self.workdir, 'sdcard.img')
-+        gzip_uncompress(image_path_gz, image_path)
-+        image_pow2ceil_expand(image_path)
++        return sr;
++}
 +
-+        self.vm.set_console()
-+        self.vm.add_args('-drive', 'file=' + image_path + ',if=sd,format=raw',
-+                         '-nic', 'user',
-+                         '-no-reboot')
-+        self.vm.launch()
-+
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'usbcore.nousb '
-+                               'noreboot')
-+
-+        self.wait_for_console_pattern('U-Boot SPL')
-+
-+        interrupt_interactive_console_until_pattern(
-+                self, 'Hit any key to stop autoboot:', '=>')
-+        exec_command_and_wait_for_pattern(self, "setenv extraargs '" +
-+                                                kernel_command_line + "'", '=>')
-+        exec_command_and_wait_for_pattern(self, 'boot', 'Starting kernel ...');
-+
-+        self.wait_for_console_pattern(
-+            'Please press Enter to activate this console.')
-+
-+        exec_command_and_wait_for_pattern(self, ' ', 'root@')
-+
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/cpuinfo',
-+                                                'Allwinner sun4i/sun5i')
-+        exec_command_and_wait_for_pattern(self, 'reboot',
-+                                                'reboot: Restarting system')
-+        # Wait for VM to shut down gracefully
-+        self.vm.wait()
-+
-+if __name__ == '__main__':
-+    LinuxKernelTest.main()
+ /**
+  * ARMCPU:
+  * @env: #CPUARMState
+@@ -1052,6 +1105,7 @@ struct ArchCPU {
+         uint64_t id_aa64zfr0;
+         uint64_t id_aa64smfr0;
+         uint64_t reset_pmcr_el0;
++        IdRegMap idregs;
+     } isar;
+     uint64_t midr;
+     uint32_t revidr;
 -- 
-2.47.1
-
+2.47.0

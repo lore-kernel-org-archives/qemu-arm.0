@@ -1,172 +1,359 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp781177njb;
-        Fri, 6 Dec 2024 03:46:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUceKS2E6UoRkh0WwSaG2766RTmMKBPoOZRGd08tB9ERhinNMBF1oYJpUesR9ZaZNGNL4Dk4dhVWc6JrQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGS0fLDzD8sdzT3o9oAVZiVP8Ken8oJAK06nThGTE8m1dArjzAniv+QJE1Mzg2dCkMHreFR
-X-Received: by 2002:a05:6102:316e:b0:4af:4902:1599 with SMTP id ada2fe7eead31-4afcaaecf40mr2966330137.21.1733485575489;
-        Fri, 06 Dec 2024 03:46:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733485575; cv=none;
-        d=google.com; s=arc-20240605;
-        b=et08f+KDFXWGVk0yZXm2DfCrP5nxxw952O9Ln4nJR75v0CCtme2+Px6AJydtBHSwb0
-         tt0yE6+RV+3ZTttvgIxTWkib/HGoMYIzct5Z9ZI+hX/lVcxu5X/tM7U1K1P2QlVVcahC
-         2Wt9B1Rhxoe4l+vyZJjRHBcgWpYTR/cUBPj0YioaLihsYv3MnVyhTkGu9DW/NdndyAFo
-         szC6YOrw8iklfLgnLgeX69v2EH1ESlabSmFFbFyP5LQaTsGLigDMCQB9zfCiZcxEfAmG
-         vnvXyQWmrR3Y5qhNllPxkUw9DSGMdOttySKn9N/D1BeWpHKXSWrAQHl7gLWjGicOiasK
-         LyDg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=KBwOpemEBqlNmPB2lZ+/51jaUp+413L5fMNmznOJi1A=;
-        fh=K4h7MvRDw0IPZW3lDo29HehuprbNYnBwfakYiRP7UPM=;
-        b=Ox0F4XjNzECBkMTUY+1nHug58UM5FuLq73+vQIwwa4eY2UU/GopyfC2h5uUMA++Krm
-         iCGpqxU1efo0DyQvEAXo+RS40Jm5LnTOjEvFdNd/sNXoRt8PpKsIkm6wwurq0L/HaXPY
-         rjEo9H3M9nNSLyl8BcKB1jhehThqsV0+83cL8O/66Q4YSx2YkUn8dNGz8rfWAH+O339D
-         29jhjf8Rc8sl+LU1q0KDXXney5PP8oUQOOeaAFkgF2YeLk3Stw8WD9M6KFn46t7QpflF
-         NUBvQ/zlAELBjYf920cGa06wVWJqLlA613wc2xsmzsS+5WUeOeUarqvogLsk+1y6rpdR
-         4J7A==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SQ+U9F0z;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6b5aaafc2si437810185a.476.2024.12.06.03.46.15
-        for <alex.bennee@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d526b14csm99454085e9.2.2024.12.06.08.02.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Dec 2024 03:46:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SQ+U9F0z;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1733485575;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=KBwOpemEBqlNmPB2lZ+/51jaUp+413L5fMNmznOJi1A=;
-	b=SQ+U9F0ziYDjWeTDHhVd36IpqUHpOrVoD/rNwIRNU7gYQtrJiCDauM5QAQJDk3Kh0HGVkZ
-	IAgnl8jhGjHtNpkacmuCYM27U9gzE9uurKxleOLhSahFGRBRPw+t5++PFokG6x4sUNsSYb
-	YvM7+xaOCgYAHrA2UqI1wzdB9vGYgI4=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-623-rpDeA9GNNdS-8Wbm2CdB3g-1; Fri,
- 06 Dec 2024 06:46:13 -0500
-X-MC-Unique: rpDeA9GNNdS-8Wbm2CdB3g-1
-X-Mimecast-MFC-AGG-ID: rpDeA9GNNdS-8Wbm2CdB3g
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id ADCCE1955F40;
-	Fri,  6 Dec 2024 11:46:10 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.160])
-	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 40495300019E;
-	Fri,  6 Dec 2024 11:46:02 +0000 (UTC)
-Date: Fri, 6 Dec 2024 11:45:58 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org,
-	Fabiano Rosas <farosas@suse.de>, Kevin Wolf <kwolf@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	gustavo.romero@linaro.org, Andrew Melnychenko <andrew@daynix.com>,
-	qemu-arm@nongnu.org, alex.bennee@linaro.org,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Peter Xu <peterx@redhat.com>, Markus Armbruster <armbru@redhat.com>,
-	Yuri Benditovich <yuri.benditovich@daynix.com>,
-	Jason Wang <jasowang@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	manos.pitsidianakis@linaro.org, qemu-block@nongnu.org
-Subject: Re: [PATCH v2 2/6] docs/devel: add git-publish for patch submitting
-Message-ID: <Z1Lj9oZvv1FIqRj5@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20241205222241.3789437-1-pierrick.bouvier@linaro.org>
- <20241205222241.3789437-3-pierrick.bouvier@linaro.org>
- <Z1LgpKB_J4Df4wcE@redhat.com>
- <CAFEAcA-WadSi-U+Q9MFY_+vhNimJ1HpCcSZE7aVz3PRKuwc+ew@mail.gmail.com>
+        Fri, 06 Dec 2024 08:02:40 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id A7D845F9FB;
+	Fri,  6 Dec 2024 16:02:39 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-stable@nongnu.org,
+	Andrei Homescu <ahomescu@google.com>,
+	=?UTF-8?q?Arve=20Hj=C3=B8nnev=C3=A5g?= <arve@google.com>,
+	=?UTF-8?q?R=C3=A9mi=20Denis-Courmont?= <remi.denis.courmont@huawei.com>
+Subject: [PATCH 3/3] target/arm: implement SEL2 physical and virtual timers
+Date: Fri,  6 Dec 2024 16:02:39 +0000
+Message-Id: <20241206160239.3229094-4-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241206160239.3229094-1-alex.bennee@linaro.org>
+References: <20241206160239.3229094-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAFEAcA-WadSi-U+Q9MFY_+vhNimJ1HpCcSZE7aVz3PRKuwc+ew@mail.gmail.com>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-TUID: o32aLj4wn2pB
+X-TUID: r+z1eb/GtqdJ
 
-On Fri, Dec 06, 2024 at 11:43:11AM +0000, Peter Maydell wrote:
-> On Fri, 6 Dec 2024 at 11:32, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> >
-> > On Thu, Dec 05, 2024 at 02:22:37PM -0800, Pierrick Bouvier wrote:
-> > > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> > > ---
-> > >  docs/devel/submitting-a-patch.rst | 19 +++++++++++++++++++
-> > >  1 file changed, 19 insertions(+)
-> > >
-> > > diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
-> > > index 03b2ac298aa..f8b7fc59544 100644
-> > > --- a/docs/devel/submitting-a-patch.rst
-> > > +++ b/docs/devel/submitting-a-patch.rst
-> > > @@ -235,6 +235,25 @@ to another list.) ``git send-email`` (`step-by-step setup guide
-> > >  works best for delivering the patch without mangling it, but
-> > >  attachments can be used as a last resort on a first-time submission.
-> > >
-> > > +.. _use_git_publish:
-> > > +
-> > > +Use git-publish
-> > > +~~~~~~~~~~~~~~~
-> > > +
-> > > +If you already configured git send-email, you can simply use `git-publish
-> > > +<https://github.com/stefanha/git-publish>`__ to send series.
-> > > +
-> > > +::
-> > > +
-> > > +    $ git checkout master -b my-feature
-> > > +    $ # work on new commits, add your 'Signed-off-by' lines to each
-> > > +    $ git publish
-> > > +    $ ... more work, rebase on master, ...
-> > > +    $ git publish # will send a v2
-> > > +
-> > > +Each time you post a series, git-publish will create a local tag with the format
-> > > +``<branchname>-v<version>`` to record the patch series.
-> >
-> > Lets also mention
-> >
-> >   "When sending patch emails, 'git publish' will consult the output
-> >    of 'scripts/get_maintainers.pl' and automatically CC anyone listed
-> >    as maintainers of the affected code. Generally you should accept the
-> >    suggested CC list, but there may sometimes be scenarios where it is
-> >    appropriate to cut it down (eg on certain large tree-wide cleanups),
-> >    or augment it with other interested people"
-> >
-> > Second, lets say something about pull requests
-> >
-> >   "When a subsystem maintainer is ready to send a pull request, the
-> >    'git publish --pull' command will triggering GPG tag signing,
-> >    publish the branch to the git remote name specified by the
-> >    'remote.pushDefault' config option, and send the email series'
-> 
-> We don't do pull requests for the normal "end developer submits
-> a patch" process, and given the prevalence of the github/gitlab
-> "all contributions go in as pull requests" model, I think that
-> talking about pull requests here (except to say "we don't do them")
-> would be confusing. If we want to document how you can use git publish
-> for pull request submission we can do that in
-> docs/devel/submitting-a-pull-request.rst.
+When FEAT_SEL2 was implemented the SEL2 timers where missed. This
+shows up when building the latest Hafnium with SPMC_AT_EL=2. The
+actual implementation utilises the same logic as the rest of the
+timers so all we need to do is:
 
-Ah yes, I agree with that.
+  - define the timers and their access functions
+  - conditionally add the correct system registers
+  - create a new accessfn as the rules are subtly different to the
+    existing secure timer
 
+Fixes: e9152ee91c (target/arm: add ARMv8.4-SEL2 system registers)
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: qemu-stable@nongnu.org
+Cc: Andrei Homescu <ahomescu@google.com>
+Cc: Arve Hjønnevåg <arve@google.com>
+Cc: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-With regards,
-Daniel
+---
+v1
+  - add better comments to GTIMER descriptions
+  - also define new timers for sbsa-ref
+  - don't conditionally gate qemu_timer creation on the feature
+  - take cntvoff_el2 int account for SEC_VEL2 in gt_recalc/g_tval_[read|write]
+---
+ include/hw/arm/bsa.h |   2 +
+ target/arm/cpu.h     |   2 +
+ target/arm/gtimer.h  |   4 +-
+ hw/arm/sbsa-ref.c    |   2 +
+ hw/arm/virt.c        |   2 +
+ target/arm/cpu.c     |   4 ++
+ target/arm/helper.c  | 158 +++++++++++++++++++++++++++++++++++++++++++
+ 7 files changed, 173 insertions(+), 1 deletion(-)
+
+diff --git a/include/hw/arm/bsa.h b/include/hw/arm/bsa.h
+index 8eaab603c0..b4ecca1b1c 100644
+--- a/include/hw/arm/bsa.h
++++ b/include/hw/arm/bsa.h
+@@ -22,6 +22,8 @@
+ #define QEMU_ARM_BSA_H
+ 
+ /* These are architectural INTID values */
++#define ARCH_TIMER_S_VIRT_EL2_IRQ  19
++#define ARCH_TIMER_S_EL2_IRQ       20
+ #define VIRTUAL_PMU_IRQ            23
+ #define ARCH_GIC_MAINT_IRQ         25
+ #define ARCH_TIMER_NS_EL2_IRQ      26
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index d86e641280..10b5354d6f 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1139,6 +1139,8 @@ void arm_gt_vtimer_cb(void *opaque);
+ void arm_gt_htimer_cb(void *opaque);
+ void arm_gt_stimer_cb(void *opaque);
+ void arm_gt_hvtimer_cb(void *opaque);
++void arm_gt_sel2timer_cb(void *opaque);
++void arm_gt_sel2vtimer_cb(void *opaque);
+ 
+ unsigned int gt_cntfrq_period_ns(ARMCPU *cpu);
+ void gt_rme_post_el_change(ARMCPU *cpu, void *opaque);
+diff --git a/target/arm/gtimer.h b/target/arm/gtimer.h
+index de016e6da3..f8f7425a5f 100644
+--- a/target/arm/gtimer.h
++++ b/target/arm/gtimer.h
+@@ -15,7 +15,9 @@ enum {
+     GTIMER_HYP      = 2, /* EL2 physical timer */
+     GTIMER_SEC      = 3, /* EL3 physical timer */
+     GTIMER_HYPVIRT  = 4, /* EL2 virtual timer */
+-#define NUM_GTIMERS   5
++    GTIMER_SEC_PEL2 = 5, /* Secure EL2 physical timer */
++    GTIMER_SEC_VEL2 = 6, /* Secure EL2 virtual timer */
++#define NUM_GTIMERS   7
+ };
+ 
+ #endif
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index e3195d5449..5dc36b3cee 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -484,6 +484,8 @@ static void create_gic(SBSAMachineState *sms, MemoryRegion *mem)
+             [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
+             [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
+             [GTIMER_HYPVIRT] = ARCH_TIMER_NS_EL2_VIRT_IRQ,
++            [GTIMER_SEC_PEL2] = ARCH_TIMER_S_EL2_IRQ,
++            [GTIMER_SEC_VEL2] = ARCH_TIMER_S_VIRT_EL2_IRQ,
+         };
+ 
+         for (irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 1a381e9a2b..451d154459 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -873,6 +873,8 @@ static void create_gic(VirtMachineState *vms, MemoryRegion *mem)
+             [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
+             [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ,
+             [GTIMER_HYPVIRT] = ARCH_TIMER_NS_EL2_VIRT_IRQ,
++            [GTIMER_SEC_PEL2] = ARCH_TIMER_S_EL2_IRQ,
++            [GTIMER_SEC_VEL2] = ARCH_TIMER_S_VIRT_EL2_IRQ,
+         };
+ 
+         for (unsigned irq = 0; irq < ARRAY_SIZE(timer_irq); irq++) {
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 6938161b95..d15916c436 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2078,6 +2078,10 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+                                               arm_gt_stimer_cb, cpu);
+         cpu->gt_timer[GTIMER_HYPVIRT] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
+                                                   arm_gt_hvtimer_cb, cpu);
++        cpu->gt_timer[GTIMER_SEC_PEL2] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
++                                                   arm_gt_sel2timer_cb, cpu);
++        cpu->gt_timer[GTIMER_SEC_VEL2] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
++                                                   arm_gt_sel2vtimer_cb, cpu);
+     }
+ #endif
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index cd147b717a..f82503304e 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2668,6 +2668,41 @@ static CPAccessResult gt_stimer_access(CPUARMState *env,
+     }
+ }
+ 
++static CPAccessResult gt_sel2timer_access(CPUARMState *env,
++                                          const ARMCPRegInfo *ri,
++                                          bool isread)
++{
++    /*
++     * The AArch64 register view of the secure EL2 timers are mostly
++     * accessible from EL3 and EL2 although can also be trapped to EL2
++     * from EL1 depending on nested virt config.
++     */
++    switch (arm_current_el(env)) {
++    case 0:
++        return CP_ACCESS_TRAP;
++    case 1:
++        if (!arm_is_secure(env)) {
++            return CP_ACCESS_TRAP;
++        } else if (arm_hcr_el2_eff(env) & HCR_NV) {
++            return CP_ACCESS_TRAP_EL2;
++        }
++        return CP_ACCESS_TRAP;
++    case 2:
++        if (!arm_is_secure(env)) {
++            return CP_ACCESS_TRAP;
++        }
++        return CP_ACCESS_OK;
++    case 3:
++        if (env->cp15.scr_el3 & SCR_EEL2) {
++            return CP_ACCESS_OK;
++        } else {
++            return CP_ACCESS_TRAP;
++        }
++    default:
++        g_assert_not_reached();
++    }
++}
++
+ uint64_t gt_get_countervalue(CPUARMState *env)
+ {
+     ARMCPU *cpu = env_archcpu(env);
+@@ -2744,6 +2779,7 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+         switch (timeridx) {
+         case GTIMER_VIRT:
+         case GTIMER_HYPVIRT:
++        case GTIMER_SEC_VEL2:
+             offset = cpu->env.cp15.cntvoff_el2;
+             break;
+         default:
+@@ -2858,6 +2894,7 @@ static uint64_t gt_tval_read(CPUARMState *env, const ARMCPRegInfo *ri,
+     switch (timeridx) {
+     case GTIMER_VIRT:
+     case GTIMER_HYPVIRT:
++    case GTIMER_SEC_VEL2:
+         offset = gt_virt_cnt_offset(env);
+         break;
+     case GTIMER_PHYS:
+@@ -2878,6 +2915,7 @@ static void gt_tval_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     switch (timeridx) {
+     case GTIMER_VIRT:
+     case GTIMER_HYPVIRT:
++    case GTIMER_SEC_VEL2:
+         offset = gt_virt_cnt_offset(env);
+         break;
+     case GTIMER_PHYS:
+@@ -3186,6 +3224,62 @@ static void gt_sec_ctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     gt_ctl_write(env, ri, GTIMER_SEC, value);
+ }
+ 
++static void gt_sec_pel2_timer_reset(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    gt_timer_reset(env, ri, GTIMER_SEC_PEL2);
++}
++
++static void gt_sec_pel2_cval_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                                   uint64_t value)
++{
++    gt_cval_write(env, ri, GTIMER_SEC_PEL2, value);
++}
++
++static uint64_t gt_sec_pel2_tval_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    return gt_tval_read(env, ri, GTIMER_SEC_PEL2);
++}
++
++static void gt_sec_pel2_tval_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    gt_tval_write(env, ri, GTIMER_SEC_PEL2, value);
++}
++
++static void gt_sec_pel2_ctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    gt_ctl_write(env, ri, GTIMER_SEC_PEL2, value);
++}
++
++static void gt_sec_vel2_timer_reset(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    gt_timer_reset(env, ri, GTIMER_SEC_VEL2);
++}
++
++static void gt_sec_vel2_cval_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    gt_cval_write(env, ri, GTIMER_SEC_VEL2, value);
++}
++
++static uint64_t gt_sec_vel2_tval_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    return gt_tval_read(env, ri, GTIMER_SEC_VEL2);
++}
++
++static void gt_sec_vel2_tval_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                                   uint64_t value)
++{
++    gt_tval_write(env, ri, GTIMER_SEC_VEL2, value);
++}
++
++static void gt_sec_vel2_ctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    gt_ctl_write(env, ri, GTIMER_SEC_VEL2, value);
++}
++
+ static void gt_hv_timer_reset(CPUARMState *env, const ARMCPRegInfo *ri)
+ {
+     gt_timer_reset(env, ri, GTIMER_HYPVIRT);
+@@ -3242,6 +3336,20 @@ void arm_gt_stimer_cb(void *opaque)
+     gt_recalc_timer(cpu, GTIMER_SEC);
+ }
+ 
++void arm_gt_sel2timer_cb(void *opaque)
++{
++    ARMCPU *cpu = opaque;
++
++    gt_recalc_timer(cpu, GTIMER_SEC_PEL2);
++}
++
++void arm_gt_sel2vtimer_cb(void *opaque)
++{
++    ARMCPU *cpu = opaque;
++
++    gt_recalc_timer(cpu, GTIMER_SEC_VEL2);
++}
++
+ void arm_gt_hvtimer_cb(void *opaque)
+ {
+     ARMCPU *cpu = opaque;
+@@ -6624,6 +6732,56 @@ static const ARMCPRegInfo el2_sec_cp_reginfo[] = {
+       .access = PL2_RW, .accessfn = sel2_access,
+       .nv2_redirect_offset = 0x48,
+       .fieldoffset = offsetof(CPUARMState, cp15.vstcr_el2) },
++#ifndef CONFIG_USER_ONLY
++    /* Secure EL2 Physical Timer */
++    { .name = "CNTHPS_TVAL_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 5, .opc2 = 0,
++      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL2_RW,
++      .accessfn = gt_sel2timer_access,
++      .readfn = gt_sec_pel2_tval_read,
++      .writefn = gt_sec_pel2_tval_write,
++      .resetfn = gt_sec_pel2_timer_reset,
++    },
++    { .name = "CNTHPS_CTL_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 5, .opc2 = 1,
++      .type = ARM_CP_IO, .access = PL2_RW,
++      .accessfn = gt_sel2timer_access,
++      .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_PEL2].ctl),
++      .resetvalue = 0,
++      .writefn = gt_sec_pel2_ctl_write, .raw_writefn = raw_write,
++    },
++    { .name = "CNTHPS_CVAL_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 5, .opc2 = 2,
++      .type = ARM_CP_IO, .access = PL2_RW,
++      .accessfn = gt_sel2timer_access,
++      .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_PEL2].cval),
++      .writefn = gt_sec_pel2_cval_write, .raw_writefn = raw_write,
++    },
++    /* Secure EL2 Virtual Timer */
++    { .name = "CNTHVS_TVAL_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 4, .opc2 = 0,
++      .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL2_RW,
++      .accessfn = gt_sel2timer_access,
++      .readfn = gt_sec_vel2_tval_read,
++      .writefn = gt_sec_vel2_tval_write,
++      .resetfn = gt_sec_vel2_timer_reset,
++    },
++    { .name = "CNTHVS_CTL_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 4, .opc2 = 1,
++      .type = ARM_CP_IO, .access = PL2_RW,
++      .accessfn = gt_sel2timer_access,
++      .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_VEL2].ctl),
++      .resetvalue = 0,
++      .writefn = gt_sec_vel2_ctl_write, .raw_writefn = raw_write,
++    },
++    { .name = "CNTHVS_CVAL_EL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 4, .opc2 = 2,
++      .type = ARM_CP_IO, .access = PL2_RW,
++      .accessfn = gt_sel2timer_access,
++      .fieldoffset = offsetof(CPUARMState, cp15.c14_timer[GTIMER_SEC_VEL2].cval),
++      .writefn = gt_sec_vel2_cval_write, .raw_writefn = raw_write,
++    },
++#endif
+ };
+ 
+ static CPAccessResult nsacr_access(CPUARMState *env, const ARMCPRegInfo *ri,
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.39.5

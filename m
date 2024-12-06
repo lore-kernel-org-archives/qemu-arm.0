@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1013249njb;
-        Fri, 6 Dec 2024 09:21:35 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWGpkq6DCN+b+6vslTG9tBEl4JjrXc0AgvtBpAVI3tncz/c5IrZbFzow/I7mnGj6Ev41B9aRAvPjVz39g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEOVI2cgzbSo7WG6mAJMPhoytbpfrLQ2FJRIU7A8Xt3YDMN0zrKVWhAHAOE41t9OnHb3YlI
-X-Received: by 2002:a17:90b:1b50:b0:2ee:ad18:b309 with SMTP id 98e67ed59e1d1-2ef6955a58cmr6218743a91.3.1733505695296;
-        Fri, 06 Dec 2024 09:21:35 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733505695; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1013287njb;
+        Fri, 6 Dec 2024 09:21:40 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWEcCBgfwSXGWh7Yae5Gi4W4rFiPZ9BbKSXYXAvx6NyVC5r/mhV+yA4za8yMU1xfYcQEKifojr4Ok91mw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEm8m7hVWxo+EAUVivZ5Ti7KEhUAiW6breR6LgaA12U1SWcXQckJmQvUI1LwnxVG6iHRVTp
+X-Received: by 2002:a05:6a00:14c7:b0:724:5aac:173f with SMTP id d2e1a72fcca58-725b80fe7e2mr6779051b3a.8.1733505700040;
+        Fri, 06 Dec 2024 09:21:40 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1733505700; cv=pass;
         d=google.com; s=arc-20240605;
-        b=D0xGjCgJAXLh3EazBUMlOV41cdzWxAiSAxvubyn/GoZ4+189hJs2+KfQ3X1bxBoLmw
-         hM6zXCfUYPiE0rLioTuE+v09ky4jA60uHKsDPwm0maFw1tl56ZXeqRiqV/DVQs2qH9y4
-         lK0p1TO5KqMCOvlg0bEQ1DFithsCfBPvAIorQgF1sP+VSfp8s+XeQbuPwKCkrir6v3GY
-         AzUWzVxyI1iKhxyMAzKyLkZFMQcm5Fhwy2nitL0kqpTi/jfn2smBySRpUMdUF8vqgRwE
-         o36DvaaNTM1WjPPnYwx37Qmh6p4Ztol+Zq9nYGUHiDJyHZ501BS+4vtt59KSKbr5uMKi
-         q9+w==
+        b=dsSpqpS15uyBf+hq40EY5itz4hGiZ6arnnUvDlJjANP++AgcdYEJvTj09CFcsxqjK5
+         k+7c7fFgD6k3cAK2fct/eWr8pvtiG0kpoDud4a5f5U48Rs0wFQoXCkWw4e52It99tyxB
+         06k03qTw4okbd4RVPhxdNgCk0cr0W1K4MKIXjKIkZyCcbmvxquzScbeXD/kYWFpX9of1
+         lZ0bHkIum+Mk0ebLc7FjaCaKW+hao43yFpHlLCIgB8mnw1DgHsqhKBFrjGE4P0bzXDNT
+         OTi1SmyiuiH3irkJo8ATrU3WN43x49JjDrY7qdJfs0dHrPFqSRdbLRQVa110aNHMvxex
+         fo4Q==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=lR3fVOY3g4ehb77yW3uS7yXNPGV/+fMXvzpHnEiTBAI=;
+        bh=YtxYoWu+4rN8OxAnb3Z+UNJ6ZOdQdZn+0UcOBTQ3+1c=;
         fh=iUMV9EEFXu4MlKxCNfodurzM1E/+GIYNLUanQFJhC2M=;
-        b=VfRT6QKzfzt3GxBGbSwt/DdtH5sOTPstwBSBJbo3AHwUZ0QEyBKQDc2yOa6PylrVAK
-         fomi7P5up5Y1IFjnjUIjAOIQI5EfzIEBPXmOyuXQZH4GIzLnAKnhbbHgGM4kj8Tjh9I2
-         iPahBqEOxK/5+7nMJL18sHMCNayRExEF/2xF6qbWBr48kM6k360FvXiw0EE4evvgljTl
-         jp32shAFPRGuHo5+30kKN4uRyjtJpjsL/V8BSlus4+0IuM70H6JVNjMeLWy1eEDTBtw3
-         bvACYbOzqkYuQ9W2ux5oUhDFGpOFQuPKVgBQ7pMWADew1QRVhO9it7jmsn8KWhs2p84r
-         DGUQ==;
+        b=kTNAomZ1nEwQ1HH6AgtOuIZ0pEJ+ZVQISkKT47xdmhT3qE/ITPIGfSNyW1cY4+psRI
+         wDRbfS9rCNivt88sZsOZHH+8CZ3gVhIFaZGyl6BP+sY47iIPoHcjUZtaXN9HxbPHHlsK
+         V0z3M/6wYjuUKilBJsmwPfudKI7cj0VfHhalKXywa6wj5d49Jtui4STCkGSNrJUcyabQ
+         pVaNkPpApbPAo/QAhs7xP16fRnL2Vj15CzQ6nh1CCpjEdjIY2x3/rkztWazVRE1PEnGV
+         pWtFaiB5KoWQupxpWn3nDNYDVDxQvoYQuQ+gIsSSq/BdFFmmCNmP+/UF94g2mvw+92Ul
+         +5IA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=RMqQc44Y;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=BemPkb2V;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-435381-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435381-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-435383-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435383-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-435381-alex.bennee=linaro.org@vger.kernel.org>
+Return-Path: <linux-kernel+bounces-435383-alex.bennee=linaro.org@vger.kernel.org>
 Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-2ef27085f4csi3147111a91.98.2024.12.06.09.21.35
+        by mx.google.com with ESMTPS id d2e1a72fcca58-725a2c8787bsi3787836b3a.170.2024.12.06.09.21.39
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Dec 2024 09:21:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-435381-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Fri, 06 Dec 2024 09:21:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-435383-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=RMqQc44Y;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=BemPkb2V;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-435381-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435381-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-435383-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435383-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id D10F5287791
-	for <alex.bennee@linaro.org>; Fri,  6 Dec 2024 17:21:34 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 9809528776F
+	for <alex.bennee@linaro.org>; Fri,  6 Dec 2024 17:21:39 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id C7A2F1FFC6D;
-	Fri,  6 Dec 2024 17:21:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 25631203D4F;
+	Fri,  6 Dec 2024 17:21:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="RMqQc44Y"
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="BemPkb2V"
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8709D1FFC62
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D052D1FFC71
 	for <linux-kernel@vger.kernel.org>; Fri,  6 Dec 2024 17:21:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1733505687; cv=none; b=YhvXU6GbqMQxlS/SywsS79b9zKYsDJ62q0yh35pj6UcwWRKEqTzRtDAo0JmMDb4wMqghINBcDFeDGxfatRYMGkgROPYOpHd7K+8t0VscE5iOQwB1P8HHdh9nmIqekqT0JFRZ/zD5XfZEv4BQYMYFfx9YKg1oEOUKaxWXs/7K2tg=
+	t=1733505687; cv=none; b=pTQ7GzjT1CLaNUCtjHyVoVbmMGbJnoNjSmPRICIimQxldaYPST+c6ijbL7GdRWwbe41YDjzXBiFry2uw1JW6PdWoUPXRGLQOCv0NTgd/ywftbS/n2zrD/6cuiwYpcaODCdbTI4jNoqrBDnGQHql6YX7aHfbPyDaqq+lvRur686w=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1733505687; c=relaxed/simple;
-	bh=XnsenWzyXY6TfpyfSZrWfMTz6cEF8BKuThN2HBT4U7c=;
+	bh=eHzu+EU4m8NcCuLnBw09R60FqjsOIt1ZAi+wk2Q1yIc=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=Y7c0fjFmGyVg//L7q0qkroxIyv208G5j+oaSUQe+r1SigPpQOCHU1ScC5ABtibWqaFgUaAywpHuJuiv18WmdY4rkcEQAjv3L2A8+Ku/f1ulK2nFHcMGJ1BEc8lWC2rnJg45QEXz/Ag4N4d5uVeWNPk1eRRqbcz4ULNw/9cPpbyw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=RMqQc44Y; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B55BC4CEE1;
+	 MIME-Version; b=trPo58nDcgZg4ix6VClbHDfipfUStvT+jEWwSKU5fHrpqFBHV10FBIJC9sgqc/q2I5Q7Vkd6y+JDAUaOERMBuYSCTzluvNaUnZp2OvjsnXV9FJTWtprPexUrwaUhbRzxArn0xoKRtda6x6cXaDVouLLKznFekHy6g+ynSKZkxFw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=BemPkb2V; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75D3AC4CEE3;
 	Fri,  6 Dec 2024 17:21:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1733505687;
-	bh=XnsenWzyXY6TfpyfSZrWfMTz6cEF8BKuThN2HBT4U7c=;
+	bh=eHzu+EU4m8NcCuLnBw09R60FqjsOIt1ZAi+wk2Q1yIc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=RMqQc44YKiH+aQYVzB2FrQhfmiy1XYDenIHcjdekhPUoHvMCzGifSE3UVeU3g3eYf
-	 D3K00r1on+HmxkoDZ7acYPUg8qTFXnYFWm3FUHYkK826Nx/eylr4uyLmxq9LBx3kdF
-	 4wIfB8BWwmIL7myZfvhn4SMwQPn6HkG6pPRlrIbm9uTcT4X2AnDLZMMdHtGBCbB4lp
-	 yFGFNMGBS+GLNbf97vryK8JEyK8an1K5GhqCgkSZ81BQIOaHx7hYpIa++oZGGo+rDE
-	 e+hiJlWXP8YMT32N1zfq3UyFfrSxm4F298zfK7xun30dVIRp1yi40knvl48bdH+AoX
-	 GmwKbXC6Dyvig==
+	b=BemPkb2V2X7J3OCc1Cj+Vyh/4IRYSnwqsBO8lSEjpQ4q1iXP5tNR+zDuNXXNT2vJ3
+	 kPO3NTiZt+vjclekyrwDy9Ef+f3PT7huxaOGCZxaX4q3f3RNJCBL/AvZcr3+W2KfzA
+	 IbMoXIDAzu7XTo5/CHQEHZeBer6l6hJH8AY5ogG9uRCs2m9u/lOsZeX95Apnr8KSG+
+	 mkjfqLJVO/IJkjUHshGFfU80pdCXn1KN8jz0e+Qi3NSaQ+aaFjrfn9K4cJGY+FjDiU
+	 sf0h6o/z5eMaY+D7BuWAQZBHn2onvunCWTGXSLe4OvP8+0w1rrXnI1AY/bJvEdBi1C
+	 55xYJbTR217+Q==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98)
 	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1tJc17-00000005RJb-1w6V;
+	id 1tJc17-00000005RK2-2r5a;
 	Fri, 06 Dec 2024 18:21:25 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: "Michael S . Tsirkin" <mst@redhat.com>
@@ -93,9 +93,9 @@ Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
 	linux-kernel@vger.kernel.org,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/31] acpi/ghes: get rid of ACPI_HEST_SRC_ID_RESERVED
-Date: Fri,  6 Dec 2024 18:12:23 +0100
-Message-ID: <99675da21d8d7a57ed1cf51ac3dbddcad5c2f4e6.1733504943.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 08/31] acpi/ghes: don't check if physical_address is not zero
+Date: Fri,  6 Dec 2024 18:12:30 +0100
+Message-ID: <6f9ff1f1c044fb8f40c9014cc9e40b97f1a4898d.1733504943.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <cover.1733504943.git.mchehab+huawei@kernel.org>
 References: <cover.1733504943.git.mchehab+huawei@kernel.org>
@@ -107,65 +107,33 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: SliF1Bc68nP/
+X-TUID: PtawLv1XexvS
 
-This is just duplicating ACPI_GHES_ERROR_SOURCE_COUNT, which
-has a better name. So, drop the duplication.
+The 'physical_address' value is a faulty page. As such, 0 is
+as valid as any other value.
 
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 ---
- hw/acpi/ghes.c         | 7 ++-----
- include/hw/acpi/ghes.h | 3 ++-
- 2 files changed, 4 insertions(+), 6 deletions(-)
+ hw/acpi/ghes.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
 diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index e9511d9b8f71..dc217694deb9 100644
+index edc74c38bf8a..a3dffd78b012 100644
 --- a/hw/acpi/ghes.c
 +++ b/hw/acpi/ghes.c
-@@ -34,9 +34,6 @@
- /* The max size in bytes for one error block */
- #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
+@@ -400,10 +400,6 @@ int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
  
--/* Now only support ARMv8 SEA notification type error source */
--#define ACPI_GHES_ERROR_SOURCE_COUNT        1
+     start_addr = le64_to_cpu(ags->ghes_addr_le);
+ 
+-    if (!physical_address) {
+-        return -1;
+-    }
 -
- /* Generic Hardware Error Source version 2 */
- #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
+     start_addr += source_id * sizeof(uint64_t);
  
-@@ -396,7 +393,7 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
-     AcpiGedState *acpi_ged_state;
-     AcpiGhesState *ags;
- 
--    assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
-+    assert(source_id < ACPI_GHES_ERROR_SOURCE_COUNT);
- 
-     acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-                                                        NULL));
-@@ -407,7 +404,7 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
- 
-     if (physical_address) {
- 
--        if (source_id < ACPI_HEST_SRC_ID_RESERVED) {
-+        if (source_id < ACPI_GHES_ERROR_SOURCE_COUNT) {
-             start_addr += source_id * sizeof(uint64_t);
-         }
- 
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 674f6958e905..59e3b8fb24b9 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -59,7 +59,8 @@ enum AcpiGhesNotifyType {
- enum {
-     ACPI_HEST_SRC_ID_SEA = 0,
-     /* future ids go here */
--    ACPI_HEST_SRC_ID_RESERVED,
-+
-+    ACPI_GHES_ERROR_SOURCE_COUNT
- };
- 
- typedef struct AcpiGhesState {
+     cpu_physical_memory_read(start_addr, &error_block_addr,
 -- 
 2.47.1
 

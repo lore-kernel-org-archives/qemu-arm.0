@@ -1,138 +1,139 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1014355njb;
-        Fri, 6 Dec 2024 09:23:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVDWSW04jSQFN36bwqTR5tM5M6vMLZRyufE3XuXGB04LUtUR0uGpKD28D15wan5eWoawc7yhNYIniVARQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEyMQLGrl+dixgKGdizQIzflXcuOD4YUBHg9+wxmawjgCqCsh+jNWQs0PFvl9Nwy1ovr1S6
-X-Received: by 2002:a05:622a:181c:b0:466:adbc:f1e2 with SMTP id d75a77b69052e-46734cbf17bmr58846021cf.18.1733505795758;
-        Fri, 06 Dec 2024 09:23:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733505795; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1088804njb;
+        Fri, 6 Dec 2024 11:23:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVYLCCd5OV+j/SSbrKoaPptOONEQe4QWEiHdyR63dyCSjGTaMHKvd3Iotl/pjF+n6KfM8XNcpXlKieq9A==@linaro.org
+X-Received: by 2002:a17:902:d508:b0:215:681d:7a52 with SMTP id d9443c01a7336-21614dc76efmr43831695ad.55.1733512983644;
+        Fri, 06 Dec 2024 11:23:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733512983; cv=none;
         d=google.com; s=arc-20240605;
-        b=fZ+J0Lg6//BSUsNPSUjYrS7ccAQAxSO1FCX7WzCh4gcPOTjZThRSevXH4w5YVKG45M
-         3eOW6mzDdk6LGBrxq4Cb0hHmk8R3K32qTEKZ8yzmezufd96Ffa9qj5W6ve69dLFpfL+0
-         dJbAG56QbI+OZMUAu425zv2yRFSNbQQoh1sjnf6GIZmPtjKo4/1kEyitddjLSnZvFc5W
-         AHyCPtkjuxYib7LefuSkosug8n0u1jt9Otjp8mI/gHadxqdv/oN9nIjXtPpcK/FAEy5j
-         N/PdNdThFKBmiTdwm+neufC1aec2lDFp1MtkwrBOvrS41WCdtsT7cvZdru3PjSUr8j4D
-         Dt9g==
+        b=QVQtMEufHHdrcTS2dekHrBQLuUHVOX53cIpTIU0xrWCNp1ppydpq3NcVlPQk7bC9ZO
+         Y564UIf0JOC4wI4Jv67JRH5aE45D0TjrS3Bz+ndXefAt1MTElQzhlUPN9Qy7KwYvWxtf
+         8+K6vY4u/agONlJTexHq8AmoGsFizq7YXP6o7k/0tvlxUKzzAVf44OUUINzBIG+C60m6
+         C67EorJwtExm6z7DRGyVqCUkQ+dD7Z0Cr+gUBLbbe43XP5/ALclmDtJ+UM5dx0gF/N9l
+         PMrtkiFegst8wby7Wr97qAbdf4PrrgcspKOzy/QGFrrrz9GpKiWOxbLmY0RzYZP7+Plr
+         I0+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=jZOBoJX+4aqmZ9kPA7j4WdtZJxt1E/3bTRqOQQA09Tw=;
-        fh=iUMV9EEFXu4MlKxCNfodurzM1E/+GIYNLUanQFJhC2M=;
-        b=PNg/zBK+NIAtNsKxop++X1HbX8E5TviH/QJwCYFT3kB69U5vaW81terPsfST1vDB1g
-         WX/U54ttNrI3mO/3PxqwwpAc2FBMLAfhCe9W0Xn+YRq8k5MqqhVwLM5NmQktT4YfYDoZ
-         31phtp2tjx5HWgF4dD+C/9UQ5S2oLkgmU7M23EQ1epSqDgb3P+Jkah51YSGYXRW6z03s
-         L21B449UXj/UFjSZVrjDCIeBLFsEP41nkY1ferowfxaje4g9PZSZXgh1IRC56ZT3dCAf
-         6K5QNsP0YNx9l3VqpoAn1FcQRPfZCgyDcjfRsBzHan+UIf9cZdtsYF5axOwSr9uU7tyt
-         7EHw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=UqKHYpUulGdIWayEODwJfBo1zUyakQeh+AqqbYk0b0Y=;
+        fh=DxUO3RLHPncqa9UV8cNvcf+oGNivuLVprHDmNZjDaoM=;
+        b=BqmoKi1fvuFAPQEqZhMc1jM3IEsSepz5UVX62JnhuzcLgL/pzccyOlor/rAEkDfG7q
+         bjFy+zvrpcXtNzpZQdTU6tNieFBluZx5zXNsPAFKmkOJcKyf56ZfJWcHw3+DWJkbWkYh
+         kvJpJJ8vaq0gT+h7e631T6xH0i6BWYLTMSCjANTzMbFTpmGgnDRbmQHNnMIRPXlzZTgE
+         qqLGur8QjaOFzXnDb5PbtvRKypFyzEevn/+ZpAkn2eqjGAT1p8nIF4f32YhVew8HFpwj
+         cr+cczNhzUpOca5vksVUgPh6WcGZ3EVk4C1QIJzdoP/0MgGrlyXFsk6gmqTQYgdeAPU2
+         ubBw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=KMbMu3HU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-467296e7446si42337721cf.168.2024.12.06.09.23.15
+       dkim=pass header.i=@linaro.org header.s=google header.b=SxrRN5bm;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-215f90859d0sor28701845ad.12.2024.12.06.11.23.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Dec 2024 09:23:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 06 Dec 2024 11:23:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=KMbMu3HU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tJc1m-0004aQ-Nr; Fri, 06 Dec 2024 12:22:06 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tJc1O-00047S-DK; Fri, 06 Dec 2024 12:21:42 -0500
-Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tJc1L-0000xY-Lw; Fri, 06 Dec 2024 12:21:42 -0500
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by dfw.source.kernel.org (Postfix) with ESMTP id CACFE5C6668;
- Fri,  6 Dec 2024 17:20:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07A0CC4AF0E;
- Fri,  6 Dec 2024 17:21:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1733505688;
- bh=gH9yBConPFlFAtM5yFnFIpjEGK22gESF+5Hl3wqFIsM=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=KMbMu3HUDRY4XARuHPlMa3Y35tEDU7FqK84deiaamMnlDr9eY4bU9Pp+QxVG1cxts
- 91QoUvh3qgrHPiLUpxTBcY995K2vIm83brX7fkbzni+e2Eg7l3cJtdmW4b4171I7Im
- S8wPr0FB1YMHko+pZBRQyCfXg4ohQFOzTTWuha2OXQtV5YlmDJM+mQqQWF004acFgp
- 6cMJZMuyKFXnD7RJS5XOSorifnbCKWC3GkehwUmLLWgBDbqTZPjXgX9FvPgrpokGFZ
- HsaXXl9+pYxaLT64nRiC26LWEoTMYNaPaP21RKmVFvt83RKxHyKgN/C+/ElmPNuhdH
- iiCS8Gp0g+8RA==
-Received: from mchehab by mail.kernel.org with local (Exim 4.98)
- (envelope-from <mchehab+huawei@kernel.org>)
- id 1tJc18-00000005RLG-0ui3; Fri, 06 Dec 2024 18:21:26 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: "Michael S . Tsirkin" <mst@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Shiju Jose <shiju.jose@huawei.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH 27/31] DEBUG
-Date: Fri,  6 Dec 2024 18:12:49 +0100
-Message-ID: <6f427a02c2c20512d5da178b47c64d553851a60e.1733504943.git.mchehab+huawei@kernel.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <cover.1733504943.git.mchehab+huawei@kernel.org>
-References: <cover.1733504943.git.mchehab+huawei@kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=SxrRN5bm;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733512983; x=1734117783; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=UqKHYpUulGdIWayEODwJfBo1zUyakQeh+AqqbYk0b0Y=;
+        b=SxrRN5bmijkQMBwo51nxQY8c9IpVZWJKVoA2Zit9cAAZcThjb6kn3vqthcalK7ljX8
+         VKAJBd0HS3GYAb0P2asRClfgG/v/BMA+ulOE6AEnQj8jeTKx9+8kmRoWvxnfKLx+vpiu
+         KD6/uPe9oBLQhWa0WZMIEnWuVs22JrMSQClBU3EYGS3QyJ11WiHAt5vn/p7OpDE6GJYJ
+         oLn5WfqvVMv0SMpBqziYIKZM6w3PVii5xc2ARSgTb0EFPA4btsRqmwmY3R5aI+JMQzI1
+         EahG/fVLlCfx5rxBLK+Cp86I4INN+g9gLPTm2fcdl1NyJY2Vs6U/5C8WHGvX8ZDU6CyK
+         LnOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733512983; x=1734117783;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=UqKHYpUulGdIWayEODwJfBo1zUyakQeh+AqqbYk0b0Y=;
+        b=qfz0d9BMznfrdovrp8U7fYm7WhL7ogmRxy4qw55wmCVskmWGycXhMwCOto2vPdvo/I
+         Aw31VDo2gBAymteJGxFYgxIWMW0zhUU0PWL3SFh6Y2Tt6W0F2BNH+GXSucZctB+rC587
+         Q53CSZ0gvowjpovR4PU6GbkfvP90yhZy7z4bh9xd3JMZ5UjimgaDZP6/19dq++MuQXpg
+         +QwQgwo2DgyDXNoUurPKPIB0UjNU+yTsDXReMn6eTjsGrs494Q33YqJLeknnZ2ibAVA4
+         lT9LzYTl/I6+ad/h4hUhqxwpOw5vKs+WpKxDtRvzE3MOr7yH523LaYQEHiC8FORS+zpE
+         Z4/A==
+X-Forwarded-Encrypted: i=1; AJvYcCUdHZf3jtCix0eBGVYrx/eCp+c9ft6HvO8X/zzWGD7bsM/WB0uABOO+r662HuNpkBnHFGDcmOtaN+rL3w==@linaro.org
+X-Gm-Message-State: AOJu0Yynr9p40Xjg8SxPC03BlP1deAAfa2LgQ37/kBLoSgmN8m5v03xw
+	ZFI8tq/hbhEGo1RdVpaan3FPAaaX62iuxzcPU+YSabDH8KwIslQGj9vD4I0uWaTyQg==
+X-Gm-Gg: ASbGncvlj99zg2C8dnKCZfI2xTQ1OtrSWsrN6BdQUGQDSU0iNxj04wEPx8DYbW505Y9
+	JsJduWr+fINPXKJJIms97AqSG/85Yhxo5tZD9Jfe8PTSqMRzXSJBbxFFrSF8dOI4NX5xzVQC7Ss
+	kZF/tgNXpa9PFWi86xe5ZJMISDUA4TwNuht35Q2yOu3U6e6Lg+mZecugDli6iE8kONyTtO5jXQr
+	TuOWY0buX6NOfHKN5Ul/RTv5atmgKiNmL/VeD0y/0NRud7mFf8DYfn3fyF/AGfHdGTDxiszJv0j
+	fjwjTD/z
+X-Google-Smtp-Source: AGHT+IE3hWhbmAqmAFRiFIlqMJOhPZ5Gd5Wz3hnKcz1qwEXSS3c1bzMvZHawdGbUvNW1T3ct+LNiiQ==
+X-Received: by 2002:a17:902:f644:b0:215:75ad:63c5 with SMTP id d9443c01a7336-21614d497aamr73931625ad.22.1733512983238;
+        Fri, 06 Dec 2024 11:23:03 -0800 (PST)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from pc.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2161e5a6f23sm11720395ad.266.2024.12.06.11.23.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 06 Dec 2024 11:23:02 -0800 (PST)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Troy Lee <leetroy@gmail.com>,
+	qemu-arm@nongnu.org,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Jamin Lin <jamin_lin@aspeedtech.com>,
+	Niek Linnenbank <nieklinnenbank@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Joel Stanley <joel@jms.id.au>,
+	Alistair Francis <alistair@alistair23.me>,
+	Steven Lee <steven_lee@aspeedtech.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	alex.bennee@linaro.org,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v3 1/4] docs/system/arm/orangepi: update links
+Date: Fri,  6 Dec 2024 11:22:51 -0800
+Message-Id: <20241206192254.3889131-2-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241206192254.3889131-1-pierrick.bouvier@linaro.org>
+References: <20241206192254.3889131-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2604:1380:4641:c500::1;
- envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- SUBJ_ALL_CAPS=0.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KUzP2bOJHUn8
+X-TUID: K4SMuC7TTObT
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+www.orangepi.org does not support https, it's expected to stick to http.
+
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- hw/acpi/ghes.c | 2 ++
- 1 file changed, 2 insertions(+)
+ docs/system/arm/orangepi.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index abca351b18de..1fe4c536611a 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -534,9 +534,11 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-     ags = &acpi_ged_state->ghes_state;
+diff --git a/docs/system/arm/orangepi.rst b/docs/system/arm/orangepi.rst
+index 9afa54213b0..db87e81fec4 100644
+--- a/docs/system/arm/orangepi.rst
++++ b/docs/system/arm/orangepi.rst
+@@ -119,7 +119,7 @@ Orange Pi PC images
+ Note that the mainline kernel does not have a root filesystem. You may provide it
+ with an official Orange Pi PC image from the official website:
  
-     if (!ags->hest_lookup) {
-+        fprintf(stderr,"Using old GHES lookup\n");
-         get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
-                              &cper_addr, &read_ack_register_addr);
-     } else {
-+        fprintf(stderr,"Using new HEST lookup\n");
-         get_ghes_source_offsets(source_id, le64_to_cpu(ags->hest_addr_le),
-                                 &cper_addr, &read_ack_register_addr, errp);
-     }
+-  http://www.orangepi.org/downloadresources/
++  http://www.orangepi.org/html/serviceAndSupport/index.html
+ 
+ Another possibility is to run an Armbian image for Orange Pi PC which
+ can be downloaded from:
+@@ -213,7 +213,7 @@ including the Orange Pi PC. NetBSD 9.0 is known to work best for the Orange Pi P
+ board and provides a fully working system with serial console, networking and storage.
+ For the Orange Pi PC machine, get the 'evbarm-earmv7hf' based image from:
+ 
+-  https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0/evbarm-earmv7hf/binary/gzimg/armv7.img.gz
++  https://archive.netbsd.org/pub/NetBSD-archive/NetBSD-9.0/evbarm-earmv7hf/binary/gzimg/armv7.img.gz
+ 
+ The image requires manually installing U-Boot in the image. Build U-Boot with
+ the orangepi_pc_defconfig configuration as described in the previous section.
 -- 
-2.47.1
-
+2.39.5

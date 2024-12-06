@@ -1,132 +1,152 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp717445njb;
-        Fri, 6 Dec 2024 01:26:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWpZ4T3tRlI5FyDy2iz+WgTL0M1724O6Z2vxM2eK5hVhRCAHjH9yCPcJ9Ah6URESJ8sr54fEqQ46gB97A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGYhHRqnz5/AnMOFp2XbQmRgkStnxb4g5scueoK2sNd5XydcBZztMajFfjGVavs4cv5A8jf
-X-Received: by 2002:a17:902:ce91:b0:20b:70b4:69d8 with SMTP id d9443c01a7336-21614df10fcmr32176045ad.37.1733477172816;
-        Fri, 06 Dec 2024 01:26:12 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733477172; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp774734njb;
+        Fri, 6 Dec 2024 03:32:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW0Ck5Z+zrZxr2x43gms18CgyT90CbxBiE+ct0GQ+hgB4lJf8R7E5SNDTMWSlMxNnlR4tnnj0FYQCYc+Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEQBxNhcGjBmq4XbG16hZXGgLTBmRXbj/y/wPpcVDlN0DhulmaXsrGYYc5DU2narP+m/rJh
+X-Received: by 2002:a05:6359:4588:b0:1ca:9540:33d4 with SMTP id e5c5f4694b2df-1cb171c9db0mr158306155d.23.1733484725616;
+        Fri, 06 Dec 2024 03:32:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733484725; cv=none;
         d=google.com; s=arc-20240605;
-        b=FJ3mttQ1oyRycCOouC3VPQkEgfeOmhnDVZZugAsQ/z6jFj7y/lX1SOwM7El99r0YDd
-         S6G3njo9gZYmYdC03xa/upmgoEySDdU3iWnMcGlscwDyOgIssWjzvdiOOFJQ27MpUu6m
-         QWQOhxA41uOC7x8Uff0YSRNegrjo4uWM4oYXdTJ41by+NscOGZq8swUGzjUCkZf1/fKk
-         EksknnCI/Fvg5NRWhUHG+hEgL/AQeW1m/1yKoInkXTA+40/RSC/dJJeep4kxET0KTkdy
-         0mb9vUKTt4+tYseY0i26PmYDwF8nMfxLQlJuekEAwDOwje3ZdAWvXl9oxsBFUIWnJRGx
-         2HCw==
+        b=QUp6ITXMqiuSbe4dwSN70/xqevD/e2hwKxA8hnZVvj/RW0GnkedUdLKlprmws7OfUI
+         RiJOc+rT6geAOWPK5BsWTABXkv2zMNXvr6G/YP90Y5xBTpRzIQ3PLQ+tRMulAGjQkaFM
+         j/51NWCJY4BY2xQZvU7+6SuMXLYll2qm5j7wT0l6LkCotwF4/WQiqXyUxJGK8l2Yi/oZ
+         KUTuAbn3UWs3aovkHmjB+c2cDtrTTbxdbBDSbHESfsysEF8yTadOorhc/bQi/885BOE7
+         pjt4q/uVhWAVTPrcNB0g5dHwqd+u1WqJ5HC0waBETe87q6MRU8cE3tga4Xomtbc64m3w
+         CQ5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id;
-        bh=/LnVTfUa6Hh3rDa7BxcKZ+rx2jXM5+G06YSRtDXYExk=;
-        fh=8fCnlfx1XMnRpZGm4Y7IMulm4zxpjVv4sGSA4/DgluQ=;
-        b=Nn1/iNfPuwj0q5jQhVV3wDfhQ28Hm0FRcicN+/Rc+nmnY00iOzowUap/ODkzNR64RI
-         SV1zmJwgvPLSiypDWYAgcsfueX/kYOewcp4nJDtHexZKMBLqdXvO8WfW6nwv75UpnKBY
-         cPHnwDeRiwOz1D4koi7yf9ipnnjbjBIBtM5NVKWHmO+sp2EopV1UYSasiz3sLcbL1gCC
-         B3cfjpit0uvni93oolDA+mWJcDzOt7/v/fEjxg8fW66wQuMvSFvbx9DDMqAwbxpG3BdG
-         sCmJhC5Gv9jMG5zA9vtzDLdE5Kesb08WF9nYAXz5s8cVSS+7iFe1Uuf1G40C5BpdCsMJ
-         Uc3w==;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=IqC85ippnyJa3upPHjV2P8ua2qM0xUIdKMiOS3w8fZc=;
+        fh=iEYMsHw0y4egh8aKTwDMfttNDgarlzRAguTykpz8r/c=;
+        b=NwLkV1HaLMRr6+qKGh0xR898ubMQ7gxVHI5xUsbvtvjux7Avidg4n9t85Gb3VHj00s
+         rg2Iu4KMZ/UcbEpa3wdEfZd2EDQrBd80EwxYksZ5GJv85meWZ9LsSlmdLdTVKmyOfX27
+         0umXISsktqQwuddj+f4n2V0JkXvEFU5m9LR9unD6+TbpmWHdSrEzD7vy/qx/pj6Aih4M
+         eoJMyyynICYYmcKUaXX8rAjVrGeY4PQ8gpmVSAc+wBzKteCrFHz9wZclllBS/C/Q6D3l
+         DSi0a346+ZxUnf6J63V0UpCRc/YwP+Sxt5JSIAPKlpnFyqEvt1PAdth/tWhIK3dN/Grc
+         khiw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of srs0=qnnk=s7=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=QnNK=S7=kaod.org=clg@ozlabs.org"
-Return-Path: <SRS0=QnNK=S7=kaod.org=clg@ozlabs.org>
-Received: from mail.ozlabs.org (gandalf.ozlabs.org. [150.107.74.76])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-7fd156bcf1esi499003a12.192.2024.12.06.01.26.11
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eVp2WOQX;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-4672983f750si40595461cf.580.2024.12.06.03.32.05
+        for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Dec 2024 01:26:12 -0800 (PST)
-Received-SPF: pass (google.com: domain of srs0=qnnk=s7=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) client-ip=150.107.74.76;
+        Fri, 06 Dec 2024 03:32:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of srs0=qnnk=s7=kaod.org=clg@ozlabs.org designates 150.107.74.76 as permitted sender) smtp.mailfrom="SRS0=QnNK=S7=kaod.org=clg@ozlabs.org"
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
-	by gandalf.ozlabs.org (Postfix) with ESMTP id 4Y4QqK3glQz4x69;
-	Fri,  6 Dec 2024 20:26:05 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eVp2WOQX;
+       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1733484725;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:in-reply-to:in-reply-to:  references:references;
+	bh=IqC85ippnyJa3upPHjV2P8ua2qM0xUIdKMiOS3w8fZc=;
+	b=eVp2WOQXuWLa7Wsy3/e+vIoYjYFed8h0+23UdnWgvGpsCStnmhfCmjkVmM+E41RQ1BVcPz
+	LSCTADM5/qiQ8HdzDrZjNRuqQF8/AQ1fUBob0o59TG0Xkhzwgp4i0U/FEB0ArInZCYvKl6
+	PfGKrdtTywxM3bDC3m5rIv61XY/YLHY=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-664-CAHmOdCDO3ypqJ-MtgmHrA-1; Fri,
+ 06 Dec 2024 06:32:02 -0500
+X-MC-Unique: CAHmOdCDO3ypqJ-MtgmHrA-1
+X-Mimecast-MFC-AGG-ID: CAHmOdCDO3ypqJ-MtgmHrA
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(Client did not present a certificate)
-	by mail.ozlabs.org (Postfix) with ESMTPSA id 4Y4Qq64VzFz4x68;
-	Fri,  6 Dec 2024 20:25:54 +1100 (AEDT)
-Message-ID: <53394e0a-8e31-4284-9c19-bba0abeea2e0@kaod.org>
-Date: Fri, 6 Dec 2024 10:25:54 +0100
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 9CCFE195608C;
+	Fri,  6 Dec 2024 11:31:59 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.160])
+	by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 202421955F3F;
+	Fri,  6 Dec 2024 11:31:51 +0000 (UTC)
+Date: Fri, 6 Dec 2024 11:31:48 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, Fabiano Rosas <farosas@suse.de>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	gustavo.romero@linaro.org, Andrew Melnychenko <andrew@daynix.com>,
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+	alex.bennee@linaro.org, Konstantin Kostiuk <kkostiuk@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Peter Xu <peterx@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+	Yuri Benditovich <yuri.benditovich@daynix.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	manos.pitsidianakis@linaro.org, qemu-block@nongnu.org
+Subject: Re: [PATCH v2 2/6] docs/devel: add git-publish for patch submitting
+Message-ID: <Z1LgpKB_J4Df4wcE@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20241205222241.3789437-1-pierrick.bouvier@linaro.org>
+ <20241205222241.3789437-3-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/4] docs/system/arm/fby35: document execute-in-place
- property
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-arm@nongnu.org,
- Troy Lee <leetroy@gmail.com>, Peter Maydell <peter.maydell@linaro.org>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- Steven Lee <steven_lee@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- alex.bennee@linaro.org, Alistair Francis <alistair@alistair23.me>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-References: <20241204203912.3037515-1-pierrick.bouvier@linaro.org>
- <20241204203912.3037515-3-pierrick.bouvier@linaro.org>
- <c2e4c538-2e0b-4882-8a92-6ff439cebd09@kaod.org>
- <3ba7dabb-67cf-450f-828c-5adf7332fc91@linaro.org>
- <96b027f9-3637-4416-9eba-a175635026ca@kaod.org>
- <a9401d13-d23b-4d18-841e-4239e216168f@linaro.org>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <a9401d13-d23b-4d18-841e-4239e216168f@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: 7HWoMEDOvO92
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20241205222241.3789437-3-pierrick.bouvier@linaro.org>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-TUID: eh7Q6taBAvWU
 
-[ ... ]
-
-> I'll add this.
+On Thu, Dec 05, 2024 at 02:22:37PM -0800, Pierrick Bouvier wrote:
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  docs/devel/submitting-a-patch.rst | 19 +++++++++++++++++++
+>  1 file changed, 19 insertions(+)
 > 
-> This machine model supports emulation of the boot from the CE0 flash device by setting option ``execute-in-place``. When using this option, the CPU fetches instructions to execute by reading CE0 and not from a preloaded ROM initialized at machine init time. As a result, execution will be slower.
-> 
-> Is that ok for you?
+> diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
+> index 03b2ac298aa..f8b7fc59544 100644
+> --- a/docs/devel/submitting-a-patch.rst
+> +++ b/docs/devel/submitting-a-patch.rst
+> @@ -235,6 +235,25 @@ to another list.) ``git send-email`` (`step-by-step setup guide
+>  works best for delivering the patch without mangling it, but
+>  attachments can be used as a last resort on a first-time submission.
+>  
+> +.. _use_git_publish:
+> +
+> +Use git-publish
+> +~~~~~~~~~~~~~~~
+> +
+> +If you already configured git send-email, you can simply use `git-publish
+> +<https://github.com/stefanha/git-publish>`__ to send series.
+> +
+> +::
+> +
+> +    $ git checkout master -b my-feature
+> +    $ # work on new commits, add your 'Signed-off-by' lines to each
+> +    $ git publish
+> +    $ ... more work, rebase on master, ...
+> +    $ git publish # will send a v2
+> +
+> +Each time you post a series, git-publish will create a local tag with the format
+> +``<branchname>-v<version>`` to record the patch series.
 
+Lets also mention
 
+  "When sending patch emails, 'git publish' will consult the output
+   of 'scripts/get_maintainers.pl' and automatically CC anyone listed
+   as maintainers of the affected code. Generally you should accept the
+   suggested CC list, but there may sometimes be scenarios where it is
+   appropriate to cut it down (eg on certain large tree-wide cleanups),
+   or augment it with other interested people"
 
-With that,
+Second, lets say something about pull requests
 
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
+  "When a subsystem maintainer is ready to send a pull request, the
+   'git publish --pull' command will triggering GPG tag signing,
+   publish the branch to the git remote name specified by the
+   'remote.pushDefault' config option, and send the email series'
 
-Thanks,
-
-C.
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

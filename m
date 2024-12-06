@@ -1,86 +1,86 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1014043njb;
-        Fri, 6 Dec 2024 09:22:46 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVBHN6tss+593gi1QCanFjUQ8Zcdktr6F3g9VGsrORxwaooYUfvgg1k6HulR+eUVUlpWZQuK4vP81wgEQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHxcv6S7Kdj6dYS6b2CucNr5IlSHoVSApOFTIH7nfMAvxVGiLciS2X8BoJR8khRlUN83Ktb
-X-Received: by 2002:a17:902:d485:b0:215:711f:4974 with SMTP id d9443c01a7336-21614dfe44emr47629035ad.55.1733505766665;
-        Fri, 06 Dec 2024 09:22:46 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733505766; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1014104njb;
+        Fri, 6 Dec 2024 09:22:53 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVrBSC2OZ/cQpyHctBGm/WbQQwVVFvHRIFSumMM2WZmnSm7yjVXS//c6ASaeiHBCu6Zk9l2TV3//sJ2kg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEndh3nDktNFF3YEZ1Z49oZyrEbGnn/IgidxYK7NdT57LcnA2Sn4178xqF05J6PKxN5ZJx/
+X-Received: by 2002:a17:906:31d6:b0:aa6:2edd:cbe9 with SMTP id a640c23a62f3a-aa639fa4878mr320000666b.8.1733505773192;
+        Fri, 06 Dec 2024 09:22:53 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1733505773; cv=pass;
         d=google.com; s=arc-20240605;
-        b=SlWoiUU1sCddlqVOkFDWyOgFp/fG0Hrc3rdGjdpTWz8UGCqzV5pdYFSRYHgh97e+8N
-         WjVu1pNL4k4wsSTtUzQgrjBU+8G9QaeBv/QXyNJJFehZrboT6SN6cp3nyer85T9ru12t
-         zTl7v/G+jZ+6Z9RA0x1TpV3OsHR9aUIRMa1KqoNdmFyQymU77na70XnajwDvCMZr6qs9
-         OB5tULc4BirgIEiviUM76QxcBcN7dJGrS9c9c7ghQLyZQRIw8xjuei11/qENSGHFGCho
-         7jkUbj2cfKSF8IfxANs1JhpYkSBVehsmcOEs5L6mGyTXs/WFIgKpbhfTv6avsIkuV6sc
-         W/gg==
+        b=AL15N4kqBevRNmtVFKRIiATZdug140M5HM/MRwQzbeJRDGRetNe6j54qww1RcleAip
+         YjV1mpSd87XfsJWdy8jAoThl7YHcQEjtC6nkqSe2oofjGDZ1i4aQq0R8derxJUh01p1a
+         dKidQ666XipB7tEwDLiacMS0lfSWcHbfeyBHvlhrDlxHkyxyRHjtD6sSVtoPAo27Ef/v
+         jRpohJzmNS2ne9oqmwwyYHZQMC2UUQgfmHezav2GEHRyfBhgtis/idZqk7RI72Mq/aRm
+         Qwn5l/3y8hxzl3DY/dGYe2DHuP4h6fZ4NnpvkoTBMG4XZbH5t2pS1j6z17qSxReIRP5+
+         3yuA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=6U3LL8frwDzyutuR7cp/fHKYKic104njPo4BwkQ6dGo=;
+        bh=lSWV6pdWgje7cwUqhIu/DnKrKwxNMheIEMlgIvsjh+c=;
         fh=iUMV9EEFXu4MlKxCNfodurzM1E/+GIYNLUanQFJhC2M=;
-        b=hkmO+k0jpV+b/zehsMCTbtmqtuh9P8R9KJrtlrekGRpkM+ErgSl+7gbcwy0Xj/XWi+
-         5y+GNdCoq3eYw+Kk8qwMCYWW/SmhRjAzECgNSrx/OA4xLS8LiKz3t5TiM+/D4JxPlM8/
-         EjaQHPZIpcZlP/s6PncBOmmHPPqnq3i3db/rYI5tRQO21HB8nZnk2LVSCpvtJcqowZKz
-         0VDObrYMs9z6dvTZ7mKwXZDg23ecAQdBDamQw3SxiDrRLrtL9sHSBUDC5asCwLXV/Btb
-         /vANoRrsDx8Pyaz63Lg3s3D2g6knVfJmg1TRAyARgZ9T1n9rhTwyniTlFhmuQhBRrbAR
-         9Hhw==;
+        b=HG/jT4c2p2WKorvUY+ga2+njxqS4GgUkh4Q0Kab85PGvqvCWe8HKPB+wVLnYSG4soB
+         KIUuEVSZZrAhvIMZj0BaAoF2mV2YWLvCW3US5YDLY8jPwxXO3L2ZXI1pHrTT/56Vng1g
+         p4hS77OgIwoABiiyzoc1yWLYkGlJ8I7KUfUc4mgM73udEPcRYeNrWRu/zjYmWSBjDPhu
+         W0DBWttwmZMnxjhiLFzwwmVEHLXShshYcduec9QOKeNX3ZxRcz1gEbuwDq/wbYiNvliQ
+         mZzGUqIFSSuu/fqU5pieW1QKmDyrD/FKh5FlajwKuKQ4xFIjejDKmUtL4ZTjjUcn+0pd
+         52vw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=CGyGoIL5;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=lxJqFXIl;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-435393-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435393-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-435392-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435392-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-435393-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d9443c01a7336-215f8e42088si35538915ad.84.2024.12.06.09.22.46
+Return-Path: <linux-kernel+bounces-435392-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-aa625f0d6acsi282085366b.221.2024.12.06.09.22.53
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Dec 2024 09:22:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-435393-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Fri, 06 Dec 2024 09:22:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-435392-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=CGyGoIL5;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=lxJqFXIl;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-435393-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435393-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of linux-kernel+bounces-435392-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435392-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 302412878ED
-	for <alex.bennee@linaro.org>; Fri,  6 Dec 2024 17:22:46 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id B2DA41882407
+	for <alex.bennee@linaro.org>; Fri,  6 Dec 2024 17:22:48 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 911B0219EBD;
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8FB3D219EB9;
 	Fri,  6 Dec 2024 17:21:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="CGyGoIL5"
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="lxJqFXIl"
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31E83203D6E
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 31E25203D5B
 	for <linux-kernel@vger.kernel.org>; Fri,  6 Dec 2024 17:21:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1733505688; cv=none; b=RbWBgelyhWDBZGTYuEgWtE0MZGJ52H9LNPyqeA3EZvEw4YVYbLy+6ctvC1BPWXRwZ72ueYVy/ky8wA5k219SJ95n2LOb3unWhlzoCZ8sscg5gydFz5dlG2s8mXqpP51mKl2qqHYg9QLokwxlkUeVd1Yv8gipvfc1EChZa2c9F/E=
+	t=1733505688; cv=none; b=YHxnH5tFIjDIysgfPdc8FxwnL4ke7Ys0PrkEZMxfMtQdz914sdCi11tB4gazFIvv20WPZjrIHZCwlhy2nucrJL0bkvHM3SiWJb3LTci20vJvNowtT2z48yjKTWjuvICxnzYEIX0ZCxJdqlyKmpAgEp+6o+OqVJMI5NfnypuVmNY=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
 	s=arc-20240116; t=1733505688; c=relaxed/simple;
-	bh=wJulQYESwlqAXPVkXZVUiU2AeJ1Jd49Tk06eYN+hXRg=;
+	bh=gwgbl9QPWRqsj4+s+cvoZuN98x6LKYvPiDEqOzm2GJc=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version; b=ANcp2KpEnohNh2u1QCuB22yA8w1b3Imb87wBBMZaIYS1UQK9hOSOjq6wWGYl4FjEZKjxUSMidFys/GP8U5VvWVLmjvjF1/8ICMEAi62Srr8RVEtlVMbVdJ9NVUiCtJppau68zwA5ryAcbhQAF/UV5t2bcP1UTfemT85Wo8ZujRw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=CGyGoIL5; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0CBEC4CEDC;
+	 MIME-Version; b=ZhiQO3h8m1+uD+vqEzzCG2bE1LS/6+3/S5hTlWTtuhyLAY5ijAqcWsIP2uONL+AHfm0Pp6zVEqzFuE1OASbJ/zisPcTVUNC8nnuBhlY/DV1PUpwkFoP+YyRLlqjS00alD7MI+BHzQ7F7V3YThxsYVEGGQ8IJPWxjaU4cbaBJWCY=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=lxJqFXIl; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85886C4CEE7;
 	Fri,  6 Dec 2024 17:21:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1733505687;
-	bh=wJulQYESwlqAXPVkXZVUiU2AeJ1Jd49Tk06eYN+hXRg=;
+	bh=gwgbl9QPWRqsj4+s+cvoZuN98x6LKYvPiDEqOzm2GJc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=CGyGoIL5p8IxaASTLUCHXZtwg5BYMJeDiNbVz7W8TbCpXzVWZQfKk5cqtRLu9xpHN
-	 TqdyTdCZkTzBn0d6fiqua39cRQuV3/QeduFG/AbB8JzGsubfuQngdnpUClyVx3xZRt
-	 odkkzy82RMlXqk9fDxNnh3ZV0ISJb4vBAF6AGq3oNX4VZa9E0NCfB89wa2+gSWbcPo
-	 uGWGZKlsWHjkfhgiGQ+jzaPjaU+q43pdjNCFi6Gf9RfQLhWUSbp55vxOzRt9RN5bKb
-	 CC6JFR5GKACQLXJeHIKB78tSpGnc2WfCv7gzKE9zFiD9aHc1KkNqOA93/8Moi740eP
-	 JDNnw84xfjUiw==
+	b=lxJqFXIlBgIQEl3Nxn106LGILfYf1B7GkETmIUrO48wISAN7He3f/L7xSeOcm8Yq+
+	 9CfMffyJnD45HVW1uv4T8Jb4Vpolv9DoPTUbnNl5N/+2sBe7uo/FubfEAGBy2cyg+D
+	 wSfM4JJbXy/IdfluFkG0Bjs88VFRaXSEQhvH/6+IEtZTzYdKMG1yY+ZlNT8SliKoT+
+	 8ik2twFH+a61fNFDqew9pHcF/Hy9E4GbHtp09zXeMERXdw5F57gHu9Zf6YwNitRt7b
+	 +lL+wzVP0KEUszknyXGTChzrM1lJi7vtWD1n87gJzOkCFEY2uajPk3f9+gXDMDWkGH
+	 A1x/gTmEil3yw==
 Received: from mchehab by mail.kernel.org with local (Exim 4.98)
 	(envelope-from <mchehab+huawei@kernel.org>)
-	id 1tJc17-00000005RKY-3pfq;
+	id 1tJc17-00000005RK6-2yRM;
 	Fri, 06 Dec 2024 18:21:25 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: "Michael S . Tsirkin" <mst@redhat.com>
@@ -93,9 +93,9 @@ Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
 	linux-kernel@vger.kernel.org,
 	qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 16/31] acpi/ghes: Use HEST table offsets when preparing GHES records
-Date: Fri,  6 Dec 2024 18:12:38 +0100
-Message-ID: <9bef0020b1c4f3df76aebe334eb0567d9773d304.1733504943.git.mchehab+huawei@kernel.org>
+Subject: [PATCH 09/31] acpi/ghes: make the GHES record generation more generic
+Date: Fri,  6 Dec 2024 18:12:31 +0100
+Message-ID: <a8346e5f84c0f9014e3a379baf9eee9ac2f108c2.1733504943.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <cover.1733504943.git.mchehab+huawei@kernel.org>
 References: <cover.1733504943.git.mchehab+huawei@kernel.org>
@@ -107,163 +107,226 @@ List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-X-TUID: Nnrq9S/GH0I9
+X-TUID: oHS6EnUwC4E0
 
-There are two pointers that are needed during error injection:
+Split the code into separate functions to allow using the
+common CPER filling code by different error sources.
 
-1. The start address of the CPER block to be stored;
-2. The address of the ack, which needs a reset before next error.
+The generic code was moved to ghes_record_cper_errors(),
+and ghes_gen_err_data_uncorrectable_recoverable() now contains
+only a logic to fill the Generic Error Data part of the record,
+as described at:
 
-It is preferable to calculate them from the HEST table.  This allows
-checking the source ID, the size of the table and the type of the
-HEST error block structures.
+	ACPI 6.2: 18.3.2.7.1 Generic Error Data
 
-Yet, keep the old code, as this is needed for migration purposes.
+The remaining code to generate a memory error now belongs to
+acpi_ghes_record_errors() function.
+
+A further patch will give it a better name.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/acpi/ghes.c | 106 ++++++++++++++++++++++++++++++++++++++++++++-----
- 1 file changed, 96 insertions(+), 10 deletions(-)
+ hw/acpi/ghes.c         | 121 ++++++++++++++++++++++++-----------------
+ include/hw/acpi/ghes.h |   3 +
+ 2 files changed, 73 insertions(+), 51 deletions(-)
 
 diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index 4a826c8ca6d4..af55bfe106bf 100644
+index a3dffd78b012..4b5332f8c667 100644
 --- a/hw/acpi/ghes.c
 +++ b/hw/acpi/ghes.c
-@@ -61,6 +61,25 @@
-  */
- #define ACPI_GHES_GESB_SIZE                 20
- 
-+/*
-+ * Offsets with regards to the start of the HEST table stored at
-+ * ags->hest_addr_le, according with the memory layout map at
-+ * docs/specs/acpi_hest_ghes.rst.
-+ */
-+
-+/*
-+ * ACPI 6.2: 18.3.2.8 Generic Hardware Error Source version 2
-+ * Table 18-382 Generic Hardware Error Source version 2 (GHESv2) Structure
-+ */
-+#define HEST_GHES_V2_TABLE_SIZE  92
-+#define GHES_ACK_OFFSET          (64 + GAS_ADDR_OFFSET)
-+
-+/*
-+ * ACPI 6.2: 18.3.2.7: Generic Hardware Error Source
-+ * Table 18-380: 'Error Status Address' field
-+ */
-+#define GHES_ERR_ST_ADDR_OFFSET  (20 + GAS_ADDR_OFFSET)
-+
- /*
-  * Values for error_severity field
-  */
-@@ -212,14 +231,6 @@ static void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker,
- {
-     int i, error_status_block_offset;
- 
--    /*
--     * TODO: Current version supports only one source.
--     * A further patch will drop this check, after adding a proper migration
--     * code, as, for the code to work, we need to store a bios pointer to the
--     * HEST table.
--     */
--    assert(num_sources == 1);
--
-     /* Build error_block_address */
-     for (i = 0; i < num_sources; i++) {
-         build_append_int_noprefix(hardware_errors, 0, sizeof(uint64_t));
-@@ -419,6 +430,76 @@ static void get_hw_error_offsets(uint64_t ghes_addr,
-     *read_ack_register_addr = ghes_addr + sizeof(uint64_t);
+@@ -181,51 +181,24 @@ static void acpi_ghes_build_append_mem_cper(GArray *table,
+     build_append_int_noprefix(table, 0, 7);
  }
  
-+static void get_ghes_source_offsets(uint16_t source_id, uint64_t hest_addr,
-+                                    uint64_t *cper_addr,
-+                                    uint64_t *read_ack_start_addr,
-+                                    Error **errp)
-+{
-+    uint64_t hest_err_block_addr, hest_read_ack_addr;
-+    uint64_t err_source_struct, error_block_addr;
-+    uint32_t num_sources, i;
-+
-+    if (!hest_addr) {
+-static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+-                                      uint64_t error_physical_addr)
++static void
++ghes_gen_err_data_uncorrectable_recoverable(GArray *block,
++                                            const uint8_t *section_type,
++                                            int data_length)
+ {
+-    GArray *block;
+-
+-    /* Memory Error Section Type */
+-    const uint8_t uefi_cper_mem_sec[] =
+-          UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
+-                  0xED, 0x7C, 0x83, 0xB1);
+-
+     /* invalid fru id: ACPI 4.0: 17.3.2.6.1 Generic Error Data,
+      * Table 17-13 Generic Error Data Entry
+      */
+     QemuUUID fru_id = {};
+-    uint32_t data_length;
+-
+-    block = g_array_new(false, true /* clear */, 1);
+-
+-    /* This is the length if adding a new generic error data entry*/
+-    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
+-    /*
+-     * It should not run out of the preallocated memory if adding a new generic
+-     * error data entry
+-     */
+-    assert((data_length + ACPI_GHES_GESB_SIZE) <=
+-            ACPI_GHES_MAX_RAW_DATA_LENGTH);
+ 
+     /* Build the new generic error status block header */
+     acpi_ghes_generic_error_status(block, ACPI_GEBS_UNCORRECTABLE,
+         0, 0, data_length, ACPI_CPER_SEV_RECOVERABLE);
+ 
+     /* Build this new generic error data entry header */
+-    acpi_ghes_generic_error_data(block, uefi_cper_mem_sec,
++    acpi_ghes_generic_error_data(block, section_type,
+         ACPI_CPER_SEV_RECOVERABLE, 0, 0,
+         ACPI_GHES_MEM_CPER_LENGTH, fru_id, 0);
+-
+-    /* Build the memory section CPER for above new generic error data entry */
+-    acpi_ghes_build_append_mem_cper(block, error_physical_addr);
+-
+-    /* Write the generic error data entry into guest memory */
+-    cpu_physical_memory_write(error_block_address, block->data, block->len);
+-
+-    g_array_free(block, true);
+-
+-    return 0;
+ }
+ 
+ /*
+@@ -383,15 +356,18 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
+     ags->present = true;
+ }
+ 
+-int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
++void ghes_record_cper_errors(const void *cper, size_t len,
++                             uint16_t source_id, Error **errp)
+ {
+     uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
+     uint64_t start_addr;
+-    bool ret = -1;
+     AcpiGedState *acpi_ged_state;
+     AcpiGhesState *ags;
+ 
+-    assert(source_id < ACPI_GHES_ERROR_SOURCE_COUNT);
++    if (len > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
++        error_setg(errp, "GHES CPER record is too big: %ld", len);
 +        return;
 +    }
-+
-+    cpu_physical_memory_read(hest_addr, &num_sources, sizeof(num_sources));
-+    num_sources = le32_to_cpu(num_sources);
-+
-+    err_source_struct = hest_addr + sizeof(num_sources);
-+
+ 
+     acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
+                                                        NULL));
+@@ -406,6 +382,10 @@ int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+                              sizeof(error_block_addr));
+ 
+     error_block_addr = le64_to_cpu(error_block_addr);
++    if (!error_block_addr) {
++        error_setg(errp, "can not find Generic Error Status Block");
++        return;
++    }
+ 
+     read_ack_register_addr = start_addr +
+                              ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
+@@ -415,24 +395,63 @@ int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+ 
+     /* zero means OSPM does not acknowledge the error */
+     if (!read_ack_register) {
+-        error_report("OSPM does not acknowledge previous error,"
+-                     " so can not record CPER for current error anymore");
+-    } else if (error_block_addr) {
+-        read_ack_register = cpu_to_le64(0);
+-        /*
+-         * Clear the Read Ack Register, OSPM will write it to 1 when
+-         * it acknowledges this error.
+-         */
+-        cpu_physical_memory_write(read_ack_register_addr,
+-                                  &read_ack_register, sizeof(uint64_t));
+-
+-        ret = acpi_ghes_record_mem_error(error_block_addr,
+-                                         physical_address);
+-    } else {
+-        error_report("can not find Generic Error Status Block");
++        error_setg(errp,
++                   "OSPM does not acknowledge previous error,"
++                   " so can not record CPER for current error anymore");
++        return;
+     }
+ 
+-    return ret;
++    read_ack_register = cpu_to_le64(0);
 +    /*
-+     * Currently, HEST Error source navigates only for GHESv2 tables
++     * Clear the Read Ack Register, OSPM will write 1 to this register when
++     * it acknowledges the error.
 +     */
++    cpu_physical_memory_write(read_ack_register_addr,
++        &read_ack_register, sizeof(uint64_t));
 +
-+    for (i = 0; i < num_sources; i++) {
-+        uint64_t addr = err_source_struct;
-+        uint16_t type, src_id;
++    /* Write the generic error data entry into guest memory */
++    cpu_physical_memory_write(error_block_addr, cper, len);
 +
-+        cpu_physical_memory_read(addr, &type, sizeof(type));
-+        type = le16_to_cpu(type);
-+
-+        /* For now, we only know the size of GHESv2 table */
-+        if (type != ACPI_GHES_SOURCE_GENERIC_ERROR_V2) {
-+            error_setg(errp, "HEST: type %d not supported.", type);
-+            return;
-+        }
-+
-+        /* Compare CPER source address at the GHESv2 structure */
-+        addr += sizeof(type);
-+        cpu_physical_memory_read(addr, &src_id, sizeof(src_id));
-+
-+        if (src_id == source_id) {
-+            break;
-+        }
-+
-+        err_source_struct += HEST_GHES_V2_TABLE_SIZE;
-+    }
-+    if (i == num_sources) {
-+        error_setg(errp, "HEST: Source %d not found.", source_id);
-+        return;
-+    }
-+
-+    /* Navigate though table address pointers */
-+    hest_err_block_addr = err_source_struct + GHES_ERR_ST_ADDR_OFFSET;
-+    hest_read_ack_addr = err_source_struct + GHES_ACK_OFFSET;
-+
-+    cpu_physical_memory_read(hest_err_block_addr, &error_block_addr,
-+                             sizeof(error_block_addr));
-+
-+    error_block_addr =  le64_to_cpu(error_block_addr);
-+
-+    cpu_physical_memory_read(error_block_addr, cper_addr,
-+                             sizeof(*cper_addr));
-+
-+    *cper_addr = le64_to_cpu(*cper_addr);
-+
-+    cpu_physical_memory_read(hest_read_ack_addr, read_ack_start_addr,
-+                             sizeof(*read_ack_start_addr));
-+
-+    *read_ack_start_addr = le64_to_cpu(*read_ack_start_addr);
++    return;
 +}
 +
- void ghes_record_cper_errors(const void *cper, size_t len,
-                              uint16_t source_id, Error **errp)
- {
-@@ -439,8 +520,13 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-     }
-     ags = &acpi_ged_state->ghes_state;
- 
--    get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
--                         &cper_addr, &read_ack_register_addr);
-+    if (!ags->hest_addr_le) {
-+        get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
-+                             &cper_addr, &read_ack_register_addr);
-+    } else {
-+        get_ghes_source_offsets(source_id, le64_to_cpu(ags->hest_addr_le),
-+                                &cper_addr, &read_ack_register_addr, errp);
++int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
++{
++    /* Memory Error Section Type */
++    const uint8_t guid[] =
++          UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
++                  0xED, 0x7C, 0x83, 0xB1);
++    Error *errp = NULL;
++    int data_length;
++    GArray *block;
++
++    block = g_array_new(false, true /* clear */, 1);
++
++    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
++    /*
++     * It should not run out of the preallocated memory if adding a new generic
++     * error data entry
++     */
++    assert((data_length + ACPI_GHES_GESB_SIZE) <=
++            ACPI_GHES_MAX_RAW_DATA_LENGTH);
++
++    ghes_gen_err_data_uncorrectable_recoverable(block, guid,
++                                                data_length);
++
++    /* Build the memory section CPER for above new generic error data entry */
++    acpi_ghes_build_append_mem_cper(block, physical_address);
++
++    /* Report the error */
++    ghes_record_cper_errors(block->data, block->len, source_id, &errp);
++
++    g_array_free(block, true);
++
++    if (errp) {
++        error_report_err(errp);
++        return -1;
 +    }
++
++    return 0;
+ }
  
-     if (!cper_addr) {
-         error_setg(errp, "can not find Generic Error Status Block");
+ bool acpi_ghes_present(void)
+diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
+index 9295e46be25e..8859346af51a 100644
+--- a/include/hw/acpi/ghes.h
++++ b/include/hw/acpi/ghes.h
+@@ -23,6 +23,7 @@
+ #define ACPI_GHES_H
+ 
+ #include "hw/acpi/bios-linker-loader.h"
++#include "qapi/error.h"
+ 
+ /*
+  * Values for Hardware Error Notification Type field
+@@ -73,6 +74,8 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+                      const char *oem_id, const char *oem_table_id);
+ void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+                           GArray *hardware_errors);
++void ghes_record_cper_errors(const void *cper, size_t len,
++                             uint16_t source_id, Error **errp);
+ int acpi_ghes_record_errors(uint16_t source_id, uint64_t error_physical_addr);
+ 
+ /**
 -- 
 2.47.1
 

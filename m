@@ -1,118 +1,114 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp586682njb;
-        Thu, 5 Dec 2024 19:14:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW377wDda7+3TVrjIy1V/DnqYxXvBLXORjP/ReATZ1hor76IJFUX21zQp8jthQZdbXPX4bMTY8g7XrdBQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFstEx0xsOiGZN3rFvOPO+EZRM0xQR9Pu28Y4R7OQKKRjOAyvEwWIPYyw0bf0URfvl/xS/Q
-X-Received: by 2002:a05:620a:17a5:b0:7b6:7332:f246 with SMTP id af79cd13be357-7b6bcad4d46mr306142085a.26.1733454892395;
-        Thu, 05 Dec 2024 19:14:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733454892; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp588618njb;
+        Thu, 5 Dec 2024 19:20:29 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUIGjqI02BvUZFmaYjDvld20H5yKRo9lzRA7EB04ldkGN9FPlmEU+yyFedOv/PzggUcLbV3HvbsMK1HQw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHsQKWsAHs8QrbqTM0+S0RJGiOd/hGfo/H29xxqottB2XALllkKPnEOCLMirbb5gMuD37yr
+X-Received: by 2002:a05:620a:4084:b0:7b6:645c:cd0 with SMTP id af79cd13be357-7b6b4170082mr966516985a.7.1733455229170;
+        Thu, 05 Dec 2024 19:20:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733455229; cv=none;
         d=google.com; s=arc-20240605;
-        b=ZhFUbMDn6f6xE4c/RK4exGgOzJiwhcS33v3eVF+9JHfN4xx4BTJEqSQgw4mbuJrN80
-         a38PWnMeSPy9UiqPFt8/pqSW+lken1cMeopFGJyPhtsHHlXAIH9dfYDk339kQQWXj4Zj
-         qW9yeg7x5w9A9lKLHyWUNvdKc6f6ef8WOFdQKqP+H+3A/89Xc6Lx9Pv9vXmqN8T6J56x
-         j9fjMx52jwLrwkU/89SFW6KxUOsZzWkpOBiryzWu15IVQYZ0utwHijgeouW/CMQp4M2p
-         hlK4e0cc/v+QhPS228j8pA9xH9a9Gwyxy1KpRQouVCIDIDOwJ7bOdrduCJRpmBgFOnOQ
-         4v5w==
+        b=QQT49r5vyWjPXommkb4uiqdpPQnZt3Ry/EGaHiFhhoneJX5wfbJvLQmOxZKydo4xD6
+         +3ZZJWQ3Sxv/lVLIL9XaB6mNDbmG4AFkyd8yASQiRkqWtt5gIM0rZM79HjjOeGtEleir
+         I0wigc6e/ZN7x0jZqN3Vf8qk4e+mCTwCpXdf1edWmjSb82qA2vNwdS+QLRxDYt4lX5Sm
+         U7M1DiqLfJDp/fCl66zWU4SvUnk4048mBeCd3c+u00joC++JIFFyjrHLVkA2H3bDRSuk
+         xkCEdIghu29de1x+xaSCWmAJYUNqWqh09enc9yEJPDkYcpbnAQnR8XYjEtoDZ9iwm6ec
+         ViDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=62EszHINza2JM6HaVWD1VL/L58D3HMklvqS2u19Wl5w=;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=9N64e/pgYn1nLyblM4Tcpb97CAaIRtiZkD+VUNH0Gl4=;
         fh=9Ev+QBUhk6P6vR3LT1wYeDLexozsz44nqjfoyPajZCc=;
-        b=iHTQsUgEuIfXv7EKu9Kg0xU6n+mMHYCcio3ix8pIBnQYE35X3GdBEhC2329+I5tuSp
-         9svbMhu2ODAFHwa5xLPeDA2szYKR8zZuIX7DaFVx+9PVcnEZm9HxNKnSB87qiQUEB6n+
-         nPPie5ndhckahLN0bqLPreDz6jnxkpJNlwpe5GzpoC6U5ISRzR5eOLM3lYqpxg47lhNL
-         IiOsP6ujzX0e4urMJnvpL6NJQle7Yl5Sacie81+p1IZQPPzdvKkYwiSTvXKAADJ7paSD
-         7uHPl5N4FOFVOYZvrdhGSDMQnSrxAhslPanJMVxIvR+HpwssAe0pCGgmVjh+ZaP+DeQQ
-         NEsw==;
+        b=HRXVokCwJKBEKK1CGvfnsCUo1qpiJ0E+UTJDAs6OLeptrG4KNg66WFPcq2/ymtiSYh
+         cccRG73lGn788kp90Y9A3Ge3nKcwOJz1/dKyxVNBE2J748p4Ch1QDhDyZNX3iTbtv+Cd
+         sNDPSf55VmjR0eVhv7U6BBJYU9hzfBguLn4s1r8v4t60//kZEM3DZzkQzkWwsP81Inx6
+         KhBwJRvG/MRa+bh0Rz+dsFVRRuytLsDmkuHgvkiTohgo0E3bkBSf45b/tIrpaKUug37Q
+         gfc/mBjmx85bD8Y9Y4gpC5TQfWq5lJQRCqMorcFqgxxaN00yzGlczqCurViZJZwVm/pf
+         pXrQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S3flFjo+;
+       dkim=pass header.i=@linaro.org header.s=google header.b="XnPd//kl";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8ea0f8790si5388736d6.450.2024.12.05.19.14.52
+        by mx.google.com with ESMTPS id d75a77b69052e-467297f887dsi16969591cf.441.2024.12.05.19.20.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Dec 2024 19:14:52 -0800 (PST)
+        Thu, 05 Dec 2024 19:20:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=S3flFjo+;
+       dkim=pass header.i=@linaro.org header.s=google header.b="XnPd//kl";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tJOlq-0006sH-3j; Thu, 05 Dec 2024 22:12:46 -0500
+	id 1tJOsp-0006GC-Me; Thu, 05 Dec 2024 22:19:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tJOln-0006q3-BV
- for qemu-devel@nongnu.org; Thu, 05 Dec 2024 22:12:43 -0500
-Received: from mail-oa1-x2f.google.com ([2001:4860:4864:20::2f])
+ id 1tJOsn-0006FT-QN
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2024 22:19:57 -0500
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tJOll-0004Sv-Fq
- for qemu-devel@nongnu.org; Thu, 05 Dec 2024 22:12:43 -0500
-Received: by mail-oa1-x2f.google.com with SMTP id
- 586e51a60fabf-2967af48248so926552fac.2
- for <qemu-devel@nongnu.org>; Thu, 05 Dec 2024 19:12:41 -0800 (PST)
+ id 1tJOsm-0006Ae-9s
+ for qemu-devel@nongnu.org; Thu, 05 Dec 2024 22:19:57 -0500
+Received: by mail-ot1-x330.google.com with SMTP id
+ 46e09a7af769-71d4032b3e9so1415886a34.1
+ for <qemu-devel@nongnu.org>; Thu, 05 Dec 2024 19:19:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733454760; x=1734059560; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=62EszHINza2JM6HaVWD1VL/L58D3HMklvqS2u19Wl5w=;
- b=S3flFjo+6J7igjAM8dFhfiXkV3+9Y58KyZrEY06gski+AbBvcUKiw6tPYPtysyuNyT
- 50+D0M/QEcILDBuQeE8qCI8FxK13B6Po1MIt+3svg+c+m78uSkuT8y7w3WD5Q5khN1Fo
- CS2gna0Kk5qFECoLStcIXumheAN0AUg1kC+Q+LEGvLtZHlFa5Dzj5+S92m6p4eUTjlrn
- ejXUzkD2W+Y8aUActQ5qbBt0PHj82jVWq3E2pnSpkXLQWerFQYLpfBRI0eZln5tv1IDU
- OBwOKTxmVb6T5j9lTTlrRrM1p8+gxpeIWPxAY62SychNTm10rpzOTWXcX85yT3nenmrh
- VwEw==
+ d=linaro.org; s=google; t=1733455195; x=1734059995; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=9N64e/pgYn1nLyblM4Tcpb97CAaIRtiZkD+VUNH0Gl4=;
+ b=XnPd//klYcvi7MGkUGT394ZB1HqCSaAIuPJ/DMi2LXRIURPt0ZJiPVp1TTfQhRJDjP
+ mQBQjUA69UCAZFS6JPF/YnJ+JpAliFC2vdjtDFqfQvlmIPiA317rKtZ7ZWe6dAMuU5ME
+ /zgu0NeXlakd9qgJ5TviTAAB+s+Jx18Qb5v414uMz34VSMJQV0EZaFvqeHIlVXUXJwzT
+ 4mpuvR+SKEKUCd3ZdAq5Ak3AG57cdjL35I6IDbfmJZmhsmYqGoj2rt5w+nUZm0r8XQCq
+ ehdZyiZBVFyLbvvXepewp0TmpRYkb/rJXWYTQSxdT5M0KB0/n3o4tRQyNXk5IHIFUBAd
+ Fq6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733454760; x=1734059560;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=62EszHINza2JM6HaVWD1VL/L58D3HMklvqS2u19Wl5w=;
- b=B37LqxBh0U0o1b+nDPGawuupKBp0/uxHlhsiKKx4WFPHIrMr7eglhMU2kssLaCQ15a
- wRPHwR1VLF7U4ZjMrWd4DOJLlzdhQf3+QEyTik/1TbGCO0w3K9CsBKz9D/FNU6uLxap/
- np/HbDm9KQSNFDnhABVJiN2s21/YKCgP0m0UmJnPGMQtB1LITRdoPCHtOh6ljqci8u1r
- Zao+6n4aU9hmX1XqmNWuKPt01N1ArN35Hv5s8o+0Y46q4cmvcff2dzGcJFCl8u3rVeew
- s9qChnF2FtM30K0wsRbJiVKHAbYxuEYec6AFWjxAVYHhX3H7xacWW0DIYqu9Re+yrNnP
- 6qKQ==
-X-Gm-Message-State: AOJu0YxfTbUyqtFOON+lTcQjqymUefsGlBXGNPG5HMYeEtWY9TqW/6zL
- O8nFJjho7d4wsp4Y5Qj5niyBHQR7prXJU6C9OUrvMGRefGaT4yO0LHleyIHPgDxKk8OmpfvK4gq
- ZmnmK4v19
-X-Gm-Gg: ASbGncvYL0jc79kxRpvN9Xt35JeM74Of2rCnSp63iuC/SWLYuUxAOx17XGmCpTqz946
- ZdQvXi7k6LU16oUCar+aj7v7VDCnwkrSunIs670lkIG9XSbhCl7tMBQoZAISctGa93GfVkXwRsM
- sDg9WWtXvkTsK3hbj0nSgcrTok4Y9flFKM+knBcaEBhzpA+RS7O5pWjbZG2Nrskns5X+EFoNOdi
- jWOWy5Z/bN+9tFKrCGMWM1gB4WEPAFtOkf+yqxuvEjv6hIInEDOk0MBILWyuIpz61Gv0o+vHj+3
- SdgXkklge8UnqYPItt+CMTdemSW17M+aS34C
-X-Received: by 2002:a05:6871:9187:b0:296:dee4:771c with SMTP id
- 586e51a60fabf-29f738826eemr768935fac.33.1733454760134; 
- Thu, 05 Dec 2024 19:12:40 -0800 (PST)
+ d=1e100.net; s=20230601; t=1733455195; x=1734059995;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9N64e/pgYn1nLyblM4Tcpb97CAaIRtiZkD+VUNH0Gl4=;
+ b=Hnw3+3wSq7qqLtWuYZM0g8TDUeULI+kuH3ZHCaQ2q/f3/p9jRpoCCYQO9ZCyAtsyDn
+ aExGrM+kww2z7w4ndFs+mMRyzWGmjv9RAbBErairv1Ib4v773r5nkKQsWYrHLgN0iWUy
+ QgK2q0dG1/175/KOnda0BpR+81Qpkh6+Ki99hH5H8b1Gw+7uGYWizNsg04CiQekBxOUq
+ V0JvwG7mzDh1kNoXqTNrjZKGRif/rf+obtH/17uyq4s47LrKbah+K+Qlci7NgnKMy5T/
+ Y18CmE+aXpJLh8wimqsafctEe0H2+DPLKHt9VnFqP4FAUUjgrZ0h5kPq3EUARPAU1eNV
+ PfkQ==
+X-Gm-Message-State: AOJu0Yz0sZQA9/XTbC7RUaGXknSlHUjteEH3SJ6jhM5H9ioTWRYym5iC
+ S9SaU+KSUErgQYncHc0pxvNAJX9u7wQ2Klz8s9DBjXXc039+usuJqdNQTGbetZoUTzC0Y2FJBsN
+ IWM+OGtIp
+X-Gm-Gg: ASbGncvPsZ3uh0iP9BrxvvQUlFyXrq96c95kdJVsVX1r6Ep0mSAm5U9h4q1GL8CFITZ
+ i8Y7t9aZE1LLeEFlc+XgolTXfN4GMgO7HA1TJM1IaZwCWckO25dL5iO4R1HRCCW8r7wBtjULPsi
+ A4DjYuBvg1crWS3KaDvTL3Gm3rPWe4+jhquxhQ564loDbOMM5FG600k5HTsnU/rNbrxWqrHUpGm
+ Y1sCNcZeMjjUdpVcoxl8E/CHoGktGIfjJ/NxoRVlw9Y8TFy7mftCVluIjKB+k7zL6NIsu2YZEsF
+ Ay9H8hJvTVO9Xtjw4Nlq6uENEvVlwHpxj3wY
+X-Received: by 2002:a9d:5ccc:0:b0:71d:53b6:ef5a with SMTP id
+ 46e09a7af769-71dc2c64885mr2443693a34.6.1733455194894; 
+ Thu, 05 Dec 2024 19:19:54 -0800 (PST)
 Received: from localhost.localdomain (fixed-187-189-51-143.totalplay.net.
  [187.189.51.143]) by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-71dc493b2dfsm596442a34.9.2024.12.05.19.12.39
+ 006d021491bc7-5f2793255bbsm541045eaf.40.2024.12.05.19.19.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 05 Dec 2024 19:12:39 -0800 (PST)
+ Thu, 05 Dec 2024 19:19:54 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 8/9] target/arm: Convert vec_helper.c to use env alias
-Date: Thu,  5 Dec 2024 21:12:23 -0600
-Message-ID: <20241206031224.78525-9-richard.henderson@linaro.org>
+Subject: [PATCH 0/2] target/arm: Two more float_status conversions
+Date: Thu,  5 Dec 2024 21:19:50 -0600
+Message-ID: <20241206031952.78776-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20241206031224.78525-1-richard.henderson@linaro.org>
-References: <20241206031224.78525-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2f;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::330;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,146 +130,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y/iV4znoEEnk
+X-TUID: FEjZe76TcmgF
 
-Allow the helpers to receive CPUARMState* directly
-instead of via void*.
+Hi Peter,
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper.h         | 12 ++++++------
- target/arm/tcg/helper-a64.h |  2 +-
- target/arm/tcg/vec_helper.c | 21 +++++++--------------
- 3 files changed, 14 insertions(+), 21 deletions(-)
+You probably have something like this in your AFP tree already,
+but while I'm sending all of the other float_status patches, I
+thought I might as well send these two.
 
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index db8b8dc748..61b135a707 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -863,13 +863,13 @@ DEF_HELPER_FLAGS_5(gvec_suqadd_d, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_5(gvec_fmlal_a32, TCG_CALL_NO_RWG,
--                   void, ptr, ptr, ptr, ptr, i32)
-+                   void, ptr, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_5(gvec_fmlal_a64, TCG_CALL_NO_RWG,
--                   void, ptr, ptr, ptr, ptr, i32)
-+                   void, ptr, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_5(gvec_fmlal_idx_a32, TCG_CALL_NO_RWG,
--                   void, ptr, ptr, ptr, ptr, i32)
-+                   void, ptr, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_5(gvec_fmlal_idx_a64, TCG_CALL_NO_RWG,
--                   void, ptr, ptr, ptr, ptr, i32)
-+                   void, ptr, ptr, ptr, env, i32)
- 
- DEF_HELPER_FLAGS_2(frint32_s, TCG_CALL_NO_RWG, f32, f32, fpst)
- DEF_HELPER_FLAGS_2(frint64_s, TCG_CALL_NO_RWG, f32, f32, fpst)
-@@ -1040,9 +1040,9 @@ DEF_HELPER_FLAGS_4(sve2_sqrdmulh_idx_d, TCG_CALL_NO_RWG,
-                    void, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_6(sve2_fmlal_zzzw_s, TCG_CALL_NO_RWG,
--                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+                   void, ptr, ptr, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_6(sve2_fmlal_zzxw_s, TCG_CALL_NO_RWG,
--                   void, ptr, ptr, ptr, ptr, ptr, i32)
-+                   void, ptr, ptr, ptr, ptr, env, i32)
- 
- DEF_HELPER_FLAGS_4(gvec_xar_d, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
-diff --git a/target/arm/tcg/helper-a64.h b/target/arm/tcg/helper-a64.h
-index 4d70493914..26e327af3a 100644
---- a/target/arm/tcg/helper-a64.h
-+++ b/target/arm/tcg/helper-a64.h
-@@ -29,7 +29,7 @@ DEF_HELPER_3(vfp_cmps_a64, i64, f32, f32, fpst)
- DEF_HELPER_3(vfp_cmpes_a64, i64, f32, f32, fpst)
- DEF_HELPER_3(vfp_cmpd_a64, i64, f64, f64, fpst)
- DEF_HELPER_3(vfp_cmped_a64, i64, f64, f64, fpst)
--DEF_HELPER_FLAGS_4(simd_tblx, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(simd_tblx, TCG_CALL_NO_RWG, void, ptr, ptr, env, i32)
- DEF_HELPER_FLAGS_3(vfp_mulxs, TCG_CALL_NO_RWG, f32, f32, f32, fpst)
- DEF_HELPER_FLAGS_3(vfp_mulxd, TCG_CALL_NO_RWG, f64, f64, f64, fpst)
- DEF_HELPER_FLAGS_3(neon_ceq_f64, TCG_CALL_NO_RWG, i64, i64, i64, fpst)
-diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
-index d2d9d5e829..e3083c6e84 100644
---- a/target/arm/tcg/vec_helper.c
-+++ b/target/arm/tcg/vec_helper.c
-@@ -2057,28 +2057,25 @@ static void do_fmlal(float32 *d, void *vn, void *vm, float_status *fpst,
- }
- 
- void HELPER(gvec_fmlal_a32)(void *vd, void *vn, void *vm,
--                            void *venv, uint32_t desc)
-+                            CPUARMState *env, uint32_t desc)
- {
--    CPUARMState *env = venv;
-     do_fmlal(vd, vn, vm, &env->vfp.standard_fp_status, desc,
-              get_flush_inputs_to_zero(&env->vfp.fp_status_f16));
- }
- 
- void HELPER(gvec_fmlal_a64)(void *vd, void *vn, void *vm,
--                            void *venv, uint32_t desc)
-+                            CPUARMState *env, uint32_t desc)
- {
--    CPUARMState *env = venv;
-     do_fmlal(vd, vn, vm, &env->vfp.fp_status, desc,
-              get_flush_inputs_to_zero(&env->vfp.fp_status_f16));
- }
- 
- void HELPER(sve2_fmlal_zzzw_s)(void *vd, void *vn, void *vm, void *va,
--                               void *venv, uint32_t desc)
-+                               CPUARMState *env, uint32_t desc)
- {
-     intptr_t i, oprsz = simd_oprsz(desc);
-     uint16_t negn = extract32(desc, SIMD_DATA_SHIFT, 1) << 15;
-     intptr_t sel = extract32(desc, SIMD_DATA_SHIFT + 1, 1) * sizeof(float16);
--    CPUARMState *env = venv;
-     float_status *status = &env->vfp.fp_status;
-     bool fz16 = get_flush_inputs_to_zero(&env->vfp.fp_status_f16);
- 
-@@ -2122,29 +2119,26 @@ static void do_fmlal_idx(float32 *d, void *vn, void *vm, float_status *fpst,
- }
- 
- void HELPER(gvec_fmlal_idx_a32)(void *vd, void *vn, void *vm,
--                                void *venv, uint32_t desc)
-+                                CPUARMState *env, uint32_t desc)
- {
--    CPUARMState *env = venv;
-     do_fmlal_idx(vd, vn, vm, &env->vfp.standard_fp_status, desc,
-                  get_flush_inputs_to_zero(&env->vfp.fp_status_f16));
- }
- 
- void HELPER(gvec_fmlal_idx_a64)(void *vd, void *vn, void *vm,
--                                void *venv, uint32_t desc)
-+                                CPUARMState *env, uint32_t desc)
- {
--    CPUARMState *env = venv;
-     do_fmlal_idx(vd, vn, vm, &env->vfp.fp_status, desc,
-                  get_flush_inputs_to_zero(&env->vfp.fp_status_f16));
- }
- 
- void HELPER(sve2_fmlal_zzxw_s)(void *vd, void *vn, void *vm, void *va,
--                               void *venv, uint32_t desc)
-+                               CPUARMState *env, uint32_t desc)
- {
-     intptr_t i, j, oprsz = simd_oprsz(desc);
-     uint16_t negn = extract32(desc, SIMD_DATA_SHIFT, 1) << 15;
-     intptr_t sel = extract32(desc, SIMD_DATA_SHIFT + 1, 1) * sizeof(float16);
-     intptr_t idx = extract32(desc, SIMD_DATA_SHIFT + 2, 3) * sizeof(float16);
--    CPUARMState *env = venv;
-     float_status *status = &env->vfp.fp_status;
-     bool fz16 = get_flush_inputs_to_zero(&env->vfp.fp_status_f16);
- 
-@@ -2562,10 +2556,9 @@ DO_VRINT_RMODE(gvec_vrint_rm_s, helper_rints, uint32_t)
- #undef DO_VRINT_RMODE
- 
- #ifdef TARGET_AARCH64
--void HELPER(simd_tblx)(void *vd, void *vm, void *venv, uint32_t desc)
-+void HELPER(simd_tblx)(void *vd, void *vm, CPUARMState *env, uint32_t desc)
- {
-     const uint8_t *indices = vm;
--    CPUARMState *env = venv;
-     size_t oprsz = simd_oprsz(desc);
-     uint32_t rn = extract32(desc, SIMD_DATA_SHIFT, 5);
-     bool is_tbx = extract32(desc, SIMD_DATA_SHIFT + 5, 1);
+Based-on: 20241206031224.78525-1-richard.henderson@linaro.org
+(target/arm: Helper type cleanups)
+
+r~
+
+Richard Henderson (2):
+  target/arm: Use float_status in helper_fcvtx_f64_to_f32
+  target/arm: Use float_status in helper_vfp_fcvt{ds,sd}
+
+ target/arm/helper.h            |  4 ++--
+ target/arm/tcg/helper-a64.h    |  2 +-
+ target/arm/tcg/helper-a64.c    |  3 +--
+ target/arm/tcg/translate-a64.c | 17 +++++++++++------
+ target/arm/tcg/translate-vfp.c |  4 ++--
+ target/arm/vfp_helper.c        |  8 ++++----
+ 6 files changed, 21 insertions(+), 17 deletions(-)
+
 -- 
 2.43.0
 

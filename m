@@ -1,77 +1,138 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434da1134b9sm59273725e9.33.2024.12.06.08.02.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Dec 2024 08:02:41 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8C3695F9FA;
-	Fri,  6 Dec 2024 16:02:39 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
-	Leif Lindholm <quic_llindhol@quicinc.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Radoslaw Biernacki <rad@semihalf.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	qemu-stable@nongnu.org
-Subject: [PATCH 2/3] target/arm: ensure cntvoff_el2 also used for EL2 virt timer
-Date: Fri,  6 Dec 2024 16:02:38 +0000
-Message-Id: <20241206160239.3229094-3-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241206160239.3229094-1-alex.bennee@linaro.org>
-References: <20241206160239.3229094-1-alex.bennee@linaro.org>
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1014355njb;
+        Fri, 6 Dec 2024 09:23:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVDWSW04jSQFN36bwqTR5tM5M6vMLZRyufE3XuXGB04LUtUR0uGpKD28D15wan5eWoawc7yhNYIniVARQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEyMQLGrl+dixgKGdizQIzflXcuOD4YUBHg9+wxmawjgCqCsh+jNWQs0PFvl9Nwy1ovr1S6
+X-Received: by 2002:a05:622a:181c:b0:466:adbc:f1e2 with SMTP id d75a77b69052e-46734cbf17bmr58846021cf.18.1733505795758;
+        Fri, 06 Dec 2024 09:23:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733505795; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fZ+J0Lg6//BSUsNPSUjYrS7ccAQAxSO1FCX7WzCh4gcPOTjZThRSevXH4w5YVKG45M
+         3eOW6mzDdk6LGBrxq4Cb0hHmk8R3K32qTEKZ8yzmezufd96Ffa9qj5W6ve69dLFpfL+0
+         dJbAG56QbI+OZMUAu425zv2yRFSNbQQoh1sjnf6GIZmPtjKo4/1kEyitddjLSnZvFc5W
+         AHyCPtkjuxYib7LefuSkosug8n0u1jt9Otjp8mI/gHadxqdv/oN9nIjXtPpcK/FAEy5j
+         N/PdNdThFKBmiTdwm+neufC1aec2lDFp1MtkwrBOvrS41WCdtsT7cvZdru3PjSUr8j4D
+         Dt9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=jZOBoJX+4aqmZ9kPA7j4WdtZJxt1E/3bTRqOQQA09Tw=;
+        fh=iUMV9EEFXu4MlKxCNfodurzM1E/+GIYNLUanQFJhC2M=;
+        b=PNg/zBK+NIAtNsKxop++X1HbX8E5TviH/QJwCYFT3kB69U5vaW81terPsfST1vDB1g
+         WX/U54ttNrI3mO/3PxqwwpAc2FBMLAfhCe9W0Xn+YRq8k5MqqhVwLM5NmQktT4YfYDoZ
+         31phtp2tjx5HWgF4dD+C/9UQ5S2oLkgmU7M23EQ1epSqDgb3P+Jkah51YSGYXRW6z03s
+         L21B449UXj/UFjSZVrjDCIeBLFsEP41nkY1ferowfxaje4g9PZSZXgh1IRC56ZT3dCAf
+         6K5QNsP0YNx9l3VqpoAn1FcQRPfZCgyDcjfRsBzHan+UIf9cZdtsYF5axOwSr9uU7tyt
+         7EHw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=KMbMu3HU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-467296e7446si42337721cf.168.2024.12.06.09.23.15
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 06 Dec 2024 09:23:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=KMbMu3HU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tJc1m-0004aQ-Nr; Fri, 06 Dec 2024 12:22:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tJc1O-00047S-DK; Fri, 06 Dec 2024 12:21:42 -0500
+Received: from dfw.source.kernel.org ([2604:1380:4641:c500::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tJc1L-0000xY-Lw; Fri, 06 Dec 2024 12:21:42 -0500
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id CACFE5C6668;
+ Fri,  6 Dec 2024 17:20:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 07A0CC4AF0E;
+ Fri,  6 Dec 2024 17:21:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1733505688;
+ bh=gH9yBConPFlFAtM5yFnFIpjEGK22gESF+5Hl3wqFIsM=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=KMbMu3HUDRY4XARuHPlMa3Y35tEDU7FqK84deiaamMnlDr9eY4bU9Pp+QxVG1cxts
+ 91QoUvh3qgrHPiLUpxTBcY995K2vIm83brX7fkbzni+e2Eg7l3cJtdmW4b4171I7Im
+ S8wPr0FB1YMHko+pZBRQyCfXg4ohQFOzTTWuha2OXQtV5YlmDJM+mQqQWF004acFgp
+ 6cMJZMuyKFXnD7RJS5XOSorifnbCKWC3GkehwUmLLWgBDbqTZPjXgX9FvPgrpokGFZ
+ HsaXXl9+pYxaLT64nRiC26LWEoTMYNaPaP21RKmVFvt83RKxHyKgN/C+/ElmPNuhdH
+ iiCS8Gp0g+8RA==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+ (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tJc18-00000005RLG-0ui3; Fri, 06 Dec 2024 18:21:26 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: "Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shiju Jose <shiju.jose@huawei.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Ani Sinha <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, linux-kernel@vger.kernel.org,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Subject: [PATCH 27/31] DEBUG
+Date: Fri,  6 Dec 2024 18:12:49 +0100
+Message-ID: <6f427a02c2c20512d5da178b47c64d553851a60e.1733504943.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <cover.1733504943.git.mchehab+huawei@kernel.org>
+References: <cover.1733504943.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: UrSu/9b8S229
+Received-SPF: pass client-ip=2604:1380:4641:c500::1;
+ envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ SUBJ_ALL_CAPS=0.5 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KUzP2bOJHUn8
 
-We were missing this case and will shortly be adding another.
-Re-arrange the code and use a switch statement to group the virtual
-timers.
-
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: qemu-stable@nongnu.org
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- target/arm/helper.c | 21 ++++++++++++++++-----
- 1 file changed, 16 insertions(+), 5 deletions(-)
+ hw/acpi/ghes.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index f38eb054c0..cd147b717a 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2732,16 +2732,27 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
-     ARMGenericTimer *gt = &cpu->env.cp15.c14_timer[timeridx];
+diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+index abca351b18de..1fe4c536611a 100644
+--- a/hw/acpi/ghes.c
++++ b/hw/acpi/ghes.c
+@@ -534,9 +534,11 @@ void ghes_record_cper_errors(const void *cper, size_t len,
+     ags = &acpi_ged_state->ghes_state;
  
-     if (gt->ctl & 1) {
-+        uint64_t count = gt_get_countervalue(&cpu->env);
-+        uint64_t offset;
-+        uint64_t nexttick;
-+        int istatus;
-+
-         /*
-          * Timer enabled: calculate and set current ISTATUS, irq, and
-          * reset timer to when ISTATUS next has to change
-          */
--        uint64_t offset = timeridx == GTIMER_VIRT ?
--            cpu->env.cp15.cntvoff_el2 : gt_phys_raw_cnt_offset(&cpu->env);
--        uint64_t count = gt_get_countervalue(&cpu->env);
-+        switch (timeridx) {
-+        case GTIMER_VIRT:
-+        case GTIMER_HYPVIRT:
-+            offset = cpu->env.cp15.cntvoff_el2;
-+            break;
-+        default:
-+            offset =gt_phys_raw_cnt_offset(&cpu->env);
-+            break;
-+        }
-+
-         /* Note that this must be unsigned 64 bit arithmetic: */
--        int istatus = count - offset >= gt->cval;
--        uint64_t nexttick;
-+        istatus = count - offset >= gt->cval;
- 
-         gt->ctl = deposit32(gt->ctl, 2, 1, istatus);
- 
+     if (!ags->hest_lookup) {
++        fprintf(stderr,"Using old GHES lookup\n");
+         get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
+                              &cper_addr, &read_ack_register_addr);
+     } else {
++        fprintf(stderr,"Using new HEST lookup\n");
+         get_ghes_source_offsets(source_id, le64_to_cpu(ags->hest_addr_le),
+                                 &cper_addr, &read_ack_register_addr, errp);
+     }
 -- 
-2.39.5
+2.47.1
+

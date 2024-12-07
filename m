@@ -1,147 +1,136 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1371680njb;
-        Sat, 7 Dec 2024 00:33:18 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWMGK35XZatbcvfnvBOcgoOVtCt12pToD+uJl8tkB1aMpQ6EG2SNxxZc8LgvkvMW7fUc8MQM2RINIkf/w==@linaro.org
-X-Google-Smtp-Source: AGHT+IE1JKJnyfr6Tc9Hkf+O4c8wLaRw6CoPLg/jkaXpTDJqNsar8UBW9JEEPZLsdQNRnSnOuHtr
-X-Received: by 2002:a17:90b:38c1:b0:2ea:83a0:47a5 with SMTP id 98e67ed59e1d1-2ef6955ac23mr9374825a91.4.1733560398414;
-        Sat, 07 Dec 2024 00:33:18 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733560398; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1373576njb;
+        Sat, 7 Dec 2024 00:39:34 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVXitvZuvueeFNY/xm11ozVHuk1H6rh42M+1lp9u2xUIIna681o/R0HQeYX6cUXAZ2GJCT/sbpd6CJQtQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEIrwCaKNTho43Mt1STvvSsgEbERl8vOZ3qAlKctWwlS3n+5BS/b+SXlAwH22tAtj/2Np7A
+X-Received: by 2002:a17:902:d48a:b0:215:bc30:c961 with SMTP id d9443c01a7336-21614da9a17mr78412345ad.35.1733560774300;
+        Sat, 07 Dec 2024 00:39:34 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1733560774; cv=pass;
         d=google.com; s=arc-20240605;
-        b=BLaSy1gFy+Z+2YlrYMhq3WVPjOwfJc4K6gz8sNoOFW+CUQ/NelKhQcmJLn0op/fFzO
-         M9QbOwfWnZkjWB0pHLlKuYN/9WlqYTQGoxOPsYOp+8lrnk+z63jWLeyB+aNEXs2JFjcj
-         xffrsiOUiXwLSyAxGKgOyvKuo33VCl97a2QTx3ltiqXNFF59CePUqg8tEoxq+7E9R2+f
-         js4zNldI2OcaIXC26f03QUpj1LPvNe+VbozSZmwxmUfwxeJquj4uOYb0aERBmuuebQ0/
-         BbF89qyBaxlJwsfkxDstGAiNbvGr4MTVd1Q8/hxQsfn1VKEpaj/ti1w18pQdhaStuT6i
-         0YVA==
+        b=D8E3ltJDJ4pGQRuV2BB1cPdjBoB/TJohIMMX7+Bik7sTPVp8adYsHdgzMJxNecIOWC
+         gt0HNTI9D0Ay58jXOsj8b+rHF9F9CCaxsFsDuKyCDtrSE0MQdrYEYa86e8/J8yOU6lUm
+         dHeSzTqWMjHZS7TZ6Jzn4+5i5EhJYEqacuVvR1/Ed9b7yECYdF5N0i6HWa7GetbWjREP
+         KcpPKqeMQ6JqbxSfihw7FPcaT1b2IqfrS1hZNz/sfx4hqyc5pVgXbcXFIMw7PXG//H/Z
+         eIbkXJkFeTRL768JNl1You0BzEORw0w1bBLtft/G+D9HB3WDJoIx8mV3Ts+h41XLOC6p
+         JgdQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=jnRBr4roXrye1S4qu1taYXv/EYjBxcshO9vSFQIvT78=;
-        fh=+4nhXb5zpaAYzvcaalAr6lS3LAZiW+m6ZyVMjIkOc3g=;
-        b=FqQlp3wTkEHKQrsBg6EalqK0VM6ypokC9zR0D8hiG5IAO6e5KMAeiE0KHgauR9H2VA
-         U18+j2zPL+VmuIOIp/zm3RmFZ04x8R9gLjZudbf6J+YG6MpAhcfXjaTTsCj+PvLcolY+
-         0bPvFAixPNlr7fYIHv8HqZ+OcrMBi/3tB1Tzqoca8sLWV00zBfmgV++BsmoWZpdWd/ZD
-         eU8ZAEDsQZLs+Ix7kWQl5cxfx7UGoMU6gsdpqLZ1SGlEFI79rD9hX/Fu9lO/uN5+Meaf
-         Tpyid/46MdMEWR/bM+0OkrSUZuR9B5l9qMB0FxpU3Zk/2xxlfTqa2ruyagvJg9hdfKyj
-         YzmQ==;
+        bh=KMlvf0I4VJktAytj5BNjvFLvXMlnGpWpy3jdsT2Xceg=;
+        fh=XDM2jbHMCdO2R69Ge+x13SMpQZAJwltkLNGwa/OfM1E=;
+        b=XmxLWrzfbQdQT3eCw0v8ROjJkhY0VldxNJ8IqQHh2kWBddftD3dcV0r7m4a2UYNoy2
+         BIRlM3h0hQeqHOgLzo1HDGWU7UK0vmOYMo7YLCZuKLGnlYen7MVUpIHVgR5qfVFIgV4r
+         DskQ6Z01BwmbfXcvwsBdlenqdPL5CE3FHB0ZE8wghwL9goAN+YqeqDCYffegnz746h3w
+         yJiKBFE8syd6449QyNDi4exBNfbS0PvW0UwJNPAjiUzCM7gajDAdep+J3rW3eMnFgHQ5
+         BzEaJrsvkdwXVNZbu0XBhIZFnEjgM0PfIJiOAXiYEIuEnSDUzOZKod3ll3pNMva9Ba4J
+         aZaA==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=MO9sW+EB;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=q0aRBymL;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-435946-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435946-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-435946-alex.bennee=linaro.org@vger.kernel.org>
+Return-Path: <kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org>
 Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 98e67ed59e1d1-2ef87cb738csi1081077a91.41.2024.12.07.00.33.18
+        by mx.google.com with ESMTPS id d9443c01a7336-2161502fb82si38665805ad.322.2024.12.07.00.39.34
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 07 Dec 2024 00:33:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-435946-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        Sat, 07 Dec 2024 00:39:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=MO9sW+EB;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=q0aRBymL;
        arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-435946-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-435946-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id E0AD228172B
-	for <alex.bennee@linaro.org>; Sat,  7 Dec 2024 08:33:17 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id CE65A281B64
+	for <alex.bennee@linaro.org>; Sat,  7 Dec 2024 08:39:33 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id E4DE676034;
-	Sat,  7 Dec 2024 08:33:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id CFF28137742;
+	Sat,  7 Dec 2024 08:39:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="MO9sW+EB"
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="q0aRBymL"
 Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A03C518638
-	for <linux-kernel@vger.kernel.org>; Sat,  7 Dec 2024 08:33:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8ADAF3B19A;
+	Sat,  7 Dec 2024 08:39:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1733560394; cv=none; b=JJEX6icQzXfCjh3SFhLBUqp29ce9j4PaPzvGqMBsdZEaCumc/s6Ag2NsxYev9BENs2fWwAQxg5s+GqdJ11xiVrxfBMzsGkwG7dYrelY25DP8JS/2pEJGfVjq7StF+1W5q8g34fKWPB1kw2VxVjzOHWxnvP5MuKFXq3FIIhvV6OI=
+	t=1733560770; cv=none; b=LzBOonq1idaIPkUKvSqARhCYu9odOsQ7XVbA+LdyAYJLYUwUX/BKzkDW6Vnn5xRXjF5rgJD3XBGSNgv00dmgsgr2p6kZ4QkAweIYUZPdKr+OCN22D5ommOx9QCUbjWIKmccxD13QX1MY+31+PMCAoivIjO7wNi9HvSp+KBi+BW4=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1733560394; c=relaxed/simple;
-	bh=ysUzu1cKx69rnPAx2aBIYuDYfVrYDTwWQl2sRqD/khs=;
+	s=arc-20240116; t=1733560770; c=relaxed/simple;
+	bh=5/pUUungQ8NgDYyXV69cVH1mhMQviRIiv82xmjhsv8Y=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=WbtVBKjpAHAZF0SK/CSwp26nCYToO6cASL04OxERIkh57Qi7Gz32w0Uez1DXtVARbv9/KaR7vr8BOEhE+pIiX+rZS+dPK8870xghpc5s8wQ4yqG7fKSCd+gG+DC8Z8QUYgWBaw6MwrSKzMWkaRdrhlQyWCSXVCkQNysEj6KNS9A=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=MO9sW+EB; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E1EFC4CECD;
-	Sat,  7 Dec 2024 08:33:11 +0000 (UTC)
+	 MIME-Version:Content-Type; b=iNNOb+YUAu7k/fXqWb9hZtKbaysGhigD1nTKoTAEcS2va4Td3yekwZ7uJajhLu9juLKjjSUyEw1ThoidyPriP/7wqN6LqSvMuSeDaaalrfJL/YW/OW2ySSWyo8JtwcPBIDFUE1hmHXNoXdc5YBG2M08YmS116pn+r7yPmgTgYho=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=q0aRBymL; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F830C4CECD;
+	Sat,  7 Dec 2024 08:39:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733560394;
-	bh=ysUzu1cKx69rnPAx2aBIYuDYfVrYDTwWQl2sRqD/khs=;
+	s=k20201202; t=1733560770;
+	bh=5/pUUungQ8NgDYyXV69cVH1mhMQviRIiv82xmjhsv8Y=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=MO9sW+EBvR7TU0rUpiDwFwskd0Er3xxOKVEdxCKeukUDoYo+uNGhtn7iLZIzZReDQ
-	 4L2avSzyuimVpKNYoGUvnwBpJkmCWEiOK5aSpoSM51fFTSL5+OC64F0QiJtJ6TZWom
-	 EQTpJWLZYUq0oKE6Krl1XR7onD7CffJyHvv4hsNGKDhgTmWxTGJqUwz3gvhsBfk0WN
-	 NrSUQbdeDlZwJJFwqjvlUfWdahmZuvEnA14vpLEIoBxYFUzzYQYeXTlew2BsRvuaPj
-	 99WDnJv0tkDhXilJnxpp1Thkh2smnLPmQpnHrgfPkzqhXTGjyZn9F3byvMaXNKOiSc
-	 Lsb83FpqtXeyA==
-Date: Sat, 7 Dec 2024 09:33:08 +0100
+	b=q0aRBymLLvkn7rpU7sHaKpPTbGSp7brUEOpZ+lM3xFLznQBE1CPRNcggMoMTHMHYk
+	 a0WxS1DuPP2uMWnEvsFz3Sxi/lBFNGu/4X18volPeA+xfeNA6szsffVYP2Ihb60Z3h
+	 /Q+Px8YsWA6akm1fX/WpeVXE5+9na3LcjKxMKltM3RnT0fS7NmAY0WKFe9yMbssVOn
+	 RgD1/dkGqzmOMP8NydhXGZsq+4+An267qUuEYkamqMUdcCVPge6224btqcR1QbdmaE
+	 cLDE2fLOxt09JXry6/bE1sqDsrOdog0vrJccUMIc0gxPOyWpdz1h3Jjug6hYazgOo1
+	 /GsdPgkQ45P+g==
+Date: Sat, 7 Dec 2024 09:39:22 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Markus Armbruster <armbru@redhat.com>
-Cc: Ani Sinha <anisinha@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Igor
- Mammedov <imammedo@redhat.com>, linux-kernel@vger.kernel.org,
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>, Philippe
+ =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
+ <eblake@redhat.com>, Igor Mammedov <imammedo@redhat.com>, John Snow
+ <jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Michael
+ Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
+ <zhao1.liu@intel.com>, kvm@vger.kernel.org, linux-kernel@vger.kernel.org,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH 27/31] DEBUG
-Message-ID: <20241207093308.55376e8e@foz.lan>
-In-Reply-To: <87ser02f28.fsf@pond.sub.org>
+Subject: Re: [PATCH 00/31] Prepare GHES driver to support error injection
+Message-ID: <20241207093922.1efa02ec@foz.lan>
+In-Reply-To: <87wmgc2f48.fsf@pond.sub.org>
 References: <cover.1733504943.git.mchehab+huawei@kernel.org>
-	<6f427a02c2c20512d5da178b47c64d553851a60e.1733504943.git.mchehab+huawei@kernel.org>
-	<CAK3XEhNNZyRDgjm5Hjes-Xnj4CxtO2eQcs7AyTNOOFcKa3LusA@mail.gmail.com>
-	<87ser02f28.fsf@pond.sub.org>
+	<87frn03tun.fsf@pond.sub.org>
+	<87wmgc2f48.fsf@pond.sub.org>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: xTd+GjTwXsnK
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: BPBDZ0FFw/AN
 
-Em Sat, 07 Dec 2024 07:16:31 +0100
+Em Sat, 07 Dec 2024 07:15:19 +0100
 Markus Armbruster <armbru@redhat.com> escreveu:
 
-> Ani Sinha <anisinha@redhat.com> writes:
->=20
-> > On Fri, Dec 6, 2024 at 10:51=E2=80=AFPM Mauro Carvalho Chehab
-> > <mchehab+huawei@kernel.org> wrote: =20
-> >>
-> >> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> >> ---
-> >>  hw/acpi/ghes.c | 2 ++
-> >>  1 file changed, 2 insertions(+)
-> >>
-> >> diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> >> index abca351b18de..1fe4c536611a 100644
-> >> --- a/hw/acpi/ghes.c
-> >> +++ b/hw/acpi/ghes.c
-> >> @@ -534,9 +534,11 @@ void ghes_record_cper_errors(const void *cper, si=
-ze_t len,
-> >>      ags =3D &acpi_ged_state->ghes_state;
-> >>
-> >>      if (!ags->hest_lookup) {
-> >> +        fprintf(stderr,"Using old GHES lookup\n"); =20
-> >
-> > I don't like this. If you must please have them under #ifdef DEBUG or
-> > somesuch. See ich9.c =20
->=20
-> Judging from the subject line, it's not meant to be posted, let alone
-> merged :)
+> Markus Armbruster <armbru@redhat.com> writes:
+> 
+> > This is v10, right?  
+> 
+> Scratch that, the cover letter explains: "As agreed duing v10 review,
+> I'll be splitting the big patch series into separate pull requests,
+> starting with the cleanup series.  This is the first patch set,
+> containing only such preparation patches."
 
-Sorry! Yea, this was not meant to be posted.
+Please scratch this series. It seems I picked the wrong git range,
+sending a lot more patches than intended.
 
-I ended submitting the entire pile of patches I have pending, including some
-patches I placed at the end to test that what method is used to calculate
-offsets (the one supported up to current QEMU version, which is limted,
-and the new one that uses backport logic).
+> However, it doesn't apply for me.  What's your base?
 
-I'll submit the right patches again. Please ignore this.
+That's weird. Despite my mistake, the series is based on v9.2.0-rc3 
+(which was identical to master last time I rebased).
 
-Regards,
+Should it be based against some other branch?
+
+Thanks,
 Mauro

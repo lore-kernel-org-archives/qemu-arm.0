@@ -1,104 +1,105 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2181411njb;
-        Sun, 8 Dec 2024 12:24:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXz6NvXKG2shSy6xiEeyHX1ZokwEV/1HcZ1UOXdc2Iij9FOPGZS+ClciAeWosMs8MjK7cdkOlNHO91MIA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHh2AhHmVqbUdJCjrOfMLKf5zDwuJPWTwnoRRtEL5lCTcSg4FEFA6gSXfnryggcmUsG0Iw5
-X-Received: by 2002:a05:622a:87:b0:466:9a0f:152a with SMTP id d75a77b69052e-46734fa7c19mr186750991cf.55.1733689477723;
-        Sun, 08 Dec 2024 12:24:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733689477; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2181418njb;
+        Sun, 8 Dec 2024 12:24:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXVjDavrnoh+kEIoRkNj2HPWYIfZQzYftRskdIHo+iRP7iSpxa6sbFTdb+k2Mvckyav+4fthOC8BQb5kQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IG2y/NypvVD8b0waH6ki0TI5Wk4N0cWoc6NKGW3MzUHSEodCxX3BGYm09Ww5UVjL8TSsqDz
+X-Received: by 2002:a05:6214:1bcf:b0:6d8:9dad:e14b with SMTP id 6a1803df08f44-6d8e70ca7a8mr163776846d6.13.1733689479427;
+        Sun, 08 Dec 2024 12:24:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733689479; cv=none;
         d=google.com; s=arc-20240605;
-        b=ghToW4VXWUPmtm6SBhUYWNF2QZDLH0iWBSYZSzF0we/LUYZ1kLTIBpyY2z87iVpc9S
-         TmgKFzdwTv97GBTXBNoR8n/SKG1gTf0wEHhKUgDxGYWDaqF7b8CBGD0i7NWZCo0OPPP6
-         JiZnW+EUgsfVHxtpPaumsxQisUaRUtloEP+EjkPTdAYgNyZnoW2/tusPW2LXILgI+7Ww
-         qJD/y1eRwX4fXMmiJesYK1ZWr0M/s7riKmmZGHK/O3rZ4+TMoOLnE7hyBkSkFsBl9utZ
-         MbyfZfQ7HZrGgfHxE2elItoC/VPN5jZ6cvQGbYBSpkO7g3y0nCCEnmGlkuVgYOXdgMlK
-         W1gQ==
+        b=Sleud/m5tz+RdnAo4kx7WFYprvg7f/tKIO5KK0PyNxhbdKa8T12s4BTmMvnVDo8qAk
+         vwLv2SQen1Sz1/Kk99Z9ZlH/ZhofUKMCEbe0hIOeMCyYoMZKeGwVex5D5iX+8QBkdi8K
+         PWuOoRLrzkIn4FMmuaL/6ZT2yi3Iu1xuGCk5EOmtII/6/wEj1yVhcVUcu/bJ8vNP2wyV
+         bnKEN7HzBG6gbDpHe/ShT/c/J0PbC0mzHBncOAmzh3wxwxTpVG/jYemfX/PFpX/Rc0Xi
+         gmrLjRqmSL2lBXBaI5Qg0saQ907Gayzf9j8UzM7iqSOUK2aTybDKgvpMWWpIeLczxNTa
+         bMlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=l9CSE0Le6C9EUk9Pa8FAy+M2SSGHzc5sfGAFZk3Ode0=;
-        fh=XgncJnChD89f8YcbUPv/zS+JHnV3t/pCNdyLfi17LkQ=;
-        b=EDi9n8nLathqsFiXZ0/bB7BYauWpY3R/UO/R0eyebf7EJTVJJ7Ir1CKAF3P5NjyNt5
-         yDSrtYvhKFkHTP1Zx1VH1ZHV/dcgnlYOumC4PIzAsCxt0/Uty+nRsDwlpbosH1+60V3S
-         OtbdPdbIu6CgEKVp4/BY+AU5Tke+05Ao3jsvY9+Sb1fEGVL/8s3nr1YreJL4hx7B4uPM
-         Vw8WrIkLiAgbeyQHN47czszC6lNAxWFAen6l/eVEybp5OoopOZ+FkGIlmVz9GZVxxUQi
-         /iCi1mYMw860bJRCpK3tXJa6hF3K2R6rUFUzJxqESlSQHudkFtNGyBQdc/3GwkWLlKp2
-         /IWw==;
+        bh=sWBVtN/MtB7QwyvqivaPQCEjkPZnM9/4icL1W2D0Ipw=;
+        fh=ALqkGQ1HHzM2eEYG6UQDbF02bLgJu6QZ8HfUmV4RpvM=;
+        b=AvhPm8UcLeoraFZrOsCQAvXMVdbnMcsSubaxzIVq+MweEWBwZAyQOWdeRdbeDpFMw+
+         52bimLHWG1fVigkrqnn+b1fldYHe8ZvAsHdxXkpgJUqB4X39ppcClcm7Js9wTE2+Btu5
+         6DoCuPhDAtl88h64ozoGwhFC4YTOIkOIl3ubh6et/J0VzIG6Kfjxc0wpH/74RWCJCU5J
+         85itLbW3zKoijSJIbUWudb1rhllmnNZtwlmzONayNFUgSiQP+/qweW9A6iIGflD5gjAm
+         uXRBKFn8YGBoGdx5e7HbapDHC6FdcQT5RCEr55E7ncpnyj0UvDcMSEuKEEOrvotGlGjr
+         gV8Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=BnEuKn53;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=qZP6DAr9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-467296bc980si108172391cf.3.2024.12.08.12.24.37
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d8da69ecf4si97338896d6.119.2024.12.08.12.24.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 08 Dec 2024 12:24:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 08 Dec 2024 12:24:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=BnEuKn53;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=qZP6DAr9;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tKNnw-0002EW-0G; Sun, 08 Dec 2024 15:23:00 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tKNo7-0002Q8-M3; Sun, 08 Dec 2024 15:23:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKNnr-0002B0-MB
- for qemu-devel@nongnu.org; Sun, 08 Dec 2024 15:22:55 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ id 1tKNo5-0002Nu-LW
+ for qemu-arm@nongnu.org; Sun, 08 Dec 2024 15:23:09 -0500
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKNnn-00082U-Lx
- for qemu-devel@nongnu.org; Sun, 08 Dec 2024 15:22:55 -0500
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-5d3d14336f0so3275189a12.3
- for <qemu-devel@nongnu.org>; Sun, 08 Dec 2024 12:22:51 -0800 (PST)
+ id 1tKNo2-00088G-1Z
+ for qemu-arm@nongnu.org; Sun, 08 Dec 2024 15:23:09 -0500
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-a9e44654ae3so598248266b.1
+ for <qemu-arm@nongnu.org>; Sun, 08 Dec 2024 12:23:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733689370; x=1734294170;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733689385; x=1734294185;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=l9CSE0Le6C9EUk9Pa8FAy+M2SSGHzc5sfGAFZk3Ode0=;
- b=BnEuKn53agxFNyZzS2csnm1bHK0iNNaCfaiJg0t2ljBxkIdfcXGDlNa3zJPtsJgvzX
- AsuQLKSHqi9Ss7r8pBrUXiZUIwwS4QUbXfQj63yqjt9iTB6X2YIeFbhE5jNwdlo+ma8W
- BFlIMCihDIH81hFFOlqhz+6yUl3Wmuilp0pD2O3GGzcJc5DauUp6S1v2SdzEJkqwifo/
- cEPZOLomzA7N44r2wQtoXnLLeIVnPMBgI/qb6A8bW7dAPaIxzCKQHDgExytFiYmj7gLF
- a8ysgXvAYh2YL6rXaKSq43O5Y5ZQnXiyGv3LGYvlhYDoe3HL6wmscfqtQWHD0KSnbvpy
- IGNw==
+ bh=sWBVtN/MtB7QwyvqivaPQCEjkPZnM9/4icL1W2D0Ipw=;
+ b=qZP6DAr9H+dSQFTHodzJEG+rrj9DZ3ubfMP+xHSht9Yvn6w1Cy+dGU3FeXReMGFOTH
+ B5X/LY/iC5f7qfEYxC4hHoDfbRRiDXuu7xCwxQmVDbv5skgVeTkRcrgctY1RXgxoCS6I
+ avUtyytZB71TSBcuUrU2psa50sPaW9t1VEOcQQUjetPfAiT1XmgerhTcyZj2AbNVbIig
+ uJD7AROM4O0GbeDflFdz5eJiLZHAZJ/vIC7mlJM80Yot3YEYO/G/9GanPogASYrXah81
+ ou5jt7jDR3zkc8MFVEPoP+g88ftniw/hl0ijLnpbQ6ZGQjzDCUMgCLtyGHh2RoZhC0bx
+ gkcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733689370; x=1734294170;
+ d=1e100.net; s=20230601; t=1733689385; x=1734294185;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=l9CSE0Le6C9EUk9Pa8FAy+M2SSGHzc5sfGAFZk3Ode0=;
- b=wARDoQ6LvINRuOSe2CYGBSv2XQylHqbdYTN5ePZjjNDlaPopFpOnpekkcox3tEdwrD
- V8h7u325f2Eo32wHwkVXYv2t8D5trvEiHr6tQDVsqvPfwF/GTpO+MErVSSyCEgJofZKx
- FuqN9kgRhoWDc44ISN3/LfI5rWKnQkG6gxcbMDhLf2SJA8alk27DA7nzeqo4vqHhW5CE
- LWp6UI/e8L9NR8sxPI8TK+3gWyb9X2jFG/036EBnbXnGuEDdMMCXaMyiaSr7syS4z9vJ
- 9o6fJZTYXe5y9+cr2lVb7Rx4DhvdVwJS5orSQsg7IQFfJOAFTe14Pu7gd2ikOUiLbhk2
- Oz/g==
-X-Gm-Message-State: AOJu0Ywu3kiIEvmiZe1x3hV7d/OmK1ytLry+n5dzhBMStpHC6UcdKoPX
- SJgCLplSa6j68GS5XNe80PSp+IahZdv4aZqIaEazQMzLjfa4Wm3rtGHouYh2BIH0uGZ7IaVKn94
- ltYej
-X-Gm-Gg: ASbGncs4xX72Av1k5gr0iMtWOzgpCbm6oyvbIJADGopUL5f7qoXFc3YYtpAHQEfcfvZ
- dHROhj6z4RNlcKTuIwvUEvPaoEjuOSZ6rX94SAYsfrTts/eBUC481A9HW2OQ5+ZH6jVDg3i+LX5
- 8r6ffgsHJyE3K1kb9BNfRKgeE3u5mTshhtR7WIqq0E1uwtQIFdO2tNUyluyPLpHOqxNhT93IS8P
- 2tFBU5UykIHo6ukYnUM5IDSN1ZfRYsudebbd4iaLTQwpFROs47n7mbqV9pImo7STRM1u9ZjSanZ
- f0su43D7Q7bh8TDs3wRn0+eKaA==
-X-Received: by 2002:a17:906:3292:b0:aa6:4494:e354 with SMTP id
- a640c23a62f3a-aa64494e742mr814074766b.42.1733689370038; 
- Sun, 08 Dec 2024 12:22:50 -0800 (PST)
+ bh=sWBVtN/MtB7QwyvqivaPQCEjkPZnM9/4icL1W2D0Ipw=;
+ b=jRYNv6vDUNvjLODqhUGljKh5QmofayT0sqZ4qnCwn/HY3eeJeYU4fkzI1/jJm71Vxs
+ eCaYxI2DR/0HFgvKWt1qcI/xlMuUMSLU8vKka1lBi89D7vNnjwUHC4CdAc+QGcpyFgnV
+ FKcOQeMNJzxvq6AUPDRYZ69gJqoNXgBcOLc2p+bF4aJNZOBIm4bB1fPgGfpjEZXJS3EJ
+ 6SLVYJyazDScVpn2SvQEX2YTZRhWDlnO2fhHGmcWrPmdpeOkmq9iaBa3DR7fpjmN0dFZ
+ 2fWms8FXsNtj14TKW5CB5TbEQ/5ynIh137zsCVX/TIIQXm8L+V0J84GGzwpbGfDbcM6+
+ u/sQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUMKBzoqLVFG/i2FTUhZHIOWVBfmAG++i0Kxgi7f5H4PY2Kg05JtZXfEtBwbsgrexE4nKrKy7Ebnw==@nongnu.org
+X-Gm-Message-State: AOJu0YwB6dHXa4lNX4SblZlh1xhO/UhNiJkd2FbQO3PTUnDJbR6vJJRM
+ hN37p3AJBJor/NaYPO1NdYZAB4MrtWHrXERmgchowb5pyw4ke03QSLJh4BnkvA==
+X-Gm-Gg: ASbGncsSI9nYohTqrCx+NzlX7V3kgky3FVAsYhjJ2IHimuwVkI4Y568huqE34Pu4+CE
+ xiHPrAIpW+7QIXr4DghmgdLlqcF8er+g2lzOjF1ZZ7hf6W+/bIDwV+n2NNYdpAxYxfS61A4MnJh
+ 633ypqZqKrtF9qG0EFIoMKmGPTS8APEYRb1Dt2oBktRTHwLU9z/3+A/uDtUbLQ6zMuiS7weGXj1
+ 27PfbixApR05P/sinLeXHfKyM7yID6tjy28voFhWoorylehOwquDYUivmQdrvtaErJ/9+D+qWqj
+ NWbFRpUaHiHN31tEPTAuGG9Fhg==
+X-Received: by 2002:a17:907:9385:b0:a9a:3705:9ad9 with SMTP id
+ a640c23a62f3a-aa63a2550c2mr857698966b.50.1733689384563; 
+ Sun, 08 Dec 2024 12:23:04 -0800 (PST)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aa625e4eee4sm585759266b.26.2024.12.08.12.22.48
+ a640c23a62f3a-aa625e4eee4sm585759266b.26.2024.12.08.12.23.02
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 08 Dec 2024 12:22:49 -0800 (PST)
+ Sun, 08 Dec 2024 12:23:04 -0800 (PST)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -112,18 +113,19 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, balaton@eik.bme.hu
-Subject: [PATCH v13 03/15] hw/display/apple-gfx: Adds PCI implementation
-Date: Sun,  8 Dec 2024 21:22:26 +0100
-Message-Id: <20241208202238.68873-4-phil@philjordan.eu>
+ qemu-riscv@nongnu.org, balaton@eik.bme.hu, Alexander Graf <graf@amazon.com>
+Subject: [PATCH v13 11/15] hw/vmapple/bdif: Introduce vmapple backdoor
+ interface
+Date: Sun,  8 Dec 2024 21:22:34 +0100
+Message-Id: <20241208202238.68873-12-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 In-Reply-To: <20241208202238.68873-1-phil@philjordan.eu>
 References: <20241208202238.68873-1-phil@philjordan.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::535;
- envelope-from=phil@philjordan.eu; helo=mail-ed1-x535.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::632;
+ envelope-from=phil@philjordan.eu; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -131,239 +133,382 @@ X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Fw4VJEdqDJ1H
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: LlZu1dL3oiEk
 
-This change wires up the PCI variant of the paravirtualised
-graphics device, mainly useful for x86-64 macOS guests, implemented
-by macOS's ParavirtualizedGraphics.framework. It builds on code
-shared with the vmapple/mmio variant of the PVG device.
+From: Alexander Graf <graf@amazon.com>
 
+The VMApple machine exposes AUX and ROOT block devices (as well as USB OTG
+emulation) via virtio-pci as well as a special, simple backdoor platform
+device.
+
+This patch implements this backdoor platform device to the best of my
+understanding. I left out any USB OTG parts; they're only needed for
+guest recovery and I don't understand the protocol yet.
+
+Signed-off-by: Alexander Graf <graf@amazon.com>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
 Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Tested-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
 
 v4:
 
- * Threading improvements analogous to those in common apple-gfx code
-   and mmio device variant.
- * Smaller code review issues addressed.
+ * Moved most header code to .c, rest to vmapple.h
+ * Better compliance with coding, naming, and formatting conventions.
 
-v5:
+v8:
 
- * Minor error handling improvement.
-
-v6:
-
- * Removed an unused function parameter.
+ * Replaced uses of cpu_physical_memory_read with dma_memory_read.
+ * Replaced an instance of g_free with g_autofree.
 
 v9:
 
- * Fixup of changed common call.
- * Whitespace and comment formatting tweaks.
-
-v11:
-
- * Comment formatting fix.
-
- hw/display/Kconfig         |   4 +
- hw/display/apple-gfx-pci.m | 150 +++++++++++++++++++++++++++++++++++++
- hw/display/meson.build     |   1 +
- 3 files changed, 155 insertions(+)
- create mode 100644 hw/display/apple-gfx-pci.m
-
-diff --git a/hw/display/Kconfig b/hw/display/Kconfig
-index 6a9b7b19ada..2b53dfd7d26 100644
---- a/hw/display/Kconfig
-+++ b/hw/display/Kconfig
-@@ -149,3 +149,7 @@ config MAC_PVG_MMIO
-     bool
-     depends on MAC_PVG && AARCH64
+ * Replaced uses of cpu_physical_memory_write with dma_memory_write.
  
-+config MAC_PVG_PCI
+ hw/vmapple/Kconfig           |   3 +
+ hw/vmapple/bdif.c            | 275 +++++++++++++++++++++++++++++++++++
+ hw/vmapple/meson.build       |   1 +
+ hw/vmapple/trace-events      |   5 +
+ include/hw/vmapple/vmapple.h |   2 +
+ 5 files changed, 286 insertions(+)
+ create mode 100644 hw/vmapple/bdif.c
+
+diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
+index a73504d5999..68f88876eb9 100644
+--- a/hw/vmapple/Kconfig
++++ b/hw/vmapple/Kconfig
+@@ -1,3 +1,6 @@
+ config VMAPPLE_AES
+     bool
+ 
++config VMAPPLE_BDIF
 +    bool
-+    depends on MAC_PVG && PCI
-+    default y if PCI_DEVICES
-diff --git a/hw/display/apple-gfx-pci.m b/hw/display/apple-gfx-pci.m
++
+diff --git a/hw/vmapple/bdif.c b/hw/vmapple/bdif.c
 new file mode 100644
-index 00000000000..5ff6a487cfc
+index 00000000000..d7b6b7a25a4
 --- /dev/null
-+++ b/hw/display/apple-gfx-pci.m
-@@ -0,0 +1,150 @@
++++ b/hw/vmapple/bdif.c
+@@ -0,0 +1,275 @@
 +/*
-+ * QEMU Apple ParavirtualizedGraphics.framework device, PCI variant
++ * VMApple Backdoor Interface
 + *
-+ * Copyright © 2023-2024 Phil Dennis-Jordan
++ * Copyright © 2023 Amazon.com, Inc. or its affiliates. All Rights Reserved.
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * ParavirtualizedGraphics.framework is a set of libraries that macOS provides
-+ * which implements 3d graphics passthrough to the host as well as a
-+ * proprietary guest communication channel to drive it. This device model
-+ * implements support to drive that library from within QEMU as a PCI device
-+ * aimed primarily at x86-64 macOS VMs.
 + */
 +
-+#include "apple-gfx.h"
-+#include "hw/pci/pci_device.h"
-+#include "hw/pci/msi.h"
-+#include "qapi/error.h"
++#include "qemu/osdep.h"
++#include "qemu/units.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
 +#include "trace.h"
-+#import <ParavirtualizedGraphics/ParavirtualizedGraphics.h>
++#include "hw/vmapple/vmapple.h"
++#include "hw/sysbus.h"
++#include "hw/block/block.h"
++#include "qapi/error.h"
++#include "sysemu/block-backend.h"
++#include "sysemu/dma.h"
 +
-+OBJECT_DECLARE_SIMPLE_TYPE(AppleGFXPCIState, APPLE_GFX_PCI)
++OBJECT_DECLARE_SIMPLE_TYPE(VMAppleBdifState, VMAPPLE_BDIF)
 +
-+struct AppleGFXPCIState {
-+    PCIDevice parent_obj;
++struct VMAppleBdifState {
++    SysBusDevice parent_obj;
 +
-+    AppleGFXState common;
++    BlockBackend *aux;
++    BlockBackend *root;
++    MemoryRegion mmio;
 +};
 +
-+static const char* apple_gfx_pci_option_rom_path = NULL;
++#define VMAPPLE_BDIF_SIZE   0x00200000
 +
-+static void apple_gfx_init_option_rom_path(void)
++#define REG_DEVID_MASK      0xffff0000
++#define DEVID_ROOT          0x00000000
++#define DEVID_AUX           0x00010000
++#define DEVID_USB           0x00100000
++
++#define REG_STATUS          0x0
++#define REG_STATUS_ACTIVE     BIT(0)
++#define REG_CFG             0x4
++#define REG_CFG_ACTIVE        BIT(1)
++#define REG_UNK1            0x8
++#define REG_BUSY            0x10
++#define REG_BUSY_READY        BIT(0)
++#define REG_UNK2            0x400
++#define REG_CMD             0x408
++#define REG_NEXT_DEVICE     0x420
++#define REG_UNK3            0x434
++
++typedef struct VblkSector {
++    uint32_t pad;
++    uint32_t pad2;
++    uint32_t sector;
++    uint32_t pad3;
++} VblkSector;
++
++typedef struct VblkReqCmd {
++    uint64_t addr;
++    uint32_t len;
++    uint32_t flags;
++} VblkReqCmd;
++
++typedef struct VblkReq {
++    VblkReqCmd sector;
++    VblkReqCmd data;
++    VblkReqCmd retval;
++} VblkReq;
++
++#define VBLK_DATA_FLAGS_READ  0x00030001
++#define VBLK_DATA_FLAGS_WRITE 0x00010001
++
++#define VBLK_RET_SUCCESS  0
++#define VBLK_RET_FAILED   1
++
++static uint64_t bdif_read(void *opaque, hwaddr offset, unsigned size)
 +{
-+    NSURL *option_rom_url = PGCopyOptionROMURL();
-+    const char *option_rom_path = option_rom_url.fileSystemRepresentation;
-+    apple_gfx_pci_option_rom_path = g_strdup(option_rom_path);
-+    [option_rom_url release];
-+}
++    uint64_t ret = -1;
++    uint64_t devid = offset & REG_DEVID_MASK;
 +
-+static void apple_gfx_pci_init(Object *obj)
-+{
-+    AppleGFXPCIState *s = APPLE_GFX_PCI(obj);
-+
-+    if (!apple_gfx_pci_option_rom_path) {
-+        /*
-+         * The following is done on device not class init to avoid running
-+         * ObjC code before fork() in -daemonize mode.
-+         */
-+        PCIDeviceClass *pci = PCI_DEVICE_CLASS(object_get_class(obj));
-+        apple_gfx_init_option_rom_path();
-+        pci->romfile = apple_gfx_pci_option_rom_path;
++    switch (offset & ~REG_DEVID_MASK) {
++    case REG_STATUS:
++        ret = REG_STATUS_ACTIVE;
++        break;
++    case REG_CFG:
++        ret = REG_CFG_ACTIVE;
++        break;
++    case REG_UNK1:
++        ret = 0x420;
++        break;
++    case REG_BUSY:
++        ret = REG_BUSY_READY;
++        break;
++    case REG_UNK2:
++        ret = 0x1;
++        break;
++    case REG_UNK3:
++        ret = 0x0;
++        break;
++    case REG_NEXT_DEVICE:
++        switch (devid) {
++        case DEVID_ROOT:
++            ret = 0x8000000;
++            break;
++        case DEVID_AUX:
++            ret = 0x10000;
++            break;
++        }
++        break;
 +    }
 +
-+    apple_gfx_common_init(obj, &s->common, TYPE_APPLE_GFX_PCI);
++    trace_bdif_read(offset, size, ret);
++    return ret;
 +}
 +
-+typedef struct AppleGFXPCIInterruptJob {
-+    PCIDevice *device;
-+    uint32_t vector;
-+} AppleGFXPCIInterruptJob;
-+
-+static void apple_gfx_pci_raise_interrupt(void *opaque)
++static void le2cpu_sector(VblkSector *sector)
 +{
-+    AppleGFXPCIInterruptJob *job = opaque;
-+
-+    if (msi_enabled(job->device)) {
-+        msi_notify(job->device, job->vector);
-+    }
-+    g_free(job);
++    sector->sector = le32_to_cpu(sector->sector);
 +}
 +
-+static void apple_gfx_pci_interrupt(PCIDevice *dev, uint32_t vector)
++static void le2cpu_reqcmd(VblkReqCmd *cmd)
 +{
-+    AppleGFXPCIInterruptJob *job;
-+
-+    trace_apple_gfx_raise_irq(vector);
-+    job = g_malloc0(sizeof(*job));
-+    job->device = dev;
-+    job->vector = vector;
-+    aio_bh_schedule_oneshot(qemu_get_aio_context(),
-+                            apple_gfx_pci_raise_interrupt, job);
++    cmd->addr = le64_to_cpu(cmd->addr);
++    cmd->len = le32_to_cpu(cmd->len);
++    cmd->flags = le32_to_cpu(cmd->flags);
 +}
 +
-+static void apple_gfx_pci_realize(PCIDevice *dev, Error **errp)
++static void le2cpu_req(VblkReq *req)
 +{
-+    AppleGFXPCIState *s = APPLE_GFX_PCI(dev);
-+    int ret;
++    le2cpu_reqcmd(&req->sector);
++    le2cpu_reqcmd(&req->data);
++    le2cpu_reqcmd(&req->retval);
++}
 +
-+    pci_register_bar(dev, PG_PCI_BAR_MMIO,
-+                     PCI_BASE_ADDRESS_SPACE_MEMORY, &s->common.iomem_gfx);
++static void vblk_cmd(uint64_t devid, BlockBackend *blk, uint64_t gp_addr,
++                     uint64_t static_off)
++{
++    VblkReq req;
++    VblkSector sector;
++    uint64_t off = 0;
++    g_autofree char *buf = NULL;
++    uint8_t ret = VBLK_RET_FAILED;
++    int r;
++    MemTxResult dma_result;
 +
-+    ret = msi_init(dev, 0x0 /* config offset; 0 = find space */,
-+                   PG_PCI_MAX_MSI_VECTORS, true /* msi64bit */,
-+                   false /* msi_per_vector_mask */, errp);
-+    if (ret != 0) {
-+        return;
++    dma_result = dma_memory_read(&address_space_memory, gp_addr,
++                                 &req, sizeof(req), MEMTXATTRS_UNSPECIFIED);
++    if (dma_result != MEMTX_OK) {
++        goto out;
 +    }
 +
-+    @autoreleasepool {
-+        PGDeviceDescriptor *desc = [PGDeviceDescriptor new];
-+        desc.raiseInterrupt = ^(uint32_t vector) {
-+            apple_gfx_pci_interrupt(dev, vector);
-+        };
++    le2cpu_req(&req);
 +
-+        apple_gfx_common_realize(&s->common, DEVICE(dev), desc, errp);
-+        [desc release];
-+        desc = nil;
++    if (req.sector.len != sizeof(sector)) {
++        goto out;
++    }
++
++    /* Read the vblk command */
++    dma_result = dma_memory_read(&address_space_memory, req.sector.addr,
++                                 &sector, sizeof(sector),
++                                 MEMTXATTRS_UNSPECIFIED);
++    if (dma_result != MEMTX_OK) {
++        goto out;
++    }
++    le2cpu_sector(&sector);
++
++    off = sector.sector * 512ULL + static_off;
++
++    /* Sanity check that we're not allocating bogus sizes */
++    if (req.data.len > 128 * MiB) {
++        goto out;
++    }
++
++    buf = g_malloc0(req.data.len);
++    switch (req.data.flags) {
++    case VBLK_DATA_FLAGS_READ:
++        r = blk_pread(blk, off, req.data.len, buf, 0);
++        trace_bdif_vblk_read(devid == DEVID_AUX ? "aux" : "root",
++                             req.data.addr, off, req.data.len, r);
++        if (r < 0) {
++            goto out;
++        }
++        dma_result = dma_memory_write(&address_space_memory, req.data.addr, buf,
++                                      req.data.len, MEMTXATTRS_UNSPECIFIED);
++        if (dma_result == MEMTX_OK) {
++            ret = VBLK_RET_SUCCESS;
++        }
++        break;
++    case VBLK_DATA_FLAGS_WRITE:
++        /* Not needed, iBoot only reads */
++        break;
++    default:
++        break;
++    }
++
++out:
++    dma_memory_write(&address_space_memory, req.retval.addr, &ret, 1,
++                     MEMTXATTRS_UNSPECIFIED);
++}
++
++static void bdif_write(void *opaque, hwaddr offset,
++                       uint64_t value, unsigned size)
++{
++    VMAppleBdifState *s = opaque;
++    uint64_t devid = (offset & REG_DEVID_MASK);
++
++    trace_bdif_write(offset, size, value);
++
++    switch (offset & ~REG_DEVID_MASK) {
++    case REG_CMD:
++        switch (devid) {
++        case DEVID_ROOT:
++            vblk_cmd(devid, s->root, value, 0x0);
++            break;
++        case DEVID_AUX:
++            vblk_cmd(devid, s->aux, value, 0x0);
++            break;
++        }
++        break;
 +    }
 +}
 +
-+static void apple_gfx_pci_reset(Object *obj, ResetType type)
++static const MemoryRegionOps bdif_ops = {
++    .read = bdif_read,
++    .write = bdif_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 8,
++    },
++    .impl = {
++        .min_access_size = 1,
++        .max_access_size = 8,
++    },
++};
++
++static void bdif_init(Object *obj)
 +{
-+    AppleGFXPCIState *s = APPLE_GFX_PCI(obj);
-+    [s->common.pgdev reset];
++    VMAppleBdifState *s = VMAPPLE_BDIF(obj);
++
++    memory_region_init_io(&s->mmio, obj, &bdif_ops, obj,
++                         "VMApple Backdoor Interface", VMAPPLE_BDIF_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
 +}
 +
-+static void apple_gfx_pci_class_init(ObjectClass *klass, void *data)
++static Property bdif_properties[] = {
++    DEFINE_PROP_DRIVE("aux", VMAppleBdifState, aux),
++    DEFINE_PROP_DRIVE("root", VMAppleBdifState, root),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void bdif_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
-+    PCIDeviceClass *pci = PCI_DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
 +
-+    rc->phases.hold = apple_gfx_pci_reset;
-+    dc->desc = "macOS Paravirtualized Graphics PCI Display Controller";
-+    dc->hotpluggable = false;
-+    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
-+
-+    pci->vendor_id = PG_PCI_VENDOR_ID;
-+    pci->device_id = PG_PCI_DEVICE_ID;
-+    pci->class_id = PCI_CLASS_DISPLAY_OTHER;
-+    pci->realize = apple_gfx_pci_realize;
-+
-+    /* TODO: Property for setting mode list */
++    dc->desc = "VMApple Backdoor Interface";
++    device_class_set_props(dc, bdif_properties);
 +}
 +
-+static TypeInfo apple_gfx_pci_types[] = {
-+    {
-+        .name          = TYPE_APPLE_GFX_PCI,
-+        .parent        = TYPE_PCI_DEVICE,
-+        .instance_size = sizeof(AppleGFXPCIState),
-+        .class_init    = apple_gfx_pci_class_init,
-+        .instance_init = apple_gfx_pci_init,
-+        .interfaces = (InterfaceInfo[]) {
-+            { INTERFACE_PCIE_DEVICE },
-+            { },
-+        },
-+    }
++static const TypeInfo bdif_info = {
++    .name          = TYPE_VMAPPLE_BDIF,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(VMAppleBdifState),
++    .instance_init = bdif_init,
++    .class_init    = bdif_class_init,
 +};
-+DEFINE_TYPES(apple_gfx_pci_types)
 +
-diff --git a/hw/display/meson.build b/hw/display/meson.build
-index cf9e6dd35d2..94f4f05d36f 100644
---- a/hw/display/meson.build
-+++ b/hw/display/meson.build
-@@ -63,6 +63,7 @@ system_ss.add(when: 'CONFIG_ATI_VGA', if_true: [files('ati.c', 'ati_2d.c', 'ati_
++static void bdif_register_types(void)
++{
++    type_register_static(&bdif_info);
++}
++
++type_init(bdif_register_types)
+diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
+index bcd4dcb28d2..d4624713deb 100644
+--- a/hw/vmapple/meson.build
++++ b/hw/vmapple/meson.build
+@@ -1 +1,2 @@
+ system_ss.add(when: 'CONFIG_VMAPPLE_AES',  if_true: files('aes.c'))
++system_ss.add(when: 'CONFIG_VMAPPLE_BDIF', if_true: files('bdif.c'))
+diff --git a/hw/vmapple/trace-events b/hw/vmapple/trace-events
+index 0d4a73d7d1c..d86f64d50fe 100644
+--- a/hw/vmapple/trace-events
++++ b/hw/vmapple/trace-events
+@@ -14,3 +14,8 @@ aes_2_read(uint64_t offset, uint64_t res) "offset=0x%"PRIx64" res=0x%"PRIx64
+ aes_2_write(uint64_t offset, uint64_t val) "offset=0x%"PRIx64" val=0x%"PRIx64
+ aes_dump_data(const char *desc, const char *hex) "%s%s"
  
- if host_os == 'darwin'
-   system_ss.add(when: 'CONFIG_MAC_PVG',         if_true: [files('apple-gfx.m'), pvg, metal])
-+  system_ss.add(when: 'CONFIG_MAC_PVG_PCI',     if_true: [files('apple-gfx-pci.m'), pvg, metal])
-   if cpu == 'aarch64'
-     system_ss.add(when: 'CONFIG_MAC_PVG_MMIO',  if_true: [files('apple-gfx-mmio.m'), pvg, metal])
-   endif
++# bdif.c
++bdif_read(uint64_t offset, uint32_t size, uint64_t value) "offset=0x%"PRIx64" size=0x%x value=0x%"PRIx64
++bdif_write(uint64_t offset, uint32_t size, uint64_t value) "offset=0x%"PRIx64" size=0x%x value=0x%"PRIx64
++bdif_vblk_read(const char *dev, uint64_t addr, uint64_t offset, uint32_t len, int r) "dev=%s addr=0x%"PRIx64" off=0x%"PRIx64" size=0x%x r=%d"
++
+diff --git a/include/hw/vmapple/vmapple.h b/include/hw/vmapple/vmapple.h
+index 6762b6c869f..9090e9c5ac8 100644
+--- a/include/hw/vmapple/vmapple.h
++++ b/include/hw/vmapple/vmapple.h
+@@ -14,4 +14,6 @@
+ 
+ #define TYPE_APPLE_AES "apple-aes"
+ 
++#define TYPE_VMAPPLE_BDIF "vmapple-bdif"
++
+ #endif /* HW_VMAPPLE_VMAPPLE_H */
 -- 
 2.39.5 (Apple Git-154)
 

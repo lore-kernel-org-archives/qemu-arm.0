@@ -1,104 +1,104 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2181523njb;
-        Sun, 8 Dec 2024 12:25:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVG59GKwZ1GnWuZR8qGlgANHhKRVO4qTHrxYgK5ld22o/qfE2swys+nFH1qdQ4fzPgCwxV/HIPTdurMOw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEqpjuVFtgH2TYU3PPnuNO/ib8XB/VsXONNU4cOP7j8NckLgwx3LC8+XIxehcoLTMv39iHS
-X-Received: by 2002:a05:620a:600a:b0:7b6:d3b3:5757 with SMTP id af79cd13be357-7b6d3b35858mr302789585a.13.1733689504847;
-        Sun, 08 Dec 2024 12:25:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733689504; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2181635njb;
+        Sun, 8 Dec 2024 12:25:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUqHYDTQimu5GEwNrTbDIfXIhdldOLwvdlxMRQHBnMfbEAhPQQ7eQAO84MWg23eCdx0bpf414M5MP5FsQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH1H3uMU74PMpzWvOUlXZYYWbSWex9hWwsaphaIc6tcy9vDGQe65Wmd1H7UhUon1B5L6f9q
+X-Received: by 2002:a05:620a:24c7:b0:7a9:a356:a5dd with SMTP id af79cd13be357-7b6bc984d8cmr1635752285a.20.1733689525579;
+        Sun, 08 Dec 2024 12:25:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733689525; cv=none;
         d=google.com; s=arc-20240605;
-        b=UDDw7h8B5GfCRjP63lEOuv1EInvakeJbgw2AeLbii7KEYkPsrw6+tgjfpeOW48uEpw
-         vQg0QAJF25Nkno07TzI9OkLrNXukgUnt3vQ/RGKyzlqfyMEKAplBUmFVgJVaN7ZT4t3j
-         rRYtoXyAGlQpAhhmTQ/S1wZXbdTv4oukw1hk9m1ugpWIYgcrIVby73SCoO4RA8EGBXM8
-         /XLiUOal+FEzQzfC2/4NCbpLgC3jU3O7F/N6FKNnYF3c6i4978674RQteEBQHR4Qeruf
-         uIDF3JCzhjSqSxbuehBIacCiDqtr0rt1p93agFJPWfWp8s22C9twFhioSctwmskqIkVP
-         8bAQ==
+        b=KB3YFKoG+p56I8TRYMinyrmGkk2mRzHKfJ9LTT19hP/q9JW6ft6BXcD8GsvDoZ53YV
+         ZPhdhRdGZ44XblZfeJBkGHyvEo0jJ+LLtq+AasJswNT2oaCFFukPwiqLP4s5gm/2Z3tR
+         gqUkMoi7qz8zbtg06omMvQduhb/EiTqRBVECs4L80TfGU79nIfgec4mDyC7f22bJsQ4b
+         +uRe5gV0gm+zPWUeCHsiQx6iQUqoLD96IGIyp6ilUP04p81TpSqc8WhssJjNGts1wUV2
+         fd9xhe9ktzFtxvNJBvwHEydLx8C0EOWLy30J2X8iZ4Qz/2wkebpMiJi+KiKkNruYyJP2
+         cJOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=yFaB4PcpJ8M8FmLVWUEWYODg72B+6C+aetlV/ZwIxaU=;
+        bh=jbiG06Qj2eVtNM1RZ8Zpr4IJcnCvDLdL2ENhuYJnNHE=;
         fh=+VjnrGvjeQQD7yexb7VCprNpWRZMsTpIL8oodPazyOY=;
-        b=Ks6QD2/CZrK9TlclCfS215xsYqJBiTq7BGll/zcGIQG8HL8nqn6OL/Ut5r6PrZnVAJ
-         XAcOWP+CJPt1F4uyecckOvam0ipK9k+HdK/t3XjahVNJLVBl5os3mw5Zq5ZJh+fbweoZ
-         3JAdhNTfWZmjxcgjZHGsox0AmJtCztn5ffxhturf++RSmIVyS6i+LdH6mnHs57+5wkpN
-         29vm4UwGmNAfQpnKQTKR02fOYDznHCXdLBgYsBqXf1xCn25J84s9KL9Q5hDa/94ws+GE
-         m8YVPeRu3FmBOkiYR1uLE87Kr1LmsQ7GyobvMl1t298KtyrOblPly/x831L+EO5Ma5QT
-         Fing==;
+        b=iTqB0/c+kX9xK2rT3c2nHsyZD8JCf8zkJh8pQLwNq4MzpAEq/e25QBTxRUnGbjlBfx
+         QyZ2Igi9OnNe4RtBBnvajxTu8bCLpMSn5h8zgJ4H0hqmNLAmnLLU0iwnv4SAqU4eSi5y
+         Wj6uVnfw59cQoKradTEJsToyL7FvrkY4XpE0v1V7AOA7rzsxg6w67HvKgP0PuCrNX5xE
+         Rv00jtudwivS7WAdEJXC5Gvp4MG25Rgu3iFGmgDSNFKO7dtEObwULQXMZMdYPHgmPPQs
+         FUWx2vRfayKKQ2FKY91lPv2ngSbAXm99wRiVCNfmxC3W1el4ONE+1xc0K3B2YuGBfJn3
+         XaCA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=2BhaxJPT;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=guKZBafb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6c4fb77c2si513493685a.209.2024.12.08.12.25.04
+        by mx.google.com with ESMTPS id af79cd13be357-7b6b5a48002si1107689985a.107.2024.12.08.12.25.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 08 Dec 2024 12:25:04 -0800 (PST)
+        Sun, 08 Dec 2024 12:25:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=2BhaxJPT;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=guKZBafb;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tKNnz-0002J5-SR; Sun, 08 Dec 2024 15:23:03 -0500
+	id 1tKNo1-0002JL-5c; Sun, 08 Dec 2024 15:23:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKNnv-0002Dm-EF
- for qemu-devel@nongnu.org; Sun, 08 Dec 2024 15:22:59 -0500
-Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
+ id 1tKNny-0002HE-B6
+ for qemu-devel@nongnu.org; Sun, 08 Dec 2024 15:23:02 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKNns-00084M-Mh
- for qemu-devel@nongnu.org; Sun, 08 Dec 2024 15:22:59 -0500
-Received: by mail-ej1-x62d.google.com with SMTP id
- a640c23a62f3a-aa650ccbe0eso229533566b.2
- for <qemu-devel@nongnu.org>; Sun, 08 Dec 2024 12:22:56 -0800 (PST)
+ id 1tKNnw-000869-Mf
+ for qemu-devel@nongnu.org; Sun, 08 Dec 2024 15:23:02 -0500
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-aa62f1d2b21so523818166b.1
+ for <qemu-devel@nongnu.org>; Sun, 08 Dec 2024 12:23:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733689375; x=1734294175;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733689379; x=1734294179;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=yFaB4PcpJ8M8FmLVWUEWYODg72B+6C+aetlV/ZwIxaU=;
- b=2BhaxJPT8+nsUjQ4T4wil5DeNV7H7UZCjXKcZrKKfGW2fu2wEOAdjBvIKdsTKJggLv
- qQNn7UUvLmvTEcEfMqU0JDY1a7rQ68W8Pj2X0RN2u0Aruzs44gaWnfYe3OAeSXf13Wau
- Pa/V0Vk8FfzV7I7Igy6GAm5oeJgWWxDEewaDZYnQVKyuiOGcJK+Gztrw7Xb70Wv5YWOy
- nA6YlSVbUrzxUUvwe1bgyIv6BPx0FuNKGUh3inBDM8pcGu+YdEZn62BLS5qzVPjcjfOv
- d2Za6CgzqCnxELV9WQLaz3UccHPCMennHypjChoA3nsq90Z/SxqMQcMc6SQSRo2nFZJ2
- RMgA==
+ bh=jbiG06Qj2eVtNM1RZ8Zpr4IJcnCvDLdL2ENhuYJnNHE=;
+ b=guKZBafbZn0TLuVeqf76YbNFwhpgNI5HUWpsKsBZcYR9RDegtqz/ModZZ5cihS5cvH
+ 23ogYT3Lf7Sz4zgFjyMS83ut1rliJi6Rd/t3yZ3N0ophHihgNBNCp60vDHjXnTW7qMpI
+ +4f0CvnQeTaxXcKR1P3EB/VH/tocmleDZFH7owwKPpxBjS4FS3StJtFKDn/oDBorNdMX
+ AvKw45oTSu6QJMElW9+/tDwNuS9jW09Y8TaDSvv/cxv3E+/twZaw888BCbLCZJM3Uq5D
+ S2dzaFoFgIiWdf19WycPAgJ7tTwNKcTuV03KjgdZM7lm9efGbjrdAgo+Q1uH5OAaFH8R
+ vUig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733689375; x=1734294175;
+ d=1e100.net; s=20230601; t=1733689379; x=1734294179;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=yFaB4PcpJ8M8FmLVWUEWYODg72B+6C+aetlV/ZwIxaU=;
- b=fy39g58qccDsu58Wq5yjqyQhQsc0k3DkFCYsqVI0pK2sUXOgVqRlM5GZtihePGRQx2
- FiRuKdJO7e9//FOQy4ZaiMRZ9eBUkBT6J4+ZU985QEvKhnJKmaeOwAsrSbcl358Uhj3h
- CvelSfM/cnJvz2KJTEoURPGVAIY4OKWME6fTaHOW+a1mjPjPEJB3wcJ8GKotkc6nuOz6
- 6KmRPsrWADRqSkyOr4sDZUwDUuTRNEWX//amVmTAycvF0dYHW3citCSPg71juPJADy/O
- zp71v5RSt9LDpMamRILRcTlDF1B7tN2cEj8p+jT94J+Vp4/YdCiC4Ag2JD00byc8LqlX
- jpog==
-X-Gm-Message-State: AOJu0YzUkWflWrmsvX00wAW9j0g9FaDXjCE2elBtsuAQWI2ae0RbxEO9
- dT6hR6sX6U51lfNqj+osoYouMeiR2IwtfNpEuIUCIWhOXlOfiipNOsj2I15T2KxmNqQV+WYyd+N
- BPZDc
-X-Gm-Gg: ASbGnctFQMLf8Ule5LyNHEi046rR/8cZOQMw4+e8vjr3cOEm50mESAW8E4aPgW6Gwa/
- +bI1LtQNexE1pSxa7q18xxzlurmFlpGLHhwbRy0NenF4xECco233q6x7XHhwNUscMf6UB32BKeJ
- F6Cryhe08u2CgQdMCKOc5WPbR4imvcUBCmB6Q/z+ZHOl3XZtaq5kaSEy6ZqMRlPqFvrWBKMlQn9
- SM8i67JSgpgdxMUBzbyr5UsvS90gwpgWeNl5n9/D2YcvqIA3FweZ+GMImOK/0hS2zAGUESMdKnp
- 1AT1MFeG39/SVulrJ4jd0AaD1w==
-X-Received: by 2002:a17:907:7848:b0:aa6:7adc:718a with SMTP id
- a640c23a62f3a-aa67adc72d5mr258852266b.8.1733689375322; 
- Sun, 08 Dec 2024 12:22:55 -0800 (PST)
+ bh=jbiG06Qj2eVtNM1RZ8Zpr4IJcnCvDLdL2ENhuYJnNHE=;
+ b=K50R+s4zJVL9/noCi/a7dIC4e8sSY0PCy2wgmxrW+OFaxlW6gsB1+YM+oqit2/f0DA
+ 7V7/X663HmUDM88UG9XD3CVjt1DbwCU4zKLQ6YYwhsxvNNsz/ip8yd4dVNLJN7b1hBFW
+ RyvN7bngzr0Zyyb6bBZyPxBzE25GIcS7sugw/COesHSgDRBNyJ0nLLO6OypTs6iVwKKl
+ LKbok8XW6L7sZY7r/I/dDPsEOSPxLeYGT+Cca103U/wgSW0D8XCD6g8yzZ1eS+9gT4i1
+ 72Y6h1RnOu3E+oDByH7v5CXLMTOQUjKbyfbDg8JfL26qv2wmodZoeBhpYihj78uiyXq6
+ nPtg==
+X-Gm-Message-State: AOJu0YxUC9PU83hDEHdXRwAlaifjGIn4FLUdXzC8XDI3YvNqLeI4m7CE
+ nxICz7KjqTcU2Is8QAA+an0T7MhMJTGpORr+GAtHb7y5Md8xnU5rAILjXGCsT1OYJPoDA/mR1pY
+ tKEzO
+X-Gm-Gg: ASbGnctjG2vy6Wvwwe5Vad3yJM/OarFAU+ZfNwXpOLIAAvRuQPdwj+rui2QtaAglOIK
+ D07yZC7UAVIMY67FPyeowK4D3WvhlEwTaZFasRkZMogFqJOAsjMxWwcjyREp++HpMbbaCUQYFBo
+ 95RU57o+ST5+ju8Q4Qbabt+SMJmlYADEdq+autvEaSk5L0PzKKWWKetqB8/uCEkDAkOzEgEciC7
+ rZ5xBmQg5nEGNRv7XCoWOWSwlE9PzMwyBd4GDLDu96o/YnoAyz11mRnx5TOCTRATuskU/INAmYB
+ 6qLp/BZdkm+biWJzpTBdPPl2GA==
+X-Received: by 2002:a17:906:3cb2:b0:aa6:538e:a311 with SMTP id
+ a640c23a62f3a-aa6538ea57dmr605554866b.18.1733689379002; 
+ Sun, 08 Dec 2024 12:22:59 -0800 (PST)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aa625e4eee4sm585759266b.26.2024.12.08.12.22.53
+ a640c23a62f3a-aa625e4eee4sm585759266b.26.2024.12.08.12.22.57
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 08 Dec 2024 12:22:55 -0800 (PST)
+ Sun, 08 Dec 2024 12:22:58 -0800 (PST)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -113,16 +113,16 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  qemu-riscv@nongnu.org, balaton@eik.bme.hu, Alexander Graf <graf@amazon.com>
-Subject: [PATCH v13 06/15] hw: Add vmapple subdir
-Date: Sun,  8 Dec 2024 21:22:29 +0100
-Message-Id: <20241208202238.68873-7-phil@philjordan.eu>
+Subject: [PATCH v13 08/15] hvf: arm: Ignore writes to CNTP_CTL_EL0
+Date: Sun,  8 Dec 2024 21:22:31 +0100
+Message-Id: <20241208202238.68873-9-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 In-Reply-To: <20241208202238.68873-1-phil@philjordan.eu>
 References: <20241208202238.68873-1-phil@philjordan.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::62d;
- envelope-from=phil@philjordan.eu; helo=mail-ej1-x62d.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::633;
+ envelope-from=phil@philjordan.eu; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -143,112 +143,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d2zRGx9m3eSq
+X-TUID: 5rQ94v6JMCov
 
 From: Alexander Graf <graf@amazon.com>
 
-We will introduce a number of devices that are specific to the vmapple
-target machine. To keep them all tidily together, let's put them into
-a single target directory.
+MacOS unconditionally disables interrupts of the physical timer on boot
+and then continues to use the virtual one. We don't really want to support
+a full physical timer emulation, so let's just ignore those writes.
 
 Signed-off-by: Alexander Graf <graf@amazon.com>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
 Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 Tested-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- MAINTAINERS             | 7 +++++++
- hw/Kconfig              | 1 +
- hw/meson.build          | 1 +
- hw/vmapple/Kconfig      | 1 +
- hw/vmapple/meson.build  | 0
- hw/vmapple/trace-events | 2 ++
- hw/vmapple/trace.h      | 1 +
- meson.build             | 1 +
- 8 files changed, 14 insertions(+)
- create mode 100644 hw/vmapple/Kconfig
- create mode 100644 hw/vmapple/meson.build
- create mode 100644 hw/vmapple/trace-events
- create mode 100644 hw/vmapple/trace.h
+ target/arm/hvf/hvf.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 09899f7407e..b6019220662 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2765,6 +2765,13 @@ F: hw/hyperv/hv-balloon*.h
- F: include/hw/hyperv/dynmem-proto.h
- F: include/hw/hyperv/hv-balloon.h
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index ca7ea92774a..d75e504dcda 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -11,6 +11,7 @@
  
-+VMapple
-+M: Alexander Graf <agraf@csgraf.de>
-+R: Phil Dennis-Jordan <phil@philjordan.eu>
-+S: Maintained
-+F: hw/vmapple/*
-+F: include/hw/vmapple/*
-+
- Subsystems
- ----------
- Overall Audio backends
-diff --git a/hw/Kconfig b/hw/Kconfig
-index 1b4e9bb07f7..2871784cfdc 100644
---- a/hw/Kconfig
-+++ b/hw/Kconfig
-@@ -41,6 +41,7 @@ source ufs/Kconfig
- source usb/Kconfig
- source virtio/Kconfig
- source vfio/Kconfig
-+source vmapple/Kconfig
- source xen/Kconfig
- source watchdog/Kconfig
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
++#include "qemu/log.h"
  
-diff --git a/hw/meson.build b/hw/meson.build
-index b827c82c5d7..9c4f6d0d636 100644
---- a/hw/meson.build
-+++ b/hw/meson.build
-@@ -39,6 +39,7 @@ subdir('ufs')
- subdir('usb')
- subdir('vfio')
- subdir('virtio')
-+subdir('vmapple')
- subdir('watchdog')
- subdir('xen')
- subdir('xenpv')
-diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
-new file mode 100644
-index 00000000000..8b137891791
---- /dev/null
-+++ b/hw/vmapple/Kconfig
-@@ -0,0 +1 @@
-+
-diff --git a/hw/vmapple/meson.build b/hw/vmapple/meson.build
-new file mode 100644
-index 00000000000..e69de29bb2d
-diff --git a/hw/vmapple/trace-events b/hw/vmapple/trace-events
-new file mode 100644
-index 00000000000..9ccc5790487
---- /dev/null
-+++ b/hw/vmapple/trace-events
-@@ -0,0 +1,2 @@
-+# See docs/devel/tracing.rst for syntax documentation.
-+
-diff --git a/hw/vmapple/trace.h b/hw/vmapple/trace.h
-new file mode 100644
-index 00000000000..572adbefe04
---- /dev/null
-+++ b/hw/vmapple/trace.h
-@@ -0,0 +1 @@
-+#include "trace/trace-hw_vmapple.h"
-diff --git a/meson.build b/meson.build
-index 1303664e167..bce1d21eec1 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3592,6 +3592,7 @@ if have_system
-     'hw/usb',
-     'hw/vfio',
-     'hw/virtio',
-+    'hw/vmapple',
-     'hw/watchdog',
-     'hw/xen',
-     'hw/gpio',
+ #include "sysemu/runstate.h"
+ #include "sysemu/hvf.h"
+@@ -184,6 +185,7 @@ void hvf_arm_init_debug(void)
+ #define SYSREG_OSLSR_EL1      SYSREG(2, 0, 1, 1, 4)
+ #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
+ #define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 14, 0, 1)
++#define SYSREG_CNTP_CTL_EL0   SYSREG(3, 3, 14, 2, 1)
+ #define SYSREG_PMCR_EL0       SYSREG(3, 3, 9, 12, 0)
+ #define SYSREG_PMUSERENR_EL0  SYSREG(3, 3, 9, 14, 0)
+ #define SYSREG_PMCNTENSET_EL0 SYSREG(3, 3, 9, 12, 1)
+@@ -1620,6 +1622,13 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_OSLAR_EL1:
+         env->cp15.oslsr_el1 = val & 1;
+         return 0;
++    case SYSREG_CNTP_CTL_EL0:
++        /*
++         * Guests should not rely on the physical counter, but macOS emits
++         * disable writes to it. Let it do so, but ignore the requests.
++         */
++        qemu_log_mask(LOG_UNIMP, "Unsupported write to CNTP_CTL_EL0\n");
++        return 0;
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         return 0;
 -- 
 2.39.5 (Apple Git-154)
 

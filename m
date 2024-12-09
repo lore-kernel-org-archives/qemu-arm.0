@@ -1,306 +1,335 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2892676njb;
-        Mon, 9 Dec 2024 13:25:16 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCU3Y7O3YLF1/UiKHi+GuFlHK0OeI9WfVP9F68z9/kMBqt4YTsAjgW/oFh4GGhnNFRaw2cnI2KQkLXNriw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGm0YUbJ/TgzyTEC4zCT5ZyusXDmzxtq2wE91dkSkizqK3xYGc1ZIHjpKOlTH7SLCfRECdD
-X-Received: by 2002:a17:906:3ca9:b0:aa6:423c:8509 with SMTP id a640c23a62f3a-aa69cd5bcc5mr202789666b.30.1733779515961;
-        Mon, 09 Dec 2024 13:25:15 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733779515; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2924043njb;
+        Mon, 9 Dec 2024 14:34:18 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW3IcP1JMYACUEQwR6tzKFq3nJm3nS9RH/82+8XJaOba4IZf+o65wT+tWiIHLBSzTJY0UoC/JtIHCI/gw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGQLbE3PT1otSnSWv+hon6zY4WusK7xpQrdASBLILoTae/S+13+Xv/OXoKMK57YFyhJT1sD
+X-Received: by 2002:a05:6e02:240d:b0:3a7:d02b:f653 with SMTP id e9e14a558f8ab-3a9dd2efeadmr13327295ab.0.1733783658338;
+        Mon, 09 Dec 2024 14:34:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733783658; cv=none;
         d=google.com; s=arc-20240605;
-        b=M+5D69ruJ+Tw2Z50gvjCoT4r/Ns/aIKAwd35cRsDGrm/y9n821UYuEIEB9KmPSX224
-         V/ysXxEwNRu1zfTznuB/Y/nTLylkWYoYdhXpmey0GvSB5a2s65P1d63PgzND5ng+WXJJ
-         vvHfzUhQh1suE2wkj1UkMGmDLa/hlU3zUC90P7wjAtBV6c+fM4/IXc+4WMl7Fos1kYkg
-         3cULuuLuyqPenwoUZZZWWYhB8rbMFEoUKHweHcxENuNSUIt7C+pjLRtim3FQSGyiZtsv
-         4rZBoiab98az8QFJj0I7DbW4T7/tF0mE9UixSGPDsQ79owzEG6hZbq0MuRLwp8L0FlsY
-         6mLQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :date:message-id:dkim-signature;
-        bh=j96UWfCWU3VnvpcsGtLXmdB5SzrLEIh69S7WhK/JWdw=;
-        fh=pXs6S3i62HPFXJpqoaQmyoFCG80KiwlPQzmhl+C0RYI=;
-        b=Gn6I2Qi7wCoQbey8dACrmZG16GEC8MFiN77STcjhEWJbxHuuVqQ0EStY5W4kdKUsXP
-         sJfsOUgWUUemg/rCTpFAEKyLXdPmAAAXAVDyQ3PN93wCQCgKPEa0t1yL5TLTsaEAwwXE
-         yCT0CpAyc/qyYuywPe2ukM8luQ50w/NZ6o5ijlUv6ATwplu+urGlnNv4VjyimPnkuQL4
-         W5tCNSHGlwYL/14G/4bqriIxrnVCztcMCiXgPqhNnyq99SASURbSBy1uhthhtPIl9CPt
-         kYrOo4fC9EUODK0cOk4gdlnYOo35oXX18vSo6QxDHcL2ig5Qm3RAssSTUFkRWTJ2lkqt
-         9c+w==;
+        b=eBqyirLjq6nmwk37qmUjCfkm3lXgPGtk5+kluf3LNHuxcdQsIRTVvncelP8MlKv2JB
+         U13Wa0W774LrEqVcY+ryNl9mydu6tnoXheNLiNad6IgnSv77cVPdmqG0xERZB4bbm9Ww
+         EtGnq8ct+ApM6PkAHlTD/ZrUZTkd5peUzlGMiVg9+C95SC67n5mZJrJqPVc6dNWzdr4W
+         z1JhmlubF2UPK7VbMNThD8C+1WMcCMU2J1EuNwePA52AxYz1cYHsh4oJiLKw9VLPpTNl
+         NT9fokZpAUVj8kmtZIIFG5GcRjDjUfPSkOHSxXZDI9SIlaraxQ89kXWqpLxDai0TfrND
+         RE7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=E4Uk3D9gLZEWufOyfC2YxFHDBaeaLwn5jcvl7eMYNlE=;
+        fh=Dx1sjjFp9BB26a1D0a1CdYq+PQ7jSGG6ce+e13SfTYM=;
+        b=TJgBF8EXD+e02lzLdREDxNyFoNZ7YIEXty14Btq62aJzoTKrA6mzaGuRuH54ZPM4Ep
+         A1WJ/OkrDIY9WTuuaYYmaO/xZIgZRKiHfOjgB0cc5dd+yia0gwhSUZ3z2lWT1VsQlZVw
+         thtlLSyC8nFkxgvRxaicam512W+BhfSenZFxOmtVglyLMctKsUU9GJ/+CCNRXK9pm5Nn
+         mkUJBOfhHcsTWaLFsfTP9wFjDHPy2bI2gchbUgRJcEJj0CZMLw9w1cNRBN9CC5M4p9Jt
+         /xXJXaWmHF+fHH1OXi8Dbs3PjVDOhuciul/792Ue6pzdmF3J1AOJho1I4x27LETASu4B
+         kqEg==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JI+WoS3O;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-33340-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-33340-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-33340-alex.bennee=linaro.org@vger.kernel.org>
-Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-aa67dd79c9dsi268016966b.329.2024.12.09.13.25.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Dec 2024 13:25:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-33340-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=XENRxfEz;
+       spf=pass (google.com: domain of stefanb@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=stefanb@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <stefanb@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id e9e14a558f8ab-3a9ca183fd3si27940865ab.28.2024.12.09.14.34.18
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 09 Dec 2024 14:34:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of stefanb@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JI+WoS3O;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-33340-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-33340-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id BC7981887C03
-	for <alex.bennee@linaro.org>; Mon,  9 Dec 2024 21:25:15 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 48FEA199E88;
-	Mon,  9 Dec 2024 21:25:11 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="JI+WoS3O"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E77EC49652
-	for <kvm@vger.kernel.org>; Mon,  9 Dec 2024 21:25:08 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1733779511; cv=none; b=LBBoY1YIHQy+84chvnK5XkSemNsglcHiWCxnPiMYODe1g3w5wVVodFVtmc/s5QJqpK8m/nFRbDB7Uu6TMGgcsUNyZ4ICV6kMgM4LET72UTol6+se7Krtt27/mEf/lIyyeQqq5/ps8XidI9deb3FJB2EumyHiv267c8krWNEtaAY=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1733779511; c=relaxed/simple;
-	bh=zt3j15meuhU9z0Hqt8gwimJ5K5pg++QpLP15kw6acrY=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=oGievbAMarpyGozRuhdEvUNKnqvNbUI99lCxOGINwOLIu3sg3oa3lk4y06WsJmfNhOv5oLJIDlpqpVRCivEuRF+9VtG+hzHGK6wFKr/YlmTBBNs4kqb3VOqbL/JlGPk8ienBSp3BiHfqoujcnKPUON16sBSTXO9FDX4FUrUHeaQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=JI+WoS3O; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1733779507;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=j96UWfCWU3VnvpcsGtLXmdB5SzrLEIh69S7WhK/JWdw=;
-	b=JI+WoS3OBrigyU0+loQRPcfUuq0RMKrVk31bT2EpSvMWS3Ms2o8JlNz2uuS+5kxW/xdDDr
-	tKHWzusHixmwG6ePxyxv8SzBRGkKoVHUxQ3b4dj2uRYAyBZTLuW58Q2Nc+d7SIh4anUg4r
-	GnxD8y2TyR8pP9a2I7pPAG+BGYBWZ+E=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-644-rvl6k1iVMmGGNAP-oCD_Fg-1; Mon, 09 Dec 2024 16:25:06 -0500
-X-MC-Unique: rvl6k1iVMmGGNAP-oCD_Fg-1
-X-Mimecast-MFC-AGG-ID: rvl6k1iVMmGGNAP-oCD_Fg
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-434f15b4b6fso11669195e9.0
-        for <kvm@vger.kernel.org>; Mon, 09 Dec 2024 13:25:06 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733779505; x=1734384305;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=j96UWfCWU3VnvpcsGtLXmdB5SzrLEIh69S7WhK/JWdw=;
-        b=Mcw0td2GNDOygSxiyyR7gjh/ApPWtaEWQtBaXdulCfrSSpAU+V8Mkxt80NKnmQ40/8
-         3Tyd+8YcgtAyNNM1ZIOOy/8rl4XJIwa6Os++INYXsroq2VdxY3pEt6y51fR55sYYalvr
-         hZhL/0e4B1rK9uST7ea1QDJPco/WufBd+KB7dV/GfG6lmV0UnisPe0V7EABqaHv6625d
-         yA6Y0dB23pknm7mMcrVJA7KlPQViAn9lgwDXwKgqStLJwpSMIuP4i86lUtbWOhtdzXLv
-         le6w/mdX22HamD+1AcnOplHxkZNWv9CjJGrCJ2Yuh3bqXLV+SEYDGbGXdeck/w8DgJR/
-         O2Qw==
-X-Forwarded-Encrypted: i=1; AJvYcCVD85EXBAdh5KLxYojfvNe4mBrrTepEdKp3Am8mboHhpzUZio3NPHgCmN5QXc5rKV7r7tE=@vger.kernel.org
-X-Gm-Message-State: AOJu0YwdSihZcMoiH7XX/BVSFpwdJz3XBZ5P6wAR2Tss/kpFYHOVGoDX
-	BFz8v6NsjaCLLk/tgmGCzwYO05RSg7OPJJehQMTeY9vaWNdwgDkvZi2ignuFfiK2woizxGmStCq
-	d0Ut3S6y1RpRo2+Pjh1pz+TumTki2hht7Adh15aYtt24f/5b6Ug==
-X-Gm-Gg: ASbGnct1ETn9fHxgwHxsKWtng+JfQskaOqY/gVufcDGPk+UkaGav0uIOYGZ4JTIfEmF
-	J4aXNlMfcJYUFEThLQ0/7cSiHJJEUCSJnVq0T321onbcxiqntTn3hDCvnS0VuSNI5y8bwpONB9U
-	9Zz0L4xn5cSHp2ac77NJ84+ijgZrlTZJb7L21WsJgzIMlnb107174ZQIdot0Vdb+9uYarQbmR0b
-	sG55PQL5cJ/TSZza/EoMJWC3Ks8/k3r04niBdBeiJZejZnB0ZI4uyDe062fHS2hDyUHXXEjTtPF
-	xYUw2AnCdBZawr2vWmaPLXf+pdWxpWKmTdFJSTRyjf2F88OOgteTUAu6mAUxsB3CRuZ8IGWHsAg
-	MgAkOzQ==
-X-Received: by 2002:a05:600c:3b95:b0:434:9f81:76d5 with SMTP id 5b1f17b1804b1-434fffd049fmr16474305e9.22.1733779505482;
-        Mon, 09 Dec 2024 13:25:05 -0800 (PST)
-X-Received: by 2002:a05:600c:3b95:b0:434:9f81:76d5 with SMTP id 5b1f17b1804b1-434fffd049fmr16474165e9.22.1733779505136;
-        Mon, 09 Dec 2024 13:25:05 -0800 (PST)
-Received: from ?IPV6:2003:cb:c71b:2c00:7bfb:29fe:9e6f:2e65? (p200300cbc71b2c007bfb29fe9e6f2e65.dip0.t-ipconnect.de. [2003:cb:c71b:2c00:7bfb:29fe:9e6f:2e65])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-386219096adsm14438726f8f.85.2024.12.09.13.25.02
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Dec 2024 13:25:04 -0800 (PST)
-Message-ID: <4825dc70-bca4-437f-a406-df0936aada85@redhat.com>
-Date: Mon, 9 Dec 2024 22:25:02 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=XENRxfEz;
+       spf=pass (google.com: domain of stefanb@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=stefanb@linux.ibm.com;
+       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4B9JvaCf002320;
+	Mon, 9 Dec 2024 22:34:17 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=pp1; bh=E4Uk3D
+	9gLZEWufOyfC2YxFHDBaeaLwn5jcvl7eMYNlE=; b=XENRxfEzyhT6bRpDBzThZF
+	nwbv2SBN7rH39+Ecc2bRol5M6WAsc+HtFSAfnOMqhZ409unB8jDQgw5UDxpjI5Cs
+	xnJFMdrL7ExGHwki6VU0IjMHazamdbbzv3X4Mkoq/u+et1qm/v7wjnDMsCPAde1N
+	X90wcfmbPq/4QVue9oLuMTKBoyK/95rxdm11n+FymYroAzcM7P3asE/UjlnsEshz
+	sNL0/EBveYSR7Ly7Dc6DoClIXjgemp2r3ZIFxbG3KGmFgHghuQb4Q57Cnzi6AE5p
+	ONFrF5DitmrIHDZttHyHsQkgjfqXXn8kc3zToLaL9LZBq3VvpLW/JoUh8V7boXNQ
+	==
+Received: from ppma12.dal12v.mail.ibm.com (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 43ce1vkvew-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 09 Dec 2024 22:34:17 +0000 (GMT)
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+	by ppma12.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 4B9Lda8v032727;
+	Mon, 9 Dec 2024 22:34:16 GMT
+Received: from smtprelay01.wdc07v.mail.ibm.com ([172.16.1.68])
+	by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 43d0ps8wn1-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 09 Dec 2024 22:34:16 +0000
+Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com [10.39.53.229])
+	by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 4B9MYF8c34472372
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 9 Dec 2024 22:34:15 GMT
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 4A48E5805D;
+	Mon,  9 Dec 2024 22:34:15 +0000 (GMT)
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 7C04258058;
+	Mon,  9 Dec 2024 22:34:14 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+	by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+	Mon,  9 Dec 2024 22:34:14 +0000 (GMT)
+Message-ID: <1da8840e-a7be-48c5-bc06-e7a4e111b9e7@linux.ibm.com>
+Date: Mon, 9 Dec 2024 17:34:13 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/7] hugetlbfs memory HW error fixes
-To: William Roche <william.roche@oracle.com>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
- imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
- wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
-References: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
- <20241125142718.3373203-1-william.roche@oracle.com>
- <48b09647-d2ba-43e5-8e73-16fb4ace6da5@oracle.com>
- <874e2625-b5e7-4247-994a-9b341abbdceb@redhat.com>
- <e09204a4-1570-4d39-afc7-e839a0a492d8@oracle.com>
- <753a033c-7341-4a3a-8546-c31a50d35aff@redhat.com>
- <31693f78-dbef-4465-9c8e-a68a25cb4af2@oracle.com>
- <fcf373b2-cb33-4764-a2bc-c95a0d76710b@redhat.com>
- <c5789e2c-e4e1-4203-8b0a-d7aba461497d@oracle.com>
-From: David Hildenbrand <david@redhat.com>
+Subject: Re: [RFC PATCH v3 23/26] hw/tpm: Add TPM event log
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>, peter.maydell@linaro.org
+Cc: richard.henderson@linaro.org, philmd@linaro.org, qemu-arm@nongnu.org,
+        qemu-devel@nongnu.org, alex.bennee@linaro.org,
+        Stefan Berger <stefanb@linux.vnet.ibm.com>
+References: <20241125195626.856992-2-jean-philippe@linaro.org>
+ <20241125195626.856992-25-jean-philippe@linaro.org>
 Content-Language: en-US
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <c5789e2c-e4e1-4203-8b0a-d7aba461497d@oracle.com>
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <20241125195626.856992-25-jean-philippe@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: TDtv5XYfHHm0
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: M6ujat-5dXQttN6p07xhY9N7b4V4QIjb
+X-Proofpoint-ORIG-GUID: M6ujat-5dXQttN6p07xhY9N7b4V4QIjb
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
+ definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
+ priorityscore=1501 clxscore=1015 phishscore=0 bulkscore=0 mlxlogscore=999
+ impostorscore=0 spamscore=0 malwarescore=0 suspectscore=0 adultscore=0
+ mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2411120000 definitions=main-2412090175
+X-TUID: YSLTwe3oKLvm
 
-On 06.12.24 19:26, William Roche wrote:
-> On 12/3/24 16:00, David Hildenbrand wrote:
->> On 03.12.24 15:39, William Roche wrote:
->>> [...]
->>> Our new Qemu code is testing first the fallocate+MADV_DONTNEED procedure
->>> for standard sized pages (in ram_block_discard_range()) and only folds
->>> back to the mmap() use if it fails. So maybe my proposal to implement:
->>>
->>> +                    /*
->>> +                     * Fold back to using mmap(), but it should not
->>> repair a
->>> +                     * shared file memory region. In this case we fail.
->>> +                     */
->>> +                    if (block->fd >= 0 && qemu_ram_is_shared(block)) {
->>> +                        error_report("Shared memory poison recovery
->>> failure addr: "
->>> +                                     RAM_ADDR_FMT "@" RAM_ADDR_FMT "",
->>> +                                     length, addr);
->>> +                        exit(1);
->>> +                    }
->>>
->>> Could be the right choice.
->>
->> Right. But then, what about a mmap(MAP_PRIVATE, shmem), where the
->> pagecache page is poisoned and needs an explicit fallocate? :)
->>
->> It's all tricky. I wonder if we should just say "if it's backed by a
->> file, and we cannot discard, then mmap() can't fix it reliably".
->>
->> if (block->fd >= 0) {
->>       ...
->> }
->>
->> After all, we don't even expect the fallocate/MADV_DONTNEED to ever
->> fail :) So I was also wondering if we could get rid of the
->> mmap(MAP_FIXED) completely ... but who knows what older Linux kernels do.
+
+
+On 11/25/24 2:56 PM, Jean-Philippe Brucker wrote:
+> Provide a library allowing the VMM to create an event log that describes
+> what is loaded into memory. During remote attestation in confidential
+> computing this helps an independent verifier reconstruct the initial
+> measurements of a VM, which contain the initial state of memory and
+> CPUs.
 > 
+> We provide some definitions and structures described by the Trusted
+> Computing Group (TCG) in "TCG PC Client Platform Firmware Profile
+> Specification" Level 00 Version 1.06 Revision 52 [1]. This is the same
+> format used by UEFI, and UEFI could reuse this log after finding it in
 
-Hi,
+as used by
 
-> I agree that we expect the ram_block_discard_range() function to be
-> working on recent kernels, and to do what's necessary to reuse the
-> poisoned memory area.
-> 
-> The case where older kernels could be a problem is where fallocate()
-> would not work on a given file
+> DT or ACPI tables, but can also copy its content into a new one.
 
-In that case we cannot possibly handle it correctly in all with 
-mmap(MAP_FIXED), especially not with shmem/hugetlb :/
-
-So failing is correct.
-
-, or madvice(MADV_DONTNEED or MADV_REMOVE)
-> would not work on standard sized pages. 
-
-I assume both can be expected to work in any reasonable Linux setup 
-today (-hugetlb) :)
-
-> As ram_block_discard_range()
-> currently avoids using madvise on huge pages.
-
-Right, because support might not be around for hugetlb.
+I thought it was going to be a completely independent log. If UEFI would 
+do anything with it, I think it would have to replay the measurements 
+into its own log and extend them into all PCRs of all active PCR banks 
+of the TPM, but if I understand correctly then you do not use the TPM 
+for this log at all since you have a signature over it and defined 
+(somewhere -- where?) that only sha256 and sha512 are to be used for 
+this log.
 
 > 
-> In this case, the generic/minimal way to make the memory usable again
-> (in all cases) would be to:
-> - fallocate/PUNCH_HOLE the given file (if any)
-> - and remap the area
-> even if it's not _mandatory_ in all cases.
+> [1] https://trustedcomputinggroup.org/resource/pc-client-specific-platform-firmware-profile-specification/
 > 
-> Would you like me to add an fallocate(PUNCH_HOLE) call in the helper
-> function qemu_ram_remap_mmap() when a file descriptor is provided
-> (before remapping the area) ?
- > > This way, we don't need to know if ram_block_discard_range() failed on
-> the fallocate() or the madvise(); in the worst case scenario, we would
-> PUNCH twice. If fallocate fails or mmap fails, we exit.
-> I haven't seen a problem punching a file twice - do you see any problem ?
-
-Hm. I'd like to avoid another fallocate(). It would really only make 
-sense if we expect fallocate() to work but madvise() to fail; and I 
-don't think that's our expectation.
-
-virtio-balloon has been using ram_block_discard_range() forever, and so 
-far nobody really ever reported any of the errors from the function to 
-the best of my knowledge ...
-
-
+> Cc: Stefan Berger <stefanb@linux.vnet.ibm.com>
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> ---
+> v2->v3: New
+> ---
+>   qapi/tpm.json            |  14 ++
+>   include/hw/tpm/tpm_log.h |  89 +++++++++++
+>   hw/tpm/tpm_log.c         | 325 +++++++++++++++++++++++++++++++++++++++
+>   hw/tpm/Kconfig           |   4 +
+>   hw/tpm/meson.build       |   1 +
+>   5 files changed, 433 insertions(+)
+>   create mode 100644 include/hw/tpm/tpm_log.h
+>   create mode 100644 hw/tpm/tpm_log.c
 > 
-> Do you find this possibility acceptable ? Or should I just go for the
-> immediate failure when ram_block_discard_range() fails on a case with a
-> file descriptor as you suggest ?
-> 
-> Please let me know if you find any problem with this approach, as it
-> could help to have this poison recovery scenario to work on more kernels.
+> diff --git a/qapi/tpm.json b/qapi/tpm.json
+> index a16a72edb9..697e7150ee 100644
+> --- a/qapi/tpm.json
+> +++ b/qapi/tpm.json
+> @@ -188,3 +188,17 @@
+>   ##
+>   { 'command': 'query-tpm', 'returns': ['TPMInfo'],
+>     'if': 'CONFIG_TPM' }
+> +
+> +##
+> +# @TpmLogDigestAlgo:
+> +#
+> +# @sha256: Use the SHA256 algorithm
+> +#
+> +# @sha512: Use the SHA512 algorithm
+> +#
+> +# Algorithm to use for event log digests
+> +#
+> +# Since: 9.3
+> +##
+> +{ 'enum': 'TpmLogDigestAlgo',
+> +  'data': ['sha256', 'sha512'] }
+> diff --git a/include/hw/tpm/tpm_log.h b/include/hw/tpm/tpm_log.h
+> new file mode 100644
+> index 0000000000..b3cd2e7563
+> --- /dev/null
+> +++ b/include/hw/tpm/tpm_log.h
+> @@ -0,0 +1,89 @@
+> +#ifndef QEMU_TPM_LOG_H
+> +#define QEMU_TPM_LOG_H
+> +
+> +#include "qom/object.h"
+> +#include "sysemu/tpm.h"
+> +
+> +/*
+> + * Defined in: TCG Algorithm Registry
+> + * Family 2.0 Level 00 Revision 01.34
+> + *
+> + * (Here TCG stands for Trusted Computing Group)
+> + */
+> +#define TCG_ALG_SHA256  0xB
+> +#define TCG_ALG_SHA512  0xD
+> +
+> +/* Size of a digest in bytes */
+> +#define TCG_ALG_SHA256_DIGEST_SIZE      32
+> +#define TCG_ALG_SHA512_DIGEST_SIZE      64
+> +
+> +/*
+> + * Defined in: TCG PC Client Platform Firmware Profile Specification
+> + * Version 1.06 revision 52
+> + */
+> +#define TCG_EV_NO_ACTION                        0x00000003
+> +#define TCG_EV_EVENT_TAG                        0x00000006
+> +#define TCG_EV_POST_CODE2                       0x00000013
+> +#define TCG_EV_EFI_PLATFORM_FIRMWARE_BLOB2      0x8000000A
+> +
+> +struct UefiPlatformFirmwareBlob2Head {
+> +        uint8_t blob_description_size;
+> +        uint8_t blob_description[];
+> +} __attribute__((packed));
+> +
+> +struct UefiPlatformFirmwareBlob2Tail {
+> +        uint64_t blob_base;
+> +        uint64_t blob_size;
+> +} __attribute__((packed));
+> +
+> +#define TYPE_TPM_LOG "tpm-log"
+> +
+> +OBJECT_DECLARE_SIMPLE_TYPE(TpmLog, TPM_LOG)
+> +
+> +/**
+> + * tpm_log_create - Create the event log
+> + * @log: the log object
+> + * @max_size: maximum size of the log. Adding an event past that size will
+> + *            return an error
+> + * @errp: pointer to a NULL-initialized error object
+> + *
+> + * Allocate the event log and create the initial entry (Spec ID Event03)
+> + * describing the log format.
+> + *
+> + * Returns: 0 on success, -1 on error
+> + */
+> +int tpm_log_create(TpmLog *log, size_t max_size, Error **errp);
+> +
+> +/**
+> + * tpm_log_add_event - Append an event to the log
+> + * @log: the log object
+> + * @event_type: the `eventType` field in TCG_PCR_EVENT2
+> + * @event: the `event` field in TCG_PCR_EVENT2
+> + * @event_size: the `eventSize` field in TCG_PCR_EVENT2
+> + * @data: content to be hashed into the event digest. May be NULL.
+> + * @data_size: size of @data. Should be zero when @data is NULL.
+> + * @errp: pointer to a NULL-initialized error object
+> + *
+> + * Add a TCG_PCR_EVENT2 event to the event log. Depending on the event type, a
+> + * data buffer may be hashed into the event digest (for example
+> + * TCG_EV_EFI_PLATFORM_FIRMWARE_BLOB2 contains a digest of the blob.)
+> + *
+> + * Returns: 0 on success, -1 on error
+> + */
+> +int tpm_log_add_event(TpmLog *log, uint32_t event_type, const uint8_t *event,
+> +                      size_t event_size, const uint8_t *data, size_t data_size,
+> +                      Error **errp);
+> +
+> +/**
+> + * tpm_log_write_and_close - Move the log to guest memory
+> + * @log: the log object
+> + * @errp: pointer to a NULL-initialized error object
+> + *
+> + * Write the log into memory, at the address set in the load-addr property.
+> + * After this operation, the log is not writable anymore.
+> + *
+> + * Return: 0 on success, -1 on error
+> + */
+> +int tpm_log_write_and_close(TpmLog *log, Error **errp);
+> +
+> +#endif
+> diff --git a/hw/tpm/tpm_log.c b/hw/tpm/tpm_log.c
+> new file mode 100644
+> index 0000000000..e6183a6e70
+> --- /dev/null
+> +++ b/hw/tpm/tpm_log.c
+> @@ -0,0 +1,325 @@
+> +/*
+> + * tpm_log.c - Event log as described by the Trusted Computing Group (TCG)
+> + *
+> + * Copyright (c) 2024 Linaro Ltd.
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
+> + *
+> + * Create an event log in the format specified by:
+> + *
+> + *  TCG PC Client Platform Firmware Profile Specification
+> + *  Level 00 Version 1.06 Revision 52
+> + *  Family “2.0”
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +
+> +#include "crypto/hash.h"
+> +#include "exec/address-spaces.h"
+> +#include "exec/memory.h"
+> +#include "hw/tpm/tpm_log.h"
+> +#include "qapi/error.h"
+> +#include "qemu/bswap.h"
+> +#include "qom/object_interfaces.h"
+> +
+> +/*
+> + * Legacy structure used only in the first event in the log, for compatibility
+> + */
+> +struct TcgPcClientPcrEvent {
+> +        uint32_t pcr_index;
+> +        uint32_t event_type;
+> +        uint8_t  digest[20];
+> +        uint32_t event_data_size;
+> +        uint8_t  event[];
+> +} __attribute__((packed));
+> +
+> +struct TcgEfiSpecIdEvent {
+> +        uint8_t  signature[16];
+> +        uint32_t platform_class;
+> +        uint8_t  family_version_minor;
+> +        uint8_t  family_version_major;
+> +        uint8_t  spec_revision;
+> +        uint8_t  uintn_size;
+> +        uint32_t number_of_algorithms; /* 1 */
+> +        /*
+> +         * For now we declare a single algo, but if we want UEFI to reuse this
 
-I'd say, let's keep it simple. Try ram_block_discard_range() if that 
-fails (a) and we have a file, bail out, (b) we don't have a file, do the 
-remap().
+You mean UEFI would reuse this struct here? I think UEFI will not use it 
+nor will it look at the binary log...
 
-If we ever run into issues with that approach, we can investigate why it 
-fails and what to do about it (e.g., fallocate).
+> +         * header then we'd need to add entries here for all algos supported by
+> +         * UEFI (and expand the digest field for EV_NO_ACTION).
+> +         */
+> +        uint16_t algorithm_id;
+> +        uint16_t digest_size;
+> +        uint8_t  vendor_info_size;
+> +        uint8_t  vendor_info[];
+> +} __attribute__((packed));
 
-My best guess it that the whole remap part can be avoided completely.
+Apart from QEMU_PACKED I have not much else to say here.
 
--- 
-Cheers,
-
-David / dhildenb
 

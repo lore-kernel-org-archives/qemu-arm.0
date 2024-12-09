@@ -1,78 +1,76 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2583149njb;
-        Mon, 9 Dec 2024 05:38:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXJEw/rgWHhIsFn0I9VGjUb+Ev0jhv7CGG51wb6BwzinQM2TQrwakt4QKN5QIkrnI2Lp28T2EVRmaaO/g==@linaro.org
-X-Google-Smtp-Source: AGHT+IEzq8ieotzRQSEh4/nb5+MBfF/TbVmZUkISPakXT+dOBlMI7YymWfcYor8AaMemlcT53A+b
-X-Received: by 2002:a05:622a:110:b0:467:60a8:8a9d with SMTP id d75a77b69052e-46771e9c3e0mr5867551cf.8.1733751510029;
-        Mon, 09 Dec 2024 05:38:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733751510; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2583260njb;
+        Mon, 9 Dec 2024 05:38:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU5s+Nb+36nYy2LdJjGi9TYxlZLABZ0hlkmCVS2xRL48Ft+NPIZuKOqUuQX7sFfr63CkpvTDivC21Kgjw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG16226dhdGktWKCZqmBqNAAnewIuooOrBcBgEu5XWUuPq3ng95kTQaIQFmjgdnscFLOO2I
+X-Received: by 2002:a05:620a:2711:b0:7b6:d959:59e with SMTP id af79cd13be357-7b6dcdcdb86mr78073785a.3.1733751522176;
+        Mon, 09 Dec 2024 05:38:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733751522; cv=none;
         d=google.com; s=arc-20240605;
-        b=j2JPXm4H5uay761MeP29CvfvSUUEJzpmpkWosuKnQMHIy9jb7r0q9E7rWU7gaZgm/G
-         vcOPp2DC370yN0nyD/q3/LV5/bsV/Xt70A2XLiv21jM67jZ66yRxpLqTPJg8za/zr1a4
-         AENmwHUf4O263Ia3hUkzBM9FdiamJ6zb3JfyYa5MY1urM3YBSpSW6AZH2p1LO9sflV4k
-         GoJ2xdiFXEDJI51D5zf8waBqnkXOwpuvQpZ6YUyNYpQo/Nbac4o/qq8/e1hA6iJbKEZk
-         LPDv1pUDJsk6Nbxhi2QE44H4F5jF8u+l+wekH8jxAji/jkiTkFEkPSsqOslvvtBFWUNu
-         5VzA==
+        b=doWWRj6lIdj5gTPyo7an3z+BaVuZz4uEzByw+RvjWtm/SwZYow1lhteo1ZqXepDpd0
+         yyqbDu+FKmi/0THWVLP51GrpdrRIzCd7RW3j70Se5pjky171mKhcDRMn2GayFaOWZ5yM
+         XBYCaISuOsrNaDCzt0ZkFWKK6i/9nFUQaNyJOTmaem0uDVZREAqWJPAX2QMpZ8QyYBzM
+         Blqioorb5jYdiThfYzDYCGZdfHwfYitsuckrloDzoko0S1yWYIz+THkC4Ixj6K0O2sNl
+         Utgu/jTnJTDRo09536Ac7aNUI0n2zsyprwSfRp456FoHrehXr6gu8d9GJtjRVRJXSsGI
+         Tbqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=zMumwtd6E9YAwJd+ffxcsFQ0spLxsFtmqo1fkAiOiP4=;
-        fh=oedLfDKd0DFZm7v5kJpvBvmgDh8OETCHiWUWrPGSMro=;
-        b=dM837DOuSFA84F/RIGBLgstPm9mV948pxv4euwTOGr5+M/BgWGPcotG1dx2kL49nGJ
-         VYteUg2nLRDlbES/CY2TvPTrY4ZOe2hKek1nXuebjNdj4r0JIN5QL02m4KSHuToCse51
-         ZTT1N6loS47C9pwvQ5mId2EfTgzGHO813IeSjyAjNSgCkIqDUPzOXpUE6JR47VI8+5TE
-         Vt7pn5hEmTcx0dlRHRV27hErBMy6iVbwFOwJgMCJHe2eVStOV4k8ukUf1vOa3ZaE28uD
-         HwWwpqjUDbVTweXg5y67gODb5hS1fnw8VHrbzSbTOGoX6PI+TazoxWwn0Q5fGs/IF4W8
-         +FSA==;
+        bh=yw7KDz9LxHoLUGDkkrUHoj5xA4GbI90Lxo2ETaUcQzA=;
+        fh=y8UldgvBpgWdzvo0ZnT6ptMSZ9zI0pieroCu40oTsaQ=;
+        b=Dz+WL6iW8Ma4OFMheTvI612kumss+a1Rl2BB3GLHFWO9pT/yU61IWJi3TUIlUUFrOb
+         /XdQJebWbTxfThC6T3NmcYXR5MoUIDklGuKtbbhppypKhLpSVwq6JEayQ8/KElZ8EVIS
+         iMqRcOhTJaN0QxKftkXouokJznIFcXLYNobDyXwAYpY6vhU3jGkZdUkjkxeS8NXIwESc
+         5AOh3fNHrC0COxxvByjEdBR9fOvV7HJ8QHJctQ6+hHPG+VAodcOflLO3n/739Wg2hISi
+         qBb4LFS75HI9a4CtSxRtVQ4WG4i7iJwWe4VzAmK3FP6op+/Bu13up3cOBFW3R+kbouJx
+         2WZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4675ad2e5fcsi40513751cf.411.2024.12.09.05.38.29
+        by mx.google.com with ESMTPS id af79cd13be357-7b6ce657d9esi466679485a.452.2024.12.09.05.38.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Dec 2024 05:38:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Dec 2024 05:38:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tKdww-0006FT-Lm; Mon, 09 Dec 2024 08:37:22 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tKdx5-0006Gf-9C; Mon, 09 Dec 2024 08:37:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=7enf=TC=kaod.org=clg@ozlabs.org>)
- id 1tKdwi-0006DT-S3; Mon, 09 Dec 2024 08:37:10 -0500
+ id 1tKdx2-0006G9-PO; Mon, 09 Dec 2024 08:37:28 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=7enf=TC=kaod.org=clg@ozlabs.org>)
- id 1tKdwf-0007F9-6H; Mon, 09 Dec 2024 08:37:08 -0500
+ id 1tKdx0-0007GP-TS; Mon, 09 Dec 2024 08:37:28 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Y6NFP4VBNz4x61;
- Tue, 10 Dec 2024 00:36:57 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Y6NFr2cKmz4x61;
+ Tue, 10 Dec 2024 00:37:20 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Y6NFJ6DlMz4x5q;
- Tue, 10 Dec 2024 00:36:52 +1100 (AEDT)
-Message-ID: <4adb923f-2404-4667-bfe1-caa7fe32a345@kaod.org>
-Date: Mon, 9 Dec 2024 14:36:54 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Y6NFm6vvMz4wby;
+ Tue, 10 Dec 2024 00:37:16 +1100 (AEDT)
+Message-ID: <9724756c-8e25-4d70-8793-4f6f9922211d@kaod.org>
+Date: Mon, 9 Dec 2024 14:37:19 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/10] Add smc qtest testcase to support AST2700
+Subject: Re: [PATCH v4 0/6] Support SDHCI and eMMC for ast2700
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20241127091543.1243114-1-jamin_lin@aspeedtech.com>
+References: <20241204084453.610660-1-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -117,7 +115,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20241127091543.1243114-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20241204084453.610660-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -129,61 +127,51 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7j/Ft1SbUFGf
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tx867yAxDiIf
 
-On 11/27/24 10:15, Jamin Lin wrote:
+On 12/4/24 09:44, Jamin Lin wrote:
 > change from v1:
->   1. Fix write incorrect data into flash in user mode.
->   2. Refactor aspeed smc qtest testcases to support AST2600, AST2500 and
-> AST1030.
->   3. Add ast2700 smc qtest testcase to support AST2700.
+> This patch series do not support boot from an eMMC.
+> Only support eMMC and SD Slot 0 as storages.
 > 
 > change from v2:
-> 1. Introduce a new aspeed-smc-utils.c to place common testcases.
-> 2. Fix hardcode attach flash model of spi controllers
-> 3. Add reviewers suggestion and fix review issue.
+> - Add hw/sd/aspeed_sdhci: Fix coding style patch
 > 
 > change from v3:
-> 1. replace the TestData type name with AspeedSMCTestData
-> 2. add an 'aspeed_smc' prefix in the name of aspeed smc test routine functions
+> - Directly set capareg and sd_spec_version instead of property
+> - Keep DEFINE_TYPES
 > 
-> Jamin Lin (10):
->    test/qtest/aspeed_smc-test: Move testcases to test_palmetto_bmc
->      function
->    test/qtest/aspeed_smc-test: Introduce a new TestData to test different
->      BMC SOCs
->    test/qtest/aspeed_smc-test: Support to test all CE pins
->    test/qtest/aspeed_smc-test: Introducing a "page_addr" data field
->    test/qtest/aspeed_smc-test: Support to test AST2500
->    test/qtest/aspeed_smc-test: Support to test AST2600
->    test/qtest/aspeed_smc-test: Support to test AST1030
->    test/qtest/aspeed_smc-test: Support write page command with QPI mode
->    test/qtest: Introduce a new aspeed-smc-utils.c to place common
->      testcases
->    test/qtest/ast2700-smc-test: Support to test AST2700
+> change from v4:
+> - Keep to set capareg and sd_spec_version by property
 > 
->   tests/qtest/aspeed-smc-utils.c | 686 +++++++++++++++++++++++++++++
->   tests/qtest/aspeed-smc-utils.h |  95 ++++
->   tests/qtest/aspeed_smc-test.c  | 775 ++++++++-------------------------
->   tests/qtest/ast2700-smc-test.c |  71 +++
->   tests/qtest/meson.build        |   5 +-
->   5 files changed, 1034 insertions(+), 598 deletions(-)
->   create mode 100644 tests/qtest/aspeed-smc-utils.c
->   create mode 100644 tests/qtest/aspeed-smc-utils.h
->   create mode 100644 tests/qtest/ast2700-smc-test.c
+> Jamin Lin (6):
+>    hw/sd/aspeed_sdhci: Fix coding style
+>    hw/arm/aspeed: Fix coding style
+>    hw:sdhci: Introduce a new "capareg" class member to set the different
+>      Capability Registers
+>    hw/sd/aspeed_sdhci: Add AST2700 Support
+>    aspeed/soc: Support SDHCI for AST2700
+>    aspeed/soc: Support eMMC for AST2700
+> 
+>   hw/arm/aspeed_ast2400.c      |  3 +-
+>   hw/arm/aspeed_ast2600.c      | 10 +++---
+>   hw/arm/aspeed_ast27x0.c      | 35 +++++++++++++++++++
+>   hw/sd/aspeed_sdhci.c         | 67 ++++++++++++++++++++++++++++++++++--
+>   include/hw/sd/aspeed_sdhci.h | 13 +++++--
+>   5 files changed, 117 insertions(+), 11 deletions(-)
 > 
 
 

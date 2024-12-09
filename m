@@ -1,136 +1,202 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp1373576njb;
-        Sat, 7 Dec 2024 00:39:34 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVXitvZuvueeFNY/xm11ozVHuk1H6rh42M+1lp9u2xUIIna681o/R0HQeYX6cUXAZ2GJCT/sbpd6CJQtQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEIrwCaKNTho43Mt1STvvSsgEbERl8vOZ3qAlKctWwlS3n+5BS/b+SXlAwH22tAtj/2Np7A
-X-Received: by 2002:a17:902:d48a:b0:215:bc30:c961 with SMTP id d9443c01a7336-21614da9a17mr78412345ad.35.1733560774300;
-        Sat, 07 Dec 2024 00:39:34 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733560774; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2794008njb;
+        Mon, 9 Dec 2024 10:31:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXaJeyLnC87SJD2WKRgI6EMSq0ZAzwpLim9ijFCikIExp5RtbuMyKkkao3rk1VLAad4biLSwiDiVtuREg==@linaro.org
+X-Received: by 2002:a05:6a00:1403:b0:725:9f02:4899 with SMTP id d2e1a72fcca58-725b81f25e2mr19446123b3a.22.1733769068209;
+        Mon, 09 Dec 2024 10:31:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733769068; cv=none;
         d=google.com; s=arc-20240605;
-        b=D8E3ltJDJ4pGQRuV2BB1cPdjBoB/TJohIMMX7+Bik7sTPVp8adYsHdgzMJxNecIOWC
-         gt0HNTI9D0Ay58jXOsj8b+rHF9F9CCaxsFsDuKyCDtrSE0MQdrYEYa86e8/J8yOU6lUm
-         dHeSzTqWMjHZS7TZ6Jzn4+5i5EhJYEqacuVvR1/Ed9b7yECYdF5N0i6HWa7GetbWjREP
-         KcpPKqeMQ6JqbxSfihw7FPcaT1b2IqfrS1hZNz/sfx4hqyc5pVgXbcXFIMw7PXG//H/Z
-         eIbkXJkFeTRL768JNl1You0BzEORw0w1bBLtft/G+D9HB3WDJoIx8mV3Ts+h41XLOC6p
-         JgdQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=KMlvf0I4VJktAytj5BNjvFLvXMlnGpWpy3jdsT2Xceg=;
-        fh=XDM2jbHMCdO2R69Ge+x13SMpQZAJwltkLNGwa/OfM1E=;
-        b=XmxLWrzfbQdQT3eCw0v8ROjJkhY0VldxNJ8IqQHh2kWBddftD3dcV0r7m4a2UYNoy2
-         BIRlM3h0hQeqHOgLzo1HDGWU7UK0vmOYMo7YLCZuKLGnlYen7MVUpIHVgR5qfVFIgV4r
-         DskQ6Z01BwmbfXcvwsBdlenqdPL5CE3FHB0ZE8wghwL9goAN+YqeqDCYffegnz746h3w
-         yJiKBFE8syd6449QyNDi4exBNfbS0PvW0UwJNPAjiUzCM7gajDAdep+J3rW3eMnFgHQ5
-         BzEaJrsvkdwXVNZbu0XBhIZFnEjgM0PfIJiOAXiYEIuEnSDUzOZKod3ll3pNMva9Ba4J
-         aZaA==;
+        b=idjOCUtQkAdxceDFtX+YLsi7ilrJ5DFUcDNf5boROIgj1wVOyVvKxvMcK1IUY8FT+W
+         3XKGiUlgyPJsjBdbl+6++yOvPdqnFwQxx1RwVCc898dlmyYhDuC8CleWK5+plUoG35EG
+         p6NzNHN9yoMmIfTm5kLq3FYvGHrR8NP7BpWgJkrcq4dgl8OL+mXEo0L3vwSalR64DSP4
+         V2Lg9cvX3AJLIeYPxfQG0J1ts7cinFRUAGtghroyEO9OvTJ16LQh5VA2vxeCCN7aYY/M
+         UTHClYrYk+hbQUIm2txB8Ftri4p9qqv5e25RIaXVYueT5FesNuJ6XSaQenYkFLmsqGBL
+         n6ow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=PZqZBHwarWuFysN6iWztZx7iVOB2C8528xQYw/i/7uM=;
+        fh=ha6BdIbbLTEDnBWYalOMB4sJ/2ML9eaF9IF9jLDr+tw=;
+        b=Bbp1H7uJIpqte36rX3XgW0GmCVHGUqKwtlLTYP+Zvpd6cK73NhDjeEZKtm9eRl3u0X
+         wt3MaV1mTqve/bdlrnaHX6vCUBkSg6km5xqsiBlhaLaSd/XcYhACUVkICGPVVwcZ6Xb/
+         zINxfvEYXnfZL3RHVNLap/wHJh7K3eN3is5XOYPI0VEnEjCgunFFfeMO+37uxlxGhITE
+         d5Z+sgPig2FP19c58WuLkMIU/vHM4FLTe/yG5kdJVszyWhpz8x35+lkfMidxGVYOh6EX
+         lWbheXu8I2b6Bx0Y+16H62EuDL9Bm4qM7gLiHG5bFXS79l1SrpU2f8UBg+0q35vxw43t
+         4v1w==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=q0aRBymL;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-2161502fb82si38665805ad.322.2024.12.07.00.39.34
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="AYXL2P/J";
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-725a2a101fcsor6044496b3a.1.2024.12.09.10.31.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 07 Dec 2024 00:39:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (Google Transport Security);
+        Mon, 09 Dec 2024 10:31:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=q0aRBymL;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-33244-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id CE65A281B64
-	for <alex.bennee@linaro.org>; Sat,  7 Dec 2024 08:39:33 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id CFF28137742;
-	Sat,  7 Dec 2024 08:39:30 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="q0aRBymL"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8ADAF3B19A;
-	Sat,  7 Dec 2024 08:39:30 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1733560770; cv=none; b=LzBOonq1idaIPkUKvSqARhCYu9odOsQ7XVbA+LdyAYJLYUwUX/BKzkDW6Vnn5xRXjF5rgJD3XBGSNgv00dmgsgr2p6kZ4QkAweIYUZPdKr+OCN22D5ommOx9QCUbjWIKmccxD13QX1MY+31+PMCAoivIjO7wNi9HvSp+KBi+BW4=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1733560770; c=relaxed/simple;
-	bh=5/pUUungQ8NgDYyXV69cVH1mhMQviRIiv82xmjhsv8Y=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=iNNOb+YUAu7k/fXqWb9hZtKbaysGhigD1nTKoTAEcS2va4Td3yekwZ7uJajhLu9juLKjjSUyEw1ThoidyPriP/7wqN6LqSvMuSeDaaalrfJL/YW/OW2ySSWyo8JtwcPBIDFUE1hmHXNoXdc5YBG2M08YmS116pn+r7yPmgTgYho=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=q0aRBymL; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F830C4CECD;
-	Sat,  7 Dec 2024 08:39:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733560770;
-	bh=5/pUUungQ8NgDYyXV69cVH1mhMQviRIiv82xmjhsv8Y=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=q0aRBymLLvkn7rpU7sHaKpPTbGSp7brUEOpZ+lM3xFLznQBE1CPRNcggMoMTHMHYk
-	 a0WxS1DuPP2uMWnEvsFz3Sxi/lBFNGu/4X18volPeA+xfeNA6szsffVYP2Ihb60Z3h
-	 /Q+Px8YsWA6akm1fX/WpeVXE5+9na3LcjKxMKltM3RnT0fS7NmAY0WKFe9yMbssVOn
-	 RgD1/dkGqzmOMP8NydhXGZsq+4+An267qUuEYkamqMUdcCVPge6224btqcR1QbdmaE
-	 cLDE2fLOxt09JXry6/bE1sqDsrOdog0vrJccUMIc0gxPOyWpdz1h3Jjug6hYazgOo1
-	 /GsdPgkQ45P+g==
-Date: Sat, 7 Dec 2024 09:39:22 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
- <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>, Philippe
- =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
- <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
- <eblake@redhat.com>, Igor Mammedov <imammedo@redhat.com>, John Snow
- <jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Michael
- Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
- <zhao1.liu@intel.com>, kvm@vger.kernel.org, linux-kernel@vger.kernel.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH 00/31] Prepare GHES driver to support error injection
-Message-ID: <20241207093922.1efa02ec@foz.lan>
-In-Reply-To: <87wmgc2f48.fsf@pond.sub.org>
-References: <cover.1733504943.git.mchehab+huawei@kernel.org>
-	<87frn03tun.fsf@pond.sub.org>
-	<87wmgc2f48.fsf@pond.sub.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="AYXL2P/J";
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1733769068; x=1734373868; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=PZqZBHwarWuFysN6iWztZx7iVOB2C8528xQYw/i/7uM=;
+        b=AYXL2P/JJtsubwJBQlMT6kRe8DRSUFgg+1uKvxOgHARe+OrieLrHh+YRXOmvjO3Vgi
+         7uOmj+ctrVC5qkOUTOfL6tZPsHZO0W7a+NTJvynPjRL8pR1u29PkBfeZgBGwmoJWNhy+
+         oSyLJDbs+8pX0MHd2xwjDKoHmsyeRouuDUhdDFrNq+rAyn0e8avXlGCHGxCMmZDWJ2RK
+         unSzo1lyW3Y+QQ+0wF3+3Mi+XA+XDvAtr2fXXqbqzFwfLTGwWiY07LGWi7/tv08b/GCc
+         qNqEII7Ay0sfEAtvJ6BngXV0CXPxqj7/1DlaUARxVyK294U1RV9PnqscYJpd0+Vwj6Uo
+         4JCA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733769068; x=1734373868;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PZqZBHwarWuFysN6iWztZx7iVOB2C8528xQYw/i/7uM=;
+        b=bMd/b1FH+5uMoZ3fst7KDnum6E8mNmTj2BHyP6VArqPAsi64+B9Biyrl3IvZ95t2eM
+         q8BauQNrNHJw50fWnv+d1aSeVcYPukWnoadw+/VcDQjxeXxIV55tdpYwhC5xyZSquX4w
+         oyid3QYw7fYCIe5K/lQs0FJHYDd3t1v/uEbbN5tGzSidtwVvkBaeoDOvz574zfUyBPiG
+         2aHCDn+X6Uwc2p/7wMxNeSMIHiSOiUlhGMBwSIFG0q4nIT9TQDfdd4OxofFLOd+ND5ma
+         eDDyO9qMyVnF5/4iHtmN8zniLFwN45tra49UHsdojFKhUYjJvxEQvYyzKCDMUc+M/O9k
+         q+CA==
+X-Forwarded-Encrypted: i=1; AJvYcCUrwxCd2HS/BB3hBXrsAASns2Tchif9F38gmVnIuW3VdKriqYUVIfsYk0U1vDzd3PwtQUtlhtG4d2W6Nw==@linaro.org
+X-Gm-Message-State: AOJu0YyShPjuCIQEP0Uq6rOzfpKZWD3haHmLU54AX4LycfNinX7RTZhR
+	y4GgacLY3Plt/eMRkwn1v+YXxBIegSlF8a4gFWzY9Sq4ewuMihKYlLAzgWxLFYgjng==
+X-Gm-Gg: ASbGncs+9+ZBaqnSCQdRfQGqyFbNaw5blf2G2IdtPjSGyiet88MgAVLI/d3vcKoMEb5
+	sRoCOY11zJPgf4WXu5rhRNT9FCYXBI15vwv5QsPfvUjtEbvxICKFyi5rIbD0Norz8tTB9HrBBZD
+	xwS+eRgbCXpct/IE9HLBoXu6GxnT9D6zItvqrmh53VX+qnOmUHwidIVKIBbJcTnihbVlb3kbQtv
+	K9IX5gmZmv6PC+KPgbO3j16yBYUuW4xk5k+9WFn+/4WCKLhJfwmzUD6YfmKCsoYK5sP5Ub6xmFd
+	90B3DVJm
+X-Google-Smtp-Source: AGHT+IFpHUUfQEGoFuUDLNn5zxgwOTzLoQsIq3M53PXqhUwrAI2CmruVHac2HmDdLItmBcpygAm3eA==
+X-Received: by 2002:a05:6a00:2d0b:b0:724:6cd2:cdcf with SMTP id d2e1a72fcca58-725b81f2d33mr20069380b3a.24.1733769067681;
+        Mon, 09 Dec 2024 10:31:07 -0800 (PST)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from pc.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725e2388d37sm3322821b3a.73.2024.12.09.10.31.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Dec 2024 10:31:07 -0800 (PST)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: manos.pitsidianakis@linaro.org,
+	Andrew Melnychenko <andrew@daynix.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	qemu-block@nongnu.org,
+	Jason Wang <jasowang@redhat.com>,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Yuri Benditovich <yuri.benditovich@daynix.com>,
+	Kevin Wolf <kwolf@redhat.com>,
+	Peter Xu <peterx@redhat.com>,
+	qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	philmd@linaro.org,
+	Fabiano Rosas <farosas@suse.de>,
+	Konstantin Kostiuk <kkostiuk@redhat.com>,
+	Eric Blake <eblake@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+	Markus Armbruster <armbru@redhat.com>,
+	gustavo.romero@linaro.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 0/6] Enhance documentation for new developers
+Date: Mon,  9 Dec 2024 10:30:58 -0800
+Message-Id: <20241209183104.365796-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.5
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: BPBDZ0FFw/AN
+Content-Transfer-Encoding: 8bit
+X-TUID: WvYGdGSmVtcv
 
-Em Sat, 07 Dec 2024 07:15:19 +0100
-Markus Armbruster <armbru@redhat.com> escreveu:
+This series extends our documentation with new pages to help developers
+onboarding on QEMU. It focuses on providing a big picture of QEMU (to a
+modest extend).
 
-> Markus Armbruster <armbru@redhat.com> writes:
-> 
-> > This is v10, right?  
-> 
-> Scratch that, the cover letter explains: "As agreed duing v10 review,
-> I'll be splitting the big patch series into separate pull requests,
-> starting with the cleanup series.  This is the first patch set,
-> containing only such preparation patches."
+As such, it was written to be simple, short, easy to understand, and pointing to
+more details. It provides another way to dive into details instead of simply
+hitting the "search" box.
 
-Please scratch this series. It seems I picked the wrong git range,
-sending a lot more patches than intended.
+The first patches enhance the existing developer section. They provide
+information about b4 and git-publish, two important tools that I learnt from my
+coworkers, and were not presented anywhere, and were really missing IMHO.
 
-> However, it doesn't apply for me.  What's your base?
+Then, we introduce a new Codebase page, presenting (succintly) the various parts
+of QEMU, and what every folder of the codebase contains.
+We then add a glossary with the most recurrent acronyms we hear in our daily
+conversations on the mailing list.
+Finally, we add an "How-to" page which present how to build and test qemu, and
+how to contribute a patch. It's definitely a repetition of existing information,
+but the goal was to have a self contained page with all the commands I run
+daily personally, and that someone would be interested to have.
 
-That's weird. Despite my mistake, the series is based on v9.2.0-rc3 
-(which was identical to master last time I rebased).
+When reviewing, please keep in mind this is targeting someone who discovers
+QEMU, and not someone who contributed to the project for several years. What is
+obvious for you will not be obvious for a random young developer.
 
-Should it be based against some other branch?
+That said, please free to point if something is "false", or "really incomplete".
+It can be hard to summarize in one or two sentences complex parts, but that's
+the intent here.
+
+Your feedback on content or organization is very welcome!
 
 Thanks,
-Mauro
+Pierrick
+
+v2:
+- removed how-to section
+- integrated all suggestions from Daniel and Peter (thanks for all your comments)
+- Note: build environment keeps mentioning windows-arm64 because we solved the
+  issue with gcc_struct attribute. The related series will be merged before this
+  documentation.
+
+v3:
+- added a comment about git-publish asked by Daniel.
+
+v4:
+- add suggestion from Thomas for codebase and message-id.
+
+Pierrick Bouvier (6):
+  docs/devel: remove dead video link for sourcehut submit process
+  docs/devel: add git-publish for patch submitting
+  docs/devel: add b4 for patch retrieval
+  docs/devel: add information on how to setup build environments
+  docs: add a codebase section
+  docs: add a glossary
+
+ docs/about/build-platforms.rst         |   4 +-
+ docs/about/emulation.rst               |   2 +
+ docs/devel/build-environment.rst       | 118 +++++++++++
+ docs/devel/codebase.rst                | 220 +++++++++++++++++++
+ docs/devel/control-flow-integrity.rst  |   2 +
+ docs/devel/decodetree.rst              |   2 +
+ docs/devel/ebpf_rss.rst                |   2 +
+ docs/devel/index-build.rst             |   1 +
+ docs/devel/index-internals.rst         |   2 +
+ docs/devel/index.rst                   |   1 +
+ docs/devel/migration/main.rst          |   2 +
+ docs/devel/multi-thread-tcg.rst        |   2 +
+ docs/devel/qapi-code-gen.rst           |   1 +
+ docs/devel/submitting-a-patch.rst      |  44 +++-
+ docs/devel/testing/main.rst            |   9 +-
+ docs/devel/testing/qtest.rst           |   2 +
+ docs/glossary.rst                      | 280 +++++++++++++++++++++++++
+ docs/index.rst                         |   3 +
+ docs/interop/qemu-ga.rst               |   2 +
+ docs/system/arm/virt.rst               |   2 +
+ docs/system/images.rst                 |   2 +
+ docs/system/qemu-block-drivers.rst.inc |   2 +
+ docs/tools/qemu-nbd.rst                |   2 +
+ docs/tools/qemu-storage-daemon.rst     |   2 +
+ docs/user/main.rst                     |   6 +
+ 25 files changed, 709 insertions(+), 6 deletions(-)
+ create mode 100644 docs/devel/build-environment.rst
+ create mode 100644 docs/devel/codebase.rst
+ create mode 100644 docs/glossary.rst
+
+-- 
+2.39.5

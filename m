@@ -1,69 +1,69 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2563268njb;
-        Mon, 9 Dec 2024 05:09:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVIdxNlIKzo9b2jaloUjQqbjhxz745UYT9PF7k9Y1jPYUpYiXdbSG1A3SbqOsrq3FPosUzR1vtLbJ0ECA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEjqM1ZQ9m40PESIpEVbf6XQiqMfnfCJ5nnYtC1ZTQJRL3lp5rFPRj6mhgAwIxNyyI+LllI
-X-Received: by 2002:a05:620a:2908:b0:7b6:cfab:987b with SMTP id af79cd13be357-7b6cfab9a4bmr752640485a.14.1733749781549;
-        Mon, 09 Dec 2024 05:09:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733749781; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2563780njb;
+        Mon, 9 Dec 2024 05:10:22 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU8HZl5FcObQbPi0d/gAg6s2WBiM5f2dLc9Q9H+HMvrBYHV+wUm3vw6flHKHvzUEIKqp7FJ3Xl88vC/qg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGgnKFCaJbQeECd/2un3Y6FyQ6V2vaqNt1J6wqxcjFlPifEfxt7DsmfQ5jSww/KCFHPbZJj
+X-Received: by 2002:a05:620a:260d:b0:79f:18d4:d613 with SMTP id af79cd13be357-7b6dce86c6dmr41610385a.38.1733749822502;
+        Mon, 09 Dec 2024 05:10:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733749822; cv=none;
         d=google.com; s=arc-20240605;
-        b=LU6UIpzZnEacqrrJD15Jy6pG9iZJ6eG8FL3zN27Q8yFnkklLlH2tDJxgGxQnta6QH/
-         Ec/Bb8sM/cjCuuwVhoG0WGZk/14j0JQ3cRZVz8Izoy6XMRf0h/268v7Bz8PKJ5NPU5/y
-         xuBdXN5OXMAAM4IcWQvlF2q7WBLxJLhSwcLQbPRmXH5EFVRTXlZTfsMTjxT5gnRgF4yi
-         dp0GHvpwMVPrOQWAbQge/fOqgJS8mTN0VIQmUtZuxkviZMt1kAT5lnDNfsbfLSijUXtm
-         w8VOCY/ohMlNpq9CQvEJE6QqXCu2Kxw4UYyjLY7JAvBwIaGsBDFMLHsnI0o1EBw40fqR
-         66gQ==
+        b=J8ADnJDmWN6OjN6JTUKfcQh52F+9Yvcm3967PAsLK/8PHRk3fxQbjkScwT6ykTVrgb
+         2wbuE35B4DoQLQjHsGnvPPq0Gs+U1b1TTgarzzLwsfCDVkQyBKCDSnf/YNqk2hMXsr1K
+         xtxk0TW3zSS1nGbojcExcsf4a+Wbzu5Za+ALPdXrY/pnnjUl1IVpcMYunR+jdIp2zp+9
+         pyvz+nGfdWWyciDY14H0J2h8bj7Tt7QEF2nCybB270uPd0LL3lf9UPEHOV2DGWGa/xFs
+         1Yw3P0TVrb0aQy02RBwtlSZmqMKBSg/ruCkHyP5GLyy4HiOjhRuG75rmniG+/MlNW/Fm
+         z3Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=SXEmt6TTNyYiOzJJNnGliz4ecQmQaCLCSxBhKM3JGmg=;
+        bh=Pm41FAD36ONM/NO/0FQMvwcV3rYs01Z3QQ7zNNqYJn0=;
         fh=oedLfDKd0DFZm7v5kJpvBvmgDh8OETCHiWUWrPGSMro=;
-        b=PUXrd5KTj/TwlHnTR30xERnjB4iIIedWt6lF8Qx4S8Hf8smwzz1S6D9A6dUjc6v22n
-         i/GhrJb+DepWb6Hmdqloy/7jQcMH6PTuzJDuIe5CDOhS2MlWS4VImLpdhYPeJdjYl9we
-         mYxRG13uZ14jxIAMCEYcE01Ef1ODvAvxdoair2bcyW7rReko65aYrgN0BrNMloLJSrcm
-         FRhblBiGwdsrcAzcH6AjX9X4EOd7o6WSjvgzO0p8eod9yubFwqHjl1KwOoNl3FPf79kw
-         +aemFXntaaASZxkcHgFT2pdYqsUF42AAE0lEsjg9yyU0cORiBsEWymjiOGdKvWHt7dZv
-         1tSg==;
+        b=BN5037yZvOG+0JdEdppdssdouwlmIh0lHmJo7P2miRL6tGYL2/c2u83fCeQkDw+ezl
+         6q+VMwXp8L9N8YaN8h4SirK34ZPxjuD7ZpBtfhDuT9l543b60yIJ7FS0ESkN8MCApvQW
+         a4Aa4HZdIqiqXoqsm06oqTm2TGndHdiP32+r6IrHcIvUjRHMfltB4FmVP71UhHmRblf0
+         2SgR/JwsnOI4eUPB3b5jDD0H5vzZZi4xpSuh48HqiZB2EK6zGblGiPYeeP/KPn9Ueg+z
+         4A/gz2xcA/dKALkhoaFQdi9OhqwoSohVGOvTw30at+yYfCCP0mSbzjC4biVYMKabNPgn
+         r1RQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6b5a5e190si1213603685a.203.2024.12.09.05.09.41
+        by mx.google.com with ESMTPS id ada2fe7eead31-4afe0d12f2bsi1135748137.4.2024.12.09.05.10.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Dec 2024 05:09:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Dec 2024 05:10:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tKdVz-00087D-Tv; Mon, 09 Dec 2024 08:09:32 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tKdWU-0008K3-4o; Mon, 09 Dec 2024 08:10:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=7enf=TC=kaod.org=clg@ozlabs.org>)
- id 1tKdVx-00086D-H6; Mon, 09 Dec 2024 08:09:29 -0500
+ id 1tKdWK-0008FW-F6; Mon, 09 Dec 2024 08:09:52 -0500
 Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=7enf=TC=kaod.org=clg@ozlabs.org>)
- id 1tKdVu-0003Dk-Aq; Mon, 09 Dec 2024 08:09:29 -0500
+ id 1tKdWI-0003Hf-Ch; Mon, 09 Dec 2024 08:09:52 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4Y6MdS4dMvz4wcD;
- Tue, 10 Dec 2024 00:09:16 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4Y6Mdz5sWsz4wcr;
+ Tue, 10 Dec 2024 00:09:43 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4Y6MdN3bRwz4wbx;
- Tue, 10 Dec 2024 00:09:12 +1100 (AEDT)
-Message-ID: <fc4983c3-56a8-4ee4-83d7-f14435805763@kaod.org>
-Date: Mon, 9 Dec 2024 14:09:14 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4Y6Mdv2x1Rz4wbx;
+ Tue, 10 Dec 2024 00:09:39 +1100 (AEDT)
+Message-ID: <71f9503e-080f-4d4b-a4af-4d7649c7e39c@kaod.org>
+Date: Mon, 9 Dec 2024 14:09:41 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/10] test/qtest: Introduce a new aspeed-smc-utils.c
- to place common testcases
+Subject: Re: [PATCH v3 10/10] test/qtest/ast2700-smc-test: Support to test
+ AST2700
 To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -74,7 +74,7 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20241127091543.1243114-1-jamin_lin@aspeedtech.com>
- <20241127091543.1243114-10-jamin_lin@aspeedtech.com>
+ <20241127091543.1243114-11-jamin_lin@aspeedtech.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -119,7 +119,7 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20241127091543.1243114-10-jamin_lin@aspeedtech.com>
+In-Reply-To: <20241127091543.1243114-11-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
@@ -131,44 +131,141 @@ X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
  HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZBmY2JLZMrPC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DjisBCx14GOA
 
 On 11/27/24 10:15, Jamin Lin wrote:
-> The testcases for ASPEED SMC model were placed in aspeed_smc-test.c.
-> However, this test file only supports for ARM32. To support all ASPEED SOCs
-> such as AST2700 whose CPU architecture is aarch64, introduces a new
-> aspeed-smc-utils source file and move all common APIs and testcases
-> from aspeed_smc-test.c to aspeed-smc-utils.c.
-> 
-> Finally, users are able to re-used these testcase for AST2700 and future
-> ASPEED SOCs testing.
+> Add test_ast2700_evb function and reused testcases which are from
+> aspeed_smc-test.c for AST2700 testing. The base address, flash base address
+> and ce index of fmc_cs0 are 0x14000000, 0x100000000 and 0, respectively.
+> The default flash model of fmc_cs0 is "w25q01jvq" whose size is 128MB,
+> so set jedec_id 0xef4021.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   tests/qtest/aspeed-smc-utils.c | 686 ++++++++++++++++++++++++++++
->   tests/qtest/aspeed-smc-utils.h |  95 ++++
->   tests/qtest/aspeed_smc-test.c  | 800 +++------------------------------
->   tests/qtest/meson.build        |   1 +
->   4 files changed, 841 insertions(+), 741 deletions(-)
->   create mode 100644 tests/qtest/aspeed-smc-utils.c
->   create mode 100644 tests/qtest/aspeed-smc-utils.h
+
+
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 
 Thanks,
 
 C.
 
+
+> ---
+>   tests/qtest/ast2700-smc-test.c | 71 ++++++++++++++++++++++++++++++++++
+>   tests/qtest/meson.build        |  4 +-
+>   2 files changed, 74 insertions(+), 1 deletion(-)
+>   create mode 100644 tests/qtest/ast2700-smc-test.c
+> 
+> diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-test.c
+> new file mode 100644
+> index 0000000000..d1c4856307
+> --- /dev/null
+> +++ b/tests/qtest/ast2700-smc-test.c
+> @@ -0,0 +1,71 @@
+> +/*
+> + * QTest testcase for the M25P80 Flash using the ASPEED SPI Controller since
+> + * AST2700.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + * Copyright (C) 2024 ASPEED Technology Inc.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/bswap.h"
+> +#include "libqtest-single.h"
+> +#include "qemu/bitops.h"
+> +#include "aspeed-smc-utils.h"
+> +
+> +static void test_ast2700_evb(AspeedSMCTestData *data)
+> +{
+> +    int ret;
+> +    int fd;
+> +
+> +    fd = g_file_open_tmp("qtest.m25p80.w25q01jvq.XXXXXX",
+> +                         &data->tmp_path, NULL);
+> +    g_assert(fd >= 0);
+> +    ret = ftruncate(fd, 128 * 1024 * 1024);
+> +    g_assert(ret == 0);
+> +    close(fd);
+> +
+> +    data->s = qtest_initf("-machine ast2700-evb "
+> +                          "-drive file=%s,format=raw,if=mtd",
+> +                          data->tmp_path);
+> +
+> +    /* fmc cs0 with w25q01jvq flash */
+> +    data->flash_base = 0x100000000;
+> +    data->spi_base = 0x14000000;
+> +    data->jedec_id = 0xef4021;
+> +    data->cs = 0;
+> +    data->node = "/machine/soc/fmc/ssi.0/child[0]";
+> +    /* beyond 64MB */
+> +    data->page_addr = 0x40000 * FLASH_PAGE_SIZE;
+> +
+> +    qtest_add_data_func("/ast2700/smc/read_jedec",
+> +                        data, aspeed_smc_test_read_jedec);
+> +    qtest_add_data_func("/ast2700/smc/erase_sector",
+> +                        data, aspeed_smc_test_erase_sector);
+> +    qtest_add_data_func("/ast2700/smc/erase_all",
+> +                        data, aspeed_smc_test_erase_all);
+> +    qtest_add_data_func("/ast2700/smc/write_page",
+> +                        data, aspeed_smc_test_write_page);
+> +    qtest_add_data_func("/ast2700/smc/read_page_mem",
+> +                        data, aspeed_smc_test_read_page_mem);
+> +    qtest_add_data_func("/ast2700/smc/write_page_mem",
+> +                        data, aspeed_smc_test_write_page_mem);
+> +    qtest_add_data_func("/ast2700/smc/read_status_reg",
+> +                        data, aspeed_smc_test_read_status_reg);
+> +    qtest_add_data_func("/ast2700/smc/write_page_qpi",
+> +                        data, aspeed_smc_test_write_page_qpi);
+> +}
+> +
+> +int main(int argc, char **argv)
+> +{
+> +    AspeedSMCTestData ast2700_evb_data;
+> +    int ret;
+> +
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    test_ast2700_evb(&ast2700_evb_data);
+> +    ret = g_test_run();
+> +
+> +    qtest_quit(ast2700_evb_data.s);
+> +    unlink(ast2700_evb_data.tmp_path);
+> +    return ret;
+> +}
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index ea68ec1441..21e9320a95 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -214,7 +214,8 @@ qtests_aspeed = \
+>      'aspeed_smc-test',
+>      'aspeed_gpio-test']
+>   qtests_aspeed64 = \
+> -  ['ast2700-gpio-test']
+> +  ['ast2700-gpio-test',
+> +   'ast2700-smc-test']
+>   
+>   qtests_stm32l4x5 = \
+>     ['stm32l4x5_exti-test',
+> @@ -361,6 +362,7 @@ qtests = {
+>     'vmgenid-test': files('boot-sector.c', 'acpi-utils.c'),
+>     'netdev-socket': files('netdev-socket.c', '../unit/socket-helpers.c'),
+>     'aspeed_smc-test': files('aspeed-smc-utils.c', 'aspeed_smc-test.c'),
+> +  'ast2700-smc-test': files('aspeed-smc-utils.c', 'ast2700-smc-test.c'),
+>   }
+>   
+>   if vnc.found()
 

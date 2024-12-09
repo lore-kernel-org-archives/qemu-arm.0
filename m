@@ -1,191 +1,169 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2860345njb;
-        Mon, 9 Dec 2024 12:22:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVJ73NVpLGDLKGLxC8gQS0VDxIISN5jnMnlUSs7RaQRQqi1DWAQw71XzDwniqyTIp1FEvIoUgLp6UIV6w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHmyQiHab1bKwKHb/mwfeCrpX8wkRoz8hHUJI/J22fe6PNle2zqY6MapDSKDOTSJ94M9IN5
-X-Received: by 2002:a05:6602:1511:b0:842:ff2d:c3bb with SMTP id ca18e2360f4ac-844b518a73dmr234686039f.6.1733775777682;
-        Mon, 09 Dec 2024 12:22:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733775777; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2867360njb;
+        Mon, 9 Dec 2024 12:37:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUNaZUINmbDjNtSiIxnaIJgbknbG8X+PeqDXTOLL6YaKeWXA6/4qb/68bUBP13u1V6jRC4sC9zGSVDSnw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFnT2rly3PoA7qCGNcR+YcvPWqcVVayYO84CU9t8rcv2z6ACQTKheaYZPu4UU95rr55Wz96
+X-Received: by 2002:ac8:580a:0:b0:465:2fba:71b5 with SMTP id d75a77b69052e-467752573b8mr11525711cf.13.1733776640815;
+        Mon, 09 Dec 2024 12:37:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733776640; cv=none;
         d=google.com; s=arc-20240605;
-        b=NyUg40550izsTXyK5Xq6XGAq8U0cMoeHFWSNmJVnc9xF6e/7zN/2yiA/8LAbqMgmIr
-         uQgr7t3NjkB8esLd0lWQPwyu8bKKWA8GCr8eiHsusyFfDedi/e00WkP1uux8m7tJfAJ+
-         C1jKQE5uLLoA55zdX5pBWm+qxGvZOrVUWmAzzKZbkvBd5Qxaf8EkjcUUz/F8Dnqv8V12
-         8c26gcZCs47SzO0n2foQqNH2dc+ME5OOTEsiNBSvQDbNKd3fYeqIdR1cwGoSapjA6nTs
-         Ydla8Q1eICZyYnwiBKdXMw3UbMVbuKqZGVTq44UqdO1LBjjgrqvEfD41d1BeRXXNE4Eb
-         X4zw==
+        b=TA8rBKIPaslNfR++YdQCtiOhpZQmfmk3IZNOAI0fk+TXQRQpS2F3FJeRDOjGszVkWx
+         oUjHcBiIDznDkf4WR41YrI4KrtI1CSV5Q5K2U8AAIlsArx/ewBXxqAyHOn+XdIyu1S+w
+         c/syiZ1pODyWfDaSTcvPyYZPvKyijn9fQVhTfhXwwnbQpW/XLzU3G3m2aNVixzrs7Yoj
+         FFElgcXUozCW6E2DmY4ZrW7hijmLfouFZnotQiRl3Zxuac1o4oKS5H+FW+VDdhl6ppfC
+         gjGipZKlYpqRyBrDtkMFdXc2NiClAs/4DuWe65EC09W0CS5Cpp/oadjsp89RpWEHC5Kt
+         jppg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=E4reyB7EhPMhkHL3N/FQihFhqvY1JY1m59R5yFJC75c=;
-        fh=ZyK7jxNtZdErGcLj8c/jNWqJeWdHKR+su63XXqWvxeo=;
-        b=NEZm8QbLT8K+KL2I9S2vp1g8q4SiUTPJpk+KgbDpwv4BWqHkf8wfG8Tjmo2yPMl1xs
-         fx4Ib3Phefw2Yx5ONvyZuKMA3yB7JiZ2AkCUE6js+KaNZ2PULm/OxmoKghn+aeQYaAwD
-         GcFRxH+u4igHMr06zp/84Y2k30Q2coFeg4lJj6fX1pYpci4d0iYKpi66FwXcmrqMYTN/
-         FEbYUitL1HCdSPEuY6477dhAvK8TGt6NNjkGpWR6kMWwPhiy8oX/FQm9SOhthKm1cCfU
-         EkvHla1cyJF81uzH//qmZq+cKcl1CVINLKdsvS1IRiQuRDsI4QM6SnLy3oAK7BvL8sfQ
-         PCIQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=qYKrY4D89CQtOtQV4UE1A1McnS4pHYxVCom2HH+qHOk=;
+        fh=3DUKDZFRqiDt9xw/SjfimG9WWDbgqRfQkmzObEhd+nw=;
+        b=ExsIS5rASB96/Nj75F4GmFvtUhvFDwXaYqOtM8TxY2zvClj37JdHV5A5QrAgwM0Ug7
+         UB06A1hmhv+GbObgo0kqYwfZ4xQ/AkTQqiKKJghUw1h3LfK86d3kwuZH4nDAi2aqtFR+
+         SAkSvSAFdnvTTRRPW4aBvZOAk6jnoO75/fV5rgMKksm+pu2a778USLqABCPI7IxMiXBY
+         Fb1ZSI+V91b2ow6yLL2Wc6tePCfF5kymHsFhFfGm2tqwJHkAQm5uiFrq5EWnKtwMj1Wy
+         8bpEFo6s1YbGy3BjAmpAp9iDIDUnMLqUqjoWkKPAiXRgXVlQ27SFzmxnWBIs2uP0lTG2
+         1dMA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=TVo6+F8q;
-       spf=pass (google.com: domain of stefanb@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=stefanb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <stefanb@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id ca18e2360f4ac-84473a83f0asi571203839f.107.2024.12.09.12.22.57
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 09 Dec 2024 12:22:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of stefanb@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=bawufz62;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-467298434dbsi120495751cf.635.2024.12.09.12.37.20
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 09 Dec 2024 12:37:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=TVo6+F8q;
-       spf=pass (google.com: domain of stefanb@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=stefanb@linux.ibm.com;
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4B9JLUmo020932;
-	Mon, 9 Dec 2024 20:22:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=pp1; bh=E4reyB
-	7EhPMhkHL3N/FQihFhqvY1JY1m59R5yFJC75c=; b=TVo6+F8qEmF4+JNjnSC9uF
-	rgqDc7gt4wuA/HZRj76N/22tFwWFrPprBOdNhomJPg0Hjh+8x1ZPT2oYGuPWWpcE
-	usjRU6zq74rhjtnN082D7/9a8vT6bY8cWN3gJkbn1kVSmrsmzuOWrFw7RYcA2oLC
-	V7rxZM7j5IEHvc8HoystPpqXmLt5S/EQaOKKJNipteiCkVuhX0Uj3nu9OIILWVhg
-	Dsm3pfXq1i065lmQOyoDSOnF9S0pZO/RURIgMGdXyjFqMeaQWJR9Q4rC7m6rygEH
-	cFjO/h07tl1n2ECn2O9j4OqDH1neIbbidV6HffzDbpnnGlMMsbj/xxhhLpBJdKWQ
-	==
-Received: from ppma22.wdc07v.mail.ibm.com (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
-	by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 43ce38kcv2-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 09 Dec 2024 20:22:56 +0000 (GMT)
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
-	by ppma22.wdc07v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 4B9HkQEL016911;
-	Mon, 9 Dec 2024 20:22:55 GMT
-Received: from smtprelay05.dal12v.mail.ibm.com ([172.16.1.7])
-	by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 43d12y0ef8-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 09 Dec 2024 20:22:55 +0000
-Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com [10.39.53.229])
-	by smtprelay05.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 4B9KMsoe25690700
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Mon, 9 Dec 2024 20:22:54 GMT
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 47B4158058;
-	Mon,  9 Dec 2024 20:22:54 +0000 (GMT)
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 8BD1E5805D;
-	Mon,  9 Dec 2024 20:22:53 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
-	by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
-	Mon,  9 Dec 2024 20:22:53 +0000 (GMT)
-Message-ID: <371a3e10-dfad-4289-aad0-d35e3d6f11a5@linux.ibm.com>
-Date: Mon, 9 Dec 2024 15:22:53 -0500
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=bawufz62;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tKkVB-0006HT-Tc; Mon, 09 Dec 2024 15:37:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tKkV7-0006DU-Gt
+ for qemu-arm@nongnu.org; Mon, 09 Dec 2024 15:37:05 -0500
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tKkV4-0003D0-G9
+ for qemu-arm@nongnu.org; Mon, 09 Dec 2024 15:37:05 -0500
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-aa68b513abcso229204466b.0
+ for <qemu-arm@nongnu.org>; Mon, 09 Dec 2024 12:37:02 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733776621; x=1734381421;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=qYKrY4D89CQtOtQV4UE1A1McnS4pHYxVCom2HH+qHOk=;
+ b=bawufz62s0+B4u9giuELv0ftic9R5QPCb2vQLlmQbYw7xLIo3VVyVSYOKkjLGmZlS8
+ fl7RtGD+uyTBRnFBfcbqnOhysXl8rSAob6I/vFRMn+XwI4Ts9xt/TM0GLeZ6eREpceu0
+ LufjcdwYGp79Kk1AcwVeTWKY705uodypdQVYL7m69IIJaBaBErgqj8Bhmlz6i+Kka87P
+ hnovsxj7AM2kw3RxX6V/a0IJGmOrxlwPgwg9TWT5LLgQYmLQbr6lx4AZPtEQhG3tIB+D
+ CHAcAMyIUnSpBW5tVbA183tDKK74AZM0Flhh+elqSbMXGPsuROg4VwoNai1tyz6GTOPw
+ 8JMQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1733776621; x=1734381421;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=qYKrY4D89CQtOtQV4UE1A1McnS4pHYxVCom2HH+qHOk=;
+ b=oE5Rd6V90AmiI9m9FBzNH+E0c4wHtR1b/EUxJUPlTR9Wmjdq1h8L+RBD7aca3wvBWg
+ KIcuqWag8F+mGJt3cWwyuqI17qHn9ti3u6km3Fp3wvHc3v3d/xm+naE9wXbFip4S1dak
+ /AJ8RbyALZ4Evq6qEm9NEim6hlHlxZOWn5e2Dvzwv5EBSbsy12zTja51UmXnxHXhEbkf
+ IvJgMpJwVA+HtpCVwmESXupfvwzhLQtlXPYEmnGtVCdMzt4bGMoenRABzSPXPWYPjEeT
+ F9AFVCFbcDRtjnUNiJUZ9u1awl7TgvOuA8hRVqOZPLYX4VFHlrsB7S1198NKL/SewG3w
+ WGdw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWWnO6rxR9r0Jbh8wtG8RUBx18wGP7fHC7G/p1c/qFwjlYCiEI6hBO//3KV+kFO7eg28WJzEEP4QQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzCUx/8eSfxKcQCb5Tz5SC/8S9VSILLAkZg1/PAaZ77Gu/mF8rS
+ bzrM5j3Zsfx+4g+Ab0nqo/NnIx5OcVr/wo5SbxP008dmPcKFOA61vh84zHdujw==
+X-Gm-Gg: ASbGncv5vqm+JL95t5aAUnve3HZvCXqHe3jVS6ixDPHsxV3suVdYgcUCkbExVm6qYBq
+ J8UZw7ffarjgC+nla+RzwPe0G8G1p2c7xZ6uxbdSwDdEwd3y+GPFSgtu1bew2Xh7nWoq3Jo045C
+ VNX5/5NVznzCekxuTYsPBJs+NGkPCjDAZFILEvhU+/MhJcg+hhPQLFxaId0I6WsSHq449Fost5k
+ fcnBsOVyekDq/Tsmi1VN3nK133Uyx2gyCsIZmsllpFBh1+lcPsE2BSqSi0Ir8wjkDuoFs9tF4dj
+ YPte8sawykydjoaJ5ffh7gyoKOgtWw==
+X-Received: by 2002:a17:906:8455:b0:aa6:96c4:ad58 with SMTP id
+ a640c23a62f3a-aa696c4ae47mr307131966b.61.1733776620739; 
+ Mon, 09 Dec 2024 12:37:00 -0800 (PST)
+Received: from localhost.localdomain (h082218084190.host.wavenet.at.
+ [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-aa692e4e9d5sm141783566b.129.2024.12.09.12.36.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 09 Dec 2024 12:37:00 -0800 (PST)
+From: phil@philjordan.eu
+To: qemu-devel@nongnu.org
+Cc: Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>
+Subject: [PATCH 03/11] i386/hvf: Don't send signal to thread when kicking
+Date: Mon,  9 Dec 2024 21:36:21 +0100
+Message-Id: <20241209203629.74436-4-phil@philjordan.eu>
+X-Mailer: git-send-email 2.39.3 (Apple Git-146)
+In-Reply-To: <20241209203629.74436-1-phil@philjordan.eu>
+References: <20241209203629.74436-1-phil@philjordan.eu>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 25/26] target/arm/kvm-rme: Add measurement log
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
-        peter.maydell@linaro.org, richard.henderson@linaro.org,
-        philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-        alex.bennee@linaro.org, Stefan Berger <stefanb@linux.vnet.ibm.com>
-References: <20241125195626.856992-2-jean-philippe@linaro.org>
- <20241125195626.856992-27-jean-philippe@linaro.org>
- <02b90518-2996-4231-bee9-43ce313669b0@linux.ibm.com>
- <Z0XREyMovNyB4s6t@redhat.com> <20241126162149.GC956991@myrica>
- <d3d73795-3f59-490c-9e54-c6c358af62d0@linux.ibm.com>
- <20241205123316.GA567753@myrica>
-Content-Language: en-US
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <20241205123316.GA567753@myrica>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: v1EZjmhlz7Pbo3zKMS6c1WgMDmzH9DOA
-X-Proofpoint-ORIG-GUID: v1EZjmhlz7Pbo3zKMS6c1WgMDmzH9DOA
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
- definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0 suspectscore=0
- spamscore=0 clxscore=1011 priorityscore=1501 lowpriorityscore=0
- impostorscore=0 bulkscore=0 mlxscore=0 malwarescore=0 mlxlogscore=999
- phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2411120000 definitions=main-2412090155
-X-TUID: 5QLG4ySuIdeT
+Received-SPF: neutral client-ip=2a00:1450:4864:20::635;
+ envelope-from=phil@philjordan.eu; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Szyi/ncdun6g
 
+From: Phil Dennis-Jordan <phil@philjordan.eu>
 
+This seems to be entirely superfluous and is costly enough to show up in
+profiling. hv_vcpu_interrupt() has been demonstrated to very reliably
+cause VM exits - even if the target vCPU isn't even running, it will
+immediately exit on entry.
 
-On 12/5/24 7:33 AM, Jean-Philippe Brucker wrote:
-> On Mon, Dec 02, 2024 at 10:58:01AM -0500, Stefan Berger wrote:
->>
->>
->> On 11/26/24 11:21 AM, Jean-Philippe Brucker wrote:
->>> On Tue, Nov 26, 2024 at 01:45:55PM +0000, Daniel P. Berrangé wrote:
->>>> On Mon, Nov 25, 2024 at 05:23:44PM -0500, Stefan Berger wrote:
->>>>>
->>>>>
->>>>> On 11/25/24 2:56 PM, Jean-Philippe Brucker wrote:
->>>>>> Create an event log, in the format defined by Trusted Computing Group
->>>>>> for TPM2. It contains information about the VMM, the Realm parameters,
->>>>>> any data loaded into guest memory before boot and the initial vCPU
->>>>>> state.
->>>>>>
->>>>>> The guest can access this log from RAM and send it to a verifier, to
->>>>>> help the verifier independently compute the Realm Initial Measurement,
->>>>>> and check that the data we load into guest RAM is known-good images.
->>>>>> Without this log, the verifier has to guess where everything is loaded>
->>>>> and in what order.
->>>>>
->>>>> Typically these logs are backed by extensions of TPM PCRs and when you send
->>>>> a log to a verifier you send a TPM quote along with it for the verifer to
->>>>> replay the log and check the TPM quote. Also, early code in the firmware is
->>>>> typically serving as a root of trust that starts the chain of measurements
->>>>> of code and data, first measuring itself and then other parts of the
->>>>> firmware before it jumps into the other parts. Now here you seem to just
->>>>> have a log and no PCR extensions and therefore no quote over PCRs can be
->>>>> used.
->>>
->>> Indeed, in our case it's the trusted hypervisor (RMM) that provides the
->>> equivalent to TPM quote and PCRs. In more details:
->>>
->>> 1. QEMU loads images into guest RAM by calling KVM, which calls RMM.
->>> 2. RMM calculates a hash of the image content, adds it to a rolling hash
->>>      the "Realm Initial Measurement" (RIM), which I believe is equivalent to
->>>      a PCR.
->>
->> I am not familiar with RIM. A link to read more about it would be helpful.
-> 
-> The "Learn the architecture" documentation might be a good introduction
-> https://developer.arm.com/documentation/den0127/0200/Overview
-> In particular the part about Realm creation:
-> https://developer.arm.com/documentation/den0127/0200/Realm-management/Realm-creation-and-attestation
-> 
-> The RMM specification describes exactly how the RIM is calculated, but
-> is less palatable:
-> https://developer.arm.com/documentation/den0137/1-0rel0/?lang=en
-> A7.1.1 Realm Initial Measurement
-> 
-> More specialized resource are the attestation token documentation:
-> [1] https://datatracker.ietf.org/doc/html/draft-ffm-rats-cca-token-00
-> and CCA Security Model:
-> https://developer.arm.com/documentation/DEN0096/latest/
+Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+---
+ target/i386/hvf/hvf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks for the links. I will have a look at them when I have time.
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 3b6ee79fb2..936c31dbdd 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -214,7 +214,7 @@ static inline bool apic_bus_freq_is_known(CPUX86State *env)
+ 
+ void hvf_kick_vcpu_thread(CPUState *cpu)
+ {
+-    cpus_kick_thread(cpu);
++    cpu->thread_kicked = true;
+     hv_vcpu_interrupt(&cpu->accel->fd, 1);
+ }
+ 
+-- 
+2.39.3 (Apple Git-146)
 
-> 
->>
->>> 3. During remote attestation, the guest sends evidence containing this RIM
->>>      signed by the root of trust, along with a signed token identifying the
->>>      platform (hardware, firmware, RMM).
->>
->> Is this a well known manufacturer key that one would expect for signature
->> verification or is it locally created?
-> 
-> It comes from a well known manufacturer key, although the signing can be
-> delegated in some models (like in the current demos):
-> 
-> The hardware RoT creates a key pair for the RMM, which the RMM uses to
-> sign the RIM. The RoT then signs the RMM pubkey, using the well-known key
-> (see [1] 4.10 Token Binding).
-
-You should mention in the commit message that the log will be signed and 
-user space can get the signature over the log from some filesystem or so.
-
-    Stefan

@@ -1,124 +1,131 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2868183njb;
-        Mon, 9 Dec 2024 12:38:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUH93kY6TjIM1fRyjsHijNodYP0l8y/CURpPMRvWcczxUDFaG8I13SD7twl93TnhbGMQ6QLBXCjaJ/Vgw==@linaro.org
-X-Google-Smtp-Source: AGHT+IF1FCWFbrbXshyLG2ndKYHKvH0E6abMoWpur+bHT2I5eaXSffPX0FOiNaG11ECmXygPzJ9b
-X-Received: by 2002:a05:6214:20e8:b0:6d8:a7f7:c39d with SMTP id 6a1803df08f44-6d91e422d78mr32966796d6.40.1733776737508;
-        Mon, 09 Dec 2024 12:38:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733776737; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2873468njb;
+        Mon, 9 Dec 2024 12:50:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVg4mRHyud9RL36x1I2PgkgUNd4OQfi8DjmcHXk9rEV74+xo4bpNUImLKgX+uY7m5O6LmM1JqIvybQDhQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFNW+TQEeJKD6sBzc22/ckBI9fvcO1a90vH0xnsBkX7tR8YLzEgxbeEK4Qc/yhK0MIxugWj
+X-Received: by 2002:a05:620a:269f:b0:7b1:43c0:3de4 with SMTP id af79cd13be357-7b6dce6c307mr292156785a.31.1733777405214;
+        Mon, 09 Dec 2024 12:50:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733777405; cv=none;
         d=google.com; s=arc-20240605;
-        b=J69qD9oSpq2F7BaSOfWbaW6DSmPkVWIsUJq2n2SDg3fZ29/RwuZXjZK0n5Xnggv07I
-         3SzKJDjQXpajHTZp5Ka5YoGyhcwSRDh4znoCMR8IHmT4CMWkG/O3t8eAQy9sgGQnpw6c
-         VB1wdbzumNyvxsOz93JPsBDbQcYMYvYLdDWUtL+Y0wRWWIYKMsOcNzKjqumYfOQ9UQPQ
-         wVn1xaLoZOFIIhEqm7NFjBFYACzF+1+31/vb2Ccty1S2CrMzzMtGqJitiYXti1BT6qx/
-         FYPsg5HH9VRIc7dzMMNwdwyopBmkU9KSSF3zSomnqAVTVQXTeO+oMg3PeUCGxdhKRPCV
-         EByA==
+        b=cb9iwYmRkgxwTXMuW8312ufsv8+Mm/NX/PNUsrQJeQWYZIIX+llC+jkLAbkwrXBZRJ
+         H51pZmJK4ue7Jn9uS4T0aH3crfaKJr+fRzN5+s2+nv82RAFp9q8kTXu+L7/dfJ/mw1dP
+         gUmTpNFoKIXQRVzmOorRdLzdkpZ77FKf9AAsYzM7Je9KsCKdRyGJAfoyyRvZrO9qiFNF
+         bjUUotpKdmZgE0I5BGGxGut8phHLpFaLSFB6xwovn2Whsysslsa4CRrlyc+1M+wTbKVI
+         2QBAeJMIus+kJWRSFKvwweHumOpm57gzeVlVJbO+GM1Aj1uy45G/7a97ngde2c/x+6vX
+         dwkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=HL32HNmVKaS8JK1izJzB4B3sT8K+87Cy3mGdWM/P+IE=;
-        fh=8T2pLoRJazPHIOeYT0o/B9pnKu1WNrWBFtoDCPsl2LU=;
-        b=Xfv8ylaZozqrv9aTOCQ77l325Xm5its39+0c9AC9Qq8F/sbAaOmP6xODxU4aYpSGr2
-         rB6iRzVc98y5p7URzBtQRINCQQIoibIomh4dhZUw3PY9CSOZTOl+R7v/raY6YcVqcAUn
-         jW8IsUrdDFCw/UUeeOmsEkNhPjFpEjtUqhw9+OopF0aknKZels2y4wkCrjnVbXhjpbkz
-         TRANl+cPZkDbDpHAJmUXSyTvdJyMO+yisSynqVb9v92FvkyGQAdQBszsXrKuFy7zTzMs
-         DOE3MNz5djM22yarYPAc+phGBiHW8z9v2C7QU9/G5UWfGo6nktaC91CkWV65mhPlI7Al
-         egcg==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=2LfcitCnMPp8cosJrqDDGIN0iIT3sziWW4Y54j3KgJ0=;
+        fh=2Vn6ULre7MJCTAUsSK4mtf8QDJ9AnW1dIznPaVYZWBE=;
+        b=N4idF+lSXoLXoP6SCpT72h9KiOtShA1xJN35/O8fGSXjvhXwlow8BDAW7vjQMMsbX5
+         GCDN90gllPP6lHMcudq0RLKHsX4OwbXoayb780mU4MBxzOgaby8wcP9EO+srEPL9H3za
+         RZZ4Ee0GRNmbGIcgZtyGo/yXLSgIV01FvV6HzWTaOWz2fuRA80FLdtnIY9aWPhG8tQSD
+         lwQtMwZTEKPqz0q5JgCtuUZqs9QhVwvgNOuxvBleMo0CAiIZPw5fF1zZqTc5UMd3jzRl
+         Int3SGU9M/TZg7LfBFJM+kbgGuV2VnBBzpBOTF38jJHVTAX8DmFQL8dTBpri7y6Erkxl
+         PWfg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=zrwYbCLC;
+       dkim=pass header.i=@linaro.org header.s=google header.b="u9e6/deS";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8eed7e09esi91385466d6.269.2024.12.09.12.38.57
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d8da6a2a17si125692206d6.171.2024.12.09.12.50.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Dec 2024 12:38:57 -0800 (PST)
+        Mon, 09 Dec 2024 12:50:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=zrwYbCLC;
+       dkim=pass header.i=@linaro.org header.s=google header.b="u9e6/deS";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tKkVA-0006Fo-Li; Mon, 09 Dec 2024 15:37:08 -0500
+	id 1tKkhT-00044y-S9; Mon, 09 Dec 2024 15:49:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKkV6-0006DJ-NW
- for qemu-arm@nongnu.org; Mon, 09 Dec 2024 15:37:05 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tKkhQ-00044B-TH
+ for qemu-arm@nongnu.org; Mon, 09 Dec 2024 15:49:49 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKkV2-0003CV-Uq
- for qemu-arm@nongnu.org; Mon, 09 Dec 2024 15:37:04 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-a9a977d6cc7so696649866b.3
- for <qemu-arm@nongnu.org>; Mon, 09 Dec 2024 12:36:59 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tKkhP-0004Ph-C0
+ for qemu-arm@nongnu.org; Mon, 09 Dec 2024 15:49:48 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-3862a4b8ec2so1873525f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 09 Dec 2024 12:49:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733776618; x=1734381418;
- darn=nongnu.org; 
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=HL32HNmVKaS8JK1izJzB4B3sT8K+87Cy3mGdWM/P+IE=;
- b=zrwYbCLCw1P7GczfLbmxAEKCPCRIxpXMAA4RQl7OOneHTsKRjEvkCX5CewTKXaS7or
- Qe6yWG1AUz8JdsUnZS7GYxzFV41DybQusCa34bR8cK8pBG1xAYq8DNa0h1FpvXHw8zGw
- xdvTpcLH6nGTLT+p9DYyUCvd+NiBltsA0liPYfnrxsK76TLaOKGikDHkM4OiqZUYcZgw
- QBURa8ckxzPT+58ErbE/QEKu/mNCMNkDDKDIGMoWX6LWyLSsh/wRN/WRaiqXX8jJDqjy
- cuZij+s085ZLJsFHQ4DzS6BcS1rEcKmdh6++eogzZeXAGIlUNC48hKIjHYdCa1P3ojDf
- faxw==
+ d=linaro.org; s=google; t=1733777385; x=1734382185; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=2LfcitCnMPp8cosJrqDDGIN0iIT3sziWW4Y54j3KgJ0=;
+ b=u9e6/deSbtpfP4KZ27nyrvSLB4jtQH7bupqppb3BxiRHDbbHwBu73zQfQCu+yF0V/Z
+ spUtcqhfzdkJFcUCSr+WC0ps8WYrrD4YjR4wFXQk6VeVTUdn8klqYQb0ZNpZ3dtCRuzu
+ gswPIqaF+2ZYUMLngyCl9ZqTuvZlvSrK/bXwxwRY/z97ZomgI8hY8CicbwKhj40YW9Gz
+ m7nqkRgAeFFhxN4KhRFn568nqCinRtHjEJSwwsd6riCtGzhUEysdI95N1qQnedMOXxOn
+ bMYx4rL6a8fbq88Ymo8NPoHjmaRdfkrEjavCje5TAs/nVqAKoow4DrW8CxU/pf2Dzf61
+ 5/qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733776618; x=1734381418;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=HL32HNmVKaS8JK1izJzB4B3sT8K+87Cy3mGdWM/P+IE=;
- b=G2gHTFJ/bv5ZwWwndxudw7o9412JYk2XvHDJfRUfFyzP8s9PKDz2aDq3IKKeddivPv
- NK7kEJACsgAlYw9ACoWhIQd4scmG8c1b5gf6tDK/zyQJTDkR/2S+/2As5XKHKsbJK5yc
- PKpkSoeIBaGKkos5N0DjvJp/GpuIoONqsE7SM25Q3L3qswc8Q00pfHK+cn6xVwku4TVh
- 0k6dSD1BMfWENYpC19APmKilSaW8WIm/GLpZQ0voRYUX4d0utzltalZxBML9jihAzgqH
- K06bODtkFkw6wpZy54jdgA3bZCa1zJYpIggEXTERGjV8KoWZsPNi/C+IxdK5EGqMnYIw
- v0Pw==
+ d=1e100.net; s=20230601; t=1733777385; x=1734382185;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=2LfcitCnMPp8cosJrqDDGIN0iIT3sziWW4Y54j3KgJ0=;
+ b=nY6EWL6INqWgEz45pGkRX43OU7tnhfDRePUOK0CnZL/jGUakXZe93nbq8oTxuPr9Rb
+ L2gvftlnE+kWGIV29yc+ln86orHBe0HP0YjA8L9qOyLC/FTcKF4QFsxQjF94h68QXzNJ
+ MNit/6EPqS9uVFjaEF/BvKVViEXAuCsc5yOBK1Rfv2OrzNBLEZsteb4wfqaFoQC14w9m
+ d+pM970R3ZGWazFqS/2t4/oghjbYohu8lz6Zlfm0a8XUTkrA6Y2CUfTiFWBNH1r7xgUu
+ sysvee4JC7oGbdyZ+7e0CQlkwsNebC3dg9MJEhp7Z0FGU2XRsDKsnycODNg5if5axNFo
+ zjHA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVsF5EZNxGTveDEZrPDLu13ZGf8APBaLLs4bG3mjgg4cCMtyyOEaEEbjLcmFQVTOkgCCNyyJGo8jQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxnN4V5j2KRcNplp4yEXAh2BKELTkRFRlma0tGHfIBxHcnyQTQj
- 0XAx4mr38Pfm3snUamg6KaKuqUgQNFjUtzI4JMLXaw83mKq/yJj3TuYi3/xggA==
-X-Gm-Gg: ASbGncvM4sObEas1IlHnSGE9mAaEqY44tV3chC0RQHLYMbVsRi2FhcbhaD5GVv3knBG
- SUmj5HSjMP0jP/cGse9C1UykSHio4zen0IRo4SPE8MD9Bzwny86esGc8BvzZSgYQBnwXGJbwcaN
- sIubQhhdqjY9S7mOmWMrbxefWuKz88fdnubDTfLLp6QirbKUepflqDHVjWl+1vgz5OXvrQp9mkf
- vb93WZDbe21LQTCO+QAKo9SrDCleLH/6HmayPnQo2OC8btf47nwk/Pc+sNrvo4ZGEgJsvC4bbYi
- 18DiS4hFN1Q54BPjcgmrNuH0ffZ/hQ==
-X-Received: by 2002:a05:6402:13d6:b0:5d0:cfad:f71 with SMTP id
- 4fb4d7f45d1cf-5d418604995mr3231703a12.32.1733776617284; 
- Mon, 09 Dec 2024 12:36:57 -0800 (PST)
-Received: from localhost.localdomain (h082218084190.host.wavenet.at.
- [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aa692e4e9d5sm141783566b.129.2024.12.09.12.36.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Dec 2024 12:36:56 -0800 (PST)
-From: phil@philjordan.eu
-To: qemu-devel@nongnu.org
-Cc: Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
+ AJvYcCVrvYXkOIULtb1BjFV+4uiuOFw9E8UhYbpFnJTsgj+V8fQzG9g6SHSMn8f8XSDfRlfcmf5oS6IoZg==@nongnu.org
+X-Gm-Message-State: AOJu0YxX/yDmSxjEy2b9bMtKpVDF6v/Urhfxo1XBb7e1oiMEvYkbVHQC
+ IRyUeOF2DCginTk6o+8mlK0BLwfYXbPEVXynGjTMmCR27KWWl6goo8CBVXN19+Q=
+X-Gm-Gg: ASbGncumiriGjWxd3CuKk6aluR+FZPkJ53ngifI+LstfCZfxSJldJGgK2CnHRzYYs0o
+ SSFdx97bb8hrFjimBIs3iHaZWo9WwnSrzJQqSsEYfb+SobdpWVf7wK4RYdpkTa+9oH4pFaVk2Jc
+ q3L/IwDcyXXcAnI6+UThsDP8kSINt2rliDJUTqVFSsPuCHsrjz2rpoV/WHUMHd4fUaFJ0waiT+g
+ Gg7vtCwl1U0L5L9aHlIFrVaDmbQxvgd10JsWl9bw6khp1UN2u982DCKOnbC7gve3vIwv84Tfjgv
+ JKojymE/9JdcngMzkrZAEc7a95LygsKW
+X-Received: by 2002:a5d:5983:0:b0:385:f66c:a4b with SMTP id
+ ffacd0b85a97d-386453fe701mr1490019f8f.47.1733777385391; 
+ Mon, 09 Dec 2024 12:49:45 -0800 (PST)
+Received: from [192.168.1.17] (lfbn-bay-1-170-196.w83-193.abo.wanadoo.fr.
+ [83.193.250.196]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3861ecf40a0sm13918626f8f.13.2024.12.09.12.49.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Dec 2024 12:49:44 -0800 (PST)
+Message-ID: <3a2dc416-bb9f-49f7-8f82-cb9ddc8feab1@linaro.org>
+Date: Mon, 9 Dec 2024 21:49:44 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 08/11] i386/hvf: Variable type fixup in decoder
+To: phil@philjordan.eu, qemu-devel@nongnu.org
+Cc: Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>, 
  "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>
-Subject: [PATCH 00/11] hvf and APIC fixes, improvements, and optimisations
-Date: Mon,  9 Dec 2024 21:36:18 +0100
-Message-Id: <20241209203629.74436-1-phil@philjordan.eu>
-X-Mailer: git-send-email 2.39.3 (Apple Git-146)
-MIME-Version: 1.0
+ qemu-arm@nongnu.org
+References: <20241209203629.74436-1-phil@philjordan.eu>
+ <20241209203629.74436-9-phil@philjordan.eu>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241209203629.74436-9-phil@philjordan.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::62a;
- envelope-from=phil@philjordan.eu; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,192 +140,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XW4gkLO2ucYx
+X-TUID: TzOFIZ/kwuE0
 
-From: Phil Dennis-Jordan <phil@philjordan.eu>
+On 9/12/24 21:36, phil@philjordan.eu wrote:
+> From: Phil Dennis-Jordan <phil@philjordan.eu>
+> 
+> decode_bytes reads 1, 2, 4, or 8 bytes at a time. The destination
+> variable should therefore be a uint64_t, not a target_ulong.
+> 
 
-These patches are a loosely related series of changes that I've
-collected while working on the VMApple/PVG patch set and my
-doomed project of integrating Hypervisor.framework's APIC
-implementation. (The latter turns out to suffer from a number of
-serious bugs which prevent it from being usable with
-level-triggered interrupts, at least as of macOS 15.1.)
+Fixes: ff2de1668c9 ("i386: hvf: remove addr_t")
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The motivations behind the patches are:
-
- * Correctness. A bunch of these fix bugs or improve compliance
-   with the appropriate specification.
- * Performance. The biggest performance problem on macOS hosts
-   and the hvf accel is BQL contention. Depending on workload
-   and configuration, busy vCPU threads seem to spend between
-   10% and 30% of their time in bql_lock(). A number of these
-   patches either reduce total work done, or move work out of
-   the BQL in certain configurations.
- * Code hygiene. I've encountered a few instances of incorrect
-   types used, outdated comments, magic numbers, etc. which
-   were easy to fix.
-
-There are some dependencies between the patches:
-
- * Patch 1 is required for both patches 2 and 7. This is why
-   I have not split the aarch64 (patch 2) and the x86 (3-10)
-   specific changes into separate patch sets.
- * Patch 6 will not apply cleanly without 5 in its current state
-   but can be modified to work.
- * Patches 6 and 7 are only useful in combination.
-
-Beyond that, we can mix and match - i.e. pull
-reviewed-and-approved patches while further iterating on any
-that might need refinement or dropping unwanted ones entirely.
-
-The patches, in brief:
-
- 1. Adds a function for architecture-specific vCPU setup
-    before the vCPU's first VM entry, but after QEMU init has
-    concluded. This is useful for correctly setting the aarch64
-    GIC flag (patch 2) and for telling Hypervisor.framework the
-    initial APICBASE address. (patch 7)
- 2. Set the GICv3 flag in the PFR0_EL1 system register after
-    the GIC has actually been set up. Previously the flag was
-    computed before the GIC was ready, and thus always 0.
- 3. Don't send signal to thread when kicking. cpus_kick_thread
-    calls pthread_kill() to send a SIG_IPI to the target vCPU's
-    thread. There does not appear to be any need to do this
-    with HVF, so let's not call cpus_kick_thread() when kicking
-    a vCPU there.
- 4. Prefetch all bytes of an instruction when emulating it in
-    software. The x86_decode system in the HVF accel read guest
-    memory in 1-, 2-, 4-, or 8-byte parcels when decoding
-    instructions. The VM exit tells us how big the instruction
-    is, so let's read all of it in one go for efficiency.
- 5. x86 instruction decoding is somewhat expensive, and if we
-    know that it must definitely be done before we acquire the
-    BQL, we can actually move decoding to before the lock. The
-    simplest case for this are APIC accesses, so we start with
-    those.
- 6. APIC access fast paths. EPT faults are somewhat expensive
-    to process. This includes xAPIC MMIO. We can skip walking
-    the memory graph and fully software-emulating the faulting
-    instruction by obtaining the access type and MMIO offset
-    provided by VMX/HVF's virtualised APIC access feature, and
-    detecting common MOV instructions to call the APIC register
-    read/write functions directly.
- 7. To enable the APIC_ACCESS VM exit type, both the APIC base
-    and the relevant ctl must be set in the VMCS; this change
-    implements the former and toggles the latter according to
-    APIC state, thus enabling the fast path implemented in patch
-    6 and also adding better support for APIC relocation.
- 8. This fixes a technically incorrect variable type. No change
-    in functionality.
- 9. The HVF "failed to decode instruction" error prints
-    instruction bytes in variable-length hex; it's easier to
-    read when the hex digits are always paired, even if the
-    first one is 0.
-10. This APIC change replaces a magic number with a symbolic
-    constant and removes a comment which is no longer accurate.
-11. This change causes the software APIC to raise an exception
-    when the guest attempts to write to the reserved bits of the
-    APICBASE MSR.
-
-
-In combination, the patches improve QEMU/hvf's relevant
-kvm-unit-tests results in the APIC/xAPIC/x2APIC suites (after
-disabling the crashing test_pv_ipi test) from:
-
-FAIL apic-split (56 tests, 9 unexpected failures, 2 skipped)
-FAIL x2apic (56 tests, 9 unexpected failures, 2 skipped)
-FAIL xapic (45 tests, 7 unexpected failures, 3 skipped)
-
-To:
-
-FAIL apic-split (56 tests, 2 unexpected failures, 2 skipped)
-FAIL x2apic (56 tests, 2 unexpected failures, 2 skipped)
-FAIL xapic (45 tests, 2 unexpected failures, 3 skipped)
-
-The remaining test failures are, in each case:
-
-FAIL: multiple nmi (received: 1)
-FAIL: TMCCT should stay at zero
-
-These are not regressions, they were part of the original
-test failures; APIC logic relevant to them was not touched
-in this patch set.
-
-
-Performance improvements vary a lot depending on workload.
-MMIO-based APIC accesses are most affected, so APIC-heavy
-loads with x2apic disabled benefit most.
-
-macOS guests seem to use the APIC very heavily, so it comes
-as no surprise that the improvement is noticeable, with
-the guest OS booting in about 33 seconds with xAPIC, down
-from about 43 with unmodified QEMU 9.2-rc3. Even with x2APIC
-enabled, the changes shaved about 1-2 seconds off boot times.
-
-"Warm" builds of QEMU 9.2-rc3 with
-make clean ; time ( ./configure --target-list=x86_64-softmmu ; make -j4)
-inside an OpenSUSE 15.6 VM with -smp 4 and -cpu host,-x2apic
-on my 8-core MacBook Pro 2019 with macOS 14 repeatably went from
-  2m 58s (+/- 1.2s) real, 8m 39s (+/- 2s) user, 1m 14s (+/- <1s) sys
-with 9.2-rc3 to
-  2m 56s (+/- 1.2s) real, 8m 32s (+/- 2s) user, 1m 13s (+/- <1s) sys
-with this patch set applied. It's not a huge improvement
-(>1% for real/user times, 2% for sys) but the runs are very
-consistently in favour of the modifications.
-
-My wall-clock measurements with boot times for Windows 10,
-Linux, and FreeBSD guests were all within margin of error,
-though profiling the QEMU process did indicate a reduction of
-vCPU thread time spent in bql_lock().
-
-I did not spot any performance regressions, but I can't
-entirely rule them out either.
-
-There is scope for similar optimisations that yield more widely
-applicable improvements. In particular EPT fault MMIO handling
-can be split into non-BQL and BQL portions. I measured around 1-2%
-additional improvement with a naive implementation of this, but the
-hvf memory slot data structure needs to be made RCU-safe before such
-an optimisation can be upstreamed.
-
-
-I have done my best to do a reasonable amount of testing with
-these patches, in particular I have tested Linux, FreeBSD,
-macOS, Windows 10, and Windows XP guests on x86-64, each with
-x2APIC alternately enabled and disabled. On aarch64, I have
-checked Linux and macOS (VMApple) guests. All of this on
-macOS hosts.
-
-Phil Dennis-Jordan (11):
-  hvf: Add facility for initialisation code prior to first vCPU run
-  arm/hvf: Initialise GICv3 state just before first vCPU run
-  i386/hvf: Don't send signal to thread when kicking
-  i386/hvf: Pre-fetch emulated instructions
-  i386/hvf: Decode APIC access x86 instruction outside BQL
-  i386/hvf: APIC access exit with fast-path for common mov cases
-  i386/hvf: Enables APIC_ACCESS VM exits by setting APICBASE
-  i386/hvf: Variable type fixup in decoder
-  i386/hvf: Print hex pairs for each opcode byte in decode error
-  hw/intc/apic: Fixes magic number use, removes outdated comment
-  hw/intc/apic: Raise exception when setting reserved APICBASE bits
-
- accel/hvf/hvf-accel-ops.c    |   5 ++
- hw/intc/apic.c               |  12 +++--
- include/hw/i386/apic.h       |   2 +
- include/sysemu/hvf_int.h     |   1 +
- meson.build                  |   1 +
- target/arm/hvf/hvf.c         |  21 +++++---
- target/i386/hvf/hvf.c        |  50 +++++++++++++----
- target/i386/hvf/trace-events |   9 ++++
- target/i386/hvf/trace.h      |   1 +
- target/i386/hvf/x86_decode.c |  24 ++++++---
- target/i386/hvf/x86_decode.h |   5 +-
- target/i386/hvf/x86_emu.c    | 102 +++++++++++++++++++++++++++++++++++
- target/i386/hvf/x86_emu.h    |   2 +
- 13 files changed, 206 insertions(+), 29 deletions(-)
- create mode 100644 target/i386/hvf/trace-events
- create mode 100644 target/i386/hvf/trace.h
-
--- 
-2.39.3 (Apple Git-146)
+> Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+> ---
+>   target/i386/hvf/x86_decode.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/target/i386/hvf/x86_decode.c b/target/i386/hvf/x86_decode.c
+> index 79dfc30408..6c7cfc820f 100644
+> --- a/target/i386/hvf/x86_decode.c
+> +++ b/target/i386/hvf/x86_decode.c
+> @@ -61,8 +61,8 @@ uint64_t sign(uint64_t val, int size)
+>   static inline uint64_t decode_bytes(CPUX86State *env, struct x86_decode *decode,
+>                                       int size)
+>   {
+> -    target_ulong val = 0;
+> -
+> +    uint64_t val = 0;
+> +
+>       switch (size) {
+>       case 1:
+>       case 2:
 

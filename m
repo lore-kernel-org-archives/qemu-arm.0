@@ -1,85 +1,85 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2794026njb;
-        Mon, 9 Dec 2024 10:31:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVnU9QIYag76yWitritR+nufb5TQbzvZbyKaRJv5onExlVegE2NvuLiEWbf1Wbk8WDDt87flxdEuQcxCA==@linaro.org
-X-Received: by 2002:a05:6a00:a8f:b0:725:41c4:dbc7 with SMTP id d2e1a72fcca58-728888ce9cemr673409b3a.4.1733769069285;
-        Mon, 09 Dec 2024 10:31:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733769069; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2794042njb;
+        Mon, 9 Dec 2024 10:31:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWE+SqOVNUDNPN6WhdZGdxZoxe+/PmzRVhyhHubm8+EiTdcaZu35czp+aaaXb98ILEVpbo5VHRutd0/UA==@linaro.org
+X-Received: by 2002:a05:6a20:918d:b0:1e0:cb94:d3b4 with SMTP id adf61e73a8af0-1e187150d24mr23216800637.45.1733769070438;
+        Mon, 09 Dec 2024 10:31:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733769070; cv=none;
         d=google.com; s=arc-20240605;
-        b=D5U/4ZFAm5Gy7Y82AhEA5kZ3cS86kQICo4MpczWgp9WHe/aJxtrMisUeo5gJoNoNSQ
-         J+osK1CFaakmQDGfWkeBQL/RLx3ibxJH3wIBmy4yt85mzFvzQ2boglfM5SNltvdJc/pm
-         sRsKXiGKJwlyyyRiwfLHWNrpQ64YN/RQSzf3oVjoFzTXH2cI77yGTq6yUqDTxtw7D5Aq
-         loXcICrBRY5nM/4Mumlr8YqppG/DgH2c+ploTeSPeJ++sDUg3Ttyl9XN4neE1Bzk4HjC
-         PPEO0pdeeNTdxzxLTtNaSAXMxzhn6Om2FFvznmVIJVyOS6fvnerMBWdHkxwfYK+LZ/3c
-         Ihag==
+        b=d9pTXxGhHQVHk54WsTqUwGDnjf8kHH5DVO91wybkFxZ6iFMDQSQIFp9dP/n8mhnznw
+         MsKBEamB0XTjdSOKqfYjrOl7uBkaojQdjc+NroFK+0SsN6+vqLIfMjNzJ1rXnxGDIImc
+         VHborcwBLQG8ZpsYSG2tK9W0cQbJxiTVkkVYY0nULXAIH0+eP0/emYO6yeZlvVpmpfMf
+         ugHHP8NMAO0kiI1E4y/c7N2qjOet/n4FscpE2XPxX3+dbF6NOcfj6qgiuoNDbAt+duAA
+         +QZBOk3qY3sQfxYqQwO5EVKiQ5VR4wi0xd9noPTkQZiqcUbDIYled8gYUpWs/2TmQ+2C
+         hxgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=KJHfvwnJg5sZrvdjrL2PvGyTWu88t+rIUYQX6WpdBU0=;
-        fh=hL1C7UoU+s2bG3fSRHH4oa7NlTssfWVlMDDTBIPCsJQ=;
-        b=BI48/3VAUPR63jExq0YTgvzVV/eA9TXEaoaBCX7QLveprOwqwT++PTvnU+AyhMZCGd
-         KmXwT+bpNgxA5XjxMnB3R6HwOamc4zpbHkgtedSGL5bRKes28346hiGKYqx4jPpKYwF9
-         obiPMMZ/CTQ59IBtnJ5f2EDO3P8YQdoo6OlT+b7cQNKpvQdkLmq/fknF5vpDHrMa4spO
-         uTvKs47R31ehIQnpj0aatpNTrPCVyKTxV9Rl+yAE0WGWkUNcrt2DowVUJptWlUClHlyw
-         pzTpy+Esq+rJjyEGLJAsoK7LdS0We4A/O93rC47ZT1brflVxojvD7z0vUdoFF0fvzIvs
-         fEGA==;
+        bh=oUKq6vEd08BNHFL5xy+IGBW1qUyoIpn1SmzghDG21Ks=;
+        fh=K9Oak7SeSg/TnKM/temluUGGlBVyWS5bDpg5GA+kD5Y=;
+        b=K77qNlykM5otgRr6IzRrrSwos0OJHAM6HcegszJUCXxo01D+SLcUaozgjBufTmbdA+
+         cWI+M6fEjkZJQyzClY3LRcWaPL8UpMSA71brrdw+Gv2ylOjdW+LxarzfdS9Pq/D1gxje
+         heVOpC8aqKlWROlIFNc4dkCS1njQ5iNU1b0UNA/TMKxwVx9fiySY29dw7Mfh1Q1llaaA
+         BEEjqCmCE+DCPZsv/o941XIbfcPtZ4RfCNQUmisonrM0gj6Jw+r3IPKjWwZ3bZi5wsBh
+         icvBLnEBXPjRaDTsQRe//f3hlG/piZ9nwlztIa1vl+5yVL/429c4+GDk4QDurLCQvsxl
+         viHQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ZF3F/H2r";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fgCSKbUF;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-725ef9ea81esor1312956b3a.2.2024.12.09.10.31.09
+        by mx.google.com with SMTPS id d2e1a72fcca58-725cd11aac1sor2170619b3a.6.2024.12.09.10.31.10
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 09 Dec 2024 10:31:09 -0800 (PST)
+        Mon, 09 Dec 2024 10:31:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ZF3F/H2r";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fgCSKbUF;
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733769069; x=1734373869; darn=linaro.org;
+        d=linaro.org; s=google; t=1733769070; x=1734373870; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=KJHfvwnJg5sZrvdjrL2PvGyTWu88t+rIUYQX6WpdBU0=;
-        b=ZF3F/H2r6WuwzMnxaji2qdkUuvTqB5PYx0u8R9H+jk0z3L5fW2u+AnSR4aXxhVhOLY
-         vQswmaTZWVvbw5tZipr8QKWuLXRViqDpiooLebd+Dei5wxkpFdFQLVEeWw6FN0Ng5/09
-         50E57pH/KZCPB2GFb8NCv5fYpyv12m7qM0uB5TIE3HZl/Zot2G5wuEPH8tu24FnwMzmV
-         itwYmCUM6B1bvCcYapIFhN/yf/7DTCh4DwpbI3uCfX7SFbAhOKgF30OFO2uJNDDanx5c
-         4wIu0KbaQAqHaVa//lmuAWwTEfjdMhKjIdaVvhrbK0PYUCTaQqxj4iZqbTll9cBDHT6H
-         RKsg==
+        bh=oUKq6vEd08BNHFL5xy+IGBW1qUyoIpn1SmzghDG21Ks=;
+        b=fgCSKbUFgbyiQGoOx9Y80YLyBjQX+ZOsRCHqoOP+mkVnNchMNLOs/zoF7YQIxXFKYl
+         n1PvD7ViwL2qf/FACnJafIUFJv35bL1x/z0QcWltcighMMCFzK7q4WJQUOOh+Nf1sBg7
+         QVe84EO/y5WQO55wsGqE/wREhGkHj7d85jGkGGDGLkWqVjawGfhGNNsKk6j9820rnYtr
+         +ycB8/I84jwkPkRWgucnEgKF5FdeOj82tH73WaTgbPmLyCmA9kLlig7tyz6Z6AQReHX0
+         8TcbO8i1THFQ1idhoFrckLfuL5aSyOESmUnLIv5xh5IjKmLf4Z5Pp2zUykaYDaPpP0TH
+         SXIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733769069; x=1734373869;
+        d=1e100.net; s=20230601; t=1733769070; x=1734373870;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=KJHfvwnJg5sZrvdjrL2PvGyTWu88t+rIUYQX6WpdBU0=;
-        b=YLP9/yA9GD0MolOKU9uhCjNFyz0H/GrqVfoEkgFPD1iOjyb0zie3eLOrc71e9GtAo6
-         R/ah/nCXDBJSlAWWHOnHhM46zqme281DkWOp/NQWSAj4tNB2nS03IATHOimN5IaRFDOt
-         70B3wLDhO5Xwq7rIxwA/BgYk+x7m9YO8mWne1/8Zb39m57nOcjBpUk0QdJ8DksdsNwcb
-         iswHYdtE6VJEZE1LK5CCY4BlMvdD40Agq43A5RP9OlnpHmySBGwCjwhAZ/8OjKtKBHV6
-         eu6v9YKlQf6bz67Lz4pHW/kP+KTPXvuBgNLwtWd5aDyAipXuRJXNJn9otNQmqGna/18u
-         ROCw==
-X-Forwarded-Encrypted: i=1; AJvYcCWR4MNx/jNHWUtAPhvvJbQbKCtNqWOaMdi1gxKF4wrBIwYmG10gE++o5VA7KmMGnlMHganBk8SQXpoSIw==@linaro.org
-X-Gm-Message-State: AOJu0YzS0gve4cTL8YmDP/qQGdPgzeEEa3+gfybveB84UJwLMo/zLVMS
-	h5CjDX0S/BNnqk61dFqhQgb0KtxE5DuvCC4R6RTlleLZ87hOHP9AHI4SLxTIm3dMNA==
-X-Gm-Gg: ASbGncsbBSksqudIyyy+t/zU5yTFQRq81yN5jzy7mrwFdhDtFbL2LklCBlX2Lt6nYo3
-	wNgVxcr3+FtWtYpUg3j0XCrwxhaq/pMQLcX/X3YJYWypW0QGN49dIGJWZGGHWxoFkaF0O+DfpiB
-	SD/680n+/4yDWcHAeU2Na49XHS+wjd7rtEsliGzT1NWimXHSz8O9zzDgDKW6KYGPSjNvx0rWPBr
-	y3ZVWBurPClGzq5V4QcvLdhxYtw8HKu8k4eytCt+2S1TlPz5Hor2spU8I6Vg3u9ykNSmOcgglFw
-	fl6otB/eRz1F
-X-Google-Smtp-Source: AGHT+IH0W32vCMU/REHgWwitNQj0RdYViGRDdgZtnn1QKAsNMZMXRkehKM+GP8TM3mJLL1QW2KCPyw==
-X-Received: by 2002:a05:6a00:4513:b0:725:4a1b:38ec with SMTP id d2e1a72fcca58-7288810e22fmr752631b3a.3.1733769068840;
-        Mon, 09 Dec 2024 10:31:08 -0800 (PST)
+        bh=oUKq6vEd08BNHFL5xy+IGBW1qUyoIpn1SmzghDG21Ks=;
+        b=YR0PLXtYLwvANGQwll8duQVXwN20ODH/eLWlOY++LAsISWL6qe6++ujx+a1LscCpUA
+         mp4ba7ZrpPPlVyBTqmwchyN+eq3d3YhfeskG2j2HXHcabyJKV7TXXwFMAGQDCVG59V/8
+         WuiQZhoAoKtb/hbcD6HJAsZPQAO5u2CDLJKcj2gaAQL7Z2PQnaJWVva4HvzwIhusMCKI
+         DVmq53yK2mgymvXS85Vndcqq8+bFPDVPWxzVAoZ6xzSoKW2CFHJyQpNZtA/T8Mvc3dg4
+         QB5K08LPB8GfnxNnqWxEbaXhiKSeUFwEJC9dD5Rs1TIUhn7w5vkij/EQ4iKzATUoOFNa
+         0iwA==
+X-Forwarded-Encrypted: i=1; AJvYcCWRO3reVTx34ukcaK/v+VCbmP1Lts6o2OZ6AYfN5+lcvc/GAf2RFfHiKOlvmwfcjAeHXVu6kFsVikEO4Q==@linaro.org
+X-Gm-Message-State: AOJu0YxnXla74hOJ+B1xijuJkEDur1GmbLtUoaPJqigdgwwmouQbj2oy
+	OjJkb660xzkTQc4TUdw2XUIJpltNk3WMFmYn5o0Bgorr0h7qbhYqP3VDRvKaAz7UOA==
+X-Gm-Gg: ASbGncvwpMs4wCRSc20KKX+FUNZaNa5t2u164MK2nMh8lstksrhYz6RARSwkvOQ/EcD
+	xL/zOXlp4/NVwS3xre1gPKbj2bpiTYcyiKWDsFRMDYmAcYGGuK9vx9SZUjOGYIUCNkCIv413F6x
+	QDW5Dinb/7IDL/ZjlJv+clLovix9dFpFFACwlLGtz2cY7WvJyAlVrIZ0d9Z8EE4PPEWRbedxK76
+	eabWTTxUwEkMCh0t8vVOFaI3gCn4cYfwmb5KdiYQYhPBmEMzPL76xGI70pt8uDkYE/zSkTxEZ8k
+	36rdLv+yj1/2
+X-Google-Smtp-Source: AGHT+IGHgMJ38Jmr7nbffgCDllf16U7JHr53zhYSJkDuJ8Dm6v3gmzXLAgJmZrZFftLzkhyV7DOVuA==
+X-Received: by 2002:a05:6a00:174b:b0:727:3c8f:3707 with SMTP id d2e1a72fcca58-7273c8f3efemr2557724b3a.23.1733769069981;
+        Mon, 09 Dec 2024 10:31:09 -0800 (PST)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725e2388d37sm3322821b3a.73.2024.12.09.10.31.07
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725e2388d37sm3322821b3a.73.2024.12.09.10.31.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Dec 2024 10:31:08 -0800 (PST)
+        Mon, 09 Dec 2024 10:31:09 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: manos.pitsidianakis@linaro.org,
@@ -105,38 +105,57 @@ Cc: manos.pitsidianakis@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 1/6] docs/devel: remove dead video link for sourcehut submit process
-Date: Mon,  9 Dec 2024 10:30:59 -0800
-Message-Id: <20241209183104.365796-2-pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 2/6] docs/devel: add git-publish for patch submitting
+Date: Mon,  9 Dec 2024 10:31:00 -0800
+Message-Id: <20241209183104.365796-3-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241209183104.365796-1-pierrick.bouvier@linaro.org>
 References: <20241209183104.365796-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: mtgnWcbuJu63
+X-TUID: 8y5R46Ib/zSe
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- docs/devel/submitting-a-patch.rst | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+ docs/devel/submitting-a-patch.rst | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
 diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
-index 10b062eec26..03b2ac298aa 100644
+index 03b2ac298aa..69df7682c5e 100644
 --- a/docs/devel/submitting-a-patch.rst
 +++ b/docs/devel/submitting-a-patch.rst
-@@ -252,10 +252,7 @@ patches to the QEMU mailing list by following these steps:
- #. Send your patches to the QEMU mailing list using the web-based
-    ``git-send-email`` UI at https://git.sr.ht/~USERNAME/qemu/send-email
+@@ -235,6 +235,31 @@ to another list.) ``git send-email`` (`step-by-step setup guide
+ works best for delivering the patch without mangling it, but
+ attachments can be used as a last resort on a first-time submission.
  
--`This video
--<https://spacepub.space/videos/watch/ad258d23-0ac6-488c-83fc-2bacf578de3a>`__
--shows the web-based ``git-send-email`` workflow. Documentation is
--available `here
-+Documentation for sourcehut is available `here
- <https://man.sr.ht/git.sr.ht/#sending-patches-upstream>`__.
++.. _use_git_publish:
++
++Use git-publish
++~~~~~~~~~~~~~~~
++
++If you already configured git send-email, you can simply use `git-publish
++<https://github.com/stefanha/git-publish>`__ to send series.
++
++::
++
++    $ git checkout master -b my-feature
++    $ # work on new commits, add your 'Signed-off-by' lines to each
++    $ git publish
++    $ ... more work, rebase on master, ...
++    $ git publish # will send a v2
++
++Each time you post a series, git-publish will create a local tag with the format
++``<branchname>-v<version>`` to record the patch series.
++
++When sending patch emails, 'git publish' will consult the output of
++'scripts/get_maintainers.pl' and automatically CC anyone listed as maintainers
++of the affected code. Generally you should accept the suggested CC list, but
++there may sometimes be scenarios where it is appropriate to cut it down (eg on
++certain large tree-wide cleanups), or augment it with other interested people.
++
+ .. _if_you_cannot_send_patch_emails:
  
- .. _cc_the_relevant_maintainer:
+ If you cannot send patch emails
 -- 
 2.39.5

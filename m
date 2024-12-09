@@ -1,105 +1,104 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2868135njb;
-        Mon, 9 Dec 2024 12:38:51 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVA29w6JLMpUkTdLc6esWaCyFvWeUJMcPGc3Low9+A07yooJ2JW3rdmEzR7xfBpKF7UzP+FgLkDubjE4w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEF8miBUTh72Y+7ClnwQfKb2pzjP/23TTzlv2wqgRqtOiFIRtjhKdmz0apZoOBJnTUrrEVP
-X-Received: by 2002:a05:6214:3014:b0:6d8:b2f2:bcc6 with SMTP id 6a1803df08f44-6d91e38c2b1mr23275076d6.27.1733776731584;
-        Mon, 09 Dec 2024 12:38:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733776731; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2868312njb;
+        Mon, 9 Dec 2024 12:39:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWnF4wJBiqI6rTwH4//Ydu7CQRMGb7hFFM3UnqpYilCmGXNN239JhszsFIFzZtBROe/eoawwaPZlB2u2g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFJmfM+D1oWujty1P1Vs0mR5kXGCVyHmOUsb1XC1OFE977BtVMhUitfkawnyNvMujIGDiVs
+X-Received: by 2002:a05:620a:4706:b0:7b6:d3b3:5757 with SMTP id af79cd13be357-7b6dcdcd81dmr300920185a.13.1733776751061;
+        Mon, 09 Dec 2024 12:39:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733776751; cv=none;
         d=google.com; s=arc-20240605;
-        b=Tk0aVbh0CbVAeN6jMzyUnADsCla2dqJfCCCyphDxs93P7sG7jtz58UWhEWaME8nNlH
-         t33iclCrSt//+E1FdPSXy8TGl8kQZkAIXmy1Cs5EbxJAmCbbFN1cbL0Gk6HBNlmgGhvE
-         IW1pi6Duwy6HFVkcsd2wbGufpawpGG2y+6qH/6nHCJo233eeyBaNtnlm7hcl75RrWSlB
-         wyPZVNh7eyuLbX3exqSU3BzMFz2rKQ4Z0w8jNIZpn0OSbsvVHa3KCS0rE3d5yat7q4TY
-         xEXF98h2gbuJJbWJySkpdMd3CBK5qenpyzh0OsQzmkauwFjRcy/TTl2vPgj2uf8iHATy
-         ec5A==
+        b=SOOkoeXtMz0A3I4vnNWjXDOEpqWMI39d6DP8SdMQ0mVrIq0WxoaUI7/oqvn0HzsOAf
+         p04tubUkT2etTv0IYJ5lrXBhoxXt6VKDYxFEV7v3CB10uEO7VhAcizrHlbEpTSQMwhTq
+         gogA+PsIzfAoxoCTzm7hQc1Uo3Ncu8uyyDw0j9Jv/fuFdbWp7ZUOVufnqQ0RtDFibpYz
+         7i9vxZ8n4aW0meM07/rF7s67flCad4fpCcWRmd2jOzv7AIZIQPhFA1TP25TTQ1/1Ay1z
+         D99A+EhlD33JovRj+LEoG8tAqZUiPfdGl68weHNRvrUanyeZ/AkIuNmsFilSPVe2qzgW
+         nwZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=o+++OhUvZkOaxfpw+rWVgz3w1Q+zW3e1baRIfvJZtEo=;
-        fh=QY2tANf3qorAsTK8vnGIHbevnEBCYKw9rdjk+ZJA4QQ=;
-        b=Pj3dgaJuBOpbfCG4ZrJRX0gIZgKVmjb4DYoQu3INXTeQgl9A4jswppSf/I0Z2kYARI
-         1PvZLB4L3InHMQo93JyVtZSNQsxA4eRbOwMrtFgriQGnJz9DDXVab8oToichsWInkfRJ
-         aAzyqxvBqYSpympRKJm9zGsnEbQNj25kK1PYepHOjpaGe95O2F4KJMgXJzfhVd/TBMgc
-         K2lcR9Q/BvJsCxHTj3JVgYWjmv7gdevXx9KDamQD8YgJKUf6dtCfcRMQf2vAW/xbJzSz
-         VblZ94MZydpQwic3F93TKNzK0Pyi4RqslI/dyTnEDDq7q9wkK1dfFBqy1/K69B59LhuJ
-         W85Q==;
+        bh=NYJPKkgcbTXxdsXMNMCRcjhKt+ms1PoytQbmmSrV3F4=;
+        fh=bQkS108b468PDWrMlLdqLKWA8DzC4ZergiF0RQEBaSw=;
+        b=Snog9tc/2tN1XyIzxRpIbkA/9GYhQgafxUEWutISUl40iWAmCVyzB+P2HRz9Dpaz8q
+         EvtmAeJP0pvdXY1po6ESwlAOO8gG8qtFyVIQcA3sVNplWlukqjTIxuTYvi85OGpM3lsC
+         9nbUTfSY1GA7FcGeqzYYj5eXqgm5cubB0PXWhv/o62fNHQxEnKAMcvEaF556hLUggqJh
+         kQZvF+5JUFLrBPR1Z0po2keQQCHEaAjFvYRfTvbYoMVzpLTIb2q2snIhX0uFhvNUSqXk
+         13PQQB/I8T1SnvJgL5739frcwqiBq2iQ0igq53uMRFNLDbhuHlXzB/4C9Wd5r3XsrNUr
+         KT1A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b="ms/8y+uy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=MSSrHX2C;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8da67f135si114244276d6.98.2024.12.09.12.38.51
+        by mx.google.com with ESMTPS id af79cd13be357-7b6d2850a43si421043585a.191.2024.12.09.12.39.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 09 Dec 2024 12:38:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 09 Dec 2024 12:39:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b="ms/8y+uy";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=MSSrHX2C;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tKkVC-0006Hs-IP; Mon, 09 Dec 2024 15:37:10 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tKkVT-0006QJ-Lk; Mon, 09 Dec 2024 15:37:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKkV9-0006Eh-K4
- for qemu-arm@nongnu.org; Mon, 09 Dec 2024 15:37:07 -0500
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+ id 1tKkVC-0006Hw-J9
+ for qemu-devel@nongnu.org; Mon, 09 Dec 2024 15:37:10 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKkV7-0003E3-Jb
- for qemu-arm@nongnu.org; Mon, 09 Dec 2024 15:37:07 -0500
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-aa67ac42819so281277366b.0
- for <qemu-arm@nongnu.org>; Mon, 09 Dec 2024 12:37:05 -0800 (PST)
+ id 1tKkVB-0003FT-8E
+ for qemu-devel@nongnu.org; Mon, 09 Dec 2024 15:37:10 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-5d3e829ff44so3836739a12.0
+ for <qemu-devel@nongnu.org>; Mon, 09 Dec 2024 12:37:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733776624; x=1734381424;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733776628; x=1734381428;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=o+++OhUvZkOaxfpw+rWVgz3w1Q+zW3e1baRIfvJZtEo=;
- b=ms/8y+uyLFnYoqR8L9fXwGnwmzK29Nz8m7ptjM4I67vxgzbErvf3ffDtAzrNnGWoZw
- YK3dmV9lXpjFLdl5cC1CEojASAMbvqJ/C47USS6e+T3I28TAnxm/XIC3sZzBD2ZJxHLd
- ne3rduxCTEQ3FJWnMJYue4t0oxGJGkveK2QAxIqDFmdZvEsLh8wTh4L/kK9bSmevQ2WL
- cHiq+7rE9YePk4mLfwTLnYFzct4ZiZHTOkY5ETge7ofLg7S6EyQBHURuAQDZql1bjX+7
- AP6SyHaD8YU+dE9SMuBs2YbFPQMEgS6K21z8XSxZ3oBqqdd4Zn1PA2g3urQgJaPTjQL5
- Wy4w==
+ bh=NYJPKkgcbTXxdsXMNMCRcjhKt+ms1PoytQbmmSrV3F4=;
+ b=MSSrHX2CDFbQUas3w06xQuH9T1mlo9XqCRYGf4YhlI1fXwwiv9acm1GZ4Wr+Ps/Ts/
+ 7UwT4PvtlGC8H08sFOdXDPJ7jO9kiFHh9i8ahFNbfE8kMqaCBMMj1PjWAGm0aY27AKug
+ C0+0ez6sNused4lLL0uAsW5i29pKMRky9Tpzd6Eec6QuesCtNKFXSTYXuDBdmirtUUIl
+ eXeIcDcfkkz4U1yhOOMphXtAu3B9c5i06/s5rKi8q8rFFcZe6UwRwSD6F/qJTVWyexFf
+ kmrsTW/RWyLd+teiK2Cpq638Eiulztr7anmi4+fuKjAMnpvlKbh+lnxiV8d/l5banm/9
+ vcNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733776624; x=1734381424;
+ d=1e100.net; s=20230601; t=1733776628; x=1734381428;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=o+++OhUvZkOaxfpw+rWVgz3w1Q+zW3e1baRIfvJZtEo=;
- b=qgTASKbcNK8GXEe5FyCDB7Sk3L2Uk5yhv/pDCitdvnQWb0zYmmZGVL/1EakpxUjy9A
- tqLNCzsH4jvhBv8j+PhIx02bDIpeN5OCjTos/HdtuJGMkZBHJD1Ay2uYfR2QgUnZfoRV
- LDthXEQGJX3NWirIktU69fniGYUtivL8BmuGOJVPLv78sxgxRmPc2Cb38+YfSrBH0de7
- KhqpL6wZE4CgqhzXC34QsQKCGUmb1JtDos6EJWo0qnEl2HkUh6rwoNhhlYufmLKL+ZI5
- +s2OlWBtZeWQC5eHh+CjgxY72RIrVaHJd2YMp3JPQgGfG5B8eH00lV+brWK4FCmlme8G
- hmhA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU7Yu2T0jlcne442gdAn02NdiiqDlgH54xes6C5Fax2waHTK4nem4H+4oPff1xX7auGN67u0ebM1w==@nongnu.org
-X-Gm-Message-State: AOJu0Yy1usAAv66BTPmZWDJ7DL5J9W80QfExmMUyTh6ogcmFJbLM0BHC
- ITp2Vuv3XK3IxChnMHj6Gf6sx7PyWSB+nikVG4bXyU6nF9jj+fA9PcF6RiNNkA==
-X-Gm-Gg: ASbGncuUU+1uG7+QmkeHIb5ePdWj8dPMBAsJRQvVJPcEinSeYoJcUzkXKYTScr+IYsI
- jhgUeeVCcys9xh/l2fKdHxd7DfQtgvGXt/ay27WhCE+eNkhcJOVGfdlFrzJwWOyObLmnRVuBGIW
- VKdD9Tx+qpri6r8NZWZeSKacXTMozo6MO+/TDFXCEjC5riptAlhVp/CgSE95J9/26/9MO2KKpVA
- OhiF58gA9M+QK6Lh3m5yfuFgPy66DfzoZvzbKo3vhkTjqeDO11199hPaQ0n3UrnwSL3bdyJNWtH
- U0lqZkVrBriKh8D+BpCODQPDcPvsxQ==
-X-Received: by 2002:a17:906:3cb2:b0:aa6:59ee:1a19 with SMTP id
- a640c23a62f3a-aa659ee1a91mr847399366b.60.1733776623883; 
- Mon, 09 Dec 2024 12:37:03 -0800 (PST)
+ bh=NYJPKkgcbTXxdsXMNMCRcjhKt+ms1PoytQbmmSrV3F4=;
+ b=TVWPp6D3aSnBmLL7pv8NMylfTqipg6jZo70dQOtTgwUQ/h7AqfeHthQqRFWVMSBNU4
+ 9LFPakorZDZrHAdJudD0nz1yjBvOxJ+i8lW5TrwkYDAfiVCZjjMTWExThxtk+t0XNSip
+ tjRrM48eQOm6RFp5+vVNlOOLLfoHpkKyiIo0ty1UKWkPJNvngBED/YrGfzHlMcRs548Y
+ 6QQ004jqzGkAf9g1M/0xEuPh+jCFTOE8usIwZXxeSH9/vke/PY9z9nWr3pjMqiPRCbnL
+ 6aKrmjEQ/6n6UKlM6rj259fuC4qlWjYEwxKhU4yzPy5U6R13HTSvv6etV6xPnlQS4kSx
+ VcSA==
+X-Gm-Message-State: AOJu0YyDmHRfLhNcOPabkQU/PLtxmXHb6u41UmrkElaza1ov4v6KKC7S
+ 8ZAZ3WTrKMMh1cZwhuTaOLSzFSWuxpDftfwSPxGMdqJXKJpC08yEgLqSFvje3AowDeGu6HmHJRA
+ TYA==
+X-Gm-Gg: ASbGncvJUeEGK6Qsds5A9JEtXSGadfLX+eE2+3S2jR/N0ajxep/VMgc45+w+WScN1bd
+ WbhkFNS/nh9cizaWE6cK39auWcF8M73iRiMWAm8Qro2tfY+nUKEVSToQCvUHiOkHcJ/vft0UPhI
+ MAcmieZABf7CbPVYvV8R/cYO0Zn9v7xk01lxad3RDczIINmkojXjmRYFp1RLmilRpoJeOLmQohb
+ XJjQiTFjuUMOPKsIrLMJ6odRhxYn9cZlnC0xXihCClfzEHrAmBBRvIiyCntg7KoNDFNAiyQ6OtV
+ oXtKVITUP2q9qaCrD0vHQE3m8B/EAg==
+X-Received: by 2002:a17:907:1c85:b0:aa6:7ff9:d248 with SMTP id
+ a640c23a62f3a-aa6a006e645mr65933966b.8.1733776627709; 
+ Mon, 09 Dec 2024 12:37:07 -0800 (PST)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aa692e4e9d5sm141783566b.129.2024.12.09.12.37.03
+ a640c23a62f3a-aa692e4e9d5sm141783566b.129.2024.12.09.12.37.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 09 Dec 2024 12:37:03 -0800 (PST)
+ Mon, 09 Dec 2024 12:37:07 -0800 (PST)
 From: phil@philjordan.eu
 To: qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
@@ -107,17 +106,17 @@ Cc: Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Alexander Graf <agraf@csgraf.de>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>
-Subject: [PATCH 06/11] i386/hvf: APIC access exit with fast-path for common
- mov cases
-Date: Mon,  9 Dec 2024 21:36:24 +0100
-Message-Id: <20241209203629.74436-7-phil@philjordan.eu>
+Subject: [PATCH 09/11] i386/hvf: Print hex pairs for each opcode byte in
+ decode error
+Date: Mon,  9 Dec 2024 21:36:27 +0100
+Message-Id: <20241209203629.74436-10-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.3 (Apple Git-146)
 In-Reply-To: <20241209203629.74436-1-phil@philjordan.eu>
 References: <20241209203629.74436-1-phil@philjordan.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::632;
- envelope-from=phil@philjordan.eu; helo=mail-ej1-x632.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::52d;
+ envelope-from=phil@philjordan.eu; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -125,274 +124,43 @@ X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JvdbEAIlJOwz
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ImKlctPiJnxc
 
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 
-The implementation of the EXIT_REASON_APIC_ACCESS vm exit handler has so far
-been essentially the same as a regular EPT fault handler, performing a full
-simulation of the faulted instruction. The code path has also not been used at
-all because the APIC base address setter in Hypervisor.framework was never
-called. This change improves the former.
-
-In particular, the APIC_ACCESS exit provides us some additional metadata which
-in many cases allows us to avoid a full instruction emulation.
-
-There is no need to walk the memory hierarchy, because exit_qual contains the
-APIC MMIO offset. It also tells us whether it's an MMIO read or write. So
-we can detect common mov instructions and directly call the relevant APIC
-accessor functions.
-
-For more complex instructions, we can fall back to the usual instruction
-emulation.
+Printing a sequence of bytes as hex with leading zeroes omitted just looks odd.
 
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
 ---
- hw/intc/apic.c               |  4 +-
- include/hw/i386/apic.h       |  2 +
- meson.build                  |  1 +
- target/i386/hvf/hvf.c        | 18 +++++++-
- target/i386/hvf/trace-events |  9 ++++
- target/i386/hvf/trace.h      |  1 +
- target/i386/hvf/x86_emu.c    | 84 ++++++++++++++++++++++++++++++++++++
- target/i386/hvf/x86_emu.h    |  2 +
- 8 files changed, 117 insertions(+), 4 deletions(-)
- create mode 100644 target/i386/hvf/trace-events
- create mode 100644 target/i386/hvf/trace.h
+ target/i386/hvf/x86_decode.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/intc/apic.c b/hw/intc/apic.c
-index 4186c57b34..add99f01e5 100644
---- a/hw/intc/apic.c
-+++ b/hw/intc/apic.c
-@@ -788,7 +788,7 @@ static void apic_timer(void *opaque)
-     apic_timer_update(s, s->next_time);
- }
- 
--static int apic_register_read(int index, uint64_t *value)
-+int apic_register_read(int index, uint64_t *value)
+diff --git a/target/i386/hvf/x86_decode.c b/target/i386/hvf/x86_decode.c
+index 6c7cfc820f..f8d37f2d53 100644
+--- a/target/i386/hvf/x86_decode.c
++++ b/target/i386/hvf/x86_decode.c
+@@ -30,7 +30,7 @@ static void decode_invalid(CPUX86State *env, struct x86_decode *decode)
  {
-     DeviceState *dev;
-     APICCommonState *s;
-@@ -936,7 +936,7 @@ static void apic_send_msi(MSIMessage *msi)
-     apic_deliver_irq(dest, dest_mode, delivery, vector, trigger_mode);
- }
- 
--static int apic_register_write(int index, uint64_t val)
-+int apic_register_write(int index, uint64_t val)
- {
-     DeviceState *dev;
-     APICCommonState *s;
-diff --git a/include/hw/i386/apic.h b/include/hw/i386/apic.h
-index eb606d6076..47946e5581 100644
---- a/include/hw/i386/apic.h
-+++ b/include/hw/i386/apic.h
-@@ -20,6 +20,8 @@ void apic_designate_bsp(DeviceState *d, bool bsp);
- int apic_get_highest_priority_irr(DeviceState *dev);
- int apic_msr_read(int index, uint64_t *val);
- int apic_msr_write(int index, uint64_t val);
-+int apic_register_read(int index, uint64_t *value);
-+int apic_register_write(int index, uint64_t val);
- bool is_x2apic_mode(DeviceState *d);
- 
- /* pc.c */
-diff --git a/meson.build b/meson.build
-index 147097c652..0846c09bdb 100644
---- a/meson.build
-+++ b/meson.build
-@@ -3606,6 +3606,7 @@ if have_system or have_user
-     'target/arm/hvf',
-     'target/hppa',
-     'target/i386',
-+    'target/i386/hvf',
-     'target/i386/kvm',
-     'target/loongarch',
-     'target/mips/tcg',
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 3f1ff0f013..2a13a9e49b 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -75,6 +75,7 @@
- #include "qemu/main-loop.h"
- #include "qemu/accel.h"
- #include "target/i386/cpu.h"
-+#include "trace.h"
- 
- static Error *invtsc_mig_blocker;
- 
-@@ -666,8 +667,21 @@ int hvf_vcpu_exec(CPUState *cpu)
-             store_regs(cpu);
-             break;
-         }
--        case EXIT_REASON_APIC_ACCESS: { /* TODO */
--            exec_instruction(env, &decode);
-+        case EXIT_REASON_APIC_ACCESS: {
-+            bool is_load = (exit_qual & 0x1000) == 0;
-+            uint32_t apic_register_idx = (exit_qual & 0xff0) >> 4;
-+
-+            if (simulate_fast_path_apic_mmio(is_load, apic_register_idx,
-+                                             env, &decode)) {
-+                env->eip += ins_len;
-+            } else {
-+                trace_hvf_x86_vcpu_exec_apic_access_slowpath(
-+                    is_load ? "load from" : "store to", apic_register_idx,
-+                    ins_len, decode.prefetch_buf[0], decode.prefetch_buf[1],
-+                    decode.prefetch_buf[2], decode.prefetch_buf[3],
-+                    decode.prefetch_buf[4], decode.prefetch_buf[5]);
-+                exec_instruction(env, &decode);
-+            }
-             store_regs(cpu);
-             break;
-         }
-diff --git a/target/i386/hvf/trace-events b/target/i386/hvf/trace-events
-new file mode 100644
-index 0000000000..7d0230fb37
---- /dev/null
-+++ b/target/i386/hvf/trace-events
-@@ -0,0 +1,9 @@
-+# See docs/devel/tracing.rst for syntax documentation.
-+
-+# hvf.c
-+hvf_x86_vcpu_exec_apic_access_slowpath(const char *access_type, uint32_t apic_register_idx, uint32_t ins_len, uint8_t ins_byte_0, uint8_t ins_byte_1, uint8_t ins_byte_2, uint8_t ins_byte_3, uint8_t ins_byte_4, uint8_t ins_byte_5) "xAPIC %s register 0x%" PRIx32" taking slow path; instruction length: %" PRIu32 ", bytes: %02x %02x %02x %02x  %02x %02x ..."
-+
-+# x86_emu.c
-+hvf_x86_emu_mmio_load_instruction_fastpath(int cmd, int operand_size, int opcode_len, uint8_t opcode_byte_0, uint8_t opcode_byte_1, uint8_t opcode_byte_2) "slow path apic load: cmd = %d, operand_size = %u, opcode_len = %u, opcode = [ %02x %02x %02x ... ]"
-+hvf_x86_emu_mmio_store_instruction_fastpath(int cmd, int operand_size, int opcode_len, uint8_t opcode_byte_0, uint8_t opcode_byte_1, uint8_t opcode_byte_2) "slow path apic store: cmd = %d, operand_size = %u, opcode_len = %u, opcode = [ %02x %02x %02x ... ]"
-+hvf_x86_fast_path_apic_mmio_failed(const char *access_type, uint32_t apic_register_idx, uint64_t value, int result) "xAPIC %s register 0x%"PRIx32", value 0x%"PRIx64" returned error %d from APIC"
-diff --git a/target/i386/hvf/trace.h b/target/i386/hvf/trace.h
-new file mode 100644
-index 0000000000..14f15a752a
---- /dev/null
-+++ b/target/i386/hvf/trace.h
-@@ -0,0 +1 @@
-+#include "trace/trace-target_i386_hvf.h"
-diff --git a/target/i386/hvf/x86_emu.c b/target/i386/hvf/x86_emu.c
-index 015f760acb..197fa155a0 100644
---- a/target/i386/hvf/x86_emu.c
-+++ b/target/i386/hvf/x86_emu.c
-@@ -44,6 +44,7 @@
- #include "x86_flags.h"
- #include "vmcs.h"
- #include "vmx.h"
-+#include "trace.h"
- 
- void hvf_handle_io(CPUState *cs, uint16_t port, void *data,
-                    int direction, int size, uint32_t count);
-@@ -897,6 +898,89 @@ static void exec_wrmsr(CPUX86State *env, struct x86_decode *decode)
-     env->eip += decode->len;
- }
- 
-+static bool mmio_load_instruction_fastpath(x86_decode *decode, CPUX86State *env,
-+                                           int *load_dest_reg)
-+{
-+    if (decode->cmd == X86_DECODE_CMD_MOV && decode->operand_size == 4
-+        && decode->opcode_len == 1) {
-+        if (decode->opcode[0] == 0x8b) {
-+            g_assert(decode->op[0].type == X86_VAR_REG);
-+            g_assert(decode->op[1].type == X86_VAR_RM);
-+
-+            *load_dest_reg = decode->op[0].reg | (decode->rex.r ? R_R8 : 0);
-+            return true;
-+        } else if (decode->opcode[0] == 0xa1) {
-+            *load_dest_reg = R_EAX;
-+            return true;
-+        }
-+    }
-+
-+    trace_hvf_x86_emu_mmio_load_instruction_fastpath(
-+        decode->cmd, decode->operand_size, decode->opcode_len,
-+        decode->opcode[0], decode->opcode[1], decode->opcode[2]);
-+
-+    return false;
-+}
-+
-+static bool mmio_store_instruction_fastpath(x86_decode *decode, CPUX86State *env,
-+                                            uint64_t *store_val)
-+{
-+    if (decode->cmd == X86_DECODE_CMD_MOV && decode->operand_size == 4 &&
-+        decode->opcode_len == 1) {
-+        if (decode->opcode[0] == 0x89) { /* mov DWORD PTR [reg0+off],reg1 */
-+            g_assert(decode->op[1].type == X86_VAR_REG);
-+            g_assert(decode->op[0].type == X86_VAR_RM);
-+
-+            *store_val = RRX(env, decode->op[1].reg | (decode->rex.r ? R_R8 : 0));
-+            return true;
-+        } else if (decode->opcode[0] == 0xc7) { /* mov DWORD PTR [reg0+off],imm*/
-+            g_assert(decode->op[0].type == X86_VAR_RM);
-+            g_assert(decode->op[1].type == X86_VAR_IMMEDIATE);
-+            *store_val = decode->op[1].val;
-+            return true;
-+        } else if (decode->opcode[0] == 0xa3) { /* movabs ds:immaddr,eax */
-+            *store_val = RRX(env, R_EAX);
-+            return true;
-+        }
-+    }
-+
-+    trace_hvf_x86_emu_mmio_store_instruction_fastpath(
-+        decode->cmd, decode->operand_size, decode->opcode_len,
-+        decode->opcode[0], decode->opcode[1], decode->opcode[2]);
-+    return false;
-+}
-+
-+
-+bool simulate_fast_path_apic_mmio(bool is_load, uint32_t apic_register_idx,
-+                                  CPUX86State *env, x86_decode* decode)
-+{
-+    uint64_t value;
-+    int load_dest_reg;
-+    int res;
-+
-+    if (is_load) {
-+        if (!mmio_load_instruction_fastpath(decode, env, &load_dest_reg)) {
-+            return false;
-+        }
-+        res = apic_register_read(apic_register_idx, &value);
-+        if (res == 0) {
-+            RRX(env, load_dest_reg) = value;
-+        }
-+    } else {
-+        if (!mmio_store_instruction_fastpath(decode, env, &value)) {
-+            return false;
-+        }
-+        res = apic_register_write(apic_register_idx, value);
-+    }
-+
-+    if (res != 0) {
-+        trace_hvf_x86_fast_path_apic_mmio_failed(
-+            is_load ? "load from" : "store to", apic_register_idx, value, res);
-+        raise_exception(env, EXCP0D_GPF, 0);
-+    }
-+    return true;
-+}
-+
- /*
-  * flag:
-  * 0 - bt, 1 - btc, 2 - bts, 3 - btr
-diff --git a/target/i386/hvf/x86_emu.h b/target/i386/hvf/x86_emu.h
-index 8bd97608c4..6726ca2240 100644
---- a/target/i386/hvf/x86_emu.h
-+++ b/target/i386/hvf/x86_emu.h
-@@ -31,6 +31,8 @@ void store_regs(CPUState *cpu);
- 
- void simulate_rdmsr(CPUX86State *env);
- void simulate_wrmsr(CPUX86State *env);
-+bool simulate_fast_path_apic_mmio(bool is_load, uint32_t apic_register_idx,
-+                                  CPUX86State *env, x86_decode* decode);
- 
- target_ulong read_reg(CPUX86State *env, int reg, int size);
- void write_reg(CPUX86State *env, int reg, target_ulong val, int size);
+     printf("%llx: failed to decode instruction ", env->eip);
+     for (int i = 0; i < decode->opcode_len; i++) {
+-        printf("%x ", decode->opcode[i]);
++        printf("%02x ", decode->opcode[i]);
+     }
+     printf("\n");
+     VM_PANIC("decoder failed\n");
 -- 
 2.39.3 (Apple Git-146)
 

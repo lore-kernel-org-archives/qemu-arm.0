@@ -1,84 +1,85 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2794008njb;
-        Mon, 9 Dec 2024 10:31:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXaJeyLnC87SJD2WKRgI6EMSq0ZAzwpLim9ijFCikIExp5RtbuMyKkkao3rk1VLAad4biLSwiDiVtuREg==@linaro.org
-X-Received: by 2002:a05:6a00:1403:b0:725:9f02:4899 with SMTP id d2e1a72fcca58-725b81f25e2mr19446123b3a.22.1733769068209;
-        Mon, 09 Dec 2024 10:31:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733769068; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2794026njb;
+        Mon, 9 Dec 2024 10:31:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVnU9QIYag76yWitritR+nufb5TQbzvZbyKaRJv5onExlVegE2NvuLiEWbf1Wbk8WDDt87flxdEuQcxCA==@linaro.org
+X-Received: by 2002:a05:6a00:a8f:b0:725:41c4:dbc7 with SMTP id d2e1a72fcca58-728888ce9cemr673409b3a.4.1733769069285;
+        Mon, 09 Dec 2024 10:31:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733769069; cv=none;
         d=google.com; s=arc-20240605;
-        b=idjOCUtQkAdxceDFtX+YLsi7ilrJ5DFUcDNf5boROIgj1wVOyVvKxvMcK1IUY8FT+W
-         3XKGiUlgyPJsjBdbl+6++yOvPdqnFwQxx1RwVCc898dlmyYhDuC8CleWK5+plUoG35EG
-         p6NzNHN9yoMmIfTm5kLq3FYvGHrR8NP7BpWgJkrcq4dgl8OL+mXEo0L3vwSalR64DSP4
-         V2Lg9cvX3AJLIeYPxfQG0J1ts7cinFRUAGtghroyEO9OvTJ16LQh5VA2vxeCCN7aYY/M
-         UTHClYrYk+hbQUIm2txB8Ftri4p9qqv5e25RIaXVYueT5FesNuJ6XSaQenYkFLmsqGBL
-         n6ow==
+        b=D5U/4ZFAm5Gy7Y82AhEA5kZ3cS86kQICo4MpczWgp9WHe/aJxtrMisUeo5gJoNoNSQ
+         J+osK1CFaakmQDGfWkeBQL/RLx3ibxJH3wIBmy4yt85mzFvzQ2boglfM5SNltvdJc/pm
+         sRsKXiGKJwlyyyRiwfLHWNrpQ64YN/RQSzf3oVjoFzTXH2cI77yGTq6yUqDTxtw7D5Aq
+         loXcICrBRY5nM/4Mumlr8YqppG/DgH2c+ploTeSPeJ++sDUg3Ttyl9XN4neE1Bzk4HjC
+         PPEO0pdeeNTdxzxLTtNaSAXMxzhn6Om2FFvznmVIJVyOS6fvnerMBWdHkxwfYK+LZ/3c
+         Ihag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=PZqZBHwarWuFysN6iWztZx7iVOB2C8528xQYw/i/7uM=;
-        fh=ha6BdIbbLTEDnBWYalOMB4sJ/2ML9eaF9IF9jLDr+tw=;
-        b=Bbp1H7uJIpqte36rX3XgW0GmCVHGUqKwtlLTYP+Zvpd6cK73NhDjeEZKtm9eRl3u0X
-         wt3MaV1mTqve/bdlrnaHX6vCUBkSg6km5xqsiBlhaLaSd/XcYhACUVkICGPVVwcZ6Xb/
-         zINxfvEYXnfZL3RHVNLap/wHJh7K3eN3is5XOYPI0VEnEjCgunFFfeMO+37uxlxGhITE
-         d5Z+sgPig2FP19c58WuLkMIU/vHM4FLTe/yG5kdJVszyWhpz8x35+lkfMidxGVYOh6EX
-         lWbheXu8I2b6Bx0Y+16H62EuDL9Bm4qM7gLiHG5bFXS79l1SrpU2f8UBg+0q35vxw43t
-         4v1w==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=KJHfvwnJg5sZrvdjrL2PvGyTWu88t+rIUYQX6WpdBU0=;
+        fh=hL1C7UoU+s2bG3fSRHH4oa7NlTssfWVlMDDTBIPCsJQ=;
+        b=BI48/3VAUPR63jExq0YTgvzVV/eA9TXEaoaBCX7QLveprOwqwT++PTvnU+AyhMZCGd
+         KmXwT+bpNgxA5XjxMnB3R6HwOamc4zpbHkgtedSGL5bRKes28346hiGKYqx4jPpKYwF9
+         obiPMMZ/CTQ59IBtnJ5f2EDO3P8YQdoo6OlT+b7cQNKpvQdkLmq/fknF5vpDHrMa4spO
+         uTvKs47R31ehIQnpj0aatpNTrPCVyKTxV9Rl+yAE0WGWkUNcrt2DowVUJptWlUClHlyw
+         pzTpy+Esq+rJjyEGLJAsoK7LdS0We4A/O93rC47ZT1brflVxojvD7z0vUdoFF0fvzIvs
+         fEGA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="AYXL2P/J";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ZF3F/H2r";
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-725a2a101fcsor6044496b3a.1.2024.12.09.10.31.08
+        by mx.google.com with SMTPS id d2e1a72fcca58-725ef9ea81esor1312956b3a.2.2024.12.09.10.31.09
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 09 Dec 2024 10:31:08 -0800 (PST)
+        Mon, 09 Dec 2024 10:31:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="AYXL2P/J";
+       dkim=pass header.i=@linaro.org header.s=google header.b="ZF3F/H2r";
        spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733769068; x=1734373868; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=PZqZBHwarWuFysN6iWztZx7iVOB2C8528xQYw/i/7uM=;
-        b=AYXL2P/JJtsubwJBQlMT6kRe8DRSUFgg+1uKvxOgHARe+OrieLrHh+YRXOmvjO3Vgi
-         7uOmj+ctrVC5qkOUTOfL6tZPsHZO0W7a+NTJvynPjRL8pR1u29PkBfeZgBGwmoJWNhy+
-         oSyLJDbs+8pX0MHd2xwjDKoHmsyeRouuDUhdDFrNq+rAyn0e8avXlGCHGxCMmZDWJ2RK
-         unSzo1lyW3Y+QQ+0wF3+3Mi+XA+XDvAtr2fXXqbqzFwfLTGwWiY07LGWi7/tv08b/GCc
-         qNqEII7Ay0sfEAtvJ6BngXV0CXPxqj7/1DlaUARxVyK294U1RV9PnqscYJpd0+Vwj6Uo
-         4JCA==
+        d=linaro.org; s=google; t=1733769069; x=1734373869; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KJHfvwnJg5sZrvdjrL2PvGyTWu88t+rIUYQX6WpdBU0=;
+        b=ZF3F/H2r6WuwzMnxaji2qdkUuvTqB5PYx0u8R9H+jk0z3L5fW2u+AnSR4aXxhVhOLY
+         vQswmaTZWVvbw5tZipr8QKWuLXRViqDpiooLebd+Dei5wxkpFdFQLVEeWw6FN0Ng5/09
+         50E57pH/KZCPB2GFb8NCv5fYpyv12m7qM0uB5TIE3HZl/Zot2G5wuEPH8tu24FnwMzmV
+         itwYmCUM6B1bvCcYapIFhN/yf/7DTCh4DwpbI3uCfX7SFbAhOKgF30OFO2uJNDDanx5c
+         4wIu0KbaQAqHaVa//lmuAWwTEfjdMhKjIdaVvhrbK0PYUCTaQqxj4iZqbTll9cBDHT6H
+         RKsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733769068; x=1734373868;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=PZqZBHwarWuFysN6iWztZx7iVOB2C8528xQYw/i/7uM=;
-        b=bMd/b1FH+5uMoZ3fst7KDnum6E8mNmTj2BHyP6VArqPAsi64+B9Biyrl3IvZ95t2eM
-         q8BauQNrNHJw50fWnv+d1aSeVcYPukWnoadw+/VcDQjxeXxIV55tdpYwhC5xyZSquX4w
-         oyid3QYw7fYCIe5K/lQs0FJHYDd3t1v/uEbbN5tGzSidtwVvkBaeoDOvz574zfUyBPiG
-         2aHCDn+X6Uwc2p/7wMxNeSMIHiSOiUlhGMBwSIFG0q4nIT9TQDfdd4OxofFLOd+ND5ma
-         eDDyO9qMyVnF5/4iHtmN8zniLFwN45tra49UHsdojFKhUYjJvxEQvYyzKCDMUc+M/O9k
-         q+CA==
-X-Forwarded-Encrypted: i=1; AJvYcCUrwxCd2HS/BB3hBXrsAASns2Tchif9F38gmVnIuW3VdKriqYUVIfsYk0U1vDzd3PwtQUtlhtG4d2W6Nw==@linaro.org
-X-Gm-Message-State: AOJu0YyShPjuCIQEP0Uq6rOzfpKZWD3haHmLU54AX4LycfNinX7RTZhR
-	y4GgacLY3Plt/eMRkwn1v+YXxBIegSlF8a4gFWzY9Sq4ewuMihKYlLAzgWxLFYgjng==
-X-Gm-Gg: ASbGncs+9+ZBaqnSCQdRfQGqyFbNaw5blf2G2IdtPjSGyiet88MgAVLI/d3vcKoMEb5
-	sRoCOY11zJPgf4WXu5rhRNT9FCYXBI15vwv5QsPfvUjtEbvxICKFyi5rIbD0Norz8tTB9HrBBZD
-	xwS+eRgbCXpct/IE9HLBoXu6GxnT9D6zItvqrmh53VX+qnOmUHwidIVKIBbJcTnihbVlb3kbQtv
-	K9IX5gmZmv6PC+KPgbO3j16yBYUuW4xk5k+9WFn+/4WCKLhJfwmzUD6YfmKCsoYK5sP5Ub6xmFd
-	90B3DVJm
-X-Google-Smtp-Source: AGHT+IFpHUUfQEGoFuUDLNn5zxgwOTzLoQsIq3M53PXqhUwrAI2CmruVHac2HmDdLItmBcpygAm3eA==
-X-Received: by 2002:a05:6a00:2d0b:b0:724:6cd2:cdcf with SMTP id d2e1a72fcca58-725b81f2d33mr20069380b3a.24.1733769067681;
-        Mon, 09 Dec 2024 10:31:07 -0800 (PST)
+        d=1e100.net; s=20230601; t=1733769069; x=1734373869;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=KJHfvwnJg5sZrvdjrL2PvGyTWu88t+rIUYQX6WpdBU0=;
+        b=YLP9/yA9GD0MolOKU9uhCjNFyz0H/GrqVfoEkgFPD1iOjyb0zie3eLOrc71e9GtAo6
+         R/ah/nCXDBJSlAWWHOnHhM46zqme281DkWOp/NQWSAj4tNB2nS03IATHOimN5IaRFDOt
+         70B3wLDhO5Xwq7rIxwA/BgYk+x7m9YO8mWne1/8Zb39m57nOcjBpUk0QdJ8DksdsNwcb
+         iswHYdtE6VJEZE1LK5CCY4BlMvdD40Agq43A5RP9OlnpHmySBGwCjwhAZ/8OjKtKBHV6
+         eu6v9YKlQf6bz67Lz4pHW/kP+KTPXvuBgNLwtWd5aDyAipXuRJXNJn9otNQmqGna/18u
+         ROCw==
+X-Forwarded-Encrypted: i=1; AJvYcCWR4MNx/jNHWUtAPhvvJbQbKCtNqWOaMdi1gxKF4wrBIwYmG10gE++o5VA7KmMGnlMHganBk8SQXpoSIw==@linaro.org
+X-Gm-Message-State: AOJu0YzS0gve4cTL8YmDP/qQGdPgzeEEa3+gfybveB84UJwLMo/zLVMS
+	h5CjDX0S/BNnqk61dFqhQgb0KtxE5DuvCC4R6RTlleLZ87hOHP9AHI4SLxTIm3dMNA==
+X-Gm-Gg: ASbGncsbBSksqudIyyy+t/zU5yTFQRq81yN5jzy7mrwFdhDtFbL2LklCBlX2Lt6nYo3
+	wNgVxcr3+FtWtYpUg3j0XCrwxhaq/pMQLcX/X3YJYWypW0QGN49dIGJWZGGHWxoFkaF0O+DfpiB
+	SD/680n+/4yDWcHAeU2Na49XHS+wjd7rtEsliGzT1NWimXHSz8O9zzDgDKW6KYGPSjNvx0rWPBr
+	y3ZVWBurPClGzq5V4QcvLdhxYtw8HKu8k4eytCt+2S1TlPz5Hor2spU8I6Vg3u9ykNSmOcgglFw
+	fl6otB/eRz1F
+X-Google-Smtp-Source: AGHT+IH0W32vCMU/REHgWwitNQj0RdYViGRDdgZtnn1QKAsNMZMXRkehKM+GP8TM3mJLL1QW2KCPyw==
+X-Received: by 2002:a05:6a00:4513:b0:725:4a1b:38ec with SMTP id d2e1a72fcca58-7288810e22fmr752631b3a.3.1733769068840;
+        Mon, 09 Dec 2024 10:31:08 -0800 (PST)
 Return-Path: <pierrick.bouvier@linaro.org>
 Received: from pc.. (216-180-64-156.dyn.novuscom.net. [216.180.64.156])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725e2388d37sm3322821b3a.73.2024.12.09.10.31.06
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-725e2388d37sm3322821b3a.73.2024.12.09.10.31.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Dec 2024 10:31:07 -0800 (PST)
+        Mon, 09 Dec 2024 10:31:08 -0800 (PST)
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: manos.pitsidianakis@linaro.org,
@@ -104,99 +105,38 @@ Cc: manos.pitsidianakis@linaro.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>,
 	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 0/6] Enhance documentation for new developers
-Date: Mon,  9 Dec 2024 10:30:58 -0800
-Message-Id: <20241209183104.365796-1-pierrick.bouvier@linaro.org>
+Subject: [PATCH v4 1/6] docs/devel: remove dead video link for sourcehut submit process
+Date: Mon,  9 Dec 2024 10:30:59 -0800
+Message-Id: <20241209183104.365796-2-pierrick.bouvier@linaro.org>
 X-Mailer: git-send-email 2.39.5
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20241209183104.365796-1-pierrick.bouvier@linaro.org>
+References: <20241209183104.365796-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: WvYGdGSmVtcv
+X-TUID: mtgnWcbuJu63
 
-This series extends our documentation with new pages to help developers
-onboarding on QEMU. It focuses on providing a big picture of QEMU (to a
-modest extend).
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ docs/devel/submitting-a-patch.rst | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-As such, it was written to be simple, short, easy to understand, and pointing to
-more details. It provides another way to dive into details instead of simply
-hitting the "search" box.
-
-The first patches enhance the existing developer section. They provide
-information about b4 and git-publish, two important tools that I learnt from my
-coworkers, and were not presented anywhere, and were really missing IMHO.
-
-Then, we introduce a new Codebase page, presenting (succintly) the various parts
-of QEMU, and what every folder of the codebase contains.
-We then add a glossary with the most recurrent acronyms we hear in our daily
-conversations on the mailing list.
-Finally, we add an "How-to" page which present how to build and test qemu, and
-how to contribute a patch. It's definitely a repetition of existing information,
-but the goal was to have a self contained page with all the commands I run
-daily personally, and that someone would be interested to have.
-
-When reviewing, please keep in mind this is targeting someone who discovers
-QEMU, and not someone who contributed to the project for several years. What is
-obvious for you will not be obvious for a random young developer.
-
-That said, please free to point if something is "false", or "really incomplete".
-It can be hard to summarize in one or two sentences complex parts, but that's
-the intent here.
-
-Your feedback on content or organization is very welcome!
-
-Thanks,
-Pierrick
-
-v2:
-- removed how-to section
-- integrated all suggestions from Daniel and Peter (thanks for all your comments)
-- Note: build environment keeps mentioning windows-arm64 because we solved the
-  issue with gcc_struct attribute. The related series will be merged before this
-  documentation.
-
-v3:
-- added a comment about git-publish asked by Daniel.
-
-v4:
-- add suggestion from Thomas for codebase and message-id.
-
-Pierrick Bouvier (6):
-  docs/devel: remove dead video link for sourcehut submit process
-  docs/devel: add git-publish for patch submitting
-  docs/devel: add b4 for patch retrieval
-  docs/devel: add information on how to setup build environments
-  docs: add a codebase section
-  docs: add a glossary
-
- docs/about/build-platforms.rst         |   4 +-
- docs/about/emulation.rst               |   2 +
- docs/devel/build-environment.rst       | 118 +++++++++++
- docs/devel/codebase.rst                | 220 +++++++++++++++++++
- docs/devel/control-flow-integrity.rst  |   2 +
- docs/devel/decodetree.rst              |   2 +
- docs/devel/ebpf_rss.rst                |   2 +
- docs/devel/index-build.rst             |   1 +
- docs/devel/index-internals.rst         |   2 +
- docs/devel/index.rst                   |   1 +
- docs/devel/migration/main.rst          |   2 +
- docs/devel/multi-thread-tcg.rst        |   2 +
- docs/devel/qapi-code-gen.rst           |   1 +
- docs/devel/submitting-a-patch.rst      |  44 +++-
- docs/devel/testing/main.rst            |   9 +-
- docs/devel/testing/qtest.rst           |   2 +
- docs/glossary.rst                      | 280 +++++++++++++++++++++++++
- docs/index.rst                         |   3 +
- docs/interop/qemu-ga.rst               |   2 +
- docs/system/arm/virt.rst               |   2 +
- docs/system/images.rst                 |   2 +
- docs/system/qemu-block-drivers.rst.inc |   2 +
- docs/tools/qemu-nbd.rst                |   2 +
- docs/tools/qemu-storage-daemon.rst     |   2 +
- docs/user/main.rst                     |   6 +
- 25 files changed, 709 insertions(+), 6 deletions(-)
- create mode 100644 docs/devel/build-environment.rst
- create mode 100644 docs/devel/codebase.rst
- create mode 100644 docs/glossary.rst
-
+diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
+index 10b062eec26..03b2ac298aa 100644
+--- a/docs/devel/submitting-a-patch.rst
++++ b/docs/devel/submitting-a-patch.rst
+@@ -252,10 +252,7 @@ patches to the QEMU mailing list by following these steps:
+ #. Send your patches to the QEMU mailing list using the web-based
+    ``git-send-email`` UI at https://git.sr.ht/~USERNAME/qemu/send-email
+ 
+-`This video
+-<https://spacepub.space/videos/watch/ad258d23-0ac6-488c-83fc-2bacf578de3a>`__
+-shows the web-based ``git-send-email`` workflow. Documentation is
+-available `here
++Documentation for sourcehut is available `here
+ <https://man.sr.ht/git.sr.ht/#sending-patches-upstream>`__.
+ 
+ .. _cc_the_relevant_maintainer:
 -- 
 2.39.5

@@ -1,328 +1,144 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2445677njb;
-        Mon, 9 Dec 2024 01:28:01 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWSTQn7BaD9FOClHeEK5yFx9zmWpW/lrhaY2+GNGWYRS7xWP7/EQsJVgxVUU67A/76iEB2Fb4FSTb9F/A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGTXTjUSZeNGP7fdigQm4uSQ4ew2l9Yd4/AP4Bg0rKA25sR7Hl6TOj+9GTjBxlxCf2LjXFU
-X-Received: by 2002:a05:6214:1c4a:b0:6d8:ae2c:504d with SMTP id 6a1803df08f44-6d8e71b9696mr229390576d6.41.1733736481546;
-        Mon, 09 Dec 2024 01:28:01 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733736481; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp2465853njb;
+        Mon, 9 Dec 2024 02:15:17 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCV0KaKMpDW0Q7M/H/795sYKt9xT/nXvm8FilOkf82scqA3x4PWkL1rjqrct35O3D8kJYHNmRcb4sGA0Sg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFh/P6Owg2VjXo6A545QfEj8JkdVzUNwHCROWEFO4BK3AwKOeI9atGDT3Tam19AEjMNouvb
+X-Received: by 2002:a05:622a:6684:b0:467:4b94:cfaf with SMTP id d75a77b69052e-4674b94d38emr91642611cf.51.1733739317400;
+        Mon, 09 Dec 2024 02:15:17 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1733739317; cv=pass;
         d=google.com; s=arc-20240605;
-        b=ReWWZZKPBO5UrIvP+ryqhh5p52QB2UT0A+VGDNiV1Ajy3BB8moJo3PxSLty52Xlqec
-         1nBCYgb/G7Ujzf9omi4mjTOZV+MbQ83EF8Vnkw2V0UWKOhGcXE/n5/YtgLtAppH1StCZ
-         LsgCYmWKVKbf/mxCBcqLQv0FKiYXFBTJWeKgGR9Pje4f5nwNkJ784cWcftSKY6TnEhOQ
-         BArhIm4JzdtXSNttg2iYe0X8m6L1uQ2PVP56NW0ZUEDkw/Sol8F3Jvl+ipkJXV9gKpW5
-         2xDKiqz/pmsEEpBQCnt1dpIXH6WedoPo0KMTF1Hj761UEXmjIpxhzrpq7T5zGYEI0F1O
-         hSYw==
+        b=ebpGuwEW8BcJTzhiiliYgfrPI2lcKECyuWehXunl1coTQHM4i1BvCv/stGNkyKcZvx
+         nuy5QpQnIvRX8JZ3Ght+V/mkdE8X0kdP/fu0EOwVsWqmIbXIyuJx6GfaIpUC/o5xrv7M
+         tFYNKpZ+m0NPPg4Rkov5gwMgngzY3dlcBCGLuasJjoR/V5tuZvOu6mrNVIxt7GfKYxxm
+         8lkhKt8O0OlZM33HXjwonM9AvP9mNmY3KhmqwT1HS6DttIwPQbWWAvuRMLQZyLDYlEuH
+         MZhzYYlWAdXMnpWdZI9l1KavHwlwQ2I4HWumoswfcLb9PpaAzbiQFlIfWe7kNP3mlen8
+         r83w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=/kaERUJXB9VH8ayTCJKgNcIEQHtq5vum0TIIsJToE/o=;
-        fh=AJ8hn4ioKJA5lsG3NCMNx8yhntdFUmRi9f6dN5eYbeg=;
-        b=GObqHwKWWkJWJFE9p/ZLllNDQMQyHyy1JMAr4GEJ4Z3/U6hTWJauAJvLrUDYQA9Xj1
-         aRzdllqlAqePYmcWy4yXsxACZv5Re6BJrkywklz4DZ+5B6Sb5+/QpQ5YzlLuXT4ZJUci
-         Wu7Y5dZ8S3lsSwf94NYjPxniqxviZ2O0uAzX2A6lkxVmLOUNn9TxWk6GIgcr9lH0gcAD
-         lEHBK9uqc95B7mPeN9nA8EmnpWFmZ2rkC/Xthp//P9tbLj/l4834mbzGMXAnCTDH0Ai3
-         mCXs+UDlw18ZLiN3jADMBhZJCYvPpyS4F6JAhvCqJhQw2MZeYUFd3Oh24JOKvGd8Bwl+
-         AlSg==;
+         :subject:cc:to:from:date;
+        bh=gNNnm+tw+FEIijAthT7pHfNvVspmk+z50dHBuMWzUoQ=;
+        fh=D9C6Fi9/7hj7lBAsCHWNuHQ9wJ4bXwCyR67eaqZtF88=;
+        b=iRFkB7ojSQX9a0v1w1TxCfXQuQlUFaaSN+jOOue3VGaquUD5FD2UhpYW3fUMJTIcTQ
+         XF3JqHqRu0gZvtYNKy5PfT3IGhde2ARKWxXRWzERpwRePK3+pyDhbUjaIGVGvPhtxRhf
+         sGnPp43YhXfIGhX2Iynt7xJhknYlCvjFoucbIqxH6J+RGfpfSKzg3jXHchAlq5n81uyF
+         V5eNm1znq2hk4iXXgF82pOdac0NsZIt0zVoxPXy9cPf38i7dCI8B0mLoUuwpneYe3RPE
+         r/BEGnbL67c+EUb415ckt+J1HKKtJ7Iuy0Ww9nfxsleygXLhd/FVnHR/Qfipjnmk+P8V
+         mXxg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="RR81/dmv";
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-437067-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-437067-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-437067-alex.bennee=linaro.org@vger.kernel.org>
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-437168-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-437168-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-437168-alex.bennee=linaro.org@vger.kernel.org>
 Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8dac4591csi113793036d6.541.2024.12.09.01.28.01
+        by mx.google.com with ESMTPS id d75a77b69052e-4674d3d98ffsi56465171cf.288.2024.12.09.02.15.17
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Dec 2024 01:28:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-437067-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        Mon, 09 Dec 2024 02:15:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-437168-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b="RR81/dmv";
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-437067-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-437067-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-437168-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-437168-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 0B3C416329F
-	for <alex.bennee@linaro.org>; Mon,  9 Dec 2024 09:27:59 +0000 (UTC)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id DF0D7164FC6
+	for <alex.bennee@linaro.org>; Mon,  9 Dec 2024 10:15:14 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id CC935215F5F;
-	Mon,  9 Dec 2024 09:27:56 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="RR81/dmv"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 60BD8216E13;
+	Mon,  9 Dec 2024 10:15:16 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8252D2144D4
-	for <linux-kernel@vger.kernel.org>; Mon,  9 Dec 2024 09:27:56 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5741B14F12D
+	for <linux-kernel@vger.kernel.org>; Mon,  9 Dec 2024 10:15:13 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1733736476; cv=none; b=GGSWr+EUbLbHHS9FgxSrY5urYo2iVq+vxaQpEuqKLxhxaqVXvYEcbAUJEcktvSi5C98XUHwoVgpjoPy9kX3BPuOPEyhIGrzH2sR+EAWMunsSsVw7yMAIOB06bo71mlOpKxONmDTp/amvTrTo+AlnjF7C1ghXLDvlGImcxVRvqBo=
+	t=1733739316; cv=none; b=aA5yfKBDxxW28HDQSFEzPOrjWQCGxKbEVI+trpcqLj2Awc3TcqiAbiE0tPj0dYMex/6mcEgfqM1OI/EW/PHDPIf/7sdKZWBx4fk4XpFrRwiKvAgAr5UtN98GVansRn2cK0F9F3K2m5X2VBQLzvKgXLyBZmwNEYinwxbXj030Shs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1733736476; c=relaxed/simple;
-	bh=dzYUBItc4irdACdEPJd49K0RlN9o6WNX96pXvrHVGak=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=C0tzaD8yptPTZzSMTT+DXtmQa8uTsi252joh1nLfNBoEml9YvCH8gOaTGriE52L/yGpGT1tDWbc+md7i69pwUv21pXz3Q0HN0WYbnkZd9o3XOSQPcn/Locd3+8fz6CVPfD+SRh3DMCY+xvqEuEJO+EwEeWUqRS4YaZAGWK0Ij1w=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=RR81/dmv; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0977FC4CED1;
-	Mon,  9 Dec 2024 09:27:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1733736476;
-	bh=dzYUBItc4irdACdEPJd49K0RlN9o6WNX96pXvrHVGak=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=RR81/dmv+dBfwl8aSlkPenAiQgPdAO67pgFqilnYYneyuLTq3oJ8UbEuD6vUGtiKA
-	 ZwQa4einWUMG9dVddbKqKN3qwnaEO/Wn5OP24JfMV7+6kK0TCCXvJ6rJ1QCGEfu7Ul
-	 l2QBCZLJvuSDV2ifF4NAmm9eEcT3AqbV9Qi04A9FwhI7+dYQHG+zNLqXB+MlMOUSE9
-	 ynV8Q658MAEdzsqdat5gFx9v4QYaLJavhlaPcEDTR1flaSi5dr5s2skfUyng6841YV
-	 IisT2N+F/S3pwx3jF3lpBAsmNpGa7+P7G2xlhH1ILPXKWZ7mbXsB7eR1Ju10uits/+
-	 OMI2VAnCsKWpw==
-Date: Mon, 9 Dec 2024 10:27:50 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+	s=arc-20240116; t=1733739316; c=relaxed/simple;
+	bh=e2BIJ6svlRpJT4zzT6x2Si6sF7SK2oPCINx6ChrmOQQ=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=pelYYi6fodSMnB1unUHoe0TpEK38lBhZ8I4GD+S0IC4HtloPdtZ72j3z5jLUV/iW08jTH1UEtCGuYl3Ycn4jiD/1f051iT0ctx35j0z8ElUMcxyOQVph/Gppoxpk3fYeNp/LA7QNP9XG+nnKvrvtud82am3+TucBK1PaPX0tiEI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Y6HlV2Zj2z6LDHp;
+	Mon,  9 Dec 2024 18:14:14 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 6BE9A1402DB;
+	Mon,  9 Dec 2024 18:15:05 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Mon, 9 Dec
+ 2024 11:15:04 +0100
+Date: Mon, 9 Dec 2024 10:15:03 +0000
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 To: Igor Mammedov <imammedo@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v4 13/15] acpi/ghes: move offset calculus to a separate
- function
-Message-ID: <20241209102750.03bc6ec5@foz.lan>
-In-Reply-To: <20241204102413.31c8d76d@imammedo.users.ipa.redhat.com>
-References: <cover.1732266152.git.mchehab+huawei@kernel.org>
-	<e5661a6383449675b28e15c8479ebca42c939368.1732266152.git.mchehab+huawei@kernel.org>
-	<20241203125143.7171892a@imammedo.users.ipa.redhat.com>
-	<20241203144730.47b8ca86@foz.lan>
-	<20241204085440.4640a476@imammedo.users.ipa.redhat.com>
-	<20241204095635.512a44d5@foz.lan>
-	<20241204102413.31c8d76d@imammedo.users.ipa.redhat.com>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+CC: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, Shiju Jose
+	<shiju.jose@huawei.com>, "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha
+	<anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+	<linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
+	<qemu-devel@nongnu.org>
+Subject: Re: [PATCH v5 08/16] acpi/ghes: don't check if physical_address is
+ not zero
+Message-ID: <20241209101503.000010b9@huawei.com>
+In-Reply-To: <20241204141246.37a7cb9d@imammedo.users.ipa.redhat.com>
+References: <cover.1733297707.git.mchehab+huawei@kernel.org>
+	<95c0fa3fc2969daf3b6bc1f007733f11b715a465.1733297707.git.mchehab+huawei@kernel.org>
+	<20241204141246.37a7cb9d@imammedo.users.ipa.redhat.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 Precedence: bulk
 X-Mailing-List: linux-kernel@vger.kernel.org
 List-Id: <linux-kernel.vger.kernel.org>
 List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-X-TUID: SqPdAXja5wVi
+X-ClientProxiedBy: lhrpeml100005.china.huawei.com (7.191.160.25) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: plYcCA5cG+bH
 
-Em Wed, 4 Dec 2024 10:24:13 +0100
-Igor Mammedov <imammedo@redhat.com> escreveu:
+On Wed, 4 Dec 2024 14:12:46 +0100
+Igor Mammedov <imammedo@redhat.com> wrote:
 
-> On Wed, 4 Dec 2024 09:56:35 +0100
+> On Wed,  4 Dec 2024 08:41:16 +0100
 > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 > 
-> > Em Wed, 4 Dec 2024 08:54:40 +0100
-> > Igor Mammedov <imammedo@redhat.com> escreveu:
-> >   
-> > > On Tue, 3 Dec 2024 14:47:30 +0100
-> > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > >     
-> > > > Em Tue, 3 Dec 2024 12:51:43 +0100
-> > > > Igor Mammedov <imammedo@redhat.com> escreveu:
-> > > >       
-> > > > > On Fri, 22 Nov 2024 10:11:30 +0100
-> > > > > Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-> > > > >         
+> > The 'physical_address' value is a faulty page. As such, 0 is
+> > as valid as any other value.
+I'm not sure what a 'faulty page' is. but code looks fine.
 
-...
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-> > > > > > +static void get_hw_error_offsets(uint64_t ghes_addr,
-> > > > > > +                                 uint64_t *cper_addr,
-> > > > > > +                                 uint64_t *read_ack_register_addr)
-> > > > > > +{          
-> > > > > 
-> > > > >         
-> > > > > > +    if (!ghes_addr) {
-> > > > > > +        return;
-> > > > > > +    }          
-> > > > > 
-> > > > > why do we need this check?        
-> > > > 
-> > > > It is a safeguard measure to avoid crashes and OOM access. If fw_cfg 
-> > > > callback doesn't fill it properly, this will be zero.      
-> > > 
-> > > shouldn't happen, but yeah it firmware job to write back addr
-> > > which might happen for whatever reason (a bug for example).
-> > >    
 > > 
-> > The main reason I added it is that, after the second series, it could 
-> > also happen if there's something wrong with the backward compat logic.
+> > Suggested-by: Igor Mammedov <imammedo@redhat.com>
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
+> 
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> 
+> > ---
+> >  hw/acpi/ghes.c | 4 ----
+> >  1 file changed, 4 deletions(-)
 > > 
-> > So, both here and after switching to HEST-based offsets, I opted
-> > to explicitly test.
-> >   
-> > > Perhaps push this up to the stack, so we don't have to deal
-> > > with scattered checks in ghes code.
-> > > 
-> > > kvm_arch_on_sigbus_vcpu() looks like a goo candidate for check
-> > > and warn_once if that ever happens.
-> > > It already calls acpi_ghes_present() which resolves GED device
-> > > and then later we duplicate this job in ghes_record_cper_errors()
-> > > 
-> > > so maybe rename acpi_ghes_present to something like AcpiGhesState* acpi_ghes_get_state()
-> > > and call it instead. And then move ghes_addr check/warn_once there.
-> > > This way the rest of ghes code won't have to deal handling practically
-> > > impossible error conditions that cause reader to wonder why it might happen.    
-> > 
-> > I'll look on it.
+> > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> > index edc74c38bf8a..a3dffd78b012 100644
+> > --- a/hw/acpi/ghes.c
+> > +++ b/hw/acpi/ghes.c
+> > @@ -400,10 +400,6 @@ int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+> >  
+> >      start_addr = le64_to_cpu(ags->ghes_addr_le);
+> >  
+> > -    if (!physical_address) {
+> > -        return -1;
+> > -    }
+> > -
+> >      start_addr += source_id * sizeof(uint64_t);
+> >  
+> >      cpu_physical_memory_read(start_addr, &error_block_addr,  
+> 
+> 
 
-Wrote the cleanup patch. See enclosed. I'll place it at the end of the
-second series.
-
-> > Yet, if ok for you, I would prefer dealing with this
-> > once we have a bigger picture, e.g. once we merge those tree series:
-> > 
-> > 	- cleanup series (this one);
-> > 	- HEST offset (I'll be sending a new version today);  
-> ok, lets revisit this point after this series.
-> Since at this point we should have a clean picture of how new code
-> works.
-
- 
-Thanks,
-Mauro
-
-[PATCH] acpi/ghes: Cleanup the code which gets ghes ged state
-
-Move the check logic into a common function and simplify the
-code which checks if GHES is enabled and was properly setup.
-
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-
-diff --git a/hw/acpi/ghes-stub.c b/hw/acpi/ghes-stub.c
-index 7cec1812dad9..fbabf955155a 100644
---- a/hw/acpi/ghes-stub.c
-+++ b/hw/acpi/ghes-stub.c
-@@ -16,7 +16,7 @@ int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
-     return -1;
- }
- 
--bool acpi_ghes_present(void)
-+AcpiGhesState *acpi_ghes_get_state(void)
- {
--    return false;
-+    return NULL;
- }
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index a9c5315c1936..17aada9ee352 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -420,10 +420,6 @@ static void get_hw_error_offsets(uint64_t ghes_addr,
-                                  uint64_t *cper_addr,
-                                  uint64_t *read_ack_register_addr)
- {
--    if (!ghes_addr) {
--        return;
--    }
--
-     /*
-      * non-HEST version supports only one source, so no need to change
-      * the start offset based on the source ID. Also, we can't validate
-@@ -451,10 +447,6 @@ static void get_ghes_source_offsets(uint16_t source_id, uint64_t hest_addr,
-     uint64_t err_source_struct, error_block_addr;
-     uint32_t num_sources, i;
- 
--    if (!hest_addr) {
--        return;
--    }
--
-     cpu_physical_memory_read(hest_addr, &num_sources, sizeof(num_sources));
-     num_sources = le32_to_cpu(num_sources);
- 
-@@ -513,7 +505,6 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-                              uint16_t source_id, Error **errp)
- {
-     uint64_t cper_addr = 0, read_ack_register_addr = 0, read_ack_register;
--    AcpiGedState *acpi_ged_state;
-     AcpiGhesState *ags;
- 
-     if (len > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
-@@ -521,13 +512,10 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-         return;
-     }
- 
--    acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
--                                                       NULL));
--    if (!acpi_ged_state) {
--        error_setg(errp, "Can't find ACPI_GED object");
-+    ags = acpi_ghes_get_state();
-+    if (!ags) {
-         return;
-     }
--    ags = &acpi_ged_state->ghes_state;
- 
-     if (!ags->hest_lookup) {
-         get_hw_error_offsets(le64_to_cpu(ags->hw_error_le),
-@@ -537,11 +525,6 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-                                 &cper_addr, &read_ack_register_addr, errp);
-     }
- 
--    if (!cper_addr) {
--        error_setg(errp, "can not find Generic Error Status Block");
--        return;
--    }
--
-     cpu_physical_memory_read(read_ack_register_addr,
-                              &read_ack_register, sizeof(read_ack_register));
- 
-@@ -606,7 +589,7 @@ int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
-     return 0;
- }
- 
--bool acpi_ghes_present(void)
-+AcpiGhesState *acpi_ghes_get_state(void)
- {
-     AcpiGedState *acpi_ged_state;
-     AcpiGhesState *ags;
-@@ -615,8 +598,14 @@ bool acpi_ghes_present(void)
-                                                        NULL));
- 
-     if (!acpi_ged_state) {
--        return false;
-+        return NULL;
-     }
-     ags = &acpi_ged_state->ghes_state;
--    return ags->present;
-+    if (!ags->present) {
-+        return NULL;
-+    }
-+    if (!ags->hw_error_le && !ags->hest_addr_le) {
-+        return NULL;
-+    }
-+    return ags;
- }
-diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 2e8405edfe27..64fe2b5bea65 100644
---- a/include/hw/acpi/ghes.h
-+++ b/include/hw/acpi/ghes.h
-@@ -91,10 +91,11 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-                              uint16_t source_id, Error **errp);
- 
- /**
-- * acpi_ghes_present: Report whether ACPI GHES table is present
-+ * acpi_ghes_get_state: Get a pointer for ACPI ghes state
-  *
-- * Returns: true if the system has an ACPI GHES table and it is
-- * safe to call acpi_ghes_memory_errors() to record a memory error.
-+ * Returns: a pointer to ghes state if the system has an ACPI GHES table,
-+ * it is enabled and it is safe to call acpi_ghes_memory_errors() to record
-+ * a memory error. Returns false, otherwise.
-  */
--bool acpi_ghes_present(void);
-+AcpiGhesState *acpi_ghes_get_state(void);
- #endif
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b4260467f8b9..7802c32fb7e0 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -2369,7 +2369,7 @@ void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
- 
-     assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
- 
--    if (acpi_ghes_present() && addr) {
-+    if (acpi_ghes_get_state() && addr) {
-         ram_addr = qemu_ram_addr_from_host(addr);
-         if (ram_addr != RAM_ADDR_INVALID &&
-             kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d527395csm236170905e9.17.2024.12.10.12.43.54
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434da11935asm204248395e9.37.2024.12.10.12.43.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 12:43:56 -0800 (PST)
+        Tue, 10 Dec 2024 12:43:58 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 94B3D60370;
-	Tue, 10 Dec 2024 20:43:50 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 1697760BA3;
+	Tue, 10 Dec 2024 20:43:51 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
@@ -49,49 +49,129 @@ Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH 14/20] tests/functional: update the x86_64 tuxrun tests
-Date: Tue, 10 Dec 2024 20:43:43 +0000
-Message-Id: <20241210204349.723590-15-alex.bennee@linaro.org>
+	Alistair Francis <alistair.francis@wdc.com>
+Subject: [PATCH 20/20] tests/functional: extend test_aarch64_virt with vulkan test
+Date: Tue, 10 Dec 2024 20:43:49 +0000
+Message-Id: <20241210204349.723590-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241210204349.723590-1-alex.bennee@linaro.org>
 References: <20241210204349.723590-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: QVYdW0hjQEyS
+X-TUID: IoIiHPL7wlil
 
-Now there are new up to date images available we should update to them.
+Now we have virtio-gpu Vulkan support lets add a test for it.
+Currently this is using images build by buildroot:
 
-Cc: Anders Roxell <anders.roxell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
+  https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-35-alex.bennee@linaro.org>
 ---
- tests/functional/test_x86_64_tuxrun.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ tests/functional/test_aarch64_virt.py | 83 ++++++++++++++++++++++++++-
+ 1 file changed, 80 insertions(+), 3 deletions(-)
 
-diff --git a/tests/functional/test_x86_64_tuxrun.py b/tests/functional/test_x86_64_tuxrun.py
-index 4f96139871..fcbc62b1b0 100755
---- a/tests/functional/test_x86_64_tuxrun.py
-+++ b/tests/functional/test_x86_64_tuxrun.py
-@@ -17,11 +17,11 @@
- class TuxRunX86Test(TuxRunBaselineTest):
+diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
+index 801300607c..25d11e2626 100755
+--- a/tests/functional/test_aarch64_virt.py
++++ b/tests/functional/test_aarch64_virt.py
+@@ -14,11 +14,12 @@
+ import os
+ import logging
  
-     ASSET_X86_64_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/x86_64/bzImage',
--        '2bc7480a669ee9b6b82500a236aba0c54233debe98cb968268fa230f52f03461')
-+        'https://storage.tuxboot.com/buildroot/20241119/x86_64/bzImage',
-+        'f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed5aef8')
-     ASSET_X86_64_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/x86_64/rootfs.ext4.zst',
--        'b72ac729769b8f51c6dffb221113c9a063c774dbe1d66af30eb593c4e9999b4b')
-+        'https://storage.tuxboot.com/buildroot/20241119/x86_64/rootfs.ext4.zst',
-+        '4b8b2a99117519c5290e1202cb36eb6c7aaba92b357b5160f5970cf5fb78a751')
++from qemu.machine.machine import VMLaunchFailure
++
+ from qemu_test import BUILD_DIR
+ from qemu_test import QemuSystemTest, Asset
+-from qemu_test import exec_command, wait_for_console_pattern
+-from qemu_test import get_qemu_img, run_cmd
+-
++from qemu_test import exec_command, wait_for_console_pattern, exec_command_and_wait_for_pattern
++from qemu_test import has_cmd, get_qemu_img, run_cmd
  
-     def test_x86_64(self):
-         self.set_machine('q35')
+ class Aarch64VirtMachine(QemuSystemTest):
+     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
+@@ -125,5 +126,81 @@ def test_aarch64_virt_gicv2(self):
+         self.common_aarch64_virt("virt,gic-version=2")
+ 
+ 
++    ASSET_VIRT_GPU_KERNEL = Asset(
++        ('https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
++         'download?path=%2F&files='
++         'Image'),
++        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
++
++    ASSET_VIRT_GPU_ROOTFS = Asset(
++        ('https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
++         'download?path=%2F&files='
++         'rootfs.ext4.zstd'),
++        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
++
++    def test_aarch64_virt_with_gpu(self):
++        # This tests boots with a buildroot test image that contains
++        # vkmark and other GPU exercising tools. We run a headless
++        # weston that nevertheless still exercises the virtio-gpu
++        # backend.
++
++        (has_zstd, msg) = has_cmd('zstd')
++        if has_zstd is False:
++            self.skipTest(msg)
++        self.zstd = 'zstd'
++
++        image_path_zst = self.ASSET_VIRT_GPU_ROOTFS.fetch()
++        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
++
++        image_path = self.workdir + "/rootfs.ext4"
++
++        run_cmd([self.zstd, "-f", "-d", image_path_zst,
++                 "-o", image_path])
++
++        self.set_machine('virt')
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyAMA0 root=/dev/vda')
++        self.require_accelerator("tcg")
++
++        self.vm.add_args("-accel", "tcg")
++        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
++        self.vm.add_args("-machine",
++                         "virt,virtualization=on,"
++                         "gic-version=max",
++                         '-kernel', kernel_path,
++                         '-append', kernel_command_line)
++        self.vm.add_args("-smp", "2", "-m", "2048")
++        self.vm.add_args("-device", "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
++        self.vm.add_args("-display", "egl-headless")
++        self.vm.add_args("-display", "dbus,gl=on")
++        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
++        self.vm.add_args("-blockdev",
++                         "driver=raw,file.driver=file,node-name=hd0,read-only=on,"
++                         f"file.filename={image_path}")
++        self.vm.add_args("--snapshot")
++
++        try:
++            self.vm.launch()
++        except VMLaunchFailure as e:
++            if "old virglrenderer, blob resources unsupported" in e.output:
++                self.skipTest("No blob support for virtio-gpu")
++            elif "old virglrenderer, venus unsupported" in e.output:
++                self.skipTest("No venus support for virtio-gpu")
++            else:
++                self.log.info(f"un-handled launch failure: {e.output}")
++                raise e
++
++        self.wait_for_console_pattern('buildroot login:')
++        exec_command(self, 'root')
++        exec_command(self, 'export XDG_RUNTIME_DIR=/tmp')
++        exec_command_and_wait_for_pattern(self,
++                                          "weston -B headless "
++                                          "--renderer gl "
++                                          "--shell kiosk "
++                                          "-- vkmark",
++                                          "vkmark Score")
++
++
+ if __name__ == '__main__':
+     QemuSystemTest.main()
 -- 
 2.39.5

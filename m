@@ -1,116 +1,118 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3428681njb;
-        Tue, 10 Dec 2024 08:08:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWYiWSMs9jtOKIwJzrPGDfArlp5nkKNdGwJbUKHVnZjyyvrs28G7XrANh73cnPwJvZy9LoACk5WbXEc2w==@linaro.org
-X-Google-Smtp-Source: AGHT+IEMmvvSn4zZ5Ku+QYtVBiw/wISgH49z1qtvs7XHqmliKhKogl4y/Viw7UykvYupG1O1fDaP
-X-Received: by 2002:ad4:4eaa:0:b0:6d8:9215:f462 with SMTP id 6a1803df08f44-6d91e396be1mr81825686d6.22.1733846893786;
-        Tue, 10 Dec 2024 08:08:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733846893; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3428706njb;
+        Tue, 10 Dec 2024 08:08:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXi0kgdeLTrQ7B0Rwgylo3Fm+uQZoOem3vHyoGX8WY7cbil1CwzIHY/nFWtQxmU7JeZQXwJASMD8AdM5Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IGDwHM1REvk3DbCYCD6Iz8YoLjqYti3G5zuZ0kBiZnp6NkLBiiXSYeIN1awhIQglThAkWFe
+X-Received: by 2002:a05:622a:6a95:b0:467:5016:57fa with SMTP id d75a77b69052e-46750165c50mr146457471cf.44.1733846895135;
+        Tue, 10 Dec 2024 08:08:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733846895; cv=none;
         d=google.com; s=arc-20240605;
-        b=be63viObYf2XS9i6V1sPJ/79PFgG4UVtDTfDWG/Cvsx2uT/YNBnDRsm3rQxXUumdGE
-         GPbDmvRCFE51Vbom68O0TV5aHFT5otKgTqLMcFJ07pNc/8NgD27p+LhulGflYwhM5Ec+
-         10+tKEtdQGDLYrOGUHqFMV+q+5OLhDfuDeCH8twg7nGC6iy9F4oXRW79pRdgWzyezedW
-         FIPMwSzr3xCiapIA2+0MmPVGQFf+vrWsUp6UvWNiUZpK3Z4uZWp/gJAYVD1jiCmyo+dT
-         lxwVu/kptry6KCzThkWbUXXlqu7BXwhOlfBRMIHjLplWQjNZPczbepCNp3KEP3zk3UAv
-         ZMfQ==
+        b=J77yeToP8mJstZc000v6pCyXwHH6k4jCPYFPw86FCtgWifs4GBiaZ7/9TuZBDpLFSM
+         pQgoXxOLtN4ObPsb76tlKlw50kL+C0nxzWvaxrI0mAbhqYRYSVDqbFa8nfXIu0m0Elp5
+         roerqur0Mcgvy10Cz68yIG8Upi50yDsIcP/fyDa2ZvsYJdv+nYKFa8ltadigRAaPW/87
+         3bRSEP6ecc5RbKwHe6rkDCCI1ZNYTE+eF2SZx7PoV484k/2+mDO8vCpBs+SepmLt1UAl
+         OM37muirFDJEvOTAktlNgUl11iU2B7DmllzaTxfdbxxcMLld2zZ5xKbXFfgioG+tTKOo
+         Y8fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LT6KhyB+vUkMBosuHLU40Z3OxzVZoUi/E1K2RrfIH3E=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=cUzXDjkbVjMIKc+wJd8gxE+6M7S8O+HD4GlmueymjXk8i9ca6765tjRZU5sAe2VM7c
-         UmEjdrZn+xvj6nQlJ2i7qLdMlNO/3ii5I43yIUfYzetQ25VuQbL17bRB744zCEzHoQKC
-         zaSZdMjD1smSaQgOHsuH9h0QgwJoMhcvQZhASOn2gympayy8ZEBCD+fqfVsnnVQku0lq
-         2YHObj01RvJu4GkL7GUqfIV9GpV1201k0Cr6QDArboaaEbRwh1i2sASS4Bq1jP5rJ54E
-         tCKx5PgV1ovWzE8PSi4b9S8Q3PuwE8YIm3T5PWMjqoLo9KzZHZNeb07uNexaeyy4cD64
-         oweQ==;
+        bh=/byaHlenbv2G/58kQe+Mms4UB4dFjrLQEpUg62eOH5k=;
+        fh=bm53UW3/VeXuVY34baXpGnmocCof7MET8kYWPrd2wuI=;
+        b=UDBQPCvenabMeqXBVYc3AF7Vb10ivp3V9/MXCkIvO2MXC0EvNt3sxuPehMuZg8gVd5
+         EX74vwHgD8wadyYCfZ0uKC/iOYMXjn4yhsjIeNpi1MsgS2wp5Shhyknw5l7PPGw3HZmG
+         7C+FTCqCsjmvcpUMTkTNvXIhHA64PUmit4TXBNA+Fkv2/yKl7vcQIJ3cATW1bmoqtLzx
+         4a4MHrPsEN57ntngsP9MxSPuDx1BC4CEeNNz7JY2LWzIkWRaApjXHfepMs0XmD5CK6kP
+         MPSO6oWTySMgZTOitu6MgFDFD4cyBQqEVHYMwSOhm0/LIBOkUYaEQxO/FLYdLt4iUDcL
+         gZlA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=e6jsCV+V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AXbm+zmT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4afee1911a4si1260797137.388.2024.12.10.08.08.13
+        by mx.google.com with ESMTPS id d75a77b69052e-467646fab6dsi53519121cf.139.2024.12.10.08.08.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 08:08:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2024 08:08:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=e6jsCV+V;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=AXbm+zmT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tL2kD-0001bO-HU; Tue, 10 Dec 2024 11:05:53 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tL2jt-0001Bw-Eg; Tue, 10 Dec 2024 11:05:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tL2k1-0001KJ-KV
- for qemu-arm@nongnu.org; Tue, 10 Dec 2024 11:05:41 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1tL2jr-0001Bk-G1
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2024 11:05:31 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tL2jz-0004dZ-Ot
- for qemu-arm@nongnu.org; Tue, 10 Dec 2024 11:05:41 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-434e9716feaso20306405e9.3
- for <qemu-arm@nongnu.org>; Tue, 10 Dec 2024 08:05:39 -0800 (PST)
+ id 1tL2jn-0004bn-JR
+ for qemu-devel@nongnu.org; Tue, 10 Dec 2024 11:05:30 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-434e9716feaso20302845e9.3
+ for <qemu-devel@nongnu.org>; Tue, 10 Dec 2024 08:05:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733846738; x=1734451538; darn=nongnu.org;
+ d=linaro.org; s=google; t=1733846726; x=1734451526; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=LT6KhyB+vUkMBosuHLU40Z3OxzVZoUi/E1K2RrfIH3E=;
- b=e6jsCV+V9lto265T1/jHwQi+Eqara2nkWKnT8P8YBAV0uqKLo+2Walb7yl7jAHES7S
- uq8+lxLeQaLskCGaLHMm+rU6Hz/4WWtNxnRV+k1KoQTq5Ng6AeXfLFueYfY5u4Xy84tq
- aroR/EVC0L+IQJuWg9baA5ldyTZfhMJ6UhulnZcFUmfa7U6GlIIRCYATzXTXodT1IseA
- 9pOn9W5phHQKjjKBGwS1CfFxWM1GuitJvwT6Mj6+tH3jv9/tsfzIBjSoVSucH3qI7Vn+
- l+rOHkYXIQcZCaO5AbDvYVFdWlKCr5YZJKSjZorRZlqhPLRK6ezAE2TLGpfAWYL6r6tZ
- ofWw==
+ :reply-to; bh=/byaHlenbv2G/58kQe+Mms4UB4dFjrLQEpUg62eOH5k=;
+ b=AXbm+zmTi2rcI85CX29dDitS5RfY3pQYupMTZYVFdsgmTOb1sf5rfNfL6/fOQiFhlL
+ mr1Lk15GKsbfAwmAKflopOvo1iYc/B1oqbBap2KDo+Cvt4QtU8Q3Z1PhdfWnzgR6pvHS
+ lq+OE9j01Bpn6f68FJU18OlYiI05ZqeRO404dpjxdhv3xb4TX2ScsHHrWOH8I2RWaFHj
+ ZAl+jPjXN/hEI+F5pdj/rMasFo82GMCjlMxAEqU6SuqgW76uFG6s0oPvkCfswxHG6HFR
+ mRnkQndOuCdpReBw3++UFONsastXtLrIElcdJAGsb4yQ1DFKLu5qyVkJW8dvXxWVxR3p
+ rZDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733846738; x=1734451538;
+ d=1e100.net; s=20230601; t=1733846726; x=1734451526;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=LT6KhyB+vUkMBosuHLU40Z3OxzVZoUi/E1K2RrfIH3E=;
- b=KIxGb73SCK5SiqSqBhJq75aH5h9fs0Zh3XtbJ4PtaK4BLkg8t17o5kG1Fti9gkt0xZ
- RES9cLfQD+t+VCrAJcEKhQFtF/WWX5LbcQt4DVllBCFJkNnoCUD1FZsGS+5cE7xUEeGu
- 0iPJ06bsECCSFsFIHVyF5aP12mCPYx64zlqe2SkHyhLPXBv7X88CskARLe9Cfcwk1aiX
- KHSIHvblgTIt7xB0yjejkIHpEvCc0VeS0gKJJdWqoU0SKXRRNxyZfd5DJCFlV0pUpmMt
- 2sKQ4Nsxy2m6d8XD8IwOT2zZXh9qGfZGKqho69qm9l9cTKp1TaO4uXkdYEJh3WTwnwJS
- wuDg==
-X-Gm-Message-State: AOJu0YzU83nTUT+wlS07Kzu3pzN7HyY+oi57RxmjaVPydWPtOYIfILwA
- iSSNwZA1PtZLf7a0YK+3ezdW/04uMaYTIhERwSZhBVeMw7E5nMSyZLRONTdgEFoSoYQPOwdaOeZ
- P
-X-Gm-Gg: ASbGncvYYfht7XFNOEs++jXkPLyzeXpd3uuUFXMm1NwwAHEJumqY/EUI792LzPaHL0D
- 6kog20UKeQQTxq/LHqVvlZG3h4nnGzNrw+C9mb3VSCbJQEBtJsyib0MgTqHnPjL3b7bQ42DWnQH
- Lsj6UF1OlwITO2MxO4Ivs27bZZhva/OpAn7GDz8LvFCgwU4jEK693C+jHe40IBWZs5d46kULqBj
- v8aouNudEOupvrYGOYycY20uuNHxh48wHvh4Qx/brnEkMMjjrWdKDrWgfZF
-X-Received: by 2002:a05:600c:5799:b0:434:a4b3:5ebe with SMTP id
- 5b1f17b1804b1-434dded7708mr131954605e9.24.1733846737326; 
- Tue, 10 Dec 2024 08:05:37 -0800 (PST)
+ bh=/byaHlenbv2G/58kQe+Mms4UB4dFjrLQEpUg62eOH5k=;
+ b=UsIM6esLdIDWtR/R0Oizf87DJxOEl+FOeAaZlD3mHrSA2UldXf72Ux/crnnSj0+k97
+ llYn2Xl/GPt00oeBqhgV1U0MfKbdxPoTu1e7spe0Y0h8+Hf892fNGYQCwitGX7M0neUx
+ 1EyL9eKg9uHc4+mRmC7ErzFTCSot8ZtHi3ToZeG0UP+YylsehCttuouAqtiBTB92ueVV
+ 6aZrYVeqco95+xkwnnnMW72azBVQq/GCgO9Wx9uDmFai9r0uFhbFLeTeiwTq2R2uj7h2
+ X1PIWFyDg5iTw7XTwTppUMUCfU3H2+fiOoLrvmNuWF57WlCO8ExyCNj6I9IeTzz3SP1G
+ hS1g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWZm6iNw/VjLR71zaFIOZvm7a9/df6exazqraJNs6HDeylr+K3PpiAnmRGLZAApAQd0cbhFFnYXv625@nongnu.org
+X-Gm-Message-State: AOJu0YzEv8Q8U5OHn9X/NKOxA6k3mvHcN2G31cKZVpPTDX7vCli1yYFd
+ 3yf6Ox/mh9X6hn3g86freYIJnw/tLft1gfxsSxlBv/oaV3iXB3afCqlJpwKhNgtKd2iomdfEiAe
+ w
+X-Gm-Gg: ASbGncsRszIECn1HxEycY1gswW0LC0HEnii1lOY4iEkZJGNoAlAsK0shPEkwpCqvBmV
+ mR1z/a/sSSLa3Zj+klENtIwvFhR9CYH+XH7gzjDZAf9++BiUAzR3rSZLrjPDvscAmlG3F5O8HrX
+ r3K3P0y7XLjGsgZoifgen626Iwa8qnVHkml66fBsveO8uHYx2YEEXXkogLuil9RgfjW+siWXeWk
+ BRdkX6d8CL1nNXNEpOB9pr8UTDdr4wVoYyd2CIJcuXz2Jpp7jTSTvjVgXDZ
+X-Received: by 2002:a05:600c:a0d:b0:436:1b08:4c78 with SMTP id
+ 5b1f17b1804b1-4361b085895mr6771635e9.31.1733846721907; 
+ Tue, 10 Dec 2024 08:05:21 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-434e8ec8072sm124671605e9.18.2024.12.10.08.05.33
+ 5b1f17b1804b1-434e8ec8072sm124671605e9.18.2024.12.10.08.05.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Dec 2024 08:05:33 -0800 (PST)
+ Tue, 10 Dec 2024 08:05:21 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 09/10] target/arm: Move RME TLB insns to tlb-insns.c
-Date: Tue, 10 Dec 2024 16:04:51 +0000
-Message-Id: <20241210160452.2427965-10-peter.maydell@linaro.org>
+Subject: [PATCH 06/10] target/arm: Move TLBI range insns
+Date: Tue, 10 Dec 2024 16:04:48 +0000
+Message-Id: <20241210160452.2427965-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241210160452.2427965-1-peter.maydell@linaro.org>
 References: <20241210160452.2427965-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,153 +121,756 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: VxQNYc/g7HOb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: EguU3TRCXVyl
 
-Move the FEAT_RME specific TLB insns across to tlb-insns.c.
+Move the TLBI invalidate-range insns across to tlb-insns.c.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/helper.c        | 38 --------------------------------
- target/arm/tcg/tlb-insns.c | 45 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 45 insertions(+), 38 deletions(-)
+ target/arm/cpregs.h        |   2 +
+ target/arm/helper.c        | 330 +------------------------------------
+ target/arm/tcg/tlb-insns.c | 329 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 333 insertions(+), 328 deletions(-)
 
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 722ac5bb884..fe838bcfd97 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -1142,6 +1142,8 @@ CPAccessResult access_ttlb(CPUARMState *env, const ARMCPRegInfo *ri,
+                            bool isread);
+ CPAccessResult access_ttlbis(CPUARMState *env, const ARMCPRegInfo *ri,
+                              bool isread);
++CPAccessResult access_ttlbos(CPUARMState *env, const ARMCPRegInfo *ri,
++                             bool isread);
+ bool tlb_force_broadcast(CPUARMState *env);
+ int tlbbits_for_regime(CPUARMState *env, ARMMMUIdx mmu_idx,
+                        uint64_t addr);
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index cd9f8650316..910ae62c476 100644
+index baeabb5ec73..376aa9aecd5 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -6525,14 +6525,6 @@ static const ARMCPRegInfo sme_reginfo[] = {
-       .type = ARM_CP_CONST, .resetvalue = 0 },
- };
+@@ -388,8 +388,8 @@ CPAccessResult access_ttlbis(CPUARMState *env, const ARMCPRegInfo *ri,
  
--static void tlbi_aa64_paall_write(CPUARMState *env, const ARMCPRegInfo *ri,
--                                  uint64_t value)
--{
--    CPUState *cs = env_cpu(env);
--
--    tlb_flush(cs);
--}
--
- static void gpccr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                         uint64_t value)
+ #ifdef TARGET_AARCH64
+ /* Check for traps from EL1 due to HCR_EL2.TTLB or TTLBOS. */
+-static CPAccessResult access_ttlbos(CPUARMState *env, const ARMCPRegInfo *ri,
+-                                    bool isread)
++CPAccessResult access_ttlbos(CPUARMState *env, const ARMCPRegInfo *ri,
++                             bool isread)
  {
-@@ -6550,14 +6542,6 @@ static void gpccr_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-                                      env_archcpu(env)->reset_l0gptsz);
+     if (arm_current_el(env) == 1 &&
+         (arm_hcr_el2_eff(env) & (HCR_TTLB | HCR_TTLBOS))) {
+@@ -4856,202 +4856,6 @@ int ipas2e1_tlbmask(CPUARMState *env, int64_t value)
+             : ARMMMUIdxBit_Stage2);
  }
  
--static void tlbi_aa64_paallos_write(CPUARMState *env, const ARMCPRegInfo *ri,
--                                    uint64_t value)
--{
--    CPUState *cs = env_cpu(env);
+-#ifdef TARGET_AARCH64
+-typedef struct {
+-    uint64_t base;
+-    uint64_t length;
+-} TLBIRange;
 -
--    tlb_flush_all_cpus_synced(cs);
+-static ARMGranuleSize tlbi_range_tg_to_gran_size(int tg)
+-{
+-    /*
+-     * Note that the TLBI range TG field encoding differs from both
+-     * TG0 and TG1 encodings.
+-     */
+-    switch (tg) {
+-    case 1:
+-        return Gran4K;
+-    case 2:
+-        return Gran16K;
+-    case 3:
+-        return Gran64K;
+-    default:
+-        return GranInvalid;
+-    }
 -}
 -
- static const ARMCPRegInfo rme_reginfo[] = {
-     { .name = "GPCCR_EL3", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 6, .crn = 2, .crm = 1, .opc2 = 6,
-@@ -6569,28 +6553,6 @@ static const ARMCPRegInfo rme_reginfo[] = {
-     { .name = "MFAR_EL3", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 6, .crn = 6, .crm = 0, .opc2 = 5,
-       .access = PL3_RW, .fieldoffset = offsetof(CPUARMState, cp15.mfar_el3) },
--    { .name = "TLBI_PAALL", .state = ARM_CP_STATE_AA64,
--      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 7, .opc2 = 4,
--      .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_paall_write },
--    { .name = "TLBI_PAALLOS", .state = ARM_CP_STATE_AA64,
--      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 4,
--      .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_paallos_write },
+-static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
+-                                     uint64_t value)
+-{
+-    unsigned int page_size_granule, page_shift, num, scale, exponent;
+-    /* Extract one bit to represent the va selector in use. */
+-    uint64_t select = sextract64(value, 36, 1);
+-    ARMVAParameters param = aa64_va_parameters(env, select, mmuidx, true, false);
+-    TLBIRange ret = { };
+-    ARMGranuleSize gran;
+-
+-    page_size_granule = extract64(value, 46, 2);
+-    gran = tlbi_range_tg_to_gran_size(page_size_granule);
+-
+-    /* The granule encoded in value must match the granule in use. */
+-    if (gran != param.gran) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "Invalid tlbi page size granule %d\n",
+-                      page_size_granule);
+-        return ret;
+-    }
+-
+-    page_shift = arm_granule_bits(gran);
+-    num = extract64(value, 39, 5);
+-    scale = extract64(value, 44, 2);
+-    exponent = (5 * scale) + 1;
+-
+-    ret.length = (num + 1) << (exponent + page_shift);
+-
+-    if (param.select) {
+-        ret.base = sextract64(value, 0, 37);
+-    } else {
+-        ret.base = extract64(value, 0, 37);
+-    }
+-    if (param.ds) {
+-        /*
+-         * With DS=1, BaseADDR is always shifted 16 so that it is able
+-         * to address all 52 va bits.  The input address is perforce
+-         * aligned on a 64k boundary regardless of translation granule.
+-         */
+-        page_shift = 16;
+-    }
+-    ret.base <<= page_shift;
+-
+-    return ret;
+-}
+-
+-static void do_rvae_write(CPUARMState *env, uint64_t value,
+-                          int idxmap, bool synced)
+-{
+-    ARMMMUIdx one_idx = ARM_MMU_IDX_A | ctz32(idxmap);
+-    TLBIRange range;
+-    int bits;
+-
+-    range = tlbi_aa64_get_range(env, one_idx, value);
+-    bits = tlbbits_for_regime(env, one_idx, range.base);
+-
+-    if (synced) {
+-        tlb_flush_range_by_mmuidx_all_cpus_synced(env_cpu(env),
+-                                                  range.base,
+-                                                  range.length,
+-                                                  idxmap,
+-                                                  bits);
+-    } else {
+-        tlb_flush_range_by_mmuidx(env_cpu(env), range.base,
+-                                  range.length, idxmap, bits);
+-    }
+-}
+-
+-static void tlbi_aa64_rvae1_write(CPUARMState *env,
+-                                  const ARMCPRegInfo *ri,
+-                                  uint64_t value)
+-{
 -    /*
--     * QEMU does not have a way to invalidate by physical address, thus
--     * invalidating a range of physical addresses is accomplished by
--     * flushing all tlb entries in the outer shareable domain,
--     * just like PAALLOS.
+-     * Invalidate by VA range, EL1&0.
+-     * Currently handles all of RVAE1, RVAAE1, RVAALE1 and RVALE1,
+-     * since we don't support flush-for-specific-ASID-only or
+-     * flush-last-level-only.
 -     */
--    { .name = "TLBI_RPALOS", .state = ARM_CP_STATE_AA64,
--      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 4, .opc2 = 7,
--      .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_paallos_write },
--    { .name = "TLBI_RPAOS", .state = ARM_CP_STATE_AA64,
--      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 4, .opc2 = 3,
--      .access = PL3_W, .type = ARM_CP_NO_RAW,
--      .writefn = tlbi_aa64_paallos_write },
-     { .name = "DC_CIPAPA", .state = ARM_CP_STATE_AA64,
-       .opc0 = 1, .opc1 = 6, .crn = 7, .crm = 14, .opc2 = 1,
-       .access = PL3_W, .type = ARM_CP_NOP },
-diff --git a/target/arm/tcg/tlb-insns.c b/target/arm/tcg/tlb-insns.c
-index 51b4756e31e..d20d32624da 100644
---- a/target/arm/tcg/tlb-insns.c
-+++ b/target/arm/tcg/tlb-insns.c
-@@ -1181,6 +1181,48 @@ static const ARMCPRegInfo tlbios_reginfo[] = {
-       .access = PL3_W, .type = ARM_CP_NO_RAW,
-       .writefn = tlbi_aa64_vae3is_write },
+-
+-    do_rvae_write(env, value, vae1_tlbmask(env),
+-                  tlb_force_broadcast(env));
+-}
+-
+-static void tlbi_aa64_rvae1is_write(CPUARMState *env,
+-                                    const ARMCPRegInfo *ri,
+-                                    uint64_t value)
+-{
+-    /*
+-     * Invalidate by VA range, Inner/Outer Shareable EL1&0.
+-     * Currently handles all of RVAE1IS, RVAE1OS, RVAAE1IS, RVAAE1OS,
+-     * RVAALE1IS, RVAALE1OS, RVALE1IS and RVALE1OS, since we don't support
+-     * flush-for-specific-ASID-only, flush-last-level-only or inner/outer
+-     * shareable specific flushes.
+-     */
+-
+-    do_rvae_write(env, value, vae1_tlbmask(env), true);
+-}
+-
+-static void tlbi_aa64_rvae2_write(CPUARMState *env,
+-                                  const ARMCPRegInfo *ri,
+-                                  uint64_t value)
+-{
+-    /*
+-     * Invalidate by VA range, EL2.
+-     * Currently handles all of RVAE2 and RVALE2,
+-     * since we don't support flush-for-specific-ASID-only or
+-     * flush-last-level-only.
+-     */
+-
+-    do_rvae_write(env, value, vae2_tlbmask(env),
+-                  tlb_force_broadcast(env));
+-
+-
+-}
+-
+-static void tlbi_aa64_rvae2is_write(CPUARMState *env,
+-                                    const ARMCPRegInfo *ri,
+-                                    uint64_t value)
+-{
+-    /*
+-     * Invalidate by VA range, Inner/Outer Shareable, EL2.
+-     * Currently handles all of RVAE2IS, RVAE2OS, RVALE2IS and RVALE2OS,
+-     * since we don't support flush-for-specific-ASID-only,
+-     * flush-last-level-only or inner/outer shareable specific flushes.
+-     */
+-
+-    do_rvae_write(env, value, vae2_tlbmask(env), true);
+-
+-}
+-
+-static void tlbi_aa64_rvae3_write(CPUARMState *env,
+-                                  const ARMCPRegInfo *ri,
+-                                  uint64_t value)
+-{
+-    /*
+-     * Invalidate by VA range, EL3.
+-     * Currently handles all of RVAE3 and RVALE3,
+-     * since we don't support flush-for-specific-ASID-only or
+-     * flush-last-level-only.
+-     */
+-
+-    do_rvae_write(env, value, ARMMMUIdxBit_E3, tlb_force_broadcast(env));
+-}
+-
+-static void tlbi_aa64_rvae3is_write(CPUARMState *env,
+-                                    const ARMCPRegInfo *ri,
+-                                    uint64_t value)
+-{
+-    /*
+-     * Invalidate by VA range, EL3, Inner/Outer Shareable.
+-     * Currently handles all of RVAE3IS, RVAE3OS, RVALE3IS and RVALE3OS,
+-     * since we don't support flush-for-specific-ASID-only,
+-     * flush-last-level-only or inner/outer specific flushes.
+-     */
+-
+-    do_rvae_write(env, value, ARMMMUIdxBit_E3, true);
+-}
+-
+-static void tlbi_aa64_ripas2e1_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                                     uint64_t value)
+-{
+-    do_rvae_write(env, value, ipas2e1_tlbmask(env, value),
+-                  tlb_force_broadcast(env));
+-}
+-
+-static void tlbi_aa64_ripas2e1is_write(CPUARMState *env,
+-                                       const ARMCPRegInfo *ri,
+-                                       uint64_t value)
+-{
+-    do_rvae_write(env, value, ipas2e1_tlbmask(env, value), true);
+-}
+-#endif
+-
+ static CPAccessResult aa64_zva_access(CPUARMState *env, const ARMCPRegInfo *ri,
+                                       bool isread)
+ {
+@@ -7312,133 +7116,6 @@ static const ARMCPRegInfo pauth_reginfo[] = {
+       .fieldoffset = offsetof(CPUARMState, keys.apib.hi) },
  };
-+
-+static void tlbi_aa64_paall_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                  uint64_t value)
-+{
-+    CPUState *cs = env_cpu(env);
-+
-+    tlb_flush(cs);
-+}
-+
-+static void tlbi_aa64_paallos_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                    uint64_t value)
-+{
-+    CPUState *cs = env_cpu(env);
-+
-+    tlb_flush_all_cpus_synced(cs);
-+}
-+
-+static const ARMCPRegInfo tlbi_rme_reginfo[] = {
-+    { .name = "TLBI_PAALL", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 7, .opc2 = 4,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_paall_write },
-+    { .name = "TLBI_PAALLOS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 1, .opc2 = 4,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_paallos_write },
-+    /*
-+     * QEMU does not have a way to invalidate by physical address, thus
-+     * invalidating a range of physical addresses is accomplished by
-+     * flushing all tlb entries in the outer shareable domain,
-+     * just like PAALLOS.
-+     */
-+    { .name = "TLBI_RPALOS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 4, .opc2 = 7,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_paallos_write },
-+    { .name = "TLBI_RPAOS", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 4, .opc2 = 3,
-+      .access = PL3_W, .type = ARM_CP_NO_RAW,
-+      .writefn = tlbi_aa64_paallos_write },
-+};
-+
- #endif
  
- void define_tlb_insn_regs(ARMCPU *cpu)
-@@ -1219,5 +1261,8 @@ void define_tlb_insn_regs(ARMCPU *cpu)
+-static const ARMCPRegInfo tlbirange_reginfo[] = {
+-    { .name = "TLBI_RVAE1IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 1,
+-      .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVAE1IS,
+-      .writefn = tlbi_aa64_rvae1is_write },
+-    { .name = "TLBI_RVAAE1IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 3,
+-      .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVAAE1IS,
+-      .writefn = tlbi_aa64_rvae1is_write },
+-   { .name = "TLBI_RVALE1IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 5,
+-      .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVALE1IS,
+-      .writefn = tlbi_aa64_rvae1is_write },
+-    { .name = "TLBI_RVAALE1IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 7,
+-      .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVAALE1IS,
+-      .writefn = tlbi_aa64_rvae1is_write },
+-    { .name = "TLBI_RVAE1OS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 1,
+-      .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVAE1OS,
+-      .writefn = tlbi_aa64_rvae1is_write },
+-    { .name = "TLBI_RVAAE1OS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 3,
+-      .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVAAE1OS,
+-      .writefn = tlbi_aa64_rvae1is_write },
+-   { .name = "TLBI_RVALE1OS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 5,
+-      .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVALE1OS,
+-      .writefn = tlbi_aa64_rvae1is_write },
+-    { .name = "TLBI_RVAALE1OS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 7,
+-      .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVAALE1OS,
+-      .writefn = tlbi_aa64_rvae1is_write },
+-    { .name = "TLBI_RVAE1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 1,
+-      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVAE1,
+-      .writefn = tlbi_aa64_rvae1_write },
+-    { .name = "TLBI_RVAAE1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 3,
+-      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVAAE1,
+-      .writefn = tlbi_aa64_rvae1_write },
+-   { .name = "TLBI_RVALE1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 5,
+-      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVALE1,
+-      .writefn = tlbi_aa64_rvae1_write },
+-    { .name = "TLBI_RVAALE1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 7,
+-      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
+-      .fgt = FGT_TLBIRVAALE1,
+-      .writefn = tlbi_aa64_rvae1_write },
+-    { .name = "TLBI_RIPAS2E1IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 2,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_ripas2e1is_write },
+-    { .name = "TLBI_RIPAS2LE1IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 6,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_ripas2e1is_write },
+-    { .name = "TLBI_RVAE2IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 1,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+-      .writefn = tlbi_aa64_rvae2is_write },
+-   { .name = "TLBI_RVALE2IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+-      .writefn = tlbi_aa64_rvae2is_write },
+-    { .name = "TLBI_RIPAS2E1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 2,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_ripas2e1_write },
+-    { .name = "TLBI_RIPAS2LE1", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 6,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_ripas2e1_write },
+-   { .name = "TLBI_RVAE2OS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 1,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+-      .writefn = tlbi_aa64_rvae2is_write },
+-   { .name = "TLBI_RVALE2OS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+-      .writefn = tlbi_aa64_rvae2is_write },
+-    { .name = "TLBI_RVAE2", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 1,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+-      .writefn = tlbi_aa64_rvae2_write },
+-   { .name = "TLBI_RVALE2", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+-      .writefn = tlbi_aa64_rvae2_write },
+-   { .name = "TLBI_RVAE3IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 1,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_rvae3is_write },
+-   { .name = "TLBI_RVALE3IS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 5,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_rvae3is_write },
+-   { .name = "TLBI_RVAE3OS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 1,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_rvae3is_write },
+-   { .name = "TLBI_RVALE3OS", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 5,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_rvae3is_write },
+-   { .name = "TLBI_RVAE3", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 6, .opc2 = 1,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_rvae3_write },
+-   { .name = "TLBI_RVALE3", .state = ARM_CP_STATE_AA64,
+-      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 6, .opc2 = 5,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW,
+-      .writefn = tlbi_aa64_rvae3_write },
+-};
+-
+ static const ARMCPRegInfo tlbios_reginfo[] = {
+     { .name = "TLBI_VMALLE1OS", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 1, .opc2 = 0,
+@@ -9389,9 +9066,6 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     if (cpu_isar_feature(aa64_rndr, cpu)) {
+         define_arm_cp_regs(cpu, rndr_reginfo);
+     }
+-    if (cpu_isar_feature(aa64_tlbirange, cpu)) {
+-        define_arm_cp_regs(cpu, tlbirange_reginfo);
+-    }
      if (cpu_isar_feature(aa64_tlbios, cpu)) {
          define_arm_cp_regs(cpu, tlbios_reginfo);
      }
-+    if (cpu_isar_feature(aa64_rme, cpu)) {
-+        define_arm_cp_regs(cpu, tlbi_rme_reginfo);
+diff --git a/target/arm/tcg/tlb-insns.c b/target/arm/tcg/tlb-insns.c
+index 528265404de..a273c6f4b58 100644
+--- a/target/arm/tcg/tlb-insns.c
++++ b/target/arm/tcg/tlb-insns.c
+@@ -6,6 +6,7 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ #include "qemu/osdep.h"
++#include "qemu/log.h"
+ #include "exec/exec-all.h"
+ #include "cpu.h"
+ #include "internals.h"
+@@ -562,6 +563,329 @@ static const ARMCPRegInfo tlbi_el3_cp_reginfo[] = {
+       .writefn = tlbi_aa64_vae3_write },
+ };
+ 
++#ifdef TARGET_AARCH64
++typedef struct {
++    uint64_t base;
++    uint64_t length;
++} TLBIRange;
++
++static ARMGranuleSize tlbi_range_tg_to_gran_size(int tg)
++{
++    /*
++     * Note that the TLBI range TG field encoding differs from both
++     * TG0 and TG1 encodings.
++     */
++    switch (tg) {
++    case 1:
++        return Gran4K;
++    case 2:
++        return Gran16K;
++    case 3:
++        return Gran64K;
++    default:
++        return GranInvalid;
 +    }
- #endif
++}
++
++static TLBIRange tlbi_aa64_get_range(CPUARMState *env, ARMMMUIdx mmuidx,
++                                     uint64_t value)
++{
++    unsigned int page_size_granule, page_shift, num, scale, exponent;
++    /* Extract one bit to represent the va selector in use. */
++    uint64_t select = sextract64(value, 36, 1);
++    ARMVAParameters param = aa64_va_parameters(env, select, mmuidx, true, false);
++    TLBIRange ret = { };
++    ARMGranuleSize gran;
++
++    page_size_granule = extract64(value, 46, 2);
++    gran = tlbi_range_tg_to_gran_size(page_size_granule);
++
++    /* The granule encoded in value must match the granule in use. */
++    if (gran != param.gran) {
++        qemu_log_mask(LOG_GUEST_ERROR, "Invalid tlbi page size granule %d\n",
++                      page_size_granule);
++        return ret;
++    }
++
++    page_shift = arm_granule_bits(gran);
++    num = extract64(value, 39, 5);
++    scale = extract64(value, 44, 2);
++    exponent = (5 * scale) + 1;
++
++    ret.length = (num + 1) << (exponent + page_shift);
++
++    if (param.select) {
++        ret.base = sextract64(value, 0, 37);
++    } else {
++        ret.base = extract64(value, 0, 37);
++    }
++    if (param.ds) {
++        /*
++         * With DS=1, BaseADDR is always shifted 16 so that it is able
++         * to address all 52 va bits.  The input address is perforce
++         * aligned on a 64k boundary regardless of translation granule.
++         */
++        page_shift = 16;
++    }
++    ret.base <<= page_shift;
++
++    return ret;
++}
++
++static void do_rvae_write(CPUARMState *env, uint64_t value,
++                          int idxmap, bool synced)
++{
++    ARMMMUIdx one_idx = ARM_MMU_IDX_A | ctz32(idxmap);
++    TLBIRange range;
++    int bits;
++
++    range = tlbi_aa64_get_range(env, one_idx, value);
++    bits = tlbbits_for_regime(env, one_idx, range.base);
++
++    if (synced) {
++        tlb_flush_range_by_mmuidx_all_cpus_synced(env_cpu(env),
++                                                  range.base,
++                                                  range.length,
++                                                  idxmap,
++                                                  bits);
++    } else {
++        tlb_flush_range_by_mmuidx(env_cpu(env), range.base,
++                                  range.length, idxmap, bits);
++    }
++}
++
++static void tlbi_aa64_rvae1_write(CPUARMState *env,
++                                  const ARMCPRegInfo *ri,
++                                  uint64_t value)
++{
++    /*
++     * Invalidate by VA range, EL1&0.
++     * Currently handles all of RVAE1, RVAAE1, RVAALE1 and RVALE1,
++     * since we don't support flush-for-specific-ASID-only or
++     * flush-last-level-only.
++     */
++
++    do_rvae_write(env, value, vae1_tlbmask(env),
++                  tlb_force_broadcast(env));
++}
++
++static void tlbi_aa64_rvae1is_write(CPUARMState *env,
++                                    const ARMCPRegInfo *ri,
++                                    uint64_t value)
++{
++    /*
++     * Invalidate by VA range, Inner/Outer Shareable EL1&0.
++     * Currently handles all of RVAE1IS, RVAE1OS, RVAAE1IS, RVAAE1OS,
++     * RVAALE1IS, RVAALE1OS, RVALE1IS and RVALE1OS, since we don't support
++     * flush-for-specific-ASID-only, flush-last-level-only or inner/outer
++     * shareable specific flushes.
++     */
++
++    do_rvae_write(env, value, vae1_tlbmask(env), true);
++}
++
++static void tlbi_aa64_rvae2_write(CPUARMState *env,
++                                  const ARMCPRegInfo *ri,
++                                  uint64_t value)
++{
++    /*
++     * Invalidate by VA range, EL2.
++     * Currently handles all of RVAE2 and RVALE2,
++     * since we don't support flush-for-specific-ASID-only or
++     * flush-last-level-only.
++     */
++
++    do_rvae_write(env, value, vae2_tlbmask(env),
++                  tlb_force_broadcast(env));
++
++
++}
++
++static void tlbi_aa64_rvae2is_write(CPUARMState *env,
++                                    const ARMCPRegInfo *ri,
++                                    uint64_t value)
++{
++    /*
++     * Invalidate by VA range, Inner/Outer Shareable, EL2.
++     * Currently handles all of RVAE2IS, RVAE2OS, RVALE2IS and RVALE2OS,
++     * since we don't support flush-for-specific-ASID-only,
++     * flush-last-level-only or inner/outer shareable specific flushes.
++     */
++
++    do_rvae_write(env, value, vae2_tlbmask(env), true);
++
++}
++
++static void tlbi_aa64_rvae3_write(CPUARMState *env,
++                                  const ARMCPRegInfo *ri,
++                                  uint64_t value)
++{
++    /*
++     * Invalidate by VA range, EL3.
++     * Currently handles all of RVAE3 and RVALE3,
++     * since we don't support flush-for-specific-ASID-only or
++     * flush-last-level-only.
++     */
++
++    do_rvae_write(env, value, ARMMMUIdxBit_E3, tlb_force_broadcast(env));
++}
++
++static void tlbi_aa64_rvae3is_write(CPUARMState *env,
++                                    const ARMCPRegInfo *ri,
++                                    uint64_t value)
++{
++    /*
++     * Invalidate by VA range, EL3, Inner/Outer Shareable.
++     * Currently handles all of RVAE3IS, RVAE3OS, RVALE3IS and RVALE3OS,
++     * since we don't support flush-for-specific-ASID-only,
++     * flush-last-level-only or inner/outer specific flushes.
++     */
++
++    do_rvae_write(env, value, ARMMMUIdxBit_E3, true);
++}
++
++static void tlbi_aa64_ripas2e1_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                                     uint64_t value)
++{
++    do_rvae_write(env, value, ipas2e1_tlbmask(env, value),
++                  tlb_force_broadcast(env));
++}
++
++static void tlbi_aa64_ripas2e1is_write(CPUARMState *env,
++                                       const ARMCPRegInfo *ri,
++                                       uint64_t value)
++{
++    do_rvae_write(env, value, ipas2e1_tlbmask(env, value), true);
++}
++
++static const ARMCPRegInfo tlbirange_reginfo[] = {
++    { .name = "TLBI_RVAE1IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 1,
++      .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVAE1IS,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAAE1IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 3,
++      .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVAAE1IS,
++      .writefn = tlbi_aa64_rvae1is_write },
++   { .name = "TLBI_RVALE1IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 5,
++      .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVALE1IS,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAALE1IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 2, .opc2 = 7,
++      .access = PL1_W, .accessfn = access_ttlbis, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVAALE1IS,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 1,
++      .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVAE1OS,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAAE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 3,
++      .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVAAE1OS,
++      .writefn = tlbi_aa64_rvae1is_write },
++   { .name = "TLBI_RVALE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 5,
++      .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVALE1OS,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAALE1OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 5, .opc2 = 7,
++      .access = PL1_W, .accessfn = access_ttlbos, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVAALE1OS,
++      .writefn = tlbi_aa64_rvae1is_write },
++    { .name = "TLBI_RVAE1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 1,
++      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVAE1,
++      .writefn = tlbi_aa64_rvae1_write },
++    { .name = "TLBI_RVAAE1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 3,
++      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVAAE1,
++      .writefn = tlbi_aa64_rvae1_write },
++   { .name = "TLBI_RVALE1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 5,
++      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVALE1,
++      .writefn = tlbi_aa64_rvae1_write },
++    { .name = "TLBI_RVAALE1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 0, .crn = 8, .crm = 6, .opc2 = 7,
++      .access = PL1_W, .accessfn = access_ttlb, .type = ARM_CP_NO_RAW,
++      .fgt = FGT_TLBIRVAALE1,
++      .writefn = tlbi_aa64_rvae1_write },
++    { .name = "TLBI_RIPAS2E1IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 2,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_ripas2e1is_write },
++    { .name = "TLBI_RIPAS2LE1IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 0, .opc2 = 6,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_ripas2e1is_write },
++    { .name = "TLBI_RVAE2IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 1,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
++      .writefn = tlbi_aa64_rvae2is_write },
++   { .name = "TLBI_RVALE2IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 2, .opc2 = 5,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
++      .writefn = tlbi_aa64_rvae2is_write },
++    { .name = "TLBI_RIPAS2E1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 2,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_ripas2e1_write },
++    { .name = "TLBI_RIPAS2LE1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 4, .opc2 = 6,
++      .access = PL2_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_ripas2e1_write },
++   { .name = "TLBI_RVAE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 1,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
++      .writefn = tlbi_aa64_rvae2is_write },
++   { .name = "TLBI_RVALE2OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 5, .opc2 = 5,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
++      .writefn = tlbi_aa64_rvae2is_write },
++    { .name = "TLBI_RVAE2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 1,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
++      .writefn = tlbi_aa64_rvae2_write },
++   { .name = "TLBI_RVALE2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 6, .opc2 = 5,
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
++      .writefn = tlbi_aa64_rvae2_write },
++   { .name = "TLBI_RVAE3IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 1,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3is_write },
++   { .name = "TLBI_RVALE3IS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 2, .opc2 = 5,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3is_write },
++   { .name = "TLBI_RVAE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 1,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3is_write },
++   { .name = "TLBI_RVALE3OS", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 5, .opc2 = 5,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3is_write },
++   { .name = "TLBI_RVAE3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 6, .opc2 = 1,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3_write },
++   { .name = "TLBI_RVALE3", .state = ARM_CP_STATE_AA64,
++      .opc0 = 1, .opc1 = 6, .crn = 8, .crm = 6, .opc2 = 5,
++      .access = PL3_W, .type = ARM_CP_NO_RAW,
++      .writefn = tlbi_aa64_rvae3_write },
++};
++#endif
++
+ void define_tlb_insn_regs(ARMCPU *cpu)
+ {
+     CPUARMState *env = &cpu->env;
+@@ -591,4 +915,9 @@ void define_tlb_insn_regs(ARMCPU *cpu)
+     if (arm_feature(env, ARM_FEATURE_EL3)) {
+         define_arm_cp_regs(cpu, tlbi_el3_cp_reginfo);
+     }
++#ifdef TARGET_AARCH64
++    if (cpu_isar_feature(aa64_tlbirange, cpu)) {
++        define_arm_cp_regs(cpu, tlbirange_reginfo);
++    }
++#endif
  }
 -- 
 2.34.1

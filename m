@@ -1,121 +1,124 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3228002njb;
-        Tue, 10 Dec 2024 03:29:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW+Xehd+MQ+wMI4Cfp5akZ8H8CGoJ1Mzy+nUj3jB0Udxwy+i+aFvEGxizj2GzQ4z70WSO1jkw1C4GQdtw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFmZAGsNABXpxPOI/e7rZvmdy3hK5MPFzQkf/1QXentug11eMEgzYE55/Lla+70iYjywNoF
-X-Received: by 2002:a05:622a:8f:b0:467:64b9:4693 with SMTP id d75a77b69052e-46771e9afa2mr67012641cf.5.1733830151960;
-        Tue, 10 Dec 2024 03:29:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733830151; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3425722njb;
+        Tue, 10 Dec 2024 08:05:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVoWkEniYoBBV7PBHQnMSZdmiGwSxlcRsNmtBOwsAlAw8q/6fsZOy4KVHQcN+Z07qtamLH93vqCcYNdAA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF0TAB2jghZFnNI3kva4Jm2G1zaaN/s3tuJ85+LZWhE4bQO6dyoAA4AU/qNfFE5UAFKzSIe
+X-Received: by 2002:ad4:4eac:0:b0:6d4:1a6e:d343 with SMTP id 6a1803df08f44-6d91e33e897mr101887406d6.23.1733846725232;
+        Tue, 10 Dec 2024 08:05:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733846725; cv=none;
         d=google.com; s=arc-20240605;
-        b=ikZD7DvnfzpXARJUuqYhYZCg/ozI6YLMOGg/NZ11qt1lTu9H+CVXDWwM26ezVXF+yQ
-         wCtwP9fRUbSZX23l7KSJ6kK/HHD9DxHjc1ECe3pZ5toSqay2d9E4WVOmeP9M3OPIoRwB
-         osLBmy7gZTpRrRoI4s71PIq30uNxeRQRpXktEXNNbog+C+alVVVmE9UuIBXIWhc+nAwj
-         f6mCju4G13OvLyWhxuDWLA7vFr3MNghWNniMCypxXRMN239QEly9naYik2YG6sJ3DBP0
-         GXD2DjPSWJVoqiR1HLhPiBuaTkmrlbvSLncUEPkrncZ6BMef2wDh3JBOOUUuoYiN3rH9
-         xHQg==
+        b=g7YpTHveLD+C5MQ73UuadOQWiPDd2ZJIUzkQ4MPSS68pKbQMOzTaiVKzVAgxDo9S/Y
+         kWyfcLHHZjxrMjD3cbXRitls7HaFZEyQb4dEL0U9HPV7z6qRJ2Wi2OyPTVVmSFAVy+lM
+         +keg6iPuMm1aLi9uhg491Xb+zXQGvZXVEeahFjWzLupHQaUWmc0V0ogT9B2CLrFeJQfP
+         PA9s0jG3Rk8q8vv9vfVl5x6RLcKGtInpMcNcAWtbzVCIgvOzzHl+6QgXey4e/gGlGWiE
+         5RkDqcJM1LCDXe01ZUv/qoPn2ucXJH/Rd8/S8OHe0ef2ywRoRgkYOMyJOKg1EfesSFpt
+         wCkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=G2upt/6XfG8rRb+ORZkYBYsjF0vMgvUCoDjhiPvvgFI=;
-        fh=HwrSv7/ZFmQSKTx/BjapUTlbuYYJ8VTw0arX6mqwvoc=;
-        b=GsPZqJP3cApkJeEjmQ1n3IHic3ciy606zYGONMo7BthXVpMFNkaPVN7U2sW+LoRWsU
-         Dd+SU+VR6XoB6qJ4KS9D5d3XfSJ5kOHmd4HP92X7blcGEZonaaLzaZJxDeuJurLG3UIZ
-         ywN1Zd0rxLhhStxrRU46v44tnHn4yXBHhcBXv5EU/fYcpkCKyL2N8pbpBpzgBaH4AbU2
-         n2WPtwV4m5Yk4TizS+XkM4oEwKA2dUOGAqp4/RS5riXNgEn5ifTxpemv4uSVcykHcECG
-         /mbx8AhumfpQTdSWPw2Dl52iqO0U3SQYJiS1acp0C3dIOa8IBREz1lFJ2mhQ2EwXvqTF
-         tC/A==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=0nCDf9bLy33xYBPxi8KGaRSeSMxt2veFOBL2bu7e354=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=EmTdxx3PUAe9rQ21R2kSOEfH6b7kwjrbFS6hPZ1clSksvPyPQLmj9Dp2ckfMovkHCd
+         IjJdjajrBgAbfawbx2C52uqaAmxsjku3eW84tzd6/X3d7LIImneklcn0QHzYzftcly3k
+         ZQ6WzHtzrmRvaNjFATi2jsRVrX83TparPv8X+VwBw6V0vHZrpdJack4Q8Wh2+6v81rTA
+         MQ9RVHtvvAMA3pDBS4k7682E2cmcgqg3qVNRp+abu5McGxrsLlmRP00bgwIBxcvRTVCA
+         L2caMTZbimXsdJWoD9sYnQTGHrpvPoPlJCXLfb/nP8t7r3pLRlIV03q5vErBumBdDqTn
+         S3EQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=FYH5RRsp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HIXt2X9x;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46729840011si130030251cf.597.2024.12.10.03.29.11
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d8dac460d5si139220856d6.553.2024.12.10.08.05.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 03:29:11 -0800 (PST)
+        Tue, 10 Dec 2024 08:05:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=FYH5RRsp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=HIXt2X9x;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tKyQ0-0002Sm-AV; Tue, 10 Dec 2024 06:28:44 -0500
+	id 1tL2jY-0000s2-KW; Tue, 10 Dec 2024 11:05:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKyPy-0002Rz-BI
- for qemu-arm@nongnu.org; Tue, 10 Dec 2024 06:28:42 -0500
-Received: from mail-vs1-xe33.google.com ([2607:f8b0:4864:20::e33])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tL2jW-0000py-MP
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2024 11:05:11 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tKyPw-00049h-2M
- for qemu-arm@nongnu.org; Tue, 10 Dec 2024 06:28:42 -0500
-Received: by mail-vs1-xe33.google.com with SMTP id
- ada2fe7eead31-4aff31b77e8so1035881137.1
- for <qemu-arm@nongnu.org>; Tue, 10 Dec 2024 03:28:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tL2jU-0004YX-76
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2024 11:05:10 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-434ab938e37so37396725e9.0
+ for <qemu-arm@nongnu.org>; Tue, 10 Dec 2024 08:05:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733830118; x=1734434918;
- darn=nongnu.org; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=G2upt/6XfG8rRb+ORZkYBYsjF0vMgvUCoDjhiPvvgFI=;
- b=FYH5RRspBX8erai/lwJtS2KXqWICby55SEXN4gZqA09UJw61aaLGEuD/x3zr/07M/z
- ph8ecbeSUowTtd5/L8viFiZHoU+pvLyWmSy1TsOwRUv9snl+Dh6iF03czg0EXwCbpIFl
- BMfcmLEN+6MIfP70f3e9UbTCyBwr5+8esyrTgDZZHJp8mU8E5gLHNb1WRFhd8w5arnjC
- zCxNFf0QodxutOoSBG+Uh/81hMGLFe+5Ly2oitSVxUw6GyMe5J4KcztNOuwF8vDMQ/1y
- 6gkL+yh+fcO8R/aHaPcTpPAtyOfhCTRC6vdCH/BmNBripNmADNUGoD70dhh8B9ZxWhZK
- 4Tyg==
+ d=linaro.org; s=google; t=1733846707; x=1734451507; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=0nCDf9bLy33xYBPxi8KGaRSeSMxt2veFOBL2bu7e354=;
+ b=HIXt2X9xLBYWKFAkbLTiV5Vl11tdRK9731iDu9pS+EcBd22JSRIx8sCH8uoQrSjmIE
+ WsT7o790X2NaJFjZ0wCUxvutlcQcQdU1kB6WOxlLZzfH/RwdEk6XBWY7Z2HsMMSkWdxI
+ NIyjQ1nNkm+4XZsL5oPX2i+ST4u08wnBbfMnZo3YDroQWs1WLgh9zV5oQNISC9cA3nwN
+ xcNU1pz+8Owcn2/9YJc8sgPC96YfznAtFzSfTTLlh8uwMiFpKWYexWCtWfacUOa/lNc8
+ HDzzEeAe1+D/0BTO570iA+793RF6Ze7Y2ypN8rE4bRijcDCC4jFug+NTe1sHUHYuEPmQ
+ agiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733830118; x=1734434918;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=G2upt/6XfG8rRb+ORZkYBYsjF0vMgvUCoDjhiPvvgFI=;
- b=eZ6dGxGkfCSDaHsE6lZVEjK1dtUocOTbtzfiwrU+vgh0Eji0PtJ25u0KVF4qHcPkqV
- c5P5losPOw+Ts+Y4HacZQd+izm4dZ3H355agyQ2izub3RdHfuL8okKveDROj26PVURgL
- SWa5dbkXoJWSi2pL7ppMrK7uXEnk1SdHjnNVDmqxg2KOd56UmbhWw4dI80qRkqO4L5ce
- GTG/nLwsUcmwxxVxyUfzAngbg+pY1+pBD/DyXYzzj+O/3TM3hJFogYSPSFEPU/YWOYj/
- rKtTmqTr3/YH+dge7fHzgjaXkYILPeJqN6uhHd7VQCcj4guHdSPEonZQf+ijOailt2FO
- hq3w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXOrg0Ijqq56b61ORo2UqBXpJyTVEQ4dn484nA5V9457D8WNdNUD7FHbGwSUSQXc8FBYJdVm/mL7w==@nongnu.org
-X-Gm-Message-State: AOJu0YwTCPSL+mL38cJ4WIgfrf0xGHtgSJiJfxQvEIdmliUR+vL8RERv
- qIxI0g0dQwLwC0rIei/aK7NYEYriMKnGtpv7eY/Vk6g1Z6hQeYy8Crt83z+N6pHzxaYyU6ToPyI
- hLbd9Y+BdIDoWx4nQWbI9pvTjqbmN+BngzzZi
-X-Gm-Gg: ASbGnctrASUbF/S/Hfuhqq/nXYIna8IxOr6aAuFH/2RLyVSRKCupajnrIWGHoJDjBKG
- PPNvNeC8FECkM5V7waoD/ujQVg/UHEUmHDxA=
-X-Received: by 2002:a05:6102:c04:b0:4af:e61d:e228 with SMTP id
- ada2fe7eead31-4b1160c2a31mr4063814137.6.1733830118625; Tue, 10 Dec 2024
- 03:28:38 -0800 (PST)
+ d=1e100.net; s=20230601; t=1733846707; x=1734451507;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=0nCDf9bLy33xYBPxi8KGaRSeSMxt2veFOBL2bu7e354=;
+ b=pKdZECils74vGsdFfUjY92BGuVy+ujfUxs2WIU/llH7ejqn1+xsEBqkOR+MtH5hoUu
+ 92JjanB91ogBkuEgNdHF35e7ly39lPCgNJacU6BM0VuO0Mwi66aP6miA8O71vvmx/6gi
+ +L8ZC4rBQ1fC3y/t0dbXOlcx1ic8C6gErBY5EeUCVQi7DeZuyb05LehR8lFx5caZEHC7
+ K478CoSkI6rwcPC+nXuMXH7VORgnZrhagxTY7KfAl8kwbKlblWpFhCk78wC0Ia8AzHed
+ WsIaUKKlxqsZYyTvJ+PJlIsHMx9v/8b8zcXXJxvzNMJEaQxB/vn0MXqeVRCRZLQDHFUW
+ F0/g==
+X-Gm-Message-State: AOJu0Yyep1cVzM0WfohGYlSjFFPPPWovIbvQ/+lUyeK9IixJCEWJUSMz
+ 98EjIeSiMtCqWbIkFRsHUu1uVLk2IU6DKTxyLO2dkOSeRwoJAExPdnbJkE89XXxMsOsGB+AER56
+ i
+X-Gm-Gg: ASbGncvEn2jQ8s4LihoNOB8NLn0ovM/gd5FZvHBC3VQB1TRMCDuKlVIxy8Ay78k/2MG
+ p9QT7XFKNvN4DfRqA3wcDmEQb032S93os49abv5LMNHKXYSU9ANR5f/6GrZOXZ5bdea3XVOTTt2
+ 3Iy6+fLssV7lA6xVJHbt6wnIPzYouhixEzmMIM0jeXZ3oa7bVBGIXkgQWZoVFayt20bvq9Tvtdd
+ 9a7O/4G/ZUpnJf0WLtSvBtlN1RGU2k3Z/SF/tSzpHm25fZf0oM6Gh5Q8aE9
+X-Received: by 2002:a05:600c:5756:b0:434:a350:207c with SMTP id
+ 5b1f17b1804b1-434dded76fdmr122830565e9.23.1733846699623; 
+ Tue, 10 Dec 2024 08:04:59 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-434e8ec8072sm124671605e9.18.2024.12.10.08.04.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Dec 2024 08:04:57 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 02/10] target/arm: Move TLBI insns for AArch32 EL2 to
+ tlbi_insn_helper.c
+Date: Tue, 10 Dec 2024 16:04:44 +0000
+Message-Id: <20241210160452.2427965-3-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20241210160452.2427965-1-peter.maydell@linaro.org>
+References: <20241210160452.2427965-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-References: <20241209203629.74436-1-phil@philjordan.eu>
- <20241209203629.74436-10-phil@philjordan.eu>
- <3d0d87b8-d86f-4411-b1dd-7e825ec237e4@linaro.org>
-In-Reply-To: <3d0d87b8-d86f-4411-b1dd-7e825ec237e4@linaro.org>
-From: Phil Dennis-Jordan <phil@philjordan.eu>
-Date: Tue, 10 Dec 2024 12:28:27 +0100
-Message-ID: <CAAibmn2ijkbOqy-oD9F_50N4WBHQ77JadenvDfFHtREv_ReUSw@mail.gmail.com>
-Subject: Re: [PATCH 09/11] i386/hvf: Print hex pairs for each opcode byte in
- decode error
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Cameron Esfahani <dirty@apple.com>, 
- Roman Bolshakov <rbolshakov@ddn.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Alexander Graf <agraf@csgraf.de>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000529baa0628e8c8be"
-Received-SPF: neutral client-ip=2607:f8b0:4864:20::e33;
- envelope-from=phil@philjordan.eu; helo=mail-vs1-xe33.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,108 +133,276 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KBOiUwcLFeO+
+X-TUID: tQqgeMSRGmvg
 
---000000000000529baa0628e8c8be
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Move the AArch32 TLBI insns for AArch32 EL2 to tlbi_insn_helper.c.
+To keep this as an obviously pure code-movement, we retain the
+same condition for registering tlbi_el2_cp_reginfo that we use for
+el2_cp_reginfo. We'll be able to simplify this condition later,
+since the need to define the reginfo for EL3-without-EL2 doesn't
+apply for the TLBI ops specifically.
 
-On Mon, 9 Dec 2024 at 21:54, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
->
-wrote:
+This move brings all the uses of tlbimva_hyp_write() and
+tlbimva_hyp_is_write() back into a single file, so we can move those
+also, and make them file-local again.
 
-> On 9/12/24 21:36, phil@philjordan.eu wrote:
-> > From: Phil Dennis-Jordan <phil@philjordan.eu>
-> >
-> > Printing a sequence of bytes as hex with leading zeroes omitted just
-> looks odd.
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
-> >
-> > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
-> > ---
-> >   target/i386/hvf/x86_decode.c | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/target/i386/hvf/x86_decode.c b/target/i386/hvf/x86_decode.=
-c
-> > index 6c7cfc820f..f8d37f2d53 100644
-> > --- a/target/i386/hvf/x86_decode.c
-> > +++ b/target/i386/hvf/x86_decode.c
-> > @@ -30,7 +30,7 @@ static void decode_invalid(CPUX86State *env, struct
-> x86_decode *decode)
-> >   {
-> >       printf("%llx: failed to decode instruction ", env->eip);
-> >       for (int i =3D 0; i < decode->opcode_len; i++) {
-> > -        printf("%x ", decode->opcode[i]);
-> > +        printf("%02x ", decode->opcode[i]);
-> >       }
-> >       printf("\n");
->
-> Maybe we should use monitor_printf() here?
->
+The helper alle1_tlbmask() is an exception to the pattern that we
+only need to make these functions global temporarily, because once
+this refactoring is complete it will be called by both code in
+helper.c (vttbr_write()) and by code in tlb-insns.c.  We therefore
+put its prototype in a permanent home in internals.h.
 
-Or perhaps snprintf it into a buffer, then change this=E2=80=A6
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpregs.h        |  4 --
+ target/arm/internals.h     |  6 +++
+ target/arm/helper.c        | 74 +--------------------------------
+ target/arm/tcg/tlb-insns.c | 85 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 92 insertions(+), 77 deletions(-)
 
+diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+index 26c27dc5cb6..851cd045b2c 100644
+--- a/target/arm/cpregs.h
++++ b/target/arm/cpregs.h
+@@ -1143,9 +1143,5 @@ CPAccessResult access_ttlb(CPUARMState *env, const ARMCPRegInfo *ri,
+ CPAccessResult access_ttlbis(CPUARMState *env, const ARMCPRegInfo *ri,
+                              bool isread);
+ bool tlb_force_broadcast(CPUARMState *env);
+-void tlbimva_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                       uint64_t value);
+-void tlbimva_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                          uint64_t value);
+ 
+ #endif /* TARGET_ARM_CPREGS_H */
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 2adedb94777..c3a5b1385f1 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1820,4 +1820,10 @@ uint64_t gt_get_countervalue(CPUARMState *env);
+  * and CNTVCT_EL0 (this will be either 0 or the value of CNTVOFF_EL2).
+  */
+ uint64_t gt_virt_cnt_offset(CPUARMState *env);
++
++/*
++ * Return mask of ARMMMUIdxBit values corresponding to an "invalidate
++ * all EL1" scope; this covers stage 1 and stage 2.
++ */
++int alle1_tlbmask(CPUARMState *env);
+ #endif
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 6a9bf70f185..3c69225e1d9 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -438,7 +438,7 @@ static void contextidr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     raw_write(env, ri, value);
+ }
+ 
+-static int alle1_tlbmask(CPUARMState *env)
++int alle1_tlbmask(CPUARMState *env)
+ {
+     /*
+      * Note that the 'ALL' scope must invalidate both stage 1 and
+@@ -465,58 +465,6 @@ bool tlb_force_broadcast(CPUARMState *env)
+     return arm_current_el(env) == 1 && (arm_hcr_el2_eff(env) & HCR_FB);
+ }
+ 
+-static void tlbiall_nsnh_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                               uint64_t value)
+-{
+-    CPUState *cs = env_cpu(env);
+-
+-    tlb_flush_by_mmuidx(cs, alle1_tlbmask(env));
+-}
+-
+-static void tlbiall_nsnh_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                                  uint64_t value)
+-{
+-    CPUState *cs = env_cpu(env);
+-
+-    tlb_flush_by_mmuidx_all_cpus_synced(cs, alle1_tlbmask(env));
+-}
+-
+-
+-static void tlbiall_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                              uint64_t value)
+-{
+-    CPUState *cs = env_cpu(env);
+-
+-    tlb_flush_by_mmuidx(cs, ARMMMUIdxBit_E2);
+-}
+-
+-static void tlbiall_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                                 uint64_t value)
+-{
+-    CPUState *cs = env_cpu(env);
+-
+-    tlb_flush_by_mmuidx_all_cpus_synced(cs, ARMMMUIdxBit_E2);
+-}
+-
+-void tlbimva_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                       uint64_t value)
+-{
+-    CPUState *cs = env_cpu(env);
+-    uint64_t pageaddr = value & ~MAKE_64BIT_MASK(0, 12);
+-
+-    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdxBit_E2);
+-}
+-
+-void tlbimva_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+-                          uint64_t value)
+-{
+-    CPUState *cs = env_cpu(env);
+-    uint64_t pageaddr = value & ~MAKE_64BIT_MASK(0, 12);
+-
+-    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
+-                                             ARMMMUIdxBit_E2);
+-}
+-
+ static const ARMCPRegInfo cp_reginfo[] = {
+     /*
+      * Define the secure and non-secure FCSE identifier CP registers
+@@ -6248,26 +6196,6 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+     { .name = "HTTBR", .cp = 15, .opc1 = 4, .crm = 2,
+       .access = PL2_RW, .type = ARM_CP_64BIT | ARM_CP_ALIAS,
+       .fieldoffset = offsetof(CPUARMState, cp15.ttbr0_el[2]) },
+-    { .name = "TLBIALLNSNH",
+-      .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 4,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
+-      .writefn = tlbiall_nsnh_write },
+-    { .name = "TLBIALLNSNHIS",
+-      .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 4,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
+-      .writefn = tlbiall_nsnh_is_write },
+-    { .name = "TLBIALLH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 0,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
+-      .writefn = tlbiall_hyp_write },
+-    { .name = "TLBIALLHIS", .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 0,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
+-      .writefn = tlbiall_hyp_is_write },
+-    { .name = "TLBIMVAH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 1,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
+-      .writefn = tlbimva_hyp_write },
+-    { .name = "TLBIMVAHIS", .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 1,
+-      .type = ARM_CP_NO_RAW, .access = PL2_W,
+-      .writefn = tlbimva_hyp_is_write },
+     { .name = "TLBI_ALLE2", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 0,
+       .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_EL3_NO_EL2_UNDEF,
+diff --git a/target/arm/tcg/tlb-insns.c b/target/arm/tcg/tlb-insns.c
+index cdf23352d7a..66096093dcc 100644
+--- a/target/arm/tcg/tlb-insns.c
++++ b/target/arm/tcg/tlb-insns.c
+@@ -99,6 +99,25 @@ static void tlbimvaa_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     }
+ }
+ 
++static void tlbimva_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    CPUState *cs = env_cpu(env);
++    uint64_t pageaddr = value & ~MAKE_64BIT_MASK(0, 12);
++
++    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdxBit_E2);
++}
++
++static void tlbimva_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                                 uint64_t value)
++{
++    CPUState *cs = env_cpu(env);
++    uint64_t pageaddr = value & ~MAKE_64BIT_MASK(0, 12);
++
++    tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
++                                             ARMMMUIdxBit_E2);
++}
++
+ static void tlbiipas2_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                 uint64_t value)
+ {
+@@ -117,6 +136,39 @@ static void tlbiipas2is_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr, ARMMMUIdxBit_Stage2);
+ }
+ 
++static void tlbiall_nsnh_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                               uint64_t value)
++{
++    CPUState *cs = env_cpu(env);
++
++    tlb_flush_by_mmuidx(cs, alle1_tlbmask(env));
++}
++
++static void tlbiall_nsnh_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                                  uint64_t value)
++{
++    CPUState *cs = env_cpu(env);
++
++    tlb_flush_by_mmuidx_all_cpus_synced(cs, alle1_tlbmask(env));
++}
++
++
++static void tlbiall_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                              uint64_t value)
++{
++    CPUState *cs = env_cpu(env);
++
++    tlb_flush_by_mmuidx(cs, ARMMMUIdxBit_E2);
++}
++
++static void tlbiall_hyp_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                                 uint64_t value)
++{
++    CPUState *cs = env_cpu(env);
++
++    tlb_flush_by_mmuidx_all_cpus_synced(cs, ARMMMUIdxBit_E2);
++}
++
+ static const ARMCPRegInfo tlbi_not_v7_cp_reginfo[] = {
+     /*
+      * MMU TLB control. Note that the wildcarding means we cover not just
+@@ -227,6 +279,29 @@ static const ARMCPRegInfo tlbi_v8_cp_reginfo[] = {
+       .writefn = tlbiipas2is_hyp_write },
+ };
+ 
++static const ARMCPRegInfo tlbi_el2_cp_reginfo[] = {
++    { .name = "TLBIALLNSNH",
++      .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 4,
++      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .writefn = tlbiall_nsnh_write },
++    { .name = "TLBIALLNSNHIS",
++      .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 4,
++      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .writefn = tlbiall_nsnh_is_write },
++    { .name = "TLBIALLH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 0,
++      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .writefn = tlbiall_hyp_write },
++    { .name = "TLBIALLHIS", .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 0,
++      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .writefn = tlbiall_hyp_is_write },
++    { .name = "TLBIMVAH", .cp = 15, .opc1 = 4, .crn = 8, .crm = 7, .opc2 = 1,
++      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .writefn = tlbimva_hyp_write },
++    { .name = "TLBIMVAHIS", .cp = 15, .opc1 = 4, .crn = 8, .crm = 3, .opc2 = 1,
++      .type = ARM_CP_NO_RAW, .access = PL2_W,
++      .writefn = tlbimva_hyp_is_write },
++};
++
+ void define_tlb_insn_regs(ARMCPU *cpu)
+ {
+     CPUARMState *env = &cpu->env;
+@@ -243,4 +318,14 @@ void define_tlb_insn_regs(ARMCPU *cpu)
+     if (arm_feature(env, ARM_FEATURE_V8)) {
+         define_arm_cp_regs(cpu, tlbi_v8_cp_reginfo);
+     }
++    /*
++     * We retain the existing logic for when to register these TLBI
++     * ops (i.e. matching the condition for el2_cp_reginfo[] in
++     * helper.c), but we will be able to simplify this later.
++     */
++    if (arm_feature(env, ARM_FEATURE_EL2)
++        || (arm_feature(env, ARM_FEATURE_EL3)
++            && arm_feature(env, ARM_FEATURE_V8))) {
++        define_arm_cp_regs(cpu, tlbi_el2_cp_reginfo);
++    }
+ }
+-- 
+2.34.1
 
-> >       VM_PANIC("decoder failed\n");
->
->
-=E2=80=A6 to a VM_PANIC_EX() that also writes out the opcode buffer?
-
---000000000000529baa0628e8c8be
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, 9 Dec 2=
-024 at 21:54, Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@lina=
-ro.org">philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmai=
-l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
-4,204);padding-left:1ex">On 9/12/24 21:36, <a href=3D"mailto:phil@philjorda=
-n.eu" target=3D"_blank">phil@philjordan.eu</a> wrote:<br>
-&gt; From: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil@philjordan.eu" tar=
-get=3D"_blank">phil@philjordan.eu</a>&gt;<br>
-&gt; <br>
-&gt; Printing a sequence of bytes as hex with leading zeroes omitted just l=
-ooks odd.<br>
-<br>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@linar=
-o.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
-<br>
-&gt; <br>
-&gt; Signed-off-by: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil@philjorda=
-n.eu" target=3D"_blank">phil@philjordan.eu</a>&gt;<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0target/i386/hvf/x86_decode.c | 2 +-<br>
-&gt;=C2=A0 =C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-&gt; <br>
-&gt; diff --git a/target/i386/hvf/x86_decode.c b/target/i386/hvf/x86_decode=
-.c<br>
-&gt; index 6c7cfc820f..f8d37f2d53 100644<br>
-&gt; --- a/target/i386/hvf/x86_decode.c<br>
-&gt; +++ b/target/i386/hvf/x86_decode.c<br>
-&gt; @@ -30,7 +30,7 @@ static void decode_invalid(CPUX86State *env, struct =
-x86_decode *decode)<br>
-&gt;=C2=A0 =C2=A0{<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0printf(&quot;%llx: failed to decode instruct=
-ion &quot;, env-&gt;eip);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0for (int i =3D 0; i &lt; decode-&gt;opcode_l=
-en; i++) {<br>
-&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 printf(&quot;%x &quot;, decode-&gt;opcode=
-[i]);<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 printf(&quot;%02x &quot;, decode-&gt;opco=
-de[i]);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0printf(&quot;\n&quot;);<br>
-<br>
-Maybe we should use monitor_printf() here?<br></blockquote><div><br></div><=
-div>Or perhaps snprintf it into a buffer, then change this=E2=80=A6 <br></d=
-iv><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
-px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0VM_PANIC(&quot;decoder failed\n&quot;);<br>
-<br></blockquote><div>=C2=A0</div><div>=E2=80=A6 to a VM_PANIC_EX() that al=
-so writes out the opcode buffer?<br></div></div></div>
-
---000000000000529baa0628e8c8be--

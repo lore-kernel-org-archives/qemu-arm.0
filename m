@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434da0d2303sm206325185e9.3.2024.12.10.12.50.34
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434ef283e87sm127814445e9.39.2024.12.10.12.50.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 12:50:34 -0800 (PST)
+        Tue, 10 Dec 2024 12:50:35 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 036C060B9F;
-	Tue, 10 Dec 2024 20:43:51 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id D2146604EC;
+	Tue, 10 Dec 2024 20:43:50 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
@@ -50,59 +50,75 @@ Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH 19/20] tests/functional: remove hacky sleep from the tests
-Date: Tue, 10 Dec 2024 20:43:48 +0000
-Message-Id: <20241210204349.723590-20-alex.bennee@linaro.org>
+Subject: [PATCH 17/20] tests/qtest: move clock_steps to after checks
+Date: Tue, 10 Dec 2024 20:43:46 +0000
+Message-Id: <20241210204349.723590-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241210204349.723590-1-alex.bennee@linaro.org>
 References: <20241210204349.723590-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /wYJmCPpKBmh
+X-TUID: 78VbaTViF2dM
 
-We have proper detection of prompts now so we don't need to guess with
-sleep() sprinkled through the test. The extra step of calling halt is
-just to flush the final bits of the log (although the last line is
-still missed).
+In the qtest environment time will not step forward if the system is
+paused (timers disabled) or we have no timer events to fire. As a
+result VirtIO events are responded to directly and we don't need to
+step time forward.
+
+Potentially the clock_step calls could be removed all together but as
+we may implement async behaviour later lets just move them to after
+the principle check for now.
+
+Future qtest patches will assert that time actually changes with a
+step is requested.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/test_aarch64_virt.py | 22 ++++++++++------------
- 1 file changed, 10 insertions(+), 12 deletions(-)
+ tests/qtest/libqos/virtio.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
-index c967da41b4..801300607c 100755
---- a/tests/functional/test_aarch64_virt.py
-+++ b/tests/functional/test_aarch64_virt.py
-@@ -107,18 +107,16 @@ def common_aarch64_virt(self, machine):
-                          'virtio-blk-device,drive=scratch')
+diff --git a/tests/qtest/libqos/virtio.c b/tests/qtest/libqos/virtio.c
+index a21b6eee9c..64682e66b8 100644
+--- a/tests/qtest/libqos/virtio.c
++++ b/tests/qtest/libqos/virtio.c
+@@ -170,10 +170,10 @@ void qvirtio_wait_queue_isr(QTestState *qts, QVirtioDevice *d,
+     gint64 start_time = g_get_monotonic_time();
  
-         self.vm.launch()
--        self.wait_for_console_pattern('Welcome to Buildroot')
--        time.sleep(0.1)
--        exec_command(self, 'root')
--        time.sleep(0.1)
--        exec_command(self, 'dd if=/dev/hwrng of=/dev/vda bs=512 count=4')
--        time.sleep(0.1)
--        exec_command(self, 'md5sum /dev/vda')
--        time.sleep(0.1)
--        exec_command(self, 'cat /proc/interrupts')
--        time.sleep(0.1)
--        exec_command(self, 'cat /proc/self/maps')
--        time.sleep(0.1)
-+
-+        ps1='#'
-+        self.wait_for_console_pattern('login:')
-+        exec_command_and_wait_for_pattern(self, 'root', ps1)
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/interrupts', ps1)
-+        exec_command_and_wait_for_pattern(self, 'cat /proc/self/maps', ps1)
-+        exec_command_and_wait_for_pattern(self, 'uname -a', ps1)
-+        exec_command_and_wait_for_pattern(self, 'dd if=/dev/hwrng of=/dev/vda bs=512 count=4', ps1)
-+        exec_command_and_wait_for_pattern(self, 'md5sum /dev/vda', ps1)
-+        exec_command_and_wait_for_pattern(self, 'halt -n', 'reboot: System halted')
+     for (;;) {
+-        qtest_clock_step(qts, 100);
+         if (d->bus->get_queue_isr_status(d, vq)) {
+             return;
+         }
++        qtest_clock_step(qts, 100);
+         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
+     }
+ }
+@@ -192,8 +192,8 @@ uint8_t qvirtio_wait_status_byte_no_isr(QTestState *qts, QVirtioDevice *d,
+     uint8_t val;
  
-     def test_aarch64_virt_gicv3(self):
-         self.common_aarch64_virt("virt,gic_version=3")
+     while ((val = qtest_readb(qts, addr)) == 0xff) {
+-        qtest_clock_step(qts, 100);
+         g_assert(!d->bus->get_queue_isr_status(d, vq));
++        qtest_clock_step(qts, 100);
+         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
+     }
+     return val;
+@@ -219,7 +219,6 @@ void qvirtio_wait_used_elem(QTestState *qts, QVirtioDevice *d,
+     for (;;) {
+         uint32_t got_desc_idx;
+ 
+-        qtest_clock_step(qts, 100);
+ 
+         if (d->bus->get_queue_isr_status(d, vq) &&
+             qvirtqueue_get_buf(qts, vq, &got_desc_idx, len)) {
+@@ -227,6 +226,7 @@ void qvirtio_wait_used_elem(QTestState *qts, QVirtioDevice *d,
+             return;
+         }
+ 
++        qtest_clock_step(qts, 100);
+         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
+     }
+ }
 -- 
 2.39.5

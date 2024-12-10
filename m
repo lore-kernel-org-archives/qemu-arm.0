@@ -1,73 +1,73 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3185808njb;
-        Tue, 10 Dec 2024 02:05:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVInQ/1NXffmZlrXh6iBKQmS69DEIzWgNMmi6p7cd6Ary6TZcKJNhpzJtkchvJ1z+lV3rtrANRus2dxjQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGQ1ouDqNZa8mT6tsfwqc8A8d3ZOGL5kMYOLkNx8ZNH+m2SdbUAU39T/+a4zvjMd9L2dLlh
-X-Received: by 2002:a05:622a:7403:b0:467:5082:74bd with SMTP id d75a77b69052e-46750827cf4mr149076621cf.34.1733825158185;
-        Tue, 10 Dec 2024 02:05:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733825158; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3186118njb;
+        Tue, 10 Dec 2024 02:06:29 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVyTeG6A1493Hzif/1XmE/7oeBCqDvU5S8GWBVJGrHdmODeIHehtrbRxyp7k2VPGiuXbiwVJh/Ds+6hvA==@linaro.org
+X-Google-Smtp-Source: AGHT+IF4Q88r6YMFAHgP6vM2AXay2a27ACUhQCrUuvixWqoK1lujdcbgZHeERcEbpZSK1cpBfmvt
+X-Received: by 2002:a05:620a:8904:b0:79f:67b:4fdc with SMTP id af79cd13be357-7b6dcdc845fmr544708085a.2.1733825189570;
+        Tue, 10 Dec 2024 02:06:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733825189; cv=none;
         d=google.com; s=arc-20240605;
-        b=It5J0oIfOI7ihdnyCxhhKEU4up99Yghf/iC3dEMbXPmvvCQrL7M9wdmt9dtAW50r7n
-         wjrzBTj9lzHhwTOfJ1atrf1GsuwlW9kA5/LOaZzE1cf3T12MvPS3Z234Z18xIfTRmBa0
-         iEDQp1E7SgockF27omvPBa7M6/TUL/+pPX1NCXonXzou6TK3KxL/bLgRX2ape2jNaiNr
-         EdWGU2BmWBrH0wcz/6KsjET4mm0vfbpTL+WrTyOIHMSHwMXknUJqzoVW1G1KXZthXsHG
-         5UrGjxR7+FQ2USavqhl7Syzoo2bo5t8fLAk1ocPXgzEeaw5hcf9e6+ndjNwKtkbOi139
-         dhNA==
+        b=VodWMHpH9W6w2HsTOw93tjf0GJgMuBThq7hOfMdaAqLbCGOKMfCgxfGWPWu/hnovXh
+         MgYtlcPMwoPa04rxGq6noD5B6k+s49M3XUECeCvRL6sOPdaAOQ1h8nfmYAhqlBfP+2I9
+         gKN8r6Rci7eNgIyXehFCcN63U7DU2FK9UsXcASXDbayD42U8LtIbGD8twiWZm41tE0Qk
+         TcwHxces8KU5X8j453EtipGVTXisF40SHcoQ4jbthvDAhRVjDLzj3SCa/yVHJ/nAGiBM
+         IUaMh8AuG5do0KKZ2eXKPuZNV/wpRt+YMjk6bAK45ys/TSN0Jjz80CBAGTfXNiyPolv6
+         v/Ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id;
-        bh=Rl9qb4BdzAbu6XvW2CJ/Jxb2TM+gzbH927Fkpv7przk=;
+        bh=dxawAknk+GLb1Uc2ew9tWGkETrTkjFosvNC1Ldf5Jck=;
         fh=iwruolNfw9EYCheWIG5mEImJ1hs8NSnfxQVG0S1DZaY=;
-        b=QmPHGlGnFCNL6IGYp5AY2KiZV4ppjrRlcoZ20yxWJ2kuqaTHtWAPFC9xkzzobNmqqP
-         cmx5DPew08r0dkTjOxRcty1oHGvOe+5cWygTGbN9sslyjoLCo4uFYwwqFgB0aXWPP5L2
-         MT5pYg+oBbfY3knL45aDgSm86wqyMBnXDlF8Q3yUFTLiPyDyhy1n6qbqmT4kMMwmbery
-         fS2wh16X7jrfdZomFZjvj+Wx8m4QhHg+D8Jh7Yp/PEScq1SY3Utm5MRlatGuFnb4R8lJ
-         /dOKib36RgjnHJrU447DWDhqIc8Eu/8K7wpA0aOLy5TTrJFzkBTeR3JiLuaRg0hPVc26
-         rz/A==;
+        b=VVAjg0edm/ikhCwbRsZo9SQC2tOJeMPrm7M8dgo9v7dsZ6kksWwLo9OoH2yMZgm+79
+         TMiHoxk6fa/1C+5/m+F2jNTXRFxM0NnXvN9hRSQo1AgWLAjpSuP6Qe7+0+G6d0/A/xNO
+         63bkdcCGAJpqXm92Oj3g1R/zBG62DvM8Miq4TPhwjF0g8Q7fuXoYJGFmW/EqGps82oeC
+         HvibgT8n5eLwFRKdm7OmgnlSmRA4o1SiQdlSlavxYe/39xi0GnXl/hYjTfWUbagRecsY
+         9RuZ2WzyrZOs4noqtM3lMJFfr6bhVRSoh8XGlaY2T8csijAaEwo8XcL1+kTDq4WvZlqJ
+         4hng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46764ec46b2si46894091cf.92.2024.12.10.02.05.58
+        by mx.google.com with ESMTPS id af79cd13be357-7b6b5a8fcdesi1382748885a.287.2024.12.10.02.06.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 02:05:58 -0800 (PST)
+        Tue, 10 Dec 2024 02:06:29 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tKx7h-0003DS-3u; Tue, 10 Dec 2024 05:05:46 -0500
+	id 1tKx7q-0003Er-8A; Tue, 10 Dec 2024 05:05:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <agraf@csgraf.de>)
- id 1tKx7b-0003DF-FR; Tue, 10 Dec 2024 05:05:39 -0500
+ id 1tKx7k-0003E7-HS; Tue, 10 Dec 2024 05:05:48 -0500
 Received: from mail.csgraf.de ([85.25.223.15] helo=zulu616.server4you.de)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <agraf@csgraf.de>)
- id 1tKx7Z-0003J1-A3; Tue, 10 Dec 2024 05:05:39 -0500
+ id 1tKx7h-0003Jj-5g; Tue, 10 Dec 2024 05:05:47 -0500
 Received: from [0.0.0.0] (ec2-3-122-114-9.eu-central-1.compute.amazonaws.com
- [3.122.114.9]) by csgraf.de (Postfix) with ESMTPSA id 11D95608016B;
- Tue, 10 Dec 2024 11:05:26 +0100 (CET)
-Message-ID: <999d4981-4f43-4319-b9dc-3786ff250d2a@csgraf.de>
-Date: Tue, 10 Dec 2024 11:05:26 +0100
+ [3.122.114.9]) by csgraf.de (Postfix) with ESMTPSA id 1D593608016B;
+ Tue, 10 Dec 2024 11:05:43 +0100 (CET)
+Message-ID: <78e7fa99-c835-4fd3-8a2d-05209a718a54@csgraf.de>
+Date: Tue, 10 Dec 2024 11:05:42 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/11] hvf: Add facility for initialisation code prior to
- first vCPU run
+Subject: Re: [PATCH 02/11] arm/hvf: Initialise GICv3 state just before first
+ vCPU run
 To: phil@philjordan.eu, qemu-devel@nongnu.org
 Cc: Cameron Esfahani <dirty@apple.com>, Roman Bolshakov <rbolshakov@ddn.com>, 
  "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 References: <20241209203629.74436-1-phil@philjordan.eu>
- <20241209203629.74436-2-phil@philjordan.eu>
+ <20241209203629.74436-3-phil@philjordan.eu>
 Content-Language: en-US
 From: Alexander Graf <agraf@csgraf.de>
-In-Reply-To: <20241209203629.74436-2-phil@philjordan.eu>
+In-Reply-To: <20241209203629.74436-3-phil@philjordan.eu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=85.25.223.15; envelope-from=agraf@csgraf.de;
@@ -92,16 +92,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TQZ0eWN4deQb
+X-TUID: pmRB350dB9LE
 
 
 On 09.12.24 21:36, phil@philjordan.eu wrote:
 > From: Phil Dennis-Jordan <phil@philjordan.eu>
 >
-> Some VM state required for fully configuring vCPUs is only available
-> after all devices have been through their init phase. This extra
-> function, called just before each vCPU makes its first VM entry,
-> allows us to perform such architecture-specific initialisation.
+> Initialising the vCPU PFR0_EL1 system register with the GIC flag in
+> hvf_arch_init_vcpu() does not actually work because the GIC state is
+> not yet available at that time.
+>
+> If we set this flag just before running each vCPU for the first time,
+> the GIC will definitely be fully initialised at that point.
 >
 > Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
 

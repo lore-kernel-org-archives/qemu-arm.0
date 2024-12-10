@@ -1,235 +1,124 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3166306njb;
-        Tue, 10 Dec 2024 01:21:48 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCUueiL1uXTZJROFgfeQn2MCYidcOHguQP6wKgTcX5MYDafKirVgzcVn/kZe/3mCvOdTcvfiFGaLqbIN6Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IEJVh2ycXmRAv75J1VwUz1LIS1WZjq2N3+mNVBSM7IBc6fVJd/xYDt+SgDoPKkN4WZwRcfN
-X-Received: by 2002:a05:620a:17a1:b0:7b6:d870:ca37 with SMTP id af79cd13be357-7b6d870cb36mr803877185a.41.1733822508290;
-        Tue, 10 Dec 2024 01:21:48 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733822508; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3179425njb;
+        Tue, 10 Dec 2024 01:53:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXGs0qmr81kCfkDw4zmeDFFdyEMTCAgkj4QwcJa5Hot6GvuoqzIdiOrGF6U/Fk4/dRrILA4MLn5JeoZZw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEWtvT5g69bbU9dbXJXE1cV5KVLpdC5Pe7Cwand3VACIPNItHmTBS5zHF7p+2vzmG2UySAK
+X-Received: by 2002:ad4:5ae5:0:b0:6d4:21f6:a0d4 with SMTP id 6a1803df08f44-6d8e73bf795mr291728246d6.37.1733824424364;
+        Tue, 10 Dec 2024 01:53:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733824424; cv=none;
         d=google.com; s=arc-20240605;
-        b=M/+kSpKy9/ktUy6txXRdvxv6NmN4czyQ739F3x5nrOTS6k18sA0al4Ycn2hBUS4SXm
-         g+Nm6CEXTV9pMmM7/7MWHT5Eu+e5KE39QmYns3YEhFyy2GYrn2+WctJoMBl0/latsUu/
-         VLErzsbU/bFI9t5U0WXNa7dJY0VMg6r9Ct6uiqJWoaoxN9wv5NcDh7A3lIFYmO432gPu
-         pl6AnScbT9JphQRwgxhnw7CZuE/SnXftYzAMOanCsiO0VtIMNAOCI0Z+xWDIhLmOMIto
-         eu6hVQhkrChPKKldgBQFr5BscXWmMYnx+rzF2+p3q5DbqoMqoPx42qZjxM4z1RiEK8t0
-         /MlQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=RGZvqP+wr5gvVid6rtELJfpQYBookeCaLlvdZp/5dDFyP1L0LKTLAfDV/GocjuW77Q
+         51pwzZJ33CimCSQYEc9R7CzQwt9Au93GX5YZElRBE7xb/y+vSVhQkwh77p1QSjwuOFz2
+         GW6HEpa8NowSZNOm5NMq7UtK78JgOI2Ac04Bc8WAGYeDCwUNIxl8FSzz6KPUDD884rC9
+         rurk/bGOfh5wQAIui55F19M/lRUSN79/EQw57O/J1I9/HXHD+iwE3whq06FOZqD4PtfU
+         VnTNiMcIAd8rFilLfivLv+mro3P/Te6C3aZetYWjr8b4D27Ur6St7kocJgnC31NjpHXW
+         xdbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=DE2N4rbrgOJ6aK1O7IcBYIYoIyrb/Jd5xnYk05g8Aro=;
-        fh=lSG+qj6Twnh4dPx9jEpGyk4iR+oSY9YDEAbNQ1Nq4Ss=;
-        b=a39HPN4XKeRkHrxBcHCMe+PvD1oaJLYOBX8GyIJD1qQQS3kSG1pKSAxZ1P58x3PZqe
-         jBGQVKA3tMrccsmYonVFN8PiGVWBW2nyN4zgyFIBIt4t/NyrsjaPGipowpftTxw9EgQf
-         MoJi2A8lSTDNLzTFcpTOo7KTT8bZBcypSNSRqXpLzOc3CZAJ2HhvknF3oUnvwlymlGuj
-         NX45BH4J0MJ78FM+6EVP7spN2D/rp5aPeY94KcyIudayqCTPjTS8NnNBik/M/o2MXyA4
-         b7ClU2583kt5oUoR44x4gdWcBp+QRX38JF5l70A6juzg0xOhHP/8VcckVhtsMpWCa+41
-         paNA==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=EW24HPJsMhBMR+V2YAuOgQK05+8WhHNOiyO+UPdl7Ro=;
+        fh=US/EVDAsWLvGKfGJN+SoOgZOY7Q8CHYGnJwStcdlwo4=;
+        b=Pvt1kpENzxgNih10Sjmw9lJCJGe11Fk+/jEimCsCSRPgZwZvW0jFdLLB/P4n9ZiSLR
+         OhdEWUTqkaJSXTSBAZg8el2PBX8ZqnVwTfDz09i5BMCVCX2HVAgACKpdGoNnoANr9956
+         cdhc4PjyI6dAe+TXY8Xmm8y8d1ToPHIJQao1Y5e6T86P4j7X1amKEzC/z4LYxJ/7D8DS
+         hxUeqvspzzlzw78h7mxMWf6LOP6hnhjLrU193w+RgskvXos1K2juhGa2L9DQjV7bzted
+         ARG6dVmJH6xADw5v3JMjqDX1+Z8CJX+Z1in+EzpSs851r/R/LkWRXfxjh0nSerUjhVfo
+         JX0g==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@ddn.com header.s=selector2 header.b=VkApHcmD;
-       arc=pass (i=1 spf=pass spfdomain=ddn.com dkim=pass dkdomain=ddn.com dmarc=pass fromdomain=ddn.com);
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=eBCENuo3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=ddn.com
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6e8fe412asi2711185a.282.2024.12.10.01.21.48
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d8dac2a92asi135142286d6.457.2024.12.10.01.53.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 01:21:48 -0800 (PST)
+        Tue, 10 Dec 2024 01:53:44 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ddn.com header.s=selector2 header.b=VkApHcmD;
-       arc=pass (i=1 spf=pass spfdomain=ddn.com dkim=pass dkdomain=ddn.com dmarc=pass fromdomain=ddn.com);
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=eBCENuo3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=ddn.com
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tKwR3-0002Gc-TY; Tue, 10 Dec 2024 04:21:41 -0500
+	id 1tKwvX-00083p-SN; Tue, 10 Dec 2024 04:53:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rbolshakov@ddn.com>)
- id 1tKwR2-0002GQ-18; Tue, 10 Dec 2024 04:21:40 -0500
-Received: from outbound-ip191b.ess.barracuda.com ([209.222.82.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rbolshakov@ddn.com>)
- id 1tKwR0-0007I4-62; Tue, 10 Dec 2024 04:21:39 -0500
-Received: from NAM02-DM3-obe.outbound.protection.outlook.com
- (mail-dm3nam02lp2044.outbound.protection.outlook.com [104.47.56.44]) by
- mx-outbound22-132.us-east-2b.ess.aws.cudaops.com (version=TLSv1.2
- cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Tue, 10 Dec 2024 09:21:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=TWwxojEPYoI3rNwE90IewCfs4aLBsxiu3CmWQiVyQ9FZKhyIxQY5hSw9uOtV2cC0ktmsjIAgygHoiqGusESMgHJsB1jDUSEHBEq6I5uWxvyXse16JUqgbiax9rMfG4j+m0tWuUyU9TlObd9D8bdTqpDbVkwUYi4wHO9IGrmNcc1mcLaJUm+GXQyMW2lfGEW2QRImuYlPeUM49GCL9brmhSNo2nWFjkbvAvNc7Q5tI1LZSYgtUrdw3qeTIDjO2A3EMvotO9rjXlHeZ9SCdPCwSOH98RFaXnqs+iksqIAAX8235pV5d6juWDWALVpzmx5Ah/1IvNcm86OPV9dEIK3gjA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DE2N4rbrgOJ6aK1O7IcBYIYoIyrb/Jd5xnYk05g8Aro=;
- b=RO6c3It4iQLBq/ZBuaP4oM8FhwOtK7gB0VWB/pJ7/rsZ0liQ47OTyHhxbi/oJmMip77aDkEHV6VO3xar9ien43qhzz49SofeKrm4kSJaPwPPUPnfmMxDmqdE9G4VpIOaMQR4tGJSFZ8HHeUsVFRv33Cbttmo/slY6h4ASLxKCkp/6u1PiQr2SqfJuYIEIf7edhsz9JPSQXrLVIr5PY/V6RQhrwU08AXd14Psw0lHzCoG9GKVI9B877GHzsl+L2VoA/umhFhjznWkNF/XVYOA+HTLjHtQKNtqWfguDq3OLWfX4bXjW83BWQZ2BeLf/JVBJkEshxDutovLmq9Mo2+eTA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=ddn.com; dmarc=pass action=none header.from=ddn.com; dkim=pass
- header.d=ddn.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ddn.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DE2N4rbrgOJ6aK1O7IcBYIYoIyrb/Jd5xnYk05g8Aro=;
- b=VkApHcmDTaF+lnm4+huzOcTszfhkHR5sZG+qfoi8a3YFhSxlewgInhp6El3+S45Y2bGe7l/EWtmtMLw9sdv+ILBqFtnzcKP7cwLGRGM5lasvVMgGdQJq+6xtJy82u6kbXUFauBk6bt17N0cMOdA+l34z2eykzJ57Efidjx0nOC4=
-Received: from BY5PR19MB3889.namprd19.prod.outlook.com (2603:10b6:a03:218::8)
- by DM4PR19MB5691.namprd19.prod.outlook.com (2603:10b6:8:5e::5) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8230.18; Tue, 10 Dec 2024 09:21:21 +0000
-Received: from BY5PR19MB3889.namprd19.prod.outlook.com
- ([fe80::e67f:97c5:5d65:a269]) by BY5PR19MB3889.namprd19.prod.outlook.com
- ([fe80::e67f:97c5:5d65:a269%4]) with mapi id 15.20.8230.016; Tue, 10 Dec 2024
- 09:21:21 +0000
-From: Roman Bolshakov <rbolshakov@ddn.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
- "phil@philjordan.eu" <phil@philjordan.eu>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-CC: Cameron Esfahani <dirty@apple.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Alexander Graf <agraf@csgraf.de>, Peter Maydell
- <peter.maydell@linaro.org>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH 03/11] i386/hvf: Don't send signal to thread when kicking
-Thread-Topic: [PATCH 03/11] i386/hvf: Don't send signal to thread when kicking
-Thread-Index: AQHbSnodWTg5uC3pPk6IRV7wd0lkGrLea9AAgADI+gA=
-Date: Tue, 10 Dec 2024 09:21:21 +0000
-Message-ID: <0aa33648-5a30-4302-bf7a-f31cab0b327e@ddn.com>
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tKwvO-00082N-Cr
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2024 04:53:03 -0500
+Received: from mail-vk1-xa2b.google.com ([2607:f8b0:4864:20::a2b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tKwvC-0001uS-FD
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2024 04:53:02 -0500
+Received: by mail-vk1-xa2b.google.com with SMTP id
+ 71dfb90a1353d-5174f9c0d2aso611253e0c.1
+ for <qemu-arm@nongnu.org>; Tue, 10 Dec 2024 01:52:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1733824368; x=1734429168;
+ darn=nongnu.org; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=EW24HPJsMhBMR+V2YAuOgQK05+8WhHNOiyO+UPdl7Ro=;
+ b=eBCENuo3S+FKTPbaKMBOOQlFlllCeSu0r/JaYb+QNHI+/zPmQi3F2r7JSvEcZhW82i
+ gemnaZQ9rt/3w8YE/zIQXHJIJsEUgiJsDI2evz4afI0Nfg6NCeiJgbuGisjsA3+Ut4pZ
+ 0g9RXzzT7k/+RfvzO49a1Y2b+X7mXP0ZNqJw0O1El2ZBf8VIejp4KHTDbfGlSieUBGgf
+ hIUKTMMgbLap57kyolANFDjgMd0l5kvn+JAYB8G/3FawbWV70ypvaOzCwgCEpsGJKmOU
+ xFXW0nD5SRGBVPwsVJ2O7wTHGpEoUA1AtHuRgFhS5/m/3vu8tpc3F7GJhWysfjMbBtMA
+ vFXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1733824368; x=1734429168;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=EW24HPJsMhBMR+V2YAuOgQK05+8WhHNOiyO+UPdl7Ro=;
+ b=VYEjCxbOrKbK+euv9KuZtE8ObeAZ5980ePYBzHcCmhDMbcAuds+Da68BEg5B2rPIfH
+ Z2cYs/GH54MOY7d3+vMibs9y8nEe1DZnRDTCcef2+keL0ZhBFBRWNvnMVXQ5OPebXsNy
+ wylLPzUeHtMW+modddA3ptWGkhYR6IvjQ3WOANYS6XEXA0VwMRjAU0VnqDVdblp8X1oT
+ z253FWmdG9LZMWlMn6XfiS6sKPVzzw5K9Y3iRV/M+US3SmdHMwcPh92uJ8rdGosFNfCw
+ PSggD045BuhG+wcOxDBLsHzBP5z3IHFsM3FcejeokXJ2sH5o6yTmmUGH/okDJE5bguV7
+ 409Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVh22wPmwT/z1Bh/rnqixtJfFXyO8sIKk1by6zhy+YRyQd/jxqXgDOAIuZsNsLaR9wdmG81VgBPkQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxXsK0s0iNwEWbkyTYQJ5cy5oZMK8g/8VWc5MAvVB2uvHy9ZcEf
+ N0g5tDnS4RpNZ8V8F58anNuLBjazqxYRjdxzkdyzd745rgHVVla3yKcf4UhfIDCXy3WSyNV/jev
+ FW11tq2jh14+P4CUK26Sc/mA+0q/7MtHEtFLJ
+X-Gm-Gg: ASbGncs570x8hkixiMFr9tdxODtywM5S+uPVWWaN2u7CMVIjVqKJoLCaKG0BN5POOTK
+ q8cR5VlwJRnx+dGmkRoQS5qorj3ugmAB7JR8=
+X-Received: by 2002:a05:6122:2895:b0:518:8d54:567f with SMTP id
+ 71dfb90a1353d-5188d546d3emr2047733e0c.6.1733824368142; Tue, 10 Dec 2024
+ 01:52:48 -0800 (PST)
+MIME-Version: 1.0
 References: <20241209203629.74436-1-phil@philjordan.eu>
  <20241209203629.74436-4-phil@philjordan.eu>
  <c401b320-b382-4887-82bc-0252dd9f8c98@linaro.org>
-In-Reply-To: <c401b320-b382-4887-82bc-0252dd9f8c98@linaro.org>
-Accept-Language: en-US, ru-RU
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=ddn.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BY5PR19MB3889:EE_|DM4PR19MB5691:EE_
-x-ms-office365-filtering-correlation-id: 8f17e6fb-9b44-47f1-0a4a-08dd18fc02ba
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|7416014|376014|38070700018; 
-x-microsoft-antispam-message-info: =?utf-8?B?Q2x6SDhCcWpOd1BMR05nZ2U3WXU4MWVBdVZZVzduMkw3NXMzeWpIaUJTMlk5?=
- =?utf-8?B?NWpSS29zeUt0Y1dFK3lkVEZrOWVyWGgwekprZ2FZQVpoM3gyWFJMeXpGVU9o?=
- =?utf-8?B?aUZxVk51Nnk4WUczRFdvaWdQUVdxWGdPbURTVkRhc1phNzgzNUt3aEMzVXln?=
- =?utf-8?B?blAxV2hNTXJFaXdxWFhHSGtvUGtXMmNkd2VSeFRMbmYreTFhUTZOOENPNCs2?=
- =?utf-8?B?TFdLYklPZHA2djFsbTFNaTRXcmxNazBKd1Z2a0xUOTVzNExEQTVaMGFKczZ2?=
- =?utf-8?B?NzRSaTNraTA5eEhiRjA0TmllVUFkMUdTeFJXL1hYc21nQXVBSVgrQ1VTSlcz?=
- =?utf-8?B?b1BGWFZTN3JIUEhZTWpIdXJtc1oyWlB3SUpTblEyU0RCYW5acktubnQwTGww?=
- =?utf-8?B?eEFITUpsNE0rcldzcnlVQ29aeXQ1Rm45QmQrQ2RyZnY1S1BUcDlMSSt6UG1n?=
- =?utf-8?B?UDNOSnBON3NnTlNEaTYvQUV2R2lzcmJCT0ZlYmhibm90Z1ptSnZKRlJvaEJD?=
- =?utf-8?B?dDFWSThxK0JMNmtwMG9lWksxZy8xZVVtVE5UQ0J4TUg2bnBoTVkwY3Y4Y3F0?=
- =?utf-8?B?NFdZdGpOL29VcVY0elNpWXQ1NlJIQUE2eDlMUHRxOW9CVzJGRmdHT0JadDlW?=
- =?utf-8?B?b0pEcTFsNDRTS1NoZUhGcThLc2hnSjNUMWt3YjBEZWFRbkRPb3BLbGxDdEdo?=
- =?utf-8?B?eXVhQXBPek9iTndmS1RqOFNyR3crQzF5aEppeWhJUnhIVmR2Y2EyaDcweXhz?=
- =?utf-8?B?TGVuMTZtcTRFVlBTMnZ3VGNucGFKWE5GMzZHM1d1Uzg0VDlDS3ljOGlSMzBC?=
- =?utf-8?B?OU9TcHNKUG1COThQNlVRRUFxZEJOTDJHOUE4OWZyZWc0Vk82UHNZc0VyYWtt?=
- =?utf-8?B?MFNKU2xTV3dUVWRJTUtyaUd4UXNTOFYzYnFiSDNhZnpjUFd1cU43c0o3cjhp?=
- =?utf-8?B?QlZGT1ZXNllwRllMd0tKbm1CYmtnL1lHSEVvZ3dYWXFHRzZMeDRLYms2UGRa?=
- =?utf-8?B?aTcyc252SDVIL1lZMFJZdFV6M1JadE1ubGhySlR4RWZTaXFkM2ZwWTdjUml3?=
- =?utf-8?B?UWlQTmhXcWdKZ3VPZExsWHBEODErRXZIOHRESXhTVXlHYWZianB5SXNwOUdB?=
- =?utf-8?B?UDZwTDRCVGYvb05sOFZNY090UnBZNER6eTA1eldGMGlTZUV6VERMcElWNjZE?=
- =?utf-8?B?M05zdWFudjljemdyMTVWMEs5TVdTRFJBYmk3cU5TVWVLUFM1dG8wa285UmxJ?=
- =?utf-8?B?cnlFeWJEcktSTVpuRFk5WE1PRTJ1Wk8zVVREWDk5S3ZGTFE1TC8yNi93RE4x?=
- =?utf-8?B?U2toci9tWmxjRXFNWHo1TkRjaGhmZ0d5ck4wbnI0bDkrdWk2eEdjTjh4bE9m?=
- =?utf-8?B?QkxsV1k1YmljMHRhY2pBanZhb0hLNDhxQzRjOFp5dndSMEpBbGxZWVBoOUFt?=
- =?utf-8?B?czFwM3R4cGxEa0xoU2lpeVFVbzBLTXJycVhLRjRuSUlFODBER0hta1NtUGVK?=
- =?utf-8?B?ckx5S09IWVBWaFJ3RTNVNTlJMDVDMlIzQkFJNGRUTERSRnh1YWVyczhlbEFJ?=
- =?utf-8?B?Uk1zRFU5SWpQaFU5S2VIWXhUeU1UdCs5M0dUUEpkQlJ6enRGTmdSMTRlMnlZ?=
- =?utf-8?B?RzFQSVo3bmZ5YVcvcXd4MTFpMEFQWE8xOEkwREd6MnZ4cDBYTjVmUWcrRWlu?=
- =?utf-8?B?YUs5T2RJN3c2enlNWG5vb0d2ZnhFRkpnckl2TTRsVzd1YTMwQU94MTZwTXJp?=
- =?utf-8?B?TktsQUN6cnQ1cTVSdHllL1AxRkFwdjVubERLZjVPSVJITG93R3A4QU15b3Uv?=
- =?utf-8?B?TlZJcXNJcEdLeE5CZVdEMWpzNVdqWGZvUDhpc1Q5SlpDcXdrMmdPTVV1Q0h1?=
- =?utf-8?B?cHZqWjhXcDdRRUpxYXlqZ2ZQcmZaU0kxdEpnN2s2Q2pSTnc9PQ==?=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY5PR19MB3889.namprd19.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(7416014)(376014)(38070700018); DIR:OUT;
- SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?dlBwUGN6UmdYdldlTkxObEZvd0Z1ck5wK3UrQWJjLzRGTFJKSHc4Q0xIQkxZ?=
- =?utf-8?B?VE4zcnk1ZlVFMzRMdy9Lc0pZc3UrRHZCTnY2NFprQnRSQlpKK1Q0eXJudG1x?=
- =?utf-8?B?VUN0dzcwM1hpSVpPQTZQV1ZjUWUxOGJZTFpWcWJZTnQ4aHl6eWtCbnBBU2Vo?=
- =?utf-8?B?TU5ZSjR1MGVhY3E3ZjZST0FvSmJ3OE9Gdy9YaEtTUnY5UDg4SzVTS3BZTVh0?=
- =?utf-8?B?UnBCOVpSUEpIQnVENlVyYkowYXNrU3g4OUpjdmRFbUZaZjB5OXMrN3Y2WU9h?=
- =?utf-8?B?dEFoN1JDV2l5LzZPdXJGbk44LzVNaGNyT3RtNXFwejlZV254b09IMVhDUXNV?=
- =?utf-8?B?VEVHUUw3ODlHSXMvUG1ycW1oSm85Qk1qNTJ1US9jSEVVWWFSS2NmTHRXQmJs?=
- =?utf-8?B?VHBxUEVKMFdlOUlDaGhBYm5JdVhQSGgxNmF6OVZYcXcvQi9QY0hidGZ6NHpG?=
- =?utf-8?B?Snd3ME9PcXpPaVFZOU9DT29HM29mVk9yTDVlZ3ErSlExSnd0a3hxaXlZTEJO?=
- =?utf-8?B?TG5PaGhpYmFyaUlJOTlTNFlaTXFDVGpHNGs1cjk4djNZWW83TmtPWVdvTUxk?=
- =?utf-8?B?MzZMaUxhMEdtWDkwQXo0N1FFTWh0QUl2SmlYZnZHVXdOSDZ5RlUzWTZyYm1O?=
- =?utf-8?B?bEFvU0VFNHJWTDU1SlpnMTYva2dGOXF5VzRNS2FKNEkvV2JjRGp5N0E1MXdH?=
- =?utf-8?B?SHREQW5wQlNYQjhZM1pqR1RIUGVRbXNrQzkzbFZxMjhKamJtc3IxQmMvUlp2?=
- =?utf-8?B?NmVXQWZyZTJLbERzcHcrSWpzeXVOV1ZDNEFQVjhkM1ozSzJ5NllqMXp4dndu?=
- =?utf-8?B?NGh4N092akYyUmVYbjM4UEk1eFpweWN5TC85SytURHptMlVKMkxVdjg3bTFK?=
- =?utf-8?B?YzZOMGhXZFdNa29vZDVzRjBCUTdJV085QVYrWG80cDNlbkEydWhReEEvTWJk?=
- =?utf-8?B?SVRWMzlJRk5qSFk3QlpRUmFaVTZWT0Jzc1pmVHBMdjBtTWozaTZIcHZwOGtE?=
- =?utf-8?B?a2RBMmpLaWw2NjFqUSsweTJKcFFPbTJJZkhaMkxzS2lpdTE3ZjRORG02ZnI0?=
- =?utf-8?B?WG9YUnRsRSt4OEdqUDlmTWk3elpJbXJVNVZQMGEyZFhDdS9uSWNZSmJGU2VX?=
- =?utf-8?B?bVMvUEFwS2xxQmNVSHRlbGt0eHc0ZmV1bVRoWHZQbTkvVk1KNWV5R1dBMGZy?=
- =?utf-8?B?TktmblNTcG9vMWhTOFVlc1c2d2VDRzFaeDRva3lISVkxUDVRcWpKVThYa1Ns?=
- =?utf-8?B?K1RoU0VGRlArRXRYVjhMcTZJQVkzM2p3M2NWWFRQV0RiWUgycDh6djZNUEhH?=
- =?utf-8?B?QUZrQ3U0RWIzcGVnOFlJVUk2WllPYVZZQWtqRXloMktxWTlkNzZjOUpRVEZz?=
- =?utf-8?B?YkwwckdJWUxoZU42WkpNcUlMeXhNKzJXTjBsT2NtNW9xZFdJMTN6TmlReHBq?=
- =?utf-8?B?WlBRbGhod3h4czRKeGNJOTFYa3RTUHlETUxwVnllTjh1Vmx4ZGhOMXVSK1Yy?=
- =?utf-8?B?blF5OTVJaDhKUzA4MFJsWnRHRG1DUGo1elpUcG43Nk1YTEVTOHZBdzVmTFJK?=
- =?utf-8?B?ZWlDbURxVTFQbW1RSjNzeWdqTWkyRWIwN0FHUzd3UTZJLzJyZWNnYTg1Yko1?=
- =?utf-8?B?YUZJK1Bob0ZqbG9mbzU1dEdzTUdYZ1lRcjVmMnVoeko1Mmdhcy9tWjRMYWVU?=
- =?utf-8?B?UmNOaEZtMENudFloM0tTQnc3UzU1d3BKNk41K3FvUkRsWUVBUTl1TDh2UEJ5?=
- =?utf-8?B?MVJYYXF1MDFoMEFLeXNmbE5ybXpoVlRGaWZCMmk1QmhDY2VxNDY4NnFWQitW?=
- =?utf-8?B?SzVZYXM2K2xKTUdCaHFTQWFZKzkwN1llYWNmK2V6NGg2aU9LOXhpODU2VE1M?=
- =?utf-8?B?RWpLaEE5SXhuWmVqeTFXcEVJUmVhRnBITERSTTlweThCT290aG9yYVF2MGZB?=
- =?utf-8?B?dHJudzUzUVhjS3ZMRnNXYnIwbFRLZGIwMHJpdUthQ0ZSNnJ0ZDM0engyQ0dS?=
- =?utf-8?B?T2I2Mm9od2JHMENOWmNRQUxOM2N4V0ZOUDBkS0JwcHVkWmZpMUFBYnZWQStK?=
- =?utf-8?B?NkpUQ1Z4aWdTNWt2RitMaC9jT1hlbUVzMWtOVzhnODZrQ1dQWXBzY2lhdHl2?=
- =?utf-8?Q?TK4A=3D?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <107A070406D1BB46A88A7919E80947AE@namprd19.prod.outlook.com>
-Content-Transfer-Encoding: base64
-MIME-Version: 1.0
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: y2Aw5XsyPujBQ95YIsqLtC2N0f7Z0bK1nLh+NB8+DMN9iiSAnWHz7mQXHD5EDVURV82dXszvcuTqkmm52C2f1F9jgMbPhtgYlkXV6pZ9r5rRaCSxuwSSRUCopQTBkNmEfzrA3T6PKWGxSCUZwd52Eyeek6uDeBnnfT/nEHK6iNw2DFz8g6pLeJe6VKJRtKH/+b5d5ZXqRTd6UJgjkH2yjkqHqSSHqMQo/MzUF+Fenm5diz+1te1X3R2UyOe+Z2r7NcxINvLQvg3gRGeT+XLpNdooopSH0/EO4iHYq20Cfy83fUfOtombz7Z3pc1MBcXaQea5O9JWMxc8Z1+ZqGC6oszf6O1dvwboo4JVX258JnOVwT0CVuuTsduciDTs2yP806A0IgIdQGYBHiTAOaRGd/1pfEtefaNZe2VzW+I8aK14aR5uslhDJtKpLDr/soXnk41sTOQCD0Y8Qoc2mW48+traaQQdhVxJgDWEjzQXSWsMKnCz0e6GHqI4VkiXrvp+ax3ekgQqMU/Ae6/Mrr1C/Q0e+f5iO4H8JaCLvqFxNke4sjrzE2Aa77kj5Li+vaQ2cs9U3pRAKlG9FbvigJIO0oDVsq3y2L70lvDR2gR/qFQmR+yNU9NF4bYlzyzWon215lJbuqhriXSD7GBHfNaCew==
-X-OriginatorOrg: ddn.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BY5PR19MB3889.namprd19.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8f17e6fb-9b44-47f1-0a4a-08dd18fc02ba
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Dec 2024 09:21:21.2743 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 753b6e26-6fd3-43e6-8248-3f1735d59bb4
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: R1z/VTZzjkFQ1WJvKDmZx/N7qChDqbRS5YwOc7EoYZ+v1gpvqeUyYi3gEWlKirmPOXDg8VfIT28p+sIQ+OXvJw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR19MB5691
-X-BESS-ID: 1733822484-105764-3523-20120-1
-X-BESS-VER: 2019.1_20241205.2350
-X-BESS-Apparent-Source-IP: 104.47.56.44
-X-BESS-Parts: H4sIAAAAAAACA4uuVkqtKFGyUioBkjpK+cVKVoZGBpZAVgZQ0NLYMinFOMXYIN
- XCyMLYKMnQKCXV0jzR1NzY2Cw1ycxQqTYWAFIxE2BBAAAA
-X-BESS-Outbound-Spam-Score: 0.00
-X-BESS-Outbound-Spam-Report: Code version 3.2,
- rules version 3.2.2.261012 [from 
- cloudscan8-185.us-east-2a.ess.aws.cudaops.com]
- Rule breakdown below
- pts rule name              description
- ---- ---------------------- --------------------------------
- 0.00 BSF_BESS_OUTBOUND      META: BESS Outbound 
-X-BESS-Outbound-Spam-Status: SCORE=0.00 using account:ESS124931 scores of
- KILL_LEVEL=7.0 tests=BSF_BESS_OUTBOUND
-X-BESS-BRTS-Status: 1
-Received-SPF: pass client-ip=209.222.82.124; envelope-from=rbolshakov@ddn.com;
- helo=outbound-ip191b.ess.barracuda.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <0aa33648-5a30-4302-bf7a-f31cab0b327e@ddn.com>
+In-Reply-To: <0aa33648-5a30-4302-bf7a-f31cab0b327e@ddn.com>
+From: Phil Dennis-Jordan <phil@philjordan.eu>
+Date: Tue, 10 Dec 2024 10:52:37 +0100
+Message-ID: <CAAibmn0zwbsniR2bLcvhqTuTdPZTRkQPDv9v9==gyMpPNELLLA@mail.gmail.com>
+Subject: Re: [PATCH 03/11] i386/hvf: Don't send signal to thread when kicking
+To: Roman Bolshakov <rbolshakov@ddn.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Cameron Esfahani <dirty@apple.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ Richard Henderson <richard.henderson@linaro.org>
+Content-Type: multipart/alternative; boundary="0000000000009105e80628e77171"
+Received-SPF: neutral client-ip=2607:f8b0:4864:20::a2b;
+ envelope-from=phil@philjordan.eu; helo=mail-vk1-xa2b.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -244,27 +133,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6LJf89gv3EdR
+X-TUID: vxYFOk71bHN2
 
-T24gMTAuMTIuMjAyNCAwNDoyMiwgUGhpbGlwcGUgTWF0aGlldS1EYXVkw6kgd3JvdGU6DQo+IE9u
-IDkvMTIvMjQgMjE6MzYsIHBoaWxAcGhpbGpvcmRhbi5ldSB3cm90ZToNCj4+IEZyb206IFBoaWwg
-RGVubmlzLUpvcmRhbiA8cGhpbEBwaGlsam9yZGFuLmV1Pg0KPj4NCj4+IFRoaXMgc2VlbXMgdG8g
-YmUgZW50aXJlbHkgc3VwZXJmbHVvdXMgYW5kIGlzIGNvc3RseSBlbm91Z2ggdG8gc2hvdyB1cCBp
-bg0KPg0KPiBTbyB0aGUgcHRocmVhZF9raWxsKGNwdS0+dGhyZWFkLCBTSUdfSVBJKSBpcyBlbnRp
-cmVseSBzdXBlcmZsdW91cz8NCj4NCj4+IHByb2ZpbGluZy4gaHZfdmNwdV9pbnRlcnJ1cHQoKSBo
-YXMgYmVlbiBkZW1vbnN0cmF0ZWQgdG8gdmVyeSByZWxpYWJseQ0KPj4gY2F1c2UgVk0gZXhpdHMg
-LSBldmVuIGlmIHRoZSB0YXJnZXQgdkNQVSBpc24ndCBldmVuIHJ1bm5pbmcsIGl0IHdpbGwNCj4+
-IGltbWVkaWF0ZWx5IGV4aXQgb24gZW50cnkuDQo+Pg0KPj4gU2lnbmVkLW9mZi1ieTogUGhpbCBE
-ZW5uaXMtSm9yZGFuIDxwaGlsQHBoaWxqb3JkYW4uZXU+DQo+PiAtLS0NCj4+IMKgIHRhcmdldC9p
-Mzg2L2h2Zi9odmYuYyB8IDIgKy0NCj4+IMKgIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigr
-KSwgMSBkZWxldGlvbigtKQ0KPj4NCj4+IGRpZmYgLS1naXQgYS90YXJnZXQvaTM4Ni9odmYvaHZm
-LmMgYi90YXJnZXQvaTM4Ni9odmYvaHZmLmMNCj4+IGluZGV4IDNiNmVlNzlmYjIuLjkzNmMzMWRi
-ZGQgMTAwNjQ0DQo+PiAtLS0gYS90YXJnZXQvaTM4Ni9odmYvaHZmLmMNCj4+ICsrKyBiL3Rhcmdl
-dC9pMzg2L2h2Zi9odmYuYw0KPj4gQEAgLTIxNCw3ICsyMTQsNyBAQCBzdGF0aWMgaW5saW5lIGJv
-b2wgDQo+PiBhcGljX2J1c19mcmVxX2lzX2tub3duKENQVVg4NlN0YXRlICplbnYpDQo+PiDCoCDC
-oCB2b2lkIGh2Zl9raWNrX3ZjcHVfdGhyZWFkKENQVVN0YXRlICpjcHUpDQo+PiDCoCB7DQo+PiAt
-wqDCoMKgIGNwdXNfa2lja190aHJlYWQoY3B1KTsNCj4+ICvCoMKgwqAgY3B1LT50aHJlYWRfa2lj
-a2VkID0gdHJ1ZTsNCj4+IMKgwqDCoMKgwqAgaHZfdmNwdV9pbnRlcnJ1cHQoJmNwdS0+YWNjZWwt
-PmZkLCAxKTsNCj4+IMKgIH0NCj4NClNJR19JUEkgaXMgbWFjT1MgY3J1dGNoIGhhbmRsZWQgaW4g
-WE5VIGtlcm5lbCB0aGF0IHdhcyBlc3NlbnRpYWwgdW50aWwgDQpQaGlsIHN1Ym1pdHRlZCBwcm9w
-ZXIga2ljayBzdXBwb3J0IHdpdGggaHZfdmNwdV9pbnRlcnJ1cHQoKS4NCg0K
+--0000000000009105e80628e77171
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Tue 10. Dec 2024 at 10:21, Roman Bolshakov <rbolshakov@ddn.com> wrote:
+
+> On 10.12.2024 04:22, Philippe Mathieu-Daud=C3=A9 wrote:
+> > On 9/12/24 21:36, phil@philjordan.eu wrote:
+> >> From: Phil Dennis-Jordan <phil@philjordan.eu>
+> >>
+> >> This seems to be entirely superfluous and is costly enough to show up =
+in
+> >
+> > So the pthread_kill(cpu->thread, SIG_IPI) is entirely superfluous?
+> >
+> >> profiling. hv_vcpu_interrupt() has been demonstrated to very reliably
+> >> cause VM exits - even if the target vCPU isn't even running, it will
+> >> immediately exit on entry.
+> >>
+> >> Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
+> >> ---
+> >>   target/i386/hvf/hvf.c | 2 +-
+> >>   1 file changed, 1 insertion(+), 1 deletion(-)
+> >>
+> >> diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+> >> index 3b6ee79fb2..936c31dbdd 100644
+> >> --- a/target/i386/hvf/hvf.c
+> >> +++ b/target/i386/hvf/hvf.c
+> >> @@ -214,7 +214,7 @@ static inline bool
+> >> apic_bus_freq_is_known(CPUX86State *env)
+> >>     void hvf_kick_vcpu_thread(CPUState *cpu)
+> >>   {
+> >> -    cpus_kick_thread(cpu);
+> >> +    cpu->thread_kicked =3D true;
+> >>       hv_vcpu_interrupt(&cpu->accel->fd, 1);
+> >>   }
+> >
+> SIG_IPI is macOS crutch handled in XNU kernel that was essential until
+> Phil submitted proper kick support with hv_vcpu_interrupt().
+>
+> Ah yes, perhaps it allowed exit from hv_vcpu_run(). hv_vcpu_run_until()
+definitely does not exit early upon receiving SIG_IPI (USR1).
+
+--0000000000009105e80628e77171
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><br></div><div><br><div class=3D"gmail_quote"><div dir=3D=
+"ltr" class=3D"gmail_attr">On Tue 10. Dec 2024 at 10:21, Roman Bolshakov &l=
+t;<a href=3D"mailto:rbolshakov@ddn.com">rbolshakov@ddn.com</a>&gt; wrote:<b=
+r></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border=
+-left:1px #ccc solid;padding-left:1ex">On 10.12.2024 04:22, Philippe Mathie=
+u-Daud=C3=A9 wrote:<br>
+&gt; On 9/12/24 21:36, <a href=3D"mailto:phil@philjordan.eu" target=3D"_bla=
+nk">phil@philjordan.eu</a> wrote:<br>
+&gt;&gt; From: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil@philjordan.eu"=
+ target=3D"_blank">phil@philjordan.eu</a>&gt;<br>
+&gt;&gt;<br>
+&gt;&gt; This seems to be entirely superfluous and is costly enough to show=
+ up in<br>
+&gt;<br>
+&gt; So the pthread_kill(cpu-&gt;thread, SIG_IPI) is entirely superfluous?<=
+br>
+&gt;<br>
+&gt;&gt; profiling. hv_vcpu_interrupt() has been demonstrated to very relia=
+bly<br>
+&gt;&gt; cause VM exits - even if the target vCPU isn&#39;t even running, i=
+t will<br>
+&gt;&gt; immediately exit on entry.<br>
+&gt;&gt;<br>
+&gt;&gt; Signed-off-by: Phil Dennis-Jordan &lt;<a href=3D"mailto:phil@philj=
+ordan.eu" target=3D"_blank">phil@philjordan.eu</a>&gt;<br>
+&gt;&gt; ---<br>
+&gt;&gt; =C2=A0 target/i386/hvf/hvf.c | 2 +-<br>
+&gt;&gt; =C2=A0 1 file changed, 1 insertion(+), 1 deletion(-)<br>
+&gt;&gt;<br>
+&gt;&gt; diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c<br>
+&gt;&gt; index 3b6ee79fb2..936c31dbdd 100644<br>
+&gt;&gt; --- a/target/i386/hvf/hvf.c<br>
+&gt;&gt; +++ b/target/i386/hvf/hvf.c<br>
+&gt;&gt; @@ -214,7 +214,7 @@ static inline bool <br>
+&gt;&gt; apic_bus_freq_is_known(CPUX86State *env)<br>
+&gt;&gt; =C2=A0 =C2=A0 void hvf_kick_vcpu_thread(CPUState *cpu)<br>
+&gt;&gt; =C2=A0 {<br>
+&gt;&gt; -=C2=A0=C2=A0=C2=A0 cpus_kick_thread(cpu);<br>
+&gt;&gt; +=C2=A0=C2=A0=C2=A0 cpu-&gt;thread_kicked =3D true;<br>
+&gt;&gt; =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hv_vcpu_interrupt(&amp;cpu-&gt;acce=
+l-&gt;fd, 1);<br>
+&gt;&gt; =C2=A0 }<br>
+&gt;<br>
+SIG_IPI is macOS crutch handled in XNU kernel that was essential until <br>
+Phil submitted proper kick support with hv_vcpu_interrupt().<br>
+<br>
+</blockquote></div></div><div dir=3D"auto"><div dir=3D"auto"><span style=3D=
+"color:rgb(0,0,0);font-family:&#39;-apple-system&#39;,&#39;helveticaneue&#3=
+9;;font-size:15px;font-style:normal;font-weight:400;letter-spacing:normal;t=
+ext-indent:0px;text-transform:none;white-space:normal;word-spacing:0px;text=
+-decoration:none;display:inline!important;float:none">Ah yes, perhaps it al=
+lowed exit from hv_vcpu_run(). hv_vcpu_run_until() definitely does not exit=
+ early upon receiving SIG_IPI (USR1).</span></div><div dir=3D"auto"><span s=
+tyle=3D"color:rgb(0,0,0);font-family:&#39;-apple-system&#39;,&#39;helvetica=
+neue&#39;;font-size:15px;font-style:normal;font-weight:400;letter-spacing:n=
+ormal;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0=
+px;text-decoration:none;display:inline!important;float:none"><br></span></d=
+iv></div><div dir=3D"auto"><br></div>
+
+--0000000000009105e80628e77171--

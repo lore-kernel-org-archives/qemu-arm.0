@@ -1,124 +1,124 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3439087njb;
-        Tue, 10 Dec 2024 08:20:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU9Wo2xplUhxXF0kQLVNajrDOoELp9W+uyZfEkRXsGhwXW0Pn4lsu/htWBJ8FTdDjxtzPBP/stfKr2KPg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEn+F/rS8ZEjyyYy37JtNSwEAVC9gGcRqNUPNwy9MPsyI61k6I5wAvxW6FSjQZSRGtVoJrt
-X-Received: by 2002:a05:622a:1884:b0:466:9db4:d6e0 with SMTP id d75a77b69052e-46771fea836mr84501771cf.41.1733847636392;
-        Tue, 10 Dec 2024 08:20:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733847636; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3439102njb;
+        Tue, 10 Dec 2024 08:20:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV+CsE8z+9/uNRTiZDB2mU81YcEZJ6Y4k/ceaunAdDrCKyEcUYw8jSCPN1v5tvDH0RqObcV6IF8kZpv1g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHCV2KB07CCa0rbBbfzvptzNnrf/fuzw0P1dw14KRvA5BNOHOL4Ia0KcjbcdFHIKXMP084m
+X-Received: by 2002:a05:620a:2481:b0:7a9:c129:5da7 with SMTP id af79cd13be357-7b6dce69f42mr757047385a.29.1733847637645;
+        Tue, 10 Dec 2024 08:20:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733847637; cv=none;
         d=google.com; s=arc-20240605;
-        b=BR0XyvyIGhi72DyZFxTqZcrnK1g4ZeWgxPyEgtLtBwXVnrlswcKMLjH7naisl29rpf
-         lwnwm2ziWPmArBsivixS3AP77IciW/WDDrIEyVgeBGfSz9ldjWBK9+VsWUEgnL8p5xVe
-         HZZh7wbDkd4U0GdZkSLhnpH5LBtDoG33VRoDiORgadgn+fBJ08XiE9u6JP0zvdBVIAFL
-         ZCLSvbaFjkGGaW8zpnL55Kr371Aa981CtXaSiGljdRixbmzh3EZziOtU1cY6M/sNjbS7
-         K/Krl3gP/3WEM5Z9glZ3AKnkX4Xh1c8aaVZNCj2srnVoWqOwxr0MsUt1Lye0b+Kbetbl
-         MaGQ==
+        b=hu+OoqmeZCEh8jMNgz+jhP/YXwy5v+u22T6brF8hFK4IMf8i5gTWzCLHCTRnLXuH/q
+         81Ov2DoztxacBNCvkGEXZRT27KNxsphSXiPMiey8625qgavwlI1qb8hOmZFMsJGLbwbI
+         Od3uKtuG18pyUy9K1ukgK0sU3Wh1S1eIO3EJWPIjDhRBnNcUBTUX+B4qvxW09EHFQnn9
+         0y2BHU6tNjx6FfCYTq3qZ4jz+DFTF5Zorx4DHU1NV57K6ihnaCNiNyzZAqxkn8MQ9F9i
+         jnDI85vwu0o/aQ1j2zD/lfjrZOS1ZQYJIbZWxxfj3eI752EeBQgoAwDzynS+6NPEspJN
+         9YvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=6DQlHI7uclEdcPfrfvz33hHRsZVW+9hnV/7JAZehGk4=;
-        fh=OZQBfL75rC14cCDy3q+1fYHCs9KjWAQ7ZJ3hTfS+5lQ=;
-        b=PApwPrynGWuTfEu+cE4I/UUfUVlQkB1ch5Ucb9a+MAo1dH2IybTnqQW9rS3yIMai35
-         KhiOzHqSczBX+m6UJ9CXOqADFzA80IexBu5P62IXxPo8eRN+00rMIF3eZoOKQ8jKGq35
-         Up+a8Pkj5c0DK12dQjpdWEpR5JZ5md+WHaGUCRl+S+gmRLomFMtxak12z4pqeHJlrO83
-         pKGtVlaENb1b58l2r3RmMAHChfwPWibIpQITHgWvP8G4qg4lh0s95IyHJpDCOifWKaLC
-         ioCyI1zrEOgUN+kbAHhMBKbe82CpBn9pesw7k1gFIVYyB3yEf3Y/taPp0wXTGqNaoybI
-         JFXQ==;
+        bh=nBi50fBjO71qRLAMWMSi4czuRa2YaRF8EoteBaucdNo=;
+        fh=ZhBia3nL9o1nuf7SbgdYn/0pDmAeja6gisyWXi2cqYE=;
+        b=Zt17F5vEbvtxz235K1RSdOuRgsppL6H4FUkDMeqXkc49Zb+NMSoEsvXKBPEF6we+Sh
+         wOr6JEp2UWElM0BOvz4VLXgwRNmnWH+1qnTm1YHzrQ6J0vsY6hCfHwaThXMQB6Z7Elnr
+         LX+EWevy3RShN7ZzRrHjtBkaMBuGTL61IGXyjxoaYiJ3jCoIhar6YIRwn63shrmTrm3A
+         EXzIdsl0pmhJyWjclMQgFy/XrLqDVk55biRxNKFUzYBG5z7vajCpB9VWXvwrA+SUyd/m
+         ociBZxaqWFbM2kEpMaHIntT3WsR67GMpD057P+xksCaWfiaL+ZUJPa2w5VTSI4DbIjaH
+         1f9A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dvgCbJHS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ocvRYwMp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-467686dc35dsi51895371cf.672.2024.12.10.08.20.36
+        by mx.google.com with ESMTPS id af79cd13be357-7b6e90135e0si88609185a.324.2024.12.10.08.20.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 08:20:36 -0800 (PST)
+        Tue, 10 Dec 2024 08:20:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dvgCbJHS;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ocvRYwMp;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tL2yB-0008Kt-DQ; Tue, 10 Dec 2024 11:20:19 -0500
+	id 1tL2xL-0003NS-3e; Tue, 10 Dec 2024 11:19:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tL2y6-0007qV-5D
- for qemu-arm@nongnu.org; Tue, 10 Dec 2024 11:20:14 -0500
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ id 1tL2x2-0002w9-8j
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2024 11:19:15 -0500
+Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tL2y4-0006pP-82
- for qemu-arm@nongnu.org; Tue, 10 Dec 2024 11:20:13 -0500
-Received: by mail-lj1-x229.google.com with SMTP id
- 38308e7fff4ca-30227ccf803so18388851fa.2
- for <qemu-arm@nongnu.org>; Tue, 10 Dec 2024 08:20:11 -0800 (PST)
+ id 1tL2wx-0006SD-RB
+ for qemu-arm@nongnu.org; Tue, 10 Dec 2024 11:19:07 -0500
+Received: by mail-lf1-x131.google.com with SMTP id
+ 2adb3069b0e04-54024aa9febso1381299e87.1
+ for <qemu-arm@nongnu.org>; Tue, 10 Dec 2024 08:19:03 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733847610; x=1734452410; darn=nongnu.org;
+ d=linaro.org; s=google; t=1733847542; x=1734452342; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=6DQlHI7uclEdcPfrfvz33hHRsZVW+9hnV/7JAZehGk4=;
- b=dvgCbJHSjDiNWUH/H/Kp5s7dgWGvDiD3YfPFR8RMorffhw1zQ8EPOfRickhnHvuWUz
- 4wrcrEWKZ8BhzDFBwjZ/dsRuwgrnVPd4g1wHGuDRfCVMi6ZvLuQeyjTuKkPwH9onwhwN
- tW9i4oJaEqmm5Ilaap/3QumCM04jMQ4IdjXsyV9ZTQFY86bAJXwy2pZmpR0OTxnf3m1j
- GR743O2GbFmpL6kMhfLeNl32PKiiUipJ2JhsdCCjjBH24wJQlF8dgEZGEpI87e5ZCI7Y
- Yh2zypKL6NzC3s0DaF+HMeNxPdLqT+sJ2YS8MTRCboefqSlL6fE0DUO23IYEHAxEQ7Dx
- /dvw==
+ bh=nBi50fBjO71qRLAMWMSi4czuRa2YaRF8EoteBaucdNo=;
+ b=ocvRYwMpabIoR+r0Bp7LNthyF4acAP/KvrSPx1SsuxJSQlhpfoqzQK0Jv3WaAfXysb
+ BeeIC1dthtjJ1OhkW3fS/FhaKVzmEYrGEwTfA/8UuuEsOxtPnMNRX7g8st8IB6paZlNO
+ BMz6eP3LnWPDt8qVgUCtbKsQ8WLQqb7aA8jH3a/Z7QVq5RxwdENuIVjdw6TM5ckBWb2V
+ gYYks8xM3DUe5zD5asFAeNcEjVcWMaUDEhrOurM+0+nMv4paNo/32XFTFAHtrOpZeBYV
+ JDHN57ukB2pxTsDqlVkcL7LJmLxTJ5saMcKpZJ34uck7FBjTvWCagkXBfTEqU0yCktM+
+ wsEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733847610; x=1734452410;
+ d=1e100.net; s=20230601; t=1733847542; x=1734452342;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=6DQlHI7uclEdcPfrfvz33hHRsZVW+9hnV/7JAZehGk4=;
- b=SKHurfgfLaGxoui4Tztg9txvE9eUhlWFZKnJOJnHL3B+7T+Bom9nMDMixp27Xv/Fxq
- XcoffIBo7pTrQeEuf3D0F9cJ2dMZ4e26KMdcMgyJMpzhTmYzGIy5v3X2SJnCWgPmTYPC
- 9g20rkUf/1x8qQGomjKyNSupNEGvC9L7iLDSwbA3blvLKCjpKdJNEf0xQb8h/RexYx9I
- Kr11IC9mv9STCw/73tVqxRIKF4qERluUfconCxAjgOY87Ety86LQok4matGHpH7XgDHJ
- AZUhj7teBNk5UcQoqlH7mcuypICBxNlPyd0B6KmMLAvvtuAzdYrxIeRnzWVje93GNjCO
- UqJA==
-X-Gm-Message-State: AOJu0Yy+jrZsbn0lwWXZrs666hPnSqE8YTitzzbprfZKQkrHw94S92gj
- Kwu9MQTQNNoPZLGGnSq0lo+zAOstDd9Zi8kZTE4RNsZJrKJbVEVrIgnHvA/e/No=
-X-Gm-Gg: ASbGnctPoSVVDRO51eAOU+ETydDoWskI/EzyECdgjd3CGiteLZ0bc34y3FmZ9W+dfTf
- y6X5bsYgwWoattulS2PYJffk/Z238Hihvs38ZbiWF4Pp+EXnOYVF7NgmZqjlDAgYhHDqcUneAfD
- hvIiwDE/ULVMvLWSLEB1OOEU5mPXIjHuJzaTWRm1WD/xU5XsgT+iI5edVL+MXWIEh0MmcICcOnx
- Ykgyl33WV+StfFz9e86sw2BXm1/4KWNxkFuWxXg8gFvP9OB8Dl25tZuSFQ=
-X-Received: by 2002:a05:6512:6c8:b0:53f:f71:4d74 with SMTP id
- 2adb3069b0e04-53f0f714e3amr5508310e87.8.1733847610127; 
- Tue, 10 Dec 2024 08:20:10 -0800 (PST)
+ bh=nBi50fBjO71qRLAMWMSi4czuRa2YaRF8EoteBaucdNo=;
+ b=FDKFOk5tIFjhuhAsDU80GBS5H0If4cbxhCLDZ0mViCGFC35i5CnuwRxv67o462rtv5
+ fM1aapdyRKoDb7beLNvcBB6ep+bFqVQSXFrx8P84guM2Ut/GyhUD/EQQKlYTMK0NChfw
+ MFepBj4Y5sbbTQz1/0GzV7SQhFiLSrKCi8Lodkz5zsCquPAp4wc+MHicXHGoHFhUlYN8
+ n4aBuofZoEVO5ArSUlBqU/uoptZzgSwWFsMKlBIwLfkWpywnzLhCbhMCLvP9sjJomYpC
+ E/27mkcqA3X0iTzLd4DaRHCyLwEu7LvdrjEOc2M9pJY1kWaBt3Yydy/X8ah9/Jl8JsJw
+ Fd1Q==
+X-Gm-Message-State: AOJu0Yzt1mBY+Jkw+SNaJXS5inErmJufXZBNBMOqrviOX9c72KizzqeD
+ ghJAQc28THXLLdeKinOqBJiar51ldnd/64ENDpHsDhGTyz4AI0r+vnPjtfyQIdmCCsEguNz0I7p
+ DW83oHNBJ
+X-Gm-Gg: ASbGncuDov/SlWTauwV4JwPzPaDILdD9owO1t8rY3puepZrASYMljMey7AJLbYHO9sg
+ FshKoCeQdQNqO1QWVnd5ilnvqFPm9GbTjx5VxYEpAIqyaKpGe9jfbopjoZz1u5qjs8LxtxLMbzE
+ wxktanVDKio5nfv4pyVrMZ8dn+lyJ779FiUz2qosaSlxzkvZEuOEqrazMQW9COMZ0ivlCHMrkdS
+ cInuo6gpPuKigTmLMJM7B+ecqQyt1/kt2Was0xHXalV73wNp2DzNKNwv18=
+X-Received: by 2002:a05:6512:3b20:b0:53e:398c:bf8f with SMTP id
+ 2adb3069b0e04-53e398cc15cmr6304937e87.32.1733847541830; 
+ Tue, 10 Dec 2024 08:19:01 -0800 (PST)
 Received: from stoup.. ([91.209.212.80]) by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-53f93377eefsm1026343e87.67.2024.12.10.08.20.07
+ 2adb3069b0e04-53f93377eefsm1026343e87.67.2024.12.10.08.18.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Dec 2024 08:20:09 -0800 (PST)
+ Tue, 10 Dec 2024 08:19:00 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 37/69] target/arm: Introduce gen_gvec_cls, gen_gvec_clz
-Date: Tue, 10 Dec 2024 10:17:01 -0600
-Message-ID: <20241210161733.1830573-38-richard.henderson@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 20/69] target/arm: Introduce fp_access_check_scalar_hsd
+Date: Tue, 10 Dec 2024 10:16:44 -0600
+Message-ID: <20241210161733.1830573-21-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241210161733.1830573-1-richard.henderson@linaro.org>
 References: <20241210161733.1830573-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::229;
- envelope-from=richard.henderson@linaro.org; helo=mail-lj1-x229.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::131;
+ envelope-from=richard.henderson@linaro.org; helo=mail-lf1-x131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,179 +133,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1tqObx1JIHUi
+X-TUID: sYbpA2d8WeOS
 
-Add gvec interfaces for CLS and CLZ operations.
+Provide a simple way to check for float64, float32,
+and float16 support, as well as the fpu enabled.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate.h      |  5 +++++
- target/arm/tcg/gengvec.c        | 35 +++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-a64.c  | 29 +++++++--------------------
- target/arm/tcg/translate-neon.c | 29 ++-------------------------
- 4 files changed, 49 insertions(+), 49 deletions(-)
+ target/arm/tcg/translate-a64.c | 62 ++++++++++++++++++----------------
+ 1 file changed, 32 insertions(+), 30 deletions(-)
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 20cd0e851c..5c6c24f057 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -578,6 +578,11 @@ void gen_gvec_umaxp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
- void gen_gvec_uminp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-                     uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz);
- 
-+void gen_gvec_cls(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                  uint32_t opr_sz, uint32_t max_sz);
-+void gen_gvec_clz(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                  uint32_t opr_sz, uint32_t max_sz);
-+
- /*
-  * Forward to the isar_feature_* tests given a DisasContext pointer.
-  */
-diff --git a/target/arm/tcg/gengvec.c b/target/arm/tcg/gengvec.c
-index f652520b65..834b2961c0 100644
---- a/target/arm/tcg/gengvec.c
-+++ b/target/arm/tcg/gengvec.c
-@@ -2358,3 +2358,38 @@ void gen_gvec_urhadd(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-     assert(vece <= MO_32);
-     tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &g[vece]);
- }
-+
-+void gen_gvec_cls(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                  uint32_t opr_sz, uint32_t max_sz)
-+{
-+    static const GVecGen2 g[] = {
-+        { .fni4 = gen_helper_neon_cls_s8,
-+          .vece = MO_8 },
-+        { .fni4 = gen_helper_neon_cls_s16,
-+          .vece = MO_16 },
-+        { .fni4 = tcg_gen_clrsb_i32,
-+          .vece = MO_32 },
-+    };
-+    assert(vece <= MO_32);
-+    tcg_gen_gvec_2(rd_ofs, rn_ofs, opr_sz, max_sz, &g[vece]);
-+}
-+
-+static void gen_clz32_i32(TCGv_i32 d, TCGv_i32 n)
-+{
-+    tcg_gen_clzi_i32(d, n, 32);
-+}
-+
-+void gen_gvec_clz(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                  uint32_t opr_sz, uint32_t max_sz)
-+{
-+    static const GVecGen2 g[] = {
-+        { .fni4 = gen_helper_neon_clz_u8,
-+          .vece = MO_8 },
-+        { .fni4 = gen_helper_neon_clz_u16,
-+          .vece = MO_16 },
-+        { .fni4 = gen_clz32_i32,
-+          .vece = MO_32 },
-+    };
-+    assert(vece <= MO_32);
-+    tcg_gen_gvec_2(rd_ofs, rn_ofs, opr_sz, max_sz, &g[vece]);
-+}
 diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index bdbdc466ac..77d9f6452a 100644
+index 9c6365f5ef..4e47b8a804 100644
 --- a/target/arm/tcg/translate-a64.c
 +++ b/target/arm/tcg/translate-a64.c
-@@ -10321,6 +10321,13 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-     }
- 
-     switch (opcode) {
-+    case 0x4: /* CLZ, CLS */
-+        if (u) {
-+            gen_gvec_fn2(s, is_q, rd, rn, gen_gvec_clz, size);
-+        } else {
-+            gen_gvec_fn2(s, is_q, rd, rn, gen_gvec_cls, size);
-+        }
-+        return;
-     case 0x5:
-         if (u && size == 0) { /* NOT */
-             gen_gvec_fn2(s, is_q, rd, rn, tcg_gen_gvec_not, 0);
-@@ -10379,13 +10386,6 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-             if (size == 2) {
-                 /* Special cases for 32 bit elements */
-                 switch (opcode) {
--                case 0x4: /* CLS */
--                    if (u) {
--                        tcg_gen_clzi_i32(tcg_res, tcg_op, 32);
--                    } else {
--                        tcg_gen_clrsb_i32(tcg_res, tcg_op);
--                    }
--                    break;
-                 case 0x2f: /* FABS */
-                     gen_vfp_abss(tcg_res, tcg_op);
-                     break;
-@@ -10450,21 +10450,6 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-                         gen_helper_neon_cnt_u8(tcg_res, tcg_op);
-                     }
-                     break;
--                case 0x4: /* CLS, CLZ */
--                    if (u) {
--                        if (size == 0) {
--                            gen_helper_neon_clz_u8(tcg_res, tcg_op);
--                        } else {
--                            gen_helper_neon_clz_u16(tcg_res, tcg_op);
--                        }
--                    } else {
--                        if (size == 0) {
--                            gen_helper_neon_cls_s8(tcg_res, tcg_op);
--                        } else {
--                            gen_helper_neon_cls_s16(tcg_res, tcg_op);
--                        }
--                    }
--                    break;
-                 default:
-                 case 0x7: /* SQABS, SQNEG */
-                     g_assert_not_reached();
-diff --git a/target/arm/tcg/translate-neon.c b/target/arm/tcg/translate-neon.c
-index 9c8829ad7d..1c89a53272 100644
---- a/target/arm/tcg/translate-neon.c
-+++ b/target/arm/tcg/translate-neon.c
-@@ -3120,6 +3120,8 @@ DO_2MISC_VEC(VCGT0, gen_gvec_cgt0)
- DO_2MISC_VEC(VCLE0, gen_gvec_cle0)
- DO_2MISC_VEC(VCGE0, gen_gvec_cge0)
- DO_2MISC_VEC(VCLT0, gen_gvec_clt0)
-+DO_2MISC_VEC(VCLS, gen_gvec_cls)
-+DO_2MISC_VEC(VCLZ, gen_gvec_clz)
- 
- static bool trans_VMVN(DisasContext *s, arg_2misc *a)
- {
-@@ -3227,33 +3229,6 @@ static bool trans_VREV16(DisasContext *s, arg_2misc *a)
-     return do_2misc(s, a, gen_rev16);
+@@ -1239,6 +1239,27 @@ static bool fp_access_check(DisasContext *s)
+     return true;
  }
  
--static bool trans_VCLS(DisasContext *s, arg_2misc *a)
--{
--    static NeonGenOneOpFn * const fn[] = {
--        gen_helper_neon_cls_s8,
--        gen_helper_neon_cls_s16,
--        gen_helper_neon_cls_s32,
--        NULL,
--    };
--    return do_2misc(s, a, fn[a->size]);
--}
--
--static void do_VCLZ_32(TCGv_i32 rd, TCGv_i32 rm)
--{
--    tcg_gen_clzi_i32(rd, rm, 32);
--}
--
--static bool trans_VCLZ(DisasContext *s, arg_2misc *a)
--{
--    static NeonGenOneOpFn * const fn[] = {
--        gen_helper_neon_clz_u8,
--        gen_helper_neon_clz_u16,
--        do_VCLZ_32,
--        NULL,
--    };
--    return do_2misc(s, a, fn[a->size]);
--}
--
- static bool trans_VCNT(DisasContext *s, arg_2misc *a)
++/*
++ * Return <0 for non-supported element sizes, with MO_16 controlled by
++ * FEAT_FP16; return 0 for fp disabled; otherwise return >0 for success.
++ */
++static int fp_access_check_scalar_hsd(DisasContext *s, MemOp esz)
++{
++    switch (esz) {
++    case MO_64:
++    case MO_32:
++        break;
++    case MO_16:
++        if (!dc_isar_feature(aa64_fp16, s)) {
++            return -1;
++        }
++        break;
++    default:
++        return -1;
++    }
++    return fp_access_check(s);
++}
++
+ /*
+  * Check that SVE access is enabled.  If it is, return true.
+  * If not, emit code to generate an appropriate exception and return false.
+@@ -6628,22 +6649,10 @@ static bool trans_FCSEL(DisasContext *s, arg_FCSEL *a)
  {
-     if (a->size != 0) {
+     TCGv_i64 t_true, t_false;
+     DisasCompare64 c;
++    int check = fp_access_check_scalar_hsd(s, a->esz);
+ 
+-    switch (a->esz) {
+-    case MO_32:
+-    case MO_64:
+-        break;
+-    case MO_16:
+-        if (!dc_isar_feature(aa64_fp16, s)) {
+-            return false;
+-        }
+-        break;
+-    default:
+-        return false;
+-    }
+-
+-    if (!fp_access_check(s)) {
+-        return true;
++    if (check <= 0) {
++        return check == 0;
+     }
+ 
+     /* Zero extend sreg & hreg inputs to 64 bits now.  */
+@@ -6894,22 +6903,15 @@ TRANS(FMINV_s, do_fp_reduction, a, gen_helper_vfp_mins)
+ 
+ static bool trans_FMOVI_s(DisasContext *s, arg_FMOVI_s *a)
+ {
+-    switch (a->esz) {
+-    case MO_32:
+-    case MO_64:
+-        break;
+-    case MO_16:
+-        if (!dc_isar_feature(aa64_fp16, s)) {
+-            return false;
+-        }
+-        break;
+-    default:
+-        return false;
+-    }
+-    if (fp_access_check(s)) {
+-        uint64_t imm = vfp_expand_imm(a->esz, a->imm);
+-        write_fp_dreg(s, a->rd, tcg_constant_i64(imm));
++    int check = fp_access_check_scalar_hsd(s, a->esz);
++    uint64_t imm;
++
++    if (check <= 0) {
++        return check == 0;
+     }
++
++    imm = vfp_expand_imm(a->esz, a->imm);
++    write_fp_dreg(s, a->rd, tcg_constant_i64(imm));
+     return true;
+ }
+ 
 -- 
 2.43.0
 

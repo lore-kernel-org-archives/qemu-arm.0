@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38621fbbe15sm16587772f8f.92.2024.12.10.12.43.55
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-434d527395csm236170905e9.17.2024.12.10.12.43.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 12:43:58 -0800 (PST)
+        Tue, 10 Dec 2024 12:43:56 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BE7EE603A1;
+	by draig.lan (Postfix) with ESMTP id 94B3D60370;
 	Tue, 10 Dec 2024 20:43:50 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -49,37 +49,49 @@ Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	Nicholas Piggin <npiggin@gmail.com>,
 	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
-	Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH 16/20] util/qemu-timer: fix indentation
-Date: Tue, 10 Dec 2024 20:43:45 +0000
-Message-Id: <20241210204349.723590-17-alex.bennee@linaro.org>
+	Alistair Francis <alistair.francis@wdc.com>,
+	Anders Roxell <anders.roxell@linaro.org>
+Subject: [PATCH 14/20] tests/functional: update the x86_64 tuxrun tests
+Date: Tue, 10 Dec 2024 20:43:43 +0000
+Message-Id: <20241210204349.723590-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241210204349.723590-1-alex.bennee@linaro.org>
 References: <20241210204349.723590-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: TzTUMepzU54g
+X-TUID: QVYdW0hjQEyS
 
-Purely cosmetic.
+Now there are new up to date images available we should update to them.
 
+Cc: Anders Roxell <anders.roxell@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20241121165806.476008-35-alex.bennee@linaro.org>
 ---
- util/qemu-timer.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/functional/test_x86_64_tuxrun.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/util/qemu-timer.c b/util/qemu-timer.c
-index ffe9a3c5c1..7b71655416 100644
---- a/util/qemu-timer.c
-+++ b/util/qemu-timer.c
-@@ -680,7 +680,7 @@ int64_t qemu_clock_advance_virtual_time(int64_t dest)
-     aio_context = qemu_get_aio_context();
+diff --git a/tests/functional/test_x86_64_tuxrun.py b/tests/functional/test_x86_64_tuxrun.py
+index 4f96139871..fcbc62b1b0 100755
+--- a/tests/functional/test_x86_64_tuxrun.py
++++ b/tests/functional/test_x86_64_tuxrun.py
+@@ -17,11 +17,11 @@
+ class TuxRunX86Test(TuxRunBaselineTest):
  
-     deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
--                                                      QEMU_TIMER_ATTR_ALL);
-+                                          QEMU_TIMER_ATTR_ALL);
-     /*
-      * A deadline of < 0 indicates this timer is not enabled, so we
-      * won't get far trying to run it forward.
+     ASSET_X86_64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/x86_64/bzImage',
+-        '2bc7480a669ee9b6b82500a236aba0c54233debe98cb968268fa230f52f03461')
++        'https://storage.tuxboot.com/buildroot/20241119/x86_64/bzImage',
++        'f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed5aef8')
+     ASSET_X86_64_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/x86_64/rootfs.ext4.zst',
+-        'b72ac729769b8f51c6dffb221113c9a063c774dbe1d66af30eb593c4e9999b4b')
++        'https://storage.tuxboot.com/buildroot/20241119/x86_64/rootfs.ext4.zst',
++        '4b8b2a99117519c5290e1202cb36eb6c7aaba92b357b5160f5970cf5fb78a751')
+ 
+     def test_x86_64(self):
+         self.set_machine('q35')
 -- 
 2.39.5

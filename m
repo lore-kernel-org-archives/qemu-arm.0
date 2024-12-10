@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4350159f6a4sm44457575e9.21.2024.12.10.12.43.50
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38621fbbc14sm17123273f8f.87.2024.12.10.12.43.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 10 Dec 2024 12:43:50 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BF2E45FABD;
+	by draig.lan (Postfix) with ESMTP id 959BE5F9FB;
 	Tue, 10 Dec 2024 20:43:49 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -51,16 +51,16 @@ Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH 04/20] tests/functional: update the mips32 tuxrun tests
-Date: Tue, 10 Dec 2024 20:43:33 +0000
-Message-Id: <20241210204349.723590-5-alex.bennee@linaro.org>
+Subject: [PATCH 02/20] tests/functional: update the i386 tuxrun tests
+Date: Tue, 10 Dec 2024 20:43:31 +0000
+Message-Id: <20241210204349.723590-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241210204349.723590-1-alex.bennee@linaro.org>
 References: <20241210204349.723590-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: MOr4qe4cpxy5
+X-TUID: tkRs16syeU0l
 
 Now there are new up to date images available we should update to them.
 
@@ -68,30 +68,30 @@ Cc: Anders Roxell <anders.roxell@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Tested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-25-alex.bennee@linaro.org>
+Message-Id: <20241121165806.476008-23-alex.bennee@linaro.org>
 ---
- tests/functional/test_mips_tuxrun.py | 8 ++++----
+ tests/functional/test_i386_tuxrun.py | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/test_mips_tuxrun.py b/tests/functional/test_mips_tuxrun.py
-index 6fec44c2bf..6771dbd57e 100755
---- a/tests/functional/test_mips_tuxrun.py
-+++ b/tests/functional/test_mips_tuxrun.py
+diff --git a/tests/functional/test_i386_tuxrun.py b/tests/functional/test_i386_tuxrun.py
+index c593ffbe8c..f3ccf11ae8 100755
+--- a/tests/functional/test_i386_tuxrun.py
++++ b/tests/functional/test_i386_tuxrun.py
 @@ -17,11 +17,11 @@
- class TuxRunMipsTest(TuxRunBaselineTest):
+ class TuxRunI386Test(TuxRunBaselineTest):
  
-     ASSET_MIPS_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/mips32/vmlinux',
--        'bfd2172f8b17fb32970ca0c8c58f59c5a4ca38aa5855d920be3a69b5d16e52f0')
-+        'https://storage.tuxboot.com/buildroot/20241119/mips32/vmlinux',
-+        'b6f97fc698ae8c96456ad8c996c7454228074df0d7520dedd0a15e2913700a19')
-     ASSET_MIPS_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/mips32/rootfs.ext4.zst',
--        'fc3da0b4c2f38d74c6d705123bb0f633c76ed953128f9d0859378c328a6d11a0')
-+        'https://storage.tuxboot.com/buildroot/20241119/mips32/rootfs.ext4.zst',
-+        '87055cf3cbde3fd134e5039e7b87feb03231d8c4b21ee712b8ba3308dfa72f50')
+     ASSET_I386_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/i386/bzImage',
+-        'a3e5b32a354729e65910f5a1ffcda7c14a6c12a55e8213fb86e277f1b76ed956')
++        'https://storage.tuxboot.com/buildroot/20241119/i386/bzImage',
++        '47fb44e38e34101eb0f71a2a01742b959d40ed5fd67cefb5608a39be11d3b74e')
+     ASSET_I386_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/i386/rootfs.ext4.zst',
+-        'f15e66b2bf673a210ec2a4b2e744a80530b36289e04f5388aab812b97f69754a')
++        'https://storage.tuxboot.com/buildroot/20241119/i386/rootfs.ext4.zst',
++        'a1a3b3b4c9dccd6475b58db95c107b468b736b700f6620985a8ed050a73d51c8')
  
-     def test_mips32(self):
-         self.set_machine('malta')
+     def test_i386(self):
+         self.set_machine('q35')
 -- 
 2.39.5

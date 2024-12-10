@@ -1,202 +1,293 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3560666njb;
-        Tue, 10 Dec 2024 11:07:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXkbpulrEDkLeBeNb8t/fYq/HAnAVA0N8ox3gT3ia4sjnYhC9ElwtwGK3G09unCpzhqWlYnlSe7LVwatQ==@linaro.org
-X-Received: by 2002:a05:600c:3b94:b0:434:f0df:9f6 with SMTP id 5b1f17b1804b1-4361c346814mr108875e9.3.1733857634085;
-        Tue, 10 Dec 2024 11:07:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733857634; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3616583njb;
+        Tue, 10 Dec 2024 12:49:51 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVMwEtggpcGSZSNv5IIZ5tEWhChBy403t31sCY31gFEqsTY/wQCk5FnCMHIzjrOJIxK9GMFaUmk8UfKCA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGLQz6bG8UtB3ma7fF5T9xRINB/6Wz4N3MF1NgDs4wYPXbzpPUhjGAuRVgsr1RMDk4C9+I6
+X-Received: by 2002:ad4:5c6b:0:b0:6d8:a591:fb8 with SMTP id 6a1803df08f44-6d934bc735fmr6749936d6.37.1733863791580;
+        Tue, 10 Dec 2024 12:49:51 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1733863791; cv=pass;
         d=google.com; s=arc-20240605;
-        b=cbb2+wsoHg05qkFBdTqdtVB94bOnGjtpSzBGMKQvCMeXDqbd5wuDtolnkj9V2S2+f4
-         kOnuhHy+mVPxM3ShTsoIBshFS06f6ccxJ7rM8gRoWnwCvUCg6k+tbC4MrzWltGWBuRNW
-         M7Q92GrolQpatE5wOeGshPH0qhziZSvd+ZZ+zSpWGwfgntWyn2KHPjrEZ8uc1O8tkprC
-         OXpvvlIZYKNy8rnSk7LCinbqj6NfG1N0T0eQ/bBiNo3mdEVXg4MJ4oAgbqxKYRyhIw++
-         uaJ02d3etG2j1vIpze7liQpY0tPx+jHvdM6q88JRPDKJIhMngDYKbJ39hHMm1pBFf0e7
-         sq8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-transfer-encoding:content-disposition
+        b=Ve6TAt0hnFj4se01ZDTbYL7igOtlYNdbqSn6XVhvtnrI3xF5i4XdDA1dTQeFz/7DMw
+         WpzBk+vk69ZQK5B2s4v2TvhhxRuOcqI08J27oPtroz5yiI37okj0ZCrOQYuH+6eXd4cS
+         6GX8mdY+Jvjft55aM7dsxsAOxqKykJDMeeSHX5JWF9YTSwyaGFUJDihkXozAqsvBmitr
+         1KtXubXGK+GpVo82u5o4/50D0j/dr7EvbUY/6FeBntFWFeprtga/kxZB8tNVsmoQQQZm
+         oH/nk2ILx7vSwhNcZ6vyL8ATD0fdzxxSefUlmCQ7XsmXlPr7ryo7+nYbeKIb9Sz21IuQ
+         kwXQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=5V565qyQf+kulFcpFLhJbvlPOxJD1fK7OBawhGdtI+8=;
-        fh=kHKeEF7S0MHYFMazL6Wan21O9hKZSSyJhc4KewkD1l8=;
-        b=CDA6B+yFZzPHWKisiMnhX4KdfYTR8zchvleo8cXGJKR9ElcFtT/pGipnGf5fr+qdpo
-         lLR5yJLmTKCWu7glDjlYOzPSsMWUpGwoNiT67N2Uo1Pf9r1YiMu6Swp88X2i61pHVQFX
-         /hIf3brm7dtnDyD/1jEng/GckOlzllZbC8ZW3yhdvxs9LyH/OJRvrTWAs1s6WSCYEDGU
-         UxVaRk+OLgbDKy19sk/IgQ9H33ibVS07dc4WWAiCeaDDA5YapHb1UDff6kEtMiUd/7y2
-         cW++CgY+OQ1yZjGBegS2pmjBchUWh2qUb7Ps+4mj4tri0D5gKw78n4TLGRkxfYCTF1br
-         MvbQ==;
+        bh=RJ6O0qV4o8GaUzk8LSE1mcozPWGYSHHBzVGxPO255m8=;
+        fh=051D/jN0C4GzL/tvU8N8+lYGhKBB7tZ9kc34xjwRei8=;
+        b=MMh2H/ZtVlu40MoLR2X4GIffZwifWUiKjd6zwVWZUCXzD39P+6QFeGBbc2w9gvONnF
+         5/wVG5xnRIH75hST9SxZKaqin9ySRy4TunrEKygMnpXs1Z/xcqpq1PjmPA2qVgX3ZUt3
+         fnEHkmgk/cTdK01zSb395dlC08tAVfDHynpdkignLFfYp3IqHak2pgpMO9vjLdjw5jFv
+         myV9GcEWqkfyK3xWxx46vf/5oLDsZTRult8Uew+NBLQNJ+7wmVjpeOYznuKEaIuOe/NR
+         v2lIfLRfRKRmCDFqx1S2ItTKVg5gO0sscfRrRyY6oV5w5Cb8/PUx1iBSt0Jx7p1V3MzZ
+         827Q==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i0FqWAkT;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <jean-philippe@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-434f21161dasor19616625e9.10.2024.12.10.11.07.13
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=Z6+GCHgC;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d8eb61940dsi117332646d6.35.2024.12.10.12.49.51
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 10 Dec 2024 11:07:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 10 Dec 2024 12:49:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=i0FqWAkT;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1733857633; x=1734462433; darn=linaro.org;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=5V565qyQf+kulFcpFLhJbvlPOxJD1fK7OBawhGdtI+8=;
-        b=i0FqWAkTECZVWxWdM9rTfCFEQsPbjgxiYr4rDklSycx/7nA1TYWkBV+Yl6ruNQXqUI
-         nhTZxPehchIEmc1/aVVyM08HQPCzapqbefOTdzKsXFSYLqQPcaagySom5QZm6yvVAQvx
-         LRrRWO3b/gy5SQXQLgMwFqujiYSMaFyvaiKhN9qUyYhR+HQ+gvWwQqinwEAQCCHL7EBq
-         2elRed6BeykeP2MTpKk8QbXZS7r5XN1R9Ny0RRkPS3xGfw73LDhFjsV8C8IMQfPwDpCx
-         lsEorVjYtpIfgbRvNScvUJl4lSwy9uHA9v/LKyGNOqZCr9ZKbKLqkRYdHRkNBbnJRyNK
-         38yA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733857633; x=1734462433;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=5V565qyQf+kulFcpFLhJbvlPOxJD1fK7OBawhGdtI+8=;
-        b=ZIVztyLIWgqnQasPzgthGY5vEiqyMVZ/WqodpxareOLpqpHLZm1icPj6ukzRde5IL/
-         LnBoaceHC7MIzGRGxOQNGFeUWceJIRjW25IiaXSyuub9Gd0bjbGt9aq473H6/nCuDKQ3
-         wey1rfdXkbFQ0V3eTGtrPCTRe98xEV8gT0+LLp+cP67sE8FNps8tRHGRYpec6b1hdddd
-         /gQSR4O5wjYbk3jZQ9uUmhASLCc9K0qbHjavYGIECb5yNrWpvdtGYAvvUyesIzLkLkLL
-         /E8NHToDCCzPTX45KtQgQ6FVUWACHbSyd8nAiP80q72h6/gwYFFV39ripxQGEgPfshqm
-         uIVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVJG93PM7Ct3TnvRU+/UWogZmNX8ssc65Wc5tO92WFez3U3co6u4xoeDYhdZ/lrrkFEjCaZ+sEyf3YmUQ==@linaro.org
-X-Gm-Message-State: AOJu0YzEAM3QCJapuOTwUJuaayqJ3Eot6ZyD0sUw232a4l2JLgc1Losp
-	pHu0DQn2zHVeHCvYy73b4kwWVZsUouAj7kP67/ne0R7uHjWs97Tvexac5rht/P+0MA==
-X-Gm-Gg: ASbGnctKjAQ2i2VzrBsdeTLILru3ir+206zQcZ3xZjgTxYLR1dtf3X1lgP1PIA/H92J
-	K2CcT4bWLwJ5T2Em2FdZ5PQ5BapfnwhxjImXDfCFcl/2JzWS5fAvfDCDamDyrg05AdnzMVAzMn5
-	l1yn5QJQw2plL+FZCYfQhB84TS/wCAYhSRSdu/spsYQsicwK/9xLf6LJiIVhPT7MG4bAPI1gn7S
-	zaz3/yhEqOPG20yrSeaiR3M3u8HUWlVL4aFeL4Sicv2NGAeuJgy
-X-Google-Smtp-Source: AGHT+IFSCT5yXT0kkOTlqm/Y97/5nqu2pDrpQjmT/FBslfCiuIz79p51FLYlFmyS/Z2eMnRbb6ReWA==
-X-Received: by 2002:a05:600c:3ca1:b0:434:9499:9e87 with SMTP id 5b1f17b1804b1-434dded743dmr128768915e9.25.1733857633398;
-        Tue, 10 Dec 2024 11:07:13 -0800 (PST)
-Return-Path: <jean-philippe@linaro.org>
-Received: from myrica ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43502fef1eesm33604645e9.0.2024.12.10.11.07.12
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Dec 2024 11:07:13 -0800 (PST)
-Date: Tue, 10 Dec 2024 19:07:38 +0000
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.bennee@linaro.org
-Subject: Re: [PATCH v3 08/26] hw/core/loader: Add ROM loader notifier
-Message-ID: <20241210190738.GD1212502@myrica>
-References: <20241125195626.856992-2-jean-philippe@linaro.org>
- <20241125195626.856992-10-jean-philippe@linaro.org>
- <564df018-6d47-4cb6-b781-5a2e58669da6@linaro.org>
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=Z6+GCHgC;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tL7AL-0008Qn-Ar; Tue, 10 Dec 2024 15:49:09 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tL7AC-0007rj-N0; Tue, 10 Dec 2024 15:49:04 -0500
+Received: from mail-co1nam11on2060e.outbound.protection.outlook.com
+ ([2a01:111:f403:2416::60e]
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1tL7A9-0002m1-Bu; Tue, 10 Dec 2024 15:49:00 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=yMmilJl2F+Gk+2PL5R500c57hZu0eMLp80T+KuVSPS0GBXxx9Lv532j13oT/BIn2mF0XH3It8b0q0pAIWZny0fJDQVkB3MiPA/O0t5xJ0nCNrT21oHqxAu8st35aJ5wAboWuFJRHpODHi/+OBOOVMJW7IrJSZ8/FKko9X3Cutu4P2h+MleS5GINgN1LpNZyeuNNOPPIpoAf9hRS7ECuaHF5Wqufl9cIWBKmLU49JtufFG1fl316pPUM+Mt5Yf2TnY/wQaSsXS9yVTkn1Z9VUalLC1dxVYWoClfD0gSxLQ99rlqhFq/zfQ6gscTQygMyBxXWvgwrrKJSSdgq8dZhpIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=RJ6O0qV4o8GaUzk8LSE1mcozPWGYSHHBzVGxPO255m8=;
+ b=BXeIHS8YKMERhLD0I2XCB8SaFPWOovFkjXvHTtW9U9rfZMq38lpDJ8CvpWVgVS6xMrO+kKXnSu/pJI0nR4q+qOwJxDV/ZXx+3JOCGs+WhfRkJlLodCNS8ujSi/1zbG0RaEQtwtvFmMCouRfw1LScGaWwh/7zeabCV+neaqKJjDvmnsTQDdC0WhdPZ+IzPZYJdg32l6IB4PSiOUbhApZlIXCDIVA2hUok1k7hjOVtQKoB14qdIX+J7lhP2gNGSiuj3RdQCVzaIOPQqUEO+7xb47UF6aJmf3JjZhwTxAsNgoitAUfuqbb8OljSkIjAzVvBi1zbbMYSVenyG23IOLvrqQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.118.232) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=RJ6O0qV4o8GaUzk8LSE1mcozPWGYSHHBzVGxPO255m8=;
+ b=Z6+GCHgC/YHJ/V8voR1FFU5BSfCUnI7occlVoa3Pt9gxk1h7J1EWBWq/A9yUpUxZIubmOnsfw7+J7PCXQdqCuSAHpHen2yj2R179VxookcMmf0FWl7EDafs9WARfmFFu0CekJMncqN+3lA7cIMFlwxqCg3Fgkd2LCe/24ugVCHs9TWORNdpgYO26uCVxsL3O9ttjEozcfL9fpE+XR80uFDVFPmR+ySGj41uGlXXR+C7nTVnbfW7AVkaI5BqozgplyF+2+f9tMUfmNsLsvgohYnshL5hfWHD05p/noKJvVBuFouVHX2Kdsj4M+yD1RjUNFNX0TJkyZxCin1mM4ZMs5Q==
+Received: from BN9PR03CA0707.namprd03.prod.outlook.com (2603:10b6:408:ef::22)
+ by IA0PR12MB8981.namprd12.prod.outlook.com (2603:10b6:208:484::18)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8230.12; Tue, 10 Dec
+ 2024 20:48:43 +0000
+Received: from BN1PEPF00004688.namprd05.prod.outlook.com
+ (2603:10b6:408:ef:cafe::5a) by BN9PR03CA0707.outlook.office365.com
+ (2603:10b6:408:ef::22) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8230.18 via Frontend Transport; Tue,
+ 10 Dec 2024 20:48:43 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.118.232)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.118.232 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.118.232; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.118.232) by
+ BN1PEPF00004688.mail.protection.outlook.com (10.167.243.133) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8251.15 via Frontend Transport; Tue, 10 Dec 2024 20:48:42 +0000
+Received: from drhqmail202.nvidia.com (10.126.190.181) by mail.nvidia.com
+ (10.127.129.5) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Tue, 10 Dec
+ 2024 12:48:30 -0800
+Received: from drhqmail203.nvidia.com (10.126.190.182) by
+ drhqmail202.nvidia.com (10.126.190.181) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.4; Tue, 10 Dec 2024 12:48:30 -0800
+Received: from Asurada-Nvidia (10.127.8.11) by mail.nvidia.com
+ (10.126.190.182) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
+ Transport; Tue, 10 Dec 2024 12:48:30 -0800
+Date: Tue, 10 Dec 2024 12:48:28 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+CC: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "jgg@nvidia.com"
+ <jgg@nvidia.com>, "ddutile@redhat.com" <ddutile@redhat.com>, Linuxarm
+ <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
+ <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
+Subject: Re: [RFC PATCH 4/5] hw/arm/virt-acpi-build: Build IORT with multiple
+ SMMU nodes
+Message-ID: <Z1ipHKP4L/++143Q@Asurada-Nvidia>
+References: <20241108125242.60136-5-shameerali.kolothum.thodi@huawei.com>
+ <1dcea5ca-806f-4f51-8b13-faf5d62eb086@redhat.com>
+ <efb9fb7fb0f04d92b7776cdbc474585d@huawei.com>
+ <48bb0455-7c2e-4cc6-aa15-ebe4311d8430@redhat.com>
+ <0803ec1a010a46b9811543e1044c3176@huawei.com>
+ <aafc5fba-8d68-4796-a846-265362e7acac@redhat.com>
+ <30ff8ac9ee9b4012aa6962c86ac06375@huawei.com>
+ <41a67d4e-f7b8-4586-8d52-c32df400b675@redhat.com>
+ <e13f2e9c0a6341e8b25b7945bc7bf413@huawei.com>
+ <c14feb2934a0478180635bbdb27d5e53@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <564df018-6d47-4cb6-b781-5a2e58669da6@linaro.org>
-X-TUID: gokXwD0mOd43
+In-Reply-To: <c14feb2934a0478180635bbdb27d5e53@huawei.com>
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN1PEPF00004688:EE_|IA0PR12MB8981:EE_
+X-MS-Office365-Filtering-Correlation-Id: 50bc86cd-0bb4-4d16-b40f-08dd195c088a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|376014|7416014|36860700013|82310400026; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?sOB2KEFcldy8wCamNiqWphY5kS6hyksnkNd+OVV8N+JVMzkdPNG6J7BEZbvk?=
+ =?us-ascii?Q?KUEVlsmSGZegFDIf9mDzTWlCLTVKFvbofQ/lzckVBWJkJtY/7ODNeo/nRsZY?=
+ =?us-ascii?Q?7JZOFZwqq273B0Ozejbsqom/1gOX3WYv7QiPJPRs1Kzp76gPgN2kDLfQ2Boi?=
+ =?us-ascii?Q?1Vtf0EjPBJtwqR61Vc/xScsHEolGMtNFYqyMn6QvDvv1Ydp2ZdPnA60DT9HB?=
+ =?us-ascii?Q?xPLp1W0yVo1kH2kWS4rs0ba2/VcKKQ1UfJN3Vbe4M+bHHr8Vp0eZOuo8n4ST?=
+ =?us-ascii?Q?s8TE+kpLETbxs+/UnjCbIC6NNg1GfksXzTv25R/6+uWp0LJjaP8jHUtiSV36?=
+ =?us-ascii?Q?yqlDMQ6qYEk0YWFuQms2/dPmzmwrBNwReJECbIpdurzquhEHckybdeW2IYjM?=
+ =?us-ascii?Q?RriO5gdy26Qmjfn6ndOTgohgqnX8YP5ieydmNcZcWQ5wjb7rLOJtmR8TEDO6?=
+ =?us-ascii?Q?DSEblXEtXfYU1Hh3WE5pieJcAd1g6ghWOL+WfA6jO/1l7PEO3avLVaoQ6C9U?=
+ =?us-ascii?Q?rUvJz3muLJfeIiUcmCtt9QtPNNN3wR5vyhgwflwsrK99anxYL/p77425cB3y?=
+ =?us-ascii?Q?z49hdSe6mIBXENOFQmal1SADkRDbvC1Z23qDo+qHtRIfINZdRSwh4+9T+Ene?=
+ =?us-ascii?Q?Qjc4nnN1qjOTuufvVLYTKySegyKC0lMsF5gEXL4bJfotGFqivU2lpEIchaAE?=
+ =?us-ascii?Q?65l5Ed71aIfSHv/etu7lJmtTx75o/kvW7wsmtmbckCn68LdpjTTSvnBiblaZ?=
+ =?us-ascii?Q?sAyI3qOZmF0Xr9ddIoCWJ4pNWszZ3CJBHekNUu14U9HWdLqeI4npIFSIKxOb?=
+ =?us-ascii?Q?oHfKgSggFWamNPPT6d2eKvWUuC0dqMQWUxvK8LrnFr8chUa4BEJB9SB2UUqA?=
+ =?us-ascii?Q?mtjIomzVO/V2LvwbHFcNg3J/NEoBV53gUhgm5luFBNIFs5Kl8UkQxNHXv9LY?=
+ =?us-ascii?Q?72iuicWwn2vKTUdJXcZZ7EfL6vBbxEKFLo2XL4CaNcm3skNr/iazRUhmIAXP?=
+ =?us-ascii?Q?cvXTWfFY7doQrC2zCy5FZvv/yWBDXrvWPHnc3yuIXxCt8v9iSCjjRYwXu6G1?=
+ =?us-ascii?Q?t8fk19nb0pOGey31L750PMmK3MJCqzm+TCvIJtfCpXHy9d1C9x9iviYn4/eM?=
+ =?us-ascii?Q?bu+rdhWCBPsagnBSzu60amWXjuGiQFspyf9N/8AaAqfGXFEFIsNiqxtqyeNr?=
+ =?us-ascii?Q?fguSwOCEMZwhvryNMliw3HgWwxVViF39h8tmWzSGoGD74ZzQm+hxKkW5JDJS?=
+ =?us-ascii?Q?5gfwyFABt6bsqAEfusuYEXfWO6y5fLO+C/Ffew43SiUI+oqK0aqobW9EI5VR?=
+ =?us-ascii?Q?JGPtXFUMB5rEVBO1UKIo1VYhD6LgbBL13hfilCK01Aq7k6zaLaMZR7WE6Y3H?=
+ =?us-ascii?Q?/An/A/UfXh/xT4PzhKO67fzRo2olJFe9dkT2wrWOuAhWqGaa56JbgRtt7X5D?=
+ =?us-ascii?Q?vzV4uWCII6Dj5JhjO/vGxEioIGqZJJPM?=
+X-Forefront-Antispam-Report: CIP:216.228.118.232; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc7edge1.nvidia.com; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(7416014)(36860700013)(82310400026); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Dec 2024 20:48:42.5440 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 50bc86cd-0bb4-4d16-b40f-08dd195c088a
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.118.232];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN1PEPF00004688.namprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB8981
+Received-SPF: softfail client-ip=2a01:111:f403:2416::60e;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM11-CO1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.52,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: mqO+3m2CiasA
 
-On Thu, Dec 05, 2024 at 10:59:52PM +0100, Philippe Mathieu-Daudé wrote:
-> On 25/11/24 20:56, Jean-Philippe Brucker wrote:
-> > Add a function to register a notifier, that is invoked after a ROM gets
-> > loaded into guest memory.
+On Thu, Nov 21, 2024 at 09:46:16AM +0000, Shameerali Kolothum Thodi wrote:
+> Hi Eric,
+> 
+> > -----Original Message-----
+> > From: Shameerali Kolothum Thodi
+> > Sent: Wednesday, November 20, 2024 4:26 PM
+> > To: 'eric.auger@redhat.com' <eric.auger@redhat.com>; qemu-
+> > arm@nongnu.org; qemu-devel@nongnu.org
+> > Cc: peter.maydell@linaro.org; jgg@nvidia.com; nicolinc@nvidia.com;
+> > ddutile@redhat.com; Linuxarm <linuxarm@huawei.com>; Wangzhou (B)
+> > <wangzhou1@hisilicon.com>; jiangkunkun <jiangkunkun@huawei.com>;
+> > Jonathan Cameron <jonathan.cameron@huawei.com>;
+> > zhangfei.gao@linaro.org
+> > Subject: RE: [RFC PATCH 4/5] hw/arm/virt-acpi-build: Build IORT with
+> > multiple SMMU nodes
 > > 
-> > It will be used by Arm confidential guest support, in order to register
-> > all blobs loaded into memory with KVM, so that their content is moved
-> > into Realm state and measured into the initial VM state.
+> > > > I think I have an idea why the hot add was not working.
+> > > >
+> > > > When we have the PCIe topology as something like below,
+> > > >
+> > > > -device pxb-pcie,id=pcie.1,bus_nr=8,bus=pcie.0 \ -device
+> > > > pcie-root-port,id=pcie.port1,bus=pcie.1,chassis=1 \ -device
+> > > > pcie-root-port,id=pcie.port2,bus=pcie.1,chassis=2 \ -device
+> > > > arm-smmuv3-nested,id=smmuv1,pci-bus=pcie.1 \ ...
+> > > >
+> > > > The current IORT generation includes the pcie-root-port dev ids also
+> > > > in the SMMUv3 node idmaps.
+> > > >
+> > > > Hence, when Guest kernel loads, pcieport is also behind the SMMUv3.
+> > > >
+> > > > [    1.466670] pcieport 0000:64:00.0: Adding to iommu group 1
+> > > > ...
+> > > > [    1.448205] pcieport 0000:64:01.0: Adding to iommu group 2
+> > >
+> > > But it should be the same without multi-instantiation, no? I would
+> > > have expected this as normal. Has you tested hot-plug without the
+> > > series laterly? Do you have the same pb?
 > > 
-> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> > ---
-> >   include/hw/loader.h | 15 +++++++++++++++
-> >   hw/core/loader.c    | 15 +++++++++++++++
-> >   2 files changed, 30 insertions(+)
-> > 
-> > diff --git a/include/hw/loader.h b/include/hw/loader.h
-> > index 7f6d06b956..0cd9905f97 100644
-> > --- a/include/hw/loader.h
-> > +++ b/include/hw/loader.h
-> > @@ -353,6 +353,21 @@ void *rom_ptr_for_as(AddressSpace *as, hwaddr addr, size_t size);
-> >   ssize_t rom_add_vga(const char *file);
-> >   ssize_t rom_add_option(const char *file, int32_t bootindex);
-> > +typedef struct RomLoaderNotify {
-> > +    /* Parameters passed to rom_add_blob() */
-> > +    hwaddr addr;
+> > That is a good question. I will give it a try soon and update.
 > 
-> This is the buffer (blob) address in guest physical memory.
+> I tried hot add with the current SMMUv3(iommu=smmuv3) and hot add
+> works when I added a virtio dev to pcie-root-port connected to a pxb-pcie.
 > 
-> > +    size_t len;
+> And now I think I know(hopefully) the reason why it is not working with
+> smmuv3-nested case. I think the root cause is this commit here,
 > 
-> This is the buffer length.
-> 
-> > +    size_t max_len;
-> 
-> This is the size of the MemoryRegion ROM containing the buffer.
-> 
-> Do we need to notify it? You don't use it in your next patch.
-> If so, I'd rather have this API returns a MemoryRegion (Rom->mr),
-> max_len can be retrieved using memory_region_size(mr); but I
-> don't think we need this at all (at least for now).
+> (series: " cover-letter: Add HW accelerated nesting support for arm SMMUv3")
 
-No I don't think we need it either, what matters is the size of the data
-copied into guest memory. I'll remove this
-
-Thanks,
-Jean
-
+> This changes the way address space is returned for the devices.
 > 
-> > +} RomLoaderNotify;
-> > +
-> > +/**
-> > + * rom_add_load_notifier - Add a notifier for loaded images
-> > + *
-> > + * Add a notifier that will be invoked with a RomLoaderNotify structure for each
-> > + * blob loaded into guest memory, after the blob is loaded.
-> > + */
-> > +void rom_add_load_notifier(Notifier *notifier);
-> > +
-> >   /* This is the usual maximum in uboot, so if a uImage overflows this, it would
-> >    * overflow on real hardware too. */
-> >   #define UBOOT_MAX_GUNZIP_BYTES (64 << 20)
-> > diff --git a/hw/core/loader.c b/hw/core/loader.c
-> > index 31593a1171..759a62cf58 100644
-> > --- a/hw/core/loader.c
-> > +++ b/hw/core/loader.c
-> > @@ -67,6 +67,8 @@
-> >   #include <zlib.h>
-> >   static int roms_loaded;
-> > +static NotifierList rom_loader_notifier =
-> > +    NOTIFIER_LIST_INITIALIZER(rom_loader_notifier);
-> >   /* return the size or -1 if error */
-> >   int64_t get_image_size(const char *filename)
-> > @@ -1179,6 +1181,11 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
-> >       return mr;
-> >   }
-> > +void rom_add_load_notifier(Notifier *notifier)
-> > +{
-> > +    notifier_list_add(&rom_loader_notifier, notifier);
-> > +}
-> > +
-> >   /* This function is specific for elf program because we don't need to allocate
-> >    * all the rom. We just allocate the first part and the rest is just zeros. This
-> >    * is why romsize and datasize are different. Also, this function takes its own
-> > @@ -1220,6 +1227,7 @@ ssize_t rom_add_option(const char *file, int32_t bootindex)
-> >   static void rom_reset(void *unused)
-> >   {
-> >       Rom *rom;
-> > +    RomLoaderNotify notify;
-> >       QTAILQ_FOREACH(rom, &roms, next) {
-> >           if (rom->fw_file) {
-> > @@ -1268,6 +1276,13 @@ static void rom_reset(void *unused)
-> >           cpu_flush_icache_range(rom->addr, rom->datasize);
-> >           trace_loader_write_rom(rom->name, rom->addr, rom->datasize, rom->isrom);
-> > +
-> > +        notify = (RomLoaderNotify) {
-> > +            .addr = rom->addr,
-> > +            .len = rom->datasize,
-> > +            .max_len = rom->romsize,
-> > +        };
-> > +        notifier_list_notify(&rom_loader_notifier, &notify);
-> >       }
-> >   }
+> static AddressSpace *smmu_find_add_as(PCIBus *bus, void *opaque, int devfn)
+> {
+>     SMMUState *s = opaque;
+>     SMMUPciBus *sbus = smmu_get_sbus(s, bus);
+>     SMMUDevice *sdev = smmu_get_sdev(s, sbus, bus, devfn);
 > 
+>     /* Return the system as if the device uses stage-2 only */
+>     if (s->nested && !sdev->s1_hwpt) {
+>         return &sdev->as_sysmem;
+>     } else {
+>         return &sdev->as;
+>     }
+> }
+> 
+> If we have entries in the SMMUv3 idmap for bus:devfn, then I think we should
+> return IOMMU address space here. But the logic above returns sysmem
+> address space for anything other than vfio/iommufd devices.
+>
+> The hot add works when I hacked the logic to return IOMMU address space
+> for pcie root port devices.
+
+That is to bypass the "if (memory_region_is_iommu(section->mr))"
+in vfio_listener_region_add(), when the device gets initially
+attached to the default container.
+
+Once a device reaches to the pci_device_set_iommu_device() call,
+it should be attached to an IDENTIY/bypass proxy s1_hwpt, so the
+smmu_find_add_as() will return the iommu as.
+
+So, the fact that your hack is working means the hotplug routine
+is likely missing a pci_device_set_iommu_device() call, IMHO, or
+probably it should do pci_device_iommu_address_space() after the
+device finishes pci_device_set_iommu_device() instead..
+
+Nicolin

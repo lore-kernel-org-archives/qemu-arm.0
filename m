@@ -1,159 +1,304 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3877674njb;
-        Wed, 11 Dec 2024 00:01:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU3RjPRFyLQ9ySyFDAbeK/wzdhFxLWutxKQBpgRouAvqSgL8rG53ATEjXtOqEWzGqesrSSPRylc9wkQgQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGejuJ5pXWbRuyrX+NmrW6KUm+QlH6grD0kYxAKPNe706R/bXmMJo9UMG+PKplQxX1vppip
-X-Received: by 2002:a05:6102:38d4:b0:4b1:242b:4e2 with SMTP id ada2fe7eead31-4b12904037bmr2127312137.13.1733904115806;
-        Wed, 11 Dec 2024 00:01:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733904115; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3853587njb;
+        Tue, 10 Dec 2024 22:58:08 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFrOdXMcb0ddKUUy0R0aFo+Nx7i86wlDx9ERHuH0NlznNDkYZSuuUzJWuu/Y5HVTFH0u/Nh
+X-Received: by 2002:a05:6602:342a:b0:841:8345:5eed with SMTP id ca18e2360f4ac-844ccf773f8mr194542139f.0.1733900288091;
+        Tue, 10 Dec 2024 22:58:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733900288; cv=none;
         d=google.com; s=arc-20240605;
-        b=iIyfWo7sxeaM4ImyZ/8DE8Shx4qTFRNb/1sPrmE905Eh6DaqdhH0ouKDx5AndJTrhc
-         i18P2C3p+eu6/URb8WAQMmlL7MdTx+bv88ZbfQTQj3O4XqebOO42JS7Hp+R/adJk/gze
-         fwRFd3z24C1XmlMVtUGS/pv57iFFB5xqHyNfxGnr65NQZIEUj1M6Vv8ANKl52DPUQRqt
-         zwHN6m6/nAw+FzopssB2AEd/4vieQCpc624/4LnrQ6KwF1p2jRFfd0b466nBL5Hj1Yow
-         pcIKjYTFKtOzRRdTFRdQ1VuhhYDYECBWGU2jlF+SK0OWulAqvP3tTGVzjqopZs9tZ12E
-         SNQA==
+        b=GAi3KVRivyccdkQgLQ27pDl0QCCxO7kuqYTSAOC8OyUqU6fw/buT29/DnzwoAvnuuG
+         IXqMB3RRp56IO6q3L9IyDRMTyUd1N31b0LPW+iHiLTAjlJLLqeFRvTx3/SiqRQOz73A7
+         Gt0h/2XEo7i38SMjpfu3Ob3vZUEQ77UsCgno2BVa1QfILZROmw6wUdmJBykOFJrNxosv
+         QU4QuWYhs0vK1/cYFkSQ36qH3hwFmZ8ihwqhT7Uk6pDDF0+EZubRsHQh/vvx10yYM45Q
+         thpxiWRc5r+yV98BUXJ53nV3UgRbo8qSeVzRQCHyesHu3S+PpuhAZcCcl0ZCHOUcJIFM
+         XyqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=Hcc+omil9zLZ86uj1io+vFVrjtyesKucHo4fjI37lzI=;
-        fh=mrLZ08o9GLILUTdqKBvWmnumrQHIzD2lbCs4PSTqSDw=;
-        b=UeUfp3c7Iqf/a1odVYgJXXgresq3Fxirqi2aWLtuYIjtHS8RviYqBtrHlU8ci+TpCS
-         Zk/h2PIwHklsHd418LEZLeFqL+BiB6Vgc4zMgxR2q6J+NteK/3SRveG19jVwVPCbFhlM
-         UV45oy/zSxc2QYWvl4of2ZyuXkKlGrD3FQbM4vQmiJzdjlRImt/j+tiudv7TW+X+kcN/
-         fvxH8vGXMkUXdW2e0+k8wmyOKHVxtFDAuDMPbTgc6gHTdNn5yeCTGN3aZddO7GBRlbPe
-         c4WhWU8RaB9WR2kUOJys3WUelLX502aEBxRYi4KSpM7EO66kqA7vESm1xn0g/eRAYv6Y
-         ny1w==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=Gy2n11iGTa9ZiqbyiHBxIp01HGftCyw+zIb9nN+g+e0=;
+        fh=p4TgAEIBsE47d+3ho4vV39JSs5yvgZfZgnJxtoN9Gq8=;
+        b=XXjsz/Z2mx5O+hHAC9kxwr2etVSWVyAEXsOfywVw8O4hT6Mf+Pv1aO8cgrxhtMoxmA
+         i08C/cQSs7dofU7CgH+fHrjFrxM7YxJjMQ4zGprfCgpN6uiBURYQRIxJ3t4xMClHAmP+
+         C6JFUbX3dZjbhz8e89rya2Ciya0wxdJVEvl1v3bEouUMGd9k2krLioQj1kgljwRNtWCZ
+         wjMxuWpyo9at3uaXuGeZ7KQ3xgv1RpcMKho9aUJnuKl/62fYObaTjN6Y4f1W3EBaHTdJ
+         VxDCblqyAC31Nh6+klmJoBCM7h3D3VCpppWablUjI/vlEDxxpW0QqDSoKe96O0jZYF1D
+         q4TA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZafsEIPP;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NsNkmKxF;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <gshan@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b11c32dac6si889358137.566.2024.12.11.00.01.55
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id ca18e2360f4ac-844cd2d8d6esi55835539f.49.2024.12.10.22.58.07
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Dec 2024 00:01:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Tue, 10 Dec 2024 22:58:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZafsEIPP;
-       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NsNkmKxF;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1733904115;
+	s=mimecast20190719; t=1733900287;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Hcc+omil9zLZ86uj1io+vFVrjtyesKucHo4fjI37lzI=;
-	b=ZafsEIPPNl93ydFeWLS4LKtkcjayrEZfrHXeTeEQyoiB+t4vviXEEPlp+3kIW/D0lUvBU/
-	srbibpguHzsSaRQo/qHgXjTJrCgviULrmWVO6bZAM0qC5BHuK7tZ+SNeYkfrW+j3y+JKAQ
-	u5EzbiFAaX3oQr1FlnGq0qb//vqTIaE=
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=Gy2n11iGTa9ZiqbyiHBxIp01HGftCyw+zIb9nN+g+e0=;
+	b=NsNkmKxFVrsLTDTSYwXpOhVk1s0ePU1ExrugMJdYaA4QShmdD0PzlZUf9jhK2q32Q7fhAd
+	kEzagl3T3eTiHq8E6DAgNOclxBYBBdqFewT0x7j76RtCeKvCrnAUs+lYTdMJoH//8UoRIj
+	3w631WGqjtFthvuZkuTEdJjlhStdQMs=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-58-Nh76YT4uMsmEkIs4oDfkoQ-1; Wed, 11 Dec 2024 03:01:54 -0500
-X-MC-Unique: Nh76YT4uMsmEkIs4oDfkoQ-1
-X-Mimecast-MFC-AGG-ID: Nh76YT4uMsmEkIs4oDfkoQ
-Received: by mail-pj1-f72.google.com with SMTP id 98e67ed59e1d1-2ef35de8901so6840492a91.3
-        for <alex.bennee@linaro.org>; Wed, 11 Dec 2024 00:01:54 -0800 (PST)
+ us-mta-345-UgWTP21UOGqCAfYyw07mKw-1; Wed, 11 Dec 2024 01:58:06 -0500
+X-MC-Unique: UgWTP21UOGqCAfYyw07mKw-1
+X-Mimecast-MFC-AGG-ID: UgWTP21UOGqCAfYyw07mKw
+Received: by mail-ej1-f69.google.com with SMTP id a640c23a62f3a-aa68203d288so286778566b.1
+        for <alex.bennee@linaro.org>; Tue, 10 Dec 2024 22:58:05 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733904113; x=1734508913;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :cc:to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=Hcc+omil9zLZ86uj1io+vFVrjtyesKucHo4fjI37lzI=;
-        b=GEcAjZ5Q7nm8S5juzFlG/gJPytNEekmLh6MCLy/98NLdZ19QlWfsenivaQfrO30o4u
-         mQIo15hTB2TCiBlaUFs2gYgVl73VOwaqy96Rzqfwm0jpccevBu6Bhj22JMaTwceSqg/m
-         iptibSgcOCRTsqnrYzZghnEv+ZfjtDDfskTeJT3iPbbHY6zBJmehCQXOwi/YktZiUlb5
-         cuiUflYJIo7sGUVlGKOFFiPclhs91PsvuaOwgPbjvGSvgMB1AKmCDrnZU1jxVusZjld5
-         XLWmm9zjMUqmD35iSOyrGCTgI3YUSa3ZyllM1RfQ1Ty0oAYqDViA5vDCap/zkWfpaQU3
-         TWTg==
-X-Forwarded-Encrypted: i=1; AJvYcCVB7wQ/7bitaLuwhp8sinEJyPkU8tf8Rj0p7DocL9BN3l7rUmzlqFTupHa+Trk9RN3Q9WIDTeGK9I9aDw==@linaro.org
-X-Gm-Message-State: AOJu0Ywe9woxlFr6WNeoMFOPBG6bIqGhbN0b+Ckp51xBVbhQhAWUMhbs
-	pTQnabrxFJCUr3AV6s8bN1n9w4Ij9vHjOMutAtmr8gOf8ncbZ38trd+GM2mFYP4fiR8pNL9wN0K
-	0A9+JSr+U7mmxpt2B0smWv/2uRlxLPEvot83YSKZhB0XsPzHlcENtew==
-X-Gm-Gg: ASbGnctaX7fd2PZk1Bjrutzi5GcXH5zNb9hWtVogmAMBmx5SPaV4gSFJGt+PY5tyf1Y
-	ZmJ4/91ntjROloVb+HYAxpfp/hzUgdJMMw8uIw8C+b75KOUT+gjT+AzWYFl/b25FGESDp1ZYMA6
-	IS5OIwlr9Vip81QMt5YogSZji4mQqzzkfkUuh9n/COZBrRO7UBXm7UwoJsXeUNDN+L/OVF7eF0r
-	r2XiPKCDQM0jY7x/NDTcxfR0WFiVCVzOYaKhY2s7Jt8Qa4LPJ3a7Q==
-X-Received: by 2002:a17:90b:4d04:b0:2ee:cd83:8fd3 with SMTP id 98e67ed59e1d1-2f12804a589mr3034313a91.33.1733904112923;
-        Wed, 11 Dec 2024 00:01:52 -0800 (PST)
-X-Received: by 2002:a17:90b:4d04:b0:2ee:cd83:8fd3 with SMTP id 98e67ed59e1d1-2f12804a589mr3034273a91.33.1733904112511;
-        Wed, 11 Dec 2024 00:01:52 -0800 (PST)
-Return-Path: <gshan@redhat.com>
-Received: from [10.72.112.56] ([43.228.180.230])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2ef26ff97f2sm12981054a91.11.2024.12.11.00.01.47
+        d=1e100.net; s=20230601; t=1733900285; x=1734505085;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Gy2n11iGTa9ZiqbyiHBxIp01HGftCyw+zIb9nN+g+e0=;
+        b=i8/aI2fBMxUFN4+atIgUFHb+blq0RUUx4wdpQh0yocU8sg0UXNAye3cuGn7ZTkVeAY
+         26U2lLrv7IktJg1XsN5qTEwimbNFcVKuC71RAR0lubwB1GN5JG9SxusKPYwaXoqxfx1E
+         Q4B73EWzXlBIGfcmsElbZByrYjXXEDk4Gr+h4hZxXLQZ7kwGk1SzguMv6oHW8WSSkmgZ
+         sx/j+kmqxQKeJgMmStlKcf4WawcJJlU6UD8MVB3nkwtbbKjyd4l7J6M3G0UA20evLzdn
+         Z7BEZz97hHa/+IlA+V7Dg/ipE2aqx1rohIpGhzYE6/zPqUYSHZ7Z7G90fT6OUL32077v
+         Jr1w==
+X-Gm-Message-State: AOJu0Yz+DEejaAc1IWgKXhb01IivLzSI71akMeTt8OE98sK38TcOuQzY
+	7pJ5xd4dp7hM+cCnL75v8GL2rBNW2y3+nWEN9Xw9VRK2DkaGeIVAr+i2KECYi0JWpmMdc+q7kx+
+	3qT6hEXTLmJXpx2vRKOOyel4vJ2Z/IphQQkanwawoxYwZ0cSi6/1BCVYeXyGXxnPoodr2MsZarp
+	Q90FGFGUCyN9CWGx+FZg/WFWr8QZ1c6W5G/Q==
+X-Gm-Gg: ASbGncuBTXsZgagfhIcgNNbmm9jtKU1Sr3OM/HGSgoKcpQUWMJj/Cwla0+gXe/ddoZH
+	f38dwJ2tV7eH6IxkqQ01+Bjb1r5qUqlLzWObA22pyQCEJyi60uvH0BOw3/ON3xVPUcc0dn0xAST
+	vWVx1coaODmVZkLrLQajtpLmwDp+kEjkA34Di9FHNgpKiyVDIf0skrj/Jjd5nYu7tbkGiCHQ7o8
+	XuXmrKSpPYrB6z5pj12CSMFYl9UzN4DOtDIWHXk6my4qFJDB5XfAOFngKs0r6DSmcgXLRN91/mE
+	q70SvD0=
+X-Received: by 2002:a17:906:328e:b0:aa6:7f3d:4f9b with SMTP id a640c23a62f3a-aa6b11a4696mr102433166b.24.1733900284798;
+        Tue, 10 Dec 2024 22:58:04 -0800 (PST)
+X-Received: by 2002:a17:906:328e:b0:aa6:7f3d:4f9b with SMTP id a640c23a62f3a-aa6b11a4696mr102427866b.24.1733900284238;
+        Tue, 10 Dec 2024 22:58:04 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.6] (ip-109-42-51-17.web.vodafone.de. [109.42.51.17])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa667925953sm597991566b.9.2024.12.10.22.58.01
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Dec 2024 00:01:51 -0800 (PST)
-Message-ID: <cd4c928d-83ea-4e63-b35f-69b71963c929@redhat.com>
-Date: Wed, 11 Dec 2024 18:01:45 +1000
+        Tue, 10 Dec 2024 22:58:03 -0800 (PST)
+Message-ID: <d2a73820-58fa-41d0-8f38-68b0ad53fa7d@redhat.com>
+Date: Wed, 11 Dec 2024 07:58:00 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/26] arm: Run Arm CCA VMs with KVM
-From: Gavin Shan <gshan@redhat.com>
-To: Jean-Philippe Brucker <jean-philippe@linaro.org>, peter.maydell@linaro.org
-Cc: richard.henderson@linaro.org, philmd@linaro.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, alex.bennee@linaro.org,
- Matias Ezequiel Vara Larsen <mvaralar@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Gonda <pgonda@google.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>
-References: <20241125195626.856992-2-jean-philippe@linaro.org>
- <8504f92d-03fe-4a0c-a647-0003d9c8772c@redhat.com>
-In-Reply-To: <8504f92d-03fe-4a0c-a647-0003d9c8772c@redhat.com>
+Subject: Re: [PATCH 20/20] tests/functional: extend test_aarch64_virt with
+ vulkan test
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, "Daniel P. Berrange" <berrange@redhat.com>
+Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ qemu-s390x@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Weiwei Li <liwei1518@gmail.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Cleber Rosa <crosa@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>, Eric Farman
+ <farman@linux.ibm.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, John Snow <jsnow@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, Bernhard Beschow <shentey@gmail.com>,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Markus Armbruster <armbru@redhat.com>,
+ Bin Meng <bmeng.cn@gmail.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20241210204349.723590-1-alex.bennee@linaro.org>
+ <20241210204349.723590-21-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20241210204349.723590-21-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: WhKa6ldMIYBbviSAssIOYTfVUSrrPKcD3a1GxZQEpJM_1733904113
+X-Mimecast-MFC-PROC-ID: qjGOfzH8xQSZe3qG30IXERHPPJVV_CEetfwNQLW2tbs_1733900285
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: 69wIaVdECEIn
+Content-Transfer-Encoding: 8bit
+X-TUID: IIyNFgpYlBcC
 
-Hi Jean,
-
-On 12/11/24 1:01 PM, Gavin Shan wrote:
-> On 11/26/24 5:55 AM, Jean-Philippe Brucker wrote:
->> This series enables running confidential VMs on Arm CCA. The host KVM
->> support is progressing but still under discussion [1], so there is no
->> urgency to upstream this series. I'm sending this new version to give a
->> status update, and also to discuss remote attestation below.
->>
->> Since v2 [2] I addressed comments on the QAPI patches. The support for
->> running Linux in a Realm will be in Linux v6.13 [3], so the guest-facing
->> interface is now stable. One important change since v2 is the requirement
->> to initialize the whole GPA space in RMM before boot, which we do in patch
->> 9. The 'earlycon' kernel parameter now requires an unprotected address
->> parameter (see Documentation/arch/arm64/arm-cca.rst in Linux v6.13).
->>
->> Documentation to try this series out:
->> https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/Building+an+RME+stack+for+QEMU
->>
+On 10/12/2024 21.43, Alex Bennée wrote:
+> Now we have virtio-gpu Vulkan support lets add a test for it.
+> Currently this is using images build by buildroot:
 > 
-> I followed the instructions, but encountering some issues. First of all, the
-> recommended TF-RMM (branch: cca/v4) fails to be built. After switching to the
-> latest upstream TF-RMM, it fails to be initialized.
+>    https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
 > 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   tests/functional/test_aarch64_virt.py | 83 ++++++++++++++++++++++++++-
+>   1 file changed, 80 insertions(+), 3 deletions(-)
+> 
+> diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
+> index 801300607c..25d11e2626 100755
+> --- a/tests/functional/test_aarch64_virt.py
+> +++ b/tests/functional/test_aarch64_virt.py
+> @@ -14,11 +14,12 @@
+>   import os
+>   import logging
+>   
+> +from qemu.machine.machine import VMLaunchFailure
+> +
+>   from qemu_test import BUILD_DIR
+>   from qemu_test import QemuSystemTest, Asset
+> -from qemu_test import exec_command, wait_for_console_pattern
+> -from qemu_test import get_qemu_img, run_cmd
+> -
+> +from qemu_test import exec_command, wait_for_console_pattern, exec_command_and_wait_for_pattern
+> +from qemu_test import has_cmd, get_qemu_img, run_cmd
+>   
+>   class Aarch64VirtMachine(QemuSystemTest):
+>       KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
+> @@ -125,5 +126,81 @@ def test_aarch64_virt_gicv2(self):
+>           self.common_aarch64_virt("virt,gic-version=2")
+>   
+>   
+> +    ASSET_VIRT_GPU_KERNEL = Asset(
+> +        ('https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
+> +         'download?path=%2F&files='
+> +         'Image'),
+> +        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
+> +
+> +    ASSET_VIRT_GPU_ROOTFS = Asset(
+> +        ('https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
+> +         'download?path=%2F&files='
+> +         'rootfs.ext4.zstd'),
+> +        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
+> +
+> +    def test_aarch64_virt_with_gpu(self):
+> +        # This tests boots with a buildroot test image that contains
+> +        # vkmark and other GPU exercising tools. We run a headless
+> +        # weston that nevertheless still exercises the virtio-gpu
+> +        # backend.
+> +
+> +        (has_zstd, msg) = has_cmd('zstd')
+> +        if has_zstd is False:
+> +            self.skipTest(msg)
 
-Please ignore the issue. The RMM service can be started successfully with your
-recommended tf-a/tf-rmm repositories. I don't know why tf-rmm wasn't built
-successfully and all looks good after I reconnect to my x86-64 server. So
-it seems the environment was corrupted.
+I'd recommend to use a decorator instead:
 
-https://git.codelinaro.org/linaro/dcap/rmm.git (branch: cca/v4)
-https://git.codelinaro.org/linaro/dcap/tf-a/trusted-firmware-a.git (branch: cca/v4)
+@skipUnless(*has_cmd('zstd'))
 
-Logs from the host side
-========================
-INFO:    BL31: Initializing runtime services
-INFO:    RMM setup done.
-INFO:    BL31: Initializing RMM
-INFO:    RMM init start.
-Booting RMM v.0.5.0(debug) 4e2e764 Built with GCC 13.3.1
-RMM-EL3 Interface v.0.4
-Boot Manifest Interface v.0.3
-RMI/RSI ABI v.1.0/1.0 built: Dec 11 2024 02:52:28
-INFO:    RMM init end.
+or if Daniel's patch series lands first, switch to @skipIfMissingCommands:
 
-Thanks,
-Gavin
+https://lore.kernel.org/qemu-devel/20241129173120.761728-7-berrange@redhat.com/
+
+> +        self.zstd = 'zstd'
+
+You only use self.zstd once, so the detour through a variable seems 
+unnecessary here?
+
+> +        image_path_zst = self.ASSET_VIRT_GPU_ROOTFS.fetch()
+> +        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
+> +
+> +        image_path = self.workdir + "/rootfs.ext4"
+> +
+> +        run_cmd([self.zstd, "-f", "-d", image_path_zst,
+> +                 "-o", image_path])
+> +
+> +        self.set_machine('virt')
+
+Please move set_machine to the top of the function. Reasoning: It can cancel 
+the test if the 'virt' machine has not been compiled into the binary. In 
+that case you'd extracted the rootfs image in vain.
+
+> +        self.vm.set_console()
+> +        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+> +                               'console=ttyAMA0 root=/dev/vda')
+> +        self.require_accelerator("tcg")
+
+Same, please move to the beginning since it can skip the test.
+
+> +        self.vm.add_args("-accel", "tcg")
+> +        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
+> +        self.vm.add_args("-machine",
+> +                         "virt,virtualization=on,"
+> +                         "gic-version=max",
+> +                         '-kernel', kernel_path,
+> +                         '-append', kernel_command_line)
+> +        self.vm.add_args("-smp", "2", "-m", "2048")
+> +        self.vm.add_args("-device", "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
+> +        self.vm.add_args("-display", "egl-headless")
+> +        self.vm.add_args("-display", "dbus,gl=on")
+> +        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
+> +        self.vm.add_args("-blockdev",
+> +                         "driver=raw,file.driver=file,node-name=hd0,read-only=on,"
+> +                         f"file.filename={image_path}")
+> +        self.vm.add_args("--snapshot")
+
+Any reason for using double dashes just here and not for the other commands?
+
+> +        try:
+> +            self.vm.launch()
+> +        except VMLaunchFailure as e:
+> +            if "old virglrenderer, blob resources unsupported" in e.output:
+> +                self.skipTest("No blob support for virtio-gpu")
+> +            elif "old virglrenderer, venus unsupported" in e.output:
+> +                self.skipTest("No venus support for virtio-gpu")
+> +            else:
+> +                self.log.info(f"un-handled launch failure: {e.output}")
+
+s/un-handled/unhandled/ ?
+
+  Thomas

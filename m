@@ -1,189 +1,90 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3727292njb;
-        Tue, 10 Dec 2024 16:49:11 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVjmwM/iafKIrKqKS/TaGF36cx9P7Ezgad6xmJ5us+94vNyu0Wv8kL4CsuqYcKncMlJ+FJ+DhFffKHuQQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGdFr/nHOzcE9C4TaTnwNPhtiErZDZf72YG7RUGq9eJ/l2jVOCxAUBfTjJPqZ02FS8L9FzT
-X-Received: by 2002:a05:620a:2402:b0:7b6:d241:3f0b with SMTP id af79cd13be357-7b6ebc5e2a4mr151332585a.14.1733878151080;
-        Tue, 10 Dec 2024 16:49:11 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1733878151; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3758860njb;
+        Tue, 10 Dec 2024 18:12:47 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWxCgy5tesszCwBtbriXEkmtsfXpumg0nXTVF84zYEmNqkg5mgzjmU2+I6Wki4bdRf3I9+phozA/f4iNw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHulDtUC06UBiq0j47emEtwLqeGzkuylXk1X/actn+M9j+DXI1ft2LOFm7kk7omJYa3Swwr
+X-Received: by 2002:a05:622a:1891:b0:467:528b:fb87 with SMTP id d75a77b69052e-467893c4ab0mr13979321cf.48.1733883167696;
+        Tue, 10 Dec 2024 18:12:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733883167; cv=none;
         d=google.com; s=arc-20240605;
-        b=Vl+62fa5nsngLV3X9haPq16h0sqcrKvjQG4T9ClrSaMJgoaQvjRS8XR04krtfAPG1I
-         klIA2J/lb5m9PXEsqABnGjpBXBUC8dr7pcGihEkyGFMkORpTqINczZd+zftjFKdLDcxh
-         Bm9l5+R/yAvj2zzlWsvDM1N2AaVHv5vQIzbqeLymlKPgegllnW1FVkmGixqstUc4RGEH
-         3riDlUR02rCSujv0BSxfjYoiWJfQ0obImXUm6JiGkgTAQrmg8ZghgcveAGoqldMY/UCn
-         YAIC5LFpwFkebGjZgr5O2v/RTuKhWGy/j68ODcY7MclgFIJW/PgtCCMxD7cZ4IV0A5ll
-         TlXw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=iJo65PXI6I8BQkEv4O+KBAPYJZ5T6LExTic4YX2mwSqDOYDM7ifFel6dbG9WJiA5Uy
+         8oYow2pIfWcqOaJg5IM2NLGz7ISTXQ3h+gH57+nsPUpEa53NKEYd/gIG2CgPgsC5slfh
+         PiqcVvZnM12Fs4yt3xTYb15HWBsqIHX+O5QgTGHCwP0KOnDe4VEdKn/0H0b5EAMx4AyF
+         hJwFR/NRIrNTD82HJwqlduvXIMYhkD5katobadbbqfdWUWnFf6uM++8ebPCKdAuzo6tv
+         O1n0nCJ1bN2afScYfjdY5NkgJJ7/tZ+VuTVwapXE+MGvn/rAp69S1qV2jK+SO9aBcmQc
+         WWlg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:in-reply-to
-         :content-disposition:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=UR9DCmBKu92brchyypvqD1cE1zLnxyUOEqkQEuWODwE=;
-        fh=SZkuCfDVGPBKhhlzV/eRZfjwR1k1Q+TmVkeXhqW4UUs=;
-        b=W14jAmEquiwa8w8/cmH/KNKNMbSjQMGRVkI1f2/xrpsA03gM59cz+IYrwvuPe+7jj/
-         HGDUY6sxNVibodNc8rhB2uzA43zPSXUEHrYjh8WMf+SXhMiCo/c7XlyIA8Zxb1GyrLzm
-         tH7nj9Li+0qOxQdi4/MmWP4i2rO64q9XSTCOnevIVf+XT9bAML4mXvPwmPVVRX7lAqYx
-         hyLHyuxBUmJrYDAYpbbJ1dCc/szZcfBJDDdLMxdkxzB/c4+LQH/JI54mXfaAKE7iYuaq
-         h0J4ibOtKKjk5drXdPGZo1nV88PMjHnL3Um4sbTzlLinwFyxQ0mfYKjD4KFq0xfCDBff
-         AGLg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=Kf3tzczZud4Z5yVuGdbTWJjzYiD7P7HzraoOfdlVSWg=;
+        fh=gFc3e2QAHe96hI2beCtWsqot5ed6foNGrttTzFHa3bg=;
+        b=Wk/XHySCwQOVAKKNMr068tXjIIfZ0ExbLoDCPAhrX645K6YH/whrfYPJz/xMOlWKhu
+         fYk31X4Ihj1m3n/Kj4y/7avnO4s0GN8EBRykqFiuiR5WvVl+JnxU/7eVDk3gAOFdLRE0
+         HqM2s9fTG1LBhe2YaNAiX9RK2Uf0vztZ9Af7HDbHNcfCd0PXaXX8CklkKeAukcN3AAvN
+         oRlj2fnk1SH+KInIvQ5dJ+axQh7Jena6yEarB5m1hgpUBCpBbgEQs0IW5W0mVxpJd4Kl
+         bxs53WCebUPfDRSoDuTXnhCotDsZMU0he6ozanxlenJntzJCZnCetviM1oFJbd/Wcsuh
+         pGgA==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=cgLpKQ60;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6b5a856c5si1852959485a.315.2024.12.10.16.49.10
+        by mx.google.com with ESMTPS id d75a77b69052e-46789929a2csi7010081cf.367.2024.12.10.18.12.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 16:49:11 -0800 (PST)
+        Tue, 10 Dec 2024 18:12:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=cgLpKQ60;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tLAu3-0002Q1-WE; Tue, 10 Dec 2024 19:48:36 -0500
+	id 1tLCCm-0006NO-6C; Tue, 10 Dec 2024 21:12:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1tLAu0-0002Pi-PC; Tue, 10 Dec 2024 19:48:32 -0500
-Received: from mail-bn8nam04on2062b.outbound.protection.outlook.com
- ([2a01:111:f403:2408::62b]
- helo=NAM04-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jgg@nvidia.com>)
- id 1tLAtx-0000si-A8; Tue, 10 Dec 2024 19:48:31 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=MAfn+uWgjDZkEFfIFx+3HKO7q4P0u1j7z/0GO4gcmBf8GFzJ+8pDyaQyYjCQcOfOJhYFJhbFZYua+jUPPKbYlvHdo9V8i4RXyQ2yHNgu6WQpnZnLgWOtx+iZCVrILD8WiEGKcTJ50QXZQ3mEt14dfuH0ipy9CQ7SWSLYMbgPyTFUQeTNAccgZpmeDj+Zdy6VY54vuj8ziXJ1vuw/FdqdVN4Hdoux7wo28n6Djm4zTDDJmxnsmCAGUwKPX122EnA2C+/ZUbz6jzuYNnglQo7Lsp8dJdJ0l4sOB+SieTDKNkGgxgvkT4zSVy6d5R7Ute5vdxQCnMMGDLcgIHl++Y1c0g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=UR9DCmBKu92brchyypvqD1cE1zLnxyUOEqkQEuWODwE=;
- b=PE0cO7q1BoRiaLuq3mqr0JuuTG0mA7xzBzkDQiqNT3NWDF2rfW24Si7RxePGrh/jKelYOalAZqO4+VT3wGWyzyGI7GUfpKJiI7VZPbI2JP9d9YvGvnnnwoVFeNPPel+lTqJSws+iGbVj7ivFMWQRdM2/6rmXVIk0V8aYf5CQLtrbQsYfkPqG0qKW/ff0818biUDUEdndU3+vN0IsR114671QhReE4hTmIhtLMhig3cIShDQx1umWq1YdK7hp2v9rAFscX9WGjVenALSVzTagmgGAWlVRsrJp45QH82t8nP8TxHvM9UPL1/tGPs77uh1bYuZbcpGtCRDdXfiNsm2png==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=UR9DCmBKu92brchyypvqD1cE1zLnxyUOEqkQEuWODwE=;
- b=cgLpKQ604PRB/rdIT5bzZ1hsWGAcFTkHDpt6OSY6SciNZ0eQ22S4BJjagwxirTh+c/bPCeKWdd7+3sDySp/eJ7zkKOJ/jFKDVSIydJ+xOhX9wWacnugM0V9F+dYPD962vAhZab9HbNwBBgvgKlb/w49yUU1Esj95nXj+y7RwQO1aVXeg01t3hrwMTPdBuZo4wtP4KZWQ8O2oPLpGKOwIm5w/TE4fd1gNSqcAX2bwftC46IO9EigW3HQV2xzalHIXsGhRNacPAmJZr96Q8U5WW8lROrj2rzYuqhUaqlNAUsW2YcDo8IadjTFp5L3QuiG7CpZOf7Zg1oiBQpoyYchq6w==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com (2603:10b6:610:17c::13)
- by SA1PR12MB7341.namprd12.prod.outlook.com (2603:10b6:806:2ba::18)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8230.12; Wed, 11 Dec
- 2024 00:48:22 +0000
-Received: from CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732]) by CH3PR12MB8659.namprd12.prod.outlook.com
- ([fe80::6eb6:7d37:7b4b:1732%5]) with mapi id 15.20.8230.010; Wed, 11 Dec 2024
- 00:48:22 +0000
-Date: Tue, 10 Dec 2024 20:48:21 -0400
-From: Jason Gunthorpe <jgg@nvidia.com>
-To: Nicolin Chen <nicolinc@nvidia.com>
-Cc: eric.auger@redhat.com, ddutile@redhat.com,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, linuxarm@huawei.com,
- wangzhou1@hisilicon.com, jiangkunkun@huawei.com,
- jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-Subject: Re: [RFC PATCH 5/5] hw/arm/virt-acpi-build: Add IORT RMR regions to
- handle MSI nested binding
-Message-ID: <20241211004821.GM2347147@nvidia.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <20241108125242.60136-6-shameerali.kolothum.thodi@huawei.com>
- <Z1jIXHmFcBFIUeKn@Asurada-Nvidia>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <Z1jIXHmFcBFIUeKn@Asurada-Nvidia>
-X-ClientProxiedBy: BN0PR04CA0163.namprd04.prod.outlook.com
- (2603:10b6:408:eb::18) To CH3PR12MB8659.namprd12.prod.outlook.com
- (2603:10b6:610:17c::13)
+ (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1tLCCi-0006Mt-TR; Tue, 10 Dec 2024 21:11:56 -0500
+Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <wangyuquan1236@phytium.com.cn>)
+ id 1tLCCe-0001Rv-6d; Tue, 10 Dec 2024 21:11:56 -0500
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAXEKvX9FhnhDHOCg--.24194S2;
+ Wed, 11 Dec 2024 10:11:35 +0800 (CST)
+Received: from phytium.com.cn (unknown [218.76.62.144])
+ by mail (Coremail) with SMTP id AQAAfwBnv3vO9FhnOi5nAA--.4806S3;
+ Wed, 11 Dec 2024 10:11:27 +0800 (CST)
+From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
+To: rad@semihalf.com, peter.maydell@linaro.org, quic_llindhol@quicinc.com,
+ marcin.juszkiewicz@linaro.org
+Cc: Jonathan.Cameron@Huawei.com, chenbaozi@phytium.com.cn,
+ linux-cxl@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Yuquan Wang <wangyuquan1236@phytium.com.cn>
+Subject: [RFC PATCH v4 0/1] Sbsa-ref CXL Enablement
+Date: Wed, 11 Dec 2024 10:11:16 +0800
+Message-Id: <20241211021117.120630-1-wangyuquan1236@phytium.com.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH3PR12MB8659:EE_|SA1PR12MB7341:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4f6f2ceb-f5c1-4ee0-b9d8-08dd197d834b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Odbh7CqNpjNRDFtjYvGq4Xtgf9cNGcAAqu4+oZVuQIJP1AUJ1JkdQ/B7hQMJ?=
- =?us-ascii?Q?JkLXHjw2lJxXEmxtFb5+Fgz3yVqK95aThkNgW0ZWSPhDTN17jhOsKsusSK+G?=
- =?us-ascii?Q?BL50TNmxS1RscXUhCkK3XvUXIAKJRrn59K4IDUIY8RsbGogIBnGr4v7DA7CP?=
- =?us-ascii?Q?xdyMS7GQJx4nLC4tJ8FEcEiukqOcW4YhmQYW6aAx+QaDQFdbrgwRUmQPFXHw?=
- =?us-ascii?Q?yR3yKbFl2pnjRtTM/aIpx49L015FRpgytYahlp8hTnlgezrIAVgPWCUCuyxA?=
- =?us-ascii?Q?A3cXzKSVN+ZOMTks9ZpnZkrS91hOKavkL6tIrFN1MyNN1EYZJ4zhb3RITLFz?=
- =?us-ascii?Q?F7w3ao5LM5T2fkWH3z66fHctDNPrcgA9IGV3P+rcsaHYffegcbaaHe0rdpLM?=
- =?us-ascii?Q?n/hXS7ISJgGJK+WHhdRLQ4iwuWqjfjD3fkUMY11XGr5KzSgqKuzYnhNDXMf3?=
- =?us-ascii?Q?5Hv7RZpIICHBOI26bV9hw8xjL7SuQUtKwPoxlwvjS/Jtvy2kn2IKBgP8fqs2?=
- =?us-ascii?Q?q07S6c2cxyofUxBO8XQbKmmyNfXAgWUZrF9Z+tyhwAiZ9XHKqgapbz4N6bUl?=
- =?us-ascii?Q?gY35GDL5d/JOYErpDYDOnndulYxDM5tMAeBfCnqZBy3Q8cXAiQ9zmyQQPBLh?=
- =?us-ascii?Q?qs+wH5Wbu4v0WU0ukS1eaxBDgBbG2ZwdjryIT6QMwiqR7n2geIpsa/48nKma?=
- =?us-ascii?Q?Rbyi6ySEZ+xOwo6R+9op5rvzd0EoEhSl+Iz9LhUbHvcP20cKY5B7Bb2yjZw8?=
- =?us-ascii?Q?B3jb+gbnAyd8Zj+1agDpu1pdud91p67APDpAea7Tk8YvN8rGOxcUb3sldU2q?=
- =?us-ascii?Q?72t3jxmcLEakuY8fi+p7CTMo284fKMCBajItm4wKUj6kxyfT5eZgmkLQfJj6?=
- =?us-ascii?Q?463ukB0w4ku9/hTIapPdoxT/PMzFiKnF2+I+IH/voQHoBlBjl1Ky44A83Wvf?=
- =?us-ascii?Q?nex9L6KwHrAkBZmTexpyY+R+99x24x8X1Dld7MMp2Zs2FMOBfCt83usKC9D7?=
- =?us-ascii?Q?7Nw5yV3P1+PCwDinuO7u+YPjnAYKUhwvwaQzhZBZfEgT09SS9VuLXHRUT0gW?=
- =?us-ascii?Q?MXHQwu3gRv6tCoWkLgP3V5m2DKziU1n6sXoT111k0mRtKg8cmcoTtZtkEoUS?=
- =?us-ascii?Q?5LCJlRVxnUAYgCkXQrN0d39ACn/H4bLOl9ElrdIUM3hTBVWOdkxvInAWi5ZA?=
- =?us-ascii?Q?BFZxrqLH9n0h37YLHLSuGAcl4XrPJE11BLCGhEVT8fT7r31Ldn8g9ZnUaE5i?=
- =?us-ascii?Q?mTtf+EXzXkxnaZ5oZ5OO4+lTZJpljYyUeLxnTYpM8MP6gtD7sWlndWnVvE6Y?=
- =?us-ascii?Q?AeKFbBt7iXwq8fxnQmGqIaerAlOHewSQ8/Ca5cbrWyEVsA=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:CH3PR12MB8659.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(1800799024)(366016); DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?88pJj+OlqFa1BMHVEgQKYP0of4lKMZ3t3LpCDUYAtXofFnq8UEK/GVoRGxcr?=
- =?us-ascii?Q?xGYycTu9Oo8JDmZX30rCq6dj15zra9KXWpNDgnKLrD1r0eGYVPVVo24eDrCu?=
- =?us-ascii?Q?9vzkMBF/uIDGt9DZOk+7eTy7FnHsITn8sobD2KNVwMRfAWSkhB8eqhBoWkvS?=
- =?us-ascii?Q?bPgmNCQbIElZDzvPkxNmZJiXL79ny66HBxACqIKzv7MHiWU3tx64c6atRlH2?=
- =?us-ascii?Q?jE+4uDVkn6DJ70hfg0JzZDiRxKQlxcs0WL01m7k8FJIwSJ+bzldPssG0qvLF?=
- =?us-ascii?Q?XsAUd1cioSV12IoN/JRVvPfKX2sXxhJRgDIKrhL7si2+xiOhiIxTaWrgEcaR?=
- =?us-ascii?Q?KHxc9BmPb2opBy6ZyXO82mdC9u5KT664r6+AYVqHqfFLYLvif+oDfThxbI3u?=
- =?us-ascii?Q?ZHu64zh0/aavxE/fHshnyxoQS85bkcj0f5a5QUO0oFwiXpZB2NuHp61o5C7X?=
- =?us-ascii?Q?s/7h3ezLp+mGfz8/CjQUDznbtmu6P1WbJCVEiGyCmEaFpIj2BmJZAutunoDx?=
- =?us-ascii?Q?hW0uhhr89UpFqty9A0kgNrG+Ku/tXgR419LVE23Xh86kM4oiUS/L3wJd3DFm?=
- =?us-ascii?Q?8wgcZy1RGrtW09Fdl22jK8NXltbCCbLH5ufgsOj+7ZGim6n9kk/UFFjeXdG3?=
- =?us-ascii?Q?nOij/8CtI7LbYO1cUblKx17a7nl3/PaHRsB8Z5va3Yo8VkWmHkQX/SGMvKdO?=
- =?us-ascii?Q?pwJ8Fm8zVTBcwly3AJNTdRrUgAqkfhMzgrmSTrUPpkjFfyLOhRZN3KWV1dtk?=
- =?us-ascii?Q?Nq/Z87FIFvqx+s+ACidx1C4ViS67eV6VhW9NiH11Mc8JnzC3sAHdJcMQyHYv?=
- =?us-ascii?Q?5P0Uq/2Kt6AK3gYFMh1fOMMO5OYCE3PtqWesSrK8v8F7biKdBxjy+E8bZplM?=
- =?us-ascii?Q?HlumF6G3EENHfVYKXNCyH9z9wwj8DRhJaSzG9J0cPefEL9kB9lhZT+TDZ8/i?=
- =?us-ascii?Q?t3EtVGp8EbyJOVjQqbEe4V/n6qqFo/126VkTKbc/rdWbFGzo025StrYanZ82?=
- =?us-ascii?Q?nukMUbn4dHbvWrayB8+HcmCAH4MiEcgdtZw+U7B3N7w9ifZkYTgMR+vbPwst?=
- =?us-ascii?Q?XloaC3jUK3gKyyXLkzVnAszCirKzR26ugNjBzLaXoJD5J64eOzLOSkw2mlb9?=
- =?us-ascii?Q?JHrNpgL8p0doGLp1ABdfgi0wXDt+qy4V3JZycudoPm4gFDYYydSC9TGXD7Mq?=
- =?us-ascii?Q?tTWbwGZR/zZiXIxud/kgAM+D9W0uoGD5idYYtYZvZpE5upZGJ0I+sCY8mxBy?=
- =?us-ascii?Q?b7MA2Jg1FQNF9y9NMNK9Sn+vTC1Gs5JgC9Ijq9qpvl2LW5hRn7RwKjqQgBM2?=
- =?us-ascii?Q?DKXakCvaKFBuRKXeJTEmZF1eUorLo0M19FGN8Mqm6lMlfZ7pvpeK2YzuLLRa?=
- =?us-ascii?Q?BHYvHMb/AylzZ1ANZ0+kL/EcEhZSBHzki5DxoCVzVBlZuBQhMWKbnok+lss+?=
- =?us-ascii?Q?mRO/iqF4EZDf6BQGUC4v23OpAkdVV5SaRm6/8Bidme1jlpRWcMU0u5BviKJN?=
- =?us-ascii?Q?4oYxe3i8EiJ17XhT5gZ5ZR7tSpQzL0Ui71n9nR+/1NX/OyAKSSGEh7bm1NeG?=
- =?us-ascii?Q?KXh332x5esvKnoR3nCbneXivUARxRlTtgOL8TTH9?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4f6f2ceb-f5c1-4ee0-b9d8-08dd197d834b
-X-MS-Exchange-CrossTenant-AuthSource: CH3PR12MB8659.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Dec 2024 00:48:22.2775 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9Uox1aKJls5wcLnTtrGEPnOOLcVkQYYkGVQSvfeJe6Sk06TxRPDfp17RzqtkqZK2
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB7341
-Received-SPF: softfail client-ip=2a01:111:f403:2408::62b;
- envelope-from=jgg@nvidia.com;
- helo=NAM04-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.52,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAfwBnv3vO9FhnOi5nAA--.4806S3
+X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAQAWdYm48ArQABsX
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=wangyuquan
+ 1236@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoWxtw43ZrWDZw4fuFyxZr48Crg_yoWxCFy3pF
+ 1DK34SkrWvgryayrs3u34UWr15uw1kAa98Grn7G34jkFnFgryvvFyktF1Yva4UWF1UAFyU
+ Xr1qqa40g3W2yaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=129.150.39.64;
+ envelope-from=wangyuquan1236@phytium.com.cn;
+ helo=sgoci-sdnproxy-4.icoremail.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -198,39 +99,160 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /9riFDm8jynL
+X-TUID: CiQ4fdVOBc6P
 
-On Tue, Dec 10, 2024 at 03:01:48PM -0800, Nicolin Chen wrote:
+v3 -> v4:
+- based on 'cxl/cxl-host: Support creation of a new CXL Host Bridge'[1]
+- Align base addresses of CXL relevant Windows
+- Remove redundant header files
 
-> Yet, here we seem to be missing a pathway between VMM and kernel
-> to agree on the MSI window decided by the kernel, as this patch
-> does the hard coding for a [0x8000000, 0x8100000) range.
+v2 -> v3:
+- create a new host bridge type: TYPE_SBSA_CXL_HOST
+- CXL exclusive ECAM, PIO, MMIO32 & MMIO64 space in sbsa-ref
+- combine all cxl infrastructure creating into one function
 
-I would ideally turn it around and provide that range information to
-the kernel and totally ignore the SW_MSI reserved region once
-userspace provides it.
+v1 -> v2:
+- provide CXL exclusive MMIO32 & MMIO64 space
+- hard coded two cxl root ports
 
-The SW_MSI range then becomes something just used "by default".
+RFC because
+- Many contents are ported from Jonathan' patch on qemu virt design
 
-Haven't thought about exactly which ioctl could do
-this.. SET_OPTION(SW_MSI) on the idevice perhaps?
+- Less experience and not particularly confident in sbsa-ref address space design
+  so this might be stupidly broken in a way I've not considered.
 
-It seems pretty simple to do?
+Background
+==========
+Currently the base CXL support for arm platforms is only on Jonathan's patches[2]
+which have not yet merged into upstream. SBSA-REF can be more like a real machine,
+thus my initial purpose is to support the simplest cxl VH topology on sbsa-ref to
+verify the basic cxl function usage, therefore, some real machine could refer the
+cxl running result on sbsa-ref.  
 
-We will eventually need a way for userspace to disable SW_MSI entirely
-anyhow.
+This series leverages Jonathan's patches to design [SBSA_CXL_CHBCR] and
+[SBSA_CXL_FIXED_WINDOW] spaces for sbsa-ref layout. 
 
-> I have been going through the structures between QEMU's SMMU code
-> and virt/virt-acpi-build code, yet having a hard time to figure
-> out a way to forward the MSI window from the SMMU code to IORT,
-> especially after this series changes the "smmu" instance creation
-> from virt code to "-device" string. Any thought?
+Regard to the burden of edk2 firmware, I try to build a static CEDT table and add
+acpi0016, acpi0017 and other cxl relevant contents into acpi tables[3][4]. Hence it
+doesn't need to communicate cxl contents via DT to edk2. 
 
-You probably have to solve this eventually because when the kernel
-supports a non-RMR path the IORT code will need to not create the RMR
-too.
+CXL HOST design
+===============
+In previous version, the pxb-cxl-host with any cxl root ports and cxl endpoint devices
+would occupy the BDF number of the original pcie domain resulting in the max available
+pcie devices on sbsa-ref would decrease, which seems to bring a series of trouble. With
+this patch[1], sbsa-ref could use the new cxl host bridge type (TYPE_CXL_HOST) to
+avoid above problem.
 
-Using RMR, or not, and the address to put the SW_MSI, is probably part
-of the global machine configuration in qemu.
+For [SBSA_CXL_CHBCR], this creates a default cxl host bridge (0001:00) with two cxl root
+ports on sbsa-ref, and the new memory layout places 64K space for one hard coded cxl host
+bridge register regions in the sbsa-ref memmap. It means for now only two cxl type3
+devices could be added on the cxl host, but personally it could satisfy my initial purpose
+mentioned above. 
 
-Jason
+And the memory layout provides separate space windows for the cxl host bridge in the
+sbsa-ref memmap:
+- 64K  CXL Host Bridge Component Registers (CHBCR)
+- 64K  CXL_PIO
+- 128M CXL_MMIO
+- 256M CXL_ECAM
+- 4G   CXL_MMIO_HIGH
+
+CXL FIXED WINDOW design
+=======================
+For [SBSA_CXL_FIXED_WINDOW], in order to provide CFMWs on sbsa-ref, this extends 1TB
+space from the hole above RAM Memory [SBSA_MEM] for CXL Fixed Memory Window. 
+- 1T   CXL_FIXED_WINDOW
+
+0xA0000000000 is chosen as the base address of this space because of 3 reasons:
+1) It is more suitable to choose a static address instead of that
+implementation in virt, since a dynamic address space layout of
+sbsa-ref is not appropriate for its original purpose as a reference
+platform.
+
+2) The Hotplug Memory address range should in the range of maximum
+addressable range of sbsa-ref platform(0x10000000000-0x80ffffffffff).
+It is satisfied the requirements of memory hotplug in linux kernel.
+
+3) The start pfn of CFMW should exceed the reserved_pfn_range for
+onlined numa node.
+
+Usage of cxl on sbsa-ref
+========================
+With the 'create_cxl' and 'create_cxl_fixed_window', users don't need to input
+'-device pxb-cxl' , '-device cxl-rp' and '-M cxl-fmw' parameters.
+
+Thus, to run sbsa-ref with a cxl device could use:
+qemu-system-aarch64 \
+-object memory-backend-file,id=mem2,mem-path=/tmp/mem2,size=256M,share=true \
+-device cxl-type3,bus=cxl.0,volatile-memdev=mem2,id=cxl-mem1 \
+
+Incompatibility problem
+=======================
+Although the new cxl host bridge has been separated from the original pcie host, the
+incompatibility problem of "-device qemu-xhci" is not resolved. Because the new device
+to plug by qemu command would be enumerated at the largest domain(0001), for example,
+if we add "-device qemu-xhci" to boot sbsa-ref with cxl, the lspci would show:
+
+    root@ubuntu-jammy-arm64:~# lspci
+    0000:00:00.0 Host bridge: Red Hat, Inc. QEMU PCIe Host bridge
+    0000:00:01.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
+    0000:00:02.0 Display controller: Device 1234:1111 (rev 02)
+    0001:00:00.0 PCI bridge: Intel Corporation Device 7075
+    0001:00:01.0 PCI bridge: Intel Corporation Device 7075
+    0001:00:02.0 USB controller: Red Hat, Inc. QEMU XHCI Host Controller (rev 01)
+    0001:01:00.0 CXL: Intel Corporation Device 0d93 (rev 01)
+
+    root@ubuntu-jammy-arm64:~# lspci -tv
+    -+-[0001:00]-+-00.0-[01]----00.0  Intel Corporation Device 0d93
+    |           +-01.0-[02]--
+    |           \-02.0  Red Hat, Inc. QEMU XHCI Host Controller
+    \-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
+                +-01.0  Intel Corporation 82574L Gigabit Network Connection
+                \-02.0  Device 1234:1111
+
+Hence we should add "bus=pcie.0" when we want to plug some devices on the original
+pcie bus, for example:
+-device qemu-xhci,bus=pcie.0 \
+or
+-device nvme,serial=deadbeef,bus=pcie.0,drive=hdd \
+-drive file=../disk/hdd.qcow2,format=qcow2,id=hdd,if=none \
+
+So the result is:
+    root@ubuntu-jammy-arm64:~# lspci
+    0000:00:00.0 Host bridge: Red Hat, Inc. QEMU PCIe Host bridge
+    0000:00:01.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
+    0000:00:02.0 Display controller: Device 1234:1111 (rev 02)
+    0000:00:03.0 USB controller: Red Hat, Inc. QEMU XHCI Host Controller (rev 01)
+    0001:00:00.0 PCI bridge: Intel Corporation Device 7075
+    0001:00:01.0 PCI bridge: Intel Corporation Device 7075
+    0001:01:00.0 CXL: Intel Corporation Device 0d93 (rev 01)
+
+    root@ubuntu-jammy-arm64:~# lspci -tv
+    -+-[0001:00]-+-00.0-[01]----00.0  Intel Corporation Device 0d93
+    |           \-01.0-[02]--
+    \-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
+                +-01.0  Intel Corporation 82574L Gigabit Network Connection
+                +-02.0  Device 1234:1111
+                \-03.0  Red Hat, Inc. QEMU XHCI Host Controller
+
+I am looking for suggestions on if there are better ways to do it.
+
+This series patches are here to hopefully some comments to guide me!
+
+Link:
+[1]: https://lists.nongnu.org/archive/html/qemu-arm/2024-12/msg00350.html
+[2]: https://lore.kernel.org/linux-cxl/20220616141950.23374-1-Jonathan.Cameron@huawei.com/
+[3]: https://edk2.groups.io/g/devel/message/120851
+[4]: https://edk2.groups.io/g/devel/topic/rfc_patch_edk2_platforms_v4/110023229
+
+Yuquan Wang (1):
+  hw/arm/sbsa-ref: Support CXL Host Bridge & CFMW
+
+ docs/system/arm/sbsa.rst |   4 ++
+ hw/arm/sbsa-ref.c        | 135 ++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 138 insertions(+), 1 deletion(-)
+
+-- 
+2.34.1
+

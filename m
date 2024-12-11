@@ -1,90 +1,119 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3758860njb;
-        Tue, 10 Dec 2024 18:12:47 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWxCgy5tesszCwBtbriXEkmtsfXpumg0nXTVF84zYEmNqkg5mgzjmU2+I6Wki4bdRf3I9+phozA/f4iNw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHulDtUC06UBiq0j47emEtwLqeGzkuylXk1X/actn+M9j+DXI1ft2LOFm7kk7omJYa3Swwr
-X-Received: by 2002:a05:622a:1891:b0:467:528b:fb87 with SMTP id d75a77b69052e-467893c4ab0mr13979321cf.48.1733883167696;
-        Tue, 10 Dec 2024 18:12:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733883167; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3835161njb;
+        Tue, 10 Dec 2024 22:05:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXwu+fl9TFjGA/jPqSO1VSJSVr5RURxc91OuAnEoeDvbsXOgeQoSw/nlhOglrTMQTegDcFwkIIvSCHCPg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFw3Wus0mp9mhKed/k+/lBs2Hoz/R4g0UKD0bTPU0kQe1fb+lQYMt937wNeNTRkFfihJxMV
+X-Received: by 2002:a05:622a:8c10:b0:467:6e45:218d with SMTP id d75a77b69052e-4678929e62amr36508061cf.3.1733897105318;
+        Tue, 10 Dec 2024 22:05:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733897105; cv=none;
         d=google.com; s=arc-20240605;
-        b=iJo65PXI6I8BQkEv4O+KBAPYJZ5T6LExTic4YX2mwSqDOYDM7ifFel6dbG9WJiA5Uy
-         8oYow2pIfWcqOaJg5IM2NLGz7ISTXQ3h+gH57+nsPUpEa53NKEYd/gIG2CgPgsC5slfh
-         PiqcVvZnM12Fs4yt3xTYb15HWBsqIHX+O5QgTGHCwP0KOnDe4VEdKn/0H0b5EAMx4AyF
-         hJwFR/NRIrNTD82HJwqlduvXIMYhkD5katobadbbqfdWUWnFf6uM++8ebPCKdAuzo6tv
-         O1n0nCJ1bN2afScYfjdY5NkgJJ7/tZ+VuTVwapXE+MGvn/rAp69S1qV2jK+SO9aBcmQc
-         WWlg==
+        b=Ss07EqO3KqClJcxeo1bQdemzfVFJY1DI356k1lP5glNY3aZgHr5zRi3mqksZHcOVPq
+         E3/LknQTho3in0fF8IQTuqM4Op4iK+utz6QKhNBIZA8EpbQVGsdqiXt/dUvyTaZrhJD4
+         3699FyVhOx5FHArSyCmKWB3/FE74LzwR5UJ9VFA7Bfioh7z5HU6v5dA9ALvrbQux/Un6
+         qvP9GqirmQTgaZ/GZZVYAsvHYYdjYqJL4cFHlY9ISJn6rjkEgvyT1IHi3Zxz28Kg4EM6
+         N0p3xfnYbN+4Sq2q4DyMo5tmhmaRCGRg6zb1DTSQ6oj+W5Sjcu42cC8dHaxwnLdSK86r
+         AfYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from;
-        bh=Kf3tzczZud4Z5yVuGdbTWJjzYiD7P7HzraoOfdlVSWg=;
-        fh=gFc3e2QAHe96hI2beCtWsqot5ed6foNGrttTzFHa3bg=;
-        b=Wk/XHySCwQOVAKKNMr068tXjIIfZ0ExbLoDCPAhrX645K6YH/whrfYPJz/xMOlWKhu
-         fYk31X4Ihj1m3n/Kj4y/7avnO4s0GN8EBRykqFiuiR5WvVl+JnxU/7eVDk3gAOFdLRE0
-         HqM2s9fTG1LBhe2YaNAiX9RK2Uf0vztZ9Af7HDbHNcfCd0PXaXX8CklkKeAukcN3AAvN
-         oRlj2fnk1SH+KInIvQ5dJ+axQh7Jena6yEarB5m1hgpUBCpBbgEQs0IW5W0mVxpJd4Kl
-         bxs53WCebUPfDRSoDuTXnhCotDsZMU0he6ozanxlenJntzJCZnCetviM1oFJbd/Wcsuh
-         pGgA==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=too7R5d5Rjrj3yG4d82pn3b74IR7gm0FJCZ2xM/7jGo=;
+        fh=iR8w2YO43hp220rBP0n8lc3F+8hoOalLc58sBN4iyCk=;
+        b=OfpnHQCt+0Tii9DZBEW6Ww2jCl4RlTGzV2vhGRXKsL0kgegNoxoYsCh/0vBgVV4Kg2
+         Uq7BX9oKGVCC1PkNN4zkUmxABp+YAZQkY0By8jG7ZSirVHR4xfnMqunM3lHQFvD4HGR+
+         f5tOdXmRyG3U4p2VXPh8RwKZnMGFe6l8vCfUpo8lbjAooDLZ2upk9CIkJfKlueKfZ2X/
+         7wM+7mKAqLSV/9QD/T5YB4JFlf3Ochb65uhcnbS4Vm7RfiNR5tniItEOOYXaDHLSqQVE
+         aJwPoXp2cqJkYuh+8/QSJlPKTdGDDLvLWCQPHtUp0uBdlxEZHomufR2TZKGlGIGv5fUd
+         XD1w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@sifive.com header.s=google header.b=kDq0DUwB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46789929a2csi7010081cf.367.2024.12.10.18.12.47
+        by mx.google.com with ESMTPS id d75a77b69052e-4678d51387bsi3667201cf.176.2024.12.10.22.05.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 18:12:47 -0800 (PST)
+        Tue, 10 Dec 2024 22:05:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@sifive.com header.s=google header.b=kDq0DUwB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tLCCm-0006NO-6C; Tue, 10 Dec 2024 21:12:00 -0500
+	id 1tLFpY-0006us-A0; Wed, 11 Dec 2024 01:04:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1tLCCi-0006Mt-TR; Tue, 10 Dec 2024 21:11:56 -0500
-Received: from sgoci-sdnproxy-4.icoremail.net ([129.150.39.64])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1tLCCe-0001Rv-6d; Tue, 10 Dec 2024 21:11:56 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with SMTP id AQAAfwAXEKvX9FhnhDHOCg--.24194S2;
- Wed, 11 Dec 2024 10:11:35 +0800 (CST)
-Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwBnv3vO9FhnOi5nAA--.4806S3;
- Wed, 11 Dec 2024 10:11:27 +0800 (CST)
-From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-To: rad@semihalf.com, peter.maydell@linaro.org, quic_llindhol@quicinc.com,
- marcin.juszkiewicz@linaro.org
-Cc: Jonathan.Cameron@Huawei.com, chenbaozi@phytium.com.cn,
- linux-cxl@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Yuquan Wang <wangyuquan1236@phytium.com.cn>
-Subject: [RFC PATCH v4 0/1] Sbsa-ref CXL Enablement
-Date: Wed, 11 Dec 2024 10:11:16 +0800
-Message-Id: <20241211021117.120630-1-wangyuquan1236@phytium.com.cn>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <fea.wang@sifive.com>)
+ id 1tLFpX-0006ud-Bc
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 01:04:15 -0500
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <fea.wang@sifive.com>)
+ id 1tLFpV-00057k-He
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 01:04:15 -0500
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-2ee9a780de4so4743033a91.3
+ for <qemu-arm@nongnu.org>; Tue, 10 Dec 2024 22:04:12 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sifive.com; s=google; t=1733897051; x=1734501851; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=too7R5d5Rjrj3yG4d82pn3b74IR7gm0FJCZ2xM/7jGo=;
+ b=kDq0DUwBCe91B6V9X+YWmqsjslEbU9ok9hcbervDbdAk+W5edm4AMy512ZGpisxzJx
+ cBxaXOfDEGNrbEaK89p0GFnk3NPZ4m/8QlkdRNBCk+GC4+wQL60F9gabC08ef1iQHtUE
+ IKpmA/zopo4kaGmLSeZALLlb9bKAX+u12DDS8rLo+ZIZpNjxh0SPTye+3ezFFsnTCRIH
+ cCDf4MK+J12zwmexcmGcaK+wKeOipLBJmFoaKPna7e080/jthqtPvx6y1weoflWpR+/7
+ yh7sXhCe8xhoSQrYaUhNxdaxkVi411BukUcnSBHKdDeNi/ArFTQOYBae9m22fV7H3wob
+ B/pA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1733897051; x=1734501851;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=too7R5d5Rjrj3yG4d82pn3b74IR7gm0FJCZ2xM/7jGo=;
+ b=HGRVmLFCwLkT6LRMHBVwjHmPcJU0R+wCNWS3eHj9zKGf1b9tdkkYGvjbz6L1LlrHD/
+ mLQYj5hMcUDuEpaCfGTtXF1pqIhiN7Xjpwd93jHV3PGYZMjr1QUYY1fh4xq3+mY41Drf
+ X/393IhRY2FXO6JR62imvXrwsgSj4E2pDV16QqExituoADOgmwzNAWTIaQI6+CnpSpCM
+ /PbYtGITIhNJcXMxLTAiOu4FSw/FXhEhli3H9NwAzBxfJ6AZzya1fMoJkoU851H7N2JQ
+ 2XOpbwucuNWkSAVl9eaWnmjS2lmt7pT+bFxanrcfyXz31WZonR6r1GXrMuRwFRb0VcNS
+ Y4Mw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXDaVTjXj286TVjBOZmnctAbQ5purt3vHUhOg8SJrbZFOKT+/kRUflsqFyaXFCDg5cXLXQb7RQF8w==@nongnu.org
+X-Gm-Message-State: AOJu0YzFZVi/urjS5PTyXW+DseGjqnPCVMFA9GhZ+iyoC8kH5UD47pwv
+ rFjpQFhlEXPrD2oF1MyOBytYVVzh5BcIi1JxEOzbAHUCqlm4CNWzEHunEQTSZsVU7LhebUZ5EVV
+ oCsqA5QHzFsy8MXVnHB/w9AMSi/d5kXP5lUyoRA==
+X-Gm-Gg: ASbGncvwG17Qb/MTynrPCfDvJguDn1LKL6ubBVSuix32++JbUaBZaizM804nmj3Q0RY
+ LSZz59NzY5vqxZdAGFLNFHNyqoG/yrfxtk2Y=
+X-Received: by 2002:a17:90b:5110:b0:2ee:ab29:1a63 with SMTP id
+ 98e67ed59e1d1-2f127f8e7afmr2695817a91.3.1733897050986; Tue, 10 Dec 2024
+ 22:04:10 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwBnv3vO9FhnOi5nAA--.4806S3
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAQAWdYm48ArQABsX
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxtw43ZrWDZw4fuFyxZr48Crg_yoWxCFy3pF
- 1DK34SkrWvgryayrs3u34UWr15uw1kAa98Grn7G34jkFnFgryvvFyktF1Yva4UWF1UAFyU
- Xr1qqa40g3W2yaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=129.150.39.64;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=sgoci-sdnproxy-4.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20241115014702.1663274-1-fea.wang@sifive.com>
+In-Reply-To: <20241115014702.1663274-1-fea.wang@sifive.com>
+From: Fea Wang <fea.wang@sifive.com>
+Date: Wed, 11 Dec 2024 14:03:59 +0800
+Message-ID: <CAKhCfscy_dq_d0+RqzdLvX5wcb56T8d7qnOLO1LeCr_33BOAfg@mail.gmail.com>
+Subject: Re: [PATCH 1/1] hw/net: Support Marvell 88E1111 phy driver
+To: qemu-devel@nongnu.org, qemu-riscv@nongnu.org
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>, 
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+Content-Type: multipart/alternative; boundary="000000000000cd3f0c0628f85d92"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=fea.wang@sifive.com; helo=mail-pj1-x102b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,160 +128,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CiQ4fdVOBc6P
+X-TUID: 2lbrZiFiDpBi
 
-v3 -> v4:
-- based on 'cxl/cxl-host: Support creation of a new CXL Host Bridge'[1]
-- Align base addresses of CXL relevant Windows
-- Remove redundant header files
+--000000000000cd3f0c0628f85d92
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-v2 -> v3:
-- create a new host bridge type: TYPE_SBSA_CXL_HOST
-- CXL exclusive ECAM, PIO, MMIO32 & MMIO64 space in sbsa-ref
-- combine all cxl infrastructure creating into one function
+Ping
 
-v1 -> v2:
-- provide CXL exclusive MMIO32 & MMIO64 space
-- hard coded two cxl root ports
+On Fri, Nov 15, 2024 at 9:44=E2=80=AFAM Fea.Wang <fea.wang@sifive.com> wrot=
+e:
 
-RFC because
-- Many contents are ported from Jonathan' patch on qemu virt design
+> When the ethernet PHY's compatible string is 'ethernet-phy-id0141.0cc2',
+> it will be matched with the Marvell driver in Linux instead of the
+> generic driver. They differ from reading the PHY register17.11 bit which
+> is for 'Speed and Duplex Resolved' and the value 0 will clear
+> phydev->link and stop the flow. To avoid getting stuck, change the
+> constant return value in QEMU for the bit to 1 to keep the driver going.
+>
+> Signed-off-by: Fea.Wang <fea.wang@sifive.com>
+> ---
+>  hw/net/xilinx_axienet.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+> index faf27947b0..ee4b3afe9c 100644
+> --- a/hw/net/xilinx_axienet.c
+> +++ b/hw/net/xilinx_axienet.c
+> @@ -102,7 +102,7 @@ static unsigned int tdk_read(struct PHY *phy, unsigne=
+d
+> int req)
+>              break;
+>          case 17:
+>              /* Marvell PHY on many xilinx boards.  */
+> -            r =3D 0x8000; /* 1000Mb  */
+> +            r =3D 0x8800; /* 1000Mb  */
+>              break;
+>          case 18:
+>              {
+> --
+> 2.34.1
+>
+>
 
-- Less experience and not particularly confident in sbsa-ref address space design
-  so this might be stupidly broken in a way I've not considered.
+--000000000000cd3f0c0628f85d92
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Background
-==========
-Currently the base CXL support for arm platforms is only on Jonathan's patches[2]
-which have not yet merged into upstream. SBSA-REF can be more like a real machine,
-thus my initial purpose is to support the simplest cxl VH topology on sbsa-ref to
-verify the basic cxl function usage, therefore, some real machine could refer the
-cxl running result on sbsa-ref.  
+<div dir=3D"ltr"><span style=3D"color:rgb(0,0,0);font-family:&quot;Times Ne=
+w Roman&quot;;font-size:medium">Ping</span></div><br><div class=3D"gmail_qu=
+ote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, No=
+v 15, 2024 at 9:44=E2=80=AFAM Fea.Wang &lt;<a href=3D"mailto:fea.wang@sifiv=
+e.com">fea.wang@sifive.com</a>&gt; wrote:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex">When the ethernet PHY&#39;s compatible string is =
+&#39;ethernet-phy-id0141.0cc2&#39;,<br>
+it will be matched with the Marvell driver in Linux instead of the<br>
+generic driver. They differ from reading the PHY register17.11 bit which<br=
+>
+is for &#39;Speed and Duplex Resolved&#39; and the value 0 will clear<br>
+phydev-&gt;link and stop the flow. To avoid getting stuck, change the<br>
+constant return value in QEMU for the bit to 1 to keep the driver going.<br=
+>
+<br>
+Signed-off-by: Fea.Wang &lt;<a href=3D"mailto:fea.wang@sifive.com" target=
+=3D"_blank">fea.wang@sifive.com</a>&gt;<br>
+---<br>
+=C2=A0hw/net/xilinx_axienet.c | 2 +-<br>
+=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
+<br>
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c<br>
+index faf27947b0..ee4b3afe9c 100644<br>
+--- a/hw/net/xilinx_axienet.c<br>
++++ b/hw/net/xilinx_axienet.c<br>
+@@ -102,7 +102,7 @@ static unsigned int tdk_read(struct PHY *phy, unsigned =
+int req)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case 17:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Marvell PHY on many xili=
+nx boards.=C2=A0 */<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 r =3D 0x8000; /* 1000Mb=C2=A0 */=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 r =3D 0x8800; /* 1000Mb=C2=A0 */=
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case 18:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0{<br>
+-- <br>
+2.34.1<br>
+<br>
+</blockquote></div>
 
-This series leverages Jonathan's patches to design [SBSA_CXL_CHBCR] and
-[SBSA_CXL_FIXED_WINDOW] spaces for sbsa-ref layout. 
-
-Regard to the burden of edk2 firmware, I try to build a static CEDT table and add
-acpi0016, acpi0017 and other cxl relevant contents into acpi tables[3][4]. Hence it
-doesn't need to communicate cxl contents via DT to edk2. 
-
-CXL HOST design
-===============
-In previous version, the pxb-cxl-host with any cxl root ports and cxl endpoint devices
-would occupy the BDF number of the original pcie domain resulting in the max available
-pcie devices on sbsa-ref would decrease, which seems to bring a series of trouble. With
-this patch[1], sbsa-ref could use the new cxl host bridge type (TYPE_CXL_HOST) to
-avoid above problem.
-
-For [SBSA_CXL_CHBCR], this creates a default cxl host bridge (0001:00) with two cxl root
-ports on sbsa-ref, and the new memory layout places 64K space for one hard coded cxl host
-bridge register regions in the sbsa-ref memmap. It means for now only two cxl type3
-devices could be added on the cxl host, but personally it could satisfy my initial purpose
-mentioned above. 
-
-And the memory layout provides separate space windows for the cxl host bridge in the
-sbsa-ref memmap:
-- 64K  CXL Host Bridge Component Registers (CHBCR)
-- 64K  CXL_PIO
-- 128M CXL_MMIO
-- 256M CXL_ECAM
-- 4G   CXL_MMIO_HIGH
-
-CXL FIXED WINDOW design
-=======================
-For [SBSA_CXL_FIXED_WINDOW], in order to provide CFMWs on sbsa-ref, this extends 1TB
-space from the hole above RAM Memory [SBSA_MEM] for CXL Fixed Memory Window. 
-- 1T   CXL_FIXED_WINDOW
-
-0xA0000000000 is chosen as the base address of this space because of 3 reasons:
-1) It is more suitable to choose a static address instead of that
-implementation in virt, since a dynamic address space layout of
-sbsa-ref is not appropriate for its original purpose as a reference
-platform.
-
-2) The Hotplug Memory address range should in the range of maximum
-addressable range of sbsa-ref platform(0x10000000000-0x80ffffffffff).
-It is satisfied the requirements of memory hotplug in linux kernel.
-
-3) The start pfn of CFMW should exceed the reserved_pfn_range for
-onlined numa node.
-
-Usage of cxl on sbsa-ref
-========================
-With the 'create_cxl' and 'create_cxl_fixed_window', users don't need to input
-'-device pxb-cxl' , '-device cxl-rp' and '-M cxl-fmw' parameters.
-
-Thus, to run sbsa-ref with a cxl device could use:
-qemu-system-aarch64 \
--object memory-backend-file,id=mem2,mem-path=/tmp/mem2,size=256M,share=true \
--device cxl-type3,bus=cxl.0,volatile-memdev=mem2,id=cxl-mem1 \
-
-Incompatibility problem
-=======================
-Although the new cxl host bridge has been separated from the original pcie host, the
-incompatibility problem of "-device qemu-xhci" is not resolved. Because the new device
-to plug by qemu command would be enumerated at the largest domain(0001), for example,
-if we add "-device qemu-xhci" to boot sbsa-ref with cxl, the lspci would show:
-
-    root@ubuntu-jammy-arm64:~# lspci
-    0000:00:00.0 Host bridge: Red Hat, Inc. QEMU PCIe Host bridge
-    0000:00:01.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
-    0000:00:02.0 Display controller: Device 1234:1111 (rev 02)
-    0001:00:00.0 PCI bridge: Intel Corporation Device 7075
-    0001:00:01.0 PCI bridge: Intel Corporation Device 7075
-    0001:00:02.0 USB controller: Red Hat, Inc. QEMU XHCI Host Controller (rev 01)
-    0001:01:00.0 CXL: Intel Corporation Device 0d93 (rev 01)
-
-    root@ubuntu-jammy-arm64:~# lspci -tv
-    -+-[0001:00]-+-00.0-[01]----00.0  Intel Corporation Device 0d93
-    |           +-01.0-[02]--
-    |           \-02.0  Red Hat, Inc. QEMU XHCI Host Controller
-    \-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
-                +-01.0  Intel Corporation 82574L Gigabit Network Connection
-                \-02.0  Device 1234:1111
-
-Hence we should add "bus=pcie.0" when we want to plug some devices on the original
-pcie bus, for example:
--device qemu-xhci,bus=pcie.0 \
-or
--device nvme,serial=deadbeef,bus=pcie.0,drive=hdd \
--drive file=../disk/hdd.qcow2,format=qcow2,id=hdd,if=none \
-
-So the result is:
-    root@ubuntu-jammy-arm64:~# lspci
-    0000:00:00.0 Host bridge: Red Hat, Inc. QEMU PCIe Host bridge
-    0000:00:01.0 Ethernet controller: Intel Corporation 82574L Gigabit Network Connection
-    0000:00:02.0 Display controller: Device 1234:1111 (rev 02)
-    0000:00:03.0 USB controller: Red Hat, Inc. QEMU XHCI Host Controller (rev 01)
-    0001:00:00.0 PCI bridge: Intel Corporation Device 7075
-    0001:00:01.0 PCI bridge: Intel Corporation Device 7075
-    0001:01:00.0 CXL: Intel Corporation Device 0d93 (rev 01)
-
-    root@ubuntu-jammy-arm64:~# lspci -tv
-    -+-[0001:00]-+-00.0-[01]----00.0  Intel Corporation Device 0d93
-    |           \-01.0-[02]--
-    \-[0000:00]-+-00.0  Red Hat, Inc. QEMU PCIe Host bridge
-                +-01.0  Intel Corporation 82574L Gigabit Network Connection
-                +-02.0  Device 1234:1111
-                \-03.0  Red Hat, Inc. QEMU XHCI Host Controller
-
-I am looking for suggestions on if there are better ways to do it.
-
-This series patches are here to hopefully some comments to guide me!
-
-Link:
-[1]: https://lists.nongnu.org/archive/html/qemu-arm/2024-12/msg00350.html
-[2]: https://lore.kernel.org/linux-cxl/20220616141950.23374-1-Jonathan.Cameron@huawei.com/
-[3]: https://edk2.groups.io/g/devel/message/120851
-[4]: https://edk2.groups.io/g/devel/topic/rfc_patch_edk2_platforms_v4/110023229
-
-Yuquan Wang (1):
-  hw/arm/sbsa-ref: Support CXL Host Bridge & CFMW
-
- docs/system/arm/sbsa.rst |   4 ++
- hw/arm/sbsa-ref.c        | 135 ++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 138 insertions(+), 1 deletion(-)
-
--- 
-2.34.1
-
+--000000000000cd3f0c0628f85d92--

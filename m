@@ -1,94 +1,94 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3845307njb;
-        Tue, 10 Dec 2024 22:33:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWAmKttGR7/tOGGGIiHHyIOFhuwKqrsm+Hakz/073Wmm/RaG1iTG52C9EQt6tjaLs8T8Sp610/qu2FXsQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGGdzg17eu7HQnhl18gIuWChjsSQLU+NBelEV6jSKQuLQTkTl+0dg+e4l/azsK6Zoo31M13
-X-Received: by 2002:a05:622a:1186:b0:466:a20c:a67a with SMTP id d75a77b69052e-46789376f95mr25738001cf.38.1733898785995;
-        Tue, 10 Dec 2024 22:33:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733898785; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3845347njb;
+        Tue, 10 Dec 2024 22:33:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV+20ujQlEnl6d3tNCthiFubfM9+P7a9UxxDtGPeZUajnejDi+ev41MhbfP65vy6721FmeIJdoZEY2jug==@linaro.org
+X-Google-Smtp-Source: AGHT+IGlExiz1Zrwc791beYoahkXy0Ux9c3NCPhdP79e2rQc8+S3uGCUi5/Dajw/5EK8Az/kDSh9
+X-Received: by 2002:ad4:5de9:0:b0:6d8:7db7:1f2e with SMTP id 6a1803df08f44-6d934b0d488mr28419416d6.14.1733898793738;
+        Tue, 10 Dec 2024 22:33:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733898793; cv=none;
         d=google.com; s=arc-20240605;
-        b=DQkrd7EdIVPEq/Es2JkGo1CdwGflVYK3SAR15Bt4CjlEDyJZ2RzKClvpU37VKRWo5A
-         TL+xeE0HLFMr5980SGn89UTZ0dw+62RFxvsZUIRRLguYyXJHIkm7hFCs05o7xFzPseLd
-         e/wWgUhVzop5cW0svf/r9i92vnJXOwHi1JK8XVl1v8mK8xbUB3N/SRC+rOXWztPJGdTn
-         gtHMP8Tguijj7qIFfMGcz23f8g5q4kxa87NFMR/Kr/5m4pbRXeeqCb1+LGr9EOQhdyOf
-         RX7YzFjJFPgcxLFdmr0WCOdrAp1w5taPWwvhynTEpLkD4zBvW0EgSubt0PnF52H0nllE
-         0d1w==
+        b=gNR0R+9QATj4qQK5dNpBA3tVWPPicx0wknie1h4Z3FraaEA5tR/YK1Hacj6DxT1NYV
+         6LwGYPwEcFUso/bAvJlawHkHi+aFn8xLnLRoaxrLhZsr0NTKZY74SgBjMDTeMHmuS7gd
+         yWWcHAu8ywcswxHl5gaRdc+YSQZYBDGaPPg7pesEAHYXaoEyzwBBuuH+RUl2n+P72Krq
+         twgH74owrOpVsMzyykO9wG32i27lX1Gng5+6Vlcftn23NFx0OwedyTXiW3YPjgnkFXdj
+         gWLYZ3jHwU7ztURIvgGVR2pKIUTe94EpzTDTlQJBPSQ1BE01YbS7mZtw+GWMy2NyoRqb
+         HU2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vfhwq9kS1jpGYe1Yv9g+Pi+C2jI0WdU7qzoqs9fe0qw=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=GGKBpsWETkmOwt78ZVIPuyTtxEPT0FFcsTytCCA1f7NTfy3oO9UZHzWaSZL9BzgrfP
-         SNJ6bsWniT/DlSXt0pYYHlAMc/V+HqSf6bBetYEo+iFCHR2M/Qay0LcV5R27WnzN9SC/
-         4jB1F+EH4d15oq0LQFhcDL8w9ia7pCEB+nS+dasz8ksk30WHzTvkC8oXABU3zFcBYI0i
-         feFKze1jUA4xlNKCld/dXD7XhghBjjIEuUjDaU56T47PnQPUu1XU7MMXdtZ03qrFKsHY
-         PvinOt9GFJjZd1OImUDwr/DrHc62CquzOQ6QraLewV2k4H6TXDQdRB5ry9iBHKvZdygA
-         8RAQ==;
+        bh=AR/NRMiRGLpnrxJqXYyzazkP88xAkX0L2EWkyBm8vhA=;
+        fh=dCqPeOMyJN6b1xLXHrHk9Vfv4bvn90zVm2nOfsHEFC8=;
+        b=k0qjnP7xei0Vxjmih70pA1k0TgAWP/MnjxDO+TrbqNTxLLZK8iD5+VQFTnp/x1pKk2
+         ZWuHPbvv+IAHjAJ+IsVsRZ3bWQBU1EtSYhULuk/lRf1sDudt/3iynIrBN1d/d3wyCxQV
+         vnLM8/d++9hiYdR8H8IpYiM7Jg3l62HOyqopBooe2xaYJScZMlwHCKkmtdU33U2Ixo84
+         XZF9MZesXmllkz0PWR0r9B6axHYxMZ4PVkj5VYK8pTSFLhdg6Ekw1Mc4IskSp9WQaexf
+         Jiy7mI/8A5sdmTC6NuhWldZZNqovx7xpEG65DtFY3zNT70P7GdXUmW+fzjIjHqHZ2SKH
+         Ojxw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aDMUa7fm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I+EDKqzf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-467879bbd94si16386731cf.332.2024.12.10.22.33.05
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d900da0443si110353166d6.470.2024.12.10.22.33.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 22:33:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2024 22:33:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aDMUa7fm;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=I+EDKqzf;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tLGH7-0006ar-OI; Wed, 11 Dec 2024 01:32:46 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tLGGw-0005rN-H8; Wed, 11 Dec 2024 01:32:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGGD-0004ld-Pm
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 01:31:50 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGG5-0004fC-29
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 01:31:50 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGGB-0008VX-Jd
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 01:31:49 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGFy-0008TJ-4a
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 01:31:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1733898702;
+ s=mimecast20190719; t=1733898692;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vfhwq9kS1jpGYe1Yv9g+Pi+C2jI0WdU7qzoqs9fe0qw=;
- b=aDMUa7fm6uvNhCBXHQv1CX+F7Q7caUlsbuJdWw0l6Cvgf8ClO2QMUgnROKpTWImxclYgZH
- S+IQS9Kea2X8Lcf23aQjO6buRF4MeionDenKoHOQWZ1snjHY2IJKN21hTBRyShbEe5uszf
- k+ASe8UfhA9276JR0ON2zR25OWDDCP0=
+ bh=AR/NRMiRGLpnrxJqXYyzazkP88xAkX0L2EWkyBm8vhA=;
+ b=I+EDKqzfI5AXaQBY5Pxc65pxBFw7ywU3yo1wSI+snPeHU9CQU+7tkQXe4hJjHJ+y6SKRIn
+ ace16haVorAUjlOvO2xOif+YP0FoJcmIBsfQuO+yJ7KziQzA5AyrkLlHpXVrZF8AaT2vEx
+ QCDNG9/2n4sDEjLqwO4PC7IFbtBMseo=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-619-UQhTs52jMMe9bi7VEf4kLQ-1; Wed,
- 11 Dec 2024 01:31:39 -0500
-X-MC-Unique: UQhTs52jMMe9bi7VEf4kLQ-1
-X-Mimecast-MFC-AGG-ID: UQhTs52jMMe9bi7VEf4kLQ
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-531-MT3xsyS7O1qGGIzOle_6vA-1; Wed,
+ 11 Dec 2024 01:31:28 -0500
+X-MC-Unique: MT3xsyS7O1qGGIzOle_6vA-1
+X-Mimecast-MFC-AGG-ID: MT3xsyS7O1qGGIzOle_6vA
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A54981955E70; Wed, 11 Dec 2024 06:31:38 +0000 (UTC)
+ id 88AA51955D4C; Wed, 11 Dec 2024 06:31:27 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.194.144])
  by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 440BC1956054; Wed, 11 Dec 2024 06:31:37 +0000 (UTC)
+ id 2B1A0195605A; Wed, 11 Dec 2024 06:31:25 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 15/24] test/qtest/aspeed_smc-test: Move testcases to
- test_palmetto_bmc function
-Date: Wed, 11 Dec 2024 07:30:49 +0100
-Message-ID: <20241211063058.1222038-16-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 09/24] tests/functional: Introduce a specific test for
+ palmetto-bmc machine
+Date: Wed, 11 Dec 2024 07:30:43 +0100
+Message-ID: <20241211063058.1222038-10-clg@redhat.com>
 In-Reply-To: <20241211063058.1222038-1-clg@redhat.com>
 References: <20241211063058.1222038-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -106,76 +106,136 @@ X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.52,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: XY1q69f5VuDg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: j4xXH08BxRoC
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+This introduces a new aspeed module for sharing code between tests and
+moves the palmetto test to a new test file. No changes in the test.
 
-So far, the test cases are used for testing SMC model with AST2400 BMC.
-However, AST2400 is end off live and ASPEED is no longer support this SOC.
-To test SMC model for AST2500, AST2600 and AST1030, move the test cases
-from main to test_palmetto_bmc function.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/r/20241127091543.1243114-2-jamin_lin@aspeedtech.com
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Link: https://lore.kernel.org/r/20241206131132.520911-3-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed_smc-test.c | 16 ++++++++++++----
- 1 file changed, 12 insertions(+), 4 deletions(-)
+ tests/functional/aspeed.py                   | 23 +++++++++++++++++++
+ tests/functional/meson.build                 |  2 ++
+ tests/functional/test_arm_aspeed.py          | 10 --------
+ tests/functional/test_arm_aspeed_palmetto.py | 24 ++++++++++++++++++++
+ 4 files changed, 49 insertions(+), 10 deletions(-)
+ create mode 100644 tests/functional/aspeed.py
+ create mode 100644 tests/functional/test_arm_aspeed_palmetto.py
 
-diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index 4673371d9539..ec1fa6ec15ac 100644
---- a/tests/qtest/aspeed_smc-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -610,14 +610,12 @@ static void test_write_block_protect_bottom_bit(void)
-     flash_reset();
- }
+diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+new file mode 100644
+index 000000000000..d4dc5320b97a
+--- /dev/null
++++ b/tests/functional/aspeed.py
+@@ -0,0 +1,23 @@
++# Test class to boot aspeed machines
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import LinuxKernelTest
++
++class AspeedTest(LinuxKernelTest):
++
++    def do_test_arm_aspeed(self, machine, image):
++        self.set_machine(machine)
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic', '-snapshot')
++        self.vm.launch()
++
++        self.wait_for_console_pattern("U-Boot 2016.07")
++        self.wait_for_console_pattern("## Loading kernel from FIT Image at 20080000")
++        self.wait_for_console_pattern("Starting kernel ...")
++        self.wait_for_console_pattern("Booting Linux on physical CPU 0x0")
++        self.wait_for_console_pattern(
++                "aspeed-smc 1e620000.spi: read control register: 203b0641")
++        self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
++        self.wait_for_console_pattern("systemd[1]: Set hostname to")
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 66f10da99d63..4752dca9d66c 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -18,6 +18,7 @@ test_timeouts = {
+   'aarch64_tuxrun' : 240,
+   'aarch64_virt' : 720,
+   'acpi_bits' : 420,
++  'arm_aspeed_palmetto' : 120,
+   'arm_aspeed' : 600,
+   'arm_bpim2u' : 500,
+   'arm_collie' : 180,
+@@ -67,6 +68,7 @@ tests_alpha_system_thorough = [
+ tests_arm_system_thorough = [
+   'arm_aspeed',
+   'arm_aspeed_ast1030',
++  'arm_aspeed_palmetto',
+   'arm_bpim2u',
+   'arm_canona1100',
+   'arm_collie',
+diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
+index 9e58fcd84009..48a229608ef6 100755
+--- a/tests/functional/test_arm_aspeed.py
++++ b/tests/functional/test_arm_aspeed.py
+@@ -37,16 +37,6 @@ def do_test_arm_aspeed(self, machine, image):
+         self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
+         self.wait_for_console_pattern("systemd[1]: Set hostname to")
  
--int main(int argc, char **argv)
-+static int test_palmetto_bmc(void)
- {
-     g_autofree char *tmp_path = NULL;
-     int ret;
-     int fd;
- 
--    g_test_init(&argc, &argv, NULL);
+-    ASSET_PALMETTO_FLASH = Asset(
+-        ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
+-         'obmc-phosphor-image-palmetto.static.mtd'),
+-        '3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d');
 -
-     fd = g_file_open_tmp("qtest.m25p80.XXXXXX", &tmp_path, NULL);
-     g_assert(fd >= 0);
-     ret = ftruncate(fd, FLASH_SIZE);
-@@ -644,8 +642,18 @@ int main(int argc, char **argv)
- 
-     flash_reset();
-     ret = g_test_run();
+-    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
+-        image_path = self.ASSET_PALMETTO_FLASH.fetch()
 -
-     qtest_quit(global_qtest);
-     unlink(tmp_path);
+-        self.do_test_arm_aspeed('palmetto-bmc', image_path)
+-
+     ASSET_ROMULUS_FLASH = Asset(
+         ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
+          'obmc-phosphor-image-romulus.static.mtd'),
+diff --git a/tests/functional/test_arm_aspeed_palmetto.py b/tests/functional/test_arm_aspeed_palmetto.py
+new file mode 100644
+index 000000000000..6588c02aad79
+--- /dev/null
++++ b/tests/functional/test_arm_aspeed_palmetto.py
+@@ -0,0 +1,24 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the ASPEED machines
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
-+    return ret;
-+}
++from qemu_test import Asset
++from aspeed import AspeedTest
 +
-+int main(int argc, char **argv)
-+{
-+    int ret;
++class PalmettoMachine(AspeedTest):
 +
-+    g_test_init(&argc, &argv, NULL);
-+    ret = test_palmetto_bmc();
++    ASSET_PALMETTO_FLASH = Asset(
++        ('https://github.com/openbmc/openbmc/releases/download/2.9.0/'
++         'obmc-phosphor-image-palmetto.static.mtd'),
++        '3e13bbbc28e424865dc42f35ad672b10f2e82cdb11846bb28fa625b48beafd0d');
 +
-     return ret;
- }
++    def test_arm_ast2400_palmetto_openbmc_v2_9_0(self):
++        image_path = self.ASSET_PALMETTO_FLASH.fetch()
++
++        self.do_test_arm_aspeed('palmetto-bmc', image_path)
++
++
++if __name__ == '__main__':
++    AspeedTest.main()
 -- 
 2.47.1
 

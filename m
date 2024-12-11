@@ -1,125 +1,120 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4107878njb;
-        Wed, 11 Dec 2024 06:46:07 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVf8Iv9mCMU09ujQhj7XCOSfq0AWKhQVKwGAtxM9gPQA2mRdMQ+P8DI206Llw22eyQIGpMWuQwc8zNxmA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEm5VPvi/qDPkP8RQnHLxEBKpO+esZ4KO/I8gf2wnQcdqYk8fCa/vG553Eu0tQqpeqFhZRb
-X-Received: by 2002:a05:622a:15c6:b0:466:b2c9:fb00 with SMTP id d75a77b69052e-467892e96e5mr62902211cf.3.1733928367113;
-        Wed, 11 Dec 2024 06:46:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733928367; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4108042njb;
+        Wed, 11 Dec 2024 06:46:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWLTO1GGRufoF7pAZR1kx7759n1KqVVAqv3yVWqLaD/GhQiVe4m/jfLuGXeifCWxeDOWHAQzjeSYFF5Ag==@linaro.org
+X-Google-Smtp-Source: AGHT+IFpci/8cWuXlIe8DwsKCjtC2freszVbRA4t68tMDIaRBD4f9oxvKyb1Mn8RMSJNEfeRdVwr
+X-Received: by 2002:a05:6122:17a3:b0:518:a1a6:4642 with SMTP id 71dfb90a1353d-518b43d0e60mr137725e0c.9.1733928380788;
+        Wed, 11 Dec 2024 06:46:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733928380; cv=none;
         d=google.com; s=arc-20240605;
-        b=gJjT8Nn3ke+33lBUBknXkw5fzHVKL3LTn0Sforz/zAClG8Yc2n0Cisx4rEHxqpvPeH
-         XguXmSnNVRqLKYmxixkGoFNOGttg49CfuumOKrYmXJBYSbxRB8HwyFsC0VW+AgpBC0xi
-         4LDYq/yUG/ue5BhKaYzhPdhiLOYlPEaEgV9GtjaAVtq492yt3JpC3zgYYPDgMWk9nwuM
-         dbaumzoSvuVsJicd0vUGgKxr6T/oZUvniiQov8QkXuDjpEIzU6gxoXuybRnAXKvEoXrV
-         j4uXyIqjXpmVfDAoBwxmoHGDKQaKzcQ6EGKM+gepB2rHHKO1xGRoiMYmllyabwQeZLwo
-         QmfQ==
+        b=L17nN2A1uutKIJYu3mNYZkLAB/WH9/7jNYStUtT2f/sAHHXYmOj6NdMhx8PJAEqQ+q
+         iRJZEd0Jnfym5CE0WD9NfmzeiTSrkmKoMfbh2NqUzLr4CTOkmNOd8vF/Eb+mQsSd6OjZ
+         xTmeK+INFjTZk9dy0596SlkO0CFsZk980MYmkYHfMrPdWGGVMVbHclN8JVufDwD2kXE4
+         2cExLNr1iECC5EbVhT3r6/p1u38B6D41Zi6eA+CYG796YZcNZcuovEU0k5KB+18cDhHb
+         6QM92hW6YN9cgOxdyEySIoe5+9d5KUwkGVihqCTs5zLWz3J1DJQWFpmh1pphi8KunsHp
+         y4Eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=M7va31x/VOYddYKA/oiv6RnIYgMyqPQV86yEQWd9Sec=;
-        fh=zS4j4UIougpBVCTc+IqmqM3Tf42AAKGEABYcJ/kVAP8=;
-        b=W6SIfoq+Ij1lr1U/aUE8l35docAOi5XujyNzz44FUuzWaRTy/DUDUKgKwwAjpXrnNE
-         7rCPu06A5XSvtt10+5w5F+lbdW14qmMrzoo+9kY/HwBCI3TBwgdR/jdnyw/wnMSa6oQi
-         JAF5Cnu9/FIixTlBywfttq/C1/P5ATO9oCGPbnY+wyRdG27oDYwQPKZEnveJj+xD3hII
-         MAwjsKGj0VlOgmL1zhGPvUtCN5PUJtxlUctP8EM3mILeeAJqNU92ccv8FiteLwTyKBYD
-         bYhSY9t+HRa6mLRrUClHMjQPBFy6/8FnC4NHZV0DW9ar5HKDslz4DdFI7Y8jzug9a5mk
-         Yr+A==;
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=LTk+DUe6S9u82GPZ18L5jgV8pNO1K/18JGElVt303Ak=;
+        fh=IXwJM6opV3cvetIuapTDNEs70+H769CSd5/z5IdgYRw=;
+        b=GkMkzl0sR1q0Ci0iWoFhAYMjnz/dGrYoZev/uZ7ihHc1A/K+2cPk9CivjlppI5khjK
+         I8uMOiJi7KXUrxoZnYCNxanfQdV5dBVGfE3sCk05RpcSpJ4tAPBRY0/g3kuO+e4uuEfN
+         KQLkdWkAOoGJH2bANLRvp6/6KYV27+P00duRkeKZdffLJvFNHRP4rvWiz2EzHdKVDLd+
+         7oxpXFf2lmv3PBy798WTWELDVCIUNLjVpdTILWIoprL7QBdHEv9ZclfpvwJvj/u/CUFU
+         rQD1RDA+Y4JHBHOWPnbN8sU5XB75ceUduvx8DSZjvi864ukIYEjQ5F1phNM7JZBafHjy
+         K2vA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oUyz1bKQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PC8ApLYS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-467878e1d5fsi25689511cf.110.2024.12.11.06.46.07
+        by mx.google.com with ESMTPS id 71dfb90a1353d-5161637e24asi2346350e0c.234.2024.12.11.06.46.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Dec 2024 06:46:07 -0800 (PST)
+        Wed, 11 Dec 2024 06:46:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oUyz1bKQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PC8ApLYS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tLNxN-0006u6-3j; Wed, 11 Dec 2024 09:44:53 -0500
+	id 1tLNxI-0006rP-9Q; Wed, 11 Dec 2024 09:44:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tLNxK-0006sw-TR
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 09:44:50 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1tLNxG-0006qD-63
+ for qemu-devel@nongnu.org; Wed, 11 Dec 2024 09:44:46 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tLNxJ-0003sQ-7W
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 09:44:50 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-434a1fe2b43so68507185e9.2
- for <qemu-devel@nongnu.org>; Wed, 11 Dec 2024 06:44:48 -0800 (PST)
+ id 1tLNxE-0003qN-K3
+ for qemu-devel@nongnu.org; Wed, 11 Dec 2024 09:44:45 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-385df53e559so4636555f8f.3
+ for <qemu-devel@nongnu.org>; Wed, 11 Dec 2024 06:44:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733928287; x=1734533087; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=M7va31x/VOYddYKA/oiv6RnIYgMyqPQV86yEQWd9Sec=;
- b=oUyz1bKQ2mKbYTyCYyCPSZZL6NZnAG+y/WikCnY1wW9XS3En29v3cmUIVSiW+HkfZW
- PQSGQeIotrcmPDF8vOSbgdPR7Ge0LPDTgSY7ky4LdNrPhownDVDwtvsWLDepY+7emt5z
- XGqcKdmUuzmLLs7hBBaVbleOQCsXIJubcO4bvVle4Iwa8zJgAuxYXjhLAJOGMfoeDB1C
- 2UHs4A4oMU6fHZa2d8JShMrspjLXKwe54Zl1IL5e6KONMxpo7/AGRNnkTzRn+wr0frvz
- Na6YHrTo5DWKJfvAkPcdqssn3Av10rSTtvAdnj2EUZo/MrC3Zs9QQGyi4g9ucKWl3AVs
- cavg==
+ d=linaro.org; s=google; t=1733928282; x=1734533082; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=LTk+DUe6S9u82GPZ18L5jgV8pNO1K/18JGElVt303Ak=;
+ b=PC8ApLYSTroI9LelCSgLdqxuRmNYjs9fgmW1mz64WDhesPY4FnUvoVj7U95V6lx1EO
+ /N/OQ81j6KfYfqzqFb3TXPkfMFArbTFJ+ONB8VRaEdzHA/rPvJ2hH5liCThPydGlyjlK
+ pE+ysPqEUZiJtKnUQQLelBHlAZrYAdt6FEr22iHnKNTK8mNxvu2SqjPOakqf4+UqWjVc
+ r6rg2D7KtNBKU34VDEOFHdpobpZs4MwcK4yQw6eleiF3TGNC2Pmze/DZsK5Oz433PPzy
+ Tro+pyAIDrAwZx4SEUcY65+khU69DLoGWsO5L3pqE7ntQ89RyH/At/6SoD6zEsOXzAwi
+ CKBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733928287; x=1734533087;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=M7va31x/VOYddYKA/oiv6RnIYgMyqPQV86yEQWd9Sec=;
- b=OZQRdj6vcSp5IfmwKbbyeowDd3wlTur/sYuJSyk58weo6r1aEE2EFiThRmlt15ILEh
- Rnsr2gpr0ywZVMjFmbR8ZgudlJnLufd2t0LYcH8NF7Kb9m4iyp950mEkH+cIMD9Es5oq
- 2EHfjE88mMDpbLSvqegU1BrV79HWiNtfHCTZpMy/iciF6LoU0urK8FAOJjsTHw0cT3dv
- azcWNtbmPHhBC3QSTnGcSgcpR6nsAXqwvPtkm+3NZFzdYSbfpppMKJJKFElvX1HXWAGv
- vDhFvakG1+YpUqqbFNRrbWvrYZ33EHTb17pT9ROqVzD336QyekWbL9Coc5Hf18jnBHIH
- sgOA==
+ d=1e100.net; s=20230601; t=1733928282; x=1734533082;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=LTk+DUe6S9u82GPZ18L5jgV8pNO1K/18JGElVt303Ak=;
+ b=ccLOPnOV80czyvnmKx4iUHcaA3rDm7+KjXDoxhhCiYo7WzlbM/TVWmmzTwZv91V4lR
+ QQp8VyPPe/815TANFlWZIazaHV9QpEoPWYWXCMzkrxmvRZCU3cyBHle0jc0vod5+Nwub
+ 08CS4O0tsTdU+FRiI9c+kM22b7FWDerGb7raWM+gDHJTfQV7JNUHd6AXcK2lrKptouL+
+ +g4PRwRrZth2etgq7RDz5h0X9KqPqJM66cKc5O0atp0punyqDA4xewGDYz+vTHA5A6Ua
+ Gukmy2kcuXPFC4xVb80DxQE+vnW4r8Yy0EyIvIGdSzd/+L50WX6pnPJx9YuDc1fhypcb
+ fzSw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVopPrmdfPluChu7z9V0DHW/17zRI8BZAIdsjfA0IvdM7qpo4q0sGzhVBog1g7iFbkJ6Un08XN7CLgD@nongnu.org
-X-Gm-Message-State: AOJu0YwP+rW5Z+p4fHPbrcXGDPm9Vashp03vW61QOdftKGjBFQ2nwtya
- 8hLQaxY4ZmIzq1l7HnexVLtPk25MId4VlugN8Wl948A21vieK2KtwecVST/Rh6o4e5bBxgkIEtJ
- 2
-X-Gm-Gg: ASbGncu4UExUoBCYFoKNF9Xtyo2/Efpc7Eo2ACMb8lKBZQ22PU3sPirMKJOCI3zSDwH
- 69dmtH2P6LWRaXxGt/SYuoAYe8ZOL71w1e9KX9FYK9Yo1KBd83XEt/t7hJjKOTjWh/AHAMWdyOs
- B4s6n5ovmoiMMGDLm1zshmk8DhuO9i+sDbUx8ZYZHN4LlYuxI3UkniJ25jWGvi1zJOGYn0+cAIy
- XfqLF7nnxpXnDJRte0Ki1UKzbFeWQVytE3DvVdNRydZ8HWQlV6ZYPjtwKPG
-X-Received: by 2002:a05:600c:4f11:b0:426:647b:1bfc with SMTP id
- 5b1f17b1804b1-4361c4485dfmr28057045e9.30.1733928287469; 
- Wed, 11 Dec 2024 06:44:47 -0800 (PST)
+ AJvYcCWscTrf5MEJQogkWst6X85W41i0rEwO2dWmFXn9W1Y0N0A+MWfglX8bZB15dlqk5n2Bp7AxSKxIzINE@nongnu.org
+X-Gm-Message-State: AOJu0YzU0h2TXyPc3J8BbA6/xS0CHfhdSBSNENHDLYPVV0+tYsJfquCG
+ H0eZxuWRVRwI8hLhw3TIUz/vX1M9a04QEOkDkjh3K42w5K6X/PQ+DEUQfpu4cVI=
+X-Gm-Gg: ASbGncsGuoIM2d7ZcxZ0JbIwk1dDOr79my50cdEh/nLbDGv5IkmxptpQQofkcFa9HkP
+ pnqEeEPeaTSLvIO1TK5NfAfGzTmJQ5VFPeGc9vb3RT3wDSyU35yGToDMVoURkeP2XZGPnnB/24O
+ e0p1i1CMYzYnHZTyT6BXJVgaEu/+cgSpw+YKwjTUHVS87Rsvx5/52MQ3frZEN/apEPc54dGc1Is
+ K2W54aVWYK2F6lMCnPHW2RJJJ+nCjKkAJD1NsEcZ8953R17wedobGuPmvq5
+X-Received: by 2002:a05:6000:2803:b0:385:e5d8:2bea with SMTP id
+ ffacd0b85a97d-3864ce98660mr1805901f8f.20.1733928282472; 
+ Wed, 11 Dec 2024 06:44:42 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4361e54ef20sm19477685e9.5.2024.12.11.06.44.46
+ 5b1f17b1804b1-4361e54ef20sm19477685e9.5.2024.12.11.06.44.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Dec 2024 06:44:46 -0800 (PST)
+ Wed, 11 Dec 2024 06:44:41 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 5/6] target/arm: Enable FEAT_XS for the max cpu
-Date: Wed, 11 Dec 2024 14:44:39 +0000
-Message-Id: <20241211144440.2700268-6-peter.maydell@linaro.org>
+Subject: [PATCH v2 0/6] target/arm: Implement FEAT_XS
+Date: Wed, 11 Dec 2024 14:44:34 +0000
+Message-Id: <20241211144440.2700268-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241211144440.2700268-1-peter.maydell@linaro.org>
-References: <20241211144440.2700268-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,45 +129,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 02ThCSW7S2Qp
+X-TUID: LfKlD+NxcJCN
 
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Based-on: 20241210160452.2427965-1-peter.maydell@linaro.org
+("target/arm: Pull TLBI insns out to their own source file")
 
-Add FEAT_XS feature report value in max cpu's ID_AA64ISAR1 sys register.
+The FEAT_XS feature was introduced in ARMv8.7: it adds a new memory
+attribute XS which indicates that a memory access could take longer
+than usual to complete, and also adds instruction variants for TLBI
+maintenance and DSB.
 
-Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-[PMM: Add entry for FEAT_XS to documentation]
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- docs/system/arm/emulation.rst | 1 +
- target/arm/tcg/cpu64.c        | 1 +
- 2 files changed, 2 insertions(+)
+For QEMU, we don't have any concept of "really slow memory regions",
+so we don't need to implement the XS attribute to do anything
+special. So we only need to implement the new TLBI, DSB, etc as doing
+the same as the non-XS versions.
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 38534dcdd32..60176d08597 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -154,6 +154,7 @@ the following architecture extensions:
- - FEAT_VMID16 (16-bit VMID)
- - FEAT_WFxT (WFE and WFI instructions with timeout)
- - FEAT_XNX (Translation table stage 2 Unprivileged Execute-never)
-+- FEAT_XS (XS attribute)
- 
- For information on the specifics of these extensions, please refer
- to the `Arm Architecture Reference Manual for A-profile architecture
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 2963d7510f3..449cec5a626 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1163,6 +1163,7 @@ void aarch64_max_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64ISAR1, BF16, 2);     /* FEAT_BF16, FEAT_EBF16 */
-     t = FIELD_DP64(t, ID_AA64ISAR1, DGH, 1);      /* FEAT_DGH */
-     t = FIELD_DP64(t, ID_AA64ISAR1, I8MM, 1);     /* FEAT_I8MM */
-+    t = FIELD_DP64(t, ID_AA64ISAR1, XS, 1);       /* FEAT_XS */
-     cpu->isar.id_aa64isar1 = t;
- 
-     t = cpu->isar.id_aa64isar2;
+This is a respin of Manos' v1 patchseries. In particular:
+ * patch 1 adds support for the fine-grained-trap handling for
+   the new TLBI NXS insns
+ * patches 2 and 3 implement the actual TLB insns in a different
+   way to v1: we add a new ARM_CP_ADD_TLBI_NXS cpreg type flag
+   which we can mark the existing TLBI insns with; the core
+   cpregs machinery will then autogenerate the TLBI NXS cpreg
+   when FEAT_XS is present. The aim is to avoid having a lot
+   of mostly-duplicate cpreg structs and arrays.
+ * patches 4, 5, 6 have only minor changes from v1 to address
+   issues raised in code review
+
+thanks
+-- PMM
+
+Manos Pitsidianakis (3):
+  target/arm: Add decodetree entry for DSB nXS variant
+  target/arm: Enable FEAT_XS for the max cpu
+  tests/tcg/aarch64: add system test for FEAT_XS
+
+Peter Maydell (3):
+  target/arm: Implement fine-grained-trap handling for FEAT_XS
+  target/arm: Add ARM_CP_ADD_TLBI_NXS type flag for NXS insns
+  target/arm: Add ARM_CP_ADD_TLBI_NXS type flag to TLBI insns
+
+ docs/system/arm/emulation.rst      |   1 +
+ target/arm/cpregs.h                |  80 +++++++-----
+ target/arm/cpu-features.h          |   5 +
+ target/arm/tcg/a64.decode          |   3 +
+ target/arm/helper.c                |  30 ++++-
+ target/arm/tcg/cpu64.c             |   1 +
+ target/arm/tcg/op_helper.c         |  11 +-
+ target/arm/tcg/tlb-insns.c         | 202 ++++++++++++++++++-----------
+ target/arm/tcg/translate-a64.c     |   9 ++
+ tests/tcg/aarch64/system/feat-xs.c |  27 ++++
+ 10 files changed, 259 insertions(+), 110 deletions(-)
+ create mode 100644 tests/tcg/aarch64/system/feat-xs.c
+
 -- 
 2.34.1
 

@@ -1,117 +1,116 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4194316njb;
-        Wed, 11 Dec 2024 08:38:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX6rntkPR6E7IYK7xa8zoD8E/i8tj1IdU9rBzBaOs7BTnw8CAzzESRjiI24LzHiJXoztadYcwD+3N6CDw==@linaro.org
-X-Google-Smtp-Source: AGHT+IES6HnySkdQ0To4ayBp+FmLld1ZAI8IN6P7lNofbsEa/wUwr9QP71OreZEGVxPm2Jl1rKMN
-X-Received: by 2002:a05:622a:59c5:b0:466:b394:92bc with SMTP id d75a77b69052e-4679615495bmr248871cf.6.1733935113264;
-        Wed, 11 Dec 2024 08:38:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733935113; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4194338njb;
+        Wed, 11 Dec 2024 08:38:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVqK8Dvh4R0KGlvuCZI6k5V7pk9QylmnfRPQlPlwwYQzxCtBzACJ1f63RVPGcmvkjfFTbeD5/z9cvriKw==@linaro.org
+X-Google-Smtp-Source: AGHT+IG9P/wcubcgT+YoCtKpSikjweUZ9MIY7CnE0yxXYwyA0wNpXYSVsf5hWfa3agyvGDlCsqyL
+X-Received: by 2002:a05:622a:1b8f:b0:466:b395:fe with SMTP id d75a77b69052e-467893acb48mr64171341cf.35.1733935114160;
+        Wed, 11 Dec 2024 08:38:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733935114; cv=none;
         d=google.com; s=arc-20240605;
-        b=P2K26xng1sMtmxO8S1L1p5DTNG9DVJHV8vKqgO/i4k3IzpRvuT8sHIZFstoiBNCo9G
-         it3wd4WJcPy68wGpr/cDljf0fRiO1xT5b9mftzLmFi+l+FrVOzQWVzDipDf5TVYTn9D3
-         xmytR4SP0j6XDSg+DqMqlWpt/AR12TmCIavFvI4xiSHDDvwTo4+1m6QyNXqbpVL43cPe
-         OTmWLW18saL18dQQzuVH5tnpRYXbNrmcovl/lI71QwAPiHDT9/1HusMtWg4bV8+tn+z0
-         5j2lI5k1e2v7ZH/lirKAI19ls354b20Vy5pQJ4w5o6uIoP7lgaLJlFkrlPwhCCmqrIA2
-         aaZg==
+        b=NnR+r/nOu57wCeWynHWtmEfibun/GjQ1IRK0bHEcVfksddmvMv6kUyWLvkEbXQXhVy
+         WFGO1G0NpZaWsHaLGZJokce2qmc7aEfxqfg05L7iS8ki+qhSxOTP1vIYUdkXefBgqBz7
+         FXzfpg09mX9yZLbs8M2R07Tn/ElWBTUKB0FiF0b4a12Qf0z0vKzq8+SO/nEwz9pM3q77
+         lFEe+T8vm4ZJKs2rWN1+DkpsIRPXDJwD8/jgBpMYu3gI976EuQ9Pp9+K2JE9bK5ilF9F
+         xvYrb78Va+6VozI31e3B8fe29RtR9k7H/RnCsSpTKvmTyLzNHJ0A2YSylbuwbSuNgVkG
+         bMvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=T9fh0NlbjmdbLKi3RiB0ekN1/PEOAZQ1NU7Dbs3dJ9Q=;
-        fh=OZQBfL75rC14cCDy3q+1fYHCs9KjWAQ7ZJ3hTfS+5lQ=;
-        b=ZXokH8c49mC8wpqAI1SFRwFkMiE5G1tDxt5mlgcoKDcTE3+gmzXg4ZBAPzGDOf2rlh
-         T1Zv6KGZxU7JoJUqEyGTt5wMpPi81Za+NakTG0ByoQy4vwaaF5/Mkp/moqEDL4+zwaVV
-         2ymSQzpLJAjsd9R2No1Htx4aaqtpMIb14YiG6ZUO/mlYtbUYIaJ1rt6EfWiA3bTd6cih
-         jiR9igwatLUk/1/cdYfa7ivv/Rofdwxjxy/BnpuYChEReaKJ+EMRmBlmuB7HVOrXhTFG
-         4/hIW4Z9V//bobVl+iC5mG6nMtCnsyMmhCKc0S0YFJ2JrGWcz5JboBufIJ6NgtO3Vy3X
-         Nrbw==;
+        bh=4zG86Y19MBGCwLzxG+giH5jIu2mrSyv/3KKPj8MjTGI=;
+        fh=ZhBia3nL9o1nuf7SbgdYn/0pDmAeja6gisyWXi2cqYE=;
+        b=bWIXcDtR6tjDfGKeXnJCfVHwqcbeaZtDTFhCwepA40npAGeowWia5CIzBSDH4cuLK5
+         e8aVCrjmOb+FWWhF1v3sA42ZCyEIUtl0TMjeNultXNzA+hyktTMzfr7j4pgUTjxngvir
+         xeqlxc1skx6ld2iPs5P6kbtuo1rSKbpKuapPtQGqoGlTuiNDyObj6CaOY4WItxnKMqnz
+         OlllJDrE8J67wjaz1sDPDlImo1AlZTngJYZsUKcD/eowr4JJX6CtFgTSJP2/6qg42E0V
+         t8wpFPn6LU3jVGfzUuCeitaMrviDiY1QEg5NrKekpzlHACViS1Q0FkrmuhDnt1CaeBNE
+         vMoA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l+6qoJfZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fAyQmdns;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46786fc88cesi27119141cf.626.2024.12.11.08.38.33
+        by mx.google.com with ESMTPS id d75a77b69052e-46782ba0d10si37667201cf.426.2024.12.11.08.38.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Dec 2024 08:38:33 -0800 (PST)
+        Wed, 11 Dec 2024 08:38:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l+6qoJfZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fAyQmdns;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tLPg7-00044Y-Ae; Wed, 11 Dec 2024 11:35:13 -0500
+	id 1tLPhD-0007Gn-Un; Wed, 11 Dec 2024 11:36:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tLPdc-0006mv-0F
- for qemu-arm@nongnu.org; Wed, 11 Dec 2024 11:32:36 -0500
-Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
+ id 1tLPgm-0005sv-Oa
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 11:35:52 -0500
+Received: from mail-qk1-x730.google.com ([2607:f8b0:4864:20::730])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tLPda-0001UA-6L
- for qemu-arm@nongnu.org; Wed, 11 Dec 2024 11:32:35 -0500
-Received: by mail-qt1-x82f.google.com with SMTP id
- d75a77b69052e-4676859b911so28229861cf.2
- for <qemu-arm@nongnu.org>; Wed, 11 Dec 2024 08:32:33 -0800 (PST)
+ id 1tLPgk-00023M-9M
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 11:35:52 -0500
+Received: by mail-qk1-x730.google.com with SMTP id
+ af79cd13be357-7b6c36490e5so346329985a.3
+ for <qemu-arm@nongnu.org>; Wed, 11 Dec 2024 08:35:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733934753; x=1734539553; darn=nongnu.org;
+ d=linaro.org; s=google; t=1733934949; x=1734539749; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=T9fh0NlbjmdbLKi3RiB0ekN1/PEOAZQ1NU7Dbs3dJ9Q=;
- b=l+6qoJfZc0fL6wo9e0UY/74NJ7XKD463nLUGuf7nj9BsK/+tIuVRBR9Co2UGu9FAmx
- FqRjTwiRK3ToTuV3n4Ug0EIv8dRkmDwXJK5FMOYerLnVUx1TZB7DDHal2sLSgaikDofd
- DgIsutytYqWpS7BLVDwvIrXEuYOlz43UcsGGuSxAgEUlk4n8BnZlXhguTUfm7vnHcjpv
- ySJ66qUu9Q7MIFOe62+vS8nmy/gx8jiFwNNcL21NjWdls95TMv/OFNbYTzUhpAeD69u5
- icIY4hMVmKNMhgTZVSNVBJEw0oWyfLXzTrl6MbmdmezDs9Q9Gyw2zw7S1jW2AvP38fvt
- ea7Q==
+ bh=4zG86Y19MBGCwLzxG+giH5jIu2mrSyv/3KKPj8MjTGI=;
+ b=fAyQmdnsnN0WugpAzuGXa3NqbYQHFtd716MWwdassysrtWlWW2QP5Po8tmDgke0Pb0
+ Gz7qJgZII+e94tVcaKfmAfhXt/yJRXIOgQGPiJas1iutxz+MyY0YBVWD1aJNDsgIH01u
+ PtBNWB9qhfgiHUjJu8tBVlE+d8FOhHthl0BrIe3O9CJpxnNs1NSnwL7rvsHFKOE0hroG
+ +WjEZLyN6uCcf5a9EJFOxCHGEs/CbyptH/RZpEFfVH3nG1vLX7sSRaLrKJYejoioFVJn
+ cHP+k21OlgmzFoYx8oj4QYu+VWEqZQrT8WzNzaIBKxT0GrsHezY7DHjzIYBu7m/VVBLT
+ XT7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733934753; x=1734539553;
+ d=1e100.net; s=20230601; t=1733934949; x=1734539749;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=T9fh0NlbjmdbLKi3RiB0ekN1/PEOAZQ1NU7Dbs3dJ9Q=;
- b=b4yTkd/pYAQfU0B7FScbt04aE/8M6Hntpg0f2o4VIP9ZFqw/vJspN8F7JH0XFepHIo
- PVlZypZRTdKN4P085mgWV9kumoTA7bYoiJ5Hrihf0bcoi2wFRyen+BIOLERcK4ojLtkt
- B6XjCAjpH2C++KlbKJKTfe2gBr2XeUQSiDbKiBHl3h1aT73wbSG4bonbCk7xcMr2ONL6
- kTGg5ENBLI0rU3bphy9cm79Y7Y+mNIQ2osOdcYdOv38ymN1udd0nkGEiBQYO72o3dbQk
- sMatTOEgaoV6ojFxc9UthTpt34OwB0uNQcKajIzcqz0qanJIyAEPg2DatY24TAyWAcUY
- yd/w==
-X-Gm-Message-State: AOJu0YzNE5W1kIEieMlOAXrE+GUY0gmDDxEW6hd1kQ1M997vWvUryJxJ
- jhoPQSRFW1J1hBjRlA83NXvrBHPCDMqHo72TZgg63hbVedextI0tdZ218aHYMs8=
-X-Gm-Gg: ASbGncvtJV/cjTAzdPdpkZPI11ak5Ce2sNND40uyOJKgy6RGDAeE9bY6PgFTnTgC/Hr
- MOAMxkLmNKn0cu8P8QeoKAj+3CiwkaEWNQ0/tU1GI6dmIvnnwZ9GMNMkFFZ8alasxS9qrzv8vMq
- Bwj9r2r+cya3m7Lg5trx2R4D6CDSoM5ok8lShWupKIAlal6efIsxHKOZRRQutQ/tRV0VW3v413r
- mKB8OjzCCpl8YO0arGRBOCUo7t2YvuGjO7hzEG04P8knkLyxz/JACqCFSVKPA==
-X-Received: by 2002:a05:622a:9009:b0:466:ac8d:7341 with SMTP id
- d75a77b69052e-46795423747mr6206131cf.35.1733934753142; 
- Wed, 11 Dec 2024 08:32:33 -0800 (PST)
+ bh=4zG86Y19MBGCwLzxG+giH5jIu2mrSyv/3KKPj8MjTGI=;
+ b=Rq4w6gnjUsQ/qMuFtdKhVH0OCWPb6ol4/QFnB/bVDvKxQST/1bGkSl3qMCc38n2Xqa
+ aqMUKXEmQTlf9/XGnaH9+vWhjlvlw1xAJqKPQQdOLY0npYIQKAD0IHAwQbQtKjwHUkbw
+ qXKxjJEtZcYTjz8ry6w6C/isj7V0x4xhkd1osgIXZNcZgx2OjAC1GeaopRZiZ5gFHIbR
+ lpm0dHbhEF60JGlz7oGb7m72fgh/i0dJSoh/QeaMj43xmTgm0hzK+VE4mpqyWbAwEd8u
+ BjRsLnvo1p1BrSRFjy1hnUSe5OO672R8Qn09WpmdMD6asplCrF+kThe2AQU8w4tV3Ipp
+ 8g7g==
+X-Gm-Message-State: AOJu0YzMtO5O3kalGhBQKuFjJMQGz5E2N1z9RCVD3PvFkmylTTEiGN6L
+ gr9bQy15YBbfphvfe9cfaV9oR9agEgvpq+0m+8A9M22dsrdMIQmiWPOJtgjdyYY=
+X-Gm-Gg: ASbGncsB5yIrefqLTAQXKkQlibFRZ6A37jL6ZIF7ZpX0klLsupwB3QBLx0n4BtFa0Yg
+ lCMkzOw8t8sys5RMjBIHhJCC+E2/dZMGKeEmgGlVpahsi4tXB+a5URMY6EB2cEh17EcYbPL5f9J
+ KJT/4EfghNWOd6Jeq8zS/B6lMToJUY4gs/bHnN1Mpi18R7LL6OV1Xh0ZkQLyOhZFGOvIoO8j3yM
+ JMeissbZAwmI6LMi1Va24WcKMUJYsqTkhVIwuG1v3dHKdeVPe0u5sosmyx21Q==
+X-Received: by 2002:a05:6214:1d0b:b0:6d4:1bad:7415 with SMTP id
+ 6a1803df08f44-6d9349c7bd8mr64925086d6.2.1733934949323; 
+ Wed, 11 Dec 2024 08:35:49 -0800 (PST)
 Received: from stoup.. ([187.217.227.247]) by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-46755db613csm43849381cf.70.2024.12.11.08.32.31
+ 6a1803df08f44-6d8da675214sm71856276d6.11.2024.12.11.08.35.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 11 Dec 2024 08:32:32 -0800 (PST)
+ Wed, 11 Dec 2024 08:35:49 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v3 37/69] target/arm: Introduce gen_gvec_cls, gen_gvec_clz
-Date: Wed, 11 Dec 2024 10:30:04 -0600
-Message-ID: <20241211163036.2297116-38-richard.henderson@linaro.org>
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3 45/69] target/arm: Introduce gen_gvec_{s,u}{add,ada}lp
+Date: Wed, 11 Dec 2024 10:30:12 -0600
+Message-ID: <20241211163036.2297116-46-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241211163036.2297116-1-richard.henderson@linaro.org>
 References: <20241211163036.2297116-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82f;
- envelope-from=richard.henderson@linaro.org; helo=mail-qt1-x82f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::730;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qk1-x730.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -133,179 +132,492 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: AV5UqEh1ZmTm
+X-TUID: SxuOCWquIYPQ
 
-Add gvec interfaces for CLS and CLZ operations.
+Pairwise addition with and without accumulation.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate.h      |  5 +++++
- target/arm/tcg/gengvec.c        | 35 +++++++++++++++++++++++++++++++++
- target/arm/tcg/translate-a64.c  | 29 +++++++--------------------
- target/arm/tcg/translate-neon.c | 29 ++-------------------------
- 4 files changed, 49 insertions(+), 49 deletions(-)
+ target/arm/helper.h             |   2 -
+ target/arm/tcg/translate.h      |   9 ++
+ target/arm/tcg/gengvec.c        | 230 ++++++++++++++++++++++++++++++++
+ target/arm/tcg/neon_helper.c    |  22 ---
+ target/arm/tcg/translate-neon.c | 150 +--------------------
+ 5 files changed, 243 insertions(+), 170 deletions(-)
 
+diff --git a/target/arm/helper.h b/target/arm/helper.h
+index 57e0ce387b..6369d07d05 100644
+--- a/target/arm/helper.h
++++ b/target/arm/helper.h
+@@ -397,8 +397,6 @@ DEF_HELPER_1(neon_widen_s16, i64, i32)
+ 
+ DEF_HELPER_2(neon_addl_u16, i64, i64, i64)
+ DEF_HELPER_2(neon_addl_u32, i64, i64, i64)
+-DEF_HELPER_2(neon_paddl_u16, i64, i64, i64)
+-DEF_HELPER_2(neon_paddl_u32, i64, i64, i64)
+ DEF_HELPER_FLAGS_1(neon_addlp_s8, TCG_CALL_NO_RWG_SE, i64, i64)
+ DEF_HELPER_FLAGS_1(neon_addlp_s16, TCG_CALL_NO_RWG_SE, i64, i64)
+ DEF_HELPER_2(neon_subl_u16, i64, i64, i64)
 diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 20cd0e851c..5c6c24f057 100644
+index 342ebedafc..edd775d564 100644
 --- a/target/arm/tcg/translate.h
 +++ b/target/arm/tcg/translate.h
-@@ -578,6 +578,11 @@ void gen_gvec_umaxp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
- void gen_gvec_uminp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-                     uint32_t rm_ofs, uint32_t opr_sz, uint32_t max_sz);
+@@ -593,6 +593,15 @@ void gen_gvec_rev32(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+ void gen_gvec_rev64(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+                     uint32_t opr_sz, uint32_t max_sz);
  
-+void gen_gvec_cls(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                  uint32_t opr_sz, uint32_t max_sz);
-+void gen_gvec_clz(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                  uint32_t opr_sz, uint32_t max_sz);
++void gen_gvec_saddlp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                     uint32_t opr_sz, uint32_t max_sz);
++void gen_gvec_sadalp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                     uint32_t opr_sz, uint32_t max_sz);
++void gen_gvec_uaddlp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                     uint32_t opr_sz, uint32_t max_sz);
++void gen_gvec_uadalp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                     uint32_t opr_sz, uint32_t max_sz);
 +
  /*
   * Forward to the isar_feature_* tests given a DisasContext pointer.
   */
 diff --git a/target/arm/tcg/gengvec.c b/target/arm/tcg/gengvec.c
-index f652520b65..834b2961c0 100644
+index 33c0a94958..2755da8ac7 100644
 --- a/target/arm/tcg/gengvec.c
 +++ b/target/arm/tcg/gengvec.c
-@@ -2358,3 +2358,38 @@ void gen_gvec_urhadd(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-     assert(vece <= MO_32);
-     tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &g[vece]);
+@@ -2467,3 +2467,233 @@ void gen_gvec_rev64(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
+         g_assert_not_reached();
+     }
  }
 +
-+void gen_gvec_cls(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                  uint32_t opr_sz, uint32_t max_sz)
++static void gen_saddlp_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
 +{
++    int half = 4 << vece;
++    TCGv_vec t = tcg_temp_new_vec_matching(d);
++
++    tcg_gen_shli_vec(vece, t, n, half);
++    tcg_gen_sari_vec(vece, d, n, half);
++    tcg_gen_sari_vec(vece, t, t, half);
++    tcg_gen_add_vec(vece, d, d, t);
++}
++
++static void gen_saddlp_s_i64(TCGv_i64 d, TCGv_i64 n)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++
++    tcg_gen_ext32s_i64(t, n);
++    tcg_gen_sari_i64(d, n, 32);
++    tcg_gen_add_i64(d, d, t);
++}
++
++void gen_gvec_saddlp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                     uint32_t opr_sz, uint32_t max_sz)
++{
++    static const TCGOpcode vecop_list[] = {
++        INDEX_op_sari_vec, INDEX_op_shli_vec, INDEX_op_add_vec, 0
++    };
 +    static const GVecGen2 g[] = {
-+        { .fni4 = gen_helper_neon_cls_s8,
-+          .vece = MO_8 },
-+        { .fni4 = gen_helper_neon_cls_s16,
++        { .fniv = gen_saddlp_vec,
++          .fni8 = gen_helper_neon_addlp_s8,
++          .opt_opc = vecop_list,
 +          .vece = MO_16 },
-+        { .fni4 = tcg_gen_clrsb_i32,
++        { .fniv = gen_saddlp_vec,
++          .fni8 = gen_helper_neon_addlp_s16,
++          .opt_opc = vecop_list,
 +          .vece = MO_32 },
++        { .fniv = gen_saddlp_vec,
++          .fni8 = gen_saddlp_s_i64,
++          .opt_opc = vecop_list,
++          .vece = MO_64 },
 +    };
 +    assert(vece <= MO_32);
 +    tcg_gen_gvec_2(rd_ofs, rn_ofs, opr_sz, max_sz, &g[vece]);
 +}
 +
-+static void gen_clz32_i32(TCGv_i32 d, TCGv_i32 n)
++static void gen_sadalp_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
 +{
-+    tcg_gen_clzi_i32(d, n, 32);
++    TCGv_vec t = tcg_temp_new_vec_matching(d);
++
++    gen_saddlp_vec(vece, t, n);
++    tcg_gen_add_vec(vece, d, d, t);
 +}
 +
-+void gen_gvec_clz(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-+                  uint32_t opr_sz, uint32_t max_sz)
++static void gen_sadalp_b_i64(TCGv_i64 d, TCGv_i64 n)
 +{
++    TCGv_i64 t = tcg_temp_new_i64();
++
++    gen_helper_neon_addlp_s8(t, n);
++    tcg_gen_vec_add16_i64(d, d, t);
++}
++
++static void gen_sadalp_h_i64(TCGv_i64 d, TCGv_i64 n)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++
++    gen_helper_neon_addlp_s16(t, n);
++    tcg_gen_vec_add32_i64(d, d, t);
++}
++
++static void gen_sadalp_s_i64(TCGv_i64 d, TCGv_i64 n)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++
++    gen_saddlp_s_i64(t, n);
++    tcg_gen_add_i64(d, d, t);
++}
++
++void gen_gvec_sadalp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                     uint32_t opr_sz, uint32_t max_sz)
++{
++    static const TCGOpcode vecop_list[] = {
++        INDEX_op_sari_vec, INDEX_op_shli_vec, INDEX_op_add_vec, 0
++    };
 +    static const GVecGen2 g[] = {
-+        { .fni4 = gen_helper_neon_clz_u8,
-+          .vece = MO_8 },
-+        { .fni4 = gen_helper_neon_clz_u16,
++        { .fniv = gen_sadalp_vec,
++          .fni8 = gen_sadalp_b_i64,
++          .opt_opc = vecop_list,
++          .load_dest = true,
 +          .vece = MO_16 },
-+        { .fni4 = gen_clz32_i32,
++        { .fniv = gen_sadalp_vec,
++          .fni8 = gen_sadalp_h_i64,
++          .opt_opc = vecop_list,
++          .load_dest = true,
 +          .vece = MO_32 },
++        { .fniv = gen_sadalp_vec,
++          .fni8 = gen_sadalp_s_i64,
++          .opt_opc = vecop_list,
++          .load_dest = true,
++          .vece = MO_64 },
 +    };
 +    assert(vece <= MO_32);
 +    tcg_gen_gvec_2(rd_ofs, rn_ofs, opr_sz, max_sz, &g[vece]);
 +}
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index c697f0e944..387bbbf906 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -10321,6 +10321,13 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-     }
++
++static void gen_uaddlp_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
++{
++    int half = 4 << vece;
++    TCGv_vec t = tcg_temp_new_vec_matching(d);
++    TCGv_vec m = tcg_constant_vec_matching(d, vece, MAKE_64BIT_MASK(0, half));
++
++    tcg_gen_shri_vec(vece, t, n, half);
++    tcg_gen_and_vec(vece, d, n, m);
++    tcg_gen_add_vec(vece, d, d, t);
++}
++
++static void gen_uaddlp_b_i64(TCGv_i64 d, TCGv_i64 n)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++    TCGv_i64 m = tcg_constant_i64(dup_const(MO_16, 0xff));
++
++    tcg_gen_shri_i64(t, n, 8);
++    tcg_gen_and_i64(d, n, m);
++    tcg_gen_and_i64(t, t, m);
++    /* No carry between widened unsigned elements. */
++    tcg_gen_add_i64(d, d, t);
++}
++
++static void gen_uaddlp_h_i64(TCGv_i64 d, TCGv_i64 n)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++    TCGv_i64 m = tcg_constant_i64(dup_const(MO_32, 0xffff));
++
++    tcg_gen_shri_i64(t, n, 16);
++    tcg_gen_and_i64(d, n, m);
++    tcg_gen_and_i64(t, t, m);
++    /* No carry between widened unsigned elements. */
++    tcg_gen_add_i64(d, d, t);
++}
++
++static void gen_uaddlp_s_i64(TCGv_i64 d, TCGv_i64 n)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++
++    tcg_gen_ext32u_i64(t, n);
++    tcg_gen_shri_i64(d, n, 32);
++    tcg_gen_add_i64(d, d, t);
++}
++
++void gen_gvec_uaddlp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                     uint32_t opr_sz, uint32_t max_sz)
++{
++    static const TCGOpcode vecop_list[] = {
++        INDEX_op_shri_vec, INDEX_op_add_vec, 0
++    };
++    static const GVecGen2 g[] = {
++        { .fniv = gen_uaddlp_vec,
++          .fni8 = gen_uaddlp_b_i64,
++          .opt_opc = vecop_list,
++          .vece = MO_16 },
++        { .fniv = gen_uaddlp_vec,
++          .fni8 = gen_uaddlp_h_i64,
++          .opt_opc = vecop_list,
++          .vece = MO_32 },
++        { .fniv = gen_uaddlp_vec,
++          .fni8 = gen_uaddlp_s_i64,
++          .opt_opc = vecop_list,
++          .vece = MO_64 },
++    };
++    assert(vece <= MO_32);
++    tcg_gen_gvec_2(rd_ofs, rn_ofs, opr_sz, max_sz, &g[vece]);
++}
++
++static void gen_uadalp_vec(unsigned vece, TCGv_vec d, TCGv_vec n)
++{
++    TCGv_vec t = tcg_temp_new_vec_matching(d);
++
++    gen_uaddlp_vec(vece, t, n);
++    tcg_gen_add_vec(vece, d, d, t);
++}
++
++static void gen_uadalp_b_i64(TCGv_i64 d, TCGv_i64 n)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++
++    gen_uaddlp_b_i64(t, n);
++    tcg_gen_vec_add16_i64(d, d, t);
++}
++
++static void gen_uadalp_h_i64(TCGv_i64 d, TCGv_i64 n)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++
++    gen_uaddlp_h_i64(t, n);
++    tcg_gen_vec_add32_i64(d, d, t);
++}
++
++static void gen_uadalp_s_i64(TCGv_i64 d, TCGv_i64 n)
++{
++    TCGv_i64 t = tcg_temp_new_i64();
++
++    gen_uaddlp_s_i64(t, n);
++    tcg_gen_add_i64(d, d, t);
++}
++
++void gen_gvec_uadalp(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
++                     uint32_t opr_sz, uint32_t max_sz)
++{
++    static const TCGOpcode vecop_list[] = {
++        INDEX_op_shri_vec, INDEX_op_add_vec, 0
++    };
++    static const GVecGen2 g[] = {
++        { .fniv = gen_uadalp_vec,
++          .fni8 = gen_uadalp_b_i64,
++          .load_dest = true,
++          .opt_opc = vecop_list,
++          .vece = MO_16 },
++        { .fniv = gen_uadalp_vec,
++          .fni8 = gen_uadalp_h_i64,
++          .load_dest = true,
++          .opt_opc = vecop_list,
++          .vece = MO_32 },
++        { .fniv = gen_uadalp_vec,
++          .fni8 = gen_uadalp_s_i64,
++          .load_dest = true,
++          .opt_opc = vecop_list,
++          .vece = MO_64 },
++    };
++    assert(vece <= MO_32);
++    tcg_gen_gvec_2(rd_ofs, rn_ofs, opr_sz, max_sz, &g[vece]);
++}
+diff --git a/target/arm/tcg/neon_helper.c b/target/arm/tcg/neon_helper.c
+index b92ddd4914..1a22857b5e 100644
+--- a/target/arm/tcg/neon_helper.c
++++ b/target/arm/tcg/neon_helper.c
+@@ -844,28 +844,6 @@ uint64_t HELPER(neon_addl_u32)(uint64_t a, uint64_t b)
+     return (a + b) ^ mask;
+ }
  
-     switch (opcode) {
-+    case 0x4: /* CLZ, CLS */
-+        if (u) {
-+            gen_gvec_fn2(s, is_q, rd, rn, gen_gvec_clz, size);
-+        } else {
-+            gen_gvec_fn2(s, is_q, rd, rn, gen_gvec_cls, size);
-+        }
-+        return;
-     case 0x5:
-         if (u && size == 0) { /* NOT */
-             gen_gvec_fn2(s, is_q, rd, rn, tcg_gen_gvec_not, 0);
-@@ -10379,13 +10386,6 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-             if (size == 2) {
-                 /* Special cases for 32 bit elements */
-                 switch (opcode) {
--                case 0x4: /* CLS */
--                    if (u) {
--                        tcg_gen_clzi_i32(tcg_res, tcg_op, 32);
--                    } else {
--                        tcg_gen_clrsb_i32(tcg_res, tcg_op);
--                    }
--                    break;
-                 case 0x2f: /* FABS */
-                     gen_vfp_abss(tcg_res, tcg_op);
-                     break;
-@@ -10450,21 +10450,6 @@ static void disas_simd_two_reg_misc(DisasContext *s, uint32_t insn)
-                         gen_helper_neon_cnt_u8(tcg_res, tcg_op);
-                     }
-                     break;
--                case 0x4: /* CLS, CLZ */
--                    if (u) {
--                        if (size == 0) {
--                            gen_helper_neon_clz_u8(tcg_res, tcg_op);
--                        } else {
--                            gen_helper_neon_clz_u16(tcg_res, tcg_op);
--                        }
--                    } else {
--                        if (size == 0) {
--                            gen_helper_neon_cls_s8(tcg_res, tcg_op);
--                        } else {
--                            gen_helper_neon_cls_s16(tcg_res, tcg_op);
--                        }
--                    }
--                    break;
-                 default:
-                 case 0x7: /* SQABS, SQNEG */
-                     g_assert_not_reached();
+-uint64_t HELPER(neon_paddl_u16)(uint64_t a, uint64_t b)
+-{
+-    uint64_t tmp;
+-    uint64_t tmp2;
+-
+-    tmp = a & 0x0000ffff0000ffffull;
+-    tmp += (a >> 16) & 0x0000ffff0000ffffull;
+-    tmp2 = b & 0xffff0000ffff0000ull;
+-    tmp2 += (b << 16) & 0xffff0000ffff0000ull;
+-    return    ( tmp         & 0xffff)
+-            | ((tmp  >> 16) & 0xffff0000ull)
+-            | ((tmp2 << 16) & 0xffff00000000ull)
+-            | ( tmp2        & 0xffff000000000000ull);
+-}
+-
+-uint64_t HELPER(neon_paddl_u32)(uint64_t a, uint64_t b)
+-{
+-    uint32_t low = a + (a >> 32);
+-    uint32_t high = b + (b >> 32);
+-    return low + ((uint64_t)high << 32);
+-}
+-
+ /* Pairwise long add: add pairs of adjacent elements into
+  * double-width elements in the result (eg _s8 is an 8x8->16 op)
+  */
 diff --git a/target/arm/tcg/translate-neon.c b/target/arm/tcg/translate-neon.c
-index 9c8829ad7d..1c89a53272 100644
+index ca6f5578b4..19a18018f1 100644
 --- a/target/arm/tcg/translate-neon.c
 +++ b/target/arm/tcg/translate-neon.c
-@@ -3120,6 +3120,8 @@ DO_2MISC_VEC(VCGT0, gen_gvec_cgt0)
- DO_2MISC_VEC(VCLE0, gen_gvec_cle0)
- DO_2MISC_VEC(VCGE0, gen_gvec_cge0)
- DO_2MISC_VEC(VCLT0, gen_gvec_clt0)
-+DO_2MISC_VEC(VCLS, gen_gvec_cls)
-+DO_2MISC_VEC(VCLZ, gen_gvec_clz)
+@@ -2565,152 +2565,6 @@ static bool trans_VDUP_scalar(DisasContext *s, arg_VDUP_scalar *a)
+     return true;
+ }
+ 
+-static bool do_2misc_pairwise(DisasContext *s, arg_2misc *a,
+-                              NeonGenWidenFn *widenfn,
+-                              NeonGenTwo64OpFn *opfn,
+-                              NeonGenTwo64OpFn *accfn)
+-{
+-    /*
+-     * Pairwise long operations: widen both halves of the pair,
+-     * combine the pairs with the opfn, and then possibly accumulate
+-     * into the destination with the accfn.
+-     */
+-    int pass;
+-
+-    if (!arm_dc_feature(s, ARM_FEATURE_NEON)) {
+-        return false;
+-    }
+-
+-    /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
+-        return false;
+-    }
+-
+-    if ((a->vd | a->vm) & a->q) {
+-        return false;
+-    }
+-
+-    if (!widenfn) {
+-        return false;
+-    }
+-
+-    if (!vfp_access_check(s)) {
+-        return true;
+-    }
+-
+-    for (pass = 0; pass < a->q + 1; pass++) {
+-        TCGv_i32 tmp;
+-        TCGv_i64 rm0_64, rm1_64, rd_64;
+-
+-        rm0_64 = tcg_temp_new_i64();
+-        rm1_64 = tcg_temp_new_i64();
+-        rd_64 = tcg_temp_new_i64();
+-
+-        tmp = tcg_temp_new_i32();
+-        read_neon_element32(tmp, a->vm, pass * 2, MO_32);
+-        widenfn(rm0_64, tmp);
+-        read_neon_element32(tmp, a->vm, pass * 2 + 1, MO_32);
+-        widenfn(rm1_64, tmp);
+-
+-        opfn(rd_64, rm0_64, rm1_64);
+-
+-        if (accfn) {
+-            TCGv_i64 tmp64 = tcg_temp_new_i64();
+-            read_neon_element64(tmp64, a->vd, pass, MO_64);
+-            accfn(rd_64, tmp64, rd_64);
+-        }
+-        write_neon_element64(rd_64, a->vd, pass, MO_64);
+-    }
+-    return true;
+-}
+-
+-static bool trans_VPADDL_S(DisasContext *s, arg_2misc *a)
+-{
+-    static NeonGenWidenFn * const widenfn[] = {
+-        gen_helper_neon_widen_s8,
+-        gen_helper_neon_widen_s16,
+-        tcg_gen_ext_i32_i64,
+-        NULL,
+-    };
+-    static NeonGenTwo64OpFn * const opfn[] = {
+-        gen_helper_neon_paddl_u16,
+-        gen_helper_neon_paddl_u32,
+-        tcg_gen_add_i64,
+-        NULL,
+-    };
+-
+-    return do_2misc_pairwise(s, a, widenfn[a->size], opfn[a->size], NULL);
+-}
+-
+-static bool trans_VPADDL_U(DisasContext *s, arg_2misc *a)
+-{
+-    static NeonGenWidenFn * const widenfn[] = {
+-        gen_helper_neon_widen_u8,
+-        gen_helper_neon_widen_u16,
+-        tcg_gen_extu_i32_i64,
+-        NULL,
+-    };
+-    static NeonGenTwo64OpFn * const opfn[] = {
+-        gen_helper_neon_paddl_u16,
+-        gen_helper_neon_paddl_u32,
+-        tcg_gen_add_i64,
+-        NULL,
+-    };
+-
+-    return do_2misc_pairwise(s, a, widenfn[a->size], opfn[a->size], NULL);
+-}
+-
+-static bool trans_VPADAL_S(DisasContext *s, arg_2misc *a)
+-{
+-    static NeonGenWidenFn * const widenfn[] = {
+-        gen_helper_neon_widen_s8,
+-        gen_helper_neon_widen_s16,
+-        tcg_gen_ext_i32_i64,
+-        NULL,
+-    };
+-    static NeonGenTwo64OpFn * const opfn[] = {
+-        gen_helper_neon_paddl_u16,
+-        gen_helper_neon_paddl_u32,
+-        tcg_gen_add_i64,
+-        NULL,
+-    };
+-    static NeonGenTwo64OpFn * const accfn[] = {
+-        gen_helper_neon_addl_u16,
+-        gen_helper_neon_addl_u32,
+-        tcg_gen_add_i64,
+-        NULL,
+-    };
+-
+-    return do_2misc_pairwise(s, a, widenfn[a->size], opfn[a->size],
+-                             accfn[a->size]);
+-}
+-
+-static bool trans_VPADAL_U(DisasContext *s, arg_2misc *a)
+-{
+-    static NeonGenWidenFn * const widenfn[] = {
+-        gen_helper_neon_widen_u8,
+-        gen_helper_neon_widen_u16,
+-        tcg_gen_extu_i32_i64,
+-        NULL,
+-    };
+-    static NeonGenTwo64OpFn * const opfn[] = {
+-        gen_helper_neon_paddl_u16,
+-        gen_helper_neon_paddl_u32,
+-        tcg_gen_add_i64,
+-        NULL,
+-    };
+-    static NeonGenTwo64OpFn * const accfn[] = {
+-        gen_helper_neon_addl_u16,
+-        gen_helper_neon_addl_u32,
+-        tcg_gen_add_i64,
+-        NULL,
+-    };
+-
+-    return do_2misc_pairwise(s, a, widenfn[a->size], opfn[a->size],
+-                             accfn[a->size]);
+-}
+-
+ typedef void ZipFn(TCGv_ptr, TCGv_ptr);
+ 
+ static bool do_zip_uzp(DisasContext *s, arg_2misc *a,
+@@ -3071,6 +2925,10 @@ DO_2MISC_VEC(VCLT0, gen_gvec_clt0)
+ DO_2MISC_VEC(VCLS, gen_gvec_cls)
+ DO_2MISC_VEC(VCLZ, gen_gvec_clz)
+ DO_2MISC_VEC(VREV64, gen_gvec_rev64)
++DO_2MISC_VEC(VPADDL_S, gen_gvec_saddlp)
++DO_2MISC_VEC(VPADDL_U, gen_gvec_uaddlp)
++DO_2MISC_VEC(VPADAL_S, gen_gvec_sadalp)
++DO_2MISC_VEC(VPADAL_U, gen_gvec_uadalp)
  
  static bool trans_VMVN(DisasContext *s, arg_2misc *a)
  {
-@@ -3227,33 +3229,6 @@ static bool trans_VREV16(DisasContext *s, arg_2misc *a)
-     return do_2misc(s, a, gen_rev16);
- }
- 
--static bool trans_VCLS(DisasContext *s, arg_2misc *a)
--{
--    static NeonGenOneOpFn * const fn[] = {
--        gen_helper_neon_cls_s8,
--        gen_helper_neon_cls_s16,
--        gen_helper_neon_cls_s32,
--        NULL,
--    };
--    return do_2misc(s, a, fn[a->size]);
--}
--
--static void do_VCLZ_32(TCGv_i32 rd, TCGv_i32 rm)
--{
--    tcg_gen_clzi_i32(rd, rm, 32);
--}
--
--static bool trans_VCLZ(DisasContext *s, arg_2misc *a)
--{
--    static NeonGenOneOpFn * const fn[] = {
--        gen_helper_neon_clz_u8,
--        gen_helper_neon_clz_u16,
--        do_VCLZ_32,
--        NULL,
--    };
--    return do_2misc(s, a, fn[a->size]);
--}
--
- static bool trans_VCNT(DisasContext *s, arg_2misc *a)
- {
-     if (a->size != 0) {
 -- 
 2.43.0
 

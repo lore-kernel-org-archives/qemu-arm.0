@@ -1,355 +1,203 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3758881njb;
-        Tue, 10 Dec 2024 18:12:53 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVLQYzff6DY5C0owK9SiPzLsNmvI5fcWJdn91jTHXhmAupJbgBknpA1W9WPdIlUxWeyinnIu6Z0Qn58Xg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFSH4BxqeiBQr0HKVfrVnT+31SvWy/7SEGCgYdcU8UEIhgxLHj83X2vCTIRZ8KJnzK1m0gf
-X-Received: by 2002:a05:620a:2891:b0:7b6:e47a:8e14 with SMTP id af79cd13be357-7b6eb4ec1a3mr246069285a.35.1733883173616;
-        Tue, 10 Dec 2024 18:12:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733883173; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3844323njb;
+        Tue, 10 Dec 2024 22:30:37 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH7eEgZZVBu6ttBEhjRZCVE/7tfKjZRh+6b/1dLQbYBekzigYAShUWQsGUWyOgTfYGXe7mr
+X-Received: by 2002:a05:622a:59cb:b0:467:714e:a528 with SMTP id d75a77b69052e-467893c7c70mr40191681cf.55.1733898637353;
+        Tue, 10 Dec 2024 22:30:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733898637; cv=none;
         d=google.com; s=arc-20240605;
-        b=WTT4qbWJt+fBNEjmyHf8AN018G4NEf149HiWD5G7SnOa+4DODebmfnLXR5w8RMV3LA
-         dh+SRP6ETCjtOF/wmokBsZDyKJspSul3TwMYEZKVBhuqbGdkjcqPJrdkjC7vY/r274uH
-         dnqxDJvzukpNm1hu763YpL0777kDfR0TE0IyT/kdgIy0P8mEA2OfDUckeupAAELpfsXE
-         ww3HNmSymih3NcvzHuHbBOWrcgGziLZ8YspqNFhwBBqmZ/RWTpVXEwgf/7VwLO2aXDGT
-         cliIzmf9UgbGI7zH2ZpmwGGqP3CBp/caciZhEdeBAUK1LknAm2FdUB/SN3U2B1/LfNvO
-         RBcg==
+        b=BvQ2s+0pND/NbOSpEdyt5K08w/2EmOMoqU1TF3AGc2cWifMzXssWqMtCapbKBhh/8T
+         kZkUCI0udFVwFloDH1fMEl6+LBCwx8fGQilg33msBOkr/KULloyRY/AhQMFWQkEgwukc
+         MXoP1jYkLias7RLeuKQ/A7Hhge/2TE6HPpDaxETyU7f+LNlB09tfwjBs3A6z1pwbxI2d
+         kz6qnTKnyiHsDeLB3BaeE268npdoJVYQXOausYeAdt2gd/iMv4pXN0SdwVp4aGvzngih
+         Ko9IlOtrkXml4RKcNuGAwTVfhL6nQvDlFLNI7g9AISfMxZL8uRVJB/67Rz1Qmpfy/SDK
+         OBEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from;
-        bh=EelLPEbjd9yfvp8Jmy0fAL7Fi+rXfOtqzSf6RJNx4tM=;
-        fh=gFc3e2QAHe96hI2beCtWsqot5ed6foNGrttTzFHa3bg=;
-        b=jQoHcFYLJ7id3Tlm1LU5VTMj9xKTafp88YseVk9PxFvkdz87YSD6YgIKIQuatkafmC
-         NTMuKutHGgRcuboMF2ocY8tUJxxMOw2VjzsICWpC0mMpTKbFnCQPSQ4vN9MIoaroCB4G
-         mBB6foRLUZAuEMgTG7NPyhIpKFiPztqbO/W3UBYR7KUYpsiM/OesEV/CKQieQHkyakG2
-         4ayYJR/DMg+m/LaXFUB0f18awnJdoeWhcS3P7YjbEUxOw+XryOF5333+4e2fNn77C0U8
-         LXBdUv6pUUBls9K7tsLb/gGbuOPdCU4itrrk4aDVMydTIq8a8kNm9Om3/zhval34/4Qy
-         +RgA==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=r5GSAKFbBBSBcZksOXr57jnCAJgAtBFnJGf6Qimeg6o=;
+        fh=PyRPp6p7Zb4yzib6tbXvkfdudwkdHT8PPxsBOu3pTV0=;
+        b=l3ZtJwVDCNaInL6tVHXTRxnJI/FiFYzggw5P0hZ5vJ6Xj/1a5cAuhJHdSFf67y9iU/
+         xkm9Gkukk+734iylsvHcYOnY+YF4QOGr14uaVmkzi2rqVKmmFBolG8BcpvX3KGPCkdHw
+         /eYz8dASXoZwlWfNao032/A9mERWhdb9M1GO/doLwYC7wALjf6d3656V+v58rQ2E6hjA
+         QH+c35hx0v10cCr7faX/p8k2wgoIT22DPcuxnFJmfglsg22RbtP8zdaFCkYFfqoAxGoD
+         cQHPOYm5JFFQM9LukCWqlGujXTjFNCU4xJOM3d56RzI1tE+rpgBY/1Jw1WOCaK+NWjmX
+         oITQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6e98eaeb9si171043585a.611.2024.12.10.18.12.53
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TCV3+m9L;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-46784fc1c9dsi27447111cf.550.2024.12.10.22.30.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 18:12:53 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Dec 2024 22:30:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tLCCl-0006NL-LH; Tue, 10 Dec 2024 21:11:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1tLCCj-0006N0-3I; Tue, 10 Dec 2024 21:11:57 -0500
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wangyuquan1236@phytium.com.cn>)
- id 1tLCCh-0001SX-9n; Tue, 10 Dec 2024 21:11:56 -0500
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with SMTP id AQAAfwDHz9_f9FhnTLJoCA--.30089S2;
- Wed, 11 Dec 2024 10:11:43 +0800 (CST)
-Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAfwBnv3vO9FhnOi5nAA--.4806S4;
- Wed, 11 Dec 2024 10:11:41 +0800 (CST)
-From: Yuquan Wang <wangyuquan1236@phytium.com.cn>
-To: rad@semihalf.com, peter.maydell@linaro.org, quic_llindhol@quicinc.com,
- marcin.juszkiewicz@linaro.org
-Cc: Jonathan.Cameron@Huawei.com, chenbaozi@phytium.com.cn,
- linux-cxl@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Yuquan Wang <wangyuquan1236@phytium.com.cn>
-Subject: [RFC PATCH v4 1/1] hw/arm/sbsa-ref: Support CXL Host Bridge & CFMW
-Date: Wed, 11 Dec 2024 10:11:17 +0800
-Message-Id: <20241211021117.120630-2-wangyuquan1236@phytium.com.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241211021117.120630-1-wangyuquan1236@phytium.com.cn>
-References: <20241211021117.120630-1-wangyuquan1236@phytium.com.cn>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=TCV3+m9L;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1733898637;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=r5GSAKFbBBSBcZksOXr57jnCAJgAtBFnJGf6Qimeg6o=;
+	b=TCV3+m9L6suMXNSRZeszduMhsBv5APrWUwdJh351F4u9Lh+gg5m0jhHihDNmHsCLFJLTta
+	GkrMm1Bz1i0aTaDgXxV6v34mZj7ilcjgxYXofL+NUi/lCAuyJ1LknHmiYCxRm9JdkX4RgT
+	Kzx2GZrZ0bh8TNLUo4dyKQbqLBnZ4hI=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-306-jaoxJiBnO3GmbPkdpBNl2g-1; Wed, 11 Dec 2024 01:30:35 -0500
+X-MC-Unique: jaoxJiBnO3GmbPkdpBNl2g-1
+X-Mimecast-MFC-AGG-ID: jaoxJiBnO3GmbPkdpBNl2g
+Received: by mail-ej1-f71.google.com with SMTP id a640c23a62f3a-aa691c09772so256644466b.1
+        for <alex.bennee@linaro.org>; Tue, 10 Dec 2024 22:30:35 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1733898635; x=1734503435;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=r5GSAKFbBBSBcZksOXr57jnCAJgAtBFnJGf6Qimeg6o=;
+        b=Umf1HnUDeiFvPwNESxbIafr+jHRVSUuUFDokXQJZa3k1Bf4Z9XjpETgYUQi0Ta6m1y
+         8y534qJZqw6zHYjoDZykwpFYNsyKwqFJxSQBZ8eAweA1/vVD8jl0Uy0QdB6YZLxjMQmr
+         7aYS0fKOS6vPOUWR5tmAdeJdlTChXwhrXHbKKp9xlzlVQ2yarAviQkp75PIlfO5HvZLx
+         q1W8h0rawuddMINBbhVOLy4+PmgRsK05kWzSeokNyizDef/FpCfMGWwqQO3VnG03VzoP
+         TA4DXfxO0CMXTJrleWQxtWwnVubqMYAVOO0aASXtHQrPm1yGeouBdf152E8YTc2F19x1
+         ne/w==
+X-Gm-Message-State: AOJu0Yw7+aPecGrcp5D4XqlroM1myr3woheqkpKi1vKDyb0ugt69ltU5
+	gohRIy2czB5py41Ip6KCdjIgnSLAXg4zcCe4720nMQRb78HrAv9X2VnMCfOBU9NIFKW7goR9Vht
+	Wgq0Aqm7qZTR3U2UoAOV5pguoHd26u3cmYzfCZm3kQyspPquiGdyZm8SWxOw081Z74WzvIVMP+z
+	k0szMupiKci7I3wr3hw5HbbqKJ64YidMwcpw==
+X-Gm-Gg: ASbGncuIwQNmX8VIliCs431Hrf5wnaDg7FW+IVsKc6yysMFjFVelVq13dg72E9tM/Bu
+	Ty4p6hcg18SiWpteOBbIDlacih9+N6tUUUmayqlx2hmpnhOSpp1naH23FygkzO2xax9k42YS+UW
+	6d8V8nKjljYrR1JyteiB6onNVb3Snsb/+1wyPYtHZ50WWpJC4+sGhXnDHAsscutAHR8guZbXVzj
+	9mkG9AOrj3YJozA4OEVhREw5y/5NJgAz7Rqpt9VeEcoWGvTPNpRxgYpY89RtvfJoueMDYbOgUub
+	8BUdRQc=
+X-Received: by 2002:a17:907:3a0f:b0:aa6:a732:212b with SMTP id a640c23a62f3a-aa6b13db76dmr135585866b.58.1733898634748;
+        Tue, 10 Dec 2024 22:30:34 -0800 (PST)
+X-Received: by 2002:a17:907:3a0f:b0:aa6:a732:212b with SMTP id a640c23a62f3a-aa6b13db76dmr135579966b.58.1733898634178;
+        Tue, 10 Dec 2024 22:30:34 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.6] (ip-109-42-51-17.web.vodafone.de. [109.42.51.17])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aa698e922dasm308819466b.84.2024.12.10.22.30.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Dec 2024 22:30:33 -0800 (PST)
+Message-ID: <445d6cd9-effe-43aa-8450-d2c40fca51ea@redhat.com>
+Date: Wed, 11 Dec 2024 07:30:29 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 16/20] util/qemu-timer: fix indentation
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ qemu-s390x@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Weiwei Li <liwei1518@gmail.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Cleber Rosa <crosa@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>, Eric Farman
+ <farman@linux.ibm.com>, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, John Snow <jsnow@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Joel Stanley <joel@jms.id.au>, Bernhard Beschow <shentey@gmail.com>,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Markus Armbruster <armbru@redhat.com>,
+ Bin Meng <bmeng.cn@gmail.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20241210204349.723590-1-alex.bennee@linaro.org>
+ <20241210204349.723590-17-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20241210204349.723590-17-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: AOWphhSPmW4xZ_LUstpIL1eaOAsJBe9NmjBqrTzp9U8_1733898635
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAfwBnv3vO9FhnOi5nAA--.4806S4
-X-CM-SenderInfo: 5zdqw5pxtxt0arstlqxsk13x1xpou0fpof0/1tbiAQAQAWdYm48BlwAAst
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=wangyuquan
- 1236@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3Jw4fuF13Gr4rJrW5KrW8tFb_yoW3tw1rpF
- 43C393Cr48KFs8Arna93WDWF15u34vyFWUC347CF93Cr17Kw1jvFWkKa1UKa45JrWkJa45
- u3WDXFyFvw1UZw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=wangyuquan1236@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 6K9ga5JJeMCg
+X-TUID: 5PeXS8NY4WY4
 
-This creates a specific cxl host bridge (0001:00) with two cxl
-root ports on sbsa-ref. And the memory layout provides separate
-space windows for the cxl host bridge in the sbsa-ref memmap:
+On 10/12/2024 21.43, Alex Bennée wrote:
+> Purely cosmetic.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   util/qemu-timer.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/util/qemu-timer.c b/util/qemu-timer.c
+> index ffe9a3c5c1..7b71655416 100644
+> --- a/util/qemu-timer.c
+> +++ b/util/qemu-timer.c
+> @@ -680,7 +680,7 @@ int64_t qemu_clock_advance_virtual_time(int64_t dest)
+>       aio_context = qemu_get_aio_context();
+>   
+>       deadline = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
+> -                                                      QEMU_TIMER_ATTR_ALL);
+> +                                          QEMU_TIMER_ATTR_ALL);
+>       /*
+>        * A deadline of < 0 indicates this timer is not enabled, so we
+>        * won't get far trying to run it forward.
 
-- 64K  CXL Host Bridge Component Registers (CHBCR)
-- 64K  CXL_PIO
-- 128M CXL_MMIO
-- 256M CXL_ECAM
-- 4G   CXL_MMIO_HIGH
-
-To provide CFMWs on sbsa-ref, this extends 1TB space from the
-hole above RAM Memory [SBSA_MEM] for CXL Fixed Memory Window:
-
-- 1T   CXL_FIXED_WINDOW
-
-Signed-off-by: Yuquan Wang <wangyuquan1236@phytium.com.cn>
----
- docs/system/arm/sbsa.rst |   4 ++
- hw/arm/sbsa-ref.c        | 135 ++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 138 insertions(+), 1 deletion(-)
-
-diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
-index 2bf3fc8d59..21b88e88e7 100644
---- a/docs/system/arm/sbsa.rst
-+++ b/docs/system/arm/sbsa.rst
-@@ -28,6 +28,7 @@ The ``sbsa-ref`` board supports:
-   - E1000E ethernet card on PCIe bus
-   - Bochs display adapter on PCIe bus
-   - A generic SBSA watchdog device
-+  - CXL host bridge and CXL fixed memory window
- 
- 
- Board to firmware interface
-@@ -92,3 +93,6 @@ Platform version changes:
- 
- 0.4
-   CPU topology information is present in devicetree.
-+
-+0.5
-+  CXL host bridge and CXL fixed memory window are supported.
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index e3195d5449..40aaaef617 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -36,11 +36,14 @@
- #include "hw/arm/smmuv3.h"
- #include "hw/block/flash.h"
- #include "hw/boards.h"
-+#include "hw/cxl/cxl.h"
-+#include "hw/cxl/cxl_host.h"
- #include "hw/ide/ide-bus.h"
- #include "hw/ide/ahci-sysbus.h"
- #include "hw/intc/arm_gicv3_common.h"
- #include "hw/intc/arm_gicv3_its_common.h"
- #include "hw/loader.h"
-+#include "hw/pci/pcie_port.h"
- #include "hw/pci-host/gpex.h"
- #include "hw/qdev-properties.h"
- #include "hw/usb.h"
-@@ -94,6 +97,13 @@ enum {
-     SBSA_SECURE_MEM,
-     SBSA_AHCI,
-     SBSA_XHCI,
-+    SBSA_CXL,
-+    SBSA_CXL_CHBCR,
-+    SBSA_CXL_MMIO,
-+    SBSA_CXL_MMIO_HIGH,
-+    SBSA_CXL_PIO,
-+    SBSA_CXL_ECAM,
-+    SBSA_CXL_FIXED_WINDOW,
- };
- 
- struct SBSAMachineState {
-@@ -105,6 +115,7 @@ struct SBSAMachineState {
-     int psci_conduit;
-     DeviceState *gic;
-     PFlashCFI01 *flash[2];
-+    CXLState cxl_devices_state;
- };
- 
- #define TYPE_SBSA_MACHINE   MACHINE_TYPE_NAME("sbsa-ref")
-@@ -132,6 +143,14 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-     /* Space here reserved for more SMMUs */
-     [SBSA_AHCI] =               { 0x60100000, 0x00010000 },
-     [SBSA_XHCI] =               { 0x60110000, 0x00010000 },
-+    /* 64K CXL Host Bridge Registers space */
-+    [SBSA_CXL_CHBCR] =          { 0x60200000, 0x00010000 },
-+    /* 64K CXL PIO space */
-+    [SBSA_CXL_PIO] =            { 0x60300000, 0x00010000 },
-+    /* 128M CXL 32-bit MMIO space */
-+    [SBSA_CXL_MMIO] =           { 0x60400000, 0x08000000 },
-+    /* 256M CXL ECAM space */
-+    [SBSA_CXL_ECAM] =           { 0x68500000, 0x10000000 },
-     /* Space here reserved for other devices */
-     [SBSA_PCIE_PIO] =           { 0x7fff0000, 0x00010000 },
-     /* 32-bit address PCIE MMIO space */
-@@ -141,6 +160,10 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-     /* ~1TB PCIE MMIO space (4GB to 1024GB boundary) */
-     [SBSA_PCIE_MMIO_HIGH] =     { 0x100000000ULL, 0xFF00000000ULL },
-     [SBSA_MEM] =                { 0x10000000000ULL, RAMLIMIT_BYTES },
-+    /* 4G CXL 64-bit MMIO space */
-+    [SBSA_CXL_MMIO_HIGH] =      { 0x90000000000ULL, 0x100000000ULL },
-+    /* 1TB CXL FIXED WINDOW space */
-+    [SBSA_CXL_FIXED_WINDOW] =   { 0xA0000000000ULL, 0x10000000000ULL },
- };
- 
- static const int sbsa_ref_irqmap[] = {
-@@ -154,6 +177,7 @@ static const int sbsa_ref_irqmap[] = {
-     [SBSA_XHCI] = 11,
-     [SBSA_SMMU] = 12, /* ... to 15 */
-     [SBSA_GWDT_WS0] = 16,
-+    [SBSA_CXL] = 17, /* ... to 20 */
- };
- 
- static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
-@@ -216,7 +240,7 @@ static void create_fdt(SBSAMachineState *sms)
-      *                        fw compatibility.
-      */
-     qemu_fdt_setprop_cell(fdt, "/", "machine-version-major", 0);
--    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 4);
-+    qemu_fdt_setprop_cell(fdt, "/", "machine-version-minor", 5);
- 
-     if (ms->numa_state->have_numa_distance) {
-         int size = nb_numa_nodes * nb_numa_nodes * 3 * sizeof(uint32_t);
-@@ -629,6 +653,113 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
-     }
- }
- 
-+static void create_cxl_fixed_window(SBSAMachineState *sms,
-+                               MemoryRegion *mem, CXLHostBridge *host)
-+{
-+    PCIBus *cxlbus = PCI_HOST_BRIDGE(host)->bus;
-+    char *cxl_host = object_get_canonical_path(OBJECT(cxlbus));
-+    hwaddr base = sbsa_ref_memmap[SBSA_CXL_FIXED_WINDOW].base;
-+    GList *it;
-+    strList host_target = { NULL, cxl_host };
-+    CXLFixedMemoryWindowOptions sbsa_ref_cfmwoptions = {
-+        .size = 1 * TiB,
-+        .has_interleave_granularity = false,
-+        .targets = &host_target,
-+    };
-+    CXLFixedWindow *fw;
-+
-+    cxl_fixed_memory_window_config(&sms->cxl_devices_state,
-+                               &sbsa_ref_cfmwoptions, &error_fatal);
-+
-+    it = sms->cxl_devices_state.fixed_windows;
-+    fw = it->data;
-+    fw->base = base;
-+    fw->target_chb[0] = host;
-+
-+    memory_region_init_io(&fw->mr, OBJECT(sms), &cfmws_ops, fw,
-+                            "cxl-fixed-memory-region", fw->size);
-+
-+    memory_region_add_subregion(mem, fw->base, &fw->mr);
-+}
-+
-+static void create_cxl(SBSAMachineState *sms)
-+{
-+    hwaddr base_pio = sbsa_ref_memmap[SBSA_CXL_PIO].base;
-+    int irq = sbsa_ref_irqmap[SBSA_CXL];
-+    MemoryRegion *mmio_alias, *mmio_alias_high, *mmio_reg;
-+    MemoryRegion *ecam_alias, *ecam_reg;
-+    MemoryRegion *sysmem = get_system_memory();
-+    MemoryRegion *chbcr = &sms->cxl_devices_state.host_mr;
-+    DeviceState *dev;
-+    CXLHostBridge *host;
-+    PCIHostState *cxl;
-+    PCIDevice *cxlrp;
-+    PCIEPort *p;
-+    PCIESlot *s;
-+    int i;
-+
-+    dev = qdev_new(TYPE_CXL_HOST);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sms->cxl_devices_state.is_enabled = true;
-+
-+    /* Map CXL ECAM space */
-+    ecam_alias = g_new0(MemoryRegion, 1);
-+    ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
-+    memory_region_init_alias(ecam_alias, OBJECT(dev), "cxl-ecam",
-+                             ecam_reg, 0, sbsa_ref_memmap[SBSA_CXL_ECAM].size);
-+    memory_region_add_subregion(get_system_memory(),
-+                              sbsa_ref_memmap[SBSA_CXL_ECAM].base, ecam_alias);
-+
-+    /* Map CXL MMIO space */
-+    mmio_alias = g_new0(MemoryRegion, 1);
-+    mmio_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 2);
-+    memory_region_init_alias(mmio_alias, OBJECT(dev), "cxl-mmio",
-+                             mmio_reg, sbsa_ref_memmap[SBSA_CXL_MMIO].base,
-+                                       sbsa_ref_memmap[SBSA_CXL_MMIO].size);
-+    memory_region_add_subregion(get_system_memory(),
-+                           sbsa_ref_memmap[SBSA_CXL_MMIO].base, mmio_alias);
-+
-+    /* Map CXL MMIO_HIGH space */
-+    mmio_alias_high = g_new0(MemoryRegion, 1);
-+    memory_region_init_alias(mmio_alias_high, OBJECT(dev), "cxl-mmio-high",
-+                           mmio_reg, sbsa_ref_memmap[SBSA_CXL_MMIO_HIGH].base,
-+                                     sbsa_ref_memmap[SBSA_CXL_MMIO_HIGH].size);
-+    memory_region_add_subregion(get_system_memory(),
-+                    sbsa_ref_memmap[SBSA_CXL_MMIO_HIGH].base, mmio_alias_high);
-+
-+    /* Map CXL IO port space */
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 3, base_pio);
-+
-+    for (i = 0; i < CXL_HOST_NUM_IRQS; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-+                           qdev_get_gpio_in(sms->gic, irq + i));
-+        cxl_host_set_irq_num(CXL_HOST(dev), i, irq + i);
-+    }
-+
-+    /* Map CXL CHBCR space */
-+    memory_region_init(chbcr, OBJECT(sms), "cxl_host_reg",
-+                       sbsa_ref_memmap[SBSA_CXL_CHBCR].size);
-+    memory_region_add_subregion(sysmem, sbsa_ref_memmap[SBSA_CXL_CHBCR].base,
-+                                chbcr);
-+
-+    cxl = PCI_HOST_BRIDGE(dev);
-+
-+    /* Connect two cxl root ports */
-+    for (i = 0; i < 2; i++) {
-+        cxlrp = pci_new(-1, "cxl-rp");
-+        p = PCIE_PORT(cxlrp);
-+        s = PCIE_SLOT(cxlrp);
-+        p->port = i;
-+        s->slot = i;
-+        pci_realize_and_unref(cxlrp, cxl->bus, &error_fatal);
-+    }
-+
-+    host = CXL_HOST(dev);
-+    cxl_host_hook_up_registers(&sms->cxl_devices_state, host, &error_fatal);
-+
-+    create_cxl_fixed_window(sms, sysmem, host);
-+}
-+
- static void create_pcie(SBSAMachineState *sms)
- {
-     hwaddr base_ecam = sbsa_ref_memmap[SBSA_PCIE_ECAM].base;
-@@ -821,6 +952,8 @@ static void sbsa_ref_init(MachineState *machine)
- 
-     create_pcie(sms);
- 
-+    create_cxl(sms);
-+
-     create_secure_ec(secure_sysmem);
- 
-     sms->bootinfo.ram_size = machine->ram_size;
--- 
-2.34.1
-
+Reviewed-by: Thomas Huth <thuth@redhat.com>

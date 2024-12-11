@@ -1,162 +1,212 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4418000njb;
-        Wed, 11 Dec 2024 15:06:28 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVUvS8MlyX19aSafuVCPBF+F1w3R2Zvd/4wiKNAR6cWHWI5H6k5jQX6eLEUom/jY+Wkssfbbm9oQPVpzw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGSAxGNzBZA+w34gvZbu8HYu2DObK7YMrjwIcSXXeUG0fQwFmCssmA/SCS1DXWiEnqNNh6r
-X-Received: by 2002:a05:6214:2129:b0:6d8:9bbe:393d with SMTP id 6a1803df08f44-6dae38e57a5mr23532816d6.1.1733958388514;
-        Wed, 11 Dec 2024 15:06:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733958388; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4419432njb;
+        Wed, 11 Dec 2024 15:09:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX4X0dWpJ+pczqI3dpp8Ve2Stryo2zQ3ijbV/NYMi5DOnjI9qIdeiG3paa7GTWs4P0br5FltLoNsUrEiQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFuoFBh6KQvxLdeO5OKAhFVAPJepCgivXwJ4xzShsy8VWj7ufHBmoDJUWEDGe4aLKvb0UK8
+X-Received: by 2002:a05:622a:2b49:b0:467:86a9:f7d4 with SMTP id d75a77b69052e-467961755damr20188751cf.16.1733958548299;
+        Wed, 11 Dec 2024 15:09:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733958548; cv=none;
         d=google.com; s=arc-20240605;
-        b=JUusU8GQ1VFbeEg/AZeA6aBEM8+hxassQClZ2U78DJdf75vPSWuzv+6wcqYcv6bdzP
-         u8kGejTaHzTgVs6fJglRSuHKUvKYcZv9Rf0jEOtYvurUyq03+dPejv45cnw0BZ2pqotE
-         wm2MNKuYY0l4N1cThQHyLKByt4ulu0aK3qyXzjkUjfR79512RU++qzc7PUTw74f3x8VQ
-         fd7+dz9SPn2PtXmpLymaGIikoQGIPDLsfUiyHsRE5/FtPiWBZX3MLMth/GCNS4wZYSOr
-         8FvhdOcz/wHbCwZhb13Zb9Y5mA6QYLobKHSOlNwECXSrZkPr20GtyFETZ+oA7xTvGTgI
-         D9hg==
+        b=a+eOgPIVlJAPpACisVi8ty/z2PP6ZyA6yzd/cpeKZrUp5TFCcwDMbGYF/DxCZh3rap
+         PJnFicuxnbBBt4G0++Hr1V9ZBNHKyrRpniKPV9J65o/lfa/sL/sXBYoq8Su1eKkpQY0U
+         0nLQQ/+5FCCrNbr1gfqBjF6lGRTeJwdmFc2/v9GK1NVy+z7R0kOUHyvf1zkXDmWmE9eO
+         DRyX8eO8cQTUnU6+d1NhVVXUplemPSKJmCxKtA0XzAgZnpp9Wn0iAOYw0of23QByDWOs
+         ujt7y47CkBkbEw4nHSVmmLupHnkepcnTKu931aYgq8+v57EhRQnDq6SN8wNXNQ9PiVVD
+         QR2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Mtq+tz8nJw6Nv1owIoGgw4Z1D4TMY45KGCnnPE+QKMo=;
-        fh=OjCkG1+zFAHgM8ka22zpdQBeTIhfVPLMh2IbVRbLBUc=;
-        b=lqtcnbbd+TmGWMfAIzDwNb0AICDtNEr/vfAV7Ctows/lbuPRq6fV7RANLeOpIo9geg
-         KWejpHLJnKitZra/Xikh8QEcImEc7rs1FGN3cc+Ot8+Y7JeiIyHQsRnOxZsMrkm7r28q
-         dC07U4Cr7fNBGIecvlVPnPmphWKLlg31izunTLjqrAmb9QlrgkUF3gsRUYxgtZKY2/XG
-         X7Jf1W3l5QahLd0WUzmc1QjHgrJr6LoqHLM/9I8UcBP3BlGuVpuKHjHlxePVzSjv8wX8
-         izLhqMIMYMcX8PTh8617oQJsoVyZphc1dxCAZ3Rh8MqGbvNHJFQmibgT/QxY8aRlvJID
-         RGYw==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=zsmSPaG3Pa+CQ9Uj41IVqOgCCcirEC0d/DLzNavG/yw=;
+        fh=Y799DbDVzJKT/W3FT1FtV4MmGDzyktUo1tpoNiazJNM=;
+        b=FBEXjoDtzyoOI0UIcBgtnlhBzY+z8w2L2Pa41jznW46WvDLoIruwYLJipYZMAvIo8N
+         yWJKM39s3bmDy5idvsbs3t3cpI//rlZyuNgSUf9bRCSbs75B0YBZSG/aPAqPTvU1BFmS
+         58/pPuVYrrkqFBviaXvj+t8Nu1mhct1P4Orasy2xs9NrZgDgQW3MlJSL2s8OxV8MBt7n
+         Rjkf9razOtBFrYZwQBjDJjy3wW4WyRYL9HNCdMLA4I0GjkYy5uuUHRaLxBgq+G0sMU+b
+         x+DcBw1CnlyKdN4ssBzqeMdSD4anTUld6IwimAoAafCDZG79GvQGhkmztyWU94pLwusG
+         C/QA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=e69AEBB2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="D/XTV3e5";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8eb461237si155500846d6.280.2024.12.11.15.06.28
+        by mx.google.com with ESMTPS id d75a77b69052e-467879766ebsi47254601cf.234.2024.12.11.15.09.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Dec 2024 15:06:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Dec 2024 15:09:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=e69AEBB2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b="D/XTV3e5";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tLVlO-0003be-Dk; Wed, 11 Dec 2024 18:05:02 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tLVpI-0004Yp-2V; Wed, 11 Dec 2024 18:09:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tLVlH-0003Sd-I9
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 18:04:57 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tLVpG-0004Ya-RQ
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 18:09:02 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tLVlA-0002GV-IV
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 18:04:53 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4361b0ec57aso15706435e9.0
- for <qemu-devel@nongnu.org>; Wed, 11 Dec 2024 15:04:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tLVpF-000319-53
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 18:09:02 -0500
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-385ddcfc97bso5520285f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 11 Dec 2024 15:09:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1733958287; x=1734563087; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Mtq+tz8nJw6Nv1owIoGgw4Z1D4TMY45KGCnnPE+QKMo=;
- b=e69AEBB2j0CM1riQyst3VbzaBHFRmMXwAoSEUbAWzwSa3T1+aThqoerH802ElCuxgt
- jRnu7/TtE61Zad+tCwt3iS8BPinKKyyPj/jgUtnQJ+GJU9ZuKAtVbdHWSb/K2QqlgpAf
- ydeTkrqACOHG6Z2lrDRFsT7H8RVFYmHuasDjelkLb2e/b9m5efPFph2i677PsJocJzO8
- 0LL+TT+g95ulagZo3rX6ICzTkv56hjMR3lot0s5jxjlDkmdU/R4o53JpGPXqFWjf3zlw
- z5sTA0ifUFXqoCPc3OY1mtr+SgbcU8W/zfMdB+tKyk+QulH3/ZVQieDc0i0TPhrqxvFl
- bekQ==
+ d=linaro.org; s=google; t=1733958539; x=1734563339; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=zsmSPaG3Pa+CQ9Uj41IVqOgCCcirEC0d/DLzNavG/yw=;
+ b=D/XTV3e5if5NyFYt9T7gU0yIuZwhKcHu7XqlNb2ifDQuQyT4Vk3L8zY4FMS5oPHqsv
+ t5unyjxi+P/ea3yUzQdfhJMCeJ/M4GCG5ctr3JgDTzgcmDTbpT2Vdh8+o4uMCtRZAlhU
+ Ww/rpo/e5+OC6oUXx0OZ+K5cXHKMFOO5ldpO2c9KjG8pJwXahmr2YltCSTpAqBO0gSWQ
+ d7Mce7ARLAn7BSUhJz/0XFdHyStO63lnaPkZ1rNDbW+qITnr/CmsxjJtuhDQ6RBPqPDn
+ nn4/uesH/7uBLq2jkA7Irxchhf9EO9KLo+jidDamkFhn9qEnXV+mCaUc675MFJKc3pkm
+ 2C5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1733958287; x=1734563087;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Mtq+tz8nJw6Nv1owIoGgw4Z1D4TMY45KGCnnPE+QKMo=;
- b=OZL/VuLuHaOKpFmL/86RqK1rO9lEWH0Xv+cOX8IwT8UcSxPZvBBJRVAhS1PXm0F78C
- sZSCoRAN04Z2/UixPPD8lsCO2/bNC3Ns2wRuaJXAC9rptdxADcuO6TrP2ZcXes7CHP9J
- OfJKBCvZqyqH3YzPiY8F5A+tcSmbyEbi2215Md/5yHRv9RBlzpfLgBlDANciLE7pVpdQ
- tn9KnqAHBXBKEvSfG3eRDRdhKnOju8q+NKAIWBEl9OQXCWtfI4OKjL6fez27SinpQ/qQ
- PSR5qHca8K1s9EzrwLH2JouWPzboSih7xNEBkSzRLoeNRFeOB0EtB9eUvPpq/5vHkCvr
- Z4JA==
-X-Gm-Message-State: AOJu0YwFeFP9HfLWbvRZWoBs6raMxvx1u+/OcS+YL4Rky83mYOdAOp+2
- 8YFcnSleYDzMoM9DFz9OzEjZxVrLxTzFMi8WAe9Qe+za9zFI4STlXnx0HpaFoi0VXRJbeDFqaER
- 9
-X-Gm-Gg: ASbGnctgOMWousvydIvgGG36TM5YTj5MlfkTlBev89hZYvAHSYFpQukq+g63c1U4v3T
- +qXdnim+9Nwv2cDNU/q1oRqHHRK9hf/9zZJxRRtD1G8RlAew3D0pRL6Uf8nocKOZZuOKlzeibWG
- 0Sa/L8Em0vp0iNEaK6R3eVd7uVz8Y1bN8Af7gvB8hssUw8tJq/Sq9vAT64th/9Nh3neyaIqgQdz
- HUxsVzWZ08jqHNehMKpwo5t0kvfGYF3sRXPPkZZD9YoUtLs763Vbl1FOkywEpQf2+BgPflB6Vx9
- qDunwEFYitB7RIGBd8adROgsI8+qfr2ECw==
-X-Received: by 2002:a05:600c:4e50:b0:431:44f6:566f with SMTP id
- 5b1f17b1804b1-4362282e1d9mr11425275e9.13.1733958286646; 
- Wed, 11 Dec 2024 15:04:46 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4362429d2b7sm2433615e9.32.2024.12.11.15.04.45
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 11 Dec 2024 15:04:46 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1733958539; x=1734563339;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=zsmSPaG3Pa+CQ9Uj41IVqOgCCcirEC0d/DLzNavG/yw=;
+ b=twgJ4ZcFA9t9qMcbiGVuSW8pCvfKO2MZgHrCeQwWRsNqdxMQx/L0oKAvY0t8/AU5Q5
+ RpkhmsqtKWrQrHZMwdJyQxZm8VEL58rqtsOnWPZnSi7w1mCeu2dm6+hMPrUf/TLIemKh
+ 0MrHqb5MSJmITp+eFvV4mQJQ654paZrcoqtYUTQ7esHQUhedy3s6rly6Es2kJfPMZqeG
+ BU4OE023m29OKMUNptCMWeaI7F7Wi6siIMgToT/XMsFvAdbSJhztyfEHlthtmyfUTTnt
+ LTbBcY13Rnaj9jvgjqFxjpcyZupUubXvBHA0uiDXbnn9qdxtzGjRoYb8w2LvX34MoX+K
+ GdTg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWb/GD6CBAOOyefA0YK5d2NGJODIG0BHVeayhSvEP9hfEG3MOkkYf5mmHynReQ7dpTzksWBqKe4Sw==@nongnu.org
+X-Gm-Message-State: AOJu0Yxtey8BMuMiNFqqQF406nTBXAFtUVpi38vf10t1drUnt7sXx4Wa
+ vKb0YJ8/DSswseHkAEW0prdpWtxrTkzItD0MLJdEqPDcUprqHkyAggy6Ip+J2++3IU9uTeF/PzF
+ X
+X-Gm-Gg: ASbGncvwy2al0jKR2gzYP/JkCbzbfZYqTJjRJAkTrJepdtmB8tr93lE0AOhXKNV+Wo2
+ B8NJaTskz/S59gddUwsLoSKnWAeVxResoEXMGcJAQ9YzP1nIHkO/N1/HEO2PbqZGWajw+7SnKqM
+ goMF73+SXUZjDkuEnRkw/VZSp+oKji5YLUkEqCfGornAa08GshoUXYHmZFL83uh7jDXSM5NWFLB
+ +iBk51lT7kSUQURvWPqkeDwg8LlbOf+M1PKKrW79AfdsSc3BsdqpRj3Zv8rEOyoZYt+peeCVCn+
+ iaR3RkX3car+P0Wzbb1b960p
+X-Received: by 2002:adf:e18e:0:b0:386:4571:9a22 with SMTP id
+ ffacd0b85a97d-38787695702mr1024951f8f.31.1733958539517; 
+ Wed, 11 Dec 2024 15:08:59 -0800 (PST)
+Received: from [192.168.1.74] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3878252d22csm2297033f8f.110.2024.12.11.15.08.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 11 Dec 2024 15:08:58 -0800 (PST)
+Message-ID: <6e1e69d8-a9f3-4a30-83c8-84c5647578d5@linaro.org>
+Date: Thu, 12 Dec 2024 00:08:56 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/9] target/xtensa: Remove tswap() calls in semihosting
+ simcall() helper
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 9/9] exec/cpu-all: Do not include 'exec/tswap.h' header
-Date: Thu, 12 Dec 2024 00:03:57 +0100
-Message-ID: <20241211230357.97036-10-philmd@linaro.org>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241211230357.97036-1-philmd@linaro.org>
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 References: <20241211230357.97036-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ <20241211230357.97036-2-philmd@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241211230357.97036-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NSrr29YT+zvm
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sCUVUmP1WI4k
 
-Nothing in "exec/cpu-all.h" requires "exec/tswap.h" declarations.
-Remove it to reduce headers preprocessing and poisonned target
-definitions polution.
+On 12/12/24 00:03, Philippe Mathieu-Daudé wrote:
+> In preparation of heterogeneous emulation where cores with
+> different endianness can run concurrently, we need to remove
+> the tswap() calls -- which use a fixed per-binary endianness.
+> 
+> Get the endianness of the CPU accessed using the libisa
+> xtensa_isa_is_big_endian() call and replace the tswap() calls
+> by bswap() ones when necessary.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/exec/cpu-all.h | 1 -
- 1 file changed, 1 deletion(-)
+Instead read here:
 
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 45e66769380..b45defdbf43 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -22,7 +22,6 @@
- #include "exec/page-protection.h"
- #include "exec/cpu-common.h"
- #include "exec/memory.h"
--#include "exec/tswap.h"
- #include "hw/core/cpu.h"
- 
- /* some important defines:
--- 
-2.45.2
+   In preparation of heterogeneous emulation where cores with
+   different endianness can run concurrently, replace the pair
+   of cpu_memory_rw_debug() + tswap() calls by put/get_user_u32()
+   ones, which still do the same under the hood, but simplify the
+   code maintenance (having less sites to do endianness code
+   conversion).
+
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   target/xtensa/xtensa-semi.c | 15 +++++----------
+>   1 file changed, 5 insertions(+), 10 deletions(-)
+> 
+> diff --git a/target/xtensa/xtensa-semi.c b/target/xtensa/xtensa-semi.c
+> index fa21b7e11fc..2ded8e5634e 100644
+> --- a/target/xtensa/xtensa-semi.c
+> +++ b/target/xtensa/xtensa-semi.c
+> @@ -30,6 +30,7 @@
+>   #include "chardev/char-fe.h"
+>   #include "exec/helper-proto.h"
+>   #include "semihosting/semihost.h"
+> +#include "semihosting/uaccess.h"
+>   #include "qapi/error.h"
+>   #include "qemu/log.h"
+>   
+> @@ -323,15 +324,12 @@ void HELPER(simcall)(CPUXtensaState *env)
+>               uint32_t fd = regs[3];
+>               uint32_t rq = regs[4];
+>               uint32_t target_tv = regs[5];
+> -            uint32_t target_tvv[2];
+>   
+>               struct timeval tv = {0};
+>   
+>               if (target_tv) {
+> -                cpu_memory_rw_debug(cs, target_tv,
+> -                        (uint8_t *)target_tvv, sizeof(target_tvv), 0);
+> -                tv.tv_sec = (int32_t)tswap32(target_tvv[0]);
+> -                tv.tv_usec = (int32_t)tswap32(target_tvv[1]);
+> +                get_user_u32(tv.tv_sec, target_tv);
+> +                get_user_u32(tv.tv_sec, target_tv + 4);
+>               }
+>               if (fd < 3 && sim_console) {
+>                   if ((fd == 1 || fd == 2) && rq == SELECT_ONE_WRITE) {
+> @@ -387,11 +385,8 @@ void HELPER(simcall)(CPUXtensaState *env)
+>                   const char *str = semihosting_get_arg(i);
+>                   int str_size = strlen(str) + 1;
+>   
+> -                argptr = tswap32(regs[3] + str_offset);
+> -
+> -                cpu_memory_rw_debug(cs,
+> -                                    regs[3] + i * sizeof(uint32_t),
+> -                                    (uint8_t *)&argptr, sizeof(argptr), 1);
+> +                put_user_u32(regs[3] + str_offset,
+> +                             regs[3] + i * sizeof(uint32_t));
+>                   cpu_memory_rw_debug(cs,
+>                                       regs[3] + str_offset,
+>                                       (uint8_t *)str, str_size, 1);
 

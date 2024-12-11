@@ -1,100 +1,101 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3845231njb;
-        Tue, 10 Dec 2024 22:32:55 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUQmW+gt94xd54GOCYfHH+pxuu4ukDcjtHKmzQ+jNY5n1kv2jCTNTD3xaw8cTasu49IjY3J2nroc9lIDQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFKGdRhpIKO7ShkvlpCY8fFXeX581RLffwf6iLefjf178BB7r1LE0ZSdqa3twF1NlYEPft9
-X-Received: by 2002:a05:6214:2685:b0:6d4:257a:8e with SMTP id 6a1803df08f44-6d9348d32e6mr34953766d6.4.1733898775148;
-        Tue, 10 Dec 2024 22:32:55 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733898775; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3845268njb;
+        Tue, 10 Dec 2024 22:33:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVaax8AyOzGHugyq/8RJufs//HIrtT1rIDo9H9Nc47Xb8PMNxX/yhn4ZZcjL1zz3fCPl5zKOEr2jy5yHA==@linaro.org
+X-Google-Smtp-Source: AGHT+IExCIsANGc/eH8LT0eVrldhpXFFovhzf14XxTId/dpSJlLN5S7rix1xoDiLcfl5hlehC4E3
+X-Received: by 2002:a05:622a:1b12:b0:467:5e61:c116 with SMTP id d75a77b69052e-467892a2360mr28075311cf.7.1733898780425;
+        Tue, 10 Dec 2024 22:33:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733898780; cv=none;
         d=google.com; s=arc-20240605;
-        b=cPsQTStMECkAGKqW1/E1MVhaA3D6UKR/6zQx9S4iRpr8XmVDuGiteBkfoPPLyv/OcQ
-         azXP9Ig8+9pv8m0wipdMJBgWxTrHefQ9oqe+MnVvla00sdN3kdn70HjkEFUCPGy6CB5Q
-         zQ8KdInPWbT1EiPn+b0wE/MSrmFiQki/Y+76LEQwtEHHlVgyfQ0v3iM21IoOVq/bY4HZ
-         Vz+1VCVciXTTWZjyxkVJwwxwie5EBaYhvpqAWRqzfRmDQ0HXFEwXYS0Hlk2ymf+JEczF
-         sIvo0EK0nvDKvmSeBKrrOn+IDuDz3tBGcG++Olk7a862HNIJ3iyyjC91jMJNtH5tL3oB
-         7TjA==
+        b=OBc6P5dhvzkH5Efa3vQEk2G2bqr5bXk++VJAexBxG+hiZeTVnor6WDnjXZ9WELDEb0
+         Cy+qRvwe/YaXWXtwWsKUz4FrSMiF4nPGVfAZICvFbcn4VPcCnBQL10lh1xDKxtkXqlG2
+         /kSRqJR7M1cgYq9enKWozRknwfZxKGrjDlqSRsV64uAf9Hgg66R8z3O0RPne5nGWnTJt
+         DfdE1rxz3q3u28kf6bx9uEXVJ6T1x4c5bS++P2iMIpsywwbzWP2j7LGZzuX64q/qTL3E
+         damifxrNhWXhqPpdgXV/o7JOrwjoj2WrK7iacs+I1sCwU0cHZ/Cb4sS9fbdA95ZRvaWI
+         EfAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=BVG+pTgiY9Yj04OwehIdCKjJJ/VUEKuJeIgvGBguH+U=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=dh9ksrcVYiedv/at4gevX5/GqocMB2PEeKUEfSWKatEB/dcIMlDDZuOo4gF+mSi0W2
-         6BZJ6+/+TdJuA7l8ltJ9HJAPJjsdQA8NtSamf51jvKn0IfUm0mU2El4tkhFJoMvhz1nW
-         8TrNtYE7+aVeFkDgN7XvYmWwFus7lTn8kv5w2P8UxbNXLBHEzLBtP2lAR62o25GzmSYx
-         5PaVYXED2Er/5si6QD3u9HX9ZMYozyEqpGmNU8jo0KL6hH1ho4WclDkRtIks9YNxsvxm
-         8znk9zaNCBYMJMVITk3q9SiVTd9NGWtN/u5acLXoTaQh+6kFYYR0ErrFTOnBvG+HPQzf
-         SPUw==;
+        bh=HaH7INky2zGHezaGErWNobQEzsOuHLXQzdsWfhLtEXc=;
+        fh=dCqPeOMyJN6b1xLXHrHk9Vfv4bvn90zVm2nOfsHEFC8=;
+        b=ET1y7+iQtCWq4pevCnp9TsWPgwZmEag1EtAQj1INm4mK2X9bktsRex/E/EohNtruZD
+         Gfxm4LAgHLleRmbAE+b2kATBEYZNR2uL/CHwWzEzGIrPoXMgDt6rWR3l99j5I2VeTFlj
+         L/YEJ++/5CB/cfvNGg3jzaLEl0Uz/IvNLRCGB919yJxAUhvtVfmW1NGee/P89eoLc0Zy
+         CYWh67Psvlb+IxS/xLjNNEZ/XI4ggY8LG9JrmX0r3NUKhuoA5Xd/N5f/J7JUAt7UkfGr
+         ALRzJJLdFXUh0j21W27CCJFmEVopPecAuK1tX3pxBkHHy/g5V5AILALvsczE+WJo0wou
+         U8Sg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PfysZQBg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ICnFOBx6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d8daa07d4asi172125146d6.274.2024.12.10.22.32.55
+        by mx.google.com with ESMTPS id d75a77b69052e-46760a1c0d2si74110721cf.150.2024.12.10.22.33.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 22:32:55 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Dec 2024 22:33:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PfysZQBg;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ICnFOBx6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tLGFu-0004T6-LX; Wed, 11 Dec 2024 01:31:30 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tLGHB-0006lt-Vt; Wed, 11 Dec 2024 01:32:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGFj-0004OQ-76
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 01:31:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGGB-0004jv-OB
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 01:31:50 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGFd-0008RG-O2
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 01:31:18 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGFz-0008TZ-Sx
+ for qemu-arm@nongnu.org; Wed, 11 Dec 2024 01:31:41 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1733898673;
+ s=mimecast20190719; t=1733898694;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BVG+pTgiY9Yj04OwehIdCKjJJ/VUEKuJeIgvGBguH+U=;
- b=PfysZQBgDxyX3Sca3mJKPaHXlAHgLr9v9+diAI86FVsDv8JY91hOHFrAlxlvVmPEwItADD
- NAWEOeymAk4Caz+vEMd7DrQVPqE9rrw8mun82pmqyQc27jrSBkXrboTq0QbGlmEKlGAWP3
- pLGR5e8UIcHlrMSR++dlIC7tdE05flQ=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=HaH7INky2zGHezaGErWNobQEzsOuHLXQzdsWfhLtEXc=;
+ b=ICnFOBx6Gzclavu+4AC8kHIjpBf8VYQeGvph14ljYW8740/JpjgQxU0NOaNX+OjevLNvye
+ NW5bYmnUXmRP9tx1a+vVnPb7TuqkHPYzd0YNyftuXiuKKIZVp3PTOvYrSNl4+ThWeAfAgC
+ rb2PdWypLNem3fdy30uIkyGoow5FBzo=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-590-zGdqX3n3NkusWMOXR0X94g-1; Wed,
- 11 Dec 2024 01:31:09 -0500
-X-MC-Unique: zGdqX3n3NkusWMOXR0X94g-1
-X-Mimecast-MFC-AGG-ID: zGdqX3n3NkusWMOXR0X94g
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-641-esNZ_FOpMAK58H-kctsQ7g-1; Wed,
+ 11 Dec 2024 01:31:32 -0500
+X-MC-Unique: esNZ_FOpMAK58H-kctsQ7g-1
+X-Mimecast-MFC-AGG-ID: esNZ_FOpMAK58H-kctsQ7g
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9C9D519560B7; Wed, 11 Dec 2024 06:31:08 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 354AA1955DAF; Wed, 11 Dec 2024 06:31:31 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.194.144])
  by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4CFE21956054; Wed, 11 Dec 2024 06:31:06 +0000 (UTC)
+ id C96001956054; Wed, 11 Dec 2024 06:31:29 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 02/24] hw/sd/aspeed_sdhci: Fix coding style
-Date: Wed, 11 Dec 2024 07:30:36 +0100
-Message-ID: <20241211063058.1222038-3-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 11/24] tests/functional: Introduce a specific test for ast2500
+ SoC
+Date: Wed, 11 Dec 2024 07:30:45 +0100
+Message-ID: <20241211063058.1222038-12-clg@redhat.com>
 In-Reply-To: <20241211063058.1222038-1-clg@redhat.com>
 References: <20241211063058.1222038-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
@@ -105,52 +106,231 @@ X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.52,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +2zMc8Kk4L/x
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: DFp78jEtTx1B
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+This moves the ast2500-evb tests to a new test file and extends the
+aspeed module with routines used to run the buildroot and sdk
+tests. No changes in the test.
 
-Fix coding style issues from checkpatch.pl.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/r/20241204084453.610660-2-jamin_lin@aspeedtech.com
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Link: https://lore.kernel.org/r/20241206131132.520911-5-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/sd/aspeed_sdhci.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ tests/functional/aspeed.py                  | 33 ++++++++++++
+ tests/functional/meson.build                |  2 +
+ tests/functional/test_arm_aspeed.py         | 44 ---------------
+ tests/functional/test_arm_aspeed_ast2500.py | 59 +++++++++++++++++++++
+ 4 files changed, 94 insertions(+), 44 deletions(-)
+ create mode 100644 tests/functional/test_arm_aspeed_ast2500.py
 
-diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
-index 98d5460905df..acd65382611c 100644
---- a/hw/sd/aspeed_sdhci.c
-+++ b/hw/sd/aspeed_sdhci.c
-@@ -87,10 +87,12 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
-         sdhci->regs[TO_REG(addr)] = (uint32_t)val & ~ASPEED_SDHCI_INFO_RESET;
-         break;
-     case ASPEED_SDHCI_SDIO_140:
--        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg, 0, 32, val);
-+        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg,
-+                                            0, 32, val);
-         break;
-     case ASPEED_SDHCI_SDIO_144:
--        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg, 32, 32, val);
-+        sdhci->slots[0].capareg = deposit64(sdhci->slots[0].capareg,
-+                                            32, 32, val);
-         break;
-     case ASPEED_SDHCI_SDIO_148:
-         sdhci->slots[0].maxcurr = deposit64(sdhci->slots[0].maxcurr,
+diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+index d4dc5320b97a..62f50bab7a33 100644
+--- a/tests/functional/aspeed.py
++++ b/tests/functional/aspeed.py
+@@ -2,6 +2,7 @@
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
++from qemu_test import exec_command_and_wait_for_pattern
+ from qemu_test import LinuxKernelTest
+ 
+ class AspeedTest(LinuxKernelTest):
+@@ -21,3 +22,35 @@ def do_test_arm_aspeed(self, machine, image):
+                 "aspeed-smc 1e620000.spi: read control register: 203b0641")
+         self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
+         self.wait_for_console_pattern("systemd[1]: Set hostname to")
++
++    def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
++        self.require_netdev('user')
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw,read-only=true',
++                         '-net', 'nic', '-net', 'user')
++        self.vm.launch()
++
++        self.wait_for_console_pattern('U-Boot 2019.04')
++        self.wait_for_console_pattern('## Loading kernel from FIT Image')
++        self.wait_for_console_pattern('Starting kernel ...')
++        self.wait_for_console_pattern('Booting Linux on physical CPU ' + cpu_id)
++        self.wait_for_console_pattern('lease of 10.0.2.15')
++        # the line before login:
++        self.wait_for_console_pattern(pattern)
++        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
++        exec_command_and_wait_for_pattern(self, 'passw0rd', '#')
++
++    def do_test_arm_aspeed_buildroot_poweroff(self):
++        exec_command_and_wait_for_pattern(self, 'poweroff',
++                                          'reboot: System halted');
++
++    def do_test_arm_aspeed_sdk_start(self, image):
++        self.require_netdev('user')
++        self.vm.set_console()
++        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
++                         '-net', 'nic', '-net', 'user', '-snapshot')
++        self.vm.launch()
++
++        self.wait_for_console_pattern('U-Boot 2019.04')
++        self.wait_for_console_pattern('## Loading kernel from FIT Image')
++        self.wait_for_console_pattern('Starting kernel ...')
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index e9ec5af0f1e4..cb97d2e3a003 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -20,6 +20,7 @@ test_timeouts = {
+   'acpi_bits' : 420,
+   'arm_aspeed_palmetto' : 120,
+   'arm_aspeed_romulus' : 120,
++  'arm_aspeed_ast2500' : 480,
+   'arm_aspeed' : 600,
+   'arm_bpim2u' : 500,
+   'arm_collie' : 180,
+@@ -71,6 +72,7 @@ tests_arm_system_thorough = [
+   'arm_aspeed_ast1030',
+   'arm_aspeed_palmetto',
+   'arm_aspeed_romulus',
++  'arm_aspeed_ast2500',
+   'arm_bpim2u',
+   'arm_canona1100',
+   'arm_collie',
+diff --git a/tests/functional/test_arm_aspeed.py b/tests/functional/test_arm_aspeed.py
+index bdc000a00a32..48cf0bfb27ca 100755
+--- a/tests/functional/test_arm_aspeed.py
++++ b/tests/functional/test_arm_aspeed.py
+@@ -41,34 +41,6 @@ def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'
+     def do_test_arm_aspeed_buildroot_poweroff(self):
+         exec_command_and_wait_for_pattern(self, 'poweroff',
+                                           'reboot: System halted');
+-
+-    ASSET_BR2_202311_AST2500_FLASH = Asset(
+-        ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-         'images/ast2500-evb/buildroot-2023.11/flash.img'),
+-        'c23db6160cf77d0258397eb2051162c8473a56c441417c52a91ba217186e715f')
+-
+-    def test_arm_ast2500_evb_buildroot(self):
+-        self.set_machine('ast2500-evb')
+-
+-        image_path = self.ASSET_BR2_202311_AST2500_FLASH.fetch()
+-
+-        self.vm.add_args('-device',
+-                         'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+-        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0',
+-                                                'ast2500-evb login:')
+-
+-        exec_command_and_wait_for_pattern(self,
+-             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
+-             'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
+-        exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
+-        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
+-                    property='temperature', value=18000);
+-        exec_command_and_wait_for_pattern(self,
+-                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
+-
+-        self.do_test_arm_aspeed_buildroot_poweroff()
+-
+     ASSET_BR2_202311_AST2600_FLASH = Asset(
+         ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+          'images/ast2600-evb/buildroot-2023.11/flash.img'),
+@@ -161,22 +133,6 @@ def do_test_arm_aspeed_sdk_start(self, image):
+         self.wait_for_console_pattern('## Loading kernel from FIT Image')
+         self.wait_for_console_pattern('Starting kernel ...')
+ 
+-    ASSET_SDK_V806_AST2500 = Asset(
+-        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2500-default-obmc.tar.gz',
+-        'e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
+-
+-    def test_arm_ast2500_evb_sdk(self):
+-        self.set_machine('ast2500-evb')
+-
+-        image_path = self.ASSET_SDK_V806_AST2500.fetch()
+-
+-        archive_extract(image_path, self.workdir)
+-
+-        self.do_test_arm_aspeed_sdk_start(
+-            self.workdir + '/ast2500-default/image-bmc')
+-
+-        self.wait_for_console_pattern('ast2500-default login:')
+-
+     ASSET_SDK_V806_AST2600_A2 = Asset(
+         'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2600-a2-obmc.tar.gz',
+         '9083506135f622d5e7351fcf7d4e1c7125cee5ba16141220c0ba88931f3681a4')
+diff --git a/tests/functional/test_arm_aspeed_ast2500.py b/tests/functional/test_arm_aspeed_ast2500.py
+new file mode 100644
+index 000000000000..79baf37537e5
+--- /dev/null
++++ b/tests/functional/test_arm_aspeed_ast2500.py
+@@ -0,0 +1,59 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the ASPEED machines
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import Asset
++from aspeed import AspeedTest
++from qemu_test import exec_command_and_wait_for_pattern
++from qemu_test.utils import archive_extract
++
++class AST2500Machine(AspeedTest):
++
++    ASSET_BR2_202311_AST2500_FLASH = Asset(
++        ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
++         'images/ast2500-evb/buildroot-2023.11/flash.img'),
++        'c23db6160cf77d0258397eb2051162c8473a56c441417c52a91ba217186e715f')
++
++    def test_arm_ast2500_evb_buildroot(self):
++        self.set_machine('ast2500-evb')
++
++        image_path = self.ASSET_BR2_202311_AST2500_FLASH.fetch()
++
++        self.vm.add_args('-device',
++                         'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
++        self.do_test_arm_aspeed_buildroot_start(image_path, '0x0',
++                                                'ast2500-evb login:')
++
++        exec_command_and_wait_for_pattern(self,
++             'echo lm75 0x4d > /sys/class/i2c-dev/i2c-3/device/new_device',
++             'i2c i2c-3: new_device: Instantiated device lm75 at 0x4d');
++        exec_command_and_wait_for_pattern(self,
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '0')
++        self.vm.cmd('qom-set', path='/machine/peripheral/tmp-test',
++                    property='temperature', value=18000);
++        exec_command_and_wait_for_pattern(self,
++                             'cat /sys/class/hwmon/hwmon1/temp1_input', '18000')
++
++        self.do_test_arm_aspeed_buildroot_poweroff()
++
++    ASSET_SDK_V806_AST2500 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v08.06/ast2500-default-obmc.tar.gz',
++        'e1755f3cadff69190438c688d52dd0f0d399b70a1e14b1d3d5540fc4851d38ca')
++
++    def test_arm_ast2500_evb_sdk(self):
++        self.set_machine('ast2500-evb')
++
++        image_path = self.ASSET_SDK_V806_AST2500.fetch()
++
++        archive_extract(image_path, self.workdir)
++
++        self.do_test_arm_aspeed_sdk_start(
++            self.workdir + '/ast2500-default/image-bmc')
++
++        self.wait_for_console_pattern('ast2500-default login:')
++
++
++if __name__ == '__main__':
++    AspeedTest.main()
 -- 
 2.47.1
 

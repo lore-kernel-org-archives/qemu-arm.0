@@ -1,93 +1,93 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3845481njb;
-        Tue, 10 Dec 2024 22:33:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWNDfX9c/PH4VAKT9iHaW6TyQC38GPY4kPztmtFR2GSuyKXQYwfrN0T21Vwio6wz7+RKta70YrCYQXSwg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHGpWtMQLysgiwjTFl+rl961rmp4Ceo7OoxhA/VJuB3n6p9xCbEz6co87unJ70gSBiM2gCa
-X-Received: by 2002:a05:620a:468c:b0:7ac:c348:6a52 with SMTP id af79cd13be357-7b6eb4d994amr286206385a.34.1733898813769;
-        Tue, 10 Dec 2024 22:33:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733898813; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp3845488njb;
+        Tue, 10 Dec 2024 22:33:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWRHfsybL7zBaACrvLoHvq2e5Qe6Jj31GR6Ja+83YySU2VpEj0dAzk33TBdNwUxU+XtmG5MlZ0SPnkJwQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFBZjgasfnPaNaGYpPA0RGflw4/Cf9sf03DBpkcYdJT2FTh0+BNvpYnUFdLLqUQkJMTB2aU
+X-Received: by 2002:a05:6214:c6b:b0:6d8:9e64:c9d3 with SMTP id 6a1803df08f44-6d934bc5157mr29698426d6.30.1733898814584;
+        Tue, 10 Dec 2024 22:33:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733898814; cv=none;
         d=google.com; s=arc-20240605;
-        b=DIWTyVs58uU/wp1r/GwVv0LQSiAmfffcTsNrzhz7UflvyFjINyd9yeXx6gVd5RSsw0
-         OJYjEpeDdmtxXkwkTqFGeVcvLgEw+wMn/1P1r6t1p3ke8LxYOPOicy+a+n5UhXKbPeJc
-         ICZ6yzGtmBrW659bNZSecbeuFUz+SITvZLmYD2BUK1rVSpXBNzEBFDtDArdfPhpJ4HNd
-         fV+jChbl/2HJgfwu5YG+kHfoNoW1WLjeRkySLaR0XkGiQqwlVTKOkhNnBmulOztd6mcO
-         LoyrGhsalb6BNXquDWKfJEuwMWjX6IW6iMK30H1KswNej6gI+jkKGjDj5o5NFXORRWs0
-         /OTQ==
+        b=i71df4fP07POFT9mnFL92PUPpkPjrlAQU6SdLfMf0+S37n39MpTM+g4zkgpWBn39mO
+         KYdT7jpgxJzJbiRqpidf9TBq1I39HYA+KUeGiBRJjY7HbpTGL047m4/ypwAR6h4SyVHU
+         YhCJLRg+ad8TXcHCt48/6NCWL2pKLC4ugbb57LmlcVJHBylPsUn1SLLJFre44uhM5Z5L
+         mEBP+ctNRyY1SAHI5YZgnQnC2Xn+YNKEQLLTWYbvFj74SGs66ZSYwo7gyPpDzVwWtDX8
+         EfVOknqO+uzi6pCmSf9EguW1uunrhZOOKPdVnx5ei4q58hzTBHRrtLGRCPqa0glDLvWy
+         0ozg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Dp8cN/Re5CjwVH//34TjuIYELnEzdRHS/3JO2tzYX34=;
+        bh=Cl+vqcPFkM2eGlrK768KV5k0lEB+UXYLxCodTsmEMHQ=;
         fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=P+wXiE3O0pw30fPzvJeddhBrD3V+zBUzgE9K7HszxYLUBKlmFgLRtjQc41f38u5Se4
-         6rxqhcizRsifeHchkI+nNRJJlyCSmOPKdwKV4zaeCLZ9MHF3Xv8nNftpXUpJiysT8GoR
-         b2/5FbYsPPG2i9ru9aHmLtSlVXRvok1h21XsDNXz6Cs2ahWnflRYA4Kfa9WkaUB7MSlj
-         e7y3LFYNck+FkAUSicWtGyI0yHnlI4VqAPN1j4nGP5C50hyzpLT2wW7ppBIb3UObleGs
-         gIwhiaqjtP5ZFyW883j8ZrWXWDuE1rZTsYHop1zgMyrd2fgSXdzWk9UGKjCj29j9mme9
-         aaxQ==;
+        b=cpQbT8pBrNObzhMlIeBtcxP5k23gQbOEhi5OS677TsMyTmU+yxZDHecleEycGZ5mBX
+         b0EZfdWPvdznsQMiaAP5dmpw/7nV2xwogqQ8uEQspFZDj268w3jIo+s0QcFjAXU7vacF
+         tI0ZDTNy4RR+HJVRMpCT8I3nFnEIOonWTCEprCG/s3fbUAXrdV+EaSs4VbLjPkVY/kn+
+         xN1P01STFalZwyH23wjv4dvqB8gTwQibFHImRg43HL7lmNbQzr5TJfZE/w3MG8tNWHaF
+         KaRRGgwAYtMoErTpSPQiZjfmV9e15Z4HMi2MFntEFM4KYdtHNeK+LLhNaXnHLwpBcC8f
+         KEbQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AQptyYpS;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BjCg3JpX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6b5aaa84csi1558779285a.428.2024.12.10.22.33.33
+        by mx.google.com with ESMTPS id af79cd13be357-7b6b5abf284si1571050085a.596.2024.12.10.22.33.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Dec 2024 22:33:33 -0800 (PST)
+        Tue, 10 Dec 2024 22:33:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=AQptyYpS;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BjCg3JpX;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tLGH7-0006Wr-F1; Wed, 11 Dec 2024 01:32:46 -0500
+	id 1tLGHL-00077M-0u; Wed, 11 Dec 2024 01:33:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGGU-0005AU-TU
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 01:32:07 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGGF-0004mX-P1
+ for qemu-devel@nongnu.org; Wed, 11 Dec 2024 01:31:51 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGGQ-000071-80
- for qemu-devel@nongnu.org; Wed, 11 Dec 2024 01:32:06 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tLGGD-000056-VA
+ for qemu-devel@nongnu.org; Wed, 11 Dec 2024 01:31:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1733898714;
+ s=mimecast20190719; t=1733898708;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Dp8cN/Re5CjwVH//34TjuIYELnEzdRHS/3JO2tzYX34=;
- b=AQptyYpSE0NLBuufROrjumcod95NADbwYiFwzNQqcIA7PikjFClpV2FHmMrjb4JuOtqiPN
- hM3wubuSxag/r5dm92XrlMMX9t93xlernjlFK0gMKAcE9IZbN5RmY5w/MmAiYIIZGfKimL
- 2hy/MRDeB0L6LdMuffSozA+rkB7oAo8=
+ bh=Cl+vqcPFkM2eGlrK768KV5k0lEB+UXYLxCodTsmEMHQ=;
+ b=BjCg3JpX6XSRuzTOCZ3NAbdlvIkJpl/py2UiZl/zGLAbMqybHk2NV8oje7O1rCvxKSbWTl
+ +wuckdE2YEzIX6nMweWa4sRVyg/AfPEGuqu+q8lMnr0tEelIZUnrMDQ/H68PWjUCHWezIM
+ 2AtF2Bfs8iQnh3INRMK3Iq2OvmhMT6k=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-43-A1PjmvB7OqWsvKxS33kzrQ-1; Wed,
- 11 Dec 2024 01:31:50 -0500
-X-MC-Unique: A1PjmvB7OqWsvKxS33kzrQ-1
-X-Mimecast-MFC-AGG-ID: A1PjmvB7OqWsvKxS33kzrQ
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-301-HZA4sMMlNGmIm2HWoKGMdg-1; Wed,
+ 11 Dec 2024 01:31:47 -0500
+X-MC-Unique: HZA4sMMlNGmIm2HWoKGMdg-1
+X-Mimecast-MFC-AGG-ID: HZA4sMMlNGmIm2HWoKGMdg
 Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DDE161955EB1; Wed, 11 Dec 2024 06:31:49 +0000 (UTC)
+ id 3A37119560A3; Wed, 11 Dec 2024 06:31:46 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.194.144])
  by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7E6461956054; Wed, 11 Dec 2024 06:31:48 +0000 (UTC)
+ id CF4F41956054; Wed, 11 Dec 2024 06:31:44 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 21/24] test/qtest/aspeed_smc-test: Support to test AST1030
-Date: Wed, 11 Dec 2024 07:30:55 +0100
-Message-ID: <20241211063058.1222038-22-clg@redhat.com>
+Subject: [PULL 19/24] test/qtest/aspeed_smc-test: Support to test AST2500
+Date: Wed, 11 Dec 2024 07:30:53 +0100
+Message-ID: <20241211063058.1222038-20-clg@redhat.com>
 In-Reply-To: <20241211063058.1222038-1-clg@redhat.com>
 References: <20241211063058.1222038-1-clg@redhat.com>
 MIME-Version: 1.0
@@ -118,94 +118,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Qn9/+zNwaggk
+X-TUID: qZl8cxy+7D7e
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Add test_ast1030_evb function and reused testcases for AST1030 testing.
-The base address, flash base address and ce index of fmc_cs0 are
-0x7E620000, 0x80000000 and 0, respectively.
-The default flash model of fmc_cs0 is "w25q80bl" whose size is 1MB,
-so set jedec_id 0xef4014.
+Add test_ast2500_evb function and reused testcases for AST2500 testing.
+The spi base address, flash base address and ce index of fmc_cs0 are
+0x1E620000, 0x20000000 and 0, respectively.
+The default flash model of fmc_cs0 is "mx25l25635e" whose size is 32MB,
+so set jedec_id 0xc22019.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/r/20241127091543.1243114-8-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/r/20241127091543.1243114-6-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed_smc-test.c | 42 +++++++++++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ tests/qtest/aspeed_smc-test.c | 40 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 40 insertions(+)
 
 diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index 30f997679ce2..c5c38e23c5b2 100644
+index 6db18451d245..0171ecf4ed06 100644
 --- a/tests/qtest/aspeed_smc-test.c
 +++ b/tests/qtest/aspeed_smc-test.c
-@@ -774,11 +774,50 @@ static void test_ast2600_evb(TestData *data)
-     qtest_add_data_func("/ast2600/smc/read_status_reg",
-                         data, test_read_status_reg);
+@@ -701,17 +701,57 @@ static void test_palmetto_bmc(TestData *data)
+                         data, test_write_block_protect_bottom_bit);
  }
-+
-+static void test_ast1030_evb(TestData *data)
+ 
++static void test_ast2500_evb(TestData *data)
 +{
 +    int ret;
 +    int fd;
 +
-+    fd = g_file_open_tmp("qtest.m25p80.w25q80bl.XXXXXX",
++    fd = g_file_open_tmp("qtest.m25p80.mx25l25635e.XXXXXX",
 +                         &data->tmp_path, NULL);
 +    g_assert(fd >= 0);
-+    ret = ftruncate(fd, 1 * 1024 * 1024);
++    ret = ftruncate(fd, 32 * 1024 * 1024);
 +    g_assert(ret == 0);
 +    close(fd);
 +
-+    data->s = qtest_initf("-machine ast1030-evb "
++    data->s = qtest_initf("-machine ast2500-evb "
 +                          "-drive file=%s,format=raw,if=mtd",
 +                          data->tmp_path);
 +
-+    /* fmc cs0 with w25q80bl flash */
-+    data->flash_base = 0x80000000;
-+    data->spi_base = 0x7E620000;
-+    data->jedec_id = 0xef4014;
++    /* fmc cs0 with mx25l25635e flash */
++    data->flash_base = 0x20000000;
++    data->spi_base = 0x1E620000;
++    data->jedec_id = 0xc22019;
 +    data->cs = 0;
 +    data->node = "/machine/soc/fmc/ssi.0/child[0]";
-+    /* beyond 512KB */
-+    data->page_addr = 0x800 * FLASH_PAGE_SIZE;
++    /* beyond 16MB */
++    data->page_addr = 0x14000 * FLASH_PAGE_SIZE;
 +
-+    qtest_add_data_func("/ast1030/smc/read_jedec", data, test_read_jedec);
-+    qtest_add_data_func("/ast1030/smc/erase_sector", data, test_erase_sector);
-+    qtest_add_data_func("/ast1030/smc/erase_all",  data, test_erase_all);
-+    qtest_add_data_func("/ast1030/smc/write_page", data, test_write_page);
-+    qtest_add_data_func("/ast1030/smc/read_page_mem",
++    qtest_add_data_func("/ast2500/smc/read_jedec", data, test_read_jedec);
++    qtest_add_data_func("/ast2500/smc/erase_sector", data, test_erase_sector);
++    qtest_add_data_func("/ast2500/smc/erase_all",  data, test_erase_all);
++    qtest_add_data_func("/ast2500/smc/write_page", data, test_write_page);
++    qtest_add_data_func("/ast2500/smc/read_page_mem",
 +                        data, test_read_page_mem);
-+    qtest_add_data_func("/ast1030/smc/write_page_mem",
++    qtest_add_data_func("/ast2500/smc/write_page_mem",
 +                        data, test_write_page_mem);
-+    qtest_add_data_func("/ast1030/smc/read_status_reg",
++    qtest_add_data_func("/ast2500/smc/read_status_reg",
 +                        data, test_read_status_reg);
 +}
-+
  int main(int argc, char **argv)
  {
      TestData palmetto_data;
-     TestData ast2500_evb_data;
-     TestData ast2600_evb_data;
-+    TestData ast1030_evb_data;
++    TestData ast2500_evb_data;
      int ret;
  
      g_test_init(&argc, &argv, NULL);
-@@ -786,13 +825,16 @@ int main(int argc, char **argv)
+ 
      test_palmetto_bmc(&palmetto_data);
-     test_ast2500_evb(&ast2500_evb_data);
-     test_ast2600_evb(&ast2600_evb_data);
-+    test_ast1030_evb(&ast1030_evb_data);
++    test_ast2500_evb(&ast2500_evb_data);
      ret = g_test_run();
  
      qtest_quit(palmetto_data.s);
-     qtest_quit(ast2500_evb_data.s);
-     qtest_quit(ast2600_evb_data.s);
-+    qtest_quit(ast1030_evb_data.s);
++    qtest_quit(ast2500_evb_data.s);
      unlink(palmetto_data.tmp_path);
-     unlink(ast2500_evb_data.tmp_path);
-     unlink(ast2600_evb_data.tmp_path);
-+    unlink(ast1030_evb_data.tmp_path);
++    unlink(ast2500_evb_data.tmp_path);
      return ret;
  }
 -- 

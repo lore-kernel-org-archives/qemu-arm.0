@@ -1,186 +1,175 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4810509njb;
-        Thu, 12 Dec 2024 06:12:26 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVXW0VIsXZozHESLKtLZWLl3MtmF5whUeiQcOCsm/p66cfz0tzgQYOrr8TfHk8iLgMBquyd9gAVokGGlg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGuhoME5VQqWYqsmrIRy0VeW15DBWDSd71Z3cOnlrC3qsTN4KhLc9guxQQ8EauZC3BR+4oX
-X-Received: by 2002:a05:6808:f8f:b0:3ea:65bf:8438 with SMTP id 5614622812f47-3eb85abc60emr3963959b6e.3.1734012746265;
-        Thu, 12 Dec 2024 06:12:26 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1734012746; cv=pass;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4829295njb;
+        Thu, 12 Dec 2024 06:37:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXLeqs5zksyqtRQgFa3+voyP0MqrQR2vfCuQkNxkUNtDn3zVAwVHn4ElIvuuvpVcM5G0yYT3EaAB6b1kw==@linaro.org
+X-Received: by 2002:a05:6808:f8f:b0:3eb:4189:4432 with SMTP id 5614622812f47-3eb94104deamr2159455b6e.36.1734014279394;
+        Thu, 12 Dec 2024 06:37:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734014279; cv=none;
         d=google.com; s=arc-20240605;
-        b=JH4Fv9e6RuAtUff6nleWvNC2Nk0GMr7NgVWc1ZStzulIJeDStS4n7vWQtSRrPVj31I
-         DVQ5UpZLjxDIamK+2NYiuOUFmZIPnCi8mvoGZhJUmghSzBKDpT1ATbbYOiN+njJaRCRN
-         a0dzHT40419yctqeyTp7oP9GnsWx2YrMw1JBVmgp8Nw/0pyLVj8iarrAecRviO/wi6zg
-         HTLW9JocDhk/Vn3C+e0VCjvydBeWUaWq/naTzezwdGonBXFC1iXYs6lbgYnYjKBaHsiU
-         0UcfD4d7Qkq/sAF3XIOZmUVAAET3JAbvnW1IcBx9oJyJawrfroA57Kr7KsP2uO+gpVD6
-         7TLw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:to:subject:reply-to:user-agent:mime-version
-         :list-unsubscribe:list-subscribe:list-id:precedence:date:message-id
+        b=g1b88vwYkhkAm9PSTymGxIwRqn7LQxdy3wKmIM6nKcqCm38LeAxNl5B+6vWA9K7ZE3
+         ODnxPJoJy/vkZDCTPgyGRu38PSh4+PHu/vewTmHS5uIg0D4FlwIod5ayoAL1fVa4mHxr
+         IxSHs+nQDa3TyTdBidKxZOfhmfkJ1I31e7e8SoJvd7fXcPnY2kzn43Q2Kn0UkFRR42ND
+         VnTlZ7Nc6rktL5ow60XyHxjCXl3rVLXNaoAOwdHu1QX8i6IjKjeIACjeq9SEPG1tUg5p
+         RP3D/ob9lNKKDC7wm3FMf5oPFmzKsm3ifnZrH8qhRXzzapMDzn6Bj7Ukv5zAVWVqvd3B
+         WVTw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=lNzM/5KHaOdjwOXaIll3vIt6zX42tMOo69nIstNet+E=;
-        fh=M4i3yTY2S1bkQPKBoPPRJLukNmueIkaOZkyHUqaLNQ8=;
-        b=GKxTxq+5LYTEA4o16l6DNnTf5UsOHy2uptXSIoPScCSz2/0cueeIih0LYTXjzZoiVJ
-         +J5q7OrXH7CICvP/kRGOWn/9sGlroCuBii3QQkW8IGmTets8ziDRkaFjaqHjTLNOtC4q
-         3IzNPgnYrij4r3EbcfN2Fs3p4pAGhekkZML8Y0m5T6ok2BvmQM6S2qAaMVPzePIKsoMF
-         Em200otNCdCYxOqucxKC9TBorFtinpUv2uaHudlphht/dXK9GwpRbM+8Nn8+BJNPZVFN
-         t7wfghC+eKBm5jiWcvREs0l92UQWvhJFfqCTncNNJdqBVJ99+f+bBOdSbnEzXfNwHn+p
-         3I/Q==;
+        bh=WClgGnNKhbkqYl2M5kjAPX27ot9J1JWOs4M4aBmFm9w=;
+        fh=c7CG9YSZtaOCUd9SN0cjVqNaKUmbq4y+2FAHkMUcV+s=;
+        b=Uf7XPAQTDm7ye2HIH97m1N80/9Xq9g7d5DtzCOfXZ/4jv2RIqKXKThIK+lfgQXode3
+         7iMB1wbO2xEURyTOslgX98E1iM5noe9tm86OWrc50FmeL1SwkckshjJ8yCqNb/8IicNv
+         aVPm4R9N1Pd5svAYA8YsssAYW0Xtx0bNAmCYjQMiGb0zg4noqzC/iLAuYFYiOEJOeZMT
+         uuWnNCuK/60jHuMQ63VvbRvNLGFuliHv0St6w8VY8YhJ0DkE7BPACzrXB1Lp2DBvJKsf
+         jJX4uTiUmwQIQ8GGZG1nQb+NQ9iKMPuxpRe/sLCrvvebNt0Hbgx72c0fYIrQS6rssl/C
+         AMPQ==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iysdQTE2;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvmarm+bounces-17873-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvmarm+bounces-17873-alex.bennee=linaro.org@lists.linux.dev";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm+bounces-17873-alex.bennee=linaro.org@lists.linux.dev>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
-        by mx.google.com with ESMTPS id 006d021491bc7-5f30ab6bacdsi970284eaf.25.2024.12.12.06.12.26
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Eqqdn9qe;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5614622812f47-3eba36053easor8461b6e.17.2024.12.12.06.37.59
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Dec 2024 06:12:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvmarm+bounces-17873-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
+        (Google Transport Security);
+        Thu, 12 Dec 2024 06:37:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iysdQTE2;
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvmarm+bounces-17873-alex.bennee=linaro.org@lists.linux.dev designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvmarm+bounces-17873-alex.bennee=linaro.org@lists.linux.dev";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (wormhole.subspace.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id C150B282DA4
-	for <alex.bennee@linaro.org>; Thu, 12 Dec 2024 14:12:25 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 065E42139C9;
-	Thu, 12 Dec 2024 14:12:24 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="iysdQTE2"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 37D28211A0E
-	for <kvmarm@lists.linux.dev>; Thu, 12 Dec 2024 14:12:21 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1734012743; cv=none; b=kPtc6bx6ZoPJkmB8oH5S8dN7jliDAf2RBKTHOL9q9t9RuvHc0vRZ5cEb9Gzi91zi2f69NjHt7nI5Z7dy5DSmScaFlVt2npfiBc2fce0uyy1H6xStOaydzNu6P5ri8lc3V7R7tVuRthH7K3fpmEDhIitzUXRmjGAa9GjyQKF3DzI=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1734012743; c=relaxed/simple;
-	bh=lNzM/5KHaOdjwOXaIll3vIt6zX42tMOo69nIstNet+E=;
-	h=Message-ID:Date:MIME-Version:Subject:To:References:From:
-	 In-Reply-To:Content-Type; b=EbC52S7nl76fo+I1viYtc7DhBReBrRB9lmUB/uKf97vf3PFwQ5E7SO6q48nkBcnhYoRvuaR2S91R6CaQn/ERhAfWLLQFZJBkVqr29BFTaSX5Yz0+HarPC0rY5WaXmZhNPpNELVWNgmc32Sm6yNfCYogicIvDqJTsYgCqlzEZHxQ=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=iysdQTE2; arc=none smtp.client-ip=170.10.133.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1734012740;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=lNzM/5KHaOdjwOXaIll3vIt6zX42tMOo69nIstNet+E=;
-	b=iysdQTE2bdsKOFs+uXCbXxyhnXJG7xxknE6yy0d2IB6waznL+Z2ds/WCaKGq7znggoHp5V
-	U9xilxPTZOVs0kirsFTa8s0PkJ2WCpHDbVsPwvrhoOaqjoaU6bJbUiUmSDzcuEdV8k4AGN
-	vmODWmyvm0XjEkansbvVpsEEC/GT/Vs=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-112-osn5nVihPOe9-JNDnuQ4sQ-1; Thu, 12 Dec 2024 09:12:19 -0500
-X-MC-Unique: osn5nVihPOe9-JNDnuQ4sQ-1
-X-Mimecast-MFC-AGG-ID: osn5nVihPOe9-JNDnuQ4sQ
-Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-43625ceae52so3853145e9.0
-        for <kvmarm@lists.linux.dev>; Thu, 12 Dec 2024 06:12:19 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=Eqqdn9qe;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734014279; x=1734619079; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=WClgGnNKhbkqYl2M5kjAPX27ot9J1JWOs4M4aBmFm9w=;
+        b=Eqqdn9qem20RwZ/hkvqnBnSjUT3XnmL8Phobs2FNpIRyLCse+t2bn9yl19vOOXHNTI
+         5u269fhCmG2iOs0ILO1V+hl4wEkNvbYA5uhfiTPHEPKA8WafNpZiTCvMjSAIlJboiut5
+         TZbQbKS3fOzE6IU/FACL0qudOiwy4T0XkgDQPW1y/II26i0r5ErJ7/JUOjrIsaAohcc0
+         SiiEYyQWJkCeVniaDcDHbxZce58xg2E3ff+z4g6n6jPh85pUbxRHxYy1qTQHqdSpGqqb
+         Z1QStU06HJEt3GHnRTpwgSlR5pDy29ICPexhguzWRPCypiWoyiceS3XoIFghhYStzRxd
+         /Nxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734012738; x=1734617538;
-        h=content-transfer-encoding:in-reply-to:from:references:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=lNzM/5KHaOdjwOXaIll3vIt6zX42tMOo69nIstNet+E=;
-        b=jK7EuuWXwF2U12KYCuC3iZn+lmRRo7Q/S0+bgWPnNSCwLySyieLq6522x9cdMLiRFo
-         gaUQVzY6dH/J9dTRIyCeFX88ef81/ruRvzI5YqsuTuGW+y75WDnTR+2z0pKvN2ZdlVn6
-         HquubBpuczs9domQaY+35GO2RSD+yxemTD/o579pB+jFORVMY22RYn3vxcuwA1YT1J9Z
-         map7Di00OYW42Hu53B4iQIVqWnaMWdg0vMevvipy1jQyS5XvqSnHP/Q3r2lPEzuai7Qz
-         icYqAIVn4cj6x9RXghW8ce94+awrPn18IZn7BvZ/qcKiCG69OkjYBJtrzVOXCG7ROQxG
-         Srag==
-X-Forwarded-Encrypted: i=1; AJvYcCUr1LbEa/7SuZazZtlVu70Fh77jcJ8RbO2aU0I/eX0KZ/QRGRA3RRXTL/SdZ+M0QI+b6l2UA6I=@lists.linux.dev
-X-Gm-Message-State: AOJu0Yx30L7aLbp8EdurPSwVK3UzyB4TlyqeVIVh9+qVrVIZU9XVaJsg
-	8fqnJ7Htl4HVRKBYELKifvEvP7NacVfcbJJEC+j5XNO5JYaxxXArGHIJM2+HZRxdDImqsRNzdnq
-	L+QhGVDRfn1Psbmo3M92m+bkH6wppcMyCbIDm7TD5enfcGfFmi/hZrA==
-X-Gm-Gg: ASbGncuMUCQMIUrn4wwIsO/HxRyrJn9bZEb11OkHTaHT+mMl8m+Mv6psu+z1zOvcbJP
-	si+nwQKS3RvYb1zOOSx6bsjf5M0t10ZLhUipVz90WMxMrj79LjKXxQi95aIm8BG60qWIeivkzdV
-	ajH7T1NNQdcMFNQLjuW+rkk+CEdwkZlEuooXFtvnM5Uu3RJB+pzUpfmy3rFy2U7O8wWfaPVskJn
-	Vi3Yn40qK65eU7ZiXpegPEw7zDORdFUQL1Z60V5b2Qd1wpA9m1Vxs8o5RpR66yQ9ZJk5HkW0Oun
-	LA35FwB/HewsOfM+tLlWHCaU7FLK
-X-Received: by 2002:a05:600c:5107:b0:434:fb65:ebbb with SMTP id 5b1f17b1804b1-43622842924mr34681945e9.17.1734012738455;
-        Thu, 12 Dec 2024 06:12:18 -0800 (PST)
-X-Received: by 2002:a05:600c:5107:b0:434:fb65:ebbb with SMTP id 5b1f17b1804b1-43622842924mr34677335e9.17.1734012733105;
-        Thu, 12 Dec 2024 06:12:13 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436255531f2sm17862685e9.9.2024.12.12.06.12.11
+        d=1e100.net; s=20230601; t=1734014279; x=1734619079;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=WClgGnNKhbkqYl2M5kjAPX27ot9J1JWOs4M4aBmFm9w=;
+        b=QmIbalFI5qT8tHNi7Gt6CWWTe1MijIbvNF9nHFtx9XEw/bP7tMWYnUrR9JbzGss5ya
+         K/7cQEnDsUGTe36MkKZLsmzU906M4zTLndtaIjrokXoImw8bpfTiee3kkxS9QDjX2bp/
+         Vj8eSPJATlY20AokVCRHMFjkipTpPnsqOfGhY1k9FNm404FLnqdeMaWSs2zf0+75j9B7
+         6TNewlVyau0QGBRjFE8g76/boZFVZltO9q611oxI/RvCW/JdbQ6/oHdmayotxCaF8/dM
+         OFAo12VFqp/vu1JmI6BX/BN6fFG8FqIPhHcoQ6wAZXh2ug2oRov/l3Oy0ldaA+C4NvtK
+         o2uA==
+X-Forwarded-Encrypted: i=1; AJvYcCUoekhxK4v/jJvUffP/kaELAczslm2EgLs7W2mWbGoh4YYhuPgmirIf+EEjxDipemOhdmvBqaZV8ovE9w==@linaro.org
+X-Gm-Message-State: AOJu0YwIECxd4DwxcIqteSBZh2T/3mHrFiso0o6XxgI+x9sOIWsQpzUL
+	QwSa7RpOnNjMMd1Udg3h/Vh7CJbA/OebNyy+Mag8j9yxyWo7gPVfK50H+RIrTn9mbQ==
+X-Gm-Gg: ASbGncuecvTUH+Grxa0nhuQZlcIiVz5YlzSgm3TZrTnSfQQi8R3hcAddyT+KmG9E7PZ
+	y0U5SNwElxyhOQoStGQFN26px7iY/SkMoNDXYM4ESHHRkjxCl8PQF9C2/fDyzld5v/nlyUQUebf
+	BGHyGpn0DbofTS3Zjw5ztp8YcQHZWU62biInMbV7j9Bm0GSDNCWMaqonfgitQmlTezPqsWvghbu
+	eP5wCQbz7fPT5ewGipD/Bw0Szxu/XfhcgNZU2Hw6R4silHiQpsIm7/mqw0a6dNFvDFIUo2fg4E+
+	MbkucBM9E8DIXUGLPjFyWgZp4sqVG2r036k=
+X-Google-Smtp-Source: AGHT+IHzcsNqE4IFEDtNAAVXxkbmviqgknyI1oXeRyYPRBrNN3gZRaB7NkY5HJTFgq2pBMw1QofjPQ==
+X-Received: by 2002:a05:6808:1381:b0:3eb:66d7:a33e with SMTP id 5614622812f47-3eb93f95d83mr2328391b6e.5.1734014278863;
+        Thu, 12 Dec 2024 06:37:58 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.4.112] (fixed-187-189-51-143.totalplay.net. [187.189.51.143])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-3eb8d6da3ecsm608895b6e.50.2024.12.12.06.37.56
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Dec 2024 06:12:12 -0800 (PST)
-Message-ID: <f06b5f10-6ff4-4851-96db-56d6596bd176@redhat.com>
-Date: Thu, 12 Dec 2024 15:12:10 +0100
-Precedence: bulk
-X-Mailing-List: kvmarm@lists.linux.dev
-List-Id: <kvmarm.lists.linux.dev>
-List-Subscribe: <mailto:kvmarm+subscribe@lists.linux.dev>
-List-Unsubscribe: <mailto:kvmarm+unsubscribe@lists.linux.dev>
+        Thu, 12 Dec 2024 06:37:58 -0800 (PST)
+Message-ID: <2a83a49b-6863-4fb8-b5de-c3eacf3cdb77@linaro.org>
+Date: Thu, 12 Dec 2024 08:37:55 -0600
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH RFCv2 01/20] kvm: kvm_get_writable_id_regs
-To: Richard Henderson <richard.henderson@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev
+Subject: Re: [PATCH RFCv2 02/20] arm/cpu: Add sysreg definitions in
+ cpu-sysregs.h
+To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
+ eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, peter.maydell@linaro.org, alex.bennee@linaro.org,
+ maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
+Cc: shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
+ pbonzini@redhat.com
 References: <20241206112213.88394-1-cohuck@redhat.com>
- <20241206112213.88394-2-cohuck@redhat.com>
- <a1ad71d4-4148-42ee-b77a-fc4df1f5c2c0@linaro.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <a1ad71d4-4148-42ee-b77a-fc4df1f5c2c0@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: IY4UX6Yu4bBZpzzgZQdfEN4OGtMMAvKHPplvcinvBFs_1734012738
-X-Mimecast-Originator: redhat.com
+ <20241206112213.88394-3-cohuck@redhat.com>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 7GhTj629o1MR
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20241206112213.88394-3-cohuck@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: rE7E1KcDzJpD
 
-Hi Richard,
+On 12/6/24 05:21, Cornelia Huck wrote:
+> +#define SYS_ID_AA64PFR0_EL1                             sys_reg(3, 0, 0, 4, 0)
+...
+> +typedef struct ARMSysReg {
+> +    int op0;
+> +    int op1;
+> +    int crn;
+> +    int crm;
+> +    int op2;
+> +} ARMSysReg;
+...
+> +static inline ARMSysReg sys_reg(int op0, int op1, int crn, int crm, int op2)
+> +{
+> +        ARMSysReg sr = {op0, op1, crn, crm, op2};
+> +
+> +        return sr;
+> +}
 
-On 12/12/24 14:59, Richard Henderson wrote:
-> On 12/6/24 05:21, Cornelia Huck wrote:
->> +#define NR_ID_REGS (3 * 8 * 8)
->> +
->> +typedef struct IdRegMap {
->> +    uint64_t regs[NR_ID_REGS];
->> +} IdRegMap;
->> +
->
-> Where does the NR_ID_REGS come from?  In particular the * 3?
-> IIRC, all of the id registers are in op0=3, op1=0, crn=0, crm={0-7},
-> op2={0-7}.
+Not a fan.  Why take 20 bytes to represent these?
 
-According to the KVM API and code,
+Our existing ENCODE_CP_REG and ENCODE_AA64_CP_REG macros seem much better, even if the 
+argument ordering doesn't match the column ordering in Table D22-2.
 
-"The Feature ID space is defined as the AArch64 System register space
-with +op0==3, op1=={0, 1, 3}, CRn==0, CRm=={0-7}, op2=={0-7}."
+> @@ -841,6 +849,51 @@ typedef struct IdRegMap {
+>       uint64_t regs[NR_ID_REGS];
+>   } IdRegMap;
+>   
+> +#define ARM_FEATURE_ID_RANGE_IDX(op0, op1, crn, crm, op2)               \
+> +        ({                                                              \
+> +                __u64 __op1 = (op1) & 3;                                \
+> +                __op1 -= (__op1 == 3);                                  \
+> +                (__op1 << 6 | ((crm) & 7) << 3 | (op2));                \
+> +        })
+
+Ah, well, this answers my question re patch 1.
+
+It seems a shame to use 128 slots to represent all 9 id registers in the op1={1,3} space.
+
+Do we really need anything beyond the defined registers, or even the defined registers for 
+which qemu knows how to do anything?
+
+I'm certainly happy to replace ARMISARegisters fields with an array, but more like
+
+enum ARMIDRegisterIdx {
+     ID_AA64ISAR0_IDX,
+     etc
+     ordering arbitrary, either machine or macro generated,
+     but every register has a symbolic index.
+     NUM_ID_IDX,
+};
+
+enum ARMSysregs {
+     SYS_ID_AA64PFR0_EL1 = ENCODE_AA64_CP_REG(...),
+     etc
+};
+
+const uint32_t id_register_sysreg[NUM_ID_IDX] = {
+     [ID_AA64ISAR0_IDX] = SYS_ID_AA64PFR0_EL1,
+     etc
+};
+
+struct ARMISARegisters {
+     uint64_t id[NUM_ID_IDX];
+};
+
+This seems trivial to automate, and wastes no space.
 
 
-hence that choice
-
-See:
-https://lore.kernel.org/all/20230919175017.538312-3-jingzhangos@google.com/
-
-Definitively we can add a comment
-
-Thanks
-
-Eric
-
->
-> Whatever the actual answer, some comments would be good.
->
->
-> r~
->
-
+r~

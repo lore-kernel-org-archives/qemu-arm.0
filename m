@@ -1,187 +1,351 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4668212njb;
-        Thu, 12 Dec 2024 02:04:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVLHSEwC8FP/UMA/Zz6yTn1B+4wZaLo2E6hDz/7Z1qpbOcOBR1beIrbsd7Cs+02ICP0tY02y9N5BI/Oeg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEItodJqpMgZq7vmhzMbHgAgJLkzklHqA4d90dzAhxE7uGcdQKRErT1JPm8pafnztGogaZE
-X-Received: by 2002:a05:620a:6007:b0:7b6:f34a:c0db with SMTP id af79cd13be357-7b6f34ac11amr294094585a.57.1733997878235;
-        Thu, 12 Dec 2024 02:04:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733997878; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4698898njb;
+        Thu, 12 Dec 2024 03:10:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVL3oe5NfZ+UuHbJ4gALl9zv4XeVTohrPyXhfwTr0zF+Z/ByyjlbJwhBfEje5zVk9K3MPrTG5AJND5Slw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEsKK3da3RlgIfLnRqtp9440I2PM9WhEP+XXNd+fjQIB7yAhnIGEtxq0dA4tEHlab5+e3Nz
+X-Received: by 2002:ad4:5c63:0:b0:6d8:9677:fbe4 with SMTP id 6a1803df08f44-6dae38e6636mr59464436d6.9.1734001814896;
+        Thu, 12 Dec 2024 03:10:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734001814; cv=none;
         d=google.com; s=arc-20240605;
-        b=a4Bo3PbnvC/OEDB6xUg/7t2NEjFpNGGFC9T8miyMbWxWSWsm7At6fax5yaoT3GUhBy
-         UatcgCD+YsqUyJgWiAIFG+LxGnXOLrfIngOCn4q00zVxHnfSwB15WqwdaOZxInmYAoC5
-         l/FQZJQf/87etjyvLARKvaVOnDNKKx6T7HnL1H4+bZ6sulSSs+aTX3qkZ/bQvfkJP+gP
-         WZ/9LmXpDQFGuJI/QS9oBMA4tGHgCy2yRayRAIkbwYPyRwe2tNivDDwyA+AiKx4bBBgU
-         MvWew6cupDLg1E1MeIL6dJvqwkLPM/26UAsrDKWXepeLF6lOxxmftPPYIyCwJDPrnZLL
-         qahg==
+        b=a2vNNygN049Cde8qU+ObX1b9F1oF8caTRpvzxzjqPhZrvKUHtjHEr1uuyqf6VWqK2W
+         w+8fFBekKq9wK6kQOVHfnNk2JknnM/HoPdWFPeZPNStDY1O+gM2Kg+ot8Ci6uVpMkMvR
+         DoriozQ4quYcRpQya6DlOs9wWzhM5hnG5nVMn/slZRDIOCBnvBh4eoXofFtv94GZI7B5
+         IKmY8Es4z84C5da+pJUFV4nLgF5lIoQAMPQyVwsSAYlwvbcODYBaDxk1/lfWwbFMWsNg
+         ZlQO6gA6e3EajEK16w3gL6cePJvuobifxR0BJoBmePbtUOMcEp6wN8XuXaAsPUftfOjd
+         jk5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:from
-         :references:cc:to:subject:reply-to:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=Xuef9j19a6S4cy5t3jz7hMtr1tGA8HyHJRgE1u6fNo8=;
-        fh=JZQjyiB9frJmT3jGIAkeBWb011tuec14K8Hw9X8Pcd8=;
-        b=iAX0aiRVsk/6SviL1ogoRnS+mDOQWpLV9BOogXioaB+BL6T8tEFkQUMnkRi0luWRqX
-         xug4XpDTmYl1SQWtr7TJ4pSkp9wE/520w00pTL9CpflYCigc8QTiTrV2A7epXFksf+tc
-         0UeY6CSRHaj1bfkuJxKig1+d6Q2QPAEUfh4nmI3HFUns8UMgcJejl/zgCaKAooo8ljU4
-         VCpUPdJgsFTa/OruQYR0roscRXdORSoMUkOc/WBKuJ5wVEUrD2SLtfxnqOdoYuJLa7Re
-         SIM3fJc+8CKzDkdUOky/o26zMa+Pzwe4FepSi6H31WeNgrVbQLGR6jZfnpl0TvVf4603
-         d+BA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=RZSWKFnfIAMN5iE7wug+uPaKwVBjU2AVQdzRPCzB0xc=;
+        fh=Z+E2HQEPFI1vpPOpOAGSUKl3tPG87Uk+QAdC6vDtPPo=;
+        b=f4sqUqflV0Wjtn2X7UyoGPpAp1PQiGCoHzHOLernG8DlwmnybWzbbMKwMktClY2+A1
+         cdoclVYC9jnmjE7p0/gLubO5HsP2S1JuniLzy7T+6CPvBNVKiwJAetjR0EvoV5HbAzvk
+         s2tJeSZKfxqMJz/Ynwf2gEi7TTJ8iTZW/pDYNlmHb76dveEdAjng1yAAVWmuD9Ila4ty
+         Y+BpgNQvRY/BzJFloMY25ZuwW4ZgQI5VLJmXYp4h7nU8F+4ZnOfJSRzCGYDPXXGpT4m3
+         /agIIX2KpIADZyNEjOKuFEwZ9AMDjxmqRNlCHDnfYz7pPop81b2l/Xjpsn5asg3tm0Lj
+         FsPg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CXq1HPKv;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6d90cbb0255si108214676d6.390.2024.12.12.02.04.38
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Es5vIgUa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6d8daa08382si188736976d6.290.2024.12.12.03.10.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Dec 2024 02:04:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Dec 2024 03:10:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CXq1HPKv;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1733997877;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=Xuef9j19a6S4cy5t3jz7hMtr1tGA8HyHJRgE1u6fNo8=;
-	b=CXq1HPKvk7OtffVY7smyrWYhdthDjDJVxxk14cWX6kJoKwxBrXqy17seXnKaJfZn765k1Y
-	rSpnD0qR1zUkyTewM0rpmzeMqqLffqr24aBUH8MZqoua1ikG0OHGNR04e5zS13RdIwKcxC
-	AUgVlME45KKKdjHAESaNWmA8Fnz0/wc=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-685-Bth8pistMZ2JIMXzwmpvLA-1; Thu, 12 Dec 2024 05:04:36 -0500
-X-MC-Unique: Bth8pistMZ2JIMXzwmpvLA-1
-X-Mimecast-MFC-AGG-ID: Bth8pistMZ2JIMXzwmpvLA
-Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-6d88c987fc7so7368786d6.3
-        for <alex.bennee@linaro.org>; Thu, 12 Dec 2024 02:04:36 -0800 (PST)
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Es5vIgUa;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tLh4o-0003Fh-EW; Thu, 12 Dec 2024 06:09:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tLh4j-0003AZ-CK; Thu, 12 Dec 2024 06:09:46 -0500
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tLh4h-0004Lh-7W; Thu, 12 Dec 2024 06:09:45 -0500
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-43618283dedso4317795e9.3; 
+ Thu, 12 Dec 2024 03:09:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1734001780; x=1734606580; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=RZSWKFnfIAMN5iE7wug+uPaKwVBjU2AVQdzRPCzB0xc=;
+ b=Es5vIgUa3PMYC+9ouBUP/BlAy2d+fMDkvC+vvPO9UGHL4i+Tm1zNa5iYUlvab4MpGE
+ NG7hhsXrQWZwMnYu5vLO74f9RFjyAb6xeiC8ceJvS6TaE23ZDS3gR8A+1nilhbLuf3gd
+ GoSrP4tZU9gsZtnGCuBzd4ZNM7ay0fa5g7gSIyLDOG2SuAWCYNGNb3IT405WgIbR7Yru
+ NUSW4MHV28ZAa8wCyq/quGOeRYNQxdA8DkZVq7Eh9hSoh11WBN74tdpNYp7fEzSAN8ku
+ +OB0XHNAVHRYLjSX1Xh9dw/Rjw5MH0XisqBg7bEDvp2CleaVoSAHwt4fhps9/x2SXx0P
+ mRjQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733997876; x=1734602676;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:reply-to:user-agent:mime-version:date
-         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=Xuef9j19a6S4cy5t3jz7hMtr1tGA8HyHJRgE1u6fNo8=;
-        b=IhE73V8HVrjAbg4juCDTYevUglOVBEHnJcVkXSAPqjNLPvbXeyBLcUzonrbMP/Mia3
-         dSWY4+si3+XV4zq69DrTka01GxZ/DNnhqvfmpiIqS94v+wyUCKoxFg2g7044sq7eWRer
-         ZbAqj97BauWDBU5HTHXli19E9m0L7nbn3K4tOU7yahdhcE92mTkYVVXXhys+/9c6if86
-         tlThYSvUAO9FoVC4ynWmlS/aQ5xQYL2hTjGzbAMyJwloK4E5L3s1P5brP5B4RdmAWqaQ
-         En0tycYs1OfltoJagrm7tHmqcCdoMRiUV422qjpeXl2zv936PrT+oo5FnJRcI6Rfjq1f
-         hOGw==
-X-Forwarded-Encrypted: i=1; AJvYcCWFlL897eB2p96NvtY3AD0T/38yIK8wIflCifX+QQqeSa4kukgAl69Cb17RLTiscFDVxudqeWqZqIJnrg==@linaro.org
-X-Gm-Message-State: AOJu0Yx/o1nEGRIfcro1nhixjzTlTlBjmhi0Z/SgZ1q7HcBSMuVpbPKz
-	4oBJ15ixJLW8snl2uVb+2l1iPOffwUZMhfhSwgPNOAoj4zEyFK+lNWVKBIuGYxHFL7fIOXbR+kw
-	Q8PCWmWBfUbgcMVMk2WydOXrvQsyjDH4KqbVXxfqmE/Ffp+wJdKS1ubChRHTh/w==
-X-Gm-Gg: ASbGncswkwDB2/2uEXfe1SMmvGSd2Dd6YWFyksP5LYe1VEcVN6RqJstFpkAfE6H+vVJ
-	AK7KlL0TpsJcYqtSLfN3v8GT/x0k7p3MF1QbPXE8DQsa2x/ubaFgO+nDzdYZrTMRwk0HH1Xtgcv
-	E8HBaoie3lP8H0piX0/DI1Q5lztES0FIAHJ9Jnv9Qb4ENk54WEItt/dbJXz/vwM+qyWwgcjPnpw
-	lxoasw99d9Hl/jMuW4GLdGWNaP+mIFLWASVwhjy2xNKkJHFFA4zL9blDUConpG5X2ekgDB8hNKs
-	bUBMYxnxOrFXaVrQCZgnh/72IqzQ
-X-Received: by 2002:ad4:5748:0:b0:6d8:959b:c307 with SMTP id 6a1803df08f44-6dae38dd832mr47255626d6.10.1733997875826;
-        Thu, 12 Dec 2024 02:04:35 -0800 (PST)
-X-Received: by 2002:ad4:5748:0:b0:6d8:959b:c307 with SMTP id 6a1803df08f44-6dae38dd832mr47255336d6.10.1733997875470;
-        Thu, 12 Dec 2024 02:04:35 -0800 (PST)
-Return-Path: <eric.auger@redhat.com>
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6d9162133aasm39276806d6.129.2024.12.12.02.04.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Dec 2024 02:04:34 -0800 (PST)
-Message-ID: <1fea79e4-7a31-4592-8495-7b18cd82d02b@redhat.com>
-Date: Thu, 12 Dec 2024 11:04:30 +0100
+ d=1e100.net; s=20230601; t=1734001780; x=1734606580;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=RZSWKFnfIAMN5iE7wug+uPaKwVBjU2AVQdzRPCzB0xc=;
+ b=bD9vyRFrjoHDQSID/nytnaF5/7at8NxasV6mw9hCWetB0eKo+jNScO/OEFWYRFjLFT
+ yUovuqyIoGCwY2rg3XtT9/NToT4IOxmZssIwWsyFJFI+E/Km9rKM0KJOtZ2f+AsDTCVl
+ KyeU64NP0HrQLnj8sgpw2yFun5FSAtnLFUO5uH0l782NuMzszm9Ex5Uwewyssc55+Vdd
+ wTA8FINAOgJ1r3KXOIlPe83cfV5oFttOl0opzx7hnlxruG3zlnThlJt6WgNCmfjA4330
+ YLkuuZZqsmfGWI7q5qWjYFvwmiyzZajLqY5zgzuC6S9Al58tc15eIotbpOYmRDRW2hlU
+ SrTQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW3gPsNeCKJBYNrpF0qedhxI6kSQ6aousZWz7rRjyov+esituhNpj9vXhXNlMfw3TtgYwNQsriYq6m7qw==@nongnu.org,
+ AJvYcCXDteWzCUtDwZtpThupLx7XdXUTwTxA1Z2CJIiZRN7WQkrHugQsxGhAkWDDGez1+B11xhO65N+gHg==@nongnu.org
+X-Gm-Message-State: AOJu0YyUY4HcuLqdxvKlQUZv7cP/uZDx5VWzgVfFZldkGuL7f4JPxAcF
+ WxAkFwo+yK8ZvQOMCNCJYxcg8tS02F7T9BC5M1c2N3EpjTqKr7BIbViAPA==
+X-Gm-Gg: ASbGncvwGGdidyNS6gcU863sgWk+fPnS89llbCeNSJjoZlPh/eNotdSYSnlyC6PrSe1
+ isssU9YS7IjkyhPHLmTNIXbGB7TeGW66edeCw+vpY9WAz8ABI136LAvhD6bjPQhCoauLLDMCXmS
+ 8M0V8xPSUdbExc6HlUZ4q6c1rDUjy1SQ/YFLEGHEZAP7ltvBUtljzW9Dx7yLsNqF9H8v5mC6iUL
+ xkuyMIzASQ008w05GZFxWq9JKg1ftz03pGeWuSzLk3k+doqEGMY6+TU/+VITIE0JMOSbBg6qulT
+ HAR6llajMYrsAzQ9tNfxe9eOWv+WuxMy7cl3EXlJ+d0=
+X-Received: by 2002:a05:600c:4450:b0:434:fdbc:5cd1 with SMTP id
+ 5b1f17b1804b1-4362287f2c2mr24310405e9.33.1734001780120; 
+ Thu, 12 Dec 2024 03:09:40 -0800 (PST)
+Received: from Provence.localdomain
+ (dynamic-077-011-242-029.77.11.pool.telefonica.de. [77.11.242.29])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4362559ebe1sm13200725e9.19.2024.12.12.03.09.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 12 Dec 2024 03:09:39 -0800 (PST)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org,
+ John Snow <jsnow@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v4 1/2] hw/ide/ahci: Decouple from PCI
+Date: Thu, 12 Dec 2024 12:09:25 +0100
+Message-ID: <20241212110926.23548-2-shentey@gmail.com>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20241212110926.23548-1-shentey@gmail.com>
+References: <20241212110926.23548-1-shentey@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64 KVM
- host model
-To: Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- oliver.upton@linux.dev, sebott@redhat.com,
- shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com,
- mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
-References: <20241206112213.88394-1-cohuck@redhat.com>
- <edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
- <Z1qoa8yXscTSAJ9e@redhat.com> <8734it1bv6.fsf@redhat.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <8734it1bv6.fsf@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 9TRwyJqKkBzjLDhXHSyENtZjIc6wst1_FOgf-c2rzjw_1733997876
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: qv2uaUzmX6PV
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vHDWw1zCeA1i
 
+In some adhoc profiling booting Linux VMs, it's observed that ahci_irq_lower()
+can be a hot path (10000+ triggers until login prompt appears). Even though the
+parent device never changes, this method re-determines whether the parent device
+is a PCI device or not using the rather expensive object_dynamic_cast()
+function. Avoid this overhead by pushing the interrupt handling to the parent
+device, essentially turning AHCIState into an "IP block".
 
+Note that this change also frees AHCIState from the PCI dependency which wasn't
+reflected in Kconfig.
 
-On 12/12/24 10:36, Cornelia Huck wrote:
-> On Thu, Dec 12 2024, Daniel P. Berrangé <berrange@redhat.com> wrote:
->
->> On Thu, Dec 12, 2024 at 09:12:33AM +0100, Eric Auger wrote:
->>> Connie,
->>>
->>> On 12/6/24 12:21, Cornelia Huck wrote:
->>>> A respin/update on the aarch64 KVM cpu models. Also available at
->>>> gitlab.com/cohuck/qemu arm-cpu-model-rfcv2
->> snip
->>
->>> From a named model point of view, since I do not see much traction
->>> upstream besides Red Hat use cases, targetting ARM spec revision
->>> baselines may be overkill. Personally I would try to focus on above
->>> models: AltraMax, AmpereOne, Grace, ... Or maybe the ARM cores they may
->>> be derived from.
->> If we target modelling of vendor named CPU models, then beware that
->> we're opening the door to an very large set (potentially unbounded)
->> of named CPU models over time. If we target ARM spec baselines then
->> the set of named CPU models is fairly modest and grows slowly.
->>
->> Including ARM spec baselines will probably reduce the demand for
->> adding vendor specific named models, though I expect we'll still
->> end up wanting some, or possibly even many.
->>
->> Having some common baseline models is likely useful for mgmt
->> applications in other ways though.
->>
->> Consider you mgmt app wants to set a CPU model that's common across
->> heterogeneous hardware. They don't neccessarily want/need to be
->> able to live migrate between heterogeneous CPUs, but for simplicity
->> of configuration desire to set a single named CPU across all guests,
->> irrespective of what host hey are launched on. The ARM spec baseline
->> named models would give you that config simplicity.
-> If we use architecture extensions (i.e. Armv8.x/9.x) as baseline, I'm
-> seeing some drawbacks:
-> - a lot of work before we can address some specific use cases
-> - old models can get new optional features
-> - a specific cpu might have a huge set of optional features on top of
->   the baseline model
->
-> Using a reference core such as Neoverse-V2 probably makes more sense
-> (easier to get started, less feature diff?) It would still make a good
-> starting point for a simple config.
->
-Actually from a dev point of view I am not sure it changes much to have
-either ARM spec rev baseline or CPU ref core named model.
+Reported-by: Peter Xu <peterx@redhat.com>
+Inspired-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/ide/ahci-internal.h    |  1 -
+ include/hw/ide/ahci-pci.h |  2 ++
+ include/hw/ide/ahci.h     |  2 --
+ hw/ide/ahci.c             | 39 ++++-----------------------------------
+ hw/ide/ich.c              | 19 +++++++++++++++----
+ 5 files changed, 21 insertions(+), 42 deletions(-)
 
-One remark is that if you look at
-https://developer.arm.com/documentation/109697/2024_09?lang=en
-you will see there are quite a lot of spec revisions and quite a few of
-them are actually meaningful in the light of currently avaiable and
-relevant HW we want to address. What I would like to avoid is to be
-obliged to look at all of them in a generic manner while we just want to
-address few cpu ref models.
+diff --git a/hw/ide/ahci-internal.h b/hw/ide/ahci-internal.h
+index 7e63ea2310..a318f36811 100644
+--- a/hw/ide/ahci-internal.h
++++ b/hw/ide/ahci-internal.h
+@@ -25,7 +25,6 @@
+ #define HW_IDE_AHCI_INTERNAL_H
+ 
+ #include "hw/ide/ahci.h"
+-#include "hw/pci/pci_device.h"
+ #include "ide-internal.h"
+ 
+ #define AHCI_MEM_BAR_SIZE         0x1000
+diff --git a/include/hw/ide/ahci-pci.h b/include/hw/ide/ahci-pci.h
+index c2ee616962..face1a9a4a 100644
+--- a/include/hw/ide/ahci-pci.h
++++ b/include/hw/ide/ahci-pci.h
+@@ -9,6 +9,7 @@
+ #include "qom/object.h"
+ #include "hw/ide/ahci.h"
+ #include "hw/pci/pci_device.h"
++#include "hw/irq.h"
+ 
+ #define TYPE_ICH9_AHCI "ich9-ahci"
+ OBJECT_DECLARE_SIMPLE_TYPE(AHCIPCIState, ICH9_AHCI)
+@@ -17,6 +18,7 @@ struct AHCIPCIState {
+     PCIDevice parent_obj;
+ 
+     AHCIState ahci;
++    IRQState irq;
+ };
+ 
+ #endif
+diff --git a/include/hw/ide/ahci.h b/include/hw/ide/ahci.h
+index ba31e75ff9..ac0292c634 100644
+--- a/include/hw/ide/ahci.h
++++ b/include/hw/ide/ahci.h
+@@ -37,8 +37,6 @@ typedef struct AHCIControlRegs {
+ } AHCIControlRegs;
+ 
+ typedef struct AHCIState {
+-    DeviceState *container;
+-
+     AHCIDevice *dev;
+     AHCIControlRegs control_regs;
+     MemoryRegion mem;
+diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+index 0eb24304ee..5836aa924b 100644
+--- a/hw/ide/ahci.c
++++ b/hw/ide/ahci.c
+@@ -23,8 +23,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/irq.h"
+-#include "hw/pci/msi.h"
+-#include "hw/pci/pci.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ 
+@@ -34,8 +32,6 @@
+ #include "qemu/module.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/dma.h"
+-#include "hw/ide/pci.h"
+-#include "hw/ide/ahci-pci.h"
+ #include "hw/ide/ahci-sysbus.h"
+ #include "ahci-internal.h"
+ #include "ide-internal.h"
+@@ -179,34 +175,6 @@ static uint32_t ahci_port_read(AHCIState *s, int port, int offset)
+     return val;
+ }
+ 
+-static void ahci_irq_raise(AHCIState *s)
+-{
+-    DeviceState *dev_state = s->container;
+-    PCIDevice *pci_dev = (PCIDevice *) object_dynamic_cast(OBJECT(dev_state),
+-                                                           TYPE_PCI_DEVICE);
+-
+-    trace_ahci_irq_raise(s);
+-
+-    if (pci_dev && msi_enabled(pci_dev)) {
+-        msi_notify(pci_dev, 0);
+-    } else {
+-        qemu_irq_raise(s->irq);
+-    }
+-}
+-
+-static void ahci_irq_lower(AHCIState *s)
+-{
+-    DeviceState *dev_state = s->container;
+-    PCIDevice *pci_dev = (PCIDevice *) object_dynamic_cast(OBJECT(dev_state),
+-                                                           TYPE_PCI_DEVICE);
+-
+-    trace_ahci_irq_lower(s);
+-
+-    if (!pci_dev || !msi_enabled(pci_dev)) {
+-        qemu_irq_lower(s->irq);
+-    }
+-}
+-
+ static void ahci_check_irq(AHCIState *s)
+ {
+     int i;
+@@ -222,9 +190,11 @@ static void ahci_check_irq(AHCIState *s)
+     trace_ahci_check_irq(s, old_irq, s->control_regs.irqstatus);
+     if (s->control_regs.irqstatus &&
+         (s->control_regs.ghc & HOST_CTL_IRQ_EN)) {
+-            ahci_irq_raise(s);
++        trace_ahci_irq_raise(s);
++        qemu_irq_raise(s->irq);
+     } else {
+-        ahci_irq_lower(s);
++        trace_ahci_irq_lower(s);
++        qemu_irq_lower(s->irq);
+     }
+ }
+ 
+@@ -1608,7 +1578,6 @@ static const IDEDMAOps ahci_dma_ops = {
+ 
+ void ahci_init(AHCIState *s, DeviceState *qdev)
+ {
+-    s->container = qdev;
+     /* XXX BAR size should be 1k, but that breaks, so bump it to 4k for now */
+     memory_region_init_io(&s->mem, OBJECT(qdev), &ahci_mem_ops, s,
+                           "ahci", AHCI_MEM_BAR_SIZE);
+diff --git a/hw/ide/ich.c b/hw/ide/ich.c
+index b311450c12..c99a44df8e 100644
+--- a/hw/ide/ich.c
++++ b/hw/ide/ich.c
+@@ -61,7 +61,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/irq.h"
+ #include "hw/pci/msi.h"
+ #include "hw/pci/pci.h"
+ #include "migration/vmstate.h"
+@@ -91,6 +90,19 @@ static const VMStateDescription vmstate_ich9_ahci = {
+     },
+ };
+ 
++static void pci_ich9_ahci_update_irq(void *opaque, int irq_num, int level)
++{
++    PCIDevice *pci_dev = opaque;
++
++    if (msi_enabled(pci_dev)) {
++        if (level) {
++            msi_notify(pci_dev, 0);
++        }
++    } else {
++        pci_set_irq(pci_dev, level);
++    }
++}
++
+ static void pci_ich9_reset(DeviceState *dev)
+ {
+     AHCIPCIState *d = ICH9_AHCI(dev);
+@@ -102,7 +114,9 @@ static void pci_ich9_ahci_init(Object *obj)
+ {
+     AHCIPCIState *d = ICH9_AHCI(obj);
+ 
++    qemu_init_irq(&d->irq, pci_ich9_ahci_update_irq, d, 0);
+     ahci_init(&d->ahci, DEVICE(obj));
++    d->ahci.irq = &d->irq;
+ }
+ 
+ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
+@@ -125,8 +139,6 @@ static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
+     /* XXX Software should program this register */
+     dev->config[0x90]   = 1 << 6; /* Address Map Register - AHCI mode */
+ 
+-    d->ahci.irq = pci_allocate_irq(dev);
+-
+     pci_register_bar(dev, ICH9_IDP_BAR, PCI_BASE_ADDRESS_SPACE_IO,
+                      &d->ahci.idp);
+     pci_register_bar(dev, ICH9_MEM_BAR, PCI_BASE_ADDRESS_SPACE_MEMORY,
+@@ -161,7 +173,6 @@ static void pci_ich9_uninit(PCIDevice *dev)
+ 
+     msi_uninit(dev);
+     ahci_uninit(&d->ahci);
+-    qemu_free_irq(d->ahci.irq);
+ }
+ 
+ static void ich_ahci_class_init(ObjectClass *klass, void *data)
+-- 
+2.47.1
 
-Also starting from the ARM spec rev baseline the end-user may need to
-add more feature opt-ins to be close to a specific cpu model. So I
-foresee extra complexity for the end-user.
-
-But again I from a dev pov it shouldn't change much and we should end up
-with a proto that illustrates the working model
-
-Eric

@@ -1,193 +1,187 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4746152njb;
-        Thu, 12 Dec 2024 04:36:33 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG23L4r3KbVNoWLwCWedGgpJ0mLml8tUZWOpIYGfFN+AmvdMAw6DnHsFB+6jzoLniBzuqq7
-X-Received: by 2002:a05:6000:4023:b0:385:f840:e630 with SMTP id ffacd0b85a97d-3864cec38ffmr5053717f8f.37.1734006993648;
-        Thu, 12 Dec 2024 04:36:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734006993; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4766927njb;
+        Thu, 12 Dec 2024 05:09:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUg8DAJXkupAPiwy+HqGpQ0/FtiDgIju8tXp+NEYhgHtMa7TD0MrM2g6rseFWjZ/LZetz9y/yOyDeOXQw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFdEoSMgnxfojxu3IzoF/siaYS9e3gnyY0u3Ps1OiFwxz2pH2IQHTxEL3AWWmOyoe7yx+Yg
+X-Received: by 2002:a05:6000:3ce:b0:386:1cd3:89fa with SMTP id ffacd0b85a97d-38787695959mr2867280f8f.33.1734008965649;
+        Thu, 12 Dec 2024 05:09:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734008965; cv=none;
         d=google.com; s=arc-20240605;
-        b=NlSqfpbjHqejhYzzRJCrIZgB4QkM7GuURV6BXFjQ5ez8AIiuAjO74c2pvLDveFW5Db
-         cLYSO5v8HJwl0AwVe/xalLz+HzTQQM/y/RymlMFgtXwJBS7iAmoLO9+6J4Fic5I0aoq7
-         BR3Lq8xLRyf7gUczJRdNz9Z6TKmvFjPsLtc1vaC9YvarwkjsQGklKqes9M82zlLkj4bs
-         0OAo5gI7nrtEkjTCHe40clQxNF+bRG9lnI6yAkPpBE3MIcX4j8ub6BmA5xhLR9MWuHuB
-         d100Itg9Wc0UuCe6AUQaQ13x8E8/t4AbmVV+vRoTrO62Xmih0RnyjG7ZfPOX1fStoiim
-         eqWA==
+        b=BKOgrUcC0Oj2ihGABoi9+Pi3oIK6xNZHLkLyUvDHU3GOZupAsvUD3At47yaaV2+tGr
+         OzVn7VgkqKEUqOOmnPCGHxsV7KFEiPeoLUP3ZKu9SUIcx6XJ7Fvy4592/LBJIKoVzMG+
+         sr/n0ALFHmX5JeF3H9TMGJhu6N0HMRuwYJHeqdS3Kz0bDCUEnn3EgST+czLmPzhmlK59
+         1YWpejJIqtd5ia+LCX6sBVld449eRTHnf0eFkiUF2nSF4G+78cTJ9dCOyDSYcvkdbc7B
+         iy1Gc+0IBE682Pjv1QrmnocBJgPKxBdmn/99+vV1tY/sQZLPsoeUL0P8wl7836tx2j/u
+         WsnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature
-         :dkim-signature:dkim-signature;
-        bh=G5rb0zuzG1zX+tx5ZdfNxy+q2cVTEdQUFsA/RUY4S08=;
-        fh=be10PWYm7NJp5JT8wg0ZleECAJNPqJqY8RAC1yKC/70=;
-        b=DQJOZE47MiVIpoEDRJGhxLEqsLupj+ws2voxA5f1oUFx5UZmsQTt6tnPqX7ky8Z4ff
-         W6RYqkc5NoqvKDfZeXyzTQGNbDT/K1VtcTN4+yrwtDv2sJxXg6hcq80YZKEuPRG8sP0v
-         sB1zICRZC6pBU2iaGP9aGqLRJo8hcVst9KJvbDv6awwwxgFyTyNZ3LTAsqF8LpKuRvXN
-         QFt6Krj2YwhzX7UWLLnofFgKTRQwIzUOUsBWyOIRPVVkZ3Fhjt4YzdRo/H62531vl4Hy
-         AhhfmNuZaHDwFcyWqBA1tIffT2BZ9zI9w8RkqvRHyXy2bm9MOp2kw6kdmixcoTxUForY
-         P2AQ==;
+        h=mime-version:content-transfer-encoding:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from;
+        bh=/OcXczc7RLllLwB4mQJaBdcVfzWrD2dt4ZbgZvhxUto=;
+        fh=RSKwT8g8jB4Yie+edj0Ntf1hlbYtK2UdMi3YUEUyoP4=;
+        b=a5W5estoUznO8s1W2tbYVEUf8gZKkPuCyilG2roE45H69/GTVxtfI3MNMNxgn5dyrY
+         OQKkBMaGfKEPTZSusiiiDVV0KNGFBp3HOkC3YpEiQIOV/V4y+wanDv1uHqST9odYc7ru
+         tQlHJ/z/CjJlt9/6ncaEf2afEHnZ02Aw+MvjUr7aVAs6MRZwz2m+jNMHMl4i7Fs0xoWS
+         LudZWCtgQqeC2sJmbUESXn4qmzPlopcBsQH3vAKyIOX37BuiS0skaOFZRqncxEP0+p58
+         eDIjDigv05+cTf3jfmfjvyOrm+vbdMJOjZ6jMGZTbojBjySohVk9iGv++55JhQ1IJlu3
+         stSQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=FFDJgShw;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=k8XEafpC;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:2 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <farosas@suse.de>
-Received: from smtp-out2.suse.de (smtp-out2.suse.de. [2a07:de40:b251:101:10:150:64:2])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-3878253a652si1730459f8f.759.2024.12.12.04.36.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Dec 2024 04:36:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:2 as permitted sender) client-ip=2a07:de40:b251:101:10:150:64:2;
+       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <shameerali.kolothum.thodi@huawei.com>
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-3878253140csi1736347f8f.572.2024.12.12.05.09.25
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 12 Dec 2024 05:09:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=FFDJgShw;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=k8XEafpC;
-       dkim=neutral (no key) header.i=@suse.de header.s=susede2_ed25519;
-       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:2 as permitted sender) smtp.mailfrom=farosas@suse.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 811A51F74A;
-	Thu, 12 Dec 2024 12:36:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1734006992; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=G5rb0zuzG1zX+tx5ZdfNxy+q2cVTEdQUFsA/RUY4S08=;
-	b=FFDJgShwC/teAFpyazR41IxgRH6RNEj0X965BkFbWJeWJKGiXNFMtE/lmo1TgO07dOdFZI
-	+AKuWudhDtWS+YWDA53910xB6Oow0EmptboxE2Dt72GbkKDOzTbYpzst+gih6p14HB0TKu
-	H0xes4dt61sTmeOr2QkXqqHOePJ39NY=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1734006992;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=G5rb0zuzG1zX+tx5ZdfNxy+q2cVTEdQUFsA/RUY4S08=;
-	b=p2zFaBT/8vxj9gaEKRqQMgq6I7PV6st3vprsZvoTNEESrJ5mu/F9C9tMDl/bdtEgWGRkk4
-	E6YR6wauK3MgY2DQ==
-Authentication-Results: smtp-out2.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=k8XEafpC;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=129bsKRN
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1734006991; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=G5rb0zuzG1zX+tx5ZdfNxy+q2cVTEdQUFsA/RUY4S08=;
-	b=k8XEafpC51n86f9MW2wJdxt1zTAxzfnfI1ivSkPwCJgDFRGMpxY5tVWNleKXMvWlkFUwbX
-	Bj+QIiHsO5l+PYLm7IdSwETvs7oov9XpK7bRHaCXxY+hFqTq5Fzbux0S6ofICAfAKK2SF3
-	9EbYEqMn2DhktTli+7I6kkcHW5F7GAo=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1734006991;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=G5rb0zuzG1zX+tx5ZdfNxy+q2cVTEdQUFsA/RUY4S08=;
-	b=129bsKRNjg8Dka6AO1SHLHzj29duiv1/Jv22WcEogeFcVYU8YasalFTYNG8hlgXA8UA2Dw
-	DnuJkRukLBp5KnAQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id BA21C13939;
-	Thu, 12 Dec 2024 12:36:30 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id VYdSLc7YWmdYSwAAD6G6ig
-	(envelope-from <farosas@suse.de>); Thu, 12 Dec 2024 12:36:30 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- qemu-s390x@nongnu.org, Halil Pasic <pasic@linux.ibm.com>, Jiaxun Yang
- <jiaxun.yang@flygoat.com>, Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei
- <zhiwei_liu@linux.alibaba.com>, Cleber Rosa <crosa@redhat.com>, Palmer
- Dabbelt <palmer@dabbelt.com>, Leif Lindholm <quic_llindhol@quicinc.com>,
- Eric Farman <farman@linux.ibm.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>, John Snow <jsnow@redhat.com>, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Harsh Prateek Bora
- <harshpb@linux.ibm.com>, Aurelien Jarno <aurelien@aurel32.net>, Paolo
- Bonzini <pbonzini@redhat.com>, Joel Stanley <joel@jms.id.au>, Bernhard
- Beschow <shentey@gmail.com>, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- Daniel Henrique Barboza <danielhb413@gmail.com>, Thomas Huth
- <thuth@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
- qemu-arm@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Bin Meng <bmeng.cn@gmail.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Richard Henderson
- <richard.henderson@linaro.org>, Marcin Juszkiewicz
- <marcin.juszkiewicz@linaro.org>, Christian Borntraeger
- <borntraeger@linux.ibm.com>, Beraldo Leal <bleal@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>,
- =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Alex
- =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Nicholas Piggin <npiggin@gmail.com>, Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>, "Michael S. Tsirkin"
- <mst@redhat.com>, Alistair Francis <alistair.francis@wdc.com>
-Subject: Re: [PATCH 18/20] system/qtest: properly feedback results of
- clock_[step|set]
-In-Reply-To: <20241210204349.723590-19-alex.bennee@linaro.org>
-References: <20241210204349.723590-1-alex.bennee@linaro.org>
- <20241210204349.723590-19-alex.bennee@linaro.org>
-Date: Thu, 12 Dec 2024 09:36:28 -0300
-Message-ID: <87jzc5f583.fsf@suse.de>
+       spf=pass (google.com: domain of shameerali.kolothum.thodi@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=shameerali.kolothum.thodi@huawei.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.216])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Y8CNr1b6mz6K6hd;
+	Thu, 12 Dec 2024 21:04:44 +0800 (CST)
+Received: from frapeml500007.china.huawei.com (unknown [7.182.85.172])
+	by mail.maildlp.com (Postfix) with ESMTPS id CA57F140A86;
+	Thu, 12 Dec 2024 21:09:24 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (7.182.85.71) by
+ frapeml500007.china.huawei.com (7.182.85.172) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.39; Thu, 12 Dec 2024 14:09:23 +0100
+Received: from frapeml500008.china.huawei.com ([7.182.85.71]) by
+ frapeml500008.china.huawei.com ([7.182.85.71]) with mapi id 15.01.2507.039;
+ Thu, 12 Dec 2024 14:09:23 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Eric Auger <eauger@redhat.com>, "eric.auger@redhat.com"
+	<eric.auger@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+	"eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+	<qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+	"richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+	"alex.bennee@linaro.org" <alex.bennee@linaro.org>, "maz@kernel.org"
+	<maz@kernel.org>, "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+	"sebott@redhat.com" <sebott@redhat.com>, "armbru@redhat.com"
+	<armbru@redhat.com>, "berrange@redhat.com" <berrange@redhat.com>,
+	"abologna@redhat.com" <abologna@redhat.com>, "jdenemar@redhat.com"
+	<jdenemar@redhat.com>
+CC: "shahuang@redhat.com" <shahuang@redhat.com>, "mark.rutland@arm.com"
+	<mark.rutland@arm.com>, "philmd@linaro.org" <philmd@linaro.org>,
+	"pbonzini@redhat.com" <pbonzini@redhat.com>, "Wangzhou (B)"
+	<wangzhou1@hisilicon.com>, Linuxarm <linuxarm@huawei.com>
+Subject: RE: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64 KVM
+ host model
+Thread-Topic: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64
+ KVM host model
+Thread-Index: AQHbR9ExiwFvWbARik6RGTWin+st0LLiOsqAgAAIRoCAAFdCwA==
+Date: Thu, 12 Dec 2024 13:09:23 +0000
+Message-ID: <4fb49b5b02bb417399ee871b2c85bb35@huawei.com>
+References: <20241206112213.88394-1-cohuck@redhat.com>
+	<edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
+ <38604260-6f92-4f16-9a4d-c310cbc52d77@redhat.com>
+In-Reply-To: <38604260-6f92-4f16-9a4d-c310cbc52d77@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-originating-ip: [10.48.145.115]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Rspamd-Queue-Id: 811A51F74A
-X-Spam-Level: 
-X-Spamd-Result: default: False [-2.81 / 50.00];
-	BAYES_HAM(-2.80)[99.15%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	NEURAL_HAM_LONG(-1.00)[-1.000];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	ARC_NA(0.00)[];
-	RCPT_COUNT_TWELVE(0.00)[43];
-	FUZZY_BLOCKED(0.00)[rspamd.com];
-	MIME_TRACE(0.00)[0:+];
-	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	RCVD_TLS_ALL(0.00)[];
-	TO_DN_SOME(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	MID_RHS_MATCH_FROM(0.00)[];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	FREEMAIL_CC(0.00)[ventanamicro.com,nongnu.org,linux.ibm.com,flygoat.com,gmail.com,linux.alibaba.com,redhat.com,dabbelt.com,quicinc.com,linaro.org,aurel32.net,jms.id.au,ispras.ru,semihalf.com,ilande.co.uk,wdc.com];
-	RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	DKIM_TRACE(0.00)[suse.de:+];
-	TAGGED_RCPT(0.00)[];
-	R_RATELIMIT(0.00)[to_ip_from(RL4imt8pjjaa6sqn3s4gq691sb)];
-	MISSING_XM_UA(0.00)[];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,gitlab.com:url,suse.de:email,suse.de:dkim,suse.de:mid,linaro.org:email]
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Rspamd-Action: no action
-X-Spam-Score: -2.81
-X-Spam-Flag: NO
-X-TUID: 5ftufOmr/ZZV
+X-TUID: dVnAgf/wW+UI
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
-
-> Time will not advance if the system is paused or there are no timer
-> events set for the future. In absence of pending timer events
-> advancing time would make no difference the system state. Attempting
-> to do so would be a bug and the test or device under test would need
-> fixing.
->
-> Tighten up the result reporting to `FAIL` if time was not advanced.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2687
-
-Acked-by: Fabiano Rosas <farosas@suse.de>
+SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1
+Z2VyIDxlYXVnZXJAcmVkaGF0LmNvbT4NCj4gU2VudDogVGh1cnNkYXksIERlY2VtYmVyIDEyLCAy
+MDI0IDg6NDIgQU0NCj4gVG86IGVyaWMuYXVnZXJAcmVkaGF0LmNvbTsgQ29ybmVsaWEgSHVjayA8
+Y29odWNrQHJlZGhhdC5jb20+Ow0KPiBlcmljLmF1Z2VyLnByb0BnbWFpbC5jb207IHFlbXUtZGV2
+ZWxAbm9uZ251Lm9yZzsgcWVtdS0NCj4gYXJtQG5vbmdudS5vcmc7IGt2bWFybUBsaXN0cy5saW51
+eC5kZXY7IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZzsNCj4gcmljaGFyZC5oZW5kZXJzb25AbGlu
+YXJvLm9yZzsgYWxleC5iZW5uZWVAbGluYXJvLm9yZzsgbWF6QGtlcm5lbC5vcmc7DQo+IG9saXZl
+ci51cHRvbkBsaW51eC5kZXY7IHNlYm90dEByZWRoYXQuY29tOyBTaGFtZWVyYWxpIEtvbG90aHVt
+IFRob2RpDQo+IDxzaGFtZWVyYWxpLmtvbG90aHVtLnRob2RpQGh1YXdlaS5jb20+OyBhcm1icnVA
+cmVkaGF0LmNvbTsNCj4gYmVycmFuZ2VAcmVkaGF0LmNvbTsgYWJvbG9nbmFAcmVkaGF0LmNvbTsg
+amRlbmVtYXJAcmVkaGF0LmNvbQ0KPiBDYzogc2hhaHVhbmdAcmVkaGF0LmNvbTsgbWFyay5ydXRs
+YW5kQGFybS5jb207IHBoaWxtZEBsaW5hcm8ub3JnOw0KPiBwYm9uemluaUByZWRoYXQuY29tDQo+
+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggUkZDdjIgMDAvMjBdIGt2bS9hcm06IEludHJvZHVjZSBhIGN1
+c3RvbWl6YWJsZQ0KPiBhYXJjaDY0IEtWTSBob3N0IG1vZGVsDQo+IA0KPiBTaGFtZWVyLA0KPiAN
+Cj4gT24gMTIvMTIvMjQgMDk6MTIsIEVyaWMgQXVnZXIgd3JvdGU6DQo+ID4gQ29ubmllLA0KPiA+
+DQo+ID4gT24gMTIvNi8yNCAxMjoyMSwgQ29ybmVsaWEgSHVjayB3cm90ZToNCj4gPj4gQSByZXNw
+aW4vdXBkYXRlIG9uIHRoZSBhYXJjaDY0IEtWTSBjcHUgbW9kZWxzLiBBbHNvIGF2YWlsYWJsZSBh
+dA0KPiA+PiBnaXRsYWIuY29tL2NvaHVjay9xZW11IGFybS1jcHUtbW9kZWwtcmZjdjINCj4gPj4N
+Cj4gPj4gRmluZCBFcmljJ3Mgb3JpZ2luYWwgY292ZXIgbGV0dGVyIGJlbG93LCBzbyB0aGF0IEkg
+ZG8gbm90IG5lZWQgdG8NCj4gPj4gcmVwZWF0IG15c2VsZiBvbiB0aGUgYXNwZWN0cyB0aGF0IGhh
+dmUgbm90IGNoYW5nZWQgc2luY2UgUkZDdjEgOikNCj4gPj4NCj4gPj4gQ2hhbmdlcyBmcm9tIFJG
+Q3YxOg0KPiA+Pg0KPiA+PiBSZWJhc2VkIG9uIG1vcmUgcmVjZW50IFFFTVUgKHNvbWUgYWRhcHRp
+b25zIGluIHRoZSByZWdpc3Rlcg0KPiBjb252ZXJzaW9ucw0KPiA+PiBvZiB0aGUgZmlyc3QgZmV3
+IHBhdGNoZXMuKQ0KPiA+Pg0KPiA+PiBCYXNlZCBvbiBmZWVkYmFjaywgSSBoYXZlIHJlbW92ZWQg
+dGhlICJjdXN0b20iIGNwdSBtb2RlbDsgaW5zdGVhZCwgSQ0KPiA+PiBoYXZlIGFkZGVkIHRoZSBu
+ZXcgU1lTUkVHXzxSRUc+XzxGSUVMRD4gcHJvcGVydGllcyB0byB0aGUgImhvc3QiDQo+IG1vZGVs
+Lg0KPiA+PiBUaGlzIHdvcmtzIHdlbGwgaWYgeW91IHdhbnQgdG8gdHdlYWsgYW55dGhpbmcgdGhh
+dCBkb2VzIG5vdCBjb3JyZXNwb25kDQo+ID4+IHRvIHRoZSBleGlzdGluZyBwcm9wZXJ0aWVzIGZv
+ciB0aGUgaG9zdCBtb2RlbDsgaG93ZXZlciwgaWYgeW91IGUuZy4NCj4gPj4gd2FudGVkIHRvIHR3
+ZWFrIHN2ZSwgeW91IGhhdmUgdHdvIHdheXMgdG8gZG8gc28gLS0gd2UnZCBwcm9iYWJseSBlaXRo
+ZXINCj4gPj4gd2FudCB0byBjaGVjayBmb3IgY29uZmxpY3RzLCBvciBqdXN0IGRlY2xhcmUgcHJl
+Y2VkZW5jZS4gVGhlIGt2bS1zcGVjaWZpYw0KPiA+PiBwcm9wcyByZW1haW4gdW5jaGFuZ2VkLCBh
+cyB0aGV5IGFyZSBvcnRob2dvbmFsIHRvIHRoaXMgY29uZmlndXJhdGlvbi4NCj4gPj4NCj4gPj4g
+VGhlIGNwdSBtb2RlbCBleHBhbnNpb24gZm9yIHRoZSAiaG9zdCIgbW9kZWwgbm93IGR1bXBzIHRo
+ZSBuZXcNCj4gU1lTUkVHXw0KPiA+PiBwcm9wZXJ0aWVzIGluIGFkZGl0aW9uIHRvIHRoZSBleGlz
+dGluZyBob3N0IG1vZGVsIHByb3BlcnRpZXM7IHRoaXMgaXMgYQ0KPiA+PiBiaXQgdWdseSwgYnV0
+IEkgZG9uJ3Qgc2VlIGEgZ29vZCB3YXkgb24gaG93IHRvIHNwbGl0IHRoaXMgdXAuDQo+ID4+DQo+
+ID4+IFNvbWUgbW9yZSBhZGFwdGlvbnMgZHVlIHRvIHRoZSByZW1vdmFsIG9mIHRoZSAiY3VzdG9t
+IiBtb2RlbC4NCj4gPj4NCj4gPj4gVGhpbmdzICpub3QqIGNoYW5nZWQgZnJvbSBSRkN2MToNCj4g
+Pj4NCj4gPj4gU1lTUkVHXyBwcm9wZXJ0eSBuYW1pbmcgKGNhbiBiZSB0d2Vha2VkIGVhc2lseSwg
+b25jZSB3ZSBhcmUgY2xlYXIgb24NCj4gd2hhdA0KPiA+PiB0aGUgaW50ZXJmYWNlIHNob3VsZCBs
+b29rIGxpa2UuKQ0KPiA+Pg0KPiA+PiBTeXNyZWcgZ2VuZXJhdGlvbiBzY3JpcHRzLCBhbmQgdGhl
+IGdlbmVyYXRlZCBmaWxlcyAoSSBoYXZlIG5vdCB1cGRhdGVkDQo+ID4+IGFueXRoaW5nIHRoZXJl
+LikgSSB0aGluayBnZW5lcmF0aW5nIHRoZSB2YXJpb3VzIGRlZmluaXRpb25zIG1ha2VzIHNlbnNl
+LA0KPiA+PiBhcyBsb25nIGFzIHdlIGRvdWJsZS1jaGVjayB0aGUgZ2VuZXJhdGVkIGZpbGVzIG9u
+IGVhY2ggdXBkYXRlICh3aGljaA0KPiB3b3VsZA0KPiA+PiBiZSBzb21ldGhpbmcgdG8gdHJpZ2dl
+ciBtYW51YWxseSBhbnl3YXkuKQ0KPiA+Pg0KPiA+PiBXaGF0IEkgd291bGQgbGlrZSB1cyB0byBy
+ZWFjaCBzb21lIGtpbmQgb2YgY29uc2Vuc3VzIG9uOg0KPiA+Pg0KPiA+PiBIb3cgdG8gY29udGlu
+dWUgd2l0aCB0aGUgcGF0Y2hlcyBtb3ZpbmcgdGhlIElEIHJlZ2lzdGVycyBmcm9tIHRoZSBpc2Fy
+DQo+ID4+IHN0cnVjdCBpbnRvIHRoZSBpZHJlZ3MgYXJyYXkuIFRoZXNlIGFyZSBhIGJpdCBvZiBj
+aHVybiB0byBkcmFnIGFsb25nOw0KPiA+PiBpZiB0aGV5IG1ha2Ugc2Vuc2UsIG1heWJlIHRoZXkg
+Y2FuIGJlIHBpY2tlZCBpbmRlcGVuZGVudGx5IG9mIHRoaXMNCj4gc2VyaWVzPw0KPiA+Pg0KPiA+
+PiBXaGV0aGVyIGl0IG1ha2Ugc2Vuc2UgdG8gY29udGludWUgd2l0aCB0aGUgYXBwcm9hY2ggb2Yg
+dHdlYWtpbmcNCj4gdmFsdWVzIGluDQo+ID4+IHRoZSBJRCByZWdpc3RlcnMgaW4gZ2VuZXJhbC4g
+SWYgd2Ugd2FudCB0byBiZSBhYmxlIHRvIG1pZ3JhdGUgYmV0d2Vlbg0KPiBjcHVzDQo+ID4+IHRo
+YXQgZG8gbm90IGRpZmZlciB3aWxkbHksIHdlJ2xsIGVuY291bnRlciBkaWZmZXJlbmNlcyB0aGF0
+IGNhbm5vdCBiZQ0KPiA+PiBleHByZXNzZWQgdmlhIEZFQVRfeHh4IC0tIGUuZy4gd2hlbiBjb21w
+YXJpbmcgdmFyaW91cyBBbXBlcmVBbHRyYSBNYXgNCj4gc3lzdGVtcywNCj4gPj4gdGhleSBvbmx5
+IGRpZmZlciBpbiBwYXJ0cyBvZiBDVFJfRUwwIC0tIHdoaWNoIGlzIG5vdCBhIGZlYXR1cmUgcmVn
+aXN0ZXIsIGJ1dA0KPiA+PiBhIHdyaXRhYmxlIHJlZ2lzdGVyLg0KPiA+IEluIHYxIG1vc3Qgb2Yg
+dGhlIGNvbW1lbnRlcnMgc2FpZCB0aGV5IHdvdWxkIHByZWZlciB0byBzZWUgRkVBVCBwcm9wcw0K
+PiA+IGluc3RlYWQgb2YgSURSRUcgZmllbGQgcHJvcHMuIEkgdGhpbmsgd2Ugc2hhbGwgdHJ5IHRv
+IGdvIGluIHRoaXMNCj4gPiBkaXJlY3Rpb24gYW55d2F5LiBBcyB5b3UgcG9pbnRlZCBvdXQgdGhl
+cmUgd2lsbCBiZSBzb21lIGNhc2VzIHdoZXJlDQo+IEZFQVQNCj4gPiB3b24ndCBiZSBlbm91Z2gg
+KENUUl9FTDAgaXMgYSBnb29kIGV4YW1wbGUpLiBTbyBJIHRlbmQgdG8gdGhpbmsgdGhlIGVuZA0K
+PiA+IHNvbHV0aW9uIHdpbGwgYmUgYSBtaXggb2YgRkVBVCBhbmQgSUQgcmVnIGZpZWxkIHByb3Bz
+Lg0KPiA+DQo+ID4gUGVyc29uYWxseSBJIHdvdWxkIHNtb290aGx5IG1pZ3JhdGUgd2hhdCB3ZSBj
+YW4gZnJvbSBJRCByZWcgZmllbGQgcHJvcHMNCj4gPiB0byBGRUFUIHByb3BzIChtYXliZSB1c2lu
+ZyBwcm9wIGFsaWFzZXM/KSwgc3RhcnRpbmcgZnJvbSB0aGUgZWFzaWVzdCAxLTENCj4gPiBtYXBw
+aW5ncyBhbmQgdGhlbiBhZHJlc3NpbmcgdGhlIEZFQVQgdGhhdCBhcmUgbW9yZSBjb21wbGV4IGJ1
+dCBhcmUNCj4gPiBleHBsaWN0bHkgbmVlZGVkIHRvIGVuYWJsZSB0aGUgdXNlIGNhc2VzIHdlIGFy
+ZSBpbnRlcmVzdGVkIGluLCBhdCBSZWRIYXQ6DQo+ID4gbWlncmF0aW9uIHdpdGhpbiBBbXBlcmUg
+QWx0cmFNYXggZmFtaWx5LCBtaWdyYXRpb24gd2l0aGluIE5WaWRpYSBHcmFjZQ0KPiA+IGZhbWls
+eSwgbWlncmF0aW9uIHdpdGhpbiBBbXBlcmVPbmUgZmFtaWx5IGFuZCBtaWdyYXRpb24gYmV0d2Vl
+bg0KPiBHcmF2aXRvbjMvNC4NCj4gPg0KPiA+IFdlIGhhdmUgbm8gaW5mbyBhYm91dCBvdGhlcidz
+IHVzZSBjYXNlcy4gSWYgc29tZSBvZiB5b3Ugd2FudCB0byBzZWUgc29tZQ0KPiA+IG90aGVyIGxp
+dmUgbWlncmF0aW9uIGNvbWJpbmF0aW9ucyBhZGRyZXNzZWQsIHBsZWFzZSByYWlzZSB5b3VyIHZv
+aWNlLg0KPiBJbiByZWxhdGlvbiB0byBbMV0geW91IHNlZW0gdG8gYmUgYWxzbyBpbnRlcmVzdGVk
+IGluIHRoZSBtaWdyYXRpb24NCj4gYmV0d2VlbiBoZXRlcm9nZW5lb3VzIHN5c3RlbXMgd2l0aCBx
+ZW11Lg0KDQpZZXMuIFRoYXQgaXMgY29ycmVjdC4NCg0KPiBEbyB5b3UgdGhpbmsgdGFyZ2V0aW5n
+IG1pZ3JhdGlvbiB3aXRoaW4gYSBjcHUgZmFtaWx5IGlzIGVub3VnaCBmb3IgeW91cg0KPiB1c2Ug
+Y2FzZXMuIEhvdyBkaWZmZXJlbnQgYXJlIHRoZSBzb3VyY2UgYW5kIGRlc3RpbmF0aW9uIGhvc3Qg
+b24geW91cg0KPiBjYXNlcy4gRG8geW91IHRoaW5nIGZlYXQgcHJvcHMgYXJlIHJlbGV2YW50IGlu
+IHlvdXIgY2FzZSBvciB3b3VsZCB5b3UNCj4gbmVlZCBsb3dlciBncmFudWxhcml0eSBhdCBpZHJl
+ZyBmaWVsZCBsZXZlbHRvIHBhc3MgdGhlIG1pZ3JhdGlvbj8NCg0KSSB0aGluaywgZnJvbSB0aGUg
+Y3VycmVudCByZXF1aXJlbWVudCB3ZSBoYXZlIGZvciBtaWdyYXRpb24sIHRoZSBzb3VyY2UgYW5k
+DQpkZXN0aW5hdGlvbiBtb3N0bHkgY2FuIGJlIGhhbmRsZWQgYnkgRkVBVF9YWFguIEJ1dCBsaWtl
+IEFtcGVyZSwgd2UgZG8gbmVlZA0KdG8gbWFuYWdlIHRoZSBDVFJfRUwwIGRpZmZlcmVuY2VzWzFd
+Lg0KDQpBbHNvIHdlIGRvIGhhdmUgZGlmZmVyZW5jZXMgaW4gR0lDIHN1cHBvcnQgYXMgd2VsbChB
+QTY0UEZSMF9FTDEuR0lDKSB3aGljaCANCkkgYW0gbm90IHN1cmUgaG93IHRvIG1hbmFnZSB3aXRo
+IEZFQVRfWFhYLg0KDQpBbmQgd2UgYXJlIGNoZWNraW5nIHdpdGggb3VyIFByb2R1Y3QgdGVhbSB3
+aGV0aGVyIHdlIG5lZWQgdG8gc3VwcG9ydCBtaWdyYXRpb24NCmZyb20gYW4gb2xkIENQVSB0eXBl
+IGluIHdoaWNoIGNhc2Ugd2UgaGF2ZSB0byBkbyBhIGJpdCBtb3JlIGFuYWx5c2lzLg0KDQpUaGFu
+a3MsDQpTaGFtZWVyDQoNCjEuIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2t2bWFybS8yMDI0MTAy
+MjA3Mzk0My4zNTc2NC0xLXNoYW1lZXJhbGkua29sb3RodW0udGhvZGlAaHVhd2VpLmNvbS8NCg0K
+DQoNCiANCiANCg==

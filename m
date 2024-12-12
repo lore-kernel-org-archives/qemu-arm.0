@@ -1,97 +1,97 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4609441njb;
-        Wed, 11 Dec 2024 23:41:18 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWQwmKjq2MDXLal0zsOp5MlFdPgDWzq7kGDYbj60rNUfGT62hAWiaV3BKOTZWSGaj45ON8YdIduR/8a8g==@linaro.org
-X-Google-Smtp-Source: AGHT+IG3Cl2JQIbKsctDzk4DBVr/RvAMLGVQ2tS/WmN3nbeKnGZBF6zfoJ4j13gQzP78C2sAJySX
-X-Received: by 2002:a05:622a:130c:b0:467:6201:818a with SMTP id d75a77b69052e-46796234692mr47614231cf.36.1733989278014;
-        Wed, 11 Dec 2024 23:41:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733989278; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4621710njb;
+        Thu, 12 Dec 2024 00:12:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXc0lyzPydHvlcFSUYSyDbtr9K7MXy2S2lszf1NZr5sEKnm7+G3erJugIgG0RzqRQWf2aV+cr6mfz/7Zw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFmbbsL3XyjVRUhsHboBTS57Okj4bHO/U2KxT3brQ0vs3QymDubQvoW6zZW/cnMFOSZq48o
+X-Received: by 2002:a05:620a:1a95:b0:7ac:b04e:34c6 with SMTP id af79cd13be357-7b6f2595a1bmr369210585a.50.1733991164726;
+        Thu, 12 Dec 2024 00:12:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733991164; cv=none;
         d=google.com; s=arc-20240605;
-        b=ibJCOlVNri67ZMleou+ewAaZzE8aEmHo7KNbY5k7y+6nqERSAoVG0VfdkbweL0AYyl
-         +R3nb00Pjz9pkhdCD7mFvnJetfVO7tXEsulNbGh5+F/IeSila1T6/ap0aCEerI142U5X
-         FOxv9pfZ90QhGaFPo2pYYoShXdIjvisE9ggcPypOCPuY44LLpUdH0F6Jhqh7qo6hFazU
-         4yVXv7MzbPhU84VoySbIaSBCQbUleBbGOTdlYTrVRL0MFnYXzr0I1yhmWA0vabtvOzs1
-         yZGOJb/wld9E2S17c3frZueOxUMOhTzos1fIo3J+IPkSwb4oUrhvLRevUs611CLsG894
-         QjjA==
+        b=F7mzmpXZi5hJf0Yjxf40oKl3huL7GRkUoDV+P0OeJCEWq3FgOdeiuNKVQejrJ9ICAW
+         ckgk1d9jJwjnWMfJv9z0uD/3tUHxpWX6NZMhnSO0xkybYR+HVA0XmhSfXsv/+BzxgeFt
+         w18ay+B3oowGpcxp89IXwS6UVKv/Hte2rOq8oDxXbrDvheFkuKiO3L87OnoUxc408CQ4
+         k8c0B1AYv4rOTkDYARjLwHQR2Rxaq04XKnj8HtFlnR58+kwYZS/995LHVcyr8fwfDBwb
+         iBeBhXt8HAJ1io3UEyKqsjAQ3PdTOGSW1G7ERIC5qzrn70UnHG+DctJ/GHAbLwGiuoyw
+         UAwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:from
          :references:cc:to:subject:reply-to:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=+BBjqkexuxRVsrMPO4GlnyeXmHrcoGbCCP6iUHH48A4=;
-        fh=ReiOr77FyjF1gUOQ7Fob/HiZ3JU0opGUYT53XZpFFzo=;
-        b=lBJchGXlcDg1+CfiI3UsCpYVpwRW3h/iw+WL+NYD77Moqg1tZFwn7G341o7dTXUHHQ
-         c9kb2EcMblKG9Dgwy2FisoZg+O3uNrYK9BXLh3F8u6pS9pCUJWkRJ9No2wY0NSwXaCsh
-         uaUN6DtSVfNHKHgrWgmtf1kIBZ5vKdeSUFT+DSLUwDXkYRfvk3u4OZJjUzW+a3e3Qr5i
-         7bhnntUikxNVoLiVh5bYHGtcKBowI1Umpd0lOd927c7EX0M/nKrOKMfoGpFh9RTigr2U
-         ZRYAXadr+mTPbgHIv1vA+ZIhDTjh+ftubx/ZSgLZqP83z0bIcuRK+IvFQaQb4J1NALvN
-         MFIg==;
+        bh=RIR3RDbWw10AWYhrJExyps7irls6kROXPVO1dLjtdE4=;
+        fh=8hnm8M5K1RW1YfLnOTWwwF27cIH46lY8hY3NPKdVZ9U=;
+        b=jNEEvdxf5UTYL+kPmkoDFKr/V4seBQYSlx36BqC9gC/RCdyzdAJpvGtqjMX8+aXNoE
+         And+NmfPdtDxaNCjhzBohme1HPeN+5VCj9OElmyNXhMiWVYnuWpZDH7OKaWfR5JH+fgm
+         uk5xh9MrYbO221HV6CuA+mP1A4rUafQusVdNR9IJlQGGWl0dMWlsCuQXH5V8PqCO4CSH
+         nh4fSLfpOmlzvu37hGnScbYqWg5hefv0GIJvZZ3km/cQCOFfplA9Gh/7Gf4hpVlJGbOE
+         zOtJ0C23uy70xV5AieZo3upIA3mZQHGOw8jdAR5YzO52PKEWHujApJsR/PMA7M8lx6f9
+         KzvA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ToSqnxDZ;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FuOWbvZj;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <eric.auger@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-46758e33aa5si129628701cf.491.2024.12.11.23.41.17
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7b6cc104055si1217501085a.405.2024.12.12.00.12.44
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Dec 2024 23:41:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Thu, 12 Dec 2024 00:12:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ToSqnxDZ;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FuOWbvZj;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1733989277;
+	s=mimecast20190719; t=1733991164;
 	h=from:from:reply-to:reply-to:subject:subject:date:date:
 	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
 	 content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=+BBjqkexuxRVsrMPO4GlnyeXmHrcoGbCCP6iUHH48A4=;
-	b=ToSqnxDZ0ZeoFKtZnYT3SSGnXEZdcJBHeY0gh1O/4lyMQ3ev0x/2sSoXN14KtwIh5HKYcs
-	/JHGv9MOL9VkVRjMYR6HE/N5zisOaAP2YzBlk2DNqIN0X0pYAG2nh8Um+2/m6oUfmSEcMx
-	cnVf/t2WTFaf09lL358kx5Kvk6yZLIw=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=RIR3RDbWw10AWYhrJExyps7irls6kROXPVO1dLjtdE4=;
+	b=FuOWbvZjtRjNz5KVIl/GjsjpW4l79P14JzSAguuVB7yNiHjZhrErB9BJ9lHsTlxf0iT63R
+	rCoDXcyvqbRIb8FTXXHExKNwQKP8tauQ9r3x5gNbE7/9YFjgknZzvUfOwP5UZ7DxoVdbEi
+	luLdSWNkK3lutevLCbbDJZ08REkXopA=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-282-4LqJPzymOPyRL9FdfbF-5Q-1; Thu, 12 Dec 2024 02:41:16 -0500
-X-MC-Unique: 4LqJPzymOPyRL9FdfbF-5Q-1
-X-Mimecast-MFC-AGG-ID: 4LqJPzymOPyRL9FdfbF-5Q
-Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-467905ab1bbso12488581cf.1
-        for <alex.bennee@linaro.org>; Wed, 11 Dec 2024 23:41:15 -0800 (PST)
+ us-mta-681-k06wF6hSMI6MSMDMGv8daw-1; Thu, 12 Dec 2024 03:12:41 -0500
+X-MC-Unique: k06wF6hSMI6MSMDMGv8daw-1
+X-Mimecast-MFC-AGG-ID: k06wF6hSMI6MSMDMGv8daw
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7b6ebe1ab63so101580785a.1
+        for <alex.bennee@linaro.org>; Thu, 12 Dec 2024 00:12:41 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1733989275; x=1734594075;
+        d=1e100.net; s=20230601; t=1733991160; x=1734595960;
         h=content-transfer-encoding:in-reply-to:from:references:cc:to
          :content-language:subject:reply-to:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=+BBjqkexuxRVsrMPO4GlnyeXmHrcoGbCCP6iUHH48A4=;
-        b=rAPRHVhSaxbx6pY8/F4T7ilS/LSHb2YIqtVft7j9EGedECuP+ktzJGTJBn/Hf9zXgw
-         EOLPYXDJC6d9MvRpkQETQXloAqVBEbFHfLY/s7+62pUFnGRTcBfF59qy5yS3vv2NG8bR
-         b0HwzS0Vg/gGlNDcXGlA8ytrs1miN0c9mqChUk5OXeaGkSs1x3MXLbiOQ9PEXiS/IgAj
-         qzd39ty1Rw9svkzjdM1MW2ScI1z7bypL5JqNzAWHMQCu+QfB/jwvss3+BT3i3x97owJg
-         CtqPDjMj7Xu+PYYFcwGMPzW2NEfD34Kexhx+9jtpUfBLOVqSlZTjWlwaouPBBqoOiioI
-         RbxQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVq7630M8Z/0I6UUiDoibsfNMhvYYC7/VpLMRSGpMeTk9RRAiN28VuF5eSxxgg73jrwJIMhIH4c3adiqg==@linaro.org
-X-Gm-Message-State: AOJu0Yw7w++WO98pkKDqJ5I3nBlw0CaPPBagPCu7g1r7sXJrbTzEujGB
-	cC04NCpo9VHvC3D+gf1KV1zjaOPbL9E0nLvhLIq+eImNd82YT+OAQNuIjqr7uJxU1Lpqq+1WQwR
-	COlEWjTYEGMRNbrKQx5iIE9u2wNh0neRewn3jb6PT78aig4zhWQDQ2w==
-X-Gm-Gg: ASbGncvY4rbIppo/8mAGUshyliu7sOGYSF0hbINtIHi3N67f75a8LK5OlJAJhZBbvLX
-	XcbsokzGFuDx6TOlBqvhrheUpqYI3WxpMyK8aSQYwYN6Pv3UvgJx/16SC95pC7tLRMEYXtEjN5Q
-	aUO5QmVBhKO2F3x1rrdXpM1vINRy66oCJfvzDUGuyyMVGYFRSIzwqH4+7cO5NssSI5B9+xYQr5+
-	9b1UN9vQ8CTn9HKhb6b1v/KLeGlN+50/wC/EIOQ84XB2bDY23Km82tkJtxmT23PEzGmGvABVACZ
-	hXjZmXl582c6PpKBAfhSDzWZ/F2S
-X-Received: by 2002:a05:6214:2129:b0:6d4:1662:348c with SMTP id 6a1803df08f44-6dae38f5795mr35838156d6.17.1733989275342;
-        Wed, 11 Dec 2024 23:41:15 -0800 (PST)
-X-Received: by 2002:a05:6214:2129:b0:6d4:1662:348c with SMTP id 6a1803df08f44-6dae38f5795mr35837876d6.17.1733989274955;
-        Wed, 11 Dec 2024 23:41:14 -0800 (PST)
+        bh=RIR3RDbWw10AWYhrJExyps7irls6kROXPVO1dLjtdE4=;
+        b=nxDMWACvNNa3RX7DM9i7fD4QKK90CmzEAIpqP77Tx7by6+rsWYOZvwg9wZxCzJVeLf
+         Ozhp2NZnXUBMeUHzKY/ZBydF4d40vHDstyw4e3Trg5NurHHpDvAfQSmLwXfCGnj8mr2t
+         ig507WXI4E5acxwddrvDSrhvPUr8hpQ+b29/3G8jhzNyMTpbFErEI+kq3VTT34YEiSXu
+         zpwZ+NzCzsyXfDLdNBzUNaA1TOEHD4Y5O7ZBxrO6jSIAntLfuYPZWZ0St5Jcd43mLUH9
+         NV/nV2pq+kS1qgiQJTmheK3awMM28Q90k82fMw9/XAg5hVZ670O9XpFaGY8+cJSGwipO
+         SqVw==
+X-Forwarded-Encrypted: i=1; AJvYcCXszq/Qu6mCNtn5X/f726g0pl5sIgGmx8iObOqHjzAYZ3htbTJF3VnSGPIZCdZBl2h9U1iNW5zLtc6/Yg==@linaro.org
+X-Gm-Message-State: AOJu0YyUjetrQa6dpi6dtjcN8V+asnREhySMm1yOcmH0aXt8j0RdFWcx
+	CTbcEgvBcZVBE+bofv51h/htPa123/RqGCn8J07hcrNX3wPHaJvTUOoKYgtC36P8tJUeWUEQZJ/
+	fwU5qD32aXrFpcIL8uPfrnl51/MOlUWzEF2CEmzpZKhab4OOreYvTwg==
+X-Gm-Gg: ASbGnctK7KQIHrieZVrDD2GZ4cH+Hy5nac9Bkvy7iDUBg9w94Jh+phW4D9oeN/4W+g8
+	2wlMiNGk7y9R6DDtJ36ePdJipIt1GQhHcXfrfQBYO5eSnbjOizdIeegfkk4kV6FYkDdK3MpqLbm
+	rD4x9F7RkguCSvewAzlkduN+13IO+UG5x1QIsZOLGJe/+deCMMXNplqUIq98hoG06HEnduxafKx
+	NJYcEYe2El0mUvNkfe57pMp8GZb1bfAfzQLT7R2r5vxsiO3jGRD/sEi5h08+9/bvMYe853/hnac
+	In7fZf79tUhXQ3eoSdoLhN+8IqS6
+X-Received: by 2002:a05:6214:1d0e:b0:6d8:9dad:e14b with SMTP id 6a1803df08f44-6dae38f468emr35241286d6.13.1733991160466;
+        Thu, 12 Dec 2024 00:12:40 -0800 (PST)
+X-Received: by 2002:a05:6214:1d0e:b0:6d8:9dad:e14b with SMTP id 6a1803df08f44-6dae38f468emr35240966d6.13.1733991160019;
+        Thu, 12 Dec 2024 00:12:40 -0800 (PST)
 Return-Path: <eric.auger@redhat.com>
 Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874? ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6dae944ce81sm4009876d6.61.2024.12.11.23.41.08
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6d8da6739a9sm79922446d6.3.2024.12.12.00.12.34
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 11 Dec 2024 23:41:13 -0800 (PST)
-Message-ID: <74616ed3-24d3-44fd-a8b0-bb2927dbd5d5@redhat.com>
-Date: Thu, 12 Dec 2024 08:41:07 +0100
+        Thu, 12 Dec 2024 00:12:38 -0800 (PST)
+Message-ID: <edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
+Date: Thu, 12 Dec 2024 09:12:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Reply-To: eric.auger@redhat.com
@@ -109,14 +109,14 @@ References: <20241206112213.88394-1-cohuck@redhat.com>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <20241206112213.88394-1-cohuck@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: GyvOQMM0uQk_cFR4t9oFEVO0pLMR3TiNryIVPalq1UE_1733989275
+X-Mimecast-MFC-PROC-ID: bh_kQd2Ti8zi0vM27Q0XqVLyX7AdeL05-Nz2LXAX9js_1733991160
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-TUID: 5HPVRjDhyVWO
+Content-Transfer-Encoding: 8bit
+X-TUID: iSMocB0hqoj3
 
-Hi Peter, Richard,
+Connie,
 
 On 12/6/24 12:21, Cornelia Huck wrote:
 > A respin/update on the aarch64 KVM cpu models. Also available at
@@ -159,17 +159,6 @@ On 12/6/24 12:21, Cornelia Huck wrote:
 > How to continue with the patches moving the ID registers from the isar
 > struct into the idregs array. These are a bit of churn to drag along;
 > if they make sense, maybe they can be picked independently of this series?
-What is your opinion on that? Patches 2 -12 are dedicated to the move of
-isar struct's individual idreg fields to an array. To me , this
-anonymous storage looks more generic, scalable and adapted to the way we
-retrieve information from KVM. Do you think this is an acceptable
-reshuffle of the code and can we envision to push those changes in a
-separate prerequisite series that would avoid us to rebase everytime
-until we get a solution for named vcpu models?
-
-Thanks
-
-Eric
 >
 > Whether it make sense to continue with the approach of tweaking values in
 > the ID registers in general. If we want to be able to migrate between cpus
@@ -177,6 +166,45 @@ Eric
 > expressed via FEAT_xxx -- e.g. when comparing various AmpereAltra Max systems,
 > they only differ in parts of CTR_EL0 -- which is not a feature register, but
 > a writable register.
+In v1 most of the commenters said they would prefer to see FEAT props
+instead of IDREG field props. I think we shall try to go in this
+direction anyway. As you pointed out there will be some cases where FEAT
+won't be enough (CTR_EL0 is a good example). So I tend to think the end
+solution will be a mix of FEAT and ID reg field props.
+
+Personally I would smoothly migrate what we can from ID reg field props
+to FEAT props (maybe using prop aliases?), starting from the easiest 1-1
+mappings and then adressing the FEAT that are more complex but are
+explictly needed to enable the use cases we are interested in, at RedHat:
+migration within Ampere AltraMax family, migration within NVidia Grace
+family, migration within AmpereOne family and migration between Graviton3/4.
+
+We have no info about other's use cases. If some of you want to see some
+other live migration combinations addressed, please raise your voice.
+Some CSPs may have their own LM solution/requirements but they don't use
+qemu. So I think we shall concentrate on those use cases.
+
+You did the exercise to identify most prevalent patterns for FEAT to
+IDREG fields mappings. I think we should now encode this conversion
+table for those which are needed in above use cases.
+
+From a named model point of view, since I do not see much traction
+upstream besides Red Hat use cases, targetting ARM spec revision
+baselines may be overkill. Personally I would try to focus on above
+models: AltraMax, AmpereOne, Grace, ... Or maybe the ARM cores they may
+be derived from. According to the discussion we had with Marc in [1] it
+seems it does not make sense to target migration between very
+heterogeneous machines and Dan said we would prefer to avoid adding
+plenty of feat add-ons to a named models. So I would rather be as close
+as possible to a specific family definition.   
+
+Thanks
+
+Eric
+
+[1]
+https://lore.kernel.org/all/c879fda9-db5a-4743-805d-03c0acba8060@redhat.com/#r
+
 >
 > Please take a look, and looking forward to your feedback :)
 >

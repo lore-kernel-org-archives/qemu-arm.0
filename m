@@ -1,175 +1,169 @@
-Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4829295njb;
-        Thu, 12 Dec 2024 06:37:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXLeqs5zksyqtRQgFa3+voyP0MqrQR2vfCuQkNxkUNtDn3zVAwVHn4ElIvuuvpVcM5G0yYT3EaAB6b1kw==@linaro.org
-X-Received: by 2002:a05:6808:f8f:b0:3eb:4189:4432 with SMTP id 5614622812f47-3eb94104deamr2159455b6e.36.1734014279394;
-        Thu, 12 Dec 2024 06:37:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734014279; cv=none;
+Received: by 2002:a17:505:a0c:b0:1be9:327d:8ee3 with SMTP id cg12csp4835140njb;
+        Thu, 12 Dec 2024 06:46:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUMdqCcpdXWvEJSxXO3T9i+qMmOjNlh97Y9HD4xovliBYYqzpUWiOGuwmvkA3SILo3ib8X5WTEIScw8XQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHWiLTOjH2gHzlqFa7S/woUzV7RIxLlFrdsOdYbeHRlAWmu/zLkxRmyR8PEkDhgLnoMA8pZ
+X-Received: by 2002:a05:620a:2855:b0:7b6:d089:2757 with SMTP id af79cd13be357-7b6f899fb58mr110056085a.35.1734014797597;
+        Thu, 12 Dec 2024 06:46:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734014797; cv=none;
         d=google.com; s=arc-20240605;
-        b=g1b88vwYkhkAm9PSTymGxIwRqn7LQxdy3wKmIM6nKcqCm38LeAxNl5B+6vWA9K7ZE3
-         ODnxPJoJy/vkZDCTPgyGRu38PSh4+PHu/vewTmHS5uIg0D4FlwIod5ayoAL1fVa4mHxr
-         IxSHs+nQDa3TyTdBidKxZOfhmfkJ1I31e7e8SoJvd7fXcPnY2kzn43Q2Kn0UkFRR42ND
-         VnTlZ7Nc6rktL5ow60XyHxjCXl3rVLXNaoAOwdHu1QX8i6IjKjeIACjeq9SEPG1tUg5p
-         RP3D/ob9lNKKDC7wm3FMf5oPFmzKsm3ifnZrH8qhRXzzapMDzn6Bj7Ukv5zAVWVqvd3B
-         WVTw==
+        b=YIXrGLoMFqsVNRflZSOdKmxCyRehZZGV87b0085Z/vNuDepq8t+UpCJ7ord2NRbw26
+         Bnud7HPqh9OwILnHALTejglCL9AGRbV3zsfhks7qcPD1J9+pkKKfZdcu+SCCD9JrVTk6
+         bcI2+EeKlVM8IypBxwEXWq/uUHqCmw4Wotxp43HF8cD5etHC//7p6KutnfGgfoJ+Q1Fu
+         FQZVckN4WslSQU3zWTvILccYOhtBm/cIavoAzdiz87lYb3xjvyk0SR0EeMaodnzEbcbd
+         PrsnoUYeFwdBenAxRcieyUpXdJI25dNXgXjDxtKYjFtEiI2p3K/4vGgl4Uk1ie4c8F/a
+         RH0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=content-transfer-encoding:mime-version:message-id:date:user-agent
+         :references:organization:in-reply-to:subject:cc:to:from
          :dkim-signature;
-        bh=WClgGnNKhbkqYl2M5kjAPX27ot9J1JWOs4M4aBmFm9w=;
-        fh=c7CG9YSZtaOCUd9SN0cjVqNaKUmbq4y+2FAHkMUcV+s=;
-        b=Uf7XPAQTDm7ye2HIH97m1N80/9Xq9g7d5DtzCOfXZ/4jv2RIqKXKThIK+lfgQXode3
-         7iMB1wbO2xEURyTOslgX98E1iM5noe9tm86OWrc50FmeL1SwkckshjJ8yCqNb/8IicNv
-         aVPm4R9N1Pd5svAYA8YsssAYW0Xtx0bNAmCYjQMiGb0zg4noqzC/iLAuYFYiOEJOeZMT
-         uuWnNCuK/60jHuMQ63VvbRvNLGFuliHv0St6w8VY8YhJ0DkE7BPACzrXB1Lp2DBvJKsf
-         jJX4uTiUmwQIQ8GGZG1nQb+NQ9iKMPuxpRe/sLCrvvebNt0Hbgx72c0fYIrQS6rssl/C
-         AMPQ==;
+        bh=rj3/bj3qiByyq03DEtIoenWqlg7LpEjsdDBIJ///74A=;
+        fh=OxDr5SxJALnlPk9Yxffk5L0YyWGKjlEnGSRnzrED6Nc=;
+        b=eEoCu7ajRxLSP3MVbYhRwqlfmI2Oy01MD2sa21T7f9xZRRiFgLIzKRc5nqIaxZwHfq
+         8t6eCM8YkwlYtT+iwh/KT+JuHDPcdmHd8nk3dn5lXX7/mO4ZeL4escJITtG3qUfchOAL
+         iBAfANgBAHDFVxBHOBVL27B5z1rS/bCVeZm+AXXdHzY0Ve88uJMllNlEUrNF0KWJj6I9
+         SMtx4aOvW+uRaMlguLTgHZaj/0eSil+PwgOETFQHA443HyJBnk+3p/IF/g5OiF28QLgh
+         c30263L4+wGk0m/EQtHEQqrXtPEwNLH4nmr9aeSyPLk80K/G/bse5b/YslBTVP7+kkdn
+         5/Dw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Eqqdn9qe;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5614622812f47-3eba36053easor8461b6e.17.2024.12.12.06.37.59
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d+nCCiaV;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7b6e4d95116si604022185a.298.2024.12.12.06.46.37
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 12 Dec 2024 06:37:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Dec 2024 06:46:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Eqqdn9qe;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734014279; x=1734619079; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=WClgGnNKhbkqYl2M5kjAPX27ot9J1JWOs4M4aBmFm9w=;
-        b=Eqqdn9qem20RwZ/hkvqnBnSjUT3XnmL8Phobs2FNpIRyLCse+t2bn9yl19vOOXHNTI
-         5u269fhCmG2iOs0ILO1V+hl4wEkNvbYA5uhfiTPHEPKA8WafNpZiTCvMjSAIlJboiut5
-         TZbQbKS3fOzE6IU/FACL0qudOiwy4T0XkgDQPW1y/II26i0r5ErJ7/JUOjrIsaAohcc0
-         SiiEYyQWJkCeVniaDcDHbxZce58xg2E3ff+z4g6n6jPh85pUbxRHxYy1qTQHqdSpGqqb
-         Z1QStU06HJEt3GHnRTpwgSlR5pDy29ICPexhguzWRPCypiWoyiceS3XoIFghhYStzRxd
-         /Nxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734014279; x=1734619079;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=WClgGnNKhbkqYl2M5kjAPX27ot9J1JWOs4M4aBmFm9w=;
-        b=QmIbalFI5qT8tHNi7Gt6CWWTe1MijIbvNF9nHFtx9XEw/bP7tMWYnUrR9JbzGss5ya
-         K/7cQEnDsUGTe36MkKZLsmzU906M4zTLndtaIjrokXoImw8bpfTiee3kkxS9QDjX2bp/
-         Vj8eSPJATlY20AokVCRHMFjkipTpPnsqOfGhY1k9FNm404FLnqdeMaWSs2zf0+75j9B7
-         6TNewlVyau0QGBRjFE8g76/boZFVZltO9q611oxI/RvCW/JdbQ6/oHdmayotxCaF8/dM
-         OFAo12VFqp/vu1JmI6BX/BN6fFG8FqIPhHcoQ6wAZXh2ug2oRov/l3Oy0ldaA+C4NvtK
-         o2uA==
-X-Forwarded-Encrypted: i=1; AJvYcCUoekhxK4v/jJvUffP/kaELAczslm2EgLs7W2mWbGoh4YYhuPgmirIf+EEjxDipemOhdmvBqaZV8ovE9w==@linaro.org
-X-Gm-Message-State: AOJu0YwIECxd4DwxcIqteSBZh2T/3mHrFiso0o6XxgI+x9sOIWsQpzUL
-	QwSa7RpOnNjMMd1Udg3h/Vh7CJbA/OebNyy+Mag8j9yxyWo7gPVfK50H+RIrTn9mbQ==
-X-Gm-Gg: ASbGncuecvTUH+Grxa0nhuQZlcIiVz5YlzSgm3TZrTnSfQQi8R3hcAddyT+KmG9E7PZ
-	y0U5SNwElxyhOQoStGQFN26px7iY/SkMoNDXYM4ESHHRkjxCl8PQF9C2/fDyzld5v/nlyUQUebf
-	BGHyGpn0DbofTS3Zjw5ztp8YcQHZWU62biInMbV7j9Bm0GSDNCWMaqonfgitQmlTezPqsWvghbu
-	eP5wCQbz7fPT5ewGipD/Bw0Szxu/XfhcgNZU2Hw6R4silHiQpsIm7/mqw0a6dNFvDFIUo2fg4E+
-	MbkucBM9E8DIXUGLPjFyWgZp4sqVG2r036k=
-X-Google-Smtp-Source: AGHT+IHzcsNqE4IFEDtNAAVXxkbmviqgknyI1oXeRyYPRBrNN3gZRaB7NkY5HJTFgq2pBMw1QofjPQ==
-X-Received: by 2002:a05:6808:1381:b0:3eb:66d7:a33e with SMTP id 5614622812f47-3eb93f95d83mr2328391b6e.5.1734014278863;
-        Thu, 12 Dec 2024 06:37:58 -0800 (PST)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.4.112] (fixed-187-189-51-143.totalplay.net. [187.189.51.143])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-3eb8d6da3ecsm608895b6e.50.2024.12.12.06.37.56
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Dec 2024 06:37:58 -0800 (PST)
-Message-ID: <2a83a49b-6863-4fb8-b5de-c3eacf3cdb77@linaro.org>
-Date: Thu, 12 Dec 2024 08:37:55 -0600
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RFCv2 02/20] arm/cpu: Add sysreg definitions in
- cpu-sysregs.h
-To: Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
- eric.auger@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, peter.maydell@linaro.org, alex.bennee@linaro.org,
- maz@kernel.org, oliver.upton@linux.dev, sebott@redhat.com,
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d+nCCiaV;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1734014797;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=rj3/bj3qiByyq03DEtIoenWqlg7LpEjsdDBIJ///74A=;
+	b=d+nCCiaVkcYCfEFYaC40eVp0ikzUNFexxPemiuGbq7y4HyQLdSWP6sHiPkYXZKJ73hZZ3y
+	lkzXbIoZRMs2p+m69yBz2h3kcaahpex1HQqy6lRYpBHRlBqzcjvgD6pCeaUO3ZqTkhGhJr
+	gxQR5zZ2MII3xmOs5rJEd4mOcYORckc=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-438-PvAlLYKeM9acSycBW-uWow-1; Thu,
+ 12 Dec 2024 09:46:34 -0500
+X-MC-Unique: PvAlLYKeM9acSycBW-uWow-1
+X-Mimecast-MFC-AGG-ID: PvAlLYKeM9acSycBW-uWow
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 2EB8919560B2;
+	Thu, 12 Dec 2024 14:46:29 +0000 (UTC)
+Received: from localhost (dhcp-192-244.str.redhat.com [10.33.192.244])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 06CDE30044C1;
+	Thu, 12 Dec 2024 14:46:25 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger@redhat.com, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ oliver.upton@linux.dev, sebott@redhat.com,
  shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
-Cc: shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
- pbonzini@redhat.com
+ abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com,
+ mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64
+ KVM host model
+In-Reply-To: <1fea79e4-7a31-4592-8495-7b18cd82d02b@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
 References: <20241206112213.88394-1-cohuck@redhat.com>
- <20241206112213.88394-3-cohuck@redhat.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20241206112213.88394-3-cohuck@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: rE7E1KcDzJpD
+ <edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
+ <Z1qoa8yXscTSAJ9e@redhat.com> <8734it1bv6.fsf@redhat.com>
+ <1fea79e4-7a31-4592-8495-7b18cd82d02b@redhat.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Thu, 12 Dec 2024 15:46:23 +0100
+Message-ID: <87bjxhc62o.fsf@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: 4Cc0XIKhaftT
 
-On 12/6/24 05:21, Cornelia Huck wrote:
-> +#define SYS_ID_AA64PFR0_EL1                             sys_reg(3, 0, 0, 4, 0)
-...
-> +typedef struct ARMSysReg {
-> +    int op0;
-> +    int op1;
-> +    int crn;
-> +    int crm;
-> +    int op2;
-> +} ARMSysReg;
-...
-> +static inline ARMSysReg sys_reg(int op0, int op1, int crn, int crm, int op2)
-> +{
-> +        ARMSysReg sr = {op0, op1, crn, crm, op2};
-> +
-> +        return sr;
-> +}
+On Thu, Dec 12 2024, Eric Auger <eric.auger@redhat.com> wrote:
 
-Not a fan.  Why take 20 bytes to represent these?
+> On 12/12/24 10:36, Cornelia Huck wrote:
+>> On Thu, Dec 12 2024, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
+>>
+>>> On Thu, Dec 12, 2024 at 09:12:33AM +0100, Eric Auger wrote:
+>>>> Connie,
+>>>>
+>>>> On 12/6/24 12:21, Cornelia Huck wrote:
+>>>>> A respin/update on the aarch64 KVM cpu models. Also available at
+>>>>> gitlab.com/cohuck/qemu arm-cpu-model-rfcv2
+>>> snip
+>>>
+>>>> From a named model point of view, since I do not see much traction
+>>>> upstream besides Red Hat use cases, targetting ARM spec revision
+>>>> baselines may be overkill. Personally I would try to focus on above
+>>>> models: AltraMax, AmpereOne, Grace, ... Or maybe the ARM cores they may
+>>>> be derived from.
+>>> If we target modelling of vendor named CPU models, then beware that
+>>> we're opening the door to an very large set (potentially unbounded)
+>>> of named CPU models over time. If we target ARM spec baselines then
+>>> the set of named CPU models is fairly modest and grows slowly.
+>>>
+>>> Including ARM spec baselines will probably reduce the demand for
+>>> adding vendor specific named models, though I expect we'll still
+>>> end up wanting some, or possibly even many.
+>>>
+>>> Having some common baseline models is likely useful for mgmt
+>>> applications in other ways though.
+>>>
+>>> Consider you mgmt app wants to set a CPU model that's common across
+>>> heterogeneous hardware. They don't neccessarily want/need to be
+>>> able to live migrate between heterogeneous CPUs, but for simplicity
+>>> of configuration desire to set a single named CPU across all guests,
+>>> irrespective of what host hey are launched on. The ARM spec baseline
+>>> named models would give you that config simplicity.
+>> If we use architecture extensions (i.e. Armv8.x/9.x) as baseline, I'm
+>> seeing some drawbacks:
+>> - a lot of work before we can address some specific use cases
+>> - old models can get new optional features
+>> - a specific cpu might have a huge set of optional features on top of
+>>   the baseline model
+>>
+>> Using a reference core such as Neoverse-V2 probably makes more sense
+>> (easier to get started, less feature diff?) It would still make a good
+>> starting point for a simple config.
+>>
+> Actually from a dev point of view I am not sure it changes much to have
+> either ARM spec rev baseline or CPU ref core named model.
+>
+> One remark is that if you look at
+> https://developer.arm.com/documentation/109697/2024_09?lang=3Den
+> you will see there are quite a lot of spec revisions and quite a few of
+> them are actually meaningful in the light of currently avaiable and
+> relevant HW we want to address. What I would like to avoid is to be
+> obliged to look at all of them in a generic manner while we just want to
+> address few cpu ref models.
 
-Our existing ENCODE_CP_REG and ENCODE_AA64_CP_REG macros seem much better, even if the 
-argument ordering doesn't match the column ordering in Table D22-2.
+Yes, exactly.
 
-> @@ -841,6 +849,51 @@ typedef struct IdRegMap {
->       uint64_t regs[NR_ID_REGS];
->   } IdRegMap;
->   
-> +#define ARM_FEATURE_ID_RANGE_IDX(op0, op1, crn, crm, op2)               \
-> +        ({                                                              \
-> +                __u64 __op1 = (op1) & 3;                                \
-> +                __op1 -= (__op1 == 3);                                  \
-> +                (__op1 << 6 | ((crm) & 7) << 3 | (op2));                \
-> +        })
+>
+> Also starting from the ARM spec rev baseline the end-user may need to
+> add more feature opt-ins to be close to a specific cpu model. So I
+> foresee extra complexity for the end-user.
 
-Ah, well, this answers my question re patch 1.
-
-It seems a shame to use 128 slots to represent all 9 id registers in the op1={1,3} space.
-
-Do we really need anything beyond the defined registers, or even the defined registers for 
-which qemu knows how to do anything?
-
-I'm certainly happy to replace ARMISARegisters fields with an array, but more like
-
-enum ARMIDRegisterIdx {
-     ID_AA64ISAR0_IDX,
-     etc
-     ordering arbitrary, either machine or macro generated,
-     but every register has a symbolic index.
-     NUM_ID_IDX,
-};
-
-enum ARMSysregs {
-     SYS_ID_AA64PFR0_EL1 = ENCODE_AA64_CP_REG(...),
-     etc
-};
-
-const uint32_t id_register_sysreg[NUM_ID_IDX] = {
-     [ID_AA64ISAR0_IDX] = SYS_ID_AA64PFR0_EL1,
-     etc
-};
-
-struct ARMISARegisters {
-     uint64_t id[NUM_ID_IDX];
-};
-
-This seems trivial to automate, and wastes no space.
-
-
-r~
+For ref cores, it's easier to pick the ones that actually matter for a
+specific use case, for arch exts I don't think we can avoid implementing
+those we don't really care about. And yes, from the sample of cpus I've
+looked at they seem to be much closer to a ref core than to an arch ext.

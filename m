@@ -1,135 +1,130 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp685092njb;
-        Fri, 13 Dec 2024 11:23:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUet2TSYWj9b2dX3uwywHT1tQ6Bv/u2zZ19eei6DtbdPyeQleagv8mmd7+18f62HXPAkbZ9CKxRQAnaGg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFCW5c/VB7YVInAhscRpxQCTzF1ENE4oas7570A/wiiIDIRA2/MEY4rOptjNyCODfUZHkEb
-X-Received: by 2002:a05:6122:906:b0:518:859e:87ae with SMTP id 71dfb90a1353d-518ca463e04mr4459202e0c.7.1734117839078;
-        Fri, 13 Dec 2024 11:23:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734117839; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp685494njb;
+        Fri, 13 Dec 2024 11:24:45 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUdAgl1enUZ3PHOI8nRlssN8CWbI0ZEYC/ySJundFiSHzWY3XYiObPe+YuouGcyAjOZpU10Euj1MqvOaQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGIy1dP8cVbTbPL7XO9lOjVk4M+o7+5q3kPysQjpgN4ti2OZujEaGCTB4k7V5US9aWTg3+7
+X-Received: by 2002:a05:620a:45aa:b0:7b1:44ee:644d with SMTP id af79cd13be357-7b6f8cb17efmr976016185a.10.1734117885570;
+        Fri, 13 Dec 2024 11:24:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734117885; cv=none;
         d=google.com; s=arc-20240605;
-        b=hfRsFaiqgYyj/FX0d6921mlQBOfxEyD+1Tort+XOkaqyCHECbcSBlhMc8mW+GMWTCh
-         jLRzJSj1hPL+aMjgFDwH193eaG+RFre2aPfIGauOo46eeMWOgmkv9Mwj23regiqXrRhj
-         pe5z8f64DyiDh2D6cEKGDZnn+K0fuIdV3KKl/AIdJqtlNEFWj+rnR1uTHKoqx+BTWV/d
-         sawNcKZEohg0d0ySTV9i53ZSpyoT9yw1BBLz2Un0l0tXBOfvCGWOCRHutHfv5ZgjDCp1
-         RV1gaqfvdPvnBFIc4eQRhog/lWFhLAGRuk2qMWU5oW6hjfTJgy5k0tYPtcsvA9K0JK3p
-         Lgzg==
+        b=XONujtAvF3K+8i2uAQ8dZp6GwlQPUmbmCy1Fug8pjJB3whtvl5gExthMl+jdxILNFH
+         Iv98hQdIza6M67fq7gia8tMECNpqzjRvtbkPVe55L3Y8xToGPBtTK9Uu/lLN34h6u/GR
+         h2CvEoMiUNlCw0gEEnf9ixKD368DQOOkb2hzYxi07pjQ0iSiD4J9ILhBIGDFB1XAp9s0
+         nAYDNUKJDmzdHx3dKtDGrqYh8YxxDxMLnc/WVUwj1L8+LYu5ooq95CLJf2EXwoBDVgsk
+         i8SmdGAAG0DwT+i3ca7xwYAmJksKP1SmHRZKc7L7+h4+soqfK3yU5DXeCWjBXlhKJfzg
+         FJMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=xPd8v41eeOyrQJCDfbB2uHm4CbCifH9Wt1doq061h1k=;
-        fh=HDmRPXj7GDPME5AZh/6j2sn00iNGbicH1g5jVjxCesw=;
-        b=lEvzUo+w089L+MHL6atILStc9MNy0LVOLxaXnJ9ox/V7Gg6Zu/ZZ0PZkLsK/WaAO50
-         B1qD7KTGSS0d81t5vM9UQsyddh9BPES9pFLgPAzEfWjXCj6Fg/DQJNIWcnBo/a5hXCoj
-         85bdMC2ped1as5RfeUTXGJlvAfCrIJZ2DkkcVJc4Kn1Ig24hy55kZRTWiErxCGPhcw+I
-         0Bz/oO8yJv188bl3y4S43LwCLg2bptUmNSGUVvaH6PV9Pcn8aLyu3ZCYGoatWr1KYfoE
-         tXGVggFX/JQItezleGAr6BKM/8RlqB+h090Hs4bFBhk5HeEGHMi7ouddAfjv912zzix1
-         Wogw==;
+        bh=87UWZos2QKdOl0brnZZzf+GGdw2+NZalufbZuF6TgSQ=;
+        fh=Yjuu59GlruqjbDvVnjLOeBWHZBQTiPOS2GnohGPeziA=;
+        b=BejLiDQDwJy68e8ZYgFtoRSZiNgqqj7q2HdCEcEHkd9LMf8HpjSVgE74W8xLV8zNU4
+         PQ6H12bAmc4kiXnXI0UcFf2t04/zJfRdHhdQPCr4EN+wnqGfgifHzlr221m3fOq3+9E3
+         COM3/ZefdEev8uCmo21TlVq51/CTJ/S0HOkj9m6YSAoRXOIoOecCAMLV1bMeC4bMoxrn
+         RYdCpsM1tLMrjF5lEltmWUMbb6FE/xmSFl+n2fAzUNj+d3XbAnrjf+ob1co/y8CNXkls
+         XmpG2uBRpVvmvHPmt9RXzOzzxFKHpx36TXauPiI3sx3ApSmmnuLrERMlh4oNs14cx06w
+         4mYw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h7rn5YdK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MQ3RBmVL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-519eb7bb129si81659e0c.247.2024.12.13.11.23.58
+        by mx.google.com with ESMTPS id d75a77b69052e-467b2f1dc29si1731751cf.637.2024.12.13.11.24.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 11:23:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Dec 2024 11:24:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h7rn5YdK;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MQ3RBmVL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tMBA1-0003g3-QH; Fri, 13 Dec 2024 14:17:16 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tMB8v-0000O3-1Q; Fri, 13 Dec 2024 14:16:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tMB7n-00080m-RJ
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 14:14:58 -0500
-Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
+ id 1tMB77-0006ST-4X
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2024 14:14:13 -0500
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tMB7i-0007ff-W2
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 14:14:54 -0500
-Received: by mail-oo1-xc34.google.com with SMTP id
- 006d021491bc7-5f32fab5de9so239842eaf.2
- for <qemu-devel@nongnu.org>; Fri, 13 Dec 2024 11:14:48 -0800 (PST)
+ id 1tMB71-0007XU-Ts
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2024 14:14:11 -0500
+Received: by mail-oa1-x2b.google.com with SMTP id
+ 586e51a60fabf-29f9e76802aso1673180fac.1
+ for <qemu-arm@nongnu.org>; Fri, 13 Dec 2024 11:14:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734117288; x=1734722088; darn=nongnu.org;
+ d=linaro.org; s=google; t=1734117246; x=1734722046; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xPd8v41eeOyrQJCDfbB2uHm4CbCifH9Wt1doq061h1k=;
- b=h7rn5YdK6uE1n5nj0invX66fNw1UgOLUGPgD5XgMDmNLN/RClYy/DoWmRcrUur02WM
- 7vJBgOJMhuDfMKFwFCo6F3qvlSqzuZ1EScSRV1bw9vQJLcbH0Kre7Gq+D0Si9XgOTNr1
- A0YSOV0VxWbKYvNZwmJ4v99eouVZNXbUe9TvKHzxG7kasVNVM8huSUyQ/wy7SWLiowOE
- tGnRv4fS6rGkK13CF8EkcevcWfkaUsN532ttEF9jQAQQhUpZDlgRGhrT82OgCerGBrvI
- 3rpUL4NlstCxBFQa2U5Zzku4CgoHe+vKNj02eKuM0+phY5Jt/+GVhG2p92uwynn9XvgF
- yvxA==
+ bh=87UWZos2QKdOl0brnZZzf+GGdw2+NZalufbZuF6TgSQ=;
+ b=MQ3RBmVLu9FzGooJu6WgHnUPKi9Gwy0HivyBxGTU38ea850dNP28Fq8u8IiUu6962N
+ e579h/k/ScYxP/ndGFRQSuaBkdOagCbo4JCL4cktOlGR5shrL3N/6RTuqBwFJGp7zDA9
+ vvib+tHvdshTnXE+mAoQyf9oQO9jhhpI0iWn1LVrcv0+HMK7eok+qYBStmJq27A2XD0p
+ Xigaqg/t2XzutdPuX04D0YbVAY9q1iyD0hzaGHRObvOnDVTX7ouvStns1eO6AGvQ0G2e
+ HRMK8ONE0c3kbftzASryeKHd1u6gTI1HmxZYiiYSmlmxI0ClLcU7jZ3x09qvnXG9l7iB
+ TOLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734117288; x=1734722088;
+ d=1e100.net; s=20230601; t=1734117246; x=1734722046;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=xPd8v41eeOyrQJCDfbB2uHm4CbCifH9Wt1doq061h1k=;
- b=BosSnl4RNws9A0HywOmOGux+gjwbcu6hZo+ElgFkjCITG6afDtqomnYy7tWFKr0Zqc
- dxlrbmhWMzM57wycUAlTBRAbzTRPyRO8KMBKApBH/3/jRSr91/xgbskhV8aHl1VXDfdd
- mNhdBhIaDt/ZkVpnbTdyFb/Wmkj81XJ68MSp+7smWlTACblKEiUTRDK04Jdc4WvPBrG1
- 6pBjUR1AZ14UizCTRp07NOk/iYln0MRGoY55xl58ZdH6f0n2egsBHriM70jJJq5roB1k
- wmRufnvh3zg4ICL2XdGsNwC7+dm7Qn8+yAK15EKt+ZAg+2AmAuOqxl03R7oi7TzQwYVo
- xzOw==
-X-Gm-Message-State: AOJu0YwRnVN0k2ms7dAaHYqa0jtjqReN3dJ0btIFXGSq3Kl+B6Vgjgzi
- ZcAGQmVC0/xq22pq9yQdNQZgSNYS5+CaF7yKY6sSZRoNgwvpco1g1wD+RplRUS/6yVy55YA9mgN
- /VS6MVfo6
-X-Gm-Gg: ASbGncs/HH1RNd6VICZKHY6APZLwh6FqF1aRkGTM71J/DoJ3zOLfQ2PG/TGNLPj7P4Y
- MytOdAomnOdIi6braU69A6J8MTEYuiJxGKNkRDvBghdi1LhC3EOul8scCXCUY6wzHKgI5ouvk6w
- tq05HyVRsluUtCDYfGEviNXOh3D5UgA5SiEos71vJnPoaG44MjT6Cq8R7rrLKjM3koZVHT/t1y3
- 5zINEMUfzF3k7inL75I8lT4Iv6gqynuKfleKq738H4wI8OOejYcSfG7CrNPT5qp
-X-Received: by 2002:a05:6808:158e:b0:3eb:53f2:17c3 with SMTP id
- 5614622812f47-3eba691e54bmr2492728b6e.26.1734117287684; 
- Fri, 13 Dec 2024 11:14:47 -0800 (PST)
+ bh=87UWZos2QKdOl0brnZZzf+GGdw2+NZalufbZuF6TgSQ=;
+ b=F+kBl5Rtlk0CJ+7EKPW07LQFEpgIhOXR7XH18VFE4+Of/AQRry+Xxc50t3hnbKnZJk
+ XNppmzD7ts9iEx2mxptEE1ADWOe1XK2xekQEe6elqFigrGlC4doQyIB+7JEXpJZabsqz
+ ikLKw/g5iqf6aETqti+ANSV+CyJgonNKHMk4zvj8W6IQig6wcDz3L0qXCwKOIN7SqwRf
+ JnC3RtWnVB8VA2TbYOtXhg7y2ldmGaGvj236n5A8zik2p4q2X1RDa31uBg4xiAzNXIau
+ uIy19o4fQCEmIn8IRZVhTOU5TfBxCPKj+rcxorZORNCN2poqHPZBtRrhZaImf2y/nSof
+ uIeA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXIXkpslxkqIrYsxkxKkiOthN+mJvog1q3fRjE9LvdjqJmyYMDsRfL8+Zdy+VEwq1XRPocJcGDsQA==@nongnu.org
+X-Gm-Message-State: AOJu0YyuCyQFfSVy1DD+NIBHqlGKIfdsqT4DYt3g2FXK4HzYFM3llVjh
+ /V+TCZNeVE3anAr3NOd+gNZCHbMSlkrW9BWRFRzhqjAh2yTBu06GSGiKMyBwkew=
+X-Gm-Gg: ASbGncvK35qJhZ6GJzPVu1xapjvMoEZY0Nu88LbkuHp7HH1nYbJobtCTvg+jmv5v5mf
+ A+KkHsNVGo106d6OF5fR4PAHSgpsABZ3pn9vkveninITME6ICMtiSp1qGntCg0tHScoYLtggb5J
+ VEn93QuauAo7PQdRJlGI+KnHaOFPOTmcQuXYTD8Gu+LBf9GHm9OKeViVygS8hB+ZTP1ZyyU2ylu
+ xk+mFBA4ZH3e75HhaeWxUKOmi4udm5ebijzMz5g4/lokRoMW/n1X/EAT3D95hYq
+X-Received: by 2002:a05:6808:2191:b0:3eb:4783:df7e with SMTP id
+ 5614622812f47-3eb94f9328bmr4978559b6e.17.1734117245676; 
+ Fri, 13 Dec 2024 11:14:05 -0800 (PST)
 Received: from stoup.. ([187.217.227.247]) by smtp.gmail.com with ESMTPSA id
- 5614622812f47-3ebb478a497sm3545b6e.10.2024.12.13.11.14.42
+ 5614622812f47-3ebb478a497sm3545b6e.10.2024.12.13.11.14.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Dec 2024 11:14:47 -0800 (PST)
+ Fri, 13 Dec 2024 11:14:05 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Michael Rolnik <mrolnik@gmail.com>,
- =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, Bin Meng <bmeng.cn@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
+Cc: Helge Deller <deller@gmx.de>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-arm@nongnu.org (open list:ARM cores),
- qemu-riscv@nongnu.org (open list:OpenTitan)
-Subject: [PATCH 60/71] hw/timer: Constify all Property
-Date: Fri, 13 Dec 2024 13:07:34 -0600
-Message-ID: <20241213190750.2513964-65-richard.henderson@linaro.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>, Nicholas Piggin <npiggin@gmail.com>,
+ =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
+ Bernhard Beschow <shentey@gmail.com>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Paul Burton <paulburton@kernel.org>, Aleksandar Rikalo <arikalo@gmail.com>,
+ qemu-ppc@nongnu.org (open list:Old World (g3beige)),
+ qemu-arm@nongnu.org (open list:Versatile PB)
+Subject: [PATCH 47/71] hw/pci-host: Constify all Property
+Date: Fri, 13 Dec 2024 13:07:21 -0600
+Message-ID: <20241213190750.2513964-52-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241213190750.2513964-1-richard.henderson@linaro.org>
 References: <20241213190750.2513964-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c34;
- envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc34.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::2b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -138,305 +133,281 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Xm9tzqStP8xA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: uNs63LAAo5v4
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/timer/a9gtimer.c          | 2 +-
- hw/timer/allwinner-a10-pit.c | 2 +-
- hw/timer/arm_mptimer.c       | 2 +-
- hw/timer/arm_timer.c         | 2 +-
- hw/timer/aspeed_timer.c      | 2 +-
- hw/timer/avr_timer16.c       | 2 +-
- hw/timer/grlib_gptimer.c     | 2 +-
- hw/timer/hpet.c              | 2 +-
- hw/timer/i8254_common.c      | 2 +-
- hw/timer/ibex_timer.c        | 2 +-
- hw/timer/mss-timer.c         | 2 +-
- hw/timer/nrf51_timer.c       | 2 +-
- hw/timer/pxa2xx_timer.c      | 2 +-
- hw/timer/renesas_cmt.c       | 2 +-
- hw/timer/renesas_tmr.c       | 2 +-
- hw/timer/sifive_pwm.c        | 2 +-
- hw/timer/slavio_timer.c      | 2 +-
- hw/timer/sse-timer.c         | 2 +-
- hw/timer/stm32f2xx_timer.c   | 2 +-
- hw/timer/xilinx_timer.c      | 2 +-
- 20 files changed, 20 insertions(+), 20 deletions(-)
+ hw/pci-host/dino.c         | 2 +-
+ hw/pci-host/gpex.c         | 2 +-
+ hw/pci-host/grackle.c      | 2 +-
+ hw/pci-host/gt64120.c      | 2 +-
+ hw/pci-host/i440fx.c       | 2 +-
+ hw/pci-host/mv64361.c      | 2 +-
+ hw/pci-host/pnv_phb.c      | 4 ++--
+ hw/pci-host/pnv_phb3.c     | 2 +-
+ hw/pci-host/pnv_phb4.c     | 2 +-
+ hw/pci-host/pnv_phb4_pec.c | 2 +-
+ hw/pci-host/ppce500.c      | 2 +-
+ hw/pci-host/q35.c          | 4 ++--
+ hw/pci-host/raven.c        | 2 +-
+ hw/pci-host/sabre.c        | 2 +-
+ hw/pci-host/uninorth.c     | 2 +-
+ hw/pci-host/versatile.c    | 2 +-
+ hw/pci-host/xilinx-pcie.c  | 2 +-
+ 17 files changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 8091ec18c7..c0a91bab0c 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -373,7 +373,7 @@ static const VMStateDescription vmstate_a9_gtimer = {
-     }
- };
+diff --git a/hw/pci-host/dino.c b/hw/pci-host/dino.c
+index 283fc0dc57..ead9893f21 100644
+--- a/hw/pci-host/dino.c
++++ b/hw/pci-host/dino.c
+@@ -492,7 +492,7 @@ static void dino_pcihost_init(Object *obj)
+     qdev_init_gpio_in(DEVICE(obj), dino_set_irq, DINO_IRQS);
+ }
  
--static Property a9_gtimer_properties[] = {
-+static const Property a9_gtimer_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", A9GTimerState, num_cpu, 0),
+-static Property dino_pcihost_properties[] = {
++static const Property dino_pcihost_properties[] = {
+     DEFINE_PROP_LINK("memory-as", DinoState, memory_as, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+index e9cf455bf5..8a955ca130 100644
+--- a/hw/pci-host/gpex.c
++++ b/hw/pci-host/gpex.c
+@@ -147,7 +147,7 @@ static const char *gpex_host_root_bus_path(PCIHostState *host_bridge,
+     return "0000:00";
+ }
+ 
+-static Property gpex_host_properties[] = {
++static const Property gpex_host_properties[] = {
+     /*
+      * Permit CPU accesses to unmapped areas of the PIO and MMIO windows
+      * (discarding writes and returning -1 for reads) rather than aborting.
+diff --git a/hw/pci-host/grackle.c b/hw/pci-host/grackle.c
+index 8e589ff2c9..d64de73774 100644
+--- a/hw/pci-host/grackle.c
++++ b/hw/pci-host/grackle.c
+@@ -129,7 +129,7 @@ static char *grackle_ofw_unit_address(const SysBusDevice *dev)
+     return g_strdup_printf("%x", s->ofw_addr);
+ }
+ 
+-static Property grackle_properties[] = {
++static const Property grackle_properties[] = {
+     DEFINE_PROP_UINT32("ofw-addr", GrackleState, ofw_addr, -1),
      DEFINE_PROP_END_OF_LIST()
  };
-diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c
-index d488e9782b..2904ccfb42 100644
---- a/hw/timer/allwinner-a10-pit.c
-+++ b/hw/timer/allwinner-a10-pit.c
-@@ -188,7 +188,7 @@ static const MemoryRegionOps a10_pit_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
+diff --git a/hw/pci-host/gt64120.c b/hw/pci-host/gt64120.c
+index 14fc803d27..3c73ebe83f 100644
+--- a/hw/pci-host/gt64120.c
++++ b/hw/pci-host/gt64120.c
+@@ -1274,7 +1274,7 @@ static const TypeInfo gt64120_pci_info = {
+     },
  };
  
--static Property a10_pit_properties[] = {
-+static const Property a10_pit_properties[] = {
-     DEFINE_PROP_UINT32("clk0-freq", AwA10PITState, clk_freq[0], 0),
-     DEFINE_PROP_UINT32("clk1-freq", AwA10PITState, clk_freq[1], 0),
-     DEFINE_PROP_UINT32("clk2-freq", AwA10PITState, clk_freq[2], 0),
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index defa30b46d..6244a7a84f 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -300,7 +300,7 @@ static const VMStateDescription vmstate_arm_mptimer = {
-     }
- };
+-static Property gt64120_properties[] = {
++static const Property gt64120_properties[] = {
+     DEFINE_PROP_BOOL("cpu-little-endian", GT64120State,
+                      cpu_little_endian, false),
+     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/pci-host/i440fx.c b/hw/pci-host/i440fx.c
+index 4f0a0438d7..40780fbc52 100644
+--- a/hw/pci-host/i440fx.c
++++ b/hw/pci-host/i440fx.c
+@@ -353,7 +353,7 @@ static const char *i440fx_pcihost_root_bus_path(PCIHostState *host_bridge,
+     return "0000:00";
+ }
  
--static Property arm_mptimer_properties[] = {
-+static const Property arm_mptimer_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", ARMMPTimerState, num_cpu, 0),
+-static Property i440fx_props[] = {
++static const Property i440fx_props[] = {
+     DEFINE_PROP_SIZE(PCI_HOST_PROP_PCI_HOLE64_SIZE, I440FXState,
+                      pci_hole64_size, I440FX_PCI_HOST_HOLE64_SIZE_DEFAULT),
+     DEFINE_PROP_SIZE(PCI_HOST_BELOW_4G_MEM_SIZE, I440FXState,
+diff --git a/hw/pci-host/mv64361.c b/hw/pci-host/mv64361.c
+index 421c287eb0..2518d5abe6 100644
+--- a/hw/pci-host/mv64361.c
++++ b/hw/pci-host/mv64361.c
+@@ -98,7 +98,7 @@ static void mv64361_pcihost_realize(DeviceState *dev, Error **errp)
+     qdev_init_gpio_out(dev, s->irq, ARRAY_SIZE(s->irq));
+ }
+ 
+-static Property mv64361_pcihost_props[] = {
++static const Property mv64361_pcihost_props[] = {
+     DEFINE_PROP_UINT8("index", MV64361PCIState, index, 0),
      DEFINE_PROP_END_OF_LIST()
  };
-diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
-index 0940e03f1d..dfa034296c 100644
---- a/hw/timer/arm_timer.c
-+++ b/hw/timer/arm_timer.c
-@@ -387,7 +387,7 @@ static const TypeInfo icp_pit_info = {
-     .instance_init = icp_pit_init,
- };
- 
--static Property sp804_properties[] = {
-+static const Property sp804_properties[] = {
-     DEFINE_PROP_UINT32("freq0", SP804State, freq0, 1000000),
-     DEFINE_PROP_UINT32("freq1", SP804State, freq1, 1000000),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 149f7cc5a6..4c16b5016e 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -674,7 +674,7 @@ static const VMStateDescription vmstate_aspeed_timer_state = {
-     }
- };
- 
--static Property aspeed_timer_properties[] = {
-+static const Property aspeed_timer_properties[] = {
-     DEFINE_PROP_LINK("scu", AspeedTimerCtrlState, scu, TYPE_ASPEED_SCU,
-                      AspeedSCUState *),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/timer/avr_timer16.c b/hw/timer/avr_timer16.c
-index 421920054f..2e3ce83c43 100644
---- a/hw/timer/avr_timer16.c
-+++ b/hw/timer/avr_timer16.c
-@@ -542,7 +542,7 @@ static const MemoryRegionOps avr_timer16_ifr_ops = {
-     .impl = {.max_access_size = 1}
- };
- 
--static Property avr_timer16_properties[] = {
-+static const Property avr_timer16_properties[] = {
-     DEFINE_PROP_UINT8("id", struct AVRTimer16State, id, 0),
-     DEFINE_PROP_UINT64("cpu-frequency-hz", struct AVRTimer16State,
-                        cpu_freq_hz, 0),
-diff --git a/hw/timer/grlib_gptimer.c b/hw/timer/grlib_gptimer.c
-index 6ef08f25fd..a7428ed938 100644
---- a/hw/timer/grlib_gptimer.c
-+++ b/hw/timer/grlib_gptimer.c
-@@ -403,7 +403,7 @@ static void grlib_gptimer_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(sbd, &unit->iomem);
+diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
+index d4c118d443..888f0786a0 100644
+--- a/hw/pci-host/pnv_phb.c
++++ b/hw/pci-host/pnv_phb.c
+@@ -183,7 +183,7 @@ static const char *pnv_phb_root_bus_path(PCIHostState *host_bridge,
+     return phb->bus_path;
  }
  
--static Property grlib_gptimer_properties[] = {
-+static const Property grlib_gptimer_properties[] = {
-     DEFINE_PROP_UINT32("frequency", GPTimerUnit, freq_hz,   40000000),
-     DEFINE_PROP_UINT32("irq-line",  GPTimerUnit, irq_line,  8),
-     DEFINE_PROP_UINT32("nr-timers", GPTimerUnit, nr_timers, 2),
-diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
-index 5399f1b2a3..46886c379e 100644
---- a/hw/timer/hpet.c
-+++ b/hw/timer/hpet.c
-@@ -745,7 +745,7 @@ static void hpet_realize(DeviceState *dev, Error **errp)
-     qdev_init_gpio_out(dev, &s->pit_enabled, 1);
+-static Property pnv_phb_properties[] = {
++static const Property pnv_phb_properties[] = {
+     DEFINE_PROP_UINT32("index", PnvPHB, phb_id, 0),
+     DEFINE_PROP_UINT32("chip-id", PnvPHB, chip_id, 0),
+     DEFINE_PROP_UINT32("version", PnvPHB, version, 0),
+@@ -302,7 +302,7 @@ static void pnv_phb_root_port_realize(DeviceState *dev, Error **errp)
+     pci_config_set_interrupt_pin(pci->config, 0);
  }
  
--static Property hpet_device_properties[] = {
-+static const Property hpet_device_properties[] = {
-     DEFINE_PROP_UINT8("timers", HPETState, num_timers, HPET_MIN_TIMERS),
-     DEFINE_PROP_BIT("msi", HPETState, flags, HPET_MSI_SUPPORT, false),
-     DEFINE_PROP_UINT32(HPET_INTCAP, HPETState, intcap, 0),
-diff --git a/hw/timer/i8254_common.c b/hw/timer/i8254_common.c
-index 28fdabc321..953c1e11eb 100644
---- a/hw/timer/i8254_common.c
-+++ b/hw/timer/i8254_common.c
-@@ -238,7 +238,7 @@ static const VMStateDescription vmstate_pit_common = {
-     }
- };
+-static Property pnv_phb_root_port_properties[] = {
++static const Property pnv_phb_root_port_properties[] = {
+     DEFINE_PROP_UINT32("version", PnvPHBRootPort, version, 0),
  
--static Property pit_common_properties[] = {
-+static const Property pit_common_properties[] = {
-     DEFINE_PROP_UINT32("iobase", PITCommonState, iobase,  -1),
      DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/timer/ibex_timer.c b/hw/timer/ibex_timer.c
-index 2bdcff532d..fba4466a89 100644
---- a/hw/timer/ibex_timer.c
-+++ b/hw/timer/ibex_timer.c
-@@ -263,7 +263,7 @@ static const VMStateDescription vmstate_ibex_timer = {
-     }
- };
+diff --git a/hw/pci-host/pnv_phb3.c b/hw/pci-host/pnv_phb3.c
+index 2a74dbe45f..529b33b5a2 100644
+--- a/hw/pci-host/pnv_phb3.c
++++ b/hw/pci-host/pnv_phb3.c
+@@ -1090,7 +1090,7 @@ void pnv_phb3_update_regions(PnvPHB3 *phb)
+     pnv_phb3_check_all_m64s(phb);
+ }
  
--static Property ibex_timer_properties[] = {
-+static const Property ibex_timer_properties[] = {
-     DEFINE_PROP_UINT32("timebase-freq", IbexTimerState, timebase_freq, 10000),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
-index b66aed56ea..e5c5cd6a84 100644
---- a/hw/timer/mss-timer.c
-+++ b/hw/timer/mss-timer.c
-@@ -279,7 +279,7 @@ static const VMStateDescription vmstate_mss_timer = {
-     }
- };
- 
--static Property mss_timer_properties[] = {
-+static const Property mss_timer_properties[] = {
-     /* Libero GUI shows 100Mhz as default for clocks */
-     DEFINE_PROP_UINT32("clock-frequency", MSSTimerState, freq_hz,
-                       100 * 1000000),
-diff --git a/hw/timer/nrf51_timer.c b/hw/timer/nrf51_timer.c
-index 35b0e62d5b..48fccec1bf 100644
---- a/hw/timer/nrf51_timer.c
-+++ b/hw/timer/nrf51_timer.c
-@@ -379,7 +379,7 @@ static const VMStateDescription vmstate_nrf51_timer = {
-     }
- };
- 
--static Property nrf51_timer_properties[] = {
-+static const Property nrf51_timer_properties[] = {
-     DEFINE_PROP_UINT8("id", NRF51TimerState, id, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/timer/pxa2xx_timer.c b/hw/timer/pxa2xx_timer.c
-index 3234bbb1f4..345145bfa8 100644
---- a/hw/timer/pxa2xx_timer.c
-+++ b/hw/timer/pxa2xx_timer.c
-@@ -549,7 +549,7 @@ static const VMStateDescription vmstate_pxa2xx_timer_regs = {
-     }
- };
- 
--static Property pxa25x_timer_dev_properties[] = {
-+static const Property pxa25x_timer_dev_properties[] = {
-     DEFINE_PROP_UINT32("freq", PXA2xxTimerInfo, freq, PXA25X_FREQ),
-     DEFINE_PROP_BIT("tm4", PXA2xxTimerInfo, flags,
-                     PXA2XX_TIMER_HAVE_TM4, false),
-diff --git a/hw/timer/renesas_cmt.c b/hw/timer/renesas_cmt.c
-index cd59b08c87..6d451fa86b 100644
---- a/hw/timer/renesas_cmt.c
-+++ b/hw/timer/renesas_cmt.c
-@@ -253,7 +253,7 @@ static const VMStateDescription vmstate_rcmt = {
-     }
- };
- 
--static Property rcmt_properties[] = {
-+static const Property rcmt_properties[] = {
-     DEFINE_PROP_UINT64("input-freq", RCMTState, input_freq, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/timer/renesas_tmr.c b/hw/timer/renesas_tmr.c
-index a93e075fcd..890f803cf8 100644
---- a/hw/timer/renesas_tmr.c
-+++ b/hw/timer/renesas_tmr.c
-@@ -463,7 +463,7 @@ static const VMStateDescription vmstate_rtmr = {
-     }
- };
- 
--static Property rtmr_properties[] = {
-+static const Property rtmr_properties[] = {
-     DEFINE_PROP_UINT64("input-freq", RTMRState, input_freq, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/timer/sifive_pwm.c b/hw/timer/sifive_pwm.c
-index 4602fc1a61..042c89c67a 100644
---- a/hw/timer/sifive_pwm.c
-+++ b/hw/timer/sifive_pwm.c
-@@ -404,7 +404,7 @@ static const VMStateDescription vmstate_sifive_pwm = {
-     }
- };
- 
--static Property sifive_pwm_properties[] = {
-+static const Property sifive_pwm_properties[] = {
-     /* 0.5Ghz per spec after FSBL */
-     DEFINE_PROP_UINT64("clock-frequency", struct SiFivePwmState,
-                        freq_hz, 500000000ULL),
-diff --git a/hw/timer/slavio_timer.c b/hw/timer/slavio_timer.c
-index 12cb3bac97..32991f4436 100644
---- a/hw/timer/slavio_timer.c
-+++ b/hw/timer/slavio_timer.c
-@@ -420,7 +420,7 @@ static void slavio_timer_init(Object *obj)
+-static Property pnv_phb3_properties[] = {
++static const Property pnv_phb3_properties[] = {
+     DEFINE_PROP_UINT32("index", PnvPHB3, phb_id, 0),
+     DEFINE_PROP_UINT32("chip-id", PnvPHB3, chip_id, 0),
+     DEFINE_PROP_LINK("chip", PnvPHB3, chip, TYPE_PNV_CHIP, PnvChip *),
+diff --git a/hw/pci-host/pnv_phb4.c b/hw/pci-host/pnv_phb4.c
+index 99991008c1..482fe25803 100644
+--- a/hw/pci-host/pnv_phb4.c
++++ b/hw/pci-host/pnv_phb4.c
+@@ -1688,7 +1688,7 @@ static void pnv_phb4_xive_notify(XiveNotifier *xf, uint32_t srcno,
      }
  }
  
--static Property slavio_timer_properties[] = {
-+static const Property slavio_timer_properties[] = {
-     DEFINE_PROP_UINT32("num_cpus",  SLAVIO_TIMERState, num_cpus,  0),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/timer/sse-timer.c b/hw/timer/sse-timer.c
-index 115b0138c8..6b7a67941c 100644
---- a/hw/timer/sse-timer.c
-+++ b/hw/timer/sse-timer.c
-@@ -440,7 +440,7 @@ static const VMStateDescription sse_timer_vmstate = {
-     }
- };
- 
--static Property sse_timer_properties[] = {
-+static const Property sse_timer_properties[] = {
-     DEFINE_PROP_LINK("counter", SSETimer, counter, TYPE_SSE_COUNTER, SSECounter *),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/timer/stm32f2xx_timer.c b/hw/timer/stm32f2xx_timer.c
-index 16b47887a5..d9d745cd76 100644
---- a/hw/timer/stm32f2xx_timer.c
-+++ b/hw/timer/stm32f2xx_timer.c
-@@ -298,7 +298,7 @@ static const VMStateDescription vmstate_stm32f2xx_timer = {
-     }
- };
- 
--static Property stm32f2xx_timer_properties[] = {
-+static const Property stm32f2xx_timer_properties[] = {
-     DEFINE_PROP_UINT64("clock-frequency", struct STM32F2XXTimerState,
-                        freq_hz, 1000000000),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/timer/xilinx_timer.c b/hw/timer/xilinx_timer.c
-index 32a9df69e0..7fe3e83baa 100644
---- a/hw/timer/xilinx_timer.c
-+++ b/hw/timer/xilinx_timer.c
-@@ -242,7 +242,7 @@ static void xilinx_timer_init(Object *obj)
-     sysbus_init_irq(SYS_BUS_DEVICE(obj), &t->irq);
+-static Property pnv_phb4_properties[] = {
++static const Property pnv_phb4_properties[] = {
+     DEFINE_PROP_UINT32("index", PnvPHB4, phb_id, 0),
+     DEFINE_PROP_UINT32("chip-id", PnvPHB4, chip_id, 0),
+     DEFINE_PROP_LINK("pec", PnvPHB4, pec, TYPE_PNV_PHB4_PEC,
+diff --git a/hw/pci-host/pnv_phb4_pec.c b/hw/pci-host/pnv_phb4_pec.c
+index ce8e228f98..f8975403d3 100644
+--- a/hw/pci-host/pnv_phb4_pec.c
++++ b/hw/pci-host/pnv_phb4_pec.c
+@@ -283,7 +283,7 @@ static int pnv_pec_dt_xscom(PnvXScomInterface *dev, void *fdt,
+     return 0;
  }
  
--static Property xilinx_timer_properties[] = {
-+static const Property xilinx_timer_properties[] = {
-     DEFINE_PROP_UINT32("clock-frequency", XpsTimerState, freq_hz, 62 * 1000000),
-     DEFINE_PROP_UINT8("one-timer-only", XpsTimerState, one_timer_only, 0),
+-static Property pnv_pec_properties[] = {
++static const Property pnv_pec_properties[] = {
+     DEFINE_PROP_UINT32("index", PnvPhb4PecState, index, 0),
+     DEFINE_PROP_UINT32("chip-id", PnvPhb4PecState, chip_id, 0),
+     DEFINE_PROP_LINK("chip", PnvPhb4PecState, chip, TYPE_PNV_CHIP,
+diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
+index b70631045a..54071fc125 100644
+--- a/hw/pci-host/ppce500.c
++++ b/hw/pci-host/ppce500.c
+@@ -507,7 +507,7 @@ static void e500_host_bridge_class_init(ObjectClass *klass, void *data)
+     dc->user_creatable = false;
+ }
+ 
+-static Property pcihost_properties[] = {
++static const Property pcihost_properties[] = {
+     DEFINE_PROP_UINT32("first_slot", PPCE500PCIState, first_slot, 0x11),
+     DEFINE_PROP_UINT32("first_pin_irq", PPCE500PCIState, first_pin_irq, 0x1),
      DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+index f3e713318e..af0b77ea1e 100644
+--- a/hw/pci-host/q35.c
++++ b/hw/pci-host/q35.c
+@@ -170,7 +170,7 @@ static void q35_host_get_pci_hole64_end(Object *obj, Visitor *v,
+  * properties need to be initialized manually by
+  * q35_host_initfn() after the object_initialize() call.
+  */
+-static Property q35_host_props[] = {
++static const Property q35_host_props[] = {
+     DEFINE_PROP_UINT64(PCIE_HOST_MCFG_BASE, Q35PCIHost, parent_obj.base_addr,
+                         MCH_HOST_BRIDGE_PCIEXBAR_DEFAULT),
+     DEFINE_PROP_SIZE(PCI_HOST_PROP_PCI_HOLE64_SIZE, Q35PCIHost,
+@@ -662,7 +662,7 @@ static void mch_realize(PCIDevice *d, Error **errp)
+                                    OBJECT(&mch->smram));
+ }
+ 
+-static Property mch_props[] = {
++static const Property mch_props[] = {
+     DEFINE_PROP_UINT16("extended-tseg-mbytes", MCHPCIState, ext_tseg_mbytes,
+                        16),
+     DEFINE_PROP_BOOL("smbase-smram", MCHPCIState, has_smram_at_smbase, true),
+diff --git a/hw/pci-host/raven.c b/hw/pci-host/raven.c
+index a7dfddd69e..b0a4a669f5 100644
+--- a/hw/pci-host/raven.c
++++ b/hw/pci-host/raven.c
+@@ -422,7 +422,7 @@ static const TypeInfo raven_info = {
+     },
+ };
+ 
+-static Property raven_pcihost_properties[] = {
++static const Property raven_pcihost_properties[] = {
+     DEFINE_PROP_UINT32("elf-machine", PREPPCIState, pci_dev.elf_machine,
+                        EM_NONE),
+     DEFINE_PROP_STRING("bios-name", PREPPCIState, pci_dev.bios_name),
+diff --git a/hw/pci-host/sabre.c b/hw/pci-host/sabre.c
+index 1707feb951..623afed644 100644
+--- a/hw/pci-host/sabre.c
++++ b/hw/pci-host/sabre.c
+@@ -492,7 +492,7 @@ static char *sabre_ofw_unit_address(const SysBusDevice *dev)
+                (uint32_t)(s->special_base & 0xffffffff));
+ }
+ 
+-static Property sabre_properties[] = {
++static const Property sabre_properties[] = {
+     DEFINE_PROP_UINT64("special-base", SabreState, special_base, 0),
+     DEFINE_PROP_UINT64("mem-base", SabreState, mem_base, 0),
+     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
+index e4c1abd871..bd670cfa9d 100644
+--- a/hw/pci-host/uninorth.c
++++ b/hw/pci-host/uninorth.c
+@@ -423,7 +423,7 @@ static const TypeInfo unin_internal_pci_host_info = {
+     },
+ };
+ 
+-static Property pci_unin_main_pci_host_props[] = {
++static const Property pci_unin_main_pci_host_props[] = {
+     DEFINE_PROP_UINT32("ofw-addr", UNINHostState, ofw_addr, -1),
+     DEFINE_PROP_END_OF_LIST()
+ };
+diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+index d257acee17..5d59640691 100644
+--- a/hw/pci-host/versatile.c
++++ b/hw/pci-host/versatile.c
+@@ -498,7 +498,7 @@ static const TypeInfo versatile_pci_host_info = {
+     },
+ };
+ 
+-static Property pci_vpb_properties[] = {
++static const Property pci_vpb_properties[] = {
+     DEFINE_PROP_UINT8("broken-irq-mapping", PCIVPBState, irq_mapping_prop,
+                       PCI_VPB_IRQMAP_ASSUME_OK),
+     DEFINE_PROP_END_OF_LIST()
+diff --git a/hw/pci-host/xilinx-pcie.c b/hw/pci-host/xilinx-pcie.c
+index 24f691ea82..848403970b 100644
+--- a/hw/pci-host/xilinx-pcie.c
++++ b/hw/pci-host/xilinx-pcie.c
+@@ -156,7 +156,7 @@ static void xilinx_pcie_host_init(Object *obj)
+     qdev_prop_set_bit(DEVICE(root), "multifunction", false);
+ }
+ 
+-static Property xilinx_pcie_host_props[] = {
++static const Property xilinx_pcie_host_props[] = {
+     DEFINE_PROP_UINT32("bus_nr", XilinxPCIEHost, bus_nr, 0),
+     DEFINE_PROP_SIZE("cfg_base", XilinxPCIEHost, cfg_base, 0),
+     DEFINE_PROP_SIZE("cfg_size", XilinxPCIEHost, cfg_size, 32 * MiB),
 -- 
 2.43.0
 

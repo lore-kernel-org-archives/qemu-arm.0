@@ -1,104 +1,105 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp523550njb;
-        Fri, 13 Dec 2024 07:24:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWDVp+T8cqBMKuaACngd9mtZp9jZqv72q+Gm+rniZOFnvgNkCIyN0BDEo4Jg6x4ADQtlulX3tiqqeQhXw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEhF6CIIQAO/gzqbpSHIH3ejSXY0LIsL33WA0tCzfIVoHtHnKC5hAwdKAVboZ+rYkHFcDwA
-X-Received: by 2002:a05:620a:640d:b0:7b6:d243:f90a with SMTP id af79cd13be357-7b6fbf15b87mr451761985a.35.1734103482273;
-        Fri, 13 Dec 2024 07:24:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734103482; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp523785njb;
+        Fri, 13 Dec 2024 07:24:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUZJb2J3/B/Ph/XLAWZ3FjqG0Jw0lGDeqE984QjhCiGDPs8pfYY56r/i91TTdXjpE6hnx1V5vuR73Y3WA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEOKZqzvSUOsHDckJda/6wsMyAfXZi7vE+hgXfuPAB/TtvphXfn4ZewU4+Vuxo061p8MD2b
+X-Received: by 2002:a05:6102:4191:b0:4af:f044:9381 with SMTP id ada2fe7eead31-4b25db480ccmr2430084137.27.1734103499030;
+        Fri, 13 Dec 2024 07:24:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734103499; cv=none;
         d=google.com; s=arc-20240605;
-        b=ctl4rvkxJ7hzeruqwIfgDG7Py4H94vEGWE6I0N6BiAu2l/zmimfIIxw/S2llz2bKB8
-         QCilgWRFXZd6GWy1UlaRgbD2c9wY6n8sHLe1XksTeUNjFAJEMzBMiDAF8bsWg5Q4zlvr
-         fSXyh/s9fduYXn0YAvIqUaxxy6KV/IBuCC9n16Dr3klYQXTSuP628uojsUUAAQGMApTE
-         c2mdKdnGiFiCPGYw5FHuVA1SqGR2v0GJwfNLQCHW+hTW52Bj8xTsc+ba4Q91ibKsWjmP
-         Ip7gfK3Hs2jK6Z1yeTBTax8WY3wxeRZU85tAIcA7ekGtt3sYTH4jouL9FTx+pRJHa1OK
-         50Jw==
+        b=aOhjTsqq1hhHIpvHP8eqjnXCdIT8i9DqjEME6sI5WallNfH6Iqx2Vq7vcgY49TAI8p
+         ezSSGuECrOjFknabjHvK1a1sBnZEOx5nH/PYjIW+TGcp4LXqoyzq5ghUFwIe1CQUmm4C
+         B7bykejMqaXjw8MPFU94CdMWj77ek/K/e6U5H4v6tdnuA3JO6a0HSY3sT7FJeYG/tPyx
+         A1WazHs2oPTnHGmtwuOyYMB//e5hlp5KxIk6xNfdq1l2tq9qtdwASiCh5/GqZeQ8nILR
+         SM1LhtkHLA5oWqqJ5ThojcpLz6FTm1WdWL99QyxngbSbqXmrFBE7RluRLZZI3f/WKjVs
+         2TAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
         bh=mJRB2wtK4bqp5QasoGeSFB3JeRDBMHdwYrZnWTkgUnQ=;
-        fh=+VjnrGvjeQQD7yexb7VCprNpWRZMsTpIL8oodPazyOY=;
-        b=FAE4OsfUbGwz4mr47ad97CB3ymdBhIdKuJlo7HlZvGHMgnYkShTY11Xzshn3tFjZ5g
-         Vc51PjRFIc05SKKslnv0DVfpbTXBP7vhqIpFgSAHw0xAsXAREcmw8yPUDOdXOOO/bN9F
-         dQhB0HYrj1Pn1Mp80EU81vikncun/EYVmWpBGyR1gmlsB8co04lIh96P8OM194pNeRGM
-         sUzZjppxFU3TysoT494BVErFmCFf1/msdJzRgYMrkPELsKvQax46Sh09gGiY/G21MPG5
-         tHjuUj7SWLTt18QTpHnIWmjMTRITrXKGa5DyPofNELaBHRr83bOzI+71Pw6ZQutZxsGT
-         YnoA==;
+        fh=Ww/BwkmCIjbi3cm8qR3Et5Z0rK/VPEbZ0b0ETiqkZ9k=;
+        b=ap5WgyumIfKfCBP12p6vBi6Kz58xu69IdzqOnSIq45HuBIopjJmRGyf/ktl8sWyFz3
+         H863nIG22ed5CdvbSkbyJ17cqrZcxju4VeI2mmnrrKJoigTNxSQSsLpjKa/htGmyaG9i
+         ejpBtomp7A38w4dQaMEmS6BftxlSb2HAp0EmOB5cp5lJ/OsLHUMo2CmEL0m9eDU935RJ
+         Cuilq1viJdSkxIVo3Hn1KgrLOniM31KyoSTw/CVs82LC8D8PvRpHawIw2MygTsAAbXRj
+         ozaFs5wUz4xa5yRkufZ2gqAO9TmhARfcpMU3HH2308Y8TFImwVP8bo0lsV8JJADMAuZD
+         jnEQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=srrkIpkv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=wjwrjPdm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6d643dfd7si985135385a.31.2024.12.13.07.24.42
+        by mx.google.com with ESMTPS id ada2fe7eead31-4afde3563b4si3752865137.395.2024.12.13.07.24.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 07:24:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Dec 2024 07:24:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=srrkIpkv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=wjwrjPdm;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tM7Sp-0006hV-FX; Fri, 13 Dec 2024 10:20:24 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tM7UY-0001ne-M7; Fri, 13 Dec 2024 10:22:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tM7Rr-0004cS-DZ
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 10:19:25 -0500
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ id 1tM7SG-00051P-WC
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2024 10:19:49 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tM7Rg-0005Cq-2W
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 10:19:23 -0500
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-aa6a618981eso297773466b.3
- for <qemu-devel@nongnu.org>; Fri, 13 Dec 2024 07:19:03 -0800 (PST)
+ id 1tM7S3-0005QV-FM
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2024 10:19:48 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-aa68b513abcso308493466b.0
+ for <qemu-arm@nongnu.org>; Fri, 13 Dec 2024 07:19:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1734103142; x=1734707942;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1734103172; x=1734707972;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
  bh=mJRB2wtK4bqp5QasoGeSFB3JeRDBMHdwYrZnWTkgUnQ=;
- b=srrkIpkvvOwjuylrD8IaTBMQw3y0+iLaAU+Z4IjHC9nHPZCGBYJpPn3jmL4vbC4UZv
- cej1al6549/uS+pAWORiclrPkBmxEn8cT+sXRGAccO0CNFlLDsdqp/PDyiWE9/MQJnF1
- 3GbicJweNwltC0kT1Ge2rVu9VbwlletpKuEteKEtosFbWLuMotVcr/kPVdKpfCUd4heD
- OgDEid6MqZRNoF/kZ35rcXqZCo79fvDMn1YEHnBnXQ/BOe6hFsd740PVOL5O0h8UyDRh
- FQS34UmItHxWGFo8AW5nz6Xcji8QcL5oV2mFpTqsxckAT+Xom51dMEUPAhuhlVVkcXMW
- U/Vw==
+ b=wjwrjPdmStXeQyyhkR/i2v8kAY8S9F4Dn/SABBWuHqwO7GzK3OPOx2x4fDpLQ72Ejq
+ de5bhpwr8jMQUIDYKue9oZpjH2YQz03/TzTDus1RiD/GNM/yr0mVonoUJWLiN3Im69KJ
+ gkJmsU+QMuzWpOUI4I1/rNz5WY67rZkS+p16dO61Cn3QnEE1hW4NSRyXOCUM15ReLM3U
+ HOfTMAiVPrfUENBD6exWWsbPnEnv0THoMS1TMdcPTisb8N2Y/99TtCZPrDfAn/RgSHVy
+ ngbJpVwZfLSvkYCWNb4QH0KFdcHD1XSXo2SpjNFGWKKI/gSix/zibyLKpOgjTKeaRGLi
+ fMOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734103142; x=1734707942;
+ d=1e100.net; s=20230601; t=1734103172; x=1734707972;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
  bh=mJRB2wtK4bqp5QasoGeSFB3JeRDBMHdwYrZnWTkgUnQ=;
- b=Y5VdOYJxyS9K5R/xcrdqVh1bJq33QLmWz/I15Oz2sRkKxcoa7i5bqlvG5y8Sc2ZOSH
- EfsSRG1aTmv+eYKenfSLIDc2f50p9I794PS0xxZc77hQjgWiOLeyebiK5dxsTsKlMnE3
- aA1jdFF/Bj3Gud7sbQlzjwlMyS+1QF/krvQ+U4AUxZuYjpQJMbkhO4WMDnqEExRn92Eo
- QVGtEv/ATnEPgDKJtHYVRW6ZDWne2zc5DKlsJ46Hg0rLKs/iUkZEhFlJf+MkTgSuzH2P
- DWW5qEm14f3z8IsdOFg7hiAMrIfkO9O0ARFD8zQc4aJnvsK8IC9sHu0AZnbtRHCt8zh9
- M0eA==
-X-Gm-Message-State: AOJu0YymlxnhVnMkNzGfWrHWTrmMNMWw6X7woZmKRpEdPFb/P52xOpFY
- EHKmixGod26Hr5psVn33/5Wz3LgBzNHvFRsRrRp94wVgNyuCMWRXrLNJeT3i9/YhHIevVKAfExk
- 6Ag==
-X-Gm-Gg: ASbGncsLkdz9eFULj5rt84qBTyPsuA4UC7ti+1fNra0xYhjO3d1sezBTmpGBbUZ0leJ
- eqnfM/pxriK32LZy2ZBwRp6ZuWrndMZSf0J1oV14+0fjemJc/eHZ187YpK8WAjhzbaAFPQAoutC
- 5F7L7Pj5YPaxEYogoVS/U2p0yzJgcJBZgUpdU60yqGnO1EskCyuQRM/lsgyAhfPpreP/GXr7+qG
- 29YL9hgleVyAekhMhu7H7jEcrm9FCTdhW8Uk8NMGQkfNxkbe3koMamnXHkYAyXjnDMDHPR/6rq4
- 30jaa/hSin6XMUgr1hZeAO17CSLZcv/f
-X-Received: by 2002:a17:907:3faa:b0:aa6:75d3:7d2d with SMTP id
- a640c23a62f3a-aab77e7c615mr299403666b.40.1734103141975; 
- Fri, 13 Dec 2024 07:19:01 -0800 (PST)
+ b=Z9IqaX9+oLLIFf3GfW2DS7ezijpF4436gfHR5CgY9xcw1cpeGZ8PxzFQ4I0deR6+pE
+ Kg5MRCMLOExa7r/L3E0VYqjC71LhW4+cZrohcGrSHRuBLhvtqRK7cyhxRxKB3YcJRMGF
+ rDsgprsHZUEvKzdhXBmazL4wWbbY4aPEo9iMEFmE7Idv5yhupxVsDGGZNE/KKMJgQHU7
+ hGPtKlvRb/GUHxqFBqn5nRno+X04lBog9iZ1kMQAge+96peXyTJK9zt6kqPsdpHA+UOz
+ K2022I1qwVtLpERJYhdACHqvuGF/dd8Pa+kRz/xObp82T5+YeHPD/pTUuwvOibHp7cJz
+ QnCA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVyNlroMl7JUERQaftqqzTgw0hVtEWCZmuE97K6p1vXYoOPbPIZ6eqA6ivG5oJuCC//SmSyUUmh1w==@nongnu.org
+X-Gm-Message-State: AOJu0YzIHeblN5IEYUt4BM2WgenZwI/DDPW7+yLC+z/WfP22GT6Zwzp7
+ 8Mg+NRZnvzWVxouG/uhM+sTtYpfvDtcVpM+758rPxNoMpvn5hywV8g3v8wJXfA==
+X-Gm-Gg: ASbGncs38BsqkjXdcDa75JO/TLG0l2QRKwyR2OnuZGbaqgaWSBXNkq5jCKatBwCeU4Z
+ X8Q2RBJwEchGQiop0XNBRhvysDVs0s71BjKQDexcn5zT+foD8ke5YFxLMy7tZc8+47720GN3U6Z
+ 5qHfYsSyCEFQOvEV/TW7Nh/H+etbOma89NpvzC8MSmBDxCTvmT8e7B/pZ0xp/w1PLJPEZTiC9nB
+ ZSPuwCDycLT/gYkDeztE/BbHRR83Jnc0QxZ7z1vniPdvVQowMbElNVfE7W0hJ7sjytmbKZfwUqN
+ FtRLh3lftAvlCR2vmGgNc9IrFcoEIsWw
+X-Received: by 2002:a17:906:6ad1:b0:aab:9257:248d with SMTP id
+ a640c23a62f3a-aab92572532mr33608066b.57.1734103171839; 
+ Fri, 13 Dec 2024 07:19:31 -0800 (PST)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aab8dd35b19sm29284166b.33.2024.12.13.07.19.00
+ a640c23a62f3a-aab8dd35b19sm29284166b.33.2024.12.13.07.19.30
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 13 Dec 2024 07:19:01 -0800 (PST)
+ Fri, 13 Dec 2024 07:19:31 -0800 (PST)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -113,18 +114,18 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
  qemu-riscv@nongnu.org, balaton@eik.bme.hu, Alexander Graf <graf@amazon.com>
-Subject: [PATCH v13 13/15] hw/vmapple/virtio-blk: Add support for apple
+Subject: [PATCH v14 13/15] hw/vmapple/virtio-blk: Add support for apple
  virtio-blk
-Date: Fri, 13 Dec 2024 16:18:03 +0100
-Message-Id: <20241213151821.65748-14-phil@philjordan.eu>
+Date: Fri, 13 Dec 2024 16:18:19 +0100
+Message-Id: <20241213151821.65748-30-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 In-Reply-To: <20241213151821.65748-1-phil@philjordan.eu>
 References: <20241213151821.65748-1-phil@philjordan.eu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::635;
- envelope-from=phil@philjordan.eu; helo=mail-ej1-x635.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::636;
+ envelope-from=phil@philjordan.eu; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -132,20 +133,20 @@ X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: QcUGr/ETNywM
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: KIXhB7mnVlIP
 
 From: Alexander Graf <graf@amazon.com>
 

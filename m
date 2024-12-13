@@ -1,209 +1,223 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2335981njb;
-        Mon, 16 Dec 2024 08:59:03 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU/GuHFdZWXkhxi60eu6WHam8p9QnY04ehpvF9HR8/X4WXrCpgAq5KQdvOQoPp0yQ7KhwnJJnhgCsZZYg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH0KCJOlVgTdqEP36c6qxo4QOi6NJ1ku/bDpQsVm0zsW37k/lzwxEJ82ompWHnpdxa3SYWI
-X-Received: by 2002:ac8:5a06:0:b0:467:5e61:c116 with SMTP id d75a77b69052e-468f8aac698mr2456171cf.7.1734368342940;
-        Mon, 16 Dec 2024 08:59:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734368342; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp612786njb;
+        Fri, 13 Dec 2024 09:27:29 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVGRFflaNo+aRcbzwof6eW+J4fNBvNnHuFktyaIZFN/gKUntD8fKGyHfvz1HWo5THOe4cqMB7Npy68rkw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEsO5YDimG4ov9+XbvBYrz78US6V0qWqadwn3yWE0oj0f3FfDxkTAG/rqZGvPC3iA3BONaJ
+X-Received: by 2002:a05:622a:144:b0:462:fef1:e1f5 with SMTP id d75a77b69052e-467a578bfb4mr57229631cf.26.1734110849144;
+        Fri, 13 Dec 2024 09:27:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734110849; cv=none;
         d=google.com; s=arc-20240605;
-        b=TzzsXsHVFmR61A0V/dU0jmuHB9dMvuWaSUuFhP0bQru3toI/2OQ4KVmac+vdneGysQ
-         X8cDrNeewZ8igxgRXBqwBwfOQihNXdQvV5V8A7ojUick7KxPJ5Sob3DfMt27Sk3Vqs6j
-         BYztcy8dBzo9xbMOpvd7Sbu9jp4wwSgzT5IK9FFc6EK0Ei0Y/xxfv6EqM2u9XFzVWfhW
-         7d3UoX7nHF8Ry1xMoBCO2VOTTfWLysp3RQoszcPlFpR4123dMeasoaCQjC+bOent4Hs0
-         9QI8Jgflr2CHHMtBrgL0gQzEPAj+DLw/xFRf1ZcBR/BxgX+UtcCg3bacMMo8SsKtJo8X
-         n/HA==
+        b=BufwwvbyaOm6yIgFSHuS3ftdsODtfvREahjp9YiYuVNNax+W5J99to6/bpveoC8q67
+         6O6eWyN0K6ELOb6/LmbNlybNGz1crfzdtq3y6Nc6UC052Br/1jE4gN/9WMsWsAaSfvf+
+         4OKwXg7eZnMiUwZ9nvhr/PQNyOX59RSms11Irit5Y27dpBxB64IKqXs3rRjZpAfr5o/x
+         stVEJATBEsJZ2g7bgFuCxkwqQ3OHsc5DfX0xwbUFFJMDfeX0r3Obc+rnPlE3GZfmF1RU
+         o+M67LfQv48844/CFU5D2jHkr7lythoQRu7LF+vQ/+MJfMBUDxBx/q/naL01FYj/18D0
+         vueA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=q1Ov2XF8Bfd0lpNvypBIiw/JaUwz0bdBJBIkRN/Bo30=;
-        fh=5EbKAKXusbjR2z3WfV6tA91hfzB/YvLBnvQy0XS/1QY=;
-        b=ibTc0IntOTg7VjjfdPZlDZ3lHB2HLv33a6Fb63inG6fuVSq/ppViA6Wq3lZSGvldKG
-         UqCiAwKdmt6ryc2X1T+0o1eQ7r92sPuX77J7oPS+AKnyUDAzljLr+SqopwZ0r8sYEJ0i
-         z8a+Pn+OAle+UemZpqh0wqO1vXpbaWjRKv4SLG0IVF9WCa4A1LcF3SNoJtGu6wBqTpv9
-         nZZNR6g4jWcSEUgHOK+s5NItC6LWv1ObYaoHOrnbCgeVRX1o82KttF24NmuTA1keOtS0
-         0MnHo6Kev8btn6NudQrHu7X/XtHiqRI1wbPoEuFRnn155ah54CPWVvUmR19E7LZy/ZMq
-         WFTA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=eZAdsWK52VAb8fudDg9PRQ5VSPYseUmnxkNdC1pBytY=;
+        fh=4Nqd1eyBCqhlr8KKcSd6T7pPL45BMONy2s0YFKCu9E0=;
+        b=Io6orew483EYed0gRQpSam6vL5ZdQab1iDb3ZA2cNCs4nqQSTcVcJPi7GzIdTEhXmE
+         WB/HZ02ivx3N3JZw9a5UrW2px8owxpoUH6rWaxCQcScze2DmNXEY9kl1QU6N6j9g28Vt
+         dWQB4xILafQjbayrAZfsVruun551A/0aPnwMJZ8uFn8smj6v+7ImqiL9xhoQLNsvyslg
+         MNoDjiPAo76TLkvFiQbivcPFBlqJM8B0V1wPWecXi3hJN4faHFa34YjiBVwOs8c8smzF
+         imBxn3JIisGAX77pm49ko3pBvgpdNIjq1hCXqvNGyZ928pg8FU2ZK9bHAszn3NX6C914
+         3HCw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cJEZX+Ck;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-467b2eec48csi72640951cf.486.2024.12.16.08.59.02
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cgPvUz3j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-467991f5943si45443871cf.92.2024.12.13.09.27.29
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Dec 2024 08:59:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 13 Dec 2024 09:27:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=cJEZX+Ck;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1734368342;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=q1Ov2XF8Bfd0lpNvypBIiw/JaUwz0bdBJBIkRN/Bo30=;
-	b=cJEZX+Ckd0eUcIV0y4oU/7ODYRS5VHzH4uvXiSp3ejwZLmP12+nJF7/X3LzZD9Cgb9IwQx
-	BOPYIP97d0NqHDU9sor40axuGK+KUl2M7jbrUHVCtECB24zjVME8iNfPUeFEVmgSOZby2s
-	Zd2ahjNQr4cN8tNnjHjzW1rLjEOit8A=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-562-aL26ZOMIOXKwalJGZKkHpA-1; Mon,
- 16 Dec 2024 11:58:53 -0500
-X-MC-Unique: aL26ZOMIOXKwalJGZKkHpA-1
-X-Mimecast-MFC-AGG-ID: aL26ZOMIOXKwalJGZKkHpA
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id A53311955EC7;
-	Mon, 16 Dec 2024 16:58:45 +0000 (UTC)
-Received: from localhost (dhcp-192-244.str.redhat.com [10.33.192.244])
-	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id C6ADA1956056;
-	Mon, 16 Dec 2024 16:58:43 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
- richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
- oliver.upton@linux.dev, sebott@redhat.com,
- shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
-Cc: shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
- pbonzini@redhat.com
-Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64
- KVM host model
-In-Reply-To: <87wmfzbmut.fsf@redhat.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Michael O'Neill, Amy
- Ross"
-References: <20241206112213.88394-1-cohuck@redhat.com>
- <edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
- <87wmfzbmut.fsf@redhat.com>
-User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Mon, 16 Dec 2024 17:58:40 +0100
-Message-ID: <87ttb3bm4f.fsf@redhat.com>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cgPvUz3j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tM9RX-0008Sj-Fq; Fri, 13 Dec 2024 12:27:11 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tM9RS-0008Pz-Uy; Fri, 13 Dec 2024 12:27:08 -0500
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tM9RM-0007nA-2C; Fri, 13 Dec 2024 12:27:06 -0500
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-5d3d14336f0so3532394a12.3; 
+ Fri, 13 Dec 2024 09:26:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1734110815; x=1734715615; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eZAdsWK52VAb8fudDg9PRQ5VSPYseUmnxkNdC1pBytY=;
+ b=cgPvUz3jP9IkmLGtyPwRd33/1+4LayXwEOshMnkSQ8/qf427S63KKunQoRLH/bLns9
+ bzKEO9Rl6u3gpQiXEDl/do58Hz0Mxs7vAc1OCzkhN0P2SVhttDmg3sk6NkQBBrZEcTR5
+ GrZZy3w6A3OkFNBa+2wCVG/C2IFVmSZVnmq79kE1p/t8U4WK+l+HJL/FBrL/rgZ3M0fK
+ IC3FVoNsXhcx7Wfb2ZMT35angcx/Hk62apmzZoQiUhrr/Rf+vRKM0vqe0fh9yX3jNQPX
+ Uj3qDDXJ48HRLRLdVxcfD1BfOSqgq/olndQ+pNV3CzVGo7s1V6zqG+s9ogZtdiaeogfQ
+ AkHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734110815; x=1734715615;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=eZAdsWK52VAb8fudDg9PRQ5VSPYseUmnxkNdC1pBytY=;
+ b=im6FRDFZolFlljd+GVxsFol1fWyQdNhwhZ7yrf8q7EINoN7BZFLvZ8mceS99Lto6fO
+ VYY0BOo8PlB7sQnmCyLOknORohwl+DLTMRAvPGOkV8AUMCrRT+7QUFjGYYAkaH9WM/Jq
+ +IDdW254Et/lV037fsEywLpXqaWoYJb8DWmMQsvhdWU9BEOLovAiX7Q1l7DZFuMP1Yc0
+ BQaYkzewBIid0QLyjMSOZ/TNWlQXBuHjY+llilnCxZ8tQv0bE+f4uO91jrpo2oDKSgc7
+ eptwZlFezluWt5qBBkechv/7USd3hUJFuCmQYZ34giFbuF36+GSs9Gv2Bxv0WDfnfCSl
+ cEVw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUfS7TBP3xiZOIp8OuvqOpZh6H6kdrUa+Zg6c5qCD6tbYs0IU33Ia0zXhhIduu+uJ5WgppsEQI1eHCJfg==@nongnu.org,
+ AJvYcCVCH6a7cg4S9Evjk2kjD+MqAfLUL0uv3W7kxn6EqI63nedCCEMgU2VUmkaLtb0g6e5DJKP6SUdQiQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy2ksfLyFINcrxWspimVoqE79wrharlh+1uIV0k7mkNM6toE1/G
+ Enyq+EkzV/sy8GCDJ5s0rKfiXdKg0/fcxYY7b1+XnLTs5RzDX7Dg
+X-Gm-Gg: ASbGncsRe9tQ0afhJiftpD3PIXvN6ZP2FjAe7BLEpMr5ZB8507Wi5AT/xPttxerJeFZ
+ B6qWRgWSEvp7HN6T1LOEcnCmHwbxUdAIdXGDQS+UkBaIAVxj6al2xQYBhk2H8bbmqKkgE/zQ1UP
+ nN8/LUPzV4YdqCQLBv8AHBN4OY+Ut3QX0w+OjnwBmAk7JEewh0m/kCf7asxEckpmdZsYjdGA9wE
+ /CnfKD0xVyapMmIcZcN9FzL7oqWFZuh1qo3+d6BTPaC96+lQ1kyQ6Rq4UKpNiYnmTbfx+MAFO8P
+ IDAodHRT2l7cB6hRpkvgDqG2aGY5/9I=
+X-Received: by 2002:a17:907:6d12:b0:aa6:8096:2048 with SMTP id
+ a640c23a62f3a-aab7790a02dmr347318266b.17.1734110815242; 
+ Fri, 13 Dec 2024 09:26:55 -0800 (PST)
+Received: from [127.0.0.1] (dynamic-077-183-249-001.77.183.pool.telefonica.de.
+ [77.183.249.1]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-aa65d18510asm950478766b.122.2024.12.13.09.26.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 13 Dec 2024 09:26:54 -0800 (PST)
+Date: Fri, 13 Dec 2024 17:26:52 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+CC: qemu-block@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org,
+ John Snow <jsnow@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v4 1/2] hw/ide/ahci: Decouple from PCI
+In-Reply-To: <b87473d2-d132-42a4-8ca3-aaace8da7bf9@linaro.org>
+References: <20241212110926.23548-1-shentey@gmail.com>
+ <20241212110926.23548-2-shentey@gmail.com>
+ <b87473d2-d132-42a4-8ca3-aaace8da7bf9@linaro.org>
+Message-ID: <F723466D-FB22-485A-936E-1C4AAEEFF05E@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain;
+ charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-TUID: 4vuJY3frb4eD
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tFg/oRZl/I5+
 
-On Mon, Dec 16 2024, Cornelia Huck <cohuck@redhat.com> wrote:
 
-> On Thu, Dec 12 2024, Eric Auger <eric.auger@redhat.com> wrote:
->
->> Connie,
->>
->> On 12/6/24 12:21, Cornelia Huck wrote:
->>> Whether it make sense to continue with the approach of tweaking values =
-in
->>> the ID registers in general. If we want to be able to migrate between c=
-pus
->>> that do not differ wildly, we'll encounter differences that cannot be
->>> expressed via FEAT_xxx -- e.g. when comparing various AmpereAltra Max s=
-ystems,
->>> they only differ in parts of CTR_EL0 -- which is not a feature register=
-, but
->>> a writable register.
->> In v1 most of the commenters said they would prefer to see FEAT props
->> instead of IDREG field props. I think we shall try to go in this
->> direction anyway. As you pointed out there will be some cases where FEAT
->> won't be enough (CTR_EL0 is a good example). So I tend to think the end
->> solution will be a mix of FEAT and ID reg field props.
->
-> Some analysis of FEAT_xxx mappings:
-> https://lore.kernel.org/qemu-devel/87ikstn8sc.fsf@redhat.com/
->
-> (actually, ~190 of FEAT_xxx map to a single value in a single register,
-> so mappings are easy other than the sheer amount of them)
->
-> We probably should simply not support FEAT_xxx that are solely defined
-> via dependencies.
->
-> Some more real-world examples from some cpu pairings I had looked at:
-> https://lore.kernel.org/qemu-devel/87ldx2krdp.fsf@redhat.com/
-> (but also see Peter's follow-up, the endianness field is actually
-> covered by a feature)
->
-> The values-in-registers-not-covered-by-features we are currently aware
-> of are:
-> - number of breakpoints
-> - PARange values
-> - GIC
-> - some fields in CTR_EL0
-> (see also
-> https://lore.kernel.org/qemu-devel/4fb49b5b02bb417399ee871b2c85bb35@huawe=
-i.com/
-> for the latter two)
 
-And the differences in GIC might be actually due to a GICv3 not being
-configured, together with running a recent kernel, which will zero the
-field. So we might actually already be able to handle it for most cases.
+Am 13=2E Dezember 2024 14:41:46 UTC schrieb "Philippe Mathieu-Daud=C3=A9" =
+<philmd@linaro=2Eorg>:
+>On 12/12/24 12:09, Bernhard Beschow wrote:
+>> In some adhoc profiling booting Linux VMs, it's observed that ahci_irq_=
+lower()
+>> can be a hot path (10000+ triggers until login prompt appears)=2E Even =
+though the
+>> parent device never changes, this method re-determines whether the pare=
+nt device
+>> is a PCI device or not using the rather expensive object_dynamic_cast()
+>> function=2E Avoid this overhead by pushing the interrupt handling to th=
+e parent
+>> device, essentially turning AHCIState into an "IP block"=2E
+>>=20
+>> Note that this change also frees AHCIState from the PCI dependency whic=
+h wasn't
+>> reflected in Kconfig=2E
+>>=20
+>> Reported-by: Peter Xu <peterx@redhat=2Ecom>
+>> Inspired-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>   hw/ide/ahci-internal=2Eh    |  1 -
+>>   include/hw/ide/ahci-pci=2Eh |  2 ++
+>>   include/hw/ide/ahci=2Eh     |  2 --
+>>   hw/ide/ahci=2Ec             | 39 ++++--------------------------------=
+---
+>>   hw/ide/ich=2Ec              | 19 +++++++++++++++----
+>>   5 files changed, 21 insertions(+), 42 deletions(-)
+>
+>
+>>   static void pci_ich9_reset(DeviceState *dev)
+>>   {
+>>       AHCIPCIState *d =3D ICH9_AHCI(dev);
+>> @@ -102,7 +114,9 @@ static void pci_ich9_ahci_init(Object *obj)
+>>   {
+>>       AHCIPCIState *d =3D ICH9_AHCI(obj);
+>>   +    qemu_init_irq(&d->irq, pci_ich9_ahci_update_irq, d, 0);
+>>       ahci_init(&d->ahci, DEVICE(obj));
+>> +    d->ahci=2Eirq =3D &d->irq;
+>
+>Pre-existing, but we shouldn't set this directly=2E
+>Does the IRQState belong to AHCIState?
+
+AHCIState isn't an Object, and therefore can't have any properties, so we =
+can only set it directly=2E In the SysBus devices, d->ahci=2Eirq is treated=
+ with sysbus_init_irq(), so needs to stay a pointer=2E
+
+I tried to convert AHCIState into a SysBusDevice in order to access it via=
+ these APIs, but that would create migration compatibility problems for the=
+ q35 machine which was a rabbit hole I didn't want to get into=2E So I sett=
+led on this solution=2E Any better proposals?
+
+Best regards,
+Bernhard
 
 >
-> Also, MIDR/REVIDR handling.
+>>   }
+>>     static void pci_ich9_ahci_realize(PCIDevice *dev, Error **errp)
+>> @@ -125,8 +139,6 @@ static void pci_ich9_ahci_realize(PCIDevice *dev, E=
+rror **errp)
+>>       /* XXX Software should program this register */
+>>       dev->config[0x90]   =3D 1 << 6; /* Address Map Register - AHCI mo=
+de */
+>>   -    d->ahci=2Eirq =3D pci_allocate_irq(dev);
+>> -
+>>       pci_register_bar(dev, ICH9_IDP_BAR, PCI_BASE_ADDRESS_SPACE_IO,
+>>                        &d->ahci=2Eidp);
+>>       pci_register_bar(dev, ICH9_MEM_BAR, PCI_BASE_ADDRESS_SPACE_MEMORY=
+,
+>> @@ -161,7 +173,6 @@ static void pci_ich9_uninit(PCIDevice *dev)
+>>         msi_uninit(dev);
+>>       ahci_uninit(&d->ahci);
+>> -    qemu_free_irq(d->ahci=2Eirq);
+>>   }
+>>     static void ich_ahci_class_init(ObjectClass *klass, void *data)
 >
-> Given that we'll need a mix if we support FEAT_xxx, should we mandate
-> the FEAT_xxx syntax if there is a mapping and allow direct specification
-> of register fields only if there is none, or allow them as alternatives
-> (with proper priority handling, or alias handling?)
->
->>
->> Personally I would smoothly migrate what we can from ID reg field props
->> to FEAT props (maybe using prop aliases?), starting from the easiest 1-1
->> mappings and then adressing the FEAT that are more complex but are
->> explictly needed to enable the use cases we are interested in, at RedHat:
->> migration within Ampere AltraMax family, migration within NVidia Grace
->> family, migration within AmpereOne family and migration between Graviton=
-3/4.
->
-> For these, we'll already need the mix (my examples above all came from
-> these use cases.)
->
-> (Of course, the existing legacy props need to be expressed as well. I
-> guess they should map to registers directly.)
->
->>
->> We have no info about other's use cases. If some of you want to see some
->> other live migration combinations addressed, please raise your voice.
->> Some CSPs may have their own LM solution/requirements but they don't use
->> qemu. So I think we shall concentrate on those use cases.
->>
->> You did the exercise to identify most prevalent patterns for FEAT to
->> IDREG fields mappings. I think we should now encode this conversion
->> table for those which are needed in above use cases.
->
-> I'd focus on the actually needed features first, as otherwise it's
-> really overwhelming.
->
->>
->> From a named model point of view, since I do not see much traction
->> upstream besides Red Hat use cases, targetting ARM spec revision
->> baselines may be overkill. Personally I would try to focus on above
->> models: AltraMax, AmpereOne, Grace, ... Or maybe the ARM cores they may
->> be derived from. According to the discussion we had with Marc in [1] it
->> seems it does not make sense to target migration between very
->> heterogeneous machines and Dan said we would prefer to avoid adding
->> plenty of feat add-ons to a named models. So I would rather be as close
->> as possible to a specific family definition.=C2=A0 =C2=A0
->
-> Using e.g. Neoverse-V2 as a base currently looks most attractive to
-> me -- going with Armv<x>.<y> would probably give a larger diff (although
-> the diff for Graviton3/4 is pretty large anyway.)
->
->>
->> Thanks
->>
->> Eric
->>
->> [1]
->> https://lore.kernel.org/all/c879fda9-db5a-4743-805d-03c0acba8060@redhat.=
-com/#r

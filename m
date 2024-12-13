@@ -1,177 +1,208 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp441786njb;
-        Fri, 13 Dec 2024 05:33:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX52g4kWO9cnZgb4P5HCvN4H9f8bk9OvHzXdr8zxbP//4gQbp13hSCA3z1pU5aTQZKvRwQB7FYb8mnMeQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHoLfZg2wbeYULPQ6qlwqwALSZNgcdEydPw0Zcsa4CvU6NNVEtQ4CGhrBoqaBDqtGZxPlsk
-X-Received: by 2002:a05:6102:5086:b0:4b2:5d10:58f2 with SMTP id ada2fe7eead31-4b25d9dc06fmr2457594137.14.1734096821180;
-        Fri, 13 Dec 2024 05:33:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734096821; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp442611njb;
+        Fri, 13 Dec 2024 05:35:00 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWEiQd8EESR3sLrm/gPThNKxjtb2rKUnQ0KyNlOzB1i0/qzi2e0Si2z3CSJTUxL8yLuSAtVUM8ErH3PYQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGbRl3eIw9/FE16Em5rl6BEf92mjfvxrjLJT+vpdYfrypRFOmCJ1VxYI114DdMbkBPNsXwX
+X-Received: by 2002:a05:622a:13d2:b0:467:4fc5:9d72 with SMTP id d75a77b69052e-467a5810b05mr54867891cf.36.1734096900766;
+        Fri, 13 Dec 2024 05:35:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734096900; cv=none;
         d=google.com; s=arc-20240605;
-        b=L1JIBpqPnRVDHTtGrcCIxbyy0AK9dvCDrMgqajv6CBBbJMhaYzIlmDcNnHex/D2gJU
-         qCHeomvzRpmkbS1H7KHj0xyQFFrXdkvD4pvMvY6B5WyP+ZrWjmt95FHEVp4aijVKs6h7
-         KkwrP+w5Atyj/7Wsc2yOS6wV70Kg6iPpTaK5ml/Ag11BRinxYGyu9eXNo12CXXxpoMic
-         +kskw7/nj4Zh8JJBwlnhDo5W0bzUuEogM0Qyc8l06+UxIgXaSDXOynL6stFUDhIwnyy/
-         UUQU7vBty4UgkyYEBiJ3niqCIiMM04WjMb4+57OaRm28kgZqT+pWoiEACstyykAy2jmY
-         W29Q==
+        b=NAXFjtQdkV8Sl+uq0H2ho7EJ+0dQNyYQn0NThTK5guEPr+InvPu3vKQUBz+z6RyLTH
+         lmHu4SiDIK5VuriIsAOgSHKNIBYve484rNkJuifaC9OFWIOL5C85RaqBLWjEHPH44io2
+         xGqMzPWevaLYGM51Ge9cIu5M5XNx7jg4C8QCfXwZFhwY9aDvKYe1R0EKBaPSg6TU32Sp
+         qXVeHbPPFiKSCCGL+YV9fK0yXeeqq8+yTwkveVE7eXXjRR+0V6ouf6i9yqUduwdmHIda
+         JAmfLwhJKHZ9tW5ZuSxTmpsDHtUaEPNEzgPWcETb8A3F4z/PFKTap17/KdXGFSCOSWBJ
+         qZ1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=piXXDZNp+2KqmXj1aW1aqNKgH/s5yCr0icvW0IsA9Hg=;
-        fh=gQbzx8oRAgfEx0WIAJhnlishM/YV3brO90RFPLGx4c0=;
-        b=XMv9ZcrRJ8h3ZtpKmKtDfH8JooERHlVGJNqKMtC3HxOi47MIRm1kVCmUMUgcKk6Aqe
-         cDpi/OsF1yCaQT1yv7Oc/uEObAwkijp2EaUVfEhQLDA+DH8gDMtKgjwL3+uL4KWvOEcu
-         4dahRKgNvbFK5NUhLFie0LWxQ+MJtwF4fcKW9/GqUyJKTW+3AODoD7QBuC50gRhWuwGo
-         oOz8zKzYtMnbcq+gnYqYDXU3y6Pvw9uZWXbbfelzNJMhjaDueQLi0+plzn6BcbeFwGwv
-         hZiGlYBOalcOHYGIvI0Yx+h1EuYUXNoXrrVMBwwZqUGqDF2US912mi3ajR8TfwCEy8Ob
-         AinQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=WlswgE/eUO5zmvvMPBofBLx3raLRd7GBRUggU9AjFY8=;
+        fh=5/bEEfneXpYiCSLu1RRtIdWOVpk1SgQYYFlk2zFRZHo=;
+        b=dumycjJN0JF2UdN7SE2u1MFZxy3XqDvwfDySm+fFip/Z940OWELcTSyJ5RYtE255XH
+         +uq5P4rTA7WgRDgifDqS3atVB3OW01G6a/tQWJGsO+2ztGQFbsWZOR2Rh7hk/Yfvhptp
+         5DyK07uMUkGGJ54JLhVFnwrseecWnDSq7sNSaWa/7vTKbUzzqCy9e/Lflz11HX9TnSCo
+         dxctWSMXL+RhPa4QmNUXUSIt8/VcSu23BsW6CMiW4RHLTMoHOr0FtFYhuQKBE/WJNnb1
+         jrHFWqHvfoEqMn/oapKtXhUuacBko/e1V4yOe6SnbqMYgdcRc+Tj15chqYkt3qFQ+V/+
+         YEwA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OwdxxTbO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ijtpxrzu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4affc654b76si3400109137.57.2024.12.13.05.33.41
+        by mx.google.com with ESMTPS id d75a77b69052e-4678bc61e75si69890151cf.605.2024.12.13.05.35.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 05:33:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Dec 2024 05:35:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OwdxxTbO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ijtpxrzu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tM5nI-00050j-Sq; Fri, 13 Dec 2024 08:33:24 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tM5oQ-0005IN-H8; Fri, 13 Dec 2024 08:34:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tM5nF-000505-AE
- for qemu-arm@nongnu.org; Fri, 13 Dec 2024 08:33:21 -0500
-Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tM5ny-0005AL-7i
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2024 08:34:11 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tM5nC-00010i-LS
- for qemu-arm@nongnu.org; Fri, 13 Dec 2024 08:33:21 -0500
-Received: by mail-yw1-x112c.google.com with SMTP id
- 00721157ae682-6f145e5cd83so15334937b3.1
- for <qemu-arm@nongnu.org>; Fri, 13 Dec 2024 05:33:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tM5nv-00014y-Cm
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2024 08:34:05 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-385deda28b3so1299389f8f.0
+ for <qemu-devel@nongnu.org>; Fri, 13 Dec 2024 05:34:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734096797; x=1734701597; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1734096840; x=1734701640; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=piXXDZNp+2KqmXj1aW1aqNKgH/s5yCr0icvW0IsA9Hg=;
- b=OwdxxTbOHgrKiIJBpck0sDhESM61FtdD1fX3qdAnEQBCOEaeG1epY48f+htRVGBTkl
- qHCKGZhQYa3uUBbmA3YjYPUgHbg6qwbTgzGolkwAwNPZqw7RNfIlOfbv3y9jLU7fd4wv
- 6g5wGtou4x0ZclN9VvXvKhuZgIfBrDQxCgLJ0pPhNk/i5dERTIAVXwrzCkQ7w3Sy+Ixu
- YnjRl/cWe+Q8jBejCYGSXk+5VehAo4YIxQ3ZGJeyjhIFgCL41UaxurGSePBUMQf74HYf
- riVOzWmsggYtBvdAJ7qluN/d5ZX8ZwHq7j5FM6IAkUifI6LEBFUOG3j1pWUAUKPHmghc
- 5xJg==
+ bh=WlswgE/eUO5zmvvMPBofBLx3raLRd7GBRUggU9AjFY8=;
+ b=IjtpxrzuxdaEX3fkeS7JbkX83ZVBNxAQSPxvsRLm3MpaXfaGj/BRo6fmcH58vSWHm5
+ qcN4Xj82oIKb/0kZUjMj0KfzE7u3jYmjlQ9UcTjgJoRLyrLQN5koQd1Pjit6ZsIyoqDr
+ FCjZzw/NG32/NDNev+jEvoU2DFXoT4dQH5bGRmW7V+yzVbn3/kWjgyyDf8PPlUrUw2bA
+ 8DoPgMutmrWQ1ydQ+uPBiF6+R9IM5v1kGd1E+gbaNx1kFiRZii+eUswfcU30aINvloul
+ d6vOpDgp5wLzXM4UriXKXmT9lJk5Xn6z/ttpkOc9jF8Z8VDk+mvARFmn9tZY1WtShKW8
+ g02Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734096797; x=1734701597;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1734096840; x=1734701640;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=piXXDZNp+2KqmXj1aW1aqNKgH/s5yCr0icvW0IsA9Hg=;
- b=KLYsytSV5WFLxx7uA2EsPO/Ecdb0SavCU514z5FqBZ8jToakQPtKiZxKTgQz4LEowI
- qzdW+EsXmDZLrLZ+pBgBpucy7gpsL8lKW67KjHLHU8U48iw0Mfc8N0jpGXWq3is3jLtb
- pTLuZTPaDE2G2Lv2VELxeh5JX4H3EiCcQGKOMt8UJ5JNZ5CgBub7tb8gMquiw2cmcJJ5
- Jwd3y8TiK5JHbA3REMimVc35NHUUyxBFuVM4UrX+/ocGp1p5FRishqtB2OeclRxYJZQO
- fiJXreT3IXfF2Ykl58+auPhejcXLMaiFKLXEPjj6PjOGS02esZd6FjdFBVjinhKYam57
- 8o3Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU4saOxpQmYL/3pfvgKNwsB0tN6soHEXNirdye3Sozp9Kczz/otSa3UpTnraPXRytMqoaMwcM+n8Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwTSR300aPxG8KiqIjmqurjPzAoE/57QkZAxgqWzLgC5IESUpHa
- PPfpl9TPxldvQs6jHQtrM4lg+NiG6B3vCAeOnP8hgSi98jFiZYVar8SDzfkDRtW+w4vlSTuQloN
- ICEUYGdOHYG/73SmXoyF8M2jQtioVOHGcZv1SDQ==
-X-Gm-Gg: ASbGncvWQPPmnMa3thVyXUZLRt4PM6N8Tc037GHjEA4yT5oZ2FVPr3aa+l3hnMzksC3
- 0Zg32vfUIuMDfFlOeziXmJeh/JXY7mRDvXMP+zo8=
-X-Received: by 2002:a05:690c:748a:b0:6ef:5688:f966 with SMTP id
- 00721157ae682-6f279b9bb53mr24243737b3.37.1734096796837; Fri, 13 Dec 2024
- 05:33:16 -0800 (PST)
+ bh=WlswgE/eUO5zmvvMPBofBLx3raLRd7GBRUggU9AjFY8=;
+ b=Q7EyP+FUfQafPiWvfZIYBv63h0KSNxy6ZAdafcd5CVDzI+Zzhhp3m2si98VCBZjHEV
+ DSZCnW6RQDvq6Xlm4rtDmgz/0B3qXazsQ9U1g+yqsErt00V9jFvJoiJ5dsITVvx+sp82
+ Oy5nNBe0NMLTO/Hpccn/gLnBRvI5Ok3ADSNDSQ0qHxXb1epB8ya5KfPBuXQ7/TWgEncU
+ Du7Gt09wDT2l7edTDKd10owGZFS3Eo3aOWQv6eQT8JJQWkSGNGddBckPtYigyKaoTKho
+ RkRP3QxbPhINjgSlijQPmXuG951n6essyFWBTMw7nWFam/C8aE3R6QvbWyOuBMahVdhv
+ RAgA==
+X-Gm-Message-State: AOJu0YyoRoUhHGP+Hpt7ywRZi/mIukwWIHBZVud5qxgxj2ze2DrOLwJN
+ /foGtR7Id8xxA9W6NVE+xDyNnFnMtRJr0rxuK1ZA9uXMluSZ4qowJdqD29e6ljGzFQnBfyFvKPT
+ j
+X-Gm-Gg: ASbGncveEDiXFyRInQE775ymF/vLFeMKF87kXb1pkU9Nm37YywZVCr4ffYXtoAO9+Ge
+ aJqae2to2cW9YdzvXyK4a52S9M2G7IFo76XqtjO2dYJJVj8rPIjaaFe9XmxH65G5mp/f5GlgBr+
+ HSXgdFRm0kCciC/3p3jZDgt+zlQsVdVLPtK3WXH/I439+OYc5C+KgDCL6VLg0bYzQ2UeQRV57KT
+ YtZx2xWwPB7dloiFQx5cZV7tHE1wydEhJDUIxJRIM8C8ZkRhR/0n9i2tJaeCNwQ8wxb40FFbTJT
+ AzuSMGVLpqZyMHlZUng4UAfih4BHb7+aM7sP
+X-Received: by 2002:a05:6000:4616:b0:385:dedb:a148 with SMTP id
+ ffacd0b85a97d-3888e0ac4f4mr1863536f8f.46.1734096839885; 
+ Fri, 13 Dec 2024 05:33:59 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-436255531dasm48965815e9.8.2024.12.13.05.33.58
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 13 Dec 2024 05:33:58 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 1/7] hw/nvram/fw_cfg: Rename
+ fw_cfg_add_[file]_from_generator()
+Date: Fri, 13 Dec 2024 14:33:46 +0100
+Message-ID: <20241213133352.10915-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20241213133352.10915-1-philmd@linaro.org>
+References: <20241213133352.10915-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
-In-Reply-To: <Z1wsslDnwlth3A8+@nvidia.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Dec 2024 13:33:05 +0000
-Message-ID: <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org, eric.auger@redhat.com, nicolinc@nvidia.com, 
- ddutile@redhat.com, linuxarm@huawei.com, wangzhou1@hisilicon.com, 
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com, zhangfei.gao@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HJ2cGD2JBgqx
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 1NO6qWIBa57O
 
-On Fri, 13 Dec 2024 at 12:46, Jason Gunthorpe <jgg@nvidia.com> wrote:
->
-> On Fri, Dec 13, 2024 at 12:00:43PM +0000, Daniel P. Berrang=C3=A9 wrote:
-> > On Fri, Nov 08, 2024 at 12:52:37PM +0000, Shameer Kolothum via wrote:
-> > > Hi,
-> > >
-> > > This series adds initial support for a user-creatable "arm-smmuv3-nes=
-ted"
-> > > device to Qemu. At present the Qemu ARM SMMUv3 emulation is per machi=
-ne
-> > > and cannot support multiple SMMUv3s.
-> > >
-> > > In order to support vfio-pci dev assignment with vSMMUv3, the physica=
-l
-> > > SMMUv3 has to be configured in nested mode. Having a pluggable
-> > > "arm-smmuv3-nested" device enables us to have multiple vSMMUv3 for Gu=
-ests
-> > > running on a host with multiple physical SMMUv3s. A few benefits of d=
-oing
-> > > this are,
-> >
-> > I'm not very familiar with arm, but from this description I'm not
-> > really seeing how "nesting" is involved here. You're only talking
-> > about the host and 1 L1 guest, no L2 guest.
->
-> nesting is the term the iommu side is using to refer to the 2
-> dimensional paging, ie a guest page table on top of a hypervisor page
-> table.
+fw_cfg_add_from_generator() is adding a 'file' entry,
+so rename as fw_cfg_add_file_from_generator() for
+clarity. Besides, we might introduce generators for
+other entry types.
 
-Isn't that more usually called "two stage" paging? Calling
-that "nesting" seems like it is going to be massively confusing...
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ include/hw/nvram/fw_cfg.h | 6 +++---
+ hw/nvram/fw_cfg.c         | 4 ++--
+ system/vl.c               | 2 +-
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-Also, how does it relate to what this series seems to be
-doing, where we provide the guest with two separate SMMUs?
-(Are those two SMMUs "nested" in the sense that one is sitting
-behind the other?)
+diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+index fa426776192..14e68966c59 100644
+--- a/include/hw/nvram/fw_cfg.h
++++ b/include/hw/nvram/fw_cfg.h
+@@ -291,7 +291,7 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *filename, void *data,
+                          size_t len);
+ 
+ /**
+- * fw_cfg_add_from_generator:
++ * fw_cfg_add_file_from_generator:
+  * @s: fw_cfg device being modified
+  * @filename: name of new fw_cfg file item
+  * @gen_id: name of object implementing FW_CFG_DATA_GENERATOR interface
+@@ -307,8 +307,8 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *filename, void *data,
+  *
+  * Returns: %true on success, %false on error.
+  */
+-bool fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
+-                               const char *gen_id, Error **errp);
++bool fw_cfg_add_file_from_generator(FWCfgState *s, const char *filename,
++                                    const char *gen_id, Error **errp);
+ 
+ /**
+  * fw_cfg_add_extra_pci_roots:
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index b644577734c..fe3b86135a7 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -1027,8 +1027,8 @@ void *fw_cfg_modify_file(FWCfgState *s, const char *filename,
+     return NULL;
+ }
+ 
+-bool fw_cfg_add_from_generator(FWCfgState *s, const char *filename,
+-                               const char *gen_id, Error **errp)
++bool fw_cfg_add_file_from_generator(FWCfgState *s, const char *filename,
++                                    const char *gen_id, Error **errp)
+ {
+     FWCfgDataGeneratorClass *klass;
+     GByteArray *array;
+diff --git a/system/vl.c b/system/vl.c
+index 2f855d83fbb..f103532a9a1 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -1184,7 +1184,7 @@ static int parse_fw_cfg(void *opaque, QemuOpts *opts, Error **errp)
+         size = strlen(str); /* NUL terminator NOT included in fw_cfg blob */
+         buf = g_memdup(str, size);
+     } else if (nonempty_str(gen_id)) {
+-        if (!fw_cfg_add_from_generator(fw_cfg, name, gen_id, errp)) {
++        if (!fw_cfg_add_file_from_generator(fw_cfg, name, gen_id, errp)) {
+             return -1;
+         }
+         return 0;
+-- 
+2.45.2
 
-thanks
--- PMM

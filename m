@@ -1,128 +1,124 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp683143njb;
-        Fri, 13 Dec 2024 11:20:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXC99O1lEDMhjTMFtp1SRPc3K8xyxB4iBkJJ3Z2nOOym6u25Yf+miTRl0ZASk4PpcfB0ksWFqUShbRefQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGAU73DaniaZS5TMCJfnDcg4dTI/GiqPg/2dZxuAaFtDMGfnIPzrIUd11GFnpJLZ4rmgwGp
-X-Received: by 2002:a05:620a:438b:b0:7b6:cbfb:4830 with SMTP id af79cd13be357-7b6fbf44fcbmr531885885a.62.1734117606477;
-        Fri, 13 Dec 2024 11:20:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734117606; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp683480njb;
+        Fri, 13 Dec 2024 11:20:40 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUx4RzTz6boQirhzEmVEw2A4Ef5YJIINN860QopTv39MdypB7sC8sbY5zitqL9YJvUhqwhn5DffdTLfDw==@linaro.org
+X-Google-Smtp-Source: AGHT+IE6z0f15twNmUF6kVRE6+NZu0oGCplW+39ykkBEI+R7D7oXJJzZtU2/nIsv6olJulFiK5y6
+X-Received: by 2002:a05:6102:32d2:b0:4b2:45a3:59f1 with SMTP id ada2fe7eead31-4b25d98cc02mr4007505137.9.1734117640412;
+        Fri, 13 Dec 2024 11:20:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734117640; cv=none;
         d=google.com; s=arc-20240605;
-        b=dS684lQj+aj5MggF4cv41AeFEH2vMG0d1G0rUflT2VFr0ytaANjpXk39FW9Jg/nEm3
-         4y5D5PiJGO6RIq7lYF+CfTDWku5cJEvRIobbOTeShRl+HB0dMwzjZOfrcCjrwAbYpd/l
-         HCIf4+b84OGw4dnYZa8YpfAimgbnCv6qnfWGuIR4cG3OZBxWOq75tWa4PeOXC88wNKMZ
-         jhmeMslanR9+NGtm1EBSxKrDvu5h0838uqNuHxQVzua3/FFFFZ1JlJpjSn0AO8S9c8/1
-         opC0/mSLRCbXqsZ1l7Q8Z7LmOdFesB7RSBmxKafXM7SulEz50QzoivYE5hipfn9bI/Un
-         Ym8Q==
+        b=Iajv3Okd4yj7H5vDT+q3EQHe51yBq0ASVen7T/hwOnnComc2N/3VEPPUmQeemTNgEN
+         rOy1DWn5zg0xVYTv89flcVTvsHoXhcp8diaerSpJcQrGWMR9t/T07ioYzN8g3RVaiyIt
+         nJtKQBJtWSpHzpNL7mnt2r4nrha1VJFXWBmJEa33/NnVRe8UrtoFMAviHFrI234FhYxY
+         ZjLFNOSJad2bQOKKrDZKKs7ie9oxNsnUxwb+JpZL1wdF0yDkGon7F4zphF2F7Me/ShWj
+         GAzEKg0MkCHUryKV9vpfPgQFxBtPKkkfKg9LpMWpanD1w6q0vQjC17H5WRXoRV0HQVDL
+         Qq3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=iFwnVaMVK9pfiO5zNGncf7wC5DNSQZHLJ7Ggx4d/5SQ=;
-        fh=aFu8GgTC7l716EelWtS+xk8bZpYHfd5oBbSw+lZgjEY=;
-        b=gSEDQwNgckuOrBzfKke1BwWNgNrftkv/ZBvhCHUjgTUPXDux6gdgHfpe07+uGxekKB
-         8YXz3+mFC6X2xUQEDeiJbuMxQe1utCE9swkJzBRDlM+cBcpbxmq1Yo/zN7J6eb6WRZaQ
-         eQRFLFUVIdPNizMHtrFUYxfafiefeccD7F7ouWhkz4l8Er1vWRR6cc480GVWC0D1ZvYN
-         gN6Gy7YVXB3vM3CVVdPjok/XmsuO2r5OaayQCv0OelTYkcFFCo2hebH4JIs/gg/f0iNF
-         VyvUUyHoK14eWvOdIl9OVLwJri3Y12RlfHxrvJ0UWppRPCB0KvwgHuiIYytsecHDMarj
-         vg3g==;
+        bh=4K+Ow/kpxla1hHfSMb1r5BWBj60XilhZFUT+PuNLeCM=;
+        fh=Ud5rPIdYeD9NBj8SFa0cwZjKeU+M2mgeJzZ+m79q2YI=;
+        b=k1Xh1VzduzFzVOuRpzgwTVbrWDYuaKvIcApbpaZN+1r+y6oE8lfdcxDrhji3/gcck5
+         A9zigaDiFaJdWUdoHX/+8+A6Tiqu4graY5d/xLBhfkkY8g/W5USxhk69QNSduyM3xNyR
+         tICfAY2Nr64WQPrxFn1WrFRADi9J62/Rem9yrwwxs6m3CB9pYCtGsjbNg70d23BC4EOo
+         cPnZ2ddqcj75RohasYQkfm/HSPFJvMKFvCY6swWzXgyokcwt1mFRNyLJ7quvZfIRVzfB
+         7N9OW2wIOjOxg7JlziehyrIp5TUl53oteSZq0S6pnvBfmy8YX4xJCisJZeBfaNoSib7U
+         CYIg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sKnlxahX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rJ1zB70l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b7048d49e4si12776285a.470.2024.12.13.11.20.06
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b270433325si33369137.475.2024.12.13.11.20.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 11:20:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 13 Dec 2024 11:20:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sKnlxahX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=rJ1zB70l;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tMB7f-0007kb-1s; Fri, 13 Dec 2024 14:14:48 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tMB3n-00067f-Pz; Fri, 13 Dec 2024 14:10:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tMB72-0006ID-Ek
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 14:14:08 -0500
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
+ id 1tMB3V-0005bu-TM
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2024 14:10:31 -0500
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tMB6v-0007W2-8S
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 14:14:07 -0500
-Received: by mail-oa1-x30.google.com with SMTP id
- 586e51a60fabf-29ff039dab2so1026455fac.3
- for <qemu-devel@nongnu.org>; Fri, 13 Dec 2024 11:14:00 -0800 (PST)
+ id 1tMB3Q-00071S-UQ
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2024 14:10:28 -0500
+Received: by mail-ot1-x335.google.com with SMTP id
+ 46e09a7af769-71e35be77b5so458108a34.1
+ for <qemu-arm@nongnu.org>; Fri, 13 Dec 2024 11:10:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734117240; x=1734722040; darn=nongnu.org;
+ d=linaro.org; s=google; t=1734117023; x=1734721823; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=iFwnVaMVK9pfiO5zNGncf7wC5DNSQZHLJ7Ggx4d/5SQ=;
- b=sKnlxahX6wqEJSFG+WnvlZQUoJWj744b+1YJAqBpY08GBHLUHnB2YDrMTpNMT257/B
- Hohe6oxbUDraKwcrTFUWedkiDgN20miNn04AJ8SZ/yt3gZhrwPM+FgOKFWl9i2i0P7u/
- 1Ypp5SXVMWjKNhmkzKQm0brP/ys1vY3yBVS9vqIN3Z7//r5SbfYOZkQiFe70+o0HxJ7K
- cGXcidnw5A2plafY6Slb6T1L8ddn1v0WWvqUjuG+mKfD68lgUZtYYc+UucLD0gT3SjJT
- vYWB4ETPL4KrxVqq6e/cLUthj8/wg/adKdG16hwQ+HnKzqnOBYJqn+oLe83Ts/TWSPqQ
- /Sgg==
+ bh=4K+Ow/kpxla1hHfSMb1r5BWBj60XilhZFUT+PuNLeCM=;
+ b=rJ1zB70ld3fkZYYS0SLH3sC+Yp5bJPEKdCsDse0YW66Ci8Oa8wijrkO/QtCUvdUuKK
+ BkTph2MufouxJuk1CoSXxN6ZG+GsTdGYCIqV4WSnaP9wSCyEVqrJMDR/zOlv7c6hPDGT
+ HHRDKl8S8LsgAJeYUmj75S/3vXagjzZe9k/bn9XBoZn+hdiOaFejx89Y9O6voIQITUvv
+ FaGTUiFC3KRuqyUQB1RypQY1FkdRti+5pkJktA9TGbYdVFqWC5/PFGX7HTcm0wqKcI4Q
+ G0zRMu2A3LYBAclAmIsc9WjleMsQFfIrKfpJFsmnndU89iYyz9ZfbbYYTv0xTiOm6cW3
+ c/Mw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734117240; x=1734722040;
+ d=1e100.net; s=20230601; t=1734117023; x=1734721823;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=iFwnVaMVK9pfiO5zNGncf7wC5DNSQZHLJ7Ggx4d/5SQ=;
- b=OG6PI9YnJWwm5Vkkp7D1OkolZLzbePdrTbPWlB6f80AYaS20QPwWRxh2hpKWaMEP8I
- GIJ6fEFBhrr896D0tPF60nN/d6FmnNMqysHW6I/r7hYeIQkAgrVzI3KYxbvt6Mp1IGnY
- 7vf09VA7XbBH7bGAS3k5TYlkWNmFO04JrETL2oPfwGtZsUbAq6LfA3FBj9HPMk6EXxve
- pvehnZdt1D4X/ChQcP61yRIXDK74MoD3zZilssgmOvU2Fmks+RJJgG8eoyOKYwS/q8kJ
- aFIz9pSQqZoA3lGjCZvOHX+BiIs5oOUAo7Vs0RfOl7GofS7aLyeFZDADRgt+D2jRrUxt
- wZSQ==
-X-Gm-Message-State: AOJu0YwJAw6OuHAgey2FMyPFo4jdZsMvJCMZzj36Qa6aYJBBgro7PV4f
- QSimROsCRkrVXfsqWoe7+5gVKpGmNAVvaRaeDCzuCSKtWJxzwrTimh8mfrr9wFlpSYH8RJgn/BN
- dVvCPgtbC
-X-Gm-Gg: ASbGncuagcM7tXM0KVWArAOj8Wk5Y9jbFjpWGuOfhzA6wSk/GOVnQB4Mmw48p9HQ8pl
- FHMBlm+NItxhQjM1X3J7lPRN2tanotGU42nJ7iDTfVgVfOpvC0Ze1857yODxex8vFgi6RuzXx56
- ia3tmo0EUHfIpRHYK7rwqSVMrEJ8vv/QnSDR/6ACS7l88OuS2Gv6MzR+OE9rlMT7tdhp1KZm00F
- fEwnTOjS0EFOgVAsGCh71gcT3eZbc4ito8YBDUEiTb9fqSeMGYNv8+MocDqtCib
-X-Received: by 2002:a05:6808:1596:b0:3ea:37a7:394 with SMTP id
- 5614622812f47-3eba6955bd8mr1970139b6e.34.1734117240023; 
- Fri, 13 Dec 2024 11:14:00 -0800 (PST)
+ bh=4K+Ow/kpxla1hHfSMb1r5BWBj60XilhZFUT+PuNLeCM=;
+ b=I7z53dhazBKV7O1EQPzH5Vf2AXiuMJ95Tk7N51qiYdT2Qkhy/+pMY3qArTKJ189qDr
+ bjk58rWH70sMWtpXCc5cTZBrLfWkP/FTppRYBY6il9/2iX1dE03KuTtWaKE7dPvkHGpw
+ YKWn0N2jbfyPuX0wBXC0kwTuKesD9SWGOyiFjLWVKVTpRd9JwEmNzKV4G4WGvwEpQL7P
+ xyo0srZ6LLNJFp0Cg3jkcRogDUJs6j+Pw0ChZXLuAOWkd9lGhbxCtm6sspwqXBKCiJV6
+ 9U73guxN0lRMdHkjt8CSBV4FOmSQiHKQouAVMvO1IEg+Gv/va06yw1DsCU6kPXKH4HSK
+ qYMg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV9TW3+clZilEtUcrsnJFOY8FoN/pFcsmSLtRgLNzYVaRrZFr4TsjiopFVcZK0WdGndS6O3WUB97A==@nongnu.org
+X-Gm-Message-State: AOJu0YyHJw7QubXBBkmgWbBQdgy4x763WlrwA5QbLT+/PY1nQP5w5syu
+ wrjqzFNNacbNHEi/U9sy8UQohuyUGgdng8z+BBxgW2RhIMkKFvm4EIsdmF796y8=
+X-Gm-Gg: ASbGncuwQ2PT2mcNeckZm1n4DsyNlaSrM9rN/yunGesDq+mCQlTgE0LSJuy3zDZe/CN
+ lxn37hVDvLR2xuDMA8CNaBMNuVqyQJIgTdZn05TXXPOjY+OX6F3WJLsEoTSsncOi2ht6tZuLwFX
+ kycJRjMMl0sP+lxCuAJ5oS4CGQTRggjqgTtkedPEpSyyCLwcc6aAm9lzEJQ5Hk7swoawZcv7vPf
+ nSGtG18sLeE0DFN+0kQtiO9PfjpBdXkk1TAvGPNlyWJ+5anoUUjtsXOiL6JkUoG
+X-Received: by 2002:a05:6830:258c:b0:710:fef4:3c92 with SMTP id
+ 46e09a7af769-71e3ba26862mr2771330a34.21.1734117023633; 
+ Fri, 13 Dec 2024 11:10:23 -0800 (PST)
 Received: from stoup.. ([187.217.227.247]) by smtp.gmail.com with ESMTPSA id
- 5614622812f47-3ebb478a497sm3545b6e.10.2024.12.13.11.13.57
+ 46e09a7af769-71e4834da91sm29697a34.18.2024.12.13.11.10.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Dec 2024 11:13:59 -0800 (PST)
+ Fri, 13 Dec 2024 11:10:23 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <arikalo@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Joel Stanley <joel@jms.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-ppc@nongnu.org (open list:New World (mac99)),
- qemu-arm@nongnu.org (open list:NRF51)
-Subject: [PATCH 44/71] hw/nvram: Constify all Property
-Date: Fri, 13 Dec 2024 13:07:18 -0600
-Message-ID: <20241213190750.2513964-49-richard.henderson@linaro.org>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, Corey Minyard <cminyard@mvista.com>,
+ Patrick Leis <venture@google.com>,
+ qemu-arm@nongnu.org (open list:ASPEED BMCs)
+Subject: [PATCH 28/71] hw/i2c: Constify all Property
+Date: Fri, 13 Dec 2024 13:07:02 -0600
+Message-ID: <20241213190750.2513964-33-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241213190750.2513964-1-richard.henderson@linaro.org>
 References: <20241213190750.2513964-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::30;
- envelope-from=richard.henderson@linaro.org; helo=mail-oa1-x30.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,197 +127,90 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: T0JsnyNqaPGn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: XeHK+sHZJ8uL
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/nvram/ds1225y.c                 | 2 +-
- hw/nvram/eeprom_at24c.c            | 2 +-
- hw/nvram/fw_cfg.c                  | 6 +++---
- hw/nvram/mac_nvram.c               | 2 +-
- hw/nvram/nrf51_nvm.c               | 2 +-
- hw/nvram/spapr_nvram.c             | 2 +-
- hw/nvram/xlnx-bbram.c              | 2 +-
- hw/nvram/xlnx-efuse.c              | 2 +-
- hw/nvram/xlnx-versal-efuse-cache.c | 2 +-
- hw/nvram/xlnx-versal-efuse-ctrl.c  | 2 +-
- hw/nvram/xlnx-zynqmp-efuse.c       | 2 +-
- 11 files changed, 13 insertions(+), 13 deletions(-)
+ hw/i2c/aspeed_i2c.c      | 4 ++--
+ hw/i2c/core.c            | 2 +-
+ hw/i2c/i2c_mux_pca954x.c | 2 +-
+ hw/i2c/omap_i2c.c        | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/nvram/ds1225y.c b/hw/nvram/ds1225y.c
-index 6d510dcc68..19bf8d2091 100644
---- a/hw/nvram/ds1225y.c
-+++ b/hw/nvram/ds1225y.c
-@@ -142,7 +142,7 @@ static void nvram_sysbus_realize(DeviceState *dev, Error **errp)
-     nvram_post_load(s, 0);
- }
- 
--static Property nvram_sysbus_properties[] = {
-+static const Property nvram_sysbus_properties[] = {
-     DEFINE_PROP_UINT32("size", SysBusNvRamState, nvram.chip_size, 0x2000),
-     DEFINE_PROP_STRING("filename", SysBusNvRamState, nvram.filename),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/nvram/eeprom_at24c.c b/hw/nvram/eeprom_at24c.c
-index ec748e58e7..669920b2b9 100644
---- a/hw/nvram/eeprom_at24c.c
-+++ b/hw/nvram/eeprom_at24c.c
-@@ -234,7 +234,7 @@ void at24c_eeprom_reset(DeviceState *state)
-     ee->haveaddr = 0;
- }
- 
--static Property at24c_eeprom_props[] = {
-+static const Property at24c_eeprom_props[] = {
-     DEFINE_PROP_UINT32("rom-size", EEPROMState, rsize, 0),
-     DEFINE_PROP_UINT8("address-size", EEPROMState, asize, 0),
-     DEFINE_PROP_BOOL("writable", EEPROMState, writable, true),
-diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
-index b644577734..fe73a2c1ef 100644
---- a/hw/nvram/fw_cfg.c
-+++ b/hw/nvram/fw_cfg.c
-@@ -1103,7 +1103,7 @@ static void fw_cfg_machine_ready(struct Notifier *n, void *data)
-     qemu_register_reset(fw_cfg_machine_reset, s);
- }
- 
--static Property fw_cfg_properties[] = {
-+static const Property fw_cfg_properties[] = {
-     DEFINE_PROP_BOOL("acpi-mr-restore", FWCfgState, acpi_mr_restore, true),
-     DEFINE_PROP_END_OF_LIST(),
- };
-@@ -1294,7 +1294,7 @@ static void fw_cfg_file_slots_allocate(FWCfgState *s, Error **errp)
-     s->entry_order = g_new0(int, fw_cfg_max_entry(s));
- }
- 
--static Property fw_cfg_io_properties[] = {
-+static const Property fw_cfg_io_properties[] = {
-     DEFINE_PROP_BOOL("dma_enabled", FWCfgIoState, parent_obj.dma_enabled,
-                      true),
-     DEFINE_PROP_UINT16("x-file-slots", FWCfgIoState, parent_obj.file_slots,
-@@ -1343,7 +1343,7 @@ static const TypeInfo fw_cfg_io_info = {
- };
- 
- 
--static Property fw_cfg_mem_properties[] = {
-+static const Property fw_cfg_mem_properties[] = {
-     DEFINE_PROP_UINT32("data_width", FWCfgMemState, data_width, -1),
-     DEFINE_PROP_BOOL("dma_enabled", FWCfgMemState, parent_obj.dma_enabled,
-                      true),
-diff --git a/hw/nvram/mac_nvram.c b/hw/nvram/mac_nvram.c
-index e47e52a677..d62ad719c8 100644
---- a/hw/nvram/mac_nvram.c
-+++ b/hw/nvram/mac_nvram.c
-@@ -134,7 +134,7 @@ static void macio_nvram_unrealizefn(DeviceState *dev)
-     g_free(s->data);
- }
- 
--static Property macio_nvram_properties[] = {
-+static const Property macio_nvram_properties[] = {
-     DEFINE_PROP_UINT32("size", MacIONVRAMState, size, 0),
-     DEFINE_PROP_UINT32("it_shift", MacIONVRAMState, it_shift, 0),
-     DEFINE_PROP_DRIVE("drive", MacIONVRAMState, blk),
-diff --git a/hw/nvram/nrf51_nvm.c b/hw/nvram/nrf51_nvm.c
-index b1f81752a3..236049462b 100644
---- a/hw/nvram/nrf51_nvm.c
-+++ b/hw/nvram/nrf51_nvm.c
-@@ -354,7 +354,7 @@ static void nrf51_nvm_reset(DeviceState *dev)
-     memset(s->uicr_content, 0xFF, sizeof(s->uicr_content));
- }
- 
--static Property nrf51_nvm_properties[] = {
-+static const Property nrf51_nvm_properties[] = {
-     DEFINE_PROP_UINT32("flash-size", NRF51NVMState, flash_size, 0x40000),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/nvram/spapr_nvram.c b/hw/nvram/spapr_nvram.c
-index bfd8aa367e..2251ff2f4c 100644
---- a/hw/nvram/spapr_nvram.c
-+++ b/hw/nvram/spapr_nvram.c
-@@ -252,7 +252,7 @@ static const VMStateDescription vmstate_spapr_nvram = {
-     },
- };
- 
--static Property spapr_nvram_properties[] = {
-+static const Property spapr_nvram_properties[] = {
-     DEFINE_SPAPR_PROPERTIES(SpaprNvram, sdev),
-     DEFINE_PROP_DRIVE("drive", SpaprNvram, blk),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/nvram/xlnx-bbram.c b/hw/nvram/xlnx-bbram.c
-index 1bc58e90ad..4fa528f048 100644
---- a/hw/nvram/xlnx-bbram.c
-+++ b/hw/nvram/xlnx-bbram.c
-@@ -520,7 +520,7 @@ static const VMStateDescription vmstate_bbram_ctrl = {
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 3ae22cb052..2ea68c3090 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -1258,7 +1258,7 @@ static void aspeed_i2c_realize(DeviceState *dev, Error **errp)
      }
- };
- 
--static Property bbram_ctrl_props[] = {
-+static const Property bbram_ctrl_props[] = {
-     DEFINE_PROP("drive", XlnxBBRam, blk, bbram_prop_drive, BlockBackend *),
-     DEFINE_PROP_UINT32("crc-zpads", XlnxBBRam, crc_zpads, 1),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/nvram/xlnx-efuse.c b/hw/nvram/xlnx-efuse.c
-index f7b849f7de..5dae9e8e9a 100644
---- a/hw/nvram/xlnx-efuse.c
-+++ b/hw/nvram/xlnx-efuse.c
-@@ -265,7 +265,7 @@ static const PropertyInfo efuse_prop_drive = {
-     .release = efuse_prop_release_drive,
- };
- 
--static Property efuse_properties[] = {
-+static const Property efuse_properties[] = {
-     DEFINE_PROP("drive", XlnxEFuse, blk, efuse_prop_drive, BlockBackend *),
-     DEFINE_PROP_UINT8("efuse-nr", XlnxEFuse, efuse_nr, 3),
-     DEFINE_PROP_UINT32("efuse-size", XlnxEFuse, efuse_size, 64 * 32),
-diff --git a/hw/nvram/xlnx-versal-efuse-cache.c b/hw/nvram/xlnx-versal-efuse-cache.c
-index eaec64d785..1aea27afd3 100644
---- a/hw/nvram/xlnx-versal-efuse-cache.c
-+++ b/hw/nvram/xlnx-versal-efuse-cache.c
-@@ -83,7 +83,7 @@ static void efuse_cache_init(Object *obj)
-     sysbus_init_mmio(sbd, &s->iomem);
  }
  
--static Property efuse_cache_props[] = {
-+static const Property efuse_cache_props[] = {
-     DEFINE_PROP_LINK("efuse",
-                      XlnxVersalEFuseCache, efuse,
-                      TYPE_XLNX_EFUSE, XlnxEFuse *),
-diff --git a/hw/nvram/xlnx-versal-efuse-ctrl.c b/hw/nvram/xlnx-versal-efuse-ctrl.c
-index 8252a5cabe..599aa126fb 100644
---- a/hw/nvram/xlnx-versal-efuse-ctrl.c
-+++ b/hw/nvram/xlnx-versal-efuse-ctrl.c
-@@ -743,7 +743,7 @@ static const VMStateDescription vmstate_efuse_ctrl = {
-     }
- };
+-static Property aspeed_i2c_properties[] = {
++static const Property aspeed_i2c_properties[] = {
+     DEFINE_PROP_LINK("dram", AspeedI2CState, dram_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_PROP_END_OF_LIST(),
+@@ -1446,7 +1446,7 @@ static void aspeed_i2c_bus_realize(DeviceState *dev, Error **errp)
+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->mr_pool);
+ }
  
--static Property efuse_ctrl_props[] = {
-+static const Property efuse_ctrl_props[] = {
-     DEFINE_PROP_LINK("efuse",
-                      XlnxVersalEFuseCtrl, efuse,
-                      TYPE_XLNX_EFUSE, XlnxEFuse *),
-diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
-index 4e2d1b9d1e..af53187905 100644
---- a/hw/nvram/xlnx-zynqmp-efuse.c
-+++ b/hw/nvram/xlnx-zynqmp-efuse.c
-@@ -833,7 +833,7 @@ static const VMStateDescription vmstate_efuse = {
-     }
- };
+-static Property aspeed_i2c_bus_properties[] = {
++static const Property aspeed_i2c_bus_properties[] = {
+     DEFINE_PROP_UINT8("bus-id", AspeedI2CBus, id, 0),
+     DEFINE_PROP_LINK("controller", AspeedI2CBus, controller, TYPE_ASPEED_I2C,
+                      AspeedI2CState *),
+diff --git a/hw/i2c/core.c b/hw/i2c/core.c
+index 4cf30b2c86..4118d3db50 100644
+--- a/hw/i2c/core.c
++++ b/hw/i2c/core.c
+@@ -18,7 +18,7 @@
  
--static Property zynqmp_efuse_props[] = {
-+static const Property zynqmp_efuse_props[] = {
-     DEFINE_PROP_LINK("efuse",
-                      XlnxZynqMPEFuse, efuse,
-                      TYPE_XLNX_EFUSE, XlnxEFuse *),
+ #define I2C_BROADCAST 0x00
+ 
+-static Property i2c_props[] = {
++static const Property i2c_props[] = {
+     DEFINE_PROP_UINT8("address", struct I2CSlave, address, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+index db5db956a6..80c570fd10 100644
+--- a/hw/i2c/i2c_mux_pca954x.c
++++ b/hw/i2c/i2c_mux_pca954x.c
+@@ -211,7 +211,7 @@ static void pca954x_init(Object *obj)
+     }
+ }
+ 
+-static Property pca954x_props[] = {
++static const Property pca954x_props[] = {
+     DEFINE_PROP_STRING("name", Pca954xState, name),
+     DEFINE_PROP_END_OF_LIST()
+ };
+diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+index e78505ebdd..172df135f5 100644
+--- a/hw/i2c/omap_i2c.c
++++ b/hw/i2c/omap_i2c.c
+@@ -511,7 +511,7 @@ void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk)
+     i2c->fclk = clk;
+ }
+ 
+-static Property omap_i2c_properties[] = {
++static const Property omap_i2c_properties[] = {
+     DEFINE_PROP_UINT8("revision", OMAPI2CState, revision, 0),
+     DEFINE_PROP_END_OF_LIST(),
+ };
 -- 
 2.43.0
 

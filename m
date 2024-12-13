@@ -1,187 +1,141 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp433548njb;
-        Fri, 13 Dec 2024 05:20:45 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUJnuc3qAebL4nB/wphGa1Y2UwMz0Ab85LOemZEMS2KzIe8A70Ew/LRkR792LNtjvib7Er8LJO26BRSrA==@linaro.org
-X-Google-Smtp-Source: AGHT+IETVSG/AY/HZuT442S1wP163PKnlh/dxWMDIH7/FSlmMe1zkrpiZUM6kK9d09Ie2t5Kv72O
-X-Received: by 2002:a05:620a:40c4:b0:7b6:cb81:95d with SMTP id af79cd13be357-7b6fbee9bc2mr453167985a.21.1734096045190;
-        Fri, 13 Dec 2024 05:20:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734096045; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp482241njb;
+        Fri, 13 Dec 2024 06:31:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW7IdgcdM+8otkAEhMsp4FWgpViLk8jNQcYstduoDPN1jfBrpoYcVgpppPwLtohkGnTH3G9DGef0zXrpQ==@linaro.org
+X-Received: by 2002:a05:600c:1c16:b0:434:f297:8e85 with SMTP id 5b1f17b1804b1-4362aa3e3a3mr29838635e9.10.1734100295025;
+        Fri, 13 Dec 2024 06:31:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734100295; cv=none;
         d=google.com; s=arc-20240605;
-        b=hlBZHyrOjmk8SPS9Midl5sbT1kMDg3iUnDX8kB57HGV68jKhTy7FSpvfZkcZ2ZILd8
-         sryhucXsjjqrgFwM/o6ldherjq4HAX0ceD3NmZPyacAKxc3ZnGwHCaT7OtLuo2d5imsD
-         2RzBaPOZPZdoMho/hY61Ki5WMm+uwSKJ4+KBEBP9svr0g29wQu0qrYZnRihMjTiaSzje
-         pqM2ISuJdCcKEMNxMEfabO6wr6+LCLcJPnbAcrPKjx1iyJieTMwlurUnCjwvpiLjzEcK
-         dH1dqx83kbCvYNquI7jOBiUA4yG/x589WOsDPoKu+RhBNLxIwH/NDacVhlfuHzkfFwjK
-         V1Qw==
+        b=gVJ6AUYold9OQH+WsiPG4WGr2fPpj/QMAO7ZHqGX7c+61OW6U1X8vGm82ResBaCjOf
+         tAV1DyTaxY2W5N6iVO8QoCYvPG25GwsiAZU54awf1szoprquWR7VyLpxKPqVK8btpPfb
+         E34JoPMADh2hkWdTnhaqU90jPvsKXZU72LvyrGzmPA7k5rkafoldD/EJ8UKs+xvVlotQ
+         M64ZR9b8ocCF83UmJSVdBJxaVIjlSWNaHSxX0bQYYic/Ox6mRWSjcBzjpREwGYEcpKds
+         cGW0EJfsXGynq0uKEmu6wnQoYFAisg8dqwcCavpBo0/iE//pfpCpudjU56+E7I/nCSAA
+         BBKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=hDVPbiR3ltA744kJJVDgG00hc45F88qSKEtNzbzyiqI=;
-        fh=WWB1wtDIpUa/ySgb4SqRHWkTVOZ9QgvmqHMbzCBWnsE=;
-        b=epbwS0vhwUQ6jy7mwMSlVTGpB1vg0KLm1JSeTRvPtWHZx/u/74xOjCnvK6rngpCaCp
-         pSFSRN3EdpO2V/hTlZUZc85j+kfHKBk1+GFsGLzeEKWsXIcw+Svyx3C/harKcQJSSKW2
-         52bM0v/fbt0nYjnfoiyaRH9Hpneu087zmc6rv/R5uuUgG5hdpTkm/noio2RWx/2WXoZt
-         mj7lvkZ0ROf46dJ700PefuVXu03CT06xzrTSh62oS1PAHNOY6Rw5asL7g6/iksDxkoCQ
-         e/oqLQMtdJV0CwJDS76s/4gpszv3JRZ19OuHfVPnS23MfdYr7z9KCbJAqD/ny332Umk/
-         uWEQ==;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=SOecfnNs8osThljsaAKU06/9OnPYwMOWV/4Rbge39/Y=;
+        fh=QHQNnLHkvmK/6N7Ayi+Hta686I0NQ9kRjcDTvskzQ2w=;
+        b=ld5Xr49vIev8XRxnt5axNz7wN73FSru/jGrVf+zYBqxE0w7bGA893NV1Ciubd6RC6Y
+         ++fveymRzG18MPProv0pg3t0LBIVAc/7YWWLGVyVS3RPeJybm3j8heoW8e323bLFSFSa
+         XmEDxB/kefUCnHIaIDy+CP7rm7+D1qhv6tiVihwnZk77fsVXVrB1Tts20tXZFHRP8SCP
+         WITcELruOMd+LQZIB5LJYo951kmlMRE5DbCF7jvf9xUD1lWXujWiWzMjcTXoIh/rEllq
+         MnK4/fzVZ2RGVFPESqZDcBFD4jp8drOBEL+9lqepueNd+cR6TX4lPvCueQKsaSa0sX1a
+         wOtQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gRcQUIXr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b6f6872049si367123685a.376.2024.12.13.05.20.45
+       dkim=pass header.i=@linaro.org header.s=google header.b=XDzOLeIB;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <jean-philippe@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-3862276144csor4560953f8f.6.2024.12.13.06.31.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 05:20:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 13 Dec 2024 06:31:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gRcQUIXr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tM5ah-0003E6-8T; Fri, 13 Dec 2024 08:20:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tM5aX-00038f-Bh
- for qemu-arm@nongnu.org; Fri, 13 Dec 2024 08:20:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tM5aV-0006kQ-Bd
- for qemu-arm@nongnu.org; Fri, 13 Dec 2024 08:20:13 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1734096006;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hDVPbiR3ltA744kJJVDgG00hc45F88qSKEtNzbzyiqI=;
- b=gRcQUIXregrVewE+7JZO2XGuhuA4jeJnGJNyT9Px3vzzTCTo5JT8bX0w+TXTclzBu/eL5e
- ZNF71rRiu5kZOG54tKNJIXxk8By5U6VrwnxC51B9b3HFZl8LvA1tj65Amm9ZpQibG0gfej
- GNnsQm9pPjxFTS3mdRugCZ4cS6+ggkI=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-221-qICFY9fNMmCDeWlDKOWCDQ-1; Fri,
- 13 Dec 2024 08:20:00 -0500
-X-MC-Unique: qICFY9fNMmCDeWlDKOWCDQ-1
-X-Mimecast-MFC-AGG-ID: qICFY9fNMmCDeWlDKOWCDQ
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9824B19560A5; Fri, 13 Dec 2024 13:19:56 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.42])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 775DB195605A; Fri, 13 Dec 2024 13:19:50 +0000 (UTC)
-Date: Fri, 13 Dec 2024 13:19:46 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
- peter.maydell@linaro.org, nicolinc@nvidia.com, ddutile@redhat.com,
- linuxarm@huawei.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Message-ID: <Z1w0cgrK6Ri6smFM@redhat.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=XDzOLeIB;
+       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734100294; x=1734705094; darn=linaro.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=SOecfnNs8osThljsaAKU06/9OnPYwMOWV/4Rbge39/Y=;
+        b=XDzOLeIBxwWSTyXpXilyQQu7wdfvBLAo8b1o51V4sA9l6MOSlvq6thwOCCy9TTXFQx
+         VeJ504UUxX6GXWxSFfXV/AdpT8Tn1Flm2ldA72YBPsJLTh2jEWVcccLqgIwPY4t28Ev4
+         mWFCad5H656ikunB8OFvzP7A75I1eushBwjb7EgB8MMxpSz4uteLeuaN8dPek9P+bo0X
+         0T+ZcjZhIbDQMB1cqEuek0vYBOH3tStPX8l/QYdDdo+p9x0+x9dELAputOtKZjeXLwvv
+         JeNnwsAyXn+0yGPi7WHaMvee73nlYiB+2rFfd0iB34qnkqhkrXNkwZZ/LSWuSincqIjK
+         4JPA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734100294; x=1734705094;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=SOecfnNs8osThljsaAKU06/9OnPYwMOWV/4Rbge39/Y=;
+        b=JTOYBQ+CHbjKt93TJQyRwkQpMvq5cN0yEhZX9DseJ/Omz1iHvhbIHXIlzumCG1yTq+
+         GNNrO6ohkdKiWggdFQUBc1+mvbaufo7kINhhsRi4YMp4TpmxfKr0LxNUFACGRZ4CRtQA
+         HK+hQcsXLE37+zKHLI2fP1bWOH6tOptbb23so5YFp32q96ajQMOxBiSpntvMwV1JY1TE
+         Zpvl9i2eR1Hsr1zWqESJ740MHMg0MrBM0qJat7EMtBqSrfyskl7JAi/2fV1xFa5ZiLDL
+         fsMJlaRzk4cSTKaSFEi9AsaueE6IRNr85ZxR4yMJ8ucyOH1CYEWxXthsrQ6Bm8aF09ze
+         fkkA==
+X-Forwarded-Encrypted: i=1; AJvYcCXBqt6Ue14h1efWkFCvSOts/nq5aTFmsgJBnPcrg5XrYThAmQJAnrG2wDawrGfQAztvRntEtQqj71F2Ig==@linaro.org
+X-Gm-Message-State: AOJu0Yw5ugvubiF7I527x535iaNASwRInIm8qKvVuNDIsemVBJjfAKRO
+	+Pu5nBhZa+WqEhmWq6gOVBbbFHjzkV96KOgfdEUppVu0z5M7dFbeex58FOl+LeuIQg==
+X-Gm-Gg: ASbGncvV7aGEa6V1kM+Xw1sNzV0Ke+/22CU9vl34LAm9BYRk2oOHAwbWTlkA3ZGs2Vn
+	CpqBb+8wHRTZ/Qxt40iEl1XprfhYNHQcGciXIXDGnKgUg8nReuSq7u9xF1e6Pz6n2h5Ni6hbeWF
+	BXwgy72gV/4k0CpH3TV3oPDSY6eXvsLP4T52FFpMeM3o1WyXJlx5FVKkd4OZG2QYGrPwtpYtylz
+	HrxZvxaSWb1uAlixJTLvi52DOOKOSKFvRfP+SnwCyOQvQo+Wr1ZMeo=
+X-Google-Smtp-Source: AGHT+IG2cHyWZGrtAijYHh0GaSeRIjMYA9G08jmCcjF2sx0R2CtD4J1Job5e8KaQZ8XAYh7s93jKdg==
+X-Received: by 2002:a05:6000:1fae:b0:386:366d:5d03 with SMTP id ffacd0b85a97d-38880ad88dcmr2171599f8f.16.1734100294465;
+        Fri, 13 Dec 2024 06:31:34 -0800 (PST)
+Return-Path: <jean-philippe@linaro.org>
+Received: from myrica ([2.221.137.100])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38782514c06sm7357538f8f.73.2024.12.13.06.31.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Dec 2024 06:31:34 -0800 (PST)
+Date: Fri, 13 Dec 2024 14:31:58 +0000
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: Stefan Berger <stefanb@linux.ibm.com>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+	philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+	alex.bennee@linaro.org, Stefan Berger <stefanb@linux.vnet.ibm.com>
+Subject: Re: [RFC PATCH v3 23/26] hw/tpm: Add TPM event log
+Message-ID: <20241213143158.GD2962236@myrica>
+References: <20241125195626.856992-2-jean-philippe@linaro.org>
+ <20241125195626.856992-25-jean-philippe@linaro.org>
+ <1da8840e-a7be-48c5-bc06-e7a4e111b9e7@linux.ibm.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <Z1wsslDnwlth3A8+@nvidia.com>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: KVyxcIs6yoss
+In-Reply-To: <1da8840e-a7be-48c5-bc06-e7a4e111b9e7@linux.ibm.com>
+X-TUID: iiHz+Dn2C55n
 
-On Fri, Dec 13, 2024 at 08:46:42AM -0400, Jason Gunthorpe wrote:
-> On Fri, Dec 13, 2024 at 12:00:43PM +0000, Daniel P. Berrangé wrote:
-> > On Fri, Nov 08, 2024 at 12:52:37PM +0000, Shameer Kolothum via wrote:
-> > > Hi,
-> > > 
-> > > This series adds initial support for a user-creatable "arm-smmuv3-nested"
-> > > device to Qemu. At present the Qemu ARM SMMUv3 emulation is per machine
-> > > and cannot support multiple SMMUv3s.
-> > > 
-> > > In order to support vfio-pci dev assignment with vSMMUv3, the physical
-> > > SMMUv3 has to be configured in nested mode. Having a pluggable
-> > > "arm-smmuv3-nested" device enables us to have multiple vSMMUv3 for Guests
-> > > running on a host with multiple physical SMMUv3s. A few benefits of doing
-> > > this are,
+On Mon, Dec 09, 2024 at 05:34:13PM -0500, Stefan Berger wrote:
+> 
+> 
+> On 11/25/24 2:56 PM, Jean-Philippe Brucker wrote:
+> > Provide a library allowing the VMM to create an event log that describes
+> > what is loaded into memory. During remote attestation in confidential
+> > computing this helps an independent verifier reconstruct the initial
+> > measurements of a VM, which contain the initial state of memory and
+> > CPUs.
 > > 
-> > I'm not very familiar with arm, but from this description I'm not
-> > really seeing how "nesting" is involved here. You're only talking
-> > about the host and 1 L1 guest, no L2 guest.
+> > We provide some definitions and structures described by the Trusted
+> > Computing Group (TCG) in "TCG PC Client Platform Firmware Profile
+> > Specification" Level 00 Version 1.06 Revision 52 [1]. This is the same
+> > format used by UEFI, and UEFI could reuse this log after finding it in
 > 
-> nesting is the term the iommu side is using to refer to the 2
-> dimensional paging, ie a guest page table on top of a hypervisor page
-> table.
+> as used by
 > 
-> Nothing to do with vm nesting.
-
-Ok, that naming is destined to cause confusion for many, given the
-commonly understood use of 'nesting' in the context of VMs...
-
->  
-> > Also what is the relation between the physical SMMUv3 and the guest
-> > SMMUv3 that's referenced ? Is this in fact some form of host device
-> > passthrough rather than nesting ?
+> > DT or ACPI tables, but can also copy its content into a new one.
 > 
-> It is an acceeleration feature, the iommu HW does more work instead of
-> the software emulating things. Similar to how the 2d paging option in
-> KVM is an acceleration feature.
-> 
-> All of the iommu series on vfio are creating paravirtualized iommu
-> models inside the VM. They access various levels of HW acceleration to
-> speed up the paravirtualization.
+> I thought it was going to be a completely independent log. If UEFI would do
+> anything with it, I think it would have to replay the measurements into its
+> own log and extend them into all PCRs of all active PCR banks of the TPM,
 
-... describing it as a HW accelerated iommu makes it significantly clearer
-to me what this proposal is about. Perhaps the device is better named as
-"arm-smmuv3-accel" ?
+UEFI does need an event log, because it will measure some images using the
+RMM's Realm Extensible Measurement (REM) registers, but nothing forces us
+to use the same log. To reuse the existing measurement infrastructure
+those REM registers can be mapped to the PCR numbers already used by
+UEFI's TPM support, like Intel did for TDX:
 
+https://uefi.org/specs/UEFI/2.10/38_Confidential_Computing.html#intel-trust-domain-extension
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+So for Arm the RIM could map to PCR[0], and the four REMs could map to
+PCR[1,7], PCR[2-6] etc.
 
+> but if I understand correctly then you do not use the TPM for this log at
+> all since you have a signature over it and defined (somewhere -- where?)
+> that only sha256 and sha512 are to be used for this log.
+
+The algorithm choice matches that of RMM, which only support sha256 and
+sha512 at the moment. But it's arbitrary. We could use any TCG algorithm
+for the log digests.
+
+Thanks,
+Jean

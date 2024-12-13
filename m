@@ -1,141 +1,174 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp482241njb;
-        Fri, 13 Dec 2024 06:31:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW7IdgcdM+8otkAEhMsp4FWgpViLk8jNQcYstduoDPN1jfBrpoYcVgpppPwLtohkGnTH3G9DGef0zXrpQ==@linaro.org
-X-Received: by 2002:a05:600c:1c16:b0:434:f297:8e85 with SMTP id 5b1f17b1804b1-4362aa3e3a3mr29838635e9.10.1734100295025;
-        Fri, 13 Dec 2024 06:31:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734100295; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp450546njb;
+        Fri, 13 Dec 2024 05:48:36 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXPI+5x1pkoR6c2g7C+YqkmclNbawbX1afrqv6zAK+pGGIjE5iz3euj3AIrOqN8LQF9ii9TXXg4LJ/yag==@linaro.org
+X-Google-Smtp-Source: AGHT+IHjWTOcopsncjsur3JoLkjFZK1j8OYy2+j8stOfH8oegKw7JN3qPU9ARcCRqRB2ZPcedIvH
+X-Received: by 2002:a05:6122:2a05:b0:516:c0b:8bfe with SMTP id 71dfb90a1353d-518ca2171damr2369169e0c.1.1734097716155;
+        Fri, 13 Dec 2024 05:48:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734097716; cv=none;
         d=google.com; s=arc-20240605;
-        b=gVJ6AUYold9OQH+WsiPG4WGr2fPpj/QMAO7ZHqGX7c+61OW6U1X8vGm82ResBaCjOf
-         tAV1DyTaxY2W5N6iVO8QoCYvPG25GwsiAZU54awf1szoprquWR7VyLpxKPqVK8btpPfb
-         E34JoPMADh2hkWdTnhaqU90jPvsKXZU72LvyrGzmPA7k5rkafoldD/EJ8UKs+xvVlotQ
-         M64ZR9b8ocCF83UmJSVdBJxaVIjlSWNaHSxX0bQYYic/Ox6mRWSjcBzjpREwGYEcpKds
-         cGW0EJfsXGynq0uKEmu6wnQoYFAisg8dqwcCavpBo0/iE//pfpCpudjU56+E7I/nCSAA
-         BBKw==
+        b=KWqORH1GxjarIfPOAdFzYDpGrIcKn6kKxGzfTK2fspwgJmL1y/D1/x/Ow+1eBQNTcs
+         BjvjxpCBh31iC7J7qrOoib2+o3xWAGa9ay5nk+qT2+lDDCpLcRyHJ0w1/90Dx3xqgcLg
+         W+T1iZ8UzTt7UOP+OANylLntiEcp/joVd7O/SMMnCLJfVBa6lUHoUKZdGKoQt7H1xVuB
+         Scarkk9ylR0nP0xvde7Za6KDhrf6zz5yBJweFVRRuJXZ0ubLlOIysQuermJQLnNStW2k
+         CAyhU/b1keZG3Qw1iu2Gr2pMEYzlRKZRP9ukFXFZtl7Sdx/mLVmzSadf+iB7t4JigfNr
+         umGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=SOecfnNs8osThljsaAKU06/9OnPYwMOWV/4Rbge39/Y=;
-        fh=QHQNnLHkvmK/6N7Ayi+Hta686I0NQ9kRjcDTvskzQ2w=;
-        b=ld5Xr49vIev8XRxnt5axNz7wN73FSru/jGrVf+zYBqxE0w7bGA893NV1Ciubd6RC6Y
-         ++fveymRzG18MPProv0pg3t0LBIVAc/7YWWLGVyVS3RPeJybm3j8heoW8e323bLFSFSa
-         XmEDxB/kefUCnHIaIDy+CP7rm7+D1qhv6tiVihwnZk77fsVXVrB1Tts20tXZFHRP8SCP
-         WITcELruOMd+LQZIB5LJYo951kmlMRE5DbCF7jvf9xUD1lWXujWiWzMjcTXoIh/rEllq
-         MnK4/fzVZ2RGVFPESqZDcBFD4jp8drOBEL+9lqepueNd+cR6TX4lPvCueQKsaSa0sX1a
-         wOtQ==;
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=biw3ZHCGM0oKyrDpdXcfTuOF95X8YId5nqaWBpT3bUE=;
+        fh=8K9UZ6PRzwLFXy/TiuOmWAng+Ot46AJ76JtfixCX4AA=;
+        b=Z7A/KFtqsI2JnOUP06uoZiSKRU6HVCvwJjvInYR8i/vbQGpIFX1oj1LnAaoDLkXL8C
+         PPqtr+X/cIUga37UAJD1y9YLx54KYiOLegt1kI1a8EsBj5LnpjE4GXVVMJBYGZ0liaPr
+         VuxHWc/r+lconi5zkltXk8cheORQymUmIkO33SXD2MRvo+Hk+GaVRac5F0FieFixSovH
+         rmazkAmQmpjDvXPyeuNabR+MrxKJE6duvYTu2BQoBCPZvFjCFxctcnPkLPNA8qRemca1
+         JUFmpdOpRB81SpKaoTwggTxiOzJtyfxmpZQuD2P9OxtpeLC13hlOc0Bg5OtexDVvfaJP
+         6png==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XDzOLeIB;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <jean-philippe@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-3862276144csor4560953f8f.6.2024.12.13.06.31.34
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Px8+ZUZl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 71dfb90a1353d-5160411bbdfsi3562871e0c.294.2024.12.13.05.48.36
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 13 Dec 2024 06:31:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 13 Dec 2024 05:48:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XDzOLeIB;
-       spf=pass (google.com: domain of jean-philippe@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=jean-philippe@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734100294; x=1734705094; darn=linaro.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=SOecfnNs8osThljsaAKU06/9OnPYwMOWV/4Rbge39/Y=;
-        b=XDzOLeIBxwWSTyXpXilyQQu7wdfvBLAo8b1o51V4sA9l6MOSlvq6thwOCCy9TTXFQx
-         VeJ504UUxX6GXWxSFfXV/AdpT8Tn1Flm2ldA72YBPsJLTh2jEWVcccLqgIwPY4t28Ev4
-         mWFCad5H656ikunB8OFvzP7A75I1eushBwjb7EgB8MMxpSz4uteLeuaN8dPek9P+bo0X
-         0T+ZcjZhIbDQMB1cqEuek0vYBOH3tStPX8l/QYdDdo+p9x0+x9dELAputOtKZjeXLwvv
-         JeNnwsAyXn+0yGPi7WHaMvee73nlYiB+2rFfd0iB34qnkqhkrXNkwZZ/LSWuSincqIjK
-         4JPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734100294; x=1734705094;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=SOecfnNs8osThljsaAKU06/9OnPYwMOWV/4Rbge39/Y=;
-        b=JTOYBQ+CHbjKt93TJQyRwkQpMvq5cN0yEhZX9DseJ/Omz1iHvhbIHXIlzumCG1yTq+
-         GNNrO6ohkdKiWggdFQUBc1+mvbaufo7kINhhsRi4YMp4TpmxfKr0LxNUFACGRZ4CRtQA
-         HK+hQcsXLE37+zKHLI2fP1bWOH6tOptbb23so5YFp32q96ajQMOxBiSpntvMwV1JY1TE
-         Zpvl9i2eR1Hsr1zWqESJ740MHMg0MrBM0qJat7EMtBqSrfyskl7JAi/2fV1xFa5ZiLDL
-         fsMJlaRzk4cSTKaSFEi9AsaueE6IRNr85ZxR4yMJ8ucyOH1CYEWxXthsrQ6Bm8aF09ze
-         fkkA==
-X-Forwarded-Encrypted: i=1; AJvYcCXBqt6Ue14h1efWkFCvSOts/nq5aTFmsgJBnPcrg5XrYThAmQJAnrG2wDawrGfQAztvRntEtQqj71F2Ig==@linaro.org
-X-Gm-Message-State: AOJu0Yw5ugvubiF7I527x535iaNASwRInIm8qKvVuNDIsemVBJjfAKRO
-	+Pu5nBhZa+WqEhmWq6gOVBbbFHjzkV96KOgfdEUppVu0z5M7dFbeex58FOl+LeuIQg==
-X-Gm-Gg: ASbGncvV7aGEa6V1kM+Xw1sNzV0Ke+/22CU9vl34LAm9BYRk2oOHAwbWTlkA3ZGs2Vn
-	CpqBb+8wHRTZ/Qxt40iEl1XprfhYNHQcGciXIXDGnKgUg8nReuSq7u9xF1e6Pz6n2h5Ni6hbeWF
-	BXwgy72gV/4k0CpH3TV3oPDSY6eXvsLP4T52FFpMeM3o1WyXJlx5FVKkd4OZG2QYGrPwtpYtylz
-	HrxZvxaSWb1uAlixJTLvi52DOOKOSKFvRfP+SnwCyOQvQo+Wr1ZMeo=
-X-Google-Smtp-Source: AGHT+IG2cHyWZGrtAijYHh0GaSeRIjMYA9G08jmCcjF2sx0R2CtD4J1Job5e8KaQZ8XAYh7s93jKdg==
-X-Received: by 2002:a05:6000:1fae:b0:386:366d:5d03 with SMTP id ffacd0b85a97d-38880ad88dcmr2171599f8f.16.1734100294465;
-        Fri, 13 Dec 2024 06:31:34 -0800 (PST)
-Return-Path: <jean-philippe@linaro.org>
-Received: from myrica ([2.221.137.100])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38782514c06sm7357538f8f.73.2024.12.13.06.31.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Dec 2024 06:31:34 -0800 (PST)
-Date: Fri, 13 Dec 2024 14:31:58 +0000
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: Stefan Berger <stefanb@linux.ibm.com>
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
-	philmd@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
-	alex.bennee@linaro.org, Stefan Berger <stefanb@linux.vnet.ibm.com>
-Subject: Re: [RFC PATCH v3 23/26] hw/tpm: Add TPM event log
-Message-ID: <20241213143158.GD2962236@myrica>
-References: <20241125195626.856992-2-jean-philippe@linaro.org>
- <20241125195626.856992-25-jean-philippe@linaro.org>
- <1da8840e-a7be-48c5-bc06-e7a4e111b9e7@linux.ibm.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Px8+ZUZl;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tM61r-0005lX-Sj; Fri, 13 Dec 2024 08:48:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tM61k-0005kD-Lf
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2024 08:48:23 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tM61e-0003q0-14
+ for qemu-arm@nongnu.org; Fri, 13 Dec 2024 08:48:17 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1734097692;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=biw3ZHCGM0oKyrDpdXcfTuOF95X8YId5nqaWBpT3bUE=;
+ b=Px8+ZUZl6t+XVspD1k8a+CaWCDPhZ9om2FdjzReEbS8/Ramrdw19yR/hE/HB3bCg/HEn1A
+ x1Z6/i7DgR5GWro3LfmTQq4NWBb8UtYMhDDibvsrLJlH1xMQkZtn3Vb6FCtmf2GF+gLhh/
+ ++02o1UnfSk2RELzFlDYN8BEVXTqKic=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-445-Af7DvvmaM0iSXnQ7lNz_jg-1; Fri,
+ 13 Dec 2024 08:48:09 -0500
+X-MC-Unique: Af7DvvmaM0iSXnQ7lNz_jg-1
+X-Mimecast-MFC-AGG-ID: Af7DvvmaM0iSXnQ7lNz_jg
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6899919560B1; Fri, 13 Dec 2024 13:48:07 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.42])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6B516195605A; Fri, 13 Dec 2024 13:48:05 +0000 (UTC)
+Date: Fri, 13 Dec 2024 13:48:02 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>
+Subject: Re: [PATCH v2 3/7] hw/nvram/fw_cfg: Skip FW_CFG_DATA_GENERATOR when
+ no data to generate
+Message-ID: <Z1w7EhdPij2fqM2F@redhat.com>
+References: <20241213133352.10915-1-philmd@linaro.org>
+ <20241213133352.10915-4-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <1da8840e-a7be-48c5-bc06-e7a4e111b9e7@linux.ibm.com>
-X-TUID: iiHz+Dn2C55n
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20241213133352.10915-4-philmd@linaro.org>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.495,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7t2C1fMgaRjO
 
-On Mon, Dec 09, 2024 at 05:34:13PM -0500, Stefan Berger wrote:
+On Fri, Dec 13, 2024 at 02:33:48PM +0100, Philippe Mathieu-Daudé wrote:
+> Allow the FW_CFG_DATA_GENERATOR interface get_data() handler to
+> return NULL when there is nothing to generate. In that case
+> fw_cfg_add_file_from_generator() will not add any item and
+> return %true.
 > 
+> Reported-by: Daniel P. Berrangé <berrange@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>  include/hw/nvram/fw_cfg.h | 13 ++++++++-----
+>  hw/nvram/fw_cfg.c         | 10 ++++++----
+>  2 files changed, 14 insertions(+), 9 deletions(-)
 > 
-> On 11/25/24 2:56 PM, Jean-Philippe Brucker wrote:
-> > Provide a library allowing the VMM to create an event log that describes
-> > what is loaded into memory. During remote attestation in confidential
-> > computing this helps an independent verifier reconstruct the initial
-> > measurements of a VM, which contain the initial state of memory and
-> > CPUs.
-> > 
-> > We provide some definitions and structures described by the Trusted
-> > Computing Group (TCG) in "TCG PC Client Platform Firmware Profile
-> > Specification" Level 00 Version 1.06 Revision 52 [1]. This is the same
-> > format used by UEFI, and UEFI could reuse this log after finding it in
-> 
-> as used by
-> 
-> > DT or ACPI tables, but can also copy its content into a new one.
-> 
-> I thought it was going to be a completely independent log. If UEFI would do
-> anything with it, I think it would have to replay the measurements into its
-> own log and extend them into all PCRs of all active PCR banks of the TPM,
+> diff --git a/include/hw/nvram/fw_cfg.h b/include/hw/nvram/fw_cfg.h
+> index fcb06f18cc3..5211018fd8f 100644
+> --- a/include/hw/nvram/fw_cfg.h
+> +++ b/include/hw/nvram/fw_cfg.h
+> @@ -30,8 +30,9 @@ struct FWCfgDataGeneratorClass {
+>       * @obj: the object implementing this interface
+>       * @errp: pointer to a NULL-initialized error object
+>       *
+> -     * Returns: reference to a byte array containing the data on success,
+> -     *          or NULL on error.
+> +     * Returns: NULL on failure (errp set if not NULL).
+> +     *          A byte array containing the data (if any,
+> +     *          otherwise NULL) on success.
 
-UEFI does need an event log, because it will measure some images using the
-RMM's Realm Extensible Measurement (REM) registers, but nothing forces us
-to use the same log. To reuse the existing measurement infrastructure
-those REM registers can be mapped to the PCR numbers already used by
-UEFI's TPM support, like Intel did for TDX:
+Bit confusing wording, lets say
 
-https://uefi.org/specs/UEFI/2.10/38_Confidential_Computing.html#intel-trust-domain-extension
+  Returns: A byte array containing data to add, or NULL without
+           @errp set if no data is required, or NULL with @errp
+	   set on failure.
 
-So for Arm the RIM could map to PCR[0], and the four REMs could map to
-PCR[1,7], PCR[2-6] etc.
+With that change:
 
-> but if I understand correctly then you do not use the TPM for this log at
-> all since you have a signature over it and defined (somewhere -- where?)
-> that only sha256 and sha512 are to be used for this log.
+  Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-The algorithm choice matches that of RMM, which only support sha256 and
-sha512 at the moment. But it's arbitrary. We could use any TCG algorithm
-for the log digests.
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
-Thanks,
-Jean

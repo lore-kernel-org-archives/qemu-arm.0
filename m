@@ -1,121 +1,149 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp649463njb;
-        Fri, 13 Dec 2024 10:23:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX0Kc5HzSBWnQRlwiYflqdAyKiuu4d2KJGbQqUYSPr3D4vzh6CMREzO1Eodnq86b5BH4NohvvBuLmu5Hw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEUbIgyKvid7lZzMuQKwmeCxp1aDw8AvtZynWxV+h2zmnL8A04pYo0uIQLBkCSV79ZEs3Rj
-X-Received: by 2002:a05:620a:1922:b0:7b1:51df:117f with SMTP id af79cd13be357-7b6fbf455ecmr592477385a.56.1734114234242;
-        Fri, 13 Dec 2024 10:23:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734114234; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp663709njb;
+        Fri, 13 Dec 2024 10:49:42 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVuq+M78MlIHtdKR6LisLWwDN4HmVjsweVWt2cKoK7Pqp2G/gKnfV/5Dno8DI0k2RExKxviLdxiL4RivA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFoUd3hQUxtN6aUzgWKxwzlct4jcxCYidRBj6ueYyNfqGdW61HmUVCAKwSIEThmBAhTxCtg
+X-Received: by 2002:ac8:7e87:0:b0:467:56f9:b9f1 with SMTP id d75a77b69052e-467a5756097mr59776581cf.22.1734115782066;
+        Fri, 13 Dec 2024 10:49:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734115782; cv=none;
         d=google.com; s=arc-20240605;
-        b=P9AGVgU317Iu6ey3yEDL9vHRRJs/UHYKCjG9e5qqmeTj/hShret/TSGEU69fvuPn+4
-         zpm6rAPoUL3n9KogYLV/WwMxG7O9kqepoNt0mda0bdYr5AwcMT6dj9LVODqYCe8rwRZL
-         WpUlBmg8n6zhtmCeAsscnB7Hz9lQdMvQcLfuwqCTvdFoTOcIHv7QVkAYwFUW7Rxp+CfE
-         dGUeshblWOpeX0j9uVSCNsTLvViHDDOCJHFVCrvamaQMXu4b40wKvKr7Q3qVMMUxf7ty
-         CGfY/s6pqGWOPxl7it+GqCsxIlZyyl9taXV1SVK9QUJvx5iaUVkvhcO1bXn37ME/xu72
-         RkeA==
+        b=SRbMJb7aVkRuqnjHVQWI1d87KCp8ljbnXjSpjbV0PZ9ZOTi/C9vWfQ35TPcEmg2zG0
+         Kq4AaGpy5wnQ69a/3GmR4SsTDf6Nz3cdnR5npzd1ZjJWFtcOKDVztr6j1B5+k+P6pX9V
+         yXlui77hBh5DFjbYGGCSgr7hTzZABqWfFIOc6SkYWqPpQyrmLkhWirerLp/PdynOGZNV
+         tTBJbIVJyiduspys31Qx3W5HPLku0AFFChqNUa8F7cvKoGnesqyLzoT1AOjHt8Y+UuZa
+         fKVTcHDLf2qoYaZI/TqeLu++2LnbfkJoSm298dtbE0kqfD/vzWZ47XulXowFLcUT+H6m
+         ZMqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=BIp3bm7eaOQPJUGY0JTu0QvOZnZ5ww3rT8F41d6Hrko=;
-        fh=spbD1uAOw2hCQBb83uSlqZAKTOl6wvNX+k1rxl9UBCg=;
-        b=aAB0Q63bzwvzLj5ozp0EWYCuLgu7ndRDPlchNawf88Hjz7h04aVezBDxiLP1EomzkY
-         qmONzRv+6QSbUJd5GT0iCFXdqDwp/9+0J3IyjopMSAxe0jSZeghycBD9Z1iBWtKYWoyh
-         lXtsYTCjexmQNnbZqJE/QmwjTh1UeOW5gYCkg8EZRO5V6JuXQVav7RYnbt54cyNC0ZLm
-         LDos0sSH2QP+7NU1KQ8E53Aswpv1BdeSs8Wh6tDJyEF7va5+j7aZmHrkkwuLBV1ogFtS
-         MvcE4giqCSHjv2yxwN7I40zE/mW1WfA+10jk+cvfATrzEcrcUbzceTABsAapxFdEDj4a
-         7cwQ==;
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :references:in-reply-to:subject:cc:to:from:dkim-signature
+         :dkim-signature:dkim-signature:dkim-signature;
+        bh=oHoUgQ6+kCXnKXGlj6FBXb+XJKY1m7l4AWPkOyOUO+c=;
+        fh=iPjqa8bbrOp+plxa0NqbwXDOk7RBWfiajHP3HBW5dIk=;
+        b=jClrLfHVfwOA4q4cxyDUe43y2h6PrZxeEbUBwS5ghtBt8iva7aMdC3poo3NdIbKHrt
+         uwAFPt1UMbjf9/3D48TlXCS5Beig9VGQBpBjvDRaquerLQ8kqiQ9ErXa2DPVpjLGG9Ps
+         3ALtDdp2rpRtw3WoObboQl2/d+vx1tlJk4+ADaCVfqSKQOvGqPOCFFixM0mmx17I/TJG
+         LtWa2zu6Axewenm0yqQi7Jm7SeKL71JKdRKmBVuPDqu3ag0+pkZIy0Oootiq59KEclLi
+         aMjvZ2SyAkoYERXjlHdpYK5FAxYpIePTyzckl7mHANXYTWk//3VoRbA780eN8h95IQAz
+         n/Yw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vMCUjCH6;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=g3CYPbPF;
+       dkim=neutral (no key) header.i=@nongnu.org;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=g3CYPbPF;
+       dkim=neutral (no key) header.i=@nongnu.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b7047c491csi4910385a.33.2024.12.13.10.23.54
+        by mx.google.com with ESMTPS id d75a77b69052e-467b2cbb805si1110291cf.208.2024.12.13.10.49.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 10:23:54 -0800 (PST)
+        Fri, 13 Dec 2024 10:49:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vMCUjCH6;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=g3CYPbPF;
+       dkim=neutral (no key) header.i=@nongnu.org;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=g3CYPbPF;
+       dkim=neutral (no key) header.i=@nongnu.org;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tMAKH-0007mp-GM; Fri, 13 Dec 2024 13:23:45 -0500
+	id 1tMAir-0005oF-0k; Fri, 13 Dec 2024 13:49:09 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tMAKF-0007mO-99
- for qemu-arm@nongnu.org; Fri, 13 Dec 2024 13:23:43 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1tMAio-0005n4-Oj; Fri, 13 Dec 2024 13:49:06 -0500
+Received: from smtp-out2.suse.de ([195.135.223.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tMAKC-0004A2-Vz
- for qemu-arm@nongnu.org; Fri, 13 Dec 2024 13:23:42 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-43625c4a50dso14291225e9.0
- for <qemu-arm@nongnu.org>; Fri, 13 Dec 2024 10:23:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734114219; x=1734719019; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=BIp3bm7eaOQPJUGY0JTu0QvOZnZ5ww3rT8F41d6Hrko=;
- b=vMCUjCH6OKsZx20ECTg2hlquG//ss6+lISVzIeIDlj+fwv2dUd5L0b0IgLXIiKcrNm
- 6rrd3UfFumi8v/vu8fViE+T27X/MPIF2ExpcOVSh/4jv0p8/0vPypUrE5eyFNx0k81kh
- sZKrGzUxS8Ld1TIdSPoPuFPUOaPMW/+JenBUU3pUqpjw3nUp0Vj7owS71FbLHhpYei5C
- 5azvuBuyrXdEQDb4HQunkeDY+hJT8qV6LLl+4oYoVOypHn1p8ryL1FkrrPknNkfksi2I
- +Mx/kHripbu8oh7iP5l1Yz+kavTOyceQ1QLCR+szc3Sa248S+4B6z7tRj8kXV3tMR2Lk
- u7ZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734114219; x=1734719019;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BIp3bm7eaOQPJUGY0JTu0QvOZnZ5ww3rT8F41d6Hrko=;
- b=nkxARuGFTWLnx7f8dZzkU2HewXdnycg36wsrfH/kzNU1eiFnf1GCXB+gOiy7bBgqKE
- OoU7eZP1yOt2RmMahYU72sdeFOIE6D+L2KIxqc3O9V+NlOClIT5GHdrIMlmnDjdA7jqV
- cCX5b90HuMJ7txixVwYJR6/Hfl4frq8FeITGJeHuHoJQOQYObGHTbU+Q8sEeV82btalK
- 4hiGfJmRUrTIOXtm8iTEW9mRzx7GVPLOCEAylv5lrOIjQv4zDAkKhc8ZyW3g+cFsprqe
- YomMPJXecLXnTTEGZMsMnpAFJ/4KkWccpL9SBQMhsc2FF0F5GGKwDvKvZZCG/QzcHgm9
- yNjQ==
-X-Gm-Message-State: AOJu0YyVTEdeaQM5eFRzzMGlhc9xVXgfbmjC1C9NZRFifIbYcy4s+hD3
- 2qApHfNqf08blX3pzLX3vayQ7BeEcx77kubO2Ua/OJikizQyb5Dle/cA1HTGhuAg4VC8JbH86Wa
- X
-X-Gm-Gg: ASbGncuPCRnfeSWRj0Wm3/7SECfhb/8sSFxVh6dyH9kTDxGNp0qOGem6t+MkdZRID6V
- WBssdbwVJt3zabQ6d6pTQ/BF4oydnpJk8DWM3mToStO/qNC98zkkVlSOzKTHDNWWrrcn1kAOndd
- xmxF8H/LLurYyx/lPVVY+TKTOI2mckA3N72DrZgVus99csP+dztK9ZUYViwP7yLxeAVm3VWKCza
- 3KeiHSXC/Um+56IpnIlBvhlsY4jujKW+1l0PIanCW1wCyIBHrvkFcDXFI01rRM=
-X-Received: by 2002:a05:6000:1864:b0:385:df73:2f24 with SMTP id
- ffacd0b85a97d-3888e0f2d5bmr3125859f8f.39.1734114219068; 
- Fri, 13 Dec 2024 10:23:39 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-388c801acf2sm196531f8f.52.2024.12.13.10.23.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Dec 2024 10:23:38 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org
-Subject: [PATCH] hw/intc/arm_gicv3_its: Zero initialize local DTEntry etc
- structs
-Date: Fri, 13 Dec 2024 18:23:37 +0000
-Message-Id: <20241213182337.3343068-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>)
+ id 1tMAij-0001Hu-7S; Fri, 13 Dec 2024 13:49:06 -0500
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out2.suse.de (Postfix) with ESMTPS id BB1361F387;
+ Fri, 13 Dec 2024 18:48:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1734115738; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=oHoUgQ6+kCXnKXGlj6FBXb+XJKY1m7l4AWPkOyOUO+c=;
+ b=g3CYPbPFF4DDf4JJKpIFJSpq3z1+/urBWBO0MsF2o87oOFDF9qDBdHi3KEZeWtAWKWjvLR
+ 43ZsYwtzxpa3VuAiDMDdrcJ/odpHygsiLT8uUFq5IQE3YJP6oLH2TmCG8+d5ZfqR6LqbFt
+ ymQH6I7H68F7iMwQdLO2jWIeuM8zsG0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1734115738;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=oHoUgQ6+kCXnKXGlj6FBXb+XJKY1m7l4AWPkOyOUO+c=;
+ b=umYa4/cMYACKclBsSsbXlHZwA0AF3vr0LKPgbA7sLPZi0CcC556k/ia3Tlz4xWSqsw2oaA
+ mP6kwRyUlpP4uoBA==
+Authentication-Results: smtp-out2.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1734115738; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=oHoUgQ6+kCXnKXGlj6FBXb+XJKY1m7l4AWPkOyOUO+c=;
+ b=g3CYPbPFF4DDf4JJKpIFJSpq3z1+/urBWBO0MsF2o87oOFDF9qDBdHi3KEZeWtAWKWjvLR
+ 43ZsYwtzxpa3VuAiDMDdrcJ/odpHygsiLT8uUFq5IQE3YJP6oLH2TmCG8+d5ZfqR6LqbFt
+ ymQH6I7H68F7iMwQdLO2jWIeuM8zsG0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1734115738;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=oHoUgQ6+kCXnKXGlj6FBXb+XJKY1m7l4AWPkOyOUO+c=;
+ b=umYa4/cMYACKclBsSsbXlHZwA0AF3vr0LKPgbA7sLPZi0CcC556k/ia3Tlz4xWSqsw2oaA
+ mP6kwRyUlpP4uoBA==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 3E31313927;
+ Fri, 13 Dec 2024 18:48:58 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id xK92AZqBXGcKegAAD6G6ig
+ (envelope-from <farosas@suse.de>); Fri, 13 Dec 2024 18:48:58 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Thomas Huth <thuth@redhat.com>, Nabih Estefan <nabihestefan@google.com>,
+ peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, lvivier@redhat.com,
+ pbonzini@redhat.com, roqueh@google.com, venture@google.com, Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH] tests/qtest/sse-timer-test: Add watchdog reset to
+ sse-timer test
+In-Reply-To: <f03adc63-5167-4982-90e6-70b65f0c90cc@redhat.com>
+References: <20241213002602.4181289-1-nabihestefan@google.com>
+ <f03adc63-5167-4982-90e6-70b65f0c90cc@redhat.com>
+Date: Fri, 13 Dec 2024 15:48:54 -0300
+Message-ID: <87y10jctbd.fsf@suse.de>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain
+X-Spam-Score: -4.30
+X-Spamd-Result: default: False [-4.30 / 50.00]; BAYES_HAM(-3.00)[99.99%];
+ NEURAL_HAM_LONG(-1.00)[-1.000];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ RCVD_VIA_SMTP_AUTH(0.00)[]; RCPT_COUNT_SEVEN(0.00)[10];
+ ARC_NA(0.00)[]; MISSING_XM_UA(0.00)[];
+ MID_RHS_MATCH_FROM(0.00)[]; RCVD_TLS_ALL(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ FUZZY_BLOCKED(0.00)[rspamd.com]; FROM_HAS_DN(0.00)[];
+ MIME_TRACE(0.00)[0:+]; FROM_EQ_ENVFROM(0.00)[];
+ TO_MATCH_ENVRCPT_ALL(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
+ TO_DN_SOME(0.00)[]
+Received-SPF: pass client-ip=195.135.223.131; envelope-from=farosas@suse.de;
+ helo=smtp-out2.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,167 +159,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sRki+jp6Qb6k
+X-TUID: XudEgbUBLhVI
 
-In the GICv3 ITS model, we have a common coding pattern which has a
-local C struct like "DTEntry dte", which is a C representation of an
-in-guest-memory data structure, and we call a function such as
-get_dte() to read guest memory and fill in the C struct.  These
-functions to read in the struct sometimes have cases where they will
-leave early and not fill in the whole struct (for instance get_dte()
-will set "dte->valid = false" and nothing else for the case where it
-is passed an entry_addr implying that there is no L2 table entry for
-the DTE).  This then causes potential use of uninitialized memory
-later, for instance when we call a trace event which prints all the
-fields of the struct.  Sufficiently advanced compilers may produce
--Wmaybe-uninitialized warnings about this, especially if LTO is
-enabled.
+Thomas Huth <thuth@redhat.com> writes:
 
-Rather than trying to carefully separate out these trace events into
-"only the 'valid' field is initialized" and "all fields can be
-printed", zero-init all the structs when we define them. None of
-these structs are large (the biggest is 24 bytes) and having
-consistent behaviour is less likely to be buggy.
+> On 13/12/2024 01.26, Nabih Estefan wrote:
+>> Recent CDMSK Watchdog changes (eff9dc5660fad3a610171c56a5ec3fada245e519)
+>> updated the CDMSK APB Watchdog to not free run out of reset. That led to
+>> this test failing since it never triggers the watchdog to start running.
+>> No watchdog running means that the timer and counter in the test cannot
+>> start, leading to failures in the assert statements throughout the test.
+>> Adding a reset and enable of the watchdog to the reset function solves
+>> this problem by enabling the watchdog and thus letting the timer and
+>> counter run as expected
+>> 
+>> Also renaming the reset_counter_and_timer function since it now also
+>> affects the watchdog.
+>> 
+>> To reproduce the failure at HEAD:
+>> ./configure --target-list=arm-softmmu
+>> make -j check-report-qtest-arm.junit.xml
+>> 
+>> Signed-off-by: Nabih Estefan <nabihestefan@google.com>
 
-Cc: qemu-stable@nongnu.org
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2718
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv3_its.c | 44 ++++++++++++++++++++---------------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
+I don't see any failure with the sse-timer-test on master
+(83aaec1d5a). Is it supposed to be intermittent? Nabih, can you confirm
+whether this is the same issue Thomas has seen?
 
-diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index bf31158470e..752322a3e7e 100644
---- a/hw/intc/arm_gicv3_its.c
-+++ b/hw/intc/arm_gicv3_its.c
-@@ -465,7 +465,7 @@ static ItsCmdResult lookup_vte(GICv3ITSState *s, const char *who,
- static ItsCmdResult process_its_cmd_phys(GICv3ITSState *s, const ITEntry *ite,
-                                          int irqlevel)
- {
--    CTEntry cte;
-+    CTEntry cte = {};
-     ItsCmdResult cmdres;
- 
-     cmdres = lookup_cte(s, __func__, ite->icid, &cte);
-@@ -479,7 +479,7 @@ static ItsCmdResult process_its_cmd_phys(GICv3ITSState *s, const ITEntry *ite,
- static ItsCmdResult process_its_cmd_virt(GICv3ITSState *s, const ITEntry *ite,
-                                          int irqlevel)
- {
--    VTEntry vte;
-+    VTEntry vte = {};
-     ItsCmdResult cmdres;
- 
-     cmdres = lookup_vte(s, __func__, ite->vpeid, &vte);
-@@ -514,8 +514,8 @@ static ItsCmdResult process_its_cmd_virt(GICv3ITSState *s, const ITEntry *ite,
- static ItsCmdResult do_process_its_cmd(GICv3ITSState *s, uint32_t devid,
-                                        uint32_t eventid, ItsCmdType cmd)
- {
--    DTEntry dte;
--    ITEntry ite;
-+    DTEntry dte = {};
-+    ITEntry ite = {};
-     ItsCmdResult cmdres;
-     int irqlevel;
- 
-@@ -583,8 +583,8 @@ static ItsCmdResult process_mapti(GICv3ITSState *s, const uint64_t *cmdpkt,
-     uint32_t pIntid = 0;
-     uint64_t num_eventids;
-     uint16_t icid = 0;
--    DTEntry dte;
--    ITEntry ite;
-+    DTEntry dte = {};
-+    ITEntry ite = {};
- 
-     devid = (cmdpkt[0] & DEVID_MASK) >> DEVID_SHIFT;
-     eventid = cmdpkt[1] & EVENTID_MASK;
-@@ -651,8 +651,8 @@ static ItsCmdResult process_vmapti(GICv3ITSState *s, const uint64_t *cmdpkt,
- {
-     uint32_t devid, eventid, vintid, doorbell, vpeid;
-     uint32_t num_eventids;
--    DTEntry dte;
--    ITEntry ite;
-+    DTEntry dte = {};
-+    ITEntry ite = {};
- 
-     if (!its_feature_virtual(s)) {
-         return CMD_CONTINUE;
-@@ -761,7 +761,7 @@ static bool update_cte(GICv3ITSState *s, uint16_t icid, const CTEntry *cte)
- static ItsCmdResult process_mapc(GICv3ITSState *s, const uint64_t *cmdpkt)
- {
-     uint16_t icid;
--    CTEntry cte;
-+    CTEntry cte = {};
- 
-     icid = cmdpkt[2] & ICID_MASK;
-     cte.valid = cmdpkt[2] & CMD_FIELD_VALID_MASK;
-@@ -822,7 +822,7 @@ static bool update_dte(GICv3ITSState *s, uint32_t devid, const DTEntry *dte)
- static ItsCmdResult process_mapd(GICv3ITSState *s, const uint64_t *cmdpkt)
- {
-     uint32_t devid;
--    DTEntry dte;
-+    DTEntry dte = {};
- 
-     devid = (cmdpkt[0] & DEVID_MASK) >> DEVID_SHIFT;
-     dte.size = cmdpkt[1] & SIZE_MASK;
-@@ -886,9 +886,9 @@ static ItsCmdResult process_movi(GICv3ITSState *s, const uint64_t *cmdpkt)
- {
-     uint32_t devid, eventid;
-     uint16_t new_icid;
--    DTEntry dte;
--    CTEntry old_cte, new_cte;
--    ITEntry old_ite;
-+    DTEntry dte = {};
-+    CTEntry old_cte = {}, new_cte = {};
-+    ITEntry old_ite = {};
-     ItsCmdResult cmdres;
- 
-     devid = FIELD_EX64(cmdpkt[0], MOVI_0, DEVICEID);
-@@ -965,7 +965,7 @@ static bool update_vte(GICv3ITSState *s, uint32_t vpeid, const VTEntry *vte)
- 
- static ItsCmdResult process_vmapp(GICv3ITSState *s, const uint64_t *cmdpkt)
- {
--    VTEntry vte;
-+    VTEntry vte = {};
-     uint32_t vpeid;
- 
-     if (!its_feature_virtual(s)) {
-@@ -1030,7 +1030,7 @@ static void vmovp_callback(gpointer data, gpointer opaque)
-      */
-     GICv3ITSState *s = data;
-     VmovpCallbackData *cbdata = opaque;
--    VTEntry vte;
-+    VTEntry vte = {};
-     ItsCmdResult cmdres;
- 
-     cmdres = lookup_vte(s, __func__, cbdata->vpeid, &vte);
-@@ -1085,9 +1085,9 @@ static ItsCmdResult process_vmovi(GICv3ITSState *s, const uint64_t *cmdpkt)
- {
-     uint32_t devid, eventid, vpeid, doorbell;
-     bool doorbell_valid;
--    DTEntry dte;
--    ITEntry ite;
--    VTEntry old_vte, new_vte;
-+    DTEntry dte = {};
-+    ITEntry ite = {};
-+    VTEntry old_vte = {}, new_vte = {};
-     ItsCmdResult cmdres;
- 
-     if (!its_feature_virtual(s)) {
-@@ -1186,10 +1186,10 @@ static ItsCmdResult process_vinvall(GICv3ITSState *s, const uint64_t *cmdpkt)
- static ItsCmdResult process_inv(GICv3ITSState *s, const uint64_t *cmdpkt)
- {
-     uint32_t devid, eventid;
--    ITEntry ite;
--    DTEntry dte;
--    CTEntry cte;
--    VTEntry vte;
-+    ITEntry ite = {};
-+    DTEntry dte = {};
-+    CTEntry cte = {};
-+    VTEntry vte = {};
-     ItsCmdResult cmdres;
- 
-     devid = FIELD_EX64(cmdpkt[0], INV_0, DEVICEID);
--- 
-2.34.1
+> I think this fixes the problem that I was seeing on Travis-CI:
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2702
+
+I did see this^ issue, however, with Philippe's series [1] (and this
+patch doesn't fix it).
+
+Here's a CI job with both series applied:
+https://gitlab.com/farosas/qemu/-/jobs/8638126011
+
+1- https://lore.kernel.org/r/20241211233727.98923-2-philmd@linaro.org
+
+
 

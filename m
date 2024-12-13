@@ -1,104 +1,104 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp520616njb;
-        Fri, 13 Dec 2024 07:20:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXEKmKkfyHKbrReUInVKrGmXIWYI/D4ycbG59vXI59BtyYyxFLKPqujpGDNTLj+TZmlk096NPUbuUWTLw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEDIUizSFiXn7mid34k8fwdB3AebEhuMlcLnTgAEK2GvSV752xk1d6XsXD3CG0z41ZeZ1nl
-X-Received: by 2002:a05:6102:3a11:b0:4af:adf8:523f with SMTP id ada2fe7eead31-4b25d99d50emr3842393137.9.1734103249193;
-        Fri, 13 Dec 2024 07:20:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734103249; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp520906njb;
+        Fri, 13 Dec 2024 07:21:10 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXmguOZQA1i3VuO9f921rGgziyODO0e+HijVQyAkEhCMnrWrAeBklY1Xz46mQhYHg0WItLTSEJ50n1ngQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHEuujbxHNo1unZjrcTtmoZmiM4RbHJXBXp5ntMQLV/rUAidZ9NEYwEHuRmH7KQ9gmWWV5z
+X-Received: by 2002:a05:622a:54b:b0:467:6ae2:75cd with SMTP id d75a77b69052e-467a575951emr50908001cf.20.1734103270231;
+        Fri, 13 Dec 2024 07:21:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734103270; cv=none;
         d=google.com; s=arc-20240605;
-        b=iiNjw6OGM066uuVOJfj4e5gkSoFs6O5hGP8FKWY1qX7KTV7tMxErEEf8K/N/aZNCeP
-         bpL7NytzTExNgnwX+QPpjvDiexjgjyFZPsQ8fnFLn7G0nQt3BsbEEeCDdE/0H2nQBPNc
-         eolDQEeL4UrqAWDD/YQnA/zTKaiFYAL49OOTt6XQrJ2H4yiTYEcojUbVOWlu7D0h1rVG
-         jC/kzLf+pVMGt6UUlseL1Z1USBteHxDKkO75HBgM7Y5Uui9I3m3+Ogi5HNtYtGTEZtOn
-         8SwCnOQ1QZ/Hqm+hHP+M7FCEfZjuwM8SXGxoClN500/YKImR72hj0Sj804To8bjVgdZt
-         Lplg==
+        b=GdpUJvArCAR/drWs2CFmbGIOr6lYIuDWiZf5/AY3iMdDLn/d35Qed6DsCRcAVYtbVV
+         EKuktbHMNuHXKOyBt1ZDoIwvKJI+reJAjtUU7L+bjE7YWwxm/vXiVvZTf9ENR2uqwG9U
+         a6O8BaTotFSIEVycziHSL3CHvc5wyiDoRmdtxeYpYr6jaL9r8BAKb3Szk2uCwkDDiCRr
+         4+mby+S65EJmT5+K2Ag9InwAi6zlDbYfVxMYzs28texh5TkS5iq8LiWhXnsbvWXRZGbh
+         UGZQImRMezHUPMHPBmEEHoxxBfMPFZy0gRjfRv4ALD4QNSDc28WsSYhqa9YBM/0xulZo
+         LvHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=XmgJyWpCuCi2HoyxP/grcFhqMBy46PCyGsue2fZsSxs=;
-        fh=XgncJnChD89f8YcbUPv/zS+JHnV3t/pCNdyLfi17LkQ=;
-        b=Ai+MapbYtZeVOzSaY3dglNsA7+Wu4sE3JDt1XT2OP0Y1AWS1PIFp2XsOh/XNbTn2NL
-         31MEeov2yyj1tYy5vnT/2WcW2uGnHFe7z2C1TKKLqzkkHrDM7WROoprA/UC+dMLIA9pp
-         sBIIVW+NW1LzLj18DxCwovaM/CcS2AaYT1oiYBzE6P1VzzatnL/lTQMt69y9/0I8vfTO
-         UX/OvcJFZd2/qdt/I98WK834sVb+CF1A9jCkfuqnioIBgGhce9bpf6yZyO+J64etcprH
-         LmfEJnRoLZkqtElkdvoGSF9yMyHNXRxkbmfptCwdrnR7xfUDikgeosESAL7jCtaaKcnr
-         Hojw==;
+        bh=vE4icFzbUyJwOx4II5Kw3Wy8lfUTjt60Nc/k0y/6lC8=;
+        fh=+VjnrGvjeQQD7yexb7VCprNpWRZMsTpIL8oodPazyOY=;
+        b=JKU4mf//EJqKIg2foEIptQIK6ZaFx8kw7ykOmwcc25VQCgnLZYuJhbCA/ebP7qOdOV
+         cT1eOIbw7qkcOy8AQkJXL2S1P6js7DX/lzz9MAC98T7Wi7B/oeJ1CiaCabOrCFCS3uaf
+         O+ihl8uzP251K2QSJy8OaL6uS2khc+pPb2D7FGNk7jvQU0Lhk34dP3zdMeb6QOfvcjvF
+         PIFpu7hVvmkEFKwpGiCGJOOyzsN/dkyCrMOM1HvswAHwL3qkUjFjQHGsT69Vp/EJPkWC
+         g8FkviocGGa2RizYdYW5NJ+67It8vywhtIYfByH0gnmYEysmXOgFVgCUH60lQNr0/XSH
+         Co3w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=QtQCRVIr;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=ItWQOt3J;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4afdf20e591si4409372137.695.2024.12.13.07.20.49
+        by mx.google.com with ESMTPS id d75a77b69052e-467ab823042si13263591cf.699.2024.12.13.07.21.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 07:20:49 -0800 (PST)
+        Fri, 13 Dec 2024 07:21:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=QtQCRVIr;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=ItWQOt3J;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tM7RL-0004Mc-9j; Fri, 13 Dec 2024 10:18:51 -0500
+	id 1tM7SP-0005Al-3z; Fri, 13 Dec 2024 10:19:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tM7RH-0004KN-U2
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 10:18:47 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ id 1tM7Rl-0004VW-Ou
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2024 10:19:18 -0500
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tM7RB-00053p-85
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 10:18:47 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-aa69077b93fso275511366b.0
- for <qemu-devel@nongnu.org>; Fri, 13 Dec 2024 07:18:40 -0800 (PST)
+ id 1tM7Re-00059f-Gi
+ for qemu-devel@nongnu.org; Fri, 13 Dec 2024 10:19:17 -0500
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-aa6a92f863cso369480666b.1
+ for <qemu-devel@nongnu.org>; Fri, 13 Dec 2024 07:18:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1734103119; x=1734707919;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1734103134; x=1734707934;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=XmgJyWpCuCi2HoyxP/grcFhqMBy46PCyGsue2fZsSxs=;
- b=QtQCRVIrp/jN4qr9FIlBZboghUCEn/XJkBc2q48dpqUNPznZBG7FrY0/ajl4cDmWvO
- p7RDnC+oDc7dTYTm5b+SNns/axXpKptQXyU6sEf4QFiWR8qB7h/08jRAzhZaQQby/zWc
- rgE2CJUnF5IuALQAL20ptiLBQ4KmiNRfMguzwHkoGpbzOE+pVBxu54xIsdKi26rJqVvP
- eiL2eRY9vfq2uC0HWahAS60Cq1Itjqa89RYm3qqiNds3eWw4sPvwfjO8p0TAtl0SI/CD
- 2mvILSZbfdRYS8FuqTEytJPXNtZ+VPxi+43SxR6WRObLeo7DDFwtBDylQzqDzFNQzeME
- KkQg==
+ bh=vE4icFzbUyJwOx4II5Kw3Wy8lfUTjt60Nc/k0y/6lC8=;
+ b=ItWQOt3JbhFneGrZDyUDF+d8yOESO3fPB2qFj/KM3W7AbUXBOooeLauMwzZHbhBkjN
+ poz8eISlHBsiEg8hjKOcQApL42TzFrtLrWLwxF8jTvEX6Pwlg0ADFcylvAK58zLfiLEY
+ ehZGU1K2gKkgaWckUoLGxuy1V/Nfp9GWpCTe8pDKQbSC3ty9seVUJGNi8Gbn8l/g4qfL
+ wcYSKuc3YvwtSk1qY8+1YLEySDEUYeS02+oxPotV59ln0M1ydGu56YdqxTwxrRvS65gF
+ cSpTC8UUBd9V+rNfE3C6vKiRe4ZwvhwIUeUKxyBzIJK96OjHPT8JhwmaXb5qIF+urWDe
+ i93A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734103119; x=1734707919;
+ d=1e100.net; s=20230601; t=1734103134; x=1734707934;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=XmgJyWpCuCi2HoyxP/grcFhqMBy46PCyGsue2fZsSxs=;
- b=SK2nTw8ZLEtAjeCnc/vZ6qiMy0kBzhWPckdkUY0JXa5OyzRJzXspE/8BFcTPhEmbaa
- SMGXfNMNjfv+GyKKe7dbPAGrA0rYwsmOtKV7DezS4dPLkmrJx0Da9XvBUSRAvYVkTMXN
- IJ3S9dDb39I/k4TqMa2vEafTSclzI0L5rnq8yaxKEDz7SMLjV2o2HqJQb2bgaCd4YqZY
- 1VfTpgjht661akItzJ7lfJX6IeOd+B8udKTMAPn7cQCuUaAOXoUfU7KddpwmItB2Pfmi
- Kat6WTNoWlkbWmkh5ZkcHoHqsjiPy4fJSo46YXfFhgWwI1QzarlbY2nCOhKNyWvQppQ1
- RAWw==
-X-Gm-Message-State: AOJu0YxhK4cMQgf32qimMPem1DRbP+0vYjNeEEPvDxw8x9gW6dnOUQHH
- ShAvtpeaVEyOOYY8EjJD9+y/xfWGmbYT5ot2005MuQZBP/+SbPHd32RacafzlKrxwms1mWg866g
- nSg==
-X-Gm-Gg: ASbGnctVPe2PwmZuLU+B6OhGoO2Ee+k6Mj/H7aYgzqx76ZKvy5q4f5Q0atOpev2LkdI
- PooJZLR1L5EMP2g78kIlpwrKoSJ0W+M/9PoIBrsWXdY/42x4+IMh+5Ejmkgc92gLwyQB56anNx5
- rhy59m4bibjk32y4TqPlnacgnxOosEUGsNx6fyTGk/Tp+2S7AWyLkK866NYqwlFNu3KnJPUJPRO
- NRu7CtFmTfHyGqUmHfpVt/yPsvhYwdPukupuA4e9CNWU/COjpoXJT6UI9f9cYJZFXAGPr2zJ5Jq
- fv7/o8dh6sD50hzYDP/LZ+oLfE7F0Lz5
-X-Received: by 2002:a17:907:3dab:b0:aa6:9372:cac7 with SMTP id
- a640c23a62f3a-aab779b1333mr390391566b.31.1734103118960; 
- Fri, 13 Dec 2024 07:18:38 -0800 (PST)
+ bh=vE4icFzbUyJwOx4II5Kw3Wy8lfUTjt60Nc/k0y/6lC8=;
+ b=uPjY96njB+fhOKt6f9q2DL4gOuWRbHOK/qPLb2RjGZ9pb462eFul7wZOnTs6hB0Sf6
+ WzRPm4Rtiau1ntVRN2PUVCQPPp7LRMpFVmYOJ+JzzvIj/VJNG67FCUUqh1Vz+VxZu0AI
+ qqenOy5p81/YB7nG/i231AZP2Tg/Jk0gz2T6F/sYE2MG+XHe9Zzjul8uf8oipzlECYjp
+ T/VQ/REQ/wFOWAT04XvBvndjGXN5knjQO/2Udxj1rB/Dv4Wz1QQlcjcx7jAQrXpOTuOL
+ 4kObG8+8noSlZ20q0CxSelJm0GY8L4x1D1OyITxJUh4JlzG/elFL2XDXOO7khHB+s8aS
+ NwWA==
+X-Gm-Message-State: AOJu0YyWb61yJN0zIy9jW+/005f+py9Z3pa9rq/7XCBb9vYzYaUZt1S0
+ mTVVMsgWae1VwD3cFLR6Z4PDuxNUD2kBIzwxZAMlkdtQVCltwgfRDSqEWA1zACDe25dkXwPmXNj
+ e1g==
+X-Gm-Gg: ASbGnctQ5J5Abzc4CBA8lBuIvAra3Uyl86DRaIr41lwzpoWk9cODcsnv+I2TIdRDldm
+ JrIZUH9mBXtoglT4CeW6LmGPsPzHzPGtXF2ULr7Og+YMmwLkRuB3s30CiDJ+BPk7SpFjNHXMsSX
+ GZYyUKu/xoFKFu0wN2O3QjoomU7RI/ZDCl2OP+F27FjiqAEau5HM9x3xFD5chmeJQIh3IgYZHGa
+ 7sN/MuJn3L+0urlQwH2kcDVSdk02tkJlRrz8yHwlslD84Aiy8wIZciJHC17FrQq49hvM1ymm3PJ
+ hoNx2XgCtZo/IOSl2kDTRwA4lEP21RJU
+X-Received: by 2002:a17:906:311b:b0:aa6:80fa:f692 with SMTP id
+ a640c23a62f3a-aab77eab25dmr294714166b.49.1734103134274; 
+ Fri, 13 Dec 2024 07:18:54 -0800 (PST)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aab8dd35b19sm29284166b.33.2024.12.13.07.18.37
+ a640c23a62f3a-aab8dd35b19sm29284166b.33.2024.12.13.07.18.52
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 13 Dec 2024 07:18:38 -0800 (PST)
+ Fri, 13 Dec 2024 07:18:53 -0800 (PST)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -112,18 +112,17 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, balaton@eik.bme.hu
-Subject: [PATCH v13 01/15] ui & main loop: Redesign of system-specific main
- thread event handling
-Date: Fri, 13 Dec 2024 16:17:51 +0100
-Message-Id: <20241213151821.65748-2-phil@philjordan.eu>
+ qemu-riscv@nongnu.org, balaton@eik.bme.hu, Alexander Graf <graf@amazon.com>
+Subject: [PATCH v13 09/15] gpex: Allow more than 4 legacy IRQs
+Date: Fri, 13 Dec 2024 16:17:59 +0100
+Message-Id: <20241213151821.65748-10-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 In-Reply-To: <20241213151821.65748-1-phil@philjordan.eu>
 References: <20241213151821.65748-1-phil@philjordan.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::629;
- envelope-from=phil@philjordan.eu; helo=mail-ej1-x629.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::62d;
+ envelope-from=phil@philjordan.eu; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -144,352 +143,415 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UjYC1F4r5pSZ
+X-TUID: +/G3rFlC08Dy
 
-macOS's Cocoa event handling must be done on the initial (main) thread
-of the process. Furthermore, if library or application code uses
-libdispatch, the main dispatch queue must be handling events on the main
-thread as well.
+From: Alexander Graf <graf@amazon.com>
 
-So far, this has affected Qemu in both the Cocoa and SDL UIs, although
-in different ways: the Cocoa UI replaces the default qemu_main function
-with one that spins Qemu's internal main event loop off onto a
-background thread. SDL (which uses Cocoa internally) on the other hand
-uses a polling approach within Qemu's main event loop. Events are
-polled during the SDL UI's dpy_refresh callback, which happens to run
-on the main thread by default.
+Some boards such as vmapple don't do real legacy PCI IRQ swizzling.
+Instead, they just keep allocating more board IRQ lines for each new
+legacy IRQ. Let's support that mode by giving instantiators a new
+"nr_irqs" property they can use to support more than 4 legacy IRQ lines.
+In this mode, GPEX will export more IRQ lines, one for each device.
 
-As UIs are mutually exclusive, this works OK as long as nothing else
-needs platform-native event handling. In the next patch, a new device is
-introduced based on the ParavirtualizedGraphics.framework in macOS.
-This uses libdispatch internally, and only works when events are being
-handled on the main runloop. With the current system, it works when
-using either the Cocoa or the SDL UI. However, it does not when running
-headless. Moreover, any attempt to install a similar scheme to the
-Cocoa UI's main thread replacement fails when combined with the SDL
-UI.
-
-This change tidies up main thread management to be more flexible.
-
- * The qemu_main global function pointer is a custom function for the
-   main thread, and it may now be NULL. When it is, the main thread
-   runs the main Qemu loop. This represents the traditional setup.
- * When non-null, spawning the main Qemu event loop on a separate
-   thread is now done centrally rather than inside the Cocoa UI code.
- * For most platforms, qemu_main is indeed NULL by default, but on
-   Darwin, it defaults to a function that runs the CFRunLoop.
- * The Cocoa UI sets qemu_main to a function which runs the
-   NSApplication event handling runloop, as is usual for a Cocoa app.
- * The SDL UI overrides the qemu_main function to NULL, thus
-   specifying that Qemu's main loop must run on the main
-   thread.
- * The GTK UI also overrides the qemu_main function to NULL.
- * For other UIs, or in the absence of UIs, the platform's default
-   behaviour is followed.
-
-This means that on macOS, the platform's runloop events are always
-handled, regardless of chosen UI. The new PV graphics device will
-thus work in all configurations. There is no functional change on other
-operating systems.
-
-Implementing this via a global function pointer variable is a bit
-ugly, but it's probably worth investigating the existing UI thread rule
-violations in the SDL (e.g. #2537) and GTK+ back-ends. Fixing those
-issues might precipitate requirements similar but not identical to those
-of the Cocoa UI; hopefully we'll see some kind of pattern emerge, which
-can then be used as a basis for an overhaul. (In fact, it may turn
-out to be simplest to split the UI/native platform event thread from the
-QEMU main event loop on all platforms, with any UI or even none at all.)
-
+Signed-off-by: Alexander Graf <graf@amazon.com>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
 Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 Tested-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
 
-v5:
+v4:
 
- * Simplified the way of setting/clearing the main loop by going back
-   to setting qemu_main directly, but narrowing the scope of what it
-   needs to do, and it can now be NULL.
-
-v6:
-
- * Folded function qemu_run_default_main_on_new_thread's code into
-   main()
- * Removed whitespace changes left over on lines near code removed
-   between v4 and v5
-
-v9:
-
- * Set qemu_main to NULL for GTK UI as well.
-
-v10:
-
- * Added comments clarifying the functionality and purpose of qemu_main.
-
-v11:
-
- * Removed the qemu_main_fn typedef again.
- * Consolidation of main, qemu_default_main, and call_qemu_default_main
-   so that the latter has been eliminated altogether.
- * Reinstated the #include <SDL.h> directive, added comment saying
-   why it's needed.
- * Improved the comment on the qemu_main global variable.
- * Expanded the commit message.
+ * Turned pair of IRQ arrays into array of structs.
+ * Simplified swizzling logic selection.
 
 v12:
 
- * More precise wording of code comments.
+ * Fixed uses of deleted GPEX_NUM_IRQS constant that have been
+   added to QEMU since this patch was originally written.
 
- include/qemu-main.h | 14 +++++++++++-
- system/main.c       | 37 +++++++++++++++++++++++++++----
- ui/cocoa.m          | 54 +++++++++++----------------------------------
- ui/gtk.c            |  4 ++++
- ui/sdl2.c           |  4 ++++
- 5 files changed, 67 insertions(+), 46 deletions(-)
+ hw/arm/sbsa-ref.c          |  2 +-
+ hw/arm/virt.c              |  2 +-
+ hw/i386/microvm.c          |  2 +-
+ hw/loongarch/virt.c        | 12 +++++------
+ hw/mips/loongson3_virt.c   |  2 +-
+ hw/openrisc/virt.c         | 12 +++++------
+ hw/pci-host/gpex.c         | 43 ++++++++++++++++++++++++++++++--------
+ hw/riscv/virt.c            | 12 +++++------
+ hw/xen/xen-pvh-common.c    |  2 +-
+ hw/xtensa/virt.c           |  2 +-
+ include/hw/pci-host/gpex.h |  7 +++----
+ 11 files changed, 61 insertions(+), 37 deletions(-)
 
-diff --git a/include/qemu-main.h b/include/qemu-main.h
-index 940960a7dbc..2ee83bedff3 100644
---- a/include/qemu-main.h
-+++ b/include/qemu-main.h
-@@ -5,7 +5,19 @@
- #ifndef QEMU_MAIN_H
- #define QEMU_MAIN_H
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index e3195d54497..7e7322486c2 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -673,7 +673,7 @@ static void create_pcie(SBSAMachineState *sms)
+     /* Map IO port space */
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
  
--int qemu_default_main(void);
-+/*
-+ * The function to run on the main (initial) thread of the process.
-+ * NULL means QEMU's main event loop.
-+ * When non-NULL, QEMU's main event loop will run on a purposely created
-+ * thread, after which the provided function pointer will be invoked on
-+ * the initial thread.
-+ * This is useful on platforms which treat the main thread as special
-+ * (macOS/Darwin) and/or require all UI API calls to occur from the main
-+ * thread. Those platforms can initialise it to a specific function,
-+ * while UI implementations may reset it to NULL during their init if they
-+ * will handle system and UI events on the main thread via QEMU's own main
-+ * event loop.
-+ */
- extern int (*qemu_main)(void);
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+                            qdev_get_gpio_in(sms->gic, irq + i));
+         gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 1a381e9a2bd..8aa22ea3155 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1547,7 +1547,7 @@ static void create_pcie(VirtMachineState *vms)
+     /* Map IO port space */
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, base_pio);
  
- #endif /* QEMU_MAIN_H */
-diff --git a/system/main.c b/system/main.c
-index 9b91d21ea8c..668d0ecfe8c 100644
---- a/system/main.c
-+++ b/system/main.c
-@@ -24,26 +24,55 @@
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+                            qdev_get_gpio_in(vms->gic, irq + i));
+         gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
+diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+index 86637afa0f3..ce80596c239 100644
+--- a/hw/i386/microvm.c
++++ b/hw/i386/microvm.c
+@@ -139,7 +139,7 @@ static void create_gpex(MicrovmMachineState *mms)
+                                     mms->gpex.mmio64.base, mmio64_alias);
+     }
  
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+                            x86ms->gsi[mms->gpex.irq + i]);
+     }
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index 9a635d1d3d3..1d71982c722 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -441,7 +441,7 @@ static void fdt_add_pcie_irq_map_node(const LoongArchVirtMachineState *lvms,
+ {
+     int pin, dev;
+     uint32_t irq_map_stride = 0;
+-    uint32_t full_irq_map[GPEX_NUM_IRQS *GPEX_NUM_IRQS * 10] = {};
++    uint32_t full_irq_map[PCI_NUM_PINS * PCI_NUM_PINS * 10] = {};
+     uint32_t *irq_map = full_irq_map;
+     const MachineState *ms = MACHINE(lvms);
+ 
+@@ -454,11 +454,11 @@ static void fdt_add_pcie_irq_map_node(const LoongArchVirtMachineState *lvms,
+      * to wrap to any number of devices.
+      */
+ 
+-    for (dev = 0; dev < GPEX_NUM_IRQS; dev++) {
++    for (dev = 0; dev < PCI_NUM_PINS; dev++) {
+         int devfn = dev * 0x8;
+ 
+-        for (pin = 0; pin  < GPEX_NUM_IRQS; pin++) {
+-            int irq_nr = 16 + ((pin + PCI_SLOT(devfn)) % GPEX_NUM_IRQS);
++        for (pin = 0; pin < PCI_NUM_PINS; pin++) {
++            int irq_nr = 16 + ((pin + PCI_SLOT(devfn)) % PCI_NUM_PINS);
+             int i = 0;
+ 
+             /* Fill PCI address cells */
+@@ -482,7 +482,7 @@ static void fdt_add_pcie_irq_map_node(const LoongArchVirtMachineState *lvms,
+ 
+ 
+     qemu_fdt_setprop(ms->fdt, nodename, "interrupt-map", full_irq_map,
+-                     GPEX_NUM_IRQS * GPEX_NUM_IRQS *
++                     PCI_NUM_PINS * PCI_NUM_PINS *
+                      irq_map_stride * sizeof(uint32_t));
+     qemu_fdt_setprop_cells(ms->fdt, nodename, "interrupt-map-mask",
+                      0x1800, 0, 0, 0x7);
+@@ -741,7 +741,7 @@ static void virt_devices_init(DeviceState *pch_pic,
+     memory_region_add_subregion(get_system_memory(), VIRT_PCI_IO_BASE,
+                                 pio_alias);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         sysbus_connect_irq(d, i,
+                            qdev_get_gpio_in(pch_pic, 16 + i));
+         gpex_set_irq_num(GPEX_HOST(gpex_dev), i, 16 + i);
+diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
+index f3b6326cc59..884b5f23a99 100644
+--- a/hw/mips/loongson3_virt.c
++++ b/hw/mips/loongson3_virt.c
+@@ -458,7 +458,7 @@ static inline void loongson3_virt_devices_init(MachineState *machine,
+                                 virt_memmap[VIRT_PCIE_PIO].base, s->pio_alias);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, virt_memmap[VIRT_PCIE_PIO].base);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         irq = qdev_get_gpio_in(pic, PCIE_IRQ_BASE + i);
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, irq);
+         gpex_set_irq_num(GPEX_HOST(dev), i, PCIE_IRQ_BASE + i);
+diff --git a/hw/openrisc/virt.c b/hw/openrisc/virt.c
+index 47d2c9bd3c7..6f053bf48e0 100644
+--- a/hw/openrisc/virt.c
++++ b/hw/openrisc/virt.c
+@@ -318,7 +318,7 @@ static void create_pcie_irq_map(void *fdt, char *nodename, int irq_base,
+ {
+     int pin, dev;
+     uint32_t irq_map_stride = 0;
+-    uint32_t full_irq_map[GPEX_NUM_IRQS * GPEX_NUM_IRQS * 6] = {};
++    uint32_t full_irq_map[PCI_NUM_PINS * PCI_NUM_PINS * 6] = {};
+     uint32_t *irq_map = full_irq_map;
+ 
+     /*
+@@ -330,11 +330,11 @@ static void create_pcie_irq_map(void *fdt, char *nodename, int irq_base,
+      * possible slot) seeing the interrupt-map-mask will allow the table
+      * to wrap to any number of devices.
+      */
+-    for (dev = 0; dev < GPEX_NUM_IRQS; dev++) {
++    for (dev = 0; dev < PCI_NUM_PINS; dev++) {
+         int devfn = dev << 3;
+ 
+-        for (pin = 0; pin < GPEX_NUM_IRQS; pin++) {
+-            int irq_nr = irq_base + ((pin + PCI_SLOT(devfn)) % GPEX_NUM_IRQS);
++        for (pin = 0; pin < PCI_NUM_PINS; pin++) {
++            int irq_nr = irq_base + ((pin + PCI_SLOT(devfn)) % PCI_NUM_PINS);
+             int i = 0;
+ 
+             /* Fill PCI address cells */
+@@ -357,7 +357,7 @@ static void create_pcie_irq_map(void *fdt, char *nodename, int irq_base,
+     }
+ 
+     qemu_fdt_setprop(fdt, nodename, "interrupt-map", full_irq_map,
+-                     GPEX_NUM_IRQS * GPEX_NUM_IRQS *
++                     PCI_NUM_PINS * PCI_NUM_PINS *
+                      irq_map_stride * sizeof(uint32_t));
+ 
+     qemu_fdt_setprop_cells(fdt, nodename, "interrupt-map-mask",
+@@ -409,7 +409,7 @@ static void openrisc_virt_pcie_init(OR1KVirtState *state,
+     memory_region_add_subregion(get_system_memory(), pio_base, alias);
+ 
+     /* Connect IRQ lines. */
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         pcie_irq = get_per_cpu_irq(cpus, num_cpus, irq_base + i);
+ 
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, pcie_irq);
+diff --git a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+index e9cf455bf52..cd63aa2d3cf 100644
+--- a/hw/pci-host/gpex.c
++++ b/hw/pci-host/gpex.c
+@@ -32,6 +32,7 @@
  #include "qemu/osdep.h"
- #include "qemu-main.h"
-+#include "qemu/main-loop.h"
- #include "sysemu/sysemu.h"
+ #include "qapi/error.h"
+ #include "hw/irq.h"
++#include "hw/pci/pci_bus.h"
+ #include "hw/pci-host/gpex.h"
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+@@ -41,20 +42,25 @@
+  * GPEX host
+  */
  
- #ifdef CONFIG_SDL
-+/*
-+ * SDL insists on wrapping the main() function with its own implementation on
-+ * some platforms; it does so via a macro that renames our main function, so
-+ * <SDL.h> must be #included here even with no SDL code called from this file.
-+ */
- #include <SDL.h>
- #endif
- 
--int qemu_default_main(void)
-+#ifdef CONFIG_DARWIN
-+#include <CoreFoundation/CoreFoundation.h>
-+#endif
++struct GPEXIrq {
++    qemu_irq irq;
++    int irq_num;
++};
 +
-+static void *qemu_default_main(void *opaque)
+ static void gpex_set_irq(void *opaque, int irq_num, int level)
  {
-     int status;
+     GPEXHost *s = opaque;
  
-+    bql_lock();
-     status = qemu_main_loop();
-     qemu_cleanup(status);
-+    bql_unlock();
- 
--    return status;
-+    exit(status);
+-    qemu_set_irq(s->irq[irq_num], level);
++    qemu_set_irq(s->irq[irq_num].irq, level);
  }
  
--int (*qemu_main)(void) = qemu_default_main;
-+int (*qemu_main)(void);
-+
-+#ifdef CONFIG_DARWIN
-+static int os_darwin_cfrunloop_main(void)
+ int gpex_set_irq_num(GPEXHost *s, int index, int gsi)
+ {
+-    if (index >= GPEX_NUM_IRQS) {
++    if (index >= s->num_irqs) {
+         return -EINVAL;
+     }
+ 
+-    s->irq_num[index] = gsi;
++    s->irq[index].irq_num = gsi;
+     return 0;
+ }
+ 
+@@ -62,7 +68,7 @@ static PCIINTxRoute gpex_route_intx_pin_to_irq(void *opaque, int pin)
+ {
+     PCIINTxRoute route;
+     GPEXHost *s = opaque;
+-    int gsi = s->irq_num[pin];
++    int gsi = s->irq[pin].irq_num;
+ 
+     route.irq = gsi;
+     if (gsi < 0) {
+@@ -74,6 +80,13 @@ static PCIINTxRoute gpex_route_intx_pin_to_irq(void *opaque, int pin)
+     return route;
+ }
+ 
++static int gpex_swizzle_map_irq_fn(PCIDevice *pci_dev, int pin)
 +{
-+    CFRunLoopRun();
-+    g_assert_not_reached();
++    PCIBus *bus = pci_device_root_bus(pci_dev);
++
++    return (PCI_SLOT(pci_dev->devfn) + pin) % bus->nirq;
 +}
-+int (*qemu_main)(void) = os_darwin_cfrunloop_main;
-+#endif
- 
- int main(int argc, char **argv)
++
+ static void gpex_host_realize(DeviceState *dev, Error **errp)
  {
-     qemu_init(argc, argv);
--    return qemu_main();
-+    bql_unlock();
-+    if (qemu_main) {
-+        QemuThread main_loop_thread;
-+        qemu_thread_create(&main_loop_thread, "qemu_main",
-+                           qemu_default_main, NULL, QEMU_THREAD_DETACHED);
-+        return qemu_main();
-+    } else {
-+        qemu_default_main(NULL);
-+    }
- }
-diff --git a/ui/cocoa.m b/ui/cocoa.m
-index dd88115dc6f..0a9ad824aa5 100644
---- a/ui/cocoa.m
-+++ b/ui/cocoa.m
-@@ -73,6 +73,8 @@
-     int height;
- } QEMUScreen;
+     PCIHostState *pci = PCI_HOST_BRIDGE(dev);
+@@ -82,6 +95,8 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
+     PCIExpressHost *pex = PCIE_HOST_BRIDGE(dev);
+     int i;
  
-+@class QemuCocoaPasteboardTypeOwner;
++    s->irq = g_malloc0_n(s->num_irqs, sizeof(*s->irq));
 +
- static void cocoa_update(DisplayChangeListener *dcl,
-                          int x, int y, int w, int h);
+     pcie_host_mmcfg_init(pex, PCIE_MMCFG_SIZE_MAX);
+     sysbus_init_mmio(sbd, &pex->mmio);
  
-@@ -107,6 +109,7 @@ static void cocoa_switch(DisplayChangeListener *dcl,
- static NSInteger cbchangecount = -1;
- static QemuClipboardInfo *cbinfo;
- static QemuEvent cbevent;
-+static QemuCocoaPasteboardTypeOwner *cbowner;
- 
- // Utility functions to run specified code block with the BQL held
- typedef void (^CodeBlock)(void);
-@@ -1326,8 +1329,10 @@ - (void) dealloc
- {
-     COCOA_DEBUG("QemuCocoaAppController: dealloc\n");
- 
--    if (cocoaView)
--        [cocoaView release];
-+    [cocoaView release];
-+    [cbowner release];
-+    cbowner = nil;
-+
-     [super dealloc];
- }
- 
-@@ -1943,8 +1948,6 @@ - (void)pasteboard:(NSPasteboard *)sender provideDataForType:(NSPasteboardType)t
- 
- @end
- 
--static QemuCocoaPasteboardTypeOwner *cbowner;
--
- static void cocoa_clipboard_notify(Notifier *notifier, void *data);
- static void cocoa_clipboard_request(QemuClipboardInfo *info,
-                                     QemuClipboardType type);
-@@ -2007,43 +2010,8 @@ static void cocoa_clipboard_request(QemuClipboardInfo *info,
-     }
- }
- 
--/*
-- * The startup process for the OSX/Cocoa UI is complicated, because
-- * OSX insists that the UI runs on the initial main thread, and so we
-- * need to start a second thread which runs the qemu_default_main():
-- * in main():
-- *  in cocoa_display_init():
-- *   assign cocoa_main to qemu_main
-- *   create application, menus, etc
-- *  in cocoa_main():
-- *   create qemu-main thread
-- *   enter OSX run loop
-- */
--
--static void *call_qemu_main(void *opaque)
--{
--    int status;
--
--    COCOA_DEBUG("Second thread: calling qemu_default_main()\n");
--    bql_lock();
--    status = qemu_default_main();
--    bql_unlock();
--    COCOA_DEBUG("Second thread: qemu_default_main() returned, exiting\n");
--    [cbowner release];
--    exit(status);
--}
--
- static int cocoa_main(void)
- {
--    QemuThread thread;
--
--    COCOA_DEBUG("Entered %s()\n", __func__);
--
--    bql_unlock();
--    qemu_thread_create(&thread, "qemu_main", call_qemu_main,
--                       NULL, QEMU_THREAD_DETACHED);
--
--    // Start the main event loop
-     COCOA_DEBUG("Main thread: entering OSX run loop\n");
-     [NSApp run];
-     COCOA_DEBUG("Main thread: left OSX run loop, which should never happen\n");
-@@ -2125,8 +2093,6 @@ static void cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
- 
-     COCOA_DEBUG("qemu_cocoa: cocoa_display_init\n");
- 
--    qemu_main = cocoa_main;
--
-     // Pull this console process up to being a fully-fledged graphical
-     // app with a menubar and Dock icon
-     ProcessSerialNumber psn = { 0, kCurrentProcess };
-@@ -2190,6 +2156,12 @@ static void cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
-     qemu_clipboard_peer_register(&cbpeer);
- 
-     [pool release];
-+
-+    /*
-+     * The Cocoa UI will run the NSApplication runloop on the main thread
-+     * rather than the default Core Foundation one.
-+     */
-+    qemu_main = cocoa_main;
- }
- 
- static QemuDisplay qemu_display_cocoa = {
-diff --git a/ui/gtk.c b/ui/gtk.c
-index bf9d3dd679a..c8dcd95350c 100644
---- a/ui/gtk.c
-+++ b/ui/gtk.c
-@@ -38,6 +38,7 @@
- #include "qemu/cutils.h"
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
-+#include "qemu-main.h"
- 
- #include "ui/console.h"
- #include "ui/gtk.h"
-@@ -2485,6 +2486,9 @@ static void gtk_display_init(DisplayState *ds, DisplayOptions *opts)
- #ifdef CONFIG_GTK_CLIPBOARD
-     gd_clipboard_init(s);
- #endif /* CONFIG_GTK_CLIPBOARD */
-+
-+    /* GTK's event polling must happen on the main thread. */
-+    qemu_main = NULL;
- }
- 
- static void early_gtk_display_init(DisplayOptions *opts)
-diff --git a/ui/sdl2.c b/ui/sdl2.c
-index bd4f5a9da14..44ab2762262 100644
---- a/ui/sdl2.c
-+++ b/ui/sdl2.c
-@@ -34,6 +34,7 @@
- #include "sysemu/sysemu.h"
- #include "ui/win32-kbd-hook.h"
- #include "qemu/log.h"
-+#include "qemu-main.h"
- 
- static int sdl2_num_outputs;
- static struct sdl2_console *sdl2_console;
-@@ -965,6 +966,9 @@ static void sdl2_display_init(DisplayState *ds, DisplayOptions *o)
+@@ -128,19 +143,27 @@ static void gpex_host_realize(DeviceState *dev, Error **errp)
+         sysbus_init_mmio(sbd, &s->io_ioport);
      }
  
-     atexit(sdl_cleanup);
-+
-+    /* SDL's event polling (in dpy_refresh) must happen on the main thread. */
-+    qemu_main = NULL;
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
+-        sysbus_init_irq(sbd, &s->irq[i]);
+-        s->irq_num[i] = -1;
++    for (i = 0; i < s->num_irqs; i++) {
++        sysbus_init_irq(sbd, &s->irq[i].irq);
++        s->irq[i].irq_num = -1;
+     }
+ 
+     pci->bus = pci_register_root_bus(dev, "pcie.0", gpex_set_irq,
+-                                     pci_swizzle_map_irq_fn, s, &s->io_mmio,
+-                                     &s->io_ioport, 0, 4, TYPE_PCIE_BUS);
++                                     gpex_swizzle_map_irq_fn,
++                                     s, &s->io_mmio, &s->io_ioport, 0,
++                                     s->num_irqs, TYPE_PCIE_BUS);
+ 
+     pci_bus_set_route_irq_fn(pci->bus, gpex_route_intx_pin_to_irq);
+     qdev_realize(DEVICE(&s->gpex_root), BUS(pci->bus), &error_fatal);
  }
  
- static QemuDisplay qemu_display_sdl2 = {
++static void gpex_host_unrealize(DeviceState *dev)
++{
++    GPEXHost *s = GPEX_HOST(dev);
++
++    g_free(s->irq);
++}
++
+ static const char *gpex_host_root_bus_path(PCIHostState *host_bridge,
+                                           PCIBus *rootbus)
+ {
+@@ -166,6 +189,7 @@ static Property gpex_host_properties[] = {
+                        gpex_cfg.mmio64.base, 0),
+     DEFINE_PROP_SIZE(PCI_HOST_ABOVE_4G_MMIO_SIZE, GPEXHost,
+                      gpex_cfg.mmio64.size, 0),
++    DEFINE_PROP_UINT8("num-irqs", GPEXHost, num_irqs, PCI_NUM_PINS),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -176,6 +200,7 @@ static void gpex_host_class_init(ObjectClass *klass, void *data)
+ 
+     hc->root_bus_path = gpex_host_root_bus_path;
+     dc->realize = gpex_host_realize;
++    dc->unrealize = gpex_host_unrealize;
+     set_bit(DEVICE_CATEGORY_BRIDGE, dc->categories);
+     dc->fw_name = "pci";
+     device_class_set_props(dc, gpex_host_properties);
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 45a8c4f8190..567fe92a136 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -168,7 +168,7 @@ static void create_pcie_irq_map(RISCVVirtState *s, void *fdt, char *nodename,
+ {
+     int pin, dev;
+     uint32_t irq_map_stride = 0;
+-    uint32_t full_irq_map[GPEX_NUM_IRQS * GPEX_NUM_IRQS *
++    uint32_t full_irq_map[PCI_NUM_PINS * PCI_NUM_PINS *
+                           FDT_MAX_INT_MAP_WIDTH] = {};
+     uint32_t *irq_map = full_irq_map;
+ 
+@@ -180,11 +180,11 @@ static void create_pcie_irq_map(RISCVVirtState *s, void *fdt, char *nodename,
+      * possible slot) seeing the interrupt-map-mask will allow the table
+      * to wrap to any number of devices.
+      */
+-    for (dev = 0; dev < GPEX_NUM_IRQS; dev++) {
++    for (dev = 0; dev < PCI_NUM_PINS; dev++) {
+         int devfn = dev * 0x8;
+ 
+-        for (pin = 0; pin < GPEX_NUM_IRQS; pin++) {
+-            int irq_nr = PCIE_IRQ + ((pin + PCI_SLOT(devfn)) % GPEX_NUM_IRQS);
++        for (pin = 0; pin < PCI_NUM_PINS; pin++) {
++            int irq_nr = PCIE_IRQ + ((pin + PCI_SLOT(devfn)) % PCI_NUM_PINS);
+             int i = 0;
+ 
+             /* Fill PCI address cells */
+@@ -210,7 +210,7 @@ static void create_pcie_irq_map(RISCVVirtState *s, void *fdt, char *nodename,
+     }
+ 
+     qemu_fdt_setprop(fdt, nodename, "interrupt-map", full_irq_map,
+-                     GPEX_NUM_IRQS * GPEX_NUM_IRQS *
++                     PCI_NUM_PINS * PCI_NUM_PINS *
+                      irq_map_stride * sizeof(uint32_t));
+ 
+     qemu_fdt_setprop_cells(fdt, nodename, "interrupt-map-mask",
+@@ -1182,7 +1182,7 @@ static inline DeviceState *gpex_pcie_init(MemoryRegion *sys_mem,
+ 
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 2, pio_base);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         irq = qdev_get_gpio_in(irqchip, PCIE_IRQ + i);
+ 
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, irq);
+diff --git a/hw/xen/xen-pvh-common.c b/hw/xen/xen-pvh-common.c
+index 218ac851cf7..9143b54d826 100644
+--- a/hw/xen/xen-pvh-common.c
++++ b/hw/xen/xen-pvh-common.c
+@@ -169,7 +169,7 @@ static inline void xenpvh_gpex_init(XenPVHMachineState *s,
+      */
+     assert(xpc->set_pci_intx_irq);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         qemu_irq irq = qemu_allocate_irq(xpc->set_pci_intx_irq, s, i);
+ 
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, irq);
+diff --git a/hw/xtensa/virt.c b/hw/xtensa/virt.c
+index 5310a888613..8f5c2009d29 100644
+--- a/hw/xtensa/virt.c
++++ b/hw/xtensa/virt.c
+@@ -93,7 +93,7 @@ static void create_pcie(MachineState *ms, CPUXtensaState *env, int irq_base,
+     /* Connect IRQ lines. */
+     extints = xtensa_get_extints(env);
+ 
+-    for (i = 0; i < GPEX_NUM_IRQS; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         void *q = extints[irq_base + i];
+ 
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i, q);
+diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+index dce883573ba..84471533af0 100644
+--- a/include/hw/pci-host/gpex.h
++++ b/include/hw/pci-host/gpex.h
+@@ -32,8 +32,6 @@ OBJECT_DECLARE_SIMPLE_TYPE(GPEXHost, GPEX_HOST)
+ #define TYPE_GPEX_ROOT_DEVICE "gpex-root"
+ OBJECT_DECLARE_SIMPLE_TYPE(GPEXRootState, GPEX_ROOT_DEVICE)
+ 
+-#define GPEX_NUM_IRQS 4
+-
+ struct GPEXRootState {
+     /*< private >*/
+     PCIDevice parent_obj;
+@@ -49,6 +47,7 @@ struct GPEXConfig {
+     PCIBus      *bus;
+ };
+ 
++typedef struct GPEXIrq GPEXIrq;
+ struct GPEXHost {
+     /*< private >*/
+     PCIExpressHost parent_obj;
+@@ -60,8 +59,8 @@ struct GPEXHost {
+     MemoryRegion io_mmio;
+     MemoryRegion io_ioport_window;
+     MemoryRegion io_mmio_window;
+-    qemu_irq irq[GPEX_NUM_IRQS];
+-    int irq_num[GPEX_NUM_IRQS];
++    GPEXIrq *irq;
++    uint8_t num_irqs;
+ 
+     bool allow_unmapped_accesses;
+ 
 -- 
 2.39.5 (Apple Git-154)
 

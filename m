@@ -1,156 +1,173 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp380546njb;
-        Fri, 13 Dec 2024 04:01:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUgzRMZGniBzKvrFf0Fp0zjmx8mzPyds6P8nvW5m4Ewe6Z1qz7efXGH3leno4XYlk1CUQG9ma2uwfipLQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IE4AaLBKXqWOQ+yImvlCkt731Du1F4H7ItsJqvOIFPSkMjra2wM6x/pnfJG/Or+OtcOCee6
-X-Received: by 2002:a05:6122:1787:b0:517:4fca:86e2 with SMTP id 71dfb90a1353d-518ca479a04mr1684788e0c.10.1734091273688;
-        Fri, 13 Dec 2024 04:01:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734091273; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp382593njb;
+        Fri, 13 Dec 2024 04:03:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXVaJfFbQyN+meMgQRO+6OeFV2rXUpBDjb2Q2xmsqcSnJhixUX9LOUIW1QeYiDt/JA/1rASpvufl7PfMQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEP6v+NlDxsDhnCTHSAzumKKjaLBmmccao9HTmoPFphbtDIkF7VFyKYNigynxz5/s1gGDVS
+X-Received: by 2002:a05:6000:2ad:b0:385:ee59:44eb with SMTP id ffacd0b85a97d-3888e0bd28amr2028803f8f.33.1734091403119;
+        Fri, 13 Dec 2024 04:03:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734091403; cv=none;
         d=google.com; s=arc-20240605;
-        b=W5nDzaH9NV3h075fY/UEm8duPjJZDDQ1mM9/2SYrvNPDRLFoOtf7VdeQwWdviUcGZQ
-         RVrByhLcl2Onfj2ad6XeSUaNZDeR+aewi6O4L8k7ie5JcZB8URYQ8BvtbAfC3n41Ep3b
-         6JhFk6f4GqTucRll9myjGlHHX54pzGa2M/yUPxqN6NO9U0ibuA7QGxhZvMD4VEypxmeJ
-         GCrT8igwU8lp64iQclgCOcdcEx0UPcHi+x43bH+yUKV4wf6J5o4pfzDlK/lEemQtgvN1
-         Jo3ZENu59jePkWVSChbCZrGkccJ9JHIzcmhXQrODDY1h6WQIt5/iJfyqqWy5pvYjnDlG
-         1EbA==
+        b=fsN/oIK+hHUjAgPRhJMwlKT1Ig3ZMbC8zFpd7BKFDMf2V/X2iEmQN/UPUfUhFMXCHV
+         MK422be9Ylw4Ui3w0eod3eBVAT8dxLWweOW75Wc8uTNpBQo+f5Aft2lK71zNLF0m7pZ3
+         XznHOj+/wFpVy8EBLw7D1LBODR+Uui/XRH5dk/+UHeGiEh9gIWTFIGX+87zzX+sfSFEU
+         w9FMGtBMGfFx9kSrWqI72CSJKbHvf9DJ9NajQy3e3mJnWZccRoFzyAj/IeeA16aAGid5
+         MM0Um1eqa+OARMo/nKW3nCY7QcPPlG8EkAwIsyRAz+pmOpZFMBsA/rqkYm+GWfbPYAwd
+         njZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=ziaOfOgJQn2EytbTbRQsRELo4r8ux1TxshcSdzES3h0=;
-        fh=Zb2kcfsRNwOyZCFsdnJ9ji6Ko91sfAa5DXFIGHnC+qw=;
-        b=YRhYauLhs74J8KvnptbRGou3LxpsuaXiF/n5AEc8UDou+DV6OSsed8v/XopdhrPfhm
-         m0SgvuQ1lWwNGfAuojfNOioszuk6fZc1MNMhsF6vXlI7FfHs4NNUuz3vJZ1i+6jREFaL
-         sb7w5OfgQzqoyfmQ7ReN8VA7cbBMVxV1WWb0bx4enEuCBOQnzE9DSfJ3LT9R56kgpdvR
-         eUwudBp18HXNjuRqpua2FPXMpZkOJkHMU85oGdF1TUI1AL0eKmpA6BPcfFU49EnHAbqz
-         gi6Y9ry+U4Fa3JF8tRoOD6fYMQ3QqCSqiwBtbuMrvhFqk98NF8tANI6f4rD8iFzWJxvY
-         lU+Q==;
+        h=content-transfer-encoding:content-language:in-reply-to:from
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=DkNN2/tvunvK0nDD8Ihj9fplKSNzjuZKYRqHyzISMbY=;
+        fh=lhZ7eGgnHC52repwue83Zn211JU2xiaaymkqQWjm09w=;
+        b=Ee518Jqw9wtZ+A02uy9NrRiDNoCZUE4Tgi5O1TzF+PntVrb0ayaoikva5SSxj3MWD4
+         v9yXOd2OQ+/Zx+opsFPYVxGYp/GC2MQ+v390xA09FfDIHMBmueyLyzMT7e38eQLKi4fL
+         CJR65M8pMG1vmn5nP/BiPVLBKUNPCbMY9oo0Fzy7Mti3qIlmunyYiPQmyGYZbh2nbEC0
+         4/xo127GvRXfSVRHznYpkN2K7Rip/FaJk+xi+js7HSzIsbCTVWdyxwVNaEZzApix3wDB
+         w7Hnkn3hRoe95huaUoeW+70nokIqKoLdzWrck0AOOlYqr4o8S7i35C+ngw2dYyJzJ57/
+         MHSA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FivvTsrU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bONheaSr;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-5189018f9desi2278281e0c.196.2024.12.13.04.01.13
+Return-Path: <gshan@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-38782491489si2973888f8f.54.2024.12.13.04.03.22
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 04:01:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Dec 2024 04:03:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FivvTsrU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=bONheaSr;
+       spf=pass (google.com: domain of gshan@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=gshan@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tM4M1-0006ad-6u; Fri, 13 Dec 2024 07:01:10 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tM4Lz-0006aO-8D
- for qemu-arm@nongnu.org; Fri, 13 Dec 2024 07:01:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tM4Ls-0007rJ-3I
- for qemu-arm@nongnu.org; Fri, 13 Dec 2024 07:01:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1734091259;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=ziaOfOgJQn2EytbTbRQsRELo4r8ux1TxshcSdzES3h0=;
- b=FivvTsrUlfQjT2nyJG2sFV8OUh8eCkCIBKmi5TLFGSnZ8o2EcbRlUZ4RBY/KHqYV0md2qg
- NMulRB8zFc0n9AR+kSf7zqBed/ilcwvCPHZ2LiDz3FfNLlYLdPo2ieYQ+dDj7A2JujyFSe
- Mkk2/pBdv4gMvjy5/w/jcjC3NBhW2Gc=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-322-UwYNHJMPMjy88mwEuJlx9w-1; Fri,
- 13 Dec 2024 07:00:55 -0500
-X-MC-Unique: UwYNHJMPMjy88mwEuJlx9w-1
-X-Mimecast-MFC-AGG-ID: UwYNHJMPMjy88mwEuJlx9w
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1C0EC19560B3; Fri, 13 Dec 2024 12:00:53 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.42])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5BC6C30044C1; Fri, 13 Dec 2024 12:00:47 +0000 (UTC)
-Date: Fri, 13 Dec 2024 12:00:43 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, eric.auger@redhat.com,
- peter.maydell@linaro.org, jgg@nvidia.com, nicolinc@nvidia.com,
- ddutile@redhat.com, linuxarm@huawei.com, wangzhou1@hisilicon.com,
- jiangkunkun@huawei.com, jonathan.cameron@huawei.com,
- zhangfei.gao@linaro.org
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Message-ID: <Z1wh69_gZ9izr1iU@redhat.com>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+	s=mimecast20190719; t=1734091402;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=DkNN2/tvunvK0nDD8Ihj9fplKSNzjuZKYRqHyzISMbY=;
+	b=bONheaSrVTZ1a9XpuuhXEgu2w4cdprPohKaKCbrp6iU5+MxQ6ZPQvcUd5ATXimka012dOG
+	gwsRwle/s5pdVMg4TFsIxG1p5KCHKNweYZsckOdVZf8nE2OkhzkVzlLYjXwjqaUwz9P1/t
+	8yofzGvXoRCjyaQMZNKRu1IKDxGFE+M=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-613-46_639csN7iFeFe1Ij6ONw-1; Fri, 13 Dec 2024 07:03:21 -0500
+X-MC-Unique: 46_639csN7iFeFe1Ij6ONw-1
+X-Mimecast-MFC-AGG-ID: 46_639csN7iFeFe1Ij6ONw
+Received: by mail-pl1-f199.google.com with SMTP id d9443c01a7336-2166f9f52fbso24663495ad.2
+        for <alex.bennee@linaro.org>; Fri, 13 Dec 2024 04:03:20 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734091400; x=1734696200;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=DkNN2/tvunvK0nDD8Ihj9fplKSNzjuZKYRqHyzISMbY=;
+        b=vw4aWD6L+baBOFE1lW+5ERpOvqiX5VFjMfy0si6Qi37AX+o0b9hAy1YjHaxO+so7Kj
+         cQq805RuBZfbEw9ltXmYJAuLIWeNvrcjZlUms08Istv4Hu9B6rji/n7BzLkaMVUswRkD
+         kr5YgBjKp7ZAjP46uqqgAVdi5pSWmf3HPQGFwKESp86e4jZHqAXjJg55gTDAeWMZugvm
+         /EnIrPFFzHz5wdryyYTM53RdXoWFl4iYoSTsBIOtuYt1V9pybnlDTtPtaO1QRF+3C9e1
+         Vy2EVbw0XvX9rq6mAPK1fvljuWPzu7Bg/qB0LBuWTgVmrLFXjGXTvYkSyMCAVAoZy8sR
+         7AUA==
+X-Forwarded-Encrypted: i=1; AJvYcCW61M66gJH695VnstyoOaWEN8ujGMVLkDDuj/LKi8qoV1wZv++fKzYNbBsJbUFKXw6ieyxcWGL9Ai3rhA==@linaro.org
+X-Gm-Message-State: AOJu0YwebuFXveenCDUdFbuKyJO49vkHvHB6Ffmn6xKeN+BeqEQkvI/t
+	l8ARkSWW3p9Zr8uVrBuSOLKsXK/pXKqchIt3nOx+FIV0SI7/916F/YZs1tYMJVp0Zf0WmaMzQbp
+	84k/4XZuE9I+Wgl4nbd5Ycgzrr8Hbyk3AeQpntgm4mbAVo3Y9I+qTBg==
+X-Gm-Gg: ASbGnctqERcMdR8dkLeDRX9HOvA5rOYf0KvJYNeCz9DlWgt2cWmS8vizio3ZAwr3QPg
+	i+urhYsaHW4zVHshuxyBWr+NC5kmFD5UFSc3JXRhiY8wgDVQa/TE88n1CbR8p8XC0ENLUvSODRH
+	HecX1FRSCabaq5AQOCx5SgY/95eb8NcsHPGKS4aB0Tco9YKY++vv10fu7mR81fJfcgAZFRn2Lkp
+	vHYVeQ7G08LcVwVc1dn49XDVUlyYA2SA/eZxHd7j76/Jsdi/PC6bH9f
+X-Received: by 2002:a17:903:1212:b0:216:4b1f:499 with SMTP id d9443c01a7336-21892a5d74bmr34747935ad.31.1734091400029;
+        Fri, 13 Dec 2024 04:03:20 -0800 (PST)
+X-Received: by 2002:a17:903:1212:b0:216:4b1f:499 with SMTP id d9443c01a7336-21892a5d74bmr34747595ad.31.1734091399704;
+        Fri, 13 Dec 2024 04:03:19 -0800 (PST)
+Return-Path: <gshan@redhat.com>
+Received: from [10.72.112.56] ([43.228.180.230])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2f142d90d07sm2998345a91.3.2024.12.13.04.03.12
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 13 Dec 2024 04:03:15 -0800 (PST)
+Message-ID: <bed63115-017a-4e80-9581-680fd6f29f4c@redhat.com>
+Date: Fri, 13 Dec 2024 22:03:08 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.495,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: tUUIMKB0rn1x
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 17/26] hw/arm/virt: Reserve one bit of guest-physical
+ address for RME
+To: Jean-Philippe Brucker <jean-philippe@linaro.org>, peter.maydell@linaro.org
+Cc: richard.henderson@linaro.org, philmd@linaro.org, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, alex.bennee@linaro.org
+References: <20241125195626.856992-2-jean-philippe@linaro.org>
+ <20241125195626.856992-19-jean-philippe@linaro.org>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20241125195626.856992-19-jean-philippe@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: rK16yeVyJG8ZmVAgn4SjoXEvvgFLvmlDeZFPspzHqMQ_1734091400
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: mlm3ev7MktCX
 
-On Fri, Nov 08, 2024 at 12:52:37PM +0000, Shameer Kolothum via wrote:
-> Hi,
+Hi Jean,
+
+On 11/26/24 5:56 AM, Jean-Philippe Brucker wrote:
+> When RME is enabled, the upper GPA bit is used to distinguish protected
+> from unprotected addresses. Reserve it when setting up the guest memory
+> map.
 > 
-> This series adds initial support for a user-creatable "arm-smmuv3-nested"
-> device to Qemu. At present the Qemu ARM SMMUv3 emulation is per machine
-> and cannot support multiple SMMUv3s.
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> ---
+>   hw/arm/virt.c | 14 ++++++++++++--
+>   1 file changed, 12 insertions(+), 2 deletions(-)
 > 
-> In order to support vfio-pci dev assignment with vSMMUv3, the physical
-> SMMUv3 has to be configured in nested mode. Having a pluggable
-> "arm-smmuv3-nested" device enables us to have multiple vSMMUv3 for Guests
-> running on a host with multiple physical SMMUv3s. A few benefits of doing
-> this are,
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 9836dfbdfb..eb94997914 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -3035,14 +3035,24 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
+>       VirtMachineState *vms = VIRT_MACHINE(ms);
+>       int rme_vm_type = kvm_arm_rme_vm_type(ms);
+>       int max_vm_pa_size, requested_pa_size;
+> +    int rme_reserve_bit = 0;
+>       bool fixed_ipa;
+>   
+> -    max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa);
+> +    if (rme_vm_type) {
+> +        /*
+> +         * With RME, the upper GPA bit differentiates Realm from NS memory.
+> +         * Reserve the upper bit to ensure that highmem devices will fit.
+> +         */
+> +        rme_reserve_bit = 1;
+> +    }
+> +
+> +    max_vm_pa_size = kvm_arm_get_max_vm_ipa_size(ms, &fixed_ipa) -
+> +                     rme_reserve_bit;
+>   
 
-I'm not very familiar with arm, but from this description I'm not
-really seeing how "nesting" is involved here. You're only talking
-about the host and 1 L1 guest, no L2 guest.
+For realm, @max_vm_pa_size is decreased by 1 ...
 
-Also what is the relation between the physical SMMUv3 and the guest
-SMMUv3 that's referenced ? Is this in fact some form of host device
-passthrough rather than nesting ?
+>       /* we freeze the memory map to compute the highest gpa */
+>       virt_set_memmap(vms, max_vm_pa_size);
+>   
+> -    requested_pa_size = 64 - clz64(vms->highest_gpa);
+> +    requested_pa_size = 64 - clz64(vms->highest_gpa) + rme_reserve_bit;
+>   
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+... For realm, @requested_pa_size is increased by 1, meaning there are two bits in
+the gap.
 
+>       /*
+>        * KVM requires the IPA size to be at least 32 bits.
+
+One bit instead of two bits seems the correct gap for the followup check?
+
+     if (requested_pa_size > max_vm_pa_size) {
+         error_report("-m and ,maxmem option values "
+                      "require an IPA range (%d bits) larger than "
+                      "the one supported by the host (%d bits)",
+                      requested_pa_size, max_vm_pa_size);
+         return -1;
+     }
+
+Thanks,
+Gavin

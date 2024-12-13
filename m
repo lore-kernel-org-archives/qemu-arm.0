@@ -1,764 +1,747 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp678396njb;
-        Fri, 13 Dec 2024 11:12:18 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVEELO/uoQEVqZ3JLzutTSEIOSLbd0SOxOv9cmn4164fuZwcE3MzvRsM0wwS7loLLMheLov1hBLiBp/ag==@linaro.org
-X-Google-Smtp-Source: AGHT+IE4VuHVgkBIOR2gTCMxjQKTrRO5i94WuDMmwMcqgEgpM7Vaf536WYQqOwbkCw1bip1gieA0
-X-Received: by 2002:ad4:5ba6:0:b0:6d8:8390:15db with SMTP id 6a1803df08f44-6dc8ca3b750mr58620036d6.6.1734117138166;
-        Fri, 13 Dec 2024 11:12:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734117138; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp680061njb;
+        Fri, 13 Dec 2024 11:15:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVEUTBT35AdsIWAb/SHBZXNC1Oisb/T1zJIjR85PqcuW60lR524SicXfp/t3Q0mBcEitkz97a0DFLRmvA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFrrtdqzvkFLRAynDWwHgo81n7ymkJmFDIEbasEi7T9xQ1QCv2VH1wpnrD1ZzV2jiaNsJFi
+X-Received: by 2002:a05:6902:2686:b0:e39:b0de:fed8 with SMTP id 3f1490d57ef6-e434a354f71mr3565111276.17.1734117300964;
+        Fri, 13 Dec 2024 11:15:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734117300; cv=none;
         d=google.com; s=arc-20240605;
-        b=aK9MKbto5qQInf4HT3siAZ+PNchjHywWNZWBOTDtRanmH7FHoKvyT1ndsW57kyLh4G
-         yPV6HdrJ/JrCJZxY63Mpd+Ds5F2kTknV2O4GqCws8Wi8TkksmDjXJciRmb1EkBlBEGWb
-         Fp4WF9cxYTdMoSeRKaJOkrbdclAK3DOx9jcjKlKtzebHFw0GxLDy7udfjtb/9vmWfl++
-         Nz9FFWqOiMTKbxiOFFs6hS0MlRWfyf4cEP0aXkawfx1VWx/THb+mKgqJ1O8UBj2z2+pn
-         OgFT9Y67UvSPo07C2CchZJW7Z35BYSIU15PqCMGQtJrWy8HTYe8hhU1pq1ctuHyAczAj
-         VLFg==
+        b=kEWehmgBtaAmwgXOns/HDOATa6O8ucv5/KBYHXsVlHG0euOENBS5I5uHVskpbkNMI9
+         GvrEm256XZwu0OftbAguJ33E1i57x2GLd/yRtRlmCaJvmc9ORmMRzLtTtCMJ3//Z8w8r
+         4FYvPa7tEEklxf+XkVXwUeccGotM2XeEYhosibQl306SwHYlNiSbfG0dvH0vQOGzKsIl
+         zitcMx94qRmVERLxWSrDRAJTr2uhZoKF3EkoIWADgmhX0xRIpqlpsrMVPGswf8dJ6Am6
+         R2AkAvHRCMBknFnkxADyteHDl8tQymSXnqCDhZ3kaO9UFh3KRHzNKp5eaAQ0k+YpG2/A
+         +Hmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Sp+3GJP1lzXsMdSS4qJT06SIeuNyeMXonBECjOXGBXk=;
-        fh=n7lOj5u0SZLyPUAK77kmPUOfElJbwwp666kA471Yr/E=;
-        b=exKGZb7LvSVQaTBMc7sW79pG6d0fVMZii6GrPyZse2UvGs7vcU5IGPRzev+qzICg5J
-         aeVn4QIcl9o4x05KIgG6xjXeE4R2xUxJup7WN+g6PRxmu3K82/VGEgvQn7q62jSeiR5D
-         TP0c+OTZuu2OEWlViJLeXONOZRmCPXAHG4xJWkG6j/7Huz1qaL9xmWeKKgQ2U1xE/+XV
-         1M3gfrpg9QnuAloGK7M4qXx7BwIh9PeBHubgwQmkxV0EU4roElcFRRltFf2PyMLCzoWT
-         qAnywKf9YMdVkS51j3PdujCf9FpCjVEuA1rUwtMbUCsd6Pnt8Gbxo1apCklL9+6uUi9Z
-         YQNQ==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature:sender:precedence
+         :errors-to:list-subscribe:list-help:list-post:list-unsubscribe
+         :list-id;
+        bh=wFKwAi47wfnLcU3Qx3I/C9LQF6ejU8QSvlDRphKjPrc=;
+        fh=5XOhqJ0MDtHzn30pQhsR5FQ9NojUmY7mplJdIwE4CM4=;
+        b=O3lYwG4B1Zw4baMGSegvhNsdRkrXkuNrVJxw1a1N/d7cI32cE6f0kMzOgkta1ZbYQW
+         msjq6VCa9agC2Tq/++hScWf7SWORiqJSAHxWdG88S21B29i4MDNpnFootYRLj3Iin8O7
+         5pHc+1BRPFoLBeX42stf4Rril8ij9KhChfpZLuypi+toRhcDGMJR1DEAThWE11cdaUDw
+         8517FT1ORWVP3mzm3wmUdMc6wVsF2CHDmO6FiZr2wxXY6io7DU828Qdp/Ag3b+UrKwYx
+         OIMGJwoPzpaTyJEqagblri/1ojyCpvKhGumbl1S7bdgVJVOazOMe0vMZF7JWHfk7OGJ8
+         FSBg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pmt59n1k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Bb19MNJN;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dccd3b8117si221046d6.544.2024.12.13.11.12.18
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 11:12:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <xen-devel-bounces@lists.xenproject.org>
+Received: from lists.xenproject.org (lists.xenproject.org. [192.237.175.120])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e470ca5c8c5si194435276.603.2024.12.13.11.14.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Dec 2024 11:15:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) client-ip=192.237.175.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pmt59n1k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Bb19MNJN;
+       spf=pass (google.com: domain of xen-devel-bounces@lists.xenproject.org designates 192.237.175.120 as permitted sender) smtp.mailfrom=xen-devel-bounces@lists.xenproject.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tMB3n-00066l-Qr; Fri, 13 Dec 2024 14:10:48 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tMB3i-0005wW-Lh
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 14:10:42 -0500
-Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tMB3c-00074c-C3
- for qemu-devel@nongnu.org; Fri, 13 Dec 2024 14:10:42 -0500
-Received: by mail-oo1-xc2d.google.com with SMTP id
- 006d021491bc7-5f2c34ae517so849365eaf.1
- for <qemu-devel@nongnu.org>; Fri, 13 Dec 2024 11:10:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734117035; x=1734721835; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Sp+3GJP1lzXsMdSS4qJT06SIeuNyeMXonBECjOXGBXk=;
- b=pmt59n1kHdD9hznu9syGalHHXYu3Euyd00poT/hoe2OofeemOUA3C1zk3yoGRNq8V1
- pwUM89Mgrr0GrBs5KYgHSJOzXHCCd5TMgLlqaVXfyT83tbKd6iqaQbhcB90RThDRO+9j
- RLI4IdrfhW9dkKOc+Q0x6QQEI4C/QbwQOt+vD0cygFVx9JSZ+Rbf1mA2s6h4qqdX7BRy
- dIzmjtYJgHHxIJpVzjrJMkKzQcs2N4wwJGOYO/TiTEEiZ5966MGQ198cUBwDm6ySuk3i
- U05YYqLU5UJxTpsd4kFt5NlL/dAemHt5qFb+2uhHuotFd2zAkXuB6Pd4Kck/GJishjl5
- FAaw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734117035; x=1734721835;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Sp+3GJP1lzXsMdSS4qJT06SIeuNyeMXonBECjOXGBXk=;
- b=sH+rRdGQ7ch43Lk1tyB126vSORjXKfRQg2V0wTXIYsN/T9pBR0JnqqZV9F1D+fGgLy
- tjTs/nHrbQiNp/MMQ7x/bwKuD0IKzuAELF3HW4gYFfiPpGF/jNlKY0rvP//U+DpAfcNR
- EF1xbCeo1JuKnZDNiN5tHQZozb0AzQT+vLGQETkc/qjjLEZg6R92dO8ZqpjpodfjlAKw
- VLhEml8aLd/9jtVa2RW062pRcoKxhToNSKV3zyd3BP34v0yh6lPgqkqKmyLrLuLuZ2Po
- 03v/n/izu066JKApchlNxwOHnmWWgt24x7fvi9wFKjdcMp7o4FjY4wIgmjE99tjRGx9D
- GYOA==
-X-Gm-Message-State: AOJu0YwFAocHs/hbdT5mQ+K53sAZVqG/fQUjWW1NwwRSP+PYWpV+WiBl
- GA7H39LzaZ1SkmLacXClCE25JexJPZB7cvdAV+401aKpu1JvXys7mBPqyvXoAWstj/Dsq1PSjsq
- 3XaKUSONQ
-X-Gm-Gg: ASbGncta+PwqAJ96AjAe8/aeuYf013aXwqib4imdqmahWUU3ix36h0Z61YF3eVaPPoy
- zynfJLV7lzS9hc/wyruQTCUVtv97eqQfoutWXpS/qerv06pyCvK2Alza54Zb6EHJbLMW/mk213A
- xMQYxnGFM2bjL7MzZ7gschLqFi3pckoKyn5NkLTTVAcIG0Pb4CuSfBl1nQBdLluhhJZ0bL0OMep
- 0CVyDwFkWnUB3hSzBYlsrsfa/oTL9ZU+1ycF1ksyhnmrrGkVZjg9ID98NuI/YBF
-X-Received: by 2002:a05:6830:7312:b0:71d:dda1:210a with SMTP id
- 46e09a7af769-71e3ba78c6bmr2149541a34.30.1734117034795; 
- Fri, 13 Dec 2024 11:10:34 -0800 (PST)
+Received: from list by lists.xenproject.org with outflank-mailman.857135.1269554 (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1tMB6v-0007xI-Cx; Fri, 13 Dec 2024 19:14:01 +0000
+X-Outflank-Mailman: Message body and most headers restored to incoming version
+Received: by outflank-mailman (output) from mailman id 857135.1269554; Fri, 13 Dec 2024 19:14:01 +0000
+Received: from localhost ([127.0.0.1] helo=lists.xenproject.org)
+	by lists.xenproject.org with esmtp (Exim 4.92)
+	(envelope-from <xen-devel-bounces@lists.xenproject.org>)
+	id 1tMB6v-0007xB-AC; Fri, 13 Dec 2024 19:14:01 +0000
+Received: by outflank-mailman (input) for mailman id 857135;
+ Fri, 13 Dec 2024 19:13:59 +0000
+Received: from se1-gles-flk1-in.inumbo.com ([94.247.172.50]
+ helo=se1-gles-flk1.inumbo.com)
+ by lists.xenproject.org with esmtp (Exim 4.92) (envelope-from
+ <SRS0=I5eD=TG=linaro.org=richard.henderson@srs-se1.protection.inumbo.net>)
+ id 1tMB6t-0007x5-Ep
+ for xen-devel@lists.xenproject.org; Fri, 13 Dec 2024 19:13:59 +0000
+Received: from mail-oi1-x235.google.com (mail-oi1-x235.google.com
+ [2607:f8b0:4864:20::235])
+ by se1-gles-flk1.inumbo.com (Halon) with ESMTPS
+ id 657b258d-b986-11ef-99a3-01e77a169b0f;
+ Fri, 13 Dec 2024 20:13:55 +0100 (CET)
+Received: by mail-oi1-x235.google.com with SMTP id
+ 5614622812f47-3eb7edfa42dso1063947b6e.2
+ for <xen-devel@lists.xenproject.org>; Fri, 13 Dec 2024 11:13:55 -0800 (PST)
 Received: from stoup.. ([187.217.227.247]) by smtp.gmail.com with ESMTPSA id
- 46e09a7af769-71e4834da91sm29697a34.18.2024.12.13.11.10.29
+ 5614622812f47-3ebb478a497sm3545b6e.10.2024.12.13.11.13.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 13 Dec 2024 11:10:34 -0800 (PST)
+ Fri, 13 Dec 2024 11:13:54 -0800 (PST)
+X-BeenThere: xen-devel@lists.xenproject.org
+List-Id: Xen developer discussion <xen-devel.lists.xenproject.org>
+List-Unsubscribe: <https://lists.xenproject.org/mailman/options/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=unsubscribe>
+List-Post: <mailto:xen-devel@lists.xenproject.org>
+List-Help: <mailto:xen-devel-request@lists.xenproject.org?subject=help>
+List-Subscribe: <https://lists.xenproject.org/mailman/listinfo/xen-devel>,
+ <mailto:xen-devel-request@lists.xenproject.org?subject=subscribe>
+Errors-To: xen-devel-bounces@lists.xenproject.org
+Precedence: list
+Sender: "Xen-devel" <xen-devel-bounces@lists.xenproject.org>
+X-Inumbo-ID: 657b258d-b986-11ef-99a3-01e77a169b0f
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734117234; x=1734722034; darn=lists.xenproject.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=wFKwAi47wfnLcU3Qx3I/C9LQF6ejU8QSvlDRphKjPrc=;
+        b=Bb19MNJNvFE8uzJDmajeQzS+kqmA0Bjcg5bIp+tzlHSjiJxV7ZYHVz+WOjoUCqlJle
+         XV1qhrZ7h40Po++dmWfvWmZW1+lAKeFnaHNxFbpypOkazou+pb/LuTD7gCN/AVBjLoUR
+         PBhvAQdnkPydgZ/9XDHyUZ933w4bZOxyStbBXtBEPozYyB7ldbJm7iakSR5hVtZUs8Tt
+         LJtSZ7IDsHKvJ9SY5p0tqEG05PNVXoNNTbM79bcaMYcKSAqYUkA0npDrMIBB2Jx6YXA6
+         CabBHhVjf4u5AXZD401RYRy33UIEbH1XOHUIUFHuagrsel2wDDP6T4vaFOGtBO6VJP4Q
+         LyKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734117234; x=1734722034;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=wFKwAi47wfnLcU3Qx3I/C9LQF6ejU8QSvlDRphKjPrc=;
+        b=U83vaCAbjYUQirqyTwYeHAwtGDTl08rpqNR+FWVBKeLY36DomXHn8FCkfxR1TjPikg
+         VWByb0HFv1P/yeWHJ0tON4gSQRMEaH5ph4lkLJo6ghoeiLMjdaSQzT00hs45YFY2IuBq
+         6ZaLOl3SATvzHNsjTS9jksQvwSvr2WBFshjgj88Cz0DbY2u6u/WRPDl3KBWA8dyahv1I
+         tZtctH+qR+q1AXd8oOnTNXAP/WHWrq87wGaUUyG5LLPZKMrv2GPvxj9y5DAhpUeeXaeh
+         mQwMg+41IuzZA262SYNNHUYRxcDbK+BzRyBiF6qR0YM3jLPIEAWkq6AtG7++ePmunlYO
+         +/xw==
+X-Forwarded-Encrypted: i=1; AJvYcCUfi3T6Suvz5T/X6Pj0aeDByPHmgqmsadO0eq7MUEpC5s+qfU2cU3O8jpBCaMcSWNdF/j71VLWD5ro=@lists.xenproject.org
+X-Gm-Message-State: AOJu0YzqsTEcgyAQvtuvT8X/kLPi5P0zqcjKsPTI7uYQEZyh5KalU3Pp
+	a/gtR8/JTiJcw1QyzFHc0TGDWYbbLsg0nyzHoQgWGuHFKNDj3d9eEx38iFyMPqo=
+X-Gm-Gg: ASbGncthCNMwPs3vDF+aKJCNB9tQXDFV24rNqPYcRid/T3MBuURjVNMKO3OyLRLVNtr
+	X59+IAR2PNA/8Da1t48f3LWkTtbzj9FIFR8W+/zyAb/I/SQZDkBfRjIv+MtWbEAmN4y8+IYJhdq
+	5EzlxVyO+fjWo4jBeXz7Dxn4Hg16gCQO2o4sjX6iZUiEAKK7PmQHxj18fdmD3CnLw0lPNXgo+Eh
+	FMtXXN9Qo9LEcZ/tQs/GuHWqZ/gTUMLkUH0RsNTtul4w/8JU6D76UzcpcIdumuE
+X-Received: by 2002:a05:6808:d4e:b0:3ea:519e:cc92 with SMTP id 5614622812f47-3eba699ea30mr2505794b6e.37.1734117234416;
+        Fri, 13 Dec 2024 11:13:54 -0800 (PST)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Cl=C3=A9ment=20Chigot?= <chigot@adacore.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>, Song Gao <gaosong@loongson.cn>,
- Bibo Mao <maobibo@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Huacai Chen <chenhuacai@kernel.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jia Liu <proljc@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Bernhard Beschow <shentey@gmail.com>,
- =?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Thomas Huth <thuth@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- qemu-arm@nongnu.org (open list:ARM cores),
- qemu-ppc@nongnu.org (open list:e500),
- qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs),
- qemu-s390x@nongnu.org (open list:S390 general arch...)
-Subject: [PATCH 32/71] hw/intc: Constify all Property
-Date: Fri, 13 Dec 2024 13:07:06 -0600
-Message-ID: <20241213190750.2513964-37-richard.henderson@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+	Jason Wang <jasowang@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+	Francisco Iglesias <francisco.iglesias@amd.com>,
+	Vikram Garhwal <vikram.garhwal@bytedance.com>,
+	Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+	Akihiko Odaki <akihiko.odaki@daynix.com>,
+	Stefan Weil <sw@weilnetz.de>,
+	Bernhard Beschow <shentey@gmail.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Steven Lee <steven_lee@aspeedtech.com>,
+	Troy Lee <leetroy@gmail.com>,
+	Jamin Lin <jamin_lin@aspeedtech.com>,
+	Andrew Jeffery <andrew@codeconstruct.com.au>,
+	Joel Stanley <joel@jms.id.au>,
+	Sriram Yagnaraman <sriram.yagnaraman@ericsson.com>,
+	Helge Deller <deller@gmx.de>,
+	Thomas Huth <huth@tuxfamily.org>,
+	Aleksandar Rikalo <arikalo@gmail.com>,
+	Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+	Jan Kiszka <jan.kiszka@web.de>,
+	Tyrone Ting <kfting@nuvoton.com>,
+	Hao Wu <wuhaotsh@google.com>,
+	Max Filippov <jcmvbkbc@gmail.com>,
+	Jiri Pirko <jiri@resnulli.us>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Sven Schnelle <svens@stackframe.org>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Anthony PERARD <anthony@xenproject.org>,
+	Paul Durrant <paul@xen.org>,
+	Rob Herring <robh@kernel.org>,
+	qemu-arm@nongnu.org (open list:Allwinner-a10),
+	qemu-ppc@nongnu.org (open list:e500),
+	xen-devel@lists.xenproject.org (open list:X86 Xen CPUs)
+Subject: [PATCH 41/71] hw/net: Constify all Property
+Date: Fri, 13 Dec 2024 13:07:15 -0600
+Message-ID: <20241213190750.2513964-46-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20241213190750.2513964-1-richard.henderson@linaro.org>
 References: <20241213190750.2513964-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2d;
- envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc2d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: vNqe5Um1YrKa
+X-TUID: j0SoZP++rXqy
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/intc/apic_common.c         | 2 +-
- hw/intc/arm_gic_common.c      | 2 +-
- hw/intc/arm_gicv2m.c          | 2 +-
- hw/intc/arm_gicv3_common.c    | 2 +-
- hw/intc/arm_gicv3_its.c       | 2 +-
- hw/intc/arm_gicv3_its_kvm.c   | 2 +-
- hw/intc/armv7m_nvic.c         | 2 +-
- hw/intc/exynos4210_combiner.c | 2 +-
- hw/intc/exynos4210_gic.c      | 2 +-
- hw/intc/goldfish_pic.c        | 2 +-
- hw/intc/grlib_irqmp.c         | 2 +-
- hw/intc/i8259_common.c        | 2 +-
- hw/intc/ioapic.c              | 2 +-
- hw/intc/loongarch_extioi.c    | 2 +-
- hw/intc/loongarch_pch_msi.c   | 2 +-
- hw/intc/loongarch_pch_pic.c   | 2 +-
- hw/intc/loongson_ipi_common.c | 2 +-
- hw/intc/m68k_irqc.c           | 2 +-
- hw/intc/mips_gic.c            | 2 +-
- hw/intc/omap_intc.c           | 2 +-
- hw/intc/ompic.c               | 2 +-
- hw/intc/openpic.c             | 2 +-
- hw/intc/openpic_kvm.c         | 2 +-
- hw/intc/pnv_xive.c            | 2 +-
- hw/intc/pnv_xive2.c           | 2 +-
- hw/intc/ppc-uic.c             | 2 +-
- hw/intc/riscv_aclint.c        | 4 ++--
- hw/intc/riscv_aplic.c         | 2 +-
- hw/intc/riscv_imsic.c         | 2 +-
- hw/intc/rx_icu.c              | 2 +-
- hw/intc/s390_flic.c           | 4 ++--
- hw/intc/sifive_plic.c         | 2 +-
- hw/intc/spapr_xive.c          | 2 +-
- hw/intc/xics.c                | 4 ++--
- hw/intc/xilinx_intc.c         | 2 +-
- hw/intc/xive.c                | 8 ++++----
- hw/intc/xive2.c               | 4 ++--
- hw/intc/xlnx-pmu-iomod-intc.c | 2 +-
- 38 files changed, 45 insertions(+), 45 deletions(-)
+ hw/net/allwinner-sun8i-emac.c  | 2 +-
+ hw/net/allwinner_emac.c        | 2 +-
+ hw/net/cadence_gem.c           | 2 +-
+ hw/net/can/xlnx-versal-canfd.c | 2 +-
+ hw/net/can/xlnx-zynqmp-can.c   | 2 +-
+ hw/net/dp8393x.c               | 2 +-
+ hw/net/e1000.c                 | 2 +-
+ hw/net/e1000e.c                | 2 +-
+ hw/net/eepro100.c              | 2 +-
+ hw/net/fsl_etsec/etsec.c       | 2 +-
+ hw/net/ftgmac100.c             | 4 ++--
+ hw/net/igb.c                   | 2 +-
+ hw/net/imx_fec.c               | 2 +-
+ hw/net/lan9118.c               | 2 +-
+ hw/net/lance.c                 | 2 +-
+ hw/net/lasi_i82596.c           | 2 +-
+ hw/net/mcf_fec.c               | 2 +-
+ hw/net/mipsnet.c               | 2 +-
+ hw/net/msf2-emac.c             | 2 +-
+ hw/net/mv88w8618_eth.c         | 2 +-
+ hw/net/ne2000-isa.c            | 2 +-
+ hw/net/ne2000-pci.c            | 2 +-
+ hw/net/npcm7xx_emc.c           | 2 +-
+ hw/net/npcm_gmac.c             | 2 +-
+ hw/net/opencores_eth.c         | 2 +-
+ hw/net/pcnet-pci.c             | 2 +-
+ hw/net/rocker/rocker.c         | 2 +-
+ hw/net/rtl8139.c               | 2 +-
+ hw/net/smc91c111.c             | 2 +-
+ hw/net/spapr_llan.c            | 2 +-
+ hw/net/stellaris_enet.c        | 2 +-
+ hw/net/sungem.c                | 2 +-
+ hw/net/sunhme.c                | 2 +-
+ hw/net/tulip.c                 | 2 +-
+ hw/net/virtio-net.c            | 2 +-
+ hw/net/vmxnet3.c               | 2 +-
+ hw/net/xen_nic.c               | 2 +-
+ hw/net/xgmac.c                 | 2 +-
+ hw/net/xilinx_axienet.c        | 2 +-
+ hw/net/xilinx_ethlite.c        | 2 +-
+ 40 files changed, 41 insertions(+), 41 deletions(-)
 
-diff --git a/hw/intc/apic_common.c b/hw/intc/apic_common.c
-index 62f3bbf203..8be9f22de8 100644
---- a/hw/intc/apic_common.c
-+++ b/hw/intc/apic_common.c
-@@ -408,7 +408,7 @@ static const VMStateDescription vmstate_apic_common = {
+diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c
+index cdae74f503..3f03060bf5 100644
+--- a/hw/net/allwinner-sun8i-emac.c
++++ b/hw/net/allwinner-sun8i-emac.c
+@@ -829,7 +829,7 @@ static void allwinner_sun8i_emac_realize(DeviceState *dev, Error **errp)
+     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
+ }
+ 
+-static Property allwinner_sun8i_emac_properties[] = {
++static const Property allwinner_sun8i_emac_properties[] = {
+     DEFINE_NIC_PROPERTIES(AwSun8iEmacState, conf),
+     DEFINE_PROP_UINT8("phy-addr", AwSun8iEmacState, mii_phy_addr, 0),
+     DEFINE_PROP_LINK("dma-memory", AwSun8iEmacState, dma_mr,
+diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
+index c104c2588e..39c10426cf 100644
+--- a/hw/net/allwinner_emac.c
++++ b/hw/net/allwinner_emac.c
+@@ -462,7 +462,7 @@ static void aw_emac_realize(DeviceState *dev, Error **errp)
+     fifo8_create(&s->tx_fifo[1], TX_FIFO_SIZE);
+ }
+ 
+-static Property aw_emac_properties[] = {
++static const Property aw_emac_properties[] = {
+     DEFINE_NIC_PROPERTIES(AwEmacState, conf),
+     DEFINE_PROP_UINT8("phy-addr", AwEmacState, phy_addr, 0),
+     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 526739887c..3fce01315f 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -1784,7 +1784,7 @@ static const VMStateDescription vmstate_cadence_gem = {
      }
  };
  
--static Property apic_properties_common[] = {
-+static const Property apic_properties_common[] = {
-     DEFINE_PROP_UINT8("version", APICCommonState, version, 0x14),
-     DEFINE_PROP_BIT("vapic", APICCommonState, vapic_control, VAPIC_ENABLE_BIT,
-                     true),
-diff --git a/hw/intc/arm_gic_common.c b/hw/intc/arm_gic_common.c
-index 53fb2c4e2d..e961cd9156 100644
---- a/hw/intc/arm_gic_common.c
-+++ b/hw/intc/arm_gic_common.c
-@@ -348,7 +348,7 @@ static void arm_gic_common_linux_init(ARMLinuxBootIf *obj,
+-static Property gem_properties[] = {
++static const Property gem_properties[] = {
+     DEFINE_NIC_PROPERTIES(CadenceGEMState, conf),
+     DEFINE_PROP_UINT32("revision", CadenceGEMState, revision,
+                        GEM_MODID_VALUE),
+diff --git a/hw/net/can/xlnx-versal-canfd.c b/hw/net/can/xlnx-versal-canfd.c
+index e148bd7b46..97fa46c4b3 100644
+--- a/hw/net/can/xlnx-versal-canfd.c
++++ b/hw/net/can/xlnx-versal-canfd.c
+@@ -2042,7 +2042,7 @@ static const VMStateDescription vmstate_canfd = {
+     }
+ };
+ 
+-static Property canfd_core_properties[] = {
++static const Property canfd_core_properties[] = {
+     DEFINE_PROP_UINT8("rx-fifo0", XlnxVersalCANFDState, cfg.rx0_fifo, 0x40),
+     DEFINE_PROP_UINT8("rx-fifo1", XlnxVersalCANFDState, cfg.rx1_fifo, 0x40),
+     DEFINE_PROP_UINT8("tx-fifo", XlnxVersalCANFDState, cfg.tx_fifo, 0x20),
+diff --git a/hw/net/can/xlnx-zynqmp-can.c b/hw/net/can/xlnx-zynqmp-can.c
+index 58f1432bb3..61c104c18b 100644
+--- a/hw/net/can/xlnx-zynqmp-can.c
++++ b/hw/net/can/xlnx-zynqmp-can.c
+@@ -1169,7 +1169,7 @@ static const VMStateDescription vmstate_can = {
+     }
+ };
+ 
+-static Property xlnx_zynqmp_can_properties[] = {
++static const Property xlnx_zynqmp_can_properties[] = {
+     DEFINE_PROP_UINT32("ext_clk_freq", XlnxZynqMPCANState, cfg.ext_clk_freq,
+                        CAN_DEFAULT_CLOCK),
+     DEFINE_PROP_LINK("canbus", XlnxZynqMPCANState, canbus, TYPE_CAN_BUS,
+diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
+index c0977308ba..e3ca11991b 100644
+--- a/hw/net/dp8393x.c
++++ b/hw/net/dp8393x.c
+@@ -931,7 +931,7 @@ static const VMStateDescription vmstate_dp8393x = {
+     }
+ };
+ 
+-static Property dp8393x_properties[] = {
++static const Property dp8393x_properties[] = {
+     DEFINE_NIC_PROPERTIES(dp8393xState, conf),
+     DEFINE_PROP_LINK("dma_mr", dp8393xState, dma_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+diff --git a/hw/net/e1000.c b/hw/net/e1000.c
+index ab72236d18..ef0af31751 100644
+--- a/hw/net/e1000.c
++++ b/hw/net/e1000.c
+@@ -1677,7 +1677,7 @@ static void pci_e1000_realize(PCIDevice *pci_dev, Error **errp)
+                                         e1000_flush_queue_timer, d);
+ }
+ 
+-static Property e1000_properties[] = {
++static const Property e1000_properties[] = {
+     DEFINE_NIC_PROPERTIES(E1000State, conf),
+     DEFINE_PROP_BIT("extra_mac_registers", E1000State,
+                     compat_flags, E1000_FLAG_MAC_BIT, true),
+diff --git a/hw/net/e1000e.c b/hw/net/e1000e.c
+index 843892ce09..e2b7576f67 100644
+--- a/hw/net/e1000e.c
++++ b/hw/net/e1000e.c
+@@ -661,7 +661,7 @@ static PropertyInfo e1000e_prop_disable_vnet,
+                     e1000e_prop_subsys_ven,
+                     e1000e_prop_subsys;
+ 
+-static Property e1000e_properties[] = {
++static const Property e1000e_properties[] = {
+     DEFINE_NIC_PROPERTIES(E1000EState, conf),
+     DEFINE_PROP_SIGNED("disable_vnet_hdr", E1000EState, disable_vnet, false,
+                         e1000e_prop_disable_vnet, bool),
+diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
+index 20b22d8e49..b8cb8d5cf1 100644
+--- a/hw/net/eepro100.c
++++ b/hw/net/eepro100.c
+@@ -2058,7 +2058,7 @@ static E100PCIDeviceInfo *eepro100_get_class(EEPRO100State *s)
+     return eepro100_get_class_by_name(object_get_typename(OBJECT(s)));
+ }
+ 
+-static Property e100_properties[] = {
++static const Property e100_properties[] = {
+     DEFINE_NIC_PROPERTIES(EEPRO100State, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
+index d8076e7be4..764be2c6a2 100644
+--- a/hw/net/fsl_etsec/etsec.c
++++ b/hw/net/fsl_etsec/etsec.c
+@@ -414,7 +414,7 @@ static void etsec_instance_init(Object *obj)
+     sysbus_init_irq(sbd, &etsec->err_irq);
+ }
+ 
+-static Property etsec_properties[] = {
++static const Property etsec_properties[] = {
+     DEFINE_NIC_PROPERTIES(eTSEC, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index 478356ee3e..4adc7fb10c 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -1254,7 +1254,7 @@ static const VMStateDescription vmstate_ftgmac100 = {
+     }
+ };
+ 
+-static Property ftgmac100_properties[] = {
++static const Property ftgmac100_properties[] = {
+     DEFINE_PROP_BOOL("aspeed", FTGMAC100State, aspeed, false),
+     DEFINE_NIC_PROPERTIES(FTGMAC100State, conf),
+     DEFINE_PROP_BOOL("dma64", FTGMAC100State, dma64, false),
+@@ -1415,7 +1415,7 @@ static const VMStateDescription vmstate_aspeed_mii = {
+     }
+ };
+ 
+-static Property aspeed_mii_properties[] = {
++static const Property aspeed_mii_properties[] = {
+     DEFINE_PROP_LINK("nic", AspeedMiiState, nic, TYPE_FTGMAC100,
+                      FTGMAC100State *),
+     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/net/igb.c b/hw/net/igb.c
+index b92bba402e..ad0f748d82 100644
+--- a/hw/net/igb.c
++++ b/hw/net/igb.c
+@@ -591,7 +591,7 @@ static const VMStateDescription igb_vmstate = {
+     }
+ };
+ 
+-static Property igb_properties[] = {
++static const Property igb_properties[] = {
+     DEFINE_NIC_PROPERTIES(IGBState, conf),
+     DEFINE_PROP_BOOL("x-pcie-flr-init", IGBState, has_flr, true),
+     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 4ee6f74206..9b64968477 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -1222,7 +1222,7 @@ static void imx_eth_realize(DeviceState *dev, Error **errp)
+     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
+ }
+ 
+-static Property imx_eth_properties[] = {
++static const Property imx_eth_properties[] = {
+     DEFINE_NIC_PROPERTIES(IMXFECState, conf),
+     DEFINE_PROP_UINT32("tx-ring-num", IMXFECState, tx_ring_num, 1),
+     DEFINE_PROP_UINT32("phy-num", IMXFECState, phy_num, 0),
+diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+index 99e87b7178..237e9b97d5 100644
+--- a/hw/net/lan9118.c
++++ b/hw/net/lan9118.c
+@@ -1304,7 +1304,7 @@ static void lan9118_realize(DeviceState *dev, Error **errp)
+     ptimer_transaction_commit(s->timer);
+ }
+ 
+-static Property lan9118_properties[] = {
++static const Property lan9118_properties[] = {
+     DEFINE_NIC_PROPERTIES(lan9118_state, conf),
+     DEFINE_PROP_UINT32("mode_16bit", lan9118_state, mode_16bit, 0),
+     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/net/lance.c b/hw/net/lance.c
+index 269615b452..9ed9c94cff 100644
+--- a/hw/net/lance.c
++++ b/hw/net/lance.c
+@@ -137,7 +137,7 @@ static void lance_instance_init(Object *obj)
+                                   DEVICE(obj));
+ }
+ 
+-static Property lance_properties[] = {
++static const Property lance_properties[] = {
+     DEFINE_PROP_LINK("dma", SysBusPCNetState, state.dma_opaque,
+                      TYPE_DEVICE, DeviceState *),
+     DEFINE_NIC_PROPERTIES(SysBusPCNetState, state.conf),
+diff --git a/hw/net/lasi_i82596.c b/hw/net/lasi_i82596.c
+index 183fab8712..248e3841db 100644
+--- a/hw/net/lasi_i82596.c
++++ b/hw/net/lasi_i82596.c
+@@ -158,7 +158,7 @@ static void lasi_82596_instance_init(Object *obj)
+                                   DEVICE(obj));
+ }
+ 
+-static Property lasi_82596_properties[] = {
++static const Property lasi_82596_properties[] = {
+     DEFINE_NIC_PROPERTIES(SysBusI82596State, state.conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/mcf_fec.c b/hw/net/mcf_fec.c
+index 037cd2028e..55bad4c069 100644
+--- a/hw/net/mcf_fec.c
++++ b/hw/net/mcf_fec.c
+@@ -660,7 +660,7 @@ static void mcf_fec_instance_init(Object *obj)
      }
  }
  
--static Property arm_gic_common_properties[] = {
-+static const Property arm_gic_common_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", GICState, num_cpu, 1),
-     DEFINE_PROP_UINT32("num-irq", GICState, num_irq, 32),
-     /* Revision can be 1 or 2 for GIC architecture specification
-diff --git a/hw/intc/arm_gicv2m.c b/hw/intc/arm_gicv2m.c
-index d564b857eb..ffa830b433 100644
---- a/hw/intc/arm_gicv2m.c
-+++ b/hw/intc/arm_gicv2m.c
-@@ -170,7 +170,7 @@ static void gicv2m_init(Object *obj)
+-static Property mcf_fec_properties[] = {
++static const Property mcf_fec_properties[] = {
+     DEFINE_NIC_PROPERTIES(mcf_fec_state, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/mipsnet.c b/hw/net/mipsnet.c
+index 31bbd6fb89..c9ef1beb7b 100644
+--- a/hw/net/mipsnet.c
++++ b/hw/net/mipsnet.c
+@@ -266,7 +266,7 @@ static void mipsnet_sysbus_reset(DeviceState *dev)
+     mipsnet_reset(s);
+ }
+ 
+-static Property mipsnet_properties[] = {
++static const Property mipsnet_properties[] = {
+     DEFINE_NIC_PROPERTIES(MIPSnetState, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/msf2-emac.c b/hw/net/msf2-emac.c
+index d28fc6c570..8d9015f962 100644
+--- a/hw/net/msf2-emac.c
++++ b/hw/net/msf2-emac.c
+@@ -546,7 +546,7 @@ static void msf2_emac_init(Object *obj)
+     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
+ }
+ 
+-static Property msf2_emac_properties[] = {
++static const Property msf2_emac_properties[] = {
+     DEFINE_PROP_LINK("ahb-bus", MSF2EmacState, dma_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+     DEFINE_NIC_PROPERTIES(MSF2EmacState, conf),
+diff --git a/hw/net/mv88w8618_eth.c b/hw/net/mv88w8618_eth.c
+index 96c65f4d46..ccb11512db 100644
+--- a/hw/net/mv88w8618_eth.c
++++ b/hw/net/mv88w8618_eth.c
+@@ -371,7 +371,7 @@ static const VMStateDescription mv88w8618_eth_vmsd = {
+     }
+ };
+ 
+-static Property mv88w8618_eth_properties[] = {
++static const Property mv88w8618_eth_properties[] = {
+     DEFINE_NIC_PROPERTIES(mv88w8618_eth_state, conf),
+     DEFINE_PROP_LINK("dma-memory", mv88w8618_eth_state, dma_mr,
+                      TYPE_MEMORY_REGION, MemoryRegion *),
+diff --git a/hw/net/ne2000-isa.c b/hw/net/ne2000-isa.c
+index 26980e087e..1cd070d419 100644
+--- a/hw/net/ne2000-isa.c
++++ b/hw/net/ne2000-isa.c
+@@ -79,7 +79,7 @@ static void isa_ne2000_realizefn(DeviceState *dev, Error **errp)
+     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->c.macaddr.a);
+ }
+ 
+-static Property ne2000_isa_properties[] = {
++static const Property ne2000_isa_properties[] = {
+     DEFINE_PROP_UINT32("iobase", ISANE2000State, iobase, 0x300),
+     DEFINE_PROP_UINT32("irq",   ISANE2000State, isairq, 9),
+     DEFINE_NIC_PROPERTIES(ISANE2000State, ne2000.c),
+diff --git a/hw/net/ne2000-pci.c b/hw/net/ne2000-pci.c
+index 74773069c6..12fa579d22 100644
+--- a/hw/net/ne2000-pci.c
++++ b/hw/net/ne2000-pci.c
+@@ -96,7 +96,7 @@ static void ne2000_instance_init(Object *obj)
+                                   &pci_dev->qdev);
+ }
+ 
+-static Property ne2000_properties[] = {
++static const Property ne2000_properties[] = {
+     DEFINE_NIC_PROPERTIES(PCINE2000State, ne2000.c),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
+index 7307a13400..f06e908d04 100644
+--- a/hw/net/npcm7xx_emc.c
++++ b/hw/net/npcm7xx_emc.c
+@@ -845,7 +845,7 @@ static const VMStateDescription vmstate_npcm7xx_emc = {
+     },
+ };
+ 
+-static Property npcm7xx_emc_properties[] = {
++static const Property npcm7xx_emc_properties[] = {
+     DEFINE_NIC_PROPERTIES(NPCM7xxEMCState, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/npcm_gmac.c b/hw/net/npcm_gmac.c
+index 685905f9e2..1db29307d7 100644
+--- a/hw/net/npcm_gmac.c
++++ b/hw/net/npcm_gmac.c
+@@ -912,7 +912,7 @@ static const VMStateDescription vmstate_npcm_gmac = {
+     },
+ };
+ 
+-static Property npcm_gmac_properties[] = {
++static const Property npcm_gmac_properties[] = {
+     DEFINE_NIC_PROPERTIES(NPCMGMACState, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/opencores_eth.c b/hw/net/opencores_eth.c
+index 2c0ebda100..003b452bc9 100644
+--- a/hw/net/opencores_eth.c
++++ b/hw/net/opencores_eth.c
+@@ -743,7 +743,7 @@ static void qdev_open_eth_reset(DeviceState *dev)
+     open_eth_reset(d);
+ }
+ 
+-static Property open_eth_properties[] = {
++static const Property open_eth_properties[] = {
+     DEFINE_NIC_PROPERTIES(OpenEthState, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/pcnet-pci.c b/hw/net/pcnet-pci.c
+index 6190b76916..83ba8cd949 100644
+--- a/hw/net/pcnet-pci.c
++++ b/hw/net/pcnet-pci.c
+@@ -252,7 +252,7 @@ static void pcnet_instance_init(Object *obj)
+                                   DEVICE(obj));
+ }
+ 
+-static Property pcnet_properties[] = {
++static const Property pcnet_properties[] = {
+     DEFINE_NIC_PROPERTIES(PCIPCNetState, state.conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
+index 5e74acc969..efc20396aa 100644
+--- a/hw/net/rocker/rocker.c
++++ b/hw/net/rocker/rocker.c
+@@ -1459,7 +1459,7 @@ static void rocker_reset(DeviceState *dev)
+     DPRINTF("Reset done\n");
+ }
+ 
+-static Property rocker_properties[] = {
++static const Property rocker_properties[] = {
+     DEFINE_PROP_STRING("name", Rocker, name),
+     DEFINE_PROP_STRING("world", Rocker, world_name),
+     DEFINE_PROP_MACADDR("fp_start_macaddr", Rocker,
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index bc56075c0d..064a73b6b4 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -3410,7 +3410,7 @@ static void rtl8139_instance_init(Object *obj)
+                                   DEVICE(obj));
+ }
+ 
+-static Property rtl8139_properties[] = {
++static const Property rtl8139_properties[] = {
+     DEFINE_NIC_PROPERTIES(RTL8139State, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
+index 180ba5c791..a853c30fa2 100644
+--- a/hw/net/smc91c111.c
++++ b/hw/net/smc91c111.c
+@@ -788,7 +788,7 @@ static void smc91c111_realize(DeviceState *dev, Error **errp)
+     /* ??? Save/restore.  */
+ }
+ 
+-static Property smc91c111_properties[] = {
++static const Property smc91c111_properties[] = {
+     DEFINE_NIC_PROPERTIES(smc91c111_state, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/spapr_llan.c b/hw/net/spapr_llan.c
+index 8af33d91b6..d381c041db 100644
+--- a/hw/net/spapr_llan.c
++++ b/hw/net/spapr_llan.c
+@@ -786,7 +786,7 @@ static target_ulong h_change_logical_lan_mac(PowerPCCPU *cpu,
+     return H_SUCCESS;
+ }
+ 
+-static Property spapr_vlan_properties[] = {
++static const Property spapr_vlan_properties[] = {
+     DEFINE_SPAPR_PROPERTIES(SpaprVioVlan, sdev),
+     DEFINE_NIC_PROPERTIES(SpaprVioVlan, nicconf),
+     DEFINE_PROP_BIT("use-rx-buffer-pools", SpaprVioVlan,
+diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
+index 9ebff296c4..4af1afa733 100644
+--- a/hw/net/stellaris_enet.c
++++ b/hw/net/stellaris_enet.c
+@@ -497,7 +497,7 @@ static void stellaris_enet_realize(DeviceState *dev, Error **errp)
+     qemu_format_nic_info_str(qemu_get_queue(s->nic), s->conf.macaddr.a);
+ }
+ 
+-static Property stellaris_enet_properties[] = {
++static const Property stellaris_enet_properties[] = {
+     DEFINE_NIC_PROPERTIES(stellaris_enet_state, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/sungem.c b/hw/net/sungem.c
+index 67087e9842..bcc7a18382 100644
+--- a/hw/net/sungem.c
++++ b/hw/net/sungem.c
+@@ -1420,7 +1420,7 @@ static void sungem_instance_init(Object *obj)
+                                   DEVICE(obj));
+ }
+ 
+-static Property sungem_properties[] = {
++static const Property sungem_properties[] = {
+     DEFINE_NIC_PROPERTIES(SunGEMState, conf),
+     /* Phy address should be 0 for most Apple machines except
+      * for K2 in which case it's 1. Will be set by a machine
+diff --git a/hw/net/sunhme.c b/hw/net/sunhme.c
+index 0e6c655a5b..86f472fcbe 100644
+--- a/hw/net/sunhme.c
++++ b/hw/net/sunhme.c
+@@ -177,7 +177,7 @@ struct SunHMEState {
+     uint16_t miiregs[HME_MII_REGS_SIZE];
+ };
+ 
+-static Property sunhme_properties[] = {
++static const Property sunhme_properties[] = {
+     DEFINE_NIC_PROPERTIES(SunHMEState, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/tulip.c b/hw/net/tulip.c
+index 9df3e17162..f35b58a88c 100644
+--- a/hw/net/tulip.c
++++ b/hw/net/tulip.c
+@@ -1007,7 +1007,7 @@ static void tulip_instance_init(Object *obj)
+                                   &pci_dev->qdev);
+ }
+ 
+-static Property tulip_properties[] = {
++static const Property tulip_properties[] = {
+     DEFINE_NIC_PROPERTIES(TULIPState, c),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
+index 6e8c51a2db..4fd1f9acca 100644
+--- a/hw/net/virtio-net.c
++++ b/hw/net/virtio-net.c
+@@ -3985,7 +3985,7 @@ static const VMStateDescription vmstate_virtio_net = {
+     .dev_unplug_pending = dev_unplug_pending,
+ };
+ 
+-static Property virtio_net_properties[] = {
++static const Property virtio_net_properties[] = {
+     DEFINE_PROP_BIT64("csum", VirtIONet, host_features,
+                     VIRTIO_NET_F_CSUM, true),
+     DEFINE_PROP_BIT64("guest_csum", VirtIONet, host_features,
+diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
+index 8aa8c46228..f69547cad5 100644
+--- a/hw/net/vmxnet3.c
++++ b/hw/net/vmxnet3.c
+@@ -2471,7 +2471,7 @@ static const VMStateDescription vmstate_vmxnet3 = {
+     }
+ };
+ 
+-static Property vmxnet3_properties[] = {
++static const Property vmxnet3_properties[] = {
+     DEFINE_NIC_PROPERTIES(VMXNET3State, conf),
+     DEFINE_PROP_BIT("x-old-msi-offsets", VMXNET3State, compat_flags,
+                     VMXNET3_COMPAT_FLAG_OLD_MSI_OFFSETS_BIT, false),
+diff --git a/hw/net/xen_nic.c b/hw/net/xen_nic.c
+index 89487b49ba..5a5259150a 100644
+--- a/hw/net/xen_nic.c
++++ b/hw/net/xen_nic.c
+@@ -555,7 +555,7 @@ static void xen_netdev_unrealize(XenDevice *xendev)
+ 
+ /* ------------------------------------------------------------- */
+ 
+-static Property xen_netdev_properties[] = {
++static const Property xen_netdev_properties[] = {
+     DEFINE_NIC_PROPERTIES(XenNetDev, conf),
+     DEFINE_PROP_INT32("idx", XenNetDev, dev, -1),
+     DEFINE_PROP_END_OF_LIST(),
+diff --git a/hw/net/xgmac.c b/hw/net/xgmac.c
+index ffe3fc8dbe..6e0f96f485 100644
+--- a/hw/net/xgmac.c
++++ b/hw/net/xgmac.c
+@@ -414,7 +414,7 @@ static void xgmac_enet_realize(DeviceState *dev, Error **errp)
+                                   s->conf.macaddr.a[0];
+ }
+ 
+-static Property xgmac_properties[] = {
++static const Property xgmac_properties[] = {
+     DEFINE_NIC_PROPERTIES(XgmacState, conf),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
+index faf27947b0..9d0c618e2f 100644
+--- a/hw/net/xilinx_axienet.c
++++ b/hw/net/xilinx_axienet.c
+@@ -996,7 +996,7 @@ static void xilinx_enet_init(Object *obj)
      sysbus_init_mmio(sbd, &s->iomem);
  }
  
--static Property gicv2m_properties[] = {
-+static const Property gicv2m_properties[] = {
-     DEFINE_PROP_UINT32("base-spi", ARMGICv2mState, base_spi, 0),
-     DEFINE_PROP_UINT32("num-spi", ARMGICv2mState, num_spi, 64),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index bd50a1b079..a8ec615a3f 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -605,7 +605,7 @@ static void arm_gic_common_linux_init(ARMLinuxBootIf *obj,
-     }
+-static Property xilinx_enet_properties[] = {
++static const Property xilinx_enet_properties[] = {
+     DEFINE_PROP_UINT32("phyaddr", XilinxAXIEnet, c_phyaddr, 7),
+     DEFINE_PROP_UINT32("rxmem", XilinxAXIEnet, c_rxmem, 0x1000),
+     DEFINE_PROP_UINT32("txmem", XilinxAXIEnet, c_txmem, 0x1000),
+diff --git a/hw/net/xilinx_ethlite.c b/hw/net/xilinx_ethlite.c
+index bd81290808..9413731d20 100644
+--- a/hw/net/xilinx_ethlite.c
++++ b/hw/net/xilinx_ethlite.c
+@@ -251,7 +251,7 @@ static void xilinx_ethlite_init(Object *obj)
+     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
  }
  
--static Property arm_gicv3_common_properties[] = {
-+static const Property arm_gicv3_common_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", GICv3State, num_cpu, 1),
-     DEFINE_PROP_UINT32("num-irq", GICv3State, num_irq, 32),
-     DEFINE_PROP_UINT32("revision", GICv3State, revision, 3),
-diff --git a/hw/intc/arm_gicv3_its.c b/hw/intc/arm_gicv3_its.c
-index bf31158470..f50b1814ea 100644
---- a/hw/intc/arm_gicv3_its.c
-+++ b/hw/intc/arm_gicv3_its.c
-@@ -2002,7 +2002,7 @@ static void gicv3_its_post_load(GICv3ITSState *s)
-     }
- }
- 
--static Property gicv3_its_props[] = {
-+static const Property gicv3_its_props[] = {
-     DEFINE_PROP_LINK("parent-gicv3", GICv3ITSState, gicv3, "arm-gicv3",
-                      GICv3State *),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
-index 35539c099f..68a6144add 100644
---- a/hw/intc/arm_gicv3_its_kvm.c
-+++ b/hw/intc/arm_gicv3_its_kvm.c
-@@ -234,7 +234,7 @@ static void kvm_arm_its_reset_hold(Object *obj, ResetType type)
-     }
- }
- 
--static Property kvm_arm_its_props[] = {
-+static const Property kvm_arm_its_props[] = {
-     DEFINE_PROP_LINK("parent-gicv3", GICv3ITSState, gicv3, "kvm-arm-gicv3",
-                      GICv3State *),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 98f3cf59bc..6e2803b123 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -2569,7 +2569,7 @@ static const VMStateDescription vmstate_nvic = {
-     }
- };
- 
--static Property props_nvic[] = {
-+static const Property props_nvic[] = {
-     /* Number of external IRQ lines (so excluding the 16 internal exceptions) */
-     DEFINE_PROP_UINT32("num-irq", NVICState, num_irq, 64),
-     /*
-diff --git a/hw/intc/exynos4210_combiner.c b/hw/intc/exynos4210_combiner.c
-index afecef1e15..221dfa912a 100644
---- a/hw/intc/exynos4210_combiner.c
-+++ b/hw/intc/exynos4210_combiner.c
-@@ -325,7 +325,7 @@ static void exynos4210_combiner_init(Object *obj)
-     sysbus_init_mmio(sbd, &s->iomem);
- }
- 
--static Property exynos4210_combiner_properties[] = {
-+static const Property exynos4210_combiner_properties[] = {
-     DEFINE_PROP_UINT32("external", Exynos4210CombinerState, external, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-index fcca85c6c6..e1b956d990 100644
---- a/hw/intc/exynos4210_gic.c
-+++ b/hw/intc/exynos4210_gic.c
-@@ -111,7 +111,7 @@ static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(sbd, &s->dist_container);
- }
- 
--static Property exynos4210_gic_properties[] = {
-+static const Property exynos4210_gic_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", Exynos4210GicState, num_cpu, 1),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/goldfish_pic.c b/hw/intc/goldfish_pic.c
-index 166a3cba1e..f5343c9d2f 100644
---- a/hw/intc/goldfish_pic.c
-+++ b/hw/intc/goldfish_pic.c
-@@ -181,7 +181,7 @@ static void goldfish_pic_instance_init(Object *obj)
-     qdev_init_gpio_in(DEVICE(obj), goldfish_irq_request, GOLDFISH_PIC_IRQ_NB);
- }
- 
--static Property goldfish_pic_properties[] = {
-+static const Property goldfish_pic_properties[] = {
-     DEFINE_PROP_UINT8("index", GoldfishPICState, idx, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/grlib_irqmp.c b/hw/intc/grlib_irqmp.c
-index 37ac63fd80..bf53251ea2 100644
---- a/hw/intc/grlib_irqmp.c
-+++ b/hw/intc/grlib_irqmp.c
-@@ -376,7 +376,7 @@ static void grlib_irqmp_realize(DeviceState *dev, Error **errp)
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &irqmp->iomem);
- }
- 
--static Property grlib_irqmp_properties[] = {
-+static const Property grlib_irqmp_properties[] = {
-     DEFINE_PROP_UINT32("ncpus", IRQMP, ncpus, 1),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/i8259_common.c b/hw/intc/i8259_common.c
-index d9558e3940..c3174f4fdc 100644
---- a/hw/intc/i8259_common.c
-+++ b/hw/intc/i8259_common.c
-@@ -193,7 +193,7 @@ static const VMStateDescription vmstate_pic_common = {
-     }
- };
- 
--static Property pic_properties_common[] = {
-+static const Property pic_properties_common[] = {
-     DEFINE_PROP_UINT32("iobase", PICCommonState, iobase,  -1),
-     DEFINE_PROP_UINT32("elcr_addr", PICCommonState, elcr_addr,  -1),
-     DEFINE_PROP_UINT8("elcr_mask", PICCommonState, elcr_mask,  -1),
-diff --git a/hw/intc/ioapic.c b/hw/intc/ioapic.c
-index e73c8d4f07..6d566165b0 100644
---- a/hw/intc/ioapic.c
-+++ b/hw/intc/ioapic.c
-@@ -476,7 +476,7 @@ static void ioapic_unrealize(DeviceState *dev)
-     timer_free(s->delayed_ioapic_service_timer);
- }
- 
--static Property ioapic_properties[] = {
-+static const Property ioapic_properties[] = {
-     DEFINE_PROP_UINT8("version", IOAPICCommonState, version, IOAPIC_VER_DEF),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/loongarch_extioi.c b/hw/intc/loongarch_extioi.c
-index 97d1af5ccc..dd91f89361 100644
---- a/hw/intc/loongarch_extioi.c
-+++ b/hw/intc/loongarch_extioi.c
-@@ -423,7 +423,7 @@ static const VMStateDescription vmstate_loongarch_extioi = {
-     }
- };
- 
--static Property extioi_properties[] = {
-+static const Property extioi_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", LoongArchExtIOI, num_cpu, 1),
-     DEFINE_PROP_BIT("has-virtualization-extension", LoongArchExtIOI, features,
-                     EXTIOI_HAS_VIRT_EXTENSION, 0),
-diff --git a/hw/intc/loongarch_pch_msi.c b/hw/intc/loongarch_pch_msi.c
-index ecf3ed0267..e2eca30660 100644
---- a/hw/intc/loongarch_pch_msi.c
-+++ b/hw/intc/loongarch_pch_msi.c
-@@ -83,7 +83,7 @@ static void loongarch_pch_msi_init(Object *obj)
- 
- }
- 
--static Property loongarch_msi_properties[] = {
-+static const Property loongarch_msi_properties[] = {
-     DEFINE_PROP_UINT32("msi_irq_base", LoongArchPCHMSI, irq_base, 0),
-     DEFINE_PROP_UINT32("msi_irq_num",  LoongArchPCHMSI, irq_num, 0),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/intc/loongarch_pch_pic.c b/hw/intc/loongarch_pch_pic.c
-index b958180591..6a87b1aab7 100644
---- a/hw/intc/loongarch_pch_pic.c
-+++ b/hw/intc/loongarch_pch_pic.c
-@@ -411,7 +411,7 @@ static void loongarch_pch_pic_init(Object *obj)
- 
- }
- 
--static Property loongarch_pch_pic_properties[] = {
-+static const Property loongarch_pch_pic_properties[] = {
-     DEFINE_PROP_UINT32("pch_pic_irq_num",  LoongArchPCHPIC, irq_num, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/loongson_ipi_common.c b/hw/intc/loongson_ipi_common.c
-index a6ce0181f6..d3f894a5bd 100644
---- a/hw/intc/loongson_ipi_common.c
-+++ b/hw/intc/loongson_ipi_common.c
-@@ -315,7 +315,7 @@ static const VMStateDescription vmstate_loongson_ipi_common = {
-     }
- };
- 
--static Property ipi_common_properties[] = {
-+static const Property ipi_common_properties[] = {
-     DEFINE_PROP_UINT32("num-cpu", LoongsonIPICommonState, num_cpu, 1),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/m68k_irqc.c b/hw/intc/m68k_irqc.c
-index b4471e185a..b5d10ab1f6 100644
---- a/hw/intc/m68k_irqc.c
-+++ b/hw/intc/m68k_irqc.c
-@@ -85,7 +85,7 @@ static const VMStateDescription vmstate_m68k_irqc = {
-     }
- };
- 
--static Property m68k_irqc_properties[] = {
-+static const Property m68k_irqc_properties[] = {
-     DEFINE_PROP_LINK("m68k-cpu", M68KIRQCState, cpu,
-                      TYPE_M68K_CPU, ArchCPU *),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/intc/mips_gic.c b/hw/intc/mips_gic.c
-index 77ba7348a3..996db095c3 100644
---- a/hw/intc/mips_gic.c
-+++ b/hw/intc/mips_gic.c
-@@ -438,7 +438,7 @@ static void mips_gic_realize(DeviceState *dev, Error **errp)
-     }
- }
- 
--static Property mips_gic_properties[] = {
-+static const Property mips_gic_properties[] = {
-     DEFINE_PROP_UINT32("num-vp", MIPSGICState, num_vps, 1),
-     DEFINE_PROP_UINT32("num-irq", MIPSGICState, num_irq, 256),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/intc/omap_intc.c b/hw/intc/omap_intc.c
-index a98358d92e..28606f102b 100644
---- a/hw/intc/omap_intc.c
-+++ b/hw/intc/omap_intc.c
-@@ -375,7 +375,7 @@ void omap_intc_set_fclk(OMAPIntcState *intc, omap_clk clk)
-     intc->fclk = clk;
- }
- 
--static Property omap_intc_properties[] = {
-+static const Property omap_intc_properties[] = {
-     DEFINE_PROP_UINT32("size", OMAPIntcState, size, 0x100),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/ompic.c b/hw/intc/ompic.c
-index 99032ea7f7..8ee1bd64bd 100644
---- a/hw/intc/ompic.c
-+++ b/hw/intc/ompic.c
-@@ -128,7 +128,7 @@ static void or1k_ompic_realize(DeviceState *dev, Error **errp)
-     }
- }
- 
--static Property or1k_ompic_properties[] = {
-+static const Property or1k_ompic_properties[] = {
-     DEFINE_PROP_UINT32("num-cpus", OR1KOMPICState, num_cpus, 1),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/openpic.c b/hw/intc/openpic.c
-index 2ead4b9ba0..2257ae2ee7 100644
---- a/hw/intc/openpic.c
-+++ b/hw/intc/openpic.c
-@@ -1606,7 +1606,7 @@ static void openpic_realize(DeviceState *dev, Error **errp)
-     qdev_init_gpio_in(dev, openpic_set_irq, opp->max_irq);
- }
- 
--static Property openpic_properties[] = {
-+static const Property openpic_properties[] = {
-     DEFINE_PROP_UINT32("model", OpenPICState, model, OPENPIC_MODEL_FSL_MPIC_20),
-     DEFINE_PROP_UINT32("nb_cpus", OpenPICState, nb_cpus, 1),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/intc/openpic_kvm.c b/hw/intc/openpic_kvm.c
-index 838c6b9d99..135fe8301a 100644
---- a/hw/intc/openpic_kvm.c
-+++ b/hw/intc/openpic_kvm.c
-@@ -262,7 +262,7 @@ int kvm_openpic_connect_vcpu(DeviceState *d, CPUState *cs)
-                                kvm_arch_vcpu_id(cs));
- }
- 
--static Property kvm_openpic_properties[] = {
-+static const Property kvm_openpic_properties[] = {
-     DEFINE_PROP_UINT32("model", KVMOpenPICState, model,
-                        OPENPIC_MODEL_FSL_MPIC_20),
-     DEFINE_PROP_END_OF_LIST(),
-diff --git a/hw/intc/pnv_xive.c b/hw/intc/pnv_xive.c
-index 5bacbce6a4..581659839b 100644
---- a/hw/intc/pnv_xive.c
-+++ b/hw/intc/pnv_xive.c
-@@ -2059,7 +2059,7 @@ static int pnv_xive_dt_xscom(PnvXScomInterface *dev, void *fdt,
-     return 0;
- }
- 
--static Property pnv_xive_properties[] = {
-+static const Property pnv_xive_properties[] = {
-     DEFINE_PROP_UINT64("ic-bar", PnvXive, ic_base, 0),
-     DEFINE_PROP_UINT64("vc-bar", PnvXive, vc_base, 0),
-     DEFINE_PROP_UINT64("pc-bar", PnvXive, pc_base, 0),
-diff --git a/hw/intc/pnv_xive2.c b/hw/intc/pnv_xive2.c
-index 834d32287b..5dd305453a 100644
---- a/hw/intc/pnv_xive2.c
-+++ b/hw/intc/pnv_xive2.c
-@@ -2354,7 +2354,7 @@ static void pnv_xive2_realize(DeviceState *dev, Error **errp)
-     qemu_register_reset(pnv_xive2_reset, dev);
- }
- 
--static Property pnv_xive2_properties[] = {
-+static const Property pnv_xive2_properties[] = {
-     DEFINE_PROP_UINT64("ic-bar", PnvXive2, ic_base, 0),
-     DEFINE_PROP_UINT64("esb-bar", PnvXive2, esb_base, 0),
-     DEFINE_PROP_UINT64("end-bar", PnvXive2, end_base, 0),
-diff --git a/hw/intc/ppc-uic.c b/hw/intc/ppc-uic.c
-index f2a224f3aa..d683413a83 100644
---- a/hw/intc/ppc-uic.c
-+++ b/hw/intc/ppc-uic.c
-@@ -259,7 +259,7 @@ static void ppc_uic_realize(DeviceState *dev, Error **errp)
-     qdev_init_gpio_in(dev, ppcuic_set_irq, UIC_MAX_IRQ);
- }
- 
--static Property ppc_uic_properties[] = {
-+static const Property ppc_uic_properties[] = {
-     DEFINE_PROP_UINT32("dcr-base", PPCUIC, dcr_base, 0xc0),
-     DEFINE_PROP_BOOL("use-vectors", PPCUIC, use_vectors, true),
-     DEFINE_PROP_END_OF_LIST()
-diff --git a/hw/intc/riscv_aclint.c b/hw/intc/riscv_aclint.c
-index e9f0536b1c..db195fb1ff 100644
---- a/hw/intc/riscv_aclint.c
-+++ b/hw/intc/riscv_aclint.c
-@@ -262,7 +262,7 @@ static const MemoryRegionOps riscv_aclint_mtimer_ops = {
-     }
- };
- 
--static Property riscv_aclint_mtimer_properties[] = {
-+static const Property riscv_aclint_mtimer_properties[] = {
-     DEFINE_PROP_UINT32("hartid-base", RISCVAclintMTimerState,
-         hartid_base, 0),
-     DEFINE_PROP_UINT32("num-harts", RISCVAclintMTimerState, num_harts, 1),
-@@ -462,7 +462,7 @@ static const MemoryRegionOps riscv_aclint_swi_ops = {
-     }
- };
- 
--static Property riscv_aclint_swi_properties[] = {
-+static const Property riscv_aclint_swi_properties[] = {
-     DEFINE_PROP_UINT32("hartid-base", RISCVAclintSwiState, hartid_base, 0),
-     DEFINE_PROP_UINT32("num-harts", RISCVAclintSwiState, num_harts, 1),
-     DEFINE_PROP_UINT32("sswi", RISCVAclintSwiState, sswi, false),
-diff --git a/hw/intc/riscv_aplic.c b/hw/intc/riscv_aplic.c
-index 4a262c82f0..353eec8136 100644
---- a/hw/intc/riscv_aplic.c
-+++ b/hw/intc/riscv_aplic.c
-@@ -904,7 +904,7 @@ static void riscv_aplic_realize(DeviceState *dev, Error **errp)
-     msi_nonbroken = true;
- }
- 
--static Property riscv_aplic_properties[] = {
-+static const Property riscv_aplic_properties[] = {
-     DEFINE_PROP_UINT32("aperture-size", RISCVAPLICState, aperture_size, 0),
-     DEFINE_PROP_UINT32("hartid-base", RISCVAPLICState, hartid_base, 0),
-     DEFINE_PROP_UINT32("num-harts", RISCVAPLICState, num_harts, 0),
-diff --git a/hw/intc/riscv_imsic.c b/hw/intc/riscv_imsic.c
-index 9ef65d4012..adc36151b4 100644
---- a/hw/intc/riscv_imsic.c
-+++ b/hw/intc/riscv_imsic.c
-@@ -388,7 +388,7 @@ static void riscv_imsic_realize(DeviceState *dev, Error **errp)
-     msi_nonbroken = true;
- }
- 
--static Property riscv_imsic_properties[] = {
-+static const Property riscv_imsic_properties[] = {
-     DEFINE_PROP_BOOL("mmode", RISCVIMSICState, mmode, 0),
-     DEFINE_PROP_UINT32("hartid", RISCVIMSICState, hartid, 0),
-     DEFINE_PROP_UINT32("num-pages", RISCVIMSICState, num_pages, 0),
-diff --git a/hw/intc/rx_icu.c b/hw/intc/rx_icu.c
-index b2d4338f61..dfe11ade20 100644
---- a/hw/intc/rx_icu.c
-+++ b/hw/intc/rx_icu.c
-@@ -361,7 +361,7 @@ static const VMStateDescription vmstate_rxicu = {
-     }
- };
- 
--static Property rxicu_properties[] = {
-+static const Property rxicu_properties[] = {
-     DEFINE_PROP_ARRAY("ipr-map", RXICUState, nr_irqs, map,
-                       qdev_prop_uint8, uint8_t),
-     DEFINE_PROP_ARRAY("trigger-level", RXICUState, nr_sense, init_sense,
-diff --git a/hw/intc/s390_flic.c b/hw/intc/s390_flic.c
-index c3d2b8d765..2963bd5bd6 100644
---- a/hw/intc/s390_flic.c
-+++ b/hw/intc/s390_flic.c
-@@ -445,7 +445,7 @@ static void qemu_s390_flic_instance_init(Object *obj)
-     }
- }
- 
--static Property qemu_s390_flic_properties[] = {
-+static const Property qemu_s390_flic_properties[] = {
-     DEFINE_PROP_BOOL("migrate-all-state", QEMUS390FLICState,
-                      migrate_all_state, true),
-     DEFINE_PROP_END_OF_LIST(),
-@@ -471,7 +471,7 @@ static void qemu_s390_flic_class_init(ObjectClass *oc, void *data)
-     fsc->inject_crw_mchk = qemu_s390_inject_crw_mchk;
- }
- 
--static Property s390_flic_common_properties[] = {
-+static const Property s390_flic_common_properties[] = {
-     DEFINE_PROP_UINT32("adapter_routes_max_batch", S390FLICState,
-                        adapter_routes_max_batch, ADAPTER_ROUTES_MAX_GSI),
-     DEFINE_PROP_BOOL("migration-enabled", S390FLICState,
-diff --git a/hw/intc/sifive_plic.c b/hw/intc/sifive_plic.c
-index ed74490dba..49895be803 100644
---- a/hw/intc/sifive_plic.c
-+++ b/hw/intc/sifive_plic.c
-@@ -430,7 +430,7 @@ static const VMStateDescription vmstate_sifive_plic = {
-         }
- };
- 
--static Property sifive_plic_properties[] = {
-+static const Property sifive_plic_properties[] = {
-     DEFINE_PROP_STRING("hart-config", SiFivePLICState, hart_config),
-     DEFINE_PROP_UINT32("hartid-base", SiFivePLICState, hartid_base, 0),
-     /* number of interrupt sources including interrupt source 0 */
-diff --git a/hw/intc/spapr_xive.c b/hw/intc/spapr_xive.c
-index 283a6b8fd2..09f643d633 100644
---- a/hw/intc/spapr_xive.c
-+++ b/hw/intc/spapr_xive.c
-@@ -627,7 +627,7 @@ static void spapr_xive_free_irq(SpaprInterruptController *intc, int lisn)
-     xive->eat[lisn].w &= cpu_to_be64(~EAS_VALID);
- }
- 
--static Property spapr_xive_properties[] = {
-+static const Property spapr_xive_properties[] = {
-     DEFINE_PROP_UINT32("nr-irqs", SpaprXive, nr_irqs, 0),
-     DEFINE_PROP_UINT32("nr-ends", SpaprXive, nr_ends, 0),
-     DEFINE_PROP_UINT64("vc-base", SpaprXive, vc_base, SPAPR_XIVE_VC_BASE),
-diff --git a/hw/intc/xics.c b/hw/intc/xics.c
-index e893363dc9..81bbfdd84b 100644
---- a/hw/intc/xics.c
-+++ b/hw/intc/xics.c
-@@ -344,7 +344,7 @@ static void icp_unrealize(DeviceState *dev)
-     vmstate_unregister(NULL, &vmstate_icp_server, icp);
- }
- 
--static Property icp_properties[] = {
-+static const Property icp_properties[] = {
-     DEFINE_PROP_LINK(ICP_PROP_XICS, ICPState, xics, TYPE_XICS_FABRIC,
-                      XICSFabric *),
-     DEFINE_PROP_LINK(ICP_PROP_CPU, ICPState, cs, TYPE_CPU, CPUState *),
-@@ -676,7 +676,7 @@ static const VMStateDescription vmstate_ics = {
-     },
- };
- 
--static Property ics_properties[] = {
-+static const Property ics_properties[] = {
-     DEFINE_PROP_UINT32("nr-irqs", ICSState, nr_irqs, 0),
-     DEFINE_PROP_LINK(ICS_PROP_XICS, ICSState, xics, TYPE_XICS_FABRIC,
-                      XICSFabric *),
-diff --git a/hw/intc/xilinx_intc.c b/hw/intc/xilinx_intc.c
-index 6e5012e66e..3e860ab582 100644
---- a/hw/intc/xilinx_intc.c
-+++ b/hw/intc/xilinx_intc.c
-@@ -176,7 +176,7 @@ static void xilinx_intc_init(Object *obj)
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &p->mmio);
- }
- 
--static Property xilinx_intc_properties[] = {
-+static const Property xilinx_intc_properties[] = {
-     DEFINE_PROP_UINT32("kind-of-intr", XpsIntc, c_kind_of_intr, 0),
-     DEFINE_PROP_END_OF_LIST(),
- };
-diff --git a/hw/intc/xive.c b/hw/intc/xive.c
-index 245e4d181a..308e5743bd 100644
---- a/hw/intc/xive.c
-+++ b/hw/intc/xive.c
-@@ -927,7 +927,7 @@ static const VMStateDescription vmstate_xive_tctx = {
-     },
- };
- 
--static Property xive_tctx_properties[] = {
-+static const Property xive_tctx_properties[] = {
-     DEFINE_PROP_LINK("cpu", XiveTCTX, cs, TYPE_CPU, CPUState *),
-     DEFINE_PROP_LINK("presenter", XiveTCTX, xptr, TYPE_XIVE_PRESENTER,
-                      XivePresenter *),
-@@ -1403,7 +1403,7 @@ static const VMStateDescription vmstate_xive_source = {
-  * The default XIVE interrupt source setting for the ESB MMIOs is two
-  * 64k pages without Store EOI, to be in sync with KVM.
-  */
--static Property xive_source_properties[] = {
-+static const Property xive_source_properties[] = {
-     DEFINE_PROP_UINT64("flags", XiveSource, esb_flags, 0),
-     DEFINE_PROP_UINT32("nr-irqs", XiveSource, nr_irqs, 0),
-     DEFINE_PROP_UINT32("shift", XiveSource, esb_shift, XIVE_ESB_64K_2PAGE),
-@@ -2002,7 +2002,7 @@ void xive_router_notify(XiveNotifier *xn, uint32_t lisn, bool pq_checked)
-     xive_router_end_notify_handler(xrtr, &eas);
- }
- 
--static Property xive_router_properties[] = {
-+static const Property xive_router_properties[] = {
-     DEFINE_PROP_LINK("xive-fabric", XiveRouter, xfb,
-                      TYPE_XIVE_FABRIC, XiveFabric *),
-     DEFINE_PROP_END_OF_LIST(),
-@@ -2170,7 +2170,7 @@ static void xive_end_source_realize(DeviceState *dev, Error **errp)
-                           (1ull << (xsrc->esb_shift + 1)) * xsrc->nr_ends);
- }
- 
--static Property xive_end_source_properties[] = {
-+static const Property xive_end_source_properties[] = {
-     DEFINE_PROP_UINT32("nr-ends", XiveENDSource, nr_ends, 0),
-     DEFINE_PROP_UINT32("shift", XiveENDSource, esb_shift, XIVE_ESB_64K),
-     DEFINE_PROP_LINK("xive", XiveENDSource, xrtr, TYPE_XIVE_ROUTER,
-diff --git a/hw/intc/xive2.c b/hw/intc/xive2.c
-index d1df35e9b3..3233d3f14e 100644
---- a/hw/intc/xive2.c
-+++ b/hw/intc/xive2.c
-@@ -1028,7 +1028,7 @@ void xive2_router_notify(XiveNotifier *xn, uint32_t lisn, bool pq_checked)
-                              xive_get_field64(EAS2_END_DATA,  eas.w));
- }
- 
--static Property xive2_router_properties[] = {
-+static const Property xive2_router_properties[] = {
-     DEFINE_PROP_LINK("xive-fabric", Xive2Router, xfb,
-                      TYPE_XIVE_FABRIC, XiveFabric *),
-     DEFINE_PROP_END_OF_LIST(),
-@@ -1242,7 +1242,7 @@ static void xive2_end_source_realize(DeviceState *dev, Error **errp)
-                           (1ull << (xsrc->esb_shift + 1)) * xsrc->nr_ends);
- }
- 
--static Property xive2_end_source_properties[] = {
-+static const Property xive2_end_source_properties[] = {
-     DEFINE_PROP_UINT32("nr-ends", Xive2EndSource, nr_ends, 0),
-     DEFINE_PROP_UINT32("shift", Xive2EndSource, esb_shift, XIVE_ESB_64K),
-     DEFINE_PROP_LINK("xive", Xive2EndSource, xrtr, TYPE_XIVE2_ROUTER,
-diff --git a/hw/intc/xlnx-pmu-iomod-intc.c b/hw/intc/xlnx-pmu-iomod-intc.c
-index 48cd3ae94b..21b9c83658 100644
---- a/hw/intc/xlnx-pmu-iomod-intc.c
-+++ b/hw/intc/xlnx-pmu-iomod-intc.c
-@@ -474,7 +474,7 @@ static const MemoryRegionOps xlnx_pmu_io_intc_ops = {
-     },
- };
- 
--static Property xlnx_pmu_io_intc_properties[] = {
-+static const Property xlnx_pmu_io_intc_properties[] = {
-     DEFINE_PROP_UINT32("intc-intr-size", XlnxPMUIOIntc, cfg.intr_size, 0),
-     DEFINE_PROP_UINT32("intc-level-edge", XlnxPMUIOIntc, cfg.level_edge, 0),
-     DEFINE_PROP_UINT32("intc-positive", XlnxPMUIOIntc, cfg.positive, 0),
+-static Property xilinx_ethlite_properties[] = {
++static const Property xilinx_ethlite_properties[] = {
+     DEFINE_PROP_UINT32("tx-ping-pong", struct xlx_ethlite, c_tx_pingpong, 1),
+     DEFINE_PROP_UINT32("rx-ping-pong", struct xlx_ethlite, c_rx_pingpong, 1),
+     DEFINE_NIC_PROPERTIES(struct xlx_ethlite, conf),
 -- 
 2.43.0
 

@@ -1,142 +1,298 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp933931njb;
-        Fri, 13 Dec 2024 22:33:49 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXZM6pkszVKYjMXWeL6KFxbpCRv8hfAQj2pfcg8tSZ7cqwMmH1Bf2Ra5pSCLSbx+GOvgClnNhSiXFAnHQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFmVBhzbErFVkOLYEgJZ7fnzexjMut7w//UaNpLDrdq0fED0qsqKijBa+HMGhuq0Zkmll+b
-X-Received: by 2002:a05:620a:6005:b0:7b6:c714:f65c with SMTP id af79cd13be357-7b6fbf14f9emr808382185a.28.1734158029250;
-        Fri, 13 Dec 2024 22:33:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734158029; cv=none;
-        d=google.com; s=arc-20240605;
-        b=PHW3+9a4ssXuGKKS6bcP5DjdtWb/oBgIwAEMWG72AA0PEpixGYDnlJsCetGj8Qidlc
-         4NRRrnWHKNuQ9fAigG8YCAk0cXE5wUpBHRH3y6HgzXUhOy1EPYHIc3hfuirwoTrcVtIT
-         2c7afKiqbC8YQiGmWYUbPSNO/53yah353hstjLYSEdDBxqi/LLGDAVaeK6saYdT0ED0J
-         1/FZ1AtccwrQajlBD8F9i48eTqKiOkRobQdtSx7E8YKgkkcA/Fj/Qm7CEa4ZKoDPJOYL
-         xqdnYrjHo16dz/cfYpZWIMN3NvrGeajtYFUqOD1lYR+xg1HVPsSiJaFZfoiiM/mHAY2S
-         mGAw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :mime-version:dkim-signature;
-        bh=hXB3aILzxYyhasq74XESlYudpMNoJDXe3iwsEWxJQEU=;
-        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
-        b=h5degp3oi8QyH1XDeudOBCRzBv+RYuWBZbTe7nsoz7AppVEMfarz9Aqtac50bj5yJR
-         9g52tZUFO7Fip4UaUeXo2osjBMdu8ob/XgmBnek6R0FI7RMW3nTTkLyHJqMbyLiXjxfW
-         gKZ5+XzRhlmRi4+7eenH0Sv0F2EXwsa1OKx9cLmNciSjNp6v6zO+wmcD5GEej/rice4d
-         Ey4exqgbeHkfnB5uBKyb523joZMfqdZMYoPdL3JFAGBN/b1a5ordTyJzL+VN6cNJ3xA0
-         RHZTaJfAFsRLJ+TOhHhzIrjDiSwIC5KvOuDBj2iEWU4CZ0yLGzcjaHtxb82PWkHvwosP
-         sjSA==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="XqO7G0/Z";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b7047ca25asi134635085a.73.2024.12.13.22.33.49
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp1099525njb;
+        Sat, 14 Dec 2024 05:46:33 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXcdgUL6HqKVjxTYABI8ouupsyxvfXrvhF1YXp/78sXcEhBg3+rL7Ks23heb4n4M6sgDlLNRKkEDyg3Ig==@linaro.org
+X-Google-Smtp-Source: AGHT+IHs6yd3PSgw3dRtpw8zHNfr5i60Mkm5cpwvhpEgGMw14kUelEyGSanPgYXpDzMrvCzfXSe/
+X-Received: by 2002:a05:620a:1a95:b0:7b6:d6dd:8826 with SMTP id af79cd13be357-7b6fbf43a6bmr1075100785a.55.1734183992968;
+        Sat, 14 Dec 2024 05:46:32 -0800 (PST)
+Return-Path: <kvm+bounces-33817-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id d75a77b69052e-467b2ed06b6si19672301cf.417.2024.12.14.05.46.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Dec 2024 22:33:49 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 14 Dec 2024 05:46:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-33817-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="XqO7G0/Z";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tMLia-0003Sf-O7; Sat, 14 Dec 2024 01:33:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <effbiae@gmail.com>) id 1tMLiZ-0003SU-JL
- for qemu-arm@nongnu.org; Sat, 14 Dec 2024 01:33:35 -0500
-Received: from mail-io1-xd29.google.com ([2607:f8b0:4864:20::d29])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <effbiae@gmail.com>) id 1tMLiY-0007Tt-5n
- for qemu-arm@nongnu.org; Sat, 14 Dec 2024 01:33:35 -0500
-Received: by mail-io1-xd29.google.com with SMTP id
- ca18e2360f4ac-844e1eb50e2so76161339f.0
- for <qemu-arm@nongnu.org>; Fri, 13 Dec 2024 22:33:33 -0800 (PST)
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=YJuv0pyu;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=VraBMRZP;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of kvm+bounces-33817-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-33817-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 9640E1672D8
+	for <alex.bennee@linaro.org>; Sat, 14 Dec 2024 13:46:30 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8C0841922E0;
+	Sat, 14 Dec 2024 13:46:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="YJuv0pyu";
+	dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b="VraBMRZP"
+Received: from mx0b-00069f02.pphosted.com (mx0b-00069f02.pphosted.com [205.220.177.32])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6692417E015
+	for <kvm@vger.kernel.org>; Sat, 14 Dec 2024 13:46:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=205.220.177.32
+ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1734183986; cv=fail; b=rmQqojcmlWb79P7xvvFB6M1JlnXvG2GM4jYD72PoYlBJFtveqeBJ1tr6wYBcWlHOJVYzYksmcz4P/RnovBf4dLqmt6pN57+TYO2IGbsnpDR7bAFtn5m31bKPDEfnKnai9W6atU3QdG05vyutxEUFp4GqQmjosLzNIsZRcbsTYTo=
+ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1734183986; c=relaxed/simple;
+	bh=mvSsuHiQLGYMvvtlRwlcXkDyoDm93MiYPNhN2Hd8ZdQ=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 Content-Type:MIME-Version; b=GLeMWoAMn9s6e5JP2vlr7i5BX+opnU5KSEOgtEB8iAJdn8OEee0yJi+O0aELH4bRh2VKi5mvf6jOd2RsSwr97ar9Sq6E1zg9RlEATU56R3mins74DfiQ2ZhfdAt8eqiqFGPyRXQHP2KJ82wNmOKx5vrmDgnNFEXQo80RwIK+LWU=
+ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=YJuv0pyu; dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b=VraBMRZP; arc=fail smtp.client-ip=205.220.177.32
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
+Received: from pps.filterd (m0246630.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4BEAN5SF010737;
+	Sat, 14 Dec 2024 13:46:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2023-11-20; bh=LItWZ8PhaPmr7Pn+T0bqX9jszbEKabDoOzZo89xEkRs=; b=
+	YJuv0pyuAnsD/lH6a1VuC5CG++Je9iC+hfL4ZJMJ7f8rX1dnRTh3vFsxUg8jTJW6
+	slIhKiED4RLTpNLdBzRy6g5NQ+ccOxgnMi16iOFjV3CfG4kiHK5gTHolLKMrwE4y
+	bACEGF15wv6ktG8qsL9+GSAq4Tm7RWFBIIk1wG9Fyu43UOFf+0S0cZq0FbWGsbIn
+	zO28zaR322+ORFB+tMyydTlAcxnASO0kNCtwwfNqF0lOgW+n0HHiudDJbRknRSR4
+	5PgYVnbMYduoxqBWDNuloZUPwc6HHNlyftu4Z4rYZXeuUq4OPh9BIu7UGoM2rHVF
+	OhfpF6wrxgcW5sPTKHG5sA==
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 43h0ec0gu4-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sat, 14 Dec 2024 13:46:00 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 4BE8XbGM032621;
+	Sat, 14 Dec 2024 13:45:59 GMT
+Received: from nam11-dm6-obe.outbound.protection.outlook.com (mail-dm6nam11lp2170.outbound.protection.outlook.com [104.47.57.170])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 43h0fbu0nt-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Sat, 14 Dec 2024 13:45:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Mlf/sMIsnlPKvSWdxSr0Ailbr/s0dpHvuewwFRym9ooHm97r0OlIE2gPINAmogSX4gbuO3DPA5O2JOF9AQ6U+nEhNPh3h/9vvzPBJl/7jX0Uih1h7LoVbRDigaq2+ZzjunaYuO9PqoKr7BEWVxWuO2x61oI2R4TImuZXrijzaHfLlBVRUY2XAj98ian+e3GQp3pb/eXEm7+BcFFpMua1bVc9lSrp/ee1I8+li3r0mxT/TMvg5JLrUa+4BlC0z5ACuGxLhXjIRz5LE2HiVwxW3AzCuNe8Am9bXqL8uf1Gqo/QKxO8OyriGL9jzDKvh99S7I0MvrQyWILoniu2d1FtbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=LItWZ8PhaPmr7Pn+T0bqX9jszbEKabDoOzZo89xEkRs=;
+ b=VkOPGKfh8HJQGdGFlTcWGRxMQku1AsgjP8RGnXLgZRci9pyqxkSWosYASKfbWU28tU7mcvAxBndU14rFYs4cEzjcMtiADYXh0gh2U/42erQnKzlPDzzVH2Gs3ReHRdjdl3h0EYbrsRP+sj/Us+01YHe2utdt3A3iCHoS6NqYohu1iGfuGWt9ViCfRq5wWAuUlbGxeyWiDxOh8xpoRgHNSZp6Y8ZF3akf7HFCygOy9ugSy1Sb0hTNhGFUzaByi1QlupmYWuKlOtTHRUr5aNGmJH3/UGqwgbJPM8+Of9lklma+U6TkPE+nGx0mfxxdEDqM+hJnocFlCDnBBoX+JXdG6A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1734158012; x=1734762812; darn=nongnu.org;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=hXB3aILzxYyhasq74XESlYudpMNoJDXe3iwsEWxJQEU=;
- b=XqO7G0/Z8pFBXde1VonjAWSe45qv+GXJ2vtC8i1yWrEvp47WjRE8LaqUj4Dnohao+P
- GPPBPlD0yj9U6IKD1sTDTlwyMwXXUUbxoJqsv6/CYH0uzjdCdtLiG5MRrKryeU4TVYgY
- LuIdAATc/bH2pHNwRullv7AFt0XuNYsZoSvHrMLhhVRPJKtMlTuvu8mdGaFLGy4TtSOX
- 5PbRbPxCSf0PnwkgLHU5enVZ2X/5zcvijKdoal3xOvIoNvzle9D52P5tIZY7+MZBziAL
- PeW5lX/tH5NZq/6DpjsvdJGitrxfAeBd5B78iH5XYxBR1XqIyjv6VC5wRalDWbO7p0Cf
- tD/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734158012; x=1734762812;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=hXB3aILzxYyhasq74XESlYudpMNoJDXe3iwsEWxJQEU=;
- b=AzJN0zyUY7pZtS+i50eKAKHpZI9/HlETcFXudsCMrkCpmZmUAy36FdHMK4rHyYjRN0
- BRFv8X3cvmr+WrnY5xM74IB47Toy2rwdl8moa4xL2Y0ACK/BllRu4i9S181FofSYOWBn
- 5IAKpvRG0LLBVxsHog4JOra+rb37rTveNqCzKSAMlMyz4J1KUAo46lAvRR9YxU89s5oc
- YJcVbKnSSnupLEb6W8olk+802Rob/2LnLbUlsKH3ESAtn9QZBeyDjnvaMOLV/9nntUZT
- 9yGIihbqKhsIjavuDe/yWxNq4l5Unw/gwX4iM1x2vpcPwSnEdPCEah29NLhT9/wtR6JO
- xw/g==
-X-Gm-Message-State: AOJu0Yy/NcMc9uaJGiAX5C1L9lmol00RVC7Fx4/jLRjizF6PH8n7tHle
- 2WaT0t5I6XvM27JCFNOBk/GPnBD/TjSdIe/s6xnxXimd9OJkwF7KSNLbQ27KwFRqyPSPFxPyAiu
- y1x8+HmH83csI0KmlgKo1oryQ3UUpTTW9
-X-Gm-Gg: ASbGncvuBZoMGa+VDsy3SWrHy+pYBl+yUDPsZ3W+aEAdZREZKF8i2ImOaRfROwMxiTx
- GaxcH0LUnGrQXicuVzFz96m+i0waM7p8zAPIG
-X-Received: by 2002:a92:c566:0:b0:3a7:7558:a6ea with SMTP id
- e9e14a558f8ab-3aff01b0779mr59399045ab.10.1734158012599; Fri, 13 Dec 2024
- 22:33:32 -0800 (PST)
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=LItWZ8PhaPmr7Pn+T0bqX9jszbEKabDoOzZo89xEkRs=;
+ b=VraBMRZPmGHTtqmsXkicthtEA1mIEzC5xMmfz/VQnFgEtd6T0dX0D1c1/5uKg9UPr+dHX7u4ZgGHLfbXH5Y557NqBCGxQLRqFa9hs9F6fEa6awLDIEa/qtfK8AnccHjdh9MLZ4n+Trr8tg+uGPcqmu8jBx52Hlnpc5FWyA74lS0=
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
+ by SN4PR10MB5624.namprd10.prod.outlook.com (2603:10b6:806:20b::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8251.19; Sat, 14 Dec
+ 2024 13:45:57 +0000
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23%4]) with mapi id 15.20.8251.015; Sat, 14 Dec 2024
+ 13:45:57 +0000
+From: =?UTF-8?q?=E2=80=9CWilliam=20Roche?= <william.roche@oracle.com>
+To: david@redhat.com, kvm@vger.kernel.org, qemu-devel@nongnu.org,
+        qemu-arm@nongnu.org
+Cc: william.roche@oracle.com, peterx@redhat.com, pbonzini@redhat.com,
+        richard.henderson@linaro.org, philmd@linaro.org,
+        peter.maydell@linaro.org, mtosatti@redhat.com, imammedo@redhat.com,
+        eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+        wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
+Subject: [PATCH v4 0/7] Poisoned memory recovery on reboot
+Date: Sat, 14 Dec 2024 13:45:48 +0000
+Message-ID: <20241214134555.440097-1-william.roche@oracle.com>
+X-Mailer: git-send-email 2.43.5
+In-Reply-To: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
+References: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: BYAPR01CA0049.prod.exchangelabs.com (2603:10b6:a03:94::26)
+ To CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-From: Jack Andrews <effbiae@gmail.com>
-Date: Sat, 14 Dec 2024 17:33:20 +1100
-Message-ID: <CAJvHTNyYaXECmn7AkdbpAhQcSySndiCqwiY_ZmyjeJYs7edghQ@mail.gmail.com>
-Subject: Raspberry 5
-To: qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="00000000000053599f06293520e4"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d29;
- envelope-from=effbiae@gmail.com; helo=mail-io1-xd29.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ql/Af34S/jpa
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|SN4PR10MB5624:EE_
+X-MS-Office365-Filtering-Correlation-Id: e1303c40-2f75-4fd4-59ac-08dd1c45a326
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014;
+X-Microsoft-Antispam-Message-Info:
+	=?us-ascii?Q?VNs2QA28VGdV4RdEdSZCzeYqI5GErk+63ijMjAfnuQjg45gsZZYxv+mmJiOO?=
+ =?us-ascii?Q?Ioj8RF0Enk9TrSH5tbDSgTiEHd+L2Y4+zsE32rtM59/AR12Xivk8cr8NGYGG?=
+ =?us-ascii?Q?F/F/u0jHkrSPJWT8Y6P6DQ3GBWM0z1W1DaPhqlnpQ68mw8lUaYdYXEz79ENO?=
+ =?us-ascii?Q?rtI+0ZuXQQ3t63wvnVbLJMahSp6cLm06/aF4UtXgiKEc3USBkkfllV35YzFF?=
+ =?us-ascii?Q?ru0bZyQs8Ky9C6HnC6qTrL7nnN17pFmoSjJA5JDtVd/L2HwKrpT9iYlT1oh/?=
+ =?us-ascii?Q?/qjO0f4bT9prsXGmdU94xNqbuDtUim2NMPiZeojgxk+yzZQb9UL2h6ASeeb2?=
+ =?us-ascii?Q?VJ3sNYv9P4tF8XYhdWBePGw4KcWli5wPERk9kyz60ouiI3HAjFVFZLOQZ8gI?=
+ =?us-ascii?Q?iXNkPiYoOYF5tyiD94rtbZPH2jJzilV95WkQkbsBp+rUUiMZcbzlxM/rVpzK?=
+ =?us-ascii?Q?Y11xAkiPiUwEbyYtQwSrGr1nRzdV1qcMNNf9KusEpbWFdg0SRnAHf1qNDaoe?=
+ =?us-ascii?Q?J+ynfIY11krN9urfBzT0+cDY3CM2Vt87lvObX0FQf6pVbB/b1qirKbT71/F1?=
+ =?us-ascii?Q?MUz/ouoinuJEYiSy3WGzmcjxLnR0AHY1/DerPTfjkTatrVxrbCwhB+LDmVYR?=
+ =?us-ascii?Q?ymdjgLOHVaDWV24xojTijj8vMHkrvMkL8V+850qe8TUe8Ce0HCKaoU+cjpoL?=
+ =?us-ascii?Q?5s78ZKB5W8nphw+hyAhBHRg3NcjVeooKpubm1i7Za2fTj7TlAvumP1+JQvB6?=
+ =?us-ascii?Q?WmJB1en51R0toQdFqxFkUTxiJbsQAwycfXkcow3wRTk+VRCIDytUO2vSUZqz?=
+ =?us-ascii?Q?ZcIr65DaKG2wcwetam5pVh+/65wcWz6nyZZ3nRrmFjiCcVVUB9+pdmMHYlfe?=
+ =?us-ascii?Q?T8aLaHKf5gTD6GjIOjtgXQKRVilzchoKO08x8imvxNsHthg55iuPHRrj+yy8?=
+ =?us-ascii?Q?LrNcB0zwDpw3ZFKOzo+WXoYN50hJkiuqlzJAAkcwcEdcx5NJUTLKWJQFpqiB?=
+ =?us-ascii?Q?pmWaK00g/8oWm7/U6teHX0auSo9xXWa8eo6UjCBS5CaXynyLXWUwQmJVL2XN?=
+ =?us-ascii?Q?wba0m9E9Bn1xL1FJ4aaMGfDdv5LLPshjPraAY3BY0Ge6cej7JMScTKOFy6DQ?=
+ =?us-ascii?Q?FTFwcMlMWuHUOQiFlIm0IH5+3mzkS9OufE6vcRiVlirJD11/4AGJnEAO1+gT?=
+ =?us-ascii?Q?d9yPnUY707BHe1YDRm5LgPCzoiAK394Ej+HZ7MyAzb7bCpeDYvlNkqWDw0Y1?=
+ =?us-ascii?Q?pHD108uUeLUBPWvfim3gghKHfxIzSr53VqQDlsQA910c3SmuU0MDG6aZOxm9?=
+ =?us-ascii?Q?oPewCT/nwawoNxdbpsgcsyoethOET0YczsRmtZXpK9+SUw=3D=3D?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR10MB7329.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?us-ascii?Q?i1yIo3iSX/TXAmhV4jYKswoPxRubZBfNtNw/AbTsCI+WSzgv06ovsCKKd4QJ?=
+ =?us-ascii?Q?2nhlWyq83d+THht/qeeNPfxboLJd9Lnd0J7v/51/IUyUL+noXbWHfXnMQW+S?=
+ =?us-ascii?Q?RFPn2WYOLGHxScD3BoiU+DpUKi5vvee6SXaXh0P26t29GyDKxP9FnnGcndVp?=
+ =?us-ascii?Q?vwkFGDvT+6AwSdjw1kz0KvjI4h+PF+QPLQU1t3sVp2ZCQvPV3xvwo9g1VJSV?=
+ =?us-ascii?Q?PyqbIYBlnjoVQK6VH1/kxqv7Bb6iKEtsxGnnXqCX0lrJyIcspJVxE7GY3ZHt?=
+ =?us-ascii?Q?3sNqGzwJc2pJ0WfK/knILeM8rVXkPao+fR6PbCvakL2zOw24nFQs+EbZ3Zmc?=
+ =?us-ascii?Q?0gonh7d71VLjW4GgVfu6Bje5Mu4ZGPzvZKNoMS5gAYco80Z4TF5YdiSFiotn?=
+ =?us-ascii?Q?MvrzhiVkcOUW0j0dZ8pb0i1rLgb3excZw2kGKL+V/z0RTXVsMp0Rumu9gMbX?=
+ =?us-ascii?Q?Wa1eWrCbpUkH7mifmqcVknqkE85b40eGFDx60wjZo/MuJBFllEjiLAWSrewQ?=
+ =?us-ascii?Q?eb54zkM+d4h3TtVL7XEV8B4gR++jSPbJkT3Iq4XdPTWxvPVKIwdLtI5FoAVL?=
+ =?us-ascii?Q?KEN8ngt8BbjKH/QW3S1ts7da1BBF3owk3/Gx11y+Z8cdaV3Usjng1LGhfTbd?=
+ =?us-ascii?Q?6J7Dwo2Cq7V40Lizs9hS5sbOyTMXFFzjDbXirQ61Ydu51rmDIdZHhIXl2jKq?=
+ =?us-ascii?Q?nurFrWxgtBLRzdodJU2f/EcjxFnK3R/1YtOMSF4b+22xWB/q0YC3XPUpP5sr?=
+ =?us-ascii?Q?ORqsnJzviSVr3t0tmb+KrfbzLh2NzfneqxrPyLtD9qOfJW63CHqwtf+yRHQp?=
+ =?us-ascii?Q?xBBqFeEFTReN2SOxW6hx1zZcTlNP/c2xj6elGFSZ30cdenU2wUnn8gs5tIWB?=
+ =?us-ascii?Q?5w8og0W4mt7TGBK4FFYRv29zSRxIFQQntrYoCc74XjpAUrM1I70VRIvFx3uw?=
+ =?us-ascii?Q?u/GtqVDGWh+3oTwUXQ4Kgzoni4b0c4RXGbnFgbhJnK+YpabbujVmPHqgP+rx?=
+ =?us-ascii?Q?QfMUcMxYM1yBDIxLHGe1AMyG/mBt6SyEY+HD9yJ+BaxcoTLHwWWStIzZRJCW?=
+ =?us-ascii?Q?EDy0R0TuDt2NqHHPDbzRv/ZjyL0cKMA22RmFXonT1pgUUo4MXLlwmkRPsLfF?=
+ =?us-ascii?Q?7e+cfszSumuFQWNxH2FsZtp2BQ4TBm780pakgKAZeN5ZftVp/O5FBkbGwWEY?=
+ =?us-ascii?Q?tUx0JKzsGrZ2NQk4w7i+npZBm2XNgh/ef28leX+nOi5UKwgm4VKf634ckwsG?=
+ =?us-ascii?Q?SWWvl0Jml2kBRiDFQCggBdokQ+e4A7Bow+cVpB2RB0xsVbGWsaKszibAMuSx?=
+ =?us-ascii?Q?R1hWHUVzTSHfy2zj8Urv3nmoSu0w+se2RXq6E0R7hvU7zyT0M4oObQx9tfkc?=
+ =?us-ascii?Q?q4Bvv1l4OcjtXWxAasFaPqZ+6fyzxSD/DUynNx5XD8we2fO4V3cn2zgS2sne?=
+ =?us-ascii?Q?nO+U8psV5EVkqfkjFRuEgVGXvFNeLbomFUKQh5dauVqRPmILFDyReO1VLKmn?=
+ =?us-ascii?Q?VFgMqMrTAhi2R1YKyujy9p31869hXbbwVw9jbPdzjIL7Ueh1XcSq7DUOfCJQ?=
+ =?us-ascii?Q?ZJ2tT+bjT/NZFo2wI2ewN2vodFNnt2VZToM5NyqhW5CH53nHBZQ+9Fd6NpC8?=
+ =?us-ascii?Q?7Q=3D=3D?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
+	FYv9Gbjs5fOGzC3bWGoCUnYTJq0TXf0cIpbDrLO9iw32nRAsEBsOC4+TZI8O06c87Ns2C0hByhbtwwI+tF0/4Oe3s/RTVWT7H1TzNaZ6ZBHm1APfBGbr7I/nvKhDiLhOiH2PdPGYa0klSao7KdCXVr78wLlN5gdTnj+8zdNWJmL1n9RuJFU7TXjyESPiW9l4mF6OPWPYsVbD6TE6ORDM6yn/O4cObguN04LgBLEk1/QXMTNfuk4X2s6hshFkXWlVniOSiVQFZ4uLkg8hBCbQNTZ8/2/8EiIp+HLEB5TwQn1HRay/X8r4gpupzBpCukx/PQLtrRm/O2o7+xDd8PzvgoIq5uUjnvGdWryeGM7QwvQx0SNX8vZ2340up/YIJz/kUh5CU1qDjVlSGRaiRxCLlTZQh+3J1rLzAZs/YYhIxOYAb/ERPtJ+YZx8lp3Xqtvey29KAh31wTdJDdOvYKoXODvd+owRlSWCAspidcQwK7J7u0ISU1cDnMjONCB91MzgGpTjhbwg6v98ZRdCvQF7oOY5BsCzVO/O/B4Jb5Gl1hasJtRoIAkXIjQbEfYK8hq3ksCagl30uSRlmiwdzX6ke54G25vfLK4v3jKzBfpU8ZY=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e1303c40-2f75-4fd4-59ac-08dd1c45a326
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Dec 2024 13:45:57.3954
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: V6c2Ef7p/kvp79ux16fs8rrcz5DXIRdd+BBBssvH8MI3VgjJ4oF8Fet7t+5X2pGAxCeGE4SpqERNRdzS85tesjV+UQxSHfsF49G6FZfMPD4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN4PR10MB5624
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2024-12-14_05,2024-12-13_01,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 spamscore=0 suspectscore=0
+ adultscore=0 bulkscore=0 mlxscore=0 mlxlogscore=999 malwarescore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2411120000
+ definitions=main-2412140112
+X-Proofpoint-GUID: xZFIhNOhDP9HyK3JinEdLUdYCu9j8L4p
+X-Proofpoint-ORIG-GUID: xZFIhNOhDP9HyK3JinEdLUdYCu9j8L4p
+X-TUID: 9BRz5Z74kfNf
 
---00000000000053599f06293520e4
-Content-Type: text/plain; charset="UTF-8"
+From: William Roche <willia.roche@oracle.com>
 
-Hi qemu-arm,
+Hello David,
 
-Is support for raspi5 planned? Or already implemented? Do you think if I
-develop for raspi4b, it will work on 5?
+Here is an new version of our code and an updated description of the
+patch set:
 
-Best,
-Jack
+ ---
+This set of patches fixes several problems with hardware memory errors
+impacting hugetlbfs memory backed VMs and the generic memory recovery
+on VM reset.
+When using hugetlbfs large pages, any large page location being impacted
+by an HW memory error results in poisoning the entire page, suddenly
+making a large chunk of the VM memory unusable.
 
---00000000000053599f06293520e4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The main problem that currently exists in Qemu is the lack of backend
+file repair before resetting the VM memory, resulting in the impacted
+memory to be silently unusable even after a VM reboot.
 
-<div dir=3D"auto">Hi qemu-arm,<div dir=3D"auto"><br></div><div dir=3D"auto"=
->Is support for raspi5 planned? Or already implemented? Do you think if I d=
-evelop for raspi4b, it will work on 5?</div><div dir=3D"auto"><br></div><di=
-v dir=3D"auto">Best,</div><div dir=3D"auto">Jack</div></div>
+In order to fix this issue, we take into account the page size of the
+impacted memory block when dealing with the associated poisoned page
+location.
 
---00000000000053599f06293520e4--
+Using the page size information we also try to regenerate the memory
+calling ram_block_discard_range() on VM reset when running
+qemu_ram_remap(). So that a poisoned memory backed by a hugetlbfs
+file is regenerated with a hole punched in this file. A new page is
+loaded when the location is first touched.
+
+In case of a discard failure we fall back to remapping the memory
+location. We also have to reset the memory settings and honor the
+'prealloc' attribute.
+
+This memory setting is performed by a new remap notification mechanism
+calling host_memory_backend_ram_remapped() function when a region of
+a memory block is remapped.
+
+We also enrich the messages used to report a memory error relayed to
+the VM, providing an identification of memory page and its size in
+case of a large page impacted.
+ ----
+ 
+ About patch 3/7, I still think that generating an additional message
+ in the kvm_hwpoison_page_add() function creates a cleaner code without
+ the need to repeat it for x86 and ARM. The message would be displayed
+ before all the injection messages issued because of the large page
+ failure. But we could go with this version if you prefer the existing
+ message to be enriched.
+ 
+ About patch 7/7, I could merge it with your patch 6/7 if you agree.
+ 
+ 
+v3 -> v4:
+. Fixed some commit messages typos
+. Enhanced some code comments
+. Changed the discard fall back conditions to consider only anonymous
+  memory
+. Fixed missing some variable name changes in intermediary patches.
+. Modify the error message given when an error is injected to report
+  the case of a large page
+. use snprintf() to generate this message
+. Adding this same type of message in the ARM case too
+
+
+This code is scripts/checkpatch.pl clean
+'make check' runs fine on both x86 and Arm.
+
+
+David Hildenbrand (3):
+  numa: Introduce and use ram_block_notify_remap()
+  hostmem: Factor out applying settings
+  hostmem: Handle remapping of RAM
+
+William Roche (4):
+  hwpoison_page_list and qemu_ram_remap are based on pages
+  system/physmem: poisoned memory discard on reboot
+  accel/kvm: Report the loss of a large memory page
+  system/physmem: Memory settings applied on remap notification
+
+ accel/kvm/kvm-all.c       |   2 +-
+ backends/hostmem.c        | 189 +++++++++++++++++++++++---------------
+ hw/core/numa.c            |  11 +++
+ include/exec/cpu-common.h |   3 +-
+ include/exec/ramlist.h    |   3 +
+ include/sysemu/hostmem.h  |   1 +
+ system/physmem.c          |  88 +++++++++++++-----
+ target/arm/kvm.c          |  13 +++
+ target/i386/kvm/kvm.c     |  18 +++-
+ 9 files changed, 225 insertions(+), 103 deletions(-)
+
+-- 
+2.43.5
+

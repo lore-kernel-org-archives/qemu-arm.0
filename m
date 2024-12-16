@@ -1,40 +1,40 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2004019njb;
-        Sun, 15 Dec 2024 23:54:55 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVb04EYc9kQTu/nA3w+ZZz0SVAfCsYr+ErZpZprXhVDqQ7QSjA9ZWSG/L2UBIRdRtTF+0wn3EGyXucr2A==@linaro.org
-X-Google-Smtp-Source: AGHT+IGF+T1rn8J2K5S+OofSp5k8dcmO/hD2Fxg2p+43qPYbaDgna5ZYY7BEL3A9AsUtMdLqBRhS
-X-Received: by 2002:a05:622a:1c1a:b0:463:6bc4:2a23 with SMTP id d75a77b69052e-467a54b8ce0mr238330551cf.0.1734335694926;
-        Sun, 15 Dec 2024 23:54:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734335694; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2004108njb;
+        Sun, 15 Dec 2024 23:55:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX6rTebzrHaavb2pqDAdEdEmSEclGFa2fNhY44gbcpgE+Bi4sISL9+sbedGq2eBKy815K3RdCCRcCactQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF5dcCEoXrVHKTg+utljZ7kR5LdLRwqI2xS5cQ3IAsudZsAvWT0KIG98Rnp0jQhT7hFfGtd
+X-Received: by 2002:a05:620a:2a01:b0:7b6:d5a6:18ec with SMTP id af79cd13be357-7b6fbf3a982mr2107163285a.48.1734335709671;
+        Sun, 15 Dec 2024 23:55:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734335709; cv=none;
         d=google.com; s=arc-20240605;
-        b=LtNwcSuKkS6BIPll1Ffu7b4GkezdhUyNkRCKHh56zxpx/JAjFgrf6FfbDy2bYtvcYu
-         yPcTTC7+FvRcYk5WCs5Mg1WhO0PZWfRGnTqnsDuLqS6JFkapyCtSnpPlPK4DCwBtrbh4
-         vCfg7NpNlrv+Prhl/HllUPU3NfliSM5q3xy/DL3n+FGNysk5qWcp98wppJSHbjbyRC8f
-         IeWshZOEtKtwthzcm0+3SlwFUNIdv+1IuQ7nR/NoioJwAYVGpyIcZcVvAIVW2HH3riMl
-         CHaNMCW7qwWyddpfFVF+wm/Lrz6DXDbDTXpiv1GUc0lmjLWGYSzFYkdJhvQ0YDzMJx0Y
-         LY3g==
+        b=KrJsC0SkIfwZE5pan5cTtVa85bvDVqPByHnXk2LEUXGKQiCuSx+GP7NDTpSACbyKfC
+         nLQb3wjtsS5+occQCuBrU7kxif5vtvllkGxYvE3jnrW/G0H7uehzpfNGqlDRJNBpL89A
+         EmDziEdf+ap1d+bCLPcGUwTH6s1AsqAm0Awbc01v1UkuRVrLBVWqpt0ikRLBWUW3ObpZ
+         ZyqFvcN1loRb3XgV8L/10Vi/7ZDRbrv30VS8E1ZPHJ17MTNw+AFSybHU82hOefeZHI0Q
+         3P3Q6QFVwpiA8O2lOTnR4lM6W+gCsk94WScZvy2aTIzSpUUIRChb0arphz1W3ja6RdAs
+         k/jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=zyUmpD+CdCeRkYxVBi+K3G2IifKnj0VjJQmewnqi0ZU=;
+        bh=yGpk435CTo2DP80Vw8Q6lhYqDpyg/IPeY6LTZ6xzU3s=;
         fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=PoC3RAbAFKD88unt1gYlolmkO+PiuyYWCzq5c8IcKYsYb+HPQNM1DJ4fIJvXBraz1h
-         cgRN2YFn/+OvLEQw28KDpGcvSt9dR5u89wlW4BvA11jyD/Q82mejQ+UflRU3Pwmk05K1
-         jD1SwzruczDruasqYI0pNGnJpGqZxdtYXFo3948UOtpnq9+H3RuyIkf90QGGCQmh883i
-         0l1f2Q8jHIM2PG0wd3+nm7jhjDIotyRqk7ZAX287iCHmP13eyIQMFYHbRm4en93qCyYB
-         IsjXpU3JoNsmYhQ97/aS2dbxD33kQ8nzCHuXvN4NGpVsqldMWvBtRISnO94fEm9lKm5q
-         qbuw==;
+        b=bs0Kp2cE2z534RNKbPtCiPniLd8KaFy3xsjqkJzEPYrwsxyC4XeqM1Ew5R+R32lNLx
+         dLLBvgY9W9xaeQqLqHqZrljVA2hccm62N7o2EMSX4dJ8WPqDxjeNsSMo0jb23P8wF2kh
+         zrNRQnV/L0CIUW4ihCWu5KSeQpK3X5/SnBWHtPAajwjxZxreEAgDdKd9Qzl9b4wzNuSG
+         lMOEEPQLyYi7bS0z6ZCYa6jsSIuDPxEYX3hKt2QAcXwunOVOX81TlmkrzMlT8YfXHrXV
+         c7JbMOrUaeEN+saC5JnlznHZvYgV07d7vtLdh+F75GMTCasK31dACpci1KopBB6sRsI1
+         BjRA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-467b2f1f12fsi69413631cf.642.2024.12.15.23.54.54
+        by mx.google.com with ESMTPS id af79cd13be357-7b7048cc7f9si703823485a.391.2024.12.15.23.55.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Dec 2024 23:54:54 -0800 (PST)
+        Sun, 15 Dec 2024 23:55:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,15 +42,15 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tN5vn-0004Up-Lp; Mon, 16 Dec 2024 02:54:19 -0500
+	id 1tN5vx-0004Wz-TB; Mon, 16 Dec 2024 02:54:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tN5vl-0004U8-Qe; Mon, 16 Dec 2024 02:54:17 -0500
+ id 1tN5vv-0004WK-7z; Mon, 16 Dec 2024 02:54:27 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1tN5ve-000791-3g; Mon, 16 Dec 2024 02:54:17 -0500
+ id 1tN5vs-000791-8v; Mon, 16 Dec 2024 02:54:27 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Mon, 16 Dec
@@ -65,9 +65,9 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 1/3] hw/timer/aspeed: Support different memory region ops
-Date: Mon, 16 Dec 2024 15:53:50 +0800
-Message-ID: <20241216075353.1308043-2-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 3/3] aspeed/soc: Support Timer for AST2700
+Date: Mon, 16 Dec 2024 15:53:52 +0800
+Message-ID: <20241216075353.1308043-4-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20241216075353.1308043-1-jamin_lin@aspeedtech.com>
 References: <20241216075353.1308043-1-jamin_lin@aspeedtech.com>
@@ -98,105 +98,78 @@ Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
 From:  Jamin Lin via <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: awu56EHaYkUe
+X-TUID: TQGtnRxslxbO
 
-It set "aspeed_timer_ops" struct which containing read and write callbacks
-to be used when I/O is performed on the TIMER region.
+Add Timer model for AST2700 Timer support. The Timer controller include 8 sets
+of 32-bit decrement counters.
 
-Besides, in the previous design of ASPEED SOCs, the timer registers address
-space are contiguous.
+The base address of TIMER0 to TIMER7 as following.
+Base Address of Timer 0 = 0x12C1_0000
+Base Address of Timer 1 = 0x12C1_0040
+Base Address of Timer 2 = 0x12C1_0080
+Base Address of Timer 3 = 0x12C1_00C0
+Base Address of Timer 4 = 0x12C1_0100
+Base Address of Timer 5 = 0x12C1_0140
+Base Address of Timer 6 = 0x12C1_0180
+Base Address of Timer 7 = 0x12C1_01C0
 
-ex: TMC00-TMC0C are used for TIMER0.
-ex: TMC10-TMC1C are used for TIMER1.
-ex: TMC80-TMC8C are used for TIMER7.
-
-The TMC30 is a control register and TMC34 is an interrupt status register for
-TIMER0-TIMER7.
-
-However, the register set have a significant change in AST2700. The TMC00-TMC3C
-are used for TIMER0 and TMC40-TMC7C are used for TIMER1. In additional,
-TMC20-TMC3C and TMC60-TMC7C are reserved registers for TIMER0 and TIMER1,
-respectively.
-
-Besides, each TIMER has their own control and interrupt status register.
-In other words, users are able to set control and interrupt status for TIMER0
-in one register. Both aspeed_timer_read and aspeed_timer_write callback
-functions are not compatible AST2700.
-
-Introduce a new "const MemoryRegionOps *" attribute in AspeedTIMERClass and use
-it in aspeed_timer_realize function.
+The interrupt of TIMER0 to TIMER7 as following.
+GICINT16 = TIMER 0 interrupt
+GICINT17 = TIMER 1 interrupt
+GICINT18 = TIMER 2 interrupt
+GICINT19 = TIMER 3 interrupt
+GICINT20 = TIMER 4 interrupt
+GICINT21 = TIMER 5 interrupt
+GICINT22 = TIMER 6 interrupt
+GICINT23 = TIMER 7 interrupt
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/timer/aspeed_timer.c         | 7 ++++++-
- include/hw/timer/aspeed_timer.h | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ hw/arm/aspeed_ast27x0.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 149f7cc5a6..970bf1d79d 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -606,6 +606,7 @@ static void aspeed_timer_realize(DeviceState *dev, Error **errp)
-     int i;
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     AspeedTimerCtrlState *s = ASPEED_TIMER(dev);
-+    AspeedTimerClass *atc = ASPEED_TIMER_GET_CLASS(s);
- 
-     assert(s->scu);
- 
-@@ -613,7 +614,7 @@ static void aspeed_timer_realize(DeviceState *dev, Error **errp)
-         aspeed_init_one_timer(s, i);
-         sysbus_init_irq(sbd, &s->timers[i].irq);
-     }
--    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_timer_ops, s,
-+    memory_region_init_io(&s->iomem, OBJECT(s), atc->reg_ops, s,
-                           TYPE_ASPEED_TIMER, 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
- }
-@@ -708,6 +709,7 @@ static void aspeed_2400_timer_class_init(ObjectClass *klass, void *data)
-     dc->desc = "ASPEED 2400 Timer";
-     awc->read = aspeed_2400_timer_read;
-     awc->write = aspeed_2400_timer_write;
-+    awc->reg_ops = &aspeed_timer_ops;
- }
- 
- static const TypeInfo aspeed_2400_timer_info = {
-@@ -724,6 +726,7 @@ static void aspeed_2500_timer_class_init(ObjectClass *klass, void *data)
-     dc->desc = "ASPEED 2500 Timer";
-     awc->read = aspeed_2500_timer_read;
-     awc->write = aspeed_2500_timer_write;
-+    awc->reg_ops = &aspeed_timer_ops;
- }
- 
- static const TypeInfo aspeed_2500_timer_info = {
-@@ -740,6 +743,7 @@ static void aspeed_2600_timer_class_init(ObjectClass *klass, void *data)
-     dc->desc = "ASPEED 2600 Timer";
-     awc->read = aspeed_2600_timer_read;
-     awc->write = aspeed_2600_timer_write;
-+    awc->reg_ops = &aspeed_timer_ops;
- }
- 
- static const TypeInfo aspeed_2600_timer_info = {
-@@ -756,6 +760,7 @@ static void aspeed_1030_timer_class_init(ObjectClass *klass, void *data)
-     dc->desc = "ASPEED 1030 Timer";
-     awc->read = aspeed_2600_timer_read;
-     awc->write = aspeed_2600_timer_write;
-+    awc->reg_ops = &aspeed_timer_ops;
- }
- 
- static const TypeInfo aspeed_1030_timer_info = {
-diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
-index 07dc6b6f2c..8d0b15f055 100644
---- a/include/hw/timer/aspeed_timer.h
-+++ b/include/hw/timer/aspeed_timer.h
-@@ -73,6 +73,7 @@ struct AspeedTimerClass {
- 
-     uint64_t (*read)(AspeedTimerCtrlState *s, hwaddr offset);
-     void (*write)(AspeedTimerCtrlState *s, hwaddr offset, uint64_t value);
-+    const MemoryRegionOps *reg_ops;
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index 23571584b2..292bb1c5b7 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -66,6 +66,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+     [ASPEED_DEV_GPIO]      =  0x14C0B000,
+     [ASPEED_DEV_RTC]       =  0x12C0F000,
+     [ASPEED_DEV_SDHCI]     =  0x14080000,
++    [ASPEED_DEV_TIMER1]    =  0x12C10000
  };
  
- #endif /* ASPEED_TIMER_H */
+ #define AST2700_MAX_IRQ 256
+@@ -397,6 +398,9 @@ static void aspeed_soc_ast2700_init(Object *obj)
+ 
+     object_initialize_child(obj, "emmc-controller.sdhci", &s->emmc.slots[0],
+                             TYPE_SYSBUS_SDHCI);
++
++    snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
++    object_initialize_child(obj, "timerctrl", &s->timerctrl, typename);
+ }
+ 
+ /*
+@@ -716,6 +720,19 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
+                        aspeed_soc_get_irq(s, ASPEED_DEV_EMMC));
+ 
++    /* Timer */
++    object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
++                             &error_abort);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->timerctrl), errp)) {
++        return;
++    }
++    aspeed_mmio_map(s, SYS_BUS_DEVICE(&s->timerctrl), 0,
++                    sc->memmap[ASPEED_DEV_TIMER1]);
++    for (i = 0; i < ASPEED_TIMER_NR_TIMERS; i++) {
++        irq = aspeed_soc_get_irq(s, ASPEED_DEV_TIMER1 + i);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->timerctrl), i, irq);
++    }
++
+     create_unimplemented_device("ast2700.dpmcu", 0x11000000, 0x40000);
+     create_unimplemented_device("ast2700.iomem0", 0x12000000, 0x01000000);
+     create_unimplemented_device("ast2700.iomem1", 0x14000000, 0x01000000);
 -- 
 2.25.1
 

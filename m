@@ -1,216 +1,126 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2162667njb;
-        Mon, 16 Dec 2024 05:18:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUHES/ZfTqd17T9bQR4n40C4WOc4GoGwZVGZgM8pLWw+txWqeshtdsn+LdsrhEp+SC1L63vkD4FMqd0LQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHFSKC18ZwqEI7SimcXqw6GvZpEhSB/DE7Wf+taEaW7HQRBz3tsDYIriPsg0eaUIYIeuUei
-X-Received: by 2002:a05:622a:1f15:b0:467:73c7:9fc5 with SMTP id d75a77b69052e-467a578f420mr258324711cf.23.1734355114715;
-        Mon, 16 Dec 2024 05:18:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734355114; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2196011njb;
+        Mon, 16 Dec 2024 06:08:19 -0800 (PST)
+X-Received: by 2002:a05:690c:d95:b0:6ef:58f9:4c0d with SMTP id 00721157ae682-6f279b9e06amr89181807b3.39.1734358098908;
+        Mon, 16 Dec 2024 06:08:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734358098; cv=none;
         d=google.com; s=arc-20240605;
-        b=Rs00AmPwCfkYEXzPQEJffBT9RfJcZ7Gr8KKX+RxyQB2nfCaCVXw2DqPH+JVwHySc5F
-         nc7AVBFXN0fZtNVciE6XNfpfpihpp1o7ihivXW9wmNz9JXKnSkSKADmCoOQKulCce8N4
-         rdINc+vAA23LiWlHpsXHrG0W788d/0WXlRWtShezWHS1H4T39idzpO4pH+9hF+Db7cXw
-         /TeGgCcPu/Rf7512Iu30KaX+NEoX0Eqid2ccz/jAE9JvdhqcCVLALY+GfLiFhlGePFi8
-         i9LdtXJDWtN+kBgaIxssZpubttRLDQFW9NjJyKmUojPUcA8F7/Mxd5ZHD9AtL4VPKPoI
-         eRpg==
+        b=LI5r+GDkwjsdGdWXJndFuoT/A5Nnr8WmJ2UuP8QXExU8zhmvIuK3iTPTy08KZZE4t2
+         iNCfnPTkOKtQxXa1zJVzpyVFrAxkPeaKNkktBqh7aZ3M8+5lpBWOOkXep57JVzOCzWEA
+         5yqo2bMc767z7SYO7ORqxWgbONiWP7siFCauJrFk32sc6PUVgBKiDGhm404veMLo0sqj
+         F2Edw3GUEsHfK4Gn/dMeBIbEf7EYTt54xZblClUnLreH24OV3p0o6zJVKZ7z/8IF1oq0
+         NyTiRxUCyBIqzDJqpm2y160jxP81xSQ22cQ1HwyCZc/oYie2dMdhyl4IdJrAi1UgpB9B
+         5xvA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ixcO2wLBqHGC8YgPmM/l6g6jyheKFuiwzE+l0049XwA=;
-        fh=okCcUt9PW2dkfK4J599mUoNMmyf4tKhg6pqkA3qhmDc=;
-        b=OT9rLmo0g+khiPtySn8jq6ao1VdAIspGvT13R+AkuXn6uOdtXXXbogGtqmA3y+0tJ5
-         XPaZN/GX1ogl65tkne2xJQlZX8/u5ihbbMiDbFc84t8teMRUqFlhBPuIcoWzw3fVeasY
-         32VYkCehS4gKmIwVDXOums/iBE4JQPjCOJBYrgfeSaWOKZ5uT5IAFjYlg0OoIk4VQ/sw
-         BD30OELJj9Q3uK967YCaqypu4TYbofjacPtFAVy1Ms50jPFQ7C21nD5968JLMYHqId8K
-         A0sk6cLeSyr0Fqw2bL2b9tJTdWD1oOdawSqHwcIFxOQq6DZd0N2xRAkHXUfleTX/f99c
-         Hs8A==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=q0GyJjjnZ37UxeSbRujj75zDGS5Zc2xrI0ozr18gJP0=;
+        fh=7PFDX/P0vYSP73t1gdCNZILQOuIL1xBd+Dov6jfa9GM=;
+        b=FCWHjR6+rxoABbdPp9PYD4yRO1jmiL9CMWLGCHb8qV36ajG06dgZuM8VeeVRfJxL8n
+         uenceoWx8m0mD6fhUO2c9mHra2QfHQ0hHV13vZHfFwT/zrY1hSPtV+FRJMivhA8W/tiV
+         ZhtohAT2RmU2n0xWpVz1zKLmVoknFG1usMpFpvOT5t8bam2R4OsTxXknrDlFWC7ff6J1
+         ZkSioYUQN97T1hdmXUpxGUTaSjxSMzKEgapDpTPksstnnWxWCw9gWlpMlngkWlntfuqp
+         emqjH3Mc8mxEJLw6D78A9wDGRaLPWrpWVyebdoiSNDfuZNFpUqdrX87KelR2J4QaBnle
+         sGmA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b=lTA0mwAY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-467b2c99760si67216171cf.95.2024.12.16.05.18.34
+       dkim=pass header.i=@linaro.org header.s=google header.b="g0z/SLmt";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 00721157ae682-6f28900f6cfsor28862437b3.7.2024.12.16.06.08.18
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Dec 2024 05:18:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 16 Dec 2024 06:08:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b=lTA0mwAY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tNAz4-00028P-CS; Mon, 16 Dec 2024 08:18:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
- id 1tNAz2-000280-Uu
- for qemu-devel@nongnu.org; Mon, 16 Dec 2024 08:18:00 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
- id 1tNAz1-0000W0-D3
- for qemu-devel@nongnu.org; Mon, 16 Dec 2024 08:18:00 -0500
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4BG7Sdua025421
- for <qemu-devel@nongnu.org>; Mon, 16 Dec 2024 13:17:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=qcppdkim1; bh=ixcO2wLBqHGC8YgPmM/l6g6j
- yheKFuiwzE+l0049XwA=; b=lTA0mwAYjBVfRg9MakQXaS0nsdyfPXUFA5CfkQt4
- RN2p4e2BHMRNsZvFGa5V2XovTKAx8tTiKOBS8NAsmpDG7dLvtgxqo+xh+B8OXqLE
- MhU32ATWJ/QAANHE4lHpgLg458V69WN8oPJpK1E8PaVRUzeK4cQLD8N5LoFPZAW7
- nkynB+manhzyiiOGnx0NqMS47Ops+UlFEGTjwCDOMK64r6zSDoOHtiKCef6lJqmY
- tgzSnR2hD639MB4+m0veXeGOcIbAkrPbMk/N4XXYQ+fh3/dpU9sz3IvRL9zGOmC1
- ELqlMC7E92UGKH4vzG0TFr9UL8CJn0Vq09nqNCqZYQ9oHw==
-Received: from mail-yw1-f198.google.com (mail-yw1-f198.google.com
- [209.85.128.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 43jfus0xdj-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-devel@nongnu.org>; Mon, 16 Dec 2024 13:17:56 +0000 (GMT)
-Received: by mail-yw1-f198.google.com with SMTP id
- 00721157ae682-6f2a2ab50f6so14099427b3.3
- for <qemu-devel@nongnu.org>; Mon, 16 Dec 2024 05:17:56 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b="g0z/SLmt";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734358098; x=1734962898; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=q0GyJjjnZ37UxeSbRujj75zDGS5Zc2xrI0ozr18gJP0=;
+        b=g0z/SLmtBiSAkcPtMiDrsz5Iu6GF+cmyULiCubJIJK8LSRC+247BBFzyZrM+YFxeHB
+         PN7eB7eWWTVV32UTlitYLbQq/Hf1rUzf4G2agsGAFAAryrN0dAVYfYaKEHtIQ4//SUd+
+         E7jvXPlH8RGLLV8LBsBODCcghbEAtjMeO//vNE/l+Qv+GheA5w16LYMQvvStjgsuwJdT
+         14xUt3npsSyJw4afBQ+cafMXeodf3PnNs8uatamKdUf1131nsS2ecymajYltKnEHCFGH
+         RxhPgtP1ZQ8O91ljQ8ZqyPbuTXxTuwPREti56IKKwbQTeb+bfI2iCYHtl1bOkE1QzXjE
+         oAMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734355076; x=1734959876;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ixcO2wLBqHGC8YgPmM/l6g6jyheKFuiwzE+l0049XwA=;
- b=pRLoavNNvSipv0hVTq3CmqcrB6YcW46upTD3DxhpuJI33sathgsK0WvtA+wjyJEOKu
- IFG/Hy92keSEJkQ8NVXKPQ43hZyD6VInlD8QaO+BlViQGiUs8C2aAsyfhqbNUmwiqvnx
- iCFjWK9bavQZkE1X3xxGkKEm5EoxjGWw9rNC8Yg+Xr1+LUO/Mz0gntTdQiTwQ1A1x5KM
- v+pmF/vIGaayGXH2VVOga7ZtCm+p7EUtx/Bkq2dJ5ruR71tQuGa1xis7biSzvHkio+af
- Ra9CP/uwI/GrrE3cLcu2IJlIfeNTjIgFLkX3X5TXS+bImSEIUHp79/tIn77qMGmMYUFA
- OUcg==
-X-Gm-Message-State: AOJu0YxBBQF99K8M0lzhh6kvxyV2MaNJOBLgylUQhAqv8SKmjajLZtb7
- mgY7agb41v+Or0KZX0b9854wuGPWwdxzH1R0EGm/l60AIHJPEXSWnGf7oB/szmMlkCwoSBONhpG
- 8JWlFri6a1wxdz6VdrSvKh9p6KjtAlxv2TD2EKX1wIeesd5MAUyMk1Y+63o/jydg4rvtipFS25m
- 6MskSL5lpZSMJfSjD80QgNkrYijjuA
-X-Gm-Gg: ASbGncuTBbVUN7hGqBo/0vAMrIotAcDLoXB7A1ya+HWvIVsslwYSJAfCycJL/RxNcA5
- r+bT4ofYyc08PAXjk41n3dufT0kOxoiVzNlIK8XMPhjkwlt3V1lgohHsT2JNbLOB2LNhyvdM=
-X-Received: by 2002:a05:690c:7404:b0:6ef:48ac:9d0c with SMTP id
- 00721157ae682-6f279b3bcacmr100265197b3.25.1734355075746; 
- Mon, 16 Dec 2024 05:17:55 -0800 (PST)
-X-Received: by 2002:a05:690c:7404:b0:6ef:48ac:9d0c with SMTP id
- 00721157ae682-6f279b3bcacmr100264967b3.25.1734355075482; Mon, 16 Dec 2024
- 05:17:55 -0800 (PST)
+        d=1e100.net; s=20230601; t=1734358098; x=1734962898;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=q0GyJjjnZ37UxeSbRujj75zDGS5Zc2xrI0ozr18gJP0=;
+        b=McZ3fhX3GJ5iMGuy2x5AgkYbb3UQHajogv0nJCTeX0otNMELQxn9Xrs/AR+5z1UjB6
+         jzlx5Uj3BItCNMC4EzcSmE2mmLM7PhyAoGbBAnLopyS+SXvNOkZvjXjgPiLq03eFuUy8
+         3I9+xq6Baw73VLfrnq3VE6QceARAUamWdYNBSk4+TnO/2lpdAyJPfgf75mJhD8Z3ZY7b
+         KK8OwacPv562B7xljc2tWhcobLQIfoqmGfTWmEwQpjuwO/rbJIDkxXQnobrIrgtNNUfj
+         UDyMVgEO5eUNwewgU51dSnuHfQy5cuKUjaTuUqEpF12sMO8DLxIjoqxD/kBuUyx73vlY
+         tHLQ==
+X-Gm-Message-State: AOJu0Yx3cf1Ihu9VGkJ8BSa6p4NlOJHvtKTrNyyx9oxHx2jrVQZmwPpi
+	QJBzR+ZaEmr0jvI0z2ngHxmABK1x+dyF05YAjdVq8rNoI89oSeL/vlR5LyWiyggFilDszr5EiGv
+	CVWa0whHoYX72yRGPgNJX9AArixkOxvj8GpVcJVKRBwD6hz/Hb7M=
+X-Gm-Gg: ASbGnctlxOg1hYw/NxB8WijcgPzw35k1taSmNo+VYZx2r0vWXvn/fLkykDyowuR2/uX
+	B27kBzMoGLvDpD0PFWw72wAkn9qzl8HGAur2umyY=
+X-Google-Smtp-Source: AGHT+IGHI7ww0IgT30GDBuj4f1NsFwPnMgLXb6BGOS9hRJKPihfY46vY2jfVEf8j98FO/i6vf+iO7/2ffJJ9pBNM/nc=
+X-Received: by 2002:a05:690c:ecc:b0:6ef:6107:69c9 with SMTP id
+ 00721157ae682-6f279adc3e8mr90559587b3.4.1734358098551; Mon, 16 Dec 2024
+ 06:08:18 -0800 (PST)
 MIME-Version: 1.0
-References: <20241213190750.2513964-1-richard.henderson@linaro.org>
- <20241213193004.2515684-1-richard.henderson@linaro.org>
- <20241213193004.2515684-5-richard.henderson@linaro.org>
-In-Reply-To: <20241213193004.2515684-5-richard.henderson@linaro.org>
-From: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-Date: Mon, 16 Dec 2024 13:17:44 +0000
-Message-ID: <CAD=n3R1rqSTEyfYy=TW=Cw35PvE6KNLn+1L3-WipVThdKWGFdg@mail.gmail.com>
-Subject: Re: [PATCH 67/71] hw/watchdog: Constify all Property
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- "open list:SBSA-REF" <qemu-arm@nongnu.org>
+References: <20241206160239.3229094-1-alex.bennee@linaro.org> <20241206160239.3229094-2-alex.bennee@linaro.org>
+In-Reply-To: <20241206160239.3229094-2-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 16 Dec 2024 14:08:07 +0000
+Message-ID: <CAFEAcA_TEaikCWjfMBNMc9Ra09+Zbt4X-9L-0ty=euxt2tLHyQ@mail.gmail.com>
+Subject: Re: [PATCH 1/3] target/arm: document the architectural names of our GTIMERs
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Leif Lindholm <quic_llindhol@quicinc.com>, 
+	Radoslaw Biernacki <rad@semihalf.com>, qemu-stable@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-X-Proofpoint-ORIG-GUID: xQGWe5XjMAZ_WCSlVOtADR4KLVxnz_LF
-X-Proofpoint-GUID: xQGWe5XjMAZ_WCSlVOtADR4KLVxnz_LF
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1011
- priorityscore=1501 suspectscore=0 impostorscore=0 adultscore=0
- phishscore=0 mlxlogscore=999 bulkscore=0 mlxscore=0 lowpriorityscore=0
- spamscore=0 malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2411120000 definitions=main-2412160112
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=leif.lindholm@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: rFeT00K9X3t4
+Content-Transfer-Encoding: quoted-printable
+X-TUID: OHMFsVKFMK91
 
-On Fri, 13 Dec 2024 at 19:30, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Fri, 6 Dec 2024 at 16:02, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
 >
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-For sbsa:
-Reviewed-by: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-
-/
-    Leif
-
+> As we are about to add more physical and virtual timers lets make it
+> clear what each timer does.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: qemu-stable@nongnu.org
 > ---
->  hw/watchdog/sbsa_gwdt.c  | 2 +-
->  hw/watchdog/wdt_aspeed.c | 2 +-
->  hw/watchdog/wdt_imx2.c   | 2 +-
->  3 files changed, 3 insertions(+), 3 deletions(-)
+>  target/arm/gtimer.h | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
 >
-> diff --git a/hw/watchdog/sbsa_gwdt.c b/hw/watchdog/sbsa_gwdt.c
-> index 80f9b36e79..2e25d4b4e9 100644
-> --- a/hw/watchdog/sbsa_gwdt.c
-> +++ b/hw/watchdog/sbsa_gwdt.c
-> @@ -262,7 +262,7 @@ static void wdt_sbsa_gwdt_realize(DeviceState *dev, Error **errp)
->                  dev);
->  }
+> diff --git a/target/arm/gtimer.h b/target/arm/gtimer.h
+> index b992941bef..de016e6da3 100644
+> --- a/target/arm/gtimer.h
+> +++ b/target/arm/gtimer.h
+> @@ -10,11 +10,11 @@
+>  #define TARGET_ARM_GTIMER_H
 >
-> -static Property wdt_sbsa_gwdt_props[] = {
-> +static const Property wdt_sbsa_gwdt_props[] = {
->      /*
->       * Timer frequency in Hz. This must match the frequency used by
->       * the CPU's generic timer. Default 62.5Hz matches QEMU's legacy
-> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-> index 39c3f362a8..c95877e5c7 100644
-> --- a/hw/watchdog/wdt_aspeed.c
-> +++ b/hw/watchdog/wdt_aspeed.c
-> @@ -288,7 +288,7 @@ static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
->      sysbus_init_mmio(sbd, &s->iomem);
->  }
->
-> -static Property aspeed_wdt_properties[] = {
-> +static const Property aspeed_wdt_properties[] = {
->      DEFINE_PROP_LINK("scu", AspeedWDTState, scu, TYPE_ASPEED_SCU,
->                       AspeedSCUState *),
->      DEFINE_PROP_END_OF_LIST(),
-> diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
-> index 8162d58afa..61fbd91ee4 100644
-> --- a/hw/watchdog/wdt_imx2.c
-> +++ b/hw/watchdog/wdt_imx2.c
-> @@ -281,7 +281,7 @@ static void imx2_wdt_realize(DeviceState *dev, Error **errp)
->      }
->  }
->
-> -static Property imx2_wdt_properties[] = {
-> +static const Property imx2_wdt_properties[] = {
->      DEFINE_PROP_BOOL("pretimeout-support", IMX2WdtState, pretimeout_support,
->                       false),
->      DEFINE_PROP_END_OF_LIST()
-> --
-> 2.43.0
->
+>  enum {
+> -    GTIMER_PHYS     =3D 0,
+> -    GTIMER_VIRT     =3D 1,
+> -    GTIMER_HYP      =3D 2,
+> -    GTIMER_SEC      =3D 3,
+> -    GTIMER_HYPVIRT  =3D 4,
+> +    GTIMER_PHYS     =3D 0, /* EL1 physical timer */
+> +    GTIMER_VIRT     =3D 1, /* EL1 virtual timer */
+> +    GTIMER_HYP      =3D 2, /* EL2 physical timer */
+> +    GTIMER_SEC      =3D 3, /* EL3 physical timer */
+> +    GTIMER_HYPVIRT  =3D 4, /* EL2 virtual timer */
+>  #define NUM_GTIMERS   5
+>  };
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

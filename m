@@ -1,187 +1,132 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2391968njb;
-        Mon, 16 Dec 2024 10:15:07 -0800 (PST)
-X-Received: by 2002:a05:690c:628a:b0:6ee:bcdd:b1fb with SMTP id 00721157ae682-6f279b2dda4mr97289857b3.19.1734372907685;
-        Mon, 16 Dec 2024 10:15:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734372907; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2425406njb;
+        Mon, 16 Dec 2024 11:10:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVHxYHAMutAsX48quCE3K/6njPQZHscDZKtEKClSfLwbQLbAlztMd1gjc/L7zYPhayY+PZFel6aHKsLNQ==@linaro.org
+X-Received: by 2002:a05:6870:ff8e:b0:29e:6f32:6da1 with SMTP id 586e51a60fabf-2a788fb925bmr520976fac.31.1734376230037;
+        Mon, 16 Dec 2024 11:10:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734376230; cv=none;
         d=google.com; s=arc-20240605;
-        b=aB6imuEBns1ZroUMW1mPnNetYT3olxYoxW0Bf52HMb9Q6T8rdt2qJiRos7kUC/5FCM
-         +tCKDAs81UU253ZdjnOTSbWor5vbfaxNF+y3xK/Lorzm+BzIJHxmTqOzRnW3D2/qP11o
-         Vh8LtOe0z/p3+xhC/2wT0Oib4QDYtliLfxOSOrlQqFWbY9xAuLnsIaL2IZkQP3ZEMW0C
-         mNPhJEB+DADULhYiYoHIAwAu/8jLMEWgy28gepJoWJn7rYd4Nk9V3P5gbFF3J//4GUNW
-         4pVkKscOMrPmsRtQiSFPD3itVnuTsPjtze9dpZqGBXEhjokn3MTf8jzgsnjyQxKDcWC4
-         Aq2g==
+        b=P6oD5if0lTDCxgNteydL0Q3NGl9aUmXTf5VJ/JHwVrd6OME2TVERWUfNaj21QtsNeT
+         qKb0Gx0bf4Mk/VfkBQKiQWljANDCBqf1DnW/YsAiBoe9Y3XV0Ob5F9XzrHF7DG1iHIDP
+         UjhV3sQEdEZ9R8rDrZrWuyK97tFgkuTVoxQA0s3jyRxCzMBsKlVm2fkMY7PPcewQW70v
+         sselsvnkFHKOseoUJSFb9iMBR4TJZjzaGGGrctoUzj8Qb3ptWVdhgdE/mZfN4f3EiQFW
+         2Vq7knlvcZ+qSHGNBX7zhn9qi7heL1HuIoA33s077eCyWW6z9+PvkDQelJWROHbylS8y
+         54lA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=9O1TKsg2TNHr4BpDtt2C4w1mwrPUnbzM/X5S3xllnMI=;
-        fh=CK4xvtBf7wvdSkFQWqr//NOFasnvoXLneAc10k2Os0w=;
-        b=URiY2QRwaNXqcrQg8vWsdhi/3sLMrh7VE+GK2kKYmFkWXvIIM/DfpBKG/6zW642YvZ
-         ahtj4MVurCtdEdsggQu2gsx6SXe8881mJRe/f6oKkZZyQcUrgOFqbda9D57K+KXb5Vxi
-         ABrACQuFQH2/ma0nHFJtw4h7RKL7vit9dd1lHqu6wiZ9cLLBsRnb6TRVu3KucOwB/ha5
-         iywtqjYMTFPIQGZZ5u4pKMxDHvsXm2BwPWZo7qKx46zTHrWJSfIMf4TJSb30hBKbGRO4
-         TIABb0t/jL8DN0ZVRxji9J8iB6TkJd9SnV9gtiiq+JrTVttnWlP6Njk5U0mjFJ8cZxef
-         k4mA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=vrMzXbGQ/6saqJjq9+YQdrMgVIjm8J/9nparMXKjcCU=;
+        fh=RBFNN25p46ZgnNeEh3jTShyY1HY6jsILV5mywUbyo+w=;
+        b=GPTrohGeTqGfkX7sfY26EwQzxs42iA8wKvS5nXYYL9GI9SKpz2YpMlEBxFLl3eYiGi
+         qRagKHyapnvjFFoKNsTrEapxdNGfqyaSr6zh6wcQCMvY2BOM+4uMJGocQwt5VwRHy91u
+         Q/aWK/AvnpeLEaaR0msKts9fY0H6RIad/9C4sTPXtmoYrdr5i6ouYc2jJ3hjukb6X7Ey
+         DvSTeBw3ZQwCZ1LZRUP3ygSgGzjRT4jcWFBfM+D3yO4qESWjP7nlu5kSr4Fd39u1rr4Y
+         as7PsSJT9T2XqZ9Lfr05NqWn33C4w2OanpvRoY4a/7n8W9Nr7sUrDcGnz9Xbz5lgXM1D
+         1VRw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hM9Iiilb;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MR772HV+;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6f2890564d1sor33690927b3.9.2024.12.16.10.15.07
+        by mx.google.com with SMTPS id 46e09a7af769-71e4845c32esor1918140a34.14.2024.12.16.11.10.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 16 Dec 2024 10:15:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Mon, 16 Dec 2024 11:10:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hM9Iiilb;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=MR772HV+;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734372907; x=1734977707; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9O1TKsg2TNHr4BpDtt2C4w1mwrPUnbzM/X5S3xllnMI=;
-        b=hM9IiilbH+JWz0o9MtkP35n+HLyq7zOQzZfQdqDNRoad2eLxTHCMbJGrW5nsyRlIdr
-         YhQoww2vG68pKql+96fTZIpLA74qK46Rrgfu3jOiYEiZvpft0JaAEZN1Uda7BO5EfLDe
-         96zqPgWmRSNYHsDBmtFLo1JjVSEAho/SBR1Vfy3d8rJrAp6WXQ6d6KK4JlkMTTBhjBfh
-         /sbDBGTb58ssBnK4FQ3cK3kHDVAF4ng2obKlzkkWUAY7CsMA9NIwGjAVAMnhNxy3AmyA
-         dW7/3t2kl+mI+H9LZ5zddbKXN/OYR81TElJwK0LT+fAZJJRbUl5USkcu3eULWcVYOkeJ
-         njeg==
+        d=linaro.org; s=google; t=1734376229; x=1734981029; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=vrMzXbGQ/6saqJjq9+YQdrMgVIjm8J/9nparMXKjcCU=;
+        b=MR772HV+IJiq1u8zKSzGdJbb0lfzjnVbveuzR8sl3boX5AKuriVbFKmEUpHJc9Mvq5
+         Pyj4NsEztsZ77ng6cdmAgYgGqodqHJW9aMFycZFb3bskkPD/+jDPbBoq7evwPIN7sccB
+         mDbYcbF0X1WpHpZP4jChJXXleL9fpQWpskWnmMchIxeUhpyjbPjf4vO/qyUtVfyu3OiE
+         JpkTE32GC8xPzir/c/JZUIQV7as8iNaG6cAgpPbyfU7BONWJMHfZHnWQmm+pAbJWAcIU
+         eGYczXRbt/VMb2DoKgUY1PoCUaaq3MTmjIl6aZzz6lmla/QbFCza6/eMkr8outFsLgN8
+         frhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734372907; x=1734977707;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=9O1TKsg2TNHr4BpDtt2C4w1mwrPUnbzM/X5S3xllnMI=;
-        b=kf88ySMO59Tt61v0RTiwZyKl5QhrBor4hu3quc9qYzgMUXPE0GwpPU0TjHXB6uoWSD
-         6ieZLmRFktuYIKJnIXYy6YBUuz0Gt/q4GfXe0iwVWeF103gupCbE6j0HQTXz7L8kuCaC
-         biTWxkvno52Ml6sw9EdOHab+2cRJSyF3F3ODe3c7EJMe9V08R+nYX3HdW/58Ox9qOidO
-         8j1A3j1QcKTxjMMnbTO7W0UoVfDfREj2LpPcaVzPsPyTcYDJylw/y7uO89Lg5np3Uds7
-         pQwhsTooZMv8ufsTnkcSVfnkFxZl6geM6uyMrkTuQdQ1E+yzvRplbSvrjqS/SMVT034c
-         nH5g==
-X-Gm-Message-State: AOJu0Yw4uJZb27u1Y5QUb5PORAX6dnsyNp157JHezXFOohHQvqB/9mEE
-	jd7tihEPL1Mxa+2rzukswXVrGkCmQi4BQnmgX1m1+LL5e5HYU1rb3ivDpYGj2LOXiW3wunQjy3b
-	PkEOa4JcJZjq9AQ0XWCRlCdGcL3WpnM+0foZPAMHCea+uwlDuCdo=
-X-Gm-Gg: ASbGncu98E04brgQE5fUSl0yJiX/OqjFEpKd4L8SvI1+TGOSjqKqTmS07dvFq6t6fOy
-	E15XPeUctO7nbRCuZRBylnr8NIi00JvTTu0T/jpU=
-X-Google-Smtp-Source: AGHT+IHyXK09daxX4pz/42t243P7Dp4eqSZpvj2mEl9smiSAx9tvRckEJrODyV1nya0vZI0rTG02tXdNPs6lSY6O0KA=
-X-Received: by 2002:a05:690c:397:b0:6ef:a187:f377 with SMTP id
- 00721157ae682-6f279b8da60mr100466677b3.34.1734372907304; Mon, 16 Dec 2024
- 10:15:07 -0800 (PST)
+        d=1e100.net; s=20230601; t=1734376229; x=1734981029;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=vrMzXbGQ/6saqJjq9+YQdrMgVIjm8J/9nparMXKjcCU=;
+        b=gohQ2q2/mEljsp/ZFsLHLHYq6OVqnjNz4xa0L0f2QLAPpQv3jwUCE9yA/4z39PxtqK
+         Rwqgve/5Ah7ROv1AHvnsnj1Ut70Zz1YGW2W5FA2dLwhAVe71joZq/55wxHhNV87sM7HC
+         jrTg8YuGvniv5GdgMYOXwumzfwNpGvKHiWgYPzPdvphnE6LS2SIaae0EPSCB/HZ5w9MZ
+         1R4aDlfT48LO75N/3LKBksq+pqw0G1erOURkgsQGAeJSnzyyxzQhl/7lmrY5s3ChKEkB
+         pSw8rKij2eo2+5EeursF/XBypq1djNjus3GFGKtuKwWHH6REjb+7upJfI4SnCnG95DcU
+         tD8g==
+X-Forwarded-Encrypted: i=1; AJvYcCXjEYtpEBQEKNNWUBBWTgIG8Za+EoZArr5exVXaXzg9502yA2bMpZZ0xJ0mcPoHhOuk3HtlZjLUDXvZeg==@linaro.org
+X-Gm-Message-State: AOJu0YyRnAECnOUa9JdASyoehgScuk3gExQePRBllq5oOZvmXsv9qpK/
+	b50eBfaWKSJrtl4DziaJOOe+qKsJHOLvIxPwRbgnOCx/l/5IaTJO0nDwcUQAXIWayQ==
+X-Gm-Gg: ASbGncvmx9bEwjNmQB03dJPDKl/+LPqrvyS9oyF0Vd3t6bNQB6KgBUldFNBK4AuC3eJ
+	dTm52ssbU+ZM35bnNX2jUViuwVInUSiOnHRC7rZ9rTe2UO4VZ3Zjr0mzAy8nZ4BI7QIYHrwTIG5
+	8OrHChpQq1QQi9jL6mgQmrFVscY/VS5fqpHYxFaZE5Xm6tO3VNsZfIsQmzlkm8dV7Ra5FG6p7yU
+	3M4wnYKdnruzGaQ+zYnEQ1l4bVemwXLNW3Xe+cbKDwawM5a2ov5NYSnkzB2cdKvP5Tcgw/S9mGM
+	BPTjHonwizIo/TjcyYJwlk+cxir3NzdBYQs=
+X-Google-Smtp-Source: AGHT+IGNNy3SvbQnCH/70Byv4fsxCVwaA8q+xVu9Qw7jp+XKmDKbZVcDMj4AV3JrmsSjmHNJhgOfzQ==
+X-Received: by 2002:a05:6830:2641:b0:710:f375:a6c9 with SMTP id 46e09a7af769-71efdb92b78mr601421a34.7.1734376229525;
+        Mon, 16 Dec 2024 11:10:29 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.4.112] (fixed-187-189-51-143.totalplay.net. [187.189.51.143])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-71e48308005sm1545654a34.13.2024.12.16.11.10.28
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 16 Dec 2024 11:10:29 -0800 (PST)
+Message-ID: <7cd98960-0c0d-481f-96ea-08e0578d5cad@linaro.org>
+Date: Mon, 16 Dec 2024 13:10:26 -0600
 MIME-Version: 1.0
-References: <20241206160239.3229094-1-alex.bennee@linaro.org> <20241206160239.3229094-4-alex.bennee@linaro.org>
-In-Reply-To: <20241206160239.3229094-4-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 16 Dec 2024 18:14:55 +0000
-Message-ID: <CAFEAcA8mi=gTBvh9FqyMFeyqAHqirkah84sW4m8axKPqwMZDkQ@mail.gmail.com>
-Subject: Re: [PATCH 3/3] target/arm: implement SEL2 physical and virtual timers
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Leif Lindholm <quic_llindhol@quicinc.com>, 
-	Radoslaw Biernacki <rad@semihalf.com>, qemu-stable@nongnu.org, 
-	Andrei Homescu <ahomescu@google.com>, =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@google.com>, 
-	=?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi.denis.courmont@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 9oaMjq0eUFo6
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] Change default pointer authentication algorithm on
+ aarch64 to impdef
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ alex.bennee@linaro.org, Fabiano Rosas <farosas@suse.de>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20241204211234.3077434-1-pierrick.bouvier@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20241204211234.3077434-1-pierrick.bouvier@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TUID: sVXVId/vQ4m3
 
-On Fri, 6 Dec 2024 at 16:02, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> When FEAT_SEL2 was implemented the SEL2 timers where missed. This
-> shows up when building the latest Hafnium with SPMC_AT_EL=3D2. The
-> actual implementation utilises the same logic as the rest of the
-> timers so all we need to do is:
->
->   - define the timers and their access functions
->   - conditionally add the correct system registers
->   - create a new accessfn as the rules are subtly different to the
->     existing secure timer
->
-> Fixes: e9152ee91c (target/arm: add ARMv8.4-SEL2 system registers)
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: qemu-stable@nongnu.org
-> Cc: Andrei Homescu <ahomescu@google.com>
-> Cc: Arve Hj=C3=B8nnev=C3=A5g <arve@google.com>
-> Cc: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
->
-> ---
-> v1
->   - add better comments to GTIMER descriptions
->   - also define new timers for sbsa-ref
->   - don't conditionally gate qemu_timer creation on the feature
->   - take cntvoff_el2 int account for SEC_VEL2 in gt_recalc/g_tval_[read|w=
-rite]
-> ---
->  include/hw/arm/bsa.h |   2 +
->  target/arm/cpu.h     |   2 +
->  target/arm/gtimer.h  |   4 +-
->  hw/arm/sbsa-ref.c    |   2 +
->  hw/arm/virt.c        |   2 +
+On 12/4/24 15:12, Pierrick Bouvier wrote:
+> qemu-system-aarch64 default pointer authentication (QARMA5) is expensive, we
+> spent up to 50% of the emulation time running it (when using TCG).
+> 
+> Switching to pauth-impdef=on is often given as a solution to speed up execution.
+> Thus we talked about making it the new default.
+> 
+> The first patch introduce a new property (pauth-qarma5) to allow to select
+> current default algorithm.
+> The second one change the default.
+> 
+> Pierrick Bouvier (2):
+>    target/arm: add new property to select pauth-qarma5
+>    target/arm: change default pauth algorithm to impdef
+> 
+>   docs/system/arm/cpu-features.rst |  7 +++++--
+>   docs/system/introduction.rst     |  2 +-
+>   target/arm/cpu.h                 |  1 +
+>   target/arm/arm-qmp-cmds.c        |  2 +-
+>   target/arm/cpu64.c               | 30 +++++++++++++++++++-----------
+>   tests/qtest/arm-cpu-features.c   | 15 +++++++++++----
+>   6 files changed, 38 insertions(+), 19 deletions(-)
+> 
 
-I would put the board changes in their own patch(es).
+I understand the motivation, but as-is this will break migration.
+
+I think this will need to be versioned somehow, but the only thing that really gets 
+versioned are the boards, and I'm not sure how to link that to the instantiated cpu.
 
 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index cd147b717a..f82503304e 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -2668,6 +2668,41 @@ static CPAccessResult gt_stimer_access(CPUARMState=
- *env,
->      }
->  }
->
-> +static CPAccessResult gt_sel2timer_access(CPUARMState *env,
-> +                                          const ARMCPRegInfo *ri,
-> +                                          bool isread)
-> +{
-> +    /*
-> +     * The AArch64 register view of the secure EL2 timers are mostly
-> +     * accessible from EL3 and EL2 although can also be trapped to EL2
-> +     * from EL1 depending on nested virt config.
-> +     */
-> +    switch (arm_current_el(env)) {
-> +    case 0:
-> +        return CP_ACCESS_TRAP;
-> +    case 1:
-> +        if (!arm_is_secure(env)) {
-> +            return CP_ACCESS_TRAP;
-> +        } else if (arm_hcr_el2_eff(env) & HCR_NV) {
-> +            return CP_ACCESS_TRAP_EL2;
-> +        }
-> +        return CP_ACCESS_TRAP;
-> +    case 2:
-> +        if (!arm_is_secure(env)) {
-> +            return CP_ACCESS_TRAP;
-> +        }
-> +        return CP_ACCESS_OK;
-> +    case 3:
-> +        if (env->cp15.scr_el3 & SCR_EEL2) {
-> +            return CP_ACCESS_OK;
-> +        } else {
-> +            return CP_ACCESS_TRAP;
-> +        }
-
-These should generally be using CP_ACCESS_TRAP_UNCATEGORIZED,
-not CP_ACCESS_TRAP. The pseudocode uses "UNDEF", which means
-it wants ESR to be reported as an uncategorized-exception
-(classic UNDEF), not as a "trapped system register access".
-
-Almost always a trapped-sysreg-access is directed to a
-specific EL; an UNDEF is never directed to a specific EL
-but always to the usual destination for exceptions.
-I should probably check whether the other uses of
-CP_ACCESS_TRAP are correct or just bugs we haven't noticed
-yet...
-
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +}
-
-thanks
--- PMM
+r~

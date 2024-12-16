@@ -1,231 +1,200 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2205044njb;
-        Mon, 16 Dec 2024 06:19:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXFmhUf0XZJZsI727KI6+SiLQgAeRivxgnNGrq4nIF2howQTNdnAzw5B9wVHdgQCgRxyvAfTz+Z1s/+5Q==@linaro.org
-X-Received: by 2002:a05:6a00:c82:b0:728:eb62:a132 with SMTP id d2e1a72fcca58-7290c1b1c49mr16265702b3a.15.1734358749660;
-        Mon, 16 Dec 2024 06:19:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734358749; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2326008njb;
+        Mon, 16 Dec 2024 08:43:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWeEjyk5tKAt+sCkeTgN7gZAGq7bwAwNCV7w6Gyo/kpRaepp0dTu4l4gyeDbQWwAJ1hE3C0LbHKIqpKuQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHYMtYEhgyiLvbdWrHVEQs5z6Agfp8E8sjiprIUGfPTi9jeM8FWtEhLSMJE81nf00sgd7/B
+X-Received: by 2002:a05:620a:17a9:b0:7b6:d88e:f188 with SMTP id af79cd13be357-7b8594c6effmr5500985a.29.1734367382451;
+        Mon, 16 Dec 2024 08:43:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734367382; cv=none;
         d=google.com; s=arc-20240605;
-        b=TmnXwsHbhDaXYVvdmBpuaqUP3F5WuVBWC8qeIX7jFZqpMi3d1wePLGmxOTLwel5NYv
-         kbKSQs3Q3ydIGPF+xbiOrVgzi6sJ3OWGN6QOn++m3LXoGP1PvoPMAZC5FtVofR9fJfXn
-         vsmFV+spbBFDJ7TJCXGELwWZvJVpXODr6lMfgVvESzUP9qzcAfr3LfUQIf0bTy3lHZFK
-         jsTK7kQInKUBSphM4Ga4TXrMItFS0s6fe3QVJ3X81U9neGdel7jSEXBqQ0Ri9PXBHgtq
-         U2MmC7PvqGwxb65e65l73NQ12PyzgKpN2nPVkg5edFtjFI9u9GfbehGsasqML03foGIi
-         xuMA==
+        b=gWUpb4xTveH47ApPUUxNfwZw3H9uVnVIA8vxPR4ICcUe7wuZdHT+QdLs293LU5w3Ij
+         eSPcmgY7qFIn1O/5wQGUSetNxlUWuzjrYkNWL9pHFAYholqfA57Ei6FSYJVb2KtjZKcz
+         OvnrVV+4Pjn5cfNHd1ZoOImEsEwbHHvys10AXzrIrN7eC6ZZZ1KRLAshmGrl4y2yJfTL
+         XuIKdRdQLEm9iJANaIwuUtLqQw5as03YTXoXznS9nEnfvLqsmv+tOTfGVIDmEZ4kB0K5
+         KYW+V7C+L9GtTBm+7y+1FTQVs4bxepUB9+z9xgrPrvc8SkM1aLuORvppbQNEvROnGRJo
+         RYXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=oTXeIKSE6vctrvuU18gwO4YmTcatQ3MxyH1mPVyZvCY=;
-        fh=UElmTCpbi3yhJcqaxWwUFbsxJEcqYHLxMwZalN5oMNA=;
-        b=WzY1Un/BRSgkiluVHZ3e6se4CxjNZa+m0MskzqZVmipyzQH2pUGHkDFt8reaxHqmKi
-         Uq5YV1Y8BAEJhzcRVPYQ96g84CU/rCnZJo37YyXE+67qkxPi1Dnt8iqyouN4sYq0YPsT
-         2I7QEvjVFGoznXG81J9CNDTG9oBC4OFsgoTxFHQAtGopYFL6SO+DQ0muVXXlXpT9KNoy
-         6xX1EyJ3GL9/x2I6MGi0kXseGgIJzAhynexBQ08MMP4pDljn7VzJcxvVLSvQQH1qHJVY
-         vqfjSgJU4iItVpiMTLA7rI+fPrF1Uw7nlDvCba57Xg2Ao0pC7VKpMFD7S6sK173FyCJt
-         3FAw==;
+        h=content-transfer-encoding:mime-version:message-id:date:user-agent
+         :references:organization:in-reply-to:subject:cc:to:from
+         :dkim-signature;
+        bh=qFVa/sJM9ABzS/W1XUZRvqhtM4Bslw6gR5ZuKKtZEgA=;
+        fh=5EbKAKXusbjR2z3WfV6tA91hfzB/YvLBnvQy0XS/1QY=;
+        b=k2qcqgUHq7CGQFL2gLbwjVWaQ6kmJKGHSAEAbotSapHdwT0ChtAq+7nsMglw0oJuO8
+         dCcEHbXNYMveN63fE+eVu+G8HPH9UE+oxwhMGSeKnW2LetkCk3Jts9WSSGw1DUzVA7VL
+         PpH/xNNPoDSQE9RUABxGamuE+e4c2qVyHsjbG3lSFiJK07wNflFEPaqgdG0Xz25Wvmm0
+         89m3UaiUYpKiZM7OvWwgKuaRhYCXNQiY/ebcA8fHXQmk3srLsx773G68tTMKQgkq4zF2
+         AnT8CQ+GKEQr201HWngfTP/BlXwZzwtyoFKizy38sfV1ImN0SYJs2/3sl8qdS6Ds8Q0c
+         pveA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s9iwnNR1;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <gustavo.romero@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-7291875b693sor2376798b3a.0.2024.12.16.06.19.09
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z80nFMdS;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id af79cd13be357-7b7048bf738si742471585a.210.2024.12.16.08.43.02
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 16 Dec 2024 06:19:09 -0800 (PST)
-Received-SPF: pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=s9iwnNR1;
-       spf=pass (google.com: domain of gustavo.romero@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=gustavo.romero@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734358749; x=1734963549; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=oTXeIKSE6vctrvuU18gwO4YmTcatQ3MxyH1mPVyZvCY=;
-        b=s9iwnNR14cgqB2u1Xac9XOBJKvvJgqdiVEbj52+plV8imDJC6k/l3AIVYuLU2tsXro
-         5dRvPZUuIOkArzwZ2PAk3szQyZo6EzOzrBg9bCI8Zt9Qi2S2tW8OgT6zho00GEyD6g/K
-         kOoVF8/GN7ugp2pMZkHG98p8+lykh/M5Jhqy4WuEFLE+4AvauNhqcmED/fOZlfhpc0s/
-         O/BTGWYQvS2Xwkz2aIO5v/e6pdceIbixxHFb/skdco2Ar81IjZOUrkU1mSc2kjTKCITe
-         BLIHAbm3QkBCAZRWsHQUB/RwC/9CRGBMTSzQmAaotFVCL+uDL/k0H2QAAHjeymDkgs4c
-         uSIA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734358749; x=1734963549;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=oTXeIKSE6vctrvuU18gwO4YmTcatQ3MxyH1mPVyZvCY=;
-        b=V2/Fsvkv0mfO2rIV79Oxa/CAgdjDcOaPidcGZwNUQXrHYE5UT9NNS1IqAYvKcHmMeQ
-         0Wtam1IssnDc9kxuNhwMIjT2M0UE3tXO/k+JMPWi3L1my0cRSo/0nofqsEvrIX5WhO8L
-         b3+IVVUzyhsQ8upGt1YovsX4eMwajvD1b0E76kkKPTLEB0Vq4PS/NxrYq01d0PlVwSAP
-         Nv1xow8VvTfBAzfkYJ/q6jCqiNH0+lvitSRK4kgPGM1x5Y8M0AHinz1E7NJU2WCr+k6S
-         PRRv8/uQvFWGsVqKo7uUtfJYaujq7Lo3XXMtQf4Zlm+7CRaP+0rtbRyeriYDM+/kjThl
-         gs1w==
-X-Forwarded-Encrypted: i=1; AJvYcCUTIOkc0Bv2W0hAIW7e/jqnGyZU2bq1mEqyk3wsV9CTetBp5Kn6fdKtbF8tdn/w30fHuVXi/q3+MsIj5A==@linaro.org
-X-Gm-Message-State: AOJu0Yx8P8mVJdM8Hy7DarR4I2aabOKk3kp1G1G/YFhxFOgCVCi6zDBd
-	YxyYj7/uXmUC/dPlFhF/lRSt60Gw4rIuAL0wrrdY1OxR+gi9OwnJ4qI2ti6nOD+wqw==
-X-Gm-Gg: ASbGncvr8/vZYp0AwumQgwCm8rp0OCXlPQ2/lsI5dkWWv3tYP0hSCPHze9BI3D/hIwo
-	RwXsTNg6BjPvg+v1f6NeRyRqqsiIkOb0arPtBuLJb9wGGHf14Lf7pmmrPsBt59NuGk5xR30NpdC
-	IZ7BFUZwCjQZq2LgKofD0LqWVv63CbGmijlU6ZuS2VVCpd5ICoA11XLIzSlbzwRkZLI+6VyrcCh
-	nbBo1y9yL/iTNGLsQR2IYpvj5NdB8h2zNi9P2dIM4UN8n7DTZxKeM7YDFg09bg=
-X-Google-Smtp-Source: AGHT+IFQ0OCKWhpsklZ+GIj/kxhOlJJx0UulXpkNuuBcmhP8O7lp0Y8LO9PCT4XCTDZ3I05BvDOQGA==
-X-Received: by 2002:a05:6a20:6a11:b0:1e1:aef4:9ce8 with SMTP id adf61e73a8af0-1e1dfe6a00bmr20051541637.28.1734358749223;
-        Mon, 16 Dec 2024 06:19:09 -0800 (PST)
-Return-Path: <gustavo.romero@linaro.org>
-Received: from gromero0.. ([177.189.100.90])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72918bad8acsm4948815b3a.146.2024.12.16.06.19.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Dec 2024 06:19:08 -0800 (PST)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	philmd@linaro.org,
-	alex.bennee@linaro.org,
-	thuth@redhat.com,
-	armbru@redhat.com
-Cc: gustavo.romero@linaro.org
-Subject: [PATCH v3 6/7] tests/qtest: Add API functions to capture IRQ toggling
-Date: Mon, 16 Dec 2024 14:18:17 +0000
-Message-Id: <20241216141818.111255-7-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20241216141818.111255-1-gustavo.romero@linaro.org>
-References: <20241216141818.111255-1-gustavo.romero@linaro.org>
+        Mon, 16 Dec 2024 08:43:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Z80nFMdS;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1734367382;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=qFVa/sJM9ABzS/W1XUZRvqhtM4Bslw6gR5ZuKKtZEgA=;
+	b=Z80nFMdSSM2CmRYdF0h6/bzrz27/APzabiHUsXPqdiy/UT4mu8eAoLKCia8mCpYsjpRKGv
+	qpXKDWdlGs6IoRxOTHVPOm7nkinxUga3iGfqgRlgMNDdM2OX+fvG4CWt5r0Y1A7L/DbZFe
+	Xn1Z1Q33g6jAYJ+w5CyB596eF7p4Jf4=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-640-OGmfvbv7NMa738s8YR0r-Q-1; Mon,
+ 16 Dec 2024 11:43:00 -0500
+X-MC-Unique: OGmfvbv7NMa738s8YR0r-Q-1
+X-Mimecast-MFC-AGG-ID: OGmfvbv7NMa738s8YR0r-Q
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id B49001955F45;
+	Mon, 16 Dec 2024 16:42:56 +0000 (UTC)
+Received: from localhost (dhcp-192-244.str.redhat.com [10.33.192.244])
+	by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 4390730044C1;
+	Mon, 16 Dec 2024 16:42:52 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: eric.auger@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex.bennee@linaro.org, maz@kernel.org,
+ oliver.upton@linux.dev, sebott@redhat.com,
+ shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com
+Cc: shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org,
+ pbonzini@redhat.com
+Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64
+ KVM host model
+In-Reply-To: <edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Michael O'Neill, Amy
+ Ross"
+References: <20241206112213.88394-1-cohuck@redhat.com>
+ <edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
+User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
+Date: Mon, 16 Dec 2024 17:42:50 +0100
+Message-ID: <87wmfzbmut.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: OWTPA7+qEnpk
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-TUID: D+gSex1KKkQa
 
-Currently, the QTest API does not provide a function to capture when an
-IRQ line is raised or lowered, although the QTest Protocol already
-reports such IRQ transitions. As a consequence, it is also not possible
-to capture when an IRQ line is toggled. Functions like qtest_get_irq()
-only read the current state of the intercepted IRQ lines, which is
-already high (or low) when the function is called if the IRQ line is
-toggled. Therefore, these functions miss the IRQ line state transitions.
+On Thu, Dec 12 2024, Eric Auger <eric.auger@redhat.com> wrote:
 
-This commit introduces two new API functions:
-qtest_get_irq_raised_counter() and qtest_get_irq_lowered_counter().
-These functions allow capturing the number of times an observed IRQ line
-transitioned from low to high state or from high to low state,
-respectively.
+> Connie,
+>
+> On 12/6/24 12:21, Cornelia Huck wrote:
+>> Whether it make sense to continue with the approach of tweaking values in
+>> the ID registers in general. If we want to be able to migrate between cp=
+us
+>> that do not differ wildly, we'll encounter differences that cannot be
+>> expressed via FEAT_xxx -- e.g. when comparing various AmpereAltra Max sy=
+stems,
+>> they only differ in parts of CTR_EL0 -- which is not a feature register,=
+ but
+>> a writable register.
+> In v1 most of the commenters said they would prefer to see FEAT props
+> instead of IDREG field props. I think we shall try to go in this
+> direction anyway. As you pointed out there will be some cases where FEAT
+> won't be enough (CTR_EL0 is a good example). So I tend to think the end
+> solution will be a mix of FEAT and ID reg field props.
 
-When used together, these new API functions then allow checking if one
-or more pulses were generated (indicating if the IRQ line was toggled).
+Some analysis of FEAT_xxx mappings:
+https://lore.kernel.org/qemu-devel/87ikstn8sc.fsf@redhat.com/
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Acked-by: Thomas Huth <thuth@redhat.com>
----
- tests/qtest/libqtest.c | 24 ++++++++++++++++++++++++
- tests/qtest/libqtest.h | 28 ++++++++++++++++++++++++++++
- 2 files changed, 52 insertions(+)
+(actually, ~190 of FEAT_xxx map to a single value in a single register,
+so mappings are easy other than the sheer amount of them)
 
-diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index 8de5f1fde3..dfe3139a88 100644
---- a/tests/qtest/libqtest.c
-+++ b/tests/qtest/libqtest.c
-@@ -83,6 +83,8 @@ struct QTestState
-     int expected_status;
-     bool big_endian;
-     bool irq_level[MAX_IRQ];
-+    uint64_t irq_raised_counter[MAX_IRQ];
-+    uint64_t irq_lowered_counter[MAX_IRQ];
-     GString *rx;
-     QTestTransportOps ops;
-     GList *pending_events;
-@@ -515,6 +517,8 @@ static QTestState *qtest_init_internal(const char *qemu_bin,
-     s->rx = g_string_new("");
-     for (i = 0; i < MAX_IRQ; i++) {
-         s->irq_level[i] = false;
-+        s->irq_raised_counter[i] = 0;
-+        s->irq_lowered_counter[i] = 0;
-     }
- 
-     /*
-@@ -706,8 +710,10 @@ redo:
-         g_assert_cmpint(irq, <, MAX_IRQ);
- 
-         if (strcmp(words[1], "raise") == 0) {
-+            s->irq_raised_counter[irq]++;
-             s->irq_level[irq] = true;
-         } else {
-+            s->irq_lowered_counter[irq]++;
-             s->irq_level[irq] = false;
-         }
- 
-@@ -999,6 +1005,22 @@ bool qtest_get_irq(QTestState *s, int num)
-     return s->irq_level[num];
- }
- 
-+uint64_t qtest_get_irq_raised_counter(QTestState *s, int num)
-+{
-+    /* dummy operation in order to make sure irq is up to date */
-+    qtest_inb(s, 0);
-+
-+    return s->irq_raised_counter[num];
-+}
-+
-+uint64_t qtest_get_irq_lowered_counter(QTestState *s, int num)
-+{
-+    /* dummy operation in order to make sure irq is up to date */
-+    qtest_inb(s, 0);
-+
-+    return s->irq_lowered_counter[num];
-+}
-+
- void qtest_module_load(QTestState *s, const char *prefix, const char *libname)
- {
-     qtest_sendf(s, "module_load %s %s\n", prefix, libname);
-@@ -1902,6 +1924,8 @@ QTestState *qtest_inproc_init(QTestState **s, bool log, const char* arch,
-     qts->wstatus = 0;
-     for (int i = 0; i < MAX_IRQ; i++) {
-         qts->irq_level[i] = false;
-+        qts->irq_raised_counter[i] = 0;
-+        qts->irq_lowered_counter[i] = 0;
-     }
- 
-     qtest_client_set_rx_handler(qts, qtest_client_inproc_recv_line);
-diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-index f23d80e9e5..b73c04139e 100644
---- a/tests/qtest/libqtest.h
-+++ b/tests/qtest/libqtest.h
-@@ -389,6 +389,34 @@ void qtest_module_load(QTestState *s, const char *prefix, const char *libname);
-  */
- bool qtest_get_irq(QTestState *s, int num);
- 
-+/**
-+ * qtest_get_irq_raised_counter:
-+ * @s: #QTestState instance to operate on.
-+ * @num: Interrupt to observe.
-+ *
-+ * This function can be used in conjunction with the
-+ * qtest_get_irq_lowered_counter() to check if one or more pulses where
-+ * generated on the observed interrupt.
-+ *
-+ * Returns: The number of times IRQ @num was raised, i.e., transitioned from
-+ * a low state (false) to a high state (true).
-+ */
-+uint64_t qtest_get_irq_raised_counter(QTestState *s, int num);
-+
-+/**
-+ * qtest_get_irq_lowered_counter:
-+ * @s: #QTestState instance to operate on.
-+ * @num: Interrupt to observe.
-+ *
-+ * This function can be used in conjunction with the
-+ * qtest_get_irq_raised_counter() to check if one or more pulses where
-+ * generated on the observed interrupt.
-+ *
-+ * Returns: The number of times IRQ @num was lowered, i.e., transitioned from
-+ * a high state (true) to a low state (false).
-+ */
-+uint64_t qtest_get_irq_lowered_counter(QTestState *s, int num);
-+
- /**
-  * qtest_irq_intercept_in:
-  * @s: #QTestState instance to operate on.
--- 
-2.34.1
+We probably should simply not support FEAT_xxx that are solely defined
+via dependencies.
+
+Some more real-world examples from some cpu pairings I had looked at:
+https://lore.kernel.org/qemu-devel/87ldx2krdp.fsf@redhat.com/
+(but also see Peter's follow-up, the endianness field is actually
+covered by a feature)
+
+The values-in-registers-not-covered-by-features we are currently aware
+of are:
+- number of breakpoints
+- PARange values
+- GIC
+- some fields in CTR_EL0
+(see also
+https://lore.kernel.org/qemu-devel/4fb49b5b02bb417399ee871b2c85bb35@huawei.=
+com/
+for the latter two)
+
+Also, MIDR/REVIDR handling.
+
+Given that we'll need a mix if we support FEAT_xxx, should we mandate
+the FEAT_xxx syntax if there is a mapping and allow direct specification
+of register fields only if there is none, or allow them as alternatives
+(with proper priority handling, or alias handling?)
+
+>
+> Personally I would smoothly migrate what we can from ID reg field props
+> to FEAT props (maybe using prop aliases?), starting from the easiest 1-1
+> mappings and then adressing the FEAT that are more complex but are
+> explictly needed to enable the use cases we are interested in, at RedHat:
+> migration within Ampere AltraMax family, migration within NVidia Grace
+> family, migration within AmpereOne family and migration between Graviton3=
+/4.
+
+For these, we'll already need the mix (my examples above all came from
+these use cases.)
+
+(Of course, the existing legacy props need to be expressed as well. I
+guess they should map to registers directly.)
+
+>
+> We have no info about other's use cases. If some of you want to see some
+> other live migration combinations addressed, please raise your voice.
+> Some CSPs may have their own LM solution/requirements but they don't use
+> qemu. So I think we shall concentrate on those use cases.
+>
+> You did the exercise to identify most prevalent patterns for FEAT to
+> IDREG fields mappings. I think we should now encode this conversion
+> table for those which are needed in above use cases.
+
+I'd focus on the actually needed features first, as otherwise it's
+really overwhelming.
+
+>
+> From a named model point of view, since I do not see much traction
+> upstream besides Red Hat use cases, targetting ARM spec revision
+> baselines may be overkill. Personally I would try to focus on above
+> models: AltraMax, AmpereOne, Grace, ... Or maybe the ARM cores they may
+> be derived from. According to the discussion we had with Marc in [1] it
+> seems it does not make sense to target migration between very
+> heterogeneous machines and Dan said we would prefer to avoid adding
+> plenty of feat add-ons to a named models. So I would rather be as close
+> as possible to a specific family definition.=C2=A0 =C2=A0
+
+Using e.g. Neoverse-V2 as a base currently looks most attractive to
+me -- going with Armv<x>.<y> would probably give a larger diff (although
+the diff for Graviton3/4 is pretty large anyway.)
+
+>
+> Thanks
+>
+> Eric
+>
+> [1]
+> https://lore.kernel.org/all/c879fda9-db5a-4743-805d-03c0acba8060@redhat.c=
+om/#r

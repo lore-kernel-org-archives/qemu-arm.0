@@ -1,66 +1,66 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2376602njb;
-        Mon, 16 Dec 2024 09:55:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVU3ya/UgCrcs3Ri1fXzqvNUu8Jab113yRwSu16vvtRwcCB1+PbxTVSP0bvdulWkG3WRV/+R+7eFdfRhQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFi7LK0Trv6LKOcwB+tvkFuwV9tLxj9ll+k7jPQ5RuDlmvCwZm1oVhO4gpZiQNL4hmvkbpg
-X-Received: by 2002:a05:6102:304f:b0:4a3:ab95:9637 with SMTP id ada2fe7eead31-4b25dca6160mr14409231137.12.1734371732881;
-        Mon, 16 Dec 2024 09:55:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734371732; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2377199njb;
+        Mon, 16 Dec 2024 09:56:32 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWHVYkt00DXeooKII3wPwDEjZvKrjaQdwj575/nP+mKqQ4QeyOCwURK05WkGxDExfeCmlH5IdDQtbICFQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGZPqDSGEtE2ZS61RkMp2qBhS2XEG6yx4LqmKKO6ca6KZCYZcnI22LXUDHp/D/fHgnV3UxV
+X-Received: by 2002:a05:6102:3f12:b0:4af:c5c8:bb4c with SMTP id ada2fe7eead31-4b25d9e13a4mr13574818137.16.1734371792627;
+        Mon, 16 Dec 2024 09:56:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734371792; cv=none;
         d=google.com; s=arc-20240605;
-        b=ib9PNaztIdBd4DCxjzNUzqyU6Vt0bsgga3sbCVOLV6CZH9x8NhRyt0vY+YR1LIp2Ks
-         fNYFT1i0I214rQHsr+1GSPNOXZg8Fj3sNJ59753dl5KTPG/x5EDQezrMSbKFDA42JyWI
-         UkX56+WuCKX2Z3MJfkDWJdXyJ5VunNjJKF2q+awLzOSqkEhzuO9TMh/73BO1nHyC23Je
-         de24bvlfqejwBQQXgetllmrZ/TCxGoH1433UezgyFj7Jx8BBiaWy3PyKP3JxYXb5qEws
-         FCDMJTVt3BSlsOB+ZVLc9wSCZ7EVKodcJnSNnKq6GQaGhfAIexzh5yfTXjn3hzCNndsK
-         lDvg==
+        b=XYxGQkhkjp7SGdJAsXKZsGKwyQWJo9Itu1oD/NoyJ3UIOnmhmi5ifuthAji63xecHk
+         GR0yLxpQnNKk0y21VXSydl/KwSYGTkcgOvfKL2aCvl6DPLnanRt9z6NhGR4Xvq8/o8W9
+         9YaxAFunj7Rmy5AtaoUs8AYPMUhZBJToOmIfg8Ezk6K8Ey7nukCgDLsXzz/z7SWckN25
+         SgIFSwwa26s/gQRWrycZtSn5sYexAk50Mi3wKgcVV6vjDjfcUea3PbTAN3yRqdcdnY91
+         iejUo8DfQybnK3x0DvUyK0wPjkX0El1ngGGdI9zcc8lAO7/itXWxJLNnkbj59ajtesUS
+         ezRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=WK/aLF5quu8WNFaLVzI70n56c0XxtB1a/39ry15cjic=;
+        bh=T7Eankj5oqHZZifInGArnkMVTz5eVNOe7xiVANfYbVI=;
         fh=c7lTQ2T/jPhEzE80GPIxSP+9lCsnxripCSj/Zu0zUXM=;
-        b=VLSs7UAkjvugdgs63oFyZfA0XPScmftXRe/VqCmPh7+IJU6MAFB+LpXuCtsy7M5Iuf
-         vFSpURiSFnbFd1+2y4XVe40JsefOX2pM8Twbiv4j5KO1AFIKhRb3FDXLmPrSCzy97PZQ
-         kE9z+zzA8QixfdoO6W0JWlTSgym5xrf+E9ZAPrZ48Ax/3V+cAgUyNzeyphYrk9epq3VG
-         kETOJAaa9b7FakJwWiJEXfLrzV+mXyhvIzslRUu2/ukh61yiNfabM/pEC4TymusF3BXy
-         LkgIi+EeSonOmzX8M/EDJlMmPvdoCW0E4RmBEF6QHq66qA0zPWtc98OAIv9sLI1cFIy8
-         oEFg==;
+        b=KuIWgysg/E3L3s7CJUh9mHPL+cOZTa+Wmp+BCz0StPqJ8RUP0SNW1hCZvZ1LSafpzz
+         R1DhEwlVanJIX1i07j8w17BzV5C2rXjZCPrSuIxMepVDKmIOOHQbv5uBcb07Tce39xsD
+         DuIKJlei0ecF6Mp5ExlkvrI8nedcZia7kGd7xKhL4I03oEuxjza5vPb8rAeyuNY6uPhA
+         RR1gULwKsynbJ7ycbEmGPdmSnU3P0/xkCBXorAJ8AYWyDjmcWIk+ceLSSv1WIJKml0Tf
+         pQnf3WKlrMR382naVcoUkl7hqmxRfSqJ5wd7xiGwStD6TR3DB5mwEcuwdcSR6IOWVXLe
+         /2tQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b270204ad6si1806315137.49.2024.12.16.09.55.32
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b2703e86b4si1397740137.280.2024.12.16.09.56.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Dec 2024 09:55:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 16 Dec 2024 09:56:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tNFJZ-0008Vc-B2; Mon, 16 Dec 2024 12:55:29 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tNFKX-0002G1-Hl; Mon, 16 Dec 2024 12:56:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1tNFJV-0008EX-83; Mon, 16 Dec 2024 12:55:25 -0500
+ id 1tNFKW-0002FM-Dt; Mon, 16 Dec 2024 12:56:28 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1tNFJT-0006LS-Ic; Mon, 16 Dec 2024 12:55:24 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.216])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YBnZF2RWfz6K9b0;
- Tue, 17 Dec 2024 01:51:49 +0800 (CST)
+ id 1tNFKU-0006SG-Hn; Mon, 16 Dec 2024 12:56:27 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YBnYt0XD2z6K6Np;
+ Tue, 17 Dec 2024 01:51:30 +0800 (CST)
 Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
- by mail.maildlp.com (Postfix) with ESMTPS id 0DD19140B73;
- Tue, 17 Dec 2024 01:55:20 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 0B9A114010C;
+ Tue, 17 Dec 2024 01:56:24 +0800 (CST)
 Received: from a2303103017.china.huawei.com (10.47.64.21) by
  frapeml500003.china.huawei.com (7.182.85.28) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.1.2507.39; Mon, 16 Dec 2024 18:55:18 +0100
+ 15.1.2507.39; Mon, 16 Dec 2024 18:56:22 +0100
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
 CC: <zhao1.liu@intel.com>, <zhenyu.z.wang@intel.com>,
  <dapeng1.mi@linux.intel.com>, <yongwei.ma@intel.com>, <armbru@redhat.com>,
@@ -70,9 +70,9 @@ CC: <zhao1.liu@intel.com>, <zhenyu.z.wang@intel.com>,
  <linuxarm@huawei.com>, <shameerali.kolothum.thodi@huawei.com>,
  <Jonathan.Cameron@Huawei.com>, <jiangkunkun@huawei.com>,
  <yangyicong@hisilicon.com>, <sarsanaee@gmail.com>
-Subject: [PATCH v4 2/7] target/arm/tcg: increase cache level for cpu=max
-Date: Mon, 16 Dec 2024 17:54:09 +0000
-Message-ID: <20241216175414.1953-3-alireza.sanaee@huawei.com>
+Subject: [PATCH v4 4/7] bios-tables-test: prepare to change ARM ACPI virt PPTT
+Date: Mon, 16 Dec 2024 17:54:11 +0000
+Message-ID: <20241216175414.1953-5-alireza.sanaee@huawei.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241216175414.1953-1-alireza.sanaee@huawei.com>
 References: <20241216175414.1953-1-alireza.sanaee@huawei.com>
@@ -92,56 +92,38 @@ X-Spam_report: (-5.3 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
-From:  Alireza Sanaee via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: CZeN7YnZO4yQ
+From:  Alireza Sanaee via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HDmu4euI0+TY
 
-This patch addresses cache description in the `aarch64_max_tcg_initfn`
-function for cpu=max. It introduces three layers of caches and modifies
-the cache description registers accordingly.
+Prepare to update `build_pptt` function to add cache description
+functionalities, thus add binaries in this patch.
 
 Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
 ---
- target/arm/tcg/cpu64.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ tests/qtest/bios-tables-test-allowed-diff.h | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 904a7e90b4..47d8c9c9ae 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1086,6 +1086,19 @@ void aarch64_max_tcg_initfn(Object *obj)
-     uint64_t t;
-     uint32_t u;
- 
-+    /*
-+     * Expanded cache set
-+     */
-+    cpu->clidr = 0x8200123; /* 4 4 3 in 3 bit fields */
-+    /* 64KB L1 dcache */
-+    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
-+    /* 64KB L1 icache */
-+    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
-+    /* 1MB L2 unified cache */
-+    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 1 * MiB, 7);
-+    /* 2MB L3 unified cache */
-+    cpu->ccsidr[4] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 2 * MiB, 7);
-+
-     /*
-      * Unset ARM_FEATURE_BACKCOMPAT_CNTFRQ, which we would otherwise default
-      * to because we started with aarch64_a57_initfn(). A 'max' CPU might
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index dfb8523c8b..ba2a8180e9 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1 +1,2 @@
+ /* List of comma-separated changed AML files to ignore */
++"tests/data/acpi/aarch64/virt/PPTT.topology",
 -- 
 2.34.1
 

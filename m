@@ -1,241 +1,412 @@
-Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp1872277njb;
-        Sun, 15 Dec 2024 16:51:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUhgAuEmuuPhuE9f6pxUQjewwa/mj6TgpplwOp3Ue8vtznpDXKwvpCU+3nSz6Najg11KyZrRfsl55LRmA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGydGVDxoCzFjwkgEllCxIytLskvLRtVuypJzzfbGf9/Q5fzLzVoUGbMC+F+LV9y8JXFNa6
-X-Received: by 2002:a05:622a:1a0b:b0:467:5d90:12a0 with SMTP id d75a77b69052e-467a57a99d8mr184152141cf.28.1734310289412;
-        Sun, 15 Dec 2024 16:51:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734310289; cv=none;
+Received: by 2002:a17:505:57c2:b0:1be9:327d:8ee3 with SMTP id yd2csp2003918njb;
+        Sun, 15 Dec 2024 23:54:36 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU6/6g1dSiAAz7wpBnnqaanAYsq3haPK/VD8IFCsk3A0g2T03KIL3EtflArmyGn/EmlJM6ZnHGla6fcFA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFlrjobeKl5zGhATZewfPpWFm55vaBn8Bq2CyWnWLrw5r75IlYKblG1FGVYwUGnJEYfE3SO
+X-Received: by 2002:ac8:7d82:0:b0:467:4570:bca8 with SMTP id d75a77b69052e-467a58362dcmr178079921cf.53.1734335676726;
+        Sun, 15 Dec 2024 23:54:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734335676; cv=none;
         d=google.com; s=arc-20240605;
-        b=Fa+VAU3A8le9ni6sJZDfeE1sZCv5U7zN7IWMDaNZO8PlvC+UXBlV46BVVIWSPAR4XD
-         4EdRwhmDzrwwImX3e9ms+bFL89H9kSN8Xy1iV/phh4ZTaGm8lHjik7xLO78+ZuyCgOQz
-         SxQKh0RggSyZ4Typ6XtRmWUzuOTE8T7CVASjfeuQ+ISqEyqx7fXPTLJidNa0Pdx7RfS9
-         wBBqw0ymP300ESjkPNkbQZbFfxzvQBcIW8RMV3T9aBwPjwBkto+9DBEKZvh7SP+GoNYm
-         3jG8jAgXZ4Ifi+ja8ztcZUmKyYRAlTgPlblCLXyf22m7OnE3vapmPT9QNFAabfhz1+Qa
-         0WOw==
+        b=JI1rOuH+FV0Cs9sM5A6RWziBK+bH2bTEyNc8jcGdKWOhf0K/3+pUJBbnsb7kibzFaA
+         r4gN/PDnr1KPpG3CfgTSmMAEvb8SM0wC4Ydo0KPr01e5s4f11VVtGDZKTG1IrJMadvnV
+         hI5McntsH0r4LP/6UTpKWIGt02pg6VDFKK+3PwaidjimTNv05vvglycgG8jxTDc7b6UQ
+         0VC4lZFX+A8pzDvv4IFK6lkAVmGpPGG94tYKaR3YR0FaxrLHYNluDd2uF1vRZ3rei/vP
+         2Gt21913UCwG+vSG1mjRG9PJ+lhRmGR9GGZVOqU3zxDL3a9/QDbQ5DnHh5x80bAqDugU
+         qcxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=gMz5z1qtJxQUJErlLKkRHU3+t7ygQhiQ+P8RsAR7bug=;
-        fh=jnHD3VsLlvFTejaF1eYrcb+kYoV3UhPL70uTnppbGNA=;
-        b=ccfaMoFefraQH1vQqtb7u1B2w1V8nS8aWyOqnOt+iad3kERRQo6avy0RIWuefO8GYf
-         +472qioPXWMAb7MnXhRmGNM5w3dfRuU3ySkpF4dtf3cEkTuHd7lCFTR6GyIshgdeVYGS
-         On11uWDxkjImvMymOqyMcdKDzKD9ydy+RgfhNUTROZ6K8yf+Cxb5Hif9EFLxA+vWOoV7
-         oq4CP5o9LNuA7MwrPHhfuPTTfpLm0GEjX4S6OuinpBVvc5vaOAnWD9Blc0VGwFe7Vncp
-         Dffsk7gg2y7PfslznXfzgT4lJ3oyWlV4pMCTGGj7SYUprZnfEc3C4+DjPwP/kFCzpBRJ
-         RjhA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to;
+        bh=yCJCnlplB0qH+pC+zcBgf7FLO9szA2mTQQp5J1enG28=;
+        fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
+        b=aF1bYZFOlk68Zf5rAHODeddqoF+rle+Maw1rRtBQGFACXJJs5CjSa1bd9k5DAta34l
+         L/IOWGC87hjxea958dm/nzwVA6ksir/qNULnOBcHyIPCROuFJTRhpiH+Wn7mt0L0pV9S
+         6kfav/SQuq0S+CFseb31Moq6sRAZSMLJbtft5FxeTrIM4Qq7I0j8CuCxbOJFPl1Om7Ll
+         URfjePK4VLYYYVXqSpJGuVredGLkkAb90D8B8PkZZxr/FnC7IRp9ygoggjXsYmCbdmgf
+         KWyTnPegDdr5TWj/+ff7PMmgjFrcJ20SWB/9TzIpxUrXnceHTHbI4cA+UfCa4HiDKmqD
+         xBKA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=IxL8Ja5X;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-467b2f16644si57458761cf.593.2024.12.15.16.51.29
+        by mx.google.com with ESMTPS id d75a77b69052e-467b2ee0228si65228471cf.475.2024.12.15.23.54.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Dec 2024 16:51:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 15 Dec 2024 23:54:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=IxL8Ja5X;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tMzJG-0001Jk-HZ; Sun, 15 Dec 2024 19:50:06 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tN5vt-0004Vg-0R; Mon, 16 Dec 2024 02:54:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jason.chien@sifive.com>)
- id 1tMzJA-0001IF-SQ
- for qemu-devel@nongnu.org; Sun, 15 Dec 2024 19:50:02 -0500
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jason.chien@sifive.com>)
- id 1tMzJ6-000750-IY
- for qemu-devel@nongnu.org; Sun, 15 Dec 2024 19:49:59 -0500
-Received: by mail-pg1-x52a.google.com with SMTP id
- 41be03b00d2f7-7fbd9be84bdso3301163a12.1
- for <qemu-devel@nongnu.org>; Sun, 15 Dec 2024 16:49:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1734310193; x=1734914993; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gMz5z1qtJxQUJErlLKkRHU3+t7ygQhiQ+P8RsAR7bug=;
- b=IxL8Ja5XX3u+LXmSva3zRNf2X3uv19ueFIxz/Ns72fh558qe5zcWpK86Xu8fu88vox
- OIBorXodUf/vwsAhpFHstBpXHdiMK0qs9E31CoaI7jzpr93d6/GhWKoVbjYp2P/pxIJT
- TrpSJaQz1dVUaLZJneUUPnqZ9GK+A8OFCvkdgNRF/J70p+VgdtUovLLL3PY35LkmQlc0
- ohRZRi9ybDCo0t7NPpSPQN4uhzVh5wZY4JrJEvkQkWi0ftMa03eH3PQ0H82VMSVlRC+o
- 6P53oTLmqdSJKdGtnB0k3tRtqBbIc2wAFur/iV/wkwrVbQhKG3JMoC9MMaxX+nvIR8dc
- KkPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734310193; x=1734914993;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=gMz5z1qtJxQUJErlLKkRHU3+t7ygQhiQ+P8RsAR7bug=;
- b=epv0TGsjKbr4LOu85L8mnkQ5Jm7Ys1cSgnYX0p4UdpRTT6JGnC/9hzNx8/tzJXCi5Y
- 5hMalj6itkA6ubsTzZ2fkh2sSE8VzTYylpppXg0kj+3n3Xy1GdxbL5viGe/SwTjoYyoN
- vgwQpXTuxl1nmqZfIleJPqzu+wplpVvv4cX5yfgseBDfrf1cWgUq7D+epTBbA24sPHGs
- Oz9IyDHeir3WJSqoCU8x1tT10p5/kMSs3TIV6qxuwtYASAZ54tPesMJuTI26/ANjdANE
- wGQiCR0CvqdYxaNVKkhGWRWx4kEa68s+TeDgTGy9gY201E88lCZAGLJgBMv51e5lPzbl
- 3CAw==
-X-Gm-Message-State: AOJu0YwX1nJNO8n4V0I0bBnKeWdBM4IZG0W6Dz+Mss1VQlEfDSh2UpmP
- LERVJIY677bfkwfCGvJB3luutxC5LtC4jg3sEDZ3iE90ySWgFBVAQvdUt+/1T6BOL5lYwqUXUH5
- izWagPAon0Sz2Ig0ZD7M7W9XzL8xb1DtFNq5oxzGMUAqXecc1wiIVffclA2d+r2nmc+eraGGK5Q
- Xdd+5D4G/ZuYwAsWBElLJqilIAAIgDhyosC3/i8Us4iUSWuOE=
-X-Gm-Gg: ASbGnct0ElNeRsVpwBGmzgvauXfarOMFYtMTUZVYnM6HjEEgNi6B52tiDQyjn/0YYKY
- 6OXp1tvJLaZ4QbrkK0oTD3glhzv1cWN+fKJ6gi1Pr/fHdFPLwzIByb0a5aOAEDmqBtDnZwN/xJ1
- qskyOtp9cTMiUPxnOrQ/MyZeHRuqeaPjv6xbJe2nRuV1uUluUMUD5Q479Q45lWrnW/S1GrDO0ew
- 5Jx/AM9wd9jorHO8Yl7Z4Rtirm2Gw+8wf4dLCdcSQIsoHu+DTjUOx6wokq0RHRHC814kgfWoqdz
- bIUroEVY
-X-Received: by 2002:a05:6a20:9143:b0:1e1:9f77:da92 with SMTP id
- adf61e73a8af0-1e1dfde6d4dmr14073191637.33.1734310193247; 
- Sun, 15 Dec 2024 16:49:53 -0800 (PST)
-Received: from hsinchu16.internal.sifive.com ([210.176.154.34])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-801d5addbf9sm3059586a12.47.2024.12.15.16.49.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 15 Dec 2024 16:49:52 -0800 (PST)
-From: Jason Chien <jason.chien@sifive.com>
-To: qemu-devel@nongnu.org,
-	qemu-riscv@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- qemu-arm@nongnu.org (open list:MCIMX7D SABRE / i...),
- Jason Chien <jason.chien@sifive.com>
-Subject: [RFC PATCH 3/6] hw/pci-host: Enable DW PCIe host to send memory
- transactions over specific mr
-Date: Mon, 16 Dec 2024 08:48:54 +0800
-Message-ID: <20241216004857.9367-4-jason.chien@sifive.com>
-X-Mailer: git-send-email 2.43.2
-In-Reply-To: <20241216004857.9367-1-jason.chien@sifive.com>
-References: <20241216004857.9367-1-jason.chien@sifive.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1tN5vr-0004VT-5F; Mon, 16 Dec 2024 02:54:23 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1tN5vp-000791-6w; Mon, 16 Dec 2024 02:54:22 -0500
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Mon, 16 Dec
+ 2024 15:53:54 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Mon, 16 Dec 2024 15:53:54 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v1 2/3] hw/timer/aspeed: Add AST2700 Support
+Date: Mon, 16 Dec 2024 15:53:51 +0800
+Message-ID: <20241216075353.1308043-3-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20241216075353.1308043-1-jamin_lin@aspeedtech.com>
+References: <20241216075353.1308043-1-jamin_lin@aspeedtech.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
- envelope-from=jason.chien@sifive.com; helo=mail-pg1-x52a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RQTDailu5DnY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qPkS8gXb4eXT
 
-Current Designware PCIe host cannot connect to an IOMMU, since it has
-registered PCIIOMMUOps.get_address_space() and an IOMMU cannot overwrite
-PCIIOMMUOps.get_address_space() without breaking the PCIe translation
-rules.
+The timer controller include 8 sets of 32-bit decrement counters, based on
+either PCLK or 1MHZ clock and the design of timer controller between AST2600
+and AST2700 are almost the same.
 
-This commit implements designware_pcie_host_set_mem(), which is used to
-register PCIIOMMUOps.set_memory_region(), so an IOMMU can designate the
-downstream memory region for the PCIe devices.
+The different is that the register set have a significant change in AST2700.
+TIMER0 – TIMER7 has their own individua control and interrupt status register.
+In other words, users are able to set timer control in register TMC10 with
+different TIMER base address and clear timer control and interrupt status in
+register TMC14 with different TIMER base address.
 
-Signed-off-by: Jason Chien <jason.chien@sifive.com>
+Both "aspeed_timer_read" and "aspeed_timer_write" callback functions are not
+compatible AST2700. Introduce new "aspeed_2700_timer_read" and
+"aspeed_2700_timer_write" callback functions and "aspeed_2700_timer_ops" memory
+region operation for AST2700. Introduce a new ast2700 class to support AST2700.
+
+The base address of TIMER0 to TIMER7 as following.
+Base Address of Timer 0 = 0x12C1_0000
+Base Address of Timer 1 = 0x12C1_0040
+Base Address of Timer 2 = 0x12C1_0080
+Base Address of Timer 3 = 0x12C1_00C0
+Base Address of Timer 4 = 0x12C1_0100
+Base Address of Timer 5 = 0x12C1_0140
+Base Address of Timer 6 = 0x12C1_0180
+Base Address of Timer 7 = 0x12C1_01C0
+
+The register address space of each TIMER is "0x40" , so uses the following
+formula to get the index and register of each TIMER.
+
+timer_index = offset >> 6;
+timer_offset = offset & 0x3f;
+
+The TMC010 is a counter control set and interrupt status register. Write "1" to
+TMC10[3:0] will set the specific bits to "1". Introduce a new
+"aspeed_2700_timer_set_ctrl" function to handle this register behavior.
+
+The TMC014 is a counter control clear and interrupt status register, to clear
+the specific bits to "0", it should write "1" to  TMC14[3:0] on the same bit
+position. Introduce a new "aspeed_2700_timer_clear_ctrl" function to handle
+this register behavior. TMC014 does not support read operation.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/pci-host/designware.c         | 18 +++++++++++++++---
- include/hw/pci-host/designware.h |  2 ++
- 2 files changed, 17 insertions(+), 3 deletions(-)
+ hw/timer/aspeed_timer.c         | 224 ++++++++++++++++++++++++++++++++
+ include/hw/timer/aspeed_timer.h |   1 +
+ 2 files changed, 225 insertions(+)
 
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index c3fc37b904..8afe447562 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -395,7 +395,6 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
- {
-     DesignwarePCIERoot *root = DESIGNWARE_PCIE_ROOT(dev);
-     DesignwarePCIEHost *host = designware_pcie_root_to_host(root);
--    MemoryRegion *host_mem = get_system_memory();
-     MemoryRegion *address_space = &host->pci.memory;
-     PCIBridge *br = PCI_BRIDGE(dev);
-     DesignwarePCIEViewport *viewport;
-@@ -436,7 +435,7 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
-         viewport->cr[0]   = DESIGNWARE_PCIE_ATU_TYPE_MEM;
- 
-         source      = &host->pci.address_space_root;
--        destination = host_mem;
-+        destination = &host->bridge_mr;
-         direction   = "Inbound";
- 
-         /*
-@@ -461,7 +460,7 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
- 
-         destination = &host->pci.memory;
-         direction   = "Outbound";
--        source      = host_mem;
-+        source      = get_system_memory();
- 
-         /*
-          * Configure MemoryRegion implementing CPU -> PCI memory
-@@ -666,8 +665,16 @@ static AddressSpace *designware_pcie_host_set_iommu(PCIBus *bus, void *opaque,
-     return &s->pci.address_space;
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index 970bf1d79d..de4d78a0fb 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -593,6 +593,214 @@ static void aspeed_2600_timer_write(AspeedTimerCtrlState *s, hwaddr offset,
+     }
  }
  
-+void designware_pcie_host_set_mem(void *opaque, MemoryRegion *mr)
++static void aspeed_2700_timer_set_ctrl(AspeedTimerCtrlState *s, int index,
++                                    uint32_t reg)
 +{
-+    DesignwarePCIEHost *s = DESIGNWARE_PCIE_HOST(opaque);
++    const uint8_t overflow_interrupt_mask = BIT(op_overflow_interrupt);
++    const uint8_t external_clock_mask = BIT(op_external_clock);
++    const uint8_t pulse_enable_mask = BIT(op_pulse_enable);
++    const uint8_t enable_mask = BIT(op_enable);
++    AspeedTimer *t;
++    uint8_t t_old;
++    uint8_t t_new;
++    int shift;
 +
-+    memory_region_add_subregion_overlap(&s->bridge_mr, 0, mr, INT32_MAX);
++    /*
++     * Only 1 will set the specific bits to 1
++     * Handle a dependency between the 'enable' and remaining three
++     * configuration bits - i.e. if more than one bit in the control set has
++     * set, including the 'enable' bit, perform configuration and then
++     * enable the timer.
++     * Interrupt Status bit should not be set.
++     */
++
++     t = &s->timers[index];
++     shift = index * TIMER_CTRL_BITS;
++
++     t_old = (s->ctrl >> shift) & TIMER_CTRL_MASK;
++     t_new = reg & TIMER_CTRL_MASK;
++
++    if (!(t_old & external_clock_mask) &&
++        (t_new & external_clock_mask)) {
++        aspeed_timer_ctrl_external_clock(t, true);
++        s->ctrl = deposit32(s->ctrl, shift + op_external_clock, 1, 1);
++    }
++
++    if (!(t_old & overflow_interrupt_mask) &&
++        (t_new & overflow_interrupt_mask)) {
++        aspeed_timer_ctrl_overflow_interrupt(t, true);
++        s->ctrl = deposit32(s->ctrl, shift + op_overflow_interrupt, 1, 1);
++    }
++
++
++    if (!(t_old & pulse_enable_mask) &&
++        (t_new & pulse_enable_mask)) {
++        aspeed_timer_ctrl_pulse_enable(t, true);
++        s->ctrl = deposit32(s->ctrl, shift + op_pulse_enable, 1, 1);
++    }
++
++    /* If we are enabling, do so last */
++    if (!(t_old & enable_mask) &&
++        (t_new & enable_mask)) {
++        aspeed_timer_ctrl_enable(t, true);
++        s->ctrl = deposit32(s->ctrl, shift + op_enable, 1, 1);
++    }
 +}
 +
- static const PCIIOMMUOps designware_iommu_ops = {
-     .get_address_space = designware_pcie_host_set_iommu,
-+    .set_memory_region = designware_pcie_host_set_mem,
- };
- 
- static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
-@@ -703,6 +710,11 @@ static void designware_pcie_host_realize(DeviceState *dev, Error **errp)
-                                      TYPE_PCIE_BUS);
-     pci->bus->flags |= PCI_BUS_EXTENDED_CONFIG_SPACE;
- 
-+    memory_region_init(&s->bridge_mr, OBJECT(s),
-+                       "pcie-bus-bridge-memory", UINT64_MAX);
-+    memory_region_add_subregion(&s->bridge_mr, 0x0, get_system_memory());
-+    address_space_init(&s->bridge_as, &s->bridge_mr, "pcie-bus-bridge-space");
++static void aspeed_2700_timer_clear_ctrl(AspeedTimerCtrlState *s, int index,
++                                    uint32_t reg)
++{
++    const uint8_t overflow_interrupt_mask = BIT(op_overflow_interrupt);
++    const uint8_t external_clock_mask = BIT(op_external_clock);
++    const uint8_t pulse_enable_mask = BIT(op_pulse_enable);
++    const uint8_t enable_mask = BIT(op_enable);
++    AspeedTimer *t;
++    uint8_t t_old;
++    uint8_t t_new;
++    int shift;
 +
-     memory_region_init(&s->pci.address_space_root,
-                        OBJECT(s),
-                        "pcie-bus-address-space-root",
-diff --git a/include/hw/pci-host/designware.h b/include/hw/pci-host/designware.h
-index c484e377a8..9562a4ff96 100644
---- a/include/hw/pci-host/designware.h
-+++ b/include/hw/pci-host/designware.h
-@@ -89,6 +89,8 @@ struct DesignwarePCIEHost {
-     } pci;
- 
-     MemoryRegion mmio;
-+    AddressSpace bridge_as;
-+    MemoryRegion bridge_mr;
++    /*
++     * Only 1 will clear the specific bits to 0
++     * Handle a dependency between the 'enable' and remaining three
++     * configuration bits - i.e. if more than one bit in the control set has
++     * clear, including the 'enable' bit, then disable the timer and perform
++     * configuration
++     */
++
++     t = &s->timers[index];
++     shift = index * TIMER_CTRL_BITS;
++
++     t_old = (s->ctrl >> shift) & TIMER_CTRL_MASK;
++     t_new = reg & TIMER_CTRL_MASK;
++
++    /* If we are disabling, do so first */
++    if ((t_old & enable_mask) &&
++        (t_new & enable_mask)) {
++        aspeed_timer_ctrl_enable(t, false);
++        s->ctrl = deposit32(s->ctrl, shift + op_enable, 1, 0);
++    }
++
++    if ((t_old & external_clock_mask) &&
++        (t_new & external_clock_mask)) {
++        aspeed_timer_ctrl_external_clock(t, false);
++        s->ctrl = deposit32(s->ctrl, shift + op_external_clock, 1, 0);
++    }
++
++    if ((t_old & overflow_interrupt_mask) &&
++        (t_new & overflow_interrupt_mask)) {
++        aspeed_timer_ctrl_overflow_interrupt(t, false);
++        s->ctrl = deposit32(s->ctrl, shift + op_overflow_interrupt, 1, 0);
++    }
++
++    if ((t_old & pulse_enable_mask) &&
++        (t_new & pulse_enable_mask)) {
++        aspeed_timer_ctrl_pulse_enable(t, false);
++        s->ctrl = deposit32(s->ctrl, shift + op_pulse_enable, 1, 0);
++    }
++
++    if ((t_old & pulse_enable_mask) &&
++        (t_new & pulse_enable_mask)) {
++        aspeed_timer_ctrl_pulse_enable(t, false);
++        s->ctrl = deposit32(s->ctrl, shift + op_pulse_enable, 1, 0);
++    }
++
++    /* Clear interrupt status */
++    if (reg & 0x10000) {
++        s->irq_sts = deposit32(s->irq_sts, index, 1, 0);
++    }
++}
++
++static uint64_t aspeed_2700_timer_read(void *opaque, hwaddr offset,
++                                    uint32_t size)
++{
++    AspeedTimerCtrlState *s = ASPEED_TIMER(opaque);
++    uint32_t timer_offset = offset & 0x3f;
++    int timer_index = offset >> 6;
++    uint64_t value = 0;
++
++    if (timer_index >= ASPEED_TIMER_NR_TIMERS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%" PRIx64 " out of bounds\n",
++                      __func__, offset);
++        return 0;
++    }
++
++    switch (timer_offset) {
++    /*
++     * Counter Status
++     * Counter Reload
++     * Counter First Matching
++     * Counter Second Matching
++     */
++    case 0x00 ... 0x0C:
++        value = aspeed_timer_get_value(&s->timers[timer_index],
++                                       timer_offset >> 2);
++        break;
++    /* Counter Control and Interrupt Status */
++    case 0x10:
++        value = deposit64(value, 0, 4,
++                          extract32(s->ctrl, timer_index * 4, 4));
++        value = deposit64(value, 16, 1,
++                          extract32(s->irq_sts, timer_index, 1));
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
++                     PRIx64"\n", __func__, offset);
++        return 0;
++    }
++    trace_aspeed_timer_read(offset, size, value);
++    return value;
++}
++
++static void aspeed_2700_timer_write(void *opaque, hwaddr offset,
++                                uint64_t value, uint32_t size)
++{
++    const uint32_t timer_value = (uint32_t)(value & 0xFFFFFFFF);
++    AspeedTimerCtrlState *s = ASPEED_TIMER(opaque);
++    uint32_t timer_offset = offset & 0x3f;
++    int timer_index = offset >> 6;
++
++    if (timer_index >= ASPEED_TIMER_NR_TIMERS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%" PRIx64 " out of bounds\n",
++                      __func__, offset);
++    }
++
++    switch (timer_offset) {
++    /*
++     * Counter Status
++     * Counter Reload
++     * Counter First Matching
++     * Counter Second Matching
++     */
++    case 0x00 ... 0x0C:
++        aspeed_timer_set_value(s, timer_index, timer_offset >> 2,
++                               timer_value);
++        break;
++    /* Counter Control Set and Interrupt Status */
++    case 0x10:
++        aspeed_2700_timer_set_ctrl(s, timer_index, timer_value);
++        break;
++    /* Counter Control Clear and Interrupr Status */
++    case 0x14:
++        aspeed_2700_timer_clear_ctrl(s, timer_index, timer_value);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
++                      PRIx64"\n", __func__, offset);
++        break;
++    }
++}
++
++static const MemoryRegionOps aspeed_2700_timer_ops = {
++    .read = aspeed_2700_timer_read,
++    .write = aspeed_2700_timer_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++    .valid.unaligned = false,
++};
++
+ static void aspeed_init_one_timer(AspeedTimerCtrlState *s, uint8_t id)
+ {
+     AspeedTimer *t = &s->timers[id];
+@@ -769,6 +977,21 @@ static const TypeInfo aspeed_1030_timer_info = {
+     .class_init = aspeed_1030_timer_class_init,
  };
  
- #endif /* DESIGNWARE_H */
++static void aspeed_2700_timer_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedTimerClass *awc = ASPEED_TIMER_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 Timer";
++    awc->reg_ops = &aspeed_2700_timer_ops;
++}
++
++static const TypeInfo aspeed_2700_timer_info = {
++    .name = TYPE_ASPEED_2700_TIMER,
++    .parent = TYPE_ASPEED_TIMER,
++    .class_init = aspeed_2700_timer_class_init,
++};
++
+ static void aspeed_timer_register_types(void)
+ {
+     type_register_static(&aspeed_timer_info);
+@@ -776,6 +999,7 @@ static void aspeed_timer_register_types(void)
+     type_register_static(&aspeed_2500_timer_info);
+     type_register_static(&aspeed_2600_timer_info);
+     type_register_static(&aspeed_1030_timer_info);
++    type_register_static(&aspeed_2700_timer_info);
+ }
+ 
+ type_init(aspeed_timer_register_types)
+diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
+index 8d0b15f055..2247dc20ab 100644
+--- a/include/hw/timer/aspeed_timer.h
++++ b/include/hw/timer/aspeed_timer.h
+@@ -32,6 +32,7 @@ OBJECT_DECLARE_TYPE(AspeedTimerCtrlState, AspeedTimerClass, ASPEED_TIMER)
+ #define TYPE_ASPEED_2500_TIMER TYPE_ASPEED_TIMER "-ast2500"
+ #define TYPE_ASPEED_2600_TIMER TYPE_ASPEED_TIMER "-ast2600"
+ #define TYPE_ASPEED_1030_TIMER TYPE_ASPEED_TIMER "-ast1030"
++#define TYPE_ASPEED_2700_TIMER TYPE_ASPEED_TIMER "-ast2700"
+ 
+ #define ASPEED_TIMER_NR_TIMERS 8
+ 
 -- 
-2.43.2
+2.25.1
 

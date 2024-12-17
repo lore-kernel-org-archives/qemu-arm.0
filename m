@@ -1,233 +1,142 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp243929njk;
-        Tue, 17 Dec 2024 06:23:52 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXqALIiImjK2KDjV3G9o6hy8z9WwGVecVPZXb9CeEUljgovoBEVTuIVktNx1/uFiJ+MHVCsRpVLqJl5fQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGY5dLzBMBklU3hMTjPWl8l4PP3dBNc4taZHacvN6TLN47L5K+mbGsq2ZjIgHoL094ljntg
-X-Received: by 2002:a05:600c:524c:b0:434:f396:525e with SMTP id 5b1f17b1804b1-4362aa28541mr163655825e9.9.1734445431887;
-        Tue, 17 Dec 2024 06:23:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734445431; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp286916njk;
+        Tue, 17 Dec 2024 07:20:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWcKD+6XqhsNyw2CQSWAUh12BISG/ZBQMRznMFFklbfkr4/YJITGH3ktI6p8U1BAVS/jgEJ7JW8nwFjZA==@linaro.org
+X-Received: by 2002:a05:600c:3516:b0:436:1b77:b5aa with SMTP id 5b1f17b1804b1-4364815c7d6mr36013335e9.8.1734448816147;
+        Tue, 17 Dec 2024 07:20:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734448816; cv=none;
         d=google.com; s=arc-20240605;
-        b=lR/SDZY4Wra+4DfZRA3u8BlBvNfx/ocWHR8N+bsyX4u/YT41uZuNWip+1s6aV7vj4s
-         UOs1xBKZ1Mc6yVkOxbJ3OgvZ3CLoPXpXj231XcIRphI402uLl9B/xzYTSQdZ+MhX8NiL
-         fvtvC2tglshJ9Tmc5BO27dsnFs9lS23klRF8YaLNjJWzVFl21B9DQVRVC5DwOQpspfn2
-         jjbXxDHXg0V15lAUYCXkdRlSqBnEloirDC11QHd/we2mcFCdebxya+L/4M7kXIyPCRGD
-         6a5of5Jdj+IRAOuj3mdHLOt2FNtnGFkWGKQVG27hNSokRb8Qn1XaR3bv6/de9EhTphik
-         L5fg==
+        b=fkFdxUTTSQksYmkwJsnfRXDZkmiYLoURTejczmuUL5yp7Tg4UzUEpVPUcpdc1Gk2C+
+         /DWTUwgBEX6QP93U6Bvt/zXDH+UpLDmexvdWM4q5iNnrC0cDCqrZoFXjPxZGQn6dqhLm
+         tgnKdLEZoOgFm9G9PmKAV9JdJ6RrlW2pg9odd1IIjdhQT38l/uiGWYb+2Gd/Cw5S1mJH
+         hvTQqeMENRh+TkkonX2WY8z793JrmqBSTG8n1zCWUJeNF4JR4fig3mROwBNWTnkSRMMq
+         hVoot+N2ZVSD5ieAPp+8jv7HfctLsyGKJNxvxk+bJ/MKtawlXk9tbTIBqndBdtVtrAjc
+         r4ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date;
-        bh=0KXrXlg3yWKA6g+B176E9S+GGTuRH+Izo8sn43HMUGg=;
-        fh=WjtRixnZUSdbvuSednS1Huf2xaBwMpCDyzrHjptGkEA=;
-        b=ZtjQTjZsTwCWdpQ5qalIJ44/pKo7wE3XfSzRjZrX8cfkzmavZ92x+h6WF7CzVPhuUa
-         xFmnE1KjkskT4Xy4WX0byILG1Hju6tCApPC3RqnsIQXXK2H20NwgWZe7cEQSq/UEguZ3
-         Me1X0tIqx0cp2V1i2QFmxmGg+oIvXchFl63uUEmaud/HcH4plSJQPiKjtIGm1XQmLWFB
-         /ld4ugDzw3qUIYMBz3OP/THew2FjlfRVmERgsEf3HdrEZhe3wE5KpPRYjkMOQ3z24n89
-         +u4hLfCo/eUyF2II929Q8bqcA5OTxWR8QeWBEZLl0F4GtUETNCZgNro0y52jfeRwE7+v
-         frxw==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=3XBk8Jjn5DR2szWJNgkjKw+0Pf3QK5WLRr6yAt6muaw=;
+        fh=hSN1iJSS3bODKcfMKiHhk7hcRkEKzu1XmZA2GxOjTaQ=;
+        b=LZkuqh5sPo+Mpqp74zqnMKNwJ9C2WjvUkqii0q2zomXPygzC2qBbOF55zXJ3vi6JzI
+         fpr2dMI0LncDJzZMd6G68Hq9VcqfRLv8sIsG3zvDCCR+/1cY3UjGv92wQdA82YBTF2I3
+         SUquea0c5XOstJTHbZDJlFkzM5QhXl/YcvgheMylJpt7STUfmBId9WMVX8wTd9XXm05f
+         PiM4EXalWQ29rPns2myQvENiS9CIyf/ir9RmcCdcCmn6Io6rx42kSebGKupn4UoP2VVw
+         axUFxZP+0CQH0MFiCN0HuBAqMZc4tUbe9aKjpreoJz6+BOFuiIWhmO5Hh10M6yr0PuOB
+         1uKA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=alireza.sanaee@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <alireza.sanaee@huawei.com>
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com. [185.176.79.56])
-        by mx.google.com with ESMTPS id 5b1f17b1804b1-4363602dd46si52521375e9.75.2024.12.17.06.23.51
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Dec 2024 06:23:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) client-ip=185.176.79.56;
+       dkim=pass header.i=@linaro.org header.s=google header.b=amutnVxF;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-436256f5e52sor13389475e9.3.2024.12.17.07.20.15
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 17 Dec 2024 07:20:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of alireza.sanaee@huawei.com designates 185.176.79.56 as permitted sender) smtp.mailfrom=alireza.sanaee@huawei.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.31])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YCJqj50sNz6K9HY;
-	Tue, 17 Dec 2024 22:20:17 +0800 (CST)
-Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
-	by mail.maildlp.com (Postfix) with ESMTPS id B26A4140B33;
-	Tue, 17 Dec 2024 22:23:50 +0800 (CST)
-Received: from localhost (10.47.30.16) by frapeml500003.china.huawei.com
- (7.182.85.28) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 17 Dec
- 2024 15:23:49 +0100
-Date: Tue, 17 Dec 2024 14:23:42 +0000
-From: Alireza Sanaee <alireza.sanaee@huawei.com>
-To: Zhao Liu <zhao1.liu@intel.com>
-CC: "Daniel P . =?ISO-8859-1?Q?Berrang=E9?=" <berrange@redhat.com>, "Igor
- Mammedov" <imammedo@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Philippe =?ISO-8859-1?Q?Ma?=
- =?ISO-8859-1?Q?thieu-Daud=E9?= <philmd@linaro.org>, Yanan Wang
-	<wangyanan55@huawei.com>, "Michael S . Tsirkin" <mst@redhat.com>, "Paolo
- Bonzini" <pbonzini@redhat.com>, Richard Henderson
-	<richard.henderson@linaro.org>, Eric Blake <eblake@redhat.com>, "Markus
- Armbruster" <armbru@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>, Alex
- =?ISO-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>, Peter Maydell
-	<peter.maydell@linaro.org>, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	Sia Jee Heng <jeeheng.sia@starfivetech.com>, <qemu-devel@nongnu.org>,
-	<kvm@vger.kernel.org>, <qemu-riscv@nongnu.org>, <qemu-arm@nongnu.org>,
-	"Zhenyu Wang" <zhenyu.z.wang@intel.com>, Dapeng Mi
-	<dapeng1.mi@linux.intel.com>, Yongwei Ma <yongwei.ma@intel.com>
-Subject: Re: [PATCH v2 0/7] Introduce SMP Cache Topology
-Message-ID: <20241217142342.00007d96@huawei.com>
-In-Reply-To: <20240908125920.1160236-1-zhao1.liu@intel.com>
-References: <20240908125920.1160236-1-zhao1.liu@intel.com>
-Organization: Huawei
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+       dkim=pass header.i=@linaro.org header.s=google header.b=amutnVxF;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734448815; x=1735053615; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=3XBk8Jjn5DR2szWJNgkjKw+0Pf3QK5WLRr6yAt6muaw=;
+        b=amutnVxFzu0pggQVTPjCDxFYAobD3UA0piUQa7VnqsSARiQLw3URxy9iWMWzxoh6hP
+         ZDn6ynxogRnzP3roi6nPDWQoPrveldQWh7HPa5037a7BxkY9DIeVo11Z0jMhunzoOIxv
+         HyfxtsNnDjSIbdgcwDWGdqoMv8auJ+i3epO0ubf7wqDzwEBT4rJA8UVzsabFV68tpEo4
+         8f35siPvL/uHFa1q9xfcvaX1IFedPojDHKBB3tDdU1/18M3Gif7JV5YL7+Fxv6MWK3q/
+         ivPVVquF5JLQCHuAavBFg0MlkZQJfGqzKm5zZ+t6Y3iuMsAyvstQDf/slxx7L3W34BqC
+         0Dig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734448815; x=1735053615;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=3XBk8Jjn5DR2szWJNgkjKw+0Pf3QK5WLRr6yAt6muaw=;
+        b=EYXHLFCR/zaP4Tar7hw+F5FdJdFy0/aqm328REk+jJUYtMsYDDv081MCFaUqr8KOav
+         BrL+gOaPyhCh+GGpm8uT53jPX79XhonPSbWAh4Fk0+v8f4uguP0/Psqt4qiJR50mJWa+
+         kNEDesv72m3WMNuptA1kKmX/mxHnOte7BLyXe/JnN3MUs8W5oaASfpaYiCbXrCKLtN6N
+         hFvPoQVB8u/oX3/iOJTrZgMGVRlncEHHJzOsXPcddEU3pSRBmsyJ3zL1NHQi5zLCw2cM
+         rIwl1rNCXSfXdJX30vzpLUcWGSMyCdPdUGe0Eucs83vfDXcArY9QDPSKk2G/S2JHQrTd
+         vmBQ==
+X-Forwarded-Encrypted: i=1; AJvYcCV4Vb58Nmh1ipu4vcppS6e6xzgk204tZVDw011mLNgcUh5VDqsB2XI8wIBIGqvIKRvBqWqUp5hHpkgY+w==@linaro.org
+X-Gm-Message-State: AOJu0YwM4+q2ZqJhh5lHkL8+81K730vfePMMvHUpYaB8UYNprNtrRd2u
+	RGEgCFkhUU9W1NjBwN5Xkv7IV3vEvUt6nJDKQJCgwJucaEaB2e+V2y/lLp9HvH0vAA==
+X-Gm-Gg: ASbGncul7xC57PP7vdD5IHYr8nWZA64TuYWid8uXxPy3WzhhPPNeJTDY1ds9qdSz40n
+	kKPLA83wjvBgRK7m/G03E5uMAYEfMxQCJxqf40I0TLYPsVVzPFxtHH9pUNnTlTO8qPAr/gEFior
+	mkMOWudIU8a6tMSnu81oYv9eVuE6lxGUIA6Jgq6HPUbT7dqc5PPE1XoHrlh+VTkxEzcuVI822PS
+	zqYC12bkk4X4UU99en32ACI7OF9UgUGl0hcYVpMWApzJKVqGwG9Wd+b5dBgbOk+AgsuHOwj
+X-Google-Smtp-Source: AGHT+IEVeqsXuNFGqhhhRpdo+vYacFvNZidciwLuAAkJJnA+nopy+oDMdfNqlV+x/GjuVVn+4XAlqg==
+X-Received: by 2002:a05:600c:3516:b0:436:1b77:b5aa with SMTP id 5b1f17b1804b1-4364815c7d6mr36013015e9.8.1734448815574;
+        Tue, 17 Dec 2024 07:20:15 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.1.117] ([78.196.4.158])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4364a376846sm22946685e9.0.2024.12.17.07.20.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 17 Dec 2024 07:20:14 -0800 (PST)
+Message-ID: <e8b9c9d8-c838-4418-8af0-b1e009b41e3c@linaro.org>
+Date: Tue, 17 Dec 2024 16:20:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.47.30.16]
-X-ClientProxiedBy: lhrpeml500005.china.huawei.com (7.191.163.240) To
- frapeml500003.china.huawei.com (7.182.85.28)
-X-TUID: RlO10xa4w2jt
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/9] hw/arm: Include missing 'exec/tswap.h' header
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20241211230357.97036-1-philmd@linaro.org>
+ <20241211230357.97036-5-philmd@linaro.org>
+ <0cd4b1da-eebe-425c-9a6b-b712e0a877e0@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <0cd4b1da-eebe-425c-9a6b-b712e0a877e0@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: 7WZvWbL2DWqR
 
-On Sun,  8 Sep 2024 20:59:13 +0800
-Zhao Liu <zhao1.liu@intel.com> wrote:
+On 12/12/24 00:53, Richard Henderson wrote:
+> On 12/11/24 17:03, Philippe Mathieu-Daudé wrote:
+>> Some files indirectly get "exec/tswap.h" declarations via
+>> "exec/cpu-all.h". Include it directly to be able to remove
+>> the former from the latter, otherwise we get:
+>>
+>>    hw/arm/boot.c:175:19: error: call to undeclared function 'tswap32'; 
+>> ISO C99 and later do not support implicit function declarations [- 
+>> Wimplicit-function-declaration]
+>>      175 |         code[i] = tswap32(insn);
+>>          |                   ^
+>>    hw/arm/npcm7xx.c:326:26: error: call to undeclared function 
+>> 'tswap32'; ISO C99 and later do not support implicit function 
+>> declarations [-Wimplicit-function-declaration]
+>>      326 |         board_setup[i] = tswap32(board_setup[i]);
+>>          |                          ^
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   hw/arm/boot.c    | 1 +
+>>   hw/arm/npcm7xx.c | 1 +
+>>   2 files changed, 2 insertions(+)
+>>
+> 
+> These could all be cpu_to_le32, since TARGET_BIG_ENDIAN is always false 
+> for qemu-system-arm.
 
-> Hi all,
-> 
-> Compared with previous Patch v1 [1], I've put the cache properties
-> list into -machine, this is to meet current needs and also remain
-> compatible with my future topology support (more discussion details,
-> pls refer [2]).
-> 
-> This series is based on the commit 1581a0bc928d ("Merge tag 'pull-ufs-
-> 20240906' of https://gitlab.com/jeuk20.kim/qemu into staging ufs
-> queue").
-> 
-> Background
-> ==========
-> 
-> The x86 and ARM (RISCV) need to allow user to configure cache
-> properties (current only topology):
->  * For x86, the default cache topology model (of max/host CPU) does
-> not always match the Host's real physical cache topology. Performance
-> can increase when the configured virtual topology is closer to the
->    physical topology than a default topology would be.
->  * For ARM, QEMU can't get the cache topology information from the CPU
->    registers, then user configuration is necessary. Additionally, the
->    cache information is also needed for MPAM emulation (for TCG) to
->    build the right PPTT. (Originally from Jonathan)
-> 
-> 
-> About smp-cache
-> ===============
-> 
-> In this version, smp-cache is implemented as a array integrated in
-> -machine. Though -machine currently can't support JSON format, this is
-> the one of the directions of future.
-> 
-> An example is as follows:
-> 
-> smp_cache=smp-cache.0.cache=l1i,smp-cache.0.topology=core,smp-cache.1.cache=l1d,smp-cache.1.topology=core,smp-cache.2.cache=l2,smp-cache.2.topology=module,smp-cache.3.cache=l3,smp-cache.3.topology=die
-> 
-> "cache" specifies the cache that the properties will be applied on.
-> This field is the combination of cache level and cache type. Now it
-> supports "l1d" (L1 data cache), "l1i" (L1 instruction cache), "l2"
-> (L2 unified cache) and "l3" (L3 unified cache).
-> 
-> "topology" field accepts CPU topology levels including "thread",
-> "core", "module", "cluster", "die", "socket", "book", "drawer" and a
-> special value "default".
-> 
-> The "default" is introduced to make it easier for libvirt to set a
-> default parameter value without having to care about the specific
-> machine (because currently there is no proper way for machine to
-> expose supported topology levels and caches).
-> 
-> If "default" is set, then the cache topology will follow the
-> architecture's default cache topology model. If other CPU topology
-> level is set, the cache will be shared at corresponding CPU topology
-> level.
-> 
-> 
-> Welcome your comment!
-> 
-> 
-> [1]: Patch
-> v1: https://lore.kernel.org/qemu-devel/20240704031603.1744546-1-zhao1.liu@intel.com/ [2]: API disscussion: https://lore.kernel.org/qemu-devel/8734ndj33j.fsf@pond.sub.org/
-> 
-> Thanks and Best Regards,
-> Zhao
-> ---
-> Changelog:
-> 
-> Main changes since Patch v1:
->  * Dropped handwriten smp-cache object and integrated cache properties
->    list into MachineState and used -machine to configure SMP cache
->    properties. (Markus)
->  * Dropped prefix of CpuTopologyLevel enumeration. (Markus)
->  * Rename CPU_TOPO_LEVEL_* to CPU_TOPOLOGY_LEVEL_* to match the QAPI's
->    generated code. (Markus)
->  * Renamed SMPCacheProperty/SMPCacheProperties (QAPI structures) to
->    SmpCacheProperties/SmpCachePropertiesWrapper. (Markus)
->  * Renamed SMPCacheName (QAPI structure) to SmpCacheLevelAndType and
->    dropped prefix. (Markus)
->  * Renamed 'name' field in SmpCacheProperties to 'cache', since the
->    type and level of the cache in SMP system could be able to specify
->    all of these kinds of cache explicitly enough.
->  * Renamed 'topo' field in SmpCacheProperties to 'topology'. (Markus)
->  * Returned error information when user repeats setting cache
->    properties. (Markus)
->  * Renamed SmpCacheLevelAndType to CacheLevelAndType, since this
->    representation is general across SMP or hybrid system.
->  * Dropped machine_check_smp_cache_support() and did the check when
->    -machine parses smp-cache in machine_parse_smp_cache().
-> 
-> Main changes since RFC v2:
->  * Dropped cpu-topology.h and cpu-topology.c since QAPI has the helper
->    (CpuTopologyLevel_str) to convert enum to string. (Markus)
->  * Fixed text format in machine.json (CpuTopologyLevel naming, 2
-> spaces between sentences). (Markus)
->  * Added a new level "default" to de-compatibilize some arch-specific
->    topo settings. (Daniel)
->  * Moved CpuTopologyLevel to qapi/machine-common.json, at where the
->    cache enumeration and smp-cache object would be added.
->    - If smp-cache object is defined in qapi/machine.json,
-> storage-daemon will complain about the qmp cmds in qapi/machine.json
-> during compiling.
->  * Referred to Daniel's suggestion to introduce cache JSON list,
-> though as a standalone object since -smp/-machine can't support JSON.
->  * Linked machine's smp_cache to smp-cache object instead of a builtin
->    structure. This is to get around the fact that the keyval format of
->    -machine can't support JSON.
->  * Wrapped the cache topology level access into a helper.
->  * Split as a separate commit to just include compatibility checking
-> and topology checking.
->  * Allow setting "default" topology level even though the cache
->    isn't supported by machine. (Daniel)
->  * Rewrote the document of smp-cache object.
-> 
-> Main changes since RFC v1:
->  * Split CpuTopology renaimg out of this RFC.
->  * Use QAPI to enumerate CPU topology levels.
->  * Drop string_to_cpu_topo() since QAPI will help to parse the topo
->    levels.
->  * Set has_*_cache field in machine_get_smp(). (JeeHeng)
->  * Use "*_cache=topo_level" as -smp example as the original "level"
->    term for a cache has a totally different meaning. (Jonathan)
-> ---
-> Zhao Liu (7):
->   hw/core: Make CPU topology enumeration arch-agnostic
->   qapi/qom: Define cache enumeration and properties
->   hw/core: Add smp cache topology for machine
->   hw/core: Check smp cache topology support for machine
->   i386/cpu: Support thread and module level cache topology
->   i386/cpu: Update cache topology with machine's configuration
->   i386/pc: Support cache topology in -machine for PC machine
-> 
->  hw/core/machine-smp.c      | 119 +++++++++++++++++++++++
->  hw/core/machine.c          |  44 +++++++++
->  hw/i386/pc.c               |   4 +
->  hw/i386/x86-common.c       |   4 +-
->  include/hw/boards.h        |  13 +++
->  include/hw/i386/topology.h |  22 +----
->  qapi/machine-common.json   |  96 ++++++++++++++++++-
->  qemu-options.hx            |  28 +++++-
->  target/i386/cpu.c          | 191
-> ++++++++++++++++++++++--------------- target/i386/cpu.h          |
-> 4 +- 10 files changed, 425 insertions(+), 100 deletions(-)
-> 
+I agree, but last time I did that Peter insisted for tswap():
+https://lore.kernel.org/qemu-devel/CAFEAcA8Exn0VMzM1h048q4Nm7toxkpaOv4B-ZE4FEXKgHoqy7A@mail.gmail.com/
 
-Hi Zhao,
+Peter, was my wording in that previous series not clear (in that case
+I can try to clarify) or was it OK but you reject the possibility of
+using cpu_to_le32() to remove tswap() calls?
 
-I wonder if this patch-set requires rebase for the new cycle?
+(Here my goal is to have a single binary, so I start removing target-
+specific endianness).
 
-Cheers,
-Alireza
+Thanks,
+
+Phil.

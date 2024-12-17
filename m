@@ -1,176 +1,125 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp105485njk;
-        Tue, 17 Dec 2024 02:39:08 -0800 (PST)
-X-Received: by 2002:a05:690c:6a0e:b0:6e2:12e5:35a2 with SMTP id 00721157ae682-6f2bb2e857amr22734847b3.4.1734431948071;
-        Tue, 17 Dec 2024 02:39:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734431948; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp207520njk;
+        Tue, 17 Dec 2024 05:35:02 -0800 (PST)
+X-Received: by 2002:a05:690c:74ca:b0:6ef:97a2:49e6 with SMTP id 00721157ae682-6f279b7c8efmr143104767b3.31.1734442502602;
+        Tue, 17 Dec 2024 05:35:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734442502; cv=none;
         d=google.com; s=arc-20240605;
-        b=lAesdAhU0hzBcSLVQi3bMZIqv9IyOYcuxLH5lBk5P2134szvtKF7WAR33zlz/z8bVr
-         AaZuwgn/BNTSVDkksBdUflVnjJQnOTMryvTr4ASSS3IqBWJDQUTXohE1L/SGIMrYm5eT
-         +que4MT00AF2j1RQXjre43OuCyt7mvNb3reOMQxda6X9eGMjTYpmoA+OeFeRlTnUMuuU
-         wnFs3BjSY9TRYL+R61HHrDRLuTGbdFucetnyrwWISQXw8FT28XBqmL2MTEWi/GJV7bGe
-         ODb7ScZ8k6cydJrjZNk4j1pM8dgFZY+8FRMhuO147aZ2cFA+COBNVwnqE+N4D55Ah8PX
-         xVRA==
+        b=ZEbFPm4bS3b5ubvn143Nd0Q2E7D+TucQF4pl/vfdvaZobxFN2Iu/hWU690Q5bZhqoO
+         mJz3gS1sRkoSApBP5A7WxB6kpeqWT+u/XdIe6SAKZft+SigS3Lxc2eHaKbn8j5JPTemq
+         e2Iql19T0fDom9+xPWvSH+zS+xkRVuOYl9Cqf6flN70TNNYo1vOYg3KP5fNdHxyo+AYC
+         KiuX8t7cFYt5UY7B2kdeDTlbx80DIitNxevGRtBQ+Wt3PQmI8ZpzKSt6YQMQWZs1h+lz
+         pDca1N8hkycLa+aze8TfmxLATKmw9j8syE8sUWw/lWi8GcfWtp+cj3QuHfpfPQv1FhTx
+         I3iQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=W6eIxnqCtDrzYV8NrJJpVsr7m0UqjADBHZfxpQylbP4=;
-        fh=AzP3l4ZbhLEWG0Mt74rZwVdy1N3CiIFvMIavePkQTLw=;
-        b=SdTQyWfcpveSEgNVg1SBkZCwa6T8B6Als3ezEhUINduGTYIcda9CJt8JiOAzrMFEqP
-         zGI0wTmr0TE2kzV/cf0Ixg7jVR9X/KAadVNia4IM9trMguSn/0C90MdXVG2cKd1r0rNb
-         NLgERFORdGMl4JRlrrXfu8NVc4bVCCEEdHJm6XqkGTuGCkuDCzROgBpT2TCT0+2/jPxi
-         DOpF9DK8A/EVN31ox1/CBWvjVBMuUio5zoJ65oRtvEafhJNOVLfTLpY2UYR/3+EQCyxR
-         lTwKJJTbRTmisdoYY2K3DfbS9qwrvwx9BtktRb2PyIqOpYWXdz9iw2TfAbtmAOf7MeFK
-         lokA==;
+        bh=CoOj9OMhVreh957qfVVVxCYR32RQIhKvGlDk3hpkOtc=;
+        fh=CK4xvtBf7wvdSkFQWqr//NOFasnvoXLneAc10k2Os0w=;
+        b=N2MvLos1tBUS1dpeXob8EX4vLqqZvg0XX9SeO0BAblkuUFNiTr5+gE8cnC1icsp1PL
+         sy9rY0REg6cxbu7X3ijHRbVecfNI8L6mpY56y1VyyIKxWccESIbMjXjJ6mwEvLWWXyjz
+         bWnW+2pR0aRLDaXtGL56Cl9v9vfmAOLXcLewAPAG2jfQLGVas6aZSAd8BeRzhuLkhFJZ
+         pS3RI3pQbA/L7vbq2J/tMZURGA8ELMSnAvdrhl/QSLBkMZn/m/lrXF44pzudaW1Wz40I
+         EG/apOzCAOZQTGN9Ez+ICt5BLmNQJLl0BomiD0KHlh2u5MJzCw8kcd/dStgVNNDlPzS4
+         oksA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h5hWOlvQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b="o2p/V5gX";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6f289007c75sor38794327b3.7.2024.12.17.02.39.07
+        by mx.google.com with SMTPS id 00721157ae682-6f289212c07sor42121127b3.11.2024.12.17.05.35.01
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 17 Dec 2024 02:39:08 -0800 (PST)
+        Tue, 17 Dec 2024 05:35:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h5hWOlvQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b="o2p/V5gX";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734431947; x=1735036747; darn=linaro.org;
+        d=linaro.org; s=google; t=1734442501; x=1735047301; darn=linaro.org;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=W6eIxnqCtDrzYV8NrJJpVsr7m0UqjADBHZfxpQylbP4=;
-        b=h5hWOlvQoqUqlGZ1XjYaqMc2jEptZpzyqG4YMEKBB+/qdUcfE+Qblok+5p3BwLyC/O
-         v0SmtXU8t8uXAkqOTBCEG6WaJ8HmEIvyJmd54pX+lYBWjSoQe8++jj/pTEmLwiNhBQZ9
-         YWTs89clidxJgBr2eLHZLwPNOHU5hxJExwodFR+Yt8LQadiTiTVJgzWKKxKmV7cjpPFw
-         RsU/QIgN7APteqd/PJB367UYGnqVRZ5RpK8Mss1uhDyIraCwZpTp8p5FPBsTag3BXX6Z
-         qg7k1v1YzUBX+0d539dQj10aaPMS81ua2M4SQp0RWx8wqPM5VQb2TQETdgG1fy2AMx4M
-         KOOw==
+        bh=CoOj9OMhVreh957qfVVVxCYR32RQIhKvGlDk3hpkOtc=;
+        b=o2p/V5gXUdxzXuUVvdFvgPf3EkiivEnWGs1AwfM0eQne2dlxklxMbze8En4nFWn9xN
+         VCj4i22ufKEUtSpybtmDjsD4pHpicMw+U8aL40hqRePAYthKR1kUOrFj1/qxod843MuS
+         foIC7BN8AzoDMCq7OKPnfWYPbDJdWoX4Q8iIe4l9LfwgTN8c1lqyWk5f70mmes3ST7hI
+         RCQ5SVCEw4oC6lJh8MCcWuByi72IEUlWp4kgJiAOAZxWcPQSiz2uvooVqWX6h9/n+bhU
+         TTSXU8o5yvVYUygTBwcJc81Z7NgS4SQOJmK1IPj+ZiL1isjYYUcv2MZPc8IigBwuAa58
+         Zczg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734431947; x=1735036747;
+        d=1e100.net; s=20230601; t=1734442501; x=1735047301;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=W6eIxnqCtDrzYV8NrJJpVsr7m0UqjADBHZfxpQylbP4=;
-        b=VjP8D87lyueX71i4xpet4UfRPFRDRL//9uPkbd0X0qGgIH6OK8wD6nv7zlu96dRWgX
-         NBFkJmc0tCA728AdCYtAj2YBJPit6QnQYk6DLjPqTfpuWXVVwf65+Y2+/flhqrDSH8fl
-         YbONKcdxhxEXI8ZFmPixqRxZNRWIoJc/ZAA3ARu7SeyWn82X+44gObloYtVv8u5eYLs3
-         OX1SfobV7d+deKGhQf+Bj91hdOtnZFx/dq2WB5rbL/xH0xV3f7w8Z6rCQj8Teng/umHg
-         +cwgP0SSRRlw7NUugZpPvHsUoCsb2WNoPsNV3pTeQV3ndF+6m5mrderDA+W6v2dDin5W
-         5Qxw==
-X-Gm-Message-State: AOJu0YySYoVUHmdMsUyS8RsPZYvWg+OVy7FL+PVAg70Zd/AmtFHRyi0u
-	eLk9PDUToGA3y6ECxotpI2ZLsUZ2H8NoF7yw5FkIHNsKHGGHRqgp7PgZ6uov1PeXrhbZDjk5yH4
-	WqubolgwLGxBYblt0Cn7V/rcRMFsb9vWjQWFnaRxJWorb9joLavo=
-X-Gm-Gg: ASbGnctvrXZVofDgRhLuNwH90jX6nSDc4mcsxYfB3QQv27hPoQqIEV/0azb6/QUbBR6
-	MEWfynCIu4wSL+8nQpxcIt1k+gFQqfjnEV9j/VL4=
-X-Google-Smtp-Source: AGHT+IEtHJjW+dfTAA2dYgeekMy0SqyzY0XVWWzgpbZlGup+GeQJaI17e2w47ZHkT3K8Nz6vXW/oPNEvHsDUj3eifS4=
-X-Received: by 2002:a05:690c:f12:b0:6ef:5c57:904 with SMTP id
- 00721157ae682-6f2bb2e7fe6mr24412387b3.7.1734431947643; Tue, 17 Dec 2024
- 02:39:07 -0800 (PST)
+        bh=CoOj9OMhVreh957qfVVVxCYR32RQIhKvGlDk3hpkOtc=;
+        b=C4b0K/5iaxfxWCR9PJWoqQM3tVTjnegIUIdYeLYW95DSLO8P4bF4hk8Tud9tf6kLhm
+         O40VZX+4YhJufDVxAoV52ok1LD+DXZkXKr8fLXM3C8j6fSkvx9FVa9jaMr2d3IhtOHem
+         ml9eODv7vBrjFTSBqHYNCm5WTBPRWeyKlsKDgwV5LPCa+gAGv57kzz2C9iT0Uop3t52D
+         4HjR3nOPQ3y+LaHjgnvzMxpFzIjIUjVoyOZpEdNW2ezbB4gregHAR3EIfe+oHtejS5na
+         r7HDdYTuNPPf9yg6HSmLzC+FYqWD8EvUO6oJnG3BUl6nVAOIDP8KtUpE6Mzy7diAgrX6
+         ePGQ==
+X-Gm-Message-State: AOJu0YxkSaGuz4mqzXfWu54bi6oHpQdB3QQi4K646Rnx7O6TWpUr813m
+	Pr92lgmVv/q5UD8ArrasXLx7xklqbE18HQuxeQ8ey6ZjSZv05H2janqnlrfwcWYWVMPpd0cmxHB
+	GAMxPNnRAeQtKLUCk2YRagoPIQ9fNjZMuRToUurLrPs2ROOP2GvI=
+X-Gm-Gg: ASbGncut2JMJWMrxS8gPu5e3vKyrJFn5UAzVfcjQGvAUaQqVGRBR2Daip6ymWqEMS/B
+	oBNDiXzQ884/VTP08nMblAAljwAFWtGoylkjKABM=
+X-Google-Smtp-Source: AGHT+IHF/uU2nxHNccfbJ0gCojA/PuCP89exwJRGMM4RC+XG8cLu91ow9w50SI5xIveSRU0wkQ1srxA9lVrqbBn8vzs=
+X-Received: by 2002:a05:690c:6ac2:b0:6ef:63cb:61d0 with SMTP id
+ 00721157ae682-6f279af6ca2mr135353347b3.10.1734442501308; Tue, 17 Dec 2024
+ 05:35:01 -0800 (PST)
 MIME-Version: 1.0
-References: <20241204211234.3077434-1-pierrick.bouvier@linaro.org>
- <7cd98960-0c0d-481f-96ea-08e0578d5cad@linaro.org> <b0962854-65c3-47d0-8f0a-072fdf51e7b6@linaro.org>
- <6e29d9cb-1c67-4fdc-97f1-32c90bed1048@linaro.org> <19df9957-6653-4086-aa1f-07263efcddde@linaro.org>
- <87pllq69l6.fsf@draig.linaro.org>
-In-Reply-To: <87pllq69l6.fsf@draig.linaro.org>
+References: <20241206160239.3229094-1-alex.bennee@linaro.org> <20241206160239.3229094-4-alex.bennee@linaro.org>
+In-Reply-To: <20241206160239.3229094-4-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Dec 2024 10:38:56 +0000
-Message-ID: <CAFEAcA_xe5QEPsrByM8ems_rxt-KsVRAgkKhGk24X-1J0vcCDA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Change default pointer authentication algorithm on
- aarch64 to impdef
+Date: Tue, 17 Dec 2024 13:34:49 +0000
+Message-ID: <CAFEAcA_AgkVcVm5nfCNb=PjB5qnYahTUuQxi-U=um92BFokccw@mail.gmail.com>
+Subject: Re: [PATCH 3/3] target/arm: implement SEL2 physical and virtual timers
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
-	Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Fabiano Rosas <farosas@suse.de>, qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Leif Lindholm <quic_llindhol@quicinc.com>, 
+	Radoslaw Biernacki <rad@semihalf.com>, qemu-stable@nongnu.org, 
+	Andrei Homescu <ahomescu@google.com>, =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@google.com>, 
+	=?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi.denis.courmont@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 1quRmkcxcFC0
+X-TUID: 8ez0VbhTrDGU
 
-On Tue, 17 Dec 2024 at 07:40, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+On Fri, 6 Dec 2024 at 16:02, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
 >
-> Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
+> When FEAT_SEL2 was implemented the SEL2 timers where missed. This
+> shows up when building the latest Hafnium with SPMC_AT_EL=3D2. The
+> actual implementation utilises the same logic as the rest of the
+> timers so all we need to do is:
 >
-> > On 12/16/24 11:50, Richard Henderson wrote:
-> >> On 12/16/24 13:26, Pierrick Bouvier wrote:
-> >>> On 12/16/24 11:10, Richard Henderson wrote:
-> >>>> On 12/4/24 15:12, Pierrick Bouvier wrote:
-> >>>>> qemu-system-aarch64 default pointer authentication (QARMA5) is expe=
-nsive, we
-> >>>>> spent up to 50% of the emulation time running it (when using TCG).
-> >>>>>
-> >>>>> Switching to pauth-impdef=3Don is often given as a solution to spee=
-d up execution.
-> >>>>> Thus we talked about making it the new default.
-> >>>>>
-> >>>>> The first patch introduce a new property (pauth-qarma5) to allow to=
- select
-> >>>>> current default algorithm.
-> >>>>> The second one change the default.
-> >>>>>
-> >>>>> Pierrick Bouvier (2):
-> >>>>>      target/arm: add new property to select pauth-qarma5
-> >>>>>      target/arm: change default pauth algorithm to impdef
-> >>>>>
-> >>>>>     docs/system/arm/cpu-features.rst |  7 +++++--
-> >>>>>     docs/system/introduction.rst     |  2 +-
-> >>>>>     target/arm/cpu.h                 |  1 +
-> >>>>>     target/arm/arm-qmp-cmds.c        |  2 +-
-> >>>>>     target/arm/cpu64.c               | 30 +++++++++++++++++++------=
------
-> >>>>>     tests/qtest/arm-cpu-features.c   | 15 +++++++++++----
-> >>>>>     6 files changed, 38 insertions(+), 19 deletions(-)
-> >>>>>
-> >>>>
-> >>>> I understand the motivation, but as-is this will break migration.
-> >>>>
-> >>>> I think this will need to be versioned somehow, but the only thing t=
-hat really gets
-> >>>> versioned are the boards, and I'm not sure how to link that to the i=
-nstantiated cpu.
-> >>>>
-> >>>
-> >>>   From what I understood, and I may be wrong, the use case to migrate=
- (tcg) vm with cpu max
-> >>> between QEMU versions is *not* supported, as we can't guarantee which=
- features are present
-> >>> or not.
-> >> This doesn't affect only -cpu max, but anything using aarch64_add_paut=
-h_properties():
-> >> neoverse-n1, neoverse-n2, cortex-a710.
-> >>
-> >
-> > I think this is still a change worth to do, because people can get a
-> > 100% speedup with this simple change, and it's a better default than
-> > the previous value.
-> > In more, in case of this migration scenario, QEMU will immediately
-> > abort upon accessing memory through a pointer.
-> >
-> > I'm not sure about what would be the best way to make this change as
-> > smooth as possible for QEMU users.
->
-> Surely we can only honour and apply the new default to -cpu max?
+>   - define the timers and their access functions
+>   - conditionally add the correct system registers
+>   - create a new accessfn as the rules are subtly different to the
+>     existing secure timer
 
-That was what I thought we were aiming for, yes. We *could* have
-a property on the CPU to say "use the old back-compatible default,
-not the new one", which we then list in the appropriate hw_compat
-array. (Grep for the "backcompat-cntfrq" property for an example of
-this.) But I'm not sure if that is worth the effort compared to
-just changing 'max'.
+> diff --git a/include/hw/arm/bsa.h b/include/hw/arm/bsa.h
+> index 8eaab603c0..b4ecca1b1c 100644
+> --- a/include/hw/arm/bsa.h
+> +++ b/include/hw/arm/bsa.h
+> @@ -22,6 +22,8 @@
+>  #define QEMU_ARM_BSA_H
+>
+>  /* These are architectural INTID values */
+> +#define ARCH_TIMER_S_VIRT_EL2_IRQ  19
 
-(It's not that much extra code to add the property, so I could
-easily be persuaded the other way. Possible arguments include
-preferring consistency across all CPUs. If we already make the
-default be not "what the real CPU of this type uses" then that's
-also an argument that we can set it to whatever is convenient;
-if we do honour the CPU ID register values for the implementation
-default then that's an argument that we should continue to do
-so and not change the default to our impdef one.)
+Can we call this ARM_TIMER_S_EL2_VIRT_IRQ please?
+We currently have ARCH_TIMER_NS_EL2_VIRT_IRQ
+so we should be consistent about where in
+the name we put the "VIRT" bit.
+
+> +#define ARCH_TIMER_S_EL2_IRQ       20
+>  #define VIRTUAL_PMU_IRQ            23
+>  #define ARCH_GIC_MAINT_IRQ         25
+>  #define ARCH_TIMER_NS_EL2_IRQ      26
 
 -- PMM

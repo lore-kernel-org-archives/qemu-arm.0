@@ -1,232 +1,192 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp932612njk;
-        Wed, 18 Dec 2024 05:51:32 -0800 (PST)
-X-Received: by 2002:a05:690c:640a:b0:6ef:7f89:d923 with SMTP id 00721157ae682-6f3d2679135mr22924897b3.31.1734529892588;
-        Wed, 18 Dec 2024 05:51:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734529892; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1049254njk;
+        Wed, 18 Dec 2024 08:25:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE9k6TW/emvKbBtLFHSSxmv800oUNDk5TfZHDd75EsIB9A9V3VMZASrZtv1i7Ky6AurGL6n
+X-Received: by 2002:a05:6102:15a0:b0:4b2:ad82:133a with SMTP id ada2fe7eead31-4b2ae8abef9mr3059928137.25.1734539156390;
+        Wed, 18 Dec 2024 08:25:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734539156; cv=none;
         d=google.com; s=arc-20240605;
-        b=AAYYeNQVWMV1T84S6yawtMcdPVnasd6t9tRwhLOdikMSmca2CYtIF3rxNDPQxgf5ye
-         MV/087KKAA7+P6zlgYZaKEPWfdTjueV7FY7WeIiAZzQUjN8s+DH/0r7LDmVNwhtqEC39
-         pIE7bAO7/ZEWahO1yf22PN8RE6qcbaVS43sXhHM7PbDLnsq3kKayoVwIu3iwW3C/AKWi
-         FE8WTbScMLnHuopMxWLt7Tg6+ZHBSbBZCC6im3AqjhKeT8t81CYUEDSn8J/avxNBT76F
-         D+PECNdkvcLKFkt1osWuMQARscmxAkusR68QKn7B/IT3bqMRPPzHfrKstqo2ibQtOJ8f
-         nJyQ==
+        b=k/OOEZnRvxNI7vae+TEZ9of6w/giIKsH5egRw3tYSCQze8I6pBbUWuSZmv0+8AJ3xx
+         aKFu1kiLJrj02DMG0Z8BkbIuAA2Acv4z1Zq7JzdS96ix3W8McwpA2huZPIXQBHt7ZpGZ
+         R0BXuskHYYn0IdaVjEf5CdFPYD8vY9j3glm76LxZTJ5fqIVDmV7GCeomMX+QGrjDFM4E
+         8IJJn+zwqS4R9lmJ32f8SQepuoTC5W3gdEDums8EOhi7E9HFYeyOlDrBPhC3f9RBI95n
+         +qrUE4eODmqyPgt/3K0QCVarHKkaIr5G9mfZvtSl3z2JT1k0dofKDE12/YggiZBSPrNJ
+         9lQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=/iUDoOsV26Qe4oFZU3uHRuMJZh3S91v5QoMM2nH7Rk4=;
-        fh=JWWppIJr9OvekGe+mr7rLJSYjlg4GOH6qWvi9MjObog=;
-        b=fhXqpQqQ3wMAR0MSDQhJptFN5924CBPtn8PKQSxw7WpJMIcNd6JlTSASvbAXI0p5/7
-         fekPbpaF6wZziOeHxhE89eyc2ZSSDhFluKQY47McG6Q3CqrlAfxwi60l3AwUXXk9PZwf
-         Uz95f4MBlhj50mPQixVB4OJRektKr4gZlGX85NbuFH7DRqnG+DeXZMEW4R9SpQjEDvI7
-         khauYMHpGwR4U+aqEi8ZPmIi4Mb5JI8LkTJ49lPux4JoytIi1iYG21jm+l7yabFM7zKF
-         nSX5aZJU63awfmgcHnIKzhOP2F2Ru+IsUYH2Rv7OqDMGH+0khqicT7dSFC6iu1TJoqwy
-         V6hg==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=r5JJSS4cJSqnn/MEVRTYbUDJnDkKD81QZB2/Z2Hzk+o=;
+        fh=9Zke7ipf+XgxgP6XBLMA+c7xIpH91AiCyh1cNrY82/E=;
+        b=ikbCapB26ns2xbInulyr8S7i2hCB2/g4nCfxdnkYT6SCGCLVd5HYqLpWDOF0UFOn13
+         paDlpmJaNhQ5Fkfgbxho0hsg3QmSN83mM91j3l+0UPJcFn0CTcj5d0BVMNmie14qaAeY
+         Peq3yxWOURtpJY4jpmh4cEhbTb6k56J+8nAfYQ2druJ7Rg9O+MlsbRXYT9+EHZVjutB3
+         oHeesFCVhqJIaS44x7P8BqEITae2Ppk/puZbgZ96khbShcutod1E+i45fppzOg1ggJRP
+         /k5501EJoFz4qszsU/jEwFk1FWxgMr1+ycVdLEggOAXXUHHP15yh6Z08nbcavihdoU6R
+         U/mQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mSejDcAh;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6f2890386bbsor54541047b3.10.2024.12.18.05.51.32
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c6BtrEsJ;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b2704d1717si2808453137.752.2024.12.18.08.25.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 18 Dec 2024 05:51:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Dec 2024 08:25:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mSejDcAh;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734529892; x=1735134692; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/iUDoOsV26Qe4oFZU3uHRuMJZh3S91v5QoMM2nH7Rk4=;
-        b=mSejDcAhJj0IC1ECRVocGLLOIWE70x+8mQVc2bWweiUXmjfnvXU0+hk/RFqMYMXO/q
-         z7ec5dIEwxSESjs63Hcht1nLCiNQRAuowWHYxz4if9RDc3+1/C3aeswPr8L4+2qrGap2
-         7HwqZOibeosdhlFSHjolHL4oJPGP8tlM4HvBTIoREVWaRhZUB0Qhbmuros8O9Om5btDY
-         7VRdygDJZcqkdI8fKFkTHkB2sRIef+0FgO9Dc2zjlUYllpZF5xnFEvByxLdn3O3kTMFg
-         v8v3zpnGNQhJK9zQxkDUJssq4n+xvjGAI4xFJwMTrvbmA6kvEN71L69kXIFt2SWkN/tu
-         OF1g==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c6BtrEsJ;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1734539156;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=r5JJSS4cJSqnn/MEVRTYbUDJnDkKD81QZB2/Z2Hzk+o=;
+	b=c6BtrEsJP7EBVDtndOHItIMvUsUvNn+pvTTeHVSKQmcVcmUo7KVU+CkszuvMfjMnLrdBN5
+	Whfy+BqkbjNP5inJlkWYK3C0W63PPdyyljH3sp2CQOo/Ewz/KMXR9Ebk1VMIftYHxptRqk
+	7RVoPmPSmKtqE6HTEf0DzqwaI2gzmQM=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-439-x-2adLSDM3O3DphOyI2-Jg-1; Wed, 18 Dec 2024 11:25:55 -0500
+X-MC-Unique: x-2adLSDM3O3DphOyI2-Jg-1
+X-Mimecast-MFC-AGG-ID: x-2adLSDM3O3DphOyI2-Jg
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-7b6c6429421so1032282985a.0
+        for <alex.bennee@linaro.org>; Wed, 18 Dec 2024 08:25:54 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734529892; x=1735134692;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=/iUDoOsV26Qe4oFZU3uHRuMJZh3S91v5QoMM2nH7Rk4=;
-        b=WHdDLYCChRY7/FTNQBPI9dv7nqjUCLUaa/sgICdXFBRzyoZFd1SaP+0OFwIoeuw/k3
-         /WZynI5cMOA4tGRPSL5r7oev6awD8nAYcKfi+mPQAkjuwMk6175wRnz8d0UJqszARzG9
-         et1i5gOUd1dOMrnDBR0xQ/x412x5wIn6Psvilb10to2wmu10VptwAiRJfdxN1bcehsbQ
-         6g+HtUAUYDLkVwE0k3RvjtHo07iilXfkUrx/wTv4V8l6/Fk31Xzz/en9VCzvONyLvEtD
-         xFXfVOH8A6pxlO1xA8yG1t7SYjvVZHvvqiBBAlUB9/izx9U1TVuuizYI4rfnwXMOBPmh
-         5twg==
-X-Gm-Message-State: AOJu0YyebuF8JmtQSm0uR6NsNPHIwX1B+m6deQTxF9ywB+EFUJa4P7Ks
-	TsG340TPUTcruFnaYntYx0NpLPZaZ67qWC6wQ0CPmqKod4KfHstaDMc192KCmP/qZHCnKYx4gje
-	cSBVA1NWgFTQ4Y/pxzvZ6Sbs8na5d1FC8mvqLc8Bf
-X-Gm-Gg: ASbGncsXSO/0z98JEiX9jULxrU1X+B0b1maZaFbnJIR1VoyU+TV9EIbzzhyGvuylN3f
-	wWqoq+fpQdLfr5QI3F5zhVODwzn6uQLZWPYV7gOM=
-X-Google-Smtp-Source: AGHT+IHXPem1A6ST3qeAiEL5KTr8qkukNq9VCj+GeLtRyG9HNbPypmNQkQCJ+fR3gFQH5kMC3y6EJP2eSJ+HrJgyZxA=
-X-Received: by 2002:a05:690c:23c1:b0:6ef:5820:3901 with SMTP id
- 00721157ae682-6f3d269397cmr22765557b3.37.1734529892137; Wed, 18 Dec 2024
- 05:51:32 -0800 (PST)
+        d=1e100.net; s=20230601; t=1734539154; x=1735143954;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=r5JJSS4cJSqnn/MEVRTYbUDJnDkKD81QZB2/Z2Hzk+o=;
+        b=wA4f+BdH17VGglOg6+Rv39sE8mFxWV6s7nhMyRUttDt1Dgd1dfUxeda7TW5M8auVl/
+         5cV3rm1ouzci8ZsSgQfVFJXSIoI7o1Ffs3M1lY+dVATOvwKA+AQ3oUsFGK9PRVuUTexd
+         dtNcVtCRAan6OBpxRzsgWZzp/cYQxdMQOeoT5GzdrAac8J6sELmaf2i3wN2Rt93ASQdN
+         uUU5fcq1HrnUWRRrczSSF7+qMhDhF+YnU/vy53AKv71XdOguDydghhFJpLty7ZqzMOCT
+         r8goj43v8veYgK/6bkCcrVO+86CFJAaXrLvNTJoUF/gMnN4mhtJX/cyXzE84kd6vVkf2
+         Y8Vg==
+X-Gm-Message-State: AOJu0YwNs96UcgizDC2/Q6LhO8q1fuQjXG5xH5XWmeqQYkskXTq82j8E
+	3gK2IQUB/7TQhRPqYafxI0FUr7ePc+43KLBrEDEu2DD/6qYi5be/V832SZ1/d+ULuSdkHHYe2bQ
+	g9xkyABLu89I1rwe8FPqNhALdzbU26Nt9QeJbN3dXw2dvJSNzjcyU2+xsJU//7zerexHUYjf/iJ
+	g6ECf5pluKu4L370o60esRFn7ttG3ACScYIA==
+X-Gm-Gg: ASbGncsdDza3BNfMISoVePjbHNCdiFXwwDrVOJZK32NOifRCtYaTBMnSIqnCkpQgp/W
+	S+RxjsRjtwPpz4yQDmCmVgIDM20r1WE4GzUr9UT9CFq84DZsxX/xt3FIvXo+dslyU5e3x6ntTT/
+	R5wG6xuWtBO0Fra8+rRLwzmoBnrlGndM+CC01Cn+jbaPus7jNNLBh21SOIwECxG1/6JnBxTEF4E
+	u3mQ26V+XtHi0BviCUAyJWEK3wDbvq38yVdsKeEs7oBtY/NUgVBqRAsWrBiqfKaBOfup136slXG
+	SfhYPSvTf8+H
+X-Received: by 2002:a05:620a:45aa:b0:7b6:e47a:8e13 with SMTP id af79cd13be357-7b86375d0e9mr473002085a.31.1734539154544;
+        Wed, 18 Dec 2024 08:25:54 -0800 (PST)
+X-Received: by 2002:a05:620a:45aa:b0:7b6:e47a:8e13 with SMTP id af79cd13be357-7b86375d0e9mr472994585a.31.1734539154160;
+        Wed, 18 Dec 2024 08:25:54 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.6] (ip-109-42-49-186.web.vodafone.de. [109.42.49.186])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7b7047cd507sm443078285a.31.2024.12.18.08.25.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Dec 2024 08:25:53 -0800 (PST)
+Message-ID: <49df9668-5345-402e-bb0b-6a7e787c6da6@redhat.com>
+Date: Wed, 18 Dec 2024 17:25:39 +0100
 MIME-Version: 1.0
-References: <20241204211234.3077434-1-pierrick.bouvier@linaro.org>
- <7cd98960-0c0d-481f-96ea-08e0578d5cad@linaro.org> <b0962854-65c3-47d0-8f0a-072fdf51e7b6@linaro.org>
- <6e29d9cb-1c67-4fdc-97f1-32c90bed1048@linaro.org> <19df9957-6653-4086-aa1f-07263efcddde@linaro.org>
- <87pllq69l6.fsf@draig.linaro.org> <CAFEAcA_xe5QEPsrByM8ems_rxt-KsVRAgkKhGk24X-1J0vcCDA@mail.gmail.com>
- <75ff92e0-7384-4af4-bc9f-64a6b0febc9f@linaro.org>
-In-Reply-To: <75ff92e0-7384-4af4-bc9f-64a6b0febc9f@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 18 Dec 2024 13:51:20 +0000
-Message-ID: <CAFEAcA8YNcft8KU8mytHv+H71L7L8d=QBgQmSAmq9J7Ny23=tA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] Change default pointer authentication algorithm on
- aarch64 to impdef
-To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
-	Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Fabiano Rosas <farosas@suse.de>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: PHNSiNRUd5Qp
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 19/27] tests/functional: remove hacky sleep from the
+ tests
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Ed Maste <emaste@freebsd.org>, Eric Farman <farman@linux.ibm.com>,
+ Li-Wen Hsu <lwhsu@freebsd.org>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Fabiano Rosas <farosas@suse.de>,
+ Radoslaw Biernacki <rad@semihalf.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-riscv@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, Beraldo Leal <bleal@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Weiwei Li <liwei1518@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ John Snow <jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Halil Pasic <pasic@linux.ibm.com>, qemu-arm@nongnu.org,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-s390x@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+References: <20241218162104.3493551-1-alex.bennee@linaro.org>
+ <20241218162104.3493551-20-alex.bennee@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20241218162104.3493551-20-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: sur9dtApT4h_bMMJZZvmUlHZWTxRRnC_JLjqDl7iXWQ_1734539154
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: +CGENdz3eySy
 
-On Tue, 17 Dec 2024 at 21:08, Pierrick Bouvier
-<pierrick.bouvier@linaro.org> wrote:
->
-> On 12/17/24 02:38, Peter Maydell wrote:
-> > On Tue, 17 Dec 2024 at 07:40, Alex Benn=C3=A9e <alex.bennee@linaro.org>=
- wrote:
-> >>
-> >> Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
-> >>> I think this is still a change worth to do, because people can get a
-> >>> 100% speedup with this simple change, and it's a better default than
-> >>> the previous value.
-> >>> In more, in case of this migration scenario, QEMU will immediately
-> >>> abort upon accessing memory through a pointer.
-> >>>
-> >>> I'm not sure about what would be the best way to make this change as
-> >>> smooth as possible for QEMU users.
-> >>
-> >> Surely we can only honour and apply the new default to -cpu max?
-> >
->
-> With all my respect, I think the current default is wrong, and it would
-> be sad to keep it when people don't precise cpu max, or for other cpus
-> enabling pointer authentication.
->
-> In all our conversations, there seems to be a focus on choosing the
-> "fastest" emulation solution that satisfies the guest (behaviour wise).
-> And, for a reason I ignore, pointer authentication escaped this rule.
+On 18/12/2024 17.20, Alex Bennée wrote:
+> We have proper detection of prompts now so we don't need to guess with
+> sleep() sprinkled through the test. The extra step of calling halt is
+> just to flush the final bits of the log (although the last line is
+> still missed).
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-I think the reason is just that we didn't understand how much
-of a performance hit the architected algorithm for pointer auth
-is in emulation. So we took our default approach of "implement
-what the architecture says". Then later when we realised how
-bad the effect was we added in a faster impdef authentication
-algorithm, but we put it in as not-the-default because of our
-usual bias towards "don't change existing behaviour".
-
-> I understand the concern regarding retro compatibility, but it would be
-> better to ask politely (with an error message) to people to restart
-> their virtual machines when they try to migrate, instead of being stuck
-> with a slow default forever.
-> In more, we are talking of a tcg scenario, for which I'm not sure people
-> use migration feature (save/restore) heavily, but I may be wrong on this.
->
-> Between the risk of breaking migration (with a polite error message),
-> and having a default that is 100% faster, I think it would be better to
-> favor the second one. If it would be a 5% speedup, I would not argue,
-> but slowing down execution with a factor of 2 is really a lot.
-
-The point here about "breaking migration" is that we have a strong
-set of rules:
- * if you say "-machine virt-8.2" you get "exactly the behaviour
-   that the 'virt' machine type had in QEMU 8.2, and it is
-   migration compatible
- * we can make changes that are not migration compatible only if we
-   ensure that they are not applied to older versioned machine types
-   (or if they're to devices that are only used in machines which
-   do not have versioned machine types at all)
- * TCG '-cpu max' is a special case: it is not a fixed thing, and so
-   it may acquire new non-migration-compatible changes between versions
-   (and so if you care about VM migration compat you don't use it);
-   but this is not true of the named CPU types that match real
-   hardware implementations
-
-This patch as it stands will not preserve the migration
-guarantees that we make. So we need to fix it by either:
- * only making the default change on -cpu max
- * making the default change be bound to versioned types
-
-As I say, I don't have a strong view on which of these we go for
-(and I'm actually kind of leaning to the second, given the discussion).
-
-> > That was what I thought we were aiming for, yes. We *could* have
-> > a property on the CPU to say "use the old back-compatible default,
-> > not the new one", which we then list in the appropriate hw_compat
-> > array. (Grep for the "backcompat-cntfrq" property for an example of
-> > this.) But I'm not sure if that is worth the effort compared to
-> > just changing 'max'.
->
-> When we'll define hw_compat_10_0, and hw_compat_11_0, do we have to
-> carry this on forever? (Same question for "backcompat-cntfrq").
-
-The machinery for how this works means that you only need to
-put the property in the appropriate hw_compat array for the
-machine version before where it was introduced. The 'virt-9.2'
-machine type applies the properties listed in hw_compat_9_2
-(you can think of the properties listed there as having the
-meaning "downgrade the default behaviour back to what it was
-in 9.2 and earlier".) The virt-9.1 machine type applies the
-properties listed in hw_compat_9_1 and hw_compat_9_2. The
-virt-9.0 machine type applies the properties listed in hw_compat_9_0,
-_9_1 and _9_2.
-
-This is all implemented by the boilerplate DEFINE_VIRT_MACHINE() and
-virt_machine_*_options functions at the bottom of hw/arm/virt.c
-(plus the common code that invokes). We have to carry all this
-machinery around anyway to handle other migration-breaking changes
-in other parts of QEMU, so it's pretty free to add another property
-like backcompat-cntfrq here.
-
-The very oldest versioned machine types are deprecated after
-3 years and dropped after another 3 years, so eventually the
-older hw_compat arrays will go away.
-
-> > (It's not that much extra code to add the property, so I could
-> > easily be persuaded the other way. Possible arguments include
-> > preferring consistency across all CPUs. If we already make the
-> > default be not "what the real CPU of this type uses" then that's
-> > also an argument that we can set it to whatever is convenient;
-> > if we do honour the CPU ID register values for the implementation
-> > default then that's an argument that we should continue to do
-> > so and not change the default to our impdef one.)
-> >
->
-> For the TCG use case, is there any visible side effect for the guest to
-> use any specific pointer authentication algorithm?
-> In other words, is there a scenario where pointer authentication would
-> work with impdef, but not with qarma{3,5}?
-> If no, I don't see any reason for a cpu to favor an expensive emulation.
-
-The guest can look at the value that the pointer auth instruction
-produces if it likes, so it can certainly tell whether there's
-a difference. But the only reason to do that is in test code
-that's checking that the pauth instructions do what they're
-supposed to do. Architecturally because multiple authentication
-options are permitted no well behaved guest is going to depend
-on which one exactly is being used.
-
-As I say, I do think it would be good to check whether our
-current implementation is "default to qarma5 everywhere", or
-whether it is "default to what the real CPU says it has in its
-ID registers". If we are already defaulting to something that's
-not what the real implementation does it's another piece of
-evidence on the side of "we can just default to a different
-not-matching-the-hardware choice".
-
-thanks
--- PMM
+Reviewed-by: Thomas Huth <thuth@redhat.com>

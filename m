@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d652f25afbsm5752895a12.55.2024.12.18.08.21.12
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d652f35365sm5747835a12.80.2024.12.18.08.21.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Dec 2024 08:21:15 -0800 (PST)
+        Wed, 18 Dec 2024 08:21:17 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 48D2860BA3;
+	by draig.lan (Postfix) with ESMTP id BE41B60C08;
 	Wed, 18 Dec 2024 16:21:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -53,59 +53,82 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 22/27] tests/docker: move riscv64 cross container from sid to trixie
-Date: Wed, 18 Dec 2024 16:20:58 +0000
-Message-Id: <20241218162104.3493551-23-alex.bennee@linaro.org>
+Subject: [PATCH v2 27/27] pc-bios: ensure keymaps dependencies set vnc tests
+Date: Wed, 18 Dec 2024 16:21:03 +0000
+Message-Id: <20241218162104.3493551-28-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241218162104.3493551-1-alex.bennee@linaro.org>
 References: <20241218162104.3493551-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kJy5C5Fb7Fpy
+X-TUID: +N8pgYoQMQK+
 
-Although riscv64 isn't going to be a release architecture for trixie
-the packages are still built while it is testing. Moving from sid will
-also avoid some of the volatility we get from tracking the bleeding
-edge.
+I was seeing failures on vnc-display-test on FreeBSD:
+
+  make vm-build-freebsd V=1 TARGET_LIST=aarch64-softmmu BUILD_TARGET=check-qtest QEMU_LOCAL=1 DEBUG=1
+
+Leads to:
+
+  qemu-system-aarch64: -vnc none: could not read keymap file: 'en-us'
+  Broken pipe
+  ../src/tests/qtest/libqtest.c:196: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+
+which was as far as I could tell because we don't populate the
+$BLD/pc-bios/keymaps (although something attempts to symlink
+qemu-bundle/usr/local/share/qemu/keymaps/ to that dir).
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- tests/docker/dockerfiles/debian-riscv64-cross.docker | 4 ++--
- tests/lcitool/refresh                                | 4 +++-
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ pc-bios/keymaps/meson.build | 17 ++++++++---------
+ tests/qtest/meson.build     |  2 +-
+ 2 files changed, 9 insertions(+), 10 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-riscv64-cross.docker b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-index 4d8ca83cb3..b0386cd3a1 100644
---- a/tests/docker/dockerfiles/debian-riscv64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-@@ -1,10 +1,10 @@
- # THIS FILE WAS AUTO-GENERATED
- #
--#  $ lcitool dockerfile --layers all --cross-arch riscv64 debian-sid qemu-minimal
-+#  $ lcitool dockerfile --layers all --cross-arch riscv64 debian-13 qemu-minimal
- #
- # https://gitlab.com/libvirt/libvirt-ci
+diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
+index 0bd8ce0077..a79a09b276 100644
+--- a/pc-bios/keymaps/meson.build
++++ b/pc-bios/keymaps/meson.build
+@@ -39,19 +39,18 @@ else
+   native_qemu_keymap = qemu_keymap
+ endif
  
--FROM docker.io/library/debian:sid-slim
-+FROM docker.io/library/debian:trixie-slim
- 
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     apt-get update && \
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 6720516b94..53f8d2585f 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -220,7 +220,9 @@ try:
-                         trailer=cross_build("powerpc64le-linux-gnu-",
-                                             "ppc64-softmmu,ppc64-linux-user"))
- 
--    generate_dockerfile("debian-riscv64-cross", "debian-sid",
-+    # while not yet a release architecture the packages are still
-+    # build while part of testing
-+    generate_dockerfile("debian-riscv64-cross", "debian-13",
-                         project="qemu-minimal",
-                         cross="riscv64",
-                         trailer=cross_build("riscv64-linux-gnu-",
++keymap_targets = []
+ if native_qemu_keymap.found()
+-  t = []
+   foreach km, args: keymaps
+     # generate with qemu-kvm
+-    t += custom_target(km,
+-                       build_by_default: true,
+-                       output: km,
+-                       command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
+-                       install: have_system,
+-                       install_dir: qemu_datadir / 'keymaps')
++    keymap_targets += custom_target(km,
++                                    build_by_default: true,
++                                    output: km,
++                                    command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
++                                    install: have_system,
++                                    install_dir: qemu_datadir / 'keymaps')
+   endforeach
+-
+-  alias_target('update-keymaps', t)
++  alias_target('update-keymaps', keymap_targets)
+ else
+   install_data(keymaps.keys(), install_dir: qemu_datadir / 'keymaps')
+ endif
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index c5a70021c5..f75c1057a4 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -383,7 +383,7 @@ qtests = {
+ if vnc.found()
+   gvnc = dependency('gvnc-1.0', method: 'pkg-config', required: false)
+   if gvnc.found()
+-    qtests += {'vnc-display-test': [gvnc]}
++    qtests += {'vnc-display-test': [gvnc, keymap_targets]}
+     qtests_generic += [ 'vnc-display-test' ]
+   endif
+ endif
 -- 
 2.39.5

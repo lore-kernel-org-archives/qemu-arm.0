@@ -1,136 +1,111 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp967437njk;
-        Wed, 18 Dec 2024 06:37:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUueK3hLhaxS8NamSQS8idge2DjeHseAyv348SVroSBeTQD94N4CEjA/wupa2dHTeYOPqWUBL3UTAjZkg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHUBukTk6fMPTRf3HFifYEcm9l7l50GSi1Q1UhcvjohB1XPIRUtpuWgdW6xS9vaUNwKwbI9
-X-Received: by 2002:a05:6214:c68:b0:6d8:9f61:de6c with SMTP id 6a1803df08f44-6dd09a93a6dmr49200536d6.18.1734532630022;
-        Wed, 18 Dec 2024 06:37:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734532630; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp984686njk;
+        Wed, 18 Dec 2024 07:02:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV3EWI6cQjuB7nrfew/ExjKIZrreb4gNcrRSKoaDU4JnrAQ1JOp2sRfmZeysV3Umyup1c6gjOXF1S3xwA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFpNhXgwpds16AHZfb0X5YtDOHPdw8qlDGPCbV1Y7vzNlee02TagXzlJ+7rEYgnp7Taana6
+X-Received: by 2002:a05:6000:4b0a:b0:386:366d:5d03 with SMTP id ffacd0b85a97d-388e4d42764mr2832479f8f.16.1734534159067;
+        Wed, 18 Dec 2024 07:02:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734534159; cv=none;
         d=google.com; s=arc-20240605;
-        b=jKxy9hc8MzkhU8ki4ads5Q5hAiqj4zsZqEA6UgeQb3ho+FE4RobkuGm3H4c64zGq7O
-         77xZF9Y1kERCprz/13fShiUDDt9+XzX6NUUGPpFB0/VaITV7yEF+wiMnCYZtM9NqKnEl
-         cp9SX2cK2m2IlccdSgZ8H3BmD/XnNkaA8gA3SLjE3jTkcv5k/YIBJDE37jmI6IHCwSsG
-         Kya59FvWtcDyeAPmcqwGO1MxrCHMR/FJwhffeQQwzJk/BTveJVc7rv3f6F7VjGGHP8Lm
-         IvzuPk4q1+c9jH+mhW3fvDaujqZfbKxwJg5h22Ei0FTQ/GgoZ6nTBdkKccNenUWPwZ4D
-         G/fw==
+        b=DVrywdACIi+EkLry+6eqzae3TZnvYAqLxWLU7XlCCDge0aaOVEHt7VzQP6MwWMzKls
+         TEEkkR9hRAG3QUyl6Fk/XH9iQUnZfcDFB84MZAMWoYRr2WbIWvf5Vjmt5Cq5tQuzcWzt
+         jH3ZAwjSpdNXNBVsZim39Q80co0KWceD6CM4ZmTsehf6Gr5m7yTHzYWs9Y64A8ljpb1O
+         Uj2ESP0biaTTHPMlmVg5zRf4YlAfEmEgKIdWQNjohqSrrldyUdrBgsVB98gV3+PnLcQq
+         N8DxRteafjMEoyLQVweYXwBthtlNXbuJN9rSGq5WmLblJ1fJQpOIaf6G/5CNQ4dv6ZXR
+         PfFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=KbE10CchUz7Lpn5Fh7tQMUMA0Oa6DpMtjQjc9TgNgsQ=;
-        fh=KtfJh59AKhaO7bOljx5WO+v26Qj19BE04y23jsC6e3I=;
-        b=A0/4Q/BQ9LuZgC5NNUa0I/9icxyKqhPbsLKfGAtBFjzXvCOYKZz6s8yERz80b72oED
-         uByBNdk9gvfNXT41jwxcrENBA6y37xppiE+RVLPwJzL0wI3PrET9zSyw/2eiXSGKudIh
-         mETAszgzAvJpSHRtD96eKIcRiFa9XFLIWd6vMJNinrBiU1+KhMhO1qddRGiv+RAVtoDY
-         hlR0Hgrp/X+Em/9b4UyOoIksrRg3Hf4nV5md1OYufv84vaIBq6SIEaoYSFc5aHxW+Egc
-         Gkz/ZmoigBI69/VpoOytdKY/VIpfXME0FRfyJiWgmXBxsIZRZNu9cZ/r+vSPc72pcyDi
-         ToAw==;
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=gMchug3TYb25yM/NzxxPne/1MPMVeNFoIFlK9OSds1M=;
+        fh=atzeyaDF+vEGXrFCTy52fQPchOBA1MeyRZRIDQdja2w=;
+        b=WN+EjgIH7mk6UIWlGDLm5kgBh7SMl91s37FaXhFWdesMPl7KnbU6E5rTDiK6Hf/h2Y
+         qd+X9jtveId4xpMUAcXUSwXDIiYID2Nocxnp327uVwhdLwJscjy+Si6RQOW7v/0j4QqC
+         z/OTHjzDjx1LmVhBaC6NXUEuQiG0eiWRaAH32CN0oDSL1zSKqpVaBz75ZVO+FCtzDvc2
+         o6bER6qr//vvPuiLBmDji0MmWU3FhQUjmJKdvhjOouSDc8G1ALx4VJEXR3LzHZ6QzmkV
+         hclDk0MS3EpppbGcJ+GXMYM7H38502RIlmbR9GLkzC9K8Xver1OUKCApBFjz0/SozuZN
+         CsAg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b=LacW7+9C;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="KGkQ/NxX";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dccd1bb27bsi124357996d6.31.2024.12.18.06.37.09
+        by mx.google.com with ESMTPS id ffacd0b85a97d-388c8015f23si7129081f8f.246.2024.12.18.07.02.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2024 06:37:10 -0800 (PST)
+        Wed, 18 Dec 2024 07:02:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@qualcomm.com header.s=qcppdkim1 header.b=LacW7+9C;
+       dkim=pass header.i=@intel.com header.s=Intel header.b="KGkQ/NxX";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=qualcomm.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tNvAG-0004Ts-Jz; Wed, 18 Dec 2024 09:36:40 -0500
+	id 1tNvZB-0002Dv-E4; Wed, 18 Dec 2024 10:02:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
- id 1tNvAE-0004Tc-TH
- for qemu-arm@nongnu.org; Wed, 18 Dec 2024 09:36:38 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1tNvZ5-0002Bh-50; Wed, 18 Dec 2024 10:02:19 -0500
+Received: from mgamail.intel.com ([192.198.163.13])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif.lindholm@oss.qualcomm.com>)
- id 1tNvAD-0005CT-5W
- for qemu-arm@nongnu.org; Wed, 18 Dec 2024 09:36:38 -0500
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4BI7VFFD025340
- for <qemu-arm@nongnu.org>; Wed, 18 Dec 2024 14:36:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=qcppdkim1; bh=KbE10CchUz7Lpn5Fh7tQMUMA
- 0Oa6DpMtjQjc9TgNgsQ=; b=LacW7+9C/hHZ77cbEB/vGqAZ8kKIVkCcpyuaNToT
- fHxTO/breTujQnxTTnNsRnu+6maE3jWlEZanDf61RGfjXf8Ap6lqz44b/i1SXx6w
- oYIDGdAWFBTO4TUL+ey89fR3RmYj4ChGBU01PdCIOWGOgapH7Vaa4JCp7aUjETxS
- GTy0BfZGtT05LBu5p5UYcOQmcUnjBArifEGzjZ3LekmbV3BPrT7o1uWXfTmPJ39e
- VoOTpRB+ixFayJRIFVJVem/lM5GRW1Zt7o/egmdU/GXc4zlPR7J4E5I4s5Blzp8O
- yq4NsK3T+Q3y35iiTL2l/k9MYMhnXji6LQJUasCv0c/r7A==
-Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
- [209.85.128.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 43kt2w93c8-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 18 Dec 2024 14:36:34 +0000 (GMT)
-Received: by mail-yw1-f199.google.com with SMTP id
- 00721157ae682-6ef85037f3bso10261087b3.1
- for <qemu-arm@nongnu.org>; Wed, 18 Dec 2024 06:36:34 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734532594; x=1735137394;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=KbE10CchUz7Lpn5Fh7tQMUMA0Oa6DpMtjQjc9TgNgsQ=;
- b=cIFAx0nEMenJTKwMpg+1n0Xfruwn52jvGbukh5h8DnqPIT40rkdyXe0ckufxRbZG79
- CpDnj+k5ZW8YG1wGjjE5Km+iXSI4np5jD2cU7F7zC4PJHWymg0NAczoHBe3cOuIroI6h
- m3AexiWu+Un1xfGgtVEbZv/AYIyImMiUL2OjHobo9l1uvpg1QFstgqggvv64Om5+wsVn
- +Dy/2vsHG1LLUZOFPkyN0xZF/ARE50BR3yQ9wgzZ3eUaVMCBL2UyHa7FEyaiV5oBmLqo
- KRz/GiaxdzJIcPJNlugL4yuMor1HK8TApXnNOe4bfuUdzvzBi7wePaCXANkDMvvUriEv
- e+ww==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVy15TnEwczyRBl8XqQw+U0CXyT9FtytIgcF0YxfTdPZLE+7H3jImtBq1eN7M9UGZVNlmDVWwyNdw==@nongnu.org
-X-Gm-Message-State: AOJu0YxyxivFHPCF43jnRKc/GAUjtCNCeN2W1vMtf2mc9Vzgs/xNxncA
- NveFqt/dGwdzYvJopuQoqdpBsOc18KDK8OmNONiojbFozx6mYNusZFR6TcGV/tZA8VhyOR+9Yt9
- 5aCJW7co40IjrogSq2L4qm6CUKggw8MwUjrpqrLmKZZKeIW4glT8CLuy5hbCQ6fQlPupybqFnA4
- hoL+Jmhvg+01lwclWJV7BqemUazg==
-X-Gm-Gg: ASbGncthhE5EbFf7zODMZq393AXvUpWmTHjrUiYaFl6P+w2PY8C1o4/L7Wj2WNQGnGe
- df5gsmMn3nU8Edih0XIwyJo4wieb5aKmqrFOPYMPYjumDsl1QItR3WepFHREQdz4FIRyU0A==
-X-Received: by 2002:a05:690c:4984:b0:6ea:6666:c0c2 with SMTP id
- 00721157ae682-6f2bb9a3898mr68117917b3.4.1734532594165; 
- Wed, 18 Dec 2024 06:36:34 -0800 (PST)
-X-Received: by 2002:a05:690c:4984:b0:6ea:6666:c0c2 with SMTP id
- 00721157ae682-6f2bb9a3898mr68117687b3.4.1734532593827; Wed, 18 Dec 2024
- 06:36:33 -0800 (PST)
-MIME-Version: 1.0
-References: <20241218123055.11220-1-marcin.juszkiewicz@linaro.org>
-In-Reply-To: <20241218123055.11220-1-marcin.juszkiewicz@linaro.org>
-From: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-Date: Wed, 18 Dec 2024 14:36:22 +0000
-Message-ID: <CAD=n3R0cxu_jf7ErQ7Cjwx1pr+tU=8F-THKAaH8KVHubb2VAHg@mail.gmail.com>
-Subject: Re: [PATCH 1/1] MAINTAINERS: remove myself from sbsa-ref
-To: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1tNvZ2-0006ef-4J; Wed, 18 Dec 2024 10:02:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1734534136; x=1766070136;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=/jJ8MVaAeqRT02E9ktCnGfI0BT8udNfG1X8f/KkdJNo=;
+ b=KGkQ/NxX53srN6wJkBeVCrb20RJ0NglraqAQ9CDYCK32CQQMYgD2hqsb
+ hxKBTA6X7Qf26tU270KeeBbiNnTaw7JZFzQnx8DEIsqeYGZn/UkqhK6xT
+ e3J3YBOeKKoYRxsbnHjPIfinjZJL5tucbN9MlMW+mdEP8hRdVh1FGY5nC
+ +VovoitdBUZyw0K6kLuamSCTVLOuCzp0N8W8oHFCb6aGpXmaC7D0pf98a
+ QHdM5j/PkqmuPIPBVQOg56mywJJsAHMGVb1REixVtV5e+qbD3pYtJoN5e
+ /vW/hMMxNaQsdMDw5IVigmI3JVxxCwohu8ShK4HZID6La9UJ54O0DNSDq g==;
+X-CSE-ConnectionGUID: BZtcFWq9SiaFkHIfVHCPqA==
+X-CSE-MsgGUID: 5V62+diWSe6AbnNbCg46Jw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11290"; a="37853999"
+X-IronPort-AV: E=Sophos;i="6.12,244,1728975600"; d="scan'208";a="37853999"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Dec 2024 07:02:12 -0800
+X-CSE-ConnectionGUID: qkP5p7r6Q62i7qjRjHs1bw==
+X-CSE-MsgGUID: Ohg4AkJ2QpOKP+1o3TT04Q==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,244,1728975600"; d="scan'208";a="97782020"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by orviesa009.jf.intel.com with ESMTP; 18 Dec 2024 07:02:10 -0800
+Date: Wed, 18 Dec 2024 23:20:49 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-X-Proofpoint-GUID: iI3s4d2e2ZoXIZ-bYyDtzsXWhz0VXhA6
-X-Proofpoint-ORIG-GUID: iI3s4d2e2ZoXIZ-bYyDtzsXWhz0VXhA6
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 spamscore=0
- mlxlogscore=758 priorityscore=1501 malwarescore=0 clxscore=1015
- suspectscore=0 adultscore=0 lowpriorityscore=0 bulkscore=0 mlxscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2411120000 definitions=main-2412180114
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=leif.lindholm@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Subject: Re: [PATCH 22/71] hw/cpu: Constify all Property
+Message-ID: <Z2LoUZ9hf/2kXUla@intel.com>
+References: <20241213190750.2513964-1-richard.henderson@linaro.org>
+ <20241213190750.2513964-27-richard.henderson@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20241213190750.2513964-27-richard.henderson@linaro.org>
+Received-SPF: pass client-ip=192.198.163.13; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,36 +120,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: c8u7vycN15IO
+X-TUID: qgEgabOq1e6u
 
-On Wed, 18 Dec 2024 at 12:31, Marcin Juszkiewicz
-<marcin.juszkiewicz@linaro.org> wrote:
->
-> I am ending my time with Linaro and do not have plans to continue
-> working on SBSA Reference Platform anymore.
-
-Thank you very much for all your contributions to this platform over the years.
-
-> Signed-off-by: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
-
-Reviewed-by: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-
+On Fri, Dec 13, 2024 at 01:06:56PM -0600, Richard Henderson wrote:
+> Date: Fri, 13 Dec 2024 13:06:56 -0600
+> From: Richard Henderson <richard.henderson@linaro.org>
+> Subject: [PATCH 22/71] hw/cpu: Constify all Property
+> X-Mailer: git-send-email 2.43.0
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  MAINTAINERS | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 822f34344b..776e0b997d 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -918,7 +918,6 @@ SBSA-REF
->  M: Radoslaw Biernacki <rad@semihalf.com>
->  M: Peter Maydell <peter.maydell@linaro.org>
->  R: Leif Lindholm <leif.lindholm@oss.qualcomm.com>
-> -R: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
->  L: qemu-arm@nongnu.org
->  S: Maintained
->  F: hw/arm/sbsa-ref.c
-> --
-> 2.47.1
->
+>  hw/cpu/a15mpcore.c       | 2 +-
+>  hw/cpu/a9mpcore.c        | 2 +-
+>  hw/cpu/arm11mpcore.c     | 2 +-
+>  hw/cpu/cluster.c         | 2 +-
+>  hw/cpu/realview_mpcore.c | 2 +-
+>  5 files changed, 5 insertions(+), 5 deletions(-)
+> 
+
+Hope I'm not late :-)
+
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+

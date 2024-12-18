@@ -1,144 +1,153 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp984686njk;
-        Wed, 18 Dec 2024 07:02:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV3EWI6cQjuB7nrfew/ExjKIZrreb4gNcrRSKoaDU4JnrAQ1JOp2sRfmZeysV3Umyup1c6gjOXF1S3xwA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFpNhXgwpds16AHZfb0X5YtDOHPdw8qlDGPCbV1Y7vzNlee02TagXzlJ+7rEYgnp7Taana6
-X-Received: by 2002:a05:6000:4b0a:b0:386:366d:5d03 with SMTP id ffacd0b85a97d-388e4d42764mr2832479f8f.16.1734534159067;
-        Wed, 18 Dec 2024 07:02:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734534159; cv=none;
-        d=google.com; s=arc-20240605;
-        b=DVrywdACIi+EkLry+6eqzae3TZnvYAqLxWLU7XlCCDge0aaOVEHt7VzQP6MwWMzKls
-         TEEkkR9hRAG3QUyl6Fk/XH9iQUnZfcDFB84MZAMWoYRr2WbIWvf5Vjmt5Cq5tQuzcWzt
-         jH3ZAwjSpdNXNBVsZim39Q80co0KWceD6CM4ZmTsehf6Gr5m7yTHzYWs9Y64A8ljpb1O
-         Uj2ESP0biaTTHPMlmVg5zRf4YlAfEmEgKIdWQNjohqSrrldyUdrBgsVB98gV3+PnLcQq
-         N8DxRteafjMEoyLQVweYXwBthtlNXbuJN9rSGq5WmLblJ1fJQpOIaf6G/5CNQ4dv6ZXR
-         PfFw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=gMchug3TYb25yM/NzxxPne/1MPMVeNFoIFlK9OSds1M=;
-        fh=atzeyaDF+vEGXrFCTy52fQPchOBA1MeyRZRIDQdja2w=;
-        b=WN+EjgIH7mk6UIWlGDLm5kgBh7SMl91s37FaXhFWdesMPl7KnbU6E5rTDiK6Hf/h2Y
-         qd+X9jtveId4xpMUAcXUSwXDIiYID2Nocxnp327uVwhdLwJscjy+Si6RQOW7v/0j4QqC
-         z/OTHjzDjx1LmVhBaC6NXUEuQiG0eiWRaAH32CN0oDSL1zSKqpVaBz75ZVO+FCtzDvc2
-         o6bER6qr//vvPuiLBmDji0MmWU3FhQUjmJKdvhjOouSDc8G1ALx4VJEXR3LzHZ6QzmkV
-         hclDk0MS3EpppbGcJ+GXMYM7H38502RIlmbR9GLkzC9K8Xver1OUKCApBFjz0/SozuZN
-         CsAg==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="KGkQ/NxX";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-388c8015f23si7129081f8f.246.2024.12.18.07.02.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2024 07:02:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b="KGkQ/NxX";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tNvZB-0002Dv-E4; Wed, 18 Dec 2024 10:02:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1tNvZ5-0002Bh-50; Wed, 18 Dec 2024 10:02:19 -0500
-Received: from mgamail.intel.com ([192.198.163.13])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1tNvZ2-0006ef-4J; Wed, 18 Dec 2024 10:02:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1734534136; x=1766070136;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=/jJ8MVaAeqRT02E9ktCnGfI0BT8udNfG1X8f/KkdJNo=;
- b=KGkQ/NxX53srN6wJkBeVCrb20RJ0NglraqAQ9CDYCK32CQQMYgD2hqsb
- hxKBTA6X7Qf26tU270KeeBbiNnTaw7JZFzQnx8DEIsqeYGZn/UkqhK6xT
- e3J3YBOeKKoYRxsbnHjPIfinjZJL5tucbN9MlMW+mdEP8hRdVh1FGY5nC
- +VovoitdBUZyw0K6kLuamSCTVLOuCzp0N8W8oHFCb6aGpXmaC7D0pf98a
- QHdM5j/PkqmuPIPBVQOg56mywJJsAHMGVb1REixVtV5e+qbD3pYtJoN5e
- /vW/hMMxNaQsdMDw5IVigmI3JVxxCwohu8ShK4HZID6La9UJ54O0DNSDq g==;
-X-CSE-ConnectionGUID: BZtcFWq9SiaFkHIfVHCPqA==
-X-CSE-MsgGUID: 5V62+diWSe6AbnNbCg46Jw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11290"; a="37853999"
-X-IronPort-AV: E=Sophos;i="6.12,244,1728975600"; d="scan'208";a="37853999"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 18 Dec 2024 07:02:12 -0800
-X-CSE-ConnectionGUID: qkP5p7r6Q62i7qjRjHs1bw==
-X-CSE-MsgGUID: Ohg4AkJ2QpOKP+1o3TT04Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,244,1728975600"; d="scan'208";a="97782020"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by orviesa009.jf.intel.com with ESMTP; 18 Dec 2024 07:02:10 -0800
-Date: Wed, 18 Dec 2024 23:20:49 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: Re: [PATCH 22/71] hw/cpu: Constify all Property
-Message-ID: <Z2LoUZ9hf/2kXUla@intel.com>
-References: <20241213190750.2513964-1-richard.henderson@linaro.org>
- <20241213190750.2513964-27-richard.henderson@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab9600dd9csm578696466b.10.2024.12.18.08.21.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Dec 2024 08:21:05 -0800 (PST)
+Received: from draig.lan (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 640F55FBC6;
+	Wed, 18 Dec 2024 16:21:04 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Ed Maste <emaste@freebsd.org>,
+	Eric Farman <farman@linux.ibm.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Li-Wen Hsu <lwhsu@freebsd.org>,
+	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Fabiano Rosas <farosas@suse.de>,
+	Radoslaw Biernacki <rad@semihalf.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	=?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	qemu-riscv@nongnu.org,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Joel Stanley <joel@jms.id.au>,
+	Beraldo Leal <bleal@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Weiwei Li <liwei1518@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Cleber Rosa <crosa@redhat.com>,
+	Leif Lindholm <quic_llindhol@quicinc.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	John Snow <jsnow@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Palmer Dabbelt <palmer@dabbelt.com>,
+	Bin Meng <bmeng.cn@gmail.com>,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	qemu-arm@nongnu.org,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	qemu-ppc@nongnu.org,
+	Bernhard Beschow <shentey@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	qemu-s390x@nongnu.org,
+	Laurent Vivier <lvivier@redhat.com>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Anders Roxell <anders.roxell@linaro.org>
+Subject: [PATCH v2 03/27] tests/functional: add a m68k tuxrun tests
+Date: Wed, 18 Dec 2024 16:20:39 +0000
+Message-Id: <20241218162104.3493551-4-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241218162104.3493551-1-alex.bennee@linaro.org>
+References: <20241218162104.3493551-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20241213190750.2513964-27-richard.henderson@linaro.org>
-Received-SPF: pass client-ip=192.198.163.13; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qgEgabOq1e6u
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: fx+PRQgRw0t4
 
-On Fri, Dec 13, 2024 at 01:06:56PM -0600, Richard Henderson wrote:
-> Date: Fri, 13 Dec 2024 13:06:56 -0600
-> From: Richard Henderson <richard.henderson@linaro.org>
-> Subject: [PATCH 22/71] hw/cpu: Constify all Property
-> X-Mailer: git-send-email 2.43.0
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  hw/cpu/a15mpcore.c       | 2 +-
->  hw/cpu/a9mpcore.c        | 2 +-
->  hw/cpu/arm11mpcore.c     | 2 +-
->  hw/cpu/cluster.c         | 2 +-
->  hw/cpu/realview_mpcore.c | 2 +-
->  5 files changed, 5 insertions(+), 5 deletions(-)
-> 
+We didn't have this before and as it exercises the m68k virt platform
+it seems worth adding. We don't wait for the shutdown because QEMU
+will auto-exit on the shutdown.
 
-Hope I'm not late :-)
+Cc: Laurent Vivier <laurent@vivier.eu>
+Cc: Anders Roxell <anders.roxell@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Message-Id: <20241121165806.476008-24-alex.bennee@linaro.org>
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+---
+v2
+  - add to MAINTAINERS
+---
+ MAINTAINERS                          |  1 +
+ tests/functional/meson.build         |  1 +
+ tests/functional/test_m68k_tuxrun.py | 34 ++++++++++++++++++++++++++++
+ 3 files changed, 36 insertions(+)
+ create mode 100644 tests/functional/test_m68k_tuxrun.py
 
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 822f34344b..f7aa069d47 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1283,6 +1283,7 @@ F: include/hw/intc/goldfish_pic.h
+ F: include/hw/intc/m68k_irqc.h
+ F: include/hw/misc/virt_ctrl.h
+ F: docs/specs/virt-ctlr.rst
++F: tests/functional/test_m68k_tuxrun.py
+ 
+ MicroBlaze Machines
+ -------------------
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index 1bc5ba5229..0e1bfb8c44 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -112,6 +112,7 @@ tests_m68k_system_thorough = [
+   'm68k_mcf5208evb',
+   'm68k_nextcube',
+   'm68k_q800',
++  'm68k_tuxrun',
+ ]
+ 
+ tests_microblaze_system_thorough = [
+diff --git a/tests/functional/test_m68k_tuxrun.py b/tests/functional/test_m68k_tuxrun.py
+new file mode 100644
+index 0000000000..7eacba135f
+--- /dev/null
++++ b/tests/functional/test_m68k_tuxrun.py
+@@ -0,0 +1,34 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots known good tuxboot images the same way
++# that tuxrun (www.tuxrun.org) does. This tool is used by things like
++# the LKFT project to run regression tests on kernels.
++#
++# Copyright (c) 2024 Linaro Ltd.
++#
++# Author:
++#  Alex Bennée <alex.bennee@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import Asset
++from qemu_test.tuxruntest import TuxRunBaselineTest
++
++class TuxRunM68KTest(TuxRunBaselineTest):
++
++    ASSET_M68K_KERNEL = Asset(
++        'https://storage.tuxboot.com/buildroot/20241119/m68k/vmlinux',
++        '7754e1d5cec753ccf1dc6894729a7f54c1a4965631ebf56df8e4ce1163ad19d8')
++    ASSET_M68K_ROOTFS = Asset(
++        'https://storage.tuxboot.com/buildroot/20241119/m68k/rootfs.ext4.zst',
++        '557962ffff265607912e82232cf21adbe0e4e5a88e1e1d411ce848c37f0213e9')
++
++    def test_m68k(self):
++        self.set_machine('virt')
++        self.cpu="m68040"
++        self.common_tuxrun(kernel_asset=self.ASSET_M68K_KERNEL,
++                           rootfs_asset=self.ASSET_M68K_ROOTFS,
++                           drive="virtio-blk-device")
++
++if __name__ == '__main__':
++    TuxRunBaselineTest.main()
+-- 
+2.39.5

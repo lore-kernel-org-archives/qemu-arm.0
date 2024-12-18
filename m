@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab9600dd9csm578696466b.10.2024.12.18.08.21.04
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab96359c8dsm573844466b.130.2024.12.18.08.21.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 18 Dec 2024 08:21:05 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 640F55FBC6;
+	by draig.lan (Postfix) with ESMTP id 492A25FB2E;
 	Wed, 18 Dec 2024 16:21:04 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -54,100 +54,47 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v2 03/27] tests/functional: add a m68k tuxrun tests
-Date: Wed, 18 Dec 2024 16:20:39 +0000
-Message-Id: <20241218162104.3493551-4-alex.bennee@linaro.org>
+Subject: [PATCH v2 02/27] tests/functional: update the i386 tuxrun tests
+Date: Wed, 18 Dec 2024 16:20:38 +0000
+Message-Id: <20241218162104.3493551-3-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241218162104.3493551-1-alex.bennee@linaro.org>
 References: <20241218162104.3493551-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: fx+PRQgRw0t4
+X-TUID: 8d+SjKN8e9oy
 
-We didn't have this before and as it exercises the m68k virt platform
-it seems worth adding. We don't wait for the shutdown because QEMU
-will auto-exit on the shutdown.
+Now there are new up to date images available we should update to them.
 
-Cc: Laurent Vivier <laurent@vivier.eu>
 Cc: Anders Roxell <anders.roxell@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-24-alex.bennee@linaro.org>
-
+Message-Id: <20241121165806.476008-23-alex.bennee@linaro.org>
 ---
-v2
-  - add to MAINTAINERS
----
- MAINTAINERS                          |  1 +
- tests/functional/meson.build         |  1 +
- tests/functional/test_m68k_tuxrun.py | 34 ++++++++++++++++++++++++++++
- 3 files changed, 36 insertions(+)
- create mode 100644 tests/functional/test_m68k_tuxrun.py
+ tests/functional/test_i386_tuxrun.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 822f34344b..f7aa069d47 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1283,6 +1283,7 @@ F: include/hw/intc/goldfish_pic.h
- F: include/hw/intc/m68k_irqc.h
- F: include/hw/misc/virt_ctrl.h
- F: docs/specs/virt-ctlr.rst
-+F: tests/functional/test_m68k_tuxrun.py
+diff --git a/tests/functional/test_i386_tuxrun.py b/tests/functional/test_i386_tuxrun.py
+index c593ffbe8c..f3ccf11ae8 100755
+--- a/tests/functional/test_i386_tuxrun.py
++++ b/tests/functional/test_i386_tuxrun.py
+@@ -17,11 +17,11 @@
+ class TuxRunI386Test(TuxRunBaselineTest):
  
- MicroBlaze Machines
- -------------------
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 1bc5ba5229..0e1bfb8c44 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -112,6 +112,7 @@ tests_m68k_system_thorough = [
-   'm68k_mcf5208evb',
-   'm68k_nextcube',
-   'm68k_q800',
-+  'm68k_tuxrun',
- ]
+     ASSET_I386_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/i386/bzImage',
+-        'a3e5b32a354729e65910f5a1ffcda7c14a6c12a55e8213fb86e277f1b76ed956')
++        'https://storage.tuxboot.com/buildroot/20241119/i386/bzImage',
++        '47fb44e38e34101eb0f71a2a01742b959d40ed5fd67cefb5608a39be11d3b74e')
+     ASSET_I386_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/i386/rootfs.ext4.zst',
+-        'f15e66b2bf673a210ec2a4b2e744a80530b36289e04f5388aab812b97f69754a')
++        'https://storage.tuxboot.com/buildroot/20241119/i386/rootfs.ext4.zst',
++        'a1a3b3b4c9dccd6475b58db95c107b468b736b700f6620985a8ed050a73d51c8')
  
- tests_microblaze_system_thorough = [
-diff --git a/tests/functional/test_m68k_tuxrun.py b/tests/functional/test_m68k_tuxrun.py
-new file mode 100644
-index 0000000000..7eacba135f
---- /dev/null
-+++ b/tests/functional/test_m68k_tuxrun.py
-@@ -0,0 +1,34 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots known good tuxboot images the same way
-+# that tuxrun (www.tuxrun.org) does. This tool is used by things like
-+# the LKFT project to run regression tests on kernels.
-+#
-+# Copyright (c) 2024 Linaro Ltd.
-+#
-+# Author:
-+#  Alex Bennée <alex.bennee@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import Asset
-+from qemu_test.tuxruntest import TuxRunBaselineTest
-+
-+class TuxRunM68KTest(TuxRunBaselineTest):
-+
-+    ASSET_M68K_KERNEL = Asset(
-+        'https://storage.tuxboot.com/buildroot/20241119/m68k/vmlinux',
-+        '7754e1d5cec753ccf1dc6894729a7f54c1a4965631ebf56df8e4ce1163ad19d8')
-+    ASSET_M68K_ROOTFS = Asset(
-+        'https://storage.tuxboot.com/buildroot/20241119/m68k/rootfs.ext4.zst',
-+        '557962ffff265607912e82232cf21adbe0e4e5a88e1e1d411ce848c37f0213e9')
-+
-+    def test_m68k(self):
-+        self.set_machine('virt')
-+        self.cpu="m68040"
-+        self.common_tuxrun(kernel_asset=self.ASSET_M68K_KERNEL,
-+                           rootfs_asset=self.ASSET_M68K_ROOTFS,
-+                           drive="virtio-blk-device")
-+
-+if __name__ == '__main__':
-+    TuxRunBaselineTest.main()
+     def test_i386(self):
+         self.set_machine('q35')
 -- 
 2.39.5

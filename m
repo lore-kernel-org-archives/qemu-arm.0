@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab960062d3sm573350166b.16.2024.12.18.08.26.21
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab96006133sm581741166b.25.2024.12.18.08.26.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 18 Dec 2024 08:26:22 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C1EAE603E4;
-	Wed, 18 Dec 2024 16:21:05 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id A79F860BD3;
+	Wed, 18 Dec 2024 16:21:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -53,73 +53,72 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 17/27] tests/qtest: remove clock_steps from virtio tests
-Date: Wed, 18 Dec 2024 16:20:53 +0000
-Message-Id: <20241218162104.3493551-18-alex.bennee@linaro.org>
+Subject: [PATCH v2 26/27] tests/vm: allow interactive login as root
+Date: Wed, 18 Dec 2024 16:21:02 +0000
+Message-Id: <20241218162104.3493551-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241218162104.3493551-1-alex.bennee@linaro.org>
 References: <20241218162104.3493551-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: kZouaDKyt25M
+X-TUID: D5zDNJs2XUcn
 
-In the qtest environment time will not step forward if the system is
-paused (timers disabled) or we have no timer events to fire. As a
-result VirtIO events are responded to directly and we don't need to
-step time forward.
-
-We still do timeout processing to handle the fact the target QEMU may
-not be ready to respond right away. This will usually be due to a slow
-CI system or if QEMU is running under something like rr.
-
-Future qtest patches will assert that time actually changes when a
-step is requested.
+This is useful when debugging and you want to add packages to an
+image.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - s/with/when/
-  - drop clock_step entirely
----
- tests/qtest/libqos/virtio.c | 4 ----
- 1 file changed, 4 deletions(-)
+ tests/vm/Makefile.include | 3 ++-
+ tests/vm/basevm.py        | 9 +++++++--
+ 2 files changed, 9 insertions(+), 3 deletions(-)
 
-diff --git a/tests/qtest/libqos/virtio.c b/tests/qtest/libqos/virtio.c
-index a21b6eee9c..2e7979652f 100644
---- a/tests/qtest/libqos/virtio.c
-+++ b/tests/qtest/libqos/virtio.c
-@@ -170,7 +170,6 @@ void qvirtio_wait_queue_isr(QTestState *qts, QVirtioDevice *d,
-     gint64 start_time = g_get_monotonic_time();
+diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
+index d80ca79a28..14188bba1c 100644
+--- a/tests/vm/Makefile.include
++++ b/tests/vm/Makefile.include
+@@ -66,6 +66,7 @@ endif
+ 	@echo "Special variables:"
+ 	@echo "    BUILD_TARGET=foo              - Override the build target"
+ 	@echo "    DEBUG=1                       - Enable verbose output on host and interactive debugging"
++	@echo "    ROOT_USER=1                   - Login as root user for interactive shell"
+ 	@echo '    EXTRA_CONFIGURE_OPTS="..."    - Pass to configure step'
+ 	@echo "    J=[0..9]*                     - Override the -jN parameter for make commands"
+ 	@echo "    LOG_CONSOLE=1                 - Log console to file in: ~/.cache/qemu-vm "
+@@ -141,6 +142,6 @@ vm-boot-ssh-%: $(IMAGES_DIR)/%.img $(VM_VENV)
+ 		$(if $(EFI_AARCH64),--efi-aarch64 $(EFI_AARCH64)) \
+ 		$(if $(LOG_CONSOLE),--log-console) \
+ 		--image "$<" \
+-		--interactive \
++		$(if $(ROOT_USER),--interactive-root,-interactive) \
+ 		false, \
+ 		"  VM-BOOT-SSH $*") || true
+diff --git a/tests/vm/basevm.py b/tests/vm/basevm.py
+index 6f3f2e76df..6d41ac7574 100644
+--- a/tests/vm/basevm.py
++++ b/tests/vm/basevm.py
+@@ -612,8 +612,11 @@ def get_default_jobs():
+     parser.add_argument("--source-path", default=None,
+                         help="Path of source directory, "\
+                         "for finding additional files. ")
+-    parser.add_argument("--interactive", "-I", action="store_true",
+-                        help="Interactively run command")
++    int_ops = parser.add_mutually_exclusive_group()
++    int_ops.add_argument("--interactive", "-I", action="store_true",
++                         help="Interactively run command")
++    int_ops.add_argument("--interactive-root", action="store_true",
++                         help="Interactively run command as root")
+     parser.add_argument("--snapshot", "-s", action="store_true",
+                         help="run tests with a snapshot")
+     parser.add_argument("--genisoimage", default="genisoimage",
+@@ -675,6 +678,8 @@ def main(vmcls, config=None):
+         exitcode = 3
+     if args.interactive:
+         vm.ssh()
++    elif args.interactive_root:
++        vm.ssh_root()
  
-     for (;;) {
--        qtest_clock_step(qts, 100);
-         if (d->bus->get_queue_isr_status(d, vq)) {
-             return;
-         }
-@@ -192,7 +191,6 @@ uint8_t qvirtio_wait_status_byte_no_isr(QTestState *qts, QVirtioDevice *d,
-     uint8_t val;
- 
-     while ((val = qtest_readb(qts, addr)) == 0xff) {
--        qtest_clock_step(qts, 100);
-         g_assert(!d->bus->get_queue_isr_status(d, vq));
-         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
-     }
-@@ -219,14 +217,12 @@ void qvirtio_wait_used_elem(QTestState *qts, QVirtioDevice *d,
-     for (;;) {
-         uint32_t got_desc_idx;
- 
--        qtest_clock_step(qts, 100);
- 
-         if (d->bus->get_queue_isr_status(d, vq) &&
-             qvirtqueue_get_buf(qts, vq, &got_desc_idx, len)) {
-             g_assert_cmpint(got_desc_idx, ==, desc_idx);
-             return;
-         }
--
-         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
-     }
- }
+     if not args.snapshot:
+         vm.graceful_shutdown()
 -- 
 2.39.5

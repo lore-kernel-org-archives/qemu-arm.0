@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab960065dcsm576698566b.2.2024.12.18.08.21.11
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab96006b34sm572991366b.13.2024.12.18.08.21.11
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 18 Dec 2024 08:21:13 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id F34E85FBC6;
-	Wed, 18 Dec 2024 16:21:05 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 17B4260B86;
+	Wed, 18 Dec 2024 16:21:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -53,78 +53,147 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 19/27] tests/functional: remove hacky sleep from the tests
-Date: Wed, 18 Dec 2024 16:20:55 +0000
-Message-Id: <20241218162104.3493551-20-alex.bennee@linaro.org>
+Subject: [PATCH v2 20/27] tests/functional: extend test_aarch64_virt with vulkan test
+Date: Wed, 18 Dec 2024 16:20:56 +0000
+Message-Id: <20241218162104.3493551-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241218162104.3493551-1-alex.bennee@linaro.org>
 References: <20241218162104.3493551-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: I/uSG/ftDmpK
+X-TUID: nWwTbIuJRE8F
 
-We have proper detection of prompts now so we don't need to guess with
-sleep() sprinkled through the test. The extra step of calling halt is
-just to flush the final bits of the log (although the last line is
-still missed).
+Now we have virtio-gpu Vulkan support lets add a test for it.
+Currently this is using images build by buildroot:
+
+  https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
 ---
 v2
-  - avoid long lines by iterating through an array
-  - drop time import
+  - use decorator for has_cmd(zstd)
+  - move set_machine/require_accelerator to top of test
+  - un-handled->unhandled
+  - drop extra - from --snapshot
+  - drop unneeded virtualization=on
+  - only show 1s of each scene
+  - fix long lines
 ---
- tests/functional/test_aarch64_virt.py | 29 +++++++++++++++------------
- 1 file changed, 16 insertions(+), 13 deletions(-)
+ tests/functional/test_aarch64_virt.py | 84 ++++++++++++++++++++++++++-
+ 1 file changed, 81 insertions(+), 3 deletions(-)
 
 diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
-index c967da41b4..453e84c39f 100755
+index 453e84c39f..4ac66905b8 100755
 --- a/tests/functional/test_aarch64_virt.py
 +++ b/tests/functional/test_aarch64_virt.py
-@@ -10,7 +10,6 @@
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
--import time
+@@ -13,11 +13,14 @@
  import os
  import logging
  
-@@ -107,18 +106,22 @@ def common_aarch64_virt(self, machine):
++from qemu.machine.machine import VMLaunchFailure
++
+ from qemu_test import BUILD_DIR
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import exec_command, wait_for_console_pattern
+-from qemu_test import get_qemu_img, run_cmd
+-
++from qemu_test import exec_command_and_wait_for_pattern
++from qemu_test import has_cmd, get_qemu_img, run_cmd
++from unittest import skipUnless
+ 
+ class Aarch64VirtMachine(QemuSystemTest):
+     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
+@@ -101,7 +104,9 @@ def common_aarch64_virt(self, machine):
+ 
+         # Add the device
+         self.vm.add_args('-blockdev',
+-                         f"driver=qcow2,file.driver=file,file.filename={image_path},node-name=scratch")
++                         "driver=qcow2,file."
++                         "driver=file,file."
++                         f"filename={image_path},node-name=scratch")
+         self.vm.add_args('-device',
                           'virtio-blk-device,drive=scratch')
  
-         self.vm.launch()
--        self.wait_for_console_pattern('Welcome to Buildroot')
--        time.sleep(0.1)
--        exec_command(self, 'root')
--        time.sleep(0.1)
--        exec_command(self, 'dd if=/dev/hwrng of=/dev/vda bs=512 count=4')
--        time.sleep(0.1)
--        exec_command(self, 'md5sum /dev/vda')
--        time.sleep(0.1)
--        exec_command(self, 'cat /proc/interrupts')
--        time.sleep(0.1)
--        exec_command(self, 'cat /proc/self/maps')
--        time.sleep(0.1)
-+
-+        ps1='#'
-+        self.wait_for_console_pattern('login:')
-+
-+        commands = [
-+            ('root', ps1),
-+            ('cat /proc/interrupts', ps1),
-+            ('cat /proc/self/maps', ps1),
-+            ('uname -a', ps1),
-+            ('dd if=/dev/hwrng of=/dev/vda bs=512 count=4', ps1),
-+            ('md5sum /dev/vda', ps1),
-+            ('halt -n', 'reboot: System halted')
-+        ]
-+
-+        for cmd, pattern in commands:
-+            exec_command_and_wait_for_pattern(self, cmd, pattern)
+@@ -130,5 +135,78 @@ def test_aarch64_virt_gicv2(self):
+         self.common_aarch64_virt("virt,gic-version=2")
  
-     def test_aarch64_virt_gicv3(self):
-         self.common_aarch64_virt("virt,gic_version=3")
+ 
++    ASSET_VIRT_GPU_KERNEL = Asset(
++        ('https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
++         'download?path=%2F&files='
++         'Image'),
++        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
++
++    ASSET_VIRT_GPU_ROOTFS = Asset(
++        ('https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
++         'download?path=%2F&files='
++         'rootfs.ext4.zstd'),
++        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
++
++    @skipUnless(*has_cmd('zstd'))
++    def test_aarch64_virt_with_gpu(self):
++        # This tests boots with a buildroot test image that contains
++        # vkmark and other GPU exercising tools. We run a headless
++        # weston that nevertheless still exercises the virtio-gpu
++        # backend.
++
++        self.set_machine('virt')
++        self.require_accelerator("tcg")
++
++        image_path_zst = self.ASSET_VIRT_GPU_ROOTFS.fetch()
++        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
++
++        image_path = self.workdir + "/rootfs.ext4"
++
++        run_cmd(['zstd', "-f", "-d", image_path_zst,
++                 "-o", image_path])
++
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyAMA0 root=/dev/vda')
++
++        self.vm.add_args("-accel", "tcg")
++        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
++        self.vm.add_args("-machine", "virt,gic-version=max",
++                         '-kernel', kernel_path,
++                         '-append', kernel_command_line)
++        self.vm.add_args("-smp", "2", "-m", "2048")
++        self.vm.add_args("-device",
++                         "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
++        self.vm.add_args("-display", "egl-headless")
++        self.vm.add_args("-display", "dbus,gl=on")
++        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
++        self.vm.add_args("-blockdev",
++                         "driver=raw,file.driver=file,"
++                         "node-name=hd0,read-only=on,"
++                         f"file.filename={image_path}")
++        self.vm.add_args("-snapshot")
++
++        try:
++            self.vm.launch()
++        except VMLaunchFailure as excp:
++            if "old virglrenderer, blob resources unsupported" in excp.output:
++                self.skipTest("No blob support for virtio-gpu")
++            elif "old virglrenderer, venus unsupported" in excp.output:
++                self.skipTest("No venus support for virtio-gpu")
++            else:
++                self.log.info("unhandled launch failure: {excp.output}")
++                raise excp
++
++        self.wait_for_console_pattern('buildroot login:')
++        exec_command(self, 'root')
++        exec_command(self, 'export XDG_RUNTIME_DIR=/tmp')
++        exec_command_and_wait_for_pattern(self,
++                                          "weston -B headless "
++                                          "--renderer gl "
++                                          "--shell kiosk "
++                                          "-- vkmark -b:duration=1.0",
++                                          "vkmark Score")
++
++
+ if __name__ == '__main__':
+     QemuSystemTest.main()
 -- 
 2.39.5

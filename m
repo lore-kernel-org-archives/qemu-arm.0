@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab96006b34sm572991366b.13.2024.12.18.08.21.11
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab96068a8bsm575047766b.76.2024.12.18.08.21.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Dec 2024 08:21:13 -0800 (PST)
+        Wed, 18 Dec 2024 08:21:15 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 17B4260B86;
+	by draig.lan (Postfix) with ESMTP id 5F3A65FB2E;
 	Wed, 18 Dec 2024 16:21:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -53,147 +53,125 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 20/27] tests/functional: extend test_aarch64_virt with vulkan test
-Date: Wed, 18 Dec 2024 16:20:56 +0000
-Message-Id: <20241218162104.3493551-21-alex.bennee@linaro.org>
+Subject: [PATCH v2 23/27] tests/lcitool: remove temp workaround for debian mips64el
+Date: Wed, 18 Dec 2024 16:20:59 +0000
+Message-Id: <20241218162104.3493551-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241218162104.3493551-1-alex.bennee@linaro.org>
 References: <20241218162104.3493551-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: nWwTbIuJRE8F
+X-TUID: Kwi7+qscn+Ok
 
-Now we have virtio-gpu Vulkan support lets add a test for it.
-Currently this is using images build by buildroot:
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-  https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
+The workaround applied in
 
+  commit c60473d29254b79d9437eface8b342e84663ba66
+  Author: Alex Bennée <alex.bennee@linaro.org>
+  Date:   Wed Oct 2 10:03:33 2024 +0200
+
+    testing: bump mips64el cross to bookworm and fix package list
+
+Is no longer required since the affected builds are now fixed.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20241217133525.3836570-1-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - use decorator for has_cmd(zstd)
-  - move set_machine/require_accelerator to top of test
-  - un-handled->unhandled
-  - drop extra - from --snapshot
-  - drop unneeded virtualization=on
-  - only show 1s of each scene
-  - fix long lines
----
- tests/functional/test_aarch64_virt.py | 84 ++++++++++++++++++++++++++-
- 1 file changed, 81 insertions(+), 3 deletions(-)
+ .../dockerfiles/debian-mips64el-cross.docker  |  9 ++++++
+ tests/lcitool/mappings.yml                    | 29 -------------------
+ 2 files changed, 9 insertions(+), 29 deletions(-)
 
-diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
-index 453e84c39f..4ac66905b8 100755
---- a/tests/functional/test_aarch64_virt.py
-+++ b/tests/functional/test_aarch64_virt.py
-@@ -13,11 +13,14 @@
- import os
- import logging
+diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
+index c09a8da890..9f6c4763c5 100644
+--- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
++++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
+@@ -93,13 +93,18 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       libcmocka-dev:mips64el \
+                       libcurl4-gnutls-dev:mips64el \
+                       libdaxctl-dev:mips64el \
++                      libdrm-dev:mips64el \
++                      libepoxy-dev:mips64el \
+                       libfdt-dev:mips64el \
+                       libffi-dev:mips64el \
+                       libfuse3-dev:mips64el \
++                      libgbm-dev:mips64el \
+                       libgcrypt20-dev:mips64el \
+                       libglib2.0-dev:mips64el \
+                       libglusterfs-dev:mips64el \
+                       libgnutls28-dev:mips64el \
++                      libgtk-3-dev:mips64el \
++                      libgtk-vnc-2.0-dev:mips64el \
+                       libibverbs-dev:mips64el \
+                       libiscsi-dev:mips64el \
+                       libjemalloc-dev:mips64el \
+@@ -119,6 +124,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       librbd-dev:mips64el \
+                       librdmacm-dev:mips64el \
+                       libsasl2-dev:mips64el \
++                      libsdl2-dev:mips64el \
++                      libsdl2-image-dev:mips64el \
+                       libseccomp-dev:mips64el \
+                       libselinux1-dev:mips64el \
+                       libslirp-dev:mips64el \
+@@ -134,6 +141,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       libusb-1.0-0-dev:mips64el \
+                       libusbredirhost-dev:mips64el \
+                       libvdeplug-dev:mips64el \
++                      libvirglrenderer-dev:mips64el \
++                      libvte-2.91-dev:mips64el \
+                       libxdp-dev:mips64el \
+                       libzstd-dev:mips64el \
+                       nettle-dev:mips64el \
+diff --git a/tests/lcitool/mappings.yml b/tests/lcitool/mappings.yml
+index f8186b0e69..74eb13d62b 100644
+--- a/tests/lcitool/mappings.yml
++++ b/tests/lcitool/mappings.yml
+@@ -6,23 +6,6 @@ mappings:
+   flake8:
+     OpenSUSELeap15:
  
-+from qemu.machine.machine import VMLaunchFailure
-+
- from qemu_test import BUILD_DIR
- from qemu_test import QemuSystemTest, Asset
- from qemu_test import exec_command, wait_for_console_pattern
--from qemu_test import get_qemu_img, run_cmd
+-  # Due to https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1081535 we
+-  # have to disable all packages that depend on libgl1-mesa-dri:mips64el
+-  gtk3:
+-    mips64el-deb:
 -
-+from qemu_test import exec_command_and_wait_for_pattern
-+from qemu_test import has_cmd, get_qemu_img, run_cmd
-+from unittest import skipUnless
+-  libdrm:
+-    mips64el-deb:
+-
+-  libepoxy:
+-    mips64el-deb:
+-
+-  gtk-vnc:
+-    mips64el-deb:
+-
+-  mesa-libgbm:
+-    mips64el-deb:
+-
+   meson:
+     OpenSUSELeap15:
  
- class Aarch64VirtMachine(QemuSystemTest):
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
-@@ -101,7 +104,9 @@ def common_aarch64_virt(self, machine):
+@@ -81,18 +64,6 @@ mappings:
+   python3-wheel:
+     OpenSUSELeap15: python311-pip
  
-         # Add the device
-         self.vm.add_args('-blockdev',
--                         f"driver=qcow2,file.driver=file,file.filename={image_path},node-name=scratch")
-+                         "driver=qcow2,file."
-+                         "driver=file,file."
-+                         f"filename={image_path},node-name=scratch")
-         self.vm.add_args('-device',
-                          'virtio-blk-device,drive=scratch')
- 
-@@ -130,5 +135,78 @@ def test_aarch64_virt_gicv2(self):
-         self.common_aarch64_virt("virt,gic-version=2")
- 
- 
-+    ASSET_VIRT_GPU_KERNEL = Asset(
-+        ('https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-+         'download?path=%2F&files='
-+         'Image'),
-+        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
-+
-+    ASSET_VIRT_GPU_ROOTFS = Asset(
-+        ('https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-+         'download?path=%2F&files='
-+         'rootfs.ext4.zstd'),
-+        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
-+
-+    @skipUnless(*has_cmd('zstd'))
-+    def test_aarch64_virt_with_gpu(self):
-+        # This tests boots with a buildroot test image that contains
-+        # vkmark and other GPU exercising tools. We run a headless
-+        # weston that nevertheless still exercises the virtio-gpu
-+        # backend.
-+
-+        self.set_machine('virt')
-+        self.require_accelerator("tcg")
-+
-+        image_path_zst = self.ASSET_VIRT_GPU_ROOTFS.fetch()
-+        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
-+
-+        image_path = self.workdir + "/rootfs.ext4"
-+
-+        run_cmd(['zstd', "-f", "-d", image_path_zst,
-+                 "-o", image_path])
-+
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyAMA0 root=/dev/vda')
-+
-+        self.vm.add_args("-accel", "tcg")
-+        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
-+        self.vm.add_args("-machine", "virt,gic-version=max",
-+                         '-kernel', kernel_path,
-+                         '-append', kernel_command_line)
-+        self.vm.add_args("-smp", "2", "-m", "2048")
-+        self.vm.add_args("-device",
-+                         "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
-+        self.vm.add_args("-display", "egl-headless")
-+        self.vm.add_args("-display", "dbus,gl=on")
-+        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
-+        self.vm.add_args("-blockdev",
-+                         "driver=raw,file.driver=file,"
-+                         "node-name=hd0,read-only=on,"
-+                         f"file.filename={image_path}")
-+        self.vm.add_args("-snapshot")
-+
-+        try:
-+            self.vm.launch()
-+        except VMLaunchFailure as excp:
-+            if "old virglrenderer, blob resources unsupported" in excp.output:
-+                self.skipTest("No blob support for virtio-gpu")
-+            elif "old virglrenderer, venus unsupported" in excp.output:
-+                self.skipTest("No venus support for virtio-gpu")
-+            else:
-+                self.log.info("unhandled launch failure: {excp.output}")
-+                raise excp
-+
-+        self.wait_for_console_pattern('buildroot login:')
-+        exec_command(self, 'root')
-+        exec_command(self, 'export XDG_RUNTIME_DIR=/tmp')
-+        exec_command_and_wait_for_pattern(self,
-+                                          "weston -B headless "
-+                                          "--renderer gl "
-+                                          "--shell kiosk "
-+                                          "-- vkmark -b:duration=1.0",
-+                                          "vkmark Score")
-+
-+
- if __name__ == '__main__':
-     QemuSystemTest.main()
+-  sdl2:
+-    mips64el-deb:
+-
+-  sdl2-image:
+-    mips64el-deb:
+-
+-  virglrenderer:
+-    mips64el-deb:
+-
+-  vte:
+-    mips64el-deb:
+-
+ pypi_mappings:
+   # Request more recent version
+   meson:
 -- 
 2.39.5

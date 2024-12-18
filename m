@@ -1,104 +1,105 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1202377njk;
-        Wed, 18 Dec 2024 12:22:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXSiriDKy66XE0vnQaJ4df25DuwjYFSEcBNg4rMu7vh7JFsSyJhlgX2Jbmvlx8o48ghUdRjVvCZKSbzsA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE8snlP8Qos9fJ3zGn0z4tMfjx583HZDyhzdcZieqyKqDkF59D8tAnnY6Wzo9+QLv3aiUXw
-X-Received: by 2002:a05:620a:31a1:b0:7b6:da92:fcdd with SMTP id af79cd13be357-7b86371f5f7mr676556885a.15.1734553361650;
-        Wed, 18 Dec 2024 12:22:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734553361; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1202551njk;
+        Wed, 18 Dec 2024 12:22:59 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUbrcY81bB5J67BEn+bimCYzpRo1pmI0oatT9cWBOPZUPRU1VMnbkY2mTIagwE4wlgebALoLzm1Bk+DSQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGbCX9RofnP+FPTA4WgHvByaZmVsOA4OOkyA84oALytfDDZd/8ncLT9Y3u5WddzEZLh1Lkh
+X-Received: by 2002:a05:620a:2407:b0:7ac:a0a5:9bf4 with SMTP id af79cd13be357-7b8637ad44cmr588966285a.40.1734553379438;
+        Wed, 18 Dec 2024 12:22:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734553379; cv=none;
         d=google.com; s=arc-20240605;
-        b=MoIGtydvBY5SOgm2Rqa4oDtrhF0UB4xai0YIi29oVxOH4rvB9QtGv5ygaqVCuvr9UT
-         5M5cWEurrgBljZiXt80R3V1hQkmVabrLCwZiaANpKJIl+Os8TZboe+7CRL1vNa0e8ZNl
-         FZShkFRWBPudR7KsmclF3lZKpTjD+x48BLnLeQhKDSZHn0JCoSYPm0VDwfBATtXpKqMP
-         e49DNtHDhmHjHVRAuo5kSYiQV28NAeWQllXvqgLOoK28t40B9fSwg6pPo+1zasWdnF1S
-         ZeIUsiU8Jqo757kA59K1bYEcDk7EjUB/CqePCNuh/528zmI1JerhT1+6erigHOMImgsj
-         EnTg==
+        b=My/33MOZDroXCQ1KhEBpJHsLgAJcLEhgp1CAo8/0OVabWBVXADKzPiFyWp1h1x/7a/
+         YdePdNz78WoMPVAHQdamgiZ24RbsT2ZNpvfa5iIqbkP7QobORoXl8nHJAKPi/19xlFzD
+         MExEvBJhT1GFII8kiTdgnHKsKSHLxUfZPWGIO9vMMXyR5a8rak5nHnXDzpBibN+vYcz2
+         T3PyS0nySHZwdXMAhTJM0ASI6V11/cxzD2cQpkp+3vFwgbsugrEREcDDFtTmVGkS2eOJ
+         HJMK8O8Ukib+TT9UVNpDofUlrz3UFbtkztIpJGwPPemX0VUt3+90A6N9WdPUoBwam1U2
+         16wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Fwbq5xyzI6PRmIt0HAom/UBI62Wcs3ps5RdZPJLyvZU=;
-        fh=XgncJnChD89f8YcbUPv/zS+JHnV3t/pCNdyLfi17LkQ=;
-        b=ANn02vpIq2Io6XnvARXpAOMwJEcYHR2yzFXIoIY5bOfW1klxSbJYnErZTsJ7j0e+4K
-         f9Q3qvin8e7LAcoNPKJ60yiRXOJw4vUywTBdQoEWs5Y89/NcnT13E1dzCMgmUvxLmCJ1
-         0x4kvfCpEd6UV9EICIb+4EYSPxclPNNHPD3oygqMb1doZDTr34XOC8Q1scFNEfkdw0fy
-         FQx983Sv4d2mRoeu5x2HEyWQLGga9QD+6xCBLwBG+FTpyg0cZaEClOZijcqfHCZhJPUL
-         1H3wauSqjoQuezcKZqnuPSHZkIovKSskH6cdnqApMs4bHw0GVxmKtAdIVqh0qajXPkNH
-         FX0A==;
+        bh=jbiG06Qj2eVtNM1RZ8Zpr4IJcnCvDLdL2ENhuYJnNHE=;
+        fh=FgJWw9sBsbnc3hp/8ER2VO4HcR0AzBvLlZJd/TbFRP8=;
+        b=eukuZhSu9/68TyuYwfPoJ5WibUFS1rzTZIst09kQbdUFEAuGp5VWKE/23hyz1gEiHS
+         nmqY2Qumf/RT5bKaVGnPDKA6w0AoQ9/CaFwB7ddF/fLnzFpem+yrmeLy8QpmY1nrHUS6
+         g6d/Fn3AHNux08mPAKJQWkgSAU9DMOaQuwJuCUs8Q+Iur43Zpg5rrFROCwDM5+2P+dTy
+         COHptRbJ+D28ctECbYaSnN4uGKLpQBcLpDXUDr5FE3Lrr69gpRugfb1BRgbMX7Jgk+Ww
+         1mP6EsNTr3zPnL6rWLtCOshmnardEXwJTXORbLG0dHgu4Dhgq018taHzT7AvniccKjkV
+         81Fg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=I5jj8+5S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=sdHX0E+f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b7048bf96bsi1300441485a.293.2024.12.18.12.22.41
+        by mx.google.com with ESMTPS id af79cd13be357-7b7048e44e1si1501951285a.550.2024.12.18.12.22.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Dec 2024 12:22:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Dec 2024 12:22:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=I5jj8+5S;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=sdHX0E+f;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tO0Xs-0001ez-L5; Wed, 18 Dec 2024 15:21:24 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tO0Xh-0001Tb-Hy; Wed, 18 Dec 2024 15:21:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tO0Xn-0001a0-Tw
- for qemu-devel@nongnu.org; Wed, 18 Dec 2024 15:21:19 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1tO0Xd-0001Ph-QN
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2024 15:21:09 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tO0Xl-0000OY-Ce
- for qemu-devel@nongnu.org; Wed, 18 Dec 2024 15:21:19 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-3862b364538so44818f8f.1
- for <qemu-devel@nongnu.org>; Wed, 18 Dec 2024 12:21:17 -0800 (PST)
+ id 1tO0Xa-0000J8-Gl
+ for qemu-arm@nongnu.org; Wed, 18 Dec 2024 15:21:09 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-38633b5dbcfso80669f8f.2
+ for <qemu-arm@nongnu.org>; Wed, 18 Dec 2024 12:21:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1734553276; x=1735158076;
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1734553265; x=1735158065;
  darn=nongnu.org; 
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Fwbq5xyzI6PRmIt0HAom/UBI62Wcs3ps5RdZPJLyvZU=;
- b=I5jj8+5SeVRAuE/BpxVq9jqUJcEL+FcjlOh/rv9gkfbA7hmSWfM2UFzT8XrJIPwfDX
- 4TeVg9IN0DRv0YSdHYBHNLE6fe53A/Efb/UGMX5qM+giakVTQrjVZXu7IvPuaFiMq30r
- qWRmtNep+gTMr/syB+NgFHlyeo/2dd+CEBTtybYzp3V5D69VlZ/R0gnDO8iuAraIcWIe
- T1v2KiFe6nPZwbbnm0mxs+645U5Ts6U/2/aQS2lSwMf5efMq18ojZodr2ojPORAcRtBH
- JshDNLeWbEQUzhnn7H7e/Hx6LnRL4OjYkEE3Vn9kDZIfZ7PiZ0kuCQZhFUqP/j6mU+hk
- 1g6A==
+ bh=jbiG06Qj2eVtNM1RZ8Zpr4IJcnCvDLdL2ENhuYJnNHE=;
+ b=sdHX0E+f2BPfkimwAxCMoiRGg1f/sgk99ZgqYNHlTmgDiMONFA9evZiR7WOpQ1Wz0V
+ kPIs48i5pHZH1MU1nIiucA9kJuCavm5fbek3LqprB3rpGry7lDn3W+BMFGdCD0Yb747m
+ iZjRxg5fQd2aHBd2g6X4IfdF6lu6BtqS+3mkCII6fXC73XtgEeVU/S/aju4owd+IrTzl
+ MjRhY1zkcdU5fMaeFWK2f3+CIJMB/3quBRJzY+1TuE6/iqt9aToEgP9e40zzVjGhQAnW
+ IZqMJ1fHKBFCUT1sinGNvUysZH4243cZbC9LL0hHKIH7iy8PlhDIjY6BrGvoLn9d6XCz
+ 7dXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734553276; x=1735158076;
+ d=1e100.net; s=20230601; t=1734553265; x=1735158065;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Fwbq5xyzI6PRmIt0HAom/UBI62Wcs3ps5RdZPJLyvZU=;
- b=mCuR1Di3k9q2BRljaqIsD9dPBQuLjXT8/TSsVovmz3zbzo9cs2hP1fEBu8zuU3L8lT
- dC8PPQVsd5FasejH0/aTALNebGY4e8RJ8dpaQSSGmODG/sz0MFP8W8ufGInmG/FtQqTW
- ynAEdUUFC3+t9xdgnHwzEUaK5cHnhyTDzH7rPoJlbImEuYvep/S/ny+P51rLcJSxQ6mj
- 900kVTbtxI+jAPn1+e3YscaAyHRTAUQCSEDSjFt1b2zt9LIWIIcFPA/nU9bzz0Y+z8x3
- MCMiUQlmAp5xlzcphpujoL9RdT2Kwdxli6RUkKAoeYjBYPy2aCZhTJEAi/qoedP6kL8M
- 2FsQ==
-X-Gm-Message-State: AOJu0YynkEYjLqMIbtOFA1266qe3JzQVwsDgYwW0svYefSW2/M9P/dMh
- k7OLyyxcTFCWvptitVfn3UxoGdr14CYFIxOVJ8AEPyOdutdsRQH4eWQqc9PbUPF/RkaeqQ/mBZD
- 8VQ==
-X-Gm-Gg: ASbGncuXKhI8om1W8QE4o8TJ9+IHMeniYKF8d/VHgpN6eG9KaMly2BMzJdgz4gIu5Gn
- TOV2as28wnx4Qf2MJEF7nekDELDZsgSCgLypAZiDcuD8vWUFYPtUGawxkoW7QmTodQCnijsZfvz
- +UpB3Ty9nQxu54OE89cTyy3kmG2s0e45oKpnuaMCo6IyIK1lC6OfzxOP4Q/uKl4noElIeX1S9iO
- DHvDfIJf+3sHCkEuBZj9rkWn1VktJtdagPzoVPP4ADLovLg9p367WcQqTpMaApXDrtVpRFrheA6
- pVkeh4f4ML8yxhKIpXTke5OlIOuWUakG
-X-Received: by 2002:a05:6000:2c8:b0:385:e8e7:d09a with SMTP id
- ffacd0b85a97d-38a1a1fa088mr614933f8f.2.1734553275835; 
- Wed, 18 Dec 2024 12:21:15 -0800 (PST)
+ bh=jbiG06Qj2eVtNM1RZ8Zpr4IJcnCvDLdL2ENhuYJnNHE=;
+ b=tRf144L3+ozu7GSXIthMyyOha7JXp+A4ahdzxbPeRFCncDpFE0gwtRnUwAV+xXUC0r
+ LJPMoJHH/dv2GQ0upuvZ0GnQWzgro2PRBOmjXi/yxCCNhtae++ZRXFsjdYcug2AxciXM
+ auPwx+5PiSPlDRXexzGpMgX2EO1LbqlmgF6g2Qrm4srUoTCu68ZWr4xAVu/Oy0Wm+pxC
+ H0C0sQhW0/U0/w7YTRzTLly93A54hCXPx5bSYZKfjnsQ/UVAOonFLWnx9iBUdmSr+c1q
+ FTZs4+2AlJiid7pwLSzEnitBsiIE+FSRk9TPlTsGVYEIzoMp/zz7HPFyYz1R4ak+cwvn
+ GHEg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX76NRX5va5rHgwAQ9WzFh6KjqXEh6WPFyHBbk0gnf5EaToy86R7jxCmXof/5GWVwVDszf7MHVsFw==@nongnu.org
+X-Gm-Message-State: AOJu0YzT9V7nPGQ2X5GclTXeXW0CjEXTycKKE/K9CsO2t6e8dcspsSyP
+ xHEygeDj7N37r02gFZd50O1cxuEbLQxId5CAfav62si+hBXmY7sTpuff2WhTWA==
+X-Gm-Gg: ASbGncuPh3rgCZOzGpCUI6XOtHKFMmYMyF+553YKOE6am4BRr0uMm0GUvE2k7CDDtz0
+ 0KF7Ma9afxTjakTXRGfnU5PTfoLQHXjpEI5/ySYiXahePE1yRofMgqS0yU9NhFH5CUeicg1pWop
+ EZIeP0GILlSBM21Nmkeysvp2ccoqxTx3bPuVnbhc8sABnrA6X1ZBaARjUORY7bG6fqPWCVkiDM/
+ ZERik8uqJya/V/fFpCUYOwrOSlID8tzv5PF769jLeadLn9dy09zHy9u8LTStz8ejbifzszckAqK
+ +uvGVZMfF1sg/3Yem1KSRY5vSYlHTBCb
+X-Received: by 2002:a5d:5f56:0:b0:385:f996:1b8e with SMTP id
+ ffacd0b85a97d-38a19b0504emr1134877f8f.16.1734553264856; 
+ Wed, 18 Dec 2024 12:21:04 -0800 (PST)
 Received: from localhost.localdomain (h082218084190.host.wavenet.at.
  [82.218.84.190]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-388c80120c7sm14842267f8f.13.2024.12.18.12.21.14
+ ffacd0b85a97d-388c80120c7sm14842267f8f.13.2024.12.18.12.21.02
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 18 Dec 2024 12:21:15 -0800 (PST)
+ Wed, 18 Dec 2024 12:21:04 -0800 (PST)
 From: Phil Dennis-Jordan <phil@philjordan.eu>
 To: qemu-devel@nongnu.org
 Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
@@ -112,18 +113,17 @@ Cc: agraf@csgraf.de, phil@philjordan.eu, peter.maydell@linaro.org,
  dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com,
  jcmvbkbc@gmail.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  akihiko.odaki@daynix.com, qemu-arm@nongnu.org, qemu-block@nongnu.org,
- qemu-riscv@nongnu.org, balaton@eik.bme.hu
-Subject: [PATCH v15 14/15] hw/block/virtio-blk: Replaces request free function
- with g_free
-Date: Wed, 18 Dec 2024 21:20:35 +0100
-Message-Id: <20241218202036.80064-15-phil@philjordan.eu>
+ qemu-riscv@nongnu.org, balaton@eik.bme.hu, Alexander Graf <graf@amazon.com>
+Subject: [PATCH v15 08/15] hvf: arm: Ignore writes to CNTP_CTL_EL0
+Date: Wed, 18 Dec 2024 21:20:29 +0100
+Message-Id: <20241218202036.80064-9-phil@philjordan.eu>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 In-Reply-To: <20241218202036.80064-1-phil@philjordan.eu>
 References: <20241218202036.80064-1-phil@philjordan.eu>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: neutral client-ip=2a00:1450:4864:20::42a;
- envelope-from=phil@philjordan.eu; helo=mail-wr1-x42a.google.com
+Received-SPF: neutral client-ip=2a00:1450:4864:20::42f;
+ envelope-from=phil@philjordan.eu; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
@@ -131,246 +131,69 @@ X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: WbVoggM78iZ9
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: JXlIuw8LfzvF
 
-The virtio_blk_free_request() function has been a 1-liner forwarding
-to g_free() for a while now. We may as well call g_free on the request
-pointer directly.
+From: Alexander Graf <graf@amazon.com>
 
+MacOS unconditionally disables interrupts of the physical timer on boot
+and then continues to use the virtual one. We don't really want to support
+a full physical timer emulation, so let's just ignore those writes.
+
+Signed-off-by: Alexander Graf <graf@amazon.com>
 Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
 Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 Tested-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 ---
- hw/block/virtio-blk.c          | 43 +++++++++++++++-------------------
- hw/vmapple/virtio-blk.c        |  2 +-
- include/hw/virtio/virtio-blk.h |  1 -
- 3 files changed, 20 insertions(+), 26 deletions(-)
+ target/arm/hvf/hvf.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/hw/block/virtio-blk.c b/hw/block/virtio-blk.c
-index 89a5697cf9b..1ff1a59b784 100644
---- a/hw/block/virtio-blk.c
-+++ b/hw/block/virtio-blk.c
-@@ -50,11 +50,6 @@ static void virtio_blk_init_request(VirtIOBlock *s, VirtQueue *vq,
-     req->mr_next = NULL;
- }
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index ca7ea92774a..d75e504dcda 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -11,6 +11,7 @@
  
--void virtio_blk_free_request(VirtIOBlockReq *req)
--{
--    g_free(req);
--}
--
- void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status)
- {
-     VirtIOBlock *s = req->dev;
-@@ -93,7 +88,7 @@ static int virtio_blk_handle_rw_error(VirtIOBlockReq *req, int error,
-         if (acct_failed) {
-             block_acct_failed(blk_get_stats(s->blk), &req->acct);
-         }
--        virtio_blk_free_request(req);
-+        g_free(req);
-     }
+ #include "qemu/osdep.h"
+ #include "qemu/error-report.h"
++#include "qemu/log.h"
  
-     blk_error_action(s->blk, action, is_read, error);
-@@ -136,7 +131,7 @@ static void virtio_blk_rw_complete(void *opaque, int ret)
- 
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-         block_acct_done(blk_get_stats(s->blk), &req->acct);
--        virtio_blk_free_request(req);
-+        g_free(req);
-     }
- }
- 
-@@ -151,7 +146,7 @@ static void virtio_blk_flush_complete(void *opaque, int ret)
- 
-     virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
-     block_acct_done(blk_get_stats(s->blk), &req->acct);
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static void virtio_blk_discard_write_zeroes_complete(void *opaque, int ret)
-@@ -169,7 +164,7 @@ static void virtio_blk_discard_write_zeroes_complete(void *opaque, int ret)
-     if (is_write_zeroes) {
-         block_acct_done(blk_get_stats(s->blk), &req->acct);
-     }
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static VirtIOBlockReq *virtio_blk_get_request(VirtIOBlock *s, VirtQueue *vq)
-@@ -214,7 +209,7 @@ static void virtio_blk_handle_scsi(VirtIOBlockReq *req)
- 
- fail:
-     virtio_blk_req_complete(req, status);
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static inline void submit_requests(VirtIOBlock *s, MultiReqBuffer *mrb,
-@@ -612,7 +607,7 @@ static void virtio_blk_zone_report_complete(void *opaque, int ret)
- 
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
-     g_free(data->zone_report_data.zones);
-     g_free(data);
- }
-@@ -661,7 +656,7 @@ static void virtio_blk_handle_zone_report(VirtIOBlockReq *req,
-     return;
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static void virtio_blk_zone_mgmt_complete(void *opaque, int ret)
-@@ -677,7 +672,7 @@ static void virtio_blk_zone_mgmt_complete(void *opaque, int ret)
-     }
- 
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
- }
- 
- static int virtio_blk_handle_zone_mgmt(VirtIOBlockReq *req, BlockZoneOp op)
-@@ -719,7 +714,7 @@ static int virtio_blk_handle_zone_mgmt(VirtIOBlockReq *req, BlockZoneOp op)
-     return 0;
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
-     return err_status;
- }
- 
-@@ -750,7 +745,7 @@ static void virtio_blk_zone_append_complete(void *opaque, int ret)
- 
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
-     g_free(data);
- }
- 
-@@ -788,7 +783,7 @@ static int virtio_blk_handle_zone_append(VirtIOBlockReq *req,
- 
- out:
-     virtio_blk_req_complete(req, err_status);
--    virtio_blk_free_request(req);
-+    g_free(req);
-     return err_status;
- }
- 
-@@ -855,7 +850,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-             virtio_blk_req_complete(req, VIRTIO_BLK_S_IOERR);
-             block_acct_invalid(blk_get_stats(s->blk),
-                                is_write ? BLOCK_ACCT_WRITE : BLOCK_ACCT_READ);
--            virtio_blk_free_request(req);
-+            g_free(req);
-             return 0;
-         }
- 
-@@ -911,7 +906,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-                               VIRTIO_BLK_ID_BYTES));
-         iov_from_buf(in_iov, in_num, 0, serial, size);
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
--        virtio_blk_free_request(req);
-+        g_free(req);
-         break;
-     }
-     case VIRTIO_BLK_T_ZONE_APPEND & ~VIRTIO_BLK_T_OUT:
-@@ -943,7 +938,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-         if (unlikely(!(type & VIRTIO_BLK_T_OUT) ||
-                      out_len > sizeof(dwz_hdr))) {
-             virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
--            virtio_blk_free_request(req);
-+            g_free(req);
-             return 0;
-         }
- 
-@@ -960,7 +955,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-                                                             is_write_zeroes);
-         if (err_status != VIRTIO_BLK_S_OK) {
-             virtio_blk_req_complete(req, err_status);
--            virtio_blk_free_request(req);
-+            g_free(req);
-         }
- 
-         break;
-@@ -975,7 +970,7 @@ static int virtio_blk_handle_request(VirtIOBlockReq *req, MultiReqBuffer *mrb)
-         if (!vbk->handle_unknown_request ||
-             !vbk->handle_unknown_request(req, mrb, type)) {
-             virtio_blk_req_complete(req, VIRTIO_BLK_S_UNSUPP);
--            virtio_blk_free_request(req);
-+            g_free(req);
-         }
-     }
-     }
-@@ -998,7 +993,7 @@ void virtio_blk_handle_vq(VirtIOBlock *s, VirtQueue *vq)
-         while ((req = virtio_blk_get_request(s, vq))) {
-             if (virtio_blk_handle_request(req, &mrb)) {
-                 virtqueue_detach_element(req->vq, &req->elem, 0);
--                virtio_blk_free_request(req);
-+                g_free(req);
-                 break;
-             }
-         }
-@@ -1048,7 +1043,7 @@ static void virtio_blk_dma_restart_bh(void *opaque)
-             while (req) {
-                 next = req->next;
-                 virtqueue_detach_element(req->vq, &req->elem, 0);
--                virtio_blk_free_request(req);
-+                g_free(req);
-                 req = next;
-             }
-             break;
-@@ -1131,7 +1126,7 @@ static void virtio_blk_reset(VirtIODevice *vdev)
-             /* No other threads can access req->vq here */
-             virtqueue_detach_element(req->vq, &req->elem, 0);
- 
--            virtio_blk_free_request(req);
-+            g_free(req);
-         }
-     }
- 
-diff --git a/hw/vmapple/virtio-blk.c b/hw/vmapple/virtio-blk.c
-index d5d6a7b39dd..c8162efac27 100644
---- a/hw/vmapple/virtio-blk.c
-+++ b/hw/vmapple/virtio-blk.c
-@@ -55,7 +55,7 @@ static bool vmapple_virtio_blk_handle_unknown_request(VirtIOBlockReq *req,
-         qemu_log_mask(LOG_UNIMP, "%s: Barrier requests are currently no-ops\n",
-                       __func__);
-         virtio_blk_req_complete(req, VIRTIO_BLK_S_OK);
--        virtio_blk_free_request(req);
-+        g_free(req);
-         return true;
-     default:
-         return false;
-diff --git a/include/hw/virtio/virtio-blk.h b/include/hw/virtio/virtio-blk.h
-index 28d5046ea6c..dcb2c89aed5 100644
---- a/include/hw/virtio/virtio-blk.h
-+++ b/include/hw/virtio/virtio-blk.h
-@@ -109,7 +109,6 @@ typedef struct VirtIOBlkClass {
- } VirtIOBlkClass;
- 
- void virtio_blk_handle_vq(VirtIOBlock *s, VirtQueue *vq);
--void virtio_blk_free_request(VirtIOBlockReq *req);
- void virtio_blk_req_complete(VirtIOBlockReq *req, unsigned char status);
- 
- #endif
+ #include "sysemu/runstate.h"
+ #include "sysemu/hvf.h"
+@@ -184,6 +185,7 @@ void hvf_arm_init_debug(void)
+ #define SYSREG_OSLSR_EL1      SYSREG(2, 0, 1, 1, 4)
+ #define SYSREG_OSDLR_EL1      SYSREG(2, 0, 1, 3, 4)
+ #define SYSREG_CNTPCT_EL0     SYSREG(3, 3, 14, 0, 1)
++#define SYSREG_CNTP_CTL_EL0   SYSREG(3, 3, 14, 2, 1)
+ #define SYSREG_PMCR_EL0       SYSREG(3, 3, 9, 12, 0)
+ #define SYSREG_PMUSERENR_EL0  SYSREG(3, 3, 9, 14, 0)
+ #define SYSREG_PMCNTENSET_EL0 SYSREG(3, 3, 9, 12, 1)
+@@ -1620,6 +1622,13 @@ static int hvf_sysreg_write(CPUState *cpu, uint32_t reg, uint64_t val)
+     case SYSREG_OSLAR_EL1:
+         env->cp15.oslsr_el1 = val & 1;
+         return 0;
++    case SYSREG_CNTP_CTL_EL0:
++        /*
++         * Guests should not rely on the physical counter, but macOS emits
++         * disable writes to it. Let it do so, but ignore the requests.
++         */
++        qemu_log_mask(LOG_UNIMP, "Unsupported write to CNTP_CTL_EL0\n");
++        return 0;
+     case SYSREG_OSDLR_EL1:
+         /* Dummy register */
+         return 0;
 -- 
 2.39.5 (Apple Git-154)
 

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab96359c8dsm573844466b.130.2024.12.18.08.21.04
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab96359831sm569381466b.95.2024.12.18.08.21.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 18 Dec 2024 08:21:05 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 492A25FB2E;
+	by draig.lan (Postfix) with ESMTP id 18E245F796;
 	Wed, 18 Dec 2024 16:21:04 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,49 +52,134 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	qemu-s390x@nongnu.org,
 	Laurent Vivier <lvivier@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v2 02/27] tests/functional: update the i386 tuxrun tests
-Date: Wed, 18 Dec 2024 16:20:38 +0000
-Message-Id: <20241218162104.3493551-3-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v2 00/27] testing/next: functional tests, qtest clocks, vm and keymaps
+Date: Wed, 18 Dec 2024 16:20:36 +0000
+Message-Id: <20241218162104.3493551-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241218162104.3493551-1-alex.bennee@linaro.org>
-References: <20241218162104.3493551-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: 8d+SjKN8e9oy
+X-TUID: tP8Kf3P2i1mM
 
-Now there are new up to date images available we should update to them.
+There are number of parts to this series.
 
-Cc: Anders Roxell <anders.roxell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-23-alex.bennee@linaro.org>
----
- tests/functional/test_i386_tuxrun.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+The first is the updated images for all the guests that didn't make it
+into 9.2. There are also some new functional tests for virtio-gpu
+along with some other clean-ups.
 
-diff --git a/tests/functional/test_i386_tuxrun.py b/tests/functional/test_i386_tuxrun.py
-index c593ffbe8c..f3ccf11ae8 100755
---- a/tests/functional/test_i386_tuxrun.py
-+++ b/tests/functional/test_i386_tuxrun.py
-@@ -17,11 +17,11 @@
- class TuxRunI386Test(TuxRunBaselineTest):
- 
-     ASSET_I386_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/i386/bzImage',
--        'a3e5b32a354729e65910f5a1ffcda7c14a6c12a55e8213fb86e277f1b76ed956')
-+        'https://storage.tuxboot.com/buildroot/20241119/i386/bzImage',
-+        '47fb44e38e34101eb0f71a2a01742b959d40ed5fd67cefb5608a39be11d3b74e')
-     ASSET_I386_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/i386/rootfs.ext4.zst',
--        'f15e66b2bf673a210ec2a4b2e744a80530b36289e04f5388aab812b97f69754a')
-+        'https://storage.tuxboot.com/buildroot/20241119/i386/rootfs.ext4.zst',
-+        'a1a3b3b4c9dccd6475b58db95c107b468b736b700f6620985a8ed050a73d51c8')
- 
-     def test_i386(self):
-         self.set_machine('q35')
+The qtest patches focus on ensuring things calling clock_step and
+clock_set actually pay attention to return values. Currently only the
+virtio tests needed a little re-jigging although arguably the timeout
+loops aren't needed at all.
+
+We bump libvirt-ci so we can move the riscv64 cross container to
+testing/trixie which will hopefully make the image less prone to sid
+breakages.
+
+Finally we make a few tweaks to tests/vm which were helpful when
+chasing the keymap issue. I still think there is a race condition in
+there somewhere as I can't reliably build the FreeBSD VMs from
+scratch.
+
+The pc-bios dependency fixup I think addresses the failure but I'm a
+little unsure about the meason stuff.
+
+For v2
+  - add test/vm and lcitool updates
+  - don't move clock_step, remove them for virtio tests
+
+I was planning on on making this a pre-PR but as I'm off for Christmas
+this may as well percolate on the list for now. If any of the other
+testing maintainers want to cherry-pick stuff into their PRs then be
+my guest.
+
+The following still need review:
+
+  pc-bios: ensure keymaps dependencies set vnc tests
+  tests/vm: allow interactive login as root
+  tests/vm: partially un-tabify help output
+  tests/vm: fix build_path based path
+  tests/docker: move riscv64 cross container from sid to trixie
+  tests/lcitool: bump to latest version of libvirt-ci
+  tests/functional: extend test_aarch64_virt with vulkan test
+  tests/functional: remove hacky sleep from the tests
+  system/qtest: properly feedback results of clock_[step|set]
+  tests/qtest: remove clock_steps from virtio tests
+  util/qemu-timer: fix indentation
+
+Alex.
+
+Alex Bennée (25):
+  tests/functional: update the arm tuxrun tests
+  tests/functional: update the i386 tuxrun tests
+  tests/functional: add a m68k tuxrun tests
+  tests/functional: update the mips32 tuxrun tests
+  tests/functional: update the mips32el tuxrun tests
+  tests/functional: update the mips64 tuxrun tests
+  tests/functional: update the mips64el tuxrun tests
+  tests/functional: update the ppc32 tuxrun tests
+  tests/functional: update the ppc64 tuxrun tests
+  tests/functional: update the riscv32 tuxrun tests
+  tests/functional: update the riscv64 tuxrun tests
+  tests/functional: update the s390x tuxrun tests
+  tests/functional: update the sparc64 tuxrun tests
+  tests/functional: update the x86_64 tuxrun tests
+  util/qemu-timer: fix indentation
+  tests/qtest: remove clock_steps from virtio tests
+  system/qtest: properly feedback results of clock_[step|set]
+  tests/functional: remove hacky sleep from the tests
+  tests/functional: extend test_aarch64_virt with vulkan test
+  tests/lcitool: bump to latest version of libvirt-ci
+  tests/docker: move riscv64 cross container from sid to trixie
+  tests/vm: fix build_path based path
+  tests/vm: partially un-tabify help output
+  tests/vm: allow interactive login as root
+  pc-bios: ensure keymaps dependencies set vnc tests
+
+Daniel P. Berrangé (1):
+  tests/lcitool: remove temp workaround for debian mips64el
+
+Pierrick Bouvier (1):
+  tests/functional/aarch64: add tests for FEAT_RME
+
+ MAINTAINERS                                   |   1 +
+ system/qtest.c                                |  23 ++--
+ tests/qtest/libqos/virtio.c                   |   4 -
+ util/qemu-timer.c                             |   2 +-
+ .gitlab-ci.d/cirrus/freebsd-14.vars           |   2 +-
+ pc-bios/keymaps/meson.build                   |  17 ++-
+ .../dockerfiles/debian-mips64el-cross.docker  |   9 ++
+ .../dockerfiles/debian-riscv64-cross.docker   |   4 +-
+ tests/functional/meson.build                  |   5 +
+ tests/functional/test_aarch64_rme_sbsaref.py  |  70 +++++++++++
+ tests/functional/test_aarch64_rme_virt.py     | 100 ++++++++++++++++
+ tests/functional/test_aarch64_virt.py         | 113 +++++++++++++++---
+ tests/functional/test_arm_tuxrun.py           |  28 ++---
+ tests/functional/test_i386_tuxrun.py          |   8 +-
+ tests/functional/test_m68k_tuxrun.py          |  34 ++++++
+ tests/functional/test_mips64_tuxrun.py        |   8 +-
+ tests/functional/test_mips64el_tuxrun.py      |   8 +-
+ tests/functional/test_mips_tuxrun.py          |   8 +-
+ tests/functional/test_mipsel_tuxrun.py        |   8 +-
+ tests/functional/test_ppc64_tuxrun.py         |  16 +--
+ tests/functional/test_ppc_tuxrun.py           |   8 +-
+ tests/functional/test_riscv32_tuxrun.py       |   8 +-
+ tests/functional/test_riscv64_tuxrun.py       |  16 +--
+ tests/functional/test_s390x_tuxrun.py         |   8 +-
+ tests/functional/test_sparc64_tuxrun.py       |   8 +-
+ tests/functional/test_x86_64_tuxrun.py        |   8 +-
+ tests/lcitool/libvirt-ci                      |   2 +-
+ tests/lcitool/mappings.yml                    |  29 -----
+ tests/lcitool/refresh                         |   4 +-
+ tests/qtest/meson.build                       |   2 +-
+ tests/vm/Makefile.include                     |  29 ++---
+ tests/vm/basevm.py                            |  12 +-
+ tests/vm/generated/freebsd.json               |   2 +-
+ 33 files changed, 441 insertions(+), 163 deletions(-)
+ create mode 100755 tests/functional/test_aarch64_rme_sbsaref.py
+ create mode 100755 tests/functional/test_aarch64_rme_virt.py
+ create mode 100644 tests/functional/test_m68k_tuxrun.py
+
 -- 
 2.39.5

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aab96006133sm581741166b.25.2024.12.18.08.26.21
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d652ab5198sm5489266a12.8.2024.12.18.08.26.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 18 Dec 2024 08:26:22 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A79F860BD3;
-	Wed, 18 Dec 2024 16:21:06 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id DB7CF60729;
+	Wed, 18 Dec 2024 16:21:05 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
@@ -53,72 +53,92 @@ Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	Laurent Vivier <lvivier@redhat.com>,
 	Alistair Francis <alistair.francis@wdc.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 26/27] tests/vm: allow interactive login as root
-Date: Wed, 18 Dec 2024 16:21:02 +0000
-Message-Id: <20241218162104.3493551-27-alex.bennee@linaro.org>
+Subject: [PATCH v2 18/27] system/qtest: properly feedback results of clock_[step|set]
+Date: Wed, 18 Dec 2024 16:20:54 +0000
+Message-Id: <20241218162104.3493551-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241218162104.3493551-1-alex.bennee@linaro.org>
 References: <20241218162104.3493551-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: D5zDNJs2XUcn
+X-TUID: DxLbSqf2S0gu
 
-This is useful when debugging and you want to add packages to an
-image.
+Time will not advance if the system is paused or there are no timer
+events set for the future. In absence of pending timer events
+advancing time would make no difference the system state. Attempting
+to do so would be a bug and the test or device under test would need
+fixing.
+
+Tighten up the result reporting to `FAIL` if time was not advanced.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2687
 ---
- tests/vm/Makefile.include | 3 ++-
- tests/vm/basevm.py        | 9 +++++++--
- 2 files changed, 9 insertions(+), 3 deletions(-)
+ system/qtest.c | 23 ++++++++++++++---------
+ 1 file changed, 14 insertions(+), 9 deletions(-)
 
-diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
-index d80ca79a28..14188bba1c 100644
---- a/tests/vm/Makefile.include
-+++ b/tests/vm/Makefile.include
-@@ -66,6 +66,7 @@ endif
- 	@echo "Special variables:"
- 	@echo "    BUILD_TARGET=foo              - Override the build target"
- 	@echo "    DEBUG=1                       - Enable verbose output on host and interactive debugging"
-+	@echo "    ROOT_USER=1                   - Login as root user for interactive shell"
- 	@echo '    EXTRA_CONFIGURE_OPTS="..."    - Pass to configure step'
- 	@echo "    J=[0..9]*                     - Override the -jN parameter for make commands"
- 	@echo "    LOG_CONSOLE=1                 - Log console to file in: ~/.cache/qemu-vm "
-@@ -141,6 +142,6 @@ vm-boot-ssh-%: $(IMAGES_DIR)/%.img $(VM_VENV)
- 		$(if $(EFI_AARCH64),--efi-aarch64 $(EFI_AARCH64)) \
- 		$(if $(LOG_CONSOLE),--log-console) \
- 		--image "$<" \
--		--interactive \
-+		$(if $(ROOT_USER),--interactive-root,-interactive) \
- 		false, \
- 		"  VM-BOOT-SSH $*") || true
-diff --git a/tests/vm/basevm.py b/tests/vm/basevm.py
-index 6f3f2e76df..6d41ac7574 100644
---- a/tests/vm/basevm.py
-+++ b/tests/vm/basevm.py
-@@ -612,8 +612,11 @@ def get_default_jobs():
-     parser.add_argument("--source-path", default=None,
-                         help="Path of source directory, "\
-                         "for finding additional files. ")
--    parser.add_argument("--interactive", "-I", action="store_true",
--                        help="Interactively run command")
-+    int_ops = parser.add_mutually_exclusive_group()
-+    int_ops.add_argument("--interactive", "-I", action="store_true",
-+                         help="Interactively run command")
-+    int_ops.add_argument("--interactive-root", action="store_true",
-+                         help="Interactively run command as root")
-     parser.add_argument("--snapshot", "-s", action="store_true",
-                         help="run tests with a snapshot")
-     parser.add_argument("--genisoimage", default="genisoimage",
-@@ -675,6 +678,8 @@ def main(vmcls, config=None):
-         exitcode = 3
-     if args.interactive:
-         vm.ssh()
-+    elif args.interactive_root:
-+        vm.ssh_root()
+diff --git a/system/qtest.c b/system/qtest.c
+index 12703a2045..d9501153a4 100644
+--- a/system/qtest.c
++++ b/system/qtest.c
+@@ -78,6 +78,11 @@ static void *qtest_server_send_opaque;
+  * let you adjust the value of the clock (monotonically).  All the commands
+  * return the current value of the clock in nanoseconds.
+  *
++ * If the commands FAIL then time wasn't advanced which is likely
++ * because the machine was in a paused state or no timer events exist
++ * in the future. This will cause qtest to abort and the test will
++ * need to check its assumptions.
++ *
+  * .. code-block:: none
+  *
+  *  > clock_step
+@@ -710,7 +715,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             qtest_sendf(chr, "OK little\n");
+         }
+     } else if (qtest_enabled() && strcmp(words[0], "clock_step") == 0) {
+-        int64_t ns;
++        int64_t old_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        int64_t ns, new_ns;
  
-     if not args.snapshot:
-         vm.graceful_shutdown()
+         if (words[1]) {
+             int ret = qemu_strtoi64(words[1], NULL, 0, &ns);
+@@ -719,11 +725,10 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             ns = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
+                                             QEMU_TIMER_ATTR_ALL);
+         }
+-        qemu_clock_advance_virtual_time(
+-            qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
++        new_ns = qemu_clock_advance_virtual_time(old_ns + ns);
+         qtest_send_prefix(chr);
+-        qtest_sendf(chr, "OK %"PRIi64"\n",
+-                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
++        qtest_sendf(chr, "%s %"PRIi64"\n",
++                    new_ns > old_ns ? "OK" : "FAIL", new_ns);
+     } else if (strcmp(words[0], "module_load") == 0) {
+         Error *local_err = NULL;
+         int rv;
+@@ -740,16 +745,16 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             qtest_sendf(chr, "FAIL\n");
+         }
+     } else if (qtest_enabled() && strcmp(words[0], "clock_set") == 0) {
+-        int64_t ns;
++        int64_t ns, new_ns;
+         int ret;
+ 
+         g_assert(words[1]);
+         ret = qemu_strtoi64(words[1], NULL, 0, &ns);
+         g_assert(ret == 0);
+-        qemu_clock_advance_virtual_time(ns);
++        new_ns = qemu_clock_advance_virtual_time(ns);
+         qtest_send_prefix(chr);
+-        qtest_sendf(chr, "OK %"PRIi64"\n",
+-                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
++        qtest_sendf(chr, "%s %"PRIi64"\n",
++                    new_ns == ns ? "OK" : "FAIL", new_ns);
+     } else if (process_command_cb && process_command_cb(chr, words)) {
+         /* Command got consumed by the callback handler */
+     } else {
 -- 
 2.39.5

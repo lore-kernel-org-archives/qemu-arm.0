@@ -1,85 +1,98 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1592517njk;
-        Thu, 19 Dec 2024 04:26:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUCpagqZJyINrlxFOUwn4/kRbNNL9XHk9KbEpIdk/fqRxudLX5pdWHGXzbCQpohKyTkmZV8AL3E3qbj/Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IFm5F+XolR+p/lJhD9zaT+/rVGs8XlsPAqtQfVFC9hu+zQNWHCtWv34wHvYGeePqbmhBwAP
-X-Received: by 2002:ac8:7f4e:0:b0:461:2616:84c3 with SMTP id d75a77b69052e-46908db069emr106400721cf.8.1734611193338;
-        Thu, 19 Dec 2024 04:26:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734611193; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1612044njk;
+        Thu, 19 Dec 2024 05:01:29 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW47zECb93fTaI7OesFcasNVvBPcly17w/Tb5l7ucYb/xwTf9WUkTN40RhR45xRXRlOUIEoINXcGdXc0Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IEPISr9Y2T/G2xuRdDAPRpGB4JJxyvKC2CaBmyAEdJ7jOypjKuSvWERcTCTkk69c9xEtNcS
+X-Received: by 2002:a17:907:9623:b0:aa6:c04e:240 with SMTP id a640c23a62f3a-aabf49650b7mr570519066b.60.1734613287071;
+        Thu, 19 Dec 2024 05:01:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734613287; cv=none;
         d=google.com; s=arc-20240605;
-        b=fyKSQDauXsBvMhroEbLlJ2DlCFGTVjXI36roF3pvkPwDwDVaMKSeHbBX2SEfMKpxXt
-         3yE1IsFJjUyKkdxZQLTbUynS2mkuAJqgyxSSYa62ajlmNrLFXo5gPPC1XkwDttmOwwtx
-         fkfpaRRVobUfwPcntdFIk2APF2IF0Zsp2J7nM3WTXLOuRUclZUHREaE7avKHogShpzR2
-         o7Q6dpImFyoOBj1UtSnAVs0Qn02wcT6jd7Eipp7uHZhwlG5TrPJ+WNtKcZJPq7PO6yg0
-         Kjs0QdU0vEXHxFgIZPagc9ElGzBC2nET/GMTLVHct8kNeIewIFuZOk3a0xFCVc4+ANTo
-         QtCw==
+        b=cQpbvN9IsF560708n3JyVXvdxfadbVkDhpKD3KmXE+c/HKR18EhZFs/txJIZXcE2lN
+         2mwJICjwWWE1yXxTw+uvMyWFj+ywgw0RRlc8Jk8GgvYqDzi+gyFqne5rHL4RiR+SIfMd
+         GK6NicEmOpCEemw3kc+L4X8TDTPomdDTC4gz+uNOu72gVrJjnrgpvolkkEXgainrTNfP
+         o7QHg0eoBXkpKXiQkD6FSNdO2to+19Xv3/0eITrR8u1jJPIlvNMVmAqQivnQjdwGWEkp
+         wQYZucdA+krTZsQiX536ZceCwnCRI3W25r9eXqNPBlRnX0RUnUkGGjbk6GG7G5AolAqf
+         g9qA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:user-agent:references
          :in-reply-to:subject:cc:to:from:message-id:date:dkim-signature;
-        bh=9I4C5OmqE8lEwOV6Yc3X/QJ7BjR+NLYedql+dXhCHU8=;
-        fh=lI7Iko9g2aHKLBt1gNdWHXeaCjlEDenZquMsaPC+VK8=;
-        b=NnYk1Ul456GoLF4sBA4TObQpaQIed5q9L6GUgJjKQHCbbKGvjQf0+IF7DXidLiwJTV
-         Bt5M2q7SExTpyCB224LdjT6FeQKlJ2LlNv9pHORfLptVN/WpejKYiF3RZ5BOLofv+7x5
-         yNKxlYOobAVq8vi3J6J71nD7r+LLlws9szhsXkX/3L2qoZvgXSuhgs/hh/zZXf1dJ75P
-         QJWhwohjAQ+6W93RbRGamE8Xe2UpjL/Z7NOu0g8+IdSbpu8TTetnhZJ3sq1/TFVVgej2
-         yaU72iC26g5bZJSUy+kG+XcoILFfiT9jQpJzPd9mxddg/nKUagi4rtS3wHP5ebUW2CQX
-         +cfw==;
+        bh=2e/db/I3/lfeLmKCIosk3FK1uQSabDwrCOw/8eQgdCQ=;
+        fh=45FjGexk0S4m4nmhwVMO3EiHZ/KOlbX+bClyUKLcMJA=;
+        b=Iardqo7SsurLoy/3FHZ4WPoa4WjLipQRTOjfoCeYbo7HcrlysduQ551d0pWZoZCoRe
+         VW6VjVh4K1Qk/KhNBnYnQ3Ll6heGzDET3tDwTjahnQPGNEQTqbP26ednquA0ZPvs9G2l
+         s5yDd87fDMva7tDZoRttYrRRZW/MlJY273tqkR2ODTxBvQ6Ez8r0YGf4A5z6D/UD91lH
+         qw9BfcwD9m7Gm3ugeAs+tPRrnd1Bj8y/UEvJAWPd+mgB8DgYfWWyRzsx99MmmL6C8Tqh
+         fTZ9S2bXdSIRS0IZa2GGd6XTOj4VxrtKHqLMwZSG5F9h/i00q+iogKI0n2wrycaNNyaU
+         PTvA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Tu9FO8H0;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=h3TIdzt5;
        spf=pass (google.com: domain of maz@kernel.org designates 147.75.193.91 as permitted sender) smtp.mailfrom=maz@kernel.org;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Return-Path: <maz@kernel.org>
 Received: from nyc.source.kernel.org (nyc.source.kernel.org. [147.75.193.91])
-        by mx.google.com with ESMTPS id d75a77b69052e-46a3ec052b7si12785581cf.669.2024.12.19.04.26.33
+        by mx.google.com with ESMTPS id a640c23a62f3a-aac0f0426fesi74643066b.474.2024.12.19.05.01.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Dec 2024 04:26:33 -0800 (PST)
+        Thu, 19 Dec 2024 05:01:27 -0800 (PST)
 Received-SPF: pass (google.com: domain of maz@kernel.org designates 147.75.193.91 as permitted sender) client-ip=147.75.193.91;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Tu9FO8H0;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=h3TIdzt5;
        spf=pass (google.com: domain of maz@kernel.org designates 147.75.193.91 as permitted sender) smtp.mailfrom=maz@kernel.org;
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 625B0A41FF7;
-	Thu, 19 Dec 2024 12:24:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 876BBC4CECE;
-	Thu, 19 Dec 2024 12:26:32 +0000 (UTC)
+	by nyc.source.kernel.org (Postfix) with ESMTP id 72168A424F2;
+	Thu, 19 Dec 2024 12:59:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D95EC4CECE;
+	Thu, 19 Dec 2024 13:01:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734611192;
-	bh=04mrj61m5M0eK5uxb9qdhTTuprN8gSJHsEGg321+jug=;
+	s=k20201202; t=1734613285;
+	bh=O3IkwvJlk6EBCbr2lI7kMh54S9htt+kwglnpdJT+ukE=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Tu9FO8H01Fn5WM+XuIr+y7JwK+/oOLnvU7jJj6ovl99TvBJD/McqbMYuu/kRbpU5a
-	 K2prrYhSmM+4J7InIx/NZQxGvujabU4YHkeem9PDUqPerCX8sIyvrd9wDt2WiAmoQ2
-	 fb5WjxJtfKZ26gD6kte0oWo81onM79tkmTEJnMjRZ5XRkB1iJkqM4YuzFw2ql5mCGP
-	 qB2yBT57i+/oPAmpWl66JkjZil1tK+3QyEr5m6PFs+YGnu9cz8G49sXcQnLrM00iTb
-	 nEpRbn/Iy3XEYXXM5mWr73rY8PXQLZzX3th8PBIFiPC2alQZOdiEVpTWkyI12f8nO5
-	 SBIo6VxjVFSWw==
+	b=h3TIdzt5xtQnJM11PaGOl95b1BWvsSe+ZHJeBjhc31RHJgMZejnO1qDTuQfovc7TA
+	 VwHy4cegzvveiwVKVCUJsqpLT01aPf5OQHz1VAZZVabKGxvMvzhy8EKN8Au0F8v132
+	 d0/mAoKgfZ6P+JW+yHGxDSlAAQNt5pbN5mmVnIHXkIPfFXGCaDnbsmgggvYFmJcgQ6
+	 45lWnARrnByJ+BayzFIMnEciYmiq+crassTiJ4f295vWgONIvnY1+k+6XkBlXyu+Ly
+	 voDsBzEOce4+quovWgOWv7uxL8WXfIXeJODctp9WBgyOtiq96yqT0PHADbAkeFqLil
+	 vqSFVTU2CBidw==
 Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
 	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.95)
 	(envelope-from <maz@kernel.org>)
-	id 1tOFbq-005GKK-DH;
-	Thu, 19 Dec 2024 12:26:30 +0000
-Date: Thu, 19 Dec 2024 12:26:29 +0000
-Message-ID: <8634ijrh8q.wl-maz@kernel.org>
+	id 1tOG9b-005GyE-BC;
+	Thu, 19 Dec 2024 13:01:23 +0000
+Date: Thu, 19 Dec 2024 13:01:22 +0000
+Message-ID: <861py3rfml.wl-maz@kernel.org>
 From: Marc Zyngier <maz@kernel.org>
-To: Kashyap Chamarthy <kchamart@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>,	Cornelia Huck <cohuck@redhat.com>,
-	Daniel =?UTF-8?B?IlAuIEJlcnJhbmfDqSI=?= <berrange@redhat.com>,
-	eric.auger.pro@gmail.com,	qemu-devel@nongnu.org,	qemu-arm@nongnu.org,
-	kvmarm@lists.linux.dev,	peter.maydell@linaro.org,
-	richard.henderson@linaro.org,	alex.bennee@linaro.org,
-	oliver.upton@linux.dev,	sebott@redhat.com,
-	shameerali.kolothum.thodi@huawei.com,	armbru@redhat.com,
-	abologna@redhat.com,	jdenemar@redhat.com,	shahuang@redhat.com,
-	mark.rutland@arm.com,	philmd@linaro.org,	pbonzini@redhat.com
+To: Daniel =?UTF-8?B?IlAuIEJlcnJhbmfDqSI=?= <berrange@redhat.com>
+Cc: Kashyap Chamarthy <kchamart@redhat.com>,
+	Eric Auger <eric.auger@redhat.com>,
+	Cornelia Huck <cohuck@redhat.com>,
+	eric.auger.pro@gmail.com,
+	qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	oliver.upton@linux.dev,
+	sebott@redhat.com,
+	shameerali.kolothum.thodi@huawei.com,
+	armbru@redhat.com,
+	abologna@redhat.com,
+	jdenemar@redhat.com,
+	shahuang@redhat.com,
+	mark.rutland@arm.com,
+	philmd@linaro.org,
+	pbonzini@redhat.com
 Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64 KVM host model
-In-Reply-To: <Z2QE9AqZnpGM5sWD@gezellig>
+In-Reply-To: <Z2QT2tPbC1GsTJVL@redhat.com>
 References: <20241206112213.88394-1-cohuck@redhat.com>
 	<edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
 	<Z1qoa8yXscTSAJ9e@redhat.com>
 	<8734it1bv6.fsf@redhat.com>
 	<1fea79e4-7a31-4592-8495-7b18cd82d02b@redhat.com>
 	<Z2QE9AqZnpGM5sWD@gezellig>
+	<8634ijrh8q.wl-maz@kernel.org>
+	<Z2QT2tPbC1GsTJVL@redhat.com>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
  (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
@@ -87,77 +100,139 @@ MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: quoted-printable
 X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: kchamart@redhat.com, eric.auger@redhat.com, cohuck@redhat.com, berrange@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org, richard.henderson@linaro.org, alex.bennee@linaro.org, oliver.upton@linux.dev, sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+X-SA-Exim-Rcpt-To: berrange@redhat.com, kchamart@redhat.com, eric.auger@redhat.com, cohuck@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org, richard.henderson@linaro.org, alex.bennee@linaro.org, oliver.upton@linux.dev, sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
 X-SA-Exim-Mail-From: maz@kernel.org
 X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
-X-TUID: Qg29UNmVariq
+X-TUID: xpdwKbBkkMih
 
-On Thu, 19 Dec 2024 11:35:16 +0000,
-Kashyap Chamarthy <kchamart@redhat.com> wrote:
+On Thu, 19 Dec 2024 12:38:50 +0000,
+Daniel "P. Berrang=C3=A9" <berrange@redhat.com> wrote:
 >=20
-> On Thu, Dec 12, 2024 at 11:04:30AM +0100, Eric Auger wrote:
->=20
-> Hi Eric,
->=20
-> > On 12/12/24 10:36, Cornelia Huck wrote:
-> > > On Thu, Dec 12 2024, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wr=
-ote:
->=20
-> [...]
->=20
-> > >> Consider you mgmt app wants to set a CPU model that's common across
-> > >> heterogeneous hardware. They don't neccessarily want/need to be
-> > >> able to live migrate between heterogeneous CPUs, but for simplicity
-> > >> of configuration desire to set a single named CPU across all guests,
-> > >> irrespective of what host hey are launched on. The ARM spec baseline
-> > >> named models would give you that config simplicity.
-> > > If we use architecture extensions (i.e. Armv8.x/9.x) as baseline, I'm
-> > > seeing some drawbacks:
-> > > - a lot of work before we can address some specific use cases
-> > > - old models can get new optional features
-> > > - a specific cpu might have a huge set of optional features on top of
-> > >   the baseline model
-> > >
-> > > Using a reference core such as Neoverse-V2 probably makes more sense
-> > > (easier to get started, less feature diff?) It would still make a good
-> > > starting point for a simple config.
-> > >
-> > Actually from a dev point of view I am not sure it changes much to have
-> > either ARM spec rev baseline or CPU ref core named model.
+> On Thu, Dec 19, 2024 at 12:26:29PM +0000, Marc Zyngier wrote:
+> > On Thu, 19 Dec 2024 11:35:16 +0000,
+> > Kashyap Chamarthy <kchamart@redhat.com> wrote:
+> > >=20
+> > > On Thu, Dec 12, 2024 at 11:04:30AM +0100, Eric Auger wrote:
+> > >=20
+> > > Hi Eric,
+> > >=20
+> > > > On 12/12/24 10:36, Cornelia Huck wrote:
+> > > > > On Thu, Dec 12 2024, Daniel P. Berrang=C3=A9 <berrange@redhat.com=
+> wrote:
+> > >=20
+> > > [...]
+> > >=20
+> > > > >> Consider you mgmt app wants to set a CPU model that's common acr=
+oss
+> > > > >> heterogeneous hardware. They don't neccessarily want/need to be
+> > > > >> able to live migrate between heterogeneous CPUs, but for simplic=
+ity
+> > > > >> of configuration desire to set a single named CPU across all gue=
+sts,
+> > > > >> irrespective of what host hey are launched on. The ARM spec base=
+line
+> > > > >> named models would give you that config simplicity.
+> > > > > If we use architecture extensions (i.e. Armv8.x/9.x) as baseline,=
+ I'm
+> > > > > seeing some drawbacks:
+> > > > > - a lot of work before we can address some specific use cases
+> > > > > - old models can get new optional features
+> > > > > - a specific cpu might have a huge set of optional features on to=
+p of
+> > > > >   the baseline model
+> > > > >
+> > > > > Using a reference core such as Neoverse-V2 probably makes more se=
+nse
+> > > > > (easier to get started, less feature diff?) It would still make a=
+ good
+> > > > > starting point for a simple config.
+> > > > >
+> > > > Actually from a dev point of view I am not sure it changes much to =
+have
+> > > > either ARM spec rev baseline or CPU ref core named model.
+> > > >=20
+> > > > One remark is that if you look at
+> > > > https://developer.arm.com/documentation/109697/2024_09?lang=3Den
+> > > > you will see there are quite a lot of spec revisions and quite a fe=
+w of
+> > > > them are actually meaningful in the light of currently avaiable and
+> > > > relevant HW we want to address. What I would like to avoid is to be
+> > > > obliged to look at all of them in a generic manner while we just wa=
+nt to
+> > > > address few cpu ref models.
+> > > >=20
+> > > > Also starting from the ARM spec rev baseline the end-user may need =
+to
+> > > > add more feature opt-ins to be close to a specific cpu model. So I
+> > > > foresee extra complexity for the end-user.
+> > >=20
+> > > (Assuming I'm parsing your last para right; correct me if not.)
+> > >=20
+> > > Isn't a user wanting to add extra CPU flags (on top of a baseline) a
+> > > "normal behaviour" and not "extra complexity"?  Besides coming close =
+to
+> > > a specific CPU model, there's the additional important use-case of CPU
+> > > flags that provide security mitigation.
+> > >=20
+> > > Consider this:
+> > >=20
+> > > Say, there's a serious security issue in a released ARM CPU.  As part=
+ of
+> > > the fix, two new CPU flags need to be exposed to the guest OS, call t=
+hem
+> > > "secflag1" and "secflag2".  Here, the user is configuring a baseline
+> > > model + two extra CPU flags, not to get close to some other CPU model
+> > > but to mitigate itself against a serious security flaw.
 > >=20
-> > One remark is that if you look at
-> > https://developer.arm.com/documentation/109697/2024_09?lang=3Den
-> > you will see there are quite a lot of spec revisions and quite a few of
-> > them are actually meaningful in the light of currently avaiable and
-> > relevant HW we want to address. What I would like to avoid is to be
-> > obliged to look at all of them in a generic manner while we just want to
-> > address few cpu ref models.
+> > If there's such a security issue, that the hypervisor's job to do so,
+> > not userspace. See what KVM does for CSV3, for example (and all the
+> > rest of the side-channel stuff).
 > >=20
-> > Also starting from the ARM spec rev baseline the end-user may need to
-> > add more feature opt-ins to be close to a specific cpu model. So I
-> > foresee extra complexity for the end-user.
+> > You can't rely on userspace for security, that'd be completely
+> > ludicrous.
 >=20
-> (Assuming I'm parsing your last para right; correct me if not.)
+> Actually that's a normal situation QEMU has to deal with.
 >=20
-> Isn't a user wanting to add extra CPU flags (on top of a baseline) a
-> "normal behaviour" and not "extra complexity"?  Besides coming close to
-> a specific CPU model, there's the additional important use-case of CPU
-> flags that provide security mitigation.
->=20
-> Consider this:
->=20
-> Say, there's a serious security issue in a released ARM CPU.  As part of
-> the fix, two new CPU flags need to be exposed to the guest OS, call them
-> "secflag1" and "secflag2".  Here, the user is configuring a baseline
-> model + two extra CPU flags, not to get close to some other CPU model
-> but to mitigate itself against a serious security flaw.
+> QEMU needs to be able to expose a deterministic fixed ABI to the guest
+> VM, and that includes control over what CPU features are exposed to
+> it. In most cases, the hypervisor cannot arbitrary force enable new
+> guest features without agreement from QEMU.
 
-If there's such a security issue, that the hypervisor's job to do so,
-not userspace. See what KVM does for CSV3, for example (and all the
-rest of the side-channel stuff).
+Which ABI? The only ABI that matters is what is defined by the
+architecture. When it comes to CPU features, new features are exposed
+by default. If QEMU wants to turn it off, it can in most (but not all)
+cases. But that's the extent of the "agreement" we have with
+userspace, QEMU or otherwise.
 
-You can't rely on userspace for security, that'd be completely
-ludicrous.
+If a feature is deemed broken or unsafe, KVM will turn it at least
+hide it from the guest without userspace's intervention, and if
+possible actively turn it off.
+
+> If a guest happens to be using '-cpu host', then when a new CPU flag
+> arrives as part of a security fix, there is at least no CPU config
+> change required. QEMU may or may not need changes, in order that
+> the behaviour associated with the new CPU flag is correctly handled.
+
+How is that "flag" visible from the guest? The only way to expose
+properties is through the ID registers, and you can't invent your own,
+nor expose something that is not already handled by the host.
+
+> If the guest is using a named CPU model, as well as modifying QEMU
+> to know about the new flag, the host admin needs to explicitly
+> decide whether & when to expose the new CPU flag for each guest VM
+> on the host.
+>
+> Until the new CPU flag is exposed to the guest, while the host itself
+> may be able to remain protected to the new security issue, the guest
+> OS is likely remain vulnerable, or have degraded operation in some way.
+
+I think that's the point where we talk past each other. There is no
+"flag" that can be exposed to a guest as part of the architecture. We
+have a set of architectural features, and in 99% of the cases, we can
+only expose to the guest a feature that both exists on the host and
+that the hypervisor understands.
+
+Thanks,
 
 	M.
 

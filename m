@@ -1,212 +1,255 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1825821njk;
-        Thu, 19 Dec 2024 09:52:04 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUZWNRu3PvaR+hDl12kA/jPEr6E4sQUGs81Ur0iRU9qoUFDVB8XOKREijpGpbpBrDzylnxcxVM/FWXHLg==@linaro.org
-X-Google-Smtp-Source: AGHT+IEaDE2uGyZ5Sv9i3Q8FskRddvJtIYQE9JtpFkFqtRDFuN1nX209EAiHVK73aRnPu2NgfZLe
-X-Received: by 2002:a05:620a:40d4:b0:7b6:dd11:5e5f with SMTP id af79cd13be357-7b9aa99f111mr618300185a.13.1734630723498;
-        Thu, 19 Dec 2024 09:52:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734630723; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1853429njk;
+        Thu, 19 Dec 2024 10:32:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWHaTsbCItu4IYXC2EzsWAVW/tonTlUmbC9dxOJXw+QAk8Yz0hbH/F4Q3jCcSWHW1tHYDdSx6gvvzJdOg==@linaro.org
+X-Received: by 2002:a05:6a21:2d05:b0:1e1:a647:8a54 with SMTP id adf61e73a8af0-1e5e05ac4cbmr180228637.20.1734633135520;
+        Thu, 19 Dec 2024 10:32:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734633135; cv=none;
         d=google.com; s=arc-20240605;
-        b=LQZWGdG03zKP/QiTgLBU/JEJ+1Uwx+DQOlTqy39n9RxPkJhLpGajbKUttleH9JPwAm
-         hznxJ9pHNiiVc1EQe5KrXpG8jr7iA+U1pzs8g3ovTPzo4YHkKNntl9QQIcn6cyZ7xjYD
-         gOTiyvUN1DYgR0yxWVxi4+vBs0WqWWN07V3148Q9bNNQbM4oI0fbH5EgWiKMVFgLsiRm
-         SJ+PIbMFwzlXwnqTO+fWh94SMSN7vXgJuUc0S1B/95uxW6VoCUYojXPLwZXsyL0mrUN0
-         u2hokiTrWihHG1wcHxJ9nlILqHIZcDadLkJNtkrm2YDS7OZCvLrWVeeEgM9gOMTUCdGd
-         mzvQ==
+        b=WjgbQK8hBVGfy6titGrXEi1Xe1WbO0HsQX8dfv7+Pp5CX9oBXyRyStFgOjXhs4LvFd
+         pOUhrky8BB4B6Z7j7rpmhN0KU/nKuNhSQuIaMqdjrteZyEDXxNqhlz16j0SQV/JklD6I
+         qjqTaqqo02IVphkEtaT7b73Gs1b0yF3qHOCNLl5nVSRU+UaTJFOgjGDvG5qomutTTpf/
+         MzeeuzZwTh3isSrbg/a87yPcCX3I13ABF0zopap+gPvvuj1mB/Cz/FOhh273PER/izE1
+         /JXL0fFor08AtOpIbciJndNnxZ0rg2YkNUdcycsUdnDJYwtHRvkPAz+5soL28LYqQQvH
+         ZtPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=/65f699+zP0hxZzXVK7O5ivtKVynSZ4cs9bwdZ4NyD0=;
-        fh=seaAqXBScxAO1T4Z+y4srNPzJT5bgOvmFgfYqUzLS4s=;
-        b=ILI28M0siundU6ZSACbcZRNOXnPrVgsAbRO89UgV9Jovq0fepT/WJSzQdlSTZKd4K5
-         opHIVha4098YTyUUj3SLL60NSL8YWQ8JnQdwMSJ+Gxmou5fLvDMp2FHbrsqDPKxp4kNc
-         mc1P1e36ChBBmq54HmHTrSrOSjd9Dxgb6kYxI+GaOMRI5M6H1Lx148GX+BjKWtGJm3a9
-         3cUNH9ak/EAvxa5/OxjocwlKpYRYF9gTA8meBmj8H6VXQpLn3gg3wRc89dqXiyZx2c2S
-         2S6To9IszBotKrlsAoyFxBVH+cz1bycnce30e3yePx3Uet71FW/iBQAUl1j0Yxko1suO
-         n8nw==;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=bgg3DZOeSktQgwpMFQWYfQpPjrdNqQXpM4wVQei4S9U=;
+        fh=HyzgfnNcq+W0PW2RqZXeLVqksQawO00tkX2n4vYBvfU=;
+        b=AkdN+9OVi52Gk9bYbcVuHpf71eyyZDjOtbBmc8XMrP6wBGLa2k1u648qcdh3sQJYyI
+         ryEW/mK8K+UXBsxGvKu23qv8EWEAnH0ZxKmhhdoEnEl1SI1+ItqdfdCLb8l/kosYmXXL
+         jFcXwOCwfg0cpvdIDZciEAr/NsUBQGHT4HuQNncY7ZxusUMyX9WboWield2H1i7BvZkj
+         8v/JhwWl58Dp/kpRtf8rJ1lJp3WpRv77kPhfp9JTm73yhTzWfh9ywooqp994WnepINb1
+         t8DL2khRjphSvszFfbmi5xRW7pXVUEqOFwlloV7ybxevObdt0r6b3e5GAWs54GtRUOJG
+         7gDA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N5Hhw4OB;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac47a42bsi199060685a.298.2024.12.19.09.52.03
+       dkim=pass header.i=@linaro.org header.s=google header.b="DyQME/+X";
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-72aad881892sor1794551b3a.5.2024.12.19.10.32.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Dec 2024 09:52:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (Google Transport Security);
+        Thu, 19 Dec 2024 10:32:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=N5Hhw4OB;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1734630723;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=/65f699+zP0hxZzXVK7O5ivtKVynSZ4cs9bwdZ4NyD0=;
-	b=N5Hhw4OBdBc/vMfbV1hLjIww6Ve5ERYs4Z30MKA+0FACmK+P8k6VBO7D9fAb5p0cmxYOGy
-	fAL3NcUqcCPei6i6UN95RQ4iGPLseu7twdkDOcOHy+sl8DQFxTjwwX576Nvvv4J3NTFn+Y
-	HgO+oiHjK75Nf6sKggUZFZ5oUMqOJFE=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-127-e4tCeR3XMtKyv4rSvegFPA-1; Thu,
- 19 Dec 2024 12:51:59 -0500
-X-MC-Unique: e4tCeR3XMtKyv4rSvegFPA-1
-X-Mimecast-MFC-AGG-ID: e4tCeR3XMtKyv4rSvegFPA
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 51B0419560B7;
-	Thu, 19 Dec 2024 17:51:56 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.54])
-	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id C4A9019560A2;
-	Thu, 19 Dec 2024 17:51:47 +0000 (UTC)
-Date: Thu, 19 Dec 2024 17:51:44 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Marc Zyngier <maz@kernel.org>
-Cc: Kashyap Chamarthy <kchamart@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>, eric.auger.pro@gmail.com,
-	qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
-	peter.maydell@linaro.org, richard.henderson@linaro.org,
-	alex.bennee@linaro.org, oliver.upton@linux.dev, sebott@redhat.com,
-	shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
-	abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com,
-	mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
-Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64
- KVM host model
-Message-ID: <Z2RdMJHydsvPpmdH@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20241206112213.88394-1-cohuck@redhat.com>
- <edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
- <Z1qoa8yXscTSAJ9e@redhat.com>
- <8734it1bv6.fsf@redhat.com>
- <1fea79e4-7a31-4592-8495-7b18cd82d02b@redhat.com>
- <Z2QE9AqZnpGM5sWD@gezellig>
- <8634ijrh8q.wl-maz@kernel.org>
- <Z2Q2rWj9cV0W_XVq@gezellig>
- <86zfkrptmj.wl-maz@kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="DyQME/+X";
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734633135; x=1735237935; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bgg3DZOeSktQgwpMFQWYfQpPjrdNqQXpM4wVQei4S9U=;
+        b=DyQME/+XINzFUqsdtsTKmSDrcVV+T6dz4HqSCW0KmMKXLK8QQw3F/XbCbK6o4DP/y1
+         ckyZq98ag3LRoMea7e6py655XRXRW99N0YhqOtGJHuUSpQnMi0ISpUwfEb80DvVJdRbj
+         hGVGs71p8omxDuYWIVonMhRQMNYMtmFCk15NuMohJCVb4EyiG2Prg63Tddim5R2pQm9E
+         NPXW2++G3BRXOu6dO2FokEmr+mkqRV+UAc8IoPagNTRNqNcxmh/Fs/zFwc0Q4tL4Lsq0
+         n8CtyHcmjqpxw72PY68aQArEZ2GVBRiMIeck+BaYONaG59U/UFLQcu13GXS+8sGWn0hg
+         dgdg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734633135; x=1735237935;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=bgg3DZOeSktQgwpMFQWYfQpPjrdNqQXpM4wVQei4S9U=;
+        b=dti98Aa85a1W26mL/aSd4hE+LJfXIIk1v1Tn2ZNFFaQo2cjXBtbspWaZpZc42N8vxB
+         U0p4FVtz8O5DXeIK5HE00yRbTzXGh2jKhQSGL7J8esOAjwuBarbDhmk4dS4WsgLAFjd8
+         +oGSGiIOLLSzxRNuLi4tPF5w4w5U3c6LLRT0rUMmCtGE3GHk4fYDE+24Crjc3F+u5dM2
+         mOGZuLW37saDrFa2JVU1jBGwEZwFwvgWidNdbP1Qsif/CT87bo8c+BMgplQD1QHwD3D8
+         Ks1knzF/es3x6Hwr7BcWnWOVQUsgKheUVN9/ezZnQyxr1PDtkGXhCq0ypwOSgKQN50VE
+         78Fg==
+X-Forwarded-Encrypted: i=1; AJvYcCV/JRzOCYplpHVwhrdQd3jxJIAW5ipLvl0NyLPVQ5rVNd6bP+ILQwUUaucpowqhhbDdwAkuLXjjIpIafw==@linaro.org
+X-Gm-Message-State: AOJu0YzxmfcTiSoulWWs8PQhO4JUm40OsU9KDtGjTRCAJFR9y5UQSzJV
+	7rMGlSKeiyIbeZUWCzZ9TYwLluIQCYwYJASVT2/Q56QOzMQhINHnQhlr9fVWov8Fig==
+X-Gm-Gg: ASbGncukfHXRFW4G88nc8mDTfZOpCrj5ZNeikLXQPqsfLyCD3La4XnviCbKWYH9jKey
+	cn2DzdKxCaaUpUjAaqvtr1f2I1zrIfplsoFZXBOMnWw8NiyGHEsYgn58pHpjdIVqM5TsdrYfhbs
+	W4bc/ERJUjl9/ghvPx/lMpXCRj8yWoogKPMplNvzjxkenwCDhmz2PvdprEH85QyKngTfL8UlBq3
+	V7MgiyI3p1TQVMp8Tvrpm0psUXteS7sKYoBdWVfeipRzwhmSGyHwno3
+X-Google-Smtp-Source: AGHT+IGF+rRqeIO/bCUN5wAwJFBz7SmxzQKFiaqqz696UQGWaKpxx8rf70FBqiqEPKLWfIIKZTyu+Q==
+X-Received: by 2002:a05:6a00:1909:b0:71e:6b8:2f4a with SMTP id d2e1a72fcca58-72aa8d3a152mr6906058b3a.12.1734633135047;
+        Thu, 19 Dec 2024 10:32:15 -0800 (PST)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from pc.. ([38.39.164.180])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72aad90b302sm1624733b3a.175.2024.12.19.10.32.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Dec 2024 10:32:14 -0800 (PST)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+	Fabiano Rosas <farosas@suse.de>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	qemu-arm@nongnu.org,
+	Laurent Vivier <lvivier@redhat.com>,
+	alex.bennee@linaro.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 1/3] target/arm: add new property to select pauth-qarma5
+Date: Thu, 19 Dec 2024 10:32:09 -0800
+Message-Id: <20241219183211.3493974-2-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241219183211.3493974-1-pierrick.bouvier@linaro.org>
+References: <20241219183211.3493974-1-pierrick.bouvier@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <86zfkrptmj.wl-maz@kernel.org>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-TUID: PD/McXIBeiuJ
+X-TUID: 5T7rtW16mL0L
 
-On Thu, Dec 19, 2024 at 03:41:56PM +0000, Marc Zyngier wrote:
-> On Thu, 19 Dec 2024 15:07:25 +0000,
-> Kashyap Chamarthy <kchamart@redhat.com> wrote:
-> > 
-> > On Thu, Dec 19, 2024 at 12:26:29PM +0000, Marc Zyngier wrote:
-> > > On Thu, 19 Dec 2024 11:35:16 +0000,
-> > > Kashyap Chamarthy <kchamart@redhat.com> wrote:
-> > 
-> > [...]
-> > 
-> > > > Consider this:
-> > > > 
-> > > > Say, there's a serious security issue in a released ARM CPU.  As part of
-> > > > the fix, two new CPU flags need to be exposed to the guest OS, call them
-> > > > "secflag1" and "secflag2".  Here, the user is configuring a baseline
-> > > > model + two extra CPU flags, not to get close to some other CPU model
-> > > > but to mitigate itself against a serious security flaw.
-> > > 
-> > > If there's such a security issue, that the hypervisor's job to do so,
-> > > not userspace. 
-> > 
-> > I don't disagree.  Probably that has always been the case on ARM.  I
-> > asked the above based on how QEMU on x86 handles it today.
-> > 
-> > > See what KVM does for CSV3, for example (and all the
-> > > rest of the side-channel stuff).
-> > 
-> > Noted.  From a quick look in the kernel tree, I assume you're referring
-> > to these commits[1].
-> > 
-> > > You can't rely on userspace for security, that'd be completely
-> > > ludicrous.
-> > 
-> > As Dan Berrangé points out, it's the bog-standard way QEMU deals with
-> > some of the CPU-related issues on x86 today.  See this "important CPU
-> > flags"[2] section in the QEMU docs.
-> 
-> I had a look, and we do things quite differently. For example, the
-> spec-ctrl equivalent in implemented in FW and in KVM, and is exposed
-> by default if the HW is vulnerable. Userspace could hide that the
-> mitigation is there, but that's the extent of the configurability.
+Before changing default pauth algorithm, we need to make sure current
+default one (QARMA5) can still be selected.
 
-Whether it is enabled by default or disabled by default isn't a
-totally fatal problem. If QEMU can toggle it to the opposite value,
-we have the same level of configurability in both cases.
+$ qemu-system-aarch64 -cpu max,pauth-qarma5=on ...
 
-It does, however, have implications for QEMU as if KVM gained support
-for exposing the new feature by default and QEMU didn't know about
-it, then the guest ABI would have changed without QEMU realizing it.
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ docs/system/arm/cpu-features.rst |  5 ++++-
+ target/arm/cpu.h                 |  1 +
+ target/arm/arm-qmp-cmds.c        |  2 +-
+ target/arm/cpu64.c               | 20 ++++++++++++++------
+ tests/qtest/arm-cpu-features.c   | 15 +++++++++++----
+ 5 files changed, 31 insertions(+), 12 deletions(-)
 
-IOW, it would imply a requirement for timely QEMU updates to match
-the kernel, which is something we wouldn't need in x86 world where
-the feature is disabled by default. Disable by default is a more
-stable approach from QEMU's POV.
-
-> > Mind you, I'm _not_ saying this is how ARM should do it.  I don't know
-> > enough about ARM to make such remarks.
-> > 
-> >     * * *
-> > 
-> > To reply to your other question on this thread[3] about "which ABI?"  I
-> > think Dan is talking about the *guest* ABI: the virtual "chipset" that
-> > is exposed to a guest (e.g. PCI(e) topology, ACPI tables, CPU model,
-> > etc).  As I understand it, this "guest ABI" should remain predictable,
-> > regardless of:
-> > 
-> >   - whether you're updating KVM, QEMU, or the underlying physical
-> >     hardware itself; or
-> >   - if the guest is migrated, live or offline
-> > 
-> > (As you might know, QEMU's "machine types" concept allows to create a
-> > stable guest ABI.)
-> 
-> All of this is under control of QEMU, *except* for the "maximum" of
-> the architectural features exposed to the guest. All you can do is
-> *downgrade* from there, and only to a limited extent.
-> 
-> That, in turn has a direct impact on what you call the "CPU model",
-> which for the ARM architecture really doesn't exist. All we have is a
-> bag of discrete features, with intricate dependencies between them.
-> 
-> Even ignoring virtualisation: you can readily find two machines using
-> the same CPUs (let's say Neoverse-N1), integrated by the same vendor
-> (let's say, Ampere), in SoCs that bear the same name (Altra), and
-> realise that they have a different feature set. Fun, isn't it?
-
-"Fun" is probably not the word I'd pick :-)
-
-> That's why I don't see CPU models as a viable thing in terms of ABI.
-> They are an approximation of what you could have, but the ABI is
-> elsewhere.
-
-Right, this makes life quite challenging for QEMU. The premise of named
-CPU models (as opposed to -host), is to facilitate the migration of VMs
-between heterogenous hardware platforms. That assumes it is possible to
-downgrade the CPU on both src + dst, to the common baseline you desire.
-
-If we were to define a named CPU model, for that to be usable, QEMU
-would have to be able to query the "maxmimum" architectural features,
-and validate that the delta between the host maximum, and the named
-CPU model is possible to downgrade. Is arm providing sufficient info
-to let QEMU do that ?
-
-With regards,
-Daniel
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index a5fb929243c..d69ebc2b852 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -219,7 +219,10 @@ Below is the list of TCG VCPU features and their descriptions.
+ ``pauth-qarma3``
+   When ``pauth`` is enabled, select the architected QARMA3 algorithm.
+ 
+-Without either ``pauth-impdef`` or ``pauth-qarma3`` enabled,
++``pauth-qarma5``
++  When ``pauth`` is enabled, select the architected QARMA5 algorithm.
++
++Without ``pauth-impdef``, ``pauth-qarma3`` or ``pauth-qarma5`` enabled,
+ the architected QARMA5 algorithm is used.  The architected QARMA5
+ and QARMA3 algorithms have good cryptographic properties, but can
+ be quite slow to emulate.  The impdef algorithm used by QEMU is
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index d86e641280d..b7500bebd7f 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1062,6 +1062,7 @@ struct ArchCPU {
+     bool prop_pauth;
+     bool prop_pauth_impdef;
+     bool prop_pauth_qarma3;
++    bool prop_pauth_qarma5;
+     bool prop_lpa2;
+ 
+     /* DCZ blocksize, in log_2(words), ie low 4 bits of DCZID_EL0 */
+diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+index 3cc8cc738bb..33cea080d11 100644
+--- a/target/arm/arm-qmp-cmds.c
++++ b/target/arm/arm-qmp-cmds.c
+@@ -94,7 +94,7 @@ static const char *cpu_model_advertised_features[] = {
+     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+     "kvm-no-adjvtime", "kvm-steal-time",
+-    "pauth", "pauth-impdef", "pauth-qarma3",
++    "pauth", "pauth-impdef", "pauth-qarma3", "pauth-qarma5",
+     NULL
+ };
+ 
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index ec77c5b34ad..9a193d2b489 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -520,9 +520,12 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+         }
+ 
+         if (cpu->prop_pauth) {
+-            if (cpu->prop_pauth_impdef && cpu->prop_pauth_qarma3) {
++            if ((cpu->prop_pauth_impdef && cpu->prop_pauth_qarma3) ||
++                (cpu->prop_pauth_impdef && cpu->prop_pauth_qarma5) ||
++                (cpu->prop_pauth_qarma3 && cpu->prop_pauth_qarma5)) {
+                 error_setg(errp,
+-                           "cannot enable both pauth-impdef and pauth-qarma3");
++                           "cannot enable pauth-impdef, pauth-qarma3 and "
++                           "pauth-qarma5 at the same time");
+                 return;
+             }
+ 
+@@ -532,13 +535,15 @@ void arm_cpu_pauth_finalize(ARMCPU *cpu, Error **errp)
+             } else if (cpu->prop_pauth_qarma3) {
+                 isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, APA3, features);
+                 isar2 = FIELD_DP64(isar2, ID_AA64ISAR2, GPA3, 1);
+-            } else {
++            } else { /* default is pauth-qarma5 */
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, APA, features);
+                 isar1 = FIELD_DP64(isar1, ID_AA64ISAR1, GPA, 1);
+             }
+-        } else if (cpu->prop_pauth_impdef || cpu->prop_pauth_qarma3) {
+-            error_setg(errp, "cannot enable pauth-impdef or "
+-                       "pauth-qarma3 without pauth");
++        } else if (cpu->prop_pauth_impdef ||
++                   cpu->prop_pauth_qarma3 ||
++                   cpu->prop_pauth_qarma5) {
++            error_setg(errp, "cannot enable pauth-impdef, pauth-qarma3 or "
++                       "pauth-qarma5 without pauth");
+             error_append_hint(errp, "Add pauth=on to the CPU property list.\n");
+         }
+     }
+@@ -553,6 +558,8 @@ static const Property arm_cpu_pauth_impdef_property =
+     DEFINE_PROP_BOOL("pauth-impdef", ARMCPU, prop_pauth_impdef, false);
+ static const Property arm_cpu_pauth_qarma3_property =
+     DEFINE_PROP_BOOL("pauth-qarma3", ARMCPU, prop_pauth_qarma3, false);
++static Property arm_cpu_pauth_qarma5_property =
++    DEFINE_PROP_BOOL("pauth-qarma5", ARMCPU, prop_pauth_qarma5, false);
+ 
+ void aarch64_add_pauth_properties(Object *obj)
+ {
+@@ -573,6 +580,7 @@ void aarch64_add_pauth_properties(Object *obj)
+     } else {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_impdef_property);
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_qarma3_property);
++        qdev_property_add_static(DEVICE(obj), &arm_cpu_pauth_qarma5_property);
+     }
+ }
+ 
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index cfd6f773535..98d6c970ea5 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -419,21 +419,28 @@ static void pauth_tests_default(QTestState *qts, const char *cpu_type)
+     assert_has_feature_enabled(qts, cpu_type, "pauth");
+     assert_has_feature_disabled(qts, cpu_type, "pauth-impdef");
+     assert_has_feature_disabled(qts, cpu_type, "pauth-qarma3");
++    assert_has_feature_disabled(qts, cpu_type, "pauth-qarma5");
+     assert_set_feature(qts, cpu_type, "pauth", false);
+     assert_set_feature(qts, cpu_type, "pauth", true);
+     assert_set_feature(qts, cpu_type, "pauth-impdef", true);
+     assert_set_feature(qts, cpu_type, "pauth-impdef", false);
+     assert_set_feature(qts, cpu_type, "pauth-qarma3", true);
+     assert_set_feature(qts, cpu_type, "pauth-qarma3", false);
++    assert_set_feature(qts, cpu_type, "pauth-qarma5", true);
++    assert_set_feature(qts, cpu_type, "pauth-qarma5", false);
+     assert_error(qts, cpu_type,
+-                 "cannot enable pauth-impdef or pauth-qarma3 without pauth",
++                 "cannot enable pauth-impdef, pauth-qarma3 or pauth-qarma5 without pauth",
+                  "{ 'pauth': false, 'pauth-impdef': true }");
+     assert_error(qts, cpu_type,
+-                 "cannot enable pauth-impdef or pauth-qarma3 without pauth",
++                 "cannot enable pauth-impdef, pauth-qarma3 or pauth-qarma5 without pauth",
+                  "{ 'pauth': false, 'pauth-qarma3': true }");
+     assert_error(qts, cpu_type,
+-                 "cannot enable both pauth-impdef and pauth-qarma3",
+-                 "{ 'pauth': true, 'pauth-impdef': true, 'pauth-qarma3': true }");
++                 "cannot enable pauth-impdef, pauth-qarma3 or pauth-qarma5 without pauth",
++                 "{ 'pauth': false, 'pauth-qarma5': true }");
++    assert_error(qts, cpu_type,
++                 "cannot enable pauth-impdef, pauth-qarma3 and pauth-qarma5 at the same time",
++                 "{ 'pauth': true, 'pauth-impdef': true, 'pauth-qarma3': true,"
++                 "  'pauth-qarma5': true }");
+ }
+ 
+ static void test_query_cpu_model_expansion(const void *data)
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.39.5

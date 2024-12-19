@@ -1,240 +1,137 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1612044njk;
-        Thu, 19 Dec 2024 05:01:29 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW47zECb93fTaI7OesFcasNVvBPcly17w/Tb5l7ucYb/xwTf9WUkTN40RhR45xRXRlOUIEoINXcGdXc0Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IEPISr9Y2T/G2xuRdDAPRpGB4JJxyvKC2CaBmyAEdJ7jOypjKuSvWERcTCTkk69c9xEtNcS
-X-Received: by 2002:a17:907:9623:b0:aa6:c04e:240 with SMTP id a640c23a62f3a-aabf49650b7mr570519066b.60.1734613287071;
-        Thu, 19 Dec 2024 05:01:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734613287; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1853418njk;
+        Thu, 19 Dec 2024 10:32:14 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUWmF/3ubdSHf380nnOVWrnIGedGtTzxaCK01csg8u+VnDv5Xzz/jTazeco2P/qRxgVPylQ1U7ndpZ3zw==@linaro.org
+X-Received: by 2002:a05:6a20:158c:b0:1e1:ce7d:c0cc with SMTP id adf61e73a8af0-1e5e081c937mr192146637.38.1734633134570;
+        Thu, 19 Dec 2024 10:32:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734633134; cv=none;
         d=google.com; s=arc-20240605;
-        b=cQpbvN9IsF560708n3JyVXvdxfadbVkDhpKD3KmXE+c/HKR18EhZFs/txJIZXcE2lN
-         2mwJICjwWWE1yXxTw+uvMyWFj+ywgw0RRlc8Jk8GgvYqDzi+gyFqne5rHL4RiR+SIfMd
-         GK6NicEmOpCEemw3kc+L4X8TDTPomdDTC4gz+uNOu72gVrJjnrgpvolkkEXgainrTNfP
-         o7QHg0eoBXkpKXiQkD6FSNdO2to+19Xv3/0eITrR8u1jJPIlvNMVmAqQivnQjdwGWEkp
-         wQYZucdA+krTZsQiX536ZceCwnCRI3W25r9eXqNPBlRnX0RUnUkGGjbk6GG7G5AolAqf
-         g9qA==
+        b=kakqWKJcjP2U3GgW8ybqvvDK5K9vKpV7xnR5d44iou4Oga44sUCvEEYTtwaZbC6tQs
+         9yX//oQ+kCAfNBRC/faFLxz0x3AcBi+F/ArnKcteltqYYoFcz0JfTnX7wQwkHVrfINbg
+         N4VsVcB7GonQOOBLYjHb6cTwo/nMqAvmc+fB9MwciXyKEvPggbEPPV1dRCATMXSHAHnD
+         BvBUmciwFpHbc1b0Etgx/1JyavfphSX5nUK93a8c+iJqkfdpWzR9sxsUBk7PXkXncfyg
+         q1YWCKu95UGnCPdwHvkwtZ7jA6C+EPGAwjs/Jv3C7OiJAckzZSxEbNAiiL6GHcwK6u6c
+         B35w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:subject:cc:to:from:message-id:date:dkim-signature;
-        bh=2e/db/I3/lfeLmKCIosk3FK1uQSabDwrCOw/8eQgdCQ=;
-        fh=45FjGexk0S4m4nmhwVMO3EiHZ/KOlbX+bClyUKLcMJA=;
-        b=Iardqo7SsurLoy/3FHZ4WPoa4WjLipQRTOjfoCeYbo7HcrlysduQ551d0pWZoZCoRe
-         VW6VjVh4K1Qk/KhNBnYnQ3Ll6heGzDET3tDwTjahnQPGNEQTqbP26ednquA0ZPvs9G2l
-         s5yDd87fDMva7tDZoRttYrRRZW/MlJY273tqkR2ODTxBvQ6Ez8r0YGf4A5z6D/UD91lH
-         qw9BfcwD9m7Gm3ugeAs+tPRrnd1Bj8y/UEvJAWPd+mgB8DgYfWWyRzsx99MmmL6C8Tqh
-         fTZ9S2bXdSIRS0IZa2GGd6XTOj4VxrtKHqLMwZSG5F9h/i00q+iogKI0n2wrycaNNyaU
-         PTvA==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=NoMVdzf7dEnl3NQdwGbML5tlJY5JdwY7hUGe8zVB6Tk=;
+        fh=j8nXtehHS6lO9Zf35/ujowx9VgJqLw2znRPYV0tqLnQ=;
+        b=lswRSmwTOOXR1TEckrtgAFkGp/NLfwCR7ph0aEQbzj7F0QiMdtu8qWJX6ldfA9B6GO
+         UTq0ve9Mnu/p4+Majyl2rd9XFPii8bEpEX53AOMk/+K3vz8I0apF+ROQQw3StLSa5B3s
+         oOVfZ3kQ4w1S3Xx9acW42TvJC2S89rOb7AgvfCEe9SikVUTTKZt+QFPNjh14Vg/R/IkU
+         v33wBcZBbl5ZHO5HrudCoSKCVWMC2AFKGZdUe6zsRpzVF5bsnSMgW6k1zX8Yy41Kn5T0
+         9fPHuFbsidq2gdzVLAlw+3k9DWVmRlMOHHNvqPg3FHDQBExJt76T1cXw6YUjfp+vU4a7
+         VNqg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=h3TIdzt5;
-       spf=pass (google.com: domain of maz@kernel.org designates 147.75.193.91 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <maz@kernel.org>
-Received: from nyc.source.kernel.org (nyc.source.kernel.org. [147.75.193.91])
-        by mx.google.com with ESMTPS id a640c23a62f3a-aac0f0426fesi74643066b.474.2024.12.19.05.01.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Dec 2024 05:01:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of maz@kernel.org designates 147.75.193.91 as permitted sender) client-ip=147.75.193.91;
+       dkim=pass header.i=@linaro.org header.s=google header.b=qgQrSntm;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-72aad915229sor1792624b3a.6.2024.12.19.10.32.14
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 19 Dec 2024 10:32:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=h3TIdzt5;
-       spf=pass (google.com: domain of maz@kernel.org designates 147.75.193.91 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by nyc.source.kernel.org (Postfix) with ESMTP id 72168A424F2;
-	Thu, 19 Dec 2024 12:59:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D95EC4CECE;
-	Thu, 19 Dec 2024 13:01:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734613285;
-	bh=O3IkwvJlk6EBCbr2lI7kMh54S9htt+kwglnpdJT+ukE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=h3TIdzt5xtQnJM11PaGOl95b1BWvsSe+ZHJeBjhc31RHJgMZejnO1qDTuQfovc7TA
-	 VwHy4cegzvveiwVKVCUJsqpLT01aPf5OQHz1VAZZVabKGxvMvzhy8EKN8Au0F8v132
-	 d0/mAoKgfZ6P+JW+yHGxDSlAAQNt5pbN5mmVnIHXkIPfFXGCaDnbsmgggvYFmJcgQ6
-	 45lWnARrnByJ+BayzFIMnEciYmiq+crassTiJ4f295vWgONIvnY1+k+6XkBlXyu+Ly
-	 voDsBzEOce4+quovWgOWv7uxL8WXfIXeJODctp9WBgyOtiq96yqT0PHADbAkeFqLil
-	 vqSFVTU2CBidw==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1tOG9b-005GyE-BC;
-	Thu, 19 Dec 2024 13:01:23 +0000
-Date: Thu, 19 Dec 2024 13:01:22 +0000
-Message-ID: <861py3rfml.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Daniel =?UTF-8?B?IlAuIEJlcnJhbmfDqSI=?= <berrange@redhat.com>
-Cc: Kashyap Chamarthy <kchamart@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	eric.auger.pro@gmail.com,
-	qemu-devel@nongnu.org,
+       dkim=pass header.i=@linaro.org header.s=google header.b=qgQrSntm;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1734633134; x=1735237934; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=NoMVdzf7dEnl3NQdwGbML5tlJY5JdwY7hUGe8zVB6Tk=;
+        b=qgQrSntmIhv5jmPVrS0IApCzAOPgcF0Kosh9lBCWewBPZP/piCK5FqzXwolGa698hU
+         gQ/zTKnAgVXLSxTYDOKYKrosAwEycUwbvx75AYhAst6lTGYc7g7dyEKAOq43RH6rDz5a
+         WCllYlKY5FcaWv4TkBqzuSYyworCUHDIr5EgXYm4/em5HhroavG1+gUS/KcK+jjQUlgc
+         seKKsV0J3VZRkENW/MhiCp85mD5OLItPdiQ2pBWSu9E4aTr9BpbDxEjl0psklQx2t5vN
+         SL8FusSJB3koJwbTYAt8gWAWtk4GOpNfYF97dQfbl7jXdoQfdWgzgK4/bjrLgmDn2UiK
+         l2pw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1734633134; x=1735237934;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=NoMVdzf7dEnl3NQdwGbML5tlJY5JdwY7hUGe8zVB6Tk=;
+        b=qjrwvuFNJ3GyXR7az4RgOOpGuaw11K/lXqsUmZoejhxzHawlUSfuJpGnoFMTVLDkRM
+         89BdNYAJCrWy7H5tDeWEdGHy9dh3u637aQrDxyzGAe5ez7askrw3s1l51Vs9zwl9ppTR
+         Ki6wddgxCwDCqXbgWEHt0IPMiIBOWg+QU7G+ko563WNmlrAtyC3SvX/XhhZyPZ16lRIP
+         yJw5IsofrCAd/UlY1vcollNzpTjArwUJhXc/UdC3BjjrIUX9OdYgcPWS7SmmRwqwIhY7
+         tPCysZUc+dzt31GOFWhfeqPpQue38O0MpmryEKVDk3tte4IvyQVGfydCPSlN5cKJ9afl
+         UwCA==
+X-Forwarded-Encrypted: i=1; AJvYcCXAsv2+scHFIxsE6mmQayRAm3Z6xFlJjL/VtodVOlx6TubrkEG8PkjgYXfbjElp3ZPDNYnOegnQiJvXCw==@linaro.org
+X-Gm-Message-State: AOJu0YzUPNBzGXgbFD/BTky2fBestjzwFOoxh7YHIOBphRKSv6djxBG7
+	5Snqp9XUtjx7ygAZONN+0lhkG0WH08PyDinB1sdRV6WiK4gJ7Ma+xCvZcu+MI+Ey2g==
+X-Gm-Gg: ASbGncv29Z5U4YiFKyQebsINqcGsnEl0bTGfPiKeV33O78RrMQaRuk5c6nqXcnr4hPZ
+	RFneFDxdqolTXIn8yeLIvsYYl1opvthwaqmkmBM97Z6kNzWWOvuNIqScd889Ag55tpNwMPW1oGO
+	BVZhL1SUxNckFygytAdsPDZHvUZEXTf5AnW1ARXYbH8h4MPMcIxrTFXawqWWetr0qwtb1hkoSwh
+	tYjwjczsRjxt8e04FoZlp/Un+qZnAxEwJL2h5vJm/p1XXfUr1OAOAFg
+X-Google-Smtp-Source: AGHT+IH1RIHjckoVdXLtfDrC5JBvOGaa4S0Ps3ubbOqCu3ObdCi9E/lTdV0oqoo+Bj/Hh71Yf2zrdg==
+X-Received: by 2002:a05:6a20:d80d:b0:1e0:d848:9e8f with SMTP id adf61e73a8af0-1e5e046decbmr235871637.13.1734633134142;
+        Thu, 19 Dec 2024 10:32:14 -0800 (PST)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from pc.. ([38.39.164.180])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72aad90b302sm1624733b3a.175.2024.12.19.10.32.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Dec 2024 10:32:13 -0800 (PST)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Eduardo Habkost <eduardo@habkost.net>,
+	Fabiano Rosas <farosas@suse.de>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Zhao Liu <zhao1.liu@intel.com>,
 	qemu-arm@nongnu.org,
-	kvmarm@lists.linux.dev,
-	peter.maydell@linaro.org,
-	richard.henderson@linaro.org,
+	Laurent Vivier <lvivier@redhat.com>,
 	alex.bennee@linaro.org,
-	oliver.upton@linux.dev,
-	sebott@redhat.com,
-	shameerali.kolothum.thodi@huawei.com,
-	armbru@redhat.com,
-	abologna@redhat.com,
-	jdenemar@redhat.com,
-	shahuang@redhat.com,
-	mark.rutland@arm.com,
-	philmd@linaro.org,
-	pbonzini@redhat.com
-Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64 KVM host model
-In-Reply-To: <Z2QT2tPbC1GsTJVL@redhat.com>
-References: <20241206112213.88394-1-cohuck@redhat.com>
-	<edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
-	<Z1qoa8yXscTSAJ9e@redhat.com>
-	<8734it1bv6.fsf@redhat.com>
-	<1fea79e4-7a31-4592-8495-7b18cd82d02b@redhat.com>
-	<Z2QE9AqZnpGM5sWD@gezellig>
-	<8634ijrh8q.wl-maz@kernel.org>
-	<Z2QT2tPbC1GsTJVL@redhat.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: berrange@redhat.com, kchamart@redhat.com, eric.auger@redhat.com, cohuck@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org, richard.henderson@linaro.org, alex.bennee@linaro.org, oliver.upton@linux.dev, sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
-X-TUID: xpdwKbBkkMih
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH v2 0/3] Change default pointer authentication algorithm on aarch64 to impdef
+Date: Thu, 19 Dec 2024 10:32:08 -0800
+Message-Id: <20241219183211.3493974-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.39.5
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-TUID: GwOF+svrnAmC
 
-On Thu, 19 Dec 2024 12:38:50 +0000,
-Daniel "P. Berrang=C3=A9" <berrange@redhat.com> wrote:
->=20
-> On Thu, Dec 19, 2024 at 12:26:29PM +0000, Marc Zyngier wrote:
-> > On Thu, 19 Dec 2024 11:35:16 +0000,
-> > Kashyap Chamarthy <kchamart@redhat.com> wrote:
-> > >=20
-> > > On Thu, Dec 12, 2024 at 11:04:30AM +0100, Eric Auger wrote:
-> > >=20
-> > > Hi Eric,
-> > >=20
-> > > > On 12/12/24 10:36, Cornelia Huck wrote:
-> > > > > On Thu, Dec 12 2024, Daniel P. Berrang=C3=A9 <berrange@redhat.com=
-> wrote:
-> > >=20
-> > > [...]
-> > >=20
-> > > > >> Consider you mgmt app wants to set a CPU model that's common acr=
-oss
-> > > > >> heterogeneous hardware. They don't neccessarily want/need to be
-> > > > >> able to live migrate between heterogeneous CPUs, but for simplic=
-ity
-> > > > >> of configuration desire to set a single named CPU across all gue=
-sts,
-> > > > >> irrespective of what host hey are launched on. The ARM spec base=
-line
-> > > > >> named models would give you that config simplicity.
-> > > > > If we use architecture extensions (i.e. Armv8.x/9.x) as baseline,=
- I'm
-> > > > > seeing some drawbacks:
-> > > > > - a lot of work before we can address some specific use cases
-> > > > > - old models can get new optional features
-> > > > > - a specific cpu might have a huge set of optional features on to=
-p of
-> > > > >   the baseline model
-> > > > >
-> > > > > Using a reference core such as Neoverse-V2 probably makes more se=
-nse
-> > > > > (easier to get started, less feature diff?) It would still make a=
- good
-> > > > > starting point for a simple config.
-> > > > >
-> > > > Actually from a dev point of view I am not sure it changes much to =
-have
-> > > > either ARM spec rev baseline or CPU ref core named model.
-> > > >=20
-> > > > One remark is that if you look at
-> > > > https://developer.arm.com/documentation/109697/2024_09?lang=3Den
-> > > > you will see there are quite a lot of spec revisions and quite a fe=
-w of
-> > > > them are actually meaningful in the light of currently avaiable and
-> > > > relevant HW we want to address. What I would like to avoid is to be
-> > > > obliged to look at all of them in a generic manner while we just wa=
-nt to
-> > > > address few cpu ref models.
-> > > >=20
-> > > > Also starting from the ARM spec rev baseline the end-user may need =
-to
-> > > > add more feature opt-ins to be close to a specific cpu model. So I
-> > > > foresee extra complexity for the end-user.
-> > >=20
-> > > (Assuming I'm parsing your last para right; correct me if not.)
-> > >=20
-> > > Isn't a user wanting to add extra CPU flags (on top of a baseline) a
-> > > "normal behaviour" and not "extra complexity"?  Besides coming close =
-to
-> > > a specific CPU model, there's the additional important use-case of CPU
-> > > flags that provide security mitigation.
-> > >=20
-> > > Consider this:
-> > >=20
-> > > Say, there's a serious security issue in a released ARM CPU.  As part=
- of
-> > > the fix, two new CPU flags need to be exposed to the guest OS, call t=
-hem
-> > > "secflag1" and "secflag2".  Here, the user is configuring a baseline
-> > > model + two extra CPU flags, not to get close to some other CPU model
-> > > but to mitigate itself against a serious security flaw.
-> >=20
-> > If there's such a security issue, that the hypervisor's job to do so,
-> > not userspace. See what KVM does for CSV3, for example (and all the
-> > rest of the side-channel stuff).
-> >=20
-> > You can't rely on userspace for security, that'd be completely
-> > ludicrous.
->=20
-> Actually that's a normal situation QEMU has to deal with.
->=20
-> QEMU needs to be able to expose a deterministic fixed ABI to the guest
-> VM, and that includes control over what CPU features are exposed to
-> it. In most cases, the hypervisor cannot arbitrary force enable new
-> guest features without agreement from QEMU.
+qemu-system-aarch64 default pointer authentication (QARMA5) is expensive, we
+spent up to 50% of the emulation time running it (when using TCG).
 
-Which ABI? The only ABI that matters is what is defined by the
-architecture. When it comes to CPU features, new features are exposed
-by default. If QEMU wants to turn it off, it can in most (but not all)
-cases. But that's the extent of the "agreement" we have with
-userspace, QEMU or otherwise.
+Switching to pauth-impdef=on is often given as a solution to speed up execution.
+Thus we talked about making it the new default.
 
-If a feature is deemed broken or unsafe, KVM will turn it at least
-hide it from the guest without userspace's intervention, and if
-possible actively turn it off.
+The first patch introduce a new property (pauth-qarma5) to allow to select
+current default algorithm.
+The second one change the default.
+The third one updates documentation.
 
-> If a guest happens to be using '-cpu host', then when a new CPU flag
-> arrives as part of a security fix, there is at least no CPU config
-> change required. QEMU may or may not need changes, in order that
-> the behaviour associated with the new CPU flag is correctly handled.
+v2:
+- ensure we don't break migration compatibility, by using a specific backward
+  compatible property.
+- added some documentation about migration for arm virt machine model.
 
-How is that "flag" visible from the guest? The only way to expose
-properties is through the ID registers, and you can't invent your own,
-nor expose something that is not already handled by the host.
+Pierrick Bouvier (3):
+  target/arm: add new property to select pauth-qarma5
+  target/arm: change default pauth algorithm to impdef
+  docs/system/arm/virt: mention specific migration information
 
-> If the guest is using a named CPU model, as well as modifying QEMU
-> to know about the new flag, the host admin needs to explicitly
-> decide whether & when to expose the new CPU flag for each guest VM
-> on the host.
->
-> Until the new CPU flag is exposed to the guest, while the host itself
-> may be able to remain protected to the new security issue, the guest
-> OS is likely remain vulnerable, or have degraded operation in some way.
+ docs/system/arm/cpu-features.rst |  7 ++++--
+ docs/system/arm/virt.rst         | 14 +++++++++---
+ docs/system/introduction.rst     |  2 +-
+ target/arm/cpu.h                 |  4 ++++
+ hw/core/machine.c                |  4 +++-
+ target/arm/arm-qmp-cmds.c        |  2 +-
+ target/arm/cpu.c                 |  2 ++
+ target/arm/cpu64.c               | 38 +++++++++++++++++++++++---------
+ tests/qtest/arm-cpu-features.c   | 15 +++++++++----
+ 9 files changed, 66 insertions(+), 22 deletions(-)
 
-I think that's the point where we talk past each other. There is no
-"flag" that can be exposed to a guest as part of the architecture. We
-have a set of architectural features, and in 99% of the cases, we can
-only expose to the guest a feature that both exists on the host and
-that the hypervisor understands.
-
-Thanks,
-
-	M.
-
---=20
-Without deviation from the norm, progress is not possible.
+-- 
+2.39.5

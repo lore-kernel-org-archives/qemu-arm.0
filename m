@@ -1,76 +1,74 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp2472642njk;
-        Fri, 20 Dec 2024 08:04:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWKTyWgsEfYkhnkwOP1Mvoj1g4UxBP2Tc0Ru8aJJG47ZV4+/G6uomrSWuIKkkFIn5ZymN1fnOEyzXyxHA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHdAhDKEfW9CEZ8lN3MsJMz5scZsxZQpENhhT06MrrWwfQESVO6fsVElZ0xCguSNx24lTjx
-X-Received: by 2002:a2e:b8c6:0:b0:300:7f87:a4f with SMTP id 38308e7fff4ca-30468557147mr13486531fa.19.1734710680616;
-        Fri, 20 Dec 2024 08:04:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734710680; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp2484019njk;
+        Fri, 20 Dec 2024 08:17:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWzjA2cC8zKzzSkex6VoBq6VC3MQDJrj8WG5tBIJpffA8vZJJoY5hmD6ud8T/9Sx+z6vR0+fWvZLO01dw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFP6Rjuxdcmo5FaDBNzbmF1Q2EZxshzCsZI/ACBaV+h9CwdH+A0U0OTNMXIm372WhnU1C98
+X-Received: by 2002:a25:6d57:0:b0:e47:f4e3:87fd with SMTP id 3f1490d57ef6-e538c20750amr2062142276.5.1734711435040;
+        Fri, 20 Dec 2024 08:17:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734711435; cv=none;
         d=google.com; s=arc-20240605;
-        b=V1+Sf7AmtGm9wZdUoGWgZEWocnHO5tetAv/awLMx+oQjPE4rkED2I0zr5MnV7RtHrE
-         o7pQk8OCrx8RkwQTCva3PyRGMyuU+exAcawEN2o8T6TmXd9ZLGspmV6/cxMa5BGccYjg
-         gVh4SN34KNWtfBlTxFvZFIPbUI9qXIEpwm59+5m7uJ6ni35vPZqk8ZDPJ0bSIlVqiAGl
-         f1/RuktitDq/DypsIID6ExbMuAvM2q9xUzrlmYWJCeX2Btu41Pa8dJEf9kwSLdPAG6uq
-         F7XrcINhIk5iwddA9U31JrMyvhtl18bQvtpxvzBg8CkLx4OmNJTdaAUVLW4aYxJ7cPmU
-         uq8A==
+        b=LoRa7xedt9eU3q/52aj59iv3gHZO9ArZrVNEfyoqpQ3x4kCP/0ykWcwe7IG+Kf454Q
+         ++M6sRkDPz6igf3ppdEGq33TZ8dquDm2O68b891KbMwbGOwYNEygt9h3swxGcjk464Kj
+         wYK9oTNYeoEPeg8UTLJ0mfulfM3QHfoY/5zUY51ZqOtpqUXhqNuzLVSKTB66U81lPG6b
+         dPSyZZSFOYCAdl9s44YNSVu4Nr5YdCUrri0uwVFn3ABLGtj7Gxx0z7yc0ogpvJMBEhMe
+         DVdkckNuH4ez1WUA/N+a2vbFZzOOfa3Ow/Bi4qholcwO1SX2nvTBoi4oQNTwUV2TVb35
+         Zolg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:user-agent
-         :references:organization:in-reply-to:subject:cc:to:from
-         :dkim-signature;
-        bh=zg7ccD/W/XlqMMpPf1cKO8U1jMkrmDqjiLXSn0kHDWA=;
-        fh=astamPkKkScWQ40ZPMKzCXzP+oEhWiTj3ASsXYhnxx4=;
-        b=hSn16utIolOHzwW1YIAxpFK4f9zUsoAO3JhLGAIK54+4bJ8ZJqyxhBz1kjfHF7WqeN
-         Hh8wa476Hk4iTPglswzmEYtxx0Zuo7OzeQkkXGSSLUMVmHr/p0MposVa2nCBDV1rt1jP
-         cW59u8JwUF7DBF1ECAX4KzCkrMIMty8DsVWMWxNyhiQjeS/wLbHQCd/pWj6m86p7Y2PF
-         E8/rpqUsj9sz0wU78f+KuBmGwyEtDSbUy7LgDHPZqLQZI9WqmGfhT6jKXXNxmSaOHzOY
-         KrFZXMt5xYsqallJdk7fi46RvMfgoUYFzEj/fmrWFIXunEYgHACZTeBxyc3xwQNH6fq9
-         GL9g==;
+        h=mime-version:message-id:date:user-agent:references:organization
+         :in-reply-to:subject:cc:to:from:dkim-signature;
+        bh=RwN5A8m4ojC8zocdAFvRxWYXijSSWi5WNEXx5l/wHI4=;
+        fh=pUBuA8wCUN3rjOApRijqAT5fBsf8vDuNEtwYEYK+90A=;
+        b=LK8xrgrWVv49H0BZqrAZXineg+oA1HAkf7yIbt36JvwOw3pM75V+lhT55yLSlB18EG
+         SAk711/3I6z6nJ6gwTQ62OdXRjLC93fASNPe5SX3tkKTZx/Z+FvhL6+6yU1m2fyLNnjh
+         wn1lBL5CvUu+JIavJ6byDTrDYNArpSf2lE4YXtkJbLr+M5dP0A2G2jgUugfh7Ojl7rig
+         39zSzNdVE8fc1JBkeAHVhjd79bp5NZx6+o+owl60rIZB6TiOzJ5whP4dLvI+/O9MZUGx
+         lHi+0A2p8OxoSb+i88kE8InYNZqAgiJ5awiJa0CO0UNeVl6xNT5NJ8AgDTz89/DRVzGV
+         jijQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ti9b2STK;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C3MuYbfy;
        spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <cohuck@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 38308e7fff4ca-3045b07024fsi13699841fa.200.2024.12.20.08.04.40
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e537d190c9asi2646798276.467.2024.12.20.08.17.14
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Dec 2024 08:04:40 -0800 (PST)
+        Fri, 20 Dec 2024 08:17:15 -0800 (PST)
 Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ti9b2STK;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=C3MuYbfy;
        spf=pass (google.com: domain of cohuck@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1734710678;
+	s=mimecast20190719; t=1734711434;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=zg7ccD/W/XlqMMpPf1cKO8U1jMkrmDqjiLXSn0kHDWA=;
-	b=Ti9b2STK0ABnttyLtbrdwPmRyHgeVc01aoGOSwl0002FcXu0g6z4d50ehHYVUhCyw+FsdL
-	MSyCmLKozccm+BtQhIH2Oo8C/v9r6DP0E3m1ntTJJy/SU6tiRNr4dXb+54EQTp1VUQ0v5s
-	M8BvyR1+x8DMde29K7+2uH44Qz4hB64=
+	bh=RwN5A8m4ojC8zocdAFvRxWYXijSSWi5WNEXx5l/wHI4=;
+	b=C3MuYbfyWN/Aczv/m+uPrxUy+5qjtxfIVdMQU6Y78exzmpsPqS1n/livPPMpZcSRSIvtXs
+	g2NEolaigrXkEUwz3qeSGa4wtPl4utnArwYwqlHJO9rr3wfc7sZ+6L/gtqEIIrRh6VkOg8
+	mnwq7oeKjRXEFzA2KMycgGjlx3bTZEA=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-224-oIlcAF56MTS_mgkSjF_NPg-1; Fri,
- 20 Dec 2024 11:04:33 -0500
-X-MC-Unique: oIlcAF56MTS_mgkSjF_NPg-1
-X-Mimecast-MFC-AGG-ID: oIlcAF56MTS_mgkSjF_NPg
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-208-inbgGH3gNGycdQ_GQQdWKQ-1; Fri,
+ 20 Dec 2024 11:17:11 -0500
+X-MC-Unique: inbgGH3gNGycdQ_GQQdWKQ-1
+X-Mimecast-MFC-AGG-ID: inbgGH3gNGycdQ_GQQdWKQ
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id DD3FB1956088;
-	Fri, 20 Dec 2024 16:04:30 +0000 (UTC)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E32571944D32;
+	Fri, 20 Dec 2024 16:17:07 +0000 (UTC)
 Received: from localhost (dhcp-192-244.str.redhat.com [10.33.192.244])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 17819195608A;
-	Fri, 20 Dec 2024 16:04:27 +0000 (UTC)
+	by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 661581956053;
+	Fri, 20 Dec 2024 16:17:05 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
-To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Marc
- Zyngier <maz@kernel.org>
-Cc: Kashyap Chamarthy <kchamart@redhat.com>, Eric Auger
- <eric.auger@redhat.com>, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
+To: Kashyap Chamarthy <kchamart@redhat.com>, Marc Zyngier <maz@kernel.org>
+Cc: Eric Auger <eric.auger@redhat.com>, Daniel =?utf-8?Q?P=2E_Berrang?=
+ =?utf-8?Q?=C3=A9?=
+ <berrange@redhat.com>, eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
  richard.henderson@linaro.org, alex.bennee@linaro.org,
  oliver.upton@linux.dev, sebott@redhat.com,
@@ -79,7 +77,7 @@ Cc: Kashyap Chamarthy <kchamart@redhat.com>, Eric Auger
  mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
 Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64
  KVM host model
-In-Reply-To: <Z2RdMJHydsvPpmdH@redhat.com>
+In-Reply-To: <Z2Vak-hbCMaxm-JJ@gezellig>
 Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
  Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
  153243,
@@ -92,107 +90,46 @@ References: <20241206112213.88394-1-cohuck@redhat.com>
  <1fea79e4-7a31-4592-8495-7b18cd82d02b@redhat.com>
  <Z2QE9AqZnpGM5sWD@gezellig> <8634ijrh8q.wl-maz@kernel.org>
  <Z2Q2rWj9cV0W_XVq@gezellig> <86zfkrptmj.wl-maz@kernel.org>
- <Z2RdMJHydsvPpmdH@redhat.com>
+ <Z2Vak-hbCMaxm-JJ@gezellig>
 User-Agent: Notmuch/0.38.3 (https://notmuchmail.org)
-Date: Fri, 20 Dec 2024 17:04:25 +0100
-Message-ID: <87frmibat2.fsf@redhat.com>
+Date: Fri, 20 Dec 2024 17:17:02 +0100
+Message-ID: <87cyhmba81.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: czGe/yQHsS3y
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-TUID: bEWo4k0rKC93
 
-On Thu, Dec 19 2024, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
+On Fri, Dec 20 2024, Kashyap Chamarthy <kchamart@redhat.com> wrote:
 
-> On Thu, Dec 19, 2024 at 03:41:56PM +0000, Marc Zyngier wrote:
->> On Thu, 19 Dec 2024 15:07:25 +0000,
->> Kashyap Chamarthy <kchamart@redhat.com> wrote:
->> >=20
->> > On Thu, Dec 19, 2024 at 12:26:29PM +0000, Marc Zyngier wrote:
->> > > On Thu, 19 Dec 2024 11:35:16 +0000,
->> > > Kashyap Chamarthy <kchamart@redhat.com> wrote:
->> >=20
->> > [...]
->> >=20
->> > > > Consider this:
->> > > >=20
->> > > > Say, there's a serious security issue in a released ARM CPU.  As p=
-art of
->> > > > the fix, two new CPU flags need to be exposed to the guest OS, cal=
-l them
->> > > > "secflag1" and "secflag2".  Here, the user is configuring a baseli=
-ne
->> > > > model + two extra CPU flags, not to get close to some other CPU mo=
-del
->> > > > but to mitigate itself against a serious security flaw.
->> > >=20
->> > > If there's such a security issue, that the hypervisor's job to do so,
->> > > not userspace.=20
->> >=20
->> > I don't disagree.  Probably that has always been the case on ARM.  I
->> > asked the above based on how QEMU on x86 handles it today.
->> >=20
->> > > See what KVM does for CSV3, for example (and all the
->> > > rest of the side-channel stuff).
->> >=20
->> > Noted.  From a quick look in the kernel tree, I assume you're referring
->> > to these commits[1].
->> >=20
->> > > You can't rely on userspace for security, that'd be completely
->> > > ludicrous.
->> >=20
->> > As Dan Berrang=C3=A9 points out, it's the bog-standard way QEMU deals =
-with
->> > some of the CPU-related issues on x86 today.  See this "important CPU
->> > flags"[2] section in the QEMU docs.
->>=20
->> I had a look, and we do things quite differently. For example, the
->> spec-ctrl equivalent in implemented in FW and in KVM, and is exposed
->> by default if the HW is vulnerable. Userspace could hide that the
->> mitigation is there, but that's the extent of the configurability.
+> Related tangent on CPU feature discoverability on ARM:
 >
-> Whether it is enabled by default or disabled by default isn't a
-> totally fatal problem. If QEMU can toggle it to the opposite value,
-> we have the same level of configurability in both cases.
-
-I don't think "hiding" is the same thing as "disabling"? The underlying
-behaviour will still have changed, the main question is whether that is
-a problem.
-
+> Speaking of "Neoverse-N1", looking at a system that I have access to,
+> the `lscpu` output does not say anything about who the integrator is; it
+> only says:
 >
-> It does, however, have implications for QEMU as if KVM gained support
-> for exposing the new feature by default and QEMU didn't know about
-> it, then the guest ABI would have changed without QEMU realizing it.
+>     ...
+>     Vendor ID:                ARM
+>     Model name:             Neoverse-N1
+>     ...
 >
-> IOW, it would imply a requirement for timely QEMU updates to match
-> the kernel, which is something we wouldn't need in x86 world where
-> the feature is disabled by default. Disable by default is a more
-> stable approach from QEMU's POV.
-
-It implies that QEMU (or generally the VMM) needs to actively disable
-everything it does not know about (i.e. setting everything in any
-writable id reg to zero if it has no idea what it is about) to provide a
-stable guest interface across different kernels. Just tweaking some
-known values is only sufficient for a stable interface across two
-systems with the same kernel.
-
-(...)
-
->> That's why I don't see CPU models as a viable thing in terms of ABI.
->> They are an approximation of what you could have, but the ABI is
->> elsewhere.
+> I realize, `lscpu` displays only whatever the kernel knows.  Nothing in
+> `dmidecode` either.
 >
-> Right, this makes life quite challenging for QEMU. The premise of named
-> CPU models (as opposed to -host), is to facilitate the migration of VMs
-> between heterogenous hardware platforms. That assumes it is possible to
-> downgrade the CPU on both src + dst, to the common baseline you desire.
+> Also, it looks like there's no equivalent of a "CPUID" instruction (I
+> realize it is x86-specific) on ARM.  Although, I came across a Google
+> Git repo that seems to implement a bespoke, "aarch64_cpuid".  From a
+> what I see, it seems to fetch the "Main ID Register" (MIDR_EL1) - I
+> don't know enough about it to understand its implications:
 >
-> If we were to define a named CPU model, for that to be usable, QEMU
-> would have to be able to query the "maxmimum" architectural features,
-> and validate that the delta between the host maximum, and the named
-> CPU model is possible to downgrade. Is arm providing sufficient info
-> to let QEMU do that ?
+>     https://github.com/google/cpu_features/blob/main/src/impl_aarch64_cpuid.c
 
-Not sure if I understand what you mean, but "give me the contents of all
-id registers, and which registers are writable" should probably do the
-trick?
+My guess is that this is mostly for "we have code that looks for a cpuid
+like on x86, let's provide some code on arm that gives something that is
+at least somewhat useful."
+
+For "CPU feature discoverability", I don't think that there's any way
+other than looking at the actual id registers. It would be nice if you
+could at least know that "there are some <unspecified> differences in
+features" by comparing MIDR/REVIDR/AIDR, but that's not the case IIRC?
+
+[Anyway, I'm off for the year :)]

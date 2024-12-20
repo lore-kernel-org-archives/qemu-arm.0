@@ -1,259 +1,217 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp2281148njk;
-        Fri, 20 Dec 2024 03:18:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWZMooIcz/lJEZ4GiqmH+AWzvMHLN+xtxK2ouDCfWnt41IrQoJpiIJ1Nixr5K0tDTbhWSi2wK20s3HbFg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGnz8fPZbGNHgQ4c9hfekfI+mi/DwDc0NHTcwNXmJe5Hzs4iSrabkknk3yZro8t4XxtNYH6
-X-Received: by 2002:a05:620a:4888:b0:7b6:d51b:819a with SMTP id af79cd13be357-7b9aa91ef75mr1073376485a.5.1734693521670;
-        Fri, 20 Dec 2024 03:18:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734693521; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp2297669njk;
+        Fri, 20 Dec 2024 03:53:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUr4axvmqgR297jvPc2dNLL1ALrqZqp6qLp1axhSMisSq39FYQZdMGNKuAMFEybepKygRfKI6YagKg1rQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEUibuh/NnqWdiJxfl1HQpEUmxwtdUs9wv9mHBucCN0ys9F4N7OMRfXS/CjxqkC8BlMlsDR
+X-Received: by 2002:a05:6214:449f:b0:6d8:a127:e744 with SMTP id 6a1803df08f44-6dd23355f97mr43993856d6.20.1734695588270;
+        Fri, 20 Dec 2024 03:53:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734695588; cv=none;
         d=google.com; s=arc-20240605;
-        b=FrMOg7wtpFYB0YGrVwbs5vVBZGHvbOQTYwt9rFNCuYSAkzaLGrY9Q9Glm+AW2YVjPG
-         mSOEJ/xJ6Rc6cmW0OdvvVcPVDpzNpx5k8mDbOapujOpJDKzXveTtbkBw4Jhv6qydUPAo
-         aL+3ZV6Q1GrYT6ZFbpYHbc4rA1f6ot9ePUgModDWf+7G8PxPxes3fgf4JOsIlbxMGK7n
-         taOdLNCrSpFk/c4zzGSDtkryNX2fLdFTHYClV2imUR6CAlg8XdFqdHV3XC/YeOSGWzWz
-         At8bkmc85mjyLqNrCPOfFYor69w9qaumDxPu/Ks2AJMJWpmXjpDDAfYmx0FCpKNYflWC
-         qrSQ==
+        b=cok27EiJhNQWL2v0ZUI7WGeKZZYQHYEt/S4Uk6IDLOz4HecZL8ZyOj2FJvOP+NXXFH
+         quOJ87TuDCEo0F4FROAgnAIF7ul0g0SZkMCuCV3cdA8UigXo0KKP6cyqyfWISMHH85Yl
+         47Y29JmBxVaniGwWzt6lnEIUhspXBtinL95K/mlc+s/ifpT1VSKffVthFV1hwda4DGnh
+         CPRyPrSQ55t1kpnzkgfBHLCPrCNEa1pFc5bnDWOidCHCZXRktJmXZhomLsMVJ9H2btzQ
+         2f4n02aXH7pJ3VfqUpVdrWsEkIRjxINtpLR966Q8uKy+obyWCG9aveKzUC+TQz5gS9fz
+         g0aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ALmI+oJ6uNu2vl1LVyLbkIbPEkBXHTaxJHn3NepUKT4=;
-        fh=WNNkqDeuweqJZ0Y2gUcgoUPnfHM7bERODBP3PmRlXos=;
-        b=gJN6f9rgmNomiPqpwvbiece191SKREvS8DxHb+Eqqu1lupbwZPDKNXUmsAOkz7nDMS
-         odyHZ1oQ/eTmFQKqnqtYxorYiVIFiE9mhVib6k+F55jItTFmED6fBwNiZMlRgtZwr+kT
-         XR6UQ9KtObeYoIRvvKJpM4II6Jvm064W8wwj3zHOTEMPpOTUbuS7SEPxtasEfijDb2Wk
-         B+fQUEwqf4sI7eaYk0yAjhxMSbhGsJ88IVWEd3HJb4sgt85qul5m3prSjHYQh8ym1NTS
-         nkde7mxoY09o211UrfOgGyIjU54FP1cgJIuWsuhjcDhvZRcvbmbVxCQeaADoGU0cQaiA
-         bvtw==;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=clN8kK20t9Q1ruCWzq9rltbPgJklSBXSxOLMJ45bOAQ=;
+        fh=QGLj8qEMOav9hOfETDqZJEDDiBnaQDt7WHiklP2hRVA=;
+        b=YzZaObGnx0F2BEmCngjzcpN2MUWy4yUrWLQAxEGoKqVAX9wDbC939RIMV5kE38FNUy
+         EQZFLFpkeGPzPQU06OKYiL/JqAtq7MFAFYRPMAPoh5Yfqi1jwVq9nxPqPrrChZDI5iTr
+         UF0EvpL/ajeqNT+h/XhDeTvGPVlY4FYPXEpnl/GOBd6TtczdCfn2ye8qGDow/LmT2z5Y
+         NP0T534JGfmvjc80SHxHT4RY0EzjBRfBcvLhL4N3DdYIkMtusWnKF83oldYW08+2Rc/e
+         OGlviF++RRyvJT02Yw5Brnso5Pur8cKNpED1j2Z2WEv0DFWu1ts0VsjqpXp504ZKL6w8
+         uj1A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@maquefel.me header.s=mail header.b=mqBo9d1O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac2ce24esi408795585a.184.2024.12.20.03.18.41
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F5rRUTtk;
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kchamart@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd1835a4dfsi37731796d6.415.2024.12.20.03.53.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Dec 2024 03:18:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Dec 2024 03:53:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@maquefel.me header.s=mail header.b=mqBo9d1O;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tOb1N-0003RF-IJ; Fri, 20 Dec 2024 06:18:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nikita.shubin@maquefel.me>)
- id 1tOb1I-0003Qt-4H; Fri, 20 Dec 2024 06:18:12 -0500
-Received: from forward101b.mail.yandex.net ([2a02:6b8:c02:900:1:45:d181:d101])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nikita.shubin@maquefel.me>)
- id 1tOb1D-0000pf-5l; Fri, 20 Dec 2024 06:18:10 -0500
-Received: from mail-nwsmtp-smtp-production-main-25.sas.yp-c.yandex.net
- (mail-nwsmtp-smtp-production-main-25.sas.yp-c.yandex.net
- [IPv6:2a02:6b8:c11:992:0:640:7835:0])
- by forward101b.mail.yandex.net (Yandex) with ESMTPS id 879DA60E44;
- Fri, 20 Dec 2024 14:17:56 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-25.sas.yp-c.yandex.net
- (smtp/Yandex) with ESMTPSA id sHREuqiOqOs0-FTBIQprw; 
- Fri, 20 Dec 2024 14:17:55 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=maquefel.me; s=mail;
- t=1734693475; bh=ALmI+oJ6uNu2vl1LVyLbkIbPEkBXHTaxJHn3NepUKT4=;
- h=Message-ID:Date:In-Reply-To:Cc:Subject:References:To:From;
- b=mqBo9d1OiLezq5gcMQdzSJInopinoJ8QXFtKc68cgfamdFxfQdyl3EvDB0Z1SfcGT
- ehCx9/MxCNtyr2kH0+3fUeIaZwqYG+P9WwDIpvtSQrqalK+nq/2JTOulcZwE1qA4RK
- Wd+lhFlp3qx5bLPXywwXVxkvyFxtp11SGh78YKDM=
-Authentication-Results: mail-nwsmtp-smtp-production-main-25.sas.yp-c.yandex.net;
- dkim=pass header.i=@maquefel.me
-From: Nikita Shubin <nikita.shubin@maquefel.me>
-To: Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: Nikita Shubin <nikita.shubin@maquefel.me>,
- Nikita Shubin <n.shubin@yadro.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: [PATCH v2] hw/char: stm32f2xx_usart: replace print with trace
-Date: Fri, 20 Dec 2024 14:17:56 +0300
-Message-ID: <20241220111756.16511-1-nikita.shubin@maquefel.me>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20241220084623.1889-1-nikita.shubin@maquefel.me>
-References: <20241220084623.1889-1-nikita.shubin@maquefel.me>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=F5rRUTtk;
+       spf=pass (google.com: domain of kchamart@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=kchamart@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1734695587;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=clN8kK20t9Q1ruCWzq9rltbPgJklSBXSxOLMJ45bOAQ=;
+	b=F5rRUTtkQzxQ+/gKJVJApU9MXdjLuH5rigbGc5dEapFCSCLbArV0abvmEXGy4OCAqlmeLe
+	9oEKJqpc4dkkuR8MMKflS++vBP9nJbv76GFC4xgyRx7KBJ7fH6yeXrwwXSWGDieV7ZMQlJ
+	O1VDwcOKsSclGcDZ2uJ9jSKSxdbGVF8=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-133-CuI-lu2IMO2s2CBXok8YyA-1; Fri,
+ 20 Dec 2024 06:53:04 -0500
+X-MC-Unique: CuI-lu2IMO2s2CBXok8YyA-1
+X-Mimecast-MFC-AGG-ID: CuI-lu2IMO2s2CBXok8YyA
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 756281955F42;
+	Fri, 20 Dec 2024 11:53:02 +0000 (UTC)
+Received: from gezellig (unknown [10.39.194.19])
+	by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id E096619560A2;
+	Fri, 20 Dec 2024 11:52:54 +0000 (UTC)
+Date: Fri, 20 Dec 2024 12:52:51 +0100
+From: Kashyap Chamarthy <kchamart@redhat.com>
+To: Marc Zyngier <maz@kernel.org>
+Cc: Eric Auger <eric.auger@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+	Daniel =?iso-8859-1?B?IlAuIEJlcnJhbmfpIg==?= <berrange@redhat.com>,
+	eric.auger.pro@gmail.com, qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
+	peter.maydell@linaro.org, richard.henderson@linaro.org,
+	alex.bennee@linaro.org, oliver.upton@linux.dev, sebott@redhat.com,
+	shameerali.kolothum.thodi@huawei.com, armbru@redhat.com,
+	abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com,
+	mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
+Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64
+ KVM host model
+Message-ID: <Z2Vak-hbCMaxm-JJ@gezellig>
+References: <20241206112213.88394-1-cohuck@redhat.com>
+ <edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
+ <Z1qoa8yXscTSAJ9e@redhat.com>
+ <8734it1bv6.fsf@redhat.com>
+ <1fea79e4-7a31-4592-8495-7b18cd82d02b@redhat.com>
+ <Z2QE9AqZnpGM5sWD@gezellig>
+ <8634ijrh8q.wl-maz@kernel.org>
+ <Z2Q2rWj9cV0W_XVq@gezellig>
+ <86zfkrptmj.wl-maz@kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a02:6b8:c02:900:1:45:d181:d101;
- envelope-from=nikita.shubin@maquefel.me; helo=forward101b.mail.yandex.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: GzNff2Ku/tWd
+In-Reply-To: <86zfkrptmj.wl-maz@kernel.org>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-TUID: m++VIfOcIMUl
 
-From: Nikita Shubin <nshubin@yadro.com>
+On Thu, Dec 19, 2024 at 03:41:56PM +0000, Marc Zyngier wrote:
+> On Thu, 19 Dec 2024 15:07:25 +0000,
+> Kashyap Chamarthy <kchamart@redhat.com> wrote:
+> > 
+> > On Thu, Dec 19, 2024 at 12:26:29PM +0000, Marc Zyngier wrote:
+> > > On Thu, 19 Dec 2024 11:35:16 +0000,
+> > > Kashyap Chamarthy <kchamart@redhat.com> wrote:
 
-Drop debug printing macros and replace them with according trace
-functions.
+[...]
 
-Signed-off-by: Nikita Shubin <n.shubin@yadro.com>
----
-v1->v2:
-Phil:
-- fix typo s/recieve/receive/
-- initialize 'retvalue' with zero
+> > > You can't rely on userspace for security, that'd be completely
+> > > ludicrous.
+> > 
+> > As Dan Berrangé points out, it's the bog-standard way QEMU deals with
+> > some of the CPU-related issues on x86 today.  See this "important CPU
+> > flags"[2] section in the QEMU docs.
+> 
+> I had a look, and we do things quite differently. For example, the
+> spec-ctrl equivalent in implemented in FW and in KVM, and is exposed
+> by default if the HW is vulnerable. Userspace could hide that the
+> mitigation is there, but that's the extent of the configurability.
 
----
- hw/char/stm32f2xx_usart.c | 49 ++++++++++++++++++---------------------
- hw/char/trace-events      |  6 +++++
- 2 files changed, 29 insertions(+), 26 deletions(-)
+Noted.  As Dan says, as long as QEMU can toggle the feature on/off, then
+that might be sufficient in the context of migratability.
 
-diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
-index 17b5b1f15f..cd97f7d7e4 100644
---- a/hw/char/stm32f2xx_usart.c
-+++ b/hw/char/stm32f2xx_usart.c
-@@ -30,17 +30,7 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- 
--#ifndef STM_USART_ERR_DEBUG
--#define STM_USART_ERR_DEBUG 0
--#endif
--
--#define DB_PRINT_L(lvl, fmt, args...) do { \
--    if (STM_USART_ERR_DEBUG >= lvl) { \
--        qemu_log("%s: " fmt, __func__, ## args); \
--    } \
--} while (0)
--
--#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
-+#include "trace.h"
- 
- static int stm32f2xx_usart_can_receive(void *opaque)
- {
-@@ -67,10 +57,11 @@ static void stm32f2xx_update_irq(STM32F2XXUsartState *s)
- static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
- {
-     STM32F2XXUsartState *s = opaque;
-+    DeviceState *d = DEVICE(s);
- 
-     if (!(s->usart_cr1 & USART_CR1_UE && s->usart_cr1 & USART_CR1_RE)) {
-         /* USART not enabled - drop the chars */
--        DB_PRINT("Dropping the chars\n");
-+        trace_stm32f2xx_usart_drop(d->id);
-         return;
-     }
- 
-@@ -79,7 +70,7 @@ static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
- 
-     stm32f2xx_update_irq(s);
- 
--    DB_PRINT("Receiving: %c\n", s->usart_dr);
-+    trace_stm32f2xx_usart_receive(d->id, *buf);
- }
- 
- static void stm32f2xx_usart_reset(DeviceState *dev)
-@@ -101,49 +92,55 @@ static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
-                                        unsigned int size)
- {
-     STM32F2XXUsartState *s = opaque;
--    uint64_t retvalue;
--
--    DB_PRINT("Read 0x%"HWADDR_PRIx"\n", addr);
-+    DeviceState *d = DEVICE(s);
-+    uint64_t retvalue = 0;
- 
-     switch (addr) {
-     case USART_SR:
-         retvalue = s->usart_sr;
-         qemu_chr_fe_accept_input(&s->chr);
--        return retvalue;
-+        break;
-     case USART_DR:
--        DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char) s->usart_dr);
-         retvalue = s->usart_dr & 0x3FF;
-         s->usart_sr &= ~USART_SR_RXNE;
-         qemu_chr_fe_accept_input(&s->chr);
-         stm32f2xx_update_irq(s);
--        return retvalue;
-+        break;
-     case USART_BRR:
--        return s->usart_brr;
-+        retvalue = s->usart_brr;
-+        break;
-     case USART_CR1:
--        return s->usart_cr1;
-+        retvalue = s->usart_cr1;
-+        break;
-     case USART_CR2:
--        return s->usart_cr2;
-+        retvalue = s->usart_cr2;
-+        break;
-     case USART_CR3:
--        return s->usart_cr3;
-+        retvalue = s->usart_cr3;
-+        break;
-     case USART_GTPR:
--        return s->usart_gtpr;
-+        retvalue = s->usart_gtpr;
-+        break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, addr);
-         return 0;
-     }
- 
--    return 0;
-+    trace_stm32f2xx_usart_read(d->id, size, addr, retvalue);
-+
-+    return retvalue;
- }
- 
- static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
-                                   uint64_t val64, unsigned int size)
- {
-     STM32F2XXUsartState *s = opaque;
-+    DeviceState *d = DEVICE(s);
-     uint32_t value = val64;
-     unsigned char ch;
- 
--    DB_PRINT("Write 0x%" PRIx32 ", 0x%"HWADDR_PRIx"\n", value, addr);
-+    trace_stm32f2xx_usart_write(d->id, size, addr, val64);
- 
-     switch (addr) {
-     case USART_SR:
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 59e1f734a7..8b847006a0 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -125,3 +125,9 @@ xen_console_unrealize(unsigned int idx) "idx %u"
- xen_console_realize(unsigned int idx, const char *chrdev) "idx %u chrdev %s"
- xen_console_device_create(unsigned int idx) "idx %u"
- xen_console_device_destroy(unsigned int idx) "idx %u"
-+
-+# stm32f2xx_usart.c
-+stm32f2xx_usart_read(char *id, unsigned size, uint64_t offs, uint64_t val) " %s size %d offs 0x%02" PRIx64 " -> 0x%02" PRIx64
-+stm32f2xx_usart_write(char *id, unsigned size, uint64_t offs, uint64_t val) "%s size %d offs 0x%02" PRIx64 " <- 0x%02" PRIx64
-+stm32f2xx_usart_drop(char *id) " %s dropping the chars"
-+stm32f2xx_usart_receive(char *id, uint8_t chr) " %s receiving %c"
+[...]
+
+> > To reply to your other question on this thread[3] about "which ABI?"  I
+> > think Dan is talking about the *guest* ABI: the virtual "chipset" that
+> > is exposed to a guest (e.g. PCI(e) topology, ACPI tables, CPU model,
+> > etc).  As I understand it, this "guest ABI" should remain predictable,
+> > regardless of:
+> > 
+> >   - whether you're updating KVM, QEMU, or the underlying physical
+> >     hardware itself; or
+> >   - if the guest is migrated, live or offline
+> > 
+> > (As you might know, QEMU's "machine types" concept allows to create a
+> > stable guest ABI.)
+> 
+> All of this is under control of QEMU, *except* for the "maximum" of
+> the architectural features exposed to the guest. All you can do is
+> *downgrade* from there, and only to a limited extent.
+> 
+> That, in turn has a direct impact on what you call the "CPU model",
+> which for the ARM architecture really doesn't exist. All we have is a
+> bag of discrete features, with intricate dependencies between them.
+
+I see; thanks for this explanation.  Your last sentence above is the
+shortest summary of the CPU features situation on ARM I've ever read so
+far. 
+
+So, I infer this from what you're saying (do correct if it's wrong):
+
+  • Currently it is impractical (not feasible?) to pull together a
+    minimal-and-usable set of CPU features + their dependencies on ARM
+    to come up with a "CPU model" that can work across a reasonable set
+    of hardware.
+
+  • If the above is true, then the ability to toggle CPU features on and
+    off might become even more important for QEMU — if it wants to be
+    able to support live migration across mixed set of hardware on ARM.  
+
+    NB: by "mixed set of hardware", I mean hardware that is *close
+    enough* (e.g. among the "Ampere Altra Family" - BTW, this "family"
+    seems to be only 2 systems far).  Not arbitrarily mixed.  I did read
+    your response in this thread about "who in their right mind" would
+    want to migrate from Nvidia "Grace" to "AmpereOne".
+
+      https://lore.kernel.org/linux-arm-kernel/86y10ytpo6.wl-maz@kernel.org/
+      — KVM: arm64: Make the exposed feature bits in AA64DFR0_EL1
+      writable from userspace
+
+> Even ignoring virtualisation: you can readily find two machines using
+> the same CPUs (let's say Neoverse-N1), integrated by the same vendor
+> (let's say, Ampere), in SoCs that bear the same name (Altra), and
+> realise that they have a different feature set. Fun, isn't it?
+
+Yikes!  I would use a different word, that starts with "m" and ends with
+"s" (the resulting word rhymes with the latter) ;-)
+
+    * * *
+
+Related tangent on CPU feature discoverability on ARM:
+
+Speaking of "Neoverse-N1", looking at a system that I have access to,
+the `lscpu` output does not say anything about who the integrator is; it
+only says:
+
+    ...
+    Vendor ID:                ARM
+    Model name:             Neoverse-N1
+    ...
+
+I realize, `lscpu` displays only whatever the kernel knows.  Nothing in
+`dmidecode` either.
+
+Also, it looks like there's no equivalent of a "CPUID" instruction (I
+realize it is x86-specific) on ARM.  Although, I came across a Google
+Git repo that seems to implement a bespoke, "aarch64_cpuid".  From a
+what I see, it seems to fetch the "Main ID Register" (MIDR_EL1) - I
+don't know enough about it to understand its implications:
+
+    https://github.com/google/cpu_features/blob/main/src/impl_aarch64_cpuid.c
+
+> That's why I don't see CPU models as a viable thing in terms of ABI.
+> They are an approximation of what you could have, but the ABI is
+> elsewhere.
+
+Hmm, this is "significant new information" for me.  If CPU models can't
+be part of the guest ABI on ARM, then the whole "migratability across
+heterogenous hardware" on QEMU requires deeper thinking.
+
+Thanks for this discussion.
+
 -- 
-2.45.2
-
+/kashyap

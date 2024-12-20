@@ -1,335 +1,249 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp1901663njk;
-        Thu, 19 Dec 2024 11:53:17 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU6HG35gaQPha6u/f7IlMokxjwhOxd4J1aqFtEYFXJgxXHU9e3DRDJ36089FvHPgBDcTG11ZAo0QOhvBw==@linaro.org
-X-Received: by 2002:a17:902:d2c1:b0:215:7cd0:758d with SMTP id d9443c01a7336-218d725282fmr120862085ad.36.1734637997737;
-        Thu, 19 Dec 2024 11:53:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734637997; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp2210267njk;
+        Fri, 20 Dec 2024 00:47:41 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVwz0ORChLCYjcrzUIy+spTd3HCipomXVZfkPVTiHTycYqTGpnssE45heIR7VyxekaoJmhZs6LdfL0UkA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHNtyPVEiw9eOY+kzk+mo4CsZl0SMyvgBt7HRvP5T5BRiDhgQKX13jk4NA3zoZhubk30S5Q
+X-Received: by 2002:a05:620a:294f:b0:7b1:4cc0:5e1f with SMTP id af79cd13be357-7b9ba6fdbacmr265001485a.7.1734684461480;
+        Fri, 20 Dec 2024 00:47:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734684461; cv=none;
         d=google.com; s=arc-20240605;
-        b=OFRygS2M9P1+2PcVtiNnhQJWhg9GOjueYwYdIOiRmJsMMPNvKVi09rGOi8astXBaRy
-         quQxlZrRyWfigdiWUdoQs9e8F91OKVfLsv7rJOtgIWZJ3zAX0fDjtL7vrkQBLr6drI6P
-         un5XjVbruYonrH1wVKcMnH7qja3iBj2HEPuFSMRvX9q/P4+taNfAJjnUZzb6BsW2tEmD
-         ksD9KyhNb5KkOYp/eVN9IWwj5WY7uMUWBMqdnBv6aX7JOF8wgSv8sh8rW3W2uxqc2n0o
-         Sctex/KAacGIN8Jh4h8ZSpz4rkDMtnhiHP0tzYVyr7qQEyC3w255Ne64YwIen+TEKhPb
-         CR7g==
+        b=lq4o7+QGMW88d99LXqFnE4Jx2UB8hN+LdjdfffzYVPclD52W3x7P5cLb8+IZTKeOx8
+         MJhBUb8uVLA+b20ODoH8+N14ybc6gTq+0e+z9jfvvAC81MYZuNYG8s8g3cppFvkxj0yO
+         T3v//p/CBxmGYvv+V7pDdGfEKtFSouHMoxEmmaNLYJqXuzQfufYVbE1UbripEy4r6sKa
+         g9RpMmMGlr44Lb4OWPT2axgbutCmjjTCFBreuEa8t1fY6x0OOkEp3M/174C75IMTKngP
+         15AjdC78E8qB3qfzQAp6PzgUmIOgdERqzLYSNlK24NG+wWrqLFjnoqkYPMiARCo/05AT
+         PDlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=wvaV57g/otsXFa0xdKkFwiLNACda5imzuK59SCTyNUQ=;
-        fh=P+uykG3euglnzp/z+zNghX+w14bsmltHqs04c3dCck0=;
-        b=VnTMDbXr5HkI9EYe8coDbLnsCKljuQLXYkk1Z6CV6FWEnC/DnFh1UOWo5Tj+5iwRfT
-         UM4lre50CFVH33/X0oCMQQEnTuf2OfL3CnpoC5tDt9DL1jMgvNMRRhnzgvGmtPWtKY+1
-         upwIvDMJrzaVNbfG4M8G73BRqXiwi9a4MkY9nP6aSLWQgkw0JxLYIJSSMXVXtEDflPw0
-         ceO4WwB5xcisF6FCUR3Mm57Sks3kWQgcSr/LaDVRTLCgW7dRCKVF7YyRc3WtgbLrQtTh
-         V8i2+4PkS4StAi+VTSW2tyTfQsiE6qLsfufVn68+ZE/rIbrboy2zOZGy9lrlCi+j5+X8
-         K4zQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=DEWLsEBJEXh8+7vMojttx0v1UhjFc3wSl+wOs7T9sjg=;
+        fh=WNNkqDeuweqJZ0Y2gUcgoUPnfHM7bERODBP3PmRlXos=;
+        b=Y9T6NyaLTGw4UJC+97PNnlBljSy2H8JMhy3/GRlUSaqayG5jzzPD6yfzekmsH7trri
+         IC4tzcFi9i9qw8mb0+qDsUxqyZaWjZPl/pLPe6BAwfCeymjFPOF5ToN2B6koxB7uVKLS
+         94u/Gt60e4JVY5/0oiHCioMs4SoTcLgJN9L/OfSMcVEGuECZHtHywGAxxUCKXHzJwAWJ
+         AEa4kqgIh7YDfTKQ0N6yAMrpAq+hxxa5VZn3KhCcX3Kftvt1SXyZgjZU4JLsY1MGs+l3
+         9pyQjqIQTt+1IxiVemAn+FWDiRopd/NoXdrmL0+VIXYJiXrKk3J6fM0e48a3MsD3jxDH
+         BrpA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ifIZB5Jk;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-219dc7e8884sor12282135ad.0.2024.12.19.11.53.17
+       dkim=pass header.i=@maquefel.me header.s=mail header.b=RITAACjj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd18370b41si34840126d6.535.2024.12.20.00.47.41
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 19 Dec 2024 11:53:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 20 Dec 2024 00:47:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ifIZB5Jk;
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734637997; x=1735242797; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=wvaV57g/otsXFa0xdKkFwiLNACda5imzuK59SCTyNUQ=;
-        b=ifIZB5JkBX7wdltO+oY+JjydRxE3ZRLNeuIuDZqdhKmrbcWUohzFiBQf9A/TmMQy5w
-         sCy3wWS9sFal6cYXRG4H+d88ajRxGaaZlhG/Qs20uGYstMsVC0SqLaE573NzXC7RReip
-         WNSAY7OwH3rWReG58p1ceKvzm0CEsME8cmFk1XXk4QqxJmyFMqzJDyLbvE0a5Wx6/gNZ
-         7gUHMCacD72FZuLwUieXLyIz83WWj8AQJ4SpMlg1h7Ji7ufbXRxMJlOSc0sdtIiJTApE
-         D1ewCgTCHvUXB8Mlw9zzh4AJLeeke4FextIhtjfhZf/EV6jNsNQFMqFuqtu8SzvYp2Nv
-         yXWw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734637997; x=1735242797;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=wvaV57g/otsXFa0xdKkFwiLNACda5imzuK59SCTyNUQ=;
-        b=m+Gmf1HCjy5GIekEuu/0RBIUQNJRXqCGnOkvgsojME8RFeyuF4ll6KYPqXUuFIgRi8
-         7POKPQaIeB8lzC0FGmGWFq8ve+Cg73xeR3xznvjj+YucCbBzuy5vsb6FxUUI0H4uy65a
-         HxLe6BK6zf+NliBQHbqioA9evtpAXniqVd6rlZkKSxWGpmO5j7Byq2NQMAdWQg4SNObB
-         kcHDOtNf9amnE8IHzYhv6D0zbE8aUdc4VF73+Ax+xXw+FXptPAYMHgD3V/1eYTSAebzk
-         cOI2pX1PMvumMP0e9hl6Cq5BYIFpp6HriRp/0O6z4fGCvFgOwMgVWZfBpcq92fVVj85E
-         UQrA==
-X-Forwarded-Encrypted: i=1; AJvYcCXvkhD+ivunLOwM/T6BkwQCuuMSC0CRfFVuLojDm37+Fr6Do5WzWzbb4Te4b8DmQwQvtB/x7d6PoQDgRQ==@linaro.org
-X-Gm-Message-State: AOJu0YwMjztK1TJaaRDkIy9xyATo26BxTgfbHdjzXdc44OfXFJbrTRe7
-	Y6zpRjxeSM/8OFvtNfG4WR92vPBu69eVvacrQ+QEeftG2OIs3Y4RalxlooGj6FcRyw==
-X-Gm-Gg: ASbGnctOFo4bHURlsC5EVWzFXwhAHHPKsX5Grad9Cop779qmwDqG2MLmcx3LvZssMhC
-	s0fuIXy+iITqUpe8dEg2YbAlnpNjb0v5QLnShl+bfeEUqsyWEPmTFC3+9DbzuWmR22ICFqMCbhK
-	LqIOUr54Tie3X9B/wM29qXrUiyMP+us2n5BHqgc9Fbs/AH9VeEqYlAAI/6vA6j5hKwZ976R5rjR
-	h5h7SmbAA5NkDyMeeo+W8dApGCK8vC+jl86cfdKW2cEKtTtJ3DeJBXX
-X-Google-Smtp-Source: AGHT+IGwgSno1orswArW8r97qJ7fl9AiYisN+n//fqdwD3Da6gExJgYKhqxn2xzXY3TjRoAqLRq+aA==
-X-Received: by 2002:a17:902:f705:b0:216:2e5e:971d with SMTP id d9443c01a7336-218d726c177mr111722155ad.51.1734637997109;
-        Thu, 19 Dec 2024 11:53:17 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from pc.. ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-219dc96294bsm16259245ad.36.2024.12.19.11.53.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Dec 2024 11:53:16 -0800 (PST)
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: mathieu.poirier@linaro.org,
-	gustavo.romero@linaro.org,
-	marcin.juszkiewicz@linaro.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	alex.bennee@linaro.org,
-	jean-philippe@linaro.org,
-	qemu-arm@nongnu.org,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v5] tests/functional/aarch64: add tests for FEAT_RME
-Date: Thu, 19 Dec 2024 11:53:04 -0800
-Message-Id: <20241219195304.3548246-1-pierrick.bouvier@linaro.org>
-X-Mailer: git-send-email 2.39.5
+       dkim=pass header.i=@maquefel.me header.s=mail header.b=RITAACjj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tOYel-0004pY-Vw; Fri, 20 Dec 2024 03:46:48 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nikita.shubin@maquefel.me>)
+ id 1tOYeh-0004om-Nz; Fri, 20 Dec 2024 03:46:44 -0500
+Received: from forward103d.mail.yandex.net ([2a02:6b8:c41:1300:1:45:d181:d103])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nikita.shubin@maquefel.me>)
+ id 1tOYef-0000nS-1O; Fri, 20 Dec 2024 03:46:43 -0500
+Received: from mail-nwsmtp-smtp-production-main-24.klg.yp-c.yandex.net
+ (mail-nwsmtp-smtp-production-main-24.klg.yp-c.yandex.net
+ [IPv6:2a02:6b8:c42:4f43:0:640:673c:0])
+ by forward103d.mail.yandex.net (Yandex) with ESMTPS id 839216001C;
+ Fri, 20 Dec 2024 11:46:23 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-24.klg.yp-c.yandex.net
+ (smtp/Yandex) with ESMTPSA id LkOX0FeOoKo0-GTl7G6FW; 
+ Fri, 20 Dec 2024 11:46:22 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=maquefel.me; s=mail;
+ t=1734684382; bh=DEWLsEBJEXh8+7vMojttx0v1UhjFc3wSl+wOs7T9sjg=;
+ h=Message-ID:Date:Cc:Subject:To:From;
+ b=RITAACjjkJPFzXzzQeWZGsFOlXZCtLrbBI3AgH/NDuPcmUq1wHIB658Bejm+dh8R8
+ 42hCEpMo3nGDCyMSPr2FcHpQvRbJsTTizmdBY8aGZL32yYNeKx8Q314hKyTzX8WWvb
+ WEcbHkeDxDiRNAqIL6t5jCr2iaOzCE3oevAfflOU=
+Authentication-Results: mail-nwsmtp-smtp-production-main-24.klg.yp-c.yandex.net;
+ dkim=pass header.i=@maquefel.me
+From: Nikita Shubin <nikita.shubin@maquefel.me>
+To: Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: Nikita Shubin <nikita.shubin@maquefel.me>,
+ Nikita Shubin <n.shubin@yadro.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: [PATCH] hw/char: stm32f2xx_usart: replace print with trace
+Date: Fri, 20 Dec 2024 11:46:23 +0300
+Message-ID: <20241220084623.1889-1-nikita.shubin@maquefel.me>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 9GwtCz+act7e
+Received-SPF: pass client-ip=2a02:6b8:c41:1300:1:45:d181:d103;
+ envelope-from=nikita.shubin@maquefel.me; helo=forward103d.mail.yandex.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 4QcuzSd3wMBE
 
-This boot an OP-TEE environment, and launch a nested guest VM inside it
-using the Realms feature. We do it for virt and sbsa-ref platforms.
+From: Nikita Shubin <nshubin@yadro.com>
 
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Drop debug printing macros and replace them with according trace
+functions.
 
------
-
-v2:
-- move test to its own file
-- add sbsa test
-- check output of `cca-workload-attestation report`
-
-v3:
-- build and run test with cca-v4 images
-- factorize nested guest test between both tests
-- remove accel tcg option as it is the default when running tests
-Note: It's a long test and there is a work in progress to understand why
-debug build is so slow (x12 vs optimized).
-
-v4:
-- use pauth-impdef=on to speed up build time execution (x2.5 faster)
-- increase timeout value
-
-v5:
-- migrate test to new archive_extract helper
-
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Signed-off-by: Nikita Shubin <n.shubin@yadro.com>
 ---
- tests/functional/meson.build                 |  4 +
- tests/functional/test_aarch64_rme_sbsaref.py | 68 ++++++++++++++
- tests/functional/test_aarch64_rme_virt.py    | 98 ++++++++++++++++++++
- 3 files changed, 170 insertions(+)
- create mode 100755 tests/functional/test_aarch64_rme_sbsaref.py
- create mode 100755 tests/functional/test_aarch64_rme_virt.py
+ hw/char/stm32f2xx_usart.c | 47 ++++++++++++++++++---------------------
+ hw/char/trace-events      |  6 +++++
+ 2 files changed, 28 insertions(+), 25 deletions(-)
 
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index ee417b0a1f7..8c789970d48 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -13,6 +13,8 @@ endif
- test_timeouts = {
-   'aarch64_aspeed' : 600,
-   'aarch64_raspi4' : 480,
-+  'aarch64_rme_virt' : 1200,
-+  'aarch64_rme_sbsaref' : 1200,
-   'aarch64_sbsaref_alpine' : 720,
-   'aarch64_sbsaref_freebsd' : 720,
-   'aarch64_tuxrun' : 240,
-@@ -60,6 +62,8 @@ tests_aarch64_system_thorough = [
-   'aarch64_aspeed',
-   'aarch64_raspi3',
-   'aarch64_raspi4',
-+  'aarch64_rme_virt',
-+  'aarch64_rme_sbsaref',
-   'aarch64_sbsaref',
-   'aarch64_sbsaref_alpine',
-   'aarch64_sbsaref_freebsd',
-diff --git a/tests/functional/test_aarch64_rme_sbsaref.py b/tests/functional/test_aarch64_rme_sbsaref.py
-new file mode 100755
-index 00000000000..eb184fe201c
---- /dev/null
-+++ b/tests/functional/test_aarch64_rme_sbsaref.py
-@@ -0,0 +1,68 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots a Realms environment on sbsa-ref machine and a
-+# nested guest VM using it.
-+#
-+# Copyright (c) 2024 Linaro Ltd.
-+#
-+# Author: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/hw/char/stm32f2xx_usart.c b/hw/char/stm32f2xx_usart.c
+index 17b5b1f15f..ca878d0cd6 100644
+--- a/hw/char/stm32f2xx_usart.c
++++ b/hw/char/stm32f2xx_usart.c
+@@ -30,17 +30,7 @@
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ 
+-#ifndef STM_USART_ERR_DEBUG
+-#define STM_USART_ERR_DEBUG 0
+-#endif
+-
+-#define DB_PRINT_L(lvl, fmt, args...) do { \
+-    if (STM_USART_ERR_DEBUG >= lvl) { \
+-        qemu_log("%s: " fmt, __func__, ## args); \
+-    } \
+-} while (0)
+-
+-#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
++#include "trace.h"
+ 
+ static int stm32f2xx_usart_can_receive(void *opaque)
+ {
+@@ -67,10 +57,11 @@ static void stm32f2xx_update_irq(STM32F2XXUsartState *s)
+ static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
+ {
+     STM32F2XXUsartState *s = opaque;
++    DeviceState *d = DEVICE(s);
+ 
+     if (!(s->usart_cr1 & USART_CR1_UE && s->usart_cr1 & USART_CR1_RE)) {
+         /* USART not enabled - drop the chars */
+-        DB_PRINT("Dropping the chars\n");
++        trace_stm32f2xx_usart_drop(d->id);
+         return;
+     }
+ 
+@@ -79,7 +70,7 @@ static void stm32f2xx_usart_receive(void *opaque, const uint8_t *buf, int size)
+ 
+     stm32f2xx_update_irq(s);
+ 
+-    DB_PRINT("Receiving: %c\n", s->usart_dr);
++    trace_stm32f2xx_usart_recieve(d->id, *buf);
+ }
+ 
+ static void stm32f2xx_usart_reset(DeviceState *dev)
+@@ -101,49 +92,55 @@ static uint64_t stm32f2xx_usart_read(void *opaque, hwaddr addr,
+                                        unsigned int size)
+ {
+     STM32F2XXUsartState *s = opaque;
++    DeviceState *d = DEVICE(s);
+     uint64_t retvalue;
+ 
+-    DB_PRINT("Read 0x%"HWADDR_PRIx"\n", addr);
+-
+     switch (addr) {
+     case USART_SR:
+         retvalue = s->usart_sr;
+         qemu_chr_fe_accept_input(&s->chr);
+-        return retvalue;
++        break;
+     case USART_DR:
+-        DB_PRINT("Value: 0x%" PRIx32 ", %c\n", s->usart_dr, (char) s->usart_dr);
+         retvalue = s->usart_dr & 0x3FF;
+         s->usart_sr &= ~USART_SR_RXNE;
+         qemu_chr_fe_accept_input(&s->chr);
+         stm32f2xx_update_irq(s);
+-        return retvalue;
++        break;
+     case USART_BRR:
+-        return s->usart_brr;
++        retvalue = s->usart_brr;
++        break;
+     case USART_CR1:
+-        return s->usart_cr1;
++        retvalue = s->usart_cr1;
++        break;
+     case USART_CR2:
+-        return s->usart_cr2;
++        retvalue = s->usart_cr2;
++        break;
+     case USART_CR3:
+-        return s->usart_cr3;
++        retvalue = s->usart_cr3;
++        break;
+     case USART_GTPR:
+-        return s->usart_gtpr;
++        retvalue = s->usart_gtpr;
++        break;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Bad offset 0x%"HWADDR_PRIx"\n", __func__, addr);
+         return 0;
+     }
+ 
+-    return 0;
++    trace_stm32f2xx_usart_read(d->id, size, addr, retvalue);
 +
-+import time
-+import os
-+import logging
++    return retvalue;
+ }
+ 
+ static void stm32f2xx_usart_write(void *opaque, hwaddr addr,
+                                   uint64_t val64, unsigned int size)
+ {
+     STM32F2XXUsartState *s = opaque;
++    DeviceState *d = DEVICE(s);
+     uint32_t value = val64;
+     unsigned char ch;
+ 
+-    DB_PRINT("Write 0x%" PRIx32 ", 0x%"HWADDR_PRIx"\n", value, addr);
++    trace_stm32f2xx_usart_write(d->id, size, addr, val64);
+ 
+     switch (addr) {
+     case USART_SR:
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 59e1f734a7..e0a567194c 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -125,3 +125,9 @@ xen_console_unrealize(unsigned int idx) "idx %u"
+ xen_console_realize(unsigned int idx, const char *chrdev) "idx %u chrdev %s"
+ xen_console_device_create(unsigned int idx) "idx %u"
+ xen_console_device_destroy(unsigned int idx) "idx %u"
 +
-+from qemu_test import QemuSystemTest, Asset
-+from qemu_test import exec_command, wait_for_console_pattern
-+from qemu_test import exec_command_and_wait_for_pattern
-+from test_aarch64_rme_virt import test_realms_guest
-+
-+class Aarch64RMESbsaRefMachine(QemuSystemTest):
-+
-+    # Stack is built with OP-TEE build environment from those instructions:
-+    # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # https://github.com/pbo-linaro/qemu-rme-stack
-+    ASSET_RME_STACK_SBSA = Asset(
-+        ('https://fileserver.linaro.org/s/KJyeBxL82mz2r7F/'
-+         'download/rme-stack-op-tee-4.2.0-cca-v4-sbsa.tar.gz'),
-+         'dd9ab28ec869bdf3b5376116cb3689103b43433fd5c4bca0f4a8d8b3c104999e')
-+
-+    # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-+    # and launching a nested VM using it.
-+    def test_aarch64_rme_sbsaref(self):
-+        self.set_machine('sbsa-ref')
-+        self.vm.set_console()
-+        self.require_accelerator('tcg')
-+
-+        stack_path_tar_gz = self.ASSET_RME_STACK_SBSA.fetch()
-+        self.archive_extract(stack_path_tar_gz)
-+
-+        rme_stack = self.scratch_file('rme-stack-op-tee-4.2.0-cca-v4-sbsa')
-+        pflash0 = os.path.join(rme_stack, 'images', 'SBSA_FLASH0.fd')
-+        pflash1 = os.path.join(rme_stack, 'images', 'SBSA_FLASH1.fd')
-+        virtual = os.path.join(rme_stack, 'images', 'disks', 'virtual')
-+        drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
-+
-+        self.vm.add_args('-cpu', 'max,x-rme=on,pauth-impdef=on')
-+        self.vm.add_args('-m', '2G')
-+        self.vm.add_args('-M', 'sbsa-ref')
-+        self.vm.add_args('-drive', f'file={pflash0},format=raw,if=pflash')
-+        self.vm.add_args('-drive', f'file={pflash1},format=raw,if=pflash')
-+        self.vm.add_args('-drive', f'file=fat:rw:{virtual},format=raw')
-+        self.vm.add_args('-drive', f'format=raw,if=none,file={drive},id=hd0')
-+        self.vm.add_args('-device', 'virtio-blk-pci,drive=hd0')
-+        self.vm.add_args('-device', 'virtio-9p-pci,fsdev=shr0,mount_tag=shr0')
-+        self.vm.add_args('-fsdev', f'local,security_model=none,path={rme_stack},id=shr0')
-+        self.vm.add_args('-device', 'virtio-net-pci,netdev=net0')
-+        self.vm.add_args('-netdev', 'user,id=net0')
-+
-+        self.vm.launch()
-+        # Wait for host VM boot to complete.
-+        wait_for_console_pattern(self, 'Welcome to Buildroot')
-+        exec_command_and_wait_for_pattern(self, 'root', '#')
-+
-+        test_realms_guest(self)
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
-diff --git a/tests/functional/test_aarch64_rme_virt.py b/tests/functional/test_aarch64_rme_virt.py
-new file mode 100755
-index 00000000000..9e30cc9325c
---- /dev/null
-+++ b/tests/functional/test_aarch64_rme_virt.py
-@@ -0,0 +1,98 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots a Realms environment on virt machine and a nested
-+# guest VM using it.
-+#
-+# Copyright (c) 2024 Linaro Ltd.
-+#
-+# Author: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import time
-+import os
-+import logging
-+
-+from qemu_test import QemuSystemTest, Asset
-+from qemu_test import exec_command, wait_for_console_pattern
-+from qemu_test import exec_command_and_wait_for_pattern
-+
-+def test_realms_guest(test_rme_instance):
-+
-+    # Boot the (nested) guest VM
-+    exec_command(test_rme_instance,
-+                 'qemu-system-aarch64 -M virt,gic-version=3 '
-+                 '-cpu host -enable-kvm -m 512M '
-+                 '-M confidential-guest-support=rme0 '
-+                 '-object rme-guest,id=rme0 '
-+                 '-device virtio-net-pci,netdev=net0,romfile= '
-+                 '-netdev user,id=net0 '
-+                 '-kernel /mnt/out/bin/Image '
-+                 '-initrd /mnt/out-br/images/rootfs.cpio '
-+                 '-serial stdio')
-+    # Detect Realm activation during (nested) guest boot.
-+    wait_for_console_pattern(test_rme_instance,
-+                             'SMC_RMI_REALM_ACTIVATE')
-+    # Wait for (nested) guest boot to complete.
-+    wait_for_console_pattern(test_rme_instance,
-+                             'Welcome to Buildroot')
-+    exec_command_and_wait_for_pattern(test_rme_instance, 'root', '#')
-+    # query (nested) guest cca report
-+    exec_command(test_rme_instance, 'cca-workload-attestation report')
-+    wait_for_console_pattern(test_rme_instance,
-+                             '"cca-platform-hash-algo-id": "sha-256"')
-+    wait_for_console_pattern(test_rme_instance,
-+                             '"cca-realm-hash-algo-id": "sha-512"')
-+    wait_for_console_pattern(test_rme_instance,
-+                             '"cca-realm-public-key-hash-algo-id": "sha-256"')
-+
-+class Aarch64RMEVirtMachine(QemuSystemTest):
-+
-+    # Stack is built with OP-TEE build environment from those instructions:
-+    # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # https://github.com/pbo-linaro/qemu-rme-stack
-+    ASSET_RME_STACK_VIRT = Asset(
-+        ('https://fileserver.linaro.org/s/iaRsNDJp2CXHMSJ/'
-+         'download/rme-stack-op-tee-4.2.0-cca-v4-qemu_v8.tar.gz'),
-+         '1851adc232b094384d8b879b9a2cfff07ef3d6205032b85e9b3a4a9ae6b0b7ad')
-+
-+    # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-+    # and launching a nested VM using it.
-+    def test_aarch64_rme_virt(self):
-+        self.set_machine('virt')
-+        self.vm.set_console()
-+        self.require_accelerator('tcg')
-+
-+        stack_path_tar_gz = self.ASSET_RME_STACK_VIRT.fetch()
-+        self.archive_extract(stack_path_tar_gz)
-+
-+        rme_stack = self.scratch_file('rme-stack-op-tee-4.2.0-cca-v4-qemu_v8')
-+        kernel = os.path.join(rme_stack, 'out', 'bin', 'Image')
-+        bios = os.path.join(rme_stack, 'out', 'bin', 'flash.bin')
-+        drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
-+
-+        self.vm.add_args('-cpu', 'max,x-rme=on,pauth-impdef=on')
-+        self.vm.add_args('-m', '2G')
-+        self.vm.add_args('-M', 'virt,acpi=off,'
-+                         'virtualization=on,'
-+                         'secure=on,'
-+                         'gic-version=3')
-+        self.vm.add_args('-bios', bios)
-+        self.vm.add_args('-kernel', kernel)
-+        self.vm.add_args('-drive', f'format=raw,if=none,file={drive},id=hd0')
-+        self.vm.add_args('-device', 'virtio-blk-pci,drive=hd0')
-+        self.vm.add_args('-device', 'virtio-9p-device,fsdev=shr0,mount_tag=shr0')
-+        self.vm.add_args('-fsdev', f'local,security_model=none,path={rme_stack},id=shr0')
-+        self.vm.add_args('-device', 'virtio-net-pci,netdev=net0')
-+        self.vm.add_args('-netdev', 'user,id=net0')
-+        self.vm.add_args('-append', 'root=/dev/vda')
-+
-+        self.vm.launch()
-+        # Wait for host VM boot to complete.
-+        wait_for_console_pattern(self, 'Welcome to Buildroot')
-+        exec_command_and_wait_for_pattern(self, 'root', '#')
-+
-+        test_realms_guest(self)
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
++# stm32f2xx_usart.c
++stm32f2xx_usart_read(char *id, unsigned size, uint64_t offs, uint64_t val) " %s size %d offs 0x%02" PRIx64 " -> 0x%02" PRIx64
++stm32f2xx_usart_write(char *id, unsigned size, uint64_t offs, uint64_t val) "%s size %d offs 0x%02" PRIx64 " <- 0x%02" PRIx64
++stm32f2xx_usart_drop(char *id) " %s dropping the chars"
++stm32f2xx_usart_recieve(char *id, uint8_t chr) " %s receiving %c"
 -- 
-2.39.5
+2.45.2
+

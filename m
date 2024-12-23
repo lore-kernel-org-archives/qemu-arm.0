@@ -1,317 +1,275 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp2508324njk;
-        Fri, 20 Dec 2024 08:54:11 -0800 (PST)
-X-Received: by 2002:a05:6a20:e68b:b0:1e1:72ce:fefc with SMTP id adf61e73a8af0-1e5e05a9edemr7283146637.22.1734713651339;
-        Fri, 20 Dec 2024 08:54:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734713651; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp4203848njk;
+        Mon, 23 Dec 2024 09:37:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWK+BZrzYZ0L1Voa2/viDsF+jWMnMpLApy5w1Ps0uB9uQdMwHAU534EUkLpzflYpAVaLUstCPs+4FHf3g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHoBjUvoxanzRIoXiEfzdLzkRXnWztWHCX/mhP4Xnt+qGXvNIQkj+fSKBoKNw79O+KKjMpf
+X-Received: by 2002:a05:6214:b69:b0:6d4:4100:75a1 with SMTP id 6a1803df08f44-6dd2339b960mr262989826d6.39.1734975476369;
+        Mon, 23 Dec 2024 09:37:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734975476; cv=none;
         d=google.com; s=arc-20240605;
-        b=b0AN/mGn9ztG3Fp8at3NH38f+Sb0W+2WcQQo2EWKlUHZSoSsd90vZe++oOCqIKWLsN
-         LYZxeOsE3cdH7bgz+MtIC8KhU8qqJNrHPd+3nOrAfTyjjuqsfdGtr1UUCHzwMNZbaNpu
-         Zerk0l8FSOvYHEatTTTxgkbXM/kQjPYYdmsjWPsfTORR+wD+eQFL6G3DFLYGdDIcHs69
-         HSmPEV/yoElUjOdCsVyaIky9VyeL4LjxH+kv1c84APwT/FLB1B8fMZCzk1kxftXX7vmh
-         IK9RKGDygf//jivdfTby0rbJEnvVOZiJ/RfM3rfyRfhX6urnR2xQJLE1mEjRP/XfUJOC
-         wkng==
+        b=dTvB2Z0P/FKptYaY5ZcoVB2L4SRToY7cayUNQ7fb2AEbglqnHA+J84nnUkqWpoiBcA
+         0cOh8ZuIRhFDzl4e/3s5a+jLwi7vqIkjsZzBa8gkDz58tHGqYqLsl97urjiK2cBmrqhG
+         0uGdHm7ZBBjpYwXcm1N6ahhnSXmxwoBA4R3r9oUqbbYLWVXQBiZED1Pz0UiLznkbrFAj
+         Gje/tB1lpDs5L8Ce0OSOZXcF5KszICBVjvuNQTng0b29DhVK7oZ8t6gE7qkpq6Bij3+D
+         pY7vruD7nxiqivWPoZvkDIQtW2GyiiJlrLFmNXBIrtqF4/Lgwv/1i+AoN6C/4BIIrlLf
+         v7SA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=sW4TRa3efTCPYQOtrOg+F3CxpZ9XNiC5ySA8QirrmJE=;
-        fh=JWmedNVnfCv3gslREQwgCJmgEIcDV+sT9kiXD8f8jKw=;
-        b=Nh/X6E3/ABSMKfLdePL1GU66UE275WT8rWzWbGzElwvRxTUxdjbJ3Anc3SVL5EJGmk
-         RQHq75Yzpf5vOcJf2IGC/Oc/JRKrLopMSIwS5lvrC8j3CNaAo0ct7ccqZJ+OWeAd10wK
-         Vtwe7noum4MlUx0NK30ydHtNKsisw/1+1usFEaz3iIESM/xs+6ZCAb5jEAIxswa6iPOx
-         ry8EPwCMSuw4+a9SstMJRxnAkYfgNTmoqHGV1wwylR6J8uxkVi/VbRWAHQQUQx3gVA0E
-         zrvkVykM5sz4ygJ3I/9QCfIgDhJ4q229KoNcK98JUM3lSQGGDXIZeO5omaFriv3b+jV7
-         O3cQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version;
+        bh=1aViMPEtqSCkHN24Voc43NZdUDQBuwUJLMZFwdM7irQ=;
+        fh=efy4QMjR5TvzhbFgbGJGk36VZTQFGJklU57yBy7rbx4=;
+        b=Mq9ClIn5AZ/3eZPonBo+N3S7BITKb4d2dJR1W5IkIrYPBzXD68sU+divPOz4OsdTfl
+         3/Z1Kh9px3+w3LBy4vNNpE/9OVTNhI3BVEQPTBKIs01EWxHFhU0eiUImzWwllhmQy8s3
+         2OhAY8tKsFtJRYgaPiQWNEExqurljembsRjWt8/l9KrAoC+26XKpbHZwH2G+xwQiiyYa
+         ZAEGALLDEf5NejXljlvwMKJo6+rKL9UZw/HWvjsThzuDxn1e+Gokkf/ejplKy/1VS45b
+         B3Cl6OkXEpNnm+/IZbViAAPFRh3Zcwo5Ddt7H3rMJzoOXn+Qci/c3koHpp9VhVvU8YBG
+         EFng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d7M/pF7O";
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d2e1a72fcca58-72aad841441sor2350317b3a.1.2024.12.20.08.54.11
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=getutm.app
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd1836f76bsi113488066d6.525.2024.12.23.09.37.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 20 Dec 2024 08:54:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 23 Dec 2024 09:37:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="d7M/pF7O";
-       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1734713651; x=1735318451; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=sW4TRa3efTCPYQOtrOg+F3CxpZ9XNiC5ySA8QirrmJE=;
-        b=d7M/pF7Ox0eETvYwQRnE7D7I+Wm9ARZAz9XFgpZcJ05yeZWQmGxensxjkmJ2Xq2eIn
-         yl5qfa6YWYwSY369KSIswgY4XIYNsEGYrrAlaUmJH7XbUhJmt4KX2qhWVoo7/6osbUkm
-         4OkxnByEw5+A8xSFF8jYvyTKrcGzu/Hd01xfQN4UGVsnfoaCGNFSHM3gjKiwr/3WhQpA
-         0OHaHsxTLiIAne3kbBZyZ4qXKTzvIvHbg7ShTZAEgonGeS3m7JMZD+qokCo5DuSL0zjJ
-         g4/e2uIqPlaq1T4nI2OpV+TlAOV/9zYApq3g+x+mpT2zvVjkO97mDDOd41Ud8DRzWvSL
-         yq3A==
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=getutm.app
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tPmMr-0007ug-G2; Mon, 23 Dec 2024 12:37:21 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1tPmMq-0007uE-3P; Mon, 23 Dec 2024 12:37:20 -0500
+Received: from mail-pf1-f179.google.com ([209.85.210.179])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1tPmMo-0004GA-Dg; Mon, 23 Dec 2024 12:37:19 -0500
+Received: by mail-pf1-f179.google.com with SMTP id
+ d2e1a72fcca58-725dbdf380aso3551424b3a.3; 
+ Mon, 23 Dec 2024 09:37:17 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1734713651; x=1735318451;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=sW4TRa3efTCPYQOtrOg+F3CxpZ9XNiC5ySA8QirrmJE=;
-        b=v9SSEZpS2cFEa7b+SAA0KxPidyD9RF1UX7Zh6/ZfAL3njLkY9MIaZEBRcuz3ky6DHw
-         qE5xkjKVkWxMUDU00wCf22qDPImWgMA1FnVk+U4Vb6Wj6NkfqaASPWwbks6hua2i87gU
-         i6Ft3mRnigFnNxiz+Nx6zyZM42IdHIpPjvxNEc0ZgLlOpiOp5b4aSa/Wo4AGgf7AhHM+
-         LzQaW5ZnIC6ycnXi/W+0RwqocoKmtQsJx1a2UmqT1iTy+WeV9b8WUWjmWToR083SzMkr
-         2aMUgJntnwSyOYJRr+GCwMUh4zS/wCcEMaJj2ERRZDuX4vQ1SD3I4avNRyVSxueA8hJ9
-         GIxQ==
-X-Gm-Message-State: AOJu0YyZkUl3bZeHIEC3M2W07GLcx5GOvb3K9PDoe/nke/C1WJYTtNlQ
-	5Qk6wxfexbTpX09ykQnHUdRPQ3LnrZmZBq+b2tw56kp+0HYQRHb9ns/SD8gM64vP4+u/FdrGGoo
-	RK6M=
-X-Gm-Gg: ASbGnctBd6HKfqPFJoRIGf9xP5UkPT06cGaDuBO5PGuiwstxy0Oq6EmIVO065LweqhR
-	V5o9a/dU++pMNn3vXMbg0BL9KQYpWT1XK8W5m5NPVqwG8OvxLHgBaoRPgZjwbRpeTcyQhr4Qn2R
-	ZRicVBMn8q5oJV5M0vow5O5Da9t/tM6I8ULk3qHMXV1pB/+77UGc7vrwB/CWHnOI/lQDJQ/AUQs
-	HwGie3R+9qjr+2wJpCSD+h3L4tDc0EjNnn1jlJM9MTb1B2FyFx0fyeRRteDbaYeubszIw==
-X-Google-Smtp-Source: AGHT+IEnOrA8Jh5hRuIMUHw73H8JO4LaYQ6K+srZZ073xzYAlMAZ5rQBaLTjorCuS+UoU8hthaRRyQ==
-X-Received: by 2002:a05:6a00:808f:b0:727:64c8:2c44 with SMTP id d2e1a72fcca58-72abdeaab15mr5296158b3a.19.1734713650743;
-        Fri, 20 Dec 2024 08:54:10 -0800 (PST)
-Return-Path: <pierrick.bouvier@linaro.org>
-Received: from [192.168.1.67] ([38.39.164.180])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-72aad84cf91sm3314295b3a.83.2024.12.20.08.54.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 20 Dec 2024 08:54:10 -0800 (PST)
-Message-ID: <7a0b2c52-4c53-41de-985c-ba8aab45f190@linaro.org>
-Date: Fri, 20 Dec 2024 08:54:08 -0800
+ d=1e100.net; s=20230601; t=1734975436; x=1735580236;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=1aViMPEtqSCkHN24Voc43NZdUDQBuwUJLMZFwdM7irQ=;
+ b=uNd35/ptaWtoxrVzxg7cqi7pdGmkNauy7WJJN+yylPWX178HZ5lGNuJoTNJ+I38Hbc
+ 09rYd31uxya387IOtytED2NeHTtRi8Q0tj0uNR5Lcq5wRWVuHfRYa3QPWmNtBw91kZDH
+ p3QI3ZDQWyTi8mDCJyEs9NBQ6RkljVHJ9SaXD3W6F24ho3/lILQ9S8XhwLEzipBgOE1/
+ U4CED3tGISGWuiwHpOzBuFEE0lAA1iT5ux7nBcblabOgnFaP9Bc3CgyozmobbLgB02di
+ PvaPfpYIfDNRrGM6tUAA2/EWIWmlcm7tHyGwebspYopl4OR5Wmj+zxYtl4Il9gZwdAKJ
+ HJ2Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUZPFUx7HMhW558+EtV3E+PlDGaMuQfAd33ftCKo/3xxr4Uv5vWcJGJXHDnAvHmu2dnh0MB9nTIzvMf2Q==@nongnu.org,
+ AJvYcCX5irCznh2h4M1u63R2rEoY0Q0ktP8e3+UL2lFRr7L+o6d2zdMxAbqIojqGR0YA6Qr1fVA4mODqAA==@nongnu.org
+X-Gm-Message-State: AOJu0YzmamOzeKjHbueZfKqg5V/ngBiW6wAH3lfdU6tvhSLvNjTtoEhq
+ 01Poumc+8AelhEC5bobx84Dext3wvKFh0bpRR3d5aN8pa2rVYbVclAdwaA==
+X-Gm-Gg: ASbGncvBBEbPaWCCnLHr48Ip0LVe/VWxZFA+xvm7atflWlISq1CUp4IQ3gdyhK05vlP
+ srOQVbVvFhGjVr7DjgIr8JIwmSxMyjgWAxBv+p1DcVbTZrO3e13vx/1CoEu4VGKWYJ22BSI+A2R
+ F8PYAIRDyC41mX+GUCVFHmbv9k6/S9+ZLeWRQbSm4zmONnxUvi0vrlQgkcHtjZPdWKYuvl0+1/R
+ 9t8X6Ao5Y3sHPexPhdokQgm+CDg32vsI39x0J4BrO4gYCw/xg7Shjr2ohh9/5EVtvaOy9s4wTOB
+ +auFGa+u
+X-Received: by 2002:a05:6a20:7f8b:b0:1e0:dc06:4f4d with SMTP id
+ adf61e73a8af0-1e5e04958f8mr20886101637.19.1734975436069; 
+ Mon, 23 Dec 2024 09:37:16 -0800 (PST)
+Received: from mail-pj1-f42.google.com (mail-pj1-f42.google.com.
+ [209.85.216.42]) by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-842b181b62asm7481078a12.18.2024.12.23.09.37.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 23 Dec 2024 09:37:15 -0800 (PST)
+Received: by mail-pj1-f42.google.com with SMTP id
+ 98e67ed59e1d1-2ef70c7efa5so3208583a91.2; 
+ Mon, 23 Dec 2024 09:37:15 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU+ql2U/NffkoYnCP02TrTax8t3Do2qbNRkXsnV/4CZ24K0NYCIB8GEJnUG5Y1Y8lhetAzpbE3Kz9MoHA==@nongnu.org,
+ AJvYcCWDpduzWbpI3ogWayR6v0Mb/Z7j5qeNOHPd90FtuQUtUIHLyTSuq7umXm3n0juc8MMgBRnhw3LeNA==@nongnu.org
+X-Received: by 2002:a17:90b:2dcc:b0:2f1:3355:4a8f with SMTP id
+ 98e67ed59e1d1-2f452dfcd32mr20180652a91.4.1734975435309; Mon, 23 Dec 2024
+ 09:37:15 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 15/27] tests/functional/aarch64: add tests for FEAT_RME
-Content-Language: en-US
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Ed Maste <emaste@freebsd.org>, Eric Farman <farman@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>, Li-Wen Hsu <lwhsu@freebsd.org>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Fabiano Rosas <farosas@suse.de>,
- Radoslaw Biernacki <rad@semihalf.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-riscv@nongnu.org, Nicholas Piggin <npiggin@gmail.com>,
- Joel Stanley <joel@jms.id.au>, Beraldo Leal <bleal@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Jiaxun Yang
- <jiaxun.yang@flygoat.com>, Weiwei Li <liwei1518@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Cleber Rosa <crosa@redhat.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- John Snow <jsnow@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bmeng.cn@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Halil Pasic <pasic@linux.ibm.com>, qemu-arm@nongnu.org,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org,
- Bernhard Beschow <shentey@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-s390x@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-References: <20241218162104.3493551-1-alex.bennee@linaro.org>
- <20241218162104.3493551-16-alex.bennee@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20241218162104.3493551-16-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: base64
-X-TUID: eSJAaRVOGHIL
+References: <20241223040945.82871-1-j@getutm.app>
+ <20241223040945.82871-3-j@getutm.app>
+ <CAGCz3vvojZHDdB33OSKH4RY2w6vo+hBTCywSZFWRCX9mTsnijw@mail.gmail.com>
+In-Reply-To: <CAGCz3vvojZHDdB33OSKH4RY2w6vo+hBTCywSZFWRCX9mTsnijw@mail.gmail.com>
+From: Joelle van Dyne <j@getutm.app>
+Date: Mon, 23 Dec 2024 09:37:04 -0800
+X-Gmail-Original-Message-ID: <CA+E+eSC7Apq4f7+YmJ_+aiNZHAiwCm2LnK4kGb0-2FggLxC1Ng@mail.gmail.com>
+Message-ID: <CA+E+eSC7Apq4f7+YmJ_+aiNZHAiwCm2LnK4kGb0-2FggLxC1Ng@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hvf: arm: disable unavailable features on older macOS
+To: Phil Dennis-Jordan <lists@philjordan.eu>
+Cc: Joelle van Dyne <j@getutm.app>, qemu-devel@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=209.85.210.179; envelope-from=osy86dev@gmail.com;
+ helo=mail-pf1-f179.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.165, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OgsUfiFffyN9
 
-T24gMTIvMTgvMjQgMDg6MjAsIEFsZXggQmVubsOpZSB3cm90ZToNCj4gRnJvbTogUGllcnJp
-Y2sgQm91dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPg0KPiANCj4gVGhpcyBi
-b290IGFuIE9QLVRFRSBlbnZpcm9ubWVudCwgYW5kIGxhdW5jaCBhIG5lc3RlZCBndWVzdCBW
-TSBpbnNpZGUgaXQNCj4gdXNpbmcgdGhlIFJlYWxtcyBmZWF0dXJlLiBXZSBkbyBpdCBmb3Ig
-dmlydCBhbmQgc2JzYS1yZWYgcGxhdGZvcm1zLg0KPiANCj4gU2lnbmVkLW9mZi1ieTogUGll
-cnJpY2sgQm91dmllciA8cGllcnJpY2suYm91dmllckBsaW5hcm8ub3JnPg0KPiBNZXNzYWdl
-LUlkOiA8MjAyNDEyMDMyMTM2MjkuMjQ4MjgwNi0xLXBpZXJyaWNrLmJvdXZpZXJAbGluYXJv
-Lm9yZz4NCj4gU2lnbmVkLW9mZi1ieTogQWxleCBCZW5uw6llIDxhbGV4LmJlbm5lZUBsaW5h
-cm8ub3JnPg0KPiANCj4gLS0tDQo+IHYyDQo+ICAgIC0gcmVtb3ZlIHZlcnNpb24gbG9nIGZy
-b20gbWFpbiBjb21taXQNCj4gLS0tDQo+ICAgdGVzdHMvZnVuY3Rpb25hbC9tZXNvbi5idWls
-ZCAgICAgICAgICAgICAgICAgfCAgIDQgKw0KPiAgIHRlc3RzL2Z1bmN0aW9uYWwvdGVzdF9h
-YXJjaDY0X3JtZV9zYnNhcmVmLnB5IHwgIDcwICsrKysrKysrKysrKysNCj4gICB0ZXN0cy9m
-dW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9ybWVfdmlydC5weSAgICB8IDEwMCArKysrKysrKysr
-KysrKysrKysrDQo+ICAgMyBmaWxlcyBjaGFuZ2VkLCAxNzQgaW5zZXJ0aW9ucygrKQ0KPiAg
-IGNyZWF0ZSBtb2RlIDEwMDc1NSB0ZXN0cy9mdW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9ybWVf
-c2JzYXJlZi5weQ0KPiAgIGNyZWF0ZSBtb2RlIDEwMDc1NSB0ZXN0cy9mdW5jdGlvbmFsL3Rl
-c3RfYWFyY2g2NF9ybWVfdmlydC5weQ0KPiANCj4gZGlmZiAtLWdpdCBhL3Rlc3RzL2Z1bmN0
-aW9uYWwvbWVzb24uYnVpbGQgYi90ZXN0cy9mdW5jdGlvbmFsL21lc29uLmJ1aWxkDQo+IGlu
-ZGV4IDBlMWJmYjhjNDQuLmI0OWM0ODYxMTUgMTAwNjQ0DQo+IC0tLSBhL3Rlc3RzL2Z1bmN0
-aW9uYWwvbWVzb24uYnVpbGQNCj4gKysrIGIvdGVzdHMvZnVuY3Rpb25hbC9tZXNvbi5idWls
-ZA0KPiBAQCAtMTMsNiArMTMsOCBAQCBlbmRpZg0KPiAgIHRlc3RfdGltZW91dHMgPSB7DQo+
-ICAgICAnYWFyY2g2NF9hc3BlZWQnIDogNjAwLA0KPiAgICAgJ2FhcmNoNjRfcmFzcGk0JyA6
-IDQ4MCwNCj4gKyAgJ2FhcmNoNjRfcm1lX3ZpcnQnIDogMTIwMCwNCj4gKyAgJ2FhcmNoNjRf
-cm1lX3Nic2FyZWYnIDogMTIwMCwNCj4gICAgICdhYXJjaDY0X3Nic2FyZWZfYWxwaW5lJyA6
-IDcyMCwNCj4gICAgICdhYXJjaDY0X3Nic2FyZWZfZnJlZWJzZCcgOiA3MjAsDQo+ICAgICAn
-YWFyY2g2NF90dXhydW4nIDogMjQwLA0KPiBAQCAtNTgsNiArNjAsOCBAQCB0ZXN0c19hYXJj
-aDY0X3N5c3RlbV90aG9yb3VnaCA9IFsNCj4gICAgICdhYXJjaDY0X2FzcGVlZCcsDQo+ICAg
-ICAnYWFyY2g2NF9yYXNwaTMnLA0KPiAgICAgJ2FhcmNoNjRfcmFzcGk0JywNCj4gKyAgJ2Fh
-cmNoNjRfcm1lX3ZpcnQnLA0KPiArICAnYWFyY2g2NF9ybWVfc2JzYXJlZicsDQo+ICAgICAn
-YWFyY2g2NF9zYnNhcmVmJywNCj4gICAgICdhYXJjaDY0X3Nic2FyZWZfYWxwaW5lJywNCj4g
-ICAgICdhYXJjaDY0X3Nic2FyZWZfZnJlZWJzZCcsDQo+IGRpZmYgLS1naXQgYS90ZXN0cy9m
-dW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9ybWVfc2JzYXJlZi5weSBiL3Rlc3RzL2Z1bmN0aW9u
-YWwvdGVzdF9hYXJjaDY0X3JtZV9zYnNhcmVmLnB5DQo+IG5ldyBmaWxlIG1vZGUgMTAwNzU1
-DQo+IGluZGV4IDAwMDAwMDAwMDAuLmMxMzZiNWNlMTcNCj4gLS0tIC9kZXYvbnVsbA0KPiAr
-KysgYi90ZXN0cy9mdW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9ybWVfc2JzYXJlZi5weQ0KPiBA
-QCAtMCwwICsxLDcwIEBADQo+ICsjIS91c3IvYmluL2VudiBweXRob24zDQo+ICsjDQo+ICsj
-IEZ1bmN0aW9uYWwgdGVzdCB0aGF0IGJvb3RzIGEgUmVhbG1zIGVudmlyb25tZW50IG9uIHNi
-c2EtcmVmIG1hY2hpbmUgYW5kIGENCj4gKyMgbmVzdGVkIGd1ZXN0IFZNIHVzaW5nIGl0Lg0K
-PiArIw0KPiArIyBDb3B5cmlnaHQgKGMpIDIwMjQgTGluYXJvIEx0ZC4NCj4gKyMNCj4gKyMg
-QXV0aG9yOiBQaWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+
-DQo+ICsjDQo+ICsjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9yLWxhdGVy
-DQo+ICsNCj4gK2ltcG9ydCB0aW1lDQo+ICtpbXBvcnQgb3MNCj4gK2ltcG9ydCBsb2dnaW5n
-DQo+ICsNCj4gK2Zyb20gcWVtdV90ZXN0IGltcG9ydCBRZW11U3lzdGVtVGVzdCwgQXNzZXQN
-Cj4gK2Zyb20gcWVtdV90ZXN0IGltcG9ydCBleGVjX2NvbW1hbmQsIHdhaXRfZm9yX2NvbnNv
-bGVfcGF0dGVybg0KPiArZnJvbSBxZW11X3Rlc3QgaW1wb3J0IGV4ZWNfY29tbWFuZF9hbmRf
-d2FpdF9mb3JfcGF0dGVybg0KPiArZnJvbSBxZW11X3Rlc3QudXRpbHMgaW1wb3J0IGFyY2hp
-dmVfZXh0cmFjdA0KPiArZnJvbSB0ZXN0X2FhcmNoNjRfcm1lX3ZpcnQgaW1wb3J0IHRlc3Rf
-cmVhbG1zX2d1ZXN0DQo+ICsNCj4gK2NsYXNzIEFhcmNoNjRSTUVTYnNhUmVmTWFjaGluZShR
-ZW11U3lzdGVtVGVzdCk6DQo+ICsNCj4gKyAgICAjIFN0YWNrIGlzIGJ1aWx0IHdpdGggT1At
-VEVFIGJ1aWxkIGVudmlyb25tZW50IGZyb20gdGhvc2UgaW5zdHJ1Y3Rpb25zOg0KPiArICAg
-ICMgaHR0cHM6Ly9saW5hcm8uYXRsYXNzaWFuLm5ldC93aWtpL3NwYWNlcy9RRU1VL3BhZ2Vz
-LzI5MDUxMDI3NDU5Lw0KPiArICAgICMgaHR0cHM6Ly9naXRodWIuY29tL3Biby1saW5hcm8v
-cWVtdS1ybWUtc3RhY2sNCj4gKyAgICBBU1NFVF9STUVfU1RBQ0tfU0JTQSA9IEFzc2V0KA0K
-PiArICAgICAgICAoJ2h0dHBzOi8vZmlsZXNlcnZlci5saW5hcm8ub3JnL3MvS0p5ZUJ4TDgy
-bXoycjdGLycNCj4gKyAgICAgICAgICdkb3dubG9hZC9ybWUtc3RhY2stb3AtdGVlLTQuMi4w
-LWNjYS12NC1zYnNhLnRhci5neicpLA0KPiArICAgICAgICAgJ2RkOWFiMjhlYzg2OWJkZjNi
-NTM3NjExNmNiMzY4OTEwM2I0MzQzM2ZkNWM0YmNhMGY0YThkOGIzYzEwNDk5OWUnKQ0KPiAr
-DQo+ICsgICAgIyBUaGlzIHRlc3RzIHRoZSBGRUFUX1JNRSBjcHUgaW1wbGVtZW50YXRpb24s
-IGJ5IGJvb3RpbmcgYSBWTSBzdXBwb3J0aW5nIGl0LA0KPiArICAgICMgYW5kIGxhdW5jaGlu
-ZyBhIG5lc3RlZCBWTSB1c2luZyBpdC4NCj4gKyAgICBkZWYgdGVzdF9hYXJjaDY0X3JtZV9z
-YnNhcmVmKHNlbGYpOg0KPiArICAgICAgICBzdGFja19wYXRoX3Rhcl9neiA9IHNlbGYuQVNT
-RVRfUk1FX1NUQUNLX1NCU0EuZmV0Y2goKQ0KPiArICAgICAgICBhcmNoaXZlX2V4dHJhY3Qo
-c3RhY2tfcGF0aF90YXJfZ3osIHNlbGYud29ya2RpcikNCj4gKw0KPiArICAgICAgICBzZWxm
-LnNldF9tYWNoaW5lKCdzYnNhLXJlZicpDQo+ICsgICAgICAgIHNlbGYudm0uc2V0X2NvbnNv
-bGUoKQ0KPiArICAgICAgICBzZWxmLnJlcXVpcmVfYWNjZWxlcmF0b3IoJ3RjZycpDQo+ICsN
-Cj4gKyAgICAgICAgcm1lX3N0YWNrID0gb3MucGF0aC5qb2luKHNlbGYud29ya2RpciwNCj4g
-KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICdybWUtc3RhY2stb3AtdGVlLTQu
-Mi4wLWNjYS12NC1zYnNhJykNCj4gKyAgICAgICAgcGZsYXNoMCA9IG9zLnBhdGguam9pbihy
-bWVfc3RhY2ssICdpbWFnZXMnLCAnU0JTQV9GTEFTSDAuZmQnKQ0KPiArICAgICAgICBwZmxh
-c2gxID0gb3MucGF0aC5qb2luKHJtZV9zdGFjaywgJ2ltYWdlcycsICdTQlNBX0ZMQVNIMS5m
-ZCcpDQo+ICsgICAgICAgIHZpcnR1YWwgPSBvcy5wYXRoLmpvaW4ocm1lX3N0YWNrLCAnaW1h
-Z2VzJywgJ2Rpc2tzJywgJ3ZpcnR1YWwnKQ0KPiArICAgICAgICBkcml2ZSA9IG9zLnBhdGgu
-am9pbihybWVfc3RhY2ssICdvdXQtYnInLCAnaW1hZ2VzJywgJ3Jvb3Rmcy5leHQ0JykNCj4g
-Kw0KPiArICAgICAgICBzZWxmLnZtLmFkZF9hcmdzKCctY3B1JywgJ21heCx4LXJtZT1vbixw
-YXV0aC1pbXBkZWY9b24nKQ0KPiArICAgICAgICBzZWxmLnZtLmFkZF9hcmdzKCctbScsICcy
-RycpDQo+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1NJywgJ3Nic2EtcmVmJykNCj4g
-KyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWRyaXZlJywgZidmaWxlPXtwZmxhc2gwfSxm
-b3JtYXQ9cmF3LGlmPXBmbGFzaCcpDQo+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1k
-cml2ZScsIGYnZmlsZT17cGZsYXNoMX0sZm9ybWF0PXJhdyxpZj1wZmxhc2gnKQ0KPiArICAg
-ICAgICBzZWxmLnZtLmFkZF9hcmdzKCctZHJpdmUnLCBmJ2ZpbGU9ZmF0OnJ3Ont2aXJ0dWFs
-fSxmb3JtYXQ9cmF3JykNCj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWRyaXZlJywg
-Zidmb3JtYXQ9cmF3LGlmPW5vbmUsZmlsZT17ZHJpdmV9LGlkPWhkMCcpDQo+ICsgICAgICAg
-IHNlbGYudm0uYWRkX2FyZ3MoJy1kZXZpY2UnLCAndmlydGlvLWJsay1wY2ksZHJpdmU9aGQw
-JykNCj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWRldmljZScsICd2aXJ0aW8tOXAt
-cGNpLGZzZGV2PXNocjAsbW91bnRfdGFnPXNocjAnKQ0KPiArICAgICAgICBzZWxmLnZtLmFk
-ZF9hcmdzKCctZnNkZXYnLCBmJ2xvY2FsLHNlY3VyaXR5X21vZGVsPW5vbmUscGF0aD17cm1l
-X3N0YWNrfSxpZD1zaHIwJykNCj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWRldmlj
-ZScsICd2aXJ0aW8tbmV0LXBjaSxuZXRkZXY9bmV0MCcpDQo+ICsgICAgICAgIHNlbGYudm0u
-YWRkX2FyZ3MoJy1uZXRkZXYnLCAndXNlcixpZD1uZXQwJykNCj4gKw0KPiArICAgICAgICBz
-ZWxmLnZtLmxhdW5jaCgpDQo+ICsgICAgICAgICMgV2FpdCBmb3IgaG9zdCBWTSBib290IHRv
-IGNvbXBsZXRlLg0KPiArICAgICAgICB3YWl0X2Zvcl9jb25zb2xlX3BhdHRlcm4oc2VsZiwg
-J1dlbGNvbWUgdG8gQnVpbGRyb290JykNCj4gKyAgICAgICAgZXhlY19jb21tYW5kX2FuZF93
-YWl0X2Zvcl9wYXR0ZXJuKHNlbGYsICdyb290JywgJyMnKQ0KPiArDQo+ICsgICAgICAgIHRl
-c3RfcmVhbG1zX2d1ZXN0KHNlbGYpDQo+ICsNCj4gK2lmIF9fbmFtZV9fID09ICdfX21haW5f
-Xyc6DQo+ICsgICAgUWVtdVN5c3RlbVRlc3QubWFpbigpDQo+IGRpZmYgLS1naXQgYS90ZXN0
-cy9mdW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9ybWVfdmlydC5weSBiL3Rlc3RzL2Z1bmN0aW9u
-YWwvdGVzdF9hYXJjaDY0X3JtZV92aXJ0LnB5DQo+IG5ldyBmaWxlIG1vZGUgMTAwNzU1DQo+
-IGluZGV4IDAwMDAwMDAwMDAuLjM5ZTRlNGFkYjUNCj4gLS0tIC9kZXYvbnVsbA0KPiArKysg
-Yi90ZXN0cy9mdW5jdGlvbmFsL3Rlc3RfYWFyY2g2NF9ybWVfdmlydC5weQ0KPiBAQCAtMCww
-ICsxLDEwMCBAQA0KPiArIyEvdXNyL2Jpbi9lbnYgcHl0aG9uMw0KPiArIw0KPiArIyBGdW5j
-dGlvbmFsIHRlc3QgdGhhdCBib290cyBhIFJlYWxtcyBlbnZpcm9ubWVudCBvbiB2aXJ0IG1h
-Y2hpbmUgYW5kIGEgbmVzdGVkDQo+ICsjIGd1ZXN0IFZNIHVzaW5nIGl0Lg0KPiArIw0KPiAr
-IyBDb3B5cmlnaHQgKGMpIDIwMjQgTGluYXJvIEx0ZC4NCj4gKyMNCj4gKyMgQXV0aG9yOiBQ
-aWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQGxpbmFyby5vcmc+DQo+ICsjDQo+
-ICsjIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9yLWxhdGVyDQo+ICsNCj4g
-K2ltcG9ydCB0aW1lDQo+ICtpbXBvcnQgb3MNCj4gK2ltcG9ydCBsb2dnaW5nDQo+ICsNCj4g
-K2Zyb20gcWVtdV90ZXN0IGltcG9ydCBRZW11U3lzdGVtVGVzdCwgQXNzZXQNCj4gK2Zyb20g
-cWVtdV90ZXN0IGltcG9ydCBleGVjX2NvbW1hbmQsIHdhaXRfZm9yX2NvbnNvbGVfcGF0dGVy
-bg0KPiArZnJvbSBxZW11X3Rlc3QgaW1wb3J0IGV4ZWNfY29tbWFuZF9hbmRfd2FpdF9mb3Jf
-cGF0dGVybg0KPiArZnJvbSBxZW11X3Rlc3QudXRpbHMgaW1wb3J0IGFyY2hpdmVfZXh0cmFj
-dA0KPiArDQo+ICtkZWYgdGVzdF9yZWFsbXNfZ3Vlc3QodGVzdF9ybWVfaW5zdGFuY2UpOg0K
-PiArDQo+ICsgICAgIyBCb290IHRoZSAobmVzdGVkKSBndWVzdCBWTQ0KPiArICAgIGV4ZWNf
-Y29tbWFuZCh0ZXN0X3JtZV9pbnN0YW5jZSwNCj4gKyAgICAgICAgICAgICAgICAgJ3FlbXUt
-c3lzdGVtLWFhcmNoNjQgLU0gdmlydCxnaWMtdmVyc2lvbj0zICcNCj4gKyAgICAgICAgICAg
-ICAgICAgJy1jcHUgaG9zdCAtZW5hYmxlLWt2bSAtbSA1MTJNICcNCj4gKyAgICAgICAgICAg
-ICAgICAgJy1NIGNvbmZpZGVudGlhbC1ndWVzdC1zdXBwb3J0PXJtZTAgJw0KPiArICAgICAg
-ICAgICAgICAgICAnLW9iamVjdCBybWUtZ3Vlc3QsaWQ9cm1lMCAnDQo+ICsgICAgICAgICAg
-ICAgICAgICctZGV2aWNlIHZpcnRpby1uZXQtcGNpLG5ldGRldj1uZXQwLHJvbWZpbGU9ICcN
-Cj4gKyAgICAgICAgICAgICAgICAgJy1uZXRkZXYgdXNlcixpZD1uZXQwICcNCj4gKyAgICAg
-ICAgICAgICAgICAgJy1rZXJuZWwgL21udC9vdXQvYmluL0ltYWdlICcNCj4gKyAgICAgICAg
-ICAgICAgICAgJy1pbml0cmQgL21udC9vdXQtYnIvaW1hZ2VzL3Jvb3Rmcy5jcGlvICcNCj4g
-KyAgICAgICAgICAgICAgICAgJy1zZXJpYWwgc3RkaW8nKQ0KPiArICAgICMgRGV0ZWN0IFJl
-YWxtIGFjdGl2YXRpb24gZHVyaW5nIChuZXN0ZWQpIGd1ZXN0IGJvb3QuDQo+ICsgICAgd2Fp
-dF9mb3JfY29uc29sZV9wYXR0ZXJuKHRlc3Rfcm1lX2luc3RhbmNlLA0KPiArICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAnU01DX1JNSV9SRUFMTV9BQ1RJVkFURScpDQo+ICsgICAg
-IyBXYWl0IGZvciAobmVzdGVkKSBndWVzdCBib290IHRvIGNvbXBsZXRlLg0KPiArICAgIHdh
-aXRfZm9yX2NvbnNvbGVfcGF0dGVybih0ZXN0X3JtZV9pbnN0YW5jZSwNCj4gKyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgJ1dlbGNvbWUgdG8gQnVpbGRyb290JykNCj4gKyAgICBl
-eGVjX2NvbW1hbmRfYW5kX3dhaXRfZm9yX3BhdHRlcm4odGVzdF9ybWVfaW5zdGFuY2UsICdy
-b290JywgJyMnKQ0KPiArICAgICMgcXVlcnkgKG5lc3RlZCkgZ3Vlc3QgY2NhIHJlcG9ydA0K
-PiArICAgIGV4ZWNfY29tbWFuZCh0ZXN0X3JtZV9pbnN0YW5jZSwgJ2NjYS13b3JrbG9hZC1h
-dHRlc3RhdGlvbiByZXBvcnQnKQ0KPiArICAgIHdhaXRfZm9yX2NvbnNvbGVfcGF0dGVybih0
-ZXN0X3JtZV9pbnN0YW5jZSwNCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJyJj
-Y2EtcGxhdGZvcm0taGFzaC1hbGdvLWlkIjogInNoYS0yNTYiJykNCj4gKyAgICB3YWl0X2Zv
-cl9jb25zb2xlX3BhdHRlcm4odGVzdF9ybWVfaW5zdGFuY2UsDQo+ICsgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICciY2NhLXJlYWxtLWhhc2gtYWxnby1pZCI6ICJzaGEtNTEyIicp
-DQo+ICsgICAgd2FpdF9mb3JfY29uc29sZV9wYXR0ZXJuKHRlc3Rfcm1lX2luc3RhbmNlLA0K
-PiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAnImNjYS1yZWFsbS1wdWJsaWMta2V5
-LWhhc2gtYWxnby1pZCI6ICJzaGEtMjU2IicpDQo+ICsNCj4gK2NsYXNzIEFhcmNoNjRSTUVW
-aXJ0TWFjaGluZShRZW11U3lzdGVtVGVzdCk6DQo+ICsNCj4gKyAgICAjIFN0YWNrIGlzIGJ1
-aWx0IHdpdGggT1AtVEVFIGJ1aWxkIGVudmlyb25tZW50IGZyb20gdGhvc2UgaW5zdHJ1Y3Rp
-b25zOg0KPiArICAgICMgaHR0cHM6Ly9saW5hcm8uYXRsYXNzaWFuLm5ldC93aWtpL3NwYWNl
-cy9RRU1VL3BhZ2VzLzI5MDUxMDI3NDU5Lw0KPiArICAgICMgaHR0cHM6Ly9naXRodWIuY29t
-L3Biby1saW5hcm8vcWVtdS1ybWUtc3RhY2sNCj4gKyAgICBBU1NFVF9STUVfU1RBQ0tfVklS
-VCA9IEFzc2V0KA0KPiArICAgICAgICAoJ2h0dHBzOi8vZmlsZXNlcnZlci5saW5hcm8ub3Jn
-L3MvaWFSc05ESnAyQ1hITVNKLycNCj4gKyAgICAgICAgICdkb3dubG9hZC9ybWUtc3RhY2st
-b3AtdGVlLTQuMi4wLWNjYS12NC1xZW11X3Y4LnRhci5neicpLA0KPiArICAgICAgICAgJzE4
-NTFhZGMyMzJiMDk0Mzg0ZDhiODc5YjlhMmNmZmYwN2VmM2Q2MjA1MDMyYjg1ZTliM2E0YTlh
-ZTZiMGI3YWQnKQ0KPiArDQo+ICsgICAgIyBUaGlzIHRlc3RzIHRoZSBGRUFUX1JNRSBjcHUg
-aW1wbGVtZW50YXRpb24sIGJ5IGJvb3RpbmcgYSBWTSBzdXBwb3J0aW5nIGl0LA0KPiArICAg
-ICMgYW5kIGxhdW5jaGluZyBhIG5lc3RlZCBWTSB1c2luZyBpdC4NCj4gKyAgICBkZWYgdGVz
-dF9hYXJjaDY0X3JtZV92aXJ0KHNlbGYpOg0KPiArICAgICAgICBzdGFja19wYXRoX3Rhcl9n
-eiA9IHNlbGYuQVNTRVRfUk1FX1NUQUNLX1ZJUlQuZmV0Y2goKQ0KPiArICAgICAgICBhcmNo
-aXZlX2V4dHJhY3Qoc3RhY2tfcGF0aF90YXJfZ3osIHNlbGYud29ya2RpcikNCj4gKw0KPiAr
-ICAgICAgICBzZWxmLnNldF9tYWNoaW5lKCd2aXJ0JykNCj4gKyAgICAgICAgc2VsZi52bS5z
-ZXRfY29uc29sZSgpDQo+ICsgICAgICAgIHNlbGYucmVxdWlyZV9hY2NlbGVyYXRvcigndGNn
-JykNCj4gKw0KPiArICAgICAgICBybWVfc3RhY2sgPSBvcy5wYXRoLmpvaW4oc2VsZi53b3Jr
-ZGlyLA0KPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJ3JtZS1zdGFjay1v
-cC10ZWUtNC4yLjAtY2NhLXY0LXFlbXVfdjgnKQ0KPiArICAgICAgICBrZXJuZWwgPSBvcy5w
-YXRoLmpvaW4ocm1lX3N0YWNrLCAnb3V0JywgJ2JpbicsICdJbWFnZScpDQo+ICsgICAgICAg
-IGJpb3MgPSBvcy5wYXRoLmpvaW4ocm1lX3N0YWNrLCAnb3V0JywgJ2JpbicsICdmbGFzaC5i
-aW4nKQ0KPiArICAgICAgICBkcml2ZSA9IG9zLnBhdGguam9pbihybWVfc3RhY2ssICdvdXQt
-YnInLCAnaW1hZ2VzJywgJ3Jvb3Rmcy5leHQ0JykNCj4gKw0KPiArICAgICAgICBzZWxmLnZt
-LmFkZF9hcmdzKCctY3B1JywgJ21heCx4LXJtZT1vbixwYXV0aC1pbXBkZWY9b24nKQ0KPiAr
-ICAgICAgICBzZWxmLnZtLmFkZF9hcmdzKCctbScsICcyRycpDQo+ICsgICAgICAgIHNlbGYu
-dm0uYWRkX2FyZ3MoJy1NJywgJ3ZpcnQsYWNwaT1vZmYsJw0KPiArICAgICAgICAgICAgICAg
-ICAgICAgICAgICd2aXJ0dWFsaXphdGlvbj1vbiwnDQo+ICsgICAgICAgICAgICAgICAgICAg
-ICAgICAgJ3NlY3VyZT1vbiwnDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgJ2dpYy12
-ZXJzaW9uPTMnKQ0KPiArICAgICAgICBzZWxmLnZtLmFkZF9hcmdzKCctYmlvcycsIGJpb3Mp
-DQo+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1rZXJuZWwnLCBrZXJuZWwpDQo+ICsg
-ICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1kcml2ZScsIGYnZm9ybWF0PXJhdyxpZj1ub25l
-LGZpbGU9e2RyaXZlfSxpZD1oZDAnKQ0KPiArICAgICAgICBzZWxmLnZtLmFkZF9hcmdzKCct
-ZGV2aWNlJywgJ3ZpcnRpby1ibGstcGNpLGRyaXZlPWhkMCcpDQo+ICsgICAgICAgIHNlbGYu
-dm0uYWRkX2FyZ3MoJy1kZXZpY2UnLCAndmlydGlvLTlwLWRldmljZSxmc2Rldj1zaHIwLG1v
-dW50X3RhZz1zaHIwJykNCj4gKyAgICAgICAgc2VsZi52bS5hZGRfYXJncygnLWZzZGV2Jywg
-Zidsb2NhbCxzZWN1cml0eV9tb2RlbD1ub25lLHBhdGg9e3JtZV9zdGFja30saWQ9c2hyMCcp
-DQo+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1kZXZpY2UnLCAndmlydGlvLW5ldC1w
-Y2ksbmV0ZGV2PW5ldDAnKQ0KPiArICAgICAgICBzZWxmLnZtLmFkZF9hcmdzKCctbmV0ZGV2
-JywgJ3VzZXIsaWQ9bmV0MCcpDQo+ICsgICAgICAgIHNlbGYudm0uYWRkX2FyZ3MoJy1hcHBl
-bmQnLCAncm9vdD0vZGV2L3ZkYScpDQo+ICsNCj4gKyAgICAgICAgc2VsZi52bS5sYXVuY2go
-KQ0KPiArICAgICAgICAjIFdhaXQgZm9yIGhvc3QgVk0gYm9vdCB0byBjb21wbGV0ZS4NCj4g
-KyAgICAgICAgd2FpdF9mb3JfY29uc29sZV9wYXR0ZXJuKHNlbGYsICdXZWxjb21lIHRvIEJ1
-aWxkcm9vdCcpDQo+ICsgICAgICAgIGV4ZWNfY29tbWFuZF9hbmRfd2FpdF9mb3JfcGF0dGVy
-bihzZWxmLCAncm9vdCcsICcjJykNCj4gKw0KPiArICAgICAgICB0ZXN0X3JlYWxtc19ndWVz
-dChzZWxmKQ0KPiArDQo+ICtpZiBfX25hbWVfXyA9PSAnX19tYWluX18nOg0KPiArICAgIFFl
-bXVTeXN0ZW1UZXN0Lm1haW4oKQ0KDQpJdCBuZWVkZWQgYW5vdGhlciBmaXggd2l0aCB0aGUg
-cWVtdV90ZXN0IGNoYW5nZXMsIHNvIHRoZXJlIGlzIGEgdjY6DQpodHRwczovL2xvcmUua2Vy
-bmVsLm9yZy9xZW11LWRldmVsLzIwMjQxMjIwMTY1MjEyLjM2NTM0OTUtMS1waWVycmljay5i
-b3V2aWVyQGxpbmFyby5vcmcvVC8jdQ0K
+I think it is acceptable policy to not test against older macOS
+versions, although I want to point out that a significant population
+of macOS users are still on macOS 11-13. It is bad practice to just
+crash when a function is not found. This is why the compiler throws a
+warning asking you to explicitly add availability guards. If we were
+to ever treat warnings more strictly, this would be an issue. If we
+consider older hosts unsupported, we can just test these changes on
+newer macOS, confirm that it doesn't cause any regression, and make no
+promises on what happens on older macOS.
+
+On Mon, Dec 23, 2024 at 3:31=E2=80=AFAM Phil Dennis-Jordan <lists@philjorda=
+n.eu> wrote:
+>
+> QEMU has a policy of only supporting macOS host versions for 2 years, see=
+ docs/about/build-platforms.rst. So you'll probably not be able to get this=
+ upstreamed as only macOS 14 and 15 are now supported. (I'm not a great fan=
+ of this policy personally, but I guess it makes CI etc easier to handle.)
+>
+> On Mon, 23 Dec 2024 at 05:11, Joelle van Dyne <j@getutm.app> wrote:
+>>
+>> IPA size queries were introduced in macOS 13. When QEMU is built targeti=
+ng
+>> a lower version, the compile will fail. If targeting a higher version an=
+d
+>> the binary is executed on an older version, QEMU will crash. This will
+>> restore the behaviour before IPA max size querying was added which means
+>> VMs with 64+ GB of RAM will not work if running on < macOS 13.
+>>
+>> Signed-off-by: Joelle van Dyne <j@getutm.app>
+>> ---
+>>  target/arm/hvf/hvf.c | 55 ++++++++++++++++++++++++++++----------------
+>>  1 file changed, 35 insertions(+), 20 deletions(-)
+>>
+>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>> index 0afd96018e..da60476dbc 100644
+>> --- a/target/arm/hvf/hvf.c
+>> +++ b/target/arm/hvf/hvf.c
+>> @@ -897,7 +897,9 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPU=
+Features *ahcf)
+>>      r |=3D hv_vcpu_get_sys_reg(fd, HV_SYS_REG_MIDR_EL1, &ahcf->midr);
+>>      r |=3D hv_vcpu_destroy(fd);
+>>
+>> -    clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar.id_aa64mmfr0);
+>> +    if (__builtin_available(macOS 13.0, *)) {
+>> +        clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar.id_aa64mmfr0)=
+;
+>> +    }
+>>
+>>      ahcf->isar =3D host_isar;
+>>
+>> @@ -923,26 +925,34 @@ static bool hvf_arm_get_host_cpu_features(ARMHostC=
+PUFeatures *ahcf)
+>>
+>>  uint32_t hvf_arm_get_default_ipa_bit_size(void)
+>>  {
+>> -    uint32_t default_ipa_size;
+>> -    hv_return_t ret =3D hv_vm_config_get_default_ipa_size(&default_ipa_=
+size);
+>> -    assert_hvf_ok(ret);
+>> +    if (__builtin_available(macOS 13.0, *)) {
+>> +        uint32_t default_ipa_size;
+>> +        hv_return_t ret =3D hv_vm_config_get_default_ipa_size(&default_=
+ipa_size);
+>> +        assert_hvf_ok(ret);
+>>
+>> -    return default_ipa_size;
+>> +        return default_ipa_size;
+>> +    } else {
+>> +        return 0;
+>> +    }
+>>  }
+>>
+>>  uint32_t hvf_arm_get_max_ipa_bit_size(void)
+>>  {
+>> -    uint32_t max_ipa_size;
+>> -    hv_return_t ret =3D hv_vm_config_get_max_ipa_size(&max_ipa_size);
+>> -    assert_hvf_ok(ret);
+>> +    if (__builtin_available(macOS 13.0, *)) {
+>> +        uint32_t max_ipa_size;
+>> +        hv_return_t ret =3D hv_vm_config_get_max_ipa_size(&max_ipa_size=
+);
+>> +        assert_hvf_ok(ret);
+>>
+>> -    /*
+>> -     * We clamp any IPA size we want to back the VM with to a valid PAR=
+ange
+>> -     * value so the guest doesn't try and map memory outside of the val=
+id range.
+>> -     * This logic just clamps the passed in IPA bit size to the first v=
+alid
+>> -     * PARange value <=3D to it.
+>> -     */
+>> -    return round_down_to_parange_bit_size(max_ipa_size);
+>> +        /*
+>> +         * We clamp any IPA size we want to back the VM with to a valid=
+ PARange
+>> +         * value so the guest doesn't try and map memory outside of the=
+ valid
+>> +         * range. This logic just clamps the passed in IPA bit size to =
+the first
+>> +         * valid PARange value <=3D to it.
+>> +         */
+>> +        return round_down_to_parange_bit_size(max_ipa_size);
+>> +    } else {
+>> +        return 0;
+>> +    }
+>>  }
+>>
+>>  void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
+>> @@ -973,13 +983,18 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
+>>  hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
+>>  {
+>>      hv_return_t ret;
+>> -    hv_vm_config_t config =3D hv_vm_config_create();
+>> +    hv_vm_config_t config;
+>>
+>> -    ret =3D hv_vm_config_set_ipa_size(config, pa_range);
+>> -    if (ret !=3D HV_SUCCESS) {
+>> -        goto cleanup;
+>> +    if (__builtin_available(macOS 13.0, *)) {
+>> +        config =3D hv_vm_config_create();
+>> +        ret =3D hv_vm_config_set_ipa_size(config, pa_range);
+>> +        if (ret !=3D HV_SUCCESS) {
+>> +            goto cleanup;
+>> +        }
+>> +        chosen_ipa_bit_size =3D pa_range;
+>> +    } else {
+>> +        config =3D NULL;
+>>      }
+>> -    chosen_ipa_bit_size =3D pa_range;
+>>
+>>      ret =3D hv_vm_create(config);
+>>
+>> --
+>> 2.41.0
+>>
+>>

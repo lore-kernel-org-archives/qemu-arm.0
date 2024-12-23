@@ -1,242 +1,227 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp3039231njk;
-        Sat, 21 Dec 2024 06:45:07 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWlpXFFmn8wO6JEXLkoSIXKBjPiuw7UXZ/lgDvuktXwn4yxJhJR3GCdCSfSvxkV85+eJ1tV3K3vd+Z5GQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFyqr+pwgZv/LibRHDXUVfh8xhG83WmP1HIZnWz6m1tK/FJmZwwWuslPXwmPEWNKOI16IrN
-X-Received: by 2002:a05:6808:3c89:b0:3eb:75b2:1e1d with SMTP id 5614622812f47-3ed88f0657fmr3775818b6e.12.1734792307635;
-        Sat, 21 Dec 2024 06:45:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1734792307; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp3821494njk;
+        Sun, 22 Dec 2024 20:10:30 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWXEVo6dSB5tdcB980A7H26r1gvKKksyCExCTZ7oKa6pZJBsxhe4OZog1tSZNtFdyDVkXZGhRMnySZttA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEjt9Y0N4rDjR4g+hATBS19+yphVk7gDIOjs6+gRLtRvWHy96gE05qipHa1rltd2XDIaTn0
+X-Received: by 2002:a05:622a:1a23:b0:467:61c1:df38 with SMTP id d75a77b69052e-46a4b1135fcmr206898591cf.12.1734927030470;
+        Sun, 22 Dec 2024 20:10:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1734927030; cv=none;
         d=google.com; s=arc-20240605;
-        b=OozneB7su9GaFYaQVoSkxe9Ti4oibM6awzrrraGm9MV8442gG9zsrBqfgrwUOuopgr
-         kzvu0YDpF3EOOLM15/7E7qSH3pNq+DkdgZ2KfmNlIM+SadnAKgt/ZSdSYyRppj1kkMMS
-         hP+rJd2jit7Av8wPai4JSDBMkyf59xeA5NaWuAmgyDyOpIvrDXs909M25GYLqD2S0/dD
-         +pUJZv8QPqexsoI8BNFYz4dewlJysM3dcH1dZ3msDls3GIXwGf2WOw7CUKMml/akled6
-         Gz4excjPcM4G8t+/ROEFD1smYx2bcgeCCye5NxITF9bxaEs/orvUPazdBKnEzJ9ufEUy
-         4pMg==
+        b=hLNHnEYMAks0USM7mVzZtxEr86Vf68CZ8pYKPFlHds6rZk+xMPCWZkwtdopAmJJeDN
+         q50A/gmz4Z7h9M5NlTrhTjkzzYYoXdg9SnUX9LtbEnwz4fA6Ego6VUWaSaTX+JKOW+su
+         YFn2vVq6ileGzppWlSb80FJ9ftyt6gxQLWG7ykgAfTjr1GC5PxBHbCfQt+2kO3neGWLx
+         FDVLn+N6FBRlF8cAMbUIKohpizRHN2jC1bcwz27iZ8qdrN/UXqW+gINwn1aoC2/jccHb
+         1RCEifb92YpL6EwH3oNsUeA5dVwr5KB7jbDB6DpnLkwje6JEd1PO4FpIBoil26FAlTOC
+         aczg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:subject:cc:to:from:message-id:date:dkim-signature;
-        bh=71Y6SWJocUYbf0kYTtLoB9PU4A+6mPfp7PCzYlHKD/M=;
-        fh=lI7Iko9g2aHKLBt1gNdWHXeaCjlEDenZquMsaPC+VK8=;
-        b=PClFnsPjqdeBFHtqwsvSGrtDrl/9kEDwtliMxbkOV4Gov8GTr/BpTkor44eEQhP/gA
-         hjI5zHih8e6a4UIPzfDBg3wRA8B7/hU4xMuHSNhJnu26zV+0Ezk+KnVw4po7vt5qm4QJ
-         El9LLe4gZQ0akvDI1H+8SBffLyJ3IoMk9ehrtpZoeao6I98iBnZgeRLX5wHn92/bIOtD
-         Xn4eJFDAuzeNHZNeSIr/cjrgQXsx0f46rucLgcgAQnyfy4pXTnh5TAA6UCAgrbEM41t3
-         M7049exIDf8yql9G/Y3/xvhcU0W4oxa43hA96+V5YXcgfJ5CrfZq//KMUcDruVkwoiYF
-         Wk5A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from;
+        bh=KQguSZN8sSKDeZZrzzB2zGOKmo+eCQfE3oCj7Gt4Jdw=;
+        fh=oo7dzRE2DDou0LQPKSKPDfcTkjDaDSka8xVPecONyZI=;
+        b=e2zRuK4trNOmQi97JiksOpjz88s0R6kl29zhJs/oXoSuO+ENRsRFqwvLmOF4SVIkfG
+         Kge2/FA6U/e+hcNFRmbJ6r4IpDBuEuJi/k4Q7eyRkU25rrbeYUTnkpgf98ajZcmWQ9Iw
+         P8IFabkOVw3tpUUoE2hZU/e5rzv2cQqrA4rp09tmeIiN1oA0HyOHsSTxctZO3Gyzz3Ic
+         8hvl4iKlOUC8zOVGQZuinEYk975Lw7ayg1MwuyKCszp8OQWaCTM69t27YWi30UIDSj5P
+         cT9JhQTc/7cVbUrQXL6pR4qmnUjpuBh0/CLw1ypwMsQ/64dhyPcdVp4OZ5Oy6h2WCKgN
+         athg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=qIcKCcyr;
-       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <maz@kernel.org>
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [2604:1380:4641:c500::1])
-        by mx.google.com with ESMTPS id 5614622812f47-3ece247d966si3966804b6e.97.2024.12.21.06.45.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 21 Dec 2024 06:45:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of maz@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) client-ip=2604:1380:4641:c500::1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=getutm.app
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-46a3eb9a62asi104485631cf.230.2024.12.22.20.10.30
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sun, 22 Dec 2024 20:10:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=qIcKCcyr;
-       spf=pass (google.com: domain of maz@kernel.org designates 2604:1380:4641:c500::1 as permitted sender) smtp.mailfrom=maz@kernel.org;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by dfw.source.kernel.org (Postfix) with ESMTP id 6DA6E5C0501;
-	Sat, 21 Dec 2024 14:44:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFC18C4CECE;
-	Sat, 21 Dec 2024 14:45:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1734792307;
-	bh=RTxtRLIzNICSkFSsFrtMnneEz9Nx55H3GX4PCepvgTI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=qIcKCcyrV5Xt9uX6Ze4j3ef5rc4a7tjlNFm1GJAlY06VlFE98bqA3yId7jM2NHJdf
-	 vbpDcB4HWTkYkIxwZS24LnpRHo8t5dChFIz+pkF4A6llYH6tzkJz0AlfdEpu3Sw3M5
-	 FMx9Z79DjLqI9IlY7HfAVVV5s+sx8IIH+QIsBjiOJFe4d2xLBPZGHiicC+kc4nrxDX
-	 YWMG9VqLmQ3bZhPmmA47+bmCoT+eP18TrHUjMNbZdDRzTx3IpLGHvHCPJ4dQVYOx3+
-	 neQRnUhoN99zp/cMUCmQrlkX3zLoJpyqdctyo6lfoDOdQVgIipksnXcTNC71tro4cK
-	 NVfiHCqxiLTOQ==
-Received: from sofa.misterjones.org ([185.219.108.64] helo=goblin-girl.misterjones.org)
-	by disco-boy.misterjones.org with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.95)
-	(envelope-from <maz@kernel.org>)
-	id 1tP0j2-005wV5-Ir;
-	Sat, 21 Dec 2024 14:45:04 +0000
-Date: Sat, 21 Dec 2024 14:45:03 +0000
-Message-ID: <86o715p028.wl-maz@kernel.org>
-From: Marc Zyngier <maz@kernel.org>
-To: Kashyap Chamarthy <kchamart@redhat.com>
-Cc: Eric Auger <eric.auger@redhat.com>,	Cornelia Huck <cohuck@redhat.com>,
-	Daniel =?UTF-8?B?IlAuIEJlcnJhbmfDqSI=?= <berrange@redhat.com>,
-	eric.auger.pro@gmail.com,	qemu-devel@nongnu.org,	qemu-arm@nongnu.org,
-	kvmarm@lists.linux.dev,	peter.maydell@linaro.org,
-	richard.henderson@linaro.org,	alex.bennee@linaro.org,
-	oliver.upton@linux.dev,	sebott@redhat.com,
-	shameerali.kolothum.thodi@huawei.com,	armbru@redhat.com,
-	abologna@redhat.com,	jdenemar@redhat.com,	shahuang@redhat.com,
-	mark.rutland@arm.com,	philmd@linaro.org,	pbonzini@redhat.com
-Subject: Re: [PATCH RFCv2 00/20] kvm/arm: Introduce a customizable aarch64 KVM host model
-In-Reply-To: <Z2Vak-hbCMaxm-JJ@gezellig>
-References: <20241206112213.88394-1-cohuck@redhat.com>
-	<edc12140-6345-4868-938d-c80c4d2c2004@redhat.com>
-	<Z1qoa8yXscTSAJ9e@redhat.com>
-	<8734it1bv6.fsf@redhat.com>
-	<1fea79e4-7a31-4592-8495-7b18cd82d02b@redhat.com>
-	<Z2QE9AqZnpGM5sWD@gezellig>
-	<8634ijrh8q.wl-maz@kernel.org>
-	<Z2Q2rWj9cV0W_XVq@gezellig>
-	<86zfkrptmj.wl-maz@kernel.org>
-	<Z2Vak-hbCMaxm-JJ@gezellig>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM-LB/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL-LB/10.8 EasyPG/1.0.0 Emacs/29.4
- (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-SA-Exim-Connect-IP: 185.219.108.64
-X-SA-Exim-Rcpt-To: kchamart@redhat.com, eric.auger@redhat.com, cohuck@redhat.com, berrange@redhat.com, eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org, richard.henderson@linaro.org, alex.bennee@linaro.org, oliver.upton@linux.dev, sebott@redhat.com, shameerali.kolothum.thodi@huawei.com, armbru@redhat.com, abologna@redhat.com, jdenemar@redhat.com, shahuang@redhat.com, mark.rutland@arm.com, philmd@linaro.org, pbonzini@redhat.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org); SAEximRunCond expanded to false
-X-TUID: EX5KZNaUK/Ru
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=getutm.app
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tPZlV-0000Ht-KY; Sun, 22 Dec 2024 23:09:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1tPZlT-0000H4-Hh; Sun, 22 Dec 2024 23:09:55 -0500
+Received: from mail-pg1-f171.google.com ([209.85.215.171])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <osy86dev@gmail.com>)
+ id 1tPZlR-0001Pa-Vl; Sun, 22 Dec 2024 23:09:55 -0500
+Received: by mail-pg1-f171.google.com with SMTP id
+ 41be03b00d2f7-889e8847d56so483817a12.1; 
+ Sun, 22 Dec 2024 20:09:53 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734926992; x=1735531792;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=KQguSZN8sSKDeZZrzzB2zGOKmo+eCQfE3oCj7Gt4Jdw=;
+ b=OmtY6pdTbN6nD35MH3rchyJFAOQS43k9alA4OHB2zmbG5mHxpt61W1Qw+xb9RON5JN
+ Ak3kIYrLHdEaqksJMNLxYAE9vcSgeAW9xsA4+ooGUbok+MJtOxcTtS2zNg56vvjthkqY
+ q9K/6PhXyute0eYGlzpVPd/lmDda+7zIVXlVYQVwMamMC8tsoH7+Ik1xVv/p285Z2LQg
+ 6MsBtTml9K/ixrClGvrZM2L3HB5Zuzmc5vlnHYNEYd/GxllXVG33U9EAIhEs1GvjNVv5
+ Fs4C9tBZRSkRPrtVl0X/yIW3WTXGtcem9yADf3s8AoCHSj/74T1XLgySWrNHhATddfWe
+ aw3Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWzZxeK42AsBmShLRwX2bxeWShhJzCURcloq9pZMuyQGWaQxzHMuXs5gB7Rzj4nxxsdsXTnfkHiaw==@nongnu.org
+X-Gm-Message-State: AOJu0YzC8dusblwk539D2NWeQ1ZajLVHiBk1LfP0wB4RixfTdIGt1LDF
+ iS3RhsNh1951yXQVtryb8KA+xJdP39CAo4jCCceWpGd+IQ0kySxXjsV++7Id
+X-Gm-Gg: ASbGncv90Q5OfRs7JnnZ5XExIvU/HUtEbqLge7acJxQyi6vPPKjANDiKzRmgkbXnFPh
+ fAUZLlHxyswD/tX6zNlM+uagpTvmFvyXQlKveth/TN2Sm+FwMsTB7H2sESkDJJfEl2rvm/s2GXO
+ sCLm2HMkIl8lhgvWtg3E6rr6rGK0kRC5Ly/0ZlAX5sSTt1WWnRVhi1YxRJ6+ymACXMxqCWXwgOA
+ 7qmb+EmEaDwomv+jtwj0Ff4C9bXFW+YO9gRuy4+gPcmAb+VCc68yYb+Z1zgt9GetG25+oTye4VD
+ VuiOLClQMQ==
+X-Received: by 2002:a17:90b:2b83:b0:2ef:9dbc:38d1 with SMTP id
+ 98e67ed59e1d1-2f4435ad5e6mr21538981a91.5.1734926991675; 
+ Sun, 22 Dec 2024 20:09:51 -0800 (PST)
+Received: from localhost.localdomain ([2601:642:4c02:c8b4:911f:687c:35b2:bc4e])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-219dc9f4429sm63921115ad.173.2024.12.22.20.09.50
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Sun, 22 Dec 2024 20:09:51 -0800 (PST)
+From: Joelle van Dyne <j@getutm.app>
+To: qemu-devel@nongnu.org
+Cc: Joelle van Dyne <j@getutm.app>, Alexander Graf <agraf@csgraf.de>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH 2/2] hvf: arm: disable unavailable features on older macOS
+Date: Sun, 22 Dec 2024 20:09:45 -0800
+Message-ID: <20241223040945.82871-3-j@getutm.app>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20241223040945.82871-1-j@getutm.app>
+References: <20241223040945.82871-1-j@getutm.app>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=209.85.215.171; envelope-from=osy86dev@gmail.com;
+ helo=mail-pg1-f171.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.167, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: V/F0iClbk7vS
 
-On Fri, 20 Dec 2024 11:52:51 +0000,
-Kashyap Chamarthy <kchamart@redhat.com> wrote:
->=20
-> On Thu, Dec 19, 2024 at 03:41:56PM +0000, Marc Zyngier wrote:
-> > On Thu, 19 Dec 2024 15:07:25 +0000,
-> > Kashyap Chamarthy <kchamart@redhat.com> wrote:
-> > >=20
-> > > On Thu, Dec 19, 2024 at 12:26:29PM +0000, Marc Zyngier wrote:
-> > > > On Thu, 19 Dec 2024 11:35:16 +0000,
-> > > > Kashyap Chamarthy <kchamart@redhat.com> wrote:
->=20
-> [...]
->=20
-> > > > You can't rely on userspace for security, that'd be completely
-> > > > ludicrous.
-> > >=20
-> > > As Dan Berrang=C3=A9 points out, it's the bog-standard way QEMU deals=
- with
-> > > some of the CPU-related issues on x86 today.  See this "important CPU
-> > > flags"[2] section in the QEMU docs.
-> >=20
-> > I had a look, and we do things quite differently. For example, the
-> > spec-ctrl equivalent in implemented in FW and in KVM, and is exposed
-> > by default if the HW is vulnerable. Userspace could hide that the
-> > mitigation is there, but that's the extent of the configurability.
->=20
-> Noted.  As Dan says, as long as QEMU can toggle the feature on/off, then
-> that might be sufficient in the context of migratability.
->=20
-> [...]
->=20
-> > > To reply to your other question on this thread[3] about "which ABI?" =
- I
-> > > think Dan is talking about the *guest* ABI: the virtual "chipset" that
-> > > is exposed to a guest (e.g. PCI(e) topology, ACPI tables, CPU model,
-> > > etc).  As I understand it, this "guest ABI" should remain predictable,
-> > > regardless of:
-> > >=20
-> > >   - whether you're updating KVM, QEMU, or the underlying physical
-> > >     hardware itself; or
-> > >   - if the guest is migrated, live or offline
-> > >=20
-> > > (As you might know, QEMU's "machine types" concept allows to create a
-> > > stable guest ABI.)
-> >=20
-> > All of this is under control of QEMU, *except* for the "maximum" of
-> > the architectural features exposed to the guest. All you can do is
-> > *downgrade* from there, and only to a limited extent.
-> >=20
-> > That, in turn has a direct impact on what you call the "CPU model",
-> > which for the ARM architecture really doesn't exist. All we have is a
-> > bag of discrete features, with intricate dependencies between them.
->=20
-> I see; thanks for this explanation.  Your last sentence above is the
-> shortest summary of the CPU features situation on ARM I've ever read so
-> far.=20
->=20
-> So, I infer this from what you're saying (do correct if it's wrong):
->=20
->   =E2=80=A2 Currently it is impractical (not feasible?) to pull together a
->     minimal-and-usable set of CPU features + their dependencies on ARM
->     to come up with a "CPU model" that can work across a reasonable set
->     of hardware.
+IPA size queries were introduced in macOS 13. When QEMU is built targeting
+a lower version, the compile will fail. If targeting a higher version and
+the binary is executed on an older version, QEMU will crash. This will
+restore the behaviour before IPA max size querying was added which means
+VMs with 64+ GB of RAM will not work if running on < macOS 13.
 
-It isn't quite that. It *is* technically possible, and KVM does give
-you the tools you need for that. In practice, the diversity of the
-ecosystem is so huge that you can only rely on some very basic stuff
-unless the implementations are already very close. And that "small
-details" such as the timer frequency are strictly identical.
+Signed-off-by: Joelle van Dyne <j@getutm.app>
+---
+ target/arm/hvf/hvf.c | 55 ++++++++++++++++++++++++++++----------------
+ 1 file changed, 35 insertions(+), 20 deletions(-)
 
->=20
->   =E2=80=A2 If the above is true, then the ability to toggle CPU features=
- on and
->     off might become even more important for QEMU =E2=80=94 if it wants t=
-o be
->     able to support live migration across mixed set of hardware on ARM.  =
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index 0afd96018e..da60476dbc 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -897,7 +897,9 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     r |= hv_vcpu_get_sys_reg(fd, HV_SYS_REG_MIDR_EL1, &ahcf->midr);
+     r |= hv_vcpu_destroy(fd);
+ 
+-    clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar.id_aa64mmfr0);
++    if (__builtin_available(macOS 13.0, *)) {
++        clamp_id_aa64mmfr0_parange_to_ipa_size(&host_isar.id_aa64mmfr0);
++    }
+ 
+     ahcf->isar = host_isar;
+ 
+@@ -923,26 +925,34 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ 
+ uint32_t hvf_arm_get_default_ipa_bit_size(void)
+ {
+-    uint32_t default_ipa_size;
+-    hv_return_t ret = hv_vm_config_get_default_ipa_size(&default_ipa_size);
+-    assert_hvf_ok(ret);
++    if (__builtin_available(macOS 13.0, *)) {
++        uint32_t default_ipa_size;
++        hv_return_t ret = hv_vm_config_get_default_ipa_size(&default_ipa_size);
++        assert_hvf_ok(ret);
+ 
+-    return default_ipa_size;
++        return default_ipa_size;
++    } else {
++        return 0;
++    }
+ }
+ 
+ uint32_t hvf_arm_get_max_ipa_bit_size(void)
+ {
+-    uint32_t max_ipa_size;
+-    hv_return_t ret = hv_vm_config_get_max_ipa_size(&max_ipa_size);
+-    assert_hvf_ok(ret);
++    if (__builtin_available(macOS 13.0, *)) {
++        uint32_t max_ipa_size;
++        hv_return_t ret = hv_vm_config_get_max_ipa_size(&max_ipa_size);
++        assert_hvf_ok(ret);
+ 
+-    /*
+-     * We clamp any IPA size we want to back the VM with to a valid PARange
+-     * value so the guest doesn't try and map memory outside of the valid range.
+-     * This logic just clamps the passed in IPA bit size to the first valid
+-     * PARange value <= to it.
+-     */
+-    return round_down_to_parange_bit_size(max_ipa_size);
++        /*
++         * We clamp any IPA size we want to back the VM with to a valid PARange
++         * value so the guest doesn't try and map memory outside of the valid
++         * range. This logic just clamps the passed in IPA bit size to the first
++         * valid PARange value <= to it.
++         */
++        return round_down_to_parange_bit_size(max_ipa_size);
++    } else {
++        return 0;
++    }
+ }
+ 
+ void hvf_arm_set_cpu_features_from_host(ARMCPU *cpu)
+@@ -973,13 +983,18 @@ void hvf_arch_vcpu_destroy(CPUState *cpu)
+ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
+ {
+     hv_return_t ret;
+-    hv_vm_config_t config = hv_vm_config_create();
++    hv_vm_config_t config;
+ 
+-    ret = hv_vm_config_set_ipa_size(config, pa_range);
+-    if (ret != HV_SUCCESS) {
+-        goto cleanup;
++    if (__builtin_available(macOS 13.0, *)) {
++        config = hv_vm_config_create();
++        ret = hv_vm_config_set_ipa_size(config, pa_range);
++        if (ret != HV_SUCCESS) {
++            goto cleanup;
++        }
++        chosen_ipa_bit_size = pa_range;
++    } else {
++        config = NULL;
+     }
+-    chosen_ipa_bit_size = pa_range;
+ 
+     ret = hv_vm_create(config);
+ 
+-- 
+2.41.0
 
-
-Turning CPU features off is not always possible. Hiding them is
-generally possible, with a number of exceptions. We try our best to
-provide both, but it's... complicated.
-
-[...]
-
-> Related tangent on CPU feature discoverability on ARM:
->=20
-> Speaking of "Neoverse-N1", looking at a system that I have access to,
-> the `lscpu` output does not say anything about who the integrator is; it
-> only says:
->=20
->     ...
->     Vendor ID:                ARM
->     Model name:             Neoverse-N1
->     ...
->=20
-> I realize, `lscpu` displays only whatever the kernel knows.  Nothing in
-> `dmidecode` either.
-
-The kernel does not know anything about the "Neoverse-N1" string. It
-can match some MIDR_EL1 values for errata workaround purposes, but
-doesn't gives two hoots about a human readable string.
-
-Every other year, we get asked to add a full database of strings in
-the kernel. The answer is a simple, polite, and final "no way". This
-serves no purpose at all. lscpu does have that database, and that's
-the right place to do it.
-
-When it comes to integration, the firmware can optionally report some
-information, which is the EL3 version of a commercial break (see the
-SOC_ID stuff). This isn't wildly deployed, thankfully.
-
-> Also, it looks like there's no equivalent of a "CPUID" instruction (I
-> realize it is x86-specific) on ARM.  Although, I came across a Google
-> Git repo that seems to implement a bespoke, "aarch64_cpuid".  From a
-> what I see, it seems to fetch the "Main ID Register" (MIDR_EL1) - I
-> don't know enough about it to understand its implications:
->=20
->     https://github.com/google/cpu_features/blob/main/src/impl_aarch64_cpu=
-id.c
-
-MIDR_EL1 doesn't give you much, and you cannot assume anything about
-the the feature set from it. Linux already allows you to inspect the
-ID registers from userspace (by trapping, emulating, and sanitising
-the result). That's the only reliable source of information.
-
->
-> > That's why I don't see CPU models as a viable thing in terms of ABI.
-> > They are an approximation of what you could have, but the ABI is
-> > elsewhere.
->=20
-> Hmm, this is "significant new information" for me.  If CPU models can't
-> be part of the guest ABI on ARM, then the whole "migratability across
-> heterogenous hardware" on QEMU requires deeper thinking.
-
-As I said all along, the only source of truth is the set of ID
-registers. Nothing else. You can build a "model" on top of that, but
-not the other way around.
-
-Thanks,
-
-	M.
-
---=20
-Without deviation from the norm, progress is not possible.

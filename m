@@ -1,40 +1,40 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp4561574njk;
-        Tue, 24 Dec 2024 00:42:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWmhVab3yi7ZZ5RRT5/Ln40KFz1ubud1Tw4lDV74a/fs9lBc3IwdhiiidYWdOxKTK8hA+x2wgLvnyqd/g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFAtegttwa567Mylehgp/vLP5jboci6j6Dag45ezLl+NI1kRTMdqEZL7isxyEqWRDHK7g/X
-X-Received: by 2002:ad4:576e:0:b0:6d8:aea3:e27 with SMTP id 6a1803df08f44-6dd233a7469mr239961376d6.44.1735029729740;
-        Tue, 24 Dec 2024 00:42:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735029729; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp4562480njk;
+        Tue, 24 Dec 2024 00:45:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWorLB+8u1je7pBMqNCWDsDm9X2b2VmVFwf13uAJT885Pz+q5Jagd293kDSfZbk4RU9UJkUQ8wx6QpVEQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEsC8ngHZscomS1tdb+/agHlSiXjVxWN1onIejPpQyFHVv+R/KurGebZbZ8C/WXfZicwPVM
+X-Received: by 2002:a05:6214:21ab:b0:6d8:9b7b:14c9 with SMTP id 6a1803df08f44-6dd2330924amr224014796d6.8.1735029908323;
+        Tue, 24 Dec 2024 00:45:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735029908; cv=none;
         d=google.com; s=arc-20240605;
-        b=aVA/o1XilrD37t3oOJKoB3VKuJIKk8Uhx5FfIz163KdVaqr6ILi+XSDsoHmyQA+tzn
-         RdNarQxENn6DWRV31JTvM9PIMt2EcuHRlTgtJB1EfbyxKMVWs+/wBAdPQB7X5qR/PW4t
-         QXuevwUxPAepHQxlNMGNIIv+Zsba8c5kC0qiPV+z4Rd3oCB6ldsAzKIzvvcUa8DZh0lY
-         L+QquN4N7rLATuwzr3Puft+mihK+nWjq+ZxWbLnEdJ/8o/lKg4jLWs1pODt+KiZiy7Z0
-         9OtxgMIkcz2NOOMVtO+twJpuVShRGIycr9+oykP9sZg/aPKoKJxtFvHniU9uxl+pNzuH
-         OSeA==
+        b=CTY27HHLrES8KTflZwNyvE7meKF3mqXDjREuEd1qWqpZzOGwV+0R8Fx8FxW7pqH4ye
+         85VmqQ+M/YJa0VcbRAdeuy73fODd/IPryHezuPZ9HQVJNMqAVaYZzC+Qz2XkAcqYhUbC
+         qacMpMPwi/2tvqD5V8KX6l19BeGiBTvadCOGW/p7CXeGtaYTyeu6/q8D9HIB31wDKgzA
+         L8Vw7y1mEil8WRwNNSbcy7RWa63olw/TdgF3XIlboNg9YvFVYX9tjIyOY2q0LlwRJ0CF
+         871U5Jcrq2LQsJmmjvfzr8VEOoiO4fQiqq90iELiQeCDgaFCo7f6wsxjuCSQoqgqwHuh
+         w95Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:subject:cc:to:date;
-        bh=ATFBxEi1bDgrvGpYKjiDrKEo7doyQF+K5DvRmGgYxyI=;
+        bh=3cSKdwkPIks3GzGxFu9yCv/HoZj3pGSjo9OvESJdxRU=;
         fh=Y17pDK/6T6Pt7lFPimIJaBJOhChisJmNKNRWTthjdS8=;
-        b=fx+j45ENNxwoLUxTdA+tb0qayCj00JCfnXNG4Zhb1GTlvotbSH+7Yb2tXYj8DxnViK
-         byJ9pqzinQ4WHEjvgSG+8unrhoX7UqjCqmZpG1hQFvDiIJrMR/zWW/YCH5ndxGuXas+b
-         DKkHD3NNjphOeKg2zbEWQV+ucsKkLi1YdItNIMtT5jl7yMspXzBOGEHWo9Vos5LbYo01
-         adp18v/Dxw4IV/4yfV8wJ3deimEwKWga5wUlH4UTuacKKLwLi844TwRnKNzpqg7wydPe
-         G2ipHPkUqkjcstleFHVXHAbbE1FQ2Qank9DPmkIW9voT9sAkZPvKQ+gr8B/56FF2owAs
-         p/+Q==;
+        b=dq+7jlNwjnMrHN42OD0nnmVoXRT7oSn1SiMs+wPvWRFDL0XCf/9iXYxi+eMNi0iAOt
+         FGpQ12TH6XrWggUAPxeWcF9lR3wsjJdxLFLbrOeN9xTYb5KPbX5HuF+rDinulQis+rUo
+         7ls3SStJcJgvGY46KXUBmTjp6dtZRJ4mQSGcnk4BrBmZk23v5lIJJ5ENMmR1LflUJrHS
+         5hygMhkIvnaKx8JnZ13xtTIrX4iY/z3GFyNnOrKWfNXF2C3BmJduYBbqqufwqpFkcB4A
+         KOUt0S8RCeOIgj+i79RRiBoI8Is7EgLCGDkmNDXRTzPh1xhh3IRX74Yk3/P8IV+ZiHNy
+         Sd1Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dd18136e8bsi137060156d6.118.2024.12.24.00.42.09
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd1834e0besi128876016d6.380.2024.12.24.00.45.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Dec 2024 00:42:09 -0800 (PST)
+        Tue, 24 Dec 2024 00:45:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -42,26 +42,26 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tQ0UD-0000R8-3X; Tue, 24 Dec 2024 03:41:53 -0500
+	id 1tQ0X4-0001Oh-Nu; Tue, 24 Dec 2024 03:44:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1tQ0UA-0000QN-M8; Tue, 24 Dec 2024 03:41:50 -0500
+ id 1tQ0X3-0001OU-Gy; Tue, 24 Dec 2024 03:44:49 -0500
 Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alireza.sanaee@huawei.com>)
- id 1tQ0U8-0002qu-6S; Tue, 24 Dec 2024 03:41:50 -0500
+ id 1tQ0X2-000307-1W; Tue, 24 Dec 2024 03:44:49 -0500
 Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YHSyD3S3Zz67YpK;
- Tue, 24 Dec 2024 16:40:20 +0800 (CST)
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YHT1w2YG6z6LD4K;
+ Tue, 24 Dec 2024 16:43:32 +0800 (CST)
 Received: from frapeml500003.china.huawei.com (unknown [7.182.85.28])
- by mail.maildlp.com (Postfix) with ESMTPS id 8977C1402DA;
- Tue, 24 Dec 2024 16:41:33 +0800 (CST)
+ by mail.maildlp.com (Postfix) with ESMTPS id 6B36E140520;
+ Tue, 24 Dec 2024 16:44:45 +0800 (CST)
 Received: from localhost (10.195.35.193) by frapeml500003.china.huawei.com
  (7.182.85.28) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 24 Dec
- 2024 09:41:32 +0100
-Date: Tue, 24 Dec 2024 08:41:27 +0000
+ 2024 09:44:44 +0100
+Date: Tue, 24 Dec 2024 08:44:39 +0000
 To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 CC: <linuxarm@huawei.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
  <zhao1.liu@intel.com>, <zhenyu.z.wang@intel.com>,
@@ -71,12 +71,13 @@ CC: <linuxarm@huawei.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
  <mtosatti@redhat.com>, <berrange@redhat.com>, <richard.henderson@linaro.org>, 
  <shameerali.kolothum.thodi@huawei.com>, <jiangkunkun@huawei.com>,
  <yangyicong@hisilicon.com>, <sarsanaee@gmail.com>
-Subject: Re: [PATCH v4 1/7] i386/cpu: add IsDefined flag to smp-cache property
-Message-ID: <20241224084127.00004d43@huawei.com>
-In-Reply-To: <20241223174818.000025c7@huawei.com>
+Subject: Re: [PATCH v4 6/7] tests/qtest/bios-table-test: testing new ARM
+ ACPI PPTT topology
+Message-ID: <20241224084439.00004112@huawei.com>
+In-Reply-To: <20241223181145.00003b06@huawei.com>
 References: <20241216175414.1953-1-alireza.sanaee@huawei.com>
- <20241216175414.1953-2-alireza.sanaee@huawei.com>
- <20241223174818.000025c7@huawei.com>
+ <20241216175414.1953-7-alireza.sanaee@huawei.com>
+ <20241223181145.00003b06@huawei.com>
 Organization: Huawei
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
 MIME-Version: 1.0
@@ -110,62 +111,51 @@ Reply-to:  Alireza Sanaee <alireza.sanaee@huawei.com>
 From:  Alireza Sanaee via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /tYD+Ggdj4ux
+X-TUID: 7r2b+qDErhib
 
-On Mon, 23 Dec 2024 17:48:18 +0000
+On Mon, 23 Dec 2024 18:11:45 +0000
 Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
 
-> On Mon, 16 Dec 2024 17:54:08 +0000
+> On Mon, 16 Dec 2024 17:54:13 +0000
 > Alireza Sanaee <alireza.sanaee@huawei.com> wrote:
 > 
-> > This commit adds IsDefined flag to the object and this helps in
-> > avoiding extra checks for every single layer of caches in both x86
-> > and ARM.
+> > Test new PPTT topolopy with cache representation.
 > > 
-> > There is already a discussion on mailing list to have this flag. A
-> > patch that enables this flag will follow later.
+> > Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+> > ---
+> >  tests/qtest/bios-tables-test.c | 6 +++++-
+> >  1 file changed, 5 insertions(+), 1 deletion(-)
 > > 
-> > Signed-off-by: Alireza Sanaee <alireza.sanaee@huawei.com>  
-> Makes sense.  Zhao Liu, is this something you plan to use in the x86
-> code?
-
-Hi Jonathan,
-
-Yes this one comes from Zhao Liu's new patch-set, thanks to him. I will
-have to send another version given that.
+> > diff --git a/tests/qtest/bios-tables-test.c
+> > b/tests/qtest/bios-tables-test.c index 36e5c0adde..0f72520664 100644
+> > --- a/tests/qtest/bios-tables-test.c
+> > +++ b/tests/qtest/bios-tables-test.c
+> > @@ -2019,7 +2019,11 @@ static void
+> > test_acpi_aarch64_virt_tcg_topology(void) .scan_len = 128ULL * 1024
+> > * 1024, };
+> >  
+> > -    test_acpi_one("-cpu cortex-a57 "
+> > +    test_acpi_one("-M
+> > virt,smp-cache.0.cache=l1i,smp-cache.0.topology=cluster,"
+> > +
+> > "smp-cache.1.cache=l1d,smp-cache.1.topology=cluster,"
+> > +
+> > "smp-cache.2.cache=l2,smp-cache.2.topology=cluster,"
+> > +
+> > "smp-cache.3.cache=l3,smp-cache.3.topology=cluster "
+> > +                  "-cpu cortex-a57 "  
+> Trivial but is there a reason the cpu must come after machine / -M
+> bits? If not I'd leave it on first line to reduce the churn in this
+> patch a little.
+Noted. Less churn.
 > 
-> Either way
+> Either way,
+> 
 > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 > 
-> > ---
-> >  hw/core/machine-smp.c | 2 ++
-> >  include/hw/boards.h   | 1 +
-> >  2 files changed, 3 insertions(+)
-> > 
-> > diff --git a/hw/core/machine-smp.c b/hw/core/machine-smp.c
-> > index 9a28194676..5a02bbf584 100644
-> > --- a/hw/core/machine-smp.c
-> > +++ b/hw/core/machine-smp.c
-> > @@ -371,6 +371,8 @@ bool machine_parse_smp_cache(MachineState *ms,
-> >          return false;
-> >      }
-> >  
-> > +    ms->smp_cache.IsDefined = true;
-> > +
-> >      return true;
-> >  }
-> >  
-> > diff --git a/include/hw/boards.h b/include/hw/boards.h
-> > index db2aa2b706..2883a57084 100644
-> > --- a/include/hw/boards.h
-> > +++ b/include/hw/boards.h
-> > @@ -373,6 +373,7 @@ typedef struct CpuTopology {
-> >  
-> >  typedef struct SmpCache {
-> >      SmpCacheProperties props[CACHE_LEVEL_AND_TYPE__MAX];
-> > +    bool IsDefined;
-> >  } SmpCache;
-> >  
-> >  /**  
+> 
+> >                    "-smp sockets=1,clusters=2,cores=2,threads=2",
+> > &data); free_test_data(&data);
+> >  }  
 > 
 

@@ -1,184 +1,190 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp5012262njk;
-        Tue, 24 Dec 2024 18:09:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV6d3Zg5aFbVCPgLPszMgYyKvs5eVVDuV1W/9Pz+sokZbQ0Yti58q28hYpkJQZwjysjNCkn5ZeUc0uZtQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHaiMNdsCeFM5FjRbQivd0VBJFcisZyfUC/L7s5vPnbZkvIkLQbQVIHH6B69ufAttKVdvoZ
-X-Received: by 2002:a05:622a:c:b0:466:acd2:1134 with SMTP id d75a77b69052e-46a4a9a2b6emr317758641cf.52.1735092575660;
-        Tue, 24 Dec 2024 18:09:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735092575; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp5175225njk;
+        Wed, 25 Dec 2024 03:28:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW/iyPEfgQrnYPY+yzV2ioPCRbh8QL5yMBHPXNVR319PZYkUD5WFZj2+ddxqVw/TJyxqYOVvmxNvGoHag==@linaro.org
+X-Google-Smtp-Source: AGHT+IEGHpQWUR+PO6jR1IT1pe0uLGj5Pyudu8IlAgp/QBnCOYVqYCu17GlKl+HTKNZXKztxydG2
+X-Received: by 2002:a05:622a:18a9:b0:467:882d:e7c6 with SMTP id d75a77b69052e-46a4a988dccmr262792251cf.34.1735126105531;
+        Wed, 25 Dec 2024 03:28:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735126105; cv=none;
         d=google.com; s=arc-20240605;
-        b=VQFD5wXJmCgVpJQbw48vG5Pzn/zpiOBaIO2eKxByvPKG7oB6jewY5RHooqFhXIaklq
-         vCdESSoSKVouFGlzfLQx4WNgacCGvUzxSdfY7zzdhE72a132czJ7fhvfj6iOAbi/TIVh
-         CH14gefMAVIgPmnDA/niRY4tPx/qQNPMTxwtmrKltn95H9DlEeuoPJlyg+dyKVwrGEp8
-         wSc9S5g+/BXGXVNsVYhlXByef/R0Oqm0P1+nfOIzufgi4Rma/ugu3BMWQFbAGc8qHgic
-         2/yOLSCXvLj0iurs90cCB0niIFc2nwX36aj+kFcwO+kL6tTLQwVddj0zCd0jJUZUrpWa
-         2BBg==
+        b=Zy39RMB5boEz7BWqoCIjWhZwxKeRMtVwlfc0nOdbLFv2vGxI4Fj2smX8vcxQ3d40L5
+         /BpOAALeD+rcaie7E1myZkkAV/O0hy9kliK5N+uxW0qkZ8txRLMW5PYOi61N/8w5WfOy
+         UOgoAgoC3/PJoV8EPrhVbT8vDoFXl6s8KceeVXzaBtBUpcz/UyqlsiX0tS/tnW75n00/
+         dNKpgubjeowoPwGYykNH0CBXQO8L+mrU2HUW6ajCXaLsvF8QFRc/Oe+Dic3ScNiPhj3Z
+         HN357GA3eN7tV2rnKGn9fqO2IPkoJ8QAC58uZZhog+dpbHnEVIU7oESSrYJxhLacTDJk
+         qHLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to;
-        bh=zR58RuvCqLSZ1CL+v/s1QM1UhKkzwBV7pa0eY8XukFg=;
-        fh=6s1QC7yDVMwxtLiXCOqIXsaBZ0NU8/0BFNqJIfybTQk=;
-        b=XzfaPXedNTDbQDUt04HOQosEwjIoV1a6wftqsgrv1UeC029lDdRO+70Oe23vCgTmo+
-         DfmnYLQFJWkIdToLfXlanQRRKrXDZFDPCJcIFIilfRDHilHt/u7/6ouDGqGGYz1Jo0fk
-         VurF6hnyDALpM/mgcAhWiFZTOQLwjBXvH58/HVukpPb4uzV4Wkqj8DRB6UN3vfWOFhqf
-         HSYtl+PMwZJtAyEqDaZCgmI2fsIBz25c0koq32YKI49x4HOTlKSaiIuOCDJmg9hghPAR
-         KVVKYN11q96W4eWDl/+/Hgh+ee4OpvaXN1b6eh4sUdVrX4en2DOB9XIA0OSrGSNjcc/E
-         2cFw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=xY3AelCfFa56nMqxO27r1LoFMTGTx90cLHeWano2z54=;
+        fh=7psTbjl89xpgM1ee7OkW6c/OyhYAbIiwLVsh/lQ57F0=;
+        b=aqkiT3SY/U8oGb4D4zj5kr/NC37pbRuas3YSt08uJLcbIye15lysnE9uBmVQ0Qqps3
+         E4P+EBE1ihLpErqimOT2kLQObdf1/hokGKG8HWvBAA5iY1JvpfiJ76UjP2osDvfwW9hH
+         ijqtsi8Uv0jbrmYzLSQn7jDKrlmZLIfavPihhB8UDHe+OxU9SiB02GxwILwxPU1/ORlw
+         iAI6CiJPU6ZcL8tDEk3xtdXkz5mXHtVw1fSXuDPVZqWl6+Z4ABojIZuFJ5IYl/xzDRrX
+         rJMyaKyKJfGObAWU/h5wEK7zpoUw1CVLkarEXMZPkv6SSoY3x0b5D/zs3BcwNB7Jnz6q
+         ng+A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=DgXiQhBP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46a3e684bc2si141852051cf.129.2024.12.24.18.09.35
+        by mx.google.com with ESMTPS id d75a77b69052e-46a3eb990a4si171134111cf.282.2024.12.25.03.28.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Dec 2024 18:09:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 25 Dec 2024 03:28:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=DgXiQhBP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tQGpH-00083j-Qy; Tue, 24 Dec 2024 21:08:44 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tQPYj-0005Rw-T5; Wed, 25 Dec 2024 06:28:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1tQGpG-00083P-50; Tue, 24 Dec 2024 21:08:42 -0500
-Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <steven_lee@aspeedtech.com>)
- id 1tQGpE-0002ew-FU; Tue, 24 Dec 2024 21:08:41 -0500
-Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Wed, 25 Dec
- 2024 10:03:14 +0800
-Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
- (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
- Transport; Wed, 25 Dec 2024 10:03:14 +0800
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>, Jamin Lin
- <jamin_lin@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-CC: <steven_lee@aspeedtech.com>, <troy_lee@aspeedtech.com>,
- <yunlin.tang@aspeedtech.com>
-Subject: [PATCH 5/5] docs: aspeed: Add ast2700-fc machine section
-Date: Wed, 25 Dec 2024 10:03:11 +0800
-Message-ID: <20241225020311.3718080-6-steven_lee@aspeedtech.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20241225020311.3718080-1-steven_lee@aspeedtech.com>
-References: <20241225020311.3718080-1-steven_lee@aspeedtech.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tQPYh-0005RK-No
+ for qemu-arm@nongnu.org; Wed, 25 Dec 2024 06:28:12 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tQPYg-0008Cf-0T
+ for qemu-arm@nongnu.org; Wed, 25 Dec 2024 06:28:11 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4364a37a1d7so60573905e9.3
+ for <qemu-arm@nongnu.org>; Wed, 25 Dec 2024 03:28:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1735126088; x=1735730888; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=xY3AelCfFa56nMqxO27r1LoFMTGTx90cLHeWano2z54=;
+ b=DgXiQhBP+TGjdoBqKedrtjGK/5/+LVxwHKQmgLG/2ajJE5ILLTFOjfG36zRurbi+Ye
+ NdRNMNFMYirQRFNw2GfiRXqmdl9utDhUnwVgNgxj7IPCyJyOu+OrR0vAAVb1Pr6+kw/J
+ pjy+mLAu8oKCnJ7OXlAx9O/fj9s6k09uaYX4zgfPmyMCSFT1qXIpzhZo50nwNEU/v/xe
+ B/aacLF24T7HpQY4JDs2LFdDw46pHLFNRO365JUZqtIeP37nNHEfD+W8CfpENT++ziwP
+ 9NCyw14H/bJSL/1S1+4+HdZGXwYlTXNfjL+nSv24CD1b2BpYqkj4pBmRU6j4cBO2DpJq
+ Ctmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1735126088; x=1735730888;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xY3AelCfFa56nMqxO27r1LoFMTGTx90cLHeWano2z54=;
+ b=HVU9fRe4UFIAXlx7Ueav4fjLa2YtCTladYT888aTyHWDHcMka38BUz6SRF+kZDm47/
+ KgUChR5WsFcj3LHHUTZC4P5n2oX+8iag9L6Ew8Cjh+ktSV8tNPkUPafKiFc1aARSl7q3
+ 4n7n0dHQQGSivsUAH1bqjYZV1NMUSbka6HDWMlONEGEV+kSmjC46LZp3PYOVC8iMTvUs
+ c8mjZv2BZOedIZ12qxUDmD0JpY4eBAdFniQW7gUZYXPThVvAb3Rk2eR6kPCqHeblKq81
+ +G6s649+Ubq6vxOC9K1tpzYJKhzbSMB+iA/KVBNeP2AOlFlO6XLAdiwUfxV+zbWy8eR0
+ Gqyg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXaNxsoxRhmXGW4EcQpByHCrGNwYUwHF3V0ykXXW0ulwoMY2B4RV6wQfqs1Ih08nIhULIaxbwVxNg==@nongnu.org
+X-Gm-Message-State: AOJu0YxhY5wnhovVHTRrjquLPFYrZxDHUGVT9QI2fRjR/i53YzUr8FAp
+ nQ+SpG/HSX/eO8u0zute4NT4baK5UwLRowUX9o+sM0CNYsJk0uHTTODytpxWfuU=
+X-Gm-Gg: ASbGncuBfC5lhYLlrF7W7ntAGb1UrA8rVJt2rFwC6+maIBNHI1G3/t0m9ctSm/nZqfM
+ x5JUWBHFipF7tWgThb8WvdpFXizECyunm+ki0NF0vvjN/mbxoFYMv+clSLhfbXJj/tCXaSnID54
+ ki4iKhmTeaV0f3jcF5b0VcRaI34dqSF/LLU8/39CIvwv4CuOz+txxw10Qp/mDKzPDhwoS59KZS9
+ ftChETaChvi0YKY+/Hm1EAToEuROc7gEeoujTgg9DAYmiiqpXX50mDtGAevV5AVPzg=
+X-Received: by 2002:a05:600c:4f8a:b0:436:488f:4d8 with SMTP id
+ 5b1f17b1804b1-43668643a47mr161523085e9.11.1735126088052; 
+ Wed, 25 Dec 2024 03:28:08 -0800 (PST)
+Received: from [192.168.1.117] ([78.196.4.158])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38a1c8288b8sm16594965f8f.11.2024.12.25.03.28.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 25 Dec 2024 03:28:07 -0800 (PST)
+Message-ID: <6ac5dae8-db32-4275-9570-da1696a8764b@linaro.org>
+Date: Wed, 25 Dec 2024 12:28:06 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/5] aspeed: Make sdhci_attach_drive and write_boot_rom
+ public
+To: Steven Lee <steven_lee@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
+ Troy Lee <leetroy@gmail.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20241225020311.3718080-1-steven_lee@aspeedtech.com>
+ <20241225020311.3718080-2-steven_lee@aspeedtech.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241225020311.3718080-2-steven_lee@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-Received-SPF: pass client-ip=211.20.114.72;
- envelope-from=steven_lee@aspeedtech.com; helo=TWMBX01.aspeed.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-to:  Steven Lee <steven_lee@aspeedtech.com>
-From:  Steven Lee via <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 2sDAWTYhjg+W
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: m7TZ1+4I+Y9v
 
-This commit adds a section describing the ast2700-fc multi-SoC machine.
+On 25/12/24 03:03, Steven Lee via wrote:
+> sdhci_attach_drive and write_boot_rom functions may be used by
+> the aspeed machine supporting co-processors.
+> 
+> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
+> ---
+>   hw/arm/aspeed.c         | 4 ++--
+>   include/hw/arm/aspeed.h | 6 ++++++
+>   2 files changed, 8 insertions(+), 2 deletions(-)
 
-Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
----
- docs/system/arm/aspeed.rst | 50 ++++++++++++++++++++++++++++++++++++--
- 1 file changed, 48 insertions(+), 2 deletions(-)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index fa4aa28eef..4b4200a4a5 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,5 +1,5 @@
--Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``tacoma-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
--==================================================================================================================================================================================================================================================================================================================================================================================================================================
-+Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``tacoma-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-+===================================================================================================================================================================================================================================================================================================================================================================================================================================================
- 
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
-@@ -42,6 +42,7 @@ AST2600 SoC based machines :
- AST2700 SoC based machines :
- 
- - ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
-+- ``ast2700-fc``           Aspeed AST2700 Evaluation board featuring full core support (Cortex-A35 + Cortex-M4)
- 
- Supported devices
- -----------------
-@@ -270,6 +271,51 @@ Boot the AST2700 machine from the flash image, use an MTD drive :
-        -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd \
-        -nographic
- 
-+Booting the ast2700-fc machine
-+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+
-+Boot the AST2700 machine from the flash image, use an MTD drive :
-+
-+.. code-block:: bash
-+
-+  IMGDIR=./
-+  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
-+
-+  $ UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
-+  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/ast2700-ssp.elf
-+  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/ast2700-tsp.elf
-+  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/bl31.bin
-+  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/tee-raw.bin
-+  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/u-boot-nodtb.bin
-+  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/u-boot.dtb
-+  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/image-bmc.tar.zst
-+  $ tar --zstd -xvf image-bmc.tar.zst
-+
-+  $ qemu-system-aarch64 -machine ast2700fc \
-+       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
-+       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-+       -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-+       -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/tee-raw.bin \
-+       -device loader,file=${IMGDIR}/ast2700-ssp.elf,cpu-num=4 \
-+       -device loader,file=${IMGDIR}/ast2700-tsp.elf,cpu-num=5 \
-+       -device loader,cpu-num=0,addr=0x430000000 \
-+       -device loader,cpu-num=1,addr=0x430000000 \
-+       -device loader,cpu-num=2,addr=0x430000000 \
-+       -device loader,cpu-num=3,addr=0x430000000 \
-+       -m 1G \
-+       -drive file=image-bmc,if=mtd,format=raw \
-+       -serial pty -serial pty -serial pty \
-+       -S -nographic
-+
-+    char device redirected to /dev/pts/51 (label serial0)
-+    char device redirected to /dev/pts/52 (label serial1)
-+    char device redirected to /dev/pts/53 (label serial2)
-+
-+  $ tio /dev/pts/51
-+  $ tio /dev/pts/52
-+  $ tio /dev/pts/53
-+  $ (qemu) c
-+
- Aspeed minibmc family boards (``ast1030-evb``)
- ==================================================================
- 
--- 
-2.34.1
+> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+> index cbeacb214c..bba224c357 100644
+> --- a/include/hw/arm/aspeed.h
+> +++ b/include/hw/arm/aspeed.h
+> @@ -10,7 +10,9 @@
+>   #define ARM_ASPEED_H
+>   
+>   #include "hw/boards.h"
+> +#include "hw/sd/sdhci.h"
+>   #include "qom/object.h"
+> +#include "system/blockdev.h"
+>   
+>   typedef struct AspeedMachineState AspeedMachineState;
+>   
+> @@ -41,5 +43,9 @@ struct AspeedMachineClass {
+>       uint32_t uart_default;
+>   };
+>   
+> +void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo, bool emmc,
+> +                               bool boot_emmc);
+
+Indent is off.
+
+> +void write_boot_rom(BlockBackend *blk, hwaddr addr, size_t rom_size,
+> +                           Error **errp);
+
+Ditto.
+
+Pre-existing, functions taking Error as last argument should return a
+boolean indicating whether error occurred or not.
+
+Fixing indentation:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

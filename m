@@ -1,105 +1,103 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp5601506njk;
-        Thu, 26 Dec 2024 00:27:38 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUs2E4MEY6h+uvyudnKdOccvlkY8Aw55Na+yuPBIAprjXeSzmRA8QoFEj9CfEuaAjZCq74bOIhJ8QeBPw==@linaro.org
-X-Google-Smtp-Source: AGHT+IF6g5WxsiLmJPtMbYloUp9qqOpdpcLPJNY+ETErD8a0uN/FmvUaYEejW4+kapu1qlHo2FGv
-X-Received: by 2002:a05:620a:459f:b0:7b6:dfbb:3227 with SMTP id af79cd13be357-7b9ba6fd86dmr3776352585a.10.1735201658259;
-        Thu, 26 Dec 2024 00:27:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735201658; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp5601747njk;
+        Thu, 26 Dec 2024 00:28:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWoPHbF4+CzM35wm0SHYiUhDmfYWOrRBKw8Nf227hBHs6Pt/twL903FJr7kj1z+XJeOXOxP1cztxQ6uRQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGxOaxu36BDk8bcOz+e33ml8QufPrr8D+tMvwjBXxafrl8A+PEAFAa3u3mzh75xfc3R3twu
+X-Received: by 2002:a05:620a:4549:b0:7b6:eba3:2e08 with SMTP id af79cd13be357-7b9aa934508mr4601992685a.7.1735201707635;
+        Thu, 26 Dec 2024 00:28:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735201707; cv=none;
         d=google.com; s=arc-20240605;
-        b=fAKVC/BvjrnCILNDQ/4h2OD0tCDt+GhjBmU0523FPxOoQ5sCz4hJ8KDKVXmbcHnUXn
-         Ujww6QOmn4yPo5ynQ0ilg9rRiYC8cd+F+G+1WRO1ptEj/qyXvy9Xm9Jcg/ZJpAbUkUeM
-         voLZqONZRmKxhw3cIelDrIOodx2+OmSRlVKsZnnFW6TKGuTcYDulMyH1i3qrxdpiZxUy
-         damCvZ7+w0QVhExqnSLyI7mDfYeWA0TC13qfNfiHmCu6NEj7f75u85UgJX/ukjX+Wxx5
-         SlcNqFYZrIwIQPpHFeVEs9C/kiCg0BFDuytCl7gBQogi1B+zrNHBqHf8ChW3IKcmkA4K
-         XY+g==
+        b=AVKgNYSFEhtsnFM7s8UK6TvEeAXqU3QN0U9l7n78ez7ONrtcmAkU6aWLzI34iJx782
+         nXPphbzvwTZE3yikHapEfts2SRFC6R8An58GE03hFj6kwAZdjeGYQI4h79KZgMX9/c4+
+         dJk6NGODnKhsjF6BXbaG8wYqb7X9U7eoaRhiiWYL+7/cM+xQl3StGeuyytbg6i+tP1qj
+         cSLPVsPFSb45muhMa8ojSaaZjzxiJME/0oq0gXAufo6EBY5iMlf8row7C49sfZdRrRMe
+         RIOVNWBNI4maXC8I8/ui8wOU45jUnkqCF1LpFL5B0oVV57b4PD4OeIIJ6pWSLa5elMnF
+         d18w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=3GGcstd8AkyO5x+B+J9MntL4e/gHviPXgQYcMwiO+Co=;
-        fh=MyZS6IEabU/PGjPguqdMFN6e3leGlG2ufJjjA88V3Ek=;
-        b=ftnU8l1xn3Nj0DI3Dc84KmG7GUcyIOrJUaBLjNc0AtdTPAv1I46bXIJ9qMRUkYZwXa
-         VgO9dN3sU4UaGiJCa3IWuaa+gBwNWcfk2yhrf5bgR49QwG3AXHSC/zQCxV6eUuDB80G5
-         5SqSrYFM0psMt87VOPo7u3MExr4HjUPhfmZFVopJ4ewcUljMxro/GIDh4pEzRB+7JuR0
-         TepwI9k/BNNPyGiHdCsEbLtqubosJWE5r1BhbgzFN1tjqaCCnPEmOd/d17okWk4ExYzA
-         cq9EjIVp36Pn/PF4eA5WA4ZFTm8VHyW4AvLXqUetqFMPx58sd5GkuUgt3n7HFbaXNMp5
-         8Qbg==;
+        bh=VGy+Nj9c83OW8O8chp58gNtXq2XnteX0cby7ElrxjQo=;
+        fh=luqczq21R/WVyFsAXY3xjiSk+tbt+bB+3AXcxVMujQk=;
+        b=bkOACprx+FicxP6Y577vEXNZFfUdUGM/JO0beBGQZjt01lIFkwf+zrGW5xDNsoBIUn
+         uLJUeW+SrQSOkXZ8rLVp8GRLno7GaChpn0UrNj33WZy2i//l57VkY0Iyc8BoefwRJxWg
+         mDIsH9EuieN+2VCGYRwZjdyOhPnoe/1YXEkb0jtpa3wT6q880gPFqzWV0B+etTHZfpZl
+         eoQo8DqOaK2VvM5jbpvo+1al5oDBAj3f7zts+vMIZt68t9eAM4DUWdqczpYxpvuOPagh
+         4wMIfS99pn0TZA4oxml2lQYTtNEm8i9e8CBjhYtbQAUZE1izMURuCTTngVDusVfZR8cH
+         jwvA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=w0ShldFD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=YsGwfEYG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac4dc40esi1676880285a.435.2024.12.26.00.27.38
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac2ab6fesi1707007485a.10.2024.12.26.00.28.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Dec 2024 00:27:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Dec 2024 00:28:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=w0ShldFD;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=YsGwfEYG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tQjA7-0008T4-5B; Thu, 26 Dec 2024 03:24:07 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tQjEI-0002XN-8o; Thu, 26 Dec 2024 03:28:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3lRJtZwgKCrAmkXQejiXWeeWbU.SecgUck-TUlUbdedWdk.ehW@flex--wuhaotsh.bounces.google.com>)
- id 1tQjA3-0008EI-He
- for qemu-devel@nongnu.org; Thu, 26 Dec 2024 03:24:03 -0500
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
+ <3mxNtZwgKCLgusfYmrqfemmejc.amkocks-Ypklmlels.mpe@flex--wuhaotsh.bounces.google.com>)
+ id 1tQjE8-0002DZ-J9
+ for qemu-arm@nongnu.org; Thu, 26 Dec 2024 03:28:17 -0500
+Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3lRJtZwgKCrAmkXQejiXWeeWbU.SecgUck-TUlUbdedWdk.ehW@flex--wuhaotsh.bounces.google.com>)
- id 1tQjA1-0000cK-Ec
- for qemu-devel@nongnu.org; Thu, 26 Dec 2024 03:24:03 -0500
-Received: by mail-pl1-x649.google.com with SMTP id
- d9443c01a7336-2162f80040aso71024085ad.1
- for <qemu-devel@nongnu.org>; Thu, 26 Dec 2024 00:23:49 -0800 (PST)
+ <3mxNtZwgKCLgusfYmrqfemmejc.amkocks-Ypklmlels.mpe@flex--wuhaotsh.bounces.google.com>)
+ id 1tQjE7-00019W-2c
+ for qemu-arm@nongnu.org; Thu, 26 Dec 2024 03:28:16 -0500
+Received: by mail-pj1-x1049.google.com with SMTP id
+ 98e67ed59e1d1-2ee8ced572eso7884666a91.0
+ for <qemu-arm@nongnu.org>; Thu, 26 Dec 2024 00:28:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1735201429; x=1735806229; darn=nongnu.org;
+ d=google.com; s=20230601; t=1735201691; x=1735806491; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=3GGcstd8AkyO5x+B+J9MntL4e/gHviPXgQYcMwiO+Co=;
- b=w0ShldFDCTrZLRR2425u9AQZaJU8qxYsuS/ie/Vc/Fwf9HpxdJkuV0sb18XANifbHg
- oBIxViqthXTp26kcYwRCI5s/pJfs/1UoJX53lAm+nGUnPp/BwPSnQ0csy58e8Zg3ZC7B
- 9/fzNvQoRNlIoOSLfCyRW8uCmyJ+BqpgEuqtGQXIYDkvoFeABOybTE5jEzUIBeeFEMeA
- f3azsIr2e27VpUSajYGRtCGwLGSU+p8TqtU/NzXe2fcZs1VS2ArCEe6wnrOXNUYs9tiH
- TJ7TvNYyC+RaAOTJJwDeZa1vYhJo0etYC1R43VuFNwa0wp1oaAjkFAzWINeQxHjuzvnE
- ZTzw==
+ bh=VGy+Nj9c83OW8O8chp58gNtXq2XnteX0cby7ElrxjQo=;
+ b=YsGwfEYGQI/ItVd3c/VVXJYqfQDEjZpaVSVtX2tgWDYBcYqieo6taqCRzJ2Jasj95t
+ 8p7B1uTK6QUBVp2FjIB3CPI3BgEQBrSVtoPrsMTlwVxi4O9jQHM5Gd2jPuGALstzTzBq
+ KM6kLWFYpyO3CiAPtcy0YwwuJdp2zaS2tZymsVvvATcCHj4maFX3fxR3WpqSDU1GxUJ3
+ PMYJetUuHb2NcOzrQUvO6nOSb614+LjIFDQ0mUKN3N1kBTjtY6H6RNLddtdanWR2IPEN
+ r5idH+NTZeIFdb0vo2sAW/zRNwP+kx1i9fiKc7P4C0wOAYO8GAhZBc9hfl/0LpqYVJoH
+ u8jQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735201429; x=1735806229;
+ d=1e100.net; s=20230601; t=1735201691; x=1735806491;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3GGcstd8AkyO5x+B+J9MntL4e/gHviPXgQYcMwiO+Co=;
- b=pdxbxV2PnGmz0d8YHoLYJHL8BejBaByxkhGpn45p9+og09EE5XlqTiR3hRzveNSent
- BHyR37rKqqpebTwk1I/x5QIhcJi4iI/K03NlknY3bO43kPuZ1qI9G23qrRL/0BwVAyls
- u0h3WsR0sQ/5V87IMwE5mMlSwDt8mkbxM3gvggUzQ4n8Pfi9VoGzsY/kC+RaHEUD5aWu
- VLDSv3KzDNvwUFyzmatrdFOByvCHuIXoVv/E/8vlKW78ArpCterOPNYVzbTAGvBi05+M
- WdK9cgu2HAUPm80WOXeNYyBs+jK1kOH2elMinonrffKiVQFJlzAEbjEGlQCvH8I3BV60
- Yplw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWlP6LCcTKlRfx9OlctnCLOii2l2ACsEUPdDHzqhDMPfy1bBGgCOykSAIgDep1Oc7ePv5hfRsmkTZdV@nongnu.org
-X-Gm-Message-State: AOJu0YwpW/5xdvecKKpY5cHlyrPPFq6kR7AtmacuV+n4DO0LCcV1keRM
- QB4UAkkvt3R87ikHVWi3QBmkExJqNdD2RZz1vNiDZSrW1mbetyMEqZGtFFr4tOtijcJ3bMwbI/S
- c6N8Zl338Mw==
-X-Received: from pgno6.prod.google.com ([2002:a63:7e46:0:b0:7fd:3b07:5c76])
+ bh=VGy+Nj9c83OW8O8chp58gNtXq2XnteX0cby7ElrxjQo=;
+ b=CBrfNj7rseaFDNqzFrQNa/7TWAY6m6/j+1otI1csiiSZdshTLQtKcTs1laWZT7JQms
+ kGUu0+rc+ES1IB2D4fKcIT8ZWnZ9n2M+i/wqIbxRp9Gpxoak+kTYMqT4omTax4YbNMFW
+ QxjQlXoVxZtgvUg0q0tzFc/fcHmg9twHiOc5m5zLwEztaKQddgwqmcT303SlU+58ViwS
+ 2Vv9aXFvW+A3BZP2AqrWI5+b2Yzvjo8kxR8o39umXixpLlITZnW3NP/1akXw0EdAcyHS
+ llN3aZMOexfNCIcO/lTTsMWPbLuqYVlFFB7yjjThBh1A2/WFZGlCs6A0Wf8dEWcS1L8O
+ 64Pw==
+X-Gm-Message-State: AOJu0YwRaUTSeOsH/D4m8Jx7GAI/XRdtq9eHo4NRRfqQRgyyaThsR4I0
+ QXpkF9jpt1/JZlQ4v2TFBTRNLIF/Z2/D0BzHgpwfDZXR++Ikj2nX5rLzjoL+ED2plfgF1e/YYyM
+ 3/D84ipFhYA==
+X-Received: from pjur6.prod.google.com ([2002:a17:90a:d406:b0:2ea:d2de:f7ca])
  (user=wuhaotsh job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a20:7f99:b0:1e0:cfc0:df34 with SMTP id
- adf61e73a8af0-1e5e0470226mr33894348637.16.1735201429170; 
- Thu, 26 Dec 2024 00:23:49 -0800 (PST)
-Date: Thu, 26 Dec 2024 08:22:36 +0000
-In-Reply-To: <20241226082236.2884287-1-wuhaotsh@google.com>
+ 2002:a17:90a:fc48:b0:2ee:8e75:4aeb with SMTP id
+ 98e67ed59e1d1-2f452e49238mr34728560a91.17.1735201691592; 
+ Thu, 26 Dec 2024 00:28:11 -0800 (PST)
+Date: Thu, 26 Dec 2024 08:27:45 +0000
+In-Reply-To: <20241226082800.2887689-1-wuhaotsh@google.com>
 Mime-Version: 1.0
-References: <20241226082236.2884287-1-wuhaotsh@google.com>
+References: <20241226082800.2887689-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.47.1.613.gc27f4b7a9f-goog
-Message-ID: <20241226082236.2884287-18-wuhaotsh@google.com>
-Subject: [PATCH 17/17] hw/arm: Add NPCM845 Evaluation board
+Message-ID: <20241226082800.2887689-3-wuhaotsh@google.com>
+Subject: [PATCH v2 02/17] roms: Update vbootrom to 1287b6e
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
@@ -107,346 +105,61 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com,
  hskinnemoen@google.com, venture@google.com, pbonzini@redhat.com, 
  jasowang@redhat.com, alistair@alistair23.me, Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=3lRJtZwgKCrAmkXQejiXWeeWbU.SecgUck-TUlUbdedWdk.ehW@flex--wuhaotsh.bounces.google.com;
- helo=mail-pl1-x649.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
+ envelope-from=3mxNtZwgKCLgusfYmrqfemmejc.amkocks-Ypklmlels.mpe@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pj1-x1049.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: uP0QxLWTLaNU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: frgNdSwmSlTk
+
+This newer vbootrom supports NPCM8xx. Similar to the NPCM7XX one
+it supports loading the UBoot from the SPI device and not more.
+
+We updated the npcm7xx bootrom to be compiled from this version.
 
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- hw/arm/meson.build       |   2 +-
- hw/arm/npcm8xx_boards.c  | 256 +++++++++++++++++++++++++++++++++++++++
- include/hw/arm/npcm8xx.h |  20 +++
- 3 files changed, 277 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/npcm8xx_boards.c
+ pc-bios/npcm7xx_bootrom.bin | Bin 768 -> 768 bytes
+ roms/vbootrom               |   2 +-
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index d7813c089c..465c757f97 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -12,7 +12,7 @@ arm_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
- arm_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c'))
- arm_ss.add(when: 'CONFIG_OLIMEX_STM32_H405', if_true: files('olimex-stm32-h405.c'))
- arm_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_boards.c'))
--arm_ss.add(when: 'CONFIG_NPCM8XX', if_true: files('npcm8xx.c'))
-+arm_ss.add(when: 'CONFIG_NPCM8XX', if_true: files('npcm8xx.c', 'npcm8xx_boards.c'))
- arm_ss.add(when: 'CONFIG_REALVIEW', if_true: files('realview.c'))
- arm_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa-ref.c'))
- arm_ss.add(when: 'CONFIG_STELLARIS', if_true: files('stellaris.c'))
-diff --git a/hw/arm/npcm8xx_boards.c b/hw/arm/npcm8xx_boards.c
-new file mode 100644
-index 0000000000..079df695d3
---- /dev/null
-+++ b/hw/arm/npcm8xx_boards.c
-@@ -0,0 +1,256 @@
-+/*
-+ * Machine definitions for boards featuring an NPCM8xx SoC.
-+ *
-+ * Copyright 2021 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "chardev/char.h"
-+#include "hw/arm/npcm8xx.h"
-+#include "hw/core/cpu.h"
-+#include "hw/loader.h"
-+#include "hw/qdev-core.h"
-+#include "hw/qdev-properties.h"
-+#include "qapi/error.h"
-+#include "qemu/error-report.h"
-+#include "qemu/datadir.h"
-+#include "qemu/units.h"
-+
-+#define NPCM845_EVB_POWER_ON_STRAPS 0x000017ff
-+
-+static const char npcm8xx_default_bootrom[] = "npcm8xx_bootrom.bin";
-+
-+static void npcm8xx_load_bootrom(MachineState *machine, NPCM8xxState *soc)
-+{
-+    const char *bios_name = machine->firmware ?: npcm8xx_default_bootrom;
-+    g_autofree char *filename = NULL;
-+    int ret;
-+
-+    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-+    if (!filename) {
-+        error_report("Could not find ROM image '%s'", bios_name);
-+        if (!machine->kernel_filename) {
-+            /* We can't boot without a bootrom or a kernel image. */
-+            exit(1);
-+        }
-+        return;
-+    }
-+    ret = load_image_mr(filename, machine->ram);
-+    if (ret < 0) {
-+        error_report("Failed to load ROM image '%s'", filename);
-+        exit(1);
-+    }
-+}
-+
-+static void npcm8xx_connect_flash(NPCM7xxFIUState *fiu, int cs_no,
-+                                  const char *flash_type, DriveInfo *dinfo)
-+{
-+    DeviceState *flash;
-+    qemu_irq flash_cs;
-+
-+    flash = qdev_new(flash_type);
-+    if (dinfo) {
-+        qdev_prop_set_drive(flash, "drive", blk_by_legacy_dinfo(dinfo));
-+    }
-+    qdev_realize_and_unref(flash, BUS(fiu->spi), &error_fatal);
-+
-+    flash_cs = qdev_get_gpio_in_named(flash, SSI_GPIO_CS, 0);
-+    qdev_connect_gpio_out_named(DEVICE(fiu), "cs", cs_no, flash_cs);
-+}
-+
-+static void npcm8xx_connect_dram(NPCM8xxState *soc, MemoryRegion *dram)
-+{
-+    memory_region_add_subregion(get_system_memory(), NPCM8XX_DRAM_BA, dram);
-+
-+    object_property_set_link(OBJECT(soc), "dram-mr", OBJECT(dram),
-+                             &error_abort);
-+}
-+
-+static NPCM8xxState *npcm8xx_create_soc(MachineState *machine,
-+                                        uint32_t hw_straps)
-+{
-+    NPCM8xxMachineClass *nmc = NPCM8XX_MACHINE_GET_CLASS(machine);
-+    MachineClass *mc = MACHINE_CLASS(nmc);
-+    Object *obj;
-+
-+    if (strcmp(machine->cpu_type, mc->default_cpu_type) != 0) {
-+        error_report("This board can only be used with %s",
-+                     mc->default_cpu_type);
-+        exit(1);
-+    }
-+
-+    obj = object_new_with_props(nmc->soc_type, OBJECT(machine), "soc",
-+                                &error_abort, NULL);
-+    object_property_set_uint(obj, "power-on-straps", hw_straps, &error_abort);
-+
-+    return NPCM8XX(obj);
-+}
-+
-+static I2CBus *npcm8xx_i2c_get_bus(NPCM8xxState *soc, uint32_t num)
-+{
-+    g_assert(num < ARRAY_SIZE(soc->smbus));
-+    return I2C_BUS(qdev_get_child_bus(DEVICE(&soc->smbus[num]), "i2c-bus"));
-+}
-+
-+static void npcm8xx_init_pwm_splitter(NPCM8xxMachine *machine,
-+                                      NPCM8xxState *soc, const int *fan_counts)
-+{
-+    SplitIRQ *splitters = machine->fan_splitter;
-+
-+    /*
-+     * PWM 0~3 belong to module 0 output 0~3.
-+     * PWM 4~7 belong to module 1 output 0~3.
-+     */
-+    for (int i = 0; i < NPCM8XX_NR_PWM_MODULES; ++i) {
-+        for (int j = 0; j < NPCM7XX_PWM_PER_MODULE; ++j) {
-+            int splitter_no = i * NPCM7XX_PWM_PER_MODULE + j;
-+            DeviceState *splitter;
-+
-+            if (fan_counts[splitter_no] < 1) {
-+                continue;
-+            }
-+            object_initialize_child(OBJECT(machine), "fan-splitter[*]",
-+                                    &splitters[splitter_no], TYPE_SPLIT_IRQ);
-+            splitter = DEVICE(&splitters[splitter_no]);
-+            qdev_prop_set_uint16(splitter, "num-lines",
-+                                 fan_counts[splitter_no]);
-+            qdev_realize(splitter, NULL, &error_abort);
-+            qdev_connect_gpio_out_named(DEVICE(&soc->pwm[i]), "duty-gpio-out",
-+                                        j, qdev_get_gpio_in(splitter, 0));
-+        }
-+    }
-+}
-+
-+static void npcm8xx_connect_pwm_fan(NPCM8xxState *soc, SplitIRQ *splitter,
-+                                    int fan_no, int output_no)
-+{
-+    DeviceState *fan;
-+    int fan_input;
-+    qemu_irq fan_duty_gpio;
-+
-+    g_assert(fan_no >= 0 && fan_no <= NPCM7XX_MFT_MAX_FAN_INPUT);
-+    /*
-+     * Fan 0~1 belong to module 0 input 0~1.
-+     * Fan 2~3 belong to module 1 input 0~1.
-+     * ...
-+     * Fan 14~15 belong to module 7 input 0~1.
-+     * Fan 16~17 belong to module 0 input 2~3.
-+     * Fan 18~19 belong to module 1 input 2~3.
-+     */
-+    if (fan_no < 16) {
-+        fan = DEVICE(&soc->mft[fan_no / 2]);
-+        fan_input = fan_no % 2;
-+    } else {
-+        fan = DEVICE(&soc->mft[(fan_no - 16) / 2]);
-+        fan_input = fan_no % 2 + 2;
-+    }
-+
-+    /* Connect the Fan to PWM module */
-+    fan_duty_gpio = qdev_get_gpio_in_named(fan, "duty", fan_input);
-+    qdev_connect_gpio_out(DEVICE(splitter), output_no, fan_duty_gpio);
-+}
-+
-+static void npcm845_evb_i2c_init(NPCM8xxState *soc)
-+{
-+    /* tmp100 temperature sensor on SVB, tmp105 is compatible */
-+    i2c_slave_create_simple(npcm8xx_i2c_get_bus(soc, 6), "tmp105", 0x48);
-+}
-+
-+static void npcm845_evb_fan_init(NPCM8xxMachine *machine, NPCM8xxState *soc)
-+{
-+    SplitIRQ *splitter = machine->fan_splitter;
-+    static const int fan_counts[] = {2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0};
-+
-+    npcm8xx_init_pwm_splitter(machine, soc, fan_counts);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[0], 0x00, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[0], 0x01, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[1], 0x02, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[1], 0x03, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[2], 0x04, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[2], 0x05, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[3], 0x06, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[3], 0x07, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[4], 0x08, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[4], 0x09, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[5], 0x0a, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[5], 0x0b, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[6], 0x0c, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[6], 0x0d, 1);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[7], 0x0e, 0);
-+    npcm8xx_connect_pwm_fan(soc, &splitter[7], 0x0f, 1);
-+}
-+
-+static void npcm845_evb_init(MachineState *machine)
-+{
-+    NPCM8xxState *soc;
-+
-+    soc = npcm8xx_create_soc(machine, NPCM845_EVB_POWER_ON_STRAPS);
-+    npcm8xx_connect_dram(soc, machine->ram);
-+    qdev_realize(DEVICE(soc), NULL, &error_fatal);
-+
-+    npcm8xx_load_bootrom(machine, soc);
-+    npcm8xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0, 0));
-+    npcm845_evb_i2c_init(soc);
-+    npcm845_evb_fan_init(NPCM8XX_MACHINE(machine), soc);
-+    npcm8xx_load_kernel(machine, soc);
-+}
-+
-+static void npcm8xx_set_soc_type(NPCM8xxMachineClass *nmc, const char *type)
-+{
-+    NPCM8xxClass *sc = NPCM8XX_CLASS(object_class_by_name(type));
-+    MachineClass *mc = MACHINE_CLASS(nmc);
-+
-+    nmc->soc_type = type;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus = sc->num_cpus;
-+}
-+
-+static void npcm8xx_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    mc->no_floppy = 1;
-+    mc->no_cdrom = 1;
-+    mc->no_parallel = 1;
-+    mc->default_ram_id = "ram";
-+    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a53");
-+}
-+
-+static void npcm845_evb_machine_class_init(ObjectClass *oc, void *data)
-+{
-+    NPCM8xxMachineClass *nmc = NPCM8XX_MACHINE_CLASS(oc);
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+
-+    npcm8xx_set_soc_type(nmc, TYPE_NPCM8XX);
-+
-+    mc->desc = "Nuvoton NPCM845 Evaluation Board (Cortex-A35)";
-+    mc->init = npcm845_evb_init;
-+    mc->default_ram_size = 1 * GiB;
-+};
-+
-+static const TypeInfo npcm8xx_machine_types[] = {
-+    {
-+        .name           = TYPE_NPCM8XX_MACHINE,
-+        .parent         = TYPE_MACHINE,
-+        .instance_size  = sizeof(NPCM8xxMachine),
-+        .class_size     = sizeof(NPCM8xxMachineClass),
-+        .class_init     = npcm8xx_machine_class_init,
-+        .abstract       = true,
-+    }, {
-+        .name           = MACHINE_TYPE_NAME("npcm845-evb"),
-+        .parent         = TYPE_NPCM8XX_MACHINE,
-+        .class_init     = npcm845_evb_machine_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(npcm8xx_machine_types)
-diff --git a/include/hw/arm/npcm8xx.h b/include/hw/arm/npcm8xx.h
-index 1f7e3d8116..f465d1eeb5 100644
---- a/include/hw/arm/npcm8xx.h
-+++ b/include/hw/arm/npcm8xx.h
-@@ -52,6 +52,26 @@
- 
- #define NPCM8XX_NR_PWM_MODULES 3
- 
-+typedef struct NPCM8xxMachine {
-+    MachineState        parent;
-+    /*
-+     * PWM fan splitter. each splitter connects to one PWM output and
-+     * multiple MFT inputs.
-+     */
-+    SplitIRQ            fan_splitter[NPCM8XX_NR_PWM_MODULES *
-+                                     NPCM7XX_PWM_PER_MODULE];
-+} NPCM8xxMachine;
-+
-+
-+typedef struct NPCM8xxMachineClass {
-+    MachineClass        parent;
-+
-+    const char          *soc_type;
-+} NPCM8xxMachineClass;
-+
-+#define TYPE_NPCM8XX_MACHINE MACHINE_TYPE_NAME("npcm8xx")
-+OBJECT_DECLARE_TYPE(NPCM8xxMachine, NPCM8xxMachineClass, NPCM8XX_MACHINE)
-+
- typedef struct NPCM8xxState {
-     DeviceState         parent;
- 
+diff --git a/pc-bios/npcm7xx_bootrom.bin b/pc-bios/npcm7xx_bootrom.bin
+index 38f89d1b97b0c2e133af2a9fbed0521be132065b..903f126636f9ef5d1100c056656ccfb2b32e5e10 100644
+GIT binary patch
+delta 90
+zcmZo*Yhc^(l+nU*!D9x6DNkDr=09a-2ztoGz`#|*F#jn7L;r()|Np;c0m>C1$z?$0
+Ywog`Ma%Vh0Ig_b-VgU<}A_D>d06Rh+WdHyG
+
+delta 69
+zcmZo*Yhc^(lu^NO!D9x2$xoRb7CdZGnE#ZCA@Cs+0|QqL!~CZV4E+!GPG)41X52Pe
+SmdTy*+~icIZXQJj1ONb5*AzJb
+
+diff --git a/roms/vbootrom b/roms/vbootrom
+index 0c37a43527..1287b6e42e 160000
+--- a/roms/vbootrom
++++ b/roms/vbootrom
+@@ -1 +1 @@
+-Subproject commit 0c37a43527f0ee2b9584e7fb2fdc805e902635ac
++Subproject commit 1287b6e42e839ba2ab0f06268c5b53ae60df3537
 -- 
 2.47.1.613.gc27f4b7a9f-goog
 

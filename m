@@ -1,106 +1,105 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp5601764njk;
-        Thu, 26 Dec 2024 00:28:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWW08lKRQhtY+CoypXJyLq0QRKqvED/dTZZ40Hr2AwIA653PM6XPx42ivNbaEdw0yX7MZkTni+gBWmGew==@linaro.org
-X-Google-Smtp-Source: AGHT+IHzSbCnbjDLeMT6QfbCLWYh1oG4KHeTFI2afDT2wMLWhXh1/7VPtSvuHFSFqBzchaRqryDg
-X-Received: by 2002:a05:620a:29d0:b0:7b6:6e59:2864 with SMTP id af79cd13be357-7b9ba7eae9cmr4017514085a.43.1735201711375;
-        Thu, 26 Dec 2024 00:28:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735201711; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp5601793njk;
+        Thu, 26 Dec 2024 00:28:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU7CxVNQWUkBFhJUVI/5SzZ2WJa3cHAqlRvTWxKmuwad5t821BCQARdmKlopFx5ac27CtcVDSNebgygHQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHIsiaFHn2Q9xA5AtBoh7YLXyAvo/BzAZtmeuDp1efBkR38a8O+e8fUGA5rJDRmj1Xy/ky6
+X-Received: by 2002:ac8:5a54:0:b0:467:61da:1ce2 with SMTP id d75a77b69052e-46a4a8cbc41mr294457611cf.16.1735201716891;
+        Thu, 26 Dec 2024 00:28:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735201716; cv=none;
         d=google.com; s=arc-20240605;
-        b=VtsSAivsHFgHTGIGhSbdF/XJ/AufuAi1fhYQVwK28shXfSvNedt1KEwRwgFfcqk7HN
-         Zj/4h1VEqh3HA4UXqFK3g4fFQiczB+bN6Rembmj3R3YS9xLs8ViAK8Y6zVqqAEmyJdHn
-         jenM4KsBaU0G6jfWUPBK8fNRIfblXL6546ZN7hHuVCqxAErS/tGYDV5j3/Fyd3Ubw7C1
-         kaghhQk5kqQ8ra48cgACj4JYGJbcss63JZ42xhofy+juA/PIZppp7tvMSpllleM/0hQa
-         5DEJTZTGLwWQhJRwDXblw9AXehOCJiBujpew6jd8YPlALqW4Ptu6CPjrkODVI9NZy3t0
-         QtNg==
+        b=LQ+5UNAIr5BDycsGPryyctnIEl7UUtn465kAhkAwSxxTc4QS869hbJIzRg567gLfpi
+         dw4F1mizY6ULbHUQqntnwewdd+1D/IqTb36sUsLMjRDFy6IdjL4qe0ySj+Go3k9H2nlk
+         q4t39eP1jlTfOsTewuO6BuDwT/NQiKRJJCOTtqgG3a3a9OZtBWSl7YONGwEH4YqfZ+nr
+         3e9sTAqrWzxgAM+HqrVwpw0jdQC7VZ6W2pLkxTAauL193g15iIDUnLA1kCWD2E8h1rey
+         +2CCes1J336bXtv4lIvu51rBPJEKJmRTqN1bT0GxfZGH4qYLbpqRIchSqH2SMD47aOH7
+         3FlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:from:subject:message-id
          :references:mime-version:in-reply-to:date:dkim-signature;
-        bh=F8RiAlCHl+1NqI9Hasi2td6dnDjrsz5BjuPhZ1v7pKk=;
-        fh=w0p6RsF9bPBEEVJbheB/m3vWI5kdP9618kKYTw9vfY0=;
-        b=GprQ0ZeSiU3clI9w2W+jJ+xP2z24JQ6DL0ZG3lYHy7rTbz0TwTTD4XC7XDkamgRNSI
-         nvA9WN/NuYMyxfHjUnpvJlSTW2uv9fA0zv2Mx1vX18HyJcmzxexa9RpgRY5sYRyJ0Fnr
-         tyyzwLROxSw3v8Hcjujc5VA7w8DHFJASPYBoP4Edobt54zoZ3kVagWGMhEyl0JnPdmZ5
-         WJ/WZgp3c/NKr/D2cjpQoa2KMGsK9GCehRzZHyLm8GYFXoQ+q6nB91JWrs2sL1+YMgl1
-         Ivg0vdVoCO27ZmQEwaGDp7wpV2hJMY28BAwdeyvlkXeZ8KfmyIwgrFQ1iuvR75kQp3jL
-         opDg==;
+        bh=mII2KQCbUJ3mJ7sYUww2aSfqMfq2RPMoT2IXlGafl+I=;
+        fh=rFK0q06KnWcC3D1GUtJSKHCC9xyuMMZB9uxw+oHdxrU=;
+        b=R2NE+lpE7o5rv+2WfN+79kM6HlClflFPfAhtIIYDz7Bm9AXOCEbrAlJxAZOpQIkt9p
+         tHjUFyq5RoZPmETdqjG5gsWDvF3LX10VV5b4aqOiqqEuOWhuO+ohSeZ70rraoSVJe9B8
+         U4zDpwhUgpy1xQbJ8GBfGl0RUSBN6IbpDhA43mE+h/meamth4CJE4yO8bUI4A4YLW5E9
+         ze8TKDA2L9lmvAgAw63TJpGr4ohbm1Tm7MOtNTBOWq1dlwHTVLF3PDns2B8R6v7fVmzW
+         qFHAS2KIT43/5LPApKcDaq+OM96LvkcJrx1QauynFhZ5qRc3yd7GT6h5S4vhRHiJLYr/
+         S7qw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="o9378D/B";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=xQH6QarF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac2ad90fsi1975356285a.35.2024.12.26.00.28.31
+        by mx.google.com with ESMTPS id d75a77b69052e-46a3ec03c6fsi184344401cf.700.2024.12.26.00.28.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Dec 2024 00:28:31 -0800 (PST)
+        Thu, 26 Dec 2024 00:28:36 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="o9378D/B";
+       dkim=pass header.i=@google.com header.s=20230601 header.b=xQH6QarF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tQjEG-0002MY-7P; Thu, 26 Dec 2024 03:28:24 -0500
+	id 1tQjEJ-0002fB-Do; Thu, 26 Dec 2024 03:28:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3mBNtZwgKCrUrpcVjoncbjjbgZ.XjhlZhp-YZqZgijibip.jmb@flex--wuhaotsh.bounces.google.com>)
- id 1tQjE6-0002Cr-Sl
- for qemu-devel@nongnu.org; Thu, 26 Dec 2024 03:28:16 -0500
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649])
+ <3oxNtZwgKCsA20nguzynmuumrk.iuswks0-jk1krtutmt0.uxm@flex--wuhaotsh.bounces.google.com>)
+ id 1tQjEF-0002NL-SX
+ for qemu-devel@nongnu.org; Thu, 26 Dec 2024 03:28:24 -0500
+Received: from mail-pl1-x64a.google.com ([2607:f8b0:4864:20::64a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3mBNtZwgKCrUrpcVjoncbjjbgZ.XjhlZhp-YZqZgijibip.jmb@flex--wuhaotsh.bounces.google.com>)
- id 1tQjE1-000198-OX
- for qemu-devel@nongnu.org; Thu, 26 Dec 2024 03:28:11 -0500
-Received: by mail-pl1-x649.google.com with SMTP id
- d9443c01a7336-21640607349so108029535ad.0
- for <qemu-devel@nongnu.org>; Thu, 26 Dec 2024 00:28:09 -0800 (PST)
+ <3oxNtZwgKCsA20nguzynmuumrk.iuswks0-jk1krtutmt0.uxm@flex--wuhaotsh.bounces.google.com>)
+ id 1tQjEE-0001Ag-7v
+ for qemu-devel@nongnu.org; Thu, 26 Dec 2024 03:28:23 -0500
+Received: by mail-pl1-x64a.google.com with SMTP id
+ d9443c01a7336-216266cc0acso73577895ad.0
+ for <qemu-devel@nongnu.org>; Thu, 26 Dec 2024 00:28:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1735201688; x=1735806488; darn=nongnu.org;
+ d=google.com; s=20230601; t=1735201699; x=1735806499; darn=nongnu.org;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:from:to:cc:subject:date:message-id:reply-to;
- bh=F8RiAlCHl+1NqI9Hasi2td6dnDjrsz5BjuPhZ1v7pKk=;
- b=o9378D/BVgozfZrzdFyPXgt3/Oz7+mf7dMZnDBYuCd14AYOdfgGm9ejQ0If5cXxTfJ
- tCRpOc4sVQZBtaRfZN4MWU/XRWhhZ1HX3dDg3Tk062snOj6XQnTuHMiEdNsU+uevTLM6
- JgneXshBAw6evM9i3IHEgaQtyKXPHVvZ4uXL3DK1Xlnr9Iw2vudEvnbzq/UmMUE5sz87
- /ARUQf5Y3d2szsJ3tka9SxiOBXcVzDvXDOsw78LlgA/oVYNe2L54EpuHBJuUB8p1YT0z
- 2hRCawVc+ZuBw943gkb3XbO9AdDJA2UjX14b5t/yZbipvGvGKWNYyD/rYKm9QitsGKmS
- COTA==
+ bh=mII2KQCbUJ3mJ7sYUww2aSfqMfq2RPMoT2IXlGafl+I=;
+ b=xQH6QarFSBNHiXUh4qAmxdclYz2zPPNPsg2Im3Y+fEu/6AvsD1IaImRaf4m7I7klLd
+ MltNyzQ2Zfdz8nwc7GvY/iKkTtCvzHOOUO8Dx7nIJ6YvSNV4d3VBUf956dx1u4ZaPB+j
+ k4dh9Q44GhIiNMTQ+ZewzYe1VQl9t7SDnuf/loZ5ZQ0o2/iIVVu1ke5GAYACXoP/bTxS
+ IUlNzx9OGQEu1gUZ7k4dhWxq3U8hP/q+Y7UIuCFV3ZDFV1b2ZwOYxno+V4J0qAFtWflA
+ sf1wI88LECGVJ/osEOL69pPOoHd7arCNabBwiyfkSrTWE48+SRKKFT8DOluhRifc4Ybm
+ vHGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735201688; x=1735806488;
+ d=1e100.net; s=20230601; t=1735201699; x=1735806499;
  h=cc:to:from:subject:message-id:references:mime-version:in-reply-to
  :date:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=F8RiAlCHl+1NqI9Hasi2td6dnDjrsz5BjuPhZ1v7pKk=;
- b=QjzZBUGwPsPSSdpvTbh8gvrvzYxU/I0hyNsoeYIaoGhI++vbJThV3syAGnjhKviMRQ
- 3bfah5hmVB6n7xgNeAfbtuxCFXeEMBuMDTwna8Vw5HIL4QaaDQutgzBTbCqtgdLLyq7a
- MlXAgckQeY8QPTxvC5mVL0bkdY1pgARydX5vgifAQ/yce5msfRcYMXxRcNEy949gS5BF
- Dzouad8OMWt+YUM0QH+j1IXsxyPWb1frnSzuDTziylUJ7spE5vAFJeMkIkbSwpStRAdu
- /7diY9hKeUtcl3qX1OyjNqBDy2wdrbdASnYk2TI85pgwkLJA8qbBt4zCq6TuOLfBv0cG
- 2cfA==
+ bh=mII2KQCbUJ3mJ7sYUww2aSfqMfq2RPMoT2IXlGafl+I=;
+ b=BguAK/ztlkivlLaj/Pga5fqliMAAx2QOw6okraE5Vs1TA4Bb8OCX0OAbV0jR0Sv4WI
+ 8nDu+26DXM9irShbNXuBkWsa9Ocjbj8M+HSDxiWRXfra1fGffTIQlr50yh2WBsr34EhZ
+ gS2svWGrkyMEI5m9Hy0z3axYSD92NybyIxKWfeTSouGtVGtb5PU1jUEJvBouHeBiC6CM
+ Mal41iCYltvKg+Ycy35nGgC1uPjHOYnsjqCLip75zwhg1dhMbI4kXztjZDDRJQprGqTC
+ UKOkCX3+0AnZsNFUc7bFcURq+4cmiTTgXE0nQIZxuo79X4OS/aesUsN/EMhs4pkgYR8z
+ n9YQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUGi/RUkj5qP/F6OV4p5+j2StSZhLKzQN5dsrPlJCK1VHMY4+EQjDnbl4y10O/c+uLk5lFemxL8agZ3@nongnu.org
-X-Gm-Message-State: AOJu0Yw/AjuiinOk3NB98ZS1JzuWa2vTaLjtDxTOFMZPBB8HQWUOS2Qf
- iBA9WFWymEMFRcx/5Y5Y1ms0CrD2xbiuCq260oYLxB1qT3DFaJw1FjepwgLRGYR169xVI7kjAdU
- YlauRUxGKRw==
-X-Received: from pfbbr12.prod.google.com
- ([2002:a05:6a00:440c:b0:725:eb9c:47e4])
+ AJvYcCXQtjTOeid9/kUwwMWcI4nGjtXBci235+7C+bOuiZOmkmN+ttIL8ywKSxrrhkaHtdspyFkViPrYA3sS@nongnu.org
+X-Gm-Message-State: AOJu0YyzIetJ4ot6VEeM5Lkbvekwy5xvP8mVbloGaOhU6stklR0jZIV6
+ R5vlm6rbfM114fIuSJ6KzwzB5v436KoW1CzsHFu7yhyHKpQtfliLrht2QcUBJ12+t0OhkPasIoa
+ Jb5WF7bAnaQ==
+X-Received: from pgot8.prod.google.com ([2002:a63:b248:0:b0:7fd:56a7:26a8])
  (user=wuhaotsh job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a21:1014:b0:1e3:e836:8aea with SMTP id
- adf61e73a8af0-1e5e046f453mr40786073637.14.1735201688208; 
- Thu, 26 Dec 2024 00:28:08 -0800 (PST)
-Date: Thu, 26 Dec 2024 08:27:44 +0000
+ 2002:a05:6a20:1593:b0:1e1:ffec:b1a9 with SMTP id
+ adf61e73a8af0-1e5c6ec6f11mr40177658637.3.1735201699024; 
+ Thu, 26 Dec 2024 00:28:19 -0800 (PST)
+Date: Thu, 26 Dec 2024 08:27:47 +0000
 In-Reply-To: <20241226082800.2887689-1-wuhaotsh@google.com>
 Mime-Version: 1.0
 References: <20241226082800.2887689-1-wuhaotsh@google.com>
 X-Mailer: git-send-email 2.47.1.613.gc27f4b7a9f-goog
-Message-ID: <20241226082800.2887689-2-wuhaotsh@google.com>
-Subject: [PATCH v2 01/17] docs/system/arm: Add Description for NPCM8XX SoC
+Message-ID: <20241226082800.2887689-5-wuhaotsh@google.com>
+Subject: [PATCH v2 04/17] hw/ssi: Make flash size a property in NPCM7XX FIU
 From: Hao Wu <wuhaotsh@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
@@ -108,9 +107,9 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com,
  hskinnemoen@google.com, venture@google.com, pbonzini@redhat.com, 
  jasowang@redhat.com, alistair@alistair23.me, Hao Wu <wuhaotsh@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=3mBNtZwgKCrUrpcVjoncbjjbgZ.XjhlZhp-YZqZgijibip.jmb@flex--wuhaotsh.bounces.google.com;
- helo=mail-pl1-x649.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::64a;
+ envelope-from=3oxNtZwgKCsA20nguzynmuumrk.iuswks0-jk1krtutmt0.uxm@flex--wuhaotsh.bounces.google.com;
+ helo=mail-pl1-x64a.google.com
 X-Spam_score_int: -95
 X-Spam_score: -9.6
 X-Spam_bar: ---------
@@ -132,69 +131,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mQtwERBaYFju
+X-TUID: ISlHumdgoTp1
 
-NPCM8XX SoC is the successor of the NPCM7XX. It features quad-core
-Cortex-A35 (Armv8, 64-bit) CPUs and some additional peripherals.
+This allows different FIUs to have different flash sizes, useful
+in NPCM8XX which has multiple different sized FIU modules.
 
 Signed-off-by: Hao Wu <wuhaotsh@google.com>
 ---
- docs/system/arm/nuvoton.rst | 20 +++++++++++++++-----
- 1 file changed, 15 insertions(+), 5 deletions(-)
+ hw/arm/npcm7xx.c             |  6 ++++++
+ hw/ssi/npcm7xx_fiu.c         | 11 +++++++----
+ include/hw/ssi/npcm7xx_fiu.h |  1 +
+ 3 files changed, 14 insertions(+), 4 deletions(-)
 
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-index 05059378e5..0a1916fb99 100644
---- a/docs/system/arm/nuvoton.rst
-+++ b/docs/system/arm/nuvoton.rst
-@@ -1,12 +1,13 @@
- Nuvoton iBMC boards (``kudo-bmc``, ``mori-bmc``, ``npcm750-evb``, ``quanta-gbs-bmc``, ``quanta-gsj``)
- =====================================================================================================
- 
--The `Nuvoton iBMC`_ chips (NPCM7xx) are a family of ARM-based SoCs that are
-+The `Nuvoton iBMC`_ chips are a family of ARM-based SoCs that are
- designed to be used as Baseboard Management Controllers (BMCs) in various
--servers. They all feature one or two ARM Cortex-A9 CPU cores, as well as an
--assortment of peripherals targeted for either Enterprise or Data Center /
--Hyperscale applications. The former is a superset of the latter, so NPCM750 has
--all the peripherals of NPCM730 and more.
-+servers. Currently there are two families: NPCM7XX series and
-+NPCM8XX series. NPCM7XX series feature one or two ARM Cortex-A9 CPU cores,
-+while NPCM8XX feature 4 ARM Cortex-A35 CPU cores. Both series contain a
-+different assortment of peripherals targeted for either Enterprise or Data
-+Center / Hyperscale applications.
- 
- .. _Nuvoton iBMC: https://www.nuvoton.com/products/cloud-computing/ibmc/
- 
-@@ -27,6 +28,8 @@ There are also two more SoCs, NPCM710 and NPCM705, which are single-core
- variants of NPCM750 and NPCM730, respectively. These are currently not
- supported by QEMU.
- 
-+The NPCM8xx SoC is the successor of the NPCM7xx SoC.
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index 386b2c35e9..2d6e08b72b 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -292,17 +292,21 @@ static const struct {
+     hwaddr regs_addr;
+     int cs_count;
+     const hwaddr *flash_addr;
++    size_t flash_size;
+ } npcm7xx_fiu[] = {
+     {
+         .name = "fiu0",
+         .regs_addr = 0xfb000000,
+         .cs_count = ARRAY_SIZE(npcm7xx_fiu0_flash_addr),
+         .flash_addr = npcm7xx_fiu0_flash_addr,
++        .flash_size = 128 * MiB,
 +
- Supported devices
- -----------------
+     }, {
+         .name = "fiu3",
+         .regs_addr = 0xc0000000,
+         .cs_count = ARRAY_SIZE(npcm7xx_fiu3_flash_addr),
+         .flash_addr = npcm7xx_fiu3_flash_addr,
++        .flash_size = 128 * MiB,
+     },
+ };
  
-@@ -62,6 +65,8 @@ Missing devices
-    * System Wake-up Control (SWC)
-    * Shared memory (SHM)
-    * eSPI slave interface
-+   * Block-tranfer interface (8XX only)
-+   * Virtual UART (8XX only)
+@@ -735,6 +739,8 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
  
-  * Ethernet controller (GMAC)
-  * USB device (USBD)
-@@ -76,6 +81,11 @@ Missing devices
-  * Video capture
-  * Encoding compression engine
-  * Security features
-+ * I3C buses (8XX only)
-+ * Temperator sensor interface (8XX only)
-+ * Virtual UART (8XX only)
-+ * Flash monitor (8XX only)
-+ * JTAG master (8XX only)
+         object_property_set_int(OBJECT(sbd), "cs-count",
+                                 npcm7xx_fiu[i].cs_count, &error_abort);
++        object_property_set_int(OBJECT(sbd), "flash-size",
++                                npcm7xx_fiu[i].flash_size, &error_abort);
+         sysbus_realize(sbd, &error_abort);
  
- Boot options
- ------------
+         sysbus_mmio_map(sbd, 0, npcm7xx_fiu[i].regs_addr);
+diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+index 21fc489038..ccdce67fa9 100644
+--- a/hw/ssi/npcm7xx_fiu.c
++++ b/hw/ssi/npcm7xx_fiu.c
+@@ -28,9 +28,6 @@
+ 
+ #include "trace.h"
+ 
+-/* Up to 128 MiB of flash may be accessed directly as memory. */
+-#define NPCM7XX_FIU_FLASH_WINDOW_SIZE (128 * MiB)
+-
+ /* Each module has 4 KiB of register space. Only a fraction of it is used. */
+ #define NPCM7XX_FIU_CTRL_REGS_SIZE (4 * KiB)
+ 
+@@ -507,6 +504,11 @@ static void npcm7xx_fiu_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    if (s->flash_size == 0) {
++        error_setg(errp, "%s: flash size must be set", dev->canonical_path);
++        return;
++    }
++
+     s->spi = ssi_create_bus(dev, "spi");
+     s->cs_lines = g_new0(qemu_irq, s->cs_count);
+     qdev_init_gpio_out_named(DEVICE(s), s->cs_lines, "cs", s->cs_count);
+@@ -525,7 +527,7 @@ static void npcm7xx_fiu_realize(DeviceState *dev, Error **errp)
+         flash->fiu = s;
+         memory_region_init_io(&flash->direct_access, OBJECT(s),
+                               &npcm7xx_fiu_flash_ops, &s->flash[i], "flash",
+-                              NPCM7XX_FIU_FLASH_WINDOW_SIZE);
++                              s->flash_size);
+         sysbus_init_mmio(sbd, &flash->direct_access);
+     }
+ }
+@@ -543,6 +545,7 @@ static const VMStateDescription vmstate_npcm7xx_fiu = {
+ 
+ static const Property npcm7xx_fiu_properties[] = {
+     DEFINE_PROP_INT32("cs-count", NPCM7xxFIUState, cs_count, 0),
++    DEFINE_PROP_SIZE("flash-size", NPCM7xxFIUState, flash_size, 0),
+ };
+ 
+ static void npcm7xx_fiu_class_init(ObjectClass *klass, void *data)
+diff --git a/include/hw/ssi/npcm7xx_fiu.h b/include/hw/ssi/npcm7xx_fiu.h
+index a3a1704289..1785ea16f4 100644
+--- a/include/hw/ssi/npcm7xx_fiu.h
++++ b/include/hw/ssi/npcm7xx_fiu.h
+@@ -60,6 +60,7 @@ struct NPCM7xxFIUState {
+     int32_t cs_count;
+     int32_t active_cs;
+     qemu_irq *cs_lines;
++    size_t flash_size;
+     NPCM7xxFIUFlash *flash;
+ 
+     SSIBus *spi;
 -- 
 2.47.1.613.gc27f4b7a9f-goog
 

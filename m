@@ -1,127 +1,106 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp5884667njk;
-        Thu, 26 Dec 2024 09:37:24 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVihvLIOtXH9Ud93IkbiJo8pseXIMIiuY9lhg/Sbw3uaE5dgjKLg2KoJxZRAmrtvXQUXcfJzgpb+SJU7g==@linaro.org
-X-Google-Smtp-Source: AGHT+IELejL5LEcXUlM8qhOPuQM/fYyL6rLBGnyBZDEDjSy2Y7g7186yprfKg7BNpweo8bewonEx
-X-Received: by 2002:a05:6214:248a:b0:6d8:8da9:e418 with SMTP id 6a1803df08f44-6dd233aedd7mr375556546d6.40.1735234644552;
-        Thu, 26 Dec 2024 09:37:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735234644; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp5745136njk;
+        Thu, 26 Dec 2024 05:59:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU5Nrt7aaf7uryD7Rg1OT3CaNcjivRqNtO+pbyG7+PbL4dpErkXJv8eOdYpCp1G9T5mOLb0l9bW1mraDg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGAi5FdrbGk8RoQithjZESlMCw3dxqw9phbLIDnrjdF1yPXzDTxPQHr3pJo0ywdkJNmyQm5
+X-Received: by 2002:a05:620a:1792:b0:7b6:d710:22ad with SMTP id af79cd13be357-7b9bacd64afmr3428150485a.27.1735221579755;
+        Thu, 26 Dec 2024 05:59:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735221579; cv=none;
         d=google.com; s=arc-20240605;
-        b=HJS6F3WLSAotUvCI41VaoUWnUjS3woASTpijd/SLtuaPhIvuPlfcN/MzhKKwRPuKqz
-         1qO2yHpDlCwCnjCB5x6wT+qznoORXEJFhNYJugdGDWRcDnz84kW/njBBvs6WijqX3Tgq
-         jRdX5p+UdgDVHJ1ud/pQDU8kt5yWCl7Y/ZsX5fXlRvgz+2OzVSZArlChRhvgGnGX1iMv
-         4d426rZk4L0pF3/1T8VeSoZD3/3zvy2eYujq9uBahoUeLopF0nr5enrZAq2DzV45ENLH
-         BZfI9ZHwpcbDmeZ7unmCbGcYoi2OUOhkvFAo+S+NqD4wMW3LQKDvkpiie7hMLd+y0bDx
-         nHEg==
+        b=etaKmQr48fPI3wbMGqKDXq9kjWKZAcYK/ddz3ODyJUQPgF+JWS/QcBlSpc10IKEq7p
+         zU6gzC50eOy+6KRJo2HWSYS5CkAeVMsZX3k4okMB7REvYz36gPJQtmS8zCLClqlUqdbL
+         jGPyZ3V9fBcwOXfThxFU32Ru4ZpTOqOUDCEj3G7fhiNt4SbBrLSPNfARdCq/NmHwM0u7
+         KVbuvZigT9VcxPVAVTklCUbkKiQnsObUsCyD4P7vfeix0zy2iCgDFrn62Ts1GTyfOJxF
+         gZPu5PBtdO+WFuCZi1IJE8p46by6NYkV+rzOBT6b1kAa4RiQnB/ximUo4UF3GoegZXn/
+         Hezg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:to:subject:user-agent
-         :mime-version:date:message-id:dkim-signature;
-        bh=6jDuuLJjvLq3B5zgsKAAfTUjIgVl2eSiRr5t3Z0qcEI=;
-        fh=zBwVYIiaoQaRqid66lpvUJ+7F9V5MV+hiYHxXqtg510=;
-        b=Ozhw/feDuK8Av6TbpooMVIM8MByGwFnBF92hVjQyUMOavRpgpsjt85uN8Z54pSX8o7
-         /cwgtxrJioM2Qg/EEVyboCSLJolvcTiwFhAJspYV4EqtD9oJCYORKPp7iCJ9VBMl03ZI
-         3tAGe7AIB3755U2YI0gOoSr7gfarzwubXshV/zMi+ISnxDTcBB1rO67MV7pO5/lcFm/H
-         1Dqx3NOFhHt28cqeM5laSE2Y234lrWgUADDWQNCSiKMG4faXrRe+0cuHuaNFkXccNLdU
-         clbhbmKXBc/XgfYU5sCyeoCLxUWe3zlAdGlsd/h4yt1CZgX6jnk8/olOrsoAzE+Bw/YB
-         uaYw==;
+         :mime-version:message-id:date:subject:cc:to:from;
+        bh=E/4YjSFS9wdZW95F7kChokfGUyoCOYyIMX6pyuTNFFA=;
+        fh=fZ8cXwM6v9N+x19mcjA2kJg7xEzqm/22v+7VALZWV8E=;
+        b=JnZCQEuHSQ/Kx1GAL3731HVPzpVuOYxWBslaR0TfGc8K7bZuaoR3a66atVyRVEJBc3
+         e6MB7VwKTrpIK273HyifCBnDv1qx3Nqw9a/FIelXFcKMlb0MRuKFnxFHKvrrXnR3f3TM
+         iUUgykNnHrxG2rxHWn9lbnSDdqQdWA6zEjAnmuIO2Gh33TKuodrdcPea7YTlECWnP/hS
+         QVo03615pSV/7lh1xFemWML7wslpJ+nWHC0JuZRmpzqoGCMZvIoGaRi2YOYt9NhSaUG9
+         zn0L9ufQt7ZDmM/A77K+YuG4dDVSavVsYl029+l6G3btHcUlZtDF9uGvfBi+9fak3qp7
+         cCQA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zL5xl931;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dd18137897si199137456d6.160.2024.12.26.09.37.24
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac47a464si1795523885a.338.2024.12.26.05.59.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Dec 2024 09:37:24 -0800 (PST)
+        Thu, 26 Dec 2024 05:59:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zL5xl931;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tQrn7-0003ad-4U; Thu, 26 Dec 2024 12:36:57 -0500
+	id 1tQoOh-0005UP-J0; Thu, 26 Dec 2024 08:59:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tQrn5-0003a6-Jl
- for qemu-arm@nongnu.org; Thu, 26 Dec 2024 12:36:55 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tQrn4-0004Gs-3P
- for qemu-arm@nongnu.org; Thu, 26 Dec 2024 12:36:55 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4363ae65100so70627665e9.0
- for <qemu-arm@nongnu.org>; Thu, 26 Dec 2024 09:36:53 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1735234612; x=1735839412; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=6jDuuLJjvLq3B5zgsKAAfTUjIgVl2eSiRr5t3Z0qcEI=;
- b=zL5xl9313HipSBedIuXR5FkKkBH/WGqCPF5DrFndWzq8OCjqtzFKNoZzKpKGU5nI8H
- ivJFKaCYMm6beGGPcOg5ar4z1BRMKgLp8XlUFpTyWrKB+JvD9BEL/17PLlJW2g1mh058
- dCmQEGtn8MaG/j/QsMwKVAugmMUsJ4D8d0CKTknEbq0pHAz+0MBb9IblEx0hx5GKzlxm
- SDpBs1ijUYm9/Xzpzv/6jyLxJ1O3XG+CHPXtY5DkPc1Ocs2bP+8b2xD/CFzQ3eJsYxiv
- oyGq7flA0BOfcsN2B47rvZV9Zi10AAGUNIQzuRPfIH5qbeHlwdpA2BwWW6OfsWmkzILR
- xFew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735234612; x=1735839412;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6jDuuLJjvLq3B5zgsKAAfTUjIgVl2eSiRr5t3Z0qcEI=;
- b=Mi0Ufd919wyfYYCgyQMe+ny5UAiMv5D/Pu6VgOL1qCPsE5S6E/KusIvPSevnVCIF3q
- nt3762UiMeaFxsP3JO1z2Gc72WcT7Dz5r5cHuA2M5jMm3nosMtTTS1IGiXcGpPl8c/ox
- zogfPWsOawgVp2xy4mmtdbsB2ZeVb73yPX86rAAfUdACRFpDp+6MPkjTAsx3SPLMHATd
- xjtu/xF3ZZ5FO96AiiBHQcMdLnkmIwUjhsmd6FgHHNbb8ydHC8HcMWLSKfBXzSPeV8Xv
- 5f0dLrZJ9t04TMkT5Gg/76bbf/yn5ye8hXLgT0XH0Q/tMCUIr6H/6mlIxBWFPddPVMBg
- eYxw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVbAMhCkBeB1P3zepa7vfPkUZD3j53aqINN9qZwpT5b8Dzd+9xrSrQFOpeYIJ8FW3akvoMubp5m2w==@nongnu.org
-X-Gm-Message-State: AOJu0YwytJeV7d3SBORr6T8NSQ62cUDR7oJ4HL3fYq63MgAGm5nFshXr
- EDtdWIXJ2asSodiw8243Idxeqnb4OoCDSiC4ezX/dc3neOU5yBmQPi+mISQ7a4Y=
-X-Gm-Gg: ASbGncucwgCMv6l82rPzCQVRM94NWF/knERYXcxytR1TezcePMyZXxznCQPTnTMd1Qw
- NF3XTsPuGadBVWnP7tLdAU780hxnYTLYQUGdI3Jipc28C6vg7bStDZMvzEJL5dsJadlAW4nb3qu
- wQdTzOAhzKMKkwtqFhKzOEM8WQtb56LaG+zWrjBPUVCXf7f+1A+aOfNxetC14loxub8QVb4EDcl
- cov+/dlLzO8BkVjZ0wk+NsaTLGWTkB/Mptd97QRw4M40n9JizDffZvOPRonuUECOxUnJ2u2rYI9
- juEmFMFg0H7Lgx6XZ9UnUfNYgStqeRmuKyeM
-X-Received: by 2002:a5d:6c64:0:b0:385:f6f4:f8e with SMTP id
- ffacd0b85a97d-38a223ff1cemr16935449f8f.50.1735234611869; 
- Thu, 26 Dec 2024 09:36:51 -0800 (PST)
-Received: from [10.217.61.213] (180.red-95-127-33.staticip.rima-tde.net.
- [95.127.33.180]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a1c8a6ca5sm20440819f8f.86.2024.12.26.09.36.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 26 Dec 2024 09:36:51 -0800 (PST)
-Message-ID: <f16425be-46a1-4989-a7a2-9d7bb005d257@linaro.org>
-Date: Thu, 26 Dec 2024 18:36:46 +0100
+ (Exim 4.90_1) (envelope-from <tsogomonian@astralinux.ru>)
+ id 1tQnWh-0000q9-0d; Thu, 26 Dec 2024 08:03:43 -0500
+Received: from mail-gw02.astralinux.ru ([195.16.41.108])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tsogomonian@astralinux.ru>)
+ id 1tQnWe-00028U-U1; Thu, 26 Dec 2024 08:03:42 -0500
+Received: from gca-msk-a-srv-ksmg01.astralinux.ru (localhost [127.0.0.1])
+ by mail-gw02.astralinux.ru (Postfix) with ESMTP id 5AC8F1F9C5;
+ Thu, 26 Dec 2024 16:03:35 +0300 (MSK)
+Received: from new-mail.astralinux.ru (gca-yc-ruca-srv-mail04.astralinux.ru
+ [10.177.185.109])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail-gw02.astralinux.ru (Postfix) with ESMTPS;
+ Thu, 26 Dec 2024 16:03:33 +0300 (MSK)
+Received: from rbta-msk-lt-328534.astralinux.ru (unknown [10.177.20.66])
+ by new-mail.astralinux.ru (Postfix) with ESMTPA id 4YJpj04sfdzkWxV;
+ Thu, 26 Dec 2024 16:03:31 +0300 (MSK)
+From: Tigran Sogomonian <tsogomonian@astralinux.ru>
+To: kfting@nuvoton.com, wuhaotsh@google.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
+Cc: Tigran Sogomonian <tsogomonian@astralinux.ru>
+Subject: [PATCH] hw/misc: cast rpm to uint64_t
+Date: Thu, 26 Dec 2024 16:03:11 +0300
+Message-Id: <20241226130311.1349-1-tsogomonian@astralinux.ru>
+X-Mailer: git-send-email 2.30.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw: cast 1 to 1ULL
-To: Tigran Sogomonian <tsogomonian@astralinux.ru>, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
-References: <20241226095815.15377-1-tsogomonian@astralinux.ru>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241226095815.15377-1-tsogomonian@astralinux.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-KSMG-AntiPhishing: NotDetected
+X-KSMG-AntiSpam-Auth: dkim=none
+X-KSMG-AntiSpam-Envelope-From: tsogomonian@astralinux.ru
+X-KSMG-AntiSpam-Info: LuaCore: 49 0.3.49
+ 28b3b64a43732373258a371bd1554adb2caa23cb, {Tracking_internal2},
+ {Tracking_from_domain_doesnt_match_to}, astralinux.ru:7.1.1;
+ d41d8cd98f00b204e9800998ecf8427e.com:7.1.1; new-mail.astralinux.ru:7.1.1;
+ 127.0.0.199:7.1.2, FromAlignment: s
+X-KSMG-AntiSpam-Interceptor-Info: scan successful
+X-KSMG-AntiSpam-Lua-Profiles: 190075 [Dec 26 2024]
+X-KSMG-AntiSpam-Method: none
+X-KSMG-AntiSpam-Rate: 0
+X-KSMG-AntiSpam-Status: not_detected
+X-KSMG-AntiSpam-Version: 6.1.1.7
+X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.1.0.7854,
+ bases: 2024/12/26 09:04:00 #26918328
+X-KSMG-AntiVirus-Status: NotDetected, skipped
+X-KSMG-LinksScanning: NotDetected
+X-KSMG-Message-Action: skipped
+X-KSMG-Rule-ID: 1
+Received-SPF: pass client-ip=195.16.41.108;
+ envelope-from=tsogomonian@astralinux.ru; helo=mail-gw02.astralinux.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 26 Dec 2024 08:59:30 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,32 +114,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: YADPcgX9YuXo
+X-TUID: 8TqyC5XRXeC2
 
-On 26/12/24 10:58, Tigran Sogomonian wrote:
-> To prevent integer overflow it is worth casting 1 to 1ULL.
-> 
-> Found by Linux Verification Center (linuxtesting.org) with SVACE.
-> 
-> Signed-off-by: Tigran Sogomonian <tsogomonian@astralinux.ru>
-> ---
->   hw/misc/mps2-fpgaio.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/misc/mps2-fpgaio.c b/hw/misc/mps2-fpgaio.c
-> index d07568248d..297cb1b602 100644
-> --- a/hw/misc/mps2-fpgaio.c
-> +++ b/hw/misc/mps2-fpgaio.c
-> @@ -198,7 +198,7 @@ static void mps2_fpgaio_write(void *opaque, hwaddr offset, uint64_t value,
->   
->               s->led0 = value & MAKE_64BIT_MASK(0, s->num_leds);
->               for (i = 0; i < s->num_leds; i++) {
-> -                led_set_state(s->led[i], value & (1 << i));
-> +                led_set_state(s->led[i], value & (1ULL << i));
+The value of an arithmetic expression
+'rpm * NPCM7XX_MFT_PULSE_PER_REVOLUTION' is a subject
+to overflow because its operands are not cast to
+a larger data type before performing arithmetic. Thus, need
+to cast rpm to uint64_t.
 
-Let's use extract64() and call it a day?
+Found by Linux Verification Center (linuxtesting.org) with SVACE.
 
->               }
->           }
->           break;
+Signed-off-by: Tigran Sogomonian <tsogomonian@astralinux.ru>
+---
+ hw/misc/npcm7xx_mft.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/hw/misc/npcm7xx_mft.c b/hw/misc/npcm7xx_mft.c
+index 9fcc69fe5c..e565cac05d 100644
+--- a/hw/misc/npcm7xx_mft.c
++++ b/hw/misc/npcm7xx_mft.c
+@@ -172,8 +172,9 @@ static NPCM7xxMFTCaptureState npcm7xx_mft_compute_cnt(
+          * RPM = revolution/min. The time for one revlution (in ns) is
+          * MINUTE_TO_NANOSECOND / RPM.
+          */
+-        count = clock_ns_to_ticks(clock, (60 * NANOSECONDS_PER_SECOND) /
+-            (rpm * NPCM7XX_MFT_PULSE_PER_REVOLUTION));
++        count = clock_ns_to_ticks(clock,
++            (uint64_t)(60 * NANOSECONDS_PER_SECOND) /
++            ((uint64_t)rpm * NPCM7XX_MFT_PULSE_PER_REVOLUTION));
+     }
+ 
+     if (count > NPCM7XX_MFT_MAX_CNT) {
+-- 
+2.30.2
 

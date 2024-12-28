@@ -1,271 +1,213 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp6567375njk;
-        Fri, 27 Dec 2024 12:42:00 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVMyNt+Q60x3HXy0bV5aXvW5DmhfHZYHHMjpXkdZLdZsKVzS9z0BrcWC2wRb8mKrc45Kj5eLhdLG2Bulw==@linaro.org
-X-Google-Smtp-Source: AGHT+IF8NVvRIfmlzqusQDkDkc5Ok7kiBBOIwZMcUCl+J+G2pvPXu32WsZOXyxm7xpL1JCd5pdEf
-X-Received: by 2002:ac8:588f:0:b0:461:9d9:15c2 with SMTP id d75a77b69052e-46a4a8b7e5fmr454281241cf.1.1735332120487;
-        Fri, 27 Dec 2024 12:42:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735332120; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp6798291njk;
+        Sat, 28 Dec 2024 01:58:52 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU0XSosAqlb+W/B7EneDQ5JeayVdAh2XQ2R756rXa4n81Q5aVH9oHNOtmHmOMmBTh4iKHBD0CTRlu7NTw==@linaro.org
+X-Google-Smtp-Source: AGHT+IErlExdJlIPOEZ7IKEDF+a62NQYXLqgEOevJzgug1wQKSTQyX9SeAXUS8ovXNZ8ZUrtCg6X
+X-Received: by 2002:a05:622a:181a:b0:467:72c1:7084 with SMTP id d75a77b69052e-46a3adaef78mr558330631cf.0.1735379932203;
+        Sat, 28 Dec 2024 01:58:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735379932; cv=none;
         d=google.com; s=arc-20240605;
-        b=II6p0hs8AUeZcC6jf2HYkcsNzRTot3YieCId6uB+2tp3RxDHmBAq3b0N0oCJFvB3yB
-         uYqYJWa5CTfgeI0oriCQWKlRfofhfs9Meu21TqoHosZh3esWIisnpTVoIM2+o+BCg5kE
-         BV5oEXHKGnuaz3tY7+/KoPrQ3lYiOlIR2JZA3CfVzH+IP1Mk+Qv1Bnmmka3EFC+LMZ6M
-         Pjf2WYwtgXr3NIeRAWlGiqAeOZjVPBpdoxXRliNXzTbKp1t8Lo77ZZmp68eeE/Z4LwVW
-         TTqZXrhnIZn0K5SozuGSS81+Plshvu0qv4rL/GnxCr6tKYrwYexQWIOXXnkf1DSDOEhu
-         PfXA==
+        b=IaN7mxyx3b2I6pV64avXHUZqcghL40L203zBsu6BqFAg2aFWVtTLRD1nrvxhrO3Jy4
+         Tf0NvLPSLZ3QhkbHhqi9538aPG2imRFCP4e/nWwIhUNMJ2m4qxdWzcKyQ0UFof1a3EKi
+         JFKjhNHPLGgg35xQDmbV/s3Dcnj4A+xNoxIpHspu5pTfo2fbWEPkJh7+QFIRWlLptR4O
+         rHdjow+0G3ByLNx82BVgdbJsx0+KKJT34tvZr21OH2DHjHlagtgePi8OvEPSu614TSyR
+         jkqfnMjHA9xmxURRV/dGtDAhPI8q24IfrOop0lXE7FkIvGXHm3/JVE1ttJJEfGQGuDPA
+         eNJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=k1g0yMNc8Ofwicq9K7tYxRbqKa39rJocmuDDcoWvfeQ=;
-        fh=TvGwTk3vuqOBkIsmUfR62WjgRtS6JRah3JiUwL2sIzA=;
-        b=hDdN/JEPYV8+WSf3j6G/oMf9iqxQYcbHIA7xgs6H3D8pA6DSfmLTi4xn7rFoWezkZ1
-         2MUdWT4mFXqYi1Vim7jRwm8jYHRgjKuUMuLnL6Y/btuqZFNMHpeK4M6H3umDpw0mA8d0
-         wW+mbasoPi2Ot8SSMiNsJExyvOhswtnjDDQ/bCVjJZTxkdfY9TGCH61OKfIFeSdCQ225
-         gG5RN2B2kocendQdNH6GrsUPeYNZ8YPgntHOh3iHQaGbwNIdssAqScUYoflg0nIICNnm
-         6tE/KeP53hJrWj7gdn1HbCI0CBDoeDR665xyh8rUQutkFKHFajxY5VQKipfag4FgMEUT
-         yvhQ==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=oLlZkWWkhRX5Oroi9WNUnTbKDBk8JMb0+4tDupX6CDY=;
+        fh=ucikgKTO/fL/tApgCvf7XyzMUCUn6dqL1t6daM2fN+4=;
+        b=fmQq0B06O+MOxWokMskN8ehlQB7nrsUHJz55SiVShtLygNfdUP5fc5dEVKFrgg8+fm
+         k5yETn6VATPtGMW0ylPl2W5PAnnHfI8LhLGQfXAdu0E7xj8jtk81dMtjXH+k4SpkuwxC
+         vJbhpDmQOfIIADvWE1+busmb6A+yfUXC7EhtaHaMbGpkVIw/yN7VlYiXC1ALzNFsL6QR
+         dahG1jJ9A87rqxZMX0G1dsQNkytYHNbD873RXI/eLBTLHzLL0QHQPlkzQwpJaMUz/v7C
+         hn2kngnyY871stWoMsI2JNw9AZU09E8JxGNqng5D/ahyWQTLf3erTzQPBVZHxFGLLgkA
+         KlNg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VETewpOH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=u0KbVkNx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46a3e688a58si204339381cf.142.2024.12.27.12.42.00
+        by mx.google.com with ESMTPS id d75a77b69052e-46a3e6b0379si219149061cf.211.2024.12.28.01.58.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Dec 2024 12:42:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 28 Dec 2024 01:58:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VETewpOH;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=u0KbVkNx;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tRH9U-0001Hp-ID; Fri, 27 Dec 2024 15:41:44 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tRTaJ-0001l7-Io; Sat, 28 Dec 2024 04:58:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tRH9T-0001HZ-AF
- for qemu-arm@nongnu.org; Fri, 27 Dec 2024 15:41:43 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tRTaF-0001kW-Gq
+ for qemu-devel@nongnu.org; Sat, 28 Dec 2024 04:58:11 -0500
+Received: from mail-vs1-xe32.google.com ([2607:f8b0:4864:20::e32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tRH9R-0007h6-K0
- for qemu-arm@nongnu.org; Fri, 27 Dec 2024 15:41:43 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-436326dcb1cso48978355e9.0
- for <qemu-arm@nongnu.org>; Fri, 27 Dec 2024 12:41:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
+ id 1tRTaD-0002lc-Fy
+ for qemu-devel@nongnu.org; Sat, 28 Dec 2024 04:58:11 -0500
+Received: by mail-vs1-xe32.google.com with SMTP id
+ ada2fe7eead31-4aff04f17c7so5060242137.0
+ for <qemu-devel@nongnu.org>; Sat, 28 Dec 2024 01:58:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1735332099; x=1735936899; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=k1g0yMNc8Ofwicq9K7tYxRbqKa39rJocmuDDcoWvfeQ=;
- b=VETewpOH6SwgvfHw4buJDr1ndRdanDLzmA0n01P7kSBpd9UOLUJ/6o2IQ2sk3sPZ3+
- hS+NRPch34iDCaA2CqfbSW67gmVLPR+Vi9WtYnzNLTgwd5VSmlJqqXCB3wGG5d5F7uCU
- PvD1diatSe4dZTAcTWpQmAj8iYSN7FLkS3p1jvgkDB0FInFgW+As3doRRLeBDoM/e2XQ
- ZXgIDK4F51XbtWW+9pUN+wY9mHMa/aKUF5ZazoUG8oKPhw+MZQeh21AShrtw7rnGxszr
- sBPFRwHDvov4WLwD6xkCYfQAa2IU5WUuhIUosgRwlj9aAo33o3kyb9E2MqEk71f4vy2x
- I+cA==
+ d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1735379887; x=1735984687;
+ darn=nongnu.org; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=oLlZkWWkhRX5Oroi9WNUnTbKDBk8JMb0+4tDupX6CDY=;
+ b=u0KbVkNx57iqTt1LN4EPpoWGbg4aCwdoo/9FKdQfHSK2rG9bNqtAmeqjYS4UMZ2CJC
+ qQi8UBRjbOyMWEat80GZk4hB+gdrVfpCZWpOUiZZNEoEnrhBEokEXNziqCKv+bK6EKwk
+ jcXyefKSmLo7aAI6Lkc0Tbsq3Er+9eztKjJo69s9U03wQcDhkF9vLS3aVr4R1AyfQ0gw
+ MNy0Bledc3rUyqF6DVr/Q/q8PQUy2zK1deGeSti3RHr85z7cxNoqspZ4BYdxlwLQz89h
+ w5mdpLJlZ0z1XvZZk1KSVghh/sATyc+HXDwD/qjzSQbG7YPzVF0+O0B0e+ND6gG0UlEp
+ HB1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735332099; x=1735936899;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=k1g0yMNc8Ofwicq9K7tYxRbqKa39rJocmuDDcoWvfeQ=;
- b=RaJHo0Ifv6CTcUiuogm4Hn/Rj6DTilFF5Q6zreloydSwj3T5yuTQIeercv8CyW/Y0i
- 7XRURtWQ9kSs0B8GokFNal5PHOoyVefEX/mHRrEVmhArvJraFqVZ9OZ5UbtzHV3ILghf
- 0OeH57RzyrKyuUA6/HXg4sPWa/S6BbMQ2C6RSsMyFJHZkjx7DsxrwFs4k1QReqYmxjXD
- nHr/uRHCgs6+POjzCQXbiKvj454eSbBNx+4LHIr00iQ2Feq4Jv+1noJ8SkeVH6iclh3C
- u++nF3SivBaxmqbQrOIWVzkLf2L+2o500rKnPD1ZsUR/5QIMhXx1LodIZ4S6tUfPNJUD
- tdEQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWbwIqmEWQ0vmimbpWUirAZGz7i0MTONwEsuSqtm0ormgRAErsNz8RVQuYAV5Viyq3YO2Ex2LWjgA==@nongnu.org
-X-Gm-Message-State: AOJu0Yy7JnMFvBWnVCArMuh9Gunx19tEAjUlNGfQgrGd1WnJZzhhQLp+
- uh9jK6Df2p0sXLyZSMyOZc046KM7w3E3z9E7++GGyT9DGJi+UyeVD7is29E4Qp0=
-X-Gm-Gg: ASbGncspf7cnkE61pi9J99MVr3kI/Bj5vQsv9L1DdlEwG3z6Rk32hN9DZs/g/Ry5/O7
- qcypMUshvi7E0H4wp+EG6OZupHIBmcRq1OyrAR8m6Eh+ngknfiqJPsAa4YXWXRV/tAP6YmrzIiq
- /fwuMZ5qBpZm3Awn8WSL4xnkdcqxIVKTzAkEWZ07bbApgyHqX6WUk5D13C5WkfBxwv5THUoadqn
- JHOMVYXM++oSXmmOpNJu7NMwbPub9OyBx5qh5dQvvRDwcni0DGMRJu6XJvnwiNe06nTvTEv+Jc7
- D9YAZdLXxLXB47D7IjBl9dWE
-X-Received: by 2002:a05:6000:2c3:b0:385:df73:2f3a with SMTP id
- ffacd0b85a97d-38a221fa8eemr22241467f8f.14.1735332099400; 
- Fri, 27 Dec 2024 12:41:39 -0800 (PST)
-Received: from [192.168.69.103] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a1c8292f4sm23399878f8f.3.2024.12.27.12.41.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Dec 2024 12:41:38 -0800 (PST)
-Message-ID: <49188838-5e52-4d9e-9c50-933e62678163@linaro.org>
-Date: Fri, 27 Dec 2024 21:41:36 +0100
+ d=1e100.net; s=20230601; t=1735379887; x=1735984687;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=oLlZkWWkhRX5Oroi9WNUnTbKDBk8JMb0+4tDupX6CDY=;
+ b=Wu92O4UMDe2wXNmT2sCwUHA5OpXwUsWRHVb4bz+kcQDjjhR4guQxFcAqY+Fk3wGEWY
+ 1LO6+Q6sJMcU37+hR+fx5xv15APi/4YdaCKekM2x5vihGCkbZcUXvkFid8dCbLk7DQZp
+ TTYaR7/LxG7BjtU/3z4k8IVzYAi9JykWkd23p6RWRVJjXqDYx4Drhea9I+QeVvJOzpgm
+ IFUGkv7Y/JPvybNl4pd6uvo+aUCvOnB36MSZERMBYWXCWF6yUrFBYN3iIhoTG1YZHb/k
+ yhFPO/UbxFiWoAIN9PjxWNjSJRnmEAc+2bsYNR49VUTPpsprMuRMaI/NCKyiqQpK5TIX
+ yU4A==
+X-Gm-Message-State: AOJu0YyJv8gwuVliTtL2gKOYT8RU/bpaNrWs5nTezmgDMWCvjOiod6fr
+ +EkXAp7e1ISuBCaEZyfYvHctLa28DG9B3161P3W4ONXeNMTNOejfi7OiIAP+yKjsFpKQW40YYXi
+ qe4QrzelhHiHwkvtxBNVpGQcRLDLKovzGgo1R
+X-Gm-Gg: ASbGncsqN69I9/QpUUYlN7l6DbtnJXa8OZL719C3EADNXGa85buhmPbE8/OJJEPFqQX
+ eo1D5qpJHkDe6wJleu17RjedbggKXxPvmS0W1uA==
+X-Received: by 2002:a05:6102:1623:b0:4b2:9eee:666e with SMTP id
+ ada2fe7eead31-4b2cd6e373bmr22422432137.4.1735379887262; Sat, 28 Dec 2024
+ 01:58:07 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v16 14/14] hw/vmapple/vmapple: Add vmapple machine type
-To: Phil Dennis-Jordan <phil@philjordan.eu>
-Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org,
- pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com,
- stefanha@redhat.com, mst@redhat.com, slp@redhat.com,
- richard.henderson@linaro.org, eduardo@habkost.net,
- marcel.apfelbaum@gmail.com, gaosong@loongson.cn, jiaxun.yang@flygoat.com,
- chenhuacai@kernel.org, kwolf@redhat.com, hreitz@redhat.com,
- shorne@gmail.com, palmer@dabbelt.com, alistair.francis@wdc.com,
- bmeng.cn@gmail.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
- zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
- marcandre.lureau@redhat.com, berrange@redhat.com, akihiko.odaki@daynix.com,
- qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- balaton@eik.bme.hu, Alexander Graf <graf@amazon.com>
 References: <20241223221645.29911-1-phil@philjordan.eu>
  <20241223221645.29911-15-phil@philjordan.eu>
- <1211286e-9211-4d89-9021-f353169af6ad@linaro.org>
- <CAAibmn0q6cBc41J5mABd4bkUEo6pS0MhL8DU8fPfygDvjLSPBQ@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAAibmn0q6cBc41J5mABd4bkUEo6pS0MhL8DU8fPfygDvjLSPBQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <2ceda358-adce-42bd-9f29-9a2e441361f0@linaro.org>
+In-Reply-To: <2ceda358-adce-42bd-9f29-9a2e441361f0@linaro.org>
+From: Phil Dennis-Jordan <phil@philjordan.eu>
+Date: Sat, 28 Dec 2024 10:57:56 +0100
+Message-ID: <CAAibmn2dTpEcbp5P9VKARevCDBthTyhRSyhQrZTiq5e3BWCftg@mail.gmail.com>
+Subject: Re: [PATCH v16 14/14] hw/vmapple/vmapple: Add vmapple machine type
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, agraf@csgraf.de, peter.maydell@linaro.org, 
+ pbonzini@redhat.com, rad@semihalf.com, quic_llindhol@quicinc.com, 
+ stefanha@redhat.com, mst@redhat.com, slp@redhat.com, 
+ richard.henderson@linaro.org, eduardo@habkost.net, marcel.apfelbaum@gmail.com, 
+ gaosong@loongson.cn, jiaxun.yang@flygoat.com, chenhuacai@kernel.org, 
+ kwolf@redhat.com, hreitz@redhat.com, shorne@gmail.com, palmer@dabbelt.com, 
+ alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com, 
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com, 
+ marcandre.lureau@redhat.com, berrange@redhat.com, akihiko.odaki@daynix.com, 
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org, 
+ balaton@eik.bme.hu, Alexander Graf <graf@amazon.com>
+Content-Type: multipart/alternative; boundary="000000000000bb2c84062a519dbe"
+Received-SPF: neutral client-ip=2607:f8b0:4864:20::e32;
+ envelope-from=phil@philjordan.eu; helo=mail-vs1-xe32.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JjG3AO20nU0C
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: tLST03aP2+vW
 
-On 27/12/24 21:12, Phil Dennis-Jordan wrote:
+--000000000000bb2c84062a519dbe
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
->      > diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
->      > index bcd1be63e3..6a4c4a7fa2 100644
->      > --- a/hw/vmapple/Kconfig
->      > +++ b/hw/vmapple/Kconfig
->      > @@ -10,3 +10,23 @@ config VMAPPLE_CFG
->      >   config VMAPPLE_VIRTIO_BLK
->      >       bool
->      >
->      > +config VMAPPLE
->      > +    bool
->      > +    depends on ARM
->      > +    depends on HVF
->      > +    default y if ARM
->      > +    imply PCI_DEVICES
->      > +    select ARM_GIC
-> 
->     Hmmm I'm getting ...:
-> 
->     qemu-system-aarch64: unknown type 'arm-gicv3'
-> 
->      > +    select PLATFORM_BUS
->      > +    select PCI_EXPRESS
->      > +    select PCI_EXPRESS_GENERIC_BRIDGE
->      > +    select PL011 # UART
->      > +    select PL031 # RTC
->      > +    select PL061 # GPIO
->      > +    select GPIO_PWR
->      > +    select PVPANIC_MMIO
->      > +    select VMAPPLE_AES
->      > +    select VMAPPLE_BDIF
->      > +    select VMAPPLE_CFG
->      > +    select MAC_PVG_MMIO
->      > +    select VMAPPLE_VIRTIO_BLK
-> 
-> 
->      > +static void create_gic(VMAppleMachineState *vms, MemoryRegion *mem)
->      > +{
->      > +    MachineState *ms = MACHINE(vms);
->      > +    /* We create a standalone GIC */
->      > +    SysBusDevice *gicbusdev;
->      > +    QList *redist_region_count;
->      > +    int i;
->      > +    unsigned int smp_cpus = ms->smp.cpus;
->      > +
->      > +    vms->gic = qdev_new(gicv3_class_name());
-> 
->     ... I suppose due to this call ^^^.
-> 
->     $ git grep arm-gicv3
->     hw/intc/arm_gicv3_kvm.c:45:#define TYPE_KVM_ARM_GICV3 "kvm-arm-gicv3"
->     include/hw/intc/arm_gicv3.h:18:#define TYPE_ARM_GICV3 "arm-gicv3"
->     $ git grep TYPE_ARM_GICV3
->     hw/intc/arm_gicv3.c:466:    .name = TYPE_ARM_GICV3,
->     $ git grep -FW arm_gicv3.c
->     hw/intc/meson.build=9=system_ss.add(when: 'CONFIG_ARM_GICV3_TCG',
->     if_true: files(
->     hw/intc/meson.build:10:  'arm_gicv3.c',
->     ...
-> 
-> 
-> Ahhh, good catch! I suppose this is with —disable-tcg (or equivalent)
+On Fri, 27 Dec 2024 at 21:36, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g>
+wrote:
 
-Yes, this is how I test HVF.
+> On 23/12/24 23:16, Phil Dennis-Jordan wrote:
+>
+> > Known issues:
+> >   - Keyboard and mouse/tablet input is laggy. The reason for this is
+> >     that macOS's XHCI driver seems to expect interrupter mapping to
+> >     be disabled when MSI/MSI-X is unavailable. I have found a
+> >     workaround but discovered a bunch of other XHCI spec non-compliance
+> >     in the process, so I'm fixing all of those in a separate patch
+> >     set.
+>
+> Should we wait for your XHCI fixes series to get reviewed first
+> so I can base this series on top (removing this comment) when merging?
+>
 
-> 
-> 
->     I think commit a8a5546798c ("hw/intc/arm_gicv3: Introduce
->     CONFIG_ARM_GIC_TCG Kconfig selector") is invalid as being
->     too restrictive.
-> 
->     I can go a bit further with these changes on top (ignoring
->     renaming ARM_GICV3_TCG -> ARM_GICV3):
-> 
-> 
->     -- >8 --
->     diff --git a/hw/intc/Kconfig b/hw/intc/Kconfig
->     index dd405bdb5d2..9e06c05b449 100644
->     --- a/hw/intc/Kconfig
->     +++ b/hw/intc/Kconfig
->     @@ -26 +26 @@ config ARM_GIC
->     -    select ARM_GICV3_TCG if TCG
->     +    select ARM_GICV3_TCG if TCG || HVF
->     @@ -32 +32 @@ config ARM_GICV3_TCG
->     -    depends on ARM_GIC && TCG
->     +    depends on ARM_GIC && (TCG || HVF)
+I guess that depends on timing to some extent. Maintaining all these
+patches out-of-tree for extended periods of time is somewhat tedious. We
+could also merge this series in batches if that's preferable?
 
-Now implemented as [*]:
-https://lore.kernel.org/qemu-devel/20241227202435.48055-1-philmd@linaro.org/
+The gpex patch (4/15) especially touches a lot of parts of the code base,
+so I'd really like that to get wider regression testing sooner rather than
+later.
 
->     diff --git a/hw/vmapple/Kconfig b/hw/vmapple/Kconfig
->     index 6a4c4a7fa2e..374a89f6a8f 100644
->     --- a/hw/vmapple/Kconfig
->     +++ b/hw/vmapple/Kconfig
->     @@ -19 +19 @@ config VMAPPLE
->     -    select ARM_GIC
->     +    select ARM_GICV3_TCG
-> 
-> 
-> Is this last part necessary/advisable? It would seem like the above 
-> changes in hw/intc/Kconfig should make ARM_GIC work too?
-> (The PVG dependency means we currently can’t support anything other than 
-> macOS host systems and thus HVF or theoretically TCG anyway, but if QEMU 
-> gained support for the HVF-provided GIC implementation, we’d need to 
-> change this line again.)
+Patches 1-5 are also useful outside of the vmapple machine type, as they
+affect x86-64 macOS guests, so they could easily be merged without the
+rest. (OK the apple-gfx-mmio variant contained in 2/14 is only useful for
+vmapple; if we were being picky, it could easily be separated out into a
+separate patch to be merged with the rest of vmapple though.)
 
-Hmm indeed we can skip it, but vmapple machine enforces rev=3:
+--000000000000bb2c84062a519dbe
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
->      > +    qdev_prop_set_uint32(vms->gic, "revision", 3);
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, 27 Dec =
+2024 at 21:36, Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@lin=
+aro.org">philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gma=
+il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
+04,204);padding-left:1ex">On 23/12/24 23:16, Phil Dennis-Jordan wrote:<br>
+<br>
+&gt; Known issues:<br>
+&gt;=C2=A0 =C2=A0- Keyboard and mouse/tablet input is laggy. The reason for=
+ this is<br>
+&gt;=C2=A0 =C2=A0 =C2=A0that macOS&#39;s XHCI driver seems to expect interr=
+upter mapping to<br>
+&gt;=C2=A0 =C2=A0 =C2=A0be disabled when MSI/MSI-X is unavailable. I have f=
+ound a<br>
+&gt;=C2=A0 =C2=A0 =C2=A0workaround but discovered a bunch of other XHCI spe=
+c non-compliance<br>
+&gt;=C2=A0 =C2=A0 =C2=A0in the process, so I&#39;m fixing all of those in a=
+ separate patch<br>
+&gt;=C2=A0 =C2=A0 =C2=A0set.<br>
+<br>
+Should we wait for your XHCI fixes series to get reviewed first<br>
+so I can base this series on top (removing this comment) when merging?<br><=
+/blockquote><div><br></div><div>I guess that depends on timing to some exte=
+nt. Maintaining all these patches out-of-tree for extended periods of time =
+is somewhat tedious.  We could also merge this series in batches if that&#3=
+9;s preferable?</div><div><br></div><div>The gpex patch (4/15) especially t=
+ouches a lot of parts of the code base, so I&#39;d really like  that to get=
+ wider regression testing sooner rather than later.<br></div><div><br></div=
+><div>Patches 1-5 are also useful outside of the vmapple machine type, as t=
+hey affect x86-64 macOS guests, so they could easily be merged without the =
+rest. (OK the apple-gfx-mmio variant contained in 2/14 is only useful for v=
+mapple; if we were being picky, it could easily be separated out into a sep=
+arate patch to be merged with the rest of vmapple though.)<br></div><div><b=
+r></div></div></div>
 
-So directly selecting ARM_GICV3 sounds more explicit to me.
-The diff is now (on top of [*]):
-
-      -    select ARM_GIC
-      +    select ARM_GICV3
-
-WDYT?
+--000000000000bb2c84062a519dbe--

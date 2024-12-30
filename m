@@ -1,106 +1,106 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp8072966njk;
-        Mon, 30 Dec 2024 12:31:16 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCViXP/YDeMhxArYlgylSEthVHWb7Rdki1JonJbXuVfGPklXKRp3nQWS17Tbo4idaWb2eYvbDXd+kAliKA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFoWPfe0FXzYNBEse6h+9gyjKQHhZp4U/lNTzC3JwdA7fGBAH6WDGvNN2+1NiNbR7wHSIxm
-X-Received: by 2002:a05:620a:4515:b0:7b6:e8c3:4b5f with SMTP id af79cd13be357-7b9ba73f885mr5157740185a.16.1735590676401;
-        Mon, 30 Dec 2024 12:31:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735590676; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp8083833njk;
+        Mon, 30 Dec 2024 13:00:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXBAwhWydnaNZ33F3xU0f6cMSSpNce++pYs80RtBALfNzaTLdzEt5L4rzzIeUgQgQqx0x+W5EwL5MGmZw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFen7o+A5FdU0KrFkjswk9JNdVp4HP0ocP8q1Eg4a4LqDRn50QVFqg9PP8zfxImTBEy3mHQ
+X-Received: by 2002:a05:620a:440b:b0:7b6:cb3c:d52c with SMTP id af79cd13be357-7b9ba7eb1ecmr6498586785a.38.1735592433021;
+        Mon, 30 Dec 2024 13:00:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735592433; cv=none;
         d=google.com; s=arc-20240605;
-        b=R0gAuk7kjxJEIexUYpDJssyeOXPz0rUseP9Lf2xI5pFgSANIBjd9Tx8+XC93l2zPjh
-         gBVaaw7ETyP8AQuTJYKIFJrKoyaEP2pfwf3sWOBD4sf7FMLuI2bWGcUHcWPwKIks4ERL
-         Cg6AfX8nB4ev+Kl4TU8dZ1IAuJga7bFosq+Q4Kw+2KBcIf8dY9vUuJD5ooiQTimWvnkD
-         conPzcf1hBGP1S2Lm5ehSEH/yGhnpZiGg0OcKqzi3uD5THE4ahmwQr6zo/BHwdg8DJrW
-         wy4O8wWh3b3SoLanbHY2HO9lDBBE3791M+uOfpx1K1KxvB+g/tqgUSl2OwCSzr5LRFSi
-         9q3g==
+        b=itkHFmFR9x6tEbBXp+vv3PltztgRaFZsKjBzcHP10tQgovF6v2LH76hJJ6iQkNhmhT
+         RdtIVW4UDcOmZIe5JGkOQM9wEsBuowrZAFhErsM776kUDQM9gSvj+f7cUkpoDoAU+yE/
+         ytlB6MtBSfB8h7hlzqY80wAyqGWR0m6myL+RKYNI9GgMWpnebS41MUhCN2fFTrfFsIDs
+         gkMNPRmTfqq0YnZPeVPlTzNnn+W/wAq68/LrbFiv1mw3rsJMXIqII6BeZoW5VmUYox3M
+         Pjor0OK5tkWubtDzQxr/YP68RVNThx8b96cJ6TPswnpcK2cqTw8zZpY5flISnxuqHP0L
+         5pxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=yzzKQhrMu9+ipQPX9U5PUvV4kGHzYUL/8aK4yLnwG5g=;
-        fh=JJqZgqJqAQnZVg5stET6x/b+JJ0ivfz1skuKbFXv9uM=;
-        b=D7vkMvRU2BKCZkHKGvOvMfEiEIJIKBDV5gnax6b2FJQFCtOLqcXYmB8Sm7943b023t
-         CtOYPNxass0M0ygPN4E21jXcKmg8rNbyh96gE275lRznuMN/D7XTvSSfaHsdflI+9VpB
-         A5FQYQgcGyo3LpG5l4YbQG+Onke9/dDv2aKjHlgZRI5HKzIqo+Qx6+/0WLLSRyhoc5oK
-         5wPKOavE7YtcbDFbeHFUpz/sxejnOtBJLfL6hAvu40HYj0F5uySGtWRRALjl9R7IoG/3
-         UC6GcA6VF5G2q1E4aa+hBlATVZwapvrKvbFdeeUXym1oM6M/mDDM94v5DKdf0At/11Dz
-         T+dw==;
+        bh=hMI7yEv1jSQhAu/0mSmlk2CoBBAXGicDSufwS04UZO4=;
+        fh=0+74ogYYnA6evPTN0wO8DGSyAcIL8bRI064VjEZ+87k=;
+        b=HL53rJLru4Tlfb5Ja7KLaXLm+9yVCYDmF0jtMrnxtp/CXqkzFdKaMxC2MenAI6Kl5r
+         Tn3FO+5Nu9R28jt3bpVsUz27+3EuLyc13n6ruiKYwAwuZ6hNxPJnQIrnOig6318kSxyt
+         UMIau0+toNkbPSqXeeGJKuJbQmIxJiqX7+Qz/Nm2uolA6qxu6RpkX6ZF8pf+quw/4BEY
+         9t/CvdiXPjMqbQ3XIYogTWMDplwTIzPSYlY1vh0LxkgkyeqrNXTYGIm4NMOZaRw2M3SJ
+         BGYN4Cs0rZna31elOcI1GRTEMd0iLLEP1S/FtLEpgDFomSL3WND+qrIjaHJT+hVdpC9z
+         F1Pg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=puB8SIR+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=APCF8EPC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac2ab7b0si2793976285a.113.2024.12.30.12.31.16
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac4f1cf9si3088052285a.502.2024.12.30.13.00.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Dec 2024 12:31:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Dec 2024 13:00:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=puB8SIR+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=APCF8EPC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tSMPF-00009c-BI; Mon, 30 Dec 2024 15:30:29 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tSMrg-0006Ac-TW; Mon, 30 Dec 2024 15:59:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSMP9-00008o-KB
- for qemu-devel@nongnu.org; Mon, 30 Dec 2024 15:30:24 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSMrf-00069Y-65
+ for qemu-arm@nongnu.org; Mon, 30 Dec 2024 15:59:52 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSMP7-0000Wk-Ag
- for qemu-devel@nongnu.org; Mon, 30 Dec 2024 15:30:23 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-38632b8ae71so6855939f8f.0
- for <qemu-devel@nongnu.org>; Mon, 30 Dec 2024 12:30:20 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSMrb-0002s5-Dy
+ for qemu-arm@nongnu.org; Mon, 30 Dec 2024 15:59:50 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-436202dd7f6so108175205e9.0
+ for <qemu-arm@nongnu.org>; Mon, 30 Dec 2024 12:59:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1735590619; x=1736195419; darn=nongnu.org;
+ d=linaro.org; s=google; t=1735592386; x=1736197186; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=yzzKQhrMu9+ipQPX9U5PUvV4kGHzYUL/8aK4yLnwG5g=;
- b=puB8SIR+4EU1iqgYqTjeUsJIeU8ZWZlz/IxVG8//G5b6EBjhv75CSiNWLPxXV/T1qU
- 3neMIB9SLguFUjQ+OZE3Yb9ry/J/nyUxFcoMwzOecWEzpH4tlurE5Qd5tAtGWLNx0eyv
- gkPhQ7K8twse3S/9dEbyVaG0ZBH5uLgN8kuYuuHCGG/4hTL+lghl1coLEUi1JM/fL4Aa
- NNr/W5Zh+n7R/pAYqm/GqM8VXU6CINBeBkzn71Wat9MVZDnkFNfQRR7rA4vyrqE2p+zG
- uYt+iViJYlFfyTAXw6/8FKiOdy40z5UQobM1g+1/b0ajMbS43QyAfwpjdmeyWIFmQSNF
- xCLg==
+ bh=hMI7yEv1jSQhAu/0mSmlk2CoBBAXGicDSufwS04UZO4=;
+ b=APCF8EPC1DBp6L5Iwic0rvM19C7M0lgZamzq1YChg/zpREHdSmrdgC1OdqCQe9wpV7
+ T/w1GEhEVahnvB/tAFgAbdK+yy/Oe/uIQtTXOtl2o2iHSehcTyIDh1+fgNUOnl9TOUQk
+ Z+3OZs+PZdjmZpoboCmtOYAiZNqyNdsbGTh4o3iA6gddue4j0CG1aC9RsnZ+6FPfcmz9
+ nPyrO/9KEyL8AatPTbIASVIFRaCV9n8SKgKrpii/ITmnIr0x7OBppgXiIgQ8qfntDw6w
+ ZYhkIOsVqocmdX3jJ5Uwzsu9159yEqotCB2rt/EavHMEZhSn296t2e7qXBZhN7VFHps/
+ Tueg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735590619; x=1736195419;
+ d=1e100.net; s=20230601; t=1735592386; x=1736197186;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yzzKQhrMu9+ipQPX9U5PUvV4kGHzYUL/8aK4yLnwG5g=;
- b=QlJOHIMTcDoRpe4ZXIb+RnV7LTO2tCTAevbKbT8uoZGS8tVEJnqnbo4E4AcPrMASMu
- eeJAEUf9JRAjnUnmUJyJIOr6DpFisX8/xy2tl30rxNDftA8ehMRZ5Xn+6/jLo6q31Pi5
- s69Xk7Slik3oYpkWXRqU4S2/pOViEfKQJI96bpGYdAY8KXuTYCMK05YAOMYhV+oE1JKS
- F9qRE9hM5ggEbWK4y373Rp6KapRWq2/2coVodCd185rbe8T7NJA+KOmfqO3lwwOUFkEr
- /FArCGNgPZTjBME+gZWoLtcvB/KFLI3k34fzaatRivKpWHdknUnTQSCp2wXtJv91ihUF
- +cWA==
+ bh=hMI7yEv1jSQhAu/0mSmlk2CoBBAXGicDSufwS04UZO4=;
+ b=fVRM6veGNhqYCg+qK3CzkePv/IuFK/ZxkV8S9BWv86bWcJ1VYjqgqIKr9kv0gT9Rp0
+ WOVGBaJcRd3BjeNOOEEFpwdm8Gag/owqA2I92+x+N7WC1aH2fjlO9xmPseze0dzr3Dl0
+ 0eDZemGfZLuKDoKqjMZ3y2+jrrbGSxi0QtoH415WeL70Iox5/kqJcjrAHOoxmi0pSztR
+ U36Y3c1C6k5gXW/rLbl7dyZC17bjHgZveyM2gecNb3Wr+/ozz9JYeXOJ1FLYOFpiqvrM
+ IOt5maaBW+WtP/1RyhA8GUc7t1qcpNy0NkLrm9GD3vPzK/dkFj/QTx5JlCjPhNzpEB0T
+ QQQw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWBSpcDPRQTg1OZ/Vi8tTKMwUWAH9kQ2/sWUPjxoscwE804ZysCjUdcdyP43/QBOV1kJZnKn8kUPWrP@nongnu.org
-X-Gm-Message-State: AOJu0Yyl0ttNDUV/WSaHpdvZCA9v+JY+nDf81cxcPu7BPW343y0Fus8D
- PZr0TP06rkO6d1mkVItpz48vq+ulp9xaUDflUmSvMtB8IVAvR3/vLm7BDC+MiYA=
-X-Gm-Gg: ASbGncv4nBfn1MLkVXtig2VbnsMI7uX9xBd3FISBvW+/yysHqwFqNEMaS4FWf1mA5AG
- 1MkRHQbuqKStoOfoJxeBLkQMkClS7qvqX6074MKhNfr7HFMp9t/LghIGfFPD/DCHqtwvf58335I
- kByfZuy6ArhunqzoWznw36jLCAN7Ep2ipHy38ChKl2wBIYgaOPZ7eGCHyJU2CaLEmFZFYYdEPtG
- AIgmVF8K4gWvTeji3IUc7cIRWOi0vF0dGscsbL8SCQXchAh4aY5iFpyFk43SecU88b5g2mCXNI0
- 2Dk6onLNnHQm/+mknPfQKMYP
-X-Received: by 2002:a05:6000:18a3:b0:386:8ff:d20b with SMTP id
- ffacd0b85a97d-38a221f2f2dmr29322826f8f.27.1735590618884; 
- Mon, 30 Dec 2024 12:30:18 -0800 (PST)
+ AJvYcCXTqY2sBpRmyEFq6ytNRw6mMsPYGn+00PVtboX/A/ZeyA0ljoyTUEf+4sjUCJRk+KXy3TMcA6w4DQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yy1DKA+6h01DqPay5hOWc1hyjQfIwpji4uimzi5CfEERh7jbzuq
+ +OsLyc8h4c/KLg3V3aLtYm638EjDbx0SwyA7JqGI+KzraKGzSnXda3PTcgEFqFs=
+X-Gm-Gg: ASbGncuZxDTOXtxFp2x8FVFOXSCil7xPIZQ7gRkqCPw71CBX1/WweE5hH0v3UGQPAss
+ ct+3j93r6NS0S7jx42OQNcH0qPNgCfyDlMutf+5nMAYz2yiJwSXw5v1JVJOcNCHV4eenTmIPwRN
+ 8rm9XquAqhOeKIKz0cYKGtlWWrShcZGfw4Tb6uVD8IAqIjUCzLkmoJNd41v5IvKfkn+yIbYI8sW
+ jVyS7dJdNN8mk7GsszE2vtSdRa9Zlx51RcRZ+axuSy5L9tGKdj2QKmG+eijw2m47cED3gSQGxcv
+ hHlJRcP9AiLr28sUl/KHS2o4
+X-Received: by 2002:a05:600c:1c1a:b0:436:1b81:b65c with SMTP id
+ 5b1f17b1804b1-43668646aebmr342767945e9.15.1735592385747; 
+ Mon, 30 Dec 2024 12:59:45 -0800 (PST)
 Received: from [192.168.69.132] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a1c832e8asm30543979f8f.37.2024.12.30.12.30.17
+ 5b1f17b1804b1-43656b0145csm401961895e9.15.2024.12.30.12.59.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Dec 2024 12:30:18 -0800 (PST)
-Message-ID: <c2ce4e80-d918-4cf5-ab40-ac9e84955423@linaro.org>
-Date: Mon, 30 Dec 2024 21:30:16 +0100
+ Mon, 30 Dec 2024 12:59:45 -0800 (PST)
+Message-ID: <b394e626-b896-4ece-b6d3-bcb48e19d0f7@linaro.org>
+Date: Mon, 30 Dec 2024 21:59:43 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v16 01/14] ui & main loop: Redesign of system-specific
@@ -124,32 +124,30 @@ From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 In-Reply-To: <20241223221645.29911-2-phil@philjordan.eu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e3L9KB1Ual6G
-
-Hi,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: jM5lZ8uhCmXU
 
 On 23/12/24 23:16, Phil Dennis-Jordan wrote:
 > macOS's Cocoa event handling must be done on the initial (main) thread
@@ -245,84 +243,94 @@ On 23/12/24 23:16, Phil Dennis-Jordan wrote:
 >   extern int (*qemu_main)(void);
 >   
 >   #endif /* QEMU_MAIN_H */
-
-
-> diff --git a/ui/gtk.c b/ui/gtk.c
-> index 0d38c070e4..c023743148 100644
-> --- a/ui/gtk.c
-> +++ b/ui/gtk.c
-> @@ -38,6 +38,7 @@
->   #include "qemu/cutils.h"
->   #include "qemu/error-report.h"
->   #include "qemu/main-loop.h"
-> +#include "qemu-main.h"
+> diff --git a/system/main.c b/system/main.c
+> index 4923520741..9c9a1adc20 100644
+> --- a/system/main.c
+> +++ b/system/main.c
+> @@ -24,26 +24,55 @@
 >   
->   #include "ui/console.h"
->   #include "ui/gtk.h"
-> @@ -2485,6 +2486,9 @@ static void gtk_display_init(DisplayState *ds, DisplayOptions *opts)
->   #ifdef CONFIG_GTK_CLIPBOARD
->       gd_clipboard_init(s);
->   #endif /* CONFIG_GTK_CLIPBOARD */
-> +
-> +    /* GTK's event polling must happen on the main thread. */
-> +    qemu_main = NULL;
->   }
->   
->   static void early_gtk_display_init(DisplayOptions *opts)
-> diff --git a/ui/sdl2.c b/ui/sdl2.c
-> index 1fb72f67a6..445eb1dd9f 100644
-> --- a/ui/sdl2.c
-> +++ b/ui/sdl2.c
-> @@ -34,6 +34,7 @@
+>   #include "qemu/osdep.h"
+>   #include "qemu-main.h"
+> +#include "qemu/main-loop.h"
 >   #include "system/system.h"
->   #include "ui/win32-kbd-hook.h"
->   #include "qemu/log.h"
-> +#include "qemu-main.h"
 >   
->   static int sdl2_num_outputs;
->   static struct sdl2_console *sdl2_console;
-> @@ -965,6 +966,9 @@ static void sdl2_display_init(DisplayState *ds, DisplayOptions *o)
->       }
+>   #ifdef CONFIG_SDL
+> +/*
+> + * SDL insists on wrapping the main() function with its own implementation on
+> + * some platforms; it does so via a macro that renames our main function, so
+> + * <SDL.h> must be #included here even with no SDL code called from this file.
+> + */
+>   #include <SDL.h>
+>   #endif
 >   
->       atexit(sdl_cleanup);
+> -int qemu_default_main(void)
+> +#ifdef CONFIG_DARWIN
+> +#include <CoreFoundation/CoreFoundation.h>
+> +#endif
 > +
-> +    /* SDL's event polling (in dpy_refresh) must happen on the main thread. */
-> +    qemu_main = NULL;
+> +static void *qemu_default_main(void *opaque)
+>   {
+>       int status;
+>   
+> +    bql_lock();
+>       status = qemu_main_loop();
+>       qemu_cleanup(status);
+> +    bql_unlock();
+>   
+> -    return status;
+> +    exit(status);
 >   }
 >   
->   static QemuDisplay qemu_display_sdl2 = {
+> -int (*qemu_main)(void) = qemu_default_main;
+> +int (*qemu_main)(void);
+> +
+> +#ifdef CONFIG_DARWIN
+> +static int os_darwin_cfrunloop_main(void)
+> +{
+> +    CFRunLoopRun();
+> +    g_assert_not_reached();
+> +}
+> +int (*qemu_main)(void) = os_darwin_cfrunloop_main;
+> +#endif
+>   
+>   int main(int argc, char **argv)
+>   {
+>       qemu_init(argc, argv);
+> -    return qemu_main();
+> +    bql_unlock();
+> +    if (qemu_main) {
+> +        QemuThread main_loop_thread;
+> +        qemu_thread_create(&main_loop_thread, "qemu_main",
+> +                           qemu_default_main, NULL, QEMU_THREAD_DETACHED);
+> +        return qemu_main();
+> +    } else {
+> +        qemu_default_main(NULL);
+> +    }
+>   }
 
-This fails the build-oss-fuzz job as:
+Build failure on Windows:
 
-     /usr/bin/ld: libcommon.a.p/ui_gtk.c.o: in function `gtk_display_init':
-     ../ui/gtk.c:2491:(.text+0x3df9): undefined reference to `qemu_main'
-     /usr/bin/ld: ../ui/gtk.c:2491:(.text+0x45f1): undefined reference 
-to `qemu_main'
-     /usr/bin/ld: libcommon.a.p/ui_sdl2.c.o: in function 
-`sdl2_display_init':
-     ../ui/sdl2.c:971:(.text+0x2e8c): undefined reference to `qemu_main'
-     /usr/bin/ld: ../ui/sdl2.c:971:(.text+0x30bf): undefined reference 
-to `qemu_main'
-     clang: error: linker command failed with exit code 1 (use -v to see 
-invocation)
+../system/main.c: In function 'SDL_main':
+../system/main.c:78:1: error: control reaches end of non-void function 
+[-Werror=return-type]
+    78 | }
+       | ^
+cc1: all warnings being treated as errors
+ninja: build stopped: subcommand failed.
+make: *** [Makefile:168: run-ninja] Error 1
 
-Therefore I'm squashing:
+I'm squashing:
 
 -- >8 --
-diff --git a/tests/qtest/fuzz/fuzz.c b/tests/qtest/fuzz/fuzz.c
-index 8274000bd55..ca248a51a6c 100644
---- a/tests/qtest/fuzz/fuzz.c
-+++ b/tests/qtest/fuzz/fuzz.c
-@@ -41,6 +41,7 @@ static FuzzTargetList *fuzz_target_list;
-  static FuzzTarget *fuzz_target;
-  static QTestState *fuzz_qts;
-
-+int (*qemu_main)(void);
-
-
-  void flush_events(QTestState *s)
+diff --git a/system/main.c b/system/main.c
+index 9c9a1adc20c..ecb12fd397c 100644
+--- a/system/main.c
++++ b/system/main.c
+@@ -74,5 +74,6 @@ int main(int argc, char **argv)
+          return qemu_main();
+      } else {
+          qemu_default_main(NULL);
++        g_assert_not_reached();
+      }
+  }
 ---
-
-Regards,
-
-Phil.

@@ -1,126 +1,130 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp7914002njk;
-        Mon, 30 Dec 2024 07:41:02 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWfCsXNXsmtk6Ors2vLCuueSoquD6bkknJ+J3C7rdiKure1PLFLSJWyS3sWyX9nYL9BgO+MZWTTggaWyA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEGgbGJRwvl72UnRNjDB3v2bo/LEbWKyJM17HU/mL1kpMyE57muPzXqshcda4umY1dkc7nF
-X-Received: by 2002:a05:6122:4302:b0:515:c769:9d32 with SMTP id 71dfb90a1353d-51b75c6f529mr24999466e0c.4.1735573262436;
-        Mon, 30 Dec 2024 07:41:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735573262; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp8027762njk;
+        Mon, 30 Dec 2024 10:56:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVuLpGC4oYRlWxoQorVVDDIPbC8TGzaePLtNtFYRIq5ArZPmc47eu3Kfr3YnB1mqBALFvNPKr3Eial4ww==@linaro.org
+X-Google-Smtp-Source: AGHT+IHmXKhsUu1D4MibqnqPrHy62vzXVOX5cX8mufGkRSzBxlcAWSmEJj8CnS9Xv7EgW36lROmK
+X-Received: by 2002:a05:620a:440b:b0:7b6:d3b3:5757 with SMTP id af79cd13be357-7b9ba715ff2mr6581360585a.13.1735584969555;
+        Mon, 30 Dec 2024 10:56:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735584969; cv=none;
         d=google.com; s=arc-20240605;
-        b=aJ4LrbYHyAJGtEnBddprQBg/b9bdfNddy6a+I2LciJzWNm4e1Nm8wC+tiO7rM+AqpB
-         MCyQqAYEbi+38RE4THBklqrUQh3NCxVAVdHeqPVeBrKv5Mh1sJRAXwgN4LA+evFF6B8v
-         yiB9VHdrKLJPXv1HqZ6ZIVdTETYHSkGsgX/4OrQ1z5KZjh87PPaahd31I9kXQDM7Yp6O
-         eBpLFuV7kyH9qkSHwfSHiAY0/mcNuAOnt37scZVfiEEc+zrb1WGLfotzsduEAD+IN+nV
-         rFiiBvRBJXgSwLaQvT0kUASyi6IPG3XryvzkRX32owVs5aFnsmhCn2NnwNl//u2ipPDu
-         RqoA==
+        b=Y5VHWYcWsbZNzMVk+ARpobjHlGRjN8uiClTWFFXaX4qTRhL2edQed5WPCyDszCPzac
+         yNUZHhSiXeRVmJBEzzei/EG2S1SzOuNeWRx84xt7mgCjZNM+aU5nlBoZlzidsaJ4VT8j
+         y0zAS3SEkHpe7v0+JR/5XB8d16M4xRl9DtTEzvASCc/uQ9940GV29u5aZ1D1Tv5r+C3d
+         MRVyPHsbfX9826ox8rzLOpnqYe09sI1SlIlNd2aq3uUFO9E7RFtPHLI1uzT+eEOH+MI+
+         hQ3NGrCa4gDmeChUZUy14LW9/1foFtGyvTsBW+m1NjHx5hJW4z8sZcIKu5vcPStTHOrL
+         TmNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=ijdzLVVBAgy15w9QsQgpQp9PmP6CutR0mq7PZBrBXtE=;
-        fh=OVoH1D5fguxKzzG62lJ6AGF1SfzwY3u5i9u/qqJnGT4=;
-        b=cZPQ0IMQhzG9oxAaNSoiEYmonZWvmgUKiN7EalhLyYm44/kLQY18XqttpombKO40nK
-         awcukyP+LqO7DHSyMWGp0VZus93APJMcC5s/rzo0q5dgLEbKOsmt+xbbuOMEB/pf84jn
-         Wy3ZYcFZHQZ2EcWjemWYFLSZl9MioYXDZM6URDZBuF+ATt9jTBWNBAr70rd2bgeNnh99
-         QexNSbFE6vYbaUzVPYLeNdxWXtSyyePZzuYUNu6mTZahkY6JkCO3FgleGHH8LpmBH6gW
-         AOFm03Bxet6CLCR+q966CRrK/Q0dcigZyKvINg4gnmV2XjBNT68H5YCqaula4GeidZBU
-         +hWw==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Qui2Y4KUafW4SCpWVDDOaVkKbTJ56eWr0XZNubRfJRc=;
+        fh=NEkYDAhzgJpVp4wVA0F3rlHvPRjIaczol4d2nwKAs28=;
+        b=FvFrH3Jr2dk3KVFUlEu8ekj+nq31wcGXioJGOyzB7mVnVtBzmETOY3G9efk5YI5p9E
+         57ma5fRG4u1qbNs9uggrtpgedZhvjhBxMUKQlw1Q/hqOVjIRVeZxykCfG5/hxEgYwKOm
+         0OJYeYlf0FUOG0jQRR+I5l+g6zVmJGYlW+IJ0cxniPDiBC30MTn/Pm1FBEC1KQuCBAbx
+         II3US06GnY7X5zieCff46SCTRkEryUQ0aGe2/d5Rq4EowOHFE+aYxfkvduMrSYuVc8RH
+         PFRcPJ1IyIxcclAuL6qjoQxS4E0h0FYZ212NEWcooepvGzeGBlKY9hsqGeT0ImnlurEC
+         7Qug==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H+FjpBkX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fHfB+HBM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-51b68bb5268si7636758e0c.92.2024.12.30.07.41.02
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac4ccc4bsi2875803585a.403.2024.12.30.10.56.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Dec 2024 07:41:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 30 Dec 2024 10:56:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H+FjpBkX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=fHfB+HBM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tSHrv-0000nU-2i; Mon, 30 Dec 2024 10:39:47 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tSKvN-0001i2-MU; Mon, 30 Dec 2024 13:55:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSHrn-0000kY-Rn
- for qemu-arm@nongnu.org; Mon, 30 Dec 2024 10:39:43 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSKvL-0001he-VP
+ for qemu-devel@nongnu.org; Mon, 30 Dec 2024 13:55:32 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSHrm-0002zh-6x
- for qemu-arm@nongnu.org; Mon, 30 Dec 2024 10:39:39 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4362f61757fso93007605e9.2
- for <qemu-arm@nongnu.org>; Mon, 30 Dec 2024 07:39:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSKvJ-00075N-AZ
+ for qemu-devel@nongnu.org; Mon, 30 Dec 2024 13:55:31 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-385e87b25f0so6603357f8f.0
+ for <qemu-devel@nongnu.org>; Mon, 30 Dec 2024 10:55:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1735573177; x=1736177977; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ijdzLVVBAgy15w9QsQgpQp9PmP6CutR0mq7PZBrBXtE=;
- b=H+FjpBkXb2fVVeMGPj8zzIgM3x8fCnOOX6kmJ3Tk1JKpe/AHGAPqCA/qLRWjop6vlx
- 3/+rMBH4RSGHwpI/r9xV90d59MtX6kc/wO+A9r74hCjOpBd3Jth8ot5RSr8CAZndU5qI
- wSx+1dx5u9aOhmlPXkeYwJYQGbm9rYGa9olCmu6i1UD7Nkyoy0y06QC0lVrE3+c8jwJP
- ulTaRsuGNnjvxjyeTtGcq4tW8ZhgnZIOY9FL3OlOzGywnAyj/umsgdmhj3+nSVSTtde9
- tEM1NoGAZApDQrn56crng05cXiW3uAOmOZ/rNZBWMt9VQr2x6ToNlQn8mFbqTf7kXxcA
- R1Xg==
+ d=linaro.org; s=google; t=1735584927; x=1736189727; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Qui2Y4KUafW4SCpWVDDOaVkKbTJ56eWr0XZNubRfJRc=;
+ b=fHfB+HBMM5Xvazq+T3YIzILLrLTViLCUTVx+2YiJHzFKNE1AwYtA5neaWlW7pHyVMd
+ K/eIVMybirba48SKmESty5m/p2Xj+kHRwvNgDzFNbMScDB4q+CGsJq180b8mHncCJoaq
+ gbYyFncarXfdib/+xE8nEsHB+JXlgFHbYAl0qYvcUp8aGXaJ4EOacr2GU+dmVWQRmGMX
+ IKnumQAz1pD84Q82uRGYDtv1U2KzgjMmBMKB3zSaPKS7cYyV8XtIzO3QYgWxQONWZv0i
+ CIfTKzrrCS1jp5p/Vnj1rLGXrNbHpV0yFTKlcdBnGMRp3LaigGVpwzd0QlVb5Y64GU/z
+ 4kzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735573177; x=1736177977;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ijdzLVVBAgy15w9QsQgpQp9PmP6CutR0mq7PZBrBXtE=;
- b=uL778ibHe57Yy+5E7e5hYikrDm30YyK7/nGHjq9aXENfRv8X2hBVcP9IBmWZsCZIJF
- OPHOkHQIraFZCLt5chcUDAGOVcq5N7dCTj34oUykYBL1Np3/+P5SV9xFE4qyeksmLzyS
- YdlX7XB/vi+8CPvq9FHFFPRr9SFAn5L/0V0Ye7NoCMnOvOz8MRbEr880gNn5g9LRPW5k
- aLw8bIQhKsZFPWJELGBOlR6fr534KzlWUNTPfHdKgk0aLHDRcE5wxUNuZvxOxz36Gavo
- JgVFT4xBXZnJHcW+ZYF71YJSixKEoYjihph0m6fL+EIloxq4IhQpexRdvfRMhpbEHE4M
- pKtg==
+ d=1e100.net; s=20230601; t=1735584927; x=1736189727;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Qui2Y4KUafW4SCpWVDDOaVkKbTJ56eWr0XZNubRfJRc=;
+ b=t7jl7vsn8gWNRpd5MNY2siLsOEVK0yH68LMvdcViDulzZODnXinF0KWAJr0TFNowEi
+ i6J8pPRi4FVaUevtZ0o/LjjKxsegpKrItESuebB/I5mfjBSr8JtOpkVYkMA0Yd7GKwwn
+ jqJvfjhhI2LhkRGbPGE1L1pB+Leq3Ng9dOYwJ+d8nm7Lk4EhYhlVKrmGYZyiOu8dP0l0
+ Zl4LeiLCSS3AM3sJc8V/Ul17kj2tcnbWSDZ3H/AeUI4ZImOV6TZ31bommJH3mBrWwqKY
+ xGMkpb127fFrbLedjuIVWbwc68n1+YVVlRtgXx/TzHX6O3zYDY8RjOwdMoqTLKPxrpjl
+ oj3Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV0wN6atDV0dlueEHz2tVw6BSJc0I3/h/hkXbwffQfIpyhtjLp+k0C0WT2xzwF5PyZI3xlLi6T3QQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+0HUq3Zz5c/R0SjJWmxeqIhzljyL+XgY/ENQ0Nyg/5bjsIlwZ
- y5MVMtusI7Wv8yv22p+WoD4+KWzzhkTXwqJkTPFQdI9IqeNSGWncF1Kx+ki/pgI=
-X-Gm-Gg: ASbGnctFbrbIC/WvmpYKQ8iVOPY8BApfkBYTn+VKwIi4t4vj+qzeaOOoG2UhnNhF9jq
- Inyt6yA7A8mxvv0W1lsY8PrZbUHVbfT2ES/E8ovo0BDOzYYcIlczrpbuYhKOHSUKQCoYVzLC8gf
- ElaBCD8eUlTzbzBwXu5Vf2SvmGtdHCdpZJr/I2BMUxQkFxLJpIbpB5UZmF6IIT+Fgk2FK6vuFvB
- zq4+8WT6nI5HtSUTOC+heeFCQ/VC275eTBQ5I4ExC/31fNrVv7ErwnIglmS7PLYN49WIazQkZOi
- UUdeS/vCx9xX3lAPMsxV00FB9uXxRyA=
-X-Received: by 2002:a05:600c:4510:b0:434:feb1:adbb with SMTP id
- 5b1f17b1804b1-43668b76a08mr332642445e9.31.1735573176720; 
- Mon, 30 Dec 2024 07:39:36 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ AJvYcCW64GZN761xeysQGzVNy4ifGyeXYL4RVwPnIE6VjJ8GfkfMMUMUOE3MMz+sOIUhJ2OhUh7APQdDWmcO@nongnu.org
+X-Gm-Message-State: AOJu0YzYZb3frWjU86vGdDbZXerHnQqQUmaslcSO/TdzyGRJtwnz11Xu
+ 7HIlXYfTBGuISfcWinlKNAfKKQzvasvUk/JL34Xe4rNEV4xEL0bsVTjWGAz5wKQ=
+X-Gm-Gg: ASbGncvxaNzYeIxBUVK9UaPOyilkly6k2b/9sypze40NdMnucBVSNflIAd2AIUmGZ7F
+ /3oRI0AiplmP8acT/LAWEkqaULzh8b15D9KA+GgUVbTEyZ9SGdXgIjqBCkcAoIfPxBJvi6yVHNd
+ 6cignUDvBdFQa4YgrsfJ5YZIxAIj6XrzJnPGfe5rRj6/VZ7OHHLsWowNWoXQwqsJtRi8s/Sie+C
+ D7Bk4I6TZLzsmZI8huJI4hLGYUrQ3VJm/lA9PUjGLnGR19v0JCCAnfMbX6s3igaGfHVu/MUl8JX
+ ybtUya6UwujEARKJMfWbRij7
+X-Received: by 2002:a05:6000:1864:b0:388:c61d:4415 with SMTP id
+ ffacd0b85a97d-38a22a2d914mr27588800f8f.18.1735584926053; 
+ Mon, 30 Dec 2024 10:55:26 -0800 (PST)
+Received: from [192.168.69.132] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-436612008casm360093335e9.14.2024.12.30.07.39.35
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 30 Dec 2024 07:39:36 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Stafford Horne <shorne@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
- qemu-ppc@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
- Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
- Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/3] accel/tcg: Remove pointless initialization of
- cflags_next_tb
-Date: Mon, 30 Dec 2024 16:39:27 +0100
-Message-ID: <20241230153929.87137-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20241230153929.87137-1-philmd@linaro.org>
-References: <20241230153929.87137-1-philmd@linaro.org>
+ ffacd0b85a97d-38a1c8acadcsm30403457f8f.105.2024.12.30.10.55.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 30 Dec 2024 10:55:25 -0800 (PST)
+Message-ID: <5aeaca68-50c0-41f4-8cd2-81a931377954@linaro.org>
+Date: Mon, 30 Dec 2024 19:55:23 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v16 00/14] macOS PV Graphics and new vmapple machine type
+To: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org,
+ Joelle van Dyne <j@getutm.app>
+Cc: agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, stefanha@redhat.com,
+ mst@redhat.com, slp@redhat.com, richard.henderson@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, gaosong@loongson.cn,
+ jiaxun.yang@flygoat.com, chenhuacai@kernel.org, kwolf@redhat.com,
+ hreitz@redhat.com, shorne@gmail.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, akihiko.odaki@daynix.com,
+ qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
+ balaton@eik.bme.hu
+References: <20241223221645.29911-1-phil@philjordan.eu>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241223221645.29911-1-phil@philjordan.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,44 +133,197 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: txiaHUS8Gwry
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZDDjDgiIn6Kr
 
-cflags_next_tb is always re-initialized in the CPU Reset()
-handler in cpu_common_reset_hold(), no need to initialize
-it in cpu_common_initfn().
+Cc'ing Joelle (FYI https://github.com/utmapp/UTM/issues/3491)
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20240427155714.53669-13-philmd@linaro.org>
----
- hw/core/cpu-common.c | 1 -
- 1 file changed, 1 deletion(-)
+On 23/12/24 23:16, Phil Dennis-Jordan wrote:
+> This patch set introduces a new ARM and macOS HVF specific machine type
+> called "vmapple", as well as a family of display devices based on the
+> ParavirtualizedGraphics.framework in macOS. One of the display adapter
+> variants, apple-gfx-mmio, is required for the new machine type, while
+> apple-gfx-pci can be used to enable 3D graphics acceleration with x86-64
+> macOS guest OSes.
+> 
+> Previous versions of this patch set were submitted semi-separately:
+> the original vmapple patch set by Alexander Graf included a monolithic
+> implementation of apple-gfx-mmio. I subsequently reviewed and reworked
+> the latter to support the PCI variant of the device as well and submitted
+> the result in isolation. As requested in subsequent review, I have now
+> recombined this with the original vmapple patch set, which I have updated
+> and improved in a few ways as well.
+> 
+> The vmapple machine type approximates the configuration in macOS's own
+> Virtualization.framework when running arm64 macOS guests. In addition to
+> generic components such as a GICv3 and an XHCI USB controller, it
+> includes nonstandard extensions to the virtio block device, a special
+> "hardware" aes engine, a configuration device, a pvpanic variant, a
+> "backdoor" interface, and of course the apple-gfx paravirtualised display
+> adapter.
+> 
+> There are currently a few limitations to this which aren't intrinsic,
+> just imperfect emulation of the VZF, but it's good enough to be just
+> about usable for some purposes:
+> 
+>   * macOS 12 guests only. Versions 13+ currently fail during early boot.
+>   * macOS 11+ arm64 hosts only, with hvf accel. (Perhaps some differences
+>     between Apple M series CPUs and TCG's aarch64 implementation? macOS
+>     hosts only because ParavirtualizedGraphics.framework is a black box
+>     implementing most of the logic behind the apple-gfx device.)
+>   * PCI devices use legacy IRQs, not MSI/MSI-X. As far as I can tell,
+>     we'd need to include the GICv3 ITS, but it's unclear to me what
+>     exactly needs wiring up.
+>   * Due to a quirk (bug?) in the macOS XHCI driver when MSI-X is not
+>     available, correct functioning of the USB controller (and thus
+>     keyboard/tablet) requires a small workaround in the XHCI controller
+>     device. This is part of another patch series:
+>     https://patchew.org/QEMU/20241208191646.64857-1-phil@philjordan.eu/
+>   * The guest OS must first be provisioned using Virtualization.framework;
+>     the disk images can subsequently be used in Qemu. (See docs.)
+> 
+> The apple-gfx device can be used independently from the vmapple machine
+> type, at least in the PCI variant. It mainly targets x86-64 macOS guests
+> from version 11 on, but also includes a UEFI bootrom for basic
+> framebuffer mode. macOS 11 is also required on the host side, as well
+> as a GPU that supports the Metal API. On the guest side, this provides
+> 3D acceleration/GPGPU support with a baseline Metal feature set,
+> irrespective of the host GPU's feature set. A few limitations in the
+> current integration:
+> 
+>   * Although it works fine with TCG, it does not work correctly
+>     cross-architecture: x86-64 guests on arm64 hosts appear to make
+>     some boot progress, but rendering is corrupted. I suspect
+>     incompatible texture memory layouts; I have no idea if this is
+>     fixable.
 
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index 1edc16f65c8..10d34455a85 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -245,7 +245,6 @@ static void cpu_common_initfn(Object *obj)
-     /* the default value is changed by qemu_init_vcpu() for system-mode */
-     cpu->nr_cores = 1;
-     cpu->nr_threads = 1;
--    cpu->cflags_next_tb = -1;
- 
-     /* allocate storage for thread info, initialise condition variables */
-     cpu->thread = g_new0(QemuThread, 1);
--- 
-2.47.1
+Zoltan, does that ring a bell?
+
+Phil, should we display a warning in this configuration case? Or only
+allow it with some developper option, like:
+
+     -device '{"driver":"apple-gfx-pci", \
+               "display-modes":["3840x2160@60"], \
+               "x-force-cross-rendering":"true"}'
+
+>   * ParavirtualizedGraphics.framework and the guest driver support
+>     multi-headed configurations. The current Qemu integration always
+>     connects precisely 1 display.
+>   * State serialisation and deserialisation is currently not
+>     implemented, though supported in principle by the framework.
+>     Both apple-gfx variants thus set up a migration blocker.
+>   * Rendering efficiency could be better. The GPU-rendered guest
+>     framebuffer is copied to system memory and uses Qemu's usual
+>     CPU-based drawing. For maximum efficiency, the Metal texture
+>     containing the guest framebuffer could be drawn directly to
+>     a Metal view in the host window, staying on the GPU. (Similar
+>     to the OpenGL/virgl render path on other platforms.)
+> 
+> Some of my part of this work has been sponsored by Sauce Labs Inc.
+> 
+> ---
+
+
+> Alexander Graf (8):
+>    hw: Add vmapple subdir
+>    hw/misc/pvpanic: Add MMIO interface
+>    gpex: Allow more than 4 legacy IRQs
+>    hw/vmapple/aes: Introduce aes engine
+>    hw/vmapple/bdif: Introduce vmapple backdoor interface
+>    hw/vmapple/cfg: Introduce vmapple cfg region
+>    hw/vmapple/virtio-blk: Add support for apple virtio-blk
+>    hw/vmapple/vmapple: Add vmapple machine type
+> 
+> Phil Dennis-Jordan (6):
+>    ui & main loop: Redesign of system-specific main thread event handling
+>    hw/display/apple-gfx: Introduce ParavirtualizedGraphics.Framework
+>      support
+>    hw/display/apple-gfx: Adds PCI implementation
+>    hw/display/apple-gfx: Adds configurable mode list
+>    MAINTAINERS: Add myself as maintainer for apple-gfx, reviewer for HVF
+>    hw/block/virtio-blk: Replaces request free function with g_free
+> 
+>   MAINTAINERS                         |  15 +
+>   contrib/vmapple/uuid.sh             |   9 +
+>   docs/system/arm/vmapple.rst         |  63 ++
+>   docs/system/target-arm.rst          |   1 +
+>   hw/Kconfig                          |   1 +
+>   hw/arm/sbsa-ref.c                   |   2 +-
+>   hw/arm/virt.c                       |   2 +-
+>   hw/block/virtio-blk.c               |  58 +-
+>   hw/core/qdev-properties-system.c    |   8 +
+>   hw/display/Kconfig                  |  13 +
+>   hw/display/apple-gfx-mmio.m         | 288 +++++++++
+>   hw/display/apple-gfx-pci.m          | 156 +++++
+>   hw/display/apple-gfx.h              |  77 +++
+>   hw/display/apple-gfx.m              | 880 ++++++++++++++++++++++++++++
+>   hw/display/meson.build              |   7 +
+>   hw/display/trace-events             |  30 +
+>   hw/i386/microvm.c                   |   2 +-
+>   hw/loongarch/virt.c                 |  12 +-
+>   hw/meson.build                      |   1 +
+>   hw/mips/loongson3_virt.c            |   2 +-
+>   hw/misc/Kconfig                     |   4 +
+>   hw/misc/meson.build                 |   1 +
+>   hw/misc/pvpanic-mmio.c              |  60 ++
+>   hw/openrisc/virt.c                  |  12 +-
+>   hw/pci-host/gpex.c                  |  43 +-
+>   hw/riscv/virt.c                     |  12 +-
+>   hw/vmapple/Kconfig                  |  32 +
+>   hw/vmapple/aes.c                    | 581 ++++++++++++++++++
+>   hw/vmapple/bdif.c                   | 274 +++++++++
+>   hw/vmapple/cfg.c                    | 195 ++++++
+>   hw/vmapple/meson.build              |   5 +
+>   hw/vmapple/trace-events             |  21 +
+>   hw/vmapple/trace.h                  |   1 +
+>   hw/vmapple/virtio-blk.c             | 204 +++++++
+>   hw/vmapple/vmapple.c                | 612 +++++++++++++++++++
+>   hw/xen/xen-pvh-common.c             |   2 +-
+>   hw/xtensa/virt.c                    |   2 +-
+>   include/hw/misc/pvpanic.h           |   1 +
+>   include/hw/pci-host/gpex.h          |   7 +-
+>   include/hw/pci/pci_ids.h            |   1 +
+>   include/hw/qdev-properties-system.h |   5 +
+>   include/hw/virtio/virtio-blk.h      |  11 +-
+>   include/hw/vmapple/vmapple.h        |  23 +
+>   include/qemu-main.h                 |  14 +-
+>   include/qemu/cutils.h               |  15 +
+>   meson.build                         |   5 +
+>   qapi/virtio.json                    |  14 +
+>   system/main.c                       |  37 +-
+>   ui/cocoa.m                          |  54 +-
+>   ui/gtk.c                            |   4 +
+>   ui/sdl2.c                           |   4 +
+>   util/hexdump.c                      |  18 +
+>   52 files changed, 3791 insertions(+), 110 deletions(-)
+>   create mode 100755 contrib/vmapple/uuid.sh
+>   create mode 100644 docs/system/arm/vmapple.rst
+>   create mode 100644 hw/display/apple-gfx-mmio.m
+>   create mode 100644 hw/display/apple-gfx-pci.m
+>   create mode 100644 hw/display/apple-gfx.h
+>   create mode 100644 hw/display/apple-gfx.m
+>   create mode 100644 hw/misc/pvpanic-mmio.c
+>   create mode 100644 hw/vmapple/Kconfig
+>   create mode 100644 hw/vmapple/aes.c
+>   create mode 100644 hw/vmapple/bdif.c
+>   create mode 100644 hw/vmapple/cfg.c
+>   create mode 100644 hw/vmapple/meson.build
+>   create mode 100644 hw/vmapple/trace-events
+>   create mode 100644 hw/vmapple/trace.h
+>   create mode 100644 hw/vmapple/virtio-blk.c
+>   create mode 100644 hw/vmapple/vmapple.c
+>   create mode 100644 include/hw/vmapple/vmapple.h
+> 
 

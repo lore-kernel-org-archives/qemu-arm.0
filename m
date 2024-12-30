@@ -1,115 +1,132 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp6814358njk;
-        Sat, 28 Dec 2024 02:49:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX9EunpJhaXKQetNfdLUvHyVbZe2nb3rPeNZ2C+HhPkfeB11EKnOI3ETLhFQUEloN11ssFV+IF+PbiNYA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEVwh3um6+LiqYvm4BPmEqmnq4uEN34avIx1t71OVViHbB+DOOUkQPJy1nTTNbeSylJbgcb
-X-Received: by 2002:a05:620a:4721:b0:7b6:dedf:b6c2 with SMTP id af79cd13be357-7b9ba716accmr5283783985a.5.1735382975839;
-        Sat, 28 Dec 2024 02:49:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735382975; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp7913552njk;
+        Mon, 30 Dec 2024 07:40:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX9PqohEIkCSPWo/MNQ+M03Jav+lnra6vKv2RcRmbvnaB5suHqTPy+incKSU3L/sB87NhwbGwgY3gRCdQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEaEW8qkXHdakKpLc5Vnwq2aO4M+hUPZX2Y5ibFmsN4zTqi8wg7CqNYVaCSriZwmbtDp/bm
+X-Received: by 2002:a05:6122:2403:b0:50d:39aa:7881 with SMTP id 71dfb90a1353d-51b768eb125mr25712004e0c.0.1735573219668;
+        Mon, 30 Dec 2024 07:40:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735573219; cv=none;
         d=google.com; s=arc-20240605;
-        b=Tzov9RAUWtR0kix16I3CsrEeQIE/8+94EYR6KIyCI7CQx9Rf9l5MSMkGtplPKP/lFL
-         DR0so6w1Nzy/u/OagEYjtcDZbLmn+ltLg2t5L3aU/gRI1C3bcIpbGnwRmts4j/gbRtTh
-         WQyukCOUf1HG85TNEEi8gMvtahSmEc9iSXv20Y8wstF4cvH3kEChhtndNu9nyJKx6Q3W
-         09ilXIJ8WQdYabOzl5qyE2JBRWt5i71rcIPabwSS3xmMo47GggFP7hh0Ks/o0l65HXB/
-         MtPk1W2Juxko0uG3Z8pADo0OLp46UzfXv+LwuL9770wyw6WuIXjBc0YwDM4nkuS1/CKG
-         6SeQ==
+        b=PNCmwo/tSyLdK6h8vRI5gQesT/hXX4n4fLw0Jjm3IR+QfdIQW+o3b4zxkvXyBCAF6H
+         oJTo63yDfj0aPqb7HD4MlJxkecB0vJq/AY4iaNVrxVEvKM3L227kByKcIAsvb8s3LZyl
+         tiQdhi8Kk/71sftNrJrL5gCKvHCo3B1CFBKvsvLMBY9rTQHNOtBOwZv5zVs4oTRXKgvR
+         NMfZbCX2IZ6sFPA/9H0ypwEq1Ef02MdVM+UPHpgMxPIcJ5yKINaiqGA30yVGY7NqiZ15
+         aEFXwPpP2g3Y5nduEC0mNeyUUdjOX1ZKOBrWwRBKHkaYOfIs25HTvq3yVXji8/WW4h0x
+         +eiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Rm9qCr/yfQFF0NVtL+4X+rXc8O6gPDvf+JlC3PO4Who=;
-        fh=W42ksoQon05CCMemYLIBd0t7c/h9fcA7PUCdhYkwgTM=;
-        b=hts7/DV2A8Fcdm/UcPE8SH+6TVobe8+2QjuIcb3vdYhHVi0E8HEoTn5XZzlRnw7ImB
-         ejOfGtPgOAUMX6IxYax9CgytLJo+IooauwJqYFbpz6LQWqOL7WNvt2lSVoCcdSl1go1I
-         4cOKaA8r1mkX9h/3iC5dyrPP1ycVVKPZBLet7YH5kv4B6PIyE1HCnlk+fYtSul13d1gG
-         SGUxozvZvO4JGfBPoqCO4ftgnYlQnrKEyqjbfRfTawQZ3MY8Gu3vpEAWUiUVyAlFy5JR
-         xQNJdhPKaZuqLHgh3WrWiJCB8DZQZurBHNPD5FD4/ir66fhVGfDXkhl0YwGPHibrSo4I
-         AuaQ==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=zaU9NBmAHybeYXgq1cwe95Tsd0YH1x8KfOWowQQlRh0=;
+        fh=QAnqEm9+J4rk2BCSQNqmeCLLOXX1PKB5iRsrJ6bZAZg=;
+        b=ill/r3BfipjWWBPLB2v5Qn7LIgQU271JK6/XpfGZhEBdCY+mJYoYHoCsZcuPJwiwq1
+         I5bY5/F9/uMUNG+Lp5++Hbpl6zdnjPzgbb5c3Vbpf4yuxkaMYBamQEz2BgVnk3oDRHtI
+         x0XnSUkvsYv0J8RQZCItu4cEaEwNaHGvmb8PDpZ0cCBDrCm1lC/2VKeSlIha/eH/w3Bk
+         fX6uaWzMqfawjKc1ERZHY3iOWczDHE7nL+dt3M9OdA9JU/sWJAxcyKWR3UNu5OTXs66X
+         ajqt7zoyD2Bol2yFHlIQ+enXBQF9OZH90FZHcDcK4hPnkqy4G4D8kKGYimKXFvs1WHBp
+         r5Xw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=0q6ewKpr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JJDnIG7Q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46a3eb9912bsi226563311cf.280.2024.12.28.02.49.35
+        by mx.google.com with ESMTPS id 71dfb90a1353d-51b68b83048si6466931e0c.6.2024.12.30.07.40.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 28 Dec 2024 02:49:35 -0800 (PST)
+        Mon, 30 Dec 2024 07:40:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@philjordan-eu.20230601.gappssmtp.com header.s=20230601 header.b=0q6ewKpr;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JJDnIG7Q;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tRUNg-0001J8-AF; Sat, 28 Dec 2024 05:49:16 -0500
+	id 1tSHrw-0000oT-0l; Mon, 30 Dec 2024 10:39:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tRUNb-0001Ij-Sz
- for qemu-devel@nongnu.org; Sat, 28 Dec 2024 05:49:12 -0500
-Received: from mail-vs1-xe30.google.com ([2607:f8b0:4864:20::e30])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSHrt-0000m2-U7
+ for qemu-devel@nongnu.org; Mon, 30 Dec 2024 10:39:46 -0500
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <phil@philjordan.eu>)
- id 1tRUNY-0000Gz-TR
- for qemu-devel@nongnu.org; Sat, 28 Dec 2024 05:49:11 -0500
-Received: by mail-vs1-xe30.google.com with SMTP id
- ada2fe7eead31-4b24d969db1so1855975137.0
- for <qemu-devel@nongnu.org>; Sat, 28 Dec 2024 02:49:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSHrr-00030s-Hb
+ for qemu-devel@nongnu.org; Mon, 30 Dec 2024 10:39:45 -0500
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-385e2880606so6884305f8f.3
+ for <qemu-devel@nongnu.org>; Mon, 30 Dec 2024 07:39:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=philjordan-eu.20230601.gappssmtp.com; s=20230601; t=1735382947; x=1735987747;
- darn=nongnu.org; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Rm9qCr/yfQFF0NVtL+4X+rXc8O6gPDvf+JlC3PO4Who=;
- b=0q6ewKprw/19TUmASnpklwouDGoxDRpZ3sJflTtKTjFRE29WEtnSb6xG8omO9ddzU4
- MYlmjdptirpPeiJq1cnAK3pSBb0apODv/QBNMtAs2sY1+0eha8Z5v81gerwI7eLNKfnY
- iqQhl4HRJB3yEFGsLijAYV2ctVZkhxs+cP+iRGkNOfdYLO1HcDtaGk5Bvd2iL/qdy5G/
- flfPmYRTsClTNIh70Vy1TjMSL4TnoxpeORZ5wUWsk12uzUIk33vhd+eOIq7w7jnAVaZX
- uiv778pRSrbVKiZZDlyk/oYGid4Rvg6SvtwwB8Ehk0rIRalVNsRWKCMY1tVT4nIfH8X3
- kwew==
+ d=linaro.org; s=google; t=1735573181; x=1736177981; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=zaU9NBmAHybeYXgq1cwe95Tsd0YH1x8KfOWowQQlRh0=;
+ b=JJDnIG7Qf8JnOMZf8F7Dmiy8r91072RRdmAdp+9ITKwMwpqOHdGGpabrDL5+tHS4Hh
+ FbTZpQrG/H3SpyVYEZzStDAjj0GmQjcqojy3PG44ujRSTucdxrtCeXjBeCNMqsijUKOa
+ PyFJwneT4dGCy7TKt9mrQCMVwbdGT9V/2iDwl9x/P381JegVsVxqSRX/uD4oCmX8F0TI
+ ivxNbBogZhtgc7O40cRWpCUTBaxi1AVM/YEwlNBbnPKF8ivjQLvoiX0y6WBGIBulVdXc
+ DGo+kXiiMEPNc9wngOhcAC4dJ7Fvouj1p3Q3OGkSJIQMaBz53RDdvsewqTc/niJEeQyq
+ hG0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735382947; x=1735987747;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Rm9qCr/yfQFF0NVtL+4X+rXc8O6gPDvf+JlC3PO4Who=;
- b=kP250YE45epU/fcpH4SgLA2jCovIghIdKsbth6NclovoZrbfcY6EB8LJTMHJE1C0X9
- /1m+AUpYg2XpElq583hqbwsddq1UqTfOzCljAEuJF/Z0qKQYZsbJqPzr5/A5Uy36mEBE
- eSfamvlP5C/G5ZZWnPiIui9Od7pP/jg/188sTmgtViMkSU7q/TotWs1GOagu+iFrrpva
- SoW0ERYhreRux3aR+vU3Zg8KGobmERTWvakUZjTsIFUUPT5zhtjvVz3QD4hItVBgTlC1
- 1wlM/AiXL1yOTHVgrQPnLwssoAtFVN5/UNj/ShQJAhmZqWr68QVJ/PM9KuTWKpEKCWrX
- qLwQ==
-X-Gm-Message-State: AOJu0YxMzBOOjlprJGes4+EFMgYtIQ1IDMaVTv9hIPE2s1613Tje/YSn
- CfoJo/i5iSk2KITCNF1SesNN5ZODd3rf+yexR7dp+J0B6KEHhbtrRImT8DSWdpLdjCkte+veKgn
- NZNmvvxq6/J6o7sle1luDxKNqY8gs/pB0iybl
-X-Gm-Gg: ASbGncu7vvUk0GpsFKtG0mxNvdIfFnpNMuxvrbNGlcV1drhOwhcS4td/39WTXbfFDgP
- pe2jEiEcsp1jckThdwuidqwRfNZQyAtw16FuVtw==
-X-Received: by 2002:a05:6102:1493:b0:4af:ea3b:7b41 with SMTP id
- ada2fe7eead31-4b2cc31c0dcmr22976086137.6.1735382946979; Sat, 28 Dec 2024
- 02:49:06 -0800 (PST)
+ d=1e100.net; s=20230601; t=1735573181; x=1736177981;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zaU9NBmAHybeYXgq1cwe95Tsd0YH1x8KfOWowQQlRh0=;
+ b=JTCf/H8iMTojLX0ikTfBTFOj4T8dS6JTZnxNF4J9ovTDwnCqfLMrMYvBcD3VWX/ngF
+ ATOQOnKO5egSijBeOYnX84xJ1g9+0dBUCQpj+0SEoHsCcY5Fzb/ALZEd4DtupkRbGgSU
+ DFsZ4zyccInbUk65RINH+dSA5Jb2MO9yiC+SC9EvdlEkoUuUzu3ouyHXJG/d8KyIs5AT
+ ItUNQI1uRy3tjNc7x+//UfNa/KKJvNmqy77rnEj3F5mmzGcPk3aaT0QXrZZR/A1GoIcB
+ mKieDQeUzoBD0z2v4d6SGWgmNm8ARaGlTuVddti+Qnrumceg8k2dLJ+n0Pjvd2O0+xky
+ TcTQ==
+X-Gm-Message-State: AOJu0YzF2EQLrhRqe7D9vOL1QuKCs54YSIE4Gl8al76B33UBvMW/tHc4
+ 87M53G/siceQhfn2UVsHf+moUzGVOPcBRAUw0NG/aUuQgu8J6nAhdf9iqIGRJ369OMC/2xJ1DDk
+ f
+X-Gm-Gg: ASbGncuEy2GL3gtPMVsr9Vyr6UN6YrHt4Db7vJlXVU991PA3qc3yEpGU9g7xAYxcuBJ
+ eKUJtaW6eHtH2+CViwJwGKp3OQxoGd4BGbdlwlL4Wb64n6qr6CCbpjSLA5lv1sxgIHVuAPim1tV
+ Hu5iuTkDZGu3K+smUOD+HN9G0dKXzxaGmJjm7tsxQNmlmd77WIPexboUeyugWOKVt4zn6J2YSs1
+ KRHNGjTsE6Zi4phXCypyxps/9JouD5Gnq96JIwn2YSdeQ6nGhtKJ0wLU1CPnHt59Y9SUh9tmSCG
+ GPOfLdKH6CSaVlGeJ3NysvP2ZjjbHXA=
+X-Received: by 2002:a05:6000:4023:b0:385:e5dc:e285 with SMTP id
+ ffacd0b85a97d-38a22406d4emr31752630f8f.58.1735573181492; 
+ Mon, 30 Dec 2024 07:39:41 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38a1c89e126sm29890799f8f.65.2024.12.30.07.39.40
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 30 Dec 2024 07:39:41 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Stafford Horne <shorne@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
+ qemu-ppc@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 2/3] target/cpus: Remove pointless re-assignment of
+ CPUState::exception_index
+Date: Mon, 30 Dec 2024 16:39:28 +0100
+Message-ID: <20241230153929.87137-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20241230153929.87137-1-philmd@linaro.org>
+References: <20241230153929.87137-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20241227202435.48055-1-philmd@linaro.org>
- <20241227202435.48055-3-philmd@linaro.org>
-In-Reply-To: <20241227202435.48055-3-philmd@linaro.org>
-From: Phil Dennis-Jordan <phil@philjordan.eu>
-Date: Sat, 28 Dec 2024 11:48:56 +0100
-Message-ID: <CAAibmn0zhrZjZ+SL7n7eg041a5APx-o4sCAp0YGDiwUk8gpgDA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/intc: Have ARM_GIC select ARM_GICV3 when KVM is
- not available
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="0000000000001ab989062a5254d4"
-Received-SPF: neutral client-ip=2607:f8b0:4864:20::e30;
- envelope-from=phil@philjordan.eu; helo=mail-vs1-xe30.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_NEUTRAL=0.779 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,95 +141,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oWn/P/flFQvE
+X-TUID: p9FuRAcWnADj
 
---0000000000001ab989062a5254d4
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The CPUState::exception_index field is always re-initialized
+by the parent CPU ResetHold() handler in cpu_common_reset_hold(),
+no need to have targets manually initializing it.
 
-On Fri, 27 Dec 2024 at 21:24, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g>
-wrote:
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ target/hppa/cpu.c      | 1 -
+ target/loongarch/cpu.c | 1 -
+ target/openrisc/cpu.c  | 1 -
+ 3 files changed, 3 deletions(-)
 
-> When the KVM accelerator is selected, the Kconfig ARM_GIC key
-> selects the KVM GIC implementation (ARM_GIC_KVM).
-> For other accelerators (TCG, HVF, ...), select the generic
-> implementation.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  hw/intc/Kconfig | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/intc/Kconfig b/hw/intc/Kconfig
-> index 7547528f2c2..762139d8df3 100644
-> --- a/hw/intc/Kconfig
-> +++ b/hw/intc/Kconfig
-> @@ -23,7 +23,7 @@ config APIC
->
->  config ARM_GIC
->      bool
-> -    select ARM_GICV3 if TCG
-> +    select ARM_GICV3 if !KVM
->
+diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
+index 6e5434a8e99..9b355bfe902 100644
+--- a/target/hppa/cpu.c
++++ b/target/hppa/cpu.c
+@@ -203,7 +203,6 @@ static void hppa_cpu_reset_hold(Object *obj, ResetType type)
+     if (scc->parent_phases.hold) {
+         scc->parent_phases.hold(obj, type);
+     }
+-    cs->exception_index = -1;
+     cs->halted = 0;
+     cpu_set_pc(cs, 0xf0000004);
+ 
+diff --git a/target/loongarch/cpu.c b/target/loongarch/cpu.c
+index d611a604704..fd062d2e3e1 100644
+--- a/target/loongarch/cpu.c
++++ b/target/loongarch/cpu.c
+@@ -584,7 +584,6 @@ static void loongarch_cpu_reset_hold(Object *obj, ResetType type)
+ #ifdef CONFIG_TCG
+     restore_fp_status(env);
+ #endif
+-    cs->exception_index = -1;
+ }
+ 
+ static void loongarch_cpu_disas_set_info(CPUState *s, disassemble_info *info)
+diff --git a/target/openrisc/cpu.c b/target/openrisc/cpu.c
+index b7bab0d7abf..84aa9448256 100644
+--- a/target/openrisc/cpu.c
++++ b/target/openrisc/cpu.c
+@@ -101,7 +101,6 @@ static void openrisc_cpu_reset_hold(Object *obj, ResetType type)
+     cpu->env.pc = 0x100;
+     cpu->env.sr = SR_FO | SR_SM;
+     cpu->env.lock_addr = -1;
+-    cs->exception_index = -1;
+     cpu_set_fpcsr(&cpu->env, 0);
+ 
+     set_float_detect_tininess(float_tininess_before_rounding,
+-- 
+2.47.1
 
-Wouldn't this disable the ARM_GICV3 by default when building with
---enable-tcg --enable-kvm? And then there would be no GIC available when
-running the built QEMU in TCG mode. (Bear with me, I'm a relative Meson
-newbie.)
-
-
->      select ARM_GIC_KVM if KVM
->      select MSI_NONBROKEN
->
-> --
-> 2.47.1
->
->
-
---0000000000001ab989062a5254d4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, 27 Dec =
-2024 at 21:24, Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@lin=
-aro.org">philmd@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gma=
-il_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,2=
-04,204);padding-left:1ex">When the KVM accelerator is selected, the Kconfig=
- ARM_GIC key<br>
-selects the KVM GIC implementation (ARM_GIC_KVM).<br>
-For other accelerators (TCG, HVF, ...), select the generic<br>
-implementation.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@lin=
-aro.org" target=3D"_blank">philmd@linaro.org</a>&gt;<br>
----<br>
-=C2=A0hw/intc/Kconfig | 2 +-<br>
-=C2=A01 file changed, 1 insertion(+), 1 deletion(-)<br>
-<br>
-diff --git a/hw/intc/Kconfig b/hw/intc/Kconfig<br>
-index 7547528f2c2..762139d8df3 100644<br>
---- a/hw/intc/Kconfig<br>
-+++ b/hw/intc/Kconfig<br>
-@@ -23,7 +23,7 @@ config APIC<br>
-<br>
-=C2=A0config ARM_GIC<br>
-=C2=A0 =C2=A0 =C2=A0bool<br>
--=C2=A0 =C2=A0 select ARM_GICV3 if TCG<br>
-+=C2=A0 =C2=A0 select ARM_GICV3 if !KVM<br></blockquote><div><br></div><div=
->Wouldn&#39;t this disable the ARM_GICV3 by default when building with --en=
-able-tcg --enable-kvm? And then there would be no GIC available when runnin=
-g the built QEMU in TCG mode.  (Bear with me, I&#39;m  a relative Meson new=
-bie.)<br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"=
-margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-lef=
-t:1ex">
-=C2=A0 =C2=A0 =C2=A0select ARM_GIC_KVM if KVM<br>
-=C2=A0 =C2=A0 =C2=A0select MSI_NONBROKEN<br>
-<br>
--- <br>
-2.47.1<br>
-<br>
-</blockquote></div></div>
-
---0000000000001ab989062a5254d4--

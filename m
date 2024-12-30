@@ -1,291 +1,182 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp6228564njk;
-        Fri, 27 Dec 2024 01:54:00 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUZQNm4DbzkONvzhqkRjmCJN5vQsqw+nzdfihjyHWcGzroME5xBqrpUNVqmKtGUvGusdHDiNf8gqPg5yA==@linaro.org
-X-Google-Smtp-Source: AGHT+IE7FmTipzmDpRcVdxo1XmYTiQh0gdW0tHLOREuDKmXEtGhP91g8UD3VAoEUAxxTzbQGQDtu
-X-Received: by 2002:a05:620a:a106:b0:7b6:f113:b658 with SMTP id af79cd13be357-7b9ba6fdb17mr3831332585a.12.1735293240676;
-        Fri, 27 Dec 2024 01:54:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735293240; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp7898778njk;
+        Mon, 30 Dec 2024 07:17:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUC53bPb3pntnz5iyt2zKyrgxzK7Kwq5Ku6eoFKhQPKaX6Li1krNyydzdgucngef3WKzaXW14y3Y7gC/A==@linaro.org
+X-Received: by 2002:a05:6000:2a1:b0:388:caf4:e909 with SMTP id ffacd0b85a97d-38a221fffe4mr29804488f8f.25.1735571835355;
+        Mon, 30 Dec 2024 07:17:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735571835; cv=none;
         d=google.com; s=arc-20240605;
-        b=bzfsO5ThNtu+8g8SxyPM/k2ibnBkDhiAc9cWUt1eBUM2/e1tZq0AO/emELhKCZCXMv
-         VXhn2ly23wq7xB0vVkomDfdY2oJgYw6UcQs6yFaO3ms+z0onLkPGy8Ex0tAe4yOjkZCJ
-         Z56df133t0Beeg4Q/DJ0FQrBFdGc2QygvX4AXYW8dJzSaM38Kta8xN43a3oZ+q8KaOtZ
-         feCp0VWZPmxLzC7uwi7FPmX9jKs6LomtdPGEFnGgxZsI0f8hSMJsScvu57k7bM/cdZ47
-         VsKWj9XRYgxbNj1DXmDPyu04TmM2E7Vqvyp1LNBwzJtLjZZrvhzi+ywUwI8RiPO9Pvuu
-         m8UQ==
+        b=PAXO7T7ZVr1IuatwZDgWiTx1y2+lwWCPdiaJvLkp/cR2Ku6lf6+g0ExX5agcAt9+le
+         hIrOANjb7vTdttSvZ1YjgCChwfDQXQSyWz71CnKwO5KH0gDBmfZqzEZpKw/ZcYi00bYN
+         FTcSk8409WzOlEepVffbp52csh+o6FVJzFprTz2/iPxFS9wh1McpjIw8sKarua09UlZ6
+         HMb4gn4PW3vgp32U03uhiEy+KB10Nfe5Caq/gR3+vRlAf10/+yuc0N3XhlrFudUo6SOM
+         tI9N6rVELJiYGIM92JmiX3fhe8J6kZ4PLz2W0Ha7A/47Dklu7Vd+Eb9woW5g8dt8XxtR
+         aOtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=WopbnIJi8lOF/KmxtsCSal8guDou4IcZejMBKy8jdPo=;
-        fh=zRGHzg0QSvglehTRa45zTc999PxcMC/xgiADOP0n0i8=;
-        b=QdUmCTSQmqlaNzCswvlAHHQvDnYcf+oiWkx3l77xDEQ7Oxa2lE275qh72taoPkyvRT
-         iQ4DFP922cBZtwZm8W+qSkzgerQfeBrTXTmp6+2BHfnMqBd/Bc5F6KxfiFcRisnY86Xr
-         Uo4AlbMgEPi4jiqih1Lq/SAbABG8IJd7RPKCPshLOcXxTaoFyIlBv8RQfyzHltWWWQsi
-         pUYVWuzFLSClIXwWVd+ImvY+66l66iT9ww2ysw3vwPMNs4xUXgap6b7yX61W4ed6EoEO
-         H5yvSv9EL9l2vBZR+t5KOlcwgpWhJFC5r7+TX94D6wxcD3PvqU1oekqJtRBZwkdI4lm8
-         ul5A==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=TgEaK9IIv9JgU+XsTIrVRbeP3BFI31d39ksXkKneY5k=;
+        fh=RSgR446Z1ZHYXNaBnStAf4gXhjTQdCxTSn+OvU1L8K0=;
+        b=cCk0D/93jlOhcXkvZ0XwQy0LaPK9YmsOAVKkthGm+8iLFV5Qk7Ur3EN+njTAVgjxSu
+         toF/Ey0f/zDKlPnodkmBiOoWMJtMOVWB/5Zmt2QzHkXS56I8YF2ZPKxLSlMfjdAeU5Bm
+         zGFpP6zy6KWDQ4U0vmHVkWsv6C9PHAKGDStRGCy2D462/OaN8MaygdLQeVVHT6UaC952
+         0Cw63xKceS9H+HQgudvD6VtbAZB8ltxs8lffbcAp8lpbMtia+O8Jwy6nx+wbkB/Q0beU
+         HmpMH7Md6M1H28iPrkJ0WN5SjHgs/FFiOkvd4eDHryBRX2qKn+92tDQPpSy8U+kZBfi9
+         Me9Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac4ccdeesi1914248485a.380.2024.12.27.01.54.00
+       dkim=pass header.i=@linaro.org header.s=google header.b=JrZA0FiJ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-38a1c6acc3asor5979496f8f.0.2024.12.30.07.17.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Dec 2024 01:54:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 30 Dec 2024 07:17:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tR72M-0000N3-1f; Fri, 27 Dec 2024 04:53:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=TB6Z=TU=kaod.org=clg@ozlabs.org>)
- id 1tR72K-0000M0-Ai; Fri, 27 Dec 2024 04:53:40 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=TB6Z=TU=kaod.org=clg@ozlabs.org>)
- id 1tR72H-0005pb-Lc; Fri, 27 Dec 2024 04:53:40 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4YKLR94Xv2z4x5h;
- Fri, 27 Dec 2024 20:53:25 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4YKLR60w1Tz4wnx;
- Fri, 27 Dec 2024 20:53:21 +1100 (AEDT)
-Message-ID: <94c71f3b-4c3a-4989-af08-2cf07c8aca2c@kaod.org>
-Date: Fri, 27 Dec 2024 10:53:23 +0100
+       dkim=pass header.i=@linaro.org header.s=google header.b=JrZA0FiJ;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1735571835; x=1736176635; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=TgEaK9IIv9JgU+XsTIrVRbeP3BFI31d39ksXkKneY5k=;
+        b=JrZA0FiJa91O6KC5KUzcvJjW08TjbpI8LgTzQeDOCC2Ge10SDlXK48mimMT9jS0DXl
+         1wpy5uHSU0ttoJaz8H1GJ66xEum9M6SQPD5ScgpSF6HDlhGoxbIVtgrkfmxD6n3HGmMs
+         YC9SvlaBtCS+bzCirQEQi0xSXmidTO4dTzcI9KFF1jG6Rtc6iSl98kFLAuFzDSLNso1h
+         3mTzOL/2wYi1keA8Z3eXcDfdIXWUnR7X3RRNRdBePvSDQVVr9L96IUhiqLlXy9Pchi2L
+         lQgIQqDIR8x6OMixMGO6sMrA2Z3F8Lx3nRjAiVWehsWn7NOw3Xed4vxRyzwFbcycLGIc
+         +SuA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1735571835; x=1736176635;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=TgEaK9IIv9JgU+XsTIrVRbeP3BFI31d39ksXkKneY5k=;
+        b=EOMn6yhqQb0dnL8Y0APwvwBbqxZCc6pyxWT7Ex2KO75wYHvDAVYfcMlMYKRUHdRCTM
+         cLTh1bGZ/K/B9kqDOzUNWjVg01x/PICDUdirx3PLhcYBsVeMRZ/+kfbllLkTEl9pgMqw
+         wOYsBE/JpkT3x7zAVRdZ8misRoLtI6W1FPEUWOom56FI7eI30atXQ/bbrM1ckM45tIVh
+         OH+JMyYidwzOMZjNMjFqamjaW15x5DR9lQBqUCXQ5THGewOjnoxl+jhJzBlBQm4DzhCO
+         W90wl4IRfSJIlV0S/6LgMVhDGdg7KH23MVrl8BdYtNgAE6zJWevxlqIz7pAvc+tMV7El
+         HXug==
+X-Forwarded-Encrypted: i=1; AJvYcCW8M+V/Yq+5C6gdZzYUdBDf0Tg/NfwbDX1DC3pOxYyDTlw7aKLO7HlWcG/xRz1kWdkfmfT+3IY0cdJUYg==@linaro.org
+X-Gm-Message-State: AOJu0YwrQq/fTGsfZc+IfXuPbLKFk/hNhaBax7ecxnPN7sxCFSYMJW02
+	3POj6UtB/1FQQMYikz61U288szE2YPWTLI6Q6RsPQtJv5VrLOl3CngSVVZuxXIAFEw==
+X-Gm-Gg: ASbGncvxmnDhEhj6wb8p9RvjyHLR4T7PwIbXmjd4i1zmSmVuCEBFQsnEFfpx5aYIMYw
+	SXLl+9jGDWoess4J67yFzM6tRGYKAXLppHyg50C7t2s2oTDPpxED5zZqWA/fimohu5syek1ZLwz
+	fSy5vAFA/u7BEofN1VXQPevYMCpdnGUqHy7OFOwZ9SHWXFWnokYkehc3Rx1phu4mHQd5tuqZ/zV
+	nf1oq/gidN50yfQZHIJ+en2fiZ+T4CVR8/tBdpEShd8ppoSUDexuCsyrylA5VjzSEf/JpMtUQ91
+	z19wW+P5WPYPyKuunADuIWrG
+X-Google-Smtp-Source: AGHT+IHyV7U8iMyEh1uJzuCBhfDtgFD7zDM23Hhl/a1J+Qp7Qu4pUQsLRD3WA/h0LsBWKljj9iswrQ==
+X-Received: by 2002:a05:6000:4029:b0:386:41bd:53a3 with SMTP id ffacd0b85a97d-38a224083afmr29857472f8f.50.1735571834838;
+        Mon, 30 Dec 2024 07:17:14 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.132] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436611ea4a7sm356850475e9.3.2024.12.30.07.17.13
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 30 Dec 2024 07:17:14 -0800 (PST)
+Message-ID: <626e4b64-bf09-4dec-b353-b9239ee6d7d3@linaro.org>
+Date: Mon, 30 Dec 2024 16:17:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] aspeed: ast27x0: Map unimplemented devices in SoC
- memory
-To: Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20241225020311.3718080-1-steven_lee@aspeedtech.com>
- <20241225020311.3718080-3-steven_lee@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20241225020311.3718080-3-steven_lee@aspeedtech.com>
+Subject: Re: [PATCH v5 09/16] tests/qtest: Update tests using PL011 UART
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Tong Ho <tong.ho@amd.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+References: <20240719181041.49545-1-philmd@linaro.org>
+ <20240719181041.49545-10-philmd@linaro.org>
+ <CAFEAcA9QA3Kn3h_bwMSoht7KZa8DOpMXFDUWon1kc+iHy59-EQ@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA9QA3Kn3h_bwMSoht7KZa8DOpMXFDUWon1kc+iHy59-EQ@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=TB6Z=TU=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.169, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e/fknKD4Hmn1
+Content-Transfer-Encoding: 8bit
+X-TUID: lIvSaM0pMfXp
 
-Hello,
-
-On 12/25/24 03:03, Steven Lee wrote:
-> Maps following unimplemented devices in SoC memory
-> - dpmcu
-> - iomem0
-> - iomem1
-> - ltpi
-> - io
-
-Could you please add a sentence about what these devices are ?
-
-Thanks,
-
-C.
-
-
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-> ---
->   hw/arm/aspeed_ast27x0.c     | 45 +++++++++++++++++++++++++++++++------
->   include/hw/arm/aspeed_soc.h |  6 +++++
->   2 files changed, 44 insertions(+), 7 deletions(-)
+On 29/7/24 17:47, Peter Maydell wrote:
+> On Fri, 19 Jul 2024 at 19:11, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> We weren't enabling the PL011 TX UART before using it
+>> on the raspi and virt machines. Update the ASM code
+>> prefixing:
+>>
+>>    *UART_CTRL = UART_ENABLE | TX_ENABLE;
+>>
+>> to:
+>>
+>>    while (true) {
+>>        *UART_DATA = 'T';
+>>    }
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   tests/qtest/boot-serial-test.c | 15 ++++++++++-----
+>>   1 file changed, 10 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+>> index 3b92fa5d50..5cb309ccf0 100644
+>> --- a/tests/qtest/boot-serial-test.c
+>> +++ b/tests/qtest/boot-serial-test.c
+>> @@ -70,18 +70,23 @@ static const uint8_t kernel_plml605[] = {
+>>   };
+>>
+>>   static const uint8_t bios_raspi2[] = {
+>> -    0x08, 0x30, 0x9f, 0xe5,                 /* ldr   r3,[pc,#8]    Get base */
+>> +    0x10, 0x30, 0x9f, 0xe5,                 /* ldr     r3,[pc,#8]    Get base */
 > 
-> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-> index fee3755837..fd09872403 100644
-> --- a/hw/arm/aspeed_ast27x0.c
-> +++ b/hw/arm/aspeed_ast27x0.c
-> @@ -23,11 +23,19 @@
->   #include "qapi/qmp/qlist.h"
->   #include "qemu/log.h"
->   
-> +#define AST2700_SOC_IO_SIZE          0x04000000
-> +#define AST2700_SOC_IOMEM_SIZE       0x01000000
-> +#define AST2700_SOC_DPMCU_SIZE       0x00040000
-> +#define AST2700_SOC_LTPI_SIZE        0x01000000
-> +
->   static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_SPI_BOOT]  =  0x400000000,
-> +    [ASPEED_DEV_IOMEM]     =  0x00000000,
->       [ASPEED_DEV_SRAM]      =  0x10000000,
-> +    [ASPEED_DEV_IOMEM0]    =  0x12000000,
->       [ASPEED_DEV_SDMC]      =  0x12C00000,
->       [ASPEED_DEV_SCU]       =  0x12C02000,
-> +    [ASPEED_DEV_IOMEM1]    =  0x14000000,
->       [ASPEED_DEV_SCUIO]     =  0x14C02000,
->       [ASPEED_DEV_UART0]     =  0X14C33000,
->       [ASPEED_DEV_UART1]     =  0X14C33100,
-> @@ -66,6 +74,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
->       [ASPEED_DEV_GPIO]      =  0x14C0B000,
->       [ASPEED_DEV_RTC]       =  0x12C0F000,
->       [ASPEED_DEV_SDHCI]     =  0x14080000,
-> +    [ASPEED_DEV_LTPI]      =  0x30000000,
->   };
->   
->   #define AST2700_MAX_IRQ 256
-> @@ -397,6 +406,14 @@ static void aspeed_soc_ast2700_init(Object *obj)
->   
->       object_initialize_child(obj, "emmc-controller.sdhci", &s->emmc.slots[0],
->                               TYPE_SYSBUS_SDHCI);
-> +
-> +    object_initialize_child(obj, "dpmcu", &s->dpmcu, TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "ltpi", &s->ltpi, TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "io", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "iomem0", &s->iomem0,
-> +            TYPE_UNIMPLEMENTED_DEVICE);
-> +    object_initialize_child(obj, "iomem1", &s->iomem1,
-> +            TYPE_UNIMPLEMENTED_DEVICE);
->   }
->   
->   /*
-> @@ -432,8 +449,10 @@ static bool aspeed_soc_ast2700_gic_realize(DeviceState *dev, Error **errp)
->       if (!sysbus_realize(gicbusdev, errp)) {
->           return false;
->       }
-> -    sysbus_mmio_map(gicbusdev, 0, sc->memmap[ASPEED_GIC_DIST]);
-> -    sysbus_mmio_map(gicbusdev, 1, sc->memmap[ASPEED_GIC_REDIST]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->gic), 0,
-> +                    sc->memmap[ASPEED_GIC_DIST]);
-> +    aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->gic), 1,
-> +                    sc->memmap[ASPEED_GIC_REDIST]);
->   
->       for (i = 0; i < sc->num_cpus; i++) {
->           DeviceState *cpudev = DEVICE(&a->cpu[i]);
-> @@ -716,11 +735,23 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
->                          aspeed_soc_get_irq(s, ASPEED_DEV_EMMC));
->   
-> -    create_unimplemented_device("ast2700.dpmcu", 0x11000000, 0x40000);
-> -    create_unimplemented_device("ast2700.iomem0", 0x12000000, 0x01000000);
-> -    create_unimplemented_device("ast2700.iomem1", 0x14000000, 0x01000000);
-> -    create_unimplemented_device("ast2700.ltpi", 0x30000000, 0x1000000);
-> -    create_unimplemented_device("ast2700.io", 0x0, 0x4000000);
-> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->dpmcu), "aspeed.dpmcu",
-> +                                  sc->memmap[ASPEED_DEV_DPMCU],
-> +                                  AST2700_SOC_DPMCU_SIZE);
-> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->ltpi), "aspeed.ltpi",
-> +                                  sc->memmap[ASPEED_DEV_LTPI],
-> +                                  AST2700_SOC_LTPI_SIZE);
-> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem), "aspeed.io",
-> +                                  sc->memmap[ASPEED_DEV_IOMEM],
-> +                                  AST2700_SOC_IO_SIZE);
-> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem0),
-> +                                  "aspeed.iomem0",
-> +                                  sc->memmap[ASPEED_DEV_IOMEM0],
-> +                                  AST2700_SOC_IOMEM_SIZE);
-> +    aspeed_mmio_map_unimplemented(s, SYS_BUS_DEVICE(&s->iomem1),
-> +                                  "aspeed.iomem1",
-> +                                  sc->memmap[ASPEED_DEV_IOMEM1],
-> +                                  AST2700_SOC_IOMEM_SIZE);
->   }
->   
->   static void aspeed_soc_ast2700_class_init(ObjectClass *oc, void *data)
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 689f52dae8..bf885da3fc 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -90,6 +90,8 @@ struct AspeedSoCState {
->       SerialMM uart[ASPEED_UARTS_NUM];
->       Clock *sysclk;
->       UnimplementedDeviceState iomem;
-> +    UnimplementedDeviceState iomem0;
-> +    UnimplementedDeviceState iomem1;
->       UnimplementedDeviceState video;
->       UnimplementedDeviceState emmc_boot_controller;
->       UnimplementedDeviceState dpmcu;
-> @@ -97,6 +99,7 @@ struct AspeedSoCState {
->       UnimplementedDeviceState espi;
->       UnimplementedDeviceState udc;
->       UnimplementedDeviceState sgpiom;
-> +    UnimplementedDeviceState ltpi;
->       UnimplementedDeviceState jtag[ASPEED_JTAG_NUM];
->       AspeedAPB2OPBState fsi[2];
->   };
-> @@ -172,6 +175,9 @@ const char *aspeed_soc_cpu_type(AspeedSoCClass *sc);
->   enum {
->       ASPEED_DEV_SPI_BOOT,
->       ASPEED_DEV_IOMEM,
-> +    ASPEED_DEV_IOMEM0,
-> +    ASPEED_DEV_IOMEM1,
-> +    ASPEED_DEV_LTPI,
->       ASPEED_DEV_UART0,
->       ASPEED_DEV_UART1,
->       ASPEED_DEV_UART2,
+> The instruction bytes have changed but the disassembly comment has not...
+> 
+>> +    0x10, 0x20, 0x9f, 0xe5,                 /* ldr     r2,[pc,#8]    Get CR */
+>> +    0xb0, 0x23, 0xc3, 0xe1,                 /* strh    r2,[r3, #48]  Set CR */
+>>       0x54, 0x20, 0xa0, 0xe3,                 /* mov     r2,#'T' */
+>> -    0x00, 0x20, 0xc3, 0xe5,                 /* strb    r2,[r3] */
+>> -    0xfb, 0xff, 0xff, 0xea,                 /* b       loop */
+>> +    0x00, 0x20, 0xc3, 0xe5,                 /* strb    r2,[r3]       loop: */
+> 
+> This placement of the "loop:" label is odd -- usually the label
+> goes before the instruction that a branch to the label will
+> start executing at.
+> 
+>> +    0xfd, 0xff, 0xff, 0xea,                 /* b       loop */
+> 
+> Here also the bytes changed but not the disassembly. Since
+> 'b' is a relative branch, why does the offset change?
 
+It felt simpler while single-stepping to just fill the TXDATA register
+with the byte to send, and not reset the other registers with unchanged
+values. Anyway you are right, I'll split the changes for clarity.
+
+> 
+>>       0x00, 0x10, 0x20, 0x3f,                 /* 0x3f201000 = UART0 base addr */
+>> +    0x01, 0x01, 0x00, 0x00,                 /* 0x101      = CR UARTEN|TXE */
+>>   };
+>>
+>>   static const uint8_t kernel_aarch64[] = {
+>> -    0x81, 0x0a, 0x80, 0x52,                 /* mov     w1, #0x54 */
+>>       0x02, 0x20, 0xa1, 0xd2,                 /* mov     x2, #0x9000000 */
+>> +    0x21, 0x20, 0x80, 0x52,                 /* mov     w1, #0x101 */
+>> +    0x41, 0x60, 0x00, 0x79,                 /* strh    w1, [x2, #48] */
+>> +    0x81, 0x0a, 0x80, 0x52,                 /* mov     w1, #0x54 */
+>>       0x41, 0x00, 0x00, 0x39,                 /* strb    w1, [x2] */
+>> -    0xfd, 0xff, 0xff, 0x17,                 /* b       -12 (loop) */
+>> +    0xff, 0xff, 0xff, 0x17,                 /* b       -4 (loop) */
+> 
+> Another unexplained offset change here.
+> 
+>>   };
+>>
+>>   static const uint8_t kernel_nrf51[] = {
+>> --
+>> 2.41.0
+> 
+> thanks
+> -- PMM

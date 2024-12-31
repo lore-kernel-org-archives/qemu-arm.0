@@ -1,336 +1,132 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp8083833njk;
-        Mon, 30 Dec 2024 13:00:33 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXBAwhWydnaNZ33F3xU0f6cMSSpNce++pYs80RtBALfNzaTLdzEt5L4rzzIeUgQgQqx0x+W5EwL5MGmZw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFen7o+A5FdU0KrFkjswk9JNdVp4HP0ocP8q1Eg4a4LqDRn50QVFqg9PP8zfxImTBEy3mHQ
-X-Received: by 2002:a05:620a:440b:b0:7b6:cb3c:d52c with SMTP id af79cd13be357-7b9ba7eb1ecmr6498586785a.38.1735592433021;
-        Mon, 30 Dec 2024 13:00:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735592433; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp8598541njk;
+        Tue, 31 Dec 2024 10:01:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWXWfsGMKNovMI/WLFhFcnsKH7j2cvdVcIl8AUkbcffxDN90uONpOQCn7G+GRWa8gOJeyNQVS77cMn3aA==@linaro.org
+X-Received: by 2002:a5d:5e09:0:b0:37c:d23f:e464 with SMTP id ffacd0b85a97d-38a223f75bdmr36189469f8f.38.1735668066513;
+        Tue, 31 Dec 2024 10:01:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735668066; cv=none;
         d=google.com; s=arc-20240605;
-        b=itkHFmFR9x6tEbBXp+vv3PltztgRaFZsKjBzcHP10tQgovF6v2LH76hJJ6iQkNhmhT
-         RdtIVW4UDcOmZIe5JGkOQM9wEsBuowrZAFhErsM776kUDQM9gSvj+f7cUkpoDoAU+yE/
-         ytlB6MtBSfB8h7hlzqY80wAyqGWR0m6myL+RKYNI9GgMWpnebS41MUhCN2fFTrfFsIDs
-         gkMNPRmTfqq0YnZPeVPlTzNnn+W/wAq68/LrbFiv1mw3rsJMXIqII6BeZoW5VmUYox3M
-         Pjor0OK5tkWubtDzQxr/YP68RVNThx8b96cJ6TPswnpcK2cqTw8zZpY5flISnxuqHP0L
-         5pxA==
+        b=jbPaxEUNxTyZPhx0W7Cahc3LAMETSl4C1VBvSy3gbg9mZWbHsAVCy80DqiPxVuDmFh
+         DoNSVHNGxouflns6VmpdddUZv6VpKKXV6/yrxqkaWb4u4Ubu06xLFChDlym3J1+Nrg8w
+         kxCiyooX08egW5L/MzU9vLpK5WZQ6oUUbgQQJkEI8HFASfWAxYgHZS+tMBPF9gi3O00J
+         Jjvzo8u/cdFyMuOAzcNEhuQvilgo0ADekOHjAzt7lUI+IMNQtGIu5Di0Tz7sUH88CW6e
+         tRqscRKSt8YLHCtpiw8IXenzL/SCSLVq6W68C3hzPxeERF6BwkJrhqkL8Wkx23RmgPtu
+         ub6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=hMI7yEv1jSQhAu/0mSmlk2CoBBAXGicDSufwS04UZO4=;
-        fh=0+74ogYYnA6evPTN0wO8DGSyAcIL8bRI064VjEZ+87k=;
-        b=HL53rJLru4Tlfb5Ja7KLaXLm+9yVCYDmF0jtMrnxtp/CXqkzFdKaMxC2MenAI6Kl5r
-         Tn3FO+5Nu9R28jt3bpVsUz27+3EuLyc13n6ruiKYwAwuZ6hNxPJnQIrnOig6318kSxyt
-         UMIau0+toNkbPSqXeeGJKuJbQmIxJiqX7+Qz/Nm2uolA6qxu6RpkX6ZF8pf+quw/4BEY
-         9t/CvdiXPjMqbQ3XIYogTWMDplwTIzPSYlY1vh0LxkgkyeqrNXTYGIm4NMOZaRw2M3SJ
-         BGYN4Cs0rZna31elOcI1GRTEMd0iLLEP1S/FtLEpgDFomSL3WND+qrIjaHJT+hVdpC9z
-         F1Pg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=CAy/h+byf5acdo41fAdmD5XWdSO7i9k/e2eErMWtT1Q=;
+        fh=w0vHpFEhcy0LR3QeCqOsqpM/MgIsGzQG3YSeSUy+7KY=;
+        b=eZzgZUnA59A8/rgHUSZ1hGmXwyTJHDsDDUllUCj7sX/i98viQ53BJKVHLjTakCpu4h
+         QnyRBFlRCP3rysVofcy2Yi5eTndkCHXEsJWB0KsF1tTZW2f4n1ia6L8Ck+mCaQ44j65e
+         etnogav5st9PfkoOFKUDq/B4j78pBq+7OhzDEitb3bOqEeaPX0vD++gZHqpjW+Xx4wxM
+         YxoCZdjEEXkf9OdWn9Ui5/cG0cnah2CEDFG6Os0E5fA8PiGYmEJtAR2ZRO4CtQwGRCLq
+         ovxfvmRnQe/IjJlluXFS7VExWilPfMAaJ6WWTRc36oI1dwRrWfJn3jdDoTqKyZVXjKT0
+         urHA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=APCF8EPC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lTd1Guss;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac4f1cf9si3088052285a.502.2024.12.30.13.00.32
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id ffacd0b85a97d-38a1c8cc4a2sor8328621f8f.9.2024.12.31.10.01.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Dec 2024 13:00:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 31 Dec 2024 10:01:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=APCF8EPC;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=lTd1Guss;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tSMrg-0006Ac-TW; Mon, 30 Dec 2024 15:59:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSMrf-00069Y-65
- for qemu-arm@nongnu.org; Mon, 30 Dec 2024 15:59:52 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tSMrb-0002s5-Dy
- for qemu-arm@nongnu.org; Mon, 30 Dec 2024 15:59:50 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-436202dd7f6so108175205e9.0
- for <qemu-arm@nongnu.org>; Mon, 30 Dec 2024 12:59:46 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1735592386; x=1736197186; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=hMI7yEv1jSQhAu/0mSmlk2CoBBAXGicDSufwS04UZO4=;
- b=APCF8EPC1DBp6L5Iwic0rvM19C7M0lgZamzq1YChg/zpREHdSmrdgC1OdqCQe9wpV7
- T/w1GEhEVahnvB/tAFgAbdK+yy/Oe/uIQtTXOtl2o2iHSehcTyIDh1+fgNUOnl9TOUQk
- Z+3OZs+PZdjmZpoboCmtOYAiZNqyNdsbGTh4o3iA6gddue4j0CG1aC9RsnZ+6FPfcmz9
- nPyrO/9KEyL8AatPTbIASVIFRaCV9n8SKgKrpii/ITmnIr0x7OBppgXiIgQ8qfntDw6w
- ZYhkIOsVqocmdX3jJ5Uwzsu9159yEqotCB2rt/EavHMEZhSn296t2e7qXBZhN7VFHps/
- Tueg==
+        d=linaro.org; s=google; t=1735668066; x=1736272866; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=CAy/h+byf5acdo41fAdmD5XWdSO7i9k/e2eErMWtT1Q=;
+        b=lTd1GussEPhQKuNgkePnBnuWEt7Vi3V5xk1L1G8sEiVQFeZVTV6s1ZgsUO8grW9KJ0
+         f8L2XYLLgsH2OFAt5CNIutmS7BcvHj7wCCxgSiOY+QsZ38Jzlo7gkn1iw0qEJ0nSUURS
+         zyfvk4lobRuo1T20r7U550nb10E9Edfc3u3th0AMlnK1P3dlRkFQVUwieC7Sjm4ZDaH0
+         r6/3hG1S6neETQzgohySREjtvbjsQoq/V67MHkAcSeE802PI3J9FHdiqzj6gp0iP5EnZ
+         x2say4bEKW7IDlfLIb2UULnEJw4zDEBJgzrZBBKggTFVnAbBG+629ih1PtSMOsQLRIoI
+         GbXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735592386; x=1736197186;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=hMI7yEv1jSQhAu/0mSmlk2CoBBAXGicDSufwS04UZO4=;
- b=fVRM6veGNhqYCg+qK3CzkePv/IuFK/ZxkV8S9BWv86bWcJ1VYjqgqIKr9kv0gT9Rp0
- WOVGBaJcRd3BjeNOOEEFpwdm8Gag/owqA2I92+x+N7WC1aH2fjlO9xmPseze0dzr3Dl0
- 0eDZemGfZLuKDoKqjMZ3y2+jrrbGSxi0QtoH415WeL70Iox5/kqJcjrAHOoxmi0pSztR
- U36Y3c1C6k5gXW/rLbl7dyZC17bjHgZveyM2gecNb3Wr+/ozz9JYeXOJ1FLYOFpiqvrM
- IOt5maaBW+WtP/1RyhA8GUc7t1qcpNy0NkLrm9GD3vPzK/dkFj/QTx5JlCjPhNzpEB0T
- QQQw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXTqY2sBpRmyEFq6ytNRw6mMsPYGn+00PVtboX/A/ZeyA0ljoyTUEf+4sjUCJRk+KXy3TMcA6w4DQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yy1DKA+6h01DqPay5hOWc1hyjQfIwpji4uimzi5CfEERh7jbzuq
- +OsLyc8h4c/KLg3V3aLtYm638EjDbx0SwyA7JqGI+KzraKGzSnXda3PTcgEFqFs=
-X-Gm-Gg: ASbGncuZxDTOXtxFp2x8FVFOXSCil7xPIZQ7gRkqCPw71CBX1/WweE5hH0v3UGQPAss
- ct+3j93r6NS0S7jx42OQNcH0qPNgCfyDlMutf+5nMAYz2yiJwSXw5v1JVJOcNCHV4eenTmIPwRN
- 8rm9XquAqhOeKIKz0cYKGtlWWrShcZGfw4Tb6uVD8IAqIjUCzLkmoJNd41v5IvKfkn+yIbYI8sW
- jVyS7dJdNN8mk7GsszE2vtSdRa9Zlx51RcRZ+axuSy5L9tGKdj2QKmG+eijw2m47cED3gSQGxcv
- hHlJRcP9AiLr28sUl/KHS2o4
-X-Received: by 2002:a05:600c:1c1a:b0:436:1b81:b65c with SMTP id
- 5b1f17b1804b1-43668646aebmr342767945e9.15.1735592385747; 
- Mon, 30 Dec 2024 12:59:45 -0800 (PST)
-Received: from [192.168.69.132] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43656b0145csm401961895e9.15.2024.12.30.12.59.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 30 Dec 2024 12:59:45 -0800 (PST)
-Message-ID: <b394e626-b896-4ece-b6d3-bcb48e19d0f7@linaro.org>
-Date: Mon, 30 Dec 2024 21:59:43 +0100
+        d=1e100.net; s=20230601; t=1735668066; x=1736272866;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=CAy/h+byf5acdo41fAdmD5XWdSO7i9k/e2eErMWtT1Q=;
+        b=VQXPFeDbfic8k+pVdjvjHjY+vhVGIsC0ZURgGs71Rj/yE8eLdYvAlB0sXZBtR2XWxM
+         po3EK2z4ryDTQhXrBSJ/kXMb2vOV1B/HOw2R+X/uCLHwjER2A4aWZB/M/CVnguPqeR9F
+         XrLPHjrJhoJPSnUfAiSmoCyUSHRXkiqqHiJg2ua3HeseiiVSPPWAAPwdOIZJt8mnkyFr
+         44yINRRmhlKbfbJZFEm70oumvSwNPkwV0jNESEyRI95YjMewEDBu9213Gt1eb8zoMM9S
+         WWYzdM2AgxMIa/lDZmwywtgd8gKq1JflgSdYEEuWdenp7Th9+BArpOLMGMgYhkW4/aq8
+         U2rQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWcnFrRlm9bRop8wUt2qPXqlsXAijK8ZgdGcjzt+MIkdAdxVigQvVnx0SubBa1/6imO3udd+jdGSubLDQ==@linaro.org
+X-Gm-Message-State: AOJu0Yy9ldj5mEesficcXvdn+Uyu6nLA226s53DakzlhSD80jPUBCKXa
+	CThOx6esEVwKC4vIlz9Z4D+31ZK4+FcAeK+6PGzneabop5ua5NZCzbqdxQGH40BqDA==
+X-Gm-Gg: ASbGnctRbMX5EJ/Pp6hfIAq5Z/BG9/iby0sWuQM0jQ27cHPdiFUtlNzbyO3muAN3xRj
+	Q51Oz6B6GZH9ZhtDJ4F9UNc9487fzJb7J1CZXjTWDcjHXESZ/e6/DvyL61RRLsTaqprfLQnBZ/Z
+	YsYPD0E1jJHCUjebmLqHBlt0w/w0qZBt6mUS34LxP3A468dkWqJD847M6bhPXoRODK7YLWhHwxA
+	0FsmLTRyMONSpnppJk6nSjiq2XfSvg461v4sosGLP6ZJ5qiaUyvto2AadrXAe+hffFxBmF+exJc
+	Az61SQvZKlJQbgzSnpEpuQao
+X-Google-Smtp-Source: AGHT+IFHex1vWyr7zaxqtjFYSOMXkGF/7fWPg4LRktsZayQpxgIrW49CXjmefvGk8X6/MMvOOpHWPA==
+X-Received: by 2002:a05:6000:18a3:b0:386:8ff:d20b with SMTP id ffacd0b85a97d-38a221f2f2dmr31832561f8f.27.1735668065751;
+        Tue, 31 Dec 2024 10:01:05 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.132] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c89e3d9sm32744377f8f.67.2024.12.31.10.01.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 31 Dec 2024 10:01:05 -0800 (PST)
+Message-ID: <0a4d5893-d54a-4b4f-91ad-0fe35f195294@linaro.org>
+Date: Tue, 31 Dec 2024 19:01:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v16 01/14] ui & main loop: Redesign of system-specific
- main thread event handling
-To: Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org
-Cc: agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com,
- rad@semihalf.com, quic_llindhol@quicinc.com, stefanha@redhat.com,
- mst@redhat.com, slp@redhat.com, richard.henderson@linaro.org,
- eduardo@habkost.net, marcel.apfelbaum@gmail.com, gaosong@loongson.cn,
- jiaxun.yang@flygoat.com, chenhuacai@kernel.org, kwolf@redhat.com,
- hreitz@redhat.com, shorne@gmail.com, palmer@dabbelt.com,
- alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
- dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
- marcandre.lureau@redhat.com, berrange@redhat.com, akihiko.odaki@daynix.com,
- qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-riscv@nongnu.org,
- balaton@eik.bme.hu
-References: <20241223221645.29911-1-phil@philjordan.eu>
- <20241223221645.29911-2-phil@philjordan.eu>
+Subject: Re: [PATCH v3 1/7] hw/misc/ivshmem-flat: Add ivshmem-flat device
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
+ armbru@redhat.com
+References: <20241216141818.111255-1-gustavo.romero@linaro.org>
+ <20241216141818.111255-2-gustavo.romero@linaro.org>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241223221645.29911-2-phil@philjordan.eu>
+In-Reply-To: <20241216141818.111255-2-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: jM5lZ8uhCmXU
+Content-Transfer-Encoding: 8bit
+X-TUID: FmJ6htNG12UT
 
-On 23/12/24 23:16, Phil Dennis-Jordan wrote:
-> macOS's Cocoa event handling must be done on the initial (main) thread
-> of the process. Furthermore, if library or application code uses
-> libdispatch, the main dispatch queue must be handling events on the main
-> thread as well.
+On 16/12/24 15:18, Gustavo Romero wrote:
+> Add a new device, ivshmem-flat, which is similar to the ivshmem PCI but
+> does not require a PCI bus. It's meant to be used on machines like those
+> with Cortex-M MCUs, which usually lack a PCI/PCIe bus, e.g. lm3s6965evb
+> and mps2-an385.
 > 
-> So far, this has affected Qemu in both the Cocoa and SDL UIs, although
-> in different ways: the Cocoa UI replaces the default qemu_main function
-> with one that spins Qemu's internal main event loop off onto a
-> background thread. SDL (which uses Cocoa internally) on the other hand
-> uses a polling approach within Qemu's main event loop. Events are
-> polled during the SDL UI's dpy_refresh callback, which happens to run
-> on the main thread by default.
+> The device currently only supports the sysbus bus.
 > 
-> As UIs are mutually exclusive, this works OK as long as nothing else
-> needs platform-native event handling. In the next patch, a new device is
-> introduced based on the ParavirtualizedGraphics.framework in macOS.
-> This uses libdispatch internally, and only works when events are being
-> handled on the main runloop. With the current system, it works when
-> using either the Cocoa or the SDL UI. However, it does not when running
-> headless. Moreover, any attempt to install a similar scheme to the
-> Cocoa UI's main thread replacement fails when combined with the SDL
-> UI.
+> The new device, just like the ivshmem PCI device, supports both peer
+> notification via hardware interrupts and shared memory.
 > 
-> This change tidies up main thread management to be more flexible.
+> The device shared memory size can be set using the 'shmem-size' option
+> and it defaults to 4 MiB, which is the default size of shmem allocated
+> by the ivshmem server.
 > 
->   * The qemu_main global function pointer is a custom function for the
->     main thread, and it may now be NULL. When it is, the main thread
->     runs the main Qemu loop. This represents the traditional setup.
->   * When non-null, spawning the main Qemu event loop on a separate
->     thread is now done centrally rather than inside the Cocoa UI code.
->   * For most platforms, qemu_main is indeed NULL by default, but on
->     Darwin, it defaults to a function that runs the CFRunLoop.
->   * The Cocoa UI sets qemu_main to a function which runs the
->     NSApplication event handling runloop, as is usual for a Cocoa app.
->   * The SDL UI overrides the qemu_main function to NULL, thus
->     specifying that Qemu's main loop must run on the main
->     thread.
->   * The GTK UI also overrides the qemu_main function to NULL.
->   * For other UIs, or in the absence of UIs, the platform's default
->     behaviour is followed.
-> 
-> This means that on macOS, the platform's runloop events are always
-> handled, regardless of chosen UI. The new PV graphics device will
-> thus work in all configurations. There is no functional change on other
-> operating systems.
-> 
-> Implementing this via a global function pointer variable is a bit
-> ugly, but it's probably worth investigating the existing UI thread rule
-> violations in the SDL (e.g. #2537) and GTK+ back-ends. Fixing those
-> issues might precipitate requirements similar but not identical to those
-> of the Cocoa UI; hopefully we'll see some kind of pattern emerge, which
-> can then be used as a basis for an overhaul. (In fact, it may turn
-> out to be simplest to split the UI/native platform event thread from the
-> QEMU main event loop on all platforms, with any UI or even none at all.)
-> 
-> Signed-off-by: Phil Dennis-Jordan <phil@philjordan.eu>
-> Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-> Tested-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1134
+> Message-ID: <20231127052024.435743-2-gustavo.romero@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
+>   docs/system/devices/ivshmem-flat.rst |  33 ++
+>   hw/misc/Kconfig                      |   5 +
+>   hw/misc/ivshmem-flat.c               | 463 +++++++++++++++++++++++++++
+>   hw/misc/meson.build                  |   2 +
+>   hw/misc/trace-events                 |  16 +
+>   include/hw/misc/ivshmem-flat.h       |  85 +++++
+>   6 files changed, 604 insertions(+)
+>   create mode 100644 docs/system/devices/ivshmem-flat.rst
+>   create mode 100644 hw/misc/ivshmem-flat.c
+>   create mode 100644 include/hw/misc/ivshmem-flat.h
 
-
->   include/qemu-main.h | 14 +++++++++++-
->   system/main.c       | 37 +++++++++++++++++++++++++++----
->   ui/cocoa.m          | 54 +++++++++++----------------------------------
->   ui/gtk.c            |  4 ++++
->   ui/sdl2.c           |  4 ++++
->   5 files changed, 67 insertions(+), 46 deletions(-)
-> 
-> diff --git a/include/qemu-main.h b/include/qemu-main.h
-> index 940960a7db..2ee83bedff 100644
-> --- a/include/qemu-main.h
-> +++ b/include/qemu-main.h
-> @@ -5,7 +5,19 @@
->   #ifndef QEMU_MAIN_H
->   #define QEMU_MAIN_H
->   
-> -int qemu_default_main(void);
-> +/*
-> + * The function to run on the main (initial) thread of the process.
-> + * NULL means QEMU's main event loop.
-> + * When non-NULL, QEMU's main event loop will run on a purposely created
-> + * thread, after which the provided function pointer will be invoked on
-> + * the initial thread.
-> + * This is useful on platforms which treat the main thread as special
-> + * (macOS/Darwin) and/or require all UI API calls to occur from the main
-> + * thread. Those platforms can initialise it to a specific function,
-> + * while UI implementations may reset it to NULL during their init if they
-> + * will handle system and UI events on the main thread via QEMU's own main
-> + * event loop.
-> + */
->   extern int (*qemu_main)(void);
->   
->   #endif /* QEMU_MAIN_H */
-> diff --git a/system/main.c b/system/main.c
-> index 4923520741..9c9a1adc20 100644
-> --- a/system/main.c
-> +++ b/system/main.c
-> @@ -24,26 +24,55 @@
->   
->   #include "qemu/osdep.h"
->   #include "qemu-main.h"
-> +#include "qemu/main-loop.h"
->   #include "system/system.h"
->   
->   #ifdef CONFIG_SDL
-> +/*
-> + * SDL insists on wrapping the main() function with its own implementation on
-> + * some platforms; it does so via a macro that renames our main function, so
-> + * <SDL.h> must be #included here even with no SDL code called from this file.
-> + */
->   #include <SDL.h>
->   #endif
->   
-> -int qemu_default_main(void)
-> +#ifdef CONFIG_DARWIN
-> +#include <CoreFoundation/CoreFoundation.h>
-> +#endif
-> +
-> +static void *qemu_default_main(void *opaque)
->   {
->       int status;
->   
-> +    bql_lock();
->       status = qemu_main_loop();
->       qemu_cleanup(status);
-> +    bql_unlock();
->   
-> -    return status;
-> +    exit(status);
->   }
->   
-> -int (*qemu_main)(void) = qemu_default_main;
-> +int (*qemu_main)(void);
-> +
-> +#ifdef CONFIG_DARWIN
-> +static int os_darwin_cfrunloop_main(void)
-> +{
-> +    CFRunLoopRun();
-> +    g_assert_not_reached();
-> +}
-> +int (*qemu_main)(void) = os_darwin_cfrunloop_main;
-> +#endif
->   
->   int main(int argc, char **argv)
->   {
->       qemu_init(argc, argv);
-> -    return qemu_main();
-> +    bql_unlock();
-> +    if (qemu_main) {
-> +        QemuThread main_loop_thread;
-> +        qemu_thread_create(&main_loop_thread, "qemu_main",
-> +                           qemu_default_main, NULL, QEMU_THREAD_DETACHED);
-> +        return qemu_main();
-> +    } else {
-> +        qemu_default_main(NULL);
-> +    }
->   }
-
-Build failure on Windows:
-
-../system/main.c: In function 'SDL_main':
-../system/main.c:78:1: error: control reaches end of non-void function 
-[-Werror=return-type]
-    78 | }
-       | ^
-cc1: all warnings being treated as errors
-ninja: build stopped: subcommand failed.
-make: *** [Makefile:168: run-ninja] Error 1
-
-I'm squashing:
-
--- >8 --
-diff --git a/system/main.c b/system/main.c
-index 9c9a1adc20c..ecb12fd397c 100644
---- a/system/main.c
-+++ b/system/main.c
-@@ -74,5 +74,6 @@ int main(int argc, char **argv)
-          return qemu_main();
-      } else {
-          qemu_default_main(NULL);
-+        g_assert_not_reached();
-      }
-  }
----
+Missing MAINTAINERS entry. Please fix as a follow-up patch.

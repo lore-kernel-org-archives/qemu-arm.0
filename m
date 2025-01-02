@@ -1,154 +1,314 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp9470186njk;
-        Thu, 2 Jan 2025 02:58:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU9QTZ4gbXnisUt5pZITOzSuEeegYAJK8L7RBWcCdVqoNIRaspOU40QIRFBHUw1d87PCtmmwjOW3pRX3g==@linaro.org
-X-Received: by 2002:a05:600c:4709:b0:436:1ac2:1acf with SMTP id 5b1f17b1804b1-43668a3a35dmr341454715e9.20.1735815529828;
-        Thu, 02 Jan 2025 02:58:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735815529; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp9641005njk;
+        Thu, 2 Jan 2025 08:05:13 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVnEFsnjt+p8slsAcG+wJwcT7Nv8U6d7zcf23fsVV0pka7dXbNTXAUj4w+CamH1uZvqzxSRdo2rICRz6A==@linaro.org
+X-Received: by 2002:a05:6000:1787:b0:386:3c21:b1ff with SMTP id ffacd0b85a97d-38a2240ffc3mr34246602f8f.58.1735833913439;
+        Thu, 02 Jan 2025 08:05:13 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735833913; cv=none;
         d=google.com; s=arc-20240605;
-        b=glu4bY1WqCxMqGT5ky8od6hVEhjvE/06ZtHYMxvDLtZs6s4TGq1Mv7sGu2sbTJHa9d
-         eYfwf5/hW0nn70L+hiAdQxm0ur/af7f2ugXT2KgNNB/qck9DMm38xoo2kxx/I5jYFVnt
-         ek1nj0sW+GKedifCYt1Aq1S9opR8kQkCJotPfkjQWFAgXfNvK98dFuXv9hICp/kv/t5c
-         Q07FUoVNm5CrxD3Mftm0Rmq7tn8O32E1e8IHYI/kF31I6qB9GBIttV4mt+g2TVzqFfVH
-         aRxdS0UHzqMLPqGzUl385COx7S+nshjPo+eJev4DViAGbaTDqH0ucuT4drjY2owJRIJO
-         wC/A==
+        b=Wpb78XuByKEujILeBTIsW7AiYfxnJYk6+RUiVtlmceB+UxxKrfh+uDRRtc2G056Vuj
+         OZCkcImst7J5JPHrxk8n+bFlX0+SPquXs84czjr9S+C2zJOHJvC2Ot/lfBSMcrEN+tDx
+         pEZlWQjkUkdAWTHi31fcPHTRPkez7TpWlqBDq3Oy6TRdy0AeQO+M4Zqf5MoNuBXt2gGV
+         M5F/AOW5RQFov7qC7sXvqUUV8zBI+dcdOwxTA3wokfd3blmdMQqul2Z4XMPgS4+IcocK
+         A+OkuhJas0ki4+C3YPwSQRcEl4bANSQ+KmF2mIBgfmkAT6iFgu4FyMZcK3nqygx9Vji6
+         coaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=7PDwfX0ojLlp4yH1fFPzelM0oZpBBYGTWR3yxzH4/fc=;
-        fh=ju5hMjpCJgplvGguXJLVQr725bn0nOCLnQhzp8MAmBg=;
-        b=M6WyvffoxhBDD7aNq7aPRDnIEfkgtXZKKhkf41jlWO8gh7dA4DvUG25uxw2fcex9QK
-         RM/GA+2WPMw5ZIT1imQcpF3DUrlvCFFcQoLJmugL+iegWPPEJ9hp57WqPWVsRcTdUkNV
-         RJvgsi8402wTeh6hKZT7JIqQ8/vfQmNvsFOYD3Kc+T8kpufZAWVmJYRAtSV3ljnTacx4
-         qfnuFoDzoz0tIcehhB5DL13qRcHeuQUmN/yMAkjj+gi0TjvprCDe56cSIIc/oJsQFzrj
-         me/o2mGmtT9DYjA2TL9674K164HTDrjvW5YGd+4cclUAMXiLDAB6M34TXm1ZJ8VAQwDB
-         DPjw==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=PiUug7+4DxBb4pdRj/4Nl+w548jCnQIvB94kNaUutoY=;
+        fh=wrnrhmCGWZd0T4+9+RALVTlHzT7XvAdfnSnxKte9fys=;
+        b=k0XS2W9c7w8HfrF/DcDSZmgRih/cxmc9tXtC9rnB6cSDFRJlouwUcLx5qwXQl5Gvjd
+         EiWbaZH/NygSBtLtloKJ/Q5z/GOHwWqDywZN6kyLjoIkdSKCt3RVOApBGWH+SzF0wbTE
+         97FNfIbu0YSLTHbUzAp6C1Bxm24EAX3jt+mcxYuckhBYUgSQtpV2K1WvS+mN8Z5mTk6V
+         rtB2zaJUpDjU93sx86PGg8rVZuz/9+GeHawaM+5Of5OcDKnBV/JLahstJkTLk4UbHykK
+         sxEeoVlrhOzyaRLMB/vp/VJG6ID0TuP4nLnexjrlXeUUwzR3cGn2CQhXegBS3oqGp1t1
+         5k+A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ULYpP8tZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hyyy1IGp;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-436611fa07asor89553785e9.3.2025.01.02.02.58.49
+        by mx.google.com with SMTPS id ffacd0b85a97d-38a1c7c67a6sor9209600f8f.0.2025.01.02.08.05.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 02 Jan 2025 02:58:49 -0800 (PST)
+        Thu, 02 Jan 2025 08:05:13 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ULYpP8tZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hyyy1IGp;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735815529; x=1736420329; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7PDwfX0ojLlp4yH1fFPzelM0oZpBBYGTWR3yxzH4/fc=;
-        b=ULYpP8tZeGVUAHoZjCUqPxY3g0yaVP4iR2L8XZrNVm+K3F24saK6NsoDMf7Db2Hf9L
-         8qPhYaEbg6/9Va37m8A3Qmf9SWnejF6WJozoYnH90IT1XG0sWPx4nS2hoB3NqmEDyuAB
-         UXmeCsF8JktOjtEqdojx5P2uNlKMCVneLeYGEd+Vq1gyM/J2iDQK1FyLMrrf1MbYuKt9
-         ZD7uE6C0Dei2lGxM9lUGdvKecRdXIzE5K36uNxan52bryEGrWPFs4876XGEQtBkrY3ff
-         aVD9hBytT5sOSVtAL2RPO1V7m7mCHNzfocY9CJsKaFKaVYjGV+AaN5k74/kurze2Z8Pf
-         /Wag==
+        d=linaro.org; s=google; t=1735833913; x=1736438713; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=PiUug7+4DxBb4pdRj/4Nl+w548jCnQIvB94kNaUutoY=;
+        b=hyyy1IGpgo8cCnYlgO7ompWosDgadeYxE9KUY9scz7ohY2Y9oXwMWIumyJVO+P4Brm
+         zNUyj6rh/xHBE9arXiSML1J/4/QsYRHDuZONmaA7Y2XMTJPUt/vEa+woVmCUNdt2o9Bl
+         J8LsVNNUs6l5xfHXtApnjDq+EyrzkD+SypxVoDCwcA3V5kRjn2Q8FJpjTt9vbwP/+0Zn
+         mncdlQ/EB7rKRA2qbZ7fQE7qOkIc0gVhtxkfb/MmBtiRvSEc7GxuV/qSQzOt6aglVqTq
+         8KA9or7N5SAghRvRtZLBr1CfAF6T2lbADOiqnNuIE4tIuvis8ZMXo3QtgB9O7+Ut9w5l
+         gsUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735815529; x=1736420329;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=7PDwfX0ojLlp4yH1fFPzelM0oZpBBYGTWR3yxzH4/fc=;
-        b=QwanKlHUyI9zqsmfFFBuwQBI7tkN/AWn6f1oFXpfOZ3M1Vjc+lVOdiHK8Y6zhl2WDu
-         6H3HnjX15w19LKEMpZ2LFNwYv8QdZHAnf2A0dOR3N7+Z2SQBe2EYG00s/ZpeuJMJ2ai4
-         ESpzohJsb8cpJqyzy/DIP+PhvmYoV8WchmtzFdYZ6mpyVn/+EmLEWptkAgBatEKGtWFd
-         f7DPZ0P5UOYFMoGgNG6xol6eSjFwkBic+7MluZMFfx23Br+OwMwvGsPliqB0OGNt1Bqw
-         l2xRd5B4Bt7kPMsvHUABl4K1FloHb1PobnV0OYo+ubTOM2VBjxEwKzZBL9f7XpOPm246
-         MvEQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXRrsSjYUl3TOXQvRLNSAwXHHzFN3KuXX3/pCyFl6w731QAg4iW1U7fHKHPs9kop7vHrPncw69Sctpnng==@linaro.org
-X-Gm-Message-State: AOJu0YxR0R82y0brbAe3T280MpxPe5c8a0hSyE5MemPYWcLy0Fg1iJIM
-	ig/xosllfVOyb+rstHKaL28KHUlbqwcUgYnn0MfeWsayzzRH9UQwCZylt0EvoCc9TA==
-X-Gm-Gg: ASbGncuuZNVuA1zzkIUDYJ0atQeSM3kuHJfKdgqteaD76fedd15qeFOwcl9Gt75qkV/
-	y9Lp7vjK2pvpDzjT5Nwyx1CiBSQUCA21XnB18IOsNSMowkYGcvZr4caGxpXgdHS6YE5kBH9nBDv
-	l7Eiu3W1tvjNx8wh8cmEfIMRUMOcqDHDuCSumZacFPeeBdAKfOJZh9A2Dt+Y9uSKEnXkGVbmIiV
-	rv+OWThjQ19qaL07p/BGxAgBxptT/nEW+/ZOXynRvZkZyQXKqRJPOqzCLZDaWuauhmqB0Ni53qj
-	W0EiIlaWE5bVAC0GRbvs7aXWmigzJPwRFedLb/htR0qxdA==
-X-Google-Smtp-Source: AGHT+IG+ddtTuGOMtP+yqqCrOaIUyc4c7Ql9T9XdMaXeFXzvhJwWKQTp3nUD4PkVOab5MxntrEXXCw==
-X-Received: by 2002:a05:600c:1550:b0:431:4f29:9539 with SMTP id 5b1f17b1804b1-43668b5f892mr336416215e9.32.1735815529296;
-        Thu, 02 Jan 2025 02:58:49 -0800 (PST)
+        d=1e100.net; s=20230601; t=1735833913; x=1736438713;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=PiUug7+4DxBb4pdRj/4Nl+w548jCnQIvB94kNaUutoY=;
+        b=uj/8Vg65FQfEXIvwhcebpglajOfrz8t8XPI2B7txCF2oplH8SkyQCPLTigeLEvMbeK
+         ns4rMOYvK9CFQvxk1OunS6X8Xj++IffvG1Lv3fynoz/2jLtHK0bVer5CgJBzGTxF2GSE
+         x2fnXlGmc+h1g/w+BP2o/BGo1ADARTrjxu4AZm/ENRC0xTVby4XjBClJALDngIRhfr8G
+         zqGFq+ETkDXsdQlfyhSAoFPsQPBzxaA8owncxHF3AZ53mCW5A3gH2rflfaqzuh2dw4YT
+         +t1gwWJ26agqnkDEG5XNxEIQXiQSR0kFp8LR0VG4EX8VgvVwu3nNj+SgaYEZgGOLRYvE
+         0HLg==
+X-Forwarded-Encrypted: i=1; AJvYcCW9Qa3+66xm57SFbHrt9Qjcq4ezPtc8Iw37ow25Q1q9H13Ft3E0+Bl2JTVWmTca61lFEPJTDvuJpv52bQ==@linaro.org
+X-Gm-Message-State: AOJu0Yzxu2T8w6Xkza0TO0rgyaYKVMZO/rW8yUyXn+zs1hJBynxCae4j
+	IBNzcqALBLfG/KXJK1HSNeRzRC5A7XdwrSt4UROQgUpKh725dNqpZMYPFPMl6kZ9yA==
+X-Gm-Gg: ASbGncv6Zot1GcOCHnNP2RABM+5HgA76XPxzGxbq/AuxeYtTyzDHuocNOTh/DakTRhr
+	zPLFf6O6uEXgJPTTM8TPdWsUjUXqQ/QbQ7uOaWvsnWTizor16g/MJ8osMVanWfi6V4B5pta8GF8
+	E1L6K2Et/22hGzy0Mw2Upxw2fa5hzoevAjRNMRSpckdD04x0u7ThlSw+RU+RTfU01csXRJPeh7X
+	LApzE6usrCl9027Y1s9x0UJubHQzcofPbj/NI+u07Fcs8y8y7NrIDMP98cPxOH4E+5OhCy/Xwui
+	zq5fXuz9toVD0jWa0dwT3KARstI/W1g=
+X-Google-Smtp-Source: AGHT+IEDrpBjhuHk7vjn+GbtnxTgRx3zhNgCzxzKnUjWtLS57lurCPZsIhhQShgu6pTmTIFYRAN0SQ==
+X-Received: by 2002:a5d:64cf:0:b0:382:3c7b:9ae with SMTP id ffacd0b85a97d-38a221f6746mr41758718f8f.16.1735833912737;
+        Thu, 02 Jan 2025 08:05:12 -0800 (PST)
 Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (161.red-88-29-191.dynamicip.rima-tde.net. [88.29.191.161])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c89e1a1sm37393738f8f.69.2025.01.02.02.58.47
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4364b053e91sm518395495e9.1.2025.01.02.08.05.11
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 02 Jan 2025 02:58:48 -0800 (PST)
+        Thu, 02 Jan 2025 08:05:12 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Fabiano Rosas <farosas@suse.de>,
+Cc: Radoslaw Biernacki <rad@semihalf.com>,
+	Laurent Vivier <laurent@vivier.eu>,
+	Cleber Rosa <crosa@redhat.com>,
+	Fabiano Rosas <farosas@suse.de>,
+	Gustavo Romero <gustavo.romero@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	Laurent Vivier <lvivier@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
+	mzamazal@redhat.com,
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Aleksandar Rikalo <arikalo@gmail.com>,
+	Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+	John Snow <jsnow@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
 	qemu-arm@nongnu.org,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v6 4/4] tests/qtest/boot-serial-test: Initialize PL011 Control register
-Date: Thu,  2 Jan 2025 11:58:22 +0100
-Message-ID: <20250102105822.43532-5-philmd@linaro.org>
+Subject: [PATCH] licenses: Remove SPDX tags not being license identifier for Linaro
+Date: Thu,  2 Jan 2025 17:05:10 +0100
+Message-ID: <20250102160510.61894-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250102105822.43532-1-philmd@linaro.org>
-References: <20250102105822.43532-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: YfIodhpBghLQ
+X-TUID: nlkEAEl9/Shy
 
-The tests using the PL011 UART of the virt and raspi machines
-weren't properly enabling the UART and its transmitter previous
-to sending characters. Follow the PL011 manual initialization
-recommendation by setting the proper bits of the control register.
+Per [*]:
 
-Update the ASM code prefixing:
+  "we're only interested in adopting SPDX for recording the
+  licensing info, [not] any other SPDX metadata."
 
-  *UART_CTRL = UART_ENABLE | TX_ENABLE;
+Replace the 'SPDX-FileCopyrightText' and 'SPDX-FileContributor'
+tags added by Linaro by 'Copyright (c)' and 'Authors' words
+respectively.
 
-to:
+[*] https://lore.kernel.org/qemu-devel/20241007154548.1144961-4-berrange@redhat.com/
 
-  while (true) {
-      *UART_DATA = 'T';
-  }
-
-Note, since commit 51b61dd4d56 ("hw/char/pl011: Warn when using
-disabled transmitter") incomplete PL011 initialization can be
-logged using the '-d guest_errors' command line option.
-
+Inspired-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/qtest/boot-serial-test.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ accel/tcg/vcpu-state.h                           | 9 +++++++--
+ include/hw/misc/ivshmem-flat.h                   | 5 +++--
+ hw/misc/ivshmem-flat.c                           | 5 +++--
+ target/m68k/semihosting-stub.c                   | 7 +++++--
+ target/mips/tcg/system/semihosting-stub.c        | 5 +++--
+ tests/qtest/libqos/virtio-scmi.c                 | 2 +-
+ scripts/qom-cast-macro-clean-cocci-gen.py        | 7 +++++--
+ tests/functional/test_aarch64_sbsaref.py         | 8 +++++---
+ tests/functional/test_aarch64_sbsaref_alpine.py  | 8 +++++---
+ tests/functional/test_aarch64_sbsaref_freebsd.py | 8 +++++---
+ 10 files changed, 42 insertions(+), 22 deletions(-)
 
-diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
-index bcfa504826c..6ea7e62e076 100644
---- a/tests/qtest/boot-serial-test.c
-+++ b/tests/qtest/boot-serial-test.c
-@@ -70,15 +70,20 @@ static const uint8_t kernel_plml605[] = {
- };
+diff --git a/accel/tcg/vcpu-state.h b/accel/tcg/vcpu-state.h
+index e407d914dfd..2e3464b5eef 100644
+--- a/accel/tcg/vcpu-state.h
++++ b/accel/tcg/vcpu-state.h
+@@ -1,6 +1,11 @@
+ /*
+- * SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+- * SPDX-FileCopyrightText: 2023 Linaro Ltd.
++ * TaskState helpers for QEMU
++ *
++ * Copyright (c) 2023 Linaro Ltd.
++ *
++ * Authors:
++ *   Philippe Mathieu-Daudé
++ *
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ #ifndef ACCEL_TCG_VCPU_STATE_H
+diff --git a/include/hw/misc/ivshmem-flat.h b/include/hw/misc/ivshmem-flat.h
+index 97ca0ddce61..0c2b0157812 100644
+--- a/include/hw/misc/ivshmem-flat.h
++++ b/include/hw/misc/ivshmem-flat.h
+@@ -1,9 +1,10 @@
+ /*
+  * Inter-VM Shared Memory Flat Device
+  *
+- * SPDX-FileCopyrightText: 2023 Linaro Ltd.
+- * SPDX-FileContributor: Gustavo Romero <gustavo.romero@linaro.org>
+  * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (c) 2023 Linaro Ltd.
++ * Authors:
++ *   Gustavo Romero
+  *
+  */
  
- static const uint8_t bios_raspi2[] = {
--    0x08, 0x30, 0x9f, 0xe5,                 /*        ldr     r3, [pc, #8]   Get &UART0 */
-+    0x10, 0x30, 0x9f, 0xe5,                 /*        ldr     r3, [pc, #8]   Get &UART0 */
-+    0x10, 0x20, 0x9f, 0xe5,                 /*        ldr     r2, [pc, #8]   Get &CR */
-+    0xb0, 0x23, 0xc3, 0xe1,                 /*        strh    r2, [r3, #48]  Set CR */
-     0x54, 0x20, 0xa0, 0xe3,                 /*        mov     r2, #'T' */
-     0x00, 0x20, 0xc3, 0xe5,                 /* loop:  strb    r2, [r3]       *TXDAT = 'T' */
-     0xff, 0xff, 0xff, 0xea,                 /*        b       -4             (loop) */
-     0x00, 0x10, 0x20, 0x3f,                 /* UART0: 0x3f201000 */
-+    0x01, 0x01, 0x00, 0x00,                 /* CR:    0x101 = UARTEN|TXE */
- };
+diff --git a/hw/misc/ivshmem-flat.c b/hw/misc/ivshmem-flat.c
+index 33fc9425d20..40309a8ff38 100644
+--- a/hw/misc/ivshmem-flat.c
++++ b/hw/misc/ivshmem-flat.c
+@@ -1,9 +1,10 @@
+ /*
+  * Inter-VM Shared Memory Flat Device
+  *
+- * SPDX-FileCopyrightText: 2023 Linaro Ltd.
+- * SPDX-FileContributor: Gustavo Romero <gustavo.romero@linaro.org>
+  * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (c) 2023 Linaro Ltd.
++ * Authors:
++ *   Gustavo Romero
+  *
+  */
  
- static const uint8_t kernel_aarch64[] = {
-     0x02, 0x20, 0xa1, 0xd2,                 /*        mov    x2, #0x9000000  Load UART0 */
-+    0x21, 0x20, 0x80, 0x52,                 /*        mov    w1, 0x101       CR = UARTEN|TXE */
-+    0x41, 0x60, 0x00, 0x79,                 /*        strh   w1, [x2, #48]   Set CR */
-     0x81, 0x0a, 0x80, 0x52,                 /*        mov    w1, #'T' */
-     0x41, 0x00, 0x00, 0x39,                 /* loop:  strb   w1, [x2]        *TXDAT = 'T' */
-     0xff, 0xff, 0xff, 0x17,                 /*        b      -4              (loop) */
+diff --git a/target/m68k/semihosting-stub.c b/target/m68k/semihosting-stub.c
+index d6a5965e29c..dbe669cc5f6 100644
+--- a/target/m68k/semihosting-stub.c
++++ b/target/m68k/semihosting-stub.c
+@@ -1,8 +1,11 @@
+ /*
+  *  m68k/ColdFire semihosting stub
+  *
+- * SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+- * SPDX-FileCopyrightText: 2024 Linaro Ltd.
++ * Copyright (c) 2024 Linaro Ltd.
++ *
++ * Authors:
++ *   Philippe Mathieu-Daudé
++ *
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+diff --git a/target/mips/tcg/system/semihosting-stub.c b/target/mips/tcg/system/semihosting-stub.c
+index 7ae27d746f8..bb1f7aae624 100644
+--- a/target/mips/tcg/system/semihosting-stub.c
++++ b/target/mips/tcg/system/semihosting-stub.c
+@@ -1,9 +1,10 @@
+ /*
+  *  MIPS semihosting stub
+  *
+- * SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+- * SPDX-FileCopyrightText: 2024 Linaro Ltd.
+  * SPDX-License-Identifier: GPL-2.0-or-later
++ * Copyright (c) 2024 Linaro Ltd.
++ * Authors:
++ *   Philippe Mathieu-Daudé
+  */
+ 
+ #include "qemu/osdep.h"
+diff --git a/tests/qtest/libqos/virtio-scmi.c b/tests/qtest/libqos/virtio-scmi.c
+index ce8f4d5c06e..6b5bd4db42f 100644
+--- a/tests/qtest/libqos/virtio-scmi.c
++++ b/tests/qtest/libqos/virtio-scmi.c
+@@ -1,7 +1,7 @@
+ /*
+  * virtio-scmi nodes for testing
+  *
+- * SPDX-FileCopyrightText: Linaro Ltd
++ * Copyright (c) Linaro Ltd.
+  * SPDX-FileCopyrightText: Red Hat, Inc.
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  *
+diff --git a/scripts/qom-cast-macro-clean-cocci-gen.py b/scripts/qom-cast-macro-clean-cocci-gen.py
+index 2fa8438a146..5aa51d0c18e 100644
+--- a/scripts/qom-cast-macro-clean-cocci-gen.py
++++ b/scripts/qom-cast-macro-clean-cocci-gen.py
+@@ -13,8 +13,11 @@
+ #           --in-place \
+ #           --dir .
+ #
+-# SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+-# SPDX-FileCopyrightText: 2023 Linaro Ltd.
++# Copyright (c) 2023 Linaro Ltd.
++#
++# Authors:
++#   Philippe Mathieu-Daudé
++#
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ import re
+diff --git a/tests/functional/test_aarch64_sbsaref.py b/tests/functional/test_aarch64_sbsaref.py
+index 99cfb6f29a4..e6a55aecfac 100755
+--- a/tests/functional/test_aarch64_sbsaref.py
++++ b/tests/functional/test_aarch64_sbsaref.py
+@@ -2,9 +2,11 @@
+ #
+ # Functional test that boots a kernel and checks the console
+ #
+-# SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
+-# SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+-# SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
++# Copyright (c) 2023-2024 Linaro Ltd.
++#
++# Authors:
++#   Philippe Mathieu-Daudé
++#   Marcin Juszkiewicz
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+diff --git a/tests/functional/test_aarch64_sbsaref_alpine.py b/tests/functional/test_aarch64_sbsaref_alpine.py
+index 6dbc90f30ee..9faf066d183 100755
+--- a/tests/functional/test_aarch64_sbsaref_alpine.py
++++ b/tests/functional/test_aarch64_sbsaref_alpine.py
+@@ -2,9 +2,11 @@
+ #
+ # Functional test that boots a kernel and checks the console
+ #
+-# SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
+-# SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+-# SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
++# Copyright (c) 2023-2024 Linaro Ltd.
++#
++# Authors:
++#   Philippe Mathieu-Daudé
++#   Marcin Juszkiewicz
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+diff --git a/tests/functional/test_aarch64_sbsaref_freebsd.py b/tests/functional/test_aarch64_sbsaref_freebsd.py
+index 77ba2ba1daf..8dcb4991c31 100755
+--- a/tests/functional/test_aarch64_sbsaref_freebsd.py
++++ b/tests/functional/test_aarch64_sbsaref_freebsd.py
+@@ -2,9 +2,11 @@
+ #
+ # Functional test that boots a kernel and checks the console
+ #
+-# SPDX-FileCopyrightText: 2023-2024 Linaro Ltd.
+-# SPDX-FileContributor: Philippe Mathieu-Daudé <philmd@linaro.org>
+-# SPDX-FileContributor: Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>
++# Copyright (c) 2023-2024 Linaro Ltd.
++#
++# Authors:
++#   Philippe Mathieu-Daudé
++#   Marcin Juszkiewicz
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
 -- 
 2.47.1

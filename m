@@ -1,233 +1,217 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp9421391njk;
-        Thu, 2 Jan 2025 00:44:32 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUg9L56J7+SZuk5hrfiOrx4yqtFSsXASfOJTM6fV5/Os6tfgA9y61+c8ZvDHcCqwP9JUmv/EFrTNhVu2w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFmAqUi16UDrxr6MIwI61H3LtGHIeSUnstS9DBI7qCtEfJ8YD80vSgTegVEQojzDZ48JltA
-X-Received: by 2002:a05:620a:1911:b0:7b6:ce4c:69d2 with SMTP id af79cd13be357-7b9ba7abfa9mr8484628285a.36.1735807472267;
-        Thu, 02 Jan 2025 00:44:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735807472; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp9509435njk;
+        Thu, 2 Jan 2025 04:21:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVvLdgz7JAPJK+BhMSACcqg8tgN8BYJZoReBcfH5llXQ8gGgz7lXr4k/Qy8rAwonYWNglxneMz8LkqNOA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEE7NU2rQu/AZEdrCQ3WjbEld3YaMHimM9dFptebVqx7paSicOVbnJaniovPvFu5xSye1bI
+X-Received: by 2002:a05:622a:144c:b0:461:5571:5cc6 with SMTP id d75a77b69052e-46a4a9a3ab6mr730091921cf.46.1735820508552;
+        Thu, 02 Jan 2025 04:21:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735820508; cv=none;
         d=google.com; s=arc-20240605;
-        b=YXRM5skuOYh4Hp4kkrSVVWJc/6mtMCDVpipBQQvwM5ORCMyfnBFDD2dMAo3JfOlYlu
-         BQQXP7Llgx6SvwHL6rrW053AgHCmD4Rd0MuwC1dktY8G+c1uYkCXkw8Gii4MC/6YkUs/
-         JpGRxn3qE1p9qG/sd/lmS0Zjqqc5/czsxHe5eVX3tAmUmdBPXfGLVIgx70VP0OYYc0hE
-         6QXo+NXWSWGaBVZZJvTa2GLYtDz+iyV3iOYcwI4PUV/LQiRv/29gYPx7cfOi6YAzdOEi
-         5GpNoegT43rQFuI+k+MpaTy3T5lBVvhWWB8wRvTFjbDw3JSu/VHmAhKnEa12dfz1SVmW
-         18bg==
+        b=G6gTsMctmnrFdyzTNA2T6bqdIcB1TUEs5zjkBi6J3cOsW+EMRkYQXzWXa/J2SC7xIG
+         Ew1q1XQ6D2bqHwk5T6cDF6QT9bdNpgDilwAOvXfJwIf9DulKWtYKvfA+fJ1Etp1Picgq
+         6ZWwEl5lze24+wy8H8yYNpalmfyRwslSuC0/AtdWhEKh/3wR5APts84zVZWbPeP8wzBj
+         1BOB6vVUJdyn+hUIIYVoRcNwoueb7gbslGeZ0jL5rIHZpYO4x9zMHSTS66Z51Zg+r7vH
+         k5uWoz2XCjH83WxhOdLufqkiyGDUW0jKvr2gL+SguZ9nImXaLpLv/947LK+E5OhaluDC
+         fFAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:autocrypt:from:content-language:references:cc:to
-         :subject:user-agent:mime-version:date:message-id;
-        bh=eutIlAOt+zesnS0jFMTLNSQ0uIwza9ErzUOdgXpgW2Q=;
-        fh=zRGHzg0QSvglehTRa45zTc999PxcMC/xgiADOP0n0i8=;
-        b=W80iPos1JYDmDQEnPVAjF1NhnPlopY7UqYNcLjNRZZQRjk+z9+Yz1Yo+qaVghc66iP
-         exai8VW7dpXadzQvRh16ReCvNEK67lGSxZSGT28EuzyQW+igpbjGl8fqlONvZ6zroj/z
-         7R5A+hmJygMSbW8/y327yvM3v1sZjKkPyHgjEqjBK8f5PK5+nxYuZ7GHoavIV/wECMej
-         Ghdqf3adW20Hdfe6rRzV1Nl2C5BYUNbJJGEBrtWmmfsYaZ5m/3QY5hrt75cfTSikefYg
-         eshofUtBgX01GefxE/k1b1UJQeEA+FFmWk7aHAZeS48DiEnuJdHnL3W1fX6gE0AsWO+T
-         T42w==;
+         :in-reply-to:content-language:references:cc:to:from:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=79rPrhcFENBsKK1V6FHTi1G9zXNhcMy+fdCeU+citzw=;
+        fh=AbKBg5GeMrB0vSiTefkIvVodQo5E5HfwOnCfBGhsihI=;
+        b=JXai8zX2qQPPDxQQMBoCmCUSFxcEKS/l129pkXwXXsOz1cCHTxriv0QMpxhix16HTS
+         ViwK1ThxXozcSnde+JnY9paTakyEZzIAK51Dnz0IfFTf7G5v1IsyhUIRvTcVvnsmHAGB
+         vp0uQXGZ0F0nL0OrrOXnt4V/Q5Q1AFz9n6YwEOIFJkndhkac5HOiOj5KNZAxCiABujQe
+         s/7ycEMcRAFOCv3yjNd1LEZC2j7AhTK0bVKJVIhBas89tES4uVB/mrxZjjkTuxdEg8r3
+         BVhZ9s7V/wdG8Oz6477Faussr7HoGfW+zt77l1XzVK8CJQesHifUt25nCW5GrWd1GmRD
+         QMpA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=oVgYjTgA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac47a377si3364470985a.337.2025.01.02.00.44.32
+        by mx.google.com with ESMTPS id d75a77b69052e-46a3eb988efsi326886371cf.307.2025.01.02.04.21.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 02 Jan 2025 00:44:32 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 02 Jan 2025 04:21:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=oVgYjTgA;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tTGoB-00007s-NZ; Thu, 02 Jan 2025 03:43:59 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tTKCI-0001w5-He; Thu, 02 Jan 2025 07:21:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=YAii=T2=kaod.org=clg@ozlabs.org>)
- id 1tTGoA-00007g-FC; Thu, 02 Jan 2025 03:43:58 -0500
-Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=YAii=T2=kaod.org=clg@ozlabs.org>)
- id 1tTGo8-0008VJ-6U; Thu, 02 Jan 2025 03:43:58 -0500
-Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4YP0c139Xmz4xdw;
- Thu,  2 Jan 2025 19:43:45 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4YP0bx65pVz4x07;
- Thu,  2 Jan 2025 19:43:41 +1100 (AEDT)
-Message-ID: <a785f6dd-46ec-48dd-bd9e-8c9f7be6ded0@kaod.org>
-Date: Thu, 2 Jan 2025 09:43:45 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tTKCG-0001uv-Pg
+ for qemu-arm@nongnu.org; Thu, 02 Jan 2025 07:21:04 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tTKCE-0003wH-Qc
+ for qemu-arm@nongnu.org; Thu, 02 Jan 2025 07:21:04 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4363dc916ceso72076575e9.0
+ for <qemu-arm@nongnu.org>; Thu, 02 Jan 2025 04:21:01 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1735820461; x=1736425261; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=79rPrhcFENBsKK1V6FHTi1G9zXNhcMy+fdCeU+citzw=;
+ b=oVgYjTgABl9bx/Di0m5w3Y0PwKjgn7W71OIEMVmbK8us0QjZR/7TxlH3S/a4XZpZRp
+ yt0S/yWHm0uhn/jXLhHrTJGjJ2zgEu4ldrV12NR5eOgiX1eP9dWTMFXy5RgPm/UF6NHY
+ m4CEFc3qD9UBvoqRZEUL/UnOp145LFDTDs7APFcWbcQT7N7AK1dPz3pfPDPmuKTZj7i+
+ rR5UT7yAL3zZ6zlldf7q16+U/evQoprACxSgmjMaPWpZUtp2tOD6OCLiRJezlFqenl/X
+ mVpXbJeT5Wo1rBIHqru0GZQV1HkS2yMkw7AHRTHKj8qOlb3duJ7u9kf1thYNMTYgKEts
+ yPdA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1735820461; x=1736425261;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=79rPrhcFENBsKK1V6FHTi1G9zXNhcMy+fdCeU+citzw=;
+ b=hd1n5oMzixiLJ9XU2DyR3By6cP3Gs5XsUhs/bRX8Bq2eySMTLCnpxf3Mel7M5jynKi
+ WQW7ULHqFZZEFLgS/wRAJ5VhRAHsH+4oVMvycatxi3ZImCt0VlX/HA1nHCVwc9SteecW
+ EQFyjFN/obfzyYnEU6Kohe8Q0S1G5NLSoR+I0Ae6F0rBnqbNa/SqshdRuAhe9TWdPGqu
+ 0HaQ0GFVxiDciiY9JR0DVNyYF6tWZWEqfIafqUgH1HoGDUnNsSNJ7zcbpTmJ9/f6GV2Q
+ ZDRjoiJC0mekcFtcFrlUVQOM3o0dFzl27dB73uuNVyY8ganZGllHtcpab/YmfJCKmFAK
+ +MPg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUzu1B6j5gTPHqC2ZKjLA2DDCvb9q5t4xPA06bB4oB4NQLUr/ea8tyB0nHAi+dDHwMkhrl1HWtNLA==@nongnu.org
+X-Gm-Message-State: AOJu0YxT1rEZrd05rlzUW23bbjpsnNc0IE453g9nxpcjv1wU2CvUxRg/
+ 0PSROZU7BxEO0l8DslVoyqCc8NViOYX2G/lt9vkFJJqx/OSmUguW/MZy9ihyXBE=
+X-Gm-Gg: ASbGnctobBD4acxhQJ83cRccV7UtfV5fOQW63YFjb/rvb0abggk+1ESB3jUc5N1XZZm
+ hMsM5Qcrfj0ckl3HaKTqwDGPgqghqnYCQH5GLf3wAKqXuz0OEoZsxgU3Tww99sI2fIqBGSIPRLW
+ lK4L1WuJgOuynUA7cRoJcQPy9Zc2pbzsuzRh+MVXLIqZpHVAqm2WcXu8mT76lBhXwHPbqzwtje9
+ DW9nXbKxbnQEYXy1cI432odE1fUvdMyq6ZHnIbg8YFFk3IHV/k0/vHkulNkU5LJg08zNgrldjWQ
+ y4/E9N3xqfEqkmxtrQ==
+X-Received: by 2002:a05:600c:198a:b0:434:fe3c:c662 with SMTP id
+ 5b1f17b1804b1-43669a22e68mr382123295e9.12.1735820460425; 
+ Thu, 02 Jan 2025 04:21:00 -0800 (PST)
+Received: from [10.85.240.213] (187.171.88.92.rev.sfr.net. [92.88.171.187])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43661219578sm455641215e9.20.2025.01.02.04.20.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 02 Jan 2025 04:20:59 -0800 (PST)
+Message-ID: <7b06d49b-33f1-42f1-8572-7c300e4ef3d9@linaro.org>
+Date: Thu, 2 Jan 2025 13:20:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] docs: aspeed: Add ast2700-fc machine section
-To: Steven Lee <steven_lee@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
-References: <20241225020311.3718080-1-steven_lee@aspeedtech.com>
- <20241225020311.3718080-6-steven_lee@aspeedtech.com>
-Content-Language: en-US, fr
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20241225020311.3718080-6-steven_lee@aspeedtech.com>
+Subject: Re: [PATCH 07/19] hw/microblaze: Restrict MemoryRegionOps are
+ implemented as 32-bit
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org, Anton Johansson <anjo@rev.ng>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, devel@lists.libvirt.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20241105130431.22564-1-philmd@linaro.org>
+ <20241105130431.22564-8-philmd@linaro.org>
+ <21b166ef-258c-4497-abf2-135022eb4f0e@linaro.org>
+ <b15d094f-8d69-4d2f-a79d-11502e8baebf@linaro.org>
+Content-Language: en-US
+In-Reply-To: <b15d094f-8d69-4d2f-a79d-11502e8baebf@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
- envelope-from=SRS0=YAii=T2=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.222, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ioLkE9qQ9mmI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: pu7rxN7Kf+QY
 
-On 12/25/24 03:03, Steven Lee wrote:
-> This commit adds a section describing the ast2700-fc multi-SoC machine.
+On 5/11/24 23:27, Philippe Mathieu-Daudé wrote:
+> On 5/11/24 23:24, Philippe Mathieu-Daudé wrote:
+>> On 5/11/24 14:04, Philippe Mathieu-Daudé wrote:
+>>> All these MemoryRegionOps read() and write() handlers are
+>>> implemented expecting 32-bit accesses. Clarify that setting
+>>> .impl.min/max_access_size fields.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> ---
+>>>   hw/char/xilinx_uartlite.c | 4 ++++
+>>>   hw/intc/xilinx_intc.c     | 4 ++++
+>>>   hw/net/xilinx_ethlite.c   | 4 ++++
+>>>   hw/timer/xilinx_timer.c   | 4 ++++
+>>>   4 files changed, 16 insertions(+)
+>>>
+>>> diff --git a/hw/char/xilinx_uartlite.c b/hw/char/xilinx_uartlite.c
+>>> index a69ad769cc4..892efe81fee 100644
+>>> --- a/hw/char/xilinx_uartlite.c
+>>> +++ b/hw/char/xilinx_uartlite.c
+>>> @@ -170,6 +170,10 @@ static const MemoryRegionOps uart_ops = {
+>>>       .read = uart_read,
+>>>       .write = uart_write,
+>>>       .endianness = DEVICE_NATIVE_ENDIAN,
+>>> +    .impl = {
+>>> +        .min_access_size = 4,
 > 
-> Signed-off-by: Steven Lee <steven_lee@aspeedtech.com>
-> ---
->   docs/system/arm/aspeed.rst | 50 ++++++++++++++++++++++++++++++++++++--
->   1 file changed, 48 insertions(+), 2 deletions(-)
+> Odd. The change makes the qtests pass, but here I'm modifying .impl,
+> not .valid... Since .valid.min_access_size = 1, SBI is a valid
+> opcode, no need to use SWI.
+
+Which proves this device is only mapped in little-endian.
+
 > 
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> index fa4aa28eef..4b4200a4a5 100644
-> --- a/docs/system/arm/aspeed.rst
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -1,5 +1,5 @@
-> -Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``tacoma-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-> -==================================================================================================================================================================================================================================================================================================================================================================================================================================
-> +Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``tacoma-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-> +===================================================================================================================================================================================================================================================================================================================================================================================================================================================
->   
->   The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
->   Aspeed evaluation boards. They are based on different releases of the
-> @@ -42,6 +42,7 @@ AST2600 SoC based machines :
->   AST2700 SoC based machines :
->   
->   - ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
-> +- ``ast2700-fc``           Aspeed AST2700 Evaluation board featuring full core support (Cortex-A35 + Cortex-M4)
->   
->   Supported devices
->   -----------------
-> @@ -270,6 +271,51 @@ Boot the AST2700 machine from the flash image, use an MTD drive :
->          -drive file=${IMGDIR}/image-bmc,format=raw,if=mtd \
->          -nographic
->   
-> +Booting the ast2700-fc machine
-> +^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A description of the machine would be helpful.
-
-Thanks,
-
-C.
-
-
-> +Boot the AST2700 machine from the flash image, use an MTD drive :
-> +
-> +.. code-block:: bash
-> +
-> +  IMGDIR=./
-> +  UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
-> +
-> +  $ UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
-> +  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/ast2700-ssp.elf
-> +  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/ast2700-tsp.elf
-> +  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/bl31.bin
-> +  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/tee-raw.bin
-> +  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/u-boot-nodtb.bin
-> +  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/u-boot.dtb
-> +  $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/image-bmc.tar.zst
-> +  $ tar --zstd -xvf image-bmc.tar.zst
-> +
-> +  $ qemu-system-aarch64 -machine ast2700fc \
-> +       -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
-> +       -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
-> +       -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
-> +       -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/tee-raw.bin \
-> +       -device loader,file=${IMGDIR}/ast2700-ssp.elf,cpu-num=4 \
-> +       -device loader,file=${IMGDIR}/ast2700-tsp.elf,cpu-num=5 \
-> +       -device loader,cpu-num=0,addr=0x430000000 \
-> +       -device loader,cpu-num=1,addr=0x430000000 \
-> +       -device loader,cpu-num=2,addr=0x430000000 \
-> +       -device loader,cpu-num=3,addr=0x430000000 \
-> +       -m 1G \
-> +       -drive file=image-bmc,if=mtd,format=raw \
-> +       -serial pty -serial pty -serial pty \
-> +       -S -nographic
-> +
-> +    char device redirected to /dev/pts/51 (label serial0)
-> +    char device redirected to /dev/pts/52 (label serial1)
-> +    char device redirected to /dev/pts/53 (label serial2)
-> +
-> +  $ tio /dev/pts/51
-> +  $ tio /dev/pts/52
-> +  $ tio /dev/pts/53
-> +  $ (qemu) c
-> +
->   Aspeed minibmc family boards (``ast1030-evb``)
->   ==================================================================
->   
+>>> +        .max_access_size = 4,
+>>> +    },
+>>>       .valid = {
+>>>           .min_access_size = 1,
+>>>           .max_access_size = 4,
+>>
+>> To have qtests working I need to squash:
+>>
+>> -- >8 --
+>> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial- 
+>> test.c
+>> index 3b92fa5d506..6d9291c8ae2 100644
+>> --- a/tests/qtest/boot-serial-test.c
+>> +++ b/tests/qtest/boot-serial-test.c
+>> @@ -57,7 +57,7 @@ static const uint8_t kernel_pls3adsp1800[] = {
+>>       0xb0, 0x00, 0x84, 0x00,                 /* imm   0x8400 */
+>>       0x30, 0x60, 0x00, 0x04,                 /* addik r3,r0,4 */
+>>       0x30, 0x80, 0x00, 0x54,                 /* addik r4,r0,'T' */
+>> -    0xf0, 0x83, 0x00, 0x00,                 /* sbi   r4,r3,0 */
+>> +    0xf8, 0x83, 0x00, 0x00,                 /* swi   r4,r3,0 */
+>>       0xb8, 0x00, 0xff, 0xfc                  /* bri   -4  loop */
+>>   };
+>>
+>> @@ -65,7 +65,7 @@ static const uint8_t kernel_plml605[] = {
+>>       0xe0, 0x83, 0x00, 0xb0,                 /* imm   0x83e0 */
+>>       0x00, 0x10, 0x60, 0x30,                 /* addik r3,r0,0x1000 */
+>>       0x54, 0x00, 0x80, 0x30,                 /* addik r4,r0,'T' */
+>> -    0x00, 0x00, 0x83, 0xf0,                 /* sbi   r4,r3,0 */
+>> +    0x00, 0x00, 0x83, 0xf8,                 /* swi   r4,r3,0 */
+>>       0xfc, 0xff, 0x00, 0xb8                  /* bri   -4  loop */
+>>   };
+>> ---
+>>
+>> to access the uart by 32-bit instead of 8-bit.
 

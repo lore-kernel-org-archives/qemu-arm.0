@@ -1,69 +1,68 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp10334655njk;
-        Fri, 3 Jan 2025 09:36:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXA9LH3JN6mPI6hDqIR48/eap1UIREskDclrxKTNmvOt6NA4MC0oz/d/xZkwcQe/e7SjQIMkBMT2WJS/g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFrOVEyWJq5spwfihGYFO8vE64iftdpRV/pzwPRScE7fF9kp5zpoZquRT3Onbynm1wq19+S
-X-Received: by 2002:ad4:5b84:0:b0:6d8:a9dc:5a65 with SMTP id 6a1803df08f44-6dd233aed7amr871425036d6.45.1735925810343;
-        Fri, 03 Jan 2025 09:36:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735925810; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp10335694njk;
+        Fri, 3 Jan 2025 09:38:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXw+4H7abU4j/pDzy3r1NjVb4IL+3f3/ob8wVyA7ahFotkOu0aM7jP9twJd5HULC4kFdQp7mW1jm2HfBA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGy9YmfOS2PwBj/d5ewE7u3aDNlXaDuxfncIDhzY835mVZcq0s/betaBfdD4f+N20u/pJlP
+X-Received: by 2002:a05:620a:394e:b0:7a9:c333:c559 with SMTP id af79cd13be357-7b9ba80f5dcmr8459372485a.48.1735925919303;
+        Fri, 03 Jan 2025 09:38:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735925919; cv=none;
         d=google.com; s=arc-20240605;
-        b=P/bW2RPZ7iHH74nltHJV1Krdma9FfgBsCHyA7nYaMvE3CD0dRoux4nbPFtAp8W2c84
-         2r5rtGvyKBfsexDqUTxY68O7i0f3MCwgSAfuWSgxAxoiX4X57gLNR5F9RS7vBGQFSjPW
-         etNKjVqdizWq5l6Wlr2idJ4eEdDwXowMDnARpl2YReMBCSaDCbdOBN1fpv4T3+Dyg+NL
-         +dzR3G11ENsNW4gNPpwvlsKdAlTC7CNk3DjhgFAH/HMK3p+9+bCPoKs7NRnL3ADwGDK1
-         Fp+XmYjJf9ArvLfPJOzk/pKPw0e07w5iOUZnauDwABVOIpDu9XNfg/WCh/eWG35jvBAX
-         bi9g==
+        b=BD3iO2BGDeZSAwMdMrZp+Fo3tvH9OOg3MLKdGV/ZuHKh7ou+B9+5/ZjgC2FxcfxqfG
+         aTJ7SNBWjV0ltdXWbWfET13tNB08Ibsuch1Nide6kL064xslHpiABnmW9d8hbAWOyzwo
+         C6mAYyxM01sfiPeUTNZFEA/ywNOaYemiU9UA6l9z0w4BMldEES0itSTxouUZaVQCJYK2
+         hMjcB95BgsJ6PVb5KI9S9ml63mDbA/WWQ9R0iwOH5wAx7xC1Fed510MXLn4lJMztfXiY
+         6j81x53ezS2H9cqieE/uXvScFo6xJ0V4D0FnegLjYjRowIaYixLrhVBcmI/XQ7FPJ8cg
+         jpdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=ZDq3AZ+gj8HTJIiqtwJHJ9KCJdFDq93XHGfExNM91VA=;
+        bh=oH+M34YW+Pehxs6s4/PG4M6Z9xn2Ritf9g5GttEkeP0=;
         fh=XO19m6VQrQta/lNPxYpV2slcM1mGJ189RKXDIz+Ofio=;
-        b=cKAO/G1rgC1kQ96QS9IdlHRH0UMUVy9urtMAqQ0IdyjnWR1PqUwjh3isnRDNZEn1Nw
-         p1e3fwdYv78ob4ijktbp3hplpEDcCgPL17f+j/gcgxtoJfrUYO4WavcgYlW0+//nlLd5
-         hIICzkcqYgaD7rWesDVMUxuCBw2If+NqDKt8++6Ksz94W2lavaIJ5w/LUHjhJNYY/MBB
-         5bFB9qlH5CR/xAR1jQLTWERUhSi+exOV5j6y+CJWrUnQ9rfNyYZLZUATepr+sj27JErM
-         VG2tpQ1cy/Jmy0WGLniIeg0nbAhz2MfxAaK+G+7s5W+HpL3oS8B2XnhVxLPq4+Fx8/qk
-         tHYw==;
+        b=Ea+zklzjAM+3zRk6etYXWc25pBWXinIuHd1wDSVvMKo525u9AgxeFHoemlS+igzQzd
+         kixKpC0dEe0kZrNwTZkY8mzQhdtQ5WMJ8NnXSxlPlWuVSmtFtUpSROaVMD5hJO+fBTWA
+         Vbxskfq5j7HwJT1qOBAjDDl36csyTWQ3TzcFdSygglxqKnYCzIY7hVKxKnEGBL24xFl8
+         2aN+u3cAsU8Y+68X1/QitytgqOcLSFNPicurqcEusuUAnBVBcuZI2TON+Z21ki2zdRUX
+         vzLsS45soLJDukd2u4tlUdaphrznzvTWFbPXctQjYuR3eTnW9guKHtNGlKDI/mnrqsNH
+         UPJg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dd18101e6esi391158836d6.110.2025.01.03.09.36.50
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac2d117esi4151739585a.188.2025.01.03.09.38.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jan 2025 09:36:50 -0800 (PST)
+        Fri, 03 Jan 2025 09:38:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tTlb1-0002hm-Eo; Fri, 03 Jan 2025 12:36:27 -0500
+	id 1tTlcw-0003mb-KR; Fri, 03 Jan 2025 12:38:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ZvCr=T3=kaod.org=clg@ozlabs.org>)
- id 1tTlb0-0002hX-2e; Fri, 03 Jan 2025 12:36:26 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1tTlcv-0003mM-Ly; Fri, 03 Jan 2025 12:38:26 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=ZvCr=T3=kaod.org=clg@ozlabs.org>)
- id 1tTlax-0005AJ-5y; Fri, 03 Jan 2025 12:36:25 -0500
+ id 1tTlct-0005Ix-VN; Fri, 03 Jan 2025 12:38:25 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4YPrMv36yhz4xfV;
- Sat,  4 Jan 2025 04:36:11 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4YPrQD1cBSz4xfV;
+ Sat,  4 Jan 2025 04:38:12 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4YPrMq6WCwz4wcl;
- Sat,  4 Jan 2025 04:36:04 +1100 (AEDT)
-Message-ID: <82f7f669-f04f-4230-adaf-a9920a30dbed@kaod.org>
-Date: Fri, 3 Jan 2025 18:36:07 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4YPrQ86k3Dz4xfR;
+ Sat,  4 Jan 2025 04:38:08 +1100 (AEDT)
+Message-ID: <6d7d7471-5d23-4a12-ae7c-4574eaa4e015@kaod.org>
+Date: Fri, 3 Jan 2025 18:38:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] aspeed: ast27x0: Map unimplemented devices in SoC
- memory
+Subject: Re: [PATCH 3/5] aspeed: Introduce AST27x0 SoC with Cortex-M4 support
 To: Steven Lee <steven_lee@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
  Jamin Lin <jamin_lin@aspeedtech.com>,
@@ -73,11 +72,9 @@ To: Steven Lee <steven_lee@aspeedtech.com>,
 Cc: Troy Lee <troy_lee@aspeedtech.com>,
  Yunlin Tang <yunlin.tang@aspeedtech.com>
 References: <20241225020311.3718080-1-steven_lee@aspeedtech.com>
- <20241225020311.3718080-3-steven_lee@aspeedtech.com>
- <94c71f3b-4c3a-4989-af08-2cf07c8aca2c@kaod.org>
- <KL1PR0601MB418046C74568BBE39A6ECB1B85152@KL1PR0601MB4180.apcprd06.prod.outlook.com>
- <09cccc1d-e678-4f79-af5d-673d5f9c5588@kaod.org>
- <KL1PR0601MB4180BBD75C70B77F1476759385152@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+ <20241225020311.3718080-4-steven_lee@aspeedtech.com>
+ <513c95c7-8084-460c-86b8-c89612de48dd@kaod.org>
+ <KL1PR0601MB4180C0343845F973DE86571285152@KL1PR0601MB4180.apcprd06.prod.outlook.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -122,18 +119,17 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <KL1PR0601MB4180BBD75C70B77F1476759385152@KL1PR0601MB4180.apcprd06.prod.outlook.com>
+In-Reply-To: <KL1PR0601MB4180C0343845F973DE86571285152@KL1PR0601MB4180.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=ZvCr=T3=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.204, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.204, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,97 +144,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7e+0lHJG00YD
+X-TUID: bPVGyb4iML1z
 
-On 1/3/25 10:57, Steven Lee wrote:
-> Hi Cédric,
-> 
->> -----Original Message-----
->> From: Cédric Le Goater <clg@kaod.org>
->> Sent: Friday, January 3, 2025 5:44 PM
->> To: Steven Lee <steven_lee@aspeedtech.com>; Peter Maydell
->> <peter.maydell@linaro.org>; Troy Lee <leetroy@gmail.com>; Jamin Lin
->> <jamin_lin@aspeedtech.com>; Andrew Jeffery
->> <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
->> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
->> <qemu-devel@nongnu.org>
->> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
->> <yunlin.tang@aspeedtech.com>
->> Subject: Re: [PATCH 2/5] aspeed: ast27x0: Map unimplemented devices in SoC
->> memory
+Hello Steven,
+
+[ ... ]
+
+>>> +struct Aspeed27x0CM4SoCState {
+>>> +    AspeedSoCState parent;
+>>> +
+>>> +    ARMv7MState armv7m;
 >>
->> On 1/3/25 09:14, Steven Lee wrote:
->>> Hi Cédric,
->>>
->>>> -----Original Message-----
->>>> From: Cédric Le Goater <clg@kaod.org>
->>>> Sent: Friday, December 27, 2024 5:53 PM
->>>> To: Steven Lee <steven_lee@aspeedtech.com>; Peter Maydell
->>>> <peter.maydell@linaro.org>; Troy Lee <leetroy@gmail.com>; Jamin Lin
->>>> <jamin_lin@aspeedtech.com>; Andrew Jeffery
->>>> <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au>; open
->>>> list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC here
->>>> <qemu-devel@nongnu.org>
->>>> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
->>>> <yunlin.tang@aspeedtech.com>
->>>> Subject: Re: [PATCH 2/5] aspeed: ast27x0: Map unimplemented devices
->>>> in SoC memory
->>>>
->>>> Hello,
->>>>
->>>> On 12/25/24 03:03, Steven Lee wrote:
->>>>> Maps following unimplemented devices in SoC memory
->>>>> - dpmcu
->>>>> - iomem0
->>>>> - iomem1
->>>>> - ltpi
->>>>> - io
->>>>
->>>> Could you please add a sentence about what these devices are ?
->>>>
->>>> Thanks,
->>>>
->>>> C.
->>>>
->>>
->>> DPMCU stands for Display Port MCU controller.
->>> Regarding LTPI, when the AST1700 is connected to the AST2700, AST1070
->> LTPI controller's registers are mapped to 0x30000000.
+>> Why not use Aspeed10x0SoCState instead ?
 >>
->> Is the LTPI IP a device for communication between SoCs ?
 > 
-> Yes, it can be used to connect to AST1700. AST1700 is an I/O expander that supports the DC-SCM 2.1 LTPI protocol.
-> It provides AST2700 with additional GPIO, UART, I3C, and other interfaces.
+> The AST2700's CM4 is not part of the AST10x0 series SoC.
 
-This is the kind of information which would be useful to add
-to the description of the SoC/machine and in the commit log.
+ok. These are different HW designs.
 
+> However, since the structure is identical, I can switch to 
+> using Aspeed10x0SoCState if reusing it is deemed more appropriate.
+
+That's fine. Let's keep it this way.
 
 Thanks,
 
 C.
 
-
-> 
-> Thanks,
-> Steven
-> 
->>
->>> Io, Iomem0 and Iomem1 include unimplemented controllers in the memory
->> ranges 0x120000000 - 0x121000000 and 0x14000000 - 0x141000000.
->>> For instance:
->>> - USB hub at 0x12010000
->>> - eSPI at 0x14C5000
->>> - PWM at 0x140C0000
->>>
->>> I will include the description in the commit message.
->>
->> yes please.
->>
->> Thanks,
->>
->> C.
->>
->>
-> 
 

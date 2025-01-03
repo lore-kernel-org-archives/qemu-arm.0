@@ -1,84 +1,83 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp10326181njk;
-        Fri, 3 Jan 2025 09:22:53 -0800 (PST)
-X-Received: by 2002:a05:600c:468f:b0:434:a815:2b5d with SMTP id 5b1f17b1804b1-43668b785ddmr390711515e9.24.1735924973705;
-        Fri, 03 Jan 2025 09:22:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735924973; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp10326224njk;
+        Fri, 3 Jan 2025 09:22:58 -0800 (PST)
+X-Received: by 2002:a05:600c:1c09:b0:434:9e46:5bc with SMTP id 5b1f17b1804b1-43668643750mr537556385e9.10.1735924978421;
+        Fri, 03 Jan 2025 09:22:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735924978; cv=none;
         d=google.com; s=arc-20240605;
-        b=BUDergKtUf89QWpOmmT6lvPKFB7Yu7NJLddGas8hIGh7GJFpcRBR25KGII1HgHn4L1
-         07AFo7uY3NMJS3SJVEwScQCLM5bZNIyWg42GYCnTadYVIgmB39uIAsF+gwM5hh8Rm+ZF
-         kXLDmRkbSYzFKcFi1r+BNj+HAkUmVPCKs3Jy06Aj3com3R62z6UyN2BLRGPKoMnnjPsD
-         1EA6HKH3+enWeKLNco6ylfIKA/WwglTwBseg9d/+S1f0LhXiYbNdeunD468rfmjlNdZJ
-         J+aEWP7pKiH5MbiLe+5Heqy+VczIVJVwJA228miX0r52ko8bEUQSuB4vn82qh+QKji1j
-         Sypw==
+        b=bIIWrR6r+tDKC2lFbokK+ghk1v/KoujgFe7oAw0cO75MIqqM3mWJV+zZD/GxNhAmU8
+         w6bcK14U61WsXA7untYGV/JKrXSooITRaSqMFLs0ZAxJq3DXECr2HxiYud5+Or/qH7uE
+         sfCDAh6HUnPwA4mv/qIEY5xWznQWFgRqq8NYMsLxG0M+hhcmG8/kRIiwTmBAyG8zNQQD
+         OQ8PwZL8SFZdUn+FDJNU11qmAKzkByzG0RgDr5qcbALjQkQGMbDoARgmQ9GpUc5Xiyxn
+         z+K2+DJyg1ITE4u/Z6xe10CVdR+D9WYMIPtDVSK8iWyaND+GLAPqVpC7f2UPVnI//rsj
+         GXNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=GlVN5y46CcSMejJupZx1BQuV3ovHng+r81SDig0PPcM=;
+        bh=XAvTPdAmDaVspmiDEBxv7slQUtV72xw5x5dlXyX0c1M=;
         fh=sOXhaDUqTNtWZrrLHpwVOLbAyi3Of/7BDc3BkRLfsYs=;
-        b=SfrYskeuJ9GuUugpV1/AlUyHeaxvHubAfsOpsYOpWAweOY8IjQMV+JWr3AIs5mH0rG
-         +2a6R5uEndhJOBcmja9zaab0poDFng/xUE/O7dUI6AroqB8uyxbp2OpvabDyKny70CaR
-         MCCUC0jLGFxCXnx0VBEvy3leLTX+0LQIQq3ubpz5AGk6aQokowGdJUTZUIbDDMXMkSj0
-         pLywEirxFexd97y4wc7TT2HkmbGTfaerQoBBmFnk6SsP8S1rH9Wgc6+UI5lw/fuAoQgP
-         YZGRVYxapyK83kaqM/rZP2TSNdaLa76RlrRAZX+d9Q7iR8sGdJLXYB8oqEC4HGRDvnhi
-         S3eg==;
+        b=Df7uVO77rkpzvvbWcIKtyJOzRt5HwdczsB9UxIx9ammDM4hvxKFu8I+37XXHpBcF55
+         8hSIyDpBzcTfuDAAtH5BwDYF0qHtbT9vbHAJ9uplLwsxihBMjd/I2FHajX6HYzrLLn1k
+         HVhjGD3sMWGIp8jx+YVSjT+m5hQGdVpEkCCxV0Z9Gh/9cTaFoCMQJWOQR7CwZmnrqQN7
+         mubIyxruZq/8A7eZrAvm6oRY/LLUPpvxShINEJ1YCG1LTGS0tMMt5s514uO0SAp9qyMN
+         8iJjAwqxvgmuUjznIbS/PBWKUBSYq9jWqsktueP8Li3r0gdGEyTpzGLYCPg8SFol4L6w
+         LDvg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BxEI39S3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aEcMfvib;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43662caf7c4sor93068225e9.2.2025.01.03.09.22.53
+        by mx.google.com with SMTPS id 5b1f17b1804b1-4366127c8b8sor81503695e9.10.2025.01.03.09.22.58
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 03 Jan 2025 09:22:53 -0800 (PST)
+        Fri, 03 Jan 2025 09:22:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BxEI39S3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aEcMfvib;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735924973; x=1736529773; darn=linaro.org;
+        d=linaro.org; s=google; t=1735924978; x=1736529778; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=GlVN5y46CcSMejJupZx1BQuV3ovHng+r81SDig0PPcM=;
-        b=BxEI39S3CVA9T3ozVpTa0sK2neDt98LpmTyhZKf3+rRjX0YL7zetJ908Bv3O1GeQ/A
-         pyOaBhBYIUvoL1c0mnH4ripZmVYpo5vnBNFx/7ytvUT93wwj8+SNW92agvWq4kZCKcI4
-         TYud2FMbpxY+03wVniRiag27B18NLK8/PIDYLDzzX3XK3Te5nXkFuSmnFL8XipQEiXJJ
-         B93kUQanfeoPtJYFm7gagrjzPqJUMUqXsAUHGMPsT+0/cHY5n0E6pZXIP5ALPPFvDbRF
-         NtxWXHBzQKku4UqedC6xZbxjJzcYlbJwM+o6b/Rvr5JBIA8OC7udtOG4W9WNvY29h2uR
-         qtjw==
+        bh=XAvTPdAmDaVspmiDEBxv7slQUtV72xw5x5dlXyX0c1M=;
+        b=aEcMfvibUmD5HTtdEqsIviQ8FkpZKbiPLE/SF8qKRtQ8P3mH2xaQBtAc5hQCJ3BZ9F
+         AD/1XAFY2M3e9MF+RDNV3ABLbsiE493uBcBUtMKfQu4qbVQYAxES+/hWHLgkCjCDEW69
+         uUJCVw3PqUhDi6l/qoVR6HxinEAs4aqvRE73/T3cuwnrLATRbzTLUIVOxI2D4htrl3wd
+         RU4z59byfgRSSQES56QNawxN9Xxaqgbc2G0tUW2FNuYSqNKtzr14j8yDxVE0Mp0oRK8T
+         D2S2gokGoti0PUt1Uy0Q+ElhcFySCxV3AX+/7SLhA1hhWZfMbLxhr4LT4YHSmAx9R/rg
+         H84Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735924973; x=1736529773;
+        d=1e100.net; s=20230601; t=1735924978; x=1736529778;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=GlVN5y46CcSMejJupZx1BQuV3ovHng+r81SDig0PPcM=;
-        b=Pqw4JKSA9NhkRuiXKvowpknpkuzGMQdHAnWZIuatLDrzLHAYQz9biWSR9Umzum4XA8
-         nsZXaa5tnlLHHFFvuLcIkHlZdxuV+I6LhlXL40d8MGx6+WqHs/Ub09HpyweiuUfCE73b
-         bsDf6QAjktS0bR8fydF2Ht0ieukqZ+wtaTEe97zJxcjKKYJmG5zT1ijF/OraOsutDjV2
-         yKEKU5X01HgGJKhBQxILsTiQD3BoeOwa5ZUKAIKb1mvc+e2NVCS04MifFY0GRq7V1lEj
-         aO4nCRArbbxyLuYWXeOYRQowfNE7pqYtd1Xdwd/zOrUcocM3pFiQkzaNJlyKlxp96i3J
-         nMGg==
-X-Gm-Message-State: AOJu0YzMAFyvUz+xcQNo8osMqBiufQmCcKz0U0rSVPdTSBSd6wJQowyq
-	/8dEGbKNOAshg0xq3bwg8wDTLkifGgFzL2lllUls745bClb80A6gGdoOLa+EOuy1wPAQjWQV/mU
-	FUEsTOw==
-X-Gm-Gg: ASbGncu1dtocbgRHGtFbZ7Zj91rAF0B0E3B1LQSEfBOnf+Eu+4ssL6CrCvm6Tce4mtL
-	+eUVfaDgRZOpv0sHleoh87BsVhyJjYk8aMKPU40pNPXG0gLPVmsiF9XlwZxwPgoUjtMJ5iuxa+V
-	m80Hzg0zbRP08N68AW/prTdM0FKatyRKHNxSSXdSGSfHh3+WeZPpHxra0xf/Sa2Unr5QHikZMtn
-	lG38heKawjSfoE08G8FI8pTb2iS3k3pKIlvXciO07eNaw6t6pic/qJWr2hiStVg/Jp9CcSWm7EC
-	P32wVQBxnNK0jtL3mKafw5xJGaD8Gr8=
-X-Google-Smtp-Source: AGHT+IGyxVCndHj/pTMGfjvPSV9eCuiFdx3ug/8h2WJ9LNhi+aADdu5rL88R184yUE7q9jIyCyFPdQ==
-X-Received: by 2002:a05:600c:154a:b0:434:fd15:3adc with SMTP id 5b1f17b1804b1-43668b786bamr376435975e9.25.1735924973185;
-        Fri, 03 Jan 2025 09:22:53 -0800 (PST)
+        bh=XAvTPdAmDaVspmiDEBxv7slQUtV72xw5x5dlXyX0c1M=;
+        b=MmZguut9OxeaPTlVQcp4rUvLRSkC42NK7g2j67JKlgpv9gd6YpMO4pUebtviD9oSI4
+         O3ECussq0KTa+ZJBUMN3kXlvz2nP4jg7yPdy1eyquJfVzmH0lo69b1Q6prH+vd0tiT/l
+         arajPVUJuKdPZ6Tepbd0JRN1MYI+TEgyjr+c/G9iFFM+bqJ1zw0fpapQlYtgarLILOtf
+         YBtAC1PTVTOHxx//eugvFnOFT7nuBErFKEExRr6OArAO9J8X6I7vlJ9v+1oC93Laj9MV
+         Ixfe/VsVEGHDxzwbGCAUGHjRXuw0LxA/WknlqCV5zXzGT7On34fVGSfp4mYoT0mLnkNs
+         SdZQ==
+X-Gm-Message-State: AOJu0YzFpZdd16tb9ZwuLP+2C24qUFUiyCZC+lt7u7gy8vsS0QAFi27V
+	83Oycr/75mCP1EFiTmlK8dkd6hQnICexf4XS5O+F1NKI8a3RCsWe/TQQiyPBHh3cKA==
+X-Gm-Gg: ASbGncuVgwytBGlLlkid40wTPllpb2oq8g/TQwJO4Sbzc+smKTk2KIm1LY3rtBis1BN
+	sG7ZA2P5hrqhrx8VgK5cjxTHr9u9xbfy+VM8PbfZeWAl3bOpbIVP1aTiUZc3RR5yqXhozBvYEcj
+	aObR5GwbF4qZPU3I5UGOBqQwZqLRKMrarleMJvXy0Hci8VMYrK/qqQwyf78+87Nr5v8LVIV/WBb
+	ptYB+6yG78PrOY2c6Vz0Y9BArXuEZCyxUvuAaTzoF0fmR6hyPSe0XQKDwkvxBlSmMrrgCUFxiVz
+	St2iygCYVcUD0xvkX1271mvfldi1+is=
+X-Google-Smtp-Source: AGHT+IFTxnQJTNsUPy6I4zoFQVp3E/3c9NUQH1U+uPIkRSuUxWUgj8/hY7P/TVC42HeUE/58fMgwyw==
+X-Received: by 2002:a05:600c:35cb:b0:436:1af4:5e07 with SMTP id 5b1f17b1804b1-43668548867mr335075545e9.1.1735924977888;
+        Fri, 03 Jan 2025 09:22:57 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4366127c508sm488947785e9.33.2025.01.03.09.22.50
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c8acb85sm40812573f8f.103.2025.01.03.09.22.57
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 03 Jan 2025 09:22:51 -0800 (PST)
+        Fri, 03 Jan 2025 09:22:57 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -89,62 +88,42 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Paolo Bonzini <pbonzini@redhat.com>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v7 2/4] tests/qtest/boot-serial-test: Reduce for() loop in PL011 tests
-Date: Fri,  3 Jan 2025 18:22:37 +0100
-Message-ID: <20250103172239.18562-3-philmd@linaro.org>
+Subject: [PATCH v7 3/4] tests/qtest/boot-serial-test: Reorder pair of instructions in PL011 test
+Date: Fri,  3 Jan 2025 18:22:38 +0100
+Message-ID: <20250103172239.18562-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250103172239.18562-1-philmd@linaro.org>
 References: <20250103172239.18562-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 00dNZWhygyFU
+X-TUID: AQU88difngE9
 
-Since registers are not modified, we don't need
-to refill their values. Directly jump to the previous
-store instruction to keep filling the TXDAT register.
-
-The equivalent C code remains:
-
-  while (true) {
-      *UART_DATA = 'T';
-  }
+In the next commit we are going to use a different value
+for the $w1 register, maintaining the same $x2 value. In
+order to keep the next commit trivial to review, set $x2
+before $w1.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Fabiano Rosas <farosas@suse.de>
 ---
- tests/qtest/boot-serial-test.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ tests/qtest/boot-serial-test.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
-index a71d2857807..553575ca75c 100644
+index 553575ca75c..bcfa504826c 100644
 --- a/tests/qtest/boot-serial-test.c
 +++ b/tests/qtest/boot-serial-test.c
-@@ -70,18 +70,18 @@ static const uint8_t kernel_plml605[] = {
- };
- 
- static const uint8_t bios_raspi2[] = {
--    0x08, 0x30, 0x9f, 0xe5,                 /* loop:  ldr     r3, [pc, #8]   Get &UART0 */
-+    0x08, 0x30, 0x9f, 0xe5,                 /*        ldr     r3, [pc, #8]   Get &UART0 */
-     0x54, 0x20, 0xa0, 0xe3,                 /*        mov     r2, #'T' */
--    0x00, 0x20, 0xc3, 0xe5,                 /*        strb    r2, [r3]       *TXDAT = 'T' */
--    0xfb, 0xff, 0xff, 0xea,                 /*        b       -12            (loop) */
-+    0x00, 0x20, 0xc3, 0xe5,                 /* loop:  strb    r2, [r3]       *TXDAT = 'T' */
-+    0xff, 0xff, 0xff, 0xea,                 /*        b       -4             (loop) */
-     0x00, 0x10, 0x20, 0x3f,                 /* UART0: 0x3f201000 */
+@@ -78,8 +78,8 @@ static const uint8_t bios_raspi2[] = {
  };
  
  static const uint8_t kernel_aarch64[] = {
--    0x81, 0x0a, 0x80, 0x52,                 /* loop:  mov    w1, #'T' */
-+    0x81, 0x0a, 0x80, 0x52,                 /*        mov    w1, #'T' */
+-    0x81, 0x0a, 0x80, 0x52,                 /*        mov    w1, #'T' */
      0x02, 0x20, 0xa1, 0xd2,                 /*        mov    x2, #0x9000000  Load UART0 */
--    0x41, 0x00, 0x00, 0x39,                 /*        strb   w1, [x2]        *TXDAT = 'T' */
--    0xfd, 0xff, 0xff, 0x17,                 /*        b      -12             (loop) */
-+    0x41, 0x00, 0x00, 0x39,                 /* loop:  strb   w1, [x2]        *TXDAT = 'T' */
-+    0xff, 0xff, 0xff, 0x17,                 /*        b      -4              (loop) */
++    0x81, 0x0a, 0x80, 0x52,                 /*        mov    w1, #'T' */
+     0x41, 0x00, 0x00, 0x39,                 /* loop:  strb   w1, [x2]        *TXDAT = 'T' */
+     0xff, 0xff, 0xff, 0x17,                 /*        b      -4              (loop) */
  };
- 
- static const uint8_t kernel_nrf51[] = {
 -- 
 2.47.1

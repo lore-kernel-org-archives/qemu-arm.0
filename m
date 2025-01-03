@@ -1,123 +1,150 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp10326063njk;
-        Fri, 3 Jan 2025 09:22:42 -0800 (PST)
-X-Received: by 2002:a05:600c:4450:b0:435:192:63ca with SMTP id 5b1f17b1804b1-43668b5e038mr376726555e9.21.1735924961764;
-        Fri, 03 Jan 2025 09:22:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735924961; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp10207653njk;
+        Fri, 3 Jan 2025 06:21:03 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEKNq3ei8wyQ4Tsi4K64TUiat/IxyibyzzHZh3rwECgbxmJGiecYuoIQoIV01+gcoH+wrCE
+X-Received: by 2002:a05:6000:1889:b0:385:ef14:3b55 with SMTP id ffacd0b85a97d-38a22a4c485mr35042886f8f.19.1735914063244;
+        Fri, 03 Jan 2025 06:21:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1735914063; cv=none;
         d=google.com; s=arc-20240605;
-        b=JPBcRRnOme1Mqx+CKlJ6UEid0CJg8PH4cjn4pwMI0xtAZtviqqrm0wKxJ519mKADjL
-         94+wS0HI0eGsjRFWHM4+uRhyNVJ8Eh+ObJBh3Wec/1xdFEZr0Sw5ejmAEPJW+tcOr9ge
-         x+cWch4VdJVScBY6HYP25MBxEpZcmcqPxN5ChxBjjy37NxmE4R7PwL++ypLMAJ6D2LSz
-         DA1Jl/FoujRMwRl1kZQ3srKqCvxTJDYiNYTpfk5pWgNPCEkeC+8p16kCKjEHnMtFr48n
-         jDbHdGPFsou1sCmtI5OqLxNF93PSdHWejRhzIfP9hsoozfMWitKHRLKoeUHyVAs71+Xa
-         r+/g==
+        b=jkAUyTma7xliwGVANkSumodDlumf1SxWYI2QVNB3hfe4+f4oX4wGid/OlikJugQEUn
+         K4jPbhLhZv7UtJVwYBcG7wXt8POEyMY9WVmoWmii/+lF+igoS8h5sp+QTZujw8daFZCm
+         1u6ZiAQQwXwKH5VRvfD57tQKWElLMyTb19iLh2oPZulvit+iwVzqRILGbpTv46t9S3u3
+         uyICxga7pt8mUhLXPCPhz3qCvLZWzNh8aD3eJdpuN4wv1edQQs9xTEd+q9797Hcj6bYr
+         krEzfR/iYynoTrXmgGMPcU0EI9gBIFxnkpLqfY7DQtBtia8YuycfGMqBiYWomKASDQpn
+         +xMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=dNWNLD3TOQ90+HAs9bzy2nivedS6mvux2NVJyj5jEvk=;
-        fh=VYVTokkxi90E9CFSUnDi3tRFS5HQjOSzivGA0Gm1Tx4=;
-        b=XijuK/ZyzVAtbsO9jgB6Gtp34KBW1zqRd4IOt+IYey9ZGjdv2rMBEXooxAZP3GdSIl
-         FXObG35UNgwlHzxL7FnBjwhtoGGEoG6+4w6D+p3pr/8FT8R3KjgX8Li9SLPo7443fznQ
-         RV3LnbQ3bIOXYxEknXdlDZL1EJMW5TrZILRqBvUEMYPPElX5S7qyxl6dHA9EN/1lhi34
-         HcQ861X90FtKxA8KxtEdyUHXnhCuZVFSdFkfF0sHyHA3nzRREAGiFMbs45I96oSwJB3j
-         T9XK3xcFiDivKljKfzbEO7d9pxbgGyofC+Bqrl7dfznTrGjSk7pJyisFYiNPua8hh8cy
-         KwCQ==;
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature
+         :dkim-signature:dkim-signature;
+        bh=SXkHskpI745sEWSXAas671BVqGiHsaGtOA5Rp24toB4=;
+        fh=cdaS+BV9DXOis9/TSnFVpPZNwUMS+OQghHJkMQKHjjM=;
+        b=fjkYXLNZGOLPsE0PdaGBAF4ItG2vwoK9VCQyJqk1fsTJtN+XBhwO1yp4Ye3VUC6rHh
+         9e+3Zz/Z3V4Mkf10VJg8UhPYo6wXjojyklTDJhsg0k+3/UF2dNsE36SC2Zs3LVdq1fTG
+         CqJQ2G68pQjc22fX58u4pzIcteCXAAYgeqlWiugkSgfYM0LB5XlIckO2bJIgv7CHLPyt
+         Nc+uj9LrU6/3POdNBONfk4gnUrrrcmrBF5b0C1zgJQYFSNyTYN8VGWpwsLWQLYx+K1aS
+         KNnRhd2WNFkAN8zNg4yujTwa6JDHvajFlRJeKEjhqdasZEv5NFGuJafzVGWfbCQiszb7
+         1xeA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ctPQImH9;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43661260c6csor78150545e9.9.2025.01.03.09.22.41
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 03 Jan 2025 09:22:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=I9erZ6qo;
+       dkim=neutral (no key) header.i=@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=I9erZ6qo;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.130 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [195.135.223.130])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-38a1c8b84e8si20445189f8f.326.2025.01.03.06.21.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 03 Jan 2025 06:21:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 195.135.223.130 as permitted sender) client-ip=195.135.223.130;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ctPQImH9;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735924961; x=1736529761; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=dNWNLD3TOQ90+HAs9bzy2nivedS6mvux2NVJyj5jEvk=;
-        b=ctPQImH98+Ed9ACP0wUGQBZq/YfgMgW6o+k//twMK5vyD+SgLPjUJeIx6snFZZDyuj
-         PHAR9tWFNUs2lIAhJFSugxpemf7DG1EV33fMP3a2tDpuklS08TBICzvw/7n2nLXGfvpS
-         kR1sgl63bbAbjIbx/oupgVdtvD7luzysRMr83e60RdUsUUl1yJ+ElVYTvZcBy1Q/Euxm
-         c+GgQgEQ0TNRm5q5HwqOWfbQ5JFpE6ijP9LVvGjmtgacVkiNYn2hmcqxhAt4jtoTVGHu
-         yCb6q3wboDbidxeRl4qzQ3vti3by6KfZynu2IQ5/rPH2u4wU/S6UnAh0NG4z2AZz0c5E
-         C+gQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735924961; x=1736529761;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=dNWNLD3TOQ90+HAs9bzy2nivedS6mvux2NVJyj5jEvk=;
-        b=g1XrzvUf+r5nM++GmqxNQ7Pstdur63/Rwmbw/XS8NRibU62WhcVLGpeDK1IMI0GiTQ
-         tzc6TomVVa9yhLSUpjT7HRe8c0Gekl2n9c2YiAJZdLZ+qyTO7apGEHW6hqTJloSDZrFL
-         00rzQjgM5XmAwikKCk3Tjuh+zL2+0/jiDe6FxpOurxt1tqMjaTG5M0Xd4coNjZ2hfSpl
-         AlzA++0nPIYnffvcrMueJgMGnxEszx6/FEM+6nrapnsBUOVbMWjp+z02NBbZHuqeaLfC
-         K6j0j+6ZDCLBbEW5wA04xPgEkO65SkWm/V1IgRYMqNv0vi6xbgjJdXR4exwmiT7IkyhQ
-         KPUA==
-X-Gm-Message-State: AOJu0Yy4AF5TR3geFsV6t61lcqX2MpN8K8TsFmBlmOkyvcwRzU+EgnfK
-	rgqshw2C1eAcZqj6obKl6+hXlPz5EIkImS8oG9jO9XfXmNgXK+1PSlFR4cGG64rsSa70bWzG4j0
-	3Jg52zQ==
-X-Gm-Gg: ASbGnctLjoYh2OO4X7CmnS0ZhtLNqHD05vwmugJoOuMLAEPnoEdpIdiQBaj8j8suV0m
-	hZ3NWnEv3HcNoMzevIWJWCk9o0jJpjH0MAJPccI7AV2+Q/9AcME2l0Nm76TDt0mDy93ytzlgFu4
-	r7FlwvNXK7ghcbMDV1qcMg3a4+YayEaLTOrSbAuQctngLq5jojiqUfrMXCS35XXASIKJf0ehXae
-	oLUFKTJiIZwe/tK58r9zs8dEoJoI2RyZ9teBge373r0fhd9cXJ1y0VvNWtzzeJVLNUdDuJgjFbt
-	6Ct1fVvVJtaQi5ZY+yeqijQmOvissi4=
-X-Google-Smtp-Source: AGHT+IE0Z3BqSonF42KMbdKuboPrqf6YDSMmLjVUEI1ruCWv7zgfIMX8W/6w5URpwO7RduJufUUyJQ==
-X-Received: by 2002:a05:600c:350b:b0:434:f8e5:1bb with SMTP id 5b1f17b1804b1-436686430a2mr451498585e9.12.1735924961214;
-        Fri, 03 Jan 2025 09:22:41 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436612008b1sm484965375e9.15.2025.01.03.09.22.40
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 03 Jan 2025 09:22:40 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Fabiano Rosas <farosas@suse.de>,
-	Laurent Vivier <lvivier@redhat.com>,
-	qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v7 0/4] tests/qtest: Update tests using PL011 UART
-Date: Fri,  3 Jan 2025 18:22:35 +0100
-Message-ID: <20250103172239.18562-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=I9erZ6qo;
+       dkim=neutral (no key) header.i=@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=I9erZ6qo;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 195.135.223.130 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 54530210EE;
+	Fri,  3 Jan 2025 14:21:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1735914062; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SXkHskpI745sEWSXAas671BVqGiHsaGtOA5Rp24toB4=;
+	b=I9erZ6qoIYiNuiUA3EpOon/EssvWW8ZuSy1azxwdyt0mzZP1fV5oMD9cD/6ueyRiOhzW39
+	tbpYidzVVMKvZT81HNCUdatD+8KNmVke/eUJrw1z2o0er65nXQvxONE3bfkHpQD7lOnPLQ
+	QiZZIimZXh8BUompqrcJFsaz2j0QMbc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1735914062;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SXkHskpI745sEWSXAas671BVqGiHsaGtOA5Rp24toB4=;
+	b=flpfRDVkAu1eBGu42G1Oj5wKsvPm76dqA+/prGY2DVyBL9//AgMevvyNnpQpvhFce3RVoo
+	c1eoozQLTKJ7gPBw==
+Authentication-Results: smtp-out1.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1735914062; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SXkHskpI745sEWSXAas671BVqGiHsaGtOA5Rp24toB4=;
+	b=I9erZ6qoIYiNuiUA3EpOon/EssvWW8ZuSy1azxwdyt0mzZP1fV5oMD9cD/6ueyRiOhzW39
+	tbpYidzVVMKvZT81HNCUdatD+8KNmVke/eUJrw1z2o0er65nXQvxONE3bfkHpQD7lOnPLQ
+	QiZZIimZXh8BUompqrcJFsaz2j0QMbc=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1735914062;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=SXkHskpI745sEWSXAas671BVqGiHsaGtOA5Rp24toB4=;
+	b=flpfRDVkAu1eBGu42G1Oj5wKsvPm76dqA+/prGY2DVyBL9//AgMevvyNnpQpvhFce3RVoo
+	c1eoozQLTKJ7gPBw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id CE0A5134E4;
+	Fri,  3 Jan 2025 14:21:01 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id V05kJE3yd2cXWwAAD6G6ig
+	(envelope-from <farosas@suse.de>); Fri, 03 Jan 2025 14:21:01 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm@nongnu.org, Philippe =?utf-8?Q?Mathi?=
+ =?utf-8?Q?eu-Daud=C3=A9?=
+ <philmd@linaro.org>
+Subject: Re: [PATCH v6 1/4] tests/qtest/boot-serial-test: Improve ASM
+ comments of PL011 tests
+In-Reply-To: <20250102105822.43532-2-philmd@linaro.org>
+References: <20250102105822.43532-1-philmd@linaro.org>
+ <20250102105822.43532-2-philmd@linaro.org>
+Date: Fri, 03 Jan 2025 11:20:59 -0300
+Message-ID: <87h66g7zck.fsf@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-TUID: edH4Y216c5wx
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Spam-Level: 
+X-Spamd-Result: default: False [-4.24 / 50.00];
+	BAYES_HAM(-2.94)[99.76%];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	ARC_NA(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	RCPT_COUNT_SEVEN(0.00)[8];
+	MID_RHS_MATCH_FROM(0.00)[];
+	RCVD_TLS_ALL(0.00)[];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	TO_DN_SOME(0.00)[];
+	RCVD_COUNT_TWO(0.00)[2];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email,suse.de:mid,imap1.dmz-prg2.suse.org:helo]
+X-Spam-Score: -4.24
+X-Spam-Flag: NO
+X-TUID: gMT2MYEDNCB0
 
-(Series fully reviewed)
+Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
 
-Since v6:
-- Corrected ASM comment (Fabiano)
+> Re-indent ASM comments adding the 'loop:' label.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-This series split a patch [*] which was previously posted
-too compact in multiple trivial steps. The last patch
-initializes the PL011 Control register, enabling the
-UART and its transmit channel, before using it to send
-the 'T' character in the boot-serial-test.
-
-[*] https://lore.kernel.org/qemu-devel/20240719181041.49545-10-philmd@linaro.org/
-
-Philippe Mathieu-Daudé (4):
-  tests/qtest/boot-serial-test: Improve ASM comments of PL011 tests
-  tests/qtest/boot-serial-test: Reduce for() loop in PL011 tests
-  tests/qtest/boot-serial-test: Reorder pair of instructions in PL011
-    test
-  tests/qtest/boot-serial-test: Initialize PL011 Control register
-
- tests/qtest/boot-serial-test.c | 23 ++++++++++++++---------
- 1 file changed, 14 insertions(+), 9 deletions(-)
-
--- 
-2.47.1
+Reviewed-by: Fabiano Rosas <farosas@suse.de>

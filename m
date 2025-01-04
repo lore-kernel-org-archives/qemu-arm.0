@@ -1,154 +1,185 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp10326297njk;
-        Fri, 3 Jan 2025 09:23:04 -0800 (PST)
-X-Received: by 2002:a05:600c:b4c:b0:434:f1d5:1453 with SMTP id 5b1f17b1804b1-43673f02a1amr425035735e9.0.1735924983893;
-        Fri, 03 Jan 2025 09:23:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1735924983; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp10806004njk;
+        Sat, 4 Jan 2025 07:15:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUx87l8LULvpl3m0nu89EAgA9Wxr7mms+rZtXv862T0+C/ty2BpagrY+IJLfbn4L0vxx4EukX2+0jvpPg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFbz3Z0pftVLPLuHWpGgOY1uYZabwpiKOWSK53Y46VFvmiLS6YoN5ECDGt01WH0qOCLrCv9
+X-Received: by 2002:a05:6214:29eb:b0:6d9:2e46:dc35 with SMTP id 6a1803df08f44-6dd2334b6admr979364426d6.25.1736003757250;
+        Sat, 04 Jan 2025 07:15:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736003757; cv=none;
         d=google.com; s=arc-20240605;
-        b=g2mnE06dmOetGYH2t4rY0xfwSGilHBzVcMOPJfx02UbTuIvgK9sRpQyMlzs9ShGUwU
-         iUzTS+8Wh/4syGdyB4hLfiv/nZxCKwvI9+hqwzT0wL+o9+tSwLxNPzNEgNRXI8/NuKtI
-         dj2njG1DGQ38keGeq9+M2eRW9CE7O0/viWLWdHPJRIyn/rVFcB3H0tCrj7H0mQeQvPRg
-         ln+GSuZn0SZZIvakzGGV9qPnTxMUkO88nUwS88Pf93Ztu6kmKYFsYQqRc85CAOXht2z/
-         jGBym1TSmuQpAfsoMW38ehh0S4VVuFW3eo154xBW8x+c1/5839EJ00g+r31e3MwmxOFf
-         Ykhw==
+        b=IUavCSjUP9vaPU7hqZ3x1yNHrLS201AQ85bYc8tBPFkYcmdiBu4oenKZXov1K1sx1y
+         tprCP/wbzjMAUK1B6pTtoRaW8OABElZfZ1cTpIGfmQ/GoaSxeBEbcIxqA3MNyLUcFQJk
+         979xN36XfWq2GwufyDoAUnxzohD68IBNvSzecrlrd1Q3HGNtwcyTpFvdQRS0ZC0Z58Ou
+         sgE37hALDKzTsRU33Zre5Mk336uwp7fesCyBz5gq5vGcKYJmuqrkTZtKwUgOnwawS4Sl
+         Ur4Wf2yS6p3IJiDA7E7VWPvXus3G3lyohIV1KFYyZ37mJd1o+N/kAwTS54V1aeUqRxLg
+         wuIA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=yUozoV2sd4YCNhaxO0qe6knCSN/xQB+GkqDltrLuR9M=;
-        fh=sOXhaDUqTNtWZrrLHpwVOLbAyi3Of/7BDc3BkRLfsYs=;
-        b=XhxsSGQxUNlnujUGj3KLgdi8Dv6j5Jm4kSPDlfpnTJgmFjP6pjAJU8ffFEWLYYUWpx
-         3AMu7i47FwCA5JxT5nPmiGK5d9NIYdJZsOEuPzB/6sG1NOGNk0ctSbrkhcDgsCIdKefr
-         t4OCJNNCuuD7xsDSy8KPG/fx/Tu2jhdkL4c76sE3GIKol4JSD8FitgHn9u8I+3i6PmO0
-         EK0wDNhyHzbn+7Zbg4f4tx6k6NtgGk5hebMMKYV2pazBLbn0CoK7lbV1PsGZUZZFfVye
-         /VAosePfc0Ewop0DrTLsuZ6XEwOuekG9H642knEqAtNH8DoKmzBb+2KGU3nOndf+HqK7
-         X5+A==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=FU8KhsuOqn9kBc9Geg/C01qcucshJGqJzoeDRPZsMuI=;
+        fh=0XMb5ph6ly+okJlkhQeLATAP2yM5qUM2cENXeTeqgLM=;
+        b=MQ8uPqAdBw1FQoXhAsEOxlrpsAKH5bK/ierWO4MGmE4rvY71//KWlmtvTiEx8+RlqG
+         Z6/vX/scM/ibBhUngXqreK3LU2uYM5kIaz8ma9EO/rKVkOD7gXtTvy6mQj1HRlcnUCph
+         urAOGl2r6FOsZ3s4TMnGrKUCSTsj6nT55gIdy6fu8i97FzrzXXnuNhmWgG/gGAogdlwS
+         vZb0OYiwCJ++ksTJtc4CtoIrZQQ9Rbo9LuPihlq0Q79EKGkIyOGezp8DlP+NTPIfQ47U
+         h4+6r0xTSjrGigvQYw0A3UVdW7nFk8mpCAlHvup85Q2DdMNrwZ/Xc1kFIxY7zSdCwFq4
+         3Qlg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIaInwaS;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=OKFFU4EQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-436611db43esor80108505e9.2.2025.01.03.09.23.03
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd1836e80bsi389258046d6.500.2025.01.04.07.15.57
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 03 Jan 2025 09:23:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 04 Jan 2025 07:15:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=fIaInwaS;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@daynix-com.20230601.gappssmtp.com header.s=20230601 header.b=OKFFU4EQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tU5rn-0005A3-6C; Sat, 04 Jan 2025 10:15:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1tU5rk-00056l-7D
+ for qemu-devel@nongnu.org; Sat, 04 Jan 2025 10:15:04 -0500
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1tU5rh-0007J8-1C
+ for qemu-devel@nongnu.org; Sat, 04 Jan 2025 10:15:03 -0500
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-218c8aca5f1so233000855ad.0
+ for <qemu-devel@nongnu.org>; Sat, 04 Jan 2025 07:15:00 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1735924983; x=1736529783; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yUozoV2sd4YCNhaxO0qe6knCSN/xQB+GkqDltrLuR9M=;
-        b=fIaInwaSe5/untTt6E0dZNMzFpSEGeQnaV4LML7zIgwxHtP9U/hGkBeseATQOcl39j
-         v2kaxna/T/2E4mU2DMzr8SCoLTs9UIsiTX+a+YrM2rGPkK1NEVgbO50QTY1p9XiYZYUo
-         zfMLiP57c0Y4kRT3WXgzF+W2dH4Po/oKeYkeeaJee7Y3HR8unDfcyaslC2QJpquyu78o
-         NEyNbUqCXhmM2frxDcbrgWVFMsjb9+nQ6uy0cYxI1dcezuXfZw9c6bGZlfVjOT8YxaxC
-         LoaLnmy2DKbnHbMNgAAXQNfIce6wSwDNo9HoE2GBh3/utwj6OfOLy7+q9K+XTIm5El+k
-         bWXg==
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1736003699; x=1736608499;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=FU8KhsuOqn9kBc9Geg/C01qcucshJGqJzoeDRPZsMuI=;
+ b=OKFFU4EQh1bPWgj1N+o5mUl7xw4pwlDKpMy4YrLGsUbFTvORsfvDME6xWyov+uLf5i
+ zNwPL0UuNYfgek0YbjhEDx946SEfxOT0bF8a/5METEwPXzFPOWWIUqKpRR6+/YgPUo7k
+ fBfxKdQHStTkbwTAGYDNSui0q7eDl/n9L31fWDPRAySB4lu90mRcRHBKV69GMAzELtC0
+ wIGes42Y/jNbaHU9hF8YObQLSziOTMYyAKf7OvBPJ/gyY2j30VAcwEGcHBSUNImijJFY
+ lR9lYH1aEBSaBlCBnvehd85kkr+IMNBsG4q4BtL2a+1xTzsWrQoYFCRbJaxUhR121nAJ
+ neJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1735924983; x=1736529783;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yUozoV2sd4YCNhaxO0qe6knCSN/xQB+GkqDltrLuR9M=;
-        b=p9CcB3LBxhC2K8VPTwpXJ8aDsTUos3jihZUIOK5wnfx8QcoJHmUeI1X4bVvSX0e1yo
-         kG+OXECLMjB9Ta7kKFu7Itn5a/HG2bO+K8rGJcllHP5LPARUpttu1jLr+zWsXqSGc7uH
-         tF+2+1r0Mv22It/fCtxCSQSvsKskXF9eG5F08QBooaRvENvPuN/+im7CKRcSAjwu47Ro
-         eUWaMWUWRRXpU4ozGw8REEWVw30O0Uo1LtQJWTaosT4+e4alMyBiQKOK0rGK8CL1aqEL
-         S13bH3g4AQMdCJ/i0vJ015pA/9LoKP5vYDMtcBdZZGE+YSYSjeDoS9FWOzr8X55dAInq
-         7P1A==
-X-Gm-Message-State: AOJu0YwJl8ltPQiJaRVZvSy3s69XxsbbVqZJ/m+JNOvanmREC1nR67YT
-	48Y7u962GItVmf3E0PZyhNT2CJTWurv1vedxMjAVgx5pCvPDR8cd8PLUV+0x2KJMqQ==
-X-Gm-Gg: ASbGnct9TC6giMo1dHx5fZrJiRXVNNt2dcVs4AMOi5OOjNyybG8ngWuSgGQx3Q1Jp2G
-	11eE1Sat+AWzmYdSTgqOCcjqGySwejIQ77DwD9d+VOZyDC8MVflswurMynVAGPOPVrqeP5+gJpf
-	MaoAYwcYJfIxiX9ZgUW6HQUiY+o4vkmzimBDnplWAdHEX4DnjYT5+VQwMuiznyMXUv7rXYd0UWm
-	Zzncule5D7eXaYQZ33Uz+I7cL9l+n1YEa499Gbf34c3wWxOeVuVHkrqSu5St9h7dhUygPoVcScv
-	3GS4YIA03/+Gq7AjRQgdeotw/dNZROo=
-X-Google-Smtp-Source: AGHT+IHuHyBwdiu6vN6zBS0sMJlcJ6tTdsG6SmA5FtOu3cjwEnui29omhcrLNCOzCVX2SXzORCDUhQ==
-X-Received: by 2002:a05:600c:350c:b0:434:fdaf:af2d with SMTP id 5b1f17b1804b1-43668b7850emr440635435e9.30.1735924983340;
-        Fri, 03 Jan 2025 09:23:03 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43656b3b295sm531386205e9.33.2025.01.03.09.23.01
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Fri, 03 Jan 2025 09:23:02 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Fabiano Rosas <farosas@suse.de>,
-	Laurent Vivier <lvivier@redhat.com>,
-	qemu-arm@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v7 4/4] tests/qtest/boot-serial-test: Initialize PL011 Control register
-Date: Fri,  3 Jan 2025 18:22:39 +0100
-Message-ID: <20250103172239.18562-5-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250103172239.18562-1-philmd@linaro.org>
-References: <20250103172239.18562-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1736003699; x=1736608499;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=FU8KhsuOqn9kBc9Geg/C01qcucshJGqJzoeDRPZsMuI=;
+ b=dLezZ1MWwTi8LPcUzaJO+CAM0rdhH5UVJe9mdH0Ie5vpKwQqO6mVotbSaTwnTuBMrQ
+ e3db5oijqJwOZrlV2RN9hJSW1qJfaLec1S2zvLJexWzFSEiFPJRrTlqhCc+6dWKvb3an
+ U9dd5bjYDlHVPo7YMleVgRNE8TRFwbdEPO3RXL8MJ6e5lklSpZ6ca8z8UBHo6dHaUZSX
+ ejYzZb9Vi7Nu6cefdPBURYVA/sFW2HXZ1oQDexdc17obNyQtwWsRp/xQ9P5PU29SJUZQ
+ QfXgL3Scc2cMftytwGCC5DPpLYIBmTgf0djxlT3n6soeUofj1Hb/X/rObhFqP81dl+AW
+ 4bWw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXIQnd2Kei8bEGiyvuJu60MSHpeYejuVmG1oJmbZygHqgQHJ88rVJTjTO2hlO5rouGl6Ne7fsK2OAQS@nongnu.org
+X-Gm-Message-State: AOJu0YwB5cqWKRNAL5nWQV/X2T4pymDrjQNhrEV9jXLb5qjy0Qj+jsIz
+ sI32Sv3hOIqjKQAPPb2IxC+RswC6eq1OiEqfkL3BgmqWHeUXUHynJ3OGEACCcQE=
+X-Gm-Gg: ASbGncsSnw0Sf10a2JeHDrfucH2QBv9OwB5zC959Fd5AKd6nOoUivQbOEGu/rpvG414
+ QhsBkcWk+AAX5Rd/P2kulA9RGO0L2lAuqyy+naGq0j3UZW//i5BxJgABS5Ahj/v06MaS0UK3V75
+ qNFGZpaTJVpOLjq7F8tLibIPRAQsFakrQJupmqcOYIs/NsWi73g6W7PYIRsdI2UFCt1ZNK3my5F
+ h+8QCMrm8KYCL9u71wHuvrwBiNLPMHpq6V4O7LVZA2isDYE9plOanYihT0Ce1s+x+eDftqjjaTK
+ +l4rZw8I1Zf1VHa2J7fMffLJPXD/VgbyWtk=
+X-Received: by 2002:a05:6a20:158c:b0:1e1:ce7d:c0cc with SMTP id
+ adf61e73a8af0-1e5e081c937mr92420333637.38.1736003699417; 
+ Sat, 04 Jan 2025 07:14:59 -0800 (PST)
+Received: from ?IPV6:2400:4050:b783:b00:4952:3c52:120a:27e9?
+ ([2400:4050:b783:b00:4952:3c52:120a:27e9])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-842b8e885dasm26131662a12.48.2025.01.04.07.14.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 04 Jan 2025 07:14:58 -0800 (PST)
+Message-ID: <34ddf42c-8bb1-4155-90cf-69e1032b0437@daynix.com>
+Date: Sun, 5 Jan 2025 00:14:49 +0900
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v16 14/14] hw/vmapple/vmapple: Add vmapple machine type
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Phil Dennis-Jordan <phil@philjordan.eu>, qemu-devel@nongnu.org
+Cc: agraf@csgraf.de, peter.maydell@linaro.org, pbonzini@redhat.com,
+ rad@semihalf.com, quic_llindhol@quicinc.com, stefanha@redhat.com,
+ mst@redhat.com, slp@redhat.com, richard.henderson@linaro.org,
+ eduardo@habkost.net, marcel.apfelbaum@gmail.com, gaosong@loongson.cn,
+ jiaxun.yang@flygoat.com, chenhuacai@kernel.org, kwolf@redhat.com,
+ hreitz@redhat.com, shorne@gmail.com, palmer@dabbelt.com,
+ alistair.francis@wdc.com, bmeng.cn@gmail.com, liwei1518@gmail.com,
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, jcmvbkbc@gmail.com,
+ marcandre.lureau@redhat.com, berrange@redhat.com, qemu-arm@nongnu.org,
+ qemu-block@nongnu.org, qemu-riscv@nongnu.org, balaton@eik.bme.hu,
+ Alexander Graf <graf@amazon.com>
+References: <20241223221645.29911-1-phil@philjordan.eu>
+ <20241223221645.29911-15-phil@philjordan.eu>
+ <2ceda358-adce-42bd-9f29-9a2e441361f0@linaro.org>
+Content-Language: en-US
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <2ceda358-adce-42bd-9f29-9a2e441361f0@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: fU6KILNNa/bb
+Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pl1-x634.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: vB6UY4lK21dI
 
-The tests using the PL011 UART of the virt and raspi machines
-weren't properly enabling the UART and its transmitter previous
-to sending characters. Follow the PL011 manual initialization
-recommendation by setting the proper bits of the control register.
+On 2024/12/28 5:36, Philippe Mathieu-Daudé wrote:
+> On 23/12/24 23:16, Phil Dennis-Jordan wrote:
+> 
+>> Known issues:
+>>   - Keyboard and mouse/tablet input is laggy. The reason for this is
+>>     that macOS's XHCI driver seems to expect interrupter mapping to
+>>     be disabled when MSI/MSI-X is unavailable. I have found a
+>>     workaround but discovered a bunch of other XHCI spec non-compliance
+>>     in the process, so I'm fixing all of those in a separate patch
+>>     set.
+> 
+> Should we wait for your XHCI fixes series to get reviewed first
+> so I can base this series on top (removing this comment) when merging?
 
-Update the ASM code prefixing:
+This series no longer cleanly applies due to patches merged early so 
+please rebase it.
 
-  *UART_CTRL = UART_ENABLE | TX_ENABLE;
+It will be nice if you also:
+1. rebase this vmapple series onto the xHC series and
+2. move "[PATCH v3 6/6] hw/vmapple: XHCI controller's interrupt mapping 
+workaround for macOS" into this vmapple series
 
-to:
+xHC changes that are not specific to vmapple may be merged early in this 
+way. I will be also able to test all vmapple code at once.
 
-  while (true) {
-      *UART_DATA = 'T';
-  }
+Please use Based-on: tag when you post a series that based on another. 
+It will create a Git tree that I can use for testing at: 
+https://patchew.org/QEMU/
+docs/devel/submitting-a-patch.rst describes the details.
 
-Note, since commit 51b61dd4d56 ("hw/char/pl011: Warn when using
-disabled transmitter") incomplete PL011 initialization can be
-logged using the '-d guest_errors' command line option.
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- tests/qtest/boot-serial-test.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
-index bcfa504826c..ffa9e780ad6 100644
---- a/tests/qtest/boot-serial-test.c
-+++ b/tests/qtest/boot-serial-test.c
-@@ -70,15 +70,20 @@ static const uint8_t kernel_plml605[] = {
- };
- 
- static const uint8_t bios_raspi2[] = {
--    0x08, 0x30, 0x9f, 0xe5,                 /*        ldr     r3, [pc, #8]   Get &UART0 */
-+    0x10, 0x30, 0x9f, 0xe5,                 /*        ldr     r3, [pc, #16]  Get &UART0 */
-+    0x10, 0x20, 0x9f, 0xe5,                 /*        ldr     r2, [pc, #16]  Get &CR */
-+    0xb0, 0x23, 0xc3, 0xe1,                 /*        strh    r2, [r3, #48]  Set CR */
-     0x54, 0x20, 0xa0, 0xe3,                 /*        mov     r2, #'T' */
-     0x00, 0x20, 0xc3, 0xe5,                 /* loop:  strb    r2, [r3]       *TXDAT = 'T' */
-     0xff, 0xff, 0xff, 0xea,                 /*        b       -4             (loop) */
-     0x00, 0x10, 0x20, 0x3f,                 /* UART0: 0x3f201000 */
-+    0x01, 0x01, 0x00, 0x00,                 /* CR:    0x101 = UARTEN|TXE */
- };
- 
- static const uint8_t kernel_aarch64[] = {
-     0x02, 0x20, 0xa1, 0xd2,                 /*        mov    x2, #0x9000000  Load UART0 */
-+    0x21, 0x20, 0x80, 0x52,                 /*        mov    w1, 0x101       CR = UARTEN|TXE */
-+    0x41, 0x60, 0x00, 0x79,                 /*        strh   w1, [x2, #48]   Set CR */
-     0x81, 0x0a, 0x80, 0x52,                 /*        mov    w1, #'T' */
-     0x41, 0x00, 0x00, 0x39,                 /* loop:  strb   w1, [x2]        *TXDAT = 'T' */
-     0xff, 0xff, 0xff, 0x17,                 /*        b      -4              (loop) */
--- 
-2.47.1
+Regards,
+Akihiko Odaki

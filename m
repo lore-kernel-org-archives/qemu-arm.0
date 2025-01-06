@@ -1,113 +1,113 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12001057njk;
-        Mon, 6 Jan 2025 12:03:36 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVSt3wzecYKTwWysrdnLqUZ1GuMUkJf0T43sweKp5clYY3Akr8AWkCcrGFiaP7bYwKumh3iob2i4JXk8g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGYUZwNW0UIMwh3AJ5MLJteNPRMh0kBO9DU+cB4A5ome4FRhOSYhdSFoDH4Z8FedV/CZYg3
-X-Received: by 2002:a05:6a20:cd92:b0:1e4:745c:49d6 with SMTP id adf61e73a8af0-1e5e082e7ccmr94827199637.45.1736193816455;
-        Mon, 06 Jan 2025 12:03:36 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1736193816; cv=pass;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12001088njk;
+        Mon, 6 Jan 2025 12:03:42 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVkT/iSGR5Dkr1DA8wt71jfQ8R+Ait4gSA2CKSMMyZp78cjq7tPBYZLaz2ibpvxUXbZIiBZHLKBRgS4yQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF1S+TUIXUvnRpajOmSQeVsFs1Ge/zFvBCP4s9Zy2J/XhdjzOTWOtbUrevmpRdME0SlYpkV
+X-Received: by 2002:a05:6402:2547:b0:5d3:cd85:36c6 with SMTP id 4fb4d7f45d1cf-5d81de165bamr60823422a12.24.1736193821953;
+        Mon, 06 Jan 2025 12:03:41 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1736193821; cv=pass;
         d=google.com; s=arc-20240605;
-        b=g/TZ+T/zDW/BmJg9u1dhTibfZ4Ui3YEaY2hySMjeNMF9MxLsZb+kJnX7nN2ohQzNCr
-         H0qHb98uz9wvlbe8X90V7p86n8AhWbyF48AaDPTLlYIVreJSQbI1R1wiQSCW35aZy2XA
-         Y3ODa82wx5eRmZTFp4/YjpkC7rc4nJYzTGMfjC+KgGy06bvurs4Srw2GG/jXlR6vsHjj
-         iK/hd1ShuXaObkK0/E6S5GLzgdmVEq7jjlKh3UnLORx4ubCwIueaQH6qeXfHLcqqO/1u
-         FEYLPCvjEY5Aj3KNLBs2n9XMwcY37tiqrTG3SOdQU9eZsZsOmRGmSvBUkOCokAMtFrcz
-         NbvQ==
+        b=SroE60l0lPocYklJGqF33W+Swt8jNWG+bFStyMOo1W6cJppQjmfhcKVUrShhfadEXN
+         C9KlkJGDANDn1UOwdDrdgB5zbX31GK9cz7rxvRF8L42a6/t/pV2bunf+OMpq0cGmNYYQ
+         u57S1YhPohij7e/NIaWpfI1SwVlcSUIUxFdfur82FCHKSDX0FaREnNwOPCyksw2nKPyP
+         mURpk4jdWFDkCV6UKCO0ArA2/bAfStnQVswqxijj9msQJWxTWd/WH6z0RmDbRw4tFgqR
+         uclI2tUjvVEUtW33mxHqylDdIWU6/f9Kx2yuM2P10pa7GVZS6Zvy+b+l8on2VVuANhOH
+         fEhw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:dkim-signature;
-        bh=CfaBEiOdRjHzzwUS3kiFtedqZxggxEJ4hucj9YdleWw=;
-        fh=TC6Nk9w5MRmqU/F0nXCNVdL6lpsyZzAgEqNbhdYt1UY=;
-        b=UAi0/gl6Fbi1sDNDHEabnKFfnxHU4VK2GVlo8yFMkUCBs9ch2pC7LQYG46WU6KGPkw
-         1n20HOu5NviZQCnY1avI4y3nhDnAy/82gqjbGCoOuIAXNiOoxzqJSPwdYDtEvKKsbKTf
-         UVX10sdl7EKHOKOBG33S24PFH/evOYw3+qa+rmEXVM7aNKiVymrJ6L3Ka1By4RXZZufW
-         PA2scU2XQW7LGyuGcsNKqd0ZnPAU9cCkXbE6F9ckuf59d96fF5i/Q7WRJ/ncIVLZ61vi
-         DsEfGolnKPYGuLycaR9mgk7spI+Q7acVUuCnz9shaiLHgtyAkXRIdvFNBlM+4FmYKFIS
-         w1nQ==;
+        bh=zxJ3+xb03FIgQb6HyhO+0vTNSYN1GRLEa0EnbI36swA=;
+        fh=VBlA+HJJpHYrYXnuF17O0iXkBdlblxL6yT1yTanJIRs=;
+        b=Yp4k+RaHCb99GSAU5RA6Gk9CZeLEMbsTFwxNCC9K3e3RvTU+1JUXvtPDJ4YpVrhcrk
+         bHPn03e4q6hIUqhNLE+vmG+j3FqMUtpiTtHLRyKI66KqQE9AN6sRIT3ySqhHxIYr0frH
+         HXN9/oO513DMMrvjT393eAAktewItSRjYOHJYY/Fwcy6Ew/Z/b1s4NavJJ8fu7HZDcyx
+         4rLHqO705FYle9JKtvHEWrmjkQ0YypqWy9wiGAqMTbpO1W5+XWmWNpcoHSaaXNc+hgd6
+         JIUCxBQk7VBFhr1Wjgh4R8Q5jnLrXtHraD6WU5wCNh71SQYvHi/QhTz0gUGO/Uuv/17P
+         gk9w==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mkkdda3n;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ANl7Or5x;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-34635-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-34635-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-34636-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-34636-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-34635-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-856757b85ebsi39810848a12.359.2025.01.06.12.03.36
+Return-Path: <kvm+bounces-34636-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5d80701feddsi22647612a12.461.2025.01.06.12.03.41
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Jan 2025 12:03:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-34635-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        Mon, 06 Jan 2025 12:03:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-34636-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mkkdda3n;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ANl7Or5x;
        arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-34635-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-34635-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-34636-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-34636-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id E1A057A1958
-	for <alex.bennee@linaro.org>; Mon,  6 Jan 2025 20:03:28 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 4EDC918862FF
+	for <alex.bennee@linaro.org>; Mon,  6 Jan 2025 20:03:44 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 4D5D41DF24B;
-	Mon,  6 Jan 2025 20:03:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 992A01DF998;
+	Mon,  6 Jan 2025 20:03:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="mkkdda3n"
-Received: from mail-wm1-f53.google.com (mail-wm1-f53.google.com [209.85.128.53])
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="ANl7Or5x"
+Received: from mail-wr1-f49.google.com (mail-wr1-f49.google.com [209.85.221.49])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 88D6C1D799D
-	for <kvm@vger.kernel.org>; Mon,  6 Jan 2025 20:03:29 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.53
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5A8F51DF981
+	for <kvm@vger.kernel.org>; Mon,  6 Jan 2025 20:03:34 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.221.49
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1736193811; cv=none; b=HvbWnqBhe4heh4GmXlSAp+Kn+slTThHFnqofY9CRk0bZ/njEIaFD06jM8mJ63xq3lGM4KHUC5qTG6jKpBCzEEo/qsFJFG2msb5F1xzFY0WmrO2W8D/0lZQWI+wurGnU1AvOAsafcx93YoolfeNsJMZvWGrkvpHgT0K6mn6Ox0Wg=
+	t=1736193818; cv=none; b=QorhqyUz0OVHmJDJ1Y6F0x/QyPc6CFgdWqW1Y6EZ2xRbZYhhOUf4VT4nAwdC0ISZJWWY3VlvPelqlBFtXnFwGgfcaresbxsdbqWS0hsSqPUSi1YZNiAu7qZbOa05Fe8+riLwhwcIgewC/caa53GEejBLLLrki/9pmNAiNdV+Ijs=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1736193811; c=relaxed/simple;
-	bh=SALFw4F5p5mN8BlcdhgV0DARypbvRTD5Cq1Wr8Zs9xM=;
+	s=arc-20240116; t=1736193818; c=relaxed/simple;
+	bh=+IrMKbazEv/2Tm1YENOmcIwzVPuD29IvWSa/xeIasLQ=;
 	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=J0XbFWhqe5Hl8/yPcdwIzhdTOAkmHe8FMeY+1R5FX2MBFNbf4FhhhYQFg64ozJJK8mtMKKhfz2KJnaXbIFy0or7c3Ml9oj/88NLrBeys4FDcoZpatk9Id18cxiOLE9HwlOGCfn60RyClL3/fs+OkSux5I4bntGn+BhOEIHxo6Lk=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=mkkdda3n; arc=none smtp.client-ip=209.85.128.53
+	 MIME-Version:Content-Type; b=nb8IXyUu7ugRVF0ecSO0CL//m/FmO+FjGbUQzeDNE/ekEH1JXG04Ff/aSA0LxnPJji5NKtHtb9qt4Z7oENJyn1mqsxfIW/ioKKZeyQnAHHbL8BbzH2VO5T1Cfh4PbZonztyLRhmyEGnjqHDnFUUoxKVwPQU30YVmdyASWRb65Ok=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=ANl7Or5x; arc=none smtp.client-ip=209.85.221.49
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-wm1-f53.google.com with SMTP id 5b1f17b1804b1-43618283d48so106994835e9.1
-        for <kvm@vger.kernel.org>; Mon, 06 Jan 2025 12:03:29 -0800 (PST)
+Received: by mail-wr1-f49.google.com with SMTP id ffacd0b85a97d-385e1fcb0e1so8141555f8f.2
+        for <kvm@vger.kernel.org>; Mon, 06 Jan 2025 12:03:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736193808; x=1736798608; darn=vger.kernel.org;
+        d=linaro.org; s=google; t=1736193813; x=1736798613; darn=vger.kernel.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=CfaBEiOdRjHzzwUS3kiFtedqZxggxEJ4hucj9YdleWw=;
-        b=mkkdda3nIizSmlRwM4ja2snwlBbVdcDBMr3PzHjWp5PCyzL4daiX4MuVQ9f67EblUs
-         lYjBOinB/BIW2QatskEdy5MTkYVu9jFzpZmXJHpAFDVfBVA+bYWq36W+3Tb0XwHPQXif
-         jqVtq5k7hklB1Jc3AkotGSdwe2EJ0EkB8fHwejo13b1hVKx0PglJlqpnByVP22E5UjoH
-         9QedR8HRYuRmMk64ztOSyJuadk3JKipxYWkqa6AeI/XGlRHaGhcOO7IE5f5NEwbHIO06
-         uYo49DsOWVhPlpsSHGD98aWvqtWdYKCUUCvMkPIJ3vOYzWpIVUeN6YNKkvTUjqfq5fxN
-         6Fzw==
+        bh=zxJ3+xb03FIgQb6HyhO+0vTNSYN1GRLEa0EnbI36swA=;
+        b=ANl7Or5xlPd68N9rNBVoKoj1XMVU6uQ0kH/3LyN3iFMeW/fEPCA4ryUIjjhqCuvmvk
+         mrJ/u0dtqvBtQuIxm89ZiLstVFp81VmhsQJpGLZ/loI08j7qeCv1sUPcxWNy6zQPlL0p
+         ZqxYZJL4T7KbEzpHLQsUaEX9sQWB3LuI9fRK2X+U/Ef/IvQFmoH41ngTwZ7LKQ2xdScz
+         l6fQOwX+s5cpcRY8wxrM66nwiiZjvQgx8lAheWYVsMV/OKU9KkYp9KcOYffO3ZIGgr63
+         5RowGTPa7hZu7THsbWLPzcJYc9IgjFi4l679bX4rVJRQZ2v7vNBAMpnHAibs0Xo0tV/6
+         62OA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736193808; x=1736798608;
+        d=1e100.net; s=20230601; t=1736193813; x=1736798613;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=CfaBEiOdRjHzzwUS3kiFtedqZxggxEJ4hucj9YdleWw=;
-        b=BRsszWilqyQO6pW3ZKspxNIhyLpd1C6VwP1QHu4puHKWMINJBdXQT10X19hnkZMiqs
-         EYYTkqCcgwtRJWh5fs7tFqEHOsaisw70KTulPLJLSLUyTsuxrv0joCXekKNQlek7et2i
-         6K62lDgrryXIxi1khhA5/NP6kDRc8TyWtA/ejroFLUN/NlfF+OSAudF/eBhNbCQNSQqj
-         D+CjHAMBWdB7lD/vzeqPSMNltw2R0442YLm2KLKVzGYS/r2cOHLs9bJ/P3CcQ82Jlcs6
-         7BM0jnIiJ5OXj9YHThGohvqnZD9k38/t9sfYPMpYjTALq+QDi86gfOhJaSwtfWxEshs3
-         YLdQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUGDXjN+k4uNsVbx6f1BHIaj9YwndCf8XkqLBPVpre1p4pOwk/NbG77ANsKoZlunIxlJhM=@vger.kernel.org
-X-Gm-Message-State: AOJu0YwFeygrOVcXryYJikuE9risi45NFcadhaXtOWIGd6lJjHtIDM8b
-	4NVdDGMd3Fxq/GbCwwR56GCcLSNOkf+MXw+iGUGbR1GxwaYKvcrZQJe2CqCmZP4=
-X-Gm-Gg: ASbGnctXsnSKlm4UeAVL/EiDOkK9apdqDnOV3kASeVziiu1z3jQKyKhbu8DlGbhcNte
-	ZBZQAOo14lCIhxJid5pThrOKCC5oGk9NukaS0p/wt92gWJMwKPAQBHdCPhIzYcwxTovMAjapyTB
-	tbSDVDVjMWRqxlFoi40DUEmhk2AWlt2aup6ysLtdbxc0CSMn57spBK+N7fmFnolT+4OW3dxRiAl
-	DAMr6+1NXAocewUA3k0bFamsnGfXIF31P6h8QUmOTyDHuqldmxTpnu8iTREsgfuR0zbw1ErGwo3
-	MJAE4FqfdxwHh95icslW6qXCi0JpoDA=
-X-Received: by 2002:a05:600c:4f94:b0:434:f871:1b96 with SMTP id 5b1f17b1804b1-43668b7a1dfmr474821135e9.29.1736193807616;
-        Mon, 06 Jan 2025 12:03:27 -0800 (PST)
+        bh=zxJ3+xb03FIgQb6HyhO+0vTNSYN1GRLEa0EnbI36swA=;
+        b=ed25/+YNwKoocmyJyYA0Mg9XxusV+tPVOfKUqln3H21McvOd9i9XmwCQfLphxxl05i
+         o7xK30v+WUhFiF/2TLsHwgxBDdJEnBv3JhfZ72iPhkmMnd8xUwML4IOBC8qo0nhO31gZ
+         Qnwt9qk5Pjbm4x+1m940btp3O9trJiwkKHa4UYPjvfVd7sv9die08EkrZo8gt6ztrKuS
+         NsL0Boj3EoqDztwUwiacoFPgUN5A87JAsS0x95xg5UpIiIqEvUUMYC6dnzP0USga0Bce
+         1O3F5Qp9j/OxRpnINcULgoWBLP37pDkT8c9uQtBJ/Dgavi3PEAqy0cXVNTw7MmVGjUOb
+         cwgg==
+X-Forwarded-Encrypted: i=1; AJvYcCULphsJhmR1AqNwS8643PNhxwiP/1pXCp1qBfespHTrxRdsl3/1JN208zAgXnXfVnV0bk4=@vger.kernel.org
+X-Gm-Message-State: AOJu0YysnUCAlUY4mvhT2pPYbieFlKi5tV+4pMFa4alL5ZDlZURS/a2b
+	KdGTUOQANQrNqqnteqXDfZ0Erfr3oQohdHPX23spoJjXzLkAxD9u8ZnnVBGvhLE=
+X-Gm-Gg: ASbGncuqUadbbHdhGIu0M2GWUKQTwqdmK3UsxhVyGFoXgTkLFqeDwkpLSpArA0VnRII
+	BLG4iarYvAjVaijF1ApmPqhEZwrVawRr9PfWa1Hc0qKgXtBLU/o5Z/oerUou5Yr+Jvjw2jZ90sy
+	DRptMVvu+6frW0XN87qR5rbU9nct64gdNiR2SIZ+m/OeUE1lr7jS3LMFw0cxQkvCv2Y4qOuhHrM
+	7JSwlV2lzqeG7IeyOQNLCdbRTLsOKutAyJk4jrHp2rg9auEvphyT+RzhqDW8ZZThyNf1oZSndmT
+	XrLwr/jnMQVJFSC3Qd+obgmQnCLg1Ag=
+X-Received: by 2002:adf:a3d9:0:b0:38a:39ad:3e31 with SMTP id ffacd0b85a97d-38a39ad4128mr24752061f8f.57.1736193813254;
+        Mon, 06 Jan 2025 12:03:33 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43656af6cbbsm610646205e9.3.2025.01.06.12.03.25
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43656af6d02sm618987535e9.1.2025.01.06.12.03.31
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Jan 2025 12:03:26 -0800 (PST)
+        Mon, 06 Jan 2025 12:03:32 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
@@ -152,9 +152,9 @@ Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	Daniel Henrique Barboza <danielhb413@gmail.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Anton Johansson <anjo@rev.ng>
-Subject: [RFC PATCH 4/7] accel/tcg: Use CPU_FOREACH_TCG()
-Date: Mon,  6 Jan 2025 21:02:55 +0100
-Message-ID: <20250106200258.37008-5-philmd@linaro.org>
+Subject: [RFC PATCH 5/7] accel/hw: Implement hw_accel_get_cpus_queue()
+Date: Mon,  6 Jan 2025 21:02:56 +0100
+Message-ID: <20250106200258.37008-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250106200258.37008-1-philmd@linaro.org>
 References: <20250106200258.37008-1-philmd@linaro.org>
@@ -166,205 +166,122 @@ List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: X6uSBHrueRTU
+X-TUID: 4TcWZDPFb4oq
 
-Only iterate over TCG vCPUs when running TCG specific code.
+We can only run a single hardware accelerator at a time,
+so add a generic hw_accel_get_cpus_queue() helper in
+accel-system.c, a file common to all HW accelerators.
+
+Register AccelOpsClass::get_cpus_queue() for each HW
+accelerator. Add a generic CPU_FOREACH_HWACCEL() macro.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- accel/tcg/cputlb.c           |  7 ++++---
- accel/tcg/monitor.c          |  3 ++-
- accel/tcg/tb-maint.c         |  7 ++++---
- accel/tcg/tcg-accel-ops-rr.c | 10 +++++-----
- accel/tcg/tcg-accel-ops.c    |  8 ++++----
- 5 files changed, 19 insertions(+), 16 deletions(-)
+ include/system/hw_accel.h         | 9 +++++++++
+ accel/accel-system.c              | 8 ++++++++
+ accel/kvm/kvm-accel-ops.c         | 1 +
+ accel/xen/xen-all.c               | 1 +
+ target/i386/nvmm/nvmm-accel-ops.c | 1 +
+ target/i386/whpx/whpx-accel-ops.c | 1 +
+ 6 files changed, 21 insertions(+)
 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index b4ccf0cdcb7..06f34df808b 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -48,6 +48,7 @@
- #endif
- #include "tcg/tcg-ldst.h"
- #include "tcg/oversized-guest.h"
-+#include "tcg-accel-ops.h"
+diff --git a/include/system/hw_accel.h b/include/system/hw_accel.h
+index 380e9e640b6..12664cac6f9 100644
+--- a/include/system/hw_accel.h
++++ b/include/system/hw_accel.h
+@@ -2,6 +2,7 @@
+  * QEMU Hardware accelerators support
+  *
+  * Copyright 2016 Google, Inc.
++ * Copyright 2025 Linaro Ltd.
+  *
+  * This work is licensed under the terms of the GNU GPL, version 2 or later.
+  * See the COPYING file in the top-level directory.
+@@ -17,6 +18,14 @@
+ #include "system/whpx.h"
+ #include "system/nvmm.h"
  
- /* DEBUG defines, enable DEBUG_TLB_LOG to log to the CPU_LOG_MMU target */
- /* #define DEBUG_TLB */
-@@ -368,7 +369,7 @@ static void flush_all_helper(CPUState *src, run_on_cpu_func fn,
++/* Guard with qemu_cpu_list_lock */
++extern CPUTailQ hw_accel_cpus_queue;
++
++#define CPU_FOREACH_HWACCEL(cpu) \
++            QTAILQ_FOREACH_RCU(cpu, &hw_accel_cpus_queue, node)
++
++CPUTailQ *hw_accel_get_cpus_queue(void);
++
+ void cpu_synchronize_state(CPUState *cpu);
+ void cpu_synchronize_post_reset(CPUState *cpu);
+ void cpu_synchronize_post_init(CPUState *cpu);
+diff --git a/accel/accel-system.c b/accel/accel-system.c
+index a7596aef59d..60877ea7a28 100644
+--- a/accel/accel-system.c
++++ b/accel/accel-system.c
+@@ -27,9 +27,17 @@
+ #include "qemu/accel.h"
+ #include "hw/boards.h"
+ #include "system/cpus.h"
++#include "system/hw_accel.h"
+ #include "qemu/error-report.h"
+ #include "accel-system.h"
+ 
++CPUTailQ hw_accel_cpus_queue = QTAILQ_HEAD_INITIALIZER(hw_accel_cpus_queue);
++
++CPUTailQ *hw_accel_get_cpus_queue(void)
++{
++    return &hw_accel_cpus_queue;
++}
++
+ int accel_init_machine(AccelState *accel, MachineState *ms)
  {
-     CPUState *cpu;
- 
--    CPU_FOREACH(cpu) {
-+    CPU_FOREACH_TCG(cpu) {
-         if (cpu != src) {
-             async_run_on_cpu(cpu, fn, d);
-         }
-@@ -646,7 +647,7 @@ void tlb_flush_page_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-         TLBFlushPageByMMUIdxData *d;
- 
-         /* Allocate a separate data block for each destination cpu.  */
--        CPU_FOREACH(dst_cpu) {
-+        CPU_FOREACH_TCG(dst_cpu) {
-             if (dst_cpu != src_cpu) {
-                 d = g_new(TLBFlushPageByMMUIdxData, 1);
-                 d->addr = addr;
-@@ -839,7 +840,7 @@ void tlb_flush_range_by_mmuidx_all_cpus_synced(CPUState *src_cpu,
-     d.bits = bits;
- 
-     /* Allocate a separate data block for each destination cpu.  */
--    CPU_FOREACH(dst_cpu) {
-+    CPU_FOREACH_TCG(dst_cpu) {
-         if (dst_cpu != src_cpu) {
-             p = g_memdup(&d, sizeof(d));
-             async_run_on_cpu(dst_cpu, tlb_flush_range_by_mmuidx_async_1,
-diff --git a/accel/tcg/monitor.c b/accel/tcg/monitor.c
-index ae1dbeb79f8..98bd937ae20 100644
---- a/accel/tcg/monitor.c
-+++ b/accel/tcg/monitor.c
-@@ -19,6 +19,7 @@
- #include "tcg/tcg.h"
- #include "internal-common.h"
- #include "tb-context.h"
-+#include "tcg-accel-ops.h"
- 
- 
- static void dump_drift_info(GString *buf)
-@@ -131,7 +132,7 @@ static void tlb_flush_counts(size_t *pfull, size_t *ppart, size_t *pelide)
-     CPUState *cpu;
-     size_t full = 0, part = 0, elide = 0;
- 
--    CPU_FOREACH(cpu) {
-+    CPU_FOREACH_TCG(cpu) {
-         full += qatomic_read(&cpu->neg.tlb.c.full_flush_count);
-         part += qatomic_read(&cpu->neg.tlb.c.part_flush_count);
-         elide += qatomic_read(&cpu->neg.tlb.c.elide_flush_count);
-diff --git a/accel/tcg/tb-maint.c b/accel/tcg/tb-maint.c
-index 3f1bebf6ab5..8598c59654f 100644
---- a/accel/tcg/tb-maint.c
-+++ b/accel/tcg/tb-maint.c
-@@ -36,6 +36,7 @@
- #ifdef CONFIG_USER_ONLY
- #include "user/page-protection.h"
- #endif
-+#include "tcg-accel-ops.h"
- 
- 
- /* List iterators for lists of tagged pointers in TranslationBlock. */
-@@ -771,7 +772,7 @@ static void do_tb_flush(CPUState *cpu, run_on_cpu_data tb_flush_count)
-     }
-     did_flush = true;
- 
--    CPU_FOREACH(cpu) {
-+    CPU_FOREACH_TCG(cpu) {
-         tcg_flush_jmp_cache(cpu);
-     }
- 
-@@ -885,13 +886,13 @@ static void tb_jmp_cache_inval_tb(TranslationBlock *tb)
- 
-     if (tb_cflags(tb) & CF_PCREL) {
-         /* A TB may be at any virtual address */
--        CPU_FOREACH(cpu) {
-+        CPU_FOREACH_TCG(cpu) {
-             tcg_flush_jmp_cache(cpu);
-         }
-     } else {
-         uint32_t h = tb_jmp_cache_hash_func(tb->pc);
- 
--        CPU_FOREACH(cpu) {
-+        CPU_FOREACH_TCG(cpu) {
-             CPUJumpCache *jc = cpu->tb_jmp_cache;
- 
-             if (qatomic_read(&jc->array[h].tb) == tb) {
-diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
-index 028b385af9a..e5ce285efb9 100644
---- a/accel/tcg/tcg-accel-ops-rr.c
-+++ b/accel/tcg/tcg-accel-ops-rr.c
-@@ -42,7 +42,7 @@ void rr_kick_vcpu_thread(CPUState *unused)
+     AccelClass *acc = ACCEL_GET_CLASS(accel);
+diff --git a/accel/kvm/kvm-accel-ops.c b/accel/kvm/kvm-accel-ops.c
+index a81e8f3b03b..5f4001860d5 100644
+--- a/accel/kvm/kvm-accel-ops.c
++++ b/accel/kvm/kvm-accel-ops.c
+@@ -93,6 +93,7 @@ static void kvm_accel_ops_class_init(ObjectClass *oc, void *data)
  {
-     CPUState *cpu;
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
  
--    CPU_FOREACH(cpu) {
-+    CPU_FOREACH_TCG(cpu) {
-         cpu_exit(cpu);
-     };
++    ops->get_cpus_queue = hw_accel_get_cpus_queue;
+     ops->create_vcpu_thread = kvm_start_vcpu_thread;
+     ops->cpu_thread_is_idle = kvm_vcpu_thread_is_idle;
+     ops->cpus_are_resettable = kvm_cpus_are_resettable;
+diff --git a/accel/xen/xen-all.c b/accel/xen/xen-all.c
+index 852e9fbe5fe..ac5ed2dfb80 100644
+--- a/accel/xen/xen-all.c
++++ b/accel/xen/xen-all.c
+@@ -150,6 +150,7 @@ static void xen_accel_ops_class_init(ObjectClass *oc, void *data)
+ {
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
+ 
++    ops->get_cpus_queue = hw_accel_get_cpus_queue;
+     ops->create_vcpu_thread = dummy_start_vcpu_thread;
  }
-@@ -116,7 +116,7 @@ static void rr_wait_io_event(void)
  
-     rr_start_kick_timer();
- 
--    CPU_FOREACH(cpu) {
-+    CPU_FOREACH_TCG(cpu) {
-         qemu_wait_io_event_common(cpu);
-     }
- }
-@@ -129,7 +129,7 @@ static void rr_deal_with_unplugged_cpus(void)
+diff --git a/target/i386/nvmm/nvmm-accel-ops.c b/target/i386/nvmm/nvmm-accel-ops.c
+index e7b56662fee..bb407c68e14 100644
+--- a/target/i386/nvmm/nvmm-accel-ops.c
++++ b/target/i386/nvmm/nvmm-accel-ops.c
+@@ -84,6 +84,7 @@ static void nvmm_accel_ops_class_init(ObjectClass *oc, void *data)
  {
-     CPUState *cpu;
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
  
--    CPU_FOREACH(cpu) {
-+    CPU_FOREACH_TCG(cpu) {
-         if (cpu->unplug && !cpu_can_run(cpu)) {
-             tcg_cpu_destroy(cpu);
-             break;
-@@ -160,7 +160,7 @@ static int rr_cpu_count(void)
++    ops->get_cpus_queue = hw_accel_get_cpus_queue;
+     ops->create_vcpu_thread = nvmm_start_vcpu_thread;
+     ops->kick_vcpu_thread = nvmm_kick_vcpu_thread;
  
-     if (cpu_list_generation_id_get() != last_gen_id) {
-         cpu_count = 0;
--        CPU_FOREACH(cpu) {
-+        CPU_FOREACH_TCG(cpu) {
-             ++cpu_count;
-         }
-         last_gen_id = cpu_list_generation_id_get();
-@@ -201,7 +201,7 @@ static void *rr_cpu_thread_fn(void *arg)
-         qemu_cond_wait_bql(first_cpu->halt_cond);
+diff --git a/target/i386/whpx/whpx-accel-ops.c b/target/i386/whpx/whpx-accel-ops.c
+index ab2e014c9ea..191214ca81d 100644
+--- a/target/i386/whpx/whpx-accel-ops.c
++++ b/target/i386/whpx/whpx-accel-ops.c
+@@ -86,6 +86,7 @@ static void whpx_accel_ops_class_init(ObjectClass *oc, void *data)
+ {
+     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
  
-         /* process any pending work */
--        CPU_FOREACH(cpu) {
-+        CPU_FOREACH_TCG(cpu) {
-             current_cpu = cpu;
-             qemu_wait_io_event_common(cpu);
-         }
-diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
-index 1fb077f7b38..371bbaa0307 100644
---- a/accel/tcg/tcg-accel-ops.c
-+++ b/accel/tcg/tcg-accel-ops.c
-@@ -144,7 +144,7 @@ static int tcg_insert_breakpoint(CPUState *cs, int type, vaddr addr, vaddr len)
-     switch (type) {
-     case GDB_BREAKPOINT_SW:
-     case GDB_BREAKPOINT_HW:
--        CPU_FOREACH(cpu) {
-+        CPU_FOREACH_TCG(cpu) {
-             err = cpu_breakpoint_insert(cpu, addr, BP_GDB, NULL);
-             if (err) {
-                 break;
-@@ -154,7 +154,7 @@ static int tcg_insert_breakpoint(CPUState *cs, int type, vaddr addr, vaddr len)
-     case GDB_WATCHPOINT_WRITE:
-     case GDB_WATCHPOINT_READ:
-     case GDB_WATCHPOINT_ACCESS:
--        CPU_FOREACH(cpu) {
-+        CPU_FOREACH_TCG(cpu) {
-             err = cpu_watchpoint_insert(cpu, addr, len,
-                                         xlat_gdb_type(cpu, type), NULL);
-             if (err) {
-@@ -175,7 +175,7 @@ static int tcg_remove_breakpoint(CPUState *cs, int type, vaddr addr, vaddr len)
-     switch (type) {
-     case GDB_BREAKPOINT_SW:
-     case GDB_BREAKPOINT_HW:
--        CPU_FOREACH(cpu) {
-+        CPU_FOREACH_TCG(cpu) {
-             err = cpu_breakpoint_remove(cpu, addr, BP_GDB);
-             if (err) {
-                 break;
-@@ -185,7 +185,7 @@ static int tcg_remove_breakpoint(CPUState *cs, int type, vaddr addr, vaddr len)
-     case GDB_WATCHPOINT_WRITE:
-     case GDB_WATCHPOINT_READ:
-     case GDB_WATCHPOINT_ACCESS:
--        CPU_FOREACH(cpu) {
-+        CPU_FOREACH_TCG(cpu) {
-             err = cpu_watchpoint_remove(cpu, addr, len,
-                                         xlat_gdb_type(cpu, type));
-             if (err) {
++    ops->get_cpus_queue = hw_accel_get_cpus_queue;
+     ops->create_vcpu_thread = whpx_start_vcpu_thread;
+     ops->kick_vcpu_thread = whpx_kick_vcpu_thread;
+     ops->cpu_thread_is_idle = whpx_vcpu_thread_is_idle;
 -- 
 2.47.1
 

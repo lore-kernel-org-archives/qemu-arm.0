@@ -1,216 +1,302 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12257220njk;
-        Tue, 7 Jan 2025 00:03:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX2xrtW4om82UsS8+GpMt7K/G5oxq+xt7Fcv22Fa9X5j7CpmL5MqKzU2uSGb94194GYDgsQeOo3guQ+iQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFWFhA7yybmXlbTnYJhh+0UVfoWfHoH9c5/zonBxJH5xvCIYb3n1/NsVSRDmJkwXterahKt
-X-Received: by 2002:a05:6a00:8087:b0:71e:21:d2d8 with SMTP id d2e1a72fcca58-72abdd7c3aamr79850484b3a.7.1736236991973;
-        Tue, 07 Jan 2025 00:03:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736236991; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12000936njk;
+        Mon, 6 Jan 2025 12:03:25 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWFR1W/NQV5x0bX73NRnTc+B5KxGagxHnRgLY3jLbJfX3fE1P21EIm/I1oLYE6SVQJYBD3HOeHnxKcspA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHt8RezPuUA749bPZ+t8a7aztJ7DS9dYknbkL7VKaEh7kmXV719e3OzMW7RIcTsZrFApgMw
+X-Received: by 2002:a17:907:6d23:b0:aa5:1d68:1f43 with SMTP id a640c23a62f3a-ab29109c05bmr50885866b.11.1736193805101;
+        Mon, 06 Jan 2025 12:03:25 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1736193805; cv=pass;
         d=google.com; s=arc-20240605;
-        b=DHeGy/EoxrEHhFB6J7/KONwfosolT77Ydf2YrS/dttBCgLvOmyye2hl2fhUdETyXVP
-         P8JeMHdyQp7lpYgXS5IfGdV8TdwLtF8kQ+oWkc6k93SJfwDSvRSel5pIiofi688vCCdS
-         CW8+CEzT5gcXRiiWuRCDD0gpdC19+iG313FH70glhJb3qjI4b6lKMqjT4zKk/q/Whv7I
-         SoQcNr/gGmH6EV57qF4bLdJf5YNn/8C1/K56KMhlXo5RMCr2wqbX9UC8fbrI6bQLSUgQ
-         fvuI7Z4C5f46mq48qTA6mtl75N+5OV9wgVI3CkyKcdkHzOZ+3GvGGcDMHnl9tAVjdHzl
-         bqig==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:dkim-signature;
-        bh=wiMOOHV60q4eXagNMIOLvNFV+qq1RGRo7TL5T/ORWco=;
-        fh=2RO8K0C+7qdnrToNMfADzswy6Cfksh+Q7yXeSQAo5TA=;
-        b=chDqg1fmKqRv9UTHcKo4L4kdnvnojRMmAOvjK3jKD4KGg0hE9Xllb9CXoFt+y8HTdJ
-         7yr+/9HrDNEk0MzRie7zKiaAuYBPRMpVjPGjVM/p2+pP2fg7IEQFhU6q8MLrWcSa9+xc
-         oVaa8yX86TeuUNfZ3l/im1lRXbclCfXYUpev4yhLCkDpZzgacnvnd0/rYFEwJuY7Z1cz
-         OQjmL3ahUXXy2v32uAOLXqzNA+F9kz/uBDFbVP5YgQHZPKJgPXYahxhHLwsa+3vyeT4s
-         FB6c93DN+AKBn2k3dGxYv3NVoYEo2PFQ7w1b9aP+yiwFr7aPoYPVFLCN1MDlunlyozvc
-         2p2A==;
+        b=ZGLldx1S3KfwVII0yOvYJgG/gkwSmuuML3I4sSvBUhJcUe8VgMuRE8Nr89oyS8DKY4
+         v8rwphbdObcQ0PZPvGvialm9tlG02mIH0jjzyvdjiHIjbHlrVNNaj+IpFeRmcyzEwtoB
+         FkojgJ847UA/myIp6JsOiuzBaaXSnIZlXZ5eseO84JgFKQR2D7RtzUxHNCjeUCni53Zf
+         z53lRw2Y7Lyeh3J1XyE1mBugoS7UZAxoS698WiylwP6OSGo8TdDmyM5deStGi1Z7TicO
+         0bDU2hbcWPWW/+bczO2w5phcanshqNcVNwhCpCj6eZaKCs9i5pzW73v08F3KmdJkKta7
+         aSEg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=xubr80DdDK1TQnuEw657hT2ILmCSL1Bi/K/I0ME5hpI=;
+        fh=0Ao2pW8bOpKxEJ1T3h3Av5QgTYHwuqmxI0QFA3RPJpc=;
+        b=jOPrM8zjTzZrRoRG+TS4DxySBRnhoVXLGG4CTMqFQvXdiFJlV6oXMArQE0w17uGG2M
+         uRq29XHC/BYA1uBkC/WUnBFyjW3JKPG8OuiO4ALqx3xiOIX5jbaHLCSDpTuk9qYuWXFI
+         9DiiLK8whouy4cXirfdraaXEnfxBqESUqyraWw2778P1SbNl7rsZnzAxKVIu/9DJCET5
+         vgPV20mOWd1gE595YCLOvMmuH/NOYWFgeNcahDP5Mp20bKIu/+/rvqm0fPInE1Avx1kr
+         RPtC2/TLfz0djyQpyfHLqSuuca1yjeJTREVsauQiS8FIwI1qV5Cx0YvfMMwUmv3c5nbY
+         WWdQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GCR5ZqsD;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-72d0fcde671si1501837b3a.331.2025.01.07.00.03.11
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BeM+Muqn;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id a640c23a62f3a-aac0f040661si2191090866b.490.2025.01.06.12.03.24
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jan 2025 00:03:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
+        Mon, 06 Jan 2025 12:03:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GCR5ZqsD;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1736236990;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=wiMOOHV60q4eXagNMIOLvNFV+qq1RGRo7TL5T/ORWco=;
-	b=GCR5ZqsDKBjLrldPsMf/oOmXQh5pYXSktrAL77G7O4pLwhPjfbGVLvl4GYIkKeVRH8iCFO
-	FaNuX+Yv5NpwZjBZV0jvBtqNoXQ/zPDoJr68zIYl04epU5ud8ZcfCHF8BiuQdxD+d7gu4M
-	UtL2WH9j0JJzKiqoULh1BD6OOtGs+Lc=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-16-NUMOnnD_OUGlH1xah0AkEw-1; Tue, 07 Jan 2025 03:03:09 -0500
-X-MC-Unique: NUMOnnD_OUGlH1xah0AkEw-1
-X-Mimecast-MFC-AGG-ID: NUMOnnD_OUGlH1xah0AkEw
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-6dcf01612f0so197896626d6.3
-        for <alex.bennee@linaro.org>; Tue, 07 Jan 2025 00:03:09 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736236988; x=1736841788;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+       dkim=pass header.i=@linaro.org header.s=google header.b=BeM+Muqn;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 66029188622B
+	for <alex.bennee@linaro.org>; Mon,  6 Jan 2025 20:03:27 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7BEDD1DFD96;
+	Mon,  6 Jan 2025 20:03:20 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="BeM+Muqn"
+Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com [209.85.128.48])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 788411DED44
+	for <kvm@vger.kernel.org>; Mon,  6 Jan 2025 20:03:17 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.48
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1736193800; cv=none; b=txwyjvqiGWRM2CYN8eZZsixjNhdmZLASYrFjcW4TzseoCKmqYsUx42ph59ESp7viu6KTdIqTEN/vkymZZjoR4n1DVwi/TpfG+ATML1INXwMa8nozKRBsM2B0y/Js/eYI5evQXUwagX3UyesqKwHAY7VZGtT3nCrXkFOhzogXyGQ=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1736193800; c=relaxed/simple;
+	bh=Gzob3myfhJ77HbtIdJeXGuH6Ojs0DaIU+RlrJQQt4nU=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=mvsIreYZqMP0iGEsnThCUND7QudJ4bjEMHJ8xRcwC8pD3FfOQbzMiGCznXq0/4t/8h3IoVe5doai1iGpvGNSDFARGjbcbUL//EkAgsBwLVEiVoRKazrxcE9qOYn35JWxZJxq6UZpnYNEpBIHboAHgccGrfoETTQzNiEZflK+7QM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=BeM+Muqn; arc=none smtp.client-ip=209.85.128.48
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-43635796b48so89317975e9.0
+        for <kvm@vger.kernel.org>; Mon, 06 Jan 2025 12:03:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1736193795; x=1736798595; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=wiMOOHV60q4eXagNMIOLvNFV+qq1RGRo7TL5T/ORWco=;
-        b=uidm5KS6BANVtpUh5qGw0RSRusUGF00rzR1UbMPBq5+r36U/33KZNhFYEEn17lmlUX
-         xFE1P1+BY+QDUS98aowhkeitz76iRZ2Qdtf+Zq6+GCzUXWpZJe/TEzvR5GLDR/DwyYIg
-         eJjpHAD6Ys9LpSptnLfC+YFvvg3gi7/U5oqlGI6BxjPwgYitpKtSNqXralYQ+88tkWRH
-         fELe3Q8yv5W11lSvFCbZ5bzRynyfsxRxo4CemApo59mjdgn/OorFOX/G57iEnEdnqnuh
-         jxQGTuQkyu5PoHYbGgBFPUmlqebbyPE59t8Q+HKZhcGHJqzsOj4RfbgQmr0z5j0pTyYp
-         LxOg==
-X-Forwarded-Encrypted: i=1; AJvYcCXTssPqZUWCXUPkvvN0xw/pYOjhJ4IXoox+3FqBgn0lrR3PQJzY6pe6bB0ra4Gtykn2bLYV5Nk6c2iBgw==@linaro.org
-X-Gm-Message-State: AOJu0YzpClu4chlQgvGTjbCbdj0/goVyb9uDRnHB+Pi+dz566ZkXNJEs
-	WOU4B0C/TpikXK12ageRkJLBCQaAUZHnoWM4scDhvMd3b0K0v7XyF3VENxs0Q2MCxa8dgLuxC6a
-	lCWOZbh0O/T0zOjg1DxjELWN0IDPCSvOjwiqczletjRsWZDskyatTBw==
-X-Gm-Gg: ASbGncs1eIY1rIhnVW7uW97jUM7NuXIjwr56kEfjxfkDTlT0AILiGLSWjusq3yvM8fb
-	ke/Nti54lmqyipXB1xJMQHS6CJuIDFGdg/IP3t14LlLc+dt4S26Kq4i2Ji+D2uA3YmHb58HgPlN
-	8rXXN9yMT1Nzw3vOgot0Iz2m58J9OD4hOQJX2J9ICn1i3AhCTkFblf5mUKIMp+cxeoiUvcAW4jl
-	7Guu6VCX/Dgjc1NP0bXhmuUz4vr11nwWSH9rhGA+sKmBucv11pHHkn2ed3kNUBwW7lOSXmrVghK
-	SrCTqg5G3Ad9
-X-Received: by 2002:a05:6214:240e:b0:6d8:9838:d3a9 with SMTP id 6a1803df08f44-6dd23356042mr888122446d6.26.1736236988711;
-        Tue, 07 Jan 2025 00:03:08 -0800 (PST)
-X-Received: by 2002:a05:6214:240e:b0:6d8:9838:d3a9 with SMTP id 6a1803df08f44-6dd23356042mr888122216d6.26.1736236988466;
-        Tue, 07 Jan 2025 00:03:08 -0800 (PST)
-Return-Path: <thuth@redhat.com>
-Received: from [192.168.0.7] (ip-109-42-49-182.web.vodafone.de. [109.42.49.182])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6dd18110450sm179182026d6.44.2025.01.07.00.03.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Jan 2025 00:03:07 -0800 (PST)
-Message-ID: <3fb8281e-23f0-44a7-904b-34b8ea8ca7f3@redhat.com>
-Date: Tue, 7 Jan 2025 09:03:01 +0100
+        bh=xubr80DdDK1TQnuEw657hT2ILmCSL1Bi/K/I0ME5hpI=;
+        b=BeM+Muqn9+y2leTxSHxPDumk6kl8KeObfVlhu+r9IttzZMdG4DZ1Q3ZgPytZotef//
+         RwclS4eYj+QRg4YmcMG/IdRyII3Uwxk8Zp6jLA2mv34CgYJCEgDCqzvJ26Xvac4b3OG6
+         /Gt4srgkEwUP0JcqnQ+Ap/PdiAzOAf0onIm4/WbTF4kFVmi72gwnqkoMEYYFY/ur4KC5
+         Pw+ahcTVA2V1GDy92TjGxG5zK4K8lDX7/eIS7juHI2FoORM1WvVFKP9U5Uilaa8vOBKK
+         N2SW2KIUePyXuZx7ZMhLsaoM5SsVO4UDNqwvRoZ+hm51jCTrVAH+WMSTgaHknale0byT
+         xGlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736193795; x=1736798595;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=xubr80DdDK1TQnuEw657hT2ILmCSL1Bi/K/I0ME5hpI=;
+        b=lG29La2ezNJznJKK/cb8fLfftTd4gXG97hRjElb1al5uYU4I8TCWf5/mkT18evuAqq
+         FpBaCeg1DkuzuQAxqEqinAva/BYgmJVxET3jW79cLu4dNyBQSavRFbWyJ8s+XreN2nJw
+         OBuDaIBsbsMTBIM6gAMiI+y48YJHovlmRHRCQ+G4dOsK9p1CQzHxX/pJSuYra7WKsLwe
+         sh1gPcxE6USuG/MkGc1FAaXxjRMWywpQB3OvIdjW9svR4enLn6ZryJVymlZ9POmhRUuz
+         8pnCFmYITwfouKUuOUse8AAqedYzfVDmRjLD8vnGiBdXBl9R7SPCBybVkV55QWfTEx5z
+         o2WA==
+X-Forwarded-Encrypted: i=1; AJvYcCW4TyBMiTLClD9beVwH8+Q4h92p49lnfLI2UIk8255Lw53ILXQpD3GKgTha3hdZFvScrGQ=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxPn6WXuVRYuC5Wgy4ZEOl+468ml2qqsNI818Uzxjg9mtRH5JL9
+	xFlthu0oyJBcoqa78FGAr5aPnm51LWQObIgJnMczAPRfnqW+QZjJJ5bY9ts6c7w=
+X-Gm-Gg: ASbGncvhtn25dnvk6Sme3ylsZnfg3ZB1SE5C1s2EocQtjBznIqXiinRWNR7Mq0U7/p+
+	7yVPJo18olH4m7DdwsQ78D2MjpmmhF4o8JylHrg5T/go50ncTU74OOL0Eqp85JRjrsPJISb+GC+
+	L4RNNMdsBscrWNd4Ht8zd95ECGw+MrRfzHHo0Lu4ktCiX02VB4XVhymOA6TVraRQNjrpcF47V7w
+	KoA5KoEf9ANi0XXRqXf5IHjm4xOQB6pTrpnYjTVqHvDZIwFIIxxYCNZznmjP5SoA/tPKAFdBX/k
+	o3cZFhwl55vhLeyFrGttXhzxO6zIsEk=
+X-Received: by 2002:a05:600c:1d12:b0:436:1b86:f05 with SMTP id 5b1f17b1804b1-436dc20b0c1mr4405765e9.11.1736193795597;
+        Mon, 06 Jan 2025 12:03:15 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4366128a353sm577748615e9.42.2025.01.06.12.03.12
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 06 Jan 2025 12:03:15 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	=?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Cameron Esfahani <dirty@apple.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	kvm@vger.kernel.org,
+	Alexander Graf <agraf@csgraf.de>,
+	Paul Durrant <paul@xen.org>,
+	David Hildenbrand <david@redhat.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	xen-devel@lists.xenproject.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Reinoud Zandijk <reinoud@netbsd.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-s390x@nongnu.org,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Anthony PERARD <anthony@xenproject.org>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	Phil Dennis-Jordan <phil@philjordan.eu>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	qemu-ppc@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Anton Johansson <anjo@rev.ng>
+Subject: [RFC PATCH 2/7] cpus: Introduce AccelOpsClass::get_cpus_queue()
+Date: Mon,  6 Jan 2025 21:02:53 +0100
+Message-ID: <20250106200258.37008-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250106200258.37008-1-philmd@linaro.org>
+References: <20250106200258.37008-1-philmd@linaro.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/2] qtest: Remove uses of 'first_cpu'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Fabiano Rosas <farosas@suse.de>, qemu-devel@nongnu.org
-Cc: Bandan Das <bsd@redhat.com>, Alexander Bulekov <alxndr@bu.edu>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
-References: <20241211233727.98923-1-philmd@linaro.org>
- <5d2a536d-9b68-4b31-8d92-6cc42ed72e5c@linaro.org> <87msg884mn.fsf@suse.de>
- <05820c9b-a683-4eb4-a836-e97aa708d5e5@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <05820c9b-a683-4eb4-a836-e97aa708d5e5@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: W4aRqDMUqNcTmVQDKG_4oyqg9jhKgIO_mHpsucagfqA_1736236988
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: tjfKrecPlpcw
+X-TUID: aXuP6ioj2xm1
 
-On 04/01/2025 00.48, Philippe Mathieu-Daudé wrote:
-> On 3/1/25 13:26, Fabiano Rosas wrote:
->> Philippe Mathieu-Daudé <philmd@linaro.org> writes:
->>
->>> Hi Fabiano,
->>>
->>> On 12/12/24 00:37, Philippe Mathieu-Daudé wrote:
->>>> Replace first_cpu->as by address_space_memory.
->>>>
->>>> Philippe Mathieu-Daudé (2):
->>>>     system/qtest: Remove uses of 'first_cpu'
->>>>     qtest/fuzz: Remove uses of 'first_cpu'
-> 
->>> Ping :)
->>
->> Hi!
->>
->> Good that you pinged, I thought you were looking into the test failures
->> from v1. I copied you in this other thread that mentioned them as well:
->>
->> https://lore.kernel.org/r/87y10jctbd.fsf@suse.de
->>
->> Applying this series on top of master just now:
->>
->> Summary of Failures:
->>
->>   10/519 qemu:qtest+qtest-arm / qtest-arm/stm32l4x5_usart- 
->> test               ERROR            1.40s   exit status 1
->> 165/519 qemu:qtest+qtest-arm / qtest-arm/sse-timer- 
->> test                     ERROR            0.40s   killed by signal 6 SIGABRT
->> 185/519 qemu:qtest+qtest-arm / qtest-arm/stm32l4x5_exti- 
->> test                ERROR            0.19s   exit status 1
->> 187/519 qemu:qtest+qtest-arm / qtest-arm/stm32l4x5_rcc- 
->> test                 ERROR            0.19s   exit status 1
->> 515/519 qemu:qtest+qtest-arm / qtest-arm/microbit- 
->> test                      TIMEOUT         60.01s   killed by signal 15 
->> SIGTERM
-> 
-> Hmm interesting, I have a "quick-before-posting-series" set
-> of tests, and a "full-before-posting-pullreq" one. The quick
-> is quite extensive, but only include Aarch64. I thought, since
-> it contains the ARM targets, they would also be tested, but
-> no...
+We want the ability to iterate over vCPUs of a specific
+accelerator.  Introduce cpus_get_accel_cpus_queue() to
+be used by accelerator common code, and expose the
+get_cpus_queue() in AccelOpsClass, so each accelerator
+can register its own queue of vCPUs.
 
-IIRC this was a deliberate decision once in the past to avoid double 
-testing: qtests_aarch64 in tests/qtest/meson.build does not include 
-qtest_arm, it's a separate set of tests indeed.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/core/cpu.h      |  8 ++++++++
+ include/system/accel-ops.h |  6 ++++++
+ accel/tcg/user-exec-stub.c |  5 +++++
+ cpu-common.c               | 10 ++++++++++
+ system/cpus.c              |  5 +++++
+ 5 files changed, 34 insertions(+)
 
-IMHO it's a little bit unfortunate, since in a couple of spots in the CI, we 
-are taking the shortcut of only adding aarch64-softmmu to the target list, 
-but not arm-softmmu.
-
-Maybe we should add some logic to tests/qtest/meson.build so that if 
-arm-softmmu is not in target_dirs, we add the tests to qtests_aarch64 ?
-
-  Thomas
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 48d90f50a71..5ae9bb64d6e 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -591,6 +591,14 @@ static inline CPUArchState *cpu_env(CPUState *cpu)
+ typedef QTAILQ_HEAD(CPUTailQ, CPUState) CPUTailQ;
+ extern CPUTailQ cpus_queue;
+ 
++/**
++ * cpus_get_accel_cpus_queue:
++ * @cpu: The vCPU to get the accelerator #CPUTailQ.
++ *
++ * Returns the #CPUTailQ associated with the accelerator of the vCPU.
++ */
++CPUTailQ *cpus_get_accel_cpus_queue(CPUState *cpu);
++
+ #define first_cpu        QTAILQ_FIRST_RCU(&cpus_queue)
+ #define CPU_NEXT(cpu)    QTAILQ_NEXT_RCU(cpu, node)
+ #define CPU_FOREACH(cpu) QTAILQ_FOREACH_RCU(cpu, &cpus_queue, node)
+diff --git a/include/system/accel-ops.h b/include/system/accel-ops.h
+index 137fb96d444..fe59f728bfc 100644
+--- a/include/system/accel-ops.h
++++ b/include/system/accel-ops.h
+@@ -12,6 +12,7 @@
+ 
+ #include "exec/vaddr.h"
+ #include "qom/object.h"
++#include "hw/core/cpu.h"
+ 
+ #define ACCEL_OPS_SUFFIX "-ops"
+ #define TYPE_ACCEL_OPS "accel" ACCEL_OPS_SUFFIX
+@@ -37,6 +38,11 @@ struct AccelOpsClass {
+     bool (*cpus_are_resettable)(void);
+     void (*cpu_reset_hold)(CPUState *cpu);
+ 
++    /**
++     * get_cpus_queue:
++     * Returns the #CPUTailQ maintained by this accelerator.
++     */
++    CPUTailQ *(*get_cpus_queue)(void);
+     void (*create_vcpu_thread)(CPUState *cpu); /* MANDATORY NON-NULL */
+     void (*kick_vcpu_thread)(CPUState *cpu);
+     bool (*cpu_thread_is_idle)(CPUState *cpu);
+diff --git a/accel/tcg/user-exec-stub.c b/accel/tcg/user-exec-stub.c
+index 4fbe2dbdc88..cb76cec76be 100644
+--- a/accel/tcg/user-exec-stub.c
++++ b/accel/tcg/user-exec-stub.c
+@@ -18,6 +18,11 @@ void cpu_exec_reset_hold(CPUState *cpu)
+ {
+ }
+ 
++CPUTailQ *cpus_get_accel_cpus_queue(CPUState *cpu)
++{
++    return NULL;
++}
++
+ /* User mode emulation does not support record/replay yet.  */
+ 
+ bool replay_exception(void)
+diff --git a/cpu-common.c b/cpu-common.c
+index 4248b2d727e..ff8db9c7f9d 100644
+--- a/cpu-common.c
++++ b/cpu-common.c
+@@ -82,6 +82,7 @@ unsigned int cpu_list_generation_id_get(void)
+ void cpu_list_add(CPUState *cpu)
+ {
+     static bool cpu_index_auto_assigned;
++    CPUTailQ *accel_cpus_queue = cpus_get_accel_cpus_queue(cpu);
+ 
+     QEMU_LOCK_GUARD(&qemu_cpu_list_lock);
+     if (cpu->cpu_index == UNASSIGNED_CPU_INDEX) {
+@@ -92,17 +93,26 @@ void cpu_list_add(CPUState *cpu)
+         assert(!cpu_index_auto_assigned);
+     }
+     QTAILQ_INSERT_TAIL_RCU(&cpus_queue, cpu, node);
++    if (accel_cpus_queue) {
++        QTAILQ_INSERT_TAIL_RCU(accel_cpus_queue, cpu, node);
++    }
++
+     cpu_list_generation_id++;
+ }
+ 
+ void cpu_list_remove(CPUState *cpu)
+ {
++    CPUTailQ *accel_cpus_queue = cpus_get_accel_cpus_queue(cpu);
++
+     QEMU_LOCK_GUARD(&qemu_cpu_list_lock);
+     if (!QTAILQ_IN_USE(cpu, node)) {
+         /* there is nothing to undo since cpu_exec_init() hasn't been called */
+         return;
+     }
+ 
++    if (accel_cpus_queue) {
++        QTAILQ_REMOVE_RCU(accel_cpus_queue, cpu, node);
++    }
+     QTAILQ_REMOVE_RCU(&cpus_queue, cpu, node);
+     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
+     cpu_list_generation_id++;
+diff --git a/system/cpus.c b/system/cpus.c
+index 99f83806c16..972df6ab061 100644
+--- a/system/cpus.c
++++ b/system/cpus.c
+@@ -209,6 +209,11 @@ void cpu_exec_reset_hold(CPUState *cpu)
+     }
+ }
+ 
++CPUTailQ *cpus_get_accel_cpus_queue(CPUState *cpu)
++{
++    return cpus_accel ? cpus_accel->get_cpus_queue() : NULL;
++}
++
+ int64_t cpus_get_virtual_clock(void)
+ {
+     /*
+-- 
+2.47.1
 

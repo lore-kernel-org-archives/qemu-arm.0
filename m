@@ -1,302 +1,187 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12000936njk;
-        Mon, 6 Jan 2025 12:03:25 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWFR1W/NQV5x0bX73NRnTc+B5KxGagxHnRgLY3jLbJfX3fE1P21EIm/I1oLYE6SVQJYBD3HOeHnxKcspA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHt8RezPuUA749bPZ+t8a7aztJ7DS9dYknbkL7VKaEh7kmXV719e3OzMW7RIcTsZrFApgMw
-X-Received: by 2002:a17:907:6d23:b0:aa5:1d68:1f43 with SMTP id a640c23a62f3a-ab29109c05bmr50885866b.11.1736193805101;
-        Mon, 06 Jan 2025 12:03:25 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1736193805; cv=pass;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12009510njk;
+        Mon, 6 Jan 2025 12:19:23 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXI+9Is2vlsngIpYqxdetFlRSuAgUfuYQvDWneEe0C7pOI+M2pLyUITTKzAoeMHgTbc2p55c7VvZ/OfUQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFi0aJISDPYaDlZlund+UX6WgI3RIwSKvE7RywELLwz5XTyyIzDQhwIKA/o4U0FNgVVcBWb
+X-Received: by 2002:a17:906:6a27:b0:aa6:9fad:3c1d with SMTP id a640c23a62f3a-aac3464881amr4292328966b.39.1736194763653;
+        Mon, 06 Jan 2025 12:19:23 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1736194763; cv=pass;
         d=google.com; s=arc-20240605;
-        b=ZGLldx1S3KfwVII0yOvYJgG/gkwSmuuML3I4sSvBUhJcUe8VgMuRE8Nr89oyS8DKY4
-         v8rwphbdObcQ0PZPvGvialm9tlG02mIH0jjzyvdjiHIjbHlrVNNaj+IpFeRmcyzEwtoB
-         FkojgJ847UA/myIp6JsOiuzBaaXSnIZlXZ5eseO84JgFKQR2D7RtzUxHNCjeUCni53Zf
-         z53lRw2Y7Lyeh3J1XyE1mBugoS7UZAxoS698WiylwP6OSGo8TdDmyM5deStGi1Z7TicO
-         0bDU2hbcWPWW/+bczO2w5phcanshqNcVNwhCpCj6eZaKCs9i5pzW73v08F3KmdJkKta7
-         aSEg==
+        b=QRtdXKJTM00up/PUkhPKwKUfCujiftTPyk4WmEY7GNgTNkObHJDu4Mw0somiydOZHS
+         Pm4DpLJB9TQAhJhmYrmYaJtLYKnLeXL8oLdxA97vV/c+SX7VWboH66q7jwSpr6IzzgwI
+         favktl68xlPvG0IfyzNEdyBky6r1tif5XL/e09XIcJLjYWVENLFXSX71M4ElR1u4/e4/
+         FhyULVOPPVX4ETpCOcxr9USu4lIrUF65t7+QMlDWlvRTIROyXNnmLqg3axjU7p3tctHb
+         4sU4L6LldOPBKuXOSSZtEyZtTqHI2X6F4mLqSpBE7PcP9+fYZFF+M0ua+GtgNQD2lyrM
+         wJMA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=xubr80DdDK1TQnuEw657hT2ILmCSL1Bi/K/I0ME5hpI=;
-        fh=0Ao2pW8bOpKxEJ1T3h3Av5QgTYHwuqmxI0QFA3RPJpc=;
-        b=jOPrM8zjTzZrRoRG+TS4DxySBRnhoVXLGG4CTMqFQvXdiFJlV6oXMArQE0w17uGG2M
-         uRq29XHC/BYA1uBkC/WUnBFyjW3JKPG8OuiO4ALqx3xiOIX5jbaHLCSDpTuk9qYuWXFI
-         9DiiLK8whouy4cXirfdraaXEnfxBqESUqyraWw2778P1SbNl7rsZnzAxKVIu/9DJCET5
-         vgPV20mOWd1gE595YCLOvMmuH/NOYWFgeNcahDP5Mp20bKIu/+/rvqm0fPInE1Avx1kr
-         RPtC2/TLfz0djyQpyfHLqSuuca1yjeJTREVsauQiS8FIwI1qV5Cx0YvfMMwUmv3c5nbY
-         WWdQ==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=a9p8hjeIMnEMUpmW04h0W7NoiD5E5c5Q5zI/Al9/E30=;
+        fh=r6kc6nRl7eqUF3XoeKzfR1rFV/9fSzrzikr8Ro7D2M4=;
+        b=OCVPZjJco8GmDlaYAPcoe/IvSsfXcN4/+4vXNuJwu7btWhJxtE+vGSA7zVgrmSMML5
+         PzJQ2Di3zXLIUYjha0K0TL+6IzvWm1v6C7yotnNc8pDPlk6A9BKXIQJjCRC0vAKbhyKb
+         rYHS0zm29e7dQzD6Y3xZKDbYOa87i5wJ6nwWO16mupOOewAgpU64ECD2u9lFLSBViP+0
+         k3mi5OW7dMoILPjIBQPPnUFmKDiaU9utn3/xQC0cy1Tux221R5IEBV5tFP6Jm2R6MSR6
+         DNZja8na5FJiZdMR8l+rN+cNXbloCC9afnpBzGcxU4tieCphCEUU4pG1J0q7gBWAO/GG
+         ACBg==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BeM+Muqn;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org>
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=LKeDUIsT;
+       arc=pass (i=1 spf=pass spfdomain=ventanamicro.com dkim=pass dkdomain=ventanamicro.com);
+       spf=pass (google.com: domain of kvm+bounces-34640-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-34640-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-34640-alex.bennee=linaro.org@vger.kernel.org>
 Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
-        by mx.google.com with ESMTPS id a640c23a62f3a-aac0f040661si2191090866b.490.2025.01.06.12.03.24
+        by mx.google.com with ESMTPS id a640c23a62f3a-aac0f0e480asi2185951366b.957.2025.01.06.12.19.23
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Jan 2025 12:03:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
+        Mon, 06 Jan 2025 12:19:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-34640-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BeM+Muqn;
-       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
-       spf=pass (google.com: domain of kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-34633-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=LKeDUIsT;
+       arc=pass (i=1 spf=pass spfdomain=ventanamicro.com dkim=pass dkdomain=ventanamicro.com);
+       spf=pass (google.com: domain of kvm+bounces-34640-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-34640-alex.bennee=linaro.org@vger.kernel.org"
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 66029188622B
-	for <alex.bennee@linaro.org>; Mon,  6 Jan 2025 20:03:27 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 02FD21886647
+	for <alex.bennee@linaro.org>; Mon,  6 Jan 2025 20:19:26 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 7BEDD1DFD96;
-	Mon,  6 Jan 2025 20:03:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8D7CF1DC9BC;
+	Mon,  6 Jan 2025 20:19:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="BeM+Muqn"
-Received: from mail-wm1-f48.google.com (mail-wm1-f48.google.com [209.85.128.48])
+	dkim=pass (2048-bit key) header.d=ventanamicro.com header.i=@ventanamicro.com header.b="LKeDUIsT"
+Received: from mail-pj1-f49.google.com (mail-pj1-f49.google.com [209.85.216.49])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 788411DED44
-	for <kvm@vger.kernel.org>; Mon,  6 Jan 2025 20:03:17 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.48
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5FA870811
+	for <kvm@vger.kernel.org>; Mon,  6 Jan 2025 20:19:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.216.49
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1736193800; cv=none; b=txwyjvqiGWRM2CYN8eZZsixjNhdmZLASYrFjcW4TzseoCKmqYsUx42ph59ESp7viu6KTdIqTEN/vkymZZjoR4n1DVwi/TpfG+ATML1INXwMa8nozKRBsM2B0y/Js/eYI5evQXUwagX3UyesqKwHAY7VZGtT3nCrXkFOhzogXyGQ=
+	t=1736194758; cv=none; b=qMJYRfAr1tGloKYLEMFPyT+6gm5jurysU1DzCzSv7RlnFANPqPxGWpZi1qI/2kPApLXtnjn1irPWfxziZ/ZZtOLn+tP+Hc0X2S6enUC/MMte9iEcJQo48D0JXP3+WnBzmMNy3AV9Us7LuVgML2MqiJg9/9HIEPaeL5SQAXiXxEU=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1736193800; c=relaxed/simple;
-	bh=Gzob3myfhJ77HbtIdJeXGuH6Ojs0DaIU+RlrJQQt4nU=;
-	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=mvsIreYZqMP0iGEsnThCUND7QudJ4bjEMHJ8xRcwC8pD3FfOQbzMiGCznXq0/4t/8h3IoVe5doai1iGpvGNSDFARGjbcbUL//EkAgsBwLVEiVoRKazrxcE9qOYn35JWxZJxq6UZpnYNEpBIHboAHgccGrfoETTQzNiEZflK+7QM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=BeM+Muqn; arc=none smtp.client-ip=209.85.128.48
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
-Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-43635796b48so89317975e9.0
-        for <kvm@vger.kernel.org>; Mon, 06 Jan 2025 12:03:17 -0800 (PST)
+	s=arc-20240116; t=1736194758; c=relaxed/simple;
+	bh=M7fH3j7Cp8+Bx4ooqSEnVvpi3MR62uMBv0pz4A1YeRQ=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=QStbi2UCdAhYGdetvoEhfpvGdqECKWqzKbf8Zcxo2+fUwsfO4QonTzB5S43bHq0qvfkc6EivR3Gh1LudZs4FKOvsmob1vFyk87RoKgeAgKDzjj5YnmmLgwSC8U6j8QsxHd8Dye5qEjrpuIXCe6MgrMAAkqMHgoERPWhGKEVaWAU=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=ventanamicro.com; spf=pass smtp.mailfrom=ventanamicro.com; dkim=pass (2048-bit key) header.d=ventanamicro.com header.i=@ventanamicro.com header.b=LKeDUIsT; arc=none smtp.client-ip=209.85.216.49
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=ventanamicro.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=ventanamicro.com
+Received: by mail-pj1-f49.google.com with SMTP id 98e67ed59e1d1-2efded08c79so16903895a91.0
+        for <kvm@vger.kernel.org>; Mon, 06 Jan 2025 12:19:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736193795; x=1736798595; darn=vger.kernel.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xubr80DdDK1TQnuEw657hT2ILmCSL1Bi/K/I0ME5hpI=;
-        b=BeM+Muqn9+y2leTxSHxPDumk6kl8KeObfVlhu+r9IttzZMdG4DZ1Q3ZgPytZotef//
-         RwclS4eYj+QRg4YmcMG/IdRyII3Uwxk8Zp6jLA2mv34CgYJCEgDCqzvJ26Xvac4b3OG6
-         /Gt4srgkEwUP0JcqnQ+Ap/PdiAzOAf0onIm4/WbTF4kFVmi72gwnqkoMEYYFY/ur4KC5
-         Pw+ahcTVA2V1GDy92TjGxG5zK4K8lDX7/eIS7juHI2FoORM1WvVFKP9U5Uilaa8vOBKK
-         N2SW2KIUePyXuZx7ZMhLsaoM5SsVO4UDNqwvRoZ+hm51jCTrVAH+WMSTgaHknale0byT
-         xGlQ==
+        d=ventanamicro.com; s=google; t=1736194756; x=1736799556; darn=vger.kernel.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=a9p8hjeIMnEMUpmW04h0W7NoiD5E5c5Q5zI/Al9/E30=;
+        b=LKeDUIsTljc6o7YmZBph6xkNXBmVTTgIwj9/ezJMGLtrBG5maeTplObpNDZdN+xmHs
+         vHUNS7NIacSx6idQ8PjnttOw1aLjuZhavMWvXjKYlZgi+9qI1PK3lLlVyht54oQvipV0
+         zESwiwWSfdVEXp1F8yvxGl8Eo88M9SK0Yh1n50V75OuuTedgVqBxvTh3040TRUnWtTI+
+         hXd0/wyiE7pcVv20Cqpzyt4LNJfylsB2xMiM78cuEVlNj+pJ76cZz1yuesQYAqA4DJWv
+         t4Ak83Ia1m25Mpfz+0fL4Ja7ExabMc7DhtZ6HgNG79fThOiXf7eau5PxqoZIrK3QRX54
+         Ffew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736193795; x=1736798595;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xubr80DdDK1TQnuEw657hT2ILmCSL1Bi/K/I0ME5hpI=;
-        b=lG29La2ezNJznJKK/cb8fLfftTd4gXG97hRjElb1al5uYU4I8TCWf5/mkT18evuAqq
-         FpBaCeg1DkuzuQAxqEqinAva/BYgmJVxET3jW79cLu4dNyBQSavRFbWyJ8s+XreN2nJw
-         OBuDaIBsbsMTBIM6gAMiI+y48YJHovlmRHRCQ+G4dOsK9p1CQzHxX/pJSuYra7WKsLwe
-         sh1gPcxE6USuG/MkGc1FAaXxjRMWywpQB3OvIdjW9svR4enLn6ZryJVymlZ9POmhRUuz
-         8pnCFmYITwfouKUuOUse8AAqedYzfVDmRjLD8vnGiBdXBl9R7SPCBybVkV55QWfTEx5z
-         o2WA==
-X-Forwarded-Encrypted: i=1; AJvYcCW4TyBMiTLClD9beVwH8+Q4h92p49lnfLI2UIk8255Lw53ILXQpD3GKgTha3hdZFvScrGQ=@vger.kernel.org
-X-Gm-Message-State: AOJu0YxPn6WXuVRYuC5Wgy4ZEOl+468ml2qqsNI818Uzxjg9mtRH5JL9
-	xFlthu0oyJBcoqa78FGAr5aPnm51LWQObIgJnMczAPRfnqW+QZjJJ5bY9ts6c7w=
-X-Gm-Gg: ASbGncvhtn25dnvk6Sme3ylsZnfg3ZB1SE5C1s2EocQtjBznIqXiinRWNR7Mq0U7/p+
-	7yVPJo18olH4m7DdwsQ78D2MjpmmhF4o8JylHrg5T/go50ncTU74OOL0Eqp85JRjrsPJISb+GC+
-	L4RNNMdsBscrWNd4Ht8zd95ECGw+MrRfzHHo0Lu4ktCiX02VB4XVhymOA6TVraRQNjrpcF47V7w
-	KoA5KoEf9ANi0XXRqXf5IHjm4xOQB6pTrpnYjTVqHvDZIwFIIxxYCNZznmjP5SoA/tPKAFdBX/k
-	o3cZFhwl55vhLeyFrGttXhzxO6zIsEk=
-X-Received: by 2002:a05:600c:1d12:b0:436:1b86:f05 with SMTP id 5b1f17b1804b1-436dc20b0c1mr4405765e9.11.1736193795597;
-        Mon, 06 Jan 2025 12:03:15 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4366128a353sm577748615e9.42.2025.01.06.12.03.12
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 06 Jan 2025 12:03:15 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
-	=?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Ilya Leoshkevich <iii@linux.ibm.com>,
-	Cameron Esfahani <dirty@apple.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	kvm@vger.kernel.org,
-	Alexander Graf <agraf@csgraf.de>,
-	Paul Durrant <paul@xen.org>,
-	David Hildenbrand <david@redhat.com>,
-	Halil Pasic <pasic@linux.ibm.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	xen-devel@lists.xenproject.org,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
-	Yanan Wang <wangyanan55@huawei.com>,
-	Reinoud Zandijk <reinoud@netbsd.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-s390x@nongnu.org,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Anthony PERARD <anthony@xenproject.org>,
-	Alistair Francis <alistair.francis@wdc.com>,
-	Sunil Muthuswamy <sunilmut@microsoft.com>,
-	Christian Borntraeger <borntraeger@linux.ibm.com>,
-	Nicholas Piggin <npiggin@gmail.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Roman Bolshakov <rbolshakov@ddn.com>,
-	"Edgar E . Iglesias" <edgar.iglesias@amd.com>,
-	Zhao Liu <zhao1.liu@intel.com>,
-	Phil Dennis-Jordan <phil@philjordan.eu>,
-	David Woodhouse <dwmw2@infradead.org>,
-	Harsh Prateek Bora <harshpb@linux.ibm.com>,
-	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	qemu-ppc@nongnu.org,
-	Daniel Henrique Barboza <danielhb413@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Anton Johansson <anjo@rev.ng>
-Subject: [RFC PATCH 2/7] cpus: Introduce AccelOpsClass::get_cpus_queue()
-Date: Mon,  6 Jan 2025 21:02:53 +0100
-Message-ID: <20250106200258.37008-3-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250106200258.37008-1-philmd@linaro.org>
-References: <20250106200258.37008-1-philmd@linaro.org>
+        d=1e100.net; s=20230601; t=1736194756; x=1736799556;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=a9p8hjeIMnEMUpmW04h0W7NoiD5E5c5Q5zI/Al9/E30=;
+        b=jrKrOF58+DiS0j9BFWO9WfrYaAQr1eFqYS1+BvKzEV7Em+bHpM0lpSOJhiAP4iZftF
+         Ga0RbbzjGF8w6gWv4iClFeWjd1e8VZ6ckRtvsJftiS/b3UL09xvT6UG1vWQsfqOGr7OM
+         KAg2UngiKR1svuJgknVIntz6ZFUIVS3vXLGONXHaqs0NbATLN8CDYrsgxnsmNRIc03nd
+         iWxDli9pGlZfdFy991lL/HH9QVqvUzEWmh25Txya7L+qMIAjPodcQorXTDNzBHGEcI2s
+         PTUeMCH94QhMmRYVNJN/YdeEaWQLpXsY4P2unB+KVBpXqf9kYjV4b+7f0oHbluu2WtUw
+         Iw7Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXaQxw7B0MD2HQsHqTwPoVlSR+gsU29lGoB3cQnbcsLu4O+Q2DpFy2bk/mEhl57PiwFU6g=@vger.kernel.org
+X-Gm-Message-State: AOJu0YxBvDZlxQnpAIrZ/eOrg1Be2RW9gX/1UZziw4U0+h3raO7F/Fab
+	3ni6lw9pJcukwYTTPzPPiZPs5z+AjIs4+/Cg6v0gEasNEc4jkvArBU5tRvFRHEM=
+X-Gm-Gg: ASbGncta06MqfHqb5Qugoo6UiKYe91QjLnyU/nkZpn23BWcDBhOzJvAXec4nsscwqMU
+	+8ouusonlvS9fytdI40z6xL86/Z1/nTgV1xis/GGhICG1v3s1dviOrt0px+y3Ltl7uFi+N/9IZi
+	yR7ISiW3l1RA4S+PG5EGODZgKruqGhlXjpR9wqwiQo+OxU981A2mRx85doFqb1UILxIUOukcB8t
+	aWHaX9H4DQh3C4lc9rlI2qQmJhmpLVzDnLX+eZb4GNw7/8yXk4Y9GhNIKV8VYcyX//JkM4kJ+1i
+	O8TYIb10u78FPLyeSsk4DQ1Gmif1pETQbv8=
+X-Received: by 2002:a17:90b:51c2:b0:2ee:ab29:1a57 with SMTP id 98e67ed59e1d1-2f452def211mr85711065a91.2.1736194756055;
+        Mon, 06 Jan 2025 12:19:16 -0800 (PST)
+Received: from ?IPV6:2804:7f0:bdcd:fb00:6501:2693:db52:c621? ([2804:7f0:bdcd:fb00:6501:2693:db52:c621])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2f2ee26b125sm39870772a91.43.2025.01.06.12.19.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 06 Jan 2025 12:19:15 -0800 (PST)
+Message-ID: <69e79cef-214d-4795-b3ce-032529c9f7d6@ventanamicro.com>
+Date: Mon, 6 Jan 2025 17:19:04 -0300
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
 List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 1/7] cpus: Restrict CPU_FOREACH_SAFE() to user
+ emulation
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Cameron Esfahani <dirty@apple.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ Alexander Graf <agraf@csgraf.de>, Paul Durrant <paul@xen.org>,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ xen-devel@lists.xenproject.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Reinoud Zandijk <reinoud@netbsd.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-s390x@nongnu.org,
+ Riku Voipio <riku.voipio@iki.fi>, Anthony PERARD <anthony@xenproject.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>, Zhao Liu
+ <zhao1.liu@intel.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ David Woodhouse <dwmw2@infradead.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>
+References: <20250106200258.37008-1-philmd@linaro.org>
+ <20250106200258.37008-2-philmd@linaro.org>
+Content-Language: en-US
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20250106200258.37008-2-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: aXuP6ioj2xm1
+X-TUID: a1vsL6mp/qxX
 
-We want the ability to iterate over vCPUs of a specific
-accelerator.  Introduce cpus_get_accel_cpus_queue() to
-be used by accelerator common code, and expose the
-get_cpus_queue() in AccelOpsClass, so each accelerator
-can register its own queue of vCPUs.
+Perhaps add in the commit msg something like "it's only being used in
+bsd-user and linux-user code"
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- include/hw/core/cpu.h      |  8 ++++++++
- include/system/accel-ops.h |  6 ++++++
- accel/tcg/user-exec-stub.c |  5 +++++
- cpu-common.c               | 10 ++++++++++
- system/cpus.c              |  5 +++++
- 5 files changed, 34 insertions(+)
+On 1/6/25 5:02 PM, Philippe Mathieu-Daudé wrote:
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 48d90f50a71..5ae9bb64d6e 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -591,6 +591,14 @@ static inline CPUArchState *cpu_env(CPUState *cpu)
- typedef QTAILQ_HEAD(CPUTailQ, CPUState) CPUTailQ;
- extern CPUTailQ cpus_queue;
- 
-+/**
-+ * cpus_get_accel_cpus_queue:
-+ * @cpu: The vCPU to get the accelerator #CPUTailQ.
-+ *
-+ * Returns the #CPUTailQ associated with the accelerator of the vCPU.
-+ */
-+CPUTailQ *cpus_get_accel_cpus_queue(CPUState *cpu);
-+
- #define first_cpu        QTAILQ_FIRST_RCU(&cpus_queue)
- #define CPU_NEXT(cpu)    QTAILQ_NEXT_RCU(cpu, node)
- #define CPU_FOREACH(cpu) QTAILQ_FOREACH_RCU(cpu, &cpus_queue, node)
-diff --git a/include/system/accel-ops.h b/include/system/accel-ops.h
-index 137fb96d444..fe59f728bfc 100644
---- a/include/system/accel-ops.h
-+++ b/include/system/accel-ops.h
-@@ -12,6 +12,7 @@
- 
- #include "exec/vaddr.h"
- #include "qom/object.h"
-+#include "hw/core/cpu.h"
- 
- #define ACCEL_OPS_SUFFIX "-ops"
- #define TYPE_ACCEL_OPS "accel" ACCEL_OPS_SUFFIX
-@@ -37,6 +38,11 @@ struct AccelOpsClass {
-     bool (*cpus_are_resettable)(void);
-     void (*cpu_reset_hold)(CPUState *cpu);
- 
-+    /**
-+     * get_cpus_queue:
-+     * Returns the #CPUTailQ maintained by this accelerator.
-+     */
-+    CPUTailQ *(*get_cpus_queue)(void);
-     void (*create_vcpu_thread)(CPUState *cpu); /* MANDATORY NON-NULL */
-     void (*kick_vcpu_thread)(CPUState *cpu);
-     bool (*cpu_thread_is_idle)(CPUState *cpu);
-diff --git a/accel/tcg/user-exec-stub.c b/accel/tcg/user-exec-stub.c
-index 4fbe2dbdc88..cb76cec76be 100644
---- a/accel/tcg/user-exec-stub.c
-+++ b/accel/tcg/user-exec-stub.c
-@@ -18,6 +18,11 @@ void cpu_exec_reset_hold(CPUState *cpu)
- {
- }
- 
-+CPUTailQ *cpus_get_accel_cpus_queue(CPUState *cpu)
-+{
-+    return NULL;
-+}
-+
- /* User mode emulation does not support record/replay yet.  */
- 
- bool replay_exception(void)
-diff --git a/cpu-common.c b/cpu-common.c
-index 4248b2d727e..ff8db9c7f9d 100644
---- a/cpu-common.c
-+++ b/cpu-common.c
-@@ -82,6 +82,7 @@ unsigned int cpu_list_generation_id_get(void)
- void cpu_list_add(CPUState *cpu)
- {
-     static bool cpu_index_auto_assigned;
-+    CPUTailQ *accel_cpus_queue = cpus_get_accel_cpus_queue(cpu);
- 
-     QEMU_LOCK_GUARD(&qemu_cpu_list_lock);
-     if (cpu->cpu_index == UNASSIGNED_CPU_INDEX) {
-@@ -92,17 +93,26 @@ void cpu_list_add(CPUState *cpu)
-         assert(!cpu_index_auto_assigned);
-     }
-     QTAILQ_INSERT_TAIL_RCU(&cpus_queue, cpu, node);
-+    if (accel_cpus_queue) {
-+        QTAILQ_INSERT_TAIL_RCU(accel_cpus_queue, cpu, node);
-+    }
-+
-     cpu_list_generation_id++;
- }
- 
- void cpu_list_remove(CPUState *cpu)
- {
-+    CPUTailQ *accel_cpus_queue = cpus_get_accel_cpus_queue(cpu);
-+
-     QEMU_LOCK_GUARD(&qemu_cpu_list_lock);
-     if (!QTAILQ_IN_USE(cpu, node)) {
-         /* there is nothing to undo since cpu_exec_init() hasn't been called */
-         return;
-     }
- 
-+    if (accel_cpus_queue) {
-+        QTAILQ_REMOVE_RCU(accel_cpus_queue, cpu, node);
-+    }
-     QTAILQ_REMOVE_RCU(&cpus_queue, cpu, node);
-     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
-     cpu_list_generation_id++;
-diff --git a/system/cpus.c b/system/cpus.c
-index 99f83806c16..972df6ab061 100644
---- a/system/cpus.c
-+++ b/system/cpus.c
-@@ -209,6 +209,11 @@ void cpu_exec_reset_hold(CPUState *cpu)
-     }
- }
- 
-+CPUTailQ *cpus_get_accel_cpus_queue(CPUState *cpu)
-+{
-+    return cpus_accel ? cpus_accel->get_cpus_queue() : NULL;
-+}
-+
- int64_t cpus_get_virtual_clock(void)
- {
-     /*
--- 
-2.47.1
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+
+>   include/hw/core/cpu.h | 3 +++
+>   1 file changed, 3 insertions(+)
+> 
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index c3ca0babcb3..48d90f50a71 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -594,8 +594,11 @@ extern CPUTailQ cpus_queue;
+>   #define first_cpu        QTAILQ_FIRST_RCU(&cpus_queue)
+>   #define CPU_NEXT(cpu)    QTAILQ_NEXT_RCU(cpu, node)
+>   #define CPU_FOREACH(cpu) QTAILQ_FOREACH_RCU(cpu, &cpus_queue, node)
+> +
+> +#if defined(CONFIG_USER_ONLY)
+>   #define CPU_FOREACH_SAFE(cpu, next_cpu) \
+>       QTAILQ_FOREACH_SAFE_RCU(cpu, &cpus_queue, node, next_cpu)
+> +#endif
+>   
+>   extern __thread CPUState *current_cpu;
+>   
 

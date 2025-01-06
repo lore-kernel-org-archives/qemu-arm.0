@@ -1,180 +1,233 @@
-Received: by 2002:a05:7022:92c:b0:92:a90b:6588 with SMTP id bs44csp11793616dlb;
-        Mon, 6 Jan 2025 11:10:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVU0bD9yk1SxFpRbUk1SxDkEfFXkc2B4WwcnYITCNCHBVCe03SIHONsa/YjTogA5i/rPTDlHShRq5A2HA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHtmQ7rVBHRgYNRsPU6NZC8L79IjvAm7+d197SveAA3w4kPvUoQeYeN8EIQGRxgFAbcjkX0
-X-Received: by 2002:a05:622a:1802:b0:467:7b65:383 with SMTP id d75a77b69052e-46a4a970364mr1076844881cf.35.1736190606011;
-        Mon, 06 Jan 2025 11:10:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736190605; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12000974njk;
+        Mon, 6 Jan 2025 12:03:28 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUpw4T3E414AwSqpmLImYvx6cDcdWwFynY5LmPS/dwJr1hw0uRtSAEo4seAAmUwyweyXu+1762YrnJG5g==@linaro.org
+X-Google-Smtp-Source: AGHT+IEmgubxf0D5nfuZ++KASwyFfuqgKV0CNn30GrJdIv6aAPQ8GoFcNP00P99ao44PHjDyJvc9
+X-Received: by 2002:a17:90b:270d:b0:2ee:48bf:7dc3 with SMTP id 98e67ed59e1d1-2f452e1606amr94482245a91.15.1736193808701;
+        Mon, 06 Jan 2025 12:03:28 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1736193808; cv=pass;
         d=google.com; s=arc-20240605;
-        b=aqfVqPHmps8oqh02Ixl90sbCgQaSXa3K/5UjOsf6MNew6/1Kn1sBovSS7k03EpfKVC
-         Uf+uJ2VHTMIdmFLcplIbPcxhrBN3x9W5A7N1xf8INuqQub0Oedv+NZzia6Ec+tpe1nBj
-         FFr/GT/ywdtKNOsi4IKe2yHrG20V0H3yYT29SRsEiWC16eILjjcPRoFdcvb2pxJn8gfG
-         uExMWuuEjFO9Fex8HQSlUAM2XT96T4xfYy09dkVnGFdg2e1UXa+K+JxB4EiLsTpgsqcM
-         qEYuj6tdNJpe8MxQs2VVwBfdZvg19lmAb3xt3ZDE88DMdXnY13Dku49jW43FoOCPDeLC
-         JRGg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=GZ04ROe5zVucSnsi1pG1M6Y22Z5NwpHQGNla8TDV7+8=;
-        fh=JVIUtk4P5p270O3Q37L+fvFnEgdJ/gXHETFghwOU/pY=;
-        b=i+hs6FBd9GvveJojpKPHrktLEJVCjcpgi+aq76e5wqG9H6zyEDhf9k0Lcc9fT3u201
-         7/lw6pPdtmO40Jqzv9jX2hhrY5GRnCfh1pxo0zTlpghyD4NjdQDnD18dYqcIfm8E24ra
-         DILEuqPB5cdb1C2R7tLhrGtHX1o5Ckx/FwfpjdQZJ7mzDuYAWeK7eh1rY0AU1lYRyUDz
-         hjiudIabWC/2pbrl9rzOx04odp0OOW6Ij+uhd8whrYg19uBl12td+kljFBEQXyUJn9ou
-         r0faLQCLoF0xr3Ay+HxcW64hwBaGyLM88gVDin8ypCa1pUXSaagZvkQGwP8bHJtV16Zp
-         2VLA==;
+        b=FTVqeCV1vyYCUzejhJRXCrCmsWKGYtXE921XHkXBpmDK5hjp+FbR+fjjNeOQDOi1Gu
+         UZuO+q/dDM/PJ8kJqrHmgBJI8+UApjM77uuIxqYph/YEbE4E8XRU+r8pDwjX3Ta1Uyeh
+         FW8DKKx7xDRZAFos9A1fQmdywgoecSkfkiSyn0rzcwrWSsyCRAh4T1p+V/ihdX6BFTPO
+         IaVJvTmvmSH4kUOvAk4FwZo5uiEsFr7N7NEnpbYf2NLEY7sOBVfbiw5v61ki9w2OEejJ
+         qXgkVWXrYPCgQHTlNlzQG74GobCo4o/wrxvrQrCIExNeNFlSJmrbJQ/zPWhlUkH7rtM8
+         kEiw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=FEstRp4e2Qb00qEl2/J4TP29Zm1C+ONgiSLe4ofc5Fw=;
+        fh=w4MDQcAwDsZLFUFLlpTaEdqzrEMZzFksJ+P5zw4/fWk=;
+        b=ZiQAKZj7PQqc+bfx/NTppCLPmOPkWKFjPBitimRaI3RtKYOxd/qBnKL3k0wnux5g2f
+         T1K5VQpfAVdkXWJVVqxJmkhVZ4FkEfWsJzsxNSbogv8L3PVtdh4sWIVI2akHL0v2C43M
+         n2FQ+vvVaHOkb9pkpiVZMZGfJBB0WB+zebVQvJZWAqiNT8X5smu7yb5EiFeSLmMwcb57
+         CuSA8D+Zc6yHI/RognfLLR92zO7hCXxZr7mTc7DCYAlszzbHFiDC9RoPsJ7ppTwgzmRk
+         ILTrXi0anckajnMNDdQer+sBVzAGlOir7j0qv/lBt3WmyzkDzkDB4sChGeFBPWX0axDZ
+         krBg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FNVbSjJq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46a3ebd835dsi116699381cf.595.2025.01.06.11.10.05
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=livjnYzL;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-34634-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-34634-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm+bounces-34634-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
+        by mx.google.com with ESMTPS id 98e67ed59e1d1-2f53bb197e1si609415a91.2.2025.01.06.12.03.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jan 2025 11:10:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Jan 2025 12:03:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-34634-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=FNVbSjJq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tUsTs-0003hR-2K; Mon, 06 Jan 2025 14:09:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1tUsTp-0003gg-NY
- for qemu-arm@nongnu.org; Mon, 06 Jan 2025 14:09:37 -0500
-Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1tUsTo-0006aq-46
- for qemu-arm@nongnu.org; Mon, 06 Jan 2025 14:09:37 -0500
-Received: by mail-pl1-x636.google.com with SMTP id
- d9443c01a7336-21628b3fe7dso206683465ad.3
- for <qemu-arm@nongnu.org>; Mon, 06 Jan 2025 11:09:35 -0800 (PST)
+       dkim=pass header.i=@linaro.org header.s=google header.b=livjnYzL;
+       arc=pass (i=1 spf=pass spfdomain=linaro.org dkim=pass dkdomain=linaro.org dmarc=pass fromdomain=linaro.org);
+       spf=pass (google.com: domain of kvm+bounces-34634-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-34634-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id DC0A53A3D28
+	for <alex.bennee@linaro.org>; Mon,  6 Jan 2025 20:03:23 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id B516A1DF969;
+	Mon,  6 Jan 2025 20:03:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b="livjnYzL"
+Received: from mail-wm1-f46.google.com (mail-wm1-f46.google.com [209.85.128.46])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B33E1DF97C
+	for <kvm@vger.kernel.org>; Mon,  6 Jan 2025 20:03:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.128.46
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1736193806; cv=none; b=AMqlx24/S18GeTEB0ONCo9HHr0LlBBMSc2CWm4CfkFpLdw8uMPH1OTC0yzi+mVt4IGOM793dAp1z0zDee3YUGIDI/dPG16qBh4SfDFJ/c5uKvZnkClYgCXBk6srasBd2hyVJwI5oM0ueDVn3Lah1JJz+k8Elhyt9JPpuaOFG71M=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1736193806; c=relaxed/simple;
+	bh=jZ7uM/5ls9f5amJ9Rvsz2L3dolKK9SGFYa4mZLTw/k8=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=By1OhPsxE4CTC/j7fIJVWT7dnyy/KHZc2Tw3c0gWL4iIp0xtUmdYMDInFp8FKkSZW2igOs9CEjHz0cP861trQYmqoDRZjLFgXXH8kUxZDtjoMETuRi45EeXGi3EFiJ8EXos9TsPwaDqhofqv45xHNKUV5Fw5eIZYqdfMv8t7QS8=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org; spf=pass smtp.mailfrom=linaro.org; dkim=pass (2048-bit key) header.d=linaro.org header.i=@linaro.org header.b=livjnYzL; arc=none smtp.client-ip=209.85.128.46
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linaro.org
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=linaro.org
+Received: by mail-wm1-f46.google.com with SMTP id 5b1f17b1804b1-4362bae4d7dso106049015e9.1
+        for <kvm@vger.kernel.org>; Mon, 06 Jan 2025 12:03:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1736190574; x=1736795374; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=GZ04ROe5zVucSnsi1pG1M6Y22Z5NwpHQGNla8TDV7+8=;
- b=FNVbSjJqeSV2H20IxhiUKQAXECUONIx1OP2rdlM7jChIe4597u9Ac9qJeHCKKjuQW1
- b2XJ1KaRmutTvwRPK52vycj79WvDvpjY4/s2W+dasLZPHLzQWylVZ3nGejj9tk41A31Y
- rW9AnfNbv4tEUaPCzspYGZpdf2/XUNXheHrwdhvJI6XJH07AEpoKyRCvY2YF6kabtcb2
- SZI5OoxD2wbc72tKTEYVbiUj1GiVywJgNQhtcqKC1GcVjwxyse3cNOuf7zDwotSJcNC1
- IY8ka908k9TdMmy2XTi7yE8KP4JokMxR+S+aIUlIy206GAkVX5JJ745NhzIC1JPs1m05
- wLPw==
+        d=linaro.org; s=google; t=1736193803; x=1736798603; darn=vger.kernel.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=FEstRp4e2Qb00qEl2/J4TP29Zm1C+ONgiSLe4ofc5Fw=;
+        b=livjnYzLN/IHGzYYzSFrMcv8pAjVaRIFPdlFZ/6Ll+qfhv8K+TVcuXgO3ziQ28LnvG
+         s2vnRVujNKQUSMUAbdCCjvmHdV+zZW+QkZvcCiJPb95hcyp7PN1/r+dTtI7LngzDDphK
+         HYQ8ynAE5Yj6KjTxOMe4DyMH8a8TND1Lld8PmPgEK55l55U8lvJxLOOPjvcGqL50bc+W
+         6ijG26V/gy8F2ooLW8yLLAZusbqLiRjK4TO5jCuDCGBgEIVdQZYR7c1cVAczTON937Y6
+         hq/Nui5sXH4Z4JwuwLPUmT1JiGq15w7xhWs1K+qENToCbUqNc2bTnYxo/kU447LeJBgm
+         JRVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736190574; x=1736795374;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GZ04ROe5zVucSnsi1pG1M6Y22Z5NwpHQGNla8TDV7+8=;
- b=LKELZOum+opUyUtO+A1kFoTjcFw4MYAoID4pVAVjuwTIWay+vepJj0Xgf3Q/TSi1xc
- QHEwXqxy2xVbMtpWg7FTQFa/v4JqnNEHeB2US23+igwhGMOniA9xFveC8inAUk5XTLBU
- wha/lzQMnjgL81zYCNgkQ7hWnrlqpYKm22/rKZt67T1gbXEtdGM/rVnl01EKfAvQFJ94
- 2CE4CF6eW4Lhu1xmxTfvwnKJV3O+5Ff6/ST+s84CClSqCjW4cmwQPgw+9e7BO++8EEh1
- OHciwIqc22j2pO4C8SYUxO/coh0mL7ZBVjBTw5KG9Jpd5TaYCKDYeoH9ZHfVqs0o2UIb
- Y32w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVx/fgb/3tqTwpHy89/pYzbKo0098kalHSze/y+xEIjR0a4W0JUq70qrt0vjbxGvcuRWg/tGn085Q==@nongnu.org
-X-Gm-Message-State: AOJu0YzK7fUipNwZKfMaMTCAqdqCLpdJEgSiavN0s4bNeFXACl8h/t98
- oEvJMvJXoINm8lb3xjmhRNRKqOhb6I5isrEYU5q8L05v+0mNZFhl1gJ2T+eW34k=
-X-Gm-Gg: ASbGncvKMw69d0v/fqW3T5Hvls+6j2+FEvtwjLWcFeP3asseGhyh1wacpjAxAThqqdn
- iwOpjD7T3pRBsrhbb4llrtBAh+9Yl/pYPtTlYpJ8ONH6FLVQRUWexakqi5YXVrCDg9R0rgutzg4
- khDPGV5ekbm8LmINZtxj3L01sn6hMqoD8mPB9sppC8GvYEy0NsHIDQUIpqzeoi/CjYAyWH+QzXi
- 5TakGcFSHTAxxOk+IEBPjuG/nK7GPe3VaddPI0Fndkb7jJdvGdXvuKp3E/4INxCwRSyP5Cpet04
- BIFS9MOe5yipS9o93YGLheHWvf11JPeLfVU=
-X-Received: by 2002:a05:6a00:4486:b0:727:d55e:4bee with SMTP id
- d2e1a72fcca58-72abdd4f493mr74546969b3a.1.1736190574054; 
- Mon, 06 Jan 2025 11:09:34 -0800 (PST)
-Received: from ?IPV6:2804:7f0:bcc0:6edb:f473:a9df:d551:443b?
- ([2804:7f0:bcc0:6edb:f473:a9df:d551:443b])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-72b5bde56f8sm11568513b3a.162.2025.01.06.11.09.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 06 Jan 2025 11:09:33 -0800 (PST)
-Message-ID: <57a210eb-1335-4ac9-a0ac-cb636189c19c@ventanamicro.com>
-Date: Mon, 6 Jan 2025 16:09:29 -0300
+        d=1e100.net; s=20230601; t=1736193803; x=1736798603;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=FEstRp4e2Qb00qEl2/J4TP29Zm1C+ONgiSLe4ofc5Fw=;
+        b=k1m9AB/Pl+CN76pUzVkw3LoxPto094FSBRAc/L6fsNH0rsoQXOqOCZG/oaHUtvd4nR
+         wqjubWw9HeD+S+V129wOcobRC46mUayjCu0ZSitJhFPM+P56NiDAFUg4c+jndHSCHsFU
+         7q1CddeMCpkSwO/f3H/TOf+Qyf4lI1fCazyNwgjZTM16k2Nk1j27RLBvG4dRLKfvYoW0
+         G8Bzk/7F9QEVk4ey0eGh63nLDWXT6geg59niCLVlgFIkwCyJ88XPHluxZkzv1Qu+tW5D
+         mzbJ4uPpZHhRoZkQC+6LLTigdaEr1wt3koPIXhRQFEg2CjtXF3vuhlOFlbOmBP1JrtR3
+         lfxQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW3Y4F2JT6VAxaBU0I8Ou3ALDa4MViyI8BcOcugDBlp2wKvGOc0lkbYi27oUWsTR/Dodn0=@vger.kernel.org
+X-Gm-Message-State: AOJu0Yx5F8vSs3aARng8DRkUB9p3raww2dIaolQfVCBMqe0l/7VZWteC
+	j46jADOH1y9JvAoZC5zp1MXp7RHeEA7ledVou83tNps8Dd2ZSa/CWs9R4ZdtGK4=
+X-Gm-Gg: ASbGnctCbLOPo/nTz+JkZmK74287dvqjKuR1hUupugrmUHtQAYzxbm7IhSI7V4Qs36T
+	6/HSnrMgYkkt+Vl/WsAsM8XZPnezz/P/xYO2dkMNCFIrdCr06CCU0jX4fusd/7aTUOrWFVCbg3t
+	WMmcCrECXkl47l+5LOR92ZTKtGpMbIv8WxbrIk78MVGVrKxCwHdAzqInC2W3oIUiUfw3pQSLXvh
+	JzdCVD19r12MFL84+pYyuslKQO2MFiNRbWk9jzqEREzUr92QBy7246dBLXBiQNC4XnqgYj1Ybtc
+	IKwxtlQcWMuiJXY03ya6iVNjzXF8H84=
+X-Received: by 2002:a05:600c:4f84:b0:434:fec5:4ef5 with SMTP id 5b1f17b1804b1-43668643743mr497181795e9.14.1736193801273;
+        Mon, 06 Jan 2025 12:03:21 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4365c08afcbsm586765365e9.21.2025.01.06.12.03.19
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 06 Jan 2025 12:03:20 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+	=?UTF-8?q?Fr=C3=A9d=C3=A9ric=20Barrat?= <fbarrat@linux.ibm.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	Ilya Leoshkevich <iii@linux.ibm.com>,
+	Cameron Esfahani <dirty@apple.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	kvm@vger.kernel.org,
+	Alexander Graf <agraf@csgraf.de>,
+	Paul Durrant <paul@xen.org>,
+	David Hildenbrand <david@redhat.com>,
+	Halil Pasic <pasic@linux.ibm.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	xen-devel@lists.xenproject.org,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Reinoud Zandijk <reinoud@netbsd.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-s390x@nongnu.org,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Anthony PERARD <anthony@xenproject.org>,
+	Alistair Francis <alistair.francis@wdc.com>,
+	Sunil Muthuswamy <sunilmut@microsoft.com>,
+	Christian Borntraeger <borntraeger@linux.ibm.com>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Roman Bolshakov <rbolshakov@ddn.com>,
+	"Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	Phil Dennis-Jordan <phil@philjordan.eu>,
+	David Woodhouse <dwmw2@infradead.org>,
+	Harsh Prateek Bora <harshpb@linux.ibm.com>,
+	Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	qemu-ppc@nongnu.org,
+	Daniel Henrique Barboza <danielhb413@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Anton Johansson <anjo@rev.ng>
+Subject: [RFC PATCH 3/7] accel/tcg: Implement tcg_get_cpus_queue()
+Date: Mon,  6 Jan 2025 21:02:54 +0100
+Message-ID: <20250106200258.37008-4-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250106200258.37008-1-philmd@linaro.org>
+References: <20250106200258.37008-1-philmd@linaro.org>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH] target/arm/arm-powerctl: Restrict to ARM cores
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair.francis@wdc.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
- Eduardo Habkost <eduardo@habkost.net>, Anton Johansson <anjo@rev.ng>
-References: <20250106182343.35859-1-philmd@linaro.org>
-Content-Language: en-US
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20250106182343.35859-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pl1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sNxSPQlbZZbF
+X-TUID: qjoQPW9nk3Rn
 
+Use a specific vCPUs queue for our unique software accelerator.
+Register the AccelOpsClass::get_cpus_queue() handler.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ accel/tcg/tcg-accel-ops.h | 10 ++++++++++
+ accel/tcg/tcg-accel-ops.c |  8 ++++++++
+ 2 files changed, 18 insertions(+)
 
-On 1/6/25 3:23 PM, Philippe Mathieu-Daudé wrote:
-> When running on a heterogeneous setup, the CPU_FOREACH()
-> macro in arm_get_cpu_by_id() iterates on all vCPUs,
-> regardless they are ARM or not. Check the CPU class type
-> and skip the non-ARM instances.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
-
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
->   target/arm/arm-powerctl.c | 6 ++++--
->   1 file changed, 4 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-> index 20c70c7d6bb..a080a6ab79f 100644
-> --- a/target/arm/arm-powerctl.c
-> +++ b/target/arm/arm-powerctl.c
-> @@ -36,9 +36,11 @@ CPUState *arm_get_cpu_by_id(uint64_t id)
->       DPRINTF("cpu %" PRId64 "\n", id);
->   
->       CPU_FOREACH(cpu) {
-> -        ARMCPU *armcpu = ARM_CPU(cpu);
-> +        if (!object_class_dynamic_cast((ObjectClass *)cpu->cc, TYPE_ARM_CPU)) {
-> +            continue;
-> +        }
->   
-> -        if (arm_cpu_mp_affinity(armcpu) == id) {
-> +        if (arm_cpu_mp_affinity((ARMCPU *)cpu) == id) {
->               return cpu;
->           }
->       }
+diff --git a/accel/tcg/tcg-accel-ops.h b/accel/tcg/tcg-accel-ops.h
+index 6feeb3f3e9b..7b1d6288742 100644
+--- a/accel/tcg/tcg-accel-ops.h
++++ b/accel/tcg/tcg-accel-ops.h
+@@ -13,10 +13,20 @@
+ #define TCG_ACCEL_OPS_H
+ 
+ #include "system/cpus.h"
++#include "hw/core/cpu.h"
+ 
+ void tcg_cpu_destroy(CPUState *cpu);
+ int tcg_cpu_exec(CPUState *cpu);
+ void tcg_handle_interrupt(CPUState *cpu, int mask);
+ void tcg_cpu_init_cflags(CPUState *cpu, bool parallel);
+ 
++#ifdef CONFIG_USER_ONLY
++#define tcg_cpus_queue cpus_queue
++#else
++/* Guard with qemu_cpu_list_lock */
++extern CPUTailQ tcg_cpus_queue;
++#endif
++
++#define CPU_FOREACH_TCG(cpu) QTAILQ_FOREACH_RCU(cpu, &tcg_cpus_queue, node)
++
+ #endif /* TCG_ACCEL_OPS_H */
+diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
+index 6e3f1fa92b2..1fb077f7b38 100644
+--- a/accel/tcg/tcg-accel-ops.c
++++ b/accel/tcg/tcg-accel-ops.c
+@@ -47,6 +47,13 @@
+ 
+ /* common functionality among all TCG variants */
+ 
++CPUTailQ tcg_cpus_queue = QTAILQ_HEAD_INITIALIZER(tcg_cpus_queue);
++
++static CPUTailQ *tcg_get_cpus_queue(void)
++{
++    return &tcg_cpus_queue;
++}
++
+ void tcg_cpu_init_cflags(CPUState *cpu, bool parallel)
+ {
+     uint32_t cflags;
+@@ -199,6 +206,7 @@ static inline void tcg_remove_all_breakpoints(CPUState *cpu)
+ 
+ static void tcg_accel_ops_init(AccelOpsClass *ops)
+ {
++    ops->get_cpus_queue = tcg_get_cpus_queue;
+     if (qemu_tcg_mttcg_enabled()) {
+         ops->create_vcpu_thread = mttcg_start_vcpu_thread;
+         ops->kick_vcpu_thread = mttcg_kick_vcpu_thread;
+-- 
+2.47.1
 

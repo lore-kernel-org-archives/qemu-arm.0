@@ -1,295 +1,269 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12007810njk;
-        Mon, 6 Jan 2025 12:15:47 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXXS4qTCnHgay7kIvHPc9Dfbiu9spCY6TJjoDmdDIeZm9xCJRkIHKunxm+wQXbqRJBRN+vyJAjp7A2tsQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHkGaFLN7Ri8trNoXb7G7p951ppv1ZJRlcISZdeHRzY9Z/wPQuRFTUa3JoER8eSdC0S/FCR
-X-Received: by 2002:a05:622a:1a8d:b0:468:f80b:c5d7 with SMTP id d75a77b69052e-46a4a8c1c64mr957621181cf.1.1736194546918;
-        Mon, 06 Jan 2025 12:15:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736194546; cv=none;
+Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12015820njk;
+        Mon, 6 Jan 2025 12:33:31 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWM3Y+aDEZ0vodLl7zKcCk+wLB9bSa04rEXCd6cioWnCgYsuhXktkDNSmq5upornYUG+gmTcn5NAtn8Ug==@linaro.org
+X-Google-Smtp-Source: AGHT+IEwHwn7ANTUhEU3MCoIxnkcpJa3rTCzTzx1sQtuwPdSbTs5BX0+uz54uBqNo+VrNmoszaEk
+X-Received: by 2002:a17:907:6e89:b0:aa6:538e:a311 with SMTP id a640c23a62f3a-aac2b28eee7mr6105495166b.18.1736195611255;
+        Mon, 06 Jan 2025 12:33:31 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1736195611; cv=pass;
         d=google.com; s=arc-20240605;
-        b=AuHPG4Gho44+2qBuERiD4ki9wq4QdXzYhxvgMziaBwm+uKh1qyiCkJCplM8NYShm6G
-         O0bkrqw7n3zC2avJ9X85nAer83QAt/VApoiHozLYXKbZ6IACFKQ5LLReJq7GtwK72U6U
-         4abg37MdJ4Ehy++FK9nPv2T6ppahJwY2rxcfqjgaipy10jBf3OjSCdPzGolJQZaiqV7B
-         mvQUXpSVtLi/lIQpbffXJNA8YDVwzn2+Qz2EdpIpW+kxzJYza6YmVf/PrL45DZkZ32uk
-         k/EYAPFsuZdEzLem48tTG44i/U3IVP/Cix8yzzEeqTrxNM6hdZJJRO8TYCIQyG5v/q5o
-         vnEQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:date:cc:to:from:subject:message-id:dkim-signature;
-        bh=DlI62BJub4BdTeNvRspjlRb9urbaLpzCeHPPUjxorK4=;
-        fh=ojCa2pw/689AzcQ45OwnHyuM8afx9fDgwsjjpQ22Shk=;
-        b=lZg8VuUbE/LdpdrcQbXaL6R37RRRBLgv5s60Lg/KPAyOOsIWekEayM6howeajcVV8Q
-         xuaaDIGaa5C0Oh1jY6zjpuumZNOiKzW76uqLFQttIa3O2Dr3YZbklWSRqkR4KmTMCQi7
-         /yC50zmFil+BTUP4zt4AZWkMF89mnhiBUm9TffpVq836K2KpomPONV0GTtnSRBDUZQV0
-         qQaFocPzoHyH4Ed3RODT7GAunrT6Xa7ECrQZQbQrXeOkBqEiVBd29Y/zXl3M9YiRT6IA
-         Sp5gFWksGykmDW9LqE0YuVtRKwIaNJaNTqyFTqj4kRLnqvoJkzR1BeXYvDbwantSHah/
-         +uSA==;
+        b=HTGrbGtVH3xvW8DAupiEe9VotFRTc82ov1IvrsdQIsGecqT11146oxOT9eBpUIZhXF
+         A2qTdZY7Vjl1H895FaiPy1q7H0hwkteq58wmq+fvb2dU/43e4dsOgemIBrs8B6Jzkt7m
+         b51h+u+7oGmFq8jsUBPCwgNG4zgFSgEQoWlLgA95a6hXkSdxtFIbZabKTuNLGTYS/LO1
+         +GWGAk+SUftjmWcOgWIcLiJm+6cz2GSWrhbgIXsvv87LjQCEdw+6FhEqo7jTWrJ+EER5
+         jbz2QHsKi0TS+dpDSNgrOCK4OdiDimZv5AlsvTfWY253iMXnxV7Kgd8O8oxyD1pLjV9o
+         GaLg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:date:message-id:dkim-signature;
+        bh=tRChKa/6ydnGwRW0eNjgRJAJvFNapuIamBmUVRUNy3A=;
+        fh=qHXs6Aij3kA2RfIlZQiIdokz97uPs1LffI6w15wzjYg=;
+        b=S49P8LaT2YvpPJSMduMCXrARRYtxrCvEZ2WqL8HZ9lVGmFGTPhFb475j1AFJu92Gmp
+         iOdDadVsXmaB0SrwGy/2Pk3MMvMnEHu8x8Z2havyY7QOceI1KhKhQ0jYmpK8dBHN8nYe
+         LRerAALEYl+lMR1tT6vnVKw44so59ehhUQs6qIU58LaoU93pllxofTkIDXsR6/zaZo55
+         BLqAuUFlYerjRv4aQwc2oG8/trWq6sMvyr91XV1c/HqnzWuUoUCknqbG5nAbgwgAK5pO
+         CktaVTOwNWvOiyf3l8tkLva5OwiL5AX8YWijM+mcaMAtWYe0HrrFUg55siP78Kz8540b
+         lx5A==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=J4gL5MaV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46a3e67ef74si469523291cf.134.2025.01.06.12.15.46
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=VT4AHBEo;
+       arc=pass (i=1 spf=pass spfdomain=ventanamicro.com dkim=pass dkdomain=ventanamicro.com);
+       spf=pass (google.com: domain of kvm+bounces-34641-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-34641-alex.bennee=linaro.org@vger.kernel.org"
+Return-Path: <kvm+bounces-34641-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-aac0e7f15f2si2275892266b.136.2025.01.06.12.33.31
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jan 2025 12:15:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 06 Jan 2025 12:33:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-34641-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=J4gL5MaV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tUtVX-00017o-6Z; Mon, 06 Jan 2025 15:15:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1tUtVO-00016a-RI; Mon, 06 Jan 2025 15:15:18 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1tUtVL-0004pw-LB; Mon, 06 Jan 2025 15:15:18 -0500
-Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 506E6sj7002701;
- Mon, 6 Jan 2025 20:15:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:reply-to:subject:to; s=pp1;
- bh=DlI62BJub4BdTeNvRspjlRb9urbaLpzCeHPPUjxorK4=; b=J4gL5MaVd82M
- hOyQ9OGMDBi/WYI3MjB5VPRafg43SFxwQmUbJgr7Rf6RFv8dTOA/O+DDMBeDE/Dz
- a3EsDF1Hd1jTsU+yVIIEnWCuW0ag6m4ncg3EfcpyjxfnAi/bUH8f4njoDZUbYfdx
- KRHTPt57uO2WB7IbXnGSgsq51E4bmcEOVSBsN1VhZ+HcE3khwZjIAQfks+xhnwcV
- pUIws38esAAnDqrot7W4SmJeQozqDh91Ozk/YBEF0+NU9ZwYsan0tfYddI+Bh+6v
- dh3M/dhGrSwv3T/XHDrjDyyTT/6Vm0pDbkqkJzWDN42L2ADkhCGE2lWyhbd60VVd
- IR4RgRiUBA==
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 440gn51k11-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 06 Jan 2025 20:15:09 +0000 (GMT)
-Received: from m0353725.ppops.net (m0353725.ppops.net [127.0.0.1])
- by pps.reinject (8.18.0.8/8.18.0.8) with ESMTP id 506KB09T017297;
- Mon, 6 Jan 2025 20:15:09 GMT
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 440gn51k10-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 06 Jan 2025 20:15:09 +0000 (GMT)
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 506I56g5004143;
- Mon, 6 Jan 2025 20:15:08 GMT
-Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 43yfasyfag-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 06 Jan 2025 20:15:08 +0000
-Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com
- [10.39.53.229])
- by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 506KF7tD31654622
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 6 Jan 2025 20:15:08 GMT
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id D91895805B;
- Mon,  6 Jan 2025 20:15:07 +0000 (GMT)
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1CA975805F;
- Mon,  6 Jan 2025 20:15:07 +0000 (GMT)
-Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
- by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Mon,  6 Jan 2025 20:15:07 +0000 (GMT)
-Message-ID: <43e8dde9c0605526a4ae796b7dc090aaa8e59b65.camel@linux.ibm.com>
-Subject: Re: [PATCH 26/71] hw/gpio: Constify all Property
-From: Miles Glenn <milesg@linux.ibm.com>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Tyrone Ting
- <kfting@nuvoton.com>, Hao Wu <wuhaotsh@google.com>, Alistair Francis
- <Alistair.Francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>, Palmer Dabbelt
- <palmer@dabbelt.com>, Samuel Tardieu <sam@rfc1149.net>, "open list:i.MX31
- (kzm)" <qemu-arm@nongnu.org>, "open list:pca955x" <qemu-ppc@nongnu.org>,
- "open list:SiFive Machines" <qemu-riscv@nongnu.org>
-Date: Mon, 06 Jan 2025 14:15:06 -0600
-In-Reply-To: <20241213190750.2513964-31-richard.henderson@linaro.org>
-References: <20241213190750.2513964-1-richard.henderson@linaro.org>
- <20241213190750.2513964-31-richard.henderson@linaro.org>
-Organization: IBM
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-22.el8_8.2) 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: E2zrYNGCyRt_j5RA3Pgzv7hIcm1YZ2E9
-X-Proofpoint-GUID: amMgKoZRH-N6hREDOiNz2xcG2gDOi_Yq
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
- definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 adultscore=0
- mlxscore=0 priorityscore=1501 phishscore=0 suspectscore=0 impostorscore=0
- mlxlogscore=984 spamscore=0 clxscore=1011 bulkscore=0 lowpriorityscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2411120000
- definitions=main-2501060174
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: milesg@linux.ibm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7yYH+RdJW0Ju
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=VT4AHBEo;
+       arc=pass (i=1 spf=pass spfdomain=ventanamicro.com dkim=pass dkdomain=ventanamicro.com);
+       spf=pass (google.com: domain of kvm+bounces-34641-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-34641-alex.bennee=linaro.org@vger.kernel.org"
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 9642A1886E99
+	for <alex.bennee@linaro.org>; Mon,  6 Jan 2025 20:33:33 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id A1DC970830;
+	Mon,  6 Jan 2025 20:33:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=ventanamicro.com header.i=@ventanamicro.com header.b="VT4AHBEo"
+Received: from mail-pl1-f171.google.com (mail-pl1-f171.google.com [209.85.214.171])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EC4C21C69D
+	for <kvm@vger.kernel.org>; Mon,  6 Jan 2025 20:33:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=209.85.214.171
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1736195606; cv=none; b=YyErpk84Qv3xj2SMnUAnKYn3CnxarRr9oDyY1H7OO64cDDPtaXKRiss1YJ4UYsF57JTzJ6UTmJqZ4KdBUUOt6EnIILW758SI0nF83IqzBlEsurtadCmy4iGlL3lDVZsFdcIywMDINe663gyKyhLtpHJ+nuH+rlQNQVXPlyS+ayM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1736195606; c=relaxed/simple;
+	bh=4b/pSyVLztAmTQ0fAHNYwyMUCzcMxQbBpEzygfmO2rg=;
+	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
+	 In-Reply-To:Content-Type; b=dRYY03oUyqHljdJbsdD0lp4WIKZ4DYLcSEEVvvXwOU1KquS+Q2gFVT7GlfBgljhA6PzP+txx+Y8sTwz0xyQpzHZD82Re2eMLw3XhQbjWKYJayS57vMN9Yfy2/GEp9WZrwQEPokmi4VUZMRaI25mdR1Ext0wG5kBoieovHfYH4hI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=ventanamicro.com; spf=pass smtp.mailfrom=ventanamicro.com; dkim=pass (2048-bit key) header.d=ventanamicro.com header.i=@ventanamicro.com header.b=VT4AHBEo; arc=none smtp.client-ip=209.85.214.171
+Authentication-Results: smtp.subspace.kernel.org; dmarc=none (p=none dis=none) header.from=ventanamicro.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=ventanamicro.com
+Received: by mail-pl1-f171.google.com with SMTP id d9443c01a7336-21683192bf9so210867215ad.3
+        for <kvm@vger.kernel.org>; Mon, 06 Jan 2025 12:33:24 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ventanamicro.com; s=google; t=1736195604; x=1736800404; darn=vger.kernel.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=tRChKa/6ydnGwRW0eNjgRJAJvFNapuIamBmUVRUNy3A=;
+        b=VT4AHBEoEqWt/qiIX7v3i5dcaxGpg8NDIgGfPyEmWkxymJf8OMv3x6jgAAvPVromtD
+         oK6+OI807GZpThktuzcDJUT+K+ftgNc2p0kGF3cI5z7FCtncHzjK4Mxib92Do0Y2qruM
+         qMIMdtbYQRHmAsO5N2IC1VxrUjXOi19rXuF++5UjOeGXhynsH+Z8GmqDlZT5ZXqnolvn
+         iIXK9Vmu5oT+AQtfTydnYwTfeOYFMFd6IfJbzx2pgM63x3eBiCnQhVvhAdwVgTqXM6r0
+         q5JPr7EmVwgLX0hR8PJXnNJsvECIXG+f/7qQwDDVSJFVMO2jJMf1KLZgCwQJOPUMrkae
+         UQRQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736195604; x=1736800404;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=tRChKa/6ydnGwRW0eNjgRJAJvFNapuIamBmUVRUNy3A=;
+        b=TVYIVnxqCM0GOCUTuTn2y8oqjX+FZS4/ZAp+WqNjq4xVoX7ZfpJ5WxZPrckV+nh3MA
+         Ft4kP557+9Zl7clBPz6/eVRtNiHmVCM9YFfM35zuDCtR07+gPUHvLqBsPBOMK17vyN0o
+         v1BGAulNY+iZ45qNvDkEuN4QNBKNdyQuehoR6exYP0gKwCjG91ma6IGrBB4d1Okpgf99
+         S44nTX+NSFBasuZajC5sYmMUMv6DSG2PDNzdfw/4F/cS18s8klKVdo4Lb59uFVY2xP9s
+         jVc9l473qj1S5TukJzLjibc14qfPhYvFw6S5iycioKTtL/2BkM2mrtOSRR88JA/lhFhe
+         Oi7A==
+X-Forwarded-Encrypted: i=1; AJvYcCXOAfiQwwaNtlcw9YRijeUjzMn8vg+4OzA5WHMSVlnYhsGYde14lOD8+AObF8BYN97jXmU=@vger.kernel.org
+X-Gm-Message-State: AOJu0YzszDfSCA/AD7tzxJOJRCb6c6rkQ7Y4C1ZaIipYYnX8eNiVkrBP
+	va5iBR2FqPAjJkpQdXlL40WCZNHJGXlK7vn7wirj7iUsYZnh8mwkgdinq2DMoCjiiAJNKIaSDfw
+	6yT8=
+X-Gm-Gg: ASbGnctt5knl1s8EwpBJ9SupvNOZI8iuWxUBXqZy92JDBVsSiH0K4bfz/wrqceNvCD6
+	TJtqAJnuRSxzyLgXfPNc4wvHYNJrOQ0/hFmszlRJgLXNyouxjjPgNw5yUlJWTXkB6LHYxGbNXHX
+	JMAUYu66LEJuuy7c1kVf9Woy/Fe2s/KOxam3UWd06xJxfN2zWqZkCFYoaqLCVBl5CGZpwPTK9UC
+	NnF8Glfattdz543jyqcEkkd3mPJmppUQOXD9oScPv/0ggUOHBQCA6MckhdgJPvQAFHr12KCowz/
+	eKWqtpjRIAgeBWbS9JBqjplUfkN30em4Kmk=
+X-Received: by 2002:a17:903:2384:b0:216:5cbd:5449 with SMTP id d9443c01a7336-219e6e9e8c5mr891272455ad.13.1736195604239;
+        Mon, 06 Jan 2025 12:33:24 -0800 (PST)
+Received: from ?IPV6:2804:7f0:bdcd:fb00:6501:2693:db52:c621? ([2804:7f0:bdcd:fb00:6501:2693:db52:c621])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-219dc9cde66sm296704655ad.145.2025.01.06.12.33.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 06 Jan 2025 12:33:23 -0800 (PST)
+Message-ID: <bd8168fe-c774-4f75-8a94-1a67ec31e38d@ventanamicro.com>
+Date: Mon, 6 Jan 2025 17:33:12 -0300
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 6/7] accel/hvf: Use CPU_FOREACH_HVF()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?B?RnLDqWTDqXJpYyBCYXJyYXQ=?= <fbarrat@linux.ibm.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Cameron Esfahani <dirty@apple.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ Alexander Graf <agraf@csgraf.de>, Paul Durrant <paul@xen.org>,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ xen-devel@lists.xenproject.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ Yanan Wang <wangyanan55@huawei.com>, Reinoud Zandijk <reinoud@netbsd.org>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-s390x@nongnu.org,
+ Riku Voipio <riku.voipio@iki.fi>, Anthony PERARD <anthony@xenproject.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcelo Tosatti <mtosatti@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>, Zhao Liu
+ <zhao1.liu@intel.com>, Phil Dennis-Jordan <phil@philjordan.eu>,
+ David Woodhouse <dwmw2@infradead.org>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Nina Schoetterl-Glausch <nsg@linux.ibm.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>
+References: <20250106200258.37008-1-philmd@linaro.org>
+ <20250106200258.37008-7-philmd@linaro.org>
+Content-Language: en-US
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20250106200258.37008-7-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: pwU24ZACvhnc
 
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 
-On Fri, 2024-12-13 at 13:07 -0600, Richard Henderson wrote:
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  hw/gpio/imx_gpio.c       | 2 +-
->  hw/gpio/npcm7xx_gpio.c   | 2 +-
->  hw/gpio/omap_gpio.c      | 2 +-
->  hw/gpio/pca9552.c        | 2 +-
->  hw/gpio/pca9554.c        | 2 +-
->  hw/gpio/pl061.c          | 2 +-
->  hw/gpio/sifive_gpio.c    | 2 +-
->  hw/gpio/stm32l4x5_gpio.c | 2 +-
->  8 files changed, 8 insertions(+), 8 deletions(-)
+
+On 1/6/25 5:02 PM, Philippe Mathieu-Daudé wrote:
+> Only iterate over HVF vCPUs when running HVF specific code.
 > 
-> diff --git a/hw/gpio/imx_gpio.c b/hw/gpio/imx_gpio.c
-> index 27535a577f..919d53701f 100644
-> --- a/hw/gpio/imx_gpio.c
-> +++ b/hw/gpio/imx_gpio.c
-> @@ -290,7 +290,7 @@ static const VMStateDescription vmstate_imx_gpio
-> = {
->      }
->  };
->  
-> -static Property imx_gpio_properties[] = {
-> +static const Property imx_gpio_properties[] = {
->      DEFINE_PROP_BOOL("has-edge-sel", IMXGPIOState, has_edge_sel,
-> true),
->      DEFINE_PROP_BOOL("has-upper-pin-irq", IMXGPIOState,
-> has_upper_pin_irq,
->                       false),
-> diff --git a/hw/gpio/npcm7xx_gpio.c b/hw/gpio/npcm7xx_gpio.c
-> index ba19b9ebad..db6792b2ad 100644
-> --- a/hw/gpio/npcm7xx_gpio.c
-> +++ b/hw/gpio/npcm7xx_gpio.c
-> @@ -386,7 +386,7 @@ static const VMStateDescription
-> vmstate_npcm7xx_gpio = {
->      },
->  };
->  
-> -static Property npcm7xx_gpio_properties[] = {
-> +static const Property npcm7xx_gpio_properties[] = {
->      /* Bit n set => pin n has pullup enabled by default. */
->      DEFINE_PROP_UINT32("reset-pullup", NPCM7xxGPIOState, reset_pu,
-> 0),
->      /* Bit n set => pin n has pulldown enabled by default. */
-> diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-> index a47a2167a6..03ee9e47c6 100644
-> --- a/hw/gpio/omap_gpio.c
-> +++ b/hw/gpio/omap_gpio.c
-> @@ -225,7 +225,7 @@ void omap_gpio_set_clk(Omap1GpioState *gpio,
-> omap_clk clk)
->      gpio->clk = clk;
->  }
->  
-> -static Property omap_gpio_properties[] = {
-> +static const Property omap_gpio_properties[] = {
->      DEFINE_PROP_INT32("mpu_model", Omap1GpioState, mpu_model, 0),
->      DEFINE_PROP_END_OF_LIST(),
->  };
-> diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-> index 59b233339a..427419d218 100644
-> --- a/hw/gpio/pca9552.c
-> +++ b/hw/gpio/pca9552.c
-> @@ -428,7 +428,7 @@ static void pca955x_realize(DeviceState *dev,
-> Error **errp)
->      qdev_init_gpio_in(dev, pca955x_gpio_in_handler, k->pin_count);
->  }
->  
-> -static Property pca955x_properties[] = {
-> +static const Property pca955x_properties[] = {
->      DEFINE_PROP_STRING("description", PCA955xState, description),
->      DEFINE_PROP_END_OF_LIST(),
->  };
-> diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
-> index 68cc9e1de4..e8b0458aac 100644
-> --- a/hw/gpio/pca9554.c
-> +++ b/hw/gpio/pca9554.c
-> @@ -291,7 +291,7 @@ static void pca9554_realize(DeviceState *dev,
-> Error **errp)
->      qdev_init_gpio_in(dev, pca9554_gpio_in_handler,
-> PCA9554_PIN_COUNT);
->  }
->  
-> -static Property pca9554_properties[] = {
-> +static const Property pca9554_properties[] = {
->      DEFINE_PROP_STRING("description", PCA9554State, description),
->      DEFINE_PROP_END_OF_LIST(),
->  };
-> diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
-> index d5838b8e98..9b8ca6de32 100644
-> --- a/hw/gpio/pl061.c
-> +++ b/hw/gpio/pl061.c
-> @@ -562,7 +562,7 @@ static void pl061_realize(DeviceState *dev, Error
-> **errp)
->      }
->  }
->  
-> -static Property pl061_props[] = {
-> +static const Property pl061_props[] = {
->      DEFINE_PROP_UINT32("pullups", PL061State, pullups, 0xff),
->      DEFINE_PROP_UINT32("pulldowns", PL061State, pulldowns, 0x0),
->      DEFINE_PROP_END_OF_LIST()
-> diff --git a/hw/gpio/sifive_gpio.c b/hw/gpio/sifive_gpio.c
-> index e85c0406a2..5603f0c235 100644
-> --- a/hw/gpio/sifive_gpio.c
-> +++ b/hw/gpio/sifive_gpio.c
-> @@ -349,7 +349,7 @@ static const VMStateDescription
-> vmstate_sifive_gpio = {
->      }
->  };
->  
-> -static Property sifive_gpio_properties[] = {
-> +static const Property sifive_gpio_properties[] = {
->      DEFINE_PROP_UINT32("ngpio", SIFIVEGPIOState, ngpio,
-> SIFIVE_GPIO_PINS),
->      DEFINE_PROP_END_OF_LIST(),
->  };
-> diff --git a/hw/gpio/stm32l4x5_gpio.c b/hw/gpio/stm32l4x5_gpio.c
-> index 30d8d6cba4..d1394f3f55 100644
-> --- a/hw/gpio/stm32l4x5_gpio.c
-> +++ b/hw/gpio/stm32l4x5_gpio.c
-> @@ -447,7 +447,7 @@ static const VMStateDescription
-> vmstate_stm32l4x5_gpio = {
->      }
->  };
->  
-> -static Property stm32l4x5_gpio_properties[] = {
-> +static const Property stm32l4x5_gpio_properties[] = {
->      DEFINE_PROP_STRING("name", Stm32l4x5GpioState, name),
->      DEFINE_PROP_UINT32("mode-reset", Stm32l4x5GpioState,
-> moder_reset, 0),
->      DEFINE_PROP_UINT32("ospeed-reset", Stm32l4x5GpioState,
-> ospeedr_reset, 0),
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/system/hvf_int.h  | 4 ++++
+>   accel/hvf/hvf-accel-ops.c | 9 +++++----
+>   target/arm/hvf/hvf.c      | 4 ++--
+>   3 files changed, 11 insertions(+), 6 deletions(-)
+> 
+> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+> index 42ae18433f0..3cf64faabd1 100644
+> --- a/include/system/hvf_int.h
+> +++ b/include/system/hvf_int.h
+> @@ -11,6 +11,8 @@
+>   #ifndef HVF_INT_H
+>   #define HVF_INT_H
+>   
+> +#include "system/hw_accel.h"
+> +
+>   #ifdef __aarch64__
+>   #include <Hypervisor/Hypervisor.h>
+>   typedef hv_vcpu_t hvf_vcpuid;
+> @@ -74,4 +76,6 @@ int hvf_put_registers(CPUState *);
+>   int hvf_get_registers(CPUState *);
+>   void hvf_kick_vcpu_thread(CPUState *cpu);
+>   
+> +#define CPU_FOREACH_HVF(cpu) CPU_FOREACH_HWACCEL(cpu)
+
+
+Cosmetic comment: given that this is HVF specific code and we only support one hw
+accelerator at a time, I'd skip this alias and use CPU_FOREACH_HWACCEL(cpu) directly.
+It would make it easier when grepping to see where and how the macro is being used.
+Same thing in the next patch with CPU_FOREACH_KVM().
+
+
+LGTM otherwise. Thanks,
+
+Daniel
+
+
+> +
+>   #endif
+> diff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c
+> index 945ba720513..bbbe2f8d45b 100644
+> --- a/accel/hvf/hvf-accel-ops.c
+> +++ b/accel/hvf/hvf-accel-ops.c
+> @@ -504,7 +504,7 @@ static int hvf_insert_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len)
+>           }
+>       }
+>   
+> -    CPU_FOREACH(cpu) {
+> +    CPU_FOREACH_HVF(cpu) {
+>           err = hvf_update_guest_debug(cpu);
+>           if (err) {
+>               return err;
+> @@ -543,7 +543,7 @@ static int hvf_remove_breakpoint(CPUState *cpu, int type, vaddr addr, vaddr len)
+>           }
+>       }
+>   
+> -    CPU_FOREACH(cpu) {
+> +    CPU_FOREACH_HVF(cpu) {
+>           err = hvf_update_guest_debug(cpu);
+>           if (err) {
+>               return err;
+> @@ -560,7 +560,7 @@ static void hvf_remove_all_breakpoints(CPUState *cpu)
+>       QTAILQ_FOREACH_SAFE(bp, &hvf_state->hvf_sw_breakpoints, entry, next) {
+>           if (hvf_arch_remove_sw_breakpoint(cpu, bp) != 0) {
+>               /* Try harder to find a CPU that currently sees the breakpoint. */
+> -            CPU_FOREACH(tmpcpu)
+> +            CPU_FOREACH_HVF(tmpcpu)
+>               {
+>                   if (hvf_arch_remove_sw_breakpoint(tmpcpu, bp) == 0) {
+>                       break;
+> @@ -572,7 +572,7 @@ static void hvf_remove_all_breakpoints(CPUState *cpu)
+>       }
+>       hvf_arch_remove_all_hw_breakpoints();
+>   
+> -    CPU_FOREACH(cpu) {
+> +    CPU_FOREACH_HVF(cpu) {
+>           hvf_update_guest_debug(cpu);
+>       }
+>   }
+> @@ -581,6 +581,7 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, void *data)
+>   {
+>       AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);
+>   
+> +    ops->get_cpus_queue = hw_accel_get_cpus_queue;
+>       ops->create_vcpu_thread = hvf_start_vcpu_thread;
+>       ops->kick_vcpu_thread = hvf_kick_vcpu_thread;
+>   
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index 0afd96018e0..13400ff0d5f 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -2269,10 +2269,10 @@ static void hvf_arch_set_traps(void)
+>   
+>       /* Check whether guest debugging is enabled for at least one vCPU; if it
+>        * is, enable exiting the guest on all vCPUs */
+> -    CPU_FOREACH(cpu) {
+> +    CPU_FOREACH_HVF(cpu) {
+>           should_enable_traps |= cpu->accel->guest_debug_enabled;
+>       }
+> -    CPU_FOREACH(cpu) {
+> +    CPU_FOREACH_HVF(cpu) {
+>           /* Set whether debug exceptions exit the guest */
+>           r = hv_vcpu_set_trap_debug_exceptions(cpu->accel->fd,
+>                                                 should_enable_traps);
 

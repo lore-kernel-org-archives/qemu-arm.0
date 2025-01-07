@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c829015sm50843202f8f.13.2025.01.07.08.57.53
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c8a6ca5sm52045565f8f.86.2025.01.07.08.57.53
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 07 Jan 2025 08:57:53 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id D2DEB5FD97;
+	by draig.lan (Postfix) with ESMTP id BC88B5FD35;
 	Tue,  7 Jan 2025 16:52:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -53,164 +53,75 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Bernhard Beschow <shentey@gmail.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v3 20/29] tests/functional: extend test_aarch64_virt with vulkan test
-Date: Tue,  7 Jan 2025 16:51:58 +0000
-Message-Id: <20250107165208.743958-21-alex.bennee@linaro.org>
+Subject: [PATCH v3 19/29] tests/functional: add zstd support to uncompress utility
+Date: Tue,  7 Jan 2025 16:51:57 +0000
+Message-Id: <20250107165208.743958-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Bmxnzl49Mc9f
+X-TUID: i4WJpjgqHL12
 
-Now we have virtio-gpu Vulkan support lets add a test for it.
-Currently this is using images build by buildroot:
-
-  https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
+Rather than using the python library (which has a different API
+anyway) lets just call the binary. zstdtools is already in out
+qemu.yml so all test containers should have it around. Tests should
+still use @skipIfMissingCommands('zstd') to gracefully handle when
+only minimal dependencies have been installed.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - use decorator for has_cmd(zstd)
-  - un-handled->unhandled
-  - drop extra - from --snapshot
-  - drop unneeded virtualization=on
-  - only show 1s of each scene
-  - fix long lines
-v3
-  - move set_machine/require_accelerator to top of test
-  - use uncompress utility function
-  - remove extra ()'s from ASSETS
----
- tests/functional/test_aarch64_virt.py | 84 +++++++++++++++++++++++++--
- 1 file changed, 79 insertions(+), 5 deletions(-)
+ tests/functional/qemu_test/uncompress.py | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
-index 2d9995a95d..bb68048537 100755
---- a/tests/functional/test_aarch64_virt.py
-+++ b/tests/functional/test_aarch64_virt.py
-@@ -13,11 +13,14 @@
- import logging
- from subprocess import check_call, DEVNULL
+diff --git a/tests/functional/qemu_test/uncompress.py b/tests/functional/qemu_test/uncompress.py
+index 6d02ded066..404eee1f83 100644
+--- a/tests/functional/qemu_test/uncompress.py
++++ b/tests/functional/qemu_test/uncompress.py
+@@ -12,6 +12,7 @@
+ import os
+ import shutil
+ from urllib.parse import urlparse
++from subprocess import check_call, CalledProcessError
  
-+from qemu.machine.machine import VMLaunchFailure
-+
-+from qemu_test import BUILD_DIR
- from qemu_test import QemuSystemTest, Asset
--from qemu_test import exec_command_and_wait_for_pattern
-+from qemu_test import exec_command, exec_command_and_wait_for_pattern
- from qemu_test import wait_for_console_pattern
- from qemu_test import get_qemu_img
--
-+from qemu_test import skipIfMissingCommands, get_qemu_img
+ from .asset import Asset
  
- class Aarch64VirtMachine(QemuSystemTest):
-     KERNEL_COMMON_COMMAND_LINE = 'printk.time=0 '
-@@ -73,15 +76,16 @@ def common_aarch64_virt(self, machine):
-         Common code to launch basic virt machine with kernel+initrd
-         and a scratch disk.
-         """
-+        self.set_machine('virt')
-+        self.require_accelerator("tcg")
-+
-         logger = logging.getLogger('aarch64_virt')
+@@ -38,6 +39,18 @@ def lzma_uncompress(xz_path, output_path):
+             os.remove(output_path)
+             raise
  
-         kernel_path = self.ASSET_KERNEL.fetch()
++def zstd_uncompress(zstd_path, output_path):
++    if os.path.exists(output_path):
++        return
++
++    try:
++        check_call(['zstd', "-f", "-d", zstd_path,
++                    "-o", output_path])
++    except CalledProcessError as e:
++        os.remove(output_path)
++        raise Exception(
++            f"Unable to decompress zstd file {zstd_path} with {e}") from e
++
+ '''
+ @params compressed: filename, Asset, or file-like object to uncompress
+ @params uncompressed: filename to uncompress into
+@@ -59,6 +72,8 @@ def uncompress(compressed, uncompressed, format=None):
+         lzma_uncompress(str(compressed), uncompressed)
+     elif format == "gz":
+         gzip_uncompress(str(compressed), uncompressed)
++    elif format == "zstd":
++        zstd_uncompress(str(compressed), uncompressed)
+     else:
+         raise Exception(f"Unknown compression format {format}")
  
--        self.set_machine('virt')
-         self.vm.set_console()
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-                                'console=ttyAMA0')
--        self.require_accelerator("tcg")
-         self.vm.add_args('-cpu', 'max,pauth-impdef=on',
-                          '-machine', machine,
-                          '-accel', 'tcg',
-@@ -102,7 +106,9 @@ def common_aarch64_virt(self, machine):
- 
-         # Add the device
-         self.vm.add_args('-blockdev',
--                         f"driver=qcow2,file.driver=file,file.filename={image_path},node-name=scratch")
-+                         "driver=qcow2,file."
-+                         "driver=file,file."
-+                         f"filename={image_path},node-name=scratch")
-         self.vm.add_args('-device',
-                          'virtio-blk-device,drive=scratch')
- 
-@@ -131,5 +137,73 @@ def test_aarch64_virt_gicv2(self):
-         self.common_aarch64_virt("virt,gic-version=2")
- 
- 
-+    ASSET_VIRT_GPU_KERNEL = Asset(
-+        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-+        'download?path=%2F&files='
-+        'Image',
-+        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
-+
-+    ASSET_VIRT_GPU_ROOTFS = Asset(
-+        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-+        'download?path=%2F&files='
-+        'rootfs.ext4.zstd',
-+        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
-+
-+    @skipIfMissingCommands('zstd')
-+    def test_aarch64_virt_with_gpu(self):
-+        # This tests boots with a buildroot test image that contains
-+        # vkmark and other GPU exercising tools. We run a headless
-+        # weston that nevertheless still exercises the virtio-gpu
-+        # backend.
-+
-+        self.set_machine('virt')
-+        self.require_accelerator("tcg")
-+
-+        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
-+        image_path = self.uncompress(self.ASSET_VIRT_GPU_ROOTFS, format="zstd")
-+
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyAMA0 root=/dev/vda')
-+
-+        self.vm.add_args("-accel", "tcg")
-+        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
-+        self.vm.add_args("-machine", "virt,gic-version=max",
-+                         '-kernel', kernel_path,
-+                         '-append', kernel_command_line)
-+        self.vm.add_args("-smp", "2", "-m", "2048")
-+        self.vm.add_args("-device",
-+                         "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
-+        self.vm.add_args("-display", "egl-headless")
-+        self.vm.add_args("-display", "dbus,gl=on")
-+        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
-+        self.vm.add_args("-blockdev",
-+                         "driver=raw,file.driver=file,"
-+                         "node-name=hd0,read-only=on,"
-+                         f"file.filename={image_path}")
-+        self.vm.add_args("-snapshot")
-+
-+        try:
-+            self.vm.launch()
-+        except VMLaunchFailure as excp:
-+            if "old virglrenderer, blob resources unsupported" in excp.output:
-+                self.skipTest("No blob support for virtio-gpu")
-+            elif "old virglrenderer, venus unsupported" in excp.output:
-+                self.skipTest("No venus support for virtio-gpu")
-+            else:
-+                self.log.info("unhandled launch failure: {excp.output}")
-+                raise excp
-+
-+        self.wait_for_console_pattern('buildroot login:')
-+        exec_command(self, 'root')
-+        exec_command(self, 'export XDG_RUNTIME_DIR=/tmp')
-+        exec_command_and_wait_for_pattern(self,
-+                                          "weston -B headless "
-+                                          "--renderer gl "
-+                                          "--shell kiosk "
-+                                          "-- vkmark -b:duration=1.0",
-+                                          "vkmark Score")
-+
-+
- if __name__ == '__main__':
-     QemuSystemTest.main()
+@@ -79,5 +94,7 @@ def guess_uncompress_format(compressed):
+         return "xz"
+     elif ext == ".gz":
+         return "gz"
++    elif ext == ".zstd":
++        return "zstd"
+     else:
+         raise Exception(f"Unknown compression format for {compressed}")
 -- 
 2.39.5

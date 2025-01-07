@@ -1,123 +1,117 @@
-Received: by 2002:a17:504:664e:b0:1be9:327d:8ee3 with SMTP id l14csp12046782njk;
-        Mon, 6 Jan 2025 13:45:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV97OVYYe8rK8OsxUgzf9NhPGwMjNgZ6xii3MBDaKLPHO6hvkvo3xmq6+iJZsdQmfE+ACog7ik9imsq4w==@linaro.org
-X-Google-Smtp-Source: AGHT+IHhjxqANXGkHqnAm7gPnVRyETrhMFDeTZdtK2UNkKMqnam0mssYcNRK8G3exSIUJ6O3h/Ld
-X-Received: by 2002:a05:6102:2923:b0:4af:e077:8a73 with SMTP id ada2fe7eead31-4b2cc38f5efmr48022380137.13.1736199942612;
-        Mon, 06 Jan 2025 13:45:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736199942; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp141524njb;
+        Tue, 7 Jan 2025 05:09:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVpDxlJtK1svZlHykmzswXzqsMr7AanXyqKLUC5uCohfmH3wVaEFDGOYeh3CKjEtAwt9okFlfj/AXswSg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFEs27rrClbU9LMkuHxoxW4ZtR+SFhesVj5YM/cHd576maE7edjxbyPVPDyugZZ9iOo7qUi
+X-Received: by 2002:a05:6214:250e:b0:6d8:a84b:b508 with SMTP id 6a1803df08f44-6dd2333ae04mr977100936d6.12.1736255398288;
+        Tue, 07 Jan 2025 05:09:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736255398; cv=none;
         d=google.com; s=arc-20240605;
-        b=LEIaPj3mE9e+4g4DE1HIwJpaeS7MafRxxC0EkAk2VC6rF2OQ3XRHfmdzbo0TtHBrYm
-         b2XcwkqnDipu91hybOl+eVe0ovNi5z9qgLaTRBUXc9g1cRMhur1NN1KXNXBChpKREfbX
-         IY7/62dEkJZtXbFbmG4qrIpDsEZa28cPkxo6vP2rvVg2llBG6NhOGsWpgBZ6GRoTGjdR
-         KUSHlGoRpmsp6gcsTJ3bhcL0NJLXhRHoorxMzc9BXAMom8xO8f6SuS7jpjWPgYkyTgh7
-         KqbvGCmafLTc3AbuSrb1XzudJrrFsHWxifddh0ALypH0AtxXkwEoXo95wKrNwdMNomDR
-         GigA==
+        b=luJhp788sYo11teDhpDTTbE2MZgt9xz54hGm31V3BIkjw/7HBn98JjVxHkMHP145ow
+         diyf4RU7koG952Z22Y2gb2hcKgxkfa5Dyjihwx63daMA1nIya7JFuZqa4agpO6DHT6XT
+         p8Y/UeX2CbOVHcAwGSTJCDFEBdDaRQNve8yEdoRvcjBVEDmc73ox5JaZ7rJWDZcKOc+X
+         KFinH5spSDhetTt2LjOLY4eQ29MD0TXtrFPdZyyaQZs2XAk1kfosxSRX7dtojlfG7ZrB
+         QTAOaPJx0Ez4TG9t/eRaSctYCGeHIlUOnoWFDygISWm39N2/f1CUeF/OTzAO9yHYpkvo
+         cU9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Q1fK9bXE7L4EjYg2zKsnZZ1K2teUmx39u5sxbf95Jis=;
-        fh=RpWChb+Deuy3D8nIuyQYSL+dXlnL1pD8uvzvw/OS44g=;
-        b=Y6oQAowdIbvi0uvUmXTwgxz8+licHiQ+CqlA7/RkdqsoJQZM/AebYnyb1zw1BQkdYm
-         1Gk+ADu7pVUklMU16levVg3Njh7BmyPEYy8zwlZAGU8Ro8aMg87o2CtTDajsh+K21SkF
-         Z2mVeEir1H7xSQHIFVTmWq531s+s/ewZzGw2g9A5HlC32OxP5A9EL+k9sWUYzicL6j3a
-         w250pm/MsizobZnEbXhkhAry3PXnKQD5cSpMb9h+MuWzb3nAkkNYWo7vEv8G8AJjd/Ui
-         UHglRsSfBmlyOVJwMyf3GxEqk+njvl8nzNHV6p0TYjglHcBH/qeVIGAc8RRJoPHUfw/N
-         NyZQ==;
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :message-id:in-reply-to:subject:cc:to:from:date;
+        bh=ZnIuAeJ5YlWp73V83aZmijaz5SmV1cpsDTGUi9JDVSo=;
+        fh=3b3OYYu51rXjK5xs2gC3mmJNLCOelXs8cduDrrBFp1M=;
+        b=OhMSaGDPZ0JR43FsCwBtc5V0lUPq7LOjrImTr0aHbl8Z5m/alEkaEJwyEWfx81AsnG
+         ZDGylZFmCtTeOmnWVxZ27FlA3py0M6wPSoyIzAbduN+vUxbsmd+a6K7NuJ1Mr7BC9kzv
+         Pk5OExP6CAJtwFZWpVkjgN9uqTv8bo2HYQOZaeiuvJGi9nmTE1HJT6WrivW+7sUqZEQf
+         GcYOe7P4RTsTr8nJLHBKfr3QKEAq+NwTfsvYkOvMBic84wP99SXbwlc47YNJb0NgpyK0
+         O3TdMfD8E/TivgV0fDNmNgvkY22cWtMRLde6IAsDy1UgixmfJIjzS/7KFtIWxniJ91Ko
+         pLcA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uX5UrFur;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b2bfb7387dsi11171243137.396.2025.01.06.13.45.42
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd1824d5fbsi459754576d6.304.2025.01.07.05.09.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 06 Jan 2025 13:45:42 -0800 (PST)
+        Tue, 07 Jan 2025 05:09:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uX5UrFur;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tUuuV-00077a-52; Mon, 06 Jan 2025 16:45:19 -0500
+	id 1tV9LB-0001V3-Lr; Tue, 07 Jan 2025 08:09:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tUuuT-000745-Hi
- for qemu-arm@nongnu.org; Mon, 06 Jan 2025 16:45:17 -0500
-Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tUuuP-0005PF-VC
- for qemu-arm@nongnu.org; Mon, 06 Jan 2025 16:45:16 -0500
-Received: by mail-yb1-xb32.google.com with SMTP id
- 3f1490d57ef6-e549be93d5eso4922488276.1
- for <qemu-arm@nongnu.org>; Mon, 06 Jan 2025 13:45:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1736199913; x=1736804713; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Q1fK9bXE7L4EjYg2zKsnZZ1K2teUmx39u5sxbf95Jis=;
- b=uX5UrFurxOdBRURURwWZgR/uRa9bSZTYos9d4Tr5wSWTEaiA9rQX1X/UrIeQpVOoSN
- CaXEpRkqTnhxcpsEx41kHNy0uyQZxoAwWOOQGlLjgt1noTrXKaSKhVoC7f0H49d7hfWd
- puMQdJ4X1OSkJMG4vsc30DCVVBLRx60TYSw0unsnQ93chrfeJHv8ZcKiv6sR3niOC1f8
- wrSuldH54so7/vWqhYOIrGtMqklKUukBeFahoaaivosOJ/Ysz3JXiNgfDi7EJjXwYUx9
- HDeCVbE6v7jZkEbhh3qnvY1zV2l3G9vTBoVsCUjUecIS55k6v9hPIAqKV5VewQcRYVvf
- Y9Mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736199913; x=1736804713;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=Q1fK9bXE7L4EjYg2zKsnZZ1K2teUmx39u5sxbf95Jis=;
- b=M7Ur/iRQ9rbMJPOyqdB63eRda1qG2d65l5aI720SD4RlAHUhEljNC1DHFwJIgMFtdP
- 4NbNAj7sd4jJZhGJVqixusVjTus5Tx6Pw6lfDnt8UrVrJek+2EKdb3iWuCt7iy9/vi+i
- lWsXomj0vcD+KeH8HspJ9UbCi+XSgED1PtcxSLFjh1BsvENYJJzEBbkWycM8l988pqWe
- /ejGq6aMS97jV5b4ttxtR6pwFF7hPxAVdC0r7b9x76tHAiCyJaH3SLUbVDNh8HObJ0CZ
- 3xsysek7Pb6ekELURj19GULZB94RPRwziaHloP/4NKJV6KmM3sqb5//GwxOZaqPhVMpE
- DzGw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV5r2wXFVdG7gWBVEqpE9a4rq8ikvF40mvKQ1wjcnP1bZZmYo48nF6WLavz7yln3mSZc/Dfwd1vOQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yyhc3CyIggSalUYQpJPTxaWSVfAZZFVqyoiksXxd7g3dGFxOlla
- ZKBKvrfm9g9/xuSzLNQb6szl3xUAmTzAz7xkxfxuqw2xJIjphF1MtO3F9Y9/O4mjPXB230Hbgtx
- Oc0X5BPk0H4a9M860JjxvURLgOR5L4GHOL3NL9A==
-X-Gm-Gg: ASbGncsxtQQpBPIP51Qd2G4vecbOoj0JwhBj4Q6BAE8CvCdNg3zMJyTrdztWxwUQYrk
- pEBCkvwAHPAR0kMzduNTaNCaQNgjRmchWyoRA1jM=
-X-Received: by 2002:a05:6902:1683:b0:e39:8558:d9c5 with SMTP id
- 3f1490d57ef6-e538c25ca62mr43210270276.18.1736199912829; Mon, 06 Jan 2025
- 13:45:12 -0800 (PST)
-MIME-Version: 1.0
-References: <20250106182343.35859-1-philmd@linaro.org>
-In-Reply-To: <20250106182343.35859-1-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Jan 2025 21:45:01 +0000
-Message-ID: <CAFEAcA8mxMP=aSrd1=dL0dMzWzHZAF4B5TC=READYiDRLuURQQ@mail.gmail.com>
-Subject: Re: [RFC PATCH] target/arm/arm-powerctl: Restrict to ARM cores
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, Alistair Francis <alistair.francis@wdc.com>,
- qemu-arm@nongnu.org, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tV9L3-0001Tr-GQ; Tue, 07 Jan 2025 08:09:43 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tV9L1-0007q0-Hq; Tue, 07 Jan 2025 08:09:41 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 5741C4E6000;
+ Tue, 07 Jan 2025 14:09:32 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id U0rxOlpL8Io9; Tue,  7 Jan 2025 14:09:30 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 62FA44E6010; Tue, 07 Jan 2025 14:09:30 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 60242746F60;
+ Tue, 07 Jan 2025 14:09:30 +0100 (CET)
+Date: Tue, 7 Jan 2025 14:09:30 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>, qemu-devel@nongnu.org,
+ =?ISO-8859-15?Q?Fr=E9d=E9ric_Barrat?= <fbarrat@linux.ibm.com>, 
+ Stefano Stabellini <sstabellini@kernel.org>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, Cameron Esfahani <dirty@apple.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org, 
+ Alexander Graf <agraf@csgraf.de>, Paul Durrant <paul@xen.org>, 
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+ xen-devel@lists.xenproject.org, qemu-arm@nongnu.org, 
+ =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@redhat.com>, 
+ Yanan Wang <wangyanan55@huawei.com>, Reinoud Zandijk <reinoud@netbsd.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-s390x@nongnu.org, 
+ Riku Voipio <riku.voipio@iki.fi>, Anthony PERARD <anthony@xenproject.org>, 
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Sunil Muthuswamy <sunilmut@microsoft.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Nicholas Piggin <npiggin@gmail.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Marcelo Tosatti <mtosatti@redhat.com>, Thomas Huth <thuth@redhat.com>, 
+ Roman Bolshakov <rbolshakov@ddn.com>, 
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>, 
- Eduardo Habkost <eduardo@habkost.net>, Anton Johansson <anjo@rev.ng>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b32;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb32.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ Zhao Liu <zhao1.liu@intel.com>, Phil Dennis-Jordan <phil@philjordan.eu>, 
+ David Woodhouse <dwmw2@infradead.org>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Nina Schoetterl-Glausch <nsg@linux.ibm.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org, 
+ Daniel Henrique Barboza <danielhb413@gmail.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>
+Subject: Re: [RFC PATCH 6/7] accel/hvf: Use CPU_FOREACH_HVF()
+In-Reply-To: <6df59c2c-e29d-4b86-8908-4cb9093bad13@linaro.org>
+Message-ID: <4abe9825-ff86-5e7d-1170-3677d5494879@eik.bme.hu>
+References: <20250106200258.37008-1-philmd@linaro.org>
+ <20250106200258.37008-7-philmd@linaro.org>
+ <bd8168fe-c774-4f75-8a94-1a67ec31e38d@ventanamicro.com>
+ <6df59c2c-e29d-4b86-8908-4cb9093bad13@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="3866299591-1325344726-1736255370=:80373"
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,52 +126,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: r6zR4K3YD8Da
+X-TUID: ahNRRoVWkORm
 
-On Mon, 6 Jan 2025 at 18:23, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
->
-> When running on a heterogeneous setup, the CPU_FOREACH()
-> macro in arm_get_cpu_by_id() iterates on all vCPUs,
-> regardless they are ARM or not. Check the CPU class type
-> and skip the non-ARM instances.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  target/arm/arm-powerctl.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
->
-> diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
-> index 20c70c7d6bb..a080a6ab79f 100644
-> --- a/target/arm/arm-powerctl.c
-> +++ b/target/arm/arm-powerctl.c
-> @@ -36,9 +36,11 @@ CPUState *arm_get_cpu_by_id(uint64_t id)
->      DPRINTF("cpu %" PRId64 "\n", id);
->
->      CPU_FOREACH(cpu) {
-> -        ARMCPU *armcpu =3D ARM_CPU(cpu);
-> +        if (!object_class_dynamic_cast((ObjectClass *)cpu->cc, TYPE_ARM_=
-CPU)) {
-> +            continue;
-> +        }
->
-> -        if (arm_cpu_mp_affinity(armcpu) =3D=3D id) {
-> +        if (arm_cpu_mp_affinity((ARMCPU *)cpu) =3D=3D id) {
->              return cpu;
->          }
->      }
-> --
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Makes sense -- the function is "get me a CPU with this MPIDR",
-so in a heterogenous system we can happily scan all the Arm CPUs
-(even if they're in some other SoC) and trust that the caller
-passed us a MPIDR that makes sense. (The callsites might need
-some work if we wanted to use those SoC models in a heterogenous
-setup where they're not the only SoC -- eg the imx6_src devices
-assume the CPUs in the SoC are numbered 0,1,2,3 -- but we don't
-need to do that now.)
+--3866299591-1325344726-1736255370=:80373
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+On Mon, 6 Jan 2025, Philippe Mathieu-Daudé wrote:
+> On 6/1/25 21:33, Daniel Henrique Barboza wrote:
+>> 
+>> 
+>> On 1/6/25 5:02 PM, Philippe Mathieu-Daudé wrote:
+>>> Only iterate over HVF vCPUs when running HVF specific code.
+>>> 
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> ---
+>>>   include/system/hvf_int.h  | 4 ++++
+>>>   accel/hvf/hvf-accel-ops.c | 9 +++++----
+>>>   target/arm/hvf/hvf.c      | 4 ++--
+>>>   3 files changed, 11 insertions(+), 6 deletions(-)
+>>> 
+>>> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
+>>> index 42ae18433f0..3cf64faabd1 100644
+>>> --- a/include/system/hvf_int.h
+>>> +++ b/include/system/hvf_int.h
+>>> @@ -11,6 +11,8 @@
+>>>   #ifndef HVF_INT_H
+>>>   #define HVF_INT_H
+>>> +#include "system/hw_accel.h"
+>>> +
+>>>   #ifdef __aarch64__
+>>>   #include <Hypervisor/Hypervisor.h>
+>>>   typedef hv_vcpu_t hvf_vcpuid;
+>>> @@ -74,4 +76,6 @@ int hvf_put_registers(CPUState *);
+>>>   int hvf_get_registers(CPUState *);
+>>>   void hvf_kick_vcpu_thread(CPUState *cpu);
+>>> +#define CPU_FOREACH_HVF(cpu) CPU_FOREACH_HWACCEL(cpu)
+>> 
+>> 
+>> Cosmetic comment: given that this is HVF specific code and we only support 
+>> one hw
+>> accelerator at a time, I'd skip this alias and use CPU_FOREACH_HWACCEL(cpu) 
+>> directly.
+>> It would make it easier when grepping to see where and how the macro is 
+>> being used.
+>
+> I find it more useful to grep for a particular accelerator, or for
+> all of them:
+>
+> $ git grep CPU_FOREACH_
+> accel/hvf/hvf-accel-ops.c:507:    CPU_FOREACH_HVF(cpu) {
+> accel/hvf/hvf-accel-ops.c:546:    CPU_FOREACH_HVF(cpu) {
+> accel/kvm/kvm-all.c:875:        CPU_FOREACH_KVM(cpu) {
+> accel/kvm/kvm-all.c:938:    CPU_FOREACH_KVM(cpu) {
+> accel/tcg/cputlb.c:372:    CPU_FOREACH_TCG(cpu) {
+> accel/tcg/cputlb.c:650:        CPU_FOREACH_TCG(dst_cpu) {
 
-thanks
--- PMM
+But then you need to define a new macro for every new accelerator. Maybe 
+it's simpler to have CPU_FOREACH take the queue as a parameter so no 
+separate macro is needed for each accel (and they cannot get inconsistent 
+by changing only one of them in the future).
+
+Regards,
+BALATON Zoltan
+--3866299591-1325344726-1736255370=:80373--

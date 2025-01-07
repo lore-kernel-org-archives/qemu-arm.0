@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c89e2eesm51580698f8f.80.2025.01.07.08.57.52
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4366127c4b0sm604067075e9.35.2025.01.07.08.57.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 07 Jan 2025 08:57:53 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 2175B60030;
-	Tue,  7 Jan 2025 16:52:10 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 909285FC6C;
+	Tue,  7 Jan 2025 16:52:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
@@ -53,125 +53,93 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Bernhard Beschow <shentey@gmail.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v3 23/29] tests/lcitool: remove temp workaround for debian mips64el
-Date: Tue,  7 Jan 2025 16:52:01 +0000
-Message-Id: <20250107165208.743958-24-alex.bennee@linaro.org>
+Subject: [PATCH v3 17/29] system/qtest: properly feedback results of clock_[step|set]
+Date: Tue,  7 Jan 2025 16:51:55 +0000
+Message-Id: <20250107165208.743958-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: zcLvVe4YFu5Z
+X-TUID: RDEFYPtzkE/L
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+Time will not advance if the system is paused or there are no timer
+events set for the future. In absence of pending timer events
+advancing time would make no difference the system state. Attempting
+to do so would be a bug and the test or device under test would need
+fixing.
 
-The workaround applied in
+Tighten up the result reporting to `FAIL` if time was not advanced.
 
-  commit c60473d29254b79d9437eface8b342e84663ba66
-  Author: Alex Bennée <alex.bennee@linaro.org>
-  Date:   Wed Oct 2 10:03:33 2024 +0200
-
-    testing: bump mips64el cross to bookworm and fix package list
-
-Is no longer required since the affected builds are now fixed.
-
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20241217133525.3836570-1-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2687
 ---
- .../dockerfiles/debian-mips64el-cross.docker  |  9 ++++++
- tests/lcitool/mappings.yml                    | 29 -------------------
- 2 files changed, 9 insertions(+), 29 deletions(-)
+ system/qtest.c | 23 ++++++++++++++---------
+ 1 file changed, 14 insertions(+), 9 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-index c09a8da890..9f6c4763c5 100644
---- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
-+++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
-@@ -93,13 +93,18 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       libcmocka-dev:mips64el \
-                       libcurl4-gnutls-dev:mips64el \
-                       libdaxctl-dev:mips64el \
-+                      libdrm-dev:mips64el \
-+                      libepoxy-dev:mips64el \
-                       libfdt-dev:mips64el \
-                       libffi-dev:mips64el \
-                       libfuse3-dev:mips64el \
-+                      libgbm-dev:mips64el \
-                       libgcrypt20-dev:mips64el \
-                       libglib2.0-dev:mips64el \
-                       libglusterfs-dev:mips64el \
-                       libgnutls28-dev:mips64el \
-+                      libgtk-3-dev:mips64el \
-+                      libgtk-vnc-2.0-dev:mips64el \
-                       libibverbs-dev:mips64el \
-                       libiscsi-dev:mips64el \
-                       libjemalloc-dev:mips64el \
-@@ -119,6 +124,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       librbd-dev:mips64el \
-                       librdmacm-dev:mips64el \
-                       libsasl2-dev:mips64el \
-+                      libsdl2-dev:mips64el \
-+                      libsdl2-image-dev:mips64el \
-                       libseccomp-dev:mips64el \
-                       libselinux1-dev:mips64el \
-                       libslirp-dev:mips64el \
-@@ -134,6 +141,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
-                       libusb-1.0-0-dev:mips64el \
-                       libusbredirhost-dev:mips64el \
-                       libvdeplug-dev:mips64el \
-+                      libvirglrenderer-dev:mips64el \
-+                      libvte-2.91-dev:mips64el \
-                       libxdp-dev:mips64el \
-                       libzstd-dev:mips64el \
-                       nettle-dev:mips64el \
-diff --git a/tests/lcitool/mappings.yml b/tests/lcitool/mappings.yml
-index f8186b0e69..74eb13d62b 100644
---- a/tests/lcitool/mappings.yml
-+++ b/tests/lcitool/mappings.yml
-@@ -6,23 +6,6 @@ mappings:
-   flake8:
-     OpenSUSELeap15:
+diff --git a/system/qtest.c b/system/qtest.c
+index 99ef2042f6..e68ed0f2a8 100644
+--- a/system/qtest.c
++++ b/system/qtest.c
+@@ -78,6 +78,11 @@ static void *qtest_server_send_opaque;
+  * let you adjust the value of the clock (monotonically).  All the commands
+  * return the current value of the clock in nanoseconds.
+  *
++ * If the commands FAIL then time wasn't advanced which is likely
++ * because the machine was in a paused state or no timer events exist
++ * in the future. This will cause qtest to abort and the test will
++ * need to check its assumptions.
++ *
+  * .. code-block:: none
+  *
+  *  > clock_step
+@@ -710,7 +715,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             qtest_sendf(chr, "OK little\n");
+         }
+     } else if (qtest_enabled() && strcmp(words[0], "clock_step") == 0) {
+-        int64_t ns;
++        int64_t old_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        int64_t ns, new_ns;
  
--  # Due to https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1081535 we
--  # have to disable all packages that depend on libgl1-mesa-dri:mips64el
--  gtk3:
--    mips64el-deb:
--
--  libdrm:
--    mips64el-deb:
--
--  libepoxy:
--    mips64el-deb:
--
--  gtk-vnc:
--    mips64el-deb:
--
--  mesa-libgbm:
--    mips64el-deb:
--
-   meson:
-     OpenSUSELeap15:
+         if (words[1]) {
+             int ret = qemu_strtoi64(words[1], NULL, 0, &ns);
+@@ -719,11 +725,10 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             ns = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
+                                             QEMU_TIMER_ATTR_ALL);
+         }
+-        qemu_clock_advance_virtual_time(
+-            qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
++        new_ns = qemu_clock_advance_virtual_time(old_ns + ns);
+         qtest_send_prefix(chr);
+-        qtest_sendf(chr, "OK %"PRIi64"\n",
+-                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
++        qtest_sendf(chr, "%s %"PRIi64"\n",
++                    new_ns > old_ns ? "OK" : "FAIL", new_ns);
+     } else if (strcmp(words[0], "module_load") == 0) {
+         Error *local_err = NULL;
+         int rv;
+@@ -740,16 +745,16 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             qtest_sendf(chr, "FAIL\n");
+         }
+     } else if (qtest_enabled() && strcmp(words[0], "clock_set") == 0) {
+-        int64_t ns;
++        int64_t ns, new_ns;
+         int ret;
  
-@@ -81,18 +64,6 @@ mappings:
-   python3-wheel:
-     OpenSUSELeap15: python311-pip
- 
--  sdl2:
--    mips64el-deb:
--
--  sdl2-image:
--    mips64el-deb:
--
--  virglrenderer:
--    mips64el-deb:
--
--  vte:
--    mips64el-deb:
--
- pypi_mappings:
-   # Request more recent version
-   meson:
+         g_assert(words[1]);
+         ret = qemu_strtoi64(words[1], NULL, 0, &ns);
+         g_assert(ret == 0);
+-        qemu_clock_advance_virtual_time(ns);
++        new_ns = qemu_clock_advance_virtual_time(ns);
+         qtest_send_prefix(chr);
+-        qtest_sendf(chr, "OK %"PRIi64"\n",
+-                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
++        qtest_sendf(chr, "%s %"PRIi64"\n",
++                    new_ns == ns ? "OK" : "FAIL", new_ns);
+     } else if (process_command_cb && process_command_cb(chr, words)) {
+         /* Command got consumed by the callback handler */
+     } else {
 -- 
 2.39.5

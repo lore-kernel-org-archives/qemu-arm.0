@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c8a6ca5sm52045565f8f.86.2025.01.07.08.57.53
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4366127c4bbsm599441955e9.32.2025.01.07.08.57.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jan 2025 08:57:53 -0800 (PST)
+        Tue, 07 Jan 2025 08:57:55 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id BC88B5FD35;
+	by draig.lan (Postfix) with ESMTP id A3C495F8FE;
 	Tue,  7 Jan 2025 16:52:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -53,75 +53,89 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Bernhard Beschow <shentey@gmail.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v3 19/29] tests/functional: add zstd support to uncompress utility
-Date: Tue,  7 Jan 2025 16:51:57 +0000
-Message-Id: <20250107165208.743958-20-alex.bennee@linaro.org>
+Subject: [PATCH v3 18/29] tests/functional: remove hacky sleep from the tests
+Date: Tue,  7 Jan 2025 16:51:56 +0000
+Message-Id: <20250107165208.743958-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: i4WJpjgqHL12
+X-TUID: XxIuZJCecsbn
 
-Rather than using the python library (which has a different API
-anyway) lets just call the binary. zstdtools is already in out
-qemu.yml so all test containers should have it around. Tests should
-still use @skipIfMissingCommands('zstd') to gracefully handle when
-only minimal dependencies have been installed.
+We have proper detection of prompts now so we don't need to guess with
+sleep() sprinkled through the test. The extra step of calling halt is
+just to flush the final bits of the log (although the last line is
+still missed).
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/functional/qemu_test/uncompress.py | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-diff --git a/tests/functional/qemu_test/uncompress.py b/tests/functional/qemu_test/uncompress.py
-index 6d02ded066..404eee1f83 100644
---- a/tests/functional/qemu_test/uncompress.py
-+++ b/tests/functional/qemu_test/uncompress.py
-@@ -12,6 +12,7 @@
- import os
- import shutil
- from urllib.parse import urlparse
-+from subprocess import check_call, CalledProcessError
+---
+v2
+  - avoid long lines by iterating through an array
+  - drop time import
+v3
+  - fix up on re-base
+  - drop stray import os that had sneaked in
+---
+ tests/functional/test_aarch64_virt.py | 32 +++++++++++++++------------
+ 1 file changed, 18 insertions(+), 14 deletions(-)
+
+diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
+index 08576b0694..2d9995a95d 100755
+--- a/tests/functional/test_aarch64_virt.py
++++ b/tests/functional/test_aarch64_virt.py
+@@ -10,12 +10,12 @@
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
  
- from .asset import Asset
+-import time
+ import logging
+ from subprocess import check_call, DEVNULL
  
-@@ -38,6 +39,18 @@ def lzma_uncompress(xz_path, output_path):
-             os.remove(output_path)
-             raise
+ from qemu_test import QemuSystemTest, Asset
+-from qemu_test import exec_command, wait_for_console_pattern
++from qemu_test import exec_command_and_wait_for_pattern
++from qemu_test import wait_for_console_pattern
+ from qemu_test import get_qemu_img
  
-+def zstd_uncompress(zstd_path, output_path):
-+    if os.path.exists(output_path):
-+        return
+ 
+@@ -107,18 +107,22 @@ def common_aarch64_virt(self, machine):
+                          'virtio-blk-device,drive=scratch')
+ 
+         self.vm.launch()
+-        self.wait_for_console_pattern('Welcome to Buildroot')
+-        time.sleep(0.1)
+-        exec_command(self, 'root')
+-        time.sleep(0.1)
+-        exec_command(self, 'dd if=/dev/hwrng of=/dev/vda bs=512 count=4')
+-        time.sleep(0.1)
+-        exec_command(self, 'md5sum /dev/vda')
+-        time.sleep(0.1)
+-        exec_command(self, 'cat /proc/interrupts')
+-        time.sleep(0.1)
+-        exec_command(self, 'cat /proc/self/maps')
+-        time.sleep(0.1)
 +
-+    try:
-+        check_call(['zstd', "-f", "-d", zstd_path,
-+                    "-o", output_path])
-+    except CalledProcessError as e:
-+        os.remove(output_path)
-+        raise Exception(
-+            f"Unable to decompress zstd file {zstd_path} with {e}") from e
++        ps1='#'
++        self.wait_for_console_pattern('login:')
 +
- '''
- @params compressed: filename, Asset, or file-like object to uncompress
- @params uncompressed: filename to uncompress into
-@@ -59,6 +72,8 @@ def uncompress(compressed, uncompressed, format=None):
-         lzma_uncompress(str(compressed), uncompressed)
-     elif format == "gz":
-         gzip_uncompress(str(compressed), uncompressed)
-+    elif format == "zstd":
-+        zstd_uncompress(str(compressed), uncompressed)
-     else:
-         raise Exception(f"Unknown compression format {format}")
++        commands = [
++            ('root', ps1),
++            ('cat /proc/interrupts', ps1),
++            ('cat /proc/self/maps', ps1),
++            ('uname -a', ps1),
++            ('dd if=/dev/hwrng of=/dev/vda bs=512 count=4', ps1),
++            ('md5sum /dev/vda', ps1),
++            ('halt -n', 'reboot: System halted')
++        ]
++
++        for cmd, pattern in commands:
++            exec_command_and_wait_for_pattern(self, cmd, pattern)
  
-@@ -79,5 +94,7 @@ def guess_uncompress_format(compressed):
-         return "xz"
-     elif ext == ".gz":
-         return "gz"
-+    elif ext == ".zstd":
-+        return "zstd"
-     else:
-         raise Exception(f"Unknown compression format for {compressed}")
+     def test_aarch64_virt_gicv3(self):
+         self.common_aarch64_virt("virt,gic_version=3")
 -- 
 2.39.5

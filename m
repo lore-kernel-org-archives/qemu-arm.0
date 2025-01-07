@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c828f8fsm50109865f8f.12.2025.01.07.08.52.08
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43656b013ecsm636834305e9.16.2025.01.07.08.52.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 07 Jan 2025 08:52:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 2781E5F8FC;
+	by draig.lan (Postfix) with ESMTP id 54A915F91D;
 	Tue,  7 Jan 2025 16:52:08 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -54,84 +54,100 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Bernhard Beschow <shentey@gmail.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v3 01/29] tests/functional: update the arm tuxrun tests
-Date: Tue,  7 Jan 2025 16:51:39 +0000
-Message-Id: <20250107165208.743958-2-alex.bennee@linaro.org>
+Subject: [PATCH v3 03/29] tests/functional: add a m68k tuxrun tests
+Date: Tue,  7 Jan 2025 16:51:41 +0000
+Message-Id: <20250107165208.743958-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: /nLLxyblwqQ2
+X-TUID: H6PnoG1lBKmQ
 
-Now there are new up to date images available we should update to them.
+We didn't have this before and as it exercises the m68k virt platform
+it seems worth adding. We don't wait for the shutdown because QEMU
+will auto-exit on the shutdown.
 
+Cc: Laurent Vivier <laurent@vivier.eu>
 Cc: Anders Roxell <anders.roxell@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-21-alex.bennee@linaro.org>
----
- tests/functional/test_arm_tuxrun.py | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+Message-Id: <20241121165806.476008-24-alex.bennee@linaro.org>
 
-diff --git a/tests/functional/test_arm_tuxrun.py b/tests/functional/test_arm_tuxrun.py
-index 944f0756e1..4ac85f48ac 100755
---- a/tests/functional/test_arm_tuxrun.py
-+++ b/tests/functional/test_arm_tuxrun.py
-@@ -17,14 +17,14 @@
- class TuxRunArmTest(TuxRunBaselineTest):
+---
+v2
+  - add to MAINTAINERS
+---
+ MAINTAINERS                          |  1 +
+ tests/functional/meson.build         |  1 +
+ tests/functional/test_m68k_tuxrun.py | 34 ++++++++++++++++++++++++++++
+ 3 files changed, 36 insertions(+)
+ create mode 100644 tests/functional/test_m68k_tuxrun.py
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 2101b51217..cab9018d9f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1288,6 +1288,7 @@ F: include/hw/intc/goldfish_pic.h
+ F: include/hw/intc/m68k_irqc.h
+ F: include/hw/misc/virt_ctrl.h
+ F: docs/specs/virt-ctlr.rst
++F: tests/functional/test_m68k_tuxrun.py
  
-     ASSET_ARMV5_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/armv5/zImage',
--        'c95af2f27647c12265d75e9df44c22ff5228c59855f54aaa70f41ec2842e3a4d')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv5/zImage',
-+        '3931a3908dbcf0ec0fe292d035ffc4dfed95f797dedd4a59ccfcf7a46e6f92d4')
-     ASSET_ARMV5_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/armv5/rootfs.ext4.zst',
--        '17177afa74e7294da0642861f08c88ca3c836764299a54bf6d1ce276cb9712a5')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv5/rootfs.ext4.zst',
-+        '60ff78b68c7021df378e4fc2d66d3b016484d1acc7e07fb8920c1d8e30f4571f')
-     ASSET_ARMV5_DTB = Asset(
--        'https://storage.tuxboot.com/20230331/armv5/versatile-pb.dtb',
--        '0bc0c0b0858cefd3c32b385c0d66d97142ded29472a496f4f490e42fc7615b25')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv5/versatile-pb.dtb',
-+        '50988e69ef3f3b08bfb9146e8fe414129990029e8dfbed444953b7e14809530a')
+ MicroBlaze Machines
+ -------------------
+diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+index a5087fcb34..7890dcb86d 100644
+--- a/tests/functional/meson.build
++++ b/tests/functional/meson.build
+@@ -116,6 +116,7 @@ tests_m68k_system_thorough = [
+   'm68k_mcf5208evb',
+   'm68k_nextcube',
+   'm68k_q800',
++  'm68k_tuxrun',
+ ]
  
-     def test_armv5(self):
-         self.set_machine('versatilepb')
-@@ -37,11 +37,11 @@ def test_armv5(self):
-                            drive="virtio-blk-pci")
- 
-     ASSET_ARMV7_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/armv7/zImage',
--        '4c7a22e9f15875bec06bd2a29d822496571eb297d4f22694099ffcdb19077572')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv7/zImage',
-+        '1377bc3d90de5ce57ab17cd67429fe8b15c2e9964248c775c682b67e6299b991')
-     ASSET_ARMV7_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/armv7/rootfs.ext4.zst',
--        'ab1fbbeaddda1ffdd45c9405a28cd5370c20f23a7cbc809cc90dc9f243a8eb5a')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv7/rootfs.ext4.zst',
-+        'ed2cbc69bd6b3fbd5cafb5ee961393c7cfbe726446f14301c67d6b1f28bfdb51')
- 
-     def test_armv7(self):
-         self.set_machine('virt')
-@@ -52,11 +52,11 @@ def test_armv7(self):
-                            rootfs_asset=self.ASSET_ARMV7_ROOTFS)
- 
-     ASSET_ARMV7BE_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/armv7be/zImage',
--        '7facc62082b57af12015b08f7fdbaf2f123ba07a478367853ae12b219afc9f2f')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv7be/zImage',
-+        'a244e6da99f1bbd254827ec7681bd4aac9eb1aa05aaebc6b15e5d289ebb683f3')
-     ASSET_ARMV7BE_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/armv7be/rootfs.ext4.zst',
--        '42ed46dd2d59986206c5b1f6cf35eab58fe3fd20c96b41aaa16b32f3f90a9835')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv7be/rootfs.ext4.zst',
-+        'd4f9c57860a512163f30ecc69b2174d1a1bdeb853a43dc49a09cfcfe84e428ea')
- 
-     def test_armv7be(self):
-         self.set_machine('virt')
+ tests_microblaze_system_thorough = [
+diff --git a/tests/functional/test_m68k_tuxrun.py b/tests/functional/test_m68k_tuxrun.py
+new file mode 100644
+index 0000000000..7eacba135f
+--- /dev/null
++++ b/tests/functional/test_m68k_tuxrun.py
+@@ -0,0 +1,34 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots known good tuxboot images the same way
++# that tuxrun (www.tuxrun.org) does. This tool is used by things like
++# the LKFT project to run regression tests on kernels.
++#
++# Copyright (c) 2024 Linaro Ltd.
++#
++# Author:
++#  Alex Bennée <alex.bennee@linaro.org>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import Asset
++from qemu_test.tuxruntest import TuxRunBaselineTest
++
++class TuxRunM68KTest(TuxRunBaselineTest):
++
++    ASSET_M68K_KERNEL = Asset(
++        'https://storage.tuxboot.com/buildroot/20241119/m68k/vmlinux',
++        '7754e1d5cec753ccf1dc6894729a7f54c1a4965631ebf56df8e4ce1163ad19d8')
++    ASSET_M68K_ROOTFS = Asset(
++        'https://storage.tuxboot.com/buildroot/20241119/m68k/rootfs.ext4.zst',
++        '557962ffff265607912e82232cf21adbe0e4e5a88e1e1d411ce848c37f0213e9')
++
++    def test_m68k(self):
++        self.set_machine('virt')
++        self.cpu="m68040"
++        self.common_tuxrun(kernel_asset=self.ASSET_M68K_KERNEL,
++                           rootfs_asset=self.ASSET_M68K_ROOTFS,
++                           drive="virtio-blk-device")
++
++if __name__ == '__main__':
++    TuxRunBaselineTest.main()
 -- 
 2.39.5

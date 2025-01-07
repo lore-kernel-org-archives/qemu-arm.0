@@ -1,223 +1,188 @@
-Received: by 2002:a05:7022:43a6:b0:92:a90b:6588 with SMTP id bo38csp338021dlb;
-        Tue, 7 Jan 2025 11:26:40 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXV6+R+/egjTPPKb5Fp6ojhjHMIA7STrvyOgOcZ7clT5PoE0dNH9NCFM0LGZmrVYmxRbGVtsGsso6BD6Q==@linaro.org
-X-Received: by 2002:a5d:6c65:0:b0:386:1cf9:b993 with SMTP id ffacd0b85a97d-38a221fff31mr52642286f8f.26.1736277999816;
-        Tue, 07 Jan 2025 11:26:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736277999; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp415868njb;
+        Tue, 7 Jan 2025 12:14:55 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH1Cwpa+aeQQDjb13NvP5FSihx8x33VVYa28KTMZK6XH0SSqTu0KGLuMWJS2KD2byHrL+RZ
+X-Received: by 2002:a05:6402:400a:b0:5d2:7199:ac2 with SMTP id 4fb4d7f45d1cf-5d972e00032mr454701a12.2.1736280894920;
+        Tue, 07 Jan 2025 12:14:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736280894; cv=none;
         d=google.com; s=arc-20240605;
-        b=dkp2BrOHkSofy64/N3NeZKE81qlUCoMxhjveRI/g19/ncdGia5pevNn4oFbnab2I+F
-         5ST/nqddIiJAJ7uPnsCxRi6QtoRSC3ZxcoMga0oa4rqnnHPpyNqbZMCde94aomkJQ3df
-         R/iR2TXzNzmcpWGMwyxBfNkbM1LMZNPYWQbTf0z8ThvuacCDrE+rGmtl8eRePFmt1CQZ
-         FBCsolf/t3wTBPhuSEuQdn9/+GBorPwWFVaxqtLRuylinaBoXY1C2k3+RAL1sBtWHTug
-         2ITtjM2bJ85YZv97Uv0lt2ecwSolsGrUD206CxBAulbbvhw+1QD5UBT8bRw0RZvcrcdp
-         jU3A==
+        b=Wsgf2QYCDVCmc+K/BJNvsK/0cwoxj2NYWWg62KLVgjugf7DYgX3xV34pdEuMsiWOGh
+         oe/fyR7EBsJRodZQIef7HX9L1eABKBIuc/ezw6y1Kxyar4DPq6oHdDChEine0Nf9cF0L
+         faa+2XOBJTqODjeD8qa4PHMshSIIHnVc5wZRmhiXJKZ80QisJzgwaO3er//mJg+YWRKh
+         KmVGFNE27Z6Buk3Xl/qixsUJa/c983/ETsoZ1zBZu5EyB8KIWVIMODSb7Ew3PU0LymUq
+         FFhc79xJ2sxPq7NJ24hQnxWpEV9oj/tQSGeNjxDwVBf/GxzqorPjJKKcOIrA6jWSqJ7G
+         AcMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=jQpe/t9gE90x9xB1kiTd2LC7ZhqmJPaLIwleQhgmA4g=;
-        fh=H4rXfm+fbERW62I4ezCHrvVmTHgImKZak4n6apprDic=;
-        b=F4CviGxeZX+dNrOAvEDL2URO/dniSRm2xu9UzBiBzeHkR+JIEeXlCHdQ8gOoG4lBQo
-         GthYnrXGw2oX6/fbuqJGTOiGu+aL2bBbvtpBVNhlVzZXT1xqEt79VMCT8O7OaM9Xh2eB
-         huVQWHAje9kJTcelwOJIRMrVIQGyKGfLgu2tpJAqpLEBCRwiin6D9he6tgVVtq/eSgqD
-         MrgAXXkWW3w4B6pd+eWdm1wGfC/XMTLx47D2DsSEU8o+XgS4+qb1XMsx24utMwRlHJpO
-         l1jJ9Kw8HXIXeh03jSo1SRuvwz5CvMRrSFdohEZ7xKpDKHIr7HndkEZQ+e8VZfOKGoaS
-         5QVw==;
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:from:dkim-signature:dkim-signature
+         :dkim-signature:dkim-signature;
+        bh=Bv7BPME/5/gl0L616sWa6w6nSBNzlk/FFrlu2lR6zGY=;
+        fh=ExlvOHRZJPpjHLPemG2Wvgm1zymtQq4QEdUtbS2KfQM=;
+        b=ZvEhHPC0kPvcud3MrgFEKZbbbRikpYTa5kBG/yDT1mD0A1kU8X9HK6AQNQrO4C/gyQ
+         KwbAmIYA8xi2AeVLWdmdeAV7Q8RWU9hs+t4di4JMe1B17ZfvsMcOOdPEEFm2XImOt5AE
+         VOJ3QpPWd/3YeUuovFeEXb/79YZOhZdCK/kJD5MAixGVKAlJiWP21og7yAId7UQ/qCSh
+         Dgee4VKgxaxzxv0YO8wKAI/2WkZRPh/R8AkdT4l9OpDlYzsA8NFw5aG6q/wkfosidDiK
+         on2rrwwm+2MVknWrozYPZiPYT5otDnbo0sOE52YnMVm3dSgU37+ZXhgF1OnxaZzvJwn+
+         9lXQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K7zrsTlr;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38a1c833004sor10745820f8f.4.2025.01.07.11.26.39
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 07 Jan 2025 11:26:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rYI382XV;
+       dkim=neutral (no key) header.i=@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=o1HXIoSt;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:1 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Return-Path: <farosas@suse.de>
+Received: from smtp-out1.suse.de (smtp-out1.suse.de. [2a07:de40:b251:101:10:150:64:1])
+        by mx.google.com with ESMTPS id a640c23a62f3a-aac0f043743si2470120966b.594.2025.01.07.12.14.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 07 Jan 2025 12:14:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:1 as permitted sender) client-ip=2a07:de40:b251:101:10:150:64:1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K7zrsTlr;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736277999; x=1736882799; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=jQpe/t9gE90x9xB1kiTd2LC7ZhqmJPaLIwleQhgmA4g=;
-        b=K7zrsTlrtohLNEKhkSxBXtR1K6leX3IiPzvftDhmmb+xlU3fbeuzETt31mDYaO3kqo
-         2qksVTFb4bI5KfSFTEViSSU8xxKKH6KbRnHp3WST4Brob/asrB4BCCdyGb9wGx8q8Qud
-         mc5TKODN/wsKi4PNbVnmWX1eriRpAMNIs8/Iszk1m34p0hW4ApagRebXDVeRhxJozzBQ
-         z2CYjY8bHUvp0/ESavBF7jO3DUpvO5S+vF6gYesmwIh/BLyCuBsTVCG9YA/Blcb87Y5y
-         XwT4Ig83TDFZcxkGiB5ADrxFecAEmfXsDBRbqU9XU0lucO17DwphiBWxAey5Sd/D7LCZ
-         VCnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736277999; x=1736882799;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=jQpe/t9gE90x9xB1kiTd2LC7ZhqmJPaLIwleQhgmA4g=;
-        b=nHM5UyX17BqjxC0PeXEoVCz65BobuFor8WGvhoIJRWS7Mrhe4rZVqj5zLWoE8y9MG0
-         0JGvr+9y3J9kUA/GVU8jMLbvobnpB/KODseqwrCnpZF07urUMWZ4ykU5Nbg3p4Vos+li
-         VbDLws3wQBmu3KuQMkrHkuE4UVuF+TmY10RtfYXooNygPPEVf9FHQPcTeURScod0YIG6
-         eqrvmqnPJkUMBgIR4v2SoIwRrrDGAwmEBXHFTLkUwDK2bZOBiMwiu1aN/2qPQzHwFuGO
-         qUh+l8cP8yuG5seZ6gJ2y9civhuZ9IVtr089PSQEs/kt49tzFrGe043ixp8YUPiiaRwE
-         LnpA==
-X-Forwarded-Encrypted: i=1; AJvYcCXLFPekfxT5qgZ+mMluGNoxoDsEtq3ci4ym8kBCIYBs3sviaa55cKVbvhzMdF1+YtQ/ZLZnVea4a4wfgQ==@linaro.org
-X-Gm-Message-State: AOJu0YyvellBYxh+dafFmwkBYe0GCYNom6K3jzMgwLl0VZHvEL6X177k
-	6nJsKoPSUqQyMswbv9MjiK7i4jiMFSBeIveo0+YL++0zDErdCWwZDqFpFm/AZgX34A==
-X-Gm-Gg: ASbGncvSBlmWpRO2miiGD+tZBkMji5Iis8bAqwPxy1+PpjeRQEE9lsP01a4EOGv7n5U
-	UPD2BEr4vUMFVF34mltzSS0sPWsTKUmVmjQLMijdg+Lmluq24rMEhch4J/dN29wm2zEA3FdTmWD
-	9y1VPwl6hWhD+dUgRMsy85L5v/520qZSy8t5N83wxtKRrs9ZstLGLiRrAbsmqjdccoqOD6IBF7e
-	Zb2HFCfDn1+h0q4AeQmcVNSqZb73a+FMixUy7SgKmYUOrwKy6LALwDykLUlECz4fKToOfuoeghv
-	7wlBAEFikARa85oqlmxgiRPgxZrjZm0=
-X-Google-Smtp-Source: AGHT+IHLTbv1Vkh/klZ/gKZbygji4sVpVuH+nf3/hXfJlGgADfO39TPn1BJuftl1wlMw79bhQYgFww==
-X-Received: by 2002:a05:6000:2c5:b0:385:f195:27f with SMTP id ffacd0b85a97d-38a221f339emr57011373f8f.5.1736277999177;
-        Tue, 07 Jan 2025 11:26:39 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c828e7asm50601297f8f.21.2025.01.07.11.26.38
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 07 Jan 2025 11:26:38 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Fabiano Rosas <farosas@suse.de>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Gustavo Romero <gustavo.romero@linaro.org>,
-	Samuel Tardieu <sam@rfc1149.net>,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Thomas Huth <thuth@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [RFC PATCH] tests/qtest/stm32l4x5_usart: Avoid accessing NVIC via MMIO
-Date: Tue,  7 Jan 2025 20:26:37 +0100
-Message-ID: <20250107192637.67683-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=rYI382XV;
+       dkim=neutral (no key) header.i=@suse.de;
+       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b=o1HXIoSt;
+       dkim=neutral (no key) header.i=@suse.de;
+       spf=pass (google.com: domain of farosas@suse.de designates 2a07:de40:b251:101:10:150:64:1 as permitted sender) smtp.mailfrom=farosas@suse.de;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id C235521157;
+	Tue,  7 Jan 2025 20:14:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1736280894; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Bv7BPME/5/gl0L616sWa6w6nSBNzlk/FFrlu2lR6zGY=;
+	b=rYI382XVe7ReJN1APaN0T4dFLDdV6If4aiaGLge9fKruGr5uYwWCmNYq662wwVbQyZLgkm
+	BwgRhEDQ95kNdHBPJn3ZfanKa19z0Rcqk8Vd3X3mv2DBLns6FxZEl1nSn1/PIyHhOmW+F+
+	045HSyCZmwBrgq1L0ivlZ2BQHTbFHZA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1736280894;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Bv7BPME/5/gl0L616sWa6w6nSBNzlk/FFrlu2lR6zGY=;
+	b=BsZKxuszPjwlMId2+uEG6c8osMaW9LK9axOsdW/SkRNMU4yJGZLi4JRpdYp27uRXkKfVtl
+	lb2HRNNvs/cXDJAA==
+Authentication-Results: smtp-out1.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1736280893; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Bv7BPME/5/gl0L616sWa6w6nSBNzlk/FFrlu2lR6zGY=;
+	b=o1HXIoStLCLW+E+epHgPpfY1ejPc/MuqCJ96Fvr3TYWK34EZgccwHlHwASpVD5oJ5Q7mRL
+	PA1Mlq+SmC/dPG/8V0dIXs7qdN8XC5dME2IjaJkuPOQtK8d/16yUs8cyu5Vl6VhuedS7GQ
+	JEVyJAOQpk7QAJdhyhRHLMszUgDEPQw=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1736280893;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Bv7BPME/5/gl0L616sWa6w6nSBNzlk/FFrlu2lR6zGY=;
+	b=XpMoZNKcxPKut/RlWUBM2xL8/dMfc7lTkFoNWKTF4Ud1rKtPIAPKaY5RVxxQQlB8YvbaYM
+	AOas6kXaE76agmBg==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 0BBDD13A6A;
+	Tue,  7 Jan 2025 20:14:53 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id kCyNAj2LfWceHwAAD6G6ig
+	(envelope-from <farosas@suse.de>); Tue, 07 Jan 2025 20:14:53 +0000
+From: Fabiano Rosas <farosas@suse.de>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Beraldo Leal
+ <bleal@redhat.com>, Ed Maste <emaste@freebsd.org>, Halil Pasic
+ <pasic@linux.ibm.com>, qemu-ppc@nongnu.org, John Snow <jsnow@redhat.com>,
+ Radoslaw Biernacki <rad@semihalf.com>, Nicholas Piggin
+ <npiggin@gmail.com>, Markus Armbruster <armbru@redhat.com>, Leif Lindholm
+ <quic_llindhol@quicinc.com>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Bin Meng <bmeng.cn@gmail.com>, Daniel
+ Henrique Barboza <dbarboza@ventanamicro.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, qemu-riscv@nongnu.org, Christian Borntraeger
+ <borntraeger@linux.ibm.com>, Wainer dos Santos Moschetta
+ <wainersm@redhat.com>, qemu-s390x@nongnu.org, Alistair Francis
+ <alistair.francis@wdc.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Weiwei Li <liwei1518@gmail.com>, Harsh Prateek Bora
+ <harshpb@linux.ibm.com>, qemu-arm@nongnu.org, Li-Wen Hsu
+ <lwhsu@freebsd.org>, Palmer Dabbelt <palmer@dabbelt.com>, Daniel Henrique
+ Barboza <danielhb413@gmail.com>, Richard Henderson
+ <richard.henderson@linaro.org>, Cleber Rosa <crosa@redhat.com>, Marcin
+ Juszkiewicz <marcin.juszkiewicz@linaro.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Laurent Vivier <lvivier@redhat.com>, Aurelien
+ Jarno <aurelien@aurel32.net>, Eric Farman <farman@linux.ibm.com>, Pavel
+ Dovgalyuk <pavel.dovgaluk@ispras.ru>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Thomas Huth <thuth@redhat.com>, Laurent Vivier
+ <laurent@vivier.eu>, Joel Stanley <joel@jms.id.au>, =?utf-8?Q?Daniel_P=2E?=
+ =?utf-8?Q?_Berrang=C3=A9?=
+ <berrange@redhat.com>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Bernhard
+ Beschow <shentey@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: Re: [PATCH v3 16/29] tests/qtest: remove clock_steps from virtio tests
+In-Reply-To: <20250107165208.743958-17-alex.bennee@linaro.org>
+References: <20250107165208.743958-1-alex.bennee@linaro.org>
+ <20250107165208.743958-17-alex.bennee@linaro.org>
+Date: Tue, 07 Jan 2025 17:12:31 -0300
+Message-ID: <87ikqq4c40.fsf@suse.de>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: euZdRHm4Cx49
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Spam-Score: -2.79
+X-Spamd-Result: default: False [-2.79 / 50.00];
+	BAYES_HAM(-2.99)[99.95%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	ARC_NA(0.00)[];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	MISSING_XM_UA(0.00)[];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	RCPT_COUNT_TWELVE(0.00)[46];
+	MIME_TRACE(0.00)[0:+];
+	TO_DN_SOME(0.00)[];
+	TAGGED_RCPT(0.00)[];
+	MID_RHS_MATCH_FROM(0.00)[];
+	R_RATELIMIT(0.00)[to_ip_from(RL99m1pto7gi4rdu4g5kom7ddi)];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FREEMAIL_CC(0.00)[ilande.co.uk,redhat.com,freebsd.org,linux.ibm.com,nongnu.org,semihalf.com,gmail.com,quicinc.com,linaro.org,ventanamicro.com,wdc.com,linux.alibaba.com,dabbelt.com,aurel32.net,ispras.ru,flygoat.com,vivier.eu,jms.id.au];
+	RCVD_TLS_ALL(0.00)[];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	FUZZY_BLOCKED(0.00)[rspamd.com];
+	RCVD_COUNT_TWO(0.00)[2];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,suse.de:email,imap1.dmz-prg2.suse.org:helo]
+X-Spam-Flag: NO
+X-Spam-Level: 
+X-TUID: pJVyny7616Vo
 
-The STM32L4x5 SoC family use a ARM Cortex-M core. Such
-core is architecturally tied with a NVIC (interrupt controller),
-having the NVIC MMIO mapped in the core address space.
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-When using the QTest accelerator, we don't emulate vCPU, only
-a dummy is created. For now, QTest is only supposed to access
-MMIO devices mapped on the main 'SysBus'. Thus it shouldn't
-be able to access a NVIC MMIO region, because such region is
-specific to a vCPU address space, which isn't available under
-QTest.
+> In the qtest environment time will not step forward if the system is
+> paused (timers disabled) or we have no timer events to fire. As a
+> result VirtIO events are responded to directly and we don't need to
+> step time forward.
+>
+> We still do timeout processing to handle the fact the target QEMU may
+> not be ready to respond right away. This will usually be due to a slow
+> CI system or if QEMU is running under something like rr.
+>
+> Future qtest patches will assert that time actually changes when a
+> step is requested.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-In order to avoid NVIC MMIO accesses, rather than checking
-UART IRQs on the NVIC, intercept the UART IRQ and check for
-raised/lowered events.
-
-The sysbus USART1 IRQ output is wired to EXTI #26 input.
-Use qtest_irq_intercept_out_named() to intercept it, count
-the events with qtest_get_irq_lowered_counter() and
-qtest_get_irq_raised_counter().
-
-Remove the then unused check/clear_nvic_pending() methods.
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
-Based-on: <20241216141818.111255-7-gustavo.romero@linaro.org>
-"tests/qtest: Add API functions to capture IRQ toggling"
-
-This patch is to fix the problem reported by Fabiano when
-removing the &first_cpu global in qtest, see analysis in:
-https://lore.kernel.org/qemu-devel/05820c9b-a683-4eb4-a836-e97aa708d5e5@linaro.org/
-
-Note, while writing that patch I noticed a problem with the
-b-l475e-iot01a machine. In bl475e_init() somes output GPIOs
-are wired twice. The EXTI outputs are passed to the SoC with
-qdev_pass_gpios(), and few are re-wired to the various output
-IRQ splitters. I'll open a GitLab issue so it can be cleared
-later.
----
- tests/qtest/stm32l4x5_usart-test.c | 33 +++++++-----------------------
- 1 file changed, 7 insertions(+), 26 deletions(-)
-
-diff --git a/tests/qtest/stm32l4x5_usart-test.c b/tests/qtest/stm32l4x5_usart-test.c
-index 927bab63614..35622e9434d 100644
---- a/tests/qtest/stm32l4x5_usart-test.c
-+++ b/tests/qtest/stm32l4x5_usart-test.c
-@@ -46,26 +46,7 @@ REG32(ICR, 0x20)
- REG32(RDR, 0x24)
- REG32(TDR, 0x28)
- 
--#define NVIC_ISPR1 0XE000E204
--#define NVIC_ICPR1 0xE000E284
--#define USART1_IRQ 37
--
--static bool check_nvic_pending(QTestState *qts, unsigned int n)
--{
--    /* No USART interrupts are less than 32 */
--    assert(n > 32);
--    n -= 32;
--    return qtest_readl(qts, NVIC_ISPR1) & (1 << n);
--}
--
--static bool clear_nvic_pending(QTestState *qts, unsigned int n)
--{
--    /* No USART interrupts are less than 32 */
--    assert(n > 32);
--    n -= 32;
--    qtest_writel(qts, NVIC_ICPR1, (1 << n));
--    return true;
--}
-+#define USART1_EXTI_IRQ 26
- 
- /*
-  * Wait indefinitely for the flag to be updated.
-@@ -195,6 +176,8 @@ static void init_uart(QTestState *qts)
-     /* Enable the transmitter, the receiver and the USART. */
-     qtest_writel(qts, (USART1_BASE_ADDR + A_CR1),
-         cr1 | R_CR1_UE_MASK | R_CR1_RE_MASK | R_CR1_TE_MASK);
-+
-+    qtest_irq_intercept_out_named(qts, "machine/soc/exti", "sysbus-irq");
- }
- 
- static void test_write_read(void)
-@@ -221,7 +204,7 @@ static void test_receive_char(void)
-     g_assert_true(send(sock_fd, "a", 1, 0) == 1);
-     usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK);
-     g_assert_cmphex(qtest_readl(qts, USART1_BASE_ADDR + A_RDR), ==, 'a');
--    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
-+    g_assert_cmpuint(qtest_get_irq_lowered_counter(qts, USART1_EXTI_IRQ), ==, 0);
- 
-     /* Now with the IRQ */
-     cr1 = qtest_readl(qts, (USART1_BASE_ADDR + A_CR1));
-@@ -230,8 +213,7 @@ static void test_receive_char(void)
-     g_assert_true(send(sock_fd, "b", 1, 0) == 1);
-     usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK);
-     g_assert_cmphex(qtest_readl(qts, USART1_BASE_ADDR + A_RDR), ==, 'b');
--    g_assert_true(check_nvic_pending(qts, USART1_IRQ));
--    clear_nvic_pending(qts, USART1_IRQ);
-+    g_assert_cmpuint(qtest_get_irq_lowered_counter(qts, USART1_EXTI_IRQ), >, 0);
- 
-     close(sock_fd);
- 
-@@ -251,7 +233,7 @@ static void test_send_char(void)
-     qtest_writel(qts, USART1_BASE_ADDR + A_TDR, 'c');
-     g_assert_true(recv(sock_fd, s, 1, 0) == 1);
-     g_assert_cmphex(s[0], ==, 'c');
--    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
-+    g_assert_cmpuint(qtest_get_irq_lowered_counter(qts, USART1_EXTI_IRQ), ==, 0);
- 
-     /* Now with the IRQ */
-     cr1 = qtest_readl(qts, (USART1_BASE_ADDR + A_CR1));
-@@ -260,8 +242,7 @@ static void test_send_char(void)
-     qtest_writel(qts, USART1_BASE_ADDR + A_TDR, 'd');
-     g_assert_true(recv(sock_fd, s, 1, 0) == 1);
-     g_assert_cmphex(s[0], ==, 'd');
--    g_assert_true(check_nvic_pending(qts, USART1_IRQ));
--    clear_nvic_pending(qts, USART1_IRQ);
-+    g_assert_cmpuint(qtest_get_irq_raised_counter(qts, USART1_EXTI_IRQ), >, 0);
- 
-     close(sock_fd);
- 
--- 
-2.47.1
+Reviewed-by: Fabiano Rosas <farosas@suse.de>

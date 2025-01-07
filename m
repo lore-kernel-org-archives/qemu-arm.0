@@ -1,134 +1,115 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp169800njb;
-        Tue, 7 Jan 2025 05:58:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW+psfz2shbClDh6+oV3tFrmyezmFOUQ2cR+DVkYB/Bbm71ev42RN0QW8jUlyoeRpFrHUaG5hfA8u+1QA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGqZc6nnMuLU54xH/gExlxWrUKDMuY4pf1Qn7UnmLXCXppdlUqwMr2iF4zwnejXHew+RWz5
-X-Received: by 2002:a05:620a:1aa9:b0:7b6:6d99:ecfc with SMTP id af79cd13be357-7b9ba5e08a7mr10524671685a.0.1736258317446;
-        Tue, 07 Jan 2025 05:58:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736258317; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp240431njb;
+        Tue, 7 Jan 2025 07:34:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUC/YFjbQ0y2MaCZLAzKt77zXqXPLSAI/cGmVNyp2UNz03+B0H916Bm/Eh4/i7oyxQfHmXzvdfTH9tKbg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEvPqWdkoHmVdvqIu/jZYU5yw5551zQDpYDwzIlYMgg+FM8FCZHH68KEcvu61m93tSYe4Qx
+X-Received: by 2002:a05:6102:41a3:b0:4b2:7446:fc18 with SMTP id ada2fe7eead31-4b2cc4597f3mr50660320137.17.1736264090062;
+        Tue, 07 Jan 2025 07:34:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736264090; cv=none;
         d=google.com; s=arc-20240605;
-        b=d2OEbgBpTR/F8z+fatR7fCxGYjCCMaA3raDsNT0t69f68o8k49ok2OwEaWWD193zKO
-         7ml1+2f0axLK3DZ1yh0DQ4wybBlZyY0KJP+o7qcMQ3phWhcx5Z1vfwPp7ir+1sq4fYLN
-         D4wDpq+gBCjr+JS6/AslF833GMXFRLibCukAa9CZ+chmf+zOgWOB4DlzBQd0oBqiRR0W
-         8RWPMOZAWTDZDTpo5PSuakyfgug7KpoiIVqIogGbjsUPdMNtHaRMLFh3KmiCh8Otx+mA
-         cD3EYtsPSHe39TgsWzI5VhbVf5XZgS/QbBVmzrrVIWKUzJSwVMNNdTq62Mw6XOKeKKYk
-         aFMA==
+        b=CRrftLcugyKcYvCm9WgYQIuoYUI20qEwgT/chasrwdmL6AveZBMtdnJ7fw0pYpSK7J
+         x7tT2CNEXAyolQ5yhgtNwo1qO66/uqyHGMvMq3PjLy3SHHpr38gxOhT8F37y+FIp9LU2
+         XDK1Bs40Q89Euyg6JozqEspZk70g59bDaKH5lnw2ATr9e7w9+r+ni76t8Rs3E2ykHDpU
+         uqMnORl2lmCZC7XwZOW3W8f0My+nUlJloDAePL50M4bXlcBelf8/Gg1CuP4t2PEQT/nF
+         W3CD9QCqr8b6xPfovJ1EonVF/MmK6t0LW7nYc4BATnw19dZ1yzWopKGTYBsMbJlTUYx8
+         Qj5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=YYtSO87TvztjAyXEjizFAAxhiS+XoOlqzVv7TToVVGc=;
-        fh=t2w8mzUnDuNDDIzWE5+LGpiFYvSPLrAuKcdaOMMpArA=;
-        b=HWB4vWbMfiZMct+aVxYNOIDvHGbu2qH6zSQphbsWjnTeiy8KfPipr6FORzBQ9Pqwqx
-         8oHSM6V9DjsptVn+7/AR6gdu7U3M+RvDMR24u37GYjhGjsooodQ/pRfUv6sblWbx7Jkq
-         a63RxExM7lojQiuk+ZCf4g0P7W4LwHsS2TTPL23BUsdap3eMhwhXpobOHRAKHOCzv2Hh
-         nfcdX/vIwsqVkZnENLLbZ+Ko3qt23xOIC36rfavBHN+7ee6noSAnRHRY9cxHYyRZO5mB
-         pacxaUhmh9IckTlZA9+8wm4l42TAVHDZJzdKC0pogP11tk3rgoVN7GehXtzZ7ZHq/T2s
-         NLqw==;
+        bh=FGnGsQOQFsBzSvR/lTFsCrb437Mz82OmNftfJSgXau0=;
+        fh=2A4XrmpWSce8Hg7gb/jK7T/bzdECrSdzPXJ+gvyt/8c=;
+        b=CwPwMYI7Lnfvh8baxMBsdYWXofOOyz2JPe68FETvmgpVR+xAKdcQigHTXv3isKrPRQ
+         LsUnXv/DHZknSLyQgFJX5KTbb9oxvBR4YgXZ4mRR4XuDV4SoVAhwCkhiOuK8igp+PHF/
+         n0V8+mU7fCQM6Umkkfgmh3Y/PNhFz05L9KxmY6mHIRkna2/NGQpzzDt0BVgijnFgY5nm
+         4aGK1wBo1uMFlklEvEpKAfkdtDdSqWSsCiknKRJxaKwaG9EG0iMP63iZwly70MmarFQB
+         7+idWsyEZrG/H/gP+5Z7nuH+n+zq7G/KbGQYCZ9hI2QPMY6bu2LlqvB+cflOs6nfcuEi
+         YjdA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VeyDfdE0;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PIPvLTGj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7ba2d9b5c17si1381974085a.282.2025.01.07.05.58.37
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b2bfba46ebsi11469205137.602.2025.01.07.07.34.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jan 2025 05:58:37 -0800 (PST)
+        Tue, 07 Jan 2025 07:34:50 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VeyDfdE0;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PIPvLTGj;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVA5m-00061M-Mm; Tue, 07 Jan 2025 08:57:59 -0500
+	id 1tVBbE-0003NZ-AS; Tue, 07 Jan 2025 10:34:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVA5e-00060L-En
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 08:57:51 -0500
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVA5c-0007NO-Vx
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 08:57:50 -0500
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-385e2880606so11269581f8f.3
- for <qemu-arm@nongnu.org>; Tue, 07 Jan 2025 05:57:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1736258266; x=1736863066; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YYtSO87TvztjAyXEjizFAAxhiS+XoOlqzVv7TToVVGc=;
- b=VeyDfdE0sX+Zmi83bP75LGhPM/wgKSG6BR9Qm5XOmoafQjUDdOiOsNQG62GYmKTcsG
- 75eIm/jr4qMVa58kc+9/6VtCzKDwKGvjBKEHlFwuuzwESe/FQbi6STedbxOq7iUfgHDB
- jMgJj71g5PVrNc+ltRC+kG+KZ5aK4zoKznGutjsGgAfTJ/oGYqZq9hVGm6q84hFmh1EL
- nc4pYmE7FgT+vEvVDdWN1SzpFq5oB8AeGAR/WBmRtiZ6SSLemoOz5ai6HAP/D+Td+6fJ
- UV3pQwlxIa7foYDEA5WmbGdSXxc+ALXfqgamRRDQ/DMmt3LVJUX04xc9JB7CwuVmvxu5
- h48g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736258267; x=1736863067;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=YYtSO87TvztjAyXEjizFAAxhiS+XoOlqzVv7TToVVGc=;
- b=g1EpSsps9smJm5LhLVK4+6fYAV5tZ2JgSGVZQy4QDHr4ohODbY3DHrWPuTYadDCHlL
- dSCbMf6TpMrTmKEHSUp5ytncJmvYWbeSf+8MqOUKYxDd1iJLAAweKSnXmXZyA3IKhKmo
- 14ltSJWgH49Bu5Fb9LZDjrJbdKMVvOIFKZOZ7fBtvmsCaG0LEJoaP9XnO/34e79EZaL1
- 95Wd1dt/fj5XjDKQH82qd/YhWeWqFUrQ8/u07qjy+LgI+xwP6zdKaW5JtHpsw4nCIUBJ
- Qh+ZmlDDHHS8rXs9/3evkUGeNtDwTDjm3bkqVo3jGJq/+jmxe6a86dPVKpjlt3PYmMkn
- ZNPQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU/Ed6l/IbCsG4D4r5WMl9bRmbSVxKFkyWX/QQOggVLhq06OLOO2AdV5EBRLKJllxeZyldT1f9OuQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwIYH/MafJbPI880BqM9CZe/G048dJcxhihGfV8uFVxiwrsqMFU
- QffNX8gOih/WjNeFnTqPOFwTaPdpT9uq4viIOOKthhuIOmHu+7AV7pIViWfCqzU=
-X-Gm-Gg: ASbGncvlneWkBjlTa15wq6R/DU5PO0xpD4zkK+eqnOVeo2W4AJ4Ood4ILNI0qyiE2s7
- YN2Yq9geaMbd+7RpaT+tAMm+PHmF6w5EY5gc7u3ZGYmc3aWGVv408D0pEJKxQKhOjGwh9FcNH4d
- Gq2gXJYjYz7atk7hTccayYpT0ZdAUopearVa6jbLlMheYr0Fk20fCheGv55atBetx5o3GF6P5u6
- EgZDHG4LjYraIIuSZCByO74BGTv12J8XF7hkrTvK+IM9QKoT8p/ylYSUF7/IPTZ/PuPjEfPX/fs
- LXYDLmt1GVRdKXEsjo9EFjd+0X4TXuU=
-X-Received: by 2002:a5d:5f54:0:b0:385:fc00:f5e1 with SMTP id
- ffacd0b85a97d-38a221e2448mr54763938f8f.9.1736258266671; 
- Tue, 07 Jan 2025 05:57:46 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a1c8289a0sm51878061f8f.7.2025.01.07.05.57.45
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 07 Jan 2025 05:57:46 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBbC-0003Iv-93
+ for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBbA-00059e-OF
+ for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1736264068;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=FGnGsQOQFsBzSvR/lTFsCrb437Mz82OmNftfJSgXau0=;
+ b=PIPvLTGjeJQaGDEK0bka8FJurEWnIRqyCPiBnWnuQ9/9A5liQwyCDKEfG1oDD7X8IhC/yZ
+ iOxuZIiWWYppXfnGeX259iq6Lux81dbrcjveKOgmftV83z/vxuP6HFkEZqrQm8d+ZC1/nD
+ 9j9a6+URWdVGWKrKjdZQJiif+vAoYLE=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-27-BvgPxBInMhS-9gfSsLiTfQ-1; Tue,
+ 07 Jan 2025 10:34:25 -0500
+X-MC-Unique: BvgPxBInMhS-9gfSsLiTfQ-1
+X-Mimecast-MFC-AGG-ID: BvgPxBInMhS-9gfSsLiTfQ
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2BB7C1979072; Tue,  7 Jan 2025 15:34:23 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.66])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 746F71956053; Tue,  7 Jan 2025 15:34:22 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id AE7C51800604; Tue, 07 Jan 2025 16:33:54 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Anton Johansson <anjo@rev.ng>, Alistair Francis <alistair.francis@wdc.com>,
+Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
+ Paolo Bonzini <pbonzini@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
- Zhao Liu <zhao1.liu@intel.com>, Thomas Huth <thuth@redhat.com>,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 1/2] cpus: Introduce cpu_is_of_type() helper
-Date: Tue,  7 Jan 2025 14:57:38 +0100
-Message-ID: <20250107135739.48324-2-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250107135739.48324-1-philmd@linaro.org>
-References: <20250107135739.48324-1-philmd@linaro.org>
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v2 18/21] hw/uefi: add uefi-vars-isa device
+Date: Tue,  7 Jan 2025 16:33:45 +0100
+Message-ID: <20250107153353.1144978-19-kraxel@redhat.com>
+In-Reply-To: <20250107153353.1144978-1-kraxel@redhat.com>
+References: <20250107153353.1144978-1-kraxel@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.437,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,53 +124,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0E3KGxDCHgV2
+X-TUID: GdkT6UMKzOMj
 
-Introduce a helper to check whether a vCPU instance is from
-a certain QOM parent type.
-We don't need to use the type-safe QOM cast macros and can
-directly access the cached CPUClass (see commit 6fbdff87062
-"cpu: cache CPUClass in CPUState for hot code paths").
+This adds isa bindings for the variable service.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Usage: qemu-system-x86_64 -device uefi-vars-isa,jsonfile=/path/to/uefivars.json
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/hw/core/cpu.h | 9 +++++++++
- cpu-common.c          | 5 +++++
- 2 files changed, 14 insertions(+)
+ hw/uefi/var-service-isa.c | 91 +++++++++++++++++++++++++++++++++++++++
+ hw/uefi/Kconfig           |  6 +++
+ hw/uefi/meson.build       |  5 +++
+ 3 files changed, 102 insertions(+)
+ create mode 100644 hw/uefi/var-service-isa.c
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index c3ca0babcb3..d55d4802ceb 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -795,6 +795,15 @@ ObjectClass *cpu_class_by_name(const char *typename, const char *cpu_model);
-  */
- char *cpu_model_from_type(const char *typename);
- 
-+/**
-+ * cpu_is_of_type: Check if a CPU instance implement a QOM type
-+ * @cpu: The CPU to be added to the list of CPUs.
-+ * @typename: The CPU type.
+diff --git a/hw/uefi/var-service-isa.c b/hw/uefi/var-service-isa.c
+new file mode 100644
+index 000000000000..5d74395fe5f0
+--- /dev/null
++++ b/hw/uefi/var-service-isa.c
+@@ -0,0 +1,91 @@
++/*
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * Returns: %true if @cpu is a QOM child of type @typename.
++ * uefi vars device - ISA variant for x64.
 + */
-+bool cpu_is_of_type(CPUState *cpu, const char *typename);
++#include "qemu/osdep.h"
++#include "migration/vmstate.h"
 +
- /**
-  * cpu_create:
-  * @typename: The CPU type.
-diff --git a/cpu-common.c b/cpu-common.c
-index 4248b2d727e..2541a81ef87 100644
---- a/cpu-common.c
-+++ b/cpu-common.c
-@@ -455,3 +455,8 @@ void cpu_breakpoint_remove_all(CPUState *cpu, int mask)
-         }
-     }
- }
++#include "hw/isa/isa.h"
++#include "hw/qdev-properties.h"
 +
-+bool cpu_is_of_type(CPUState *cpu, const char *typename)
++#include "hw/uefi/var-service.h"
++#include "hw/uefi/var-service-api.h"
++
++#define TYPE_UEFI_VARS_ISA "uefi-vars-isa"
++OBJECT_DECLARE_SIMPLE_TYPE(uefi_vars_isa_state, UEFI_VARS_ISA)
++
++struct uefi_vars_isa_state {
++    ISADevice parent_obj;
++    struct uefi_vars_state state;
++};
++
++static const VMStateDescription vmstate_uefi_vars_isa = {
++    .name = "uefi-vars-isa",
++    .fields = (VMStateField[]) {
++        VMSTATE_STRUCT(state, uefi_vars_isa_state, 0,
++                       vmstate_uefi_vars, uefi_vars_state),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const Property uefi_vars_isa_properties[] = {
++    DEFINE_PROP_SIZE("size", uefi_vars_isa_state, state.max_storage,
++                     256 * 1024),
++    DEFINE_PROP_STRING("jsonfile", uefi_vars_isa_state, state.jsonfile),
++    DEFINE_PROP_BOOL("force-secure-boot", uefi_vars_isa_state,
++                     state.force_secure_boot, false),
++    DEFINE_PROP_BOOL("disable-custom-mode", uefi_vars_isa_state,
++                     state.disable_custom_mode, false),
++};
++
++static void uefi_vars_isa_init(Object *obj)
 +{
-+    return !!object_class_dynamic_cast((ObjectClass *)cpu->cc, typename);
++    uefi_vars_isa_state *uv = UEFI_VARS_ISA(obj);
++
++    uefi_vars_init(obj, &uv->state);
 +}
++
++static void uefi_vars_isa_reset(DeviceState *dev)
++{
++    uefi_vars_isa_state *uv = UEFI_VARS_ISA(dev);
++
++    uefi_vars_hard_reset(&uv->state);
++}
++
++static void uefi_vars_isa_realize(DeviceState *dev, Error **errp)
++{
++    uefi_vars_isa_state *uv = UEFI_VARS_ISA(dev);
++    ISADevice *isa = ISA_DEVICE(dev);
++
++    isa_register_ioport(isa, &uv->state.mr, UEFI_VARS_IO_BASE);
++    uefi_vars_realize(&uv->state, errp);
++}
++
++static void uefi_vars_isa_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = uefi_vars_isa_realize;
++    dc->vmsd = &vmstate_uefi_vars_isa;
++    device_class_set_legacy_reset(dc, uefi_vars_isa_reset);
++    device_class_set_props(dc, uefi_vars_isa_properties);
++    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++}
++
++static const TypeInfo uefi_vars_isa_info = {
++    .name          = TYPE_UEFI_VARS_ISA,
++    .parent        = TYPE_ISA_DEVICE,
++    .instance_size = sizeof(uefi_vars_isa_state),
++    .instance_init = uefi_vars_isa_init,
++    .class_init    = uefi_vars_isa_class_init,
++};
++module_obj(TYPE_UEFI_VARS_ISA);
++module_dep("hw-uefi-vars");
++
++static void uefi_vars_isa_register_types(void)
++{
++    type_register_static(&uefi_vars_isa_info);
++}
++
++type_init(uefi_vars_isa_register_types)
+diff --git a/hw/uefi/Kconfig b/hw/uefi/Kconfig
+index ca6c2bc46a96..feb9f6de5e30 100644
+--- a/hw/uefi/Kconfig
++++ b/hw/uefi/Kconfig
+@@ -1,3 +1,9 @@
+ config UEFI_VARS
+ 	bool
+         default y if X86_64 || AARCH64
++
++config UEFI_VARS_ISA
++	bool
++        default y
++        depends on UEFI_VARS
++        depends on ISA_BUS
+diff --git a/hw/uefi/meson.build b/hw/uefi/meson.build
+index cf2d26e9bf9a..0f191c436bcf 100644
+--- a/hw/uefi/meson.build
++++ b/hw/uefi/meson.build
+@@ -14,6 +14,11 @@ if (config_all_devices.has_key('CONFIG_UEFI_VARS'))
+   uefi_vars_ss.add(files('var-service-siglist.c'))
+ endif
+ 
++uefi_vars_isa_ss = ss.source_set()
++uefi_vars_isa_ss.add(when: 'CONFIG_UEFI_VARS_ISA',
++                     if_true: files('var-service-isa.c'))
++
+ modules += { 'hw-uefi' : {
+     'vars'     : uefi_vars_ss,
++    'vars-isa' : uefi_vars_isa_ss,
+ }}
 -- 
 2.47.1
 

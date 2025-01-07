@@ -1,161 +1,223 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp373512njb;
-        Tue, 7 Jan 2025 10:57:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU6C5RM7zxmDCx+MwT9XIFMet6M0rA3Ej0TAOWUm2K/NtzPCvKPg2KILI9s5ETIutV01BBW/JMVeRoxOQ==@linaro.org
-X-Received: by 2002:a05:6000:1f88:b0:386:4034:f9a0 with SMTP id ffacd0b85a97d-38a22408cbemr50010135f8f.52.1736276226204;
-        Tue, 07 Jan 2025 10:57:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736276226; cv=none;
+Received: by 2002:a05:7022:43a6:b0:92:a90b:6588 with SMTP id bo38csp338021dlb;
+        Tue, 7 Jan 2025 11:26:40 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXV6+R+/egjTPPKb5Fp6ojhjHMIA7STrvyOgOcZ7clT5PoE0dNH9NCFM0LGZmrVYmxRbGVtsGsso6BD6Q==@linaro.org
+X-Received: by 2002:a5d:6c65:0:b0:386:1cf9:b993 with SMTP id ffacd0b85a97d-38a221fff31mr52642286f8f.26.1736277999816;
+        Tue, 07 Jan 2025 11:26:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736277999; cv=none;
         d=google.com; s=arc-20240605;
-        b=Z00o9/R+PVCCtCkvjdmJaMBtopGRg9qf7OyPgaJ6G+e63XXZE93M+W11WcnikDwpGs
-         5dIaWN/IFcTE2VNC8Hw3xHF7PNzWu4yfzUGMJZm14qn1UUESyu8L3a0Fi4dTViZAS1m+
-         K9sqcXauRwgvNNKXQvaFyfMzx6BjpYGOpyNRWeOTK/w3BUbvnya/QZnloI+8b71fiMS6
-         j5+GuHWBiXQJHQtj25x7qdvY3IAjrWlUycoc4Fgo9WHJgcEznCAj5d3nN+lhnyCGaDJd
-         7cR5vIJsOJDQtP+oVNWB85uo5ZAYeGU/nfL0omON96IULSQhfEHqF7oVsp5zs5H0IcKW
-         xVNw==
+        b=dkp2BrOHkSofy64/N3NeZKE81qlUCoMxhjveRI/g19/ncdGia5pevNn4oFbnab2I+F
+         5ST/nqddIiJAJ7uPnsCxRi6QtoRSC3ZxcoMga0oa4rqnnHPpyNqbZMCde94aomkJQ3df
+         R/iR2TXzNzmcpWGMwyxBfNkbM1LMZNPYWQbTf0z8ThvuacCDrE+rGmtl8eRePFmt1CQZ
+         FBCsolf/t3wTBPhuSEuQdn9/+GBorPwWFVaxqtLRuylinaBoXY1C2k3+RAL1sBtWHTug
+         2ITtjM2bJ85YZv97Uv0lt2ecwSolsGrUD206CxBAulbbvhw+1QD5UBT8bRw0RZvcrcdp
+         jU3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :to:from:subject:user-agent:mime-version:date:message-id
-         :dkim-signature;
-        bh=c3darVpZrv40gfMs7JtLycBDIF+yCQhL7QwhFFYlrrw=;
-        fh=KDSRFqQ9MMs5GHs5MnRHvgy2s2e/GZlHdC1wjA9NxHY=;
-        b=HLQBM8MISvWeD0/SeOSL5ncQDShxoawXHo4lgaivg37RclGJaG9/vFGTqh23E9SLtR
-         7pFDbHyhInh9IAn7bkxXQlKkevx3vxJIhemdTAwHSFkUoC4U/ma2KPGGT10GRTzNK4P8
-         MBKUrMEzWTq7fk0537YfqmMwB4vBpR+FJTgeE/+lVtioTxEsVatCu+iDuwyfDkt6JNhD
-         WUtQRBXrqUVoS+hv+dtE2vvRjexvEDWocbbqApspeudhaKnvYWraFK/m/bF1dM3TsTcD
-         SpFAEAuc7r1wyM9/6PYyTpx6MBSjvkUDWj8Jq4K89OBmb0sHYFfGtii1/IAhiItiYLAa
-         pYaw==;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=jQpe/t9gE90x9xB1kiTd2LC7ZhqmJPaLIwleQhgmA4g=;
+        fh=H4rXfm+fbERW62I4ezCHrvVmTHgImKZak4n6apprDic=;
+        b=F4CviGxeZX+dNrOAvEDL2URO/dniSRm2xu9UzBiBzeHkR+JIEeXlCHdQ8gOoG4lBQo
+         GthYnrXGw2oX6/fbuqJGTOiGu+aL2bBbvtpBVNhlVzZXT1xqEt79VMCT8O7OaM9Xh2eB
+         huVQWHAje9kJTcelwOJIRMrVIQGyKGfLgu2tpJAqpLEBCRwiin6D9he6tgVVtq/eSgqD
+         MrgAXXkWW3w4B6pd+eWdm1wGfC/XMTLx47D2DsSEU8o+XgS4+qb1XMsx24utMwRlHJpO
+         l1jJ9Kw8HXIXeh03jSo1SRuvwz5CvMRrSFdohEZ7xKpDKHIr7HndkEZQ+e8VZfOKGoaS
+         5QVw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qu3Ew4vi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=K7zrsTlr;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4367129ad29sor95166545e9.1.2025.01.07.10.57.05
+        by mx.google.com with SMTPS id ffacd0b85a97d-38a1c833004sor10745820f8f.4.2025.01.07.11.26.39
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 07 Jan 2025 10:57:06 -0800 (PST)
+        Tue, 07 Jan 2025 11:26:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qu3Ew4vi;
+       dkim=pass header.i=@linaro.org header.s=google header.b=K7zrsTlr;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736276225; x=1736881025; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :to:from:subject:user-agent:mime-version:date:message-id:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=c3darVpZrv40gfMs7JtLycBDIF+yCQhL7QwhFFYlrrw=;
-        b=qu3Ew4viufhUALWcgxyz5eG77CPRYZn0a/ayVuaRF5Zl33QcGv0wW6p/KBLvbGNUyv
-         3+DzUVB8qYlCWgBVamMKrtBewCHi9kE9auTLA6/y1Dm4ZjTmwfXIdKP98OlHKqOeFhKR
-         /fiIOO2fljUm362mT/cAlfD/BHIqieodn2w5WXOs55ie0y5NxNSPpBLbyYLu0cCkVQUM
-         oSolQ5RDvR/JWpcGV+cEZGzLNioIog4sVuNF9O7IzyRLrpEzCsEzOP+Br6nSzCN1ue+e
-         JWGoYbCdf1n73xoc0H8y5b9OuzKlUDf5+Jz+wWPq2/zZJWMRfLE18WLpThxyP6QvenpW
-         50Ew==
+        d=linaro.org; s=google; t=1736277999; x=1736882799; darn=linaro.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=jQpe/t9gE90x9xB1kiTd2LC7ZhqmJPaLIwleQhgmA4g=;
+        b=K7zrsTlrtohLNEKhkSxBXtR1K6leX3IiPzvftDhmmb+xlU3fbeuzETt31mDYaO3kqo
+         2qksVTFb4bI5KfSFTEViSSU8xxKKH6KbRnHp3WST4Brob/asrB4BCCdyGb9wGx8q8Qud
+         mc5TKODN/wsKi4PNbVnmWX1eriRpAMNIs8/Iszk1m34p0hW4ApagRebXDVeRhxJozzBQ
+         z2CYjY8bHUvp0/ESavBF7jO3DUpvO5S+vF6gYesmwIh/BLyCuBsTVCG9YA/Blcb87Y5y
+         XwT4Ig83TDFZcxkGiB5ADrxFecAEmfXsDBRbqU9XU0lucO17DwphiBWxAey5Sd/D7LCZ
+         VCnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736276225; x=1736881025;
-        h=content-transfer-encoding:in-reply-to:content-language:references
-         :to:from:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=c3darVpZrv40gfMs7JtLycBDIF+yCQhL7QwhFFYlrrw=;
-        b=pkroi/Wyzy3eIcecP6mKrCZW7Prkigs69jR/MNVc1EXFZ/i53sAQY4EA3KzGmtoyCz
-         lD34DpbbjNkGfGX6I4Eklnj9qR27sQo6rYmZLDBIjp7CBXkgTN2owJyLV2I0n+0kFhlI
-         isZl1nwAQYmLL++fFTilcEcvvpAaj5d4A3tff8HLJali92yZRO53AFi3Zhw2qckQDXYp
-         te3GHEFdwIWxYqn7JaM+LWuIu3TYklaFB2X8BNQuaQeggAhwAWz9W46Ic0MmHCRCeBTu
-         XXrbsLF4fMPFJXVgebRF3a7QGJMHz9IkNYKuXjSimya438y7ESzcKo7sboP2/seqtSuN
-         bf9w==
-X-Forwarded-Encrypted: i=1; AJvYcCV7k8UqxCLgstRVTiC4d1IKrnDQZ/T9D/IUgMrgTAntcEgiDTn6+Q14tnbwnHEEFM0a0n/wF3nT8Gk1/Q==@linaro.org
-X-Gm-Message-State: AOJu0YzXP7euhhhqsrn2bqVXpgjgbzRIbdZnteIGBA8oMjTNcpSerQaY
-	/L6jA04zqetfZhn/wlMYWEq0AqAenlTaDAQjGQ0yNPes+cJmucqni1uTNLi7Lz5CaA==
-X-Gm-Gg: ASbGncvURgmKo9dFoRwt3Ag8ZQK7MMotDb5xpTxjVjOR32Ivt9BtyneLKX0n1LOMF7U
-	+x6xACxuasmlluVLpO23QZ9/sTaDmBf8PMHoDassRQULRobPlYY8Yhz9YUHhObT04O4g2UjVtQi
-	ZN4EyOVT3gpfjtHcHu6uOuoOXMgQWYLlp7yTIkDTt4TMI7swErBbC2Bp5Iuy0d2mP8a3Zepd/vz
-	CpM4IpS/dsuB3beOBSICRQu40Of+RBlH7SxFZeZkKEAeUD+3xi7/jwbPrlGQvOGtv2t0d31Lveb
-	MXyYW1LELsNx1SInsD2RCnuO
-X-Google-Smtp-Source: AGHT+IE+xFX0awFyDNf7ue4odLMiLyG5RNcDktK8Off4n0U35vuGUlXBUMwfnrUkHSUOGt/fSr0dWg==
-X-Received: by 2002:a05:600c:3b24:b0:436:2923:d23a with SMTP id 5b1f17b1804b1-43668b7a683mr430353145e9.33.1736276225648;
-        Tue, 07 Jan 2025 10:57:05 -0800 (PST)
+        d=1e100.net; s=20230601; t=1736277999; x=1736882799;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=jQpe/t9gE90x9xB1kiTd2LC7ZhqmJPaLIwleQhgmA4g=;
+        b=nHM5UyX17BqjxC0PeXEoVCz65BobuFor8WGvhoIJRWS7Mrhe4rZVqj5zLWoE8y9MG0
+         0JGvr+9y3J9kUA/GVU8jMLbvobnpB/KODseqwrCnpZF07urUMWZ4ykU5Nbg3p4Vos+li
+         VbDLws3wQBmu3KuQMkrHkuE4UVuF+TmY10RtfYXooNygPPEVf9FHQPcTeURScod0YIG6
+         eqrvmqnPJkUMBgIR4v2SoIwRrrDGAwmEBXHFTLkUwDK2bZOBiMwiu1aN/2qPQzHwFuGO
+         qUh+l8cP8yuG5seZ6gJ2y9civhuZ9IVtr089PSQEs/kt49tzFrGe043ixp8YUPiiaRwE
+         LnpA==
+X-Forwarded-Encrypted: i=1; AJvYcCXLFPekfxT5qgZ+mMluGNoxoDsEtq3ci4ym8kBCIYBs3sviaa55cKVbvhzMdF1+YtQ/ZLZnVea4a4wfgQ==@linaro.org
+X-Gm-Message-State: AOJu0YyvellBYxh+dafFmwkBYe0GCYNom6K3jzMgwLl0VZHvEL6X177k
+	6nJsKoPSUqQyMswbv9MjiK7i4jiMFSBeIveo0+YL++0zDErdCWwZDqFpFm/AZgX34A==
+X-Gm-Gg: ASbGncvSBlmWpRO2miiGD+tZBkMji5Iis8bAqwPxy1+PpjeRQEE9lsP01a4EOGv7n5U
+	UPD2BEr4vUMFVF34mltzSS0sPWsTKUmVmjQLMijdg+Lmluq24rMEhch4J/dN29wm2zEA3FdTmWD
+	9y1VPwl6hWhD+dUgRMsy85L5v/520qZSy8t5N83wxtKRrs9ZstLGLiRrAbsmqjdccoqOD6IBF7e
+	Zb2HFCfDn1+h0q4AeQmcVNSqZb73a+FMixUy7SgKmYUOrwKy6LALwDykLUlECz4fKToOfuoeghv
+	7wlBAEFikARa85oqlmxgiRPgxZrjZm0=
+X-Google-Smtp-Source: AGHT+IHLTbv1Vkh/klZ/gKZbygji4sVpVuH+nf3/hXfJlGgADfO39TPn1BJuftl1wlMw79bhQYgFww==
+X-Received: by 2002:a05:6000:2c5:b0:385:f195:27f with SMTP id ffacd0b85a97d-38a221f339emr57011373f8f.5.1736277999177;
+        Tue, 07 Jan 2025 11:26:39 -0800 (PST)
 Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.132] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43661219a71sm602097695e9.26.2025.01.07.10.57.04
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 07 Jan 2025 10:57:05 -0800 (PST)
-Message-ID: <d1674d1e-e6ac-441f-acbd-ad3a2dcd15aa@linaro.org>
-Date: Tue, 7 Jan 2025 19:57:04 +0100
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c828e7asm50601297f8f.21.2025.01.07.11.26.38
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Tue, 07 Jan 2025 11:26:38 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Fabiano Rosas <farosas@suse.de>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Gustavo Romero <gustavo.romero@linaro.org>,
+	Samuel Tardieu <sam@rfc1149.net>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [RFC PATCH] tests/qtest/stm32l4x5_usart: Avoid accessing NVIC via MMIO
+Date: Tue,  7 Jan 2025 20:26:37 +0100
+Message-ID: <20250107192637.67683-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 6/7] tests/qtest: Add API functions to capture IRQ
- toggling
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, alex.bennee@linaro.org, thuth@redhat.com,
- armbru@redhat.com, Fabiano Rosas <farosas@suse.de>,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <lvivier@redhat.com>
-References: <20241216141818.111255-1-gustavo.romero@linaro.org>
- <20241216141818.111255-7-gustavo.romero@linaro.org>
- <77ee967d-00e6-45fa-a8b1-42192e61b553@linaro.org>
-Content-Language: en-US
-In-Reply-To: <77ee967d-00e6-45fa-a8b1-42192e61b553@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 1JOwDMt01n+z
+X-TUID: euZdRHm4Cx49
 
-On 7/1/25 19:35, Philippe Mathieu-Daudé wrote:
-> Cc'ing maintainers:
-> 
-> $ ./scripts/get_maintainer.pl -f tests/qtest/libqtest.c
-> Fabiano Rosas <farosas@suse.de> (maintainer:qtest)
-> Laurent Vivier <lvivier@redhat.com> (maintainer:qtest)
-> Paolo Bonzini <pbonzini@redhat.com> (reviewer:qtest)
-> 
-> On 16/12/24 15:18, Gustavo Romero wrote:
->> Currently, the QTest API does not provide a function to capture when an
->> IRQ line is raised or lowered, although the QTest Protocol already
->> reports such IRQ transitions. As a consequence, it is also not possible
->> to capture when an IRQ line is toggled. Functions like qtest_get_irq()
->> only read the current state of the intercepted IRQ lines, which is
->> already high (or low) when the function is called if the IRQ line is
->> toggled. Therefore, these functions miss the IRQ line state transitions.
->>
->> This commit introduces two new API functions:
->> qtest_get_irq_raised_counter() and qtest_get_irq_lowered_counter().
->> These functions allow capturing the number of times an observed IRQ line
->> transitioned from low to high state or from high to low state,
->> respectively.
->>
->> When used together, these new API functions then allow checking if one
->> or more pulses were generated (indicating if the IRQ line was toggled).
->>
->> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
->> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Acked-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   tests/qtest/libqtest.c | 24 ++++++++++++++++++++++++
->>   tests/qtest/libqtest.h | 28 ++++++++++++++++++++++++++++
->>   2 files changed, 52 insertions(+)
+The STM32L4x5 SoC family use a ARM Cortex-M core. Such
+core is architecturally tied with a NVIC (interrupt controller),
+having the NVIC MMIO mapped in the core address space.
 
+When using the QTest accelerator, we don't emulate vCPU, only
+a dummy is created. For now, QTest is only supposed to access
+MMIO devices mapped on the main 'SysBus'. Thus it shouldn't
+be able to access a NVIC MMIO region, because such region is
+specific to a vCPU address space, which isn't available under
+QTest.
 
->> +uint64_t qtest_get_irq_raised_counter(QTestState *s, int num)
->> +{
->> +    /* dummy operation in order to make sure irq is up to date */
->> +    qtest_inb(s, 0);
-> 
-> Isn't it better to simply call:
-> 
->         qtest_rsp(s);
-> 
-> ?
+In order to avoid NVIC MMIO accesses, rather than checking
+UART IRQs on the NVIC, intercept the UART IRQ and check for
+raised/lowered events.
 
-Sorry I misunderstood. You want to flush the qtest socket, right?
-Could this be sufficient?
+The sysbus USART1 IRQ output is wired to EXTI #26 input.
+Use qtest_irq_intercept_out_named() to intercept it, count
+the events with qtest_get_irq_lowered_counter() and
+qtest_get_irq_raised_counter().
 
-           s->ops.send(s, "\n");
+Remove the then unused check/clear_nvic_pending() methods.
 
-Otherwise I'd rather add a "nop" command. Seeing "inb" in traces
-is very confusing.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+Based-on: <20241216141818.111255-7-gustavo.romero@linaro.org>
+"tests/qtest: Add API functions to capture IRQ toggling"
 
-> 
->> +
->> +    return s->irq_raised_counter[num];
->> +}
+This patch is to fix the problem reported by Fabiano when
+removing the &first_cpu global in qtest, see analysis in:
+https://lore.kernel.org/qemu-devel/05820c9b-a683-4eb4-a836-e97aa708d5e5@linaro.org/
+
+Note, while writing that patch I noticed a problem with the
+b-l475e-iot01a machine. In bl475e_init() somes output GPIOs
+are wired twice. The EXTI outputs are passed to the SoC with
+qdev_pass_gpios(), and few are re-wired to the various output
+IRQ splitters. I'll open a GitLab issue so it can be cleared
+later.
+---
+ tests/qtest/stm32l4x5_usart-test.c | 33 +++++++-----------------------
+ 1 file changed, 7 insertions(+), 26 deletions(-)
+
+diff --git a/tests/qtest/stm32l4x5_usart-test.c b/tests/qtest/stm32l4x5_usart-test.c
+index 927bab63614..35622e9434d 100644
+--- a/tests/qtest/stm32l4x5_usart-test.c
++++ b/tests/qtest/stm32l4x5_usart-test.c
+@@ -46,26 +46,7 @@ REG32(ICR, 0x20)
+ REG32(RDR, 0x24)
+ REG32(TDR, 0x28)
+ 
+-#define NVIC_ISPR1 0XE000E204
+-#define NVIC_ICPR1 0xE000E284
+-#define USART1_IRQ 37
+-
+-static bool check_nvic_pending(QTestState *qts, unsigned int n)
+-{
+-    /* No USART interrupts are less than 32 */
+-    assert(n > 32);
+-    n -= 32;
+-    return qtest_readl(qts, NVIC_ISPR1) & (1 << n);
+-}
+-
+-static bool clear_nvic_pending(QTestState *qts, unsigned int n)
+-{
+-    /* No USART interrupts are less than 32 */
+-    assert(n > 32);
+-    n -= 32;
+-    qtest_writel(qts, NVIC_ICPR1, (1 << n));
+-    return true;
+-}
++#define USART1_EXTI_IRQ 26
+ 
+ /*
+  * Wait indefinitely for the flag to be updated.
+@@ -195,6 +176,8 @@ static void init_uart(QTestState *qts)
+     /* Enable the transmitter, the receiver and the USART. */
+     qtest_writel(qts, (USART1_BASE_ADDR + A_CR1),
+         cr1 | R_CR1_UE_MASK | R_CR1_RE_MASK | R_CR1_TE_MASK);
++
++    qtest_irq_intercept_out_named(qts, "machine/soc/exti", "sysbus-irq");
+ }
+ 
+ static void test_write_read(void)
+@@ -221,7 +204,7 @@ static void test_receive_char(void)
+     g_assert_true(send(sock_fd, "a", 1, 0) == 1);
+     usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK);
+     g_assert_cmphex(qtest_readl(qts, USART1_BASE_ADDR + A_RDR), ==, 'a');
+-    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
++    g_assert_cmpuint(qtest_get_irq_lowered_counter(qts, USART1_EXTI_IRQ), ==, 0);
+ 
+     /* Now with the IRQ */
+     cr1 = qtest_readl(qts, (USART1_BASE_ADDR + A_CR1));
+@@ -230,8 +213,7 @@ static void test_receive_char(void)
+     g_assert_true(send(sock_fd, "b", 1, 0) == 1);
+     usart_wait_for_flag(qts, USART1_BASE_ADDR + A_ISR, R_ISR_RXNE_MASK);
+     g_assert_cmphex(qtest_readl(qts, USART1_BASE_ADDR + A_RDR), ==, 'b');
+-    g_assert_true(check_nvic_pending(qts, USART1_IRQ));
+-    clear_nvic_pending(qts, USART1_IRQ);
++    g_assert_cmpuint(qtest_get_irq_lowered_counter(qts, USART1_EXTI_IRQ), >, 0);
+ 
+     close(sock_fd);
+ 
+@@ -251,7 +233,7 @@ static void test_send_char(void)
+     qtest_writel(qts, USART1_BASE_ADDR + A_TDR, 'c');
+     g_assert_true(recv(sock_fd, s, 1, 0) == 1);
+     g_assert_cmphex(s[0], ==, 'c');
+-    g_assert_false(check_nvic_pending(qts, USART1_IRQ));
++    g_assert_cmpuint(qtest_get_irq_lowered_counter(qts, USART1_EXTI_IRQ), ==, 0);
+ 
+     /* Now with the IRQ */
+     cr1 = qtest_readl(qts, (USART1_BASE_ADDR + A_CR1));
+@@ -260,8 +242,7 @@ static void test_send_char(void)
+     qtest_writel(qts, USART1_BASE_ADDR + A_TDR, 'd');
+     g_assert_true(recv(sock_fd, s, 1, 0) == 1);
+     g_assert_cmphex(s[0], ==, 'd');
+-    g_assert_true(check_nvic_pending(qts, USART1_IRQ));
+-    clear_nvic_pending(qts, USART1_IRQ);
++    g_assert_cmpuint(qtest_get_irq_raised_counter(qts, USART1_EXTI_IRQ), >, 0);
+ 
+     close(sock_fd);
+ 
+-- 
+2.47.1

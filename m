@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43656b3b2afsm650058715e9.35.2025.01.07.08.52.16
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4366127c4d7sm602216935e9.34.2025.01.07.08.52.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jan 2025 08:52:21 -0800 (PST)
+        Tue, 07 Jan 2025 08:52:20 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id A05ED60679;
+	by draig.lan (Postfix) with ESMTP id 8DF2C60571;
 	Tue,  7 Jan 2025 16:52:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,51 +52,48 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Bernhard Beschow <shentey@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v3 29/29] MAINTAINERS: Remove myself from reviewers
-Date: Tue,  7 Jan 2025 16:52:07 +0000
-Message-Id: <20250107165208.743958-30-alex.bennee@linaro.org>
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v3 28/29] dockerfiles: Remove 'MAINTAINER' entry in debian-tricore-cross.docker
+Date: Tue,  7 Jan 2025 16:52:06 +0000
+Message-Id: <20250107165208.743958-29-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: sybdq4Dj7O6M
+X-TUID: dRsKmSxfryCB
 
-From: Wainer dos Santos Moschetta <wainersm@redhat.com>
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-The time I spent contributing to QEMU was great, but I've not been active
-for a long time now. So removing myself from the reviewers list of
-"Integration Testing with the Avocado framework" and
-"Build and test automation" subsystems.
+AMSAT closed its email service [*] so my personal email
+address is now defunct. Remove it to avoid bouncing emails.
 
-Signed-off-by: Wainer dos Santos Moschetta <wainersm@redhat.com>
-Message-Id: <20250103194450.360789-1-wainersm@redhat.com>
+[*] https://web.archive.org/web/20240617194936/https://forum.amsat-dl.org/index.php?thread/4581-amsat-mail-alias-service-to-end-august-1-2024/
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20250102152513.61065-1-philmd@linaro.org>
+[AJB: update URL to web.archive.org]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- MAINTAINERS | 2 --
+ tests/docker/dockerfiles/debian-tricore-cross.docker | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index cab9018d9f..c1d954c9de 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -4152,7 +4152,6 @@ M: Alex Bennée <alex.bennee@linaro.org>
- T: git https://gitlab.com/stsquad/qemu testing/next
- M: Philippe Mathieu-Daudé <philmd@linaro.org>
- M: Thomas Huth <thuth@redhat.com>
--R: Wainer dos Santos Moschetta <wainersm@redhat.com>
- S: Maintained
- F: .github/workflows/lockdown.yml
- F: .gitlab-ci.yml
-@@ -4198,7 +4197,6 @@ Integration Testing with the Avocado framework
- W: https://trello.com/b/6Qi1pxVn/avocado-qemu
- R: Cleber Rosa <crosa@redhat.com>
- R: Philippe Mathieu-Daudé <philmd@linaro.org>
--R: Wainer dos Santos Moschetta <wainersm@redhat.com>
- S: Odd Fixes
- F: tests/avocado/
+diff --git a/tests/docker/dockerfiles/debian-tricore-cross.docker b/tests/docker/dockerfiles/debian-tricore-cross.docker
+index 479b4d6eba..7e00e870ce 100644
+--- a/tests/docker/dockerfiles/debian-tricore-cross.docker
++++ b/tests/docker/dockerfiles/debian-tricore-cross.docker
+@@ -11,8 +11,6 @@
+ #
+ FROM docker.io/library/debian:11-slim
  
+-MAINTAINER Philippe Mathieu-Daudé <f4bug@amsat.org>
+-
+ RUN apt update && \
+     DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
+     DEBIAN_FRONTEND=noninteractive eatmydata apt install -yy \
 -- 
 2.39.5

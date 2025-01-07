@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436dcceb8c6sm14053885e9.0.2025.01.07.08.52.15
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a457584bcsm33619886f8f.89.2025.01.07.08.52.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 07 Jan 2025 08:52:16 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0C8D05FEF9;
+	by draig.lan (Postfix) with ESMTP id 4C6925F8FC;
 	Tue,  7 Jan 2025 16:52:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -53,59 +53,66 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Bernhard Beschow <shentey@gmail.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v3 22/29] tests/docker: move riscv64 cross container from sid to trixie
-Date: Tue,  7 Jan 2025 16:52:00 +0000
-Message-Id: <20250107165208.743958-23-alex.bennee@linaro.org>
+Subject: [PATCH v3 25/29] tests/vm: partially un-tabify help output
+Date: Tue,  7 Jan 2025 16:52:03 +0000
+Message-Id: <20250107165208.743958-26-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: dRxCNub02P0a
+X-TUID: tb2u2phq0dPt
 
-Although riscv64 isn't going to be a release architecture for trixie
-the packages are still built while it is testing. Moving from sid will
-also avoid some of the volatility we get from tracking the bleeding
-edge.
+While the make syntax itself uses tabs having a mixture of tabs and
+spaces in the vm-help output make no sense and confuses things lining
+up between terminal and editor. Fix that.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/debian-riscv64-cross.docker | 4 ++--
- tests/lcitool/refresh                                | 4 +++-
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ tests/vm/Makefile.include | 26 +++++++++++++-------------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-riscv64-cross.docker b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-index 4d8ca83cb3..b0386cd3a1 100644
---- a/tests/docker/dockerfiles/debian-riscv64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-@@ -1,10 +1,10 @@
- # THIS FILE WAS AUTO-GENERATED
- #
--#  $ lcitool dockerfile --layers all --cross-arch riscv64 debian-sid qemu-minimal
-+#  $ lcitool dockerfile --layers all --cross-arch riscv64 debian-13 qemu-minimal
- #
- # https://gitlab.com/libvirt/libvirt-ci
+diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
+index 13ed80f72d..d80ca79a28 100644
+--- a/tests/vm/Makefile.include
++++ b/tests/vm/Makefile.include
+@@ -64,23 +64,23 @@ endif
+ 	@echo "  vm-boot-ssh-<guest>             - Boot guest and login via ssh"
+ 	@echo
+ 	@echo "Special variables:"
+-	@echo "    BUILD_TARGET=foo		 - Override the build target"
+-	@echo "    DEBUG=1              	 - Enable verbose output on host and interactive debugging"
+-	@echo '    EXTRA_CONFIGURE_OPTS="..."   - Pass to configure step'
+-	@echo "    J=[0..9]*            	 - Override the -jN parameter for make commands"
+-	@echo "    LOG_CONSOLE=1        	 - Log console to file in: ~/.cache/qemu-vm "
+-	@echo "    USE_TCG=1        	         - Use TCG for cross-arch images"
+-	@echo "    QEMU=/path/to/qemu		 - Change path to QEMU binary"
++	@echo "    BUILD_TARGET=foo              - Override the build target"
++	@echo "    DEBUG=1                       - Enable verbose output on host and interactive debugging"
++	@echo '    EXTRA_CONFIGURE_OPTS="..."    - Pass to configure step'
++	@echo "    J=[0..9]*                     - Override the -jN parameter for make commands"
++	@echo "    LOG_CONSOLE=1                 - Log console to file in: ~/.cache/qemu-vm "
++	@echo "    USE_TCG=1                     - Use TCG for cross-arch images"
++	@echo "    QEMU=/path/to/qemu            - Change path to QEMU binary"
+ ifeq ($(HAVE_PYTHON_YAML),yes)
+-	@echo "    QEMU_CONFIG=/path/conf.yml   - Change path to VM configuration .yml file."
++	@echo "    QEMU_CONFIG=/path/conf.yml    - Change path to VM configuration .yml file."
+ else
+ 	@echo "    (install python3-yaml to enable support for yaml file to configure a VM.)"
+ endif
+-	@echo "                                   See conf_example_*.yml for file format details."
+-	@echo "    QEMU_IMG=/path/to/qemu-img	 - Change path to qemu-img tool"
+-	@echo "    QEMU_LOCAL=1                 - Use QEMU binary local to this build."
+-	@echo "    TARGET_LIST=a,b,c    	 - Override target list in builds"
+-	@echo "    V=1				 - Enable verbose output on host and guest commands"
++	@echo "                                    See conf_example_*.yml for file format details."
++	@echo "    QEMU_IMG=/path/to/qemu-img    - Change path to qemu-img tool"
++	@echo "    QEMU_LOCAL=1                  - Use QEMU binary local to this build."
++	@echo "    TARGET_LIST=a,b,c             - Override target list in builds"
++	@echo "    V=1                           - Enable verbose output on host and guest commands"
  
--FROM docker.io/library/debian:sid-slim
-+FROM docker.io/library/debian:trixie-slim
+ vm-build-all: $(addprefix vm-build-, $(IMAGES))
  
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     apt-get update && \
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 6720516b94..53f8d2585f 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -220,7 +220,9 @@ try:
-                         trailer=cross_build("powerpc64le-linux-gnu-",
-                                             "ppc64-softmmu,ppc64-linux-user"))
- 
--    generate_dockerfile("debian-riscv64-cross", "debian-sid",
-+    # while not yet a release architecture the packages are still
-+    # build while part of testing
-+    generate_dockerfile("debian-riscv64-cross", "debian-13",
-                         project="qemu-minimal",
-                         cross="riscv64",
-                         trailer=cross_build("riscv64-linux-gnu-",
 -- 
 2.39.5

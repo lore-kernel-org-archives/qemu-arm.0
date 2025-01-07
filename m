@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp241186njb;
-        Tue, 7 Jan 2025 07:35:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVvaPz3T3ZXX5hyT3I1IZTbeFTb0xjX+LRYP//XBc+T+jDNs1aanl7Rxbe723ghWtgcf8O3ZwwWf8L2Ig==@linaro.org
-X-Google-Smtp-Source: AGHT+IHHQemBOtKA0EzkTDgP0O1HSVU2Pt1XKU5VQPcPaz2ewaAX4fVFHmGaf9r+oHhOS6nLWA+O
-X-Received: by 2002:a05:620a:4156:b0:7b6:d632:37cf with SMTP id af79cd13be357-7b9ba6efaf5mr9317125985a.3.1736264156439;
-        Tue, 07 Jan 2025 07:35:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736264156; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp241326njb;
+        Tue, 7 Jan 2025 07:36:07 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU3UcCK7ViwBovWwV0GVK+4Qx87GKNj1YvSqiMVyEBJ4jiR7EBkK9+lem9hKUkgPWsR9rZbbBBC19knFQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH3dT2MIi/RR8LcVSaEsh2bwPKGTxTLkGqo8yP2MM7jkIUm+f5lSGc4Dz0QH/hhOb8zgOue
+X-Received: by 2002:a05:620a:4452:b0:7b6:e6a2:1be with SMTP id af79cd13be357-7b9ba7ec99cmr9117247085a.45.1736264167011;
+        Tue, 07 Jan 2025 07:36:07 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736264166; cv=none;
         d=google.com; s=arc-20240605;
-        b=c/Tz7KfSZjhIfCFGTlG443E84DIqO+Oma9ejU9Itd//UmDc9ODgbA9ZNQxDq+T/7AJ
-         0fhEJqDbeuyiytDmUfz9PyL055OoNEDl7QnOYEWXOrYIz0DJjjJw/xOWmb5eM/3PP3T+
-         J9B1d8qXQrm1Qr7sTEMrFHNPTuVe0ID2n/rq1c7mjxXKfKYrAKjlz1W0xUh2P+HC4x1q
-         wzXWcVDNLPYsEzg9ydekNUDj6VhWt+Dyrs3EdPEUh+0UHBgOyjkZvOgk+2xDQf3JfxBa
-         t5sbM4WMRgZuo2pthdC6OmsynYxLZXlKpb3SJ9fGcFYZD/PJO5u79OEdJdqKLD5S93eL
-         u9eQ==
+        b=kUb3hjhKI01PcKCkZUNd1coMz5HRQOYclyB7Nex57gH3fte0gm6ZQ7QA5zIAmY/lXr
+         i48G2JXkbi/JyoqDI9K5HOdV10lZf69/d9GNNPH/9/mJqAZv9VCfn/rd/P038W44mAeU
+         /gfej3uFIyZsQKQFmSIDNzp7UYVrjfNfTB2JaSd0+CRX7glcxv+wU7b0WC0U2sRnyn7v
+         0pnen8vzP8/KQJzWUkO3FMMYDeRVuQlloVredBau4CJopVqLcNwKq+QN1qclqqxh1XQx
+         kPAzzeTVEKSsubKf57IIsNUSAJ1u/W+2bLGS4Rsgaeyp5CfgPTZGqZLdE/+SZpvIJZ0t
+         4M3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=fhA9vw4rC8cliR2dekVATbP1rzZ3SVv6Ouh3uqjp7AI=;
+        bh=lgpBvrVMgyg2wTMu/6asnoRMqLd9lTTYrQopZskiUmY=;
         fh=2A4XrmpWSce8Hg7gb/jK7T/bzdECrSdzPXJ+gvyt/8c=;
-        b=Q08Bj/Jyf+s0L8S8MyKvdR6vkf9N66F74zgHv3q0j/QPAuUsk9ak6o4o6u1KRUkoFR
-         KE6cJg9nSzVnEgj/U8i3RBIYvu4R+/Tkc2ki5/LBIyPNEejdkgZ3RTkSrbbUpq2Qn2Ht
-         8Ezu/siig7opUqDmMt+sbpYxXSBRLBqZ3z2rZaBK+KH4RcQs7ID5/AOY6VfhjICRbbDG
-         oy0l8lU82QS/t+uQPdSKsb+4TiZFYCslr1Zh8Bw+2WaCpyZbaQqc0LktkDCr3pzcYRSu
-         degu7dZCCoMMKiIdph4euOkhDDJ84Jf5sz601ubQtFQUoZACiDcYkdBJH8yt4yqKhuHV
-         SjPQ==;
+        b=JDsF0ARqN3+XxJchLwaagE+R8JhUselLIxyUDJ9F2VZOpEnsz3zGkURsdUeXDkBz1t
+         T3uH2FKemdHkbrDLF5OdpEU6nYoRdDX+gcXsrNKjg3t4zLRewbA+d32wKclBV0ZbJF1c
+         4AuBUI/HHPpWE3PNuhUhkzSChyOREHfStTkVteFvZzSIA04h/EIE9B55+TmgQGKyDvkV
+         e+ulsEw2LYjb8YjqtX/1B04MSWPPB4amjrNf+VagZ0TLga2xz6qjoov9yJHlAiMFfrwV
+         /asi7Og2Q+Z6gs0NgznCTwBYmHGfONdeUpwcpwxT85HGojcpqGNyjkyhlvcSNpTKaJt5
+         YdSg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7sKF8Lu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eoxUP7zd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac50f8bdsi4572244985a.570.2025.01.07.07.35.56
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac2d0e03si4925410985a.187.2025.01.07.07.36.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jan 2025 07:35:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Jan 2025 07:36:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i7sKF8Lu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eoxUP7zd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVBbC-0003Iu-2v; Tue, 07 Jan 2025 10:34:30 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tVBaz-0003Aq-C4; Tue, 07 Jan 2025 10:34:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBb9-0003Hk-Qo
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:27 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBax-00039a-Gr
+ for qemu-devel@nongnu.org; Tue, 07 Jan 2025 10:34:15 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBb8-00058W-2n
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:27 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBat-00054a-U2
+ for qemu-devel@nongnu.org; Tue, 07 Jan 2025 10:34:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1736264065;
+ s=mimecast20190719; t=1736264051;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=fhA9vw4rC8cliR2dekVATbP1rzZ3SVv6Ouh3uqjp7AI=;
- b=i7sKF8Luy8eYmjL8/vJcS9S/pG1ahQgh1LmtRQz0xAYjYicbWsu/6CG3OKYLPTc6wkIKXs
- s0XuCkEYupuTmqsRSV+zrfgnMCvcwoWdBqI9DYXNRzGa9/hKGwNQKybNWRFEzJspdXJgE6
- UmfvSbnkGgbuDjlPD+vhjfyC+oY2L2Q=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=lgpBvrVMgyg2wTMu/6asnoRMqLd9lTTYrQopZskiUmY=;
+ b=eoxUP7zdVykizaOMwGHtQ0662bc9a7CR5dyZBR+a+Xkr5ti4IRBFkwFYw7FgGuIzSJU12P
+ 8KOO515b/mkQF07jmIMghAVkiu/GScAseFeLltgGnreCFEy94/vttr7HZ3PdLTnkYaYjsf
+ zKD62F8iEq+f93qI+GRpoudRPRJ7Uj8=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-632-6sUirdTSNhu6eQHzgdy-3w-1; Tue,
- 07 Jan 2025 10:34:22 -0500
-X-MC-Unique: 6sUirdTSNhu6eQHzgdy-3w-1
-X-Mimecast-MFC-AGG-ID: 6sUirdTSNhu6eQHzgdy-3w
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-ybDJ9m5WNFau0XXhr-WLVw-1; Tue,
+ 07 Jan 2025 10:34:08 -0500
+X-MC-Unique: ybDJ9m5WNFau0XXhr-WLVw-1
+X-Mimecast-MFC-AGG-ID: ybDJ9m5WNFau0XXhr-WLVw
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BE4901955D92; Tue,  7 Jan 2025 15:34:20 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C6B9E1956068; Tue,  7 Jan 2025 15:34:06 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.66])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3247E195606C; Tue,  7 Jan 2025 15:34:20 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7BA983000197; Tue,  7 Jan 2025 15:34:05 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 9AB4B1800603; Tue, 07 Jan 2025 16:33:54 +0100 (CET)
+ id CB50218003AC; Tue, 07 Jan 2025 16:33:53 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
@@ -92,14 +92,14 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
  Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v2 17/21] hw/uefi: add uefi-vars-sysbus device
-Date: Tue,  7 Jan 2025 16:33:44 +0100
-Message-ID: <20250107153353.1144978-18-kraxel@redhat.com>
+Subject: [PATCH v2 06/21] hw/uefi: add var-service-vars.c
+Date: Tue,  7 Jan 2025 16:33:33 +0100
+Message-ID: <20250107153353.1144978-7-kraxel@redhat.com>
 In-Reply-To: <20250107153353.1144978-1-kraxel@redhat.com>
 References: <20250107153353.1144978-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -109,142 +109,764 @@ X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.437,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_FILL_THIS_FORM_SHORT=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: W/xYf2qdGGTv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 74hbEGi9upKm
 
-This adds sysbus bindings for the variable service.
+This is the uefi variable service (EfiSmmVariableProtocol), providing
+functions for listing, reading and updating variables.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/uefi/var-service-sysbus.c | 90 ++++++++++++++++++++++++++++++++++++
- hw/uefi/meson.build          |  3 +-
- 2 files changed, 92 insertions(+), 1 deletion(-)
- create mode 100644 hw/uefi/var-service-sysbus.c
+ hw/uefi/var-service-vars.c | 725 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 725 insertions(+)
+ create mode 100644 hw/uefi/var-service-vars.c
 
-diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
+diff --git a/hw/uefi/var-service-vars.c b/hw/uefi/var-service-vars.c
 new file mode 100644
-index 000000000000..de2f83e3e5ab
+index 000000000000..7f98d77a38d1
 --- /dev/null
-+++ b/hw/uefi/var-service-sysbus.c
-@@ -0,0 +1,90 @@
++++ b/hw/uefi/var-service-vars.c
+@@ -0,0 +1,725 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * uefi vars device - sysbus variant.
++ * uefi vars device - EfiSmmVariableProtocol implementation
 + */
 +#include "qemu/osdep.h"
++#include "qemu/error-report.h"
++#include "system/dma.h"
 +#include "migration/vmstate.h"
-+
-+#include "hw/qdev-properties.h"
-+#include "hw/sysbus.h"
 +
 +#include "hw/uefi/var-service.h"
 +#include "hw/uefi/var-service-api.h"
++#include "hw/uefi/var-service-edk2.h"
 +
-+#define TYPE_UEFI_VARS_SYSBUS "uefi-vars-sysbus"
-+OBJECT_DECLARE_SIMPLE_TYPE(uefi_vars_sysbus_state, UEFI_VARS_SYSBUS)
++#include "trace/trace-hw_uefi.h"
 +
-+struct uefi_vars_sysbus_state {
-+    SysBusDevice parent_obj;
-+    struct uefi_vars_state state;
-+};
++#define EFI_VARIABLE_ATTRIBUTE_SUPPORTED                                \
++    (EFI_VARIABLE_NON_VOLATILE |                                        \
++     EFI_VARIABLE_BOOTSERVICE_ACCESS |                                  \
++     EFI_VARIABLE_RUNTIME_ACCESS |                                      \
++     EFI_VARIABLE_HARDWARE_ERROR_RECORD |                               \
++     EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS |               \
++     EFI_VARIABLE_APPEND_WRITE)
 +
-+static const VMStateDescription vmstate_uefi_vars_sysbus = {
-+    .name = "uefi-vars-sysbus",
++
++const VMStateDescription vmstate_uefi_time = {
++    .name = "uefi-time",
 +    .fields = (VMStateField[]) {
-+        VMSTATE_STRUCT(state, uefi_vars_sysbus_state, 0,
-+                       vmstate_uefi_vars, uefi_vars_state),
++        VMSTATE_UINT16(year, efi_time),
++        VMSTATE_UINT8(month, efi_time),
++        VMSTATE_UINT8(day, efi_time),
++        VMSTATE_UINT8(hour, efi_time),
++        VMSTATE_UINT8(minute, efi_time),
++        VMSTATE_UINT8(second, efi_time),
++        VMSTATE_UINT32(nanosecond, efi_time),
 +        VMSTATE_END_OF_LIST()
++    },
++};
++
++const VMStateDescription vmstate_uefi_variable = {
++    .name = "uefi-variable",
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8_ARRAY_V(guid.data, uefi_variable, sizeof(QemuUUID), 0),
++        VMSTATE_UINT32(name_size, uefi_variable),
++        VMSTATE_UINT32(data_size, uefi_variable),
++        VMSTATE_UINT32(attributes, uefi_variable),
++        VMSTATE_VBUFFER_ALLOC_UINT32(name, uefi_variable, 0, NULL, name_size),
++        VMSTATE_VBUFFER_ALLOC_UINT32(data, uefi_variable, 0, NULL, data_size),
++        VMSTATE_STRUCT(time, uefi_variable, 0, vmstate_uefi_time, efi_time),
++        VMSTATE_END_OF_LIST()
++    },
++};
++
++uefi_variable *uefi_vars_find_variable(uefi_vars_state *uv, QemuUUID guid,
++                                       const uint16_t *name, uint64_t name_size)
++{
++    uefi_variable *var;
++
++    QTAILQ_FOREACH(var, &uv->variables, next) {
++        if (!uefi_str_equal(var->name, var->name_size,
++                            name, name_size)) {
++            continue;
++        }
++        if (!qemu_uuid_is_equal(&var->guid, &guid)) {
++            continue;
++        }
++        if (!var->data_size) {
++            /* in process of being created/updated */
++            continue;
++        }
++        return var;
 +    }
-+};
-+
-+static const Property uefi_vars_sysbus_properties[] = {
-+    DEFINE_PROP_SIZE("size", uefi_vars_sysbus_state, state.max_storage,
-+                     256 * 1024),
-+    DEFINE_PROP_STRING("jsonfile", uefi_vars_sysbus_state, state.jsonfile),
-+    DEFINE_PROP_BOOL("force-secure-boot", uefi_vars_sysbus_state,
-+                     state.force_secure_boot, false),
-+    DEFINE_PROP_BOOL("disable-custom-mode", uefi_vars_sysbus_state,
-+                     state.disable_custom_mode, false),
-+};
-+
-+static void uefi_vars_sysbus_init(Object *obj)
-+{
-+    uefi_vars_sysbus_state *uv = UEFI_VARS_SYSBUS(obj);
-+
-+    uefi_vars_init(obj, &uv->state);
++    return NULL;
 +}
 +
-+static void uefi_vars_sysbus_reset(DeviceState *dev)
++static uefi_variable *add_variable(uefi_vars_state *uv, QemuUUID guid,
++                                   const uint16_t *name, uint64_t name_size,
++                                   uint32_t attributes)
 +{
-+    uefi_vars_sysbus_state *uv = UEFI_VARS_SYSBUS(dev);
++    uefi_variable *var;
 +
-+    uefi_vars_hard_reset(&uv->state);
++    var = g_new0(uefi_variable, 1);
++    var->guid = guid;
++    var->name = g_malloc(name_size);
++    memcpy(var->name, name, name_size);
++    var->name_size = name_size;
++    var->attributes = attributes;
++
++    var->attributes &= ~EFI_VARIABLE_APPEND_WRITE;
++
++    QTAILQ_INSERT_TAIL(&uv->variables, var, next);
++    return var;
 +}
 +
-+static void uefi_vars_sysbus_realize(DeviceState *dev, Error **errp)
++static void del_variable(uefi_vars_state *uv, uefi_variable *var)
 +{
-+    uefi_vars_sysbus_state *uv = UEFI_VARS_SYSBUS(dev);
-+    SysBusDevice *sysbus = SYS_BUS_DEVICE(dev);
++    if (!var) {
++        return;
++    }
 +
-+    sysbus_init_mmio(sysbus, &uv->state.mr);
-+    uefi_vars_realize(&uv->state, errp);
++    QTAILQ_REMOVE(&uv->variables, var, next);
++    g_free(var->data);
++    g_free(var->name);
++    g_free(var->digest);
++    g_free(var);
 +}
 +
-+static void uefi_vars_sysbus_class_init(ObjectClass *klass, void *data)
++static size_t variable_size(uefi_variable *var)
 +{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
++    size_t size;
 +
-+    dc->realize = uefi_vars_sysbus_realize;
-+    dc->vmsd = &vmstate_uefi_vars_sysbus;
-+    device_class_set_legacy_reset(dc, uefi_vars_sysbus_reset);
-+    device_class_set_props(dc, uefi_vars_sysbus_properties);
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
++    size  = sizeof(*var);
++    size += var->name_size;
++    size += var->data_size;
++    size += var->digest_size;
++    return size;
 +}
 +
-+static const TypeInfo uefi_vars_sysbus_info = {
-+    .name          = TYPE_UEFI_VARS_SYSBUS,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(uefi_vars_sysbus_state),
-+    .instance_init = uefi_vars_sysbus_init,
-+    .class_init    = uefi_vars_sysbus_class_init,
-+};
-+module_obj(TYPE_UEFI_VARS_SYSBUS);
-+
-+static void uefi_vars_sysbus_register_types(void)
++void uefi_vars_set_variable(uefi_vars_state *uv, QemuUUID guid,
++                            const uint16_t *name, uint64_t name_size,
++                            uint32_t attributes,
++                            void *data, uint64_t data_size)
 +{
-+    type_register_static(&uefi_vars_sysbus_info);
++    uefi_variable *old_var, *new_var;
++
++    uefi_trace_variable(__func__, guid, name, name_size);
++
++    old_var = uefi_vars_find_variable(uv, guid, name, name_size);
++    if (old_var) {
++        uv->used_storage -= variable_size(old_var);
++        del_variable(uv, old_var);
++    }
++
++    new_var = add_variable(uv, guid, name, name_size, attributes);
++    new_var->data = g_malloc(data_size);
++    new_var->data_size = data_size;
++    memcpy(new_var->data, data, data_size);
++    uv->used_storage += variable_size(new_var);
 +}
 +
-+type_init(uefi_vars_sysbus_register_types)
-diff --git a/hw/uefi/meson.build b/hw/uefi/meson.build
-index d280881f457a..cf2d26e9bf9a 100644
---- a/hw/uefi/meson.build
-+++ b/hw/uefi/meson.build
-@@ -6,7 +6,8 @@ if (config_all_devices.has_key('CONFIG_UEFI_VARS'))
-                          'var-service-auth.c',
-                          'var-service-guid.c',
-                          'var-service-utils.c',
--                         'var-service-policy.c'))
-+                         'var-service-policy.c',
-+                         'var-service-sysbus.c'))
-   uefi_vars_ss.add(when: gnutls,
-                    if_true: files('var-service-pkcs7.c'),
-                    if_false: files('var-service-pkcs7-stub.c'))
++void uefi_vars_clear_volatile(uefi_vars_state *uv)
++{
++    uefi_variable *var, *n;
++
++    QTAILQ_FOREACH_SAFE(var, &uv->variables, next, n) {
++        if (var->attributes & EFI_VARIABLE_NON_VOLATILE) {
++            continue;
++        }
++        uv->used_storage -= variable_size(var);
++        del_variable(uv, var);
++    }
++}
++
++void uefi_vars_clear_all(uefi_vars_state *uv)
++{
++    uefi_variable *var, *n;
++
++    QTAILQ_FOREACH_SAFE(var, &uv->variables, next, n) {
++        del_variable(uv, var);
++    }
++    uv->used_storage = 0;
++}
++
++void uefi_vars_update_storage(uefi_vars_state *uv)
++{
++    uefi_variable *var;
++
++    uv->used_storage = 0;
++    QTAILQ_FOREACH(var, &uv->variables, next) {
++        uv->used_storage += variable_size(var);
++    }
++}
++
++static gboolean check_access(uefi_vars_state *uv, uefi_variable *var)
++{
++    if (!uv->exit_boot_service) {
++        if (!(var->attributes & EFI_VARIABLE_BOOTSERVICE_ACCESS)) {
++            return false;
++        }
++    } else {
++        if (!(var->attributes & EFI_VARIABLE_RUNTIME_ACCESS)) {
++            return false;
++        }
++    }
++    return true;
++}
++
++static efi_status check_update(uefi_vars_state *uv, uefi_variable *old_var,
++                               uefi_variable *new_var)
++{
++    efi_status status;
++
++    if (old_var) {
++        if (!check_access(uv, old_var)) {
++            return EFI_ACCESS_DENIED;
++        }
++    }
++
++    if (new_var) {
++        if (new_var->attributes & ~EFI_VARIABLE_ATTRIBUTE_SUPPORTED) {
++            return EFI_UNSUPPORTED;
++        }
++        if (!check_access(uv, new_var)) {
++            return EFI_ACCESS_DENIED;
++        }
++    }
++
++    if (old_var && new_var) {
++        if (old_var->attributes != new_var->attributes) {
++            return EFI_INVALID_PARAMETER;
++        }
++    }
++
++    if (new_var) {
++        /* create + update */
++        status = uefi_vars_policy_check(uv, new_var, old_var == NULL);
++    } else {
++        /* delete */
++        g_assert(old_var);
++        status = uefi_vars_policy_check(uv, old_var, false);
++    }
++    if (status != EFI_SUCCESS) {
++        return status;
++    }
++
++    status = uefi_vars_check_secure_boot(uv, new_var ?: old_var);
++    if (status != EFI_SUCCESS) {
++        return status;
++    }
++
++    return EFI_SUCCESS;
++}
++
++static void append_write(uefi_variable *old_var,
++                         uefi_variable *new_var)
++{
++    uefi_vars_siglist siglist;
++    uint64_t size;
++    void *data;
++
++    uefi_vars_siglist_init(&siglist);
++    uefi_vars_siglist_parse(&siglist, old_var->data, old_var->data_size);
++    uefi_vars_siglist_parse(&siglist, new_var->data, new_var->data_size);
++
++    size = uefi_vars_siglist_blob_size(&siglist);
++    data = g_malloc(size);
++    uefi_vars_siglist_blob_generate(&siglist, data, size);
++
++    g_free(new_var->data);
++    new_var->data = data;
++    new_var->data_size = size;
++
++    uefi_vars_siglist_free(&siglist);
++}
++
++static size_t uefi_vars_mm_error(mm_header *mhdr, mm_variable *mvar,
++                                 uint64_t status)
++{
++    mvar->status = status;
++    return sizeof(*mvar);
++}
++
++static size_t uefi_vars_mm_get_variable(uefi_vars_state *uv, mm_header *mhdr,
++                                        mm_variable *mvar, void *func)
++{
++    mm_variable_access *va = func;
++    uint16_t *name;
++    void *data;
++    uefi_variable *var;
++    uint64_t length;
++
++    length = sizeof(*mvar) + sizeof(*va);
++    if (mhdr->length < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    if (va->name_size > uv->max_storage ||
++        va->data_size > uv->max_storage) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_OUT_OF_RESOURCES);
++    }
++
++    name = func + sizeof(*va);
++    if (uadd64_overflow(length, va->name_size, &length)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++    if (mhdr->length < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    if (!uefi_str_is_valid(name, va->name_size, true)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_INVALID_PARAMETER);
++    }
++
++    uefi_trace_variable(__func__, va->guid, name, va->name_size);
++
++    var = uefi_vars_find_variable(uv, va->guid, name, va->name_size);
++    if (!var) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_NOT_FOUND);
++    }
++
++    /* check permissions etc. */
++    if (!check_access(uv, var)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_ACCESS_DENIED);
++    }
++
++    data = func + sizeof(*va) + va->name_size;
++    if (uadd64_overflow(length, va->data_size, &length)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++    if (uv->buf_size < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    va->attributes = var->attributes;
++    if (va->data_size < var->data_size) {
++        va->data_size = var->data_size;
++        length -= va->data_size;
++        mvar->status = EFI_BUFFER_TOO_SMALL;
++    } else {
++        va->data_size = var->data_size;
++        memcpy(data, var->data, var->data_size);
++        mvar->status = EFI_SUCCESS;
++    }
++    return length;
++}
++
++static size_t
++uefi_vars_mm_get_next_variable(uefi_vars_state *uv, mm_header *mhdr,
++                               mm_variable *mvar, void *func)
++{
++    mm_next_variable *nv = func;
++    uefi_variable *var;
++    uint16_t *name;
++    uint64_t length;
++
++    length = sizeof(*mvar) + sizeof(*nv);
++    if (mhdr->length < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    if (nv->name_size > uv->max_storage) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_OUT_OF_RESOURCES);
++    }
++
++    name = func + sizeof(*nv);
++    if (uadd64_overflow(length, nv->name_size, &length)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++    if (mhdr->length < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    if (!uefi_str_is_valid(name, nv->name_size, true)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_INVALID_PARAMETER);
++    }
++
++    if (uefi_strlen(name, nv->name_size) == 0) {
++        /* empty string -> first */
++        var = QTAILQ_FIRST(&uv->variables);
++        if (!var) {
++            return uefi_vars_mm_error(mhdr, mvar, EFI_NOT_FOUND);
++        }
++    } else {
++        var = uefi_vars_find_variable(uv, nv->guid, name, nv->name_size);
++        if (!var) {
++            return uefi_vars_mm_error(mhdr, mvar, EFI_INVALID_PARAMETER);
++        }
++        do {
++            var = QTAILQ_NEXT(var, next);
++        } while (var && !check_access(uv, var));
++        if (!var) {
++            return uefi_vars_mm_error(mhdr, mvar, EFI_NOT_FOUND);
++        }
++    }
++
++    length = sizeof(*mvar) + sizeof(*nv) + var->name_size;
++    if (uv->buf_size < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    nv->guid = var->guid;
++    nv->name_size = var->name_size;
++    memcpy(name, var->name, var->name_size);
++    mvar->status = EFI_SUCCESS;
++    return length;
++}
++
++static bool uefi_vars_mm_digest_compare(uefi_variable *old_var,
++                                        uefi_variable *new_var)
++{
++    if (!old_var->digest ||
++        !new_var->digest ||
++        !old_var->digest_size ||
++        !new_var->digest_size) {
++        /* should not happen */
++        trace_uefi_vars_security_violation("inconsistent authvar digest state");
++        return false;
++    }
++    if (old_var->digest_size != new_var->digest_size) {
++        trace_uefi_vars_security_violation("authvar digest size mismatch");
++        return false;
++    }
++    if (memcmp(old_var->digest, new_var->digest,
++               old_var->digest_size) != 0) {
++        trace_uefi_vars_security_violation("authvar digest data mismatch");
++        return false;
++    }
++    return true;
++}
++
++static size_t uefi_vars_mm_set_variable(uefi_vars_state *uv, mm_header *mhdr,
++                                        mm_variable *mvar, void *func)
++{
++    mm_variable_access *va = func;
++    uint32_t attributes = 0;
++    uint16_t *name;
++    void *data;
++    uefi_variable *old_var, *new_var;
++    uint64_t length;
++    size_t new_storage;
++    efi_status status;
++
++    length = sizeof(*mvar) + sizeof(*va);
++    if (mhdr->length < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    if (va->name_size > uv->max_storage ||
++        va->data_size > uv->max_storage) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_OUT_OF_RESOURCES);
++    }
++
++    name = func + sizeof(*va);
++    if (uadd64_overflow(length, va->name_size, &length)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++    if (mhdr->length < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    data = func + sizeof(*va) + va->name_size;
++    if (uadd64_overflow(length, va->data_size, &length)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++    if (mhdr->length < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    g_assert(va->name_size < G_MAXUINT32);
++    g_assert(va->data_size < G_MAXUINT32);
++
++    if (!uefi_str_is_valid(name, va->name_size, true)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_INVALID_PARAMETER);
++    }
++
++    uefi_trace_variable(__func__, va->guid, name, va->name_size);
++
++    old_var = uefi_vars_find_variable(uv, va->guid, name, va->name_size);
++    if (va->data_size) {
++        new_var = add_variable(uv, va->guid, name, va->name_size,
++                               va->attributes);
++        if (va->attributes & EFI_VARIABLE_AUTHENTICATED_WRITE_ACCESS) {
++            /* not implemented (deprecated in uefi spec) */
++            warn_report("%s: AUTHENTICATED_WRITE_ACCESS", __func__);
++            mvar->status = EFI_UNSUPPORTED;
++            goto rollback;
++        } else if (va->attributes &
++                   EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS) {
++            status = uefi_vars_check_auth_2(uv, new_var, va, data);
++            if (status != EFI_SUCCESS) {
++                mvar->status = status;
++                goto rollback;
++            }
++            if (old_var && new_var) {
++                if (uefi_time_compare(&old_var->time, &new_var->time) > 0) {
++                    trace_uefi_vars_security_violation("time check failed");
++                    mvar->status = EFI_SECURITY_VIOLATION;
++                    goto rollback;
++                }
++                if (old_var->digest_size || new_var->digest_size) {
++                    if (!uefi_vars_mm_digest_compare(old_var, new_var)) {
++                        mvar->status = EFI_SECURITY_VIOLATION;
++                        goto rollback;
++                    }
++                }
++            }
++        } else {
++            new_var->data = g_malloc(va->data_size);
++            memcpy(new_var->data, data, va->data_size);
++            new_var->data_size = va->data_size;
++        }
++        if (!new_var->data) {
++            /* we land here when deleting authenticated variables */
++            del_variable(uv, new_var);
++            new_var = NULL;
++        }
++    } else {
++        new_var = NULL;
++    }
++
++    if (!old_var && !new_var) {
++        /* delete non-existing variable -> nothing to do */
++        mvar->status = EFI_SUCCESS;
++        return sizeof(*mvar);
++    }
++
++    /* check permissions etc. */
++    status = check_update(uv, old_var, new_var);
++    if (status != EFI_SUCCESS) {
++        mvar->status = status;
++        goto rollback;
++    }
++
++    if (va->attributes & EFI_VARIABLE_APPEND_WRITE && old_var && new_var) {
++        /* merge signature databases */
++        if (!uefi_vars_is_sb_any(new_var)) {
++            mvar->status = EFI_UNSUPPORTED;
++            goto rollback;
++        }
++        append_write(old_var, new_var);
++    }
++
++    /* check storage space */
++    new_storage = uv->used_storage;
++    if (old_var) {
++        new_storage -= variable_size(old_var);
++    }
++    if (new_var) {
++        new_storage += variable_size(new_var);
++    }
++    if (new_storage > uv->max_storage) {
++        mvar->status = EFI_OUT_OF_RESOURCES;
++        goto rollback;
++    }
++
++    attributes = new_var
++        ? new_var->attributes
++        : old_var->attributes;
++
++    /* all good, commit */
++    del_variable(uv, old_var);
++    uv->used_storage = new_storage;
++
++    if (attributes & EFI_VARIABLE_NON_VOLATILE) {
++        uefi_vars_json_save(uv);
++    }
++
++    if (new_var && uefi_vars_is_sb_pk(new_var)) {
++        uefi_vars_auth_init(uv);
++    }
++
++    mvar->status = EFI_SUCCESS;
++    return sizeof(*mvar);
++
++rollback:
++    del_variable(uv, new_var);
++    return sizeof(*mvar);
++}
++
++static size_t uefi_vars_mm_variable_info(uefi_vars_state *uv, mm_header *mhdr,
++                                         mm_variable *mvar, void *func)
++{
++    mm_variable_info *vi = func;
++    uint64_t length;
++
++    length = sizeof(*mvar) + sizeof(*vi);
++    if (uv->buf_size < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    vi->max_storage_size  = uv->max_storage;
++    vi->free_storage_size = uv->max_storage - uv->used_storage;
++    vi->max_variable_size = uv->max_storage >> 2;
++    vi->attributes        = 0;
++
++    mvar->status = EFI_SUCCESS;
++    return length;
++}
++
++static size_t
++uefi_vars_mm_get_payload_size(uefi_vars_state *uv, mm_header *mhdr,
++                              mm_variable *mvar, void *func)
++{
++    mm_get_payload_size *ps = func;
++    uint64_t length;
++
++    length = sizeof(*mvar) + sizeof(*ps);
++    if (uv->buf_size < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    ps->payload_size = uv->buf_size;
++    mvar->status = EFI_SUCCESS;
++    return length;
++}
++
++static size_t
++uefi_vars_mm_lock_variable(uefi_vars_state *uv, mm_header *mhdr,
++                           mm_variable *mvar, void *func)
++{
++    mm_lock_variable *lv = func;
++    variable_policy_entry *pe;
++    uint16_t *name, *dest;
++    uint64_t length;
++
++    length = sizeof(*mvar) + sizeof(*lv);
++    if (mhdr->length < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    name = func + sizeof(*lv);
++    if (uadd64_overflow(length, lv->name_size, &length)) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++    if (mhdr->length < length) {
++        return uefi_vars_mm_error(mhdr, mvar, EFI_BAD_BUFFER_SIZE);
++    }
++
++    uefi_trace_variable(__func__, lv->guid, name, lv->name_size);
++
++    pe = g_malloc0(sizeof(*pe) + lv->name_size);
++    pe->version               = VARIABLE_POLICY_ENTRY_REVISION;
++    pe->size                  = sizeof(*pe) + lv->name_size;
++    pe->offset_to_name        = sizeof(*pe);
++    pe->namespace             = lv->guid;
++    pe->min_size              = 0;
++    pe->max_size              = UINT32_MAX;
++    pe->attributes_must_have  = 0;
++    pe->attributes_cant_have  = 0;
++    pe->lock_policy_type      = VARIABLE_POLICY_TYPE_LOCK_NOW;
++
++    dest = (void *)pe + pe->offset_to_name;
++    memcpy(dest, name, lv->name_size);
++
++    uefi_vars_add_policy(uv, pe);
++    g_free(pe);
++
++    mvar->status = EFI_SUCCESS;
++    return length;
++}
++
++uint32_t uefi_vars_mm_vars_proto(uefi_vars_state *uv)
++{
++    static const char *fnames[] = {
++        "zero",
++        "get-variable",
++        "get-next-variable-name",
++        "set-variable",
++        "query-variable-info",
++        "ready-to-boot",
++        "exit-boot-service",
++        "get-statistics",
++        "lock-variable",
++        "var-check-prop-set",
++        "var-check-prop-get",
++        "get-payload-size",
++        "init-runtime-cache-contect",
++        "sync-runtime-cache",
++        "get-runtime-cache-info",
++    };
++    const char  *fname;
++    uint64_t    length;
++
++    mm_header   *mhdr = (mm_header *) uv->buffer;
++    mm_variable *mvar = (mm_variable *) (uv->buffer + sizeof(*mhdr));
++    void        *func = (uv->buffer + sizeof(*mhdr) + sizeof(*mvar));
++
++    if (mhdr->length < sizeof(*mvar)) {
++        return UEFI_VARS_STS_ERR_BAD_BUFFER_SIZE;
++    }
++
++    fname = mvar->function < ARRAY_SIZE(fnames)
++        ? fnames[mvar->function]
++        : "unknown";
++    trace_uefi_vars_proto_cmd(fname);
++
++    switch (mvar->function) {
++    case SMM_VARIABLE_FUNCTION_GET_VARIABLE:
++        length = uefi_vars_mm_get_variable(uv, mhdr, mvar, func);
++        break;
++
++    case SMM_VARIABLE_FUNCTION_GET_NEXT_VARIABLE_NAME:
++        length = uefi_vars_mm_get_next_variable(uv, mhdr, mvar, func);
++        break;
++
++    case SMM_VARIABLE_FUNCTION_SET_VARIABLE:
++        length = uefi_vars_mm_set_variable(uv, mhdr, mvar, func);
++        break;
++
++    case SMM_VARIABLE_FUNCTION_QUERY_VARIABLE_INFO:
++        length = uefi_vars_mm_variable_info(uv, mhdr, mvar, func);
++        break;
++
++    case SMM_VARIABLE_FUNCTION_LOCK_VARIABLE:
++        length = uefi_vars_mm_lock_variable(uv, mhdr, mvar, func);
++        break;
++
++    case SMM_VARIABLE_FUNCTION_GET_PAYLOAD_SIZE:
++        length = uefi_vars_mm_get_payload_size(uv, mhdr, mvar, func);
++        break;
++
++    case SMM_VARIABLE_FUNCTION_READY_TO_BOOT:
++        trace_uefi_event("ready-to-boot");
++        uv->ready_to_boot = true;
++        length = 0;
++        break;
++
++    case SMM_VARIABLE_FUNCTION_EXIT_BOOT_SERVICE:
++        trace_uefi_event("exit-boot-service");
++        uv->exit_boot_service = true;
++        length = 0;
++        break;
++
++    default:
++        length = uefi_vars_mm_error(mhdr, mvar, EFI_UNSUPPORTED);
++        break;
++    }
++
++    if (mhdr->length < length) {
++        mvar->status = EFI_BUFFER_TOO_SMALL;
++    }
++
++    uefi_trace_status(__func__, mvar->status);
++    return UEFI_VARS_STS_SUCCESS;
++}
 -- 
 2.47.1
 

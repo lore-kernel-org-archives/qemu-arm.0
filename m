@@ -1,117 +1,120 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp141524njb;
-        Tue, 7 Jan 2025 05:09:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVpDxlJtK1svZlHykmzswXzqsMr7AanXyqKLUC5uCohfmH3wVaEFDGOYeh3CKjEtAwt9okFlfj/AXswSg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFEs27rrClbU9LMkuHxoxW4ZtR+SFhesVj5YM/cHd576maE7edjxbyPVPDyugZZ9iOo7qUi
-X-Received: by 2002:a05:6214:250e:b0:6d8:a84b:b508 with SMTP id 6a1803df08f44-6dd2333ae04mr977100936d6.12.1736255398288;
-        Tue, 07 Jan 2025 05:09:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736255398; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp240829njb;
+        Tue, 7 Jan 2025 07:35:24 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUJppXcfH/v3Qzc4ZAOMM2fAltfNMPe3O/RGG7EjAZI+m6f4HRVJKqH+uMRNfKLhbw0kSOFbFVlkLqemQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGVeYHgtIcXbjFI45XQ3Ui5ca/I7Lmgv0iyEaQAmK/olupUarGJ4b8AJUqVBaBP+nKINf9s
+X-Received: by 2002:a05:620a:260b:b0:7b6:eef3:aeaf with SMTP id af79cd13be357-7b9ba5edfb3mr10703850285a.0.1736264124166;
+        Tue, 07 Jan 2025 07:35:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736264124; cv=none;
         d=google.com; s=arc-20240605;
-        b=luJhp788sYo11teDhpDTTbE2MZgt9xz54hGm31V3BIkjw/7HBn98JjVxHkMHP145ow
-         diyf4RU7koG952Z22Y2gb2hcKgxkfa5Dyjihwx63daMA1nIya7JFuZqa4agpO6DHT6XT
-         p8Y/UeX2CbOVHcAwGSTJCDFEBdDaRQNve8yEdoRvcjBVEDmc73ox5JaZ7rJWDZcKOc+X
-         KFinH5spSDhetTt2LjOLY4eQ29MD0TXtrFPdZyyaQZs2XAk1kfosxSRX7dtojlfG7ZrB
-         QTAOaPJx0Ez4TG9t/eRaSctYCGeHIlUOnoWFDygISWm39N2/f1CUeF/OTzAO9yHYpkvo
-         cU9w==
+        b=HRvPrckWNjncIjC8IpuiLIkH/oujr9G8pGnkgRT2YNEegZOKTzCT6ymA3nVzMqMbli
+         Bc+/hgYoB+cvjuEWHQZPTUfuI/zjqLhlw1VhjspjW0C7OIEnEKfeIKC5qV2Y1hATrmpq
+         cOV0ckjUOIED5efo1PYWLrbp/1XbcCUuJrSsTYiuX5C4tiRa04sTO2SjdUNQKe65AsRS
+         0+c2EoH515TXSWJ9Uw+FGZEByRrQE/zgTpsBUPkrZrU/xIZ/a8LDGSQWpFkeeNhmrdFr
+         GRw9E8Uow+la4UkwxDnMeu1+1SYwj56ChMDas33iBaLeWk9o6X4+I6ddBdaP7voX/BLQ
+         unLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=ZnIuAeJ5YlWp73V83aZmijaz5SmV1cpsDTGUi9JDVSo=;
-        fh=3b3OYYu51rXjK5xs2gC3mmJNLCOelXs8cduDrrBFp1M=;
-        b=OhMSaGDPZ0JR43FsCwBtc5V0lUPq7LOjrImTr0aHbl8Z5m/alEkaEJwyEWfx81AsnG
-         ZDGylZFmCtTeOmnWVxZ27FlA3py0M6wPSoyIzAbduN+vUxbsmd+a6K7NuJ1Mr7BC9kzv
-         Pk5OExP6CAJtwFZWpVkjgN9uqTv8bo2HYQOZaeiuvJGi9nmTE1HJT6WrivW+7sUqZEQf
-         GcYOe7P4RTsTr8nJLHBKfr3QKEAq+NwTfsvYkOvMBic84wP99SXbwlc47YNJb0NgpyK0
-         O3TdMfD8E/TivgV0fDNmNgvkY22cWtMRLde6IAsDy1UgixmfJIjzS/7KFtIWxniJ91Ko
-         pLcA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=Oms5RWxiSjkIU9AQhaOd854sk01PnwCnlIaXt2N+Kh0=;
+        fh=2A4XrmpWSce8Hg7gb/jK7T/bzdECrSdzPXJ+gvyt/8c=;
+        b=j+qLNpNqRPoaYKNqI3E5d/aVvIXDGDLCnxaE7vNEKySPUgbdX09eX+TmKQiMYExog+
+         nsSO5PG9yeYM6WNaaZ+tI13AcnNGNRDete4QfGBH/VpWmtxk8xPdgD+X6Ppljfm213en
+         5tNDSpkXG567tgZhd6PW4EGoGYuJKVQNhDSuHWXoqksc9FVnACaP/ohS/FVGT5N17DzE
+         fFjTWBnD067bV+PA4vPBJfcx1jglgtqQKKicaiR1oOD4udZNNKmNeqOh10R01ldr17sd
+         4Fb1iSCeSG7Q1C5O83etcP2xMNR5hvPG5yWC00quCB7UC6CBZ1hwgaItD3630q/pcTLR
+         gj1g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QVi/SgIo";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dd1824d5fbsi459754576d6.304.2025.01.07.05.09.58
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac2ad6c4si4394632385a.93.2025.01.07.07.35.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jan 2025 05:09:58 -0800 (PST)
+        Tue, 07 Jan 2025 07:35:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QVi/SgIo";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tV9LB-0001V3-Lr; Tue, 07 Jan 2025 08:09:50 -0500
+	id 1tVBbH-0003Ym-G8; Tue, 07 Jan 2025 10:34:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1tV9L3-0001Tr-GQ; Tue, 07 Jan 2025 08:09:43 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBbE-0003Ni-BF
+ for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1tV9L1-0007q0-Hq; Tue, 07 Jan 2025 08:09:41 -0500
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 5741C4E6000;
- Tue, 07 Jan 2025 14:09:32 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id U0rxOlpL8Io9; Tue,  7 Jan 2025 14:09:30 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 62FA44E6010; Tue, 07 Jan 2025 14:09:30 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 60242746F60;
- Tue, 07 Jan 2025 14:09:30 +0100 (CET)
-Date: Tue, 7 Jan 2025 14:09:30 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>, qemu-devel@nongnu.org,
- =?ISO-8859-15?Q?Fr=E9d=E9ric_Barrat?= <fbarrat@linux.ibm.com>, 
- Stefano Stabellini <sstabellini@kernel.org>, 
- Ilya Leoshkevich <iii@linux.ibm.com>, Cameron Esfahani <dirty@apple.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org, 
- Alexander Graf <agraf@csgraf.de>, Paul Durrant <paul@xen.org>, 
- David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- xen-devel@lists.xenproject.org, qemu-arm@nongnu.org, 
- =?ISO-8859-15?Q?C=E9dric_Le_Goater?= <clg@redhat.com>, 
- Yanan Wang <wangyanan55@huawei.com>, Reinoud Zandijk <reinoud@netbsd.org>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-s390x@nongnu.org, 
- Riku Voipio <riku.voipio@iki.fi>, Anthony PERARD <anthony@xenproject.org>, 
- Alistair Francis <alistair.francis@wdc.com>, 
- Sunil Muthuswamy <sunilmut@microsoft.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Nicholas Piggin <npiggin@gmail.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Marcelo Tosatti <mtosatti@redhat.com>, Thomas Huth <thuth@redhat.com>, 
- Roman Bolshakov <rbolshakov@ddn.com>, 
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>, 
- Zhao Liu <zhao1.liu@intel.com>, Phil Dennis-Jordan <phil@philjordan.eu>, 
- David Woodhouse <dwmw2@infradead.org>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>, 
- Nina Schoetterl-Glausch <nsg@linux.ibm.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Eduardo Habkost <eduardo@habkost.net>, qemu-ppc@nongnu.org, 
- Daniel Henrique Barboza <danielhb413@gmail.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Anton Johansson <anjo@rev.ng>
-Subject: Re: [RFC PATCH 6/7] accel/hvf: Use CPU_FOREACH_HVF()
-In-Reply-To: <6df59c2c-e29d-4b86-8908-4cb9093bad13@linaro.org>
-Message-ID: <4abe9825-ff86-5e7d-1170-3677d5494879@eik.bme.hu>
-References: <20250106200258.37008-1-philmd@linaro.org>
- <20250106200258.37008-7-philmd@linaro.org>
- <bd8168fe-c774-4f75-8a94-1a67ec31e38d@ventanamicro.com>
- <6df59c2c-e29d-4b86-8908-4cb9093bad13@linaro.org>
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBbC-00059t-Nm
+ for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:32 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1736264069;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Oms5RWxiSjkIU9AQhaOd854sk01PnwCnlIaXt2N+Kh0=;
+ b=QVi/SgIoS50pYIMp+H5+ARShG1vJ6KyqdQHIVGSf5QudgjcFizoCzyESo1w6X9UqGn9WtC
+ jmDIf5idoTcUlnqme5piNZMPXcMmGmpU0oBzZbORgWvotqGiz5cZuY5zxl1oSU9OV7R4H9
+ GJNL/6saUdwBGV/dVsRlsTMsAkf1m78=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-157-gv3Jr0CwPpWRgZQywki7qg-1; Tue,
+ 07 Jan 2025 10:34:26 -0500
+X-MC-Unique: gv3Jr0CwPpWRgZQywki7qg-1
+X-Mimecast-MFC-AGG-ID: gv3Jr0CwPpWRgZQywki7qg
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7E81B1977037; Tue,  7 Jan 2025 15:34:24 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.66])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4DA9919560BF; Tue,  7 Jan 2025 15:34:23 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id BFD741800605; Tue, 07 Jan 2025 16:33:54 +0100 (CET)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
+ Paolo Bonzini <pbonzini@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
+ Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v2 19/21] hw/arm: add uefi variable support to virt machine
+ type
+Date: Tue,  7 Jan 2025 16:33:46 +0100
+Message-ID: <20250107153353.1144978-20-kraxel@redhat.com>
+In-Reply-To: <20250107153353.1144978-1-kraxel@redhat.com>
+References: <20250107153353.1144978-1-kraxel@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1325344726-1736255370=:80373"
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: FyigWkxfIH1vvGCwxK0_MeQMSdyKGyspZCoh9gmy_ks_1736264065
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.437,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,70 +129,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ahNRRoVWkORm
+X-TUID: 1t8g0z6HiTme
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Add -machine virt,x-uefi-vars={on,off} property.  Default is off.
+When enabled wire up the uefi-vars-sysbus device.
 
---3866299591-1325344726-1736255370=:80373
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
+TODO: wire up jsonfile property.
 
-On Mon, 6 Jan 2025, Philippe Mathieu-Daudé wrote:
-> On 6/1/25 21:33, Daniel Henrique Barboza wrote:
->> 
->> 
->> On 1/6/25 5:02 PM, Philippe Mathieu-Daudé wrote:
->>> Only iterate over HVF vCPUs when running HVF specific code.
->>> 
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>>   include/system/hvf_int.h  | 4 ++++
->>>   accel/hvf/hvf-accel-ops.c | 9 +++++----
->>>   target/arm/hvf/hvf.c      | 4 ++--
->>>   3 files changed, 11 insertions(+), 6 deletions(-)
->>> 
->>> diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
->>> index 42ae18433f0..3cf64faabd1 100644
->>> --- a/include/system/hvf_int.h
->>> +++ b/include/system/hvf_int.h
->>> @@ -11,6 +11,8 @@
->>>   #ifndef HVF_INT_H
->>>   #define HVF_INT_H
->>> +#include "system/hw_accel.h"
->>> +
->>>   #ifdef __aarch64__
->>>   #include <Hypervisor/Hypervisor.h>
->>>   typedef hv_vcpu_t hvf_vcpuid;
->>> @@ -74,4 +76,6 @@ int hvf_put_registers(CPUState *);
->>>   int hvf_get_registers(CPUState *);
->>>   void hvf_kick_vcpu_thread(CPUState *cpu);
->>> +#define CPU_FOREACH_HVF(cpu) CPU_FOREACH_HWACCEL(cpu)
->> 
->> 
->> Cosmetic comment: given that this is HVF specific code and we only support 
->> one hw
->> accelerator at a time, I'd skip this alias and use CPU_FOREACH_HWACCEL(cpu) 
->> directly.
->> It would make it easier when grepping to see where and how the macro is 
->> being used.
->
-> I find it more useful to grep for a particular accelerator, or for
-> all of them:
->
-> $ git grep CPU_FOREACH_
-> accel/hvf/hvf-accel-ops.c:507:    CPU_FOREACH_HVF(cpu) {
-> accel/hvf/hvf-accel-ops.c:546:    CPU_FOREACH_HVF(cpu) {
-> accel/kvm/kvm-all.c:875:        CPU_FOREACH_KVM(cpu) {
-> accel/kvm/kvm-all.c:938:    CPU_FOREACH_KVM(cpu) {
-> accel/tcg/cputlb.c:372:    CPU_FOREACH_TCG(cpu) {
-> accel/tcg/cputlb.c:650:        CPU_FOREACH_TCG(dst_cpu) {
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+---
+ include/hw/arm/virt.h |  2 ++
+ hw/arm/virt.c         | 41 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 43 insertions(+)
 
-But then you need to define a new macro for every new accelerator. Maybe 
-it's simpler to have CPU_FOREACH take the queue as a parameter so no 
-separate macro is needed for each accel (and they cannot get inconsistent 
-by changing only one of them in the future).
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index c8e94e6aedc9..393ea2cbec78 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -79,6 +79,7 @@ enum {
+     VIRT_ACPI_GED,
+     VIRT_NVDIMM_ACPI,
+     VIRT_PVTIME,
++    VIRT_UEFI_VARS,
+     VIRT_LOWMEMMAP_LAST,
+ };
+ 
+@@ -156,6 +157,7 @@ struct VirtMachineState {
+     bool mte;
+     bool dtb_randomness;
+     bool second_ns_uart_present;
++    bool uefi_vars;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
+     VirtIOMMUType iommu;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 99e0a68b6c55..6856ecb4dcf2 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -65,6 +65,7 @@
+ #include "hw/intc/arm_gicv3_common.h"
+ #include "hw/intc/arm_gicv3_its_common.h"
+ #include "hw/irq.h"
++#include "hw/uefi/var-service-api.h"
+ #include "kvm_arm.h"
+ #include "hvf_arm.h"
+ #include "hw/firmware/smbios.h"
+@@ -181,6 +182,7 @@ static const MemMapEntry base_memmap[] = {
+     [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+     [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+     [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
++    [VIRT_UEFI_VARS] =          { 0x090c0000, 0x00000010 },
+     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+@@ -1369,6 +1371,24 @@ static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
+     return fw_cfg;
+ }
+ 
++static void create_uefi_vars(const VirtMachineState *vms)
++{
++    hwaddr base = vms->memmap[VIRT_UEFI_VARS].base;
++    hwaddr size = vms->memmap[VIRT_UEFI_VARS].size;
++    MachineState *ms = MACHINE(vms);
++    char *nodename;
++
++    sysbus_create_simple("uefi-vars-sysbus", base, NULL);
++
++    nodename = g_strdup_printf("/%s@%" PRIx64, UEFI_VARS_FDT_NODE, base);
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop_string(ms->fdt, nodename,
++                            "compatible", UEFI_VARS_FDT_COMPAT);
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
++                                 2, base, 2, size);
++    g_free(nodename);
++}
++
+ static void create_pcie_irq_map(const MachineState *ms,
+                                 uint32_t gic_phandle,
+                                 int first_irq, const char *nodename)
+@@ -2425,6 +2445,10 @@ static void machvirt_init(MachineState *machine)
+     vms->fw_cfg = create_fw_cfg(vms, &address_space_memory);
+     rom_set_fw(vms->fw_cfg);
+ 
++    if (vms->uefi_vars) {
++        create_uefi_vars(vms);
++    }
++
+     create_platform_bus(vms);
+ 
+     if (machine->nvdimms_state->is_enabled) {
+@@ -2621,6 +2645,20 @@ static void virt_set_oem_table_id(Object *obj, const char *value,
+     strncpy(vms->oem_table_id, value, 8);
+ }
+ 
++static bool virt_get_uefi_vars(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->uefi_vars;
++}
++
++static void virt_set_uefi_vars(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->uefi_vars = value;
++}
++
+ 
+ bool virt_is_acpi_enabled(VirtMachineState *vms)
+ {
+@@ -3273,6 +3311,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+                                           "in ACPI table header."
+                                           "The string may be up to 8 bytes in size");
+ 
++    object_class_property_add_bool(oc, "x-uefi-vars",
++                                   virt_get_uefi_vars,
++                                   virt_set_uefi_vars);
+ }
+ 
+ static void virt_instance_init(Object *obj)
+-- 
+2.47.1
 
-Regards,
-BALATON Zoltan
---3866299591-1325344726-1736255370=:80373--

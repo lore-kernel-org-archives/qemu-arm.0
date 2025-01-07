@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c8472b3sm50758769f8f.58.2025.01.07.08.52.12
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c847263sm50585906f8f.50.2025.01.07.08.52.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 07 Jan 2025 08:52:16 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4B3D75FB57;
+	by draig.lan (Postfix) with ESMTP id 78EC65FBC2;
 	Tue,  7 Jan 2025 16:52:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,49 +52,74 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Bernhard Beschow <shentey@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v3 14/29] tests/functional: update the x86_64 tuxrun tests
-Date: Tue,  7 Jan 2025 16:51:52 +0000
-Message-Id: <20250107165208.743958-15-alex.bennee@linaro.org>
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v3 16/29] tests/qtest: remove clock_steps from virtio tests
+Date: Tue,  7 Jan 2025 16:51:54 +0000
+Message-Id: <20250107165208.743958-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: U1LD5gzlAdou
+X-TUID: NtYKWc4cTYbV
 
-Now there are new up to date images available we should update to them.
+In the qtest environment time will not step forward if the system is
+paused (timers disabled) or we have no timer events to fire. As a
+result VirtIO events are responded to directly and we don't need to
+step time forward.
 
-Cc: Anders Roxell <anders.roxell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
+We still do timeout processing to handle the fact the target QEMU may
+not be ready to respond right away. This will usually be due to a slow
+CI system or if QEMU is running under something like rr.
+
+Future qtest patches will assert that time actually changes when a
+step is requested.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-35-alex.bennee@linaro.org>
----
- tests/functional/test_x86_64_tuxrun.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/test_x86_64_tuxrun.py b/tests/functional/test_x86_64_tuxrun.py
-index 4f96139871..fcbc62b1b0 100755
---- a/tests/functional/test_x86_64_tuxrun.py
-+++ b/tests/functional/test_x86_64_tuxrun.py
-@@ -17,11 +17,11 @@
- class TuxRunX86Test(TuxRunBaselineTest):
+---
+v2
+  - s/with/when/
+  - drop clock_step entirely
+---
+ tests/qtest/libqos/virtio.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/tests/qtest/libqos/virtio.c b/tests/qtest/libqos/virtio.c
+index a21b6eee9c..2e7979652f 100644
+--- a/tests/qtest/libqos/virtio.c
++++ b/tests/qtest/libqos/virtio.c
+@@ -170,7 +170,6 @@ void qvirtio_wait_queue_isr(QTestState *qts, QVirtioDevice *d,
+     gint64 start_time = g_get_monotonic_time();
  
-     ASSET_X86_64_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/x86_64/bzImage',
--        '2bc7480a669ee9b6b82500a236aba0c54233debe98cb968268fa230f52f03461')
-+        'https://storage.tuxboot.com/buildroot/20241119/x86_64/bzImage',
-+        'f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed5aef8')
-     ASSET_X86_64_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/x86_64/rootfs.ext4.zst',
--        'b72ac729769b8f51c6dffb221113c9a063c774dbe1d66af30eb593c4e9999b4b')
-+        'https://storage.tuxboot.com/buildroot/20241119/x86_64/rootfs.ext4.zst',
-+        '4b8b2a99117519c5290e1202cb36eb6c7aaba92b357b5160f5970cf5fb78a751')
+     for (;;) {
+-        qtest_clock_step(qts, 100);
+         if (d->bus->get_queue_isr_status(d, vq)) {
+             return;
+         }
+@@ -192,7 +191,6 @@ uint8_t qvirtio_wait_status_byte_no_isr(QTestState *qts, QVirtioDevice *d,
+     uint8_t val;
  
-     def test_x86_64(self):
-         self.set_machine('q35')
+     while ((val = qtest_readb(qts, addr)) == 0xff) {
+-        qtest_clock_step(qts, 100);
+         g_assert(!d->bus->get_queue_isr_status(d, vq));
+         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
+     }
+@@ -219,14 +217,12 @@ void qvirtio_wait_used_elem(QTestState *qts, QVirtioDevice *d,
+     for (;;) {
+         uint32_t got_desc_idx;
+ 
+-        qtest_clock_step(qts, 100);
+ 
+         if (d->bus->get_queue_isr_status(d, vq) &&
+             qvirtqueue_get_buf(qts, vq, &got_desc_idx, len)) {
+             g_assert_cmpint(got_desc_idx, ==, desc_idx);
+             return;
+         }
+-
+         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
+     }
+ }
 -- 
 2.39.5

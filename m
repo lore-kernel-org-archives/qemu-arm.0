@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp242180njb;
-        Tue, 7 Jan 2025 07:37:15 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUfCZR1pDinMbkKAlKjnn79zq2Sbd9WV0tLSpFvxOXqTxS7QFZdsIrloQtmOKZrtI4lI9WSD9+y0BwSQA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEUyCm9fkZvotj1m8hRpb9oJWYpIcX6J6A3NQhziho8HyyhREuFu1mYDh0fEQabqtAiNBYN
-X-Received: by 2002:ad4:5b83:0:b0:6d8:8256:41d4 with SMTP id 6a1803df08f44-6dd233320fcmr928083596d6.19.1736264235650;
-        Tue, 07 Jan 2025 07:37:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736264235; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp242578njb;
+        Tue, 7 Jan 2025 07:37:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUkXDGqFHCloLZhX1uXu9ldkEHVNzF9128MXVPE2yKDp6Vu/AfuBUD6Lrn4wV+j8e76HbHwuEy89PZYBA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGlOPCLBbDeUCKaFmZrfH6iVg/KAoJ9kzMqNXBGIX42LaFgLiDqwNo3tPrBVVR2jRuyGvNK
+X-Received: by 2002:ac8:5887:0:b0:462:b7c9:10e with SMTP id d75a77b69052e-46b3ac537c4mr63911431cf.13.1736264268743;
+        Tue, 07 Jan 2025 07:37:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736264268; cv=none;
         d=google.com; s=arc-20240605;
-        b=JpDF9DnssK7tYArhrWhfatAPYoCIhzaFlOpjIcHFQmq4lYaZKd6xdVWS8aYIHMd4vf
-         Kx6P3p0voJX4O0Kopl/TyKj5cedsTNYu2fkgYJa5xgrZmxop3t4M5YVFqtERHhxe1OSC
-         EZyeptFnHB9tsAWPw/SGqMx+3Ph7odbxQPaWKLtC5egMo38o6vNxG3BDug68wGkwE2Dx
-         ozIRLm+vfiP0/GoSHfJHqqxI8H65VtmyqEuIHtIaGIkP1Iwk6g4yJoHMlUj4F4unlpIl
-         7o9PjW4O3mOaF6iL2HBZgrd1hUSEXgF0DoJYEPj9/xQKBV2rUDf5VL5wHNVDJp0BwtoL
-         mf/Q==
+        b=LSWt0LBDFv/8x6BRmNnwJH+fE2zs0UJF8Gvyf1xsfZPwbdke8VG02poxx4x3qFVW1r
+         q7EVKRen2cR8DzB6qzCC3c3qgb2n8/rtCxbvHBLoIS7nGrhE9yUvI38s+qw44u2qtvMh
+         0s7Yc4zYLH3aSYP9CojO2LE7Fxls/Uwcl1weobrpz7fWt5oien0b1BYtZL6EJI40SQx3
+         Se6RX2oPp7fWBJhJI2rWPhONV5wtR3+jE7Powoi/FIxOEj4NdibihlTVdFUD2qecvYVK
+         Jp3/quVm4/Abs+S1K9eX0Oek3/V1sEVOzqHgdeCikDAaltMHclQH7nGl2DJpq4WzZJ3H
+         3pWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=6B7bXLfWKPT5+t+tEfl3hspygVMy2cFF8E6ZcaSMuoY=;
+        bh=vOsqL2sLEPDfF++zjwertebXDJiNYtLXu2cZD9voBvU=;
         fh=2A4XrmpWSce8Hg7gb/jK7T/bzdECrSdzPXJ+gvyt/8c=;
-        b=LFHIJRY7Hqnhi3O1cIHQSaiYm4IGK8ljEd/as15kXH3UCN/aOkz80xwPi7yuQbhvCz
-         CFgjIdn2n6WskqNtE/oZcQyzUiqnLEuDpci/SEjUTR3fIqB/MA/+lDbm4+jKwP2uiM6/
-         PzOrR+eWmollpnZ2XdII3Iej7E5YWevAGwX81eSnHVG6ZDTBWZM/w5kUzpLGnqBc32Q/
-         JfE9UbUqnlXXit3Fw0YD8XzNfl5bc9znTPdz8XC+PBQ1zpTeF8/mVvfd4eBBQG7A3LYK
-         IbDrWxTShlsbEdWnQOjjA/nrNQkD8Cvodd2M/0hO9YwVb0bsFx2K/U038HLB4vO6O+av
-         N/qA==;
+        b=Uth97X+m56uPP4RNq5/kCiVjPPygekGSmgkQJ1ym8xYSPiUCnjFqMmU7SQHxjzlIUn
+         if+sjxUPf0fr1bYz9nG3fCrm2koMZ5NxHD2+UpIhETi7kmaPoxGxmPV1Tu7pcl2NSlc+
+         /EYY0XPsUVsQTZB8SRdgaVo0fiA5/owgoeDhw28E3d1j1Q/6/nkISwTfZNlUbfFTUgIh
+         SvqVy9gp9AotaKFytFltRGbFATrE7PRrVHlydYobnnriG2FxXRAw/zUVClSkuYfhFKmf
+         waK3SS+3wRdD+xPQbrTL0lOFbBFRF+RheDpxO9YHl4Tl1o33ckSkjrhciByFO69R1jL1
+         fkrA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="cFLZ/YuC";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CVjcy5Ub;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dd181377d0si510020096d6.161.2025.01.07.07.37.15
+        by mx.google.com with ESMTPS id d75a77b69052e-46a3ebc546bsi468333481cf.408.2025.01.07.07.37.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jan 2025 07:37:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Jan 2025 07:37:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="cFLZ/YuC";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=CVjcy5Ub;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVBb4-0003Dq-2l; Tue, 07 Jan 2025 10:34:22 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tVBb4-0003E4-In; Tue, 07 Jan 2025 10:34:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBb0-0003BS-Pf
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:18 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBaz-0003As-Ky
+ for qemu-devel@nongnu.org; Tue, 07 Jan 2025 10:34:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBay-000562-Pq
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:18 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBax-00055L-Kf
+ for qemu-devel@nongnu.org; Tue, 07 Jan 2025 10:34:17 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1736264056;
+ s=mimecast20190719; t=1736264054;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6B7bXLfWKPT5+t+tEfl3hspygVMy2cFF8E6ZcaSMuoY=;
- b=cFLZ/YuCf5T/4rT6IoWEceh/TEWVxFy27SylcnQAj6dZKIu3Jr1nt8UPNzbN8BZmeXH0kT
- bFcG9XJDFdz58wWWScwzsgOMOITZvPWr4/XTJaXCForcl89DDN8DCnZiFJIfuszfUzsclq
- UsZvm0q+ABs27ND2ymmfbAQH+nWSoAU=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=vOsqL2sLEPDfF++zjwertebXDJiNYtLXu2cZD9voBvU=;
+ b=CVjcy5UbVxTkKX2LXY1Wwc3EbJU1/hyIqfsTbUKt2yGd75S2AXuwVosgThERL9y8gXzSEP
+ GJINLDcbYkn9kQ3u7oxysomiekTB6FhlnRYYsBctZTKdiuAZwMNoX4AoQ052J0C+O77qBB
+ i+2Wdno/M1DzWJMWs453hsoRNGhul/w=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-539-szNqzVKGNz2t96cYwVf2pQ-1; Tue,
- 07 Jan 2025 10:34:13 -0500
-X-MC-Unique: szNqzVKGNz2t96cYwVf2pQ-1
-X-Mimecast-MFC-AGG-ID: szNqzVKGNz2t96cYwVf2pQ
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-68-hT-juV__MU2YoEKxVE4jvA-1; Tue,
+ 07 Jan 2025 10:34:11 -0500
+X-MC-Unique: hT-juV__MU2YoEKxVE4jvA-1
+X-Mimecast-MFC-AGG-ID: hT-juV__MU2YoEKxVE4jvA
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 670281955DDE; Tue,  7 Jan 2025 15:34:12 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AD44D1956068; Tue,  7 Jan 2025 15:34:09 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.66])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C7A1F195606B; Tue,  7 Jan 2025 15:34:11 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 084291956053; Tue,  7 Jan 2025 15:34:09 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 19D7018003B5; Tue, 07 Jan 2025 16:33:54 +0100 (CET)
+ id ED3EE18003AE; Tue, 07 Jan 2025 16:33:53 +0100 (CET)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
@@ -92,490 +92,427 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
  Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v2 10/21] hw/uefi: add var-service-pkcs7.c
-Date: Tue,  7 Jan 2025 16:33:37 +0100
-Message-ID: <20250107153353.1144978-11-kraxel@redhat.com>
+Subject: [PATCH v2 08/21] hw/uefi: add var-service-policy.c
+Date: Tue,  7 Jan 2025 16:33:35 +0100
+Message-ID: <20250107153353.1144978-9-kraxel@redhat.com>
 In-Reply-To: <20250107153353.1144978-1-kraxel@redhat.com>
 References: <20250107153353.1144978-1-kraxel@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
 X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.437,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: X+Iq8F6cQN8g
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: hPJrLpcY324l
 
-This implements pkcs7 signature verification using gnutls.
-Needed to check authenticated variable updates.
+Implement variable policies (Edk2VariablePolicyProtocol).
+
+This EFI protocol allows to define restrictions for variables.
+It also allows to lock down variables (disallow write access).
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/uefi/var-service-pkcs7.c | 436 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 436 insertions(+)
- create mode 100644 hw/uefi/var-service-pkcs7.c
+ hw/uefi/var-service-policy.c | 370 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 370 insertions(+)
+ create mode 100644 hw/uefi/var-service-policy.c
 
-diff --git a/hw/uefi/var-service-pkcs7.c b/hw/uefi/var-service-pkcs7.c
+diff --git a/hw/uefi/var-service-policy.c b/hw/uefi/var-service-policy.c
 new file mode 100644
-index 000000000000..32accf4e44e0
+index 000000000000..3b1155fe4ea1
 --- /dev/null
-+++ b/hw/uefi/var-service-pkcs7.c
-@@ -0,0 +1,436 @@
++++ b/hw/uefi/var-service-policy.c
+@@ -0,0 +1,370 @@
 +/*
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * uefi vars device - pkcs7 verification
++ * uefi vars device - VarCheckPolicyLibMmiHandler implementation
++ *
++ * variable policy specs:
++ * https://github.com/tianocore/edk2/blob/master/MdeModulePkg/Library/VariablePolicyLib/ReadMe.md
 + */
 +#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
 +#include "system/dma.h"
-+
-+#include <gnutls/gnutls.h>
-+#include <gnutls/pkcs7.h>
-+#include <gnutls/crypto.h>
++#include "migration/vmstate.h"
 +
 +#include "hw/uefi/var-service.h"
++#include "hw/uefi/var-service-api.h"
++#include "hw/uefi/var-service-edk2.h"
 +
-+#define AUTHVAR_DIGEST_ALGO GNUTLS_DIG_SHA256
-+#define AUTHVAR_DIGEST_SIZE 32
++#include "trace/trace-hw_uefi.h"
 +
-+/*
-+ * Replicate the signed data for signature verification.
-+ */
-+static gnutls_datum_t *build_signed_data(mm_variable_access *va, void *data)
++static void calc_policy(uefi_var_policy *pol);
++
++static int uefi_var_policy_post_load(void *opaque, int version_id)
 +{
-+    variable_auth_2 *auth = data;
-+    uint64_t data_offset = sizeof(efi_time) + auth->hdr_length;
-+    uint16_t *name = (void *)va + sizeof(mm_variable_access);
-+    gnutls_datum_t *sdata;
-+    uint64_t pos = 0;
++    uefi_var_policy *pol = opaque;
 +
-+    sdata = g_new(gnutls_datum_t, 1);
-+    sdata->size = (va->name_size - 2
-+                   + sizeof(QemuUUID)
-+                   + sizeof(va->attributes)
-+                   + sizeof(auth->timestamp)
-+                   + va->data_size - data_offset);
-+    sdata->data = g_malloc(sdata->size);
-+
-+    /* Variable Name (without terminating \0) */
-+    memcpy(sdata->data + pos, name, va->name_size - 2);
-+    pos += va->name_size - 2;
-+
-+    /* Variable Namespace Guid */
-+    memcpy(sdata->data + pos, &va->guid, sizeof(va->guid));
-+    pos += sizeof(va->guid);
-+
-+    /* Attributes */
-+    memcpy(sdata->data + pos, &va->attributes, sizeof(va->attributes));
-+    pos += sizeof(va->attributes);
-+
-+    /* TimeStamp */
-+    memcpy(sdata->data + pos, &auth->timestamp, sizeof(auth->timestamp));
-+    pos += sizeof(auth->timestamp);
-+
-+    /* Variable Content */
-+    memcpy(sdata->data + pos, data + data_offset, va->data_size - data_offset);
-+    pos += va->data_size - data_offset;
-+
-+    assert(pos == sdata->size);
-+    return sdata;
-+}
-+
-+/*
-+ * See WrapPkcs7Data() in edk2.
-+ *
-+ * UEFI spec allows pkcs7 signatures being used without the envelope which
-+ * identifies them as pkcs7 signatures.  openssl and gnutls will not parse them
-+ * without the envelope though.  So add it if needed.
-+ */
-+static void wrap_pkcs7(gnutls_datum_t *pkcs7)
-+{
-+    static uint8_t signed_data_oid[9] = {
-+        0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02
-+    };
-+    gnutls_datum_t wrap;
-+
-+    if (pkcs7->data[4] == 0x06 &&
-+        pkcs7->data[5] == 0x09 &&
-+        memcmp(pkcs7->data + 6, signed_data_oid, sizeof(signed_data_oid)) == 0 &&
-+        pkcs7->data[15] == 0x0a &&
-+        pkcs7->data[16] == 0x82) {
-+        return;
-+    }
-+
-+    wrap.size = pkcs7->size + 19;
-+    wrap.data = g_malloc(wrap.size);
-+
-+    wrap.data[0] = 0x30;
-+    wrap.data[1] = 0x82;
-+    wrap.data[2] = (wrap.size - 4) >> 8;
-+    wrap.data[3] = (wrap.size - 4) & 0xff;
-+    wrap.data[4] = 0x06;
-+    wrap.data[5] = 0x09;
-+    memcpy(wrap.data + 6, signed_data_oid, sizeof(signed_data_oid));
-+
-+    wrap.data[15] = 0xa0;
-+    wrap.data[16] = 0x82;
-+    wrap.data[17] = pkcs7->size >> 8;
-+    wrap.data[18] = pkcs7->size & 0xff;
-+    memcpy(wrap.data + 19, pkcs7->data, pkcs7->size);
-+
-+    g_free(pkcs7->data);
-+    *pkcs7 = wrap;
-+}
-+
-+static gnutls_datum_t *build_pkcs7(void *data)
-+{
-+    variable_auth_2 *auth = data;
-+    gnutls_datum_t *pkcs7;
-+
-+    pkcs7 = g_new(gnutls_datum_t, 1);
-+    pkcs7->size = auth->hdr_length - 24;
-+    pkcs7->data = g_malloc(pkcs7->size);
-+    memcpy(pkcs7->data, data + 16 + 24, pkcs7->size);
-+
-+    wrap_pkcs7(pkcs7);
-+
-+    return pkcs7;
-+}
-+
-+/*
-+ * Read UEFI signature database, store x509 all certificates found in
-+ * gnutls_x509_trust_list_t.
-+ */
-+static gnutls_x509_trust_list_t build_trust_list_sb(uefi_variable *var)
-+{
-+    gnutls_x509_trust_list_t tlist;
-+    gnutls_datum_t cert_data;
-+    gnutls_x509_crt_t cert;
-+    uefi_vars_siglist siglist;
-+    uefi_vars_cert *c;
-+    int rc;
-+
-+    rc = gnutls_x509_trust_list_init(&tlist, 0);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_trust_list_init error: %s",
-+                     gnutls_strerror(rc));
-+        return NULL;
-+    }
-+
-+    uefi_vars_siglist_init(&siglist);
-+    uefi_vars_siglist_parse(&siglist, var->data, var->data_size);
-+
-+    QTAILQ_FOREACH(c, &siglist.x509, next) {
-+        cert_data.size = c->size;
-+        cert_data.data = c->data;
-+
-+        rc = gnutls_x509_crt_init(&cert);
-+        if (rc < 0) {
-+            warn_report("gnutls_x509_crt_init error: %s", gnutls_strerror(rc));
-+            break;
-+        }
-+        rc = gnutls_x509_crt_import(cert, &cert_data, GNUTLS_X509_FMT_DER);
-+        if (rc < 0) {
-+            warn_report("gnutls_x509_crt_import error: %s",
-+                        gnutls_strerror(rc));
-+            gnutls_x509_crt_deinit(cert);
-+            break;
-+        }
-+        rc = gnutls_x509_trust_list_add_cas(tlist, &cert, 1, 0);
-+        if (rc < 0) {
-+            warn_report("gnutls_x509_crt_import error: %s",
-+                        gnutls_strerror(rc));
-+            gnutls_x509_crt_deinit(cert);
-+            break;
-+        }
-+    }
-+
-+    uefi_vars_siglist_free(&siglist);
-+
-+    return tlist;
-+}
-+
-+static int build_digest_authvar(gnutls_x509_crt_t signer,
-+                                gnutls_x509_crt_t root,
-+                                uint8_t *hash_digest)
-+{
-+    char *cn;
-+    size_t cn_size = 0;
-+    uint8_t fp[AUTHVAR_DIGEST_SIZE];
-+    size_t fp_size = sizeof(fp);
-+    gnutls_hash_hd_t hash;
-+    int rc;
-+
-+    /* get signer CN */
-+    rc = gnutls_x509_crt_get_dn_by_oid(signer, GNUTLS_OID_X520_COMMON_NAME,
-+                                       0, 0, NULL, &cn_size);
-+    if (rc != GNUTLS_E_SHORT_MEMORY_BUFFER) {
-+        warn_report("gnutls_x509_crt_get_dn_by_oid error #1: %s",
-+                    gnutls_strerror(rc));
-+        return rc;
-+    }
-+
-+    cn = g_malloc(cn_size);
-+    rc = gnutls_x509_crt_get_dn_by_oid(signer, GNUTLS_OID_X520_COMMON_NAME,
-+                                       0, 0, cn, &cn_size);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_get_dn_by_oid error #2: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+
-+    /* get root certificate fingerprint */
-+    rc = gnutls_x509_crt_get_fingerprint(root, AUTHVAR_DIGEST_ALGO,
-+                                         fp, &fp_size);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_get_fingerprint error: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+
-+    /* digest both items */
-+    rc = gnutls_hash_init(&hash, AUTHVAR_DIGEST_ALGO);
-+    if (rc < 0) {
-+        warn_report("gnutls_hash_init error: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+    rc = gnutls_hash(hash, cn, cn_size);
-+    if (rc < 0) {
-+        warn_report("gnutls_hash error: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+    rc = gnutls_hash(hash, fp, fp_size);
-+    if (rc < 0) {
-+        warn_report("gnutls_hash error: %s",
-+                    gnutls_strerror(rc));
-+        goto err;
-+    }
-+    gnutls_hash_deinit(hash, hash_digest);
-+
++    calc_policy(pol);
 +    return 0;
-+
-+err:
-+    g_free(cn);
-+    return rc;
 +}
 +
-+/*
-+ * uefi spec 2.9, section 8.2.2
-+ *
-+ * For EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS variables which are
-+ * NOT secure boot variables we should track the root certificate of the trust
-+ * chain, and the subject CN of the signer certificate.
-+ *
-+ * So we'll go store a digest of these two items so we can verify this.  Also
-+ * create a gnutls_x509_trust_list_t with the root certificate, so
-+ * gnutls_pkcs7_verify() will pass (assuming the signature is otherwise
-+ * correct).
-+ */
-+static gnutls_x509_trust_list_t build_trust_list_authvar(gnutls_pkcs7_t pkcs7,
-+                                                         uint8_t *hash_digest)
++const VMStateDescription vmstate_uefi_var_policy = {
++    .name = "uefi-var-policy",
++    .post_load = uefi_var_policy_post_load,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32(entry_size, uefi_var_policy),
++        VMSTATE_VBUFFER_ALLOC_UINT32(entry, uefi_var_policy,
++                                     0, NULL, entry_size),
++        VMSTATE_END_OF_LIST()
++    },
++};
++
++static void print_policy_entry(variable_policy_entry *pe)
 +{
-+    gnutls_datum_t signer_data = { 0 };
-+    gnutls_datum_t root_data = { 0 };
-+    gnutls_x509_crt_t signer = NULL;
-+    gnutls_x509_crt_t root = NULL;
-+    gnutls_x509_trust_list_t tlist = NULL;
-+    int n, rc;
++    uint16_t *name = (void *)pe + pe->offset_to_name;
 +
-+    n = gnutls_pkcs7_get_crt_count(pkcs7);
++    fprintf(stderr, "%s:\n", __func__);
 +
-+    /* first is signer certificate */
-+    rc = gnutls_pkcs7_get_crt_raw2(pkcs7, 0, &signer_data);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_get_crt_raw2(0) error: %s",
-+                    gnutls_strerror(rc));
-+        goto done;
++    fprintf(stderr, "    name ´");
++    while (*name) {
++        fprintf(stderr, "%c", *name);
++        name++;
 +    }
-+    rc = gnutls_x509_crt_init(&signer);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_init error: %s", gnutls_strerror(rc));
-+        goto done;
-+    }
-+    rc = gnutls_x509_crt_import(signer, &signer_data, GNUTLS_X509_FMT_DER);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_import error: %s",
-+                    gnutls_strerror(rc));
-+        gnutls_x509_crt_deinit(signer);
-+        goto done;
-+    }
++    fprintf(stderr, "', version=%d.%d, size=%d\n",
++            pe->version >> 16, pe->version & 0xffff, pe->size);
 +
-+    /* last is root-of-trust certificate (can be identical to signer) */
-+    rc = gnutls_pkcs7_get_crt_raw2(pkcs7, n - 1, &root_data);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_get_crt_raw2(%d) error: %s",
-+                    n - 1, gnutls_strerror(rc));
-+        goto done;
++    if (pe->min_size) {
++        fprintf(stderr, "    size min=%d\n", pe->min_size);
 +    }
-+    rc = gnutls_x509_crt_init(&root);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_init error: %s", gnutls_strerror(rc));
-+        goto done;
++    if (pe->max_size != UINT32_MAX) {
++        fprintf(stderr, "    size max=%u\n", pe->max_size);
 +    }
-+    rc = gnutls_x509_crt_import(root, &root_data, GNUTLS_X509_FMT_DER);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_import error: %s",
-+                    gnutls_strerror(rc));
-+        goto done;
++    if (pe->attributes_must_have) {
++        fprintf(stderr, "    attr must=0x%x\n", pe->attributes_must_have);
 +    }
-+
-+    /* calc digest for signer CN + root cert */
-+    rc = build_digest_authvar(signer, root, hash_digest);
-+    if (rc < 0) {
-+        goto done;
++    if (pe->attributes_cant_have) {
++        fprintf(stderr, "    attr cant=0x%x\n", pe->attributes_cant_have);
 +    }
-+
-+    /* add root to trust list */
-+    rc = gnutls_x509_trust_list_init(&tlist, 0);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_trust_list_init error: %s",
-+                    gnutls_strerror(rc));
-+        goto done;
++    if (pe->lock_policy_type) {
++        fprintf(stderr, "    lock policy type %d\n", pe->lock_policy_type);
 +    }
-+    rc = gnutls_x509_trust_list_add_cas(tlist, &root, 1, 0);
-+    if (rc < 0) {
-+        warn_report("gnutls_x509_crt_import error: %s",
-+                    gnutls_strerror(rc));
-+        gnutls_x509_trust_list_deinit(tlist, 1);
-+        tlist = NULL;
-+        goto done;
-+    } else {
-+        /* ownership passed to tlist */
-+        root = NULL;
-+    }
-+
-+done:
-+    if (signer_data.data) {
-+        gnutls_free(signer_data.data);
-+    }
-+    if (root_data.data) {
-+        gnutls_free(root_data.data);
-+    }
-+    if (signer) {
-+        gnutls_x509_crt_deinit(signer);
-+    }
-+    if (root) {
-+        gnutls_x509_crt_deinit(root);
-+    }
-+    return tlist;
 +}
 +
-+static void free_datum(gnutls_datum_t *ptr)
++static gboolean wildcard_str_equal(uefi_var_policy *pol,
++                                   uefi_variable *var)
 +{
-+    if (!ptr) {
-+        return;
-+    }
-+    g_free(ptr->data);
-+    g_free(ptr);
++    return uefi_str_equal_ex(pol->name, pol->name_size,
++                             var->name, var->name_size,
++                             true);
 +}
 +
-+static void gnutls_log_stderr(int level, const char *msg)
++static uefi_var_policy *find_policy(uefi_vars_state *uv, QemuUUID guid,
++                                    uint16_t *name, uint64_t name_size)
 +{
-+    if (strncmp(msg, "ASSERT:", 7) == 0) {
-+        return;
++    uefi_var_policy *pol;
++
++    QTAILQ_FOREACH(pol, &uv->var_policies, next) {
++        if (!qemu_uuid_is_equal(&pol->entry->namespace, &guid)) {
++            continue;
++        }
++        if (!uefi_str_equal(pol->name, pol->name_size,
++                            name, name_size)) {
++            continue;
++        }
++        return pol;
 +    }
-+    fprintf(stderr, "    %d: %s", level, msg);
++    return NULL;
 +}
 +
-+/*
-+ * pkcs7 signature verification (EFI_VARIABLE_AUTHENTICATION_2).
-+ */
-+efi_status uefi_vars_check_pkcs7_2(uefi_variable *siglist,
-+                                   void **digest, uint32_t *digest_size,
-+                                   mm_variable_access *va, void *data)
++static uefi_var_policy *wildcard_find_policy(uefi_vars_state *uv,
++                                             uefi_variable *var)
 +{
-+    gnutls_x509_trust_list_t tlist = NULL;
-+    gnutls_datum_t *signed_data = NULL;
-+    gnutls_datum_t *pkcs7_data = NULL;
-+    gnutls_pkcs7_t pkcs7 = NULL;
-+    efi_status status = EFI_SECURITY_VIOLATION;
-+    int rc;
++    uefi_var_policy *pol;
 +
-+    if (0) {
-+        /* gnutls debug logging */
-+        static bool first = true;
++    QTAILQ_FOREACH(pol, &uv->var_policies, next) {
++        if (!qemu_uuid_is_equal(&pol->entry->namespace, &var->guid)) {
++            continue;
++        }
++        if (!wildcard_str_equal(pol, var)) {
++            continue;
++        }
++        return pol;
++    }
++    return NULL;
++}
 +
-+        if (first) {
-+            first = false;
-+            gnutls_global_set_log_function(gnutls_log_stderr);
-+            gnutls_global_set_log_level(99);
++static void calc_policy(uefi_var_policy *pol)
++{
++    variable_policy_entry *pe = pol->entry;
++    unsigned int i;
++
++    pol->name = (void *)pol->entry + pe->offset_to_name;
++    pol->name_size = pe->size - pe->offset_to_name;
++
++    for (i = 0; i < pol->name_size / 2; i++) {
++        if (pol->name[i] == '#') {
++            pol->hashmarks++;
++        }
++    }
++}
++
++uefi_var_policy *uefi_vars_add_policy(uefi_vars_state *uv,
++                                      variable_policy_entry *pe)
++{
++    uefi_var_policy *pol, *p;
++
++    pol = g_new0(uefi_var_policy, 1);
++    pol->entry = g_malloc(pe->size);
++    memcpy(pol->entry, pe, pe->size);
++    pol->entry_size = pe->size;
++
++    calc_policy(pol);
++
++    /* keep list sorted by priority, add to tail of priority group */
++    QTAILQ_FOREACH(p, &uv->var_policies, next) {
++        if ((p->hashmarks > pol->hashmarks) ||
++            (!p->name_size && pol->name_size)) {
++            QTAILQ_INSERT_BEFORE(p, pol, next);
++            return pol;
 +        }
 +    }
 +
-+    signed_data = build_signed_data(va, data);
-+    pkcs7_data = build_pkcs7(data);
++    QTAILQ_INSERT_TAIL(&uv->var_policies, pol, next);
++    return pol;
++}
 +
-+    rc = gnutls_pkcs7_init(&pkcs7);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_init error: %s", gnutls_strerror(rc));
-+        goto out;
++efi_status uefi_vars_policy_check(uefi_vars_state *uv,
++                                  uefi_variable *var,
++                                  gboolean is_newvar)
++{
++    uefi_var_policy *pol;
++    variable_policy_entry *pe;
++    variable_lock_on_var_state *lvarstate;
++    uint16_t *lvarname;
++    size_t lvarnamesize;
++    uefi_variable *lvar;
++
++    if (!uv->end_of_dxe) {
++        return EFI_SUCCESS;
 +    }
 +
-+    rc = gnutls_pkcs7_import(pkcs7, pkcs7_data, GNUTLS_X509_FMT_DER);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_import error: %s", gnutls_strerror(rc));
-+        goto out;
++    pol = wildcard_find_policy(uv, var);
++    if (!pol) {
++        return EFI_SUCCESS;
++    }
++    pe = pol->entry;
++
++    uefi_trace_variable(__func__, var->guid, var->name, var->name_size);
++    print_policy_entry(pe);
++
++    if ((var->attributes & pe->attributes_must_have) != pe->attributes_must_have) {
++        trace_uefi_vars_policy_deny("must-have-attr");
++        return EFI_INVALID_PARAMETER;
++    }
++    if ((var->attributes & pe->attributes_cant_have) != 0) {
++        trace_uefi_vars_policy_deny("cant-have-attr");
++        return EFI_INVALID_PARAMETER;
 +    }
 +
-+    if (siglist) {
-+        /* secure boot variables */
-+        tlist = build_trust_list_sb(siglist);
-+    } else if (digest && digest_size) {
-+        /* other authenticated variables */
-+        *digest_size = AUTHVAR_DIGEST_SIZE;
-+        *digest = g_malloc(*digest_size);
-+        tlist = build_trust_list_authvar(pkcs7, *digest);
-+    } else {
-+        /* should not happen */
-+        goto out;
++    if (var->data_size < pe->min_size) {
++        trace_uefi_vars_policy_deny("min-size");
++        return EFI_INVALID_PARAMETER;
++    }
++    if (var->data_size > pe->max_size) {
++        trace_uefi_vars_policy_deny("max-size");
++        return EFI_INVALID_PARAMETER;
 +    }
 +
-+    rc = gnutls_pkcs7_verify(pkcs7, tlist,
-+                             NULL, 0,
-+                             0, signed_data,
-+                             GNUTLS_VERIFY_DISABLE_TIME_CHECKS |
-+                             GNUTLS_VERIFY_DISABLE_TRUSTED_TIME_CHECKS);
-+    if (rc < 0) {
-+        warn_report("gnutls_pkcs7_verify error: %s", gnutls_strerror(rc));
-+        goto out;
++    switch (pe->lock_policy_type) {
++    case VARIABLE_POLICY_TYPE_NO_LOCK:
++        break;
++
++    case VARIABLE_POLICY_TYPE_LOCK_NOW:
++        trace_uefi_vars_policy_deny("lock-now");
++        return EFI_WRITE_PROTECTED;
++
++    case VARIABLE_POLICY_TYPE_LOCK_ON_CREATE:
++        if (!is_newvar) {
++            trace_uefi_vars_policy_deny("lock-on-create");
++            return EFI_WRITE_PROTECTED;
++        }
++        break;
++
++    case VARIABLE_POLICY_TYPE_LOCK_ON_VAR_STATE:
++        lvarstate    = (void *)pol->entry + sizeof(*pe);
++        lvarname     = (void *)pol->entry + sizeof(*pe) + sizeof(*lvarstate);
++        lvarnamesize = pe->offset_to_name - sizeof(*pe) - sizeof(*lvarstate);
++
++        uefi_trace_variable(__func__, lvarstate->namespace,
++                            lvarname, lvarnamesize);
++        lvar = uefi_vars_find_variable(uv, lvarstate->namespace,
++                                          lvarname, lvarnamesize);
++        if (lvar && lvar->data_size == 1) {
++            uint8_t *value = lvar->data;
++            if (lvarstate->value == *value) {
++                return EFI_WRITE_PROTECTED;
++            }
++        }
++        break;
 +    }
 +
-+    /* check passed */
-+    status = EFI_SUCCESS;
++    return EFI_SUCCESS;
++}
 +
-+out:
-+    free_datum(signed_data);
-+    free_datum(pkcs7_data);
-+    if (tlist) {
-+        gnutls_x509_trust_list_deinit(tlist, 1);
++void uefi_vars_policies_clear(uefi_vars_state *uv)
++{
++    uefi_var_policy *pol;
++
++    while (!QTAILQ_EMPTY(&uv->var_policies)) {
++        pol = QTAILQ_FIRST(&uv->var_policies);
++        QTAILQ_REMOVE(&uv->var_policies, pol, next);
++        g_free(pol->entry);
++        g_free(pol);
 +    }
-+    if (pkcs7) {
-+        gnutls_pkcs7_deinit(pkcs7);
++}
++
++static size_t uefi_vars_mm_policy_error(mm_header *mhdr,
++                                        mm_check_policy *mchk,
++                                        uint64_t status)
++{
++    mchk->result = status;
++    return sizeof(*mchk);
++}
++
++static uint32_t uefi_vars_mm_check_policy_is_enabled(uefi_vars_state *uv,
++                                                     mm_header       *mhdr,
++                                                     mm_check_policy *mchk,
++                                                     void            *func)
++{
++    mm_check_policy_is_enabled *mpar = func;
++    size_t length;
++
++    length = sizeof(*mchk) + sizeof(*mpar);
++    if (mhdr->length < length) {
++        return uefi_vars_mm_policy_error(mhdr, mchk, EFI_BAD_BUFFER_SIZE);
 +    }
-+    return status;
++
++    mpar->state  = TRUE;
++    mchk->result = EFI_SUCCESS;
++    return sizeof(*mchk);
++}
++
++static uint32_t uefi_vars_mm_check_policy_register(uefi_vars_state *uv,
++                                                   mm_header       *mhdr,
++                                                   mm_check_policy *mchk,
++                                                   void            *func)
++{
++    variable_policy_entry *pe = func;
++    uefi_var_policy *pol;
++    uint64_t length;
++
++    if (uadd64_overflow(sizeof(*mchk), pe->size, &length)) {
++        return uefi_vars_mm_policy_error(mhdr, mchk, EFI_BAD_BUFFER_SIZE);
++    }
++    if (mhdr->length < length) {
++        return uefi_vars_mm_policy_error(mhdr, mchk, EFI_BAD_BUFFER_SIZE);
++    }
++    if (pe->size < sizeof(*pe)) {
++        return uefi_vars_mm_policy_error(mhdr, mchk, EFI_BAD_BUFFER_SIZE);
++    }
++    if (pe->offset_to_name < sizeof(*pe)) {
++        return uefi_vars_mm_policy_error(mhdr, mchk, EFI_BAD_BUFFER_SIZE);
++    }
++
++    if (pe->lock_policy_type == VARIABLE_POLICY_TYPE_LOCK_ON_VAR_STATE &&
++        pe->offset_to_name < sizeof(*pe) + sizeof(variable_lock_on_var_state)) {
++        return uefi_vars_mm_policy_error(mhdr, mchk, EFI_BAD_BUFFER_SIZE);
++    }
++
++    /* check space for minimum string length */
++    if (pe->size < (size_t)pe->offset_to_name) {
++        return uefi_vars_mm_policy_error(mhdr, mchk, EFI_BAD_BUFFER_SIZE);
++    }
++
++    if (!uefi_str_is_valid((void *)pe + pe->offset_to_name,
++                           pe->size - pe->offset_to_name,
++                           false)) {
++        return uefi_vars_mm_policy_error(mhdr, mchk, EFI_INVALID_PARAMETER);
++    }
++
++    pol = find_policy(uv, pe->namespace,
++                      (void *)pe + pe->offset_to_name,
++                      pe->size - pe->offset_to_name);
++    if (pol) {
++        return uefi_vars_mm_policy_error(mhdr, mchk, EFI_ALREADY_STARTED);
++    }
++
++    uefi_vars_add_policy(uv, pe);
++
++    mchk->result = EFI_SUCCESS;
++    return sizeof(*mchk);
++}
++
++uint32_t uefi_vars_mm_check_policy_proto(uefi_vars_state *uv)
++{
++    static const char *fnames[] = {
++        "zero",
++        "disable",
++        "is-enabled",
++        "register",
++        "dump",
++        "lock",
++    };
++    const char      *fname;
++    mm_header       *mhdr = (mm_header *) uv->buffer;
++    mm_check_policy *mchk = (mm_check_policy *) (uv->buffer + sizeof(*mhdr));
++    void            *func = (uv->buffer + sizeof(*mhdr) + sizeof(*mchk));
++
++    if (mhdr->length < sizeof(*mchk)) {
++        return UEFI_VARS_STS_ERR_BAD_BUFFER_SIZE;
++    }
++
++    fname = mchk->command < ARRAY_SIZE(fnames)
++        ? fnames[mchk->command]
++        : "unknown";
++    trace_uefi_vars_policy_cmd(fname);
++
++    switch (mchk->command) {
++    case VAR_CHECK_POLICY_COMMAND_DISABLE:
++        mchk->result = EFI_UNSUPPORTED;
++        break;
++    case VAR_CHECK_POLICY_COMMAND_IS_ENABLED:
++        uefi_vars_mm_check_policy_is_enabled(uv, mhdr, mchk, func);
++        break;
++    case VAR_CHECK_POLICY_COMMAND_REGISTER:
++        if (uv->policy_locked) {
++            mchk->result = EFI_WRITE_PROTECTED;
++        } else {
++            uefi_vars_mm_check_policy_register(uv, mhdr, mchk, func);
++        }
++        break;
++    case VAR_CHECK_POLICY_COMMAND_LOCK:
++        uv->policy_locked = true;
++        mchk->result = EFI_SUCCESS;
++        break;
++    default:
++        mchk->result = EFI_UNSUPPORTED;
++        break;
++    }
++
++    uefi_trace_status(__func__, mchk->result);
++    return UEFI_VARS_STS_SUCCESS;
 +}
 -- 
 2.47.1

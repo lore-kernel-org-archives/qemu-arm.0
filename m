@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4366127c4d7sm602216935e9.34.2025.01.07.08.52.16
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43656b1143dsm633698265e9.18.2025.01.07.08.52.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jan 2025 08:52:20 -0800 (PST)
+        Tue, 07 Jan 2025 08:52:17 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8DF2C60571;
+	by draig.lan (Postfix) with ESMTP id 384DD60132;
 	Tue,  7 Jan 2025 16:52:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,48 +52,40 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Bernhard Beschow <shentey@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v3 28/29] dockerfiles: Remove 'MAINTAINER' entry in debian-tricore-cross.docker
-Date: Tue,  7 Jan 2025 16:52:06 +0000
-Message-Id: <20250107165208.743958-29-alex.bennee@linaro.org>
+	"Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v3 24/29] tests/vm: fix build_path based path
+Date: Tue,  7 Jan 2025 16:52:02 +0000
+Message-Id: <20250107165208.743958-25-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: dRsKmSxfryCB
+X-TUID: ETTxaQ8MeTLh
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+We no longer need to go into the per-arch build directories to find
+the build directories binary. Lets call it directly.
 
-AMSAT closed its email service [*] so my personal email
-address is now defunct. Remove it to avoid bouncing emails.
-
-[*] https://web.archive.org/web/20240617194936/https://forum.amsat-dl.org/index.php?thread/4581-amsat-mail-alias-service-to-end-august-1-2024/
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20250102152513.61065-1-philmd@linaro.org>
-[AJB: update URL to web.archive.org]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/docker/dockerfiles/debian-tricore-cross.docker | 2 --
- 1 file changed, 2 deletions(-)
+ tests/vm/basevm.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-tricore-cross.docker b/tests/docker/dockerfiles/debian-tricore-cross.docker
-index 479b4d6eba..7e00e870ce 100644
---- a/tests/docker/dockerfiles/debian-tricore-cross.docker
-+++ b/tests/docker/dockerfiles/debian-tricore-cross.docker
-@@ -11,8 +11,6 @@
- #
- FROM docker.io/library/debian:11-slim
- 
--MAINTAINER Philippe Mathieu-Daudé <f4bug@amsat.org>
--
- RUN apt update && \
-     DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
-     DEBIAN_FRONTEND=noninteractive eatmydata apt install -yy \
+diff --git a/tests/vm/basevm.py b/tests/vm/basevm.py
+index 4a1af04b9a..6f3f2e76df 100644
+--- a/tests/vm/basevm.py
++++ b/tests/vm/basevm.py
+@@ -520,8 +520,7 @@ def get_qemu_path(arch, build_path=None):
+     if "QEMU" in os.environ:
+         qemu_path = os.environ["QEMU"]
+     elif build_path:
+-        qemu_path = os.path.join(build_path, arch + "-softmmu")
+-        qemu_path = os.path.join(qemu_path, "qemu-system-" + arch)
++        qemu_path = os.path.join(build_path, "qemu-system-" + arch)
+     else:
+         # Default is to use system path for qemu.
+         qemu_path = "qemu-system-" + arch
 -- 
 2.39.5

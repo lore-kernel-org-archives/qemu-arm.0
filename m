@@ -1,87 +1,87 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp251578njb;
-        Tue, 7 Jan 2025 07:52:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWbIRg/HFcu19wVvsEKlyTclHB/rYUZOjpFWIK1bCvGl91ONtt+WUZBVMSAX0IjgEbHW4+PHFeRugN5cA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGKgxsrriR+UrIcidhXA7flMkDsd9sfprKRtZP10Xrf6kxv07tobcwu15JVx94c8HpjQw+F
-X-Received: by 2002:a05:620a:3710:b0:7b6:cb1c:aa22 with SMTP id af79cd13be357-7b9ba7168f8mr11390217685a.1.1736265154891;
-        Tue, 07 Jan 2025 07:52:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736265154; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp271235njb;
+        Tue, 7 Jan 2025 08:17:18 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX98haZdrhMUnpDRHMpoAbdExsT9uhXto1iv3MXChYgh1NigUG5arNUmd9JZymfye2aBYwJbFoj/5qELw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGeUm1v7UAYhNZ3JDFxz7/t1xMiS28UDpRGpCYupCsotNFty7WJ3eZwyFecGYgB+WghGpms
+X-Received: by 2002:a05:6102:504d:b0:4b2:5ecf:d124 with SMTP id ada2fe7eead31-4b2cc388a9fmr48569201137.14.1736266638516;
+        Tue, 07 Jan 2025 08:17:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736266638; cv=none;
         d=google.com; s=arc-20240605;
-        b=PV4pxHsOGMmKbL7FSXZFwZ4dqQtmxcnkvhAH0O/dru7x15CqKDeDbOUIIgA5EhqLWh
-         7h4xaBq+PCaUskLOZeBb8d6uAqND/mdN4q+YyOceFmbUvaOXZcTnlo3ixZOQh9TeC//m
-         XDz6XjOtRn/wHUSXmenq+WrqKB2je4MnKYimrleftDQPD7L5jrkIdJc4knKMqNhZeMKd
-         wR2uqu6gkuriYHKGDwBbRXZdctXoUNgHJjFzktrX4r9b43v8Xeq0kUoV9J0As8qdIdcU
-         wMJDmIaHAwmWmZ0Y7VemNfmC0d2UdDtLk4mMeYJqbCqJ7kWUOeLuyMmGXceDOEyP6GmG
-         VgHA==
+        b=g3zUQnEbqo1SicLN9xD8GPMbsBIIu5I9FUo3zGqyhEictLz4uwezsHbuianFugbZ2r
+         VwES5ySDUlCr0jO6AxXZvangz9ymDuhM7AmkUSimKMYzdG74KIZ9Y6agMJ0nOhATufSf
+         lgCLsabCdMK1VcMPHCU/1k8Gpld+3q1rgGtadtQDMB+h6x3Ga+0bXWLf8tnC5k+HuenF
+         yFUJOz3YXn1RNURTIQL9PGORZakPmJEhLTahI1rNW88CaNWEN9z413UP6M9ASN8qM1ru
+         X1qciLReO7FBvkVaHYmZtWbLHDmpe2b67C9P+zPefB+gINQVpY4kjDUOK6tnES1k7sMH
+         vVjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=67jtad3cBPEM5d1SEveaWVoyBLNzvZbIaZ56sZj1Od8=;
+        bh=4JUxwiCo8e3lxC+BKSA2tY9HCulg+o+DDynrN1sw7sA=;
         fh=KUSqnMPoXPZSb//YHbD4yHiiDmBQbM4mrXSiRtRpIP8=;
-        b=V4Xua9FQpueIXPi24E23olc5fh5CqYsvwbmhIIZPrUeVaThCfWDDUhRsjHaonKQ0ED
-         uDKqTTAgQNrTK2XjYTJCGTkTTU4yib6SR9n3WJqspgwkaUuXbeCiS16/5rZzA8F/hJLW
-         QMmFPn0/bO3L6wtp3uFdxjPkMzeBH87b20Y3D9CXAyz+qo0ukv7hbr+m8OhTRr3ADDuh
-         orOMovYqbFb8arZb7LD0wPjDypLHxcKvr//FquyB5KstwoRBMlH9SuhwjEGNY2z8ktqP
-         GkYcW+IAF01/a8/6jwphVvaUp5tcMUnh/9jzPZLKjX1sSvaM/MJWouHbRtauGiStso2J
-         MzEA==;
+        b=c1iWs44wIFuEWu1sJR9SRWuMeEUNJHMp8HEB/6UL71H0HSRNnEDUecjQd5nFaOZZbd
+         s18EAgYFOrfZF5gOhVRqA9acNgvQiqL6aLnrRous7yuQpZ+nQSoaC9OUC0RU/Z0VQChH
+         BR/G2F+lWYEOaf1cLUTY8PgO37+kUl3Q8W+EYGOrqU1CudjIdYUnltVNL75GMngDA99K
+         sCwdV0LCN5OkXLL1ivw6tcQpunXw0IqlZeP/d8onTz/78QBW5pKj1/1WHn5xGS0ZIyIW
+         mOhCnDBpMfuwspUaxcw/URO+36FgV8i/hf6dxpeVe5GXOyzT0BKQjounmvTm+TTLS0BC
+         p9Mg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SCmC2oub;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KLXdIXKL;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac54d274si4581523885a.671.2025.01.07.07.52.34
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b2bfb1dec6si694269137.271.2025.01.07.08.17.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jan 2025 07:52:34 -0800 (PST)
+        Tue, 07 Jan 2025 08:17:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SCmC2oub;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KLXdIXKL;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tVBsH-0006hh-7E; Tue, 07 Jan 2025 10:52:09 -0500
+	id 1tVCGK-0005l6-Tg; Tue, 07 Jan 2025 11:17:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBsF-0006hF-B7
- for qemu-devel@nongnu.org; Tue, 07 Jan 2025 10:52:07 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVCGA-0005aA-5g
+ for qemu-devel@nongnu.org; Tue, 07 Jan 2025 11:16:59 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBsB-0007H0-PV
- for qemu-devel@nongnu.org; Tue, 07 Jan 2025 10:52:06 -0500
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVCG8-000212-Md
+ for qemu-devel@nongnu.org; Tue, 07 Jan 2025 11:16:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1736265122;
+ s=mimecast20190719; t=1736266608;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=67jtad3cBPEM5d1SEveaWVoyBLNzvZbIaZ56sZj1Od8=;
- b=SCmC2oub/iF9X5ENr+EGDqFV33AO+C1vBsMcoGxTJE9lFKwEQHY2XFbihGDIYg+S6snREp
- FZ+NGkQdBk6CTbksaPR2lGZKzT8Klfj1XtHlVOF+3EdLyxL95Ji68CVOnxL8U8iXZMHFXu
- hsg03V9h41I+47OUOeNFKDoYJZfWI5o=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=4JUxwiCo8e3lxC+BKSA2tY9HCulg+o+DDynrN1sw7sA=;
+ b=KLXdIXKLqFR4H4XSrhVXzApcGaMo7y2STJ6Rl0G7IWMdvKzg0Z1WiwN2+7wOHOCfTwzET7
+ JjLD1Xv1i4YaEDEJWfdfo+rLGfWRVzKJyrn4A1O/lIewI3+0wXdVBwqCp0ceF7Hm3f2UYf
+ 1yiUy/FwVvH466sZQZcUt7njMhT9tdM=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-67-NYKYEh4IOCWighEPs3x2hA-1; Tue,
- 07 Jan 2025 10:51:59 -0500
-X-MC-Unique: NYKYEh4IOCWighEPs3x2hA-1
-X-Mimecast-MFC-AGG-ID: NYKYEh4IOCWighEPs3x2hA
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-547-Kr7BKKvzMhuzaP7Y22HynA-1; Tue,
+ 07 Jan 2025 11:16:46 -0500
+X-MC-Unique: Kr7BKKvzMhuzaP7Y22HynA-1
+X-Mimecast-MFC-AGG-ID: Kr7BKKvzMhuzaP7Y22HynA
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5CED01955F41; Tue,  7 Jan 2025 15:51:58 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4889B195605C; Tue,  7 Jan 2025 16:16:44 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.39.192.66])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C67F419560A2; Tue,  7 Jan 2025 15:51:57 +0000 (UTC)
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 700FE195606B; Tue,  7 Jan 2025 16:16:43 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 695B618000B4; Tue, 07 Jan 2025 16:51:55 +0100 (CET)
-Date: Tue, 7 Jan 2025 16:51:55 +0100
+ id F1A5D18000B4; Tue, 07 Jan 2025 17:16:40 +0100 (CET)
+Date: Tue, 7 Jan 2025 17:16:40 +0100
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Cc: qemu-devel@nongnu.org, graf@amazon.com, 
@@ -91,15 +91,17 @@ Cc: qemu-devel@nongnu.org, graf@amazon.com,
  Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
  Markus Armbruster <armbru@redhat.com>,
  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Subject: Re: [PATCH v2 00/21] hw/uefi: add uefi variable service
-Message-ID: <kdizecanqkeitvu62x2v3ge544yqk3lnbwc6c66zylrbcdx2qh@fz7hwrjbmidt>
+Subject: Re: [PATCH v2 13/21] hw/uefi: add var-service-json.c + qapi for NV
+ vars.
+Message-ID: <kct6qjtmbetdogd4mwprtzqmd6uv6ugxbwybsh6ehqnp2pz3zi@lrupvba7pbc2>
 References: <20250107153353.1144978-1-kraxel@redhat.com>
- <Z31LJr7nKtDFVCPE@redhat.com>
+ <20250107153353.1144978-14-kraxel@redhat.com>
+ <Z31M9Vd37_koWggu@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <Z31LJr7nKtDFVCPE@redhat.com>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+In-Reply-To: <Z31M9Vd37_koWggu@redhat.com>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -124,31 +126,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MPqKbanuZtbE
+X-TUID: JVJi3Xx1SliQ
 
-  Hi,
-
-> > The design idea is to reuse the request serialization protocol edk2 uses
-> > for communication between SMM and non-SMM code, so large chunks of the
-> > edk2 variable driver stack can be used unmodified.  Only the driver
-> > which traps into SMM mode must be replaced by a driver which talks to
-> > qemu instead.
+> > +    lseek(uv->jsonfd, 0, SEEK_SET);
+> > +    rc = write(uv->jsonfd, gstr->str, gstr->len);
+> > +    if (rc != gstr->len) {
+> > +        warn_report("%s: write error", __func__);
+> > +    }
+> > +    rc = ftruncate(uv->jsonfd, gstr->len);
+> > +    if (rc != 0) {
+> > +        warn_report("%s: ftruncate error", __func__);
+> > +    }
+> > +    fsync(uv->jsonfd);
 > 
-> In the coconut-svsm project there's a likely need for coconut to
-> provide a UEFI variable store, since we can't store plain text
-> variables in host context for confidential VMs.
+> Although the fsync helps, re-writing the file in-place is a ad idea for data
+> integrity on host OS crash. Especially if the new data is shorter, we would
+> easily end up with a file containing old and new data making it unparsable
+> (assuming the parser doesn't ignore trailing data).
+
+I've tried to minimize the number of syscalls for the update, hoping to
+also minimize the chance for corruption.
+
+> I'd like to suggest the write to temp file + rename dance to get atomic
+> replacement. The problem with that is that it hits the DAC/MAC security
+> restrictions we put QEMU under :-(
+
+Yep.  If we want allow libvirt passing file handles to qemu we can't do
+the rename dance.
+
+> My next best idea is to re-arrange things thus:
 > 
-> Am I right in thinking that this design approach could be reused
-> in coconut context with coconut providing the equivalent backend
-> service, and EDK2 using the same driver to talk to either QEMU
-> or Coconut's service  ?
+>    lseek(fd, 0)
+>    ftruncate(fd, 0)
+>    fsync(fd)
+>    write(fd, str)
+>    fsync(fd)
+> 
+> so we should at least reduce the liklihood of getting a mix of
+> old and new data - empty file is better than a mix of data.
 
-Yes, that is the idea.  Right now the edk2 driver has two modes, one
-talking to the isa device and one talking to the sysbus device.  Adding
-a third mode which uses a svsm protocol should be easy.
+On parse errors the complete file content is simply ignored, so it
+should not make much of a difference whenever the file is empty or
+corrupted.
 
-Writing the efi variable service for coconut is the more challenging
-item here.  /me plans to look into that later this year.
+Reorder the calls to first ftruncate then write looks reasonable.
+Not sure the extra fsync makes sense.
 
 take care,
   Gerd

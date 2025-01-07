@@ -1,120 +1,130 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp240829njb;
-        Tue, 7 Jan 2025 07:35:24 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUJppXcfH/v3Qzc4ZAOMM2fAltfNMPe3O/RGG7EjAZI+m6f4HRVJKqH+uMRNfKLhbw0kSOFbFVlkLqemQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGVeYHgtIcXbjFI45XQ3Ui5ca/I7Lmgv0iyEaQAmK/olupUarGJ4b8AJUqVBaBP+nKINf9s
-X-Received: by 2002:a05:620a:260b:b0:7b6:eef3:aeaf with SMTP id af79cd13be357-7b9ba5edfb3mr10703850285a.0.1736264124166;
-        Tue, 07 Jan 2025 07:35:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736264124; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp169731njb;
+        Tue, 7 Jan 2025 05:58:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUAhfzdGBJ+qQsh1YfHi4eusm0nNqPiHk/ga01mXnHVN9wQKnOjra/n18TIVLQirrFxypoN41xqcUoEHw==@linaro.org
+X-Google-Smtp-Source: AGHT+IErbVWF65tpQLfNMikpO8SXuuxrmJrJqjcf5ZJpSVe1c6De41/AvaVycgrQls5UmOeGM+Ez
+X-Received: by 2002:a05:620a:4721:b0:7b6:dedf:b6c2 with SMTP id af79cd13be357-7b9ba716accmr11036904585a.5.1736258306977;
+        Tue, 07 Jan 2025 05:58:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736258306; cv=none;
         d=google.com; s=arc-20240605;
-        b=HRvPrckWNjncIjC8IpuiLIkH/oujr9G8pGnkgRT2YNEegZOKTzCT6ymA3nVzMqMbli
-         Bc+/hgYoB+cvjuEWHQZPTUfuI/zjqLhlw1VhjspjW0C7OIEnEKfeIKC5qV2Y1hATrmpq
-         cOV0ckjUOIED5efo1PYWLrbp/1XbcCUuJrSsTYiuX5C4tiRa04sTO2SjdUNQKe65AsRS
-         0+c2EoH515TXSWJ9Uw+FGZEByRrQE/zgTpsBUPkrZrU/xIZ/a8LDGSQWpFkeeNhmrdFr
-         GRw9E8Uow+la4UkwxDnMeu1+1SYwj56ChMDas33iBaLeWk9o6X4+I6ddBdaP7voX/BLQ
-         unLA==
+        b=jHHBNtL2ySuHKviSjxPBa8iJMas1c3cw4XdZYCcBf7yjY3qjUDjg+AGEwgafgFU9gI
+         tLPxTdsn5pTDuR0ynwQ+Yp/gKqkajxqgr6PD4NDQRs64uS0TnrfnYhrnitYzoTlle0cj
+         72ieBZVZb5QviwsHQte5ep9aY9wfR8HJQislL19SLymLPKylNFexXiIzPAF6DvOm6OB7
+         BOM/wcpNArapNKlLCSToBZ5gV5OGxUCWmQwaSVTrvLA/ziYhyycM/pJ/qbdz0Fkj+nsu
+         MxgT4SlEEUtiTmd2wZXKoDjQdVnEj7jSUGx+SVlbW9hfPRAIf+7ys6zCsw1ut20ByXjD
+         LbWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=Oms5RWxiSjkIU9AQhaOd854sk01PnwCnlIaXt2N+Kh0=;
-        fh=2A4XrmpWSce8Hg7gb/jK7T/bzdECrSdzPXJ+gvyt/8c=;
-        b=j+qLNpNqRPoaYKNqI3E5d/aVvIXDGDLCnxaE7vNEKySPUgbdX09eX+TmKQiMYExog+
-         nsSO5PG9yeYM6WNaaZ+tI13AcnNGNRDete4QfGBH/VpWmtxk8xPdgD+X6Ppljfm213en
-         5tNDSpkXG567tgZhd6PW4EGoGYuJKVQNhDSuHWXoqksc9FVnACaP/ohS/FVGT5N17DzE
-         fFjTWBnD067bV+PA4vPBJfcx1jglgtqQKKicaiR1oOD4udZNNKmNeqOh10R01ldr17sd
-         4Fb1iSCeSG7Q1C5O83etcP2xMNR5hvPG5yWC00quCB7UC6CBZ1hwgaItD3630q/pcTLR
-         gj1g==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=eYDkVruTPbeywuSuzwkP1y/8rZYhZBrKATsH8FXrn2Y=;
+        fh=B5VmkTrzS5rSWGousiXEP6FjoUEQ8j2QCHFj7nMsbXs=;
+        b=SrUw1IFLW6Gi4+T+1RYawYOqG0T2w9DHCNl3GSbJ4hWpxFYwCDQVDkrFFTqaLutwej
+         SB/LEBZcdAJrOlQd5BSziLxCWUvXEqrhtkRUjbtwwTKDCaV3E4/0n4phajfw18L0bPZU
+         Vx+pGd/POa4aSrsD2IEdEpvZ1H8ASCjcrbhl0L/QJId7mHTSaLGWjBCo+QgvyCCiVuV6
+         Qu+7CK2A8y/pQgeFiPL3ecmF2m6uCTjy9Du3U6vJryKGwFZMDO3I5faTRoWFXM3cr6sl
+         EtQ8/myMmfNSO8K+ZLsg83Fabkz1qvmzdPAobyLO3ErSEsbTKdPddbLSpOWBg9cIWg4L
+         X5sQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QVi/SgIo";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gal7tPPh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac2ad6c4si4394632385a.93.2025.01.07.07.35.24
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac52f306si4509201685a.606.2025.01.07.05.58.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jan 2025 07:35:24 -0800 (PST)
+        Tue, 07 Jan 2025 05:58:26 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QVi/SgIo";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gal7tPPh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVBbH-0003Ym-G8; Tue, 07 Jan 2025 10:34:35 -0500
+	id 1tVA5e-000602-6Q; Tue, 07 Jan 2025 08:57:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBbE-0003Ni-BF
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:32 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVBbC-00059t-Nm
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:34:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1736264069;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Oms5RWxiSjkIU9AQhaOd854sk01PnwCnlIaXt2N+Kh0=;
- b=QVi/SgIoS50pYIMp+H5+ARShG1vJ6KyqdQHIVGSf5QudgjcFizoCzyESo1w6X9UqGn9WtC
- jmDIf5idoTcUlnqme5piNZMPXcMmGmpU0oBzZbORgWvotqGiz5cZuY5zxl1oSU9OV7R4H9
- GJNL/6saUdwBGV/dVsRlsTMsAkf1m78=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-157-gv3Jr0CwPpWRgZQywki7qg-1; Tue,
- 07 Jan 2025 10:34:26 -0500
-X-MC-Unique: gv3Jr0CwPpWRgZQywki7qg-1
-X-Mimecast-MFC-AGG-ID: gv3Jr0CwPpWRgZQywki7qg
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7E81B1977037; Tue,  7 Jan 2025 15:34:24 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.66])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4DA9919560BF; Tue,  7 Jan 2025 15:34:23 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id BFD741800605; Tue, 07 Jan 2025 16:33:54 +0100 (CET)
-From: Gerd Hoffmann <kraxel@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVA5b-0005zj-CM
+ for qemu-arm@nongnu.org; Tue, 07 Jan 2025 08:57:47 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVA5Y-0007MU-Kd
+ for qemu-arm@nongnu.org; Tue, 07 Jan 2025 08:57:47 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4361b0ec57aso154774595e9.0
+ for <qemu-arm@nongnu.org>; Tue, 07 Jan 2025 05:57:43 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1736258262; x=1736863062; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=eYDkVruTPbeywuSuzwkP1y/8rZYhZBrKATsH8FXrn2Y=;
+ b=Gal7tPPhhaOUi+as0JXGkZc1/RwfnBpgraRIUHFCfvfZFcTnzCRwZX1QwPb2ZtyF9b
+ QcCG1ydqq91l3ZDWxlteGNgGPPvxtA6tpBfxoV94abFaD9SWxaeV0y4TWstEBhSQ44QF
+ CSxilQ49uYSuuLUxeZuhQ/cUX6ORDPlII15siDIIq01okbf1flec4Lgr1lS2e3iN00BU
+ JJNTomgE9ieShPlvvEckwxLyE8B3mDWmxv/UMMzBmi1U8OAw7a6z1IXn/TrreSax8LUB
+ VFVbIW2cyMdWeLwhSOPhTJMQmnNXiJ2kkBOj02+7ue48TQ2ZhUuJNW6snrJhKfDdHUFN
+ 5TcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1736258262; x=1736863062;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=eYDkVruTPbeywuSuzwkP1y/8rZYhZBrKATsH8FXrn2Y=;
+ b=U78ExZ/txPtDTA/53UTknacpiMrgnWRvqxi+/2gPVrctxBtkm9e05LewxGBV9rpWAu
+ bApWE3QnChWMw9TkpS9sG/eIro/f7MxGbmxY1TNGQwCXujPeMcglpVPbr6ba6yJhtEJq
+ yKgyL/Y9NFOo7Oc09ESnSuiQJEs8wCOOMkw791M/+1hEXPeQraqxbrMW4AlPAC2eiOaT
+ eQVwMM5CycRz+mTH8t/lHuo5rkOUZmU2wGm+p42D9B2kVz82CqTWod5HquhduxIdPmpG
+ 9MG2clDYaOlNRBZh7zbNTVKweGytVPPRx5Sw287KHZurr85wDSg2GnozVoMeouSuDLmI
+ JyiQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUIzDnrlBKvWTN/TXWTEH+inBJM5jOAz93tKQ2hwD2u1/23gA5+A9W6bwKZFAIhmPvCLGJ4A/FMtg==@nongnu.org
+X-Gm-Message-State: AOJu0Yw06gSlS0V8dxOERbn/SpMtEFrz9BGailCFtFvZGkNBX6tbEFfk
+ XbuBrBl0BwbE4ql94uIo7umiIAeBn+DzBK2dzUHRRCB/PQfcuynkBg8fNDkqflw=
+X-Gm-Gg: ASbGncv/lMvRMigrcs591qJdMHxEMQBvfqVe2RkVEni2KnWflPa1V4kh6jl6x/avg79
+ NL+CBEQL+Jnuejj6m6X7S0XvL/K0mZEG4eVuG+nP4mcciSSWWh2vrA1/LgkVrFd93MCNFVfBTGN
+ HdmEXpltIqPAIzjJXR4uC9iB2widKSiuqaspKQ7UEEQkf36IVewFJdjNN1+UTxR2bLpJgwgP/Hg
+ VHik+u0ggeDWOsytu/psWShWb8ykxqK5vfxdAJqErApSHyMbmpfS2mCvMQlG2EYvOYJS5l50GzK
+ Mzde2x6UE/3fLkCPBFUWdkcaIQ101eY=
+X-Received: by 2002:a05:600c:4f03:b0:435:1a2:2633 with SMTP id
+ 5b1f17b1804b1-43668645cf5mr580286485e9.15.1736258261724; 
+ Tue, 07 Jan 2025 05:57:41 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38a1c8472casm51290740f8f.45.2025.01.07.05.57.40
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 07 Jan 2025 05:57:41 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>, graf@amazon.com,
- Paolo Bonzini <pbonzini@redhat.com>, Michael Roth <michael.roth@amd.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Anton Johansson <anjo@rev.ng>, Alistair Francis <alistair.francis@wdc.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v2 19/21] hw/arm: add uefi variable support to virt machine
- type
-Date: Tue,  7 Jan 2025 16:33:46 +0100
-Message-ID: <20250107153353.1144978-20-kraxel@redhat.com>
-In-Reply-To: <20250107153353.1144978-1-kraxel@redhat.com>
-References: <20250107153353.1144978-1-kraxel@redhat.com>
+ qemu-arm@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Thomas Huth <thuth@redhat.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 0/2] target/arm/arm-powerctl: Restrict to ARM cores
+Date: Tue,  7 Jan 2025 14:57:37 +0100
+Message-ID: <20250107135739.48324-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FyigWkxfIH1vvGCwxK0_MeQMSdyKGyspZCoh9gmy_ks_1736264065
-X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.437,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,126 +139,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 1t8g0z6HiTme
+X-TUID: wVlDDQFkVi9U
 
-Add -machine virt,x-uefi-vars={on,off} property.  Default is off.
-When enabled wire up the uefi-vars-sysbus device.
+Since v1:
+- Factor cpu_is_of_type() out
 
-TODO: wire up jsonfile property.
+Philippe Mathieu-Daudé (2):
+  cpus: Introduce cpu_is_of_type() helper
+  target/arm/arm-powerctl: Restrict to ARM cores
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
----
- include/hw/arm/virt.h |  2 ++
- hw/arm/virt.c         | 41 +++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 43 insertions(+)
+ include/hw/core/cpu.h     | 9 +++++++++
+ cpu-common.c              | 5 +++++
+ target/arm/arm-powerctl.c | 6 ++++--
+ 3 files changed, 18 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index c8e94e6aedc9..393ea2cbec78 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -79,6 +79,7 @@ enum {
-     VIRT_ACPI_GED,
-     VIRT_NVDIMM_ACPI,
-     VIRT_PVTIME,
-+    VIRT_UEFI_VARS,
-     VIRT_LOWMEMMAP_LAST,
- };
- 
-@@ -156,6 +157,7 @@ struct VirtMachineState {
-     bool mte;
-     bool dtb_randomness;
-     bool second_ns_uart_present;
-+    bool uefi_vars;
-     OnOffAuto acpi;
-     VirtGICType gic_version;
-     VirtIOMMUType iommu;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 99e0a68b6c55..6856ecb4dcf2 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -65,6 +65,7 @@
- #include "hw/intc/arm_gicv3_common.h"
- #include "hw/intc/arm_gicv3_its_common.h"
- #include "hw/irq.h"
-+#include "hw/uefi/var-service-api.h"
- #include "kvm_arm.h"
- #include "hvf_arm.h"
- #include "hw/firmware/smbios.h"
-@@ -181,6 +182,7 @@ static const MemMapEntry base_memmap[] = {
-     [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
-     [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
-     [VIRT_SECURE_GPIO] =        { 0x090b0000, 0x00001000 },
-+    [VIRT_UEFI_VARS] =          { 0x090c0000, 0x00000010 },
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-@@ -1369,6 +1371,24 @@ static FWCfgState *create_fw_cfg(const VirtMachineState *vms, AddressSpace *as)
-     return fw_cfg;
- }
- 
-+static void create_uefi_vars(const VirtMachineState *vms)
-+{
-+    hwaddr base = vms->memmap[VIRT_UEFI_VARS].base;
-+    hwaddr size = vms->memmap[VIRT_UEFI_VARS].size;
-+    MachineState *ms = MACHINE(vms);
-+    char *nodename;
-+
-+    sysbus_create_simple("uefi-vars-sysbus", base, NULL);
-+
-+    nodename = g_strdup_printf("/%s@%" PRIx64, UEFI_VARS_FDT_NODE, base);
-+    qemu_fdt_add_subnode(ms->fdt, nodename);
-+    qemu_fdt_setprop_string(ms->fdt, nodename,
-+                            "compatible", UEFI_VARS_FDT_COMPAT);
-+    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-+                                 2, base, 2, size);
-+    g_free(nodename);
-+}
-+
- static void create_pcie_irq_map(const MachineState *ms,
-                                 uint32_t gic_phandle,
-                                 int first_irq, const char *nodename)
-@@ -2425,6 +2445,10 @@ static void machvirt_init(MachineState *machine)
-     vms->fw_cfg = create_fw_cfg(vms, &address_space_memory);
-     rom_set_fw(vms->fw_cfg);
- 
-+    if (vms->uefi_vars) {
-+        create_uefi_vars(vms);
-+    }
-+
-     create_platform_bus(vms);
- 
-     if (machine->nvdimms_state->is_enabled) {
-@@ -2621,6 +2645,20 @@ static void virt_set_oem_table_id(Object *obj, const char *value,
-     strncpy(vms->oem_table_id, value, 8);
- }
- 
-+static bool virt_get_uefi_vars(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    return vms->uefi_vars;
-+}
-+
-+static void virt_set_uefi_vars(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    vms->uefi_vars = value;
-+}
-+
- 
- bool virt_is_acpi_enabled(VirtMachineState *vms)
- {
-@@ -3273,6 +3311,9 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-                                           "in ACPI table header."
-                                           "The string may be up to 8 bytes in size");
- 
-+    object_class_property_add_bool(oc, "x-uefi-vars",
-+                                   virt_get_uefi_vars,
-+                                   virt_set_uefi_vars);
- }
- 
- static void virt_instance_init(Object *obj)
 -- 
 2.47.1
 

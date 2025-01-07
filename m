@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43656b1143dsm633697005e9.18.2025.01.07.08.52.12
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c8472b3sm50758769f8f.58.2025.01.07.08.52.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Tue, 07 Jan 2025 08:52:16 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 37B245FB53;
+	by draig.lan (Postfix) with ESMTP id 4B3D75FB57;
 	Tue,  7 Jan 2025 16:52:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -54,16 +54,16 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Bernhard Beschow <shentey@gmail.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v3 13/29] tests/functional: update the sparc64 tuxrun tests
-Date: Tue,  7 Jan 2025 16:51:51 +0000
-Message-Id: <20250107165208.743958-14-alex.bennee@linaro.org>
+Subject: [PATCH v3 14/29] tests/functional: update the x86_64 tuxrun tests
+Date: Tue,  7 Jan 2025 16:51:52 +0000
+Message-Id: <20250107165208.743958-15-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: u+8QExIgu3Qo
+X-TUID: U1LD5gzlAdou
 
 Now there are new up to date images available we should update to them.
 
@@ -71,30 +71,30 @@ Cc: Anders Roxell <anders.roxell@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Tested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-34-alex.bennee@linaro.org>
+Message-Id: <20241121165806.476008-35-alex.bennee@linaro.org>
 ---
- tests/functional/test_sparc64_tuxrun.py | 8 ++++----
+ tests/functional/test_x86_64_tuxrun.py | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/test_sparc64_tuxrun.py b/tests/functional/test_sparc64_tuxrun.py
-index 1c2c005630..3be08d6102 100755
---- a/tests/functional/test_sparc64_tuxrun.py
-+++ b/tests/functional/test_sparc64_tuxrun.py
+diff --git a/tests/functional/test_x86_64_tuxrun.py b/tests/functional/test_x86_64_tuxrun.py
+index 4f96139871..fcbc62b1b0 100755
+--- a/tests/functional/test_x86_64_tuxrun.py
++++ b/tests/functional/test_x86_64_tuxrun.py
 @@ -17,11 +17,11 @@
- class TuxRunSparc64Test(TuxRunBaselineTest):
+ class TuxRunX86Test(TuxRunBaselineTest):
  
-     ASSET_SPARC64_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/sparc64/vmlinux',
--        'e34313e4325ff21deaa3d38a502aa09a373ef62b9bd4d7f8f29388b688225c55')
-+        'https://storage.tuxboot.com/buildroot/20241119/sparc64/vmlinux',
-+        'a04cfb2e70a264051d161fdd93aabf4b2a9472f2e435c14ed18c5848c5fed261')
-     ASSET_SPARC64_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/sparc64/rootfs.ext4.zst',
--        'ad2f1dc436ab51583543d25d2c210cab478645d47078d30d129a66ab0e281d76')
-+        'https://storage.tuxboot.com/buildroot/20241119/sparc64/rootfs.ext4.zst',
-+        '479c3dc104c82b68be55e2c0c5c38cd473d0b37ad4badccde4775bb88ce34611')
+     ASSET_X86_64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/x86_64/bzImage',
+-        '2bc7480a669ee9b6b82500a236aba0c54233debe98cb968268fa230f52f03461')
++        'https://storage.tuxboot.com/buildroot/20241119/x86_64/bzImage',
++        'f57bfc6553bcd6e0a54aab86095bf642b33b5571d14e3af1731b18c87ed5aef8')
+     ASSET_X86_64_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/x86_64/rootfs.ext4.zst',
+-        'b72ac729769b8f51c6dffb221113c9a063c774dbe1d66af30eb593c4e9999b4b')
++        'https://storage.tuxboot.com/buildroot/20241119/x86_64/rootfs.ext4.zst',
++        '4b8b2a99117519c5290e1202cb36eb6c7aaba92b357b5160f5970cf5fb78a751')
  
-     def test_sparc64(self):
-         self.root='sda'
+     def test_x86_64(self):
+         self.set_machine('q35')
 -- 
 2.39.5

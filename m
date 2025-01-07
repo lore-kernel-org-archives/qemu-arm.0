@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c828f5fsm51434253f8f.8.2025.01.07.08.52.12
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a2e25edbbsm43213264f8f.110.2025.01.07.08.52.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jan 2025 08:52:15 -0800 (PST)
+        Tue, 07 Jan 2025 08:52:16 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 242185FB20;
+	by draig.lan (Postfix) with ESMTP id 10E265FA6C;
 	Tue,  7 Jan 2025 16:52:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -54,47 +54,59 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	Bernhard Beschow <shentey@gmail.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v3 12/29] tests/functional: update the s390x tuxrun tests
-Date: Tue,  7 Jan 2025 16:51:50 +0000
-Message-Id: <20250107165208.743958-13-alex.bennee@linaro.org>
+Subject: [PATCH v3 11/29] tests/functional: update the riscv64 tuxrun tests
+Date: Tue,  7 Jan 2025 16:51:49 +0000
+Message-Id: <20250107165208.743958-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: RrZlvAScpR2o
+X-TUID: mOe7Ujj+e6tD
 
 Now there are new up to date images available we should update to them.
+Note we re-use the riscv32 kernel and rootfs for test_riscv64_rv32.
 
 Cc: Anders Roxell <anders.roxell@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Tested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-33-alex.bennee@linaro.org>
+Message-Id: <20241121165806.476008-32-alex.bennee@linaro.org>
 ---
- tests/functional/test_s390x_tuxrun.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ tests/functional/test_riscv64_tuxrun.py | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/tests/functional/test_s390x_tuxrun.py b/tests/functional/test_s390x_tuxrun.py
-index dcab17c68b..a7db4bfd84 100755
---- a/tests/functional/test_s390x_tuxrun.py
-+++ b/tests/functional/test_s390x_tuxrun.py
-@@ -17,11 +17,11 @@
- class TuxRunS390xTest(TuxRunBaselineTest):
+diff --git a/tests/functional/test_riscv64_tuxrun.py b/tests/functional/test_riscv64_tuxrun.py
+index 4e2449539c..0d8de36204 100755
+--- a/tests/functional/test_riscv64_tuxrun.py
++++ b/tests/functional/test_riscv64_tuxrun.py
+@@ -17,18 +17,18 @@
+ class TuxRunRiscV64Test(TuxRunBaselineTest):
  
-     ASSET_S390X_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/s390/bzImage',
--        '0414e98dd1c3dafff8496c9cd9c28a5f8d04553bb5ba37e906a812b48d442ef0')
-+        'https://storage.tuxboot.com/buildroot/20241119/s390/bzImage',
-+        'ee67e91db52a2aed104a7c72b2a08987c678f8179c029626789c35d6dd0fedf1')
-     ASSET_S390X_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/s390/rootfs.ext4.zst',
--        '88c37c32276677f873a25ab9ec6247895b8e3e6f8259134de2a616080b8ab3fc')
-+        'https://storage.tuxboot.com/buildroot/20241119/s390/rootfs.ext4.zst',
-+        'bff7971fc2fef56372d98afe4557b82fd0a785a241e44c29b058e577ad1bbb44')
+     ASSET_RISCV64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/riscv64/Image',
+-        'cd634badc65e52fb63465ec99e309c0de0369f0841b7d9486f9729e119bac25e')
++        'https://storage.tuxboot.com/buildroot/20241119/riscv64/Image',
++        '2bd8132a3bf21570290042324fff48c987f42f2a00c08de979f43f0662ebadba')
+     ASSET_RISCV64_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/riscv64/rootfs.ext4.zst',
+-        'b18e3a3bdf27be03da0b285e84cb71bf09eca071c3a087b42884b6982ed679eb')
++        'https://storage.tuxboot.com/buildroot/20241119/riscv64/rootfs.ext4.zst',
++        'aa4736a9872651dfc0d95e709465eedf1134fd19d42b8cb305bfd776f9801004')
  
-     def test_s390(self):
-         self.wait_for_shutdown=False
+     ASSET_RISCV32_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/riscv32/Image',
+-        '89599407d7334de629a40e7ad6503c73670359eb5f5ae9d686353a3d6deccbd5')
++        'https://storage.tuxboot.com/buildroot/20241119/riscv32/Image',
++        '872bc8f8e0d4661825d5f47f7bec64988e9d0a8bd5db8917d57e16f66d83b329')
+     ASSET_RISCV32_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/riscv32/rootfs.ext4.zst',
+-        '7168d296d0283238ea73cd5a775b3dd608e55e04c7b92b76ecce31bb13108cba')
++        'https://storage.tuxboot.com/buildroot/20241119/riscv32/rootfs.ext4.zst',
++        '511ad34e63222db08d6c1da16fad224970de36517a784110956ba6a24a0ee5f6')
+ 
+     def test_riscv64(self):
+         self.set_machine('virt')
 -- 
 2.39.5

@@ -1,83 +1,81 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp336506njb;
-        Tue, 7 Jan 2025 09:56:02 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX+/CzH6ILn+WmzUcVmOGDs6G3c7lodTNa4uEeVfh9g4j1p+/8re/PtqvLp8AXrEwZWzzTz+Yu9QueAXw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGf9SqSm2sToLdN+05VDmDOKjNSEoAuciYEJErBMWlQTVKWqBQjq/Vfk1hrXU2TA9fwNY2c
-X-Received: by 2002:a05:622a:4d8a:b0:467:5734:da89 with SMTP id d75a77b69052e-46b3acbe8b6mr67502751cf.23.1736272562684;
-        Tue, 07 Jan 2025 09:56:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736272562; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp351604njb;
+        Tue, 7 Jan 2025 10:16:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXtpzjaHGs8WpyFsHoCZ0EKJWz49CxqWujgP+W5sFQr9zLMbNbSFG8e/bIvxZirh9rxtq+YmKv//D5k6g==@linaro.org
+X-Google-Smtp-Source: AGHT+IFb06Bm2hX73Z/MCqC1NkbEThdDdHEfSX33LdLXctJWLcA1ayxwYcXsu9aU3ntVErHGP3iI
+X-Received: by 2002:a05:6122:828f:b0:518:a1a6:4642 with SMTP id 71dfb90a1353d-51c6c3049femr196403e0c.9.1736273814303;
+        Tue, 07 Jan 2025 10:16:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736273814; cv=none;
         d=google.com; s=arc-20240605;
-        b=MGDLF8ySqCylVA022B2ztRcetpoYdO+iZdZ8AInbmeXFB7I2VKGpmo7ZU3fvsq+kNa
-         Bc+gluQ8RR6bkmt3EuIhF2PQ9hKc7IHwa++paXSGNbg8kADNozwv8/YSdNqlGiN7RY5N
-         /ZaN+oLRJYqgyDy9B8bpBQ1x3WqkZQxXfPbm7Ua/nyy4tL3QQAVXZASJ27j8rxhsq8/a
-         yn4bu0Zg4pMbKeXCs9RuaS1H4BJZ0iNKqRjJKlC5tgwHiNGHC+U7JlU7BfZGe1NFOUnt
-         wWL1wxMrPoCgeMy6mkkQN0f1h2opgMXnVbKNL9rPwUweMqFy80z2OR1UK42CrcpbMh3a
-         ARjA==
+        b=L67G0yk7ZatLDz1neYrEolENmUIbPdQhGVVHHzOAGCfPAiRENaqzwe7/qFFdqGIbhp
+         xbzQNuiQSLQ2sJnVkbUpft2TDlf/0vEAmwX1pNY/t2IL/VbJsi7OEBKiCfiZEPGc3NZT
+         agrKkj0YBfLx4RJcSeYdlRjyDIoglBGBuILxA1aytfeEshWYzBr5siq5YnW0FtHqG9YY
+         bJTqhRCe8zZ1fwrVNZrF8SiaiuCUZYEwr6b7doWybsZzjsD8g9YsaGhSjqALstNMahxw
+         nwSLANtoIIlksGgPUFqtJLUzoXZ8sbIGZdXsbCNdYko38SyUF/TRibb37eedhLjz8ZhA
+         S5zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:autocrypt:from:content-language:references:cc:to
          :subject:user-agent:mime-version:date:message-id;
-        bh=8CTFGq8GLoTpUzj+C2p07oLxKdSfdbzfQ2LjhUObQgs=;
-        fh=iFTq8UVMnLR8S1ileqYzkm7lpJrIVlADAj9u0i+JzYM=;
-        b=a6IQfuFUELkhr4LzuopaGLGjpqBAIEWL5OFqnOE2QT/ih2CjhA5dSWINniMYlDDNQc
-         ywN8DQTTgGvp1c8tgXUcdZbrEto1qV6vUPjJExh5bstgxDA7in+93UdBtwYDo9JR07n2
-         2mmmzz5OLmRNBag6vipgQFaBKj4DArvzJFWu0hcH2bWy+qzWh1KjGvfbLp9w1Wd8Xc6f
-         L9YsjDG9zqxYrCohyGjf2+nBWZbUqsZQqaM8JKgS2nbKgkGvtTJrzp3XyaGF9EamPeSg
-         /jcBYsA/vFqD+52KzbTgcjBELoOGKfD2Z3ZI+6k9mbon5+SIOTYBSaWMfSSPHkrST3iq
-         NO1A==;
+        bh=Fog5BuP45CHa1TdcB2gWN63Bv4DbuSMplLnTGDS69Tw=;
+        fh=fmSROYnUX/U7viH7cWvxOQGk9TfuLV3yTvxBKeMJCfA=;
+        b=Qu+xw0RVJw0ihHO5/8fQyI/+QnKh7AWFG1fOk4H/h76s6ax/ycpbYRHw2RR4qf9gMX
+         70GTANpHJbPZdWspZKMTv/xickQaXfAy1qXg9SqTBGGNRoKOC85YELOjc81w9PWKnqtK
+         6MkDJQDpPFeo64A/+DSR5xrXi3vMBEm3AtMVCugd4Ukwyhlv2BkAhOwo2i133eA7qUMJ
+         vl3ol1jIn+YJoVQ1fKwOeEJzua3AXMG+3KeyQ4kjc5SsmCTN7Kguu3cUKJQpW/7q++Jg
+         dOXxbgzZGNX9HI7G7fNnANZJ6u+LP1+GhzzrGcMwVipjRZooQXgxuQn4eDPJEIeRX0Fg
+         Vs8A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46a3e6816cfsi437366571cf.18.2025.01.07.09.56.02
+        by mx.google.com with ESMTPS id 71dfb90a1353d-51b68d79bd5si12500882e0c.181.2025.01.07.10.16.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jan 2025 09:56:02 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 07 Jan 2025 10:16:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tVDnc-0001B6-LX; Tue, 07 Jan 2025 12:55:28 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tVE80-0007yf-Kn; Tue, 07 Jan 2025 13:16:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=eiJ5=T7=kaod.org=clg@ozlabs.org>)
- id 1tVDnb-0001AP-5Z; Tue, 07 Jan 2025 12:55:27 -0500
-Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
+ id 1tVE7v-0007um-D0; Tue, 07 Jan 2025 13:16:27 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=eiJ5=T7=kaod.org=clg@ozlabs.org>)
- id 1tVDnY-0005Jg-2h; Tue, 07 Jan 2025 12:55:26 -0500
+ id 1tVE7s-0008KL-G2; Tue, 07 Jan 2025 13:16:27 -0500
 Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4YSJby5vz5z4wp0;
- Wed,  8 Jan 2025 04:55:10 +1100 (AEDT)
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4YSK4D3Gd4z4wj2;
+ Wed,  8 Jan 2025 05:16:12 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits))
  (Client did not present a certificate)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4YSJbT4k9Sz4wc4;
- Wed,  8 Jan 2025 04:54:45 +1100 (AEDT)
-Message-ID: <53d67dbf-b595-4442-81e7-84267aa8e511@kaod.org>
-Date: Tue, 7 Jan 2025 18:54:46 +0100
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4YSK480pLjz4wb0;
+ Wed,  8 Jan 2025 05:16:07 +1100 (AEDT)
+Message-ID: <fb000c52-9025-4a72-9d78-b6e7f4955e10@kaod.org>
+Date: Tue, 7 Jan 2025 19:16:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 0/3] Introduce a new Write Protected pin inverted
  property
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Steven Lee
- <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
  Bin Meng <bmeng.cn@gmail.com>, "open list:ASPEED BMCs"
  <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:SD (Secure Card)"
- <qemu-block@nongnu.org>, troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+ <qemu-devel@nongnu.org>, "open list:SD (Secure Card)" <qemu-block@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
 References: <20241114094839.4128404-1-jamin_lin@aspeedtech.com>
  <2e956389-289a-4806-8985-ab846d808736@kaod.org>
  <b520adf4-12f1-4261-a48f-bb74589bb31d@linaro.org>
- <a7c967ce-6bc0-47e0-aa25-cc89dab29cfb@kaod.org>
- <CAFEAcA9e5PFNoNh4u7paY5k5RnMgJ-3c++eGJd4u8CjjvDCvYw@mail.gmail.com>
 Content-Language: en-US, fr
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -122,52 +120,79 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <CAFEAcA9e5PFNoNh4u7paY5k5RnMgJ-3c++eGJd4u8CjjvDCvYw@mail.gmail.com>
+In-Reply-To: <b520adf4-12f1-4261-a48f-bb74589bb31d@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=150.107.74.76;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
  envelope-from=SRS0=eiJ5=T7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.24, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.24, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: C/vzWCD/C91D
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wdlB0CNuxCV2
 
-Hello,
-
-> I would not recommend using qemu_irq_invert() in new code.
+On 11/27/24 12:23, Philippe Mathieu-Daudé wrote:
+> On 27/11/24 10:44, Cédric Le Goater wrote:
+>> On 11/14/24 10:48, Jamin Lin wrote:
+>>> change from v1:
+>>> 1. Support RTC for AST2700.
+>>> 2. Support SDHCI write protected pin inverted for AST2500 and AST2600.
+>>> 3. Introduce Capabilities Register 2 for SD slot 0 and 1.
+>>> 4. Support create flash devices via command line for AST1030.
+>>>
+>>> change from v2:
+>>> replace wp-invert with wp-inverted and fix review issues.
+>>>
+>>> change from v3:
+>>> 1. add reviewer suggestion about wp_inverted comment
+>>> 2. AST2500 EVB does not need to set wp-inverted property of sdhci model
+>>> https://github.com/AspeedTech-BMC/linux/blob/aspeed-master-v6.6/arch/arm/boot/dts/aspeed/aspeed-ast2500-evb.dts#L110
+>>>
+>>> Jamin Lin (3):
+>>>    hw/sd/sdhci: Fix coding style
+>>>    hw/sd/sdhci: Introduce a new Write Protected pin inverted property
+>>>    hw/arm/aspeed: Invert sdhci write protected pin for AST2600 EVB
+>>>
+>>>   hw/arm/aspeed.c         |  7 +++++
+>>>   hw/sd/sdhci.c           | 70 ++++++++++++++++++++++++++++-------------
+>>>   include/hw/arm/aspeed.h |  1 +
+>>>   include/hw/sd/sdhci.h   |  5 +++
+>>>   4 files changed, 61 insertions(+), 22 deletions(-)
+>>>
+>>
+>> Philippe,
+>>
+>> I plan to queue patch 2-3 for QEMU 10.0. Is that ok for you ?
 > 
-> I guess in an ideal world we'd implement a QOM object
-> that encapsulated the the "not gate" logic, similar to
-> TYPE_OR_IRQ. (Though for TYPE_OR_IRQ we made the mistake
-> of making it inherit from TYPE_DEVICE, not TYPE_SYSBUS_DEVICE,
-> so it doesn't get reset properly on system reset and so
-> the "what happens to the output on reset" is still not
-> really correct.)
+> Having to modify sdhci.c internals is dubious, since inversion
+> occurs out of this block. If this is the soc/board layer, isn't
+> better to model at this level? Smth like:
 
-I see how this would work with TYPE_PL181 model but I don't
-understand how this could work with TYPE_SYSBUS_SDHCI since
-we don't have a gpio line to invert the level. Am I missing
-something ?
+This change is implementing the polarity of a WP pin as described
+in [1]. I think modeling that with a QOM property should be ok,
+since we don't have GPIO lines in the generic SDHCI device model.
+Or we could introduce a SDBusClass class attribute and define
+new types for it ?
 
 Thanks,
 
 C.
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/Documentation/devicetree/bindings/mmc/mmc-controller.yaml#n52
 

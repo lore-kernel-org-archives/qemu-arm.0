@@ -1,117 +1,131 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp250019njb;
-        Tue, 7 Jan 2025 07:49:50 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVEx+gnpErWm9pZXua7Gll52LUDm7aY4WhRDAxFznzhUwSNQJ7K4aLDy1irJv8y7NpLgjmOG3TQtIAvDg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH3g/kUBjTadD3u4oJGeZ4t9/E/3pqZEyEy50feMWPim4k+jWyY4F8qvO4L2+XwkC3b/mx2
-X-Received: by 2002:a05:6102:dd1:b0:4af:3973:6b22 with SMTP id ada2fe7eead31-4b2cc4684dcmr49253344137.22.1736264989948;
-        Tue, 07 Jan 2025 07:49:49 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736264989; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp250898njb;
+        Tue, 7 Jan 2025 07:51:19 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWM0neDcuVtJkMG5GBFRt88w40bXQgjqL0Gh5TTjZkXeNtzhpG6+M0Z2H7cwQFmtKnIq1pQCRO72wkM1Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IFaQAm4rURg9G+IvuJ12rNhBLlaUadRyRwkBoyWdAYUV4+QwbBUNn5OfxRKryD7tJkTmOjF
+X-Received: by 2002:a05:620a:2b8d:b0:7b6:cc37:cbe9 with SMTP id af79cd13be357-7b9ba738a3cmr9447269885a.19.1736265079665;
+        Tue, 07 Jan 2025 07:51:19 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736265079; cv=none;
         d=google.com; s=arc-20240605;
-        b=lD6LV2Hby1fBkP4AfeG8DfHUnm8UWkzZr6tid+PX0lYb48k4Q+wTVQq7fuPIQpscRh
-         UDSDgivVS+LPDtMVO0CsI3A8AxD6PEY6Mecz5j2JTppTan7v1gvVGSOxrqnrxXBadk21
-         NbQmgBunRcxU62Mih6ZranWUYLhVoHZ1kcOrxPz+S6c0hLQhnJZ7OgapM7amS3tEMi0i
-         I5TbcidlVtyMcQVA9nJmu9Kz8a8TqB7VnvrFIc2ZKAmC/5koC1uCtEMYgy6VU+r9PZYi
-         Qn5seVLtcRudhAkASePrhCWCwHWc7Zu+nScYhgEjWKpWCsnB8cm7VvBP3G7RK3mqNbwa
-         2Lqg==
+        b=T0oyg3xwJy/38iSDioXmAeNC4MiAx3A/0AWFqpzBPT9QBgRBYh8kfWGo6PI34Pri15
+         vvImy3hkUTcf980qW57/uK82O2q7a+7xwp3SkytV533BfHS6Dz+vJn4ij0nypCmGCJAT
+         h2v5C2tnWgi4ISphcwP7Rb8tKltL46arPU68vTcwTJ6tCspvWvf14MuzmVyJr0Xo9KPC
+         LGS2ykr9QxecT1LPBbAnCkRun5CGGQAFVCky4GnuAQDJOZ1DDZucQdQ3/6XXNKH1M2JK
+         szTln17/WLqlM4riODhkkNrpl+QTddRAZK2ZXw4cxfWbNnzSZdbNgrqDd5/RMyf3DQij
+         f2Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=1WumwGpnFuIBztcl4qjZngxaSVLAmn1Sgu72KHgiURs=;
-        fh=BfvZw/9bpnLZf0cfXo0FxrIEf6q66Di7cCv6MgwgcfU=;
-        b=bJTtuFznklXgB/82S5q7CXwqbfm8AILsFYNt+KyUv8JkkeXAMdYL3Z6DjTlCR2FC5l
-         WMda7556WO8eSIAIfejtTjCR+SHneNNCQ+32SbUUMm07mX/HleFKGLM/Tm72RezZ5W+l
-         qVBoCmYYBWCmOeICBnakXkFcoQc8zH04GWiASRzwu5MPBeJ3R7zbjJDB9HbF1Eh2tmmt
-         Fy82UuNmTebJF3oibN5N4CmIWgVs7oHUm3L2PxckD/0Ke3pVAbz9kj7wGfzvYpfWSSI/
-         ljaCkKZR8vKhX7SBb/T9NoIUxXARTSlRLnurHU5rm0N/o3nG4wjjeFmdpPjJbOZUDQz7
-         bxYQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=SYCqp+B9NafQksDRKeU7lbnTchkiXeLQil6Keyqgc8I=;
+        fh=zRGHzg0QSvglehTRa45zTc999PxcMC/xgiADOP0n0i8=;
+        b=Y076JlwkLkLQ7cO+VgDsXP863KMbThWuLJkjaqjr0DHqhzI2qdwjJ0tOZDcthf4C64
+         zXksheuvRm5uO92vMMRZauRAlsKNjIzXytdioSFQ7oLao/vGRdgGlZta1NClUtNZjX0R
+         vqNo1SA2kRayhcVIHIkszs/BMl3/D5/RHv7rTN8OFI9XJeLLXtFjMeAg7Tb7/3SY/HHH
+         vaaZTJ1Z4GsxeKGcIQQoUKFgp0vWfxbbfJd54StCZmBtTmHrvHZYXsa9YX6FP/exxweC
+         Pw86kBHioSOUmKUgJ443iUeOiSeiu7aR6iqRqiEromk14j9grQzJLCFp6IiENIdVaWsO
+         LFKQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f1amtqeP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b2bfb1ddb9si3658321137.222.2025.01.07.07.49.49
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac4f267bsi1380016885a.522.2025.01.07.07.51.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 07 Jan 2025 07:49:49 -0800 (PST)
+        Tue, 07 Jan 2025 07:51:19 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=f1amtqeP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVBpl-0004ef-L1; Tue, 07 Jan 2025 10:49:33 -0500
+	id 1tVBrO-00062Z-FJ; Tue, 07 Jan 2025 10:51:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tVBpf-0004dx-C5
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:49:27 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <SRS0=eiJ5=T7=kaod.org=clg@ozlabs.org>)
+ id 1tVBrM-00061n-UH; Tue, 07 Jan 2025 10:51:12 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tVBpd-0006qu-O2
- for qemu-arm@nongnu.org; Tue, 07 Jan 2025 10:49:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1736264964;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=1WumwGpnFuIBztcl4qjZngxaSVLAmn1Sgu72KHgiURs=;
- b=f1amtqePMnwc3sGJcjCzraEDZWLmHvqlbymbFWWeeswailY7IJ6bucGwUl8MXwlOP0z3EC
- HQBnxBbi6pavS2qHq6OweV/9frhW1/5hNTSos/en0VNk1fwdIu+jmCPnNQdspM0s1HQ16g
- jbubqewvcueCP6P66XRGSlzMSX33KrE=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-674-Lh7fb98aPGqSgSuuDzKFuQ-1; Tue,
- 07 Jan 2025 10:49:20 -0500
-X-MC-Unique: Lh7fb98aPGqSgSuuDzKFuQ-1
-X-Mimecast-MFC-AGG-ID: Lh7fb98aPGqSgSuuDzKFuQ
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (Exim 4.90_1) (envelope-from <SRS0=eiJ5=T7=kaod.org=clg@ozlabs.org>)
+ id 1tVBrI-00077L-B4; Tue, 07 Jan 2025 10:51:12 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4YSFrY2kJ1z4wxx;
+ Wed,  8 Jan 2025 02:50:53 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0193F1956089; Tue,  7 Jan 2025 15:49:18 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.64])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 65F391955F57; Tue,  7 Jan 2025 15:49:12 +0000 (UTC)
-Date: Tue, 7 Jan 2025 15:49:09 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, graf@amazon.com,
- Paolo Bonzini <pbonzini@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Eric Blake <eblake@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Subject: Re: [PATCH v2 13/21] hw/uefi: add var-service-json.c + qapi for NV
- vars.
-Message-ID: <Z31M9Vd37_koWggu@redhat.com>
-References: <20250107153353.1144978-1-kraxel@redhat.com>
- <20250107153353.1144978-14-kraxel@redhat.com>
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4YSFrT5fHwz4wcl;
+ Wed,  8 Jan 2025 02:50:46 +1100 (AEDT)
+Message-ID: <8f36b753-660d-4902-be5b-b6569c93aeb5@kaod.org>
+Date: Tue, 7 Jan 2025 16:50:49 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20250107153353.1144978-14-kraxel@redhat.com>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.437,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/5] Introduce AST27x0 multi-SoC machine
+To: Steven Lee <steven_lee@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20241225020311.3718080-1-steven_lee@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20241225020311.3718080-1-steven_lee@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=eiJ5=T7=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.24, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,83 +138,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: TzOaq/ewtdmn
+X-TUID: TzlvK9Z+SezT
 
-On Tue, Jan 07, 2025 at 04:33:40PM +0100, Gerd Hoffmann wrote:
-> Define qapi schema for the uefi variable store state.
+Steven,
+
+When you resend, could you please rebase on top of :
+
+   https://lore.kernel.org/qemu-devel/20241216075353.1308043-1-jamin_lin@aspeedtech.com/
+
+Thanks,
+
+C.
+
+On 12/25/24 03:03, Steven Lee wrote:
+> This patch series introduces full cores support for the AST27x0 SoC,
+> along with necessary updates to the ASPEED AST27x0 SOC.
 > 
-> Use it and the generated visitor helper functions to store persistent
-> (EFI_VARIABLE_NON_VOLATILE) variables in JSON format on disk.
+> The AST27x0 SoC is a new family of ASPEED SoCs featuring 4 Cortex-A35
+> cores and 2 Cortex-M4 cores. This patch set adds the following updates:
 > 
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->  hw/uefi/var-service-json.c | 242 +++++++++++++++++++++++++++++++++++++
->  qapi/meson.build           |   1 +
->  qapi/qapi-schema.json      |   1 +
->  qapi/uefi.json             |  45 +++++++
->  4 files changed, 289 insertions(+)
->  create mode 100644 hw/uefi/var-service-json.c
->  create mode 100644 qapi/uefi.json
+> 1. Public API updates:
+>     Modifies the sdhci_attach_drive and write_boot_rom functions to make them
+>     accessible for broader usage.
 > 
-
-> +void uefi_vars_json_init(uefi_vars_state *uv, Error **errp)
-> +{
-> +    if (uv->jsonfile) {
-> +        uv->jsonfd = qemu_create(uv->jsonfile, O_RDWR, 0666, errp);
-> +    }
-> +}
-> +
-> +void uefi_vars_json_save(uefi_vars_state *uv)
-> +{
-> +    GString *gstr;
-> +    int rc;
-> +
-> +    if (uv->jsonfd == -1) {
-> +        return;
-> +    }
-> +
-> +    gstr = uefi_vars_to_json(uv);
-> +
-> +    lseek(uv->jsonfd, 0, SEEK_SET);
-> +    rc = write(uv->jsonfd, gstr->str, gstr->len);
-> +    if (rc != gstr->len) {
-> +        warn_report("%s: write error", __func__);
-> +    }
-> +    rc = ftruncate(uv->jsonfd, gstr->len);
-> +    if (rc != 0) {
-> +        warn_report("%s: ftruncate error", __func__);
-> +    }
-> +    fsync(uv->jsonfd);
-
-Although the fsync helps, re-writing the file in-place is a ad idea for data
-integrity on host OS crash. Especially if the new data is shorter, we would
-easily end up with a file containing old and new data making it unparsable
-(assuming the parser doesn't ignore trailing data).
-
-I'd like to suggest the write to temp file + rename dance to get atomic
-replacement. The problem with that is that it hits the DAC/MAC security
-restrictions we put QEMU under :-(
-
-My next best idea is to re-arrange things thus:
-
-   lseek(fd, 0)
-   ftruncate(fd, 0)
-   fsync(fd)
-   write(fd, str)
-   fsync(fd)
-
-so we should at least reduce the liklihood of getting a mix of
-old and new data - empty file is better than a mix of data.
-
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+> 2. SoC memory updates:
+>     Maps unimplemented devices in the AST27x0 memory space.
+> 
+> 3. AST27x0 CM4 SoC integration:
+>     Adds basic support for the AST27x0 CM4 SoC.
+> 
+> 4. AST2700-FC machine:
+>     Introduces a new AST2700-FC machine which supports emulating 4
+>     cortex-a35 cores and 2 coretex-m4 cores.
+> 
+> 5. Documentation:
+>     Updates the ASPEED documentation to include usage of the new
+>     ast2700-fc machine.
+> 
+> This series has been tested using ASPEED SDK image by the following
+>    IMGDIR=./
+>    UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
+> 
+>    $ UBOOT_SIZE=$(stat --format=%s -L ${IMGDIR}/u-boot-nodtb.bin)
+>    $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/ast2700-ssp.elf
+>    $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/ast2700-tsp.elf
+>    $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/bl31.bin
+>    $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/tee-raw.bin
+>    $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/u-boot-nodtb.bin
+>    $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/u-boot.dtb
+>    $ wget https://github.com/stevenlee7189/zephyr/releases/download/1.0.0/image-bmc.tar.zst
+>    $ tar --zstd -xvf image-bmc.tar.zst
+> 
+>    $ qemu-system-aarch64 -machine ast2700fc \
+>         -device loader,force-raw=on,addr=0x400000000,file=${IMGDIR}/u-boot-nodtb.bin \
+>         -device loader,force-raw=on,addr=$((0x400000000 + ${UBOOT_SIZE})),file=${IMGDIR}/u-boot.dtb \
+>         -device loader,force-raw=on,addr=0x430000000,file=${IMGDIR}/bl31.bin \
+>         -device loader,force-raw=on,addr=0x430080000,file=${IMGDIR}/tee-raw.bin \
+>         -device loader,file=${IMGDIR}/ast2700-ssp.elf,cpu-num=4 \
+>         -device loader,file=${IMGDIR}/ast2700-tsp.elf,cpu-num=5 \
+>         -device loader,cpu-num=0,addr=0x430000000 \
+>         -device loader,cpu-num=1,addr=0x430000000 \
+>         -device loader,cpu-num=2,addr=0x430000000 \
+>         -device loader,cpu-num=3,addr=0x430000000 \
+>         -m 1G \
+>         -drive file=image-bmc,if=mtd,format=raw \
+>         -serial pty -serial pty -serial pty \
+>         -S -nographic
+> 
+>      char device redirected to /dev/pts/51 (label serial0)
+>      char device redirected to /dev/pts/52 (label serial1)
+>      char device redirected to /dev/pts/53 (label serial2)
+> 
+>    $ tio /dev/pts/51
+>    $ tio /dev/pts/52
+>    $ tio /dev/pts/53
+>    $ (qemu) c
+> 
+> Steven Lee (5):
+>    aspeed: Make sdhci_attach_drive and write_boot_rom public
+>    aspeed: ast27x0: Map unimplemented devices in SoC memory
+>    aspeed: Introduce AST27x0 SoC with Cortex-M4 support
+>    aspeed: Introduce ast2700-fc machine
+>    docs: aspeed: Add ast2700-fc machine section
+> 
+>   docs/system/arm/aspeed.rst  |  50 ++++-
+>   hw/arm/aspeed.c             |   4 +-
+>   hw/arm/aspeed_ast27x0-cm4.c | 397 ++++++++++++++++++++++++++++++++++++
+>   hw/arm/aspeed_ast27x0-fc.c  | 211 +++++++++++++++++++
+>   hw/arm/aspeed_ast27x0.c     |  45 +++-
+>   hw/arm/meson.build          |   5 +-
+>   include/hw/arm/aspeed.h     |   6 +
+>   include/hw/arm/aspeed_soc.h |  41 ++++
+>   8 files changed, 747 insertions(+), 12 deletions(-)
+>   create mode 100644 hw/arm/aspeed_ast27x0-cm4.c
+>   create mode 100644 hw/arm/aspeed_ast27x0-fc.c
+> 
+> --
+> 2.34.1
+> 
 

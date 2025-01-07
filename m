@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a457584bcsm33619886f8f.89.2025.01.07.08.52.16
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43656b417afsm643187885e9.36.2025.01.07.08.52.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 07 Jan 2025 08:52:16 -0800 (PST)
+        Tue, 07 Jan 2025 08:52:20 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4C6925F8FC;
+	by draig.lan (Postfix) with ESMTP id 7A69B6030B;
 	Tue,  7 Jan 2025 16:52:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -53,66 +53,82 @@ Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	Bernhard Beschow <shentey@gmail.com>,
 	"Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v3 25/29] tests/vm: partially un-tabify help output
-Date: Tue,  7 Jan 2025 16:52:03 +0000
-Message-Id: <20250107165208.743958-26-alex.bennee@linaro.org>
+Subject: [PATCH v3 27/29] pc-bios: ensure keymaps dependencies set vnc tests
+Date: Tue,  7 Jan 2025 16:52:05 +0000
+Message-Id: <20250107165208.743958-28-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250107165208.743958-1-alex.bennee@linaro.org>
 References: <20250107165208.743958-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: tb2u2phq0dPt
+X-TUID: E8Pq+75fJK0C
 
-While the make syntax itself uses tabs having a mixture of tabs and
-spaces in the vm-help output make no sense and confuses things lining
-up between terminal and editor. Fix that.
+I was seeing failures on vnc-display-test on FreeBSD:
+
+  make vm-build-freebsd V=1 TARGET_LIST=aarch64-softmmu BUILD_TARGET=check-qtest QEMU_LOCAL=1 DEBUG=1
+
+Leads to:
+
+  qemu-system-aarch64: -vnc none: could not read keymap file: 'en-us'
+  Broken pipe
+  ../src/tests/qtest/libqtest.c:196: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+
+which was as far as I could tell because we don't populate the
+$BLD/pc-bios/keymaps (although something attempts to symlink
+qemu-bundle/usr/local/share/qemu/keymaps/ to that dir).
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- tests/vm/Makefile.include | 26 +++++++++++++-------------
- 1 file changed, 13 insertions(+), 13 deletions(-)
+ pc-bios/keymaps/meson.build | 17 ++++++++---------
+ tests/qtest/meson.build     |  2 +-
+ 2 files changed, 9 insertions(+), 10 deletions(-)
 
-diff --git a/tests/vm/Makefile.include b/tests/vm/Makefile.include
-index 13ed80f72d..d80ca79a28 100644
---- a/tests/vm/Makefile.include
-+++ b/tests/vm/Makefile.include
-@@ -64,23 +64,23 @@ endif
- 	@echo "  vm-boot-ssh-<guest>             - Boot guest and login via ssh"
- 	@echo
- 	@echo "Special variables:"
--	@echo "    BUILD_TARGET=foo		 - Override the build target"
--	@echo "    DEBUG=1              	 - Enable verbose output on host and interactive debugging"
--	@echo '    EXTRA_CONFIGURE_OPTS="..."   - Pass to configure step'
--	@echo "    J=[0..9]*            	 - Override the -jN parameter for make commands"
--	@echo "    LOG_CONSOLE=1        	 - Log console to file in: ~/.cache/qemu-vm "
--	@echo "    USE_TCG=1        	         - Use TCG for cross-arch images"
--	@echo "    QEMU=/path/to/qemu		 - Change path to QEMU binary"
-+	@echo "    BUILD_TARGET=foo              - Override the build target"
-+	@echo "    DEBUG=1                       - Enable verbose output on host and interactive debugging"
-+	@echo '    EXTRA_CONFIGURE_OPTS="..."    - Pass to configure step'
-+	@echo "    J=[0..9]*                     - Override the -jN parameter for make commands"
-+	@echo "    LOG_CONSOLE=1                 - Log console to file in: ~/.cache/qemu-vm "
-+	@echo "    USE_TCG=1                     - Use TCG for cross-arch images"
-+	@echo "    QEMU=/path/to/qemu            - Change path to QEMU binary"
- ifeq ($(HAVE_PYTHON_YAML),yes)
--	@echo "    QEMU_CONFIG=/path/conf.yml   - Change path to VM configuration .yml file."
-+	@echo "    QEMU_CONFIG=/path/conf.yml    - Change path to VM configuration .yml file."
- else
- 	@echo "    (install python3-yaml to enable support for yaml file to configure a VM.)"
+diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
+index 0bd8ce0077..a79a09b276 100644
+--- a/pc-bios/keymaps/meson.build
++++ b/pc-bios/keymaps/meson.build
+@@ -39,19 +39,18 @@ else
+   native_qemu_keymap = qemu_keymap
  endif
--	@echo "                                   See conf_example_*.yml for file format details."
--	@echo "    QEMU_IMG=/path/to/qemu-img	 - Change path to qemu-img tool"
--	@echo "    QEMU_LOCAL=1                 - Use QEMU binary local to this build."
--	@echo "    TARGET_LIST=a,b,c    	 - Override target list in builds"
--	@echo "    V=1				 - Enable verbose output on host and guest commands"
-+	@echo "                                    See conf_example_*.yml for file format details."
-+	@echo "    QEMU_IMG=/path/to/qemu-img    - Change path to qemu-img tool"
-+	@echo "    QEMU_LOCAL=1                  - Use QEMU binary local to this build."
-+	@echo "    TARGET_LIST=a,b,c             - Override target list in builds"
-+	@echo "    V=1                           - Enable verbose output on host and guest commands"
  
- vm-build-all: $(addprefix vm-build-, $(IMAGES))
- 
++keymap_targets = []
+ if native_qemu_keymap.found()
+-  t = []
+   foreach km, args: keymaps
+     # generate with qemu-kvm
+-    t += custom_target(km,
+-                       build_by_default: true,
+-                       output: km,
+-                       command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
+-                       install: have_system,
+-                       install_dir: qemu_datadir / 'keymaps')
++    keymap_targets += custom_target(km,
++                                    build_by_default: true,
++                                    output: km,
++                                    command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
++                                    install: have_system,
++                                    install_dir: qemu_datadir / 'keymaps')
+   endforeach
+-
+-  alias_target('update-keymaps', t)
++  alias_target('update-keymaps', keymap_targets)
+ else
+   install_data(keymaps.keys(), install_dir: qemu_datadir / 'keymaps')
+ endif
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index c5a70021c5..f75c1057a4 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -383,7 +383,7 @@ qtests = {
+ if vnc.found()
+   gvnc = dependency('gvnc-1.0', method: 'pkg-config', required: false)
+   if gvnc.found()
+-    qtests += {'vnc-display-test': [gvnc]}
++    qtests += {'vnc-display-test': [gvnc, keymap_targets]}
+     qtests_generic += [ 'vnc-display-test' ]
+   endif
+ endif
 -- 
 2.39.5

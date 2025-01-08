@@ -1,106 +1,106 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp715625njb;
-        Wed, 8 Jan 2025 01:27:43 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW44AZwvhfYbGwdDSxai/fJ/MFG6oZcfwO9uwjnz80HQtp3jAGH3HcfL7+GAybcOMNX7sydUzzJlTz4AQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGIgpM0RgXBYYaa5YHnl1QGek4runywjkAeb4pELHPyfMNMcEmvt3mwLVP9HJr5iluVXJxD
-X-Received: by 2002:a05:620a:462c:b0:7b6:d65f:cb64 with SMTP id af79cd13be357-7bcd9759d99mr288169585a.47.1736328463448;
-        Wed, 08 Jan 2025 01:27:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736328463; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp715661njb;
+        Wed, 8 Jan 2025 01:27:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVpLeeOQ0XaMiXRv7t/GjGp8s0WGJFZ5KTUU3ED6XuJ4bYdWuBSz497kznlfxOnuBFONzyUC+zmpawksA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEEktvEUfe+n7AGvmGguCm9UhbH5uA8uhJmp2e4jZNNB5XKN2+NBYNgiTWrXvBx9mtm6oxJ
+X-Received: by 2002:a05:620a:199a:b0:7b6:e9be:97dc with SMTP id af79cd13be357-7bcd9727972mr257259785a.8.1736328469937;
+        Wed, 08 Jan 2025 01:27:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736328469; cv=none;
         d=google.com; s=arc-20240605;
-        b=SoKZ1nKb5np0AvhykyGwQaII4LFkXDPH7HDvQs30c0CQEAce+6h5Gal/bxZVGVoFDG
-         MmshIbuYcVlU7ksaFQq4KmFRK/pSq3KsaY/FyTTaBo2mtkhbESFPTPdIpQ03rQYWwK1v
-         JlXVqvsahWLF2jcKU7UQvEvQpAnEaD1jcXpN+XVpFxwqhrYNnkUn4QomzD8sYJwU2JiN
-         N81FfNP4kTFsiEJ37ZEaPlPW8lIe7Fjkk9RrzrNEroYhjCGNgK7rZv/No/refP58QFn9
-         zJgqC+NQwoFqksnC3XwSLw+eb//FPjpT/i4gI79ql9SgZHGqbDkuAuIyi8SzQ4OFtkj3
-         rnDw==
+        b=ArrwuKA5V130oj77xWJmr7TgDR4yKXXEhXrOb3ofpNyH9fwnmoEQwSv3VN7VCj6Zgp
+         MqYu5g7whgaFlXEtDcxCAZnKMQMvy1tXnGc7in2sJJ0VtUtecibuiijjbbuU63o3q869
+         g803r9Ntuf/D1ndwGWG0yrUTxhAmqu71nrWtdoR+Vym5+DYr8EDc0r1rGKasiBp57mhQ
+         EvdBQ2YCZeSGSztxuO/gr5QUwAtbZR6yYlrcLepg8meuAmVZxJYCom86zmoyJjGnubtj
+         WavE9CcK2bwhXcSRa4b57w8AUTdPArAhjSbT7E+c+1g1S7vfqJQABxO6AC5vdUXF98fN
+         BDbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=aPu1XN0WSJ78Dz4uVHZFF9UQOoIdIxv9/jGfNRVw5Jw=;
-        fh=lr4jvjiIKMpTearnYnqYHIMuiLj1HK6kmDt71BLWQ1c=;
-        b=OymOsalZGkmPrbyXmKuxHYBm12iVkENzKSZZHqEsA7U79wB1ZFSGvCIyr6tRnaDd6d
-         Vz3eaQEC6GcbbQfs2Y4bElGJ8AKTs2gCmaepQlJ1HfZb/3aFnSR9FFE5g6hLqWZsJ5NT
-         4Ndaef+65sZnrTseiGV2gRHblcPwuuCQn9mpA9M8tMtdcjfIfp2JGdLIq/SeMT3aIHzw
-         M+N4azeOtaIyPut/24H0Pgs/bUQgxfOxA4M+1MRdMSP8KNN2yyRE6qTzP8TK4q8R2Tex
-         jfq8I0LVtqFDQGiR9zDScl+3HchHw1qCavimE7TCBvTvR8GxF+VELMIrSc6cAYB+0DpS
-         ucOg==;
+        bh=47JwbBXTIXSphmQBXHikRa/hsHdiVRz6iqvffl0LB6Y=;
+        fh=jzZvq1Cjd3jM9yiYXE3wuROp2iWXB3h0+PeO8mYzcyI=;
+        b=DI+LLlorZrLvaL+liQvPxz22LQJqbNgo70XZTtLL7J+QtjQ8f3LfA1sut+Po6FLla6
+         4IVIiYq40NMtcFu/XN+wIduUHJ/uPqcuIF6sKnW+Jk2HN8SemMKwUPglHUgK/EyfziY1
+         fwfWyI8gRz0DgVEP76jm63CcgvemhvXRxKyibSfh4TiJsHEtvs/deHbHoY4JJxsYXobL
+         eJJwITQhGyoFbAYlgrt2jxxm4H6nTab29oXK/anUY8VecugwmZJt9sAFM31sPvC4tfJE
+         vtuonIe/GO5tP3pO4EhN13Dv0tc6A+uuBWKHt0mNFAMjX5ot8LZWUTjyQhMqAXFElzcV
+         etig==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=j7xb5pb2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SMOG6IyZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac479014si4797132585a.258.2025.01.08.01.27.43
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac2d1173si4924310985a.206.2025.01.08.01.27.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2025 01:27:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 Jan 2025 01:27:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=j7xb5pb2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SMOG6IyZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVSKn-0004FO-Eq; Wed, 08 Jan 2025 04:26:41 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tVSLk-0005Zw-Pr; Wed, 08 Jan 2025 04:27:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVSK7-0003vO-Dr; Wed, 08 Jan 2025 04:25:59 -0500
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1tVSKI-0003y2-T6; Wed, 08 Jan 2025 04:26:14 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVSK5-0004mT-Mj; Wed, 08 Jan 2025 04:25:59 -0500
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-5d84179ef26so4889425a12.3; 
- Wed, 08 Jan 2025 01:25:56 -0800 (PST)
+ id 1tVSKH-0004pr-9K; Wed, 08 Jan 2025 04:26:10 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-aaedd529ba1so1881761266b.1; 
+ Wed, 08 Jan 2025 01:26:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736328355; x=1736933155; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1736328366; x=1736933166; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=aPu1XN0WSJ78Dz4uVHZFF9UQOoIdIxv9/jGfNRVw5Jw=;
- b=j7xb5pb2jPBVVRVNDtYjb7IclOXD/OEIYWugNEKIDc141FnTrrSNR66yLARw3cKRBD
- 4VTPpJYs5dl4W2Uhdu38HY9DtCdTLAnSd2xVOpzOhZI0rQVc7YD2VjBcV588fi1W/qB3
- biRZpJsTRgNo7xl3nv0GpFuCZNSj9EsUqQCedzxYvt9+ve3lF4CkETBqSq+pBamdsys8
- yb6o4IRyqM5DjkAygo+0nFSO/nXaVjspA5v5GV3xivHXeV4TnNltOYXzvaLqHv58XzYa
- b5my6G1CqveArerkQiWXGIvldpMtt7VhYnC7j5I0tbsVcE9mzD/ECSpX26FelWz+HYmP
- EILg==
+ bh=47JwbBXTIXSphmQBXHikRa/hsHdiVRz6iqvffl0LB6Y=;
+ b=SMOG6IyZyNdqlFTLY3aZlsh9BjgDQvAQ4i9wDoPydWZcexIaOuRlDKgSW7F+7yzc9s
+ xQ5PqZWdjUCNKF5ySU9cFO8ZLzo01p2q6CjMiDNp2/5x04oBmaXmRElNmKEwFbpOL4ci
+ IwCJ30VhbMgZzZWOZEmSL90m2zIg0yTobTbpsDAWwNXBcayjXAEbQByqHAV5SL7GvwDn
+ 1SiwiPreOchYD6owf7Cz+u4UX1FSlPGP5nRqelwcK3jk8ddpDgm1cLZa4fXRQEJJdPT8
+ H5UyRWz/LCUSpZhVYm13QvIe0nBykay1qSLzAw9kNTAFlqbn0d5ueH7lk2O60hvo/0D+
+ lOUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736328355; x=1736933155;
+ d=1e100.net; s=20230601; t=1736328366; x=1736933166;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=aPu1XN0WSJ78Dz4uVHZFF9UQOoIdIxv9/jGfNRVw5Jw=;
- b=aIr9TtyYNChEHCJ4FQ9Sn8uxNPaOnASqzEQfdYW5T9tEyXwEgAvdWRfx/bpo25PCqg
- 2EDf8vobyOg6ywq8hipIzkBQiASHyAyj6HunHU4lqvJfxkapXESP3eP8PBsIg1BPqmxX
- ldafjUKAewN6OSFsgaEmfOSHYnvYoFId7SFaBrFO9EsvV4tnHtnMSiRO74LQoX27vj7Z
- kewUuOJaKCLM2g1+Oknl03SvSoXrgcfHnm1W5beZLWe/l3KOWnsmryCzHxj7reDqYRuP
- b/NBCSKH/WWbknaOUDBJq+SgkYgDCXPUdEe55VzFsBoOPHWy5vUgXotIZwiFpVgZMkP4
- M1dg==
+ bh=47JwbBXTIXSphmQBXHikRa/hsHdiVRz6iqvffl0LB6Y=;
+ b=Vl4k3iYZok1I6awFiPMMv95tVuBTAb1Mr0CVmUddDJnVv4AMU+czoREuwdfVQRoM6p
+ nW+TbnCSYZ6ZpnydGuuXgz5sn3zzGxVxoSvEHjxnoF/xtpFOO47q3bPqYbqOWCz7/MvI
+ r8EdZMPq18T26gL/1RIYAkSUeTp6owPfEWBPUwi/rYEX0OTxznBher4tt6BAGcY0RqRm
+ NgSgnyGbbhLJjbbBMklDncdX4H+CXvduLEx4RMSqIwLw7+X3Z68jl78WTHKpWB1w7Uet
+ XSk33Lh2SJsd2rfbQzPp8Ik/MVrdsyHyIAGGgQJOgYN11bohZgw1Sh+j+wE9pFDlgO9p
+ dyyw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUSqrKRTgotxzcyQkLmPgKBahxYyy7EwatHnx+Bv4ZWyNmIrFpNzYy+6DfSKWk3tIkMhdImrtmglg==@nongnu.org,
- AJvYcCXYSb/X1hWNrdfvMQJTfTdUR3RDtsZoq0juy3QZqwcjyfQsn55v2yJdAImdoZK6/6TkZq0zMpoX0VhUVw==@nongnu.org
-X-Gm-Message-State: AOJu0YzVskKmQIKscCIzye/WxRrXNPrZY6Ju1OzMo8UdgVH+Oq620YDl
- sxB3olhVDL3fgwnXM+WvGwRCtEFtbig/iHQ6ICaRX3861Rw54zDDiiJ6yybH
-X-Gm-Gg: ASbGncuMacfI3iMYlq+czSp6BnhPB8RVSJne40j0dvjVabknfqw53mE6xLQzFvchS5O
- kKVr33uX0T9FWk/Tj3q6Y9F5tlDZynfaPVmt8l+ZZowcrR+cjGu53dengjSP7a1wp9Nco4WVmec
- 79as4PF6ji3Q40eFAadG8Ew3yBPfE3LkIMjXNiKK+yGA5NPcIbAfmB6j+3VVHegxaSXfCTGo5kB
- kGL6oG0MRjkfAWxd/F2crqvWaNs4d8tcxhySmmlxX0h6aEyVT7yqR8MvP7qvewhhS21IIETEMv6
- FsKoPbR04c/r196XAwFlzQpyqxPnPPTlV4YggI/EqiGKqJA=
-X-Received: by 2002:a05:6402:354c:b0:5d3:fb9d:3f69 with SMTP id
- 4fb4d7f45d1cf-5d972e4cdd8mr1521105a12.21.1736328355021; 
- Wed, 08 Jan 2025 01:25:55 -0800 (PST)
+ AJvYcCUmdJlQcm6bqu5sYUplGIEYK812C0H7/6nN6PIRf11VEh3FJ7jQJexdaFPogI+9Ckt8zqEYewvv5D5Kzg==@nongnu.org,
+ AJvYcCVxUt1m0aX4RJei2RFa8Z4A0xF0PquaZVAJrj9IsfzuAgK02I3zXv2tzBwQLzpL12frSG7O8P/R9g==@nongnu.org
+X-Gm-Message-State: AOJu0YzupVRBsLYYN7o+vRuq7dpVa17/Y91BVRS7ks/xpAnUjJZBjFO8
+ R/ixVdSk5+61moCMG/BLa+YwKo9fwGVqGCyfI25fboqA9uVeNXder6NpihY6
+X-Gm-Gg: ASbGncsFo5tqqIxoJRdwhzSpilUpqnUqtVo6w1LRvaseEMg+yj4P7DQOQ1wP/RNMgm4
+ YLi6sEpLHKui0xWgiY5K0H1Po+4vDcksm7Hy/TRerLdqTBbQqVQMYs09t/OraZDX87GxTjifz8l
+ grGjcsGLqobNGS+IDmKMzpoeoYOv3Nu2zJ1GBRBKpvNnlYNUQbAaztgmynAvOFYtWbrkvm47NiT
+ 36pLm35MpS1+YsUwx6Fa5sS+57f82JNWe3aKbowpMf0bPJC7MiHwMFR/YD5elfv3Wc0JOYFsVEZ
+ Jv5p7zIug9RZ9m8qqOkFqUauuDyFeZgrGXFuSMHfuJesErw=
+X-Received: by 2002:a05:6402:4405:b0:5d4:35c7:cd7a with SMTP id
+ 4fb4d7f45d1cf-5d972e0b20cmr4743427a12.10.1736328366331; 
+ Wed, 08 Jan 2025 01:26:06 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-077-188-106-228.77.188.pool.telefonica.de. [77.188.106.228])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5d806feddfasm26116096a12.58.2025.01.08.01.25.53
+ 4fb4d7f45d1cf-5d806feddfasm26116096a12.58.2025.01.08.01.26.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Jan 2025 01:25:54 -0800 (PST)
+ Wed, 08 Jan 2025 01:26:05 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
@@ -113,16 +113,16 @@ Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 04/14] hw/core: Introduce TYPE_SHARED_IRQ
-Date: Wed,  8 Jan 2025 10:25:28 +0100
-Message-ID: <20250108092538.11474-5-shentey@gmail.com>
+Subject: [PATCH 12/14] hw/i2c/imx_i2c: Convert DPRINTF() to trace events
+Date: Wed,  8 Jan 2025 10:25:36 +0100
+Message-ID: <20250108092538.11474-13-shentey@gmail.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250108092538.11474-1-shentey@gmail.com>
 References: <20250108092538.11474-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,196 +131,89 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: V1FGOTtcVwnE
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: dmdwLAnuvZIL
+
+Also print the MMIO address when tracing. This allows to distinguishing the
+many instances a typical i.MX SoC has.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/core/shared-irq.h | 39 ++++++++++++++++
- hw/core/shared-irq.c         | 88 ++++++++++++++++++++++++++++++++++++
- hw/core/Kconfig              |  3 ++
- hw/core/meson.build          |  1 +
- 4 files changed, 131 insertions(+)
- create mode 100644 include/hw/core/shared-irq.h
- create mode 100644 hw/core/shared-irq.c
+ hw/i2c/imx_i2c.c    | 21 +++++----------------
+ hw/i2c/trace-events |  5 +++++
+ 2 files changed, 10 insertions(+), 16 deletions(-)
 
-diff --git a/include/hw/core/shared-irq.h b/include/hw/core/shared-irq.h
-new file mode 100644
-index 0000000000..803c303dd0
---- /dev/null
-+++ b/include/hw/core/shared-irq.h
-@@ -0,0 +1,39 @@
-+/*
-+ * IRQ sharing device.
-+ *
-+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+/*
-+ * This is a simple device which has one GPIO output line and multiple GPIO
-+ * input lines. The output line is active if at least one of the input lines is.
-+ *
-+ * QEMU interface:
-+ *  + N unnamed GPIO inputs: the input lines
-+ *  + one unnamed GPIO output: the output line
-+ *  + QOM property "num-lines": sets the number of input lines
-+ */
-+#ifndef HW_SHARED_IRQ_H
-+#define HW_SHARED_IRQ_H
-+
-+#include "hw/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_SHARED_IRQ "shared-irq"
-+
-+#define MAX_SHARED_LINES 16
-+
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(SharedIRQ, SHARED_IRQ)
-+
-+struct SharedIRQ {
-+    DeviceState parent_obj;
-+
-+    qemu_irq out_irq;
-+    uint16_t irq_states;
-+    uint8_t num_lines;
-+};
-+
-+#endif
-diff --git a/hw/core/shared-irq.c b/hw/core/shared-irq.c
-new file mode 100644
-index 0000000000..b2a4ea4a66
---- /dev/null
-+++ b/hw/core/shared-irq.c
-@@ -0,0 +1,88 @@
-+/*
-+ * IRQ sharing device.
-+ *
-+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/core/shared-irq.h"
-+#include "hw/irq.h"
-+#include "hw/qdev-properties.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+
-+static void shared_irq_handler(void *opaque, int n, int level)
-+{
-+    SharedIRQ *s = opaque;
-+    uint16_t mask = BIT(n);
-+
-+    if (level) {
-+        s->irq_states |= mask;
-+    } else {
-+        s->irq_states &= ~mask;
-+    }
-+
-+    qemu_set_irq(s->out_irq, !!s->irq_states);
-+}
-+
-+static void shared_irq_init(Object *obj)
-+{
-+    SharedIRQ *s = SHARED_IRQ(obj);
-+
-+    qdev_init_gpio_out(DEVICE(s), &s->out_irq, 1);
-+}
-+
-+static void shared_irq_realize(DeviceState *dev, Error **errp)
-+{
-+    SharedIRQ *s = SHARED_IRQ(dev);
-+
-+    if (s->num_lines < 1 || s->num_lines >= MAX_SHARED_LINES) {
-+        error_setg(errp,
-+                   "IRQ shared number of lines %d must be between 1 and %d",
-+                   s->num_lines, MAX_SHARED_LINES);
-+        return;
-+    }
-+
-+    qdev_init_gpio_in(dev, shared_irq_handler, s->num_lines);
-+}
-+
-+static const Property shared_irq_properties[] = {
-+    DEFINE_PROP_UINT8("num-lines", SharedIRQ, num_lines, 1),
-+};
-+
-+static const VMStateDescription shared_irq_vmstate = {
-+    .name = TYPE_SHARED_IRQ,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT16(irq_states, SharedIRQ),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void shared_irq_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    /* No state to reset */
-+    device_class_set_props(dc, shared_irq_properties);
-+    dc->vmsd = &shared_irq_vmstate;
-+    dc->realize = shared_irq_realize;
-+
-+    /* Reason: Needs to be wired up to work */
-+    dc->user_creatable = false;
-+}
-+
-+static const TypeInfo shared_irq_types[] = {
-+    {
-+       .name = TYPE_SHARED_IRQ,
-+       .parent = TYPE_DEVICE,
-+       .instance_size = sizeof(SharedIRQ),
-+       .instance_init = shared_irq_init,
-+       .class_init = shared_irq_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(shared_irq_types)
-diff --git a/hw/core/Kconfig b/hw/core/Kconfig
-index d1bdf765ee..ddff977963 100644
---- a/hw/core/Kconfig
-+++ b/hw/core/Kconfig
-@@ -32,6 +32,9 @@ config PLATFORM_BUS
- config REGISTER
-     bool
+diff --git a/hw/i2c/imx_i2c.c b/hw/i2c/imx_i2c.c
+index c565fd5b8a..be1688c064 100644
+--- a/hw/i2c/imx_i2c.c
++++ b/hw/i2c/imx_i2c.c
+@@ -25,18 +25,7 @@
+ #include "hw/i2c/i2c.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-
+-#ifndef DEBUG_IMX_I2C
+-#define DEBUG_IMX_I2C 0
+-#endif
+-
+-#define DPRINTF(fmt, args...) \
+-    do { \
+-        if (DEBUG_IMX_I2C) { \
+-            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_I2C, \
+-                                             __func__, ##args); \
+-        } \
+-    } while (0)
++#include "trace.h"
  
-+config SHARED_IRQ
-+    bool
-+
- config SPLIT_IRQ
-     bool
+ static const char *imx_i2c_get_regname(unsigned offset)
+ {
+@@ -152,8 +141,8 @@ static uint64_t imx_i2c_read(void *opaque, hwaddr offset,
+         break;
+     }
  
-diff --git a/hw/core/meson.build b/hw/core/meson.build
-index ce9dfa3f4b..6b5bdc8ec7 100644
---- a/hw/core/meson.build
-+++ b/hw/core/meson.build
-@@ -21,6 +21,7 @@ system_ss.add(when: 'CONFIG_OR_IRQ', if_true: files('or-irq.c'))
- system_ss.add(when: 'CONFIG_PLATFORM_BUS', if_true: files('platform-bus.c'))
- system_ss.add(when: 'CONFIG_PTIMER', if_true: files('ptimer.c'))
- system_ss.add(when: 'CONFIG_REGISTER', if_true: files('register.c'))
-+system_ss.add(when: 'CONFIG_SHARED_IRQ', if_true: files('shared-irq.c'))
- system_ss.add(when: 'CONFIG_SPLIT_IRQ', if_true: files('split-irq.c'))
- system_ss.add(when: 'CONFIG_XILINX_AXI', if_true: files('stream.c'))
- system_ss.add(when: 'CONFIG_PLATFORM_BUS', if_true: files('sysbus-fdt.c'))
+-    DPRINTF("read %s [0x%" HWADDR_PRIx "] -> 0x%02x\n",
+-            imx_i2c_get_regname(offset), offset, value);
++    trace_imx_i2c_read(s->iomem.addr, imx_i2c_get_regname(offset), offset,
++                       value);
+ 
+     return (uint64_t)value;
+ }
+@@ -163,8 +152,8 @@ static void imx_i2c_write(void *opaque, hwaddr offset,
+ {
+     IMXI2CState *s = IMX_I2C(opaque);
+ 
+-    DPRINTF("write %s [0x%" HWADDR_PRIx "] <- 0x%02x\n",
+-            imx_i2c_get_regname(offset), offset, (int)value);
++    trace_imx_i2c_read(s->iomem.addr, imx_i2c_get_regname(offset), offset,
++                       value);
+ 
+     value &= 0xff;
+ 
+diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+index f708a7ace1..c6cba1ecf6 100644
+--- a/hw/i2c/trace-events
++++ b/hw/i2c/trace-events
+@@ -56,3 +56,8 @@ npcm7xx_smbus_recv_fifo(const char *id, uint8_t received, uint8_t expected) "%s
+ 
+ pca954x_write_bytes(uint8_t value) "PCA954X write data: 0x%02x"
+ pca954x_read_data(uint8_t value) "PCA954X read data: 0x%02x"
++
++# imx_i2c.c
++
++imx_i2c_read(uint64_t addr, const char *reg, uint64_t ofs, uint64_t value) "0x%" PRIx64 ":[%s (0x%" PRIx64 ")] -> 0x%02" PRIx64
++imx_i2c_write(uint64_t addr, const char *reg, uint64_t ofs, uint64_t value) "0x%" PRIx64 ":[%s (0x%" PRIx64 ")] <- 0x%02" PRIx64
 -- 
 2.47.1
 

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aac0f012229sm2483312966b.133.2025.01.08.04.11.00
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d80676f08dsm25968279a12.21.2025.01.08.04.10.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 08 Jan 2025 04:11:02 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 3F3BF5FB57;
-	Wed,  8 Jan 2025 12:10:56 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id A0FE75F9E9;
+	Wed,  8 Jan 2025 12:10:55 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>,
@@ -52,94 +52,61 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Li-Wen Hsu <lwhsu@freebsd.org>
-Subject: [PATCH v4 17/32] system/qtest: properly feedback results of clock_[step|set]
-Date: Wed,  8 Jan 2025 12:10:39 +0000
-Message-Id: <20250108121054.1126164-18-alex.bennee@linaro.org>
+	Li-Wen Hsu <lwhsu@freebsd.org>,
+	Anders Roxell <anders.roxell@linaro.org>
+Subject: [PATCH v4 11/32] tests/functional: update the riscv64 tuxrun tests
+Date: Wed,  8 Jan 2025 12:10:33 +0000
+Message-Id: <20250108121054.1126164-12-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: AwJNzVWxyYhZ
+X-TUID: RO2a4pKjmzSy
 
-Time will not advance if the system is paused or there are no timer
-events set for the future. In absence of pending timer events
-advancing time would make no difference the system state. Attempting
-to do so would be a bug and the test or device under test would need
-fixing.
+Now there are new up to date images available we should update to them.
+Note we re-use the riscv32 kernel and rootfs for test_riscv64_rv32.
 
-Tighten up the result reporting to `FAIL` if time was not advanced.
-
+Cc: Anders Roxell <anders.roxell@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2687
+Message-Id: <20241121165806.476008-32-alex.bennee@linaro.org>
 ---
- system/qtest.c | 23 ++++++++++++++---------
- 1 file changed, 14 insertions(+), 9 deletions(-)
+ tests/functional/test_riscv64_tuxrun.py | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/system/qtest.c b/system/qtest.c
-index 99ef2042f6..e68ed0f2a8 100644
---- a/system/qtest.c
-+++ b/system/qtest.c
-@@ -78,6 +78,11 @@ static void *qtest_server_send_opaque;
-  * let you adjust the value of the clock (monotonically).  All the commands
-  * return the current value of the clock in nanoseconds.
-  *
-+ * If the commands FAIL then time wasn't advanced which is likely
-+ * because the machine was in a paused state or no timer events exist
-+ * in the future. This will cause qtest to abort and the test will
-+ * need to check its assumptions.
-+ *
-  * .. code-block:: none
-  *
-  *  > clock_step
-@@ -710,7 +715,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             qtest_sendf(chr, "OK little\n");
-         }
-     } else if (qtest_enabled() && strcmp(words[0], "clock_step") == 0) {
--        int64_t ns;
-+        int64_t old_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+        int64_t ns, new_ns;
+diff --git a/tests/functional/test_riscv64_tuxrun.py b/tests/functional/test_riscv64_tuxrun.py
+index 4e2449539c..0d8de36204 100755
+--- a/tests/functional/test_riscv64_tuxrun.py
++++ b/tests/functional/test_riscv64_tuxrun.py
+@@ -17,18 +17,18 @@
+ class TuxRunRiscV64Test(TuxRunBaselineTest):
  
-         if (words[1]) {
-             int ret = qemu_strtoi64(words[1], NULL, 0, &ns);
-@@ -719,11 +725,10 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             ns = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
-                                             QEMU_TIMER_ATTR_ALL);
-         }
--        qemu_clock_advance_virtual_time(
--            qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
-+        new_ns = qemu_clock_advance_virtual_time(old_ns + ns);
-         qtest_send_prefix(chr);
--        qtest_sendf(chr, "OK %"PRIi64"\n",
--                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-+        qtest_sendf(chr, "%s %"PRIi64"\n",
-+                    new_ns > old_ns ? "OK" : "FAIL", new_ns);
-     } else if (strcmp(words[0], "module_load") == 0) {
-         Error *local_err = NULL;
-         int rv;
-@@ -740,16 +745,16 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
-             qtest_sendf(chr, "FAIL\n");
-         }
-     } else if (qtest_enabled() && strcmp(words[0], "clock_set") == 0) {
--        int64_t ns;
-+        int64_t ns, new_ns;
-         int ret;
+     ASSET_RISCV64_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/riscv64/Image',
+-        'cd634badc65e52fb63465ec99e309c0de0369f0841b7d9486f9729e119bac25e')
++        'https://storage.tuxboot.com/buildroot/20241119/riscv64/Image',
++        '2bd8132a3bf21570290042324fff48c987f42f2a00c08de979f43f0662ebadba')
+     ASSET_RISCV64_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/riscv64/rootfs.ext4.zst',
+-        'b18e3a3bdf27be03da0b285e84cb71bf09eca071c3a087b42884b6982ed679eb')
++        'https://storage.tuxboot.com/buildroot/20241119/riscv64/rootfs.ext4.zst',
++        'aa4736a9872651dfc0d95e709465eedf1134fd19d42b8cb305bfd776f9801004')
  
-         g_assert(words[1]);
-         ret = qemu_strtoi64(words[1], NULL, 0, &ns);
-         g_assert(ret == 0);
--        qemu_clock_advance_virtual_time(ns);
-+        new_ns = qemu_clock_advance_virtual_time(ns);
-         qtest_send_prefix(chr);
--        qtest_sendf(chr, "OK %"PRIi64"\n",
--                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
-+        qtest_sendf(chr, "%s %"PRIi64"\n",
-+                    new_ns == ns ? "OK" : "FAIL", new_ns);
-     } else if (process_command_cb && process_command_cb(chr, words)) {
-         /* Command got consumed by the callback handler */
-     } else {
+     ASSET_RISCV32_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/riscv32/Image',
+-        '89599407d7334de629a40e7ad6503c73670359eb5f5ae9d686353a3d6deccbd5')
++        'https://storage.tuxboot.com/buildroot/20241119/riscv32/Image',
++        '872bc8f8e0d4661825d5f47f7bec64988e9d0a8bd5db8917d57e16f66d83b329')
+     ASSET_RISCV32_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/riscv32/rootfs.ext4.zst',
+-        '7168d296d0283238ea73cd5a775b3dd608e55e04c7b92b76ecce31bb13108cba')
++        'https://storage.tuxboot.com/buildroot/20241119/riscv32/rootfs.ext4.zst',
++        '511ad34e63222db08d6c1da16fad224970de36517a784110956ba6a24a0ee5f6')
+ 
+     def test_riscv64(self):
+         self.set_machine('virt')
 -- 
 2.39.5

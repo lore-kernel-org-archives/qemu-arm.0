@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aac0e82f31bsm2470929566b.1.2025.01.08.04.11.05
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d806fed4e1sm26068538a12.70.2025.01.08.04.11.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 08 Jan 2025 04:11:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9E5DF6017C;
-	Wed,  8 Jan 2025 12:10:57 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id CBD195F8AC;
+	Wed,  8 Jan 2025 12:10:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>,
@@ -52,48 +52,137 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Li-Wen Hsu <lwhsu@freebsd.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH v4 31/32] dockerfiles: Remove 'MAINTAINER' entry in debian-tricore-cross.docker
-Date: Wed,  8 Jan 2025 12:10:53 +0000
-Message-Id: <20250108121054.1126164-32-alex.bennee@linaro.org>
+	Li-Wen Hsu <lwhsu@freebsd.org>
+Subject: [PATCH v4 23/32] tests/functional: extend test_aarch64_virt with vulkan test
+Date: Wed,  8 Jan 2025 12:10:45 +0000
+Message-Id: <20250108121054.1126164-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: pGsaaN6z3Swv
+X-TUID: TQjWE0KFx8Pg
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Now that we have virtio-gpu Vulkan support, let's add a test for it.
+Currently this is using images build by buildroot:
 
-AMSAT closed its email service [*] so my personal email
-address is now defunct. Remove it to avoid bouncing emails.
+  https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
 
-[*] https://web.archive.org/web/20240617194936/https://forum.amsat-dl.org/index.php?thread/4581-amsat-mail-alias-service-to-end-august-1-2024/
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Message-Id: <20250102152513.61065-1-philmd@linaro.org>
-[AJB: update URL to web.archive.org]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/docker/dockerfiles/debian-tricore-cross.docker | 2 --
- 1 file changed, 2 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-tricore-cross.docker b/tests/docker/dockerfiles/debian-tricore-cross.docker
-index 479b4d6eba..7e00e870ce 100644
---- a/tests/docker/dockerfiles/debian-tricore-cross.docker
-+++ b/tests/docker/dockerfiles/debian-tricore-cross.docker
-@@ -11,8 +11,6 @@
- #
- FROM docker.io/library/debian:11-slim
+---
+v2
+  - use decorator for has_cmd(zstd)
+  - un-handled->unhandled
+  - drop extra - from --snapshot
+  - drop unneeded virtualization=on
+  - only show 1s of each scene
+  - fix long lines
+v3
+  - move set_machine/require_accelerator to top of test
+  - use uncompress utility function
+  - remove extra ()'s from ASSETS
+v4
+  - split misc fixups into earlier commits
+  - don't swallow leading newlines before class
+  - fixup commit message
+---
+ tests/functional/test_aarch64_virt.py | 74 ++++++++++++++++++++++++++-
+ 1 file changed, 72 insertions(+), 2 deletions(-)
+
+diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
+index 201c5ed023..6b2336a28d 100755
+--- a/tests/functional/test_aarch64_virt.py
++++ b/tests/functional/test_aarch64_virt.py
+@@ -13,10 +13,12 @@
+ import logging
+ from subprocess import check_call, DEVNULL
  
--MAINTAINER Philippe Mathieu-Daudé <f4bug@amsat.org>
--
- RUN apt update && \
-     DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
-     DEBIAN_FRONTEND=noninteractive eatmydata apt install -yy \
++from qemu.machine.machine import VMLaunchFailure
++
+ from qemu_test import QemuSystemTest, Asset
+-from qemu_test import exec_command_and_wait_for_pattern
++from qemu_test import exec_command, exec_command_and_wait_for_pattern
+ from qemu_test import wait_for_console_pattern
+-from qemu_test import get_qemu_img
++from qemu_test import skipIfMissingCommands, get_qemu_img
+ 
+ 
+ class Aarch64VirtMachine(QemuSystemTest):
+@@ -132,5 +134,73 @@ def test_aarch64_virt_gicv2(self):
+         self.common_aarch64_virt("virt,gic-version=2")
+ 
+ 
++    ASSET_VIRT_GPU_KERNEL = Asset(
++        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
++        'download?path=%2F&files='
++        'Image',
++        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
++
++    ASSET_VIRT_GPU_ROOTFS = Asset(
++        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
++        'download?path=%2F&files='
++        'rootfs.ext4.zstd',
++        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
++
++    @skipIfMissingCommands('zstd')
++    def test_aarch64_virt_with_gpu(self):
++        # This tests boots with a buildroot test image that contains
++        # vkmark and other GPU exercising tools. We run a headless
++        # weston that nevertheless still exercises the virtio-gpu
++        # backend.
++
++        self.set_machine('virt')
++        self.require_accelerator("tcg")
++
++        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
++        image_path = self.uncompress(self.ASSET_VIRT_GPU_ROOTFS, format="zstd")
++
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'console=ttyAMA0 root=/dev/vda')
++
++        self.vm.add_args("-accel", "tcg")
++        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
++        self.vm.add_args("-machine", "virt,gic-version=max",
++                         '-kernel', kernel_path,
++                         '-append', kernel_command_line)
++        self.vm.add_args("-smp", "2", "-m", "2048")
++        self.vm.add_args("-device",
++                         "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
++        self.vm.add_args("-display", "egl-headless")
++        self.vm.add_args("-display", "dbus,gl=on")
++        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
++        self.vm.add_args("-blockdev",
++                         "driver=raw,file.driver=file,"
++                         "node-name=hd0,read-only=on,"
++                         f"file.filename={image_path}")
++        self.vm.add_args("-snapshot")
++
++        try:
++            self.vm.launch()
++        except VMLaunchFailure as excp:
++            if "old virglrenderer, blob resources unsupported" in excp.output:
++                self.skipTest("No blob support for virtio-gpu")
++            elif "old virglrenderer, venus unsupported" in excp.output:
++                self.skipTest("No venus support for virtio-gpu")
++            else:
++                self.log.info("unhandled launch failure: {excp.output}")
++                raise excp
++
++        self.wait_for_console_pattern('buildroot login:')
++        exec_command(self, 'root')
++        exec_command(self, 'export XDG_RUNTIME_DIR=/tmp')
++        exec_command_and_wait_for_pattern(self,
++                                          "weston -B headless "
++                                          "--renderer gl "
++                                          "--shell kiosk "
++                                          "-- vkmark -b:duration=1.0",
++                                          "vkmark Score")
++
++
+ if __name__ == '__main__':
+     QemuSystemTest.main()
 -- 
 2.39.5

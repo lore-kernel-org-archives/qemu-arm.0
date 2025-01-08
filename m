@@ -1,343 +1,154 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp919730njb;
-        Wed, 8 Jan 2025 07:23:27 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUbD1IhkkdBmp2LK6rYJkme/zwt2iwRJeGiaKwsvLsivfrWxiyG2YpWNm2JDEpzTn7BAEmgd5+yd849Jw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFzx5FTxQuz31fEgfEpqQqa5blAa6+P86ghSkkrP0DyFCPNwncZgrQdMZeiXxyb8VxDz0zZ
-X-Received: by 2002:a05:620a:294b:b0:7b6:deab:d485 with SMTP id af79cd13be357-7bcd970a64bmr458419985a.16.1736349806812;
-        Wed, 08 Jan 2025 07:23:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736349806; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp961362njb;
+        Wed, 8 Jan 2025 08:21:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWrRqcoRsOCJ5ibR14luJui/XuPq2T5xOV0e1TniKxsBRqVWdjKFlpSlIgTF7kojEbnkCX/w+mJ6PJfgw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEHUUWs0ekNTinFHtRepHK3xzlBuXLegEmj7MlxyjG/X2DmtKr4RMRBY9Zlk2Yf4yrusoP6
+X-Received: by 2002:a05:6214:2a87:b0:6d8:87cc:73a5 with SMTP id 6a1803df08f44-6df9b28d437mr60472056d6.38.1736353293623;
+        Wed, 08 Jan 2025 08:21:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736353293; cv=none;
         d=google.com; s=arc-20240605;
-        b=M0CyK3F6cHiPlLDV+gW2+m5wfOAq24HCAwmcb6pvQy/9NEIiAIleHu/CzwQ33QIhTq
-         br19v3CC8hhnGhgXPjF99jI616SfZL7oxaQNU3LgSPaWIK54a3FuYKkWZPuRAKEBiFXy
-         LrmnR9aitUN+7cEYkSoVev1alBkhJPILntz8eeaiKvf+lX65cX1MgCbx1pDU+kRsjBOi
-         DrlURgN1Tt5yUAZ0ONvJmXWQpbWBuPh9wice1RnW/t6qACaGJWtc8ifKJ6A8fsbnvy7b
-         rk4ClQKzUk0OGj9NmhRloR6wP8ZmPxKvnAoHosaYJsoUp1t1yzrw8ojzjlkSq7m3dWnc
-         +IVg==
+        b=c9TgUjcD5KcKuBEiNJzvaSv6BBb6Y1Sy7vzZOpje9FM+Q8Y9MB7Y8Aa2fG0mJhk3dY
+         KORvI6zzTp86lMxbJ4+3NdURm79+67T9g/inV56j3l3akpI5wQDko/2cQQFiwdbA5R8i
+         R9Qmud2psV4wo+5eSXhB8cVP96d6O0oVYFwGSybT4vVGCm0trQd9cdvcfu/kzyh42szu
+         N4rVJljdB88bRcZ/hGxFaY7aOqW2la3OfHwXf46EcBABUSpIM1NntFJvp1mGHDR6HDu5
+         3oLLWpkU82z28np+dl66+ZW63ryVFPzaxg0GHHU8jKqhdYLOfm0SyYBgCkucnlrimTyv
+         Y7og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=+f7UOlWeL8+YCrnm6mVFVB4mI6TIS4CM7dpB1OmgzV0=;
-        fh=Hw4bG4g3/Kw+zFAObpCAvOAPRgq1PTI80RYhcmjdlPI=;
-        b=E5/7O6RobqvVWW95qIENXZCOdmBh+zzjAM566Hyu7iwmXtyKxWkY3MzSZIzI/ozxrC
-         k42xn87qK7sbtudkn+vmkkvIQYVzGPknk8IIPkbCcc22rCTDdFOROakA7+J51nZFdjRj
-         8dsqwkYjyYaOBe2VmM/UyJTJagZBmA0zMSy4Tb5AU6GOeBGS4CEAx8aZNmlZjpWZ55xr
-         oEiujy+d4Q9xOB77kTnjye8nnKZl31HRfqZ52bVl1XxSmN3fY1TLlHo0GqHWm0XYi65w
-         KmHYseFwuDAGjWDBChcM+ZRRf0V5fS1PPSWTEX/FAheNPW3q+olvfiOl2nhh1bNJ114w
-         kHZw==;
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=zSj9J8PaRrqj5CYg9Lfkjte9vnQLNuRpW9jbou5F1cE=;
+        fh=sYo8Pd6sx0EtcMOKetLxUFnmBnTLKEv423Nf2ajeZPI=;
+        b=bf2zWUaRIhBALA1N5hiCBkgRLT9Qwf5etvPkPITnhEVGMo8kOeq4+HKukwBFWd+LDd
+         26rWPj3wx2J6cwYREkAppQmB+chfPctUG0FEsqZPC/js1TGDz8joN/Toy2mlS/Uo12UC
+         /seSIUkdvLADPXS9UkiGnnR0tFDbvr1QUfjRjMKZjyQJ24wbv+l8UU9cu+RsfBc5jo/c
+         6pq69fJViTIn6ry+x5TkYRdKar+gZubd9aOPkALiKdklmQFGf8tDAoSAb/395EJZhbrC
+         22OkT+so9fsOzpg+6y+CIYuX42+NjImXECgLmYA+mBoRKb+Cef+N2gTzWmtFk4JzWwj6
+         Hniw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=E6iKtGSX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AUYLfPt4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac4786afsi5378734085a.307.2025.01.08.07.23.26
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd181020c5si478170586d6.65.2025.01.08.08.21.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2025 07:23:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 08 Jan 2025 08:21:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=E6iKtGSX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AUYLfPt4;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tVXtm-0001xW-Vh; Wed, 08 Jan 2025 10:23:13 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tVYo7-0001PC-Q2; Wed, 08 Jan 2025 11:21:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVXtZ-0001tn-Hm; Wed, 08 Jan 2025 10:22:58 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVYo0-0001Ni-BO
+ for qemu-arm@nongnu.org; Wed, 08 Jan 2025 11:21:18 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVXtW-0005EQ-L7; Wed, 08 Jan 2025 10:22:56 -0500
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-5d3ecae02beso781098a12.0; 
- Wed, 08 Jan 2025 07:22:46 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVYnx-00056h-RB
+ for qemu-arm@nongnu.org; Wed, 08 Jan 2025 11:21:15 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-435f8f29f8aso123236505e9.2
+ for <qemu-arm@nongnu.org>; Wed, 08 Jan 2025 08:21:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736349764; x=1736954564; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+f7UOlWeL8+YCrnm6mVFVB4mI6TIS4CM7dpB1OmgzV0=;
- b=E6iKtGSXomy0zcT0G+/0UxDhSlavbOJTlqhB26IvrSWuJ6yxJg6buhPxU5ksiIC7P7
- hBeyCkKHz1bYIsjVLvqDF9XRrv9uCLxWjOodDvwUT+HAegXxSg8qCtPAuOhbQyb3oPcf
- b+hreu8MEmer/5ZhRb0sBmTqnVvADOYgUQ7jkkL9e7uteYGeRVUxbgS95RIuK+49ZxBV
- ZPM/7EFyN0YyosJDWGgmqxBgjrXidBb/ELDWh4dNT+iSKG9//rZ6xtx2NeaHAVIPtHN1
- YvYh6g3pevSppadyXSIHVacOCud24tGFpyUiN9pS5jqcjMaUx8+oppk5XPIgN3jq0IrP
- FMVg==
+ d=linaro.org; s=google; t=1736353271; x=1736958071; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=zSj9J8PaRrqj5CYg9Lfkjte9vnQLNuRpW9jbou5F1cE=;
+ b=AUYLfPt468ggbHMdzllT8TGHQSICTv/4isbGULt269ALpVJJ9d6mmlHG+kc3QDXFpR
+ AnLaA3wBMav179gw6FXZ51aIkXPoin+RQYE119AaB8w1hFeWkzZ5O5As395ZT3AKx092
+ 0JnuXbAHvrya+FQcESqgV6PAcePrwMCd7BpqnYItczCkDFypZmuk4jVom1XU7hUKNYqA
+ On8N03LGMAioO4KhqSMadaSZHnwms9+oe96Sy97fyzL3vPxEOkYBc92Fzcf9zi0cLzIh
+ uXFz9PhBZacOo9+T+/p9O1h8ShC15RWX1kXkwamH0wJpFgHoi1ti4b2Sj/3NYF9mj+Zt
+ 1QJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736349764; x=1736954564;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+f7UOlWeL8+YCrnm6mVFVB4mI6TIS4CM7dpB1OmgzV0=;
- b=Js9wi6XtqtZVSGRuzUhf+P5WyXIEqweqd6jvXJ2Rzzf3JNX+4sS8efdUnuVg5B0x5g
- oEA48jsPBzh6+BCrL74zEUeL0JkcBe3Yvi7LN0e3QhAg5JGmZ/hu6Mda8EQNIQW7GfM1
- nyo4hxH+PGCE7bprxrI7HFCzvvtiipejQYhl+AsBjIfx1ZgvDYz9IiZv1l3tlFxzvaAJ
- zFec4WUSwkIv61idDfemX8grbMs4ivmsERZmIBfWf5rBseXjQVxkMB7RuordMV9vvhb7
- t+9N1fFRqZtuZrQmeOVN7kOO/v2jsE1RqJf6eQSHBXDeofrOpvQ0lXpGmVFSnlHMKYHo
- aGiA==
+ d=1e100.net; s=20230601; t=1736353271; x=1736958071;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=zSj9J8PaRrqj5CYg9Lfkjte9vnQLNuRpW9jbou5F1cE=;
+ b=ht/AyTLlWOsEDniyKTDVlGMA8nk9TLveAEx2DL33Uvw22AEv+qc9G7cURe0eOnOfHt
+ BcgfM1dv+aVO77x1jM2paicWzMk/E00y2LHUVqk2bfV1lD7+gLEqEBr1VfKfe3lXfIi7
+ 3qPwpWJpUgA+yNkigm04W8brN3B5dpg3N8x5nCI6UGojXP9o9VPhhUdeQZ1jBTplm//V
+ Si6Q59zm+8dlqipCXN+mKsxdYlcxCggItP7WlSkXEN2GENApdKYajvcfQRD2iPGolUFA
+ HjVDgXdIuSCkF+KmQCfcOIWud/V+VS4CxMc3a90dO/MntySuuNYHHsF5Q+qQ/EJgssXP
+ Fh3Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUeMg2knTj9b2ilC4cIoReDDBxTAgdmNgyQrK3p9Mxczx5W0YZiVdWNVEE5l0trEksFjVua7aEPE+azCA==@nongnu.org,
- AJvYcCXAdv7LXC082kMMBJiBraK+FHjINK285R8pp+ed0/P1UCuCgRbakmMpNqZySQv0AR3mhTBzUvyVKA==@nongnu.org
-X-Gm-Message-State: AOJu0YyUMe8KvshryJGUxKx2mc8R/5l3PmQiJiXFiF+Y81z5D5GOfA8k
- pJxAacBNPCOkvLcSUq2SzirGDShFTTjW8EA4ePaBYutC7XE+RvhWfr+kcw==
-X-Gm-Gg: ASbGncu9jw2VTjkeyQLaZ1vI6Ykc/9OZ6Lx0VqLLrHU3fBDZge7JLBPJHaHAXSDQWl7
- qoNCkioU3zlEopisM0pCp3ea+/SH2NZzo3UPJazShg7wWfjWoaAlnMh4c44fd12kLZtBC9yf0Ea
- 6Pu9bu8vYV5+MIxuW4evzIt2V1g2kaM2KuveenSudf4bSRTPNU9N2TiTP134VnMY85UG6maeGPK
- gFgMBqovBWy6ZqpL6JBoxkhk3n0KzeclF1hlbslTHv+FvxzTIG7KvR6ihTv2BS7QTqq2NtuQRE8
- FdTkBORJsL+n7HsJ8NZ8zez2V+4=
-X-Received: by 2002:a17:906:7314:b0:aaf:f32:cd34 with SMTP id
- a640c23a62f3a-ab2ab6a84ecmr258443266b.15.1736349763830; 
- Wed, 08 Jan 2025 07:22:43 -0800 (PST)
-Received: from [127.0.0.1] (business-90-187-110-129.pool2.vodafone-ip.de.
- [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aac0e894b60sm2542977166b.68.2025.01.08.07.22.43
+ AJvYcCVNob8vxg0+rIgoWuFiYfpoVU02OQOiYlFSarepy64StXpnQbru89rg8fQTm6L4mFHILzSx6sNuBA==@nongnu.org
+X-Gm-Message-State: AOJu0YwkUkFDF+vg7jumGGCelp2GlRq0SwSfQBkqQY+PgFgtgPNyNKbb
+ 8XxJWqfGaUHqqnsjx6b7/LxodhM15A9httfpZDVxjitaZksczm0xBs05/6vurqg=
+X-Gm-Gg: ASbGncs+wUHNEyVmSCUGPc0wReInLyFLn10HMJbtrAupztb0B0ICzZYr/5hYIoHu6/m
+ owZP/ZUWHvfXCfb1HoF5222Rjes3lXF7hAKxg4lwSqEYIgGaQDpc5De5xWziPYgODrnXYcObwb1
+ 0AusMYgicTWG73YLv4t8xjl5uaBvFdqEKdqeStYNw2ytVB/lOyy0YzHjR0+/Y2mRh3zJ7HJc/3a
+ sKVP3rpFxbdmmzO4zAonnYRTsYEiFGazq0F9Tzpopf6nSKlTQ57hBQayoTJrNtGEVwkMbIT+djP
+ SrLDHseWUH/JYAtJOxLBDvIR
+X-Received: by 2002:a05:600c:3143:b0:434:a929:42bb with SMTP id
+ 5b1f17b1804b1-436e26b9d45mr27502465e9.18.1736353271340; 
+ Wed, 08 Jan 2025 08:21:11 -0800 (PST)
+Received: from [192.168.69.132] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38a1c84840asm53174908f8f.61.2025.01.08.08.21.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 08 Jan 2025 07:22:43 -0800 (PST)
-Date: Wed, 08 Jan 2025 14:26:41 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-CC: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
- Guenter Roeck <linux@roeck-us.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Wed, 08 Jan 2025 08:21:10 -0800 (PST)
+Message-ID: <33849af9-4edf-4acd-9611-0de6f88e82aa@linaro.org>
+Date: Wed, 8 Jan 2025 17:21:09 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 10/14] hw/timer/imx_gpt: Remove unused define
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
+ Guenter Roeck <linux@roeck-us.net>, Andrey Smirnov
+ <andrew.smirnov@gmail.com>, Jean-Christophe Dubois <jcd@tribudubois.net>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
  Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-Subject: Re: [PATCH 04/14] hw/core: Introduce TYPE_SHARED_IRQ
-In-Reply-To: <20250108092538.11474-5-shentey@gmail.com>
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20250108092538.11474-1-shentey@gmail.com>
- <20250108092538.11474-5-shentey@gmail.com>
-Message-ID: <0481ED42-8DAB-41D5-B1F9-89D5E5756DFE@gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
+ <20250108092538.11474-11-shentey@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250108092538.11474-11-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: RB3CdqKdnmrh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ImKh6R/grb9R
 
+On 8/1/25 10:25, Bernhard Beschow wrote:
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/timer/imx_gpt.c | 4 ----
+>   1 file changed, 4 deletions(-)
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Am 8=2E Januar 2025 09:25:28 UTC schrieb Bernhard Beschow <shentey@gmail=
-=2Ecom>:
->Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->---
-> include/hw/core/shared-irq=2Eh | 39 ++++++++++++++++
-> hw/core/shared-irq=2Ec         | 88 ++++++++++++++++++++++++++++++++++++
-> hw/core/Kconfig              |  3 ++
-> hw/core/meson=2Ebuild          |  1 +
-> 4 files changed, 131 insertions(+)
-> create mode 100644 include/hw/core/shared-irq=2Eh
-> create mode 100644 hw/core/shared-irq=2Ec
->
->diff --git a/include/hw/core/shared-irq=2Eh b/include/hw/core/shared-irq=
-=2Eh
->new file mode 100644
-
-As pointed out by David, this device is redundant to TYPE_OR_IRQ=2E I'll d=
-rop it in v2=2E
-
-Best regards,
-Bernhard
-
->index 0000000000=2E=2E803c303dd0
->--- /dev/null
->+++ b/include/hw/core/shared-irq=2Eh
->@@ -0,0 +1,39 @@
->+/*
->+ * IRQ sharing device=2E
->+ *
->+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail=2Ecom>
->+ *
->+ * SPDX-License-Identifier: GPL-2=2E0-or-later
->+ */
->+
->+/*
->+ * This is a simple device which has one GPIO output line and multiple G=
-PIO
->+ * input lines=2E The output line is active if at least one of the input=
- lines is=2E
->+ *
->+ * QEMU interface:
->+ *  + N unnamed GPIO inputs: the input lines
->+ *  + one unnamed GPIO output: the output line
->+ *  + QOM property "num-lines": sets the number of input lines
->+ */
->+#ifndef HW_SHARED_IRQ_H
->+#define HW_SHARED_IRQ_H
->+
->+#include "hw/sysbus=2Eh"
->+#include "qom/object=2Eh"
->+
->+#define TYPE_SHARED_IRQ "shared-irq"
->+
->+#define MAX_SHARED_LINES 16
->+
->+
->+OBJECT_DECLARE_SIMPLE_TYPE(SharedIRQ, SHARED_IRQ)
->+
->+struct SharedIRQ {
->+    DeviceState parent_obj;
->+
->+    qemu_irq out_irq;
->+    uint16_t irq_states;
->+    uint8_t num_lines;
->+};
->+
->+#endif
->diff --git a/hw/core/shared-irq=2Ec b/hw/core/shared-irq=2Ec
->new file mode 100644
->index 0000000000=2E=2Eb2a4ea4a66
->--- /dev/null
->+++ b/hw/core/shared-irq=2Ec
->@@ -0,0 +1,88 @@
->+/*
->+ * IRQ sharing device=2E
->+ *
->+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail=2Ecom>
->+ *
->+ * SPDX-License-Identifier: GPL-2=2E0-or-later
->+ */
->+
->+#include "qemu/osdep=2Eh"
->+#include "hw/core/shared-irq=2Eh"
->+#include "hw/irq=2Eh"
->+#include "hw/qdev-properties=2Eh"
->+#include "qapi/error=2Eh"
->+#include "migration/vmstate=2Eh"
->+
->+static void shared_irq_handler(void *opaque, int n, int level)
->+{
->+    SharedIRQ *s =3D opaque;
->+    uint16_t mask =3D BIT(n);
->+
->+    if (level) {
->+        s->irq_states |=3D mask;
->+    } else {
->+        s->irq_states &=3D ~mask;
->+    }
->+
->+    qemu_set_irq(s->out_irq, !!s->irq_states);
->+}
->+
->+static void shared_irq_init(Object *obj)
->+{
->+    SharedIRQ *s =3D SHARED_IRQ(obj);
->+
->+    qdev_init_gpio_out(DEVICE(s), &s->out_irq, 1);
->+}
->+
->+static void shared_irq_realize(DeviceState *dev, Error **errp)
->+{
->+    SharedIRQ *s =3D SHARED_IRQ(dev);
->+
->+    if (s->num_lines < 1 || s->num_lines >=3D MAX_SHARED_LINES) {
->+        error_setg(errp,
->+                   "IRQ shared number of lines %d must be between 1 and =
-%d",
->+                   s->num_lines, MAX_SHARED_LINES);
->+        return;
->+    }
->+
->+    qdev_init_gpio_in(dev, shared_irq_handler, s->num_lines);
->+}
->+
->+static const Property shared_irq_properties[] =3D {
->+    DEFINE_PROP_UINT8("num-lines", SharedIRQ, num_lines, 1),
->+};
->+
->+static const VMStateDescription shared_irq_vmstate =3D {
->+    =2Ename =3D TYPE_SHARED_IRQ,
->+    =2Eversion_id =3D 1,
->+    =2Eminimum_version_id =3D 1,
->+    =2Efields =3D (const VMStateField[]) {
->+        VMSTATE_UINT16(irq_states, SharedIRQ),
->+        VMSTATE_END_OF_LIST()
->+    },
->+};
->+
->+static void shared_irq_class_init(ObjectClass *klass, void *data)
->+{
->+    DeviceClass *dc =3D DEVICE_CLASS(klass);
->+
->+    /* No state to reset */
->+    device_class_set_props(dc, shared_irq_properties);
->+    dc->vmsd =3D &shared_irq_vmstate;
->+    dc->realize =3D shared_irq_realize;
->+
->+    /* Reason: Needs to be wired up to work */
->+    dc->user_creatable =3D false;
->+}
->+
->+static const TypeInfo shared_irq_types[] =3D {
->+    {
->+       =2Ename =3D TYPE_SHARED_IRQ,
->+       =2Eparent =3D TYPE_DEVICE,
->+       =2Einstance_size =3D sizeof(SharedIRQ),
->+       =2Einstance_init =3D shared_irq_init,
->+       =2Eclass_init =3D shared_irq_class_init,
->+    },
->+};
->+
->+DEFINE_TYPES(shared_irq_types)
->diff --git a/hw/core/Kconfig b/hw/core/Kconfig
->index d1bdf765ee=2E=2Eddff977963 100644
->--- a/hw/core/Kconfig
->+++ b/hw/core/Kconfig
->@@ -32,6 +32,9 @@ config PLATFORM_BUS
-> config REGISTER
->     bool
->=20
->+config SHARED_IRQ
->+    bool
->+
-> config SPLIT_IRQ
->     bool
->=20
->diff --git a/hw/core/meson=2Ebuild b/hw/core/meson=2Ebuild
->index ce9dfa3f4b=2E=2E6b5bdc8ec7 100644
->--- a/hw/core/meson=2Ebuild
->+++ b/hw/core/meson=2Ebuild
->@@ -21,6 +21,7 @@ system_ss=2Eadd(when: 'CONFIG_OR_IRQ', if_true: files('=
-or-irq=2Ec'))
-> system_ss=2Eadd(when: 'CONFIG_PLATFORM_BUS', if_true: files('platform-bu=
-s=2Ec'))
-> system_ss=2Eadd(when: 'CONFIG_PTIMER', if_true: files('ptimer=2Ec'))
-> system_ss=2Eadd(when: 'CONFIG_REGISTER', if_true: files('register=2Ec'))
->+system_ss=2Eadd(when: 'CONFIG_SHARED_IRQ', if_true: files('shared-irq=2E=
-c'))
-> system_ss=2Eadd(when: 'CONFIG_SPLIT_IRQ', if_true: files('split-irq=2Ec'=
-))
-> system_ss=2Eadd(when: 'CONFIG_XILINX_AXI', if_true: files('stream=2Ec'))
-> system_ss=2Eadd(when: 'CONFIG_PLATFORM_BUS', if_true: files('sysbus-fdt=
-=2Ec'))

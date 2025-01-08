@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c8474c2sm52129192f8f.55.2025.01.08.04.18.02
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a1c847d7fsm52703371f8f.60.2025.01.08.04.18.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 08 Jan 2025 04:18:02 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0757A5FD35;
+	by draig.lan (Postfix) with ESMTP id 226965FD97;
 	Wed,  8 Jan 2025 12:10:57 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -53,59 +53,125 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Li-Wen Hsu <lwhsu@freebsd.org>
-Subject: [PATCH v4 25/32] tests/docker: move riscv64 cross container from sid to trixie
-Date: Wed,  8 Jan 2025 12:10:47 +0000
-Message-Id: <20250108121054.1126164-26-alex.bennee@linaro.org>
+Subject: [PATCH v4 26/32] tests/lcitool: remove temp workaround for debian mips64el
+Date: Wed,  8 Jan 2025 12:10:48 +0000
+Message-Id: <20250108121054.1126164-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 7nSvn1Drr2i1
+X-TUID: eh1jrhNSHsIl
 
-Although riscv64 isn't going to be a release architecture for trixie
-the packages are still built while it is testing. Moving from sid will
-also avoid some of the volatility we get from tracking the bleeding
-edge.
+From: Daniel P. Berrangé <berrange@redhat.com>
 
+The workaround applied in
+
+  commit c60473d29254b79d9437eface8b342e84663ba66
+  Author: Alex Bennée <alex.bennee@linaro.org>
+  Date:   Wed Oct 2 10:03:33 2024 +0200
+
+    testing: bump mips64el cross to bookworm and fix package list
+
+Is no longer required since the affected builds are now fixed.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20241217133525.3836570-1-berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/dockerfiles/debian-riscv64-cross.docker | 4 ++--
- tests/lcitool/refresh                                | 4 +++-
- 2 files changed, 5 insertions(+), 3 deletions(-)
+ .../dockerfiles/debian-mips64el-cross.docker  |  9 ++++++
+ tests/lcitool/mappings.yml                    | 29 -------------------
+ 2 files changed, 9 insertions(+), 29 deletions(-)
 
-diff --git a/tests/docker/dockerfiles/debian-riscv64-cross.docker b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-index 4d8ca83cb3..b0386cd3a1 100644
---- a/tests/docker/dockerfiles/debian-riscv64-cross.docker
-+++ b/tests/docker/dockerfiles/debian-riscv64-cross.docker
-@@ -1,10 +1,10 @@
- # THIS FILE WAS AUTO-GENERATED
- #
--#  $ lcitool dockerfile --layers all --cross-arch riscv64 debian-sid qemu-minimal
-+#  $ lcitool dockerfile --layers all --cross-arch riscv64 debian-13 qemu-minimal
- #
- # https://gitlab.com/libvirt/libvirt-ci
+diff --git a/tests/docker/dockerfiles/debian-mips64el-cross.docker b/tests/docker/dockerfiles/debian-mips64el-cross.docker
+index c09a8da890..9f6c4763c5 100644
+--- a/tests/docker/dockerfiles/debian-mips64el-cross.docker
++++ b/tests/docker/dockerfiles/debian-mips64el-cross.docker
+@@ -93,13 +93,18 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       libcmocka-dev:mips64el \
+                       libcurl4-gnutls-dev:mips64el \
+                       libdaxctl-dev:mips64el \
++                      libdrm-dev:mips64el \
++                      libepoxy-dev:mips64el \
+                       libfdt-dev:mips64el \
+                       libffi-dev:mips64el \
+                       libfuse3-dev:mips64el \
++                      libgbm-dev:mips64el \
+                       libgcrypt20-dev:mips64el \
+                       libglib2.0-dev:mips64el \
+                       libglusterfs-dev:mips64el \
+                       libgnutls28-dev:mips64el \
++                      libgtk-3-dev:mips64el \
++                      libgtk-vnc-2.0-dev:mips64el \
+                       libibverbs-dev:mips64el \
+                       libiscsi-dev:mips64el \
+                       libjemalloc-dev:mips64el \
+@@ -119,6 +124,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       librbd-dev:mips64el \
+                       librdmacm-dev:mips64el \
+                       libsasl2-dev:mips64el \
++                      libsdl2-dev:mips64el \
++                      libsdl2-image-dev:mips64el \
+                       libseccomp-dev:mips64el \
+                       libselinux1-dev:mips64el \
+                       libslirp-dev:mips64el \
+@@ -134,6 +141,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
+                       libusb-1.0-0-dev:mips64el \
+                       libusbredirhost-dev:mips64el \
+                       libvdeplug-dev:mips64el \
++                      libvirglrenderer-dev:mips64el \
++                      libvte-2.91-dev:mips64el \
+                       libxdp-dev:mips64el \
+                       libzstd-dev:mips64el \
+                       nettle-dev:mips64el \
+diff --git a/tests/lcitool/mappings.yml b/tests/lcitool/mappings.yml
+index f8186b0e69..74eb13d62b 100644
+--- a/tests/lcitool/mappings.yml
++++ b/tests/lcitool/mappings.yml
+@@ -6,23 +6,6 @@ mappings:
+   flake8:
+     OpenSUSELeap15:
  
--FROM docker.io/library/debian:sid-slim
-+FROM docker.io/library/debian:trixie-slim
+-  # Due to https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1081535 we
+-  # have to disable all packages that depend on libgl1-mesa-dri:mips64el
+-  gtk3:
+-    mips64el-deb:
+-
+-  libdrm:
+-    mips64el-deb:
+-
+-  libepoxy:
+-    mips64el-deb:
+-
+-  gtk-vnc:
+-    mips64el-deb:
+-
+-  mesa-libgbm:
+-    mips64el-deb:
+-
+   meson:
+     OpenSUSELeap15:
  
- RUN export DEBIAN_FRONTEND=noninteractive && \
-     apt-get update && \
-diff --git a/tests/lcitool/refresh b/tests/lcitool/refresh
-index 6720516b94..53f8d2585f 100755
---- a/tests/lcitool/refresh
-+++ b/tests/lcitool/refresh
-@@ -220,7 +220,9 @@ try:
-                         trailer=cross_build("powerpc64le-linux-gnu-",
-                                             "ppc64-softmmu,ppc64-linux-user"))
+@@ -81,18 +64,6 @@ mappings:
+   python3-wheel:
+     OpenSUSELeap15: python311-pip
  
--    generate_dockerfile("debian-riscv64-cross", "debian-sid",
-+    # while not yet a release architecture the packages are still
-+    # build while part of testing
-+    generate_dockerfile("debian-riscv64-cross", "debian-13",
-                         project="qemu-minimal",
-                         cross="riscv64",
-                         trailer=cross_build("riscv64-linux-gnu-",
+-  sdl2:
+-    mips64el-deb:
+-
+-  sdl2-image:
+-    mips64el-deb:
+-
+-  virglrenderer:
+-    mips64el-deb:
+-
+-  vte:
+-    mips64el-deb:
+-
+ pypi_mappings:
+   # Request more recent version
+   meson:
 -- 
 2.39.5

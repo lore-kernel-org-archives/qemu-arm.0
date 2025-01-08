@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aac0eae5902sm2481836466b.85.2025.01.08.04.10.58
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aae8be914f5sm2279652066b.180.2025.01.08.04.10.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 08 Jan 2025 04:11:02 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id B6CF35F9EC;
-	Wed,  8 Jan 2025 12:10:55 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 2764C5FB53;
+	Wed,  8 Jan 2025 12:10:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>,
@@ -52,49 +52,75 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v4 12/32] tests/functional: update the s390x tuxrun tests
-Date: Wed,  8 Jan 2025 12:10:34 +0000
-Message-Id: <20250108121054.1126164-13-alex.bennee@linaro.org>
+	Li-Wen Hsu <lwhsu@freebsd.org>
+Subject: [PATCH v4 16/32] tests/qtest: remove clock_steps from virtio tests
+Date: Wed,  8 Jan 2025 12:10:38 +0000
+Message-Id: <20250108121054.1126164-17-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 65ySqEEdRGLq
+X-TUID: ACS9v61hQJiV
 
-Now there are new up to date images available we should update to them.
+In the qtest environment time will not step forward if the system is
+paused (timers disabled) or we have no timer events to fire. As a
+result VirtIO events are responded to directly and we don't need to
+step time forward.
 
-Cc: Anders Roxell <anders.roxell@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
+We still do timeout processing to handle the fact the target QEMU may
+not be ready to respond right away. This will usually be due to a slow
+CI system or if QEMU is running under something like rr.
+
+Future qtest patches will assert that time actually changes when a
+step is requested.
+
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-33-alex.bennee@linaro.org>
----
- tests/functional/test_s390x_tuxrun.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
 
-diff --git a/tests/functional/test_s390x_tuxrun.py b/tests/functional/test_s390x_tuxrun.py
-index dcab17c68b..a7db4bfd84 100755
---- a/tests/functional/test_s390x_tuxrun.py
-+++ b/tests/functional/test_s390x_tuxrun.py
-@@ -17,11 +17,11 @@
- class TuxRunS390xTest(TuxRunBaselineTest):
+---
+v2
+  - s/with/when/
+  - drop clock_step entirely
+---
+ tests/qtest/libqos/virtio.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/tests/qtest/libqos/virtio.c b/tests/qtest/libqos/virtio.c
+index a21b6eee9c..2e7979652f 100644
+--- a/tests/qtest/libqos/virtio.c
++++ b/tests/qtest/libqos/virtio.c
+@@ -170,7 +170,6 @@ void qvirtio_wait_queue_isr(QTestState *qts, QVirtioDevice *d,
+     gint64 start_time = g_get_monotonic_time();
  
-     ASSET_S390X_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/s390/bzImage',
--        '0414e98dd1c3dafff8496c9cd9c28a5f8d04553bb5ba37e906a812b48d442ef0')
-+        'https://storage.tuxboot.com/buildroot/20241119/s390/bzImage',
-+        'ee67e91db52a2aed104a7c72b2a08987c678f8179c029626789c35d6dd0fedf1')
-     ASSET_S390X_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/s390/rootfs.ext4.zst',
--        '88c37c32276677f873a25ab9ec6247895b8e3e6f8259134de2a616080b8ab3fc')
-+        'https://storage.tuxboot.com/buildroot/20241119/s390/rootfs.ext4.zst',
-+        'bff7971fc2fef56372d98afe4557b82fd0a785a241e44c29b058e577ad1bbb44')
+     for (;;) {
+-        qtest_clock_step(qts, 100);
+         if (d->bus->get_queue_isr_status(d, vq)) {
+             return;
+         }
+@@ -192,7 +191,6 @@ uint8_t qvirtio_wait_status_byte_no_isr(QTestState *qts, QVirtioDevice *d,
+     uint8_t val;
  
-     def test_s390(self):
-         self.wait_for_shutdown=False
+     while ((val = qtest_readb(qts, addr)) == 0xff) {
+-        qtest_clock_step(qts, 100);
+         g_assert(!d->bus->get_queue_isr_status(d, vq));
+         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
+     }
+@@ -219,14 +217,12 @@ void qvirtio_wait_used_elem(QTestState *qts, QVirtioDevice *d,
+     for (;;) {
+         uint32_t got_desc_idx;
+ 
+-        qtest_clock_step(qts, 100);
+ 
+         if (d->bus->get_queue_isr_status(d, vq) &&
+             qvirtqueue_get_buf(qts, vq, &got_desc_idx, len)) {
+             g_assert_cmpint(got_desc_idx, ==, desc_idx);
+             return;
+         }
+-
+         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
+     }
+ }
 -- 
 2.39.5

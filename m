@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aac0e830b3bsm2510076266b.25.2025.01.08.04.11.02
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aac0e82f31bsm2470929566b.1.2025.01.08.04.11.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jan 2025 04:11:06 -0800 (PST)
+        Wed, 08 Jan 2025 04:11:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 9F9605FC51;
-	Wed,  8 Jan 2025 12:10:56 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 9E5DF6017C;
+	Wed,  8 Jan 2025 12:10:57 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>,
@@ -52,38 +52,48 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Li-Wen Hsu <lwhsu@freebsd.org>
-Subject: [PATCH v4 21/32] tests/functional: remove unused kernel_command_line
-Date: Wed,  8 Jan 2025 12:10:43 +0000
-Message-Id: <20250108121054.1126164-22-alex.bennee@linaro.org>
+	Li-Wen Hsu <lwhsu@freebsd.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v4 31/32] dockerfiles: Remove 'MAINTAINER' entry in debian-tricore-cross.docker
+Date: Wed,  8 Jan 2025 12:10:53 +0000
+Message-Id: <20250108121054.1126164-32-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 54C7X25n3Djv
+X-TUID: pGsaaN6z3Swv
 
-The Alpine test boots from the CDROM so we don't --append a command
-line. Drop the unused code.
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+AMSAT closed its email service [*] so my personal email
+address is now defunct. Remove it to avoid bouncing emails.
+
+[*] https://web.archive.org/web/20240617194936/https://forum.amsat-dl.org/index.php?thread/4581-amsat-mail-alias-service-to-end-august-1-2024/
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Message-Id: <20250102152513.61065-1-philmd@linaro.org>
+[AJB: update URL to web.archive.org]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/functional/test_aarch64_virt.py | 2 --
+ tests/docker/dockerfiles/debian-tricore-cross.docker | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
-index 2d9995a95d..b3d3b0ee51 100755
---- a/tests/functional/test_aarch64_virt.py
-+++ b/tests/functional/test_aarch64_virt.py
-@@ -41,8 +41,6 @@ def test_alpine_virt_tcg_gic_max(self):
+diff --git a/tests/docker/dockerfiles/debian-tricore-cross.docker b/tests/docker/dockerfiles/debian-tricore-cross.docker
+index 479b4d6eba..7e00e870ce 100644
+--- a/tests/docker/dockerfiles/debian-tricore-cross.docker
++++ b/tests/docker/dockerfiles/debian-tricore-cross.docker
+@@ -11,8 +11,6 @@
+ #
+ FROM docker.io/library/debian:11-slim
  
-         self.set_machine('virt')
-         self.vm.set_console()
--        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
--                               'console=ttyAMA0')
-         self.require_accelerator("tcg")
- 
-         self.vm.add_args("-accel", "tcg")
+-MAINTAINER Philippe Mathieu-Daudé <f4bug@amsat.org>
+-
+ RUN apt update && \
+     DEBIAN_FRONTEND=noninteractive apt install -yy eatmydata && \
+     DEBIAN_FRONTEND=noninteractive eatmydata apt install -yy \
 -- 
 2.39.5

@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aaee340665asm2051194866b.187.2025.01.08.04.10.56
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aac0e82f60asm2526205066b.28.2025.01.08.04.10.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 08 Jan 2025 04:10:57 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 57FCD5F948;
+	by draig.lan (Postfix) with ESMTP id 3E8E65F938;
 	Wed,  8 Jan 2025 12:10:55 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -54,16 +54,16 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Li-Wen Hsu <lwhsu@freebsd.org>,
 	Anders Roxell <anders.roxell@linaro.org>
-Subject: [PATCH v4 08/32] tests/functional: update the ppc32 tuxrun tests
-Date: Wed,  8 Jan 2025 12:10:30 +0000
-Message-Id: <20250108121054.1126164-9-alex.bennee@linaro.org>
+Subject: [PATCH v4 07/32] tests/functional: update the mips64el tuxrun tests
+Date: Wed,  8 Jan 2025 12:10:29 +0000
+Message-Id: <20250108121054.1126164-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: zj4DIjWLiZhC
+X-TUID: ESM5+ddRHY7b
 
 Now there are new up to date images available we should update to them.
 
@@ -71,30 +71,30 @@ Cc: Anders Roxell <anders.roxell@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Tested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20241121165806.476008-29-alex.bennee@linaro.org>
+Message-Id: <20241121165806.476008-28-alex.bennee@linaro.org>
 ---
- tests/functional/test_ppc_tuxrun.py | 8 ++++----
+ tests/functional/test_mips64el_tuxrun.py | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/test_ppc_tuxrun.py b/tests/functional/test_ppc_tuxrun.py
-index 50b76946c4..5458a7fb71 100755
---- a/tests/functional/test_ppc_tuxrun.py
-+++ b/tests/functional/test_ppc_tuxrun.py
+diff --git a/tests/functional/test_mips64el_tuxrun.py b/tests/functional/test_mips64el_tuxrun.py
+index 819549a27b..0a24757c51 100755
+--- a/tests/functional/test_mips64el_tuxrun.py
++++ b/tests/functional/test_mips64el_tuxrun.py
 @@ -17,11 +17,11 @@
- class TuxRunPPC32Test(TuxRunBaselineTest):
+ class TuxRunMips64ELTest(TuxRunBaselineTest):
  
-     ASSET_PPC32_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/ppc32/uImage',
--        '1a68f74b860fda022fb12e03c5efece8c2b8b590d96cca37a8481a3ae0b3f81f')
-+        'https://storage.tuxboot.com/buildroot/20241119/ppc32/uImage',
-+        'aa5d81deabdb255a318c4bc5ffd6fdd2b5da1ef39f1955dcc35b671d258b68e9')
-     ASSET_PPC32_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/ppc32/rootfs.ext4.zst',
--        '8885b9d999cc24d679542a02e9b6aaf48f718f2050ece6b8347074b6ee41dd09')
-+        'https://storage.tuxboot.com/buildroot/20241119/ppc32/rootfs.ext4.zst',
-+        '67554f830269d6bf53b67c7dd206bcc821e463993d526b1644066fea8117019b')
+     ASSET_MIPS64EL_KERNEL = Asset(
+-        'https://storage.tuxboot.com/20230331/mips64el/vmlinux',
+-        'd4e08965e2155c4cccce7c5f34d18fe34c636cda2f2c9844387d614950155266')
++        'https://storage.tuxboot.com/buildroot/20241119/mips64el/vmlinux',
++        '0d2829a96f005229839c4cd586d4d8a136ea4b488d29821611c8e97f2266bfa9')
+     ASSET_MIPS64EL_ROOTFS = Asset(
+-        'https://storage.tuxboot.com/20230331/mips64el/rootfs.ext4.zst',
+-        'fba585368f5915b1498ed081863474b2d7ec4e97cdd46d21bdcb2f9698f83de4')
++        'https://storage.tuxboot.com/buildroot/20241119/mips64el/rootfs.ext4.zst',
++        '69c8b69a4f1582ce4c6f01a994968f5d73bffb2fc99cbeeeb26c8b5a28eaeb84')
  
-     def test_ppc32(self):
-         self.set_machine('ppce500')
+     def test_mips64el(self):
+         self.set_machine('malta')
 -- 
 2.39.5

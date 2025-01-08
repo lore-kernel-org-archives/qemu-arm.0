@@ -1,106 +1,106 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp715250njb;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp715251njb;
         Wed, 8 Jan 2025 01:26:47 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXI4OXegSbH8+MKsju/k04TTbtwkkXb5hdN49cO+ekv94FdMF699pojbOBaWV4Pt/0mDnsbAgV3qA45qA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGBMT7N+s3FNcAdqqk2KX407sUAS4K02Pudn6Ro6i8PVdWSu0dT/wCKYGy0QcAuE5odg/yZ
-X-Received: by 2002:a05:6214:212b:b0:6d4:1ea3:981d with SMTP id 6a1803df08f44-6df9b2ce4c6mr35757476d6.43.1736328407333;
+X-Forwarded-Encrypted: i=2; AJvYcCV9LwMaec2g7MG3fZw6V5iK/M90ccTZ7DfZUO2QcvMuNMhQWGTULd0mSw6kjb+pWVrV276DJRD63BLB2g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHUt0JZfR5PZL/iBlS0fJ+ioMlXWwbZAH6vYoLePSsW5VRP3TfQ5izf+g9ggZfZ3y/ynbu+
+X-Received: by 2002:a05:6214:1c0a:b0:6df:93dc:9161 with SMTP id 6a1803df08f44-6df9b238f4emr28724636d6.27.1736328407299;
         Wed, 08 Jan 2025 01:26:47 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1736328407; cv=none;
         d=google.com; s=arc-20240605;
-        b=I5dM3N7tVqpuSkpFLmez6lLubkCSXkdXxfCxm3ejTwdoh3re57x4as2APAVSwAPqNP
-         PTPtgwUitaC/pEmc4rEVjDo0DLzPW2a1aq0k2bfhuIpSRdNYIBs0DdnqDRYZErBgVRIL
-         nefOnJZrNhCXJ0zjSc54/FSL+GYJDvsIx5+fjR5bL16364yfkqWT/l57UN2yzLu9tkSO
-         ds+Fw81+wXWLNaG9pqSdfNTlxJ8MlCFa15M6AVtiItdpXZu5eqjfRpJCDFh9zDvv8XyX
-         bx86Pqzp2jUdeUgEtLb3FzwOkdzhULGHaNR6rwoy4ZlSh6bBlvBHpidEhx1bOJ3ZkVdY
-         FnSw==
+        b=QJoyLNJmuVTGJ/W5KeChtarCGGcKfgiYZuVKSM5w73cqyNo6lRXUvXj4UjxT4eqwbA
+         hBxU9gx9tbskvqTFeeuHagAFXkKol4a1nVpNmokQOBFs0sTsjEfipP3itrFC8eK8MHFr
+         ZsF5TABGgkyV0pNbiwY2cuJMy/CQh6d0EpwDMA/tBx1zBSdzNRp18PqdiVtJrUv6Gkzz
+         3aBRh3m1/j2+xNvLZZJBbu2XAya2Sd0gc22mZO/EWa3LYwA0jqlceD0krliMyBtUJvtL
+         6ATssv499xqlxiHkHHhS0d1G+VadkQn2McfjDu2orCIuyH7eiDzTmQcXGosi5IF4IhQ5
+         jCfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=KzIHVth2Q+M+ogDlevmRB8q7SrBSOXFLndAovQfPST0=;
-        fh=mvPpi4YbqSlE52n4cMycYIozqcMGi9V3IyPkZqWe7Q0=;
-        b=KkuPVxCHnjCw1XweWBA+Qey1zrrObGXsRh5jZbF+BxFTUWpuA+ka29VhxzolJuPApL
-         A2loDfukFvTbrvaX15SOS7OTcuOuaROED+viR+rViAItAUcLFK057GE+eht4+m3I3KkW
-         v7lBVGyAlKScaF59+k/e78uevulqXwSfHQHMB878TW9/bnQkGiEM7R732heQnnslIYGG
-         PSee1jMAWe+4hxW5mm9cDRm2RgvThyLV1mlEbs8dVF5LX664LkS7h6hK733+xu27eCs3
-         J2FDauvC5HNI5s3Gzyyd+EapMU7Ivx2iYgwCDxGN1XRAYPqfopF1oIDwE8SEV4rBQ5G3
-         cjOQ==;
+        bh=jXu/deQBUSnnpDSne97TzvwNxObiNI5E/wDmJP67j7k=;
+        fh=BGB5B6wKTJ2r/qDcnnlKMSMkxf4BrP6MZWpch+0dfFg=;
+        b=cy/iVrnGyxzoWMK6grAocBzy47Ir5fSI6ODpTe26+e3C0SV5DEwCA5DtiLQLTiqm1k
+         pyufW73Y8B4u/51P4lzcF9lrgzz49/g1G/dU7xjXOx4HI4X2lvHEn6by30uuK4k2l71e
+         kO4rg/AdqjHAa2uzxcbgd5RLT/gTxP5rrSxio83S7S+HWMpAR7Msn8cMd5jlL96M6v4m
+         9V8rsCAV0piVV4sLy4eSog6bGp1lGY2fiqetUP9WvHY+cLJ/VSHIvZx34g2cHLIqIiM4
+         ZzLYGiwfv/ze3SrODFCBI90nm/Ip9h6ypI/C64ShWpI4Oas7ytHlML3xOJzmNc9+GGMf
+         M4kA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WZssVDQm;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bSLMuEeT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dd182362e1si506799336d6.182.2025.01.08.01.26.47
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd1836f91csi518003286d6.522.2025.01.08.01.26.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 08 Jan 2025 01:26:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WZssVDQm;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bSLMuEeT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tVSKk-00049N-Rx; Wed, 08 Jan 2025 04:26:38 -0500
+	id 1tVSKR-0003y4-5z; Wed, 08 Jan 2025 04:26:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVSKE-0003xZ-1U; Wed, 08 Jan 2025 04:26:07 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ id 1tVSK3-0003uV-9D; Wed, 08 Jan 2025 04:25:56 -0500
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVSKA-0004ne-IK; Wed, 08 Jan 2025 04:26:04 -0500
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-5d0ac27b412so22353553a12.1; 
- Wed, 08 Jan 2025 01:26:00 -0800 (PST)
+ id 1tVSK1-0004lj-P6; Wed, 08 Jan 2025 04:25:55 -0500
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-5d90a5581fcso327131a12.1; 
+ Wed, 08 Jan 2025 01:25:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736328359; x=1736933159; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1736328351; x=1736933151; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KzIHVth2Q+M+ogDlevmRB8q7SrBSOXFLndAovQfPST0=;
- b=WZssVDQmV1F49VgbILRqFoTXrPql8SpKzdyGAzQU54eLAPe8usUM7UiFRaAh+SGuHj
- fzJVVboHuXB3XrWMxrU5372SRnS207Qe0Zq9HBvgL6cpm8KdvZRqa899Eb3gBEmwVc/X
- GSkvX6XuGs8+rv+AgiP6+jUt4/lXHPU2qSgRCWvMdo1sN/Iou/POeHlIY5evS2zRufXn
- y9R0gPjpIxZIiUhMO01x0OkCLnBf7XueX3cvLZI3H02BzDqve8DCfR7Qh2MoqDmlreXD
- 4FYZm9//wZ8xUo7S69qJs6L+FNElxk/G/Snr7kuTe+iTklWjFNeRZZaTZzVrpiXNK1Pm
- SsTQ==
+ bh=jXu/deQBUSnnpDSne97TzvwNxObiNI5E/wDmJP67j7k=;
+ b=bSLMuEeTMsmKBN5B7XrmrNkmcwyBsCbLhbI5hPIuxmC4WWIJdhVF1E7I98wKjq/Ke2
+ 3FBv2sx8EBpWhq0ZD2a0k95Bj4e+xEWwxVLI9AhdDrjBb/C/qqO77Y6HS/O3leQsMUrA
+ eoJcBamaRjjE4+y3jhMJkNcCRCyd0+Oag+pGOHL0WXKXrq/a5Ao/Pd+C80PBWhaZzdYc
+ NqOaOyLk10ZDxtUEC2ftW4k7JY3YLUsqzg3q5IvEPaS/kplqAFqlMbmK9x5nrHsU4sKP
+ Txs60waZPKl5qIMZUCzO77yIhw3cpLFFJlMG2yJW4lV/PiO2Crg2iow2ZooKo49zzbcY
+ zP9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736328359; x=1736933159;
+ d=1e100.net; s=20230601; t=1736328351; x=1736933151;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KzIHVth2Q+M+ogDlevmRB8q7SrBSOXFLndAovQfPST0=;
- b=WoesRx+W5wcVAg1gySepAYxJU2j7lbX9HxwXZoXYGrTktWqLfJNNy4NibpJ6Y/cm39
- atdwHzFVwaSTPIszvax4WIaEBPnHqGi73Df9X15am3StHoJRknHX+5wsVMapZNJhBC4h
- DTeUXIDp/8SomV0u7DM3JlbLCfsGUmnDgzWxnZ5hok+QxbliD9ka32hQp2lQzDnhphB+
- t/Nc4u+n6jiNV/N972GKXKJ0KbC5rT4jmWjwXzEzyWUEVswUobSD0Ph+QMz9VIuUAaXi
- m4Lv9mdSZ2++pwmtuNRWZDbSN7cj9NZL/xxrDR7+9+Jdqp8+cWYZNmttjmjCdp6excz0
- 7L0w==
+ bh=jXu/deQBUSnnpDSne97TzvwNxObiNI5E/wDmJP67j7k=;
+ b=SxixJltMuBmIrsBR6eBlnvIKJ/PSJrrwhNtf0TI/YnfjPguhH2GLBB9M7tYM4DEAfW
+ MTZbiH584CK6NwPdlVdNgNACMuTnd5K7zZJ7Y1ilX8/ZWzBA1PBmVJ4wfZUelg87J56O
+ GH7F/4Y9wuXEZbEzFwqSH0NUflAIW/AeF/zaLnTuaX4T1n2cqb1m7eeuE+Mjt5Ace7LC
+ t6Vt4iXxHwnk1E2lvdBFKiVcV8rgf71kYTKWGsnJH1OdW0kn/n/YhaxBNtfO0b5pgM2f
+ Dm+4jy0hUHtIaoZhweVqv0QCw9iOE0c9gK/moW+V5OdNNDPcvlhD1yQsAl1zJGNcyiVf
+ bKsQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWbJaN759HpjA4UjR7zjjQdrO+oAe9yDUZWgQLrlrUZW54bTG5rXeRLVDKA1vsn9Qr0JFsmnhTSW/+ctw==@nongnu.org,
- AJvYcCXeo/UTWA4a3Xlxf+RWw1Hg4zKiH8arntSQ1taR2/OZ2GZMEfUNDqFwQ/sbXgSti7cF0D+CXp43tw==@nongnu.org
-X-Gm-Message-State: AOJu0YwAa5yJ2FxajmNPomvC9gxtFJeLTW8/Xp/p0NH5licq+aA6+L+k
- Itf5oMgyEmXEaNE9IU+V0iKUe5i4RB1leRhrcNu6aFkSWuzACmJ564dqTkET
-X-Gm-Gg: ASbGncs/BLaNKNqTgBHJlKzQA3+iolGti5wJV98EGfmf7NOqcbIbeH28m/FHLxkb4kH
- yrik/Dtc+xK9Gjx/SNbIj4GmazOdGGMEgatzTAAs/mxvH72Zi7UZwiilAJPNLJjoE2irnmHLoGt
- l5BQ5fOyenTVGa0Cv9KmKj5QtpDzIIr/870yPjZdv8UduxALNjj0ZC4P2In5XtbIchf36FCyf/g
- boN2Ter+ZUY1STy2OnXFMk2DSACnlL8XfOqVYUlQzMC+5H+reUxL6FbCZGOinBnjyl5hRvUmXxM
- pyIBqcdJsOuyxsI7WQIx9IShMETm4GZhPIcETL8Ktki5paU=
-X-Received: by 2002:a05:6402:3225:b0:5d3:cf08:d64d with SMTP id
- 4fb4d7f45d1cf-5d972e6f2d4mr1759834a12.32.1736328359089; 
- Wed, 08 Jan 2025 01:25:59 -0800 (PST)
+ AJvYcCVZVmYhkmp7isB7a+GR1edgmcPqXH63e5yz5Bf630pbtm0d0SomnnNAgfLS0XpBDXDBNWeBpSxd8w==@nongnu.org,
+ AJvYcCX7ESo2vflDvZN0igpz3Tu/b//1RTHSiNK5gqVHMpnUBqcoEQXgtf58/vvJ2ogWI9EPiVUv+xWvMzmyBw==@nongnu.org
+X-Gm-Message-State: AOJu0YxJrFQHHxfkgwha4dOoYehNHSlI03ygkhu06tvWeykg6qnqeN8e
+ 5PTmj8sF0yOar3kpqMah/Gfb0XI423gWpczmt2pyqT5gPY63l0LtG2oDNXCj
+X-Gm-Gg: ASbGncu1KWvQSKLG0K7j/iC2vCqPhLslc4bSHvkKa6LqAmoekSuZtFaxbyi0LSXer01
+ JJBbSA7+U6siCn8WNZ0ZEqaD0JOfBttunb+X1FnwaVMY+cQQDhnFQSTx8vq33zyN+J3bEGCmrv/
+ MuhvzVO8zlB8jZrqebsxowOSdNhx3hWRlN0cHc1gxTX2n5/XdCCx9ArXE/oewenPwavQ476DHto
+ S12kW2iJSPbT8cKoco0d8V3EX0EP+CYY1ewQp8MiYGlMcfDzk/oq9KYNK5DkUDXNseZDDzQhwHu
+ aGOR5PybJKr5fqTYRZ6wuZg9bVNW0D8gz5FTvaW1HFaQqz0=
+X-Received: by 2002:a05:6402:2347:b0:5d2:729f:995f with SMTP id
+ 4fb4d7f45d1cf-5d972e6f957mr1368915a12.29.1736328350418; 
+ Wed, 08 Jan 2025 01:25:50 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-077-188-106-228.77.188.pool.telefonica.de. [77.188.106.228])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5d806feddfasm26116096a12.58.2025.01.08.01.25.58
+ 4fb4d7f45d1cf-5d806feddfasm26116096a12.58.2025.01.08.01.25.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Jan 2025 01:25:58 -0800 (PST)
+ Wed, 08 Jan 2025 01:25:50 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
@@ -113,16 +113,16 @@ Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 07/14] hw/sd/sd: Remove legacy sd_set_cb() in favor of GPIOs
-Date: Wed,  8 Jan 2025 10:25:31 +0100
-Message-ID: <20250108092538.11474-8-shentey@gmail.com>
+Subject: [PATCH 01/14] hw/sd/sdhci: Set SDHC_NIS_DMA bit when appropriate
+Date: Wed,  8 Jan 2025 10:25:25 +0100
+Message-ID: <20250108092538.11474-2-shentey@gmail.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250108092538.11474-1-shentey@gmail.com>
 References: <20250108092538.11474-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -144,93 +144,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 7upTmlO14ASf
+X-TUID: mVJpIJgDMADJ
 
-Commit ce5dd27534b0 "hw/sd: Remove omap2_mmc device" removed the last user of
-sd_set_cb(). Rework this functionality into GPIOs.
+In U-Boot, the fsl_esdhc[_imx] driver waits for both "transmit completed" and
+"DMA" bits in esdhc_send_cmd_common() by means of DATA_COMPLETE constant. QEMU
+currently misses to set the DMA bit which causes the driver to loop forever. Fix
+that by setting the DMA bit if enabled when doing DMA block transfers.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/sd/sdcard_legacy.h |  1 -
- hw/sd/sd.c                    | 31 ++++++++++++++-----------------
- 2 files changed, 14 insertions(+), 18 deletions(-)
+ hw/sd/sdhci.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/sd/sdcard_legacy.h b/include/hw/sd/sdcard_legacy.h
-index 0dc3889555..a121232560 100644
---- a/include/hw/sd/sdcard_legacy.h
-+++ b/include/hw/sd/sdcard_legacy.h
-@@ -36,7 +36,6 @@ SDState *sd_init(BlockBackend *blk, bool is_spi);
- int sd_do_command(SDState *card, SDRequest *request, uint8_t *response);
- void sd_write_byte(SDState *card, uint8_t value);
- uint8_t sd_read_byte(SDState *card);
--void sd_set_cb(SDState *card, qemu_irq readonly, qemu_irq insert);
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 299cd4bc1b..a958c11497 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -665,12 +665,13 @@ static void sdhci_sdma_transfer_multi_blocks(SDHCIState *s)
+         }
+     }
  
- /* sd_enable should not be used -- it is only used on the nseries boards,
-  * where it is part of a broken implementation of the MMC card slot switch
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 0330d432fd..aa8d86e1af 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -820,6 +820,16 @@ static inline uint64_t sd_addr_to_wpnum(uint64_t addr)
-     return addr >> (HWBLOCK_SHIFT + SECTOR_SHIFT + WPGROUP_SHIFT);
- }
- 
-+static bool sd_get_inserted(SDState *sd)
-+{
-+    return sd->blk && blk_is_inserted(sd->blk);
-+}
++    if (s->norintstsen & SDHC_NISEN_DMA) {
++        s->norintsts |= SDHC_NIS_DMA;
++    }
 +
-+static bool sd_get_readonly(SDState *sd)
-+{
-+    return sd->wp_switch;
-+}
+     if (s->blkcnt == 0) {
+         sdhci_end_transfer(s);
+     } else {
+-        if (s->norintstsen & SDHC_NISEN_DMA) {
+-            s->norintsts |= SDHC_NIS_DMA;
+-        }
+         sdhci_update_irq(s);
+     }
+ }
+@@ -691,6 +692,10 @@ static void sdhci_sdma_transfer_single_block(SDHCIState *s)
+     }
+     s->blkcnt--;
+ 
++    if (s->norintstsen & SDHC_NISEN_DMA) {
++        s->norintsts |= SDHC_NIS_DMA;
++    }
 +
- static void sd_reset(DeviceState *dev)
- {
-     SDState *sd = SDMMC_COMMON(dev);
-@@ -865,16 +875,9 @@ static void sd_reset(DeviceState *dev)
-     sd->dat_lines = 0xf;
-     sd->cmd_line = true;
-     sd->multi_blk_cnt = 0;
--}
- 
--static bool sd_get_inserted(SDState *sd)
--{
--    return sd->blk && blk_is_inserted(sd->blk);
--}
--
--static bool sd_get_readonly(SDState *sd)
--{
--    return sd->wp_switch;
-+    qemu_set_irq(sd->readonly_cb, sd_get_readonly(sd));
-+    qemu_set_irq(sd->inserted_cb, sd_get_inserted(sd));
+     sdhci_end_transfer(s);
  }
  
- static void sd_cardchange(void *opaque, bool load, Error **errp)
-@@ -1034,14 +1037,6 @@ SDState *sd_init(BlockBackend *blk, bool is_spi)
-     return sd;
- }
- 
--void sd_set_cb(SDState *sd, qemu_irq readonly, qemu_irq insert)
--{
--    sd->readonly_cb = readonly;
--    sd->inserted_cb = insert;
--    qemu_set_irq(readonly, sd->blk ? !blk_is_writable(sd->blk) : 0);
--    qemu_set_irq(insert, sd->blk ? blk_is_inserted(sd->blk) : 0);
--}
--
- static void sd_blk_read(SDState *sd, uint64_t addr, uint32_t len)
- {
-     trace_sdcard_read_block(addr, len);
-@@ -2727,6 +2722,8 @@ static void sd_instance_init(Object *obj)
-     sd->last_cmd_name = "UNSET";
-     sd->enable = true;
-     sd->ocr_power_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sd_ocr_powerup, sd);
-+    qdev_init_gpio_out_named(DEVICE(sd), &sd->inserted_cb, "cd", 1);
-+    qdev_init_gpio_out_named(DEVICE(sd), &sd->readonly_cb, "wp", 1);
- }
- 
- static void sd_instance_finalize(Object *obj)
 -- 
 2.47.1
 

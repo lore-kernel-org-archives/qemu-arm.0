@@ -1,99 +1,99 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp873484njb;
-        Wed, 8 Jan 2025 06:16:17 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFt9OvFA3YKZk2q7quIRKgMoYq9rWhiDcmryvqdVGUnuN1Pleh1dR08QJzlYEFSLR1RRlkb
-X-Received: by 2002:a05:6214:4b01:b0:6cb:ef8d:b10 with SMTP id 6a1803df08f44-6df9b2d3775mr55283746d6.39.1736345777699;
-        Wed, 08 Jan 2025 06:16:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736345777; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp874840njb;
+        Wed, 8 Jan 2025 06:18:06 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFB4e6ScJMtTOT+Kh8LBTrwhqgOiA8HuSIJ+IpnbSOzfnxhH0La994f1S+qTfxJc+HLPMOv
+X-Received: by 2002:a05:6a00:139b:b0:727:3c37:d5f9 with SMTP id d2e1a72fcca58-72d22017c48mr4733361b3a.26.1736345885742;
+        Wed, 08 Jan 2025 06:18:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736345885; cv=none;
         d=google.com; s=arc-20240605;
-        b=H4kJuVU0COMJ1LLm0eVbjmivVxS6zvE1CG1OTxOZ9oWuEqlJWV2vluYUC+5Ygy6sCx
-         kKm70rwaF7FuOsp0wQnN9WLAfL8RwFkUArp0CJo1EFi/VEjYoYThNd56hPlotOm9AkOh
-         9muofkHPAWmhAcKkVlnX1QhA/uAq8SasSgQ0hiO3KX9dReRrL4NveZqeyWGXuJX/pk78
-         x6ktO2Ct3AsLjwZzYJNUptinyBZgocfYi/aV6+2tm2jVrryi7FINXSbfEkvWGB9BTIOV
-         FEBrQJcvcA5nigxtRK2i/7RAlW5oQ8vUP2KWa7iYqIl492Fe9F9mR6DQDXRkoi8mgO5g
-         Qjyg==
+        b=dg8tdDZez3RvgwgIg3dMGpmi3yJPJ9cDWiJzXcqG3NogYWb42sWFG+S4RIXr0rgOTD
+         bD3SFu9MTrKLMR1yOg0FpGLBiTAG/nvEuLEBwsbVDLhUMzDzREGtwCrOL+n8gxv+Sh2l
+         Qw64Yd3oiFxTggVukBEpTpKPH63RYm2hpMNU2AePTqnhptSixDqATp9hZKQhbefcTD3x
+         u45U1O7qP5TZBD2io6xiTdJuzYDeMCgxT9nZohwGTf8HVGu/gJ4YUnFkR3EMBNQsKJB2
+         TNVWlgMNj2rB/IAywF0qDfNQRYLIPd7kCa6jZti9aJfaitHG/TNFOj+HsSTvMwSL5kif
+         0Jrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=5SxCrXjPyCzH10dGnHirxcsiqvKBep00xpCe5jk1cjQ=;
+        bh=hK4LrgKn65rt4FxRBXkhzcS4+wwIGd9OIjYn7nxkKJA=;
         fh=etlUlT9YTuxLNCn9a37I+Y2rZfaCHvtJEafpa9OIIos=;
-        b=eKeLW7QMnhcw9sGGl+gfhKXDWroc30K2uWT1O54MiPC7/SCwpG+nNdGgUjkd8wfOQJ
-         1Yk38soK8eCmEfbViyGJhfrYyFffgTdTwj0z6csHwKeX/dt1rf/bs71baEYZiSZbxnKy
-         YYMi1MwEIBADoYyxD20tM+aWm2LF0dNVZdiH3p31OiFWpaNuMc69fdmreQCUZYHQen81
-         gIxHYQhG7f5phTzZKrT6KNQgVmd53wqVnmYGF9FC9mhUICLwPE/QcpIWoO3ohT3J3pgr
-         CuP6rnv4tRmSr1NLfGO70q7MJNRRnpX4vguS4O5gXveszP6Afv5HkYvs8BL66jYHuP+0
-         KkJw==;
+        b=I1rZjv8UKPrykzIckw9ztOEBm0EKEz2nt1Zcnf3pBEP3TNBp8okYcNr+Mqj/kmYl39
+         50ibwDoYXcbB8jswPTVv5uJQF1Vy1PI9K/fVvE/YiAgdfcxrWByvTK1cMgauzoNQ7ZqN
+         a/UNQuu7dmr99HeOboCeZDJ0ivnItJ5kLNVJNx/i2TT7qAXSJrVDvI/gilq4bEDTrTS0
+         97V2wEdy3sA/MY+9xjVSxYPW95rlKn8GUHBoXe4/F6VpoUVR/h8cg1EVTmsacmW29bFH
+         tPZZwwOMo2U8VQ9gdocZW17RNpw/7RnE2NRh01/8esrdJOd9MTguennMkcy/UwrrhPhg
+         mK/Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FAe6INvI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hfGu9DcA;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dd18135ed0si468576376d6.116.2025.01.08.06.16.17
+        by mx.google.com with ESMTPS id d2e1a72fcca58-72d0fcde8cdsi5056551b3a.335.2025.01.08.06.18.05
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jan 2025 06:16:17 -0800 (PST)
+        Wed, 08 Jan 2025 06:18:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FAe6INvI;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hfGu9DcA;
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1736345777;
+	s=mimecast20190719; t=1736345884;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=5SxCrXjPyCzH10dGnHirxcsiqvKBep00xpCe5jk1cjQ=;
-	b=FAe6INvIHkCFYtPPU6ZllkYrmm6W6zWs0bZT7vlrtxTLsVnc6lxKdFFhYFlu2l+cBhs/70
-	JB2xtfjPoSWyX7JM8GsaYD72024duxPXvKWfbQNSR6ZFRR+2fmfmF8vXbntJAg9oa6459S
-	T6jJMVi5QvbqltGS8Sh6woZEmRt6dKs=
-Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
- [209.85.219.71]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=hK4LrgKn65rt4FxRBXkhzcS4+wwIGd9OIjYn7nxkKJA=;
+	b=hfGu9DcADP5O6MeJD2h4lzzoRHtlXCvplN67uM2c4WGYWnuq3lQ64xVUPBr8CRWxgFjPgx
+	F+Jmn5RJrzfA60sAUSGoaJp8ud67zLYKvJLKeriCw27B6M5IsLebobpmdUmTQ3i9LHUAKg
+	pE2viCRJiLrZrYlGefefJnN1r6poR+Y=
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-150-zLQpJQweMKSfLHhis48Y9w-1; Wed, 08 Jan 2025 09:16:16 -0500
-X-MC-Unique: zLQpJQweMKSfLHhis48Y9w-1
-X-Mimecast-MFC-AGG-ID: zLQpJQweMKSfLHhis48Y9w
-Received: by mail-qv1-f71.google.com with SMTP id 6a1803df08f44-6dd43b16631so179604376d6.2
-        for <alex.bennee@linaro.org>; Wed, 08 Jan 2025 06:16:16 -0800 (PST)
+ us-mta-596-fXt3U22xM0-wB6Q58eqwug-1; Wed, 08 Jan 2025 09:18:03 -0500
+X-MC-Unique: fXt3U22xM0-wB6Q58eqwug-1
+X-Mimecast-MFC-AGG-ID: fXt3U22xM0-wB6Q58eqwug
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7b6f274f1f9so2666247785a.3
+        for <alex.bennee@linaro.org>; Wed, 08 Jan 2025 06:18:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736345776; x=1736950576;
+        d=1e100.net; s=20230601; t=1736345883; x=1736950683;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=5SxCrXjPyCzH10dGnHirxcsiqvKBep00xpCe5jk1cjQ=;
-        b=pjA6fwnD2GibQQj3UjBhRf98tChpACPL3o9+taW87RAozMpsxTkPDlHozS9SoLElzU
-         HijpvkxtyWDZEAyuqhDbOB6Kbbi6Ts5cuyXE4sgsGlleT2ZEjzBZk6Ozcpn4sBIKVEMZ
-         M+6KLdoEm8ezPiC706E1g6AorJ3RSk4UJrnVm6JUCyxxhzX9hbHKYjdz+PxyZq0RwLFv
-         CD+E+XdSdM1q6Wm35s/MHV4c2YHXzSOT5a3Lcb4MlIWaB/Ti0nWflQVg/5wE8Lnjj4+F
-         ua6UpW4rUO2fH+EwoLCQGOY+lk1SjTUAxxlRodycnwFrr8YJ3z2Mz6SY78hNfiKeBxWc
-         5Mxg==
-X-Gm-Message-State: AOJu0YxU5DiG6IjHl/E39h8ZOyhgsngLsADxGI9pyxlD/wXYC4VvfR2i
-	h6jVW12xcIH19VRmM90xi8QsBP9AAK5WI8T298ZnZufXph530mxBh+Qj0YyV9CF7zzTIkrnhFf6
-	X3PODEZ1bWpAKryfNZERkxntRCMnNFZn2HHqfVHqhjzkfnG972QraP7+SaPPqsTB5JFRYx+nr9m
-	a9JL9Ly7FHtcvnOhM1nh75Hn13Cz6nGZhISw==
-X-Gm-Gg: ASbGncsWeEHD587hn5zSUL8Bt6z/PqonCnOBeHeFPPcgyduDuF49M4aOfWes3WcuMer
-	iOAE2C7izY/pF2uILxKUh0UMRkRiVPwndPQeGq4nfulzra2okktwEr6uIBcL5DnWmhsRCFpqfPI
-	qGN8nDNesiPxpffwZPHv48zcd4NRGnoXTqQBxctpKigEGWUUvtQuUS8Bem6LtRZ2te2sFCOpinT
-	NlMbz4BrvK/YdFCbUInmHh4Gd87PCUb7wPFwNmtNpJ7U9H3USC04VSXuJvTF/mThL0/G3I0GLku
-	frMETQ==
-X-Received: by 2002:a05:6214:5f06:b0:6d9:353b:aa26 with SMTP id 6a1803df08f44-6df9b1ef342mr48896366d6.13.1736345775859;
-        Wed, 08 Jan 2025 06:16:15 -0800 (PST)
-X-Received: by 2002:a05:6214:5f06:b0:6d9:353b:aa26 with SMTP id 6a1803df08f44-6df9b1ef342mr48895476d6.13.1736345775328;
-        Wed, 08 Jan 2025 06:16:15 -0800 (PST)
+        bh=hK4LrgKn65rt4FxRBXkhzcS4+wwIGd9OIjYn7nxkKJA=;
+        b=paJv0MaHaj5qRqgqzc+laYuVZAySSnqNR5Kh/k6aWsBtwMW3gyQ8RioIboUIZ1H5i9
+         NOdCDSWprACO96mXyW+Huzkuspah3RjdH7I9aEptkgpkVnd9U4d64AbLCpddcIJ59Lsu
+         de+CLvYTnBhCy6y4ZpZCNBYq7rIkLslCDBr6u8h6aBChg/1Xy3nqxugP6Nn3X7hURB4u
+         RCfo+gASllcl69RkWqkckNYa90KYZbsFu7ewnHQcfk/GAaW2eO0lNBxub2Nzuk+ghSRp
+         SUKNR5lOS1A0K2++wJAocuurZ8G638/MK+SP0ZSp5eFTi10d4eAz+plWLayLSGdrUVay
+         MPJA==
+X-Gm-Message-State: AOJu0YxWXVkenc0k3wcg+ipyX4UhhF1yu176WAEvdXMjIbhHAdJO0e8D
+	JK6K/wMDRTDQiEFoUyMGv2cLEnxEa4UBo504C46BoGN8cQGI/gZLiIBjLRRutDW+hTgrRbMCJWE
+	B7SG35Sb4OcH+HFlwZ0aEFJxmfGZSj7orGdbBPvPADCyylL9557wQlln3LXEkgbzBdhREbhPZMB
+	YObX0Dui/cbh7L4vY3lQcKikYzByAs/1rvJg==
+X-Gm-Gg: ASbGncujIgkcVMaCqdH8YAcpHIyNYM4uhHg2tfvlFEruVVtcV/Sf3Pvr5LjKFHSaQ0y
+	PAMy9Xtrdr4g2Jf8K/Eg4oJoAPqSNrJsWNdTyJRwdsMud+ZSw+0nBQ+DL+Rd6DZywTb2UjOpi6f
+	s35XcpaY56uSpU8ipYGbaWX2Lks/HFmZuSklpKugNEUEm1hGoMKpmH+Tu8jAqFetR5BkgoEpOiG
+	tCDSkXpAlfEwhSYAd6m9IuzGSU6cjzCQm3WivhmJxLnscUFGMIs3zPR9DJsF9Rtp38ELVw3VY5s
+	1LUmDg==
+X-Received: by 2002:a05:620a:40c2:b0:7b6:d089:2757 with SMTP id af79cd13be357-7bcd977ebb5mr421006385a.35.1736345883157;
+        Wed, 08 Jan 2025 06:18:03 -0800 (PST)
+X-Received: by 2002:a05:620a:40c2:b0:7b6:d089:2757 with SMTP id af79cd13be357-7bcd977ebb5mr420995785a.35.1736345882470;
+        Wed, 08 Jan 2025 06:18:02 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [10.33.192.228] (nat-pool-str-t.redhat.com. [149.14.88.106])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6dd18137419sm190985636d6.69.2025.01.08.06.16.09
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-7b9ac2bc86asm1680338485a.16.2025.01.08.06.17.57
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Jan 2025 06:16:14 -0800 (PST)
-Message-ID: <d843d910-9f00-4bf3-a3e7-f983f0b35676@redhat.com>
-Date: Wed, 8 Jan 2025 15:16:09 +0100
+        Wed, 08 Jan 2025 06:18:02 -0800 (PST)
+Message-ID: <57364176-49ca-4fd4-a935-133066abdfeb@redhat.com>
+Date: Wed, 8 Jan 2025 15:17:56 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 22/32] tests/functional: bail aarch64_virt tests early
- if missing TCG
+Subject: Re: [PATCH v4 23/32] tests/functional: extend test_aarch64_virt with
+ vulkan test
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>, Aurelien Jarno <aurelien@aurel32.net>,
@@ -127,7 +127,7 @@ Cc: Halil Pasic <pasic@linux.ibm.com>, Aurelien Jarno <aurelien@aurel32.net>,
  Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
  <peter.maydell@linaro.org>, Li-Wen Hsu <lwhsu@freebsd.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
- <20250108121054.1126164-23-alex.bennee@linaro.org>
+ <20250108121054.1126164-24-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -171,23 +171,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250108121054.1126164-23-alex.bennee@linaro.org>
+In-Reply-To: <20250108121054.1126164-24-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: nyna2-XLQOpTZeQ1nfrrEkdkCouDvZOpqSqjA5HDK4c_1736345776
+X-Mimecast-MFC-PROC-ID: dtXbtkqGmxvl7pirZHXDHmkDzT_O9i_oTu2PzlqnW_o_1736345883
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: Ih1fwCZDsCLx
+X-TUID: 5B3C6jB5CGQA
 
 On 08/01/2025 13.10, Alex Bennée wrote:
-> The set_machine and require_accelerator steps can bail early so move
-> those to the front of the test functions. While we are at it also
-> clean up some long lines when adding the vm arguments.
+> Now that we have virtio-gpu Vulkan support, let's add a test for it.
+> Currently this is using images build by buildroot:
+> 
+>    https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   tests/functional/test_aarch64_virt.py | 11 +++++++----
->   1 file changed, 7 insertions(+), 4 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>

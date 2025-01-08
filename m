@@ -1,99 +1,98 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp874840njb;
-        Wed, 8 Jan 2025 06:18:06 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFB4e6ScJMtTOT+Kh8LBTrwhqgOiA8HuSIJ+IpnbSOzfnxhH0La994f1S+qTfxJc+HLPMOv
-X-Received: by 2002:a05:6a00:139b:b0:727:3c37:d5f9 with SMTP id d2e1a72fcca58-72d22017c48mr4733361b3a.26.1736345885742;
-        Wed, 08 Jan 2025 06:18:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736345885; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp878463njb;
+        Wed, 8 Jan 2025 06:23:43 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IErgp/GF//py4CVKQrf+ZxUe5M3vWKUOA19Jj9ZJndsy05ICWbu/OyukQ12MINyGMamrgqh
+X-Received: by 2002:a05:6102:2b89:b0:4b2:5ecf:d124 with SMTP id ada2fe7eead31-4b3d0dc0500mr2464778137.14.1736346222952;
+        Wed, 08 Jan 2025 06:23:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736346222; cv=none;
         d=google.com; s=arc-20240605;
-        b=dg8tdDZez3RvgwgIg3dMGpmi3yJPJ9cDWiJzXcqG3NogYWb42sWFG+S4RIXr0rgOTD
-         bD3SFu9MTrKLMR1yOg0FpGLBiTAG/nvEuLEBwsbVDLhUMzDzREGtwCrOL+n8gxv+Sh2l
-         Qw64Yd3oiFxTggVukBEpTpKPH63RYm2hpMNU2AePTqnhptSixDqATp9hZKQhbefcTD3x
-         u45U1O7qP5TZBD2io6xiTdJuzYDeMCgxT9nZohwGTf8HVGu/gJ4YUnFkR3EMBNQsKJB2
-         TNVWlgMNj2rB/IAywF0qDfNQRYLIPd7kCa6jZti9aJfaitHG/TNFOj+HsSTvMwSL5kif
-         0Jrw==
+        b=a2aQCLHk6b0qcWw0Qr3u0IkgNBd5q7+PfQRygwPGl09Kt3d2YEgA4rOKWg3yi6Se0m
+         tr8dsgHKhiRadaygWm2JCpWALDnjvdEm7gbN1rYrWv+ZHZIR6luXzc3WEvL36d/VHGHj
+         +9dT+v2tjsIk0OeAE9JUYgoGMFtkjBUtdApGlsi7rr4fGPiwu1o0EJlsmZQIC8eXBATS
+         gravZibuuKZ2XMKaL0EMyToB9kQ3qkLdQK9Rqo6TB7jiNZdjT7XH7wK1+Q5WdVCrmpjz
+         hN1hJeQM4wMoWKWtAjqvjpY5Lqkn6klI6YIVCbkOnCTCxS+V9TwzGpPwdxyrR3fohLtT
+         Cehg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=hK4LrgKn65rt4FxRBXkhzcS4+wwIGd9OIjYn7nxkKJA=;
+        bh=K8lISznkSsY7JYLY+0cSfE3/Spssu6TIycJ1SVGaqA0=;
         fh=etlUlT9YTuxLNCn9a37I+Y2rZfaCHvtJEafpa9OIIos=;
-        b=I1rZjv8UKPrykzIckw9ztOEBm0EKEz2nt1Zcnf3pBEP3TNBp8okYcNr+Mqj/kmYl39
-         50ibwDoYXcbB8jswPTVv5uJQF1Vy1PI9K/fVvE/YiAgdfcxrWByvTK1cMgauzoNQ7ZqN
-         a/UNQuu7dmr99HeOboCeZDJ0ivnItJ5kLNVJNx/i2TT7qAXSJrVDvI/gilq4bEDTrTS0
-         97V2wEdy3sA/MY+9xjVSxYPW95rlKn8GUHBoXe4/F6VpoUVR/h8cg1EVTmsacmW29bFH
-         tPZZwwOMo2U8VQ9gdocZW17RNpw/7RnE2NRh01/8esrdJOd9MTguennMkcy/UwrrhPhg
-         mK/Q==;
+        b=UEn7A6KDEmAYzWrB/0mZt3chFhpEqp6eK/jc+nSFv8lyVarXevhR6qSNd4sLPH3tXs
+         PbHwUHmfsovWA3Rpf/JKG4qCMoFvIagte3z/OkS54vVIJEAdj9c9Pq9Bfw7AJmXb/35s
+         S9XzZ8yDwgevLqWhntbA1oV1Fq56IWX0gUKfMRlzf5a4GzjSI1MiyqHDSi5Byo5dpmrL
+         B3s41DlQcS2AOG7Ywyf3n9b2hkVsv9TEZx6FMxvYTX9R2NI3K/E+pQI2id4yL2vMhAON
+         dI1369F5T3EWeb3UcU6vkarKld23n1rGW4go6RW7vStPzodfoeLJV2L8yzPfRH12X9Cp
+         fpAQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hfGu9DcA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="T7dgWD/E";
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-72d0fcde8cdsi5056551b3a.335.2025.01.08.06.18.05
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b2bf9ab84csi10509368137.178.2025.01.08.06.23.42
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jan 2025 06:18:05 -0800 (PST)
+        Wed, 08 Jan 2025 06:23:42 -0800 (PST)
 Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hfGu9DcA;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="T7dgWD/E";
        spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1736345884;
+	s=mimecast20190719; t=1736346222;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=hK4LrgKn65rt4FxRBXkhzcS4+wwIGd9OIjYn7nxkKJA=;
-	b=hfGu9DcADP5O6MeJD2h4lzzoRHtlXCvplN67uM2c4WGYWnuq3lQ64xVUPBr8CRWxgFjPgx
-	F+Jmn5RJrzfA60sAUSGoaJp8ud67zLYKvJLKeriCw27B6M5IsLebobpmdUmTQ3i9LHUAKg
-	pE2viCRJiLrZrYlGefefJnN1r6poR+Y=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=K8lISznkSsY7JYLY+0cSfE3/Spssu6TIycJ1SVGaqA0=;
+	b=T7dgWD/EiOMat/A4sY5++JPVB3h49sYWVCHlTctOzmHzovsjUgyCZupVv8ogXRMlirscC2
+	/y9lYlwnwD4prmNvydgaMaVuGQkjSI6IzKIsIPN4I+2HzCSZx9KQDxyDOHqFbosMAlhHCg
+	wPs+j35FYfLMAqhTfT7a7NMFBQ6GfbA=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-596-fXt3U22xM0-wB6Q58eqwug-1; Wed, 08 Jan 2025 09:18:03 -0500
-X-MC-Unique: fXt3U22xM0-wB6Q58eqwug-1
-X-Mimecast-MFC-AGG-ID: fXt3U22xM0-wB6Q58eqwug
-Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-7b6f274f1f9so2666247785a.3
-        for <alex.bennee@linaro.org>; Wed, 08 Jan 2025 06:18:03 -0800 (PST)
+ us-mta-374-XJY2KJgqMPaEaMUSKn0PjA-1; Wed, 08 Jan 2025 09:23:41 -0500
+X-MC-Unique: XJY2KJgqMPaEaMUSKn0PjA-1
+X-Mimecast-MFC-AGG-ID: XJY2KJgqMPaEaMUSKn0PjA
+Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-6d8edc021f9so278823236d6.3
+        for <alex.bennee@linaro.org>; Wed, 08 Jan 2025 06:23:41 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736345883; x=1736950683;
+        d=1e100.net; s=20230601; t=1736346220; x=1736951020;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=hK4LrgKn65rt4FxRBXkhzcS4+wwIGd9OIjYn7nxkKJA=;
-        b=paJv0MaHaj5qRqgqzc+laYuVZAySSnqNR5Kh/k6aWsBtwMW3gyQ8RioIboUIZ1H5i9
-         NOdCDSWprACO96mXyW+Huzkuspah3RjdH7I9aEptkgpkVnd9U4d64AbLCpddcIJ59Lsu
-         de+CLvYTnBhCy6y4ZpZCNBYq7rIkLslCDBr6u8h6aBChg/1Xy3nqxugP6Nn3X7hURB4u
-         RCfo+gASllcl69RkWqkckNYa90KYZbsFu7ewnHQcfk/GAaW2eO0lNBxub2Nzuk+ghSRp
-         SUKNR5lOS1A0K2++wJAocuurZ8G638/MK+SP0ZSp5eFTi10d4eAz+plWLayLSGdrUVay
-         MPJA==
-X-Gm-Message-State: AOJu0YxWXVkenc0k3wcg+ipyX4UhhF1yu176WAEvdXMjIbhHAdJO0e8D
-	JK6K/wMDRTDQiEFoUyMGv2cLEnxEa4UBo504C46BoGN8cQGI/gZLiIBjLRRutDW+hTgrRbMCJWE
-	B7SG35Sb4OcH+HFlwZ0aEFJxmfGZSj7orGdbBPvPADCyylL9557wQlln3LXEkgbzBdhREbhPZMB
-	YObX0Dui/cbh7L4vY3lQcKikYzByAs/1rvJg==
-X-Gm-Gg: ASbGncujIgkcVMaCqdH8YAcpHIyNYM4uhHg2tfvlFEruVVtcV/Sf3Pvr5LjKFHSaQ0y
-	PAMy9Xtrdr4g2Jf8K/Eg4oJoAPqSNrJsWNdTyJRwdsMud+ZSw+0nBQ+DL+Rd6DZywTb2UjOpi6f
-	s35XcpaY56uSpU8ipYGbaWX2Lks/HFmZuSklpKugNEUEm1hGoMKpmH+Tu8jAqFetR5BkgoEpOiG
-	tCDSkXpAlfEwhSYAd6m9IuzGSU6cjzCQm3WivhmJxLnscUFGMIs3zPR9DJsF9Rtp38ELVw3VY5s
-	1LUmDg==
-X-Received: by 2002:a05:620a:40c2:b0:7b6:d089:2757 with SMTP id af79cd13be357-7bcd977ebb5mr421006385a.35.1736345883157;
-        Wed, 08 Jan 2025 06:18:03 -0800 (PST)
-X-Received: by 2002:a05:620a:40c2:b0:7b6:d089:2757 with SMTP id af79cd13be357-7bcd977ebb5mr420995785a.35.1736345882470;
-        Wed, 08 Jan 2025 06:18:02 -0800 (PST)
+        bh=K8lISznkSsY7JYLY+0cSfE3/Spssu6TIycJ1SVGaqA0=;
+        b=G93hzEABFS+Hs/y33z8GChDvINVCPnf1kutRray9n2nnrEiEc6YkFp83eu4vGca/fp
+         w7NcJuUAmo7sIkG4CnCtBN63GJaf21hBwWorFHgn6SbwiTjZpzKdA/YwU0zuuHhST3u2
+         7ZYYTTvNBNV76rh6QfUQxICOWFJhf03GclHzeQh1Moy3PaVIonmQ/yXGjV84b+62TBtZ
+         4w3f5vnQHtOSxZC+dAWE4hh2gRl8SDcZPCTzNFEZ5Xs8HhN6VQI4LPpkkN3KaCs/MXcz
+         dx63Fs81ZsaLFxTnDDo0iz+H9NwaWhw1vQx71X302inA2G/Tr4CiVD18IMFbK9vU0PK8
+         6jaA==
+X-Gm-Message-State: AOJu0YzvLE0hRhelAhxcnI7Khwjq8rTymEiiIG5GJNW3qOZ59Szi7wze
+	9XTYhM1lovJEoEkU07jQUQA5IhKrZ7fWDIjOSoeyj5LUPWe6WcdbYIm52b+Z5ZMIdWfl9HUV4Bo
+	puhlDX7klxmoL80zkv/cPafs4UlWOrr8fo+Xrpjf2EuCmM979dXKyJfsCA7tAHHjKRHNgeBpzQs
+	SvVhhg03fRYHX+mt+ZEPB4K35sGIvKoPh+Ew==
+X-Gm-Gg: ASbGncs5BYkxIYNSK/4bYbzLWPZja3BKfUv+LBtaOmPfyHk1p7W66M4PNhvPXR4T5YD
+	V/X8wL8XBKuH0zGmTuM+om/aVJv0emGXHfIRJgVcaNf7cias+Op4EImbS30pAHZWHPJ7NrhTtUs
+	CwEtT02WZdhHa86tzL78EjcAtlCulV78Gwr9jWV2d0HkyFciQL8bzr6l4O43ZwEFyIx8kpsX2HH
+	S1d/hGS14l8iGidvj2jSulkgF/zPp91EqYWr6wQKJxainY5A7b4X+inmHvRBfH1Mq6VZhgR1AoR
+	lw0CQw==
+X-Received: by 2002:a05:6214:21eb:b0:6d4:215d:91b9 with SMTP id 6a1803df08f44-6df9b2384bemr49512606d6.11.1736346220717;
+        Wed, 08 Jan 2025 06:23:40 -0800 (PST)
+X-Received: by 2002:a05:6214:21eb:b0:6d4:215d:91b9 with SMTP id 6a1803df08f44-6df9b2384bemr49511676d6.11.1736346220188;
+        Wed, 08 Jan 2025 06:23:40 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [10.33.192.228] (nat-pool-str-t.redhat.com. [149.14.88.106])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-7b9ac2bc86asm1680338485a.16.2025.01.08.06.17.57
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6dd181d3db8sm190818236d6.104.2025.01.08.06.23.34
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Jan 2025 06:18:02 -0800 (PST)
-Message-ID: <57364176-49ca-4fd4-a935-133066abdfeb@redhat.com>
-Date: Wed, 8 Jan 2025 15:17:56 +0100
+        Wed, 08 Jan 2025 06:23:39 -0800 (PST)
+Message-ID: <fc682b87-faef-493a-9edc-e83e7fb1fc5c@redhat.com>
+Date: Wed, 8 Jan 2025 15:23:34 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 23/32] tests/functional: extend test_aarch64_virt with
- vulkan test
+Subject: Re: [PATCH v4 28/32] tests/vm: partially un-tabify help output
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>, Aurelien Jarno <aurelien@aurel32.net>,
@@ -127,7 +126,7 @@ Cc: Halil Pasic <pasic@linux.ibm.com>, Aurelien Jarno <aurelien@aurel32.net>,
  Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
  <peter.maydell@linaro.org>, Li-Wen Hsu <lwhsu@freebsd.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
- <20250108121054.1126164-24-alex.bennee@linaro.org>
+ <20250108121054.1126164-29-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -171,21 +170,23 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250108121054.1126164-24-alex.bennee@linaro.org>
+In-Reply-To: <20250108121054.1126164-29-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: dtXbtkqGmxvl7pirZHXDHmkDzT_O9i_oTu2PzlqnW_o_1736345883
+X-Mimecast-MFC-PROC-ID: yDfwituQYFByZl9OTCLjVYOzoNWRdVYLagd_9jB4-dY_1736346220
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: 5B3C6jB5CGQA
+X-TUID: 29MopLZSBKlF
 
 On 08/01/2025 13.10, Alex Bennée wrote:
-> Now that we have virtio-gpu Vulkan support, let's add a test for it.
-> Currently this is using images build by buildroot:
-> 
->    https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
+> While the make syntax itself uses tabs having a mixture of tabs and
+> spaces in the vm-help output make no sense and confuses things lining
+> up between terminal and editor. Fix that.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   tests/vm/Makefile.include | 26 +++++++++++++-------------
+>   1 file changed, 13 insertions(+), 13 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>

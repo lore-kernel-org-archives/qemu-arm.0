@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aae8be914f5sm2279652066b.180.2025.01.08.04.10.59
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aac0f012229sm2483312966b.133.2025.01.08.04.11.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 08 Jan 2025 04:11:02 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 2764C5FB53;
+	by draig.lan (Postfix) with ESMTP id 3F3BF5FB57;
 	Wed,  8 Jan 2025 12:10:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -53,74 +53,93 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Li-Wen Hsu <lwhsu@freebsd.org>
-Subject: [PATCH v4 16/32] tests/qtest: remove clock_steps from virtio tests
-Date: Wed,  8 Jan 2025 12:10:38 +0000
-Message-Id: <20250108121054.1126164-17-alex.bennee@linaro.org>
+Subject: [PATCH v4 17/32] system/qtest: properly feedback results of clock_[step|set]
+Date: Wed,  8 Jan 2025 12:10:39 +0000
+Message-Id: <20250108121054.1126164-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ACS9v61hQJiV
+X-TUID: AwJNzVWxyYhZ
 
-In the qtest environment time will not step forward if the system is
-paused (timers disabled) or we have no timer events to fire. As a
-result VirtIO events are responded to directly and we don't need to
-step time forward.
+Time will not advance if the system is paused or there are no timer
+events set for the future. In absence of pending timer events
+advancing time would make no difference the system state. Attempting
+to do so would be a bug and the test or device under test would need
+fixing.
 
-We still do timeout processing to handle the fact the target QEMU may
-not be ready to respond right away. This will usually be due to a slow
-CI system or if QEMU is running under something like rr.
-
-Future qtest patches will assert that time actually changes when a
-step is requested.
+Tighten up the result reporting to `FAIL` if time was not advanced.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Fabiano Rosas <farosas@suse.de>
-
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2687
 ---
-v2
-  - s/with/when/
-  - drop clock_step entirely
----
- tests/qtest/libqos/virtio.c | 4 ----
- 1 file changed, 4 deletions(-)
+ system/qtest.c | 23 ++++++++++++++---------
+ 1 file changed, 14 insertions(+), 9 deletions(-)
 
-diff --git a/tests/qtest/libqos/virtio.c b/tests/qtest/libqos/virtio.c
-index a21b6eee9c..2e7979652f 100644
---- a/tests/qtest/libqos/virtio.c
-+++ b/tests/qtest/libqos/virtio.c
-@@ -170,7 +170,6 @@ void qvirtio_wait_queue_isr(QTestState *qts, QVirtioDevice *d,
-     gint64 start_time = g_get_monotonic_time();
- 
-     for (;;) {
--        qtest_clock_step(qts, 100);
-         if (d->bus->get_queue_isr_status(d, vq)) {
-             return;
+diff --git a/system/qtest.c b/system/qtest.c
+index 99ef2042f6..e68ed0f2a8 100644
+--- a/system/qtest.c
++++ b/system/qtest.c
+@@ -78,6 +78,11 @@ static void *qtest_server_send_opaque;
+  * let you adjust the value of the clock (monotonically).  All the commands
+  * return the current value of the clock in nanoseconds.
+  *
++ * If the commands FAIL then time wasn't advanced which is likely
++ * because the machine was in a paused state or no timer events exist
++ * in the future. This will cause qtest to abort and the test will
++ * need to check its assumptions.
++ *
+  * .. code-block:: none
+  *
+  *  > clock_step
+@@ -710,7 +715,8 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             qtest_sendf(chr, "OK little\n");
          }
-@@ -192,7 +191,6 @@ uint8_t qvirtio_wait_status_byte_no_isr(QTestState *qts, QVirtioDevice *d,
-     uint8_t val;
+     } else if (qtest_enabled() && strcmp(words[0], "clock_step") == 0) {
+-        int64_t ns;
++        int64_t old_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        int64_t ns, new_ns;
  
-     while ((val = qtest_readb(qts, addr)) == 0xff) {
--        qtest_clock_step(qts, 100);
-         g_assert(!d->bus->get_queue_isr_status(d, vq));
-         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
-     }
-@@ -219,14 +217,12 @@ void qvirtio_wait_used_elem(QTestState *qts, QVirtioDevice *d,
-     for (;;) {
-         uint32_t got_desc_idx;
- 
--        qtest_clock_step(qts, 100);
- 
-         if (d->bus->get_queue_isr_status(d, vq) &&
-             qvirtqueue_get_buf(qts, vq, &got_desc_idx, len)) {
-             g_assert_cmpint(got_desc_idx, ==, desc_idx);
-             return;
+         if (words[1]) {
+             int ret = qemu_strtoi64(words[1], NULL, 0, &ns);
+@@ -719,11 +725,10 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             ns = qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
+                                             QEMU_TIMER_ATTR_ALL);
          }
--
-         g_assert(g_get_monotonic_time() - start_time <= timeout_us);
-     }
- }
+-        qemu_clock_advance_virtual_time(
+-            qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
++        new_ns = qemu_clock_advance_virtual_time(old_ns + ns);
+         qtest_send_prefix(chr);
+-        qtest_sendf(chr, "OK %"PRIi64"\n",
+-                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
++        qtest_sendf(chr, "%s %"PRIi64"\n",
++                    new_ns > old_ns ? "OK" : "FAIL", new_ns);
+     } else if (strcmp(words[0], "module_load") == 0) {
+         Error *local_err = NULL;
+         int rv;
+@@ -740,16 +745,16 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+             qtest_sendf(chr, "FAIL\n");
+         }
+     } else if (qtest_enabled() && strcmp(words[0], "clock_set") == 0) {
+-        int64_t ns;
++        int64_t ns, new_ns;
+         int ret;
+ 
+         g_assert(words[1]);
+         ret = qemu_strtoi64(words[1], NULL, 0, &ns);
+         g_assert(ret == 0);
+-        qemu_clock_advance_virtual_time(ns);
++        new_ns = qemu_clock_advance_virtual_time(ns);
+         qtest_send_prefix(chr);
+-        qtest_sendf(chr, "OK %"PRIi64"\n",
+-                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
++        qtest_sendf(chr, "%s %"PRIi64"\n",
++                    new_ns == ns ? "OK" : "FAIL", new_ns);
+     } else if (process_command_cb && process_command_cb(chr, words)) {
+         /* Command got consumed by the callback handler */
+     } else {
 -- 
 2.39.5

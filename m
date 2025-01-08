@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d80678c5a4sm25056881a12.38.2025.01.08.04.11.05
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436e2e21e1esm19018945e9.38.2025.01.08.04.18.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jan 2025 04:11:08 -0800 (PST)
+        Wed, 08 Jan 2025 04:18:02 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 86EC960132;
-	Wed,  8 Jan 2025 12:10:57 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 878CA5FBC2;
+	Wed,  8 Jan 2025 12:10:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>,
@@ -53,82 +53,46 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Li-Wen Hsu <lwhsu@freebsd.org>
-Subject: [PATCH v4 30/32] pc-bios: ensure keymaps dependencies set vnc tests
-Date: Wed,  8 Jan 2025 12:10:52 +0000
-Message-Id: <20250108121054.1126164-31-alex.bennee@linaro.org>
+Subject: [PATCH v4 20/32] tests/functional: update tuxruntest to use uncompress utility
+Date: Wed,  8 Jan 2025 12:10:42 +0000
+Message-Id: <20250108121054.1126164-21-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: mJKUGp0Sfsvo
+X-TUID: reZPsmplocLy
 
-I was seeing failures on vnc-display-test on FreeBSD:
-
-  make vm-build-freebsd V=1 TARGET_LIST=aarch64-softmmu BUILD_TARGET=check-qtest QEMU_LOCAL=1 DEBUG=1
-
-Leads to:
-
-  qemu-system-aarch64: -vnc none: could not read keymap file: 'en-us'
-  Broken pipe
-  ../src/tests/qtest/libqtest.c:196: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
-
-which was as far as I could tell because we don't populate the
-$BLD/pc-bios/keymaps (although something attempts to symlink
-qemu-bundle/usr/local/share/qemu/keymaps/ to that dir).
+Use the utility functions to reduce code duplication.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- pc-bios/keymaps/meson.build | 17 ++++++++---------
- tests/qtest/meson.build     |  2 +-
- 2 files changed, 9 insertions(+), 10 deletions(-)
+ tests/functional/qemu_test/tuxruntest.py | 12 +-----------
+ 1 file changed, 1 insertion(+), 11 deletions(-)
 
-diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
-index 0bd8ce0077..a79a09b276 100644
---- a/pc-bios/keymaps/meson.build
-+++ b/pc-bios/keymaps/meson.build
-@@ -39,19 +39,18 @@ else
-   native_qemu_keymap = qemu_keymap
- endif
- 
-+keymap_targets = []
- if native_qemu_keymap.found()
--  t = []
-   foreach km, args: keymaps
-     # generate with qemu-kvm
--    t += custom_target(km,
--                       build_by_default: true,
--                       output: km,
--                       command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
--                       install: have_system,
--                       install_dir: qemu_datadir / 'keymaps')
-+    keymap_targets += custom_target(km,
-+                                    build_by_default: true,
-+                                    output: km,
-+                                    command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
-+                                    install: have_system,
-+                                    install_dir: qemu_datadir / 'keymaps')
-   endforeach
+diff --git a/tests/functional/qemu_test/tuxruntest.py b/tests/functional/qemu_test/tuxruntest.py
+index 7227a83757..41a4945a14 100644
+--- a/tests/functional/qemu_test/tuxruntest.py
++++ b/tests/functional/qemu_test/tuxruntest.py
+@@ -73,17 +73,7 @@ def fetch_tuxrun_assets(self, kernel_asset, rootfs_asset, dtb_asset=None):
+         Fetch the TuxBoot assets.
+         """
+         kernel_image =  kernel_asset.fetch()
+-        disk_image_zst = rootfs_asset.fetch()
 -
--  alias_target('update-keymaps', t)
-+  alias_target('update-keymaps', keymap_targets)
- else
-   install_data(keymaps.keys(), install_dir: qemu_datadir / 'keymaps')
- endif
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index c5a70021c5..f75c1057a4 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -383,7 +383,7 @@ qtests = {
- if vnc.found()
-   gvnc = dependency('gvnc-1.0', method: 'pkg-config', required: false)
-   if gvnc.found()
--    qtests += {'vnc-display-test': [gvnc]}
-+    qtests += {'vnc-display-test': [gvnc, keymap_targets]}
-     qtests_generic += [ 'vnc-display-test' ]
-   endif
- endif
+-        disk_image = self.scratch_file("rootfs.ext4")
+-
+-        check_call(['zstd', "-f", "-d", disk_image_zst,
+-                    "-o", disk_image],
+-                   stdout=DEVNULL, stderr=DEVNULL)
+-        # zstd copies source archive permissions for the output
+-        # file, so must make this writable for QEMU
+-        os.chmod(disk_image, stat.S_IRUSR | stat.S_IWUSR)
+-
++        disk_image = self.uncompress(rootfs_asset)
+         dtb = dtb_asset.fetch() if dtb_asset is not None else None
+ 
+         return (kernel_image, disk_image, dtb)
 -- 
 2.39.5

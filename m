@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436e2da6336sm19067545e9.8.2025.01.08.04.18.04
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a75a47943sm6642217f8f.87.2025.01.08.04.18.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 08 Jan 2025 04:18:05 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id E3FBB5FC6C;
+	by draig.lan (Postfix) with ESMTP id 6FD665FBAC;
 	Wed,  8 Jan 2025 12:10:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -53,61 +53,91 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Li-Wen Hsu <lwhsu@freebsd.org>
-Subject: [PATCH v4 24/32] tests/lcitool: bump to latest version of libvirt-ci
-Date: Wed,  8 Jan 2025 12:10:46 +0000
-Message-Id: <20250108121054.1126164-25-alex.bennee@linaro.org>
+Subject: [PATCH v4 19/32] tests/functional: add zstd support to uncompress utility
+Date: Wed,  8 Jan 2025 12:10:41 +0000
+Message-Id: <20250108121054.1126164-20-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Q66lPm0qADkT
+X-TUID: Dy0+keZe+uQe
 
-We will shortly need this to build our riscv64 cross container.
-However to keep the delta down just do the bump first. As ccache4 is
-now preferred for FreeBSD to get the latest version there is a little
-update in the FreeBSD metadata.
+Rather than using the python library (which has a different API
+anyway) lets just call the binary. zstdtools is already in out
+qemu.yml so all test containers should have it around. Tests should
+still use @skipIfMissingCommands('zstd') to gracefully handle when
+only minimal dependencies have been installed.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
----
- .gitlab-ci.d/cirrus/freebsd-14.vars | 2 +-
- tests/lcitool/libvirt-ci            | 2 +-
- tests/vm/generated/freebsd.json     | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/.gitlab-ci.d/cirrus/freebsd-14.vars b/.gitlab-ci.d/cirrus/freebsd-14.vars
-index 0a7ac5e0e1..0997c47af5 100644
---- a/.gitlab-ci.d/cirrus/freebsd-14.vars
-+++ b/.gitlab-ci.d/cirrus/freebsd-14.vars
-@@ -11,6 +11,6 @@ MAKE='/usr/local/bin/gmake'
- NINJA='/usr/local/bin/ninja'
- PACKAGING_COMMAND='pkg'
- PIP3='/usr/local/bin/pip'
--PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk-vnc gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson mtools ncurses nettle ninja opencv pixman pkgconf png py311-numpy py311-pillow py311-pip py311-pyyaml py311-sphinx py311-sphinx_rtd_theme py311-tomli python3 rpm2cpio rust rust-bindgen-cli sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 xorriso zstd'
-+PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache4 cmocka ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk-vnc gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson mtools ncurses nettle ninja opencv pixman pkgconf png py311-numpy py311-pillow py311-pip py311-pyyaml py311-sphinx py311-sphinx_rtd_theme py311-tomli python3 rpm2cpio rust rust-bindgen-cli sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 xorriso zstd'
- PYPI_PKGS=''
- PYTHON='/usr/local/bin/python3'
-diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
-index 9ad3f70bde..b6a65806bc 160000
---- a/tests/lcitool/libvirt-ci
-+++ b/tests/lcitool/libvirt-ci
-@@ -1 +1 @@
--Subproject commit 9ad3f70bde9865d5ad18f36d256d472e72b5cbf3
-+Subproject commit b6a65806bc9b2b56985f5e97c936b77c7e7a99fc
-diff --git a/tests/vm/generated/freebsd.json b/tests/vm/generated/freebsd.json
-index 3cb7fb7060..81fc38d798 100644
---- a/tests/vm/generated/freebsd.json
-+++ b/tests/vm/generated/freebsd.json
-@@ -13,7 +13,7 @@
-     "bzip2",
-     "ca_root_nss",
-     "capstone4",
--    "ccache",
-+    "ccache4",
-     "cmocka",
-     "ctags",
-     "curl",
+---
+v4
+  - add chmod step to helper
+  - also handle .zst extension
+---
+ tests/functional/qemu_test/uncompress.py | 26 ++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/tests/functional/qemu_test/uncompress.py b/tests/functional/qemu_test/uncompress.py
+index 6d02ded066..911d74ec23 100644
+--- a/tests/functional/qemu_test/uncompress.py
++++ b/tests/functional/qemu_test/uncompress.py
+@@ -10,8 +10,10 @@
+ import gzip
+ import lzma
+ import os
++import stat
+ import shutil
+ from urllib.parse import urlparse
++from subprocess import check_call, CalledProcessError
+ 
+ from .asset import Asset
+ 
+@@ -38,6 +40,24 @@ def lzma_uncompress(xz_path, output_path):
+             os.remove(output_path)
+             raise
+ 
++
++def zstd_uncompress(zstd_path, output_path):
++    if os.path.exists(output_path):
++        return
++
++    try:
++        check_call(['zstd', "-f", "-d", zstd_path,
++                    "-o", output_path])
++    except CalledProcessError as e:
++        os.remove(output_path)
++        raise Exception(
++            f"Unable to decompress zstd file {zstd_path} with {e}") from e
++
++    # zstd copies source archive permissions for the output
++    # file, so must make this writable for QEMU
++    os.chmod(output_path, stat.S_IRUSR | stat.S_IWUSR)
++
++
+ '''
+ @params compressed: filename, Asset, or file-like object to uncompress
+ @params uncompressed: filename to uncompress into
+@@ -59,6 +79,8 @@ def uncompress(compressed, uncompressed, format=None):
+         lzma_uncompress(str(compressed), uncompressed)
+     elif format == "gz":
+         gzip_uncompress(str(compressed), uncompressed)
++    elif format == "zstd":
++        zstd_uncompress(str(compressed), uncompressed)
+     else:
+         raise Exception(f"Unknown compression format {format}")
+ 
+@@ -79,5 +101,9 @@ def guess_uncompress_format(compressed):
+         return "xz"
+     elif ext == ".gz":
+         return "gz"
++    elif ext == ".zstd":
++        return "zstd"
++    elif ext == ".zst":
++        return "zstd"
+     else:
+         raise Exception(f"Unknown compression format for {compressed}")
 -- 
 2.39.5

@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d806fed4e1sm26068538a12.70.2025.01.08.04.11.03
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d80678c5a4sm25056881a12.38.2025.01.08.04.11.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 08 Jan 2025 04:11:08 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id CBD195F8AC;
-	Wed,  8 Jan 2025 12:10:56 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 86EC960132;
+	Wed,  8 Jan 2025 12:10:57 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Halil Pasic <pasic@linux.ibm.com>,
@@ -53,136 +53,82 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	Li-Wen Hsu <lwhsu@freebsd.org>
-Subject: [PATCH v4 23/32] tests/functional: extend test_aarch64_virt with vulkan test
-Date: Wed,  8 Jan 2025 12:10:45 +0000
-Message-Id: <20250108121054.1126164-24-alex.bennee@linaro.org>
+Subject: [PATCH v4 30/32] pc-bios: ensure keymaps dependencies set vnc tests
+Date: Wed,  8 Jan 2025 12:10:52 +0000
+Message-Id: <20250108121054.1126164-31-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: TQjWE0KFx8Pg
+X-TUID: mJKUGp0Sfsvo
 
-Now that we have virtio-gpu Vulkan support, let's add a test for it.
-Currently this is using images build by buildroot:
+I was seeing failures on vnc-display-test on FreeBSD:
 
-  https://lists.buildroot.org/pipermail/buildroot/2024-December/768196.html
+  make vm-build-freebsd V=1 TARGET_LIST=aarch64-softmmu BUILD_TARGET=check-qtest QEMU_LOCAL=1 DEBUG=1
+
+Leads to:
+
+  qemu-system-aarch64: -vnc none: could not read keymap file: 'en-us'
+  Broken pipe
+  ../src/tests/qtest/libqtest.c:196: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+
+which was as far as I could tell because we don't populate the
+$BLD/pc-bios/keymaps (although something attempts to symlink
+qemu-bundle/usr/local/share/qemu/keymaps/ to that dir).
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
-v2
-  - use decorator for has_cmd(zstd)
-  - un-handled->unhandled
-  - drop extra - from --snapshot
-  - drop unneeded virtualization=on
-  - only show 1s of each scene
-  - fix long lines
-v3
-  - move set_machine/require_accelerator to top of test
-  - use uncompress utility function
-  - remove extra ()'s from ASSETS
-v4
-  - split misc fixups into earlier commits
-  - don't swallow leading newlines before class
-  - fixup commit message
----
- tests/functional/test_aarch64_virt.py | 74 ++++++++++++++++++++++++++-
- 1 file changed, 72 insertions(+), 2 deletions(-)
+ pc-bios/keymaps/meson.build | 17 ++++++++---------
+ tests/qtest/meson.build     |  2 +-
+ 2 files changed, 9 insertions(+), 10 deletions(-)
 
-diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
-index 201c5ed023..6b2336a28d 100755
---- a/tests/functional/test_aarch64_virt.py
-+++ b/tests/functional/test_aarch64_virt.py
-@@ -13,10 +13,12 @@
- import logging
- from subprocess import check_call, DEVNULL
+diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
+index 0bd8ce0077..a79a09b276 100644
+--- a/pc-bios/keymaps/meson.build
++++ b/pc-bios/keymaps/meson.build
+@@ -39,19 +39,18 @@ else
+   native_qemu_keymap = qemu_keymap
+ endif
  
-+from qemu.machine.machine import VMLaunchFailure
-+
- from qemu_test import QemuSystemTest, Asset
--from qemu_test import exec_command_and_wait_for_pattern
-+from qemu_test import exec_command, exec_command_and_wait_for_pattern
- from qemu_test import wait_for_console_pattern
--from qemu_test import get_qemu_img
-+from qemu_test import skipIfMissingCommands, get_qemu_img
- 
- 
- class Aarch64VirtMachine(QemuSystemTest):
-@@ -132,5 +134,73 @@ def test_aarch64_virt_gicv2(self):
-         self.common_aarch64_virt("virt,gic-version=2")
- 
- 
-+    ASSET_VIRT_GPU_KERNEL = Asset(
-+        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-+        'download?path=%2F&files='
-+        'Image',
-+        '89e5099d26166204cc5ca4bb6d1a11b92c217e1f82ec67e3ba363d09157462f6')
-+
-+    ASSET_VIRT_GPU_ROOTFS = Asset(
-+        'https://fileserver.linaro.org/s/ce5jXBFinPxtEdx/'
-+        'download?path=%2F&files='
-+        'rootfs.ext4.zstd',
-+        '792da7573f5dc2913ddb7c638151d4a6b2d028a4cb2afb38add513c1924bdad4')
-+
-+    @skipIfMissingCommands('zstd')
-+    def test_aarch64_virt_with_gpu(self):
-+        # This tests boots with a buildroot test image that contains
-+        # vkmark and other GPU exercising tools. We run a headless
-+        # weston that nevertheless still exercises the virtio-gpu
-+        # backend.
-+
-+        self.set_machine('virt')
-+        self.require_accelerator("tcg")
-+
-+        kernel_path = self.ASSET_VIRT_GPU_KERNEL.fetch()
-+        image_path = self.uncompress(self.ASSET_VIRT_GPU_ROOTFS, format="zstd")
-+
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'console=ttyAMA0 root=/dev/vda')
-+
-+        self.vm.add_args("-accel", "tcg")
-+        self.vm.add_args("-cpu", "neoverse-v1,pauth-impdef=on")
-+        self.vm.add_args("-machine", "virt,gic-version=max",
-+                         '-kernel', kernel_path,
-+                         '-append', kernel_command_line)
-+        self.vm.add_args("-smp", "2", "-m", "2048")
-+        self.vm.add_args("-device",
-+                         "virtio-gpu-gl-pci,hostmem=4G,blob=on,venus=on")
-+        self.vm.add_args("-display", "egl-headless")
-+        self.vm.add_args("-display", "dbus,gl=on")
-+        self.vm.add_args("-device", "virtio-blk-device,drive=hd0")
-+        self.vm.add_args("-blockdev",
-+                         "driver=raw,file.driver=file,"
-+                         "node-name=hd0,read-only=on,"
-+                         f"file.filename={image_path}")
-+        self.vm.add_args("-snapshot")
-+
-+        try:
-+            self.vm.launch()
-+        except VMLaunchFailure as excp:
-+            if "old virglrenderer, blob resources unsupported" in excp.output:
-+                self.skipTest("No blob support for virtio-gpu")
-+            elif "old virglrenderer, venus unsupported" in excp.output:
-+                self.skipTest("No venus support for virtio-gpu")
-+            else:
-+                self.log.info("unhandled launch failure: {excp.output}")
-+                raise excp
-+
-+        self.wait_for_console_pattern('buildroot login:')
-+        exec_command(self, 'root')
-+        exec_command(self, 'export XDG_RUNTIME_DIR=/tmp')
-+        exec_command_and_wait_for_pattern(self,
-+                                          "weston -B headless "
-+                                          "--renderer gl "
-+                                          "--shell kiosk "
-+                                          "-- vkmark -b:duration=1.0",
-+                                          "vkmark Score")
-+
-+
- if __name__ == '__main__':
-     QemuSystemTest.main()
++keymap_targets = []
+ if native_qemu_keymap.found()
+-  t = []
+   foreach km, args: keymaps
+     # generate with qemu-kvm
+-    t += custom_target(km,
+-                       build_by_default: true,
+-                       output: km,
+-                       command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
+-                       install: have_system,
+-                       install_dir: qemu_datadir / 'keymaps')
++    keymap_targets += custom_target(km,
++                                    build_by_default: true,
++                                    output: km,
++                                    command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
++                                    install: have_system,
++                                    install_dir: qemu_datadir / 'keymaps')
+   endforeach
+-
+-  alias_target('update-keymaps', t)
++  alias_target('update-keymaps', keymap_targets)
+ else
+   install_data(keymaps.keys(), install_dir: qemu_datadir / 'keymaps')
+ endif
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index c5a70021c5..f75c1057a4 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -383,7 +383,7 @@ qtests = {
+ if vnc.found()
+   gvnc = dependency('gvnc-1.0', method: 'pkg-config', required: false)
+   if gvnc.found()
+-    qtests += {'vnc-display-test': [gvnc]}
++    qtests += {'vnc-display-test': [gvnc, keymap_targets]}
+     qtests_generic += [ 'vnc-display-test' ]
+   endif
+ endif
 -- 
 2.39.5

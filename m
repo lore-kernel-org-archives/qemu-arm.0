@@ -1,106 +1,106 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp716169njb;
-        Wed, 8 Jan 2025 01:29:05 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV+7eTVKKNPpZ3BfWL8CNjm/IbZlsBHUkFv80FLPFGGkGfFVgsK+eJEmyNgjRXtNBM5hy4Bal5+uy6+EQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFFfybKqdMBQH2QtFG2jPxCp/62E884z1TvYt+iVJn48bOe7Ubr/8zC1mzqCDoi7K8IlgSm
-X-Received: by 2002:a05:620a:40c2:b0:7b6:d089:2757 with SMTP id af79cd13be357-7bcd977ebb5mr285433585a.35.1736328545499;
-        Wed, 08 Jan 2025 01:29:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736328545; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp716200njb;
+        Wed, 8 Jan 2025 01:29:11 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWFPWTQiGeZNT9brNpADH2ni8jESX9pqWzj6Fa62TkJ9OebO9P+QYUQdw83tFnPQCi0mDn4J2at6BS0IA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFsk4xR6sSzTUhqsROWuDdSb7j8ThBsNdsZh4qq6oA3g1Mh2hHYi4D8n/+yR+YI6tUqPh0t
+X-Received: by 2002:a05:6214:1bc7:b0:6d8:846b:cd8d with SMTP id 6a1803df08f44-6df9b2ff367mr29834436d6.30.1736328551418;
+        Wed, 08 Jan 2025 01:29:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736328551; cv=none;
         d=google.com; s=arc-20240605;
-        b=V2/MSA/brJAVQYe25KErSBFIa/DwUnwH6pNr587gcsdqAuu9C3L45vujMU8Wi0BH9Z
-         joT4G0gziXF8oeNxbNqXmve7JOQZOfZYbXQ+rhQUhIXcCi+aXtZQ3g5TRTjgVQ2Zy8Df
-         x/DxozAi/VjzbgGHd3n1i0cmyaQg06fzCyC/z1tcg4k8vspzHN/EvJFYCqomy8QeR/mx
-         Ivq3yeqtk5Q1gBP5trSUzWUn2OOk7dd5sG9K1YGAJ/0vT8SyTV+vgd6iE76aSsBhI6hi
-         spoHshojxpUvlvw6HSspKBPdjIPvR9/v8k5i3A5ODUI8sbv8RUC3qhfd/iDUkgk+0kse
-         hlCg==
+        b=TySZqGRP0lf5vFCokKz3atICFpti5Ytean0LOzq6fK7EFo0H+ntdmZlTS/VhiUaCkR
+         0yC78ZQDR7pyhVOqfzWNRZpDTQ/lWpiwrpRc/7CRyW4p23BwTSh49ZOK7ptu6T02SQol
+         Md9TUBoRQUH/sgYCqOJn3Y1ZAbBfz6VlQ01+WyaDjeW1lhF57TbGZf04DYhiRgnKIjkj
+         O1/6tbqM55VgamyxNtqWB+dys5PYx0hSOLw4ARUjlQra+4irtl6XWA/55BNTwHN0cJ0e
+         bTxi2Ic9xcIEGZXCVAtaET3oY+mFKUj6v6iZje8zqy/5r3R5y6WarK32UrGzNKXvVB4b
+         vi3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=fs6DjGCcdE+uixmXV2Su2ClqzCx3jJdPOZ1E1qUMw70=;
-        fh=XqTFcDXyBhQjKifpCzKyi/TLQ0IUpVQuQf6tkk7TJOE=;
-        b=O6Oe4mcdLHkg9cq9/DxGEwvD3X3DfdUx/rmbezCTiYbXzZ0LCa5g8f4iR2ey/1x5K4
-         0BwFhvHGQ3x9Mb/4GgSf8UgL7OlxCkCFiDjR6JbMrLMtGfXP6t4QXcvelYCWCdVC9TvL
-         gJSAyq7RfV2nZQSwtDtbU1yyy1htLwJt3wO3iy4WGtk+EoZOewSdkzKnsWXU74MRDCkl
-         aw1g6xLFlw0ZQNbQbHdRb9J2Vyd/9XoYIW23V/ymqU53Mn/MPV/Cja7w5Hqb3UcbONy5
-         NkjpzQH8pUTWQawuEGdWgoIg0LCCRrN51ycvLJiRNpfMoKt+cYBpKhohuMBnIx3hPDfP
-         ikYg==;
+        bh=y5XIWWZbGtFfQ4MTLsvT7sCPSQ8s8Yj74r5V10Of4Ng=;
+        fh=ioCrFzE82if/Nv1KFp8L4MlgZxlYpQv27FOMN9+6XC4=;
+        b=HnnXprEBb+BaEwBRL8H3b0Q8IMiMPhybuuMxVv9wyacmny6YaFocjLj9FXSsoRWO4B
+         2aMSOh1QTf4B6CTYigRWZySAlvjF4f549tH+rR9Js+jeWm3LryYbn8Dhh+W9i1+v+opL
+         efLC/9jm82yvVNTHcrhkZ5HjDJ7lKhTz+krVBL54cDIFiU5UV59XxOGCMHM4MsWRG47i
+         dSz9CYJU4/UJY78DbSYmFxAkvhqL6KXD0EBKbrTkLTWT1rSwZxuByjXoiyc3EMZj80Pr
+         cvYQjlpbMxrzEUPyDOnE4UZor8rA+qiEn2jivDQEGC/JgBnWbS47/Llvv6+mw94qMa7a
+         9J7A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HzpZ8LHp;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WrpVF1nw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7b9ac4f0b85si4759603285a.510.2025.01.08.01.29.05
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd18234060si497722586d6.226.2025.01.08.01.29.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2025 01:29:05 -0800 (PST)
+        Wed, 08 Jan 2025 01:29:11 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=HzpZ8LHp;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=WrpVF1nw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVSL0-0004Rn-F2; Wed, 08 Jan 2025 04:26:54 -0500
+	id 1tVSKw-0004OC-2Z; Wed, 08 Jan 2025 04:26:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVSKG-0003xn-2I; Wed, 08 Jan 2025 04:26:14 -0500
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ id 1tVSKK-0003y6-75; Wed, 08 Jan 2025 04:26:14 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVSKE-0004p0-Eu; Wed, 08 Jan 2025 04:26:07 -0500
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-5d3f65844deso28025980a12.0; 
- Wed, 08 Jan 2025 01:26:05 -0800 (PST)
+ id 1tVSKI-0004q7-Hb; Wed, 08 Jan 2025 04:26:11 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-5d4e2aa7ea9so31100716a12.2; 
+ Wed, 08 Jan 2025 01:26:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736328363; x=1736933163; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1736328368; x=1736933168; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=fs6DjGCcdE+uixmXV2Su2ClqzCx3jJdPOZ1E1qUMw70=;
- b=HzpZ8LHpCXR62ipeE/AxTEjvjifSOzQHr+wePIAioKKProLTMjpmrgb1rR1ZWCTdZL
- E9Eaw/Sy76LYf4PZuLy4+hiuDbg9kDr1gWXz4CCGytMUcUWfufM6IZpmDrcctEPdz+ko
- zQ6mnsLH97ohxE4CkRyW4exjgYcTsU9RIpf24DsUZuKMSF0pH+pE4Ez3x23oRoWyZq/o
- HoCDkn5xtifVJxV/kMT9XpmDnby+g0Jk2aCUttrPitth3zOWQxSdJjs0IFP1V5vx8Twi
- V1fmOKx3Z5V54e+xCg2W+gkNNHUjASRBztMwMG+UiPAPWcyutxM325xv+bbA0ULwGpAj
- iWMQ==
+ bh=y5XIWWZbGtFfQ4MTLsvT7sCPSQ8s8Yj74r5V10Of4Ng=;
+ b=WrpVF1nwocm3q7Url/4je2qzu7K93pg8drKXvh9TTOO608LdLhbKyjB13iy1X44sRX
+ ruThUaUcHnXuC2arIwmLGzDi5L/UqiEu3XXGyhed86I0VwHv2BYh23t0tmq+RNWC6olP
+ /Q3M4Gh/v64VTSwGcUMCHj3tYdIfZneAnvf1B+ZBVWr0X3ZuNU+0EaPHFwDjGLtfxEEy
+ 94Tj8pzvlhC4C1xRdADQNCpwrosm4pWvRLXqvRmOR8qX63gap84juoQkti2H0Khxtf/Z
+ TR5jzYa7oC/3DZqgd6VvO9tlQyzYvbYfWTGaxeNoJIyLTjJJuJvsyd+VutQEkON5U3cl
+ dMtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736328363; x=1736933163;
+ d=1e100.net; s=20230601; t=1736328368; x=1736933168;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=fs6DjGCcdE+uixmXV2Su2ClqzCx3jJdPOZ1E1qUMw70=;
- b=pP238RTg/seakgGYu+rk4s/VPt6tw/HrkD9krh2quFQJv0rSKcb3v4MunNHnCAr07w
- 9HaMY+KaoYfOUNkxDjGc0Eh30yLJfY8AMINhg3iACPpj9xVEaXTXaNUXva2rN0K0F6uQ
- +RccgS9sRJgdrjRs89MMApvHkmrzo7VNP+XvFyO211cXGQfWbVD691VoMrtSHM2ZNua9
- e7+hGHyVvYaxNKNCoBkkSws4dBQ16F51uL4x/gR0a/DqKdNw5RGfHc6z6EY+RWCMhq48
- UEZNDambhse0P0EacH0LfB8kAmm1mmnLZiYTNxGNrCdLCgn3hHWGb7nFSs+bWT4nNnkW
- rDKg==
+ bh=y5XIWWZbGtFfQ4MTLsvT7sCPSQ8s8Yj74r5V10Of4Ng=;
+ b=GYuNxu/013Q0ZjSF7WAFaL6GtwGfS3t1fEwmZzTR7VFO8NvXdHLZHyH4/kD0zWrcBv
+ XEB1FkaC4iZgdsDV9xIY++EcZZz/Ca3BqrZIoI1FjSAz6zU3bVvSLnu4oNJTbPPsdHTQ
+ uFcPaf6Us4srsVwpkgRlwSpwf5i6Jl+XE1WYthSOlqdHnfeanf7ba+cNQmaX7tPMrrKS
+ KFW5Fakpu9PfeIMX2rlSlB4eFfgbFEK2RjwTJqnjp8xkTfM/M0Bibm86yyqvD19Qd9tn
+ E6mv4Lsu/zdjgo86GibF9YrBF5SiFH5jZUBupXbah2YBvYPkWyU+sjw8TR9E1HQOpVJi
+ 2DmQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUY2M7WVzFAhyCgQdCak6HKEUy+b4GXJzCNyIq6M588h1FDBueyEnz6NHQoLZGY1EEdvuMhi1q3XQ==@nongnu.org,
- AJvYcCWBGJFy05IXmH8z/ezGJbljd9AJTNmEWdvoZnsie821Ut2XIMNsj/5Km3NLatgqiBNAbGUtWVP+HSGUDw==@nongnu.org
-X-Gm-Message-State: AOJu0YwCs6N/SXGiGkSpuOUsqc8/jt+tmBE7LFNdTcGP+GjUDYTmn+mB
- KLGnfSo/eW0X8rpRTS2GS4XuA4JrG0e64WbzxzInfz/LnfrSRFAeApx2nYEs
-X-Gm-Gg: ASbGnct+TVlSEPPnSh6NDdPxI+ydfNiv/+KFg8ZWQHkSlTS4vjCHmzPYU+OVnHdKW7V
- WR9b6dozu7stnH70Cq84wiU2fKvX8parzyIirOzLUWzGdYwqTzsZeaxdhvDJ/q7hRnLxsGss95s
- iZ2rGD0ymyv4Neqxo9cRl92hinFxXfIZIVP+NRItKwLtUYmeXrkbSreofLnIDDDzgvUwCNqOZxZ
- Y9yYcLul8P9OFxwF3aD5GuoPrN9cuEQoS3+MDFb2nBfjj1x7dHJFsgbKd6YCTLnRIuGrvVov+/g
- hTqHxSGEdx2/Q6HWRS68Sse4EQvCSpFl+nedavbp3wbgFzc=
-X-Received: by 2002:a05:6402:268c:b0:5d2:d72a:77e4 with SMTP id
- 4fb4d7f45d1cf-5d972e6c9b0mr1687005a12.28.1736328363114; 
- Wed, 08 Jan 2025 01:26:03 -0800 (PST)
+ AJvYcCU8d8jgTa31uc2IPaIVBcVhgjY2F4uh9Rsmhkxf2+jimP3FftjEhnjcD5dBG/lOaUlf3NAlrDN8ja06zg==@nongnu.org,
+ AJvYcCUweHQJGs43wsqUru3SOKD3L8m1WtmfeKFN85eWRizczUtm/jb6EaCael1T8QHhk01Dj4IFIHqkrg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy634PZH+3HXd8goOrqKttVoW8YQ6Oa7z31pCzSqrI0DRMuj3s8
+ 9l/Kow6apo/kAFYXWla8+6XDB3Tj5UkA4Umi55nX6j+vaeDbT4N0t5ebF4VT
+X-Gm-Gg: ASbGncsSMDY9mbxAK4+/kQ3rsHSyzSyGLRTM1/Lm1wJEgbobnjghkoxHCVvWz3gcluu
+ GUyS/aPzLdK2s0mbJj4J8u7y822R8TldvSVPCScjkZFNnjC7aKn4rk5GUTON93vweK8aAbzDD94
+ 5Doee78bqU38usTQ5HVmgQ2FOwXcaeu3nAyBRo84xo5fiRNg2355zjcViXm/vDdbtdyHwCdbn0q
+ yyIjAGn2wS5WSmMGe/Muudvuv3IfE0q4hVwj3AFF5ys/5oLywW3pKR7ga3u/WSrSEDzCl6qegZy
+ zlztqZJ5V/MUUZghmjKmWadNBgVlq/Slu0301LMYj4TD9bY=
+X-Received: by 2002:a05:6402:388a:b0:5d1:2631:b897 with SMTP id
+ 4fb4d7f45d1cf-5d972e08403mr1800015a12.14.1736328367863; 
+ Wed, 08 Jan 2025 01:26:07 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-077-188-106-228.77.188.pool.telefonica.de. [77.188.106.228])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5d806feddfasm26116096a12.58.2025.01.08.01.26.01
+ 4fb4d7f45d1cf-5d806feddfasm26116096a12.58.2025.01.08.01.26.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Jan 2025 01:26:02 -0800 (PST)
+ Wed, 08 Jan 2025 01:26:06 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
@@ -113,16 +113,16 @@ Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 10/14] hw/timer/imx_gpt: Remove unused define
-Date: Wed,  8 Jan 2025 10:25:34 +0100
-Message-ID: <20250108092538.11474-11-shentey@gmail.com>
+Subject: [PATCH 13/14] hw/misc/imx6_src: Convert DPRINTF() to trace events
+Date: Wed,  8 Jan 2025 10:25:37 +0100
+Message-ID: <20250108092538.11474-14-shentey@gmail.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250108092538.11474-1-shentey@gmail.com>
 References: <20250108092538.11474-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -144,28 +144,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: mdq5RC9B+2qS
+X-TUID: f1hNAQksNX0a
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/timer/imx_gpt.c | 4 ----
- 1 file changed, 4 deletions(-)
+ hw/misc/imx6_src.c   | 23 +++++------------------
+ hw/misc/trace-events |  6 ++++++
+ 2 files changed, 11 insertions(+), 18 deletions(-)
 
-diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
-index 2663a9d9ef..11eca9fa4d 100644
---- a/hw/timer/imx_gpt.c
-+++ b/hw/timer/imx_gpt.c
-@@ -20,10 +20,6 @@
- #include "qemu/log.h"
- #include "trace.h"
- 
--#ifndef DEBUG_IMX_GPT
--#define DEBUG_IMX_GPT 0
+diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
+index dc6a2b92ba..06cc46292e 100644
+--- a/hw/misc/imx6_src.c
++++ b/hw/misc/imx6_src.c
+@@ -17,18 +17,7 @@
+ #include "qemu/module.h"
+ #include "target/arm/arm-powerctl.h"
+ #include "hw/core/cpu.h"
+-
+-#ifndef DEBUG_IMX6_SRC
+-#define DEBUG_IMX6_SRC 0
 -#endif
 -
- static const char *imx_gpt_reg_name(uint32_t reg)
+-#define DPRINTF(fmt, args...) \
+-    do { \
+-        if (DEBUG_IMX6_SRC) { \
+-            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX6_SRC, \
+-                                             __func__, ##args); \
+-        } \
+-    } while (0)
++#include "trace.h"
+ 
+ static const char *imx6_src_reg_name(uint32_t reg)
  {
-     switch (reg) {
+@@ -87,7 +76,7 @@ static void imx6_src_reset(DeviceState *dev)
+ {
+     IMX6SRCState *s = IMX6_SRC(dev);
+ 
+-    DPRINTF("\n");
++    trace_imx6_src_reset();
+ 
+     memset(s->regs, 0, sizeof(s->regs));
+ 
+@@ -111,7 +100,7 @@ static uint64_t imx6_src_read(void *opaque, hwaddr offset, unsigned size)
+ 
+     }
+ 
+-    DPRINTF("reg[%s] => 0x%" PRIx32 "\n", imx6_src_reg_name(index), value);
++    trace_imx6_src_read(imx6_src_reg_name(index), value);
+ 
+     return value;
+ }
+@@ -134,8 +123,7 @@ static void imx6_clear_reset_bit(CPUState *cpu, run_on_cpu_data data)
+     assert(bql_locked());
+ 
+     s->regs[SRC_SCR] = deposit32(s->regs[SRC_SCR], ri->reset_bit, 1, 0);
+-    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n",
+-            imx6_src_reg_name(SRC_SCR), s->regs[SRC_SCR]);
++    trace_imx6_clear_reset_bit(imx6_src_reg_name(SRC_SCR), s->regs[SRC_SCR]);
+ 
+     g_free(ri);
+ }
+@@ -173,8 +161,7 @@ static void imx6_src_write(void *opaque, hwaddr offset, uint64_t value,
+         return;
+     }
+ 
+-    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx6_src_reg_name(index),
+-            (uint32_t)current_value);
++    trace_imx6_src_write(imx6_src_reg_name(index), value);
+ 
+     change_mask = s->regs[index] ^ (uint32_t)current_value;
+ 
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 0f5d2b5666..cf1abe6928 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -253,6 +253,12 @@ ccm_clock_freq(uint32_t clock, uint32_t freq) "(Clock = %d) = %d"
+ ccm_read_reg(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
+ ccm_write_reg(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
+ 
++# imx6_src.c
++imx6_src_read(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
++imx6_src_write(const char *reg_name, uint64_t value) "reg[%s] <= 0x%" PRIx64
++imx6_clear_reset_bit(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
++imx6_src_reset(void) ""
++
+ # imx7_src.c
+ imx7_src_read(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
+ imx7_src_write(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
 -- 
 2.47.1
 

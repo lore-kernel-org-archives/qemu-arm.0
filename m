@@ -1,106 +1,106 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp715710njb;
-        Wed, 8 Jan 2025 01:27:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXVyrd/pm4JTJgVqECWEyzSZTwpqHiVxJ+DyEOXXW2mW80Nsbhkai9xXWpsPiM/rFXvzWlvYrQUyMWdrA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFIE+lhBmkrhHvg+uj4bjCp0ejxFZp2n5NFQp78PaiRq3Q936PJyCOn7Q8UNNOFNOS4c4kg
-X-Received: by 2002:ac8:5fd1:0:b0:467:8651:40a2 with SMTP id d75a77b69052e-46c7108ee68mr34451991cf.13.1736328479225;
-        Wed, 08 Jan 2025 01:27:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736328479; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp715754njb;
+        Wed, 8 Jan 2025 01:28:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVarFJ2++3xhVH9wHpxP1rmdSaSUhws5rFtTCONL0Ecmf1YXS299UB7nyNCM0yQKMxAAZ6IiuaAuk/D5A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFen4kZ4cklZ8+eC6WPuWIxOzsoxvvnLw6vs8t/CjOjBPPdU+EY+ck3TH6hzucAA1skFc38
+X-Received: by 2002:a05:622a:199b:b0:467:50b8:63aa with SMTP id d75a77b69052e-46c7102caf4mr30805241cf.28.1736328483925;
+        Wed, 08 Jan 2025 01:28:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736328483; cv=none;
         d=google.com; s=arc-20240605;
-        b=lOWiKx+7PwgZRjFrpOYcjkerxrJK71TLCFhkrp2eRZPHLrNrRyYpkM8daksHchNlir
-         xw6qGWwQHnHFra6Rfapb4KRHNpjt9/IwKWhggZC0WeUUPk6jVz9bpkn9knK7IVo+DUps
-         60tUJRS7fKYJCLkwWpjp6WJh9ob5imnchVIKUMDMpHMXUMO5z4LB28XAzVtuQIrkSO47
-         MP3BWp0EOa2DWaI/MEHzGA0FhCnOM4HmV90fG7WrbHGBP6rUmAYbhbhDHRVgb4RGgK37
-         MByf4mzEhIvAI8JXwDRQslpq0VjD5DDmVwbWpq1BMsgMhtfeBelsrf6B+WshZ25z1uhK
-         2wyQ==
+        b=Xx0Yy2CI/cR5JYZ+ccY8165e3aLVwGu+wv8YKlmDqDOUGK6zPsoNfg58EQd6A2Iyvt
+         SrGUGZ0aQQU+KW4rY12ZbO5/kGwwCDK7AF8F1LEGlxmj5EgmpKhPwrUzmZadnhKoYj71
+         Tj3BGKyaXacruSbKlXKkWV00cKPTKuNrR4wJ6cioTkVmjvXcfBdr0crwVJgf1PlkxfhY
+         hZxOxZU75/2NsPXSPV+R7/QiWWiw6Xd2c54XDB3MWhqdadlldtxnZhh5KcYf6zUEt7dU
+         3hQT1d9wCntcGqMUW3Iu5vURKdH07dnqYvc5cAfqL7r7lIqxaue7nB/YBdA4pV54RdSM
+         6oNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=+si41bX/Zyw/CBlcJY38zyFCCW9HNp1Mb/PQUkHCqIg=;
-        fh=56H+3u4l4fOq6kstNFKee7Hg4q5RbeEGLjSppyFfE9M=;
-        b=Evjma3SM9Cj5mresHVIqnOj3mT+lLSQhbJg4BLKL5yfEprUFLWn3Qm3sU7VaAA6jPa
-         cfdog/gww/lpIAjLiRnfTuWJCau2Kgx5KWDQ4FpwHRzmUbSip3q1W/J4KqbVJ27Mjje4
-         5HtkMU8pVbkyLIcPnWRIFvLKRqMglaOuQ6nxt3bXPDL84gz0egBDrim9Wh0NcejX1lIE
-         uf5/jb2z7NZ2xBEPIleZSVPvEevX4Hl0mlqQ/dPgJS/GtYhgMvuYUI4QnicW22WEl9jW
-         2aSFJQxl9y7RQYwTPO8sx+sN/MEdt1rjI6cL3ql13dum7xPDSRbT/1z+V8YwnEMX/XhE
-         dFmA==;
+        bh=BWONvS3zrMT7DHIR9fjnPk/2xHHvbX1PNKzkC10sjG4=;
+        fh=FlbQTFUWDDjW7YTPb97t4F4vxpLVsy0glhrbSva99NM=;
+        b=lv1z2JmMWqwaFHhSIYe9JbO3swAPw2ajYuCHOUQNbcdDWPdGSQs5jlo/fR081caMhx
+         FPErWzTPx5HOl4D6FT4BfksGIEZUk34vMop1vLJzErhCiTMA0xItQwVK0hchqhTFw9A2
+         kJhW1DSQCZy+k8erjn5M5Z8bXxSSKnoHZnabr/rFODrOb1RjnUH3Y22ymtrZhAE3MFkM
+         2S6dgDeR7Ig6fgl59emHbBVsNDiDWL5/dLHe/AxCdNaDNCuDrQWBT3vKpgYs/CfiBaMt
+         Gigt51x6/sclDTYfhO0cKe07WJWwl45D0qMKxzxAfBT+jNGo/A8b65747LR5EfB0+nz6
+         SngQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bl9a6pJm;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=hAC2A1WW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46a3e680894si518857291cf.34.2025.01.08.01.27.59
+        by mx.google.com with ESMTPS id d75a77b69052e-46a3ebbe47esi451339121cf.413.2025.01.08.01.28.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2025 01:27:59 -0800 (PST)
+        Wed, 08 Jan 2025 01:28:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=bl9a6pJm;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=hAC2A1WW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVSKj-000484-PQ; Wed, 08 Jan 2025 04:26:37 -0500
+	id 1tVSLn-0005cy-2J; Wed, 08 Jan 2025 04:27:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVSKB-0003wx-Lr; Wed, 08 Jan 2025 04:26:03 -0500
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ id 1tVSKL-0003yB-DN; Wed, 08 Jan 2025 04:26:14 -0500
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVSKA-0004nD-7O; Wed, 08 Jan 2025 04:26:03 -0500
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-5d3e6f6cf69so28517611a12.1; 
- Wed, 08 Jan 2025 01:25:59 -0800 (PST)
+ id 1tVSKJ-0004qK-SV; Wed, 08 Jan 2025 04:26:13 -0500
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-aaeec07b705so1943716866b.2; 
+ Wed, 08 Jan 2025 01:26:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736328358; x=1736933158; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1736328369; x=1736933169; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=+si41bX/Zyw/CBlcJY38zyFCCW9HNp1Mb/PQUkHCqIg=;
- b=bl9a6pJmBCz2wPv98EFhCkdqK+6YERKDtpcLD0JhYVFu4DwEhQMaoAL2ib5ETeXPdX
- 83m8YNAl2kYVyS8Ape1DsfOOzDa+F9xNtKZp7Vluoybvc/IKLNE8VZndauooxmHxdlD3
- b54w2V9Z4HwdjzDZPBbboa/hn4F20ntV1moJJ1WRFboVDrcwAYR5YFx/Cfd41seA0ik5
- /+3AUWh1IFRIE4QqhfBg4AY8Bi0gfK9NFaQGkwMxVbdDCf2nQyfdXsvMIeBxpRjEI2nc
- c8X1WG5uMupsdc5dbatYxvaSvVuFoAAbrzwvhLMeuxgvo22JCnS5nytbFk0dpZKnPYyG
- 3O2w==
+ bh=BWONvS3zrMT7DHIR9fjnPk/2xHHvbX1PNKzkC10sjG4=;
+ b=hAC2A1WWz1ZgGcldU8hLDqxqrxRF+AO/J08ZoDFleHhGpcotFqqyMiLGu8Y5dSqPsv
+ boEkBIXz0f0mWYS8A3tk7iLMF+cyuzkSVqv9jwXixEEZ6BkUcaY19IvW30SkIQlLSXqk
+ sDRX6aSo1cAm6rBF5Ywdgjjm+6dW+dRGTAbGQKwhKyY5bCfN59XZXXeM25BFIOB9+pVz
+ tTkNfZ2UgUpTMJs0Zs/9k8QJ4hJSR0ZF/NFgHDhqLqQI+x2zdEbKu5N2jr1E1hSq16an
+ LiIeDis4YVrGNplNbliWVgQH3JaFzzcajq20t8lXEL19BWsNud/EFjztoGEY7S5UVPJD
+ DJIw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736328358; x=1736933158;
+ d=1e100.net; s=20230601; t=1736328369; x=1736933169;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+si41bX/Zyw/CBlcJY38zyFCCW9HNp1Mb/PQUkHCqIg=;
- b=nlvYUMn0S8FS0vZKf6dAdXnePVt0h3LJmHLhfTt2M90+m/4Pxl5+YHi/NA7oAibtXj
- IhC7rlk+N43dub2VIVmKNYGTwatLTTegRtBB47Pojs/F289d7ii5qPnEIlzsJFd6Gim2
- k3GznbD8AoZ0hw+8lI0fahAhmFMKmruJFLaxSkbsj53CSMNw+OtdRS9H9hu5QHpEcQGC
- DlQAdkdgRv+tRsGyLTzMmTZnNvS4/JLW4GCmimGN8KpcnFUR8jpBi4LADbaR6mUXLoAS
- jbZUKd3F05RNJppvyXosegTAyagJ1dbrSQOGTQNN90g5YQ1uUkhyhdR0T9tjzRYYlCH3
- gT5g==
+ bh=BWONvS3zrMT7DHIR9fjnPk/2xHHvbX1PNKzkC10sjG4=;
+ b=SAg21YSZAG8PIxTPqyPsBZREM7z5/Jq9Cda3EuFbIKcxv93TNfxz8vW6fZ6cvqyynX
+ 3J2ParraRr5BH1XZoW+CNAvNQ90Dwj79JFeXbqKmpvvWCEUXvLwtuCNNPHZiENwyLMUg
+ mXfF3rmLUouHxliaJacsQEZxUUVVa4/oYM6comjMI8py7wUYweF4NGcrvAArYOHCz6mI
+ oabb/+8q9qTUjHuMYr3dSiXEq34AxVSQzAwn7pMr27GmXhCJPDrPOu15SZyPYId99arO
+ M6CI/6IAoyS7lAzT59uRa24GfyKvPAYPm+xGbQ2EenCSkSZhl4qjHeESUvy3EeCaJIpV
+ 6aZA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUcD2nb2HjiBmnlM9Nz6Bqs6PEwmhLbU4oDyJv3Fd1L1DAOr1XVaA+nZ8kjjXQK9rU/ktaTMRVj7w==@nongnu.org,
- AJvYcCXdeWYAz86CseCzoszZvH7pSmxBXKWYBYjVPws0avs5yrIVe9jY3V0AAAEtvrGNPtMRaJtKM7GlCgKHKQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwOzYWj9z3agDSItRTSn/rABt0KPhaL4Ix43QcSE+J9JmPnimJb
- hZWcR6qBmwJw8SxR0xvnMwsGj5a0LenCxjOBD0OmAa1weovkzGQEitw7sLEd
-X-Gm-Gg: ASbGncv11QuDQvfC64uQvDzHjHGtGD/wnY8A/7H51yJuxGpM1M6gBmp94qXno20Sd3O
- SE1Ty7Fwu/vNjwIBFqLw8U+U5GPnLwaNPRH5vKyMTTx0Sg8ioWihjyXsGzN+A8ETNkn35PBvLqE
- 8TwLEC94C82pRFhCdmcr4HdQWOvSaoTNcrRufkUHEIkfjCkIFPEtdaMXV/O6a6UY8ePDlVjraU3
- mWOOSwirrQP49/6ZtY/Je3u+eDFo6SkhC0bvu0C7jEsG+tfPKib2xxZd1mOM6no5397HPPEYtL5
- sjhM4LDtuhp6gYgBvbOxcV9hArX6eM6Ts5BAzQ5BWu+9KgM=
-X-Received: by 2002:a05:6402:388a:b0:5d1:2631:b897 with SMTP id
- 4fb4d7f45d1cf-5d972e08403mr1799549a12.14.1736328357881; 
- Wed, 08 Jan 2025 01:25:57 -0800 (PST)
+ AJvYcCWkoCHWoA/ehS+TStLU8ksdlwKG8JsRV7RY3qPLX/2csGFcJfnODtWyzJ5H44lKvN7V109D5bSc7d3ZFQ==@nongnu.org,
+ AJvYcCXunRkFzMnEfLUzvBau0ggULpAVecLNLbYDLT9EVf9GQ6dGcT/reOUIDZl1tEGNIBg+S+ntCNGmmQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwRcI9Pax5PrkcbMUUm5ALUNjQArCue7TZVBxUTuoXTinXOj2B3
+ WP4vKLLD3m6eqEHFzaiG29D5ytAeoikTb/S2rEKmC4+Ju+dE26BQyizbQ+vt
+X-Gm-Gg: ASbGncubilwiabOiEpiygyQhMLmBl0BpS2O1Czn3gXcbf3z9y8qqsEzjPrIc+pFwaQ8
+ BNsB8ru9JVhndE9doneTjXC01rDm4ANIBN2yvjhHUmLfo5QA60nSsEHFrqeYebsfJAxdtkpzrqG
+ cSSS6qf309fGzT4UJotARLCp6Sh/5vXbwCdKyxhPNtOw9UEfBDhpCaeoYrUezp+r1zrRIFb6E6+
+ egd887kZ+kSXSKzO7e3U2660Cj5i3LKnisQ0aFCF/e9ZD1wBuhOQQ7X0ryWOFm5smjxAbb5lCIW
+ AbTmn6FFkQJWX8guMBwisIE41SNk6lyDydD/IgERv8z1hQc=
+X-Received: by 2002:a17:907:3e9f:b0:aae:bd4c:22c0 with SMTP id
+ a640c23a62f3a-ab2ab70aeccmr157228366b.19.1736328369051; 
+ Wed, 08 Jan 2025 01:26:09 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-077-188-106-228.77.188.pool.telefonica.de. [77.188.106.228])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5d806feddfasm26116096a12.58.2025.01.08.01.25.56
+ 4fb4d7f45d1cf-5d806feddfasm26116096a12.58.2025.01.08.01.26.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Jan 2025 01:25:57 -0800 (PST)
+ Wed, 08 Jan 2025 01:26:08 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
@@ -113,17 +113,16 @@ Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 06/14] hw/gpio/imx_gpio: Don't clear input GPIO values upon
- reset
-Date: Wed,  8 Jan 2025 10:25:30 +0100
-Message-ID: <20250108092538.11474-7-shentey@gmail.com>
+Subject: [PATCH 14/14] hw/gpio/imx_gpio: Turn DPRINTF() into trace events
+Date: Wed,  8 Jan 2025 10:25:38 +0100
+Message-ID: <20250108092538.11474-15-shentey@gmail.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250108092538.11474-1-shentey@gmail.com>
 References: <20250108092538.11474-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -145,30 +144,86 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: /5aR/RYC5XL8
+X-TUID: P0vDRHmTOeCV
 
-Input GPIO values such as a present SD card may get notified before the GPIO
-controller itself gets reset. Claring the input values thus loses data. Assuming
-that input GPIO events are only fired when the state changes, the input values
-shouldn't be reset.
+While at it add a trace event for input GPIO events.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/gpio/imx_gpio.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/gpio/imx_gpio.c   | 16 +++++-----------
+ hw/gpio/trace-events |  5 +++++
+ 2 files changed, 10 insertions(+), 11 deletions(-)
 
 diff --git a/hw/gpio/imx_gpio.c b/hw/gpio/imx_gpio.c
-index 898f80f8c8..67c47a7280 100644
+index 67c47a7280..f77132fe04 100644
 --- a/hw/gpio/imx_gpio.c
 +++ b/hw/gpio/imx_gpio.c
-@@ -302,7 +302,6 @@ static void imx_gpio_reset(DeviceState *dev)
+@@ -24,6 +24,7 @@
+ #include "migration/vmstate.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "trace.h"
  
-     s->dr       = 0;
-     s->gdir     = 0;
--    s->psr      = 0;
-     s->icr      = 0;
-     s->imr      = 0;
-     s->isr      = 0;
+ #ifndef DEBUG_IMX_GPIO
+ #define DEBUG_IMX_GPIO 0
+@@ -34,14 +35,6 @@ typedef enum IMXGPIOLevel {
+     IMX_GPIO_LEVEL_HIGH = 1,
+ } IMXGPIOLevel;
+ 
+-#define DPRINTF(fmt, args...) \
+-    do { \
+-        if (DEBUG_IMX_GPIO) { \
+-            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_GPIO, \
+-                                             __func__, ##args); \
+-        } \
+-    } while (0)
+-
+ static const char *imx_gpio_reg_name(uint32_t reg)
+ {
+     switch (reg) {
+@@ -111,6 +104,8 @@ static void imx_gpio_set(void *opaque, int line, int level)
+     IMXGPIOState *s = IMX_GPIO(opaque);
+     IMXGPIOLevel imx_level = level ? IMX_GPIO_LEVEL_HIGH : IMX_GPIO_LEVEL_LOW;
+ 
++    trace_imx_gpio_set(s->iomem.addr, line, imx_level);
++
+     imx_gpio_set_int_line(s, line, imx_level);
+ 
+     /* this is an input signal, so set PSR */
+@@ -200,7 +195,7 @@ static uint64_t imx_gpio_read(void *opaque, hwaddr offset, unsigned size)
+         break;
+     }
+ 
+-    DPRINTF("(%s) = 0x%" PRIx32 "\n", imx_gpio_reg_name(offset), reg_value);
++    trace_imx_gpio_read(s->iomem.addr, imx_gpio_reg_name(offset), reg_value);
+ 
+     return reg_value;
+ }
+@@ -210,8 +205,7 @@ static void imx_gpio_write(void *opaque, hwaddr offset, uint64_t value,
+ {
+     IMXGPIOState *s = IMX_GPIO(opaque);
+ 
+-    DPRINTF("(%s, value = 0x%" PRIx32 ")\n", imx_gpio_reg_name(offset),
+-            (uint32_t)value);
++    trace_imx_gpio_write(s->iomem.addr, imx_gpio_reg_name(offset), value);
+ 
+     switch (offset) {
+     case DR_ADDR:
+diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+index b91cc7e9a4..9ddacc12e3 100644
+--- a/hw/gpio/trace-events
++++ b/hw/gpio/trace-events
+@@ -1,5 +1,10 @@
+ # See docs/devel/tracing.rst for syntax documentation.
+ 
++# imx_gpio.c
++imx_gpio_read(uint64_t base, const char *reg, uint32_t value) "0x%" PRIx64 ":[%s] -> 0x%" PRIx32
++imx_gpio_write(uint64_t base, const char *reg, uint32_t value) "0x%" PRIx64 ":[%s] <- 0x%" PRIx32
++imx_gpio_set(uint64_t base, int line, int level) "0x%" PRIx64 ":[%d] <- %d"
++
+ # npcm7xx_gpio.c
+ npcm7xx_gpio_read(const char *id, uint64_t offset, uint64_t value) " %s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
+ npcm7xx_gpio_write(const char *id, uint64_t offset, uint64_t value) "%s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
 -- 
 2.47.1
 

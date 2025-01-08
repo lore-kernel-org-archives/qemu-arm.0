@@ -1,153 +1,343 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp875879njb;
-        Wed, 8 Jan 2025 06:19:39 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWuXzcZQUCxdhC09ol+4JeMRLEgurjxDwf0ke/cPpLxgb7rwa6C3ruUzDzReXsoXcee0l7iI/xV47VJTg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHnj6M+5OOpRm/+AOGSI7cUMLAWF/JGWqfQOuUn/Gfwqf0Vw46K12+PcY7uwNtMhC7uuI8R
-X-Received: by 2002:a05:622a:41:b0:467:7cda:936d with SMTP id d75a77b69052e-46c71003b65mr39326181cf.14.1736345978854;
-        Wed, 08 Jan 2025 06:19:38 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1736345978; cv=pass;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp919730njb;
+        Wed, 8 Jan 2025 07:23:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUbD1IhkkdBmp2LK6rYJkme/zwt2iwRJeGiaKwsvLsivfrWxiyG2YpWNm2JDEpzTn7BAEmgd5+yd849Jw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFzx5FTxQuz31fEgfEpqQqa5blAa6+P86ghSkkrP0DyFCPNwncZgrQdMZeiXxyb8VxDz0zZ
+X-Received: by 2002:a05:620a:294b:b0:7b6:deab:d485 with SMTP id af79cd13be357-7bcd970a64bmr458419985a.16.1736349806812;
+        Wed, 08 Jan 2025 07:23:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736349806; cv=none;
         d=google.com; s=arc-20240605;
-        b=NnlamOGCGQRzIb+GaQKOQdeNeB/I9EyQlRpU6vjjRkQPdmAPVo6Q3qC7N0TaFt09yB
-         g3J2KobJS6NjLQ29hUSV1ogI0SVOQspbyrlTX6rYlMoaFvDBgSzePrSC9iU3WsoH8rUf
-         Hoo0jrEHTmcDhUqpLJrfcx2MrbeQpfyjMRokfdov5PGNI1oNCICo2kNilVnrE9JlQBJi
-         +7EuXtBgi/7Czgsi5BWf5lB7k1PBh6EiPSAvx3oMGucQHTI3JdMZmC1/iX5iErT8wb5Z
-         bdj7HdJaPAEo7vWY13qHoY/NaoBzpPXtxDbKP52Hh/PFYewRXB4gs+j4KvlYPtuCNRbE
-         e75A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=cSrWrQ2htSdpY37KMH2GEWu8jny9z/CoQD8A4cOU1m0=;
-        fh=cvU4tksDRdiJk0apu26xlLZevYEl2a3BbwxW8iKvrhw=;
-        b=Xk+NX7FoZz/irDnYtAh12bTDf6yiUqyEwAHCInlR9N8fTkWROnV3qmm3nudXfZoMJl
-         6GhXo4qgMguVYREp04MYl0ICxypLoPkBSskDxmZ+VlVNLpGZ043Hb0FnyHi/NwPmrUOQ
-         4Bg8jx95lvvXpf8yVxEgOcF83wMHi1zsDwhmLzZy42bWVoYhhtOgeV9EtVjiDERBqXhm
-         0+sMldI/4pZLEGJtYYCCVG7Z0SgXqaZitkton0Zbu8wVY6keVQFUsV7WU8tRbJzoDf+1
-         QyfQ8YPowi8EZnqabMJxVwkhddcH0CvLcBNduo2wCGJASOyXydn9kaDLz40UT+KjeZ9J
-         yJNw==;
+        b=M0CyK3F6cHiPlLDV+gW2+m5wfOAq24HCAwmcb6pvQy/9NEIiAIleHu/CzwQ33QIhTq
+         br19v3CC8hhnGhgXPjF99jI616SfZL7oxaQNU3LgSPaWIK54a3FuYKkWZPuRAKEBiFXy
+         LrmnR9aitUN+7cEYkSoVev1alBkhJPILntz8eeaiKvf+lX65cX1MgCbx1pDU+kRsjBOi
+         DrlURgN1Tt5yUAZ0ONvJmXWQpbWBuPh9wice1RnW/t6qACaGJWtc8ifKJ6A8fsbnvy7b
+         rk4ClQKzUk0OGj9NmhRloR6wP8ZmPxKvnAoHosaYJsoUp1t1yzrw8ojzjlkSq7m3dWnc
+         +IVg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=+f7UOlWeL8+YCrnm6mVFVB4mI6TIS4CM7dpB1OmgzV0=;
+        fh=Hw4bG4g3/Kw+zFAObpCAvOAPRgq1PTI80RYhcmjdlPI=;
+        b=E5/7O6RobqvVWW95qIENXZCOdmBh+zzjAM566Hyu7iwmXtyKxWkY3MzSZIzI/ozxrC
+         k42xn87qK7sbtudkn+vmkkvIQYVzGPknk8IIPkbCcc22rCTDdFOROakA7+J51nZFdjRj
+         8dsqwkYjyYaOBe2VmM/UyJTJagZBmA0zMSy4Tb5AU6GOeBGS4CEAx8aZNmlZjpWZ55xr
+         oEiujy+d4Q9xOB77kTnjye8nnKZl31HRfqZ52bVl1XxSmN3fY1TLlHo0GqHWm0XYi65w
+         KmHYseFwuDAGjWDBChcM+ZRRf0V5fS1PPSWTEX/FAheNPW3q+olvfiOl2nhh1bNJ114w
+         kHZw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=FiuMaGkf;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-467882-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-467882-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Return-Path: <linux-kernel+bounces-467882-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
-        by mx.google.com with ESMTPS id d75a77b69052e-46a3ebd747csi467504751cf.556.2025.01.08.06.19.38
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=E6iKtGSX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac4786afsi5378734085a.307.2025.01.08.07.23.26
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jan 2025 06:19:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-467882-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 08 Jan 2025 07:23:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=FiuMaGkf;
-       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
-       spf=pass (google.com: domain of linux-kernel+bounces-467882-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-467882-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 5AD481623D8
-	for <alex.bennee@linaro.org>; Wed,  8 Jan 2025 14:19:37 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 358901FC7CC;
-	Wed,  8 Jan 2025 14:19:35 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="FiuMaGkf"
-Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 786CC1FAC53
-	for <linux-kernel@vger.kernel.org>; Wed,  8 Jan 2025 14:19:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1736345974; cv=none; b=R8xrsWgmpGXTlkK2VIR/hEJbQXIPYGC3HSXFBArxtOvfh9E8mr9O3gr+CWsstODXl/kE1y+eWHTfcZf2qf4svaOSoiRmxJHAqGrZj13mZFdJqwXQUyefk6/H+4BnI2ha+cNY/j3ZV0oHvv6W3B6X5Ve92ssaCP7t7xII08BgsAA=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1736345974; c=relaxed/simple;
-	bh=vK1IN5Dyq05umuvO6zGZxlftusRlxJsEsWVxts69M+o=;
-	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=N89aI6wKJSHj7jGnNABGx08AusctzH9QqzNLmqTCu4U7dQj7yVZvWnkE7CSa+/0gNd/+dl+jUQHRmDbUBrYFtBbQHuQBpG8OySwGQLCslz6RVcng+QjuOXv0NdRwwupTGc2Gi0SRqP/8YTzqirrgy9F9eH/L/t9nGmQlMPFI2DA=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=FiuMaGkf; arc=none smtp.client-ip=10.30.226.201
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16405C4CED3;
-	Wed,  8 Jan 2025 14:19:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1736345974;
-	bh=vK1IN5Dyq05umuvO6zGZxlftusRlxJsEsWVxts69M+o=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=FiuMaGkfk91ZuJ039RrSBrGseGzRiLq/ZP2JeDgcYWM6BXiFhfSUVB0tPmAsIUQe0
-	 CqKkk5dEn4jJjM3PWwzkOMY9AlESNJ652ekVT4WqJ0My4mwSBb+cxxGF/Xq58ZUwIc
-	 0U/hhvFqbgzjb0NLM8TtT4C1NxAFuRyzT9lZfTfnWRziy4i8oUE5gle6ccDJTcSLCQ
-	 gWdiWOJWcE6G5TWPWdkLVNQvrkojxIQYn68tG8ijI3WKcYbyV86Kd4Ip+GmAetxFlF
-	 2w3kPVyOPzbe6k/IOwIBquaQTSvsMsKURkwS0SEmys0ZMYyOuPMqDOKqt978M8P1aW
-	 YiikMFVQOYuTQ==
-Date: Wed, 8 Jan 2025 15:19:26 +0100
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, Philippe =?UTF-8?B?TWF0aGlldS1E?=
- =?UTF-8?B?YXVkw6k=?= <philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, Eduardo Habkost
- <eduardo@habkost.net>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Peter
- Maydell <peter.maydell@linaro.org>, Shannon Zhao
- <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
- <zhao1.liu@intel.com>, linux-kernel@vger.kernel.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 0/5] Change ghes driver to use HEST-based offsets
-Message-ID: <20250108151926.1602394f@foz.lan>
-In-Reply-To: <20250108090815-mutt-send-email-mst@kernel.org>
-References: <cover.1733327276.git.mchehab+huawei@kernel.org>
-	<20250108090815-mutt-send-email-mst@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=E6iKtGSX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tVXtm-0001xW-Vh; Wed, 08 Jan 2025 10:23:13 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tVXtZ-0001tn-Hm; Wed, 08 Jan 2025 10:22:58 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tVXtW-0005EQ-L7; Wed, 08 Jan 2025 10:22:56 -0500
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-5d3ecae02beso781098a12.0; 
+ Wed, 08 Jan 2025 07:22:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1736349764; x=1736954564; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=+f7UOlWeL8+YCrnm6mVFVB4mI6TIS4CM7dpB1OmgzV0=;
+ b=E6iKtGSXomy0zcT0G+/0UxDhSlavbOJTlqhB26IvrSWuJ6yxJg6buhPxU5ksiIC7P7
+ hBeyCkKHz1bYIsjVLvqDF9XRrv9uCLxWjOodDvwUT+HAegXxSg8qCtPAuOhbQyb3oPcf
+ b+hreu8MEmer/5ZhRb0sBmTqnVvADOYgUQ7jkkL9e7uteYGeRVUxbgS95RIuK+49ZxBV
+ ZPM/7EFyN0YyosJDWGgmqxBgjrXidBb/ELDWh4dNT+iSKG9//rZ6xtx2NeaHAVIPtHN1
+ YvYh6g3pevSppadyXSIHVacOCud24tGFpyUiN9pS5jqcjMaUx8+oppk5XPIgN3jq0IrP
+ FMVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1736349764; x=1736954564;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=+f7UOlWeL8+YCrnm6mVFVB4mI6TIS4CM7dpB1OmgzV0=;
+ b=Js9wi6XtqtZVSGRuzUhf+P5WyXIEqweqd6jvXJ2Rzzf3JNX+4sS8efdUnuVg5B0x5g
+ oEA48jsPBzh6+BCrL74zEUeL0JkcBe3Yvi7LN0e3QhAg5JGmZ/hu6Mda8EQNIQW7GfM1
+ nyo4hxH+PGCE7bprxrI7HFCzvvtiipejQYhl+AsBjIfx1ZgvDYz9IiZv1l3tlFxzvaAJ
+ zFec4WUSwkIv61idDfemX8grbMs4ivmsERZmIBfWf5rBseXjQVxkMB7RuordMV9vvhb7
+ t+9N1fFRqZtuZrQmeOVN7kOO/v2jsE1RqJf6eQSHBXDeofrOpvQ0lXpGmVFSnlHMKYHo
+ aGiA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUeMg2knTj9b2ilC4cIoReDDBxTAgdmNgyQrK3p9Mxczx5W0YZiVdWNVEE5l0trEksFjVua7aEPE+azCA==@nongnu.org,
+ AJvYcCXAdv7LXC082kMMBJiBraK+FHjINK285R8pp+ed0/P1UCuCgRbakmMpNqZySQv0AR3mhTBzUvyVKA==@nongnu.org
+X-Gm-Message-State: AOJu0YyUMe8KvshryJGUxKx2mc8R/5l3PmQiJiXFiF+Y81z5D5GOfA8k
+ pJxAacBNPCOkvLcSUq2SzirGDShFTTjW8EA4ePaBYutC7XE+RvhWfr+kcw==
+X-Gm-Gg: ASbGncu9jw2VTjkeyQLaZ1vI6Ykc/9OZ6Lx0VqLLrHU3fBDZge7JLBPJHaHAXSDQWl7
+ qoNCkioU3zlEopisM0pCp3ea+/SH2NZzo3UPJazShg7wWfjWoaAlnMh4c44fd12kLZtBC9yf0Ea
+ 6Pu9bu8vYV5+MIxuW4evzIt2V1g2kaM2KuveenSudf4bSRTPNU9N2TiTP134VnMY85UG6maeGPK
+ gFgMBqovBWy6ZqpL6JBoxkhk3n0KzeclF1hlbslTHv+FvxzTIG7KvR6ihTv2BS7QTqq2NtuQRE8
+ FdTkBORJsL+n7HsJ8NZ8zez2V+4=
+X-Received: by 2002:a17:906:7314:b0:aaf:f32:cd34 with SMTP id
+ a640c23a62f3a-ab2ab6a84ecmr258443266b.15.1736349763830; 
+ Wed, 08 Jan 2025 07:22:43 -0800 (PST)
+Received: from [127.0.0.1] (business-90-187-110-129.pool2.vodafone-ip.de.
+ [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-aac0e894b60sm2542977166b.68.2025.01.08.07.22.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 08 Jan 2025 07:22:43 -0800 (PST)
+Date: Wed, 08 Jan 2025 14:26:41 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+CC: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
+ Guenter Roeck <linux@roeck-us.net>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+Subject: Re: [PATCH 04/14] hw/core: Introduce TYPE_SHARED_IRQ
+In-Reply-To: <20250108092538.11474-5-shentey@gmail.com>
+References: <20250108092538.11474-1-shentey@gmail.com>
+ <20250108092538.11474-5-shentey@gmail.com>
+Message-ID: <0481ED42-8DAB-41D5-B1F9-89D5E5756DFE@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: JgLVkaFZhL7B
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RB3CdqKdnmrh
 
-Em Wed, 8 Jan 2025 09:08:51 -0500
-"Michael S. Tsirkin" <mst@redhat.com> escreveu:
 
-> On Wed, Dec 04, 2024 at 04:57:54PM +0100, Mauro Carvalho Chehab wrote:
-> > This  series was part of the previous PR to add generic error injection
-> > support on GHES. It depends on a cleanup patch series sent earlier
-> > today:
-> > 
-> >     https://lore.kernel.org/qemu-devel/cover.1733297707.git.mchehab+huawei@kernel.org/T/#t
-> > 
-> > It contains the changes of the math used to calculate offsets at HEST table 
-> > and hardware_error firmware file. It prepares for the addition of GHES
-> > error injection.
-> > 
-> > The first patch was previously at the cleanup series. It prepares
-> > the logic to support multiple sources.
-> > 
-> > The second patch adds a new firmware file to store HEST address.
-> > 
-> > The third patch use the new firmware to calculate offsets using
-> > HEST table.
-> > 
-> > Patches 4 and 5 add migration support. They assume that this
-> > series will be merged for qemu 9.2 (maybe it is too late for that,
-> > as QEMU is now on soft freeze). 
-> > 
-> > I tested migration using both virt-9.1 and virt-9.2 machines
-> > on qemu 9.2.  
-> 
-> So this needs a rebase to the next release. Thanks!
 
-Sure, I'll do the rebase today.
+Am 8=2E Januar 2025 09:25:28 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>---
+> include/hw/core/shared-irq=2Eh | 39 ++++++++++++++++
+> hw/core/shared-irq=2Ec         | 88 ++++++++++++++++++++++++++++++++++++
+> hw/core/Kconfig              |  3 ++
+> hw/core/meson=2Ebuild          |  1 +
+> 4 files changed, 131 insertions(+)
+> create mode 100644 include/hw/core/shared-irq=2Eh
+> create mode 100644 hw/core/shared-irq=2Ec
+>
+>diff --git a/include/hw/core/shared-irq=2Eh b/include/hw/core/shared-irq=
+=2Eh
+>new file mode 100644
 
-What about the preparation patch series, from where this one is
-placed on the top:
+As pointed out by David, this device is redundant to TYPE_OR_IRQ=2E I'll d=
+rop it in v2=2E
 
-	https://lore.kernel.org/qemu-devel/cover.1733297707.git.mchehab+huawei@kernel.org/T/#m3b56bbe7bd400369f9e38b56faf4e65e64069955
+Best regards,
+Bernhard
 
-Could you merge it? It should apply cleanly on
-
-	https://gitlab.com/qemu-project/qemu.git master
-
-and it doesn't contain any migration stuff on it.
-
-Thanks,
-Mauro
+>index 0000000000=2E=2E803c303dd0
+>--- /dev/null
+>+++ b/include/hw/core/shared-irq=2Eh
+>@@ -0,0 +1,39 @@
+>+/*
+>+ * IRQ sharing device=2E
+>+ *
+>+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail=2Ecom>
+>+ *
+>+ * SPDX-License-Identifier: GPL-2=2E0-or-later
+>+ */
+>+
+>+/*
+>+ * This is a simple device which has one GPIO output line and multiple G=
+PIO
+>+ * input lines=2E The output line is active if at least one of the input=
+ lines is=2E
+>+ *
+>+ * QEMU interface:
+>+ *  + N unnamed GPIO inputs: the input lines
+>+ *  + one unnamed GPIO output: the output line
+>+ *  + QOM property "num-lines": sets the number of input lines
+>+ */
+>+#ifndef HW_SHARED_IRQ_H
+>+#define HW_SHARED_IRQ_H
+>+
+>+#include "hw/sysbus=2Eh"
+>+#include "qom/object=2Eh"
+>+
+>+#define TYPE_SHARED_IRQ "shared-irq"
+>+
+>+#define MAX_SHARED_LINES 16
+>+
+>+
+>+OBJECT_DECLARE_SIMPLE_TYPE(SharedIRQ, SHARED_IRQ)
+>+
+>+struct SharedIRQ {
+>+    DeviceState parent_obj;
+>+
+>+    qemu_irq out_irq;
+>+    uint16_t irq_states;
+>+    uint8_t num_lines;
+>+};
+>+
+>+#endif
+>diff --git a/hw/core/shared-irq=2Ec b/hw/core/shared-irq=2Ec
+>new file mode 100644
+>index 0000000000=2E=2Eb2a4ea4a66
+>--- /dev/null
+>+++ b/hw/core/shared-irq=2Ec
+>@@ -0,0 +1,88 @@
+>+/*
+>+ * IRQ sharing device=2E
+>+ *
+>+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail=2Ecom>
+>+ *
+>+ * SPDX-License-Identifier: GPL-2=2E0-or-later
+>+ */
+>+
+>+#include "qemu/osdep=2Eh"
+>+#include "hw/core/shared-irq=2Eh"
+>+#include "hw/irq=2Eh"
+>+#include "hw/qdev-properties=2Eh"
+>+#include "qapi/error=2Eh"
+>+#include "migration/vmstate=2Eh"
+>+
+>+static void shared_irq_handler(void *opaque, int n, int level)
+>+{
+>+    SharedIRQ *s =3D opaque;
+>+    uint16_t mask =3D BIT(n);
+>+
+>+    if (level) {
+>+        s->irq_states |=3D mask;
+>+    } else {
+>+        s->irq_states &=3D ~mask;
+>+    }
+>+
+>+    qemu_set_irq(s->out_irq, !!s->irq_states);
+>+}
+>+
+>+static void shared_irq_init(Object *obj)
+>+{
+>+    SharedIRQ *s =3D SHARED_IRQ(obj);
+>+
+>+    qdev_init_gpio_out(DEVICE(s), &s->out_irq, 1);
+>+}
+>+
+>+static void shared_irq_realize(DeviceState *dev, Error **errp)
+>+{
+>+    SharedIRQ *s =3D SHARED_IRQ(dev);
+>+
+>+    if (s->num_lines < 1 || s->num_lines >=3D MAX_SHARED_LINES) {
+>+        error_setg(errp,
+>+                   "IRQ shared number of lines %d must be between 1 and =
+%d",
+>+                   s->num_lines, MAX_SHARED_LINES);
+>+        return;
+>+    }
+>+
+>+    qdev_init_gpio_in(dev, shared_irq_handler, s->num_lines);
+>+}
+>+
+>+static const Property shared_irq_properties[] =3D {
+>+    DEFINE_PROP_UINT8("num-lines", SharedIRQ, num_lines, 1),
+>+};
+>+
+>+static const VMStateDescription shared_irq_vmstate =3D {
+>+    =2Ename =3D TYPE_SHARED_IRQ,
+>+    =2Eversion_id =3D 1,
+>+    =2Eminimum_version_id =3D 1,
+>+    =2Efields =3D (const VMStateField[]) {
+>+        VMSTATE_UINT16(irq_states, SharedIRQ),
+>+        VMSTATE_END_OF_LIST()
+>+    },
+>+};
+>+
+>+static void shared_irq_class_init(ObjectClass *klass, void *data)
+>+{
+>+    DeviceClass *dc =3D DEVICE_CLASS(klass);
+>+
+>+    /* No state to reset */
+>+    device_class_set_props(dc, shared_irq_properties);
+>+    dc->vmsd =3D &shared_irq_vmstate;
+>+    dc->realize =3D shared_irq_realize;
+>+
+>+    /* Reason: Needs to be wired up to work */
+>+    dc->user_creatable =3D false;
+>+}
+>+
+>+static const TypeInfo shared_irq_types[] =3D {
+>+    {
+>+       =2Ename =3D TYPE_SHARED_IRQ,
+>+       =2Eparent =3D TYPE_DEVICE,
+>+       =2Einstance_size =3D sizeof(SharedIRQ),
+>+       =2Einstance_init =3D shared_irq_init,
+>+       =2Eclass_init =3D shared_irq_class_init,
+>+    },
+>+};
+>+
+>+DEFINE_TYPES(shared_irq_types)
+>diff --git a/hw/core/Kconfig b/hw/core/Kconfig
+>index d1bdf765ee=2E=2Eddff977963 100644
+>--- a/hw/core/Kconfig
+>+++ b/hw/core/Kconfig
+>@@ -32,6 +32,9 @@ config PLATFORM_BUS
+> config REGISTER
+>     bool
+>=20
+>+config SHARED_IRQ
+>+    bool
+>+
+> config SPLIT_IRQ
+>     bool
+>=20
+>diff --git a/hw/core/meson=2Ebuild b/hw/core/meson=2Ebuild
+>index ce9dfa3f4b=2E=2E6b5bdc8ec7 100644
+>--- a/hw/core/meson=2Ebuild
+>+++ b/hw/core/meson=2Ebuild
+>@@ -21,6 +21,7 @@ system_ss=2Eadd(when: 'CONFIG_OR_IRQ', if_true: files('=
+or-irq=2Ec'))
+> system_ss=2Eadd(when: 'CONFIG_PLATFORM_BUS', if_true: files('platform-bu=
+s=2Ec'))
+> system_ss=2Eadd(when: 'CONFIG_PTIMER', if_true: files('ptimer=2Ec'))
+> system_ss=2Eadd(when: 'CONFIG_REGISTER', if_true: files('register=2Ec'))
+>+system_ss=2Eadd(when: 'CONFIG_SHARED_IRQ', if_true: files('shared-irq=2E=
+c'))
+> system_ss=2Eadd(when: 'CONFIG_SPLIT_IRQ', if_true: files('split-irq=2Ec'=
+))
+> system_ss=2Eadd(when: 'CONFIG_XILINX_AXI', if_true: files('stream=2Ec'))
+> system_ss=2Eadd(when: 'CONFIG_PLATFORM_BUS', if_true: files('sysbus-fdt=
+=2Ec'))

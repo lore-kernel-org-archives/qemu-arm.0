@@ -1,166 +1,217 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp862356njb;
-        Wed, 8 Jan 2025 06:03:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV/ZWk+qGx48PfixrcEWgh5gXzLLbWOvtXXUaUwQxN/bsb7dPsKyd+U8Nc4lkpI4GY/qzfT25va9XjtAg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGWlFrtWQzgVDi1B7QmTz2y1089UIiIl0t0WDeuP6hl4ZrZh2HJz9g6hR1KrJXWH6cO5gG5
-X-Received: by 2002:a05:6000:710:b0:385:e0d6:fb73 with SMTP id ffacd0b85a97d-38a872da4ccmr2413968f8f.15.1736344990557;
-        Wed, 08 Jan 2025 06:03:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736344990; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp867798njb;
+        Wed, 8 Jan 2025 06:09:06 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXkl/wpDuF4X9yelQC21FMx/aLn6KQqSkNuwhE+T7uVCEiX+ho+WXu3hNn0PCjMpgM/O+vHnKXa/MUXxw==@linaro.org
+X-Google-Smtp-Source: AGHT+IH9owebZbiormPmiDgFwt1Oh49SzDm3G3obpxK60QAO2h4DWyAfJ1QPw5oCAVNebIvf5uB6
+X-Received: by 2002:a05:620a:450d:b0:7b6:d4a2:f126 with SMTP id af79cd13be357-7bcd96fa145mr412114385a.13.1736345346658;
+        Wed, 08 Jan 2025 06:09:06 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1736345346; cv=pass;
         d=google.com; s=arc-20240605;
-        b=C48pq8rWpo5N46o/7lgpwFARRpd32sgB67YGnddvhUI4BgIU40v5r9ZZI9RocD0Cn2
-         DC+bwlw0PVPFLpa2/anVEvdQ3S5H73mD7Qd+ULMhSmQOat7JpV5QLh7h3ztzg+QWcP8G
-         TaQ7FE/zJ3AbL2+KnVt0SLkO4QQ1Beu8K3vnAVC9E0iZLyRsqpSI7Dbai8F0T7s5JTlh
-         91IIrmDwlxxsCquEPLy2nrSWOZ61P6rXoJl07qkKSOqKbKOXJ8G4OvUfL7YNNjIBBsX/
-         q/hNoUvUwGXQQm/8T4kl1BfTk2wLz4/ZjhNDKrbuIsyhYao4q+TcmS7S9qj0/mGoAsjg
-         il2A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=E6jJe8yXIHBeeef6GjObc81Y2a9IYh+ijGCPoh9KBPw=;
-        fh=awV7+ozLYNdzildpnkrze8DhIwgtXCuu/8kYHnAhhfc=;
-        b=FsafBiidc/wPxh6qolaeDQ10wrFrPF5rEatGeLbjFxdP3GA7XFXwMgpJik45DEIVDp
-         5ameeageN95ro5zxsymvE2Rk8ZcqJuHQgdfLszeB8Wq7eJJ0/aTKUsAv1/a1cZDIdQv2
-         qlpUGVbrTVTFLZeCsuuJC6wZROwfWcED/zSFnZR3iTYsRk52U8Ht3An358DWmIvGTCw/
-         mJtYBydesP4+1G78NF7Oxh+I+hf/pXlotEG3fS+BKmDWpW2dhxhJa0WnyfBPL7gBKKP+
-         Gdq8D0huJOAkmGOGLNttriDiDg/2Fa+a9yi+tQ9jq2FSG7DvnRp6+43Td9d+YnA9AjLa
-         387w==;
+        b=F6diNDyeUbLvVEqWh467nXcCqLvTTW0YAxLvD8tSlW0cBSFSDKLPpH5i0GK/saIOcI
+         NTvw1qJxSE429bb+cTJLIbZmCnUhgThg/dg14FcZV69zSknKtFjPqflCUb8HvZ0xLwF5
+         IOYvKJ0tnvNlvNnOa26NBR7PE7egiPpp0UGrcGlJymshAgfB4ekN41zEF9w4c8Djragm
+         w60fvLn46My6zkwCbHd+EEIeazWqiX+mVN3qY1cYqim43VI5JEhVOw/D264K7OKfECBU
+         0t126RxdDq+xFJNSL0TR8d4LvFTehqhNl5P8fxifVVKkHSwKTHwtLlDMwLoYDcjOo74X
+         KklA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=dJLKh6BStmfyk9qgrlfwMFE0auc5dkCCY+gzY914BFc=;
+        fh=r/xHmYn8OISEEQcKm018E/E0PmPacjMt5Tm+ncNu1KA=;
+        b=MjF/T9AY3jXKbS/OhzeVIhBRuxdMOeuHtLzQXOGQruXMSFDPYqwJLCRICguAxOkma5
+         2D+2WK6JAs3q6Qq944+s60WOICBDD/tVQmVsefdP//cd1Dxgy/6JATCa5PO317L52xD/
+         8fMyti1KxOM7FT8wbyqaAhMrSD4bLnjsMCskQJLUMBAIu7odh1g/e4MTwrvT3v03iNhC
+         656mvWWIunbtKZp9vW21Te9xzURVYQ0g/o8s3Hr4Hwe8lfj5ygahLGb3Ul5pPcS42HlC
+         Ynm8etzWKDS2khUlYiKSvBmUWHgMqR2j+YTTAAUyObwYi/Xvrz0f7Q6cY8NLgGOmjGA3
+         uXkw==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QQrNY/MF";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XPozFGfJ;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-467856-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-467856-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ffacd0b85a97d-38a1c8b89adsi26659094f8f.374.2025.01.08.06.03.10
+Return-Path: <linux-kernel+bounces-467856-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id af79cd13be357-7b9ac478befsi330145785a.320.2025.01.08.06.09.06
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2025 06:03:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jan 2025 06:09:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-467856-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="QQrNY/MF";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XPozFGfJ;
+       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-467856-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-467856-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVWe7-00008a-Qe; Wed, 08 Jan 2025 09:02:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVWe5-00007s-FC
- for qemu-arm@nongnu.org; Wed, 08 Jan 2025 09:02:53 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tVWe2-0000Ew-R8
- for qemu-arm@nongnu.org; Wed, 08 Jan 2025 09:02:53 -0500
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 14F35162953
+	for <alex.bennee@linaro.org>; Wed,  8 Jan 2025 14:09:05 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 6177113BADF;
+	Wed,  8 Jan 2025 14:09:02 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="XPozFGfJ"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3CE2019B586
+	for <linux-kernel@vger.kernel.org>; Wed,  8 Jan 2025 14:08:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1736345342; cv=none; b=Y/D9ZX1kFVwvmltb1+0xTGBiN4ArFT1ij6emDnsytICxTTVZp6Kye7r4pfTCHjISQL7d1dVxwr7uDABAAj62sIhEotuUNNSNI7hBW4PdeRl7xmCd+opnNjpyHKGujNr0joQ6oxjTkx6L7Mr3EDwZyEukfUlXY612ZyDGfFzqUwM=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1736345342; c=relaxed/simple;
+	bh=J1P4zlMOECPyHQaK5nI09tbu6Y+p/ApDLrpe+AYScqs=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=nu66Lvf7thMGl0jMKJVZGYhVU36HuuQVNKpvLOkbS6AhslclCXczANyurYr0Bq4lcogmdS85FA/JXBWDODA8ZwdUcan8Ek9gLE/V3APLwujHbxWEJGGlxCQPsdDCMVIxD6wR4q9SuzBQ6BHJ6n06Us/+WO+7s1Aov2EuqHzKvKw=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=XPozFGfJ; arc=none smtp.client-ip=170.10.129.124
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1736344969;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=E6jJe8yXIHBeeef6GjObc81Y2a9IYh+ijGCPoh9KBPw=;
- b=QQrNY/MFFqnkRJxV0jD099grhNcqEHvaNBlp1hH6Q+NHn6xihnmDSU5/gxdKi8aef4IQ8b
- 60TD1dMeeOV1Y7THIegpdtEkXNz9b7hANi8ullKTFQm2BAyIO1pc/I1cK8qmUK2252rk7/
- TfzHwY8B3hbAi7MO46Q3m6YMMT7gmkQ=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-258-TcJFhFaXMOm8GiFLFXV21A-1; Wed,
- 08 Jan 2025 09:02:45 -0500
-X-MC-Unique: TcJFhFaXMOm8GiFLFXV21A-1
-X-Mimecast-MFC-AGG-ID: TcJFhFaXMOm8GiFLFXV21A
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3B1A21955E80; Wed,  8 Jan 2025 14:02:18 +0000 (UTC)
-Received: from dobby.home.kraxel.org (unknown [10.39.192.243])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 740F3300018D; Wed,  8 Jan 2025 14:02:17 +0000 (UTC)
-Received: by dobby.home.kraxel.org (Postfix, from userid 1000)
- id CF1EE2CDE95; Wed, 08 Jan 2025 15:02:14 +0100 (CET)
-Date: Wed, 8 Jan 2025 15:02:14 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org, graf@amazon.com, 
- Paolo Bonzini <pbonzini@redhat.com>, Michael Roth <michael.roth@amd.com>, 
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, 
- Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org,
- Eric Blake <eblake@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH v2 00/21] hw/uefi: add uefi variable service
-Message-ID: <r574aim43uwh7qhfkvifcy3hmim4xpbxxi5eedl7iglrtxvirf@c3rddfvmihpz>
-References: <20250107153353.1144978-1-kraxel@redhat.com>
- <CAMxuvazrd+3v2qqO-5o3qpky-ULRTwvU48jkwdxMPZG5c1RA1A@mail.gmail.com>
+	s=mimecast20190719; t=1736345339;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=dJLKh6BStmfyk9qgrlfwMFE0auc5dkCCY+gzY914BFc=;
+	b=XPozFGfJj4rkq4c1JRTt2nxbggUeOag2zNOPXV1HzBf15YPeN9spVdTTdS53sfQ49vpWUZ
+	JoNXZkxlJqemrRJLkKVLi/RFT18ADDXyOCEy7OwJzI2PtG1QtXSHZxKXn82QIPp7LfnY1O
+	wPULbWoZwErMUM6du3ldNJma6Hjypz8=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-327-65qpSiznORaOI6jWijAMvw-1; Wed, 08 Jan 2025 09:08:57 -0500
+X-MC-Unique: 65qpSiznORaOI6jWijAMvw-1
+X-Mimecast-MFC-AGG-ID: 65qpSiznORaOI6jWijAMvw
+Received: by mail-ej1-f72.google.com with SMTP id a640c23a62f3a-aa6a831f93cso512174966b.1
+        for <linux-kernel@vger.kernel.org>; Wed, 08 Jan 2025 06:08:57 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736345336; x=1736950136;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=dJLKh6BStmfyk9qgrlfwMFE0auc5dkCCY+gzY914BFc=;
+        b=MmlAP7mpE4oHFXYgieNG3FjsV3zNaJpooqoU2Jlgwir+oq/3LN+AZCvCU8mDAtVNB6
+         nTos9padHdAEyReTsl93VU7QPFnS8VlJLiTX2ukcYKdF5RHOtwZgjkGeyjC9ktZK1fkS
+         oyCSFhxsybUm+DxK5RolUtJNfn3HQGcCzpgMEDqrQXSfqZxYkDfYk7NBOGcr8tITwpWd
+         kOKBUXNcK9FHgHk9CjiTTFHoJeKXANJmtpHcV57f+mcQ1jWnvKxKeZ/1F3YHlC59pIdJ
+         5hFjoKo2LAlHd/RmB7CiOUUKgnToCW4EftkOcinxH15+oZc1t3FwzJgAi7oyqMhMfGl4
+         BQJA==
+X-Forwarded-Encrypted: i=1; AJvYcCVARD1deHaG6CRwxiYn99zDX6Siqet0E4EHBLvqZG2hU1PcPTE0JwPFFMSHcYv/1tqgRWfQGMu87BSIn6I=@vger.kernel.org
+X-Gm-Message-State: AOJu0YwjbU3M9Vp9yIMEkgaCRXYiiql3osFRkctYyRPLAD7rfz9PBE3q
+	sO9mjpOlsNQubt2GpPglv7fCumKCTtfmtzicI+GCHIgSgEPpYdRRtm/uGED2pPWhmbAsmJwhxNb
+	P3PppPDcGpllE36hIsGJSUKS2AWQG66OqHaVzZoM/vA2anPuROvStnTkmq6dAaA==
+X-Gm-Gg: ASbGncvDyVBX12iRquIbPKNQ+8lo7/STVcObOiPh0YCKxLQf4l+q8p5NLhfI8DccLw7
+	DbR2R0iBQ9vjBJyVWI7FmrzLy8cbxZVZWbgvqMikxJ3ntibd6P5urQmIFincbNdrQTegc0i3E8G
+	aQoNX5B7zPbzvuSr/CwUOAJUps6W6e1iE3xA8zxJOFKyBbWlGPk0ZdPrGDKI+KC+iYoVnTh8rj/
+	qn0h0Tw5pUhE/Z67MnHi/alBpaDgI5zZ5oVz79D8R9jAFZC8AY=
+X-Received: by 2002:a17:907:980f:b0:aa6:993a:259f with SMTP id a640c23a62f3a-ab2abcac230mr229669566b.40.1736345336488;
+        Wed, 08 Jan 2025 06:08:56 -0800 (PST)
+X-Received: by 2002:a17:907:980f:b0:aa6:993a:259f with SMTP id a640c23a62f3a-ab2abcac230mr229666366b.40.1736345336022;
+        Wed, 08 Jan 2025 06:08:56 -0800 (PST)
+Received: from redhat.com ([2a02:14f:175:d62d:93ef:d7e2:e7da:ed72])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-aac0f015ad6sm2481125066b.166.2025.01.08.06.08.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jan 2025 06:08:55 -0800 (PST)
+Date: Wed, 8 Jan 2025 09:08:51 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: Igor Mammedov <imammedo@redhat.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+	Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
+	linux-kernel@vger.kernel.org, qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: Re: [PATCH v3 0/5] Change ghes driver to use HEST-based offsets
+Message-ID: <20250108090815-mutt-send-email-mst@kernel.org>
+References: <cover.1733327276.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <CAMxuvazrd+3v2qqO-5o3qpky-ULRTwvU48jkwdxMPZG5c1RA1A@mail.gmail.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.432,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y+rfFc74tnlC
+In-Reply-To: <cover.1733327276.git.mchehab+huawei@kernel.org>
+X-TUID: 1FuhA1e0nIvm
 
-  Hi,
-
-> > The design idea is to reuse the request serialization protocol edk2 uses
+On Wed, Dec 04, 2024 at 04:57:54PM +0100, Mauro Carvalho Chehab wrote:
+> This  series was part of the previous PR to add generic error injection
+> support on GHES. It depends on a cleanup patch series sent earlier
+> today:
 > 
-> I suppose this is a stable protocol. (some parts are set by the UEFI
-> spec probably)
-
-Partly yes, partly this is edk2-internal stuff.  In theory there is some
-freedom to change the internal parts, in practice I have not seen this
-changing in incompatible ways to far.
-
-> There doesn't seem to be a defined way to query either side version or
-> capability, I suppose this could be added later assuming an initial
-> behaviour/magic etc.
-
-There is a 'magic' device register, so should the need arise there is
-the option to define a new magic cookie for incompatible changes.
-
-> > A edk2 test branch can be found here (build with "-D QEMU_VARS=TRUE").
-> > https://github.com/kraxel/edk2/commits/devel/secure-boot-external-vars
+>     https://lore.kernel.org/qemu-devel/cover.1733297707.git.mchehab+huawei@kernel.org/T/#t
 > 
-> ok, perhaps it would be nice to have some basic unit tests in qemu
-> too. Almost none of this new code is exercised by the qemu tests yet.
+> It contains the changes of the math used to calculate offsets at HEST table 
+> and hardware_error firmware file. It prepares for the addition of GHES
+> error injection.
+> 
+> The first patch was previously at the cleanup series. It prepares
+> the logic to support multiple sources.
+> 
+> The second patch adds a new firmware file to store HEST address.
+> 
+> The third patch use the new firmware to calculate offsets using
+> HEST table.
+> 
+> Patches 4 and 5 add migration support. They assume that this
+> series will be merged for qemu 9.2 (maybe it is too late for that,
+> as QEMU is now on soft freeze). 
+> 
+> I tested migration using both virt-9.1 and virt-9.2 machines
+> on qemu 9.2.
 
-I have some unit tests, they are using edk2 though.  So having unit
-tests right from the start is somewhat difficult.  I don't feel like
-re-implementing the guest side of the serialization protocol for the
-qemu unit tests.
+So this needs a rebase to the next release. Thanks!
 
-Once the edk2 changes have landed in a edk2 stable tag and qemu bundled
-firmware has been updated it should be relatively easy to add those
-tests to qemu.  With updated edk2 firmware we can also add some
-end-to-end testing such as booting a fedora cloud image with secure boot
-turned on.
 
-take care,
-  Gerd
+> I also tested migration with:
+> 
+> 	qemu-9.1 -M virt-9.1 -cpu cortex-a57 => qemu-9.2 -M virt-9.1 -cpu cortex-a57
+> 	qemu-9.2 -M virt-9.1 -cpu cortex-a57 => qemu-9.1 -M virt-9.1 -cpu cortex-a57 
+> 
+> The full qemu command when test backward-compatibility when running virt-9.1 is:
+> 
+> 
+> ~/qemu/build/qemu-system-aarch64 \
+> -m 4g,maxmem=8G,slots=8 -monitor stdio -no-reboot -bios ~/emulator/QEMU_EFI-silent.fd -kernel~/kernel/arm64_build/arch/arm64/boot/Image.gz -device pcie-root-port,id=root_port1 -device virtio-blk-pci,drive=hd -device virtio-net-pci,netdev=mynet,id=bob -drive if=none,file=~/emulator/debian.qcow2,format=qcow2,id=hd -object memory-backend-ram,size=4G,id=mem0 -netdev type=user,id=mynet,hostfwd=tcp::5555-:22 -qmp tcp:localhost:4445,server=on,wait=off -M virt-9.1,nvdimm=on,gic-version=3,ras=on -cpu max -smp 4 -numa node,nodeid=0,cpus=0-3,memdev=mem0 -append 'earlycon nomodeset root=/dev/vda1 fsck.mode=skip tp_printk maxcpus=4'
+> 
+> (I actually call it from two different directories, one with qemu-9.1 and the other one with qemu-9.2.
+> 
+> For tests on qemu-9.2 with virt-9.2, I used a similar command:
+> 
+> ~/qemu/build/qemu-system-aarch64 -m 4g,maxmem=8G,slots=8 -monitor stdio -no-reboot -bios ~/emulator/QEMU_EFI-silent.fd -kernel ~/kernel/arm64_build/arch/arm64/boot/Image.gz -device pcie-root-port,id=root_port1 -device virtio-blk-pci,drive=hd -device virtio-net-pci,netdev=mynet,id=bob -drive if=none,file=~/emulator/debian.qcow2,format=qcow2,id=hd -object memory-backend-ram,size=4G,id=mem0 -netdev type=user,id=mynet,hostfwd=tcp::5555-:22 -qmp tcp:localhost:4445,server=on,wait=off -M virt-9.2,nvdimm=on,gic-version=3,ras=on -cpu max -smp 4 -numa node,nodeid=0,cpus=0-3,memdev=mem0 -append 'earlycon nomodeset root=/dev/vda1 fsck.mode=skip tp_printk maxcpus=4'
+> 
+> ---
+> 
+> v3: did some minor cleanups at the code, as suggested by Jonathan Cameron.
+> 
+> v2:
+>   - some whitespace and comment changes
+>   - patch 3/6 (acpi/ghes: rename the function which gets hw error offsets)
+>     was merged on the cleanup series.
+> 
+> Mauro Carvalho Chehab (5):
+>   acpi/ghes: Prepare to support multiple sources on ghes
+>   acpi/ghes: add a firmware file with HEST address
+>   acpi/ghes: Use HEST table offsets when preparing GHES records
+>   acpi/generic_event_device: Update GHES migration to cover hest addr
+>   acpi/generic_event_device: add logic to detect if HEST addr is
+>     available
+> 
+>  hw/acpi/generic_event_device.c |  30 +++++++
+>  hw/acpi/ghes.c                 | 160 +++++++++++++++++++++++++++++----
+>  hw/arm/virt-acpi-build.c       |  33 ++++++-
+>  hw/core/machine.c              |   2 +
+>  include/hw/acpi/ghes.h         |  23 +++--
+>  5 files changed, 220 insertions(+), 28 deletions(-)
+> 
+> -- 
+> 2.47.1
+> 
 

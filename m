@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d80665253dsm25218279a12.0.2025.01.08.04.10.59
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5d80675a6ddsm25004494a12.3.2025.01.08.04.11.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 08 Jan 2025 04:11:02 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 0FBC75F8FD;
+	by draig.lan (Postfix) with ESMTP id 57E845F91D;
 	Wed,  8 Jan 2025 12:10:56 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -52,262 +52,90 @@ Cc: Halil Pasic <pasic@linux.ibm.com>,
 	Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
 	Palmer Dabbelt <palmer@dabbelt.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	Li-Wen Hsu <lwhsu@freebsd.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Subject: [PATCH v4 15/32] tests/functional/aarch64: add tests for FEAT_RME
-Date: Wed,  8 Jan 2025 12:10:37 +0000
-Message-Id: <20250108121054.1126164-16-alex.bennee@linaro.org>
+	Li-Wen Hsu <lwhsu@freebsd.org>
+Subject: [PATCH v4 18/32] tests/functional: remove hacky sleep from the tests
+Date: Wed,  8 Jan 2025 12:10:40 +0000
+Message-Id: <20250108121054.1126164-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250108121054.1126164-1-alex.bennee@linaro.org>
 References: <20250108121054.1126164-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ksufNjeC0u7p
+X-TUID: kwH4nRGYa+5F
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+We have proper detection of prompts now so we don't need to guess with
+sleep() sprinkled through the test. The extra step of calling halt is
+just to flush the final bits of the log (although the last line is
+still missed).
 
-This boot an OP-TEE environment, and launch a nested guest VM inside it
-using the Realms feature. We do it for virt and sbsa-ref platforms.
-
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20241220165212.3653495-1-pierrick.bouvier@linaro.org>
-[AJB: tweak ordering of setup]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
------
-
-v2:
-- move test to its own file
-- add sbsa test
-- check output of `cca-workload-attestation report`
-
-v3:
-- build and run test with cca-v4 images
-- factorize nested guest test between both tests
-- remove accel tcg option as it is the default when running tests
-Note: It's a long test and there is a work in progress to understand why
-debug build is so slow (x12 vs optimized).
-
-v4:
-- use pauth-impdef=on to speed up build time execution (x2.5 faster)
-- increase timeout value
-
-v5:
-- migrate test to new archive_extract helper
-
-v6:
- - archive_extract helper needs explicit format for .tar.gz archives
- - move set_machine/require_accel to the front
 ---
- tests/functional/meson.build                 |  4 +
- tests/functional/test_aarch64_rme_sbsaref.py | 69 ++++++++++++++
- tests/functional/test_aarch64_rme_virt.py    | 98 ++++++++++++++++++++
- 3 files changed, 171 insertions(+)
- create mode 100755 tests/functional/test_aarch64_rme_sbsaref.py
- create mode 100755 tests/functional/test_aarch64_rme_virt.py
+v2
+  - avoid long lines by iterating through an array
+  - drop time import
+v3
+  - fix up on re-base
+  - drop stray import os that had sneaked in
+---
+ tests/functional/test_aarch64_virt.py | 32 +++++++++++++++------------
+ 1 file changed, 18 insertions(+), 14 deletions(-)
 
-diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-index 7890dcb86d..bd3d903cfc 100644
---- a/tests/functional/meson.build
-+++ b/tests/functional/meson.build
-@@ -13,6 +13,8 @@ endif
- test_timeouts = {
-   'aarch64_aspeed' : 600,
-   'aarch64_raspi4' : 480,
-+  'aarch64_rme_virt' : 1200,
-+  'aarch64_rme_sbsaref' : 1200,
-   'aarch64_sbsaref_alpine' : 720,
-   'aarch64_sbsaref_freebsd' : 720,
-   'aarch64_tuxrun' : 240,
-@@ -60,6 +62,8 @@ tests_aarch64_system_thorough = [
-   'aarch64_aspeed',
-   'aarch64_raspi3',
-   'aarch64_raspi4',
-+  'aarch64_rme_virt',
-+  'aarch64_rme_sbsaref',
-   'aarch64_sbsaref',
-   'aarch64_sbsaref_alpine',
-   'aarch64_sbsaref_freebsd',
-diff --git a/tests/functional/test_aarch64_rme_sbsaref.py b/tests/functional/test_aarch64_rme_sbsaref.py
-new file mode 100755
-index 0000000000..93bb528338
---- /dev/null
-+++ b/tests/functional/test_aarch64_rme_sbsaref.py
-@@ -0,0 +1,69 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots a Realms environment on sbsa-ref machine and a
-+# nested guest VM using it.
-+#
-+# Copyright (c) 2024 Linaro Ltd.
-+#
-+# Author: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import time
-+import os
-+import logging
-+
-+from qemu_test import QemuSystemTest, Asset
-+from qemu_test import exec_command, wait_for_console_pattern
+diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
+index 08576b0694..2d9995a95d 100755
+--- a/tests/functional/test_aarch64_virt.py
++++ b/tests/functional/test_aarch64_virt.py
+@@ -10,12 +10,12 @@
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-import time
+ import logging
+ from subprocess import check_call, DEVNULL
+ 
+ from qemu_test import QemuSystemTest, Asset
+-from qemu_test import exec_command, wait_for_console_pattern
 +from qemu_test import exec_command_and_wait_for_pattern
-+from test_aarch64_rme_virt import test_realms_guest
++from qemu_test import wait_for_console_pattern
+ from qemu_test import get_qemu_img
+ 
+ 
+@@ -107,18 +107,22 @@ def common_aarch64_virt(self, machine):
+                          'virtio-blk-device,drive=scratch')
+ 
+         self.vm.launch()
+-        self.wait_for_console_pattern('Welcome to Buildroot')
+-        time.sleep(0.1)
+-        exec_command(self, 'root')
+-        time.sleep(0.1)
+-        exec_command(self, 'dd if=/dev/hwrng of=/dev/vda bs=512 count=4')
+-        time.sleep(0.1)
+-        exec_command(self, 'md5sum /dev/vda')
+-        time.sleep(0.1)
+-        exec_command(self, 'cat /proc/interrupts')
+-        time.sleep(0.1)
+-        exec_command(self, 'cat /proc/self/maps')
+-        time.sleep(0.1)
 +
-+class Aarch64RMESbsaRefMachine(QemuSystemTest):
++        ps1='#'
++        self.wait_for_console_pattern('login:')
 +
-+    # Stack is built with OP-TEE build environment from those instructions:
-+    # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # https://github.com/pbo-linaro/qemu-rme-stack
-+    ASSET_RME_STACK_SBSA = Asset(
-+        ('https://fileserver.linaro.org/s/KJyeBxL82mz2r7F/'
-+         'download/rme-stack-op-tee-4.2.0-cca-v4-sbsa.tar.gz'),
-+         'dd9ab28ec869bdf3b5376116cb3689103b43433fd5c4bca0f4a8d8b3c104999e')
++        commands = [
++            ('root', ps1),
++            ('cat /proc/interrupts', ps1),
++            ('cat /proc/self/maps', ps1),
++            ('uname -a', ps1),
++            ('dd if=/dev/hwrng of=/dev/vda bs=512 count=4', ps1),
++            ('md5sum /dev/vda', ps1),
++            ('halt -n', 'reboot: System halted')
++        ]
 +
-+    # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-+    # and launching a nested VM using it.
-+    def test_aarch64_rme_sbsaref(self):
-+        self.set_machine('sbsa-ref')
-+        self.require_accelerator('tcg')
-+
-+        self.vm.set_console()
-+
-+        stack_path_tar_gz = self.ASSET_RME_STACK_SBSA.fetch()
-+        self.archive_extract(stack_path_tar_gz, format="tar")
-+
-+        rme_stack = self.scratch_file('rme-stack-op-tee-4.2.0-cca-v4-sbsa')
-+        pflash0 = os.path.join(rme_stack, 'images', 'SBSA_FLASH0.fd')
-+        pflash1 = os.path.join(rme_stack, 'images', 'SBSA_FLASH1.fd')
-+        virtual = os.path.join(rme_stack, 'images', 'disks', 'virtual')
-+        drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
-+
-+        self.vm.add_args('-cpu', 'max,x-rme=on,pauth-impdef=on')
-+        self.vm.add_args('-m', '2G')
-+        self.vm.add_args('-M', 'sbsa-ref')
-+        self.vm.add_args('-drive', f'file={pflash0},format=raw,if=pflash')
-+        self.vm.add_args('-drive', f'file={pflash1},format=raw,if=pflash')
-+        self.vm.add_args('-drive', f'file=fat:rw:{virtual},format=raw')
-+        self.vm.add_args('-drive', f'format=raw,if=none,file={drive},id=hd0')
-+        self.vm.add_args('-device', 'virtio-blk-pci,drive=hd0')
-+        self.vm.add_args('-device', 'virtio-9p-pci,fsdev=shr0,mount_tag=shr0')
-+        self.vm.add_args('-fsdev', f'local,security_model=none,path={rme_stack},id=shr0')
-+        self.vm.add_args('-device', 'virtio-net-pci,netdev=net0')
-+        self.vm.add_args('-netdev', 'user,id=net0')
-+
-+        self.vm.launch()
-+        # Wait for host VM boot to complete.
-+        wait_for_console_pattern(self, 'Welcome to Buildroot')
-+        exec_command_and_wait_for_pattern(self, 'root', '#')
-+
-+        test_realms_guest(self)
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
-diff --git a/tests/functional/test_aarch64_rme_virt.py b/tests/functional/test_aarch64_rme_virt.py
-new file mode 100755
-index 0000000000..42b9229b4c
---- /dev/null
-+++ b/tests/functional/test_aarch64_rme_virt.py
-@@ -0,0 +1,98 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots a Realms environment on virt machine and a nested
-+# guest VM using it.
-+#
-+# Copyright (c) 2024 Linaro Ltd.
-+#
-+# Author: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+import time
-+import os
-+import logging
-+
-+from qemu_test import QemuSystemTest, Asset
-+from qemu_test import exec_command, wait_for_console_pattern
-+from qemu_test import exec_command_and_wait_for_pattern
-+
-+def test_realms_guest(test_rme_instance):
-+
-+    # Boot the (nested) guest VM
-+    exec_command(test_rme_instance,
-+                 'qemu-system-aarch64 -M virt,gic-version=3 '
-+                 '-cpu host -enable-kvm -m 512M '
-+                 '-M confidential-guest-support=rme0 '
-+                 '-object rme-guest,id=rme0 '
-+                 '-device virtio-net-pci,netdev=net0,romfile= '
-+                 '-netdev user,id=net0 '
-+                 '-kernel /mnt/out/bin/Image '
-+                 '-initrd /mnt/out-br/images/rootfs.cpio '
-+                 '-serial stdio')
-+    # Detect Realm activation during (nested) guest boot.
-+    wait_for_console_pattern(test_rme_instance,
-+                             'SMC_RMI_REALM_ACTIVATE')
-+    # Wait for (nested) guest boot to complete.
-+    wait_for_console_pattern(test_rme_instance,
-+                             'Welcome to Buildroot')
-+    exec_command_and_wait_for_pattern(test_rme_instance, 'root', '#')
-+    # query (nested) guest cca report
-+    exec_command(test_rme_instance, 'cca-workload-attestation report')
-+    wait_for_console_pattern(test_rme_instance,
-+                             '"cca-platform-hash-algo-id": "sha-256"')
-+    wait_for_console_pattern(test_rme_instance,
-+                             '"cca-realm-hash-algo-id": "sha-512"')
-+    wait_for_console_pattern(test_rme_instance,
-+                             '"cca-realm-public-key-hash-algo-id": "sha-256"')
-+
-+class Aarch64RMEVirtMachine(QemuSystemTest):
-+
-+    # Stack is built with OP-TEE build environment from those instructions:
-+    # https://linaro.atlassian.net/wiki/spaces/QEMU/pages/29051027459/
-+    # https://github.com/pbo-linaro/qemu-rme-stack
-+    ASSET_RME_STACK_VIRT = Asset(
-+        ('https://fileserver.linaro.org/s/iaRsNDJp2CXHMSJ/'
-+         'download/rme-stack-op-tee-4.2.0-cca-v4-qemu_v8.tar.gz'),
-+         '1851adc232b094384d8b879b9a2cfff07ef3d6205032b85e9b3a4a9ae6b0b7ad')
-+
-+    # This tests the FEAT_RME cpu implementation, by booting a VM supporting it,
-+    # and launching a nested VM using it.
-+    def test_aarch64_rme_virt(self):
-+        self.set_machine('virt')
-+        self.vm.set_console()
-+        self.require_accelerator('tcg')
-+
-+        stack_path_tar_gz = self.ASSET_RME_STACK_VIRT.fetch()
-+        self.archive_extract(stack_path_tar_gz, format="tar")
-+
-+        rme_stack = self.scratch_file('rme-stack-op-tee-4.2.0-cca-v4-qemu_v8')
-+        kernel = os.path.join(rme_stack, 'out', 'bin', 'Image')
-+        bios = os.path.join(rme_stack, 'out', 'bin', 'flash.bin')
-+        drive = os.path.join(rme_stack, 'out-br', 'images', 'rootfs.ext4')
-+
-+        self.vm.add_args('-cpu', 'max,x-rme=on,pauth-impdef=on')
-+        self.vm.add_args('-m', '2G')
-+        self.vm.add_args('-M', 'virt,acpi=off,'
-+                         'virtualization=on,'
-+                         'secure=on,'
-+                         'gic-version=3')
-+        self.vm.add_args('-bios', bios)
-+        self.vm.add_args('-kernel', kernel)
-+        self.vm.add_args('-drive', f'format=raw,if=none,file={drive},id=hd0')
-+        self.vm.add_args('-device', 'virtio-blk-pci,drive=hd0')
-+        self.vm.add_args('-device', 'virtio-9p-device,fsdev=shr0,mount_tag=shr0')
-+        self.vm.add_args('-fsdev', f'local,security_model=none,path={rme_stack},id=shr0')
-+        self.vm.add_args('-device', 'virtio-net-pci,netdev=net0')
-+        self.vm.add_args('-netdev', 'user,id=net0')
-+        self.vm.add_args('-append', 'root=/dev/vda')
-+
-+        self.vm.launch()
-+        # Wait for host VM boot to complete.
-+        wait_for_console_pattern(self, 'Welcome to Buildroot')
-+        exec_command_and_wait_for_pattern(self, 'root', '#')
-+
-+        test_realms_guest(self)
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
++        for cmd, pattern in commands:
++            exec_command_and_wait_for_pattern(self, cmd, pattern)
+ 
+     def test_aarch64_virt_gicv3(self):
+         self.common_aarch64_virt("virt,gic_version=3")
 -- 
 2.39.5

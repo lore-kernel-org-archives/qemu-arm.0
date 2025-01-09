@@ -1,243 +1,174 @@
-Received: by 2002:a05:7022:43a6:b0:92:a90b:6588 with SMTP id bo38csp1318119dlb;
-        Thu, 9 Jan 2025 02:57:34 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX1fSB0VMpo0EdZbAJ4SlExD6Duwdcfa82BRFPR9A98YGGAxbvDaA+vSZ6+q7/o0xSf0Z7r5LEZqyf1RQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEDsiOLGoQXezQx/2lQeaBKibmKzGdbiGbhhyBpO+8klFJTA79AiJqF4yg9iefK+76STBK7
-X-Received: by 2002:a05:620a:1a28:b0:7b6:da92:fcd0 with SMTP id af79cd13be357-7bcd9727ae2mr864196685a.8.1736420253767;
-        Thu, 09 Jan 2025 02:57:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736420253; cv=none;
+Received: by 2002:a05:7022:43a6:b0:92:a90b:6588 with SMTP id bo38csp1346220dlb;
+        Thu, 9 Jan 2025 03:56:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV7aDJIG/TIC+lvx68dRDV2LYqGrOuICZxGc4CaG51ONfcTpQaemosh8lBd+VkiZFoPV/d83fgRSrSHXg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFJZCnRJMkEGFlCvhIsz+Prsurps+d+1Cjec8APPqvibdousTHIwZ3gVEwpFXt3C1dS4gh8
+X-Received: by 2002:a05:622a:1a8d:b0:467:8765:51bb with SMTP id d75a77b69052e-46c7107e0a9mr94904331cf.37.1736423813723;
+        Thu, 09 Jan 2025 03:56:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736423813; cv=none;
         d=google.com; s=arc-20240605;
-        b=cDgSk+GpdcDmCveB73yDjeyB67ljAJJM9+4xP7z+oyTLBpkZzocHQrO8CCcyKxeVlE
-         wY5xi6r85mmjCAE4ucYQkz9sNhf4QEgKV+fumQcdZvv+ziyndutVfpzlmERnga/moHCa
-         ETKAkOY+CC6lkZtvDue2kG8HMSgxQ2RQddjtv5RB/bZHmumlM95YfoA0k/hPLTzPh8Ds
-         qe/1YzRQ9GG8Vw72xcNNXYEEMnM9XtX1ZnTclF8JIUEu+IIuLfmdSSb3JM7FvMijVNjc
-         xcG1ZSyx1XozjoEXRrsaitI7jXeudApwiXvZsAzK698hr5osGbZhPtp7Nzchf/jHp54y
-         m2GQ==
+        b=ahCLdiB4RFcw545lpUuNAnyqJyN5mLpBA+wRKVPnG2vN4MLCsouIOfBBXAF9GECLQ+
+         2AVNRn7blo5ojGBBX24+pg8GOeAXeNHOjZapQTlY7hX/aFMkcR2Ev4NYlg1s46rW9SuI
+         2/sK59b2+vOpyy4PbE0iMi0VtKfCyQwTI2/KJYMQqyagBs8MQosg2mqW8N3kn6qXJqRe
+         qSpnCP93pzePsJmAYG8Roo8MtvBZsJxod8+8VBQOMRrn0eKwZEZ7W+O8a8JoOleJtx7d
+         S9heHaeo9Rzb78K49q4vmKdgOHx+vXgQsoiJ9NOKZQDSE7ifCw7ngySKH0jddx1yqSjr
+         9EuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=QZizyE+sqVqNzd/4+/3++039N742rp8OayC2oGAAPnk=;
-        fh=7HSU5Yo7rYdJ3iZOvEO1YpDyfFO/1B1x2X2j0NNSKeQ=;
-        b=UHSzrqxTZtEw3L2Un+3z+PB0LC3NqZhO9FZ1iODWYR+18O5AJGmTxPLj9oxTRB8kZR
-         sDl5V+y5Zz3hAJI22aFa5NzWm+K8cQ7w4X05ATwmrIC9JM8Yaa0rTDb7/gKvTm10KHEo
-         qZjvnlPKkpQuS6gJmNxV3xAerG2aJsATUHdb175j/vA23Fz2tnxDixSqxyfNwNSdHZgY
-         7gMySfP2KH4ab5G5lvSImFibV3JKJ9mHYr9iki/AIZ8bK6gkGT5u12rEaQzZzPx6W7DX
-         VkYz/XmDpxNZYMmtudfzj4qlFaSyI91vHlZPAgEJBhme7VDCBdmwCazWVn1uBpWSSnQf
-         b0tA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:content-language:references:cc:to:from:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=O9VXFn6cDlg2KNMj4juv3MUjuu4wI/ay9QGJ5CBzEV8=;
+        fh=6m2hIpgnxC3SLKAtp/RCKLnKCRYBCfdT66i+4bH8gxA=;
+        b=k3wMovz1QQ3Jkna7EyaZjJG+CFKhWVik6DLKZD/G3OvWDrEBcYPBfLQsYZBCkMxPoC
+         brrE6ulvlvHUgrXKNF5Snq9xLP86I06bb0yEsFI8mTjw+adST28u8B3HkPMPgx/72FML
+         IYVBmjHZmyV3cqceD1XUHaOl2xyKrooe6P0FvWulkVNZHd7lHnaiTKWVopc6aK4jBDXk
+         DPvDjjW8/C7GdyrZ7HJqx7Xp2hGo1wpWE8hIKn+Oo05i3+jWnEW0rF5hLRC0Gi3/FFTC
+         u1NGszFuaiQG+vAE+NDziTH9eE6EvJPPLLRMFTncEMJ9obcRLoDnT7yW8cMTW/Py8lN7
+         CVfw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=K9TF3Csw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ny8U9f7G;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7bce322a560si130341585a.65.2025.01.09.02.57.33
+        by mx.google.com with ESMTPS id d75a77b69052e-46a3eb99487si46324481cf.266.2025.01.09.03.56.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2025 02:57:33 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 09 Jan 2025 03:56:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@sifive.com header.s=google header.b=K9TF3Csw;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=sifive.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Ny8U9f7G;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVqDy-0000i3-B7; Thu, 09 Jan 2025 05:57:14 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tVr9G-0001Fh-KB; Thu, 09 Jan 2025 06:56:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jason.chien@sifive.com>)
- id 1tVqDw-0000hT-N0
- for qemu-arm@nongnu.org; Thu, 09 Jan 2025 05:57:12 -0500
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVr9E-0001Ev-Oy
+ for qemu-devel@nongnu.org; Thu, 09 Jan 2025 06:56:24 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jason.chien@sifive.com>)
- id 1tVqDu-00008j-Tp
- for qemu-arm@nongnu.org; Thu, 09 Jan 2025 05:57:12 -0500
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-5d982de9547so1310599a12.2
- for <qemu-arm@nongnu.org>; Thu, 09 Jan 2025 02:57:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVr9D-0002aL-80
+ for qemu-devel@nongnu.org; Thu, 09 Jan 2025 06:56:24 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4363ae65100so9151005e9.0
+ for <qemu-devel@nongnu.org>; Thu, 09 Jan 2025 03:56:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=sifive.com; s=google; t=1736420228; x=1737025028; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=QZizyE+sqVqNzd/4+/3++039N742rp8OayC2oGAAPnk=;
- b=K9TF3CswzFn28cESMU64Ycq7JnPREaoAGT0FBP0bH0U1vmSCAuPdZ92Z3UtqeiDUyc
- uJ38OMnWnGgyIpjxNFZgp2SlZP87GZOknHvcBnUldnG1gz6+3E1RzEhi+VfP6m5OeU7Z
- j4n5fY8hqW+e/nLakZfrVYM60R9yk7xJ6u/zE4znhDkbGbUApGgSdUJhX+A1k2gx83sT
- ofJz+KxNDrNPXP/o0sR/0bPCegRbvdIwDSiarV4lwey4/itmCUmB5z7LqpKgl9TMdG37
- YlB351KAxNpWFZw1l4nfOjJgprSRLJ3lkprIAETJYJL/ynW9A8bSaFFHrovrGLuzsIU6
- WUaA==
+ d=linaro.org; s=google; t=1736423781; x=1737028581; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=O9VXFn6cDlg2KNMj4juv3MUjuu4wI/ay9QGJ5CBzEV8=;
+ b=Ny8U9f7GGH31KEhtQs1br/F3NZHOfTsg1regJGFhczY+yvlpNThsyA/YTiHSCwrGQj
+ bzplQVXN/noVAoBMdRAhX8/RHy8XJ2la03U+R9fhUHdwa6Ag+X22MRRZ5UUCwz4sXhMu
+ xzstghwxddnVSGyD5wIlNRUL5FMc9EZu7jKHySHXS6bFW1JxJ31QnxAd3eBodXICIvSm
+ tJFNXzR7vO1mhuEQh4iJa6C0zHDLi+ZJp3tcyLRqLcdK90x8y0+EEkjsQwt7Bt2K1yz1
+ DvdrTuPismexjL8R+YgPIzNuif8rX772qJaRlCMEiPJZ4/fYHUTakz6iODLNI+ff63z+
+ 6n+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736420228; x=1737025028;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=QZizyE+sqVqNzd/4+/3++039N742rp8OayC2oGAAPnk=;
- b=uAzw95KuvuZt9Vs6kiZFUcSe39EDubo4l5bgeil1oMpIGmIwSqjq1XhCFvrvtNkjVn
- e6hpznRT4+caDnynG1NmVfabeOu8gJ+N6qThq8u5DJGz5lbubCO2DmZ5OiBgz+6fobQp
- X970PcXZz/+rzoCU+kSq5glnROT5BRzFuXLqFLmrcsdn4Im8u7t77TVnRhN0nsFwbgTD
- ZAmvOAMmf31bRR6fcK1N8c38XiUNyeFu5ZwbnrAe/iVuxFfBJWDgbrQO/3krWz2GvYdg
- Tv7mENaNgXDFGf+ZjHXEtCYTdn5LQd5E4ZeHl2VPJUoCVK/yrfGfmqndWtT/iqRq7/cs
- o2+g==
+ d=1e100.net; s=20230601; t=1736423781; x=1737028581;
+ h=content-transfer-encoding:in-reply-to:content-language:references
+ :cc:to:from:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=O9VXFn6cDlg2KNMj4juv3MUjuu4wI/ay9QGJ5CBzEV8=;
+ b=ZskRqOgJ4fo9NTO32y+/TLuxQP9kj5pbyqavyJv09q4e+9HgP9xZJ2Hi3W/L/Mi7w8
+ lWsOTwzDnmHeQ1d3kCf9MZKLf7QcGRJcfYJ/tkppT0d5LXE91BGg4HkmUXjJw9pXCs+e
+ IU6kSEm/dm5Ey/CpsxDyviVsZZ79orYE0vXr2S84veX06nhPBNuiJ7emKB2dEVxidvdq
+ SnhX1pOaYlCi6m2MZKfOwf1KBMkDz/DrEnby2i25eEgKv2+zZdiklqgQr2NKP8gxl6HR
+ Lj32fGh4+E0aWttBq/sfOJUUPwiXnOa2/5wtlYhwTHu/Lg1DWapP75+ACIwEsJc3N4/1
+ HlyQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWQYWtn/bNuXlG6Vo8Nj8cr0gEhXjvR4gnPts6QX51dXd+wLN3vcP2kQX/wvCRNpVqTlfRDqdC+NA==@nongnu.org
-X-Gm-Message-State: AOJu0YzVkO7ojtRQoYFl0G2B9N2qmyeReO93BjAVCPZ2bZXRBsqJreE+
- cCwwe2oolsJgwZhYBXuPrxRc9F+9IdZhjVOQdsglfFvfkpPAOZlQKoMrpS09/AobbA/gxJ0mk3J
- 55bimcDscaOCyYthEIiGP7FaLkRb28eHzj4R/EA==
-X-Gm-Gg: ASbGnctcSWdecUCUNFmIbLQOVEZXspcuNFCgd3HhPlOUqsyOM8gw3420P4bPE/WosYe
- oqwPqt6MQPeHQ6BsVTqzHjzlG4QO+TmNDcZPiXnua
-X-Received: by 2002:a05:6402:4415:b0:5d1:1f1:a283 with SMTP id
- 4fb4d7f45d1cf-5d972df6fecmr5421704a12.4.1736420228620; Thu, 09 Jan 2025
- 02:57:08 -0800 (PST)
+ AJvYcCWD9jV4xI+Sbkirzpn+J8nO0Cx3a+CTbCs2pIqncOkHpZLh3oT/HS8YHiBEbmNhitAyx5AzMz11xqCO@nongnu.org
+X-Gm-Message-State: AOJu0Yya9Viqtked9HgP8ZUt7a5fUnkcy6yspRy/+Fo42Q9eFnbWDWw3
+ c303oHMlpYIFkWt0eskxd/6gmxCn09SKZ3M2DbvKEOgRrgAZGAuL13Evd5Nj+jg=
+X-Gm-Gg: ASbGncuHDem2YF9F6hTi2cfb5IOk8OwLdTeEO6cr+EjaNXqNXxONoODPwrXd+remnW3
+ g1rOT+yzYajJy5u3fddibJSHDaSFKr0ZG1C6Yxgw7gjutLorIHGLg98RTajEyQ9fy1UuqTNlFiy
+ Bk/crOBs4PDfXiFHfKMfPXrvmh9v2Gh9aEOxGujSUlvp+Tk6o4tOIYj1n3c5Jc+XpirC7BCs/a2
+ 6vpxEUtj3gZyNpO5zVspk2o0rXCPPu67WlluoysWyfZMY2k8xSLWC8CdcOI1O0O4zHkiwDfRB/H
+ V4C9m6si3iF5qWP+pgbzveTW
+X-Received: by 2002:a05:600c:4586:b0:434:f817:4492 with SMTP id
+ 5b1f17b1804b1-436e26f47f9mr66556085e9.31.1736423781255; 
+ Thu, 09 Jan 2025 03:56:21 -0800 (PST)
+Received: from [192.168.69.102] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-436e2da66e6sm53380935e9.4.2025.01.09.03.56.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 09 Jan 2025 03:56:20 -0800 (PST)
+Message-ID: <258e62c4-9e7f-432c-ace2-a5c459d8e016@linaro.org>
+Date: Thu, 9 Jan 2025 12:56:19 +0100
 MIME-Version: 1.0
-References: <20241216004857.9367-1-jason.chien@sifive.com>
-In-Reply-To: <20241216004857.9367-1-jason.chien@sifive.com>
-From: Jason Chien <jason.chien@sifive.com>
-Date: Thu, 9 Jan 2025 18:56:57 +0800
-X-Gm-Features: AbW1kvYz0C0jE49uTCElGy3vKnqKd2DkiKC61hXIFIqabUQVa4biuyRfrxbeJz8
-Message-ID: <CADr__8pzZ2+H1g0SZWqjYqRLf_gaeNYQ+ATNyYZLBtaqQDkhTA@mail.gmail.com>
-Subject: Re: [RFC PATCH 0/6] Avoid contention for PCIIOMMUOps between IOMMU
- and PCIe host
-To: qemu-devel@nongnu.org, qemu-riscv@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Bin Meng <bmeng.cn@gmail.com>, Weiwei Li <liwei1518@gmail.com>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- "open list:MCIMX7D SABRE / i..." <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000e88b3a062b43d600"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=jason.chien@sifive.com; helo=mail-ed1-x52b.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/14] hw/i2c/imx_i2c: Convert DPRINTF() to trace events
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
+ Markus Armbruster <armbru@redhat.com>
+Cc: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
+ Guenter Roeck <linux@roeck-us.net>, Andrey Smirnov
+ <andrew.smirnov@gmail.com>, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20250108092538.11474-1-shentey@gmail.com>
+ <20250108092538.11474-13-shentey@gmail.com>
+ <696c9a80-7311-4a95-ab3c-f85bc0b38e6e@linaro.org>
+Content-Language: en-US
+In-Reply-To: <696c9a80-7311-4a95-ab3c-f85bc0b38e6e@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: iGLXi5LTPpw5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: s87YEpB7DVRV
 
---000000000000e88b3a062b43d600
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 9/1/25 12:43, Philippe Mathieu-Daudé wrote:
+> On 8/1/25 10:25, Bernhard Beschow wrote:
+>> Also print the MMIO address when tracing. This allows to 
+>> distinguishing the
+>> many instances a typical i.MX SoC has.
 
-Ping.
+I'm not a fan of using peripheral address access, because it
+can change i.e. when a vCPU is accessing it from secure or
+non-secure mode.
 
-Jason Chien <jason.chien@sifive.com> =E6=96=BC 2024=E5=B9=B412=E6=9C=8816=
-=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=888:49=E5=AF=AB=E9=81=93=EF=BC=
-=9A
+I'd rather use an 'id', a 'name' or even the QOM (canonical?)
+path.
 
-> When PCIIOMMUOps.get_address_space() is already registered by the pci hos=
-t,
-> e.g. TYPE_DESIGNWARE_PCIE_HOST, IOMMU cannot overwrite this hook without
-> breaking the PCIe translation rule, which means that IOMMU and the pci ho=
-st
-> cannot coexist.
->
-> This RFC introduces a new callback, PCIIOMMUOps.set_memory_region(), and
-> an API, pci_setup_iommu_downstream_mem, to avoid the contention for
-> PCIIOMMUOps.get_address_space().
->
-> Jason Chien (6):
->   include/hw/pci: Add a callback to set the downstream memory region of
->     a pci bus
->   hw/pci: Add an API to set the downstream memory region of a PCI bus
->   hw/pci-host: Enable DW PCIe host to send memory transactions over
->     specific mr
->   hw/riscv/riscv-iommu: Allow PCI hosts with iommu_ops registered
->     connecting to the IOMMU
->   hw/riscv/riscv-iommu: Acquire device IDs dynamically
->   include/hw/pci: Send PCI dma requests with memory attributes
->     containing BDF
->
->  hw/pci-host/designware.c         | 18 +++++++++++++++---
->  hw/pci/pci.c                     |  6 ++++++
->  hw/riscv/riscv-iommu.c           | 21 +++++++++++++++++++--
->  include/hw/pci-host/designware.h |  2 ++
->  include/hw/pci/pci.h             | 20 ++++++++++++++++++++
->  include/hw/pci/pci_device.h      | 15 ++++++++++++---
->  6 files changed, 74 insertions(+), 8 deletions(-)
->
-> --
-> 2.43.2
->
->
+Maybe we should directly cache that as Device::qom_path, so
+all devices can use it for tracing, and we don't need to set
+an id/name property when creating the device...
 
---000000000000e88b3a062b43d600
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+>> ---
+>>   hw/i2c/imx_i2c.c    | 21 +++++----------------
+>>   hw/i2c/trace-events |  5 +++++
+>>   2 files changed, 10 insertions(+), 16 deletions(-)
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-<div dir=3D"ltr">Ping.</div><br><div class=3D"gmail_quote gmail_quote_conta=
-iner"><div dir=3D"ltr" class=3D"gmail_attr">Jason Chien &lt;<a href=3D"mail=
-to:jason.chien@sifive.com">jason.chien@sifive.com</a>&gt; =E6=96=BC 2024=E5=
-=B9=B412=E6=9C=8816=E6=97=A5 =E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=888:49=E5=
-=AF=AB=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">When PCIIOMMUOps.get_address_space() is already registered by th=
-e pci host,<br>
-e.g. TYPE_DESIGNWARE_PCIE_HOST, IOMMU cannot overwrite this hook without<br=
->
-breaking the PCIe translation rule, which means that IOMMU and the pci host=
-<br>
-cannot coexist.<br>
-<br>
-This RFC introduces a new callback, PCIIOMMUOps.set_memory_region(), and<br=
->
-an API, pci_setup_iommu_downstream_mem, to avoid the contention for<br>
-PCIIOMMUOps.get_address_space().<br>
-<br>
-Jason Chien (6):<br>
-=C2=A0 include/hw/pci: Add a callback to set the downstream memory region o=
-f<br>
-=C2=A0 =C2=A0 a pci bus<br>
-=C2=A0 hw/pci: Add an API to set the downstream memory region of a PCI bus<=
-br>
-=C2=A0 hw/pci-host: Enable DW PCIe host to send memory transactions over<br=
->
-=C2=A0 =C2=A0 specific mr<br>
-=C2=A0 hw/riscv/riscv-iommu: Allow PCI hosts with iommu_ops registered<br>
-=C2=A0 =C2=A0 connecting to the IOMMU<br>
-=C2=A0 hw/riscv/riscv-iommu: Acquire device IDs dynamically<br>
-=C2=A0 include/hw/pci: Send PCI dma requests with memory attributes<br>
-=C2=A0 =C2=A0 containing BDF<br>
-<br>
-=C2=A0hw/pci-host/designware.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 18 ++++++=
-+++++++++---<br>
-=C2=A0hw/pci/pci.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0|=C2=A0 6 ++++++<br>
-=C2=A0hw/riscv/riscv-iommu.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 21 +=
-++++++++++++++++++--<br>
-=C2=A0include/hw/pci-host/designware.h |=C2=A0 2 ++<br>
-=C2=A0include/hw/pci/pci.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
- 20 ++++++++++++++++++++<br>
-=C2=A0include/hw/pci/pci_device.h=C2=A0 =C2=A0 =C2=A0 | 15 ++++++++++++---<=
-br>
-=C2=A06 files changed, 74 insertions(+), 8 deletions(-)<br>
-<br>
--- <br>
-2.43.2<br>
-<br>
-</blockquote></div>
-
---000000000000e88b3a062b43d600--

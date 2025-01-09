@@ -1,191 +1,136 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp1310272njb;
-        Wed, 8 Jan 2025 20:47:01 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCU8zbpFow+ihMjT6wWEafcI42puMp0kYd+25VrYN1BUyOvhkrcF2fhD923YQKGjmZ+VQlk4MS89MxtZPw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFD743b2+isAl0MmJEbzDlsNaAhEeDiJBhBJeL8r3ZosIt8LiryCjHB2z0506QcOI6KV+Oc
-X-Received: by 2002:a05:620a:2892:b0:7b6:6d99:ecfc with SMTP id af79cd13be357-7bcd9612ea9mr287802385a.0.1736398021184;
-        Wed, 08 Jan 2025 20:47:01 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1736398021; cv=pass;
+Received: by 2002:a05:7022:43a6:b0:92:a90b:6588 with SMTP id bo38csp1230945dlb;
+        Wed, 8 Jan 2025 23:02:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXGjlIyBp1KVKHObpKVJXeUmukRzsZUhc7DyKXgwFQgpjyl14DmErVefaGeUMa/a77oIrZe/xyoKMLolg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFxO4dKdWhbsNBLkGTjzw7Ra2fW6qAYV5/tIIovKieHLxUf9RWiQkzA+TTPjNj71wmZVnpt
+X-Received: by 2002:a05:622a:4207:b0:46c:72b7:2f12 with SMTP id d75a77b69052e-46c72b72f49mr70225591cf.48.1736406143003;
+        Wed, 08 Jan 2025 23:02:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736406142; cv=none;
         d=google.com; s=arc-20240605;
-        b=clGvAfoh8FdeZ0OfJLN4wEK8mu90uBX6wOzbLs5N8Bz4BTflx+66qg2aSRY7tvB6lY
-         exH9zEPgDWA197FsXU+eBdP7Oqtsz0r+b3KtCc5+mHVzWJESuJoKSEvipA746NMYT2HP
-         53+f1ZucyypAMJHVNoO9AVL9J0Axyp1ZOjop7DTdDtsmfPVA2/0cuifag8uce59YD8v9
-         WCYuubhmAX/a8saTt3+jmHsDYCLWUQ3GDeQsM2KmDb4llkMjS+TxjtPkfyQ1YhVIwYW5
-         8B9rxGKSIQMiPiaD4uYPHELcC8H32ie7pvHWfRhhu9+M87A6Gj7fkvU4BYuX3IrlkYI5
-         9azA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=XfjyGejTmDprkr7xhOcESHeRHkbXM+htD8Vxs2/PP54YNQY1Zef52tNSGgXApPraDk
+         1IrGOcAmYVPrj4aUJrGzHQfdF539wrr3DtnhjUXMRUaMyjkeU+QjTB++E+o+8eAbvUI/
+         +NTAcEMAhvlOks4udyFzAQRKlV4oVPsR7ib68uGC0s/fG+Ry6m5/Z9KzNTngM3Zt0aI5
+         mTei8YKyuOwEtdGI99dFNl/nVreW1jNlCVclWtBEK3mh0E56BJuIousE/KByiYlMIwYh
+         /1MPXMRkRzWP9cs2u3exxJyZblU7Nimj6sXMeAcf8y777INHQLojVl7B6O8HkI4uVRtU
+         5dVA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=/VKugY0r9/UYwcd1ONcANQwZQVI6z9tEu6xMvbAWScQ=;
-        fh=EwC8kIn80ru4gn8n74xRFnzSTidz7i9BQBaRuc/HUAI=;
-        b=QegNw7bTUORn9psSoAogyKwrlmN0g+tfnPFGvBaay9cgr9+O+ptl+3x9HhNrt+Y0Sc
-         FWm0Vlu+FAkuKbq8dQSffliDRKYZJyjIEsJts2YHQNWTwWcVcwsfOeD1VmZzhjG/908i
-         1ou8PE2+PvoCD9t3CY9F1G3G3u5ww6JcyvHxOaAGgeMxDkLdLt1U8+gcsEzHuTZjDnQG
-         lZSD4BzPCrPMpLdHuS5DBwoN/WVwcE+h5zZCuKpE7WoUZkvtXtKZMuL/9KmqjZylNash
-         qeXf3vOz+Y2s1vfa3kO8WhXfROOWtU6Xc+OethBj1bL7cxFyLcx/TwK4dLvo+0qy594k
-         RmhA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=hkXwJqbZRcrIhAqHMQ/VM+SPIJAKgRb5HqsvblM+lEU=;
+        fh=Is4g3g4ku74GO21+CD/gmzeWoS3SQ5PDsJc6dCVQo1E=;
+        b=IcrbzOlMtVR+XlFRRT0maKHz/3fSFgfZ6ahurDHmV5Jy4T9nFEri7Mx2xCNxvI3sC0
+         lp8RPw5pYKRt3q4EEG6q62lQrXfosHRNzwstoA8e+zpv43yn3lQCfsEEkSOTDmqhRPlD
+         c43upJeaRAxpK/x788To+DtjFCv/yFFwrLSxpdA8t5aO/m7EG/rx70h/KtcQRQBfciUE
+         tbxlNqe4GFOwcBIOwX/ecIoPV2Hzsq+QtkKLnUezzVg+eGXUIHZep/P2T3tGsD6mOf4H
+         8pPK93vmJS+x7jzBel6HXbk5w1I4+hiAIxDC5GqtYHF303FqAqJ8XeqDJUFNwPNnv/4e
+         N32Q==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=cJU85qbU;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7bce322a7a0si82534685a.90.2025.01.08.20.47.01
+        by mx.google.com with ESMTPS id d75a77b69052e-46a3ebc08c7si472609541cf.476.2025.01.08.23.02.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 08 Jan 2025 20:47:01 -0800 (PST)
+        Wed, 08 Jan 2025 23:02:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=cJU85qbU;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVkR7-0002Te-Je; Wed, 08 Jan 2025 23:46:25 -0500
+	id 1tVmYW-0008Px-Aj; Thu, 09 Jan 2025 02:02:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1tVkR5-0002TP-Qp; Wed, 08 Jan 2025 23:46:23 -0500
-Received: from mail-dm6nam11on20603.outbound.protection.outlook.com
- ([2a01:111:f403:2415::603]
- helo=NAM11-DM6-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <SRS0=H8xH=UB=kaod.org=clg@ozlabs.org>)
+ id 1tVmYU-0008Pa-UP; Thu, 09 Jan 2025 02:02:11 -0500
+Received: from mail.ozlabs.org ([2404:9400:2221:ea00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
- id 1tVkR3-0005of-Pv; Wed, 08 Jan 2025 23:46:23 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=PaHeDuGSoHWQbBpOCMCOpbWpb0pJn297QhChwQzJr2enoVb1WyDt1x7Owl5lP3Hnn8urBjjwcqEqlEZgH9lEL8FT2QCWqTWiIhd/6VAtkXNRxzTGuMVMyd7MU49f/SQCuIaCtV528Zw28tvg8M6CX8Yt3WQ0WzyA/laEgfUsNtzg0/vFbpr6iZOQ3gu00Vgc2Hnnf6yQyFF3RKgL6HlqhYuA7WZVOK9NMPnR/zEKHAtyHes2pLYRjDlLAPK+Fw3fuXSFGDHSbT2ro1QIZRFoQCCWv/dp45Jt+wZUfvQGq4XpjUv+54Mwip/xnusyAvnmTVMxpCTz2XwX3x5y8rxd6g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/VKugY0r9/UYwcd1ONcANQwZQVI6z9tEu6xMvbAWScQ=;
- b=XPxkQLV1aBm/T8F4t+u1/TdDI5xPvJYwnefvYnntIhHKgmBv2do59QxADmQacqOiNCZ0fnr7jz8iJQb4gK0ufbXrf6pcZXF8PAebuzFXXjBjAVsQLlDqu5TiMQxBmShcoPF2OnUZKBORfUohnVEeZymS/GEhxTDhz0MojHg+3BIEOUoOEWkHI2CmrKXy7xp/R4g3yI0K6lHeKiNtuUejNNtYnn7JGT1W07wupU+F6ZEAw7HAqusOwKTDB+MiAXw7+cD+QRsxsu2oX8FZlI2ffv5P7ouMrlS0R0S7PtKurbytJGAcfn0FZPcryciljj6Qc6hETT1t/rbqM4X3mZ+5yA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=huawei.com smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/VKugY0r9/UYwcd1ONcANQwZQVI6z9tEu6xMvbAWScQ=;
- b=cJU85qbUzZvYsvevtJcHGAkdW5DWtM7pU2/ci3VYpAnb2xC3o8nfFIJJjN6wfQDOxJaqkho2K2UwR97CvI1RYwTx1cDHS670OVmXbRDrEZlNQdZjZs5fp4vBgV8EZyxZ70XONmq232Gw+s7AeduWPhyJjEkVailsGt5qRuDuVyC3gXFEDi/teRygxMqWBU0R3WU7ko4eCDINTgQ1w3LK0+fNyQg4vHinY0s9sRPuFDi9ZKluuIyT7hquQyCZsAJ41BG5yE5A02uRoDAXogTfBJI6ulIELKtuU2gkSxi9fN4h1H/S/mYl4uyto8jDSNueEDJATxvLJvNgfC8+PqGkEw==
-Received: from DM6PR07CA0121.namprd07.prod.outlook.com (2603:10b6:5:330::33)
- by MW4PR12MB7120.namprd12.prod.outlook.com (2603:10b6:303:222::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8335.11; Thu, 9 Jan
- 2025 04:46:09 +0000
-Received: from DS3PEPF0000C37D.namprd04.prod.outlook.com
- (2603:10b6:5:330:cafe::9a) by DM6PR07CA0121.outlook.office365.com
- (2603:10b6:5:330::33) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.8335.11 via Frontend Transport; Thu,
- 9 Jan 2025 04:46:09 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- DS3PEPF0000C37D.mail.protection.outlook.com (10.167.23.7) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.8335.7 via Frontend Transport; Thu, 9 Jan 2025 04:46:08 +0000
-Received: from rnnvmail204.nvidia.com (10.129.68.6) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 8 Jan 2025
- 20:45:58 -0800
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by rnnvmail204.nvidia.com
- (10.129.68.6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 8 Jan 2025
- 20:45:58 -0800
-Received: from Asurada-Nvidia (10.127.8.9) by mail.nvidia.com (10.129.68.8)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
- Transport; Wed, 8 Jan 2025 20:45:57 -0800
-Date: Wed, 8 Jan 2025 20:45:55 -0800
-From: Nicolin Chen <nicolinc@nvidia.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>, "ddutile@redhat.com"
- <ddutile@redhat.com>
-CC: Peter Maydell <peter.maydell@linaro.org>, Jason Gunthorpe
- <jgg@nvidia.com>, Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?=
- <berrange@redhat.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Linuxarm
- <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>, jiangkunkun
- <jiangkunkun@huawei.com>, Jonathan Cameron <jonathan.cameron@huawei.com>,
- "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>
-Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
- nested SMMUv3
-Message-ID: <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
-References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
- <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
- <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
- <329445b2f68a47269292aefb34584375@huawei.com>
+ (Exim 4.90_1) (envelope-from <SRS0=H8xH=UB=kaod.org=clg@ozlabs.org>)
+ id 1tVmYS-00015q-9P; Thu, 09 Jan 2025 02:02:10 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4YTG1D3n3Sz4wvc;
+ Thu,  9 Jan 2025 18:01:52 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4YTG190VWVz4wcy;
+ Thu,  9 Jan 2025 18:01:48 +1100 (AEDT)
+Message-ID: <f051128e-94b1-463d-845a-345ec2190d3d@kaod.org>
+Date: Thu, 9 Jan 2025 08:01:51 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <329445b2f68a47269292aefb34584375@huawei.com>
-X-NV-OnPremToCloud: AnonymousSubmission
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS3PEPF0000C37D:EE_|MW4PR12MB7120:EE_
-X-MS-Office365-Filtering-Correlation-Id: 72f99379-54b2-41fb-c900-08dd30688886
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|7416014|376014|36860700013|1800799024|82310400026; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?aGBfACMxi1UlEuYErIouiT8FnjeoMqnys9iigdF27gdsiGX+RKZ4hUwKdP9u?=
- =?us-ascii?Q?Pxh5KJevjmQ3f0plp8Kwo1zSSV8yjURJclxd6i0TCHmrOA4v7jdc+9W6NYRp?=
- =?us-ascii?Q?JARGcl1ZwU4u1KdRDWsUoBnzzxpZXiGt+xe0UfYGHmnsW5d36xObdEwGjZt8?=
- =?us-ascii?Q?23ARkyUnsduVbuL5Tf0W5OItzMoI0EnIb7K2nSJUtWsCyaRZA2vtnUzOWH8c?=
- =?us-ascii?Q?9GqtNDp89rHznL1BC1gsBHLYAeLIpqmTfb93CLznePU9fyoNZdxN86hHUVCz?=
- =?us-ascii?Q?v7V7qrW1dYIIWfXigLbtgR3zpqCcLbEbuV9k+Vtr3//ErrdvEc1xtVM/iJ47?=
- =?us-ascii?Q?Cw6bLPAh4qcqt4RAdlkQowzeSD9XRi+KhbB0jo5Ip6gs0UfZPa89TeUFL+Fz?=
- =?us-ascii?Q?ShV0ocIW7Rh8oKUUCljo8dbaIfhCsd6zyDILibDBdMv9zBhuBcaYdWq0MABz?=
- =?us-ascii?Q?UM/h9jqM4D40+ic6JusM65NW9aJvba6KEQICnMGfZICx75VHlZWva2MYM0rN?=
- =?us-ascii?Q?EEOHIjnemqk0DkrOwU8/J3OhSLJQYPY5Z9pIG367Lm+DqFghrBfIMZB2ebOk?=
- =?us-ascii?Q?oOqC7xjMmSB1zxnDaDlr5Au8oko/BMSe0BEEfghxILTbOj9FRIYPPDW2VAIQ?=
- =?us-ascii?Q?LWmR/SsAMCGwGqA29202BnXUtehs7ToOZG6l5xR1gzClhnV8s8InyyPxCP2z?=
- =?us-ascii?Q?VC4SZJhrqBx03CTUdVfr4Hs03ZqPWpjCc2hlr3ssPOVXQg0yzwtNa6ezNk7d?=
- =?us-ascii?Q?tT528gwejDvAxHeeGt4PiBdb/hx56r/nYIfe8FFzddBGXX8hQeuRjCcDRdGh?=
- =?us-ascii?Q?ynCam1xKFjBlZIuYTizERRoVpu76yat+1tXCToRZjf6QXlhtTzFO/bNRTje0?=
- =?us-ascii?Q?p8zweVwrhi75cjiI7tzmcFlsMW3+PyyOSlFQJSIKmAfO72RwLhHtuTGvmWB2?=
- =?us-ascii?Q?NtviiNMTBCGqAKEmQOoauRvHloMVjU7xaO8jvYPNBz+LGRlYGyCpxmfdHUnO?=
- =?us-ascii?Q?I96PGnzzI4kuyJAKeUuHiuOI3YhJiz1zUGdlBNfYovQ56MglNKgOjpFiaL46?=
- =?us-ascii?Q?xaI1tLhhqMqrsV6UJLagOJqTR7T3JM9jy3W8UJSEVfI6BEjXyb8yM7ZkO75x?=
- =?us-ascii?Q?5iFucqYbMhn+qzEOr1Xi2VEnPjfbwJKyuP/CeDQP2WbpjU8zc7xU0MZhh3xO?=
- =?us-ascii?Q?1zRrVo7MlSaLSSBklnCIneWwbaxPWCrgNKxW7hRJ3sINdbgvBvAbQ55pWeIH?=
- =?us-ascii?Q?1LEBj1iQ1VjWNDoBmiV0u+PurzxydMY+XSm1NKtTVEUfp4AVvrFxHgBGoa4m?=
- =?us-ascii?Q?ADRdGZvF6vcueJIzcmphtMAMk6XSphwlsGJe9jBCZFdLQfznsUz/cd+Dw7Ar?=
- =?us-ascii?Q?KIzBkoownJke03tYAf0o1jZp+d/gv+QbDoqg+O8OAZ0CD7tVwz9XNFvtbVO2?=
- =?us-ascii?Q?WP5Mei/NERwRNdj8/YqVfFb45pv7oBw7mJdcVgAuLi/PGgGjFutkP/vurUN5?=
- =?us-ascii?Q?QG26lIfzsS3hCqg=3D?=
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(36860700013)(1800799024)(82310400026); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Jan 2025 04:46:08.0182 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 72f99379-54b2-41fb-c900-08dd30688886
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DS3PEPF0000C37D.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR12MB7120
-Received-SPF: softfail client-ip=2a01:111:f403:2415::603;
- envelope-from=nicolinc@nvidia.com;
- helo=NAM11-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.432,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 1/3] hw/timer/aspeed: Support different memory region
+ ops
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Joel Stanley <joel@jms.id.au>, "open list:ASPEED BMCs"
+ <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>,
+ Yunlin Tang <yunlin.tang@aspeedtech.com>
+References: <20241216075353.1308043-1-jamin_lin@aspeedtech.com>
+ <20241216075353.1308043-2-jamin_lin@aspeedtech.com>
+ <c3b0139f9995427dd83e6172aa17b799361926b6.camel@codeconstruct.com.au>
+ <SI2PR06MB504166A128450060C560D908FC132@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <SI2PR06MB504166A128450060C560D908FC132@SI2PR06MB5041.apcprd06.prod.outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2404:9400:2221:ea00::3;
+ envelope-from=SRS0=H8xH=UB=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_MED=-2.3,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -201,27 +146,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MB8UfUryMiHG
+X-TUID: zNMGFXBZuKws
 
-On Mon, Dec 16, 2024 at 10:01:29AM +0000, Shameerali Kolothum Thodi wrote:
-> And patches prior to this commit adds that support: 
-> 4ccdbe3: ("cover-letter: Add HW accelerated nesting support for arm
-> SMMUv3")
+On 1/9/25 03:26, Jamin Lin wrote:
+> Hi Andrew,
 > 
-> Nicolin is soon going to send out those for review. Or I can include
-> those in this series so that it gives a complete picture. Nicolin?
+>> From: Andrew Jeffery <andrew@codeconstruct.com.au>
+>> Sent: Thursday, January 9, 2025 9:59 AM
+>> To: Jamin Lin <jamin_lin@aspeedtech.com>; Cédric Le Goater <clg@kaod.org>;
+>> Peter Maydell <peter.maydell@linaro.org>; Steven Lee
+>> <steven_lee@aspeedtech.com>; Troy Lee <leetroy@gmail.com>; Joel Stanley
+>> <joel@jms.id.au>; open list:ASPEED BMCs <qemu-arm@nongnu.org>; open
+>> list:All patches CC here <qemu-devel@nongnu.org>
+>> Cc: Troy Lee <troy_lee@aspeedtech.com>; Yunlin Tang
+>> <yunlin.tang@aspeedtech.com>
+>> Subject: Re: [PATCH v1 1/3] hw/timer/aspeed: Support different memory region
+>> ops
+>>
+>> On Mon, 2024-12-16 at 15:53 +0800, Jamin Lin wrote:
+>>> It set "aspeed_timer_ops" struct which containing read and write
+>>> callbacks to be used when I/O is performed on the TIMER region.
+>>>
+>>> Besides, in the previous design of ASPEED SOCs, the timer registers
+>>> address space are contiguous.
+>>>
+>>> ex: TMC00-TMC0C are used for TIMER0.
+>>> ex: TMC10-TMC1C are used for TIMER1.
+>>> ex: TMC80-TMC8C are used for TIMER7.
+>>>
+>>> The TMC30 is a control register and TMC34 is an interrupt status
+>>> register for TIMER0-TIMER7.
+>>>
+>>> However, the register set have a significant change in AST2700. The
+>>> TMC00-TMC3C are used for TIMER0 and TMC40-TMC7C are used for
+>> TIMER1.
+>>> In additional, TMC20-TMC3C and TMC60-TMC7C are reserved registers for
+>>> TIMER0 and TIMER1, respectively.
+>>>
+>>> Besides, each TIMER has their own control and interrupt status
+>>> register.
+>>> In other words, users are able to set control and interrupt status for
+>>> TIMER0 in one register. Both aspeed_timer_read and aspeed_timer_write
+>>> callback functions are not compatible AST2700.
+>>>
+>>> Introduce a new "const MemoryRegionOps *" attribute in
+>>> AspeedTIMERClass and use it in aspeed_timer_realize function.
+>>>
+>>> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+>>> ---
+>>>   hw/timer/aspeed_timer.c         | 7 ++++++-
+>>>   include/hw/timer/aspeed_timer.h | 1 +
+>>>   2 files changed, 7 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c index
+>>> 149f7cc5a6..970bf1d79d 100644
+>>> --- a/hw/timer/aspeed_timer.c
+>>> +++ b/hw/timer/aspeed_timer.c
+>>> @@ -606,6 +606,7 @@ static void aspeed_timer_realize(DeviceState *dev,
+>>> Error **errp)
+>>>       int i;
+>>>       SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+>>>       AspeedTimerCtrlState *s = ASPEED_TIMER(dev);
+>>> +    AspeedTimerClass *atc = ASPEED_TIMER_GET_CLASS(s);
+>>>
+>>>       assert(s->scu);
+>>>
+>>> @@ -613,7 +614,7 @@ static void aspeed_timer_realize(DeviceState *dev,
+>>> Error **errp)
+>>>           aspeed_init_one_timer(s, i);
+>>>           sysbus_init_irq(sbd, &s->timers[i].irq);
+>>>       }
+>>> -    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_timer_ops,
+>> s,
+>>> +    memory_region_init_io(&s->iomem, OBJECT(s), atc->reg_ops, s,
+>>>                             TYPE_ASPEED_TIMER, 0x1000);
+>>
+>>
+>>>       sysbus_init_mmio(sbd, &s->iomem);
+>>>   }
+>>> @@ -708,6 +709,7 @@ static void
+>>> aspeed_2400_timer_class_init(ObjectClass *klass, void *data)
+>>>       dc->desc = "ASPEED 2400 Timer";
+>>>       awc->read = aspeed_2400_timer_read;
+>>>       awc->write = aspeed_2400_timer_write;
+>>> +    awc->reg_ops = &aspeed_timer_ops;
+>>>   }
+>>>
+>>>   static const TypeInfo aspeed_2400_timer_info = { @@ -724,6 +726,7 @@
+>>> static void aspeed_2500_timer_class_init(ObjectClass *klass, void
+>>> *data)
+>>>       dc->desc = "ASPEED 2500 Timer";
+>>>       awc->read = aspeed_2500_timer_read;
+>>>       awc->write = aspeed_2500_timer_write;
+>>> +    awc->reg_ops = &aspeed_timer_ops;
+>>>   }
+>>>
+>>>   static const TypeInfo aspeed_2500_timer_info = { @@ -740,6 +743,7 @@
+>>> static void aspeed_2600_timer_class_init(ObjectClass *klass, void
+>>> *data)
+>>>       dc->desc = "ASPEED 2600 Timer";
+>>>       awc->read = aspeed_2600_timer_read;
+>>>       awc->write = aspeed_2600_timer_write;
+>>> +    awc->reg_ops = &aspeed_timer_ops;
+>>>   }
+>>>
+>>>   static const TypeInfo aspeed_2600_timer_info = { @@ -756,6 +760,7 @@
+>>> static void aspeed_1030_timer_class_init(ObjectClass *klass, void
+>>> *data)
+>>>       dc->desc = "ASPEED 1030 Timer";
+>>>       awc->read = aspeed_2600_timer_read;
+>>>       awc->write = aspeed_2600_timer_write;
+>>> +    awc->reg_ops = &aspeed_timer_ops;
+>>>   }
+>>>
+>>>   static const TypeInfo aspeed_1030_timer_info = { diff --git
+>>> a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
+>>> index 07dc6b6f2c..8d0b15f055 100644
+>>> --- a/include/hw/timer/aspeed_timer.h
+>>> +++ b/include/hw/timer/aspeed_timer.h
+>>> @@ -73,6 +73,7 @@ struct AspeedTimerClass {
+>>>
+>>>       uint64_t (*read)(AspeedTimerCtrlState *s, hwaddr offset);
+>>>       void (*write)(AspeedTimerCtrlState *s, hwaddr offset, uint64_t
+>>> value);
+>>> +    const MemoryRegionOps *reg_ops;
+>>
+>> So given the layout changes for the AST2700, perhaps we can improve the way
+>> we've organised the call delegation?
+>>
+>> Currently the callbacks in `aspeed_timer_ops` are generic
+>> (aspeed_timer_read(), aspeed_timer_write()), and then we specialise some
+>> bits in the default label of the switch statement by delegating to the
+>> SoC-specific callbacks.
+>>
+>> Perhaps we should instead call through the SoC-specific callbacks first, and
+>> then have those call the generic op implementation for accesses to registers
+>> have common behaviours across the AST2[456]00 SoCs.
+>>
+>> With that perspective, the change in layout for the AST2700 is effectively a
+>> specialisation for all the registers. Later, if there's some tinkering with the
+>> timer registers for a hypothetical AST2800, we can follow the same strategy by
+>> extracting out the common behaviours for the AST2700 and AST2800, and
+>> invoke them through the default label.
+>>
+>> As a quick PoC to demonstrate my line of thinking (not compiled, not tested,
+>> only converts AST2400):
+>>
+> Thank you for your review and suggestion.
+> Currently, I am working on QEMU to support the "AST2700 A1" boot(I should refactor INTC model).
 
-Just found that I forgot to reply this one...sorry
+Is that the reason why the QEMU ast2700-evb machine doesn't boot
+with the v09.04 SDK images ?
 
-I asked Don/Eric to take over that vSMMU series:
-https://lore.kernel.org/qemu-devel/Zy0jiPItu8A3wNTL@Asurada-Nvidia/
-(The majority of my effort has been still on the kernel side:
- previously vIOMMU/vDEVICE, and now vEVENTQ/MSI/vCMDQ..)
+> Once I have completed that task, I will revise the timer model with your suggestion.
 
-Don/Eric, is there any update from your side?
+Please replace suffix '_generic' by '_common' when you do.
 
-I think it's also a good time to align with each other so we
-can take our next step in the new year :)
 
-Thanks
-Nicolin
+
+Thanks,
+
+C.
+
+

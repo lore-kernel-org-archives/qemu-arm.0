@@ -1,123 +1,166 @@
-Received: by 2002:a05:7022:43a6:b0:92:a90b:6588 with SMTP id bo38csp1318099dlb;
-        Thu, 9 Jan 2025 02:57:29 -0800 (PST)
-X-Received: by 2002:a05:690c:688a:b0:6ef:5973:8273 with SMTP id 00721157ae682-6f5312bf280mr49593677b3.34.1736420248509;
-        Thu, 09 Jan 2025 02:57:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736420248; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp1458275njb;
+        Thu, 9 Jan 2025 03:18:51 -0800 (PST)
+X-Received: by 2002:a05:6000:1fa2:b0:38a:1b94:ecc1 with SMTP id ffacd0b85a97d-38a8730afbcmr4686257f8f.25.1736421530970;
+        Thu, 09 Jan 2025 03:18:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736421530; cv=none;
         d=google.com; s=arc-20240605;
-        b=IvzX7Ijw7v8pe7bsIz/3kE8YPRgHX7P3HBPxF0ZErBOBxMtDSOf8Z9kGTeEvi0Yu2Q
-         Elm9vE9a2mG/d/3Lt2YsE1NP3eTeDmR3aOhBgMqsD44628ed2oqe6GuYCv0fLMtdwKMk
-         xBY4xuPoqoGnBef2zu6bbE3EbbyPHkLp5YQvggxpQlOKJSUmQHqGn+cwwk6ZhYC0NwdF
-         cBJYorEhwUDj31geGMPXl3o8XegwmgoZTZ3ozikzfhYF1PXuUk0zHVmvicwJtkS09uds
-         skUNNdgP83CCZlxsr7SzMGhopbzAlJe3dvFYT52DCoDUWkPipXYiMLt/+6E8sr1GoNcp
-         pdWA==
+        b=bdpwlMXY2LHsoPieFKAxJsnDJ7Tt1WM1bNkaOUpwhVRGHwt27jEwV7k/FnJwSSQqIr
+         WbMZ7JIv3YRPp3ZzuPMYVdWuKL3oxeCmY9JZgT3H2EX9tSMsGQmGu6MAORy+SO2nOPbz
+         HreDRZ9q4rz8EpI0+sIbdERDXotH48WF+N9A1Gnlu5A505LR8DktPj6XIbYCwo3Je9Rv
+         dR/SkSkX1ToyH7uVNRpEKjAtD55HfAmo4i8E9K/5k8MMYuhpA9ZCkKBpo9iGsy/bvxhN
+         zGM8pAiX4+FyOt+twUJbCSXaiusXbEoVLH3kEYy3yluVgYCVGjSWCUkokhORbSH0uHe7
+         DJDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=bHj4hLuF3y3ULgR5Uc6vUTiyHT/K9Q//sI3ccL3JdeE=;
-        fh=v3XUH1VLouOJPNi7btMjfCuJW5FR4ve8PSneDx+xJbY=;
-        b=YvxvXdqv9bFcJVp+wW1H7YK69ZIh0rGBTETX1jDexdQg13y+AjN+vlEjMPVrEEQmgt
-         2q+81kjsQ2F6N48AEWDMH0rv7z+hid4RK/HtJsxl8O2utAMreNikgNhyP73pYOJQUBJa
-         n4En3cKUP1exVjAF2F7KkV2Cqo9HcvTO2yr/ahRM/4hoWUlKxQzzJEsh3IAvoun5mnpO
-         0u/W5STq73LqMp9uaYCtyeMi7yGvGig3Uja6cUDklHsRs2eQN6nhq6yq/6ISINgVg7Pv
-         Grw5gxjdzW5TveC0wmQ1x9O4c7dR3jtkvNuGA+MWBii+7cLtMMx0a8m5Lk7pt4FBmO7J
-         rW9g==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=ME0+3AFyXLGdqFXUo3zVv+IGspfWxTahIBFqoUfx1Ns=;
+        fh=BMLrDyEOVLWFL4sT/h0e4u+RJco0zBvl6jmVrRgS8bQ=;
+        b=Ak/Osi9XlK6vVv3ZXVXYWSxilTbtPEkTOsdeNNUkg6LJHWs7/4SYwpj406mezOKaet
+         dirVLcXRX9u7RBftjtfz0EV7/LbDFOVQhsF4Z0vRhQ6pjGVIOkhGALceviUAqHwSPVME
+         5qGMe5d+EGoX23EN2haTDlXuP8R8psfq7oDebDKh/5oHZ9qQ5DvPs3eqdF3OyPSK0Z11
+         Qri8Vb7yjmNKN7x6iPm7u5VOrYgytzDBLEIafee+5UK7K5aldtns9YIgHoPqy/YwxDnO
+         TytjZrRv2+cx4GTKyd0hbLEVMddyzZ6LL74Sy6tx8f0Q68iuoZqptRb3zunFBbNfvdA0
+         +B6Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KSKvUyBB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dI3bUuA0;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6f546e3659bsor6525477b3.16.2025.01.09.02.57.28
+        by mx.google.com with SMTPS id ffacd0b85a97d-38a8e37ac28sor531107f8f.1.2025.01.09.03.18.50
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 09 Jan 2025 02:57:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Thu, 09 Jan 2025 03:18:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KSKvUyBB;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dI3bUuA0;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736420248; x=1737025048; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=bHj4hLuF3y3ULgR5Uc6vUTiyHT/K9Q//sI3ccL3JdeE=;
-        b=KSKvUyBBgtIBjNyimj1nuPksEnduKxTSv+Bg09u+MpahFhXaO5DY/gpE8VFGWmtBQJ
-         YusSqehirA7SDNjuqwZztDBcdEZ39pNANcBo1Jkck5fJu2uqf3tMQRtTOi9Tdbm/dpUm
-         GiIF5+xJkBXc1D+S7z9UVFh9ZpUU+2NZi7Gd5k9EjdiIP7qEBpaiqSAz2JDpLlcvpSvT
-         Q06wWesVFTfq/T+ZcucCeMq4GArXSLtrrdXBzv/RmJipMnJHylDBIugyfk6ghmqPyX8x
-         jb86/Vl1XFEQHNaM24joUX2dKlourH7X0COUOiYtQuu42S5gL6R+X2mPQVDgesSlZ6tK
-         vIyQ==
+        d=linaro.org; s=google; t=1736421530; x=1737026330; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=ME0+3AFyXLGdqFXUo3zVv+IGspfWxTahIBFqoUfx1Ns=;
+        b=dI3bUuA0ZCQLRK+X6vt58OoNlptlQYovQ2CD3K3S8kvfFdF+FhQVGC0gl05f0XMZj8
+         RtF0i0rqCtvkdJnf8KpUp1GOrB9m9yYOTr6Ro9kMlCJWEdMQYLqz0BjQOE//FKkmEluV
+         6Qrr4f0qcV1mc/KXK92aijauEcFP6LwzN70Va+QBh0srVEWWYpMSB0J61xSOra+3bMSF
+         iPAwDQRq1dX2Bm+x4okdDVg09ZCQRLaBU2Hy5S2OWH52vl8TPtCaJnEZb5EXMNmrFUon
+         bZoVkDqsG++69IVuO91oHsTqQMmfkHdhm7ph6K/6fb9iXnvndwA+GgNn899TZXpyWAAI
+         x5bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736420248; x=1737025048;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bHj4hLuF3y3ULgR5Uc6vUTiyHT/K9Q//sI3ccL3JdeE=;
-        b=luthLIkYD5Ij1kGEB/83jXym2VjEgPcihAuxWEO8/RWMgW9O5nG2/zO+Fso0Rt0FAL
-         zwKDZWzcIx0M9jWuMf6JFK7pVBribzMiX00UDlqwdhltJDYKJd0VXdLHjlqqxsTxUvmB
-         jKC6L4WvVPDqL+TS86AQ2g9bkTdvocY69LIRwq1KNixATf1W6lSLKZCNw314MBk4U8v/
-         BHaxPG4b6HEgJ6JMmMfXjSXyBpjCmQKmVp2RBLLtYht7SO0bK43bKaUn8CRGbSlesvs5
-         efe02YQwAzhdn1hmQPtrdrZw4YayfWaHjkLAEBYSScqXSRzINkQfnKvC/swtwtr9jcnr
-         XiKA==
-X-Gm-Message-State: AOJu0YxJJKmdVQ4LxOYG772Aw79FzptzNRrLVa8h8Aqo5q/11bAp3zxm
-	oY6giXY3qVyLh8alB/AlxlEqvR4wHJZLE4RSNaQSp5VCSZIh11cLLMl/+CuB8b4eqpYjbwYPfRL
-	p1OgSzpvQF0scTt2jXwyQ8eBCfQ1xaakF4ecpOCGSldmHt/93sbg=
-X-Gm-Gg: ASbGncs7+U1i6Uq/qK1op+2QpawdekNwdtz+ZI0zmRFhpo7T6q255AX8V/nbRPJzQeW
-	IpNdDtvzp30uuwEEuG5TsTY5N4Ak6lcxsIuytwUs=
-X-Google-Smtp-Source: AGHT+IFPDhsY1f5fYN8UTs1c6wySCRGX4h+rdsaCJLX3s7uMJT2wIbKkXedhQ2FAR8WEJ62xLjU3jTbKXuo26oQqt6c=
-X-Received: by 2002:a25:6a8a:0:b0:e4d:d319:b9d with SMTP id
- 3f1490d57ef6-e54edf3a172mr3349097276.16.1736420248135; Thu, 09 Jan 2025
- 02:57:28 -0800 (PST)
+        d=1e100.net; s=20230601; t=1736421530; x=1737026330;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=ME0+3AFyXLGdqFXUo3zVv+IGspfWxTahIBFqoUfx1Ns=;
+        b=d/Jxd0kVdzw9is6XLALRcYrCkjvqM2iK0Xkr/1g2N4eQ85TOO1oXN50HYw83+c+dit
+         qQ57plgVVWQxJFiJfVu5g+G+c1xqeDBJbkt4eNRjllwGZngW2njpOM23ZmNBJTS0oQnY
+         RZ0AU1MB9hnOWFSLTuuD+6OLX4ukkxSGFQoycrDqY8+9kke5negRwtWTtw0VpXruHTU3
+         IrreIGCVUfLKiMSFDVbn/FJBB1Z0KOWJu0AEFJpuXc9wSw3x5+QVM1J7Krzx3rrBAMw/
+         e7XuVlzMPuipyJOc1A9RL3wI5bn+NhazUes3mTgjn7gBfnoPGhmZY9fkqNy/HilWp2nM
+         PgIA==
+X-Gm-Message-State: AOJu0Yz6U2OR0j144gAc85WW9Y86dKsnZsHDV2qAX8+uTaSHweYQSKW9
+	LDAABitCKKBBQvKLPkA+BFL88/DvZojPrp28Xh+4nl2vBnz84MZvcdKn/xSU1OlfE7va/bcb2VL
+	E2NYPXA==
+X-Gm-Gg: ASbGncsl0W5qgJglV/sWjMQ7fHSnSpygCpfMu+U7A9jhDWZF1IxPQL+JvXo13+dgkQE
+	cY/oecdGIywbOKAwd1ErFWcQvJY6e5eBCBzjOfQ+yDN1U0F/AXNYpEB+XSyiqvbvJmMt+1KElLN
+	v1a7A4WwwlFfLsuIHEU6E48ptd5h5n+SUBfXVIevgCE7aU3DhCQ7RDhntRkqw98PgXaws/bPSoZ
+	caqdgJC9OMdt7SbBjGIfxz0fRfBkioPPm2RF56fVmcXABnfOx6QwmecSKOFJQqjOSg5H4naM/7Q
+	vPUQjdB5e5teB8UVy+VP7TFw
+X-Google-Smtp-Source: AGHT+IHxltDmN8R2Exw0WE83WeQQVgR4NuppXtMw+Va+iaxJ0DlHZ5eXIb6MJb4IqtyMUFDEgri9wg==
+X-Received: by 2002:a5d:5986:0:b0:385:e37a:2a56 with SMTP id ffacd0b85a97d-38a8733a214mr5702120f8f.52.1736421529927;
+        Thu, 09 Jan 2025 03:18:49 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.102] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a8e37d2dfsm1529283f8f.7.2025.01.09.03.18.48
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Jan 2025 03:18:49 -0800 (PST)
+Message-ID: <718a0ab6-cc07-4721-9560-7745ed1c04a6@linaro.org>
+Date: Thu, 9 Jan 2025 12:18:48 +0100
 MIME-Version: 1.0
-References: <20241218181511.3575613-1-alex.bennee@linaro.org> <87cygw9snv.fsf@draig.linaro.org>
-In-Reply-To: <87cygw9snv.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Jan 2025 10:57:16 +0000
-X-Gm-Features: AbW1kvYdNmoc7BrTcSE-FT9fq4BSthFnB_OvF-FCo6I2GPMrDZF1h9va4GhLofA
-Message-ID: <CAFEAcA9PBaHz1=Rix7nXZzHce6Ftb38bgS2H1rD2+mHnNvW-nA@mail.gmail.com>
-Subject: Re: [PATCH v2 0/5] target/arm: implement SEL2 physical and virtual timers
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
-	Leif Lindholm <leif.lindholm@oss.qualcomm.com>, 
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: f2/VZ/cTR9Sz
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/5] target/arm: implement SEL2 physical and virtual
+ timers
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Leif Lindholm <quic_llindhol@quicinc.com>,
+ Leif Lindholm <leif.lindholm@oss.qualcomm.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org,
+ qemu-stable@nongnu.org, Andrei Homescu <ahomescu@google.com>,
+ =?UTF-8?Q?Arve_Hj=C3=B8nnev=C3=A5g?= <arve@google.com>,
+ =?UTF-8?Q?R=C3=A9mi_Denis-Courmont?= <remi.denis.courmont@huawei.com>
+References: <20241218181511.3575613-1-alex.bennee@linaro.org>
+ <20241218181511.3575613-4-alex.bennee@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241218181511.3575613-4-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: ca1i23Qf7YSw
 
-On Thu, 9 Jan 2025 at 10:40, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
->
-> > Follow Peter's review I've split this into a several patches as there
-> > are some other fixes that should be made to other EL2 times that
-> > shouldn't be rolled together.
-> >
-> > v2
-> >   - split machine enabling into patches
-> >   - rename IRQ
-> >   - use CP_ACCESS_TRAP_UNCATEGORIZED for UNDEF cases
-> >
-> > v1
-> >   - improve GTIMER docs
-> >   - fix gt_recalc bug
-> >   - address review comments for the main patch
-> >   - cc qemu-stable (no rush for 9.2.0)
-> >
-> > The following still need review:
-> >
-> >   hw/arm: enable secure EL2 timers for sbsa machine
-> >   hw/arm: enable secure EL2 timers for virt machine
-> >   target/arm: implement SEL2 physical and virtual timers
-> >   target/arm: ensure cntvoff_el2 also used for EL2 virt timer
->
-> Gentle ping - I think everything is ready for merging.
+On 18/12/24 19:15, Alex Bennée wrote:
+> When FEAT_SEL2 was implemented the SEL2 timers where missed. This
+> shows up when building the latest Hafnium with SPMC_AT_EL=2. The
+> actual implementation utilises the same logic as the rest of the
+> timers so all we need to do is:
+> 
+>    - define the timers and their access functions
+>    - conditionally add the correct system registers
+>    - create a new accessfn as the rules are subtly different to the
+>      existing secure timer
+> 
+> Fixes: e9152ee91c (target/arm: add ARMv8.4-SEL2 system registers)
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: qemu-stable@nongnu.org
+> Cc: Andrei Homescu <ahomescu@google.com>
+> Cc: Arve Hjønnevåg <arve@google.com>
+> Cc: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+> 
+> ---
+> v1
+>    - add better comments to GTIMER descriptions
+>    - also define new timers for sbsa-ref
+>    - don't conditionally gate qemu_timer creation on the feature
+>    - take cntvoff_el2 int account for SEC_VEL2 in gt_recalc/g_tval_[read|write]
+> v2
+>    - rename IRQ to ARCH_TIMER_S_EL2_VIRT_IRQ
+>    - split machine enablement into separate patches
+>    - return CP_ACCESS_TRAP_UNCATEGORIZED for UNDEF cases
+> ---
+>   include/hw/arm/bsa.h |   2 +
+>   target/arm/cpu.h     |   2 +
+>   target/arm/gtimer.h  |   4 +-
+>   target/arm/cpu.c     |   4 ++
+>   target/arm/helper.c  | 158 +++++++++++++++++++++++++++++++++++++++++++
+>   5 files changed, 169 insertions(+), 1 deletion(-)
 
-It's on my queue to test and review, but I'm likely to be lagging
-behind on code review til the end of the month :-)
 
--- PMM
+> diff --git a/target/arm/gtimer.h b/target/arm/gtimer.h
+> index de016e6da3..f8f7425a5f 100644
+> --- a/target/arm/gtimer.h
+> +++ b/target/arm/gtimer.h
+> @@ -15,7 +15,9 @@ enum {
+>       GTIMER_HYP      = 2, /* EL2 physical timer */
+>       GTIMER_SEC      = 3, /* EL3 physical timer */
+
+Should we rename as GTIMER_SEC_PEL3 for consistency?
+
+>       GTIMER_HYPVIRT  = 4, /* EL2 virtual timer */
+
+Also GTIMER_HYP     -> GTIMER_PEL2,
+      GTIMER_HYPVIRT -> GTIMER_VEL2?
+
+> -#define NUM_GTIMERS   5
+> +    GTIMER_SEC_PEL2 = 5, /* Secure EL2 physical timer */
+> +    GTIMER_SEC_VEL2 = 6, /* Secure EL2 virtual timer */
+> +#define NUM_GTIMERS   7
+>   };
+>   
+>   #endif|

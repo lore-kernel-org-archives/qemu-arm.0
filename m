@@ -1,262 +1,251 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp1461502njb;
-        Thu, 9 Jan 2025 03:25:43 -0800 (PST)
-X-Received: by 2002:ad4:5d61:0:b0:6d8:916b:1caa with SMTP id 6a1803df08f44-6df9b254201mr107459346d6.27.1736421943545;
-        Thu, 09 Jan 2025 03:25:43 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736421943; cv=none;
+Received: by 2002:a05:7022:43a6:b0:92:a90b:6588 with SMTP id bo38csp1356066dlb;
+        Thu, 9 Jan 2025 04:13:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHnRgm+97aeiuZ2lQTZuIYjcuOtAIw2iC0L5YkRYNQrl6KUUS3a4gXhcyg0oFt2yDB7Lb3m
+X-Received: by 2002:a05:6214:20eb:b0:6d8:8742:137c with SMTP id 6a1803df08f44-6df9b230fefmr82167116d6.24.1736424802628;
+        Thu, 09 Jan 2025 04:13:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736424802; cv=none;
         d=google.com; s=arc-20240605;
-        b=P9eHBAuqzX0psCobvvJeqMaq08LZ+9eA5mM4bzNXKFh/7TM6yrMjQC+yj74v2RlwUh
-         D//PL4mHv7NzRXCOQm+EL2HY74r9a3ZftdzDO4jARZN+oK3oy7QMtTdGaPgqyBDmXxJY
-         fyGIgagMHYbcPk+Ifh8bxF9t29ZTtjX6Pkq9wqUcq0VpPaOYHnM9n/+2l1HKnrsD2s/O
-         dFG8OLVTInWOsWiZihjH6orIf3hFsaIBVik3X0wi+YaXFu1Ort7ZaR18PJbmeIOl9y1p
-         z2XhlMsOooAqXr3+YkCPg/lI5i3ov+ajbclkmuw1DEBUikM6j2dQ2zJpvHxsv+EuUSAM
-         YqLg==
+        b=AiAPVkND00h4+b07VUtCxB97zXHaln1N4ldEluJd09dDv9Ij8LL2/+t9L1Ic8CYUOz
+         zBMERr05VNbjyfWs7baYjSqZUkgqZApbkX70IaioVD4/SVZ5GfcOzDytQNWCyMbEHkTL
+         qnM+408Mo1o+KGNEfkQpTk43Xk9+t8lI6uG9s1lb3oph5nMvnkvYCHmIF5H3Z5y+d5gs
+         CQMYaB+ZsIQmy8JnHHZ/+Nrr4zbq9LiPT/UBuoM1SMJm/xj9M3WeQdHEerrrX2HaLW9T
+         C6TLakKvgYnlBiL6sTZ46ODXeD43DF7UzHRnH7vW+7VNwmacUBxgi/JQGN8w7gpXZZt4
+         5Y9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=XMeD5lDVpb1YJEsVtFO/csxTRuXtZpT83jX0pLiBs2Q=;
-        fh=hp+Mhxj3KKmuvzp1vImsIp0jCrs07QPHEnPcXF2ZJQI=;
-        b=BPtAaC8Pwwv0bmLNwADc8onmcrJQ/hsNzgnWrWklAbwqWwOwwwUdv7Zs4oYn8aodys
-         0R0JFuK1TYaMa4M+mvOjt5SepkGuaapZqPNJIKDKUnnn6anICy7Kr/A4SYugjrmitx4g
-         3Bx/xe+uZBsqIr8IkHeLLVK0THQ+QnQNUvs8pZNY1KEqf+Hsneuc1p0FAMP62Us6H2lu
-         +9pt8IDqAy9tvvPZ5gYFIr38VmTxlf0cR3nEr+WpbP+hlPp8mi+V9I14YRkXZsYcqi1N
-         5R2AdmHqD7ki94T/SIdRiob2wnKFQKNsnQLIIdB0Mw7d4oZxBumLE9QHLRv0Sv/a3wfy
-         jxrQ==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=95jH6vHVWwQhzjGzsxp2UEhTwqVMJr7Wv8BTRN7e3fA=;
+        fh=K1uvSxsKJoSHoxwjrofBEXa5CvRS+XOKTRKz6jL3fh4=;
+        b=AosnwTpPGJdDJlwY28X5IMg3hB+qDuZRE7HN8qQ2qvNcny5viR86bpHlf7IZrIR6I9
+         x00XbYoeFRkjSKudyT2+Jy5f+6NCvivbrxyXhYrxFWtQ7pbtEGFqgh1614BDThDhQ/8z
+         RYZChKbNFGYMi98JbcqhKv60OjAGEpZ+YAmJGOeZyM4M6EFJO7g8l1y8WpRgnNJRwH2o
+         a1DtD3PPhCZpC4YsdVMSZZKbq6NlRMTPrwJTK1X9zf0UB+sYzOluaAtkEo2XGG8asJuM
+         ukDoD96PtciPIA3YrDR2AlFTR921KsdeCgHB3PVIGEdR97hyHvs9T2G8mZ1d6euPFVR8
+         T/aQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="P6K66/QF";
-       spf=pass (google.com: domain of wielandtdan@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=wielandtdan@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <wielandtdan@gmail.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 6a1803df08f44-6dd180bb059sor367088706d6.2.2025.01.09.03.25.43
-        (Google Transport Security);
-        Thu, 09 Jan 2025 03:25:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of wielandtdan@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="LdIf/qG3";
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd18233419si650836d6.206.2025.01.09.04.13.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Jan 2025 04:13:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="P6K66/QF";
-       spf=pass (google.com: domain of wielandtdan@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=wielandtdan@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1736421943; x=1737026743; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=XMeD5lDVpb1YJEsVtFO/csxTRuXtZpT83jX0pLiBs2Q=;
-        b=P6K66/QFBY4Le0ftioLgCmdBW4YekqfU3v0HJFAc3uPoAdaOIgdaP+d6KXV74Qw2At
-         WsjkJd/0XwTSgp1jeGZw2u75Al6EdCdPsI7nU1JF6vzkJlukC7zBGpL2gPisRetRZU1F
-         dAuSrfrVx12isYpHCriOOPSiXnOeKVyrioV82iqy/MO+J4b3sGuyvhPRVhPCby5HFUZo
-         Xmx7l3upbEcCVXTPPnlSiy0HmgSizyYjUTNmlMh6NL9XH2/fJPNzjAfcxikiI1RhxcTi
-         w/iFhk4V9/AG6nC8wBHN79xKNJze0vWXARjrL2ZyriCquTX5cV4RJNx3yKWIIl6EuK/N
-         GdQw==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="LdIf/qG3";
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1736424802;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=95jH6vHVWwQhzjGzsxp2UEhTwqVMJr7Wv8BTRN7e3fA=;
+	b=LdIf/qG3p/UCskhWUpmbcLnqtZQxEyZpZ6S8NsAzXZTd6DOPPEF9AYJZNKpsgJP3d6c5vK
+	GACtQ8+wZVbciP/7T2At44i9GFH5JX75xGHQTDu/TCkNQyYpfS1RT/1sK/mLJkyHD54rFv
+	7zC4ZaPgN5Lo0JL7L5pTTdtkakMIJoM=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-671-Fd64NFBNOYetZ98qLx2IrA-1; Thu, 09 Jan 2025 07:13:21 -0500
+X-MC-Unique: Fd64NFBNOYetZ98qLx2IrA-1
+X-Mimecast-MFC-AGG-ID: Fd64NFBNOYetZ98qLx2IrA
+Received: by mail-ed1-f72.google.com with SMTP id 4fb4d7f45d1cf-5d3f0411814so659627a12.0
+        for <alex.bennee@linaro.org>; Thu, 09 Jan 2025 04:13:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736421943; x=1737026743;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=1e100.net; s=20230601; t=1736424799; x=1737029599;
+        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=XMeD5lDVpb1YJEsVtFO/csxTRuXtZpT83jX0pLiBs2Q=;
-        b=WTvf7oU/eRYCL0ofRoBumD1JlWgB6xAUztlKvwiHl05Xi05lAXlTCnPoxnVLJeFIbu
-         bm9I6Blg2AnF9AvOWSvFw7TbWcWTv99sDbLl5m3m5pGjBSkei4hiavyIqSeHyWKaxsb4
-         BLJsjD7HtB5jEKpTMEvnGed8RXJfiXTZIVgxHDB6kvJxpcpqlA3mi6OzB4nL7Pv30zSG
-         apqs7XqUhQlsxpWqJhrGFYC8Zu54zF7AxSL74b5iUt5KYJxwNKrE2218AkE+aeaeMAzG
-         BG9NB6i2tuGJBVTgOuVM7C1GxJ1YdUvcoDoi0lvBV+zuYzjMiqERViO0Da+snL/ZMQPX
-         KyzA==
-X-Forwarded-Encrypted: i=1; AJvYcCV4BCffZ87TUym1fkOfvV371sNLyElmPLXIFYtEH9MMzz6eFaNMrQc1/5lq3Ce/agnEJkJHiKquCGUAGGXteKsJs50=@linaro.org, AJvYcCWi7KDT9EGPNEkfz+WvTH/KGrAhuUmrt5Ooy+43zVMXiGs0nCkEaRFiGOQzfYcdtiuCZSrdmoh1dVlIGFsKPw==@linaro.org
-X-Gm-Message-State: AOJu0YzBQcrRVNnLzVYhEh3GLyU8dmTFCfJzaXMkILVECcpxV93RmxtG
-	nx8LYbo4YUC9T7BIiJ1EJi0x6t0Fyg1QZQ8nqfgRyzquss6zdzhhLxScRG6GGAgSclEIIbZ+eEW
-	vUNVx0oGxc1KudUBREITCJ6OdO3YylJAV
-X-Gm-Gg: ASbGncuSe0EPPNS2BD6KgmEZ0N6+tmXmyQEuDVnlYEeyKKjCtjiDKw7ulJS15l5dFCJ
-	JU8WmT8jOly456JRL1lNp8e8ueZSlr8984oiv
-X-Google-Smtp-Source: AGHT+IFpNIl2Y2aL6XrsE6Ed3+ys8rwTyb3MS4IqTeq74L7MF1XnXP2M0Ady6B9UL5z690Zov1/sSED83JdRVlokbp4=
-X-Received: by 2002:a05:6214:c25:b0:6df:99e9:39b3 with SMTP id
- 6a1803df08f44-6df9b1eebccmr98397376d6.15.1736421942799; Thu, 09 Jan 2025
- 03:25:42 -0800 (PST)
+        bh=95jH6vHVWwQhzjGzsxp2UEhTwqVMJr7Wv8BTRN7e3fA=;
+        b=GvoWOHGk8jFBAY59YFXvLulkCqbkj9ZBMbPKmGZWzDSeqDBl3TO7URZD30lWa8e2KM
+         o24I94scdqqBEAQSbidNJenTh42T+QLky3afvxAIwdegWHrQ8kG6v1d2M8LteRekdoj+
+         c6ZfwCZ6GkDdEB/EIx/7NYS9QDq8+v0fTJ1a4SHSiRsfU3JtIxXrIWOM/RN+Y2+31aoN
+         2KgCJ06vhCnKOgYngZNyFM/fCcW7w1I2WOdTjV7ym+kSPGz06lWpvHx2kG5cSlpOXjwv
+         leIPnhLqNokU3BxPAySLBlV7okp2yHvy0wldU+u2cadxa94xc6tTqOyifsbyxB7CddtU
+         3Zvw==
+X-Gm-Message-State: AOJu0YwRpnQIIkTfLvWQpa8gyLD4VL9syTDNOV7A3gDf1WtypbK4FiTG
+	kyF0sWjsORUMuXSMeyFPdCqn1LT+3xBsRJKWk7VfIHzWQUval+VzrZO07RghZUJaPF7DqGsVD5d
+	FDx3FpczNKFPR2TxpE+nnst9IHKESMMnfp60RceAf8NVWxWbnKIx1NxM2ydASZHzi6rhRVtoVb1
+	kWMMEKtp5cZxf9O4+obCZvnb1lqSovfhE8wepgi1oz
+X-Gm-Gg: ASbGncuI/kIW3rwIc7ZYnXf9FSMSQDlvaoA1xdGh3mvNphl1MKkEjY+W1ha83Gruw7J
+	Xzit7v6Lna9ILcGKGUtdE7LvaKy4XH+J7NVIYJTMlB5dZie86PL+lw/MzgW9UKmpuyWth1qjTVP
+	hszrUHh0dLtHEaB3RC6tjQcsikcsWk3IYJoiPeaLX9ygUoAFEHFH0JZoHct0ju1wP/3v/y0kShb
+	rO5DFIDuD9JnbBLm5u5M25FU/jfWbzRgpGqk0V79bhZNSZSC1WSVarZgkhH
+X-Received: by 2002:a05:6402:3585:b0:5cf:e66f:678d with SMTP id 4fb4d7f45d1cf-5d972e6f913mr5652975a12.28.1736424798863;
+        Thu, 09 Jan 2025 04:13:18 -0800 (PST)
+X-Received: by 2002:a05:6402:3585:b0:5cf:e66f:678d with SMTP id 4fb4d7f45d1cf-5d972e6f913mr5652903a12.28.1736424798385;
+        Thu, 09 Jan 2025 04:13:18 -0800 (PST)
+Return-Path: <pbonzini@redhat.com>
+Received: from [192.168.10.27] ([151.62.105.73])
+        by smtp.googlemail.com with ESMTPSA id 4fb4d7f45d1cf-5d99046d7d5sm528421a12.66.2025.01.09.04.13.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 09 Jan 2025 04:13:17 -0800 (PST)
+Message-ID: <82cc1e4a-7035-457e-a020-9a5e12f9a30c@redhat.com>
+Date: Thu, 9 Jan 2025 13:13:13 +0100
 MIME-Version: 1.0
-References: <20241218181511.3575613-1-alex.bennee@linaro.org>
- <20241218181511.3575613-4-alex.bennee@linaro.org> <718a0ab6-cc07-4721-9560-7745ed1c04a6@linaro.org>
-In-Reply-To: <718a0ab6-cc07-4721-9560-7745ed1c04a6@linaro.org>
-From: Daniel Wielandt <wielandtdan@gmail.com>
-Date: Thu, 9 Jan 2025 05:25:32 -0600
-X-Gm-Features: AbW1kvaTPNBtSvRdchYiKenHB3PVhoj18TtmBI3OVwRdTGlOlh8uzqgyezsBjJE
-Message-ID: <CA+7p6P+UAHEX_CFy6VNCGWYtCRBPd7mf1v6OMZ3=70d+kxsHgw@mail.gmail.com>
-Subject: Re: [PATCH v2 3/5] target/arm: implement SEL2 physical and virtual timers
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-devel@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
-	Leif Lindholm <leif.lindholm@oss.qualcomm.com>, 
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org, qemu-stable@nongnu.org, 
-	Andrei Homescu <ahomescu@google.com>, =?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@google.com>, 
-	=?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi.denis.courmont@huawei.com>
-Content-Type: multipart/alternative; boundary="00000000000014b339062b443dcb"
-X-TUID: i4MZdUAd6ah5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 30/32] pc-bios: ensure keymaps dependencies set vnc
+ tests
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Halil Pasic <pasic@linux.ibm.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ qemu-riscv@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Beraldo Leal <bleal@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Laurent Vivier <lvivier@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Ed Maste <emaste@freebsd.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Bernhard Beschow <shentey@gmail.com>, Bin Meng <bmeng.cn@gmail.com>,
+ qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Laurent Vivier
+ <laurent@vivier.eu>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ John Snow <jsnow@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Leif Lindholm <quic_llindhol@quicinc.com>, Cleber Rosa <crosa@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org,
+ Eric Farman <farman@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Li-Wen Hsu <lwhsu@freebsd.org>
+References: <20250108121054.1126164-1-alex.bennee@linaro.org>
+ <20250108121054.1126164-31-alex.bennee@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <20250108121054.1126164-31-alex.bennee@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: YX8U0IMtJ2pco4izX_AK9tX8lM9-1AAWdO4DJ1eIejU_1736424800
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: a9dVaoc1KG99
 
---00000000000014b339062b443dcb
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 1/8/25 13:10, Alex Bennée wrote:
+> I was seeing failures on vnc-display-test on FreeBSD:
+> 
+>    make vm-build-freebsd V=1 TARGET_LIST=aarch64-softmmu BUILD_TARGET=check-qtest QEMU_LOCAL=1 DEBUG=1
+> 
+> Leads to:
+> 
+>    qemu-system-aarch64: -vnc none: could not read keymap file: 'en-us'
+>    Broken pipe
+>    ../src/tests/qtest/libqtest.c:196: kill_qemu() tried to terminate QEMU process but encountered exit status 1 (expected 0)
+> 
+> which was as far as I could tell because we don't populate the
+> $BLD/pc-bios/keymaps (although something attempts to symlink
+> qemu-bundle/usr/local/share/qemu/keymaps/ to that dir).
 
-It's not the context that lacks its the protocol.. lol. I wish I was good
-with words and a genius... oh no wait. It's easier being simple..you
-think.u could find the s
-B listers. There's gotta b a mpatch
+That something being scripts/symlink-install-tree.py.
 
-On Thu, Jan 9, 2025, 5:19=E2=80=AFAM Philippe Mathieu-Daud=C3=A9 <philmd@li=
-naro.org>
-wrote:
+This is where QEMU looks for the keymaps and your patch ensures that it 
+is populated before running the test.  Please add the above info to the 
+commit message just for accuracy; otherwise:
 
-> On 18/12/24 19:15, Alex Benn=C3=A9e wrote:
-> > When FEAT_SEL2 was implemented the SEL2 timers where missed. This
-> > shows up when building the latest Hafnium with SPMC_AT_EL=3D2. The
-> > actual implementation utilises the same logic as the rest of the
-> > timers so all we need to do is:
-> >
-> >    - define the timers and their access functions
-> >    - conditionally add the correct system registers
-> >    - create a new accessfn as the rules are subtly different to the
-> >      existing secure timer
-> >
-> > Fixes: e9152ee91c (target/arm: add ARMv8.4-SEL2 system registers)
-> > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> > Cc: qemu-stable@nongnu.org
-> > Cc: Andrei Homescu <ahomescu@google.com>
-> > Cc: Arve Hj=C3=B8nnev=C3=A5g <arve@google.com>
-> > Cc: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
-> >
-> > ---
-> > v1
-> >    - add better comments to GTIMER descriptions
-> >    - also define new timers for sbsa-ref
-> >    - don't conditionally gate qemu_timer creation on the feature
-> >    - take cntvoff_el2 int account for SEC_VEL2 in
-> gt_recalc/g_tval_[read|write]
-> > v2
-> >    - rename IRQ to ARCH_TIMER_S_EL2_VIRT_IRQ
-> >    - split machine enablement into separate patches
-> >    - return CP_ACCESS_TRAP_UNCATEGORIZED for UNDEF cases
-> > ---
-> >   include/hw/arm/bsa.h |   2 +
-> >   target/arm/cpu.h     |   2 +
-> >   target/arm/gtimer.h  |   4 +-
-> >   target/arm/cpu.c     |   4 ++
-> >   target/arm/helper.c  | 158 ++++++++++++++++++++++++++++++++++++++++++=
-+
-> >   5 files changed, 169 insertions(+), 1 deletion(-)
->
->
-> > diff --git a/target/arm/gtimer.h b/target/arm/gtimer.h
-> > index de016e6da3..f8f7425a5f 100644
-> > --- a/target/arm/gtimer.h
-> > +++ b/target/arm/gtimer.h
-> > @@ -15,7 +15,9 @@ enum {
-> >       GTIMER_HYP      =3D 2, /* EL2 physical timer */
-> >       GTIMER_SEC      =3D 3, /* EL3 physical timer */
->
-> Should we rename as GTIMER_SEC_PEL3 for consistency?
->
-> >       GTIMER_HYPVIRT  =3D 4, /* EL2 virtual timer */
->
-> Also GTIMER_HYP     -> GTIMER_PEL2,
->       GTIMER_HYPVIRT -> GTIMER_VEL2?
->
-> > -#define NUM_GTIMERS   5
-> > +    GTIMER_SEC_PEL2 =3D 5, /* Secure EL2 physical timer */
-> > +    GTIMER_SEC_VEL2 =3D 6, /* Secure EL2 virtual timer */
-> > +#define NUM_GTIMERS   7
-> >   };
-> >
-> >   #endif|
->
->
+Reviewed-by: Paolo Bonzini <pbonzini@redhat.com>
 
---00000000000014b339062b443dcb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Paolo
 
-<p dir=3D"ltr">It&#39;s not the context that lacks its the protocol.. lol. =
-I wish I was good with words and a genius... oh no wait. It&#39;s easier be=
-ing simple..you think.u could find the s<br>
-B listers. There&#39;s gotta b a mpatch</p>
-<br><div class=3D"gmail_quote gmail_quote_container"><div dir=3D"ltr" class=
-=3D"gmail_attr">On Thu, Jan 9, 2025, 5:19=E2=80=AFAM Philippe Mathieu-Daud=
-=C3=A9 &lt;<a href=3D"mailto:philmd@linaro.org">philmd@linaro.org</a>&gt; w=
-rote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex=
-;border-left:1px #ccc solid;padding-left:1ex">On 18/12/24 19:15, Alex Benn=
-=C3=A9e wrote:<br>
-&gt; When FEAT_SEL2 was implemented the SEL2 timers where missed. This<br>
-&gt; shows up when building the latest Hafnium with SPMC_AT_EL=3D2. The<br>
-&gt; actual implementation utilises the same logic as the rest of the<br>
-&gt; timers so all we need to do is:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 - define the timers and their access functions<br>
-&gt;=C2=A0 =C2=A0 - conditionally add the correct system registers<br>
-&gt;=C2=A0 =C2=A0 - create a new accessfn as the rules are subtly different=
- to the<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 existing secure timer<br>
-&gt; <br>
-&gt; Fixes: e9152ee91c (target/arm: add ARMv8.4-SEL2 system registers)<br>
-&gt; Signed-off-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@lina=
-ro.org" target=3D"_blank" rel=3D"noreferrer">alex.bennee@linaro.org</a>&gt;=
-<br>
-&gt; Cc: <a href=3D"mailto:qemu-stable@nongnu.org" target=3D"_blank" rel=3D=
-"noreferrer">qemu-stable@nongnu.org</a><br>
-&gt; Cc: Andrei Homescu &lt;<a href=3D"mailto:ahomescu@google.com" target=
-=3D"_blank" rel=3D"noreferrer">ahomescu@google.com</a>&gt;<br>
-&gt; Cc: Arve Hj=C3=B8nnev=C3=A5g &lt;<a href=3D"mailto:arve@google.com" ta=
-rget=3D"_blank" rel=3D"noreferrer">arve@google.com</a>&gt;<br>
-&gt; Cc: R=C3=A9mi Denis-Courmont &lt;<a href=3D"mailto:remi.denis.courmont=
-@huawei.com" target=3D"_blank" rel=3D"noreferrer">remi.denis.courmont@huawe=
-i.com</a>&gt;<br>
-&gt; <br>
-&gt; ---<br>
-&gt; v1<br>
-&gt;=C2=A0 =C2=A0 - add better comments to GTIMER descriptions<br>
-&gt;=C2=A0 =C2=A0 - also define new timers for sbsa-ref<br>
-&gt;=C2=A0 =C2=A0 - don&#39;t conditionally gate qemu_timer creation on the=
- feature<br>
-&gt;=C2=A0 =C2=A0 - take cntvoff_el2 int account for SEC_VEL2 in gt_recalc/=
-g_tval_[read|write]<br>
-&gt; v2<br>
-&gt;=C2=A0 =C2=A0 - rename IRQ to ARCH_TIMER_S_EL2_VIRT_IRQ<br>
-&gt;=C2=A0 =C2=A0 - split machine enablement into separate patches<br>
-&gt;=C2=A0 =C2=A0 - return CP_ACCESS_TRAP_UNCATEGORIZED for UNDEF cases<br>
-&gt; ---<br>
-&gt;=C2=A0 =C2=A0include/hw/arm/bsa.h |=C2=A0 =C2=A02 +<br>
-&gt;=C2=A0 =C2=A0target/arm/cpu.h=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A02 +<br>
-&gt;=C2=A0 =C2=A0target/arm/gtimer.h=C2=A0 |=C2=A0 =C2=A04 +-<br>
-&gt;=C2=A0 =C2=A0target/arm/cpu.c=C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A04 ++<br>
-&gt;=C2=A0 =C2=A0target/arm/helper.c=C2=A0 | 158 ++++++++++++++++++++++++++=
-+++++++++++++++++<br>
-&gt;=C2=A0 =C2=A05 files changed, 169 insertions(+), 1 deletion(-)<br>
-<br>
-<br>
-&gt; diff --git a/target/arm/gtimer.h b/target/arm/gtimer.h<br>
-&gt; index de016e6da3..f8f7425a5f 100644<br>
-&gt; --- a/target/arm/gtimer.h<br>
-&gt; +++ b/target/arm/gtimer.h<br>
-&gt; @@ -15,7 +15,9 @@ enum {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0GTIMER_HYP=C2=A0 =C2=A0 =C2=A0 =3D 2, /* EL2=
- physical timer */<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0GTIMER_SEC=C2=A0 =C2=A0 =C2=A0 =3D 3, /* EL3=
- physical timer */<br>
-<br>
-Should we rename as GTIMER_SEC_PEL3 for consistency?<br>
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0GTIMER_HYPVIRT=C2=A0 =3D 4, /* EL2 virtual t=
-imer */<br>
-<br>
-Also GTIMER_HYP=C2=A0 =C2=A0 =C2=A0-&gt; GTIMER_PEL2,<br>
-=C2=A0 =C2=A0 =C2=A0 GTIMER_HYPVIRT -&gt; GTIMER_VEL2?<br>
-<br>
-&gt; -#define NUM_GTIMERS=C2=A0 =C2=A05<br>
-&gt; +=C2=A0 =C2=A0 GTIMER_SEC_PEL2 =3D 5, /* Secure EL2 physical timer */<=
-br>
-&gt; +=C2=A0 =C2=A0 GTIMER_SEC_VEL2 =3D 6, /* Secure EL2 virtual timer */<b=
-r>
-&gt; +#define NUM_GTIMERS=C2=A0 =C2=A07<br>
-&gt;=C2=A0 =C2=A0};<br>
-&gt;=C2=A0 =C2=A0<br>
-&gt;=C2=A0 =C2=A0#endif|<br>
-<br>
-</blockquote></div>
-
---00000000000014b339062b443dcb--
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>   pc-bios/keymaps/meson.build | 17 ++++++++---------
+>   tests/qtest/meson.build     |  2 +-
+>   2 files changed, 9 insertions(+), 10 deletions(-)
+> 
+> diff --git a/pc-bios/keymaps/meson.build b/pc-bios/keymaps/meson.build
+> index 0bd8ce0077..a79a09b276 100644
+> --- a/pc-bios/keymaps/meson.build
+> +++ b/pc-bios/keymaps/meson.build
+> @@ -39,19 +39,18 @@ else
+>     native_qemu_keymap = qemu_keymap
+>   endif
+>   
+> +keymap_targets = []
+>   if native_qemu_keymap.found()
+> -  t = []
+>     foreach km, args: keymaps
+>       # generate with qemu-kvm
+> -    t += custom_target(km,
+> -                       build_by_default: true,
+> -                       output: km,
+> -                       command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
+> -                       install: have_system,
+> -                       install_dir: qemu_datadir / 'keymaps')
+> +    keymap_targets += custom_target(km,
+> +                                    build_by_default: true,
+> +                                    output: km,
+> +                                    command: [native_qemu_keymap, '-f', '@OUTPUT@', args.split()],
+> +                                    install: have_system,
+> +                                    install_dir: qemu_datadir / 'keymaps')
+>     endforeach
+> -
+> -  alias_target('update-keymaps', t)
+> +  alias_target('update-keymaps', keymap_targets)
+>   else
+>     install_data(keymaps.keys(), install_dir: qemu_datadir / 'keymaps')
+>   endif
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index c5a70021c5..f75c1057a4 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -383,7 +383,7 @@ qtests = {
+>   if vnc.found()
+>     gvnc = dependency('gvnc-1.0', method: 'pkg-config', required: false)
+>     if gvnc.found()
+> -    qtests += {'vnc-display-test': [gvnc]}
+> +    qtests += {'vnc-display-test': [gvnc, keymap_targets]}
+>       qtests_generic += [ 'vnc-display-test' ]
+>     endif
+>   endif

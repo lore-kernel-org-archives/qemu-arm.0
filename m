@@ -1,208 +1,418 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp1152731njb;
-        Wed, 8 Jan 2025 13:58:20 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWAAOuW2h8ARNuOo+OqySKsFZQEsersN8jMtol7z/WoI/AvwiaLVCYmJxvn8Cljmw5Xv5we5p2t6dck9A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHBAh7FeJ5ECGRNVrwy3xyHPGhDgdsRB4Ynse7o3NSju/VAG+m+0eah0OspxD6kk5wzeoRe
-X-Received: by 2002:a05:6a21:3a8b:b0:1e1:aef4:9ce7 with SMTP id adf61e73a8af0-1e88cfa6fecmr6819874637.17.1736373500515;
-        Wed, 08 Jan 2025 13:58:20 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1736373500; cv=pass;
+Received: by 2002:a05:7022:43a6:b0:92:a90b:6588 with SMTP id bo38csp1139318dlb;
+        Wed, 8 Jan 2025 18:00:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWJIRrMABVm9cQKMlwwvGBFRVNjhrHDAFyCxgR0YhF2AbmU4CDcLnj0aqC76rvaDEdkHfYa4n2qzFzYiQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGppOkk+plMAEh1RC5I6XSqmTNgzOdDgTMKX2rfRGKf2xBfzbB5HQd3Q695GzF+SQxeSoE/
+X-Received: by 2002:a05:6214:3212:b0:6d8:7db7:1f2e with SMTP id 6a1803df08f44-6df9b1db07amr88037056d6.14.1736388001867;
+        Wed, 08 Jan 2025 18:00:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736388001; cv=none;
         d=google.com; s=arc-20240605;
-        b=kkeU0vlFh84mTuxteXwqlYv7KGiWcvF2wdfDywTdLbX6EUhkNLX08J2SuAlKGGTiGP
-         BzsXjmU1p/RG1ejFlC30OZQSBWP2IvlJBR66Td1nfy25MAjOsuBDxgTHbVaRQkq7V5Lm
-         m5mr/JrYFQkPQYTthiKURs1ifOp6r8KtCsQkA4eJ1e1i+57zjIvsigPpBx+cMC4rDOmg
-         8z/i2AH3i5cJ9sTpTM+ltxtqQQcUQExuFrVUBTTLKKmA3UF1zKd/HSWGdf3lWF7QOMPZ
-         Zl7TMa0kcHFfJt6u+YkCS498paLYtbREEj2Oxfz6OB3lSEfhZnhRLD3GgMdxwxJECvlR
-         Nxuw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :date:message-id:dkim-signature;
-        bh=VZT12k8zyiJJctayBGmmsPk5QVebozGKzATCMYJ680I=;
-        fh=ojKy672K5zC5XNsd/T/FKUzDWt4rAvBkVq52bYRmdes=;
-        b=cZW4FtZ6Hjwzl3t0RNW8Cj+doxIa1rRa9nAizS4/py3MgOPpVf8cGWiLGiHOXQRCiW
-         jsWAX5Jb5cCo3q38LTlnH5eJzNNAy6zOdQZmTJeOJ4CR1Fe+/zymLGL1jLL/mKYfTrj3
-         JIwOrmBV21abtPx1YWBdPdC3Z/3qLtDKMnNzAM+RdYzDviRTjo7FOaC7ntzp1ijQUuha
-         AGW29DxP/nHtte+yLdMy2voBLBbibUbr0YPiLU2pfjSFxscRcI3EBd5TKpYhdZGm46I7
-         Hv8+0KH6MSXstHI1X5ipNb+gtlL6qj6OeSw2oPzVXhQFvsfOS5DfvBtp9JbIH7mrtHZl
-         fMWA==;
+        b=loU9X5yWKXRGTG/ZDPj4B6Jn1s0r9asrKEaWo1Bizcw53nT2gooZAICnPiSkltZnq6
+         ZL5nNaMBsYESlY7B6HPdSfFL8u00BxNakGMLP7gDFI2VPb6eWZ32ewGL49ITyqRE2cYM
+         sdwv+NCB8LZ2DbGta3Bumb6gpEnHXftMLa1eivIlrILJ9FMPI4f2j5QBrWp/EcoxAvsQ
+         QSnL46l0EMpVVbqmF0wVBGwlzUCVWQTrV/xErz9QqkvRpD/1cBvQ17NgBAkbOeeqV8fF
+         wXdefhR/v80Br01LuJcLeSiApuUwMEAwgVn3XWAcd3SPKKWSIPYcUUU/KYMS/Q3kZ7sJ
+         TjDg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :content-transfer-encoding:references:in-reply-to:date:cc:to:from
+         :subject:message-id:dkim-signature;
+        bh=et6MvNpMhJ/GCry+Ff3Ha/jLEzOm/MI7gaF5X5hYAo8=;
+        fh=ZOisryR2Mb28fNxWQse9qjy5qBOClWtToxOZdGTojXg=;
+        b=a8JjYSWFJ61VchV0bvGO11eXFbf1psxUsTs6TDXkVimqXw+nqTs8NDrlQ4rbbDrjNt
+         eBTDubKdt+joC2gDbwN004JliKr7SGyQHieCQj2GMhINsBvCNl6SvNsKGoYOo6Mbx0zP
+         PHNum8CLWui04JS1gX7QrUDo5nTX9pim+DtHYDzK5YOC8hgbsSuUMq5rHE1hwd0//aaM
+         oKjz2DB4P8V5L9CUYek0fDMy36p74BwM3nMAaxheajcbgf9GW6Szm4cYskbbjXSREjg3
+         APLxTh8YXYnv08v60UmyjvuneR2a7W++n1nK83gFFtl99b1HrFUZlnWLApjKlWP4Ajs2
+         Vr0Q==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Itl/xZvR";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-34849-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-34849-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-34849-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-72d0fcefed4si5459427b3a.370.2025.01.08.13.58.20
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=cXGxOQHD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dd181017acsi508888426d6.2.2025.01.08.18.00.01
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 08 Jan 2025 13:58:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-34849-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 08 Jan 2025 18:00:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Itl/xZvR";
-       arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-34849-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="kvm+bounces-34849-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 987A13A6BF9
-	for <alex.bennee@linaro.org>; Wed,  8 Jan 2025 21:58:15 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id B87E61F4E50;
-	Wed,  8 Jan 2025 21:58:15 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Itl/xZvR"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 05BD51A8411
-	for <kvm@vger.kernel.org>; Wed,  8 Jan 2025 21:58:13 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1736373495; cv=none; b=R8Pf9A/J9NBh4/ca6lO778NfSyZ9dXdV5RWn5rRcvWVZaaoUc9LfYRMYoqK70Z8sXLQMph01F2ZVqfst2uBtBEr3jQ37sEnhiEaPk5YuXeqdHwetJV1XMIfOsqDl6xg2VLSNjk7az8VDyQA+/YOIgIrHEHIL84BYgsfEvC0UTHQ=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1736373495; c=relaxed/simple;
-	bh=VFxS6IVlzinJoQmrxhhGmMY2lTuIipJb30aOmBNZ2Rk=;
-	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=KRtugOpWgMQ3l3PI1MZ78N72ENMTWgLsumFmRFkO/BgdSTR+F0/ljg4ChY2Rvd0AYDmQYnkxAJCLlA/AJ/taFxiWa8UoyuCOW3xk1q50waYzHAZ8JsS8z2bKXAqsQGvCleIXUCIAWE22B/KUX5//mJ48z+k3/YIPtr15yAjSsCM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Itl/xZvR; arc=none smtp.client-ip=170.10.129.124
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1736373492;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=VZT12k8zyiJJctayBGmmsPk5QVebozGKzATCMYJ680I=;
-	b=Itl/xZvRXLgOpVlc34UUzRg7EQ5cHEQVAdBMdTvpDDyTdDwioV/T8bCoxP1OtaIpBN9tvM
-	Z8XhHaCRyU//aeHPsS9TTu40glCe6jmu1glvio6X1TFttb0LPOKV8djZ79OBFItsfmSFZY
-	Ho8z4R1n+xpOhcDBirl+XVd7DOp/8Is=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-249-fdES6T1UNKGIR2nF5kh7Gg-1; Wed, 08 Jan 2025 16:58:11 -0500
-X-MC-Unique: fdES6T1UNKGIR2nF5kh7Gg-1
-X-Mimecast-MFC-AGG-ID: fdES6T1UNKGIR2nF5kh7Gg
-Received: by mail-wr1-f72.google.com with SMTP id ffacd0b85a97d-385dcae001fso86908f8f.1
-        for <kvm@vger.kernel.org>; Wed, 08 Jan 2025 13:58:11 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736373490; x=1736978290;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:from:references:cc:to:subject:user-agent
-         :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to;
-        bh=VZT12k8zyiJJctayBGmmsPk5QVebozGKzATCMYJ680I=;
-        b=VtCjGd8Yyn6oI3E3agqIXoiWfqt/6BGFxNrK1rbr6TEDmjmHEA8DIgVJOPTakrpOOC
-         4iqEfQAzl8llnB9ftfsY3qsXRmSLK1VpzsKBcscLY3kSG1xNC55zUWc/UDGegvXaVZwu
-         fT0rV0J/sIHyDr7GXASZCbzNXjvD5kYn7khqsRyGNSNb4YYIabM42tXue0EVMxUFtAHe
-         y+lJJ0T+TPXLV2XcDbPkg2hP+7IcliMMJAmQO4CR7lYcJGpPLlPf6BPQ5TZHM7Do/p96
-         ZleaYbo/mW/8BnCZHPZ7SG6Iqdqi7guk9AOs3KK72Ft4G5rYu2cY8AD4suoHNk+6mUYg
-         jbzQ==
-X-Forwarded-Encrypted: i=1; AJvYcCWaHiDzenp93Ipsn4byAGF0oqWIX582t4ZPs8I7kXCQyq940ldeF+EP03ANvHxsqh2tR0M=@vger.kernel.org
-X-Gm-Message-State: AOJu0Yz+3AYGwACsmJcs9qwMULozFVHD24Gtl/O1ai2QCmHoFYpGZ8Ls
-	Zc+3G1rOjDLEr6oZxp6zCGI+NL03oCxVVguKMoE2dooaJPpr9MRJkkaQQqvwiOmROb/GfEUYyWU
-	z2I4UYCZOaQgBN+pAm44wNuwAw/GDRcn+HPkO7K4Q/ZUN3QUZWGb/5f4YkkcL
-X-Gm-Gg: ASbGncsIfehtFr/N5RjbIK9an+l+t/wjiIB5ozxaONMXa6RII84wXXTNM1TofTU2LRD
-	KHsQoQCJLByzB5TLYl2itZqqXjDlyDNtBHCrnVj2e8a03OjzwiI3BDPCt0POEc1ig2H5pIQgvNw
-	QUOqppJ0mJLRZiJi3xnaRdO77oPMUwFBwmdqmQHWx3BXpTtga7RtHvloUtIF1JVjvkwpg0/GyAC
-	pM6uwxp7klRV8T8vOZNxaGtq9SnqtHqqBUMaIWa8JgFt97qI1HJ0cj7qPLfXEjzRkFePRVwBBE8
-	rYjMQGwSvcPpCNX5UWe+PTQ5xdb0epuT0V+n1B5Fgh6ZEx72KY88YTbSoq507b0xsdeRjLJmAIl
-	mswlJLw==
-X-Received: by 2002:a05:6000:4022:b0:386:459e:655d with SMTP id ffacd0b85a97d-38a87306d7bmr3618361f8f.20.1736373490403;
-        Wed, 08 Jan 2025 13:58:10 -0800 (PST)
-X-Received: by 2002:a05:6000:4022:b0:386:459e:655d with SMTP id ffacd0b85a97d-38a87306d7bmr3618347f8f.20.1736373490093;
-        Wed, 08 Jan 2025 13:58:10 -0800 (PST)
-Received: from ?IPV6:2003:cb:c70d:3a00:d73c:6a8:ca9f:1df7? (p200300cbc70d3a00d73c06a8ca9f1df7.dip0.t-ipconnect.de. [2003:cb:c70d:3a00:d73c:6a8:ca9f:1df7])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436e9a51bbbsm729705e9.39.2025.01.08.13.58.08
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Jan 2025 13:58:09 -0800 (PST)
-Message-ID: <5e2a7936-498a-4f65-923c-353f7ca1ab17@redhat.com>
-Date: Wed, 8 Jan 2025 22:58:08 +0100
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@codeconstruct.com.au header.s=2022a header.b=cXGxOQHD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=codeconstruct.com.au
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tVhpP-00068g-Fx; Wed, 08 Jan 2025 20:59:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1tVhpK-00068I-ON; Wed, 08 Jan 2025 20:59:14 -0500
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1tVhpH-0000LB-FX; Wed, 08 Jan 2025 20:59:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=codeconstruct.com.au; s=2022a; t=1736387940;
+ bh=et6MvNpMhJ/GCry+Ff3Ha/jLEzOm/MI7gaF5X5hYAo8=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=cXGxOQHDKXXKscWgXKV65vTSyQgGDJv4kDbORSkB0+0frgP6GbesNLNhZ1O5ZAAwj
+ 4qE65IFP5td1fJ8RXrqWdjdKUl9VBHT9FXHMIily4NC3fGOkauWczCrumK+8lLBtox
+ nWsHfF6mNVZYXhNIcy7ria+LmX1RyRObell9aPeSDGhRheGM2+tNQVCzgwElpni9bm
+ 2k0CqgscrZWgeosW7DHtA+W2hQlz7QyoHMvcV0QDrYEf4+5HRxZB+j0DZssLIT7zFR
+ snuq1jVM5zR9xy8QJjOFj1RycurY/p3Wm1E3j1d247OkDDI+9fHEvWz5smysYgbZiy
+ +DJGTV4Y6Zxzw==
+Received: from [192.168.68.112] (58-7-153-226.dyn.iinet.net.au [58.7.153.226])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 158DE70AE0;
+ Thu,  9 Jan 2025 09:58:57 +0800 (AWST)
+Message-ID: <c3b0139f9995427dd83e6172aa17b799361926b6.camel@codeconstruct.com.au>
+Subject: Re: [PATCH v1 1/3] hw/timer/aspeed: Support different memory region
+ ops
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?ISO-8859-1?Q?C=E9dric?= Le
+ Goater <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Joel Stanley
+ <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
+ list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+Date: Thu, 09 Jan 2025 12:28:55 +1030
+In-Reply-To: <20241216075353.1308043-2-jamin_lin@aspeedtech.com>
+References: <20241216075353.1308043-1-jamin_lin@aspeedtech.com>
+ <20241216075353.1308043-2-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 5/7] hostmem: Factor out applying settings
-To: =?UTF-8?Q?=E2=80=9CWilliam_Roche?= <william.roche@oracle.com>,
- kvm@vger.kernel.org, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
- philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
- imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
- wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
-References: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
- <20241214134555.440097-1-william.roche@oracle.com>
- <20241214134555.440097-6-william.roche@oracle.com>
-From: David Hildenbrand <david@redhat.com>
-Content-Language: en-US
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <20241214134555.440097-6-william.roche@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: swmB7L/MpKoj
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 2GKWnKp+cnzq
 
-On 14.12.24 14:45, “William Roche wrote:
-> From: David Hildenbrand <david@redhat.com>
-> 
-> We want to reuse the functionality when remapping or resizing RAM.
-
-We should drop the "or resizing of RAM." part, as that does no longer apply.
-
-> 
-> Signed-off-by: David Hildenbrand <david@redhat.com>
-> Signed-off-by: William Roche <william.roche@oracle.com>
+On Mon, 2024-12-16 at 15:53 +0800, Jamin Lin wrote:
+> It set "aspeed_timer_ops" struct which containing read and write
+> callbacks
+> to be used when I/O is performed on the TIMER region.
+>=20
+> Besides, in the previous design of ASPEED SOCs, the timer registers
+> address
+> space are contiguous.
+>=20
+> ex: TMC00-TMC0C are used for TIMER0.
+> ex: TMC10-TMC1C are used for TIMER1.
+> ex: TMC80-TMC8C are used for TIMER7.
+>=20
+> The TMC30 is a control register and TMC34 is an interrupt status
+> register for
+> TIMER0-TIMER7.
+>=20
+> However, the register set have a significant change in AST2700. The
+> TMC00-TMC3C
+> are used for TIMER0 and TMC40-TMC7C are used for TIMER1. In
+> additional,
+> TMC20-TMC3C and TMC60-TMC7C are reserved registers for TIMER0 and
+> TIMER1,
+> respectively.
+>=20
+> Besides, each TIMER has their own control and interrupt status
+> register.
+> In other words, users are able to set control and interrupt status
+> for TIMER0
+> in one register. Both aspeed_timer_read and aspeed_timer_write
+> callback
+> functions are not compatible AST2700.
+>=20
+> Introduce a new "const MemoryRegionOps *" attribute in
+> AspeedTIMERClass and use
+> it in aspeed_timer_realize function.
+>=20
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
+> =C2=A0hw/timer/aspeed_timer.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 | 7 ++++++-
+> =C2=A0include/hw/timer/aspeed_timer.h | 1 +
+> =C2=A02 files changed, 7 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+> index 149f7cc5a6..970bf1d79d 100644
+> --- a/hw/timer/aspeed_timer.c
+> +++ b/hw/timer/aspeed_timer.c
+> @@ -606,6 +606,7 @@ static void aspeed_timer_realize(DeviceState
+> *dev, Error **errp)
+> =C2=A0=C2=A0=C2=A0=C2=A0 int i;
+> =C2=A0=C2=A0=C2=A0=C2=A0 SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+> =C2=A0=C2=A0=C2=A0=C2=A0 AspeedTimerCtrlState *s =3D ASPEED_TIMER(dev);
+> +=C2=A0=C2=A0=C2=A0 AspeedTimerClass *atc =3D ASPEED_TIMER_GET_CLASS(s);
+> =C2=A0
+> =C2=A0=C2=A0=C2=A0=C2=A0 assert(s->scu);
+> =C2=A0
+> @@ -613,7 +614,7 @@ static void aspeed_timer_realize(DeviceState
+> *dev, Error **errp)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 aspeed_init_one_timer(s,=
+ i);
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 sysbus_init_irq(sbd, &s-=
+>timers[i].irq);
+> =C2=A0=C2=A0=C2=A0=C2=A0 }
+> -=C2=A0=C2=A0=C2=A0 memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_t=
+imer_ops,
+> s,
+> +=C2=A0=C2=A0=C2=A0 memory_region_init_io(&s->iomem, OBJECT(s), atc->reg_=
+ops, s,
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 TYPE_ASPEED_TIMER, 0x1000);
 
--- 
-Cheers,
 
-David / dhildenb
+> =C2=A0=C2=A0=C2=A0=C2=A0 sysbus_init_mmio(sbd, &s->iomem);
+> =C2=A0}
+> @@ -708,6 +709,7 @@ static void
+> aspeed_2400_timer_class_init(ObjectClass *klass, void *data)
+> =C2=A0=C2=A0=C2=A0=C2=A0 dc->desc =3D "ASPEED 2400 Timer";
+> =C2=A0=C2=A0=C2=A0=C2=A0 awc->read =3D aspeed_2400_timer_read;
+> =C2=A0=C2=A0=C2=A0=C2=A0 awc->write =3D aspeed_2400_timer_write;
+> +=C2=A0=C2=A0=C2=A0 awc->reg_ops =3D &aspeed_timer_ops;
+> =C2=A0}
+> =C2=A0
+> =C2=A0static const TypeInfo aspeed_2400_timer_info =3D {
+> @@ -724,6 +726,7 @@ static void
+> aspeed_2500_timer_class_init(ObjectClass *klass, void *data)
+> =C2=A0=C2=A0=C2=A0=C2=A0 dc->desc =3D "ASPEED 2500 Timer";
+> =C2=A0=C2=A0=C2=A0=C2=A0 awc->read =3D aspeed_2500_timer_read;
+> =C2=A0=C2=A0=C2=A0=C2=A0 awc->write =3D aspeed_2500_timer_write;
+> +=C2=A0=C2=A0=C2=A0 awc->reg_ops =3D &aspeed_timer_ops;
+> =C2=A0}
+> =C2=A0
+> =C2=A0static const TypeInfo aspeed_2500_timer_info =3D {
+> @@ -740,6 +743,7 @@ static void
+> aspeed_2600_timer_class_init(ObjectClass *klass, void *data)
+> =C2=A0=C2=A0=C2=A0=C2=A0 dc->desc =3D "ASPEED 2600 Timer";
+> =C2=A0=C2=A0=C2=A0=C2=A0 awc->read =3D aspeed_2600_timer_read;
+> =C2=A0=C2=A0=C2=A0=C2=A0 awc->write =3D aspeed_2600_timer_write;
+> +=C2=A0=C2=A0=C2=A0 awc->reg_ops =3D &aspeed_timer_ops;
+> =C2=A0}
+> =C2=A0
+> =C2=A0static const TypeInfo aspeed_2600_timer_info =3D {
+> @@ -756,6 +760,7 @@ static void
+> aspeed_1030_timer_class_init(ObjectClass *klass, void *data)
+> =C2=A0=C2=A0=C2=A0=C2=A0 dc->desc =3D "ASPEED 1030 Timer";
+> =C2=A0=C2=A0=C2=A0=C2=A0 awc->read =3D aspeed_2600_timer_read;
+> =C2=A0=C2=A0=C2=A0=C2=A0 awc->write =3D aspeed_2600_timer_write;
+> +=C2=A0=C2=A0=C2=A0 awc->reg_ops =3D &aspeed_timer_ops;
+> =C2=A0}
+> =C2=A0
+> =C2=A0static const TypeInfo aspeed_1030_timer_info =3D {
+> diff --git a/include/hw/timer/aspeed_timer.h
+> b/include/hw/timer/aspeed_timer.h
+> index 07dc6b6f2c..8d0b15f055 100644
+> --- a/include/hw/timer/aspeed_timer.h
+> +++ b/include/hw/timer/aspeed_timer.h
+> @@ -73,6 +73,7 @@ struct AspeedTimerClass {
+> =C2=A0
+> =C2=A0=C2=A0=C2=A0=C2=A0 uint64_t (*read)(AspeedTimerCtrlState *s, hwaddr=
+ offset);
+> =C2=A0=C2=A0=C2=A0=C2=A0 void (*write)(AspeedTimerCtrlState *s, hwaddr of=
+fset, uint64_t
+> value);
+> +=C2=A0=C2=A0=C2=A0 const MemoryRegionOps *reg_ops;
+
+So given the layout changes for the AST2700, perhaps we can improve the
+way we've organised the call delegation?
+
+Currently the callbacks in `aspeed_timer_ops` are generic
+(aspeed_timer_read(), aspeed_timer_write()), and then we specialise
+some bits in the default label of the switch statement by delegating to
+the SoC-specific callbacks.
+
+Perhaps we should instead call through the SoC-specific callbacks
+first, and then have those call the generic op implementation for
+accesses to registers have common behaviours across the AST2[456]00
+SoCs.
+
+With that perspective, the change in layout for the AST2700 is
+effectively a specialisation for all the registers. Later, if there's
+some tinkering with the timer registers for a hypothetical AST2800, we
+can follow the same strategy by extracting out the common behaviours
+for the AST2700 and AST2800, and invoke them through the default label.
+
+As a quick PoC to demonstrate my line of thinking (not compiled, not
+tested, only converts AST2400):
+
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index 4868651ad489..c7486af4ced2 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -239,9 +239,8 @@ static uint64_t aspeed_timer_get_value(AspeedTimer *t, =
+int reg)
+     return value;
+ }
+
+-static uint64_t aspeed_timer_read(void *opaque, hwaddr offset, unsigned si=
+ze)
++static uint64_t aspeed_timer_read_generic(AspeedTimerCtrlState *s, hwaddr =
+offset)
+ {
+-    AspeedTimerCtrlState *s =3D opaque;
+     const int reg =3D (offset & 0xf) / 4;
+     uint64_t value;
+
+@@ -256,13 +255,20 @@ static uint64_t aspeed_timer_read(void *opaque, hwadd=
+r offset, unsigned size)
+         value =3D aspeed_timer_get_value(&s->timers[(offset >> 4) - 1], re=
+g);
+         break;
+     default:
+-        value =3D ASPEED_TIMER_GET_CLASS(s)->read(s, offset);
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\=
+n",
++                __func__, offset);
++        value =3D 0;
+         break;
+     }
+-    trace_aspeed_timer_read(offset, size, value);
+     return value;
+ }
+
++static uint64_t aspeed_timer_read(void *opaque, hwaddr offset, unsigned si=
+ze)
++{
++    AspeedTimerCtrlState *s =3D opaque;
++    return ASPEED_TIMER_GET_CLASS(s)->read(s, offset, size);
++}
++
+ static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int=
+ reg,
+                                    uint32_t value)
+ {
+@@ -431,12 +437,11 @@ static void aspeed_timer_set_ctrl2(AspeedTimerCtrlSta=
+te *s, uint32_t value)
+     trace_aspeed_timer_set_ctrl2(value);
+ }
+
+-static void aspeed_timer_write(void *opaque, hwaddr offset, uint64_t value=
+,
+-                               unsigned size)
++static void aspeed_timer_write_generic(AspeedTimerCtrlState *s, hwaddr off=
+set,
++                                    uint64_t value)
+ {
+     const uint32_t tv =3D (uint32_t)(value & 0xFFFFFFFF);
+     const int reg =3D (offset & 0xf) / 4;
+-    AspeedTimerCtrlState *s =3D opaque;
+
+     switch (offset) {
+     /* Control Registers */
+@@ -451,11 +456,20 @@ static void aspeed_timer_write(void *opaque, hwaddr o=
+ffset, uint64_t value,
+         aspeed_timer_set_value(s, (offset >> TIMER_NR_REGS) - 1, reg, tv);
+         break;
+     default:
+-        ASPEED_TIMER_GET_CLASS(s)->write(s, offset, value);
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\=
+n",
++                __func__, offset);
++        value =3D 0;
+         break;
+     }
+ }
+
++static void aspeed_timer_write(void *opaque, hwaddr offset, uint64_t value=
+,
++                               unsigned size)
++{
++    AspeedTimerCtrlState *s =3D opaque;
++    ASPEED_TIMER_GET_CLASS(s)->write(s, offset, value);
++}
++
+ static const MemoryRegionOps aspeed_timer_ops =3D {
+     .read =3D aspeed_timer_read,
+     .write =3D aspeed_timer_write,
+@@ -465,7 +479,7 @@ static const MemoryRegionOps aspeed_timer_ops =3D {
+     .valid.unaligned =3D false,
+ };
+
+-static uint64_t aspeed_2400_timer_read(AspeedTimerCtrlState *s, hwaddr off=
+set)
++static uint64_t aspeed_2400_timer_read(AspeedTimerCtrlState *s, hwaddr off=
+set, unsigned size)
+ {
+     uint64_t value;
+
+@@ -475,17 +489,18 @@ static uint64_t aspeed_2400_timer_read(AspeedTimerCtr=
+lState *s, hwaddr offset)
+         break;
+     case 0x38:
+     case 0x3C:
+-    default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\=
+n",
+                 __func__, offset);
+         value =3D 0;
+         break;
++    default:
++        return aspeed_timer_read_generic(s, offset);
+     }
++    trace_aspeed_timer_read(offset, size, value);
+     return value;
+ }
+
+-static void aspeed_2400_timer_write(AspeedTimerCtrlState *s, hwaddr offset=
+,
+-                                    uint64_t value)
++static void aspeed_2400_timer_write(AspeedTimerCtrlState *s, hwaddr offset=
+, uint64_t value)
+ {
+     const uint32_t tv =3D (uint32_t)(value & 0xFFFFFFFF);
+
+@@ -495,10 +510,12 @@ static void aspeed_2400_timer_write(AspeedTimerCtrlSt=
+ate *s, hwaddr offset,
+         break;
+     case 0x38:
+     case 0x3C:
+-    default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx "\=
+n",
+                 __func__, offset);
+         break;
++    default:
++        aspeed_timer_write_generic(s, offset, value);
++        break;
+     }
+ }
+
+diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_time=
+r.h
+index 07dc6b6f2cbd..540b23656815 100644
+--- a/include/hw/timer/aspeed_timer.h
++++ b/include/hw/timer/aspeed_timer.h
+@@ -71,7 +71,7 @@ struct AspeedTimerCtrlState {
+ struct AspeedTimerClass {
+     SysBusDeviceClass parent_class;
+
+-    uint64_t (*read)(AspeedTimerCtrlState *s, hwaddr offset);
++    uint64_t (*read)(AspeedTimerCtrlState *s, hwaddr offset, unsigned size=
+);
+     void (*write)(AspeedTimerCtrlState *s, hwaddr offset, uint64_t value);
+ };
+
 

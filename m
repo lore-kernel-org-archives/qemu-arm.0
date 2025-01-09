@@ -1,175 +1,160 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp1589380njb;
-        Thu, 9 Jan 2025 06:59:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUJEr8opnjLgiHicYwlw1kchtuii69TY02APbRIhF+QUX7v6Mv5vzEyODUWqIIDVLPg7nPY8bqvt75j4w==@linaro.org
-X-Google-Smtp-Source: AGHT+IETD7mZwXCXkd6JzrwYoTzf4fjqlAiXg1rQ8tZxPd9UxXZDqRPE4u5h2vVh176ZG4XKcJ3C
-X-Received: by 2002:a05:6214:48c:b0:6d3:65ad:5cf9 with SMTP id 6a1803df08f44-6df9b1eaee5mr112762996d6.15.1736434778888;
-        Thu, 09 Jan 2025 06:59:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736434778; cv=none;
+Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp1614088njb;
+        Thu, 9 Jan 2025 07:31:53 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW2TniqMpHBuxcCHSkYr868MxOQ4REn3YM52OE6zmFCRj6SNAQb/4X7SzTcchHEb662fIAlx92ukF1wJg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG+F0FfxPYqUT6iS00H5LoKahAlTlGNJ8pgTKD3UiJ1WqbzeRLbqgtTVH0p+/DyfMHSgSli
+X-Received: by 2002:a05:620a:244a:b0:7b6:d4a2:f11f with SMTP id af79cd13be357-7bcd961c451mr499309685a.0.1736436713347;
+        Thu, 09 Jan 2025 07:31:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736436713; cv=none;
         d=google.com; s=arc-20240605;
-        b=livDKnDyIxChwOOds32+RrAmL35tels8WJ3xe/ry+mhbLdl4O4d+0G1+bGNdNSHsha
-         /Mx70r1WUv/D2HMLy3yxN/a90wlWJIc4KcNSlcPwkOL05B/T9GHH8vHoLV68fyWTEhdR
-         J8IeL9jNQmSiLCawgZFWri5MB5leLkvTWWSWsvc/uCkXiC01Np5yDAowYnfOWvhcu1Mu
-         nYlWzZZcU9F2av0G98mQDx+wJ7aaw4T1Z4OMV/oa72a4KG4sHkjtSNQtdtwVFbIv03NL
-         djhzP7y/8If31DnGMUnxfVIDB2EfSJXfENmz8iQOijFcwcr67xsYnyWKN6S1UfXXWBBM
-         U0QQ==
+        b=jxvTAijAawoaBLfLsPX/eIZuCC5Uf4VL9T1D+qhaN0c1RWkTH4Px6UMdKRw4m84kFk
+         vOMsKX9/MTpfUcjA1Z6hQZ/zmEyMjlOSao65/wLCscPSFO44nVmfRCkxGzbjOaUgaKn2
+         DvdbVgO0/mYM0JFo9zKSlvEDwMgpHecqeOxfN/gxXkyxLzpKELBPTK/iKJH629ynXTf5
+         GPRaZYT8hPzJ5QaUIrlN4oQblfChO/VCcCuAmfXTQenEFcw7G5pJr1S+zBgyvrDkebJx
+         hOMWn6k2NsnhUx7EPFkbNbG0sls6amRZEBsh6gC3Mr9UBo+VJ6B2nOzOGcnIRL0Z4RHM
+         mNTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:dkim-signature
-         :dkim-signature:dkim-signature:dkim-signature;
-        bh=tvgQjewSGVHEptAeZtpI1ZSzQ/3pdVsZdvcD4awYC14=;
-        fh=rIthffucqBHpjVovnnGv3Uh3YPEA9V4TP7pBnTKA/Z8=;
-        b=UNn2ye4Dv2b5lQrtuzrWQ6y7sYNnyP3rpSMvnDRky896ErB1QYjcjxS+XNTuF6sdjZ
-         3QAUjIFOQjbh3h/5dt/NnOevt9+1AWqYE+5J9dx2gvZzUi2imkLwIlo7gbRvnWmSKZKM
-         kgHGJgI2hU/BNAdfN3klpk3cD0/0yiSI7+1o9YxmlXkeyhB55gTu9+pwxv6XPYgQBIPi
-         a7n2MJnI4S4rQYF4L4O21zLC8xUWW11HZUewVNzstZMAmb7Qp0FLax8ao5u6wD1t0KN3
-         E2ABYbYWgBk0OxbU/i5kc6VPBfoPHmntyErIPWtcxcLmQ91LNk6aanMT+IxoovKGdVjF
-         olsg==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=nW4x61t1mONYUIA4UDDFEPjhQRH+aineX/QSDvpB/uA=;
+        fh=kgIFcXxu2H9HqWoQ8F5/VCTHrTpZpDsA2jkVnbKATAw=;
+        b=PVd51k+/s9c8JJazHYL5feD1kJHQSJcZLpFgtQmcDoyALQmsc31/u9At3B4cZ74W8s
+         yi36mDMRlvPF7bS6tFg4osVbnzXQxR+pUgGg9RfrvpU4B37fkAGCXm60tKU77IwVEoMq
+         5xq72YOB9jsJD9iWfnEbomnCHkHiztxT1KERKvDE5R9TorJTNCojifWrtZ95KEJZcmAZ
+         vaXXvt7enPLCu25zpA1bcZ3OrjVHHu0PAKqFHcYvyiiVmKmmGGCw4qLl9B1am3wOg0pn
+         u6ZfJEjqzeqaowdWasqQSDxykzx1nwx83/Zp79CFdmklguaEcA7AcGZryLyHAFK0410D
+         ssFA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="hPW1/bik";
-       dkim=neutral (no key) header.i=@suse.de;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="hPW1/bik";
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=NzGadzS5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dfac71d253si1801476d6.376.2025.01.09.06.59.38
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b608ff8dbesi509333137.202.2025.01.09.07.31.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2025 06:59:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 09 Jan 2025 07:31:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="hPW1/bik";
-       dkim=neutral (no key) header.i=@suse.de;
-       dkim=pass header.i=@suse.de header.s=susede2_rsa header.b="hPW1/bik";
-       dkim=neutral (no key) header.i=@suse.de;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=suse.de
+       dkim=pass header.i=@linaro.org header.s=google header.b=NzGadzS5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVu09-0008Hq-4Z; Thu, 09 Jan 2025 09:59:13 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tVuVP-0001rm-K3; Thu, 09 Jan 2025 10:31:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1tVu07-0008HS-Ez; Thu, 09 Jan 2025 09:59:11 -0500
-Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVuVJ-0001qv-Np
+ for qemu-devel@nongnu.org; Thu, 09 Jan 2025 10:31:25 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1tVu05-0001GU-Th; Thu, 09 Jan 2025 09:59:11 -0500
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id A91B11F393;
- Thu,  9 Jan 2025 14:59:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1736434745; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=tvgQjewSGVHEptAeZtpI1ZSzQ/3pdVsZdvcD4awYC14=;
- b=hPW1/bikt6MEKmwXvmg9SyWz38aK6SHyTzZ9qR0CCblITcNqnVss2ri/edp5b11FpQ99QP
- Bh4oN8LelJ1pnjSppvRpQEXLXWiMzDTMRjCLYTWll/UI5ujQYoqHkeODoHzHbmPMiCATOF
- Tz5ZZ63FAYl9dC8F8VvRsLuNCLudNbU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1736434745;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=tvgQjewSGVHEptAeZtpI1ZSzQ/3pdVsZdvcD4awYC14=;
- b=lFETaE1WYo7kImiQWVDCMypCpd3nd8jVrRKAwVK+p+UM7z+J+G6LFWWSV84+Hrqm0eLB0c
- knSU8rQ0PK5E14Dw==
-Authentication-Results: smtp-out2.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1736434745; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=tvgQjewSGVHEptAeZtpI1ZSzQ/3pdVsZdvcD4awYC14=;
- b=hPW1/bikt6MEKmwXvmg9SyWz38aK6SHyTzZ9qR0CCblITcNqnVss2ri/edp5b11FpQ99QP
- Bh4oN8LelJ1pnjSppvRpQEXLXWiMzDTMRjCLYTWll/UI5ujQYoqHkeODoHzHbmPMiCATOF
- Tz5ZZ63FAYl9dC8F8VvRsLuNCLudNbU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1736434745;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=tvgQjewSGVHEptAeZtpI1ZSzQ/3pdVsZdvcD4awYC14=;
- b=lFETaE1WYo7kImiQWVDCMypCpd3nd8jVrRKAwVK+p+UM7z+J+G6LFWWSV84+Hrqm0eLB0c
- knSU8rQ0PK5E14Dw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 2643D13A8B;
- Thu,  9 Jan 2025 14:59:04 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id 4AtBNzjkf2fPaQAAD6G6ig
- (envelope-from <farosas@suse.de>); Thu, 09 Jan 2025 14:59:04 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Bin Meng <bmeng.cn@gmail.com>, Guenter Roeck <linux@roeck-us.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Jean-Christophe Dubois
- <jcd@tribudubois.net>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- qemu-arm@nongnu.org, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Philippe =?utf-8?Q?Mathieu-Daud?=
- =?utf-8?Q?=C3=A9?=
- <philmd@linaro.org>, Bernhard Beschow <shentey@gmail.com>
-Subject: Re: [PATCH 11/14] tests/qtest/libqos: Reuse TYPE_IMX_I2C define
-In-Reply-To: <20250108092538.11474-12-shentey@gmail.com>
-References: <20250108092538.11474-1-shentey@gmail.com>
- <20250108092538.11474-12-shentey@gmail.com>
-Date: Thu, 09 Jan 2025 11:59:01 -0300
-Message-ID: <87zfk02fuy.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tVuVI-0007aU-6h
+ for qemu-devel@nongnu.org; Thu, 09 Jan 2025 10:31:25 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-388cae9eb9fso606015f8f.3
+ for <qemu-devel@nongnu.org>; Thu, 09 Jan 2025 07:31:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1736436682; x=1737041482; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=nW4x61t1mONYUIA4UDDFEPjhQRH+aineX/QSDvpB/uA=;
+ b=NzGadzS5Ol3AJ9Qv+dM/e/cCKukme55R5Uqc2yViUIimj43T4u1rB7X3k2W5egsftk
+ sOR0Bevyov1PuqFhHOO1s3lbf8/WxcvU48ZrlOuZUkagxsDxwuVWPgXZnjAX46Fq07pP
+ knze5JLP3kao1zEKC33PfnQi8PV9hnSREPafHr+HtM3rqXxrw/0A1gOJ4s/iC4t+NKbr
+ 4Vv4luY5GUqxs77NFysLDXBAXr90IV4tL2MJvAdTpYBas0AJlK1bE29CJyloSObo5rBG
+ m6SNawbzuAKg2Vb3hFgM71RMpVHX9NDBSRyVzMMby9OLyHEE/b2f6tnIvtjVTT0tnmv/
+ BrPQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1736436682; x=1737041482;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=nW4x61t1mONYUIA4UDDFEPjhQRH+aineX/QSDvpB/uA=;
+ b=Az8cIm3+o008/U0vY4ZyCt7VX/q3zDElOl4bm8i9OjOI0dkjd7QEy56wVi+rEJw9Ut
+ mIRpVwjMlmhK+wyZMOrYZynYZ5FJ2Avcdzhm+zlkVtIYu4PVgjgt2lqiNDFBorYQ0onw
+ I7D64RaReO0SVgvppPnH3lxvOTd+7gqUZRlc7o47iOWAPm6HEMPtBRoaEWtZ8AlKfvay
+ HCWQZvlChFMVsPRM7ruqvlNnBFR3PTU/sQdTMWCkiaZMoIu6pAXeTKCya+U+jWIUkX/1
+ OthOPN8qnj4qc1ccvFRf1Z5GKix9MAiyngwv5p+QBhG5AssGfoP2/6w/wQ4IybzO2R88
+ 8ZfQ==
+X-Gm-Message-State: AOJu0YwF9aBLsXGVTIYnD1lAEnBQYpZHbjRBtehnnMCF71XLyqcRwXF3
+ +4U4BggM5S+taAHA1nn72qL2/E5se1p5rAgmVjYHZEx1aZKPIlxin06oDMHZnGVU9NkEoEXZe4j
+ n/3Y=
+X-Gm-Gg: ASbGncvdimstivPtoWf24OmG+zPm3gM/Y5/MOo9skjgCK4PE5CjSynJSNN0hs4fWJAU
+ qat16UglfFv1S8E79WzMSjCvpsGNhzZxZrjpUXOGt8MDitqVGGHciBVIv1z5BMFLnHvorVkefJX
+ JqqGR7O7krlveqIZhhxK0t7BeQtupX+gMoVcFzgjHoMsh+njLwPJ6LrrE0PQCoMo9Ewre7/R35w
+ bj4iZziysrrHr3FV9qKGBz7NUKelZmg4DJ7CoHHUHOQ7Wy0gKKQqPq7bmvTvyMQ8X6p+P5wqIEz
+ 0EFfRpiSGGYoHBi/3HVAlEFdgzo=
+X-Received: by 2002:a05:6000:712:b0:385:f3fb:46aa with SMTP id
+ ffacd0b85a97d-38a87308c15mr7456912f8f.43.1736436682118; 
+ Thu, 09 Jan 2025 07:31:22 -0800 (PST)
+Received: from [192.168.1.74] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38a8e37d11csm2132056f8f.16.2025.01.09.07.31.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 09 Jan 2025 07:31:21 -0800 (PST)
+Message-ID: <866add94-3bd1-4a52-848a-311ab3c05809@linaro.org>
+Date: Thu, 9 Jan 2025 16:31:13 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Spam-Score: -1.99
-X-Spamd-Result: default: False [-1.99 / 50.00]; BAYES_HAM(-2.19)[96.12%];
- SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- FREEMAIL_ENVRCPT(0.00)[gmail.com]; ARC_NA(0.00)[];
- MISSING_XM_UA(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
- MIME_TRACE(0.00)[0:+]; RCVD_TLS_ALL(0.00)[];
- RCPT_COUNT_TWELVE(0.00)[14]; TAGGED_RCPT(0.00)[];
- MID_RHS_MATCH_FROM(0.00)[]; TO_DN_SOME(0.00)[];
- FROM_HAS_DN(0.00)[];
- FREEMAIL_CC(0.00)[gmail.com,roeck-us.net,tribudubois.net,linaro.org,nongnu.org,redhat.com];
- FREEMAIL_TO(0.00)[gmail.com,nongnu.org];
- FROM_EQ_ENVFROM(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
- TO_MATCH_ENVRCPT_ALL(0.00)[];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,suse.de:email]
-Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:2;
- envelope-from=farosas@suse.de; helo=smtp-out2.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/3] cpus: Avoid re-initializing fields cleared in
+ cpu_common_reset_hold()
+To: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+Cc: Stafford Horne <shorne@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
+ qemu-ppc@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20241230153929.87137-1-philmd@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241230153929.87137-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: HhxDqz5YalQS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sHPBHpLYKOd9
 
-Bernhard Beschow <shentey@gmail.com> writes:
-
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+On 30/12/24 16:39, Philippe Mathieu-Daudé wrote:
+> Having this call tree:
+> 
+>    cpu_reset()
+>    -> device_cold_reset()
+>       -> DeviceClass::reset()
+>          -> target_cpu_reset()
+>             -> ResettablePhases::hold()
+>                -> CPUClass::phases::hold()
+>                   -> cpu_common_reset_hold()
+> 
+> If we call cpu_reset(), common fields will be reset in
+> cpu_common_reset_hold(), we don't need to manually do it.
+> 
+> Remove the pointless re-assignments on CPUState.
+Ping for patches 2 & 3?

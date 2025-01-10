@@ -1,136 +1,115 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp1627356njb;
-        Thu, 9 Jan 2025 07:54:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXWL7KkKtzOtPY6NfdVWzi5o+sZNDQTsVECEfLHugekl/8dteh/FoGW497TaDIrQlRJcRWL83fXWY0jRQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG8MZa4UmStO4PwQ30ImquoZtyXWXAdKneLaailT1xwS4gZ+BScH1heA62/DG7CPpEmZ16i
-X-Received: by 2002:a05:6214:5404:b0:6d8:a610:21cc with SMTP id 6a1803df08f44-6df9b1bb685mr98634136d6.1.1736438048693;
-        Thu, 09 Jan 2025 07:54:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736438048; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp115691njn;
+        Fri, 10 Jan 2025 04:30:22 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUJ6XUSwO80zv0G0Hi33RwrAqqqIlx7ureoi41PRwOnZ8NEu2FcV0j+JrfIDNLgB284BC3/vy7T5izJ4w==@linaro.org
+X-Google-Smtp-Source: AGHT+IHTt0CxmY2r07VKatkPjOHETZXra+XiTDkoiehh2nB+ZK+NmxKESuwjw+VK1fvLlYfEsWBt
+X-Received: by 2002:a05:620a:4016:b0:7b6:6c33:994e with SMTP id af79cd13be357-7bcd96fa26cmr1752150085a.6.1736512212168;
+        Fri, 10 Jan 2025 04:30:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736512212; cv=none;
         d=google.com; s=arc-20240605;
-        b=kF4OjvYXz6GMj4vDw/ga+XWKOObs06DchMgbR/r7J1Yn3bYf8CLnWHcPdOxurYiCgp
-         Cg130SwvmsuR7CDL1rhs6MceKD3G4YdZMMNKmWNF70z0gM234R4V1dPq/y5l+OUJIcQG
-         lCDitUV5rOfjbESc/hVf5u+VCr7zRZSfytcuZbj454xdHLDl+FExyHDQEsDnOrMYhff9
-         HHXyep1maZVnvi3sqxKUfxTtQfuEBTY6eNubFaZ4rOrrsuhK3yfrcCLcic1gHPCl/uq+
-         5AHGU8lZL75aO/L8a07iW+GAyb2lTsGIyK+uDkez0NkrAt+nMRGJjTLCB8XnmHiGupNP
-         SXwg==
+        b=Zz9xTvxRvdB/WQkFlnaVDwYPW2+NTDoHUt++Xu9W8QQfLlLbwYdUsRZ7B7d32Uj4mP
+         cXj7EDapqEPd8okcbLOt4zNf5+/aaOeITUZI2ahqBHaFg3tsXfSb//erqwFm50iPsEQt
+         jL3bcf4BzgizMBot1zWExaLYdb8Yl/UPa9PQ7skqCvjzJ8THzp/IU623FgD5CjU10RI+
+         Xgm8nC1hUn7gts2bb5GtM0SG/DrSJC1atR4S+TwdNdrtoMHo6xSyM7ozn4fWjIU+37hC
+         y/RwFudGAqIymudNCdCNw+56u9oII1vqLpknybxEpOPoiwkljPpQymHWE+jY/hUOKg3z
+         rzyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=PxAYVqsb6CEaTqgp8MsnpCsVpeTXhTf0kuyXHkUfDRI=;
-        fh=cXX/8ks6fvlJRvUJdEfHPd4t2jL63NwAPdBCU4msZDk=;
-        b=F7BT5k0KkDO7D2lQqyOVNyvWUGeH65DwYDOlNNvLL1cPA5Uf4xZQW3pvf4NlH49Z9y
-         orM0UyhJuhoMnOx7jPUrhvi3rNwUwU/+KgbGZ2yrZFg5TJBqwcbtRk+igwYnVVIetm4Y
-         Jcmaykz/RHV+3wtk+pZO9uwdnx3bWUOdt62mKxYfTB0rzc4XZStQPmvqX7gYXXmI7nSS
-         KtzHzvIMScD0qqtRDNegQwezAD/3a8Easapj9viJO2znWhVNjbMUC6hdIwPe9P5zOtlr
-         V/sXBGuywo8DfkD5+jjqIrXwVN2OKFW9GHifdYms1ElsT0NY3pPmfkCp/A1Dp0h5fVQm
-         ahKw==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=AivpEUPvu4XqN7QhBIWcNtaeHxL3gUSC8LCMUCmgVnI=;
+        fh=s2MOsf897/M8XTvkmg3sVyoNMIzQLZnBaylXT89tuyk=;
+        b=EJjReZCOBF9sMdGKIsc6Pa3pCvM8U3WQlAZt30xFQFlg4yHSXtmAmBSM2fVjipJeCK
+         QAtw78UJCv1Vfff/+JO5k9E5sfzyT/Vj3iBjmCLDztmlTaCY7I61DHUJqqM0yGs82kg+
+         nViEzDo6hdF24Pd88mALzONszQKwsPs7LiHuthtDkjPwziYDpjpwid1WFGZwNcTUZJ7w
+         UfBFjsQ7SbmFaNhhJKQ3LUGhd41dCVUiRn5T0uJLXR0GvNv6biloRkFgtjn+uXj2mpdj
+         0yLY1qC4CEqKZiq4d54p6KDRn8Vqj2Nnob006n1CeaHazXkqZ0nDqCfeOq5a7zGXhmAq
+         Oo4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TQ4dup5Z;
+       dkim=pass header.i=@linaro.org header.s=google header.b=L9AkLjPM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dfad27c898si726416d6.223.2025.01.09.07.54.08
+        by mx.google.com with ESMTPS id af79cd13be357-7bce3508013si387109685a.515.2025.01.10.04.30.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2025 07:54:08 -0800 (PST)
+        Fri, 10 Jan 2025 04:30:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TQ4dup5Z;
+       dkim=pass header.i=@linaro.org header.s=google header.b=L9AkLjPM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tVuqT-0006Hi-A4; Thu, 09 Jan 2025 10:53:17 -0500
+	id 1tWE93-00030D-6o; Fri, 10 Jan 2025 07:29:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tVuqR-0006Gu-6L
- for qemu-arm@nongnu.org; Thu, 09 Jan 2025 10:53:15 -0500
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tWE90-0002zT-IN
+ for qemu-arm@nongnu.org; Fri, 10 Jan 2025 07:29:42 -0500
+Received: from mail-yb1-xb2b.google.com ([2607:f8b0:4864:20::b2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tVuqE-0002Sd-CJ
- for qemu-arm@nongnu.org; Thu, 09 Jan 2025 10:53:14 -0500
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-21661be2c2dso16783375ad.1
- for <qemu-arm@nongnu.org>; Thu, 09 Jan 2025 07:53:00 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tWE8s-0005yO-Q3
+ for qemu-arm@nongnu.org; Fri, 10 Jan 2025 07:29:41 -0500
+Received: by mail-yb1-xb2b.google.com with SMTP id
+ 3f1490d57ef6-e3a1cfeb711so2887302276.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Jan 2025 04:29:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1736437979; x=1737042779; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=PxAYVqsb6CEaTqgp8MsnpCsVpeTXhTf0kuyXHkUfDRI=;
- b=TQ4dup5Z6K7iCEp4Xk7qrzd1mQuN3m7/9hSoP3hzhrFImc06Xb1yI3B4eWAwzwADaZ
- YP6a2PgN0xC7Q07ArDcAlS3WCxbxPJjYU/ZqQxgvzKtfEDVti5Sj2mui1r+C/U3xJ8v8
- eZMDGjg394GruVIqDxYhNaW0sQv+6AR4dA5zxbHM6MIhJXETGkt4sWIRM/RfzREyyUie
- thCdYgFeL/C7np6HmTFggyXlwqQRgsLlvdjbTzVUFuMrTnQcw6I1sXkCAR7FBO1KntKJ
- 3cdzB1P4mklrgpZNE+PKwpWATzxlw2KOUQqNqgVkQRBvjVOfEo7pBHQyy+QbUkgCnk7j
- Jspw==
+ d=linaro.org; s=google; t=1736512171; x=1737116971; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=AivpEUPvu4XqN7QhBIWcNtaeHxL3gUSC8LCMUCmgVnI=;
+ b=L9AkLjPM1JWZbpkytwn2XvDCa5yUj4uKK5S1T0PIr2hUg4GANnJGWz/7azJktTCUqd
+ AXrM76OP6zCNLAXRvFt3qN9otvULmsW+zFl4wfPCImDf4nXjXLljIKrNexMfzre7HLSG
+ iGoyeeopAhLn2qJr57UHTJ7JgF4OLdwMHD8zBFmIOX4//bk6MH+FerZwoqCTyNj7cXQX
+ xWJ6K1eN06afBT3Lup+0elLHhmPzZZRjqwTt/LjVJqmLyhEb7nV/ruBo92QM7DHxLpO/
+ Oiri91Ef6Lp+F9kphbmINLvAizv296fpLbSm7NZBVfr5u7OO7mj7idnDfx/i9YMcb6UK
+ bs5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736437979; x=1737042779;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=PxAYVqsb6CEaTqgp8MsnpCsVpeTXhTf0kuyXHkUfDRI=;
- b=M5CailQwA682cydpdF4sRoWAV/0mX7JnJmwwHLmmOw09yJyX51+NUqefCJypKf8uWo
- NdU6WCWIR7Y6KoNmDLCoq8OQZPJ6WEHkx3g0TPrhGJsuPi4voGPg3UC52PSsoX6iCgrt
- xhMJqm7FTJ3cuA+vj4qsnpbXB+IS8NTcQ8MxBYoYQlwvJAHuJNUhfO/8mslAv45jIvmY
- 3yJG2saHaBSQ4M3jMewtWp6kE4hjQzAcPA6cRRLoCc9DhMt3zfq90KTqr6PrKPJDJAw8
- zgZDnwGGH+oMvzqyIZoGOrNv0C41Z6k7WEgkeo+X6kHWfiN54v0od7jdJIJARXuMWiIf
- 7BhA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWEC2mqZYiFNxgKJUaZKzJDigdsQ0ETvJQuY7cqQn+7aRmobwaP7v2qnq5J9qn4NqA1C2ITTOn9Ug==@nongnu.org
-X-Gm-Message-State: AOJu0Yy4hR5+S+X8iXR/7L8biVMWKgonUPv4B8WVqQJCiEdLAsePdmyV
- QafpAIkQO+Y/FMKjUVfoDB1+sZ52+GttFcNIy1p0MDoXhCCJBA1PxWAw2MMDpR4=
-X-Gm-Gg: ASbGnctQyat3FFJjvq3WJN8lZAei62HTMKKaNemRCzUFmVJokUzyLD/lKvpUjzTKE3G
- BMRCEgCmYE2OzV/0W/995ZdPfodVjHp/899kbVVH1k9c/m5bEFvN1bJ/6RySJQiwQS90qRaPTuc
- hd1H3gzmUIdzxA0LdEB2vQiWiO5ayztRaSJnfi2Wj7Dbqd4Z7SlxP6E7DogHa9Hjyz8Rf7+9bJp
- BpPoBOeZP7wBgiRJfMR55y/WFuLvvqh2DM3Vzo6ft8AGJR6A7Htryvj1+ElLzkw4F2i3/MrVA0V
- s8gjc98kha5ffZ8OcaE9lIPj/X8IYKo=
-X-Received: by 2002:a17:902:dad1:b0:21a:8716:fa97 with SMTP id
- d9443c01a7336-21a87264051mr78793795ad.13.1736437979149; 
- Thu, 09 Jan 2025 07:52:59 -0800 (PST)
-Received: from [192.168.132.227] (76-14-228-138.or.wavecable.com.
- [76.14.228.138]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-21a91766da1sm14415255ad.46.2025.01.09.07.52.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Jan 2025 07:52:58 -0800 (PST)
-Message-ID: <1612c0c9-7c45-4bda-a977-8b7cd51ee0f9@linaro.org>
-Date: Thu, 9 Jan 2025 07:52:56 -0800
+ d=1e100.net; s=20230601; t=1736512171; x=1737116971;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=AivpEUPvu4XqN7QhBIWcNtaeHxL3gUSC8LCMUCmgVnI=;
+ b=qY8+d7OxUiwgaiLnoH7JZkRzD0bxbHAK490z1Nw+KfIuih0Reh3MvvXUORI8RfS0mq
+ 7z9CJ3gjbtPZ5k31v7uHOd3FWZWdW5oXUAiRtMsVnGJKqEbaOb3tap0bjCsrstXcjCJB
+ a7DPUtqX3y1L7kxNebaskDTi1V34/JmptOBh6cU7v/PhXCEHt7ahtU3Dy97bCGPejMEP
+ AuWbaC7ZSSbKN1BVZXaajja1ViXQtwbbnwtk78NtLJTcb/priFaeFYFvmKnIqQ9CHTZ9
+ i/fnfaOne7NcLp5BxAKzzPcwjShhuOou9XDD1njab3JW95k4AKhmARAKnPbrfrvqntJJ
+ wxvQ==
+X-Gm-Message-State: AOJu0YzCOCWA/Fei2owfyUzvMyymn7puX8m11q84GcL3aVP3kyBryi8z
+ HChJdaa2dmEm4+ihFKuu4SoUC3vzdZy6xtabMpGkFSRcvvC8UW1VRWLZqn0V4kG961e4aJK+Q2D
+ yt6Oqz1Js01xkRLm1lo6hPfKS25OPWWCtpvOhRA==
+X-Gm-Gg: ASbGncuhidSsZO60meESvE0cgUzIshGd8huIUsUlP0ZzPdJ+BVovcSKuz12pmtHkOuy
+ Ao4BW2v+1MhTPN1O+cvyLPbFWyTbRdAFO9HW79ok=
+X-Received: by 2002:a05:690c:9a87:b0:6ef:6cdd:57e3 with SMTP id
+ 00721157ae682-6f5311e6427mr83278947b3.8.1736512171210; Fri, 10 Jan 2025
+ 04:29:31 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] target/cpus: Remove pointless re-assignment of
- CPUState::halted
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Stafford Horne <shorne@gmail.com>, Zhao Liu <zhao1.liu@intel.com>,
- qemu-ppc@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
- Eduardo Habkost <eduardo@habkost.net>, Song Gao <gaosong@loongson.cn>,
- Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20241230153929.87137-1-philmd@linaro.org>
- <20241230153929.87137-4-philmd@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20241230153929.87137-4-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+References: <20241220125429.7552-1-abelova@astralinux.ru>
+In-Reply-To: <20241220125429.7552-1-abelova@astralinux.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Jan 2025 12:29:20 +0000
+X-Gm-Features: AbW1kvZgF33SI4fc98M6C_juQrmP4eeQ6JMCd_7K9izf_NeRcL5hScNEydHCG3k
+Message-ID: <CAFEAcA89TWtcjt4SQrzSsuESWs6ur6BaR8nTQdtAo1UoV51zSQ@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/arm_sysctl: fix extracting 31th bit of val
+To: Anastasia Belova <abelova@astralinux.ru>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, sdl.qemu@linuxtesting.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -145,25 +124,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 07CuS6863GQE
+X-TUID: wCwZDb3/BBSS
 
-On 12/30/24 07:39, Philippe Mathieu-Daudé wrote:
-> The CPUState::halted field is always re-initialized in
-> cpu_common_reset_hold(), itself called by cpu_reset().
-> No need to have targets manually initializing it.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   hw/misc/mips_cpc.c        | 1 -
->   hw/ppc/e500.c             | 1 -
->   target/arm/arm-powerctl.c | 2 --
->   target/hppa/cpu.c         | 1 -
->   4 files changed, 5 deletions(-)
+On Fri, 20 Dec 2024 at 12:54, Anastasia Belova <abelova@astralinux.ru> wrote:
+>
+> 1 << 31 is casted to uint64_t while bitwise and with val.
+> So this value may become 0xffffffff80000000 but only
+> 31th "start" bit is required.
 
-This is a behavior change if cpu->start_powered_off.
-
-I think it's likely that "start powered off' should not apply to warm reset, and that 
-otherwise this change is ok.  But I think there's that nit to address first.
+This can't happen, because the MemoryRegionOps uses the
+default max access size of 4 bytes, and so the high bytes
+of val will always be zero. But the extract API is clearer
+anyway, so the change is worthwhile.
 
 
-r~
+Applied to target-arm.next with a clarification to the
+commit message that there's no guest-visible wrong
+behaviour; thanks.
+
+-- PMM

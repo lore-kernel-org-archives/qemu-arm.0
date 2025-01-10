@@ -1,138 +1,125 @@
-Received: by 2002:a17:505:d21:b0:1be9:327d:8ee3 with SMTP id vh1csp1647911njb;
-        Thu, 9 Jan 2025 08:20:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU9MfA5ADVR26AxOnXfniHxJYOszrGMxsSZzsRxkC+dOCC11gWR5jUypiRBwBGrnMFfoJGPudBWTl3A1w==@linaro.org
-X-Google-Smtp-Source: AGHT+IFcN+qKkEwEuBXV0dQSmjbuhZ/nHGKZVlFxZ4FwnqOphQkxz0T7IBWslYaAjWej+tKxQpbZ
-X-Received: by 2002:a05:6214:310b:b0:6d8:9d1d:3a7 with SMTP id 6a1803df08f44-6df9b1e3b02mr99037186d6.17.1736439644059;
-        Thu, 09 Jan 2025 08:20:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736439644; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp257022njn;
+        Fri, 10 Jan 2025 08:04:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWzlywrU7pYSkyvu+ZuO1e5RlMc9VH016jUlff6fnZKAwZo8y2AQ7ltiXkS4B9bZ7ZbjwC1aLI+cVJIrg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGYy7aLyY+OQw6XF6lUK20rlQxbLWy3v5e5c2OwjvRWKstsxe5IoZ2N7giHynXsXs4um1wd
+X-Received: by 2002:a05:6102:80a2:b0:4b1:1caf:f61b with SMTP id ada2fe7eead31-4b3d104867bmr11891436137.18.1736525073497;
+        Fri, 10 Jan 2025 08:04:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736525073; cv=none;
         d=google.com; s=arc-20240605;
-        b=Czlgl3vXFgtUwqdIJ+bWBfd6KBpHLYqIVpdf7/X2sAxgKK29Xkth1wtvc5gaEKyNlB
-         BDuw0vyle6ua7ADIkewkwm2/15ywXmboXOtsm8GJEXzAtQD80KGpC2VhKeK17CWfS6PU
-         2fVJq6kP+Pdckh9qpH/OfXidEiKQtK7iUyfzHiwK09jsI/VC8nZFPv3aTx0SvL1VfYMD
-         1AYUrcYeS6FRh4qmOXOUiedxWPapWoNJvaMc22YJj0mVSXJvkvrexTWqrzFT7WQdCWh4
-         s4xMgK6p/b828z2Pk9jI9jC4CxW5O6z3fGY8NP0JVGirUT/Edkr4mUwXAp6dFEPiFdiG
-         +1mQ==
+        b=XAi/lgVkQjw30R7YccZLnFcgO/VdTImBoaodkQd7uvZPXJMugBMlRpWe8e2RowhkTL
+         Tbg7T93HQmli/9bSMK/VaCuarriC8rkVBXwGpn/QXf5BvCuKGfVQTgO4tKV1zirXfiJD
+         1AIp8ntHbCjF2pyLM0XlH2tI9tyrPahTY2zTv1nIm+XySLfhizmthgKzdhu0Dr+J+F8j
+         rxPeXh6fHijYNmsODIgXEoRN2Zoo191F97dEp62pEQ9EkcPKEb9ZOI76Q4uCJqt5zbCZ
+         aVTUp2YD2lL6D4DrTJuDi1WPSJ62mZkpzihuDwyuiNsrZM+8Vc0FSOn5KIXPfSqmiak8
+         LLrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
-         :date:dkim-signature;
-        bh=WVjsqWNID5T6unoJIkQGaZ8P2szq/f5Opyaqt1sGYvo=;
-        fh=tDUHUXp0SQ6olOo+AN3sHiyMbVjJGNZH8uqrWAF9mqc=;
-        b=SSa9ESoEI4Mht3qr3WkXxr+ODY/CMphSNrgD5XM/FkRgkpPg2oZgosYKDczSK/Cne/
-         aVFP7sJ2ni0eSf3JMF7Csbteit+7NN6HdNV9mXiJ6obC6N75I2eOKbbfh9CxBmOQfuO8
-         mBjBMkBn1bDmJgbnfMDuKs6ila7TQ7fLTJjAfZupuZzqnzzvJCTPm+SeSIxmR52574/N
-         /HFLZ5HxpkRS+WQNrkLK4410CgZUzQHmmBYwLSR1V6yXH0YcIeaVnRHIAHj5uGftmaaB
-         l9RidE6ZoRbcJpvybN5HQx6IYLY9rLHTM9mL2yYoy/deCDurenS4hhWQ8nUcDKKkBVlF
-         7nGw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=jNENegiBgeAyoUJg+Zncnjnk99h1QRf7b0Ia8CM8ZQ4=;
+        fh=Uq4CCH4qgIScoA1ZlzK6h1LD8Rw6xac8JtYTs6G5zlc=;
+        b=O3rJJ38tctK+cDHk+2AK5JjtX5/Ad38hdmiIiVh44+pgvdp+eePo6+amtVwx5QfKD8
+         nHz9MV2ZSrnWKQhjL7i1j8qFsiDvZwayBD/ZgoCyluz9ssrEWPmurtMldqnvBdDOD8sg
+         B9XQX1f9PYv6BD8GmlhBHOWVD0HhQ881PYvTiY/w/Rtii9Bq+NIr+Htlwb+P06/d6feL
+         Ip3taB3+RfHy3ZQcfFUgSv9EOC5vQs14LsqTstX0UVWHxgE9mlgiM+mf5cf4MqimPlkw
+         4mlJa3MqbU2c13oG4sJ4ED8/H87jto5DY3xoJ1mnMNJ/K0wG/islPbgYm4fVlraBMJ0j
+         Hhrw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=i4NmSczp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SQQ7wfyl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dd18356e8asi486578356d6.404.2025.01.09.08.20.43
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b6092f57cbsi1720588137.371.2025.01.10.08.04.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 Jan 2025 08:20:44 -0800 (PST)
+        Fri, 10 Jan 2025 08:04:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=i4NmSczp;
+       dkim=pass header.i=@linaro.org header.s=google header.b=SQQ7wfyl;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tVvGe-0000Bw-Gb; Thu, 09 Jan 2025 11:20:20 -0500
+	id 1tWHTo-0007hD-Ox; Fri, 10 Jan 2025 11:03:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVvGc-0000Bd-Oq; Thu, 09 Jan 2025 11:20:19 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tWHTM-0007O4-DW
+ for qemu-devel@nongnu.org; Fri, 10 Jan 2025 11:02:58 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tVvGb-0007YH-6q; Thu, 09 Jan 2025 11:20:18 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-aa67ac42819so169534466b.0; 
- Thu, 09 Jan 2025 08:20:16 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tWHTG-0004Jp-4f
+ for qemu-devel@nongnu.org; Fri, 10 Jan 2025 11:02:53 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4362f61757fso22097255e9.2
+ for <qemu-devel@nongnu.org>; Fri, 10 Jan 2025 08:02:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736439615; x=1737044415; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1736524967; x=1737129767; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WVjsqWNID5T6unoJIkQGaZ8P2szq/f5Opyaqt1sGYvo=;
- b=i4NmSczpkg6sHe2QQOkcynqw8t/vse+/t9eccYm6WVeGdIpT6uZhmL46ppWMwqUaDf
- Sy97eNT0PM8tFkYcaRcbw39TcRI1wKxQ8i5rp86EyZ+tZfl+P2CYnteJ+HvQFYD9JLmC
- 02FK0Jhi/darpOpb7OP87dBTdnG/3fu3iw/WK6CVW+Eme1y2Z/3PhPrFguy492aYXOeQ
- j/g4StKCJmo5D8z5DCeGfhoQAk44/N/ClldpPAi6lG/bP810k5CYhvhMzqVIvwoBuwML
- QOiZcEPg1YIxsSAPs5VulQfqcLGkX0U2s7eNIo691mvXWIqgafhod9ogOspYiqv99veP
- Xesg==
+ bh=jNENegiBgeAyoUJg+Zncnjnk99h1QRf7b0Ia8CM8ZQ4=;
+ b=SQQ7wfylJnaz8sjkErBRn+ygz+rmuOFXhr6fy+JbqyS8zeWz3M1DlmnS5gAFydfMbl
+ 5aMBmQlMEMk9g9LTSHX6q6Y0KiADMGSEnZkrqE4rcbBb/EQdtvjsLWJnK7tKjS5QRLlP
+ yzGw8ol8MjdK+LW5QtNUcZ2DXmojs4RmKhgp8jLomUivbEOu/W+PDBSfQuUPFl5YN88s
+ D6t0qwiEjKvdswK0zDLFQUioH45oJPrimc9lw+ybJoD3abDe5/wQ8xES9y6cFsxpD/of
+ 1QhMlp9u5AboWlpPuTw+v7zQCkfsGTfLNqLGK44U4Il9PcphceP3TkV4C7FwPtkI6k7K
+ Pxig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736439615; x=1737044415;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1736524967; x=1737129767;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=WVjsqWNID5T6unoJIkQGaZ8P2szq/f5Opyaqt1sGYvo=;
- b=J3VYtH940qxaVAGkO9uiPJxz+gK++E986Ip7k9acOLkw5o6jPezgIllOGx34x4nTGo
- oDJWFSNlJ9jxNS7MLz2UMVGuWIxwPYFKs7LgBdj+v0YHPfFtMmL4cwuS8Sc3r3ezFBvy
- 74+ZZw9OP9bbD/stN25oeWaSFoXtZ+dKAhQfDr2qYWFPZUo3rFC1LZIbR9Olpaz1P5o5
- cK9LJvSBkvi6e1gPZS1C7NP5YREmYFjCTvrzXSK5f/AA2Ke6NfpmKlkm++m1f1qjHxzo
- WULok6Qz4HCm0Q/PtyDj7gMtMRPNYlSArBtRloD7B4ypip3LHpY8aMAWACV5MS7r2RJv
- /Nwg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUdVs2G6+FMpvH7Jjwmx5zEmRkutT3LdMUYkPWrRfSTvZ3XDTw/keXswi+fwN4FpJ86r6wwgXi56Q==@nongnu.org,
- AJvYcCWbcpMsYJPo62Rhe2I7Fjhf0SMB9yx/+jvVEOHcrSS/Dn8H2XqtVcXm6ZREl2qtc78BYLV3cdneRf+Wcw==@nongnu.org,
- AJvYcCXVh7lIlJqqkwupPc+DqursgQw3nm3o4rCVvZyPAqWTkT9E/djYlIfkWtqjtPJ3swnm5+vCZ4Iz82Wc3w==@nongnu.org
-X-Gm-Message-State: AOJu0YzEN4P6UhaUlHtx0aVRCZBfYoP0HF5zwg7kXtpDpfibwUFgbST+
- 5s+sqtLhBqcsMTpNgB0aLlhK0c21JxX352k164zJ70fk1wUuwlhj/SToOQ==
-X-Gm-Gg: ASbGnct8gJxuMRddIFvr/llhkvIE2R+WqDvXqO35YGnFjpel+A5i8wxcFN/UMHAoztS
- N8hcogB2tlrtpGxnIc9CQXYhx2VR9k4muqjsaBt/bFHpB6Xv1JRz+e63T3jIAG4umonsnBQ5wlx
- fY6qc0YbYN5Cs2H5jFdzg0/zuY/Zv+FJbU4hWhsRKmcVCFOmqEfd/8qQoSzBaeL0wTnKMBJlu7S
- lO0P3c7CrE5LCRJFUxh3NsuguX7lKN5SwKGN7yxs1uo7pVKpSewDqXtqFA3shX6HgxSy63Wx0Yd
- KEkx1jwXuvK6uqTsZiJsACLeFSs=
-X-Received: by 2002:a17:906:f5a2:b0:aa6:8676:3b33 with SMTP id
- a640c23a62f3a-ab2abc6e768mr545857866b.47.1736439614538; 
- Thu, 09 Jan 2025 08:20:14 -0800 (PST)
-Received: from [127.0.0.1] (business-90-187-110-129.pool2.vodafone-ip.de.
- [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ab2c96468afsm85734166b.170.2025.01.09.08.20.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Jan 2025 08:20:14 -0800 (PST)
-Date: Thu, 09 Jan 2025 16:20:13 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-CC: Bin Meng <bmeng.cn@gmail.com>, Fabiano Rosas <farosas@suse.de>,
- Guenter Roeck <linux@roeck-us.net>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_08/14=5D_hw/sd/sd=3A_Allow_for_inverting?=
- =?US-ASCII?Q?_polarities_of_presence_and_write-protect_GPIOs?=
-In-Reply-To: <342ca371-3e14-4108-9c45-e15cda51b9ca@linaro.org>
-References: <20250108092538.11474-1-shentey@gmail.com>
- <20250108092538.11474-9-shentey@gmail.com>
- <342ca371-3e14-4108-9c45-e15cda51b9ca@linaro.org>
-Message-ID: <FBA535B4-8191-4CEB-905F-FA4C3416048C@gmail.com>
+ bh=jNENegiBgeAyoUJg+Zncnjnk99h1QRf7b0Ia8CM8ZQ4=;
+ b=sIERS+zjv0cgwRL+t0SuXRG7wWhxrzV1lZVhjgocW8xl9R6XHk5BBWAReQQ71XU2UR
+ jK/UzXu1x+C89dMaIXv1sdQat4z35xtp7HHrWBCFvRyRaZ5+Q2qvVVkecFORyh8LAq/7
+ kdcbE0+QOMVT0h3uuU7DCAv9pIdpDCL+O2Y788u9Yu2nmCOQolxRxDPiKbTQgrL43Dai
+ Cx2EF8m5Fkxkhf/MEody4vIe04NKKYbrF67SOq3HLGXlE8WZ+5UPAF8JfNTqtgMiVtZT
+ fLaqvsHQNx7urFIycqOZQcnrh5CKyYHI3UwP23SnPD0Naj5isYgxY2IUmZGu/qLaDNvR
+ 6e6g==
+X-Gm-Message-State: AOJu0YwcZ7d1u28dmvCSp8e9HJn8cDvgmlG3yRPTsVJXmQgc0WGdfPON
+ SDyzy4Fag4XvPPaYL3V/ESHHPuBeGic+8cULUM40K6o5QhqkPn7zfnTC14Fox2jQvR34suB4PeA
+ xLns=
+X-Gm-Gg: ASbGncski94FT6W1AkJKbaHDtPzsGtIEO/IVav8SQxAIslJl4F+Dd1Vu/ftPwk5Uq4X
+ VFWmG90RhBl5eHmINEJAI7C5BusgAPSHxtgEt2RSxmHUccuxzrNXNSopAcVhUSjQtZ12YHOkYjO
+ FF/xO+cSM6fJpkkvljTUeQf2ZYGornUShjHGtGyZtKCScAC6OjWz46bLPoYy/0Zb/pR1N4cLmzv
+ xSuAfETDL43KIOOJ9V04qt8XwAkswnNBarwkdHJLjmsGfR9Hmj05pd5fBU9aiwrRezwQ6KGCUmH
+ GdZevG3kkgfvlm1Wy9fRWFNIezDlNHc=
+X-Received: by 2002:a05:600c:524f:b0:435:d22:9c9e with SMTP id
+ 5b1f17b1804b1-436e26d0cf9mr98975045e9.19.1736524967313; 
+ Fri, 10 Jan 2025 08:02:47 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-436e2dc0babsm90587775e9.14.2025.01.10.08.02.46
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 10 Jan 2025 08:02:46 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 9/9] hw/arm/stellaris: Wire GPTM[#n] output to ADC input #n
+Date: Fri, 10 Jan 2025 17:02:04 +0100
+Message-ID: <20250110160204.74997-10-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250110160204.74997-1-philmd@linaro.org>
+References: <20250110160204.74997-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,75 +134,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: s9fs7d0WjLk+
+X-TUID: E0lIPZ1G23L4
 
+The ADC model is very simple, and only consider the 4 GPTM
+IRQs as trigger. Currently they are all wired to the same
+input IRQ. This is a QDev design mistake. We could use a
+OR_IRQ, but the ADC actually really has one input for each
+GPTM, so have the ADC create 4 inputs and wire each GPTM
+output to them.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/stellaris.c | 26 +++++++++++++++++---------
+ 1 file changed, 17 insertions(+), 9 deletions(-)
 
-Am 9=2E Januar 2025 11:40:10 UTC schrieb "Philippe Mathieu-Daud=C3=A9" <ph=
-ilmd@linaro=2Eorg>:
->Hi Bernhard,
->
->On 8/1/25 10:25, Bernhard Beschow wrote:
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->>   hw/sd/sd=2Ec | 12 ++++++++----
->>   1 file changed, 8 insertions(+), 4 deletions(-)
->
->
->> @@ -876,8 +878,8 @@ static void sd_reset(DeviceState *dev)
->>       sd->cmd_line =3D true;
->>       sd->multi_blk_cnt =3D 0;
->>   -    qemu_set_irq(sd->readonly_cb, sd_get_readonly(sd));
->> -    qemu_set_irq(sd->inserted_cb, sd_get_inserted(sd));
->> +    qemu_set_irq(sd->readonly_cb, sd_get_readonly(sd) ^ sd->readonly_a=
-ctive_low);
->
->Please embed in sd_get_readonly(),
->
->> +    qemu_set_irq(sd->inserted_cb, sd_get_inserted(sd) ^ sd->inserted_a=
-ctive_low);
->
->and sd_get_inserted()=2E
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index c89522332e2..446d6595a6d 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -701,8 +701,16 @@ static void stellaris_i2c_init(Object *obj)
+     sysbus_init_mmio(sbd, &s->iomem);
+ }
+ 
+-/* Analogue to Digital Converter.  This is only partially implemented,
+-   enough for applications that use a combined ADC and timer tick.  */
++/*
++ * Analogue to Digital Converter.
++ *
++ * Each of the 4 trigger inputs has a MUX for 5 inputs
++ * (see Stellaris Data Sheet Figure 11-1: "ADC Module Block Diagram").
++ *
++ * This model only consider the GPTM inputs, thus MUX is not implemented.
++ */
++
++#define STELLARIS_ADC_TRIGGERS      4
+ 
+ #define STELLARIS_ADC_EM_CONTROLLER 0
+ #define STELLARIS_ADC_EM_COMP       1
+@@ -986,7 +994,7 @@ static void stellaris_adc_init(Object *obj)
+     memory_region_init_io(&s->iomem, obj, &stellaris_adc_ops, s,
+                           "adc", 0x1000);
+     sysbus_init_mmio(sbd, &s->iomem);
+-    qdev_init_gpio_in(dev, stellaris_adc_trigger, 1);
++    qdev_init_gpio_in(dev, stellaris_adc_trigger, STELLARIS_ADC_TRIGGERS);
+ }
+ 
+ /* Board init.  */
+@@ -1061,7 +1069,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     DeviceState *gpio_dev[NUM_GPIO], *nvic;
+     qemu_irq gpio_in[NUM_GPIO][8];
+     qemu_irq gpio_out[NUM_GPIO][8];
+-    qemu_irq adc;
++    DeviceState *adc;
+     int sram_size;
+     int flash_size;
+     DeviceState *i2c_dev[NUM_I2C];
+@@ -1144,15 +1152,12 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     sysbus_connect_irq(SYS_BUS_DEVICE(ssys_dev), 0, qdev_get_gpio_in(nvic, 28));
+ 
+     if (DEV_CAP(1, ADC)) {
+-        dev = sysbus_create_varargs(TYPE_STELLARIS_ADC, 0x40038000,
++        adc = sysbus_create_varargs(TYPE_STELLARIS_ADC, 0x40038000,
+                                     qdev_get_gpio_in(nvic, 14),
+                                     qdev_get_gpio_in(nvic, 15),
+                                     qdev_get_gpio_in(nvic, 16),
+                                     qdev_get_gpio_in(nvic, 17),
+                                     NULL);
+-        adc = qdev_get_gpio_in(dev, 0);
+-    } else {
+-        adc = NULL;
+     }
+     for (i = 0; i < NUM_GPTM; i++) {
+         if (DEV_CAP(2, GPTM(i))) {
+@@ -1166,9 +1171,12 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+             sysbus_realize_and_unref(sbd, &error_fatal);
+             sysbus_mmio_map(sbd, 0, 0x40030000 + i * 0x1000);
+             sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(nvic, timer_irq[i]));
++
+             /* TODO: This is incorrect, but we get away with it because
+                the ADC output is only ever pulsed.  */
+-            qdev_connect_gpio_out(dev, 0, adc);
++            if (adc) {
++                qdev_connect_gpio_out(dev, 0, qdev_get_gpio_in(adc, i));
++            }
+         }
+     }
+ 
+-- 
+2.47.1
 
-Are you sure? I deliberately implemented it as is because embedding would =
-change the internal logic of the device as well as SDCardClass::{get_insert=
-ed, get_readonly}=2E
-
-Best regards,
-Bernhard
-
->
->>   }
->>     static void sd_cardchange(void *opaque, bool load, Error **errp)
->> @@ -896,9 +898,9 @@ static void sd_cardchange(void *opaque, bool load, =
-Error **errp)
->>       }
->>         if (sd->me_no_qdev_me_kill_mammoth_with_rocks) {
->> -        qemu_set_irq(sd->inserted_cb, inserted);
->> +        qemu_set_irq(sd->inserted_cb, inserted ^ sd->inserted_active_l=
-ow);
->
->Use sd_get_inserted(),
->
->>           if (inserted) {
->> -            qemu_set_irq(sd->readonly_cb, readonly);
->> +            qemu_set_irq(sd->readonly_cb, readonly ^ sd->readonly_acti=
-ve_low);
->
->and sd_get_readonly() here=2E
->
->>           }
->>       } else {
->>           sdbus =3D SD_BUS(qdev_get_parent_bus(dev));
->> @@ -2797,6 +2799,8 @@ static void emmc_realize(DeviceState *dev, Error =
-**errp)
->>     static const Property sdmmc_common_properties[] =3D {
->>       DEFINE_PROP_DRIVE("drive", SDState, blk),
->> +    DEFINE_PROP_BOOL("cd-active-low", SDState, inserted_active_low, fa=
-lse),
->> +    DEFINE_PROP_BOOL("wp-active-low", SDState, readonly_active_low, fa=
-lse),
->>   };
->With the requested changes:
->Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro=2Eorg>
->

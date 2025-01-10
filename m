@@ -1,94 +1,90 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436e9d8fb99sm52776155e9.3.2025.01.10.05.17.54
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a8e38428bsm4556045f8f.37.2025.01.10.05.17.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 10 Jan 2025 05:17:54 -0800 (PST)
+        Fri, 10 Jan 2025 05:18:02 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 2FAF95F9CC;
-	Fri, 10 Jan 2025 13:17:54 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id B46A2609F2;
+	Fri, 10 Jan 2025 13:17:55 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Anders Roxell <anders.roxell@linaro.org>,
 	Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
 	Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org (open list:Virt)
-Subject: [PULL 01/32] tests/functional: update the arm tuxrun tests
-Date: Fri, 10 Jan 2025 13:17:23 +0000
-Message-Id: <20250110131754.2769814-2-alex.bennee@linaro.org>
+Subject: [PULL 18/32] tests/functional: remove hacky sleep from the tests
+Date: Fri, 10 Jan 2025 13:17:40 +0000
+Message-Id: <20250110131754.2769814-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250110131754.2769814-1-alex.bennee@linaro.org>
 References: <20250110131754.2769814-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: n+w+DwN4ym2n
+X-TUID: LOlVpsZ0TMhb
 
-Now there are new up to date images available we should update to them.
+We have proper detection of prompts now so we don't need to guess with
+sleep() sprinkled through the test. The extra step of calling halt is
+just to flush the final bits of the log (although the last line is
+still missed).
 
-Cc: Anders Roxell <anders.roxell@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Tested-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Message-Id: <20250108121054.1126164-2-alex.bennee@linaro.org>
+Message-Id: <20250108121054.1126164-19-alex.bennee@linaro.org>
 
-diff --git a/tests/functional/test_arm_tuxrun.py b/tests/functional/test_arm_tuxrun.py
-index 944f0756e1..4ac85f48ac 100755
---- a/tests/functional/test_arm_tuxrun.py
-+++ b/tests/functional/test_arm_tuxrun.py
-@@ -17,14 +17,14 @@
- class TuxRunArmTest(TuxRunBaselineTest):
+diff --git a/tests/functional/test_aarch64_virt.py b/tests/functional/test_aarch64_virt.py
+index 08576b0694..2d9995a95d 100755
+--- a/tests/functional/test_aarch64_virt.py
++++ b/tests/functional/test_aarch64_virt.py
+@@ -10,12 +10,12 @@
+ #
+ # SPDX-License-Identifier: GPL-2.0-or-later
  
-     ASSET_ARMV5_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/armv5/zImage',
--        'c95af2f27647c12265d75e9df44c22ff5228c59855f54aaa70f41ec2842e3a4d')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv5/zImage',
-+        '3931a3908dbcf0ec0fe292d035ffc4dfed95f797dedd4a59ccfcf7a46e6f92d4')
-     ASSET_ARMV5_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/armv5/rootfs.ext4.zst',
--        '17177afa74e7294da0642861f08c88ca3c836764299a54bf6d1ce276cb9712a5')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv5/rootfs.ext4.zst',
-+        '60ff78b68c7021df378e4fc2d66d3b016484d1acc7e07fb8920c1d8e30f4571f')
-     ASSET_ARMV5_DTB = Asset(
--        'https://storage.tuxboot.com/20230331/armv5/versatile-pb.dtb',
--        '0bc0c0b0858cefd3c32b385c0d66d97142ded29472a496f4f490e42fc7615b25')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv5/versatile-pb.dtb',
-+        '50988e69ef3f3b08bfb9146e8fe414129990029e8dfbed444953b7e14809530a')
+-import time
+ import logging
+ from subprocess import check_call, DEVNULL
  
-     def test_armv5(self):
-         self.set_machine('versatilepb')
-@@ -37,11 +37,11 @@ def test_armv5(self):
-                            drive="virtio-blk-pci")
+ from qemu_test import QemuSystemTest, Asset
+-from qemu_test import exec_command, wait_for_console_pattern
++from qemu_test import exec_command_and_wait_for_pattern
++from qemu_test import wait_for_console_pattern
+ from qemu_test import get_qemu_img
  
-     ASSET_ARMV7_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/armv7/zImage',
--        '4c7a22e9f15875bec06bd2a29d822496571eb297d4f22694099ffcdb19077572')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv7/zImage',
-+        '1377bc3d90de5ce57ab17cd67429fe8b15c2e9964248c775c682b67e6299b991')
-     ASSET_ARMV7_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/armv7/rootfs.ext4.zst',
--        'ab1fbbeaddda1ffdd45c9405a28cd5370c20f23a7cbc809cc90dc9f243a8eb5a')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv7/rootfs.ext4.zst',
-+        'ed2cbc69bd6b3fbd5cafb5ee961393c7cfbe726446f14301c67d6b1f28bfdb51')
  
-     def test_armv7(self):
-         self.set_machine('virt')
-@@ -52,11 +52,11 @@ def test_armv7(self):
-                            rootfs_asset=self.ASSET_ARMV7_ROOTFS)
+@@ -107,18 +107,22 @@ def common_aarch64_virt(self, machine):
+                          'virtio-blk-device,drive=scratch')
  
-     ASSET_ARMV7BE_KERNEL = Asset(
--        'https://storage.tuxboot.com/20230331/armv7be/zImage',
--        '7facc62082b57af12015b08f7fdbaf2f123ba07a478367853ae12b219afc9f2f')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv7be/zImage',
-+        'a244e6da99f1bbd254827ec7681bd4aac9eb1aa05aaebc6b15e5d289ebb683f3')
-     ASSET_ARMV7BE_ROOTFS = Asset(
--        'https://storage.tuxboot.com/20230331/armv7be/rootfs.ext4.zst',
--        '42ed46dd2d59986206c5b1f6cf35eab58fe3fd20c96b41aaa16b32f3f90a9835')
-+        'https://storage.tuxboot.com/buildroot/20241119/armv7be/rootfs.ext4.zst',
-+        'd4f9c57860a512163f30ecc69b2174d1a1bdeb853a43dc49a09cfcfe84e428ea')
+         self.vm.launch()
+-        self.wait_for_console_pattern('Welcome to Buildroot')
+-        time.sleep(0.1)
+-        exec_command(self, 'root')
+-        time.sleep(0.1)
+-        exec_command(self, 'dd if=/dev/hwrng of=/dev/vda bs=512 count=4')
+-        time.sleep(0.1)
+-        exec_command(self, 'md5sum /dev/vda')
+-        time.sleep(0.1)
+-        exec_command(self, 'cat /proc/interrupts')
+-        time.sleep(0.1)
+-        exec_command(self, 'cat /proc/self/maps')
+-        time.sleep(0.1)
++
++        ps1='#'
++        self.wait_for_console_pattern('login:')
++
++        commands = [
++            ('root', ps1),
++            ('cat /proc/interrupts', ps1),
++            ('cat /proc/self/maps', ps1),
++            ('uname -a', ps1),
++            ('dd if=/dev/hwrng of=/dev/vda bs=512 count=4', ps1),
++            ('md5sum /dev/vda', ps1),
++            ('halt -n', 'reboot: System halted')
++        ]
++
++        for cmd, pattern in commands:
++            exec_command_and_wait_for_pattern(self, cmd, pattern)
  
-     def test_armv7be(self):
-         self.set_machine('virt')
+     def test_aarch64_virt_gicv3(self):
+         self.common_aarch64_virt("virt,gic_version=3")
 -- 
 2.39.5

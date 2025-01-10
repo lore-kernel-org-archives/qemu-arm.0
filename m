@@ -1,169 +1,790 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp130378njn;
-        Fri, 10 Jan 2025 04:57:37 -0800 (PST)
-X-Received: by 2002:a05:690c:4b0b:b0:6db:e1e0:bf6a with SMTP id 00721157ae682-6f5494cc418mr43199297b3.7.1736513857164;
-        Fri, 10 Jan 2025 04:57:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736513857; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp142040njn;
+        Fri, 10 Jan 2025 05:12:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXq8rKXR/iHLD2U6TfpnQl1kCBAqIjDAQA0pQOhOFLb9ZFRge43njk6+Ik7R8NFnUuNrKNldSnJFZPXFQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IF2mFIMT7g5aKeuO3EipKOP7z1c00O8IJqYaKr73+zSPylBALX5DiBgYNNJPlVDDqp7DtSZ
+X-Received: by 2002:a05:620a:4555:b0:7b7:2de:6fd3 with SMTP id af79cd13be357-7bcd961c4a1mr1574625585a.0.1736514755253;
+        Fri, 10 Jan 2025 05:12:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736514755; cv=none;
         d=google.com; s=arc-20240605;
-        b=Q1sGqJMXuMV9C9GLdasZkULZSgHcBL5ZXi1u4NKllvO4RwKum5LnbHbaXwxfkEodFl
-         qDqkmc6UlHk6UIXxOyp5arP5tuRUI22z6TLUFNXhlp2o1F/RfkUPamVC7NmxTVDfu7Aa
-         dMvkywqstAwSsnvlTRHfai4jifzHXlJ9erTbJveUAnejnir7IrNYTLYPBjQ4wW1go841
-         R1/ybovfMjiqmHgsyQVOkWGmCDiUls1nG2utll4VVt5BxNWjY9knoI4C6R9iRquStu52
-         6OjTnsuaGySzYlXNQ7akXrMk9i83FzsvhAUmeNRb+ZMQFRKTclvFPdXRqtweVxg4ckQF
-         /v8Q==
+        b=RU0TakYFYI14C4jIICQPixw+eEmXrywdtqINmjSH9rK11rjStlSIJaSOGd/sACO3pM
+         smfwte4Q89gF5vY1jnoufBxYedm8qGBKhYHAs8NzzyWw0FHqkVIAN5OYHkRKVQU5uWlS
+         Mrk7dfgZ3Jr01mIixTV/cayzflJks89bD9LYzZ6N4B8nKLiNuhzIdU4xtsqr40me/hRG
+         1xussd0IfMtDelukykc5ftWzC/kch7klNYyQy0Qm9m9oBHkEnyWNG/Mlws/HvT2WLSGG
+         LMmuWaT+DAvB0e3SQkw4SP+OCeheSndBvUIsGQXwllgGttZpObrXN/e8b+SYZSGbH3/M
+         qyng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kWpgClhMu8y0WMFqZn0FgquieZBpCTzT/UOP0udnz8w=;
-        fh=4dKGWKlHv57Zp9hkSCUsePRSIZk2rChGVpZxjAnL8x0=;
-        b=OpPdR4Fg7J0QFNH3MyIK93asdSHiFm8NX4YJGLPqqZurv6hLFXdI/fxbneGb8L3IZ6
-         aNCINkyvyt8zztIdl59fqh2/hzeGUOm5MEVa3iBwX/4XxRM1ldkDhIk8H57hpY7QHMGA
-         yGHCRRX+hQjEOOK/W33o5Zc/RnSEyIA4uaW1n4xhm9tl0Q1aDbvV3KOrNRRjkRWL8+zt
-         YOJBXgrICRIAm3N4OSL+cz7vFy3WBAHBwBJ4TB6kPFR4P1tQ9sWrsi0RZvoDQSXBbTE5
-         zJk+x0hjWB15tXXMknBrel8HfM29IQ6vJxIPdUc9sbbzgB44cmedGCtVOHj8CYmaWtCc
-         P1QA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=+ESdQek4UOB1DObNx4IZy+Ijuw22koKR8YkqCuBEdjk=;
+        fh=2tzNnnvY3GoSZg/ykpjkKK2IBw2cmqgdqqgcQgGQmyA=;
+        b=N1oSNUSOhhWCYWQfpaOQ6Hf9wPCrWt8ukJsuXEjJsyNKWM2bbdfTEUo8l1c+7KC8sB
+         kRt+g00F6lxa68lFXhblbdjfPVQ3qGzj5yVvEEF+E+rU3fWJM9WD2LTdLICLSbc4iB0O
+         UAP6cCGNQDvSlzC72pSfDD9rKnieG9iN0FIeq08L4t/HgOL5hFdssFwmIAyIXmWjftW0
+         c51LtSREib4+kPVBveQK0jt8PnfqmDNc2aql13T9Eim3eVqHRtp4JakxOIfHhBYhhF73
+         TpwoZlVxrGPjnKqEQ7r87rikqo9kH9aXpwPlaTuYUR084n5kU9kkPCCDGsWd2eCcDDpr
+         Jkkw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BsQAYZt6;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y5UjzZix;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6f546a72ccasor18456857b3.0.2025.01.10.04.57.37
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7bce34feeb6si433241385a.488.2025.01.10.05.12.35
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 10 Jan 2025 04:57:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 10 Jan 2025 05:12:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BsQAYZt6;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=y5UjzZix;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tWEoF-0002Yy-S0; Fri, 10 Jan 2025 08:12:19 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tWEoE-0002YE-CZ
+ for qemu-devel@nongnu.org; Fri, 10 Jan 2025 08:12:18 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tWEoB-0003z6-NW
+ for qemu-devel@nongnu.org; Fri, 10 Jan 2025 08:12:18 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-385f06d0c8eso1134286f8f.0
+ for <qemu-devel@nongnu.org>; Fri, 10 Jan 2025 05:12:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736513857; x=1737118657; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kWpgClhMu8y0WMFqZn0FgquieZBpCTzT/UOP0udnz8w=;
-        b=BsQAYZt6oj+/pbCf8Byi28K5ArbNPV+HXy5WmpblsIM8UY5VIfn684h0CSdqYHrd9S
-         MUVp+OgR2keEBiTktHZmjZgY+Y7xgu27rTC91qfdS1YY57qv02KF6mItRWYbRTMD89bx
-         exAlrFvYMeSEH7MhHOrI9oFKs8ck9KGjadtAW83QWY4UIkRs18JwISyC9Pbi5zuSdpEt
-         LazG0hXO8pCRldylgIt5eUu8HuyGkKJnrZCXU6t9n9tPA8UlzEX9zw46w4KwMmDEEgYS
-         FWyVrZ18FgksSJ19B9Wd+36FHxtKNmsB+iv/0pxNZBqGGdPq+T1lnEMvMIXNJFVDGD1c
-         Q+FQ==
+ d=linaro.org; s=google; t=1736514734; x=1737119534; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=+ESdQek4UOB1DObNx4IZy+Ijuw22koKR8YkqCuBEdjk=;
+ b=y5UjzZixEAIp3j2GPQhlhfsFr7n9hca2/tq3YKgYil+K02ZDV0V3Hh+A5MHBwO1Vqr
+ MRvi3ChaNh3Z8Bvi8cmPrZad+h+17GKhIaGIMY8woDOQhvDSKNLcKd7zUuY/h8g40jJU
+ 7Lu24JC+FcZLGNbXvWEClJj7oBM0SEW03JvFQ9Fhy+uwJT1uV/yM6TWOZDWA+3zCzbpO
+ 6WdYb+0vJc475CddYr2819L5z0KvXgl14oRlo0PrAnpsOwxmMi4id+UdBRZng4YhNog9
+ KcpwODJHNa21CcVKzTaPpaHNdGKcYZ9cCTgD4XTCxbOSURrw+hcgM0jlg5oSUN2/mvyv
+ fdyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736513857; x=1737118657;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=kWpgClhMu8y0WMFqZn0FgquieZBpCTzT/UOP0udnz8w=;
-        b=vk0wXsnXLpsfjh9ZT1J/ktywbRIISVX2Zv2U/nM9/tJsqjdAGCP4uzz4YDIPWA+aWY
-         9vFFdKhZgVrMWYzha+K2ml1vgPeCcAA5O4CZlVlgyFE3fOo9zFtpSIBf/VqMY/fLbX2a
-         uptdDNW8/XTzSF6DK9lcTPBDCErUOPqJYvLHeN3zJ6l95CT/7elhQIzL7KQBURalrykO
-         SpoiUwkEQ6N08craKripJjzeeT9Ks0LxRdLFUKCKuI1UA+/UhdU2edV7QzZ33fheBtGp
-         bof2YW9xSTIJGQ1sn60s7mvI6SsNIDkqXYA8WdHZN4Nz2mWIOjlAfOzC7mFngZ5cfvfP
-         7hyA==
-X-Gm-Message-State: AOJu0YwK4QBpoNt870JEhPzXNxpM0Ij5x4Iz9FuK3wDoWFkElTmi5Rq4
-	kckMOQncetbNy8CAt6uFLgX3t/pzUlvjzsK9ODA06gc+2aacva6m8nJDG/+68HieRC9GMAjix76
-	rNQWcmeKJP+KQ+gV58XVHjgsC+9kNSQJXXIvuWsNgEKhtmJNwytchDA==
-X-Gm-Gg: ASbGncszmuwQ6D99RGvsNgzfDcj2Wg/1Z866jVff33WgJzCd0T5jSBzjByB0nnCobPX
-	TOz+R8vVwgnbWsoojILv0B7Qz4YHwzlhgMolvU9Q=
-X-Google-Smtp-Source: AGHT+IHcE065TBe/uA2Y7mFRis8OKe5LTm7adGkxAIeoPcxcnaO3bt70DOFe+BMWMUwwXeuuVg1gBKW7H85VXBKRdiw=
-X-Received: by 2002:a05:690c:4a0e:b0:6f0:5fc:7d with SMTP id
- 00721157ae682-6f543e9b1e6mr51579967b3.11.1736513856798; Fri, 10 Jan 2025
- 04:57:36 -0800 (PST)
-MIME-Version: 1.0
-References: <20241218181511.3575613-1-alex.bennee@linaro.org> <20241218181511.3575613-4-alex.bennee@linaro.org>
-In-Reply-To: <20241218181511.3575613-4-alex.bennee@linaro.org>
+ d=1e100.net; s=20230601; t=1736514734; x=1737119534;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=+ESdQek4UOB1DObNx4IZy+Ijuw22koKR8YkqCuBEdjk=;
+ b=G0Zbig8x6w66NDaLfL890uQLDsqVlRueTtAtEAYGZZQeMo92rMYiKoqykaH8oMYf38
+ IO8QMBKIR609tLFDYNl/dNWHq4Hse6CDWFhg8W8A0KT4yk2GU+pDobxpp0S8n6Rcn8S6
+ s0Mt+6UYNCXP8tmXskcT5C50gm0tkydDnhmvdVD14lbfBabiXM8mlPekE3SGz2vBpzb2
+ jRKQXoXgeE1ASEkvgWiA2uxHqbfqBK59SSWJiiOUY0Beu2cnxHjsUJ0kjt1ftlwhfH8X
+ yUW+kq8oeqd9S+7JWYawmHqb0GbL2uY6vbZ8sLzzs/hcue485ixyKKKSTatuoXKo4+bJ
+ MSpA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUAu0ZcNgUIMV7SQCIXrPJqeCI7teFoyz19JVCi5qJ9JBp+z2tamMB6D4BPs/KvGZbbA69sMHcnqqi2@nongnu.org
+X-Gm-Message-State: AOJu0YzwOuYAVs2Cu+JyrCnUg1ZZWLAAeBLUrkvO7BgjWLnmm9oU38Tj
+ zfYFm3PVJH1cXzN0S7TMWVKXXksGiFpUEp5SINrE44kZrNDOu9WtiifRFLzHA5GI5Shll5DLBTN
+ m
+X-Gm-Gg: ASbGncshTjWu2MjO8AHoMlpA6ZoQ9ItQecc//MxPlUgGZqGo2Cm7Kh7TZJtMfMhW1aN
+ 6EKaam047CJaHl4yesvxn5Qg9ZRKt2hVjkTsn94Y1w4uO0ZcXN4dzGM202R5SzH2nWVFALYDHsV
+ ubyfzmiJKhi9CeM4SFgt9fCMWehYmcd1N/HbYKWU1NSZIc418/M4FH16BilUMiUKhLnZl6YVE3x
+ FHY8fbKh7vcDD/gbIk/17mOoWYWhpAHWCuEr8uABWPqtJT1V865xmEDXoGXtQ==
+X-Received: by 2002:a05:6000:186b:b0:385:ef97:78c with SMTP id
+ ffacd0b85a97d-38a872d2ae8mr8724117f8f.6.1736514733643; 
+ Fri, 10 Jan 2025 05:12:13 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38a8e4b81ccsm4589076f8f.65.2025.01.10.05.12.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 10 Jan 2025 05:12:12 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Jan 2025 12:57:25 +0000
-X-Gm-Features: AbW1kvaOOj0yN8OXi4jL1b-c8NvPOfIJXFRhrNoYialIjYiHtbpwXnh9vGjlY1M
-Message-ID: <CAFEAcA8r9OS9SO_26GmagYD1E-0e1OSmU8GiGXtogpOJ5c7vYQ@mail.gmail.com>
-Subject: Re: [PATCH v2 3/5] target/arm: implement SEL2 physical and virtual timers
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Leif Lindholm <quic_llindhol@quicinc.com>, 
-	Leif Lindholm <leif.lindholm@oss.qualcomm.com>, 
-	Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>, qemu-arm@nongnu.org, 
-	qemu-stable@nongnu.org, Andrei Homescu <ahomescu@google.com>, 
-	=?UTF-8?B?QXJ2ZSBIasO4bm5ldsOlZw==?= <arve@google.com>, 
-	=?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi.denis.courmont@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: O3GDv1GTbZE4
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH v2] target/arm: Move minor arithmetic helpers out of helper.c
+Date: Fri, 10 Jan 2025 13:12:11 +0000
+Message-Id: <20250110131211.2546314-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 3Hx9Ll+e/Cx5
 
-On Wed, 18 Dec 2024 at 18:15, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> When FEAT_SEL2 was implemented the SEL2 timers where missed. This
-> shows up when building the latest Hafnium with SPMC_AT_EL=3D2. The
-> actual implementation utilises the same logic as the rest of the
-> timers so all we need to do is:
->
->   - define the timers and their access functions
->   - conditionally add the correct system registers
->   - create a new accessfn as the rules are subtly different to the
->     existing secure timer
->
-> Fixes: e9152ee91c (target/arm: add ARMv8.4-SEL2 system registers)
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Cc: qemu-stable@nongnu.org
-> Cc: Andrei Homescu <ahomescu@google.com>
-> Cc: Arve Hj=C3=B8nnev=C3=A5g <arve@google.com>
-> Cc: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
->
-> ---
-> v1
->   - add better comments to GTIMER descriptions
->   - also define new timers for sbsa-ref
->   - don't conditionally gate qemu_timer creation on the feature
->   - take cntvoff_el2 int account for SEC_VEL2 in gt_recalc/g_tval_[read|w=
-rite]
-> v2
->   - rename IRQ to ARCH_TIMER_S_EL2_VIRT_IRQ
->   - split machine enablement into separate patches
->   - return CP_ACCESS_TRAP_UNCATEGORIZED for UNDEF cases
-> ---
+helper.c includes some small TCG helper functions used for mostly
+arithmetic instructions.  These are TCG only and there's no need for
+them to be in the large and unwieldy helper.c.  Move them out to
+their own source file in the tcg/ subdirectory, together with the
+op_addsub.h multiply-included template header that they use.
 
-> +static CPAccessResult gt_sel2timer_access(CPUARMState *env,
-> +                                          const ARMCPRegInfo *ri,
-> +                                          bool isread)
-> +{
-> +    /*
-> +     * The AArch64 register view of the secure EL2 timers are mostly
-> +     * accessible from EL3 and EL2 although can also be trapped to EL2
-> +     * from EL1 depending on nested virt config.
-> +     */
-> +    switch (arm_current_el(env)) {
-> +    case 0:
-> +        return CP_ACCESS_TRAP;
-> +    case 1:
-> +        if (!arm_is_secure(env)) {
-> +            return CP_ACCESS_TRAP_UNCATEGORIZED;
-> +        } else if (arm_hcr_el2_eff(env) & HCR_NV) {
-> +            return CP_ACCESS_TRAP_EL2;
-> +        }
-> +        return CP_ACCESS_TRAP;
-> +    case 2:
-> +        if (!arm_is_secure(env)) {
-> +            return CP_ACCESS_TRAP_UNCATEGORIZED;
-> +        }
-> +        return CP_ACCESS_OK;
-> +    case 3:
-> +        if (env->cp15.scr_el3 & SCR_EEL2) {
-> +            return CP_ACCESS_OK;
-> +        } else {
-> +            return CP_ACCESS_TRAP_UNCATEGORIZED;
-> +        }
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +}
+Since we are moving op_addsub.h, we take the opportunity to
+give it a name which matches our convention for files which
+are not true header files but which are #included from other
+C files: op_addsub.c.inc.
 
-This code is still using CP_ACCESS_TRAP in some codepaths, which
-isn't correct. Either:
- * you want an UNDEF: that's CP_ACCESS_TRAP_UNCATEGORIZED
- * you want to trap to some specific EL: that's CP_ACCESS_TRAP_EL2
-   or CP_ACCESS_TRAP_EL3 depending on where you need to trap to.
+(Ironically, this means that helper.c no longer contains
+any TCG helper function definitions at all.)
 
-thanks
--- PMM
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v1->v2: rename op_addsub.h to op_addsub.c.inc.
+---
+ target/arm/helper.c                           | 285 -----------------
+ target/arm/tcg/arith_helper.c                 | 296 ++++++++++++++++++
+ .../arm/{op_addsub.h => tcg/op_addsub.c.inc}  |   0
+ target/arm/tcg/meson.build                    |   1 +
+ 4 files changed, 297 insertions(+), 285 deletions(-)
+ create mode 100644 target/arm/tcg/arith_helper.c
+ rename target/arm/{op_addsub.h => tcg/op_addsub.c.inc} (100%)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 5b595f951b4..63997678513 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -17,11 +17,9 @@
+ #include "qemu/main-loop.h"
+ #include "qemu/timer.h"
+ #include "qemu/bitops.h"
+-#include "qemu/crc32c.h"
+ #include "qemu/qemu-print.h"
+ #include "exec/exec-all.h"
+ #include "exec/translation-block.h"
+-#include <zlib.h> /* for crc32 */
+ #include "hw/irq.h"
+ #include "system/cpu-timers.h"
+ #include "system/kvm.h"
+@@ -10984,289 +10982,6 @@ ARMVAParameters aa64_va_parameters(CPUARMState *env, uint64_t va,
+     };
+ }
+ 
+-/*
+- * Note that signed overflow is undefined in C.  The following routines are
+- * careful to use unsigned types where modulo arithmetic is required.
+- * Failure to do so _will_ break on newer gcc.
+- */
+-
+-/* Signed saturating arithmetic.  */
+-
+-/* Perform 16-bit signed saturating addition.  */
+-static inline uint16_t add16_sat(uint16_t a, uint16_t b)
+-{
+-    uint16_t res;
+-
+-    res = a + b;
+-    if (((res ^ a) & 0x8000) && !((a ^ b) & 0x8000)) {
+-        if (a & 0x8000) {
+-            res = 0x8000;
+-        } else {
+-            res = 0x7fff;
+-        }
+-    }
+-    return res;
+-}
+-
+-/* Perform 8-bit signed saturating addition.  */
+-static inline uint8_t add8_sat(uint8_t a, uint8_t b)
+-{
+-    uint8_t res;
+-
+-    res = a + b;
+-    if (((res ^ a) & 0x80) && !((a ^ b) & 0x80)) {
+-        if (a & 0x80) {
+-            res = 0x80;
+-        } else {
+-            res = 0x7f;
+-        }
+-    }
+-    return res;
+-}
+-
+-/* Perform 16-bit signed saturating subtraction.  */
+-static inline uint16_t sub16_sat(uint16_t a, uint16_t b)
+-{
+-    uint16_t res;
+-
+-    res = a - b;
+-    if (((res ^ a) & 0x8000) && ((a ^ b) & 0x8000)) {
+-        if (a & 0x8000) {
+-            res = 0x8000;
+-        } else {
+-            res = 0x7fff;
+-        }
+-    }
+-    return res;
+-}
+-
+-/* Perform 8-bit signed saturating subtraction.  */
+-static inline uint8_t sub8_sat(uint8_t a, uint8_t b)
+-{
+-    uint8_t res;
+-
+-    res = a - b;
+-    if (((res ^ a) & 0x80) && ((a ^ b) & 0x80)) {
+-        if (a & 0x80) {
+-            res = 0x80;
+-        } else {
+-            res = 0x7f;
+-        }
+-    }
+-    return res;
+-}
+-
+-#define ADD16(a, b, n) RESULT(add16_sat(a, b), n, 16);
+-#define SUB16(a, b, n) RESULT(sub16_sat(a, b), n, 16);
+-#define ADD8(a, b, n)  RESULT(add8_sat(a, b), n, 8);
+-#define SUB8(a, b, n)  RESULT(sub8_sat(a, b), n, 8);
+-#define PFX q
+-
+-#include "op_addsub.h"
+-
+-/* Unsigned saturating arithmetic.  */
+-static inline uint16_t add16_usat(uint16_t a, uint16_t b)
+-{
+-    uint16_t res;
+-    res = a + b;
+-    if (res < a) {
+-        res = 0xffff;
+-    }
+-    return res;
+-}
+-
+-static inline uint16_t sub16_usat(uint16_t a, uint16_t b)
+-{
+-    if (a > b) {
+-        return a - b;
+-    } else {
+-        return 0;
+-    }
+-}
+-
+-static inline uint8_t add8_usat(uint8_t a, uint8_t b)
+-{
+-    uint8_t res;
+-    res = a + b;
+-    if (res < a) {
+-        res = 0xff;
+-    }
+-    return res;
+-}
+-
+-static inline uint8_t sub8_usat(uint8_t a, uint8_t b)
+-{
+-    if (a > b) {
+-        return a - b;
+-    } else {
+-        return 0;
+-    }
+-}
+-
+-#define ADD16(a, b, n) RESULT(add16_usat(a, b), n, 16);
+-#define SUB16(a, b, n) RESULT(sub16_usat(a, b), n, 16);
+-#define ADD8(a, b, n)  RESULT(add8_usat(a, b), n, 8);
+-#define SUB8(a, b, n)  RESULT(sub8_usat(a, b), n, 8);
+-#define PFX uq
+-
+-#include "op_addsub.h"
+-
+-/* Signed modulo arithmetic.  */
+-#define SARITH16(a, b, n, op) do { \
+-    int32_t sum; \
+-    sum = (int32_t)(int16_t)(a) op (int32_t)(int16_t)(b); \
+-    RESULT(sum, n, 16); \
+-    if (sum >= 0) \
+-        ge |= 3 << (n * 2); \
+-    } while (0)
+-
+-#define SARITH8(a, b, n, op) do { \
+-    int32_t sum; \
+-    sum = (int32_t)(int8_t)(a) op (int32_t)(int8_t)(b); \
+-    RESULT(sum, n, 8); \
+-    if (sum >= 0) \
+-        ge |= 1 << n; \
+-    } while (0)
+-
+-
+-#define ADD16(a, b, n) SARITH16(a, b, n, +)
+-#define SUB16(a, b, n) SARITH16(a, b, n, -)
+-#define ADD8(a, b, n)  SARITH8(a, b, n, +)
+-#define SUB8(a, b, n)  SARITH8(a, b, n, -)
+-#define PFX s
+-#define ARITH_GE
+-
+-#include "op_addsub.h"
+-
+-/* Unsigned modulo arithmetic.  */
+-#define ADD16(a, b, n) do { \
+-    uint32_t sum; \
+-    sum = (uint32_t)(uint16_t)(a) + (uint32_t)(uint16_t)(b); \
+-    RESULT(sum, n, 16); \
+-    if ((sum >> 16) == 1) \
+-        ge |= 3 << (n * 2); \
+-    } while (0)
+-
+-#define ADD8(a, b, n) do { \
+-    uint32_t sum; \
+-    sum = (uint32_t)(uint8_t)(a) + (uint32_t)(uint8_t)(b); \
+-    RESULT(sum, n, 8); \
+-    if ((sum >> 8) == 1) \
+-        ge |= 1 << n; \
+-    } while (0)
+-
+-#define SUB16(a, b, n) do { \
+-    uint32_t sum; \
+-    sum = (uint32_t)(uint16_t)(a) - (uint32_t)(uint16_t)(b); \
+-    RESULT(sum, n, 16); \
+-    if ((sum >> 16) == 0) \
+-        ge |= 3 << (n * 2); \
+-    } while (0)
+-
+-#define SUB8(a, b, n) do { \
+-    uint32_t sum; \
+-    sum = (uint32_t)(uint8_t)(a) - (uint32_t)(uint8_t)(b); \
+-    RESULT(sum, n, 8); \
+-    if ((sum >> 8) == 0) \
+-        ge |= 1 << n; \
+-    } while (0)
+-
+-#define PFX u
+-#define ARITH_GE
+-
+-#include "op_addsub.h"
+-
+-/* Halved signed arithmetic.  */
+-#define ADD16(a, b, n) \
+-  RESULT(((int32_t)(int16_t)(a) + (int32_t)(int16_t)(b)) >> 1, n, 16)
+-#define SUB16(a, b, n) \
+-  RESULT(((int32_t)(int16_t)(a) - (int32_t)(int16_t)(b)) >> 1, n, 16)
+-#define ADD8(a, b, n) \
+-  RESULT(((int32_t)(int8_t)(a) + (int32_t)(int8_t)(b)) >> 1, n, 8)
+-#define SUB8(a, b, n) \
+-  RESULT(((int32_t)(int8_t)(a) - (int32_t)(int8_t)(b)) >> 1, n, 8)
+-#define PFX sh
+-
+-#include "op_addsub.h"
+-
+-/* Halved unsigned arithmetic.  */
+-#define ADD16(a, b, n) \
+-  RESULT(((uint32_t)(uint16_t)(a) + (uint32_t)(uint16_t)(b)) >> 1, n, 16)
+-#define SUB16(a, b, n) \
+-  RESULT(((uint32_t)(uint16_t)(a) - (uint32_t)(uint16_t)(b)) >> 1, n, 16)
+-#define ADD8(a, b, n) \
+-  RESULT(((uint32_t)(uint8_t)(a) + (uint32_t)(uint8_t)(b)) >> 1, n, 8)
+-#define SUB8(a, b, n) \
+-  RESULT(((uint32_t)(uint8_t)(a) - (uint32_t)(uint8_t)(b)) >> 1, n, 8)
+-#define PFX uh
+-
+-#include "op_addsub.h"
+-
+-static inline uint8_t do_usad(uint8_t a, uint8_t b)
+-{
+-    if (a > b) {
+-        return a - b;
+-    } else {
+-        return b - a;
+-    }
+-}
+-
+-/* Unsigned sum of absolute byte differences.  */
+-uint32_t HELPER(usad8)(uint32_t a, uint32_t b)
+-{
+-    uint32_t sum;
+-    sum = do_usad(a, b);
+-    sum += do_usad(a >> 8, b >> 8);
+-    sum += do_usad(a >> 16, b >> 16);
+-    sum += do_usad(a >> 24, b >> 24);
+-    return sum;
+-}
+-
+-/* For ARMv6 SEL instruction.  */
+-uint32_t HELPER(sel_flags)(uint32_t flags, uint32_t a, uint32_t b)
+-{
+-    uint32_t mask;
+-
+-    mask = 0;
+-    if (flags & 1) {
+-        mask |= 0xff;
+-    }
+-    if (flags & 2) {
+-        mask |= 0xff00;
+-    }
+-    if (flags & 4) {
+-        mask |= 0xff0000;
+-    }
+-    if (flags & 8) {
+-        mask |= 0xff000000;
+-    }
+-    return (a & mask) | (b & ~mask);
+-}
+-
+-/*
+- * CRC helpers.
+- * The upper bytes of val (above the number specified by 'bytes') must have
+- * been zeroed out by the caller.
+- */
+-uint32_t HELPER(crc32)(uint32_t acc, uint32_t val, uint32_t bytes)
+-{
+-    uint8_t buf[4];
+-
+-    stl_le_p(buf, val);
+-
+-    /* zlib crc32 converts the accumulator and output to one's complement.  */
+-    return crc32(acc ^ 0xffffffff, buf, bytes) ^ 0xffffffff;
+-}
+-
+-uint32_t HELPER(crc32c)(uint32_t acc, uint32_t val, uint32_t bytes)
+-{
+-    uint8_t buf[4];
+-
+-    stl_le_p(buf, val);
+-
+-    /* Linux crc32c converts the output to one's complement.  */
+-    return crc32c(acc, buf, bytes) ^ 0xffffffff;
+-}
+ 
+ /*
+  * Return the exception level to which FP-disabled exceptions should
+diff --git a/target/arm/tcg/arith_helper.c b/target/arm/tcg/arith_helper.c
+new file mode 100644
+index 00000000000..9a555c7966c
+--- /dev/null
++++ b/target/arm/tcg/arith_helper.c
+@@ -0,0 +1,296 @@
++/*
++ * ARM generic helpers for various arithmetical operations.
++ *
++ * This code is licensed under the GNU GPL v2 or later.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "exec/helper-proto.h"
++#include "qemu/crc32c.h"
++#include <zlib.h> /* for crc32 */
++
++/*
++ * Note that signed overflow is undefined in C.  The following routines are
++ * careful to use unsigned types where modulo arithmetic is required.
++ * Failure to do so _will_ break on newer gcc.
++ */
++
++/* Signed saturating arithmetic.  */
++
++/* Perform 16-bit signed saturating addition.  */
++static inline uint16_t add16_sat(uint16_t a, uint16_t b)
++{
++    uint16_t res;
++
++    res = a + b;
++    if (((res ^ a) & 0x8000) && !((a ^ b) & 0x8000)) {
++        if (a & 0x8000) {
++            res = 0x8000;
++        } else {
++            res = 0x7fff;
++        }
++    }
++    return res;
++}
++
++/* Perform 8-bit signed saturating addition.  */
++static inline uint8_t add8_sat(uint8_t a, uint8_t b)
++{
++    uint8_t res;
++
++    res = a + b;
++    if (((res ^ a) & 0x80) && !((a ^ b) & 0x80)) {
++        if (a & 0x80) {
++            res = 0x80;
++        } else {
++            res = 0x7f;
++        }
++    }
++    return res;
++}
++
++/* Perform 16-bit signed saturating subtraction.  */
++static inline uint16_t sub16_sat(uint16_t a, uint16_t b)
++{
++    uint16_t res;
++
++    res = a - b;
++    if (((res ^ a) & 0x8000) && ((a ^ b) & 0x8000)) {
++        if (a & 0x8000) {
++            res = 0x8000;
++        } else {
++            res = 0x7fff;
++        }
++    }
++    return res;
++}
++
++/* Perform 8-bit signed saturating subtraction.  */
++static inline uint8_t sub8_sat(uint8_t a, uint8_t b)
++{
++    uint8_t res;
++
++    res = a - b;
++    if (((res ^ a) & 0x80) && ((a ^ b) & 0x80)) {
++        if (a & 0x80) {
++            res = 0x80;
++        } else {
++            res = 0x7f;
++        }
++    }
++    return res;
++}
++
++#define ADD16(a, b, n) RESULT(add16_sat(a, b), n, 16);
++#define SUB16(a, b, n) RESULT(sub16_sat(a, b), n, 16);
++#define ADD8(a, b, n)  RESULT(add8_sat(a, b), n, 8);
++#define SUB8(a, b, n)  RESULT(sub8_sat(a, b), n, 8);
++#define PFX q
++
++#include "op_addsub.c.inc"
++
++/* Unsigned saturating arithmetic.  */
++static inline uint16_t add16_usat(uint16_t a, uint16_t b)
++{
++    uint16_t res;
++    res = a + b;
++    if (res < a) {
++        res = 0xffff;
++    }
++    return res;
++}
++
++static inline uint16_t sub16_usat(uint16_t a, uint16_t b)
++{
++    if (a > b) {
++        return a - b;
++    } else {
++        return 0;
++    }
++}
++
++static inline uint8_t add8_usat(uint8_t a, uint8_t b)
++{
++    uint8_t res;
++    res = a + b;
++    if (res < a) {
++        res = 0xff;
++    }
++    return res;
++}
++
++static inline uint8_t sub8_usat(uint8_t a, uint8_t b)
++{
++    if (a > b) {
++        return a - b;
++    } else {
++        return 0;
++    }
++}
++
++#define ADD16(a, b, n) RESULT(add16_usat(a, b), n, 16);
++#define SUB16(a, b, n) RESULT(sub16_usat(a, b), n, 16);
++#define ADD8(a, b, n)  RESULT(add8_usat(a, b), n, 8);
++#define SUB8(a, b, n)  RESULT(sub8_usat(a, b), n, 8);
++#define PFX uq
++
++#include "op_addsub.c.inc"
++
++/* Signed modulo arithmetic.  */
++#define SARITH16(a, b, n, op) do { \
++    int32_t sum; \
++    sum = (int32_t)(int16_t)(a) op (int32_t)(int16_t)(b); \
++    RESULT(sum, n, 16); \
++    if (sum >= 0) \
++        ge |= 3 << (n * 2); \
++    } while (0)
++
++#define SARITH8(a, b, n, op) do { \
++    int32_t sum; \
++    sum = (int32_t)(int8_t)(a) op (int32_t)(int8_t)(b); \
++    RESULT(sum, n, 8); \
++    if (sum >= 0) \
++        ge |= 1 << n; \
++    } while (0)
++
++
++#define ADD16(a, b, n) SARITH16(a, b, n, +)
++#define SUB16(a, b, n) SARITH16(a, b, n, -)
++#define ADD8(a, b, n)  SARITH8(a, b, n, +)
++#define SUB8(a, b, n)  SARITH8(a, b, n, -)
++#define PFX s
++#define ARITH_GE
++
++#include "op_addsub.c.inc"
++
++/* Unsigned modulo arithmetic.  */
++#define ADD16(a, b, n) do { \
++    uint32_t sum; \
++    sum = (uint32_t)(uint16_t)(a) + (uint32_t)(uint16_t)(b); \
++    RESULT(sum, n, 16); \
++    if ((sum >> 16) == 1) \
++        ge |= 3 << (n * 2); \
++    } while (0)
++
++#define ADD8(a, b, n) do { \
++    uint32_t sum; \
++    sum = (uint32_t)(uint8_t)(a) + (uint32_t)(uint8_t)(b); \
++    RESULT(sum, n, 8); \
++    if ((sum >> 8) == 1) \
++        ge |= 1 << n; \
++    } while (0)
++
++#define SUB16(a, b, n) do { \
++    uint32_t sum; \
++    sum = (uint32_t)(uint16_t)(a) - (uint32_t)(uint16_t)(b); \
++    RESULT(sum, n, 16); \
++    if ((sum >> 16) == 0) \
++        ge |= 3 << (n * 2); \
++    } while (0)
++
++#define SUB8(a, b, n) do { \
++    uint32_t sum; \
++    sum = (uint32_t)(uint8_t)(a) - (uint32_t)(uint8_t)(b); \
++    RESULT(sum, n, 8); \
++    if ((sum >> 8) == 0) \
++        ge |= 1 << n; \
++    } while (0)
++
++#define PFX u
++#define ARITH_GE
++
++#include "op_addsub.c.inc"
++
++/* Halved signed arithmetic.  */
++#define ADD16(a, b, n) \
++  RESULT(((int32_t)(int16_t)(a) + (int32_t)(int16_t)(b)) >> 1, n, 16)
++#define SUB16(a, b, n) \
++  RESULT(((int32_t)(int16_t)(a) - (int32_t)(int16_t)(b)) >> 1, n, 16)
++#define ADD8(a, b, n) \
++  RESULT(((int32_t)(int8_t)(a) + (int32_t)(int8_t)(b)) >> 1, n, 8)
++#define SUB8(a, b, n) \
++  RESULT(((int32_t)(int8_t)(a) - (int32_t)(int8_t)(b)) >> 1, n, 8)
++#define PFX sh
++
++#include "op_addsub.c.inc"
++
++/* Halved unsigned arithmetic.  */
++#define ADD16(a, b, n) \
++  RESULT(((uint32_t)(uint16_t)(a) + (uint32_t)(uint16_t)(b)) >> 1, n, 16)
++#define SUB16(a, b, n) \
++  RESULT(((uint32_t)(uint16_t)(a) - (uint32_t)(uint16_t)(b)) >> 1, n, 16)
++#define ADD8(a, b, n) \
++  RESULT(((uint32_t)(uint8_t)(a) + (uint32_t)(uint8_t)(b)) >> 1, n, 8)
++#define SUB8(a, b, n) \
++  RESULT(((uint32_t)(uint8_t)(a) - (uint32_t)(uint8_t)(b)) >> 1, n, 8)
++#define PFX uh
++
++#include "op_addsub.c.inc"
++
++static inline uint8_t do_usad(uint8_t a, uint8_t b)
++{
++    if (a > b) {
++        return a - b;
++    } else {
++        return b - a;
++    }
++}
++
++/* Unsigned sum of absolute byte differences.  */
++uint32_t HELPER(usad8)(uint32_t a, uint32_t b)
++{
++    uint32_t sum;
++    sum = do_usad(a, b);
++    sum += do_usad(a >> 8, b >> 8);
++    sum += do_usad(a >> 16, b >> 16);
++    sum += do_usad(a >> 24, b >> 24);
++    return sum;
++}
++
++/* For ARMv6 SEL instruction.  */
++uint32_t HELPER(sel_flags)(uint32_t flags, uint32_t a, uint32_t b)
++{
++    uint32_t mask;
++
++    mask = 0;
++    if (flags & 1) {
++        mask |= 0xff;
++    }
++    if (flags & 2) {
++        mask |= 0xff00;
++    }
++    if (flags & 4) {
++        mask |= 0xff0000;
++    }
++    if (flags & 8) {
++        mask |= 0xff000000;
++    }
++    return (a & mask) | (b & ~mask);
++}
++
++/*
++ * CRC helpers.
++ * The upper bytes of val (above the number specified by 'bytes') must have
++ * been zeroed out by the caller.
++ */
++uint32_t HELPER(crc32)(uint32_t acc, uint32_t val, uint32_t bytes)
++{
++    uint8_t buf[4];
++
++    stl_le_p(buf, val);
++
++    /* zlib crc32 converts the accumulator and output to one's complement.  */
++    return crc32(acc ^ 0xffffffff, buf, bytes) ^ 0xffffffff;
++}
++
++uint32_t HELPER(crc32c)(uint32_t acc, uint32_t val, uint32_t bytes)
++{
++    uint8_t buf[4];
++
++    stl_le_p(buf, val);
++
++    /* Linux crc32c converts the output to one's complement.  */
++    return crc32c(acc, buf, bytes) ^ 0xffffffff;
++}
+diff --git a/target/arm/op_addsub.h b/target/arm/tcg/op_addsub.c.inc
+similarity index 100%
+rename from target/arm/op_addsub.h
+rename to target/arm/tcg/op_addsub.c.inc
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index 09238989c5a..1f9077c372c 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -40,6 +40,7 @@ arm_ss.add(files(
+   'tlb_helper.c',
+   'vec_helper.c',
+   'tlb-insns.c',
++  'arith_helper.c',
+ ))
+ 
+ arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+-- 
+2.34.1
+

@@ -1,163 +1,153 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp277031njn;
-        Fri, 10 Jan 2025 08:34:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW+NL6C97VCOR/ve4gpz+EFlYC1OXJGtiyjSV0dE4CpaWp5/VXPN4B3SCUetn8PXoOBWTU1v97bY+X9sA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFsjvpaZB0W3l0bxpnByvwuHeYitUPQY6H9GIdEbHed5vGJmjwbZThiuI3tFAVs4J9EdyQP
-X-Received: by 2002:a05:622a:311:b0:466:82b7:8bc2 with SMTP id d75a77b69052e-46c7b072509mr124359401cf.25.1736526851494;
-        Fri, 10 Jan 2025 08:34:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736526851; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp289641njn;
+        Fri, 10 Jan 2025 08:57:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUz5NSRQ7nc3y8f1h5jKw028zMIJ8aLGq+sIKknf6lIIEn0O5CW56QpM4g6O0aAMiGThgJSezMNchkj9w==@linaro.org
+X-Received: by 2002:a05:690c:6609:b0:6ef:59ef:f1cb with SMTP id 00721157ae682-6f5311ef279mr90705477b3.5.1736528231920;
+        Fri, 10 Jan 2025 08:57:11 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736528231; cv=none;
         d=google.com; s=arc-20240605;
-        b=UjB8/q9D5eDE+2ZB/vnU2a1zUReBA7IMSrj/PFHk4HXAVc9EvAmJYmzXF7T0hDJIbB
-         tVhrsS6ErXLnmj2VH0U5CBxYQpyFSqqoJTmGD2QaWzsJBMX1GmOJl3uEZ3xPzLpmm572
-         Oecjt7V7eyrChX6HczsDtZox4sg3BCzaJVPj8vB142ILKUBta9SA5KP8Z0FfT8JCRlG7
-         DjNb/7lmHd29jmOpl3VS5ITdx/ZgelMfEeK/VON7/JgEsigLpdGW4wgB7qNCVYIcHSAa
-         xC7TWdQBN4jFKAvhsQla486YGMt9OYzaqcNAe5p524RGg0rMiilRIIosWDMpxRlisVPp
-         7tRA==
+        b=BLbM2l6+Og2VxFJppg81Y8vDon+0WZh5VdzIvtCjIQVPcuYVvDML3b8yKJA8h38pl0
+         JwzwNtv2naNIEUS8bVVkuE8MiiuVO+fvQHU4g9X9zZwKx2SPvPVVVy9qFbD5yPL8R0Zm
+         ejDuMdxt5uLpS7B61AokMpKQIIQ3JBhtinszZVnDPs29kRCLvv/9YKMRFchZrXxRa0Hi
+         bgbh39+8nWfnC6WEOaP1YxsuQndTW/iPfhagvaaXLiQYUDQ/9OFPO4npnk5eF5rHHEh7
+         vMD9A+icILJt54D0YPpx0YwZt9z9jf0kbnPhsn2MwLOLrLEMGLLwzwH24JUdwfuKvMxi
+         iBHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=9QkFzvLXENhdg677ICuQLwSEYKTcmCSdb4mz1Xb7oPI=;
-        fh=K1fVguJ5/Z0l0+rxmxj+Yl1aTicCJxMUzLQPNnW4N8s=;
-        b=F1Q+nutQKEJCkmDaS8VHNAbJTDGUtrQFcOKpoS6n7DTpwks4rEBMv1v6dTcsyC/20A
-         LxO/QSVaYFE9gr/EfhjA0qDRilrj5T3XUcEmznnLDz7uyk/TpahZtt9Vm9mlL1mQ4zP6
-         iQKqwVRPMtAjj/u/dNJVVDU0XaK2r1Al6e0jC4uuIwb2puLjP1yhjvFhSygGyu+cskv3
-         qkunGSsN69HtBZvhr+zq9Rkaefe1UZoz4E1uip/6gHQHOAgkxLrhjM/sUnlZjwwa8gax
-         QS3/34TqNaOMjq5KqeUwFMT5YpLYKv9l/8jqKhBgK6CoHyzxoPxXjxXkLE+i+Ucu8SUU
-         ux0A==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=HJgMoYVZSw03vmr4yFxmrqvyqQ16V6vJJHIRbydgVd8=;
+        fh=zGrybV5MkTDM1xdaOwB+c7EwQgdegOTkja2siUjJTK8=;
+        b=EnNDMx2yyLph3kmsP9KeV9LAQtiSEoyyUk0JIIINebTbkytFlm6M+nxyRwKB/1IwI+
+         6XnAHyX7iegAIGKShsMfe4BsQPgIr1kkRxjkWelFEi5MBtOVkurt4u7U38IJR3JbY3kj
+         o5Sdpvy+He8y4KEZeOQtWpKyxwGql5IJ3tet5QFudJYNA2UZ7vlbmlFHfmSukPiE8zWq
+         SunTlk1eDXeprluihi0Xf/TRsuOhOUB8le+h7Gg6B2Nsr2nhCp7NKm23tiO/Bi0F/12p
+         /aA9cZ+FQO3Po4Qay4V6rB04Y219z7b16RqbhnFxtzhaj2Mo9O5s2usX3ShstK0tFByC
+         87og==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WiYqfc8W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Tskl1xtr;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46c874255a0si24934331cf.622.2025.01.10.08.34.11
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 00721157ae682-6f546a56db5sor25186627b3.0.2025.01.10.08.57.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jan 2025 08:34:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 10 Jan 2025 08:57:11 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WiYqfc8W;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Tskl1xtr;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tWHxS-0001BC-OE; Fri, 10 Jan 2025 11:34:02 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tWHxR-0001B3-1q
- for qemu-arm@nongnu.org; Fri, 10 Jan 2025 11:34:01 -0500
-Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tWHxO-0000Hw-Ea
- for qemu-arm@nongnu.org; Fri, 10 Jan 2025 11:34:00 -0500
-Received: by mail-yb1-xb31.google.com with SMTP id
- 3f1490d57ef6-e3fd6cd9ef7so5656156276.1
- for <qemu-arm@nongnu.org>; Fri, 10 Jan 2025 08:33:57 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1736526837; x=1737131637; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=9QkFzvLXENhdg677ICuQLwSEYKTcmCSdb4mz1Xb7oPI=;
- b=WiYqfc8WLqsdhnMzJ79kRiUfxxYQ558pLqAM6jYx5wXQkmtYq6t8P9HXmzXUw3fiRl
- JO8MtEnwnMoR48AWS0vtusU8cAQ6SHOJzonNZZp/D7HQSO3I8/RRWsAvveEoAPzRk/Av
- j7r+gg50s1qtvdCRAFZ+XQ7oaMZWKP/6/qhmyM/2rLmzYAYY3dmpQG4/b13tUr5if3DB
- goXJn5OcnymwLS9fbGOmXO/KvFqhKp3aB/7kT4ovqIiJ79CLVGc0gFoMHYdOZR/IS2Ab
- dA6hMmo9H2wOQmzpgy6KUol6XgcdHEip7FxToxRB3f/klWVQNfplzZiWaZnDUCzwdZUc
- PaiA==
+        d=linaro.org; s=google; t=1736528231; x=1737133031; darn=linaro.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HJgMoYVZSw03vmr4yFxmrqvyqQ16V6vJJHIRbydgVd8=;
+        b=Tskl1xtr77Y7yWChnxcdV+LMZHROOYrvqii0Kj2MXHZjjr+rc7hodRkw5xszrVsRjS
+         JDWejAt+hGc/kUEQAnsq/IeXoUP+Dio3OVI1NmUE5d9X4J085/O3w3tM2SnZDTFQcqcV
+         PGNh8LM0yMrtYQ9O0fUj3hA3Lx2/cFJyNhs+fWbMneXpLzX1LfffUtAyicVRiXmHg5Ga
+         9MPgyQ4qhkaAZK7ioS+P7LsfQZOwmTGIRP6MOs1ZE74cA6coxsTTE+EUKwBdExzOZzmK
+         KI1vrS3cm7+IyZc85mwhUdI+1zYa84MebLXK6QiwYT22EZY19DtDPsxjLmicjXNdjsKj
+         LgGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736526837; x=1737131637;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=9QkFzvLXENhdg677ICuQLwSEYKTcmCSdb4mz1Xb7oPI=;
- b=J+qwivO9QO5EI+Y5cGU04W0MnYh6CfzcWY+3Q9M/fRy3E0Nzf/xtFH7wCWwsBh1J6U
- fyxmZhCGcOofesfBMWoo3U8K8aXXKT0stZwl+yRgO3TiTOoh2CA3hYu0y5XhRSSonCDS
- 2xDZFdvH8/SWZw4LDSzlfkOW3cjpvHB4FIChHQU2LJIECpkPmIcQAuSVo5UX1wK+Y/6/
- y0d6Uz8M6X7oYaLcEDcqp3U3WW+BajiSx8tgZzMj+I9In1aYkkT7aBg/3HNyoiI5qYCD
- /76DjZIFsbnMxqU92JOBxUVJ2wGd72e6D3L08PXRYABxEOEpQaMHiMVwqdIkWoH/oafM
- ac5A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVHYGdBFRz5JtxjbUhBpjwsaetGgefLPb8qUHDejsIW9zySLmAywaF1darFBR0N6uH+3jpx1Bdcyg==@nongnu.org
-X-Gm-Message-State: AOJu0YyVyL0H8bvsKsqgYf8DkZ70WcjJGylfdDw2afM4USVJzKuUX+N1
- cRNId1QJZtuFHifxxHyhbSFUaqhg/Xme0H10OuWOxfDMfSNtqkkWWxC9LmjdcWUa9u2IaX27l4C
- 3/bH3Zr63ReD46isK4k7H1k6/UJkU03igWg1saQ==
-X-Gm-Gg: ASbGncujkHagianQBRDDI2rvOrFKGQx6Z74gplATbcoz22ot7u6FAAacwnSAWLpLZmr
- DiAM3epqGnZCvRZz7p/iocfDyVRWth8UAQblJ1ec=
-X-Received: by 2002:a05:690c:d07:b0:6ef:f05a:ba6c with SMTP id
- 00721157ae682-6f543f2a7camr63286187b3.13.1736526837266; Fri, 10 Jan 2025
- 08:33:57 -0800 (PST)
+        d=1e100.net; s=20230601; t=1736528231; x=1737133031;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=HJgMoYVZSw03vmr4yFxmrqvyqQ16V6vJJHIRbydgVd8=;
+        b=pXgnfJdmIwveUAw9Fku4wM/F7ueJliw4Oy2ryWYlUGINJIkLMBWwR5EDNOtIxv47iE
+         pmpmvd1FNGFQQz/6z6Ec7Ws8lCCsHT0L6JS9s/1r4ABnBi2CWOwIr41NYyoqnyvjiOg1
+         YRoCwQLOImuTPXRAbLNPsCWM5E2yFulpwQs3VPHORsUzb+IFMeIt/k0KEFCG4NnP+tiU
+         At/xrshhpfKU395xi5f4fySPjbqqYxg8F8TTH4GGCTRpt8O3yQKquq5/u/ko9SrM5HJb
+         9eQme+UdPtlsu7zH/43JNuruHa8I4lHx02DLVcDx9DKrVpL1+iXP9Za+tn+QjXAH2w+A
+         zNKg==
+X-Forwarded-Encrypted: i=1; AJvYcCU8A967dICL/pJyXV42gs2bOWnE1aqLRxbc+W6Y8CaH/61czUQi7b6UD5gq4ewbJLRaNToNVtvHPIJ94Q==@linaro.org
+X-Gm-Message-State: AOJu0YzZHhcHBOLC/RuozcZ5NaqI7CXrXMrolg7vis90Lg04ZV5Zt59g
+	Os7i0x00Dr9Bbhg+X29DdeMjrzWTTeEc+2knSZQGDth1UDg9hPVyiyr0En+hP2gchjRc0dKC3eZ
+	8Z3k7I8VM9QUh/SA+nYZF3O2MYD75jrdTIrcjZ7he
+X-Gm-Gg: ASbGncvi/d32ht76Cn9HwgEKHIfOKrLZQ9NIjel8tTiPTky6p3THBwhuoi2X8SBM9rX
+	vxoam1xYLt33s5pWPjaHRORfwNlM0NHqWG+oWBZA=
+X-Google-Smtp-Source: AGHT+IE0AbRS6/Lx17cPdfKemuNfE+YcBfETH3IAk4MGIRsz+d9Sfs1xC0oIhdw/N3fZDEV9/mOdnvFtnO8MAmx7etM=
+X-Received: by 2002:a05:690c:6609:b0:6ef:59ef:f1cb with SMTP id
+ 00721157ae682-6f5311ef279mr90704457b3.5.1736528229981; Fri, 10 Jan 2025
+ 08:57:09 -0800 (PST)
 MIME-Version: 1.0
-References: <20241223093051.45648-1-j@getutm.app>
- <20241223093051.45648-4-j@getutm.app>
-In-Reply-To: <20241223093051.45648-4-j@getutm.app>
+References: <20250107192637.67683-1-philmd@linaro.org>
+In-Reply-To: <20250107192637.67683-1-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Jan 2025 16:33:46 +0000
-X-Gm-Features: AbW1kvbXoLybWB2N2sdhWyKt04OyjhCuDkoxwVt_wV532vQHi4LUOZFtLhV9Dvg
-Message-ID: <CAFEAcA_HX+AGjO2ZaBsjQKi2d=5AO4V3p33fDG4NzsZ3J-D4QQ@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] hw/arm/virt: handle hvf with unknown max IPA size
-To: Joelle van Dyne <j@getutm.app>
-Cc: qemu-devel@nongnu.org, "open list:Virt" <qemu-arm@nongnu.org>
+Date: Fri, 10 Jan 2025 16:56:58 +0000
+X-Gm-Features: AbW1kvaEHzcBrIKmA8BESXRSFOHUPDktKCrZCqaTwEMuygcjlAg_UzUFizw-ClA
+Message-ID: <CAFEAcA-F6CCD_RQ3J5f8bvoZ=3wP=WtOsgHjgbwMcY76pub3Lg@mail.gmail.com>
+Subject: Re: [RFC PATCH] tests/qtest/stm32l4x5_usart: Avoid accessing NVIC via MMIO
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
+	Laurent Vivier <lvivier@redhat.com>, Gustavo Romero <gustavo.romero@linaro.org>, 
+	Samuel Tardieu <sam@rfc1149.net>, qemu-arm@nongnu.org, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb31.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IHiruuG0CQA4
+Content-Transfer-Encoding: quoted-printable
+X-TUID: TksVPz9PyoG4
 
-On Mon, 23 Dec 2024 at 09:30, Joelle van Dyne <j@getutm.app> wrote:
+On Tue, 7 Jan 2025 at 19:26, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
 >
-> When it is not possible to determine the max IPA bit size, the helper
-> function will return 0. We do not try to set up the memmap in this case
-> and instead fall back to the default in machvirt_init().
+> The STM32L4x5 SoC family use a ARM Cortex-M core. Such
+> core is architecturally tied with a NVIC (interrupt controller),
+> having the NVIC MMIO mapped in the core address space.
 >
-> Signed-off-by: Joelle van Dyne <j@getutm.app>
-> ---
->  hw/arm/virt.c | 5 +++++
->  1 file changed, 5 insertions(+)
->
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index f9b3380815..8c431e24b3 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -3053,6 +3053,11 @@ static int virt_hvf_get_physical_address_range(MachineState *ms)
->      int default_ipa_size = hvf_arm_get_default_ipa_bit_size();
->      int max_ipa_size = hvf_arm_get_max_ipa_bit_size();
->
-> +    /* Unknown max ipa size, we'll let the caller figure it out */
-> +    if (max_ipa_size == 0) {
-> +        return 0;
-> +    }
+> When using the QTest accelerator, we don't emulate vCPU, only
+> a dummy is created. For now, QTest is only supposed to access
+> MMIO devices mapped on the main 'SysBus'. Thus it shouldn't
+> be able to access a NVIC MMIO region, because such region is
+> specific to a vCPU address space, which isn't available under
+> QTest.
 
-When can this happen? There are other places where we call
-hvf_arm_get_max_ipa_bit_size() and assume it's valid.
-The implementation calls assert_hvf_ok(ret), so if it
-returns at all then we ought to have got a valid IPA size
-from macos...
+This doesn't seem quite right. We create vCPUs which should
+have all their usual address spaces (e.g. in the arm code
+the calls to cpu_address_space_init() are not guarded by
+anything that says "don't do this if qtest"). They just
+don't *execute* anything.
 
-thanks
+qtest's model of operation is "the qtest is doing accesses
+as-if it was guest code running on the first CPU in the system".
+So it should be fine for it to do accesses which access the
+NVIC. (Indeed if we wanted a qtest of the NVIC itself that
+should also be OK.)
+
+In a more interesting heterogenous system you probably want
+the qtest to be able to select the CPU that it is acting
+as-if-it-were (though even then the first one in the system
+is usually going to be sensible enough, assuming the
+heterogenous board model did the usual thing of creating
+the main application CPUs first and the BSP or other
+minor processor last). Then you could have a qtest which is
+"I'm testing a device that's accessible to the main
+application processor" and also one which is "I'm testing
+this device which is only accessible to the BSP".
+
+> This patch is to fix the problem reported by Fabiano when
+> removing the &first_cpu global in qtest, see analysis in:
+> https://lore.kernel.org/qemu-devel/05820c9b-a683-4eb4-a836-e97aa708d5e5@l=
+inaro.org/
+
+Hmm, OK, so my idea of having qtest use address_space_memory
+as a shortcut for getting rid of first_cpu doesn't work.
+
+I'm not super-enthusiastic about this patch, since it's
+basically adding an artificial restriction to what you can
+do in a qtest. But maybe it's OK as a temporary thing to
+avoid going too far down a rabbit hole in refactoring?
+
+If we were going to have the qtest select "this is the
+CPU I want to act like", what would it do? Pass a
+QOM path to the relevant CPU? I feel like you would
+still want to default to "pick the first CPU", because
+99% of tests will be fine with that. But maybe we need
+to locate the first CPU by some runtime thing rather
+than by using the global. IDK...
+
 -- PMM

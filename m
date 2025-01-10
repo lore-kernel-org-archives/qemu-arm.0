@@ -1,153 +1,262 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp289641njn;
-        Fri, 10 Jan 2025 08:57:12 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUz5NSRQ7nc3y8f1h5jKw028zMIJ8aLGq+sIKknf6lIIEn0O5CW56QpM4g6O0aAMiGThgJSezMNchkj9w==@linaro.org
-X-Received: by 2002:a05:690c:6609:b0:6ef:59ef:f1cb with SMTP id 00721157ae682-6f5311ef279mr90705477b3.5.1736528231920;
-        Fri, 10 Jan 2025 08:57:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736528231; cv=none;
-        d=google.com; s=arc-20240605;
-        b=BLbM2l6+Og2VxFJppg81Y8vDon+0WZh5VdzIvtCjIQVPcuYVvDML3b8yKJA8h38pl0
-         JwzwNtv2naNIEUS8bVVkuE8MiiuVO+fvQHU4g9X9zZwKx2SPvPVVVy9qFbD5yPL8R0Zm
-         ejDuMdxt5uLpS7B61AokMpKQIIQ3JBhtinszZVnDPs29kRCLvv/9YKMRFchZrXxRa0Hi
-         bgbh39+8nWfnC6WEOaP1YxsuQndTW/iPfhagvaaXLiQYUDQ/9OFPO4npnk5eF5rHHEh7
-         vMD9A+icILJt54D0YPpx0YwZt9z9jf0kbnPhsn2MwLOLrLEMGLLwzwH24JUdwfuKvMxi
-         iBHQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=HJgMoYVZSw03vmr4yFxmrqvyqQ16V6vJJHIRbydgVd8=;
-        fh=zGrybV5MkTDM1xdaOwB+c7EwQgdegOTkja2siUjJTK8=;
-        b=EnNDMx2yyLph3kmsP9KeV9LAQtiSEoyyUk0JIIINebTbkytFlm6M+nxyRwKB/1IwI+
-         6XnAHyX7iegAIGKShsMfe4BsQPgIr1kkRxjkWelFEi5MBtOVkurt4u7U38IJR3JbY3kj
-         o5Sdpvy+He8y4KEZeOQtWpKyxwGql5IJ3tet5QFudJYNA2UZ7vlbmlFHfmSukPiE8zWq
-         SunTlk1eDXeprluihi0Xf/TRsuOhOUB8le+h7Gg6B2Nsr2nhCp7NKm23tiO/Bi0F/12p
-         /aA9cZ+FQO3Po4Qay4V6rB04Y219z7b16RqbhnFxtzhaj2Mo9O5s2usX3ShstK0tFByC
-         87og==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tskl1xtr;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6f546a56db5sor25186627b3.0.2025.01.10.08.57.11
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp419601njn;
+        Fri, 10 Jan 2025 12:56:20 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCV5nrhF3osNaUsXOKDGv6YapOizzAHFwl52isirlhz44ct7ceG0FhkLZhJLcESncKFH950+Ar2an4I4BA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHvsqVypDZogsljUKzxYUpf7oNLnf09fF7rlnuEAaap8d/FbARCL8lqYLV6tCmEqKIU7gdL
+X-Received: by 2002:a05:6214:dca:b0:6dd:dd0:764 with SMTP id 6a1803df08f44-6df9b1df426mr198886706d6.17.1736542579902;
+        Fri, 10 Jan 2025 12:56:19 -0800 (PST)
+Return-Path: <kvm+bounces-35105-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dfadef4a1bsi31125626d6.324.2025.01.10.12.56.19
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 10 Jan 2025 08:57:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 10 Jan 2025 12:56:19 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-35105-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Tskl1xtr;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@oracle.com header.s=corp-2023-11-20 header.b=Z5etBFAL;
+       dkim=pass header.i=@oracle.onmicrosoft.com header.s=selector2-oracle-onmicrosoft-com header.b=rYV3O4Dm;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of kvm+bounces-35105-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="kvm+bounces-35105-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=oracle.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 662D2167701
+	for <alex.bennee@linaro.org>; Fri, 10 Jan 2025 20:56:18 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 52324214A88;
+	Fri, 10 Jan 2025 20:56:16 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b="Z5etBFAL";
+	dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b="rYV3O4Dm"
+Received: from mx0a-00069f02.pphosted.com (mx0a-00069f02.pphosted.com [205.220.165.32])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 832B9214A63
+	for <kvm@vger.kernel.org>; Fri, 10 Jan 2025 20:56:14 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=fail smtp.client-ip=205.220.165.32
+ARC-Seal:i=2; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1736542576; cv=fail; b=hmSZeUg5eTyT+f98H6wlG2BNsx7n/R/nkymZYdasNf5wK7Yl5BGC5BqidSkvouU2ABt1C1JJ2xlNg3QCQinJ6hl4y+bVKi6wjxe7CvDei4xpjPuHWUZ3FhDi/wxlMSEHL2ZwxfBxaNXn8SKCQfL9dD+hznsxhtGik71YUDqfdLk=
+ARC-Message-Signature:i=2; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1736542576; c=relaxed/simple;
+	bh=8KoO3GKrYNxXzsFUa8nQ2tSShJ25LMVrdiKCJHTm+D8=;
+	h=Message-ID:Date:Subject:To:Cc:References:From:In-Reply-To:
+	 Content-Type:MIME-Version; b=gAV1UrbxnAeGDH+8e2SNmMAI5kMNWt3bgLrRF/X1cTtmWQbpPZGsEhUbgwmbyvgNho8YmBsZLE2HKJAyZl0GDQbtwRc4U5cdDMtVzfboEkWg2mKCnlFREnquYRRsvrVmE5GFwGYw4ArZF4ydLT9de4tPIbHLuruLD5aQ5XRmPkc=
+ARC-Authentication-Results:i=2; smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com; spf=pass smtp.mailfrom=oracle.com; dkim=pass (2048-bit key) header.d=oracle.com header.i=@oracle.com header.b=Z5etBFAL; dkim=pass (1024-bit key) header.d=oracle.onmicrosoft.com header.i=@oracle.onmicrosoft.com header.b=rYV3O4Dm; arc=fail smtp.client-ip=205.220.165.32
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=reject dis=none) header.from=oracle.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=oracle.com
+Received: from pps.filterd (m0333521.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 50AKtqjL021203;
+	Fri, 10 Jan 2025 20:55:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2023-11-20; bh=G6ynm6pmaprDAqpGrUniNaPK0enEeYQPox19d9wcZWI=; b=
+	Z5etBFALYV/tMkAw4VZwLqHRgD3YkS1jpj/Qtq2ENPM2/UUiKjcOqsll59a6sKK9
+	pndAlo92nEzhoY66WXaMPKhL/ApoI+bvOIbdD0CYclw6094Y2iPlGRIym101gZz0
+	XOVUbEOlIOA8/DPS6OG+lulAl4pOGsPN8XG3VZtFGBtixVTTv8GvFrXOHRxNjXwq
+	MN5jHc3D3+4r4Ob1FVky8vwws0JBQHa8sxneyLNNsOBJGMJGiMKTjzQPoeIKN1ou
+	kngq7EoIyXUyqymSGRSi+AbSJ8Bvm5MRW83QKaYjymh8p+RxOPtUn2MKWMBnWukh
+	qoyrsRSL9mOfUena5sc9oQ==
+Received: from iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta03.appoci.oracle.com [130.35.103.27])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 442my62537-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 10 Jan 2025 20:55:55 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 50AKq5Jj008568;
+	Fri, 10 Jan 2025 20:55:54 GMT
+Received: from nam11-co1-obe.outbound.protection.outlook.com (mail-co1nam11lp2175.outbound.protection.outlook.com [104.47.56.175])
+	by iadpaimrmta03.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 43xuecrvcv-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 10 Jan 2025 20:55:54 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=DVBMEp5llEf0bTVxEkz8K9kzUJvq4VZItfJsLgzsXY6v1W/PmlGoJy+6IqDG+YSvQlsB6tESX4fmwtaQIO78uTKDdPYL+evphx7Lc4XnGo3qQ6n3ZQZhOT1hj4GqIXFBkEmi0twBX32+i/bWWLuFfNFYRT0D6o8bOrabUo+bidYu1jDjf8LfIfy7plOcziTahVhOCNDi1tfgL20sD6E/gHqgP3W84dJGmQCniqyeDa5gjPs94dcBHHpTO46FLqLTEsnyGg2NhB0c3rHPCp3baaTnS2lxpidpbDd3Nkzjgho0rCaP5lsztCrOtXhe78YaAhecEz2Xp5VE9mDqc6g1nw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=G6ynm6pmaprDAqpGrUniNaPK0enEeYQPox19d9wcZWI=;
+ b=P9SOcm3vfHywqrqp7xKjp/2n57uTLk98+TxmnZv2RZ9WTtJmNx17fbp5xGAdWCmlBrlMWo3TMcgVkLB77ykwLcKAn+FajSE3GFVy9APZfexWvY//0fdEsnMrbEvYg5ZtQL6m38QU8jk09u84Thrx/0uW2M+qkTJ6CG3ByA+n5NlZFWVVNzFgwWabZk9rLYoeCx5QyRY/VB/YqK0Lb1MHWH6hjvOBn9hA+stORm8GU6P3zCKIJ+r3zxZVhpn6lobJYzfqjCyqHarhB9hOy0e2Jb83UaqiRBOGREZ+cOYTylxo1GhlkGNQ7t7K8l+JvQozs0aQtIrHaK7b49hXbjpn8g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1736528231; x=1737133031; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HJgMoYVZSw03vmr4yFxmrqvyqQ16V6vJJHIRbydgVd8=;
-        b=Tskl1xtr77Y7yWChnxcdV+LMZHROOYrvqii0Kj2MXHZjjr+rc7hodRkw5xszrVsRjS
-         JDWejAt+hGc/kUEQAnsq/IeXoUP+Dio3OVI1NmUE5d9X4J085/O3w3tM2SnZDTFQcqcV
-         PGNh8LM0yMrtYQ9O0fUj3hA3Lx2/cFJyNhs+fWbMneXpLzX1LfffUtAyicVRiXmHg5Ga
-         9MPgyQ4qhkaAZK7ioS+P7LsfQZOwmTGIRP6MOs1ZE74cA6coxsTTE+EUKwBdExzOZzmK
-         KI1vrS3cm7+IyZc85mwhUdI+1zYa84MebLXK6QiwYT22EZY19DtDPsxjLmicjXNdjsKj
-         LgGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736528231; x=1737133031;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=HJgMoYVZSw03vmr4yFxmrqvyqQ16V6vJJHIRbydgVd8=;
-        b=pXgnfJdmIwveUAw9Fku4wM/F7ueJliw4Oy2ryWYlUGINJIkLMBWwR5EDNOtIxv47iE
-         pmpmvd1FNGFQQz/6z6Ec7Ws8lCCsHT0L6JS9s/1r4ABnBi2CWOwIr41NYyoqnyvjiOg1
-         YRoCwQLOImuTPXRAbLNPsCWM5E2yFulpwQs3VPHORsUzb+IFMeIt/k0KEFCG4NnP+tiU
-         At/xrshhpfKU395xi5f4fySPjbqqYxg8F8TTH4GGCTRpt8O3yQKquq5/u/ko9SrM5HJb
-         9eQme+UdPtlsu7zH/43JNuruHa8I4lHx02DLVcDx9DKrVpL1+iXP9Za+tn+QjXAH2w+A
-         zNKg==
-X-Forwarded-Encrypted: i=1; AJvYcCU8A967dICL/pJyXV42gs2bOWnE1aqLRxbc+W6Y8CaH/61czUQi7b6UD5gq4ewbJLRaNToNVtvHPIJ94Q==@linaro.org
-X-Gm-Message-State: AOJu0YzZHhcHBOLC/RuozcZ5NaqI7CXrXMrolg7vis90Lg04ZV5Zt59g
-	Os7i0x00Dr9Bbhg+X29DdeMjrzWTTeEc+2knSZQGDth1UDg9hPVyiyr0En+hP2gchjRc0dKC3eZ
-	8Z3k7I8VM9QUh/SA+nYZF3O2MYD75jrdTIrcjZ7he
-X-Gm-Gg: ASbGncvi/d32ht76Cn9HwgEKHIfOKrLZQ9NIjel8tTiPTky6p3THBwhuoi2X8SBM9rX
-	vxoam1xYLt33s5pWPjaHRORfwNlM0NHqWG+oWBZA=
-X-Google-Smtp-Source: AGHT+IE0AbRS6/Lx17cPdfKemuNfE+YcBfETH3IAk4MGIRsz+d9Sfs1xC0oIhdw/N3fZDEV9/mOdnvFtnO8MAmx7etM=
-X-Received: by 2002:a05:690c:6609:b0:6ef:59ef:f1cb with SMTP id
- 00721157ae682-6f5311ef279mr90704457b3.5.1736528229981; Fri, 10 Jan 2025
- 08:57:09 -0800 (PST)
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=G6ynm6pmaprDAqpGrUniNaPK0enEeYQPox19d9wcZWI=;
+ b=rYV3O4Dm2smjYziunECZDZwNKA785INSmHHyk8GD1yMffeiHTz9jjZS9OmpZNOTANGeIirtOX3IFsE9CxkBtgSi78d1gmCygauavS8YCzaMnuVHg0IhBpRyb7wdiRcEmZSl6ZZeLrBA/jUSjmcs//OnV9dcTPree9WKvqio54ZA=
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com (2603:10b6:610:12c::16)
+ by BLAPR10MB5156.namprd10.prod.outlook.com (2603:10b6:208:321::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8335.10; Fri, 10 Jan
+ 2025 20:55:51 +0000
+Received: from CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23]) by CH3PR10MB7329.namprd10.prod.outlook.com
+ ([fe80::f238:6143:104c:da23%7]) with mapi id 15.20.8335.011; Fri, 10 Jan 2025
+ 20:55:51 +0000
+Message-ID: <e9c74657-b1e8-45e3-9cef-b18a172754b1@oracle.com>
+Date: Fri, 10 Jan 2025 21:55:47 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 0/7] Poisoned memory recovery on reboot
+To: David Hildenbrand <david@redhat.com>, kvm@vger.kernel.org,
+        qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
+        philmd@linaro.org, peter.maydell@linaro.org, mtosatti@redhat.com,
+        imammedo@redhat.com, eduardo@habkost.net, marcel.apfelbaum@gmail.com,
+        wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
+References: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
+ <20241214134555.440097-1-william.roche@oracle.com>
+ <6d771c8c-1ebe-48aa-b74e-6195738a041a@redhat.com>
+Content-Language: en-US, fr
+From: William Roche <william.roche@oracle.com>
+In-Reply-To: <6d771c8c-1ebe-48aa-b74e-6195738a041a@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: AS4PR09CA0014.eurprd09.prod.outlook.com
+ (2603:10a6:20b:5e0::17) To CH3PR10MB7329.namprd10.prod.outlook.com
+ (2603:10b6:610:12c::16)
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-References: <20250107192637.67683-1-philmd@linaro.org>
-In-Reply-To: <20250107192637.67683-1-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 10 Jan 2025 16:56:58 +0000
-X-Gm-Features: AbW1kvaEHzcBrIKmA8BESXRSFOHUPDktKCrZCqaTwEMuygcjlAg_UzUFizw-ClA
-Message-ID: <CAFEAcA-F6CCD_RQ3J5f8bvoZ=3wP=WtOsgHjgbwMcY76pub3Lg@mail.gmail.com>
-Subject: Re: [RFC PATCH] tests/qtest/stm32l4x5_usart: Avoid accessing NVIC via MMIO
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
-	Laurent Vivier <lvivier@redhat.com>, Gustavo Romero <gustavo.romero@linaro.org>, 
-	Samuel Tardieu <sam@rfc1149.net>, qemu-arm@nongnu.org, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: TksVPz9PyoG4
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH3PR10MB7329:EE_|BLAPR10MB5156:EE_
+X-MS-Office365-Filtering-Correlation-Id: 05c2039e-8038-494e-5626-08dd31b92ac4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|7416014;
+X-Microsoft-Antispam-Message-Info:
+	=?utf-8?B?bHFiQTRyYTFuVTlhY0E4UkdxZ3NjbTFPTzdHYnlTS3JucG9FYzVZc2JKQmNh?=
+ =?utf-8?B?U3NQdTNPQTMrQmRadjhmV0RBUmRYSlRiRTZWVGtuUkFqRStQY25tNStiUEU4?=
+ =?utf-8?B?SjRHWmcyMmUxK3VvYlVPOE05YzNKdnJ2U0tHTkQ5VlhYMVFlN3pSbm52VE52?=
+ =?utf-8?B?K3I5enlCY1FnR1V2N2dvZE14aXRPT213SXg0dlFQdHFpWTIxMnZUUzN6VHV2?=
+ =?utf-8?B?Sk5kR2locGduSjUyckhKckRCcTk0Rzk1bDNSWVgvVUNCMzR6ZXlYSStiZkpz?=
+ =?utf-8?B?WXFtN3dEeWtwZHZ0TTEraENrWEdSR0ExbS9VRXo4blV1K1BwbnJpMXNDRGcy?=
+ =?utf-8?B?SGE2aE9ka0hVYmdCbkdSYlF0T3NaQllJNU1INUJPNVdLOTlIcEpGNDgyRXds?=
+ =?utf-8?B?ZVFEUjVRdTlqbFdoOGhaenU1TnpYakE2cDdRT0ZLVFZoUVdUdUJGOUVqQjR0?=
+ =?utf-8?B?bnloQ1l5bVA4d2pjN2ptTjh2WkEwNURXN3BzVjhqMms1cEtrd1draXNwWnJG?=
+ =?utf-8?B?ZE5YcTNmWFRuMmFYRnRVRXozQXkrUDBJQ2N1WjlTYlNOclpmNGxYdWZOM0lB?=
+ =?utf-8?B?WkdUNDB1K1BCazUyV3VJYXdxSHRNY2NFTE44TFY2V2VpZU1BODhGQXNCUm9q?=
+ =?utf-8?B?Nzd4V2IrMTAveUhTMU1NRVBpa3F0RHEyVVpCWjVXWm04d2JBVU42R1JtNG5l?=
+ =?utf-8?B?SjVIRDhER0wvMW8vY2Mzbis2RFRsUUhocDE4Y1laQjZ6NEdROGZiMy82elhP?=
+ =?utf-8?B?YW1YdUQraERyRHZORG1LeURlSnFuWUxGdGdxa3BiL2F6aGJvOC9SZnVHVmZX?=
+ =?utf-8?B?WTJGdnVYbTFtVVFzeXE4SCtoNjVVYjdGY3hiYk9wZS93bndlNUpXTWJkWkl4?=
+ =?utf-8?B?Y0Y5STAyS2pjajVqWjlXbmcwL2dWbWlxK0RSWVlYTTRncHA2Ym9TMXJjaFNz?=
+ =?utf-8?B?WHhJZnRMU29SMnRMalM5WmtkS1lOYy9JM3Yza0VSdmNpb2dnWi9iRUFsUDNa?=
+ =?utf-8?B?NVN5bStRc0xYQXRQem44NFZyVzJ1RlJ5eUJ3RDJybll6b25GSWovK1hGeXo4?=
+ =?utf-8?B?L01oM0l3UFN6d1I5Q2hnVDVrMzRrdGxNS21CekQ1dkliMWRWYzZneHN3RHF4?=
+ =?utf-8?B?cEZtbDFuQXdSQ3RhWlJTTlFZTGNETFV0OVRLNm9OblJZZ2srZi9BWkcwNHdK?=
+ =?utf-8?B?L0dtZXBhclZvSkloQjQya0ZHZ09RYjd5WmI1bVp2STlod2o0NDRCQXdTTDFQ?=
+ =?utf-8?B?NkVwK01EcitaWHM4eHM4YStqODAzQzRIYnNTRnVjSHA2UFg4TzE5dExHM1BH?=
+ =?utf-8?B?dkJYVVRxVGl2UUtRaGtLTzd0ZERpeUNmWUxpWU02d0RTZEJoTjVlU2pIbzB1?=
+ =?utf-8?B?eWw1Lzl1ZmJYb3dFWmxRcEdDck83UTlaU005MXdQYWp4WFI4cjhDRTRXb0lD?=
+ =?utf-8?B?bjJJM2xQQmcyOWNCRUM1MUxBM0ExcGZ1dHR6VE53QXZ4cGVrWnJ2allSWWJa?=
+ =?utf-8?B?Zk1PZnNrcXRhVGpFMXNOeWN5ekk0QlJSMnliS2VUeWZEanZsREJuSE5YVHJl?=
+ =?utf-8?B?TGtOMWowTXA2eERmN1JOeks0UVJ4WG1TdFM1UWJRR1V0YmVKTENWRVdxVXZj?=
+ =?utf-8?B?MjV5RC9JRTFpeVJoOWZCdVY5TXV4N0FHbVpVNUk0MFM2Tnp6eXp0d01qOXBj?=
+ =?utf-8?B?K1EwUnVVZjQ5a1NWWm9oY3BNMkxRV2luTEphc3ZxTnVhT0hBRzBoYzhlS0N0?=
+ =?utf-8?B?RlBnUnpSZ2xXMEhoNFVhemtVTzl0ZjZJbUEvc3VaaHp2cXNsOUdtaFB6WVRK?=
+ =?utf-8?B?U1NuNWFnVVdUakJPNk1KK01DSGE5TkFLMVZSUTlpODNob24yc2J3cStOaUtY?=
+ =?utf-8?Q?ygz2tOzDbUdwg?=
+X-Forefront-Antispam-Report:
+	CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH3PR10MB7329.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(7416014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0:
+	=?utf-8?B?ekwzNDhtZVo0MEdCQXEvRFR4bUkwWHlvOHB3TjEvNkozdnhiUlp2S1lRMmFO?=
+ =?utf-8?B?em4vQU1ZcnE1WllRNEhRNXprL29sK3Vjd2pWZkpDMDBvZSszL3BsS21xZXAr?=
+ =?utf-8?B?OWJqcTJJWE9oSDAyWS9VOUVHcEJZUm52VEhwc0VmNjFmOFBlWUYyeU11bkJR?=
+ =?utf-8?B?QndtRlpBd1JTWGlUc01lZkhKQStMWXBiQWYyYVJsd0tlQVBDajFNOXZVZWlq?=
+ =?utf-8?B?dzhFUHNHVG0wYmI1amZNWTF4T1k3SDVBd0E3QU9qMmpCTkQrMGlYTnRvOVNF?=
+ =?utf-8?B?YlN3MERDcDdHVWE1L2NiRzY0bnJ1R0x4RW9WMCtLeEZSSitha0Fvb0Z3Tm9Q?=
+ =?utf-8?B?WWhwSEhaY3g5Qk5aaGRUWVRHaWJGWmQ4RFo1ZGV4U2RRTnpjRTdvWlhlRERn?=
+ =?utf-8?B?TUxtQVZVa2l6RnlnL1NsZlgzdUk1RUVPMXk5Tzh2L3JqU1hSa2ZJaDdmcW1I?=
+ =?utf-8?B?SU5KbU9PeWN1T2xrR0pDRjZXS1NBM1d4dzJpOHNOUWNCRHhtUFFsZnNlTyty?=
+ =?utf-8?B?MGVHQkY5cTZCUm5JYk82bGd5d2I5K09hMG9tVmR1bmxvejZPNHhBdk1DSUo5?=
+ =?utf-8?B?YStMWWZVNDN1dm1YZ2dKY2t3aVdiZzExZSthTlJYcm9nNjk3aTFEKzJkenBp?=
+ =?utf-8?B?cE94Qk1sR1paWHhYajB6MGlTN25xZTBLYllCYy9rcnQzNmNKWG50cTE5R29Y?=
+ =?utf-8?B?a3MzTTNJc0p4RVRGcjVjR2RxZDVuYjIwYTMwWUx1QVlBWi96eVRFdTlHTWZt?=
+ =?utf-8?B?QmdwUmVJaTNpYUNjb3hTV2NMV1VhUlEwMDdHUHZqVUdSMC9jcHUyTWU5K0o5?=
+ =?utf-8?B?aXRWRXdmSmZYZHdCQ1BESnZQZENEbGI1TEE3bDEzU0poZ203KzR1WTJqdDlP?=
+ =?utf-8?B?blhpNlZKWUQ1SXpveVg2bzlORW5Edkx0d1pyU0ZpRHRwR2JzRUxQeG1jOFRJ?=
+ =?utf-8?B?ckJkc3NIL09DOVhaUktNNzhZcnUzTFFoSE9hK3gybkEzampVUk5Mc2JicTNX?=
+ =?utf-8?B?TElqMmNpczZBTE82RDZpbmZ3OG44WXEvVzhBN3h4SG5YS2hrU05MYTJleWlQ?=
+ =?utf-8?B?RVhvUTkzM0Y3RjJjKzhQckh5aW5TTkFRMUx1NlBvQnNZeVlrMXhwL3ZyL1Zo?=
+ =?utf-8?B?NWNZWFhGRnRCaUhDRGlOY1FFenIxVDVqY3FZSHBqem1Hd1RqdENVTERZS1ZK?=
+ =?utf-8?B?RFJQUjgyMURIVk5mS1A2aE1paUtSNHZtcjBQU3BLMUpSU3JTdDZoREFxdlE0?=
+ =?utf-8?B?cUZQT1FSQzJ1c3pWWmNycmowQmVmZWszQ0RYNU1peFNPbDR1c0lUdnZkVG0x?=
+ =?utf-8?B?TzU0dTlnQXg0K09XU0czODdJbU1hZ1orb2ozZHpOT1VnWnVtRmM5cGk1ZWQ4?=
+ =?utf-8?B?VnZRUWVhQkFoSEZJdUowWTRadngrOEx5MnRKZk9za0tEZU5FZy90c3lJZHRj?=
+ =?utf-8?B?T3U4MkFEb3VuMUUrNmlaTnBnRmc5MVh6TTZNVHRlKytLdDFmdHJTZDJEWklx?=
+ =?utf-8?B?ZnZ4V1lHTWlSdU1JaVV6STR2RzIrc0krc3ljMFE3UUUweFd0S0grYURYaExE?=
+ =?utf-8?B?dG1vZ2piQUR1NGczOUdrbEJzSUlOSE82QzNwZjNOZ3hYSlBVMnpOL1piYVNo?=
+ =?utf-8?B?YUV1ajZzdWtncGJQdUMycFUwRFdWaHZjUGhKREljUTRNSHNvclNrcVpWLzYr?=
+ =?utf-8?B?eitrb0JCbjZ0WWxscFBZR3lnS21xU0dpTG02QnMwTnZyeDhBZWhCNXNVRXBY?=
+ =?utf-8?B?SHc5WGtaMzVKbXBNWjE1WUdmTERROE8wTGFzank3MzdVVUJ0aUViSVRqVDNL?=
+ =?utf-8?B?Szk0TFJpQnRuL2I5bWoreGd5UXhrSHFFNnlmNWwwME52bnRjZjFRbk9PZWFL?=
+ =?utf-8?B?VTJLdjNFL3RKSkswbGMzdVVQSUJ1bEV1Z0dHTEpnSHlIVFN1MUZDYW1Ja3Ev?=
+ =?utf-8?B?TzIwTTNKTTFtSmxweWpudVp0eEtSbUNPMjlSeXIzVkxkZlNYSHA2NW5XZjFo?=
+ =?utf-8?B?ZjZBY1J4VWRLU2p0RkhmdFhHUU5MU29pQndPaVRVakNSSTQyWjRFYU9IU1BB?=
+ =?utf-8?B?WHByck5qTEFyWEQvd2FmY0JEZWYwa3FBNVpPUnFHKzZYLzMvU2dVWnZPTy9J?=
+ =?utf-8?B?UHNjU2FRVUhldVh6b3ZhUUxoQXphdnVTMjlkQ0s4ZGhNdFRNN0twV0hLaHhw?=
+ =?utf-8?B?NWc9PQ==?=
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0:
+	rU4K05aRvXuhdQB5sXoDRpUYUfOpGIu9gdS2krHbCKCvNyjwtHQVqeGwz1tnYaWyNzIVOKc6NPPCleXjuWLGYPdSavrJ5t6BuSr0Ha5pB4Ny9VFQC0tTn4F28uR7kHir0eyFaz4fXfSQ5nh3lbtELqlTgoi9oGzPYVM08Mnyw977IOitiT04SpfjEwCasP6bkd/9mfNOyPEzQ/WP4eCYZU5ogzg1LtQ6Te6T0wXEhtNrd3v9flfAOPc+c672pm8yqmkfMgY0peKaTrYWikjyo+mAyajwv0CVq4V7N6cfGhTxu/Feh7ApoOn6SUxgnbsqohRSNbjzAtNtiSBNncIaP11goggI1vqgg9oiBiVWiDa9uGYwvKlUautUdNh39H0i3n1D9PZimKRaElrSd0D7coAA46vGzhIbzyw31zK/HV9UT7/pc7O22Rv7TKa/NfccchVeEAeKtzWl9KgLBVrco7SHpnkUq/uHd50uZCDo8o7IMgrtoHVZXvAPp3IYyJOKHb3pBmK1r5WvNnh70puAB0gC1C3ql+Sbh1L0qYD5Z+HzJcVlNnnJvVeIYTC/Nzs6NYikb+8IhkLckQfGsm1r4HF7ArwjAE6ExjMKhYETCv0=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 05c2039e-8038-494e-5626-08dd31b92ac4
+X-MS-Exchange-CrossTenant-AuthSource: CH3PR10MB7329.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Jan 2025 20:55:51.4770
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: lkR9cEJONfP0zOCLq3mfggT8J9CfF/ZcjTesz+uVP3ap/4xX879x4u+LIT1sQEDyQxbvrSrm1vigPsE8sDNbZ119U8TSF4KPCNo91vt2TsI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BLAPR10MB5156
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
+ definitions=2025-01-10_09,2025-01-10_03,2024-11-22_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0 malwarescore=0
+ adultscore=0 mlxlogscore=999 suspectscore=0 mlxscore=0 spamscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2411120000 definitions=main-2501100161
+X-Proofpoint-GUID: 8Rf_vO4SYXmzXQ9t8Qvi4V5KSDLGP0Ms
+X-Proofpoint-ORIG-GUID: 8Rf_vO4SYXmzXQ9t8Qvi4V5KSDLGP0Ms
+X-TUID: UDtubC0Gp53i
 
-On Tue, 7 Jan 2025 at 19:26, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
-> wrote:
->
-> The STM32L4x5 SoC family use a ARM Cortex-M core. Such
-> core is architecturally tied with a NVIC (interrupt controller),
-> having the NVIC MMIO mapped in the core address space.
->
-> When using the QTest accelerator, we don't emulate vCPU, only
-> a dummy is created. For now, QTest is only supposed to access
-> MMIO devices mapped on the main 'SysBus'. Thus it shouldn't
-> be able to access a NVIC MMIO region, because such region is
-> specific to a vCPU address space, which isn't available under
-> QTest.
+On 1/8/25 22:22, David Hildenbrand wrote:
+> On 14.12.24 14:45, “William Roche wrote:
+>> From: William Roche <willia.roche@oracle.com>
+>>
+>> Hello David,
+> 
+> Hi!
+> 
+> Let me start reviewing today a bit (it's already late, and I'll continue 
+> tomorrow.
+> 
+>>
+>> Here is an new version of our code and an updated description of the
+>> patch set:
+>>
+>>   ---
+>> This set of patches fixes several problems with hardware memory errors
+>> impacting hugetlbfs memory backed VMs and the generic memory recovery
+>> on VM reset.
+>> When using hugetlbfs large pages, any large page location being impacted
+>> by an HW memory error results in poisoning the entire page, suddenly
+>> making a large chunk of the VM memory unusable.
+> 
+> I assume the problem that will remain is that a running VM will still 
+> lose that chunk (yet, we only indicate a single 4k page to the guest via 
+> an injected MCE :( ).
+> 
+> So the biggest point of this patch set is really the recovery on reboot.
+> 
+> And as I am writing this, I realize that the series subject correctly 
+> reflects that :)
+> 
 
-This doesn't seem quite right. We create vCPUs which should
-have all their usual address spaces (e.g. in the arm code
-the calls to cpu_address_space_init() are not guarded by
-anything that says "don't do this if qtest"). They just
-don't *execute* anything.
+Yes, I'm sending a new version v5 taking into account your remarks after 
+answering each email you sent on the different patches.
 
-qtest's model of operation is "the qtest is doing accesses
-as-if it was guest code running on the first CPU in the system".
-So it should be fine for it to do accesses which access the
-NVIC. (Indeed if we wanted a qtest of the NVIC itself that
-should also be OK.)
-
-In a more interesting heterogenous system you probably want
-the qtest to be able to select the CPU that it is acting
-as-if-it-were (though even then the first one in the system
-is usually going to be sensible enough, assuming the
-heterogenous board model did the usual thing of creating
-the main application CPUs first and the BSP or other
-minor processor last). Then you could have a qtest which is
-"I'm testing a device that's accessible to the main
-application processor" and also one which is "I'm testing
-this device which is only accessible to the BSP".
-
-> This patch is to fix the problem reported by Fabiano when
-> removing the &first_cpu global in qtest, see analysis in:
-> https://lore.kernel.org/qemu-devel/05820c9b-a683-4eb4-a836-e97aa708d5e5@l=
-inaro.org/
-
-Hmm, OK, so my idea of having qtest use address_space_memory
-as a shortcut for getting rid of first_cpu doesn't work.
-
-I'm not super-enthusiastic about this patch, since it's
-basically adding an artificial restriction to what you can
-do in a qtest. But maybe it's OK as a temporary thing to
-avoid going too far down a rabbit hole in refactoring?
-
-If we were going to have the qtest select "this is the
-CPU I want to act like", what would it do? Pass a
-QOM path to the relevant CPU? I feel like you would
-still want to default to "pick the first CPU", because
-99% of tests will be fine with that. But maybe we need
-to locate the first CPU by some runtime thing rather
-than by using the global. IDK...
-
--- PMM

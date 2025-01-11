@@ -1,106 +1,104 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp896559njn;
-        Sat, 11 Jan 2025 10:38:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVzpAC2sX/8ZFaY3rIjaBfjxqBXcA6wiZ1cUWb6LtOqe/eJnSYr2osTI1wRf9R5l7D4960XVAyLokMzMw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHMoMgWPcSOumgS1AxYd4MsJXo7bTAWRw3uCctxlUrf4VQnpV40xE+LLlOxoj5i41fymDvF
-X-Received: by 2002:ad4:5d61:0:b0:6d4:dae:6250 with SMTP id 6a1803df08f44-6df9b28c6aemr244488496d6.34.1736620722576;
-        Sat, 11 Jan 2025 10:38:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736620722; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp896593njn;
+        Sat, 11 Jan 2025 10:38:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVsh5eYNbdrng1NiMkOKVnupc0FDHvpVQCCNFkp5dmceI0WkLcphGh3YFweGAMMdRHyWnS6RUURW1W7+g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHFOHx1rgvzjDlBlDiZAJQ68Coz1jd3bhAvGft8/I6Wc7fXEtxor3aM3rRMV9Gzc88m/lWs
+X-Received: by 2002:a05:620a:248d:b0:7a9:abdf:f517 with SMTP id af79cd13be357-7bce1286ea9mr1772647585a.25.1736620729876;
+        Sat, 11 Jan 2025 10:38:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736620729; cv=none;
         d=google.com; s=arc-20240605;
-        b=VlfUXVYozkx95LujK6LYfGZeR60SsnGsrFg4yjqapZxy43CQ1S4d4gh1sg++ADPB6L
-         fYfhZOFUaeYS+wFulyjKNXNjLvIToQQdThiq2T+LJ6STF4jaR5xAKiTo9CaGrCUD8b8p
-         wKO7uwKOhP1zEEEkACQHsQLhIP904BzQaC4+5+78vYAm/lls+3z/N3MkiFjnR0bWptoN
-         Ob64jl+S1cfx+YzhDYofY4ngUAZ69ItXnCVODqwsClJMNhggzOj+LcHPgWM/V3QnGrxs
-         LXJYmY8b7nPFcY6AGKHhtQLUv4LnNbqtX2v9w9Oeb72OPRuqjWGMaibF2o3/O7Svs1A+
-         h4rg==
+        b=NPZ3sBQjSDC+3A0uqZMEYMT/Uj58WUswTgvn6SE79lVkR1GYctsYlMeFoqY7ByarOL
+         BxNIiARbuAeSFpgttghPdj1qoes+GOpucC97QOhYiV1+JbgcOWvHtcegMii731eFYD9L
+         Y5tQOQLyFsz4I/lkP8SJyvuUzxvCC1e0Qy064Jxis1fVi5NHBQWRWERmgEthHDWnrHRx
+         0h4FMpljcvMP/X07EbO+ylt+9YO+VFzhVI4Lhd8Yj971GOaz3um9MeJONv85yO5rzmxH
+         y2KDpLVOg60703lAjWhLXnF7x/FmYJbPLebgRaN48Ir//cgmj/hXYowFD5tGwU4pzdaF
+         1Hlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=7xvmtujobjZispI604dErPVBv97hCzWiTfq+q42+nT0=;
-        fh=9iDHpQw/0ob9M7ElsgSYjxhYKU752+T/80D955YrGDk=;
-        b=ebEdpOmOQtsu8Mch3DlTd1LSY5UvPRz9MMhia4H2sFUz0y4b/ybDOdX84yZ9uupQhv
-         clO+3hLa8Ry4O+nt0uxyr6vcVFs5JkC2n9uS6g0dPVI32HqV4YH09VLQVd6IEUJMBkXk
-         zyn/+jn6FWRwpCYl3MG3gN9Rh9gVTcF5exlxNT9KNYWPMeb0YHgEOFX++x/vwhw3Z6Md
-         bF08kzHkbd4YdKyhhG9R2a1BCK3/VdddW6YQRVpA1c8aiC3JBOGV2qsuNTLfHYKOqO15
-         KKZx+vvmfpBir+uNzm3GRjPdquF4r7ki3Nc6A6r7L4uw8Ob68KySQGIpx4pYZ4TTZPTY
-         iLAQ==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=RoziYUKRnYnrxagpLXRXx22rtFkGtEbmADAZ6jidbtg=;
+        fh=8RuoKiiRq9BZ7+qAl5pFb5/clASB7KUg+lDh0Jgn6DI=;
+        b=OcYJQLAQwSVz7MUiGiCTUVwwq9kaGTWHiAAgUOkUwGJzMzqnuhxCwZvDF+lxKAPHKh
+         pTB8zvJbqy3IXeX9jKeBd0+bu3P1CNqHSLYMajfw4zi1nK7k+3kBKd9Zr7WMVHeesI4B
+         SnFXIeqe68/PVYn2UwoKe+DpUE5nEJkBm94KRxEhV+lNfr1dhAWZN/a9F033Oo63bjkD
+         vve7f7WOxINPODuhRORmQtsga7iHRNVGJ7SZoWNNr8PXf3BfhWiauPCRlr+8gqUvZCYQ
+         Yu0ge63LzaYzxDCF1Nw8KURgwJ00dP3KT8TavTFcVDh6fgZZHkCMb5A6kTrNMaZu/Wlk
+         emVQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dgngqmYc;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OwvfuzPO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dfae02b418si48990066d6.494.2025.01.11.10.38.42
+        by mx.google.com with ESMTPS id af79cd13be357-7bce32360b6si672397985a.159.2025.01.11.10.38.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Jan 2025 10:38:42 -0800 (PST)
+        Sat, 11 Jan 2025 10:38:49 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=dgngqmYc;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=OwvfuzPO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tWgMh-0007JZ-Ds; Sat, 11 Jan 2025 13:37:43 -0500
+	id 1tWgMR-00070u-Fq; Sat, 11 Jan 2025 13:37:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tWgMe-0007GW-VY; Sat, 11 Jan 2025 13:37:40 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ id 1tWgMP-000709-N2; Sat, 11 Jan 2025 13:37:25 -0500
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tWgMd-0003xs-CM; Sat, 11 Jan 2025 13:37:40 -0500
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-5d3d479b1e6so4131132a12.2; 
- Sat, 11 Jan 2025 10:37:38 -0800 (PST)
+ id 1tWgMO-0003tp-41; Sat, 11 Jan 2025 13:37:25 -0500
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-aaf3c3c104fso528238566b.1; 
+ Sat, 11 Jan 2025 10:37:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736620656; x=1737225456; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=7xvmtujobjZispI604dErPVBv97hCzWiTfq+q42+nT0=;
- b=dgngqmYcYtRgMM9REUGVUxRC6NY1mCs1Nn3fNEyM4PUz5YxLphS4HSpNfzxRzRbGV0
- Pof7G5ClzD/fgOHywQehXsm59xDuV+aGTYc74JLS/vrfa/h6b0+HNAqrk8BvhrfGsObb
- gjyhp95XmUvAG/C7gahfo0Db23teAaXjd+S0fY/ddGpxxLlp28HQ4ie7XBDKKrriqM15
- sxG1GVpjCg/J2vitOkXs2TyQ0yVOhrEBPaBfesSLqUp67lYTo6SIuRjR+ISeUTZ5lTZ1
- YTaGCzTYqsHN6pmQg4RePEx9gyBwLcjgh0wC8YEY6hyYr/3yF/mRk2ZaSltgYiemBjaX
- sRUA==
+ d=gmail.com; s=20230601; t=1736620640; x=1737225440; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=RoziYUKRnYnrxagpLXRXx22rtFkGtEbmADAZ6jidbtg=;
+ b=OwvfuzPOdQZHszqMwynIoTfA5qlgqfi18H4oJHmJX/Si2+7/Q5JymMjJX0A9myT8c/
+ hOG47uVlsaV/OC0ffVMs96c8uVBBMS/Dm4hSqAP3+Cvl9MSrH2foKDk4/43mbZeZxNx3
+ hnRfyssQE9vU7FktVu7wMLsrNMSHhGLS1wK3rvDkkC+pyLvNJEB79FU0CAtR3OWfmdHT
+ vQh7XeA8UDWk9PYD9Np+fMbPfmLsSkCMqA0KbZvapZPbm1367dvKEIaD88VjXOtAQkps
+ IJHhnU1wo4hmG9FM7+6ix2OY/FhueDpW/BVLG1LQTCGhTVBX+0XgDtbKqrq81PAqDsG7
+ bU7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736620656; x=1737225456;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7xvmtujobjZispI604dErPVBv97hCzWiTfq+q42+nT0=;
- b=td/gUojvgFoKwQoW/URj14lTNxsTHgN4KAIJSsDfDHkOfVSxg7B5DHI2mXAMfkHTAj
- U024oyK6BtFvaQjSqguWmKIBzs4r/HbxTe4L295h+LaGyYpA/WVW+gfTkfrTXUQYS7Ci
- 8Xl3UTYtKRAEridDvyxqTM/1JylputMEjCwLKL74L41uz1xPAZjDFAGczEbr4SzXeLy9
- qncc1XHw9JBCM/TTldCxq5cL8fg5zU/MWni7PVv16d1NGtbNTrYikA4CiNu1M+G8AQhh
- RhhvpOprwZK8Jt/zgPCajrnatsl4IJNvA0O+m5LmrUYY2HSnFLZHUQhB+AiXEoBy27HP
- gXMg==
+ d=1e100.net; s=20230601; t=1736620640; x=1737225440;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=RoziYUKRnYnrxagpLXRXx22rtFkGtEbmADAZ6jidbtg=;
+ b=jaQ06C8grMurkfOMiu3V5K6fq5ZQ29gqsqvIdfwnwimEkSwnpGAGhGa8nw/4CuXFqH
+ o/gdlqE+AtZhNB3bPvpUGUfskzqJ6+qhwl5DTUjLDftzqQH3WTBH2b6yhmGC7AbuhUOZ
+ I11tA52blj9SjZFQkCAELYZroJPyAQsQa+bILDlND3rinufsKdThzTkjgwwFW2vGaxQ8
+ IcZOfaMesUFZDZxgePDbxXnF0geJn1Dsqc84AbLpT2mlXdBOI27d8soAoVUC4D7WhFZi
+ udQlNv0hM/p8lnAESE/8EQlKKuA0mSuY5bw8JpzwvpGBAAIhwVEVQD4XPMcQspd4cmtu
+ tThQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVaQTZSPLc5/uIEyMWmeFYlPIdLw6gpL11ScadtFazWWihdLOn11g0sMrww9aFB2P0vOc/G/JOFz8QNXg==@nongnu.org,
- AJvYcCWNLQ6hAmIvwOQMiHx6xYuvuFcV113+TzL6eKsX/ohw7JWYmVmjehSPog1H9FoDNBCQHSJL2sG1ZQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx7ZI4W9eCRcgJ4G9MEp66sR98zGZ6fE6rAY1sV4wfqPv+0GIWv
- F83ezgTO/mu2nuFhK2idIyXezoXHbgEQ99+xGdBeMx8/FXpDFHzMoOuyVw==
-X-Gm-Gg: ASbGnctW8T1PB+UoJhHdXFIP70nnQLIx1OUoLvhkEeaeNgsphknlwZUVg/eVbtGsOv6
- LO5GrpFNaKSXh9XAfezW+OhTrOloIev1zlLKqkFu3esidSn9nXSEVczS5YIIxHfsiyxn3Gr0fdJ
- +PCL4fufeV9D2qdgSJcrKAk38wXNtF8GpbThOgwCRdo8oFm9a8PQ/MGyOsaSr6UYxe1Co424fRh
- xiAT+LvxCeS1aitoTpL9HrEj4dYqKQTnJbe+gB3MMOhqmTBxMNwBjLS3zSaXR1EQvtjOmzz9urY
- dO9xRqbWcHd1CYgDw7yYg0faONyyIsLdC5ztFoKodXw=
-X-Received: by 2002:a05:6402:5109:b0:5d0:cfad:f71 with SMTP id
- 4fb4d7f45d1cf-5d972e7110amr32181787a12.32.1736620656035; 
- Sat, 11 Jan 2025 10:37:36 -0800 (PST)
+ AJvYcCU1miFvCSJe7XZHiZKO17GH3HtuTXj+fg3re31XwQJ+FKdXp0MqC+5EO3c9P8mwIVi6LL1oUiS6aQZUyw==@nongnu.org,
+ AJvYcCUDjKCN4roJVOpY4LB6vJV9+BsuNPz4ia3dcjyKOKkkmls+KOZdHMv+QhrD8agVRrrISvM+EWFqNg==@nongnu.org
+X-Gm-Message-State: AOJu0Yyp20mbCpS7c1MckK3fOGUCC7/80dXiUp6YyAYwr54WIoNNRx97
+ dHkXD/KH7Rnodd9ripNUG745bclvLFniHRpLElfInwtNc8iDjVMDU9KNIg==
+X-Gm-Gg: ASbGncuTj0A1wxbAgPANhV7XEcQatESzH/SCaEXwABfLcKgJKwI0bG54SNSbW8x3K/I
+ Z+UembypqamE49nGK8DZEjJcOo6Y52Y1uRP+zecUkRb4Mn/KjeSv2OeyPpZkf2yGxhCCY3fCMCX
+ J3fiiWd6qjTWqhj3wYvT0yPfdz1qw8JnDWdd0hJF5IizTSFufJb9L4Pl90LnPpNeT/+7j2mcTl2
+ EgUDIOFuFp/PzTknwPDnQ4rsQAcnJKibcV/8mxfpTtHmscyv6IufGuX40Rfi4btz9fYr6WwpG2M
+ 3Zjx76Qa8ZKCB6UaWChsVJt+yAnv+XEKlsJX8ztC9D8=
+X-Received: by 2002:a17:907:6d23:b0:aae:a087:f972 with SMTP id
+ a640c23a62f3a-ab2ab16b1d6mr1255846866b.11.1736620639504; 
+ Sat, 11 Jan 2025 10:37:19 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-078-054-101-099.78.54.pool.telefonica.de. [78.54.101.99])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ab2c95af187sm299026666b.142.2025.01.11.10.37.34
+ a640c23a62f3a-ab2c95af187sm299026666b.142.2025.01.11.10.37.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 11 Jan 2025 10:37:34 -0800 (PST)
+ Sat, 11 Jan 2025 10:37:19 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -112,17 +110,15 @@ Cc: Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Laurent Vivier <lvivier@redhat.com>, Bin Meng <bmeng.cn@gmail.com>,
  qemu-block@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 12/13] hw/misc/imx6_src: Convert DPRINTF() to trace events
-Date: Sat, 11 Jan 2025 19:37:10 +0100
-Message-ID: <20250111183711.2338-13-shentey@gmail.com>
+Subject: [PATCH v2 00/13] i.MX and SDHCI improvements
+Date: Sat, 11 Jan 2025 19:36:58 +0100
+Message-ID: <20250111183711.2338-1-shentey@gmail.com>
 X-Mailer: git-send-email 2.48.0
-In-Reply-To: <20250111183711.2338-1-shentey@gmail.com>
-References: <20250111183711.2338-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x530.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -144,95 +140,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fqC3DWEodsWp
+X-TUID: s2UwVpm3d0H5
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/misc/imx6_src.c   | 23 +++++------------------
- hw/misc/trace-events |  6 ++++++
- 2 files changed, 11 insertions(+), 18 deletions(-)
-
-diff --git a/hw/misc/imx6_src.c b/hw/misc/imx6_src.c
-index dc6a2b92ba..06cc46292e 100644
---- a/hw/misc/imx6_src.c
-+++ b/hw/misc/imx6_src.c
-@@ -17,18 +17,7 @@
- #include "qemu/module.h"
- #include "target/arm/arm-powerctl.h"
- #include "hw/core/cpu.h"
--
--#ifndef DEBUG_IMX6_SRC
--#define DEBUG_IMX6_SRC 0
--#endif
--
--#define DPRINTF(fmt, args...) \
--    do { \
--        if (DEBUG_IMX6_SRC) { \
--            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX6_SRC, \
--                                             __func__, ##args); \
--        } \
--    } while (0)
-+#include "trace.h"
- 
- static const char *imx6_src_reg_name(uint32_t reg)
- {
-@@ -87,7 +76,7 @@ static void imx6_src_reset(DeviceState *dev)
- {
-     IMX6SRCState *s = IMX6_SRC(dev);
- 
--    DPRINTF("\n");
-+    trace_imx6_src_reset();
- 
-     memset(s->regs, 0, sizeof(s->regs));
- 
-@@ -111,7 +100,7 @@ static uint64_t imx6_src_read(void *opaque, hwaddr offset, unsigned size)
- 
-     }
- 
--    DPRINTF("reg[%s] => 0x%" PRIx32 "\n", imx6_src_reg_name(index), value);
-+    trace_imx6_src_read(imx6_src_reg_name(index), value);
- 
-     return value;
- }
-@@ -134,8 +123,7 @@ static void imx6_clear_reset_bit(CPUState *cpu, run_on_cpu_data data)
-     assert(bql_locked());
- 
-     s->regs[SRC_SCR] = deposit32(s->regs[SRC_SCR], ri->reset_bit, 1, 0);
--    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n",
--            imx6_src_reg_name(SRC_SCR), s->regs[SRC_SCR]);
-+    trace_imx6_clear_reset_bit(imx6_src_reg_name(SRC_SCR), s->regs[SRC_SCR]);
- 
-     g_free(ri);
- }
-@@ -173,8 +161,7 @@ static void imx6_src_write(void *opaque, hwaddr offset, uint64_t value,
-         return;
-     }
- 
--    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx6_src_reg_name(index),
--            (uint32_t)current_value);
-+    trace_imx6_src_write(imx6_src_reg_name(index), value);
- 
-     change_mask = s->regs[index] ^ (uint32_t)current_value;
- 
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 0f5d2b5666..cf1abe6928 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -253,6 +253,12 @@ ccm_clock_freq(uint32_t clock, uint32_t freq) "(Clock = %d) = %d"
- ccm_read_reg(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
- ccm_write_reg(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
- 
-+# imx6_src.c
-+imx6_src_read(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
-+imx6_src_write(const char *reg_name, uint64_t value) "reg[%s] <= 0x%" PRIx64
-+imx6_clear_reset_bit(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
-+imx6_src_reset(void) ""
-+
- # imx7_src.c
- imx7_src_read(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
- imx7_src_write(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
--- 
-2.48.0
-
+This series fixes some details in i.MX platform devices, improves SDHCI=0D
+compatibility with U-Boot and modernizes some code.=0D
+=0D
+The first 5 patches are bugfixes 1/ resolving infinite loop in U-Boot esdhc=
+=0D
+driver, 2/ fixing a character echoing issue in imx-serial, 3/ fixing IRQ sh=
+aring=0D
+issue in Designware PCIe emulation, and 4/ fixing GPIO level preservation a=
+cross=0D
+resets in imx-gpio.=0D
+=0D
+Patches 6 and 7 modernize SD card emulation by turning presence and=0D
+write-protect GPIOs into qdev GPIOs and then further allowing the GPIOs to =
+be=0D
+inverted, just like device tree allows.=0D
+=0D
+The rest of the series is cosmetics including turning DPRINTF() into trace=
+=0D
+events which eases debugging.=0D
+=0D
+v2:=0D
+* Drop redundant implementation of TYPE_OR_IRQ (David, Zoltan)=0D
+* Use absolute QOM paths when tracing in imx_gpio and imx_i2c (Phil)=0D
+* Trace hexadecimal values in imx_serial (Phil)=0D
+* Do NOT move inversion of presence and write-protect GPIOs since that chan=
+ges=0D
+the internal logic of the device=0D
+=0D
+Bernhard Beschow (13):=0D
+  hw/sd/sdhci: Set SDHC_NIS_DMA bit when appropriate=0D
+  hw/char/imx_serial: Fix reset value of UFCR register=0D
+  hw/char/imx_serial: Update all state before restarting ageing timer=0D
+  hw/pci-host/designware: Expose MSI IRQ=0D
+  hw/gpio/imx_gpio: Don't clear input GPIO values upon reset=0D
+  hw/sd/sd: Remove legacy sd_set_cb() in favor of GPIOs=0D
+  hw/sd/sd: Allow for inverting polarities of presence and write-protect=0D
+    GPIOs=0D
+  hw/char/imx_serial: Turn some DPRINTF() statements into trace events=0D
+  hw/timer/imx_gpt: Remove unused define=0D
+  tests/qtest/libqos: Reuse TYPE_IMX_I2C define=0D
+  hw/i2c/imx_i2c: Convert DPRINTF() to trace events=0D
+  hw/misc/imx6_src: Convert DPRINTF() to trace events=0D
+  hw/gpio/imx_gpio: Turn DPRINTF() into trace events=0D
+=0D
+ include/hw/arm/fsl-imx6.h                  |  4 +-=0D
+ include/hw/arm/fsl-imx7.h                  |  4 +-=0D
+ include/hw/char/imx_serial.h               |  2 +-=0D
+ include/hw/pci-host/designware.h           |  1 +=0D
+ include/hw/sd/sdcard_legacy.h              |  1 -=0D
+ hw/arm/fsl-imx6.c                          | 13 ++++-=0D
+ hw/arm/fsl-imx7.c                          | 13 ++++-=0D
+ hw/char/imx_serial.c                       | 65 ++++++++++++++--------=0D
+ hw/gpio/imx_gpio.c                         | 19 +++----=0D
+ hw/i2c/imx_i2c.c                           | 21 ++-----=0D
+ hw/misc/imx6_src.c                         | 23 ++------=0D
+ hw/pci-host/designware.c                   |  7 +--=0D
+ hw/sd/sd.c                                 | 39 ++++++-------=0D
+ hw/sd/sdhci.c                              | 11 +++-=0D
+ hw/timer/imx_gpt.c                         |  4 --=0D
+ tests/qtest/libqos/arm-imx25-pdk-machine.c |  5 +-=0D
+ tests/qtest/libqos/i2c-imx.c               |  4 +-=0D
+ hw/arm/Kconfig                             |  2 +=0D
+ hw/char/trace-events                       |  5 ++=0D
+ hw/gpio/trace-events                       |  5 ++=0D
+ hw/i2c/trace-events                        |  5 ++=0D
+ hw/misc/trace-events                       |  6 ++=0D
+ 22 files changed, 151 insertions(+), 108 deletions(-)=0D
+=0D
+-- =0D
+2.48.0=0D
+=0D

@@ -1,106 +1,106 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp896249njn;
-        Sat, 11 Jan 2025 10:37:44 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVyIpDHPvDa4REZNXwkPe8aaGJGTnPJx79qJfKj3x3pC20hVeJVwDibrYUxvX+QD8IrTHz1zWwrAuQ2Nw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEsixUSmA+cFwotIxz5cellw2anw7v7Mz9C82JVKMeDzEu/2iG/HMD8MwDDHpklAdxX0tLl
-X-Received: by 2002:a05:620a:28ca:b0:7b6:eab3:cdce with SMTP id af79cd13be357-7bcd97565ffmr2688495685a.40.1736620664701;
-        Sat, 11 Jan 2025 10:37:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736620664; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp896270njn;
+        Sat, 11 Jan 2025 10:37:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUS0dO/ii2tW/cFe3qPuOQPozjxeIKGoP1v7hoB86/46qhg4tFoqBL8+0hi2Ci/N+ifg9GixBAZO0xPKQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IEhyLuu/uwgHb+zKMjryAACstnNjX58U/+c9b80ERnpO7GlKCFn/JRLM52fxkB+E9P+mWan
+X-Received: by 2002:a05:622a:11d6:b0:467:51d7:e13 with SMTP id d75a77b69052e-46c7b0016a1mr167456761cf.9.1736620667922;
+        Sat, 11 Jan 2025 10:37:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736620667; cv=none;
         d=google.com; s=arc-20240605;
-        b=lsZS4jpqtfs8yzrjJrLMEebOMNTwI8fq4mLQzgyRX0jZX9sashHkmZ/iy3zmfp0vPJ
-         xMmpYLxS+QTR3BHGJITe/dMTrogikLdzmf6nSPBvE2KqaGoCq77FO7SoSOh/GGgYdP4p
-         I53JCiC2H8QRBRwhDyXT+LA3MNVsKOqafmuBBe/3aM/oTeRAxaOeBRiVOCKFS+AMjzkj
-         +b+U46INhTHMfTIzanu11pMDmAHaU/VBXka7pO35RlP3Yw1KfjEBKrQzKKeehNKuQwm+
-         qWJng1bbSyJD5oSN6oLLcr7FQpjYxmawSU17LZ20aMOMSBwXU2xtpDwBcPoIBkVe3NCy
-         xQpw==
+        b=dItj5D8VVtt6bChapr817jNmOuAq18qkJWlOz0A8V9lJIDxZ/4LZWP15n5R+L0sYlC
+         7DW6jvFSIiN5Tu57nWh+29XqB2XAB9EadprR7Zuq1l/d0FrTiCdapeQBvnh11L1/JTm0
+         5qr8/HO4Da3AjZdfRBpr1xXvRZ0ADTs3RW8mGHPZDD9UF8vzMWWRx2S5KQa2z1udurCo
+         HzV6zhhTCXRHLhrFU4nkrWV6LHsfpCqggDG7/lIdExgfSYZ/60D8ndcdcFNyv5jx3emV
+         +WFG7UFHb+nr9tfx0vyA7GilnxFgnPvE8ojBQfJOidl82Hjach+putzM6Ddsbc7R/e2J
+         WuPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=W0GVvSvysjxJEz2UaynSqQCCG8fvIEfWJUlnUTYHgNk=;
-        fh=+Wajm4XzJF1tDiuYZhVBvttNs2+vfdC8ded60uG7iFo=;
-        b=Tppg/3e9LdQPQKbVshffM9v48pGHdUFIxDpkLq34SwEW5c0lFhE5tnEQxhktOBJrM9
-         /Ge3yTD71Xq+mYMfoenE1cT9V27kB7Da82mbJvooQk1m2LA0Lw4hAETQIhNLOwYltO4A
-         2iquewr28UYhk+rutpyqWj7SCy8e3lxX94WJN2IPUSupue280FL+yF+tMLT9Eow67OWO
-         xq3m+bE92OnPH2tPdrkjuYpM6J15SSkRyX4fsvuoEcu5bm0Yp6wlCbVUshoJU3b/78px
-         pJIjzcVNwyMulG3XSdeMDosG6b57PLN+AdNysJFQTBILo3pC0EuVMrjh8b7BYmbFc0IF
-         giqg==;
+        bh=jKrZnbsTuw0Y/FLcZknSpoAChzMgNZQkW7pMKPGttDo=;
+        fh=CCYz8pD+aECj/vRfLzQLi3hikySld3PDQl7IMaJc0zk=;
+        b=NCiaiEH8J1VQRakmp4FRNWT4YOFii8llz+c4grHZfZKDtikTeL3r5cTE5qtJu6t4k1
+         dnGgqAYGgqPIqkTfwKOOByTLOJ0cUquYfdVuaZpFdV2bL5/0UEBf+4YORFOesSGgljYT
+         49HHDIkdGWt1Z2u427voPKHqffCgSrLO7Hue1u6/MGTBHMU0cumed96v9R4DKKcUzBwD
+         v6Oh3USuBpm7yO39Ehy+XCfcGINZXpFK04+JZlq/RAM3SV8F6CF8onm3H6VT8p60fe3O
+         frt8lGLN9CrRTO2BrL05/+22uawvN1iyOxpkw1cbOOJiI1WraNOO26xwpgH0UdmPzjq/
+         /DBA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ZG/IPvgm";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TQx3MvZa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7bce3229eafsi759796185a.102.2025.01.11.10.37.44
+        by mx.google.com with ESMTPS id d75a77b69052e-46c87330c54si54879381cf.1.2025.01.11.10.37.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Jan 2025 10:37:44 -0800 (PST)
+        Sat, 11 Jan 2025 10:37:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b="ZG/IPvgm";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TQx3MvZa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tWgMb-0007Dx-Vd; Sat, 11 Jan 2025 13:37:38 -0500
+	id 1tWgMS-00071P-Kq; Sat, 11 Jan 2025 13:37:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tWgMZ-00078E-Ib; Sat, 11 Jan 2025 13:37:35 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ id 1tWgMQ-00070R-T4; Sat, 11 Jan 2025 13:37:26 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tWgMX-0003w5-Sz; Sat, 11 Jan 2025 13:37:35 -0500
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-aaee0b309adso502398966b.3; 
- Sat, 11 Jan 2025 10:37:32 -0800 (PST)
+ id 1tWgMP-0003u5-Fn; Sat, 11 Jan 2025 13:37:26 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-5d3d479b1e6so4130882a12.2; 
+ Sat, 11 Jan 2025 10:37:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736620651; x=1737225451; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1736620642; x=1737225442; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=W0GVvSvysjxJEz2UaynSqQCCG8fvIEfWJUlnUTYHgNk=;
- b=ZG/IPvgmeVf9GnCGekV+Ope75sUrtHn2CpaHkfVrSNStTZokbizrnKsyJO+G9xgNbG
- KqRB6qTZisvdbFTe3bIxSn88QAI91WuvYBD8gwb9OeHuC4zjWYaYdaJ/ejmxMpflC6Eb
- mzPJV7BAZ+iZwidGZ0sFebjHdRqS27tsmUqsN2/xmzO4qCqH40vRBa4JMRZYm+CWqyQT
- 2dnJIpnuit7QZbeAdgoP1D42FRsJ+rNaYmixZ2hp4V9w6xklA/WqP16wDdmftNsUUL7g
- Zqz8w63iPUTkIk9X7lBJ0+6J+SADHu5vBVS2TdAO2Ls4RVUoMNoSjT7/NQcb0ahr2VBX
- Fp/w==
+ bh=jKrZnbsTuw0Y/FLcZknSpoAChzMgNZQkW7pMKPGttDo=;
+ b=TQx3MvZaL+ntt0w+f2aXwBycSKZshhAnCmrqvlhFfEvZHYlZ22xDwgZFxlt9e0pqv9
+ 1wQoLpBSpU1HWHDGmnYl8/Cop7bKhxkNbig5WwfhCn3Kg4oTrACF7V0MDcKnnkeucJwT
+ kUhKZdxHizQTT7Pn6E/AZHaLoK5bew/UsZb3/0BRDCWKXshsLoPqy70bym5cfkWN21xi
+ DXw4wjJLM1pSXfz8VX9r9yXxmwQ8px1FV+iafweZmJt5KxjQDTCHBdhHkKsZSZekMjoU
+ urI7nwYRg1sK82YK2yPlpDu8vq2pWg98a+Ry5BUHeCcJ0Cbq6v5W3bYbiDrRrVPPIJ4t
+ 1cvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736620651; x=1737225451;
+ d=1e100.net; s=20230601; t=1736620642; x=1737225442;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=W0GVvSvysjxJEz2UaynSqQCCG8fvIEfWJUlnUTYHgNk=;
- b=ShcCuHUcLODRMebSzrvfCX+y6Pqx1sxnaV2Wpb2E4qcgzG1bLpYxCYTmI5Ldy0+Ayo
- iPftsrzGuBMjs2ATy5BBopxIWpCSrnWVHGBWC0Pw99Zi1NSZysKrvW96ZKCqI1eUVM6v
- BjhDW8P6loPvLsFkWZ9eBWG1MdVXYGSPNrwL14m9XSK7zLKfT/VFM945bIQxf8EtgogP
- rqcrE2x+C3Awu+WN020SemtNpHv/9MzdsTDEx8Ti14ZbRiKcxuWfyNOnTTaQRoi9q/Xb
- XMZ3aqVvNM8oLmmoI6H/oJcTQ38wZdSzOJtE2afHkP3yYHLGky8YNQiuYVU1WsBOEOrf
- xdPw==
+ bh=jKrZnbsTuw0Y/FLcZknSpoAChzMgNZQkW7pMKPGttDo=;
+ b=CNWvGXn/hY+ELKZRkruMvFcKE4edDemxiAYeAVflUkTMy/csVSa11zOl/R737VvX1U
+ QY7TI+Ik5BOlLbd2L3CBQoM6wVklpfkjpkQGhdbF9vbXcDFUMbwIcWERERJ9Fj/WcMIZ
+ vu97qwRj1xupwTNJ/GQ/yw00vNApCHnojucdF5wMDq7+cClBlUILVpu0WbAVQJDZ3nTl
+ ARXEnM7vkAtOV56nQt+onb8wQ2nXmdCeKY7AWWY+iRpQnFwx9teufR1B2muup6BzCqsJ
+ LA3+O3aoIrGLfK6fQ4HP6KsN6NfkkAEEcyP5HCHgKLqUSIF116ACQinKTplLBmUB6R2o
+ mU5Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUxWb95oGJm1Pie3nGpIuWHDo8QmiR1BBH10iFQDg0jroTMp1ySWhwPtmyGGOom5lWAb7n4B/rv3Q==@nongnu.org,
- AJvYcCXyb+oCYdbtXR3l5FIQJOJ+85sDt/8xheLVC645aU6t0OoAjVGX1mVpVG5tdJirKc74Cm4quGXKlw6W6w==@nongnu.org
-X-Gm-Message-State: AOJu0Yzk+QCB7+lu+wYGjtv5AcdcRKgqTVGoCsvsIm0sbMeOGpfyLzNw
- P9+/GFnu1GQZKlZQN4zeT1V+4bL9b5B4WYVEa1v2myJCq4zwIg9o/7P30Q==
-X-Gm-Gg: ASbGncsqkyGMW+Yysne2xchXyVj0xOCPExLpFCdKH1+Zz3H4jrISihh7dU4cCXzf+Sa
- idtsyPheeQjd3K20eYbrrFFMWCRONvSPO6OTw00jki2MdamenxxtQ7NmcsOotDGka3a6E4iu/Gx
- 0tgl2dutEUPn6NmYd3I0dszUot2J+xq67h3C72NXVYSHSpl/5V7FDMI/X9m7u24sgMii2RXKVO8
- 1Xqa4lrB6FP6FgQn0rgjwnVp1ospvJrgXdQYEdmfBXB3F20/wJYFl+N/uHLQ3o7bb4z4E8+qSf/
- AIx5XEUR84akrHiEXqrRkil0Ip63Mw2BXUbS3FBX7Hc=
-X-Received: by 2002:a17:907:6d01:b0:aab:d8de:64ed with SMTP id
- a640c23a62f3a-ab2ab6fcf85mr1487594966b.25.1736620650618; 
- Sat, 11 Jan 2025 10:37:30 -0800 (PST)
+ AJvYcCU5mTn/By8YRUMJRqjVjP1SenaPib0V0a0BRtKAZB4am9oRSMk9NH1/WPsufscfUuYnMAo2gnpKaQ==@nongnu.org,
+ AJvYcCXnKRmcIj8oD4j8HI6PQuviOmvlVR09ybIGcA4IR51jbzVMZ8fNJPDyyt6RKJnM5ahLJyrO3rSJEaYWrQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yzbl5HyAhSVXE6CfMZxYiStQ86Zpvvj7JOvZta+TcmmwnqW0ZKq
+ EgCRVtd46sqgd7z8Y6n6iV2R+vpEJWu9pRvtNZhEg0MrJtkX7G+cejaP3w==
+X-Gm-Gg: ASbGnctFZ/aqm1pmtMtxL6/3ojFdDcaIQPRcSh+c/+wi4d0o1Sf9g8unirAsPn+PtLL
+ ZuYVm1fW7xffXjRmj5wD2gTSLx7ng0yPUTmY621c1+9+mLNq7meZTz3Sq9dRQPb3kS2wecZbGOX
+ UFgW6QQWEwd2qJWh//Z+I/KW4v/N1pA6ItH0p0ERZ98a63W8ic9ZuGC0vS+VbaxELb+J7RadKiM
+ ah3ASKgZ9GtcwgSZ8tIHNBl2NNhbmYilN1QCh5Mj64/4AHLBrmqtEpcWcV9s7uXK3uyedV3/G3q
+ 0erwztBNaRUDGLnEwsNHcQPcEW1tuF1R5VVv53/TOIA=
+X-Received: by 2002:a05:6402:5194:b0:5d0:fb56:3f with SMTP id
+ 4fb4d7f45d1cf-5d972e0e341mr34989711a12.12.1736620642049; 
+ Sat, 11 Jan 2025 10:37:22 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-078-054-101-099.78.54.pool.telefonica.de. [78.54.101.99])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ab2c95af187sm299026666b.142.2025.01.11.10.37.28
+ a640c23a62f3a-ab2c95af187sm299026666b.142.2025.01.11.10.37.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 11 Jan 2025 10:37:29 -0800 (PST)
+ Sat, 11 Jan 2025 10:37:21 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -112,18 +112,16 @@ Cc: Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Laurent Vivier <lvivier@redhat.com>, Bin Meng <bmeng.cn@gmail.com>,
  qemu-block@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 08/13] hw/char/imx_serial: Turn some DPRINTF() statements
- into trace events
-Date: Sat, 11 Jan 2025 19:37:06 +0100
-Message-ID: <20250111183711.2338-9-shentey@gmail.com>
+Subject: [PATCH v2 02/13] hw/char/imx_serial: Fix reset value of UFCR register
+Date: Sat, 11 Jan 2025 19:37:00 +0100
+Message-ID: <20250111183711.2338-3-shentey@gmail.com>
 X-Mailer: git-send-email 2.48.0
 In-Reply-To: <20250111183711.2338-1-shentey@gmail.com>
 References: <20250111183711.2338-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -145,162 +143,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8xBX0yfTRWxt
+X-TUID: Y39BhFWCBTos
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+The value of the UCFR register is respected when echoing characters to the
+terminal, but its reset value is reserved. Fix the reset value to the one
+documented in the datasheet.
+
+While at it move the related attribute out of the section of unimplemented
+registers since its value is actually respected.
+
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/char/imx_serial.c | 58 +++++++++++++++++++++++++++++---------------
- hw/char/trace-events |  5 ++++
- 2 files changed, 44 insertions(+), 19 deletions(-)
+ include/hw/char/imx_serial.h | 2 +-
+ hw/char/imx_serial.c         | 1 +
+ 2 files changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/include/hw/char/imx_serial.h b/include/hw/char/imx_serial.h
+index 65f0e97c76..90ba3ff18c 100644
+--- a/include/hw/char/imx_serial.h
++++ b/include/hw/char/imx_serial.h
+@@ -109,13 +109,13 @@ struct IMXSerialState {
+     uint32_t ucr1;
+     uint32_t ucr2;
+     uint32_t uts1;
++    uint32_t ufcr;
+ 
+     /*
+      * The registers below are implemented just so that the
+      * guest OS sees what it has written
+      */
+     uint32_t onems;
+-    uint32_t ufcr;
+     uint32_t ubmr;
+     uint32_t ubrc;
+     uint32_t ucr3;
 diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-index be06f39a4d..38b4865157 100644
+index 12705a1337..f805da23ff 100644
 --- a/hw/char/imx_serial.c
 +++ b/hw/char/imx_serial.c
-@@ -27,6 +27,7 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qemu/fifo32.h"
-+#include "trace.h"
+@@ -159,6 +159,7 @@ static void imx_serial_reset(IMXSerialState *s)
+     s->ucr3 = 0x700;
+     s->ubmr = 0;
+     s->ubrc = 4;
++    s->ufcr = BIT(11) | BIT(0);
  
- #ifndef DEBUG_IMX_UART
- #define DEBUG_IMX_UART 0
-@@ -185,10 +186,10 @@ static uint64_t imx_serial_read(void *opaque, hwaddr offset,
-                                 unsigned size)
- {
-     IMXSerialState *s = (IMXSerialState *)opaque;
-+    Chardev *chr = qemu_chr_fe_get_driver(&s->chr);
-     uint32_t c, rx_used;
-     uint8_t rxtl = s->ufcr & TL_MASK;
--
--    DPRINTF("read(offset=0x%" HWADDR_PRIx ")\n", offset);
-+    uint64_t value;
- 
-     switch (offset >> 2) {
-     case 0x0: /* URXD */
-@@ -209,49 +210,67 @@ static uint64_t imx_serial_read(void *opaque, hwaddr offset,
-             imx_serial_rx_fifo_ageing_timer_restart(s);
-             qemu_chr_fe_accept_input(&s->chr);
-         }
--        return c;
-+        value = c;
-+        break;
- 
-     case 0x20: /* UCR1 */
--        return s->ucr1;
-+        value = s->ucr1;
-+        break;
- 
-     case 0x21: /* UCR2 */
--        return s->ucr2;
-+        value = s->ucr2;
-+        break;
- 
-     case 0x25: /* USR1 */
--        return s->usr1;
-+        value = s->usr1;
-+        break;
- 
-     case 0x26: /* USR2 */
--        return s->usr2;
-+        value = s->usr2;
-+        break;
- 
-     case 0x2A: /* BRM Modulator */
--        return s->ubmr;
-+        value = s->ubmr;
-+        break;
- 
-     case 0x2B: /* Baud Rate Count */
--        return s->ubrc;
-+        value = s->ubrc;
-+        break;
- 
-     case 0x2d: /* Test register */
--        return s->uts1;
-+        value = s->uts1;
-+        break;
- 
-     case 0x24: /* UFCR */
--        return s->ufcr;
-+        value = s->ufcr;
-+        break;
- 
-     case 0x2c:
--        return s->onems;
-+        value = s->onems;
-+        break;
- 
-     case 0x22: /* UCR3 */
--        return s->ucr3;
-+        value = s->ucr3;
-+        break;
- 
-     case 0x23: /* UCR4 */
--        return s->ucr4;
-+        value = s->ucr4;
-+        break;
- 
-     case 0x29: /* BRM Incremental */
--        return 0x0; /* TODO */
-+        value = 0x0; /* TODO */
-+        break;
- 
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Bad register at offset 0x%"
-                       HWADDR_PRIx "\n", TYPE_IMX_SERIAL, __func__, offset);
--        return 0;
-+        value = 0;
-+        break;
-     }
-+
-+    trace_imx_serial_read(chr ? chr->label : "NODEV", offset, value);
-+
-+    return value;
- }
- 
- static void imx_serial_write(void *opaque, hwaddr offset,
-@@ -261,8 +280,7 @@ static void imx_serial_write(void *opaque, hwaddr offset,
-     Chardev *chr = qemu_chr_fe_get_driver(&s->chr);
-     unsigned char ch;
- 
--    DPRINTF("write(offset=0x%" HWADDR_PRIx ", value = 0x%x) to %s\n",
--            offset, (unsigned int)value, chr ? chr->label : "NODEV");
-+    trace_imx_serial_write(chr ? chr->label : "NODEV", offset, value);
- 
-     switch (offset >> 2) {
-     case 0x10: /* UTXD */
-@@ -374,9 +392,11 @@ static int imx_can_receive(void *opaque)
- static void imx_put_data(void *opaque, uint32_t value)
- {
-     IMXSerialState *s = (IMXSerialState *)opaque;
-+    Chardev *chr = qemu_chr_fe_get_driver(&s->chr);
-     uint8_t rxtl = s->ufcr & TL_MASK;
- 
--    DPRINTF("received char\n");
-+    trace_imx_serial_put_data(chr ? chr->label : "NODEV", value);
-+
-     imx_serial_rx_fifo_push(s, value);
-     if (fifo32_num_used(&s->rx_fifo) >= rxtl) {
-         s->usr1 |= USR1_RRDY;
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 59e1f734a7..92e002da7a 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -52,6 +52,11 @@ escc_sunkbd_event_out(int ch) "Translated keycode 0x%2.2x"
- escc_kbd_command(int val) "Command %d"
- escc_sunmouse_event(int dx, int dy, int buttons_state) "dx=%d dy=%d buttons=0x%01x"
- 
-+# imx_serial.c
-+imx_serial_read(const char *chrname, uint64_t addr, uint64_t value) "%s:[0x%03" PRIu64 "] -> 0x%08" PRIx64
-+imx_serial_write(const char *chrname, uint64_t addr, uint64_t value) "%s:[0x%03" PRIu64 "] <- 0x%08" PRIx64
-+imx_serial_put_data(const char *chrname, uint32_t value) "%s: 0x%" PRIx32
-+
- # pl011.c
- pl011_irq_state(int level) "irq state %d"
- pl011_read(uint32_t addr, uint32_t value, const char *regname) "addr 0x%03x value 0x%08x reg %s"
+     fifo32_reset(&s->rx_fifo);
+     timer_del(&s->ageing_timer);
 -- 
 2.48.0
 

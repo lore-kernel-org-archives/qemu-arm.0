@@ -1,106 +1,106 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp896400njn;
-        Sat, 11 Jan 2025 10:38:09 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUq2UMf7WaXLYsSqQE9M3ABXRi5iEFz9DbTeNA9VwfC/5cMm5g5r6/0hodVTsVQ1OL+h+ekzFPXFFtaag==@linaro.org
-X-Google-Smtp-Source: AGHT+IE2ExwiIBxRs+hWYzjeHVD6YvPG8xAFpfoVd51iMVOaKaaUlXvL4/EYJkv1BXBIQcu2WrZk
-X-Received: by 2002:a05:620a:462c:b0:7b6:d4df:2890 with SMTP id af79cd13be357-7bcd97292a8mr2450207585a.4.1736620689426;
-        Sat, 11 Jan 2025 10:38:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736620689; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp896446njn;
+        Sat, 11 Jan 2025 10:38:18 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWsp66NUp54ea8/4hbmX7Q8tkQy9OAW9gur+N18lPwJ2ad0BhTlvcFkJRoRa6szWzggMcKb7IYHZTG1XA==@linaro.org
+X-Google-Smtp-Source: AGHT+IEiZVnLS0eizwDJeNZS4qyoCMsVSSQHjDHrGmYmBzKe5wTCJi2rNLDCAVmG77y9jh0olSO/
+X-Received: by 2002:a05:620a:3943:b0:7a9:9f44:3f8 with SMTP id af79cd13be357-7bcf3643230mr608554885a.5.1736620698784;
+        Sat, 11 Jan 2025 10:38:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736620698; cv=none;
         d=google.com; s=arc-20240605;
-        b=hiClOO3PP+iUf7UnFsA/+f1IGDuN5P3CQVmJJOY7wy0pj2THOB0PsY3RKqEfnwfQht
-         ZKROY0DIaVn8BwfofT2tTDKVFe4Znu2Sz3sn2oI0hvlJx8uX/pzAbKHUmlYFO9GYcxfs
-         UmTlDR9MKAHAUZ9oUsmSr3t+p6WBT4oIaWN2t0rlV0IroVB254RsrTjX46wyj+adpPB0
-         cKjHHTVxNiCMP+WOMCw3SssTIUjDkVE2wnPipV6B+Hzpx5wJ5yAVbP9g/EuXspsDWrtu
-         P/3uqiiTJqP0eCLfyd3gq8HQFHbBHuaCFIM6X/WRPv84ntqDoV53qLTDsBbtBVUFrZ1W
-         0chg==
+        b=KFvD0pPA78qqEmIO7xUOGKqXKiY81lCY8aG9x6eGg2W80hk6NptlKkGUW8fQxnyEKQ
+         M17p7cAV1yAO2aOOyH5nTpPRnjzmTEjyqv/0cl4O0eYXOhlOV4p+jnPhoo/Hiap3o44k
+         tJIxDKV/SHvoHpfnRpgzT5RSGJZQeWqiKkvQAo1BjV6BTkLjTkzN4geS/cyoiBjdnUmN
+         2XKwd1Dg4D3HPGaikFGMAu5ZhSDzArCgCZ0vK3iI4zmFgnmECKmpP4YNS3Hif7dl7Elq
+         a+HaMOq+kxNqlMHszBayRQ77ICvIovgUZmR3/Iqy8YxUEATlI1VIaskcriQ8mGNEn7cn
+         uRtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=vwaUYglCz5HiwshtDxMwHXFy/Vt9VTZk7BnhuaVWzvw=;
-        fh=zus4CKnK7ycf6ruA3lCioYRohvmjzy/OdlTHzpDmaFg=;
-        b=O/Fo6T56gMCdxV9Czn72g4LV1Ld3cWX4sOflW+UOByFB/laEtyGL+Xyi7xcTXx+dE1
-         XkgoaSF9Bo7EUhG23T8TnLZFnZngWNTifUDIeAj6TapjVYHCnHCZnw8WxXHlb36+1m97
-         lH4LLZf+AIfrUySEIpLfRz4wAV08prkMVOnTMSetxTLRaqj940Cd9Rd5Kv3U2p+7fuXT
-         Mw9gy8dqAcNuqozH5B7DbZvkeefYDlyjasVfcwTKnRXUSDsDnR4/I5VeHqcKkUmC5RT5
-         Bu4fABbdPmmZVr4Cnmi1VvPDLAEiUXyBApGE5x4gFDS0esUmHVsEwoPWeFI1mbTseOax
-         +sXw==;
+        bh=cijIcZdZaAOihYoMkcsx+H5h8BGPo9Nea9lYvcHlISQ=;
+        fh=Fem+A1xh8WxxSZ5oqV2yUnOL4A10hBrSUR+ZfAILUn0=;
+        b=bNtWkeJPoSKDiIqUkYYL4DPYYCvPXlgpkvWShVQ65+/szkmrMdaUm5FCivQqPuSWGE
+         aEXBxXxtI2bET5UewemofH9ejkGcVgg6ek4RPa4xo33rMjZnUKAekAZO+ijIFxuoeVZX
+         QmYEjPqEwUCabXx0WUq4MvaWspnCe7S84l/utLThFvsykKZDhCBcjdIvIvdyBy3WWEC4
+         6GF5hdJdpyfbFB1+jAvlV+DKl0C99epTP1PRALU6OEw5v8adhlEaGGzwiagCfxyYEGoQ
+         HFbur+NDqBhEULmIyIudYj8xV8IluqI8zlZLg6WAVXDJDN2sPEkp3e/ssXJZh1b2rUTn
+         mXGQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SuPuejRk;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TATGpqdc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7bce322a111si767845085a.91.2025.01.11.10.38.09
+        by mx.google.com with ESMTPS id af79cd13be357-7bce34fe92fsi690728885a.473.2025.01.11.10.38.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Jan 2025 10:38:09 -0800 (PST)
+        Sat, 11 Jan 2025 10:38:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=SuPuejRk;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=TATGpqdc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tWgMY-00077d-T6; Sat, 11 Jan 2025 13:37:34 -0500
+	id 1tWgMi-0007Ju-LV; Sat, 11 Jan 2025 13:37:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tWgMV-00073c-Ns; Sat, 11 Jan 2025 13:37:31 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ id 1tWgMg-0007Ie-Bp; Sat, 11 Jan 2025 13:37:42 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tWgMU-0003vD-5e; Sat, 11 Jan 2025 13:37:31 -0500
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-aaeecbb7309so568967166b.0; 
- Sat, 11 Jan 2025 10:37:29 -0800 (PST)
+ id 1tWgMe-0003yD-Ol; Sat, 11 Jan 2025 13:37:42 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-aa6c0d1833eso628760666b.1; 
+ Sat, 11 Jan 2025 10:37:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736620648; x=1737225448; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1736620658; x=1737225458; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=vwaUYglCz5HiwshtDxMwHXFy/Vt9VTZk7BnhuaVWzvw=;
- b=SuPuejRkb7fDDFdM/moA3irk6BRSLKbjABuONAm/wiAIPh0n5x5a1kSJVVFCHYtGKi
- ML2hk8CT2UCPEj8p6RuTxP/h29ut4u27DF1iBCUuDBlhtD4aHtvNI26Yn4iQlAhyTQuO
- TiYWkPzeE7gqbLpOg6D93MAc4UArH2g/uAXgM90lH7lG2hRIqgxToJjZfgH5YbFPgPUO
- VeyOJxyAPNUrJM8AcQiABQ4O438Mz4TTbpqc208KebXsFxYieiKaGOKPZt/1NFWvXAmC
- t/3ZOi/UIXi/Zz0ClhNuEuLdphdNYTyFWUNfJlVwfuCXUnZme7Yxq7VA10FiXZq0XYeD
- 2WsA==
+ bh=cijIcZdZaAOihYoMkcsx+H5h8BGPo9Nea9lYvcHlISQ=;
+ b=TATGpqdctNPXEQ2AI1UjHlO0+jYa9bUkrnKQvPoqycaMsUwo0nySzhH/kiOcPVk/Or
+ 9IraK7fgH7m2RQ1ioOyXXo7LftTns8nLDtpxKAeDc+AqobSExwg9PRfKl2OvySMa+y5Q
+ 5xgdom/a20P8AP5lHWAIavDbpjbshvVqv5ogB1cSJ+oNnQtraWp3R7TCttrLS4EC8BQS
+ RJM5zKo0XRnMbh3dvTWoYwRfbUpaFwzxdXDxAvp4x+Tu1D2HT0DjcUdFFCk53LjMWe4q
+ CnAbzj55dPNKC011KwT3apCi2zCYuzUW1xGNEoFG0VcN30i0t0xaEDwLErWtxSVf+CVj
+ X+PQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736620648; x=1737225448;
+ d=1e100.net; s=20230601; t=1736620658; x=1737225458;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=vwaUYglCz5HiwshtDxMwHXFy/Vt9VTZk7BnhuaVWzvw=;
- b=MW3UCqPgmkl2ial6U/M4Yx13FgBNzNgLs6+iX8ZmQuJNN3WU8mM3oywNq+/Wkygb8M
- jUqGygX35nTVMo9Vc2FlNToeZZS+LMAxZWYG+eZyHrAhmsCrGSWHMYTmIi1esjPGZoQV
- 0z9A8MzmN4h6vSXgsdZ5U/zrL2oyq8xvth+TOtZsZZ8t2r3dxLEggYMph/MxP7XsrLJq
- lL6kMdQL40pl0RqTVMBg29VCmR5NNKHjMpFDw+VcFI9hAJLHsZScDDQoijZ34XXZ0Ph5
- BXvD9ZNdX/TpSmQ54dpzsXi3m+l+K1iDNuXd1MWFPjbQtGYzh+lB3tKazReoIdk7xkbI
- z/gA==
+ bh=cijIcZdZaAOihYoMkcsx+H5h8BGPo9Nea9lYvcHlISQ=;
+ b=Db88SgiY63b53DpeGuSSOnbOHzZS1353sVxinU8UGCT2ZpRImSYMIrHUeFRiu8mM1r
+ tlT3IQa/cZ0fWVwqsJ/6Q1a3vzlddKyLuuFVMVvYuWyKIh771jjStDAq5k0TfkdMKH6H
+ z4V3FUipNwjmsNZrNals91mq2o4rANryMqIf64x6PzlDvc6NFlmVsqcm0935wuVmpaXV
+ LijpfmomoNa5hkWUby/TGnYItWzklLVuipaLhaDIGahGfbtkt0nkv4Zp8bnhNHiHRFqa
+ sOkXOou47TqwP/o1hJZJABLON+HJ9PKFtOrkgFbxu23dj8NqndcLRBAO0q+kCDVGW8CH
+ NAQw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVhSR9zuRDxZigCsKH8rim1UrvKXJTmc3xOy52JgZA6C6IXHEBvK4ruI5uKtsuzARN0hKtc80fS2w==@nongnu.org,
- AJvYcCXvUFjSPNQBxHoKJi76LZEowhFjCEsBN/80QuA894e+jLoOIw/z1XeA3KCvrhczrF+giZCSD4CtDArvqw==@nongnu.org
-X-Gm-Message-State: AOJu0YwTjqc164HoWh0eTHrZJ4q5e0FE48ouo+PH7FmaBKxdvUB7yYr2
- eM9ODGXi754tEdsxLKzbqOpgRBPHF5kTstDXWq9JNea/x3h7Ht27YIFb/Q==
-X-Gm-Gg: ASbGncvrlGvbB+kHO9za4b3PFmpaQ6k2l6yMIzFpxdozA8i+k/iQHZJZ0UYA9g79LWs
- YwvREkHTkbs6jI7P2qlHsXs0irmS6fFEeN1fu8toOYrj5tOEUVM0j3qF6lEx90RBBifn0a6F8tT
- 9bJeakdmihRkxNDYks5s3siNkISxdOvfzLhJI2yxEJ8iZplHADl+H4UyXfKZr1yJQaSTeRWhVS2
- JuSCrcYUk196hNnO/CVO/3SWyyA+DsaaJxQ4VsBwlEIqr1R15pk8G9VlrT9KxnV9WPaHl/hYdqd
- 7WTi9yAnGCzgg2RFRDOms9MsooToKY7ggnzBIEdeluE=
-X-Received: by 2002:a17:907:6090:b0:aa6:7354:e926 with SMTP id
- a640c23a62f3a-ab2ab748ed0mr1428185366b.36.1736620647533; 
- Sat, 11 Jan 2025 10:37:27 -0800 (PST)
+ AJvYcCVYbctGGPDFZhJG1fdLAeqrLjDYHHSXSuO385voz5j6STTTUiIcmnczLP7A6pRVEvHRP+O11Y8zCQ==@nongnu.org,
+ AJvYcCXNSuLGRiBvL9wWVOYfmRftbhQ+wGPC8c9QrCmBfMupanWqk3y0fC6yke7f4hqCGL6n+07QfgmyAyHujw==@nongnu.org
+X-Gm-Message-State: AOJu0Yz2UhQ9vxnXGUmQb9h+I5craHqyG7rhBjPfP76hCHI1MQT77CDW
+ qNfvoxI4wwmDW3bSZHB5YWwDkOEWIaaZtKUn9NEAUtFtJC87+8UTo7EkEQ==
+X-Gm-Gg: ASbGnctm/52VAaAI7s9nWKkN/i2rNY8gS48Mrf0Rj9SXFxi6cEWntegauc4bRO2Gven
+ xNbz2EEQSgN1c1fvSYXYZWlyLCrVtJcxaKYtPFyDkNDJEPEKTD4KHPEElC4CJEGOqBRbyfbPrNQ
+ H5Vg/ET4jaiIU6DfL8Z//ZBPin1+k1hTMOa6ItKItOxeePcQYJxKotohjPon8N3vgcgog8Fi0FQ
+ ZMk0slixORHggupjXCLjXHYMl+j4/1KmM9eplgFE1TgDoRDoyBtsxpeAdxAaZbZ5/xYYeZePTS5
+ Ay0Ueifl9l2Nbbi5TFb2rXMeav0KUDGGoDFY5HqvF+I=
+X-Received: by 2002:a17:907:1b83:b0:ab2:aea7:510f with SMTP id
+ a640c23a62f3a-ab2aea752a0mr1010000566b.30.1736620658097; 
+ Sat, 11 Jan 2025 10:37:38 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-078-054-101-099.78.54.pool.telefonica.de. [78.54.101.99])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-ab2c95af187sm299026666b.142.2025.01.11.10.37.26
+ a640c23a62f3a-ab2c95af187sm299026666b.142.2025.01.11.10.37.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 11 Jan 2025 10:37:27 -0800 (PST)
+ Sat, 11 Jan 2025 10:37:36 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -112,17 +112,17 @@ Cc: Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Laurent Vivier <lvivier@redhat.com>, Bin Meng <bmeng.cn@gmail.com>,
  qemu-block@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 06/13] hw/sd/sd: Remove legacy sd_set_cb() in favor of GPIOs
-Date: Sat, 11 Jan 2025 19:37:04 +0100
-Message-ID: <20250111183711.2338-7-shentey@gmail.com>
+Subject: [PATCH v2 13/13] hw/gpio/imx_gpio: Turn DPRINTF() into trace events
+Date: Sat, 11 Jan 2025 19:37:11 +0100
+Message-ID: <20250111183711.2338-14-shentey@gmail.com>
 X-Mailer: git-send-email 2.48.0
 In-Reply-To: <20250111183711.2338-1-shentey@gmail.com>
 References: <20250111183711.2338-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -144,94 +144,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: FAWUaguogCDb
+X-TUID: WhhxXxz8LB9e
 
-Commit ce5dd27534b0 "hw/sd: Remove omap2_mmc device" removed the last user of
-sd_set_cb(). Rework this functionality into GPIOs.
+While at it add a trace event for input GPIO events.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/sd/sdcard_legacy.h |  1 -
- hw/sd/sd.c                    | 31 ++++++++++++++-----------------
- 2 files changed, 14 insertions(+), 18 deletions(-)
+ hw/gpio/imx_gpio.c   | 18 +++++++-----------
+ hw/gpio/trace-events |  5 +++++
+ 2 files changed, 12 insertions(+), 11 deletions(-)
 
-diff --git a/include/hw/sd/sdcard_legacy.h b/include/hw/sd/sdcard_legacy.h
-index 0dc3889555..a121232560 100644
---- a/include/hw/sd/sdcard_legacy.h
-+++ b/include/hw/sd/sdcard_legacy.h
-@@ -36,7 +36,6 @@ SDState *sd_init(BlockBackend *blk, bool is_spi);
- int sd_do_command(SDState *card, SDRequest *request, uint8_t *response);
- void sd_write_byte(SDState *card, uint8_t value);
- uint8_t sd_read_byte(SDState *card);
--void sd_set_cb(SDState *card, qemu_irq readonly, qemu_irq insert);
+diff --git a/hw/gpio/imx_gpio.c b/hw/gpio/imx_gpio.c
+index 67c47a7280..25546221e0 100644
+--- a/hw/gpio/imx_gpio.c
++++ b/hw/gpio/imx_gpio.c
+@@ -24,6 +24,7 @@
+ #include "migration/vmstate.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "trace.h"
  
- /* sd_enable should not be used -- it is only used on the nseries boards,
-  * where it is part of a broken implementation of the MMC card slot switch
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 0330d432fd..aa8d86e1af 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -820,6 +820,16 @@ static inline uint64_t sd_addr_to_wpnum(uint64_t addr)
-     return addr >> (HWBLOCK_SHIFT + SECTOR_SHIFT + WPGROUP_SHIFT);
- }
+ #ifndef DEBUG_IMX_GPIO
+ #define DEBUG_IMX_GPIO 0
+@@ -34,14 +35,6 @@ typedef enum IMXGPIOLevel {
+     IMX_GPIO_LEVEL_HIGH = 1,
+ } IMXGPIOLevel;
  
-+static bool sd_get_inserted(SDState *sd)
-+{
-+    return sd->blk && blk_is_inserted(sd->blk);
-+}
-+
-+static bool sd_get_readonly(SDState *sd)
-+{
-+    return sd->wp_switch;
-+}
-+
- static void sd_reset(DeviceState *dev)
- {
-     SDState *sd = SDMMC_COMMON(dev);
-@@ -865,16 +875,9 @@ static void sd_reset(DeviceState *dev)
-     sd->dat_lines = 0xf;
-     sd->cmd_line = true;
-     sd->multi_blk_cnt = 0;
--}
- 
--static bool sd_get_inserted(SDState *sd)
--{
--    return sd->blk && blk_is_inserted(sd->blk);
--}
+-#define DPRINTF(fmt, args...) \
+-    do { \
+-        if (DEBUG_IMX_GPIO) { \
+-            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_GPIO, \
+-                                             __func__, ##args); \
+-        } \
+-    } while (0)
 -
--static bool sd_get_readonly(SDState *sd)
--{
--    return sd->wp_switch;
-+    qemu_set_irq(sd->readonly_cb, sd_get_readonly(sd));
-+    qemu_set_irq(sd->inserted_cb, sd_get_inserted(sd));
- }
- 
- static void sd_cardchange(void *opaque, bool load, Error **errp)
-@@ -1034,14 +1037,6 @@ SDState *sd_init(BlockBackend *blk, bool is_spi)
-     return sd;
- }
- 
--void sd_set_cb(SDState *sd, qemu_irq readonly, qemu_irq insert)
--{
--    sd->readonly_cb = readonly;
--    sd->inserted_cb = insert;
--    qemu_set_irq(readonly, sd->blk ? !blk_is_writable(sd->blk) : 0);
--    qemu_set_irq(insert, sd->blk ? blk_is_inserted(sd->blk) : 0);
--}
--
- static void sd_blk_read(SDState *sd, uint64_t addr, uint32_t len)
+ static const char *imx_gpio_reg_name(uint32_t reg)
  {
-     trace_sdcard_read_block(addr, len);
-@@ -2727,6 +2722,8 @@ static void sd_instance_init(Object *obj)
-     sd->last_cmd_name = "UNSET";
-     sd->enable = true;
-     sd->ocr_power_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, sd_ocr_powerup, sd);
-+    qdev_init_gpio_out_named(DEVICE(sd), &sd->inserted_cb, "cd", 1);
-+    qdev_init_gpio_out_named(DEVICE(sd), &sd->readonly_cb, "wp", 1);
- }
+     switch (reg) {
+@@ -111,6 +104,8 @@ static void imx_gpio_set(void *opaque, int line, int level)
+     IMXGPIOState *s = IMX_GPIO(opaque);
+     IMXGPIOLevel imx_level = level ? IMX_GPIO_LEVEL_HIGH : IMX_GPIO_LEVEL_LOW;
  
- static void sd_instance_finalize(Object *obj)
++    trace_imx_gpio_set(DEVICE(s)->canonical_path, line, imx_level);
++
+     imx_gpio_set_int_line(s, line, imx_level);
+ 
+     /* this is an input signal, so set PSR */
+@@ -200,7 +195,8 @@ static uint64_t imx_gpio_read(void *opaque, hwaddr offset, unsigned size)
+         break;
+     }
+ 
+-    DPRINTF("(%s) = 0x%" PRIx32 "\n", imx_gpio_reg_name(offset), reg_value);
++    trace_imx_gpio_read(DEVICE(s)->canonical_path, imx_gpio_reg_name(offset),
++                        reg_value);
+ 
+     return reg_value;
+ }
+@@ -210,8 +206,8 @@ static void imx_gpio_write(void *opaque, hwaddr offset, uint64_t value,
+ {
+     IMXGPIOState *s = IMX_GPIO(opaque);
+ 
+-    DPRINTF("(%s, value = 0x%" PRIx32 ")\n", imx_gpio_reg_name(offset),
+-            (uint32_t)value);
++    trace_imx_gpio_write(DEVICE(s)->canonical_path, imx_gpio_reg_name(offset),
++                         value);
+ 
+     switch (offset) {
+     case DR_ADDR:
+diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+index b91cc7e9a4..cea896b28f 100644
+--- a/hw/gpio/trace-events
++++ b/hw/gpio/trace-events
+@@ -1,5 +1,10 @@
+ # See docs/devel/tracing.rst for syntax documentation.
+ 
++# imx_gpio.c
++imx_gpio_read(const char *id, const char *reg, uint32_t value) "%s:[%s] -> 0x%" PRIx32
++imx_gpio_write(const char *id, const char *reg, uint32_t value) "%s:[%s] <- 0x%" PRIx32
++imx_gpio_set(const char *id, int line, int level) "%s:[%d] <- %d"
++
+ # npcm7xx_gpio.c
+ npcm7xx_gpio_read(const char *id, uint64_t offset, uint64_t value) " %s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
+ npcm7xx_gpio_write(const char *id, uint64_t offset, uint64_t value) "%s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
 -- 
 2.48.0
 

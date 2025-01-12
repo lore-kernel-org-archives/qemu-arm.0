@@ -1,103 +1,103 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1448220njn;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1448222njn;
         Sun, 12 Jan 2025 14:57:25 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXv9CSgfbuOSJKo7S3PX0WmTZro0GMcO1ADhXzJNS9f2DuximSaUhDtw2Bgi3c+3Z8Pf2m2uTeiJgWuaQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHbDHGOgY7CJHKd0C8W6xOcwQ2juFx4gZUJRekHEtIgnRqVeAVbCT4furLS2pX9OBY3x1Yj
-X-Received: by 2002:a05:6214:570c:b0:6d9:2e0c:56c4 with SMTP id 6a1803df08f44-6df9b1b4d31mr285885336d6.1.1736722645546;
+X-Forwarded-Encrypted: i=2; AJvYcCUM0vIeJXwtswa6TvOxLc4tQE0SDO6y1X5CXO9iR363hAYF3sHRO2TrkUk8HKQSCmfJ5v/clegGIQLC3w==@linaro.org
+X-Google-Smtp-Source: AGHT+IHi0+ndFJLEFbQAsizgIt6KwEEZdrk29aKtmt64uC6bZPCKaPxSoIjM/WTu0PS7W/g6+9uN
+X-Received: by 2002:a05:620a:4554:b0:7b6:eab3:cdd2 with SMTP id af79cd13be357-7bcd97d5b6dmr3258155385a.56.1736722645567;
         Sun, 12 Jan 2025 14:57:25 -0800 (PST)
 ARC-Seal: i=1; a=rsa-sha256; t=1736722645; cv=none;
         d=google.com; s=arc-20240605;
-        b=WxEO41fwjBPO1JNiMRdnGnCJnVDCYjLg4/gwcHyhTwFAzPfHXuawSx1lzLFC9nu667
-         CJfvibR6322T4KZ0TjR2XDiTn9SPTT+Lnccqv9o7V94XoietJOibuEWr8T2xwP+cJ4mI
-         Ajl9sZIalQsCYUH8q/ThR3a79yGSeMJrqtjRbF2tMUTw/Hk+SiBbrydLVnKWM6IEPtDU
-         knI30Gw8f+HDx0p+YM1U5JcBVHIkdGu8RgTVR9xf5qYNmH8x5bHLxOWdEgfBFbPxtxK6
-         ue2kC3xmHPpUJI/rX5+B8CG8bF9tZgkmebqtQlyJ/Z4xpvZ3Cnz9iRqncB7WpiYsZV9c
-         UicA==
+        b=Bjav6RIwGnpG7R+viSvmqHuWv9Qe9lG6SMr3q3mNzII4Fgo4IgOaGcpaA3gPG8Zfbr
+         Yvf1VowD5lNfEil+Evq+NLGme1uXYdVdMvVHt8/YcdDYWGE5GLde1CDwUE1kf9rJxC+v
+         XenX62oWgPvaaQcRr/ZwSpZX7wiILchwUsCrVLp3EBo5H6db30Lfk7WSjAml5YR6G9yp
+         utJWVr6nMsB5HwQCu0Lw/1hS920KCdZBhCfKcLTEiGoTNZMEIZt7AC0OnC/mzZ8IfEM4
+         5xTIKP7lJVxBHYvl8lV81YX6YoeGPZY8+z8J4P+wbwVSo58ZmnYxHF2v6T1X7eiywEck
+         THTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=2P6utQTgIOG24muh2STqCnSn8EGidw/ozbeVNIgt5Qs=;
+        bh=Lib4OrNK5VdPwlvzVttsZjjREbL5pGt5xtvhCA9WJB4=;
         fh=DF2NIb+N0CqV3t200NonzP1Z+7HuUkgCcwu6aInqRiw=;
-        b=BA80/rMxcAoyqds6U+718z7wSy6bHXLusV8FL8SRnOjATqCKpbMT0O7HjeGSF80WA7
-         UeeK8A34qMLYjVRCkmFIP6qGnxHbKcW3iGPz2oUz06ArdxgA2TzRT+wEetwuXtp0A+T8
-         dhqPka+Sc7r31E+63yV6B9whUanXlT4BH+ve+KW8SaPcYHjz7CT08msjffseeU6cWLOg
-         DyaU2l9Hp4pxiS/29/4d2wpRRPqbTQ3t/8UUK9ybaf3coZsOrel8taeBtHBmjHzq/B2E
-         DqVoCK3OHqHt4U7UUD4nD26TmuH9NQnx2NQYsnArX7BfyRhUHqJdGYdjq6Uw9o6yAvSG
-         BRIg==;
+        b=JdApFJNCyDFE1rZwMtD2XCRBP7ZtKxRuaaVDZ7DeuAsbhRwJSCNhRJSkMNxZ+b5F5N
+         hX37rIAAYxIu7pwJx9e6crpacYaNCd9HROQF9pueIRM3SfUWMoOzKKECUSo0wU4jWRdv
+         Xs0yAC0h2/SUMP0QUCVNj7OfsoGRHc3+zqppZP4i/8j1KAXMUrYBRl7rMOuTdo3vS3xJ
+         FB2OLpu60pA+fKERsWEr+iulJHLSTxFu+TkTfvBE/vYFeJusUxnH1jHDMKSz5V6UbCTn
+         YaR1E2FGILQdM9esvlA7XDgtx1s/Rm/vdPrT5Z48G9o7rjjgX2Yg+jPhXzk/Te/97P/t
+         fQ2Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eqbY9VjZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CvOQrVWz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7bce350c178si951807085a.633.2025.01.12.14.57.25
+        by mx.google.com with ESMTPS id af79cd13be357-7bce322b370si953140985a.134.2025.01.12.14.57.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Sun, 12 Jan 2025 14:57:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eqbY9VjZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CvOQrVWz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tX6sq-0007C0-UB; Sun, 12 Jan 2025 17:56:42 -0500
+	id 1tX6su-0007FB-6l; Sun, 12 Jan 2025 17:56:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX6sg-000745-PF
- for qemu-devel@nongnu.org; Sun, 12 Jan 2025 17:56:30 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX6sl-00079M-O4
+ for qemu-devel@nongnu.org; Sun, 12 Jan 2025 17:56:36 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX6sf-0001ZW-7l
- for qemu-devel@nongnu.org; Sun, 12 Jan 2025 17:56:30 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-4361815b96cso25753855e9.1
- for <qemu-devel@nongnu.org>; Sun, 12 Jan 2025 14:56:28 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX6sj-0001Zp-TF
+ for qemu-devel@nongnu.org; Sun, 12 Jan 2025 17:56:35 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-43621d27adeso25582185e9.2
+ for <qemu-devel@nongnu.org>; Sun, 12 Jan 2025 14:56:32 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1736722586; x=1737327386; darn=nongnu.org;
+ d=linaro.org; s=google; t=1736722591; x=1737327391; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2P6utQTgIOG24muh2STqCnSn8EGidw/ozbeVNIgt5Qs=;
- b=eqbY9VjZvl82B6wKXGXxwF/YtgopRob7R+s0pY/XEBNiFVdnQKgiClrXgqGlWM4eOZ
- AUboeSFEDCFWVb1I57kvM/IYMYDlNLgyDuGPyunT0vxsGnTiKkR3+pwFBTRQMHMzpqfr
- Sz8uXzbhljJ9Dyw+E4gvUfsINvF7DkJ6s/dA/Fs1oKQCJ40w3ln5Rr16ZfFmMAgXHjtn
- fOp4LoDDVDTN5ogDjhS/nn+jUnboeUr16sJZGNzxxQL1EDWfmyg598dky8Gp8rbxtJ6j
- DW6OA8Kl6ROjnsJVCTVt8NCptMmnRDVPpGWT57cU4EbHfxvda9EqV8r/FI/eJ243hg91
- r3oA==
+ bh=Lib4OrNK5VdPwlvzVttsZjjREbL5pGt5xtvhCA9WJB4=;
+ b=CvOQrVWzES5wzN1HzTU28ab3Q4Fsl2GBuwpVwxT3HC/4FzJQxg8R1jBkLp8uYRvRBG
+ JrI+2DG8UbXtAyzGaiGXuHjhkwdU2gMlt/afP57jjuewjFqoUFQpq5qeL9XQDkh7F9I0
+ ba1glyYve0tAsiCxfxTCtLltZAortHbQIviTUjtrM5gnXjwRuW3/PixADzivrZOa/7Tr
+ BXnBai3jMtE8d/b/TGvzmcN9xYqRUFpKjpNTjy5p3+Qg9EEMhz1EGehtze/GRt+k+B0z
+ Aibcclf8vAaLXi9GRm5+Jat0yeSIb0UgdyT5gX+PFZknUm79M+2kb2DQHNa9XnsV3Nm5
+ HyZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736722586; x=1737327386;
+ d=1e100.net; s=20230601; t=1736722591; x=1737327391;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=2P6utQTgIOG24muh2STqCnSn8EGidw/ozbeVNIgt5Qs=;
- b=iru3dctVN14nU/c+kynLeSVUrcIyMTDao3yiNqfwghfvLroqYuGwhcIA9GGJ0I9EcR
- nqiTQGnE2dBS2NTisihW+C1Ztjwm12YzTV0BEF27FmUMbVXslt7EY0ZdKFvMtE3xxfiF
- fkPyzhP2eVhVR3voX4b+3WaozgSw/TZ1yXVg5+Fs6ZygbxAq3eC0Aik593RVRB9T1Ybz
- fZ7eDlwKtzFX+9j0Wdlp79eg3Z1R/HdG8e8Obute1qsGHfDupVMKQLkhwJJQ0XcHxJ5Z
- xEU5VNUFSmTxLjHL8xcB6N0J8SD42T9iNLof1utMvmQhrbEVO3fkviJ1GgIALCtLSB3A
- M8Qw==
-X-Gm-Message-State: AOJu0YxPTBY4W1ltNTZ7jjHuQI/8CcGd5v8Z3s8S1QQ8Y10+gV04cMnL
- 5jVLiGiKcC8pcTpIAZZxZ8FoFsJ0HOWs19j1qg4QQ6fMwWwgoIhX4qmgIydzzjYbva+fgRNu72v
- ZEpw=
-X-Gm-Gg: ASbGncsKNdP9hYlQT+PaHw7d+8wkyhhz0bxX3TCMRuflPuNdIzyuiHcQSUKmU2+JmsS
- CJ3x6XLIXoI+S/TXelhDTprgmchwOsuUTRR7NoPhgBBfLcXGzo+en8CAX5EWTkvbB8Sy7Iix2cw
- q4+tGyKhHCX+9lBvH0OH02g/ksn7+zOEBCXngQZJ/aLJHi9PJ97JhiMTzglDTFzfYg7f/1Kxr0B
- At4V1D9PJivcZX4rv581C0rGBwJHBnl5hd/QMDnhF+N9TeGJDSz1UnMvg9yLpUxKNe4OUm/u/PO
- sYf8+fSvqIVRWta3XfmBTuFselNRJkw=
-X-Received: by 2002:a05:600c:3593:b0:431:6083:cd38 with SMTP id
- 5b1f17b1804b1-436e2696e93mr147917025e9.6.1736722586315; 
- Sun, 12 Jan 2025 14:56:26 -0800 (PST)
+ bh=Lib4OrNK5VdPwlvzVttsZjjREbL5pGt5xtvhCA9WJB4=;
+ b=wzsdXFHz3PXLXNNYITle+K59TexueUSbVS8Oee2+frHyw2Z9qBKjcQwbfNMVXl02x0
+ DDmYMoo9r4vnpqJ6oMSqACJoduyWyI33faKB5iGElC215IScQBMaRquJRvfeSGfapTH+
+ w8StsTBGRIq7G5TPVaKCK+f347DaEo/2lmkH7PfGmuuTxK16yYDJKo3iLDndRWhiA/AM
+ QiWNoGogDYg91CRBk3LSGcPIHfG1JmjHEExmA+i/dIE5W8it+Ufo2Oqg/qlfua5VWKBN
+ uAmWuSHWB2gPGuXVesxZwHoGOUwDPRTJTlgGedltxDC6TLeZ+W+20bS4iCHE1PmPIQJo
+ todQ==
+X-Gm-Message-State: AOJu0Yza/7aQlKZHfA0fONjX16e0j9EPzrgZPVC3rJBOq2s9mGwEmCge
+ dlhwme2+iMpSSKznZUHvuCyyrhd9C09x0jIbnnbFoB0fvKi6rNDWE3+kRFD/I8SeGGmpJj0Ko3Y
+ /Tsk=
+X-Gm-Gg: ASbGncu3JK+l7DSFiAu+tsKSIt3v4hI2Nx9HxbOTlpLfhGD9fBhscPPQ0UHUlLUq6G4
+ HcFYimQ1zsP0q6Gr8zpIWqlWCOrvNdhwcxSt+4BYWbK5tHWJjw0IMtJtyzL1W+K4NGjlosga1FN
+ CKQLJpWtjdBH7/oYPBJ/6o2CPpzZ744T6a08NW7dEZc2hApJz3T+AKNgg1UxPajkaOjqN5IqWOv
+ a3XapvpU0TvwkDDFuKpoQJSCQ8YeM+kilW8sgyfdHs1O96/x4vmmW3IxDTrAd+YcKDHSRaugEDC
+ PjkX6Dsji3mtTiHZw/+LER6lzJ/INgI=
+X-Received: by 2002:a05:6000:18a7:b0:385:f220:f798 with SMTP id
+ ffacd0b85a97d-38a872c93eemr13904757f8f.6.1736722591081; 
+ Sun, 12 Jan 2025 14:56:31 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a8e4b80besm10442329f8f.83.2025.01.12.14.56.25
+ ffacd0b85a97d-38a8e4c1c01sm10819644f8f.97.2025.01.12.14.56.30
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 12 Jan 2025 14:56:25 -0800 (PST)
+ Sun, 12 Jan 2025 14:56:30 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Samuel Tardieu <sam@rfc1149.net>, qemu-arm@nongnu.org,
@@ -106,17 +106,17 @@ Cc: Samuel Tardieu <sam@rfc1149.net>, qemu-arm@nongnu.org,
  Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>,
  Alexandre Iooss <erdnaxe@crans.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 2/3] hw/arm/stellaris: Add 'armv7m' local variable
-Date: Sun, 12 Jan 2025 23:56:13 +0100
-Message-ID: <20250112225614.33723-3-philmd@linaro.org>
+Subject: [PATCH 3/3] hw/arm/v7m: Remove use of &first_cpu in machine_init()
+Date: Sun, 12 Jan 2025 23:56:14 +0100
+Message-ID: <20250112225614.33723-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250112225614.33723-1-philmd@linaro.org>
 References: <20250112225614.33723-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -138,61 +138,171 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ouqCt/BTRW95
+X-TUID: IezsUUe5IKAc
 
-While the TYPE_ARMV7M object forward its NVIC interrupt lines,
-it is somehow misleading to name it 'nvic'. Add the 'armv7m'
-local variable for clarity, but also keep the 'nvic' variable
-behaving like before when used for wiring IRQ lines.
+When instanciating the machine model, the machine_init()
+implementations usually create the CPUs, so have access
+to its first CPU. Use that rather then the &first_cpu
+global.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/arm/stellaris.c | 21 +++++++++++----------
- 1 file changed, 11 insertions(+), 10 deletions(-)
+ hw/arm/b-l475e-iot01a.c    | 2 +-
+ hw/arm/microbit.c          | 2 +-
+ hw/arm/mps2-tz.c           | 2 +-
+ hw/arm/mps2.c              | 2 +-
+ hw/arm/msf2-som.c          | 2 +-
+ hw/arm/musca.c             | 2 +-
+ hw/arm/netduino2.c         | 2 +-
+ hw/arm/netduinoplus2.c     | 2 +-
+ hw/arm/olimex-stm32-h405.c | 2 +-
+ hw/arm/stellaris.c         | 2 +-
+ hw/arm/stm32vldiscovery.c  | 2 +-
+ 11 files changed, 11 insertions(+), 11 deletions(-)
 
+diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
+index 5002a40f06d..c9a5209216c 100644
+--- a/hw/arm/b-l475e-iot01a.c
++++ b/hw/arm/b-l475e-iot01a.c
+@@ -82,7 +82,7 @@ static void bl475e_init(MachineState *machine)
+     sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
+ 
+     sc = STM32L4X5_SOC_GET_CLASS(&s->soc);
+-    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0,
++    armv7m_load_kernel(s->soc.armv7m.cpu, machine->kernel_filename, 0,
+                        sc->flash_size);
+ 
+     if (object_class_by_name(TYPE_DM163)) {
+diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
+index 374fbcb3618..3f56fb45ce1 100644
+--- a/hw/arm/microbit.c
++++ b/hw/arm/microbit.c
+@@ -56,7 +56,7 @@ static void microbit_init(MachineState *machine)
+     memory_region_add_subregion_overlap(&s->nrf51.container, NRF51_TWI_BASE,
+                                         mr, -1);
+ 
+-    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
++    armv7m_load_kernel(s->nrf51.armv7m.cpu, machine->kernel_filename,
+                        0, s->nrf51.flash_size);
+ }
+ 
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index 0136e419bfd..d3a9f1b03ac 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -1211,7 +1211,7 @@ static void mps2tz_common_init(MachineState *machine)
+                                     mms->remap_irq);
+     }
+ 
+-    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
++    armv7m_load_kernel(mms->iotkit.armv7m[0].cpu, machine->kernel_filename,
+                        0, boot_ram_size(mms));
+ }
+ 
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index efb3500742f..56b2af40f1d 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -460,7 +460,7 @@ static void mps2_common_init(MachineState *machine)
+                  qdev_get_gpio_in(armv7m,
+                                   mmc->fpga_type == FPGA_AN511 ? 47 : 13));
+ 
+-    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
++    armv7m_load_kernel(mms->armv7m.cpu, machine->kernel_filename,
+                        0, 0x400000);
+ }
+ 
+diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
+index 5c415abe852..9b20f1e2c98 100644
+--- a/hw/arm/msf2-som.c
++++ b/hw/arm/msf2-som.c
+@@ -92,7 +92,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machine)
+     cs_line = qdev_get_gpio_in_named(spi_flash, SSI_GPIO_CS, 0);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
+ 
+-    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
++    armv7m_load_kernel(soc->armv7m.cpu, machine->kernel_filename,
+                        0, soc->envm_size);
+ }
+ 
+diff --git a/hw/arm/musca.c b/hw/arm/musca.c
+index 3c3b534cb72..e9c092abc3d 100644
+--- a/hw/arm/musca.c
++++ b/hw/arm/musca.c
+@@ -590,7 +590,7 @@ static void musca_init(MachineState *machine)
+                                                      "cfg_sec_resp", 0));
+     }
+ 
+-    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
++    armv7m_load_kernel(mms->sse.armv7m[0].cpu, machine->kernel_filename,
+                        0, 0x2000000);
+ }
+ 
+diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
+index 8b1a9a24379..df793c77fe1 100644
+--- a/hw/arm/netduino2.c
++++ b/hw/arm/netduino2.c
+@@ -48,7 +48,7 @@ static void netduino2_init(MachineState *machine)
+     qdev_connect_clock_in(dev, "sysclk", sysclk);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+-    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
++    armv7m_load_kernel(STM32F205_SOC(dev)->armv7m.cpu, machine->kernel_filename,
+                        0, FLASH_SIZE);
+ }
+ 
+diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
+index bccd1003549..81b6334cf72 100644
+--- a/hw/arm/netduinoplus2.c
++++ b/hw/arm/netduinoplus2.c
+@@ -48,7 +48,7 @@ static void netduinoplus2_init(MachineState *machine)
+     qdev_connect_clock_in(dev, "sysclk", sysclk);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+-    armv7m_load_kernel(ARM_CPU(first_cpu),
++    armv7m_load_kernel(STM32F405_SOC(dev)->armv7m.cpu,
+                        machine->kernel_filename,
+                        0, FLASH_SIZE);
+ }
+diff --git a/hw/arm/olimex-stm32-h405.c b/hw/arm/olimex-stm32-h405.c
+index 4ad7b043be0..1f15620f9fd 100644
+--- a/hw/arm/olimex-stm32-h405.c
++++ b/hw/arm/olimex-stm32-h405.c
+@@ -51,7 +51,7 @@ static void olimex_stm32_h405_init(MachineState *machine)
+     qdev_connect_clock_in(dev, "sysclk", sysclk);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+ 
+-    armv7m_load_kernel(ARM_CPU(first_cpu),
++    armv7m_load_kernel(STM32F405_SOC(dev)->armv7m.cpu,
+                        machine->kernel_filename,
+                        0, FLASH_SIZE);
+ }
 diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index 1bba96df14e..7303e096ef7 100644
+index 7303e096ef7..284980ad4b5 100644
 --- a/hw/arm/stellaris.c
 +++ b/hw/arm/stellaris.c
-@@ -1031,7 +1031,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-      */
+@@ -1366,7 +1366,7 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     create_unimplemented_device("hibernation", 0x400fc000, 0x1000);
+     create_unimplemented_device("flash-control", 0x400fd000, 0x1000);
  
-     Object *soc_container;
--    DeviceState *gpio_dev[7], *nvic;
-+    DeviceState *gpio_dev[7], *armv7m, *nvic;
-     qemu_irq gpio_in[7][8];
-     qemu_irq gpio_out[7][8];
-     qemu_irq adc;
-@@ -1095,19 +1095,20 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
-     qdev_prop_set_uint32(ssys_dev, "dc4", board->dc4);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(ssys_dev), &error_fatal);
+-    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, 0, flash_size);
++    armv7m_load_kernel(ARMV7M(armv7m)->cpu, ms->kernel_filename, 0, flash_size);
+ }
  
--    nvic = qdev_new(TYPE_ARMV7M);
--    object_property_add_child(soc_container, "v7m", OBJECT(nvic));
--    qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
--    qdev_prop_set_uint8(nvic, "num-prio-bits", NUM_PRIO_BITS);
--    qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
--    qdev_prop_set_bit(nvic, "enable-bitband", true);
--    qdev_connect_clock_in(nvic, "cpuclk",
-+    armv7m = qdev_new(TYPE_ARMV7M);
-+    object_property_add_child(soc_container, "v7m", OBJECT(armv7m));
-+    qdev_prop_set_uint32(armv7m, "num-irq", NUM_IRQ_LINES);
-+    qdev_prop_set_uint8(armv7m, "num-prio-bits", NUM_PRIO_BITS);
-+    qdev_prop_set_string(armv7m, "cpu-type", ms->cpu_type);
-+    qdev_prop_set_bit(armv7m, "enable-bitband", true);
-+    qdev_connect_clock_in(armv7m, "cpuclk",
-                           qdev_get_clock_out(ssys_dev, "SYSCLK"));
-     /* This SoC does not connect the systick reference clock */
--    object_property_set_link(OBJECT(nvic), "memory",
-+    object_property_set_link(OBJECT(armv7m), "memory",
-                              OBJECT(get_system_memory()), &error_abort);
-     /* This will exit with an error if the user passed us a bad cpu_type */
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(nvic), &error_fatal);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(armv7m), &error_fatal);
-+    nvic = armv7m;
+ /* FIXME: Figure out how to generate these from stellaris_boards.  */
+diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
+index cc419351605..e6c1f5b8d7d 100644
+--- a/hw/arm/stm32vldiscovery.c
++++ b/hw/arm/stm32vldiscovery.c
+@@ -51,7 +51,7 @@ static void stm32vldiscovery_init(MachineState *machine)
+     qdev_connect_clock_in(dev, "sysclk", sysclk);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
  
-     /* Now we can wire up the IRQ and MMIO of the system registers */
-     sysbus_mmio_map(SYS_BUS_DEVICE(ssys_dev), 0, 0x400fe000);
+-    armv7m_load_kernel(ARM_CPU(first_cpu),
++    armv7m_load_kernel(STM32F100_SOC(dev)->armv7m.cpu,
+                        machine->kernel_filename,
+                        0, FLASH_SIZE);
+ }
 -- 
 2.47.1
 

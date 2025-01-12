@@ -1,159 +1,206 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1448596njn;
-        Sun, 12 Jan 2025 14:58:51 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXJv13fecbwKfb8bnRmEEIzxIDAoes0fUT3eqm/VO9Cq/ARUXL9ct7ZQDTJ9g+LgfPiAwEeVVZxSeT7Uw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGecCUQb6wxSw32h/hie4AFEYTnamHU8/ro62Yk9XCXqgHe/MB9rh5xHod8cK4AemQnuk7p
-X-Received: by 2002:a05:6214:5290:b0:6d8:9dad:e167 with SMTP id 6a1803df08f44-6df9b1e400amr241570796d6.15.1736722731346;
-        Sun, 12 Jan 2025 14:58:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736722731; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1464825njn;
+        Sun, 12 Jan 2025 15:43:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWjktxMq3dUM1esMUKqGfqGXrRz6wiBLq4RDkkRvDr2ecpLgvBjcEbvWm/CzRy4snnuPqEuPAxb+Nj3pg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGvNTQisbSCmj8fK23PmihC/gxzZUz+FOT7jhv15ujivwayY2CUeXmxqv64+zMha5linsQa
+X-Received: by 2002:ad4:5748:0:b0:6df:99f7:a616 with SMTP id 6a1803df08f44-6df9b1cdc5emr273470016d6.2.1736725428727;
+        Sun, 12 Jan 2025 15:43:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736725428; cv=none;
         d=google.com; s=arc-20240605;
-        b=CpOaAM+TiMFrpdocW73K7rajSfgaaQy8nJVGnJa4f/9kR1D0qu/rm4/GPYoiDQgW1l
-         gMxJ2TlG/cvQLMJSgstxnj3eVXh4wz7382v8NNVYOSvzOyzpU/SelC+8229mkT2Mk/NO
-         RJFA6nA6o6hUiE58vS3b24aiA24HJsMQjVPrm9aFRtGXBSnsHCw3D9vZXn26sdzlzZeB
-         NYfgqa/vJnzaMCv5zsReEL3Tqaqx347Ee3Ivs0ivjxlskQy6EZ8ZBRTEeGr8WDu1PcMq
-         cbu1lT6qdZRkvmczldPI/P70bWtbbnbNf9P/Z1qbyewGaNOrrPLfvHIB0MpKGjoOl4jO
-         zDBw==
+        b=hB0rdfGSs6wpMTJ2A5SjztVDex1gpIyzg4wvYMkemmKxLgJfMW3E0+jRSothnFxiSY
+         fpxS3B8b6Op2RGU9SyFrlmI8DQKzFeQ8o4zH12GNO8BA8TkeCuPY20VjQ39SUgDxTAsy
+         +i/XZP/8EVN8b6BVYHxTb0oOUecwLkFf9oIYb2qS5+8miokx9kVXMny6YBjVBDiWZC4J
+         pHMmtpCsfQ/aCJNs2BJXkBJ/+kxCcJPrYjQiU0xr9DMTFANbsf789pZ+J4A1Y/UjNo4k
+         Y0vFow0BIRrannOGV6p9/71s32A0uI9XtB1WN3Ux9RJOUTnzZq28XfOK02IxjBjXB9EI
+         B7cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=jh8TTghxPbyTQJFgWVhN0JvpcsBQ7bEf6F9d2W0xjv4=;
-        fh=DukMVQwry52ndmSHnkYX8US56C6HXUtFbMerNTCDe1Y=;
-        b=VoHPRPOnh+uB0wm5FvTB25ghY/niY/4CqUzyCJTVwrP4yTKy59seflTa3wHPzcKVGd
-         trx7iUQpzuCytRpyk4lc8m3WIxS8AqtDBgkgUdqyPh2z3EAQ3QlVD8xKhapFzAE8zi8j
-         s04gra4cGCidwGonNows16mVsSN4HWCHeDe03zBB33mZzV3LN7/epBx0d06nqKJnAmN7
-         T1AXmWZTTjAUs29PKPxQAvOqCDlJ0XrJhNlyfZUG55cfqn3x7MpuE5eyykVIWnTlues6
-         klkkhdoOFNXmwoPMsgf4DtTGJbUOHdFylCZY98tJwHEWl/MmzJ/1AuqobUfNnXrErKkq
-         dHPA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=0/DFP6yJ/sumZjVXldmaiLNXJ7Xf54Lp9fI8av/ELsw=;
+        fh=vELSBuuetKq8xQoq5ogoBxWloPwtjtNYEe6IBNg9kWw=;
+        b=K6StRSNiaILnY1NpN5U6Tu03mPSNBEqhY0gf3RhPWBK+GhHMn+nt7w9s4vPj/RP1jz
+         E+VBlZnPol+8gAe9IMSyPUJzRPtZKvHrN5uWL/gky86gKDzQrYxFiU2agOadxuJ7kOYZ
+         K20NTrIKhkrQtCZrMdpWik5sBoQgaVkjW+UpntCmSxu3X4mKKkAo3PNHnCYSGfMAPl1u
+         wHKy07PM2OM0eNahYsGRaiqbnndKIVuzDp6+GF20s05U6t4r+rhxN9QDHTFxr0qr0sDw
+         hy4W9kW1JVyzbdh8nRGhRYYCYE8t8MDn6ETfsTrPEDoegt1cg2BeHKVZ2Ys+gm/38wJn
+         DWng==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rzUTAvF2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QxhGKtP6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46c87413ed5si74969471cf.528.2025.01.12.14.58.51
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dfae02609asi78424766d6.486.2025.01.12.15.43.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Jan 2025 14:58:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 12 Jan 2025 15:43:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rzUTAvF2;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=QxhGKtP6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tX6ul-0001a8-Mc; Sun, 12 Jan 2025 17:58:39 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tX7c4-0001Ux-W6; Sun, 12 Jan 2025 18:43:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX6uj-0001Yx-U3
- for qemu-devel@nongnu.org; Sun, 12 Jan 2025 17:58:38 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1tX7c1-0001UX-Q4; Sun, 12 Jan 2025 18:43:21 -0500
+Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX6ui-0001ji-Cy
- for qemu-devel@nongnu.org; Sun, 12 Jan 2025 17:58:37 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4361f664af5so42865725e9.1
- for <qemu-devel@nongnu.org>; Sun, 12 Jan 2025 14:58:35 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1tX7bz-0007Ng-PH; Sun, 12 Jan 2025 18:43:20 -0500
+Received: by mail-vk1-xa30.google.com with SMTP id
+ 71dfb90a1353d-518a52c8b5aso1207725e0c.2; 
+ Sun, 12 Jan 2025 15:43:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1736722714; x=1737327514; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=jh8TTghxPbyTQJFgWVhN0JvpcsBQ7bEf6F9d2W0xjv4=;
- b=rzUTAvF2bAx3C54xbq0KujXIVz/0pEZflc4sRCmyRC5QPkC2fCsEMuT1LNUmnEtvV2
- /E5ebR9FR96ODz8wqF3EEp1rRwUl8YhQDf9Y3iUVtG3JLxUCqewmbwu3UxC04ICbh/TQ
- fefgN4i/BJutEquUXIjfyWKpDsDSQvUsI8qsMec4g+f9LYE92TdKAamlOnGum2W19Rk1
- BVsXrV+YWy02ZWtNlU+4AkDhiFAnH3yAmZAiNTz6Xsu7vqhz8hJ9W9zVnntOzBk0K7A3
- Qlpx1ek88d2MvdMliLRkMiuAaRyejmlMKwHd6MrSmOHfNDDkw4rcBTDzmAkLAduC9pJc
- xKLA==
+ d=gmail.com; s=20230601; t=1736725398; x=1737330198; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=0/DFP6yJ/sumZjVXldmaiLNXJ7Xf54Lp9fI8av/ELsw=;
+ b=QxhGKtP65qOZFYKa5YurdUoN02lAJaWobpMkZxbfMKvURQf4KP4apV646af7T3N/43
+ RNQRJzH66QN6JCBrhNaS4HyLQ8yHwTLZBlS8hhl9kvBz6B8ibM/5zo4eaQ241qY0vkT+
+ 4dSD0dzvJobsI8LvvCleaOT4f9aZnYo37gTIo37P+fi/d5DXKoKHctSC3H2ehnPUC9oP
+ BRgtLjtdxgBMnF2RjEF/1Jbnn4Gja70GtMqv7XYDeaTpuDxRW8OfHgMrADZ+T/XezG0h
+ wTvgtnaCL6UGcTV2BgFbixtmajIlNjOjydraRSrtM1yNVYjjPLFtO9ddMmG9eJ7yeMSk
+ QPvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736722714; x=1737327514;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=jh8TTghxPbyTQJFgWVhN0JvpcsBQ7bEf6F9d2W0xjv4=;
- b=drTP197QIl4tNQO/Ub+KWyfi5Q1jv1zbdD6DLTNr9/q15PIMZTrHNfJ092F/kXovOk
- UYrAlVL68ZCgCaWBgZgPO6cDdi7u+YZrWUGp0WPbQs9bUzKuawFVMxQMxhgVmtqItxmG
- 1BeTwhhZ/PvZkgxgpwhZvRlmKuIG8XtHR+prd+3AXjnhjG0UKgiF6q6dOl8WOHI1TM4G
- Pllgz0j1P3jiWukU1Wyg2DP1AONkeWPSm5kV6Z2Bw2+5Fko3ZbshNTn54z97g538wZgP
- /Lo2qCHV1pmD0dtuEeB7nMpwc/gJ3yV+9TH/AxXTcVeCoD6uIF0wyqK8pJUnZPkZ6UCL
- 3ktQ==
-X-Gm-Message-State: AOJu0Yz2fm7j6xH0zs8fthweKna97STUCeut1Btm49QweF6fpWfgOy/E
- sAp+bIQhL+8nGq1QUqYHl1jMLgIcxqcrP1tYVXWptX0iJe/pDh1cDu77fVaCnVzomTbdEUSaQER
- EgeA=
-X-Gm-Gg: ASbGncsrIb0HgvDgcmaI8jH3Ypoqm00YUrVSG1mi3j4uJmxRke/kUXjcatwzaPss51e
- w02zmlj3Ksj33SW02dmfshMLWxq9hcMvEoNYC2RGkhC+yKbVP3njybvKC+hBaJe/SXtNUv02ww4
- zvZ/sqyAVJj7g+ttvJr8eoOZm6PTc6bB4LDhao1kZcydVyCFAiXzh3jdE7ISyKIUgI34l+pMaWX
- fhOYx7pbxSj31+o86NpRPm5prBlMTs3F5o+0a53n2s3fw5Ty6FgZmUx3uRTuT9NmR5NFDa5eXvG
- +/Mg8es1doeyfw2ugae6oQy3
-X-Received: by 2002:a05:600c:3ca4:b0:436:6460:e680 with SMTP id
- 5b1f17b1804b1-436e26c3331mr136479525e9.16.1736722714298; 
- Sun, 12 Jan 2025 14:58:34 -0800 (PST)
-Received: from [192.168.69.181] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-436e2e92794sm157177235e9.37.2025.01.12.14.58.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 12 Jan 2025 14:58:33 -0800 (PST)
-Message-ID: <8a2e8401-a1b7-4401-a720-851a75e4c3de@linaro.org>
-Date: Sun, 12 Jan 2025 23:58:32 +0100
+ d=1e100.net; s=20230601; t=1736725398; x=1737330198;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=0/DFP6yJ/sumZjVXldmaiLNXJ7Xf54Lp9fI8av/ELsw=;
+ b=HCJTvLewKyDrKlnXcrN9VfBqDXqOjZDvfs2OH4IhloQ74j0ZtxmKME+Z/Axnxd5NXT
+ EPF/21FZkaZ23BUr1+W2Zex/NljJkNo61/9+F2O/X5wZYUVMV2gDKxpA4YgxhrXYjktN
+ Eh3drv/N/V7UFh0QGERbotgD42zksfMYWDmP5Msf9SdR+1MIFIo7yUFuQo4FTTIgJfF2
+ Kdlbqyt7YZL96FCDsQxVimt3m/9GHLsDcTcZ/FB/i6JkVERDaQkdkR+vwAtapqaorqwx
+ K2rLgsIbkk/svXd8UxOvDd6FPfAMM9U4hmkFEjoF8QtsC4/zaxVN4q0hD4Uu25B8FG8t
+ ZyWg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUByUMZ0ns0eqtMKSjZFagNE40WjQfxuY/43rDt9qkaWQ2rP3OVn/gtROyZrebXleKhYLdxTJHP2g==@nongnu.org
+X-Gm-Message-State: AOJu0Yw7TKvxzYkfXV+21tKZjGn8cbKqx17c5smSPdgxVTJLcazoImcF
+ Yk5BXCiovAML939wHyqyrxPMT6LevNti24F8NToJNl4eR9K2qpeFNztLmGv6yTeL4ZfnI/dqf0L
+ JbhY3UZ/e92y5WnPBOaGzNJ1WV9M=
+X-Gm-Gg: ASbGnctDZPRvzzZ/XJK89LeXwSYq/8cvdc3XnE3zDeEbdFG3RA/6wz/Oer1ZGP0rgd+
+ r19Opsxk/HhAQxkHXnb5zeSYosgko1t6AYNPkw9wfeJSi7oFlY/8A4bJFzDsKR+1jozc=
+X-Received: by 2002:a05:6122:50b:b0:50c:9834:57b3 with SMTP id
+ 71dfb90a1353d-51c6c46b338mr16503853e0c.4.1736725398238; Sun, 12 Jan 2025
+ 15:43:18 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/3] hw/arm/stellaris: Add 'armv7m' local variable
-To: qemu-devel@nongnu.org
-Cc: Samuel Tardieu <sam@rfc1149.net>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Felipe Balbi <balbi@kernel.org>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Joel Stanley <joel@jms.id.au>,
- Alexandre Iooss <erdnaxe@crans.org>
 References: <20250112225614.33723-1-philmd@linaro.org>
  <20250112225614.33723-3-philmd@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 In-Reply-To: <20250112225614.33723-3-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 13 Jan 2025 09:42:52 +1000
+X-Gm-Features: AbW1kvZT0RufijVamFGSdjzbi5Z--_YeeC4jQQHEcLlwpM4mOdBeTqK0QlMUEfs
+Message-ID: <CAKmqyKPhDpHM68qKpr=6UrQ4z_md9kdqdRA-FamyxZgZyXCzJw@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/arm/stellaris: Add 'armv7m' local variable
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Samuel Tardieu <sam@rfc1149.net>,
+ qemu-arm@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, Felipe Balbi <balbi@kernel.org>, 
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a30;
+ envelope-from=alistair23@gmail.com; helo=mail-vk1-xa30.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: PQofcXYZJVEl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: PCu3my3dPILC
 
-On 12/1/25 23:56, Philippe Mathieu-Daudé wrote:
+On Mon, Jan 13, 2025 at 8:57=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
 > While the TYPE_ARMV7M object forward its NVIC interrupt lines,
 > it is somehow misleading to name it 'nvic'. Add the 'armv7m'
 > local variable for clarity, but also keep the 'nvic' variable
 > behaving like before when used for wiring IRQ lines.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
 > ---
->   hw/arm/stellaris.c | 21 +++++++++++----------
->   1 file changed, 11 insertions(+), 10 deletions(-)
-
-Note this patch diverges with my other Stellaris series:
-https://lore.kernel.org/qemu-devel/20250110160204.74997-1-philmd@linaro.org/
-
-I'm OK to rebase whichever isn't merged first (this one
-being less work).
+>  hw/arm/stellaris.c | 21 +++++++++++----------
+>  1 file changed, 11 insertions(+), 10 deletions(-)
+>
+> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+> index 1bba96df14e..7303e096ef7 100644
+> --- a/hw/arm/stellaris.c
+> +++ b/hw/arm/stellaris.c
+> @@ -1031,7 +1031,7 @@ static void stellaris_init(MachineState *ms, stella=
+ris_board_info *board)
+>       */
+>
+>      Object *soc_container;
+> -    DeviceState *gpio_dev[7], *nvic;
+> +    DeviceState *gpio_dev[7], *armv7m, *nvic;
+>      qemu_irq gpio_in[7][8];
+>      qemu_irq gpio_out[7][8];
+>      qemu_irq adc;
+> @@ -1095,19 +1095,20 @@ static void stellaris_init(MachineState *ms, stel=
+laris_board_info *board)
+>      qdev_prop_set_uint32(ssys_dev, "dc4", board->dc4);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(ssys_dev), &error_fatal);
+>
+> -    nvic =3D qdev_new(TYPE_ARMV7M);
+> -    object_property_add_child(soc_container, "v7m", OBJECT(nvic));
+> -    qdev_prop_set_uint32(nvic, "num-irq", NUM_IRQ_LINES);
+> -    qdev_prop_set_uint8(nvic, "num-prio-bits", NUM_PRIO_BITS);
+> -    qdev_prop_set_string(nvic, "cpu-type", ms->cpu_type);
+> -    qdev_prop_set_bit(nvic, "enable-bitband", true);
+> -    qdev_connect_clock_in(nvic, "cpuclk",
+> +    armv7m =3D qdev_new(TYPE_ARMV7M);
+> +    object_property_add_child(soc_container, "v7m", OBJECT(armv7m));
+> +    qdev_prop_set_uint32(armv7m, "num-irq", NUM_IRQ_LINES);
+> +    qdev_prop_set_uint8(armv7m, "num-prio-bits", NUM_PRIO_BITS);
+> +    qdev_prop_set_string(armv7m, "cpu-type", ms->cpu_type);
+> +    qdev_prop_set_bit(armv7m, "enable-bitband", true);
+> +    qdev_connect_clock_in(armv7m, "cpuclk",
+>                            qdev_get_clock_out(ssys_dev, "SYSCLK"));
+>      /* This SoC does not connect the systick reference clock */
+> -    object_property_set_link(OBJECT(nvic), "memory",
+> +    object_property_set_link(OBJECT(armv7m), "memory",
+>                               OBJECT(get_system_memory()), &error_abort);
+>      /* This will exit with an error if the user passed us a bad cpu_type=
+ */
+> -    sysbus_realize_and_unref(SYS_BUS_DEVICE(nvic), &error_fatal);
+> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(armv7m), &error_fatal);
+> +    nvic =3D armv7m;
+>
+>      /* Now we can wire up the IRQ and MMIO of the system registers */
+>      sysbus_mmio_map(SYS_BUS_DEVICE(ssys_dev), 0, 0x400fe000);
+> --
+> 2.47.1
+>
+>

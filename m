@@ -1,133 +1,123 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1356207njn;
-        Sun, 12 Jan 2025 10:18:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWvihEIS1aJwcxQdHetQuS3VxE3Y9kGJvqDYeVp1YLK1OeAGJUselnmmX4RdYhM4vjzQskKgJICUrAhhA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEGV+VMwNv3gdJv2Sjqhq8OACUJcaTZwxUDce+5g0BDHRgdCw4uC77FeJVCwqL62kMssY6d
-X-Received: by 2002:a05:6214:4290:b0:6d8:9a85:5b4d with SMTP id 6a1803df08f44-6df9b1f466amr329339606d6.5.1736705891412;
-        Sun, 12 Jan 2025 10:18:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736705891; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1463947njn;
+        Sun, 12 Jan 2025 15:40:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXV052v6nDWfvVULXAU1wf5o1UjxzueVH4DlLJA4gAwb4gobz5VBNZ8072aIndyvALFfzEQHL0DgUZ4qw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHrlt1upgqR/nKRnnNFszYvSSOYYc7PcavOPvysbHtKbwkARYSnsfj8sJ1A0o9E/UJWEhG+
+X-Received: by 2002:a05:6214:21eb:b0:6d4:215d:91b9 with SMTP id 6a1803df08f44-6df9b2384bemr246573006d6.11.1736725237762;
+        Sun, 12 Jan 2025 15:40:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736725237; cv=none;
         d=google.com; s=arc-20240605;
-        b=UVyMuDB5S8wpBtQrUYaoe0XFIGFrsZt51cm+E5pefF/EZSpQIT4P76Wm1YXiLfPiX4
-         OVoi8c9d4Ji9PdqLQZOAcZEZQ+ewktskQq1Ej4e/CjL5WeG4Gj7TRN/Hf9Js9UVKlWmP
-         8AmK8lrb11/q560J7Uc4G1B2D3yMGEm5JYPuFKDjUcVhMfE+6j3x0lhaoVQZ7Go8UPsv
-         H5bnFxQ6QUafg1wHrQLAfwrCgD9MAVRQBSp2e3IwZDKOrxlrKHGNxDCOM9w8nvlZRjDT
-         VAczd/j1Q2z+qDE0YmChHeU4eRYrrBtXYZzL/NKlZlhmjuOP2YcTBj8V9xaRkdZZlCj1
-         0LZg==
+        b=is4TdefreBNWnf7b3vSAFOIYPhJGb+01BSEZLLmeYGG4uMphMorACHE9MtgUGvoqu+
+         ySMNmpIH9T6PvY4r3wROtyUeNSZ4xvyOntrEVggC51o2MTfnJGK6lJKynKCPPXnE7OAJ
+         tpUUjARPAGKxHx7KnvzMTyZoZF13HmCQvK5ND7pb+VOMCupRfAGLgldn57JIqhgaV5o0
+         IQJX+gksJZSbvgizr3j/NzCbFNTWL96cdV1EZRhFN/5HIvhew5uTsQwCMKQXEJGp9JeR
+         zE3fYLPhw69RECLyReBSgVWYbPvRZvK2X3HDDxalTeIx6wCM/4KLPIHjHcpkKyZFdy8c
+         JIGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=tJlrmxxKy8QK2Sqqisic+Nnsc8wfC643ue6qLvSCilA=;
-        fh=G0VwAY14xHODdocIFr1t03b/C0zaEnp05QKzG4ettTo=;
-        b=PrD8RvwPncOMuwijqM6n1wn1kSxZ4nUCkCcjfVgi06N6emrHO4sMCIbKJIEcOqxk5C
-         F9A7SsJHQqKNKCyDqubycugIh2bOrYobkXbBJEtrEgDXJ9KgOtQiED1SOWACp6FDs/x3
-         n8qtGcfxyElVi6/QATY8A8bbVHW4jcJVtmACQuSjcuzeAsRGU6G1hlZO5vnPq0jpe2Qb
-         6B+fbJ+Y4XQIyXoUf4En0BvTpPCyDsP3lGZvNnpPgYnD0Da0oBFGhGo5s2Ih/2vp1vef
-         xC5I3fZfeEU3DAmPL/YgRQWqDTDVQIFp7MnEvsO+NSCQ8WE2+4b4uZ62EmsA2Epkp/tK
-         2q0g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=1LD6iflLB0gH4nA2fp+FkFqrD38sUdaRnXC9vr+9Irs=;
+        fh=C0fKwfxDLfZXj50nNrWbWgm0NOGwAdI9vO3FuVT9z5w=;
+        b=Xv082yRq4w9Vh9WqJMJrPG8pInPP9a8OWUiHLxVGlJWkrh08Wb4WH5Lfb3Y6AXJR2f
+         llQ4s0XniMko2ZbvNenXSP7VU6NyNGahrWmw0tCIICcIYTWX2vahdQg3mwqzPv0RMLFH
+         kbHV2Rk0ndQRlpMZs3KaNw2jFuKVxT6Gd+xGuSLQxiXiiZ/yzOOMyALE1VmGa64z+6wm
+         +GfrWj9q2yEDqxI11QjF9z8/MS8ylV2WhfsihaYkGrtAHwGrFELNBepf/DJyfRtEsOF6
+         yBz2wQgzhks97VUBLg/mybKPpurqnzN3n0OM/88eaCeDZY2A4ZW0wM4qhy/B+p//L2cF
+         69sA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="mGP/OP2R";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cCNMWVSQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dfae0415f5si75924306d6.509.2025.01.12.10.18.11
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dfadedd54asi76217986d6.288.2025.01.12.15.40.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Jan 2025 10:18:11 -0800 (PST)
+        Sun, 12 Jan 2025 15:40:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="mGP/OP2R";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cCNMWVSQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tX2Ww-00018i-PZ; Sun, 12 Jan 2025 13:17:46 -0500
+	id 1tX7Yp-0000et-8Q; Sun, 12 Jan 2025 18:40:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX2Wp-000183-Vs
- for qemu-arm@nongnu.org; Sun, 12 Jan 2025 13:17:41 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1tX7Yk-0000dv-H5; Sun, 12 Jan 2025 18:39:59 -0500
+Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX2Wo-0005Kr-97
- for qemu-arm@nongnu.org; Sun, 12 Jan 2025 13:17:39 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-4361f65ca01so35027005e9.1
- for <qemu-arm@nongnu.org>; Sun, 12 Jan 2025 10:17:37 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1tX7Yi-0006s4-T3; Sun, 12 Jan 2025 18:39:58 -0500
+Received: by mail-ua1-x92d.google.com with SMTP id
+ a1e0cc1a2514c-85bad9e0214so1569344241.3; 
+ Sun, 12 Jan 2025 15:39:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1736705856; x=1737310656; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tJlrmxxKy8QK2Sqqisic+Nnsc8wfC643ue6qLvSCilA=;
- b=mGP/OP2RLB3buzfOvQQuCXt9upugUTneISDJpCmAUCQEXOM20C72eMO6AhbDQRC2t7
- HjnpCtHl2vC6u9GjmNkgQSYMM2wFOP/jzbIaV5huXzAAzdGufsN1HhuxYjoyO9C12G5h
- LcNMQmLJC4apkZ4TE+7/IhWDGH4q245zplXCb9MsYzWzCy4t7Ak8nwrwb3+SwEtQq6DL
- doMLZnCNY2Dxm4/exlqLg8CDQjFAA/tsXo5wDzcwvgX0YbwoIcd/DwIFh9JNhv25McD2
- XbS3QtfVHdU7yAA91VNDAkSZ96TYGH6dnM3OlEnGkif8GiqiTLB6mW13Ounn6r4zYDrj
- vz8Q==
+ d=gmail.com; s=20230601; t=1736725195; x=1737329995; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=1LD6iflLB0gH4nA2fp+FkFqrD38sUdaRnXC9vr+9Irs=;
+ b=cCNMWVSQtchnpSnoqGzcjSVlqB5dRSQpda44FYn2qarYtkrA0/F+6yZc+EWjUt0dyP
+ eHK+0sR5GWBzVN4anU8Y4OYHxOEF4LvJ9pGPRlgeCCebftQ2MqhficK4HSNH30epgvuo
+ kmVFjDX1rgdADfZWy1hR50KF05XIGgXkhYSryG052TycILJFUYry6+m2A/f6IHewjm4E
+ p8Qn1WgBaLultBhyCTbVubMFswjxJxsuv/OnFCB0pJsYZwHCe9HH/sgJ/RGgG8WnV2Dy
+ vIhv4R3KzW+N0LFwRSoVGAN0FI5WoK4/NCz5vmNDN2LS/WLRlcYisuC+h/1n71YmTX9R
+ P4kA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736705856; x=1737310656;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tJlrmxxKy8QK2Sqqisic+Nnsc8wfC643ue6qLvSCilA=;
- b=WJbdfYm5psUK72k0rmQszywNxG28Ejwzu4Hm9ELieyAj2wRyBwxR9GvH2i6E6YIaer
- O8xtg/vlUNq7j0yv3JFRVTwz/vZNbJYB9xSIi0ylK3JaXrXmT0P+rE3XpY/fcHOhIdHz
- cSUWZCJBVXeCsQ4DvaZ14be4mWNcqiWC3ixQME4JM6YQKJaJtb4593UaQ0Q8gp3NWS0P
- behS65XWeaPwpqCabRnEAmZUjGgr3VICV9pCRJXRqQMRysUwYo0vHboZwKrARLp9kudV
- XCbCDkgMASyv19Xeao5BwxgpCHh/lWwEJ4bRXeauCYwfCwOLCuhJAkRajUnBGS8qvSqE
- YniQ==
+ d=1e100.net; s=20230601; t=1736725195; x=1737329995;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=1LD6iflLB0gH4nA2fp+FkFqrD38sUdaRnXC9vr+9Irs=;
+ b=J99xjAsTO33Ql0Dn1qdu/E591jdD6yRB5yVOWeKNsbIVmzBI25tWDxYPsNVAVUAZa5
+ 8WGvTTbOgrugBWHYYGNdL2y+Qe9QdfQX+yRvy+HczT61eBjeg5K6P/9bBf1ks825zTF0
+ KWSz1rXU4QzugaPBcDVM8sr/LqEzn+QrPCj8wxgOZ8uTqJQJ84PzIOBfqHmZAeo1D75F
+ eAbxX7a4zH519mr8cuwGycIZwmQRGLcAOzsbsLxzhxkTGd+cwm0Cq7N4rR48QWEOEEgp
+ Hx+fEjGxN8sApcK25hgnpG0I3BKiZYsZUCN6a6UYbZhmTHEG5X5oqxO/oMzpOlSHai9j
+ 6P1A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUxdXVlo5hX1m7r8UeoP2LZtaYRVYr+e1+4ie0R3VQEfI1DE4i6omF3w+4+ajIbOFvLCF3DH/c1iA==@nongnu.org
-X-Gm-Message-State: AOJu0YyxTVSkiuzgi+iPM99qq/gysjlVouT17xaP4dQ/jfIQGsa58FKD
- Fwh/BE//ALBvJ1w4kV9QLMDyqkJF8mc5N5fG89c18dxSDR32yXJhSOYG9WDYyqs=
-X-Gm-Gg: ASbGncs2chAO6zUy9UdohoTCo38rpCykxeRg8hy0DiK+K0/MDQj9Ege7JbVMO1L36sR
- eG3GPxR3BKyNDExgA0kQLI3Q0Nr+DvGa1rTuvI78GnptbZexQ4cghvoLUy5BoxS6OgBFpmJM8MT
- NMwIr0ebkcd4Dcrh06oy+doMOJv3htGQBps1f76cSLvs+DTr5L0c4DTshp7c29stxylNXXuP3vX
- Xr0d0qWwqBsG+2pFr7MBu6rTvrV62tiwCB8dOH78RtnJ0bv56Nm8ilZ9KHZwDLK66Z8YSbkUlV+
- sPDplCkov9KfPxWvBfESAUwo
-X-Received: by 2002:a5d:47af:0:b0:38b:dbeb:63a2 with SMTP id
- ffacd0b85a97d-38bdbeb64acmr1417724f8f.55.1736705855626; 
- Sun, 12 Jan 2025 10:17:35 -0800 (PST)
-Received: from [192.168.69.181] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a8e4b80besm9988954f8f.83.2025.01.12.10.17.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 12 Jan 2025 10:17:34 -0800 (PST)
-Message-ID: <821300ca-47f0-4de7-a7ce-a49aeb0d3dbd@linaro.org>
-Date: Sun, 12 Jan 2025 19:17:32 +0100
+ AJvYcCWPcVNl8Ec1vBCnvFj8ithZlGBOUyqd65D2LfBI1Y9YL6cJXxWTPvjh/lFeIgBv/hLNCwm6f+bK4Q==@nongnu.org
+X-Gm-Message-State: AOJu0YwWP/pwrajZOC2cd6DlIRnFsMrsbYaXbZgzBm05JKjG/wJO0/zX
+ +H4ioOtd/PolORKuSKjjAQKWQ21+UunZD0lnh7K310RVc9WLOp5uHwSJzfkdRWnO+cXjkKy+jFg
+ jUad8tvG+zh1NzWCBWmnI2k4thkw=
+X-Gm-Gg: ASbGncu1rYaBL9aMDuZe4YEFtPjFB3OBSGQHXx0jKA9+A20zJqwhj/56oE93y5nH8tW
+ CAjdW5AgI/Vbsu1EO24nyny1vmmftZnCsDjDjwXvMPcBmDFScbbrAjwFJUqmFJK70MZw=
+X-Received: by 2002:a05:6102:3c92:b0:4b6:1ce1:30a3 with SMTP id
+ ada2fe7eead31-4b61ce132e1mr11788993137.4.1736725195075; Sun, 12 Jan 2025
+ 15:39:55 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH RESEND v2 00/19] hw/net/xilinx_ethlite: Map RAM buffers as
- RAM and remove tswap() calls
-To: qemu-devel@nongnu.org
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Anton Johansson <anjo@rev.ng>,
- Bernhard Beschow <shentey@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Gustavo Romero <gustavo.romero@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>
-References: <20241114210010.34502-1-philmd@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241114210010.34502-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20250112225614.33723-1-philmd@linaro.org>
+ <20250112225614.33723-2-philmd@linaro.org>
+In-Reply-To: <20250112225614.33723-2-philmd@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 13 Jan 2025 09:39:29 +1000
+X-Gm-Features: AbW1kvaMwoU4MFmHNT1IfOzbI8NBbLW3fFt7La_jRbubwpAc0WBJKabpw1NhRtE
+Message-ID: <CAKmqyKOsO_og4HaGN94DmVaBtighS_QowtBvhqRnwyg_g4L37A@mail.gmail.com>
+Subject: Re: [PATCH 1/3] hw/arm/nrf51: Rename ARMv7MState 'cpu' -> 'armv7m'
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Samuel Tardieu <sam@rfc1149.net>,
+ qemu-arm@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, Felipe Balbi <balbi@kernel.org>, 
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92d;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x92d.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -144,29 +134,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: pMp+mVLGoCF7
+X-TUID: biBhzen9CLEn
 
-On 14/11/24 21:59, Philippe Mathieu-Daudé wrote:
+On Mon, Jan 13, 2025 at 8:57=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> The ARMv7MState object is not simply a CPU, it also
+> contains the NVIC, SysTick timer, and various MemoryRegions.
+>
+> Rename the field as 'armv7m', like other Cortex-M boards.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-> Philippe Mathieu-Daudé (19):
->    hw/microblaze: Restrict MemoryRegionOps are implemented as 32-bit
->    hw/net/xilinx_ethlite: Convert some debug logs to trace events
->    hw/net/xilinx_ethlite: Remove unuseful debug logs
->    hw/net/xilinx_ethlite: Update QOM style
->    hw/net/xilinx_ethlite: Correct maximum RX buffer size
->    hw/net/xilinx_ethlite: Map MDIO registers (as unimplemented)
->    hw/net/xilinx_ethlite: Rename rxbuf -> port_index
->    hw/net/xilinx_ethlite: Introduce txbuf_ptr() helper
->    hw/net/xilinx_ethlite: Introduce rxbuf_ptr() helper
->    hw/net/xilinx_ethlite: Access TX_GIE register for each port
->    hw/net/xilinx_ethlite: Access TX_LEN register for each port
->    hw/net/xilinx_ethlite: Access TX_CTRL register for each port
->    hw/net/xilinx_ethlite: Map RX_CTRL as MMIO
->    hw/net/xilinx_ethlite: Map TX_LEN as MMIO
->    hw/net/xilinx_ethlite: Map TX_GIE as MMIO
->    hw/net/xilinx_ethlite: Map TX_CTRL as MMIO
->    hw/net/xilinx_ethlite: Map the RAM buffer as RAM memory region
->    hw/net/xilinx_ethlite: Rename 'mmio' MR as 'container'
->    hw/net/xilinx_ethlite: Map RESERVED I/O as unimplemented
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Series queued.
+Alistair
+
+> ---
+>  include/hw/arm/nrf51_soc.h |  2 +-
+>  hw/arm/nrf51_soc.c         | 18 +++++++++---------
+>  2 files changed, 10 insertions(+), 10 deletions(-)
+>
+> diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
+> index e52a56e75e0..f88ab1b7d3e 100644
+> --- a/include/hw/arm/nrf51_soc.h
+> +++ b/include/hw/arm/nrf51_soc.h
+> @@ -30,7 +30,7 @@ struct NRF51State {
+>      SysBusDevice parent_obj;
+>
+>      /*< public >*/
+> -    ARMv7MState cpu;
+> +    ARMv7MState armv7m;
+>
+>      NRF51UARTState uart;
+>      NRF51RNGState rng;
+> diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
+> index 37dd4cf5f40..dee06ab5654 100644
+> --- a/hw/arm/nrf51_soc.c
+> +++ b/hw/arm/nrf51_soc.c
+> @@ -76,16 +76,16 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
+rror **errp)
+>      }
+>      /* This clock doesn't need migration because it is fixed-frequency *=
+/
+>      clock_set_hz(s->sysclk, HCLK_FRQ);
+> -    qdev_connect_clock_in(DEVICE(&s->cpu), "cpuclk", s->sysclk);
+> +    qdev_connect_clock_in(DEVICE(&s->armv7m), "cpuclk", s->sysclk);
+>      /*
+>       * This SoC has no systick device, so don't connect refclk.
+>       * TODO: model the lack of systick (currently the armv7m object
+>       * will always provide one).
+>       */
+>
+> -    object_property_set_link(OBJECT(&s->cpu), "memory", OBJECT(&s->conta=
+iner),
+> +    object_property_set_link(OBJECT(&s->armv7m), "memory", OBJECT(&s->co=
+ntainer),
+>                               &error_abort);
+> -    if (!sysbus_realize(SYS_BUS_DEVICE(&s->cpu), errp)) {
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
+>          return;
+>      }
+>
+> @@ -104,7 +104,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
+rror **errp)
+>      mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart), 0);
+>      memory_region_add_subregion_overlap(&s->container, NRF51_UART_BASE, =
+mr, 0);
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart), 0,
+> -                       qdev_get_gpio_in(DEVICE(&s->cpu),
+> +                       qdev_get_gpio_in(DEVICE(&s->armv7m),
+>                         BASE_TO_IRQ(NRF51_UART_BASE)));
+>
+>      /* RNG */
+> @@ -115,7 +115,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
+rror **errp)
+>      mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0);
+>      memory_region_add_subregion_overlap(&s->container, NRF51_RNG_BASE, m=
+r, 0);
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng), 0,
+> -                       qdev_get_gpio_in(DEVICE(&s->cpu),
+> +                       qdev_get_gpio_in(DEVICE(&s->armv7m),
+>                         BASE_TO_IRQ(NRF51_RNG_BASE)));
+>
+>      /* UICR, FICR, NVMC, FLASH */
+> @@ -161,7 +161,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
+rror **errp)
+>
+>          sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer[i]), 0, base_addr);
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer[i]), 0,
+> -                           qdev_get_gpio_in(DEVICE(&s->cpu),
+> +                           qdev_get_gpio_in(DEVICE(&s->armv7m),
+>                                              BASE_TO_IRQ(base_addr)));
+>      }
+>
+> @@ -185,10 +185,10 @@ static void nrf51_soc_init(Object *obj)
+>
+>      memory_region_init(&s->container, obj, "nrf51-container", UINT64_MAX=
+);
+>
+> -    object_initialize_child(OBJECT(s), "armv6m", &s->cpu, TYPE_ARMV7M);
+> -    qdev_prop_set_string(DEVICE(&s->cpu), "cpu-type",
+> +    object_initialize_child(OBJECT(s), "armv6m", &s->armv7m, TYPE_ARMV7M=
+);
+> +    qdev_prop_set_string(DEVICE(&s->armv7m), "cpu-type",
+>                           ARM_CPU_TYPE_NAME("cortex-m0"));
+> -    qdev_prop_set_uint32(DEVICE(&s->cpu), "num-irq", 32);
+> +    qdev_prop_set_uint32(DEVICE(&s->armv7m), "num-irq", 32);
+>
+>      object_initialize_child(obj, "uart", &s->uart, TYPE_NRF51_UART);
+>      object_property_add_alias(obj, "serial0", OBJECT(&s->uart), "chardev=
+");
+> --
+> 2.47.1
+>
+>

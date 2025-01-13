@@ -1,149 +1,177 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1836513njn;
-        Mon, 13 Jan 2025 07:22:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFPVjdOrZvVZfmaDYo/H9xnGsqjIG8rMvz5pAvFm5gCyUIxvjDsCe2r5PPnWM5EAIE2dyqf
-X-Received: by 2002:a05:651c:221f:b0:306:d69:904b with SMTP id 38308e7fff4ca-3060d699454mr32457561fa.8.1736781728167;
-        Mon, 13 Jan 2025 07:22:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736781728; cv=none;
+Received: by 2002:a05:7022:510:b0:92:a90b:6588 with SMTP id 16csp1925689dlj;
+        Mon, 13 Jan 2025 11:32:43 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXVShEn3GwWDpwk2AqVzTi/xmCZOzmS2nmI2oVuzbWuGIGQ0W5gtDoJ9qMVLwltJG6qTTczB0vuaorAUw==@linaro.org
+X-Received: by 2002:a05:6a00:6f0b:b0:71e:13ac:d835 with SMTP id d2e1a72fcca58-72d21f7aef9mr27794220b3a.11.1736796763247;
+        Mon, 13 Jan 2025 11:32:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736796763; cv=none;
         d=google.com; s=arc-20240605;
-        b=eQ4sL0zfvWQQCgHvUjQ0Y0shdXuyL4rI1efuCvG0oXOYQspUsO5x9PjoVbekhmCogp
-         VmYhCuOaUfdH15uW+qjIXXvWO4DTM/OgZ2JDuvyOn6kXFXP0HsWSGJpwhiGHrCQWDf/z
-         MfNYgxnuF/aGkpEIImJ65UB68fLJA3kH2EHOH/xZAaco+R8EGe3sYDzeYNe4dXmsP/xr
-         DKm9Yjm0l2wvjwu9d/8FOSkVG+DLF1cM2RsAfdWCq1zoauC+7r0hYNe4lO+mm33AmbU6
-         UEN4Q4+W1SuV+b3U/lAonRl2N+EbERr/EWEpaLKoNbfHkqUuRYQdW32t6SkphnQYAFWC
-         cqHQ==
+        b=VcmAH8nI7ARkhoqqNk73nhF4RtBh3sN3T0raTc9vvg4VriH8fKZFgQa8yWYYc3u0wD
+         pGqXtqgyD1k9lgEZ5xh9wueHZmRWjnUhLUGwxcTI67tU5vnp5Xx1aA9PIYgukawngVnM
+         F9aGVY6miQqNjWsa8EuNLlP4kmbqXzhY6M4+Eg7+fGWCuKuaoFkZHAToKOu2VXTWVqJ6
+         YW2W+R6c2qzIV88wFtnSZctuHXta5ZpP8cH1OhiKqxD+1UNMGjnuP9hj8U24JEIAzHP2
+         WbSjtf2xxccVz4JBTb6/cRDm3B9ch+u8lqq5vhyCRn4rNTv7fa3z3cim6NtOOtinjER5
+         oFTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:autocrypt:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id;
-        bh=+fy/sJN8J1p+lfLEmRRS5IC01ezJUmdactUafGO0YEs=;
-        fh=PJpnA7q3cheeTsyJfrYEko1VM741ckqxDysVCryHhJk=;
-        b=DPu7qWMD5cpmoTyRhOhXaU9HPPNB9B34PZdR8VCZO1NjQnZz7RnWDDfB4h+3s4t34U
-         nxDC3/PhJJKlvxu7awBcz97YPZhnALmj1o11SukAESG1LzWlDv5l7zgkQa25i7isNM9H
-         qgFeinsbJlpvGYC1MBv9zkIVAbMLRilwnh8FiNmnz4/TDhfoKCCn/lejlfJlNih6hLYp
-         8MLlaWjJLVifyH7mGBozcDcWwp3qjg4eot/4IaFDATn3XTkSyPdEvtDBJ8v/PJrD7HEj
-         M3boWa3EY2UtlzK30FG4SZD1nD2sOPNHlqhHAKEEkabn54xQvOC2/4mtIpbbm7s2NgMK
-         y7pg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=4ov2bSdALrFYAy5nxZDetn7TmiPVPRW0fJBPLm96grY=;
+        fh=LHJtrtYPAUanPsFPD7zX1navPdoqyf5+euvhbwdHAvE=;
+        b=hs5uaah/YYGfNNW3Z3M8iGpmA/mlx/m5x/IMagq810fYURbOCndDyHA0yIse/xcuuf
+         xGND7y+wtCBMkWKRLLtbQottmNFyFXIVCCoMj231mdum0ZElWGE3Gbqomh3/HCBWFYwS
+         PnnIEzA8O2HuovyoFV6kIGyMLcPs7unlf0NmYyQOnQn6acBNFqR1lyBm4qobQn2zPIX2
+         wXqlkqqoswZMfTvMRvzSwyLrPO9T6urT1k6V3PYpBrB8wso4L0IhqOw2H2Z+USuG3goq
+         2r0IPv5gTYlmfzMpTqJ292Y+JqX36qKOD1RNihtC/aOZK1mP7F8YhsC15yQ39J7z6HHI
+         srZA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) smtp.mailfrom=mjt@tls.msk.ru
-Return-Path: <mjt@tls.msk.ru>
-Received: from isrv.corpit.ru (isrv.corpit.ru. [86.62.121.231])
-        by mx.google.com with ESMTPS id 38308e7fff4ca-305ff198866si33263011fa.135.2025.01.13.07.22.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Jan 2025 07:22:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) client-ip=86.62.121.231;
+       dkim=pass header.i=@linaro.org header.s=google header.b=utm96r3s;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d2e1a72fcca58-72d34056170sor7707903b3a.8.2025.01.13.11.32.43
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 13 Jan 2025 11:32:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of mjt@tls.msk.ru designates 86.62.121.231 as permitted sender) smtp.mailfrom=mjt@tls.msk.ru
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
-	by isrv.corpit.ru (Postfix) with ESMTP id C19E2D6C79;
-	Mon, 13 Jan 2025 18:22:03 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
-	by tsrv.corpit.ru (Postfix) with ESMTP id 074F519AB9C;
-	Mon, 13 Jan 2025 18:22:06 +0300 (MSK)
-Message-ID: <15435e6d-a77c-4d3e-ae06-b1cd23fbee61@tls.msk.ru>
-Date: Mon, 13 Jan 2025 18:22:05 +0300
+       dkim=pass header.i=@linaro.org header.s=google header.b=utm96r3s;
+       spf=pass (google.com: domain of pierrick.bouvier@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=pierrick.bouvier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1736796763; x=1737401563; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=4ov2bSdALrFYAy5nxZDetn7TmiPVPRW0fJBPLm96grY=;
+        b=utm96r3sfLnJ/qhtBm0ZlvQkFZpKxLIA0nEtFFQbeSUx5/ybIAsGJYVCLMvHAPdM5H
+         x/tK9fDKM84nmcK0DaYmG4l2x2lMKP8Ah9gcdR6+nd/Sjdhakc7I8wyF+Tl/IOkYsNdE
+         6ih5HOrRyjr18FpDP23Dy3LyityyFJdjsSvK/Nqanks2561G51gSoNHfvMFkeNkDYnCp
+         3i/cFFhD9djPCsnXX7VhzpAf4v4Pt1bDEHoz8Xd0lvUz3jNwFE7QHHY0CwXOEwZoxcPz
+         4xDynAewuYlvNnQ4xN8JnF3oa65URNBdFZUtfDsUeRK7xynyX/AY2bSUdifwKU0ua5mn
+         Ym/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1736796763; x=1737401563;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=4ov2bSdALrFYAy5nxZDetn7TmiPVPRW0fJBPLm96grY=;
+        b=uCmvx+8cmkQXYH0N4ZG3ZZmrnELWgtChIGGRHFpRqlFhRVlBVraZeGB6dGtVL+iP9h
+         tkJMSqOxcoU9O3+jbM4IIZU83pRuXbxYSv+2cMPgnnYzvElKaSYt4y1skoWsDGxx1vXK
+         gAjzGy7JVN65Cl9mNIJTFXl2Yb+EKTnrRv1hoo1/h84skCipDs6tTG6GdPF44ayhgeka
+         cJxbLZvah3xv4CmQSsTeqaDHwijonGEtbCg8tLVK4UQ0c5NfcIsciMkW0zQZ3qo3YcQg
+         mdLitrQGkK6sfxTPm7x0TsteBKoNal9K0CUk+ZZmsSY+/myufXuz1VDDi5mReGGv7e/j
+         wU8g==
+X-Forwarded-Encrypted: i=1; AJvYcCVUyYcRDUIrzDSpon2ACTbUIR/S2SNadQrqg/Q6M0IwdIfUaUIzDtB6jZGMh7U30G54JrGPFMZJaycSbA==@linaro.org
+X-Gm-Message-State: AOJu0YwoPrmYohYEAI9+vLMJYYR+JG4XzYnDFGpRAgpjyLlS1vqkiJA7
+	DID0kTTE2dAyKdKcD25AVfkOZy7WqIR6jy0ZrC41qne+3r/WTzrN6kr645mYOILIRw==
+X-Gm-Gg: ASbGncsFPVNoL0SGSvmzxtjL44QJ2Wgi4oM8a7NDSqx1yHDHPXVNENNirDKb+qIU3y7
+	ABarNPdxtpuEkPgg1Et8ZESVSzgAe/dPYXqqFSxvkkLIzaXJaabxPu13qsR78iKGn0DiHZVs81s
+	wRXXOmBJhu9SUxA7WuXAASt0/UCpuJ9SCLFfMRk2xuG47lKgMp9uTi+mEQT2MOQjGUzW5yyZD+K
+	fib/bk7QWwE83csOplDVbQSpWzT5XtVTwRhWC6yn4oXNPzZKHlyUOw6gJ/LlC6yNHdDMA==
+X-Google-Smtp-Source: AGHT+IG5Ooa8+sFqnGL19qgItzPGcWtXg/xU1EiKGw0gnV9YAEnpnFwst3vaichpcL+77B10z04k9A==
+X-Received: by 2002:a05:6a21:9182:b0:1e1:bdae:e04d with SMTP id adf61e73a8af0-1e88d0e0c0cmr37167945637.36.1736796762722;
+        Mon, 13 Jan 2025 11:32:42 -0800 (PST)
+Return-Path: <pierrick.bouvier@linaro.org>
+Received: from [192.168.1.67] ([38.39.164.180])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-a318e056063sm6182257a12.31.2025.01.13.11.32.41
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 13 Jan 2025 11:32:42 -0800 (PST)
+Message-ID: <359e6921-fe3d-4f53-8ba9-5cf2b7ab6a6d@linaro.org>
+Date: Mon, 13 Jan 2025 11:32:41 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 17/32] system/qtest: properly feedback results of
- clock_[step|set]
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Halil Pasic <pasic@linux.ibm.com>, Aurelien Jarno <aurelien@aurel32.net>,
- qemu-riscv@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Beraldo Leal <bleal@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Laurent Vivier <lvivier@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Ed Maste <emaste@freebsd.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Bernhard Beschow <shentey@gmail.com>, Bin Meng <bmeng.cn@gmail.com>,
- qemu-ppc@nongnu.org, qemu-arm@nongnu.org, Laurent Vivier
- <laurent@vivier.eu>, Joel Stanley <joel@jms.id.au>,
+Subject: Re: [PATCH v2 0/3] Change default pointer authentication algorithm on
+ aarch64 to impdef
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ Fabiano Rosas <farosas@suse.de>, Yanan Wang <wangyanan55@huawei.com>,
+ Zhao Liu <zhao1.liu@intel.com>, qemu-arm@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>, alex.bennee@linaro.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- John Snow <jsnow@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Alistair Francis <alistair.francis@wdc.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Leif Lindholm <quic_llindhol@quicinc.com>, Cleber Rosa <crosa@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-s390x@nongnu.org, Eric Farman <farman@linux.ibm.com>,
- Weiwei Li <liwei1518@gmail.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Peter Maydell
- <peter.maydell@linaro.org>, Li-Wen Hsu <lwhsu@freebsd.org>,
- qemu-stable <qemu-stable@nongnu.org>
-References: <20250108121054.1126164-1-alex.bennee@linaro.org>
- <20250108121054.1126164-18-alex.bennee@linaro.org>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20250108121054.1126164-18-alex.bennee@linaro.org>
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <20241219183211.3493974-1-pierrick.bouvier@linaro.org>
+ <CAFEAcA_ChARwKyvRXsEk1U3q1T2528753Eu7LgDSsDbF1s5tNQ@mail.gmail.com>
+ <CAFEAcA_SHz2a0ZU=3e9AmZyJ_qn3e7nNhNm-hR9MdiTRjOyqWg@mail.gmail.com>
+Content-Language: en-US
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <CAFEAcA_SHz2a0ZU=3e9AmZyJ_qn3e7nNhNm-hR9MdiTRjOyqWg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-TUID: au/3eNqglO3r
+Content-Transfer-Encoding: 7bit
+X-TUID: 4LkVwHBFo+Lp
 
-Ghrm. 46 recipients seems to be quite a bit too aggressive..
-
-08.01.2025 15:10, Alex Bennée wrote:
-> Time will not advance if the system is paused or there are no timer
-> events set for the future. In absence of pending timer events
-> advancing time would make no difference the system state. Attempting
-> to do so would be a bug and the test or device under test would need
-> fixing.
+On 1/13/25 04:34, Peter Maydell wrote:
+> On Fri, 10 Jan 2025 at 16:28, Peter Maydell <peter.maydell@linaro.org> wrote:
+>>
+>> On Thu, 19 Dec 2024 at 18:32, Pierrick Bouvier
+>> <pierrick.bouvier@linaro.org> wrote:
+>>>
+>>> qemu-system-aarch64 default pointer authentication (QARMA5) is expensive, we
+>>> spent up to 50% of the emulation time running it (when using TCG).
+>>>
+>>> Switching to pauth-impdef=on is often given as a solution to speed up execution.
+>>> Thus we talked about making it the new default.
+>>>
+>>> The first patch introduce a new property (pauth-qarma5) to allow to select
+>>> current default algorithm.
+>>> The second one change the default.
+>>> The third one updates documentation.
+>>>
+>>> v2:
+>>> - ensure we don't break migration compatibility, by using a specific backward
+>>>    compatible property.
+>>> - added some documentation about migration for arm virt machine model.
+>>
+>> Other than a minor change to the 3rd docs patch which I'll note there:
+>> applied to target-arm.next, thanks.
 > 
-> Tighten up the result reporting to `FAIL` if time was not advanced.
+> I just noticed that this series breaks 'make check-tcg', because
+> the pauth-3 test is explicitly checking the output of the
+> pointer-auth operation. I'm going to add in this patch, which
+> goes between patches 1 and 2 of this series:
+> 
+> Author: Peter Maydell <peter.maydell@linaro.org>
+> Date:   Mon Jan 13 11:42:57 2025 +0000
+> 
+>      tests/tcg/aarch64: force qarma5 for pauth-3 test
+> 
+>      The pauth-3 test explicitly tests that a computation of the
+>      pointer-authentication produces the expected result.  This means that
+>      it must be run with the QARMA5 algorithm.
+> 
+>      Explicitly set the pauth algorithm when running this test, so that it
+>      doesn't break when we change the default algorithm the 'max' CPU
+>      uses.
+> 
+>      Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> diff --git a/tests/tcg/aarch64/Makefile.softmmu-target
+> b/tests/tcg/aarch64/Makefile.softmmu-target
+> index d08d9b01ded..9c52475b7ae 100644
+> --- a/tests/tcg/aarch64/Makefile.softmmu-target
+> +++ b/tests/tcg/aarch64/Makefile.softmmu-target
+> @@ -91,6 +91,9 @@ EXTRA_RUNS+=run-memory-replay
+> 
+>   ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+>   pauth-3: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
+> +# This test explicitly checks the output of the pauth operation so we
+> +# must force the use of the QARMA5 algorithm for it.
+> +run-pauth-3: QEMU_BASE_MACHINE=-M virt -cpu max,pauth-qarma5=on -display none
+>   else
+>   pauth-3:
+>          $(call skip-test, "BUILD of $@", "missing compiler support")
+> 
+> 
+> thanks
+> -- PMM
 
-Is this qemu-stable material?
+Thanks Peter.
 
-Thanks,
+I'm a bit surprised because I ran all tests , and didn't find any failure.
 
-/mjt
+I use container 'debian-all-test-cross' and ran 'make check-tcg'. Is the 
+container missing something that doesn't trigger this test?

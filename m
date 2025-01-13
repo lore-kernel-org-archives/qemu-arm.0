@@ -1,124 +1,174 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1618543njn;
-        Mon, 13 Jan 2025 00:27:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXOpzqSSxGLELMHPxM4HeczG/pqmT/CSQShR3bHJ+iSYxUK1kzoY3c6yM7tp2psXFEI68P+BSmz0nrIrA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFeiUlf7Y8RMPIt9l5mD3KPPGCt3fkm4F0/F0C534Aet/0E7mtbz2dAWDFJ2NLlmVihwqf4
-X-Received: by 2002:ad4:5d64:0:b0:6d8:d79c:1cbd with SMTP id 6a1803df08f44-6df9b238518mr325071926d6.15.1736756876128;
-        Mon, 13 Jan 2025 00:27:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736756876; cv=none;
+Received: by 2002:a05:7022:510:b0:92:a90b:6588 with SMTP id 16csp1686359dlj;
+        Mon, 13 Jan 2025 05:09:05 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCU0Ho1B6kapLiKIi4sxjBssGr/JTZjuDGN9YJUBLIlHmSNHYuS9l4pw3XJ7rF8WALQDYAC+e0kI4kWt3Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHQ/CQtsMiGUrq5UqbK3BAAutCjOyJcq1MNMusT9NRyP3XGpoeaS5DVioUi4juNqgEFLuAW
+X-Received: by 2002:a17:907:2cc5:b0:aaf:c326:f2d8 with SMTP id a640c23a62f3a-ab2abdc0257mr2152782366b.57.1736773745024;
+        Mon, 13 Jan 2025 05:09:05 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1736773745; cv=pass;
         d=google.com; s=arc-20240605;
-        b=KVS44DqJxKqzomFvpyprxNhn3iWLqfE9JJgtBOr6b+G91XlgB5fC/qQy0DJKPWk8vf
-         1Ekr7gzlVO8ELYjmuZPxcCAwQ+Ar5p90wmn3KKM2aZ56J/2aPg8Fh8qEOiEeckvWJNlu
-         UuWyLBPaTxz6CPWg39MIuJCrfzQ2J4/vTvthn5XtaaEj6dHztSDzEFYuj2XDHWiMEylg
-         n60z3tdCbwjYOMEhYrJX8c95PySI1mNUxmp26sc8MUBwVqJqdVVt9i3DaILl6qqTtMGz
-         z+GrH4edXrFKVutA5/KxGSN4vykNxScVVpXqQwvqVSHWCkRX/xPAAQvF025IsFsKBGOC
-         PVFA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:user-agent:references:in-reply-to
-         :subject:cc:to:from:dkim-signature;
-        bh=171NA4ObttKY54K4Vx01NswlNwiQJc1fA9xz2eOSMCI=;
-        fh=XVa6n8mAbhd090OZ/xCdIqGDUKMgrti5G7wE48bkEhc=;
-        b=etnQbhTJjkfRJkY5I/o0A49nWD/tupWbXApgB+7TmWcLxjs575TosOZg5j9u1fJdIp
-         7nNiOcL7k0lSM3+gft6HTtYQw/+5BevcHQv6CFQieHrZgt7VX9q95FCZaoIqRQ23X9Os
-         HpzS7YW76kAcZ78y0kwhtFse04FwXbZvf2qc1GVwKUbuljtHvnkw65dDZjf0IoNxTR1f
-         rBj9jDNM5zFEpYwptLtfkddC06FeSugmNZvXgQqcmDM+pPQTowNMc02w/d0SasTkypOk
-         +1vUyFIa2CK8MU7/zj07mljtGvIMdwvUZRmeaD2arj4yd2KZyLuxONpnXZzSEnHHaw2c
-         pgdw==;
+        b=bdYyvyRHz98/oHDrGsQpE38Ln+g/m7GOdm2uIKv15LOF5YfzZgW90xNoG/72GpS3KO
+         A11nQYKGTq7/Kyv+X0LVAq6MJ7PGJtfsGu1v5kyroUCpaCnSN4wPtZo/MQaT3vaKXXHX
+         LXcyCSbbQtXrW8/uwRxmFVN+6eyAbH3vrbKKH9joFU9Nq+z4roWBSRPBrTKFpP9Xm3hr
+         w4m8GlyfJlZYOzcQ4L3gfHXvtcWbmmuSZke9FIA5wavdBwTqdjPAz49P+vAnk98Ef9qi
+         XO57/xCaZv/2i7cbTmU5NASGKEQXar+7fQ55DE2si0+Mn0Lvzpl0WxNVmwo6crJfsy2A
+         Qb5A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=U7kU+tNqtJR7D/73BiXkUHyXCE1UFS/EBV7RoVPbz24=;
+        fh=8WKMlvHBit1egi9o2cK+ScoX/Z5fO36J0VVxubWVY0Q=;
+        b=NIckvxdZM3Ym0QghAF+nYiflq4Sfar0Ewh0iDylk4Jx8e5Hv/P1l38464WBXlK92WN
+         iE1HCfk8/bNFfYSvaKoGKGPvBCQyTbKh+jwbc8jaWej1sGmxPu/FQ3mdPJWDc2ktfGt1
+         KdTo2qdcEV3dB+OqHC0sT+J8l/BlZjplWrrjaspE8yxabcikw6kESlfR7zSGzGO/Oy8K
+         a5MHNwhAArgxiY2QHrGxddlGzu58H5j69QOtaejf8cM3D6XHhMEF/IApWL0dN/uCAwPA
+         A3c3Vbx9Y8uOE5jM343uIXVbNAjN6qHv2AFlc1bBeJNyGxG1sp2xc/I2m2AY5jZXbpF4
+         oKpg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=anu4XebC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dfadfb5accsi81975566d6.387.2025.01.13.00.27.56
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=h3GjqS7W;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-474008-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-474008-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-474008-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
+        by mx.google.com with ESMTPS id a640c23a62f3a-ab2cfbebba1si585656166b.422.2025.01.13.05.09.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jan 2025 00:27:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 13 Jan 2025 05:09:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-474008-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@rfc1149.net header.s=smtp header.b=anu4XebC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=rfc1149.net
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tXFnO-0005d8-VK; Mon, 13 Jan 2025 03:27:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1tXFnG-0005Pl-MP; Mon, 13 Jan 2025 03:27:30 -0500
-Received: from zoidberg.rfc1149.net ([195.154.227.159])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
- id 1tXFnE-0002qr-6x; Mon, 13 Jan 2025 03:27:30 -0500
-Received: from 127.0.0.1 (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange ECDHE (prime256v1) server-signature RSA-PSS (2048 bits)
- server-digest SHA256) (Client did not present a certificate)
- by zoidberg.rfc1149.net (Postfix) with ESMTPSA id 905E080026;
- Mon, 13 Jan 2025 09:27:18 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rfc1149.net; s=smtp;
- t=1736756838; bh=171NA4ObttKY54K4Vx01NswlNwiQJc1fA9xz2eOSMCI=;
- h=From:To:Cc:Subject:In-Reply-To:References:Date;
- b=anu4XebCVxT05MPQvgD1RoT0loY9qgoaT8ztj2Yy0RkohVkvQqnvNGEoAj16ZvF9D
- mkEDCxYOMdocxZ/AAu0LMdN9H89RwGoDJCjh8h8WK3g8dpHm06PAbStDuYmjqkX4zy
- yDyQjmg+orvUESL6u2INKtRatOZ1pEW9vA/B4//DV0XwifqlaCKX3NFod/gVR3dVFo
- vbQWTzfjDoUEJGgbcvslg2Z6FZBqGeCXwU1AA2PC4g7KWS8tuYVusYNRynrGLcvJSx
- /pnN/GW+dzs+ukFKDKlSm93uPXsHT9em7tmUJ8turrgoiHLmkcKa2XT/CvbgocfaHn
- k532XryGCtZKg==
-From: Samuel Tardieu <sam@rfc1149.net>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org,   qemu-arm@nongnu.org,   Peter Maydell
- <peter.maydell@linaro.org>,   Felipe Balbi <balbi@kernel.org>,   Subbaraya
- Sundeep <sundeep.lkml@gmail.com>,   Alistair Francis
- <alistair@alistair23.me>,   Joel Stanley <joel@jms.id.au>,   Alexandre
- Iooss <erdnaxe@crans.org>
-Subject: Re: [PATCH 3/3] hw/arm/v7m: Remove use of &first_cpu in machine_init()
-In-Reply-To: <20250112225614.33723-4-philmd@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Sun, 12 Jan 2025 23:56:14
- +0100")
-References: <20250112225614.33723-1-philmd@linaro.org>
- <20250112225614.33723-4-philmd@linaro.org>
-User-Agent: mu4e 1.12.8; emacs 29.4
-Date: Mon, 13 Jan 2025 09:27:18 +0100
-Message-ID: <8734hnt8yh.fsf@rfc1149.net>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=h3GjqS7W;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-474008-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="linux-kernel+bounces-474008-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id EF4051886388
+	for <alex.bennee@linaro.org>; Mon, 13 Jan 2025 13:09:07 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 646EA233D92;
+	Mon, 13 Jan 2025 13:08:59 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="h3GjqS7W"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F74D22A4D2
+	for <linux-kernel@vger.kernel.org>; Mon, 13 Jan 2025 13:08:58 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1736773739; cv=none; b=b2HTg2GJ662BqI8ZcrRUKsrMah0uTgjZv0Jdim6bVnv4xIF34ygVghy0Na1drB/848JRK1d0f6ftw7KNVXcr6vNszMPPa4SThiLpdewCXURi0EHVa4Zh+kiwMuJ5ZFEUQp7Oxy5kufVBDMyYio7dY4Cz5d2d2dbGETgc5i4GiuE=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1736773739; c=relaxed/simple;
+	bh=GgETsGrAdEp9quugVeJqfW0eXtpodBaT9e9TG7kSTvI=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=K3vXxU6S5j5w20XFv2SXeEIC8mtqnx7ONoCuSrUcrfUx/sTKU6+aW74Jcav752SOW05qBlgc8Q3dthQ84yivUwDUNp1wPKR/4GauZrWWoGC7EO4+RS76q7tTPkg0CNsEzu4vIVI/dm3GAfBInCNp+nWWtNOjqeGrdKyShdNpzeI=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=h3GjqS7W; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA734C4AF0B;
+	Mon, 13 Jan 2025 13:08:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1736773738;
+	bh=GgETsGrAdEp9quugVeJqfW0eXtpodBaT9e9TG7kSTvI=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=h3GjqS7WRMnpAt1UlZ8kDGv4p1RWvhn7OmyruPcf4E5Df8/1vBoXUyZmXXdkuDjk0
+	 IBGr4nkDn8bw+gokvFAr8rbM2bhjGL75T61SaEQAhx/18rnhT70lvX3V8/G/I4EqPS
+	 wuiUgkcUmuTS2M4hcSHu6CGLJ78oD0QGiZPCF9qtRzfWpDaYy0lIB1wq4nGkSSmr8y
+	 TFPTF7ngh7NoCWUjj9/Xeg3bPZiHLEyOb/lrvsF9Ha4pEeKspR1YhgjG+eEQJYUuKW
+	 zwiUFijLdqqR2DafDfFMrcEofwd2NolV+pVCGDp399m32EkNHFfUpbHkQzD2SQGpwy
+	 dfpmFKK95FoCQ==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1tXKBc-00000003Yn5-3dM1;
+	Mon, 13 Jan 2025 14:08:56 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Ani Sinha <anisinha@redhat.com>,
+	Dongjiu Geng <gengdongjiu1@gmail.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Shannon Zhao <shannon.zhaosl@gmail.com>,
+	Yanan Wang <wangyanan55@huawei.com>,
+	Zhao Liu <zhao1.liu@intel.com>,
+	linux-kernel@vger.kernel.org,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Subject: [PATCH v4 4/5] acpi/generic_event_device: Update GHES migration to cover hest addr
+Date: Mon, 13 Jan 2025 14:08:50 +0100
+Message-ID: <20250113130854.848688-5-mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20250113130854.848688-1-mchehab+huawei@kernel.org>
+References: <20250113130854.848688-1-mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
- helo=zoidberg.rfc1149.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: sHQob31ZsYHl
+Content-Transfer-Encoding: 8bit
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: paTGyKbtyy5R
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+The GHES migration logic at GED should now support HEST table
+location too.
 
-> When instanciating the machine model, the machine_init()
-> implementations usually create the CPUs, so have access
-> to its first CPU. Use that rather then the &first_cpu
-> global.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+---
+ hw/acpi/generic_event_device.c | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-Reviewed-by: Samuel Tardieu <sam@rfc1149.net>
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index c85d97ca3776..5346cae573b7 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -386,6 +386,34 @@ static const VMStateDescription vmstate_ghes_state = {
+     }
+ };
+ 
++static const VMStateDescription vmstate_hest = {
++    .name = "acpi-hest",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT64(hest_addr_le, AcpiGhesState),
++        VMSTATE_END_OF_LIST()
++    },
++};
++
++static bool hest_needed(void *opaque)
++{
++    AcpiGedState *s = opaque;
++    return s->ghes_state.hest_addr_le;
++}
++
++static const VMStateDescription vmstate_hest_state = {
++    .name = "acpi-ged/hest",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = hest_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_STRUCT(ghes_state, AcpiGedState, 1,
++                       vmstate_hest, AcpiGhesState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_acpi_ged = {
+     .name = "acpi-ged",
+     .version_id = 1,
+@@ -398,6 +426,7 @@ static const VMStateDescription vmstate_acpi_ged = {
+         &vmstate_memhp_state,
+         &vmstate_cpuhp_state,
+         &vmstate_ghes_state,
++        &vmstate_hest_state,
+         NULL
+     }
+ };
+-- 
+2.47.1
+

@@ -1,325 +1,128 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1465646njn;
-        Sun, 12 Jan 2025 15:47:01 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVBJ9KO9j7h23bAxIWXbHJ1rfXLTTDaRRo7wSjixlP1yGsfXwJHlxOBwyChIlV2wjZwrbetHUKkTKGNxQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IECpURJLeAAKMhw0r63lFQt0deE0Zf98rmSlV2W1gE66Fty3EcMm3+c5NxcPBjg0bz9WFLR
-X-Received: by 2002:a05:6214:2c0d:b0:6d9:87d:66f4 with SMTP id 6a1803df08f44-6dfa3a1222cmr236640486d6.8.1736725621705;
-        Sun, 12 Jan 2025 15:47:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736725621; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1500441njn;
+        Sun, 12 Jan 2025 17:39:37 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUGs2Z4Sd14djwfksaiE1XBI04jpwerwD+HJLSsM5LKvlZ1kGJCkfQAc/xGPSmpdaEzlOztg3mRHDs4Rw==@linaro.org
+X-Google-Smtp-Source: AGHT+IHiXd1iEWWCiirNlPdRpmkouK62Hn+jv4beBQnM4+Fu41l+voYSUWDvgn5P8TAK7QSHvt2+
+X-Received: by 2002:a05:6214:449f:b0:6d8:a4fd:d253 with SMTP id 6a1803df08f44-6df9b22d70emr318366406d6.21.1736732376869;
+        Sun, 12 Jan 2025 17:39:36 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736732376; cv=none;
         d=google.com; s=arc-20240605;
-        b=KKghX0poEgSmhYJv4lqt2qkgBYfFPxV0H2zPxecIduH0mW+IbBLinztsB85w5IThgT
-         NSMZ+/+beaNXAVvWgBU5NjoecI5kmj5U2ltYw8w1Tis03LjxHbR5faHAGghqoNrfmEbx
-         TkNPtmeGxWWsOJi5LPzeGa0nrMqwj57heTgEIZeL2VfOBXjFRwT5am1jx9SZ25M+f2hC
-         MpYazF0e1s00z73rE1aLLDkvkBEmMde8vPH2KylsgsapUnSdYnW5ahIxfqeK7pncTeXY
-         xH2N6JUXMstnj0r844CizLm7kmE/nfyeg2vtUWjFSysrik+2d9K24e+mnQdXR5too5JO
-         9XKQ==
+        b=ItukCjEQbTz0VLmwdZv/gptD2XJnnECkvA3TSpDJLxfW38aGZNaDmEXr4+ng/v8RfE
+         u1Bmza99OUAdvcvZbQocDtpiJB8cr7sR5Ph2ENMTNbaWF0UTuC//Ern5HvdInW+XQLqF
+         aI7GbcxIl2GDiLeKixkLajLGR1wiEwhFXOkqnBJw2BLllxwalY/X9VHrnkKmmsfMGih7
+         7RfxwJHTBCHBc8dE5YMn0wWp225axZIpNtlzv8//3x3b9FpaqZWOrp2axxnxvsDsl+qA
+         z8IGcI+3cJ9rATuywdC85xI26hFSS3P7lKE86O9wbuFAkcjvm53zVX5kz7G+4Yb0Mz7d
+         VQhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=K9O660XbMNachmX0zw4ZgF49qepPT7E3bYqs5jTTxKw=;
-        fh=vwkbM2a0WV5/jyQ7vIXk9yvoGmdUKzzA5tJ0W6BBOoA=;
-        b=LWjJmVBlVTZPkdm9iMyNLTsrp/ha/lmXHqRF2IgnqOfvH0IJPB3+1q7tiSkamPXvzz
-         9x9CaonDM1WvjPW9W3VOHuC2k42VMGl9V+7N9Ee+zwgGaKj65ll3o39Wo7Z5kW8PfVVv
-         Nm0hcEFZRi85mHzsQGqFHdJ0JRH/a+qe0pUZ4v6D6hwHv/O5/QPbhFMrETCoHN40Dc0v
-         7IYY3gSD++WDFkY4S+k/4m1XrPDlpCjHZKLuTHNt5UJqZzSOEAiH6AuwS/5uF5vdgVb0
-         quPseqmFmJwWN9AMW9wL3LiqejQYn/9OnOKzx9BMG1XJKi+649uL5AbWocnzLWpb2nlO
-         zxnA==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:feedback-id:message-id
+         :subject:to:date:dkim-signature;
+        bh=ISRYMyzoP+VHy0mXRpIgL9BiCzujAT8F3Qeyt/EnlzM=;
+        fh=EIF1cTOMeBeB70/uAXrA3XkdwNLnfcAUUB7Ctn8hMeg=;
+        b=J1MgZrggdvrDGFUR8C45Zj1iSIjc86hB+I7Ri+aR8EDSOFuRVMtOEH3EwQHZutpXCV
+         rk2jCxKVXCoc5ohUvQ4rIEn1NZTb4aDFqb5clUYzoseZMoz/T4ewJzLfoTSFfOTJZDmo
+         RoGTOizmayIZO1ab+ab3q2YYu7IdVD94eulNea8YO8E6WkCLbqxkKUfojWOVKGmxHjr+
+         GRHE8NhHlla5QNqEf6QQKPxgMSpEAjhZZVhljAxubwhNUlg2EbRpHNz7lVQJJnnWcwKj
+         HSlqKxNQLWge5H6+U5J0uzfGoSmb6TJ/qJ9Gkody5N350PoBlzTQ2SxrdRRli0r70Xev
+         qgcQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=P6YQ57Ho;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@proton.me header.s=protonmail header.b="lcV/BL86";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dfad9d03b6si79129806d6.120.2025.01.12.15.47.01
+        by mx.google.com with ESMTPS id d75a77b69052e-46c87413131si74264931cf.504.2025.01.12.17.39.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Jan 2025 15:47:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 12 Jan 2025 17:39:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=P6YQ57Ho;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dkim=fail header.i=@proton.me header.s=protonmail header.b="lcV/BL86";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tX7fK-0002qK-L9; Sun, 12 Jan 2025 18:46:46 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tX9QA-0006kJ-93; Sun, 12 Jan 2025 20:39:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1tX7fJ-0002q8-Fe; Sun, 12 Jan 2025 18:46:45 -0500
-Received: from mail-vs1-xe30.google.com ([2607:f8b0:4864:20::e30])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1tX7fH-0007sT-NL; Sun, 12 Jan 2025 18:46:45 -0500
-Received: by mail-vs1-xe30.google.com with SMTP id
- ada2fe7eead31-4aff1c57377so2118064137.0; 
- Sun, 12 Jan 2025 15:46:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736725602; x=1737330402; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=K9O660XbMNachmX0zw4ZgF49qepPT7E3bYqs5jTTxKw=;
- b=P6YQ57HoQtNKswq1Ix0RSgubJJooIaHukwtNsYnNSRpPRPCp8XjEjXogDNoDga8ih/
- BaqRyY/5qt95ixt7REBzGUOQ1Or8qZbNaJGwRxkexhdCiQb7dGc1IFW38idkuRDGph+o
- ymS1/q1aCXIjCcfTnodUCAQvllfX6dbQO36LEBLqTWcrtBwmK+3IYHKSGIw3OUNeunD+
- JE/UsbY2shpLJ8z2EygrNJrjaIXZhKBIUHAFRV8+i5nP33qSC62CW0rDpoxRVsD6I3lm
- jNXP0Lta2dpj0adj79Ml624XMENSPnWcmbo08EtKO8ooDHO/VhJ9ZKF6kjEnoHR5UOtH
- 5OYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736725602; x=1737330402;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=K9O660XbMNachmX0zw4ZgF49qepPT7E3bYqs5jTTxKw=;
- b=WHzpzuTu/lIdJHO6DHz1M58dv267jpGavDeQSL6kvPvdJM/M4x8V9if7VV9TQW833k
- VzcFYhno17zIcd1Zed1UhRK/pEq/g6GUdXuEJDREik1aVEe7nwZqPS/WCAI0nhPw4adv
- Wj5GFWjLAVIpQXU4f4yyONSQcPRbXCs9LmQWXaX2PWS0Fr8XOfGG0YJ+OTcP73IFJsMl
- DoV5ya3ocD/dzV+mDL+1I0w2k1+acHjiaJER7cBAxVWVL1GSgIE0hDsVd32ESzSKqqdz
- ENlDdpT4ScDxrebXTqLtbKROMYr9umGS97nyVHjQOUVc6nDhVu4t95aUpR/q0bYd5EP4
- sYwQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWxhOD5i3UTUvzjXMx8NiyjKrOM5kpPPM0Atbv5H3fvqoWqrJP2paiJJITLMZMWoePBh+ZMYRWmPw==@nongnu.org
-X-Gm-Message-State: AOJu0Yx8zM1IUQX44TQUhzODO9pt4va1C+gEqObYkO/3ea1SjSrbvFSH
- fEmSlz3utlAHLDweYPcQ9f+aZa9hvFhQDxs2R10TaIi+5Dd4a44Ktsgb6mEfHrQnWFjGHLkmExz
- ljmNpbxaRoc1/V1WMP2sCtTuH1V8=
-X-Gm-Gg: ASbGncvuHDO2+vCS3SupSa2ifjqgXYJ+vlQCKxXwV88AlBkuGQ/pepC6VFVnKldhtkO
- tMmueJnrymEcWu9yLuldoYkFtmars66d8ohHSkcX4/qwgohazwlYTrZQSFjNeXQIRMf4=
-X-Received: by 2002:a05:6102:4a10:b0:4b2:bcae:a721 with SMTP id
- ada2fe7eead31-4b5820cf928mr12894705137.11.1736725602277; Sun, 12 Jan 2025
- 15:46:42 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mdtymczyszyn@proton.me>)
+ id 1tX97x-0004X3-NX
+ for qemu-arm@nongnu.org; Sun, 12 Jan 2025 20:20:25 -0500
+Received: from mail-0201.mail-europe.com ([51.77.79.158])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mdtymczyszyn@proton.me>)
+ id 1tX97u-0002r2-J4
+ for qemu-arm@nongnu.org; Sun, 12 Jan 2025 20:20:25 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+ s=protonmail; t=1736731209; x=1736990409;
+ bh=ISRYMyzoP+VHy0mXRpIgL9BiCzujAT8F3Qeyt/EnlzM=;
+ h=Date:To:From:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+ Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector:
+ List-Unsubscribe:List-Unsubscribe-Post;
+ b=lcV/BL86A8OB0I16fxHz81ny8Y32sasgWStV1y+JHNwyi5sMewaZezKW267EeTDL9
+ COeNuz/4E20hsqY2ZmA73fptprnHZ4Ys72Je7PPTmetr5/fjxVJI1Z76bQubgpMWto
+ OFyaNSpsOw3Wo9w6iXDxwKHkfApAjA4RgF5WTXmDly8vOa0a4xITExNsI+8BIIwNNe
+ dy2+YjjN1UOaYipDeVQdLXZmxXQ4IyEiz1mnBH5Aj4fo9EFzZlsRUipQ/G7PCl+Xnn
+ buJmE8oaj+JTYmADVYA5mSMVw7PfZ4PGDzPtEwpHm1Om7ZUpqwH6HqFX/inuZpFJEQ
+ yzKubI8JtasWw==
+Date: Mon, 13 Jan 2025 01:20:04 +0000
+To: "llvm-admin@lists.llvm.org" <llvm-admin@lists.llvm.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Subject: Can you emulate cross compilers written for x86 on ARMv8-A?
+Message-ID: <V8-9mH_0RAMdFX4EVzJvHoDkKGgQnCZBdgFGLs4jNL-gZlRm-tb0YLlx2hmWss8Gidu2rC2IZK3RZiZk-v29J_AIpOdh_t4fi3d3VGEoeS4=@proton.me>
+Feedback-ID: 54493216:user:proton
+X-Pm-Message-ID: efe2debb6a4d8171eb621dc4410c3117933958ee
 MIME-Version: 1.0
-References: <20250112225614.33723-1-philmd@linaro.org>
- <20250112225614.33723-4-philmd@linaro.org>
-In-Reply-To: <20250112225614.33723-4-philmd@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 13 Jan 2025 09:46:16 +1000
-X-Gm-Features: AbW1kvZBt50-96btYV3kgYc92gRZ2BChskYUDhYtjIMZ4hcb5MjmHiWomP6UO1I
-Message-ID: <CAKmqyKM6vjXR32F4yvLc1qsT=WoZSbcZuwnvNX1Bndv3Smx33A@mail.gmail.com>
-Subject: Re: [PATCH 3/3] hw/arm/v7m: Remove use of &first_cpu in machine_init()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Samuel Tardieu <sam@rfc1149.net>,
- qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Felipe Balbi <balbi@kernel.org>, 
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e30;
- envelope-from=alistair23@gmail.com; helo=mail-vs1-xe30.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=51.77.79.158; envelope-from=mdtymczyszyn@proton.me;
+ helo=mail-0201.mail-europe.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Sun, 12 Jan 2025 20:39:07 -0500
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IQI2g7ZPqCo/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Matt Timpson <mdtymczyszyn@proton.me>
+From:  Matt Timpson via <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: OduShMTDPFCQ
 
-On Mon, Jan 13, 2025 at 8:57=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> When instanciating the machine model, the machine_init()
-> implementations usually create the CPUs, so have access
-> to its first CPU. Use that rather then the &first_cpu
-> global.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Hello,
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+The Raspberry Pi forums just banned me, and while they probably banned me f=
+or asking beginner-level questions they saw as inappropriate, I feel compel=
+led to clear the air. They didn't formally give me a reason.
 
-Alistair
+I had one of those shower thoughts: if you want to run a cross compiler to =
+rewrite x86 software to work on your ARM computer, but those you found only=
+ work on x86, couldn't you emulate an x86 system just long enough to rewrit=
+e software so it no longer needs an emulator? I understand that compilers t=
+ranslate into high-level languages for a reason, even if I don't know why; =
+and everyone who would speak to me suggested just about everything else, bu=
+t for sake of completeness, what would happen if I did this the wrong way?
 
-> ---
->  hw/arm/b-l475e-iot01a.c    | 2 +-
->  hw/arm/microbit.c          | 2 +-
->  hw/arm/mps2-tz.c           | 2 +-
->  hw/arm/mps2.c              | 2 +-
->  hw/arm/msf2-som.c          | 2 +-
->  hw/arm/musca.c             | 2 +-
->  hw/arm/netduino2.c         | 2 +-
->  hw/arm/netduinoplus2.c     | 2 +-
->  hw/arm/olimex-stm32-h405.c | 2 +-
->  hw/arm/stellaris.c         | 2 +-
->  hw/arm/stm32vldiscovery.c  | 2 +-
->  11 files changed, 11 insertions(+), 11 deletions(-)
->
-> diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-> index 5002a40f06d..c9a5209216c 100644
-> --- a/hw/arm/b-l475e-iot01a.c
-> +++ b/hw/arm/b-l475e-iot01a.c
-> @@ -82,7 +82,7 @@ static void bl475e_init(MachineState *machine)
->      sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
->
->      sc =3D STM32L4X5_SOC_GET_CLASS(&s->soc);
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename, 0,
-> +    armv7m_load_kernel(s->soc.armv7m.cpu, machine->kernel_filename, 0,
->                         sc->flash_size);
->
->      if (object_class_by_name(TYPE_DM163)) {
-> diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-> index 374fbcb3618..3f56fb45ce1 100644
-> --- a/hw/arm/microbit.c
-> +++ b/hw/arm/microbit.c
-> @@ -56,7 +56,7 @@ static void microbit_init(MachineState *machine)
->      memory_region_add_subregion_overlap(&s->nrf51.container, NRF51_TWI_B=
-ASE,
->                                          mr, -1);
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +    armv7m_load_kernel(s->nrf51.armv7m.cpu, machine->kernel_filename,
->                         0, s->nrf51.flash_size);
->  }
->
-> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-> index 0136e419bfd..d3a9f1b03ac 100644
-> --- a/hw/arm/mps2-tz.c
-> +++ b/hw/arm/mps2-tz.c
-> @@ -1211,7 +1211,7 @@ static void mps2tz_common_init(MachineState *machin=
-e)
->                                      mms->remap_irq);
->      }
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +    armv7m_load_kernel(mms->iotkit.armv7m[0].cpu, machine->kernel_filena=
-me,
->                         0, boot_ram_size(mms));
->  }
->
-> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-> index efb3500742f..56b2af40f1d 100644
-> --- a/hw/arm/mps2.c
-> +++ b/hw/arm/mps2.c
-> @@ -460,7 +460,7 @@ static void mps2_common_init(MachineState *machine)
->                   qdev_get_gpio_in(armv7m,
->                                    mmc->fpga_type =3D=3D FPGA_AN511 ? 47 =
-: 13));
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +    armv7m_load_kernel(mms->armv7m.cpu, machine->kernel_filename,
->                         0, 0x400000);
->  }
->
-> diff --git a/hw/arm/msf2-som.c b/hw/arm/msf2-som.c
-> index 5c415abe852..9b20f1e2c98 100644
-> --- a/hw/arm/msf2-som.c
-> +++ b/hw/arm/msf2-som.c
-> @@ -92,7 +92,7 @@ static void emcraft_sf2_s2s010_init(MachineState *machi=
-ne)
->      cs_line =3D qdev_get_gpio_in_named(spi_flash, SSI_GPIO_CS, 0);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&soc->spi[0]), 1, cs_line);
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +    armv7m_load_kernel(soc->armv7m.cpu, machine->kernel_filename,
->                         0, soc->envm_size);
->  }
->
-> diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-> index 3c3b534cb72..e9c092abc3d 100644
-> --- a/hw/arm/musca.c
-> +++ b/hw/arm/musca.c
-> @@ -590,7 +590,7 @@ static void musca_init(MachineState *machine)
->                                                       "cfg_sec_resp", 0))=
-;
->      }
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +    armv7m_load_kernel(mms->sse.armv7m[0].cpu, machine->kernel_filename,
->                         0, 0x2000000);
->  }
->
-> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-> index 8b1a9a24379..df793c77fe1 100644
-> --- a/hw/arm/netduino2.c
-> +++ b/hw/arm/netduino2.c
-> @@ -48,7 +48,7 @@ static void netduino2_init(MachineState *machine)
->      qdev_connect_clock_in(dev, "sysclk", sysclk);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), machine->kernel_filename,
-> +    armv7m_load_kernel(STM32F205_SOC(dev)->armv7m.cpu, machine->kernel_f=
-ilename,
->                         0, FLASH_SIZE);
->  }
->
-> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-> index bccd1003549..81b6334cf72 100644
-> --- a/hw/arm/netduinoplus2.c
-> +++ b/hw/arm/netduinoplus2.c
-> @@ -48,7 +48,7 @@ static void netduinoplus2_init(MachineState *machine)
->      qdev_connect_clock_in(dev, "sysclk", sysclk);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu),
-> +    armv7m_load_kernel(STM32F405_SOC(dev)->armv7m.cpu,
->                         machine->kernel_filename,
->                         0, FLASH_SIZE);
->  }
-> diff --git a/hw/arm/olimex-stm32-h405.c b/hw/arm/olimex-stm32-h405.c
-> index 4ad7b043be0..1f15620f9fd 100644
-> --- a/hw/arm/olimex-stm32-h405.c
-> +++ b/hw/arm/olimex-stm32-h405.c
-> @@ -51,7 +51,7 @@ static void olimex_stm32_h405_init(MachineState *machin=
-e)
->      qdev_connect_clock_in(dev, "sysclk", sysclk);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu),
-> +    armv7m_load_kernel(STM32F405_SOC(dev)->armv7m.cpu,
->                         machine->kernel_filename,
->                         0, FLASH_SIZE);
->  }
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index 7303e096ef7..284980ad4b5 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -1366,7 +1366,7 @@ static void stellaris_init(MachineState *ms, stella=
-ris_board_info *board)
->      create_unimplemented_device("hibernation", 0x400fc000, 0x1000);
->      create_unimplemented_device("flash-control", 0x400fd000, 0x1000);
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu), ms->kernel_filename, 0, flash=
-_size);
-> +    armv7m_load_kernel(ARMV7M(armv7m)->cpu, ms->kernel_filename, 0, flas=
-h_size);
->  }
->
->  /* FIXME: Figure out how to generate these from stellaris_boards.  */
-> diff --git a/hw/arm/stm32vldiscovery.c b/hw/arm/stm32vldiscovery.c
-> index cc419351605..e6c1f5b8d7d 100644
-> --- a/hw/arm/stm32vldiscovery.c
-> +++ b/hw/arm/stm32vldiscovery.c
-> @@ -51,7 +51,7 @@ static void stm32vldiscovery_init(MachineState *machine=
-)
->      qdev_connect_clock_in(dev, "sysclk", sysclk);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
->
-> -    armv7m_load_kernel(ARM_CPU(first_cpu),
-> +    armv7m_load_kernel(STM32F100_SOC(dev)->armv7m.cpu,
->                         machine->kernel_filename,
->                         0, FLASH_SIZE);
->  }
-> --
-> 2.47.1
->
->
+
+Thanks,
+Matt Timpson =F0=9F=8D=89
+
+
+Sent with Proton Mail secure email.

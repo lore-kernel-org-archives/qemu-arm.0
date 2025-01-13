@@ -1,251 +1,216 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1463947njn;
-        Sun, 12 Jan 2025 15:40:37 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXV052v6nDWfvVULXAU1wf5o1UjxzueVH4DlLJA4gAwb4gobz5VBNZ8072aIndyvALFfzEQHL0DgUZ4qw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHrlt1upgqR/nKRnnNFszYvSSOYYc7PcavOPvysbHtKbwkARYSnsfj8sJ1A0o9E/UJWEhG+
-X-Received: by 2002:a05:6214:21eb:b0:6d4:215d:91b9 with SMTP id 6a1803df08f44-6df9b2384bemr246573006d6.11.1736725237762;
-        Sun, 12 Jan 2025 15:40:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736725237; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp1587338njn;
+        Sun, 12 Jan 2025 22:53:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUlBAq3jSne925jLxofjZarN+C2ixvSdMhlVQMQZ2S8P/cV8AV8SNyRHLEfpYcZD7CK1YAuf+471DoyDA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFYYEGxSkIVXVSmHJDrbTxEBMBfQs531hggGXlVgkBkW3HSYtdOlKNvfMUKtKMRWQ6IptwN
+X-Received: by 2002:ad4:5ba9:0:b0:6d8:a5f7:f116 with SMTP id 6a1803df08f44-6df9b2eb364mr305514896d6.42.1736751195048;
+        Sun, 12 Jan 2025 22:53:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736751195; cv=none;
         d=google.com; s=arc-20240605;
-        b=is4TdefreBNWnf7b3vSAFOIYPhJGb+01BSEZLLmeYGG4uMphMorACHE9MtgUGvoqu+
-         ySMNmpIH9T6PvY4r3wROtyUeNSZ4xvyOntrEVggC51o2MTfnJGK6lJKynKCPPXnE7OAJ
-         tpUUjARPAGKxHx7KnvzMTyZoZF13HmCQvK5ND7pb+VOMCupRfAGLgldn57JIqhgaV5o0
-         IQJX+gksJZSbvgizr3j/NzCbFNTWL96cdV1EZRhFN/5HIvhew5uTsQwCMKQXEJGp9JeR
-         zE3fYLPhw69RECLyReBSgVWYbPvRZvK2X3HDDxalTeIx6wCM/4KLPIHjHcpkKyZFdy8c
-         JIGw==
+        b=ds56/BY/WpsvKqhmMuso2+WE77hy6pIeB+3ye60u6v838gvXp3fjzDXBk1RkrmYnWP
+         kCWkfn1DnBLgUVVZeEuRiyBLFCE93zk1SOu5KY1Yio0HQvL11K53RSiR4gxLKax4XBtS
+         qK/1pYTQhzT0S8ZQAigQFh0Bba9HGHA1gNcAkkFvWgdCXCxxWxMISGI5rf7LgW3C1tCm
+         7c1543mZ7W1MVqP0qT+4/jqoaBfW9aJEv6RCFozSPgx2q5LLYJbYbCNbAfEGqprCXuTG
+         hYUl5gL8uRAUdm1R9F5tmujrOPP9Slj/lypdJmRDS7sun5QbQ931LV7gw+oJXLgGAqAS
+         ZdJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=1LD6iflLB0gH4nA2fp+FkFqrD38sUdaRnXC9vr+9Irs=;
-        fh=C0fKwfxDLfZXj50nNrWbWgm0NOGwAdI9vO3FuVT9z5w=;
-        b=Xv082yRq4w9Vh9WqJMJrPG8pInPP9a8OWUiHLxVGlJWkrh08Wb4WH5Lfb3Y6AXJR2f
-         llQ4s0XniMko2ZbvNenXSP7VU6NyNGahrWmw0tCIICcIYTWX2vahdQg3mwqzPv0RMLFH
-         kbHV2Rk0ndQRlpMZs3KaNw2jFuKVxT6Gd+xGuSLQxiXiiZ/yzOOMyALE1VmGa64z+6wm
-         +GfrWj9q2yEDqxI11QjF9z8/MS8ylV2WhfsihaYkGrtAHwGrFELNBepf/DJyfRtEsOF6
-         yBz2wQgzhks97VUBLg/mybKPpurqnzN3n0OM/88eaCeDZY2A4ZW0wM4qhy/B+p//L2cF
-         69sA==;
+        h=content-transfer-encoding:content-language:in-reply-to:autocrypt
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:dkim-signature;
+        bh=pdm90ZFXqXfhlySAGDmKOf+f33qwcvJzeVusKwT5HGE=;
+        fh=YEIdcLwbImwD+r1g8DUdd27iWfJEguvFB0tYoddqiYw=;
+        b=J19AYv7cATFR3jCSP2ExJ3SjM1HnFSMrZV6vPrEKAW8be9CJ3gb0nMTLp316YAhs8g
+         w0q7uiNTRyRzkA3vO8+OmLULTBfE7lQlX0C0YGYT51enPq0QcYhOk7WafbFVwUzk/n5C
+         wfgksQBYVv3EInm8uCkOsDg8OW3q83okwAEJw4uynE2FCk5zt9uM+PrK5VX7dPCay6Dq
+         oOHfueKBHxuWSs0VgVde3L3n2leNeULJ4KbtqLm+/4+Hgs0et2mVRYFPQoEYMayyFGrD
+         WHMJ92q6q78kqP9P73/FH9TQFjWnFWk49P7x9DDtN1Q1w5HfJP++QsWxSinPeQTahW1y
+         1pGw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cCNMWVSQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6dfadedd54asi76217986d6.288.2025.01.12.15.40.37
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JWyb3dnt;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6dfae01ddf9si88705326d6.479.2025.01.12.22.53.14
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 12 Jan 2025 15:40:37 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 12 Jan 2025 22:53:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=cCNMWVSQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tX7Yp-0000et-8Q; Sun, 12 Jan 2025 18:40:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1tX7Yk-0000dv-H5; Sun, 12 Jan 2025 18:39:59 -0500
-Received: from mail-ua1-x92d.google.com ([2607:f8b0:4864:20::92d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1tX7Yi-0006s4-T3; Sun, 12 Jan 2025 18:39:58 -0500
-Received: by mail-ua1-x92d.google.com with SMTP id
- a1e0cc1a2514c-85bad9e0214so1569344241.3; 
- Sun, 12 Jan 2025 15:39:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1736725195; x=1737329995; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1LD6iflLB0gH4nA2fp+FkFqrD38sUdaRnXC9vr+9Irs=;
- b=cCNMWVSQtchnpSnoqGzcjSVlqB5dRSQpda44FYn2qarYtkrA0/F+6yZc+EWjUt0dyP
- eHK+0sR5GWBzVN4anU8Y4OYHxOEF4LvJ9pGPRlgeCCebftQ2MqhficK4HSNH30epgvuo
- kmVFjDX1rgdADfZWy1hR50KF05XIGgXkhYSryG052TycILJFUYry6+m2A/f6IHewjm4E
- p8Qn1WgBaLultBhyCTbVubMFswjxJxsuv/OnFCB0pJsYZwHCe9HH/sgJ/RGgG8WnV2Dy
- vIhv4R3KzW+N0LFwRSoVGAN0FI5WoK4/NCz5vmNDN2LS/WLRlcYisuC+h/1n71YmTX9R
- P4kA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JWyb3dnt;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1736751194;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=pdm90ZFXqXfhlySAGDmKOf+f33qwcvJzeVusKwT5HGE=;
+	b=JWyb3dntydJo/bMzEsQt1yxEOEBVl9qoEMHviMTx1QWJjTTwkue0cGspAClUpvkmY7M047
+	qr8fG804Va31RJdyOfawHb9n/zxlPKrmxTzZtQ8p1U9XR6S+oCmZ7gtKoEV+w0MFc9U9wJ
+	DywBhkPgWUxR825rD6bAc+Ws1e4oWko=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-402-g7jWoQvXPMig4m62tPcOWQ-1; Mon, 13 Jan 2025 01:53:11 -0500
+X-MC-Unique: g7jWoQvXPMig4m62tPcOWQ-1
+X-Mimecast-MFC-AGG-ID: g7jWoQvXPMig4m62tPcOWQ
+Received: by mail-ed1-f72.google.com with SMTP id 4fb4d7f45d1cf-5d40c0c728aso3168302a12.2
+        for <alex.bennee@linaro.org>; Sun, 12 Jan 2025 22:53:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736725195; x=1737329995;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=1LD6iflLB0gH4nA2fp+FkFqrD38sUdaRnXC9vr+9Irs=;
- b=J99xjAsTO33Ql0Dn1qdu/E591jdD6yRB5yVOWeKNsbIVmzBI25tWDxYPsNVAVUAZa5
- 8WGvTTbOgrugBWHYYGNdL2y+Qe9QdfQX+yRvy+HczT61eBjeg5K6P/9bBf1ks825zTF0
- KWSz1rXU4QzugaPBcDVM8sr/LqEzn+QrPCj8wxgOZ8uTqJQJ84PzIOBfqHmZAeo1D75F
- eAbxX7a4zH519mr8cuwGycIZwmQRGLcAOzsbsLxzhxkTGd+cwm0Cq7N4rR48QWEOEEgp
- Hx+fEjGxN8sApcK25hgnpG0I3BKiZYsZUCN6a6UYbZhmTHEG5X5oqxO/oMzpOlSHai9j
- 6P1A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWPcVNl8Ec1vBCnvFj8ithZlGBOUyqd65D2LfBI1Y9YL6cJXxWTPvjh/lFeIgBv/hLNCwm6f+bK4Q==@nongnu.org
-X-Gm-Message-State: AOJu0YwWP/pwrajZOC2cd6DlIRnFsMrsbYaXbZgzBm05JKjG/wJO0/zX
- +H4ioOtd/PolORKuSKjjAQKWQ21+UunZD0lnh7K310RVc9WLOp5uHwSJzfkdRWnO+cXjkKy+jFg
- jUad8tvG+zh1NzWCBWmnI2k4thkw=
-X-Gm-Gg: ASbGncu1rYaBL9aMDuZe4YEFtPjFB3OBSGQHXx0jKA9+A20zJqwhj/56oE93y5nH8tW
- CAjdW5AgI/Vbsu1EO24nyny1vmmftZnCsDjDjwXvMPcBmDFScbbrAjwFJUqmFJK70MZw=
-X-Received: by 2002:a05:6102:3c92:b0:4b6:1ce1:30a3 with SMTP id
- ada2fe7eead31-4b61ce132e1mr11788993137.4.1736725195075; Sun, 12 Jan 2025
- 15:39:55 -0800 (PST)
+        d=1e100.net; s=20230601; t=1736751190; x=1737355990;
+        h=content-transfer-encoding:in-reply-to:autocrypt:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=pdm90ZFXqXfhlySAGDmKOf+f33qwcvJzeVusKwT5HGE=;
+        b=VaeWRzh3SqwrHbUWOpzACHvnUYPXDhkL30cVYTdBTI8jJJ8ZvmJuAvKq43f4ANmlW+
+         iJphpqBstB5clVu3Gj+VYZhW1q+GpzDPs+u9sO77+dUbUG1Ads1SFYDXuNvxAsr4Wzx8
+         wjzrqmM8uxE++hph5Aju7H+QomEsYME81wjGbpIY3LyhL6/DbBe2nPX2qaD4jkS+JwoU
+         KEo+PIbzXMirBpcEBP7bysR3zDoLDfSbqxXkaxa1+xSPKwjZzYwN5tjVR0oK5JyDBHE0
+         dP10/iG4Iy0lcWIBNwJMNbswB3lR7/ixj0gNurIUSRSKsylzvhqeADRw0+/dsZ1xMhEJ
+         1mlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUyUGvUV7PyUHXmyl9kAN0OK01wuo0T/HQgKRoJrrj7P3ePkO34iaFJxNcYArLpZl5yzgNYwNuDxtXdzQ==@linaro.org
+X-Gm-Message-State: AOJu0YzjtMirEgxL3Si5pfrlws9mnGF4xUrQ0xN6uLUGBaCRQjKa0N7Z
+	A7GXGO0GDRVLES9V/0n8GjLX7vlJ1ePkQRaAXoY1Qcwc3HchcS+QWRv9GFX3bu5INdU7QfXUA1G
+	6WS0X+aQMCUKGrg9wKc9ClJBSXEOwnBEwXIDDE5+2rDtK2HdHIFQ36A==
+X-Gm-Gg: ASbGncvuYchqMKiZ42IqP/YgY1/p8lYSzKst6HZhMwoomQMxd60EcpZCUV4XTl0eWUI
+	jT7UDLps5K6jNfj222kau+BRsb1FAPpX4Jx9MBLyaM1hLeBQVMar6D6daKEVL/tv/zzDJYGZySj
+	FQQEJbWwsLDcotgZfjk0PAUFg+aKlhb3Bswm4REKHzIDc2ld1ocJXpYpUJYeKNgTUC9pn2Iajbi
+	bztwpOfdAQdSx7PAinqR11GRdA/y6try40j+bRx3XcCwEMKu0PjgZGSef8/yzsp9VLnSi4GDWdM
+	pk51DwHMhQ==
+X-Received: by 2002:a05:6402:5251:b0:5d0:bf5e:eb8 with SMTP id 4fb4d7f45d1cf-5d972e63ddfmr42175069a12.23.1736751189832;
+        Sun, 12 Jan 2025 22:53:09 -0800 (PST)
+X-Received: by 2002:a05:6402:5251:b0:5d0:bf5e:eb8 with SMTP id 4fb4d7f45d1cf-5d972e63ddfmr42175025a12.23.1736751189411;
+        Sun, 12 Jan 2025 22:53:09 -0800 (PST)
+Return-Path: <thuth@redhat.com>
+Received: from [192.168.0.7] (ip-109-42-48-16.web.vodafone.de. [109.42.48.16])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab2c9562e83sm460671766b.103.2025.01.12.22.53.07
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 12 Jan 2025 22:53:08 -0800 (PST)
+Message-ID: <ac2a2d0a-49b1-46ec-8c45-0d9e4487fb11@redhat.com>
+Date: Mon, 13 Jan 2025 07:53:06 +0100
 MIME-Version: 1.0
-References: <20250112225614.33723-1-philmd@linaro.org>
- <20250112225614.33723-2-philmd@linaro.org>
-In-Reply-To: <20250112225614.33723-2-philmd@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 13 Jan 2025 09:39:29 +1000
-X-Gm-Features: AbW1kvaMwoU4MFmHNT1IfOzbI8NBbLW3fFt7La_jRbubwpAc0WBJKabpw1NhRtE
-Message-ID: <CAKmqyKOsO_og4HaGN94DmVaBtighS_QowtBvhqRnwyg_g4L37A@mail.gmail.com>
-Subject: Re: [PATCH 1/3] hw/arm/nrf51: Rename ARMv7MState 'cpu' -> 'armv7m'
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Samuel Tardieu <sam@rfc1149.net>,
- qemu-arm@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, Felipe Balbi <balbi@kernel.org>, 
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, 
- Joel Stanley <joel@jms.id.au>, Alexandre Iooss <erdnaxe@crans.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::92d;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x92d.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: biBhzen9CLEn
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/3] docs/system/arm/virt: mention specific migration
+ information
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ Fabiano Rosas <farosas@suse.de>, Yanan Wang <wangyanan55@huawei.com>,
+ Zhao Liu <zhao1.liu@intel.com>, qemu-arm@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>, alex.bennee@linaro.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <20241219183211.3493974-1-pierrick.bouvier@linaro.org>
+ <20241219183211.3493974-4-pierrick.bouvier@linaro.org>
+ <CAFEAcA-LYWhtFaUanq_qS8nDEVdhDOhDR2kcKv8Ch_5fKSnv-Q@mail.gmail.com>
+ <70b28370-228d-41e6-88cd-eda686d55b21@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
+ yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
+ 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
+ tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
+ 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
+ O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
+ 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
+ gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
+ 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
+ zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
+ aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
+ AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
+ QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
+ EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
+ 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
+ eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
+ ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
+ zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
+ tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
+ WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
+ UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
+ BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
+ 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
+ +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
+ 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
+ gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
+ WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
+ VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
+ knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
+ cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
+ X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
+ AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
+ ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
+ fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
+ 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
+ cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
+ ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
+ Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
+ oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
+ IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
+ yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
+In-Reply-To: <70b28370-228d-41e6-88cd-eda686d55b21@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: IqLJNaME6MJZavX8Y9EthDHHGfJlRtl6NmfrDPksisU_1736751190
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: +ZM2n8v+9dvJ
 
-On Mon, Jan 13, 2025 at 8:57=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> The ARMv7MState object is not simply a CPU, it also
-> contains the NVIC, SysTick timer, and various MemoryRegions.
->
-> Rename the field as 'armv7m', like other Cortex-M boards.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+On 10/01/2025 21.54, Pierrick Bouvier wrote:
+> On 1/10/25 08:30, Peter Maydell wrote:
+>> On Thu, 19 Dec 2024 at 18:32, Pierrick Bouvier
+>> <pierrick.bouvier@linaro.org> wrote:
+>>>
+>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>> ---
+>>>   docs/system/arm/virt.rst | 14 +++++++++++---
+>>>   1 file changed, 11 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+>>> index d25275c27ce..9f1457cf9a2 100644
+>>> --- a/docs/system/arm/virt.rst
+>>> +++ b/docs/system/arm/virt.rst
+>>> @@ -17,9 +17,17 @@ to have the same behaviour as that of previous QEMU 
+>>> releases, so
+>>>   that VM migration will work between QEMU versions. For instance the
+>>>   ``virt-5.0`` machine type will behave like the ``virt`` machine from
+>>>   the QEMU 5.0 release, and migration should work between ``virt-5.0``
+>>> -of the 5.0 release and ``virt-5.0`` of the 5.1 release. Migration
+>>> -is not guaranteed to work between different QEMU releases for
+>>> -the non-versioned ``virt`` machine type.
+>>> +of the 5.0 release and ``virt-5.0`` of the 5.1 release.
+>>> +
+>>> +When saving a VM using the ``virt`` model, the snapshot is automatically 
+>>> set to
+>>> +target the latest ``virt`` versioned model. When loading the VM with a more
+>>> +recent QEMU version, you'll need to set machine model to match the 
+>>> version of
+>>> +your snapshot. When loading it, QEMU will return an error with the expected
+>>> +``virt`` version you should set, so you don't need to record it.
+>>
+>> I don't think we should be encouraging this -- our standard approach
+>> is "use the versioned machine types if you want migration", not
+>> "you can start with an unversioned type on the source end". So I've
+>> dropped this paragraph.
+>>
+> 
+> That's fine for me, I don't have a strong opinion on this.
+> I just had a (good) surprise when I saved a vm with virt machine, and 
+> realised it's versioned by default. It's good to know that when you export a 
+> virt machine, you are guaranteed it's bound to a specific version, so you 
+> can always load it with new QEMU versions. This is what I tried to express 
+> with this paragraph.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Technically, the "virt" machine is not a real machine, but an alias of the 
+latest machine:
 
-Alistair
+$ ./qemu-system-aarch64 -M help | grep alias
+virt                 QEMU 10.0 ARM Virtual Machine (alias of virt-10.0)
 
-> ---
->  include/hw/arm/nrf51_soc.h |  2 +-
->  hw/arm/nrf51_soc.c         | 18 +++++++++---------
->  2 files changed, 10 insertions(+), 10 deletions(-)
->
-> diff --git a/include/hw/arm/nrf51_soc.h b/include/hw/arm/nrf51_soc.h
-> index e52a56e75e0..f88ab1b7d3e 100644
-> --- a/include/hw/arm/nrf51_soc.h
-> +++ b/include/hw/arm/nrf51_soc.h
-> @@ -30,7 +30,7 @@ struct NRF51State {
->      SysBusDevice parent_obj;
->
->      /*< public >*/
-> -    ARMv7MState cpu;
-> +    ARMv7MState armv7m;
->
->      NRF51UARTState uart;
->      NRF51RNGState rng;
-> diff --git a/hw/arm/nrf51_soc.c b/hw/arm/nrf51_soc.c
-> index 37dd4cf5f40..dee06ab5654 100644
-> --- a/hw/arm/nrf51_soc.c
-> +++ b/hw/arm/nrf51_soc.c
-> @@ -76,16 +76,16 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
->      }
->      /* This clock doesn't need migration because it is fixed-frequency *=
-/
->      clock_set_hz(s->sysclk, HCLK_FRQ);
-> -    qdev_connect_clock_in(DEVICE(&s->cpu), "cpuclk", s->sysclk);
-> +    qdev_connect_clock_in(DEVICE(&s->armv7m), "cpuclk", s->sysclk);
->      /*
->       * This SoC has no systick device, so don't connect refclk.
->       * TODO: model the lack of systick (currently the armv7m object
->       * will always provide one).
->       */
->
-> -    object_property_set_link(OBJECT(&s->cpu), "memory", OBJECT(&s->conta=
-iner),
-> +    object_property_set_link(OBJECT(&s->armv7m), "memory", OBJECT(&s->co=
-ntainer),
->                               &error_abort);
-> -    if (!sysbus_realize(SYS_BUS_DEVICE(&s->cpu), errp)) {
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
->          return;
->      }
->
-> @@ -104,7 +104,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
->      mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart), 0);
->      memory_region_add_subregion_overlap(&s->container, NRF51_UART_BASE, =
-mr, 0);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart), 0,
-> -                       qdev_get_gpio_in(DEVICE(&s->cpu),
-> +                       qdev_get_gpio_in(DEVICE(&s->armv7m),
->                         BASE_TO_IRQ(NRF51_UART_BASE)));
->
->      /* RNG */
-> @@ -115,7 +115,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
->      mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->rng), 0);
->      memory_region_add_subregion_overlap(&s->container, NRF51_RNG_BASE, m=
-r, 0);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->rng), 0,
-> -                       qdev_get_gpio_in(DEVICE(&s->cpu),
-> +                       qdev_get_gpio_in(DEVICE(&s->armv7m),
->                         BASE_TO_IRQ(NRF51_RNG_BASE)));
->
->      /* UICR, FICR, NVMC, FLASH */
-> @@ -161,7 +161,7 @@ static void nrf51_soc_realize(DeviceState *dev_soc, E=
-rror **errp)
->
->          sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer[i]), 0, base_addr);
->          sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer[i]), 0,
-> -                           qdev_get_gpio_in(DEVICE(&s->cpu),
-> +                           qdev_get_gpio_in(DEVICE(&s->armv7m),
->                                              BASE_TO_IRQ(base_addr)));
->      }
->
-> @@ -185,10 +185,10 @@ static void nrf51_soc_init(Object *obj)
->
->      memory_region_init(&s->container, obj, "nrf51-container", UINT64_MAX=
-);
->
-> -    object_initialize_child(OBJECT(s), "armv6m", &s->cpu, TYPE_ARMV7M);
-> -    qdev_prop_set_string(DEVICE(&s->cpu), "cpu-type",
-> +    object_initialize_child(OBJECT(s), "armv6m", &s->armv7m, TYPE_ARMV7M=
-);
-> +    qdev_prop_set_string(DEVICE(&s->armv7m), "cpu-type",
->                           ARM_CPU_TYPE_NAME("cortex-m0"));
-> -    qdev_prop_set_uint32(DEVICE(&s->cpu), "num-irq", 32);
-> +    qdev_prop_set_uint32(DEVICE(&s->armv7m), "num-irq", 32);
->
->      object_initialize_child(obj, "uart", &s->uart, TYPE_NRF51_UART);
->      object_property_add_alias(obj, "serial0", OBJECT(&s->uart), "chardev=
-");
-> --
-> 2.47.1
->
->
+So maybe that could be mentioned here instead?
+
+  Thomas

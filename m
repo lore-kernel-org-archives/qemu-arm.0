@@ -1,105 +1,58 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436e9e6251asm159811055e9.40.2025.01.13.13.09.47
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-436e2e8bea5sm205895255e9.31.2025.01.14.03.25.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Jan 2025 13:09:48 -0800 (PST)
+        Tue, 14 Jan 2025 03:25:41 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 39CBB5F713;
-	Mon, 13 Jan 2025 21:09:47 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 580185F89C;
+	Tue, 14 Jan 2025 11:25:40 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,  qemu-devel@nongnu.org,
-  Eduardo Habkost <eduardo@habkost.net>,  Fabiano Rosas <farosas@suse.de>,
-  Yanan Wang <wangyanan55@huawei.com>,  Zhao Liu <zhao1.liu@intel.com>,
-  qemu-arm@nongnu.org,  Laurent Vivier <lvivier@redhat.com>,  Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Paolo Bonzini
- <pbonzini@redhat.com>,
-  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-Subject: Re: [PATCH v2 0/3] Change default pointer authentication algorithm
- on aarch64 to impdef
-In-Reply-To: <CAFEAcA_SHz2a0ZU=3e9AmZyJ_qn3e7nNhNm-hR9MdiTRjOyqWg@mail.gmail.com>
-	(Peter Maydell's message of "Mon, 13 Jan 2025 12:34:09 +0000")
-References: <20241219183211.3493974-1-pierrick.bouvier@linaro.org>
-	<CAFEAcA_ChARwKyvRXsEk1U3q1T2528753Eu7LgDSsDbF1s5tNQ@mail.gmail.com>
-	<CAFEAcA_SHz2a0ZU=3e9AmZyJ_qn3e7nNhNm-hR9MdiTRjOyqWg@mail.gmail.com>
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org,  manos.pitsidianakis@linaro.org,  Andrew
+ Melnychenko <andrew@daynix.com>,  Thomas Huth <thuth@redhat.com>,  Michael
+ Roth <michael.roth@amd.com>,  qemu-block@nongnu.org,  Jason Wang
+ <jasowang@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Yuri
+ Benditovich <yuri.benditovich@daynix.com>,  Kevin Wolf <kwolf@redhat.com>,
+  Peter Xu <peterx@redhat.com>,  qemu-arm@nongnu.org,  Peter Maydell
+ <peter.maydell@linaro.org>,  philmd@linaro.org,  Fabiano Rosas
+ <farosas@suse.de>,  Konstantin Kostiuk <kkostiuk@redhat.com>,  Eric Blake
+ <eblake@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,  Vladimir
+ Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  Markus Armbruster
+ <armbru@redhat.com>,  gustavo.romero@linaro.org,  Richard Henderson
+ <richard.henderson@linaro.org>
+Subject: Re: [PATCH v4 0/6] Enhance documentation for new developers
+In-Reply-To: <20241209183104.365796-1-pierrick.bouvier@linaro.org> (Pierrick
+	Bouvier's message of "Mon, 9 Dec 2024 10:30:58 -0800")
+References: <20241209183104.365796-1-pierrick.bouvier@linaro.org>
 User-Agent: mu4e 1.12.8; emacs 29.4
-Date: Mon, 13 Jan 2025 21:09:47 +0000
-Message-ID: <874j22l8tg.fsf@draig.linaro.org>
+Date: Tue, 14 Jan 2025 11:25:40 +0000
+Message-ID: <878qrdk56z.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: hB2yuLPo/Qlq
+X-TUID: jZiIVpV73krD
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Pierrick Bouvier <pierrick.bouvier@linaro.org> writes:
 
-> On Fri, 10 Jan 2025 at 16:28, Peter Maydell <peter.maydell@linaro.org> wr=
-ote:
->>
->> On Thu, 19 Dec 2024 at 18:32, Pierrick Bouvier
->> <pierrick.bouvier@linaro.org> wrote:
->> >
->> > qemu-system-aarch64 default pointer authentication (QARMA5) is expensi=
-ve, we
->> > spent up to 50% of the emulation time running it (when using TCG).
->> >
->> > Switching to pauth-impdef=3Don is often given as a solution to speed u=
-p execution.
->> > Thus we talked about making it the new default.
->> >
->> > The first patch introduce a new property (pauth-qarma5) to allow to se=
-lect
->> > current default algorithm.
->> > The second one change the default.
->> > The third one updates documentation.
->> >
->> > v2:
->> > - ensure we don't break migration compatibility, by using a specific b=
-ackward
->> >   compatible property.
->> > - added some documentation about migration for arm virt machine model.
->>
->> Other than a minor change to the 3rd docs patch which I'll note there:
->> applied to target-arm.next, thanks.
+> This series extends our documentation with new pages to help developers
+> onboarding on QEMU. It focuses on providing a big picture of QEMU (to a
+> modest extend).
 >
-> I just noticed that this series breaks 'make check-tcg', because
-> the pauth-3 test is explicitly checking the output of the
-> pointer-auth operation. I'm going to add in this patch, which
-> goes between patches 1 and 2 of this series:
->
-> Author: Peter Maydell <peter.maydell@linaro.org>
-> Date:   Mon Jan 13 11:42:57 2025 +0000
->
->     tests/tcg/aarch64: force qarma5 for pauth-3 test
->
->     The pauth-3 test explicitly tests that a computation of the
->     pointer-authentication produces the expected result.  This means that
->     it must be run with the QARMA5 algorithm.
->
->     Explicitly set the pauth algorithm when running this test, so that it
->     doesn't break when we change the default algorithm the 'max' CPU
->     uses.
->
->     Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->
-> diff --git a/tests/tcg/aarch64/Makefile.softmmu-target
-> b/tests/tcg/aarch64/Makefile.softmmu-target
-> index d08d9b01ded..9c52475b7ae 100644
-> --- a/tests/tcg/aarch64/Makefile.softmmu-target
-> +++ b/tests/tcg/aarch64/Makefile.softmmu-target
-> @@ -91,6 +91,9 @@ EXTRA_RUNS+=3Drun-memory-replay
->
->  ifneq ($(CROSS_CC_HAS_ARMV8_3),)
->  pauth-3: CFLAGS +=3D $(CROSS_CC_HAS_ARMV8_3)
-> +# This test explicitly checks the output of the pauth operation so we
-> +# must force the use of the QARMA5 algorithm for it.
-> +run-pauth-3: QEMU_BASE_MACHINE=3D-M virt -cpu max,pauth-qarma5=3Don -dis=
-play none
->  else
->  pauth-3:
->         $(call skip-test, "BUILD of $@", "missing compiler support")
 <snip>
+>
+> Pierrick Bouvier (6):
+>   docs/devel: remove dead video link for sourcehut submit process
 
-Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+This was already merged.
+
+>   docs/devel: add git-publish for patch submitting
+>   docs/devel: add b4 for patch retrieval
+>   docs/devel: add information on how to setup build environments
+>   docs: add a codebase section
+>   docs: add a glossary
+
+Queued to maintainer/jan-2025 and docs/next, thanks.
 
 --=20
 Alex Benn=C3=A9e

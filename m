@@ -1,254 +1,304 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp2313384njn;
-        Tue, 14 Jan 2025 02:26:39 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCX0OjutlZ1zlja6fsvfjNOu/UQYAgxZ/sQjacVkGdymTuNraFxAtqK27al60ncfs6Uz2TnG/ejl9riJ7g==@linaro.org
-X-Google-Smtp-Source: AGHT+IGnp1/75aL/wwwRenb708gHoYFL+3ZvT7j85pgYoPmqXBR6Tzs8sU7P1b5i9KFVREsInzEB
-X-Received: by 2002:a05:6a21:1088:b0:1e0:c3bf:7909 with SMTP id adf61e73a8af0-1e88d0ddc8dmr39236010637.41.1736850399763;
-        Tue, 14 Jan 2025 02:26:39 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1736850399; cv=pass;
+Received: by 2002:a05:7022:510:b0:92:a90b:6588 with SMTP id 16csp2325378dlj;
+        Tue, 14 Jan 2025 04:47:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVEdrupenlkWasnP0OxIuylj4mLw7B+yDJAvRzCtcHC1gaNNRp/sR00iqE8wIpp61WWvOMrfx3L2pIVIA==@linaro.org
+X-Google-Smtp-Source: AGHT+IETdN0/eaN0jC0M9qoyVFqAHo09MH4S3Se3sYwakYtKUvHOmev6g2DYTPVF+9/i+tRLRomH
+X-Received: by 2002:a05:620a:2896:b0:7bc:df55:2cbf with SMTP id af79cd13be357-7bcdf5530b4mr2499856385a.2.1736858828723;
+        Tue, 14 Jan 2025 04:47:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736858828; cv=none;
         d=google.com; s=arc-20240605;
-        b=U0JaqpEhTf3PxGlZP3ytNCodsZmwxHLdi4qdFFgeFE4fWzbVNp4yzTZASt+ZtmAAkr
-         sWN7Yl2JodqyzQOJ6vquAWf78R/7WaGtEcojuFRFei4U34i85AhN28Ps/nLxCTR7TLGo
-         kS2dQWiOPkuxtDBB9B6HbeJRmCbf4oh/V0xFgqRBt+s4tgOTeI6GHD7lgN6LysL+b7zh
-         1ix7zYwI5/ZlV1nWNL7D3xFCwbC9+U6lV4nGDVX73H3GOERNlRCeelYAFhI9qUxtXr+/
-         aJo+ukvl0nTr0/U6/xKBmg0t0Sk6n98PArRevwigJXU8+TsuliKjpB1bRRrkoC3hhZzN
-         8TSA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=mime-version:list-unsubscribe:list-subscribe:list-id:precedence
-         :content-transfer-encoding:references:in-reply-to:message-id:subject
-         :cc:to:from:date;
-        bh=R9neShIS27GW3AKci631qi0pFRxWgnARzpeEkz0kIXE=;
-        fh=+feeONKKhfj4Xu3umI+ZvCmxCiaV8JYRivnFs1FxxQw=;
-        b=HbeUjVfOU8SQ9QGTTAXW+cKMzWfuRLxFwRjlZQ3jrYjONSz+m1vUdvOc6tpQxiYoXz
-         GVDKWYVz/hPCtuaWM9s0mlgx4qTqHVXKmMpXZP6xAhYndHtLpiZ+nZ0z7rIRhsqsvBES
-         LRW4s9sDAJ0hNtvE4CHz+RzQMaCKvMqRtxZYY/oN++2cLTeMwpDBJnUZ1khTi+ziw8ep
-         /pkvVsl3IFMAGMuG6XAh6iCbQ9ILV+nGNlJA/iK8Ba5z2DdV3Df4XmuajPf0T4sua+kA
-         X1ks9nVqudyuAGpUXCC4zrlW2NOUKSL4QA3gkKzi6bXHSafk+McC0rBOMMg6kDV4QWLT
-         B7cQ==;
+        b=iDRAzXJF5f+fgPTYjqhSd8SXkLVgVYA4wxl0zqp0YiHt3s1qdYvysfRbWEZg2/e+AN
+         +il8ZymgVubr5P/7ypiOeSnoIWsEPl2haliHrvzq21/71FRWg5sma81M8a/ydgIFTOUu
+         vIisl1QcKXT1/Jkp8RI70ZmC+lrJFu6N+cXkOEvWVKTlX6EN3rW9tIPjFrz5Km66hb06
+         8Oe7ExkgRhUmZkA8omnG2EDWEK7zTZaBOvLmZHEdLbHLyW/cNraT6Rk/drWrNSliMPwS
+         b6sAAHPxUQH7/+FK90qXcO2uqVNMFL8JQiNNTfl8Z+mHdzBXw/+Ao54gqEte7Xuy+GCn
+         eEJQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:references:in-reply-to:subject:cc:to:from
+         :date:dkim-signature;
+        bh=lc6G0g6PijK+XrVeugz51uJN0px5BHFplyrpznO9mLo=;
+        fh=azs+i2BlrwC2MeI6HFXF0dtRksWtrbySqrOKd3i2Dow=;
+        b=cwLPwfMN/fhuknAMWr5uBrZb94oKHG55i8643nbsTgn5C3hgdl/Gauj6AuhG/Zzq8t
+         CkR6d0StSzG6VfxfQPhiWwDvAstSvNSjI4z0KwzY800Ya590WnwTHu2N8pIDN6PPfIXe
+         aoH9W2rdypijp/M0tyK9GflgJB7GLAsBdTQcknzvTMhIVRjmnqLssKDnCW1A8/IjQ8qe
+         Z2LbZBlFdLaaWiHWvPxPBSRQx6x1x+4CkENpBrsZvsy7mQkQVdc4l+JnImHkaNReBFU/
+         JN/WoN2Kk3pN8qX39L+hGajUnpEXqmqyJCH/6gQqvl0l8iWVayTZKh6Y6ygYKg7m+FBM
+         dI7w==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-475630-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-475630-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Return-Path: <linux-kernel+bounces-475630-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id 41be03b00d2f7-a319a30fa64si13962086a12.214.2025.01.14.02.26.39
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Je+HT88Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7bce34fe6c2si1360879985a.459.2025.01.14.04.47.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2025 02:26:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-475630-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 14 Jan 2025 04:47:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-475630-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-475630-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 45A3F3A3BFF
-	for <alex.bennee@linaro.org>; Tue, 14 Jan 2025 10:26:34 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 8B6B7230D08;
-	Tue, 14 Jan 2025 10:26:36 +0000 (UTC)
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4065B1ADC60
-	for <linux-kernel@vger.kernel.org>; Tue, 14 Jan 2025 10:26:33 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1736850396; cv=none; b=buiqTiC4P2kyu5BAudcNtwhULAuJSZyK7jJqOUlbFP/zhHQkiflQwJkfDJI9umMaApCT2zqsLXQwbul6SpmJrsWRaVurmrpNMpm8nwaF+8O3AC1syok2L9vsYIM5AcLOOn8XZsVYee1biFZJYYSabFDoUCUAltNTdYfJkdyz++0=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1736850396; c=relaxed/simple;
-	bh=C/kUkHi7OZ7FFQV4m/urbnROenOvXwyJuTim9Wecb/Q=;
-	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
-	 Content-Type:MIME-Version; b=orLvnsy5tH0VVh2OP40VFELfY+JXNWYepGtMwZwEJ6xPB+DOwM5GpsrMzQjcRpiGk1gQrwvqjjwAlEutfDjzIMYzjL1o5uUCQkxXIjTxYSJoFcJ7mbqDJ6W1fE1/KSQ2UBB1HZoMMPDUEiuMSysNZ4vnoXZcz31fKaSFWV1xT4E=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.231])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YXQHM4jwtz6L5Jy;
-	Tue, 14 Jan 2025 18:25:03 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 446931402C6;
-	Tue, 14 Jan 2025 18:26:30 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Tue, 14 Jan
- 2025 11:26:29 +0100
-Date: Mon, 9 Dec 2024 11:45:34 +0000
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: "Michael S . Tsirkin" <mst@redhat.com>, Shiju Jose
-	<shiju.jose@huawei.com>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
-	<gengdongjiu1@gmail.com>, Igor Mammedov <imammedo@redhat.com>,
-	<linux-kernel@vger.kernel.org>, <qemu-arm@nongnu.org>,
-	<qemu-devel@nongnu.org>
-Subject: Re: [PATCH v6 09/16] acpi/ghes: make the GHES record generation
- more generic
-Message-ID: <20241209114534.000079a6@huawei.com>
-In-Reply-To: <a35a02028136f9d5445b41760c892de302801500.1733561462.git.mchehab+huawei@kernel.org>
-References: <cover.1733561462.git.mchehab+huawei@kernel.org>
-	<a35a02028136f9d5445b41760c892de302801500.1733561462.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Je+HT88Q;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tXgJo-0006Ta-0Z; Tue, 14 Jan 2025 07:46:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tXgJY-0006SX-5D; Tue, 14 Jan 2025 07:46:38 -0500
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1tXgJU-0006bl-B2; Tue, 14 Jan 2025 07:46:34 -0500
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-aaf6b1a5f2bso166659066b.1; 
+ Tue, 14 Jan 2025 04:46:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1736858787; x=1737463587; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=lc6G0g6PijK+XrVeugz51uJN0px5BHFplyrpznO9mLo=;
+ b=Je+HT88QI/p+YPkJrANsQxpB0uBlLBd3wGMxwexttYm6Kt+noNTTRRmSHvjg1dDeVC
+ vG28M0LBDtX3RdRLJyWocit8TmSI5sONU7+fDCtf8YuSTPwS0ZgEnWyO50dbAGZnXbk4
+ VNjvBUC7x6KN7+S3rLmyQ0nBTAXi16hks0gnhi/vGuHtBz3Vg3gZjzcAM9Ry2pukIedt
+ s27L0XYpcpwbb+cy+bXlilpeagHana5cJfJIhVE2ogOvBhyK8vreAjz+pEHwmK8fEOS1
+ QSDZ/G+BleM2Ig2BnC7kSXdN4Jxz6M3pQvRpDDGwO5cUL0RLi24dZybNOt6Jfz93Eucw
+ 7v6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1736858787; x=1737463587;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=lc6G0g6PijK+XrVeugz51uJN0px5BHFplyrpznO9mLo=;
+ b=WTGf4tfJFavx79AYdWCjfqJBe1UmG+ir9pQ671rXVukvReaHgX77Msd6VpA9nd7acE
+ 9hCyVrimTF43lqoNICMGACWGhdM2mVNsG09r+gGs0RFAgrs5a6+cNGOfL3Q53/nJn8Ca
+ yFfq2crzIjRpTHOCIgnXUmJqa5RzHm5hla/TnGNPmU9ZTHCNTvhy4dRsvkLxDNk5GsbN
+ WSTacb83stb1bmF5180SgR/Sc2Cv9Bdl3YWpAsWAUVgw9kfIgnlZzOM/uyBMWfp/rpyU
+ 9KyV2kO8hrgcj1zI5nCM65JpHaOIcRLodu+48ubdIHKJnRPKZbv+yKT5VixRP++6ftG+
+ wLQQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUaPXmb64YRrgyXT8ES2Hzq+gG7JOtxFCsC4ehqF1C6No4C9HhdQrz3pHfEgNAunjU4i2zLOHMihQ==@nongnu.org,
+ AJvYcCWNSd/cm0lJxqZCc0KMIwYvqBI6QVTRo0HBUBUI0nD29XPZY/pcyjuI/w2wOBWksd83DDXsp3Aq6VNBSQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzV+lJU3hw38xxVsaIQ1jMtbvozG/MoyTbOnWxKesWITmr+0O8I
+ Q2pw8b9rbcNOcCX/n38ULGUVXy6RK0ZTdmaitIZdFQ7+AaFQiCZSWf4tug==
+X-Gm-Gg: ASbGncsMU5zOiAeQi5vmi6eV3o0JBKnLoc7b7aTGSLxwsAKPe4/33zBhvGIhxoGZZs9
+ IN3AKI0Pt6hV7aONGqce4c0pcpRvZKtpRP0tCfOkr9RkWhP2RculiJc8quXiM4TmQCrNfLuY3Kr
+ ie4vZvqa48s7FAe7Rq1Z0FcWRERBjIlmvzM4FZuyhdds+Uhpl1QaXQ63kERUkoMXangHp4ZiPkl
+ phmmee2GR3eHMVK3qjXMPpeDbFmX2qpzHpfID8VtKEkqvJNo7ZXa5BrHw2B5K/RdyXbpVR+BLYJ
+ vzJ/dhovYxP9K0ubnqJeoohRbZ4=
+X-Received: by 2002:a17:907:72d5:b0:aab:ef03:6d46 with SMTP id
+ a640c23a62f3a-ab2c3c63f95mr1900260866b.4.1736858787008; 
+ Tue, 14 Jan 2025 04:46:27 -0800 (PST)
+Received: from [127.0.0.1] (business-90-187-110-129.pool2.vodafone-ip.de.
+ [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ab2c90d73a9sm629541766b.58.2025.01.14.04.46.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 14 Jan 2025 04:46:26 -0800 (PST)
+Date: Tue, 14 Jan 2025 12:46:26 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+CC: Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
+ Guenter Roeck <linux@roeck-us.net>,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, qemu-arm@nongnu.org,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Laurent Vivier <lvivier@redhat.com>, Bin Meng <bmeng.cn@gmail.com>,
+ qemu-block@nongnu.org
+Subject: Re: [PATCH v2 00/13] i.MX and SDHCI improvements
+In-Reply-To: <20250111183711.2338-1-shentey@gmail.com>
+References: <20250111183711.2338-1-shentey@gmail.com>
+Message-ID: <D73FEABB-ACDF-4B05-9494-81B9B8740AEB@gmail.com>
 MIME-Version: 1.0
-X-ClientProxiedBy: lhrpeml500009.china.huawei.com (7.191.174.84) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: chZaVAUXQ2lV
-
-On Sat,  7 Dec 2024 09:54:15 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
-
-> Split the code into separate functions to allow using the
-> common CPER filling code by different error sources.
-> 
-> The generic code was moved to ghes_record_cper_errors(),
-> and ghes_gen_err_data_uncorrectable_recoverable() now contains
-> only a logic to fill the Generic Error Data part of the record,
-> as described at:
-> 
-> 	ACPI 6.2: 18.3.2.7.1 Generic Error Data
-> 
-> The remaining code to generate a memory error now belongs to
-> acpi_ghes_record_errors() function.
-> 
-> A further patch will give it a better name.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-
-Igor tagged this in previous posting.  Any reason for dropping?
-
-> 
-> # Conflicts:
-> #	roms/edk2
-Should clear this out.
-
-A few formatting things inline but beyond that looks good to me.
-
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
->  /*
-> @@ -383,15 +356,18 @@ void acpi_ghes_add_fw_cfg(AcpiGhesState *ags, FWCfgState *s,
->      ags->present = true;
->  }
->  
-> -int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
-> +void ghes_record_cper_errors(const void *cper, size_t len,
-> +                             uint16_t source_id, Error **errp)
->  {
->      uint64_t error_block_addr, read_ack_register_addr, read_ack_register = 0;
->      uint64_t start_addr;
-> -    bool ret = -1;
->      AcpiGedState *acpi_ged_state;
->      AcpiGhesState *ags;
->  
-> -    assert(source_id < ACPI_GHES_ERROR_SOURCE_COUNT);
-> +    if (len > ACPI_GHES_MAX_RAW_DATA_LENGTH) {
-> +        error_setg(errp, "GHES CPER record is too big: %ld", len);
-> +        return;
-> +    }
->  
->      acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
->                                                         NULL));
-> @@ -406,6 +382,10 @@ int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
->                               sizeof(error_block_addr));
->  
->      error_block_addr = le64_to_cpu(error_block_addr);
-> +    if (!error_block_addr) {
-> +        error_setg(errp, "can not find Generic Error Status Block");
-> +        return;
-> +    }
->  
->      read_ack_register_addr = start_addr +
->                               ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
-> @@ -415,24 +395,63 @@ int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
->  
->      /* zero means OSPM does not acknowledge the error */
->      if (!read_ack_register) {
-> -        error_report("OSPM does not acknowledge previous error,"
-> -                     " so can not record CPER for current error anymore");
-> -    } else if (error_block_addr) {
-> -        read_ack_register = cpu_to_le64(0);
-> -        /*
-> -         * Clear the Read Ack Register, OSPM will write it to 1 when
-> -         * it acknowledges this error.
-> -         */
-> -        cpu_physical_memory_write(read_ack_register_addr,
-> -                                  &read_ack_register, sizeof(uint64_t));
-> -
-> -        ret = acpi_ghes_record_mem_error(error_block_addr,
-> -                                         physical_address);
-> -    } else {
-> -        error_report("can not find Generic Error Status Block");
-> +        error_setg(errp,
-> +                   "OSPM does not acknowledge previous error,"
-> +                   " so can not record CPER for current error anymore");
-> +        return;
->      }
->  
-> -    return ret;
-> +    read_ack_register = cpu_to_le64(0);
-> +    /*
-> +     * Clear the Read Ack Register, OSPM will write 1 to this register when
-> +     * it acknowledges the error.
-> +     */
-> +    cpu_physical_memory_write(read_ack_register_addr,
-> +        &read_ack_register, sizeof(uint64_t));
-
-Maybe rewrap that line now it's indented less?
-
-> +
-> +    /* Write the generic error data entry into guest memory */
-> +    cpu_physical_memory_write(error_block_addr, cper, len);
-> +
-> +    return;
-> +}
-> +
-> +int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
-> +{
-> +    /* Memory Error Section Type */
-> +    const uint8_t guid[] =
-> +          UUID_LE(0xA5BC1114, 0x6F64, 0x4EDE, 0xB8, 0x63, 0x3E, 0x83, \
-> +                  0xED, 0x7C, 0x83, 0xB1);
-> +    Error *errp = NULL;
-> +    int data_length;
-> +    GArray *block;
-> +
-> +    block = g_array_new(false, true /* clear */, 1);
-> +
-> +    data_length = ACPI_GHES_DATA_LENGTH + ACPI_GHES_MEM_CPER_LENGTH;
-> +    /*
-> +     * It should not run out of the preallocated memory if adding a new generic
-> +     * error data entry
-> +     */
-> +    assert((data_length + ACPI_GHES_GESB_SIZE) <=
-> +            ACPI_GHES_MAX_RAW_DATA_LENGTH);
-> +
-> +    ghes_gen_err_data_uncorrectable_recoverable(block, guid,
-> +                                                data_length);
-
-Trivial: That fits on one line under 80 chars.
-
-> +
-> +    /* Build the memory section CPER for above new generic error data entry */
-> +    acpi_ghes_build_append_mem_cper(block, physical_address);
-> +
-> +    /* Report the error */
-> +    ghes_record_cper_errors(block->data, block->len, source_id, &errp);
-> +
-> +    g_array_free(block, true);
-> +
-> +    if (errp) {
-> +        error_report_err(errp);
-> +        return -1;
-> +    }
-> +
-> +    return 0;
->  }
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: a6EQDcKWAzNJ
 
 
+
+Am 11=2E Januar 2025 18:36:58 UTC schrieb Bernhard Beschow <shentey@gmail=
+=2Ecom>:
+>This series fixes some details in i=2EMX platform devices, improves SDHCI=
+
+>
+>compatibility with U-Boot and modernizes some code=2E
+>
+>
+>
+>The first 5 patches are bugfixes 1/ resolving infinite loop in U-Boot esd=
+hc
+>
+>driver, 2/ fixing a character echoing issue in imx-serial, 3/ fixing IRQ =
+sharing
+>
+>issue in Designware PCIe emulation, and 4/ fixing GPIO level preservation=
+ across
+>
+>resets in imx-gpio=2E
+>
+>
+>
+>Patches 6 and 7 modernize SD card emulation by turning presence and
+>
+>write-protect GPIOs into qdev GPIOs and then further allowing the GPIOs t=
+o be
+>
+>inverted, just like device tree allows=2E
+>
+>
+>
+>The rest of the series is cosmetics including turning DPRINTF() into trac=
+e
+>
+>events which eases debugging=2E
+>
+>
+>
+>v2:
+>
+>* Drop redundant implementation of TYPE_OR_IRQ (David, Zoltan)
+>
+>* Use absolute QOM paths when tracing in imx_gpio and imx_i2c (Phil)
+>
+>* Trace hexadecimal values in imx_serial (Phil)
+>
+>* Do NOT move inversion of presence and write-protect GPIOs since that ch=
+anges
+>
+>the internal logic of the device
+>
+>
+>
+>Bernhard Beschow (13):
+>
+>  hw/sd/sdhci: Set SDHC_NIS_DMA bit when appropriate
+>
+
+>  hw/char/imx_serial: Fix reset value of UFCR register
+>
+>  hw/char/imx_serial: Update all state before restarting ageing timer
+>
+>  hw/pci-host/designware: Expose MSI IRQ
+>
+>  hw/gpio/imx_gpio: Don't clear input GPIO values upon reset
+>
+
+Does anybody feel comfortable enough reviewing the above four patches? I h=
+it those issues while working on i=2EMX machines=2E
+
+The below two patches are less critical for my work but there were patches=
+ with discussions floating around recently, e=2Eg=2E [1]=2E
+
+Thanks,
+Bernhard
+
+[1] <https://patchew=2Eorg/QEMU/20250108100240=2E960593-1-clg@redhat=2Ecom=
+/>
+
+>  hw/sd/sd: Remove legacy sd_set_cb() in favor of GPIOs
+>
+>  hw/sd/sd: Allow for inverting polarities of presence and write-protect
+=
+>
+>    GPIOs
+>
+
+>  hw/char/imx_serial: Turn some DPRINTF() statements into trace events
+>
+>  hw/timer/imx_gpt: Remove unused define
+>
+>  tests/qtest/libqos: Reuse TYPE_IMX_I2C define
+>
+>  hw/i2c/imx_i2c: Convert DPRINTF() to trace events
+>
+>  hw/misc/imx6_src: Convert DPRINTF() to trace events
+>
+>  hw/gpio/imx_gpio: Turn DPRINTF() into trace events
+>
+>
+>
+> include/hw/arm/fsl-imx6=2Eh                  |  4 +-
+>
+> include/hw/arm/fsl-imx7=2Eh                  |  4 +-
+>
+> include/hw/char/imx_serial=2Eh               |  2 +-
+>
+> include/hw/pci-host/designware=2Eh           |  1 +
+>
+> include/hw/sd/sdcard_legacy=2Eh              |  1 -
+>
+> hw/arm/fsl-imx6=2Ec                          | 13 ++++-
+>
+> hw/arm/fsl-imx7=2Ec                          | 13 ++++-
+>
+> hw/char/imx_serial=2Ec                       | 65 ++++++++++++++--------=
+
+>
+> hw/gpio/imx_gpio=2Ec                         | 19 +++----
+>
+> hw/i2c/imx_i2c=2Ec                           | 21 ++-----
+>
+> hw/misc/imx6_src=2Ec                         | 23 ++------
+>
+> hw/pci-host/designware=2Ec                   |  7 +--
+>
+> hw/sd/sd=2Ec                                 | 39 ++++++-------
+>
+> hw/sd/sdhci=2Ec                              | 11 +++-
+>
+> hw/timer/imx_gpt=2Ec                         |  4 --
+>
+> tests/qtest/libqos/arm-imx25-pdk-machine=2Ec |  5 +-
+>
+> tests/qtest/libqos/i2c-imx=2Ec               |  4 +-
+>
+> hw/arm/Kconfig                             |  2 +
+>
+> hw/char/trace-events                       |  5 ++
+>
+> hw/gpio/trace-events                       |  5 ++
+>
+> hw/i2c/trace-events                        |  5 ++
+>
+> hw/misc/trace-events                       |  6 ++
+>
+> 22 files changed, 151 insertions(+), 108 deletions(-)
+>
+>
+>
+>-- >
+>2=2E48=2E0
+>
+>
+>

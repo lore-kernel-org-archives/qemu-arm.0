@@ -1,125 +1,125 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp2425483njn;
-        Tue, 14 Jan 2025 06:01:15 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWac08dEfPWKRNWPzKB0wQF0vHFLbwxp5elWQ+PVY5CNW3fUi0ecOMNMSx6gPZpjpvKNfjFXfvHsRx8JA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEI35IVeA4/TQVPZ9l9xmmnROGav8xYsetpxNQ91VaRnYkj5dDkE/dHU5a82VZzoRvwULUI
-X-Received: by 2002:a17:907:72d2:b0:aaf:74dc:5dbc with SMTP id a640c23a62f3a-ab2ab740fdamr2115930766b.29.1736863274474;
-        Tue, 14 Jan 2025 06:01:14 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1736863274; cv=pass;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp2426166njn;
+        Tue, 14 Jan 2025 06:01:57 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUgMiHpwaNXZ7nDqCBpi4afs19uA+MQ+DQuoj+ZfN4hQjCt1fXsPe6cAPKjs4iGOFPpQ7t6gsmjeWcJQQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IH6BOfwTng8G8sBK3CTmkbcA+AlpvD5OlU48hogouGTihX4VmHsGtj4a2NQck5b913OQUpJ
+X-Received: by 2002:a17:906:f581:b0:aa6:b4b3:5925 with SMTP id a640c23a62f3a-ab2ab5597cfmr1837822666b.14.1736863317635;
+        Tue, 14 Jan 2025 06:01:57 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1736863317; cv=pass;
         d=google.com; s=arc-20240605;
-        b=RImgFZjdGk5DRbngLyG/r1mbrgc2Y6w7XE6SYMpCLpTcbQuKo7ZpkAle1vyt3hf4Ll
-         mJZ6WdSlNULA8Z3utKCOTGGkKQWVF1/FWKTBX1byW6zEGHMq/vgHOJ67WAN/KhfYFaME
-         mZKyF011fgZsvdGdUfw4OWop265oOckg8pDyRWVB3T0i74URKz2PqXRjL+apu7gVAuqQ
-         cpHg1uOsoooig01ZJZrizZkg1pk9wT3P79baH+4PKdqhWOV9RPqR6TtAnreq6E8QXSSV
-         mTKFCLI4qNvQYfnPJvSC6SXSzftF7UXJibYjIqtpk06/KjENG0GQduGnaNJcvWmX/SPt
-         Bkdg==
+        b=ayEFoms12+1HU86X1UzpAxXeLknPzCzmTnLFohAeLC2IGJzHWVds1SMpLFCbUGcO/g
+         pdw1anUHyq2TqWwXzVXKkMeQ5FkPTuUYbV1cijldeXswZVTZpM9BoFZc4MW96M9/0QTK
+         sRLXN6JqDrdYyg+Fq/kUnZMF4uiDhV/aGlqx6qdRQyofPoKpt3WS2OhoSjCLLSiYp+Bj
+         4tOVUbFcmer8vXPdhXIQwOsnXZI//yS+IORmg7yfwzR+wZ10LaE7XZXqVi/3jo+W/Jeh
+         BfESIwgYarJCdJdNSOgZbOJGl7nJKCxSyQc+L04ak/GcIxzFHVzZSEj0AucHWWmKLFaj
+         NUaA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:from:references:cc:to:subject:user-agent
          :mime-version:list-unsubscribe:list-subscribe:list-id:precedence
          :date:message-id:dkim-signature;
-        bh=nlWleDUIMsS2jwvuNYiGOiFFuyxeQDHZ/qZSc7hmHcQ=;
-        fh=r+wEvEp76taORtCePG0u84N9jwAgX7+czOJrs4VC2kU=;
-        b=hH/U1m5ML1AnlxPVFr+EyV8bdkWz94l7sBdpEN7/gmPVVIPanlO9aeja9yhil35sRA
-         31OQlRD57x0TlVXrXJRtLMfKNoMlQHf+hdvsIIJ1YRuFHIOEzzlnQfmesGDuSmtjQbbq
-         +rv2EURydIPxM1QZxzTH+KjbCeqBVfgdS31ThD3PE4RW2J37hEvh01u+3OGUk19mpfm4
-         9PMBDC2zAfYnWtkdrq3p3SM1svjVunyi5j7BfGH8nj0DbJjynfG5pfH1NS18Wu5J+3dZ
-         pmbxg14deq+2WkIchGTh0WXH5uNtw55fBUQvSWi4Ac5cTWaIqKUTBM4VMYsIy/ndXfG9
-         GO4A==;
+        bh=5LiaySr94zDavTpMpv+RjEQ4WEDWDc58/LIfFci8ZtY=;
+        fh=baCYMkZgylbfg44Z9dRFkqDtgIAzblxF/X/ccZ1WWho=;
+        b=RITXRjTArLFAtbBIdGR0pFzUqBktDaJ0dzQ4Fq3Tm5Niw4VMgORL6vNAE1+GP34TV7
+         kpb02U9X31GDZ68ANJaCQrrBm1piLQp3+yLKga5EFHL2t4Rz+AlekgDT/Xm4cel06A0S
+         2ykWXuyCoqNf6G0hrWhsGU6EEe3+UTrP4ogt3Ti4aN9eNH03NkgvAdSZsJ+oLs2Oq0o9
+         2ux4j3RSgEt8FbP8YXE6iD9adxM8HRBpSFCpu8pj4m3UZ7jYcV8CTx3u8UIWAX41d/Xb
+         AMVr9hidAtd6M0opVhpGw3bzwAH+8rHdBSY10Vki+2wGh+IwHxyEH4/aK3r5fnobt48Z
+         3s3Q==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ky1DFg8S;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UKUb0g7w;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-35383-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-35383-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-35384-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-35384-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm+bounces-35383-alex.bennee=linaro.org@vger.kernel.org>
+Return-Path: <kvm+bounces-35384-alex.bennee=linaro.org@vger.kernel.org>
 Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [147.75.80.249])
-        by mx.google.com with ESMTPS id a640c23a62f3a-ab2c9411c75si813162066b.326.2025.01.14.06.01.14
+        by mx.google.com with ESMTPS id 4fb4d7f45d1cf-5d99f01b1basi6904837a12.402.2025.01.14.06.01.57
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2025 06:01:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-35383-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
+        Tue, 14 Jan 2025 06:01:57 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-35384-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) client-ip=147.75.80.249;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ky1DFg8S;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UKUb0g7w;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of kvm+bounces-35383-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-35383-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-35384-alex.bennee=linaro.org@vger.kernel.org designates 147.75.80.249 as permitted sender) smtp.mailfrom="kvm+bounces-35384-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by am.mirrors.kernel.org (Postfix) with ESMTPS id 205821882437
-	for <alex.bennee@linaro.org>; Tue, 14 Jan 2025 14:01:17 +0000 (UTC)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id CDFE518823CF
+	for <alex.bennee@linaro.org>; Tue, 14 Jan 2025 14:01:58 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 888D125632;
-	Tue, 14 Jan 2025 14:01:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id D9F934644E;
+	Tue, 14 Jan 2025 14:01:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="Ky1DFg8S"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="UKUb0g7w"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 65291232444
-	for <kvm@vger.kernel.org>; Tue, 14 Jan 2025 14:01:07 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6855C25632
+	for <kvm@vger.kernel.org>; Tue, 14 Jan 2025 14:01:49 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1736863269; cv=none; b=Yx1wyZrqvr426PA3d3zQDp5Rcw4KZ2OqSt3x+H1ZmUNRNdVU8NibepIGqnp/DFlRmhtWnbf0cFjhNwU71YBnVsm4pvzyyTVSpdnP0h/8qXdsUiJcrh9R5HgKUBXgHsFtxnl0hlBXn5c5AgItd7Srcu1kJkIXgxiq9brOiO5qVqc=
+	t=1736863311; cv=none; b=SqE7tJssKjrbTJOEgOHvSjixDpw1muBPZsPhmwSWZC8hcDH70lsjEXHZOlKRoWmzcJ40jkIWiW86L4zsdYDdDH/RZdnjNhT5wrZdp5+IXzOMwJ9qgPtvSUS9Nn1BhUSUXkH33eP43hxknhTpafFj9nWJz1bVlwvLX/ALR3V43Yg=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1736863269; c=relaxed/simple;
-	bh=RO2+LMMSt9/CV9mfZLBX3GcG1XZ/JAvd+2+TOjJhBUc=;
+	s=arc-20240116; t=1736863311; c=relaxed/simple;
+	bh=Xk3qWmPfZijoaXfRIpGNdYfV+q55Gb8GnpUndEq0uvM=;
 	h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
-	 In-Reply-To:Content-Type; b=gibrWIK1Rfu+j/X9c31aRofZUR4YBwT2byHXDzGSADBH1592jKkBAS5k91YKc5VdOh5rP35JUsiHeU4xHY/Mb6jaoJNmMxwh28xyYmU5EwlzjX9BatqZt+1dPyPNQyZPihFXmpoVF8J9z6FAotIDFCGSTbgN2hTGF9xTvhyjCKs=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=Ky1DFg8S; arc=none smtp.client-ip=170.10.133.124
+	 In-Reply-To:Content-Type; b=JOqnPAHobZkPQlC2OcaD7c2aGEM7AzLqp7VZCMNl8UIC60ntdj+w1R9bFgnsn5lMWHH0KK/paB4QrjseXb+i8SL4WN42dbavzKSIiXIo+boCPnfdZd91yKLvXPt0Yu5VT4gkwvBY2URlNmfJzQhGdcCWT9L5LxeCVTxmcxq5Apk=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=UKUb0g7w; arc=none smtp.client-ip=170.10.129.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1736863266;
+	s=mimecast20190719; t=1736863308;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=nlWleDUIMsS2jwvuNYiGOiFFuyxeQDHZ/qZSc7hmHcQ=;
-	b=Ky1DFg8StsNp4E2plFmGUhVivvybRl9Xw9KDuJvw8q05QdyjId1wGWMsKf3wItiYcmi8nO
-	lHVASmAfGO78KMHRk/rFDIFZ7qBFBLJWSKBGNlNVUQ87Rb8pRosKM1MW3Evq9jLJnHxU1E
-	xqEiUzuWg0NtOY0icgaI71EEKmvMLs4=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=5LiaySr94zDavTpMpv+RjEQ4WEDWDc58/LIfFci8ZtY=;
+	b=UKUb0g7wYICr807f7pREaRKKfXDp9fgC1k4emaBhmLFDDj1S/rWouWMxfLQhB9q2RmP61L
+	niNgVNaZaadZ3cWNXZH2ImDUykZsjU61HvrPoOQPFoj5mQ7nHvPMC7SX8t4tF7OCI7Iw8Y
+	PAUY5RgFLEnRnVg5l/1emY+P4WkCfYs=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-498-AA3KQRqcOAC0PS6MJ0YQ7g-1; Tue, 14 Jan 2025 09:01:05 -0500
-X-MC-Unique: AA3KQRqcOAC0PS6MJ0YQ7g-1
-X-Mimecast-MFC-AGG-ID: AA3KQRqcOAC0PS6MJ0YQ7g
-Received: by mail-wr1-f70.google.com with SMTP id ffacd0b85a97d-385e03f54d0so2460368f8f.3
-        for <kvm@vger.kernel.org>; Tue, 14 Jan 2025 06:01:04 -0800 (PST)
+ us-mta-167-RHtOR2U5Nl-OpPitcj5gpg-1; Tue, 14 Jan 2025 09:01:45 -0500
+X-MC-Unique: RHtOR2U5Nl-OpPitcj5gpg-1
+X-Mimecast-MFC-AGG-ID: RHtOR2U5Nl-OpPitcj5gpg
+Received: by mail-wr1-f71.google.com with SMTP id ffacd0b85a97d-38a873178f2so2756873f8f.1
+        for <kvm@vger.kernel.org>; Tue, 14 Jan 2025 06:01:45 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1736863264; x=1737468064;
+        d=1e100.net; s=20230601; t=1736863305; x=1737468105;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:from:references:cc:to:subject:user-agent
          :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
          :date:message-id:reply-to;
-        bh=nlWleDUIMsS2jwvuNYiGOiFFuyxeQDHZ/qZSc7hmHcQ=;
-        b=o5ZvXLhLp+0YX2HPqjEBE6SMwwHeWXwqu9A95iwcgGy7L06ZktRPjMecnfPy8nNXFg
-         kTn7+IXbxiveHK7G0IOPYRfv82HGF6FzaxkQZ9D3YttPcQp1v0b4JdcSanSj1nIamRTk
-         NLnvFTsSJepdfPc3M5tH+Qtu5QEqBC9gCRiM7Os9+5dpw0DOYk4pG/pKNPP79bRGrDiw
-         T8OEVksRv1Auf6jSpr6n6fa5sa6A7HqqmGZOcdrXsuPOQOrS2np963s/wUA2AUpdCaDB
-         WIeetWzhr+5PmKHw5Rl133eWDsavfjVGVXICwawX9+ndIHqE9wSTcqQBuMXQNKneOT98
-         WEdg==
-X-Forwarded-Encrypted: i=1; AJvYcCWxQ2LmU7abZsFCP9f2QwbFRLyTyuVwK4JlmJldmphZqU5T5PVM4oY0NCUP1T34eE8r0t8=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzC0ZAZb2AF4g+BacLQW+TOfCj586ZKIZEQFtewvii8yZjSOJA6
-	2pbb4VWqL+Mxy+hfiZDbAiSZqFvgOrhjQ4vanKBRK7xI4JdCy3kvEAc90woWrr7ofDpimKnw0A5
-	pKJTyf/Nb//AfgzMlrJWaoKu+msV0hlVQ29tNvtX3/x4ZVV6Cof51/Vdp1o+o
-X-Gm-Gg: ASbGncusG8us5RnMQmn6UUAN6+dqYNvJxR5kKXp1xzyri8OC9myBl0692XyOyxjhoJ0
-	yaU7k3L2A6s9y12bTWJbFVrV4qSzA4kB2d3q71bq+Vtv8FYH+PkA09Rp7fGlt8TGRO8gTVnkDqh
-	IlAGwrs4TYxQobFp6R1M3342vU0t+iPYlmDhuvYja380fQfZLLDf9c272r8tzd8ngxRDv8c3aDk
-	EZ9JtUT+/TD+ym8Adf6Kn+HWReEqbXrM3dp1R2RrUpQ5rcsReFb6Ovb79nhjuyebgttzrwmrQm2
-	/o4lyh/8ka0SyFQLZ0gLz/4HIqBDtleC4tAomKnZxwJ2Ou9M/k7i1OLsbenytBwkFMm+GNDB6Vg
-	5BBti4O4X
-X-Received: by 2002:a5d:6c63:0:b0:385:f38e:c0c3 with SMTP id ffacd0b85a97d-38a872f6eb4mr19679299f8f.6.1736863263172;
-        Tue, 14 Jan 2025 06:01:03 -0800 (PST)
-X-Received: by 2002:a5d:6c63:0:b0:385:f38e:c0c3 with SMTP id ffacd0b85a97d-38a872f6eb4mr19679214f8f.6.1736863262417;
-        Tue, 14 Jan 2025 06:01:02 -0800 (PST)
+        bh=5LiaySr94zDavTpMpv+RjEQ4WEDWDc58/LIfFci8ZtY=;
+        b=YGxPdfp1O75LbPFq0eeKCGbwM6Wmfo5D6BMJ8P0nqSH2UlQ7KEYrvgKSfXReZvHxFD
+         2KVzlj+GKyH27TqbCd+bTzPn75dzmN9VxbFnmzKyoQMinjwUBLG/KcRDdE/Zl+dj0sI7
+         n3ujsjXwyFzuFeuj4O8vTyykwb0GcnUCMzD1Q2DBUSePuvEROejsqWsc7B+xK5jCMDFa
+         grkOW0xnlj9wZ9XJ45Jda51WIiku7cu6xauCakVN9SqBRZJl6fxPlGLtzQR+MDGZzleO
+         4DGUEALOtbQMf004FSPQbrW4ud+ZLSDA55WuyAIyQIWaojiu7ZG3FlFemTJiIiewQ+ay
+         V+RA==
+X-Forwarded-Encrypted: i=1; AJvYcCXe3ZgzJ6BkBXZwEo8dO3QibjLwDNZQVCN0A8bW3y8MuEpgGelFGpHD7Bcggx4xdrBPPus=@vger.kernel.org
+X-Gm-Message-State: AOJu0YwSPwi0bANoHOKBHNfYligj7K+R4p3IutPtLqbSn2AOITamFHsM
+	IoGBzaDUA3GYeA7XQ2NXM9fvWUOVS6k5OXzJgJeLJKCcNt5Hd/bCGt1YcLzVcUzM7oqC/tCaFFY
+	4tGE++oi2C4vri2ULquX3nBl7xbJPB1+RGkud+tTMlrIrlG1g0Q==
+X-Gm-Gg: ASbGncslCiZaWQeUYQr1+jvCfWPHpoO0q/h/UiFA7vFcaa44Axbi1oVMY2ur8Mlle26
+	6PgqTvQ/mQSlPNcSDV7yj+bqQ/2hWFv8Onva7RnD4vegIN/rWHZXT2XK4s8+d5sAuC8tkY5Bxje
+	gGWmCt8iLu0Pbpt2d3uNj6oxmRHlHvnk/Mu8RULt8QPnGdmiLBf9BA4vdRKbqkgPeMEw5m4CZ02
+	r721rstJ4TkI18goUAIjco7WEIpZeb5sOxG9o6h9KEMiGtB6oQNr52s9zaQykLWwdkxbxzs0gfH
+	nVomc5V1oRPpW3jZSY5fj20scQJdLvgWMEP6u70dXxIpKYM/m+3I4SB7QRzAJOZu46LBdhE7DqZ
+	VXhvt5eGU
+X-Received: by 2002:a5d:64e2:0:b0:38b:e32a:10ab with SMTP id ffacd0b85a97d-38be32a13a4mr1543611f8f.9.1736863304445;
+        Tue, 14 Jan 2025 06:01:44 -0800 (PST)
+X-Received: by 2002:a5d:64e2:0:b0:38b:e32a:10ab with SMTP id ffacd0b85a97d-38be32a13a4mr1543559f8f.9.1736863303910;
+        Tue, 14 Jan 2025 06:01:43 -0800 (PST)
 Received: from ?IPV6:2003:cb:c738:3100:8133:26cf:7877:94aa? (p200300cbc7383100813326cf787794aa.dip0.t-ipconnect.de. [2003:cb:c738:3100:8133:26cf:7877:94aa])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a9fcb7a11sm9419173f8f.75.2025.01.14.06.00.59
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38a8e38332asm14738420f8f.23.2025.01.14.06.01.41
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 14 Jan 2025 06:01:01 -0800 (PST)
-Message-ID: <dbdc0f83-5b5b-4104-b850-63c0a4ec795f@redhat.com>
-Date: Tue, 14 Jan 2025 15:00:58 +0100
+        Tue, 14 Jan 2025 06:01:43 -0800 (PST)
+Message-ID: <120b94cd-e0c8-41a6-9afb-2e3fad477454@redhat.com>
+Date: Tue, 14 Jan 2025 15:01:41 +0100
 Precedence: bulk
 X-Mailing-List: kvm@vger.kernel.org
 List-Id: <kvm.vger.kernel.org>
@@ -127,7 +127,8 @@ List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
 List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/7] system/physmem: poisoned memory discard on reboot
+Subject: Re: [PATCH v4 7/7] system/physmem: Memory settings applied on remap
+ notification
 To: William Roche <william.roche@oracle.com>, kvm@vger.kernel.org,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
@@ -136,9 +137,9 @@ Cc: peterx@redhat.com, pbonzini@redhat.com, richard.henderson@linaro.org,
  wangyanan55@huawei.com, zhao1.liu@intel.com, joao.m.martins@oracle.com
 References: <cf587c8b-3894-4589-bfea-be5db70e81f3@redhat.com>
  <20241214134555.440097-1-william.roche@oracle.com>
- <20241214134555.440097-3-william.roche@oracle.com>
- <15d255c8-31fb-4155-83f0-bf294696621b@redhat.com>
- <9d1ed0f2-f87a-4330-bf5b-375e570a74e1@oracle.com>
+ <20241214134555.440097-8-william.roche@oracle.com>
+ <e13ddad7-77cf-489b-9e32-d336edb01c85@redhat.com>
+ <fe018270-5c2f-4b13-9254-aa047fc48ccd@oracle.com>
 From: David Hildenbrand <david@redhat.com>
 Content-Language: en-US
 Autocrypt: addr=david@redhat.com; keydata=
@@ -186,43 +187,50 @@ Autocrypt: addr=david@redhat.com; keydata=
  jPrnvUsUUsjRoRNJjKKA/REq+sAnhkNPPZ/NNMjaZ5b8Tovi8C0tmxiCHaQYqj7G2rgnT0kt
  WNyWQQ==
 Organization: Red Hat
-In-Reply-To: <9d1ed0f2-f87a-4330-bf5b-375e570a74e1@oracle.com>
+In-Reply-To: <fe018270-5c2f-4b13-9254-aa047fc48ccd@oracle.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-TUID: K57qwfBBAnzN
+Content-Transfer-Encoding: 8bit
+X-TUID: xWdk4FEbHqUS
 
-> If we can get the current set of fixes integrated, I'll submit another
-> fix proposal to take the fd_offset into account in a second time. (Not
-> enlarging the current set)
+On 10.01.25 21:57, William Roche wrote:
+> On 1/8/25 22:53, David Hildenbrand wrote:
+>> On 14.12.24 14:45, “William Roche wrote:
+>>> From: William Roche <william.roche@oracle.com>
+>>>
+>>> Merging and dump settings are handled by the remap notification
+>>> in addition to memory policy and preallocation.
+>>>
+>>> Signed-off-by: William Roche <william.roche@oracle.com>
+>>> ---
+>>>    system/physmem.c | 2 --
+>>>    1 file changed, 2 deletions(-)
+>>>
+>>> diff --git a/system/physmem.c b/system/physmem.c
+>>> index 9fc74a5699..c0bfa20efc 100644
+>>> --- a/system/physmem.c
+>>> +++ b/system/physmem.c
+>>> @@ -2242,8 +2242,6 @@ void qemu_ram_remap(ram_addr_t addr)
+>>>                        }
+>>>                        qemu_ram_remap_mmap(block, vaddr, page_size,
+>>> offset);
+>>>                    }
+>>> -                memory_try_enable_merging(vaddr, page_size);
+>>> -                qemu_ram_setup_dump(vaddr, page_size);
+>>>                    ram_block_notify_remap(block->host, offset, page_size);
+>>>                }
+>>
+>> Ah yes, indeed.
 > 
-> But here is what I'm thinking about. That we can discuss later if you want:
+> I also merged this patch 7/7 [system/physmem: Memory settings applied on
+> remap notification] into your patch 6/7 [hostmem: Handle remapping of
+> RAM], removing also the unneeded vaddr.
 > 
-> @@ -3730,11 +3724,12 @@ int ram_block_discard_range(RAMBlock *rb,
-> uint64_t start, size_t length)
->                }
+> So now we are down to 6 patches  (unless you want me to integrate the
+> fix for ram_block_discard_range() I talked about for patch 2/7)
 > 
->                ret = fallocate(rb->fd, FALLOC_FL_PUNCH_HOLE |
-> FALLOC_FL_KEEP_SIZE,
-> -                            start, length);
-> +                            start + rb->fd_offset, length);
->                if (ret) {
->                    ret = -errno;
->                    error_report("%s: Failed to fallocate %s:%" PRIx64 "
-> +%zx (%d)",
-> -                             __func__, rb->idstr, start, length, ret);
-> +                             __func__, rb->idstr, start + rb->fd_offset,
-> +                            length, ret);
->                    goto err;
->                }
-> 
-> 
-> Or I can integrate that as an addition patch if you prefer.
+> I'm sending my version v5 now.
 
-Very good point! We missed to take fd_offset into account here.
-
-Can you send that out as a separate fix?
-
-Fixed: 4b870dc4d0c0 ("hostmem-file: add offset option")
+Sorry for the delayed reply to v4.
 
 -- 
 Cheers,

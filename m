@@ -1,125 +1,128 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3258802njn;
-        Wed, 15 Jan 2025 10:11:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWvETm3/XAwgY+U8/Cuvear4toTspnxsVo11TGPLrRC4M87SxuVfVYCytZUfDXVCS5cXresRlho3VzrxA==@linaro.org
-X-Google-Smtp-Source: AGHT+IF+SUKN+BdvMuWrroacqqC0NQ244XmJmYkmvKqsEmxh6ROKDSaNaUUL8F6RL6pPu0EgVt3d
-X-Received: by 2002:a05:6102:c12:b0:4af:a216:c0d0 with SMTP id ada2fe7eead31-4b3d0e08150mr24856705137.0.1736964681238;
-        Wed, 15 Jan 2025 10:11:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736964681; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3259176njn;
+        Wed, 15 Jan 2025 10:11:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVA3JZF1pglx+U9oCxD175beHNw1iWh7kAgJAevTDvvuNQkSL7XnutHzZf/qyV8QNJpe+Pnla5frnHW9Q==@linaro.org
+X-Google-Smtp-Source: AGHT+IHtVPXc8jPVmj9jX/Y0tK1q7XmvgU9+BBblNP9qCB5R5vDneFVjdElUcBzo+nKcOTGA8uh+
+X-Received: by 2002:ac8:5fd1:0:b0:467:8651:40a2 with SMTP id d75a77b69052e-46c7108ee68mr538607101cf.13.1736964714258;
+        Wed, 15 Jan 2025 10:11:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736964714; cv=none;
         d=google.com; s=arc-20240605;
-        b=NerEcFn1NdFQuZ6b5xj2qKxWf8H57g7daGHveLHyUlgy7jcZ8e5o74dMkvNSCXdzIk
-         FlurYickbkR1/NfDcEnXS4COisXWflqHuAf3X20X2eRewC/QjLbbr7A9bKVdPoOQHT8Y
-         5b18df2hnUHUeT1oHm+FAY8GR4sQqQtVin8g+rJpIMJB0mr7bPxCLLuuVBvUBFmXn1qq
-         JQ3CsBeTbPEdsOrtZODCfQrQqMsnIv8kS909mvlz6iMqNCEwyj9Aojl7JFLv9yOSUq3J
-         WKU+Ks2J1u0kCbA14JMGYRw9TlX4aj0Leb0VkVDjx0HWk0Ba6zpTfrrHvs5It/V4I0IX
-         6gDw==
+        b=ay4myYzYKyj7l4/R2buLMFeElaEHi6lLkC4R5jWcq7PaOXQkvksUyz8POSxq+b665I
+         bCDgdbRP+lgh86JBKYBoE0YtsiqitSbVM0jxFw1NemlWm2jaeuhYeXmAPyrCwr563kzZ
+         1dinETS7Vq/BBqgJjQh4hwLOIUWLYg7zrsPjk571RUeGMXw8tIi4wNX3bK2Sld8H250y
+         hewKhqxvksZ2YvEnCsxC37pO4FO7PnVZWqw8xf60olfX2eSRVqPUTO9/seZi1FvSSGs2
+         Zhqo9DR5TSkj1VEGNDptupja/OaVWPZMxXtM0KFkd4bERAiTSmQzmXhiUyhKMAobNnjF
+         DZhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=xnd/UP08PD5Bozot/sSil++sem222YsXqqQSl4D4JTs=;
-        fh=Zd4d2LJ1LsYyHrOMwJvWJlM+BOX1C3pxX+oKwIolhTM=;
-        b=gYG34gLk5vXMWRFY9VhQvHGvaPLRtsJ6H1p6J7eUkubGXX4QS11TcWUzDhCWOH05x4
-         st2oz0srLtGItRE6Nxc+9AknlYPJfqxRld86HYs0265AdS7//PiU92fO1Cw3JaQoVutz
-         SraHZ6GUnmxr3HFrPQqDedKYAnogzkctU0Z63HrctR1Kwl3cSWhwVAxCG4TCWelI1PrU
-         jOsHjHYhAMY8klDIkaCAOMzdMJqbFMd+HevKLSpN4zOpGAhm4Cf0hc7uA9VM5K2WcJ4p
-         GkosZ/KNRT2TmBCmBSYynp4BTRMZUzYU41Hv8J0gTb1lm8xfWoMJCnthYfXwTF16SYhg
-         H7tA==;
+        bh=8oi9KOXhifPD6YPugI1W0xaqab0w+uWNDdH+YVyo2Gs=;
+        fh=8WTxrmC80btTbbL/dEgfsgYnL3C/t/C01lPpZbUqUOo=;
+        b=DZj+Hshf3YK+xmXx3rxt/c4oU1jqgzHt/QjGW4yuRf21+eupQL3/F75qLatosGz6ES
+         eehX+3yHxHxaGjHOOsV2U+iFHhLRdJoheTHUEMS89XqYxx5ld36DhfvSv01yj3t0XaDd
+         hwsK3eLn75/9ZaYnra2tlQAH3QFO9sq2dKsdcHP8iNzZSHCgffRsgjNAt4OB1t3pK/24
+         2YJhzZFWiMpLNnq+DyGPABY+2hPI8GeT9I44eWvLyIMV79n5S0Tn8++So79uf6Q8hcXX
+         ywug3vaXjbkt9RIkMPh6s70lBoHtKyIIhR7a8PowfhMkSdfzxslO58RPhxvRnoGBqJ55
+         XO2g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SI5EL6Qw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XNOhKOS6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b60939daaasi4350829137.613.2025.01.15.10.11.21
+        by mx.google.com with ESMTPS id d75a77b69052e-46c873e78c5si140821601cf.334.2025.01.15.10.11.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2025 10:11:21 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Jan 2025 10:11:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SI5EL6Qw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=XNOhKOS6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tY7qT-0007Yn-A1; Wed, 15 Jan 2025 13:10:28 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tY7rG-0001ke-RZ; Wed, 15 Jan 2025 13:11:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7q6-0007DG-Sf
- for qemu-devel@nongnu.org; Wed, 15 Jan 2025 13:10:05 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7qM-0007Xw-Py
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2025 13:10:19 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7q4-0006iC-Oz
- for qemu-devel@nongnu.org; Wed, 15 Jan 2025 13:10:02 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7qG-0006wy-Dr
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2025 13:10:15 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1736964600;
+ s=mimecast20190719; t=1736964611;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=xnd/UP08PD5Bozot/sSil++sem222YsXqqQSl4D4JTs=;
- b=SI5EL6QwQ7HMe8Ia7DLF6C8HUvEH7/t0z1F1j0KS2A/GtvN7dwSsGvHeKMRCk6HxF1FbNJ
- J1F976qd4o3ZtwpLfQ3zdxE5GhCIfCQX9gkVyLg4kwHuJXheX8ARp4cIQNEsvKdwT+9uq6
- pZjlHwJA8nH3I1g8poXttx5iW6ziA+U=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=8oi9KOXhifPD6YPugI1W0xaqab0w+uWNDdH+YVyo2Gs=;
+ b=XNOhKOS6d4tUEd4ZeY704kL3kQ9lc+DTAVlcyunwIOLSEIechGePAMXACWF5Ma6cDbveNz
+ jVxsxD1UhIjiw9KN04yncOYMeZDchhc2pVpWpNn5l3BnLce9pOh+8kpmMHfs05p2nGVcSE
+ U0Ebpk3q/Csuz/SjbA/kVYK5F8mqE1E=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-55-DVrzZK-4NDeElzzlS8q9sQ-1; Wed, 15 Jan 2025 13:09:58 -0500
-X-MC-Unique: DVrzZK-4NDeElzzlS8q9sQ-1
-X-Mimecast-MFC-AGG-ID: DVrzZK-4NDeElzzlS8q9sQ
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-385fdff9db5so48181f8f.0
- for <qemu-devel@nongnu.org>; Wed, 15 Jan 2025 10:09:58 -0800 (PST)
+ us-mta-169-piYV6dhfNuiFOjL1W16xrg-1; Wed, 15 Jan 2025 13:10:10 -0500
+X-MC-Unique: piYV6dhfNuiFOjL1W16xrg-1
+X-Mimecast-MFC-AGG-ID: piYV6dhfNuiFOjL1W16xrg
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-38a891d2aa5so53397f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 15 Jan 2025 10:10:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736964597; x=1737569397;
+ d=1e100.net; s=20230601; t=1736964609; x=1737569409;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=xnd/UP08PD5Bozot/sSil++sem222YsXqqQSl4D4JTs=;
- b=lYbm0Pk54zSSVST2hmWjwLYtsKnBFzXrF9N0CuxBdoaM+B2c3PxmY1+siTP2PZ2tWP
- 3m0xxBtjJfG9DwhGycAppitkBS4R28//cFyH7Uu946XZYofsIi4qc8ZbERzEn8PdI39V
- bl5ihb0auamEns7eT0p1nIQOoXajHkc+uM+S06IpCm77ZAdBakqFtPBDH+27UEhG/T/z
- Y4gut89UinJ0Zi5Y+awf4wkhUHgWMeEYJKMaTWso2eqimVvJ5ITcViXYhjzRgAhj+LVp
- EPkRIqfQm5i0KiIZapk/epCv2uyo2A8eFdNyKxmwj/L35EqDzbCdYFgzbsDGDt8Ul6+L
- TSsw==
-X-Gm-Message-State: AOJu0YzHG6r0govR/+JecWScTY0GMp7ZZB+HYAnCrcJH+Xob5fMSpDhS
- T9E2YXJWjOD1Vr1uH3iMF7KpL+SHTtRrGrJR3oCMpLu9C4OF+YhNkoCYIDCKQ0ycTOmNRElVN6P
- 0Seb+0f/u1Wc+vBzS8Fr7Y6YK4Mm+HPVRH/1uoEfxRWnl4rIEQibGB2f8tMqNV2aUgNUTJfd/q5
- eTGYGV96jwWLpGwkkMTwdwNiMSlQl7pA==
-X-Gm-Gg: ASbGncsvVhREdc+ueJLhQtufJTqADkzbUJO1yNjM86au08HFQQKN6hOCzfUjPx3YEk+
- jmGx8bbAp5nGWXj1FYCJ75w9QHlOTZVuuau9jm5AMHERXlNRMjQ1oTZBs0sR3c5a3j6WOaZ67cN
- kHJCI+bJ9AH3NV+SBeby+I1kb3DgYpHWs2xZPpurZkfPxj3OfXzv02Cw/+Rh9j6MCiUZ4XG9GDG
- UUszDd3zVZ80msCpPp6VWNSnx+e9enc0bMEAYkasQfcokBe2yJ/
-X-Received: by 2002:a5d:598b:0:b0:385:ee40:2d75 with SMTP id
- ffacd0b85a97d-38a872da8b6mr23074652f8f.20.1736964596997; 
- Wed, 15 Jan 2025 10:09:56 -0800 (PST)
-X-Received: by 2002:a5d:598b:0:b0:385:ee40:2d75 with SMTP id
- ffacd0b85a97d-38a872da8b6mr23074631f8f.20.1736964596557; 
- Wed, 15 Jan 2025 10:09:56 -0800 (PST)
+ bh=8oi9KOXhifPD6YPugI1W0xaqab0w+uWNDdH+YVyo2Gs=;
+ b=f1z16gYjIwRhOBTNQXU1FkiQNLkhmFix7nIroGoW3SKbY9RaH3Y9j1Hej009y56Zwm
+ YwRhieCrBwW+BXd3sV+I5yIQBBqhbBxqOKg3eUdd+uvGmb1KP/3a3sbaPIhXyvYkIE3A
+ GWd57g/Q2kjItF+B0+p1d4tLkCEVISKi9v97bAyR8ZrvgtK0l4KJpBMdL6UsDWLoDvhS
+ rwpoH9n1Wwbz3h2kPAxc2FrwwfZXXpknzgAA37q8ekA5OSCO7v9rOsN9Q3M2O/tWzt+V
+ KFGb9/PuwWEkRQcJmAoydzi+3bFXnvBFk5G22/7olcxiW/r0xRVu3ylzeM6K5T0sR+qw
+ ywjw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWcyVFvPKfNav5gwP7k3SIkqCqQZkpiTsgISjMP+HbGWvFlO0DPtKKHMfzX/pwGQT5SqLMQw1Xdhg==@nongnu.org
+X-Gm-Message-State: AOJu0Yw2vvvvbUwzFUKKqoFGVW91DDgZzyhi6G0rM7I6ejpDF+RPGSMW
+ DSt4niTbtWDIULcY8o1/FpPERaOAHgVu7uAYy+G4IKMqLVX3VmoengL1Nq9ARG//Mn1TJFM33Tc
+ Cyq+T6tXd11RAy8vDjhh16WiJHom2RIaaSSd/sv+nMs7S4NTEAA==
+X-Gm-Gg: ASbGncuwz1I+79rcB6hSYlr4ZbjzHkJ3mvaSw61IwcpUUaibonfd7X/DUT70vo4fkYu
+ Bfw0VGO9XrmeKwmL2p1fptplAziEH8yJZPy6QtJqE1m/6e5L2mETL4SkrcERQgb5XMkPqYFtj1F
+ /KorvE3BOUji5J1YvWwJEKhJbGCeIXqWZneJ5sqie8wuaKgUZbuXL5JdMeH2U4SrpcfD1D5pqWR
+ W9EI6OUfsvRy5Xayh+ceXf566HWI0baYDDhqxQY/v2HTkV+dtyt
+X-Received: by 2002:adf:b64f:0:b0:38a:a117:3db0 with SMTP id
+ ffacd0b85a97d-38aa11740b8mr10363944f8f.3.1736964609378; 
+ Wed, 15 Jan 2025 10:10:09 -0800 (PST)
+X-Received: by 2002:adf:b64f:0:b0:38a:a117:3db0 with SMTP id
+ ffacd0b85a97d-38aa11740b8mr10363924f8f.3.1736964609006; 
+ Wed, 15 Jan 2025 10:10:09 -0800 (PST)
 Received: from redhat.com ([2a0d:6fc7:342:db8c:4ec4:322b:a6a8:f411])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a8e38c006sm18112587f8f.46.2025.01.15.10.09.54
+ 5b1f17b1804b1-437c75298adsm31808245e9.30.2025.01.15.10.10.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Jan 2025 10:09:55 -0800 (PST)
-Date: Wed, 15 Jan 2025 13:09:53 -0500
+ Wed, 15 Jan 2025 10:10:08 -0800 (PST)
+Date: Wed, 15 Jan 2025 13:10:06 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Igor Mammedov <imammedo@redhat.com>,
  Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Ani Sinha <anisinha@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, Ani Sinha <anisinha@redhat.com>,
  Dongjiu Geng <gengdongjiu1@gmail.com>, qemu-arm@nongnu.org
-Subject: [PULL 27/48] acpi/ghes: get rid of ACPI_HEST_SRC_ID_RESERVED
-Message-ID: <239c3f7ed44d8b82a682a1c2e9e8c3355c10d321.1736964488.git.mst@redhat.com>
+Subject: [PULL 31/48] acpi/ghes: Fix acpi_ghes_record_errors() argument
+Message-ID: <5eb07a4ff067053b4d6bf55d2d614b65b00a476b.1736964488.git.mst@redhat.com>
 References: <cover.1736964487.git.mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <cover.1736964487.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: qwr_btQJ2yfYAEMjOtcNyyobolcLKgLYk-Y6Pe5V0Hg_1736964609
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
@@ -129,85 +132,53 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: UIsYdjlWbnUT
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: WQdbTMzpRhIC
 
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-This is just duplicating ACPI_GHES_ERROR_SOURCE_COUNT, which
-has a better name. So, drop the duplication.
+Align the header file with the actual implementation of
+this function, as the first argument is source ID and not
+notification type.
 
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Message-Id: <9012bf4c9630adf15a22af3c88fda8270916887b.1736945236.git.mchehab+huawei@kernel.org>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+Message-Id: <d55f2a6ede5a168e42a20a228b2c066cb4c60939.1736945236.git.mchehab+huawei@kernel.org>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- include/hw/acpi/ghes.h | 3 ++-
- hw/acpi/ghes.c         | 7 ++-----
- 2 files changed, 4 insertions(+), 6 deletions(-)
+ include/hw/acpi/ghes.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/hw/acpi/ghes.h b/include/hw/acpi/ghes.h
-index 674f6958e9..59e3b8fb24 100644
+index 20016c226d..50e3a25ea3 100644
 --- a/include/hw/acpi/ghes.h
 +++ b/include/hw/acpi/ghes.h
-@@ -59,7 +59,8 @@ enum AcpiGhesNotifyType {
- enum {
-     ACPI_HEST_SRC_ID_SEA = 0,
-     /* future ids go here */
--    ACPI_HEST_SRC_ID_RESERVED,
-+
-+    ACPI_GHES_ERROR_SOURCE_COUNT
- };
+@@ -73,7 +73,7 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+                      const char *oem_id, const char *oem_table_id);
+ void acpi_ghes_add_fw_cfg(AcpiGhesState *vms, FWCfgState *s,
+                           GArray *hardware_errors);
+-int acpi_ghes_record_errors(uint8_t notify, uint64_t error_physical_addr);
++int acpi_ghes_record_errors(uint8_t source_id, uint64_t error_physical_addr);
  
- typedef struct AcpiGhesState {
-diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index e9511d9b8f..dc217694de 100644
---- a/hw/acpi/ghes.c
-+++ b/hw/acpi/ghes.c
-@@ -34,9 +34,6 @@
- /* The max size in bytes for one error block */
- #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
- 
--/* Now only support ARMv8 SEA notification type error source */
--#define ACPI_GHES_ERROR_SOURCE_COUNT        1
--
- /* Generic Hardware Error Source version 2 */
- #define ACPI_GHES_SOURCE_GENERIC_ERROR_V2   10
- 
-@@ -396,7 +393,7 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
-     AcpiGedState *acpi_ged_state;
-     AcpiGhesState *ags;
- 
--    assert(source_id < ACPI_HEST_SRC_ID_RESERVED);
-+    assert(source_id < ACPI_GHES_ERROR_SOURCE_COUNT);
- 
-     acpi_ged_state = ACPI_GED(object_resolve_path_type("", TYPE_ACPI_GED,
-                                                        NULL));
-@@ -407,7 +404,7 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
- 
-     if (physical_address) {
- 
--        if (source_id < ACPI_HEST_SRC_ID_RESERVED) {
-+        if (source_id < ACPI_GHES_ERROR_SOURCE_COUNT) {
-             start_addr += source_id * sizeof(uint64_t);
-         }
- 
+ /**
+  * acpi_ghes_present: Report whether ACPI GHES table is present
 -- 
 MST
 

@@ -1,91 +1,90 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3040806njn;
-        Wed, 15 Jan 2025 04:52:30 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW/zHG7V1HpSdEz08CM5EbOQviGLI165ijjQb2x+9YObSOlB47/aTYPEyVzReJXpvAx1MeEN7KvGXahTA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHhwZ1a/VFqwtR12t76kWNJjW9uWNHCreJBrNnc66sjoM3LM0C83RiyEXVZ+kzYvCeBdDlw
-X-Received: by 2002:a05:622a:6096:b0:46c:7142:14c4 with SMTP id d75a77b69052e-46c714214f7mr455312641cf.2.1736945549989;
-        Wed, 15 Jan 2025 04:52:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736945549; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3040905njn;
+        Wed, 15 Jan 2025 04:52:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXlmCRA4LwoNDQIXZYF6uuL9WN7lvPtFRwg1vs9Ux1eCrK1eipkKghlhqzHgor+yLLgcX18JTq7XWo3dg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHraXwoM448Wk2L87pbAuRbcOxVeohAdrFwJ8zNBsAzD3DIVvT8AhamJfa1kjKwapNdqmrq
+X-Received: by 2002:a05:620a:4456:b0:7b1:52a9:ae15 with SMTP id af79cd13be357-7bcd9727083mr4538977085a.9.1736945559552;
+        Wed, 15 Jan 2025 04:52:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736945559; cv=none;
         d=google.com; s=arc-20240605;
-        b=LOGa28xwgUZ2Y30oF610T05lfKj3kecTF1XBHQt+LWmBppPKZuu0fTLgsDRBv1V0ZY
-         6sMeUzG/swqQTxO4tI9bQK2JtjLEdeTAOkaH4IX42UJs0k1uFWReENy0dcvIezVDQEPM
-         BicbmWmiI7TH9iX/7jXbygUO8e3517cj1j+Uo4vGCiBYOOJerHupux00gUiPStk/rsOU
-         KNcZpZA/xTbmGSKzIH9PWziGgrT+Gt0scQFbq2o6tAUGtO8KSUvLfKuEbNdclRD/DatP
-         i2IGN3IzLTsVbu43CYZu7E29zZQkxTYvY+fpYTNTrdlw/Ir7GwpEyzd7TDs+odXMB0O6
-         8HkQ==
+        b=ZniPW2enAA71D2W3lfEHUJVzVMKv/y0+W/OKQvMXH339nUA5feuTOU0HsDTt28UeFJ
+         NgS+PSebFMitzZrcIw+h2CHXEX/ZzojQsV8jw9SdBbqqA3SOrRP9Uyy4rn1z9tx7vwWZ
+         NcNcXjphAEdXXHwIkcRBveyb5M5qAG+IFz+CMIiCcfpoSjRZybEy5PrqkVi2s/AVyRaN
+         RxumN4mKRe32oSPZnHL70hTh837LnQaE40KdzBSuhihidD+8HBXiBp0H2hJ1E+98sN2L
+         R6X+d3mtYNEQCIMVEqC/4U3t1E/957hRyMtEvUx6vKBxRC2DpKMDTj/slxnybUPIh8lU
+         lxug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
-         :date:dkim-signature;
-        bh=fCfDtXN3QHE5nMBWIyAAEnWCLV2HbvkbI5rihHRfmVk=;
-        fh=dtVqlvBGJ0qoKwYME9P+7HgOY7P+hc/Ih3EkMp1C9OQ=;
-        b=FR7pTCa0u2PhBPJncY2mBHS0/8ggpme2UAfuKCLpCoVrTf2Q3UTPKx8XmVUo3GACim
-         Q3jRyWRyCpVs8KAzodBOE64z4m2NMbXYGYXF5IH99vU/esKyTYoW0uF0BKo46hzyIxYr
-         T/NGFPvCss7in2ytivcWGKDIy92mdIAmAHZIvY7DB/IAk6UpN/7Xj58p4GxL8ZW8qkS3
-         SVlTUbuj2bv1P3i5hyljQw1q+s38y32bn9vh6dWpztkEu17soP2SFe4FWHIW2+5ttlE7
-         FP1o8u4gnGPsdlcSF47zlNB2Jj9rreSDvfy0QkSePu1+OJJPvT9OxRPApNfmVXZROeUY
-         4qyw==;
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:dkim-signature;
+        bh=9nt4KlWOzhCkiHLJ0olSqTWQDZ9CNEkViz2E0+NphzM=;
+        fh=XcviKWAv15CvAgnyQyizsjZv6212yvUpVNhmcTByU9E=;
+        b=AJ9EGsQsx+GkfsmzkB4enuq+rpQJb8hD3xmfrl6cc/+QCKaGDdxLXjOceTmkb8UFDp
+         HPpZ6d9RCl7urf2eP+XAynzmh2519nEyeg6/5TRhsC+Y/eFfSQwntwaIDQFfaRzh4dnx
+         DdXwREdZcrP6enItszXsygRJzn4VPuwT0f3LQnbuIky5Cjvc82ryT6Z7M7MhQ+udyazq
+         YSUJXQ7T4WvYjiSC/R4SkedCXzK5g36EbGoCI76OuccudQPM7onAZx72nOnbtwSQRor+
+         UowXT+mT2gU39jcvuI/6wG2rPdTGFSgOvO8E8wG3nESIhkltxQRP/8ruv3/opvYAfM9X
+         chpw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Ez+Tasml;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Q4rApGEk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46c87331bc7si139241921cf.3.2025.01.15.04.52.29
+        by mx.google.com with ESMTPS id af79cd13be357-7bce330720dsi1623033085a.342.2025.01.15.04.52.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2025 04:52:29 -0800 (PST)
+        Wed, 15 Jan 2025 04:52:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Ez+Tasml;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Q4rApGEk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tY2sN-0008Vq-TM; Wed, 15 Jan 2025 07:52:05 -0500
+	id 1tY2s6-00085I-Ug; Wed, 15 Jan 2025 07:51:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tY2sJ-0008SC-2c; Wed, 15 Jan 2025 07:51:59 -0500
+ id 1tY2rO-0007eP-EE; Wed, 15 Jan 2025 07:51:06 -0500
 Received: from nyc.source.kernel.org ([2604:1380:45d1:ec00::3])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1tY2sG-0006zD-K1; Wed, 15 Jan 2025 07:51:58 -0500
+ id 1tY2rM-0006sQ-MZ; Wed, 15 Jan 2025 07:51:02 -0500
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by nyc.source.kernel.org (Postfix) with ESMTP id 92013A41F36;
- Wed, 15 Jan 2025 12:50:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D80CC4CEDF;
- Wed, 15 Jan 2025 12:51:52 +0000 (UTC)
+ by nyc.source.kernel.org (Postfix) with ESMTP id 1BAEFA41F4D;
+ Wed, 15 Jan 2025 12:48:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5BD4EC4AF0D;
+ Wed, 15 Jan 2025 12:50:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1736945515;
- bh=xVlIA1ZBfx9UjaShX5trBrkyVh5DWAz9sUCHbHTMPHk=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Ez+TasmlorDLtiE3xHdMvQyNqBQ9bEUBPw1D/lPvwZ6i9hMavx+dCQeD4k/+gQZ/0
- /EdF/Q/QhFP+3N/E7HNmevCo7xS0bU+CkX7TYNrp0gp0zsdubMHegpwofloNSyJW7i
- HtA6UpPisawcHNGfTi2jw0LlnLrGgpg6+cMOokpQSzt/KhzKpVUhckyLZvcsS5dZGV
- AmQv3V2lgM2lXy4WyqwTnIM6E1Yc2i+Pz4X5R3j+qEgYv2Lerq64/r1E50mnbMWFMj
- VqQ76DTvDBQ57y5xAhdZGWEPG42AJsoUJ6+0kGJ5SqofK6j2ThIRHZupxOtpbLEoT1
- i7sIA06EoxhYA==
-Date: Wed, 15 Jan 2025 13:51:49 +0100
+ s=k20201202; t=1736945441;
+ bh=DZq3ehynlc63lZ3iGs1SNcajfqzDutIBxgWe19LJFlA=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=Q4rApGEkZ/pEwqEbS8M4GYUjAEI5caZ2FvJ2qbXVivtz9ndeD4LQ4rTm6SCXqNgzB
+ 2d6F9XSdfOw6XhRhir7hwx8YQbNbMe19VcAdDHpE6pzptnZCRBZEg/OBlRoPynOjK7
+ W+JHdyJMDAa13OaWO1Ot9V3RscESSozTbejv8PPOVSCiANGB3gjo+ZageahhBirQqc
+ lmwDXK1GYZRK696mhSz3ugF4Qlf6oNuQle38rrH5TBPCLFNYwSkX6BzB7LUGpaoG+n
+ aStZwreC8IoB4BhYf+of7mzDU2pJ8D8SzFBEFfR4Gj3GF5731/U5c4U0sfvrkOYmAO
+ XLWvWcMV62c7w==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+ (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tY2r1-00000004yGQ-1s8I; Wed, 15 Jan 2025 13:50:39 +0100
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, Shiju Jose
- <shiju.jose@huawei.com>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
- <gengdongjiu1@gmail.com>, Igor Mammedov <imammedo@redhat.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, kvm@vger.kernel.org,
- linux-kernel@vger.kernel.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v6 00/16] Prepare GHES driver to support error injection
-Message-ID: <20250115135149.24d1f53f@foz.lan>
-In-Reply-To: <20250115060854-mutt-send-email-mst@kernel.org>
-References: <cover.1733561462.git.mchehab+huawei@kernel.org>
- <20250115060854-mutt-send-email-mst@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+To: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Shiju Jose <shiju.jose@huawei.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ Dongjiu Geng <gengdongjiu1@gmail.com>, linux-kernel@vger.kernel.org
+Subject: [PATCH v7 16/16] docs: acpi_hest_ghes: fix documentation for CPER size
+Date: Wed, 15 Jan 2025 13:50:32 +0100
+Message-ID: <f7e94433bec19a9d6b23ecccc24b5fe3a6f7f52b.1736945236.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <cover.1736945236.git.mchehab+huawei@kernel.org>
+References: <cover.1736945236.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2604:1380:45d1:ec00::3;
  envelope-from=mchehab+huawei@kernel.org; helo=nyc.source.kernel.org
 X-Spam_score_int: -44
@@ -109,112 +108,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: JNcWx7X3f/jL
+X-TUID: 7wOOqbjzCM63
 
-Em Wed, 15 Jan 2025 06:09:12 -0500
-"Michael S. Tsirkin" <mst@redhat.com> escreveu:
+While the spec defines a CPER size of 4KiB for each record,
+currently it is set to 1KiB. Fix the documentation and add
+a pointer to the macro name there, as this may help to keep
+it updated.
 
-> On Sat, Dec 07, 2024 at 09:54:06AM +0100, Mauro Carvalho Chehab wrote:
-> > Hi Michael,
-> > 
-> > Please ignore the patch series I sent yesterday:
-> > 	https://lore.kernel.org/qemu-devel/20241207093922.1efa02ec@foz.lan/T/#t
-> > 
-> > The git range was wrong, and it was supposed to be v6. This is the right one.
-> > It is based on the top of v9.2.0-rc3.
-> > 
-> > Could you please merge this series for ACPI stuff? All patches were already
-> > reviewed by Igor. The changes against v4 are just on some patch descriptions,
-> > plus the addition of Reviewed-by. No Code changes.
-> > 
-> > Thanks,
-> > Mauro  
-> 
-> 
-> Still waiting for a version with minor nits fixed.
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+---
+ docs/specs/acpi_hest_ghes.rst | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-Just sent v7 addressing the minor nits on patch 9.
+diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
+index 68f1fbe0a4af..c3e9f8d9a702 100644
+--- a/docs/specs/acpi_hest_ghes.rst
++++ b/docs/specs/acpi_hest_ghes.rst
+@@ -67,8 +67,10 @@ Design Details
+ (3) The address registers table contains N Error Block Address entries
+     and N Read Ack Register entries. The size for each entry is 8-byte.
+     The Error Status Data Block table contains N Error Status Data Block
+-    entries. The size for each entry is 4096(0x1000) bytes. The total size
+-    for the "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
++    entries. The size for each entry is defined at the source code as
++    ACPI_GHES_MAX_RAW_DATA_LENGTH (currently 1024 bytes). The total size
++    for the "etc/hardware_errors" fw_cfg blob is
++    (N * 8 * 2 + N * ACPI_GHES_MAX_RAW_DATA_LENGTH) bytes.
+     N is the number of the kinds of hardware error sources.
+ 
+ (4) QEMU generates the ACPI linker/loader script for the firmware. The
+-- 
+2.47.1
 
-> > -
-> > 
-> > During the development of a patch series meant to allow GHESv2 error injections,
-> > it was requested a change on how CPER offsets are calculated, by adding a new
-> > BIOS pointer and reworking the GHES logic. See:
-> > 
-> > https://lore.kernel.org/qemu-devel/cover.1726293808.git.mchehab+huawei@kernel.org/
-> > 
-> > Such change ended being a big patch, so several intermediate steps are needed,
-> > together with several cleanups and renames.
-> > 
-> > As agreed duing v10 review, I'll be splitting the big patch series into separate pull 
-> > requests, starting with the cleanup series. This is the first patch set, containing
-> > only such preparation patches.
-> > 
-> > The next series will contain the shift to use offsets from the location of the
-> > HEST table, together with a migration logic to make it compatible with 9.1.
-> > 
-> > ---
-> > 
-> > v5:
-> > - some changes at patches description and added some R-B;
-> > - no changes at the code.
-> > 
-> > v4:
-> > - merged a patch renaming the function which calculate offsets to:
-> >   get_hw_error_offsets(), to avoid the need of such change at the next
-> >   patch series;
-> > - removed a functional change at the logic which makes
-> >   the GHES record generation more generic;
-> > - a couple of trivial changes on patch descriptions and line break cleanups.
-> > 
-> > v3:
-> > - improved some patch descriptions;
-> > - some patches got reordered to better reflect the changes;
-> > - patch v2 08/15: acpi/ghes: Prepare to support multiple sources on ghes
-> >   was split on two patches. The first one is in this cleanup series:
-> >       acpi/ghes: Change ghes fill logic to work with only one source
-> >   contains just the simplification logic. The actual preparation will
-> >   be moved to this series:
-> >      https://lore.kernel.org/qemu-devel/cover.1727782588.git.mchehab+huawei@kernel.org/
-> > 
-> > v2: 
-> > - some indentation fixes;
-> > - some description improvements;
-> > - fixed a badly-solved merge conflict that ended renaming a parameter.
-> > 
-> > Mauro Carvalho Chehab (16):
-> >   acpi/ghes: get rid of ACPI_HEST_SRC_ID_RESERVED
-> >   acpi/ghes: simplify acpi_ghes_record_errors() code
-> >   acpi/ghes: simplify the per-arch caller to build HEST table
-> >   acpi/ghes: better handle source_id and notification
-> >   acpi/ghes: Fix acpi_ghes_record_errors() argument
-> >   acpi/ghes: Remove a duplicated out of bounds check
-> >   acpi/ghes: Change the type for source_id
-> >   acpi/ghes: don't check if physical_address is not zero
-> >   acpi/ghes: make the GHES record generation more generic
-> >   acpi/ghes: better name GHES memory error function
-> >   acpi/ghes: don't crash QEMU if ghes GED is not found
-> >   acpi/ghes: rename etc/hardware_error file macros
-> >   acpi/ghes: better name the offset of the hardware error firmware
-> >   acpi/ghes: move offset calculus to a separate function
-> >   acpi/ghes: Change ghes fill logic to work with only one source
-> >   docs: acpi_hest_ghes: fix documentation for CPER size
-> > 
-> >  docs/specs/acpi_hest_ghes.rst  |   6 +-
-> >  hw/acpi/generic_event_device.c |   4 +-
-> >  hw/acpi/ghes-stub.c            |   2 +-
-> >  hw/acpi/ghes.c                 | 259 +++++++++++++++++++--------------
-> >  hw/arm/virt-acpi-build.c       |   5 +-
-> >  include/hw/acpi/ghes.h         |  16 +-
-> >  target/arm/kvm.c               |   2 +-
-> >  7 files changed, 169 insertions(+), 125 deletions(-)
-> > 
-> > -- 
-> > 2.47.1
-> >   
-> 
-
-
-
-Thanks,
-Mauro

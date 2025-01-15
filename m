@@ -1,108 +1,109 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3259941njn;
-        Wed, 15 Jan 2025 10:12:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVT49c5EU+RuDjAE1lIeuUNnKWX2yVIBa8E2wbIRmr/l/dEtsxP8pvpS3p6vgck4Jrv/dOyloZ6IG784g==@linaro.org
-X-Google-Smtp-Source: AGHT+IFdrjmsFUnoXU61fP2vIFClZun8Hrf/CUYrZG5ElEwQjxg9deE5Mz71+ln+hSJGASdsxfy5
-X-Received: by 2002:a05:620a:3953:b0:7b6:d826:40ab with SMTP id af79cd13be357-7bcd978819amr4617163185a.51.1736964777635;
-        Wed, 15 Jan 2025 10:12:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736964777; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3260250njn;
+        Wed, 15 Jan 2025 10:13:26 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXiDFu8544tVJaXYo/YI4vVUEwwoMiwfVCQtO+Uf5J7hxQi2t+nj/VaJwmYVh+vR8YrwYsdc8v85VKkTg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFef01HH/WXyUTfbxnUXENBlwPP3zhkoaPXnZ5tW/McgPseJ0Tq+1yEo3wxacqfmTJ4OyPs
+X-Received: by 2002:ac8:5f82:0:b0:46c:7647:2ace with SMTP id d75a77b69052e-46c76472c87mr382214621cf.0.1736964806662;
+        Wed, 15 Jan 2025 10:13:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1736964806; cv=none;
         d=google.com; s=arc-20240605;
-        b=RGWmL7vyLDr8EqbOJWfl3Hpqkfeb58Z8Kh6uBhtfJ109gxEYrThMCTzUUNqjPuXKmN
-         7XFJv0MtiS1bfjriz8+F+1reqtZV23sZfZvr4c7wlXxmIe9+myBygV6X09URiaBclSl1
-         u3riFP7y6LYxFgJXkd6ixkIJoctKN/r1uoeVC9s/PeJM7n5BxQ+qA+tDYaQc+918Wh7X
-         6qpgRy8BwCE51FMMt5Kf9O4MXlmdTcRh1NGwINE4BpLZnWirGD++QFLToRPjy9OGMYPT
-         I6KXnE+Hnf/8qClIAWtDKOWDzInS/iCQQkaLpnGVPVK1IS0k0yrbey5tn2AlYJbpbwN3
-         PaUQ==
+        b=IBITW5Raobtgl5MZ4vJiaUvgZuEzefxmm/Aw0hZoiLvWoZFOmiY5J+1d/Osxb/lyl1
+         hyzDxiDnzfdSHaD5wDIJbwrlNhAia4wESqv33LDQdcbEroBOMvrY+rwkGDPa1AFqGQra
+         3OFiGY1D8nwpAOunRfMc/jSJ8F+v11Cu4GbXvkmSI0aM0d5Hp0tZ6D/snbLuHoNhndao
+         kO6CnXufwrRKtNOUPRyIHr7Bud1uFWRQE35MODZXTGCO2U5Cjvuggkp1bs4hHyBlmY6Y
+         DdnxXIblMcosQiLJ8H35IGz3xrA7l7zqfUNi+QNzRao9ZFgMSyk1vyulDShafn3sUJWI
+         +0AA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=GcEA8Xia0/aKbFvQOw0Cn9Z1faY/ZlIm/oUS1p8/iH0=;
-        fh=Zd4d2LJ1LsYyHrOMwJvWJlM+BOX1C3pxX+oKwIolhTM=;
-        b=GxkK7VzJ4CSSMgF2EYuiutEUGa9FKqj4tq+Z0Q3uj4xD4Vc6a34VIegO6Z5YAk2goc
-         fplTvgx2OFLv7kTKpKpRx9Yk1koSvCEW52BYhd4lG6/ZpUf4DLlHrUfdT26n+qjfsZNe
-         awIJnyUrvLhrI/BOTSOS3A2hxKIiRgxNp1oofk3afd3qnWndvT9m2GOtaWFXWqoIAQ03
-         LpYk6fQ3k9pfQ85Pz8DbBIAww/ZCpiRjy2I2xIlqcPIXu2FONQxGTmJRjYKEfmzFu6uW
-         K9dIe71gAHZK8yCPM6d5QbQBegFglEjWO0CDaYxzEEFlPtGTUoB/Uu5IbJS+Xao5zyJ3
-         uGaw==;
+        bh=91AZqunFcitL0HyZ4NOaEanpB7Q6GWIn9e4SYbBrSGc=;
+        fh=fX9oOUoO5g4W1L6X/MSe0RzH9mWymxVvW79TLpSOgwg=;
+        b=S9Jgn10aKFS9sMybJ5v7kXIFj7Vf6auyW/zhDC8TrA3zp/ntg5HU2tp1i/eA2Okmas
+         u/svyaKPQs8ipdzHDh3YSKrJIPFThd4Lefy2MDC20EXn/Dh7w83RZnUZabrOE6Uhoy95
+         fYjC1ALO6wHFpJmdgBv+4VAxHG6MQT3I/OYyULxeHGJBGVQUiF28ixit7juZ0xQ3hmvv
+         z4SU6AHjPAxmT6SIaDLyuVFSvngYIa6Y1bW72lrfgUDVyypgQ+pERUl65kDKdBFGpFcJ
+         yBec9ZykiVqbkUxp1wlT3hB7pnoEPYVSBPgHjLSIYy2FlMXn9xG47p1hMuzEwGNBbSHS
+         tACA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E4mZAvDZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=coFeaNY2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7bce330758bsi1769026385a.301.2025.01.15.10.12.57
+        by mx.google.com with ESMTPS id d75a77b69052e-46c87331c0asi153891351cf.89.2025.01.15.10.13.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2025 10:12:57 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Jan 2025 10:13:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E4mZAvDZ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=coFeaNY2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tY7rx-00052P-C1; Wed, 15 Jan 2025 13:11:57 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tY7r7-0000ma-1B; Wed, 15 Jan 2025 13:11:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7qk-0008Cl-62
- for qemu-devel@nongnu.org; Wed, 15 Jan 2025 13:10:44 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7qB-0007HV-CV
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2025 13:10:09 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7qf-0006zn-Gl
- for qemu-devel@nongnu.org; Wed, 15 Jan 2025 13:10:40 -0500
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7q7-0006lS-Hb
+ for qemu-arm@nongnu.org; Wed, 15 Jan 2025 13:10:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1736964623;
+ s=mimecast20190719; t=1736964602;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=GcEA8Xia0/aKbFvQOw0Cn9Z1faY/ZlIm/oUS1p8/iH0=;
- b=E4mZAvDZmk/slF35G2C3DZ8AduaZ0g9QwloCZO8gzmNtmlpQh6B8r84fHCkJDnx9f12b7h
- /iRFswK+853qbjjzudv7oeqnWcTiopXHH+lne2C8ddQ5Fd60q3rpHaWDaz/r9YbNyP5cvj
- uZsqufYTdQrqXLoPuEcgKju7Hu5KNc4=
+ bh=91AZqunFcitL0HyZ4NOaEanpB7Q6GWIn9e4SYbBrSGc=;
+ b=coFeaNY2rYWbL+zZN88IXJcRdQ3kaDJ+kESbAlJ7lZVMXOhTQ8Ljb6R+y/zBcX+uAGgn3p
+ iGBxjv/XK6Ski08IZZDUn7V21Ix+6Lazz/poxE67ygn+usAurfzKHCfWO58i2pywLRBHSB
+ xqeqsMGOfNE4mwblm58HZq3YncFIx3Y=
 Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
  [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-597-IdHsjRuxNFOaLPE0PTeB2w-1; Wed, 15 Jan 2025 13:10:20 -0500
-X-MC-Unique: IdHsjRuxNFOaLPE0PTeB2w-1
-X-Mimecast-MFC-AGG-ID: IdHsjRuxNFOaLPE0PTeB2w
+ us-mta-693-Y2rFNxTsNJuwvM6XQ10DlA-1; Wed, 15 Jan 2025 13:10:01 -0500
+X-MC-Unique: Y2rFNxTsNJuwvM6XQ10DlA-1
+X-Mimecast-MFC-AGG-ID: Y2rFNxTsNJuwvM6XQ10DlA
 Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-4361efc9d1fso55877905e9.2
- for <qemu-devel@nongnu.org>; Wed, 15 Jan 2025 10:10:20 -0800 (PST)
+ 5b1f17b1804b1-4362f893bfaso37663095e9.1
+ for <qemu-arm@nongnu.org>; Wed, 15 Jan 2025 10:10:01 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736964619; x=1737569419;
+ d=1e100.net; s=20230601; t=1736964600; x=1737569400;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GcEA8Xia0/aKbFvQOw0Cn9Z1faY/ZlIm/oUS1p8/iH0=;
- b=C5LWh/J8YBRoQamu35WvyfrL4Ye/2PNThDerjnGgEkRBeCC8UyJ4YlG0ksmD+buQRz
- BqH+Zb9HJKUbTisL+sYR63sAb4jalD47mIwjuAJEsVmlq4odc4EBGTo7NRkmy/TsRlQ+
- 6qSnrYyk7uiozj3/l/Oe4pTpR55LUIboz/TP/mL/57gBKckZAxyrYrqbe5ojIchJWCnu
- RVHzpWe2FMkMfTbcfh2kAenpPrlqT51fz0TBMByB01tXM4XQQiIJ0gx9/WIZPyaudZoW
- M9bVDRhtRt4sLZhy9P0pVl8Fu1tmn7Af87F/g4FFnW89RkP8zhbsNdN3tH9jtivdpmzi
- 8wbA==
-X-Gm-Message-State: AOJu0YyLVCXoN4++3Qfc08F5XEM8EFWKUKhGT5AR4/O05+/yqhomA+GD
- qQKMo5pw5AxUmZPZZtakp2mBPKSU86t4reu2sQCEUYvO4xTUscVhEkjlVTlKoMT1HNjVSjyk6E0
- v2EGW5YX3ZaNKstPk5Zty5+DQkBg5ahZlYXgcvHXypSXR1F2xVTha2GBseGv26I0wkwHuthDIb3
- I2WSA/96ZU5sVtOiiGn1t0D87gtz9qgg==
-X-Gm-Gg: ASbGnctHwP2/LYkAjbtNduyIO2CIFz1HMH4hQm0xYc2ISk7yDnh9/k6C/PN+rJbgVXM
- C01ACb4o+H+hjxoV7FCDrz+XAPOXtFkTW+BbMyX13XhrseS1N+18klcDkQahYE4J1FWKccrozxA
- HYfut+ilXWd4LGLOdMLm5M8Cz/EAIqNfvydtljzwjLAtsdrSkxFJ8h95ir6n7pmIiHWZTK7c23h
- Duyv4qZ41JYL8dArhMw/m4wEa998+OmPCBEkRP6hVPibw3nXoh9
-X-Received: by 2002:a05:600c:3b0c:b0:434:f7e3:bfa0 with SMTP id
- 5b1f17b1804b1-436e26e2593mr233770885e9.21.1736964618911; 
- Wed, 15 Jan 2025 10:10:18 -0800 (PST)
-X-Received: by 2002:a05:600c:3b0c:b0:434:f7e3:bfa0 with SMTP id
- 5b1f17b1804b1-436e26e2593mr233770635e9.21.1736964618431; 
- Wed, 15 Jan 2025 10:10:18 -0800 (PST)
+ bh=91AZqunFcitL0HyZ4NOaEanpB7Q6GWIn9e4SYbBrSGc=;
+ b=F38uah/iI4MwpnW7mj/vjFEXIW8aOQ67H9kRAmdQqebMoZ+1ZdMkGJ1fvpEMN4eK1N
+ 552GxGZJceNaKk4Ai7yZ86opNqIWghaaZnjdFQ3zYAUADRwAD29+cx0u+t2rraGd8A+2
+ z7LP85Q3yD2vhxd/fcx7PLUVV1RILdGhXkv1yDi5RuF8HVi/u8BmM5vVy6bRJIQtbYGV
+ 82Oz3H4sHWL3rGCn7lJ5FI6o5S+9IZWhgCQzmnqEImqrtQ/Ie8rc6mUEsw4jdQn9RLJW
+ Lq8CtGl1VsIf7aeyALqCMgjg3IbdVf3cbXm3UZPiU2L/dvwzI35Ce2LZ+anYkIwLtdXh
+ VjNg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWaFYlGkpym/+oTRBNJGExe5xrBZJbTq+iJ9J1W9ijrYRrRmVGjpKvI82G9yVo03lm14g51Y8rLpg==@nongnu.org
+X-Gm-Message-State: AOJu0Yx1GqzBirEeE2mkWHoEG056VIW7OIg1MgnwA9oUkh6+56BuOBXG
+ 9XIKTP9twGl3piSWd97M/h5mnbbs78wrsXxL2HB7X4NcE66TbxBebDTXripTlVAr4R8rV7WNwES
+ nNeFYwTTjKR5lYMUQ8Za1Jy5lttQsotZU4P4IuiOmeaIrJv3s8GvzGjhjBg==
+X-Gm-Gg: ASbGncvnvyAnd0jdUbbMtibN1MVqtyNJ5x56tcdWI73gXU/ZrIgR6qG4npCiYXB5MAQ
+ f91MLyBfJmFUTPZ+DAOZZv8OoDLUf2uuoMFxjxLcx0oWn4E5ZeMm94+BIqRUGCMPFSIIONTcGTm
+ HlIjS7+gDq2DJWd4bBsQ+xP0LfEt2BliY45m8HD7269xEPWx3/CQaxNojIRTbuCpZXvtxtvVoMA
+ frvXbunZyNtJwfTnwogrsBPnv0fG5AoEf1uop1vytKeTCmQG2W7
+X-Received: by 2002:a05:600c:3584:b0:434:9dfe:20e6 with SMTP id
+ 5b1f17b1804b1-436e26f47efmr207489965e9.23.1736964600018; 
+ Wed, 15 Jan 2025 10:10:00 -0800 (PST)
+X-Received: by 2002:a05:600c:3584:b0:434:9dfe:20e6 with SMTP id
+ 5b1f17b1804b1-436e26f47efmr207489775e9.23.1736964599689; 
+ Wed, 15 Jan 2025 10:09:59 -0800 (PST)
 Received: from redhat.com ([2a0d:6fc7:342:db8c:4ec4:322b:a6a8:f411])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-437c7525ee9sm31012265e9.32.2025.01.15.10.10.16
+ ffacd0b85a97d-38a8e37d472sm17923756f8f.1.2025.01.15.10.09.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Jan 2025 10:10:17 -0800 (PST)
-Date: Wed, 15 Jan 2025 13:10:15 -0500
+ Wed, 15 Jan 2025 10:09:58 -0800 (PST)
+Date: Wed, 15 Jan 2025 13:09:56 -0500
 From: "Michael S. Tsirkin" <mst@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -111,15 +112,18 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Ani Sinha <anisinha@redhat.com>,
  Dongjiu Geng <gengdongjiu1@gmail.com>, qemu-arm@nongnu.org
-Subject: [PULL 34/48] acpi/ghes: don't check if physical_address is not zero
-Message-ID: <2e223c5ec1146b61163d3372ac629d9240d57cb1.1736964488.git.mst@redhat.com>
+Subject: [PULL 28/48] acpi/ghes: simplify acpi_ghes_record_errors() code
+Message-ID: <872b69f21fe34f133982e02d04e33425d761d33b.1736964488.git.mst@redhat.com>
 References: <cover.1736964487.git.mst@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <cover.1736964487.git.mst@redhat.com>
 X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
 X-Mutt-Fcc: =sent
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: oxpGs7IjFImZmHq4YWIOTRJQRl5snGPgLNgkh-xCJiU_1736964600
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
@@ -131,52 +135,112 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
  RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: d7/Jn95Hd0la
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: gnWjHe1wqONn
 
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
-The 'physical_address' value is a faulty page. As such, 0 is
-as valid as any other value.
+Reduce the ident of the function and prepares it for
+the next changes.
 
-Suggested-by: Igor Mammedov <imammedo@redhat.com>
+No functional changes.
+
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Message-Id: <da32536bf4962e5c03471e2a4e6e0ef92be4a1be.1736945236.git.mchehab+huawei@kernel.org>
+Message-Id: <19af4188535217213486d169e0501e592bc78a95.1736945236.git.mchehab+huawei@kernel.org>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- hw/acpi/ghes.c | 4 ----
- 1 file changed, 4 deletions(-)
+ hw/acpi/ghes.c | 56 ++++++++++++++++++++++++++------------------------
+ 1 file changed, 29 insertions(+), 27 deletions(-)
 
 diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-index edc74c38bf..a3dffd78b0 100644
+index dc217694de..e66f3be150 100644
 --- a/hw/acpi/ghes.c
 +++ b/hw/acpi/ghes.c
-@@ -400,10 +400,6 @@ int acpi_ghes_record_errors(uint16_t source_id, uint64_t physical_address)
+@@ -402,40 +402,42 @@ int acpi_ghes_record_errors(uint8_t source_id, uint64_t physical_address)
  
      start_addr = le64_to_cpu(ags->ghes_addr_le);
  
--    if (!physical_address) {
--        return -1;
--    }
--
-     start_addr += source_id * sizeof(uint64_t);
+-    if (physical_address) {
++    if (!physical_address) {
++        return -1;
++    }
  
-     cpu_physical_memory_read(start_addr, &error_block_addr,
+-        if (source_id < ACPI_GHES_ERROR_SOURCE_COUNT) {
+-            start_addr += source_id * sizeof(uint64_t);
+-        }
++    if (source_id < ACPI_GHES_ERROR_SOURCE_COUNT) {
++        start_addr += source_id * sizeof(uint64_t);
++    }
+ 
+-        cpu_physical_memory_read(start_addr, &error_block_addr,
+-                                 sizeof(error_block_addr));
++    cpu_physical_memory_read(start_addr, &error_block_addr,
++                             sizeof(error_block_addr));
+ 
+-        error_block_addr = le64_to_cpu(error_block_addr);
++    error_block_addr = le64_to_cpu(error_block_addr);
+ 
+-        read_ack_register_addr = start_addr +
+-            ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
++    read_ack_register_addr = start_addr +
++                             ACPI_GHES_ERROR_SOURCE_COUNT * sizeof(uint64_t);
+ 
+-        cpu_physical_memory_read(read_ack_register_addr,
+-                                 &read_ack_register, sizeof(read_ack_register));
++    cpu_physical_memory_read(read_ack_register_addr,
++                             &read_ack_register, sizeof(read_ack_register));
+ 
+-        /* zero means OSPM does not acknowledge the error */
+-        if (!read_ack_register) {
+-            error_report("OSPM does not acknowledge previous error,"
+-                " so can not record CPER for current error anymore");
+-        } else if (error_block_addr) {
+-            read_ack_register = cpu_to_le64(0);
+-            /*
+-             * Clear the Read Ack Register, OSPM will write it to 1 when
+-             * it acknowledges this error.
+-             */
+-            cpu_physical_memory_write(read_ack_register_addr,
+-                &read_ack_register, sizeof(uint64_t));
++    /* zero means OSPM does not acknowledge the error */
++    if (!read_ack_register) {
++        error_report("OSPM does not acknowledge previous error,"
++                     " so can not record CPER for current error anymore");
++    } else if (error_block_addr) {
++        read_ack_register = cpu_to_le64(0);
++        /*
++         * Clear the Read Ack Register, OSPM will write it to 1 when
++         * it acknowledges this error.
++         */
++        cpu_physical_memory_write(read_ack_register_addr,
++                                  &read_ack_register, sizeof(uint64_t));
+ 
+-            ret = acpi_ghes_record_mem_error(error_block_addr,
+-                                             physical_address);
+-        } else
+-            error_report("can not find Generic Error Status Block");
++        ret = acpi_ghes_record_mem_error(error_block_addr,
++                                         physical_address);
++    } else {
++        error_report("can not find Generic Error Status Block");
+     }
+ 
+     return ret;
 -- 
 MST
 

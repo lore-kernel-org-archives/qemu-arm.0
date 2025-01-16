@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf322b337sm220758f8f.59.2025.01.16.08.03.07
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf32754f5sm203303f8f.79.2025.01.16.08.03.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 16 Jan 2025 08:03:07 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 7ED716082D;
+	by draig.lan (Postfix) with ESMTP id C6CE760853;
 	Thu, 16 Jan 2025 16:03:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -43,46 +43,45 @@ Cc: qemu-block@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v3 01/37] semihosting: add guest_error logging for failed opens
-Date: Thu, 16 Jan 2025 16:02:30 +0000
-Message-Id: <20250116160306.1709518-2-alex.bennee@linaro.org>
+Subject: [PATCH v3 04/37] semihosting/uaccess: Include missing 'exec/cpu-all.h' header
+Date: Thu, 16 Jan 2025 16:02:33 +0000
+Message-Id: <20250116160306.1709518-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250116160306.1709518-1-alex.bennee@linaro.org>
 References: <20250116160306.1709518-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: NM/R9fkiULA7
+X-TUID: iOUAZwJxIr99
 
-This usually indicates the semihosting call was expecting to find
-something but didn't.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Message-Id: <20250109170619.2271193-2-alex.bennee@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+TLB_INVALID_MASK is defined in "exec/cpu-all.h".
+Include it in order to avoid when refactoring:
+
+  ../semihosting/uaccess.c:41:21: error: use of undeclared identifier 'TLB_INVALID_MASK'
+     41 |         if (flags & TLB_INVALID_MASK) {
+        |                     ^
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20250103171037.11265-3-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- semihosting/syscalls.c | 2 ++
- 1 file changed, 2 insertions(+)
+ semihosting/uaccess.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/semihosting/syscalls.c b/semihosting/syscalls.c
-index c40348f996..f6451d9bb0 100644
---- a/semihosting/syscalls.c
-+++ b/semihosting/syscalls.c
-@@ -7,6 +7,7 @@
+diff --git a/semihosting/uaccess.c b/semihosting/uaccess.c
+index dc587d73bc..382a366ce3 100644
+--- a/semihosting/uaccess.c
++++ b/semihosting/uaccess.c
+@@ -8,6 +8,7 @@
   */
  
  #include "qemu/osdep.h"
-+#include "qemu/log.h"
- #include "cpu.h"
- #include "gdbstub/syscalls.h"
- #include "semihosting/guestfd.h"
-@@ -287,6 +288,7 @@ static void host_open(CPUState *cs, gdb_syscall_complete_cb complete,
++#include "exec/cpu-all.h"
+ #include "exec/exec-all.h"
+ #include "semihosting/uaccess.h"
  
-     ret = open(p, host_flags, mode);
-     if (ret < 0) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: failed to open %s\n", __func__, p);
-         complete(cs, -1, errno);
-     } else {
-         int guestfd = alloc_guestfd();
 -- 
 2.39.5

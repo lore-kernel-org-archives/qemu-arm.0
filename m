@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf3221b5asm238633f8f.21.2025.01.16.08.12.12
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-437c7527fc4sm63884695e9.27.2025.01.16.08.12.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 16 Jan 2025 08:12:15 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id B1806608D2;
-	Thu, 16 Jan 2025 16:03:08 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id CC355608E6;
+	Thu, 16 Jan 2025 16:03:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org,
@@ -43,113 +43,211 @@ Cc: qemu-block@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v3 23/37] win32: remove usage of attribute gcc_struct
-Date: Thu, 16 Jan 2025 16:02:52 +0000
-Message-Id: <20250116160306.1709518-24-alex.bennee@linaro.org>
+Subject: [PATCH v3 34/37] docs/devel: add information on how to setup build environments
+Date: Thu, 16 Jan 2025 16:03:03 +0000
+Message-Id: <20250116160306.1709518-35-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250116160306.1709518-1-alex.bennee@linaro.org>
 References: <20250116160306.1709518-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 5JJ60vM3hinP
+X-TUID: rPBBjzAFCqll
 
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-This attribute is not recognized by clang.
+MacOS and Linux are straightforward, but Windows needs a bit more
+details.
 
-An investigation has been performed to ensure this attribute has no
-effect on layout of structures we use in QEMU [1], so it's safe to
-remove now.
-
-In the future, we'll forbid introducing new bitfields in packed struct,
-as they are the one potentially impacted by this change.
-
-[1] https://lore.kernel.org/qemu-devel/66c346de-7e20-4831-b3eb-1cda83240af9@linaro.org/
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Acked-by: Stefano Garzarella <sgarzare@redhat.com>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-Tested-by: Stefan Weil <sw@weilnetz.de>
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20250110203401.178532-2-pierrick.bouvier@linaro.org>
+Message-Id: <20241209183104.365796-5-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- meson.build                               | 5 -----
- include/qemu/compiler.h                   | 7 +------
- scripts/cocci-macro-file.h                | 6 +-----
- subprojects/libvhost-user/libvhost-user.h | 6 +-----
- 4 files changed, 3 insertions(+), 21 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index d06f59095c..da279cc112 100644
---- a/meson.build
-+++ b/meson.build
-@@ -377,11 +377,6 @@ elif host_os == 'sunos'
-   qemu_common_flags += '-D__EXTENSIONS__'
- elif host_os == 'haiku'
-   qemu_common_flags += ['-DB_USE_POSITIVE_POSIX_ERRORS', '-D_BSD_SOURCE', '-fPIC']
--elif host_os == 'windows'
--  if not compiler.compiles('struct x { int y; } __attribute__((gcc_struct));',
--                           args: '-Werror')
--    error('Your compiler does not support __attribute__((gcc_struct)) - please use GCC instead of Clang')
--  endif
- endif
+---
+v3
+  - add new files to MAINTAINERS
+---
+ MAINTAINERS                      |   3 +-
+ docs/about/build-platforms.rst   |   4 +-
+ docs/devel/build-environment.rst | 118 +++++++++++++++++++++++++++++++
+ docs/devel/index-build.rst       |   1 +
+ 4 files changed, 124 insertions(+), 2 deletions(-)
+ create mode 100644 docs/devel/build-environment.rst
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 8b9d9a7cac..1d2b9f4ab8 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -72,9 +72,10 @@ R: Markus Armbruster <armbru@redhat.com>
+ R: Philippe Mathieu-Daudé <philmd@linaro.org>
+ W: https://www.qemu.org/docs/master/devel/index.html
+ S: Odd Fixes
+-F: docs/devel/style.rst
++F: docs/devel/build-environment.rst
+ F: docs/devel/code-of-conduct.rst
+ F: docs/devel/conflict-resolution.rst
++F: docs/devel/style.rst
+ F: docs/devel/submitting-a-patch.rst
+ F: docs/devel/submitting-a-pull-request.rst
  
- # Choose instruction set (currently x86-only)
-diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
-index c06954ccb4..d904408e5e 100644
---- a/include/qemu/compiler.h
-+++ b/include/qemu/compiler.h
-@@ -22,12 +22,7 @@
- #define QEMU_EXTERN_C extern
- #endif
+diff --git a/docs/about/build-platforms.rst b/docs/about/build-platforms.rst
+index d8b0445157..482b09819c 100644
+--- a/docs/about/build-platforms.rst
++++ b/docs/about/build-platforms.rst
+@@ -29,6 +29,9 @@ The `Repology`_ site is a useful resource to identify
+ currently shipped versions of software in various operating systems,
+ though it does not cover all distros listed below.
  
--#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
--# define QEMU_PACKED __attribute__((gcc_struct, packed))
--#else
--# define QEMU_PACKED __attribute__((packed))
--#endif
++You can find how to install build dependencies for different systems on the
++:ref:`setup-build-env` page.
++
+ Supported host architectures
+ ----------------------------
+ 
+@@ -130,7 +133,6 @@ Optional build dependencies
+   cross compilation using ``docker`` or ``podman``, or to use pre-built
+   binaries distributed with QEMU.
+ 
 -
-+#define QEMU_PACKED __attribute__((packed))
- #define QEMU_ALIGNED(X) __attribute__((aligned(X)))
+ Windows
+ -------
  
- #ifndef glue
-diff --git a/scripts/cocci-macro-file.h b/scripts/cocci-macro-file.h
-index d247a5086e..c64831d540 100644
---- a/scripts/cocci-macro-file.h
-+++ b/scripts/cocci-macro-file.h
-@@ -23,11 +23,7 @@
- #define G_GNUC_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
- #define G_GNUC_NULL_TERMINATED __attribute__((sentinel))
+diff --git a/docs/devel/build-environment.rst b/docs/devel/build-environment.rst
+new file mode 100644
+index 0000000000..f133ef2e01
+--- /dev/null
++++ b/docs/devel/build-environment.rst
+@@ -0,0 +1,118 @@
++
++.. _setup-build-env:
++
++Setup build environment
++=======================
++
++QEMU uses a lot of dependencies on the host system. glib2 is used everywhere in
++the code base, and most of the other dependencies are optional.
++
++We present here simple instructions to enable native builds on most popular
++systems.
++
++You can find additional instructions on `QEMU wiki <https://wiki.qemu.org/>`_:
++
++- `Linux <https://wiki.qemu.org/Hosts/Linux>`_
++- `MacOS <https://wiki.qemu.org/Hosts/Mac>`_
++- `Windows <https://wiki.qemu.org/Hosts/W32>`_
++- `BSD <https://wiki.qemu.org/Hosts/BSD>`_
++
++Note: Installing dependencies using your package manager build dependencies may
++miss out on deps that have been newly introduced in qemu.git. In more, it misses
++deps the distribution has decided to exclude.
++
++Linux
++-----
++
++Fedora
++++++++
++
++::
++
++    sudo dnf update && sudo dnf builddep qemu
++
++Debian/Ubuntu
+++++++++++++++
++
++You first need to enable `Sources List <https://wiki.debian.org/SourcesList>`_.
++Then, use apt to install dependencies:
++
++::
++
++    sudo apt update && sudo apt build-dep qemu
++
++MacOS
++-----
++
++You first need to install `Homebrew <https://brew.sh/>`_. Then, use it to
++install dependencies:
++
++::
++
++    brew update && brew install $(brew deps --include-build qemu)
++
++Windows
++-------
++
++You first need to install `MSYS2 <https://www.msys2.org/>`_.
++MSYS2 offers `different environments <https://www.msys2.org/docs/environments/>`_.
++x86_64 environments are based on GCC, while aarch64 is based on Clang.
++
++We recommend to use MINGW64 for windows-x86_64 and CLANGARM64 for windows-aarch64
++(only available on windows-aarch64 hosts).
++
++Then, you can open a windows shell, and enter msys2 env using:
++
++::
++
++    c:/msys64/msys2_shell.cmd -defterm -here -no-start -mingw64
++    # Replace -ucrt64 by -clangarm64 or -ucrt64 for other environments.
++
++MSYS2 package manager does not offer a built-in way to install build
++dependencies. You can start with this list of packages using pacman:
++
++Note: Dependencies need to be installed again if you use a different MSYS2
++environment.
++
++::
++
++    # update MSYS2 itself, you need to reopen your shell at the end.
++    pacman -Syu
++    pacman -S \
++        base-devel binutils bison diffutils flex git grep make sed \
++        ${MINGW_PACKAGE_PREFIX}-toolchain \
++        ${MINGW_PACKAGE_PREFIX}-glib2 \
++        ${MINGW_PACKAGE_PREFIX}-gtk3 \
++        ${MINGW_PACKAGE_PREFIX}-libnfs \
++        ${MINGW_PACKAGE_PREFIX}-libssh \
++        ${MINGW_PACKAGE_PREFIX}-ninja \
++        ${MINGW_PACKAGE_PREFIX}-pixman \
++        ${MINGW_PACKAGE_PREFIX}-pkgconf \
++        ${MINGW_PACKAGE_PREFIX}-python \
++        ${MINGW_PACKAGE_PREFIX}-SDL2 \
++        ${MINGW_PACKAGE_PREFIX}-zstd
++
++If you want to install all dependencies, it's possible to use recipe used to
++build QEMU in MSYS2 itself.
++
++::
++
++    pacman -S wget
++    wget https://raw.githubusercontent.com/msys2/MINGW-packages/refs/heads/master/mingw-w64-qemu/PKGBUILD
++    # Some packages may be missing for your environment, installation will still
++    # be done though.
++    makepkg -s PKGBUILD || true
++
++Build on windows-aarch64
++++++++++++++++++++++++++
++
++When trying to cross compile meson for x86_64 using UCRT64 or MINGW64 env,
++configure will run into an error because the cpu detected is not correct.
++
++Meson detects x86_64 processes emulated, so you need to manually set the cpu,
++and force a cross compilation (with empty prefix).
++
++::
++
++    ./configure --cpu=x86_64 --cross-prefix=
++
+diff --git a/docs/devel/index-build.rst b/docs/devel/index-build.rst
+index 0023953be3..0745c81a26 100644
+--- a/docs/devel/index-build.rst
++++ b/docs/devel/index-build.rst
+@@ -8,6 +8,7 @@ some of the basics if you are adding new files and targets to the build.
+    :maxdepth: 3
  
--#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
--# define QEMU_PACKED __attribute__((gcc_struct, packed))
--#else
--# define QEMU_PACKED __attribute__((packed))
--#endif
-+#define QEMU_PACKED __attribute__((packed))
- 
- #define cat(x,y) x ## y
- #define cat2(x,y) cat(x,y)
-diff --git a/subprojects/libvhost-user/libvhost-user.h b/subprojects/libvhost-user/libvhost-user.h
-index deb40e77b3..2ffc58c11b 100644
---- a/subprojects/libvhost-user/libvhost-user.h
-+++ b/subprojects/libvhost-user/libvhost-user.h
-@@ -186,11 +186,7 @@ typedef struct VhostUserShared {
-     unsigned char uuid[UUID_LEN];
- } VhostUserShared;
- 
--#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
--# define VU_PACKED __attribute__((gcc_struct, packed))
--#else
--# define VU_PACKED __attribute__((packed))
--#endif
-+#define VU_PACKED __attribute__((packed))
- 
- typedef struct VhostUserMsg {
-     int request;
+    build-system
++   build-environment
+    kconfig
+    docs
+    qapi-code-gen
 -- 
 2.39.5

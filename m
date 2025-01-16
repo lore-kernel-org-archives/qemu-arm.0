@@ -1,400 +1,171 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab2c9136045sm615585466b.89.2025.01.14.03.38.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 14 Jan 2025 03:38:33 -0800 (PST)
-Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 4AF685FD18;
-	Tue, 14 Jan 2025 11:38:25 +0000 (GMT)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3807243njn;
+        Thu, 16 Jan 2025 07:00:32 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUpBbnSTXY/Z3Xkk1HnteWVuiBnSvzi5DztnIC9XSeYuYYLud3LZsRickS3y/sVSjt2rkuPnUZfXJ58fg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH3GgKNEMRvl7cSQQKirQ8ll5KGuDo4aFhnhnJvwYNL7p05RRbihojzBEtaWS3ylWOqmuQH
+X-Received: by 2002:a05:620a:1927:b0:7b6:eef3:aeaf with SMTP id af79cd13be357-7bcd9615b74mr4874106385a.0.1737039631911;
+        Thu, 16 Jan 2025 07:00:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737039631; cv=none;
+        d=google.com; s=arc-20240605;
+        b=RRWuvY641W8b6DyenqcZZvKbKun35hSkukXQG4ThqadX2RiqZT9TPHdazla4qW1/k7
+         6O4RX7NDt8oSl0GtVCvbxwPWfCsN2/r6GG7uX9rP+8ao1YMFv/5zgSv4B6RTU1jzjRkp
+         iuEfonkkIyTd42mA5NA5eyJ0equ9j/REQcQCE/nmFj2798gl3eiPFxsxWfJhp99nANTb
+         aw2C30sTSBJF8vEim/D15OGoE5nZwSbKcAGbSUiqOoKTH+VpQ5mbNkNfTlFzEWreI4s2
+         n7d1jE5AjBTLWRxehy0AMnOR9JOkh2aeTF6sWhQVoeWd453lyTrCtAO5FwqeaKhkEpEq
+         9W+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=6pmziWnNaDV6beFRLi5dxmWiupvkK6+TjRcXkuuJ1cs=;
+        fh=Q5GNgeG4hwvXK8nWDxwLySQTPXZUr9FLVptSZ1H/5p4=;
+        b=gB4qQWsTxErAQOQj1+yydfdvB0ZnASKGwvifvijstpZpfXY+rvd7IreiozTrj8sE9+
+         ANbS84Yg9j4xIoWVcZPjiTUklXBDng3L4qUYN/vIx5Xg7wTqtmHJoRQ4ccfnf40mo2Kn
+         PcHJGW4kPlqfLTdelwJEsoIenXtUcYuMGvG7a0p+qmbpX1fm6m4aZH+gNmve2OWzdR+z
+         q+FJZkGaMUKsZ8aDBkwLZXMHqo0IAYr9fgk58IeJBUrYN3jSC5lKxNJONBrOt4XWXL43
+         x+OMJKzLowy6g9pyFuow9BUdLyphk5msptDYEkbTAzNUr2oyFI02QnTN3MqPk/gsqMXk
+         8vsQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CNW9o3aw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7be614cc033si24772985a.447.2025.01.16.07.00.30
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 16 Jan 2025 07:00:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=CNW9o3aw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tYRLc-0001xH-JW; Thu, 16 Jan 2025 09:59:52 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYRLa-0001wr-82
+ for qemu-devel@nongnu.org; Thu, 16 Jan 2025 09:59:50 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYRLY-0008F1-Lj
+ for qemu-devel@nongnu.org; Thu, 16 Jan 2025 09:59:49 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-437a92d7b96so9640515e9.2
+ for <qemu-devel@nongnu.org>; Thu, 16 Jan 2025 06:59:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1737039587; x=1737644387; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=6pmziWnNaDV6beFRLi5dxmWiupvkK6+TjRcXkuuJ1cs=;
+ b=CNW9o3awO/0L9hzbJSra31gUVrn/11HUw8bX5RVqUs5uh/9+vuLtQO02UOuSIhMiXA
+ ceKbJypVgSMFPUk0BvSIarUl9cF1OC3DOnFqTVQ/UHBHUOhwkHudjtpqCaCuvA47SYZz
+ A/wv9M7bWvJgJ9NuB+3CkIsk2/s13GciW90cAWtx+qZi6LZ+2xl1I8tEex/iu3HJPtEK
+ gqpSeNH6sPSAa0KxAP7ItgiJ6eXJoJY6eIM38RDn5cSvGIES8iRCB5xrEUZ0z+1aZ9UA
+ vhBxgcQnLvkOuHI9mAx2i3EUEibCMugLOa0XiONOzOcHv1bhkVYOmXk0tZABr3PdJ2XG
+ v1+A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737039587; x=1737644387;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=6pmziWnNaDV6beFRLi5dxmWiupvkK6+TjRcXkuuJ1cs=;
+ b=nAQU/UctYUyZxQBFfFol0hPDfWQqgqjIlNnRJd6W8m7N57SL822Zmk4ZhrYUR49xwg
+ 67E9mE2rHXoBr/ijZsvJQokUMGzMfdctlhiciu15JO0Bk/IhbeN0iECjzoKq77HesdB1
+ vI3YJvMZN4md/rq8x61iEL0AKa+l22/2jWQDYiWCTnuUKcCAMoh0ycYTJHDnZwceRdRz
+ WvtLyGDdAhGpjKBP5K8igO+vE9B/bU8Js8kBmqGHd8yRuJYdkE6EoruP5/GVN4c2wa8A
+ BMYzl67nLCL1lmjgK3k4YobHQlelEiUJWvkoqJOB3TIJqPaECzVmgyU8/ShTbzVkNg6k
+ vh4Q==
+X-Gm-Message-State: AOJu0YyLbWJuQahLrrYgquPboOkTL/PoFwFVeaNX/249HuSNaTQwa0Bd
+ m3mV6924CFQwJihfPz2XFQCVpZIIareCMEZVW4L06qsLYeokVyb0bEc7ue3VCdYf09EKwui/LJ9
+ 39W4=
+X-Gm-Gg: ASbGncvP+1j0g5lInvhsi3Qb2gv9fM0rxqEd3hfoijcPYBmeCSd5nkF7jrmTMlkrWcs
+ niLytBDD4+AovdyAR3XC/hE6YlKC88Hc3DqLYl56kAqF5NbcV/YB10DY/9ofSUZumgHMC/k/qjt
+ d5RFtKTOASP4+fFG9Pz/iNxEGbbOyhIfu6Y3Oi/na/94spWq+f7VzCkf8w3X2IaqmavKlBR80WR
+ pcFyTDHW7j3v17E9/famAbOswCi+BomDOZKvpUQ5xK3RHw8RG2xAWH00npimjBCXLu3bgBke4oQ
+ zqXGQ6YlHT6GIPpx2zzxGI023RngVPY=
+X-Received: by 2002:a05:6000:4023:b0:385:f44a:a3b with SMTP id
+ ffacd0b85a97d-38a87330649mr31307055f8f.41.1737039586851; 
+ Thu, 16 Jan 2025 06:59:46 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38bf3215066sm93922f8f.11.2025.01.16.06.59.45
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 16 Jan 2025 06:59:46 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Stefan Weil <sw@weilnetz.de>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Eric Blake <eblake@redhat.com>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	qemu-arm@nongnu.org (open list:Virt),
-	qemu-block@nongnu.org (open list:Network Block Dev...)
-Subject: [PATCH v2 36/37] docs: add a glossary
-Date: Tue, 14 Jan 2025 11:38:20 +0000
-Message-Id: <20250114113821.768750-37-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250114113821.768750-1-alex.bennee@linaro.org>
-References: <20250114113821.768750-1-alex.bennee@linaro.org>
+Cc: Igor Mammedov <imammedo@redhat.com>,
+ Andrew Jones <ajones@ventanamicro.com>, Thomas Huth <thuth@redhat.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH-for-10.1 v2 00/13] hw/arm: Remove virt-2.6 up to virt-2.12
+ machines
+Date: Thu, 16 Jan 2025 15:59:31 +0100
+Message-ID: <20250116145944.38028-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: FPv7GqbOlTef
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: w7r4iENbpxWW
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+The versioned 'virt' machines up to 2.12 been marked as deprecated
+two releases ago, and are older than 6 years, so according to our
+support policy we can remove them. Remove associated dead code.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20241209183104.365796-7-pierrick.bouvier@linaro.org>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- docs/devel/control-flow-integrity.rst |   2 +
- docs/devel/multi-thread-tcg.rst       |   2 +
- docs/glossary.rst                     | 280 ++++++++++++++++++++++++++
- docs/index.rst                        |   1 +
- docs/system/arm/virt.rst              |   2 +
- docs/system/images.rst                |   2 +
- docs/tools/qemu-nbd.rst               |   2 +
- 7 files changed, 291 insertions(+)
- create mode 100644 docs/glossary.rst
+Since v1:
+- Corrected disallow_affinity_adjustment removal (Thomas)
+- Do not modify docs/about/removed-features.rst (Thomas & Daniel)
 
-diff --git a/docs/devel/control-flow-integrity.rst b/docs/devel/control-flow-integrity.rst
-index e6b73a4fe1..3d5702fa4c 100644
---- a/docs/devel/control-flow-integrity.rst
-+++ b/docs/devel/control-flow-integrity.rst
-@@ -1,3 +1,5 @@
-+.. _cfi:
-+
- ============================
- Control-Flow Integrity (CFI)
- ============================
-diff --git a/docs/devel/multi-thread-tcg.rst b/docs/devel/multi-thread-tcg.rst
-index d706c27ea7..7fd0a07633 100644
---- a/docs/devel/multi-thread-tcg.rst
-+++ b/docs/devel/multi-thread-tcg.rst
-@@ -4,6 +4,8 @@
-   This work is licensed under the terms of the GNU GPL, version 2 or
-   later. See the COPYING file in the top-level directory.
- 
-+.. _mttcg:
-+
- ==================
- Multi-threaded TCG
- ==================
-diff --git a/docs/glossary.rst b/docs/glossary.rst
-new file mode 100644
-index 0000000000..693d9855dd
---- /dev/null
-+++ b/docs/glossary.rst
-@@ -0,0 +1,280 @@
-+.. _Glossary:
-+
-+--------
-+Glossary
-+--------
-+
-+This section of the manual presents brief definitions of acronyms and terms used
-+by QEMU developers.
-+
-+Accelerator
-+-----------
-+
-+A specific API used to accelerate execution of guest instructions. It can be
-+hardware-based, through a virtualization API provided by the host OS (kvm, hvf,
-+whpx, ...), or software-based (tcg). See this description of `supported
-+accelerators<Accelerators>`.
-+
-+Board
-+-----
-+
-+Another name for :ref:`machine`.
-+
-+Block
-+-----
-+
-+Block drivers are the available `disk formats and front-ends
-+<block-drivers>` available, and block devices `(see Block device section on
-+options page)<sec_005finvocation>` are using them to implement disks for a
-+virtual machine.
-+
-+CFI
-+---
-+
-+Control Flow Integrity is a hardening technique used to prevent exploits
-+targeting QEMU by detecting unexpected branches during execution. QEMU `actively
-+supports<cfi>` being compiled with CFI enabled.
-+
-+Device
-+------
-+
-+In QEMU, a device is a piece of hardware visible to the guest. Examples include
-+UARTs, PCI controllers, PCI cards, VGA controllers, and many more.
-+
-+QEMU is able to emulate a CPU, and all the hardware interacting with it,
-+including `many devices<device-emulation>`. When QEMU runs a virtual machine
-+using a hardware-based accelerator, it is responsible for emulating, using
-+software, all devices.
-+
-+EDK2
-+----
-+
-+EDK2, as known as `TianoCore <https://www.tianocore.org/>`_, is an open source
-+implementation of UEFI standard. QEMU virtual machines that boot a UEFI firmware
-+usually use EDK2.
-+
-+gdbstub
-+-------
-+
-+QEMU implements a `gdb server <GDB usage>`, allowing gdb to attach to it and
-+debug a running virtual machine, or a program in user-mode. This allows
-+debugging the guest code that is running inside QEMU.
-+
-+glib2
-+-----
-+
-+`GLib2 <https://docs.gtk.org/glib/>`_ is one of the most important libraries we
-+are using through the codebase. It provides many data structures, macros, string
-+and thread utilities and portable functions across different OS. It's required
-+to build QEMU.
-+
-+Guest agent
-+-----------
-+
-+The `QEMU Guest Agent <qemu-ga>` is a daemon intended to be run within virtual
-+machines. It provides various services to help QEMU to interact with it.
-+
-+.. _guest:
-+
-+Guest
-+-----
-+
-+Guest is the architecture of the virtual machine, which is emulated.
-+See also :ref:`host`.
-+
-+Sometimes this is called the :ref:`target` architecture, but that term
-+can be ambiguous.
-+
-+.. _host:
-+
-+Host
-+----
-+
-+Host is the architecture on which QEMU is running on, which is native.
-+See also :ref:`guest`.
-+
-+Hypervisor
-+----------
-+
-+The formal definition of an hypervisor is a program or API than can be used to
-+manage a virtual machine. QEMU is a virtualizer, that interacts with various
-+hypervisors.
-+
-+In the context of QEMU, an hypervisor is an API, provided by the Host OS,
-+allowing to execute virtual machines. Linux implementation is KVM (and supports
-+Xen as well). For MacOS, it's HVF. Windows defines WHPX. And NetBSD provides
-+NVMM.
-+
-+.. _machine:
-+
-+Machine
-+-------
-+
-+QEMU's system emulation models many different types of hardware. A machine model
-+(sometimes called a board model) is the model of a complete virtual system with
-+RAM, one or more CPUs, and various devices. It can be selected with the option
-+``-machine`` of qemu-system. Our machine models can be found on this `page
-+<system-targets-ref>`.
-+
-+Migration
-+---------
-+
-+QEMU can save and restore the execution of a virtual machine between different
-+host systems. This is provided by the `Migration framework<migration>`.
-+
-+NBD
-+---
-+
-+The `QEMU Network Block Device server <qemu-nbd>` is a tool that can be used to
-+mount and access QEMU images, providing functionality similar to a loop device.
-+
-+Mailing List
-+------------
-+
-+This is `where <https://wiki.qemu.org/Contribute/MailingLists>`_ all the
-+development happens! Changes are posted as series, that all developers can
-+review and share feedback for.
-+
-+For reporting issues, our `GitLab
-+<https://gitlab.com/qemu-project/qemu/-/issues>`_ tracker is the best place.
-+
-+.. _softmmu:
-+
-+MMU / softmmu
-+-------------
-+
-+The Memory Management Unit is responsible for translating virtual addresses to
-+physical addresses and managing memory protection. QEMU system mode is named
-+"softmmu" precisely because it implements this in software, including a TLB
-+(Translation lookaside buffer), for the guest virtual machine.
-+
-+QEMU user-mode does not implement a full software MMU, but "simply" translates
-+virtual addresses by adding a specific offset, and relying on host MMU/OS
-+instead.
-+
-+Monitor / QMP / HMP
-+-------------------
-+
-+The `QEMU Monitor <QEMU monitor>` is a text interface which can be used to interact
-+with a running virtual machine.
-+
-+QMP stands for QEMU Monitor Protocol and is a json based interface.
-+HMP stands for Human Monitor Protocol and is a set of text commands available
-+for users who prefer natural language to json.
-+
-+MTTCG
-+-----
-+
-+Multiple CPU support was first implemented using a round-robin algorithm
-+running on a single thread. Later on, `Multi-threaded TCG <mttcg>` was developed
-+to benefit from multiple cores to speed up execution.
-+
-+Plugins
-+-------
-+
-+`TCG Plugins <TCG Plugins>` is an API used to instrument guest code, in system
-+and user mode. The end goal is to have a similar set of functionality compared
-+to `DynamoRIO <https://dynamorio.org/>`_ or `valgrind <https://valgrind.org/>`_.
-+
-+One key advantage of QEMU plugins is that they can be used to perform
-+architecture agnostic instrumentation.
-+
-+Patchew
-+-------
-+
-+`Patchew <https://patchew.org/QEMU/>`_ is a website that tracks patches on the
-+Mailing List.
-+
-+PR
-+--
-+
-+Once a series is reviewed and accepted by a subsystem maintainer, it will be
-+included in a PR (Pull Request) that the project maintainer will merge into QEMU
-+main branch, after running tests.
-+
-+The QEMU project doesn't currently expect most developers to directly submit
-+pull requests.
-+
-+QCOW2
-+-----
-+
-+QEMU Copy On Write is a disk format developed by QEMU. It provides transparent
-+compression, automatic extension, and many other advantages over a raw image.
-+
-+qcow2 is the recommended format to use.
-+
-+QEMU
-+----
-+
-+`QEMU (Quick Emulator) <https://www.qemu.org/>`_ is a generic and open source
-+machine emulator and virtualizer.
-+
-+QOM
-+---
-+
-+`QEMU Object Model <qom>` is an object oriented API used to define various
-+devices and hardware in the QEMU codebase.
-+
-+Record/replay
-+-------------
-+
-+`Record/replay <replay>` is a feature of QEMU allowing to have a deterministic
-+and reproducible execution of a virtual machine.
-+
-+Rust
-+----
-+
-+`A new programming language <https://www.rust-lang.org/>`_, memory safe by
-+default. There is a work in progress to integrate it in QEMU codebase for
-+various subsystems.
-+
-+System mode
-+-----------
-+
-+QEMU System mode provides a virtual model of an entire machine (CPU, memory and
-+emulated devices) to run a guest OS. In this mode the CPU may be fully emulated,
-+or it may work with a hypervisor such as KVM, Xen or Hypervisor.Framework to
-+allow the guest to run directly on the host CPU.
-+
-+QEMU System mode is called :ref:`softmmu <softmmu>` as well.
-+
-+.. _target:
-+
-+Target
-+------
-+
-+The term "target" can be ambiguous. In most places in QEMU it is used as a
-+synonym for :ref:`guest`. For example the code for emulating Arm CPUs is in
-+``target/arm/``. However in the :ref:`TCG subsystem <tcg>` "target" refers to the
-+architecture which QEMU is running on, i.e. the :ref:`host`.
-+
-+TCG
-+---
-+
-+TCG is the QEMU `Tiny Code Generator <tcg>`. It is the JIT (just-in-time)
-+compiler we use to emulate a guest CPU in software.
-+
-+It is one of the accelerators supported by QEMU, and supports a lot of
-+guest/host architectures.
-+
-+User mode
-+---------
-+
-+QEMU User mode can launch processes compiled for one CPU on another CPU. In this
-+mode the CPU is always emulated. In this mode, QEMU translate system calls from
-+guest to host kernel. It is available for Linux and BSD.
-+
-+VirtIO
-+------
-+
-+VirtIO is an open standard used to define and implement virtual devices with a
-+minimal overhead, defining a set of data structures and hypercalls (similar to
-+system calls, but targeting an hypervisor, which happens to be QEMU in our
-+case). It's designed to be more efficient than emulating a real device, by
-+minimizing the amount of interactions between a guest VM and its hypervisor.
-+
-+vhost-user
-+----------
-+
-+`Vhost-user <vhost_user>` is an interface used to implement VirtIO devices
-+outside of QEMU itself.
-diff --git a/docs/index.rst b/docs/index.rst
-index 78285ebd6a..5665de85ca 100644
---- a/docs/index.rst
-+++ b/docs/index.rst
-@@ -20,3 +20,4 @@ Welcome to QEMU's documentation!
-    interop/index
-    specs/index
-    devel/index
-+   glossary
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 766a7455f0..0c9c2ce035 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -1,3 +1,5 @@
-+.. _arm-virt:
-+
- 'virt' generic virtual platform (``virt``)
- ==========================================
- 
-diff --git a/docs/system/images.rst b/docs/system/images.rst
-index d000bd6b6f..a5551173c9 100644
---- a/docs/system/images.rst
-+++ b/docs/system/images.rst
-@@ -82,4 +82,6 @@ VM snapshots currently have the following known limitations:
- -  A few device drivers still have incomplete snapshot support so their
-    state is not saved or restored properly (in particular USB).
- 
-+.. _block-drivers:
-+
- .. include:: qemu-block-drivers.rst.inc
-diff --git a/docs/tools/qemu-nbd.rst b/docs/tools/qemu-nbd.rst
-index 329f44d989..4f21b7904a 100644
---- a/docs/tools/qemu-nbd.rst
-+++ b/docs/tools/qemu-nbd.rst
-@@ -1,3 +1,5 @@
-+.. _qemu-nbd:
-+
- =====================================
- QEMU Disk Network Block Device Server
- =====================================
+Philippe Mathieu-Daudé (13):
+  hw/arm/virt: Remove deprecated virt-2.6 machine
+  hw/arm/virt: Remove VirtMachineClass::no_pmu field
+  hw/arm/virt: Remove VirtMachineClass::disallow_affinity_adjustment
+  hw/arm/virt: Remove deprecated virt-2.7 machine
+  hw/arm/virt: Remove VirtMachineClass::no_its field
+  hw/arm/virt: Remove deprecated virt-2.8 machine
+  hw/arm/virt: Remove VirtMachineClass::claim_edge_triggered_timers
+    field
+  hw/arm/virt: Remove deprecated virt-2.9 machine
+  hw/arm/virt: Remove deprecated virt-2.10 machine
+  hw/arm/virt: Remove deprecated virt-2.11 machine
+  hw/arm/virt: Remove VirtMachineClass::smbios_old_sys_ver field
+  hw/arm/virt: Remove deprecated virt-2.12 machine
+  hw/arm/virt: Remove VirtMachineClass::no_highmem_ecam field
+
+ include/hw/arm/virt.h    |   6 --
+ hw/arm/virt-acpi-build.c |  10 +--
+ hw/arm/virt.c            | 136 +++++++--------------------------------
+ 3 files changed, 26 insertions(+), 126 deletions(-)
+
 -- 
-2.39.5
+2.47.1
+

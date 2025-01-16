@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-437c7527fc4sm63651915e9.27.2025.01.16.08.03.13
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf3275562sm205273f8f.66.2025.01.16.08.03.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 16 Jan 2025 08:03:18 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 8066D60853;
-	Thu, 16 Jan 2025 16:03:08 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 3F10C608F5;
+	Thu, 16 Jan 2025 16:03:10 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org,
@@ -43,65 +43,71 @@ Cc: qemu-block@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v3 21/37] configure: reenable plugins by default for 32-bit hosts
-Date: Thu, 16 Jan 2025 16:02:50 +0000
-Message-Id: <20250116160306.1709518-22-alex.bennee@linaro.org>
+Subject: [PATCH v3 37/37] scripts/nsis.py: Run dependency check for each DLL file only once
+Date: Thu, 16 Jan 2025 16:03:06 +0000
+Message-Id: <20250116160306.1709518-38-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250116160306.1709518-1-alex.bennee@linaro.org>
 References: <20250116160306.1709518-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: BbNfNARMYCmS
+X-TUID: 4Kz8X+/m3FSQ
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+From: Stefan Weil <sw@weilnetz.de>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20241217224306.2900490-12-pierrick.bouvier@linaro.org>
+Each DLL should only be checked once for dependencies, but
+several hundred (781 in my test) unneeded checks were done.
+
+Now the script is significantly faster (16 s in my build).
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Message-Id: <20250111215244.1680931-1-sw@weilnetz.de>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- configure | 21 +--------------------
- 1 file changed, 1 insertion(+), 20 deletions(-)
+ scripts/nsis.py | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/configure b/configure
-index 18336376bf..02f1dd2311 100755
---- a/configure
-+++ b/configure
-@@ -528,25 +528,6 @@ case "$cpu" in
-     ;;
- esac
+diff --git a/scripts/nsis.py b/scripts/nsis.py
+index 03ed7608a2..af4e064819 100644
+--- a/scripts/nsis.py
++++ b/scripts/nsis.py
+@@ -37,10 +37,10 @@ def find_deps(exe_or_dll, search_path, analyzed_deps):
  
--# Now we have our CPU_CFLAGS we can check if we are targeting a 32 or
--# 64 bit host.
--
--check_64bit_host() {
--cat > $TMPC <<EOF
--#if __SIZEOF_POINTER__ != 8
--#error not 64 bit system
--#endif
--int main(void) { return 0; }
--EOF
--  compile_object "$1"
--}
--
--if check_64bit_host "$CPU_CFLAGS"; then
--    host_bits=64
--else
--    host_bits=32
--fi
--
- if test -n "$host_arch" && {
-     ! test -d "$source_path/linux-user/include/host/$host_arch" ||
-     ! test -d "$source_path/common-user/host/$host_arch"; }; then
-@@ -1072,7 +1053,7 @@ if test "$static" = "yes" ; then
-   fi
-   plugins="no"
- fi
--if test "$plugins" != "no" && test $host_bits -eq 64; then
-+if test "$plugins" != "no"; then
-     if has_meson_option "-Dtcg_interpreter=true"; then
-         plugins="no"
-     else
+         analyzed_deps.add(dep)
+         # locate the dll dependencies recursively
+-        rdeps = find_deps(dll, search_path, analyzed_deps)
++        analyzed_deps, rdeps = find_deps(dll, search_path, analyzed_deps)
+         deps.extend(rdeps)
+ 
+-    return deps
++    return analyzed_deps, deps
+ 
+ def main():
+     parser = argparse.ArgumentParser(description="QEMU NSIS build helper.")
+@@ -92,18 +92,18 @@ def main():
+         dlldir = os.path.join(destdir + prefix, "dll")
+         os.mkdir(dlldir)
+ 
++        analyzed_deps = set()
+         for exe in glob.glob(os.path.join(destdir + prefix, "*.exe")):
+             signcode(exe)
+ 
+             # find all dll dependencies
+-            deps = set(find_deps(exe, search_path, set()))
++            analyzed_deps, deps = find_deps(exe, search_path, analyzed_deps)
++            deps = set(deps)
+             deps.remove(exe)
+ 
+             # copy all dlls to the DLLDIR
+             for dep in deps:
+                 dllfile = os.path.join(dlldir, os.path.basename(dep))
+-                if (os.path.exists(dllfile)):
+-                    continue
+                 print("Copying '%s' to '%s'" % (dep, dllfile))
+                 shutil.copy(dep, dllfile)
+ 
 -- 
 2.39.5

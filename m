@@ -1,223 +1,247 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3822850njn;
-        Thu, 16 Jan 2025 07:17:13 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWVwOhMccgU3rEK/cfYzPr5yEvUh+GJbRp3QCf9ZWZQ5RLsPSZe6NdDySTnAMgKZnW5/O7xt7PoSor8vw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGB6KWypCgt3UDY1gh2ucPYVZ5WxH4F4WDSxLe08r2Q5mOvHA5tPGeFM1sKhDMECh1lHoJw
-X-Received: by 2002:a05:620a:4515:b0:7b6:d4b9:b5a6 with SMTP id af79cd13be357-7bcd96e8e2emr4097207285a.11.1737040633556;
-        Thu, 16 Jan 2025 07:17:13 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737040633; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3936257njn;
+        Thu, 16 Jan 2025 10:05:50 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXi8IBH25iWMcW97hYQvmHpu/Ad7l3sXOALfoOOHfSsD+vvKILFSCzu7Rd3Tg26TyDG9FAGdfffazucrg==@linaro.org
+X-Received: by 2002:a05:600c:468a:b0:434:a968:89a3 with SMTP id 5b1f17b1804b1-436e26a78a5mr272286855e9.9.1737050750551;
+        Thu, 16 Jan 2025 10:05:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737050750; cv=none;
         d=google.com; s=arc-20240605;
-        b=CVEUcHP0SacSbIz6Qr59Y52kCbQvba+pHnQQC2tWe0xrXE2FrtEPOVtF95vP807M8M
-         9UVGQufnXeQiGpUGK+E/m75EZpAFLN+k5XE9dlhcWrzqdLULsgEPIPmcBYdcAO6X/h9v
-         /5hR1CeNgmEDArEpP7h/EoZ/f09r1mQF3L55VoWG4VufxveA5ek+uCSmUKxn4goZNT9v
-         FZd03fb2CCTmo8DNuQ9y5ak/esBJl2XJgLMo5nNvza5iir+07Gw9IKhWr0fmWLMZzhPN
-         LmFUmKK1RZk4GzqhIqDLvzbIcTH+oUmCUAKgvpAVglApRnWuwVWUZH36IQdvpTVAmmxp
-         HM1w==
+        b=aOL2OGQYLFuTqAGXT0voxsAynDcysA5qtLjPmrj+vfnnIsh96JEC5Aj5GRRk2nDT7/
+         X7hGxKCXfuOTuZbUXBA62nq9g8Zi5iRlOozIvibHIq5c0lp7gEhZEorzx080FXEiT7F+
+         vSEJlr8Q6tBTwXrHOi8rPKFKEkMChElxyaZ4Lg9hwUnVeKSpflOacyNoOHjyQh33ceC2
+         b5ruDb13cXVbbo2ze2XDUPbimz4pTbhPmWwZz13fxOx9JvzdeniatEW4zXxIohRNcV67
+         aRIlRR09kkUqNTGadn1qUEuFLFzRQnl/7DvAlhaOdcobc1YaYUHm44x/U1TA/sK4a9ch
+         zifg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=JT2gSkujXsePMz+0NLWXC5dK9R4EnVu/GkcnRqkTwNc=;
-        fh=gkogd9Y9rnki/qSFNx4a9IufRA9K4RD1fmlMis5dJ0U=;
-        b=Ue58QYIWd+wftubczPsouK0GYDy8Ueuuo6UXdQGf27QWMUwXJcUSEedCCqyoWfmqnV
-         G+oYIFdjt33740yimpEgaXLiUknCxAyE2p5HuAsabXxmrKNKSLhs/rbuo8dx0qursHsJ
-         kSUcr4DUtG6qMLiIokEMmT8uKD5WtFk+QUKaknJ4/zBphsSMcYrj2mdliGhu0IbLI9D8
-         CvXmLpabUJwmckjJ34zc6mlWaW9xLboMAHtYMmYLcx5rRzWCGU2r7T3N1vJL5sCquD8v
-         HhgKPdqCmjjdqKAVfCAEUFkYs7tXJInjof0V4m18V03ttALS4U5ZPCyeGaMOjhAwmNLo
-         BV5A==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=Rhp05gJbQRlTNfvgsZGYVcl1Q/y5Mvv1WzUV/6aq+RQ=;
+        fh=rhAvN/6HUMa6wSWGCktSk5xms99FXmZZt27IiiTBhsg=;
+        b=gVvA+tO5jqTsKmGype3WBhy0qrOtVwtLayIoEluY4VVzmz4KE0Jbfesw2jdY6q5oTl
+         Hy+X6x7acL0gb7FTj9ae8xOA/VYdXdIUF7vovnhllapv7S8E2wu37TvqrWCq1MekgeUq
+         DiNFXyV+rDFTJld7SVky8A+ldqZphulJcFKJfi2tiJCllxk6lxszWA4XcRVApzAIVIRU
+         6AgpNJUO2dJwLfLPudWj33s+UH7fmBfMH/bXj65lCBD19b34zEPe/si/y1ADClZvSO71
+         qwMlbzfV+YA6/rg8DNW3DT7N+eADYzCqDQ5xErnFlxZnBwvrMEsgGCpOnjviHhYKOfTe
+         M7rQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Vbc6Tiqm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=VFaBYoMg;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e1afbfae6csi1893276d6.30.2025.01.16.07.17.13
+Return-Path: <philmd@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 5b1f17b1804b1-438904928b1sor2113695e9.6.2025.01.16.10.05.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2025 07:17:13 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 16 Jan 2025 10:05:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Vbc6Tiqm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=VFaBYoMg;
+       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tYRcB-0000Ev-A0; Thu, 16 Jan 2025 10:16:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1tYRc9-0000EW-LK
- for qemu-arm@nongnu.org; Thu, 16 Jan 2025 10:16:57 -0500
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ajones@ventanamicro.com>)
- id 1tYRc7-0004py-MZ
- for qemu-arm@nongnu.org; Thu, 16 Jan 2025 10:16:57 -0500
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-436341f575fso10724205e9.1
- for <qemu-arm@nongnu.org>; Thu, 16 Jan 2025 07:16:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1737040614; x=1737645414; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date:from:to
- :cc:subject:date:message-id:reply-to;
- bh=JT2gSkujXsePMz+0NLWXC5dK9R4EnVu/GkcnRqkTwNc=;
- b=Vbc6TiqmKEBE4kMBHicr9WgRgPdrKhTCDR87enSeha3KCz41ZKDL0W+YsMZ7fkTLIa
- Y5LXhA2IGYX8LN+b1nd/SaYxLfjMan+FVkDuip+lUnaakepZ4MBd49OkHablNx6u2w3a
- cxDSknQXvYS1FL5sQwYIkUA9rt2kmZSnijDppybfiPmMfnC2uEhSVXnGbgqHmkbPgA5M
- yAYkBYoyHq1CHdA4yHe6QltG0olb7avFW/+gHFYiMiEymEEnOORaQJFs97ArHTfxR0my
- UrhhoqxPkO9ClEoK4Whmki5xlJR/pYo7G8vGUVrPTibnbWbHVldzn/oOTHZ2jOWpmu9d
- 7+vA==
+        d=linaro.org; s=google; t=1737050750; x=1737655550; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Rhp05gJbQRlTNfvgsZGYVcl1Q/y5Mvv1WzUV/6aq+RQ=;
+        b=VFaBYoMgAlZ0dFaSZRrcbIMMlI9M+pz2Mc4MluVSqI+IPGOkIoocbK4dFQsuXBHJKQ
+         NSJhxVpIeqpxOhHPzpa4Fs/5jEeK4Ebbb3+cG9SjCq88YSi1O1YoSGIaIDr0mjHFZYEL
+         4ZQp6z87VXL9AZTmO7nlW15HkTND+fnJxHMLflpJEt53yh411qflxGED2veJknntzZp2
+         9Re10FPLYhhlrV6WQZ/Z95Pu3mXs+u/Dr20vmcK0TmNaXww7JFYcoUuoFJWSR9oOiXcQ
+         +MFcyEPKsx7EGf8fPGeEh2CqzaagD440xzYkKBuKVDWX6hocevbBo9s5xC9whKgs6CSM
+         Xqfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737040614; x=1737645414;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :mime-version:references:message-id:subject:cc:to:from:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=JT2gSkujXsePMz+0NLWXC5dK9R4EnVu/GkcnRqkTwNc=;
- b=xKaM3Clv8JCzJ9+a/V+D0sKYTdPA9JRxuxqqz/pvQNF642VKj+yIxQICjWKtGhpIAf
- 8dQ+6PtxX1v27NN2y7+v2NhLcnSVZtnMMu1EbTVji2w2uOCtukADZTLiR3vtaTAzO8oE
- xQsokHm1gHYvXQgkAPPOq/RQJeG/tD6EEOtcl37HHI6NgqGtgSnUTZn9cGJfWMkMte9Z
- vzlkUGzXmU0QXNQcBwE0opGz/Avix/7xfscK/OPAybNpmCPjDCrfHRZVsRw+t29R6Zut
- jV7HzStM9F8bpc8UfNPdqj7gE2aDuVa90O/JKiLqtl5ul22zF7KDoXQvdF4Ki9OGIAFm
- kBvQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU3w0JkKzctzmOCdcuPUGnslFZZNbPLwop4krrORvzopjLHPCnq009/yFj14tSA1G9KbnNzCzBAUg==@nongnu.org
-X-Gm-Message-State: AOJu0Yx5hFyHlhEqPn2lOFQeUIAifLEPvo55nQctrpNWyrI3rf1j8tQO
- qdn43oFRPNTb+mw59PzbhyyHrMwXDH1PSCaL4BOwE2RB3jhudRbVkjVA0FzsdU8=
-X-Gm-Gg: ASbGncvtVlfgEYQrSvGBDuuqwHK1NZP2PupU7Y9jMOTjnCi2iYmT2qch5V34ACDKENE
- /yW6Vpz1rYl3OhTtIr+jfzuAvG5fJEzPLQ4j33L7qDfmRjqPpNW2l3bB3saRdus0m3l2DKInili
- K8xnf3Ycx3OaMXi0xpdXdg6b3V51yFtsQvuXhZR3PCnRpcfcd6EowEwo6neQ+cKk6n0MBH+K8vP
- IjVDhmx63Vtj3X2mB7lxORn565x4i9lF5S+racnrdf2sQCc7HsH0q42Nb388d8JvkZWO0DttrIE
- q+HwCE8ggRfk9zVtdR1YjdVg1v/zmf5thDfcKffGXQ==
-X-Received: by 2002:a05:600c:1e02:b0:434:f131:1e71 with SMTP id
- 5b1f17b1804b1-436f04e048cmr240677835e9.8.1737040613949; 
- Thu, 16 Jan 2025 07:16:53 -0800 (PST)
-Received: from localhost (2001-1ae9-1c2-4c00-20f-c6b4-1e57-7965.ip6.tmcz.cz.
- [2001:1ae9:1c2:4c00:20f:c6b4:1e57:7965])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4389041f7e9sm2355325e9.23.2025.01.16.07.16.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Jan 2025 07:16:53 -0800 (PST)
-Date: Thu, 16 Jan 2025 16:16:52 +0100
-From: Andrew Jones <ajones@ventanamicro.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Igor Mammedov <imammedo@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH-for-10.1 v2 03/13] hw/arm/virt: Remove
- VirtMachineClass::disallow_affinity_adjustment
-Message-ID: <20250116-bf7d225d9fef8277a6315e63@orel>
-References: <20250116145944.38028-1-philmd@linaro.org>
- <20250116145944.38028-4-philmd@linaro.org>
+        d=1e100.net; s=20230601; t=1737050750; x=1737655550;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=Rhp05gJbQRlTNfvgsZGYVcl1Q/y5Mvv1WzUV/6aq+RQ=;
+        b=pMFXpgS/X96HCwmTxYOO/z/7hrY8YpX/uDZg1ptLzjre80d0TL626wDR+2+vr+xdJI
+         60dtv2o1Q1WquOnc0AVbLUaB8T7FbP0C9wTBcBsFT0bS8tmGTJge6GIAsyVXlwq1zZek
+         gWLCFDJzXFUM+XqN/PMO2sZq92VpzhtNJ6zY4J8Uu66GYs78Mz2Zvv8VZslzY2lXhkNb
+         Fr6wHOpNV/vV+JnDtn0lKinU3j9vf4bPVOjzj5CYTzayCBHUHKeBANFjH4Ese3tQIrfO
+         SaggYsl4Fp0KmLhwUK3E0A9BQbFbrKTU/sueOPHJ45PsbffABy+w3gLwNFqdf/Yl+uRZ
+         TWKQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUtihMGZG1lMlg24OFsxKOWy0yhD/ETlaYnRrXTYrDkC3+7sgSRJSxpXGHN5jPb9gHHudPYhPR5D1UuFQ==@linaro.org
+X-Gm-Message-State: AOJu0YzyW+Pte77FbpnXoDy1sjgh721yGGMExTddIPKu/+HqxN7DsvyK
+	Zz/FdTr24hj94gdpmygGM+vRs+gcZel+YWfu/mmvZIa3n720aBQcnWvwmJkP7du16Q==
+X-Gm-Gg: ASbGncvJVyHRL4GZJEnpLZKxpebbEJNUDtOLKQ7AWgBhjlRrD0dxKXZj7EopNAdUxMt
+	8JaIJpqJecU43v/1qdOZ4Okok52wLnvrSXrhFD5/zkKwpWE9HO0Z6twKKHu1+UPKe5tNShV+uSV
+	BQ/a8zaiiRKZ+Llr4/akzpZCgiKrc5kRYtL3vuTJOlh9FhCC4xEWEz61uyj9mQfukCT7U4owsxO
+	rZrUNnc+rt62SOpNJ777i6/Gog7d11wrOLbVUzPqW3h5YYv77b+NnZDgt3X5EU3rYLBEh7N8giy
+	jSlR/6yxsgnBdHVIABB1UcwY
+X-Google-Smtp-Source: AGHT+IE7PicfAMlxA+nlONgB6VhOPYA3/3n8nOIee+iKmvhp7eYMFXXEQKotYDBpJUtL/z/v/0EW/g==
+X-Received: by 2002:a05:600c:314b:b0:434:f270:a513 with SMTP id 5b1f17b1804b1-436e26ff288mr247488285e9.29.1737050749887;
+        Thu, 16 Jan 2025 10:05:49 -0800 (PST)
+Return-Path: <philmd@linaro.org>
+Received: from [192.168.69.151] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-43890367b48sm6925895e9.0.2025.01.16.10.05.47
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 16 Jan 2025 10:05:48 -0800 (PST)
+Message-ID: <5f25576c-598f-4fd7-8238-61edcff2c411@linaro.org>
+Date: Thu, 16 Jan 2025 19:05:46 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 06/22] exec/cpu: Call cpu_remove_sync() once in
+ cpu_common_unrealize()
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ David Hildenbrand <david@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Anton Johansson <anjo@rev.ng>, Peter Maydell <peter.maydell@linaro.org>,
+ kvm@vger.kernel.org, Marek Vasut <marex@denx.de>,
+ David Gibson <david@gibson.dropbear.id.au>, Brian Cain <bcain@quicinc.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Claudio Fontana <cfontana@suse.de>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Marcelo Tosatti
+ <mtosatti@redhat.com>, qemu-ppc@nongnu.org,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Alessandro Di Federico <ale@rev.ng>, Song Gao <gaosong@loongson.cn>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Chris Wulff <crwulff@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Fabiano Rosas <farosas@suse.de>,
+ qemu-s390x@nongnu.org, Yanan Wang <wangyanan55@huawei.com>,
+ Luc Michel <luc@lmichel.fr>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Bin Meng <bin.meng@windriver.com>, Stafford Horne <shorne@gmail.com>,
+ Xiaojuan Yang <yangxiaojuan@loongson.cn>,
+ "Daniel P . Berrange" <berrange@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Bernhard Beschow <shentey@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-riscv@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Nicholas Piggin <npiggin@gmail.com>, Greg Kurz <groug@kaod.org>,
+ Michael Rolnik <mrolnik@gmail.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Markus Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>
+References: <20230918160257.30127-1-philmd@linaro.org>
+ <20230918160257.30127-7-philmd@linaro.org>
+ <20231128174215.32d2a350@imammedo.users.ipa.redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231128174215.32d2a350@imammedo.users.ipa.redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250116145944.38028-4-philmd@linaro.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=ajones@ventanamicro.com; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: wKbg70hTdoG/
+X-TUID: biZGcZNoFrkm
 
-On Thu, Jan 16, 2025 at 03:59:34PM +0100, Philippe Mathieu-DaudÈ wrote:
-> The VirtMachineClass::disallow_affinity_adjustment
-> field was only used by virt-2.6 machine, which got
-> removed. Remove it and simplify virt_cpu_mp_affinity().
+On 28/11/23 17:42, Igor Mammedov wrote:
+> On Mon, 18 Sep 2023 18:02:39 +0200
+> Philippe Mathieu-Daud√© <philmd@linaro.org> wrote:
 > 
-> Signed-off-by: Philippe Mathieu-DaudÈ <philmd@linaro.org>
-> ---
->  include/hw/arm/virt.h |  1 -
->  hw/arm/virt.c         | 30 +++++++++++++++---------------
->  2 files changed, 15 insertions(+), 16 deletions(-)
+>> While create_vcpu_thread() creates a vCPU thread, its counterpart
+>> is cpu_remove_sync(), which join and destroy the thread.
+>>
+>> create_vcpu_thread() is called in qemu_init_vcpu(), itself called
+>> in cpu_common_realizefn(). Since we don't have qemu_deinit_vcpu()
+>> helper (we probably don't need any), simply destroy the thread in
+>> cpu_common_unrealizefn().
+>>
+>> Note: only the PPC and X86 targets were calling cpu_remove_sync(),
+>> meaning all other targets were leaking the thread when the vCPU
+>> was unrealized (mostly when vCPU are hot-unplugged).
+>>
+>> Signed-off-by: Philippe Mathieu-Daud√© <philmd@linaro.org>
+>> ---
+>>   hw/core/cpu-common.c  | 3 +++
+>>   target/i386/cpu.c     | 1 -
+>>   target/ppc/cpu_init.c | 2 --
+>>   3 files changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+>> index a3b8de7054..e5841c59df 100644
+>> --- a/hw/core/cpu-common.c
+>> +++ b/hw/core/cpu-common.c
+>> @@ -221,6 +221,9 @@ static void cpu_common_unrealizefn(DeviceState *dev)
+>>   
+>>       /* NOTE: latest generic point before the cpu is fully unrealized */
+>>       cpu_exec_unrealizefn(cpu);
+>> +
+>> +    /* Destroy vCPU thread */
+>> +    cpu_remove_sync(cpu);
+>>   }
+>>   
+>>   static void cpu_common_initfn(Object *obj)
+>> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+>> index cb41d30aab..d79797d963 100644
+>> --- a/target/i386/cpu.c
+>> +++ b/target/i386/cpu.c
+>> @@ -7470,7 +7470,6 @@ static void x86_cpu_unrealizefn(DeviceState *dev)
+>>       X86CPUClass *xcc = X86_CPU_GET_CLASS(dev);
+>>   
+>>   #ifndef CONFIG_USER_ONLY
+>> -    cpu_remove_sync(CPU(dev));
+>>       qemu_unregister_reset(x86_cpu_machine_reset_cb, dev);
+>>   #endif
 > 
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 27c5bb585cb..5d3b25509ff 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -117,7 +117,6 @@ typedef enum VirtGICType {
->  
->  struct VirtMachineClass {
->      MachineClass parent;
-> -    bool disallow_affinity_adjustment;
->      bool no_its;
->      bool no_tcg_its;
->      bool claim_edge_triggered_timers;
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 0080577e1a9..53f4a96e517 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1759,24 +1759,24 @@ void virt_machine_done(Notifier *notifier, void *data)
->  
->  static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
->  {
-> -    uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
-> +    uint8_t clustersz;
->      VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->  
-> -    if (!vmc->disallow_affinity_adjustment) {
-> -        /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
-> -         * GIC's target-list limitations. 32-bit KVM hosts currently
-> -         * always create clusters of 4 CPUs, but that is expected to
-> -         * change when they gain support for gicv3. When KVM is enabled
-> -         * it will override the changes we make here, therefore our
-> -         * purposes are to make TCG consistent (with 64-bit KVM hosts)
-> -         * and to improve SGI efficiency.
-> -         */
-> -        if (vms->gic_version == VIRT_GIC_VERSION_2) {
-> -            clustersz = GIC_TARGETLIST_BITS;
-> -        } else {
-> -            clustersz = GICV3_TARGETLIST_BITS;
-> -        }
-> +    /*
-> +     * Adjust MPIDR like 64-bit KVM hosts, which incorporate the
-> +     * GIC's target-list limitations. 32-bit KVM hosts currently
-> +     * always create clusters of 4 CPUs, but that is expected to
-> +     * change when they gain support for gicv3. When KVM is enabled
-> +     * it will override the changes we make here, therefore our
-> +     * purposes are to make TCG consistent (with 64-bit KVM hosts)
-> +     * and to improve SGI efficiency.
-
-32-bit KVM hosts are dead a long time, so we could definitely trim
-this comment to at least remove those sentences. We'd also have
-to double check arm64 KVM to see if the comment is still accurate,
-since the comment is so old. Or, we could just delete the comment.
-
-Thanks,
-drew
-
-> +     */
-> +    if (vms->gic_version == VIRT_GIC_VERSION_2) {
-> +        clustersz = GIC_TARGETLIST_BITS;
-> +    } else {
-> +        clustersz = GICV3_TARGETLIST_BITS;
->      }
-> +
->      return arm_build_mp_affinity(idx, clustersz);
->  }
->  
-> -- 
-> 2.47.1
+> missing  followup context:
+>      ...
+>      xcc->parent_unrealize(dev);
 > 
+> Before the patch, vcpu thread is stopped and onnly then
+> clean up happens.
+> 
+> After the patch we have cleanup while vcpu thread is still running.
+> 
+> Even if it doesn't explode, such ordering still seems to be wrong.
+
+OK.
+
+>> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+>> index e2c06c1f32..24d4e8fa7e 100644
+>> --- a/target/ppc/cpu_init.c
+>> +++ b/target/ppc/cpu_init.c
+>> @@ -6853,8 +6853,6 @@ static void ppc_cpu_unrealize(DeviceState *dev)
+>>   
+>>       pcc->parent_unrealize(dev);
+>>   
+>> -    cpu_remove_sync(CPU(cpu));
+> 
+> bug in current code?
+
+Plausibly. See:
+
+commit f1023d21e81b7bf523ddf2ac91a48117f20ef9d7
+Author: Greg Kurz <groug@kaod.org>
+Date:   Thu Oct 15 23:18:32 2020 +0200
+
+     spapr: Unrealize vCPUs with qdev_unrealize()
+
+     Since we introduced CPU hot-unplug in sPAPR, we don't unrealize the
+     vCPU objects explicitly. Instead, we let QOM handle that for us
+     under object_property_del_all() when the CPU core object is
+     finalized. The only thing we do is calling cpu_remove_sync() to
+     tear the vCPU thread down.
+
+     This happens to work but it is ugly because:
+     - we call qdev_realize() but the corresponding qdev_unrealize() is
+       buried deep in the QOM code
+     - we call cpu_remove_sync() to undo qemu_init_vcpu() called by
+       ppc_cpu_realize() in target/ppc/translate_init.c.inc
+     - the CPU init and teardown paths aren't really symmetrical
+
+     The latter didn't bite us so far but a future patch that greatly
+     simplifies the CPU core realize path needs it to avoid a crash
+     in QOM.
+
+     For all these reasons, have ppc_cpu_unrealize() to undo the changes
+     of ppc_cpu_realize() by calling cpu_remove_sync() at the right
+     place, and have the sPAPR CPU core code to call qdev_unrealize().
+
+     This requires to add a missing stub because translate_init.c.inc is
+     also compiled for user mode.
+
+> 
+>> -
+>>       destroy_ppc_opcodes(cpu);
+>>   }
+>>   

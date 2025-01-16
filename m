@@ -1,129 +1,177 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3262516njn;
-        Wed, 15 Jan 2025 10:16:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXEotYbxXW7lQtyc25yf6v0QyrdK1QyQjoXr2DUQnYkQrSgvxS5KhlYC/a/Lqvj/xFy24uLJUwhErQERQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFK8ahM72Uu8fVMh/RsyrZqHcW+PfLPiPXzBGrzmlJY+yKv51RDnKfXotEUiE4k9aBKL4CQ
-X-Received: by 2002:a05:622a:1342:b0:467:6e45:218d with SMTP id d75a77b69052e-46c70fd4538mr488273591cf.3.1736964996641;
-        Wed, 15 Jan 2025 10:16:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1736964996; cv=none;
+Received: by 2002:a05:7022:510:b0:92:a90b:6588 with SMTP id 16csp3535021dlj;
+        Wed, 15 Jan 2025 23:04:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUeeC8qjtBdMl5LhDRO8Qb88rmwCEfEgZmlziy0xsEkqN7Gkaq3n/cnYrj0TaVgnXW8YuGMe4LkCeXuiQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IECvzvTMIJ9l4G8Y6GCND6RRDxSIFDqi1bcriFUk6dE05xD7n/taKXDHyqA1/9XqTrXdQ9K
+X-Received: by 2002:a05:6214:2522:b0:6d8:9be9:7d54 with SMTP id 6a1803df08f44-6df9b2dd9bemr523308166d6.35.1737011044615;
+        Wed, 15 Jan 2025 23:04:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737011044; cv=none;
         d=google.com; s=arc-20240605;
-        b=PiLM0kmspj9SLlXrMTojXv+oi6R02xUQX298eaCQGD3YpTpnamslQdh8Lcd5WP7jVl
-         WYN0XB+RNquP6xT1fJGBulYcgT58ollDtwF3gAFwhC4s8LzeJltr3H/Ntnv3hzBk+oM8
-         Gld/BZ+20SJmk9r0m3JtwpamnUMbvYuQwngxrHja6Bauly5KOlBA8U48uL2gh2t3PjkQ
-         srNxRzJsw+zxCWZTN5iSHyA8gieohPqHwjxVw1RmJ5FQP/xETgBcJK8ehAz7mj2t4wZ4
-         GejsIymDwZ573X/lXJ4EUnKyUpZXq2u+Kveq8w9ThSfmKfT/YrT9dKKMAk8qXJAhdUq+
-         3Ehg==
+        b=JdZpG9CjVfpppHUa+rCgH6hp+3HOicaXfQ+/4R+5TOgPfW6oWrEjN1uVa3jZ2GdoM0
+         LQSpIDD/AUOJPrJaBzAtQ9WskF7AUk2lxPhD8lf1dA5sP5Oo22/7N22bllCuy3FLfp9O
+         hZF3Nkf3CrTcqZ/Kf5vi11SWbcohvWLhH8YFs4ZpcfkBd2G8fhrfh4ZDD5+TJdyUKw1o
+         vrUvRMDimAQwvE++j6XcZwXuRN12tlN6maG591JtzpcdrSystN6r0TxVAe93lhmrhyQA
+         SEHv8/JTMvscqPrah6mfd8ivl+7hgdaVMTaoxd9N5fDL3F6EPJTeTQfmnN/l0d1IKMdd
+         DHvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=V/dUCsKb0TMFSGFh+lNfPFs4aoQ4JRtV+rc4QjtcMiM=;
-        fh=59XnuQC6iDOx9DZo/D2miAMC+wUgC14I6Tv9mkhzjMg=;
-        b=Ugmf6wDOe5TRfUb4UFsSVTaa8dZVnvRQbofXWEVWiHR1nw46RN5q0+LrF7COHjYJrI
-         lnjidkQVZr+AvQRJP/DEicsqAUqbIbGg7BGbF1h5t5FAwb1iiTqFSc0s1nDDMsFfie0J
-         dfqPvxWP/8Hp2Plq0oX/Erh+9RJY9KsEzgNSTFr1lPI4eRdGf2hHjz5OsrL0wS9WZQED
-         CpC/8Ma+B+9bH/mjuHFvXhgYdnd7efbbRFjT1J0QsxEKNsx5B31nPXuLxTRe0JkW3/Bv
-         X6XGS/8+bUy4QGd/S1yxLH0MpFOV7CncAl7ddHfUqusJB4N69IPIfQSWdlA/J8McYKEk
-         QgyA==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=MdwEGYe5hAfLyz6bxzdeyj9JuNqAt84KEKdtrWjPfsw=;
+        fh=dnMFbBFy522cGonvZO/Y9rXBTEWMXmSYPoUBdOWmVnw=;
+        b=c7NQa6Li/rAyzq9eck2oXDN+xRSdx2ilR7OCVEh+P7mbBGJs2h9sU4DHZQOxGnJ0gR
+         MEJ2fUsvropzcWUSo4gd1OEX1YDDTRnDdcEt8G+Cn+05ESrRIV35Nv+ucuZ/W2tkZQOQ
+         RYwVZ8gutMUQT6yUpmOe8MyRZLcRnzDYiKDLGD6Vd8IRcoSTdnS9dHGHbNaxFeCuJaCi
+         TMrMxtaLpRpk/Qt1u4NJRi4WinVKPkU5yMrrfJ1DgT5cK2MDtp63+HMo+5gM7S0ETxD1
+         NjjsakV5K6bGZYXRgQCMMsnMWLj7xn8PWxcQP4Uq2I1anO2U0YULxbIoRMCT7FQPNXGF
+         0vEA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FUx7KNXs;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i9EY2ae1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46c873e5427si149520561cf.317.2025.01.15.10.16.36
+        by mx.google.com with ESMTPS id d75a77b69052e-46c8734e19dsi161046751cf.158.2025.01.15.23.04.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jan 2025 10:16:36 -0800 (PST)
+        Wed, 15 Jan 2025 23:04:04 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FUx7KNXs;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=i9EY2ae1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tY7sJ-00077H-MY; Wed, 15 Jan 2025 13:12:19 -0500
+	id 1tYJv0-0003iR-UI; Thu, 16 Jan 2025 02:03:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7qt-0008Sw-Vf
- for qemu-arm@nongnu.org; Wed, 15 Jan 2025 13:10:52 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tYJuu-0003hj-Kr
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2025 02:03:48 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1tY7qq-00074s-JA
- for qemu-arm@nongnu.org; Wed, 15 Jan 2025 13:10:49 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tYJus-0005bo-4B
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2025 02:03:48 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1736964647;
+ s=mimecast20190719; t=1737011025;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=V/dUCsKb0TMFSGFh+lNfPFs4aoQ4JRtV+rc4QjtcMiM=;
- b=FUx7KNXsclSqiojYsajlDBNSYu3ubz8DE5qXjHyRg1z5UuJNqQn9QTZobyWeQ6184q+1ff
- erIoyS8wuZONQ1uA0tYeolSqfZ72W2rp/n4wJXPGXc3P4CGZeKYzab8+I0YbU9ds1ooM0u
- XXLn/rBF88MI6nkAQ+F+p3wBoJvzQNQ=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=MdwEGYe5hAfLyz6bxzdeyj9JuNqAt84KEKdtrWjPfsw=;
+ b=i9EY2ae12aQBewLufjDpYKX+cAoYPcueD4wqXXnQ41uQ66ASJJUUQtmzxQzATBuuKT1ywb
+ PthRYgJkkJyc9lL0nABt5tVmERHdH2NaaJbwFrPNUgHW3hxP4dgEAP99xE3mUyzwXiwC7A
+ DbZQ0vbRRIIOSE72/IsVVVD8RpsEHZg=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-81-dOm3YdUfOAOae40-mBhF4w-1; Wed, 15 Jan 2025 13:10:46 -0500
-X-MC-Unique: dOm3YdUfOAOae40-mBhF4w-1
-X-Mimecast-MFC-AGG-ID: dOm3YdUfOAOae40-mBhF4w
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-38a684a096eso40420f8f.2
- for <qemu-arm@nongnu.org>; Wed, 15 Jan 2025 10:10:45 -0800 (PST)
+ us-mta-433-IRy27WN9NXaXSPWpBO8L-A-1; Thu, 16 Jan 2025 02:03:42 -0500
+X-MC-Unique: IRy27WN9NXaXSPWpBO8L-A-1
+X-Mimecast-MFC-AGG-ID: IRy27WN9NXaXSPWpBO8L-A
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-43623bf2a83so3618485e9.0
+ for <qemu-arm@nongnu.org>; Wed, 15 Jan 2025 23:03:42 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736964645; x=1737569445;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=V/dUCsKb0TMFSGFh+lNfPFs4aoQ4JRtV+rc4QjtcMiM=;
- b=pVvaKYaplwVrCMeYAxW/lvqvgJp4DRZVkW5ID1BgHRlXHustUkJE7NUVaayvY7jCnO
- iLMV9P1cFLj09eXr+0cDwmaEzo0xRa6wcGdlGe4pGIxstS1Z3L3eQ88azycR6iAhquub
- pdl/HH2tngAld9Mv9TsPnWJqbrKsc2jjPM1jsEinyXFoVz0oVvzDCpIN9HIUiFEBAhD2
- +ouV4K/i/1RKRl4ACXOnOiSW9uLG0cG06u/F+SBnLRgeHKIPaZNYiRSegOuUQWhqJhjZ
- CcUDCtbaFW7D+zXOVX3+X92Y4D4rBjQ92b8NUanPqmbT4efrvXzbRCh5JTzr1e6UU+dG
- UjEQ==
+ d=1e100.net; s=20230601; t=1737011021; x=1737615821;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=MdwEGYe5hAfLyz6bxzdeyj9JuNqAt84KEKdtrWjPfsw=;
+ b=oybaeb7KFtmNMi5ADhuyC/1rTp8xl2xf25PygCpnj50RG9mz87zYyUuwVvpNbW/xVa
+ mA8Kp39CcYX69dVQ3an4B8ipQDSYmOxvbCu6xzGC/Jx7dvjIR4uQ1l9fI/9fFBgZ1ZXy
+ 2IBjU2K6UQBPfgs2zoSOM74EeushK9aLwOXYziaA9z5im0LXzZtzbav72vGKaXfjjNbb
+ aZeh5gci1qrRmT89zM+v2o9chRkpy3TEVZeHXxSrvhRWx65+y8/ebt0fNuc3RhPzO4a1
+ S3wzWZcrRdiKUSTYFRD1nasNVlcCeMPfAAoX4Tol5b63bNMz4lgvJFu61Ch7o7EyOsFM
+ FP6A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWP1pMu7hvM0RJbj+6dP8Ogz0cRJmfN6gGbt4/Q3UE9QozNpuiYIOyfnQ1J0iYFxDQlnsD4PKnlVA==@nongnu.org
-X-Gm-Message-State: AOJu0YyLqwS49sp6KK3F9fex4Kc2NuU4SMPWpqaL50EyQMWgcw9xKnKj
- bcx3Xj16KaVWeQwAL4b0etrL5xA4HJQy1FA7t0KlKu6bY+5KZ3aBIi7jvQLfwk3ExH2Z3FTk0IZ
- xLQobuZMm2/zJjaXeYIxVd8/ecAaoR5KGkTum/vDWm6I5XimI+Q==
-X-Gm-Gg: ASbGncvyOXbY3pOWrm4vZpS9Y0G8Y3XkWSRkJu5ujWoantOzg+lFbBUA9GAQAcsLQEo
- l05v8ZCvQ11ogK8HkkNwnNFI2TMNCkBhvbTC/x1ONcztxfJewV/OtR0c+osO5sFSZ/ihAJ2k/UQ
- FSESnWv/E2IJ4gIp3Xv0EFQmwRQoXZW9ymt9KdRPZ12ulCoOkQkHdL0LI8xEn7GO5G5sPfACRxN
- 9HtLYyEbhje7S6AojOMqW4gb9kMZrXlhnX/bvhzAqsrNsBwJege
-X-Received: by 2002:a5d:598d:0:b0:385:e8aa:2a4e with SMTP id
- ffacd0b85a97d-38a872ec201mr26677160f8f.31.1736964644932; 
- Wed, 15 Jan 2025 10:10:44 -0800 (PST)
-X-Received: by 2002:a5d:598d:0:b0:385:e8aa:2a4e with SMTP id
- ffacd0b85a97d-38a872ec201mr26677139f8f.31.1736964644607; 
- Wed, 15 Jan 2025 10:10:44 -0800 (PST)
-Received: from redhat.com ([2a0d:6fc7:342:db8c:4ec4:322b:a6a8:f411])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a8e38bf65sm18074120f8f.49.2025.01.15.10.10.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 15 Jan 2025 10:10:43 -0800 (PST)
-Date: Wed, 15 Jan 2025 13:10:41 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>,
- Dongjiu Geng <gengdongjiu1@gmail.com>, qemu-arm@nongnu.org
-Subject: [PULL 42/48] docs: acpi_hest_ghes: fix documentation for CPER size
-Message-ID: <84c146758d79b3689b6c9c7815b6bfbb70ba06b0.1736964488.git.mst@redhat.com>
-References: <cover.1736964487.git.mst@redhat.com>
+ AJvYcCUg0OLgb7QC/vbHmuFQvtkES3Im/CN5hP5w97ihOSAGVd3/8sIh2gy6WlUFjvw9odpAm63evNBiDg==@nongnu.org
+X-Gm-Message-State: AOJu0Ywf/aHEEpEnNuG1Qe2b2KTODQNhnnShgEQ4FMmCvxh2rGkLrWuj
+ hTTyZIM4eGoqBagqhbdWr5/urBk05EYNKt3V2D6Ms2vuGm2pa3TSk5bJ/0qbagAiBbkNWolEpFP
+ nqAFEgwpdSf1d3bRhKc72C9uicR07/sj2RGUA2ckpH0KGI8XJPA==
+X-Gm-Gg: ASbGncsL+afGA54oHmeteIJUfDyVVCNPUV9m7HA4huadz4cHF48RBtkFmOCZ7STdsFc
+ A7KE19Kn+z4K0fzgKjjEAe8n0NzA+s2+lCfH4dCyMYcH3Ys5mk/ZOd7nCScvk1AsM/XVVaw6lOl
+ eNzWdnnVRQl/8ug3BKKrLgDuLNy5cmcHtQkng2upjl/axaaN3G4c9mYf+SQLzA8bjDkwJ70Bi3r
+ eSlGc/OUv+iIbsunCyH0G2bDpecC0HYQSIkG6EJ+Qe+SHJu11pHtU5S+pq6qjf7OMeKHdVmQPRR
+ JrZRfUAQFkhE
+X-Received: by 2002:a05:600c:1d07:b0:434:fa73:a907 with SMTP id
+ 5b1f17b1804b1-436e269a5f5mr281596545e9.13.1737011021687; 
+ Wed, 15 Jan 2025 23:03:41 -0800 (PST)
+X-Received: by 2002:a05:600c:1d07:b0:434:fa73:a907 with SMTP id
+ 5b1f17b1804b1-436e269a5f5mr281596275e9.13.1737011021331; 
+ Wed, 15 Jan 2025 23:03:41 -0800 (PST)
+Received: from [192.168.0.7] (ip-109-42-51-119.web.vodafone.de.
+ [109.42.51.119]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-437c74c6799sm48910115e9.24.2025.01.15.23.03.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 Jan 2025 23:03:40 -0800 (PST)
+Message-ID: <da2fe302-dae9-4f6c-8ea8-94fcc332e167@redhat.com>
+Date: Thu, 16 Jan 2025 08:03:38 +0100
 MIME-Version: 1.0
-In-Reply-To: <cover.1736964487.git.mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 03/13] hw/arm/virt: Remove
+ VirtMachineClass::disallow_affinity_adjustment
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Jones <ajones@ventanamicro.com>, qemu-arm@nongnu.org,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>
+References: <20250115171009.19302-1-philmd@linaro.org>
+ <20250115171009.19302-4-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20250115171009.19302-4-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: XukLFWAc-jJc1352LbTX88aOO7UmI4mF5sx_qowOSEM_1736964645
+X-Mimecast-MFC-PROC-ID: -jJ4r6xyD8j4sPRbTGg1PkWEaC6ZR3kfNkOQG_GU_00_1737011022
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -147,42 +195,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: p5Lm6mNz51vM
+X-TUID: 68rw6hK30kvR
 
-From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+On 15/01/2025 18.09, Philippe Mathieu-Daudé wrote:
+> The VirtMachineClass::disallow_affinity_adjustment
+> field was only used by virt-2.6 machine, which got
+> removed. Remove it along with the GIC*_TARGETLIST_BITS
+> definitions, and simplify virt_cpu_mp_affinity().
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/arm/virt.h              |  1 -
+>   include/hw/intc/arm_gic.h          |  1 -
+>   include/hw/intc/arm_gicv3_common.h |  3 ---
+>   hw/arm/virt.c                      | 16 ----------------
+>   4 files changed, 21 deletions(-)
+> 
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 27c5bb585cb..5d3b25509ff 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -117,7 +117,6 @@ typedef enum VirtGICType {
+>   
+>   struct VirtMachineClass {
+>       MachineClass parent;
+> -    bool disallow_affinity_adjustment;
+>       bool no_its;
+>       bool no_tcg_its;
+>       bool claim_edge_triggered_timers;
+> diff --git a/include/hw/intc/arm_gic.h b/include/hw/intc/arm_gic.h
+> index 48f6a51a70a..f5e6e5e70b4 100644
+> --- a/include/hw/intc/arm_gic.h
+> +++ b/include/hw/intc/arm_gic.h
+> @@ -68,7 +68,6 @@
+>   #include "qom/object.h"
+>   
+>   /* Number of SGI target-list bits */
+> -#define GIC_TARGETLIST_BITS 8
+>   #define GIC_MAX_PRIORITY_BITS 8
+>   #define GIC_MIN_PRIORITY_BITS 4
+>   
+> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+> index a3d6a0e5077..fff5e55a97d 100644
+> --- a/include/hw/intc/arm_gicv3_common.h
+> +++ b/include/hw/intc/arm_gicv3_common.h
+> @@ -45,9 +45,6 @@
+>   #define GICV3_REDIST_SIZE 0x20000
+>   #define GICV4_REDIST_SIZE 0x40000
+>   
+> -/* Number of SGI target-list bits */
+> -#define GICV3_TARGETLIST_BITS 16
+> -
+>   /* Maximum number of list registers (architectural limit) */
+>   #define GICV3_LR_MAX 16
+>   
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 0080577e1a9..2a2a0bd9154 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1760,23 +1760,7 @@ void virt_machine_done(Notifier *notifier, void *data)
+>   static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
+>   {
+>       uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
+> -    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+>   
+> -    if (!vmc->disallow_affinity_adjustment) {
 
-While the spec defines a CPER size of 4KiB for each record,
-currently it is set to 1KiB. Fix the documentation and add
-a pointer to the macro name there, as this may help to keep
-it updated.
+I think this change is wrong - disallow_affinity_adjustment is false for 
+newer machines, so you removed code here that is still in use on newer machines?
 
-Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Message-Id: <f7e94433bec19a9d6b23ecccc24b5fe3a6f7f52b.1736945236.git.mchehab+huawei@kernel.org>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- docs/specs/acpi_hest_ghes.rst | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+  Thomas
 
-diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-index 68f1fbe0a4..c3e9f8d9a7 100644
---- a/docs/specs/acpi_hest_ghes.rst
-+++ b/docs/specs/acpi_hest_ghes.rst
-@@ -67,8 +67,10 @@ Design Details
- (3) The address registers table contains N Error Block Address entries
-     and N Read Ack Register entries. The size for each entry is 8-byte.
-     The Error Status Data Block table contains N Error Status Data Block
--    entries. The size for each entry is 4096(0x1000) bytes. The total size
--    for the "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
-+    entries. The size for each entry is defined at the source code as
-+    ACPI_GHES_MAX_RAW_DATA_LENGTH (currently 1024 bytes). The total size
-+    for the "etc/hardware_errors" fw_cfg blob is
-+    (N * 8 * 2 + N * ACPI_GHES_MAX_RAW_DATA_LENGTH) bytes.
-     N is the number of the kinds of hardware error sources.
- 
- (4) QEMU generates the ACPI linker/loader script for the firmware. The
--- 
-MST
+> -        /* Adjust MPIDR like 64-bit KVM hosts, which incorporate the
+> -         * GIC's target-list limitations. 32-bit KVM hosts currently
+> -         * always create clusters of 4 CPUs, but that is expected to
+> -         * change when they gain support for gicv3. When KVM is enabled
+> -         * it will override the changes we make here, therefore our
+> -         * purposes are to make TCG consistent (with 64-bit KVM hosts)
+> -         * and to improve SGI efficiency.
+> -         */
+> -        if (vms->gic_version == VIRT_GIC_VERSION_2) {
+> -            clustersz = GIC_TARGETLIST_BITS;
+> -        } else {
+> -            clustersz = GICV3_TARGETLIST_BITS;
+> -        }
+> -    }
+>       return arm_build_mp_affinity(idx, clustersz);
+>   }
+>   
 

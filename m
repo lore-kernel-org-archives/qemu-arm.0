@@ -1,213 +1,183 @@
-Received: by 2002:a05:7022:510:b0:92:a90b:6588 with SMTP id 16csp3571081dlj;
-        Thu, 16 Jan 2025 00:41:20 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU4bNTZsuCwphxP81nORAXjHkYaDtPkFk3fhA5AUnETmlZfRJ85a4WE8FihIquakJ1ob6aEpldxd6+QBg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH3ZtiMJp78D63vljb/zNIex/sb32Orazj18fgv0QnYOr962k4ne4P/4KHjflD1HRq0xYtM
-X-Received: by 2002:a05:620a:29c4:b0:7ac:dfed:65ee with SMTP id af79cd13be357-7bcd96e5ffbmr674534685a.3.1737016880364;
-        Thu, 16 Jan 2025 00:41:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737016880; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3716292njn;
+        Thu, 16 Jan 2025 04:40:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXbxJD5jgBtoDtrsGEX8s0Vr1j9mlMNKo6rYIdJpsa1HCL+XDjk/nM067XsMx5umUxCPR4K7e0W0hcecg==@linaro.org
+X-Google-Smtp-Source: AGHT+IG80GmsNZnhkJ01SdCCLJk7vwv0nQD5KRXC03BB23+Ta+65OrQPmkd6biMlbclVH+LPchKl
+X-Received: by 2002:a05:600c:4ecd:b0:434:f335:83b with SMTP id 5b1f17b1804b1-436e269723emr335592385e9.5.1737031235491;
+        Thu, 16 Jan 2025 04:40:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737031235; cv=none;
         d=google.com; s=arc-20240605;
-        b=HmP7Z6wCGxBYIzxT630i2cr3y2ZBRPzi6hrfXuuj9p8afYJNbo+kVTxCVAZz66dJN7
-         0V95YcdIUuFoLoOVcS3iwZNIj6TAKizFMkM5B3OoMlrBN9Vo8tIMbyyH+Moev9Ucqs5k
-         YEVCQNyUvUKEiZZ6VGQCWxoWVZVeV3xU5xpjUWrCAYE1myZjapWoqlun4vxVCoWEHUVI
-         XtVos14n0JMEfrB7mr6HGFHNq0U2QYYCdpuzaCdNbVxFkxvVuss8qV4dk82FPnqa/DOk
-         7EjOZ6uLVe9K1rIBokFq7qL0qWzFroPAlUYYGaweXpXMltPMvQrcGYkte3LrW+V0T51K
-         Bg+g==
+        b=BnApajRN7lpY3qZqQ31wrOZQ/1PLK99NKuUFThmikMKOilywOolbpVTia7Py9bWUib
+         511cR4Ccu8uNIkdJrY4jbeoj5MrI1IGfxp8q323wIM22OxSOfFzVV2iJcf0K7/xrhJoI
+         Q6EiNl/JSkShKIYgRu7KgWqa/cmdwdbKKf+Qa73Qk0BOKfv8fC0BBw3/r565Ll2fYFeI
+         vLO6qLNcZEamyqXXZyVERj5ymbwaPA22v8erssp0GRFq3RpME6EAVkggHeVsNU58LJJT
+         KTe+LWlRip1WfqHpPL+uen8JqntuwRAI0K8sG92MOG4DR7c2NClx8gPOxCEdVj+apWL8
+         1RTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:from:content-language:references:cc:to:subject
          :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=iy7zTHR1DHpaeBWIJBrTxo+HvkmkcNJIGSRhTz2feFU=;
-        fh=y4J16EA1RbX5gwNtjexFX7Bl5S/egDp03/LKbjegp9w=;
-        b=jSVK+trzrL33or2EkVzde8mrYJf1AZHlgYmqptEOfCnKKoddlwWJ7KNAV9ZX90KWfW
-         64Iy2IG2cZv11MOTMh5Y3ydCnyBiknqkubIiLdx6SPRtO/3ebEGSRVnWDEDw3GfvzlGF
-         UhdVruE08MS+nLnafYiX6hM8yZDfiBe7s4fDk5ItUOVt7ytMUHc9AugyTFumEzskOavs
-         G0eX4dskInQSYZNqQzexJ9UUdawEwm/3mRMmpQ0erbXLq41tAmvbMoBm33hMq9LrnzRe
-         gd+iGff4YKuXqoRg1+bqSBxmFBPTA4OQjlFDFl8XGrQr8kOizP1Bbf+hGw7Veqj1M0lr
-         FZ6Q==;
+        bh=/xLMPzQyXvXz+ptTxrogISCmzpKSoUCycg6DigtV/0s=;
+        fh=yahazno5XsneExjr4jvCE2tCEMydHnurEh7jAVjEj0w=;
+        b=jE5/VTbi9Ue0hIwLxWYvbm81nRd5stvDiNWM7k0NMyI7wh6uJ114rsEfkJdclhqUfy
+         k5692oHrBsNU7Fb4DJs6Vp0VcshFRAmSxcBrZTC4PFz6NN+uU/cEoilUYdQ3plxgBvse
+         21ygWTRjvg8GE8c9waYdv3B8YxQ8RKMeHelf0mhlRc3M+vYr1xOjYa44JNRMC34t4EEt
+         d0qWa4sKHIDDxSM4dGEzf+IWzjrh0sGiaITPhG6B8waIljDu6ywmjBKmk+8Mt5vW67k5
+         w1RIRQgghcddDtUFfZ78komePD04fYtFPVfHjxAl2m/B0+/fhE9aXTFA0GQ7UxD6yx8j
+         WP6A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gDSVdqwG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Ih6OsqVL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7bce322bbd5si2024665785a.54.2025.01.16.00.41.20
+        by mx.google.com with ESMTPS id ffacd0b85a97d-38a8e4c7f4asi11569809f8f.282.2025.01.16.04.40.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2025 00:41:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Jan 2025 04:40:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=gDSVdqwG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dkim=pass header.i=@ventanamicro.com header.s=google header.b=Ih6OsqVL;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tYLQx-0004ws-Cq; Thu, 16 Jan 2025 03:40:59 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tYPAW-0008O3-1l; Thu, 16 Jan 2025 07:40:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYLQu-0004w5-70
- for qemu-devel@nongnu.org; Thu, 16 Jan 2025 03:40:56 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1tYPAS-0008Kz-7Q
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2025 07:40:12 -0500
+Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYLQs-0006Rv-3g
- for qemu-devel@nongnu.org; Thu, 16 Jan 2025 03:40:55 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-385f07cd1a4so578762f8f.1
- for <qemu-devel@nongnu.org>; Thu, 16 Jan 2025 00:40:53 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1tYPAP-0003Yb-Va
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2025 07:40:11 -0500
+Received: by mail-oi1-x236.google.com with SMTP id
+ 5614622812f47-3eba583fbe8so303185b6e.3
+ for <qemu-arm@nongnu.org>; Thu, 16 Jan 2025 04:40:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737016852; x=1737621652; darn=nongnu.org;
+ d=ventanamicro.com; s=google; t=1737031208; x=1737636008; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=iy7zTHR1DHpaeBWIJBrTxo+HvkmkcNJIGSRhTz2feFU=;
- b=gDSVdqwGapDfcauCg7UrsUPcmeuVh66cl3y/iA9xM8nVCL0wVP6J/W5opOtNouBVw5
- 0GAC6IvX9xhfLdJHjRRvg2rrrxzUQ9dnisBnLqUSpwCf7qMrlAWAbi0kQLotEAF/ur+w
- 0DW5+apd1dor75PvLcS1QxYMWyEpPWPAOgeKBefdpz86bkaV7s/GPZsljhVKiXx9qXNq
- T1atBMID+G+PgHMfrJtFOVG5PkA2KNqRLaswPwiqLnum8c7kBxi3ImOsBd+cKn1cZApi
- M2jY+7Iw+R1AIXDPWDOzlE0xBYc5q3o6k3qSOL+XmAM2sdG0Lm2z7CezmgvfLLzGrtLC
- D9/w==
+ bh=/xLMPzQyXvXz+ptTxrogISCmzpKSoUCycg6DigtV/0s=;
+ b=Ih6OsqVLijThMMeKqBqvoIduxeNNg1NYkMmceViPMTRPVk2HbOGRzH/pwMbKResTVc
+ R5v6p1l/8fsKaI8vr50oT6lnnyaDj/+sDcpSTU3s+ewuXDBUkbSknkUuYMcf8TEaFQk8
+ DdvrOmXKTZPoYs0GxxcbvBNPpHCzKyuA4UlkKwEIEU91V72VslvMVMs8NWP0H9KdLCWd
+ f1R4SmbnH2udhdvqory77IHesp8h4S7hDR5w1exB2V/2dxCGbM6quv1a3FehmtJp9kkM
+ r/COJDwQ4zZKnccjDLzEtE+7Vqhl9r7AAoeJ17sfL2rSG65PSL2pXHja891xzGpeEf/O
+ 5EhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737016852; x=1737621652;
+ d=1e100.net; s=20230601; t=1737031208; x=1737636008;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=iy7zTHR1DHpaeBWIJBrTxo+HvkmkcNJIGSRhTz2feFU=;
- b=J0JelIEL5wYMNlHe2oHpoEezS0vEGpdXSy0JPVKYpigi9L5F9Jpf7Rq7hMoJGYdXxD
- IWuMaThf7+wBMne2FE6U3EG4w2XZyr+gs6usgIKxNHsKl65O0QMGNv4S9Vb+i2/Qtkop
- QY7OVT0YtBRX7vubTS/ljJeTZwkJ3TnICcNXdRHB0IwKrn+C5kryOPJ6pr5vYgFhaAK9
- naA2n/CXC3jlPDBPYmpTFXAwOUE+115ecWyxtTW9gtiEeFXjZRq/UhNUxSXPv9fIVPwM
- GPT3TToE03hrI5KPZXzepQtqKD2jwCVBv7nq4BViQ7TfhYIephtqLyRPMe05GOKYAOmX
- Kg8Q==
+ bh=/xLMPzQyXvXz+ptTxrogISCmzpKSoUCycg6DigtV/0s=;
+ b=DOYiurpRrREHUkfA9d8OLzAOudst+z5drjsSWPuE2tNyKN4w8eKLREIDNk31rEnioh
+ DE2FIEPhD8D2AIW2um72oAytjyvYXelvSsW7adY7sao018VD9x4VUBrmNMuqg8FKuMfg
+ //CO3HmyDXJEUO/6MHv3smVlj98qO+kbMMce9We5mnrr+ddOhmHI5uPBcdOWwgCiZUgP
+ yrbWNF0ECloIxZ4GbI3xnmRxuq6fQIP12GWDC8efYAj0w9vS8L3pDkfWaC3k4lsCcebU
+ NsLHdxI7DyD0Mln3QXKamT+JSIU5yKxL3Ibru9hs5UTs0HkHAutBbda84HYDVQ28sR5C
+ IiIQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUshG805Te2Jr9GoC51gUtbtOM+McKTH7mdXPQPyaOXxklwWpl7hPHOR14wPpMAe/Nl/m/JiPG1y531@nongnu.org
-X-Gm-Message-State: AOJu0Yw/G7cCjkW8Sefw3DKAVM6ZofifJb6A9Dh+n6H47acciHqHglnI
- 7UHgxRKmVhLAOlTGHeuYWuM//BNx2WJ3b3VmYfYw0SH3nwz5E6dt0MzCFz/gtgI=
-X-Gm-Gg: ASbGnct0/ePe0r9USWsSdm+XzZkRvl412aXNQ4i4X5SGERERcMgnkR6vn3vB+rs18WX
- j0uYtpyJYxR4F6bsLiefrBs/lqfxQvuclxhsyw4xbTPIkaVhe439Fq+7sSvRNq7Hc/iaMch2zPn
- OEZu2eCssj86+ewDW7Rrn3lMtWwS+Cva9t3b3/Sq3ZURUuGF0hFuEYNdKMX2S1GqWhBw88A4bYM
- UmLFrQaitocLb0xJG5boqvYGyJpfEhUieDtVC3tG+B35nFTQO7w19g4bH0jQesackwY9WS8/7bU
- MQgA+S65eXmqUkM2e4mHbV9m
-X-Received: by 2002:a5d:47c3:0:b0:386:3329:6a04 with SMTP id
- ffacd0b85a97d-38a8732c076mr32561710f8f.39.1737016851801; 
- Thu, 16 Jan 2025 00:40:51 -0800 (PST)
-Received: from [192.168.69.181] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a8e37d01dsm19662039f8f.9.2025.01.16.00.40.50
+ AJvYcCXZsesmS0iLRMDbpgms1sQMRYS6G2ODQ6LNYiIUY3SAxzlK1t/3KaOMhn+bppNY14Dsgznw+s57jg==@nongnu.org
+X-Gm-Message-State: AOJu0YxY2fcs2lK5NAM9PTIhWSNsgFNxZVkZBtvoXdUyoq261/JNGCMy
+ zF+1qDayY3VIH3AK3fI6r7oJWkPRL4qvOp8a66c/7+ZnbXctoJ8PcaaFOapCtfc=
+X-Gm-Gg: ASbGncugoPZIGL8AgC0y614pS0P95j2Fi6MA4SavV9UV1QBGzyerXHj+PMRwvjvksT5
+ kNRnRpxkupCh4/AiY7EQ1SIZoFpd7snXmXwl/dym6hS4z3QkqvLz4cIVchukpcKnfSUThenKOjX
+ tpahuUrwb6aqMUS7vr+uqSek5wdA8HbNBFPSUwn8G+R5TtgPc6oQgxRuWQti6h0rlvajKUq5lbf
+ CANFaFUrWrs+TZEF9R8QAc4ZFff19cu7zqmuLfS09A9fygv5zRWr+4X/CePdWG17KI7pXs=
+X-Received: by 2002:a05:6808:3a18:b0:3ea:6415:c44 with SMTP id
+ 5614622812f47-3ef2ec6c3bdmr24815637b6e.8.1737031208342; 
+ Thu, 16 Jan 2025 04:40:08 -0800 (PST)
+Received: from [192.168.68.110] ([191.202.238.10])
+ by smtp.gmail.com with ESMTPSA id
+ 5614622812f47-3f03769a5aesm5759635b6e.28.2025.01.16.04.40.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 16 Jan 2025 00:40:50 -0800 (PST)
-Message-ID: <529f4fff-a98b-4a89-b770-549af3029da1@linaro.org>
-Date: Thu, 16 Jan 2025 09:40:49 +0100
+ Thu, 16 Jan 2025 04:40:07 -0800 (PST)
+Message-ID: <60002f0e-559b-4c00-92b2-a1e5928b20ea@ventanamicro.com>
+Date: Thu, 16 Jan 2025 09:40:01 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/13] hw/arm/virt: Remove
- VirtMachineClass::disallow_affinity_adjustment
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Ani Sinha <anisinha@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jones <ajones@ventanamicro.com>, qemu-arm@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S. Tsirkin"
- <mst@redhat.com>
-References: <20250115171009.19302-1-philmd@linaro.org>
- <20250115171009.19302-4-philmd@linaro.org>
- <da2fe302-dae9-4f6c-8ea8-94fcc332e167@redhat.com>
+Subject: Re: [RFC PATCH 4/6] hw/riscv/riscv-iommu: Allow PCI hosts with
+ iommu_ops registered connecting to the IOMMU
+To: Jason Chien <jason.chien@sifive.com>, qemu-devel@nongnu.org,
+ qemu-riscv@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ "open list:MCIMX7D SABRE / i..." <qemu-arm@nongnu.org>
+References: <20241216004857.9367-1-jason.chien@sifive.com>
+ <20241216004857.9367-5-jason.chien@sifive.com>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <da2fe302-dae9-4f6c-8ea8-94fcc332e167@redhat.com>
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20241216004857.9367-5-jason.chien@sifive.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::236;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-oi1-x236.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zKr32YeEZwew
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: sWpGG1k+FK+D
 
-On 16/1/25 08:03, Thomas Huth wrote:
-> On 15/01/2025 18.09, Philippe Mathieu-Daudé wrote:
->> The VirtMachineClass::disallow_affinity_adjustment
->> field was only used by virt-2.6 machine, which got
->> removed. Remove it along with the GIC*_TARGETLIST_BITS
->> definitions, and simplify virt_cpu_mp_affinity().
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   include/hw/arm/virt.h              |  1 -
->>   include/hw/intc/arm_gic.h          |  1 -
->>   include/hw/intc/arm_gicv3_common.h |  3 ---
->>   hw/arm/virt.c                      | 16 ----------------
->>   4 files changed, 21 deletions(-)
->>
->> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
->> index 27c5bb585cb..5d3b25509ff 100644
->> --- a/include/hw/arm/virt.h
->> +++ b/include/hw/arm/virt.h
->> @@ -117,7 +117,6 @@ typedef enum VirtGICType {
->>   struct VirtMachineClass {
->>       MachineClass parent;
->> -    bool disallow_affinity_adjustment;
->>       bool no_its;
->>       bool no_tcg_its;
->>       bool claim_edge_triggered_timers;
->> diff --git a/include/hw/intc/arm_gic.h b/include/hw/intc/arm_gic.h
->> index 48f6a51a70a..f5e6e5e70b4 100644
->> --- a/include/hw/intc/arm_gic.h
->> +++ b/include/hw/intc/arm_gic.h
->> @@ -68,7 +68,6 @@
->>   #include "qom/object.h"
->>   /* Number of SGI target-list bits */
->> -#define GIC_TARGETLIST_BITS 8
->>   #define GIC_MAX_PRIORITY_BITS 8
->>   #define GIC_MIN_PRIORITY_BITS 4
->> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/ 
->> arm_gicv3_common.h
->> index a3d6a0e5077..fff5e55a97d 100644
->> --- a/include/hw/intc/arm_gicv3_common.h
->> +++ b/include/hw/intc/arm_gicv3_common.h
->> @@ -45,9 +45,6 @@
->>   #define GICV3_REDIST_SIZE 0x20000
->>   #define GICV4_REDIST_SIZE 0x40000
->> -/* Number of SGI target-list bits */
->> -#define GICV3_TARGETLIST_BITS 16
->> -
->>   /* Maximum number of list registers (architectural limit) */
->>   #define GICV3_LR_MAX 16
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index 0080577e1a9..2a2a0bd9154 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -1760,23 +1760,7 @@ void virt_machine_done(Notifier *notifier, void 
->> *data)
->>   static uint64_t virt_cpu_mp_affinity(VirtMachineState *vms, int idx)
->>   {
->>       uint8_t clustersz = ARM_DEFAULT_CPUS_PER_CLUSTER;
->> -    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->> -    if (!vmc->disallow_affinity_adjustment) {
+
+
+On 12/15/24 9:48 PM, Jason Chien wrote:
+> pci_setup_iommu_downstream_mem() is called to set the downstream memory
+> region of the PCIe devices.
 > 
-> I think this change is wrong - disallow_affinity_adjustment is false for 
-> newer machines, so you removed code here that is still in use on newer 
-> machines?
+> Signed-off-by: Jason Chien <jason.chien@sifive.com>
+> ---
 
-Oops :| Thanks, I've be a bit overzealous here...
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+
+
+>   hw/riscv/riscv-iommu.c | 8 ++++++++
+>   1 file changed, 8 insertions(+)
+> 
+> diff --git a/hw/riscv/riscv-iommu.c b/hw/riscv/riscv-iommu.c
+> index e9a0775d6e..f5d53a36b2 100644
+> --- a/hw/riscv/riscv-iommu.c
+> +++ b/hw/riscv/riscv-iommu.c
+> @@ -2436,6 +2436,14 @@ void riscv_iommu_pci_setup_iommu(RISCVIOMMUState *iommu, PCIBus *bus,
+>           QLIST_INSERT_AFTER(last, iommu, iommus);
+>       } else if (!bus->iommu_ops && !bus->iommu_opaque) {
+>           pci_setup_iommu(bus, &riscv_iommu_ops, iommu);
+> +    } else if (bus->iommu_ops && bus->iommu_ops->set_memory_region) {
+> +        /*
+> +         * TODO:
+> +         * All memory transactions of this bus will be directed to this AS.
+> +         * We need to distinguish the source device dynamically.
+> +         */
+> +        AddressSpace *as = riscv_iommu_space(iommu, 0);
+> +        pci_setup_iommu_downstream_mem(bus, as->root);
+>       } else {
+>           error_setg(errp, "can't register secondary IOMMU for PCI bus #%d",
+>               pci_bus_num(bus));
 

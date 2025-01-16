@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf328847esm215843f8f.98.2025.01.16.08.12.08
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-437c753c60csm62649535e9.36.2025.01.16.08.12.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 16 Jan 2025 08:12:09 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 984F3608E4;
+	by draig.lan (Postfix) with ESMTP id 0B3A16084C;
 	Thu, 16 Jan 2025 16:03:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -43,62 +43,37 @@ Cc: qemu-block@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v3 32/37] docs/devel: add git-publish for patch submitting
-Date: Thu, 16 Jan 2025 16:03:01 +0000
-Message-Id: <20250116160306.1709518-33-alex.bennee@linaro.org>
+Subject: [PATCH v3 26/37] plugins: fix kdoc annotation
+Date: Thu, 16 Jan 2025 16:02:55 +0000
+Message-Id: <20250116160306.1709518-27-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250116160306.1709518-1-alex.bennee@linaro.org>
 References: <20250116160306.1709518-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: vqxCvJtPC4XE
+X-TUID: vQh1H+NqQMKl
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+The function is qemu_plugin_mem_get_value()
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Message-Id: <20241209183104.365796-3-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- docs/devel/submitting-a-patch.rst | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ include/qemu/qemu-plugin.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
-index 03b2ac298a..69df7682c5 100644
---- a/docs/devel/submitting-a-patch.rst
-+++ b/docs/devel/submitting-a-patch.rst
-@@ -235,6 +235,31 @@ to another list.) ``git send-email`` (`step-by-step setup guide
- works best for delivering the patch without mangling it, but
- attachments can be used as a last resort on a first-time submission.
+diff --git a/include/qemu/qemu-plugin.h b/include/qemu/qemu-plugin.h
+index 0fba36ae02..3a850aa216 100644
+--- a/include/qemu/qemu-plugin.h
++++ b/include/qemu/qemu-plugin.h
+@@ -583,7 +583,7 @@ QEMU_PLUGIN_API
+ bool qemu_plugin_mem_is_store(qemu_plugin_meminfo_t info);
  
-+.. _use_git_publish:
-+
-+Use git-publish
-+~~~~~~~~~~~~~~~
-+
-+If you already configured git send-email, you can simply use `git-publish
-+<https://github.com/stefanha/git-publish>`__ to send series.
-+
-+::
-+
-+    $ git checkout master -b my-feature
-+    $ # work on new commits, add your 'Signed-off-by' lines to each
-+    $ git publish
-+    $ ... more work, rebase on master, ...
-+    $ git publish # will send a v2
-+
-+Each time you post a series, git-publish will create a local tag with the format
-+``<branchname>-v<version>`` to record the patch series.
-+
-+When sending patch emails, 'git publish' will consult the output of
-+'scripts/get_maintainers.pl' and automatically CC anyone listed as maintainers
-+of the affected code. Generally you should accept the suggested CC list, but
-+there may sometimes be scenarios where it is appropriate to cut it down (eg on
-+certain large tree-wide cleanups), or augment it with other interested people.
-+
- .. _if_you_cannot_send_patch_emails:
- 
- If you cannot send patch emails
+ /**
+- * qemu_plugin_mem_get_mem_value() - return last value loaded/stored
++ * qemu_plugin_mem_get_value() - return last value loaded/stored
+  * @info: opaque memory transaction handle
+  *
+  * Returns: memory value
 -- 
 2.39.5

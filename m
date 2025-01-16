@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf322ad74sm242024f8f.56.2025.01.16.08.12.08
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf328847esm215843f8f.98.2025.01.16.08.12.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 16 Jan 2025 08:12:09 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id 99552608C3;
-	Thu, 16 Jan 2025 16:03:08 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 984F3608E4;
+	Thu, 16 Jan 2025 16:03:09 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-block@nongnu.org,
@@ -42,50 +42,63 @@ Cc: qemu-block@nongnu.org,
 	"Michael S. Tsirkin" <mst@redhat.com>,
 	Thomas Huth <thuth@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
-	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Julian Ganz <neither@nut.email>
-Subject: [PATCH v3 22/37] accel/tcg: also suppress asynchronous IRQs for cpu_io_recompile
-Date: Thu, 16 Jan 2025 16:02:51 +0000
-Message-Id: <20250116160306.1709518-23-alex.bennee@linaro.org>
+	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v3 32/37] docs/devel: add git-publish for patch submitting
+Date: Thu, 16 Jan 2025 16:03:01 +0000
+Message-Id: <20250116160306.1709518-33-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250116160306.1709518-1-alex.bennee@linaro.org>
 References: <20250116160306.1709518-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: PsxEzjLMCeGY
+X-TUID: vqxCvJtPC4XE
 
-While it would be technically correct to allow an IRQ to happen (as
-the offending instruction never really completed) it messes up
-instrumentation. We already take care to only use memory
-instrumentation on the block, we should also suppress IRQs.
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Message-Id: <20250109170619.2271193-23-alex.bennee@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Julian Ganz <neither@nut.email>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Message-Id: <20241209183104.365796-3-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Julian Ganz <neither@nut.email>
 ---
- accel/tcg/translate-all.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ docs/devel/submitting-a-patch.rst | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 453eb20ec9..d56ca13cdd 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -633,9 +633,10 @@ void cpu_io_recompile(CPUState *cpu, uintptr_t retaddr)
-      * Exit the loop and potentially generate a new TB executing the
-      * just the I/O insns. We also limit instrumentation to memory
-      * operations only (which execute after completion) so we don't
--     * double instrument the instruction.
-+     * double instrument the instruction. Also don't let an IRQ sneak
-+     * in before we execute it.
-      */
--    cpu->cflags_next_tb = curr_cflags(cpu) | CF_MEMI_ONLY | n;
-+    cpu->cflags_next_tb = curr_cflags(cpu) | CF_MEMI_ONLY | CF_NOIRQ | n;
+diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
+index 03b2ac298a..69df7682c5 100644
+--- a/docs/devel/submitting-a-patch.rst
++++ b/docs/devel/submitting-a-patch.rst
+@@ -235,6 +235,31 @@ to another list.) ``git send-email`` (`step-by-step setup guide
+ works best for delivering the patch without mangling it, but
+ attachments can be used as a last resort on a first-time submission.
  
-     if (qemu_loglevel_mask(CPU_LOG_EXEC)) {
-         vaddr pc = cpu->cc->get_pc(cpu);
++.. _use_git_publish:
++
++Use git-publish
++~~~~~~~~~~~~~~~
++
++If you already configured git send-email, you can simply use `git-publish
++<https://github.com/stefanha/git-publish>`__ to send series.
++
++::
++
++    $ git checkout master -b my-feature
++    $ # work on new commits, add your 'Signed-off-by' lines to each
++    $ git publish
++    $ ... more work, rebase on master, ...
++    $ git publish # will send a v2
++
++Each time you post a series, git-publish will create a local tag with the format
++``<branchname>-v<version>`` to record the patch series.
++
++When sending patch emails, 'git publish' will consult the output of
++'scripts/get_maintainers.pl' and automatically CC anyone listed as maintainers
++of the affected code. Generally you should accept the suggested CC list, but
++there may sometimes be scenarios where it is appropriate to cut it down (eg on
++certain large tree-wide cleanups), or augment it with other interested people.
++
+ .. _if_you_cannot_send_patch_emails:
+ 
+ If you cannot send patch emails
 -- 
 2.39.5

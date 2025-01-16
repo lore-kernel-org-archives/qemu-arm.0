@@ -1,104 +1,104 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp4083440njn;
-        Thu, 16 Jan 2025 15:05:26 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXvgIpnX1t6nDGuGwbQIgUGDHlVgsoLCG3ryjzf2q2cmZAgIw4Ya1UN876uMCILJdu2hNU/ysfMRrwWNw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHqPyMmrqm6S/OhcvUtgpO64G/hvTEddid+VIj7emwNOmkdOtWmWDlT/6yNMBrQO3+52cfU
-X-Received: by 2002:a05:6122:3704:b0:50a:b604:2bb2 with SMTP id 71dfb90a1353d-51d5b39b8a2mr615376e0c.11.1737068726137;
-        Thu, 16 Jan 2025 15:05:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737068726; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp4083467njn;
+        Thu, 16 Jan 2025 15:05:28 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVqOdhf6G3+yRV7npeffiNY16CHafBoSySuqwTDyrG6JoV1dALT6hdnTddsahn1pY5rvi+FrcmWolentg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHHEWGbYxCU7G206G947zqm/aiOEYMzlhq/lTD9asT30jqI4fvQGVlsUShA0fNhqx9eIoZW
+X-Received: by 2002:a05:6102:5249:b0:4af:e5fd:77fc with SMTP id ada2fe7eead31-4b690b5ba88mr392181137.3.1737068728708;
+        Thu, 16 Jan 2025 15:05:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737068728; cv=none;
         d=google.com; s=arc-20240605;
-        b=XUVqjCZbmILtT4+ysfz3AzM3dbpj6AVD/qAgGOF5T7X4cPwzszEgnR6t7AF1frFbxT
-         LDF0/y2egz/jLrwOGeQI/dpdo6//Vq0j/lfLK2ZaSXoZahLPaSzX3iZJAnhJ8pbtkRTO
-         /1Wn9OJY/iZqcKfgjAUiZ6qwzmbWVAFOxgorPHFFpIbw24HBOSDaVh8b7kcOxj4WmVRF
-         1uEgNdPtELLSbyEUkMxf6vHd0MTbv0e+MVdR1MSse0ZPNxnF3AFByUM5fZ/dJulYlqnP
-         BCL68hDF3XPYPSardZopFO3MaLFruoG+hLcnkb1ozSg3QNG0VBgJVjhl0JdK/QwUCJK9
-         Viuw==
+        b=Hdt5R9wuyoCIfseqGXgn5jXcBu6iYTCK/wqC9bbB5XZX8VbUsKBWgsoYqVBvvZs42Q
+         SIZy88A8X1zvfXPZQXSUBVj2rcpf0Oqy1YFCRtH0gDpvm5qSwwHSLhi74f9M2X3tlgH+
+         xMwC9n+UnVokQiPx+dKQ6B3Tbb73QbSBbcPbB5NOj6oW9thgkhQwzlyZ3A8MxM7kULPt
+         /0Q39auv8ogAzHRIKJDGDnWMh0U4CzmEQi1/QSlG1B8X8gw+Ob6ryJ045MpsoYIYEUgr
+         V+SYqcf6I+z6HeC8mk6Cv+FgNHfaWZiBN0yqRnGDoTD4Dk3Ku1/L8DvyUdUd+0tLEJvc
+         eCkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=nLjAfEesdApASDyVsAST+uy4KXHzjDdggJGXjuSffuw=;
-        fh=8Td+MXl0WBg9jGNOULerNuOH/KMzTDtKAvdrXNyFjp0=;
-        b=jZ/6b0rQj4qxreXi7Tj8cmIfm+YlINaNxDVYB5jWeUMCcGMmBwSNBqF1D/BbeZFmEP
-         t/KcxeoA8LKR3piexrD4vfK+qMF1LgFUDdCa/Byae5814NLYAxutHAi93gAnCVOeAOKd
-         b9oHc083hFrNRR/sxYoeJM3E2DiEOFiWYWq9BWAIML6RB7HAThuFEII3ydmsvWb5LmKp
-         CGLx4NBv8yT3r7uFTZXjZbF4ZI70GJwX2/GCR9AZgxij/Mb7+nGrEqL5GIZa8EVf51GW
-         6K7TfjQ3AksACLyO39mZMNfL6+BWQV0+nDf+s4je8Fey6uyPWs0S3FewUHaHcxDq5PGJ
-         JTjA==;
+        bh=MPjOx0H12tn7DXUFgYo1Tt0K02gHKsqQSkcpThpt4FQ=;
+        fh=Xz+FSBawuibxa10FSSD/ZYzsK0Dsfp6TaS5DZ2DcA/Q=;
+        b=GjPG7SBqUombVWhw6Cq//HaqESGJZQOCC74wmyfxyDRuUiA+KqgYW470jst5udG4vx
+         QALoWYoUDqihfuqnXl4Nba1fYwkZ+wWKwdZpL5tyZ82tz+IniWHNDlIBl0P8+7Xm0F7e
+         PiTAFrrUj5lN1WSoPkEczTCo/r0A+JPO2O3v2NylMYqopIiJfhiSsLO7X6MRXSv8oooj
+         VuO58+GD3vGvYK+cnVVDsFfNs+VzNVoSzu+S8RaGB8Rh2yi77oZGiJvezHimKxHTsHWq
+         sjRqFWCz0bylP9VFav6tPQE+gAMyj26sBC0RFgjFwF5S5clFoKcCV+gT7nZKRlaFl+FC
+         o2Iw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NB2L90F6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BwhJzjPS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-51cf57c3241si528074e0c.239.2025.01.16.15.05.26
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b68a323a40si636606137.434.2025.01.16.15.05.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2025 15:05:26 -0800 (PST)
+        Thu, 16 Jan 2025 15:05:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NB2L90F6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BwhJzjPS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tYYuv-0005w3-JK; Thu, 16 Jan 2025 18:04:49 -0500
+	id 1tYYv1-0005we-48; Thu, 16 Jan 2025 18:04:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYYuu-0005vd-6r
- for qemu-arm@nongnu.org; Thu, 16 Jan 2025 18:04:48 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYYuz-0005wV-6x
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2025 18:04:53 -0500
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYYus-0004xr-H1
- for qemu-arm@nongnu.org; Thu, 16 Jan 2025 18:04:47 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-4361b0ec57aso14241295e9.0
- for <qemu-arm@nongnu.org>; Thu, 16 Jan 2025 15:04:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYYuw-0004yQ-Cc
+ for qemu-arm@nongnu.org; Thu, 16 Jan 2025 18:04:52 -0500
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-38a8b35e168so1048043f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 16 Jan 2025 15:04:49 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737068683; x=1737673483; darn=nongnu.org;
+ d=linaro.org; s=google; t=1737068689; x=1737673489; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=nLjAfEesdApASDyVsAST+uy4KXHzjDdggJGXjuSffuw=;
- b=NB2L90F67p2R+E0WAtMv6FXhMrSJ9mng/Vg51CgsXzFBcJNU6vgGxF8DnLdElR3M2i
- F56nemR/GszPpD8EzNRaIH6BCvlmTSdDbYN0JA8v+lEN8gKENmofZmWL2vnsWDy37D7S
- TZt0G8s7Zpm9ySsiqSmYNtnPhjdKH4yQZSdLoEn+XJW4X95GsfdMLDMW3ejlr6fPZRod
- G9v3v3rS8+ctlKZt4PtOQxseMZTDeSNycjIM1lxcS3nnGaBfbhcj+2f/AVTDx1Em+3S7
- E63X25SYjGkEOOmVqp8omY6s3OLAYPqYOc7hK4aVlRuyPmUmuGh2P+nMDhKwPpEL1qTO
- oIOA==
+ bh=MPjOx0H12tn7DXUFgYo1Tt0K02gHKsqQSkcpThpt4FQ=;
+ b=BwhJzjPSo6c3irdJWpz6Ovdtp9sDmn2xZn2uVm2PKA/K1jF8jzy7ylbOnsA1GyOLdg
+ gxfagTXIeLeZ355uNJsRgqCJxlyi/oUFHI6pC/a/RJ+Ek9UvMpmq/eGlHo0OcaDVDbbc
+ vb0qI8FiXhvReYxcfPeRx7pRikDUBE9HpOyUYLhPUr2lBn/wSU72+PaXWonrj+2L1p+t
+ LfNzMtU/e4ULsr94m7Zur8H9rh/L74PJAgfHW+szPOsQCefnq19lsntI0bvPLzEOiUA+
+ UL+rNnBWy78vsAuB+l8DcbCWaQ09S+1GG2iWKhlYuCLlIwLJ5yv59tUUQa/nKR0ZenFZ
+ 3QFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737068683; x=1737673483;
+ d=1e100.net; s=20230601; t=1737068689; x=1737673489;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=nLjAfEesdApASDyVsAST+uy4KXHzjDdggJGXjuSffuw=;
- b=khNNm5YZf+bWIM5Chv/o/tmItdd45cLRJCdUKCKfdoOO70tXjLpdylj33T9wbOb27g
- mFFQ+ncWMtBW8h3l+EdS8f7bnnQdlXorTKOm3uAUcECKVWzNRekK62DXRidbzIrudpgb
- CVA7jVGg6+sh1mhlO4jCvccIfxivIJcLJmdzXuORzt6GiMHAVhn+C/nt9OpvmJX1/6bP
- 3x9VjXLjNfFy41A+q8Q9haN/5xyTh8mqE2rtct6jaAPMRTy19N9tVz2mS+XiqntsNdrv
- fvaNWMatk6SoHAe4Yt0jkQFFdsXIF5dNCOidjHkA0qxZ5yXL4rvUDagpP6ynWDNR8sfW
- Kc/g==
+ bh=MPjOx0H12tn7DXUFgYo1Tt0K02gHKsqQSkcpThpt4FQ=;
+ b=lI4cpaqjG1RrEI46QT7KU5+0IxtkfRP0PGst9jC9L4fW4HNqAXbxDDW3Wy4SFYwxbt
+ 3FibsEJy2RdHaI6FwAnbysdgsKjn+jPhtZS6Wx0Zwcx/z+KYzIxSgQ9idhzJyGtdmlQ0
+ ATWcqmWwxwYLoBhDvHepkvHpMoC60HYkJg9Jl80TKgn10gfr7AbL8G3GksUOBBmLEve7
+ ZGvIokzzGNjnYx++TSPh8FOWxu8jBBJvXAH65rnD6Vp8tWWnJZD/t/feWDEC13NND04C
+ xpYRcQRWh/jSeOTeNNkqQ17gZTaPIu6lekA3fxzGr4OR4nfoMhMmZ/MHslGzWRIjxQUX
+ 0YQA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXxg/YKX6TKIu16EZXngkHbPTl+NljE89rZFxPO4hX4V6w/zlwAXEMgXC5724U6+2bLbczaygZZXA==@nongnu.org
-X-Gm-Message-State: AOJu0YynUipjfMrsnCxsw91HkIqjrKL/K6DxQCenZIlf/aijPbZBYTS2
- zPWmGCDCZJU0Gsu4jnzZ8fjiiflgcAm3hN/1zb1qjpkAis7ee4oA3hhLAkAuMeE=
-X-Gm-Gg: ASbGncuI7qBbm7+a00f5do9Vq2arTLOS0YHbEB6vYz1t2tyfyhSkhs2PPQfH2jyDewG
- uCulEw2SZoPsq7KzBe2qJC+Q5TGKDIvsW3bM0e83S2w42rf41dOAO0OFrjbwccSRIK95yHxBooW
- ZH1jP5fqGdGfDPFgIG19QWGAs6iJ5Vyiwm/35Icsh01SxrZ4o3EzcQusnc2N2zFiaSB9qWIQdW9
- LPC86SZh+0Hf6cAXOogHauR6oMZMnytf/cyvhxL3j5vAgMlaNKY9XCmwZsKabXsdB24EMM7LWU/
- s4G/wldVb4zEFA3Wvv4co9hEGAId/tg=
-X-Received: by 2002:a5d:64a1:0:b0:385:f44a:a53 with SMTP id
- ffacd0b85a97d-38bf5655b07mr267507f8f.4.1737068683638; 
- Thu, 16 Jan 2025 15:04:43 -0800 (PST)
+ AJvYcCXqrPZBPYL2jqsQ9bFxYuawqv8/qbDIfOraUI+ACvxg+QKOGXnjMZY0s88k/pSAxCjnj6XXuS//nQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxTNQSpE3oVSLVuK814kz+dyy6odR1Sg4+wgzx43jdcWiaVRBhF
+ YlOujEZc3gkM3ObOmliR/N73aTaxg33xWBb4tWnPjUZZY05B9qC+KkDI8bSjwmI=
+X-Gm-Gg: ASbGncuR44ZVwCQUNG49w/35UzijJ42eNx/q2EMlw8RIqB6lhL8jaa3pX60TSwaznQB
+ nNZ7AI4VBsyzN29kNSJ2OPUWHWXRLi2wW9lKhNs2HdzICiVAOj0CjWmbM6v5mVcRJFcfw1+Xa5a
+ E5mSrofOnwPrTfeuTawmeGKNUWAT6/O6r7bkDCt0GvrmsDuffPP/vIGj5VRbIoQRdPYnk5vr3Vt
+ SOQQ2tg2w0fpDFHcLSEmQZznJLp2l92YBuL0fZYkBSyKnDf1DCshYV7+0RKrjiBKn1acPRPQXY1
+ TjORCpLdixD0/oNNML080AFPob9S3Ec=
+X-Received: by 2002:a05:6000:156f:b0:385:faf5:ebb8 with SMTP id
+ ffacd0b85a97d-38bf5ad3801mr229419f8f.7.1737068688562; 
+ Thu, 16 Jan 2025 15:04:48 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38bf327dee3sm922535f8f.86.2025.01.16.15.04.42
+ ffacd0b85a97d-38bf327e19fsm961025f8f.93.2025.01.16.15.04.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 16 Jan 2025 15:04:42 -0800 (PST)
+ Thu, 16 Jan 2025 15:04:48 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
@@ -106,25 +106,25 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [RFC PATCH 1/2] cpus: Introduce const_cpu_env() and
- const_env_archcpu()
-Date: Fri, 17 Jan 2025 00:04:34 +0100
-Message-ID: <20250116230435.87580-2-philmd@linaro.org>
+Subject: [RFC PATCH 2/2] target/arm: Constify lot of helpers taking
+ CPUARMState argument
+Date: Fri, 17 Jan 2025 00:04:35 +0100
+Message-ID: <20250116230435.87580-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250116230435.87580-1-philmd@linaro.org>
 References: <20250116230435.87580-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,51 +139,560 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZGnREmeayfJz
+X-TUID: 3Rpy+jAWxO9g
 
-const_cpu_env() is similar to cpu_env() but return a const
-CPU 'env' state.
-Same for const_env_archcpu() w.r.t. env_archcpu().
+When methods don't modify the CPUARMState* argument,
+we can mark it const. This allow enforcing places where
+the CPU env shouldn't be modified at all,
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/exec/cpu-common.h | 5 +++++
- include/hw/core/cpu.h     | 6 ++++++
- 2 files changed, 11 insertions(+)
+I went via the "modify one and fix until it builds" path,
+and the result seemed trivial enough, but can try to split
+if requested.
+---
+ target/arm/cpu-features.h |  2 +-
+ target/arm/cpu.h          | 71 ++++++++++++++++++++-------------------
+ target/arm/internals.h    | 10 +++---
+ target/arm/helper.c       | 25 +++++++-------
+ target/arm/ptw.c          |  2 +-
+ target/arm/tcg/m_helper.c |  8 ++---
+ target/arm/vfp_helper.c   |  6 ++--
+ 7 files changed, 63 insertions(+), 61 deletions(-)
 
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index b1d76d69850..f765e97a973 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -250,6 +250,11 @@ static inline ArchCPU *env_archcpu(CPUArchState *env)
-     return (void *)env - sizeof(CPUState);
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 30302d6c5b4..899b2cfb4b1 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -1091,6 +1091,6 @@ static inline uint64_t make_ccsidr(CCSIDRFormat format, unsigned assoc,
+  * Forward to the above feature tests given an ARMCPU pointer.
+  */
+ #define cpu_isar_feature(name, cpu) \
+-    ({ ARMCPU *cpu_ = (cpu); isar_feature_##name(&cpu_->isar); })
++    ({ const ARMCPU *cpu_ = (cpu); isar_feature_##name(&cpu_->isar); })
+ 
+ #endif
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9a6e8e589cc..de54ae6a211 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1267,7 +1267,7 @@ uint32_t sve_vqm1_for_el_sm(CPUARMState *env, int el, bool sm);
+ /* Likewise, but using @sm = PSTATE.SM. */
+ uint32_t sve_vqm1_for_el(CPUARMState *env, int el);
+ 
+-static inline bool is_a64(CPUARMState *env)
++static inline bool is_a64(const CPUARMState *env)
+ {
+     return env->aarch64;
+ }
+@@ -1503,7 +1503,7 @@ static inline unsigned int aarch64_pstate_mode(unsigned int el, bool handler)
+  * interprocessing, so we don't attempt to sync with the cpsr state used by
+  * the 32 bit decoder.
+  */
+-static inline uint32_t pstate_read(CPUARMState *env)
++static inline uint32_t pstate_read(const CPUARMState *env)
+ {
+     int ZF;
+ 
+@@ -1525,7 +1525,7 @@ static inline void pstate_write(CPUARMState *env, uint32_t val)
  }
  
-+static inline const ArchCPU *const_env_archcpu(const CPUArchState *env)
-+{
-+    return (const void *)env - sizeof(CPUState);
-+}
-+
+ /* Return the current CPSR value.  */
+-uint32_t cpsr_read(CPUARMState *env);
++uint32_t cpsr_read(const CPUARMState *env);
+ 
+ typedef enum CPSRWriteType {
+     CPSRWriteByInstr = 0,         /* from guest MSR or CPS */
+@@ -1545,7 +1545,7 @@ void cpsr_write(CPUARMState *env, uint32_t val, uint32_t mask,
+                 CPSRWriteType write_type);
+ 
+ /* Return the current xPSR value.  */
+-static inline uint32_t xpsr_read(CPUARMState *env)
++static inline uint32_t xpsr_read(const CPUARMState *env)
+ {
+     int ZF;
+     ZF = (env->ZF == 0);
+@@ -1765,7 +1765,7 @@ QEMU_BUILD_BUG_ON(FPSCR_FPSR_MASK & FPSCR_FPCR_MASK);
+  *
+  * Return the current AArch64 FPSR value
+  */
+-uint32_t vfp_get_fpsr(CPUARMState *env);
++uint32_t vfp_get_fpsr(const CPUARMState *env);
+ 
  /**
-  * env_cpu_const(env)
-  * @env: The architecture environment
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index c3ca0babcb3..ecb31221b26 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -588,6 +588,12 @@ static inline CPUArchState *cpu_env(CPUState *cpu)
-     return (CPUArchState *)(cpu + 1);
+  * vfp_get_fpcr: read the AArch64 FPCR
+@@ -2445,7 +2445,7 @@ enum arm_features {
+     ARM_FEATURE_BACKCOMPAT_CNTFRQ, /* 62.5MHz timer default */
+ };
+ 
+-static inline int arm_feature(CPUARMState *env, int feature)
++static inline int arm_feature(const CPUARMState *env, int feature)
+ {
+     return (env->features & (1ULL << feature)) != 0;
+ }
+@@ -2486,7 +2486,7 @@ static inline ARMSecuritySpace arm_secure_to_space(bool secure)
+  * an exception return to those levels.  Unlike arm_security_space,
+  * this doesn't care about the current EL.
+  */
+-ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env);
++ARMSecuritySpace arm_security_space_below_el3(const CPUARMState *env);
+ 
+ /**
+  * arm_is_secure_below_el3:
+@@ -2495,14 +2495,14 @@ ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env);
+  * Return true if exception levels below EL3 are in secure state,
+  * or would be following an exception return to those levels.
+  */
+-static inline bool arm_is_secure_below_el3(CPUARMState *env)
++static inline bool arm_is_secure_below_el3(const CPUARMState *env)
+ {
+     ARMSecuritySpace ss = arm_security_space_below_el3(env);
+     return ss == ARMSS_Secure;
  }
  
-+static inline const CPUArchState *const_cpu_env(const CPUState *cpu)
-+{
-+    /* We validate that CPUArchState follows CPUState in cpu-all.h. */
-+    return (const CPUArchState *)(cpu + 1);
-+}
-+
- typedef QTAILQ_HEAD(CPUTailQ, CPUState) CPUTailQ;
- extern CPUTailQ cpus_queue;
+ /* Return true if the CPU is AArch64 EL3 or AArch32 Mon */
+-static inline bool arm_is_el3_or_mon(CPUARMState *env)
++static inline bool arm_is_el3_or_mon(const CPUARMState *env)
+ {
+     assert(!arm_feature(env, ARM_FEATURE_M));
+     if (arm_feature(env, ARM_FEATURE_EL3)) {
+@@ -2524,7 +2524,7 @@ static inline bool arm_is_el3_or_mon(CPUARMState *env)
+  *
+  * Return the current security space of the cpu.
+  */
+-ARMSecuritySpace arm_security_space(CPUARMState *env);
++ARMSecuritySpace arm_security_space(const CPUARMState *env);
  
+ /**
+  * arm_is_secure:
+@@ -2532,7 +2532,7 @@ ARMSecuritySpace arm_security_space(CPUARMState *env);
+  *
+  * Return true if the processor is in secure state.
+  */
+-static inline bool arm_is_secure(CPUARMState *env)
++static inline bool arm_is_secure(const CPUARMState *env)
+ {
+     return arm_space_is_secure(arm_security_space(env));
+ }
+@@ -2541,7 +2541,7 @@ static inline bool arm_is_secure(CPUARMState *env)
+  * Return true if the current security state has AArch64 EL2 or AArch32 Hyp.
+  * This corresponds to the pseudocode EL2Enabled().
+  */
+-static inline bool arm_is_el2_enabled_secstate(CPUARMState *env,
++static inline bool arm_is_el2_enabled_secstate(const CPUARMState *env,
+                                                ARMSecuritySpace space)
+ {
+     assert(space != ARMSS_Root);
+@@ -2549,39 +2549,39 @@ static inline bool arm_is_el2_enabled_secstate(CPUARMState *env,
+            && (space != ARMSS_Secure || (env->cp15.scr_el3 & SCR_EEL2));
+ }
+ 
+-static inline bool arm_is_el2_enabled(CPUARMState *env)
++static inline bool arm_is_el2_enabled(const CPUARMState *env)
+ {
+     return arm_is_el2_enabled_secstate(env, arm_security_space_below_el3(env));
+ }
+ 
+ #else
+-static inline ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env)
++static inline ARMSecuritySpace arm_security_space_below_el3(const CPUARMState *env)
+ {
+     return ARMSS_NonSecure;
+ }
+ 
+-static inline bool arm_is_secure_below_el3(CPUARMState *env)
++static inline bool arm_is_secure_below_el3(const CPUARMState *env)
+ {
+     return false;
+ }
+ 
+-static inline ARMSecuritySpace arm_security_space(CPUARMState *env)
++static inline ARMSecuritySpace arm_security_space(const CPUARMState *env)
+ {
+     return ARMSS_NonSecure;
+ }
+ 
+-static inline bool arm_is_secure(CPUARMState *env)
++static inline bool arm_is_secure(const CPUARMState *env)
+ {
+     return false;
+ }
+ 
+-static inline bool arm_is_el2_enabled_secstate(CPUARMState *env,
++static inline bool arm_is_el2_enabled_secstate(const CPUARMState *env,
+                                                ARMSecuritySpace space)
+ {
+     return false;
+ }
+ 
+-static inline bool arm_is_el2_enabled(CPUARMState *env)
++static inline bool arm_is_el2_enabled(const CPUARMState *env)
+ {
+     return false;
+ }
+@@ -2593,12 +2593,13 @@ static inline bool arm_is_el2_enabled(CPUARMState *env)
+  * "for all purposes other than a direct read or write access of HCR_EL2."
+  * Not included here is HCR_RW.
+  */
+-uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, ARMSecuritySpace space);
+-uint64_t arm_hcr_el2_eff(CPUARMState *env);
+-uint64_t arm_hcrx_el2_eff(CPUARMState *env);
++uint64_t arm_hcr_el2_eff_secstate(const CPUARMState *env,
++                                  ARMSecuritySpace space);
++uint64_t arm_hcr_el2_eff(const CPUARMState *env);
++uint64_t arm_hcrx_el2_eff(const CPUARMState *env);
+ 
+ /* Return true if the specified exception level is running in AArch64 state. */
+-static inline bool arm_el_is_aa64(CPUARMState *env, int el)
++static inline bool arm_el_is_aa64(const CPUARMState *env, int el)
+ {
+     /* This isn't valid for EL0 (if we're in EL0, is_a64() is what you want,
+      * and if we're not in EL0 then the state of EL0 isn't well defined.)
+@@ -2637,7 +2638,7 @@ static inline bool arm_el_is_aa64(CPUARMState *env, int el)
+  * it doesn't exist at all) then there is no register banking, and all
+  * accesses are to the non-secure version.
+  */
+-static inline bool access_secure_reg(CPUARMState *env)
++static inline bool access_secure_reg(const CPUARMState *env)
+ {
+     bool ret = (arm_feature(env, ARM_FEATURE_EL3) &&
+                 !arm_el_is_aa64(env, 3) &&
+@@ -2677,7 +2678,7 @@ uint32_t arm_phys_excp_target_el(CPUState *cs, uint32_t excp_idx,
+                                  uint32_t cur_el, bool secure);
+ 
+ /* Return the highest implemented Exception Level */
+-static inline int arm_highest_el(CPUARMState *env)
++static inline int arm_highest_el(const CPUARMState *env)
+ {
+     if (arm_feature(env, ARM_FEATURE_EL3)) {
+         return 3;
+@@ -2689,7 +2690,7 @@ static inline int arm_highest_el(CPUARMState *env)
+ }
+ 
+ /* Return true if a v7M CPU is in Handler mode */
+-static inline bool arm_v7m_is_handler_mode(CPUARMState *env)
++static inline bool arm_v7m_is_handler_mode(const CPUARMState *env)
+ {
+     return env->v7m.exception != 0;
+ }
+@@ -2697,7 +2698,7 @@ static inline bool arm_v7m_is_handler_mode(CPUARMState *env)
+ /* Return the current Exception Level (as per ARMv8; note that this differs
+  * from the ARMv7 Privilege Level).
+  */
+-static inline int arm_current_el(CPUARMState *env)
++static inline int arm_current_el(const CPUARMState *env)
+ {
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         return arm_v7m_is_handler_mode(env) ||
+@@ -3004,7 +3005,7 @@ static inline ARMSecuritySpace arm_phys_to_space(ARMMMUIdx idx)
+     return idx - ARMMMUIdx_Phys_S;
+ }
+ 
+-static inline bool arm_v7m_csselr_razwi(ARMCPU *cpu)
++static inline bool arm_v7m_csselr_razwi(const ARMCPU *cpu)
+ {
+     /* If all the CLIDR.Ctypem bits are 0 there are no caches, and
+      * CSSELR is RAZ/WI.
+@@ -3012,7 +3013,7 @@ static inline bool arm_v7m_csselr_razwi(ARMCPU *cpu)
+     return (cpu->clidr & R_V7M_CLIDR_CTYPE_ALL_MASK) != 0;
+ }
+ 
+-static inline bool arm_sctlr_b(CPUARMState *env)
++static inline bool arm_sctlr_b(const CPUARMState *env)
+ {
+     return
+         /* We need not implement SCTLR.ITD in user-mode emulation, so
+@@ -3025,9 +3026,9 @@ static inline bool arm_sctlr_b(CPUARMState *env)
+         (env->cp15.sctlr_el[1] & SCTLR_B) != 0;
+ }
+ 
+-uint64_t arm_sctlr(CPUARMState *env, int el);
++uint64_t arm_sctlr(const CPUARMState *env, int el);
+ 
+-static inline bool arm_cpu_data_is_big_endian_a32(CPUARMState *env,
++static inline bool arm_cpu_data_is_big_endian_a32(const CPUARMState *env,
+                                                   bool sctlr_b)
+ {
+ #ifdef CONFIG_USER_ONLY
+@@ -3057,7 +3058,7 @@ static inline bool arm_cpu_data_is_big_endian_a64(int el, uint64_t sctlr)
+ }
+ 
+ /* Return true if the processor is in big-endian mode. */
+-static inline bool arm_cpu_data_is_big_endian(CPUARMState *env)
++static inline bool arm_cpu_data_is_big_endian(const CPUARMState *env)
+ {
+     if (!is_a64(env)) {
+         return arm_cpu_data_is_big_endian_a32(env, arm_sctlr_b(env));
+@@ -3219,7 +3220,7 @@ FIELD(TBFLAG_A64, NV2_MEM_BE, 36, 1)
+  *
+  * Return the VL cached within env->hflags, in units of quadwords.
+  */
+-static inline int sve_vq(CPUARMState *env)
++static inline int sve_vq(const CPUARMState *env)
+ {
+     return EX_TBFLAG_A64(env->hflags, VL) + 1;
+ }
+@@ -3230,7 +3231,7 @@ static inline int sve_vq(CPUARMState *env)
+  *
+  * Return the SVL cached within env->hflags, in units of quadwords.
+  */
+-static inline int sme_vq(CPUARMState *env)
++static inline int sme_vq(const CPUARMState *env)
+ {
+     return EX_TBFLAG_A64(env->hflags, SVL) + 1;
+ }
+@@ -3252,7 +3253,7 @@ static inline bool bswap_code(bool sctlr_b)
+ }
+ 
+ #ifdef CONFIG_USER_ONLY
+-static inline bool arm_cpu_bswap_data(CPUARMState *env)
++static inline bool arm_cpu_bswap_data(const CPUARMState *env)
+ {
+     return TARGET_BIG_ENDIAN ^ arm_cpu_data_is_big_endian(env);
+ }
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 863a84edf81..06155816ab4 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -832,7 +832,7 @@ static inline ARMMMUIdx core_to_aa64_mmu_idx(int mmu_idx)
+ int arm_mmu_idx_to_el(ARMMMUIdx mmu_idx);
+ 
+ /* Return the MMU index for a v7M CPU in the specified security state */
+-ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate);
++ARMMMUIdx arm_v7m_mmu_idx_for_secstate(const CPUARMState *env, bool secstate);
+ 
+ /*
+  * Return true if the stage 1 translation regime is using LPAE
+@@ -1189,7 +1189,7 @@ void arm_cpu_update_vserr(ARMCPU *cpu);
+  *
+  * Return the full ARMMMUIdx for the translation regime for EL.
+  */
+-ARMMMUIdx arm_mmu_idx_el(CPUARMState *env, int el);
++ARMMMUIdx arm_mmu_idx_el(const CPUARMState *env, int el);
+ 
+ /**
+  * arm_mmu_idx:
+@@ -1197,7 +1197,7 @@ ARMMMUIdx arm_mmu_idx_el(CPUARMState *env, int el);
+  *
+  * Return the full ARMMMUIdx for the current translation regime.
+  */
+-ARMMMUIdx arm_mmu_idx(CPUARMState *env);
++ARMMMUIdx arm_mmu_idx(const CPUARMState *env);
+ 
+ /**
+  * arm_stage1_mmu_idx:
+@@ -1210,13 +1210,13 @@ static inline ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx)
+ {
+     return ARMMMUIdx_Stage1_E0;
+ }
+-static inline ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env)
++static inline ARMMMUIdx arm_stage1_mmu_idx(const CPUARMState *env)
+ {
+     return ARMMMUIdx_Stage1_E0;
+ }
+ #else
+ ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx);
+-ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env);
++ARMMMUIdx arm_stage1_mmu_idx(const CPUARMState *env);
+ #endif
+ 
+ /**
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 63997678513..cf11a8c7736 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -264,7 +264,7 @@ void init_cpreg_list(ARMCPU *cpu)
+     g_list_free(keys);
+ }
+ 
+-static bool arm_pan_enabled(CPUARMState *env)
++static bool arm_pan_enabled(const CPUARMState *env)
+ {
+     if (is_a64(env)) {
+         if ((arm_hcr_el2_eff(env) & (HCR_NV | HCR_NV1)) == (HCR_NV | HCR_NV1)) {
+@@ -5229,7 +5229,8 @@ static void hcr_writelow(CPUARMState *env, const ARMCPRegInfo *ri,
+  * Bits that are not included here:
+  * RW       (read from SCR_EL3.RW as needed)
+  */
+-uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, ARMSecuritySpace space)
++uint64_t arm_hcr_el2_eff_secstate(const CPUARMState *env,
++                                  ARMSecuritySpace space)
+ {
+     uint64_t ret = env->cp15.hcr_el2;
+ 
+@@ -5294,7 +5295,7 @@ uint64_t arm_hcr_el2_eff_secstate(CPUARMState *env, ARMSecuritySpace space)
+     return ret;
+ }
+ 
+-uint64_t arm_hcr_el2_eff(CPUARMState *env)
++uint64_t arm_hcr_el2_eff(const CPUARMState *env)
+ {
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         return 0;
+@@ -5396,7 +5397,7 @@ static const ARMCPRegInfo hcrx_el2_reginfo = {
+ };
+ 
+ /* Return the effective value of HCRX_EL2.  */
+-uint64_t arm_hcrx_el2_eff(CPUARMState *env)
++uint64_t arm_hcrx_el2_eff(const CPUARMState *env)
+ {
+     /*
+      * The bits in this register behave as 0 for all purposes other than
+@@ -5411,7 +5412,7 @@ uint64_t arm_hcrx_el2_eff(CPUARMState *env)
+      */
+     if (!arm_is_el2_enabled(env)) {
+         uint64_t hcrx = 0;
+-        if (cpu_isar_feature(aa64_mops, env_archcpu(env))) {
++        if (cpu_isar_feature(aa64_mops, const_env_archcpu(env))) {
+             /* MSCEn behaves as 1 if EL2 is not enabled */
+             hcrx |= HCRX_MSCEN;
+         }
+@@ -9333,7 +9334,7 @@ static int bad_mode_switch(CPUARMState *env, int mode, CPSRWriteType write_type)
+     }
+ }
+ 
+-uint32_t cpsr_read(CPUARMState *env)
++uint32_t cpsr_read(const CPUARMState *env)
+ {
+     int ZF;
+     ZF = (env->ZF == 0);
+@@ -10703,7 +10704,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+ }
+ #endif /* !CONFIG_USER_ONLY */
+ 
+-uint64_t arm_sctlr(CPUARMState *env, int el)
++uint64_t arm_sctlr(const CPUARMState *env, int el)
+ {
+     /* Only EL0 needs to be adjusted for EL1&0 or EL2&0 or EL3&0 */
+     if (el == 0) {
+@@ -11127,7 +11128,7 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
+ }
+ #endif
+ 
+-ARMMMUIdx arm_mmu_idx_el(CPUARMState *env, int el)
++ARMMMUIdx arm_mmu_idx_el(const CPUARMState *env, int el)
+ {
+     ARMMMUIdx idx;
+     uint64_t hcr;
+@@ -11180,7 +11181,7 @@ ARMMMUIdx arm_mmu_idx_el(CPUARMState *env, int el)
+     return idx;
+ }
+ 
+-ARMMMUIdx arm_mmu_idx(CPUARMState *env)
++ARMMMUIdx arm_mmu_idx(const CPUARMState *env)
+ {
+     return arm_mmu_idx_el(env, arm_current_el(env));
+ }
+@@ -11412,7 +11413,7 @@ void aarch64_sve_change_el(CPUARMState *env, int old_el,
+ #endif
+ 
+ #ifndef CONFIG_USER_ONLY
+-ARMSecuritySpace arm_security_space(CPUARMState *env)
++ARMSecuritySpace arm_security_space(const CPUARMState *env)
+ {
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         return arm_secure_to_space(env->v7m.secure);
+@@ -11429,7 +11430,7 @@ ARMSecuritySpace arm_security_space(CPUARMState *env)
+     /* Check for AArch64 EL3 or AArch32 Mon. */
+     if (is_a64(env)) {
+         if (extract32(env->pstate, 2, 2) == 3) {
+-            if (cpu_isar_feature(aa64_rme, env_archcpu(env))) {
++            if (cpu_isar_feature(aa64_rme, const_env_archcpu(env))) {
+                 return ARMSS_Root;
+             } else {
+                 return ARMSS_Secure;
+@@ -11444,7 +11445,7 @@ ARMSecuritySpace arm_security_space(CPUARMState *env)
+     return arm_security_space_below_el3(env);
+ }
+ 
+-ARMSecuritySpace arm_security_space_below_el3(CPUARMState *env)
++ARMSecuritySpace arm_security_space_below_el3(const CPUARMState *env)
+ {
+     assert(!arm_feature(env, ARM_FEATURE_M));
+ 
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index 64bb6878a48..613d13b50be 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -158,7 +158,7 @@ ARMMMUIdx stage_1_mmu_idx(ARMMMUIdx mmu_idx)
+     }
+ }
+ 
+-ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env)
++ARMMMUIdx arm_stage1_mmu_idx(const CPUARMState *env)
+ {
+     return stage_1_mmu_idx(arm_mmu_idx(env));
+ }
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index f7354f3c6e0..2c792928944 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -156,14 +156,14 @@ uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
+     return 0;
+ }
+ 
+-ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
++ARMMMUIdx arm_v7m_mmu_idx_for_secstate(const CPUARMState *env, bool secstate)
+ {
+     return ARMMMUIdx_MUser;
+ }
+ 
+ #else /* !CONFIG_USER_ONLY */
+ 
+-static ARMMMUIdx arm_v7m_mmu_idx_all(CPUARMState *env,
++static ARMMMUIdx arm_v7m_mmu_idx_all(const CPUARMState *env,
+                                      bool secstate, bool priv, bool negpri)
+ {
+     ARMMMUIdx mmu_idx = ARM_MMU_IDX_M;
+@@ -183,7 +183,7 @@ static ARMMMUIdx arm_v7m_mmu_idx_all(CPUARMState *env,
+     return mmu_idx;
+ }
+ 
+-static ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(CPUARMState *env,
++static ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(const CPUARMState *env,
+                                                        bool secstate, bool priv)
+ {
+     bool negpri = armv7m_nvic_neg_prio_requested(env->nvic, secstate);
+@@ -192,7 +192,7 @@ static ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(CPUARMState *env,
+ }
+ 
+ /* Return the MMU index for a v7M CPU in the specified security state */
+-ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
++ARMMMUIdx arm_v7m_mmu_idx_for_secstate(const CPUARMState *env, bool secstate)
+ {
+     bool priv = arm_v7m_is_handler_mode(env) ||
+         !(env->v7m.control[secstate] & 1);
+diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
+index fc20a567530..f1bb86832f9 100644
+--- a/target/arm/vfp_helper.c
++++ b/target/arm/vfp_helper.c
+@@ -59,7 +59,7 @@ static inline int vfp_exceptbits_from_host(int host_bits)
+     return target_bits;
+ }
+ 
+-static uint32_t vfp_get_fpsr_from_host(CPUARMState *env)
++static uint32_t vfp_get_fpsr_from_host(const CPUARMState *env)
+ {
+     uint32_t i;
+ 
+@@ -132,7 +132,7 @@ static void vfp_set_fpcr_to_host(CPUARMState *env, uint32_t val, uint32_t mask)
+ 
+ #else
+ 
+-static uint32_t vfp_get_fpsr_from_host(CPUARMState *env)
++static uint32_t vfp_get_fpsr_from_host(const CPUARMState *env)
+ {
+     return 0;
+ }
+@@ -162,7 +162,7 @@ uint32_t vfp_get_fpcr(CPUARMState *env)
+     return fpcr;
+ }
+ 
+-uint32_t vfp_get_fpsr(CPUARMState *env)
++uint32_t vfp_get_fpsr(const CPUARMState *env)
+ {
+     uint32_t fpsr = env->vfp.fpsr;
+     uint32_t i;
 -- 
 2.47.1
 

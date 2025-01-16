@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf32754f5sm203303f8f.79.2025.01.16.08.03.07
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf321537dsm232527f8f.13.2025.01.16.08.03.07
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 16 Jan 2025 08:03:07 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C6CE760853;
+	by draig.lan (Postfix) with ESMTP id AF04C6084C;
 	Thu, 16 Jan 2025 16:03:06 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -43,45 +43,46 @@ Cc: qemu-block@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v3 04/37] semihosting/uaccess: Include missing 'exec/cpu-all.h' header
-Date: Thu, 16 Jan 2025 16:02:33 +0000
-Message-Id: <20250116160306.1709518-5-alex.bennee@linaro.org>
+Subject: [PATCH v3 03/37] semihosting/syscalls: Include missing 'exec/cpu-defs.h' header
+Date: Thu, 16 Jan 2025 16:02:32 +0000
+Message-Id: <20250116160306.1709518-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250116160306.1709518-1-alex.bennee@linaro.org>
 References: <20250116160306.1709518-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: iOUAZwJxIr99
+X-TUID: eVGRPzFe1SUH
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-TLB_INVALID_MASK is defined in "exec/cpu-all.h".
-Include it in order to avoid when refactoring:
+target_ulong is defined in each target "cpu-param.h",
+itself included by "exec/cpu-defs.h".
+Include the latter in order to avoid when refactoring:
 
-  ../semihosting/uaccess.c:41:21: error: use of undeclared identifier 'TLB_INVALID_MASK'
-     41 |         if (flags & TLB_INVALID_MASK) {
-        |                     ^
+  include/semihosting/syscalls.h:26:24: error: unknown type name 'target_ulong'
+     26 |                        target_ulong fname, target_ulong fname_len,
+        |                        ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20250103171037.11265-3-philmd@linaro.org>
+Message-Id: <20250103171037.11265-2-philmd@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- semihosting/uaccess.c | 1 +
+ include/semihosting/syscalls.h | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/semihosting/uaccess.c b/semihosting/uaccess.c
-index dc587d73bc..382a366ce3 100644
---- a/semihosting/uaccess.c
-+++ b/semihosting/uaccess.c
-@@ -8,6 +8,7 @@
-  */
+diff --git a/include/semihosting/syscalls.h b/include/semihosting/syscalls.h
+index b5937c619a..6627c45fb2 100644
+--- a/include/semihosting/syscalls.h
++++ b/include/semihosting/syscalls.h
+@@ -9,6 +9,7 @@
+ #ifndef SEMIHOSTING_SYSCALLS_H
+ #define SEMIHOSTING_SYSCALLS_H
  
- #include "qemu/osdep.h"
-+#include "exec/cpu-all.h"
- #include "exec/exec-all.h"
- #include "semihosting/uaccess.h"
++#include "exec/cpu-defs.h"
+ #include "gdbstub/syscalls.h"
  
+ /*
 -- 
 2.39.5

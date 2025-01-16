@@ -1,171 +1,68 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp3807243njn;
-        Thu, 16 Jan 2025 07:00:32 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUpBbnSTXY/Z3Xkk1HnteWVuiBnSvzi5DztnIC9XSeYuYYLud3LZsRickS3y/sVSjt2rkuPnUZfXJ58fg==@linaro.org
-X-Google-Smtp-Source: AGHT+IH3GgKNEMRvl7cSQQKirQ8ll5KGuDo4aFhnhnJvwYNL7p05RRbihojzBEtaWS3ylWOqmuQH
-X-Received: by 2002:a05:620a:1927:b0:7b6:eef3:aeaf with SMTP id af79cd13be357-7bcd9615b74mr4874106385a.0.1737039631911;
-        Thu, 16 Jan 2025 07:00:31 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737039631; cv=none;
-        d=google.com; s=arc-20240605;
-        b=RRWuvY641W8b6DyenqcZZvKbKun35hSkukXQG4ThqadX2RiqZT9TPHdazla4qW1/k7
-         6O4RX7NDt8oSl0GtVCvbxwPWfCsN2/r6GG7uX9rP+8ao1YMFv/5zgSv4B6RTU1jzjRkp
-         iuEfonkkIyTd42mA5NA5eyJ0equ9j/REQcQCE/nmFj2798gl3eiPFxsxWfJhp99nANTb
-         aw2C30sTSBJF8vEim/D15OGoE5nZwSbKcAGbSUiqOoKTH+VpQ5mbNkNfTlFzEWreI4s2
-         n7d1jE5AjBTLWRxehy0AMnOR9JOkh2aeTF6sWhQVoeWd453lyTrCtAO5FwqeaKhkEpEq
-         9W+Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6pmziWnNaDV6beFRLi5dxmWiupvkK6+TjRcXkuuJ1cs=;
-        fh=Q5GNgeG4hwvXK8nWDxwLySQTPXZUr9FLVptSZ1H/5p4=;
-        b=gB4qQWsTxErAQOQj1+yydfdvB0ZnASKGwvifvijstpZpfXY+rvd7IreiozTrj8sE9+
-         ANbS84Yg9j4xIoWVcZPjiTUklXBDng3L4qUYN/vIx5Xg7wTqtmHJoRQ4ccfnf40mo2Kn
-         PcHJGW4kPlqfLTdelwJEsoIenXtUcYuMGvG7a0p+qmbpX1fm6m4aZH+gNmve2OWzdR+z
-         q+FJZkGaMUKsZ8aDBkwLZXMHqo0IAYr9fgk58IeJBUrYN3jSC5lKxNJONBrOt4XWXL43
-         x+OMJKzLowy6g9pyFuow9BUdLyphk5msptDYEkbTAzNUr2oyFI02QnTN3MqPk/gsqMXk
-         8vsQ==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CNW9o3aw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7be614cc033si24772985a.447.2025.01.16.07.00.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jan 2025 07:00:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CNW9o3aw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tYRLc-0001xH-JW; Thu, 16 Jan 2025 09:59:52 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYRLa-0001wr-82
- for qemu-devel@nongnu.org; Thu, 16 Jan 2025 09:59:50 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tYRLY-0008F1-Lj
- for qemu-devel@nongnu.org; Thu, 16 Jan 2025 09:59:49 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-437a92d7b96so9640515e9.2
- for <qemu-devel@nongnu.org>; Thu, 16 Jan 2025 06:59:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737039587; x=1737644387; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=6pmziWnNaDV6beFRLi5dxmWiupvkK6+TjRcXkuuJ1cs=;
- b=CNW9o3awO/0L9hzbJSra31gUVrn/11HUw8bX5RVqUs5uh/9+vuLtQO02UOuSIhMiXA
- ceKbJypVgSMFPUk0BvSIarUl9cF1OC3DOnFqTVQ/UHBHUOhwkHudjtpqCaCuvA47SYZz
- A/wv9M7bWvJgJ9NuB+3CkIsk2/s13GciW90cAWtx+qZi6LZ+2xl1I8tEex/iu3HJPtEK
- gqpSeNH6sPSAa0KxAP7ItgiJ6eXJoJY6eIM38RDn5cSvGIES8iRCB5xrEUZ0z+1aZ9UA
- vhBxgcQnLvkOuHI9mAx2i3EUEibCMugLOa0XiONOzOcHv1bhkVYOmXk0tZABr3PdJ2XG
- v1+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737039587; x=1737644387;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=6pmziWnNaDV6beFRLi5dxmWiupvkK6+TjRcXkuuJ1cs=;
- b=nAQU/UctYUyZxQBFfFol0hPDfWQqgqjIlNnRJd6W8m7N57SL822Zmk4ZhrYUR49xwg
- 67E9mE2rHXoBr/ijZsvJQokUMGzMfdctlhiciu15JO0Bk/IhbeN0iECjzoKq77HesdB1
- vI3YJvMZN4md/rq8x61iEL0AKa+l22/2jWQDYiWCTnuUKcCAMoh0ycYTJHDnZwceRdRz
- WvtLyGDdAhGpjKBP5K8igO+vE9B/bU8Js8kBmqGHd8yRuJYdkE6EoruP5/GVN4c2wa8A
- BMYzl67nLCL1lmjgK3k4YobHQlelEiUJWvkoqJOB3TIJqPaECzVmgyU8/ShTbzVkNg6k
- vh4Q==
-X-Gm-Message-State: AOJu0YyLbWJuQahLrrYgquPboOkTL/PoFwFVeaNX/249HuSNaTQwa0Bd
- m3mV6924CFQwJihfPz2XFQCVpZIIareCMEZVW4L06qsLYeokVyb0bEc7ue3VCdYf09EKwui/LJ9
- 39W4=
-X-Gm-Gg: ASbGncvP+1j0g5lInvhsi3Qb2gv9fM0rxqEd3hfoijcPYBmeCSd5nkF7jrmTMlkrWcs
- niLytBDD4+AovdyAR3XC/hE6YlKC88Hc3DqLYl56kAqF5NbcV/YB10DY/9ofSUZumgHMC/k/qjt
- d5RFtKTOASP4+fFG9Pz/iNxEGbbOyhIfu6Y3Oi/na/94spWq+f7VzCkf8w3X2IaqmavKlBR80WR
- pcFyTDHW7j3v17E9/famAbOswCi+BomDOZKvpUQ5xK3RHw8RG2xAWH00npimjBCXLu3bgBke4oQ
- zqXGQ6YlHT6GIPpx2zzxGI023RngVPY=
-X-Received: by 2002:a05:6000:4023:b0:385:f44a:a3b with SMTP id
- ffacd0b85a97d-38a87330649mr31307055f8f.41.1737039586851; 
- Thu, 16 Jan 2025 06:59:46 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38bf3215066sm93922f8f.11.2025.01.16.06.59.45
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 16 Jan 2025 06:59:46 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-437c74c6179sm63700505e9.22.2025.01.16.08.05.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 16 Jan 2025 08:05:33 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id C4EA660853;
+	Thu, 16 Jan 2025 16:05:31 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Igor Mammedov <imammedo@redhat.com>,
- Andrew Jones <ajones@ventanamicro.com>, Thomas Huth <thuth@redhat.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH-for-10.1 v2 00/13] hw/arm: Remove virt-2.6 up to virt-2.12
- machines
-Date: Thu, 16 Jan 2025 15:59:31 +0100
-Message-ID: <20250116145944.38028-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
+Cc: qemu-block@nongnu.org,  Markus Armbruster <armbru@redhat.com>,  Yuri
+ Benditovich <yuri.benditovich@daynix.com>,  Jason Wang
+ <jasowang@redhat.com>,  Cleber Rosa <crosa@redhat.com>,  "Dr. David Alan
+ Gilbert" <dave@treblig.org>,  Peter Xu <peterx@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+  Stefan Weil <sw@weilnetz.de>,  Stefano Garzarella <sgarzare@redhat.com>,
+  qemu-arm@nongnu.org,  Michael Roth <michael.roth@amd.com>,  Laurent
+ Vivier <laurent@vivier.eu>,  Mahmoud Mandour <ma.mandourr@gmail.com>,
+  Andrew Melnychenko <andrew@daynix.com>,  Konstantin Kostiuk
+ <kkostiuk@redhat.com>,  Kyle Evans <kevans@freebsd.org>,  Richard
+ Henderson <richard.henderson@linaro.org>,  =?utf-8?Q?Marc-Andr=C3=A9?=
+ Lureau
+ <marcandre.lureau@redhat.com>,  John Snow <jsnow@redhat.com>,  David
+ Hildenbrand <david@redhat.com>,  Fabiano Rosas <farosas@suse.de>,
+  Alexandre Iooss <erdnaxe@crans.org>,  Eric Blake <eblake@redhat.com>,
+  Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  Pierrick
+ Bouvier <pierrick.bouvier@linaro.org>,  Kevin Wolf <kwolf@redhat.com>,
+  Peter Maydell <peter.maydell@linaro.org>,  Laurent Vivier
+ <lvivier@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Thomas Huth
+ <thuth@redhat.com>,  Warner Losh <imp@bsdimp.com>,  Daniel P. =?utf-8?Q?B?=
+ =?utf-8?Q?errang=C3=A9?=
+ <berrange@redhat.com>
+Subject: Re: [PATCH v3 00/37] maintainer updates for jan '25 (semihosting,
+ gdb, plugins, docs) pre-PR-FINAL
+In-Reply-To: <20250116160306.1709518-1-alex.bennee@linaro.org> ("Alex
+	=?utf-8?Q?Benn=C3=A9e=22's?= message of "Thu, 16 Jan 2025 16:02:29 +0000")
+References: <20250116160306.1709518-1-alex.bennee@linaro.org>
+User-Agent: mu4e 1.12.8; emacs 29.4
+Date: Thu, 16 Jan 2025 16:05:31 +0000
+Message-ID: <87ldvahhh0.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: w7r4iENbpxWW
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: qI1X3/oMpdhl
 
-The versioned 'virt' machines up to 2.12 been marked as deprecated
-two releases ago, and are older than 6 years, so according to our
-support policy we can remove them. Remove associated dead code.
+Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
 
-Since v1:
-- Corrected disallow_affinity_adjustment removal (Thomas)
-- Do not modify docs/about/removed-features.rst (Thomas & Daniel)
+> Only a few changes from v2, sending out to cut a PR tomorrow
+>
+>   - applied r-b tags
+>   - fixed bsd-user gdbserver_start
+>   - a few minor tweaks to commit messages
+>
+<snip>
+> Most are already reviewed, the following remain:
+>
+>   docs/sphinx: include kernel-doc script as a dependency
+>   include/exec: fix some copy and paste errors in kdoc
+>   tests/qtest: fix some copy and paste errors in kdoc
+>   editorconfig: update for perl scripts
+>   plugins: fix kdoc annotation
 
-Philippe Mathieu-Daudé (13):
-  hw/arm/virt: Remove deprecated virt-2.6 machine
-  hw/arm/virt: Remove VirtMachineClass::no_pmu field
-  hw/arm/virt: Remove VirtMachineClass::disallow_affinity_adjustment
-  hw/arm/virt: Remove deprecated virt-2.7 machine
-  hw/arm/virt: Remove VirtMachineClass::no_its field
-  hw/arm/virt: Remove deprecated virt-2.8 machine
-  hw/arm/virt: Remove VirtMachineClass::claim_edge_triggered_timers
-    field
-  hw/arm/virt: Remove deprecated virt-2.9 machine
-  hw/arm/virt: Remove deprecated virt-2.10 machine
-  hw/arm/virt: Remove deprecated virt-2.11 machine
-  hw/arm/virt: Remove VirtMachineClass::smbios_old_sys_ver field
-  hw/arm/virt: Remove deprecated virt-2.12 machine
-  hw/arm/virt: Remove VirtMachineClass::no_highmem_ecam field
+Ignore this part, all 37 patches reviewed
 
- include/hw/arm/virt.h    |   6 --
- hw/arm/virt-acpi-build.c |  10 +--
- hw/arm/virt.c            | 136 +++++++--------------------------------
- 3 files changed, 26 insertions(+), 126 deletions(-)
-
--- 
-2.47.1
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

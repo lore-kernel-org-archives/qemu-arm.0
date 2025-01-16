@@ -1,10 +1,10 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-437c7499884sm65557275e9.5.2025.01.16.08.12.12
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf3221b5asm238633f8f.21.2025.01.16.08.12.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 16 Jan 2025 08:12:15 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C7FE6608D4;
+	by draig.lan (Postfix) with ESMTP id B1806608D2;
 	Thu, 16 Jan 2025 16:03:08 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -43,60 +43,113 @@ Cc: qemu-block@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
 	Warner Losh <imp@bsdimp.com>,
 	=?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH v3 24/37] docs/devel/style: add a section about bitfield, and disallow them for packed structures
-Date: Thu, 16 Jan 2025 16:02:53 +0000
-Message-Id: <20250116160306.1709518-25-alex.bennee@linaro.org>
+Subject: [PATCH v3 23/37] win32: remove usage of attribute gcc_struct
+Date: Thu, 16 Jan 2025 16:02:52 +0000
+Message-Id: <20250116160306.1709518-24-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20250116160306.1709518-1-alex.bennee@linaro.org>
 References: <20250116160306.1709518-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: yIy8I7P33G4+
+X-TUID: 5JJ60vM3hinP
 
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+This attribute is not recognized by clang.
+
+An investigation has been performed to ensure this attribute has no
+effect on layout of structures we use in QEMU [1], so it's safe to
+remove now.
+
+In the future, we'll forbid introducing new bitfields in packed struct,
+as they are the one potentially impacted by this change.
+
+[1] https://lore.kernel.org/qemu-devel/66c346de-7e20-4831-b3eb-1cda83240af9@linaro.org/
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Acked-by: Stefano Garzarella <sgarzare@redhat.com>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 Tested-by: Stefan Weil <sw@weilnetz.de>
 Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20250110203401.178532-3-pierrick.bouvier@linaro.org>
+Message-Id: <20250110203401.178532-2-pierrick.bouvier@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- docs/devel/style.rst | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ meson.build                               | 5 -----
+ include/qemu/compiler.h                   | 7 +------
+ scripts/cocci-macro-file.h                | 6 +-----
+ subprojects/libvhost-user/libvhost-user.h | 6 +-----
+ 4 files changed, 3 insertions(+), 21 deletions(-)
 
-diff --git a/docs/devel/style.rst b/docs/devel/style.rst
-index 2f68b50079..d025933808 100644
---- a/docs/devel/style.rst
-+++ b/docs/devel/style.rst
-@@ -416,6 +416,26 @@ definitions instead of typedefs in headers and function prototypes; this
- avoids problems with duplicated typedefs and reduces the need to include
- headers from other headers.
+diff --git a/meson.build b/meson.build
+index d06f59095c..da279cc112 100644
+--- a/meson.build
++++ b/meson.build
+@@ -377,11 +377,6 @@ elif host_os == 'sunos'
+   qemu_common_flags += '-D__EXTENSIONS__'
+ elif host_os == 'haiku'
+   qemu_common_flags += ['-DB_USE_POSITIVE_POSIX_ERRORS', '-D_BSD_SOURCE', '-fPIC']
+-elif host_os == 'windows'
+-  if not compiler.compiles('struct x { int y; } __attribute__((gcc_struct));',
+-                           args: '-Werror')
+-    error('Your compiler does not support __attribute__((gcc_struct)) - please use GCC instead of Clang')
+-  endif
+ endif
  
-+Bitfields
-+---------
-+
-+C bitfields can be a cause of non-portability issues, especially under windows
-+where `MSVC has a different way to lay them out than GCC
-+<https://gcc.gnu.org/onlinedocs/gcc/x86-Type-Attributes.html>`_, or where
-+endianness matters.
-+
-+For this reason, we disallow usage of bitfields in packed structures and in any
-+structures which are supposed to exactly match a specific layout in guest
-+memory. Some existing code may use it, and we carefully ensured the layout was
-+the one expected.
-+
-+We also suggest avoiding bitfields even in structures where the exact
-+layout does not matter, unless you can show that they provide a significant
-+usability benefit.
-+
-+We encourage the usage of ``include/hw/registerfields.h`` as a safe replacement
-+for bitfields.
-+
- Reserved namespaces in C and POSIX
- ----------------------------------
+ # Choose instruction set (currently x86-only)
+diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+index c06954ccb4..d904408e5e 100644
+--- a/include/qemu/compiler.h
++++ b/include/qemu/compiler.h
+@@ -22,12 +22,7 @@
+ #define QEMU_EXTERN_C extern
+ #endif
  
+-#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
+-# define QEMU_PACKED __attribute__((gcc_struct, packed))
+-#else
+-# define QEMU_PACKED __attribute__((packed))
+-#endif
+-
++#define QEMU_PACKED __attribute__((packed))
+ #define QEMU_ALIGNED(X) __attribute__((aligned(X)))
+ 
+ #ifndef glue
+diff --git a/scripts/cocci-macro-file.h b/scripts/cocci-macro-file.h
+index d247a5086e..c64831d540 100644
+--- a/scripts/cocci-macro-file.h
++++ b/scripts/cocci-macro-file.h
+@@ -23,11 +23,7 @@
+ #define G_GNUC_WARN_UNUSED_RESULT __attribute__((warn_unused_result))
+ #define G_GNUC_NULL_TERMINATED __attribute__((sentinel))
+ 
+-#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
+-# define QEMU_PACKED __attribute__((gcc_struct, packed))
+-#else
+-# define QEMU_PACKED __attribute__((packed))
+-#endif
++#define QEMU_PACKED __attribute__((packed))
+ 
+ #define cat(x,y) x ## y
+ #define cat2(x,y) cat(x,y)
+diff --git a/subprojects/libvhost-user/libvhost-user.h b/subprojects/libvhost-user/libvhost-user.h
+index deb40e77b3..2ffc58c11b 100644
+--- a/subprojects/libvhost-user/libvhost-user.h
++++ b/subprojects/libvhost-user/libvhost-user.h
+@@ -186,11 +186,7 @@ typedef struct VhostUserShared {
+     unsigned char uuid[UUID_LEN];
+ } VhostUserShared;
+ 
+-#if defined(_WIN32) && (defined(__x86_64__) || defined(__i386__))
+-# define VU_PACKED __attribute__((gcc_struct, packed))
+-#else
+-# define VU_PACKED __attribute__((packed))
+-#endif
++#define VU_PACKED __attribute__((packed))
+ 
+ typedef struct VhostUserMsg {
+     int request;
 -- 
 2.39.5

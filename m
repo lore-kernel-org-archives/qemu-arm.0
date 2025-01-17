@@ -1,183 +1,245 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp4258793njn;
-        Fri, 17 Jan 2025 00:10:14 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX6uCe0YggYs0tgf2cz1uVzPiNoW6jVCmDzbf1E/w6BglaKyI8UoaD7Cm0HyNbF7Qn30udFWItgBz78yQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IG4tW8FAMxps9tP0DLGXjT7N9+TLbnGxHjd1g/p0lGLDVyh5fxlAvbXg4AoZs4GqFSOrp5g
-X-Received: by 2002:a05:6214:2f85:b0:6d9:ac3:e730 with SMTP id 6a1803df08f44-6e192b813a1mr173878706d6.5.1737101414728;
-        Fri, 17 Jan 2025 00:10:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737101414; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp4266008njn;
+        Fri, 17 Jan 2025 00:30:09 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWu56QT2ncUWJZX8CG7qywTSyrxfRzliX8X8ixQhOAbAm1TbSKbN9crhPeYU0sFJGwM+A9dCDqpurwPfg==@linaro.org
+X-Google-Smtp-Source: AGHT+IHxeKlPWvQFTY/KsCWijn5KJZW+t4KnEjPjTEgiU79lu77ImOiE9W9+Wu3yjhD8CsgHBnod
+X-Received: by 2002:a05:622a:1986:b0:467:5926:fcf2 with SMTP id d75a77b69052e-46e12a1e4e5mr25431391cf.9.1737102608859;
+        Fri, 17 Jan 2025 00:30:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737102608; cv=none;
         d=google.com; s=arc-20240605;
-        b=SxtW2OGZjjtTCg7YdcdDZxqoCgBV6BK8pJq7K2IINxRcMxBIl189mIqTbSueKzgs16
-         v7WetNksQoD4vwPb0sq1hRABy+6ESxovMoxD6Dyfp3cTmWlN54ANCtceSwv6fWpaLSeI
-         ldFhUoykr04uDA8uDwcHmI01OMGXpt4ADrl/mahJJUizJPDeZsACewsr0ZYxJQllfqSM
-         wUvOCNLruMMIRyb65oomBqEECfYrjZ9On4adpF5jC0xq2zEQvsqsonepp10tkFyrvctt
-         St7G3/KZL56z5rLnVYyYfEDZfqb/ndKmV3xly0ntx2aVDefVGLTc6IvvDworr0/h7/fP
-         e+fw==
+        b=gvn527aBf5Lg0EEwwYWHPUvFNi68m1gdceDG0JVwNB4ssvMMnRyHAaOWFTFnFes4TX
+         cHOh0eGj0PmJWjmJ1UXIavES6A0LDUXJWSpxTvny7717luialukNCwG7Tu2/HTXo9JD0
+         oLdYkJatspiOQ4T93StYjLpb0mn+fKZpN42D+FGi9qKrvK8m4LezuQhrb1bRxki0HzLq
+         hrzg9uUMRvusO+J1O1DcTdwQTfSDw42sGM5GCoPSvw0FhE43rzWN3kfWQmwj9VeYa9pC
+         NXaqNGI6r7IrGErdx829bpTvKEgeO4Kr8w7KZfNdajcMmKK8bhC3fWjzvj7OzzoVUsKw
+         35QA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=flSp3jdiRGCNWWEc/nCcQVcW5UmRm2tKQCoo+DVSnvQ=;
-        fh=zmdZkdOgs19CP5i3al0GfOfOKYqMtKHYIaaWFVitxOI=;
-        b=S5ocQ+oNSobfLcIY5GoZ8P8kBeWxPCu0Bfv71W2Nov6IMtKEtkJWLYJSf5BoyNF5xL
-         AIshjW2njiOGEt+lbqj2j33MySQIbYZddCrRw57dGjAg8qmWLe5f6bEoeJVfwgAJMwlr
-         u3znbT9vnyglPUISHPfHOWpM9dijvBpF7+vaQo2lqZ/yHYa+C3kv/dsoIuk3TTxORHV4
-         bqdbrxpJRTQami2EFx/2cOIEqhZRtF5TuPep8jFJ1aBd/ALuRknFgnElfikvkn74enIF
-         vCEPqKK64x8dFr/elY2/AYhTjULUaTNhEYySlYC9x6tabTNco37FkjuwpL0ShKRh83+U
-         ZXkw==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=L8OgWe2scRS5+cvGHDsJJrW+IZVHGxvWxU4RiRh0Cv8=;
+        fh=ycqC0LeefOe+11k8NaosXSdP7YLYQKjEjPVnr0OJiNQ=;
+        b=OabUYNLzTR4RzXr7qw4nM014hbawDnZ5cRQMqcln+O4w0K0BBzVVDlhxyCS1Sxma/N
+         9jBgoHGQRT4oRyVG8vkgy8Uzw2wuU1E01HNJUfXbSA2TdeFfY0MMmtcK8nCa0Zk4Tzea
+         kr43HHsHa7fPF2J8hsPUlB90Ykegx3jcX3xIyGAsKyYfN250ZmiRO6R/MW35NjCk1cEy
+         No4NKUW+/Hf+BJ3OfAvvua/srT+JipG5naeLTvhFN7mn7UI9stsCMw758ESWDnMrJUH5
+         qLtXtcf5/+ehAfP1gek2hQomWvGCtuq9PfMcEItZTRMYBB/5l/lVJTLVZdPSoNGrPR/6
+         d9rg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WbvJj37K;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hQ7M3bHN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e1afcd9e01si19524846d6.261.2025.01.17.00.10.14
+        by mx.google.com with ESMTPS id d75a77b69052e-46e102f17c6si22155151cf.40.2025.01.17.00.30.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jan 2025 00:10:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 17 Jan 2025 00:30:08 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=WbvJj37K;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hQ7M3bHN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tYhQU-00050M-9M; Fri, 17 Jan 2025 03:09:58 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tYhjl-0007ZW-DN; Fri, 17 Jan 2025 03:29:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tYhQI-0004zI-B2
- for qemu-arm@nongnu.org; Fri, 17 Jan 2025 03:09:48 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tYhjj-0007Xw-2D
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2025 03:29:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1tYhQG-0007Zh-Jp
- for qemu-arm@nongnu.org; Fri, 17 Jan 2025 03:09:46 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tYhjh-00037g-BE
+ for qemu-devel@nongnu.org; Fri, 17 Jan 2025 03:29:50 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1737101380;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1737102587;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=flSp3jdiRGCNWWEc/nCcQVcW5UmRm2tKQCoo+DVSnvQ=;
- b=WbvJj37KcwIfKrs12C6OrMecgKeQkXpspsSf5D+5ytKrjsq5DdRHNrcQU0wDhP9gdJB87E
- LBtkf6s4IzvluRmGFnuh7KNeFAPZ2gZUa0jx59vefjeVqHDLvepIOIdF/pTAcmgL73a7o3
- eBl0plXRpmIxiRgxRHs1MsFnvWiXCqM=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-657-sQ1xIMJHM56wMNp2C2WMPA-1; Fri,
- 17 Jan 2025 03:09:36 -0500
-X-MC-Unique: sQ1xIMJHM56wMNp2C2WMPA-1
-X-Mimecast-MFC-AGG-ID: sQ1xIMJHM56wMNp2C2WMPA
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3BF981956080; Fri, 17 Jan 2025 08:09:30 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.60])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3F5591955F10; Fri, 17 Jan 2025 08:09:26 +0000 (UTC)
-Date: Fri, 17 Jan 2025 08:09:23 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=L8OgWe2scRS5+cvGHDsJJrW+IZVHGxvWxU4RiRh0Cv8=;
+ b=hQ7M3bHNpiig9tp5plo4dhp2xTYOOrPUbGi5l+2Ms1eKJygQYl7e735wCCyB/lTOCOrsy4
+ ZQYeft1w3lOZ1GWy9oVU9IvL52KpHtzASDWpSAxUcqDK8MSm+ji8QreV+kS1+PthxP32ga
+ dAsNysZs/Oj+ruzcW0xHSK0sDLWlCnY=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-222-XzXIuCI1OXGl7f_PvE9dCg-1; Fri, 17 Jan 2025 03:29:45 -0500
+X-MC-Unique: XzXIuCI1OXGl7f_PvE9dCg-1
+X-Mimecast-MFC-AGG-ID: XzXIuCI1OXGl7f_PvE9dCg
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4362153dcd6so8808645e9.2
+ for <qemu-devel@nongnu.org>; Fri, 17 Jan 2025 00:29:45 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737102584; x=1737707384;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=L8OgWe2scRS5+cvGHDsJJrW+IZVHGxvWxU4RiRh0Cv8=;
+ b=A15syq9gdI/PS95EGcvCYeGrPCdPL26eOE1s1vQPVTrpyne1zqMTzTn+a7CAMh5z0E
+ wBH/7/PcGE45nkOLTG7AuQSwqCGcLXPc3VASU/dkpT/e7YAdEYos3rUQRHdKtxAfDRgW
+ CZSnTmZck0LBVASQUb/A/LThHDBLQSRT3g1j0hSZjPrCO7W8oO8c1E21A7hAsjHN4VCA
+ PRJuNJ/wFYm42mNLjDF0kZUHbbZ5so9IJsCS9pR2BQZAG06yagSIoxwcsbjJgBsnEnos
+ /mAqehwhPvaStkK5GTW4IHo49PcTx6Cl+K0UGBtKzXMjknJNyB7Gg2oQqkIw55ctSgj+
+ EXbw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVoV4ZceNk0i8e4uyojAKw2+KYs3gDZEhKYySsEsaN2D460saUlfiTa/gjP6eVQmaD/VBJ8jR1asKtZ@nongnu.org
+X-Gm-Message-State: AOJu0Yw0YCvXD/KNDv/8Iw3eyaR2hfNvB8mMM0ylaRBb/iEF0Z6mXSZG
+ LCVLC4YuD2q7+cDI24xcT8OGt3dA++k8iq+wOaDSJ3Cvcbpl/iqvnPFS8vKuj14aQ8FwTPgDvwk
+ 0/wyYeMUyg0NVuoX9izk500Xci0p39ezY6ELJbl0CJybF+bOUSXvt
+X-Gm-Gg: ASbGnctTygKr/a4ebVlzBHfjCd5bgVisJPcJXDkoaK1BE3fY7Km5JAe9TFqxGNFSSYO
+ g3uiygtmRdJNj0jdx28k7ZnHiD+c1G3B1Bij+eipNOMHWC2+xcsu7nXKxQq7aCU4bT2hxzTLqSC
+ UwD6mvlMC164OCk0a4kAvmWgu9Ti9O48VMjDywIympH9iEy0ttnEZ4nR9YTZoEcaUUEdHTXsjG3
+ Gp32OR4GJWX7KEEYomAWy0NdNjWcVL+T2D0ww6e0ZH9gZZ2QFzoK6brLf0M7lcDoqF5YYYHbEbJ
+ 3lMJDD+eFFUK
+X-Received: by 2002:a05:600c:a06:b0:436:1c04:aa8e with SMTP id
+ 5b1f17b1804b1-438913dfebfmr16909935e9.16.1737102584321; 
+ Fri, 17 Jan 2025 00:29:44 -0800 (PST)
+X-Received: by 2002:a05:600c:a06:b0:436:1c04:aa8e with SMTP id
+ 5b1f17b1804b1-438913dfebfmr16909125e9.16.1737102582867; 
+ Fri, 17 Jan 2025 00:29:42 -0800 (PST)
+Received: from [192.168.0.7] (ip-109-42-51-119.web.vodafone.de.
+ [109.42.51.119]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-437c74ac604sm85393825e9.13.2025.01.17.00.29.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 17 Jan 2025 00:29:42 -0800 (PST)
+Message-ID: <70342038-6bd6-4c80-b46f-69a3c58fb5b5@redhat.com>
+Date: Fri, 17 Jan 2025 09:29:40 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-10.1 v2 00/13] hw/arm: Remove virt-2.6 up to virt-2.12
+ machines
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>,
- Andrew Jones <ajones@ventanamicro.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH-for-10.1 v2 00/13] hw/arm: Remove virt-2.6 up to
- virt-2.12 machines
-Message-ID: <Z4oP9YEBc-opiL4K@redhat.com>
+ Igor Mammedov <imammedo@redhat.com>, Andrew Jones <ajones@ventanamicro.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, qemu-arm@nongnu.org
 References: <20250116145944.38028-1-philmd@linaro.org>
  <823a0892-e9d9-4d26-b862-83ffd60c2ad1@linaro.org>
  <d9f97b63-dbfc-4322-b7a1-8759d6be5cd7@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ <Z4oP9YEBc-opiL4K@redhat.com>
+Content-Language: en-US
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <Z4oP9YEBc-opiL4K@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <d9f97b63-dbfc-4322-b7a1-8759d6be5cd7@redhat.com>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.093,
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.093,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1.797,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: NvvlMv3b3VSk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: HQ6y2qcXvXNK
 
-On Fri, Jan 17, 2025 at 07:47:15AM +0100, Thomas Huth wrote:
-> On 16/01/2025 22.13, Philippe Mathieu-Daudé wrote:
-> > Hi Peter,
-> > 
-> > On 16/1/25 15:59, Philippe Mathieu-Daudé wrote:
-> > > The versioned 'virt' machines up to 2.12 been marked as deprecated
-> > > two releases ago, and are older than 6 years, so according to our
-> > > support policy we can remove them. Remove associated dead code.
-> > 
-> > > Philippe Mathieu-Daudé (13):
-> > >    hw/arm/virt: Remove deprecated virt-2.6 machine
-> > >    hw/arm/virt: Remove VirtMachineClass::no_pmu field
-> > >    hw/arm/virt: Remove VirtMachineClass::disallow_affinity_adjustment
-> > >    hw/arm/virt: Remove deprecated virt-2.7 machine
-> > >    hw/arm/virt: Remove VirtMachineClass::no_its field
-> > >    hw/arm/virt: Remove deprecated virt-2.8 machine
-> > >    hw/arm/virt: Remove VirtMachineClass::claim_edge_triggered_timers
-> > >      field
-> > >    hw/arm/virt: Remove deprecated virt-2.9 machine
-> > >    hw/arm/virt: Remove deprecated virt-2.10 machine
-> > >    hw/arm/virt: Remove deprecated virt-2.11 machine
-> > >    hw/arm/virt: Remove VirtMachineClass::smbios_old_sys_ver field
-> > >    hw/arm/virt: Remove deprecated virt-2.12 machine
-> > >    hw/arm/virt: Remove VirtMachineClass::no_highmem_ecam field
-> > 
-> > Please ignore this (reviewed) series for now. I'll rebase it and
-> > repost after the 10.0 release.
+On 17/01/2025 09.09, Daniel P. Berrangé wrote:
+> On Fri, Jan 17, 2025 at 07:47:15AM +0100, Thomas Huth wrote:
+>> On 16/01/2025 22.13, Philippe Mathieu-Daudé wrote:
+>>> Hi Peter,
+>>>
+>>> On 16/1/25 15:59, Philippe Mathieu-Daudé wrote:
+>>>> The versioned 'virt' machines up to 2.12 been marked as deprecated
+>>>> two releases ago, and are older than 6 years, so according to our
+>>>> support policy we can remove them. Remove associated dead code.
+>>>
+>>>> Philippe Mathieu-Daudé (13):
+>>>>     hw/arm/virt: Remove deprecated virt-2.6 machine
+>>>>     hw/arm/virt: Remove VirtMachineClass::no_pmu field
+>>>>     hw/arm/virt: Remove VirtMachineClass::disallow_affinity_adjustment
+>>>>     hw/arm/virt: Remove deprecated virt-2.7 machine
+>>>>     hw/arm/virt: Remove VirtMachineClass::no_its field
+>>>>     hw/arm/virt: Remove deprecated virt-2.8 machine
+>>>>     hw/arm/virt: Remove VirtMachineClass::claim_edge_triggered_timers
+>>>>       field
+>>>>     hw/arm/virt: Remove deprecated virt-2.9 machine
+>>>>     hw/arm/virt: Remove deprecated virt-2.10 machine
+>>>>     hw/arm/virt: Remove deprecated virt-2.11 machine
+>>>>     hw/arm/virt: Remove VirtMachineClass::smbios_old_sys_ver field
+>>>>     hw/arm/virt: Remove deprecated virt-2.12 machine
+>>>>     hw/arm/virt: Remove VirtMachineClass::no_highmem_ecam field
+>>>
+>>> Please ignore this (reviewed) series for now. I'll rebase it and
+>>> repost after the 10.0 release.
+>>
+>> Why? IMHO it should be ok to include them now already. While Daniel's macro
+>> only starts the automatic disablement for 10.1, it should be ok to remove
+>> them now already according to our normal deprecation policy: The machines
+>> have been marked as deprecated in the 9.1 release already (via commit
+>> https://gitlab.com/qemu-project/qemu/-/commit/ce80c4fa6ff ), and thus they
+>> have been deprecated since two releases already. So it should be fine to
+>> remove them now, shouldn't it?
 > 
-> Why? IMHO it should be ok to include them now already. While Daniel's macro
-> only starts the automatic disablement for 10.1, it should be ok to remove
-> them now already according to our normal deprecation policy: The machines
-> have been marked as deprecated in the 9.1 release already (via commit
-> https://gitlab.com/qemu-project/qemu/-/commit/ce80c4fa6ff ), and thus they
-> have been deprecated since two releases already. So it should be fine to
-> remove them now, shouldn't it?
+> No, because as of 9.1.0 we documented that machine types are under the
+> new policy, and these were only deprecated in 9.1.0, hence the new policy
+> applies to them.
 
-No, because as of 9.1.0 we documented that machine types are under the
-new policy, and these were only deprecated in 9.1.0, hence the new policy
-applies to them.
- 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Hm, I guess we could argue now about the wording (I don't see a spot in 
+ce80c4fa6ff that says that this only happens starting with 10.1), but in the 
+long run, it doesn't really matter much whether we remove these machines 
+with 10.0 already or just with 10.1, so let's go with 10.1 instead.
+
+  Thomas
 

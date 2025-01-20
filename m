@@ -1,71 +1,78 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-5db73670dbbsm6283722a12.28.2025.01.20.13.02.13
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab384f223f3sm664050266b.116.2025.01.20.13.02.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Mon, 20 Jan 2025 13:02:15 -0800 (PST)
 Received: from draig.lan (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id DCFB15F713;
-	Mon, 20 Jan 2025 21:02:12 +0000 (GMT)
+	by draig.lan (Postfix) with ESMTP id 380E15F9F8;
+	Mon, 20 Jan 2025 21:02:13 +0000 (GMT)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org,
 	qemu-arm@nongnu.org,
 	Thomas Huth <thuth@redhat.com>,
 	Peter Maydell <peter.maydell@linaro.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 0/7] testing/next (qtest timer stuff)
-Date: Mon, 20 Jan 2025 21:02:05 +0000
-Message-Id: <20250120210212.3890255-1-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Fabiano Rosas <farosas@suse.de>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH 4/7] tests/qtest: simplify qtest_process_inbuf
+Date: Mon, 20 Jan 2025 21:02:09 +0000
+Message-Id: <20250120210212.3890255-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250120210212.3890255-1-alex.bennee@linaro.org>
+References: <20250120210212.3890255-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 3ipvp5o3HMdw
+X-TUID: bp+k4FDc4Rue
 
-Hi,
+Don't both creating a GString to temporarily hold our qtest command.
+Instead do a simpler g_strndup and use autofree to clean up
+afterwards.
 
-Thomas found that a number of tests fail under CFI and other exotic
-setups. The eventual realisation was that --enable-slirp masks a lot
-of timer misuse because it ensures there is always a timer and
-therefor things tend to move on (until the system is shutting down).
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ system/qtest.c | 20 ++++++++------------
+ 1 file changed, 8 insertions(+), 12 deletions(-)
 
-It turns out that bc02be4508 wasn't the solution after all. The first
-few patches are clean-ups and various tightening of test expectations
-before we revert the patch.
-
-Please review:
-
-  Revert "util/timer: avoid deadlock when shutting down"
-  tests/qtest: tighten up the checks on clock_step
-  tests/qtest: rename qtest_send_prefix and roll-up into qtest_send
-  tests/qtest: simplify qtest_process_inbuf
-  tests/qtest: don't step clock at start of npcm7xx periodic IRQ test
-  tests/qtest: don't attempt to clock_step while waiting for virtio ISR
-  tests/docker: replicate the check-rust-tools-nightly CI job
-
-Alex.
-
-Alex Bennée (7):
-  tests/docker: replicate the check-rust-tools-nightly CI job
-  tests/qtest: don't attempt to clock_step while waiting for virtio ISR
-  tests/qtest: don't step clock at start of npcm7xx periodic IRQ test
-  tests/qtest: simplify qtest_process_inbuf
-  tests/qtest: rename qtest_send_prefix and roll-up into qtest_send
-  tests/qtest: tighten up the checks on clock_step
-  Revert "util/timer: avoid deadlock when shutting down"
-
- include/system/qtest.h                 |  1 -
- hw/ppc/spapr_rtas.c                    |  1 -
- hw/riscv/riscv_hart.c                  |  1 -
- system/qtest.c                         | 53 +++++++++-----------------
- tests/qtest/libqos/virtio-pci-modern.c |  6 +--
- tests/qtest/libqos/virtio-pci.c        |  6 +--
- tests/qtest/npcm7xx_timer-test.c       |  1 -
- util/qemu-timer.c                      | 16 ++------
- tests/docker/Makefile.include          |  3 ++
- tests/docker/test-rust                 | 21 ++++++++++
- 10 files changed, 48 insertions(+), 61 deletions(-)
- create mode 100755 tests/docker/test-rust
-
+diff --git a/system/qtest.c b/system/qtest.c
+index e68ed0f2a8..bb1efba9fd 100644
+--- a/system/qtest.c
++++ b/system/qtest.c
+@@ -763,25 +763,21 @@ static void qtest_process_command(CharBackend *chr, gchar **words)
+     }
+ }
+ 
++/*
++ * Process as much of @inbuf as we can in newline terminated chunks.
++ * Remove the processed commands from @inbuf as we go.
++ */
+ static void qtest_process_inbuf(CharBackend *chr, GString *inbuf)
+ {
+     char *end;
+ 
+     while ((end = strchr(inbuf->str, '\n')) != NULL) {
+-        size_t offset;
+-        GString *cmd;
+-        gchar **words;
+-
+-        offset = end - inbuf->str;
++        size_t len = end - inbuf->str;
++        g_autofree char *cmd = g_strndup(inbuf->str, len);
++        g_auto(GStrv) words = g_strsplit(cmd, " ", 0);
+ 
+-        cmd = g_string_new_len(inbuf->str, offset);
+-        g_string_erase(inbuf, 0, offset + 1);
+-
+-        words = g_strsplit(cmd->str, " ", 0);
++        g_string_erase(inbuf, 0, len + 1);
+         qtest_process_command(chr, words);
+-        g_strfreev(words);
+-
+-        g_string_free(cmd, TRUE);
+     }
+ }
+ 
 -- 
 2.39.5

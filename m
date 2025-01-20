@@ -1,105 +1,105 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6270675njn;
-        Mon, 20 Jan 2025 12:39:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXDJkoAgWEUv2hy080USa4RlgmEUktx9kMn2Q+Lq5mI+P4feHkt0eUiZjyvhncToaX529JnYhCKvoJzWw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGTlhioNgc8nUM/TaAl5ltIJuRLRY8Nt5Btuo1JiZbbRfA0JJPrDesDvfZ0NDTyZ9tOFgJP
-X-Received: by 2002:ac8:5713:0:b0:467:8630:584f with SMTP id d75a77b69052e-46e12b85d33mr193985471cf.36.1737405593831;
-        Mon, 20 Jan 2025 12:39:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737405593; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6270757njn;
+        Mon, 20 Jan 2025 12:40:06 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWdp2eqfGWowuCSdjP/hwFPwyLVUcCdW3eJ1qKdNP4JhpesODUeBNLcM58rCD30t+NNloBqKHqXr6oTDA==@linaro.org
+X-Google-Smtp-Source: AGHT+IENLhSId0es8+/iJap9ZPkVIeuOwCCsHB/p/SM0zfAiqTvv0cRIYavTMaPA3uJJVjIZBjJy
+X-Received: by 2002:a05:620a:2687:b0:7b6:d70a:86df with SMTP id af79cd13be357-7be6320aee0mr2452590885a.27.1737405606210;
+        Mon, 20 Jan 2025 12:40:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737405606; cv=none;
         d=google.com; s=arc-20240605;
-        b=kFvJ1JXzK5fxHJkDQJztVut7dfr7fzC3s8ONsRkZsqYJaeMVjSDOsjm44RporUw9KL
-         ICTtboM3avfzmlp0lMl5pcV44G2p+sjv5b+3y8G8yELvhM+/ds2ZNnBUnAqbMaHgSghZ
-         V2dwbVG67Jbq1rFff5TRq2/hwaKjDF8z8xM1Wr/2H+SBF9/xy5tAdVjkzMmxbFxf160G
-         YF4Q7ENVDSnyCqRMKSwYIVbLchBukCjKViSLHNRV3DtwZ2Kbmg96/5FTgMuy6aIv/Q7V
-         LbATYxyh1Pmno/1m5cq7L9jqcz53Qg2HQbFhTGdZGLd/qTiDQMZ4mVxdYPHfzKum+dzj
-         U6Sg==
+        b=DHM9FdmZ5G7YFcNyTnFXhOHhHSP8hzUaDBftgS5XRZKoAHqb70jdglLKoHd4JWiRgn
+         VxP8Qa23JxnrKtXGIvFItVbMCeeS5HzQnCkhRs7iP++SxThDNo7ukXdf1dFEbtiVUNye
+         /8OqZXPZr5GBKEKt33/6n96IhWj+kwNrvq0FLz/D+lv6LJP00Rq42FoBd11GGlQZ68hi
+         VQhQFgPO2XKOhNP4DttlQ16Jk9ZNwxAxUA0xSpsp33NPbhqwZx5vueQQZdFlsy7Gimln
+         EvRFxD011zOQuVeR6D+9DqaSnW+BH1pxEC76ZslskXEsAP3iSHu2wn1bDEc7p++TLCcZ
+         xzIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=dk4yhPHq4YZzlaSH8EBkC5hExkhjEj2J5c93kzLklPM=;
-        fh=mVJy0hHoi5FhVliioomjKdcQX6MOVSn/KSR0T/iPnHU=;
-        b=RS2dHhf+UJ6XvDAT/3TLWFO5u69yzYndSHR4fvjAODed/jNHj7nxFQ8Cdf05dD4u3s
-         kIr3+rBDSgQZcyh5pVFrsLSju2yanEtBaK8Tvn6B3CV6A4yggub00LCmfOPLq7zJneeF
-         RGdmBKDTFMfrNI76ZImDxw3lIa6pxyp+nl8so4LsyUsYjNUw3M38iIfQUrvhC7HEBZx5
-         YGL9vFFVX3m4B08MZRVAMTC9uQwRrmTJfbzTpJp1/sT0f/2bLBsC+wQZVpJOLWr+JHE+
-         Lxx40WVQTN6jCbl+kBQZAXc0Oii/ZzzoL+yUCGGWhm7yXTDtTWwCfimyV01arLAAU/Y8
-         gNEw==;
+        bh=98ku84vcnPVXCm+Wkpqkoy2ntxeeyCGaHE4mQ+9ylwA=;
+        fh=CScC//6icSMwXJhrjFPEi3l2hIKgeKvqA9tmZL4+H88=;
+        b=HIHKDBQNZnjyFjuLAOzRx3R22xBsyRAhSV/W+qX+XE1myYeZJ3iCnGsAJ0b6TYm/k2
+         wfXLyaVP1wdFlGHz56+k/iz8WDnDwDGoJ94nfrlbRlIMYMHAn4DqyRVX9hzt6Tj4eQJF
+         YyoiP6PFQ9vpNnBmZJfTwMh3sZCy3OXuVUUmxm/83IsJLLmQOvocW1/2sN9VUzOBIQOf
+         c9yoLKHgT1je9knFLUltLIeVA0SnAAMr2PgD3c1d2416joww8K4+3G6Ib6eAUwhQqvFW
+         0xYbOEjNpOOlM0uT+PAfXyoWgggvS2uFwTMYkT2FMRj7rF4HaVolJI0/IkL0TvwEZwnM
+         3mOQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=RD12raj9;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NTSm4TND;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e104b683fsi100536941cf.606.2025.01.20.12.39.53
+        by mx.google.com with ESMTPS id af79cd13be357-7be614eeea5si1099996485a.575.2025.01.20.12.40.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2025 12:39:53 -0800 (PST)
+        Mon, 20 Jan 2025 12:40:06 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=RD12raj9;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=NTSm4TND;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tZyXK-0003v7-LJ; Mon, 20 Jan 2025 15:38:18 -0500
+	id 1tZyXW-00044y-CN; Mon, 20 Jan 2025 15:38:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tZyXD-0003sm-Tx; Mon, 20 Jan 2025 15:38:12 -0500
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ id 1tZyXS-00040q-NK; Mon, 20 Jan 2025 15:38:26 -0500
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tZyXC-0002Vr-9T; Mon, 20 Jan 2025 15:38:11 -0500
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-5d3e6f6cf69so8015936a12.1; 
- Mon, 20 Jan 2025 12:38:09 -0800 (PST)
+ id 1tZyXR-0002Zo-5n; Mon, 20 Jan 2025 15:38:26 -0500
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-5d3d143376dso7382817a12.3; 
+ Mon, 20 Jan 2025 12:38:24 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1737405488; x=1738010288; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1737405503; x=1738010303; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dk4yhPHq4YZzlaSH8EBkC5hExkhjEj2J5c93kzLklPM=;
- b=RD12raj99Y62rEEQ2JBKF4poEdxktmnUmqScm346a7ybqE97N6hSGMyZuQAuwkJ8eC
- 9f6JAmkTnSuUJOYukWECDZ85gZCVvQqpM6FepYX7bXG6o4ENejsGrYy9Wry5TfWXYo8m
- eKpadZsMniJgyOy7hHzQW8cBYvL+Sv5tdHKiAccgUtdZxtyQzMGmp/Dy7QVAytidLzuf
- 9b3H3/wIw9J0KOzODsV0v00HumvU5yDWJFDn/yZWBdmPUYSyKaqfKOSX/wX+zTDP6/F0
- fzt+3IX6sc5kLZu9r8jDbEtvmFrKDT4+hEUlDBrJSonUcUudlx9defe2YPXyr4T3CYRx
- Y5Aw==
+ bh=98ku84vcnPVXCm+Wkpqkoy2ntxeeyCGaHE4mQ+9ylwA=;
+ b=NTSm4TNDpDt2WK7/L/KQSDcQMVRLPcTZrCV9ddE66wNpSd4GVLxy6pfrasDa2aXLeF
+ zXN8Cd3N15SU1V5VbybgEuJNFDWvv3f0U9Y8iEheTbSuarvuRAcKVcdVvyTieUn5M8I6
+ 915gYQYvahqFeY1wtP8MH7SnSvyvHTTsWUTgf5TIxKKUK4onSn0Yt2CBMSYnkAxw+Sds
+ 8i/Wp6wyQouBib150x2RA88Meq6sise0XfsQRpPH67nvOCzvBf4BHmJ3wDGrzbjY2zI2
+ PnR1mCrQ1/4f5wOtRlb6GX+oA9hcBGwvzKFld5bVnkUbmOpJsnZP13QZ972LunXsX3oL
+ awBg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737405488; x=1738010288;
+ d=1e100.net; s=20230601; t=1737405503; x=1738010303;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=dk4yhPHq4YZzlaSH8EBkC5hExkhjEj2J5c93kzLklPM=;
- b=AA9tGxM9KaHqkEMB8cDXts7FGNdUpirVnkL/lQvBymSD2iORjwSEb5BP8nXsmxNJiW
- F6ZSP/S90wd3JZuu+icx8f3wEfRp6bMVD74+EvMptLzGzY5pDREWVGHOfMPSi8wXYImA
- An7s7jqr6xQf0KdQyIoc8+SZbMA9qfqn5x9K4mAH8I0ibyngS33WWLz6dBIyYpZ3cn7H
- EskMvF84HWLCWuYkthhGtLZK+Tey/BeAU3N1USEYL/xbltMMMA2lLVer4ltj7yt8P94u
- 1lZB/vdQTBn/geW4Tn3G/5ojdlWngd8r+O40cldiiFLKX0FpeWrGZs1sybXyORDDL24i
- soBA==
+ bh=98ku84vcnPVXCm+Wkpqkoy2ntxeeyCGaHE4mQ+9ylwA=;
+ b=k8UJW6tTvQZ5VTgWZRIcPnqco2BQ25DRdwxY+sVyQ7hd4dOyLq6/RVWYOino7Xvmdq
+ RRobSTyApFxV5VK4/2DebWRjZzpXppw285hY2Oz3fg9SGG9yovSkf2WJxWuldBoGMp0r
+ GEVu/Rj/6jHr0tvIiRuFLWjhXyo8CADoYdWY0hnfYQJ+FWtYdAS+hxPhs5TZqfhjUrfo
+ q+7hHWzM/jCyh/fCa0w6jntC31wd+XKb20qjRSEt8KSHeT19OSn+QyQAPXS2jILevIHa
+ z0tkSKlfQDWZZyiNSycWJ7sBs1GJygJvCfpyFiYxfOTu+hcZzaW0sdn5BQqMM5BT0dsX
+ cJIw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUPBZTK1bx5WRVNElKnNr9zohejRFSeMehIMfjBGLYHJLVmSFCszG2Gem3crMhsvn2OedKRYAieBA==@nongnu.org
-X-Gm-Message-State: AOJu0Yz3pEnJstCfdkXMF7ZeUkZdlgBpa7gTagv7/8XaXccfuM6+Vmqk
- wNibmo3fY2aSB3hbLxm4zm6pOEUNWwnmf0/s6KDFxMvtCoSFW2jh+TGQQ1xc
-X-Gm-Gg: ASbGncsk2IpCf+/J7CNLpHyK8Ic30+8kDGuiJSWw3x6LK3Eud5icrTiq89NcXuq3lsU
- wLY1uhE/GU9U6knBXrTyv6vJav9yVKSDqT/jzhPGU5qJKx6NN6qKiqGFeqajBSiZ9rxWErOEfTh
- FECYhFP5SjM+V053HR7wHpHbV7qgCC+VgSVHtKfEK8IW5Ce7G/jSzksQEuWoJ6rD+ZrnSLPw8im
- XScoXbRjrhI7+WltSqAhxcXs1Kc7uY6YSiITEKFC38dBwG2eQCC89NK3s0NTd6YJwcdkK4Tnki2
- Ni7s3yayWdONTeCZyidaazbCydT//ZEiXR6bjb33PFQTGRdWxdluMHwpeLd2
-X-Received: by 2002:a05:6402:50cb:b0:5d3:e45d:ba91 with SMTP id
- 4fb4d7f45d1cf-5db7db12ccfmr13918379a12.32.1737405487849; 
- Mon, 20 Jan 2025 12:38:07 -0800 (PST)
+ AJvYcCUgV8iI3GQlssA1VHxGW19+zvsgmQcVrWH+HBMj2vuTMHsAUzH1h/OrQzAJtdtCR10h1Jl58wlAOg==@nongnu.org
+X-Gm-Message-State: AOJu0YxdN9PqQ/h2rqnqhkpfDLu6o4+CBNfrY90UqaRqeB06+G5HOhgc
+ lwQIkZXo6WszQfH9FK7Yblqrx6dlAvQ9MLkylpRfuD4n6Xi1jUVay5+8ak9l
+X-Gm-Gg: ASbGncsjUvt7eUxKS/JnicO9euVbZ9Ol4s2NbKukWITj8z0LMgDbNfKLiTx2ZSksPVa
+ JVkFVr2yiJSAUvitxlvm0EWaj8LYEfOuuJfJWooNpFz4+qxFRZbzCWbZR/5bwSO9VdKviyJXN9O
+ RYrDEV6gegoYwVRR871ieRFxV1SI259kLi4MJGPq3fLtxcIkJd2pV+W8v5RdTTr50lqNyGvitKY
+ 2P48nppIByXdCwOQ5VGZiEMCbMRu+Q/wGRZjDaaHpNbA/g8Jz6qNPFfheEylg/SV4xNxY8+/Ziy
+ SFeeFEcuE4rRQzWp4LiKKsvVgfkFAyRwnLXQoTU98vfmvCgZP3aZt8N+8kmT
+X-Received: by 2002:a05:6402:26c2:b0:5d2:7199:ae5 with SMTP id
+ 4fb4d7f45d1cf-5db7d2e3014mr14020891a12.5.1737405503008; 
+ Mon, 20 Jan 2025 12:38:23 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-077-183-181-102.77.183.pool.telefonica.de. [77.183.181.102])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5db7364258csm6021077a12.1.2025.01.20.12.38.06
+ 4fb4d7f45d1cf-5db7364258csm6021077a12.1.2025.01.20.12.38.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Jan 2025 12:38:07 -0800 (PST)
+ Mon, 20 Jan 2025 12:38:21 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -110,16 +110,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Andrey Smirnov <andrew.smirnov@gmail.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 07/21] hw/arm/fsl-imx8mp: Add SNVS
-Date: Mon, 20 Jan 2025 21:37:34 +0100
-Message-ID: <20250120203748.4687-8-shentey@gmail.com>
+Subject: [PATCH 18/21] hw/arm/fsl-imx8mp: Add on-chip RAM
+Date: Mon, 20 Jan 2025 21:37:45 +0100
+Message-ID: <20250120203748.4687-19-shentey@gmail.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250120203748.4687-1-shentey@gmail.com>
 References: <20250120203748.4687-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x530.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -141,86 +141,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: xDtn8n+HMjqf
-
-SNVS contains an RTC which allows Linux to deal correctly with time. This is
-particularly useful when handling persistent storage which will be done in the
-next patch.
+X-TUID: KFeYuROME2Mv
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- docs/system/arm/imx8mp-evk.rst |  1 +
- include/hw/arm/fsl-imx8mp.h    |  2 ++
- hw/arm/fsl-imx8mp.c            | 10 ++++++++++
- 3 files changed, 13 insertions(+)
+ include/hw/arm/fsl-imx8mp.h |  1 +
+ hw/arm/fsl-imx8mp.c         | 11 +++++++++++
+ 2 files changed, 12 insertions(+)
 
-diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
-index 3de4a73530..d7d08cc198 100644
---- a/docs/system/arm/imx8mp-evk.rst
-+++ b/docs/system/arm/imx8mp-evk.rst
-@@ -13,6 +13,7 @@ The ``imx8mp-evk`` machine implements the following devices:
-  * Up to 4 Cortex-A53 Cores
-  * Generic Interrupt Controller (GICv3)
-  * 4 UARTs
-+ * Secure Non-Volatile Storage (SNVS) including an RTC
-  * Clock Tree
- 
- Boot options
 diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
-index 979cdbd8c4..9d2a757c2a 100644
+index 326c4ddf69..e0442665fc 100644
 --- a/include/hw/arm/fsl-imx8mp.h
 +++ b/include/hw/arm/fsl-imx8mp.h
-@@ -12,6 +12,7 @@
- #include "cpu.h"
- #include "hw/char/imx_serial.h"
- #include "hw/intc/arm_gicv3_common.h"
-+#include "hw/misc/imx7_snvs.h"
- #include "hw/misc/imx8mp_ccm.h"
- #include "qom/object.h"
- #include "qemu/units.h"
-@@ -35,6 +36,7 @@ struct FslImx8mpState {
-     GICv3State         gic;
-     IMX8MPCCMState     ccm;
-     IMX8MPAnalogState  analog;
-+    IMX7SNVSState      snvs;
-     IMXSerialState     uart[FSL_IMX8MP_NUM_UARTS];
- };
+@@ -68,6 +68,7 @@ struct FslImx8mpState {
+     FslImx8mPciePhyState   pcie_phy;
+     OrIRQState         gpt5_gpt6_irq;
+     MemoryRegion       boot_rom;
++    MemoryRegion       ocram;
  
+     uint32_t           phy_num;
+     bool               phy_connected;
 diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index 311b8ee0cd..0abde2b1fc 100644
+index 9688e2e962..cb4b0ae5bb 100644
 --- a/hw/arm/fsl-imx8mp.c
 +++ b/hw/arm/fsl-imx8mp.c
-@@ -204,6 +204,8 @@ static void fsl_imx8mp_init(Object *obj)
+@@ -665,6 +665,16 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+                                 fsl_imx8mp_memmap[FSL_IMX8MP_BOOT_ROM].addr,
+                                 &s->boot_rom);
  
-     object_initialize_child(obj, "analog", &s->analog, TYPE_IMX8MP_ANALOG);
- 
-+    object_initialize_child(obj, "snvs", &s->snvs, TYPE_IMX7_SNVS);
-+
-     for (i = 0; i < FSL_IMX8MP_NUM_UARTS; i++) {
-         snprintf(name, NAME_SIZE, "uart%d", i + 1);
-         object_initialize_child(obj, name, &s->uart[i], TYPE_IMX_SERIAL);
-@@ -348,6 +350,13 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-                            qdev_get_gpio_in(gicdev, serial_table[i].irq));
-     }
- 
-+    /* SNVS */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->snvs), errp)) {
++    /* On-Chip RAM */
++    if (!memory_region_init_ram(&s->ocram, NULL, "imx8mp.ocram",
++                                fsl_imx8mp_memmap[FSL_IMX8MP_OCRAM].size,
++                                errp)) {
 +        return;
 +    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->snvs), 0,
-+                    fsl_imx8mp_memmap[FSL_IMX8MP_SNVS_HP].addr);
++    memory_region_add_subregion(get_system_memory(),
++                                fsl_imx8mp_memmap[FSL_IMX8MP_OCRAM].addr,
++                                &s->ocram);
 +
      /* Unimplemented devices */
      for (i = 0; i < ARRAY_SIZE(fsl_imx8mp_memmap); i++) {
          switch (i) {
-@@ -356,6 +365,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-         case FSL_IMX8MP_GIC_DIST:
-         case FSL_IMX8MP_GIC_REDIST:
+@@ -677,6 +687,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+         case FSL_IMX8MP_ECSPI1 ... FSL_IMX8MP_ECSPI3:
+         case FSL_IMX8MP_ENET1:
+         case FSL_IMX8MP_I2C1 ... FSL_IMX8MP_I2C6:
++        case FSL_IMX8MP_OCRAM:
+         case FSL_IMX8MP_PCIE1:
+         case FSL_IMX8MP_PCIE_PHY1:
          case FSL_IMX8MP_RAM:
-+        case FSL_IMX8MP_SNVS_HP:
-         case FSL_IMX8MP_UART1 ... FSL_IMX8MP_UART4:
-             /* device implemented and treated above */
-             break;
 -- 
 2.48.1
 

@@ -1,173 +1,250 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6347679njn;
-        Mon, 20 Jan 2025 15:52:36 -0800 (PST)
-X-Received: by 2002:ac2:4463:0:b0:543:9a61:a2ed with SMTP id 2adb3069b0e04-5439c251e27mr3866043e87.26.1737417155781;
-        Mon, 20 Jan 2025 15:52:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737417155; cv=none;
-        d=google.com; s=arc-20240605;
-        b=M5NxrOZ32xcKlaaiMAZ2H7LU4yoYzV1T8R3XXTzUbwHen+5kPqBti6Pu7L2guIztZE
-         c8Eto8eLZT5FkR8BmygZL8kT3e5OiM2m0jUhfm+JLnp5SV7tNvvEZKg/zouzgFJy01Sx
-         5SWymP0Qt3njottmgc35CV5azqNic6e0hsREdbgZ8iae3AXpavOKS0fjZOZN08uJxzCk
-         9FiK6Z81j/W2hJdi5PjlM9yMy5yZkL6EVe0TarAl1vFJDDUqK893Db+xWMSGyowv7YKs
-         U8dm/sDURUQNdI01yDSdtVERHiSg4gEPzr1hgcR3KooFGjE+tkvB+s4gGecK8DI8pn7a
-         2BYw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=ISEyHJOQ5WFrqtdgAxL81FLvJauks5nM3LBV0hOWqoI=;
-        fh=xDb5JU30SbBq30TIkvO66RKTcYGQUbKPbuQbH68yP7Y=;
-        b=CYKgrlWj9jS7gcHAPdjYtFurlmKv+YoP6oMteaTgldbiYSk6Jw5zAJL3kFOWP0kZ79
-         BCww70xjxa2QihzRhr96nIaoiC46FEN6OarzSOWYEp/w0UzbaNQ568Js0DIHudMxTn+A
-         zN7bGUhhrkM2gj1FECSmoJZdfmsVemJ6vsgsislbcEkufTY60qwxkQq6w+JYwYSv1EGd
-         voNuCjckb+NUk+ztwChzXWCQro4wsPHlWD7XvrFHPgiWebrhIObmk3tZDeSQl0BT3Znc
-         x4g472fNEGlXtBpkvJLznLD403toToF0FYXq3p0Kauh+Fuf1L0iP/9mVajIozpTzK07J
-         N/gA==;
-        dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="S/hKmmi/";
-       spf=pass (google.com: domain of wuhaotsh@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=wuhaotsh@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <wuhaotsh@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 2adb3069b0e04-542a8445fafsor850048e87.1.2025.01.20.15.52.35
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 20 Jan 2025 15:52:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of wuhaotsh@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b="S/hKmmi/";
-       spf=pass (google.com: domain of wuhaotsh@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=wuhaotsh@google.com;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1737417154; x=1738021954; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=ISEyHJOQ5WFrqtdgAxL81FLvJauks5nM3LBV0hOWqoI=;
-        b=S/hKmmi/uZuCrWhLfcknadRMF4Ve25Nmj1FumO2T2JDpo1MQZHsme83bh57RIrST1f
-         QheDKevdEwmoGX++DmBbjPXA16uNsuP8C04t0pmiwCz2031ZA6OQV545aIDjnnDs1La2
-         A9g4fEHP1P7XsN5R+m5tPIyvwfuQFlX3iNT0hMyO5gUIl4Z9dRrVbP3W4hijcdhUvIdD
-         ZNwKMUnUESEIBCpluzmmf5QBRCCg2uBLL8Vu0ohBa/hG2OmljosG9yEfe/eyBNGTn2nM
-         bxzL7J5BeK6JIq2AJVlN1RwZySu/Z56OeDx0okDSsaj6n3Evy3BbuOcFE68Kf40qn3+R
-         Q7RA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737417154; x=1738021954;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=ISEyHJOQ5WFrqtdgAxL81FLvJauks5nM3LBV0hOWqoI=;
-        b=v+GHwMjNR3ROokN/67WDrBnzNUUKxZyJoP/A5Vaovw76Ra5e4cCOduFL2bOUb93R/W
-         +BFUpSi6UOjRkV9MKmuMTUFkZP8HlSpwBpZ+IeA4tsBCPVCeWEKAo8waWXiHA1ndrs/8
-         qNtOFbIp2dYJYF1xXK9Zo8Hzu0OWBWKJbjSkCCCDNPtlaL/fi82rUEZgtf1099LIB0wB
-         pYR51pV3j7r33JLebFEj3I8reALOzFj6Lfpg/m0XcI9RGJ/Zt4vpaxKJh/ow2PP6mtnQ
-         wSlxwHAqqsudwsXNFKWDMyjTNVk3pCGmIWAe31slk2BhR75xiySkYyW4zgbt+kH83mlB
-         wDWA==
-X-Gm-Message-State: AOJu0YwFa/bcIuR96FY9goRoAzqouE3j7m9n3iUforz2vwObbbk76miU
-	aPkjqTWvKXL22FziCahRZf4LEMGyGZadyVtSJxQyYKLUV+hMAExjxIlVj73eLe8427h9G8SN63E
-	2LBwxvpxqKz1yW3Q/pE8R0I9Q44kF95EYgjl9dtPrrGx1K28fwg==
-X-Gm-Gg: ASbGncsKhd/tf3imXIFePQg1kYndMScVNqg04LThgFNGlw49BNJ3ltufgX0ya14R24g
-	DQ6p+TvQBz9qHjNJA5W3NFI/HRCBe6CjBATPfhs6hcmGcV7BnYDVb8lVjZ292n/C4iTa4
-X-Google-Smtp-Source: AGHT+IG5y+K2o8vuXjA9PQTTTU2rUpXj6s9DcCjdz7SSqo3B4Vu+GoNK2JBaYoaQB+5jwtm00kjwYHC7UB+AHh+BKGM=
-X-Received: by 2002:ac2:4319:0:b0:542:9910:b298 with SMTP id
- 2adb3069b0e04-543a4690357mr300953e87.7.1737417154335; Mon, 20 Jan 2025
- 15:52:34 -0800 (PST)
+Return-Path: <alex.bennee@linaro.org>
+Received: from draig.lan ([85.9.250.243])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf327de8asm10409919f8f.84.2025.01.20.06.12.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Jan 2025 06:12:13 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+	by draig.lan (Postfix) with ESMTP id 810EF5F780;
+	Mon, 20 Jan 2025 14:12:12 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,  qemu-ppc@nongnu.org,  Nicholas Piggin
+ <npiggin@gmail.com>,  qemu-arm <qemu-arm@nongnu.org>,  Aurelien Jarno
+ <aurelien@aurel32.net>,  Radoslaw Biernacki <rad@semihalf.com>,  Daniel
+ Henrique Barboza <danielhb413@gmail.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Fabiano Rosas <farosas@suse.de>,  Mark
+ Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Laurent Vivier
+ <lvivier@redhat.com>,  Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
+  Jiaxun Yang <jiaxun.yang@flygoat.com>,  Bernhard Beschow
+ <shentey@gmail.com>,  Bin Meng <bmeng.cn@gmail.com>,  Laurent Vivier
+ <laurent@vivier.eu>,  Joel Stanley <joel@jms.id.au>,  Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  John Snow
+ <jsnow@redhat.com>,
+  "Michael S. Tsirkin" <mst@redhat.com>,  Pavel Dovgalyuk
+ <pavel.dovgaluk@ispras.ru>,  Alistair Francis <alistair.francis@wdc.com>,
+  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,  Harsh Prateek Bora
+ <harshpb@linux.ibm.com>,  Leif Lindholm <quic_llindhol@quicinc.com>,
+  Cleber Rosa <crosa@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+  qemu-s390x@nongnu.org,  Eric Farman <farman@linux.ibm.com>,  Weiwei Li
+ <liwei1518@gmail.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Markus
+ Armbruster <armbru@redhat.com>,  Daniel Henrique Barboza
+ <dbarboza@ventanamicro.com>,  Peter Maydell <peter.maydell@linaro.org>,
+  Stefan Hajnoczi <stefanha@redhat.com>
+Subject: Re: [PATCH v4 17/32] system/qtest: properly feedback results of
+ clock_[step|set]
+In-Reply-To: <259ca4e4-5b24-41bf-b81f-fdd07b19ca3a@redhat.com> (Thomas Huth's
+	message of "Mon, 20 Jan 2025 14:20:15 +0100")
+References: <20250108121054.1126164-1-alex.bennee@linaro.org>
+	<20250108121054.1126164-18-alex.bennee@linaro.org>
+	<259ca4e4-5b24-41bf-b81f-fdd07b19ca3a@redhat.com>
+User-Agent: mu4e 1.12.8; emacs 29.4
+Date: Mon, 20 Jan 2025 14:12:12 +0000
+Message-ID: <877c6pr2v7.fsf@draig.linaro.org>
 MIME-Version: 1.0
-References: <20250120150049.3611864-1-alex.bennee@linaro.org>
-In-Reply-To: <20250120150049.3611864-1-alex.bennee@linaro.org>
-From: Hao Wu <wuhaotsh@google.com>
-Date: Tue, 21 Jan 2025 07:52:22 +0800
-X-Gm-Features: AbW1kvZ2xgysIX3NtM9L8XFfWJNWPOnMFDdwlR7-VuSg76CUGqfhYZMD-TjFHvA
-Message-ID: <CAGcCb10gHVZdN6CbUm02w7jTaUUoBH4-VTohmy+yiP1OLWFBxg@mail.gmail.com>
-Subject: Re: [RFC PATCH] tests/qtest: don't step clock at start of npcm7xx
- periodic IRQ test
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Tyrone Ting <kfting@nuvoton.com>, 
-	Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, "open list:Nuvoton NPCM7xx" <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000500298062c2bf4c5"
-X-TUID: cVBKCqhNPXR5
-
---000000000000500298062c2bf4c5
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+X-TUID: wBhMGK49eKxv
 
-Have you tried that the test can pass with this? If I remember correctly,
-interrupt won't trigger properly if not advancing the timer
+Thomas Huth <thuth@redhat.com> writes:
 
-If the test passes it's probably fine to remove that.
-
-On Mon, Jan 20, 2025 at 11:00=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@lina=
-ro.org> wrote:
-
-> Until there are timers enabled the semantics of clock_step_next() will
-> fail. Since d524441a36 (system/qtest: properly feedback results of
-> clock_[step|set]) we will signal a FAIL if time doesn't advance.
+> On 08/01/2025 13.10, Alex Benn=C3=A9e wrote:
+>> Time will not advance if the system is paused or there are no timer
+>> events set for the future. In absence of pending timer events
+>> advancing time would make no difference the system state. Attempting
+>> to do so would be a bug and the test or device under test would need
+>> fixing.
+>> Tighten up the result reporting to `FAIL` if time was not advanced.
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> Reviewed-by: Fabiano Rosas <farosas@suse.de>
+>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2687
+>> ---
+>>   system/qtest.c | 23 ++++++++++++++---------
+>>   1 file changed, 14 insertions(+), 9 deletions(-)
+>> diff --git a/system/qtest.c b/system/qtest.c
+>> index 99ef2042f6..e68ed0f2a8 100644
+>> --- a/system/qtest.c
+>> +++ b/system/qtest.c
+>> @@ -78,6 +78,11 @@ static void *qtest_server_send_opaque;
+>>    * let you adjust the value of the clock (monotonically).  All the com=
+mands
+>>    * return the current value of the clock in nanoseconds.
+>>    *
+>> + * If the commands FAIL then time wasn't advanced which is likely
+>> + * because the machine was in a paused state or no timer events exist
+>> + * in the future. This will cause qtest to abort and the test will
+>> + * need to check its assumptions.
+>> + *
+>>    * .. code-block:: none
+>>    *
+>>    *  > clock_step
+>> @@ -710,7 +715,8 @@ static void qtest_process_command(CharBackend *chr, =
+gchar **words)
+>>               qtest_sendf(chr, "OK little\n");
+>>           }
+>>       } else if (qtest_enabled() && strcmp(words[0], "clock_step") =3D=
+=3D 0) {
+>> -        int64_t ns;
+>> +        int64_t old_ns =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
+>> +        int64_t ns, new_ns;
+>>             if (words[1]) {
+>>               int ret =3D qemu_strtoi64(words[1], NULL, 0, &ns);
+>> @@ -719,11 +725,10 @@ static void qtest_process_command(CharBackend *chr=
+, gchar **words)
+>>               ns =3D qemu_clock_deadline_ns_all(QEMU_CLOCK_VIRTUAL,
+>>                                               QEMU_TIMER_ATTR_ALL);
+>>           }
+>> -        qemu_clock_advance_virtual_time(
+>> -            qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + ns);
+>> +        new_ns =3D qemu_clock_advance_virtual_time(old_ns + ns);
+>>           qtest_send_prefix(chr);
+>> -        qtest_sendf(chr, "OK %"PRIi64"\n",
+>> -                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+>> +        qtest_sendf(chr, "%s %"PRIi64"\n",
+>> +                    new_ns > old_ns ? "OK" : "FAIL", new_ns);
+>>       } else if (strcmp(words[0], "module_load") =3D=3D 0) {
+>>           Error *local_err =3D NULL;
+>>           int rv;
+>> @@ -740,16 +745,16 @@ static void qtest_process_command(CharBackend *chr=
+, gchar **words)
+>>               qtest_sendf(chr, "FAIL\n");
+>>           }
+>>       } else if (qtest_enabled() && strcmp(words[0], "clock_set") =3D=3D=
+ 0) {
+>> -        int64_t ns;
+>> +        int64_t ns, new_ns;
+>>           int ret;
+>>             g_assert(words[1]);
+>>           ret =3D qemu_strtoi64(words[1], NULL, 0, &ns);
+>>           g_assert(ret =3D=3D 0);
+>> -        qemu_clock_advance_virtual_time(ns);
+>> +        new_ns =3D qemu_clock_advance_virtual_time(ns);
+>>           qtest_send_prefix(chr);
+>> -        qtest_sendf(chr, "OK %"PRIi64"\n",
+>> -                    (int64_t)qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL));
+>> +        qtest_sendf(chr, "%s %"PRIi64"\n",
+>> +                    new_ns =3D=3D ns ? "OK" : "FAIL", new_ns);
+>>       } else if (process_command_cb && process_command_cb(chr, words)) {
+>>           /* Command got consumed by the callback handler */
+>>       } else {
 >
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> ---
->  tests/qtest/npcm7xx_timer-test.c | 1 -
->  1 file changed, 1 deletion(-)
+>  Hi Alex,
 >
-> diff --git a/tests/qtest/npcm7xx_timer-test.c
-> b/tests/qtest/npcm7xx_timer-test.c
-> index 58f58c2f71..43711049ca 100644
-> --- a/tests/qtest/npcm7xx_timer-test.c
-> +++ b/tests/qtest/npcm7xx_timer-test.c
-> @@ -465,7 +465,6 @@ static void test_periodic_interrupt(gconstpointer
-> test_data)
->      int i;
+> this patch broke the check-cfi-ppc64-s390x and check-cfi-aarch64 tests
+> in the gitlab CI:
 >
->      tim_reset(td);
-> -    clock_step_next();
+>  https://gitlab.com/thuth/qemu/-/jobs/8896718604#L78
+>  https://gitlab.com/thuth/qemu/-/jobs/8896718599#L72
 >
->      tim_write_ticr(td, count);
->      tim_write_tcsr(td, CEN | IE | MODE_PERIODIC | PRESCALE(ps));
-> --
-> 2.39.5
+> Though it does not seem to be related to CFI, but rather to
+> --disable-slirp, I can reproduce it locally like this:
 >
->
+>  .../configure --target-list=3Dppc64-softmmu --disable-slirp --disable-do=
+cs
+>  make -j$(nproc)
+>  make tests/qtest/qos-test
+>  QTEST_QEMU_BINARY=3D./qemu-system-ppc64 tests/qtest/qos-test \
+>   -p
+>    /ppc64/pseries/spapr-pci-host-bridge/pci-bus-spapr/pci-bus/virtio-blk-=
+pci/virtio-blk/virtio-blk-tests/config
+>  **
+>  ERROR:../qemu/tests/qtest/libqtest.c:719:qtest_rsp_args: assertion
+>  failed (words[0] =3D=3D "OK"): ("FAIL" =3D=3D "OK")
+>  not ok
+>  /ppc64/pseries/spapr-pci-host-bridge/pci-bus-spapr/pci-bus/virtio-blk-pc=
+i/virtio-blk/virtio-blk-tests/config
+>  - ERROR:../qemu/tests/qtest/libqtest.c:719:qtest_rsp_args: assertion
+>  failed (words[0] =3D=3D "OK"): ("FAIL" =3D=3D "OK")
+>  Bail out!
+>  Aborted (core dumped)
 
---000000000000500298062c2bf4c5
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Hmm not sure why I didn't see these in the normal testing. I guess we
+weren't exercising virtio-pci in anything other than the CFI tests?
 
-<div dir=3D"ltr">Have you tried that the test can pass with this? If I reme=
-mber correctly, interrupt won&#39;t trigger properly if not advancing the t=
-imer<div><br></div><div>If the test passes it&#39;s probably fine to remove=
- that.</div></div><br><div class=3D"gmail_quote gmail_quote_container"><div=
- dir=3D"ltr" class=3D"gmail_attr">On Mon, Jan 20, 2025 at 11:00=E2=80=AFPM =
-Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@=
-linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">Until there are timers enabled the semantics of clock_step_next(=
-) will<br>
-fail. Since d524441a36 (system/qtest: properly feedback results of<br>
-clock_[step|set]) we will signal a FAIL if time doesn&#39;t advance.<br>
-<br>
-Signed-off-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@linaro.or=
-g" target=3D"_blank">alex.bennee@linaro.org</a>&gt;<br>
----<br>
-=C2=A0tests/qtest/npcm7xx_timer-test.c | 1 -<br>
-=C2=A01 file changed, 1 deletion(-)<br>
-<br>
-diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-t=
-est.c<br>
-index 58f58c2f71..43711049ca 100644<br>
---- a/tests/qtest/npcm7xx_timer-test.c<br>
-+++ b/tests/qtest/npcm7xx_timer-test.c<br>
-@@ -465,7 +465,6 @@ static void test_periodic_interrupt(gconstpointer test_=
-data)<br>
-=C2=A0 =C2=A0 =C2=A0int i;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0tim_reset(td);<br>
--=C2=A0 =C2=A0 clock_step_next();<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0tim_write_ticr(td, count);<br>
-=C2=A0 =C2=A0 =C2=A0tim_write_tcsr(td, CEN | IE | MODE_PERIODIC | PRESCALE(=
-ps));<br>
--- <br>
-2.39.5<br>
-<br>
-</blockquote></div>
+>
+> Bisecting the problem pointed me to your patch ... if you've got some
+> spare time, could you please have a look?
 
---000000000000500298062c2bf4c5--
+The change in similar to tests/qtest: remove clock_steps from virtio
+tests. This basically avoids the step at the start and it will complete
+straight away.
+
+--8<---------------cut here---------------start------------->8---
+modified   tests/qtest/libqos/virtio-pci-modern.c
+@@ -176,10 +176,10 @@ static void wait_config_isr_status(QVirtioDevice *d, =
+gint64 timeout_us)
+     QVirtioPCIDevice *dev =3D container_of(d, QVirtioPCIDevice, vdev);
+     gint64 start_time =3D g_get_monotonic_time();
+=20
+-    do {
++    while (!get_config_isr_status(d)) {
+         g_assert(g_get_monotonic_time() - start_time <=3D timeout_us);
+         qtest_clock_step(dev->pdev->bus->qts, 100);
+-    } while (!get_config_isr_status(d));
++    };
+ }
+=20
+ static void queue_select(QVirtioDevice *d, uint16_t index)
+modified   tests/qtest/libqos/virtio-pci.c
+@@ -174,10 +174,10 @@ static void qvirtio_pci_wait_config_isr_status(QVirti=
+oDevice *d,
+     QVirtioPCIDevice *dev =3D container_of(d, QVirtioPCIDevice, vdev);
+     gint64 start_time =3D g_get_monotonic_time();
+=20
+-    do {
++    while (!qvirtio_pci_get_config_isr_status(d)) {
+         g_assert(g_get_monotonic_time() - start_time <=3D timeout_us);
+         qtest_clock_step(dev->pdev->bus->qts, 100);
+-    } while (!qvirtio_pci_get_config_isr_status(d));
++    }=20
+ }
+=20
+ static void qvirtio_pci_queue_select(QVirtioDevice *d, uint16_t index)
+--8<---------------cut here---------------end--------------->8---
+
+As time has no meaning for the virtio tests (no processing is deferred)
+we could we could just as easily simplify to:
+
+--8<---------------cut here---------------start------------->8---
+modified   tests/qtest/libqos/virtio-pci-modern.c
+@@ -173,13 +173,7 @@ static bool get_config_isr_status(QVirtioDevice *d)
+=20
+ static void wait_config_isr_status(QVirtioDevice *d, gint64 timeout_us)
+ {
+-    QVirtioPCIDevice *dev =3D container_of(d, QVirtioPCIDevice, vdev);
+-    gint64 start_time =3D g_get_monotonic_time();
+-
+-    do {
+-        g_assert(g_get_monotonic_time() - start_time <=3D timeout_us);
+-        qtest_clock_step(dev->pdev->bus->qts, 100);
+-    } while (!get_config_isr_status(d));
++    g_assert(get_config_isr_status(d));
+ }
+=20
+ static void queue_select(QVirtioDevice *d, uint16_t index)
+modified   tests/qtest/libqos/virtio-pci.c
+@@ -171,13 +171,7 @@ static bool qvirtio_pci_get_config_isr_status(QVirtioD=
+evice *d)
+ static void qvirtio_pci_wait_config_isr_status(QVirtioDevice *d,
+                                                gint64 timeout_us)
+ {
+-    QVirtioPCIDevice *dev =3D container_of(d, QVirtioPCIDevice, vdev);
+-    gint64 start_time =3D g_get_monotonic_time();
+-
+-    do {
+-        g_assert(g_get_monotonic_time() - start_time <=3D timeout_us);
+-        qtest_clock_step(dev->pdev->bus->qts, 100);
+-    } while (!qvirtio_pci_get_config_isr_status(d));
++    g_assert(qvirtio_pci_get_config_isr_status(d));
+ }
+=20
+--8<---------------cut here---------------end--------------->8---
+
+
+>
+>  Thanks,
+>   Thomas
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro

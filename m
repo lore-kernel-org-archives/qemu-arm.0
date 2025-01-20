@@ -1,105 +1,105 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6270918njn;
-        Mon, 20 Jan 2025 12:40:26 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUHQtkSjIwYEunBU+B+AEFBcjqK6OouJVQZxyKyc3zoUu1RjxwFYNXz8BKpLVo2+nkLx6zok7MWHh7LYg==@linaro.org
-X-Google-Smtp-Source: AGHT+IG9rHjF0hyYV3LErLKCge49h6r5FxPuF6o3zrM3qQiKDEL7k6gPI6H5VzL6+VnEnO8y5HYR
-X-Received: by 2002:a05:620a:4495:b0:7b6:eed4:694e with SMTP id af79cd13be357-7be6325fb67mr2061546785a.37.1737405626265;
-        Mon, 20 Jan 2025 12:40:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737405626; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6270969njn;
+        Mon, 20 Jan 2025 12:40:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXi7673FSjfLUHQ/FtU6TrqTbgDJX7totd2DK0gFil8tKRV+Lo/NhDUi50A4r78Kmcn3VMHWPdXFXmePg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFlDtmv3B4myncQFNqgfeX+ZG7AFSNkXSi3MZD65nkk0XgEvGVNP7jafsnMhH0aFKOBRS3+
+X-Received: by 2002:a05:620a:404f:b0:7b6:6b52:8bb1 with SMTP id af79cd13be357-7be63215c8fmr2283427985a.14.1737405634552;
+        Mon, 20 Jan 2025 12:40:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737405634; cv=none;
         d=google.com; s=arc-20240605;
-        b=K/8MrPbve3IcVl7R1f/QcUaAhdXO8rVVElrEXOCWiqpSok8a2q8hMeHRTe4o2zu9FY
-         ZY21l+lfpyQnuuEPDpvld1QAIwK76fZAcgauuBXKokbYF0uADqqqj32zQ6Xy5PZl5N0Z
-         kIJLib9i3VAQ1iRpcEzdrKbpPbZVH9IgGRMK8L0W38Egv0SdvPf3RoaCrNZd+0P1t/Mm
-         p6Q4Bd58jmAhKxQiGRXDuF9oDL5I6dnPXvKASiDh+qrPYbGSiOPwqVkfDtIYPtrBJwDh
-         pKYEEOTwycPz4zuYGF/wnNZFEfyV0o3v9ynHuc3DcZJdf3ByMICAH6ClSk91dyvy4yh/
-         FxGg==
+        b=Ylb1ira1sutyDUC5UxsgPK4Wo4Y1b1s/gn5pSMJwAb7348wvf51E6kzMiBF0ptfNFV
+         bAnqbmDMuXfrK85T7rWYCUrvq9EOyPhQrwf8eCqwXAZXmJXXPvyJWKVMeYUz20+cuA6Z
+         t4zXympvgskI8PPC0CuVoZpaSXSpli7Fl6azjJxffBmv+gY3crDOHUQ5oRZgSdW2CvNq
+         EW6N9QCpNgj6FChhcbsGdvCPu0RflomPsszvOC1k2qWFEZ5DtH/MeK8CDy+V5QbG0k+H
+         IXbXwijQ1gPoeB6Wg1+KxyS05Ju1ZET+ouspL2+y8P7PVivaRtFcyJ145q+CdRLsHjJS
+         LnSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Fzc6m2g5iiLvtqeih5u2IFw38y7XBfSQIzXv6KF9Euc=;
-        fh=KzCioHYn6fYzcOjvBgI9SQHy+jOxf4/SoiNXPY3wRns=;
-        b=JdgK5uontliVwq10KwkZ2Oj+kdL7fH/Slg1+fXUpRTWv+L88MIuXCPZ8JHQdDNUstB
-         tipmoPWRFeFMudEPCKma+HZQ8vlDcCZdADCvVcu1iN2t+HWXR+BLxJFbTLgMVWVYvpAJ
-         ToJuS0bvzY+rk52buvodtmh+h7AdhJPXuHzmLOUpjtYYffq1Pj11IAncduYeCXD02PIe
-         ko3Z+W8B4ylB0kniWQpqxq+Mv48aj614/NSdDK4Rp3BrFqkRfFf8+4hyfXKked55muht
-         /ICvf7GKiXeveqlxoRbUAdIGNB4B0kRsJx9WORvfIxWba6neZ8/NTkN+WCSE7ysGrD2n
-         WcxA==;
+        bh=bHG6wePXgPdhlFbk3rWq8d69s0NWl8fhuOgIse1lEh4=;
+        fh=yh9IkY1M5DrCqCvRKFJZQZsFGRQrULOo5y5am3Jh7nw=;
+        b=cC9kgCWmS/7VpcU2JB4vjcWTxfRfpAj1wCpNW8d1K/9CCe8q6KFspraQnzOLr/sxvi
+         j2dqzg/wl+4XAGNhJ0J3foq0opUaP2LL4f4k0AFQ52UL6hcTTn+Vinmft5CZfxiAkDw9
+         vJfPLBqjVZaeMDzBLGogrH6ye3VtjyyCWWfnQS7zPWce4+BxsHvV9XSlA4SXE6A3zT7C
+         KpTxq5CsJlx4TceP8CFCO0NZZQmOhWqOA7tWooVpcB4V4bSJdOvUeYWPrtzkgf+WeCtC
+         QxW+AinIYmrhewjXC86IM5s7Gt5U6V3N9LieFi04JVkcvztrUw89y3FF2GgCWFNF5GmK
+         Pdyw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=COH2sbM6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="T9w8/zhe";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7be614bff53si1049438385a.284.2025.01.20.12.40.26
+        by mx.google.com with ESMTPS id af79cd13be357-7be614becc7si1063531985a.268.2025.01.20.12.40.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2025 12:40:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Jan 2025 12:40:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=COH2sbM6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b="T9w8/zhe";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tZyXi-00047U-Sn; Mon, 20 Jan 2025 15:38:42 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tZyXS-00040i-Um; Mon, 20 Jan 2025 15:38:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tZyXU-00042x-JC; Mon, 20 Jan 2025 15:38:28 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ id 1tZyXQ-0003z3-Ou; Mon, 20 Jan 2025 15:38:24 -0500
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1tZyXS-0002aF-Mq; Mon, 20 Jan 2025 15:38:28 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-5d90a5581fcso8641472a12.1; 
- Mon, 20 Jan 2025 12:38:26 -0800 (PST)
+ id 1tZyXO-0002Yo-MO; Mon, 20 Jan 2025 15:38:24 -0500
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-5d0ac27b412so6604111a12.1; 
+ Mon, 20 Jan 2025 12:38:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1737405504; x=1738010304; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1737405500; x=1738010300; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Fzc6m2g5iiLvtqeih5u2IFw38y7XBfSQIzXv6KF9Euc=;
- b=COH2sbM6mjbRTjt0cz3Pf+sQHxW5NeBbUjZDMq6TADpUCA62nfOh/xkiPd5nn+1xrJ
- Nm6/RC5AKrf0osOX2AgO4B7V1G6fX+4eaZiLb+FHp/6dp6fC90HNZmULSvzR9Tna4cBG
- DszQvtgCZufqiR/VyoVANCb3lia99O851ZihxAgQJ0Xzdgv6QurcoyhcoSgOa5dF+i5S
- JP4LAm95b6XTaE/HWGRJ0C580TZUsn/aXYRzVPaxw6PK3qlarsyKMUnZo5DjU1STd8hd
- nrnBgws7XL2CS7t91i9FvImqVgNxnM3LdSRbMJqO7B2RumSYti0yHvmWET/wqKKC+Tcq
- Q74A==
+ bh=bHG6wePXgPdhlFbk3rWq8d69s0NWl8fhuOgIse1lEh4=;
+ b=T9w8/zhedzK25hahG1qVjrhS2hAkjQ2+1fmCUSe63Omg8ZR/cmtdFQ7AEUYZqF3A3G
+ HExjLZsBTjo0PoPkYTBD9UjsxcTMVed6RQe6KJEdHonorMDMrNB4JJqD+B3rUh7gOblg
+ W5dAhGLQcE+9E5CO3aLVQDxpY0LGfQDi9KMFgNWkNFdzijPo/kdIyOzKIA7jcPVzmXgq
+ bRssVA+cu8f3InLc++8G5kIHiorLVjc3HmIerahpwn3lw6YDWgdnfHOU/CIQPMIDO6C2
+ 4nQstQC1w5en6ku/KZYAVCq22j/yEJMtUZ/J8PJ3JWz4GHbOgHFNJgSsxFAEKy6Y7vre
+ Zlzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737405504; x=1738010304;
+ d=1e100.net; s=20230601; t=1737405500; x=1738010300;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Fzc6m2g5iiLvtqeih5u2IFw38y7XBfSQIzXv6KF9Euc=;
- b=uVdYq3KbRgRUCfX36MVz4zAnp/ujUDpkNEu3qjgN6YchTPvIsCy1z+vTsfNKsu2UJB
- acUdVrxtE+yBkIfnXFFC8fWB0H69ZKp/+8Xgii+zjIix5W/qBSry1Skaqa+gPeNXw1BR
- 6dwAQPKM64nBQhUO78m0IbYYEfg112UYbJyy5rJ4P8SLh83tR1N+XGbzzAi2HuXJEmCv
- ZBzTWDK8pkwE4YfJoadYjSD43bLWi6DwSk6KIIdntzauxHvGRS99/+V8cnP5XjMEkmdr
- wXi8JvtMQq9IAEUrf3aW0t58RexQlnaLS/QCZ9qkrulF+1rOP3BfvVhll0pBXufhr/7K
- A98Q==
+ bh=bHG6wePXgPdhlFbk3rWq8d69s0NWl8fhuOgIse1lEh4=;
+ b=VO6YZLVca4BbuxirGSFv6Ypqkia4LWUz6ivyacRiSunJ5jvi+fmf0LDLMrL4fPOXR/
+ tRlcADLX5nsY25kV8YTExXucKRjUcnbbWifkWP8LdzbVZNyPHl6drl0gcOVuGa48TIgR
+ pjrnKpkLlF7qAnzjle3uRsnuxN1O+klwiVqMfdF9d36aslAH4wU0RadUmUO5Invurx/B
+ cM4EbWE7XpoWae6LbBk4OJloVqdfhRI1T4UqdV2H4mG01QN3P1zzf+P5TGOzHom+d//h
+ n8vKSNjja4m7jpuIRp7Rrv9AyXVsryEgOUv2ttNIwrVejqahRFZ9Fj/JuPjOjmm5OasU
+ Bv0Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXf1IV/tNEf8BbNk3tk4GBuQRKd1wtV5Nvk1uu8+Qz1razm8R5EbCKqNVsUKtHE9VjDBoQ9YtIP0g==@nongnu.org
-X-Gm-Message-State: AOJu0YzEqIK5c+OS0Ozv2EDQbHBItEutaN2zX+2PMnlEueUcQymoQ2VX
- XvR+hAE/XshMmAS7cOxq9lflqiKLS81ZD4L+pMvsL5Ih63omm0SkCfclEuwj
-X-Gm-Gg: ASbGncvSlxH3K+WNsRh3t5zkoAND75jRDt0nHlCyvSnBjjN8K4RAPuAHIeKdhFmObU1
- r/9MJxYYb1gAM/O6wlVfC2usaNHnrMOSsktxYElxB69XDl0g4yBLe3mht2z1jgYXuvJ4x2qcFxd
- x8TFQJpn3NqUyzAftQtyD542LddeTIFNCSuEa/2XPMdOW811upBXLKR9IvI5GC63G7qLrHcO/OU
- JRgLg0447UMJ2aWkrLAWTUmkBvNKQAhl/Z5Tqgg/Cj8uQ2MKekdt+alHcns53eEBG0ZFJyhf1AN
- m0oHQtaNqJLqD2pi6qu1b5adRDlE2NWuD8p1qYD8ijWUaXQFppaGQK0s49Yp
-X-Received: by 2002:a05:6402:2686:b0:5db:67a7:e741 with SMTP id
- 4fb4d7f45d1cf-5db7d2f5e87mr10808839a12.8.1737405504325; 
- Mon, 20 Jan 2025 12:38:24 -0800 (PST)
+ AJvYcCWtYAjbhFms4EzB2eKPnAe5oaNwM5fbzVNBZLfchMpQQ/10bqojTdIV29bHmTiRLMhz073E/pMAvg==@nongnu.org
+X-Gm-Message-State: AOJu0YxPTcaWLNfkbCLvQizQca+ECq076Oyd7ZWavySsjYPe82hzIuXg
+ SJn7fJMQ1XY3U5cEc/lelZtOPlsewBIfxtT/PiGQrRWmMzz5JnZDmrgNQdhs
+X-Gm-Gg: ASbGncuNuQkJe8pc+CfwyxtuRpp4e1J+7x/22JTRrPE/jyN8VR4KHcKejxi9wqdTnHD
+ +Km2mF36NbEP5XYBTvaxTT+zZQy9Oxppl9th/Zo3aXmNh3DEPjRAwi1f746kP9RBj8NKkJnvwrf
+ DZSpZCpAUV+xVmJXyHgBg1e7cDmz+gbCo8h7Wb6cDtJR0U7wrDDWbAn0wRRXYygDYpSpG80HLgC
+ PX1R08fWoJgz/jbWPijhIY+DpzbRIqwhCXJvF9m80xeQEA4RSuC0NtxZeZH7LynI+k433U/lIRb
+ AEIQIvuMRpwOWtmF9QY+P3Qm9IolTgRyQYSMGt+ixQ+5GR1xTGnogggrdSRn
+X-Received: by 2002:a05:6402:2110:b0:5d3:ba42:ea03 with SMTP id
+ 4fb4d7f45d1cf-5db7d2f8135mr10165875a12.8.1737405499919; 
+ Mon, 20 Jan 2025 12:38:19 -0800 (PST)
 Received: from Provence.localdomain
  (dynamic-077-183-181-102.77.183.pool.telefonica.de. [77.183.181.102])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5db7364258csm6021077a12.1.2025.01.20.12.38.23
+ 4fb4d7f45d1cf-5db7364258csm6021077a12.1.2025.01.20.12.38.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Jan 2025 12:38:23 -0800 (PST)
+ Mon, 20 Jan 2025 12:38:19 -0800 (PST)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
@@ -110,16 +110,16 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Andrey Smirnov <andrew.smirnov@gmail.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 19/21] hw/rtc: Add Ricoh RS5C372 RTC emulation
-Date: Mon, 20 Jan 2025 21:37:46 +0100
-Message-ID: <20250120203748.4687-20-shentey@gmail.com>
+Subject: [PATCH 16/21] hw/arm/fsl-imx8mp: Add USB support
+Date: Mon, 20 Jan 2025 21:37:43 +0100
+Message-ID: <20250120203748.4687-17-shentey@gmail.com>
 X-Mailer: git-send-email 2.48.1
 In-Reply-To: <20250120203748.4687-1-shentey@gmail.com>
 References: <20250120203748.4687-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,312 +128,176 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 0SglYeqtrj3d
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: VDbYZDmCtQxq
 
-The implementation just allows Linux to determine date and time.
+Split the USB MMIO regions to better keep track of the implemented vs.
+unimplemented regions.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- MAINTAINERS         |   1 +
- hw/rtc/rs5c372.c    | 227 ++++++++++++++++++++++++++++++++++++++++++++
- hw/rtc/Kconfig      |   5 +
- hw/rtc/meson.build  |   1 +
- hw/rtc/trace-events |   4 +
- 5 files changed, 238 insertions(+)
- create mode 100644 hw/rtc/rs5c372.c
+ docs/system/arm/imx8mp-evk.rst |  1 +
+ include/hw/arm/fsl-imx8mp.h    | 12 +++++++++++
+ hw/arm/fsl-imx8mp.c            | 37 ++++++++++++++++++++++++++++++++--
+ hw/arm/Kconfig                 |  1 +
+ 4 files changed, 49 insertions(+), 2 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d2cdc790ff..7531d65429 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -827,6 +827,7 @@ F: hw/arm/imx8mp-evk.c
- F: hw/arm/fsl-imx8mp.c
- F: hw/misc/imx8mp_*.c
- F: hw/pci-host/fsl_imx8m_phy.c
-+F: hw/rtc/rs5c372.c
- F: include/hw/arm/fsl-imx8mp.h
- F: include/hw/misc/imx8mp_*.h
- F: include/hw/pci-host/fsl_imx8m_phy.h
-diff --git a/hw/rtc/rs5c372.c b/hw/rtc/rs5c372.c
-new file mode 100644
-index 0000000000..d300f93e13
---- /dev/null
-+++ b/hw/rtc/rs5c372.c
-@@ -0,0 +1,227 @@
-+/*
-+ * Ricoh RS5C372, R222x I2C RTC
-+ *
-+ * Copyright (c) 2025 Bernhard Beschow <shentey@gmail.com>
-+ *
-+ * Based on hw/rtc/ds1338.c
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
-+#include "qemu/bcd.h"
-+#include "qom/object.h"
-+#include "system/rtc.h"
-+#include "trace.h"
-+
-+#define NVRAM_SIZE 0x10
-+
-+/* Flags definitions */
-+#define SECONDS_CH 0x80
-+#define HOURS_PM   0x20
-+#define CTRL2_24   0x20
-+
-+#define TYPE_RS5C372 "rs5c372"
-+OBJECT_DECLARE_SIMPLE_TYPE(RS5C372State, RS5C372)
-+
-+struct RS5C372State {
-+    I2CSlave parent_obj;
-+
-+    int64_t offset;
-+    uint8_t wday_offset;
-+    uint8_t nvram[NVRAM_SIZE];
-+    uint8_t ptr;
-+    uint8_t tx_format;
-+    bool addr_byte;
-+};
-+
-+static const VMStateDescription vmstate_rs5c372 = {
-+    .name = "rs5c372",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_I2C_SLAVE(parent_obj, RS5C372State),
-+        VMSTATE_INT64(offset, RS5C372State),
-+        VMSTATE_UINT8_V(wday_offset, RS5C372State, 2),
-+        VMSTATE_UINT8_ARRAY(nvram, RS5C372State, NVRAM_SIZE),
-+        VMSTATE_UINT8(ptr, RS5C372State),
-+        VMSTATE_UINT8(tx_format, RS5C372State),
-+        VMSTATE_BOOL(addr_byte, RS5C372State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void capture_current_time(RS5C372State *s)
-+{
-+    /*
-+     * Capture the current time into the secondary registers which will be
-+     * actually read by the data transfer operation.
-+     */
-+    struct tm now;
-+    qemu_get_timedate(&now, s->offset);
-+    s->nvram[0] = to_bcd(now.tm_sec);
-+    s->nvram[1] = to_bcd(now.tm_min);
-+    if (s->nvram[0xf] & CTRL2_24) {
-+        s->nvram[2] = to_bcd(now.tm_hour);
-+    } else {
-+        int tmp = now.tm_hour;
-+        if (tmp % 12 == 0) {
-+            tmp += 12;
-+        }
-+        if (tmp <= 12) {
-+            s->nvram[2] = to_bcd(tmp);
-+        } else {
-+            s->nvram[2] = HOURS_PM | to_bcd(tmp - 12);
-+        }
-+    }
-+    s->nvram[3] = (now.tm_wday + s->wday_offset) % 7 + 1;
-+    s->nvram[4] = to_bcd(now.tm_mday);
-+    s->nvram[5] = to_bcd(now.tm_mon + 1);
-+    s->nvram[6] = to_bcd(now.tm_year - 100);
-+}
-+
-+static void inc_regptr(RS5C372State *s)
-+{
-+    s->ptr = (s->ptr + 1) & (NVRAM_SIZE - 1);
-+}
-+
-+static int rs5c372_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    RS5C372State *s = RS5C372(i2c);
-+
-+    switch (event) {
-+    case I2C_START_RECV:
-+        /*
-+         * In h/w, capture happens on any START condition, not just a
-+         * START_RECV, but there is no need to actually capture on
-+         * START_SEND, because the guest can't get at that data
-+         * without going through a START_RECV which would overwrite it.
-+         */
-+        capture_current_time(s);
-+        s->ptr = 0xf;
-+        break;
-+    case I2C_START_SEND:
-+        s->addr_byte = true;
-+        break;
-+    default:
-+        break;
-+    }
-+
-+    return 0;
-+}
-+
-+static uint8_t rs5c372_recv(I2CSlave *i2c)
-+{
-+    RS5C372State *s = RS5C372(i2c);
-+    uint8_t res;
-+
-+    res  = s->nvram[s->ptr];
-+
-+    trace_rs5c372_recv(s->ptr, res);
-+
-+    inc_regptr(s);
-+    return res;
-+}
-+
-+static int rs5c372_send(I2CSlave *i2c, uint8_t data)
-+{
-+    RS5C372State *s = RS5C372(i2c);
-+
-+    if (s->addr_byte) {
-+        s->ptr = data >> 4;
-+        s->tx_format = data & 0xf;
-+        s->addr_byte = false;
-+        return 0;
-+    }
-+
-+    trace_rs5c372_send(s->ptr, data);
-+
-+    if (s->ptr < 7) {
-+        /* Time register. */
-+        struct tm now;
-+        qemu_get_timedate(&now, s->offset);
-+        switch (s->ptr) {
-+        case 0:
-+            now.tm_sec = from_bcd(data & 0x7f);
-+            break;
-+        case 1:
-+            now.tm_min = from_bcd(data & 0x7f);
-+            break;
-+        case 2:
-+            if (s->nvram[0xf] & CTRL2_24) {
-+                now.tm_hour = from_bcd(data & 0x3f);
-+            } else {
-+                int tmp = from_bcd(data & (HOURS_PM - 1));
-+                if (data & HOURS_PM) {
-+                    tmp += 12;
-+                }
-+                if (tmp % 12 == 0) {
-+                    tmp -= 12;
-+                }
-+                now.tm_hour = tmp;
-+            }
-+            break;
-+        case 3:
-+            {
-+                /*
-+                 * The day field is supposed to contain a value in the range
-+                 * 1-7. Otherwise behavior is undefined.
-+                 */
-+                int user_wday = (data & 7) - 1;
-+                s->wday_offset = (user_wday - now.tm_wday + 7) % 7;
-+            }
-+            break;
-+        case 4:
-+            now.tm_mday = from_bcd(data & 0x3f);
-+            break;
-+        case 5:
-+            now.tm_mon = from_bcd(data & 0x1f) - 1;
-+            break;
-+        case 6:
-+            now.tm_year = from_bcd(data) + 100;
-+            break;
-+        }
-+        s->offset = qemu_timedate_diff(&now);
-+    } else {
-+        s->nvram[s->ptr] = data;
-+    }
-+    inc_regptr(s);
-+    return 0;
-+}
-+
-+static void rs5c372_reset(DeviceState *dev)
-+{
-+    RS5C372State *s = RS5C372(dev);
-+
-+    /* The clock is running and synchronized with the host */
-+    s->offset = 0;
-+    s->wday_offset = 0;
-+    memset(s->nvram, 0, NVRAM_SIZE);
-+    s->ptr = 0;
-+    s->addr_byte = false;
-+}
-+
-+static void rs5c372_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+
-+    k->event = rs5c372_event;
-+    k->recv = rs5c372_recv;
-+    k->send = rs5c372_send;
-+    device_class_set_legacy_reset(dc, rs5c372_reset);
-+    dc->vmsd = &vmstate_rs5c372;
-+}
-+
-+static const TypeInfo rs5c372_types[] = {
-+    {
-+        .name          = TYPE_RS5C372,
-+        .parent        = TYPE_I2C_SLAVE,
-+        .instance_size = sizeof(RS5C372State),
-+        .class_init    = rs5c372_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(rs5c372_types)
-diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-index 2fe04ec1d0..315b0e4ecc 100644
---- a/hw/rtc/Kconfig
-+++ b/hw/rtc/Kconfig
-@@ -26,3 +26,8 @@ config GOLDFISH_RTC
+diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
+index a3a17fc41f..af1f02d8e8 100644
+--- a/docs/system/arm/imx8mp-evk.rst
++++ b/docs/system/arm/imx8mp-evk.rst
+@@ -16,6 +16,7 @@ The ``imx8mp-evk`` machine implements the following devices:
+  * 3 USDHC Storage Controllers
+  * 1 Designware PCI Express Controller
+  * 1 Ethernet Controller
++ * 2 Designware USB 3 Controllers
+  * 5 GPIO Controllers
+  * 6 I2C Controllers
+  * 3 SPI Controllers
+diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
+index 8fe27ac9bd..1b8a5cbbba 100644
+--- a/include/hw/arm/fsl-imx8mp.h
++++ b/include/hw/arm/fsl-imx8mp.h
+@@ -23,6 +23,7 @@
+ #include "hw/sd/sdhci.h"
+ #include "hw/ssi/imx_spi.h"
+ #include "hw/timer/imx_gpt.h"
++#include "hw/usb/hcd-dwc3.h"
+ #include "hw/watchdog/wdt_imx2.h"
+ #include "qom/object.h"
+ #include "qemu/units.h"
+@@ -41,6 +42,7 @@ enum FslImx8mpConfiguration {
+     FSL_IMX8MP_NUM_I2CS         = 6,
+     FSL_IMX8MP_NUM_IRQS         = 160,
+     FSL_IMX8MP_NUM_UARTS        = 4,
++    FSL_IMX8MP_NUM_USBS         = 2,
+     FSL_IMX8MP_NUM_USDHCS       = 3,
+     FSL_IMX8MP_NUM_WDTS         = 3,
+ };
+@@ -61,6 +63,7 @@ struct FslImx8mpState {
+     IMXFECState        enet;
+     SDHCIState         usdhc[FSL_IMX8MP_NUM_USDHCS];
+     IMX2WdtState       wdt[FSL_IMX8MP_NUM_WDTS];
++    USBDWC3            usb[FSL_IMX8MP_NUM_USBS];
+     DesignwarePCIEHost pcie;
+     FslImx8mPciePhyState   pcie_phy;
+     OrIRQState         gpt5_gpt6_irq;
+@@ -198,6 +201,12 @@ enum FslImx8mpMemoryRegions {
+     FSL_IMX8MP_UART4,
+     FSL_IMX8MP_USB1,
+     FSL_IMX8MP_USB2,
++    FSL_IMX8MP_USB1_DEV,
++    FSL_IMX8MP_USB2_DEV,
++    FSL_IMX8MP_USB1_OTG,
++    FSL_IMX8MP_USB2_OTG,
++    FSL_IMX8MP_USB1_GLUE,
++    FSL_IMX8MP_USB2_GLUE,
+     FSL_IMX8MP_USDHC1,
+     FSL_IMX8MP_USDHC2,
+     FSL_IMX8MP_USDHC3,
+@@ -233,6 +242,9 @@ enum FslImx8mpIrqs {
+     FSL_IMX8MP_I2C3_IRQ     = 37,
+     FSL_IMX8MP_I2C4_IRQ     = 38,
  
- config LS7A_RTC
-     bool
++    FSL_IMX8MP_USB1_IRQ     = 40,
++    FSL_IMX8MP_USB2_IRQ     = 41,
 +
-+config RS5C372_RTC
-+    bool
-+    depends on I2C
-+    default y if I2C_DEVICES
-diff --git a/hw/rtc/meson.build b/hw/rtc/meson.build
-index 8ecc2d792c..6c87864dc0 100644
---- a/hw/rtc/meson.build
-+++ b/hw/rtc/meson.build
-@@ -13,3 +13,4 @@ system_ss.add(when: 'CONFIG_GOLDFISH_RTC', if_true: files('goldfish_rtc.c'))
- system_ss.add(when: 'CONFIG_LS7A_RTC', if_true: files('ls7a_rtc.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-rtc.c'))
- system_ss.add(when: 'CONFIG_MC146818RTC', if_true: files('mc146818rtc.c'))
-+system_ss.add(when: 'CONFIG_RS5C372_RTC', if_true: files('rs5c372.c'))
-diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-index 8012afe102..b9f2852d35 100644
---- a/hw/rtc/trace-events
-+++ b/hw/rtc/trace-events
-@@ -35,3 +35,7 @@ m48txx_nvram_mem_write(uint32_t addr, uint32_t value) "mem write addr:0x%04x val
- # goldfish_rtc.c
- goldfish_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
- goldfish_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
+     FSL_IMX8MP_GPT1_IRQ      = 55,
+     FSL_IMX8MP_GPT2_IRQ      = 54,
+     FSL_IMX8MP_GPT3_IRQ      = 53,
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index 3bb719d0e8..5b9781a424 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -40,8 +40,14 @@ static const struct {
+     [FSL_IMX8MP_VPU_VC8000E_ENCODER] = { 0x38320000, 2 * MiB, "vpu_vc8000e_encoder" },
+     [FSL_IMX8MP_VPU_G2_DECODER] = { 0x38310000, 2 * MiB, "vpu_g2_decoder" },
+     [FSL_IMX8MP_VPU_G1_DECODER] = { 0x38300000, 2 * MiB, "vpu_g1_decoder" },
+-    [FSL_IMX8MP_USB2] = { 0x38200000, 1 * MiB, "usb2" },
+-    [FSL_IMX8MP_USB1] = { 0x38100000, 1 * MiB, "usb1" },
++    [FSL_IMX8MP_USB2_GLUE] = { 0x382f0000, 0x100, "usb2_glue" },
++    [FSL_IMX8MP_USB2_OTG] = { 0x3820cc00, 0x100, "usb2_otg" },
++    [FSL_IMX8MP_USB2_DEV] = { 0x3820c700, 0x500, "usb2_dev" },
++    [FSL_IMX8MP_USB2] = { 0x38200000, 0xc700, "usb2" },
++    [FSL_IMX8MP_USB1_GLUE] = { 0x381f0000, 0x100, "usb1_glue" },
++    [FSL_IMX8MP_USB1_OTG] = { 0x3810cc00, 0x100, "usb1_otg" },
++    [FSL_IMX8MP_USB1_DEV] = { 0x3810c700, 0x500, "usb1_dev" },
++    [FSL_IMX8MP_USB1] = { 0x38100000, 0xc700, "usb1" },
+     [FSL_IMX8MP_GPU2D] = { 0x38008000, 32 * KiB, "gpu2d" },
+     [FSL_IMX8MP_GPU3D] = { 0x38000000, 32 * KiB, "gpu3d" },
+     [FSL_IMX8MP_QSPI1_RX_BUFFER] = { 0x34000000, 32 * MiB, "qspi1_rx_buffer" },
+@@ -233,6 +239,11 @@ static void fsl_imx8mp_init(Object *obj)
+         object_initialize_child(obj, name, &s->usdhc[i], TYPE_IMX_USDHC);
+     }
+ 
++    for (i = 0; i < FSL_IMX8MP_NUM_USBS; i++) {
++        snprintf(name, NAME_SIZE, "usb%d", i);
++        object_initialize_child(obj, name, &s->usb[i], TYPE_USB_DWC3);
++    }
 +
-+# rs5c372.c
-+rs5c372_recv(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] -> 0x%02" PRIx8
-+rs5c372_send(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] <- 0x%02" PRIx8
+     for (i = 0; i < FSL_IMX8MP_NUM_ECSPIS; i++) {
+         snprintf(name, NAME_SIZE, "spi%d", i + 1);
+         object_initialize_child(obj, name, &s->spi[i], TYPE_IMX_SPI);
+@@ -528,6 +539,27 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+                            qdev_get_gpio_in(gicdev, usdhc_table[i].irq));
+     }
+ 
++    /* USBs */
++    for (i = 0; i < FSL_IMX8MP_NUM_USBS; i++) {
++        static const struct {
++            hwaddr addr;
++            unsigned int irq;
++        } usb_table[FSL_IMX8MP_NUM_USBS] = {
++            { fsl_imx8mp_memmap[FSL_IMX8MP_USB1].addr, FSL_IMX8MP_USB1_IRQ },
++            { fsl_imx8mp_memmap[FSL_IMX8MP_USB2].addr, FSL_IMX8MP_USB2_IRQ },
++        };
++
++        qdev_prop_set_uint32(DEVICE(&s->usb[i].sysbus_xhci), "p2", 1);
++        qdev_prop_set_uint32(DEVICE(&s->usb[i].sysbus_xhci), "p3", 1);
++        qdev_prop_set_uint32(DEVICE(&s->usb[i].sysbus_xhci), "slots", 2);
++        if (!sysbus_realize(SYS_BUS_DEVICE(&s->usb[i]), errp)) {
++            return;
++        }
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usb[i]), 0, usb_table[i].addr);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usb[i].sysbus_xhci), 0,
++                           qdev_get_gpio_in(gicdev, usb_table[i].irq));
++    }
++
+     /* ECSPIs */
+     for (i = 0; i < FSL_IMX8MP_NUM_ECSPIS; i++) {
+         static const struct {
+@@ -632,6 +664,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+         case FSL_IMX8MP_RAM:
+         case FSL_IMX8MP_SNVS_HP:
+         case FSL_IMX8MP_UART1 ... FSL_IMX8MP_UART4:
++        case FSL_IMX8MP_USB1 ... FSL_IMX8MP_USB2:
+         case FSL_IMX8MP_USDHC1 ... FSL_IMX8MP_USDHC3:
+         case FSL_IMX8MP_WDOG1 ... FSL_IMX8MP_WDOG3:
+             /* device implemented and treated above */
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 0e49ac4d5c..c9b47270ac 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -591,6 +591,7 @@ config FSL_IMX8MP
+     select PCI_EXPRESS_FSL_IMX8M_PHY
+     select SDHCI
+     select UNIMP
++    select USB_DWC3
+     select WDT_IMX2
+ 
+ config FSL_IMX8MP_EVK
 -- 
 2.48.1
 

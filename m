@@ -1,39 +1,39 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6414092njn;
-        Mon, 20 Jan 2025 18:53:48 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWg62KLfIHXoDeQcomFTgIHlr2AA/MiBkHMfNtGTT19yJq8CzccefSIdPjlrGWmoghnpDgzAUH+qBoI5Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IEHBjZZoZutFcQCWyL6lQatUXl9DHZiOeqgcjTRVtlO4x2jyl+ioBh96ijRz4fZ2enBqEJa
-X-Received: by 2002:a05:620a:448c:b0:7a9:9f44:3f8 with SMTP id af79cd13be357-7be63893f4bmr2393831385a.5.1737428028701;
-        Mon, 20 Jan 2025 18:53:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737428028; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6419188njn;
+        Mon, 20 Jan 2025 19:08:25 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX5QQysCvMMSnCzK8MMo2ri5PaXGhfwbX7h2a6caKa7necjwAPcLQBlxr8XHJs1djGINvax7AGtrBXniQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGkjAlF5UCCer+MQCxvUErsAFS8wc2anE78xX9zfxIr/mprbdgQrAexBphkD+7EoAMZpqxe
+X-Received: by 2002:a05:622a:1104:b0:467:6b20:e0b1 with SMTP id d75a77b69052e-46e12a1fcdbmr252073591cf.6.1737428905344;
+        Mon, 20 Jan 2025 19:08:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737428905; cv=none;
         d=google.com; s=arc-20240605;
-        b=glpRYe8SaNXCbCev96yBgCR0FXdFnbFz80wjhtWJeHI/d0LfJ1fnzqd93EQyDD4XPI
-         pyXO5Sm6dN+uu8dK82TseR+lv7TE6sgiUCwEHBs7prI6F80LruCgXmBUCYju06ZdmzF6
-         tThrI9M0UJQbQTGP0/8hXz77UyQag/TZBb0Xv3hlKZw7OqGlAoRJ/uxE0WHscTrSLkQD
-         RFZjpmOHIskq6s7yFd+4VJAK8wqx5NqVTC39uebltJU/9l1+O4NleOpdKSBH4FiG3oM7
-         VWYh0cctbHW7teB+aIM3v43zG2UznjUpFEMDbj/JnlB7QW6RyuI2qhT4eXpNWRTtMhJR
-         ncSA==
+        b=BerXC9ZcgGi/f6JWPLQKcJTth5j6grRbb21u+cyYr4q3aiEzXthoH2rJDnGNzmsFwK
+         ls3R72VeCYq/qZxW20W/zxEiRfT6Dbel1zw5+SdNtgToDcl/UKgYO46m2QaW49w+hSHM
+         yEpzzipHd0bW3SaxsQB014uVzk2+xlEfrsawfwvrMxpZr/8IOMYIBzveUpy8GBqhHGKu
+         rcfZ8JO6TwTZKUi3B2NYSVVW7Nq4S83bfZGw7D74n8K4arqhHCcTYvAvFTnAdxsRngq6
+         ySTyDSwvnWnpEYOEnBKnmxgTLSfbIwmLv6N6s+BVgr60J73qAyNkTdQGTo2I/BD95h8T
+         OInQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=FazUdenSnfkzkWh6MtSTp/cGWptG8/nuK8AjD/Aw7Qw=;
+        bh=y0PPjpZM787du2qIk8lxV+4A5xT1RSjFQWq6wExeJvY=;
         fh=L8MyIzYPR5rJbLrMcKF4nyHshfAW3qsWDn8G1f9dY2Q=;
-        b=De09PiLmWfojpFGm13YH686sHoJeXHfzaMlBInHmw7B+xU1OmImkk+2xt6i7Lbvaus
-         +DrZVDXvHsz8opvAgjPWtq1uPCbnjMlkS2aWCKc33eFY+HowDyWwu2tJHjQwp8veGeMa
-         l6dJF5tp4JbuZ8jC/G2yxGQNCaC6RnDRrPxZfXZFJvhYzojd3/eicUaOfmXJf8IV2Hor
-         vJgjhP8CRrCEF9Br8g76EJizDhqtDGU8owzj2Ib1rQS73UnzGJCV9i1qvYYqm5jREwsk
-         jz3jT4DF5Ct1wEgIAVS8dkJoo0U0+KdPwhLxYOpuDlhY45ZGTQTA+8QNpaze8EcOpJgt
-         eUgQ==;
+        b=EOLDA6h2GNdWoJVIfYo3Pq+LsYJciYO930F+XpcOAOyAxIWMrYIZsALumATvDtqlf0
+         SLzdbX2O4uva9icbjquL31gYpOTrYs3Y5EfNQuorswRS8Z1bf6WlgJDpe8kosVHTGLlA
+         xWXnFG7mSpI4bif5BDQ0UqRDGIF4p3dST6rCwAgM5i5ZMqJXL6ahVUJbgSo9Bo2JWKV0
+         lAtrVIqXTh2Q11HVeit7dSLEEI0GdVpnJ+NujK+/0PTJI7coD9+GK3SeTlpYQks1VOkf
+         8kEvMi3QP0c4QvP9r0zQGeft1Club81UxoX0H1Xho2u0DjkclmpiCMg3Z2yihOvaGOVE
+         FQOg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7be614bed9bsi1162621685a.231.2025.01.20.18.53.48
+        by mx.google.com with ESMTPS id d75a77b69052e-46e1048dbd8si122553281cf.568.2025.01.20.19.08.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2025 18:53:48 -0800 (PST)
+        Mon, 20 Jan 2025 19:08:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
@@ -41,28 +41,28 @@ Authentication-Results: mx.google.com;
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ta4O9-0002VX-JI; Mon, 20 Jan 2025 21:53:13 -0500
+	id 1ta4cM-0005up-Km; Mon, 20 Jan 2025 22:07:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1ta4O7-0002UX-Q6; Mon, 20 Jan 2025 21:53:11 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2])
+ id 1ta4cG-0005uR-HP; Mon, 20 Jan 2025 22:07:48 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1ta4O2-0006Wn-KF; Mon, 20 Jan 2025 21:53:11 -0500
+ id 1ta4cC-0008BC-OU; Mon, 20 Jan 2025 22:07:47 -0500
 Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 5D1114E6039;
- Tue, 21 Jan 2025 03:53:00 +0100 (CET)
+ by zero.eik.bme.hu (Postfix) with ESMTP id 43D6F4E6001;
+ Tue, 21 Jan 2025 04:07:41 +0100 (CET)
 X-Virus-Scanned: amavisd-new at eik.bme.hu
 Received: from zero.eik.bme.hu ([127.0.0.1])
  by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id wLkXKXDOPwAX; Tue, 21 Jan 2025 03:52:58 +0100 (CET)
+ with ESMTP id lp2ZVC5dNphv; Tue, 21 Jan 2025 04:07:39 +0100 (CET)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 4D0154E6036; Tue, 21 Jan 2025 03:52:58 +0100 (CET)
+ id 4A9C84E603D; Tue, 21 Jan 2025 04:07:39 +0100 (CET)
 Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 4A79974577C;
- Tue, 21 Jan 2025 03:52:58 +0100 (CET)
-Date: Tue, 21 Jan 2025 03:52:58 +0100 (CET)
+ by zero.eik.bme.hu (Postfix) with ESMTP id 4863674577C;
+ Tue, 21 Jan 2025 04:07:39 +0100 (CET)
+Date: Tue, 21 Jan 2025 04:07:39 +0100 (CET)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: Bernhard Beschow <shentey@gmail.com>
 cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
@@ -72,21 +72,20 @@ cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
  Andrey Smirnov <andrew.smirnov@gmail.com>, 
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH 08/21] hw/arm/fsl-imx8mp: Add USDHC storage controllers
-In-Reply-To: <20250120203748.4687-9-shentey@gmail.com>
-Message-ID: <3e6208b1-7d70-5205-a92f-549d7d2fff13@eik.bme.hu>
+Subject: Re: [PATCH 20/21] hw/i2c: Import TCA6416 emulation from Xilinx
+In-Reply-To: <20250120203748.4687-21-shentey@gmail.com>
+Message-ID: <33ced970-1f59-7471-a5cb-4bd5236b87bb@eik.bme.hu>
 References: <20250120203748.4687-1-shentey@gmail.com>
- <20250120203748.4687-9-shentey@gmail.com>
+ <20250120203748.4687-21-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,233 +100,218 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ouj28KmWbTUu
+X-TUID: DJ3dkudo9nuH
 
 On Mon, 20 Jan 2025, Bernhard Beschow wrote:
-> The USDHC emulation allows for running real-world images such as those generated
-> by Buildroot. Convert the board documentation accordingly instead of running a
-> Linux kernel with ephemeral storage.
+> Xilinx QEMU implements a TCA6416 device model which may be useful for the
+> broader QEMU community, so upstream it. In the Xilinx fork, the device model
+> gets compiled whenever CONFIG_CADENCE is true, so have it maintained by the
+> "hw/*/cadence_*" maintainers.
+>
+> The code is based on Xilinx QEMU version xilinx_v2024.2 plus the following
+> modifications:
+> * Use OBJECT_DECLARE_SIMPLE_TYPE()
+> * Port from DPRINTF() to trace events
+> * Follow QEMU conventions for naming of state struct
+> * Rename type to not contain a ','
+> * Use DEFINE_TYPES() macro
+> * Implement under hw/gpio since device is i2c client and gpio provider
+> * Have dedicated Kconfig switch
 >
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+>
+> --
+> I have a use for TCA6416 emulation. Question: Are Xilinx Zynq maintainers
+> willing to maintain this device model?
 > ---
-> docs/system/arm/imx8mp-evk.rst | 39 +++++++++++++++++++++++-----------
-> include/hw/arm/fsl-imx8mp.h    |  7 ++++++
-> hw/arm/fsl-imx8mp.c            | 28 ++++++++++++++++++++++++
-> hw/arm/imx8mp-evk.c            | 18 ++++++++++++++++
-> hw/arm/Kconfig                 |  1 +
-> 5 files changed, 81 insertions(+), 12 deletions(-)
+> MAINTAINERS          |   1 +
+> hw/gpio/tca6416.c    | 122 +++++++++++++++++++++++++++++++++++++++++++
+> hw/gpio/Kconfig      |   5 ++
+> hw/gpio/meson.build  |   1 +
+> hw/gpio/trace-events |   4 ++
+> 5 files changed, 133 insertions(+)
+> create mode 100644 hw/gpio/tca6416.c
 >
-> diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
-> index d7d08cc198..1514bc5864 100644
-> --- a/docs/system/arm/imx8mp-evk.rst
-> +++ b/docs/system/arm/imx8mp-evk.rst
-> @@ -13,6 +13,7 @@ The ``imx8mp-evk`` machine implements the following devices:
->  * Up to 4 Cortex-A53 Cores
->  * Generic Interrupt Controller (GICv3)
->  * 4 UARTs
-> + * 3 USDHC Storage Controllers
->  * Secure Non-Volatile Storage (SNVS) including an RTC
->  * Clock Tree
->
-> @@ -25,25 +26,39 @@ for loading a Linux kernel.
-> Direct Linux Kernel Boot
-> ''''''''''''''''''''''''
->
-> -Linux mainline v6.12 release is tested at the time of writing. To build a Linux
-> -mainline kernel that can be booted by the ``imx8mp-evk`` machine, simply
-> -configure the kernel using the defconfig configuration:
-> +Probably the easiest way to get started with a whole Linux system on the machine
-> +is to generate an image with Buildroot. Version 2024.11.1 is tested at the time
-> +of writing and involves three steps. First run the following command in the
-> +toplevel directory of the Buildroot source tree:
->
-> .. code-block:: bash
->
-> -  $ export ARCH=arm64
-> -  $ export CROSS_COMPILE=aarch64-linux-gnu-
-> -  $ make defconfig
-> +  $ make freescale_imx8mpevk_defconfig
->   $ make
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 7531d65429..0cac9c90bc 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1030,6 +1030,7 @@ S: Maintained
+> F: hw/*/xilinx_*
+> F: hw/*/cadence_*
+> F: hw/misc/zynq_slcr.c
+> +F: hw/gpio/tca6416.c
+> F: hw/adc/zynq-xadc.c
+> F: include/hw/misc/zynq_slcr.h
+> F: include/hw/adc/zynq-xadc.h
+> diff --git a/hw/gpio/tca6416.c b/hw/gpio/tca6416.c
+> new file mode 100644
+> index 0000000000..81ed7a654d
+> --- /dev/null
+> +++ b/hw/gpio/tca6416.c
+> @@ -0,0 +1,122 @@
+> +/*
+> + * QEMU model of TCA6416 16-Bit I/O Expander
+> + *
+> + * Copyright (c) 2018 Xilinx Inc.
+> + *
+> + * Written by Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining a copy
+> + * of this software and associated documentation files (the "Software"), to deal
+> + * in the Software without restriction, including without limitation the rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be included in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+> + * THE SOFTWARE.
+> + */
+> +#include "qemu/osdep.h"
+> +#include "hw/i2c/i2c.h"
+> +#include "trace.h"
+> +
+> +#define TYPE_TCA6416 "tca6416"
+> +OBJECT_DECLARE_SIMPLE_TYPE(Tca6416State, TCA6416)
+> +
+> +#define IN_PORT0    0
+> +#define IN_PORT1    1
+> +#define OUT_PORT0   2
+> +#define OUT_PORT1   3
+> +#define POL_INV0    4
+> +#define POL_INV1    5
+> +#define CONF_PORT0  6
+> +#define CONF_PORT1  7
+> +#define RMAX (CONF_PORT1 + 1)
 
-Adding documentation that is removed a few patches later seems 
-unnecessary. Maybe you could keep the bare kernel docs as that could also 
-be useful or not add it in the first place? But if this is already written 
-keeping it may make more sense than dropping it.
+Maybe make this list an enum? (But also fine as it is.)
 
 Regards,
 BALATON Zoltan
 
->
-> -To boot the newly built Linux kernel in QEMU with the ``imx8mp-evk`` machine,
-> -run:
-> +Once finished successfully there is an ``output/image`` subfolder. Navigate into
-> +it and resize the SD card image to a power of two:
 > +
-> +.. code-block:: bash
+> +enum tca6416_events {
+> +     ADDR_DONE,
+> +     ADDRESSING,
+> +};
 > +
-> +  $ qemu-img resize sdcard.img 256M
+> +struct Tca6416State {
+> +     I2CSlave i2c;
 > +
-> +Finally, the device tree needs to be patched with the following commands which
-> +will remove the ``cpu-idle-states`` properties from CPU nodes:
+> +     uint8_t addr;
+> +     uint8_t state;
+> +     uint8_t regs[RMAX];
+> +};
 > +
-> +.. code-block:: bash
+> +static uint8_t tca6416_read(I2CSlave *i2c)
+> +{
+> +    Tca6416State *s = TCA6416(i2c);
+> +    uint8_t ret;
 > +
-> +  $ dtc imx8mp-evk.dtb | sed '/cpu-idle-states/d' > imx8mp-evk-patched.dts
-> +  $ dtc imx8mp-evk-patched.dts -o imx8mp-evk-patched.dtb
+> +    ret = s->regs[s->addr];
+> +    trace_tca6416_read(ret);
+> +    return ret;
+> +}
 > +
-> +Now that everything is prepared the newly built image can be run in the QEMU
-> +``imx8mp-evk`` machine:
->
-> .. code-block:: bash
->
->   $ qemu-system-aarch64 -M imx8mp-evk -smp 4 -m 3G \
->       -display none -serial null -serial stdio \
-> -      -kernel arch/arm64/boot/Image \
-> -      -dtb arch/arm64/boot/dts/freescale/imx8mp-evk.dtb \
-> -      -initrd /path/to/rootfs.ext4 \
-> -      -append "root=/dev/ram"
-> +      -kernel Image \
-> +      -dtb imx8mp-evk-patched.dtb \
-> +      -append "root=/dev/mmcblk2p2" \
-> +      -drive file=sdcard.img,if=sd,bus=2,format=raw,id=mmcblk2
-> diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
-> index 9d2a757c2a..9832c05e8c 100644
-> --- a/include/hw/arm/fsl-imx8mp.h
-> +++ b/include/hw/arm/fsl-imx8mp.h
-> @@ -14,6 +14,7 @@
-> #include "hw/intc/arm_gicv3_common.h"
-> #include "hw/misc/imx7_snvs.h"
-> #include "hw/misc/imx8mp_ccm.h"
-> +#include "hw/sd/sdhci.h"
-> #include "qom/object.h"
-> #include "qemu/units.h"
->
-> @@ -27,6 +28,7 @@ enum FslImx8mpConfiguration {
->     FSL_IMX8MP_NUM_CPUS         = 4,
->     FSL_IMX8MP_NUM_IRQS         = 160,
->     FSL_IMX8MP_NUM_UARTS        = 4,
-> +    FSL_IMX8MP_NUM_USDHCS       = 3,
-> };
->
-> struct FslImx8mpState {
-> @@ -38,6 +40,7 @@ struct FslImx8mpState {
->     IMX8MPAnalogState  analog;
->     IMX7SNVSState      snvs;
->     IMXSerialState     uart[FSL_IMX8MP_NUM_UARTS];
-> +    SDHCIState         usdhc[FSL_IMX8MP_NUM_USDHCS];
-> };
->
-> enum FslImx8mpMemoryRegions {
-> @@ -183,6 +186,10 @@ enum FslImx8mpMemoryRegions {
-> };
->
-> enum FslImx8mpIrqs {
-> +    FSL_IMX8MP_USDHC1_IRQ   = 22,
-> +    FSL_IMX8MP_USDHC2_IRQ   = 23,
-> +    FSL_IMX8MP_USDHC3_IRQ   = 24,
+> +static int tca6416_write(I2CSlave *i2c, uint8_t data)
+> +{
+> +    Tca6416State *s = TCA6416(i2c);
 > +
->     FSL_IMX8MP_UART1_IRQ    = 26,
->     FSL_IMX8MP_UART2_IRQ    = 27,
->     FSL_IMX8MP_UART3_IRQ    = 28,
-> diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-> index 0abde2b1fc..612ea7bf93 100644
-> --- a/hw/arm/fsl-imx8mp.c
-> +++ b/hw/arm/fsl-imx8mp.c
-> @@ -210,6 +210,11 @@ static void fsl_imx8mp_init(Object *obj)
->         snprintf(name, NAME_SIZE, "uart%d", i + 1);
->         object_initialize_child(obj, name, &s->uart[i], TYPE_IMX_SERIAL);
->     }
-> +
-> +    for (i = 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
-> +        snprintf(name, NAME_SIZE, "usdhc%d", i + 1);
-> +        object_initialize_child(obj, name, &s->usdhc[i], TYPE_IMX_USDHC);
-> +    }
-> }
->
-> static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-> @@ -350,6 +355,28 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
->                            qdev_get_gpio_in(gicdev, serial_table[i].irq));
->     }
->
-> +    /* USDHCs */
-> +    for (i = 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
-> +        static const struct {
-> +            hwaddr addr;
-> +            unsigned int irq;
-> +        } usdhc_table[FSL_IMX8MP_NUM_USDHCS] = {
-> +            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC1].addr, FSL_IMX8MP_USDHC1_IRQ },
-> +            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC2].addr, FSL_IMX8MP_USDHC2_IRQ },
-> +            { fsl_imx8mp_memmap[FSL_IMX8MP_USDHC3].addr, FSL_IMX8MP_USDHC3_IRQ },
-> +        };
-> +
-> +        object_property_set_uint(OBJECT(&s->usdhc[i]), "vendor",
-> +                                 SDHCI_VENDOR_IMX, &error_abort);
-> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->usdhc[i]), errp)) {
-> +            return;
-> +        }
-> +
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->usdhc[i]), 0, usdhc_table[i].addr);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->usdhc[i]), 0,
-> +                           qdev_get_gpio_in(gicdev, usdhc_table[i].irq));
+> +    trace_tca6416_write(data);
+> +    if (s->state == ADDRESSING) {
+> +        s->addr = data;
+> +    } else {
+> +        s->regs[s->addr] = data;
 > +    }
 > +
->     /* SNVS */
->     if (!sysbus_realize(SYS_BUS_DEVICE(&s->snvs), errp)) {
->         return;
-> @@ -367,6 +394,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
->         case FSL_IMX8MP_RAM:
->         case FSL_IMX8MP_SNVS_HP:
->         case FSL_IMX8MP_UART1 ... FSL_IMX8MP_UART4:
-> +        case FSL_IMX8MP_USDHC1 ... FSL_IMX8MP_USDHC3:
->             /* device implemented and treated above */
->             break;
->
-> diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
-> index 2756d4c21c..27d9e9e8ee 100644
-> --- a/hw/arm/imx8mp-evk.c
-> +++ b/hw/arm/imx8mp-evk.c
-> @@ -11,6 +11,7 @@
-> #include "hw/arm/boot.h"
-> #include "hw/arm/fsl-imx8mp.h"
-> #include "hw/boards.h"
-> +#include "hw/qdev-properties.h"
-> #include "system/qtest.h"
-> #include "qemu/error-report.h"
-> #include "qapi/error.h"
-> @@ -40,6 +41,23 @@ static void imx8mp_evk_init(MachineState *machine)
->     memory_region_add_subregion(get_system_memory(), FSL_IMX8MP_RAM_START,
->                                 machine->ram);
->
-> +    for (int i = 0; i < FSL_IMX8MP_NUM_USDHCS; i++) {
-> +        BusState *bus;
-> +        DeviceState *carddev;
-> +        BlockBackend *blk;
-> +        DriveInfo *di = drive_get(IF_SD, i, 0);
+> +    return 0;
+> +}
 > +
-> +        if (!di) {
-> +            continue;
-> +        }
+> +static void tca6416_realize(DeviceState *dev, Error **errp)
+> +{
+> +    Tca6416State *s = TCA6416(dev);
 > +
-> +        blk = blk_by_legacy_dinfo(di);
-> +        bus = qdev_get_child_bus(DEVICE(&s->usdhc[i]), "sd-bus");
-> +        carddev = qdev_new(TYPE_SD_CARD);
-> +        qdev_prop_set_drive_err(carddev, "drive", blk, &error_fatal);
-> +        qdev_realize_and_unref(carddev, bus, &error_fatal);
+> +    s->regs[CONF_PORT0] = 0xFF;
+> +    s->regs[CONF_PORT1] = 0xFF;
+> +}
+> +
+> +static int tca6416_event(I2CSlave *i2c, enum i2c_event event)
+> +{
+> +    Tca6416State *s = TCA6416(i2c);
+> +
+> +    switch (event) {
+> +    case I2C_START_SEND:
+> +        s->state = ADDRESSING;
+> +        break;
+> +    default:
+> +         s->state = ADDR_DONE;
+> +    };
+> +    return 0;
+> +}
+> +
+> +static void tca6416_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+> +
+> +    dc->realize = tca6416_realize;
+> +    k->recv = tca6416_read;
+> +    k->send = tca6416_write;
+> +    k->event = tca6416_event;
+> +}
+> +
+> +static const TypeInfo tca6416_types[] = {
+> +    {
+> +        .name = TYPE_TCA6416,
+> +        .parent = TYPE_I2C_SLAVE,
+> +        .class_init = tca6416_class_init,
+> +        .instance_size = sizeof(Tca6416State),
 > +    }
+> +};
 > +
->     if (!qtest_enabled()) {
->         arm_load_kernel(&s->cpu[0], machine, &boot_info);
->     }
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index adb4ed8076..f880c03d35 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -582,6 +582,7 @@ config FSL_IMX8MP
->     imply TEST_DEVICES
->     select ARM_GIC
->     select IMX
-> +    select SDHCI
->     select UNIMP
+> +DEFINE_TYPES(tca6416_types)
+> diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
+> index c423e10f59..a240cf2de2 100644
+> --- a/hw/gpio/Kconfig
+> +++ b/hw/gpio/Kconfig
+> @@ -20,5 +20,10 @@ config PCF8574
+>     bool
+>     depends on I2C
 >
-> config FSL_IMX8MP_EVK
+> +config TCA6416
+> +    bool
+> +    depends on I2C
+> +    default y if I2C_DEVICES
+> +
+> config ZAURUS_SCOOP
+>     bool
+> diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+> index 74840619c0..b3ff7c7460 100644
+> --- a/hw/gpio/meson.build
+> +++ b/hw/gpio/meson.build
+> @@ -18,3 +18,4 @@ system_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_gpio.c'))
+> system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c'))
+> system_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'))
+> system_ss.add(when: 'CONFIG_PCF8574', if_true: files('pcf8574.c'))
+> +system_ss.add(when: 'CONFIG_TCA6416', if_true: files('tca6416.c'))
+> diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+> index cea896b28f..6724f2efb8 100644
+> --- a/hw/gpio/trace-events
+> +++ b/hw/gpio/trace-events
+> @@ -46,3 +46,7 @@ stm32l4x5_gpio_read(char *gpio, uint64_t addr) "GPIO%s addr: 0x%" PRIx64 " "
+> stm32l4x5_gpio_write(char *gpio, uint64_t addr, uint64_t data) "GPIO%s addr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
+> stm32l4x5_gpio_update_idr(char *gpio, uint32_t old_idr, uint32_t new_idr) "GPIO%s from: 0x%x to: 0x%x"
+> stm32l4x5_gpio_pins(char *gpio, uint16_t disconnected, uint16_t high) "GPIO%s disconnected pins: 0x%x levels: 0x%x"
+> +
+> +# tca6416.c
+> +tca6416_write(uint8_t value) "0x%02x"
+> +tca6416_read(uint8_t value) "0x%02x"
 >

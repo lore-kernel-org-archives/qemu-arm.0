@@ -1,56 +1,56 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6494792njn;
-        Mon, 20 Jan 2025 23:06:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUp5U34QqoJ6L4FsbJRybR7C3eRwcjhLWJUro9kbcqeABf9Q49I1V2lOxp+QWRlYKv/1vX42ZYnx/oWtQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH7i9ggmkUZMtm+xOkdR0awTAk+tY39sMklsvX6p3lJlTxafxTpF6hD+137TkZbUOssJkHq
-X-Received: by 2002:ac8:7f16:0:b0:466:af35:92d5 with SMTP id d75a77b69052e-46e12aaf834mr241811571cf.25.1737443196624;
-        Mon, 20 Jan 2025 23:06:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737443196; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6494874njn;
+        Mon, 20 Jan 2025 23:06:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXw4nsXdCG3UHehcak7nwWnofBddD7rTen4qjBCsOTXzfeEjq6tXJVMHAFGXKFwn4xV8K9vvCpTuZcHqA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHFc2MVVIfiunu87uQBijPG3+6T83rBU2Iu/mf5qwWABJYylBl/ydnQfXLpoKV0os8znNi2
+X-Received: by 2002:a05:620a:25cf:b0:7be:3965:7452 with SMTP id af79cd13be357-7be6320d293mr2422955385a.32.1737443210983;
+        Mon, 20 Jan 2025 23:06:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737443210; cv=none;
         d=google.com; s=arc-20240605;
-        b=FTjsPY4yj9pFrSPV3IqpgocI9rc9Ea3cIA4OZFTguUcI4p95xJwf3MuBWgaLnrylnQ
-         aouL1On3kfZDVgLKmmfpSvwAukwa4YYnSuq93kbmkOL2mfCRnbHqtVrQ6QWTjK4Ma5mr
-         QiXXgIJcrDyCF5WsvU0H3ltp47YoV0TS0M0bKixmlLVpDGTk25ah03w5CnI4N2AT227i
-         7X8CfYHz9cMnQNZuJ8hMfANwS9mGXcWEoQG0+i4/0SEkw9BrvdSaoBhBUP3jPx4eN+A1
-         kedvYRUKWvptVRfFsQCakUWQ++TTUs8PR3YhRJqn3HpGkt3n3RfSUZB5LRqntQPuuWi5
-         2sUQ==
+        b=JsLzLlubbs0LdGnVNloyYPm2WmeHxEhN8wjbGM4t9k0SGp6AWnAKbwLEzhabhwMhhJ
+         TpQwwKwTw33LQNf0555zFbRgK4mhtSB7TlYBr/bwf/qPAqw2fQ97czjIOAEdbf+dmN3x
+         7G4cCj+nOIPniqtbylL0ZYlL9xbVl6MRnnbOIYvbcDx9c+R6B3qycRT5A8uq+9ol4X4P
+         xrRA9mmVZLBLWC+Q+6TGgmolpnoEGQuckkHKRjx9EDtZVz5lf/bOxprnTZvEhhYA+mNm
+         ZMzJ1jWzK2fG5LG4mH+xwG5PmFa77j1dbkBamCC3Qc3Uz9kZ0/rO9gZ/TAffB6epSMrT
+         6bUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to;
-        bh=vD7PZOzUUkUcdytg5plKPPu2/5GMyUipxcyEz/Egbns=;
+        bh=eawXwBJFi9kO+JPC7DckDFqCfwZ//8l5bma1FZnHM+0=;
         fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
-        b=fIbkJ3oR4Tk/xHIEStOVfnC4EhpyLzqH7xVaDyt8QfP6yr86o8al+qtn2Obs5EOPVZ
-         EwCvNCO5TdUZO2m6MBRIt+EakgZv++9cvCFlnWKYWR4HaaXlLZ1BtHj+d/dHI3mySXPj
-         xKo7BInNrhvn3XLiy6U7MPnSy28ePewbirfd6iqu7PeXj0LpnGSXtcY2pC4TFt8Wps8f
-         g481kWlxpTJSLHSuwihy/0/0KHadGJ63Cwp5RdoxJXNKlsW5f+EKLx3GwtKZJbTAmDRO
-         l06nDnF/gQ6EG92o/MXNKEHyd+6kzBdrrzY2bk0/mb9DTLNJHfhep5EiyuiuSXjJRhoS
-         xi4w==;
+        b=VFUliT+35sYuiDVGVJOwGVobwRHzclkla2GSs+lEW0WBg+omaQv555JgcE8jOit1ZN
+         DbrHnl29oxGZwd70F07f0HVTAwxoM8C8YJMulouOIhD5e/3Qr1wB/73hhUv860I8tRo/
+         3hk01rxq31Ja3/mq5s4fm365c6G8mhJJvh/x8IDsT+R+CNi6bitj47MKvbxfTkSgZS2p
+         Xd6RcJVGYV3zOm0/KyH4Iv1yG+MCdJ0jHF3BF8xTiQukXLSErA9JN4JnSglvNdAj4/MQ
+         Vy9befu1zEhHVFO27UFViS/48UcgGWNQ5dhzPl+bdyOqA/zdSPjkjcY/EzgHHabGLdPm
+         RciQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e104bca45si116124421cf.648.2025.01.20.23.06.36
+        by mx.google.com with ESMTPS id af79cd13be357-7be6146ca79si1170835985a.20.2025.01.20.23.06.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2025 23:06:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Jan 2025 23:06:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ta8Kp-0008ST-KX; Tue, 21 Jan 2025 02:06:03 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1ta8KN-0007eC-Q2; Tue, 21 Jan 2025 02:05:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ta8Ki-0007zu-1C; Tue, 21 Jan 2025 02:05:59 -0500
+ id 1ta8KH-0007Ne-Ol; Tue, 21 Jan 2025 02:05:29 -0500
 Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1ta8Kg-0001eA-L1; Tue, 21 Jan 2025 02:05:55 -0500
+ id 1ta8KG-0001eA-5O; Tue, 21 Jan 2025 02:05:29 -0500
 Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
  (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 21 Jan
@@ -65,9 +65,10 @@ To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
  <yunlin.tang@aspeedtech.com>
-Subject: [PATCH v1 15/18] hw/misc/aspeed_hace: Fix coding style
-Date: Tue, 21 Jan 2025 15:04:21 +0800
-Message-ID: <20250121070424.2465942-16-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 13/18] hw/arm/aspeed: Rename IRQ table and machine name for
+ AST2700 A0
+Date: Tue, 21 Jan 2025 15:04:19 +0800
+Message-ID: <20250121070424.2465942-14-jamin_lin@aspeedtech.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
 References: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
@@ -83,60 +84,103 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
-From:  Jamin Lin via <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Y0vEQHNh0REs
+From:  Jamin Lin via <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: xvmVdaZ6j4IA
 
-Fix coding style issues from checkpatch.pl.
+Currently, AST2700 SoC only supports A0. To support AST2700 A1, rename its IRQ
+table and machine name.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 ---
- hw/misc/aspeed_hace.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ hw/arm/aspeed.c         | 8 ++++----
+ hw/arm/aspeed_ast27x0.c | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
-index e3f7df2e86..18b85081c7 100644
---- a/hw/misc/aspeed_hace.c
-+++ b/hw/misc/aspeed_hace.c
-@@ -75,9 +75,12 @@ static const struct {
-     { HASH_ALGO_SHA1, QCRYPTO_HASH_ALGO_SHA1 },
-     { HASH_ALGO_SHA224, QCRYPTO_HASH_ALGO_SHA224 },
-     { HASH_ALGO_SHA256, QCRYPTO_HASH_ALGO_SHA256 },
--    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA512, QCRYPTO_HASH_ALGO_SHA512 },
--    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA384, QCRYPTO_HASH_ALGO_SHA384 },
--    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA256, QCRYPTO_HASH_ALGO_SHA256 },
-+    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA512,
-+      QCRYPTO_HASH_ALGO_SHA512 },
-+    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA384,
-+      QCRYPTO_HASH_ALGO_SHA384 },
-+    { HASH_ALGO_SHA512_SERIES | HASH_ALGO_SHA512_SHA256,
-+      QCRYPTO_HASH_ALGO_SHA256 },
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index ae0405c654..402d55c556 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -1654,12 +1654,12 @@ static void ast2700_evb_i2c_init(AspeedMachineState *bmc)
+                             TYPE_TMP105, 0x4d);
+ }
+ 
+-static void aspeed_machine_ast2700_evb_class_init(ObjectClass *oc, void *data)
++static void aspeed_machine_ast2700a0_evb_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+     AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+ 
+-    mc->desc = "Aspeed AST2700 EVB (Cortex-A35)";
++    mc->desc = "Aspeed AST2700 A0 EVB (Cortex-A35)";
+     amc->soc_name  = "ast2700-a0";
+     amc->hw_strap1 = AST2700_EVB_HW_STRAP1;
+     amc->hw_strap2 = AST2700_EVB_HW_STRAP2;
+@@ -1795,9 +1795,9 @@ static const TypeInfo aspeed_machine_types[] = {
+         .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
+ #ifdef TARGET_AARCH64
+     }, {
+-        .name          = MACHINE_TYPE_NAME("ast2700-evb"),
++        .name          = MACHINE_TYPE_NAME("ast2700a0-evb"),
+         .parent        = TYPE_ASPEED_MACHINE,
+-        .class_init    = aspeed_machine_ast2700_evb_class_init,
++        .class_init    = aspeed_machine_ast2700a0_evb_class_init,
+ #endif
+     }, {
+         .name          = TYPE_ASPEED_MACHINE,
+diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+index a95fed30cf..b32c4fcc35 100644
+--- a/hw/arm/aspeed_ast27x0.c
++++ b/hw/arm/aspeed_ast27x0.c
+@@ -73,7 +73,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+ #define AST2700_MAX_IRQ 256
+ 
+ /* Shared Peripheral Interrupt values below are offset by -32 from datasheet */
+-static const int aspeed_soc_ast2700_irqmap[] = {
++static const int aspeed_soc_ast2700a0_irqmap[] = {
+     [ASPEED_DEV_UART0]     = 132,
+     [ASPEED_DEV_UART1]     = 132,
+     [ASPEED_DEV_UART2]     = 132,
+@@ -794,7 +794,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+     create_unimplemented_device("ast2700.io", 0x0, 0x4000000);
+ }
+ 
+-static void aspeed_soc_ast2700_class_init(ObjectClass *oc, void *data)
++static void aspeed_soc_ast2700a0_class_init(ObjectClass *oc, void *data)
+ {
+     static const char * const valid_cpu_types[] = {
+         ARM_CPU_TYPE_NAME("cortex-a35"),
+@@ -817,7 +817,7 @@ static void aspeed_soc_ast2700_class_init(ObjectClass *oc, void *data)
+     sc->uarts_num    = 13;
+     sc->num_cpus     = 4;
+     sc->uarts_base   = ASPEED_DEV_UART0;
+-    sc->irqmap       = aspeed_soc_ast2700_irqmap;
++    sc->irqmap       = aspeed_soc_ast2700a0_irqmap;
+     sc->memmap       = aspeed_soc_ast2700_memmap;
+     sc->get_irq      = aspeed_soc_ast2700_get_irq;
+ }
+@@ -832,7 +832,7 @@ static const TypeInfo aspeed_soc_ast27x0_types[] = {
+         .name           = "ast2700-a0",
+         .parent         = TYPE_ASPEED27X0_SOC,
+         .instance_init  = aspeed_soc_ast2700_init,
+-        .class_init     = aspeed_soc_ast2700_class_init,
++        .class_init     = aspeed_soc_ast2700a0_class_init,
+     },
  };
  
- static int hash_algo_lookup(uint32_t reg)
-@@ -201,7 +204,8 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
-             haddr = address_space_map(&s->dram_as, addr, &plen, false,
-                                       MEMTXATTRS_UNSPECIFIED);
-             if (haddr == NULL) {
--                qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto failed\n", __func__);
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                              "%s: qcrypto failed\n", __func__);
-                 return;
-             }
-             iov[i].iov_base = haddr;
 -- 
 2.34.1
 

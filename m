@@ -1,197 +1,241 @@
-Received: by 2002:a05:7022:639b:b0:92:a90b:6588 with SMTP id q27csp154176dlq;
-        Tue, 21 Jan 2025 06:27:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVbP+JV9RSBXLPB1uHF8Y1HTaQddRRY3UG+ZkRxODr7Cpa+N5ol4CdwNmlPW7gr/FzQ8dwlal6y6aJyUw==@linaro.org
-X-Google-Smtp-Source: AGHT+IFHzQ+8yF0r57scel0v99dLyDxGDzqwVVFYfSe/kpBzHoo4e5NFq6Uv2yHOS6+deG9lgjBn
-X-Received: by 2002:a05:620a:2988:b0:7b6:ebb8:14e8 with SMTP id af79cd13be357-7be6320cc0emr2450383585a.29.1737469642986;
-        Tue, 21 Jan 2025 06:27:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737469642; cv=none;
+Received: by 2002:a05:7022:639b:b0:92:a90b:6588 with SMTP id q27csp154212dlq;
+        Tue, 21 Jan 2025 06:27:27 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVrHuv3EWYsIaDsxNVo5FHXyJFt6KGYKtw0DZe3LfWCW2sauJRO2/BqI+SV8a7ORgmMbJlGPxY12VR7tA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHkK377QYjvtXqVz/V9EV5MikRZ7PQTGIxUAqNLbxpdayFuqbQtAWM4KiF2V8RBEOaYXvfR
+X-Received: by 2002:ac8:5809:0:b0:467:6d36:4c94 with SMTP id d75a77b69052e-46df5637cbcmr391076351cf.2.1737469646992;
+        Tue, 21 Jan 2025 06:27:26 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737469646; cv=none;
         d=google.com; s=arc-20240605;
-        b=Lzzl69aazUuBtxEoFcKD/ihSo9jZvXV/SXleMuhxY6wPUCNulvOkJrZCszgqHLcaCO
-         6WQYJQFUEdKuhG+LHMiFGi5k6pAxdQwR5ZAFaSixR7b5DuAsSQgXoHSQTVjWq7dfp7T3
-         cSvm3LfAxAZGn69ACWfxUPeoZ7faLVeRsmGXi77JDQJLuP3I59LEwyIUA5WoUsWe1lsF
-         r0i2ifwgESp2txyiC2Ad+SuCzaKGGQTOaQbNGU2qdA4fXwbg46r/M0D560vsUHpZPPw6
-         H5cMGknKcQJrRvno4FDq2JGSh7wlAEdWKJiHSMH3Fqsh6Ahx/GGTs3fplEauvI3JE/kS
-         64Vg==
+        b=Kb2VgEkKuo0m8JYdkqVRyQLXyQ+rhw4/GLFPTWM6dAjP+99RkxIB548xffx8ugToQ1
+         qLHXUhTxeGaX9OhBVc6wR4rfBoKBFtHpIlcZDrUfiXHiiivzB1KmmPGXdyXvxyB2O5jy
+         bbiKoS8ggRIPw5ZOIW8voljbCBcJqCTvYBscpeh8iBp69osi8E++Z2Rt33e50J/BuKTf
+         F/XBkmHac47ZBwDpRb+IZKoqzlH1IYWuHItk6IxFtmHS2qkJS31uhSCSwtsBUwgKArjH
+         pYvkUc6vRC2hUxSnnR6RDegRP2imSsdThz19sbwxHUMVg0b800iB1KMac0Tcv0m6Sgcc
+         enKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=uL4Y+z6DzTKVC74EB8XgyjJw99XhZeyPYSd4sWJmzog=;
+        bh=An4WuoQ9oUhjA0b8UFcs05igfO0lRfI1lKgEsGkbyfQ=;
         fh=T9nLPmYdz8kSl8qI33evWuh/VVTqN+U2Q3T/ETy8raQ=;
-        b=SlW/Ioo+c4jOYqUoPybhf8Y/lA2r38i7aJvfRqlQjXG4BBm7ZfkPytXBXCTykYvITI
-         PspS+1OyDqw84keaDFk/xHw1W/rht+4PZNXDP9cjbayiK9+IVkiqEVWCmQq2QOo9zSa+
-         EU3GA/XPVlPRG9KtxU76aSrLiJVQPlcb18HF0WS9SH/+1LASOcR8VhFs1/QGHHVrxnMH
-         beOfFBKzOIcRpcCd8FjUs50cKjqztflFqSbS+omowRNS9btkHavCs+ghZ9cHxivRSD8f
-         iGdCJCyCDLvK50nzN5YU4lNEnNW7jGj1ejL4srjgtmrAAxod4sa+78VBIuYr14Usu5P1
-         AFxQ==;
+        b=QX+ljvJv7WfaY3TEs/jpynM2Jf9G29q7w7eU1GUW1lM/F3c7wwf7vcUjcLeQoL347x
+         Xy02v9crZB+j5lTOWKVLAVj5BBTONw0/zped/jPX3Q2JHMI5pfC5b3gdUBOvVBIqODsq
+         ZomwFtZoKVErxu/+j1u1NiIcS3mra0kp7naoa/Biz8iOaHR8uxUcxTwZPTqurQPdZFdL
+         BOAtHgvTDYjTApUvzOOgBaOm0A+lcHtBzqgO+5henajh6gYMEiTq9eknv9ya0X8kDr1P
+         bdy8+qLcpEm6S9tBW1jp8vz4CJNP2d88Hnn68leNyzM0VFl6h8VjB+v10ww4JKkTg+OX
+         3iFw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kyyNbtL7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KkkzBTS5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e2f67dda0si67573591cf.196.2025.01.21.06.27.22
+        by mx.google.com with ESMTPS id d75a77b69052e-46e10458959si132688841cf.429.2025.01.21.06.27.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jan 2025 06:27:22 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 21 Jan 2025 06:27:26 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kyyNbtL7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=KkkzBTS5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1taFAu-0000WG-81; Tue, 21 Jan 2025 09:24:16 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1taFAe-0000P0-3r; Tue, 21 Jan 2025 09:24:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taFAq-0000UT-TJ
- for qemu-arm@nongnu.org; Tue, 21 Jan 2025 09:24:12 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taFAc-0000Np-1a
+ for qemu-devel@nongnu.org; Tue, 21 Jan 2025 09:23:58 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taFAn-00033G-NG
- for qemu-arm@nongnu.org; Tue, 21 Jan 2025 09:24:12 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-385deda28b3so3603985f8f.0
- for <qemu-arm@nongnu.org>; Tue, 21 Jan 2025 06:24:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taFAa-0002yw-8s
+ for qemu-devel@nongnu.org; Tue, 21 Jan 2025 09:23:57 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-385df53e559so4380557f8f.3
+ for <qemu-devel@nongnu.org>; Tue, 21 Jan 2025 06:23:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737469448; x=1738074248; darn=nongnu.org;
+ d=linaro.org; s=google; t=1737469433; x=1738074233; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=uL4Y+z6DzTKVC74EB8XgyjJw99XhZeyPYSd4sWJmzog=;
- b=kyyNbtL7qPBGpgMfbNJwFYYqeqULyktpceO19h6lQvNTWMgFX7/jLfVke35PIlf54u
- PYeJRNAIwzOxDqFp4kaeaUsG7pWxS+r/E+Jk0bj40R0zmiQK6Hpuj6ti+vuNfcm4WeUg
- zIC3n4/PniBI9/IhV4xUFPdNeA73lad829+63X6lObpPjo4I4/b3qquHzJHrBcQKrgn7
- DHzvHjyAHH70v7UhMWzjDYKWxuJnQdkorRXSYa5EQOieF7/YE5zq6WGhdxkpvpYwJgnS
- 2NFF4Gf/VT41UeCVkC28jczrcaoTQHYvck9pGJGlp14IjFWNYF9yQMnv4+FtOhKVuPOA
- FpHA==
+ bh=An4WuoQ9oUhjA0b8UFcs05igfO0lRfI1lKgEsGkbyfQ=;
+ b=KkkzBTS5ciSvtq2OK554eAKDXOLXhQ2KEU1BXDdO187J9bLIuuvcUQ0pp/0tpx3+7L
+ RyioxP70JY2TOsG/IOTRFK0s0v2MPYuFbCPdEWkkatZaWuSk5jZ9Xyxf3y7x3vEWE7NU
+ eT6Op7mlU2pdU7IDpk4XjEI7q18fVw3ieB8wLEHk4d5mVhjh2PO69O47tqzqaZUIDnV4
+ obcBn7JbD99cYTCxkzDmoA9983jj2ZaOunuIsFcn5B8X6s2mekHixtS2y2b53yd/0HYL
+ v7GG29ALGzqeg8aTjHiR4pdLVEDNNihhZiO9OfQk0aUJps5goswIlNXfRgwBfj2udROZ
+ 523Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737469448; x=1738074248;
+ d=1e100.net; s=20230601; t=1737469433; x=1738074233;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=uL4Y+z6DzTKVC74EB8XgyjJw99XhZeyPYSd4sWJmzog=;
- b=MvZmWqv8nY3tcRMbyi3a+tn8FnWzRvpcwlZFK/26Q6O9kMsSWhrdEVKEwGiC7ge81C
- 9W6wrFuyjq/jBLEBLJgFyTGfiDmoto6LbRYbtqwBEzyb7WKq6H45tEldoqgIbXu5Eqpc
- pMUvPdGBtfPLDindgBbMLSgRD8+I0mZUIOABY6Yxj2NUcHA22+jK9v+W+JTHXL+ivMY1
- XftBpnwVTXkWwFMTVmoc1kqfSp+57Lvbl7sgWzhSC+flAXwE3Gprq3LbgluS4lLtkB2T
- F+L/Sp4dZrbHJVg/NChYxIw5VC9TYartGNfkKzlHcZ7VMD+NCEAXrrPdbt8F6/EhKLo6
- 9v/Q==
-X-Gm-Message-State: AOJu0Yz3IZgqdRHF/RJYC8gZrInr+G0vzEtYKsIw2vd1rw8RQUqfRFTf
- waikCV45XZcqvj+b3n7C0YxfZ56T+HC/V5t98vveGMOCwhkCs/je5zVbCOn6Ojprt3zH2B0vzb9
- UKvA=
-X-Gm-Gg: ASbGncsSwmSx6+KAWBrrb0cw7y5GNVhTcU83gDBQ8JyquFqeXB0mdkBsAZ6v7BVZOQe
- zxQr8g/7W0GasIlF41qFF2bvU6hK4CXk3jvt3Pnvpe4ZYbC1shHF/nd7H7W3DzDOQ7fAU/hdhYx
- A58lBVNaeJvnfHoqV3vm2Jv9wx0TUFNG33FCDdw2A9rJnmfGQNJPi1T0s8rXhjhc12qIATswLZA
- vTshFNv6rpUcKTg/L7aHgGxgIp8rg6jVVYUsPtZqbVx+O6Fk52/dZX6whmeaMuEvy8qbJWImq+T
- KEX5FrwfMFMkcbbbfPfos2Wzxlk1Ezi9SS1Q3i6GNe2O
-X-Received: by 2002:a05:6000:1849:b0:38a:8888:c0b6 with SMTP id
- ffacd0b85a97d-38bf57bfcf5mr18393431f8f.51.1737469447276; 
- Tue, 21 Jan 2025 06:24:07 -0800 (PST)
+ bh=An4WuoQ9oUhjA0b8UFcs05igfO0lRfI1lKgEsGkbyfQ=;
+ b=DQA9GwbQJHpFHPOj4s/k7XI2iEPpl/Wyaxd+5VKlExJyBg04x6eo2O2IQrHpmS5h4k
+ 4Ygce7TItcLXoCKorIZM3Qnu3HyoABOpIo1JTlWJqFhu/u7v4OYR7Xll8gfICA/yF6SE
+ yxYjh80K4cLF2dY1oAOdHfELad+bGU93vCubdaPAGk/9R7b2+Qf9y5WNKcBBZaSWuAu2
+ UAyXOoWzxpxzsid5A/SnE7TEbERxX/2Fyc93o4ncWLwiAwf1d+67Hs1PzT4+QeSuBIgv
+ CIhxDld2TKZheQTUedrxhEmcZgZwBbgLtT1QOxV9/0Fj8a0F5143kP/VT03HxTZUdT/d
+ 3u+w==
+X-Gm-Message-State: AOJu0Yyg11Ok7XJTbEYKap8r2bf8Wt3dw/De9qNGdQFK4nT4SD6i0U0g
+ pEw1pk5i0/jT/HEJoaOQMqlYy2NTqeK3X1AcNjTY0My1pkc8qLrPtRV4sJIA4cZV3MHUCb4/vBS
+ gqME=
+X-Gm-Gg: ASbGncuUtN+Z6Wi2EFXOOD9rEQykz64ogyFVzte9MttK8EdvvhPDbM6qBquE1rhfyrV
+ pLQtlN9DLV1w5XyxYWtIq+TRZbLCZhfa/zH+GS6/oeY4mVsCEGLrHhaAjtWf0M5vmRidpmvmTW3
+ PNx9bzf987gDlJoM9Llrk2O+qA/ageLhukdPA0WrjM599keEpcpG3eYbkUL/7m+9VErcoYpcX9G
+ pYxLG//SLwpbRQAljR/ITeRq8zR60KEFgeiq3+mODyVyPI7scJ2RgJg3rjXZAeQsWF0TLqAj6rH
+ nJUnGVNSZA6Qx7MFVUjqN+QXxBgomRvw6si98FsCUoy7
+X-Received: by 2002:a5d:64ed:0:b0:386:3e87:2cd6 with SMTP id
+ ffacd0b85a97d-38bf57b7633mr19466181f8f.38.1737469433241; 
+ Tue, 21 Jan 2025 06:23:53 -0800 (PST)
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38bf3214fbdsm13815861f8f.19.2025.01.21.06.24.06
+ ffacd0b85a97d-38bf3221c30sm13728474f8f.32.2025.01.21.06.23.52
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 21 Jan 2025 06:24:06 -0800 (PST)
+ Tue, 21 Jan 2025 06:23:52 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 05/28] cpus: Restrict cpu_has_work() to system emulation
-Date: Tue, 21 Jan 2025 15:23:18 +0100
-Message-ID: <20250121142341.17001-6-philmd@linaro.org>
+Subject: [PATCH 02/28] target/rx: Ensure not being build on user emulation
+Date: Tue, 21 Jan 2025 15:23:15 +0100
+Message-ID: <20250121142341.17001-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250121142341.17001-1-philmd@linaro.org>
 References: <20250121142341.17001-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: MBx82joLOTtT
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: 7KONbYxcxeq2
 
-This method is not used on user emulation, because there
-is always work to do there.
+Currently only system emulation is supported.
+Assert no target code is built for user emulation.
+Remove #ifdef'ry since more work is required before
+being able to emulate a user process.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/core/cpu.h | 28 ++++++++++++++--------------
- 1 file changed, 14 insertions(+), 14 deletions(-)
+ target/rx/cpu.h    | 6 ++++--
+ target/rx/cpu.c    | 6 ------
+ target/rx/helper.c | 4 ----
+ 3 files changed, 4 insertions(+), 12 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index 2402706c7d9..e094d54949d 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -748,6 +748,20 @@ int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs);
-  */
- bool cpu_virtio_is_big_endian(CPUState *cpu);
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+index 5ba1874bd76..349d61c4e40 100644
+--- a/target/rx/cpu.h
++++ b/target/rx/cpu.h
+@@ -26,6 +26,10 @@
+ #include "exec/cpu-defs.h"
+ #include "qemu/cpu-float.h"
  
-+/**
-+ * cpu_has_work:
-+ * @cpu: The vCPU to check.
-+ *
-+ * Checks whether the CPU has work to do.
-+ *
-+ * Returns: %true if the CPU has work, %false otherwise.
-+ */
-+static inline bool cpu_has_work(CPUState *cpu)
-+{
-+    g_assert(cpu->cc->has_work);
-+    return cpu->cc->has_work(cpu);
-+}
++#ifdef CONFIG_USER_ONLY
++#error "RX does not support user mode emulation"
++#endif
 +
- #endif /* CONFIG_USER_ONLY */
+ /* PSW define */
+ REG32(PSW, 0)
+ FIELD(PSW, C, 0, 1)
+@@ -129,11 +133,9 @@ struct RXCPUClass {
+ #define CPU_RESOLVING_TYPE TYPE_RX_CPU
  
- /**
-@@ -814,20 +828,6 @@ CPUState *cpu_create(const char *typename);
-  */
- const char *parse_cpu_option(const char *cpu_option);
+ const char *rx_crname(uint8_t cr);
+-#ifndef CONFIG_USER_ONLY
+ void rx_cpu_do_interrupt(CPUState *cpu);
+ bool rx_cpu_exec_interrupt(CPUState *cpu, int int_req);
+ hwaddr rx_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+-#endif /* !CONFIG_USER_ONLY */
+ void rx_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+ int rx_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int rx_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+diff --git a/target/rx/cpu.c b/target/rx/cpu.c
+index 8c50c7a1bc8..aa310bd6144 100644
+--- a/target/rx/cpu.c
++++ b/target/rx/cpu.c
+@@ -184,13 +184,11 @@ static void rx_cpu_init(Object *obj)
+     qdev_init_gpio_in(DEVICE(cpu), rx_cpu_set_irq, 2);
+ }
  
--/**
-- * cpu_has_work:
-- * @cpu: The vCPU to check.
-- *
-- * Checks whether the CPU has work to do.
-- *
-- * Returns: %true if the CPU has work, %false otherwise.
-- */
--static inline bool cpu_has_work(CPUState *cpu)
--{
--    g_assert(cpu->cc->has_work);
--    return cpu->cc->has_work(cpu);
--}
+-#ifndef CONFIG_USER_ONLY
+ #include "hw/core/sysemu-cpu-ops.h"
+ 
+ static const struct SysemuCPUOps rx_sysemu_ops = {
+     .get_phys_page_debug = rx_cpu_get_phys_page_debug,
+ };
+-#endif
+ 
+ #include "hw/core/tcg-cpu-ops.h"
+ 
+@@ -201,11 +199,9 @@ static const TCGCPUOps rx_tcg_ops = {
+     .restore_state_to_opc = rx_restore_state_to_opc,
+     .tlb_fill = rx_cpu_tlb_fill,
+ 
+-#ifndef CONFIG_USER_ONLY
+     .cpu_exec_interrupt = rx_cpu_exec_interrupt,
+     .cpu_exec_halt = rx_cpu_has_work,
+     .do_interrupt = rx_cpu_do_interrupt,
+-#endif /* !CONFIG_USER_ONLY */
+ };
+ 
+ static void rx_cpu_class_init(ObjectClass *klass, void *data)
+@@ -227,9 +223,7 @@ static void rx_cpu_class_init(ObjectClass *klass, void *data)
+     cc->set_pc = rx_cpu_set_pc;
+     cc->get_pc = rx_cpu_get_pc;
+ 
+-#ifndef CONFIG_USER_ONLY
+     cc->sysemu_ops = &rx_sysemu_ops;
+-#endif
+     cc->gdb_read_register = rx_cpu_gdb_read_register;
+     cc->gdb_write_register = rx_cpu_gdb_write_register;
+     cc->disas_set_info = rx_cpu_disas_set_info;
+diff --git a/target/rx/helper.c b/target/rx/helper.c
+index 80912e8dcb4..7f28e729891 100644
+--- a/target/rx/helper.c
++++ b/target/rx/helper.c
+@@ -40,8 +40,6 @@ void rx_cpu_unpack_psw(CPURXState *env, uint32_t psw, int rte)
+     env->psw_c = FIELD_EX32(psw, PSW, C);
+ }
+ 
+-#ifndef CONFIG_USER_ONLY
 -
- /**
-  * qemu_cpu_is_self:
-  * @cpu: The vCPU to check against.
+ #define INT_FLAGS (CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR)
+ void rx_cpu_do_interrupt(CPUState *cs)
+ {
+@@ -146,5 +144,3 @@ hwaddr rx_cpu_get_phys_page_debug(CPUState *cs, vaddr addr)
+ {
+     return addr;
+ }
+-
+-#endif /* !CONFIG_USER_ONLY */
 -- 
 2.47.1
 

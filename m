@@ -1,169 +1,213 @@
-Received: by 2002:a17:504:d692:b0:1be9:327d:8ee3 with SMTP id na18csp53623njb;
-        Wed, 4 Dec 2024 00:58:45 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEWTkWt3cI+GYX7cf4IlLhA0iEXUoMRonFd1bFEFn1xf8ihUuzCBDjNyUxXLI7P+UiHpEDp
-X-Received: by 2002:a05:622a:1b1f:b0:461:304:c676 with SMTP id d75a77b69052e-466c1b067f5mr422146981cf.5.1733302725662;
-        Wed, 04 Dec 2024 00:58:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1733302725; cv=none;
+Received: by 2002:a05:7022:639b:b0:92:a90b:6588 with SMTP id q27csp152715dlq;
+        Tue, 21 Jan 2025 06:24:55 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUn+u2jXUMdWQWOlm7psz3uZbIjm28EAAJ1lqQAgNGYFve8vMIybnh5YT4oPjyDdcE92sxp1xFsoFn/Wg==@linaro.org
+X-Google-Smtp-Source: AGHT+IGvg0khur7P09hwRKbku5zBK/ft4mBKtXcyDJlCfjWiY6pL9yZhaPL/B4+Rf9Lsgv+ZsnTK
+X-Received: by 2002:a05:622a:289:b0:466:d559:b528 with SMTP id d75a77b69052e-46e12e8ea76mr253464581cf.17.1737469494811;
+        Tue, 21 Jan 2025 06:24:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737469494; cv=none;
         d=google.com; s=arc-20240605;
-        b=DY/slttEqIewDXGzMfkuA3WQE0GEto6HRYKk53WBqoORM750wXr4hsWETD4pZV02Rq
-         rvFo8Cn1ilxZA/arnhyWuQJ6mrkmGlJ3tnf4K+hJDuUn+iI3UoT0eshc0ZSdQZryHamm
-         TQRyFM3XksyhvRwjKJ+31tZKaNbtEQMI6sHZSwmGfJm1+NIenQ0lYACguCJasYOTq66S
-         Rf1I8zuqXbcsmZ6P0fqq04kPWYIgEHKnOdLyMebiaTpCsEeVnuWo8UBS+Uk9IcoaV+nq
-         lGFs3B1AIQDQ0LhRw3/GRy/BfDy+BEYyQaMOrTHtVIXye48SGgmlyHIOsa7L3v1cbGIa
-         X72A==
+        b=DkZ6Lip2Z9KQO25U60sGRa78dnAOicNHtlGdLhW6qKQi81kqcc9YXlM0Ynbb7cloB0
+         hzq2ExJPQHCKIBpGR5D67i81YNChL/AyhLiRPI5vUdSfTdlnkuMWQwiudCiippqqOKOm
+         VHJrfcX4m8WP1LdT3efwIu2uWPX2IVQyfNPWJi3+4qCDHjmP7vVj3pTYunEYfQhYT0+F
+         Uqwgue37v/Z80GZYEaNClO6WEeWilf7ppgku4A2Peuxzl367/4AOLhNG9zrLQrJ/LDOi
+         9auWjCUrRFHuKsplVRT1z+O0hnzNfbzeC/6inN1ZkUy1jvQf8fzlxSNUtlBgqtwM3TPd
+         NLDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:reply-to:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=oz0CHp/g7LcfMMxQkjHBEWKwTD70Vh2TEYeJy5vrgOI=;
-        fh=89n9M27yhkzw5AGQnj0NZ4W8B5xrLlgPRFycBNE2kxA=;
-        b=NN6CZlBgAJSU2swXO041rdng87f0wxcdEEBfaLcFN6Lk3bubkGlxHj3pV0O0Amr/sz
-         G7YC96CAwtuAsb3SawkYzV5vnrrK5UXpsyhoIkyNQ0ycFGXjZuax+DvlsnE5oGJb/gX5
-         A8hAadgwAZrCKYLX6gQslio0bQLL+1Nnya0gLvx5/dN9DlQr8cQkx9vRwja88Vyt2mLC
-         xlBVvRqel5rpsDsDCftdcRVojRB3ZH/muN+FIqF1KfKJpRmXW2SGG+0rtkwuw3+Y5TXJ
-         Wn6fVty9V7+6jqdYBrT30zGKsKsTaOzw0yszMtBHlli3MK3B2MEu7jZ2MNhPefzC12tD
-         dyLA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=huBnZLMMoWYJ6yRI7yv6u3SXGmIuRg6gkaMshUEQcb4=;
+        fh=T9nLPmYdz8kSl8qI33evWuh/VVTqN+U2Q3T/ETy8raQ=;
+        b=XuYJ4TsilQXPCFQuLugIO+doALJZ18pJ7fnUqxgSwPfJNdNNnExEzxsfQ2pePBTfnp
+         T7NIg3BwTJP7FoCFhtGMTVKFXJQ8ZmH3emG+zVvE3FVZZQ65TIEs6e7NMxgRuNeyyOSt
+         pEX9yY1/XZy+1bdkqGQihBG9KC/Pur8py2ihCWCNXN0gWVcE++bSecFGScunH+GbmBuT
+         oDIW/Wz0xf/DfzMk79EXQhymQvlU12casPTMl5At6dbq3EGsZ6xz40V1od+t2qVKjh8X
+         AcuiGPjZyVTLlAyBCCV+9ShFs6JO0Avz17WcnHNlzntGA16VcjWb+s7ix/fgCrrHio5x
+         MpVA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QPwiCx4K;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <berrange@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id af79cd13be357-7b684924721si1643029585a.37.2024.12.04.00.58.45
+       dkim=pass header.i=@linaro.org header.s=google header.b=wf3kJWY2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d75a77b69052e-46e104873b2si120198461cf.471.2025.01.21.06.24.54
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Dec 2024 00:58:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 21 Jan 2025 06:24:54 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QPwiCx4K;
-       spf=pass (google.com: domain of berrange@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=berrange@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1733302725;
-	h=from:from:reply-to:reply-to:subject:subject:date:date:
-	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
-	 content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=oz0CHp/g7LcfMMxQkjHBEWKwTD70Vh2TEYeJy5vrgOI=;
-	b=QPwiCx4KUjvULBI+iFjUCBaA3iby3QjQHfu1mxKQ8RsgiwyFycav8BHw1clL/nfpjptY69
-	RHJ2BEdHIkre73/AE4EOv7PRMMM+ubdPIaGfp0lgKXAFcYnPF4+kwu4EwVp52+sOa9J3Zx
-	bXCnFaphd9Blki9T5ZmrkU9QAA3qifc=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-661-mxoMLOZpMJaiKuXo4z-fsQ-1; Wed,
- 04 Dec 2024 03:58:42 -0500
-X-MC-Unique: mxoMLOZpMJaiKuXo4z-fsQ-1
-X-Mimecast-MFC-AGG-ID: mxoMLOZpMJaiKuXo4z-fsQ
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id BC8A719560A5;
-	Wed,  4 Dec 2024 08:58:39 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.92])
-	by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS id 44EE31956089;
-	Wed,  4 Dec 2024 08:58:30 +0000 (UTC)
-Date: Wed, 4 Dec 2024 08:58:27 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Pierrick Bouvier <pierrick.bouvier@linaro.org>,
-	qemu-devel@nongnu.org,
-	Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Andrew Melnychenko <andrew@daynix.com>,
-	Jason Wang <jasowang@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
-	Fabiano Rosas <farosas@suse.de>, Kevin Wolf <kwolf@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org,
-	Yuri Benditovich <yuri.benditovich@daynix.com>,
-	manos.pitsidianakis@linaro.org, qemu-block@nongnu.org,
-	Michael Roth <michael.roth@amd.com>,
-	Konstantin Kostiuk <kkostiuk@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
-	gustavo.romero@linaro.org
-Subject: Re: [PATCH 5/7] docs: add a codebase section
-Message-ID: <Z1AZs50I-7oxGhlb@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20241118172357.475281-1-pierrick.bouvier@linaro.org>
- <20241118172357.475281-6-pierrick.bouvier@linaro.org>
- <CAFEAcA-UkmPvyNW_6o22-WhaLxnnji55UsBp3UcPA-gYH7kvVg@mail.gmail.com>
- <87zflcbs0l.fsf@draig.linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=wf3kJWY2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1taFAV-0000KA-45; Tue, 21 Jan 2025 09:23:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taFAT-0000Jj-CJ
+ for qemu-arm@nongnu.org; Tue, 21 Jan 2025 09:23:49 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taFAP-0002wf-VM
+ for qemu-arm@nongnu.org; Tue, 21 Jan 2025 09:23:49 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-435f8f29f8aso40946685e9.2
+ for <qemu-arm@nongnu.org>; Tue, 21 Jan 2025 06:23:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1737469424; x=1738074224; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=huBnZLMMoWYJ6yRI7yv6u3SXGmIuRg6gkaMshUEQcb4=;
+ b=wf3kJWY2nzHFXuAKFGXVp+bjIkUfBgIzC6JWfyyzE8V5a8mEKk1/q+2HmbrzIUdtRL
+ ahH03jR5fjKyld7zFTylCNDDfPrTnc6/bF6VOFyBhz4kUK5Dv1BtIA4viEadhvXdbYF9
+ ULHthNGDW1/1MEx+CN4bppx2wmw7p26FRdxwpoD5fK22HL9VtO02PzoX2P9DKioWqt1C
+ dZFrY7uOc7DlzfeguAQ3uUrvCVspN3tkvAzMNJVRIl8KzFXLnhpcA7629gnEYjmKg55z
+ lMC47lhA5Gw2BhskEw/PwhjyJ2yPjbSlszHf/vn9lWYdfiur/DbTWzzLfKpZM/KsBkAj
+ 16aA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737469424; x=1738074224;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=huBnZLMMoWYJ6yRI7yv6u3SXGmIuRg6gkaMshUEQcb4=;
+ b=vKIT8FBoVZS8vwBccukV0Cx38I/vvqfKItVnYfOmlLhpL8Iyty7UAk79l83/MYWb/b
+ UoJle1YfZwCgGssg2xTW88ZPReC4zKPHA+HnZEWVCk7bZA29+x3Ag0CEC/eRjXoZZart
+ pjnwAIvq6O5/spaQz+GHxgpW4UboKgUFTLknbvyjLoIEY57l7hpBp4rmpxmEPpKhE+g4
+ +CLNVAPfDlzF5ktYZ5gqBrTuQWgY6U3x2W60b9QgvBwZgVwap0REqcMtwn8ignU7krGl
+ oMUjKQtuV999hL0D0B4JRUvygRtiUDkouMa2DQSphD213BqFcNBW928KQBw1rBcMPmgw
+ vOEQ==
+X-Gm-Message-State: AOJu0YzTtKJKTXk28K8sQov6oQ9FzkHHSMzQ3uU6CfjY8KxpWyapahL+
+ fjGU7F7AeRSR8jPMmd3tVtDLUOwxZi3O2kpgb+J+qb4M3l/zors21T/IwPQIBP8=
+X-Gm-Gg: ASbGnctaIiqPoMEocrp13KWEq4DAXZz4xktHnOE3Y96/t6BChkdXhQRzfrMRnkj1zaC
+ omcvpx06TeR1HFhdS8T7203VNIL8OVxdKiVt5za0hHgMklP3cUMVD/W02PHLW4xgCv3PwJ5Djww
+ eJXr/4/urBVY3IvxDB5usUqTlD38PFDYJwiMiJuQAMsKokWZ4pssUaO4LWXj2O1UcNO5D6d35AN
+ m82Xrv/zi6aL2hzEdMCgM5/7GPIHhEpiRf0bVuPl3ASrPPtsYgUfWBcxrR+ICtQvhewPbXx4Cei
+ cRkHAk/bLVBAVBVAv+hbmQVoEmKgth2YxfwRdGuMstGJ
+X-Received: by 2002:a05:600c:1da8:b0:434:a711:ace4 with SMTP id
+ 5b1f17b1804b1-4389eca3ca1mr159671455e9.17.1737469423851; 
+ Tue, 21 Jan 2025 06:23:43 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43890469ba8sm178907415e9.37.2025.01.21.06.23.42
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 21 Jan 2025 06:23:43 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/28] cpus: Restrict CPU has_work() handlers to system
+ emulation
+Date: Tue, 21 Jan 2025 15:23:13 +0100
+Message-ID: <20250121142341.17001-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <87zflcbs0l.fsf@draig.linaro.org>
-User-Agent: Mutt/2.2.13 (2024-03-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-TUID: F9lMURjT2DHL
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: RuhCQYbadGBi
 
-On Tue, Dec 03, 2024 at 05:22:50PM +0000, Alex Bennée wrote:
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> 
-> > On Mon, 18 Nov 2024 at 17:24, Pierrick Bouvier
-> > <pierrick.bouvier@linaro.org> wrote:
-> >>
-> >> Present the various parts of QEMU and organization of codebase.
-> >>
-> >> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> >
-> > I like this; it's something I've thought for a while would
-> > be good to have, but which I never got round to trying to
-> > put together. Thanks for doing this!
-> >
-> > Mostly my comments below are spelling/typo nits and
-> > other minor stuff.
-> >
-> >> ---
-> >>  docs/about/emulation.rst               |   2 +
-> >>  docs/codebase/index.rst                | 211 +++++++++++++++++++++++++
-> >>  docs/devel/decodetree.rst              |   2 +
-> >>  docs/devel/ebpf_rss.rst                |   2 +
-> >>  docs/devel/index-internals.rst         |   2 +
-> >>  docs/devel/migration/main.rst          |   2 +
-> >>  docs/devel/qapi-code-gen.rst           |   1 +
-> >>  docs/devel/testing/main.rst            |   9 +-
-> >>  docs/devel/testing/qtest.rst           |   2 +
-> >>  docs/index.rst                         |   3 +
-> >>  docs/interop/qemu-ga.rst               |   2 +
-> >>  docs/system/qemu-block-drivers.rst.inc |   2 +
-> >>  docs/tools/qemu-storage-daemon.rst     |   2 +
-> >>  docs/user/main.rst                     |   6 +
-> >>  14 files changed, 247 insertions(+), 1 deletion(-)
-> >>  create mode 100644 docs/codebase/index.rst
-> >>
-> <snip>
-> >> +  Block devices and `image formats<disk images>` implementation.
-> >> +* `bsd-user <https://gitlab.com/qemu-project/qemu/-/tree/master/bsd-user>`_:
-> >> +  `BSD User mode<bsd-user-mode>`.
-> >> +* build: Where the code built goes!
-> >
-> > The built code doesn't have to be in 'build'. We could say:
-> >
-> >  * build: You can tell the QEMU build system to put the built code
-> >    anywhere you like. By default it will go into a directory named
-> >    ``build``. Sometimes documentation will assume this default
-> >    for convenience when describing command lines; you can always
-> >    replace it with the path to your build tree.
-> >
-> > ?
-> 
-> I always recommend creating a builds directory and having multiple build
-> trees under it:
+On user emulation, threads always have work to do, and
+CPUClass::has_work() is never called. Restrict it to system
+emulation, allowing to simplify a bit and reduce code built
+on user emulation.
 
-I can understand why you do that, but I'm doubtful the need to have
-many parallel build directories is the common case. IOW, I expect
-that for the majority of contributors the default single 'build'
-directory is sufficient.
+Based-on: <20250121114056.53949-1-philmd@linaro.org>
+ "cpus: Prefer cached CpuClass over CPU_GET_CLASS() macro"
 
-With regards,
-Daniel
+Philippe Mathieu-Daudé (28):
+  target/hexagon: Ensure not being build on system emulation
+  target/rx: Ensure not being build on user emulation
+  target/tricore: Ensure not being build on user emulation
+  cpus: Restrict cpu_get_memory_mapping() to system emulation
+  cpus: Restrict cpu_has_work() to system emulation
+  cpus: Un-inline cpu_has_work()
+  cpus: Introduce SysemuCPUOps::has_work() handler
+  target/alpha: Move has_work() from CPUClass to SysemuCPUOps
+  target/arm: Move has_work() from CPUClass to SysemuCPUOps
+  target/avr: Move has_work() from CPUClass to SysemuCPUOps
+  target/hexagon: Remove CPUClass:has_work() handler
+  target/hppa: Move has_work() from CPUClass to SysemuCPUOps
+  target/i386: Move has_work() from CPUClass to SysemuCPUOps
+  target/loongarch: Move has_work() from CPUClass to SysemuCPUOps
+  target/m68k: Move has_work() from CPUClass to SysemuCPUOps
+  target/microblaze: Move has_work() from CPUClass to SysemuCPUOps
+  target/mips: Move has_work() from CPUClass to SysemuCPUOps
+  target/openrisc: Move has_work() from CPUClass to SysemuCPUOps
+  target/ppc: Move has_work() from CPUClass to SysemuCPUOps
+  target/riscv: Move has_work() from CPUClass to SysemuCPUOps
+  target/rx: Move has_work() from CPUClass to SysemuCPUOps
+  target/s390x: Restrict I/O handler installers to system emulation
+  target/s390x: Move has_work() from CPUClass to SysemuCPUOps
+  target/sh4: Move has_work() from CPUClass to SysemuCPUOps
+  target/sparc: Move has_work() from CPUClass to SysemuCPUOps
+  target/tricore: Move has_work() from CPUClass to SysemuCPUOps
+  target/xtensa: Move has_work() from CPUClass to SysemuCPUOps
+  cpus: Remove CPUClass::has_work() handler
+
+ include/hw/core/cpu.h            | 30 ++++++++++++------------------
+ include/hw/core/sysemu-cpu-ops.h |  4 ++++
+ target/hexagon/cpu.h             |  4 ++++
+ target/i386/cpu.h                |  4 ++--
+ target/mips/internal.h           |  4 ++--
+ target/riscv/cpu.h               |  9 +++++----
+ target/riscv/internals.h         |  3 ---
+ target/rx/cpu.h                  |  6 ++++--
+ target/s390x/s390x-internal.h    |  5 +++++
+ target/tricore/cpu.h             |  4 ++++
+ hw/core/cpu-common.c             |  6 ------
+ hw/core/cpu-system.c             |  6 ++++++
+ target/alpha/cpu.c               |  4 +++-
+ target/arm/cpu.c                 |  4 +++-
+ target/avr/cpu.c                 |  2 +-
+ target/hexagon/cpu.c             |  6 ------
+ target/hppa/cpu.c                |  4 +++-
+ target/i386/cpu.c                |  8 +++-----
+ target/loongarch/cpu.c           |  8 +++-----
+ target/m68k/cpu.c                |  4 +++-
+ target/microblaze/cpu.c          |  4 +++-
+ target/mips/cpu.c                |  4 +++-
+ target/openrisc/cpu.c            |  4 +++-
+ target/ppc/cpu_init.c            |  4 +++-
+ target/riscv/cpu.c               |  8 +++-----
+ target/rx/cpu.c                  |  8 +-------
+ target/rx/helper.c               |  4 ----
+ target/s390x/cpu-system.c        | 18 ++++++++++++++++++
+ target/s390x/cpu.c               | 18 ------------------
+ target/s390x/interrupt.c         |  8 ++------
+ target/sh4/cpu.c                 |  4 ++--
+ target/sparc/cpu.c               |  4 +++-
+ target/tricore/cpu.c             |  2 +-
+ target/xtensa/cpu.c              | 12 +++++-------
+ 34 files changed, 114 insertions(+), 113 deletions(-)
+
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.47.1
+

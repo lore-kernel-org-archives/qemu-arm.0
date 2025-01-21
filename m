@@ -1,91 +1,85 @@
-Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6419188njn;
-        Mon, 20 Jan 2025 19:08:25 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCX5QQysCvMMSnCzK8MMo2ri5PaXGhfwbX7h2a6caKa7necjwAPcLQBlxr8XHJs1djGINvax7AGtrBXniQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGkjAlF5UCCer+MQCxvUErsAFS8wc2anE78xX9zfxIr/mprbdgQrAexBphkD+7EoAMZpqxe
-X-Received: by 2002:a05:622a:1104:b0:467:6b20:e0b1 with SMTP id d75a77b69052e-46e12a1fcdbmr252073591cf.6.1737428905344;
-        Mon, 20 Jan 2025 19:08:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737428905; cv=none;
+Received: by 2002:a17:504:998a:b0:1be9:327d:8ee3 with SMTP id i10csp6494033njn;
+        Mon, 20 Jan 2025 23:04:48 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUkxMxJmYWZYMzre76VJBFW3QuIxPy8Gq4mzfD4+Xb1HDJZFTKdd//hKiY4KdmulhJ8H7lizNJq4hkTTw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFUGLWkT3brltR92ZFNZBVpBIPyUWq3lgV+Hvio2Qc2/yEarDqvdb36FtTTIvxMqBANNumK
+X-Received: by 2002:a05:622a:201:b0:467:5ea8:83df with SMTP id d75a77b69052e-46e12a9a0a9mr232349081cf.30.1737443088652;
+        Mon, 20 Jan 2025 23:04:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737443088; cv=none;
         d=google.com; s=arc-20240605;
-        b=BerXC9ZcgGi/f6JWPLQKcJTth5j6grRbb21u+cyYr4q3aiEzXthoH2rJDnGNzmsFwK
-         ls3R72VeCYq/qZxW20W/zxEiRfT6Dbel1zw5+SdNtgToDcl/UKgYO46m2QaW49w+hSHM
-         yEpzzipHd0bW3SaxsQB014uVzk2+xlEfrsawfwvrMxpZr/8IOMYIBzveUpy8GBqhHGKu
-         rcfZ8JO6TwTZKUi3B2NYSVVW7Nq4S83bfZGw7D74n8K4arqhHCcTYvAvFTnAdxsRngq6
-         ySTyDSwvnWnpEYOEnBKnmxgTLSfbIwmLv6N6s+BVgr60J73qAyNkTdQGTo2I/BD95h8T
-         OInQ==
+        b=dcMhiOw7BVx9YB/w4jKSOtAMiBkgNrvyk+nkTsUvfnvrJU6PsfMnqDvcstTsWQo25n
+         Aclb0k4HDKQseOlRyTVzanJ+/B9EzWU8LY5tWy1t1W1LPKWU7iPcH736+KJpXz644JN0
+         JOqPDAAmZkb//k91xXe82FtJTBe2QYr5rhr698Cw5R+Q2kAVIsFtaTdSPVfBAi34KiLz
+         ECMiBO3Sd5MkNJfEgj1/aZiU5zPgWGHHNSy8SDDqLaqkWRC0GyvOVxeIuStHajiUpUyq
+         9fmFaBpOxHswLi2k9V1RBdYwgNBf9OH+8bV5fujGP6CbzaBGnZvafdhZKOsExr7GGq5+
+         oMbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :message-id:in-reply-to:subject:cc:to:from:date;
-        bh=y0PPjpZM787du2qIk8lxV+4A5xT1RSjFQWq6wExeJvY=;
-        fh=L8MyIzYPR5rJbLrMcKF4nyHshfAW3qsWDn8G1f9dY2Q=;
-        b=EOLDA6h2GNdWoJVIfYo3Pq+LsYJciYO930F+XpcOAOyAxIWMrYIZsALumATvDtqlf0
-         SLzdbX2O4uva9icbjquL31gYpOTrYs3Y5EfNQuorswRS8Z1bf6WlgJDpe8kosVHTGLlA
-         xWXnFG7mSpI4bif5BDQ0UqRDGIF4p3dST6rCwAgM5i5ZMqJXL6ahVUJbgSo9Bo2JWKV0
-         lAtrVIqXTh2Q11HVeit7dSLEEI0GdVpnJ+NujK+/0PTJI7coD9+GK3SeTlpYQks1VOkf
-         8kEvMi3QP0c4QvP9r0zQGeft1Club81UxoX0H1Xho2u0DjkclmpiCMg3Z2yihOvaGOVE
-         FQOg==;
+        h=sender:errors-to:from:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to;
+        bh=EZVBkzGEoIURAZCqHtcEstWZaT8pdrMJZg8iXiWolpY=;
+        fh=dcWtL3UV6hgfvVRRNBgcZIYWwd7971OyicJdpXZbSYo=;
+        b=fslYFG6BCTEMzdVGkYQ0Up1gz8tCqpCKftuUAZk/7IW2jfVpujJXJ6tAY0BlvAVIbG
+         LmCdoCG3av8itoTjwcfQN4N4lc9+Ni/o72EaK9v5mizCseOFzNpm5uN7uH/RnbHn5dJF
+         5jHMr+H0tZx38nMxXRV6g+RVoSZk2zeK5ULz4oY6oIlhqCOyds1qpbX5Oy02xpIJtX2H
+         vgRY7BACYnpx3yk9H55rKfm4asgEF4ts7HSZtTdNg3HH3ltjtnHKM5d/LU2N2ZyOvb6q
+         GDo6X1kJFmjbJtORnbfk4/XaZgADLTn1zWfOQTqtXz/jMJTMo+VyayqGMeDvHp38D7t0
+         Yd2Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e1048dbd8si122553281cf.568.2025.01.20.19.08.25
+        by mx.google.com with ESMTPS id d75a77b69052e-46e10305a2bsi114425021cf.169.2025.01.20.23.04.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jan 2025 19:08:25 -0800 (PST)
+        Mon, 20 Jan 2025 23:04:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eik.bme.hu
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ta4cM-0005up-Km; Mon, 20 Jan 2025 22:07:54 -0500
+	id 1ta8JU-0006de-SL; Tue, 21 Jan 2025 02:04:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1ta4cG-0005uR-HP; Mon, 20 Jan 2025 22:07:48 -0500
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1ta8JT-0006dP-5C; Tue, 21 Jan 2025 02:04:39 -0500
+Received: from mail.aspeedtech.com ([211.20.114.72] helo=TWMBX01.aspeed.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1ta4cC-0008BC-OU; Mon, 20 Jan 2025 22:07:47 -0500
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 43D6F4E6001;
- Tue, 21 Jan 2025 04:07:41 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id lp2ZVC5dNphv; Tue, 21 Jan 2025 04:07:39 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 4A9C84E603D; Tue, 21 Jan 2025 04:07:39 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 4863674577C;
- Tue, 21 Jan 2025 04:07:39 +0100 (CET)
-Date: Tue, 21 Jan 2025 04:07:39 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Bernhard Beschow <shentey@gmail.com>
-cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
- =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
- Andrey Smirnov <andrew.smirnov@gmail.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Subject: Re: [PATCH 20/21] hw/i2c: Import TCA6416 emulation from Xilinx
-In-Reply-To: <20250120203748.4687-21-shentey@gmail.com>
-Message-ID: <33ced970-1f59-7471-a5cb-4bd5236b87bb@eik.bme.hu>
-References: <20250120203748.4687-1-shentey@gmail.com>
- <20250120203748.4687-21-shentey@gmail.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1ta8JQ-0001Q8-GJ; Tue, 21 Jan 2025 02:04:38 -0500
+Received: from TWMBX01.aspeed.com (192.168.0.62) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1258.12; Tue, 21 Jan
+ 2025 15:04:24 +0800
+Received: from localhost.localdomain (192.168.10.10) by TWMBX01.aspeed.com
+ (192.168.0.62) with Microsoft SMTP Server id 15.2.1258.12 via Frontend
+ Transport; Tue, 21 Jan 2025 15:04:24 +0800
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Andrew Jeffery <andrew@codeconstruct.com.au>, "Joel
+ Stanley" <joel@jms.id.au>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: <jamin_lin@aspeedtech.com>, <troy_lee@aspeedtech.com>,
+ <yunlin.tang@aspeedtech.com>
+Subject: [PATCH v1 00/18] Support AST2700 A1
+Date: Tue, 21 Jan 2025 15:04:06 +0800
+Message-ID: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+Received-SPF: pass client-ip=211.20.114.72;
+ envelope-from=jamin_lin@aspeedtech.com; helo=TWMBX01.aspeed.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_FAIL=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,220 +92,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Jamin Lin <jamin_lin@aspeedtech.com>
+From:  Jamin Lin via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DJ3dkudo9nuH
+X-TUID: dNyfe9GdI5iM
 
-On Mon, 20 Jan 2025, Bernhard Beschow wrote:
-> Xilinx QEMU implements a TCA6416 device model which may be useful for the
-> broader QEMU community, so upstream it. In the Xilinx fork, the device model
-> gets compiled whenever CONFIG_CADENCE is true, so have it maintained by the
-> "hw/*/cadence_*" maintainers.
->
-> The code is based on Xilinx QEMU version xilinx_v2024.2 plus the following
-> modifications:
-> * Use OBJECT_DECLARE_SIMPLE_TYPE()
-> * Port from DPRINTF() to trace events
-> * Follow QEMU conventions for naming of state struct
-> * Rename type to not contain a ','
-> * Use DEFINE_TYPES() macro
-> * Implement under hw/gpio since device is i2c client and gpio provider
-> * Have dedicated Kconfig switch
->
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->
-> --
-> I have a use for TCA6416 emulation. Question: Are Xilinx Zynq maintainers
-> willing to maintain this device model?
-> ---
-> MAINTAINERS          |   1 +
-> hw/gpio/tca6416.c    | 122 +++++++++++++++++++++++++++++++++++++++++++
-> hw/gpio/Kconfig      |   5 ++
-> hw/gpio/meson.build  |   1 +
-> hw/gpio/trace-events |   4 ++
-> 5 files changed, 133 insertions(+)
-> create mode 100644 hw/gpio/tca6416.c
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 7531d65429..0cac9c90bc 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1030,6 +1030,7 @@ S: Maintained
-> F: hw/*/xilinx_*
-> F: hw/*/cadence_*
-> F: hw/misc/zynq_slcr.c
-> +F: hw/gpio/tca6416.c
-> F: hw/adc/zynq-xadc.c
-> F: include/hw/misc/zynq_slcr.h
-> F: include/hw/adc/zynq-xadc.h
-> diff --git a/hw/gpio/tca6416.c b/hw/gpio/tca6416.c
-> new file mode 100644
-> index 0000000000..81ed7a654d
-> --- /dev/null
-> +++ b/hw/gpio/tca6416.c
-> @@ -0,0 +1,122 @@
-> +/*
-> + * QEMU model of TCA6416 16-Bit I/O Expander
-> + *
-> + * Copyright (c) 2018 Xilinx Inc.
-> + *
-> + * Written by Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaining a copy
-> + * of this software and associated documentation files (the "Software"), to deal
-> + * in the Software without restriction, including without limitation the rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> + * copies of the Software, and to permit persons to whom the Software is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be included in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> + * THE SOFTWARE.
-> + */
-> +#include "qemu/osdep.h"
-> +#include "hw/i2c/i2c.h"
-> +#include "trace.h"
-> +
-> +#define TYPE_TCA6416 "tca6416"
-> +OBJECT_DECLARE_SIMPLE_TYPE(Tca6416State, TCA6416)
-> +
-> +#define IN_PORT0    0
-> +#define IN_PORT1    1
-> +#define OUT_PORT0   2
-> +#define OUT_PORT1   3
-> +#define POL_INV0    4
-> +#define POL_INV1    5
-> +#define CONF_PORT0  6
-> +#define CONF_PORT1  7
-> +#define RMAX (CONF_PORT1 + 1)
+v1:
+ 1. Refactor INTC model to support both INTC0 and INTC1.
+ 2. Support AST2700 A1.
+ 3. Create ast2700a0-evb machine.
+ 
+With the patch applied, QEMU now supports two machines for running AST2700 SoCs:
+ast2700a0-evb: Designed for AST2700 A0
+ast2700-evb: Designed for AST2700 A1
 
-Maybe make this list an enum? (But also fine as it is.)
+Test information
+1. QEMU version: https://github.com/qemu/qemu/commit/d6430c17d7113d3c38480dc34e59d00b0504e2f7
+2. This patch series depends on the following patch series
+   https://patchwork.kernel.org/project/qemu-devel/cover/20250113064455.1660564-1-jamin_lin@aspeedtech.com/
+   https://patchwork.kernel.org/project/qemu-devel/cover/20241114094839.4128404-1-jamin_lin@aspeedtech.com/
+3. ASPEED SDK v09.05 pre-built image
+   https://github.com/AspeedTech-BMC/openbmc/releases/tag/v09.05
+   ast2700-default-obmc.tar.gz (A1)
+   https://github.com/AspeedTech-BMC/openbmc/releases/download/v09.05/ast2700-default-obmc.tar.gz
 
-Regards,
-BALATON Zoltan
+Known Issue:
+The HACE crypto and hash engine is enable by default since AST2700 A1.
+However, aspeed_hace.c(HACE model) currently does not support the CRYPTO command.
+To boot AST2700 A1, I have created a Patch 18 which temporarily resolves the
+issue by sending an interrupt to notify the firmware that the cryptographic
+command has completed. It is a temporary workaround to resolve the boot issue
+in the Crypto Manager SelfTest.
 
-> +
-> +enum tca6416_events {
-> +     ADDR_DONE,
-> +     ADDRESSING,
-> +};
-> +
-> +struct Tca6416State {
-> +     I2CSlave i2c;
-> +
-> +     uint8_t addr;
-> +     uint8_t state;
-> +     uint8_t regs[RMAX];
-> +};
-> +
-> +static uint8_t tca6416_read(I2CSlave *i2c)
-> +{
-> +    Tca6416State *s = TCA6416(i2c);
-> +    uint8_t ret;
-> +
-> +    ret = s->regs[s->addr];
-> +    trace_tca6416_read(ret);
-> +    return ret;
-> +}
-> +
-> +static int tca6416_write(I2CSlave *i2c, uint8_t data)
-> +{
-> +    Tca6416State *s = TCA6416(i2c);
-> +
-> +    trace_tca6416_write(data);
-> +    if (s->state == ADDRESSING) {
-> +        s->addr = data;
-> +    } else {
-> +        s->regs[s->addr] = data;
-> +    }
-> +
-> +    return 0;
-> +}
-> +
-> +static void tca6416_realize(DeviceState *dev, Error **errp)
-> +{
-> +    Tca6416State *s = TCA6416(dev);
-> +
-> +    s->regs[CONF_PORT0] = 0xFF;
-> +    s->regs[CONF_PORT1] = 0xFF;
-> +}
-> +
-> +static int tca6416_event(I2CSlave *i2c, enum i2c_event event)
-> +{
-> +    Tca6416State *s = TCA6416(i2c);
-> +
-> +    switch (event) {
-> +    case I2C_START_SEND:
-> +        s->state = ADDRESSING;
-> +        break;
-> +    default:
-> +         s->state = ADDR_DONE;
-> +    };
-> +    return 0;
-> +}
-> +
-> +static void tca6416_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-> +
-> +    dc->realize = tca6416_realize;
-> +    k->recv = tca6416_read;
-> +    k->send = tca6416_write;
-> +    k->event = tca6416_event;
-> +}
-> +
-> +static const TypeInfo tca6416_types[] = {
-> +    {
-> +        .name = TYPE_TCA6416,
-> +        .parent = TYPE_I2C_SLAVE,
-> +        .class_init = tca6416_class_init,
-> +        .instance_size = sizeof(Tca6416State),
-> +    }
-> +};
-> +
-> +DEFINE_TYPES(tca6416_types)
-> diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
-> index c423e10f59..a240cf2de2 100644
-> --- a/hw/gpio/Kconfig
-> +++ b/hw/gpio/Kconfig
-> @@ -20,5 +20,10 @@ config PCF8574
->     bool
->     depends on I2C
->
-> +config TCA6416
-> +    bool
-> +    depends on I2C
-> +    default y if I2C_DEVICES
-> +
-> config ZAURUS_SCOOP
->     bool
-> diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
-> index 74840619c0..b3ff7c7460 100644
-> --- a/hw/gpio/meson.build
-> +++ b/hw/gpio/meson.build
-> @@ -18,3 +18,4 @@ system_ss.add(when: 'CONFIG_STM32L4X5_SOC', if_true: files('stm32l4x5_gpio.c'))
-> system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_gpio.c'))
-> system_ss.add(when: 'CONFIG_SIFIVE_GPIO', if_true: files('sifive_gpio.c'))
-> system_ss.add(when: 'CONFIG_PCF8574', if_true: files('pcf8574.c'))
-> +system_ss.add(when: 'CONFIG_TCA6416', if_true: files('tca6416.c'))
-> diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
-> index cea896b28f..6724f2efb8 100644
-> --- a/hw/gpio/trace-events
-> +++ b/hw/gpio/trace-events
-> @@ -46,3 +46,7 @@ stm32l4x5_gpio_read(char *gpio, uint64_t addr) "GPIO%s addr: 0x%" PRIx64 " "
-> stm32l4x5_gpio_write(char *gpio, uint64_t addr, uint64_t data) "GPIO%s addr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
-> stm32l4x5_gpio_update_idr(char *gpio, uint32_t old_idr, uint32_t new_idr) "GPIO%s from: 0x%x to: 0x%x"
-> stm32l4x5_gpio_pins(char *gpio, uint16_t disconnected, uint16_t high) "GPIO%s disconnected pins: 0x%x levels: 0x%x"
-> +
-> +# tca6416.c
-> +tca6416_write(uint8_t value) "0x%02x"
-> +tca6416_read(uint8_t value) "0x%02x"
->
+As a result, you will encounter the following kernel warning due to the
+Crypto Manager test failure. If you don't want to see these kernel warning,
+please add the following settings in your kernel config.
+
+```
+CONFIG_CRYPTO_MANAGER_DISABLE_TESTS=y
+```
+
+```
+alg: skcipher: aspeed-ctr-tdes encryption test failed (wrong result) on test vector 0, cfg="in-place (one sglist)"
+[    5.035966] alg: self-tests for ctr(des3_ede) using aspeed-ctr-tdes failed (rc=-22)
+[    5.036139] ------------[ cut here ]------------
+[    5.037188] alg: self-tests for ctr(des3_ede) using aspeed-ctr-tdes failed (rc=-22)
+[    5.037312] WARNING: CPU: 2 PID: 109 at /crypto/testmgr.c:5936 alg_test+0x42c/0x548
+[    5.038049] Modules linked in:
+[    5.038302] CPU: 2 PID: 109 Comm: cryptomgr_test Tainted: G        W          6.6.52-v00.06.04-gf52a0cf7c475 #1
+[    5.038787] Hardware name: AST2700-EVB (DT)
+[    5.038988] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    5.039315] pc : alg_test+0x42c/0x548
+[    5.039505] lr : alg_test+0x42c/0x548
+[    5.039697] sp : ffffffc0825e3d50
+[    5.039862] x29: ffffffc0825e3df0 x28: 0000000000000004 x27: 0000000000000000
+[    5.040226] x26: ffffffc080bcada0 x25: ffffffc081dac9d0 x24: 0000000000000004
+[    5.040700] x23: 0000000000001285 x22: ffffff8003ded280 x21: ffffff8003ded200
+[    5.041458] x20: 00000000ffffffff x19: 00000000ffffffea x18: ffffffffffffffff
+[    5.041915] x17: 282064656c696166 x16: 20736564742d7274 x15: 00000000fffffffe
+[    5.042287] x14: 0000000000000000 x13: ffffffc081ba555c x12: 65742d666c657320
+[    5.042684] x11: 00000000fffeffff x10: ffffffc0818ff048 x9 : ffffffc0800a36e4
+[    5.043077] x8 : 000000000017ffe8 x7 : c0000000fffeffff x6 : 000000000057ffa8
+[    5.043461] x5 : 000000000000ffff x4 : 0000000000000000 x3 : 0000000000000000
+[    5.043751] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffff800415e740
+[    5.045544] Call trace:
+[    5.045693]  alg_test+0x42c/0x548
+[    5.045878]  cryptomgr_test+0x28/0x48
+[    5.046052]  kthread+0x114/0x120
+[    5.046226]  ret_from_fork+0x10/0x20
+[    5.046413] ---[ end trace 0000000000000000 ]---
+[    5.071510] alg: skcipher: aspeed-ctr-des encryption test failed (wrong result) on test vector 0, cfg="in-place (one sglist)"
+[    5.072145] alg: self-tests for ctr(des) using aspeed-ctr-des failed (rc=-22)
+```
+
+
+Jamin Lin (18):
+  hw/intc/aspeed: Rename INTC to INTC0
+  hw/intc/aspeed: Support different memory region ops
+  hw/intc/aspeed: Introduce a new aspeed_2700_intc0_ops for INTC0
+  hw/intc/aspeed: Support setting different memory and register size
+  hw/intc/aspeed: Introduce helper functions for enable and status
+    registers
+  hw/intc/aspeed: Introduce AspeedINTCIRQ structure to save the irq
+    index and register address
+  hw/intc/aspeed: Introduce IRQ handler function to reduce code
+    duplication
+  hw/intc/aspeed: Add Support for Multi-Output IRQ Handling
+  hw/intc/aspeed: Add ID to trace events for better debugging
+  hw/intc/aspeed: Add Support for AST2700 INTC1 Controller
+  hw/misc/aspeed_scu: Add Support for AST2700/AST2750 A1 Silicon
+    Revisions
+  hw/arm/aspeed_ast27x0: Support two levels of INTC controllers for
+    AST2700 A1
+  hw/arm/aspeed: Rename IRQ table and machine name for AST2700 A0
+  hw/arm/aspeed: Add SoC and Machine Support for AST2700 A1
+  hw/misc/aspeed_hace: Fix coding style
+  hw/misc/aspeed_hace: Add AST2700 support
+  hw/arm/aspeed_ast27x0: Add HACE support for AST2700
+  hw/misc/aspeed_hace: (DROP) Fix boot issue in the Crypto Manager Self
+    Test(WORKAROUND)
+
+ hw/arm/aspeed.c               |  26 +-
+ hw/arm/aspeed_ast27x0.c       | 229 +++++++++--
+ hw/intc/aspeed_intc.c         | 689 +++++++++++++++++++++++++---------
+ hw/intc/trace-events          |  25 +-
+ hw/misc/aspeed_hace.c         |  44 ++-
+ hw/misc/aspeed_scu.c          |   3 +
+ include/hw/arm/aspeed_soc.h   |   5 +-
+ include/hw/intc/aspeed_intc.h |  35 +-
+ include/hw/misc/aspeed_hace.h |   1 +
+ include/hw/misc/aspeed_scu.h  |   2 +
+ 10 files changed, 817 insertions(+), 242 deletions(-)
+
+-- 
+2.34.1
+

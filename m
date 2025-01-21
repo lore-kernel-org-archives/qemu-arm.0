@@ -1,103 +1,107 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp63008njc;
-        Tue, 21 Jan 2025 04:51:14 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGh2TUAD/vICdDA3qBtWtvHbTomdVQruFqoHjZYlCpdRgRPSvB4rw6DRoHfJ3k/tg9/z8/v
-X-Received: by 2002:ac8:7c45:0:b0:467:60ba:b6c with SMTP id d75a77b69052e-46e12a5614fmr192744951cf.17.1737463874229;
-        Tue, 21 Jan 2025 04:51:14 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737463874; cv=none;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp63521njc;
+        Tue, 21 Jan 2025 04:52:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHVZspEO4zCKtph0tOv/SOyWCzsBsseaDOL+IyLra1jQbwdEzEahcEKRZryc2k5wbw5C2ya
+X-Received: by 2002:ac8:598e:0:b0:466:b29a:9b10 with SMTP id d75a77b69052e-46e12b96638mr224074541cf.42.1737463941045;
+        Tue, 21 Jan 2025 04:52:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737463941; cv=none;
         d=google.com; s=arc-20240605;
-        b=aM6sBMxQjcDgVc7TveBnIVa+bENkr+wvm40/eklTj6uOMeCuYkLJhzyps9IOd0EttZ
-         zKd4rWv/7HfGqH6gjJMUJvJE3lmrcWbAEecbwb7ScbziMT94bP6WmBDuS5ZBGoCFSF6f
-         OK9yVX5rTLjZ6ICz145JVcqaYzkGumcHb+UgzyHTSKvaWxCI4UggDXSyJBulLgVVvKWL
-         v2CTawrozxe6Ds6sGBGSQ5Iyp2JrrQZNXSgxdT9lo60q/N7EJ3STt7mVJUCaHeLagtoN
-         byEENL+oWYuzigWKTyA1oUSYfgwj9R2EvDLDmOQ1ao/wPDbpF82tEQTf661TBVe/QISo
-         ADyg==
+        b=FQ1auG4VdZu4aGFj9/vEqDwVxA8cvbWZWe6MvKWLx5twLoMB62PdQwHCn7RxA9UDvJ
+         CPlnH0MwIdPEQG4FmVpvDN8rfiO5qiqVNRz54n+XYF+8zw5wWLUMRS6mpgSfe0G8KCl+
+         xnT48eB/gUGkfXWax6GBFf4/xnqLqyAg2AvHO1TK3btItV0Yyk25w4OVKVbWr8BvQ1Wl
+         eR/8wClDya3/oPF6nuEtt/MqPLV5eyUIE19nyReSQdbMaVPpJMCP7aGNwKsiZCHq5SeV
+         SYYKub+/0/oZZg7de2Lsp4QjjVFMGYqeRLJS/WPiwlkfdMhbHEQHZykZR1j3l8T5t+NK
+         7Rvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:content-language:in-reply-to:autocrypt
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:dkim-signature;
-        bh=2pG2uhhO+2ys+rKzycNpOYI49mEaIG9ue6yxLEqsFQA=;
-        fh=XgqCuqUtcUgWd1ZLLba+puTol7HG0SLvkNvvHcImD9E=;
-        b=ipH3vUgXMEwUtM2UR55zIZC+LH6BMGNPhzenLJDJzUOC9lstgCcjUBODjp2LXbjyYn
-         LvK4rJzJ0KBzSRE6J/2NG5oDSLw7lrXgU3az1pk8lAfa2QMuBD8WVHr/YahaCB41q95A
-         //YR2Gl8XoCV9vjAwowGfA+m2PUuvPO48HAzmWsdfGfz6FY0AUlxduX2lk3zu4alwAC9
-         +8roMe46LGyjSeLP+rGIqtj+Zp2WlEn1XvTrZRX7bDo5YaT8gMRsnFpfnUUYN/e4J2J4
-         jCh0tYBMAv0nyKLggC3s/c7ZRty8U7AjZ0DJod95WjVCvcBb/T01L18hJriOlJCwWtG8
-         p6sA==;
+        bh=z35EzCDbc+CQYTWls//bFZ6X+OXu42ZALVtSrwU0u+M=;
+        fh=5B8tmyE385SKMg6VrB8C5HJ0dzZfresjjDtdKrzf170=;
+        b=DysCgB3ONKNGih3dvRos9ZR7mWiNE/5jwIBabc5SVtu80gzqv6yU/sxWjInrNYGtl3
+         ordRLG5n+uCyTDZpGrewWXbwNWpIw6itgkKZrpIvbl/xk24t/9IjpgMUp7MJNa9TgNt1
+         yvr7UVeOhGgWTK7kc8IH3Ipfx1Om5TeTgWFIqN3xf/24eR1nd6C6NW9R8d5lLPo9OeHg
+         qKuh4nQ+Ht6cjTy5+3JnpITzAt0JyouyTIi3stfJQVvYV66JgnBfoXuvk4+Dk+t1gHAu
+         wLU75G85DxoVeFE1VQ88Z83kc7Vb9foIY59dQAbzNDeoOkAyjHGLl01utTFJa5BJaT12
+         /cvQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c7oGY5Io;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GEmWWhvn;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e102f30bbsi125915861cf.54.2025.01.21.04.51.14
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.133.124])
+        by mx.google.com with ESMTPS id d75a77b69052e-46e1048b4easi119061171cf.514.2025.01.21.04.52.20
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 21 Jan 2025 04:51:14 -0800 (PST)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        Tue, 21 Jan 2025 04:52:21 -0800 (PST)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) client-ip=170.10.133.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=c7oGY5Io;
-       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GEmWWhvn;
+       spf=pass (google.com: domain of thuth@redhat.com designates 170.10.133.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1737463873;
+	s=mimecast20190719; t=1737463940;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=2pG2uhhO+2ys+rKzycNpOYI49mEaIG9ue6yxLEqsFQA=;
-	b=c7oGY5Io4rrpXMDRCP+JeZAsGqZkrdcpOeQhamFwc3VDlrjwiZ4C/xRkofT5B36kWdLQ4Q
-	B90QCoa8Of975uUookSMobeeLFxxG5ihusd2A1zpjbY8PEO67NrhmbgHMOfz7OLla+7qCE
-	R2q1nnLFVttvcFrg0813qDRjqQGjKow=
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=z35EzCDbc+CQYTWls//bFZ6X+OXu42ZALVtSrwU0u+M=;
+	b=GEmWWhvnBmjSiZBcb2kDdsxugcLKg6USv8hNATmQ4RxvLFELx0NsnVmyPKJE3FSAGTVlUz
+	fpw+Ta5Fp3MBT+MkiF4uVyvUQ0AKFPUICqYnTJdwo8XTF4ldMxGbqAEGxSuN8cGTry0nkA
+	oArTRM9MLDvpHPehdEpqeeYhFKHgyao=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-75-8zwQB5yVMva1Nt1MnV58kg-1; Tue, 21 Jan 2025 07:51:12 -0500
-X-MC-Unique: 8zwQB5yVMva1Nt1MnV58kg-1
-X-Mimecast-MFC-AGG-ID: 8zwQB5yVMva1Nt1MnV58kg
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-7be6ccb09f9so325235385a.2
-        for <alex.bennee@linaro.org>; Tue, 21 Jan 2025 04:51:12 -0800 (PST)
+ us-mta-280-z9cgatoOPrWcJn4SvWmz2Q-1; Tue, 21 Jan 2025 07:52:19 -0500
+X-MC-Unique: z9cgatoOPrWcJn4SvWmz2Q-1
+X-Mimecast-MFC-AGG-ID: z9cgatoOPrWcJn4SvWmz2Q
+Received: by mail-qv1-f70.google.com with SMTP id 6a1803df08f44-6d8f14fc179so159806746d6.2
+        for <alex.bennee@linaro.org>; Tue, 21 Jan 2025 04:52:19 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737463872; x=1738068672;
+        d=1e100.net; s=20230601; t=1737463939; x=1738068739;
         h=content-transfer-encoding:in-reply-to:autocrypt:content-language
          :from:references:cc:to:subject:user-agent:mime-version:date
          :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=2pG2uhhO+2ys+rKzycNpOYI49mEaIG9ue6yxLEqsFQA=;
-        b=AoQetx9ufMgspLXVeuua7RVFGVeHne0wl32sTC1uvV15uUkmV2RsoX2TxZnX8uVxbD
-         sfhBPwvJwW6USaVALxN2pmXeQJy5vja+Zg279XirjO+XR9/8bf0e7uWA9cpDOV8EfD/4
-         gMwdvHAXLOWsNhRiclJB8gjeOCwrS7kRfqgh7hXVyqnOg+TKgAFr0p/91NngCI+sffnw
-         zeyyVZqFGFZlx8/IcjIaZA+7Vk00jAGtoB0yoQKCSKXteju77l+lrQEfV3J01YrrYIYf
-         k2ut23zRD99FNlUX48gbRGzTpb7gdwGTlgZhUzye3Gyexr5N2oPG1UvvB7DurJpx8MHj
-         uLMw==
-X-Gm-Message-State: AOJu0Ywzt3dyhJ3biu0KedYB6KYvwxD7ITbONa6jAqSTdZdL9R8YQybh
-	+RxpqGYrT49RWzrsnSIfHibgHbeKsJ4Cc+NmZVGk47rfrbNFlLx4vSgMIiBvDo2YFSHgI4KxbPl
-	al3IBiWEzCzRgLtJuj+xyuv4+8qz2uKQKAnMI4VN0+FXWO/qTE1K71iKk5dPuuwgfoeBeGOMyWo
-	d67v1A246ddqsrZwXng+OBzn1IFM7CMeRHKw==
-X-Gm-Gg: ASbGncuNUiM1tj/F1ZZAIk56e99s/w/dtBiJye9YdC7eSBpceXrw5caaqie5xrasjEH
-	u40f+SjEcW7rYmG9Hq5+uFxk8A43JcIGCLg211i11XCwSlJUYsuyaFSR1KpzZ+/F85w/1EKlPQT
-	wl8tGWP28OieRRHH8kfaAQJlW8kRZc4FH0hczUkKqcG56YKvyzn5h8GYxNDkiyj/HCyA82lYQxC
-	hHfU54tIexnlmHrgp+EVeZ45y+bZxEx0qn5DlwhzQ0s5/GlQkDkS8WtZcbiOlUJJdEQIFa7BvX/
-	RrVwDXWloT+ddcCZXdTakReE4Q==
-X-Received: by 2002:a05:620a:2413:b0:7b6:e697:2090 with SMTP id af79cd13be357-7be631e71admr2662503085a.2.1737463872086;
-        Tue, 21 Jan 2025 04:51:12 -0800 (PST)
-X-Received: by 2002:a05:620a:2413:b0:7b6:e697:2090 with SMTP id af79cd13be357-7be631e71admr2662499785a.2.1737463871761;
-        Tue, 21 Jan 2025 04:51:11 -0800 (PST)
+        bh=z35EzCDbc+CQYTWls//bFZ6X+OXu42ZALVtSrwU0u+M=;
+        b=qAa+zA4WftP1mdFAO9HpZayZ9G1L3K0bk7HGmFNiixTrtyQIsysj8ruLfIxOuvgi67
+         NQTaYvAw6jpzohzeCIuBeQkCXmeiHHmwREwYahJb1uXMj/l4S2thWWjGE0FPXIJd82JW
+         arELLDJZ4MVp70Pe+m6ZCoPkfo7+uQaO6eEW49LFhWU+r6NcsLNnolBcOwgo5Qpkj31u
+         6vJ3xv9HRFFQI/ofbspvfiH4F81dNQGVc+Oh7KN5frYFWNDpUQnrBFckM3Vrb8YEVuck
+         unnY1XXGqpQGRnYU2cnlLogZCSL8k3Fv9V5Mchxj1kSM0JVmCKMpvtp0XZPpg7rSbM72
+         EXaA==
+X-Gm-Message-State: AOJu0YwHDCfSGgVbt8n1rQinBwPe5M057FTs5Y2h+8J4fcgygmjEWPlM
+	OmZ1gESnvPWWR4YyASV+GgiBrBvY9VzXvHUkCRlhCjcdVtI4/7r8ydjdU2FLf4MTa1kgQkLicI5
+	lfoWdAi+QtMl22Rguo+ZUH1adyqgs56nh9kn3a+hv1EUB6G/WnXFNrxm4dvYgqJn6dFhmnpBUvZ
+	aQSzi2cd9KHD6RtJN1CdlLqXGfKNWf8ibt0w==
+X-Gm-Gg: ASbGncsWyyKynbRjm9qpRtqSgHpuQYVH+SYHtS8m0S3+3zHrpQ3TdU9rAudSroYkI+K
+	ULlcbtatqnPQ3mwz3v4D1jL4xuUDcIenfpX70qizZoetbyycZyx0jtGZPHlWD+2HKY/L8Le7Pmc
+	D3U6Bf3SWXKNQwk6KOINbgztkybF1Xr+6EzRAugilaBG1tlXfMT377E09uVKMldSsCzf5PbpQY3
+	nTMXWHjoH67iMJFfI4sUDBlVfARtjeWnBX07ixMNO6lqpUajrXzvZAD0wfvISw/v8k2Y4E/BzsL
+	bDeiM6XgX8ZQr4kYOJAkv36xSw==
+X-Received: by 2002:a05:6214:23ce:b0:6d9:3016:d10d with SMTP id 6a1803df08f44-6e1b2230a18mr298634036d6.42.1737463939104;
+        Tue, 21 Jan 2025 04:52:19 -0800 (PST)
+X-Received: by 2002:a05:6214:23ce:b0:6d9:3016:d10d with SMTP id 6a1803df08f44-6e1b2230a18mr298633656d6.42.1737463938753;
+        Tue, 21 Jan 2025 04:52:18 -0800 (PST)
 Return-Path: <thuth@redhat.com>
 Received: from [192.168.0.7] (ip-109-42-48-103.web.vodafone.de. [109.42.48.103])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6e1afcd3868sm50784896d6.71.2025.01.21.04.51.10
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-6e1afcd66c2sm50828556d6.75.2025.01.21.04.52.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 21 Jan 2025 04:51:11 -0800 (PST)
-Message-ID: <28500692-705c-44dc-86a2-461a61e8526c@redhat.com>
-Date: Tue, 21 Jan 2025 13:51:07 +0100
+        Tue, 21 Jan 2025 04:52:18 -0800 (PST)
+Message-ID: <503fe36f-c0ce-42d7-a08d-21c46b495ab0@redhat.com>
+Date: Tue, 21 Jan 2025 13:52:14 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/7] testing/next (qtest timer stuff)
+Subject: Re: [PATCH 3/7] tests/qtest: don't step clock at start of npcm7xx
+ periodic IRQ test
 To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
+ Peter Maydell <peter.maydell@linaro.org>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 References: <20250120210212.3890255-1-alex.bennee@linaro.org>
+ <20250120210212.3890255-4-alex.bennee@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -141,51 +145,36 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250120210212.3890255-1-alex.bennee@linaro.org>
+In-Reply-To: <20250120210212.3890255-4-alex.bennee@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ztEkn16YT_ofrEmwFp1fAFb60_J-LBjnWKF4rPlo-oo_1737463872
+X-Mimecast-MFC-PROC-ID: hN1v2ntPDUKJnPpRK9TMk2FuuzQn77wYg202VvM7VCw_1737463939
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: GAh1trW04Al3
+X-TUID: GgnLS/QKnAo2
 
 On 20/01/2025 22.02, Alex Bennée wrote:
-> Hi,
+> Until there are timers enabled the semantics of clock_step_next() will
+> fail. Since d524441a36 (system/qtest: properly feedback results of
+> clock_[step|set]) we will signal a FAIL if time doesn't advance.
 > 
-> Thomas found that a number of tests fail under CFI and other exotic
-> setups. The eventual realisation was that --enable-slirp masks a lot
-> of timer misuse because it ensures there is always a timer and
-> therefor things tend to move on (until the system is shutting down).
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>   tests/qtest/npcm7xx_timer-test.c | 1 -
+>   1 file changed, 1 deletion(-)
 > 
-> It turns out that bc02be4508 wasn't the solution after all. The first
-> few patches are clean-ups and various tightening of test expectations
-> before we revert the patch.
-> 
-> Please review:
-> 
->    Revert "util/timer: avoid deadlock when shutting down"
->    tests/qtest: tighten up the checks on clock_step
->    tests/qtest: rename qtest_send_prefix and roll-up into qtest_send
->    tests/qtest: simplify qtest_process_inbuf
->    tests/qtest: don't step clock at start of npcm7xx periodic IRQ test
->    tests/qtest: don't attempt to clock_step while waiting for virtio ISR
->    tests/docker: replicate the check-rust-tools-nightly CI job
-> 
-> Alex.
-> 
-> Alex Bennée (7):
->    tests/docker: replicate the check-rust-tools-nightly CI job
->    tests/qtest: don't attempt to clock_step while waiting for virtio ISR
->    tests/qtest: don't step clock at start of npcm7xx periodic IRQ test
->    tests/qtest: simplify qtest_process_inbuf
->    tests/qtest: rename qtest_send_prefix and roll-up into qtest_send
->    tests/qtest: tighten up the checks on clock_step
->    Revert "util/timer: avoid deadlock when shutting down"
+> diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm7xx_timer-test.c
+> index 58f58c2f71..43711049ca 100644
+> --- a/tests/qtest/npcm7xx_timer-test.c
+> +++ b/tests/qtest/npcm7xx_timer-test.c
+> @@ -465,7 +465,6 @@ static void test_periodic_interrupt(gconstpointer test_data)
+>       int i;
+>   
+>       tim_reset(td);
+> -    clock_step_next();
+>   
+>       tim_write_ticr(td, count);
+>       tim_write_tcsr(td, CEN | IE | MODE_PERIODIC | PRESCALE(ps));
 
-Thanks, I've checked that this fixes the check-cfi-* CI jobs and it also 
-seems to help with the travis jobs that use --disable-slirp:
-
-  https://app.travis-ci.com/github/huth/qemu/builds/273921493
-
-Tested-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>

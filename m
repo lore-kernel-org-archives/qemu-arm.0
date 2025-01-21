@@ -1,102 +1,101 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp24457njc;
-        Tue, 21 Jan 2025 03:41:31 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVOGcDfcGWAmePZzPuLm6cVs2TmKq3Mhf/T9xRRol6BOn+3NU3uAQTGfTqjj1Q+0Ci84ubcwANyO0wfNg==@linaro.org
-X-Received: by 2002:a05:600c:8712:b0:434:a802:e9a6 with SMTP id 5b1f17b1804b1-438913ce0b7mr165639385e9.7.1737459690921;
-        Tue, 21 Jan 2025 03:41:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737459690; cv=none;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp24499njc;
+        Tue, 21 Jan 2025 03:41:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXGznpHAsYE8JHjUbAqa1BgqtcGGebTooR+s38ix2CEtqZgBJuYjvtKOXdWacoWg+gGZSIFA0h6Irargg==@linaro.org
+X-Received: by 2002:a05:600c:1da1:b0:434:a815:2b57 with SMTP id 5b1f17b1804b1-4389141c4ebmr132387575e9.20.1737459695370;
+        Tue, 21 Jan 2025 03:41:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737459695; cv=none;
         d=google.com; s=arc-20240605;
-        b=GAew5t9mfkK8Qh78uOXHZ6elmTdBAb2ltobfFdZDLxSDFizbPCiPhpYUIFaCarRJKf
-         /WTouFGDfs3IZFefvU4IXIotErWKzPMZHRkLu39e1cMAKswwF8fuO5BM84NAj28UMftB
-         Zrq9H32m6PJdPNRDVTGMLkZpVKMQOq+GL1EXhDdCrhDatisZ/5P1Ul5OlxB+WElNnsHf
-         lfVFVbP+UAmn0OqQutGQm1bD4p1Jep6ZLcpbmUB/TsTHdJkdNzAl2gEbe2nbP6nyOsEa
-         KVF+IVolGfxNkcXkGr7g28oXnP+vpBcWFhNAx2Ctvisi18spzYMSqTQQgxcdpmrLi+Yf
-         3FJg==
+        b=QuJyqJyiJEsgpUcZReh0rAJN0V4+IyAUJXIHE6/im/2/QPGaDlGsEWXmsLP8Y1eelT
+         NpCnexo/gFN3Mf8AK1wWhIyneSSn7kA7oLNqdLFO4M9VIvuf+8/frZ7PizBSI84rOzOw
+         UA2HHQVqSS52AcFXZrFsDyFh3emB70MS0ABcLnKU4HhOrliRFgyLtk8pi3KhoDydRxa4
+         V/8RVpVS09MtZDjgygbCi0L0XokbRubFk7GYIMUH13SHSMDh2StHp5/qK5NvgDnz0UMf
+         G+yFYkZGV7qzy9oKcoGJbjHxINAT85dujPk7lHZPtBP/hGwkjpS8FCEkRtJLoMzL/QAa
+         kNog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=DeYTxKfeYGnuCZs4uhCLhCH6gP528hwEuAlYwVcOULg=;
-        fh=4/kLesX7gzPcpYlcipH6mbTmwT5jQLkvHmFfEmi24Mc=;
-        b=CLyPslI/WNW0Uji1GJzd3XORamTa19R0Odwo7hoDzQrKHlNxXta8sH5srX+8XpsHj6
-         dM6Zr3pddjaBF62SWRkfF+0Hwbp1XGq/zgP8Bs4UkTKx3JgQFpe5MLbnoV50W/FFTRvn
-         UidrbSpxL3fja+PI1ocWItwYGgxVuVV9QBmhwy2lewCzKxBUXNrfcr87zBwkPxmcsV1W
-         vuw91VzwdBrFBoi9Oyr+aUopeBjvRC9QHiEMDF7+J+KPzMFS0d0+APi33S+viABPOF5m
-         PuB3X0lL0veetgCaN3adcx6aeoZ3zpA19gWe6a+wiskUzuHtSECmkqcdzyORZoVHajkx
-         NatA==;
+        bh=8EBvExqekhvI6jcPU9fttVcHOfFc5T0tfJ+EZdg5nMg=;
+        fh=PV2HzhsF2FlvAxq2y8Y2qx8uCDBI1pPF2B/9V2upRdU=;
+        b=bX6lsj0n7hmI881fOAp9Dxp6aYeFXCoiRIJ3D5mCv6+hrtQ4KGgkf7iNhlvGUec2YP
+         oqjse9ex6Pehcb8CakJkNgY+De2EmlS+RKcUo8hWKG4WtxmDIBPMQUpDK4pwyI1w31Sy
+         Lkn+wlcfh0+YTg3+4lYh+JH+ep7QM8Uvl1xajT6MNalNdejQUXbKFbeddK45EZoeCthX
+         kWLW1yBMEAv6KpDlY9oGWPhRPd9G4AIMjIMYCMnKow9hxYBqF8us/0ahE+Og1t2VjI0u
+         J8tnJyR3Wi8FvkPDqxSHohtDGztrXszichqastZprbSJ/8CvPJQrNTPLkQrwpki5lGHr
+         LK9w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a8wX8S+7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jb10WmGM;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-43890406b86sor45592425e9.2.2025.01.21.03.41.30
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43890467da5sor43369825e9.7.2025.01.21.03.41.35
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 21 Jan 2025 03:41:30 -0800 (PST)
+        Tue, 21 Jan 2025 03:41:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a8wX8S+7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Jb10WmGM;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737459690; x=1738064490; darn=linaro.org;
+        d=linaro.org; s=google; t=1737459695; x=1738064495; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=DeYTxKfeYGnuCZs4uhCLhCH6gP528hwEuAlYwVcOULg=;
-        b=a8wX8S+7J1oTxz727ESRNX982uiPf48iI+MY9cSWeBbb8L6HAUYeNOPVoMtJCYz6vf
-         ElYgcaOIhsi0Rb9DVKP/qrGphQdTiQ705yhVcHd6Gd+Ce83Xw8rDSGzc+kpDa+kxPOyU
-         GwgCxJ4bCX5fqQHMiR13zrLnBUNFN4jCCeabJvaOLwDCzZLJWBevQ6VzNyzS3e88uRxe
-         4PCI18z789+URpmuQT6ZxTJYh3wu5aLmZiLsuQD4eF70RcDTV3oVo2J6s3pKJfUCTpX7
-         5pq4HmSjSZXvjJrS68BT19dibpjcbrUYZBqiIm6RH5aRCLYUbq1Lhr1k2R+56ciKBAUf
-         jCRw==
+        bh=8EBvExqekhvI6jcPU9fttVcHOfFc5T0tfJ+EZdg5nMg=;
+        b=Jb10WmGMvyRlZLtsYuVqJ4ltxa7gO1WkWravQm4Mu6NH3vMWrLVuiCrEzc1c1WdKpJ
+         nT/IBDtUwlvnuKOus9Q5aLMaVBwNBRsJC8oaIQnsbuO0aqMDXf3JAhNuqbrbkXf2XAfW
+         AhkD6Btx+wNvscSuRJNYXiW1JAr7/mmM4lpqa86MRomvYFF2A7hSkGqvd/2YjrHQrZHF
+         7EdsNjxuAFhPTpBFLbdhONlvaG1hgIKkjpGwigO8OgQcCxgEbr1nrm+rAhqMbn565DGM
+         cUtOEh8EeTAykQJRylYbKPqAENBCfVx261rhXAvROtY/CPncZ/Z11H85Y0ZKAXa2uic0
+         TTEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737459690; x=1738064490;
+        d=1e100.net; s=20230601; t=1737459695; x=1738064495;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=DeYTxKfeYGnuCZs4uhCLhCH6gP528hwEuAlYwVcOULg=;
-        b=gcmuM16KwY+vy17YlBCQfSQy7UbUrnEw65GIjVqpG8EaFZmx8sfUYlhSVU2BwnbE6y
-         VkIm4NzCNsYfPXIFVopBIj3A/lpesqo/xC4VL8aHYO7KEgXb+IORwQ1+2liQjTueSmJd
-         1alKd9+C0TlAcgdS8zqgenZj+GGoC43qDlc1o/2lTYdCIvOUgoqMIFPfrf3ZaWZ3Jg6u
-         TzvGigMdnvzSEc4+04Z6+BIySBHDC9uwf7mkvVEJJCOfOssNLidaA+X5ELlSeSVKDoF1
-         veznuPYXZ5dmL7D59HM5pXF0aWiyso8ZVLXpClowjCpfUNkf0v8r48zfWS2rSZNYE/f4
-         t5og==
-X-Forwarded-Encrypted: i=1; AJvYcCWRVTGjdIXHzWeaEDhJujTlU5tKOh63NUqNZbe9YlbMxcRS7WPEVK3fsZENlDE0b90iLdM8hE7FmnTebQ==@linaro.org
-X-Gm-Message-State: AOJu0YzY1fqyXCGXaJM8OzMd1QKnrrhGirL/s24x9vrF8z7n0S7scnZ5
-	iBdvTjLPi0hH6G8/BN3O0Myi9Io6x7BXplLwUnh+SR5jHqBWuNJWIhfGPDfBuUZjCPHL7lykBLI
-	6NGNiTg==
-X-Gm-Gg: ASbGncsOeexgEXxiRRfutGOJM/GkGEsSsVv4YnFQoRsgGkizJe9btmXTs2bZjrzvGwV
-	rl14QfiZ3AFMuizqfp97g4/UsofLorufmUt5vusH7/m+kmneSN1s9JOUesvg6lnDohrjtYwTJmS
-	FP8xi0bAWEzRPZRQzYc54M4RwR8azPynwZyOmYi67T6YDOjpWb90EPLQ1z0Vo36DqG/1y6cxXxx
-	1LFEIJlOfCcuDAzQ5Vi/Q14MlFrwsPLv2GIVR2RCPO+IgoxK9Ulu84P1z6yX3oqpYmUfWty2NT+
-	ZIg/eC3fW+MKVxhEOPm7Mghvg/CWE3g7ziBRGt9mFOnj
-X-Google-Smtp-Source: AGHT+IFYePQ7W9qEBZjkBoTzSbXA4iRi/jfN3vePvpN5KZLxmU/7I4ErTsDfpMpd1xt0kQIOxaZvCg==
-X-Received: by 2002:a05:600c:6c95:b0:438:a1f5:3e41 with SMTP id 5b1f17b1804b1-438a1f53fa6mr113851535e9.12.1737459690343;
-        Tue, 21 Jan 2025 03:41:30 -0800 (PST)
+        bh=8EBvExqekhvI6jcPU9fttVcHOfFc5T0tfJ+EZdg5nMg=;
+        b=eLh4aRWvZ9EQpB9k76ku0yw1wNWfH4+vw8cP2Qew9GGs3t7q9XJPNWlVyaZE5vLwkN
+         dQO/63oGbDpuUSlFJm00lUe5GdOYqxs6dH1sAuJuyXPtzL89690ZVgM9DHeGpHrFtidL
+         A1cBnL0DXiGMS29/Vbu4rNICaD6O40ll1gMYUO9doZuURyR3+sS4OOSO+jV9EHx7t7SF
+         XDwDeiZTNh1QEy+Dr3VWxYf81NYfUDRxPW22AC8jGRGIEF/YX/XHJeLTs1W8/ffPzOrJ
+         /OB3Uj2yiwRqX/ETgxhSK1z95r9M33FUe1/x3OBsdSzz5g8m5NPSJfVnknFR+MI7Djyw
+         6WEA==
+X-Forwarded-Encrypted: i=1; AJvYcCUimajKtfRNrMcYgMJe3tRDb5cCvN8qS9/YmOPmpxxnCRBEC06RxrpYs0qhppBbrxKHuwMZ8KbczBj2lQ==@linaro.org
+X-Gm-Message-State: AOJu0YzxCxWN0nEWtF0Lq3ZlcH8fBAT3MCbaEd4zUkv5BlodLL3q6/Df
+	lTH282D42PmIYFi070YtqcDXWUhpufAYU/izitxv1EKvLWC390sVAE22VDlZuNoA0g==
+X-Gm-Gg: ASbGncvaP6JhyrBYoh+ef7m6BruJraR4k25B/Kf3LHJ64yRUphxAILbneH6o3Yk6lrb
+	TpLU0ZbrTowC4poZv7xI9GkU9gdx7+67FSvSswo+9uimLYFpnUFW7twlF7MndgVvhDWf68JVVgQ
+	g0+/UsCO0GiM551W1Dv/o7QvJP/txUAq8nzbdKUHrtWpF1m7TAr5Lk7vE7ZmJxgjgp91jU2zRKh
+	Z3yHkYnimNWCcQQ3Iu/pL2yzHoaxWMRRnLmCm6ir5qYAtcLDbrIcJkJ8xQrlTulrn4rqd1b3E15
+	0F6STA99wR325jL8mWqrW4CLfXmYro7fsV63PsW3PTW8
+X-Google-Smtp-Source: AGHT+IE+K5MC6VWNvBNlmvep3x60OHi1bN+kYIodq+lGzOgTwLM8ACjm1FxvjtkMJ+iiA85448mYhg==
+X-Received: by 2002:a05:600c:511b:b0:435:14d:f61a with SMTP id 5b1f17b1804b1-438914304a8mr123262745e9.25.1737459694869;
+        Tue, 21 Jan 2025 03:41:34 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-437c75290a2sm238291245e9.29.2025.01.21.03.41.29
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438a46b0497sm109750045e9.28.2025.01.21.03.41.34
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 21 Jan 2025 03:41:29 -0800 (PST)
+        Tue, 21 Jan 2025 03:41:34 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 07/11] hw/acpi: Prefer cached CpuClass over CPU_GET_CLASS() macro
-Date: Tue, 21 Jan 2025 12:40:52 +0100
-Message-ID: <20250121114056.53949-8-philmd@linaro.org>
+Subject: [PATCH 08/11] hw/core/generic-loader: Prefer cached CpuClass over CPU_GET_CLASS macro
+Date: Tue, 21 Jan 2025 12:40:53 +0100
+Message-ID: <20250121114056.53949-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250121114056.53949-1-philmd@linaro.org>
 References: <20250121114056.53949-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: j5cjytfqMsJ6
+X-TUID: ZEyhHKTGkvpX
 
 CpuState caches its CPUClass since commit 6fbdff87062
 ("cpu: cache CPUClass in CPUState for hot code paths"),
@@ -104,40 +103,25 @@ use it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/acpi/cpu.c         | 4 ++--
- hw/acpi/cpu_hotplug.c | 3 +--
- 2 files changed, 3 insertions(+), 4 deletions(-)
+ hw/core/generic-loader.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/hw/acpi/cpu.c b/hw/acpi/cpu.c
-index f70a2c045e1..6f1ae79edbf 100644
---- a/hw/acpi/cpu.c
-+++ b/hw/acpi/cpu.c
-@@ -235,8 +235,8 @@ void cpu_hotplug_hw_init(MemoryRegion *as, Object *owner,
+diff --git a/hw/core/generic-loader.c b/hw/core/generic-loader.c
+index fb354693aff..0ddb3a359a2 100644
+--- a/hw/core/generic-loader.c
++++ b/hw/core/generic-loader.c
+@@ -48,11 +48,8 @@ static void generic_loader_reset(void *opaque)
+     GenericLoaderState *s = GENERIC_LOADER(opaque);
  
- static AcpiCpuStatus *get_cpu_status(CPUHotplugState *cpu_st, DeviceState *dev)
- {
--    CPUClass *k = CPU_GET_CLASS(dev);
--    uint64_t cpu_arch_id = k->get_arch_id(CPU(dev));
-+    CPUState *cpu = CPU(dev);
-+    uint64_t cpu_arch_id = cpu->cc->get_arch_id(cpu);
-     int i;
+     if (s->set_pc) {
+-        CPUClass *cc = CPU_GET_CLASS(s->cpu);
+         cpu_reset(s->cpu);
+-        if (cc) {
+-            cc->set_pc(s->cpu, s->addr);
+-        }
++        s->cpu->cc->set_pc(s->cpu, s->addr);
+     }
  
-     for (i = 0; i < cpu_st->dev_count; i++) {
-diff --git a/hw/acpi/cpu_hotplug.c b/hw/acpi/cpu_hotplug.c
-index 83b8bc5deb8..aa0e1e3efa5 100644
---- a/hw/acpi/cpu_hotplug.c
-+++ b/hw/acpi/cpu_hotplug.c
-@@ -62,10 +62,9 @@ static const MemoryRegionOps AcpiCpuHotplug_ops = {
- static void acpi_set_cpu_present_bit(AcpiCpuHotplug *g, CPUState *cpu,
-                                      bool *swtchd_to_modern)
- {
--    CPUClass *k = CPU_GET_CLASS(cpu);
-     int64_t cpu_id;
- 
--    cpu_id = k->get_arch_id(cpu);
-+    cpu_id = cpu->cc->get_arch_id(cpu);
-     if ((cpu_id / 8) >= ACPI_GPE_PROC_LEN) {
-         object_property_set_bool(g->device, "cpu-hotplug-legacy", false,
-                                  &error_abort);
+     if (s->data_len) {
 -- 
 2.47.1

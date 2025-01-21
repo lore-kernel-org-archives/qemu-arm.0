@@ -1,101 +1,101 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp24281njc;
-        Tue, 21 Jan 2025 03:41:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW4QmI20dzF2D66eoPCeKlKiY0bTBgFiqmG7RtED1hcHGBD367sEMSGExdx3S+TtzTXmiu4RxlPCeL06Q==@linaro.org
-X-Received: by 2002:a05:6000:2a9:b0:385:dea3:6059 with SMTP id ffacd0b85a97d-38bf57b64d5mr15182983f8f.49.1737459668043;
-        Tue, 21 Jan 2025 03:41:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737459668; cv=none;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp24314njc;
+        Tue, 21 Jan 2025 03:41:12 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVKz22VFJ0B4VgfB7//QpcDR+yCoMFlQtYG7xVs3SRN2gUcVRBWAimNG1cJ2nPvQ5iD/hoSf6Ksks4YOQ==@linaro.org
+X-Received: by 2002:a05:600c:218b:b0:436:51bb:7a43 with SMTP id 5b1f17b1804b1-438919191f6mr169373475e9.5.1737459672553;
+        Tue, 21 Jan 2025 03:41:12 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737459672; cv=none;
         d=google.com; s=arc-20240605;
-        b=eea5SQikcSwvfPpzPUcQtQaIVzP3IhHDPQelauOX89N/AZdYS5W4UcRl+oYe5kUN2j
-         Pc8wvnP830Q8ZZ2ZxQ3oZeFb68kuVl5GC6Tfx6BgfUr6xqHvjZZD6CjZDfVX7ns84tAh
-         GY3LAlSFUrcJm+BjLXFZPowDwfpHMgooD34bSOuDQfgyONe/bo66/+1FujRJEk4UlBVI
-         Rw/9L2D5zSGBavuYBkFKF6uUwRZMp8WCYo7Xrn7+nguu1HJ8wlmgoO3loOkrEwVsn/iS
-         B0XsB0gvAYfmJrthQ9dzPos0U/LmUaJCSkmD3LFDY4G+YFz3K+p42ETIi3Tfuc4v4Y7S
-         p8pg==
+        b=BRGZ3pmGtG90nUqM5wgKJ3eA4YIdIcjpbBzWa2yWIcRPKpFitGHIGPa05cnW5EB/nQ
+         Gf//DW3oWK6osURPyvgqzQHReoFFbI8p7SRRxgmLFDqaWJOKE3tALuLHus9YTbbEfPBZ
+         bAiv3GpKB05RecV0qlXYD7M7zyLuNrRaIvaidZTKU9USImxyDkdJmedKeBClI/soc2Ba
+         r4GJa+8LF4XV733Hu5nBElAHDEe/p7vXwdMaRTKgq3toWcunJ7F53s6xerslby4P+9NB
+         LqlZ3Cj2ND2heX3bpy5zu489QEq4XeXqyR2JhrnfeUP32pGCLImUeT53HdHlCR90Tp01
+         sAeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/3HlKJr0e+T3QTj2gDcsUT1Px2dX5i+yFz6MQF4ebrA=;
-        fh=w8GRn0hwiXhyqR0Lr7tdL6/ucA1Frga6IuKQE3HhSho=;
-        b=hXYlV3iLm1Q652nhsQ/oHkF/rV04ZlZ8DMJgkkZHR0RD8+y3U3nIgHl7buZA/phRLe
-         EOArTyl/sIB3+NIFWap+szW+5n7Xt08AcLMqzQf1rchBKKYzoOM5L20fkF4qLybGH19j
-         +nNMx45c8Fe360KSSa/hahhQPt9IqyjmE/0hiwo4CZuGeaAlhlHjzOY0Plc4C/G/FKOS
-         2HAdI9HwqbV8mM5RV/Alk9rQYZm5gKGZ2bVQYVrSEK5QeOCedqcyYTdXMELylr+wFkFR
-         wtHMFpEntXijYETtVi2DJa+pieqK2zcaDruVtK4DG/R/iP6ovtJGx+f8J8Sw8An/ngM/
-         RwWA==;
+        bh=6+sqenivOKOaIj/HGMbrfNMWNgVlPE7OSpRM12hfj2M=;
+        fh=VJwDSZzwMDFUPpr46yYsIBOEmGvx0IDz2mqqeAY64xI=;
+        b=ltjv3enwO/mig2/peNZPGolpnM3SpxfZR+lIN9GpQwSs/buWPaKk7uEcN8vpdEbeX1
+         ggt6zEAIBvVsZi88fMYyaK5APYZeQfkC8olc3UdLDhY/Za+g1GrgLLS2YEiqaH/GBC4U
+         ywIRLhOR/FopgL9xgPz9BsawsnqFZZvrN6vHjY2pUk+nByZICeAyCXRjR6gBInGEPcyN
+         kDcy0OALEPVDxvVe+hIhOZjZqXovVkqi7Itz5Th3QMipJVWeWHPsMSq00TTDmOD98GcK
+         9hcDykQnRWaeNwIYmZJ2tjPVUkZA3oYg+hjEALU2UekN2f0wTu2aJ4defwlyPKQyCS3z
+         GU0Q==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="nw/Yk5TY";
+       dkim=pass header.i=@linaro.org header.s=google header.b=y7ZBappl;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38bf3214e7esor2893961f8f.2.2025.01.21.03.41.07
+        by mx.google.com with SMTPS id 5b1f17b1804b1-43890467d32sor34791205e9.7.2025.01.21.03.41.12
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 21 Jan 2025 03:41:08 -0800 (PST)
+        Tue, 21 Jan 2025 03:41:12 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="nw/Yk5TY";
+       dkim=pass header.i=@linaro.org header.s=google header.b=y7ZBappl;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737459667; x=1738064467; darn=linaro.org;
+        d=linaro.org; s=google; t=1737459672; x=1738064472; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=/3HlKJr0e+T3QTj2gDcsUT1Px2dX5i+yFz6MQF4ebrA=;
-        b=nw/Yk5TYMahAvm0PH1s45zqZVLdZ+DCsY+BgGjFdflSacgNm0K1d8T7TIMqPNnp/+2
-         2GQi1GFIN/TJ7nmK44beaSEQYwQ9l939XwIqCO/IOLVoAn32oiiEZF0ovnjB3dyguXP0
-         jDzIDcIVCV4Oxc5IeEECGu+0OqI1cMAf7NxtRxQh9btJceGfejsH+KeywUyGOBtGYkLp
-         9YZfjbdZrYpht6LaSVR+xz91bOFm+KCJI3hCEm9cU0YqcNIFoHrhNrJ/mzbeE40RUfgi
-         rEfWJL9mZ8ZyFwq7o7cVqT0hxwXU92T1/USf12O2dWfJiaDmAkUZmyMyHgFKsYrI3FJ5
-         7UGg==
+        bh=6+sqenivOKOaIj/HGMbrfNMWNgVlPE7OSpRM12hfj2M=;
+        b=y7ZBapplPCOMyfO8t9+8jeBO/0gbg/A+46FEL0YeI4ph2guSI2KX53KOaWxK6s/Vbk
+         CNOxoEY3iHHDOl0Go9d29ljGOTOCZFpB23J2rgq/beGpnD3JBnJOk7L87JDgW0hzCvwd
+         lMmUSZwgH5Y/1AUuLZ6/FPnQuS94y7z+5cNYoPKfGrdK0VsdIfJs3lWIjAxTs60qieNY
+         hB+9mcKQ26kvdaUQaX+q0+ZDYDUH1hkxTs7FpnAvSLrNSdP4dE8Qv0CMkwxuPPVTGZDs
+         0jh1/4Z6PXmOlf/0Mf6OujLzqXUq1At8x0ZskGKJx1j0gc4BZng5tc1FiyUukSgOHnSl
+         Q2Gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737459667; x=1738064467;
+        d=1e100.net; s=20230601; t=1737459672; x=1738064472;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=/3HlKJr0e+T3QTj2gDcsUT1Px2dX5i+yFz6MQF4ebrA=;
-        b=C+0LrqBjTIqchkbGoiNfeGFJ2dJSylvR3t5+p2T3Nooz6P9d3gm4OIjP8Z9ifpfBFL
-         juNFWqAZx8bUFTzQ+X639OZxJfBjjV02X6rgN7HJntZ40z0iHFws/5n8Q7LiBXdA3G8T
-         dcHCqUaXyxsOk/LU0Vk5rA6gZzWEeUtiSdJHA+MC1V5BizQNCVsF+RbCFFjuUR9K4yrQ
-         Yi/9neXLK5WxW2YtyTVJt9PMVtvigGPj3D+TQM8Z5bh4Tc9zPyCjE75ldBUnT4IJCksU
-         tG0MrK8rI16BEEINGfzzBa4xEazxF0v4j660HvjyvhCAgk+XahPGAwrZVAGsuA99b1id
-         DXLA==
-X-Forwarded-Encrypted: i=1; AJvYcCVqXSBNPUR6swPlYW4Sm6PTVUxBspAhkGUXHcYGoZV8BL4zUfyXrYCDWdOpAI9X16980QU/pxutQk5K7w==@linaro.org
-X-Gm-Message-State: AOJu0YygVRGkA5xWfd2nPsxZ4roQP6sX9NggvRIpidACmRK47tBp5RvX
-	fMfa5ENs2kbC8Fc+yifmVKvsx7rvM4yD4ab5h1SuLClJGVDioiyHlB0QztNXpRE1xw==
-X-Gm-Gg: ASbGnct5Tl5+t6e20bU2rtODWKASaavhHYCPyik2AL0CFQ5qy/LDaAqcBoAfPSUsu3R
-	Qnnl5638boO/1TUJnSZK1PSfzeEiqDC7mIuma+AreV2NfqBja4m9P1nS48HqAtdKmVYQIiOnfwA
-	X/IcYuoyceHW3qGp1QxGckIc4BkqSpgmz6vevIrtB7x1rWdCpuklwi5un4JK7T6myBS0MCaRoFG
-	FOVNCgNeTtU1Jbxa/HkfORd4aG6z/8yNHbthzuOoEgZXB3vN7hk3e7plkXAAtOu6c02IlK3xsLx
-	qQNSjdlrQKexZfPKdFICskSAI9CRduHBOoqITDN3+gmS
-X-Google-Smtp-Source: AGHT+IGs/ATla//lQ2AtPoPkcgm+ShlMsf7RR27CE1JH3r1iRxS5tELAIaHWMxn4/3oiZmjM0gynjA==
-X-Received: by 2002:adf:ef4f:0:b0:38a:418e:bee with SMTP id ffacd0b85a97d-38bf57a2843mr10469117f8f.42.1737459667407;
-        Tue, 21 Jan 2025 03:41:07 -0800 (PST)
+        bh=6+sqenivOKOaIj/HGMbrfNMWNgVlPE7OSpRM12hfj2M=;
+        b=o1sWV3SsB7R6fHSuPPGbd50WkHCqClkyMcgrfF3Rg1tEXVehgY1ToTJ+h4Es5IWNHn
+         cpSdzsyUB8eWxX9A9ZtDZeCj8WbJSj9zcWHBySrg2fOWbE8xxk5Ut+TTBJ1FRsF+ZNwx
+         +Ghc+kMFPSYDTBopnm2PoEk0wFkcBFMqwGpb6JLwV0ztJlG3wWvh2+F2/4zadJ0GwMmi
+         yZia3o8JFhhszXNEdIlB/+1Bhtt+9oh30L3KDvl2X5s0OXng3RxsDG2B0XHSWUlg0e/O
+         eaCswFSsruh3McO8p5pKDciz7SnVgQG8dDDcpPR/W3R2BsgC3WqL+Mttk6Xar4Nbk6/l
+         T+6A==
+X-Forwarded-Encrypted: i=1; AJvYcCXC3/WkYxbKwM8ahYfRr0aJCPkKewuNj2GtV37nVyrz04IDSum/ijZDBeezAFsUBCwSkPhe9HBtK69EhA==@linaro.org
+X-Gm-Message-State: AOJu0Yz+q1iXNon0SEUEvtU4Cb977ajQwmIf25qr+0EWJDIsy4dHOXVQ
+	S9D6qyLcSC0STZ+3ejMTxkA64ob59Mn0JyfgrLfEChwr395Jk8z4OIxGMkP/F7ey3A==
+X-Gm-Gg: ASbGncsxeQWiun5LEvPD6RTOMwivPJI4631VhS86bgFEVyvppBe4quGXZxmXjwbIVS0
+	eVB5o6ZrY9ddB9raQiTh2rWP+kzzKqwrftMGVHWswKaBW+D6lYE/xIfbUzUMRPxy0fHE8BWYIcR
+	kyWD7OlbUbD7RXZrUcnS3o9dY4qgsbUieNngsAY2BLQz321h2Kmy7PyXP9a7/yABghZ0tvL1zBC
+	bU/UzOV3Y1HOjPIAZq0Sxchhmm5LhD8glpF8yhrmOb4SDuATTFNme4UBnBdgRR+1ZQ/hbQzengs
+	FWcZ7ye3N6bU9S9i7p0wpxPYXBegcgziKa6KcFVMbJk1
+X-Google-Smtp-Source: AGHT+IFAV++RtKn1KotX+3ii/fxqKc/fb8NWI3UzdXKs0eo21SJuKzQB4kr02Ht3HAyC4Lmg9PLMTg==
+X-Received: by 2002:a05:600c:138f:b0:436:ed50:4f8a with SMTP id 5b1f17b1804b1-438913caeb9mr178310015e9.10.1737459672025;
+        Tue, 21 Jan 2025 03:41:12 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38bf327decbsm13358853f8f.90.2025.01.21.03.41.06
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-437c1664e8dsm179961565e9.1.2025.01.21.03.41.11
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 21 Jan 2025 03:41:06 -0800 (PST)
+        Tue, 21 Jan 2025 03:41:11 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 02/11] cpus: Prefer cached CpuClass over CPU_GET_CLASS() macro
-Date: Tue, 21 Jan 2025 12:40:47 +0100
-Message-ID: <20250121114056.53949-3-philmd@linaro.org>
+Subject: [PATCH 03/11] accel: Prefer cached CpuClass over CPU_GET_CLASS() macro
+Date: Tue, 21 Jan 2025 12:40:48 +0100
+Message-ID: <20250121114056.53949-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250121114056.53949-1-philmd@linaro.org>
 References: <20250121114056.53949-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 567WB2nzxt3p
+X-TUID: bQHSLPTFO26t
 
 CpuState caches its CPUClass since commit 6fbdff87062
 ("cpu: cache CPUClass in CPUState for hot code paths"),
@@ -103,256 +103,107 @@ use it.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/core/cpu.h | 10 +++-----
- cpu-common.c          | 10 ++++----
- cpu-target.c          |  6 ++---
- hw/core/cpu-common.c  | 13 ++++------
- hw/core/cpu-system.c  | 55 +++++++++++++++----------------------------
- 5 files changed, 32 insertions(+), 62 deletions(-)
+ accel/accel-target.c      | 12 +++++-------
+ accel/tcg/tcg-accel-ops.c |  3 +--
+ accel/tcg/translate-all.c |  2 +-
+ accel/tcg/watchpoint.c    |  9 ++++-----
+ 4 files changed, 11 insertions(+), 15 deletions(-)
 
-diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-index fb397cdfc53..b7367f6d808 100644
---- a/include/hw/core/cpu.h
-+++ b/include/hw/core/cpu.h
-@@ -824,10 +824,8 @@ const char *parse_cpu_option(const char *cpu_option);
-  */
- static inline bool cpu_has_work(CPUState *cpu)
+diff --git a/accel/accel-target.c b/accel/accel-target.c
+index 08626c00c2d..8a16c0c3ae0 100644
+--- a/accel/accel-target.c
++++ b/accel/accel-target.c
+@@ -112,22 +112,20 @@ void accel_init_interfaces(AccelClass *ac)
+ 
+ void accel_cpu_instance_init(CPUState *cpu)
  {
 -    CPUClass *cc = CPU_GET_CLASS(cpu);
 -
--    g_assert(cc->has_work);
--    return cc->has_work(cpu);
-+    g_assert(cpu->cc->has_work);
-+    return cpu->cc->has_work(cpu);
- }
- 
- /**
-@@ -966,9 +964,7 @@ void cpu_interrupt(CPUState *cpu, int mask);
-  */
- static inline void cpu_set_pc(CPUState *cpu, vaddr addr)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    cc->set_pc(cpu, addr);
-+    cpu->cc->set_pc(cpu, addr);
- }
- 
- /**
-diff --git a/cpu-common.c b/cpu-common.c
-index 4248b2d727e..3a409aacb2e 100644
---- a/cpu-common.c
-+++ b/cpu-common.c
-@@ -389,11 +389,10 @@ void process_queued_cpu_work(CPUState *cpu)
- int cpu_breakpoint_insert(CPUState *cpu, vaddr pc, int flags,
-                           CPUBreakpoint **breakpoint)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
-     CPUBreakpoint *bp;
- 
--    if (cc->gdb_adjust_breakpoint) {
--        pc = cc->gdb_adjust_breakpoint(cpu, pc);
-+    if (cpu->cc->gdb_adjust_breakpoint) {
-+        pc = cpu->cc->gdb_adjust_breakpoint(cpu, pc);
-     }
- 
-     bp = g_malloc(sizeof(*bp));
-@@ -419,11 +418,10 @@ int cpu_breakpoint_insert(CPUState *cpu, vaddr pc, int flags,
- /* Remove a specific breakpoint.  */
- int cpu_breakpoint_remove(CPUState *cpu, vaddr pc, int flags)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
-     CPUBreakpoint *bp;
- 
--    if (cc->gdb_adjust_breakpoint) {
--        pc = cc->gdb_adjust_breakpoint(cpu, pc);
-+    if (cpu->cc->gdb_adjust_breakpoint) {
-+        pc = cpu->cc->gdb_adjust_breakpoint(cpu, pc);
-     }
- 
-     QTAILQ_FOREACH(bp, &cpu->breakpoints, entry) {
-diff --git a/cpu-target.c b/cpu-target.c
-index 89874496a41..98e9e7cc4a1 100644
---- a/cpu-target.c
-+++ b/cpu-target.c
-@@ -159,10 +159,8 @@ bool cpu_exec_realizefn(CPUState *cpu, Error **errp)
- void cpu_exec_unrealizefn(CPUState *cpu)
- {
- #ifndef CONFIG_USER_ONLY
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (cc->sysemu_ops->legacy_vmsd != NULL) {
--        vmstate_unregister(NULL, cc->sysemu_ops->legacy_vmsd, cpu);
-+    if (cpu->cc->sysemu_ops->legacy_vmsd != NULL) {
-+        vmstate_unregister(NULL, cpu->cc->sysemu_ops->legacy_vmsd, cpu);
-     }
-     if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
-         vmstate_unregister(NULL, &vmstate_cpu_common, cpu);
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index ff605059c15..886aa793c04 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -40,9 +40,7 @@ CPUState *cpu_by_arch_id(int64_t id)
-     CPUState *cpu;
- 
-     CPU_FOREACH(cpu) {
--        CPUClass *cc = CPU_GET_CLASS(cpu);
--
--        if (cc->get_arch_id(cpu) == id) {
-+        if (cpu->cc->get_arch_id(cpu) == id) {
-             return cpu;
-         }
-     }
-@@ -101,11 +99,9 @@ static int cpu_common_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg)
- 
- void cpu_dump_state(CPUState *cpu, FILE *f, int flags)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (cc->dump_state) {
-+    if (cpu->cc->dump_state) {
-         cpu_synchronize_state(cpu);
--        cc->dump_state(cpu, f, flags);
-+        cpu->cc->dump_state(cpu, f, flags);
+-    if (cc->accel_cpu && cc->accel_cpu->cpu_instance_init) {
+-        cc->accel_cpu->cpu_instance_init(cpu);
++    if (cpu->cc->accel_cpu && cpu->cc->accel_cpu->cpu_instance_init) {
++        cpu->cc->accel_cpu->cpu_instance_init(cpu);
      }
  }
  
-@@ -119,11 +115,10 @@ void cpu_reset(CPUState *cpu)
- static void cpu_common_reset_hold(Object *obj, ResetType type)
- {
-     CPUState *cpu = CPU(obj);
--    CPUClass *cc = CPU_GET_CLASS(cpu);
- 
-     if (qemu_loglevel_mask(CPU_LOG_RESET)) {
-         qemu_log("CPU Reset (CPU %d)\n", cpu->cpu_index);
--        log_cpu_state(cpu, cc->reset_dump_flags);
-+        log_cpu_state(cpu, cpu->cc->reset_dump_flags);
-     }
- 
-     cpu->interrupt_request = 0;
-diff --git a/hw/core/cpu-system.c b/hw/core/cpu-system.c
-index 6aae28a349a..37d54d04bf8 100644
---- a/hw/core/cpu-system.c
-+++ b/hw/core/cpu-system.c
-@@ -25,10 +25,8 @@
- 
- bool cpu_paging_enabled(const CPUState *cpu)
+ bool accel_cpu_common_realize(CPUState *cpu, Error **errp)
  {
 -    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (cc->sysemu_ops->get_paging_enabled) {
--        return cc->sysemu_ops->get_paging_enabled(cpu);
-+    if (cpu->cc->sysemu_ops->get_paging_enabled) {
-+        return cpu->cc->sysemu_ops->get_paging_enabled(cpu);
+     AccelState *accel = current_accel();
+     AccelClass *acc = ACCEL_GET_CLASS(accel);
+ 
+     /* target specific realization */
+-    if (cc->accel_cpu && cc->accel_cpu->cpu_target_realize
+-        && !cc->accel_cpu->cpu_target_realize(cpu, errp)) {
++    if (cpu->cc->accel_cpu
++        && cpu->cc->accel_cpu->cpu_target_realize
++        && !cpu->cc->accel_cpu->cpu_target_realize(cpu, errp)) {
+         return false;
      }
  
-     return false;
-@@ -37,10 +35,8 @@ bool cpu_paging_enabled(const CPUState *cpu)
- bool cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
-                             Error **errp)
+diff --git a/accel/tcg/tcg-accel-ops.c b/accel/tcg/tcg-accel-ops.c
+index 6e3f1fa92b2..299d6176cfb 100644
+--- a/accel/tcg/tcg-accel-ops.c
++++ b/accel/tcg/tcg-accel-ops.c
+@@ -120,10 +120,9 @@ static inline int xlat_gdb_type(CPUState *cpu, int gdbtype)
+         [GDB_WATCHPOINT_ACCESS] = BP_GDB | BP_MEM_ACCESS,
+     };
+ 
+-    CPUClass *cc = CPU_GET_CLASS(cpu);
+     int cputype = xlat[gdbtype];
+ 
+-    if (cc->gdb_stop_before_watchpoint) {
++    if (cpu->cc->gdb_stop_before_watchpoint) {
+         cputype |= BP_STOP_BEFORE_ACCESS;
+     }
+     return cputype;
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index d56ca13cddf..5a378cb0281 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -622,7 +622,7 @@ void cpu_io_recompile(CPUState *cpu, uintptr_t retaddr)
+      * to account for the re-execution of the branch.
+      */
+     n = 1;
+-    cc = CPU_GET_CLASS(cpu);
++    cc = cpu->cc;
+     if (cc->tcg_ops->io_recompile_replay_branch &&
+         cc->tcg_ops->io_recompile_replay_branch(cpu, tb)) {
+         cpu->neg.icount_decr.u16.low++;
+diff --git a/accel/tcg/watchpoint.c b/accel/tcg/watchpoint.c
+index af57d182d5b..52e550dec6b 100644
+--- a/accel/tcg/watchpoint.c
++++ b/accel/tcg/watchpoint.c
+@@ -69,7 +69,6 @@ int cpu_watchpoint_address_matches(CPUState *cpu, vaddr addr, vaddr len)
+ void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+                           MemTxAttrs attrs, int flags, uintptr_t ra)
  {
 -    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (cc->sysemu_ops->get_memory_mapping) {
--        return cc->sysemu_ops->get_memory_mapping(cpu, list, errp);
-+    if (cpu->cc->sysemu_ops->get_memory_mapping) {
-+        return cpu->cc->sysemu_ops->get_memory_mapping(cpu, list, errp);
+     CPUWatchpoint *wp;
+ 
+     assert(tcg_enabled());
+@@ -85,9 +84,9 @@ void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+         return;
      }
  
-     error_setg(errp, "Obtaining memory mappings is unsupported on this CPU.");
-@@ -50,14 +46,12 @@ bool cpu_get_memory_mapping(CPUState *cpu, MemoryMappingList *list,
- hwaddr cpu_get_phys_page_attrs_debug(CPUState *cpu, vaddr addr,
-                                      MemTxAttrs *attrs)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (cc->sysemu_ops->get_phys_page_attrs_debug) {
--        return cc->sysemu_ops->get_phys_page_attrs_debug(cpu, addr, attrs);
-+    if (cpu->cc->sysemu_ops->get_phys_page_attrs_debug) {
-+        return cpu->cc->sysemu_ops->get_phys_page_attrs_debug(cpu, addr, attrs);
+-    if (cc->tcg_ops->adjust_watchpoint_address) {
++    if (cpu->cc->tcg_ops->adjust_watchpoint_address) {
+         /* this is currently used only by ARM BE32 */
+-        addr = cc->tcg_ops->adjust_watchpoint_address(cpu, addr, len);
++        addr = cpu->cc->tcg_ops->adjust_watchpoint_address(cpu, addr, len);
      }
-     /* Fallback for CPUs which don't implement the _attrs_ hook */
-     *attrs = MEMTXATTRS_UNSPECIFIED;
--    return cc->sysemu_ops->get_phys_page_debug(cpu, addr);
-+    return cpu->cc->sysemu_ops->get_phys_page_debug(cpu, addr);
- }
  
- hwaddr cpu_get_phys_page_debug(CPUState *cpu, vaddr addr)
-@@ -81,64 +75,53 @@ int cpu_asidx_from_attrs(CPUState *cpu, MemTxAttrs attrs)
- int cpu_write_elf32_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
-                              void *opaque)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (!cc->sysemu_ops->write_elf32_qemunote) {
-+    if (!cpu->cc->sysemu_ops->write_elf32_qemunote) {
-         return 0;
-     }
--    return (*cc->sysemu_ops->write_elf32_qemunote)(f, cpu, opaque);
-+    return (*cpu->cc->sysemu_ops->write_elf32_qemunote)(f, cpu, opaque);
- }
+     assert((flags & ~BP_MEM_ACCESS) == 0);
+@@ -119,8 +118,8 @@ void cpu_check_watchpoint(CPUState *cpu, vaddr addr, vaddr len,
+             wp->hitattrs = attrs;
  
- int cpu_write_elf32_note(WriteCoreDumpFunction f, CPUState *cpu,
-                          int cpuid, void *opaque)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (!cc->sysemu_ops->write_elf32_note) {
-+    if (!cpu->cc->sysemu_ops->write_elf32_note) {
-         return -1;
-     }
--    return (*cc->sysemu_ops->write_elf32_note)(f, cpu, cpuid, opaque);
-+    return (*cpu->cc->sysemu_ops->write_elf32_note)(f, cpu, cpuid, opaque);
- }
- 
- int cpu_write_elf64_qemunote(WriteCoreDumpFunction f, CPUState *cpu,
-                              void *opaque)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (!cc->sysemu_ops->write_elf64_qemunote) {
-+    if (!cpu->cc->sysemu_ops->write_elf64_qemunote) {
-         return 0;
-     }
--    return (*cc->sysemu_ops->write_elf64_qemunote)(f, cpu, opaque);
-+    return (*cpu->cc->sysemu_ops->write_elf64_qemunote)(f, cpu, opaque);
- }
- 
- int cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cpu,
-                          int cpuid, void *opaque)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (!cc->sysemu_ops->write_elf64_note) {
-+    if (!cpu->cc->sysemu_ops->write_elf64_note) {
-         return -1;
-     }
--    return (*cc->sysemu_ops->write_elf64_note)(f, cpu, cpuid, opaque);
-+    return (*cpu->cc->sysemu_ops->write_elf64_note)(f, cpu, cpuid, opaque);
- }
- 
- bool cpu_virtio_is_big_endian(CPUState *cpu)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
--
--    if (cc->sysemu_ops->virtio_is_big_endian) {
--        return cc->sysemu_ops->virtio_is_big_endian(cpu);
-+    if (cpu->cc->sysemu_ops->virtio_is_big_endian) {
-+        return cpu->cc->sysemu_ops->virtio_is_big_endian(cpu);
-     }
-     return target_words_bigendian();
- }
- 
- GuestPanicInformation *cpu_get_crash_info(CPUState *cpu)
- {
--    CPUClass *cc = CPU_GET_CLASS(cpu);
-     GuestPanicInformation *res = NULL;
- 
--    if (cc->sysemu_ops->get_crash_info) {
--        res = cc->sysemu_ops->get_crash_info(cpu);
-+    if (cpu->cc->sysemu_ops->get_crash_info) {
-+        res = cpu->cc->sysemu_ops->get_crash_info(cpu);
-     }
-     return res;
- }
+             if (wp->flags & BP_CPU
+-                && cc->tcg_ops->debug_check_watchpoint
+-                && !cc->tcg_ops->debug_check_watchpoint(cpu, wp)) {
++                && cpu->cc->tcg_ops->debug_check_watchpoint
++                && !cpu->cc->tcg_ops->debug_check_watchpoint(cpu, wp)) {
+                 wp->flags &= ~BP_WATCHPOINT_HIT;
+                 continue;
+             }
 -- 
 2.47.1

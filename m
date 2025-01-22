@@ -1,85 +1,85 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp602923njc;
-        Tue, 21 Jan 2025 23:09:54 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCU8Vx6/iXrbP0El9+v3l6gKbBy8bpQ0o0BhdJApLCiXZkFiW+BIza0ngvW98TPTTODBFprVV/yz5e9j7A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHdY5d0K1YuZpQcBHIUq9fVKlJakJh9RUdUXeTzdXYsGVgYd0mr9pNweRGN/GrtnKjL1H86
-X-Received: by 2002:a05:622a:1920:b0:468:f858:6662 with SMTP id d75a77b69052e-46df56776e0mr474495001cf.10.1737529793813;
-        Tue, 21 Jan 2025 23:09:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737529793; cv=none;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp602977njc;
+        Tue, 21 Jan 2025 23:10:04 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUVhUXxM01YfbdYn2SnAiRLdpK86cjd37gMjV/U+cXdpxpdt8Ynfnoo5+4neAN+3kb54PGZ6cRUw4ggcg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFWAb6GLypo0Nb4NWfbDjPVWKiEPRu6jn/jh69MsGdqeJIVcKjz2l6NQhuzrLj4Ut3MZu+c
+X-Received: by 2002:ac8:58c5:0:b0:46c:870f:f625 with SMTP id d75a77b69052e-46e12b75579mr283886421cf.29.1737529803843;
+        Tue, 21 Jan 2025 23:10:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737529803; cv=none;
         d=google.com; s=arc-20240605;
-        b=HNotHIlwl/16AXFZX+9yeint4eJaPK/aw/CzXOIfy1cNxqSKBMatQMDqsUx9Oe0UWB
-         rd9tg8FXKBOOLgdbCu2XtgHznwchZYjnQG6QN6AXshRKbuL3k7vgRs2pc491VZbS1u6E
-         eWpooomzaxAY0sX6i/7i0ouC0wA6yRl/vQ0ZYp9SIHISUJ3NF40Isuwk2oXiKZQ3WgUO
-         ilo6pBDtQIFbzNzGJRDlhAdECwbtxzpQxVDlBYvqTHxb4tJEQgEBODdbdfeFr9WxkOVa
-         dikM5ysNgQWA5X08VymHhHChhKaCGasrmYPdiEO+cOtpXjsReFTkvdUJwA4hUjwSBA9j
-         1YrA==
+        b=O5mp/lssdUdQqpkvdLBfKLWUVQAejxL3d5vm7B0fBYhzpZAM6UIJBXt70QGVw+ukuJ
+         4GP/DrZ0HQkehf3AxqKOXvj6IuuTEIeaiPZYm+1rcUFkP8gPAwPY82WdRSCmhwV+1YPN
+         Xr/Jb2RfNqIsEuSunXzFW/rS2UkTif3FkglEP6FQ83rN6A0fOS4pEHQELykCCrBhpeCE
+         mAzBFVh1CgqWtMEY3eLhf4NxxRwcnGBEvNWjz28iC62zZPw5wu3ae/Yp+0ZumogLx2wZ
+         KB44FqV03zz9GZFC5bM1PwlFfL84+5hqhIS1B6wpHriXAyaCQwuvpQiJwNO6kvp3oG3b
+         SoYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Ayl2E/VrUl+Llrmlcin4PivEBLaP2DgTB+tiRIfVc+M=;
-        fh=208RJypTGeG9krzmNxy9l5TDrz0swTlVpeAFZX52Qhc=;
-        b=dkuhK/wUCcCFzZw2tkq28/WyXSVOY1nA2d5yqzUfpszwqRcpLQOjNKgQZIGkF8SJki
-         EdQJpey5blu2ENEmbJ102LASibSVIPOJ7FLa+MffSkS/fe8gG1Oy6S8M6hcxGmC+YGaY
-         UNrPyEcQQ5kC6kGMBHS1SBvTcbtGzJYC76QV780g0lnEzFhJXitt77yXxTY4sCCKCGEN
-         f598TonJso7TXYbu99l69rkz8utJMzr8x03ljBBz3Xq+91+REVGLuyArwsFnA9ljpqAL
-         H5NEYZ/ip4QmsUpGGId/ltpZyZOXs3Cnz8Jh7IMyIxdnrvLfPiT1n3H27W0oX1w9gqI+
-         ct6A==;
+        bh=gvxXCpgxcR8pnFAbFm1ZXD/+Uaq5sgKqZlPpIPkXai4=;
+        fh=CQ3JhhEpLx6WUtQxwLyuUdUASVLLkjylcjrkyER1RTM=;
+        b=U/+q3XPF7RDWV8hwMSCXoqs2YcjQk5xaAmn2sxFNsxTO/IKrG3hCS3JwADCT7aYww5
+         v7Sym9jf9WlnUICNdPacGBsxP01uQy0uAlB7LdbnK2miOn+7A3MbMQRfnc8faLDXRa8i
+         Xz8YhRgq2of+nSYvMsZ28EBHeLpzm2aKpPTdHVzgBkdgVjJtrWGCfm8Mz/pmtsBDGy4X
+         PkkvdmITQDLM/oGIa1tYEkCttvehBzhoSBzcl74k7cGPx7ysz6tN7a/xGhx3bCD6UGn8
+         WQjNl0/Tu2RWG2Pi0ZEO6xE2hYhqec5w99v9JX9y4G2haSPUdbM3VnigHZ4nVtQEXHs8
+         VIyg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UxlHcGS4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LIcwAm6J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e1040e8aasi152506261cf.293.2025.01.21.23.09.53
+        by mx.google.com with ESMTPS id d75a77b69052e-46e1043fbd7si1487161cf.391.2025.01.21.23.10.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jan 2025 23:09:53 -0800 (PST)
+        Tue, 21 Jan 2025 23:10:03 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UxlHcGS4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LIcwAm6J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1taUrr-00058T-Ru; Wed, 22 Jan 2025 02:09:40 -0500
+	id 1taUru-0005Ch-P9; Wed, 22 Jan 2025 02:09:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1taUrp-000567-Sr
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 02:09:38 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1taUrs-0005AU-H2
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 02:09:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1taUro-0008O1-85
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 02:09:37 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1taUrq-0008Oz-JR
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 02:09:40 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1737529774;
+ s=mimecast20190719; t=1737529778;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ayl2E/VrUl+Llrmlcin4PivEBLaP2DgTB+tiRIfVc+M=;
- b=UxlHcGS4XPvRTZIiEoscGx2M4QI0jnirPXAKUcgpKjWWVimGp8/FMGWINLlVH6FPeLB+2l
- VarziGobvR9XGELib2OcWSFAiIRvkJ/r9OoVMtSldnDm3jw6t49xPrbFIGJOY7gK3Rinwv
- /Codiz2nPgdEa2wg3eJ4ftPmb17gv4o=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=gvxXCpgxcR8pnFAbFm1ZXD/+Uaq5sgKqZlPpIPkXai4=;
+ b=LIcwAm6JNeaibDUuXHOc4ZQIt1TE+2knprhVx/I6JJyAb1CSOmEbZXxxGygInKXlqlRG2w
+ uUoXjs95NmBWrZV85bDPaABTihOW82134uD0euhNMwXiqCMgZOtdQC7Pf1pykTuYnZwjTE
+ 9dhrR/D6W/k30EvGdFdRWpQ7p8mzvQA=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-54-sNhgmxi9NqGM0qr2kchdLw-1; Wed,
- 22 Jan 2025 02:09:28 -0500
-X-MC-Unique: sNhgmxi9NqGM0qr2kchdLw-1
-X-Mimecast-MFC-AGG-ID: sNhgmxi9NqGM0qr2kchdLw
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-663-vKgMT3LuMCCPRUe9CGdQ4Q-1; Wed,
+ 22 Jan 2025 02:09:34 -0500
+X-MC-Unique: vKgMT3LuMCCPRUe9CGdQ4Q-1
+X-Mimecast-MFC-AGG-ID: vKgMT3LuMCCPRUe9CGdQ4Q
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DC6C619560A2; Wed, 22 Jan 2025 07:09:26 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3C0A819560B9; Wed, 22 Jan 2025 07:09:33 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.154])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5C9233003FD1; Wed, 22 Jan 2025 07:09:24 +0000 (UTC)
+ id 56FDD3003FD3; Wed, 22 Jan 2025 07:09:30 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
@@ -87,28 +87,26 @@ Cc: Joel Stanley <joel@jms.id.au>,
  Andrew Jeffery <andrew@codeconstruct.com.au>,
  Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
  Steven Lee <steven_lee@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH 3/9] hw/arm/aspeed: Invert sdhci write protected pin for
- AST2600 EVB
-Date: Wed, 22 Jan 2025 08:09:03 +0100
-Message-ID: <20250122070909.1138598-4-clg@redhat.com>
+Subject: [PATCH 5/9] hw/timer/aspeed: Add AST2700 Support
+Date: Wed, 22 Jan 2025 08:09:05 +0100
+Message-ID: <20250122070909.1138598-6-clg@redhat.com>
 In-Reply-To: <20250122070909.1138598-1-clg@redhat.com>
 References: <20250122070909.1138598-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -51
-X-Spam_score: -5.2
+X-Spam_score_int: -50
+X-Spam_score: -5.1
 X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.086,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,66 +121,301 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: zBUSGPgNSGSf
+X-TUID: SoLGdQE9UrS7
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The Write Protect pin of SDHCI model is default active low to match the SDHCI
-spec. So, write enable the bit 19 should be 1 and write protected the bit 19
-should be 0 at the Present State Register (0x24).
+The timer controller include 8 sets of 32-bit decrement counters, based on
+either PCLK or 1MHZ clock and the design of timer controller between AST2600
+and AST2700 are almost the same.
 
-According to the design of AST2600 EVB, the Write Protected pin is active
-high by default. To support it, introduces a new "sdhci_wp_inverted"
-property in ASPEED MACHINE State and set it true for AST2600 EVB
-and set "wp_inverted" property true of sdhci-generic model.
+TIMER0 – TIMER7 has their own individual control and interrupt status register.
+In other words, users are able to set timer control in register TMC10 with
+different TIMER base address and clear timer control and interrupt status in
+register TMC14 with different TIMER base address.
+
+Introduce new "aspeed_2700_timer_read" and "aspeed_2700_timer_write" callback
+functions and a new ast2700 class to support AST2700.
+
+The base address of TIMER0 to TIMER7 as following.
+Base Address of Timer 0 = 0x12C1_0000
+Base Address of Timer 1 = 0x12C1_0040
+Base Address of Timer 2 = 0x12C1_0080
+Base Address of Timer 3 = 0x12C1_00C0
+Base Address of Timer 4 = 0x12C1_0100
+Base Address of Timer 5 = 0x12C1_0140
+Base Address of Timer 6 = 0x12C1_0180
+Base Address of Timer 7 = 0x12C1_01C0
+
+The register address space of each TIMER is "0x40" , and uses the following
+formula to get the index and register of each TIMER.
+
+timer_index = offset >> 6;
+timer_offset = offset & 0x3f;
+
+The TMC010 is a counter control set and interrupt status register. Write "1" to
+TMC10[3:0] will set the specific bits to "1". Introduce a new
+"aspeed_2700_timer_set_ctrl" function to handle this register behavior.
+
+The TMC014 is a counter control clear and interrupt status register, to clear
+the specific bits to "0", it should write "1" to  TMC14[3:0] on the same bit
+position. Introduce a new "aspeed_2700_timer_clear_ctrl" function to handle
+this register behavior. TMC014 does not support read operation.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Link: https://lore.kernel.org/r/20241114094839.4128404-4-jamin_lin@aspeedtech.com
+Acked-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/r/20250113064455.1660564-3-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed.h | 1 +
- hw/arm/aspeed.c         | 7 +++++++
- 2 files changed, 8 insertions(+)
+ include/hw/timer/aspeed_timer.h |   1 +
+ hw/timer/aspeed_timer.c         | 208 ++++++++++++++++++++++++++++++++
+ 2 files changed, 209 insertions(+)
 
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index cbeacb214ca4..9cae45a1c99c 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -39,6 +39,7 @@ struct AspeedMachineClass {
-     uint32_t macs_mask;
-     void (*i2c_init)(AspeedMachineState *bmc);
-     uint32_t uart_default;
-+    bool sdhci_wp_inverted;
+diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
+index 07dc6b6f2cbd..767cae4b05ba 100644
+--- a/include/hw/timer/aspeed_timer.h
++++ b/include/hw/timer/aspeed_timer.h
+@@ -32,6 +32,7 @@ OBJECT_DECLARE_TYPE(AspeedTimerCtrlState, AspeedTimerClass, ASPEED_TIMER)
+ #define TYPE_ASPEED_2500_TIMER TYPE_ASPEED_TIMER "-ast2500"
+ #define TYPE_ASPEED_2600_TIMER TYPE_ASPEED_TIMER "-ast2600"
+ #define TYPE_ASPEED_1030_TIMER TYPE_ASPEED_TIMER "-ast1030"
++#define TYPE_ASPEED_2700_TIMER TYPE_ASPEED_TIMER "-ast2700"
+ 
+ #define ASPEED_TIMER_NR_TIMERS 8
+ 
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index 24ba40cbe9b4..ecda49574e2c 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -618,6 +618,197 @@ static void aspeed_2600_timer_write(AspeedTimerCtrlState *s, hwaddr offset,
+     }
+ }
+ 
++static void aspeed_2700_timer_set_ctrl(AspeedTimerCtrlState *s, int index,
++                                    uint32_t reg)
++{
++    const uint8_t overflow_interrupt_mask = BIT(op_overflow_interrupt);
++    const uint8_t external_clock_mask = BIT(op_external_clock);
++    const uint8_t pulse_enable_mask = BIT(op_pulse_enable);
++    const uint8_t enable_mask = BIT(op_enable);
++    AspeedTimer *t;
++    uint8_t t_old;
++    uint8_t t_new;
++    int shift;
++
++    /*
++     * Only 1 will set the specific bits to 1
++     * Handle a dependency between the 'enable' and remaining three
++     * configuration bits - i.e. if more than one bit in the control set has
++     * set, including the 'enable' bit, perform configuration and then
++     * enable the timer.
++     * Interrupt Status bit should not be set.
++     */
++
++     t = &s->timers[index];
++     shift = index * TIMER_CTRL_BITS;
++
++     t_old = (s->ctrl >> shift) & TIMER_CTRL_MASK;
++     t_new = reg & TIMER_CTRL_MASK;
++
++    if (!(t_old & external_clock_mask) &&
++        (t_new & external_clock_mask)) {
++        aspeed_timer_ctrl_external_clock(t, true);
++        s->ctrl = deposit32(s->ctrl, shift + op_external_clock, 1, 1);
++    }
++
++    if (!(t_old & overflow_interrupt_mask) &&
++        (t_new & overflow_interrupt_mask)) {
++        aspeed_timer_ctrl_overflow_interrupt(t, true);
++        s->ctrl = deposit32(s->ctrl, shift + op_overflow_interrupt, 1, 1);
++    }
++
++
++    if (!(t_old & pulse_enable_mask) &&
++        (t_new & pulse_enable_mask)) {
++        aspeed_timer_ctrl_pulse_enable(t, true);
++        s->ctrl = deposit32(s->ctrl, shift + op_pulse_enable, 1, 1);
++    }
++
++    /* If we are enabling, do so last */
++    if (!(t_old & enable_mask) &&
++        (t_new & enable_mask)) {
++        aspeed_timer_ctrl_enable(t, true);
++        s->ctrl = deposit32(s->ctrl, shift + op_enable, 1, 1);
++    }
++}
++
++static void aspeed_2700_timer_clear_ctrl(AspeedTimerCtrlState *s, int index,
++                                    uint32_t reg)
++{
++    const uint8_t overflow_interrupt_mask = BIT(op_overflow_interrupt);
++    const uint8_t external_clock_mask = BIT(op_external_clock);
++    const uint8_t pulse_enable_mask = BIT(op_pulse_enable);
++    const uint8_t enable_mask = BIT(op_enable);
++    AspeedTimer *t;
++    uint8_t t_old;
++    uint8_t t_new;
++    int shift;
++
++    /*
++     * Only 1 will clear the specific bits to 0
++     * Handle a dependency between the 'enable' and remaining three
++     * configuration bits - i.e. if more than one bit in the control set has
++     * clear, including the 'enable' bit, then disable the timer and perform
++     * configuration
++     */
++
++     t = &s->timers[index];
++     shift = index * TIMER_CTRL_BITS;
++
++     t_old = (s->ctrl >> shift) & TIMER_CTRL_MASK;
++     t_new = reg & TIMER_CTRL_MASK;
++
++    /* If we are disabling, do so first */
++    if ((t_old & enable_mask) &&
++        (t_new & enable_mask)) {
++        aspeed_timer_ctrl_enable(t, false);
++        s->ctrl = deposit32(s->ctrl, shift + op_enable, 1, 0);
++    }
++
++    if ((t_old & external_clock_mask) &&
++        (t_new & external_clock_mask)) {
++        aspeed_timer_ctrl_external_clock(t, false);
++        s->ctrl = deposit32(s->ctrl, shift + op_external_clock, 1, 0);
++    }
++
++    if ((t_old & overflow_interrupt_mask) &&
++        (t_new & overflow_interrupt_mask)) {
++        aspeed_timer_ctrl_overflow_interrupt(t, false);
++        s->ctrl = deposit32(s->ctrl, shift + op_overflow_interrupt, 1, 0);
++    }
++
++    if ((t_old & pulse_enable_mask) &&
++        (t_new & pulse_enable_mask)) {
++        aspeed_timer_ctrl_pulse_enable(t, false);
++        s->ctrl = deposit32(s->ctrl, shift + op_pulse_enable, 1, 0);
++    }
++
++    /* Clear interrupt status */
++    if (reg & 0x10000) {
++        s->irq_sts = deposit32(s->irq_sts, index, 1, 0);
++    }
++}
++
++static uint64_t aspeed_2700_timer_read(AspeedTimerCtrlState *s, hwaddr offset)
++{
++    uint32_t timer_offset = offset & 0x3f;
++    int timer_index = offset >> 6;
++    uint64_t value = 0;
++
++    if (timer_index >= ASPEED_TIMER_NR_TIMERS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%" PRIx64 " out of bounds\n",
++                      __func__, offset);
++        return 0;
++    }
++
++    switch (timer_offset) {
++    /*
++     * Counter Status
++     * Counter Reload
++     * Counter First Matching
++     * Counter Second Matching
++     */
++    case 0x00 ... 0x0C:
++        value = aspeed_timer_get_value(&s->timers[timer_index],
++                                       timer_offset >> 2);
++        break;
++    /* Counter Control and Interrupt Status */
++    case 0x10:
++        value = deposit64(value, 0, 4,
++                          extract32(s->ctrl, timer_index * 4, 4));
++        value = deposit64(value, 16, 1,
++                          extract32(s->irq_sts, timer_index, 1));
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
++                     PRIx64"\n", __func__, offset);
++        value = 0;
++        break;
++    }
++    trace_aspeed_timer_read(offset, value);
++    return value;
++}
++
++static void aspeed_2700_timer_write(AspeedTimerCtrlState *s, hwaddr offset,
++                                    uint64_t value)
++{
++    const uint32_t timer_value = (uint32_t)(value & 0xFFFFFFFF);
++    uint32_t timer_offset = offset & 0x3f;
++    int timer_index = offset >> 6;
++
++    if (timer_index >= ASPEED_TIMER_NR_TIMERS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%" PRIx64 " out of bounds\n",
++                      __func__, offset);
++    }
++
++    switch (timer_offset) {
++    /*
++     * Counter Status
++     * Counter Reload
++     * Counter First Matching
++     * Counter Second Matching
++     */
++    case 0x00 ... 0x0C:
++        aspeed_timer_set_value(s, timer_index, timer_offset >> 2,
++                               timer_value);
++        break;
++    /* Counter Control Set and Interrupt Status */
++    case 0x10:
++        aspeed_2700_timer_set_ctrl(s, timer_index, timer_value);
++        break;
++    /* Counter Control Clear and Interrupr Status */
++    case 0x14:
++        aspeed_2700_timer_clear_ctrl(s, timer_index, timer_value);
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
++                      PRIx64"\n", __func__, offset);
++        break;
++    }
++}
++
+ static void aspeed_init_one_timer(AspeedTimerCtrlState *s, uint8_t id)
+ {
+     AspeedTimer *t = &s->timers[id];
+@@ -788,6 +979,22 @@ static const TypeInfo aspeed_1030_timer_info = {
+     .class_init = aspeed_1030_timer_class_init,
  };
  
++static void aspeed_2700_timer_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    AspeedTimerClass *awc = ASPEED_TIMER_CLASS(klass);
++
++    dc->desc = "ASPEED 2700 Timer";
++    awc->read = aspeed_2700_timer_read;
++    awc->write = aspeed_2700_timer_write;
++}
++
++static const TypeInfo aspeed_2700_timer_info = {
++    .name = TYPE_ASPEED_2700_TIMER,
++    .parent = TYPE_ASPEED_TIMER,
++    .class_init = aspeed_2700_timer_class_init,
++};
++
+ static void aspeed_timer_register_types(void)
+ {
+     type_register_static(&aspeed_timer_info);
+@@ -795,6 +1002,7 @@ static void aspeed_timer_register_types(void)
+     type_register_static(&aspeed_2500_timer_info);
+     type_register_static(&aspeed_2600_timer_info);
+     type_register_static(&aspeed_1030_timer_info);
++    type_register_static(&aspeed_2700_timer_info);
+ }
  
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 2662465ada4f..53a859a6e4aa 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -409,6 +409,12 @@ static void aspeed_machine_init(MachineState *machine)
-                              OBJECT(get_system_memory()), &error_abort);
-     object_property_set_link(OBJECT(bmc->soc), "dram",
-                              OBJECT(machine->ram), &error_abort);
-+    if (amc->sdhci_wp_inverted) {
-+        for (i = 0; i < bmc->soc->sdhci.num_slots; i++) {
-+            object_property_set_bool(OBJECT(&bmc->soc->sdhci.slots[i]),
-+                                     "wp-inverted", true, &error_abort);
-+        }
-+    }
-     if (machine->kernel_filename) {
-         /*
-          * When booting with a -kernel command line there is no u-boot
-@@ -1415,6 +1421,7 @@ static void aspeed_machine_ast2600_evb_class_init(ObjectClass *oc, void *data)
-     amc->num_cs    = 1;
-     amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON |
-                      ASPEED_MAC3_ON;
-+    amc->sdhci_wp_inverted = true;
-     amc->i2c_init  = ast2600_evb_i2c_init;
-     mc->default_ram_size = 1 * GiB;
-     aspeed_machine_class_init_cpus_defaults(mc);
+ type_init(aspeed_timer_register_types)
 -- 
 2.48.1
 

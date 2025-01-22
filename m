@@ -1,275 +1,256 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp807987njc;
-        Wed, 22 Jan 2025 06:20:36 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWJ8t/VjKcPXt+ZDRiFJiBOOKAmA5zkyFkRtqZEK+03stwhPyM5JPuFoJxvHGFW/xRn3uRuOZxhaGdnNA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEDXpQpszP/jBUA6ZIq5epv8z5Mtz+tovDtRGOO50yAMEQusLpdzDYoJyVS+oso3MsMOzg7
-X-Received: by 2002:a05:620a:800f:b0:7b6:dc74:82ac with SMTP id af79cd13be357-7be631e72b2mr3554170285a.1.1737555636032;
-        Wed, 22 Jan 2025 06:20:36 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737555636; cv=none;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp853560njc;
+        Wed, 22 Jan 2025 07:28:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXnkf9MeC5VBCdF6vFB3BhtQcM7IebfIpAJTUo8rWgCfenx+uLKnbZkiVad4PnEONfpUlVtPKQeoZIeYQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IGj9vyfmeEq17H9O65leqvIR3pfZ7YHNgs3Zd0C7khsUX+dIlG3mDspP4hUasIdZjVzoyPz
+X-Received: by 2002:a05:620a:2586:b0:7b6:661a:c719 with SMTP id af79cd13be357-7be6320a4e3mr3685161185a.25.1737559703440;
+        Wed, 22 Jan 2025 07:28:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737559703; cv=none;
         d=google.com; s=arc-20240605;
-        b=hzaOwKuFN48K761yBgjylabS8Ffr8E5oY+jI9fGxmcSW+zBfdv4ftGcR4SKdK2dspY
-         IB5VKAWthYm8uZlwPcO3Nr6HGRdEOxsYCII9zHqdLkIxnMFmpZxaMdnoCGNnfBl5BRuj
-         R1HzdpP8CN6OYaSo9EISk6VJ4WlfWrEBCcBmUHlRT3LqLbibdIAAGTDA/K2XRWDB+L0z
-         24i4R3holancsAIFoKZo7SKr6CtIK8MO77biGxzgS+IgFd8rtfW8lC7aaDrD+7RX6/qI
-         /3j92syPjCZgFEsSy3YMlHtE+XqprO6NoUgd4EdWPwgxSg7Ciju/qP3neONDkYcEZhC2
-         7aSg==
+        b=JqWdoYztrtL84ngyCCQZvOzJdM+yNczNgDLNUOjfLkTsf7+AWc0YzMLEH677TDvoqz
+         xQacIr5U5wt3RfjIzsMuSVrJq7Y+iAt7YmSdbI3uk2mr7oSfjybFsXEiSTexdlBKjC2g
+         kPv38WkkvyEHlgcfEcjeBAJ07hoBvNt1L4kyk7id+wMfhpsCVhKtUBur+OQihinyywi2
+         LlnHwoB+GjlIBrhrOcdVmWz4BRduz3pb1XSmeR/vLZn0k50dBTHBs4pqmTDfqaP1kR4W
+         9I/ejp7XUgp6rQTpzdC3Y9rFVnN5spYFZZD3cH2ygWH0rjnyKGuGq00ztbZZodA+Mcjt
+         q9pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=hA+rZJ5GcDFgsjh2IUI+9lMrJYjCKdYHEsuzgSkYNk4=;
-        fh=RNWVUN2wppbT+nrOzYvpkM8kid0kBN5RZeauMRIress=;
-        b=BPp3Po2OEjH3Df9KR0T3WsVmm0JGhqsXbSFH5A2Nvr/jnlz+IKtbxFACQO2annRmlB
-         SUbjq4TLnXMUuq4YCWPQY6fKb12pWvmWPnZNQu4z8whhsFAF8sxXNg1mcQwMHLRDqhWk
-         kyXelSWr02OjDE2o0MldT073O884gjC1QT6P4iFdhiQhCt0w8bP/bSNYX649ijTo7CVf
-         VGoUMZ00UJZMrMV4tRSFxjkfB0+7l+4a/XtAAGnau+pJ2f/F/1kjGUnuoYjOjuRvoh6/
-         EvidF0pYokAzPQDAn6nT0a4jd8DmKSilfdXNX2r+YOFJY2De6gq4HFotXGYRYznpYYQn
-         SRdA==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:autocrypt:from:references:cc:to
+         :subject:user-agent:mime-version:date:message-id:dkim-signature;
+        bh=Qxxz+QaKLMMvWQmRtjrKTl87WsQJfovc75MrJcr6l0E=;
+        fh=IsAo7hk1CZ+5bFkBwCTwZv976hyhnAOZvIg9q0WQNHU=;
+        b=TCFxuKfb2CP87jVlQs5HLO5DE73eUjd4DrtfB8w5iXmgo5nB002TP8uIZRWBr+Ff+9
+         8N9QkvTS7cGojiw5pRbfNH9ZXBHDhbG1w7CP/V103UldHJzLuGPEXXkW5VvW2mkvSqYZ
+         3mcE3kq63UE8g2zjCP4SfOyjTOMjmAGACFbhEvlWSrb4qeuJRSv/0wQHixEoZ6eYVOKY
+         0PmFr1No7yidWO2gcInyDc5+Ff5x2hvPF30aFZI1wkN9UW0POLZbC6mE9901DZ+bc/o3
+         88chPV4z0MI1PPncQFkqzQge8CsHodejPuSPk/GMI4ATXo/SzJm4WuSHcXGPKpZvy/i9
+         8P/g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QUoJFt4L;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXSbrVzO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [170.10.129.124])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e102f17f4si163644021cf.48.2025.01.22.06.20.35
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7be614ca8b3si1554007085a.359.2025.01.22.07.28.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Jan 2025 06:20:36 -0800 (PST)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) client-ip=170.10.129.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 22 Jan 2025 07:28:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QUoJFt4L;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 170.10.129.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXSbrVzO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tacdq-0001UF-1t; Wed, 22 Jan 2025 10:27:42 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tacdo-0001To-6N
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 10:27:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tacdl-0007xJ-5X
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 10:27:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1737555635;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=hA+rZJ5GcDFgsjh2IUI+9lMrJYjCKdYHEsuzgSkYNk4=;
-	b=QUoJFt4LAPjZxWdAsrbAf7bMcpS4EFySeIqHAzBow6dnMujDsWCOlUxTbZJ+WTbBUGsjWm
-	pK92yZUTTI2lZlDZAMVPeWvvvlszqLJgAn28ZIVW7mpZXRE/uZYuFBIn7ZsurP8cpFkQy3
-	nDnS9+yyuXckOciE0vQ18UlGQOgvrWg=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1737559655;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=Qxxz+QaKLMMvWQmRtjrKTl87WsQJfovc75MrJcr6l0E=;
+ b=LXSbrVzOMKXURE7RxwaNNko51F4DyUZsk4TdtyaSfTSC0i7Xmmfo8bsIrb9rpkiLdQhqpZ
+ o/AoM07bJjfsiJzh1IusYYwDQc5yn9JcAxHpswfpsp84UPf61VU5++fH1h0mj2gIq2tmu6
+ 8oo+qAGb5lE032r0wF/jXmDKjKb3XwA=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-633-xrEGxNIvNrKj_j8jlT3Yfw-1; Wed, 22 Jan 2025 09:20:28 -0500
-X-MC-Unique: xrEGxNIvNrKj_j8jlT3Yfw-1
-X-Mimecast-MFC-AGG-ID: xrEGxNIvNrKj_j8jlT3Yfw
-Received: by mail-wm1-f72.google.com with SMTP id 5b1f17b1804b1-43625ceae52so37872755e9.0
-        for <alex.bennee@linaro.org>; Wed, 22 Jan 2025 06:20:28 -0800 (PST)
+ us-mta-402-dxFzzujKOvKPJfm1XOF5DQ-1; Wed, 22 Jan 2025 10:27:33 -0500
+X-MC-Unique: dxFzzujKOvKPJfm1XOF5DQ-1
+X-Mimecast-MFC-AGG-ID: dxFzzujKOvKPJfm1XOF5DQ
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-4361ecebc5bso36939955e9.1
+ for <qemu-arm@nongnu.org>; Wed, 22 Jan 2025 07:27:32 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737555628; x=1738160428;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Dut6hZbDd6BfAIsiyGgJ+kYCdZA4Ogbk5rArrmutuEA=;
-        b=IA2NjnYKHqgXdp5cg4o5jSIExBvqaj1U/nt+ftMu8gGNsQi14GRqMgdIofUmpWy1OV
-         lMmpyyLDJi/vLBOM7ASegYlV+48DPiwR+OpQ9NeYbscExP13SKUD3iGjIb7aGaaDiadx
-         FQYva2NNj+fti14a+zcAmdbUuBOykvSrFhamgZGP11gM7aA5yQjihynUTAFNaydooEdL
-         QGz4hbTmY6nemD+c5dhUlWsErEN9XkfDEttUDevcCl732Y7S+FKjaJ0n/lqIeUN/qLVw
-         QwJNZ9aYbF5e2JPYWm1PG3OXKSBGnpEGO12VyvWCIs2YC4XTcg+Xwn/DE9YQl1iIUG4S
-         qU5w==
-X-Forwarded-Encrypted: i=1; AJvYcCWMEbAsc68xONbHZt7nz4XeAHRQ1p7REGerqvTYs8p0d14lKV3dbVIOonii8/8v+R0QqXpwbB0KLkZM6w==@linaro.org
-X-Gm-Message-State: AOJu0YytFZwmTgRuYKxfvE0nxZ76d2Te+26ZXns8osLOVtitu9x3M1nV
-	S0HJvtIR8JMdnMmla5XC2KyCBaok8PIehTCuQsadV+ksO/XPtxjrkndGBKZIjKadMiHjZlUa1YF
-	tqE/EA1Kr7Sz+zmtyZGo1uUASRhTRjK4e+ZdQzBHzIm2p+qIkXXjm6Q==
-X-Gm-Gg: ASbGncuDvaLwqY/HhxQBEzR3AweipWp2g1/oU307bsGDk3YJD5mHc0xHgy83dw2jdAa
-	cEktk/H1IkC/4tk3G+GBJ16iq/8xtzyGa0UZzxv5WEmp0KizE/Trhn0Lt45OeFJPzezBvrvPajl
-	UWQpzulQbS5BoudF+H8OfsYSOWEMSEDwW4ETa2CEZRiBD2jOGeNKcKRsTGD7inr4WcWrf8S5s5O
-	yMhSB4rGMAj1wrd1jRT0+Udp1pm5p6C9W5V8fo0TXY0Dcqwi3mUjBECdxS7HHlnspVCR4RcwJiJ
-	7cVhmYWHujtZxiAfNZeKiqx3AXKtYRZaU9JbKKPc+g==
-X-Received: by 2002:a05:600c:4710:b0:434:a59c:43c6 with SMTP id 5b1f17b1804b1-43891451388mr174742565e9.26.1737555627670;
-        Wed, 22 Jan 2025 06:20:27 -0800 (PST)
-X-Received: by 2002:a05:600c:4710:b0:434:a59c:43c6 with SMTP id 5b1f17b1804b1-43891451388mr174742065e9.26.1737555627147;
-        Wed, 22 Jan 2025 06:20:27 -0800 (PST)
-Return-Path: <imammedo@redhat.com>
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438b31af925sm26918075e9.23.2025.01.22.06.20.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Jan 2025 06:20:26 -0800 (PST)
-Date: Wed, 22 Jan 2025 15:20:23 +0100
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini
- <pbonzini@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>, David Hildenbrand
- <david@redhat.com>, Peter Xu <peterx@redhat.com>, Anton Johansson
- <anjo@rev.ng>, Peter Maydell <peter.maydell@linaro.org>,
- kvm@vger.kernel.org, Marek Vasut <marex@denx.de>, David Gibson
- <david@gibson.dropbear.id.au>, Brian Cain <bcain@quicinc.com>, Yoshinori
- Sato <ysato@users.sourceforge.jp>, "Edgar E . Iglesias"
- <edgar.iglesias@gmail.com>, Claudio Fontana <cfontana@suse.de>, Daniel
- Henrique Barboza <dbarboza@ventanamicro.com>, Artyom Tarasenko
- <atar4qemu@gmail.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- qemu-ppc@nongnu.org, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Aurelien
- Jarno <aurelien@aurel32.net>, Ilya Leoshkevich <iii@linux.ibm.com>, Daniel
- Henrique Barboza <danielhb413@gmail.com>, Bastian Koppelmann
- <kbastian@mail.uni-paderborn.de>, =?UTF-8?B?Q8OpZHJpYw==?= Le Goater
- <clg@kaod.org>, Alistair Francis <alistair.francis@wdc.com>, Alessandro Di
- Federico <ale@rev.ng>, Song Gao <gaosong@loongson.cn>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Chris Wulff <crwulff@gmail.com>, "Michael S.
- Tsirkin" <mst@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- Fabiano Rosas <farosas@suse.de>, qemu-s390x@nongnu.org, Yanan Wang
- <wangyanan55@huawei.com>, Luc Michel <luc@lmichel.fr>, Weiwei Li
- <liweiwei@iscas.ac.cn>, Bin Meng <bin.meng@windriver.com>, Stafford Horne
- <shorne@gmail.com>, Xiaojuan Yang <yangxiaojuan@loongson.cn>, "Daniel P .
- Berrange" <berrange@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>, Richard
- Henderson <richard.henderson@linaro.org>, Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>, Bernhard Beschow <shentey@gmail.com>, Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-riscv@nongnu.org, Alex
- =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, Nicholas Piggin
- <npiggin@gmail.com>, Greg Kurz <groug@kaod.org>, Michael Rolnik
- <mrolnik@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Markus
- Armbruster <armbru@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>
-Subject: Re: [PATCH 06/22] exec/cpu: Call cpu_remove_sync() once in
- cpu_common_unrealize()
-Message-ID: <20250122152023.5ee90f50@imammedo.users.ipa.redhat.com>
-In-Reply-To: <5f25576c-598f-4fd7-8238-61edcff2c411@linaro.org>
-References: <20230918160257.30127-1-philmd@linaro.org>
-	<20230918160257.30127-7-philmd@linaro.org>
-	<20231128174215.32d2a350@imammedo.users.ipa.redhat.com>
-	<5f25576c-598f-4fd7-8238-61edcff2c411@linaro.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
+ d=1e100.net; s=20230601; t=1737559652; x=1738164452;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Qxxz+QaKLMMvWQmRtjrKTl87WsQJfovc75MrJcr6l0E=;
+ b=QbvZAaLm+2yV9uzLWewILQJHgAJ1OK+pi5C6sZtDRL7BUqX/zASHkt/8Vb7fkaK354
+ FSP0tywonj7IvVvOd/28FrgTdZ/kZhDLqNB2l3PaELkUd9I/nHsZ9S+4af/f3QLOxLpB
+ 1EgCjnU2v6HsYwmtLIh1LfJdx0my/Bu74cLP6TyuNU8gP1uGUmnBbBdh15G7veFzMkdY
+ BImfrr0R+3oBjuTjZPO0581qzOaR5qOAvq1JSnrfNBnVOTycYNBUJdy2c939VONghtUY
+ M8PIRO14oUx5or1B3eWzuVVG9lmw9ZICYRk+WCPBwoRiCR7M07NJH5B6QFsQR83F4AuN
+ 3eOw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXNcJ5OcgLELL1KPIe4H7NnniUkPPY4eIWZD/Z6cdgzSk7l0GoKgZYgKEvu0WfSnIHQ0+lFe3/jEA==@nongnu.org
+X-Gm-Message-State: AOJu0YxER/igcEz5NebokxWAVXJiqUlGDWJaL44HBQfGTNLQmTbWzdPM
+ sZTrzqebfttRySJpKmdJTA9WPUAOB9dQ4Seo1JFgF6Qpqe6rl5Zz3ckS+sfbsF7BR9dsfKpkZRx
+ qzmkY1wdFqj6W5DfAZ8lxsYXixlY0YKSdd5B+zGCIsm/L23LV8Q==
+X-Gm-Gg: ASbGnctiu9nopESdmI7rNa3Rmh9f/55GIzp9CqXAfXXwIPWpz7181wzTYqtFoeU7jSP
+ KL16QSm1otynCXHE6vCka1cLFblZO2TVtIxy8fQlhT4kBuBV/ZLSKirNmIk+pUNZ+Z2VVUF/kXf
+ g943y/ia3vgK1F5Hxsh/u0b1kTnsLE6za5soo/hsKLhWh9M/MLRaclJvlAJ79I2hIZ8fDNkqfSp
+ TqKIJsg/2rN8ZwPRYWkxnRoOwzTs5XSVjNR/pkykkIEexWyH5JstHHXMiE0EsK8BE8Do+84JjQZ
+ ER1urj9BzLjkdmEHr2iJlvulLw==
+X-Received: by 2002:a05:600c:5012:b0:434:9e46:5bc with SMTP id
+ 5b1f17b1804b1-438913ca718mr230934125e9.10.1737559651903; 
+ Wed, 22 Jan 2025 07:27:31 -0800 (PST)
+X-Received: by 2002:a05:600c:5012:b0:434:9e46:5bc with SMTP id
+ 5b1f17b1804b1-438913ca718mr230933755e9.10.1737559651450; 
+ Wed, 22 Jan 2025 07:27:31 -0800 (PST)
+Received: from [192.168.0.7] (ip-109-42-48-103.web.vodafone.de.
+ [109.42.48.103]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-438b31b7655sm27791295e9.30.2025.01.22.07.27.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 22 Jan 2025 07:27:30 -0800 (PST)
+Message-ID: <a48356fd-d964-4bd8-b349-3f63c92431a2@redhat.com>
+Date: Wed, 22 Jan 2025 16:27:29 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/boards: Convert MachineClass bitfields to boolean
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
+ qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+References: <20250122103223.55523-1-philmd@linaro.org>
+ <6393ca88-0613-415e-8178-18a34778b2ab@redhat.com>
+ <CAFEAcA-+9xhH+gXWGfN9bN=rnsShyRs0i+Kd0NDfMYrSNVbF4w@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <CAFEAcA-+9xhH+gXWGfN9bN=rnsShyRs0i+Kd0NDfMYrSNVbF4w@mail.gmail.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: yagOErThxIiG15M1ZCZvAW6qDjI6EfkQSeA-V_rEDTs_1737555628
+X-Mimecast-MFC-PROC-ID: AYcqG5lLFhuaCYQLq0QoqUJsLzkRqmuCudKapg6TkCg_1737559652
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: aRo7U9zsqHxn
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.043,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: omWZ4Wke2FY9
 
-On Thu, 16 Jan 2025 19:05:46 +0100
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
+On 22/01/2025 15.33, Peter Maydell wrote:
+> On Wed, 22 Jan 2025 at 12:36, Thomas Huth <thuth@redhat.com> wrote:
+>>
+>> On 22/01/2025 11.32, Philippe Mathieu-Daudé wrote:
+>>> As Daniel mentioned:
+>>>
+>>>    "The number of instances of MachineClass is not large enough
+>>>     that we save a useful amount of memory through bitfields."
+>>>
+>>> Also, see recent commit ecbf3567e21 ("docs/devel/style: add a
+>>> section about bitfield, and disallow them for packed structures").
+>>>
+>>> Convert the MachineClass bitfields used as boolean as real ones.
+>>>
+>>> Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>>> ---
+>>>    include/hw/boards.h        | 14 +++++++-------
+>>>    hw/arm/aspeed.c            |  6 +++---
+>>>    hw/arm/fby35.c             |  4 ++--
+>>>    hw/arm/npcm7xx_boards.c    |  6 +++---
+>>>    hw/arm/raspi.c             |  6 +++---
+>>>    hw/arm/sbsa-ref.c          |  2 +-
+>>>    hw/arm/virt.c              |  2 +-
+>>>    hw/arm/xilinx_zynq.c       |  2 +-
+>>>    hw/avr/arduino.c           |  6 +++---
+>>>    hw/core/null-machine.c     | 10 +++++-----
+>>>    hw/i386/microvm.c          |  2 +-
+>>>    hw/i386/pc_piix.c          |  2 +-
+>>>    hw/i386/pc_q35.c           |  4 ++--
+>>>    hw/loongarch/virt.c        |  2 +-
+>>>    hw/m68k/virt.c             |  6 +++---
+>>>    hw/ppc/pnv.c               |  2 +-
+>>>    hw/ppc/spapr.c             |  2 +-
+>>>    hw/riscv/virt.c            |  2 +-
+>>>    hw/s390x/s390-virtio-ccw.c |  8 ++++----
+>>>    hw/xtensa/sim.c            |  2 +-
+>>>    20 files changed, 45 insertions(+), 45 deletions(-)
+>>
+>> So if you are touching all these files, why not go with an even more
+>> meaningful rework instead? Flip the meaning of the "no_*" flags to the
+>> opposite, so that we e.g. have "has_default_cdrom" instead of "no_cdrom",
+>> then new boards would not have to remember to set these ugly "no_" flags
+>> anymore. It's quite a bit of work, but it could certainly be helpful in the
+>> long run.
+> 
+> Well, that depends on what you think the default for new
+> boards should be. I suspect these are all no_foo because
+> when they were put in the idea was "all boards should
+> be default have a foo, and 'this board defaults to not
+> having a foo' is the rarer special case it has to set"...
 
-> On 28/11/23 17:42, Igor Mammedov wrote:
-> > On Mon, 18 Sep 2023 18:02:39 +0200
-> > Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> wrote:
-> >  =20
-> >> While create_vcpu_thread() creates a vCPU thread, its counterpart
-> >> is cpu_remove_sync(), which join and destroy the thread.
-> >>
-> >> create_vcpu_thread() is called in qemu_init_vcpu(), itself called
-> >> in cpu_common_realizefn(). Since we don't have qemu_deinit_vcpu()
-> >> helper (we probably don't need any), simply destroy the thread in
-> >> cpu_common_unrealizefn().
-> >>
-> >> Note: only the PPC and X86 targets were calling cpu_remove_sync(),
-> >> meaning all other targets were leaking the thread when the vCPU
-> >> was unrealized (mostly when vCPU are hot-unplugged).
-> >>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> >> ---
-> >>   hw/core/cpu-common.c  | 3 +++
-> >>   target/i386/cpu.c     | 1 -
-> >>   target/ppc/cpu_init.c | 2 --
-> >>   3 files changed, 3 insertions(+), 3 deletions(-)
-> >>
-> >> diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-> >> index a3b8de7054..e5841c59df 100644
-> >> --- a/hw/core/cpu-common.c
-> >> +++ b/hw/core/cpu-common.c
-> >> @@ -221,6 +221,9 @@ static void cpu_common_unrealizefn(DeviceState *de=
-v)
-> >>  =20
-> >>       /* NOTE: latest generic point before the cpu is fully unrealized=
- */
-> >>       cpu_exec_unrealizefn(cpu);
-> >> +
-> >> +    /* Destroy vCPU thread */
-> >> +    cpu_remove_sync(cpu);
-> >>   }
-> >>  =20
-> >>   static void cpu_common_initfn(Object *obj)
-> >> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> >> index cb41d30aab..d79797d963 100644
-> >> --- a/target/i386/cpu.c
-> >> +++ b/target/i386/cpu.c
-> >> @@ -7470,7 +7470,6 @@ static void x86_cpu_unrealizefn(DeviceState *dev=
-)
-> >>       X86CPUClass *xcc =3D X86_CPU_GET_CLASS(dev);
-> >>  =20
-> >>   #ifndef CONFIG_USER_ONLY
-> >> -    cpu_remove_sync(CPU(dev));
-> >>       qemu_unregister_reset(x86_cpu_machine_reset_cb, dev);
-> >>   #endif =20
-> >=20
-> > missing  followup context:
-> >      ...
-> >      xcc->parent_unrealize(dev);
-> >=20
-> > Before the patch, vcpu thread is stopped and onnly then
-> > clean up happens.
-> >=20
-> > After the patch we have cleanup while vcpu thread is still running.
-> >=20
-> > Even if it doesn't explode, such ordering still seems to be wrong. =20
->=20
-> OK.
+That might have been the reasoning for the naming 20 years ago. But times 
+have changed... which recent board does still have a floppy drive? parallel 
+port? And the others are also not that common anymore...
 
-looking at all users, some do stop vcpu thread before tearing down vcpu obj=
-ect
-and interrupt controller, while some do it other way around or mix of both.
+  Thomas
 
-It's probably safe to stop vcpu thread wrt intc cleanup.
-Can you check what would happen if there were a pending interrupt,
-but then flowing would happen:
- 1. destroying intc
- 2. can vcpu thread just kicked out from KVM_RUN,
-    trip over missing/invalid intc state while thread runs towards its exit=
- point?
-
-If above can't crash then,
-I'd prefer to stop vcpu at least before vcpu cleanup is run.
-i.e. put cpu_remove_sync() as the very 1st call inside of cpu_common_unreal=
-izefn()
-
-> >> diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-> >> index e2c06c1f32..24d4e8fa7e 100644
-> >> --- a/target/ppc/cpu_init.c
-> >> +++ b/target/ppc/cpu_init.c
-> >> @@ -6853,8 +6853,6 @@ static void ppc_cpu_unrealize(DeviceState *dev)
-> >>  =20
-> >>       pcc->parent_unrealize(dev);
-> >>  =20
-> >> -    cpu_remove_sync(CPU(cpu)); =20
-> >=20
-> > bug in current code? =20
->=20
-> Plausibly. See:
->=20
-> commit f1023d21e81b7bf523ddf2ac91a48117f20ef9d7
-> Author: Greg Kurz <groug@kaod.org>
-> Date:   Thu Oct 15 23:18:32 2020 +0200
->=20
->      spapr: Unrealize vCPUs with qdev_unrealize()
->=20
->      Since we introduced CPU hot-unplug in sPAPR, we don't unrealize the
->      vCPU objects explicitly. Instead, we let QOM handle that for us
->      under object_property_del_all() when the CPU core object is
->      finalized. The only thing we do is calling cpu_remove_sync() to
->      tear the vCPU thread down.
->=20
->      This happens to work but it is ugly because:
->      - we call qdev_realize() but the corresponding qdev_unrealize() is
->        buried deep in the QOM code
->      - we call cpu_remove_sync() to undo qemu_init_vcpu() called by
->        ppc_cpu_realize() in target/ppc/translate_init.c.inc
->      - the CPU init and teardown paths aren't really symmetrical
->=20
->      The latter didn't bite us so far but a future patch that greatly
->      simplifies the CPU core realize path needs it to avoid a crash
->      in QOM.
->=20
->      For all these reasons, have ppc_cpu_unrealize() to undo the changes
->      of ppc_cpu_realize() by calling cpu_remove_sync() at the right
->      place, and have the sPAPR CPU core code to call qdev_unrealize().
->=20
->      This requires to add a missing stub because translate_init.c.inc is
->      also compiled for user mode.
->=20
-> >  =20
-> >> -
-> >>       destroy_ppc_opcodes(cpu);
-> >>   }
-> >>    =20
->=20

@@ -1,201 +1,191 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp767884njc;
-        Wed, 22 Jan 2025 05:19:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWLm8MKkTmJrRlDGaSs6E71V7kpOWhQumqGE/G2Tap4NMG9kuu9fVk/qBamQMx1SyN1lQDgqW4gOzCrbQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGu0E489fBkGNzPSlJos//b3Ii1lTFJDTczoMdK2T/+l0P6k63zWGlz8emm7ToTOm4ZtDfC
-X-Received: by 2002:a05:6102:5129:b0:4af:4cb0:a310 with SMTP id ada2fe7eead31-4b690be6d40mr18054470137.11.1737551979564;
-        Wed, 22 Jan 2025 05:19:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737551979; cv=none;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp817314njc;
+        Wed, 22 Jan 2025 06:34:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW06figzLzextvX52K9jYUIxzEVVaugQLm5IrThq1gfXr6nWHtf1NVHwublNm27nSNBK+hjLIzsVi7spw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEKqWxQBMvh4yE5RUeZbHzPXEmqUrVTlJaXWDa/U422SEZHON6NHtEU1Z2DW2AnmtAWO0kb
+X-Received: by 2002:a05:622a:15cf:b0:466:9197:b503 with SMTP id d75a77b69052e-46e12bb3aa3mr302863031cf.46.1737556475209;
+        Wed, 22 Jan 2025 06:34:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737556475; cv=none;
         d=google.com; s=arc-20240605;
-        b=UUTywGMai0GtSK+cLyXIrryI0ZjtZ4JEJcPgpwYhYbAffm3Nn5bq6Id1AcDeFN8mTo
-         ICnFVn+Cp4wy8YUK7Bz+86oGGbgfm7lq6KF/4nT55RPEXpoMjNakUT2QJiLZLMnouHpy
-         l5VTp12646ndmbM9KQZlTDPmL3993t3uZjC8D7TWxV5GvaDDhgpEx9O72GjI3sRvggkm
-         xiZGC+eRMXfOYV8R+hH6fCpd/1l0XWm2f9o2JejkMV4hJeJT4M8ZSGTXreazykpBAhDM
-         k0B15xS+QkdY1pRZvcdFRcZpfoAsU42ARWjwXdUlnDdii/ec5AWIlG8K3/Opo71IxDlc
-         hmew==
+        b=ZZQRKUru/P4mVimDB+8yQf6NMR0pPgJoKwjmHgMsd7MqGjSIPVyf17CLBMaU8buLTn
+         VlTVun0JOo+C9MJARA3p8QRCnSP5Wpc3W+WGd+mbiL/R0P9bqq/xYJ1WVv2yt0AFpJ12
+         NpUb672ZxxN2sZoqdiq3g9qGcw8j7WeWImP2gHkSZNMwtYzATCu3ejdInTGMNOa+6n8R
+         t7082NtW4LvGVT/SxK1J4RZlFwtxx5eh9rmU9Y1mkfPeQhn6bbcZnUacuDROel42Zt9P
+         RiMy+HBOeI6bGgbOBeWhX56pUR4uU9vYPT/k9ESKsKJoYFdnUrSBxyvxiPEi/Fdr8t84
+         NCkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :resent-to:resent-message-id:resent-date:resent-from:dkim-signature;
-        bh=ETvbZ1y0GnXnCEHw9vHGB65cA/LrS2sr6MMnCAtgtMo=;
-        fh=4XbNnLNaVqs0xNWkcyzrTZ3OrllQdUP7cAd6D3jFRas=;
-        b=eM7FkrtFjE0wv3V9Y1v9Rxw5jr5cpnlVyzU/By34Q/jsJ8Lb0IE52DOwleEcusfnVd
-         d0xQ206TfKqUj9ZtqFIETzAHsGAF+kgNYFizLxMY8coYHGdhEWZC6+Oqx+O0rzxOyYOX
-         N5kbcgrrZSReFqK4qKT435AVc7g18JLUPFLDcQC4n2WxDR72pPy3ahMGtNGQ4HWabE3L
-         DPi0+rxR4zvtxc1b4Arv1/zTv6jaAR8VfsTC6vx7Q0obS5avYJuwqhqRGqNOm5ExF0v1
-         8gWF0X8IZgIZBdg7/anNbIlU1/TCTYhNiGYHHfqop4s51M9f9pIvHBlL7EGtz+CYtthy
-         AoOw==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=ILzJBeVeOJaRt3x33tApk0oBq1fwp9tG/YCqca+lHK8=;
+        fh=67poX1kdcXd4uSzuoKQqSs4hVHaxXpV15dCHY1dXapo=;
+        b=Wsb582C5BHI2blcensXlQbspbrT7Ma07EgU0G9IzNH+BY9pFteYvkQGfsyaSGqZ4RX
+         nWooVpigLtzOh0Z7tYbT/4d+CzVq2O7VySVARMOYoZk5QAe+mthWGhbncQ/QswXPcaef
+         ilpn/vzORcYqhc53w7ng4/+95Gra//2kqNP5fG8shcQ5rXBc5ynEeATWoRg6+K3ulJLr
+         Z1/AT4bJX/cSdEIicIczxttOLLGr8JpnSzdGf9CGxNLLdAdqUNZV9WyjMAVNIBigc3km
+         fo0JubRdpvV7Vv4E1ek3nbZJ8RCCz89MHUpZAmF8UCWbDI5KQruYWjZb2hPlPSgtGZ0l
+         hQYQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P7EN4YwB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="ufCx//4E";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b68a34b87bsi4155894137.484.2025.01.22.05.19.39
+        by mx.google.com with ESMTPS id d75a77b69052e-46e1048b145si143269551cf.530.2025.01.22.06.34.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jan 2025 05:19:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Jan 2025 06:34:35 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P7EN4YwB;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="ufCx//4E";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1taadY-0007su-QL; Wed, 22 Jan 2025 08:19:16 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tabnZ-0002vc-Qo; Wed, 22 Jan 2025 09:33:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchamart@redhat.com>)
- id 1taadO-0007rD-Fc
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 08:19:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchamart@redhat.com>)
- id 1taadJ-0006h6-Vj
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 08:19:06 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1737551938;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- resent-to:resent-from:resent-message-id:in-reply-to:in-reply-to:
- references:references; bh=ETvbZ1y0GnXnCEHw9vHGB65cA/LrS2sr6MMnCAtgtMo=;
- b=P7EN4YwBBqR9GFxvWxMHZHomZfdX1rgRJsNaadZc4ggWuw3Bk0knfihnEUjaUXPaTax17V
- 8OW79bGFJCjycuol/EPjerFnHW8Mx0SCmYfrD5Godt9e3UcSF/9UjAIMmPS8PiSfBzMFuZ
- UzS7/QXI9i7tR9L/mh6tjDZp6i2qUNQ=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-280-kUwP-R5IORSIxoozOS5WWw-1; Wed,
- 22 Jan 2025 08:18:56 -0500
-X-MC-Unique: kUwP-R5IORSIxoozOS5WWw-1
-X-Mimecast-MFC-AGG-ID: kUwP-R5IORSIxoozOS5WWw
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1A2E81955DD4; Wed, 22 Jan 2025 13:18:54 +0000 (UTC)
-Received: from gezellig (unknown [10.39.192.136])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1B6DF19560AA; Wed, 22 Jan 2025 13:18:52 +0000 (UTC)
-Resent-From: Kashyap Chamarthy <kchamart@redhat.com>
-Resent-Date: Wed, 22 Jan 2025 14:18:49 +0100
-Resent-Message-ID: <Z5DwOQ64Mftg8o4v@gezellig>
-Resent-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Date: Mon, 20 Jan 2025 10:06:07 +0100
-From: Kashyap Chamarthy <kchamart@redhat.com>
-To: Marc Zyngier <maz@kernel.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, sebott@redhat.com,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 2/2] docs/cpu-features: Update "PAuth" (Pointer
- Authentication) details
-Message-ID: <Z44R-cUz9CWMp5Gi@gezellig>
-References: <20250117191106.322363-1-kchamart@redhat.com>
- <20250117191106.322363-3-kchamart@redhat.com>
- <87sepgtp3e.wl-maz@kernel.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tabnO-0002ui-JY
+ for qemu-devel@nongnu.org; Wed, 22 Jan 2025 09:33:31 -0500
+Received: from mail-yb1-xb33.google.com ([2607:f8b0:4864:20::b33])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tabnN-0007yw-09
+ for qemu-devel@nongnu.org; Wed, 22 Jan 2025 09:33:30 -0500
+Received: by mail-yb1-xb33.google.com with SMTP id
+ 3f1490d57ef6-e46c6547266so10020194276.3
+ for <qemu-devel@nongnu.org>; Wed, 22 Jan 2025 06:33:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1737556407; x=1738161207; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ILzJBeVeOJaRt3x33tApk0oBq1fwp9tG/YCqca+lHK8=;
+ b=ufCx//4E5Y9H3ZCQYoPBxaOt7IIKlbGmheuvuQZzDOzP7kiUu13bg8XdtFO1eMOjnv
+ NFUxa8Gb13InhDYulMvrAn4gkta2IZnEIuEZx+Jo8AnY1hXMq1CALqnUKvaQecPh1w8q
+ Oq37NJ1FW8yUPNOif46beW5GpZhUjx6dHwphB9IoIxuT8Ki2/b5Y02RE6Rv/b8GHL9Qm
+ TxbjRXULKu5/sCCbmuVl57ezWycO1DGqoD8OufZUcKOZaOIIgQmcZ4IaPczo0n6q9q6h
+ p8a0WP5aeD6rPG5vRtLXXc1aJCMX/z5RpW+jxnnHysFBmtki7+CVNFLboA/QYJfFWhuz
+ C79A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737556407; x=1738161207;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ILzJBeVeOJaRt3x33tApk0oBq1fwp9tG/YCqca+lHK8=;
+ b=G5utj7Ur7Es4Hh0vuvUfMGFBKfSD8Zu3+8VZwgCU1akGaHLKpMXOpc5FYKNCT2Hx/m
+ BMSMK+fxiIr71V82iujDUlvMohdYdw8WhkHBGyAtx7t68Tdxz54Vcqa6LTf8MDynGsO3
+ F08fLNtVwp8WJCZS8JN1SLv7I+1hxAVrJmwKKGOCBFJHduqXI4uaZcld04XRprad1kue
+ rkev5F70XhKwBWK/ncotyayEc3Q6e5N3XZNoxyMLNuj1Pmb9769H/38oZiL2Tfa3v3sC
+ m9lzTY8IhVpAIqJEP8Rzxc/dVpsvuI/W2/u/5WVhMl7yvFxAIdbCwMFmcRko/8h6ILuJ
+ ffOw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVzVObZbSO7RuWf7MpoQ0fOn13/XJyRtgkj5Ka6NxqtDsw49A5Qh6M5UqDDlfjMRxTpzZL6/Pv6LPu7@nongnu.org
+X-Gm-Message-State: AOJu0YwQByIDSkrHHMpo65rjcquoQOBJeVapINLLio2S8FGxzXa/igUY
+ Kj0Mm9fECky0xotb2Pd9Bc8lKMXFqZw11Kx3FfiXm7dvEwtdY3HGQCAg/ZSvKEv+Sl2Zz9C76nN
+ BdnDIatObREqA+CR7QD92CBmvHJmAjguCriFmcw==
+X-Gm-Gg: ASbGncv0I7OKBymWNYtPJsEqh1cYMNwsFQ2hlaq5dxs4U75A+aRBVVf6YHtH9EsA/H/
+ F36yXNOApdQOHinMBoLSllZf7cF07J3k726dElqS54oRG8ivOVDCM
+X-Received: by 2002:a25:d34a:0:b0:e57:d22a:1914 with SMTP id
+ 3f1490d57ef6-e57d22a1a98mr9243264276.16.1737556407155; Wed, 22 Jan 2025
+ 06:33:27 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87sepgtp3e.wl-maz@kernel.org>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kchamart@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.043,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20250122103223.55523-1-philmd@linaro.org>
+ <6393ca88-0613-415e-8178-18a34778b2ab@redhat.com>
+In-Reply-To: <6393ca88-0613-415e-8178-18a34778b2ab@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 22 Jan 2025 14:33:15 +0000
+X-Gm-Features: AbW1kvaNKBFSOoDang2ocA2MTL_mQ3HqVlrsCrKIuJElqBfV3yrn1D-l1GHiPFg
+Message-ID: <CAFEAcA-+9xhH+gXWGfN9bN=rnsShyRs0i+Kd0NDfMYrSNVbF4w@mail.gmail.com>
+Subject: Re: [PATCH] hw/boards: Convert MachineClass bitfields to boolean
+To: Thomas Huth <thuth@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
+ qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b33;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb33.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: fHZDgDZx3Ebd
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: wlLe+rFeskTP
 
-On Sat, Jan 18, 2025 at 10:04:37AM +0000, Marc Zyngier wrote:
-> On Fri, 17 Jan 2025 19:11:06 +0000,
-> Kashyap Chamarthy <kchamart@redhat.com> wrote:
-> > 
-> > PAuth (Pointer Authentication), a security feature in software, is
-> > relevant for both KVM and QEMU.  Relect this fact into the docs:
-> > 
-> >   - For KVM, `pauth` is a binary, "on" vs "off" option.  The host CPU
-> >     will choose the cryptographic algorithm.
-> > 
-> >   - For TCG, however, along with `pauth`, a couple of properties can be
-> >     controlled -- they're are related to cryptographic algorithm choice.
-> > 
-> > Thanks to Peter Maydell and Marc Zyngier for explaining more about PAuth
-> > on IRC (#qemu, OFTC).
-> > 
-> > Signed-off-by: Kashyap Chamarthy <kchamart@redhat.com>
+On Wed, 22 Jan 2025 at 12:36, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 22/01/2025 11.32, Philippe Mathieu-Daud=C3=A9 wrote:
+> > As Daniel mentioned:
+> >
+> >   "The number of instances of MachineClass is not large enough
+> >    that we save a useful amount of memory through bitfields."
+> >
+> > Also, see recent commit ecbf3567e21 ("docs/devel/style: add a
+> > section about bitfield, and disallow them for packed structures").
+> >
+> > Convert the MachineClass bitfields used as boolean as real ones.
+> >
+> > Suggested-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > > ---
+> >   include/hw/boards.h        | 14 +++++++-------
+> >   hw/arm/aspeed.c            |  6 +++---
+> >   hw/arm/fby35.c             |  4 ++--
+> >   hw/arm/npcm7xx_boards.c    |  6 +++---
+> >   hw/arm/raspi.c             |  6 +++---
+> >   hw/arm/sbsa-ref.c          |  2 +-
+> >   hw/arm/virt.c              |  2 +-
+> >   hw/arm/xilinx_zynq.c       |  2 +-
+> >   hw/avr/arduino.c           |  6 +++---
+> >   hw/core/null-machine.c     | 10 +++++-----
+> >   hw/i386/microvm.c          |  2 +-
+> >   hw/i386/pc_piix.c          |  2 +-
+> >   hw/i386/pc_q35.c           |  4 ++--
+> >   hw/loongarch/virt.c        |  2 +-
+> >   hw/m68k/virt.c             |  6 +++---
+> >   hw/ppc/pnv.c               |  2 +-
+> >   hw/ppc/spapr.c             |  2 +-
+> >   hw/riscv/virt.c            |  2 +-
+> >   hw/s390x/s390-virtio-ccw.c |  8 ++++----
+> >   hw/xtensa/sim.c            |  2 +-
+> >   20 files changed, 45 insertions(+), 45 deletions(-)
+>
+> So if you are touching all these files, why not go with an even more
+> meaningful rework instead? Flip the meaning of the "no_*" flags to the
+> opposite, so that we e.g. have "has_default_cdrom" instead of "no_cdrom",
+> then new boards would not have to remember to set these ugly "no_" flags
+> anymore. It's quite a bit of work, but it could certainly be helpful in t=
+he
+> long run.
 
-[...]
+Well, that depends on what you think the default for new
+boards should be. I suspect these are all no_foo because
+when they were put in the idea was "all boards should
+be default have a foo, and 'this board defaults to not
+having a foo' is the rarer special case it has to set"...
 
-> > -TCG vCPU Features
-> > -=================
-> > +"PAuth" (Pointer Authentication)
-> > +================================
-> > +
-> > +PAuth (Pointer Authentication) is a security feature in software that
-> > +was introduced in Armv8.3-A and Armv9.0-A.  It aims to protect against
-> 
-> nit: given that ARMv9.0 is congruent to ARMv8.5 and therefore has all
-> the ARMv8.5 features, mentioning ARMv8.3 should be enough (but I don't
-> feel strongly about this). I feel much strongly about the use of
-> capital letters, but I live in a distant past... ;-)
-
-Sure, I can keep it to just v8.3.
-
-On capitalization, I don't feel strongly about it, I just followed this
-commit[1], which explained that the rebranding changed "ARM" to "Arm":
-
-    6fe6d6c9a95 (docs: Be consistent about capitalization of 'Arm',
-    2020-03-09)
-
-That's why I went with it.  I see you know this by your "distant past"
-remark :)  To match the above, I'll keep the capitalization to "Arm".
-
-> > +ROP (return-oriented programming) attacks.
-> > +
-> > +KVM
-> > +---
-> > +
-> > +``pauth``
-> > +
-> > +  Enable or disable ``FEAT_Pauth``.  The host silicon will choose the
-> > +  cryptographic algorithm.  No other properties can be controlled.
-> 
-> nit: "choose" is a an odd choice of word. The host implementation
-> defines, or even imposes the signature algorithm, as well as the level
-> of PAuth support (PAuth, EPAC, PAuth2, FPAC, FPACCOMBINE, ...), some
-> of which are mutually exclusive (EPAC and PAuth2 are incompatible).
-> 
-> Maybe it would be worth capturing some of these details, as this has a
-> direct influence on the ability to migrate a VM.
-
-Yeah, I thought about it but I was not sure if it's the right place.  As
-you point out, there's a live-migration impact depending on the level of
-PAuth support, so mentioning these details will be useful.
-
-I'll come up with something for v2.  Thanks for looking!
-
--- 
-/kashyap
-
+-- PMM

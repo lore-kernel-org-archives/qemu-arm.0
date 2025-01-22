@@ -1,138 +1,186 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp655566njc;
-        Wed, 22 Jan 2025 01:32:45 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUuVLMxLfaARJLBQsKRyNrm/iE6f2MjmiZnB9RIOy2TwGZsOfaUjrslkO+oLZSGit9rTyidXsvosortqQ==@linaro.org
-X-Received: by 2002:a05:600c:8a4:b0:438:a240:c63 with SMTP id 5b1f17b1804b1-438a2400e95mr134690185e9.2.1737538364795;
-        Wed, 22 Jan 2025 01:32:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737538364; cv=none;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp685074njc;
+        Wed, 22 Jan 2025 02:46:51 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVTWiy8Nh6Dj3sCovxeY0S/GFHQylkBF7oN/ZK1HejlMh5yiF9d6ewI1jlTjhEnlA8H25vLubsAwBwuNw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGMej41AI6jgRHSVuxminID/MGTaewgNHYxKHJfbAqJ8PGA8PWRAWh3D5BYELNFmmjkQtmy
+X-Received: by 2002:a05:6214:5b09:b0:6d8:8a0b:db25 with SMTP id 6a1803df08f44-6e1b27a47d5mr345344356d6.21.1737542811445;
+        Wed, 22 Jan 2025 02:46:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737542811; cv=none;
         d=google.com; s=arc-20240605;
-        b=jIL/DICVG1qgnbNSZnRnYlIXZWJW8pfYGReXe80hhrb0VpJXDT9HafHMsTb8kjsLx1
-         dY/NO1YvRST0xXIcreb5DHCw+e9GCbtvso79q8xW7BlqcsU6keXWz0E4d0T/og8THG91
-         UgCjZYEu78YmfFsdNoX52HRkIyTcn1MxOnZSW4RapAgB9An90//fEVYrrVEs2JGCIigi
-         YLNGqSzExcYdxffl7iX04CQ3lVbi/l5rZ+5AJCk5mabm144bwBl7+YuJD4s42o1NX7l1
-         owBG6qdXy7gx1kJER/tTED5+Sia7xDlE7rY5is4rZDzK0ZmM2urMZgOXQd1heciDNONe
-         SOFw==
+        b=Kz95ZZysTXRqe1yduWUQ3rTOAqZCOQHQAhj2sqwEzchTY6k+FcdwHXzzG5E62YgAJi
+         Q6eCD1GsjlTn7r/X1IzapVIODwMSYGgoCtG3rXAOBFR4PIN8H5+fX8YBeA5G/ptvXDJJ
+         bwCqd41Zipd6i/dGb/pbeGV4RCiNg5u5+TjAcw+OVJ6xo2cvRKjKBj5tAz6AVTVkA3yk
+         Zia+OW/ccxAdbYRJvHhCqN8ugpGcGLPV/jEMiS+aYZKHqd64QLUqh8+FptsJazJk40pm
+         OetqXCtwx+cvhwRAgaJfIyxr2f2L/AUmnGfcSKGSofOKiCUk1afijazF2Sb9Gh/nRLbX
+         30Kw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:user-agent
+         :in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=U+c1swIdX25raxhIVr45XwfuWhAb+MHj2TpSRJRPmw4=;
-        fh=YpcGR1Fdh75OVcqJZdYWG5tmpo4d1yU+eLsPWhZ+9p8=;
-        b=FyQisxwMHs09wjBh5jvtRun2tyh9uvJ23tOGfW3/g3IK6rXJkj5mBXMFWZV1OjRcnK
-         5sS42XMOsdoCu91wIRdKPAhIznkAkLitS/WgxNfo60JqurQN5B287W7BUOgQ1eYDeHTt
-         0cs0iBeVu8R0hMCmyTgzFXRuk44AhLIY2wfoW6Gk4gSRDPVEjj2KD9yGi7PhBwLL6OKZ
-         STw3/CqucL6MW0J1VVXVWnlFoTjOyQZ8cd7RRRRcwVFXxpDfnNL89v5KWkaXJspOOd0V
-         dfSL8Ao5xnu5G5CnG/vfjExA7nTdhh12El2VjJl12OSKkAJZOw/m+llwi8x2C9aJKYQd
-         ad9w==;
+        bh=H0ezmLNRc+dY13l3WQ1ASeSxqFaS+7aY1B9Ht/jPH1o=;
+        fh=XJ1nhQYnJ+u8WXbMsAFWtHloCKcjOQL3O4ly6FwgOt0=;
+        b=Ye9fRe1hSoHGrQ/cGhikGagKgmLloO7d3aVmoTOZowvLjmtzJiv09qVJrLUy7bAwT2
+         4ASrvD7oOGymnrbX2QfT3ZVdVERNdhZPLBhbUzCHdkXIeaWkNXfW7ui4oMds2K6dN/83
+         XdtilbUODZo1e08KeEV8F9BVSrsl86oQjnO8l7dWqb+WAa9/OJ200UdeKvW+Hjofo3xu
+         0PQzRRarmfZ70nin+IY2bp+ikqzgwat/PVV/xoIhq4k5QvDah8oixXPStqvVal0fOcG0
+         gKNHG3dXCAqHg02Ep5MJQR5bOJUwx18M8M1o40P9me77dYYntjOWNRImFUJG7jUy0BdF
+         ZfiA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ry0+e2x8;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-4389041d2e8sor52729745e9.4.2025.01.22.01.32.44
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E8qHCBOr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e1afbfb3a5si142443676d6.97.2025.01.22.02.46.51
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 22 Jan 2025 01:32:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 22 Jan 2025 02:46:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ry0+e2x8;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737538364; x=1738143164; darn=linaro.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=U+c1swIdX25raxhIVr45XwfuWhAb+MHj2TpSRJRPmw4=;
-        b=ry0+e2x8IDVVtFE2VNOz//w4zpljzErCAxtDc0WLLDvC7FwoPVY78MaTPms24i/OpW
-         6GtyzrBODBSJPStg82t2QjB/3+2x6fZfiDD9BtEmyKzKZjrmlF6FCmJUmX0FZgpys1Jc
-         e7XCfOpNpoFY+XHQQ3OgTyVVFm3y7eLG+NfVmz0xQ1YHWiqoBfmsF5FUome6q0SJVB76
-         2pT+tPgY9w5NTkiZ9vZU6/8szzyHwb+6wm2G/RVL5oMtle9i17t3kPbBc+KOaUVB1f5K
-         QQtk0vo/vyR0H9zHtuN+Si7AyP3SNgdmceyV8FS0bVK9Y9LJXdt4sTwMELG23ZLOdzWn
-         /P2A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737538364; x=1738143164;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=U+c1swIdX25raxhIVr45XwfuWhAb+MHj2TpSRJRPmw4=;
-        b=bR8Zfb2wD3u5XnrtFqIOGIbf9xoZLOxx4p0bhIkJEhMyQxZxq4MPuH6EbFJC4A+xN+
-         akZn8roqRKe2alargcyXxHY8OhA5roHIYSPv2HV92uLocSpMr73nVQc8yJgVKEhvFn6Z
-         WDlzmLrVaIUd5NEcGgGQyvj0BulUAOUvr4AM7tmTInsyes4FrOniSpuiS1ArZshTjf00
-         zu3obgJ10X3E/3zjQ8YOHm93UOG1qSA38jaYiRApdu2l8dBCyJw1Y2jyHC8F0mfERNDH
-         iJkob4hc6bRbX7P9pwXlcq5MRCmdcS8fropv9Ap1AGPUvvVHkZljuO1Jm3fjrgwYntik
-         ixtg==
-X-Forwarded-Encrypted: i=1; AJvYcCXQey8a8mXxPTmb4xw1EMrjyNcCwtlmtLmGeg6sruXXR5Ph0kfRJBov762VYBuFXaIxNQoMEtK8eeRlHw==@linaro.org
-X-Gm-Message-State: AOJu0YyZDBSbkA/vPVFxazgQimFdGDXrLBDV95dhMycJSk7XsotT9C4e
-	6MAbbCMY4HoZXmsj+QxPDJiFEdxKx7oL0gMCie8mYb/fPU9R89osD3YuRQXcncsleA==
-X-Gm-Gg: ASbGncsJT7irnrCNlBQXiRCjcDXB6x5e30EPnzjnKjwwPNFtBTzjEU3yRCH8zcu7ObM
-	gwvf5sHKIzhe6XJ15+KhPwCGF+4l4Y/LQShJUrdWYylgtRYa3xTeO7DBOgU4BruezPlFTjwyNEm
-	OuBvcgCm0aHQtSL1Z6tDe3RCwREjxhXyAK4L0mj9S9K7umwElQoA4xKP9IbiyQYLHQhQhV2a6A1
-	QbOaUHOJIWKhLGOPppnHodtNpiTRO/DstPBh0TnwWWRldqs+9LGZOiCjTpLcf8yKVOmrUi2zXN3
-	vISIHjcw5Tw5tCpUMeIvMcyU/5GP6I50ys6/gw==
-X-Google-Smtp-Source: AGHT+IFnb94z8uN14ed8JufyynaaLzmxZhewH5ITBpwDQCN121Y+HFMqyEfhMa6yMCQQLL16jM8/SA==
-X-Received: by 2002:a05:600c:1f8f:b0:431:93d8:e1a1 with SMTP id 5b1f17b1804b1-43891430defmr164864795e9.27.1737538364286;
-        Wed, 22 Jan 2025 01:32:44 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from [192.168.69.181] (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438b1d904cbsm12962295e9.1.2025.01.22.01.32.43
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 22 Jan 2025 01:32:43 -0800 (PST)
-Message-ID: <dda293ce-575c-45c8-ab36-93938a7c5bdc@linaro.org>
-Date: Wed, 22 Jan 2025 10:32:43 +0100
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=E8qHCBOr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1taYFK-0006AH-RU; Wed, 22 Jan 2025 05:46:06 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1taYFA-00068e-KW
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 05:46:02 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1taYF6-00038C-6I
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 05:45:55 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1737542751;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=H0ezmLNRc+dY13l3WQ1ASeSxqFaS+7aY1B9Ht/jPH1o=;
+ b=E8qHCBOrdv8hCfXXj5OTCy9JRQr+NHJ3RcmOmcQb3hg7VNMgPa5d3bPSAPWrJYbnRO8Ar6
+ FJXSuHQNUxI7g/MpUHSEWv1izaYIbReMPjFtlstrmnmL8Muw6SY/nXg+pzgjaZcb5Idyh2
+ UjT/WvB4ysL/Gu42T4t9u20qNmGkQMQ=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-686--Nls20rgMRuffKSpAerpVw-1; Wed,
+ 22 Jan 2025 05:45:45 -0500
+X-MC-Unique: -Nls20rgMRuffKSpAerpVw-1
+X-Mimecast-MFC-AGG-ID: -Nls20rgMRuffKSpAerpVw
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0E8CF19560A2; Wed, 22 Jan 2025 10:45:44 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.43])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C5593195608E; Wed, 22 Jan 2025 10:45:40 +0000 (UTC)
+Date: Wed, 22 Jan 2025 10:45:37 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ qemu-riscv@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH] hw/boards: Convert MachineClass bitfields to boolean
+Message-ID: <Z5DMUVoEcaO4Mzp2@redhat.com>
+References: <20250122103223.55523-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/10] gdbstub: Clarify no more than @gdb_num_core_regs
- can be accessed
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-References: <20250122093028.52416-1-philmd@linaro.org>
- <20250122093028.52416-3-philmd@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250122093028.52416-3-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: kybKANaIvr8j
+In-Reply-To: <20250122103223.55523-1-philmd@linaro.org>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.086,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: FlNyOR1oAIkg
 
-On 22/1/25 10:30, Philippe Mathieu-Daudé wrote:
-> Both CPUClass::gdb_read_register() and CPUClass::gdb_write_register()
-> handlers are called from common gdbstub code, and won't be called with
-> register index over CPUClass::gdb_num_core_regs:
+On Wed, Jan 22, 2025 at 11:32:23AM +0100, Philippe Mathieu-Daudé wrote:
+> As Daniel mentioned:
 > 
->    int gdb_read_register(CPUState *cpu, GByteArray *buf, int reg)
->    {
->        CPUClass *cc = CPU_GET_CLASS(cpu);
+>  "The number of instances of MachineClass is not large enough
+>   that we save a useful amount of memory through bitfields."
 > 
->        if (reg < cc->gdb_num_core_regs) {
->            return cc->gdb_read_register(cpu, buf, reg);
->        }
->        ...
->    }
-> 
->    static int gdb_write_register(CPUState *cpu, uint8_t *mem_buf, int reg)
->    {
->        CPUClass *cc = CPU_GET_CLASS(cpu);
-> 
->        if (reg < cc->gdb_num_core_regs) {
->            return cc->gdb_write_register(cpu, mem_buf, reg);
->        }
->        ...
->    }
-> 
-> Clarify that in CPUClass docstring, and remove unreachable code on
-> the microblaze and tricore implementations.
+> Also, see recent commit ecbf3567e21 ("docs/devel/style: add a
+> section about bitfield, and disallow them for packed structures").
 
-s/tricore/openrisc/ 🤦
+Also developers incorrectly think these are already booleans:
+
+$ git grep  -E '\b(no_parallel|no_serial|no_floppy|no_cdrom|no_sdcard|pci_allow_0_address|legacy_fw_cfg_order)\b' | grep -E '(true|false)'
+hw/arm/sbsa-ref.c:    mc->pci_allow_0_address = true;
+hw/arm/virt.c:    mc->pci_allow_0_address = true;
+hw/arm/xlnx-versal-virt.c:    mc->no_cdrom = true;
+hw/m68k/next-cube.c:    mc->no_cdrom = true;
+hw/ppc/spapr.c:    mc->pci_allow_0_address = true;
+hw/riscv/virt.c:    mc->pci_allow_0_address = true;
 
 > 
+> Convert the MachineClass bitfields used as boolean as real ones.
+> 
+> Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   include/hw/core/cpu.h       | 2 ++
->   target/microblaze/gdbstub.c | 5 -----
->   target/openrisc/gdbstub.c   | 5 -----
->   3 files changed, 2 insertions(+), 10 deletions(-)
+>  include/hw/boards.h        | 14 +++++++-------
+>  hw/arm/aspeed.c            |  6 +++---
+>  hw/arm/fby35.c             |  4 ++--
+>  hw/arm/npcm7xx_boards.c    |  6 +++---
+>  hw/arm/raspi.c             |  6 +++---
+>  hw/arm/sbsa-ref.c          |  2 +-
+>  hw/arm/virt.c              |  2 +-
+>  hw/arm/xilinx_zynq.c       |  2 +-
+>  hw/avr/arduino.c           |  6 +++---
+>  hw/core/null-machine.c     | 10 +++++-----
+>  hw/i386/microvm.c          |  2 +-
+>  hw/i386/pc_piix.c          |  2 +-
+>  hw/i386/pc_q35.c           |  4 ++--
+>  hw/loongarch/virt.c        |  2 +-
+>  hw/m68k/virt.c             |  6 +++---
+>  hw/ppc/pnv.c               |  2 +-
+>  hw/ppc/spapr.c             |  2 +-
+>  hw/riscv/virt.c            |  2 +-
+>  hw/s390x/s390-virtio-ccw.c |  8 ++++----
+>  hw/xtensa/sim.c            |  2 +-
+>  20 files changed, 45 insertions(+), 45 deletions(-)
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+

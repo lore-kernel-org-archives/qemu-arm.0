@@ -1,225 +1,355 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp590943njc;
-        Tue, 21 Jan 2025 22:35:30 -0800 (PST)
-X-Received: by 2002:ac2:4541:0:b0:542:91f3:1514 with SMTP id 2adb3069b0e04-5439bf5f5a0mr5474539e87.1.1737527730654;
-        Tue, 21 Jan 2025 22:35:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737527730; cv=none;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp592145njc;
+        Tue, 21 Jan 2025 22:39:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUI3YXzy63mphshcUrsAyXDHA8p2plljval2SDTS4Ff1svVzeA+tfh506qBOEmrmHYgLtaZMVc+ptzScA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGH8Yfx71mivTJiduB23Pg9necEa3EPH7NFyXHRcTWtXnZbHVq6dvHBoWR0JrqAfDT0+7g+
+X-Received: by 2002:a05:600c:3d05:b0:434:f767:68ea with SMTP id 5b1f17b1804b1-438b0dc9532mr37816075e9.5.1737527960603;
+        Tue, 21 Jan 2025 22:39:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737527960; cv=none;
         d=google.com; s=arc-20240605;
-        b=MUHlyyGmqCOu64JVbsZ1rfL98oQCu/lqH0Q5SYfTbxx+e59riYu8d10oVhPYFhaJGj
-         xEa7TC4/aB/aWMzxm0z3pDx+Te+mFJvpkwqwG5BkF55JRzuJSsnxD0QH8U0Cw9pAGQJn
-         /+PJkjjsmck9/P7eXbTn9NkRvfWRUBaTQfaaTpvT+cZc9e1ITPk7xUTQaUB6r4N2aOc5
-         GhyFBhGt2Zf4N9L3Rrpj2t+/MToPKsrPmqwKxvo8Z7iRYKgpUu3N8uKGjyaxBQyYB4Oc
-         eMeQsv3Rmt25Qap2TQEwSsPC9lSYqiDr9xBzCQJ6BQB/BKckHYL0P5SoYke/H/0EoH5A
-         83sg==
+        b=Zmgm4u0n+rUKwTZhGLbAnwud6VI+pMNoDDpKC/g4xqpAo/feZphlquYOwADyft5Z7r
+         OfmQgaO1PWEedyCtH0DB9qy92nHChtDzNyCI+R68ORplDCAfoGroElwvPP+0yBKL1a7f
+         KBswdHqM/g2kCcxWCLFr507cJ765f350m5gPg4lUMf9Gnnm9pqAHlhfXDTGu3Rx7RGK5
+         sjsrxNYU82yzaA1XJ2JGYF+0md/EAzRDjwxlxD3V6MWdlCJ/gc0YBppF/zjg4mf5xRWP
+         i5Cc8rgebg42LWfNe9T2ydofMg89Y1jKFnv6CQgLozualG28ah+T0cEF59446QeL/PcU
+         0UfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=gdxYfllRzhoneMx3pMfJf8yMHFmAxAok/ncwrQ6oC3Y=;
-        fh=xDb5JU30SbBq30TIkvO66RKTcYGQUbKPbuQbH68yP7Y=;
-        b=b+VF0BzddkjhhQbl8UJsFhEHfVR77ZX1fF/WQgHgq9Dz22dPX3K4BWSrRnMxByRaI/
-         gK5RmaSAtV4tB1/KKkwYflGlwRSRAQJRC3hWv7IoxGZlVTgO55J2QcaNzoO5Zp/E2VuZ
-         OjYCxMMaSlJ1s7PGRz0OmOPbKx3vISogIGA5bsKeLB038vIybySgu8oRaLIjdGBHTyd0
-         cggCJI8+pPKBwKprWef8ycUqGw9XPG7370xDmS+/H2HMRTFONdp99+IECo73LcUvMpfV
-         FrwebsXkeiwUoRT6DK3nOqDUHJzquk8pTQUhUBfnKRzSn2knXt+mvFf4qc5hBMqvi/qt
-         ALbg==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=j8EXQvgURo8X1Ye9BX0shzlGgH6JOTfdK1fhtnuqqHw=;
+        fh=jkH6dM/Jgs9himnUS9dDf106T2wMoYgrWODVkTGIyAs=;
+        b=Q5cofLg/0YhLgsi786qEu8d+fLVtRL51WwnK7Av4Ff7VKd41rlfQcHeWvGAlmRob4z
+         zASyX/4+2zBFXqTWtaTymCarYiVNHc9kOI/zJUdVMoP4YHeoIr46vaMCyMV0sCS0hcwU
+         WLIatjRv/z1xXo6wjgXijBknEHmpOo/hhfNOxfchrcSGUTIQU5n+QFGeXmG1J32rLtp2
+         WN3muPvrAHCH14sxeNOUMIKQ38LvyGt2+NpbEfhVYVpQktXs2CHbDpkvT38nbJO0sGUG
+         1i5ZeA2fLfKumUOaSpcFEJTmowUvyCwc0Z0Q83L1/ZVCIkyXhojdYvZggtSetYnjryBm
+         3YNA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=wam+sJGo;
-       spf=pass (google.com: domain of wuhaotsh@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=wuhaotsh@google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=Cc1988+L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
-Return-Path: <wuhaotsh@google.com>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 2adb3069b0e04-543bb299927sor120833e87.4.2025.01.21.22.35.30
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 5b1f17b1804b1-438b31fc03dsi5728025e9.179.2025.01.21.22.39.20
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 21 Jan 2025 22:35:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of wuhaotsh@google.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 21 Jan 2025 22:39:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20230601 header.b=wam+sJGo;
-       spf=pass (google.com: domain of wuhaotsh@google.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=wuhaotsh@google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=Cc1988+L;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com;
        dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1taUO7-0003f1-J3; Wed, 22 Jan 2025 01:38:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1taUNv-0003dm-8d
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 01:38:45 -0500
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wuhaotsh@google.com>)
+ id 1taUNm-0007fm-Dp
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 01:38:36 -0500
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-53e44a42512so2990e87.1
+ for <qemu-arm@nongnu.org>; Tue, 21 Jan 2025 22:38:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1737527730; x=1738132530; darn=linaro.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=gdxYfllRzhoneMx3pMfJf8yMHFmAxAok/ncwrQ6oC3Y=;
-        b=wam+sJGoZZwvkg4EqltTCdoJ4rLQlrotYnTbOaHe/UmGc3Ft53pfrewbRarc9tPJ3Q
-         CKHO6E5Stz/+neaDNvcrxzcvBEVaLgftJj8woU6qkoSESZWZMDdKcC0kxXCvJmK7KP2+
-         nJkLe+UfuEpl1qjS1Wni8b6Mnmp6scuErQSxKcpMB0hKT2NljHvhmhYf7QKsk4E8ee2e
-         5nputz1bDPH7M0xTUCYN/bnrnShEmPScLsyDpAhbiymHrOGXrzODY95QkYHasY0vCDsf
-         ZU3XOGmoDhe6vdyPO/X8+tvu65bFtfoxjP9e2uK368eGS5mx6UHUHuNlteWCdQWiscUh
-         21Eg==
+ d=google.com; s=20230601; t=1737527912; x=1738132712; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=j8EXQvgURo8X1Ye9BX0shzlGgH6JOTfdK1fhtnuqqHw=;
+ b=Cc1988+LCxONVx2+FgsxawhwY4bW0hrn5SklNVOnP52+iJxiKZzCyUVCVs5AbIeymy
+ hbWWj7PcUN3gi2QcFZv8gjLlbCE+w/Bb1DasPWUcmH+IHojZxb4vljcM2fOBXCsP/dwE
+ ryDEYfG87+7lOhtrnRTLttwV7AKy24fpPPfsnCAAYafqzuJlshFv1sEpiIndAXK2tpet
+ 0wo9A3ciGJ8BWhwv7/dQ/GGXgjqT7qdleZttFB1FjA44wzZVE87vH1J8EHH1yS051cB7
+ CSffspRLV4BUk//wF8riYuq5JWAmfILQS0oBP9ajnUvZ0IpdypU3dEIjkMltkqNvA1Ks
+ TqFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737527730; x=1738132530;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=gdxYfllRzhoneMx3pMfJf8yMHFmAxAok/ncwrQ6oC3Y=;
-        b=hHTzpit8q8yKz6R1p42fdfqQmaL43IanNqyNCNyNCclclfZ61m/909nMCgWyEi5Wud
-         zTz8feFLmdVnf8YDAoVsrCmgIcA3fPIxJw2Uzk/ZWgWcnO8mhgphuUC2UgttBTRsNO1a
-         hEFsD2iWBXApThYr5cnkPZ1yk1JX4xpw4eozStGN6FuqRHJWtBVQ6BLMSgz0Z/MfIo5t
-         m1ESycwbVvBgpt20nsJuOJZWMH2BBQa109EVhmC7ko5q8SK+h2DzJ+B+GYf7rHhktX5l
-         HvO7i5McZm+cv1pMOVko1wEfY61m8DaKdKsIYZdcu8IzfYM2QLDKRFih3mg1/F2R01/Z
-         kbsw==
-X-Gm-Message-State: AOJu0YzYpPASgaqRe93i/4MHSM+ra9kBoqT38h3gCCGK+FH3GvQf0JOd
-	Z4rAnYbzI2HP3ZEaCfoltO4p/9gn8m+bK5MQhNPUUX86bO6fhuIqKjGEzTNFzw2dhBuh738kGPa
-	bek6OZpqGxqy5O/U/yrKJryyiWsF4aVbUcNmXwcUF6H9fAGkuWQ==
-X-Gm-Gg: ASbGncvaTdDBKgpBGs1Im8Ski354GWMvTOxsQXHI32A+w6YSMz1THzkG9A1NC8Jr7Ka
-	Wj8ljHTR4wE4XSXcrVDDHOCoISfyPVDXTjtV1yzSekyw1RJDEdrC5WD2qxjpzBsxb8x85
-X-Google-Smtp-Source: AGHT+IGao4YF2WyoJUrdgcw+zGQfyv1+kwDcVjXcjFm0DFIYu9O3lYMlkuIrPJFU8SaVXLAP3sXucQwZmUsH2Aibnas=
-X-Received: by 2002:ac2:434b:0:b0:543:a58f:f06a with SMTP id
- 2adb3069b0e04-543bcc9400amr99813e87.5.1737527729526; Tue, 21 Jan 2025
- 22:35:29 -0800 (PST)
+ d=1e100.net; s=20230601; t=1737527912; x=1738132712;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=j8EXQvgURo8X1Ye9BX0shzlGgH6JOTfdK1fhtnuqqHw=;
+ b=hN31A7oLDSwHc/bWWjuBiRj6bSUMreqvhRhMxbWAvb9oebiW+3lAKvVmcW7LVfdL1q
+ dFi/ZgRm4HRyKxk9c1C/kztNaWlaQ/hzasdUy+KFKXonDOSG7AtYIYfip7ukoZLua29E
+ PGqkY/3auD96KMGoNy7IFQJvFNCLfWMfgjVUjNQ6gBxFFOofm4KhyuFgdUkOeWIqvz+w
+ 9GG24KaaxaaMaWVEr83QqHUHKvbM5/crnXgY9osaPRjtqwm6+GOMmUrx6N5sHNHLNLyy
+ ENCrFogi66yUvwa8LYX7o1oF1GwEP2Xu5/QlcmIGu1R0rj3b5kzqvU7rOUUHZqlm20Yb
+ Urig==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXZSWjIKIR34oAC5RsbQXMtxGOLJoAG4Z4JOncy1FA9ew4dMpNFDyZq1/Fo1TW5HbAzcjhghsgyOA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywhl337yvPYG+c8GpRmrss5tkdN1rBD8EdCE5urChAnUtSLPtZG
+ ijw/Uf4Ki9M2FNtqCWFfuVVDppIy5zn4N08wPhZzTWwc9mWU3qI2a4tW9BF2Q7jg7Bm0GIn6KV0
+ c73uPiuysRr/0HXyEruPS+XESZ0b/7FvKD86G
+X-Gm-Gg: ASbGncsPyj+FPh9fK4M5zeIl+82XouuPTKiLSOQ712hSrEgYkecoQqjcgw3mxXlG13v
+ fZzPZEeoKhIz9JWxZ+SKXPNcS3J2nYazKw68F59X4uXMO7AzL3F2tyZDyAB2kcMLyYXvZJK8Ii7
+ Zcbb8=
+X-Received: by 2002:a05:6512:38c6:b0:542:92ee:25ec with SMTP id
+ 2adb3069b0e04-543bcc812f5mr103740e87.1.1737527911692; Tue, 21 Jan 2025
+ 22:38:31 -0800 (PST)
 MIME-Version: 1.0
-References: <20250120150049.3611864-1-alex.bennee@linaro.org>
- <CAGcCb10gHVZdN6CbUm02w7jTaUUoBH4-VTohmy+yiP1OLWFBxg@mail.gmail.com> <87ed0wpiy9.fsf@draig.linaro.org>
-In-Reply-To: <87ed0wpiy9.fsf@draig.linaro.org>
+References: <20250121105935.3069035-1-titusr@google.com>
+In-Reply-To: <20250121105935.3069035-1-titusr@google.com>
 From: Hao Wu <wuhaotsh@google.com>
-Date: Wed, 22 Jan 2025 14:35:18 +0800
-X-Gm-Features: AbW1kvYtqbZ7BetA7sI30RVxVrU0EKcBgCUNU4oK5YnFhy30iLuf46rdTtk89N4
-Message-ID: <CAGcCb10qKaXQJCyBBs9mPWKM+zLUSWSVV63BRV7d=Qa1hB8oGQ@mail.gmail.com>
-Subject: Re: [RFC PATCH] tests/qtest: don't step clock at start of npcm7xx
- periodic IRQ test
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Tyrone Ting <kfting@nuvoton.com>, 
-	Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, "open list:Nuvoton NPCM7xx" <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="0000000000001b9e51062c45b377"
-X-TUID: YKWUhpYsqvi9
+Date: Wed, 22 Jan 2025 14:38:19 +0800
+X-Gm-Features: AbW1kvbTlLIkmXv4WUusPWHjh8BoLCwAM2ZL_pAekvWHFpRRnsYh6J6LdeJS5dQ
+Message-ID: <CAGcCb11V5oP3VBXK+L_MFBYPtj2FQuG-CM+zmCb3cyqbNke5=g@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/misc: i2c-echo: add tracing
+To: Titus Rwantare <titusr@google.com>
+Cc: philmd@linaro.org, minyard@acm.org, its@irrelevant.dk, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, clg@kaod.org
+Content-Type: multipart/alternative; boundary="000000000000f76770062c45bd0a"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=wuhaotsh@google.com; helo=mail-lf1-x12f.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: ZOTw4NahGXg0
 
---0000000000001b9e51062c45b377
+--000000000000f76770062c45bd0a
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Jan 21, 2025 at 6:20=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linar=
-o.org> wrote:
+On Tue, Jan 21, 2025 at 7:00=E2=80=AFPM Titus Rwantare <titusr@google.com> =
+wrote:
 
-> Hao Wu <wuhaotsh@google.com> writes:
+> This has been useful when debugging and unsure if the guest is
+> generating i2c traffic.
 >
-> > Have you tried that the test can pass with this? If I remember
-> correctly, interrupt won't trigger properly if not advancing the
-> > timer
->
-> Yes but the IRQ has yet to be enabled at this point.
->
-I believe that's the case,  so we should be able to remove this line in the
-test.
-
->
-> >
-> > If the test passes it's probably fine to remove that.
->
-> Of course.
->
-> >
-> > On Mon, Jan 20, 2025 at 11:00=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@=
-linaro.org>
-> wrote:
-> >
-> >  Until there are timers enabled the semantics of clock_step_next() will
-> >  fail. Since d524441a36 (system/qtest: properly feedback results of
-> >  clock_[step|set]) we will signal a FAIL if time doesn't advance.
-> >
-> >  Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Titus Rwantare <titusr@google.com>
 >
 Reviewed-by: Hao Wu <wuhaotsh@google.com>
 
-> >  ---
-> >   tests/qtest/npcm7xx_timer-test.c | 1 -
-> >   1 file changed, 1 deletion(-)
-> >
-> >  diff --git a/tests/qtest/npcm7xx_timer-test.c
-> b/tests/qtest/npcm7xx_timer-test.c
-> >  index 58f58c2f71..43711049ca 100644
-> >  --- a/tests/qtest/npcm7xx_timer-test.c
-> >  +++ b/tests/qtest/npcm7xx_timer-test.c
-> >  @@ -465,7 +465,6 @@ static void test_periodic_interrupt(gconstpointer
-> test_data)
-> >       int i;
-> >
-> >       tim_reset(td);
-> >  -    clock_step_next();
-> >
-> >       tim_write_ticr(td, count);
-> >       tim_write_tcsr(td, CEN | IE | MODE_PERIODIC | PRESCALE(ps));
-> >  --
-> >  2.39.5
+> ---
+>  hw/misc/i2c-echo.c   | 8 ++++++++
+>  hw/misc/trace-events | 5 +++++
+>  2 files changed, 13 insertions(+)
 >
+> diff --git a/hw/misc/i2c-echo.c b/hw/misc/i2c-echo.c
+> index 5ae3d0817e..65d10029dc 100644
+> --- a/hw/misc/i2c-echo.c
+> +++ b/hw/misc/i2c-echo.c
+> @@ -13,6 +13,7 @@
+>  #include "qemu/main-loop.h"
+>  #include "block/aio.h"
+>  #include "hw/i2c/i2c.h"
+> +#include "trace.h"
+>
+>  #define TYPE_I2C_ECHO "i2c-echo"
+>  OBJECT_DECLARE_SIMPLE_TYPE(I2CEchoState, I2C_ECHO)
+> @@ -80,11 +81,13 @@ static int i2c_echo_event(I2CSlave *s, enum i2c_event
+> event)
+>      case I2C_START_RECV:
+>          state->pos =3D 0;
+>
+> +        trace_i2c_echo_event(DEVICE(s)->canonical_path, "I2C_START_RECV"=
+);
+>          break;
+>
+>      case I2C_START_SEND:
+>          state->pos =3D 0;
+>
+> +        trace_i2c_echo_event(DEVICE(s)->canonical_path, "I2C_START_SEND"=
+);
+>          break;
+>
+>      case I2C_FINISH:
+> @@ -92,12 +95,15 @@ static int i2c_echo_event(I2CSlave *s, enum i2c_event
+> event)
+>          state->state =3D I2C_ECHO_STATE_START_SEND;
+>          i2c_bus_master(state->bus, state->bh);
+>
+> +        trace_i2c_echo_event(DEVICE(s)->canonical_path, "I2C_FINISH");
+>          break;
+>
+>      case I2C_NACK:
+> +        trace_i2c_echo_event(DEVICE(s)->canonical_path, "I2C_NACK");
+>          break;
+>
+>      default:
+> +        trace_i2c_echo_event(DEVICE(s)->canonical_path, "UNHANDLED");
+>          return -1;
+>      }
+>
+> @@ -112,6 +118,7 @@ static uint8_t i2c_echo_recv(I2CSlave *s)
+>          return 0xff;
+>      }
+>
+> +    trace_i2c_echo_recv(DEVICE(s)->canonical_path,
+> state->data[state->pos]);
+>      return state->data[state->pos++];
+>  }
+>
+> @@ -119,6 +126,7 @@ static int i2c_echo_send(I2CSlave *s, uint8_t data)
+>  {
+>      I2CEchoState *state =3D I2C_ECHO(s);
+>
+> +    trace_i2c_echo_send(DEVICE(s)->canonical_path, data);
+>      if (state->pos > 2) {
+>          return -1;
+>      }
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index cf1abe6928..d58dca2389 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -390,3 +390,8 @@ ivshmem_flat_read_write_mmr_invalid(uint64_t
+> addr_offset) "No ivshmem register m
+>  ivshmem_flat_interrupt_invalid_peer(uint16_t peer_id) "Can't interrupt
+> non-existing peer %u"
+>  ivshmem_flat_write_mmr(uint64_t addr_offset) "Write access at offset
+> %"PRIu64
+>  ivshmem_flat_interrupt_peer(uint16_t peer_id, uint16_t vector_id)
+> "Interrupting peer ID %u, vector %u..."
+> +
+> +#i2c-echo.c
+> +i2c_echo_event(const char *id, const char *event) "%s: %s"
+> +i2c_echo_recv(const char *id, uint8_t data) "%s: recv 0x%" PRIx8
+> +i2c_echo_send(const char *id, uint8_t data) "%s: send 0x%" PRIx8
 > --
-> Alex Benn=C3=A9e
-> Virtualisation Tech Lead @ Linaro
+> 2.48.0.rc2.279.g1de40edade-goog
+>
+>
 >
 
---0000000000001b9e51062c45b377
+--000000000000f76770062c45bd0a
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
 mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jan 21,=
- 2025 at 6:20=E2=80=AFPM Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee=
-@linaro.org">alex.bennee@linaro.org</a>&gt; wrote:<br></div><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid =
-rgb(204,204,204);padding-left:1ex">Hao Wu &lt;<a href=3D"mailto:wuhaotsh@go=
-ogle.com" target=3D"_blank">wuhaotsh@google.com</a>&gt; writes:<br>
+ 2025 at 7:00=E2=80=AFPM Titus Rwantare &lt;<a href=3D"mailto:titusr@google=
+.com">titusr@google.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_=
+quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
+204);padding-left:1ex">This has been useful when debugging and unsure if th=
+e guest is<br>
+generating i2c traffic.<br>
 <br>
-&gt; Have you tried that the test can pass with this? If I remember correct=
-ly, interrupt won&#39;t trigger properly if not advancing the<br>
-&gt; timer<br>
+Signed-off-by: Titus Rwantare &lt;<a href=3D"mailto:titusr@google.com" targ=
+et=3D"_blank">titusr@google.com</a>&gt;<br></blockquote><div>Reviewed-by: H=
+ao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuhaotsh@google.com</a>&gt=
+;=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
+0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0hw/misc/i2c-echo.c=C2=A0 =C2=A0| 8 ++++++++<br>
+=C2=A0hw/misc/trace-events | 5 +++++<br>
+=C2=A02 files changed, 13 insertions(+)<br>
 <br>
-Yes but the IRQ has yet to be enabled at this point.<br></blockquote><div>I=
- believe that&#39;s the case,=C2=A0 so we should be able to remove this lin=
-e in the test.</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0=
-px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+diff --git a/hw/misc/i2c-echo.c b/hw/misc/i2c-echo.c<br>
+index 5ae3d0817e..65d10029dc 100644<br>
+--- a/hw/misc/i2c-echo.c<br>
++++ b/hw/misc/i2c-echo.c<br>
+@@ -13,6 +13,7 @@<br>
+=C2=A0#include &quot;qemu/main-loop.h&quot;<br>
+=C2=A0#include &quot;block/aio.h&quot;<br>
+=C2=A0#include &quot;hw/i2c/i2c.h&quot;<br>
++#include &quot;trace.h&quot;<br>
 <br>
-&gt;<br>
-&gt; If the test passes it&#39;s probably fine to remove that.<br>
+=C2=A0#define TYPE_I2C_ECHO &quot;i2c-echo&quot;<br>
+=C2=A0OBJECT_DECLARE_SIMPLE_TYPE(I2CEchoState, I2C_ECHO)<br>
+@@ -80,11 +81,13 @@ static int i2c_echo_event(I2CSlave *s, enum i2c_event e=
+vent)<br>
+=C2=A0 =C2=A0 =C2=A0case I2C_START_RECV:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0state-&gt;pos =3D 0;<br>
 <br>
-Of course.<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 trace_i2c_echo_event(DEVICE(s)-&gt;canonical_p=
+ath, &quot;I2C_START_RECV&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
 <br>
-&gt;<br>
-&gt; On Mon, Jan 20, 2025 at 11:00=E2=80=AFPM Alex Benn=C3=A9e &lt;<a href=
-=3D"mailto:alex.bennee@linaro.org" target=3D"_blank">alex.bennee@linaro.org=
-</a>&gt; wrote:<br>
-&gt;<br>
-&gt;=C2=A0 Until there are timers enabled the semantics of clock_step_next(=
-) will<br>
-&gt;=C2=A0 fail. Since d524441a36 (system/qtest: properly feedback results =
-of<br>
-&gt;=C2=A0 clock_[step|set]) we will signal a FAIL if time doesn&#39;t adva=
-nce.<br>
-&gt;<br>
-&gt;=C2=A0 Signed-off-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.benne=
-e@linaro.org" target=3D"_blank">alex.bennee@linaro.org</a>&gt;<br></blockqu=
-ote><div>Reviewed-by: Hao Wu &lt;<a href=3D"mailto:wuhaotsh@google.com">wuh=
-aotsh@google.com</a>&gt;=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
-&gt;=C2=A0 ---<br>
-&gt;=C2=A0 =C2=A0tests/qtest/npcm7xx_timer-test.c | 1 -<br>
-&gt;=C2=A0 =C2=A01 file changed, 1 deletion(-)<br>
-&gt;<br>
-&gt;=C2=A0 diff --git a/tests/qtest/npcm7xx_timer-test.c b/tests/qtest/npcm=
-7xx_timer-test.c<br>
-&gt;=C2=A0 index 58f58c2f71..43711049ca 100644<br>
-&gt;=C2=A0 --- a/tests/qtest/npcm7xx_timer-test.c<br>
-&gt;=C2=A0 +++ b/tests/qtest/npcm7xx_timer-test.c<br>
-&gt;=C2=A0 @@ -465,7 +465,6 @@ static void test_periodic_interrupt(gconstpo=
-inter test_data)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0int i;<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0tim_reset(td);<br>
-&gt;=C2=A0 -=C2=A0 =C2=A0 clock_step_next();<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0tim_write_ticr(td, count);<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0tim_write_tcsr(td, CEN | IE | MODE_PERIODIC =
-| PRESCALE(ps));<br>
-&gt;=C2=A0 -- <br>
-&gt;=C2=A0 2.39.5<br>
+=C2=A0 =C2=A0 =C2=A0case I2C_START_SEND:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0state-&gt;pos =3D 0;<br>
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 trace_i2c_echo_event(DEVICE(s)-&gt;canonical_p=
+ath, &quot;I2C_START_SEND&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0case I2C_FINISH:<br>
+@@ -92,12 +95,15 @@ static int i2c_echo_event(I2CSlave *s, enum i2c_event e=
+vent)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0state-&gt;state =3D I2C_ECHO_STATE_START_=
+SEND;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0i2c_bus_master(state-&gt;bus, state-&gt;b=
+h);<br>
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 trace_i2c_echo_event(DEVICE(s)-&gt;canonical_p=
+ath, &quot;I2C_FINISH&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0case I2C_NACK:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 trace_i2c_echo_event(DEVICE(s)-&gt;canonical_p=
+ath, &quot;I2C_NACK&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0default:<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 trace_i2c_echo_event(DEVICE(s)-&gt;canonical_p=
+ath, &quot;UNHANDLED&quot;);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -1;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+@@ -112,6 +118,7 @@ static uint8_t i2c_echo_recv(I2CSlave *s)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return 0xff;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
++=C2=A0 =C2=A0 trace_i2c_echo_recv(DEVICE(s)-&gt;canonical_path, state-&gt;=
+data[state-&gt;pos]);<br>
+=C2=A0 =C2=A0 =C2=A0return state-&gt;data[state-&gt;pos++];<br>
+=C2=A0}<br>
+<br>
+@@ -119,6 +126,7 @@ static int i2c_echo_send(I2CSlave *s, uint8_t data)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0I2CEchoState *state =3D I2C_ECHO(s);<br>
+<br>
++=C2=A0 =C2=A0 trace_i2c_echo_send(DEVICE(s)-&gt;canonical_path, data);<br>
+=C2=A0 =C2=A0 =C2=A0if (state-&gt;pos &gt; 2) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return -1;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events<br>
+index cf1abe6928..d58dca2389 100644<br>
+--- a/hw/misc/trace-events<br>
++++ b/hw/misc/trace-events<br>
+@@ -390,3 +390,8 @@ ivshmem_flat_read_write_mmr_invalid(uint64_t addr_offse=
+t) &quot;No ivshmem register m<br>
+=C2=A0ivshmem_flat_interrupt_invalid_peer(uint16_t peer_id) &quot;Can&#39;t=
+ interrupt non-existing peer %u&quot;<br>
+=C2=A0ivshmem_flat_write_mmr(uint64_t addr_offset) &quot;Write access at of=
+fset %&quot;PRIu64<br>
+=C2=A0ivshmem_flat_interrupt_peer(uint16_t peer_id, uint16_t vector_id) &qu=
+ot;Interrupting peer ID %u, vector %u...&quot;<br>
++<br>
++#i2c-echo.c<br>
++i2c_echo_event(const char *id, const char *event) &quot;%s: %s&quot;<br>
++i2c_echo_recv(const char *id, uint8_t data) &quot;%s: recv 0x%&quot; PRIx8=
+<br>
++i2c_echo_send(const char *id, uint8_t data) &quot;%s: send 0x%&quot; PRIx8=
 <br>
 -- <br>
-Alex Benn=C3=A9e<br>
-Virtualisation Tech Lead @ Linaro<br>
+2.48.0.rc2.279.g1de40edade-goog<br>
+<br>
+<br>
 </blockquote></div></div>
 
---0000000000001b9e51062c45b377--
+--000000000000f76770062c45bd0a--

@@ -1,383 +1,166 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp637311njc;
-        Wed, 22 Jan 2025 00:46:44 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCVveJTDYKbjXvGxftAZVSka2VkkrsVp1SzJBBaYzDBwqNlsaK9IEaqy0OGc7qvOtBmKuYBcFdOH6sxYhA==@linaro.org
-X-Google-Smtp-Source: AGHT+IHsCh9gS2hFzdG2OHFNI1ka2sZAWYw5AGIeHb+mnyed3NYbw5s8nJp64ZUA9XlVkxPbLcml
-X-Received: by 2002:a17:902:ecd0:b0:21a:8d4c:a9b5 with SMTP id d9443c01a7336-21c354074d5mr362450635ad.12.1737535604144;
-        Wed, 22 Jan 2025 00:46:44 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1737535604; cv=pass;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp645123njc;
+        Wed, 22 Jan 2025 01:06:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCX5csEke3+jzrJtPObpWoR6Meet7pUJyqFKa7m58rTmBAHZXL56wAGGZcrtDsxC20IqcPZ8BN9quYF8Yw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGzvtAV9azS7VON24w+wxC0i06Hp1kbAR/Vk8WcHI0guO69kNFQduBpIWDJB9yw76K+6QvH
+X-Received: by 2002:a05:620a:44d3:b0:79d:76c3:5309 with SMTP id af79cd13be357-7be6320f1b5mr3397573785a.4.1737536762613;
+        Wed, 22 Jan 2025 01:06:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737536762; cv=none;
         d=google.com; s=arc-20240605;
-        b=PiP9JHqVVtCraGXs6+qH571m3KK+lIpyqL8DGvt9AElVgPXDW+jZYlG6cVy4h2zGdZ
-         uowHAU0Zew4zu9JcYmYd9DE8eMTj1xZ24GjOCUvsIUxNoGdHoHX1ahfmLQP7jg7QI119
-         /BWQG35Du1sECyRXcnznTZaL2kX/vJCJV07sr0YhjBIznhN5kxUyBXmW9t0nWYvvZpJH
-         NcJ6KtoBFNrmZUbk5eZLQCWfyAH63Leu1bDryT+65tra+W6o1TZw7aiCAahOVmEAaxfR
-         tHO7H+GTknelTtPKzH+1Z4m6qZ4DdoHUYMZFhc0FTz87RrqUoXuyazuxYQSQe7nZMcyD
-         1TnQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :date:subject:cc:to:from:dkim-signature;
-        bh=Z5+IDlP+e6FnQ7hkksDq+8BHB4lQlBB+CRnho9lqaqM=;
-        fh=PtEDQrZFPZGDVFMumSdzEvkXT1K9aj+GDIdDBicI0gg=;
-        b=DPzBUVYZw6RzUoxKW6pLkZwGZ7MzO/CYloJKu9byjTmoatklBVzRa38TDridU1bLwt
-         yay8Mjros7kum9pH5uUaHh0rUYfmYlkPKs8IiNE1iinFvjvhcuiihgtgTmS103MHgsuj
-         /AJmdxhf3vHwVfuMTVq5M7mwNoDXnkKd7WaB5dwrVkwKgyIiTf6dPF8RhB+3xXL8cfwA
-         q7ygRZTekFoNSmglVlSp43+GzegyMheOcxHH93PXtaSUMwAhO2ktheIISOhID27DJhkR
-         Hf4wdL8p9eJHN5C/xumSRh+QZNE235xQUqXsMK0x7VBlf9V9Z6NEKhFvPYmavQHbWcP7
-         XTIQ==;
+        b=Oz5iy/N97vCiYe7vbFQ3XEsjRp6+j8QtBCXtAziz89ScGMdZo987owRlBFJW/sJAyV
+         7U0vRLUlzVTGJsQ3veU3UZDkAL+wsglS30cAS0Q43IS/Iz0zYi4f5hbqt/slAERpC1jH
+         cAi6XRbq0yxx5CTlAc0QBtLGFZYCkqmkKAyXrs11jo68yswLwuxHWqbSVJjlUeihBndA
+         xMGy7QcXYzfEtl8ICEMs1onDnMs75o+tgHATkj/wQl8nzSq9J9G5lybzAmsYy9LodzOn
+         o/bKdvWckhs7KbWhHCsz/ooP0dNRYCPQOgG7Z25B12CelmtPjHN0Qc7c1JTB0kJxFMln
+         /XgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :in-reply-to:from:content-language:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:dkim-signature;
+        bh=77/1Bz7P9AdJWLHOi9IRZtlPTzWr+Gq8S8Ogq1MdxEo=;
+        fh=MiHd99RDo/ciUCVoCMmp3l/YcDSDNC6oy/lAbDjhNJg=;
+        b=Z8tMjGL2SnmPSWnOE/k265e8fwVf3kgsGXl8IkniYtqq/gMjCFQGTOWgOcjKF4k+T6
+         N1UjYuX4BSiJ8MkKuwFW54rIvCpy5eOoaQ6bCTdiTAlIKuFMNGkDwbTnJ6tJ3+6EfjTv
+         kXhs0ytO/eWrepL5I4z+5AoxGtge7QZkljH31QO5sYi5WRBayxmAZEzRTjuwaB1Ut17n
+         ZUhonrhurptssW1YzMGbVvhGOnGyFJKUj8FQSaaFhz7p2l0uorpM6zEmTIvX0Vp2FVm4
+         6jSFG4ftTqcy0i3fBdZ7PBq4rDn2l7Kz3H52WQsAJjpJ5ItWM1NOwRAgn+WIt8x1ooxs
+         yXBw==;
         dara=google.com
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=MJVDnUgO;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-36232-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-36232-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <kvm+bounces-36232-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sy.mirrors.kernel.org (sy.mirrors.kernel.org. [2604:1380:40f1:3f00::1])
-        by mx.google.com with ESMTPS id d9443c01a7336-21c2d3acb69si145861735ad.304.2025.01.22.00.46.43
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=maMOZtEp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7be614f0ac2si1415343285a.588.2025.01.22.01.06.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Jan 2025 00:46:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of kvm+bounces-36232-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) client-ip=2604:1380:40f1:3f00::1;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 22 Jan 2025 01:06:02 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=MJVDnUgO;
-       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
-       spf=pass (google.com: domain of kvm+bounces-36232-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:40f1:3f00::1 as permitted sender) smtp.mailfrom="kvm+bounces-36232-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by sy.mirrors.kernel.org (Postfix) with ESMTPS id 3E5177A44D8
-	for <alex.bennee@linaro.org>; Wed, 22 Jan 2025 08:46:35 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id BFD1D1F561E;
-	Wed, 22 Jan 2025 08:46:34 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="MJVDnUgO"
-Received: from mgamail.intel.com (mgamail.intel.com [198.175.65.9])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CFBA11C3C1F
-	for <kvm@vger.kernel.org>; Wed, 22 Jan 2025 08:46:32 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=198.175.65.9
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1737535594; cv=none; b=mTsLRqTAqX7Be8+Cm4NKzGnz6MCeylSa8UfO5PejXo/LCwOgfpxsUrk7F4uBH+9PGRrzat0Lo10fJjS5q3pkRKam32P929QzT0o/c8F0NngqgIZ+vEGJwqUERszXgwfR40Y1gJkN6PB2M4s2UDjo5jdjA8pt802nUt8Bg2OzSAM=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1737535594; c=relaxed/simple;
-	bh=tx3RGOKpgLyLZ7GXDq98/4kQnth6yPo3Tpolx+oTmh8=;
-	h=From:To:Cc:Subject:Date:Message-Id:In-Reply-To:References:
-	 MIME-Version; b=FpdZ0OucluCn7ysP2xIL1qu4tig7Vf3qg9iy27vgLsn+ZItUYnmHwwDhwrW/p47SdRGWogL6p93QtsuB+exdIZj69HeV6gKcoNhFdDkNMGJFAGYK1zeHKjIsFqBfGymq9C9XWDOhDEQfczCORqti47+3HS56rdQNQaYkJRLn9oI=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com; spf=pass smtp.mailfrom=intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=MJVDnUgO; arc=none smtp.client-ip=198.175.65.9
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=intel.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=intel.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1737535593; x=1769071593;
-  h=from:to:cc:subject:date:message-id:in-reply-to:
-   references:mime-version:content-transfer-encoding;
-  bh=tx3RGOKpgLyLZ7GXDq98/4kQnth6yPo3Tpolx+oTmh8=;
-  b=MJVDnUgOBm3fiOCxClubxmJu/7ogMmeBc6IEQjciGvbMMGVKw1F/oDLu
-   OFh8DhumYilt0O/Yzb+FgcDGpCd4ui99G4O4HM7OtK8pWERhbvtjORX5d
-   Qe7fN2SOOKi/IhTZyMhgbRv7EfvuqbIbiUep/L3tVztFXBR+BzS/NawPV
-   oz+y3dD0DANN/IuelDUdIyo6eQvnOgTRZ4+GBrjBqdIO5VSGbUoSl4T2d
-   AHlQJd9bhuSvI3HBbTZYLIikbHAf/Mp7W10L+9MfzVXfMIN8fSL9BLIsm
-   XbYDBh0an4SGLgpJN016/cEU0HGQFU+ckyBU1IhraGkPk3ByouG5xTH7B
-   A==;
-X-CSE-ConnectionGUID: 7gbg7otdRr6m5N3gQT8k4w==
-X-CSE-MsgGUID: 4FXk4QSYSHW09Fy0vfoG7Q==
-X-IronPort-AV: E=McAfee;i="6700,10204,11322"; a="60451601"
-X-IronPort-AV: E=Sophos;i="6.13,224,1732608000"; 
-   d="scan'208";a="60451601"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 Jan 2025 00:46:33 -0800
-X-CSE-ConnectionGUID: wzwRvwuNTkGoUHIrSuVrPg==
-X-CSE-MsgGUID: WmOy/5HuR/WwhfHG2pABlw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.11,199,1725346800"; 
-   d="scan'208";a="112050019"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
-  by orviesa003.jf.intel.com with ESMTP; 22 Jan 2025 00:46:28 -0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	Eric Blake <eblake@redhat.com>,
-	Markus Armbruster <armbru@redhat.com>,
-	Michael Roth <michael.roth@amd.com>,
-	=?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
-	Eduardo Habkost <eduardo@habkost.net>,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	Shaoqin Huang <shahuang@redhat.com>,
-	Eric Auger <eauger@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Sebastian Ott <sebott@redhat.com>,
-	Gavin Shan <gshan@redhat.com>
-Cc: qemu-devel@nongnu.org,
-	kvm@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	Dapeng Mi <dapeng1.mi@intel.com>,
-	Yi Lai <yi1.lai@intel.com>,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: [RFC v2 5/5] i386/kvm: Support fixed counter in KVM PMU filter
-Date: Wed, 22 Jan 2025 17:05:17 +0800
-Message-Id: <20250122090517.294083-6-zhao1.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250122090517.294083-1-zhao1.liu@intel.com>
-References: <20250122090517.294083-1-zhao1.liu@intel.com>
-Precedence: bulk
-X-Mailing-List: kvm@vger.kernel.org
-List-Id: <kvm.vger.kernel.org>
-List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=maMOZtEp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1taWgJ-0004r7-I6; Wed, 22 Jan 2025 04:05:51 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taWgI-0004ql-LV
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 04:05:50 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1taWgH-0000oR-3I
+ for qemu-arm@nongnu.org; Wed, 22 Jan 2025 04:05:50 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-43635796b48so3934765e9.0
+ for <qemu-arm@nongnu.org>; Wed, 22 Jan 2025 01:05:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1737536747; x=1738141547; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=77/1Bz7P9AdJWLHOi9IRZtlPTzWr+Gq8S8Ogq1MdxEo=;
+ b=maMOZtEp9Nr5HKpKErRbiST0BCsJcKEW0pjFZKwAlCzONxftmUXxOuz50MBIMCGBqZ
+ yaTm0LPZwI5qBvYwK3VmFEYQmBQvJHKuHvjRDVzOCH0jFmOA+v4QaVu5J+oWLW6Lk6/m
+ GFC8XNsvKXgbckVyaoTyJfIDy0x43XGLDZ8pZCcuYp98UraND3RaRFFwztX8Wu7Iwyal
+ eyrX0RZhDpoZRVGqRTZUtsH4B5S7KyMayobRhc12CoiqHfIoJ06SRg1RuC3afglIZ5ej
+ Ubbnprp2PuWJKDfZXPcKBNAoetYA6OZ73g0QbasZBgHKYzuzeOOizmObCE0V2wrPwP8K
+ OcxA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737536747; x=1738141547;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=77/1Bz7P9AdJWLHOi9IRZtlPTzWr+Gq8S8Ogq1MdxEo=;
+ b=A42Xs8ZrGLCXjCSlUz3yTP+UXMHaKXbg6gPnAqnUc/fm5kcJDL/BjS+V0jW6rkLZhE
+ Sn7sIkk5EG/EI9cXfM7OEzumIn5s4lYIWDhasco/bwmnjdeMZPzJ8jkRZqpIqfo9XNKq
+ ow9tnsIU6k/BFnC5+fm0BpWww5iwcJTPrDrapz3e2jvOu8XoAGuKrh1mpURawUa46SR4
+ 4GMA5/e+2O7iFpaMMUZhGN8+D9Aw5GdreVajt2hTNzmWEROZLer5RE4ycYcHNmid3uNp
+ LXkw5qFsn0aQr2k9PJnCGaqFiJ9QPosAtLKMl/qZKiPWmxZ0F0xhfXc0S4t0wsM0nuSP
+ +FEw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVy2Yd9SXdyuXJT2+n2LhxzdYlSFyL1lHGS9AUxM2OA02OJayrFxxwNSScBkwQI2EmEV5JRkl0AdQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwA6AyfZJbes1wHd2Mj5MbcrdspEasPX++6+MHTowMc+Cg9iwQd
+ V+fv76zjT82QVBfYRvMpo7UfSV/aa/t6q02EoFIEKJhowXMWwncUImg17NgPf+Y=
+X-Gm-Gg: ASbGncuJ2omx7M5okh8zQE8UT22UFqxL3eXNFtCt7sAdDpcl7EpwPmZ4ZkTqKeZOaOG
+ ZVxo1jctHy1qRZCy5BR1MIm4KSHzyERqHCwRQfmX9O5SpFI9yKDSpZj/aU05DlMW7tiCfVrAlKQ
+ cPJnAg6u4akJJ6W/j4aS05soo/e4Q/sPHuNyavqZOzOuqavEza1S3ubm7EIGEEk1xSbVLPKsbPl
+ SD6TPiMO46Ls3W0n7r3tmXc9eLiCwefghSr6RyP4u+xOiDiGJuA/6BXrWPodGfIPd+8lYrR40BB
+ xq+eesNd5IW6s2xsDf3q8irMjlmQpH47qniIvA==
+X-Received: by 2002:a05:600c:4e0c:b0:436:e69a:7341 with SMTP id
+ 5b1f17b1804b1-438918b966emr181292175e9.3.1737536747305; 
+ Wed, 22 Jan 2025 01:05:47 -0800 (PST)
+Received: from [192.168.69.181] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-438b31b7655sm16204585e9.30.2025.01.22.01.05.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 22 Jan 2025 01:05:46 -0800 (PST)
+Message-ID: <012e9d08-883e-490d-b591-feea8ade9d86@linaro.org>
+Date: Wed, 22 Jan 2025 10:05:45 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 9/9] aspeed: Create sd devices only when defaults are
+ enabled
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ Steven Lee <steven_lee@aspeedtech.com>
+References: <20250122070909.1138598-1-clg@redhat.com>
+ <20250122070909.1138598-10-clg@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250122070909.1138598-10-clg@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: xzClNHhg5B+d
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: Ousd0cSvVJmN
 
-KVM_SET_PMU_EVENT_FILTER of x86 KVM allows user to configure x86 fixed
-function counters by a bitmap.
+On 22/1/25 08:09, Cédric Le Goater wrote:
+> When the -nodefaults option is set, sd devices should not be
+> automatically created by the machine. Instead they should be defined
+> on the command line.
+> 
+> Note that it is not currently possible to define which bus an
+> "sd-card" device is attached to:
+> 
+>    -blockdev node-name=drive0,driver=file,filename=/path/to/file.img \
+>    -device sd-card,drive=drive0,id=sd0
+> 
+> and the first bus named "sd-bus" will be used.
+> 
+> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> ---
+>   hw/arm/aspeed.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-Add the support of x86-fixed-counter in kvm-pmu-filter object and handle
-this in i386 kvm codes.
-
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
----
-Changes since RFC v1:
- * Make "action" as a global (per filter object) item, not a per-counter
-   parameter. (Dapeng)
- * Bump up the supported QAPI version to 10.0.
----
- accel/kvm/kvm-pmu.c      | 69 ++++++++++++++++++++++++++++++++++++++++
- include/system/kvm-pmu.h |  1 +
- qapi/kvm.json            | 30 ++++++++++++++++-
- target/i386/kvm/kvm.c    | 47 ++++++++++++++++-----------
- 4 files changed, 127 insertions(+), 20 deletions(-)
-
-diff --git a/accel/kvm/kvm-pmu.c b/accel/kvm/kvm-pmu.c
-index 9d68cd15e477..b5e6f430632f 100644
---- a/accel/kvm/kvm-pmu.c
-+++ b/accel/kvm/kvm-pmu.c
-@@ -271,6 +271,66 @@ fail:
-     qapi_free_KVMPMUFilterEventList(head);
- }
- 
-+static void kvm_pmu_filter_get_fixed_counter(Object *obj, Visitor *v,
-+                                             const char *name, void *opaque,
-+                                             Error **errp)
-+{
-+    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
-+    KVMPMUX86FixedCounterVariant *str_counter;
-+
-+    str_counter = g_new(KVMPMUX86FixedCounterVariant, 1);
-+    str_counter->bitmap = g_strdup_printf("0x%x",
-+                                          filter->x86_fixed_counter->bitmap);
-+
-+    visit_type_KVMPMUX86FixedCounterVariant(v, name, &str_counter, errp);
-+    qapi_free_KVMPMUX86FixedCounterVariant(str_counter);
-+}
-+
-+static void kvm_pmu_filter_set_fixed_counter(Object *obj, Visitor *v,
-+                                             const char *name, void *opaque,
-+                                             Error **errp)
-+{
-+    KVMPMUFilter *filter = KVM_PMU_FILTER(obj);
-+    KVMPMUX86FixedCounterVariant *str_counter;
-+    KVMPMUX86FixedCounter *new_counter, *old_counter;
-+    uint64_t bitmap;
-+    int ret;
-+
-+    old_counter = filter->x86_fixed_counter;
-+    if (!visit_type_KVMPMUX86FixedCounterVariant(v, name,
-+                                                 &str_counter, errp)) {
-+        return;
-+    }
-+
-+    new_counter  = g_new(KVMPMUX86FixedCounter, 1);
-+
-+    ret = qemu_strtou64(str_counter->bitmap, NULL,
-+                        0, &bitmap);
-+    if (ret < 0) {
-+        error_setg(errp,
-+                   "Invalid x86 fixed counter (bitmap: %s): %s. "
-+                   "The bitmap must be a uint32 string.",
-+                   str_counter->bitmap, strerror(-ret));
-+        g_free(new_counter);
-+        goto fail;
-+    }
-+    if (bitmap > UINT32_MAX) {
-+        error_setg(errp,
-+                   "Invalid x86 fixed counter (bitmap: %s): "
-+                   "Numerical result out of range. "
-+                   "The bitmap must be a uint32 string.",
-+                   str_counter->bitmap);
-+        g_free(new_counter);
-+        goto fail;
-+    }
-+    new_counter->bitmap = bitmap;
-+    filter->x86_fixed_counter = new_counter;
-+    qapi_free_KVMPMUX86FixedCounter(old_counter);
-+
-+fail:
-+    qapi_free_KVMPMUX86FixedCounterVariant(str_counter);
-+}
-+
- static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
- {
-     object_class_property_add_enum(oc, "action", "KVMPMUFilterAction",
-@@ -286,6 +346,15 @@ static void kvm_pmu_filter_class_init(ObjectClass *oc, void *data)
-                               NULL, NULL);
-     object_class_property_set_description(oc, "events",
-                                           "KVM PMU event list");
-+
-+    object_class_property_add(oc, "x86-fixed-counter",
-+                              "KVMPMUX86FixedCounter",
-+                              kvm_pmu_filter_get_fixed_counter,
-+                              kvm_pmu_filter_set_fixed_counter,
-+                              NULL, NULL);
-+    object_class_property_set_description(oc, "x86-fixed-counter",
-+                                          "Enablement bitmap of "
-+                                          "x86 PMU fixed counter");
- }
- 
- static void kvm_pmu_filter_instance_init(Object *obj)
-diff --git a/include/system/kvm-pmu.h b/include/system/kvm-pmu.h
-index 63402f75cfdc..1a1da37b6304 100644
---- a/include/system/kvm-pmu.h
-+++ b/include/system/kvm-pmu.h
-@@ -25,6 +25,7 @@ struct KVMPMUFilter {
-     KVMPMUFilterAction action;
-     uint32_t nevents;
-     KVMPMUFilterEventList *events;
-+    KVMPMUX86FixedCounter *x86_fixed_counter;
- };
- 
- /*
-diff --git a/qapi/kvm.json b/qapi/kvm.json
-index a673e499e7ea..31447dfeffb0 100644
---- a/qapi/kvm.json
-+++ b/qapi/kvm.json
-@@ -120,6 +120,18 @@
-             'x86-default': 'KVMPMUX86DefalutEvent',
-             'x86-masked-entry': 'KVMPMUX86MaskedEntry' } }
- 
-+##
-+# @KVMPMUX86FixedCounter:
-+#
-+# x86 fixed counter that KVM PMU filter supports.
-+#
-+# @bitmap: x86 fixed counter bitmap.
-+#
-+# Since 10.0
-+##
-+{ 'struct': 'KVMPMUX86FixedCounter',
-+  'data': { 'bitmap': 'uint32' } }
-+
- ##
- # @KVMPMUFilterProperty:
- #
-@@ -202,6 +214,19 @@
-             'x86-default': 'KVMPMUX86DefalutEventVariant',
-             'x86-masked-entry': 'KVMPMUX86MaskedEntryVariant' } }
- 
-+##
-+# @KVMPMUX86FixedCounterVariant:
-+#
-+# The variant of KVMPMUX86FixedCounter with the string, rather than
-+# the numeric value.
-+#
-+# @bitmap: x86 fixed counter bitmap.  This field is a uint32 string.
-+#
-+# Since 10.0
-+##
-+{ 'struct': 'KVMPMUX86FixedCounterVariant',
-+  'data': { 'bitmap': 'str' } }
-+
- ##
- # @KVMPMUFilterPropertyVariant:
- #
-@@ -211,8 +236,11 @@
- #
- # @events: the KVMPMUFilterEventVariant list.
- #
-+# @x86-fixed-counter: enablement bitmap of x86 fixed counters.
-+#
- # Since 10.0
- ##
- { 'struct': 'KVMPMUFilterPropertyVariant',
-   'data': { 'action': 'KVMPMUFilterAction',
--            '*events': ['KVMPMUFilterEventVariant'] } }
-+            '*events': ['KVMPMUFilterEventVariant'],
-+            '*x86-fixed-counter': 'KVMPMUX86FixedCounterVariant' } }
-diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
-index 97b94c331271..56094361cb8f 100644
---- a/target/i386/kvm/kvm.c
-+++ b/target/i386/kvm/kvm.c
-@@ -6012,23 +6012,29 @@ static int kvm_install_pmu_event_filter(KVMState *s)
-         g_assert_not_reached();
-     }
- 
--    /*
--     * The check in kvm_arch_check_pmu_filter() ensures masked entry
--     * format won't be mixed with other formats.
--     */
--    kvm_filter->flags = filter->events->value->format ==
--                        KVM_PMU_EVENT_FMT_X86_MASKED_ENTRY ?
--                        KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
--
--    if (kvm_filter->flags == KVM_PMU_EVENT_FLAG_MASKED_EVENTS &&
--        !kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_MASKED_EVENTS)) {
--        error_report("Masked entry format of PMU event "
--                     "is not supported by Host.");
--        goto fail;
-+    if (filter->x86_fixed_counter) {
-+        kvm_filter->fixed_counter_bitmap = filter->x86_fixed_counter->bitmap;
-     }
- 
--    if (!kvm_config_pmu_event(filter, kvm_filter)) {
--        goto fail;
-+    if (filter->nevents) {
-+        /*
-+         * The check in kvm_arch_check_pmu_filter() ensures masked entry
-+         * format won't be mixed with other formats.
-+         */
-+        kvm_filter->flags = filter->events->value->format ==
-+                            KVM_PMU_EVENT_FMT_X86_MASKED_ENTRY ?
-+                            KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
-+
-+        if (kvm_filter->flags == KVM_PMU_EVENT_FLAG_MASKED_EVENTS &&
-+            !kvm_vm_check_extension(s, KVM_CAP_PMU_EVENT_MASKED_EVENTS)) {
-+            error_report("Masked entry format of PMU event "
-+                         "is not supported by Host.");
-+            goto fail;
-+        }
-+
-+        if (!kvm_config_pmu_event(filter, kvm_filter)) {
-+            goto fail;
-+        }
-     }
- 
-     ret = kvm_vm_ioctl(s, KVM_SET_PMU_EVENT_FILTER, kvm_filter);
-@@ -6656,16 +6662,19 @@ static void kvm_arch_check_pmu_filter(const Object *obj, const char *name,
-     KVMPMUFilterEventList *events = filter->events;
-     uint32_t base_flag;
- 
--    if (!filter->nevents) {
-+    if (!filter->x86_fixed_counter && !filter->nevents) {
-         error_setg(errp,
-                    "Empty KVM PMU filter.");
-         return;
-     }
- 
-     /* Pick the first event's flag as the base one. */
--    base_flag = events->value->format ==
--                KVM_PMU_EVENT_FMT_X86_MASKED_ENTRY ?
--                KVM_PMU_EVENT_FLAG_MASKED_EVENTS : 0;
-+    base_flag = 0;
-+    if (filter->nevents &&
-+        events->value->format == KVM_PMU_EVENT_FMT_X86_MASKED_ENTRY) {
-+        base_flag = KVM_PMU_EVENT_FLAG_MASKED_EVENTS;
-+    }
-+
-     while (events) {
-         KVMPMUFilterEvent *event = events->value;
-         uint32_t flag;
--- 
-2.34.1
+For SDHCI:
+Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

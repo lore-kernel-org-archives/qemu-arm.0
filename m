@@ -1,256 +1,229 @@
-Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp853560njc;
-        Wed, 22 Jan 2025 07:28:23 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXnkf9MeC5VBCdF6vFB3BhtQcM7IebfIpAJTUo8rWgCfenx+uLKnbZkiVad4PnEONfpUlVtPKQeoZIeYQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IGj9vyfmeEq17H9O65leqvIR3pfZ7YHNgs3Zd0C7khsUX+dIlG3mDspP4hUasIdZjVzoyPz
-X-Received: by 2002:a05:620a:2586:b0:7b6:661a:c719 with SMTP id af79cd13be357-7be6320a4e3mr3685161185a.25.1737559703440;
-        Wed, 22 Jan 2025 07:28:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737559703; cv=none;
+Received: by 2002:a17:505:840b:b0:1be9:327d:8ee3 with SMTP id lq11csp865134njc;
+        Wed, 22 Jan 2025 07:46:45 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWmxbebs6W9hxwMSeoyNJkMo3lin7mIyw2K6yGdhotg0B4tLmLJdRtHaK1ya5Uop3T4rnBxb86ug/pneA==@linaro.org
+X-Google-Smtp-Source: AGHT+IFAC+cHPEloh61xr5UIE861FlU3PqOyh683c+/2HaH67bZy524oJEYXPvPxSkUlaxrq2Oep
+X-Received: by 2002:ac8:57c2:0:b0:467:774b:f04b with SMTP id d75a77b69052e-46e12a93d06mr323396621cf.22.1737560804876;
+        Wed, 22 Jan 2025 07:46:44 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1737560804; cv=pass;
         d=google.com; s=arc-20240605;
-        b=JqWdoYztrtL84ngyCCQZvOzJdM+yNczNgDLNUOjfLkTsf7+AWc0YzMLEH677TDvoqz
-         xQacIr5U5wt3RfjIzsMuSVrJq7Y+iAt7YmSdbI3uk2mr7oSfjybFsXEiSTexdlBKjC2g
-         kPv38WkkvyEHlgcfEcjeBAJ07hoBvNt1L4kyk7id+wMfhpsCVhKtUBur+OQihinyywi2
-         LlnHwoB+GjlIBrhrOcdVmWz4BRduz3pb1XSmeR/vLZn0k50dBTHBs4pqmTDfqaP1kR4W
-         9I/ejp7XUgp6rQTpzdC3Y9rFVnN5spYFZZD3cH2ygWH0rjnyKGuGq00ztbZZodA+Mcjt
-         q9pw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=Qxxz+QaKLMMvWQmRtjrKTl87WsQJfovc75MrJcr6l0E=;
-        fh=IsAo7hk1CZ+5bFkBwCTwZv976hyhnAOZvIg9q0WQNHU=;
-        b=TCFxuKfb2CP87jVlQs5HLO5DE73eUjd4DrtfB8w5iXmgo5nB002TP8uIZRWBr+Ff+9
-         8N9QkvTS7cGojiw5pRbfNH9ZXBHDhbG1w7CP/V103UldHJzLuGPEXXkW5VvW2mkvSqYZ
-         3mcE3kq63UE8g2zjCP4SfOyjTOMjmAGACFbhEvlWSrb4qeuJRSv/0wQHixEoZ6eYVOKY
-         0PmFr1No7yidWO2gcInyDc5+Ff5x2hvPF30aFZI1wkN9UW0POLZbC6mE9901DZ+bc/o3
-         88chPV4z0MI1PPncQFkqzQge8CsHodejPuSPk/GMI4ATXo/SzJm4WuSHcXGPKpZvy/i9
-         8P/g==;
+        b=d9jCz4P6z0Pv+d2AWEDXsRWZjMCKI46z5maqMeAoMTtnOWV2/rcbGOihOaZ0UHqj1J
+         RFNVwFrPhyHmg5iMZP8pc34i8Ld9oYNBFtbro2s+cuzMRb6lMbrjjcQAWt7DNNnz8CcK
+         bbwg/9+YF2JHj5iqEq1R8rVo7RoRLiUVSevcJyY+nxp7xXuagO4S+Q4miCGd91F6Mfab
+         SkW0BXODWh2GGxRjOMjLK9fCy9h4SloKPP35BB3fFs34dC6Kw5kVSt2uyqF36AOCJr1K
+         Do8Kw4b0wmDYthOklJ9mo5nRC+JU73WJb4ESQwwkrFnsqjFfGpfDSAALh73bzRDlynis
+         xFmw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=U/hrgy8+36sNUMrVKs/04YcrCGTgctx9r5b7OC3V++o=;
+        fh=vRlcgZ7942FHQd1Q9f6uT6HY2D7AnE0jt7dFCXEYTHw=;
+        b=cS2iAYXLeQI7ZM2C0AOVAJAAXcpHCnGJ8z07USoht9BBBd8PXjDPoLEBjWU1oqMA9x
+         WD0D8fZKG7KTUI6EMZ4FcdRH59oyn5XJU04C4FBZLTgjhIuwTHNw3JAsjIoc7Z9BjHwt
+         LGvFmvhi/DnwYqptpxOmQHpd2CaaFqZ/fRAstntE40jZGFlUWzEVxb6DYQ2qjphPE+h8
+         3gpfF7Bhn6+jDlb2WnKaqneBrj6KxOARzwM71ucoMQUecQuZyhdQHEowm+Y29J173cgR
+         +8xRxNRwe/R459nUdpO78Pss7eqaTp+U5TZjCNtnAPHs6N//1geVUpNlmAWx6YzEcqwv
+         gXmQ==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXSbrVzO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7be614ca8b3si1554007085a.359.2025.01.22.07.28.23
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=pgiKLpo0;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-485591-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-485591-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <linux-kernel+bounces-485591-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
+        by mx.google.com with ESMTPS id d75a77b69052e-46e10488211si145466861cf.491.2025.01.22.07.46.44
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jan 2025 07:28:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Jan 2025 07:46:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-485591-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=LXSbrVzO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tacdq-0001UF-1t; Wed, 22 Jan 2025 10:27:42 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tacdo-0001To-6N
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 10:27:40 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tacdl-0007xJ-5X
- for qemu-arm@nongnu.org; Wed, 22 Jan 2025 10:27:39 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1737559655;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Qxxz+QaKLMMvWQmRtjrKTl87WsQJfovc75MrJcr6l0E=;
- b=LXSbrVzOMKXURE7RxwaNNko51F4DyUZsk4TdtyaSfTSC0i7Xmmfo8bsIrb9rpkiLdQhqpZ
- o/AoM07bJjfsiJzh1IusYYwDQc5yn9JcAxHpswfpsp84UPf61VU5++fH1h0mj2gIq2tmu6
- 8oo+qAGb5lE032r0wF/jXmDKjKb3XwA=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-402-dxFzzujKOvKPJfm1XOF5DQ-1; Wed, 22 Jan 2025 10:27:33 -0500
-X-MC-Unique: dxFzzujKOvKPJfm1XOF5DQ-1
-X-Mimecast-MFC-AGG-ID: dxFzzujKOvKPJfm1XOF5DQ
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4361ecebc5bso36939955e9.1
- for <qemu-arm@nongnu.org>; Wed, 22 Jan 2025 07:27:32 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737559652; x=1738164452;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Qxxz+QaKLMMvWQmRtjrKTl87WsQJfovc75MrJcr6l0E=;
- b=QbvZAaLm+2yV9uzLWewILQJHgAJ1OK+pi5C6sZtDRL7BUqX/zASHkt/8Vb7fkaK354
- FSP0tywonj7IvVvOd/28FrgTdZ/kZhDLqNB2l3PaELkUd9I/nHsZ9S+4af/f3QLOxLpB
- 1EgCjnU2v6HsYwmtLIh1LfJdx0my/Bu74cLP6TyuNU8gP1uGUmnBbBdh15G7veFzMkdY
- BImfrr0R+3oBjuTjZPO0581qzOaR5qOAvq1JSnrfNBnVOTycYNBUJdy2c939VONghtUY
- M8PIRO14oUx5or1B3eWzuVVG9lmw9ZICYRk+WCPBwoRiCR7M07NJH5B6QFsQR83F4AuN
- 3eOw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXNcJ5OcgLELL1KPIe4H7NnniUkPPY4eIWZD/Z6cdgzSk7l0GoKgZYgKEvu0WfSnIHQ0+lFe3/jEA==@nongnu.org
-X-Gm-Message-State: AOJu0YxER/igcEz5NebokxWAVXJiqUlGDWJaL44HBQfGTNLQmTbWzdPM
- sZTrzqebfttRySJpKmdJTA9WPUAOB9dQ4Seo1JFgF6Qpqe6rl5Zz3ckS+sfbsF7BR9dsfKpkZRx
- qzmkY1wdFqj6W5DfAZ8lxsYXixlY0YKSdd5B+zGCIsm/L23LV8Q==
-X-Gm-Gg: ASbGnctiu9nopESdmI7rNa3Rmh9f/55GIzp9CqXAfXXwIPWpz7181wzTYqtFoeU7jSP
- KL16QSm1otynCXHE6vCka1cLFblZO2TVtIxy8fQlhT4kBuBV/ZLSKirNmIk+pUNZ+Z2VVUF/kXf
- g943y/ia3vgK1F5Hxsh/u0b1kTnsLE6za5soo/hsKLhWh9M/MLRaclJvlAJ79I2hIZ8fDNkqfSp
- TqKIJsg/2rN8ZwPRYWkxnRoOwzTs5XSVjNR/pkykkIEexWyH5JstHHXMiE0EsK8BE8Do+84JjQZ
- ER1urj9BzLjkdmEHr2iJlvulLw==
-X-Received: by 2002:a05:600c:5012:b0:434:9e46:5bc with SMTP id
- 5b1f17b1804b1-438913ca718mr230934125e9.10.1737559651903; 
- Wed, 22 Jan 2025 07:27:31 -0800 (PST)
-X-Received: by 2002:a05:600c:5012:b0:434:9e46:5bc with SMTP id
- 5b1f17b1804b1-438913ca718mr230933755e9.10.1737559651450; 
- Wed, 22 Jan 2025 07:27:31 -0800 (PST)
-Received: from [192.168.0.7] (ip-109-42-48-103.web.vodafone.de.
- [109.42.48.103]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438b31b7655sm27791295e9.30.2025.01.22.07.27.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Jan 2025 07:27:30 -0800 (PST)
-Message-ID: <a48356fd-d964-4bd8-b349-3f63c92431a2@redhat.com>
-Date: Wed, 22 Jan 2025 16:27:29 +0100
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=pgiKLpo0;
+       arc=pass (i=1 dkim=pass dkdomain=kernel.org);
+       spf=pass (google.com: domain of linux-kernel+bounces-485591-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-485591-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 9E45316130A
+	for <alex.bennee@linaro.org>; Wed, 22 Jan 2025 15:46:43 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 5579F2147FE;
+	Wed, 22 Jan 2025 15:46:40 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b="pgiKLpo0"
+Received: from smtp.kernel.org (aws-us-west-2-korg-mail-1.web.codeaurora.org [10.30.226.201])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 10A5A4C9F
+	for <linux-kernel@vger.kernel.org>; Wed, 22 Jan 2025 15:46:40 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=10.30.226.201
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1737560800; cv=none; b=m69ywL5c6c26kcQfcwE9ZFQ8Z7466UA/Sik/i1oykh1JdgX6bv2B2hRF4WoXa26L4O+HUH+HtYDvU21BDyR7qjFX5MsB/As07RnZFKbaxkzloH2hE6d5YUbJ3w1fjs4ARhdVgKaCtYrer3Xk1CIbjEiJY6pJpCTjtEebxzq5hNU=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1737560800; c=relaxed/simple;
+	bh=tFI7o0AuinirOGC3zpJxmGsmNVeaqZwelEbX9SK+JLs=;
+	h=From:To:Cc:Subject:Date:Message-ID:In-Reply-To:References:
+	 MIME-Version; b=sJ6pXCinNj0FvtvrVpR1Goid/ywW0YUidFFUzmWRIj/X0BsIEz/w0MTN7ZYTSjWNrecYgcS+9uHmc1aylEZrYGxZm7bjlIbL5FsYrrG8bo/GTfPXGGrlJKG3KwQUxtzTRBUNGwlelpXn1j3q2RgkFnFzAM2yHR4u4xQHuKMF8QQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.b=pgiKLpo0; arc=none smtp.client-ip=10.30.226.201
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1A2BC4CEE3;
+	Wed, 22 Jan 2025 15:46:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1737560799;
+	bh=tFI7o0AuinirOGC3zpJxmGsmNVeaqZwelEbX9SK+JLs=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=pgiKLpo08u4hii690+qAcBPHZVtlwYKNXYV93qKrVPt4vX7zNfQ6yS2uSKByk5syQ
+	 vfeaSlMqYr6f8DDyypVpZ8zyqVyT4AvlV+LOf7HTuwb1krVD/axJCylmRSfEa9VmIQ
+	 itmMLNNVxFz5+Z9VTLeb2QYXl90el4AC1jh19+ypHGmq9Ito+KUa10OECAMnd9S72M
+	 agrB8E79ClTNqXIgLwfzeLjkf+0KwCLjTWgu0bFiM0c5rBTULtx7L9HpfQRZlhXJD4
+	 EuIS0tIPUhzU5PjtcRnfuYzOTz0IiP5wLqZgwtOPn+TOYZ2h1OH8ESJ3A+Cl2zbsTn
+	 sppRLoboIhG2A==
+Received: from mchehab by mail.kernel.org with local (Exim 4.98)
+	(envelope-from <mchehab+huawei@kernel.org>)
+	id 1tacw9-00000008ogk-443F;
+	Wed, 22 Jan 2025 16:46:37 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Igor Mammedov <imammedo@redhat.com>,
+	"Michael S . Tsirkin" <mst@redhat.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+	Shiju Jose <shiju.jose@huawei.com>,
+	qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	Ani Sinha <anisinha@redhat.com>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 08/11] acpi/generic_event_device: add an APEI error device
+Date: Wed, 22 Jan 2025 16:46:25 +0100
+Message-ID: <41b6846394154ddac4d00c3644cd2de577d10115.1737560101.git.mchehab+huawei@kernel.org>
+X-Mailer: git-send-email 2.48.1
+In-Reply-To: <cover.1737560101.git.mchehab+huawei@kernel.org>
+References: <cover.1737560101.git.mchehab+huawei@kernel.org>
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/boards: Convert MachineClass bitfields to boolean
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-riscv@nongnu.org,
- qemu-arm@nongnu.org, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
-References: <20250122103223.55523-1-philmd@linaro.org>
- <6393ca88-0613-415e-8178-18a34778b2ab@redhat.com>
- <CAFEAcA-+9xhH+gXWGfN9bN=rnsShyRs0i+Kd0NDfMYrSNVbF4w@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <CAFEAcA-+9xhH+gXWGfN9bN=rnsShyRs0i+Kd0NDfMYrSNVbF4w@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: AYcqG5lLFhuaCYQLq0QoqUJsLzkRqmuCudKapg6TkCg_1737559652
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.043,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: omWZ4Wke2FY9
+Sender: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+X-TUID: ByllAQij0rmg
 
-On 22/01/2025 15.33, Peter Maydell wrote:
-> On Wed, 22 Jan 2025 at 12:36, Thomas Huth <thuth@redhat.com> wrote:
->>
->> On 22/01/2025 11.32, Philippe Mathieu-Daudé wrote:
->>> As Daniel mentioned:
->>>
->>>    "The number of instances of MachineClass is not large enough
->>>     that we save a useful amount of memory through bitfields."
->>>
->>> Also, see recent commit ecbf3567e21 ("docs/devel/style: add a
->>> section about bitfield, and disallow them for packed structures").
->>>
->>> Convert the MachineClass bitfields used as boolean as real ones.
->>>
->>> Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->>> ---
->>>    include/hw/boards.h        | 14 +++++++-------
->>>    hw/arm/aspeed.c            |  6 +++---
->>>    hw/arm/fby35.c             |  4 ++--
->>>    hw/arm/npcm7xx_boards.c    |  6 +++---
->>>    hw/arm/raspi.c             |  6 +++---
->>>    hw/arm/sbsa-ref.c          |  2 +-
->>>    hw/arm/virt.c              |  2 +-
->>>    hw/arm/xilinx_zynq.c       |  2 +-
->>>    hw/avr/arduino.c           |  6 +++---
->>>    hw/core/null-machine.c     | 10 +++++-----
->>>    hw/i386/microvm.c          |  2 +-
->>>    hw/i386/pc_piix.c          |  2 +-
->>>    hw/i386/pc_q35.c           |  4 ++--
->>>    hw/loongarch/virt.c        |  2 +-
->>>    hw/m68k/virt.c             |  6 +++---
->>>    hw/ppc/pnv.c               |  2 +-
->>>    hw/ppc/spapr.c             |  2 +-
->>>    hw/riscv/virt.c            |  2 +-
->>>    hw/s390x/s390-virtio-ccw.c |  8 ++++----
->>>    hw/xtensa/sim.c            |  2 +-
->>>    20 files changed, 45 insertions(+), 45 deletions(-)
->>
->> So if you are touching all these files, why not go with an even more
->> meaningful rework instead? Flip the meaning of the "no_*" flags to the
->> opposite, so that we e.g. have "has_default_cdrom" instead of "no_cdrom",
->> then new boards would not have to remember to set these ugly "no_" flags
->> anymore. It's quite a bit of work, but it could certainly be helpful in the
->> long run.
-> 
-> Well, that depends on what you think the default for new
-> boards should be. I suspect these are all no_foo because
-> when they were put in the idea was "all boards should
-> be default have a foo, and 'this board defaults to not
-> having a foo' is the rarer special case it has to set"...
+Adds a generic error device to handle generic hardware error
+events as specified at ACPI 6.5 specification at 18.3.2.7.2:
+https://uefi.org/specs/ACPI/6.5/18_Platform_Error_Interfaces.html#event-notification-for-generic-error-sources
+using HID PNP0C33.
 
-That might have been the reasoning for the naming 20 years ago. But times 
-have changed... which recent board does still have a floppy drive? parallel 
-port? And the others are also not that common anymore...
+The PNP0C33 device is used to report hardware errors to
+the guest via ACPI APEI Generic Hardware Error Source (GHES).
 
-  Thomas
+Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+---
+ hw/acpi/aml-build.c                    | 10 ++++++++++
+ hw/acpi/generic_event_device.c         |  8 ++++++++
+ include/hw/acpi/acpi_dev_interface.h   |  1 +
+ include/hw/acpi/aml-build.h            |  2 ++
+ include/hw/acpi/generic_event_device.h |  1 +
+ 5 files changed, 22 insertions(+)
+
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index f8f93a9f66c8..e4bd7b611372 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -2614,3 +2614,13 @@ Aml *aml_i2c_serial_bus_device(uint16_t address, const char *resource_source)
+ 
+     return var;
+ }
++
++/* ACPI 5.0b: 18.3.2.6.2 Event Notification For Generic Error Sources */
++Aml *aml_error_device(void)
++{
++    Aml *dev = aml_device(ACPI_APEI_ERROR_DEVICE);
++    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0C33")));
++    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
++
++    return dev;
++}
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index fe537ed05c66..ce00c80054f4 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -26,6 +26,7 @@ static const uint32_t ged_supported_events[] = {
+     ACPI_GED_PWR_DOWN_EVT,
+     ACPI_GED_NVDIMM_HOTPLUG_EVT,
+     ACPI_GED_CPU_HOTPLUG_EVT,
++    ACPI_GED_ERROR_EVT,
+ };
+ 
+ /*
+@@ -116,6 +117,11 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+                            aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
+                                       aml_int(0x80)));
+                 break;
++            case ACPI_GED_ERROR_EVT:
++                aml_append(if_ctx,
++                           aml_notify(aml_name(ACPI_APEI_ERROR_DEVICE),
++                                      aml_int(0x80)));
++                break;
+             case ACPI_GED_NVDIMM_HOTPLUG_EVT:
+                 aml_append(if_ctx,
+                            aml_notify(aml_name("\\_SB.NVDR"),
+@@ -295,6 +301,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+         sel = ACPI_GED_MEM_HOTPLUG_EVT;
+     } else if (ev & ACPI_POWER_DOWN_STATUS) {
+         sel = ACPI_GED_PWR_DOWN_EVT;
++    } else if (ev & ACPI_GENERIC_ERROR) {
++        sel = ACPI_GED_ERROR_EVT;
+     } else if (ev & ACPI_NVDIMM_HOTPLUG_STATUS) {
+         sel = ACPI_GED_NVDIMM_HOTPLUG_EVT;
+     } else if (ev & ACPI_CPU_HOTPLUG_STATUS) {
+diff --git a/include/hw/acpi/acpi_dev_interface.h b/include/hw/acpi/acpi_dev_interface.h
+index 68d9d15f50aa..8294f8f0ccca 100644
+--- a/include/hw/acpi/acpi_dev_interface.h
++++ b/include/hw/acpi/acpi_dev_interface.h
+@@ -13,6 +13,7 @@ typedef enum {
+     ACPI_NVDIMM_HOTPLUG_STATUS = 16,
+     ACPI_VMGENID_CHANGE_STATUS = 32,
+     ACPI_POWER_DOWN_STATUS = 64,
++    ACPI_GENERIC_ERROR = 128,
+ } AcpiEventStatusBits;
+ 
+ #define TYPE_ACPI_DEVICE_IF "acpi-device-interface"
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index c18f68134246..f38e12971932 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -252,6 +252,7 @@ struct CrsRangeSet {
+ /* Consumer/Producer */
+ #define AML_SERIAL_BUS_FLAG_CONSUME_ONLY        (1 << 1)
+ 
++#define ACPI_APEI_ERROR_DEVICE   "GEDD"
+ /**
+  * init_aml_allocator:
+  *
+@@ -382,6 +383,7 @@ Aml *aml_dma(AmlDmaType typ, AmlDmaBusMaster bm, AmlTransferSize sz,
+              uint8_t channel);
+ Aml *aml_sleep(uint64_t msec);
+ Aml *aml_i2c_serial_bus_device(uint16_t address, const char *resource_source);
++Aml *aml_error_device(void);
+ 
+ /* Block AML object primitives */
+ Aml *aml_scope(const char *name_format, ...) G_GNUC_PRINTF(1, 2);
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index d2dac87b4a9f..1c18ac296fcb 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -101,6 +101,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(AcpiGedState, ACPI_GED)
+ #define ACPI_GED_PWR_DOWN_EVT      0x2
+ #define ACPI_GED_NVDIMM_HOTPLUG_EVT 0x4
+ #define ACPI_GED_CPU_HOTPLUG_EVT    0x8
++#define ACPI_GED_ERROR_EVT          0x10
+ 
+ typedef struct GEDState {
+     MemoryRegion evt;
+-- 
+2.48.1
 

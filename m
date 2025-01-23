@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485634njk;
-        Thu, 23 Jan 2025 15:45:59 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXLv5++Py1JwbnC7vntTswYeT1ZZvNy8QzMd4XErXiiYsirns0i8+1hK70jV225ouPgYhOwhZcGkeHDfg==@linaro.org
-X-Received: by 2002:a05:600c:1da6:b0:436:1971:2a4 with SMTP id 5b1f17b1804b1-438913ef340mr262172775e9.17.1737675959707;
-        Thu, 23 Jan 2025 15:45:59 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737675959; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485681njk;
+        Thu, 23 Jan 2025 15:46:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWxIqW0bkZb5TtznwCR37cU/UsvnUbKg1eRLeFiGQYTikcIPj2wRj8ZmwiPlCpA1WuPt1rSTOldiEnj/Q==@linaro.org
+X-Received: by 2002:a05:600c:1d0c:b0:434:f9ad:7222 with SMTP id 5b1f17b1804b1-438b885652fmr48092325e9.7.1737675965688;
+        Thu, 23 Jan 2025 15:46:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737675965; cv=none;
         d=google.com; s=arc-20240605;
-        b=kX9doixiLZpPwe2/WTyTp3fXWduFbdppvQhTVk5TtiVfPnzEblAXG/X2cTeYxPHW6n
-         W+yi1GucnhYu4KdYKJU6M5ooOsQCkzRVoRu/L7qzicHKryfQrAWPviB9zmdc6rGjMjDT
-         ajITh916KoA8RpxiGsi/T8FTeu7U/Ce+bHj5jXsRuTW+clcyO9ECmnfQWJPu8lujVR2D
-         NP1waXDv6QWFxtu6Zm3wxGBCpshc5JvzDwcyOmuu2IlZJMymAoPzVM4lzTdGuU6qBJ83
-         mP+lRrgsK6tVfwhMDwS/mcwv/P6wI277waG4oLfZAih5Vd3EMfKDbLJO2kgYdLxj4MAx
-         lasA==
+        b=dR/d0Q4qpWAJnx8BcmbOaGSWDcC6sVjLggPvfxBNwxBQSXX9Fys6m99FrVYaZyK42y
+         2Dk7QQao3Mt1zvw5IyD9gYLZQJB3werCvFiFYtlhYmHNbr/+Mlp4fb31VBSvVW8KpmO3
+         +5n3IAs1XfjNBq/zSrKxhRBKuRQl8Rw9PpFNrbZpR9SBX9AUCpJ9LSCUwOQ9wjHKR1yu
+         cK6hU9OXzU77MYpdmD4EzTzJr9W/qVglprH5JZYJNkN+3JVVpub8IU2d0SLl7dmusZQ7
+         coz2PSD63D+EUCqBYtJ2iqvQ3yeBwok0Q9ws28WveW2LIScyctiOzQO0kcPBtKhzhF1r
+         kFUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=9gXZ2pCmpp3MBAsW4Hnbi8sV5bqYGRAr8w/4hsc1kvQ=;
-        fh=dj61YW5CDUTCt7RIQBsBlI3eBRKlSJURK22PN/1AyDg=;
-        b=YYIp//wIxVqx0sYNpxU5oEnP3+rdtdSzAtrJnFKPZBYRzV/501yulMUNWp3C5qui8R
-         0Thu4puiXpgZp2Ujjlzfg2Yx8BweQGGt23/MMiw+qSnczZeCI4NrHAbpV/za5oEzQXf7
-         f3oAxlOLHCWQs0s82xRsDiDRXU0Fz26zJemD+FNhFRYR/3OL6CMGFgX23PXRy17Z9cJP
-         GXtMRF56VIoTXE5BQX3OvY7KwSo9A3qU8RRe48RGqdBB8K16C74rH7HvOF9VX5qZmpxA
-         tvwar7txhupHPdnBd/Rwr2vJaKqNGnGx84mSooJAVh+kVx3A2wsczh5rAyyDEXMRciYM
-         egEg==;
+        bh=sQ+5PubFZrrCYmUor7z2ohXZLQOj0+FDz6CQ50FZwrM=;
+        fh=gQ5H80WKfWurJ+jFATKJgOWPRfn42lCGd+SojDhIwc0=;
+        b=J3h161pTTH4HqFbFE06dtoyLh0KKg7C3Nv/W3hj2DWmwxWHRVWsosuLMu9prxxbcWZ
+         fX7/5cj/auBDMXhvEBBpzsnAC0W6AUJP5MrIwSzFkpLwxb0ouQQCM8O1HPfD219mCi8Y
+         KtcW12X0xHGpCUQ8LxOSKGKDHgrR+QY3hl57zaDYEQRGBL/7omprNo1tsJmxqzFGOfxv
+         2xeJhC8A/q4jMfiJMiNh7IsFWXHUNDFASamPm/bBwwt/mAJrR9MxyMpqm0cgFdJd6Gui
+         hyOyQKERLFp11XKTBDYsH/RjkMz05B0AQfnpuEddlj4nC2hBoQFSHzxqtt4gJlZoylky
+         bXzw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XFtZwbNe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vUobMpNQ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-438bd4f4d9fsor3080985e9.7.2025.01.23.15.45.59
+        by mx.google.com with SMTPS id 5b1f17b1804b1-438bd50234asor1483605e9.3.2025.01.23.15.46.05
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 23 Jan 2025 15:45:59 -0800 (PST)
+        Thu, 23 Jan 2025 15:46:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XFtZwbNe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vUobMpNQ;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737675959; x=1738280759; darn=linaro.org;
+        d=linaro.org; s=google; t=1737675965; x=1738280765; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=9gXZ2pCmpp3MBAsW4Hnbi8sV5bqYGRAr8w/4hsc1kvQ=;
-        b=XFtZwbNeXE+Wu1IqzIgW/er95TRX6nQZTiqv1/kxSoAU8lZlx8smPCghr5KMDbFNcI
-         2sxK0vybyT0pXX7m/yvrsP+JnGiPjgrHouVdpXtO9zH2aHB1Q5JCd9JYdIJeAlw+LEzu
-         MqbnhYG1MC190hGPtJP0Ua+VyAxOZ12vOSV0f8n1MYyFDgH3Xgo/FdwsGGrvyKXso/pJ
-         uJUpgsQIlWfMxX/X+QZSjHlp1l+7VFD888d8DXY6JDs8TSm1sFEkP4oPtT6TetESOglY
-         YX0eX2owDdpEfrimUJpkJ7hylJNOxitTqlAhXjh/0CAsgMsm9i6Yl0u9+XA5SzgcHjz3
-         k7jg==
+        bh=sQ+5PubFZrrCYmUor7z2ohXZLQOj0+FDz6CQ50FZwrM=;
+        b=vUobMpNQqBKKWEXGiLpzoJ/gWnkodTRzHY2N3fuccjFe4s8CPNLeyLE6kvRkA1NxrC
+         gFhfTgpLclmWOd38lPNp6wTm4B/uO0n/XevVxSqRRPV5Pp3a5qj/JT5OAvWH2cD80+OC
+         gCiMLeRevHJ1s+JDeSTpOMky7GyQ/2IMRDRkjm2Qyaviz/331HKcTLKZi1z67FAwk0/e
+         9zatWRhqbu6ttCke/l5WKRHNegRcBGSrxXZuqbUhKseE4486GWr4b/hwmVUryNW5RP1G
+         M4usOvkbnZwLl7XRiN+UvAly2AHxLPzXkS0sAVh7NCoqpLGMaG0HT9JyHmzjIeYgem1Y
+         Op3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737675959; x=1738280759;
+        d=1e100.net; s=20230601; t=1737675965; x=1738280765;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=9gXZ2pCmpp3MBAsW4Hnbi8sV5bqYGRAr8w/4hsc1kvQ=;
-        b=kq0GdZ/gxJjXMcs/Cjb4nOz5qSrL9Aqt3TV4wx9swGe76wpWVUTiBuxuEi2kpgWVtn
-         NvYXqJM6hG8pXxbRzipxOG9E24EUQs/0LT7QLOPXsEjKJAZD9UfHxiFGv+LofhOPH+cS
-         J5G6DjePs10g0Kr6eBXkSYdyd3TEtcVFv4CtAh8KlCMzGH8snrfNLRk2p8LeSxrCtYCt
-         fg/ZUntet8fvPiMMr6Un02GyCQh3Ip86gLB45PU8xHUcUcPEAeh0jYDi6FifI8bbZuo0
-         ojgkdz9tJv9Tkmg9wHNfEAm6OO5f7knH2NIa+reLO4smdKYfLg645Nl23PSsDzdMxL4w
-         ZzwQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW2AAmuDdCO3Qcx/xclebAZkp4samhZVdAzvWluUKNkjPH/PWSVq0Cn60ceJz62JujKUTl+0RhqsKpvzw==@linaro.org
-X-Gm-Message-State: AOJu0YwVYubQm/7QO+gpnG7IjlHubj2o3MUfOrjlTp9ijuIbnsXrXXG/
-	b1Y/tUiUehXOKaR3Gtop8lofBhMRzkeSXVlIAeT6bqWywsFI+Ujy9IeFH5eCC1fRlw==
-X-Gm-Gg: ASbGncssUD6iAm5H3v672lXuCKlfHPmuHcysFTDupXaPIc+nysu6hqghScN/x+e4GeJ
-	OPqflOBLNoLlnQTw6ChWC2Rjo5M+PpteFSqme7VzBssZWQrJhx0Nxl8EVTlJAFdunJt81rcjmct
-	Ftqg9pvmeYpcOiXpst5DDJFtNR2ZrMNgte7cwAwnyNkbFlr0YW0mKbiMbv9TBEizQnc6ytqARYf
-	1aqRmWtJc3pH4Yh0+QoTrbh/vD6QTY+FzunSC4OIMtg4b5/sPeBqArKGKgEjqYmW5I9ki7aL8dv
-	2FL8BvsUROkr7j/6w9aMYRAO3av+9bWh8W4pVdVgKaEaGj/godxc8WQ=
-X-Google-Smtp-Source: AGHT+IFkrF3nSiyRp86eT1OfDhljZaIiOgfPlVgQgIeU90j7M027ZvrIkgirhKCWekxtCJUAZQHWLg==
-X-Received: by 2002:a05:600c:4f48:b0:434:fd15:3adc with SMTP id 5b1f17b1804b1-43891431319mr209632555e9.25.1737675959187;
-        Thu, 23 Jan 2025 15:45:59 -0800 (PST)
+        bh=sQ+5PubFZrrCYmUor7z2ohXZLQOj0+FDz6CQ50FZwrM=;
+        b=g85QaL4bhbCZrMtYDcW4RV5k5YD+auu8J/GujyceHT6tH2fvQY2uevizhx27EiXwuo
+         lbw/4EXP1gFNna3eGAjsGJ+MJqyJv7QlPA7Axk9/QRMCsDU+KysQQjwK5Z88dMOaE4CH
+         yzhg48NvifHbytMYj3K4w6+u7rYxui3mVxiz3p7DUJu2SULUB2Ji3b/n4ufsgdU/2ZTB
+         btJyMzW3EeEujxeL5NpEKFytTIvwzJ1THsTBD8xWjeLs9+62/0iJgca5NTvF7td3I094
+         a23k20zoeHUWbjw/A3ftPPrPOLoIv7l9YOX3uXK8movtb3UDB0Lb9IgO+uI6XZLRykXh
+         dhhw==
+X-Forwarded-Encrypted: i=1; AJvYcCV407zlG0Wxd8JEiE6AqzDs6vYFlUP4Wh3QZWB3LJjzNTC+m1/Mu83C08wjSDcIMZ+jR96Se/9n5MO7LQ==@linaro.org
+X-Gm-Message-State: AOJu0Yw4DRz+22MyP5gJkubabxSGuQEHj84TsqYVRvGG17kQhtVsbubT
+	yYM55VZEGQCaB8M3W2RhboPkcp3whmOj7dJkxs5yiLUCIh+a0weAPvI0eLyJAQuCTw==
+X-Gm-Gg: ASbGncupmftOJp2xGH05/QxA7soFyo1Bg4RUO7k5OLQZHjQhEcrkHa3rV8ZQNmWT1l5
+	o8L2V3SHUeBLvsV+TU3uKx9IldAcUb0B/OZ9dIbgich074DfVnbgLYFKSWHZK5Js2GeEsAFbQt3
+	w95uD7ZQYV3b0XzVc2ucd2B8O+jThjgxALEC6pMI91MuHlvvLzSkkWggkqaCz5vMvQ2BxiSYJHL
+	KZpZ7aizSOyMlT+/y20lwW4X5pAH4sIJn7BjFMEbZKVqn6WZ/AdmNc26NLM1FmnVO2/OrTQV9sQ
+	9Bsz9Pwkt/t/Rcyeg9AwR7DTOwnJ+12dqXtCVXI3nA9y3b4xndoTWbA=
+X-Google-Smtp-Source: AGHT+IGsiKZVvuhBn67VKbvp7ZCKdJegwhgfqv/IiEk5xyysRNRbKSY3tyJ6LqHq9Om3O3Zv9Xfmsw==
+X-Received: by 2002:adf:f250:0:b0:38a:5dc4:6dcd with SMTP id ffacd0b85a97d-38c22279dafmr4343550f8f.22.1737675965020;
+        Thu, 23 Jan 2025 15:46:05 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c2a17d79csm1009152f8f.39.2025.01.23.15.45.57
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c2a1c403asm989733f8f.93.2025.01.23.15.46.03
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 23 Jan 2025 15:45:58 -0800 (PST)
+        Thu, 23 Jan 2025 15:46:03 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -95,88 +95,368 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	xen-devel@lists.xenproject.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 18/20] cpus: Have cpu_exec_initfn() per user / system emulation
-Date: Fri, 24 Jan 2025 00:44:12 +0100
-Message-ID: <20250123234415.59850-19-philmd@linaro.org>
+Subject: [PATCH 19/20] cpus: Register VMState per user / system emulation
+Date: Fri, 24 Jan 2025 00:44:13 +0100
+Message-ID: <20250123234415.59850-20-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250123234415.59850-1-philmd@linaro.org>
 References: <20250123234415.59850-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: CH3xr8C21B2z
+X-TUID: 6tvUmihyeLKW
 
-Slighly simplify cpu-target.c again by extracting cpu_exec_initfn()
-to cpu-{system,user}.c, adding an empty stub for user emulation.
+Simplify cpu-target.c by extracting mixed vmstate code
+into the cpu_vmstate_register() / cpu_vmstate_unregister()
+helpers, implemented in cpu-user.c and cpu-system.c.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
-Good enough for now...
----
- cpu-target.c         | 9 ---------
- hw/core/cpu-system.c | 7 +++++++
- hw/core/cpu-user.c   | 5 +++++
- 3 files changed, 12 insertions(+), 9 deletions(-)
+XXX: tlb_flush() temporary declared manually.
 
+Only 2 more CONFIG_USER_ONLY to go.
+---
+ include/hw/core/cpu.h |   2 +
+ cpu-target.c          | 122 +----------------------------------------
+ hw/core/cpu-system.c  | 123 ++++++++++++++++++++++++++++++++++++++++++
+ hw/core/cpu-user.c    |  12 +++++
+ 4 files changed, 139 insertions(+), 120 deletions(-)
+
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index fb397cdfc53..aadbd2e1122 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -1163,6 +1163,8 @@ G_NORETURN void cpu_abort(CPUState *cpu, const char *fmt, ...)
+ /* $(top_srcdir)/cpu.c */
+ void cpu_class_init_props(DeviceClass *dc);
+ void cpu_exec_initfn(CPUState *cpu);
++void cpu_vmstate_register(CPUState *cpu);
++void cpu_vmstate_unregister(CPUState *cpu);
+ bool cpu_exec_realizefn(CPUState *cpu, Error **errp);
+ void cpu_exec_unrealizefn(CPUState *cpu);
+ void cpu_exec_reset_hold(CPUState *cpu);
 diff --git a/cpu-target.c b/cpu-target.c
-index dff8c0747f9..3d33d20b8c8 100644
+index 3d33d20b8c8..bfcd48f9ae2 100644
 --- a/cpu-target.c
 +++ b/cpu-target.c
-@@ -24,7 +24,6 @@
- #include "migration/vmstate.h"
- #ifndef CONFIG_USER_ONLY
- #include "hw/core/sysemu-cpu-ops.h"
--#include "exec/address-spaces.h"
- #endif
+@@ -21,115 +21,16 @@
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+ #include "qemu/qemu-print.h"
+-#include "migration/vmstate.h"
+-#ifndef CONFIG_USER_ONLY
+-#include "hw/core/sysemu-cpu-ops.h"
+-#endif
  #include "system/accel-ops.h"
  #include "system/cpus.h"
-@@ -176,14 +175,6 @@ void cpu_exec_unrealizefn(CPUState *cpu)
-     accel_cpu_common_unrealize(cpu);
- }
+-#include "system/tcg.h"
+ #include "exec/replay-core.h"
+ #include "exec/cpu-common.h"
+-#include "exec/exec-all.h"
+-#include "exec/tb-flush.h"
+ #include "exec/log.h"
+ #include "accel/accel-cpu-target.h"
+ #include "trace/trace-root.h"
+ #include "qemu/accel.h"
+ #include "hw/core/cpu.h"
  
--void cpu_exec_initfn(CPUState *cpu)
--{
 -#ifndef CONFIG_USER_ONLY
--    cpu->memory = get_system_memory();
--    object_ref(OBJECT(cpu->memory));
+-static int cpu_common_post_load(void *opaque, int version_id)
+-{
+-#ifdef CONFIG_TCG
+-    if (tcg_enabled()) {
+-        CPUState *cpu = opaque;
+-
+-        /*
+-         * 0x01 was CPU_INTERRUPT_EXIT. This line can be removed when the
+-         * version_id is increased.
+-         */
+-        cpu->interrupt_request &= ~0x01;
+-
+-        tlb_flush(cpu);
+-
+-        /*
+-         * loadvm has just updated the content of RAM, bypassing the
+-         * usual mechanisms that ensure we flush TBs for writes to
+-         * memory we've translated code from. So we must flush all TBs,
+-         * which will now be stale.
+-         */
+-        tb_flush(cpu);
+-    }
 -#endif
+-
+-    return 0;
 -}
 -
- char *cpu_model_from_type(const char *typename)
+-static int cpu_common_pre_load(void *opaque)
+-{
+-    CPUState *cpu = opaque;
+-
+-    cpu->exception_index = -1;
+-
+-    return 0;
+-}
+-
+-static bool cpu_common_exception_index_needed(void *opaque)
+-{
+-    CPUState *cpu = opaque;
+-
+-    return tcg_enabled() && cpu->exception_index != -1;
+-}
+-
+-static const VMStateDescription vmstate_cpu_common_exception_index = {
+-    .name = "cpu_common/exception_index",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .needed = cpu_common_exception_index_needed,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_INT32(exception_index, CPUState),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
+-
+-static bool cpu_common_crash_occurred_needed(void *opaque)
+-{
+-    CPUState *cpu = opaque;
+-
+-    return cpu->crash_occurred;
+-}
+-
+-static const VMStateDescription vmstate_cpu_common_crash_occurred = {
+-    .name = "cpu_common/crash_occurred",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .needed = cpu_common_crash_occurred_needed,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_BOOL(crash_occurred, CPUState),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
+-
+-const VMStateDescription vmstate_cpu_common = {
+-    .name = "cpu_common",
+-    .version_id = 1,
+-    .minimum_version_id = 1,
+-    .pre_load = cpu_common_pre_load,
+-    .post_load = cpu_common_post_load,
+-    .fields = (const VMStateField[]) {
+-        VMSTATE_UINT32(halted, CPUState),
+-        VMSTATE_UINT32(interrupt_request, CPUState),
+-        VMSTATE_END_OF_LIST()
+-    },
+-    .subsections = (const VMStateDescription * const []) {
+-        &vmstate_cpu_common_exception_index,
+-        &vmstate_cpu_common_crash_occurred,
+-        NULL
+-    }
+-};
+-#endif
+-
+ bool cpu_exec_realizefn(CPUState *cpu, Error **errp)
  {
-     const char *suffix = "-" CPU_RESOLVING_TYPE;
+     if (!accel_cpu_common_realize(cpu, errp)) {
+@@ -139,33 +40,14 @@ bool cpu_exec_realizefn(CPUState *cpu, Error **errp)
+     /* Wait until cpu initialization complete before exposing cpu. */
+     cpu_list_add(cpu);
+ 
+-#ifdef CONFIG_USER_ONLY
+-    assert(qdev_get_vmsd(DEVICE(cpu)) == NULL ||
+-           qdev_get_vmsd(DEVICE(cpu))->unmigratable);
+-#else
+-    if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
+-        vmstate_register(NULL, cpu->cpu_index, &vmstate_cpu_common, cpu);
+-    }
+-    if (cpu->cc->sysemu_ops->legacy_vmsd != NULL) {
+-        vmstate_register(NULL, cpu->cpu_index, cpu->cc->sysemu_ops->legacy_vmsd, cpu);
+-    }
+-#endif /* CONFIG_USER_ONLY */
++    cpu_vmstate_register(cpu);
+ 
+     return true;
+ }
+ 
+ void cpu_exec_unrealizefn(CPUState *cpu)
+ {
+-#ifndef CONFIG_USER_ONLY
+-    CPUClass *cc = CPU_GET_CLASS(cpu);
+-
+-    if (cc->sysemu_ops->legacy_vmsd != NULL) {
+-        vmstate_unregister(NULL, cc->sysemu_ops->legacy_vmsd, cpu);
+-    }
+-    if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
+-        vmstate_unregister(NULL, &vmstate_cpu_common, cpu);
+-    }
+-#endif
++    cpu_vmstate_unregister(cpu);
+ 
+     cpu_list_remove(cpu);
+     /*
 diff --git a/hw/core/cpu-system.c b/hw/core/cpu-system.c
-index c63c984a803..0520c362db4 100644
+index 0520c362db4..3e1f60f23df 100644
 --- a/hw/core/cpu-system.c
 +++ b/hw/core/cpu-system.c
-@@ -20,6 +20,7 @@
- 
- #include "qemu/osdep.h"
+@@ -22,10 +22,21 @@
  #include "qapi/error.h"
-+#include "exec/address-spaces.h"
+ #include "exec/address-spaces.h"
  #include "exec/memory.h"
++#include "exec/tb-flush.h"
  #include "exec/tswap.h"
  #include "hw/qdev-core.h"
-@@ -182,3 +183,9 @@ void cpu_class_init_props(DeviceClass *dc)
+ #include "hw/qdev-properties.h"
+ #include "hw/core/sysemu-cpu-ops.h"
++#include "migration/vmstate.h"
++#include "system/tcg.h"
++
++/*
++ * XXX this series plan is to be applied on top on my exec/cputlb rework series,
++ * then tlb_flush() won't be declared target-specific in exec-all.h.
++ * Meanwhile, declare locally.
++ * XXX
++ */
++void tlb_flush(CPUState *cs);
  
-     device_class_set_props(dc, cpu_system_props);
+ bool cpu_paging_enabled(const CPUState *cpu)
+ {
+@@ -189,3 +200,115 @@ void cpu_exec_initfn(CPUState *cpu)
+     cpu->memory = get_system_memory();
+     object_ref(OBJECT(cpu->memory));
  }
 +
-+void cpu_exec_initfn(CPUState *cpu)
++static int cpu_common_post_load(void *opaque, int version_id)
 +{
-+    cpu->memory = get_system_memory();
-+    object_ref(OBJECT(cpu->memory));
++#ifdef CONFIG_TCG
++    if (tcg_enabled()) {
++        CPUState *cpu = opaque;
++
++        /*
++         * 0x01 was CPU_INTERRUPT_EXIT. This line can be removed when the
++         * version_id is increased.
++         */
++        cpu->interrupt_request &= ~0x01;
++
++        tlb_flush(cpu);
++
++        /*
++         * loadvm has just updated the content of RAM, bypassing the
++         * usual mechanisms that ensure we flush TBs for writes to
++         * memory we've translated code from. So we must flush all TBs,
++         * which will now be stale.
++         */
++        tb_flush(cpu);
++    }
++#endif
++
++    return 0;
++}
++
++static int cpu_common_pre_load(void *opaque)
++{
++    CPUState *cpu = opaque;
++
++    cpu->exception_index = -1;
++
++    return 0;
++}
++
++static bool cpu_common_exception_index_needed(void *opaque)
++{
++    CPUState *cpu = opaque;
++
++    return tcg_enabled() && cpu->exception_index != -1;
++}
++
++static const VMStateDescription vmstate_cpu_common_exception_index = {
++    .name = "cpu_common/exception_index",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = cpu_common_exception_index_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_INT32(exception_index, CPUState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static bool cpu_common_crash_occurred_needed(void *opaque)
++{
++    CPUState *cpu = opaque;
++
++    return cpu->crash_occurred;
++}
++
++static const VMStateDescription vmstate_cpu_common_crash_occurred = {
++    .name = "cpu_common/crash_occurred",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = cpu_common_crash_occurred_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_BOOL(crash_occurred, CPUState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++const VMStateDescription vmstate_cpu_common = {
++    .name = "cpu_common",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .pre_load = cpu_common_pre_load,
++    .post_load = cpu_common_post_load,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(halted, CPUState),
++        VMSTATE_UINT32(interrupt_request, CPUState),
++        VMSTATE_END_OF_LIST()
++    },
++    .subsections = (const VMStateDescription * const []) {
++        &vmstate_cpu_common_exception_index,
++        &vmstate_cpu_common_crash_occurred,
++        NULL
++    }
++};
++
++void cpu_vmstate_register(CPUState *cpu)
++{
++    if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
++        vmstate_register(NULL, cpu->cpu_index, &vmstate_cpu_common, cpu);
++    }
++    if (cpu->cc->sysemu_ops->legacy_vmsd != NULL) {
++        vmstate_register(NULL, cpu->cpu_index, cpu->cc->sysemu_ops->legacy_vmsd, cpu);
++    }
++}
++
++void cpu_vmstate_unregister(CPUState *cpu)
++{
++    CPUClass *cc = CPU_GET_CLASS(cpu);
++
++    if (cc->sysemu_ops->legacy_vmsd != NULL) {
++        vmstate_unregister(NULL, cc->sysemu_ops->legacy_vmsd, cpu);
++    }
++    if (qdev_get_vmsd(DEVICE(cpu)) == NULL) {
++        vmstate_unregister(NULL, &vmstate_cpu_common, cpu);
++    }
 +}
 diff --git a/hw/core/cpu-user.c b/hw/core/cpu-user.c
-index e5ccf6bf13a..cdd8de2fefa 100644
+index cdd8de2fefa..1892acdee0f 100644
 --- a/hw/core/cpu-user.c
 +++ b/hw/core/cpu-user.c
-@@ -25,3 +25,8 @@ void cpu_class_init_props(DeviceClass *dc)
+@@ -10,6 +10,7 @@
+ #include "hw/qdev-core.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/core/cpu.h"
++#include "migration/vmstate.h"
+ 
+ static const Property cpu_user_props[] = {
+     /*
+@@ -30,3 +31,14 @@ void cpu_exec_initfn(CPUState *cpu)
  {
-     device_class_set_props(dc, cpu_user_props);
+     /* nothing to do */
  }
 +
-+void cpu_exec_initfn(CPUState *cpu)
++void cpu_vmstate_register(CPUState *cpu)
++{
++    assert(qdev_get_vmsd(DEVICE(cpu)) == NULL ||
++           qdev_get_vmsd(DEVICE(cpu))->unmigratable);
++}
++
++void cpu_vmstate_unregister(CPUState *cpu)
 +{
 +    /* nothing to do */
 +}

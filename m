@@ -1,95 +1,96 @@
-Received: by 2002:a17:504:17c3:b0:1be9:327d:8ee3 with SMTP id o3csp150782njd;
-        Wed, 22 Jan 2025 21:49:10 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV5NbjRXdfs/iVis7YF6CgMJ+exnJ/9xbnilO8C8y8bp9a/xB1QWgSMkxODmCiMTyvGcsL6zoVLxsyncg==@linaro.org
-X-Google-Smtp-Source: AGHT+IHCx5Y55yVNgSHyJ25WXBQCeNHYWMNMIlHgRsPR0YqyLDPECw26aawxbVKzwNKGuVWNKg7B
-X-Received: by 2002:ac8:4819:0:b0:46e:24b1:dcd1 with SMTP id d75a77b69052e-46e24b1e127mr235991221cf.32.1737611350372;
-        Wed, 22 Jan 2025 21:49:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737611350; cv=none;
+Received: by 2002:a17:504:17c3:b0:1be9:327d:8ee3 with SMTP id o3csp150905njd;
+        Wed, 22 Jan 2025 21:49:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVTqsgxn2Kouhd80lcnf8Tq7y3w0NeEoZyNO/vdxNkjdjyaQZtr0SbZj7RloG0j3DT4Fz/XmZ4ddZVsXQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IFDa3vRzlJre+Je9aUNtFiosuk2G1uU/nbGcZY3Lo4saDaU8zQfp3fU4hKLx7PFxeVk6uAk
+X-Received: by 2002:a05:622a:211:b0:466:a93f:c1c9 with SMTP id d75a77b69052e-46e12ab7ce5mr310186711cf.24.1737611375290;
+        Wed, 22 Jan 2025 21:49:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737611375; cv=none;
         d=google.com; s=arc-20240605;
-        b=jeV26KJxbsrVDmvYAGd1S2rDgN3s+g9InTkE/3G/pX6BlGVddsVEonbS5UdsJzURBy
-         DJT6DZB0pLVywger4Y5zWsUEzUHgFb6BflSNbV4ViMiOJaHA6gOjivcMr37oWRCetaD8
-         ipZT24dwTg55W5f+mwfPsOM3F7jP2elWW1B+CES/rtP8arnSEfdS+OBttHaVrvnYHYnl
-         ov+LH6iv/P9WEIq0jbQKYaCLPjPwzXUJaSrhI4Ji6YWujSr+c8opbcywxZbNeK795qnc
-         UzhOl7sSEKZsvVSrT0H3bVZD+X/Rl+tHoHI4r/X82s0GKwygaI3fWyHtovh8OBv7tti5
-         f9Ag==
+        b=EzC0ADy8XmtsQZGV0WklNMQyyOCouXR2fMtgriM35D4lQ0VI2aJxpUQEX16REHb+zi
+         S6kR7HyOeB1e5anRWyeSgXtfwW0bLigjkQzGADiFNos7i/aIQjLikcHQTEOEl8cmuNF0
+         Jwkv7deNvQFcgU0G/Hg1rVQCQzbZNTHhasECX8M/uRSKPQC+CccFAGsWA5TMWGG5ba6f
+         c9ZT4xDRYLhv8sspW8SdZF8Za0DpsuECKq9sRKJ0mEYRVs8mqUp2Ir1oQV1yn8y03zTR
+         wWD0MiTYHcJWNYzhHrZUr7qSEViN41DAwClyoLs89cklxPE/wc+1/PXLRKnplM1jthFP
+         RZBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:user-agent
          :content-transfer-encoding:date:to:from:subject:message-id
          :dkim-signature;
-        bh=iw48HCK2T+w5n2vzZw8zqqO+m/BwNICWK57PvNhGtDw=;
+        bh=/QYBajY9BTaw503gA+cHOREv391UTeiFvnlGxwD3qRQ=;
         fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
-        b=a8fo/1aQN02sSA42oVrSIN5LZBeVkk1YyRl+vDc+YqyQnUXhfdg9vhmrYaByM3l2xy
-         0mSafx9wdoj6UyOc4nfPVIGnad97d2hAtjWjIzhgdTt+Av/RoDa2QhOz2h4JeTs7bLf8
-         QgcbOtXzrALMgc4Q2nu0iX1YGFc3uWw9k6dIq4hVcsh9RguTvKZXQXux463hky6PciFp
-         sOl/te6VqdTNAk2xmmFNJ4bACufV5stxav0hUmUGP6oB5BVq87X735U51JUUfzjUc/S+
-         /Y2cR8oiI5WhjlXBVkfRZyi3z8ZFlFn3J+S1lWNtDHfHk0nAVgXO8rbkW/VvQulnU14P
-         YgwQ==;
+        b=bmbGiumecEWDe55QBr2EpymxgaxpNXNPG+oEuL1Voh/ICSx5QGXpo66FPz9N9uPGXk
+         FhgybwKaUVGMakGZ8Fg9HFUwdmGttEBSt/CHyiSr3fzoSog0F2aYl4tyBEYegNu+vjAK
+         W3tvBX6tlX1vmRPNSHBDYBcWWSI2bcVt1GgBinwzS/wH1PgWVYzEZnYlAHqMilHHtpdr
+         FiivQZLAOkSjCY/i2XRRAIEhnYMEzpTORDLYREtKecdjwcA9N2+B/IGSL0+HqMljPg2e
+         L1C2DRgHO45DtvNTVX4WX5NJ5Bwx4+gIGFNZb1+604gohB7C1gY40IwxcCDbKZ2p/yu/
+         oSiQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@qq.com header.s=s201512 header.b=TDsZ3zLQ;
+       dkim=pass header.i=@qq.com header.s=s201512 header.b="Nrcndz7/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=qq.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e1bb1cf26dsi147327736d6.258.2025.01.22.21.49.10
+        by mx.google.com with ESMTPS id d75a77b69052e-46e104bc767si162394901cf.652.2025.01.22.21.49.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jan 2025 21:49:10 -0800 (PST)
+        Wed, 22 Jan 2025 21:49:35 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@qq.com header.s=s201512 header.b=TDsZ3zLQ;
+       dkim=pass header.i=@qq.com header.s=s201512 header.b="Nrcndz7/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=qq.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1taq5N-0001Ff-NQ; Thu, 23 Jan 2025 00:49:01 -0500
+	id 1taq5o-0001IH-6r; Thu, 23 Jan 2025 00:49:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yfliu2008@qq.com>) id 1taq5L-0001FA-9k
- for qemu-arm@nongnu.org; Thu, 23 Jan 2025 00:49:00 -0500
-Received: from out203-205-221-191.mail.qq.com ([203.205.221.191])
+ (Exim 4.90_1) (envelope-from <yfliu2008@qq.com>) id 1taq5n-0001I8-1Y
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2025 00:49:27 -0500
+Received: from out203-205-221-192.mail.qq.com ([203.205.221.192])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yfliu2008@qq.com>) id 1taq5I-0003lv-6M
- for qemu-arm@nongnu.org; Thu, 23 Jan 2025 00:48:59 -0500
+ (Exim 4.90_1) (envelope-from <yfliu2008@qq.com>) id 1taq5k-0003nZ-S8
+ for qemu-arm@nongnu.org; Thu, 23 Jan 2025 00:49:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1737611329; bh=iw48HCK2T+w5n2vzZw8zqqO+m/BwNICWK57PvNhGtDw=;
+ t=1737611359; bh=/QYBajY9BTaw503gA+cHOREv391UTeiFvnlGxwD3qRQ=;
  h=Subject:From:To:Date;
- b=TDsZ3zLQV1OzFCZ31yabQ49fn7+v3TUYmuEw2VwNF6/DLmfMtoT0EDtYAyAX/IbvU
- i1JRoWNCcHVeC9q7nLaXzj2dcHPRHKHGpVX9Hrphd5zTYbTM0UoFNZebcSvRUiYMBj
- oAOQNkVah33tRo/LMbAAhqFV/46WfGGXryLgp3UM=
+ b=Nrcndz7/MJJYT2oP/l2TSc7XX3MXGRBy1aPWJTxboMgKLCXBv34uMMJGyiNg6lyiQ
+ 6oGbqSWNBCqtUv1uI8wVgypv2Qjiew2yTS6YH0D4HLAKmYy97VQe+gkogkjhxD/7Fh
+ trFROo/i8NxGWqbR//3NeoSYVOuvkKdPqsJuX/IQ=
 Received: from [192.168.1.13] ([171.213.188.20])
- by newxmesmtplogicsvrszgpua8-1.qq.com (NewEsmtp) with SMTP
- id A5629C38; Thu, 23 Jan 2025 13:41:22 +0800
-X-QQ-mid: xmsmtpt1737610882tddsbsq74
-Message-ID: <tencent_E57788874AA996351A24997957BF2FB25907@qq.com>
-X-QQ-XMAILINFO: OVHKTxwP+QXVshd0/zfPx+U7xLi39sIGuGbJOcY8kGiNbHh1E53D7thosmToEb
- E/IGTkYloin8UupuuUewICFf1PM3+oWczL2lKkcNQ21LhU4AzdtDpxqAK4R8BT8L6OQYM7KlKjaW
- tHnboFh8lXLIt7rXgAuVOXmoQYGMRlAZAL1l1htZ3Pg+ReFvozYlbueTRoyNGic/UnNFVsa9YQA3
- ZulFxZpKmsCsPTfEbMNxxpCuP58V+4XA1YBxFPeFKnIvsBq70n91O7wWsscjAB0is1d/UpwC60eK
- 8EecD6bgsN6pDzCQa9xb0U1tpFeu81v47c9OTNhjWrgs5+iMe1RcG/9yrq31a3Ggts8h0IOPxzy1
- wDEsLb/wHzOlWjwNo/S9WXOdauNKNCh5quWMA8kFFMXElX8zzUATZdNdNVJ70COdWB2s+Q8rHejw
- 3yEpUPxhStrvtEYIjqq3m1qkQ5IKnj9lE7hol3RQh3JtT1uxjRAoJO1ivzjVaq8/3mlgvBjhsS0y
- A0337tfvNaRmNK1ZrJX8bkhjLdTAAtKEasPb09nIsxmivh07D3iIvAU+txY0FjwYUDBm+XuP3QIi
- loYPtB8bGxW0Vc5KjONgOzOQSqPL9PzCCd3FKcfCyC3GTWUOiQfqt2scDc+Ye9EvpMgN0nzhRH+0
- LJOn7YTLbDCAa0XG7nQTGah4pvetzmZh7WW7dIdUOUvIYjdUsOA+VllJqPsSdmzKhjr6+WfKKm1A
- bQ+Y83Pth9A9JoTblLOO0OaGpjEB2Uz6A+UGtvKCFLFSsgt2oBmicP7fP2aJcu0MCAvU3QgLDCvS
- +pNuerIG0uQ57AnavAlcNx9njq3lhTLp6DoCF6/2F/p9uMaJp+GmcF1/U3PaKxEsJCcKSHL6qyl4
- 9ZambAlWBHjF8uBV/c96P576YlxQ5kuaqzKtNQBRSJxlBD92ZBV36g3L3ALVtTiKQsfLU+tohWjL
- mzQzXcidgelaeD2e6vEUSpgbxE/c5u
-X-QQ-XMRINFO: NyFYKkN4Ny6FSmKK/uo/jdU=
-X-OQ-MSGID: <4e5ecc8c55391f879a60015f31089fd17228a100.camel@qq.com>
-Subject: cortex-r82 support
+ by newxmesmtplogicsvrszc13-0.qq.com (NewEsmtp) with SMTP
+ id C5137ABE; Thu, 23 Jan 2025 13:49:17 +0800
+X-QQ-mid: xmsmtpt1737611357t1my395v9
+Message-ID: <tencent_2854A5A8D69091F0E7ABFD16C824DDD11E09@qq.com>
+X-QQ-XMAILINFO: NcC2/Q4ACKgy0nHzqWsNzJi3uP80zPhfDOGK5tD1aVUiARSiJey81WlRmRcq/Y
+ 1Yu/zHqI/kMqZ9eXYqNnshhTjy3iDE3U6xBlId2U46oiJ3yf29XaGqhOf6hLyFKipXws5Uuc9val
+ oWuM7z/L24s4FGQJ1nWNvmdzeZx1b2YV5qSRYvYU4N20N58K51r0IIIw6WERoUFjZ4+jLv5C0iyp
+ 9oERfcdeEmkIZ8mgnCVtlwyTIS/pDfBhkE35chsXpUFLX3Kzc9du1tbBpx3umQ6OwJ6vpMUxvBb3
+ yPo3j9crl/2zrSKysrP+lurLQpP8rsJOwtgJQdD/o/OJV8txhPetQ2pT5jP9B/zhMIRkCM8lPCVO
+ WK1w1iGun11bRYUTpklBgbKsHhOPjyXfkrU7Dtv9szoa0MZnqkrreT8H47cuY05I8E2Gb9BY5R9a
+ h7bkh4Z2suddcgbthgP/TKnu9x5czEYjywO1jUZXE6MolzPFTK+QrzIyUSRL5t+Vmzhfs/lNQXMx
+ +5z3uuk2gTxZySRgu3/Y5Fg973f6TjoMSxqHvZilT9aN7kKeTqmULUSBzTE7rIcS6gnRyqIQ0UHT
+ JWgAFJ817xiwBv7q7kLVFZKD2MjTkx1zvfTikcUy4CLCmNruwpL8uyWAHgKez0DNJtGR/jEJxgeV
+ 3vSCrrmpiYkP9+xGvTpj24BekEyRkOXdH0upirrRZzChS1mKTvcwJ2Rdy4IXX6qrrRTIUG3DQ9lC
+ 2XB80UAah4+dwE73BaiyfRXhFt2QEeSk3bTqoX43MtfpmAghEH8yeqTErfWJSvP1ts9JOukf3uLh
+ 082aprU9Zws4UAjEizsfCgzShETtvVLH3hXCPGW+ge8RAtVLLUpQqDuGgW9ehoySvbFXFLiwDaqp
+ Ea3QhTDIal3tVpo/KqXHfOA6X1sg56gbDNUKBupt+dDYybxrCPysHghAKW0XMAA3b1QDTKYFRzhW
+ 0VHgM16zK/LxvizUzSYHPwauOXAlNYAQFMoirVrHyLdFxnpw0iPBKkuiiPeRGCBiJP2REzK/uW9B
+ VVEvjZzg==
+X-QQ-XMRINFO: NmyfvsrRkCkJS5MlOxeZYe4=
+X-OQ-MSGID: <160d21cec795a8a245d0ed0654ad348913a05717.camel@qq.com>
+Subject: cortex r82 support
 From: Yanfeng Liu <yfliu2008@qq.com>
 To: qemu-arm@nongnu.org
-Date: Thu, 23 Jan 2025 13:41:21 +0800
+Date: Thu, 23 Jan 2025 13:49:09 +0800
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
-Received-SPF: pass client-ip=203.205.221.191; envelope-from=yfliu2008@qq.com;
- helo=out203-205-221-191.mail.qq.com
+Received-SPF: pass client-ip=203.205.221.192; envelope-from=yfliu2008@qq.com;
+ helo=out203-205-221-192.mail.qq.com
 X-Spam_score_int: 11
 X-Spam_score: 1.1
 X-Spam_bar: +
@@ -113,11 +114,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: q3gn8zh39GO5
+X-TUID: 8J7HegYzm/mD
 
 Dear experts,
 
-I am wondering if there is anyone working on Cortex-R82 support?
+I am wondering if there is anyone working on cortex r82 CPU support?
 
 Regards,
 yanfeng

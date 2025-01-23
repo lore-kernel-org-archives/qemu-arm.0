@@ -1,86 +1,85 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485537njk;
-        Thu, 23 Jan 2025 15:45:48 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWbzBXzAamhWWum2CART9n+HIOkRtuKkW390yQuVy33q91ZN4j8YdeSSbqGKm10NCgqJ3bHukj6GvJFng==@linaro.org
-X-Received: by 2002:a05:6000:86:b0:385:ef39:6cf7 with SMTP id ffacd0b85a97d-38bf5673ea3mr17407596f8f.32.1737675947911;
-        Thu, 23 Jan 2025 15:45:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737675947; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485583njk;
+        Thu, 23 Jan 2025 15:45:54 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWnIOkSRpz/i6Gf4xo0V1SiL+QaeD7+n/NA1Q8zWGOwkproOLp4chpABj+wlnFKKyzgVmt5AwkhDnEb2g==@linaro.org
+X-Received: by 2002:a05:600c:3d96:b0:434:a26c:8291 with SMTP id 5b1f17b1804b1-4389143b5dbmr244298985e9.24.1737675954156;
+        Thu, 23 Jan 2025 15:45:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737675954; cv=none;
         d=google.com; s=arc-20240605;
-        b=ieUMbDTkw/GQIx36KBJDm0Etu1Sp9VHmNlJFtRqeOF7NnIQ5AY/IgW8JEGK6tmUr8W
-         YAng5zXPmUHYcwW5O1n9yeMdXU+t6KE1SUmkvf9VEGf86z6rT/Ozw7junc122Gm5a99Y
-         pKxHSJ0FnI7uHFc8BOh/6K8fytMzIq0cOLvcqIlk4v+gdNv9S0NsV93Bkn5raRSPkMzF
-         mjZpHDAW2jKINNfs/4LQmrpK8XMMc8Jb8E9mn0lm1727Kjl9+ZfEcNxk8PZTZqwgCUuQ
-         n7A+QiSHtEadUPWTl7aHqUcIIo/C20NkKAtjbET38CGcMaizN8pvE6ZpsLfiRe1bKvv6
-         Pdug==
+        b=B0ESvCHq3G9XAB6lCJMs7nvcNxwz2elqkiSXuAexteRD0Up9l1OIzx0O+g+rtnNj6I
+         DIYykRupW7kughCprdSU9hwaXrpLaw5uBwVjLidP/CQwekNU3Oew3Ke/TK8mYr3z2uG5
+         GwaoOwAyLMDjIPChIs/N0QNI7HYv2hZOcgD2uKRAssLIeS1AgR8Tb1A/nQ0nylIT4+aQ
+         y8z1Zhfwv1NR/wZ7VVR34PbLX8EZYmH/35UcMjiv9dAdQZpDNOXk1zp3MGPPMlJzE5ME
+         IT+i/a6zqhMp5zoA1fSqUMEQDFeH6Lf1OkT6EllfiiZ71ey9rzQbJw+U7o2A+r2sQEIn
+         rJcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=OmeiNXwxDOryj9Nk89BSf7ntmaAiV2ODrxL67LjT3oE=;
-        fh=QB6RkZK2gImcaj/oE2rU16rVV56f0WcLox4ndAs+500=;
-        b=ZXbhhYoXmdtm4WD1aIE137aNyfR1KeQEyLwlKY+HNA9+g/2SIwfs5zVD6gzt7e+pZg
-         dUbwVsKDS899x6j6HD/r8soxS36efr/ZKNyKy/OYxFC9xyRxFEPevUJKYR8n3K8cNg0B
-         SNyheLwlmSv5ZeXYh9ju8giPvvpTABUHsAfdjQiqEnH+jjPvn2QdfBuK+NNiq3qk4CtT
-         dBogR9Y9ZD8Z+ijmb+pNx9Okj/TsnwZE37bk8rRRRyOC6qpnY5U/788MS+TvC6q71rG3
-         wHAdxh7SKPRmhyDUA/o2ftTTCYlcjxq4J0GFw2Iun0/ZFrbHAbGklniiwtPy+NQWZPvb
-         nIWg==;
+        bh=MvtCakZyrGCXwv1NUluQigNUDDDoRJgD07DKcxozaAI=;
+        fh=5AYAIza0q4RCZkpwsMlseM1vOKroPpJphyZbyhDuBsQ=;
+        b=T+32+bl7N9AL3F2uu4EtCc3KAhlYxoNLdDKsW+FDE1IZNZJIK258CGk4M+Ewigxhjd
+         WmXCVWSDo67PaJPzFygZOu37obtKo/3XvAuZ92+EwzP1tWNV+qxeYvFOcm5wm+hntjx4
+         1vB/uk9Pq5ABiUkv2Iv+JM9MFw/HLuM0nt1V8aHS/f3tJmvBeSxv7AVGkM6zVtEWp0dq
+         URPVGzjUQ+OGfBinONODXIyUym2EUIDvykRH+7BmnqGh0726YOKfukYjJmJ9g3dmZmiN
+         hZzd/9OS1GNYx/ZCcpIfymEP43GYoAEtfBNjMOV5GkI3rxkmqC3thD0szPwAWG0lhrob
+         IbQA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QIbDbHY6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FfZuVMtp;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-438bd4e2185sor2339375e9.7.2025.01.23.15.45.47
+        by mx.google.com with SMTPS id 5b1f17b1804b1-438bd4a485esor2044945e9.3.2025.01.23.15.45.53
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 23 Jan 2025 15:45:47 -0800 (PST)
+        Thu, 23 Jan 2025 15:45:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QIbDbHY6;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FfZuVMtp;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737675947; x=1738280747; darn=linaro.org;
+        d=linaro.org; s=google; t=1737675953; x=1738280753; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=OmeiNXwxDOryj9Nk89BSf7ntmaAiV2ODrxL67LjT3oE=;
-        b=QIbDbHY6YJovTAkTEG7wujql+aH7HX3HQeLC3iMcNdmNC7kHym1iJyN21T949J/02V
-         qsLLZVkC7s2Vr+V8/4etla0NhhOf1FbBQHrFSjabw+6mCqj5Jk03NHbtULOf9crTOVce
-         QXReoeuRr9q8hnFMjX5KkZTbjcLRaMH/coTKHfM3ZmOmMgzzhBuWSYGJj+QGCeQ61YIP
-         OPJ55iNGYN4/xvQBe9eTfX+b217GOfAEmm03d7IzmIGLdYgr8hfhFWnWEUcioHXXDumg
-         Lz+2Sny3YkfhqF6ym39/uve8qDv7MB/Ubqv9FoimpgwUwf+A6xU+EfuwXesvViFWfFk0
-         VcBw==
+        bh=MvtCakZyrGCXwv1NUluQigNUDDDoRJgD07DKcxozaAI=;
+        b=FfZuVMtpkaaNKbPdhAoVBpQoixO9iPgoblGPnYL+iMI6QLkMOaWobn+GBzmgxRCB9+
+         YxLmMCBkcxDM3hMr4zQ7YVMgknaTTZb96/A30YLg2+B8z6YICc6m1QezxK8dJHBXYFR0
+         ozktOpZmXN1sKJ/X6FWYFvW/CKXANrW+3In3DbWxO4alXSNPuViPPpqKKUwMGIqgNOeb
+         QGzfvLMhIj2nNUwYhDCIb1lY8kmo5E4w7MM+pSLCZOXsQxk91rEcYWnrSR2Yy/XgQETf
+         vh6gL1RhofwWAjLjrfVNv/gaNkYd0R6JIbBft4+zyr7vZrIHmdYOWIBBYGqYY6fV7Yhl
+         YjSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737675947; x=1738280747;
+        d=1e100.net; s=20230601; t=1737675953; x=1738280753;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=OmeiNXwxDOryj9Nk89BSf7ntmaAiV2ODrxL67LjT3oE=;
-        b=X46RyiDH0wn7W7dUScwsp7jU0epi/UbLE/mi2XVZBErd3UzBkv79Jf4Hb3o93H8KCm
-         zDABDmyyx5ylBCaW9MGjZhYVB4kQifEtZdRwr56dsS3FfRtF5osWs/7r2BkPGg2cdjBU
-         /1Hamrz5UKZeS+Ela/QH2W/icXG02Hy5FqS/X7p7KAg3GnfJhYPVx4zjpj+SA8A2GOCZ
-         wMUpLuBo+UpU58PgX8EFAzGbEeYTeSmdF+7c+KdMB7T/YZyhkkHph9GkNKKy8UYgaKed
-         7ltNN7qsLRRKgtIWamuB9kK2enELGiL45NwJtv8VeatkBiehdFA7yxndN9vRhKiqwkkW
-         3j9A==
-X-Forwarded-Encrypted: i=1; AJvYcCW1MNiZ61LLHq//VFPoheLr0OA3+8i9voxifCzHJbfREZCirr1+qAUAFHsKvqSrHVwQwTsjIJblOJQh4w==@linaro.org
-X-Gm-Message-State: AOJu0Yxx7F/IrVcNJq9VmhdDdlb0EYwgHbX1Rn99ZMfNd+L7yNEaFN0d
-	SwNzBUehsS3VjrA1adscYIyJbUpEz+LWVjL9Rw2wjD8zSE4/fPqNvVzzcK7s0B6YSXzPq3A6KPF
-	+zE6FQw==
-X-Gm-Gg: ASbGnctsuveWzypkivODQUAdywLxun31oA6P7/oO2LPFTmtg3tVbwRhnI7s4POK6O3b
-	FHuLP83tqfTsRAGoM3c37r8eIfunZzU477jvFcw+tjgZsEIRl/BCA9+qtFue+UCoXrxs2bqP/4f
-	tJlP2FKIHhzlf53WSc0r6XeJggkB4xPT4OZnNDjMi5jDi2W0NXbR7eqJYmW4BkywTSTCja1290z
-	IxobQYHHe4Y4NaR/g/uMmrryu4dVfnHxp74tKfluWJbdy5ZKN8jG5tArGez3B4DiPJeX3V9R8rB
-	RhSoTB/NU0VfX1T2lMj6akrudxIMuWX3wjg2gJIRvYIrNFni9NTerGw=
-X-Google-Smtp-Source: AGHT+IEFJ1SeJWoUW3YaXnTGBs2yrvL22hVEarb/siWyosLBI70zXEF7xcr/1TRnUm9/lQBURa7m3g==
-X-Received: by 2002:a05:600c:1e18:b0:436:8a6f:b6db with SMTP id 5b1f17b1804b1-4389141c12emr225835175e9.22.1737675947213;
-        Thu, 23 Jan 2025 15:45:47 -0800 (PST)
+        bh=MvtCakZyrGCXwv1NUluQigNUDDDoRJgD07DKcxozaAI=;
+        b=XmcLpZFI59f6IdR7itrtncu5fyIegITM+MhncS7wtgBTPf/2REpf772TrCJY7D1LIx
+         kTIiXVO3gziLja7e8qHciFq3J5B93M+NzTuOucBWMHcdwGQCOj+8wTFN1EacRIY41+J/
+         FlnNQhvBfUm/Ojaz4BIVFXaTet+bNbSuu2GASPQBrxUtKI91YwGhKUTMi/oPct8C4vbY
+         RaUkVrJm6+rTceoM9VLwrTZJgpqlGRPXtCERSbqiHbrkaIsLcs/tTIdFGalr1y1jOM9M
+         cDPx9G5GOrdiohMYN8PYolUqd9rkuk7as1ukVC3BCM0E1NnesBTZN8GjmgZRg9ADeYUV
+         QF0w==
+X-Forwarded-Encrypted: i=1; AJvYcCWpoekIS40dJc5qYHn5x/AgvzXniJjc9yJLQNEYygSOPnbNR9OyNeaqUfuxkjZjcFTxg5YTBYCpnw+M8w==@linaro.org
+X-Gm-Message-State: AOJu0Yw2jwqGJtD7LQWhBmzgETEeq1kDxiS9igOHohW/90nri+DdoFHk
+	NhgLhBMVcFuAKCEdI90TmqH7aJud9790wUJEV4VhfM19PzIC3BOr36HbMXRWeBNmVA==
+X-Gm-Gg: ASbGncuYq3j9gt5mGN+5XleQvvZZUfLUEDXGxkCAID845/t4vqBiy4qgpvpKZy96Veh
+	LbdXvnmH3iSivVDNeH58WefklDQopm0LCh2SRNmYXwfbF7NCYj96nPmpLwV+MgRXmn6edQY+Hhd
+	UzAM7J6ZTYzCiHiy5i2K+8v/SVh2BJ3tI3eMsUVOLh54imUlvGnLRDkWXXoqOoO00F7IYjy3+7Z
+	PJdwHA+SaDp0XrumTtoOiGCyg4huxWFM1rhnL4HNIiEnw4VY7Xu9hac5ZcNxkotEvGYqfaIGWTi
+	EgRpos68bbg8J7ABi1kzYL8ZCb+kqY+/qVxU+wagVFso5gGffD6CD5c=
+X-Google-Smtp-Source: AGHT+IESHbhLNhi6WI+MIsv7kwcNIGaQJ9dXLlWxoyCR3XibduHPGVHiP0CzOiY9OItw0/7PMnFvyA==
+X-Received: by 2002:a05:600c:1987:b0:434:f753:6012 with SMTP id 5b1f17b1804b1-438913f2f4emr282730315e9.17.1737675953608;
+        Thu, 23 Jan 2025 15:45:53 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd47f355sm7138595e9.4.2025.01.23.15.45.46
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd43cdbbsm7488805e9.0.2025.01.23.15.45.51
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 23 Jan 2025 15:45:46 -0800 (PST)
+        Thu, 23 Jan 2025 15:45:52 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -96,72 +95,213 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	xen-devel@lists.xenproject.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 16/20] cpus: Restrict cpu_common_post_load() code to TCG
-Date: Fri, 24 Jan 2025 00:44:10 +0100
-Message-ID: <20250123234415.59850-17-philmd@linaro.org>
+Subject: [PATCH 17/20] cpus: Have cpu_class_init_props() per user / system emulation
+Date: Fri, 24 Jan 2025 00:44:11 +0100
+Message-ID: <20250123234415.59850-18-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250123234415.59850-1-philmd@linaro.org>
 References: <20250123234415.59850-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: y+MSji7c27Zu
+X-TUID: eaTN3tpmZyTx
 
-CPU_INTERRUPT_EXIT was removed in commit 3098dba01c7
-("Use a dedicated function to request exit from execution
-loop"), tlb_flush() and tb_flush() are related to TCG
-accelerator.
+Rather than maintaining a mix of system / user code for CPU
+class properties, move system properties to cpu-system.c
+and user ones to the new cpu-user.c unit.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- cpu-target.c | 33 +++++++++++++++++++--------------
- 1 file changed, 19 insertions(+), 14 deletions(-)
+ cpu-target.c         | 58 --------------------------------------------
+ hw/core/cpu-system.c | 40 ++++++++++++++++++++++++++++++
+ hw/core/cpu-user.c   | 27 +++++++++++++++++++++
+ hw/core/meson.build  |  5 +++-
+ 4 files changed, 71 insertions(+), 59 deletions(-)
+ create mode 100644 hw/core/cpu-user.c
 
 diff --git a/cpu-target.c b/cpu-target.c
-index a2999e7c3c0..c05ef1ff096 100644
+index c05ef1ff096..dff8c0747f9 100644
 --- a/cpu-target.c
 +++ b/cpu-target.c
-@@ -45,22 +45,27 @@
+@@ -19,15 +19,12 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+-#include "hw/qdev-core.h"
+-#include "hw/qdev-properties.h"
+ #include "qemu/error-report.h"
+ #include "qemu/qemu-print.h"
+ #include "migration/vmstate.h"
  #ifndef CONFIG_USER_ONLY
- static int cpu_common_post_load(void *opaque, int version_id)
- {
--    CPUState *cpu = opaque;
-+#ifdef CONFIG_TCG
-+    if (tcg_enabled()) {
-+        CPUState *cpu = opaque;
- 
--    /*
--     * 0x01 was CPU_INTERRUPT_EXIT. This line can be removed when the
--     * version_id is increased.
--     */
--    cpu->interrupt_request &= ~0x01;
--    tlb_flush(cpu);
-+        /*
-+         * 0x01 was CPU_INTERRUPT_EXIT. This line can be removed when the
-+         * version_id is increased.
-+         */
-+        cpu->interrupt_request &= ~0x01;
- 
--    /*
--     * loadvm has just updated the content of RAM, bypassing the
--     * usual mechanisms that ensure we flush TBs for writes to
--     * memory we've translated code from. So we must flush all TBs,
--     * which will now be stale.
--     */
--    tb_flush(cpu);
-+        tlb_flush(cpu);
-+
-+        /*
-+         * loadvm has just updated the content of RAM, bypassing the
-+         * usual mechanisms that ensure we flush TBs for writes to
-+         * memory we've translated code from. So we must flush all TBs,
-+         * which will now be stale.
-+         */
-+        tb_flush(cpu);
-+    }
-+#endif
- 
-     return 0;
+ #include "hw/core/sysemu-cpu-ops.h"
+ #include "exec/address-spaces.h"
+-#include "exec/memory.h"
+ #endif
+ #include "system/accel-ops.h"
+ #include "system/cpus.h"
+@@ -179,61 +176,6 @@ void cpu_exec_unrealizefn(CPUState *cpu)
+     accel_cpu_common_unrealize(cpu);
  }
+ 
+-/*
+- * This can't go in hw/core/cpu.c because that file is compiled only
+- * once for both user-mode and system builds.
+- */
+-static const Property cpu_common_props[] = {
+-#ifdef CONFIG_USER_ONLY
+-    /*
+-     * Create a property for the user-only object, so users can
+-     * adjust prctl(PR_SET_UNALIGN) from the command-line.
+-     * Has no effect if the target does not support the feature.
+-     */
+-    DEFINE_PROP_BOOL("prctl-unalign-sigbus", CPUState,
+-                     prctl_unalign_sigbus, false),
+-#else
+-    /*
+-     * Create a memory property for system CPU object, so users can
+-     * wire up its memory.  The default if no link is set up is to use
+-     * the system address space.
+-     */
+-    DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
+-                     MemoryRegion *),
+-#endif
+-};
+-
+-#ifndef CONFIG_USER_ONLY
+-static bool cpu_get_start_powered_off(Object *obj, Error **errp)
+-{
+-    CPUState *cpu = CPU(obj);
+-    return cpu->start_powered_off;
+-}
+-
+-static void cpu_set_start_powered_off(Object *obj, bool value, Error **errp)
+-{
+-    CPUState *cpu = CPU(obj);
+-    cpu->start_powered_off = value;
+-}
+-#endif
+-
+-void cpu_class_init_props(DeviceClass *dc)
+-{
+-#ifndef CONFIG_USER_ONLY
+-    ObjectClass *oc = OBJECT_CLASS(dc);
+-
+-    /*
+-     * We can't use DEFINE_PROP_BOOL in the Property array for this
+-     * property, because we want this to be settable after realize.
+-     */
+-    object_class_property_add_bool(oc, "start-powered-off",
+-                                   cpu_get_start_powered_off,
+-                                   cpu_set_start_powered_off);
+-#endif
+-
+-    device_class_set_props(dc, cpu_common_props);
+-}
+-
+ void cpu_exec_initfn(CPUState *cpu)
+ {
+ #ifndef CONFIG_USER_ONLY
+diff --git a/hw/core/cpu-system.c b/hw/core/cpu-system.c
+index 6aae28a349a..c63c984a803 100644
+--- a/hw/core/cpu-system.c
++++ b/hw/core/cpu-system.c
+@@ -20,7 +20,10 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
++#include "exec/memory.h"
+ #include "exec/tswap.h"
++#include "hw/qdev-core.h"
++#include "hw/qdev-properties.h"
+ #include "hw/core/sysemu-cpu-ops.h"
+ 
+ bool cpu_paging_enabled(const CPUState *cpu)
+@@ -142,3 +145,40 @@ GuestPanicInformation *cpu_get_crash_info(CPUState *cpu)
+     }
+     return res;
+ }
++
++static const Property cpu_system_props[] = {
++    /*
++     * Create a memory property for system CPU object, so users can
++     * wire up its memory.  The default if no link is set up is to use
++     * the system address space.
++     */
++    DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
++};
++
++static bool cpu_get_start_powered_off(Object *obj, Error **errp)
++{
++    CPUState *cpu = CPU(obj);
++    return cpu->start_powered_off;
++}
++
++static void cpu_set_start_powered_off(Object *obj, bool value, Error **errp)
++{
++    CPUState *cpu = CPU(obj);
++    cpu->start_powered_off = value;
++}
++
++void cpu_class_init_props(DeviceClass *dc)
++{
++    ObjectClass *oc = OBJECT_CLASS(dc);
++
++    /*
++     * We can't use DEFINE_PROP_BOOL in the Property array for this
++     * property, because we want this to be settable after realize.
++     */
++    object_class_property_add_bool(oc, "start-powered-off",
++                                   cpu_get_start_powered_off,
++                                   cpu_set_start_powered_off);
++
++    device_class_set_props(dc, cpu_system_props);
++}
+diff --git a/hw/core/cpu-user.c b/hw/core/cpu-user.c
+new file mode 100644
+index 00000000000..e5ccf6bf13a
+--- /dev/null
++++ b/hw/core/cpu-user.c
+@@ -0,0 +1,27 @@
++/*
++ * QEMU CPU model (user specific)
++ *
++ * Copyright (c) Linaro, Ltd.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/qdev-core.h"
++#include "hw/qdev-properties.h"
++#include "hw/core/cpu.h"
++
++static const Property cpu_user_props[] = {
++    /*
++     * Create a property for the user-only object, so users can
++     * adjust prctl(PR_SET_UNALIGN) from the command-line.
++     * Has no effect if the target does not support the feature.
++     */
++    DEFINE_PROP_BOOL("prctl-unalign-sigbus", CPUState,
++                     prctl_unalign_sigbus, false),
++};
++
++void cpu_class_init_props(DeviceClass *dc)
++{
++    device_class_set_props(dc, cpu_user_props);
++}
+diff --git a/hw/core/meson.build b/hw/core/meson.build
+index 65a1698ed1f..b5a545a0edd 100644
+--- a/hw/core/meson.build
++++ b/hw/core/meson.build
+@@ -46,4 +46,7 @@ system_ss.add(files(
+   'vm-change-state-handler.c',
+   'clock-vmstate.c',
+ ))
+-user_ss.add(files('qdev-user.c'))
++user_ss.add(files(
++  'cpu-user.c',
++  'qdev-user.c',
++))
 -- 
 2.47.1

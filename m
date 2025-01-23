@@ -1,174 +1,123 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485215njk;
-        Thu, 23 Jan 2025 15:45:08 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWdPTAGke4oOP3s5WD7qDIClqSJCY92ksWaHoZgQ+LKvt527cIHKWdx93K1r4mV8LNSIhMq1gU/mYZzNw==@linaro.org
-X-Received: by 2002:a05:600c:1c0f:b0:431:44f6:566f with SMTP id 5b1f17b1804b1-438913deb12mr235271145e9.13.1737675908261;
-        Thu, 23 Jan 2025 15:45:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737675908; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485600njk;
+        Thu, 23 Jan 2025 15:45:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU2Fab9OwBU/Hica92mdANsEsZOw6N3Zf8NOWwYaX/avi+j3Uk8gX9eCxseYG6tx0lIXDmMKAD0tyl+VQ==@linaro.org
+X-Received: by 2002:a05:600c:3c82:b0:434:f5c0:329f with SMTP id 5b1f17b1804b1-438913f08a2mr299367445e9.14.1737675955834;
+        Thu, 23 Jan 2025 15:45:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737675955; cv=none;
         d=google.com; s=arc-20240605;
-        b=KenCyjWfgzONMLM5tjLY3g81rDxY86QbClq3T8zizuZEykQj6CV0j885NLNfGBaYQq
-         sowh7NLvOQnIZpF4La9y86Utx82w2DFIQvl1drA+6NgJQLIb7TQL4WB4cS23AvrnMD9Z
-         mpzFS+LLl2HdxNSG02lvvZT1uh+XzpIvBTx7081pjB2AVyzCopeSixp/w82kFVD+XTwD
-         n5rtNhEMNTg0zdg03VcQUBdMnvIu0dee0Pu0FiPtQX4kBWprBum24tkXm8r+cjioGU4j
-         TnPX73TQ5Lq/ADJtl85r0SmhhN8PBsp0jNYDFlrFUjyY47Z/AqOiZLlyNt4W2SGh3Wok
-         dA6A==
+        b=bejzKfUmOY/03DU68okvZLAFx4kqeRIq+XxRs87XSnK2CkVnXKfaPB4yFrBVTalrVD
+         7hAReO6q9k92vcjhNOl7UptPxyGloghTyYHr+nANzpYCBDn5k+cCNLPz5oiXWNR7CjuY
+         IQLM2H8O7t3slv2ZAK3n9CyVLOcn/lIT0lMurwBM/l5s3jHEV4vQfW6Z1NidlusCRA4h
+         6S4Db2mlLFwxdBQXoFg9AV2s901LgIKKtWxsgF+qS/OvMoI/mrOmf4PALbZaNCz+7lpW
+         ueXAM94PVUCW4jXkJchT4xsmtIZ1vjmGQ/VbpoPWIYgBxd1aNxzAuBxOZHljCnCi/DVv
+         tcgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=yDFP15LbfYjBwdgoNtB1SUTPS+QYiGObjjbLDQKpiPc=;
-        fh=Z2zBbizLFUGk7Nr2IdTErcJEiH07OZVbuj07zKe+zCU=;
-        b=FLzH/aStyX/yZa9qT8HHdeUJnUb8dQroR6Y8gYEI1gard6+ghjRhLraRDoAzOQXQYG
-         mGcpaNQhp3UJJNpYDwm1PnbG5ZpLIPSsjTmkgR/4tpgOf1za1mwQMtPiIrQRGsQFoujD
-         keUh5J+awvxcXozsQDmFReVHP0adKgZg0XDVLNjRw7n4uChck+pcLYFb2SSrnd0U45tO
-         85OuGdi1pDmLj4IncbdMSBbMIpuBk3X5F+F3q7/DXBeSca6ha17d+xDy8riN/02qZEAs
-         XxGAZkWsXwrLi5yhjI7aJLCMjMfww8EbDDyqi1AHzW9DIEJ7G5teBPSnwQYDonl1/qRd
-         4E8A==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=sIImxUuZ28chVlLL+vN1mb6UQluYe71i/J3SLXui4EM=;
+        fh=vwlN8QDQrLsTnDh+lCHrnHSAZUyqglbfbddSfGQwzyQ=;
+        b=QZe0PUHfNfbOR9iwKIuqGtNb4t9y95d8oVXDkvyBhFVbKefO9ZadwhHzXER7x7U07v
+         xU0eacgwazTdo8gYvHmZBBd7cE1R8dOu949Ag2Z3/LSE1D8904NJlEUM9Qio2QXUnqNn
+         jtGOlmouFACKmmeNve3wu8XG3nA6cKT5j/JpaW/wgLuW07bfKj5vg9eed4kOZLIAKf8U
+         O+NXmm/6fKJ9xJlljXiuLqeQnRDc0+eksfTI5by9OWMLKxZ0ZrtQ6nNzJPZ2zDLR7N1L
+         RHCxP6KqfmEEaJ6jiIcBR/vDq+5VrP5gdyieG4DAHWZqL68RnH9B23dslzbRKzbujmTd
+         eGhw==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jp9WxAYQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yiDHlDX3;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-438bd6c56edsor1974785e9.10.2025.01.23.15.45.08
+        by mx.google.com with SMTPS id 5b1f17b1804b1-438bd4e8a82sor1981515e9.6.2025.01.23.15.45.55
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 23 Jan 2025 15:45:08 -0800 (PST)
+        Thu, 23 Jan 2025 15:45:55 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jp9WxAYQ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yiDHlDX3;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737675908; x=1738280708; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yDFP15LbfYjBwdgoNtB1SUTPS+QYiGObjjbLDQKpiPc=;
-        b=jp9WxAYQ78KNyGI+MtDvIdFpDeb1D3+6jN6v4LdUC4A46k1pFfHHnL7gGdndJFa3xZ
-         7qzMXHp1Xm5ngdEYoOxVZDtYeoghtmHBvZMZUiadM39vPb84qFk9y73HINY3S2TXRXww
-         yo4ueJccUad+wu4jk1uMDURwxSQmLNrXFASS9HYrJOP1leEv6MGGceeruCAp24eR7iXu
-         7By2tulk15a48USlNNCJR742OSC+eqcx1vBwjnSlA6SqPBbtlzKMUbjH/aYSkEAR1Qm8
-         PMzfo/MttOZK9GhB13MZvkZZ9CQQOCOizehkeUzy67kvuVqmOc7iiOijowOIx2CUeE7b
-         VvgQ==
+        d=linaro.org; s=google; t=1737675955; x=1738280755; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=sIImxUuZ28chVlLL+vN1mb6UQluYe71i/J3SLXui4EM=;
+        b=yiDHlDX3SIMXgbdxwo9ip8+GgIPNzkRW1UbPu815WESqZN0oUpnZuBdR+XzxjXg5Y1
+         Qnj5/vjWgCOFu9bzM63e7hTWNfgUjZOaCXhTziUlokdieCLD8e0DYih5AOtfVPybCZnS
+         AK8z4ZtrW1/67X1doi5ts8BVc+88Q4tXK/8NvqTHTcuJIn/w9YjttYJAHXwFSQpAtfOF
+         zk+Q93lI3qSWAEkHWqyTP9qL3qajdtSK6P1LHfUnXuyBibjhaddIa4OCzEcw6KcPLlyv
+         ve4LJfuHS/Z5NtLf+is/PAFzAQEH3q1dUTVU1lch0WmV1LuSDHlKnTgK/3H6omozqLdW
+         OELA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737675908; x=1738280708;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yDFP15LbfYjBwdgoNtB1SUTPS+QYiGObjjbLDQKpiPc=;
-        b=CAypDIeChx/WFYBuWFcZqQUwZhRtWKgHR2pq79oPlClef5sKCk2rH4DH97QD41wo8c
-         2yzR1i1WXaquF4Ob6g7DOfYmOOf3wzs5VatDaPfWvzxQ5uQ2gQmE891A3llX3so9uHam
-         FdIo0+XGQXppllwxFgiOCyESB0jNqPKwqOGQwhcR9hTXm3oIORCShOTzbMU4AknQxGhS
-         jfnCN0P7ogOcILJGHFE2KarujExbQ/JngraFDeSNr6BseBhiPrHJiJ1hEf1R0xn+7ta0
-         mEw/mcKwQsREG4Cl1Sq0Nr8ryP2ujUOcUW+XioA+wJAgBiMH/URGMnj1+C7TZI4jMMc9
-         amBA==
-X-Forwarded-Encrypted: i=1; AJvYcCXJalOoLSOrdyj3/KSlle6VMmpo3dnmyESyiHhgac/6m5AeCfLGLRXa/QKz35U8JQo/uC6rQh5KHALtXQ==@linaro.org
-X-Gm-Message-State: AOJu0YzNUINHtRVN9zmOJPfZkz88ihTYWGfgv/xWe7d0QIKR3wcPpACK
-	VN+iLZ/sM/uti0oZk4K6CrdtasfG/t3DT3F3hq34evV0q1Mbv7mhuOpiEu1QQHTRcw==
-X-Gm-Gg: ASbGnctoYURM0evTy61NR7DZZF14IANfsg09DEdI3FN/R5o1N522CJx/VL6fF6wX3Ge
-	USh+nAzJ8KhcO47DLNc2C407vEVf8moR0/zmpAqdpXxkUlNIJ5BweHwvoDQQiawg+YQct5WACBa
-	4uGmuvSXricFOQVKz+ZBD76dB/VpuLMnj8BkLfYWzdAr+lfNCt55eFvBx8Xbwz87q0U7MWpDyUW
-	Lfx/+CgM0FKtddmdDJYTFU0niwhJIuvWxc3j/bCGVmEWjfD3lUfPgT/p9NPwneKPSzmLG6VWw9M
-	WSzl4UAqshKEbJFehd4oHaq/my2J/Auwz3NQmiHecAkkiJTq8dqGd4c=
-X-Google-Smtp-Source: AGHT+IF/y2rn8++eRXtfGXVV9eCNnufdJ4OAKshcVAU/XMr+be4nBaPjnThGR5Wf47h3eLbBgCoQsA==
-X-Received: by 2002:a05:6000:401f:b0:38c:2677:9bee with SMTP id ffacd0b85a97d-38c26779db8mr3711264f8f.15.1737675907708;
-        Thu, 23 Jan 2025 15:45:07 -0800 (PST)
+        d=1e100.net; s=20230601; t=1737675955; x=1738280755;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=sIImxUuZ28chVlLL+vN1mb6UQluYe71i/J3SLXui4EM=;
+        b=oszRWiG2VHbySoxKHbQOonvVIj33Pcc5wDW7kYbFyGQu1sSIj8AAZ2KQNcBXp1fSGb
+         e9+XdMilZfcEs0fo1bW+Zc5bR0PghgqahKEEDbp7aZxfYN7Ee9qMB8Ng4LaE2nUzwMzN
+         +bR2GpNmgm+/BubZ+3x/oCG7McXaqg3drxUSeJVHSOh4ZY0xaLfg2XY07UcCaJUBXSD5
+         PIL3fVWruwh0xaRfRr6+ADaS71UZrRIR5UObsFhx7f5t7x85Pzv1POefpKrnLYotejtJ
+         J96tUpTUseRjXfJQcNxxvs0SOD8Dumx9HtX8afuJg7FIcZI+RkPopvAsZ/TZkGeCbfer
+         mczA==
+X-Forwarded-Encrypted: i=1; AJvYcCUsV9xnHj9PrLuiFspQUVbwUAcwvPJ/TKaQaKazp6EVymnWnnA4LVafMNgePU0X/HtKjVtyHHElsAZ0Hw==@linaro.org
+X-Gm-Message-State: AOJu0YxdytwbpD1F238MpkzAYyRhW7yP1u5bz1nsNGSaeprx2BK1gKGY
+	/HPscseH0X9zxPLGodUhgW3am0YZpPgX91923TD4dBQrctLZE2QgDDl2jEkbaK+3pg==
+X-Gm-Gg: ASbGncsTywcNyvXqrQJEC5nXgYrs06/IaxAKXE4gcxzt7Kuax9mkxfoZwW33gDGiKs+
+	fqS2Q1XQlBs2kW2xIsd8YljQFZGvPvJgjIkGL/tRnSZgIrkzjpmcx5yb1a1nQH05Q7xFWZK7FWm
+	Med+/xAanTlK9hZI/HRchDxEEvfy00N63W4UX0pE8yU0q1COacDrFbV2YgYiTwWt3v88gS2hJQh
+	QeSo6yuRw6/jVa308NG0WZTndTejpoX8IRI3Rxd1GA8yNLwFa0FXvnYw6ME+O30vCUloMX1HZkH
+	J46/XhHFs8F0Ftp6nerBTtg9BkEBcOYAU8kbTSkoxh5iweW9O7yG+v1yr64=
+X-Google-Smtp-Source: AGHT+IGfBJfULhniARVxaeHND22dVQGvVM8jm6sNf2yido1MC4lasaduEx+qwJvir1julFx+bnHZjg==
+X-Received: by 2002:a05:600c:35c3:b0:434:f131:1e71 with SMTP id 5b1f17b1804b1-438913cf2e0mr264387845e9.8.1737675955349;
+        Thu, 23 Jan 2025 15:45:55 -0800 (PST)
 Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c2a17630asm997952f8f.6.2025.01.23.15.45.05
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 23 Jan 2025 15:45:06 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Received: from [192.168.69.181] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd47f355sm7140915e9.4.2025.01.23.15.45.53
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 23 Jan 2025 15:45:53 -0800 (PST)
+Message-ID: <3ef3ad0c-0f53-4588-aaf2-f6fd712ebd41@linaro.org>
+Date: Fri, 24 Jan 2025 00:45:52 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 02/20] user: Extract common MMAP API to 'user/mmap.h'
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	kvm@vger.kernel.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org,
-	David Hildenbrand <david@redhat.com>,
-	qemu-s390x@nongnu.org,
-	xen-devel@lists.xenproject.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 09/20] accel/tcg: Restrict 'icount_align_option' global to TCG
-Date: Fri, 24 Jan 2025 00:44:03 +0100
-Message-ID: <20250123234415.59850-10-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250123234415.59850-1-philmd@linaro.org>
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
+ qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org,
+ Richard Henderson <richard.henderson@linaro.org>
 References: <20250123234415.59850-1-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+ <20250123234415.59850-3-philmd@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250123234415.59850-3-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: y73rrse2CTNU
+X-TUID: XfU2DIR67Yhj
 
-Since commit 740b1759734 ("cpu-timers, icount: new modules")
-we don't need to expose icount_align_option to all the
-system code, we can restrict it to TCG. Since it is used as
-a boolean, declare it as 'bool' type.
+On 24/1/25 00:43, Philippe Mathieu-Daudé wrote:
+> Keep common MMAP-related declarations in a single place.
+> 
+> Note, this disable ThreadSafetyAnalysis on Linux for:
+> - mmap_fork_start()
+> - mmap_fork_end().
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- accel/tcg/internal-common.h | 2 ++
- include/system/cpus.h       | 2 --
- accel/tcg/icount-common.c   | 2 ++
- system/globals.c            | 1 -
- 4 files changed, 4 insertions(+), 3 deletions(-)
+I forgot to include:
+Reviewed-by: Warner Losh <imp@bsdimp.com>
 
-diff --git a/accel/tcg/internal-common.h b/accel/tcg/internal-common.h
-index d3186721839..7ef620d9631 100644
---- a/accel/tcg/internal-common.h
-+++ b/accel/tcg/internal-common.h
-@@ -17,6 +17,8 @@ extern int64_t max_advance;
- 
- extern bool one_insn_per_tb;
- 
-+extern bool icount_align_option;
-+
- /*
-  * Return true if CS is not running in parallel with other cpus, either
-  * because there are no other cpus or we are within an exclusive context.
-diff --git a/include/system/cpus.h b/include/system/cpus.h
-index 3d8fd368f32..1cffeaaf5c4 100644
---- a/include/system/cpus.h
-+++ b/include/system/cpus.h
-@@ -38,8 +38,6 @@ void resume_all_vcpus(void);
- void pause_all_vcpus(void);
- void cpu_stop_current(void);
- 
--extern int icount_align_option;
--
- /* Unblock cpu */
- void qemu_cpu_kick_self(void);
- 
-diff --git a/accel/tcg/icount-common.c b/accel/tcg/icount-common.c
-index b178dccec45..402d3e3f4e8 100644
---- a/accel/tcg/icount-common.c
-+++ b/accel/tcg/icount-common.c
-@@ -48,6 +48,8 @@ static bool icount_sleep = true;
- /* Arbitrarily pick 1MIPS as the minimum allowable speed.  */
- #define MAX_ICOUNT_SHIFT 10
- 
-+bool icount_align_option;
-+
- /* Do not count executed instructions */
- ICountMode use_icount = ICOUNT_DISABLED;
- 
-diff --git a/system/globals.c b/system/globals.c
-index 4867c93ca6b..b968e552452 100644
---- a/system/globals.c
-+++ b/system/globals.c
-@@ -48,7 +48,6 @@ unsigned int nb_prom_envs;
- const char *prom_envs[MAX_PROM_ENVS];
- uint8_t *boot_splash_filedata;
- int only_migratable; /* turn it off unless user states otherwise */
--int icount_align_option;
- 
- /* The bytes in qemu_uuid are in the order specified by RFC4122, _not_ in the
-  * little-endian "wire format" described in the SMBIOS 2.6 specification.
--- 
-2.47.1
+> ---
+>   bsd-user/qemu.h        | 12 +-----------
+>   include/user/mmap.h    | 32 ++++++++++++++++++++++++++++++++
+>   linux-user/user-mmap.h | 19 ++-----------------
+>   3 files changed, 35 insertions(+), 28 deletions(-)
+>   create mode 100644 include/user/mmap.h

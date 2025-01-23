@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485045njk;
-        Thu, 23 Jan 2025 15:44:39 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVsSMVsdXBfd466HHSYltUA0jFSCqEi3ibJdICrqKOQcOPlOAAnywN0W7pAag42tRy+jVvnx+45yhFb7w==@linaro.org
-X-Received: by 2002:a7b:c406:0:b0:438:9280:61d5 with SMTP id 5b1f17b1804b1-438bd06111bmr9679535e9.5.1737675878993;
-        Thu, 23 Jan 2025 15:44:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737675878; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485137njk;
+        Thu, 23 Jan 2025 15:44:56 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVbsLuOaZNN/aI1q08tVYtUUz9jj+pQCREalbYP2e1pVoPuok3fDTqi39hk8lqFh8mDtYUfaHxpTVHY5A==@linaro.org
+X-Received: by 2002:a5d:588f:0:b0:385:f220:f798 with SMTP id ffacd0b85a97d-38bf5655b12mr24360648f8f.6.1737675896146;
+        Thu, 23 Jan 2025 15:44:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737675896; cv=none;
         d=google.com; s=arc-20240605;
-        b=JfiE4nqHEpwjdShvNJzxdg60g4fXmiIspYPR9puA0wXlFfI1WxZJJLFskkme6QlR4C
-         5jCwAaEHx31NLh4QSqxPjoTnwQXGwyOM80vzOJV0OQVw1Z+zXG2EDqkJ0c+Fz/mrjShm
-         ZZ/0IXq2CkKZ5xpBccNnVrF1ZFOC1Ste0DVXbIkSqH4T8j2Ll0dmdjySBPf/S6zfi3Dn
-         6LfDv7CIFlF3ZXx3BNpp9lB0RbYpFwMfUrFQCfX3/u2H04JrNwUZRB2VmjurzxQyT6Wp
-         /fZCVblMb4QdPt1uGaESsw4kD/JZj5ozh5P+pyMVuOvahNb9p5Jdt7C8o+YRtGbbD3Cf
-         bqRA==
+        b=lpTgswD867uL1ApxO/ythITITuKmf5qxLpod9fK//hZnEmToaOuLA9jY12dX1SZw4U
+         syCP4AObxhuzIJUZxbXA8KZ3Zt1q4e5Px3q1kjX5zkzRUoGXC9OoiVb0URpa9nFSBehQ
+         3m+lRlV/kOkTRXXnWawvcS5COwqEtPaC2KiyOH4Ch0OFie+5v7bT55DsTWEJJc2AIXr9
+         Lnd8nSzQQ4JLQe+dmivc1PSv0Qm3j24KUu1zwoF6r3TfRAiF93NEZTpCR57eukOuXt92
+         gbbEoDpx39GaX+luRRdH+X+tJhEyGoLL1493vzFR5jGx37uHtdIuIjvasZVBeQJG+3bW
+         v+ZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=JSvw35u1c/GeD9pKIKqf6WHVcOBbPhJhoq/j5sOwl2I=;
-        fh=/4CtynsT9DKU3spzO88OVPuG+YBtb4pPMqWj6/qJarA=;
-        b=XcwVJ5ltZgipK2cP5d8oSKRm+GM9IVBvB6v748oto8gEJjK1I5oscm2yOc09nY4C8v
-         km47Td93wE8ZvFh1Ch1uciwLvbVxc13ivfmYMurM8XL0GwDENdU7isPNXSzUh/DYrMJP
-         tk6Ct9o5NJesK5SBXRywSXMoObg3Evlr7vNgGyEFyt0eFzkmnYEpO4YyFUVhibk/DIds
-         zV7oLVGBlbQuYZaC7GLkQmHzzA1skNt6sWtFakOoHye4+iF0nNjLW1hIaVbOxWeU12h/
-         TuRF6vVY81/kGfhLkorJ/jAj7JOhnQm3V12wajao6BbF10PdIACDickUNRY8koflJVFu
-         mUJg==;
+        bh=zgM0qO1a7TmnAaVr92PdlZQNV8dbDE9Lo8CXyhKvg/4=;
+        fh=oPT8ytaFj9XVz/G1TQ+861vwv7YcN8bzzng//wjWyew=;
+        b=ds9FbrWv7wf9o8FfbMpkjWlvkoGf6xXN5xDJ2e/DwBMUT9TFmz0ZWPdkL9/35Kk4f3
+         STFjY/Q24f/eGrVKlJgpgrgUZGXUWiTU+M334NBogyo4d34HV9KrjTNiwh7ipDZv/lQy
+         ol7hSiLM8rYsCoEn/4h3kNHCDiMJCU6Y31BYxZa9I1a9rRY44Sd4VaQBKdqC2/aPp94y
+         Liu9FUtDcjnfV+HT5/n10GilEH8XtF72vtNc0S1FN3jP2ytLBf70BLm+K6llOkUykgW1
+         NC/8grUht6dDDhLn8tFVLcmH+wBjHGYQg9OzHb44B1bkh+MxKYZCCQ8p0auNkgILjck2
+         u6bA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tgcxjZPF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LGbYGvwz;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-438bd4c84f0sor1511165e9.1.2025.01.23.15.44.38
+        by mx.google.com with SMTPS id ffacd0b85a97d-38c2a17da58sor275858f8f.3.2025.01.23.15.44.55
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 23 Jan 2025 15:44:38 -0800 (PST)
+        Thu, 23 Jan 2025 15:44:56 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tgcxjZPF;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LGbYGvwz;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737675878; x=1738280678; darn=linaro.org;
+        d=linaro.org; s=google; t=1737675895; x=1738280695; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=JSvw35u1c/GeD9pKIKqf6WHVcOBbPhJhoq/j5sOwl2I=;
-        b=tgcxjZPFDp7nVJkD9CXKJIw0mSvUZlSg6pUYI2UitNZENXk1v0rV1yxUQBps/U+CVt
-         6nMQS0ppPwmrIEwe9CzOu8fRAQv7XyBBxj7H3+cPuHMMQQakHT9mdBMBrGmehpmmzxUI
-         FIdTRj4EIiGwovEQqsB0yoJU+8xroQZodnRMNX0JpxIij7PiB+05Ds2IHAr97IjOjoBs
-         CO6QMvHb5wrH+SgvKxeyb9CNdRBoRaxBxhVyHQB94aesFtdEwrbbmUhKA6oZzt7hj1bO
-         wpOl+cS4VmJ3QcHFWv5BtDVM1zw00i6MJntfVyGtaHXJWhTUdtG478PSA6A4tShDuCFi
-         ZBTw==
+        bh=zgM0qO1a7TmnAaVr92PdlZQNV8dbDE9Lo8CXyhKvg/4=;
+        b=LGbYGvwzPeG/PLW/vf9kCpLOqSBsJFQd1qKYQ4TPpbQZU2NoUVs98xuOaE2UkGKEwi
+         reiS/fKQUiWttqGP8Dt92nQ6IlWMr0IwTHmBttIIat/y2v3lj+LoZ/Mqe5WSIz6TYHVk
+         /96jQ9cDi9J6I0mo/oBmRoggDC57dEnVF4ShTS2AhLQJOfiogwjB90FQ7Y8RcSwaCNVx
+         sg9Ku7Ylmk/YX+S2GHxBNL2HLgvU6AXSJ+7SIOXO1SJ5PumCYWVDUv6toop7A3Bhdx/t
+         kNqfUZcJDcy6d8FtndJFFVJyB+eQmjUKAdGY7WHVJyN/TfXkNaera5y43nvgcNpm32Jg
+         7zZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737675878; x=1738280678;
+        d=1e100.net; s=20230601; t=1737675895; x=1738280695;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=JSvw35u1c/GeD9pKIKqf6WHVcOBbPhJhoq/j5sOwl2I=;
-        b=lKYIzveYruK5VBE6NmB2/Qlh9En9RzM7cfdZEdBW1Y0TeuyKpfcv5E9l1UBvwDZcEC
-         jYcMKIse7I+oZh55iGJErqk5Tv4M2lh+ifgMP2X3lgnEawPndNLl6heRQwq9449qnCMM
-         3O1PUJtp+Zo+4oeEzHVUW4wqbfV0gJH+jAQ6OfFZaG18cmVHfQ9Q3zqqK6T5XFRco7g0
-         k3+/od/7QvtZc9VXMFNexyKDl8gycHfsZlMLLZzgLW2Q7K0tyscb8f9oKwp8M9tVInzh
-         FGquBag/HcMAKTzJQnRFh6TU3TNseWEmUqzSpgRvv/JhhAnBeeVIDqU24S1RNlYApkHz
-         yv0Q==
-X-Forwarded-Encrypted: i=1; AJvYcCVi/u4gUBaz8yb1mjm46YVa0pH2TrXiyQ7Y9IigewnQbp8N63LYrV9VuuE6dgvem9/taQltxumA2PiePw==@linaro.org
-X-Gm-Message-State: AOJu0YxzE7+Q7ofl9G/ScSRyF9yB0OpPGHWZLEj7mIf5VprsgagSjpmh
-	3tKcOBe6V2Wf5vvWORxbM0xJvDLtXW0sNCkE0uqEKCyb7DF2/x4QxI8z0ZuH0TewRw==
-X-Gm-Gg: ASbGncsgrQe7OM4cJ8cJqVNWzBDdu8MtPB465B5mgV/wvH7nk6DinPC8RKyO9BE7iO3
-	FL1Uej5gm+FlaONCoNrfP5DdPcTgxkKB0VjZe/4f2PKpKxUadap2uuOjhxPDiYSiKUusx5AhX/x
-	7u1pCVWzPYAveyjwaFOncuYx+BEJ3vMLuatHBloBh/TwFhuZPGksOIp24rHUzhiHz2H2Sk85dRS
-	D7oaQLltTSzW+VPEDHnH/+7dE9zqjfpuNtvugqFE9J2Lh8WNYTAWwDwPmPpNqvQUmdDBEJSzr8D
-	KwShA62Q/6l5zMxlyDw9SRifpnpI7F88GA9ynfAEYHuhPfB3Sp3E70P68+lOOWWVHQ==
-X-Google-Smtp-Source: AGHT+IGo8PNbuw90Bq4/JTfJj+icg7kmRyyI+cmqGdvUrpM4r/a237PZVlDOFDC6zvKvXQiH9M0QlA==
-X-Received: by 2002:a05:600c:3d05:b0:434:9e17:190c with SMTP id 5b1f17b1804b1-438b87f953fmr44596875e9.0.1737675878313;
-        Thu, 23 Jan 2025 15:44:38 -0800 (PST)
+        bh=zgM0qO1a7TmnAaVr92PdlZQNV8dbDE9Lo8CXyhKvg/4=;
+        b=kAWXSVm+W8TVkSAYq/lB3b4WWUZaNZ+qSjJ9Yr0LgdQe771bOmJQhGX6ONL7KfAs40
+         1MTV7lPwsA3LD2fI93+S5U2bMlAD8J6LaC7o9aArkR/cxCdBEJCdHnV+aiIq3XnQ+GLQ
+         SIWohJ5xRF+Iiut8iBrLyQXimCcemUmmTnMLbYT2vpbCIKaJgcxkv3Rpe8EqUpI54KGB
+         bxFTAtnJuZciZUpwyxrooBNbubxxc7+x4PwpLSFnmJmJOr+Y6GjI3GdzyUa7unvLNjWa
+         LcO6g6BSBzK6LDPeqRSSg2/RgaurxVutKn9n6DWHkmWpdebswLTwTCY3422A4yCWnwrV
+         RGtA==
+X-Forwarded-Encrypted: i=1; AJvYcCUq1/dJzeFxUN7kwfGv+jjcqr1XvF1mzgVvBdVzYXB7/9biTSpug94/B+x5vnZqbNx8HxB9NjbpacvRBQ==@linaro.org
+X-Gm-Message-State: AOJu0YwcjCB20HaWUpJ2GkR0twn9AQllJ5HojSreAX3k7agIumhHXUHk
+	8Q5DxeYXGwYdjIHqnUy6dHqcKmamja+CgzrqvRrpTb2LH8KhSxiGj3btghQP2VWS6Q==
+X-Gm-Gg: ASbGnctheEovaw1PygVEQp4BL1gqEQ2QqEwD2uw+5zICn28Ch9f/l40ldeedEGO8W+K
+	TYLquFvgRrkuHWYn6pFqA+XaBp0sVmEtVV8/JZw8HJDpf+70fz801eYcCiVcU7Bk31GG6Il2bun
+	YKw3nFYFmtg+p8BjRJAR8NnVgMYHkfGSswKKBR6VX6W6ZqTZEy/JY7WSAaRLQqONPONTxwGo+fV
+	zXXv+vaih3T2U1A2Pu5fTE7srA6dIQM+AMnvr8nevA3AZ759zIUSzKtsUfB2wFvQ0LqMl0K4jqy
+	1XEL+vPVbGD24WGvzxX8ER2uVpS8HCheDE8atyFvVVoJjmm21zazWv8=
+X-Google-Smtp-Source: AGHT+IFu3bGh+dR4gXvA0Xd23GoBCnM+yfw+G3EPNj4Vc2jg+fj1VnlHOFgKCDXygKj5XAozIyeBjA==
+X-Received: by 2002:a05:600c:a09:b0:435:9ed3:5688 with SMTP id 5b1f17b1804b1-438913f86dcmr267603485e9.18.1737675895459;
+        Thu, 23 Jan 2025 15:44:55 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd4857c3sm7081075e9.10.2025.01.23.15.44.37
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd48a94asm7141855e9.23.2025.01.23.15.44.53
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 23 Jan 2025 15:44:37 -0800 (PST)
+        Thu, 23 Jan 2025 15:44:54 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -95,54 +95,120 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	xen-devel@lists.xenproject.org,
 	Richard Henderson <richard.henderson@linaro.org>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 04/20] cpus: Cache CPUClass early in instance_init() handler
-Date: Fri, 24 Jan 2025 00:43:58 +0100
-Message-ID: <20250123234415.59850-5-philmd@linaro.org>
+Subject: [PATCH 07/20] accel/tcg: Build tcg_flags helpers as common code
+Date: Fri, 24 Jan 2025 00:44:01 +0100
+Message-ID: <20250123234415.59850-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250123234415.59850-1-philmd@linaro.org>
 References: <20250123234415.59850-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: X/ZIbaDMMwFb
+X-TUID: Q3x0i+YXuIV3
 
-Cache CPUClass as early as possible, when the instance
-is initialized.
+While cpu-exec.c is build for each target,tcg_flags helpers
+aren't target specific. Move them to cpu-exec-common.c to
+build them once.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- cpu-target.c         | 3 ---
- hw/core/cpu-common.c | 3 +++
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ accel/tcg/cpu-exec-common.c | 33 +++++++++++++++++++++++++++++++++
+ accel/tcg/cpu-exec.c        | 32 --------------------------------
+ 2 files changed, 33 insertions(+), 32 deletions(-)
 
-diff --git a/cpu-target.c b/cpu-target.c
-index 667688332c9..89874496a41 100644
---- a/cpu-target.c
-+++ b/cpu-target.c
-@@ -134,9 +134,6 @@ const VMStateDescription vmstate_cpu_common = {
+diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
+index 6ecfc4e7c21..100746d555a 100644
+--- a/accel/tcg/cpu-exec-common.c
++++ b/accel/tcg/cpu-exec-common.c
+@@ -18,6 +18,7 @@
+  */
  
- bool cpu_exec_realizefn(CPUState *cpu, Error **errp)
- {
--    /* cache the cpu class for the hotpath */
--    cpu->cc = CPU_GET_CLASS(cpu);
--
-     if (!accel_cpu_common_realize(cpu, errp)) {
-         return false;
-     }
-diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
-index cb79566cc51..ff605059c15 100644
---- a/hw/core/cpu-common.c
-+++ b/hw/core/cpu-common.c
-@@ -238,6 +238,9 @@ static void cpu_common_initfn(Object *obj)
- {
-     CPUState *cpu = CPU(obj);
+ #include "qemu/osdep.h"
++#include "exec/log.h"
+ #include "system/cpus.h"
+ #include "system/tcg.h"
+ #include "qemu/plugin.h"
+@@ -25,6 +26,38 @@
  
-+    /* cache the cpu class for the hotpath */
-+    cpu->cc = CPU_GET_CLASS(cpu);
+ bool tcg_allowed;
+ 
++bool tcg_cflags_has(CPUState *cpu, uint32_t flags)
++{
++    return cpu->tcg_cflags & flags;
++}
 +
-     gdb_init_cpu(cpu);
-     cpu->cpu_index = UNASSIGNED_CPU_INDEX;
-     cpu->cluster_index = UNASSIGNED_CLUSTER_INDEX;
++void tcg_cflags_set(CPUState *cpu, uint32_t flags)
++{
++    cpu->tcg_cflags |= flags;
++}
++
++uint32_t curr_cflags(CPUState *cpu)
++{
++    uint32_t cflags = cpu->tcg_cflags;
++
++    /*
++     * Record gdb single-step.  We should be exiting the TB by raising
++     * EXCP_DEBUG, but to simplify other tests, disable chaining too.
++     *
++     * For singlestep and -d nochain, suppress goto_tb so that
++     * we can log -d cpu,exec after every TB.
++     */
++    if (unlikely(cpu->singlestep_enabled)) {
++        cflags |= CF_NO_GOTO_TB | CF_NO_GOTO_PTR | CF_SINGLE_STEP | 1;
++    } else if (qatomic_read(&one_insn_per_tb)) {
++        cflags |= CF_NO_GOTO_TB | 1;
++    } else if (qemu_loglevel_mask(CPU_LOG_TB_NOCHAIN)) {
++        cflags |= CF_NO_GOTO_TB;
++    }
++
++    return cflags;
++}
++
+ /* exit the current TB, but without causing any exception to be raised */
+ void cpu_loop_exit_noexc(CPUState *cpu)
+ {
+diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+index 8b773d88478..be2ba199d3d 100644
+--- a/accel/tcg/cpu-exec.c
++++ b/accel/tcg/cpu-exec.c
+@@ -148,38 +148,6 @@ static void init_delay_params(SyncClocks *sc, const CPUState *cpu)
+ }
+ #endif /* CONFIG USER ONLY */
+ 
+-bool tcg_cflags_has(CPUState *cpu, uint32_t flags)
+-{
+-    return cpu->tcg_cflags & flags;
+-}
+-
+-void tcg_cflags_set(CPUState *cpu, uint32_t flags)
+-{
+-    cpu->tcg_cflags |= flags;
+-}
+-
+-uint32_t curr_cflags(CPUState *cpu)
+-{
+-    uint32_t cflags = cpu->tcg_cflags;
+-
+-    /*
+-     * Record gdb single-step.  We should be exiting the TB by raising
+-     * EXCP_DEBUG, but to simplify other tests, disable chaining too.
+-     *
+-     * For singlestep and -d nochain, suppress goto_tb so that
+-     * we can log -d cpu,exec after every TB.
+-     */
+-    if (unlikely(cpu->singlestep_enabled)) {
+-        cflags |= CF_NO_GOTO_TB | CF_NO_GOTO_PTR | CF_SINGLE_STEP | 1;
+-    } else if (qatomic_read(&one_insn_per_tb)) {
+-        cflags |= CF_NO_GOTO_TB | 1;
+-    } else if (qemu_loglevel_mask(CPU_LOG_TB_NOCHAIN)) {
+-        cflags |= CF_NO_GOTO_TB;
+-    }
+-
+-    return cflags;
+-}
+-
+ struct tb_desc {
+     vaddr pc;
+     uint64_t cs_base;
 -- 
 2.47.1

@@ -1,85 +1,85 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485137njk;
-        Thu, 23 Jan 2025 15:44:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVbsLuOaZNN/aI1q08tVYtUUz9jj+pQCREalbYP2e1pVoPuok3fDTqi39hk8lqFh8mDtYUfaHxpTVHY5A==@linaro.org
-X-Received: by 2002:a5d:588f:0:b0:385:f220:f798 with SMTP id ffacd0b85a97d-38bf5655b12mr24360648f8f.6.1737675896146;
-        Thu, 23 Jan 2025 15:44:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737675896; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp485173njk;
+        Thu, 23 Jan 2025 15:45:02 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWta9xKV7TsbyAdNIIPjF46G7ZEOvljK6QxjPdl8SImPh11aBiIgUVD49ojj0iCJ23TJcIWole2r2uzLg==@linaro.org
+X-Received: by 2002:a05:600c:1d07:b0:434:a929:42bb with SMTP id 5b1f17b1804b1-438913e2cbfmr285581825e9.18.1737675902513;
+        Thu, 23 Jan 2025 15:45:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737675902; cv=none;
         d=google.com; s=arc-20240605;
-        b=lpTgswD867uL1ApxO/ythITITuKmf5qxLpod9fK//hZnEmToaOuLA9jY12dX1SZw4U
-         syCP4AObxhuzIJUZxbXA8KZ3Zt1q4e5Px3q1kjX5zkzRUoGXC9OoiVb0URpa9nFSBehQ
-         3m+lRlV/kOkTRXXnWawvcS5COwqEtPaC2KiyOH4Ch0OFie+5v7bT55DsTWEJJc2AIXr9
-         Lnd8nSzQQ4JLQe+dmivc1PSv0Qm3j24KUu1zwoF6r3TfRAiF93NEZTpCR57eukOuXt92
-         gbbEoDpx39GaX+luRRdH+X+tJhEyGoLL1493vzFR5jGx37uHtdIuIjvasZVBeQJG+3bW
-         v+ZQ==
+        b=ZPQ6lHGt7/CSRcHv72vc9QTZdes5kbGIntEFGdDsq0XNrcUgAU5TJb4Ji5TtjdPF4l
+         /QSAQnNN3PVvUX/iAejXwWdRmblphvxEEqpd8G63cavNfoavo4iEIePksyzDzO3winNy
+         354LK5+HvrmQl2uD0vJj1PgeRGzilTQzKzPp+7ScIhDY47yUFXhZczmahTBFcL1j/XSL
+         QYInd3l/3AodHkdV2+VZuoIFwq52r1Sk0X78on0gOdpM4yDldaTe3qq7kwVPvj+pNCsT
+         4SYOi8lTRDGBx+98wL5ARxzRCy7eFLdMWXtCn1lVATIIsUImvfl5PrjsqY4KwC1GWsWk
+         Phpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=zgM0qO1a7TmnAaVr92PdlZQNV8dbDE9Lo8CXyhKvg/4=;
-        fh=oPT8ytaFj9XVz/G1TQ+861vwv7YcN8bzzng//wjWyew=;
-        b=ds9FbrWv7wf9o8FfbMpkjWlvkoGf6xXN5xDJ2e/DwBMUT9TFmz0ZWPdkL9/35Kk4f3
-         STFjY/Q24f/eGrVKlJgpgrgUZGXUWiTU+M334NBogyo4d34HV9KrjTNiwh7ipDZv/lQy
-         ol7hSiLM8rYsCoEn/4h3kNHCDiMJCU6Y31BYxZa9I1a9rRY44Sd4VaQBKdqC2/aPp94y
-         Liu9FUtDcjnfV+HT5/n10GilEH8XtF72vtNc0S1FN3jP2ytLBf70BLm+K6llOkUykgW1
-         NC/8grUht6dDDhLn8tFVLcmH+wBjHGYQg9OzHb44B1bkh+MxKYZCCQ8p0auNkgILjck2
-         u6bA==;
+        bh=b+Ptx+X+/4qytTYw1NRizSw3Es7j283R5duCMBs45So=;
+        fh=zesNmDxncvZpWK1wSdgQSbJtawpU3sAZ/uHH5v7OJGw=;
+        b=lvqtGW+Qw2XZYW8g1Ou5lir082ZlrCSuqAZeYalRrTK8HnnoBKbaXG2vwkQ6aK/JMK
+         zhX/lQW3aaB/0JBy9wYMAR5OU0MCDvDQ5dslj2TK4gDJ7NhPhXtcwgfZtRw9Dp0/fhEF
+         NAWZz98lvqr4cb48DnC7BoGXM9tOc49/IAS7s7v35qyCe9xxGLRJWlf+owGb1GnaDhOP
+         YwLK5CS1ts/PHYuecaH6X2qQ80et/R6aWUxFQHylYmmnvVFdH8LAFCWNYjdtliXMX3/z
+         pkI/yevSmhTYEMO/ZEyMrRQqgcZVR3aDDUj5pCL8ayUSfB/j2xWXYLvJlazJHNWqfLzz
+         3EkQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LGbYGvwz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FKmvsRzG;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <philmd@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id ffacd0b85a97d-38c2a17da58sor275858f8f.3.2025.01.23.15.44.55
+        by mx.google.com with SMTPS id 5b1f17b1804b1-438bd49f586sor1997535e9.2.2025.01.23.15.45.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 23 Jan 2025 15:44:56 -0800 (PST)
+        Thu, 23 Jan 2025 15:45:02 -0800 (PST)
 Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LGbYGvwz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FKmvsRzG;
        spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737675895; x=1738280695; darn=linaro.org;
+        d=linaro.org; s=google; t=1737675902; x=1738280702; darn=linaro.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=zgM0qO1a7TmnAaVr92PdlZQNV8dbDE9Lo8CXyhKvg/4=;
-        b=LGbYGvwzPeG/PLW/vf9kCpLOqSBsJFQd1qKYQ4TPpbQZU2NoUVs98xuOaE2UkGKEwi
-         reiS/fKQUiWttqGP8Dt92nQ6IlWMr0IwTHmBttIIat/y2v3lj+LoZ/Mqe5WSIz6TYHVk
-         /96jQ9cDi9J6I0mo/oBmRoggDC57dEnVF4ShTS2AhLQJOfiogwjB90FQ7Y8RcSwaCNVx
-         sg9Ku7Ylmk/YX+S2GHxBNL2HLgvU6AXSJ+7SIOXO1SJ5PumCYWVDUv6toop7A3Bhdx/t
-         kNqfUZcJDcy6d8FtndJFFVJyB+eQmjUKAdGY7WHVJyN/TfXkNaera5y43nvgcNpm32Jg
-         7zZQ==
+        bh=b+Ptx+X+/4qytTYw1NRizSw3Es7j283R5duCMBs45So=;
+        b=FKmvsRzGZdPbOKB6fCyP34bVviNBZ0WG3tXeq8ZJfksFdsEwcOFbGI2Pf3XpcuHqvg
+         oD7EBne4cTiNyqB3uDfm6wD/ECaWGZmr5idYmuCU/HMcQ+dt/6GIycgkSlZ98cR0BJEq
+         WLl9fQtnJQHvjvZVOe2vOG53nIjSTd58y/FTu3rd9DE7WD6q9m8Obe1s6AeLiLuSen4e
+         ZZzUH9rYgmGkfIvRdE8PCbDIkQjR6egdhUJG4AwCGKGpCuvFaJtY1tUXJsWr9QKb3VSD
+         aM/vaBQjLeaCYE3N7iLen4ZhPqMUEz3uFNEDVCMI87jGk9LysU8FThVWPxGgsCXe7fnN
+         wW1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737675895; x=1738280695;
+        d=1e100.net; s=20230601; t=1737675902; x=1738280702;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=zgM0qO1a7TmnAaVr92PdlZQNV8dbDE9Lo8CXyhKvg/4=;
-        b=kAWXSVm+W8TVkSAYq/lB3b4WWUZaNZ+qSjJ9Yr0LgdQe771bOmJQhGX6ONL7KfAs40
-         1MTV7lPwsA3LD2fI93+S5U2bMlAD8J6LaC7o9aArkR/cxCdBEJCdHnV+aiIq3XnQ+GLQ
-         SIWohJ5xRF+Iiut8iBrLyQXimCcemUmmTnMLbYT2vpbCIKaJgcxkv3Rpe8EqUpI54KGB
-         bxFTAtnJuZciZUpwyxrooBNbubxxc7+x4PwpLSFnmJmJOr+Y6GjI3GdzyUa7unvLNjWa
-         LcO6g6BSBzK6LDPeqRSSg2/RgaurxVutKn9n6DWHkmWpdebswLTwTCY3422A4yCWnwrV
-         RGtA==
-X-Forwarded-Encrypted: i=1; AJvYcCUq1/dJzeFxUN7kwfGv+jjcqr1XvF1mzgVvBdVzYXB7/9biTSpug94/B+x5vnZqbNx8HxB9NjbpacvRBQ==@linaro.org
-X-Gm-Message-State: AOJu0YwcjCB20HaWUpJ2GkR0twn9AQllJ5HojSreAX3k7agIumhHXUHk
-	8Q5DxeYXGwYdjIHqnUy6dHqcKmamja+CgzrqvRrpTb2LH8KhSxiGj3btghQP2VWS6Q==
-X-Gm-Gg: ASbGnctheEovaw1PygVEQp4BL1gqEQ2QqEwD2uw+5zICn28Ch9f/l40ldeedEGO8W+K
-	TYLquFvgRrkuHWYn6pFqA+XaBp0sVmEtVV8/JZw8HJDpf+70fz801eYcCiVcU7Bk31GG6Il2bun
-	YKw3nFYFmtg+p8BjRJAR8NnVgMYHkfGSswKKBR6VX6W6ZqTZEy/JY7WSAaRLQqONPONTxwGo+fV
-	zXXv+vaih3T2U1A2Pu5fTE7srA6dIQM+AMnvr8nevA3AZ759zIUSzKtsUfB2wFvQ0LqMl0K4jqy
-	1XEL+vPVbGD24WGvzxX8ER2uVpS8HCheDE8atyFvVVoJjmm21zazWv8=
-X-Google-Smtp-Source: AGHT+IFu3bGh+dR4gXvA0Xd23GoBCnM+yfw+G3EPNj4Vc2jg+fj1VnlHOFgKCDXygKj5XAozIyeBjA==
-X-Received: by 2002:a05:600c:a09:b0:435:9ed3:5688 with SMTP id 5b1f17b1804b1-438913f86dcmr267603485e9.18.1737675895459;
-        Thu, 23 Jan 2025 15:44:55 -0800 (PST)
+        bh=b+Ptx+X+/4qytTYw1NRizSw3Es7j283R5duCMBs45So=;
+        b=cGAYu9aywmco9ABMyuBUm1Of3gxa2megwOvBYcQM9re1Pqw40Oyl6PHQRIXTDfv8K5
+         L24tFFB08pNEjgNEadoyTumF81K8KIofA+49ad0HBONNSIUIM+8qARqAZmp0gmumIH65
+         VOaAR4x+U4CWnNbootGaHbBriMcOaXmjK3NoyyU9r8wcnqM+mf4yvJnixVAEUjVBY3vw
+         KnTQIGS0uZ8L4VN7VouhsIxtBA84cbUvwxzlddcx/KZ6Q2EW9SrkBUwRuctndNz4tQOI
+         /CrXAE4f2v3a+CHuQFGRzz3D9DalxcVC/2HUIyOemg1X4e4ixgHsmhbgEXZF/1fTYZCW
+         60mw==
+X-Forwarded-Encrypted: i=1; AJvYcCUKPYt4Ud1jLz1POguspO7v+lC2HCNqxFky0KImfgctHsCP3d1oErMNskBNtXdfe+ETCWdO4kFVFt0TUQ==@linaro.org
+X-Gm-Message-State: AOJu0YzhIvmz0oJ4CEDnwBg8aJzw1xIHcdCmC6MZw+5D2QC4IcwD7i4D
+	xzekFE6v0o/FAEGeNJpscn4kWibDb3Flmna3HA438xy1oelDbOa77eWaF3m6l/nYYw==
+X-Gm-Gg: ASbGncvEDuNQtfRi956bDAXb4fll0OefElntCMp0vnRFOrjbN6Mrx/R+WdXbf0fQFL8
+	7bUg5K9yLsiTmFd7WdRHROTt3z9yCxEOzrliHTbgAy5p4pKmurz6tEFTj5//yEr84MPeZWNggc6
+	MKE6i0N3PZ8+H5XOpeXfQ60QAY3YJMVoUosN4lqAXZN2nlkdAzGo/u75BGmT2cLrkvlpfP7oiy4
+	lXkOgjBmK7tU7JtLwv/Ulbkeh24Jvh7Z4R37lGHvE0vEp1GvDdQ/eqfkRY9PAysS9+vHcoBtjVO
+	JBZOjZ2aKtIgmXhg4dDeey3PBT0vW2GxGOpc/H9chWN4LwMp7faSdvw=
+X-Google-Smtp-Source: AGHT+IGYKHSOUWuv3Z35/L1kDcj+xko6P82ABEfwOu6IFt4mwFRNrLSNCMYz6YlSXtAKxKsobnoAmQ==
+X-Received: by 2002:a05:600c:46ca:b0:434:a367:2bd9 with SMTP id 5b1f17b1804b1-438913dfd7fmr310320675e9.14.1737675901922;
+        Thu, 23 Jan 2025 15:45:01 -0800 (PST)
 Return-Path: <philmd@linaro.org>
 Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd48a94asm7141855e9.23.2025.01.23.15.44.53
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd54c0ecsm6510925e9.30.2025.01.23.15.44.59
         (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 23 Jan 2025 15:44:54 -0800 (PST)
+        Thu, 23 Jan 2025 15:45:00 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -94,121 +94,115 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-s390x@nongnu.org,
 	xen-devel@lists.xenproject.org,
 	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 07/20] accel/tcg: Build tcg_flags helpers as common code
-Date: Fri, 24 Jan 2025 00:44:01 +0100
-Message-ID: <20250123234415.59850-8-philmd@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+	Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH 08/20] accel/tcg: Restrict tlb_init() / destroy() to TCG
+Date: Fri, 24 Jan 2025 00:44:02 +0100
+Message-ID: <20250123234415.59850-9-philmd@linaro.org>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20250123234415.59850-1-philmd@linaro.org>
 References: <20250123234415.59850-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Q3x0i+YXuIV3
+X-TUID: j7EGNsEFGYyx
 
-While cpu-exec.c is build for each target,tcg_flags helpers
-aren't target specific. Move them to cpu-exec-common.c to
-build them once.
+Move CPU TLB related methods to accel/tcg/ scope,
+in "internal-common.h".
 
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- accel/tcg/cpu-exec-common.c | 33 +++++++++++++++++++++++++++++++++
- accel/tcg/cpu-exec.c        | 32 --------------------------------
- 2 files changed, 33 insertions(+), 32 deletions(-)
+ accel/tcg/internal-common.h | 11 +++++++++++
+ include/exec/exec-all.h     | 16 ----------------
+ accel/tcg/user-exec-stub.c  | 11 +++++++++++
+ 3 files changed, 22 insertions(+), 16 deletions(-)
 
-diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
-index 6ecfc4e7c21..100746d555a 100644
---- a/accel/tcg/cpu-exec-common.c
-+++ b/accel/tcg/cpu-exec-common.c
-@@ -18,6 +18,7 @@
-  */
+diff --git a/accel/tcg/internal-common.h b/accel/tcg/internal-common.h
+index c8d714256cb..d3186721839 100644
+--- a/accel/tcg/internal-common.h
++++ b/accel/tcg/internal-common.h
+@@ -53,6 +53,17 @@ TranslationBlock *tb_link_page(TranslationBlock *tb);
+ void cpu_restore_state_from_tb(CPUState *cpu, TranslationBlock *tb,
+                                uintptr_t host_pc);
  
- #include "qemu/osdep.h"
-+#include "exec/log.h"
- #include "system/cpus.h"
- #include "system/tcg.h"
- #include "qemu/plugin.h"
-@@ -25,6 +26,38 @@
++/**
++ * tlb_init - initialize a CPU's TLB
++ * @cpu: CPU whose TLB should be initialized
++ */
++void tlb_init(CPUState *cpu);
++/**
++ * tlb_destroy - destroy a CPU's TLB
++ * @cpu: CPU whose TLB should be destroyed
++ */
++void tlb_destroy(CPUState *cpu);
++
+ bool tcg_exec_realizefn(CPUState *cpu, Error **errp);
+ void tcg_exec_unrealizefn(CPUState *cpu);
  
- bool tcg_allowed;
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index d9045c9ac4c..8eb0df48f94 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -29,16 +29,6 @@
  
-+bool tcg_cflags_has(CPUState *cpu, uint32_t flags)
-+{
-+    return cpu->tcg_cflags & flags;
-+}
-+
-+void tcg_cflags_set(CPUState *cpu, uint32_t flags)
-+{
-+    cpu->tcg_cflags |= flags;
-+}
-+
-+uint32_t curr_cflags(CPUState *cpu)
-+{
-+    uint32_t cflags = cpu->tcg_cflags;
-+
-+    /*
-+     * Record gdb single-step.  We should be exiting the TB by raising
-+     * EXCP_DEBUG, but to simplify other tests, disable chaining too.
-+     *
-+     * For singlestep and -d nochain, suppress goto_tb so that
-+     * we can log -d cpu,exec after every TB.
-+     */
-+    if (unlikely(cpu->singlestep_enabled)) {
-+        cflags |= CF_NO_GOTO_TB | CF_NO_GOTO_PTR | CF_SINGLE_STEP | 1;
-+    } else if (qatomic_read(&one_insn_per_tb)) {
-+        cflags |= CF_NO_GOTO_TB | 1;
-+    } else if (qemu_loglevel_mask(CPU_LOG_TB_NOCHAIN)) {
-+        cflags |= CF_NO_GOTO_TB;
-+    }
-+
-+    return cflags;
-+}
-+
- /* exit the current TB, but without causing any exception to be raised */
- void cpu_loop_exit_noexc(CPUState *cpu)
+ #if !defined(CONFIG_USER_ONLY) && defined(CONFIG_TCG)
+ /* cputlb.c */
+-/**
+- * tlb_init - initialize a CPU's TLB
+- * @cpu: CPU whose TLB should be initialized
+- */
+-void tlb_init(CPUState *cpu);
+-/**
+- * tlb_destroy - destroy a CPU's TLB
+- * @cpu: CPU whose TLB should be destroyed
+- */
+-void tlb_destroy(CPUState *cpu);
+ /**
+  * tlb_flush_page:
+  * @cpu: CPU whose TLB should be flushed
+@@ -223,12 +213,6 @@ void tlb_set_page(CPUState *cpu, vaddr addr,
+                   hwaddr paddr, int prot,
+                   int mmu_idx, vaddr size);
+ #else
+-static inline void tlb_init(CPUState *cpu)
+-{
+-}
+-static inline void tlb_destroy(CPUState *cpu)
+-{
+-}
+ static inline void tlb_flush_page(CPUState *cpu, vaddr addr)
  {
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 8b773d88478..be2ba199d3d 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -148,38 +148,6 @@ static void init_delay_params(SyncClocks *sc, const CPUState *cpu)
  }
- #endif /* CONFIG USER ONLY */
+diff --git a/accel/tcg/user-exec-stub.c b/accel/tcg/user-exec-stub.c
+index 4fbe2dbdc88..1d52f48226a 100644
+--- a/accel/tcg/user-exec-stub.c
++++ b/accel/tcg/user-exec-stub.c
+@@ -1,6 +1,7 @@
+ #include "qemu/osdep.h"
+ #include "hw/core/cpu.h"
+ #include "exec/replay-core.h"
++#include "internal-common.h"
  
--bool tcg_cflags_has(CPUState *cpu, uint32_t flags)
--{
--    return cpu->tcg_cflags & flags;
--}
--
--void tcg_cflags_set(CPUState *cpu, uint32_t flags)
--{
--    cpu->tcg_cflags |= flags;
--}
--
--uint32_t curr_cflags(CPUState *cpu)
--{
--    uint32_t cflags = cpu->tcg_cflags;
--
--    /*
--     * Record gdb single-step.  We should be exiting the TB by raising
--     * EXCP_DEBUG, but to simplify other tests, disable chaining too.
--     *
--     * For singlestep and -d nochain, suppress goto_tb so that
--     * we can log -d cpu,exec after every TB.
--     */
--    if (unlikely(cpu->singlestep_enabled)) {
--        cflags |= CF_NO_GOTO_TB | CF_NO_GOTO_PTR | CF_SINGLE_STEP | 1;
--    } else if (qatomic_read(&one_insn_per_tb)) {
--        cflags |= CF_NO_GOTO_TB | 1;
--    } else if (qemu_loglevel_mask(CPU_LOG_TB_NOCHAIN)) {
--        cflags |= CF_NO_GOTO_TB;
--    }
--
--    return cflags;
--}
--
- struct tb_desc {
-     vaddr pc;
-     uint64_t cs_base;
+ void cpu_resume(CPUState *cpu)
+ {
+@@ -18,6 +19,16 @@ void cpu_exec_reset_hold(CPUState *cpu)
+ {
+ }
+ 
++/* User mode emulation does not support softmmu yet.  */
++
++void tlb_init(CPUState *cpu)
++{
++}
++
++void tlb_destroy(CPUState *cpu)
++{
++}
++
+ /* User mode emulation does not support record/replay yet.  */
+ 
+ bool replay_exception(void)
 -- 
 2.47.1

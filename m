@@ -1,117 +1,243 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp64595njk;
-        Thu, 23 Jan 2025 02:52:19 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCWMDON1mgnbAVrsUpZ1UmT0RL34Tkk5kQ/FnJE+v2OekByXUMe6uXkxOx8acHj590OUbMFaBCtK/ZJz3w==@linaro.org
-X-Google-Smtp-Source: AGHT+IGFKU6c1/cAh7MRSZN8V32Ls2uhSMafQNR8P5q0lrtFa00wA+7FZtPblx599EwdpX1YcgsC
-X-Received: by 2002:a05:622a:87:b0:467:7401:ce95 with SMTP id d75a77b69052e-46e12a58fffmr403342281cf.21.1737629539036;
-        Thu, 23 Jan 2025 02:52:19 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1737629539; cv=pass;
+Received: by 2002:a17:504:17c3:b0:1be9:327d:8ee3 with SMTP id o3csp115797njd;
+        Wed, 22 Jan 2025 20:11:04 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCVsPGMi38BYg8f0z22HK0yohRR2JAXgdf9Gw0rc0rUN4ELL+lV94ftAQcejU0fiA0mWlgtON8v0xnaEPw==@linaro.org
+X-Google-Smtp-Source: AGHT+IFqabvzk1Lbsi3L8Yn5lw9Yz/p0v4g6kKPOAaWOmOYGVZmJf98I2+t0hwxuoJmylonweFEI
+X-Received: by 2002:a05:620a:bc1:b0:7b6:6e7c:8efc with SMTP id af79cd13be357-7be632797bemr3357400485a.44.1737605464414;
+        Wed, 22 Jan 2025 20:11:04 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1737605464; cv=pass;
         d=google.com; s=arc-20240605;
-        b=J0B4Rr8mX8SqNPmQvgq4R2yu02o/0Tbc+RCEyDVUGSCJYBT07SPhHYMDtCTw2Q417t
-         VwAGpuH5j4dRtZyi/7yQVDL2nBE09sz/3w9tRNzI2sMLt1fXhRHhYGka9uywtmGhtAp5
-         GBlVp94k6Qv3rIURn+PfDqc1Ju9gRUGq1uUheBBF+gOX3be+FCJcXq8yMu8nw+SA0GLs
-         CDUSMkcUdxNZDVQ9j/8OpPzQpwWidubuMzQHk88fBlTi77RQ5c6NP9O/99WhX2rgA8ko
-         pHdsI+aMZpSxsT59JCsxoeDok/1xVQNgAzXb8T0iUYwhjM4CvYES7zTH5iOdF8K9EdB0
-         fP9w==
+        b=lmvae/9xE7CKrLC2xHVN7o71xTT3jJs2IvbpSdLVyM55Nb5E2lMrahwwEKFhlhU6s6
+         hqtPUc71TsRoGkdIsNzcXEtZiHOVUFw9Op9X6v6Q1VAj1xpo4EVwfELFbtpVB0rHtiU/
+         tH/J8btw1YQ8cMJ6lRF6lbgyC227Xe0A96vKNeqN2YwL1P7DpxxcPWnoNfy/iSII9pZ8
+         07Z4szS6jj1w43pKwpjhS3ihNSVdDgVp0yYftlsztnY4ipIHGicmtFgWH2I39a1IE968
+         6phmD2I/o2WjOgtb8UVQP6Pn/FTDhbeFRixf5PQdN9gua4fN3hEvItpbQNnOG/viP6AV
+         9z8A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:list-unsubscribe
-         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
-         :subject:cc:to:from:date;
-        bh=SI9gplGhKHs3Rs+5j6Rnh3oilRXzKRv3zXvUyNUzsbQ=;
-        fh=WpSDcLP6FO2DmGFL17KedSbnYHzQLVBFiW9uatSOa4s=;
-        b=KsID4fcLvJ2i1SzJDDvPak2vmwQODZ0DVwBlkLlDJVClPj92Nd1wDuS0k7YIgWlnDl
-         N3osH6MFvYeDiV+sM0jjsFKfZkpp6gyiTtv7XmtowKcrVLZkt2ZlgBRMlBZdKH4i65ud
-         WpnRPMZaA+Kuf3HWezxFpBZHNvc0gJajVYC7ZLyPJb1x5zBN4qFxXYZQlTgMaeltPdL/
-         bytxVnPDSI6ZsEzfbabsmKiH2OQUcThPQMXZ4se9JPUuiFoEFPdO352Fr6GaEUHbixl2
-         k3NieKbPZanKFqKKmGE8sdq7RiCK020UXwuLpTs6nUNteZ7V39pNzMlQs6fC8LUui7NT
-         fzmQ==;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=/SckVeoF5BcZrsjOQoBHbFmTw8x0H/Y9GqZzXIcXO3E=;
+        fh=NeLAjp3gSzzkDJ3zFUh+e9xT2YRlAhUJ0Z0Z4DxiFuA=;
+        b=N6PCygtz8qnE2Au+JelmeldsxoljeM+c19/VweImQj5SRCPtIVSn/kdTVuCU8tdojQ
+         OglIvxPMjL/JHrDhD+Erh2Se1cm43ugJVkDLT4cD0nDQtYJqjiyUex/Nqj4PnvmoixG3
+         eYjmVOgTSV269H4PUpuEjokyPqxzpRUZaFmRG8yz3YDrwaAa7fhd807jsSFbvIKV4On1
+         4zPW0AKkOWeFuMO+wZneDsSuGapQJqDnyS7mGT4bglMVNs3otZuJIYmWnRYKgv33x40A
+         Gxb2UFkbFM/SLj6NTpNLm8YVAqodVaWhu2r1hz9ep86OojgJMQxzr4oHkIiJkFuyl5r+
+         BLnw==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-486547-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-486547-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
-Return-Path: <linux-kernel+bounces-486547-alex.bennee=linaro.org@vger.kernel.org>
-Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [147.75.199.223])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e1040a1cfsi187996031cf.233.2025.01.23.02.52.18
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=ep1amcFM;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id af79cd13be357-7be614bfcdesi1723219485a.292.2025.01.22.20.11.04
         for <alex.bennee@linaro.org>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 23 Jan 2025 02:52:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-486547-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) client-ip=147.75.199.223;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 22 Jan 2025 20:11:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-486547-alex.bennee=linaro.org@vger.kernel.org designates 147.75.199.223 as permitted sender) smtp.mailfrom="linux-kernel+bounces-486547-alex.bennee=linaro.org@vger.kernel.org";
-       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=QUARANTINE) header.from=huawei.com
-Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ny.mirrors.kernel.org (Postfix) with ESMTPS id C15E816D375
-	for <alex.bennee@linaro.org>; Thu, 23 Jan 2025 10:52:17 +0000 (UTC)
-Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0E94D20DD64;
-	Thu, 23 Jan 2025 10:52:15 +0000 (UTC)
-Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D352D1C5F14
-	for <linux-kernel@vger.kernel.org>; Thu, 23 Jan 2025 10:52:11 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
-ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1737629534; cv=none; b=Dh6saJX463sT7efHWFedwi0QitT8XDM3Xbo4fo/xp9QglDrHIWd2XaAcgIKnNe9vyNcvc8XPgV+7fjbjHL60xo4wdpAe+Ev2BzdKOt6FFmyjrECmjeUE9dmXzTQPiTNqwJYzN7ZpP0SliIkzqx+9MU+Q/iF59tyIYimqsrb3gPc=
-ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1737629534; c=relaxed/simple;
-	bh=MNzOwmmdcXiJ5a9nfR2h/SLjJkFy6wLbqxPlWpv8uD0=;
-	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=YjDiQFcAKASDPNxI+1pKx5IcPnl4UyWMVHPPLp5221f2LyeEVwBdj7wKIJfrp+Tv/7bptWuVt7B0BdemIH+xu5dgGWJqMbUw/4uGf27l5Kx1yO4Jr5MN90tRyV3NAkz0SAgOzY8ipluxpbCNBiNWbglABJkfnpglhaMTcSlYmUM=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
-Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
-Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
-Received: from mail.maildlp.com (unknown [172.18.186.216])
-	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YdyQD4Rsmz6M4Tp;
-	Thu, 23 Jan 2025 18:50:12 +0800 (CST)
-Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
-	by mail.maildlp.com (Postfix) with ESMTPS id 93D43140119;
-	Thu, 23 Jan 2025 18:52:09 +0800 (CST)
-Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
- (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 23 Jan
- 2025 11:52:08 +0100
-Date: Thu, 23 Jan 2025 10:52:07 +0000
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-CC: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
-	<mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>, <qemu-arm@nongnu.org>,
-	<qemu-devel@nongnu.org>, Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=
-	<philmd@linaro.org>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
-	<gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, "Marcel
- Apfelbaum" <marcel.apfelbaum@gmail.com>, Peter Maydell
-	<peter.maydell@linaro.org>, Shannon Zhao <shannon.zhaosl@gmail.com>, "Yanan
- Wang" <wangyanan55@huawei.com>, Zhao Liu <zhao1.liu@intel.com>,
-	<linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 05/11] acpi/generic_event_device: add logic to detect if
- HEST addr is available
-Message-ID: <20250123105207.00004d76@huawei.com>
-In-Reply-To: <556c19c1f3fa907c6cc13b62e060f6baa6faf2cf.1737560101.git.mchehab+huawei@kernel.org>
-References: <cover.1737560101.git.mchehab+huawei@kernel.org>
-	<556c19c1f3fa907c6cc13b62e060f6baa6faf2cf.1737560101.git.mchehab+huawei@kernel.org>
-X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
-Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=ep1amcFM;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1taoYD-0007yc-2z; Wed, 22 Jan 2025 23:10:41 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1taoYA-0007yD-Bl; Wed, 22 Jan 2025 23:10:38 -0500
+Received: from mail-bn7nam10on20609.outbound.protection.outlook.com
+ ([2a01:111:f403:2009::609]
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nicolinc@nvidia.com>)
+ id 1taoY7-0001Df-VD; Wed, 22 Jan 2025 23:10:37 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=l9VfQaGrnLiIrRmlRZ6ZI8cCw/cFLGaOL3krdLQ0sx+ayv4MT5S9eWXQbxYlIcVrM7+y/efJGxJLXWZHQ17HKiiWRsYsQejjgb/137kx9ho99MRNl8pkCWC2Z7dCCMybyVY31wNl7PfZBxQJgw4fmmswIN57HGMDQFvS5wI0p2H3G0kbmgLSDKyPHjZlNjybBnJNr6n44i1T4oOUV6nhlztmzwo2mejhYhZI23Wc1RfjNMBGZW/jHcHLE35wFYJUwbfQIlumzshzj0gKWyxQ4Lh5hEsE0wZV0OIVXjHSpMHtMaP1gufM9XylC9SZaX5z/9RBLhqyZlcpZXDI2LrbHQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/SckVeoF5BcZrsjOQoBHbFmTw8x0H/Y9GqZzXIcXO3E=;
+ b=l09BgVw7BwbHtupd922IurrKlvGMa2jDgV+LQD9dDezYyM8Oqyb7uBlzw7ygePEswh8WsCP9o5tOCwprEafauU6sPLOJS3D5T7SNRID9vjNRBKtHP/LEgyETzd/uP4kRCJg6gJwTyHli7cpWbeusz8n1+nuihBqvTdQG3ZxjAzUocF1LlmgvVf5twoOoi6K5P5DP/4Ue1oxNvYzJEdySZhaDtVIYzzypdt10kfZJFsEhHso00WmvQQ1FmBLpINLa4OZ+dhqSs/ZLHQr+MgG8ofI24J/VWQP8eWNBvkQcq2pTZL++QLks+fbQB/w/Orb6D87gU9MjJRrklWafCOrJ9w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=redhat.com smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/SckVeoF5BcZrsjOQoBHbFmTw8x0H/Y9GqZzXIcXO3E=;
+ b=ep1amcFMQvNfWPWQB1Tryqfl0am9y/w9JOuPmIh3kMgtEGP15tmUYvoY/gqrUSF5N1VNLdwsGjHIbwK1xZgFVp3HL/EXW294giBKTVTUNaWxT+HYrwy5ejf4lwj9vcbTGpmqcyx6FqOUT9box0OvUwt63DYVLsc6g9kurNsjZ8TSApd66IPMNsaHJBy2i3Or2OSHywFVn6iIDxY8p9ilN+wcw12WpEasA89woc4E9/3UUeqig8l3e5CPKVbYlggmtUQsbMHveYnfvFGr1rb0IS/s/T5nwghGnURB0rzr3SYYLn29yLKlmgB8nOClNkq3GqThPCodKwqaLCIATjF+yQ==
+Received: from CH5P221CA0004.NAMP221.PROD.OUTLOOK.COM (2603:10b6:610:1f2::20)
+ by SA3PR12MB9179.namprd12.prod.outlook.com (2603:10b6:806:3a1::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8356.21; Thu, 23 Jan
+ 2025 04:10:30 +0000
+Received: from CH2PEPF00000147.namprd02.prod.outlook.com
+ (2603:10b6:610:1f2:cafe::45) by CH5P221CA0004.outlook.office365.com
+ (2603:10b6:610:1f2::20) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.8377.18 via Frontend Transport; Thu,
+ 23 Jan 2025 04:10:29 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ CH2PEPF00000147.mail.protection.outlook.com (10.167.244.104) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8377.8 via Frontend Transport; Thu, 23 Jan 2025 04:10:29 +0000
+Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 22 Jan
+ 2025 20:10:17 -0800
+Received: from rnnvmail204.nvidia.com (10.129.68.6) by rnnvmail202.nvidia.com
+ (10.129.68.7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4; Wed, 22 Jan
+ 2025 20:10:16 -0800
+Received: from nvidia.com (10.127.8.9) by mail.nvidia.com (10.129.68.6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.4 via Frontend
+ Transport; Wed, 22 Jan 2025 20:10:13 -0800
+Date: Wed, 22 Jan 2025 20:10:12 -0800
+From: Nicolin Chen <nicolinc@nvidia.com>
+To: Donald Dutile <ddutile@redhat.com>
+CC: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Jason Gunthorpe <jgg@nvidia.com>, Daniel
+ =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>, "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ jiangkunkun <jiangkunkun@huawei.com>, Jonathan Cameron
+ <jonathan.cameron@huawei.com>, "zhangfei.gao@linaro.org"
+ <zhangfei.gao@linaro.org>
+Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+Message-ID: <Z5HBJOgO4tUJApY+@nvidia.com>
+References: <20241108125242.60136-1-shameerali.kolothum.thodi@huawei.com>
+ <Z1wh69_gZ9izr1iU@redhat.com> <Z1wsslDnwlth3A8+@nvidia.com>
+ <CAFEAcA8TW2RKyFnh-TZRpfaKfZipHD5TZy_hymUr41GJ4rs4xA@mail.gmail.com>
+ <329445b2f68a47269292aefb34584375@huawei.com>
+ <Z39Ugx2M+FRFVVpB@Asurada-Nvidia>
+ <568014f5-25fd-439b-b70c-9cf50f31255b@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: lhrpeml500010.china.huawei.com (7.191.174.240) To
- frapeml500008.china.huawei.com (7.182.85.71)
-X-TUID: 2RjveT5QdjPK
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <568014f5-25fd-439b-b70c-9cf50f31255b@redhat.com>
+X-NV-OnPremToCloud: AnonymousSubmission
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH2PEPF00000147:EE_|SA3PR12MB9179:EE_
+X-MS-Office365-Filtering-Correlation-Id: 15b0a5e8-acb7-4919-57d4-08dd3b63dfbb
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|36860700013|82310400026|1800799024|376014|7416014|13003099007; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?iqzEsC+ADXs9ztn7UflCZd4mgzOGOqBLQMqo5Kay0pbb2pPh5GidfTlHbvm5?=
+ =?us-ascii?Q?nTRdGU5yiNQoTgEGx68PnTtZ5OZfWH999/lPNcI+9ryEt04HMzO7QSEvtyql?=
+ =?us-ascii?Q?q8scPv3WD2nZBHv1xuKSZdgxlK1cGVREJPTdCbpL9GUS9/EoGwiHN5DijOSp?=
+ =?us-ascii?Q?wktYyCSZP/wv1zpyykHr49FlnofeuKLjMpyJQkMourjks/70BF+nELuwrz+9?=
+ =?us-ascii?Q?g1bHFdNP8jZdDXE62hdV2aEyiffJcdV2bxpgMyL8KYFoRH+cbStSw4x1QbQd?=
+ =?us-ascii?Q?Jbg8VUA9h4RBtQiKVyooKdd8SwYGvISJoNEZaLe08bAfTBjiKE1MklM/d79C?=
+ =?us-ascii?Q?X/b1uE7GJ8xuJ+RLUL/Ufle7OQx48HpuV0ekk8YQPX5Mr40h1omQ/AkjSP/l?=
+ =?us-ascii?Q?ldP6TtQH9BLECwGh8x2C6v8NfNeMdJUJ+POHiBR9tV3bFOnwK5E3bMIGkMMu?=
+ =?us-ascii?Q?N3uixonut4kNei5d1cXlMFhLV1ZvAMQWjxpw5MhfI134J1wmuIuohRpDGl7R?=
+ =?us-ascii?Q?A2nEbL2qTszk5LT2xVtKRkHndPSW+GqylTvRjFHsukrFx0QV86gdfnI/SNuY?=
+ =?us-ascii?Q?y6Y5Rtt3B8d8fwEN4HMbZ2q//PPzzMoWRUy612HrrC+E+7OrvbG0/uVEbiK9?=
+ =?us-ascii?Q?oiQ4BjbgSA2JpKrn14WiTd9jeiO5dkClfoiG6Ju7VWILAfIoIrpf4Sm+g2lt?=
+ =?us-ascii?Q?x+qrLFHemi2vj57pjEE1zkNxspKcniRBwkNkuapH3ElK7kFzt1vvHCOvVmDn?=
+ =?us-ascii?Q?MZPfwElNrcnNuPvEJkSTjZmtFoIBUqJqU5o5JXHVKTMNIbH/U8ltCcfbr0R+?=
+ =?us-ascii?Q?ulv2O0GLq9NumZMD8AKJB9k2qDdrsd4t3q/h5sJAAjJq4EdQb3WWkgL+YE2f?=
+ =?us-ascii?Q?2eI3KrYikDZ0Ns/c9aR5LobYIJ38GuRJvyrsvpiUPHEzG6eFJ6ZrE+RO30TA?=
+ =?us-ascii?Q?O309rUI9oAqBJFQk8zh2FpQcqgoeRQJtxkMHSxANj3rhjnVqIEUm8+tICB40?=
+ =?us-ascii?Q?J7TrKLsJOu+810K5aoxk08h5ThfAKbZwViJLPUHWAMoJjsLQmnPldzL/oflX?=
+ =?us-ascii?Q?Tln2So8PU4MeZ3pPcOYgOBoRQSdbqzqxvdZL5EF91nPYnIMaOj6qZF2RbRPq?=
+ =?us-ascii?Q?xQQce3cqyUG0g8Uu++vKKeW2XKS6MWOlHiBXldIt85onrD3vq35Xb57ItfVx?=
+ =?us-ascii?Q?7OylDLNIU/hhF9tsAKVgm3/m/QodrsUmxPwry0rMEQpZuGndwfChZ8QbshXg?=
+ =?us-ascii?Q?zbVgLrw//d9+64tw3Kt2WmVGWlkATxWFc5SbS8kYcvMVW5l0ZKgKDk1J91tC?=
+ =?us-ascii?Q?9OkGaJ2jpGB/4jNZlgbPJSYTaSfOCg3bJKaYRrzr5Ux2pBt4nPhnAunCBT0K?=
+ =?us-ascii?Q?8LJMsm/u0mRkN7ydLYr5PXvP1aVr4wdoC3ajm7MJq7sTD8V8xHxXG+eXZ1qk?=
+ =?us-ascii?Q?A1ZdOD4hpHGVD93Y3+AsI6WPdgqi+nG1tsSQQDRAEvsGJ3m82p+QeaRD1CZW?=
+ =?us-ascii?Q?H1zhvLt3A1E8zLY=3D?=
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(36860700013)(82310400026)(1800799024)(376014)(7416014)(13003099007);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jan 2025 04:10:29.6313 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 15b0a5e8-acb7-4919-57d4-08dd3b63dfbb
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: CH2PEPF00000147.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB9179
+Received-SPF: softfail client-ip=2a01:111:f403:2009::609;
+ envelope-from=nicolinc@nvidia.com;
+ helo=NAM10-BN7-obe.outbound.protection.outlook.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: qD94ey2WNL0a
 
-On Wed, 22 Jan 2025 16:46:22 +0100
-Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+Hi Don,
 
-> Create a new property (x-has-hest-addr) and use it to detect if
-> the GHES table offsets can be calculated from the HEST address
-> (qemu 9.2 and upper) or via the legacy way via an offset obtained
-> from the hardware_errors firmware file.
-> 
-> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+On Fri, Jan 10, 2025 at 11:05:24PM -0500, Donald Dutile wrote:
+> On 1/8/25 11:45 PM, Nicolin Chen wrote:
+> > On Mon, Dec 16, 2024 at 10:01:29AM +0000, Shameerali Kolothum Thodi wrote:
+> > > And patches prior to this commit adds that support:
+> > > 4ccdbe3: ("cover-letter: Add HW accelerated nesting support for arm
+> > > SMMUv3")
+> > > 
+> > > Nicolin is soon going to send out those for review. Or I can include
+> > > those in this series so that it gives a complete picture. Nicolin?
+> > 
+> > Just found that I forgot to reply this one...sorry
+> > 
+> > I asked Don/Eric to take over that vSMMU series:
+> > https://lore.kernel.org/qemu-devel/Zy0jiPItu8A3wNTL@Asurada-Nvidia/
+> > (The majority of my effort has been still on the kernel side:
+> >   previously vIOMMU/vDEVICE, and now vEVENTQ/MSI/vCMDQ..)
+> > 
+> > Don/Eric, is there any update from your side?
+> > 
+> Apologies for delayed response, been at customer site, and haven't been keeping up w/biz email.
+> Eric is probably waiting for me to get back and chat as well.
+> Will look to reply early next week.
+ 
+I wonder if we can make some progress in Feb? If so, we can start
+to wrap up the iommufd uAPI patches for HWPT, which was a part of
+intel's series but never got sent since their emulated series is
+seemingly still pending?
+
+One detail for the uAPI patches is to decide how vIOMMU code will
+interact with those backend APIs.. Hopefully, you and Eric should
+have something in mind :)
+
+Thanks
+Nicolin

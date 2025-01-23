@@ -1,125 +1,111 @@
-Received: by 2002:a17:504:17c3:b0:1be9:327d:8ee3 with SMTP id o3csp150905njd;
-        Wed, 22 Jan 2025 21:49:35 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVTqsgxn2Kouhd80lcnf8Tq7y3w0NeEoZyNO/vdxNkjdjyaQZtr0SbZj7RloG0j3DT4Fz/XmZ4ddZVsXQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IFDa3vRzlJre+Je9aUNtFiosuk2G1uU/nbGcZY3Lo4saDaU8zQfp3fU4hKLx7PFxeVk6uAk
-X-Received: by 2002:a05:622a:211:b0:466:a93f:c1c9 with SMTP id d75a77b69052e-46e12ab7ce5mr310186711cf.24.1737611375290;
-        Wed, 22 Jan 2025 21:49:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737611375; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp64924njk;
+        Thu, 23 Jan 2025 02:53:09 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUE0iz5HpXPzv7pM+1sL2dbxL6SKNUNzpZvlqxn7LoKbdUBMhcBzDRUpxTNDW5/k6J04SSjoF5wF7liqg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE/mtrLMTlmOYp6GMJbkDaEpGK2LEUNG/p4GTo/YFXA+RJ0lcWm1/X01N2eX/K6tye+6th6
+X-Received: by 2002:a05:622a:15c9:b0:46c:769c:53ab with SMTP id d75a77b69052e-46e12bdd9e3mr367633731cf.47.1737629589558;
+        Thu, 23 Jan 2025 02:53:09 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1737629589; cv=pass;
         d=google.com; s=arc-20240605;
-        b=EzC0ADy8XmtsQZGV0WklNMQyyOCouXR2fMtgriM35D4lQ0VI2aJxpUQEX16REHb+zi
-         S6kR7HyOeB1e5anRWyeSgXtfwW0bLigjkQzGADiFNos7i/aIQjLikcHQTEOEl8cmuNF0
-         Jwkv7deNvQFcgU0G/Hg1rVQCQzbZNTHhasECX8M/uRSKPQC+CccFAGsWA5TMWGG5ba6f
-         c9ZT4xDRYLhv8sspW8SdZF8Za0DpsuECKq9sRKJ0mEYRVs8mqUp2Ir1oQV1yn8y03zTR
-         wWD0MiTYHcJWNYzhHrZUr7qSEViN41DAwClyoLs89cklxPE/wc+1/PXLRKnplM1jthFP
-         RZBQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :content-transfer-encoding:date:to:from:subject:message-id
-         :dkim-signature;
-        bh=/QYBajY9BTaw503gA+cHOREv391UTeiFvnlGxwD3qRQ=;
-        fh=DBwo5oYV+Zl89FPcGyBzo6mnqwnGCoM6YpiQGc4/RNc=;
-        b=bmbGiumecEWDe55QBr2EpymxgaxpNXNPG+oEuL1Voh/ICSx5QGXpo66FPz9N9uPGXk
-         FhgybwKaUVGMakGZ8Fg9HFUwdmGttEBSt/CHyiSr3fzoSog0F2aYl4tyBEYegNu+vjAK
-         W3tvBX6tlX1vmRPNSHBDYBcWWSI2bcVt1GgBinwzS/wH1PgWVYzEZnYlAHqMilHHtpdr
-         FiivQZLAOkSjCY/i2XRRAIEhnYMEzpTORDLYREtKecdjwcA9N2+B/IGSL0+HqMljPg2e
-         L1C2DRgHO45DtvNTVX4WX5NJ5Bwx4+gIGFNZb1+604gohB7C1gY40IwxcCDbKZ2p/yu/
-         oSiQ==;
+        b=R2OtWBjL+AnhWPCwsYIim0WbpiWxSDHqT8iLna5X/z/hbsUla6fIfBSmEO08H8GhUO
+         qNo8yBB99lUGqWXda84TdMVD+i3itLH7xOBXHZPRR2fB9bBi633VWdP6lnt0Y5eCuqFW
+         o2iTO5Bfxp3czfPd40jNSK5EixjJY8BJKzFfoeGI4NMYeAak6VP3yMvmmgd6tTLPPVCJ
+         LlTkcV+IYN81rsZuGY+u+5dM1Z5IlwtaSThX+o1NYpibtqsJpSH5uXwvHfUYtH88HkCg
+         PKNhw7dapvlpCEa+sJxTUufCj8T/wXwgyf0ZAFy2gS3kvfRGcizb/Dmt/xqVNj/MGIKo
+         MaFA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:in-reply-to:message-id
+         :subject:cc:to:from:date;
+        bh=aNbu+LfTb/oUtz29A3h3VoF1EgiIWVJhl6QDn+5Wrjc=;
+        fh=DjfmP4GuGmv+HIZ6mSuNbs+OASAdIuzO7/WHsW02d/E=;
+        b=hPLAjEc2GaqUwXXo0HaFzX7A+Xib9XG6hgwL/Hm60tfSu6SmO3FoGt7LywumqyB+VG
+         vXcWbJ2AM59rSlOLQD2ea+yjxI2xvSUGBtZDBsVNR28+YG1cvzVfkjmQdrACnbUL7cp2
+         4K5NfWRnrkya5E/EJGtmeVmJNBCEY3/7kWJegrE1Z6+Zlw9ZlmNkD6b1k6bPtChxt7Wb
+         VVsZb9g8elRTqYmjKo8PW1fc/5xFKBdw4eNd+yf+CoYzGQAI/k2B3JwZImOL2i25zEaI
+         7qu7CvOGMoNZmzXDPqMdpAZkxe9enrSo/+ME6aWYOJnZFyD5CBew3l9ckJWln43+D9vN
+         JLLg==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@qq.com header.s=s201512 header.b="Nrcndz7/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=qq.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e104bc767si162394901cf.652.2025.01.22.21.49.35
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-486549-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-486549-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Return-Path: <linux-kernel+bounces-486549-alex.bennee=linaro.org@vger.kernel.org>
+Received: from ny.mirrors.kernel.org (ny.mirrors.kernel.org. [2604:1380:45d1:ec00::1])
+        by mx.google.com with ESMTPS id d75a77b69052e-46e104589c5si188536291cf.404.2025.01.23.02.53.09
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jan 2025 21:49:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 23 Jan 2025 02:53:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of linux-kernel+bounces-486549-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) client-ip=2604:1380:45d1:ec00::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@qq.com header.s=s201512 header.b="Nrcndz7/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=qq.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1taq5o-0001IH-6r; Thu, 23 Jan 2025 00:49:28 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yfliu2008@qq.com>) id 1taq5n-0001I8-1Y
- for qemu-arm@nongnu.org; Thu, 23 Jan 2025 00:49:27 -0500
-Received: from out203-205-221-192.mail.qq.com ([203.205.221.192])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yfliu2008@qq.com>) id 1taq5k-0003nZ-S8
- for qemu-arm@nongnu.org; Thu, 23 Jan 2025 00:49:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
- t=1737611359; bh=/QYBajY9BTaw503gA+cHOREv391UTeiFvnlGxwD3qRQ=;
- h=Subject:From:To:Date;
- b=Nrcndz7/MJJYT2oP/l2TSc7XX3MXGRBy1aPWJTxboMgKLCXBv34uMMJGyiNg6lyiQ
- 6oGbqSWNBCqtUv1uI8wVgypv2Qjiew2yTS6YH0D4HLAKmYy97VQe+gkogkjhxD/7Fh
- trFROo/i8NxGWqbR//3NeoSYVOuvkKdPqsJuX/IQ=
-Received: from [192.168.1.13] ([171.213.188.20])
- by newxmesmtplogicsvrszc13-0.qq.com (NewEsmtp) with SMTP
- id C5137ABE; Thu, 23 Jan 2025 13:49:17 +0800
-X-QQ-mid: xmsmtpt1737611357t1my395v9
-Message-ID: <tencent_2854A5A8D69091F0E7ABFD16C824DDD11E09@qq.com>
-X-QQ-XMAILINFO: NcC2/Q4ACKgy0nHzqWsNzJi3uP80zPhfDOGK5tD1aVUiARSiJey81WlRmRcq/Y
- 1Yu/zHqI/kMqZ9eXYqNnshhTjy3iDE3U6xBlId2U46oiJ3yf29XaGqhOf6hLyFKipXws5Uuc9val
- oWuM7z/L24s4FGQJ1nWNvmdzeZx1b2YV5qSRYvYU4N20N58K51r0IIIw6WERoUFjZ4+jLv5C0iyp
- 9oERfcdeEmkIZ8mgnCVtlwyTIS/pDfBhkE35chsXpUFLX3Kzc9du1tbBpx3umQ6OwJ6vpMUxvBb3
- yPo3j9crl/2zrSKysrP+lurLQpP8rsJOwtgJQdD/o/OJV8txhPetQ2pT5jP9B/zhMIRkCM8lPCVO
- WK1w1iGun11bRYUTpklBgbKsHhOPjyXfkrU7Dtv9szoa0MZnqkrreT8H47cuY05I8E2Gb9BY5R9a
- h7bkh4Z2suddcgbthgP/TKnu9x5czEYjywO1jUZXE6MolzPFTK+QrzIyUSRL5t+Vmzhfs/lNQXMx
- +5z3uuk2gTxZySRgu3/Y5Fg973f6TjoMSxqHvZilT9aN7kKeTqmULUSBzTE7rIcS6gnRyqIQ0UHT
- JWgAFJ817xiwBv7q7kLVFZKD2MjTkx1zvfTikcUy4CLCmNruwpL8uyWAHgKez0DNJtGR/jEJxgeV
- 3vSCrrmpiYkP9+xGvTpj24BekEyRkOXdH0upirrRZzChS1mKTvcwJ2Rdy4IXX6qrrRTIUG3DQ9lC
- 2XB80UAah4+dwE73BaiyfRXhFt2QEeSk3bTqoX43MtfpmAghEH8yeqTErfWJSvP1ts9JOukf3uLh
- 082aprU9Zws4UAjEizsfCgzShETtvVLH3hXCPGW+ge8RAtVLLUpQqDuGgW9ehoySvbFXFLiwDaqp
- Ea3QhTDIal3tVpo/KqXHfOA6X1sg56gbDNUKBupt+dDYybxrCPysHghAKW0XMAA3b1QDTKYFRzhW
- 0VHgM16zK/LxvizUzSYHPwauOXAlNYAQFMoirVrHyLdFxnpw0iPBKkuiiPeRGCBiJP2REzK/uW9B
- VVEvjZzg==
-X-QQ-XMRINFO: NmyfvsrRkCkJS5MlOxeZYe4=
-X-OQ-MSGID: <160d21cec795a8a245d0ed0654ad348913a05717.camel@qq.com>
-Subject: cortex r82 support
-From: Yanfeng Liu <yfliu2008@qq.com>
-To: qemu-arm@nongnu.org
-Date: Thu, 23 Jan 2025 13:49:09 +0800
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4-0ubuntu2 
+       arc=pass (i=1 spf=pass spfdomain=huawei.com dmarc=pass fromdomain=huawei.com);
+       spf=pass (google.com: domain of linux-kernel+bounces-486549-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45d1:ec00::1 as permitted sender) smtp.mailfrom="linux-kernel+bounces-486549-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=fail (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=huawei.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by ny.mirrors.kernel.org (Postfix) with ESMTPS id 34C3016D633
+	for <alex.bennee@linaro.org>; Thu, 23 Jan 2025 10:52:58 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id 1397D20DD68;
+	Thu, 23 Jan 2025 10:52:57 +0000 (UTC)
+Received: from frasgout.his.huawei.com (frasgout.his.huawei.com [185.176.79.56])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1F35F20CCD2
+	for <linux-kernel@vger.kernel.org>; Thu, 23 Jan 2025 10:52:54 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=185.176.79.56
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1737629576; cv=none; b=JcRqK+2ksVOXFJGw3FAVwEMRh9LNGP1LEtkd6fS4CXMdX9K3TEpWq4f5Uv+JncY/wvowFgkNo5ugrwTG1YptZWAi8NJIp7ydzi2fqoctY8kO/VvtwBaBjH0QY1pc6ddwHF8DoNnGkxOhYiPG2D4oG80LpojOyNlbT4gTo2GIhJc=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1737629576; c=relaxed/simple;
+	bh=gmORltQufNgL8yh1Fu5Lg2EQzxxiBc/EvUGA1HcZK5M=;
+	h=Date:From:To:CC:Subject:Message-ID:In-Reply-To:References:
+	 MIME-Version:Content-Type; b=TzTRuwS7/5xycVDuLxvWmHQ0uAucu5JXLGk2uG7r+2gqhmXGRwlhGFYyJHVLrjRncqn8TNBW0g02rXKIENdA9BIh671Ej07rNxowcuTwxE6WogffqhUv6uVxsW7fCcegQRWFwtEHas6NPfF2+ToKHu77WpoAsMSNkhXeLX0Joag=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com; spf=pass smtp.mailfrom=huawei.com; arc=none smtp.client-ip=185.176.79.56
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=quarantine dis=none) header.from=huawei.com
+Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=huawei.com
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+	by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4YdyR41wT2z6M4Sh;
+	Thu, 23 Jan 2025 18:50:56 +0800 (CST)
+Received: from frapeml500008.china.huawei.com (unknown [7.182.85.71])
+	by mail.maildlp.com (Postfix) with ESMTPS id 3F6BF1404C4;
+	Thu, 23 Jan 2025 18:52:53 +0800 (CST)
+Received: from localhost (10.203.177.66) by frapeml500008.china.huawei.com
+ (7.182.85.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.39; Thu, 23 Jan
+ 2025 11:52:52 +0100
+Date: Thu, 23 Jan 2025 10:52:51 +0000
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+CC: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
+	<mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>, <qemu-arm@nongnu.org>,
+	<qemu-devel@nongnu.org>, Ani Sinha <anisinha@redhat.com>, Dongjiu Geng
+	<gengdongjiu1@gmail.com>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 06/11] acpi/ghes: add a notifier to notify when error
+ data is ready
+Message-ID: <20250123105251.0000057f@huawei.com>
+In-Reply-To: <b359780154cdd4b4813ee0f6c3ae5a0bb622eb8a.1737560101.git.mchehab+huawei@kernel.org>
+References: <cover.1737560101.git.mchehab+huawei@kernel.org>
+	<b359780154cdd4b4813ee0f6c3ae5a0bb622eb8a.1737560101.git.mchehab+huawei@kernel.org>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-w64-mingw32)
+Precedence: bulk
+X-Mailing-List: linux-kernel@vger.kernel.org
+List-Id: <linux-kernel.vger.kernel.org>
+List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=203.205.221.192; envelope-from=yfliu2008@qq.com;
- helo=out203-205-221-192.mail.qq.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FROM=0.001, HELO_DYNAMIC_IPADDR=1.951, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_DYNAMIC=0.982, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 8J7HegYzm/mD
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: lhrpeml500010.china.huawei.com (7.191.174.240) To
+ frapeml500008.china.huawei.com (7.182.85.71)
+X-TUID: YUEJyzGn0WKh
 
-Dear experts,
+On Wed, 22 Jan 2025 16:46:23 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-I am wondering if there is anyone working on cortex r82 CPU support?
-
-Regards,
-yanfeng
-
+> Some error injection notify methods are async, like GPIO
+> notify. Add a notifier to be used when the error record is
+> ready to be sent to the guest OS.
+> 
+> Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>

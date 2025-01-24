@@ -1,118 +1,118 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp938993njk;
-        Fri, 24 Jan 2025 08:49:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV3knlpcPvE4ZARisFIj3svYOHWFtNu9tVIZuob4cjCGbanmEPYwUHrvLjZ2iHX5czew9AtMi2RytFg0A==@linaro.org
-X-Google-Smtp-Source: AGHT+IFJWg6gWw6Q2A4dK6tnuEeLQPX4+qexraGhATK75rBZwI9AYf7jwkBJd5orK2AGINRgI8ks
-X-Received: by 2002:a05:6122:3209:b0:515:daa7:ed0b with SMTP id 71dfb90a1353d-51d51a73180mr24456472e0c.0.1737737398324;
-        Fri, 24 Jan 2025 08:49:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737737398; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp940257njk;
+        Fri, 24 Jan 2025 08:52:03 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXr8Bfng10gHp0Jt43GOF78YB1PEHKHDxGiCiDeDYzs4ZJERyH9jhq40tyivLI//cwFguDNF/wtOgB3Bw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGe/J6xi1vLXfxTRvl0aX6Ioa2OZ4U/Gr0XNvCx1m0mw1YtxAhDS2vk39Z6qNkFIW0lFvGG
+X-Received: by 2002:a05:6214:430a:b0:6d8:8e0f:8c03 with SMTP id 6a1803df08f44-6e1b21864c2mr534137556d6.18.1737737523620;
+        Fri, 24 Jan 2025 08:52:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737737523; cv=none;
         d=google.com; s=arc-20240605;
-        b=Ufksvc10EwLlnTR/vzgM3DMRFyu8KyO9sJElm77SWd9+Vi1/NbjJhewQh1/ab+f3QG
-         szUCx/77yTYHXnTilKYileH8asUlXf2/xbmrdqmJlwypq0Lv2e7GCYPVqcPZPOOdqROV
-         dzQcG+rQBEMDtPeNy/kLcvRgGZxW5FOTfj71isLQpmduJ01+6+n979aWYunTjy/NZcXL
-         KY7Ep2SMM4XVNn2Y9NkUO6I8luiY3H5UJzl9TrozouYgir2hTycZlxeCZgCUW8sHTils
-         QtdfzVCZ7ZyrJqAuxI+4/3n4jSC14cC+5Q1iHuqTCq1dtkHrjvKZ5zsOynrUr28ffekJ
-         kqTQ==
+        b=Lgmz5kKcpLwEAylNfVpl8rdCH+zOtMs1YBTbxLUGR8JjeKzeu3vfm31w/yW3Tlf2hZ
+         U+HXLoqtxV21ZKRNR/+pUrUOXF6FlBMN/D8HtgRfelMR+ow5V5Zea5rvFOXqIYAZNg6v
+         duSlZjB6QLisfA3A5AltHgR4rGTJ9JX4P2TEti53RdgkluOfKHtUNR25PBkWi18v4oo6
+         cU6xop5MIwgOHwyiZ6HMRigi1ip+mD0i0Cd/y25eFqiekJKvH4lqklnquwfiAV73RzFJ
+         zlR1il1GmVmq+PA6I/asT7uqvf0XtCLloUkLAb5L8rAi/KJRFejt8UN4CG1rLQ5Oqnnp
+         /tqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=QLc5R4kgwLEQYIqVscOHBm/T/V1hZNad06mmFiQYTk0=;
-        fh=cbau2VKoQEnAxvJIQ92iT0JP3UEqfcuor0zYcddZ5e4=;
-        b=cpznP75cH/R7eNb647o9SzDjkA/07Vi5lh/jP2K1p+XPTPEI+wVB+GtD+cZXli5yOL
-         0vPuHYAnnY0l82/9gf/W7VarTeN2aMzDKz5XwMbYBka4xPAtO79YzU+YJr/7OiWYxeIj
-         f07Y9omSqxW8XUxG6+MwPGWbuDvZGC+3g7jhtjuVjCoz2/98QjQp4llOF+mUySMAWctJ
-         SrysJAdceV1PfnDQAYCgHpomn8DR4sOAGbrL/70LjaWYqnzdL643e6BmJEi9QbIe7hKG
-         GVbaCn7ZOd/ipveP0XzFu9BuAB2EhfGryLFMsllB7SDpaw8RRHSMP0jqagImDIX7JF+Y
-         3DpA==;
+        bh=6dgTVvVr0GNtxqpPbcNERedzCSbz846MhmUGqEskeJE=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=BjnigzVfNCQJnNu4hAub+KpMsV11jqEDCEBiE690Dl1Oh2WOE2l2gZQU3S9SNVYI8B
+         4BucpEdmb6C2bfnSdWGsalSQBCejMck2u1M3N1lgt35yHSw2/9bMPnd+GI9XLI5MKUTo
+         uGu7ndGyyjrgPvD8LyZPuIaJOkxG1ZhbpN8CE9LJGDrsIWVvakD482Dj+SrlwUR8q0/6
+         iFFOcFCGF6PTrmhSx2mw7t2NcIZ/d03AYR7ZMz/FPiH2AhRRHi4wpU5LwUsFoBKJJeV+
+         2lIyPg8ZNDuNTgtxDsZ56KoFUvfTRhTP6z2qoT2aWFvnEPrKb44ZU9miBqg5PF4R7gbF
+         Tr0w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LonrvDe8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=qGQCzzN6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 71dfb90a1353d-51e4ec43645si1165347e0c.143.2025.01.24.08.49.58
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e20525cba1si27432556d6.80.2025.01.24.08.52.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jan 2025 08:49:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Jan 2025 08:52:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LonrvDe8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=qGQCzzN6;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tbMcv-00079T-CF; Fri, 24 Jan 2025 11:33:49 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tbMgf-0006Wx-IZ; Fri, 24 Jan 2025 11:37:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tbMZD-0005rN-5h
- for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:30:06 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ id 1tbMZA-0005pW-Oq
+ for qemu-arm@nongnu.org; Fri, 24 Jan 2025 11:30:02 -0500
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tbMZ9-0005mT-5Q
- for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:29:56 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-436ce2ab251so15094285e9.1
- for <qemu-devel@nongnu.org>; Fri, 24 Jan 2025 08:29:54 -0800 (PST)
+ id 1tbMZ7-0005m3-FU
+ for qemu-arm@nongnu.org; Fri, 24 Jan 2025 11:29:55 -0500
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-43634b570c1so16745295e9.0
+ for <qemu-arm@nongnu.org>; Fri, 24 Jan 2025 08:29:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737736193; x=1738340993; darn=nongnu.org;
+ d=linaro.org; s=google; t=1737736192; x=1738340992; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=QLc5R4kgwLEQYIqVscOHBm/T/V1hZNad06mmFiQYTk0=;
- b=LonrvDe8ofyt9K4xiT0MSIuIylOd+bgOp4YTOOm0VEc9kok20yD5G/jNUMbRXa7aIf
- JlRb6UaFC2vcGU+B77wHRPjU6R2fhw58sb0dQ42D+9f/bvf/mtq+AWlejMg5SygtpFHJ
- q//D0u6t1X7PQIneit9CR+qlQLgfDbneffFRIp0O+hvX4knqwqjZEATrlgzJL8K0ejev
- JQ0yWOAwp2IqPSfbkpmk1gz2U8/EJIyDXnvWJXvzIqRyaKK16+MlwZ6XGzqIVr7I0fQO
- LtxvCKZvu8f7ggk10+3SgTmjt0WFyIzA7q0yFXP9mMeLOUVkKeldhjU+Oz7VG0TvSX1M
- Msww==
+ :reply-to; bh=6dgTVvVr0GNtxqpPbcNERedzCSbz846MhmUGqEskeJE=;
+ b=qGQCzzN6S8q9GVDFW/IUoO5RBfyz3yGFfmag+CFksup4UHYlCJV7hjdLZv0rFGbxzG
+ C7m6Ggdp4uVwuiXE1HwKmnlSLlZRL5PuvLeUwKFA0C1pHumCheKj8yvoV4rqOspqsLUI
+ h/ON2pwADJGzfGVUtW51PXqhNFiYGbLrdrzZ/D2a0J4Mgk5J4g/reteWWl5hN8Ue8c8q
+ krXK06jl37ObdiPgClDRXJjoi1XPiAdBDxIB1+DYumNtNeVk+qnzyup6Fi08g/5Qnx23
+ lWgyEiYmGDn+vXT8VtnAlD2mzadKLI3fOfrmzkYlbxIi8ad1b6+9pf4vfU2dSYt9SNh4
+ 2xOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737736193; x=1738340993;
+ d=1e100.net; s=20230601; t=1737736192; x=1738340992;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=QLc5R4kgwLEQYIqVscOHBm/T/V1hZNad06mmFiQYTk0=;
- b=Lkr/wpj2V/ryAPKHlIHigg+Ryv47fqdK1ZcxoTl7V9SrgCZrvC+CW7P5zDsn6g3ZXw
- jOiQ7VdduPrK88ECBteDTHtR4XDvj3j0+LZ/lEtIKAWehIJamk6KBn2lHbE+pTphTmM9
- GM/dGe+FKcwAiJMMx3j1RZiVp5ph7irgLG4PUTngRcBHS7Nir6WQnPLSWoS8ANwGZCRu
- 0/pf2v0tRejVeMqpA0OS/piTptwWU6CoILLIMROFoVDQJYHNZO2vyDAfuo/eZfYgwsSw
- TMmkjqh3YKWGbv79O6XoJLGi5Dkx32T2KEHUTR3BnbGe6CTzzXmeAY7KzJyM/RDzuLAU
- Shmw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVfhPi4WfCNHtwuZboQw58FQc6n7BXO5TZpmwolhMXH0lbb9sbORLSK6V97qAHhvBy3tkti2B3uzNo+@nongnu.org
-X-Gm-Message-State: AOJu0YyN4RymVN7SbJ/Ym+4Uu2UimWO7jetf7m3v9yDqyMPNP6RM7es6
- fS2DudFkwias0CMtylhrUN8J4asNRWp7F6K/pXui8oQV8y6uJk5N5pysIiGQUMc=
-X-Gm-Gg: ASbGncvOZRmBgDFD5UwNG9/Ztlqe3jWmRC678g7fzeDewHAy68I+f26gNGDCm3JtBhN
- UYJTaJI78oNUBTG182UF0va4KjZh44VAoQ/Rc+9cSyUUvXp0UdkCn8/qD4co+HWMN9oyq+NKJr2
- rXVE5VSZ3yfmOWSAAmjtzQveTX9qWUjcalzmKxo5WGJls9onSPK/+Jui1KpIWTkV+hCQy/hvlkQ
- DbJnTlo2G3+CKHaOWUXuUJXSOs7/cfmXe0UXCVJyRaTkEXcJc3IQCvCWzbpVMY4RxEA6DxB7rqK
- Mo4KitPj6/k=
-X-Received: by 2002:a05:600c:511b:b0:432:d797:404a with SMTP id
- 5b1f17b1804b1-4389142e0e8mr268300935e9.22.1737736193127; 
- Fri, 24 Jan 2025 08:29:53 -0800 (PST)
+ bh=6dgTVvVr0GNtxqpPbcNERedzCSbz846MhmUGqEskeJE=;
+ b=Vm2AHElIbVg7dWL0FjUQk0g5UStBa8QR0gvx2zCgW+4GfYSw0WULxbU9VLQPD0gWYE
+ NxIWhRFLqSr7Do6XZg06JeHYfgK0o8ZShUHx/C7Y6z6gKi3EnOHLF7ztzj4CrbfhDshg
+ xivucGcgpVvKSuFF9xo6aZr4F7HR/cRGI8qpyx0Y9IgWEUssikWF9ZZektGGfOnP/osg
+ HBn2aO5pVIr5HzGqiQ0PnostX7E1QVzA5TgZN4Rgy/+8vZH5Dssn2+xlWL0plJm9aiwI
+ HkSgXtOMoklC2T8PTL+496Fs5Mts+XWwh0T5QttzPq7PPJICvOvWT4JtTal6erfTUzLp
+ zIkA==
+X-Gm-Message-State: AOJu0YyfEogfs0iLmfRaH17V9s6s3kgYtW3FxXdjJRB/5mdxLg1GZu9M
+ 4l4QWS2LdU/qV8pAOGIaJLo6TNEcGDNSPFqt5ytK864fZAYc6BqbpHWeY/qbjuMvpmkyWfuP3dF
+ c
+X-Gm-Gg: ASbGncssv5bke8zjzCWOghU+IXAhc6TIVRFB/Em+RaXyZaR6Py0oaQonDo/yQLThvsE
+ hH7BQ24AAlPc6zBicHi1+WUav2hFqlkNPjSicTjsXQ43k2ux2aDw1H+FtXevXh8OZ8lw/istZ9l
+ 30mVCB5mgmoaXaQYLQEr+PD2nf1MV3zX9vzWZUcwcr1jyGYxhepkn+nPd9/R7/u9smu9q13kJZU
+ vWD5grdZ81QjF/QDdSsTSbZXum3X4PLMKjx6VWSbXQ1p4CiJyS2esbFC4S8118wTvfIyDnCSBK0
+ QsKSfeWZIG8=
+X-Received: by 2002:a05:600c:3c94:b0:435:192:63ca with SMTP id
+ 5b1f17b1804b1-43891439f04mr240114165e9.21.1737736192085; 
+ Fri, 24 Jan 2025 08:29:52 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438bd47eecasm31683025e9.6.2025.01.24.08.29.52
+ 5b1f17b1804b1-438bd47eecasm31683025e9.6.2025.01.24.08.29.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Jan 2025 08:29:52 -0800 (PST)
+ Fri, 24 Jan 2025 08:29:51 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 60/76] target/arm: Handle FPCR.AH in FMLSL
-Date: Fri, 24 Jan 2025 16:28:20 +0000
-Message-Id: <20250124162836.2332150-61-peter.maydell@linaro.org>
+Subject: [PATCH 59/76] target/arm: Handle FPCR.AH in negation steps in SVE
+ FCADD
+Date: Fri, 24 Jan 2025 16:28:19 +0000
+Message-Id: <20250124162836.2332150-60-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250124162836.2332150-1-peter.maydell@linaro.org>
 References: <20250124162836.2332150-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -121,123 +121,140 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: BcXw+n3WTZv6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: GBT9Dda8Gg3o
 
-Honour the FPCR.AH "don't negate the sign of a NaN" semantics in
-FMLSL. We pass in the value of FPCR.AH in the SIMD data field, and
-use this to determine whether we should suppress the negation for
-NaN inputs.
+The negation steps in FCADD must honour FPCR.AH's "don't change the
+sign of a NaN" semantics.  Implement this in the same way we did for
+the base ASIMD FCADD, by encoding FPCR.AH into the SIMD data field
+passed to the helper and using that to decide whether to negate the
+values.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/tcg/translate-a64.c |  4 ++--
- target/arm/tcg/vec_helper.c    | 28 ++++++++++++++++++++++++----
- 2 files changed, 26 insertions(+), 6 deletions(-)
+ target/arm/tcg/sve_helper.c    | 45 +++++++++++++++++++++++++++-------
+ target/arm/tcg/translate-sve.c |  2 +-
+ 2 files changed, 37 insertions(+), 10 deletions(-)
 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 0827dff16b2..e22c2a148ab 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -5968,7 +5968,7 @@ TRANS(FMINNMP_v, do_fp3_vector, a, 0, f_vector_fminnmp)
- static bool do_fmlal(DisasContext *s, arg_qrrr_e *a, bool is_s, bool is_2)
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index 8527a7495a6..dc5a35b46ef 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -5131,7 +5131,9 @@ void HELPER(sve_fcadd_h)(void *vd, void *vn, void *vm, void *vg,
  {
-     if (fp_access_check(s)) {
--        int data = (is_2 << 1) | is_s;
-+        int data = (s->fpcr_ah << 2) | (is_2 << 1) | is_s;
-         tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
-                            vec_full_reg_offset(s, a->rn),
-                            vec_full_reg_offset(s, a->rm), tcg_env,
-@@ -6738,7 +6738,7 @@ TRANS(FMLS_vi, do_fmla_vector_idx, a, true)
- static bool do_fmlal_idx(DisasContext *s, arg_qrrx_e *a, bool is_s, bool is_2)
- {
-     if (fp_access_check(s)) {
--        int data = (a->idx << 2) | (is_2 << 1) | is_s;
-+        int data = (s->fpcr_ah << 5) | (a->idx << 2) | (is_2 << 1) | is_s;
-         tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
-                            vec_full_reg_offset(s, a->rn),
-                            vec_full_reg_offset(s, a->rm), tcg_env,
-diff --git a/target/arm/tcg/vec_helper.c b/target/arm/tcg/vec_helper.c
-index 382b5da4a9c..aa42c50f9fe 100644
---- a/target/arm/tcg/vec_helper.c
-+++ b/target/arm/tcg/vec_helper.c
-@@ -2083,6 +2083,26 @@ static uint64_t load4_f16(uint64_t *ptr, int is_q, int is_2)
-     return ptr[is_q & is_2] >> ((is_2 & ~is_q) << 5);
- }
+     intptr_t j, i = simd_oprsz(desc);
+     uint64_t *g = vg;
+-    float16 neg_imag = float16_set_sign(0, simd_data(desc));
++    bool rot = extract32(desc, SIMD_DATA_SHIFT, 1);
++    bool fpcr_ah = extract32(desc, SIMD_DATA_SHIFT + 1, 1);
++    float16 neg_imag = float16_set_sign(0, rot);
+     float16 neg_real = float16_chs(neg_imag);
  
-+static uint64_t neg4_f16(uint64_t v, bool fpcr_ah)
-+{
-+    /*
-+     * Negate all inputs for FMLSL at once. This is slightly complicated
-+     * by the need to avoid flipping the sign of a NaN when FPCR.AH == 1
-+     */
-+    uint64_t mask = 0x8000800080008000ull;
-+    if (fpcr_ah) {
-+        uint64_t tmp = v, signbit = 0x8000;
-+        for (int i = 0; i < 4; i++) {
-+            if (float16_is_any_nan(extract64(tmp, 0, 16))) {
-+                mask ^= signbit;
-+            }
-+            tmp >>= 16;
-+            signbit <<= 16;
-+        }
-+    }
-+    return v ^ mask;
-+}
+     do {
+@@ -5144,9 +5146,16 @@ void HELPER(sve_fcadd_h)(void *vd, void *vn, void *vm, void *vg,
+             i -= 2 * sizeof(float16);
+ 
+             e0 = *(float16 *)(vn + H1_2(i));
+-            e1 = *(float16 *)(vm + H1_2(j)) ^ neg_real;
++            e1 = *(float16 *)(vm + H1_2(j));
+             e2 = *(float16 *)(vn + H1_2(j));
+-            e3 = *(float16 *)(vm + H1_2(i)) ^ neg_imag;
++            e3 = *(float16 *)(vm + H1_2(i));
 +
- /*
-  * Note that FMLAL requires oprsz == 8 or oprsz == 16,
-  * as there is not yet SVE versions that might use blocking.
-@@ -2094,6 +2114,7 @@ static void do_fmlal(float32 *d, void *vn, void *vm, float_status *fpst,
-     intptr_t i, oprsz = simd_oprsz(desc);
-     int is_s = extract32(desc, SIMD_DATA_SHIFT, 1);
-     int is_2 = extract32(desc, SIMD_DATA_SHIFT + 1, 1);
-+    bool fpcr_ah = extract32(desc, SIMD_DATA_SHIFT + 2, 1);
-     int is_q = oprsz == 16;
-     uint64_t n_4, m_4;
++            if (neg_real && !(fpcr_ah && float16_is_any_nan(e1))) {
++                e1 ^= neg_real;
++            }
++            if (neg_imag && !(fpcr_ah && float16_is_any_nan(e3))) {
++                e3 ^= neg_imag;
++            }
  
-@@ -2101,9 +2122,8 @@ static void do_fmlal(float32 *d, void *vn, void *vm, float_status *fpst,
-     n_4 = load4_f16(vn, is_q, is_2);
-     m_4 = load4_f16(vm, is_q, is_2);
+             if (likely((pg >> (i & 63)) & 1)) {
+                 *(float16 *)(vd + H1_2(i)) = float16_add(e0, e1, s);
+@@ -5163,7 +5172,9 @@ void HELPER(sve_fcadd_s)(void *vd, void *vn, void *vm, void *vg,
+ {
+     intptr_t j, i = simd_oprsz(desc);
+     uint64_t *g = vg;
+-    float32 neg_imag = float32_set_sign(0, simd_data(desc));
++    bool rot = extract32(desc, SIMD_DATA_SHIFT, 1);
++    bool fpcr_ah = extract32(desc, SIMD_DATA_SHIFT + 1, 1);
++    float32 neg_imag = float32_set_sign(0, rot);
+     float32 neg_real = float32_chs(neg_imag);
  
--    /* Negate all inputs for FMLSL at once.  */
-     if (is_s) {
--        n_4 ^= 0x8000800080008000ull;
-+        n_4 = neg4_f16(n_4, fpcr_ah);
-     }
+     do {
+@@ -5176,9 +5187,16 @@ void HELPER(sve_fcadd_s)(void *vd, void *vn, void *vm, void *vg,
+             i -= 2 * sizeof(float32);
  
-     for (i = 0; i < oprsz / 4; i++) {
-@@ -2155,6 +2175,7 @@ static void do_fmlal_idx(float32 *d, void *vn, void *vm, float_status *fpst,
-     int is_s = extract32(desc, SIMD_DATA_SHIFT, 1);
-     int is_2 = extract32(desc, SIMD_DATA_SHIFT + 1, 1);
-     int index = extract32(desc, SIMD_DATA_SHIFT + 2, 3);
-+    bool fpcr_ah = extract32(desc, SIMD_DATA_SHIFT + 5, 1);
-     int is_q = oprsz == 16;
-     uint64_t n_4;
-     float32 m_1;
-@@ -2162,9 +2183,8 @@ static void do_fmlal_idx(float32 *d, void *vn, void *vm, float_status *fpst,
-     /* Pre-load all of the f16 data, avoiding overlap issues.  */
-     n_4 = load4_f16(vn, is_q, is_2);
+             e0 = *(float32 *)(vn + H1_2(i));
+-            e1 = *(float32 *)(vm + H1_2(j)) ^ neg_real;
++            e1 = *(float32 *)(vm + H1_2(j));
+             e2 = *(float32 *)(vn + H1_2(j));
+-            e3 = *(float32 *)(vm + H1_2(i)) ^ neg_imag;
++            e3 = *(float32 *)(vm + H1_2(i));
++
++            if (neg_real && !(fpcr_ah && float32_is_any_nan(e1))) {
++                e1 ^= neg_real;
++            }
++            if (neg_imag && !(fpcr_ah && float32_is_any_nan(e3))) {
++                e3 ^= neg_imag;
++            }
  
--    /* Negate all inputs for FMLSL at once.  */
-     if (is_s) {
--        n_4 ^= 0x8000800080008000ull;
-+        n_4 = neg4_f16(n_4, fpcr_ah);
-     }
+             if (likely((pg >> (i & 63)) & 1)) {
+                 *(float32 *)(vd + H1_2(i)) = float32_add(e0, e1, s);
+@@ -5195,7 +5213,9 @@ void HELPER(sve_fcadd_d)(void *vd, void *vn, void *vm, void *vg,
+ {
+     intptr_t j, i = simd_oprsz(desc);
+     uint64_t *g = vg;
+-    float64 neg_imag = float64_set_sign(0, simd_data(desc));
++    bool rot = extract32(desc, SIMD_DATA_SHIFT, 1);
++    bool fpcr_ah = extract32(desc, SIMD_DATA_SHIFT + 1, 1);
++    float64 neg_imag = float64_set_sign(0, rot);
+     float64 neg_real = float64_chs(neg_imag);
  
-     m_1 = float16_to_float32_by_bits(((float16 *)vm)[H2(index)], fz16);
+     do {
+@@ -5208,9 +5228,16 @@ void HELPER(sve_fcadd_d)(void *vd, void *vn, void *vm, void *vg,
+             i -= 2 * sizeof(float64);
+ 
+             e0 = *(float64 *)(vn + H1_2(i));
+-            e1 = *(float64 *)(vm + H1_2(j)) ^ neg_real;
++            e1 = *(float64 *)(vm + H1_2(j));
+             e2 = *(float64 *)(vn + H1_2(j));
+-            e3 = *(float64 *)(vm + H1_2(i)) ^ neg_imag;
++            e3 = *(float64 *)(vm + H1_2(i));
++
++            if (neg_real && !(fpcr_ah && float64_is_any_nan(e1))) {
++                e1 ^= neg_real;
++            }
++            if (neg_imag && !(fpcr_ah && float64_is_any_nan(e3))) {
++                e3 ^= neg_imag;
++            }
+ 
+             if (likely((pg >> (i & 63)) & 1)) {
+                 *(float64 *)(vd + H1_2(i)) = float64_add(e0, e1, s);
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index 9200f7f8a49..0696192148c 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -3916,7 +3916,7 @@ static gen_helper_gvec_4_ptr * const fcadd_fns[] = {
+     gen_helper_sve_fcadd_s, gen_helper_sve_fcadd_d,
+ };
+ TRANS_FEAT(FCADD, aa64_sve, gen_gvec_fpst_zzzp, fcadd_fns[a->esz],
+-           a->rd, a->rn, a->rm, a->pg, a->rot,
++           a->rd, a->rn, a->rm, a->pg, a->rot | (s->fpcr_ah << 1),
+            a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
+ 
+ #define DO_FMLA(NAME, name) \
 -- 
 2.34.1
 

@@ -1,119 +1,119 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp929962njk;
-        Fri, 24 Jan 2025 08:34:24 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUcSiQxE5l6U7DWFKBh6wmpetTL+pUkaJynr4dqO5XLjbrKIGRT1W4dD0FZEFavKxzxRN1/8BBiHFpBtg==@linaro.org
-X-Google-Smtp-Source: AGHT+IGQB4XXqc1fYURHKwaAyCOAQ0UPBKh9T+kGIj+Ip97FGxPIjmAWQaxwJcVj22d50BDymQXE
-X-Received: by 2002:a67:e7c8:0:b0:4af:f809:5162 with SMTP id ada2fe7eead31-4b6f79f1c10mr7885538137.3.1737736464424;
-        Fri, 24 Jan 2025 08:34:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737736464; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp930281njk;
+        Fri, 24 Jan 2025 08:34:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW15vq/PMyvtdz7pHMhcgSf45dk+7f5dW1Ai4l0VuWEeOag3X+ZgW8NjGYqeVyApcfcI50WPPuVOreZqg==@linaro.org
+X-Google-Smtp-Source: AGHT+IH4DUNh+OKmwizY0UuxU4q5fLnwwNcMnb9enpFoURmCRWPWWT3p/jM53FGFe6o/cKMz5z/z
+X-Received: by 2002:a05:6214:262b:b0:6d8:f0ba:ea92 with SMTP id 6a1803df08f44-6e1b216192fmr503042886d6.21.1737736498359;
+        Fri, 24 Jan 2025 08:34:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737736498; cv=none;
         d=google.com; s=arc-20240605;
-        b=DD8+ZIr1VC9RMggLQ7SpkUOBIXlhqTIUxzU8a0jt6HjUCmKsaD8c6/oPL+j4ZDrxj/
-         jQN3tvfSKue4xm80gpuUJUEtjK5vVfl0SWzBG77kRjNtuwDUhcRFKsYaQIZkcZSy8ACe
-         pdrISU1LlhRADSLEKFgUW/Ll5oSFfK7dD4lZFo9qWKH1zUVtYy4X61pqZkDSVv0RHW22
-         gRZTC0RdCub2m7qYHhPgS2vdP+xFifiJE8uFLeNAreHX5rTmRM0LSZQIWlYoOJ4ZwcLP
-         b+TJbAkZ845lSXQ0+brGIJwcHqR8+bZwCGVTuEi9/EiRs9hz/k6p8XGp8piwnHiISDBn
-         HeKA==
+        b=LANNC4pqUCHnrMf32EvENC/MD/gJccnkBuERlMG/30wmnJA3e8re0zU4PzoG9yiXBF
+         wxcdso3pjJhy27ehb+mXPUak4N+iMwzpJ4LzV6SGgxAtKX4CnFN2gHqBbPRP3B1BlQxX
+         222WY8PBr4ezpso3xdEsP7/K3iq7Q7t/llVC6aDRXOh1AXWI21lqPD1598lrdeu5AOD/
+         bzaI4r0nYcuzUAvdPW4/H7JPY/sDYSSYzfyZq9gPjrseuiUn/GMti9RBhnGg62A7Fcbx
+         5l0ueQbIg556Gm7t+sOp093Dfg3ibVywEx8W7+BMdtALjsaMekjWs3Dc1/vHn3IqLrsz
+         BVPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=9vOW3vjTeJp39sy4OsCwvMlVmTE6vsBeLOiYEKAZ7/E=;
-        fh=vAjDKhWG2H0thFNX+75au94WBnSp3B6z+NwN13Igj74=;
-        b=JPUJJYDZ0PKERwjPEqVi+CfaWLfKNmzUgzSmorspCtTaa/k2qiftnDVHXw7KlCM0AA
-         PUZjoOXqJon+4PSa+TFR46fWynR/uAVvjWWidhH2JpTHjAm6M7c4oBZtK5bA0E9vc1aa
-         5sHk8c1psBontyWbTBsoc983I7BNoplAUeLi4/gyZaSG1JZ7CpXkt+HKxoPfMa0bxkQs
-         kopZsDFN6UbJcRviCFE92wUUL1O/hpwEUAMRelCxRtZmo69Sx8VoNcJF/+F6qM/NAtGi
-         9FqfVDwzviO8Q+dLmBuxA+l3BqiqlXfEN6dsPeZQn9C39tnOdmieKbBknrp/EBDTxNO2
-         w2Ow==;
+        bh=e+vM7eVw9FNDbWBcJu93gLE5yRUZL1XievyTDuJkQaA=;
+        fh=JpCI48rGEylxBogVLET12icadvs0s6A87xGjVRJSQyI=;
+        b=TajnLqkIWcgOdFQcacu3oIiCsTW5USDMjHHgOAeqaMe8ZEM3BEyxaR1mNKApK/20Ka
+         5hPjTfOjTY0wBB9j7mjKDSvCGmcYGnkPLm/jUBwgPT4YOaBPzjy1wGeaCzgfG4EULdOU
+         ijU0/KQLdqIibmmhi3EKPF8sfeTqdJd/OUqPCJlwn9rpWpO70XDpJHS+rU+x+sjs3331
+         yETlFq8fOwdPHxlUc8VTNh1ALZnWmAumYPonBRbJBRR3hkSJrO1c/i42ESTZ2y4qbfdz
+         oQZnHviakDlCaTUEwGZjz8LbrNy8tR6z+vvQcFe5MU/capvxzoJe6Y9/fnI9TbyCTqSB
+         Hd+A==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qwHXbkY8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pRNDCYwz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b709a299cdsi804467137.626.2025.01.24.08.34.24
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e20602136esi25557246d6.420.2025.01.24.08.34.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jan 2025 08:34:24 -0800 (PST)
+        Fri, 24 Jan 2025 08:34:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qwHXbkY8;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pRNDCYwz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tbMal-00089v-S4; Fri, 24 Jan 2025 11:31:37 -0500
+	id 1tbMcO-0005r8-TH; Fri, 24 Jan 2025 11:33:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tbMYS-0003xi-IW
- for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:29:15 -0500
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1tbMYl-0004od-RU
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:29:32 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tbMYO-0005WC-E4
- for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:29:11 -0500
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-4361f664af5so25670765e9.1
- for <qemu-devel@nongnu.org>; Fri, 24 Jan 2025 08:29:08 -0800 (PST)
+ id 1tbMYk-0005eI-8Z
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:29:31 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4364a37a1d7so23483655e9.3
+ for <qemu-devel@nongnu.org>; Fri, 24 Jan 2025 08:29:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737736147; x=1738340947; darn=nongnu.org;
+ d=linaro.org; s=google; t=1737736169; x=1738340969; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=9vOW3vjTeJp39sy4OsCwvMlVmTE6vsBeLOiYEKAZ7/E=;
- b=qwHXbkY8I90WENTXp1qepXef0a386Ob8O1pZN/BVLnqC9byZEFTl9yd/A3Lye6CeUS
- ZVM5dXWlwaLDXpaXeZimiZhhFJBMHNLxHPYdJHdijqXPnaDhSeSS/ejk305IHf8KtEgM
- PSBSlhOqXkoUmIx2tsOtIQgNgG0DVtbLPeIYQuzgq9ttipZUOG9WDMzURMLFLJb6MG2g
- 0wk5h+sDHYHaitf4CcnvWGkdKeTgkgFa0laHoPTEpl7cNrPpNCQhJ/Vg0jYuQjPLEPnH
- 2zmQJNU+9wS3wWZ0sDm1Y5w52/Fb26qwW3T8O3ueTNOPKEi3ghXXdTb7nLjEtEgkNtbt
- l4pg==
+ :reply-to; bh=e+vM7eVw9FNDbWBcJu93gLE5yRUZL1XievyTDuJkQaA=;
+ b=pRNDCYwzUnEXJz/7dt5sl1nSNYD+bZh6w6ajXX9FeeDZ5W2mVzdKaxZWkXZ8AFCb5M
+ KapDNIlTC+s1ukg01WMFgx1JLa01Izj1GY9SZ5BRYK+spJOImSNBYWdaAA134u+x5o6Z
+ V7DiKvLjjmZPkmyJuZdutRgsVnx4bDUJRUOdLBsnkFflwU/F3pCxFJcIp0GO35PqEusx
+ QvCzwq0JRZv0G8A+reA4n5HkMAqiPRDEL5WD1Np6SXzrV65mV8oxyDLlYvhmxeaq+OlO
+ wAun5dAwlR+cS7O1ClXhJpjfoRMgSsNZPoda0xYF2HFrOa1wJbI3LMOzDdJm63gEnc1H
+ 5A5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737736147; x=1738340947;
+ d=1e100.net; s=20230601; t=1737736169; x=1738340969;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=9vOW3vjTeJp39sy4OsCwvMlVmTE6vsBeLOiYEKAZ7/E=;
- b=B4jb4VsVj38tH1uE1v1j80wvqGFyZfM7wjT03Z+c6RU9/BnAq8VmSkcipg+nhNPxxG
- 1EJ26uJOi8OHCqS37ZNH896ErdwN6Dyzi1lQ2n6hPVxJvnowTHDjdHCwSchKSiWa2JUP
- Y3HHP4kG6Ezk7dOFnSpoqYXt5H2XJZJwRFfSjt27EDV8CsTTYwhBQN57OjsGeVxc8AzV
- MyOdsZKT/n49S+wsPulUhsUbVUQC4+HtdbvMv6DJpTt3uqa+5P9ZJe6WJt7sH3wtU6mQ
- P6iQ76kpG0yQ2ThtBvubR09t/l5f0jG79HDEXv0VKwdgpzMxwcDIoChbqQxQvagB/rfx
- PKMA==
+ bh=e+vM7eVw9FNDbWBcJu93gLE5yRUZL1XievyTDuJkQaA=;
+ b=bC5s8bO4x1FsGpd3pDEtbAGu4XOIS832OFdomZtQUC/eB3u+4oUOiVlj4aIIIWqVok
+ eKmmwSKAX5IdxUR4mEnB340SSWs5qMOWvnudHHD4OUGSYS/z1/h7/v4UIyZoxFF9Z88P
+ TAVeX5kS17m0Lf7eACOv0aW3WKFPJaCQdvn9Z68Gy22fqS7Oz9MHl/YJTdmP8hwGVrp3
+ anMOwFPCllpL3eaIjgLf6ZKwt7MVbAPmv4ufEFmBNnUZn2truMVTrZJftAJMk4P6zUDE
+ 4KZZZr51XV4IA+UT0KOalKtFvv0Yix/+gmd5ztyE9raSg+SBi9rR3RFa0KXFD8Ckie3k
+ G5rA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXIsycZ7jB3cUQpDkXTLTfAtPsCnZFyeL4JCxVurn20ZsrF91YVDb2TWgsYjRU/O/kAuua2ASolA5II@nongnu.org
-X-Gm-Message-State: AOJu0Yx/MgugDXFMlxn/M6dsgRE12nrCKnv+SMSTJLOjwE9zzWJGlYJH
- LuoRrYKwDZChEIiY4uKBKVFdVAwGIVfO7cG2ZRqhDoS/ejgOb/6MwdNZAP5ICyWVW4gmvrSzMVD
- 0
-X-Gm-Gg: ASbGncuLUne4Zdq9ghYnHYxjVxaoSLyFhmTFjjFGmyDfL1zqcBuDrSRi+mol0E4wpUm
- 63Zw98haNmzSfrM9pNzNQ8wNNc5k+wKA42LTBkPz65YPKK2/u3VRh6gXPQpLU3Yq4GZKQ8xdD62
- IavNRGNNkAWFKgmPmO82DOEEegex54hffY9KIrW2WuPS7Th//rGzGKllrk5r/WWQt63kQyOP2uE
- gYZgTLCwJKhoiiTQwChAqQFjkumwkYTbmvJzwidbng/lfytBYDbzRIjyBErmcrNYiIzOu+HFQaJ
- hdnM0W9NDkw=
-X-Received: by 2002:a05:600c:1d1d:b0:434:a815:2b5d with SMTP id
- 5b1f17b1804b1-4389141c211mr253299595e9.24.1737736147035; 
- Fri, 24 Jan 2025 08:29:07 -0800 (PST)
+ AJvYcCV141WyNHxal9KgyB3zMn2RreFftHnPOv9mH561v632gxpCDsBZ/hFOAEmF7YsPqRxni6M2EnhyteGC@nongnu.org
+X-Gm-Message-State: AOJu0Ywj3MX6HfeDGi1ta2lYXIanKRgvr+HvydouUej23yi4Yo9BPX6O
+ UJMrEcXmmJNJm1Mr7IvCNMA0ke96qbh03vikI57xTB7TS8Kib4Pj6A+aPqP2rrP00gdCCVGTPLj
+ f
+X-Gm-Gg: ASbGncumLVw7FBaNr8S1As+CU1eQrPKxGBV1hJLJISZRRlVMoocPYdlMKVcYriN2E44
+ 6NR5QkZdimnHCukzwYwTJxToARlKFMZOpDN3VRKD9EYYVzGx9Fk6vwsYMaGNGh/b5lsiOQzw4HC
+ 2/jVe86yJYsPlcU4h7X5xj1Tg5gYs0NZLP0F9FLRBqgug8eH7FaB2czuBd7D2ZKblcXwwD+8Vl2
+ T8Pd1DLiGJA8jBFNQwYaUgYouur8My79/nSfioQ+RT/IEUsGecCK/1e6Zq3tP+Gt184b1RwWdnu
+ 6Sm1U7jnaB8=
+X-Received: by 2002:a05:600c:83ce:b0:436:ed33:1535 with SMTP id
+ 5b1f17b1804b1-438913e0384mr307041865e9.12.1737736168902; 
+ Fri, 24 Jan 2025 08:29:28 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438bd47eecasm31683025e9.6.2025.01.24.08.29.06
+ 5b1f17b1804b1-438bd47eecasm31683025e9.6.2025.01.24.08.29.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Jan 2025 08:29:06 -0800 (PST)
+ Fri, 24 Jan 2025 08:29:27 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 23/76] fpu: Implement float_flag_input_denormal_used
-Date: Fri, 24 Jan 2025 16:27:43 +0000
-Message-Id: <20250124162836.2332150-24-peter.maydell@linaro.org>
+Subject: [PATCH 41/76] target/arm: Handle FPCR.NEP in do_cvtf_scalar()
+Date: Fri, 24 Jan 2025 16:28:01 +0000
+Message-Id: <20250124162836.2332150-42-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250124162836.2332150-1-peter.maydell@linaro.org>
 References: <20250124162836.2332150-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -135,324 +135,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: aNshXiHOR2w2
+X-TUID: D4/fbmpYu2YI
 
-For the x86 and the Arm FEAT_AFP semantics, we need to be able to
-tell the target code that the FPU operation has used an input
-denormal.  Implement this; when it happens we set the new
-float_flag_denormal_input_used.
-
-Note that we only set this when an input denormal is actually used by
-the operation: if the operation results in Invalid Operation or
-Divide By Zero or the result is a NaN because some other input was a
-NaN then we never needed to look at the input denormal and do not set
-denormal_input_used.
-
-We mostly do not need to adjust the hardfloat codepaths to deal with
-this flag, because almost all hardfloat operations are already gated
-on the input not being a denormal, and will fall back to softfloat
-for a denormal input.  The only exception is the comparison
-operations, where we need to add the check for input denormals, which
-must now fall back to softfloat where they did not before.
+Handle FPCR.NEP in the operations handled by do_cvtf_scalar().
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/fpu/softfloat-types.h |  7 ++++
- fpu/softfloat.c               | 37 +++++++++++++++++--
- fpu/softfloat-parts.c.inc     | 68 ++++++++++++++++++++++++++++++++++-
- 3 files changed, 108 insertions(+), 4 deletions(-)
+ target/arm/tcg/translate-a64.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
-index c177923e319..b9b4e8e55fc 100644
---- a/include/fpu/softfloat-types.h
-+++ b/include/fpu/softfloat-types.h
-@@ -165,6 +165,13 @@ enum {
-     float_flag_invalid_sqrt    = 0x0800,  /* sqrt(-x) */
-     float_flag_invalid_cvti    = 0x1000,  /* non-nan to integer */
-     float_flag_invalid_snan    = 0x2000,  /* any operand was snan */
-+    /*
-+     * An input was denormal and we used it (without flushing it to zero).
-+     * Not set if we do not actually use the denormal input (e.g.
-+     * because some other input was a NaN, or because the operation
-+     * wasn't actually carried out (divide-by-zero; invalid))
-+     */
-+    float_flag_input_denormal_used = 0x4000,
- };
- 
- /*
-diff --git a/fpu/softfloat.c b/fpu/softfloat.c
-index 03a604c38ec..1b4046e81a9 100644
---- a/fpu/softfloat.c
-+++ b/fpu/softfloat.c
-@@ -2718,8 +2718,10 @@ static void parts_float_to_ahp(FloatParts64 *a, float_status *s)
-                                   float16_params_ahp.frac_size + 1);
-         break;
- 
--    case float_class_normal:
-     case float_class_denormal:
-+        float_raise(float_flag_input_denormal_used, s);
-+        break;
-+    case float_class_normal:
-     case float_class_zero:
-         break;
- 
-@@ -2733,6 +2735,9 @@ static void parts64_float_to_float(FloatParts64 *a, float_status *s)
-     if (is_nan(a->cls)) {
-         parts_return_nan(a, s);
-     }
-+    if (a->cls == float_class_denormal) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
- }
- 
- static void parts128_float_to_float(FloatParts128 *a, float_status *s)
-@@ -2740,6 +2745,9 @@ static void parts128_float_to_float(FloatParts128 *a, float_status *s)
-     if (is_nan(a->cls)) {
-         parts_return_nan(a, s);
-     }
-+    if (a->cls == float_class_denormal) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
- }
- 
- #define parts_float_to_float(P, S) \
-@@ -2752,12 +2760,21 @@ static void parts_float_to_float_narrow(FloatParts64 *a, FloatParts128 *b,
-     a->sign = b->sign;
-     a->exp = b->exp;
- 
--    if (is_anynorm(a->cls)) {
-+    switch (a->cls) {
-+    case float_class_denormal:
-+        float_raise(float_flag_input_denormal_used, s);
-+        /* fall through */
-+    case float_class_normal:
-         frac_truncjam(a, b);
--    } else if (is_nan(a->cls)) {
-+        break;
-+    case float_class_snan:
-+    case float_class_qnan:
-         /* Discard the low bits of the NaN. */
-         a->frac = b->frac_hi;
-         parts_return_nan(a, s);
-+        break;
-+    default:
-+        break;
-     }
- }
- 
-@@ -2772,6 +2789,9 @@ static void parts_float_to_float_widen(FloatParts128 *a, FloatParts64 *b,
-     if (is_nan(a->cls)) {
-         parts_return_nan(a, s);
-     }
-+    if (a->cls == float_class_denormal) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
- }
- 
- float32 float16_to_float32(float16 a, bool ieee, float_status *s)
-@@ -4411,6 +4431,11 @@ float32_hs_compare(float32 xa, float32 xb, float_status *s, bool is_quiet)
-         goto soft;
-     }
- 
-+    if (unlikely(float32_is_denormal(ua.s) || float32_is_denormal(ub.s))) {
-+        /* We may need to set the input_denormal_used flag */
-+        goto soft;
-+    }
-+
-     float32_input_flush2(&ua.s, &ub.s, s);
-     if (isgreaterequal(ua.h, ub.h)) {
-         if (isgreater(ua.h, ub.h)) {
-@@ -4462,6 +4487,12 @@ float64_hs_compare(float64 xa, float64 xb, float_status *s, bool is_quiet)
-     }
- 
-     float64_input_flush2(&ua.s, &ub.s, s);
-+
-+    if (unlikely(float64_is_denormal(ua.s) || float64_is_denormal(ub.s))) {
-+        /* We may need to set the input_denormal_used flag */
-+        goto soft;
-+    }
-+
-     if (isgreaterequal(ua.h, ub.h)) {
-         if (isgreater(ua.h, ub.h)) {
-             return float_relation_greater;
-diff --git a/fpu/softfloat-parts.c.inc b/fpu/softfloat-parts.c.inc
-index 8621cb87185..0122b35008a 100644
---- a/fpu/softfloat-parts.c.inc
-+++ b/fpu/softfloat-parts.c.inc
-@@ -433,6 +433,15 @@ static FloatPartsN *partsN(addsub)(FloatPartsN *a, FloatPartsN *b,
-     bool b_sign = b->sign ^ subtract;
-     int ab_mask = float_cmask(a->cls) | float_cmask(b->cls);
- 
-+    /*
-+     * For addition and subtraction, we will consume an
-+     * input denormal unless the other input is a NaN.
-+     */
-+    if ((ab_mask & (float_cmask_denormal | float_cmask_anynan)) ==
-+        float_cmask_denormal) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
-+
-     if (a->sign != b_sign) {
-         /* Subtraction */
-         if (likely(cmask_is_only_normals(ab_mask))) {
-@@ -516,6 +525,10 @@ static FloatPartsN *partsN(mul)(FloatPartsN *a, FloatPartsN *b,
-     if (likely(cmask_is_only_normals(ab_mask))) {
-         FloatPartsW tmp;
- 
-+        if (ab_mask & float_cmask_denormal) {
-+            float_raise(float_flag_input_denormal_used, s);
-+        }
-+
-         frac_mulw(&tmp, a, b);
-         frac_truncjam(a, &tmp);
- 
-@@ -541,6 +554,10 @@ static FloatPartsN *partsN(mul)(FloatPartsN *a, FloatPartsN *b,
-     }
- 
-     /* Multiply by 0 or Inf */
-+    if (ab_mask & float_cmask_denormal) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
-+
-     if (ab_mask & float_cmask_inf) {
-         a->cls = float_class_inf;
-         a->sign = sign;
-@@ -664,6 +681,16 @@ static FloatPartsN *partsN(muladd_scalbn)(FloatPartsN *a, FloatPartsN *b,
-     if (flags & float_muladd_negate_result) {
-         a->sign ^= 1;
-     }
-+
-+    /*
-+     * All result types except for "return the default NaN
-+     * because this is an Invalid Operation" go through here;
-+     * this matches the set of cases where we consumed a
-+     * denormal input.
-+     */
-+    if (abc_mask & float_cmask_denormal) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
-     return a;
- 
-  return_sub_zero:
-@@ -693,6 +720,9 @@ static FloatPartsN *partsN(div)(FloatPartsN *a, FloatPartsN *b,
-     bool sign = a->sign ^ b->sign;
- 
-     if (likely(cmask_is_only_normals(ab_mask))) {
-+        if (ab_mask & float_cmask_denormal) {
-+            float_raise(float_flag_input_denormal_used, s);
-+        }
-         a->sign = sign;
-         a->exp -= b->exp + frac_div(a, b);
-         return a;
-@@ -713,6 +743,10 @@ static FloatPartsN *partsN(div)(FloatPartsN *a, FloatPartsN *b,
-         return parts_pick_nan(a, b, s);
-     }
- 
-+    if ((ab_mask & float_cmask_denormal) && b->cls != float_class_zero) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
-+
-     a->sign = sign;
- 
-     /* Inf / X */
-@@ -751,6 +785,9 @@ static FloatPartsN *partsN(modrem)(FloatPartsN *a, FloatPartsN *b,
-     int ab_mask = float_cmask(a->cls) | float_cmask(b->cls);
- 
-     if (likely(cmask_is_only_normals(ab_mask))) {
-+        if (ab_mask & float_cmask_denormal) {
-+            float_raise(float_flag_input_denormal_used, s);
-+        }
-         frac_modrem(a, b, mod_quot);
-         return a;
-     }
-@@ -771,6 +808,10 @@ static FloatPartsN *partsN(modrem)(FloatPartsN *a, FloatPartsN *b,
-         return a;
-     }
- 
-+    if (ab_mask & float_cmask_denormal) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
-+
-     /* N % Inf; 0 % N */
-     g_assert(b->cls == float_class_inf || a->cls == float_class_zero);
-     return a;
-@@ -801,6 +842,10 @@ static void partsN(sqrt)(FloatPartsN *a, float_status *status,
-     if (unlikely(a->cls != float_class_normal)) {
-         switch (a->cls) {
-         case float_class_denormal:
-+            if (!a->sign) {
-+                /* -ve denormal will be InvalidOperation */
-+                float_raise(float_flag_input_denormal_used, status);
-+            }
-             break;
-         case float_class_snan:
-         case float_class_qnan:
-@@ -1431,6 +1476,9 @@ static FloatPartsN *partsN(minmax)(FloatPartsN *a, FloatPartsN *b,
-         if ((flags & (minmax_isnum | minmax_isnumber))
-             && !(ab_mask & float_cmask_snan)
-             && (ab_mask & ~float_cmask_qnan)) {
-+            if (ab_mask & float_cmask_denormal) {
-+                float_raise(float_flag_input_denormal_used, s);
-+            }
-             return is_nan(a->cls) ? b : a;
+diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
+index 64994d3212f..6c20293961a 100644
+--- a/target/arm/tcg/translate-a64.c
++++ b/target/arm/tcg/translate-a64.c
+@@ -8744,7 +8744,7 @@ static bool do_cvtf_scalar(DisasContext *s, MemOp esz, int rd, int shift,
+         } else {
+             gen_helper_vfp_uqtod(tcg_double, tcg_int, tcg_shift, tcg_fpstatus);
          }
+-        write_fp_dreg(s, rd, tcg_double);
++        write_fp_dreg_merging(s, rd, rd, tcg_double);
+         break;
  
-@@ -1455,6 +1503,10 @@ static FloatPartsN *partsN(minmax)(FloatPartsN *a, FloatPartsN *b,
-         return parts_pick_nan(a, b, s);
-     }
- 
-+    if (ab_mask & float_cmask_denormal) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
-+
-     a_exp = a->exp;
-     b_exp = b->exp;
- 
-@@ -1524,6 +1576,10 @@ static FloatRelation partsN(compare)(FloatPartsN *a, FloatPartsN *b,
-     if (likely(cmask_is_only_normals(ab_mask))) {
-         FloatRelation cmp;
- 
-+        if (ab_mask & float_cmask_denormal) {
-+            float_raise(float_flag_input_denormal_used, s);
-+        }
-+
-         if (a->sign != b->sign) {
-             goto a_sign;
+     case MO_32:
+@@ -8754,7 +8754,7 @@ static bool do_cvtf_scalar(DisasContext *s, MemOp esz, int rd, int shift,
+         } else {
+             gen_helper_vfp_uqtos(tcg_single, tcg_int, tcg_shift, tcg_fpstatus);
          }
-@@ -1549,6 +1605,10 @@ static FloatRelation partsN(compare)(FloatPartsN *a, FloatPartsN *b,
-         return float_relation_unordered;
-     }
+-        write_fp_sreg(s, rd, tcg_single);
++        write_fp_sreg_merging(s, rd, rd, tcg_single);
+         break;
  
-+    if (ab_mask & float_cmask_denormal) {
-+        float_raise(float_flag_input_denormal_used, s);
-+    }
-+
-     if (ab_mask & float_cmask_zero) {
-         if (ab_mask == float_cmask_zero) {
-             return float_relation_equal;
-@@ -1588,8 +1648,10 @@ static void partsN(scalbn)(FloatPartsN *a, int n, float_status *s)
-     case float_class_zero:
-     case float_class_inf:
+     case MO_16:
+@@ -8764,7 +8764,7 @@ static bool do_cvtf_scalar(DisasContext *s, MemOp esz, int rd, int shift,
+         } else {
+             gen_helper_vfp_uqtoh(tcg_single, tcg_int, tcg_shift, tcg_fpstatus);
+         }
+-        write_fp_sreg(s, rd, tcg_single);
++        write_fp_hreg_merging(s, rd, rd, tcg_single);
          break;
--    case float_class_normal:
-     case float_class_denormal:
-+        float_raise(float_flag_input_denormal_used, s);
-+        /* fall through */
-+    case float_class_normal:
-         a->exp += MIN(MAX(n, -0x10000), 0x10000);
-         break;
+ 
      default:
-@@ -1609,6 +1671,10 @@ static void partsN(log2)(FloatPartsN *a, float_status *s, const FloatFmt *fmt)
-     if (unlikely(a->cls != float_class_normal)) {
-         switch (a->cls) {
-         case float_class_denormal:
-+            if (!a->sign) {
-+                /* -ve denormal will be InvalidOperation */
-+                float_raise(float_flag_input_denormal_used, s);
-+            }
-             break;
-         case float_class_snan:
-         case float_class_qnan:
 -- 
 2.34.1
 

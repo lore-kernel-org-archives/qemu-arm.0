@@ -1,128 +1,111 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp974266njk;
-        Fri, 24 Jan 2025 09:42:21 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXMWY0O67+cys7fgVM2fRBcyCSdXNm3wzwLvsFxo101fZZuZZNh1UvUi1PklOnQbnHz9rFLNxJUjkteWA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFA+stc0VgMrqH3KGnZ9aOxlP4jpQJ81LcHbKiP57RzYJLpNyTjaE90hdpj4dlP05cRhokw
-X-Received: by 2002:a05:6214:246c:b0:6d8:d5f6:8c72 with SMTP id 6a1803df08f44-6e1b216c30emr524310286d6.19.1737740541109;
-        Fri, 24 Jan 2025 09:42:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737740541; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp976456njk;
+        Fri, 24 Jan 2025 09:46:20 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUCtVKC8VCJF2zB9BjjSxJCTCWMW5DygOrzqC6+WVR39D8nNtZ6k4/PnQEcv+xOX3HbdWE+eJCzLIUxrQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IHbDs0Z76CRj3YUI0z8gpDQGQbWSTPjsRrt6K7QE6zBr1qBwY7HSfdDo6n5YROR7VC2cSBq
+X-Received: by 2002:a05:620a:44c4:b0:7b1:52a9:ae1d with SMTP id af79cd13be357-7be631e5789mr5431807585a.6.1737740780498;
+        Fri, 24 Jan 2025 09:46:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737740780; cv=none;
         d=google.com; s=arc-20240605;
-        b=efVq52aeeBnAomIPxrHUuxHQIU9xzxbCLvbQvcSj1QqCnVN/YtAvxfOCCE+5930US8
-         PBzwdel5HAz/LDFqwy82M93oC7njJD9ejtN3LiLPnJzGHOSDfFTWFLLSVRRZWREscB11
-         Dg7y5QY4hveVJVx6jiwdfgHKUt8Oi0rHlIV8nY83PbWJ1oeh8+jU4JY7uAHA2jt/FgU0
-         4+DyNRxWAEhGb8qJBaFgA2FlGwPWokFJdh6Sb2r5P3n4DO5r075D6NTW85biK66mJobY
-         Ij5AqVn+QgKjyKa8BMketiYgJy4657G8/edCe7UaiYJErf1Lna0Dn+8KC4AASvUK9WtY
-         N60w==
+        b=cj4Bqvy82gyv2zttapfeUj610ue18OG2zwJqW3Ndo15+0l2YZmNzfO5OznSUsXosah
+         5NDLGgLVxtoyyLQiTe4IJFq19ruzGlI80+AEmhS+catbezh4bh9FobXxsBsXoSnF21+s
+         4piXiuGgRQOEi7PoSZI1Q9ht3PTZO+cVJQJWAvUPHESWSXJJRAm37wLFZT7eceJoVvHJ
+         TGuDkbiq7xp8SxR9w7O/92qcrg71GaL4vn5Bnbuui6frosepEAG+EsBOlwZErGlhU5WQ
+         WORiiqvxhdFNYZXApHqXtDD+IEMn5BbNtW4fX7kinMlAD0Z1unjiG0cjc0q+d8JK8d97
+         Ef1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:from:content-language:references:cc:to:subject
-         :user-agent:mime-version:date:message-id:dkim-signature;
-        bh=a43/7Bt4MW4XTo3TsuSDc+PocOKZb0hbjZ5CqEhuwHg=;
-        fh=7dUP2lGJ2DatqV2Tdbextv1prvMNNP7oQPaohiwa/pU=;
-        b=O9U3zATR3m/Iei3wSNb+U7Y32NyDIXgfH+/7LTLLTwhjn98CIDXf8I9ePLiGKlrLvg
-         6lZ8MQnByr9q/6Yh+YuoDrhkAjapw7/5Z7hSUZtx+xyko48Sl1g8pQe4gkXmRUlhjbT8
-         I08EwfMYVTTugiq+3VRfnzq2ZicK5ZmHokNsFVPK/7pmPFPgML/QiIJi0Gyx922Xs2IW
-         407mS3YDqH82et9pGOP+T+X7RzX2NH+NUWIFdimTC7ZsLL/LiGfnX66xa7MhSBvMQFNc
-         U1DKkD8yu1pBUWsCrncNymZtjfrK8+SNaj+A/BELuzlNTRy6q0Nca4s4K23dl53tRf35
-         QOUA==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=AB9Mxv8gRSN96n4mOkjaOuioERIcyeGoEiie8rKPdcE=;
+        fh=NNCxpP+LUq2TWaETo4sa5JWl4CrpGNm0th8/N39SpMY=;
+        b=A9sEdNy5sMxhYpTE6jv/lw3Ja8yR9Hq/kr2zqR4eMIbb76OAGP0dg4Of7WC2IdAnaj
+         7U+Z29KaXdDsokyuhCtThH7/Z3NKPpKOwo3wxpwJVHflnxbZ0eTyOG+1GrST9Q1UkTQT
+         WHbF0jAxCiCa/w1U+iiJcltZzIfErbM1otsq7N9j+TUk3QsoQXHgK6+0Se1LPUBUgWAu
+         iq4Dud/y9w0PruKisz2puTZFkMJNkeeGuFdiYrLiOy/Dq6+8yCR76iE81BL+Bhg6Pcud
+         3kQ7885Puf0hhSORQHw0pyKlZbTvJeTx4ukPEdsrHsOPcd7AOg5ndU181CUqbffzHgM+
+         JMJA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NeMqTW7i;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Oc6tMHiV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e206134b5dsi26446256d6.498.2025.01.24.09.42.21
+        by mx.google.com with ESMTPS id d75a77b69052e-46e66ba6c6dsi30261241cf.533.2025.01.24.09.46.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jan 2025 09:42:21 -0800 (PST)
+        Fri, 24 Jan 2025 09:46:20 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NeMqTW7i;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Oc6tMHiV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tbNgv-0006Q8-2l; Fri, 24 Jan 2025 12:42:01 -0500
+	id 1tbNkV-0007Xl-D6; Fri, 24 Jan 2025 12:45:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tbNgq-0006Ga-MZ
- for qemu-arm@nongnu.org; Fri, 24 Jan 2025 12:41:57 -0500
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tbNgm-00038P-Nh
- for qemu-arm@nongnu.org; Fri, 24 Jan 2025 12:41:55 -0500
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-43626213fffso22627155e9.1
- for <qemu-arm@nongnu.org>; Fri, 24 Jan 2025 09:41:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737740509; x=1738345309; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=a43/7Bt4MW4XTo3TsuSDc+PocOKZb0hbjZ5CqEhuwHg=;
- b=NeMqTW7i9zo51NKZHnyLgInlzOayUCfC93T/Uc5c0UEuDTbqo1+GSSIUPrDRT8L3+0
- fHA+2qYmjrI59EUJEBCwciZEhqK8njAcVCffJzgK15BYp3RHrkeX9Gjim1w+8dzviQLt
- w+GGqAdcIG6PH/5DQ77KaLdg29uehZihUspmVI3rO9AtVQVRxe2MENctWFNF3HB+kmzg
- S7HN2SFQCkEBz5Z3gwbtRzbMjEuy10cfJUvAjU7e1wBHgU/9GlRKNVGHBsQJqkWZ7EPH
- P7kA3HvrouBe4+z4lWWLH0iuINyU4199wXdTUrE1pHpQAAJ0skmvWR7B7sEqZHvm6/Nv
- k96w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737740509; x=1738345309;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=a43/7Bt4MW4XTo3TsuSDc+PocOKZb0hbjZ5CqEhuwHg=;
- b=hZk1CG2lYoe/5oHTAVtMvjFwwcwO1bhn+Mri7P1qrjdk4dEVP6d7EtGt9/OEVBa0DK
- +CJsSoDxeVO69PWyLimAr5AVT3bahiymvwWRIR416nvuxSECGaEyzNTKFIrhJ34BLjnN
- Q6SCv34DSv9bVWOea0L+PS5kvZ+nQNLWDRwq2SgXYJCHvQMBoy43lR3ysQ6aeo8/xWVp
- v1+oL0bNTY5IXTeTchRNbnRkz+VrkWsZ5tmhFlu0F50R6PdoWRSG1ocgVPV42xrBRlZV
- vwfrEEHW2GXT/AOHJre/jWr9rXWestWKTQPKagB0p30uCyjwQFDc+MHA5fGCZkeXujTd
- 4rUA==
-X-Gm-Message-State: AOJu0YxsnP9xKMbFXbZm9KBDqSSSRoPL4SK7dsWOOlXDZ2r+AkN7JyEe
- ltaCAb8arzzxL9OdhNB9fMkLtvuLJVV1Eq48N8XjjkO5DOzrfYGI2B6fE9oZkkk=
-X-Gm-Gg: ASbGncs4LZgEXhD7vPmZflOFU+KMoAFCCPnU25DgV8N4/UwIgQ43CXNLD2ayCrkZBTl
- bwkny4SXh+69NqNA/htg/065uzmfNoiIuaja278xeL+7gU9uCgmw+ZT6et9g1uYn9hO9UbBkyEK
- uElQ5TF7zdbG5GbVLS/0V9+z75FqrUlJIaHqpaRYY+vgZjXuXw4vsdw15Fm8vtVeR/LmZaHNz/J
- 8a3qsg7jtSogwVnd0GcpKAmsNHJ0sPt20UG+2B8f6sp1JaAhwxLkbleZuGOz+MqDqGe022KqI2b
- m77ByBlE1mBSa6nHfEzd9UIEqk9CWayUwhcuxIjqdT6mrRA3
-X-Received: by 2002:a05:600c:1c86:b0:434:f1bd:1e40 with SMTP id
- 5b1f17b1804b1-438b88511eamr71347785e9.6.1737740509374; 
- Fri, 24 Jan 2025 09:41:49 -0800 (PST)
-Received: from [192.168.69.181] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438bd54c0f7sm33208455e9.28.2025.01.24.09.41.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Jan 2025 09:41:48 -0800 (PST)
-Message-ID: <3672ec62-191d-4e89-bd99-cc10ef588c0e@linaro.org>
-Date: Fri, 24 Jan 2025 18:41:48 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tbNkJ-0007JT-E7
+ for qemu-arm@nongnu.org; Fri, 24 Jan 2025 12:45:31 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tbNkG-0003lC-Ce
+ for qemu-arm@nongnu.org; Fri, 24 Jan 2025 12:45:29 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1737740726;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=AB9Mxv8gRSN96n4mOkjaOuioERIcyeGoEiie8rKPdcE=;
+ b=Oc6tMHiVW9OXabj0gANWhxyXIVg5S31EZjJ8HLxruzChSuyJhsWpLKcVMOd7wGOWpETDWd
+ +LXgwv6nGebW6aagOCK2IL174hJGnak4AP1NyxI04kXfCWGV9xXlwu/f8+Vb6/QfNyHj/V
+ vSZ/48VLfPynNk+XzuUyqSg2ey04ZDY=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-342-o2ZFVYETPXK_1BZ0ktEMOQ-1; Fri,
+ 24 Jan 2025 12:45:22 -0500
+X-MC-Unique: o2ZFVYETPXK_1BZ0ktEMOQ-1
+X-Mimecast-MFC-AGG-ID: o2ZFVYETPXK_1BZ0ktEMOQ
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D12241956055; Fri, 24 Jan 2025 17:45:19 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.150])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id EBDA71800365; Fri, 24 Jan 2025 17:45:08 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] docs/system/arm/aspeed: Remove tacoma-bmc from the
+ documentation
+Date: Fri, 24 Jan 2025 18:45:07 +0100
+Message-ID: <20250124174507.27348-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 20/28] target/riscv: Move has_work() from CPUClass to
- SysemuCPUOps
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-riscv@nongnu.org,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20250121142341.17001-1-philmd@linaro.org>
- <20250121142341.17001-21-philmd@linaro.org>
- <0bd61928-5bfc-44c7-8fc7-333f8e2e0b77@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <0bd61928-5bfc-44c7-8fc7-333f8e2e0b77@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.996,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,59 +120,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 52NjZ2rQEm7y
+X-TUID: n5XqXGwAD4tX
 
-On 24/1/25 18:17, Richard Henderson wrote:
-> On 1/21/25 06:23, Philippe Mathieu-Daudé wrote:
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   target/riscv/cpu.h       | 9 +++++----
->>   target/riscv/internals.h | 3 ---
->>   target/riscv/cpu.c       | 8 +++-----
->>   3 files changed, 8 insertions(+), 12 deletions(-)
->>
->> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
->> index 97713681cbe..32e8e064f36 100644
->> --- a/target/riscv/cpu.h
->> +++ b/target/riscv/cpu.h
->> @@ -552,10 +552,6 @@ int riscv_cpu_gdb_read_register(CPUState *cpu, 
->> GByteArray *buf, int reg);
->>   int riscv_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
->>   int riscv_cpu_hviprio_index2irq(int index, int *out_irq, int 
->> *out_rdzero);
->>   uint8_t riscv_cpu_default_priority(int irq);
->> -uint64_t riscv_cpu_all_pending(CPURISCVState *env);
->> -int riscv_cpu_mirq_pending(CPURISCVState *env);
->> -int riscv_cpu_sirq_pending(CPURISCVState *env);
->> -int riscv_cpu_vsirq_pending(CPURISCVState *env);
->>   bool riscv_cpu_fp_enabled(CPURISCVState *env);
->>   target_ulong riscv_cpu_get_geilen(CPURISCVState *env);
->>   void riscv_cpu_set_geilen(CPURISCVState *env, target_ulong geilen);
->> @@ -576,6 +572,11 @@ int riscv_cpu_max_xlen(RISCVCPUClass *mcc);
->>   bool riscv_cpu_option_set(const char *optname);
->>   #ifndef CONFIG_USER_ONLY
->> +bool riscv_cpu_has_work(CPUState *cs);
->> +uint64_t riscv_cpu_all_pending(CPURISCVState *env);
->> +int riscv_cpu_mirq_pending(CPURISCVState *env);
->> +int riscv_cpu_sirq_pending(CPURISCVState *env);
->> +int riscv_cpu_vsirq_pending(CPURISCVState *env);
->>   void riscv_cpu_do_interrupt(CPUState *cpu);
->>   void riscv_isa_write_fdt(RISCVCPU *cpu, void *fdt, char *nodename);
->>   void riscv_cpu_do_transaction_failed(CPUState *cs, hwaddr physaddr,
->> diff --git a/target/riscv/internals.h b/target/riscv/internals.h
->> index 67291933f84..86def39aec2 100644
->> --- a/target/riscv/internals.h
->> +++ b/target/riscv/internals.h
->> @@ -142,9 +142,6 @@ static inline float16 check_nanbox_h(CPURISCVState 
->> *env, uint64_t f)
->>       }
->>   }
->> -/* Our implementation of CPUClass::has_work */
->> -bool riscv_cpu_has_work(CPUState *cs);
->> -
-> 
-> Why move the declaration from internals.h to cpu.h?
+The tacoma-bmc machine has recently been removed, so let's remove
+it from the documentation now, too.
 
-I can't see a compelling reason, so I'll keep it there but add
-!CONFIG_USER_ONLY guard.
+Fixes: 2b1b66e01f ("arm: Remove tacoma-bmc machine")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ docs/system/arm/aspeed.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index fa4aa28eef..97fd6a0e7f 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -1,5 +1,5 @@
+-Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``tacoma-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+-==================================================================================================================================================================================================================================================================================================================================================================================================================================
++Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
++==================================================================================================================================================================================================================================================================================================================================================================================================================
+ 
+ The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+ Aspeed evaluation boards. They are based on different releases of the
+-- 
+2.48.1
 

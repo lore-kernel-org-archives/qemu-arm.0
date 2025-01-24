@@ -1,235 +1,289 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp484938njk;
-        Thu, 23 Jan 2025 15:44:17 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVKJwao4PsKkkFCrAjlm88GLMK1xhlWoBBoV0X/pOvyeZsY1ihLHvtnMmwasloRziAAh32g9pwiG2Fn4w==@linaro.org
-X-Received: by 2002:a05:600c:1d14:b0:436:46f9:4fc6 with SMTP id 5b1f17b1804b1-438913d63cfmr256531455e9.8.1737675857724;
-        Thu, 23 Jan 2025 15:44:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737675857; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp649828njk;
+        Fri, 24 Jan 2025 00:00:43 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCWpb5caSFJw43pepOjmsFi8KQArpBwJ9kg9UpvwxG3RH815frcnDmY3GRgrDW1dCbTEd6OeWwvK1Io97g==@linaro.org
+X-Google-Smtp-Source: AGHT+IHMQbw98TkZWL/QWWwlr+jKGLDAEm+ki/ewaax07vs23Fc7akbH55Jv9EggvDMa8M3RDsF9
+X-Received: by 2002:a17:906:6d4e:b0:ab3:9c4c:97ca with SMTP id a640c23a62f3a-ab39c4cb084mr2265874166b.29.1737705643709;
+        Fri, 24 Jan 2025 00:00:43 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1737705643; cv=pass;
         d=google.com; s=arc-20240605;
-        b=CEd6Yxzcs63CcLPxGrpWcf7d8xuFpuxyyS9G6lKaKIY0xN2P3cXDNbFxlTdHEJlkl+
-         tA3gyxfC+Wk6/3SlTnkb19AFAu/Q2Hz4n+QkkWE1Lp73+VeqnYhjG7i5BQK97Q1eMVcA
-         50/UqbHD6oXh8zj+O81uNUlqoYDDW4i1GMOWhueT9Exm81A+++sxuowUbSx+el7oJdIl
-         Sb66epyE0LUezR4AmsjS87bIA0RIMoD+vG+Ne70jL3WPQsQActfIjRUiEaKD29Jdubp+
-         7UbzmNKFjw/YPudbQwOpi/WFJdeVotXYV0+RJXABG218WXM2P8dFbMiaV8Kshs+BSzTs
-         dXBQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=SrJqTercMM7Oiv7TI6NgScSjNQ/Q43/m4EWNljCwQJg=;
-        fh=DHFKAsyf5io0wrO7pwGQ0pZb3rj5or7NDjEkGmkt6YI=;
-        b=bVxj00301QFE6spLGFiE6ieFLVmEXZo2xP2rHtHDudkjAu18nbAdqkZVgFSFGf9LtD
-         7xdNrMZfGbCG4x0tmvIed2g3kv2fChzOhyjuxiRO8b1TtrBufceFIL1sD+TaxGNovpJf
-         mzJA6kEzBgux2ht3XP/mYsVJQsrUQ1IdtZG2LxDFw5t2gdCoLh+3ZKOd63N2OBdNeijM
-         hzC7nClMfWw9PjdmDNaDWlcGAaMww4V0N5lAD5D7tt4ob5Fl0W5Bj5iDyWdlTzhCz6yE
-         78auQbAt9esvQ22rsnn0ASF0KCMu5huQ2hTtk9w0QdJq1CEUaYhAUFYPO4WRBdXfAqrn
-         oBrg==;
+        b=MgRMqx91ukiNL1BppQts7Vu3cfqIw+gVBGYEolmCGXDQ3z6RDwMEUgW9o1SrUynESd
+         n4R64gz3Y2wRHQnxS7dq01XNHWQktn9nhY9QnIriuUjKnXwHusHNEUEfYL3sKZg885x/
+         oz4PBxPISchH6A+xP98hj+5T7qdKMaDspnrC5AjVipy7fWz7az1uMqyZn/gitBYA/uuJ
+         kZNimp4foZv1P8WaJppquF6MT12Ydc6ZcNmQ86zYb0lSDKJbiN1wfEtol94fQpFoJyS0
+         w9Ztq20hWrvo7cmyOTdfb/vdNWEiEm3pWnYN+xPszzrZZ7thdEn46aH6CDbeoTt+/TrZ
+         CiaQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=in-reply-to:content-disposition:mime-version:list-unsubscribe
+         :list-subscribe:list-id:precedence:references:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=K5Hkku5GFmFBCrBVRZFIWqq2I6M4HbA32E8aZEIsWIs=;
+        fh=2GR5D+c8TR30bvRaBLk3kRqIUZLRMZuj+uRFxE5hX28=;
+        b=c3P3w5L+v+cc+RPLBubBPhpW/t5wPbl3iMPe+cx/94O+k7HZo1A0CjaOHuk0A2BvWE
+         7o0xhgGX90LtLH7Tn0tlk2/A2OgoFv5hgbGxWn1rYneZu9UatJXcva8Lm+YfGJYPtWTr
+         JWsJYaI/TESq8xFkgYRO+kpQwnmUI15jnZe1KWIo90qaQDcxOlv2K8BRCRo5IOPoIvrD
+         o/EfWueHOGwZ/ByrBdxAs+w9J8pF6mc6Fq52N4AZXKb7MKWfHSDx6JKGZ1C9Y3eFWiTp
+         RmKII/YFuYi1U16Iv4TlcTRbTi4ESTDbNytuMtRzC2npkxhwHzVy0ps0MIIANqUNb1ia
+         4DaA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BAanAu+z;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-Return-Path: <philmd@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 5b1f17b1804b1-438bd4b768fsor1952875e9.1.2025.01.23.15.44.17
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=iPVrV5a8;
+       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
+       spf=pass (google.com: domain of kvm+bounces-36470-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-36470-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <kvm+bounces-36470-alex.bennee=linaro.org@vger.kernel.org>
+Received: from am.mirrors.kernel.org (am.mirrors.kernel.org. [2604:1380:4601:e00::3])
+        by mx.google.com with ESMTPS id a640c23a62f3a-ab675e25b1asi96111166b.26.2025.01.24.00.00.43
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 23 Jan 2025 15:44:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 24 Jan 2025 00:00:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-36470-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) client-ip=2604:1380:4601:e00::3;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BAanAu+z;
-       spf=pass (google.com: domain of philmd@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=philmd@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737675857; x=1738280657; darn=linaro.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=SrJqTercMM7Oiv7TI6NgScSjNQ/Q43/m4EWNljCwQJg=;
-        b=BAanAu+z2KDxLfGKeNb3KUTDVTFAU5oUhUj7JAV7nfxpNCE3Klhzb4iFYC7ljsbmjd
-         YfxjLb4lZgPpi6NVHbbHIamjEiE5SBHUZHbvvdp1BuX2KS1tVmS00MQHwi9suvd22XmL
-         LAjRxqgkFHuMs0M8tSF37ybrvO3lNdB4DixkQM0Dsh3tA7ODUGzZAOJovI9lGGTlXj8Y
-         TQcZeTh8MRoTlGAfQXKWmf1G6liCX7TaKt37rpPsdIb3V37bB0cDuHjbWHh6AaOdfFNv
-         5xH7OrELRr8xlcUx0/VHt97D9qTMLsmJmBVms5K4dJnhINDVxs33vPyiaaBYoWt82uza
-         w6Rg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737675857; x=1738280657;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=SrJqTercMM7Oiv7TI6NgScSjNQ/Q43/m4EWNljCwQJg=;
-        b=V/bTR/kZxRaJxY4+PljxqVyg88eVpAywB8EQ06iUMz/NyVvRI9m4d5bzgSrHDQk3V5
-         Jovyr+tYXEsDjd0fdqJLBOP5C+wClbfw6x/QsBL1pviaF/rAr3KD+pYCpJCiS9amhHuy
-         WeeBdgkMZ5CGRMlTEl516evQ0YaQ9rIcTTcJUnEHvLeWjbjrl4gO+Kvmb/YV+u0mfmdO
-         D8irG82pw8BYW0OZLUrTUz4J1eVmxNJEHkVHrxeHi33tCmFYCTHRSZj0RVnCs+hoqbYB
-         AwtoN27OCn8yy82AWjfO+Lo6jEO+wOID9fTpopPlYclXhBWN03AOHnN7O+uZI9YkF1ik
-         BRXQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUzKiDGyEWy0ZlSSfaX48DKfBhbXFpu5HfSgQg/92oHyjSo/DUudKxlb5QytEhUgqKrRmcAUWx1MqxZ8g==@linaro.org
-X-Gm-Message-State: AOJu0YzX/Bs+vgNGlmhziEId+XoKN0B7h+nPN4HINOby8uKjhODw41bG
-	oYtNx6jK4e07ebgqav2QPOO3QzlTMRiiOdE44UP0u1NNkQWmHFrNl9SnsWxnt8g1/g==
-X-Gm-Gg: ASbGncte3nYikg/4IHavJFFsC1fwDXy306kOGXdhpzc0+kwnkW83Njxn/GGLFFHAKwo
-	UKVuwoSFtbd0emc3HZ39oGqpYWIXmtM/ltAqICVaWiCXQQCgScqX9H4QjAbZBOTy4B5IO5Vpct/
-	Xbz4nbqTpcVSfxJhVbYnTGKTfDtB5L4Zv9PFK9yX4rxrWgCPwDck+FlnJ55EKsMA7dybhhOfZCE
-	6b3N3r8QZp0qCE20alyOeZ6nhbDh8c1zoBpyTR/qCSmm/vWvrATG4vvZNG7V4P9lxkn58P5Dy4Y
-	OpKhuF/zB7XFZnQqX978m+RT4pw+N5qxfCaR861ITEuWV8ERa9UHdzrf5YUnIrGFzA==
-X-Google-Smtp-Source: AGHT+IGBiB8E0eTSoI28+V9cp1gWnvQIF0NcnM5MrTMqS5rNZ7M1PFDJt5j8Or2lR2bn/A8RFfyqaQ==
-X-Received: by 2002:a05:600c:a09:b0:435:9ed3:5688 with SMTP id 5b1f17b1804b1-438913f86dcmr267594425e9.18.1737675857123;
-        Thu, 23 Jan 2025 15:44:17 -0800 (PST)
-Return-Path: <philmd@linaro.org>
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net. [88.187.86.199])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd54c098sm6544235e9.31.2025.01.23.15.44.15
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 23 Jan 2025 15:44:16 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-arm@nongnu.org,
-	Igor Mammedov <imammedo@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	kvm@vger.kernel.org,
-	qemu-ppc@nongnu.org,
-	qemu-riscv@nongnu.org,
-	David Hildenbrand <david@redhat.com>,
-	qemu-s390x@nongnu.org,
-	xen-devel@lists.xenproject.org,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 00/20] accel: Simplify cpu-target.c (omnibus)
-Date: Fri, 24 Jan 2025 00:43:54 +0100
-Message-ID: <20250123234415.59850-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
+       dkim=pass header.i=@intel.com header.s=Intel header.b=iPVrV5a8;
+       arc=pass (i=1 dkim=pass dkdomain=intel.com dmarc=pass fromdomain=linux.intel.com);
+       spf=pass (google.com: domain of kvm+bounces-36470-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:4601:e00::3 as permitted sender) smtp.mailfrom="kvm+bounces-36470-alex.bennee=linaro.org@vger.kernel.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
+	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by am.mirrors.kernel.org (Postfix) with ESMTPS id 73EC318837E4
+	for <alex.bennee@linaro.org>; Fri, 24 Jan 2025 08:00:47 +0000 (UTC)
+Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id ED0B11DB154;
+	Fri, 24 Jan 2025 08:00:26 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b="iPVrV5a8"
+Received: from mgamail.intel.com (mgamail.intel.com [192.198.163.8])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C3961D9A6F
+	for <kvm@vger.kernel.org>; Fri, 24 Jan 2025 08:00:24 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=192.198.163.8
+ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
+	t=1737705626; cv=none; b=U59DOafGt7X2VovTWmmXxM9BKwyhMhXD/rErFGBWDtYn6dqEczJv5FBYQYAmUSyZRXNpoa8byETmjqPND8R8wGWqazx0QdC1u6P8xSgB7cC1HSHUTYrrmQHdzD2+2gMmqqR9li/vh5vprje//gNZzp52OZP62iaucgtzy2ulGIw=
+ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
+	s=arc-20240116; t=1737705626; c=relaxed/simple;
+	bh=vraGi2N1692lrsWeJJ0uu42/dKCVO3ev6i4xeRW/SPE=;
+	h=Date:From:To:Cc:Subject:Message-ID:References:MIME-Version:
+	 Content-Type:Content-Disposition:In-Reply-To; b=RZZxaSvXNQy7YM1x/UG6DhNO3niz2laS2XJK8KhM+fZKV3ban1y87AC7rib2jbfZiSTv3pwf++ddoouibv1O/4xg/2aHuiXzr58VodOdTBT7EvILRTNDuQuCYobIVTPUEAacd4GNatLiacdxnA+TOQJjOVSp0ODzD1/XzmUzkDM=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com; spf=none smtp.mailfrom=linux.intel.com; dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.b=iPVrV5a8; arc=none smtp.client-ip=192.198.163.8
+Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=linux.intel.com
+Authentication-Results: smtp.subspace.kernel.org; spf=none smtp.mailfrom=linux.intel.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1737705624; x=1769241624;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=vraGi2N1692lrsWeJJ0uu42/dKCVO3ev6i4xeRW/SPE=;
+  b=iPVrV5a854HuRzt/0skKPckXerUroBqU9xLIkAhoYXg7yQhCkUCNSFjt
+   qrb6xUoHlt/GusO6L2oOlg5q91Xd/UJbLHlQW9fhxFtEJGehIh1kTFoDQ
+   6L2Y5fK5jqfe5xkWGcoPKCTvPoNHvL7mBN1NW8MHUQAOH1dYGHMaBVFA2
+   ZzS60HPsVk1Z2CRdBkzAcV66Ud1xRiVJWr57fwqIxZR8f4uyC85dOSiC7
+   dJNTiFRfEJjFY77cyc8qu9DZcqdaWoKhKXygPJgwURPgJ1RGaUchOjLnq
+   7Zwi9f8qFfUciJd3kPZWsAehGFRPPs/FTTIpUVO96qw4SSwUy3YsMDKby
+   Q==;
+X-CSE-ConnectionGUID: xbWyt1fOROOfyWAYwEXTNg==
+X-CSE-MsgGUID: ZfH5HfeUStSCj1xoldAltQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11324"; a="55777004"
+X-IronPort-AV: E=Sophos;i="6.13,230,1732608000"; 
+   d="scan'208";a="55777004"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2025 00:00:23 -0800
+X-CSE-ConnectionGUID: bE10kcECQN2Wk7Meqpyilw==
+X-CSE-MsgGUID: 6kwZ9b72RjmqMF9SAtVmrg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.12,224,1728975600"; 
+   d="scan'208";a="108589618"
+Received: from ly-workstation.sh.intel.com (HELO ly-workstation) ([10.239.161.23])
+  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Jan 2025 00:00:19 -0800
+Date: Fri, 24 Jan 2025 16:00:13 +0800
+From: "Lai, Yi" <yi1.lai@linux.intel.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>,
+	Markus Armbruster <armbru@redhat.com>,
+	Michael Roth <michael.roth@amd.com>,
+	Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
+	Eduardo Habkost <eduardo@habkost.net>,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	Shaoqin Huang <shahuang@redhat.com>, Eric Auger <eauger@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+	Sebastian Ott <sebott@redhat.com>, Gavin Shan <gshan@redhat.com>,
+	qemu-devel@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+	Dapeng Mi <dapeng1.mi@intel.com>, Yi Lai <yi1.lai@intel.com>
+Subject: Re: [RFC v2 0/5] accel/kvm: Support KVM PMU filter
+Message-ID: <Z5NIjXYCvNtYohc+@ly-workstation>
+References: <20250122090517.294083-1-zhao1.liu@intel.com>
+Precedence: bulk
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-TUID: PAcjerHsYWw0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250122090517.294083-1-zhao1.liu@intel.com>
+X-TUID: HH6D0FYAa8x7
 
-Yet another cleanup series before respining the "extract TCG
-fields from CPUState" series. Before that, we try to clarify
-a bit the code around CPU creation. Target specific code is
-reduced further. Some intermixed User/System is separated,
-making maintenance simpler IMHO. Since my local branch is
-quite big, I tried to group here all the generic patches.
+On Wed, Jan 22, 2025 at 05:05:12PM +0800, Zhao Liu wrote:
+> Hi folks,
+> 
+> Sorry for the long wait, but RFC v2 is here at last.
+> 
+> Compared with v1 [1], v2 mianly makes `action` as a global parameter,
+> and all events (and fixed counters) are based on a unified action.
+> 
+> Learned from the discussion with Shaoqin in v1, current pmu-filter QOM
+> design could meet the requirements from the ARM KVM side.
+> 
+>
+
+Tested the v2 patches series with v6.13 kernel.
+
+The 3 supported event formats work correctly with both action "allow" and
+"deny". The x86-fixed-counter support also works as expected.
 
 Regards,
+Yi Lai
 
-Phil.
-
-Based-on: <20250123215609.30432-1-philmd@linaro.org>
-  "target/ppc: Move TCG code from excp_helper.c to tcg-excp_helper.c"
-
-Philippe Mathieu-Daudé (20):
-  qemu/compiler: Absorb 'clang-tsa.h'
-  user: Extract common MMAP API to 'user/mmap.h'
-  gdbstub: Check for TCG before calling tb_flush()
-  cpus: Cache CPUClass early in instance_init() handler
-  cpus: Keep default fields initialization in cpu_common_initfn()
-  accel/kvm: Remove unused 'system/cpus.h' header in kvm-cpus.h
-  accel/tcg: Build tcg_flags helpers as common code
-  accel/tcg: Restrict tlb_init() / destroy() to TCG
-  accel/tcg: Restrict 'icount_align_option' global to TCG
-  accel/tcg: Rename 'hw/core/tcg-cpu-ops.h' -> 'accel/tcg/cpu-ops.h'
-  accel: Rename 'hw/core/accel-cpu.h' -> 'accel/accel-cpu-target.h'
-  accel/accel-cpu-target.h: Include missing 'cpu.h' header
-  accel: Forward-declare AccelOpsClass in 'qemu/typedefs.h'
-  accel/tcg: Move cpu_memory_rw_debug() user implementation to
-    user-exec.c
-  cpus: Fix style in cpu-target.c
-  cpus: Restrict cpu_common_post_load() code to TCG
-  cpus: Have cpu_class_init_props() per user / system emulation
-  cpus: Have cpu_exec_initfn() per user / system emulation
-  cpus: Register VMState per user / system emulation
-  cpus: Build cpu_exec_[un]realizefn() methods once
-
- MAINTAINERS                                   |   4 +-
- accel/kvm/kvm-cpus.h                          |   2 -
- accel/tcg/internal-common.h                   |  13 +
- bsd-user/qemu.h                               |  13 +-
- .../accel-cpu.h => accel/accel-cpu-target.h}  |   7 +-
- .../tcg-cpu-ops.h => accel/tcg/cpu-ops.h}     |   0
- include/block/block_int-common.h              |   1 -
- include/block/graph-lock.h                    |   2 -
- include/exec/exec-all.h                       |  16 -
- include/exec/page-protection.h                |   2 -
- include/hw/core/cpu.h                         |   2 +
- include/qemu/clang-tsa.h                      | 114 -------
- include/qemu/compiler.h                       |  87 +++++
- include/qemu/thread.h                         |   1 -
- include/qemu/typedefs.h                       |   1 +
- include/system/accel-ops.h                    |   1 -
- include/system/cpus.h                         |   4 -
- include/user/mmap.h                           |  32 ++
- linux-user/user-mmap.h                        |  19 +-
- accel/accel-system.c                          |   1 +
- accel/accel-target.c                          |   2 +-
- accel/hvf/hvf-accel-ops.c                     |   1 +
- accel/kvm/kvm-accel-ops.c                     |   1 +
- accel/qtest/qtest.c                           |   1 +
- accel/stubs/tcg-stub.c                        |   4 -
- accel/tcg/cpu-exec-common.c                   |  34 +-
- accel/tcg/cpu-exec.c                          |  37 +--
- accel/tcg/cputlb.c                            |   2 +-
- accel/tcg/icount-common.c                     |   2 +
- accel/tcg/monitor.c                           |   1 -
- accel/tcg/tcg-accel-ops.c                     |   1 +
- accel/tcg/translate-all.c                     |   3 +-
- accel/tcg/user-exec-stub.c                    |  11 +
- accel/tcg/user-exec.c                         |  94 +++++-
- accel/tcg/watchpoint.c                        |   2 +-
- accel/xen/xen-all.c                           |   1 +
- block/create.c                                |   1 -
- bsd-user/signal.c                             |   2 +-
- cpu-common.c                                  |   1 -
- cpu-target.c                                  | 314 +-----------------
- gdbstub/system.c                              |   6 +-
- hw/core/cpu-common.c                          |  31 ++
- hw/core/cpu-system.c                          | 170 ++++++++++
- hw/core/cpu-user.c                            |  44 +++
- hw/mips/jazz.c                                |   2 +-
- linux-user/signal.c                           |   2 +-
- system/cpus.c                                 |   1 +
- system/globals.c                              |   1 -
- system/physmem.c                              |   2 +-
- target/alpha/cpu.c                            |   2 +-
- target/arm/cpu.c                              |   2 +-
- target/arm/tcg/cpu-v7m.c                      |   2 +-
- target/arm/tcg/cpu32.c                        |   2 +-
- target/arm/tcg/mte_helper.c                   |   2 +-
- target/arm/tcg/sve_helper.c                   |   2 +-
- target/avr/cpu.c                              |   2 +-
- target/avr/helper.c                           |   2 +-
- target/hexagon/cpu.c                          |   2 +-
- target/hppa/cpu.c                             |   2 +-
- target/i386/hvf/hvf-cpu.c                     |   2 +-
- target/i386/kvm/kvm-cpu.c                     |   2 +-
- target/i386/nvmm/nvmm-accel-ops.c             |   1 +
- target/i386/tcg/tcg-cpu.c                     |   4 +-
- target/i386/whpx/whpx-accel-ops.c             |   1 +
- target/loongarch/cpu.c                        |   2 +-
- target/m68k/cpu.c                             |   2 +-
- target/microblaze/cpu.c                       |   2 +-
- target/mips/cpu.c                             |   2 +-
- target/openrisc/cpu.c                         |   2 +-
- target/ppc/cpu_init.c                         |   2 +-
- target/ppc/kvm.c                              |   2 +-
- target/riscv/kvm/kvm-cpu.c                    |   2 +-
- target/riscv/tcg/tcg-cpu.c                    |   4 +-
- target/rx/cpu.c                               |   2 +-
- target/s390x/cpu.c                            |   2 +-
- target/s390x/tcg/mem_helper.c                 |   2 +-
- target/sh4/cpu.c                              |   2 +-
- target/sparc/cpu.c                            |   2 +-
- target/tricore/cpu.c                          |   2 +-
- target/xtensa/cpu.c                           |   2 +-
- tests/unit/test-bdrv-drain.c                  |   1 -
- tests/unit/test-block-iothread.c              |   1 -
- util/qemu-thread-posix.c                      |   1 -
- hw/core/meson.build                           |   5 +-
- 84 files changed, 590 insertions(+), 578 deletions(-)
- rename include/{hw/core/accel-cpu.h => accel/accel-cpu-target.h} (92%)
- rename include/{hw/core/tcg-cpu-ops.h => accel/tcg/cpu-ops.h} (100%)
- delete mode 100644 include/qemu/clang-tsa.h
- create mode 100644 include/user/mmap.h
- create mode 100644 hw/core/cpu-user.c
-
--- 
-2.47.1
+> Background
+> ==========
+> 
+> I picked up Shaoqing's previous work [2] on the KVM PMU filter for arm,
+> and now is trying to support this feature for x86 with a JSON-compatible
+> API.
+> 
+> While arm and x86 use different KVM ioctls to configure the PMU filter,
+> considering they all have similar inputs (PMU event + action), it is
+> still possible to abstract a generic, cross-architecture kvm-pmu-filter
+> object and provide users with a sufficiently generic or near-consistent
+> QAPI interface.
+> 
+> That's what I did in this series, a new kvm-pmu-filter object, with the
+> API like:
+> 
+> -object '{"qom-type":"kvm-pmu-filter","id":"f0","action":"allow","events":[{"format":"raw","code":"0xc4"}]}'
+> 
+> For i386, this object is inserted into kvm accelerator and is extended
+> to support fixed-counter and more formats ("x86-default" and
+> "x86-masked-entry"):
+> 
+> -accel kvm,pmu-filter=f0 \
+> -object pmu='{"qom-type":"kvm-pmu-filter","id":"f0","action":"allow","x86-fixed-counter":{"bitmap":"0x0"},"events":[{"format":"x86-masked-entry","select":"0xc4","mask":"0xff","match":"0","exclude":true},{"format":"x86-masked-entry","select":"0xc5","mask":"0xff","match":"0","exclude":true}]}'
+> 
+> This object can still be added as the property to the arch CPU if it is
+> desired as a per CPU feature (as Shaoqin did for arm before).
+> 
+> 
+> Introduction
+> ============
+> 
+> 
+> Formats supported in kvm-pmu-filter
+> -----------------------------------
+> 
+> This series supports 3 formats:
+> 
+> * raw format (general format).
+> 
+>   This format indicates the code that has been encoded to be able to
+>   index the PMU events, and which can be delivered directly to the KVM
+>   ioctl. For arm, this means the event code, and for i386, this means
+>   the raw event with the layout like:
+> 
+>       select high bit | umask | select low bits
+> 
+> * x86-default format (i386 specific)
+> 
+>   x86 commonly uses select&umask to identify PMU events, and this format
+>   is used to support the select&umask. Then QEMU will encode select and
+>   umask into a raw format code.
+> 
+> * x86-masked-entry (i386 specific)
+> 
+>   This is a special format that x86's KVM_SET_PMU_EVENT_FILTER supports.
+> 
+> 
+> Hexadecimal value string
+> ------------------------
+> 
+> In practice, the values associated with PMU events (code for arm, select&
+> umask for x86) are often expressed in hexadecimal. Further, from linux
+> perf related information (tools/perf/pmu-events/arch/*/*/*.json), x86/
+> arm64/riscv/nds32/powerpc all prefer the hexadecimal numbers and only
+> s390 uses decimal value.
+> 
+> Therefore, it is necessary to support hexadecimal in order to honor PMU
+> conventions.
+> 
+> However, unfortunately, standard JSON (RFC 8259) does not support
+> hexadecimal numbers. So I can only consider using the numeric string in
+> the QAPI and then parsing it to a number.
+> 
+> To achieve this, I defined two versions of PMU-related structures in
+> kvm.json:
+>  * a native version that accepts numeric values, which is used for
+>    QEMU's internal code processing,
+> 
+>  * and a variant version that accepts numeric string, which is used to
+>    receive user input.
+> 
+> kvm-pmu-filter object will take care of converting the string version
+> of the event/counter information into the numeric version.
+> 
+> The related implementation can be found in patch 1.
+> 
+> 
+> CPU property v.s. KVM property
+> ------------------------------
+> 
+> In Shaoqin's previous implementation [2], KVM PMU filter is made as a
+> arm CPU property. This is because arm uses a per CPU ioctl
+> (KVM_SET_DEVICE_ATTR) to configure KVM PMU filter.
+> 
+> However, for x86, the dependent ioctl (KVM_SET_PMU_EVENT_FILTER) is per
+> VM. In the meantime, considering that for hybrid architecture, maybe in
+> the future there will be a new per vCPU ioctl, or there will be
+> practices to support filter fixed counter by configuring CPUIDs.
+> 
+> Based on the above thoughts, for x86, it is not appropriate to make the
+> current per-VM ioctl-based PMU filter a CPU property. Instead, I make it
+> a kvm property and configure it via "-accel kvm,pmu-filter=obj_id".
+> 
+> So in summary, it is feasible to use the KVM PMU filter as either a CPU
+> or a KVM property, depending on whether it is used as a CPU feature or a
+> VM feature.
+> 
+> The kvm-pmu-filter object, as an abstraction, is general enough to
+> support filter configurations for different scopes (per-CPU or per-VM).
+> 
+> [1]: https://lore.kernel.org/qemu-devel/20240710045117.3164577-1-zhao1.liu@intel.com/
+> [2]: https://lore.kernel.org/qemu-devel/20240409024940.180107-1-shahuang@redhat.com/
+> 
+> Thanks and Best Regards,
+> Zhao
+> ---
+> Zhao Liu (5):
+>   qapi/qom: Introduce kvm-pmu-filter object
+>   i386/kvm: Support basic KVM PMU filter
+>   i386/kvm: Support event with select & umask format in KVM PMU filter
+>   i386/kvm: Support event with masked entry format in KVM PMU filter
+>   i386/kvm: Support fixed counter in KVM PMU filter
+> 
+>  MAINTAINERS              |   1 +
+>  accel/kvm/kvm-pmu.c      | 386 +++++++++++++++++++++++++++++++++++++++
+>  accel/kvm/meson.build    |   1 +
+>  include/system/kvm-pmu.h |  44 +++++
+>  include/system/kvm_int.h |   2 +
+>  qapi/kvm.json            | 246 +++++++++++++++++++++++++
+>  qapi/meson.build         |   1 +
+>  qapi/qapi-schema.json    |   1 +
+>  qapi/qom.json            |   3 +
+>  target/i386/kvm/kvm.c    | 176 ++++++++++++++++++
+>  10 files changed, 861 insertions(+)
+>  create mode 100644 accel/kvm/kvm-pmu.c
+>  create mode 100644 include/system/kvm-pmu.h
+>  create mode 100644 qapi/kvm.json
+> 
+> -- 
+> 2.34.1
+> 

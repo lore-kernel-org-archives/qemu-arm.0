@@ -1,279 +1,239 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp776606njk;
-        Fri, 24 Jan 2025 04:40:18 -0800 (PST)
-X-Forwarded-Encrypted: i=3; AJvYcCXL3RBpIPdq+vNK+oBpKjAOGRsIDq978Yng5vKZJ/6e1cvOTdgVxR99/Osk6HDfauDAzJiXVlU8RRfRlw==@linaro.org
-X-Google-Smtp-Source: AGHT+IGxC4Ok/ZwISpoCxtlBlZtONCrNhp89DBtcd5XQPHHzVEhMQ22+xDL8MtYfPHMTwn5DyUYM
-X-Received: by 2002:a05:6a00:894:b0:725:cd8b:d798 with SMTP id d2e1a72fcca58-72f8b3c81afmr6449749b3a.9.1737722418391;
-        Fri, 24 Jan 2025 04:40:18 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1737722418; cv=pass;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp780442njk;
+        Fri, 24 Jan 2025 04:47:30 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCUjHqf10mETCX7Msx5b/wj8631DSbUbivf1xzSOKwpv6mN1b8odrIesdsBIJjgFkAoxfvJDF3Hbv1GZGQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IE/4nXOzMEeJFbZcgDCuXGchchREj9s2583COaPGT9KYbtE+IEWyjcZI8IqEsoFfIrSCmOk
+X-Received: by 2002:a17:90a:c888:b0:2ee:f687:6ad5 with SMTP id 98e67ed59e1d1-2f782c5174emr46357274a91.2.1737722849817;
+        Fri, 24 Jan 2025 04:47:29 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1737722849; cv=pass;
         d=google.com; s=arc-20240605;
-        b=BiVCcMOj5PqFrX48LJjCMNfoEnn8KM5b5+nKTV4Ps7b/Gcun4lcaUZvBmUwlJeFjoZ
-         HyDngDji1k1z6maBrattHfSxzJ+I3IH9geCNIGndDKpmswm1ithuULiKDFKAbuBidxAJ
-         i1sdAZz4sa6qfzLAY9OhT512Yntz6x9EFTjY+5ZAS7v8T8Njthd8XUOiYNINW5Cmu6t5
-         z0hvzHcBslaiNNvAPdbj+qS5QgsZo9OdPCM4jJaWFn9NCJwsIi/8NA3sLoXJtj5IKyUd
-         N5qnff+TVi8RsYxzHAZizdPgRkWEe4BNmgsxx+gyWCCCJsYGtI/xDrDTccJop+fYtY1W
-         LI0A==
+        b=eRAiwIsP2333gM4Q8bTTwohN/4rNnH0ypeUTL8ZAZvGAiDCADWEUG9q28pvzmQ8+OF
+         JhbGdsRkFHEUln6YcI52NbqOx3x7bFPRAwowjBClHdSLC3qtIDYWBBvGndNNzoravwy4
+         I1XLm5+vcu6WLUNgHwe4vn/ExPEi5YBfq6s2nwasL/e45WnJ/ZWxvvObQDCkpYDkW1Bt
+         K0ahIf70GmDQY/Arr8MGL64BAp6aQPX6jtWRp2EdmpDhAcEkgli0BU8rsdDlhkQUeRXC
+         53qL6VF/Emq2oyAODAF+93NG77MI1mQl0tL5uJXnIfRLh74JfFUdTn4CcTzvC0DsIcf7
+         cg/A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:mime-version:list-unsubscribe
          :list-subscribe:list-id:precedence:references:in-reply-to:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=gmgO+HvEIBTtyzELL4enJIOu2DHA7czaRvoBt+3oV6Y=;
-        fh=wnqK9rCngjn5e4eYXdjbjgWrR3YjEBz7KLdt1lsP4lM=;
-        b=faoMaEbTkrjRIZ5+UKrubnZcq7jxSPKy6QLuXyYRZWPjZRJMc6O3aq8qdqMzL5u5zA
-         I7V7dhVa6xEZ70RVEH5rLhDVJvCxMLiTFYIpEemD/JqZcEf5t0ek1/zps1QKhFkr3vId
-         N1pnyjkHYu6qCUnVnc1+KJ8ORuH2lEXdMVMAIWq0h1CaPv0Xw9kyBUWcxyFMK0lBvNrg
-         RFXimu9yhIjT6QZHxpxuuikqzfC615mU+JkUHgapkDV4OMhnoZ6/oySrXsTT0p4NSR6e
-         LjdHRgHKb6N9FYG/Xd9iLqknK66D+QiHR4eryaVi/Gcg6FTtndPxLYCt1vVNmzxV9zuY
-         k2vw==;
+        bh=sUFa3BHRM1lCZt1AxF1frfdVKD8rPIbxarCScvHGYqE=;
+        fh=2wV3eiLPRl5YPhjcwEkVTFiVN6Mj+Rhcq2gg7ENTnzo=;
+        b=VyOfZfWqfloh1n4gW3h+/o01XxdQViKd89SzuLgxvBoR0XEN8FvhVQe3GVtwYvv1qe
+         9Tls5/7Mdzl15Swdq8vVQ6EXfvtcGwAyaPT1m1yie7DyMHQjHutJ4Dbs0M102nFngkSb
+         HYt1DC4nsPOXj5zSBYtC67sBc7ENqyGR8OGDzDTwVfsHtUVEsBWWt2ize+GhVfouJh7Z
+         pkCLIq1WrqGlE0V023FfUtPBblP4mvB0BYehxXvJ9Os35FckwRMB31CT/sx8BY5cPM1/
+         ZpqZ58V5iyc67Iq42h/winE2pfhyMmSahqTw7xqiS9wfubp+2SKdVLNdcs2jkNSjk9Jl
+         EeDQ==;
         dara=google.com
 ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FqNR4bM1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iUirqGiQ;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-487918-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-487918-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-36480-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-36480-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel+bounces-487918-alex.bennee=linaro.org@vger.kernel.org>
-Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [139.178.88.99])
-        by mx.google.com with ESMTPS id d2e1a72fcca58-72f8a78bb94si2731203b3a.275.2025.01.24.04.40.18
+Return-Path: <kvm+bounces-36480-alex.bennee=linaro.org@vger.kernel.org>
+Received: from sv.mirrors.kernel.org (sv.mirrors.kernel.org. [2604:1380:45e3:2400::1])
+        by mx.google.com with ESMTPS id 41be03b00d2f7-ac48f897e6esi2671841a12.179.2025.01.24.04.47.29
         for <alex.bennee@linaro.org>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Jan 2025 04:40:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of linux-kernel+bounces-487918-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) client-ip=139.178.88.99;
+        Fri, 24 Jan 2025 04:47:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of kvm+bounces-36480-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) client-ip=2604:1380:45e3:2400::1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FqNR4bM1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=iUirqGiQ;
        arc=pass (i=1 spf=pass spfdomain=redhat.com dkim=pass dkdomain=redhat.com dmarc=pass fromdomain=redhat.com);
-       spf=pass (google.com: domain of linux-kernel+bounces-487918-alex.bennee=linaro.org@vger.kernel.org designates 139.178.88.99 as permitted sender) smtp.mailfrom="linux-kernel+bounces-487918-alex.bennee=linaro.org@vger.kernel.org";
+       spf=pass (google.com: domain of kvm+bounces-36480-alex.bennee=linaro.org@vger.kernel.org designates 2604:1380:45e3:2400::1 as permitted sender) smtp.mailfrom="kvm+bounces-36480-alex.bennee=linaro.org@vger.kernel.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from smtp.subspace.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by sv.mirrors.kernel.org (Postfix) with ESMTPS id DCDA63AB282
-	for <alex.bennee@linaro.org>; Fri, 24 Jan 2025 12:40:11 +0000 (UTC)
+	by sv.mirrors.kernel.org (Postfix) with ESMTPS id 483893AB1C8
+	for <alex.bennee@linaro.org>; Fri, 24 Jan 2025 12:47:23 +0000 (UTC)
 Received: from localhost.localdomain (localhost.localdomain [127.0.0.1])
-	by smtp.subspace.kernel.org (Postfix) with ESMTP id 0A2D721B1BE;
-	Fri, 24 Jan 2025 12:40:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTP id CDEF74C6C;
+	Fri, 24 Jan 2025 12:47:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="FqNR4bM1"
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.129.124])
+	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b="iUirqGiQ"
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com [170.10.133.124])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0981721ADB2
-	for <linux-kernel@vger.kernel.org>; Fri, 24 Jan 2025 12:40:12 +0000 (UTC)
-Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.129.124
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C577F20ED
+	for <kvm@vger.kernel.org>; Fri, 24 Jan 2025 12:47:23 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org; arc=none smtp.client-ip=170.10.133.124
 ARC-Seal:i=1; a=rsa-sha256; d=subspace.kernel.org; s=arc-20240116;
-	t=1737722414; cv=none; b=ti5eZsuRRLKKHfRsSx4cZsd49qZC8RDDdijPgJ05FcDUVjqBm5GAvi6PpxFUSIz01L2E0aW4YO/4rSfLOtvnAF7EYujjbo4VM1/Rzr2n+POyE7ZsI12JRrXEpvec+Hl4AipvRX5IazP0mgB1annGQ/0AT6GMM9aVQMDca1np8f4=
+	t=1737722845; cv=none; b=Rs+CLSQoAbBnf1KYIPEyH1mDMCf6JfC7cCBCiozJ1WZvcYEaDNE/wcAsRlVnq6VJyDUtRWQXv284/um2rwO3fUmTyf8xSVQpnA6rMiMkMoZUIhDkYpgSl+tChMQWA50t+1SDmbBs3umnqzbfCb54U4CzF0WsxynzhqC6u0qDcb0=
 ARC-Message-Signature:i=1; a=rsa-sha256; d=subspace.kernel.org;
-	s=arc-20240116; t=1737722414; c=relaxed/simple;
-	bh=z2qfK994aFyahzILAO92t9pc043wF3ZwFABGjyUpJ8U=;
+	s=arc-20240116; t=1737722845; c=relaxed/simple;
+	bh=DsS9Qhk1JgJvFvJVluXZgQGiSzbB01yBWsUHv+o53ts=;
 	h=Date:From:To:Cc:Subject:Message-ID:In-Reply-To:References:
-	 MIME-Version:Content-Type; b=IC1pmGAmsUgmI7ISfXPUWp1lCv++0sDw0HbkViCdooV2+2bRtYRuZcfoPAsu3CY6i7muaW3CtuVioj8Fa+f04QHsj2rDKXZ3WgXRe+XAT7QGS1+SAo94U8n4UkLnltQQBCP3c3sSPyczercFp/OKJQwQZamgxI0rYpteKrnDyHw=
-ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=FqNR4bM1; arc=none smtp.client-ip=170.10.129.124
+	 MIME-Version:Content-Type; b=EnRDP6wL1WrotzGROR0sl/JuIvJqX5pztcu3OsZGGXGlGJhJG+xvjfgzf8hKAUNb3SjKDyfKCmEOEMRzSzz227zteehG9zBOTNIuOuDjGT/VkNMK/d86+p960e5zzW8khuwtWCsYfZBKm++F01QSHcRREOGbba/wJ5CVI4vDzxQ=
+ARC-Authentication-Results:i=1; smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com; spf=pass smtp.mailfrom=redhat.com; dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.b=iUirqGiQ; arc=none smtp.client-ip=170.10.133.124
 Authentication-Results: smtp.subspace.kernel.org; dmarc=pass (p=none dis=none) header.from=redhat.com
 Authentication-Results: smtp.subspace.kernel.org; spf=pass smtp.mailfrom=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1737722412;
+	s=mimecast20190719; t=1737722842;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=gmgO+HvEIBTtyzELL4enJIOu2DHA7czaRvoBt+3oV6Y=;
-	b=FqNR4bM1F+geKSBo8Qi2brs70CTnwTlZYMiCfw5izDbiTff1FDxhCWu0D46Xwc1XotG3je
-	m76Pp8PzxZpB36LjN2Gjs9ZIoUCMrmHKW56QxexFW1WZsR5KMCODfHsMA7gqGE9lWKcqFG
-	5GXkmUDdxSBSZTqudN8EkF4KEUqb3hc=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+	bh=sUFa3BHRM1lCZt1AxF1frfdVKD8rPIbxarCScvHGYqE=;
+	b=iUirqGiQ4ffZWIms3xBWDCcG3xV9lwf8Z+X+0p0WKWwbtdzrSQZzp3mdcV0u1wi9n7jEaz
+	pwSrqJiKuKyZpaBs2K481fCFQNmGhABYoUm+kvrMCLja4ZeAFjsNLEIJE1THcVbiENAzsY
+	/cz4+xB+xQvO2/DjByRtA0b7FhJ1KfQ=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-433-93lY3d4wOyiqdvPFfAx78A-1; Fri, 24 Jan 2025 07:40:11 -0500
-X-MC-Unique: 93lY3d4wOyiqdvPFfAx78A-1
-X-Mimecast-MFC-AGG-ID: 93lY3d4wOyiqdvPFfAx78A
-Received: by mail-wm1-f70.google.com with SMTP id 5b1f17b1804b1-4361ac8b25fso11381605e9.2
-        for <linux-kernel@vger.kernel.org>; Fri, 24 Jan 2025 04:40:10 -0800 (PST)
+ us-mta-622-p7ia0PVaNDSYmnpuyxlfhg-1; Fri, 24 Jan 2025 07:47:21 -0500
+X-MC-Unique: p7ia0PVaNDSYmnpuyxlfhg-1
+X-Mimecast-MFC-AGG-ID: p7ia0PVaNDSYmnpuyxlfhg
+Received: by mail-wr1-f69.google.com with SMTP id ffacd0b85a97d-38a684a0971so1026022f8f.2
+        for <kvm@vger.kernel.org>; Fri, 24 Jan 2025 04:47:21 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737722409; x=1738327209;
+        d=1e100.net; s=20230601; t=1737722840; x=1738327640;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=gmgO+HvEIBTtyzELL4enJIOu2DHA7czaRvoBt+3oV6Y=;
-        b=R2gMcY8NKIK+CqAkVdJJpsD201azz3f919H/rtgrUntxrpvAE41VRk2XBqNq43xoKw
-         +x6k6fn/AECkhZhdwYWoSRZk58COLSKcVYI3HtUWAK9CPMUkYblI5Iz1QKZp7nPGOZiF
-         02Qg/fHsrYycoB7y7LggnWzNOCmowTJrWp+r6ykvb86IWQnKlPEH5HIBaWRdkBzzV4qE
-         4V6z7pZ7D6GapgSQwCGkUiItTeUlr1kSyzbdxPLLxjsOWSvwvvQ9JrRZ5iaYxb02lvTN
-         sBkbhdbPnQsZTFxQG0DxZKs4egfm96YvkHWfnsmZgboKIdyvqC/GBHICLyiKYkkxCyv3
-         0GJA==
-X-Forwarded-Encrypted: i=1; AJvYcCWIvX0K3k9bDXUboblXaa8QoWuxLuOJuGd+XL7RF2BEkqqKlyUcKvRuVe4EEjjOrSANjov56G0nXSL0Eh4=@vger.kernel.org
-X-Gm-Message-State: AOJu0YzKr/G2YYEk1z4zGHivdee5yqKGYWw8lsciI/ab3Z7oX4bnseUK
-	CbDrOzBqa59L2GIHeJ4Q5yUoSz2VgMzL5qBJYMKGylTJGvqkrkRJFTVD4I/xteh5Q387+e1y+PA
-	W+O+i0O6TAD/CyqevxZqa8kfkSgB8OfcsY7TcISz/iYyqDaELuklub7WH/6S4BwqtrqDGsA==
-X-Gm-Gg: ASbGncv7HJSc0GmFUZHh7ndBe1YjNT5+qjd15cT3rH2S5BdgQBUs9p9B/pyALwl9IOl
-	hKBSsDs9j99/38FoNS7Kv43yYB/cSodG843enRORWZP12D7XMpNOJpmp2RzZwk6bqxR4DxbH+1q
-	DoKaS8NpXFOuzb6OyjcUpZ/R952DJTNMuwCilqzU5yyH8mROwXNuuRA987l6aXffBnBdJsWHoni
-	7zv1BdI7RgWjOaPm7htI3OXOBgsKpHgc3+/l2NTqTK69RWlV+qokTrHA5RFuV91RaMiihBmq4Mv
-	OfgvFfk7LH/0uiYh5Q4UX4+khCOZiu7cH93mvZHqQw==
-X-Received: by 2002:a05:600c:4e09:b0:434:fec5:4ef5 with SMTP id 5b1f17b1804b1-438913e99b0mr309665035e9.14.1737722409034;
-        Fri, 24 Jan 2025 04:40:09 -0800 (PST)
-X-Received: by 2002:a05:600c:4e09:b0:434:fec5:4ef5 with SMTP id 5b1f17b1804b1-438913e99b0mr309664595e9.14.1737722408588;
-        Fri, 24 Jan 2025 04:40:08 -0800 (PST)
+        bh=sUFa3BHRM1lCZt1AxF1frfdVKD8rPIbxarCScvHGYqE=;
+        b=alBDVK8o1K0hAio14LI1ObpdNA9unfTqM2AM1HUAGG9s257HeWAoKvyuzFhx91ZkhE
+         m7dDmNDfCiGL/7Ne2HO+LHRi4XUhVq+0CN1ph1ieLI7LE3hMYRsGoMjv2qdjrPoC0bX/
+         yP9LpxXZZ/jSalZBI0dDwdw2RTyjbRurjKwb95YrQCZ1CbBSnqT9NUtW/upSHbkC2OaG
+         oUxz3PegXT+8Dhyk4mw1AojrN+LY4N3MNezJxOGE9rK3kX5fQHQ3T0CRNkI+rqkYnpRB
+         fH3J3KNRh9udXgIPSSv7/dz56uwMWJ1XSaUMFZrjHCzUVrsbKWK9BWEfx7m9fIyo2Wci
+         fVnw==
+X-Forwarded-Encrypted: i=1; AJvYcCUBPTUMx2I3rJiQJYbNaWLeaHkl43tpYPfMIYqxrSAN9cYe8Z0nGvSAPXczJCy2D3bKdz8=@vger.kernel.org
+X-Gm-Message-State: AOJu0YyzWuhUzusFKGhdP2NJbur1ubZsulfTlJZydNjDUyMNs87g5K5y
+	ElKnVUbcD1Xq+yF6FxWL0tWWdM6q0Os5c7Y4/RPlxa0OhzgwqQxQaI5vDbxIeuBbXQmfnXcetZp
+	IgTqRyzH4UO4Pwy/DgVAwkYq5KUzfNf3SYNonfkWUa/1cTSaXxw==
+X-Gm-Gg: ASbGncsnnretYlxLz/kWGPLJAekawEsumO6nQdbfhLpO8K2RMUDx40qVALda6/aA2MI
+	dis1A1IVXXluNMwVmSL4SpJ+MIrGqhO+WVztxo77Xi40I2dkXG+ahR8rfCa5vtrg0eF4AaoG6Yx
+	IB4TmMSULIUN8MocNUwTE6nxTSYKIW2bTc+cSUECXK5Qg6IbvGiETCMmST/566QWoNJTwUqSvsv
+	T1AvUzGf6q7sNiwweJjihdThnjoBZ4/rINFAV3iE0GD4+VxZU88GW9dY69Sn5UZqOQPPGzc1CKB
+	Y+ECuCgT/KfEA2igDFeEbets1pvKzuswb/wcvmyFOQ==
+X-Received: by 2002:a5d:64c9:0:b0:385:f220:f788 with SMTP id ffacd0b85a97d-38bf57bbfa5mr29250403f8f.48.1737722840124;
+        Fri, 24 Jan 2025 04:47:20 -0800 (PST)
+X-Received: by 2002:a5d:64c9:0:b0:385:f220:f788 with SMTP id ffacd0b85a97d-38bf57bbfa5mr29250366f8f.48.1737722839737;
+        Fri, 24 Jan 2025 04:47:19 -0800 (PST)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com. [213.175.37.10])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-438bd4b9984sm25226475e9.28.2025.01.24.04.40.07
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-38c2a1c402esm2610633f8f.97.2025.01.24.04.47.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Jan 2025 04:40:08 -0800 (PST)
-Date: Fri, 24 Jan 2025 13:40:07 +0100
+        Fri, 24 Jan 2025 04:47:19 -0800 (PST)
+Date: Fri, 24 Jan 2025 13:47:18 +0100
 From: Igor Mammedov <imammedo@redhat.com>
-To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Cc: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, "Michael S . Tsirkin"
- <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
- <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Ani Sinha
- <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>, Eric Blake
- <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Michael Roth
- <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>, "Shannon Zhao" <shannon.zhaosl@gmail.com>,
- <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 10/11] qapi/acpi-hest: add an interface to do generic
- CPER error injection
-Message-ID: <20250124134007.18b508bc@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20250123110032.000052d4@huawei.com>
+To: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Jonathan Cameron
+ <Jonathan.Cameron@huawei.com>, Shiju Jose <shiju.jose@huawei.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Philippe =?UTF-8?B?TWF0aGll?=
+ =?UTF-8?B?dS1EYXVkw6k=?= <philmd@linaro.org>, Ani Sinha
+ <anisinha@redhat.com>, Cleber Rosa <crosa@redhat.com>, Dongjiu Geng
+ <gengdongjiu1@gmail.com>, Eduardo Habkost <eduardo@habkost.net>, Eric Blake
+ <eblake@redhat.com>, John Snow <jsnow@redhat.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Shannon Zhao
+ <shannon.zhaosl@gmail.com>, Yanan Wang <wangyanan55@huawei.com>, Zhao Liu
+ <zhao1.liu@intel.com>, kvm@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 00/11] Change ghes to use HEST-based offsets and add
+ support for error inject
+Message-ID: <20250124134718.3e228b0b@imammedo.users.ipa.redhat.com>
+In-Reply-To: <cover.1737560101.git.mchehab+huawei@kernel.org>
 References: <cover.1737560101.git.mchehab+huawei@kernel.org>
-	<769b68a3192cc921fec4c0e5e925552920fdbe71.1737560101.git.mchehab+huawei@kernel.org>
-	<20250123110032.000052d4@huawei.com>
 X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 Precedence: bulk
-X-Mailing-List: linux-kernel@vger.kernel.org
-List-Id: <linux-kernel.vger.kernel.org>
-List-Subscribe: <mailto:linux-kernel+subscribe@vger.kernel.org>
-List-Unsubscribe: <mailto:linux-kernel+unsubscribe@vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+List-Id: <kvm.vger.kernel.org>
+List-Subscribe: <mailto:kvm+subscribe@vger.kernel.org>
+List-Unsubscribe: <mailto:kvm+unsubscribe@vger.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-TUID: Ie8PzvqNpIci
+X-TUID: wymu2rgm9g6S
 
-On Thu, 23 Jan 2025 11:00:32 +0000
-Jonathan Cameron <Jonathan.Cameron@huawei.com> wrote:
+On Wed, 22 Jan 2025 16:46:17 +0100
+Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
 
-> On Wed, 22 Jan 2025 16:46:27 +0100
-> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> Now that the ghes preparation patches were merged, let's add support
+> for error injection.
 > 
-> > Creates a QMP command to be used for generic ACPI APEI hardware error
-> > injection (HEST) via GHESv2, and add support for it for ARM guests.
-> > 
-> > Error injection uses ACPI_HEST_SRC_ID_QMP source ID to be platform
-> > independent. This is mapped at arch virt bindings, depending on the
-> > types supported by QEMU and by the BIOS. So, on ARM, this is supported
-> > via ACPI_GHES_NOTIFY_GPIO notification type.
-> > 
-> > This patch is co-authored:
-> >     - original ghes logic to inject a simple ARM record by Shiju Jose;
-> >     - generic logic to handle block addresses by Jonathan Cameron;
-> >     - generic GHESv2 error inject by Mauro Carvalho Chehab;
-> > 
-> > Co-authored-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > Co-authored-by: Shiju Jose <shiju.jose@huawei.com>
-> > Co-authored-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> > Signed-off-by: Shiju Jose <shiju.jose@huawei.com>
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-> > 
-> > ---
-> > 
-> > Changes since v9:
-> > - ARM source IDs renamed to reflect SYNC/ASYNC;
-> > - command name changed to better reflect what it does;
-> > - some improvements at JSON documentation;
-> > - add a check for QMP source at the notification logic.
-> > 
-> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
-> Another bonus.
+> I'm opting to fold two patch series into one here:
 > 
-> Few trivial formatting comments, otherwise looks fine to me.
+> 1. https://lore.kernel.org/qemu-devel/20250113130854.848688-1-mchehab+huawei@kernel.org/
 > 
-> Jonathan
+> It is the first 5 patches containing changes to the math used to calculate offsets at HEST
+> table and hardware_error firmware file, together with its migration code. Migration tested
+> with both latest QEMU released kernel and upstream, on both directions.
 > 
-> > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
-> > index 5d29db3918dd..cf83c959b5ef 100644
-> > --- a/hw/acpi/ghes.c
-> > +++ b/hw/acpi/ghes.c
-> > @@ -547,7 +547,7 @@ void ghes_record_cper_errors(const void *cper, size_t len,
-> >      /* Write the generic error data entry into guest memory */
-> >      cpu_physical_memory_write(cper_addr, cper, len);
-> >  
-> > -    notifier_list_notify(&acpi_generic_error_notifiers, NULL);
-> > +    notifier_list_notify(&acpi_generic_error_notifiers, &source_id);
-> >  }
-> >  
-> >  int acpi_ghes_memory_errors(uint16_t source_id, uint64_t physical_address)
-> > diff --git a/hw/acpi/ghes_cper.c b/hw/acpi/ghes_cper.c
-> > new file mode 100644
-> > index 000000000000..02c47b41b990
-> > --- /dev/null
-> > +++ b/hw/acpi/ghes_cper.c
-> > @@ -0,0 +1,32 @@
-> > +/*
-> > + * CPER payload parser for error injection
-> > + *
-> > + * Copyright(C) 2024 Huawei LTD.
+> There were no changes on this series since last submission, except for a conflict
+> resolution at the migration table, due to upstream changes.
+> 
+> For more details, se the post of my previous submission.
+> 
+> 2. It follows 6 patches from:
+> 	https://lore.kernel.org/qemu-devel/cover.1726293808.git.mchehab+huawei@kernel.org/
+>     containing the error injection code and script.
+> 
+>    They add a new QAPI to allow injecting GHESv2 errors, and a script using such QAPI
+>    to inject ARM Processor Error records.
+> 
+> PS.: If I'm counting well, this is the 18th version of this series rebase.
 
-2025
+the series is more or less in good shape,
+it requires a few fixups here and there, so I'd expect to to be ready on
+the next respin.
 
-> > + *
-> > + * This code is licensed under the GPL version 2 or later. See the
-> > + * COPYING file in the top-level directory.
-> > + *
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +
-> > +#include "qemu/base64.h"
-> > +#include "qemu/error-report.h"
-> > +#include "qemu/uuid.h"
-> > +#include "qapi/qapi-commands-acpi-hest.h"
-> > +#include "hw/acpi/ghes.h"
-> > +
-> > +void qmp_inject_ghes_error(const char *qmp_cper, Error **errp)
-> > +{
-> > +  
-> Odd blank line that can go.
-> 
-> > +    uint8_t *cper;
-> > +    size_t  len;
-> > +
-> > +    cper = qbase64_decode(qmp_cper, -1, &len, errp);
-> > +    if (!cper) {
-> > +        error_setg(errp, "missing GHES CPER payload");
-> > +        return;
-> > +    }
-> > +
-> > +    ghes_record_cper_errors(cper, len, ACPI_HEST_SRC_ID_QMP, errp);
-> > +}
-> > diff --git a/hw/acpi/ghes_cper_stub.c b/hw/acpi/ghes_cper_stub.c
-> > new file mode 100644
-> > index 000000000000..8782e2c02fa8
-> > --- /dev/null
-> > +++ b/hw/acpi/ghes_cper_stub.c
-> > @@ -0,0 +1,19 @@
-> > +/*
-> > + * Stub interface for CPER payload parser for error injection
-> > + *
-> > + * Copyright(C) 2024 Huawei LTD.
+I'm done with this round of review.
 
-2025
+PS:
+the moment you'd start changing ACPI tables you need, 1st whitelist
+affected tables and then update expected blobs with new content.
+see comment at the beginning of tests/qtest/bios-tables-test.c
 
-> > + *
-> > + * This code is licensed under the GPL version 2 or later. See the
-> > + * COPYING file in the top-level directory.
-> > + *  
-> Trivial but I'd drop these trailing blank lines as they don't add
-> anything other than making people scroll further.
+if you haven't done above 'make check-qtest' would fail,
+and if it didn't that likely means a missing test case
+(in that case please add one) 
+
 > 
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "qapi/error.h"
-> > +#include "qapi/qapi-commands-acpi-hest.h"
-> > +#include "hw/acpi/ghes.h"  
+> Mauro Carvalho Chehab (11):
+>   acpi/ghes: Prepare to support multiple sources on ghes
+>   acpi/ghes: add a firmware file with HEST address
+>   acpi/ghes: Use HEST table offsets when preparing GHES records
+>   acpi/generic_event_device: Update GHES migration to cover hest addr
+>   acpi/generic_event_device: add logic to detect if HEST addr is
+>     available
+>   acpi/ghes: add a notifier to notify when error data is ready
+>   acpi/ghes: Cleanup the code which gets ghes ged state
+>   acpi/generic_event_device: add an APEI error device
+>   arm/virt: Wire up a GED error device for ACPI / GHES
+>   qapi/acpi-hest: add an interface to do generic CPER error injection
+>   scripts/ghes_inject: add a script to generate GHES error inject
 > 
-> Trivial but doe we need ghes.h?
-> 
-> > +
-> > +void qmp_inject_ghes_error(const char *cper, Error **errp)
-> > +{
-> > +    error_setg(errp, "GHES QMP error inject is not compiled in");
-> > +}  
+>  MAINTAINERS                            |  10 +
+>  hw/acpi/Kconfig                        |   5 +
+>  hw/acpi/aml-build.c                    |  10 +
+>  hw/acpi/generic_event_device.c         |  38 ++
+>  hw/acpi/ghes-stub.c                    |   4 +-
+>  hw/acpi/ghes.c                         | 184 +++++--
+>  hw/acpi/ghes_cper.c                    |  32 ++
+>  hw/acpi/ghes_cper_stub.c               |  19 +
+>  hw/acpi/meson.build                    |   2 +
+>  hw/arm/virt-acpi-build.c               |  35 +-
+>  hw/arm/virt.c                          |  19 +-
+>  hw/core/machine.c                      |   2 +
+>  include/hw/acpi/acpi_dev_interface.h   |   1 +
+>  include/hw/acpi/aml-build.h            |   2 +
+>  include/hw/acpi/generic_event_device.h |   1 +
+>  include/hw/acpi/ghes.h                 |  36 +-
+>  include/hw/arm/virt.h                  |   2 +
+>  qapi/acpi-hest.json                    |  35 ++
+>  qapi/meson.build                       |   1 +
+>  qapi/qapi-schema.json                  |   1 +
+>  scripts/arm_processor_error.py         | 377 +++++++++++++
+>  scripts/ghes_inject.py                 |  51 ++
+>  scripts/qmp_helper.py                  | 702 +++++++++++++++++++++++++
+>  target/arm/kvm.c                       |   2 +-
+>  24 files changed, 1517 insertions(+), 54 deletions(-)
+>  create mode 100644 hw/acpi/ghes_cper.c
+>  create mode 100644 hw/acpi/ghes_cper_stub.c
+>  create mode 100644 qapi/acpi-hest.json
+>  create mode 100644 scripts/arm_processor_error.py
+>  create mode 100755 scripts/ghes_inject.py
+>  create mode 100644 scripts/qmp_helper.py
 > 
 

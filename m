@@ -1,126 +1,115 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp928991njk;
-        Fri, 24 Jan 2025 08:32:51 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUpvPRb1l1XwjncEgPP0E2A8udVQCWtQDewUaWq1eyo7YiZZFTrDhv0FZXwjTCAiWQuXUo8GXRn7iF16Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IElC5Tp2H2xuvsob1Xu124nMknf5arY72juw3yGWCrfEilGxaaxme8bw7t0sUmczJtsJKTQ
-X-Received: by 2002:ac8:5791:0:b0:467:88fb:4298 with SMTP id d75a77b69052e-46e12b98d0dmr500442631cf.52.1737736371568;
-        Fri, 24 Jan 2025 08:32:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737736371; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp932513njk;
+        Fri, 24 Jan 2025 08:38:38 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUGF38ZJpZg2Co4Kw5H3tHEjs5pftO3NpKkNyocBqKzcRH3iRePJym26Z7cRjnhsASEo5YZQ3hZafwQ2A==@linaro.org
+X-Google-Smtp-Source: AGHT+IFejcVNKXtkjJkgKwaLpPC22b6LTUzTDjWsfG9zbKo0fja5KgpYrys5EIjZg0MaWjFfsXZK
+X-Received: by 2002:ac8:5a53:0:b0:467:4fc5:9d72 with SMTP id d75a77b69052e-46e12b6895dmr427983131cf.36.1737736718168;
+        Fri, 24 Jan 2025 08:38:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737736718; cv=none;
         d=google.com; s=arc-20240605;
-        b=My/WINpmUDcESTQb3WBGPSQQWY7c1ZmMfIdQmTShAZJWZK0gZN9gVSOk3MfQ57V2Xz
-         eIGyBrmVJvJlYx4MgLpL5xE0GD2Crk1DyjCtfVEnZSFSYrjKRRzRPv91waTQSb6Ll7i8
-         /MpuiFMcCWcWEJAigVS53ECuvvm3rI4eqlBAxh+DRk/DfjyAubXOQzxqL/yHdnmwsR7y
-         u70DiiY1CCbFpUYRCbwUFan1/BABiYVHwCk4YPhbnnmyF7EYNMKdDiZc7urs7QV29Ro/
-         j10HuKAkrMFdd0a0XfmvHZEdeHgiLGrBR890ceEQla/UzDtzQyQQ5Uiz6w0sxCS+srTF
-         6vdA==
+        b=fQzcbPKADyIZVTcEkmLMdLfOYuk0kJ5r2BQ3uqCuWPjtaW1L/0eSqKl7VlTYCKZeBw
+         X1kfuKbNNwxxOOH6poTGC1l1zDsp/tHSF1nQAaLtDAcCWSM3smFNEZfbWSyhEKD8lQx1
+         e3wQV+6ZzhpFft0L0zyF1GPQwthd9OF/y2osWEQKLLiuKE5w4uPIuP6hsVRkvRBr8HC8
+         ajrOCBokIH0zvchDjWxLOMgMGyiG9nADO9jLGO0Vpodf3UD8lL2YLvNas5Xx9FLQirGZ
+         TKm9slOnFPTy21cXpismyBUKCk6R8pmmnng3bpI9h9Lx8kOJ1kvRGHvST1su0DLiG3SG
+         PaVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=cIp/ry/DGiFODjiThDZlgJEFjr5yBLQ4629/fR6TMgU=;
-        fh=SrcXO4O+xZDWjLKLO0UlQPvhNahfMo3l5+mwKI8/GaA=;
-        b=P+2m088hEMnYQbG/NB7QiP3q4KfLM6ltIp32I+LpXxaBwnLWwZijmd9T0GkUDHWfkC
-         0y2rRsgILZ2+wDL/DfjmiyLjlaDxPuc8VW8oM6zndZWkCGAP7U1w1WNAXBgTdEoRgOV8
-         w73WyBR5lfNkrKSA0Yxul9JFkMAWOSCD6UkivfLOTJpBkl7wuG6gY3Fk8e9aLcJuUHOi
-         +oBvc0rY6+kPlRHmfDh1LZ9627FNYBDJbwKecK2u6gJz4Pk0JWYtOTfDXl1o2HgiJ6po
-         jjMSd+QMW++6c2PzJ7DmCeYg+ZQoRNJfD+e+8Mx3tsEWEmkmITXBptrqVgvfQmGPv4C6
-         SLhw==;
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=TxUN8Fd2eU9DUvV9yTSFQlBGvgml4AE9HSaNzAgXGr4=;
+        fh=P0HxCGxAtsl5Rp+GJVB1CxJsrlTAb0HE+78fYB8XrXs=;
+        b=B/Xq6Gy1aKQafs8dKTA8bRiNI5hNdEHezP5lgC9cCn2kZVbD6k3uhnn9ce4CdoIFCx
+         mhETKNra5L5kvc3wLmrRhM7wyspaXz3b6siOWf3VSJleyB/O0QU7xKcKvC8Cgtu/wcy/
+         xCPBn7pV/SZ/pIjD8rqiACGeCNjd8+GjLHBMnH1ffa6A6s6R+/g5i2gW/q4nJHVqH2Xr
+         9T17r+DkQNAG6Ck8wtdqY87b/6lHgbcASpHuY6G8Cv0oH9z6lGNQ6ujLGSszryBL2tMj
+         /wrdHUob6AGsKcwBrqJI9GCfNempHuON8bqOP2g9+jdRUL3Bnt5+gZFA7e6lSFYH/Zaa
+         dWKA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eyt0uoBf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=smjrkdqB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1e0cc1a2514c-864a9b1826dsi737892241.52.2025.01.24.08.32.51
+        by mx.google.com with ESMTPS id d75a77b69052e-46e668882e0si27487771cf.161.2025.01.24.08.38.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jan 2025 08:32:51 -0800 (PST)
+        Fri, 24 Jan 2025 08:38:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=eyt0uoBf;
+       dkim=pass header.i=@linaro.org header.s=google header.b=smjrkdqB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tbMYj-0004bb-G4; Fri, 24 Jan 2025 11:29:29 -0500
+	id 1tbMh6-0007a5-6T; Fri, 24 Jan 2025 11:38:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tbMY7-0003ai-J8
- for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:28:52 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1tbMeb-0002r7-3C
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:35:35 -0500
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tbMXz-0005Lf-P3
- for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:28:48 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4362bae4d7dso16639895e9.1
- for <qemu-devel@nongnu.org>; Fri, 24 Jan 2025 08:28:42 -0800 (PST)
+ id 1tbMeZ-0006qA-Ii
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:35:32 -0500
+Received: by mail-yb1-xb2d.google.com with SMTP id
+ 3f1490d57ef6-e53a91756e5so4112597276.1
+ for <qemu-devel@nongnu.org>; Fri, 24 Jan 2025 08:35:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737736121; x=1738340921; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=cIp/ry/DGiFODjiThDZlgJEFjr5yBLQ4629/fR6TMgU=;
- b=eyt0uoBfDPexOTWkAA62YwpBXmkPpUJse9P0JcMVngJSYcrbdVjlt3s3DlxlxS2coM
- L8lNUilQ191LUpPCl035Fq1Avpm6jdm6qJFbe63rdG3BgG3pdDxJ23KGGbuBdB55twrV
- Zr7Z+CaaY2knhoCS1uW1XIk8YE8tZtse6e0V7DKxiDWNewez3KyJ/uEBSD5KgIkxmuk+
- lgS6kpbkxIqR6RksmbNOm0K04fkiQCfAg5vwH4XuQIs9DIy8LViKExN4LevSIiAo44Ic
- 3CPDkGPW5KMhZpbvPXm06SZjYcE+wKGUWtOcDXiZRxQvRvupAtV4P4JE/ZhbRzI25iv+
- qlkw==
+ d=linaro.org; s=google; t=1737736529; x=1738341329; darn=nongnu.org;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=TxUN8Fd2eU9DUvV9yTSFQlBGvgml4AE9HSaNzAgXGr4=;
+ b=smjrkdqB6qI147hdB4ff7ULiDCXvp0gIgOXKDiwKOGB45iCrAvyPgScBoqj1XgStJI
+ zp+Fv/vuO9A4AefGcu2vpG/dVtTKTbpb3R+G+1+TOHyPdmtSa5Z0cjSidt2Tez+U2jSB
+ +hI17751y0YluKfEmowmY/8CatNorS4lJdTqMuoce5PHkUjBnVSQiw0w3vEMrdRHr71Y
+ H18b2xVRpOWPp0Gads6e83ny11lXxQIvSSdPypW4QBeCw1ikmAsMEgrLQvkoPm8EUtOW
+ bmAtAnhInz68EhYFXYtkU72NaG+gELnYo9KzbUhdq1rbkk+V7yUhXwhHSNxq+1Vkbm4P
+ 5Luw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737736121; x=1738340921;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cIp/ry/DGiFODjiThDZlgJEFjr5yBLQ4629/fR6TMgU=;
- b=s6fOhMEAavupJ/W6nHiFvSTGSYK+IJmOqbEbpg1vxk5N/MlP7PxIZpR4lJuHz/x1Nc
- OHuXUUSelcd9gk25fshouBpZo7F2FvoQeXLSPll1nrQBbGjG1raojoxZ+1/IGoBvYmNk
- oy6J5okPZLLbQzPthOW7DZUtJGoCAfjU17GOdeKVFrOing807zseIEKX8nZQTyJnnHbQ
- 4hv5iJyN1opiiD6Pq+Yxsy22iF5QeDXoub/xhefKo75i6qUFN2a/Ve/qcUqB4WeyNDiC
- OnbDAqzhzVwsxvtv8g1hO5/w2hOgjMLTtVLo9iZiujFgHac8BdbqcPZ1OkYoVKaSL+iK
- q3qA==
+ d=1e100.net; s=20230601; t=1737736529; x=1738341329;
+ h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=TxUN8Fd2eU9DUvV9yTSFQlBGvgml4AE9HSaNzAgXGr4=;
+ b=CNtqKU/8r+WWChtP7dsbA59UWEORAL7qgMWLDYpVSCyx52b8w5R+PtZ2beARa/IPwB
+ sm6vm8p5OA/GcKEQDmS6+y6h3+soJ+lvEAMugzy0vSVT+v1R4QH+uQyBFMz2pv1Vk3hJ
+ O/hoj+A8gKmVVRstJ4cavnnY89oI4nD2olD40I3J6t8sXZEZXFQcHjZBXHN638Y0LiJC
+ B9khrfIQB4mNQRp8/1Tfhn1zXLoBFkwZ6fiyW7szQIDiZhRS7s7/Ha9DLDDJ0YH4sYXO
+ +ggundRhFxV/tamRi+TRL4mL5Hfw+s7eg0RuwQe6emmh6sSLcUvljM/m1avmCHAfAdyR
+ QlsA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXsRYG2Bd2sYfSHEVky2ZgoNqpLhL2A3TRM/u9rJ5R0wEvzSaVXnKmg/6dPbPxsqIKVQ41/IsKopwfG@nongnu.org
-X-Gm-Message-State: AOJu0YzCcOVBlKEkQJoNWQYwOSTKwv3TqVZL9mVJDTmMtt5EMCwcbXGf
- XeNCVL0hUFl3tpAUxcSn0qlp9mC1KAl+UbdGY1hfZ/0e5ztxD4sbinGCUx+lwSk=
-X-Gm-Gg: ASbGncvxm0GIKKeqrgiQzVQ9R+e4xRsD5exQkDyP5rKkNmY1cBNeyikB15QGhFp104e
- Z+9oZ3u2Yj1GYJ99xzo0sHm2ZwnOtujrc54x9iK7SELfH1GEiUImXsDDD/dYt07MZgdL0NMzuD2
- /0lfRIiRwZR38ClWHb0qV25yXQ6Y2FAvO4VcW9wQ5UgKrGObvULHoJdxvNy+J5lR08Z7ZYoZExl
- rsG6ldLKUOcuZ76rBAy9SC/pDtk4a5RO+DpmOASKCg5t45zL23Njlqm3i/azP3laURPog38LWq6
- ox4I4UNfU/IFr8TnMe/peg==
-X-Received: by 2002:a05:600c:1f0d:b0:431:3bf9:3ebb with SMTP id
- 5b1f17b1804b1-4389143923bmr262859175e9.24.1737736120992; 
- Fri, 24 Jan 2025 08:28:40 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438bd47eecasm31683025e9.6.2025.01.24.08.28.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Jan 2025 08:28:40 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 02/76] tests/tcg/x86_64/fma: Test some x86 fused-multiply-add
- cases
-Date: Fri, 24 Jan 2025 16:27:22 +0000
-Message-Id: <20250124162836.2332150-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250124162836.2332150-1-peter.maydell@linaro.org>
-References: <20250124162836.2332150-1-peter.maydell@linaro.org>
+ AJvYcCU/5w/nnE5eqVzQkbJOjIxuDt9RQZiui8jT4zAFo+A1wFojACr8FZGHE7EJZHWfRTIW20bR41ve23rg@nongnu.org
+X-Gm-Message-State: AOJu0YzyJNgfh/n5Or4eW+8RzWGiGvtjz1XBW0Tw8ckr82jBcnCOeb5b
+ F3ypZSOWLHR6fDGqZYMfJcA4gtHp5BWbmxgXWrObhVxCAuPKcgUQQ7GQffWZf1sjjhyx50QiSbD
+ cNyyifNQrkLzXa5S6qyC5J7FqjG8YF3y4IpSiP+b9NytkslUq
+X-Gm-Gg: ASbGnctLssZ9u0DU7tCh0JrzdfkpT4OexACgFWutbhTu/Nv9dsaIi2s4BdGHPS8gzS+
+ vvJgiwDIQqSPP6x/LNMp4awrWhywkEyBFvkzNtna1WzuNKt/+Pz/g2ydGJ8/z+AU=
+X-Received: by 2002:a05:6902:144c:b0:e58:3990:3f77 with SMTP id
+ 3f1490d57ef6-e58399041e4mr4279979276.22.1737736529607; Fri, 24 Jan 2025
+ 08:35:29 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+References: <20250124162836.2332150-1-peter.maydell@linaro.org>
+In-Reply-To: <20250124162836.2332150-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Jan 2025 16:35:17 +0000
+X-Gm-Features: AWEUYZm1HnEMlkcuXd3WrwzLYmOcYihRTgLRdgThh_c2AwdH0FwNrx5NVH8jaQQ
+Message-ID: <CAFEAcA98LTxpbiXj2YdQvRmUfufzqxDkOcPF0iUfF1rKMY3v=g@mail.gmail.com>
+Subject: Re: [PATCH 00/76] target/arm: Implement FEAT_AFP and FEAT_RPRES
+To: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,156 +124,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: +79E5OZoVhYs
+X-TUID: DwTIsaD5WpSs
 
-Add a test case which tests some corner case behaviour of
-fused-multiply-add on x86:
- * 0 * Inf + SNaN should raise Invalid
- * 0 * Inf + QNaN shouldh not raise Invalid
- * tininess should be detected after rounding
+On Fri, 24 Jan 2025 at 16:28, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset implements emulation of the Arm FEAT_AFP and FEAT_RPRES
+> extensions, which are floating-point related. It's based on the
+> small i386 bugfix series I sent out a while back:
+>
+> Based-on: 20250116112536.4117889-1-peter.maydell@linaro.org
+> ("target/i386: Fix 0 * Inf + QNaN regression")
 
-There is also one currently-disabled test case:
- * flush-to-zero should be done after rounding
 
-This is disabled because QEMU's emulation currently does this
-incorrectly (and so would fail the test).  The test case is kept in
-but disabled, as the justification for why the test running harness
-has support for testing both with and without FTZ set.
+> I have also some patchs which make target/i386 use the "detect
+> flush to zero after rounding" and "report when input denormal is
+> consumed" softfloat features added here; I don't include them in
+> this patchset (though you can find them in that git branch I
+> mentioned earlier) becaus I haven't done as much testing on the
+> i386 side and in any case this patchset is already pretty long.
+> I expect I'll send them out when this series has been merged.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- tests/tcg/x86_64/fma.c           | 109 +++++++++++++++++++++++++++++++
- tests/tcg/x86_64/Makefile.target |   1 +
- 2 files changed, 110 insertions(+)
- create mode 100644 tests/tcg/x86_64/fma.c
+...having said which, I was so eager to get the series out
+once I'd finished the last test run that I forgot that I
+didn't intend to send out the first two or the last four
+patches in this series; whoops. Feel free to ignore them.
 
-diff --git a/tests/tcg/x86_64/fma.c b/tests/tcg/x86_64/fma.c
-new file mode 100644
-index 00000000000..09c622ebc00
---- /dev/null
-+++ b/tests/tcg/x86_64/fma.c
-@@ -0,0 +1,109 @@
-+/*
-+ * Test some fused multiply add corner cases.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include <stdio.h>
-+#include <stdint.h>
-+#include <stdbool.h>
-+#include <inttypes.h>
-+
-+#define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
-+
-+/*
-+ * Perform one "n * m + a" operation using the vfmadd insn and return
-+ * the result; on return *mxcsr_p is set to the bottom 6 bits of MXCSR
-+ * (the Flag bits). If ftz is true then we set MXCSR.FTZ while doing
-+ * the operation.
-+ * We print the operation and its results to stdout.
-+ */
-+static uint64_t do_fmadd(uint64_t n, uint64_t m, uint64_t a,
-+                         bool ftz, uint32_t *mxcsr_p)
-+{
-+    uint64_t r;
-+    uint32_t mxcsr = 0;
-+    uint32_t ftz_bit = ftz ? (1 << 15) : 0;
-+    uint32_t saved_mxcsr = 0;
-+
-+    asm volatile("stmxcsr %[saved_mxcsr]\n"
-+                 "stmxcsr %[mxcsr]\n"
-+                 "andl $0xffff7fc0, %[mxcsr]\n"
-+                 "orl %[ftz_bit], %[mxcsr]\n"
-+                 "ldmxcsr %[mxcsr]\n"
-+                 "movq %[a], %%xmm0\n"
-+                 "movq %[m], %%xmm1\n"
-+                 "movq %[n], %%xmm2\n"
-+                 /* xmm0 = xmm0 + xmm2 * xmm1 */
-+                 "vfmadd231sd %%xmm1, %%xmm2, %%xmm0\n"
-+                 "movq %%xmm0, %[r]\n"
-+                 "stmxcsr %[mxcsr]\n"
-+                 "ldmxcsr %[saved_mxcsr]\n"
-+                 : [r] "=r" (r), [mxcsr] "=m" (mxcsr),
-+                   [saved_mxcsr] "=m" (saved_mxcsr)
-+                 : [n] "r" (n), [m] "r" (m), [a] "r" (a),
-+                   [ftz_bit] "r" (ftz_bit)
-+                 : "xmm0", "xmm1", "xmm2");
-+    *mxcsr_p = mxcsr & 0x3f;
-+    printf("vfmadd132sd 0x%" PRIx64 " 0x%" PRIx64 " 0x%" PRIx64
-+           " = 0x%" PRIx64 " MXCSR flags 0x%" PRIx32 "\n",
-+           n, m, a, r, *mxcsr_p);
-+    return r;
-+}
-+
-+typedef struct testdata {
-+    /* Input n, m, a */
-+    uint64_t n;
-+    uint64_t m;
-+    uint64_t a;
-+    bool ftz;
-+    /* Expected result */
-+    uint64_t expected_r;
-+    /* Expected low 6 bits of MXCSR (the Flag bits) */
-+    uint32_t expected_mxcsr;
-+} testdata;
-+
-+static testdata tests[] = {
-+    { 0, 0x7ff0000000000000, 0x7ff000000000aaaa, false, /* 0 * Inf + SNaN */
-+      0x7ff800000000aaaa, 1 }, /* Should be QNaN and does raise Invalid */
-+    { 0, 0x7ff0000000000000, 0x7ff800000000aaaa, false, /* 0 * Inf + QNaN */
-+      0x7ff800000000aaaa, 0 }, /* Should be QNaN and does *not* raise Invalid */
-+    /*
-+     * These inputs give a result which is tiny before rounding but which
-+     * becomes non-tiny after rounding. x86 is a "detect tininess after
-+     * rounding" architecture, so it should give a non-denormal result and
-+     * not set the Underflow flag (only the Precision flag for an inexact
-+     * result).
-+     */
-+    { 0x3fdfffffffffffff, 0x001fffffffffffff, 0x801fffffffffffff, false,
-+      0x8010000000000000, 0x20 },
-+    /*
-+     * Flushing of denormal outputs to zero should also happen after
-+     * rounding, so setting FTZ should not affect the result or the flags.
-+     * QEMU currently does not emulate this correctly because we do the
-+     * flush-to-zero check before rounding, so we incorrectly produce a
-+     * zero result and set Underflow as well as Precision.
-+     */
-+#ifdef ENABLE_FAILING_TESTS
-+    { 0x3fdfffffffffffff, 0x001fffffffffffff, 0x801fffffffffffff, true,
-+      0x8010000000000000, 0x20 }, /* Enabling FTZ shouldn't change flags */
-+#endif
-+};
-+
-+int main(void)
-+{
-+    bool passed = true;
-+    for (int i = 0; i < ARRAY_SIZE(tests); i++) {
-+        uint32_t mxcsr;
-+        uint64_t r = do_fmadd(tests[i].n, tests[i].m, tests[i].a,
-+                              tests[i].ftz, &mxcsr);
-+        if (r != tests[i].expected_r) {
-+            printf("expected result 0x%" PRIx64 "\n", tests[i].expected_r);
-+            passed = false;
-+        }
-+        if (mxcsr != tests[i].expected_mxcsr) {
-+            printf("expected MXCSR flags 0x%x\n", tests[i].expected_mxcsr);
-+            passed = false;
-+        }
-+    }
-+    return passed ? 0 : 1;
-+}
-diff --git a/tests/tcg/x86_64/Makefile.target b/tests/tcg/x86_64/Makefile.target
-index d6dff559c7d..be20fc64e88 100644
---- a/tests/tcg/x86_64/Makefile.target
-+++ b/tests/tcg/x86_64/Makefile.target
-@@ -18,6 +18,7 @@ X86_64_TESTS += adox
- X86_64_TESTS += test-1648
- X86_64_TESTS += test-2175
- X86_64_TESTS += cross-modifying-code
-+X86_64_TESTS += fma
- TESTS=$(MULTIARCH_TESTS) $(X86_64_TESTS) test-x86_64
- else
- TESTS=$(MULTIARCH_TESTS)
--- 
-2.34.1
+(The patch numbering in the explanation of the series structure
+in the cover letter is all going to be off by 2 as a result,
+as well. This doesn't seem worth resending a monster patchset
+just to fix, though.)
 
+thanks
+-- PMM

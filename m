@@ -1,232 +1,207 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp928900njk;
-        Fri, 24 Jan 2025 08:32:42 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUXnpMy6sKr9YAFnvmm6Rp2unuzRz4rsGXas4vxTpNwZQ3HVCtqSkuQd29+nTBc/9D8NVT1m8rMeVjrVw==@linaro.org
-X-Google-Smtp-Source: AGHT+IES+KBwCTiYYt5GpE9vVNdGnP5xMLVynMsqh4/aQOJFeBowycdCsI73PO/5H0mAhBJKWtNs
-X-Received: by 2002:a05:6122:3d46:b0:50f:f21c:4fd0 with SMTP id 71dfb90a1353d-51d5b30169cmr24824823e0c.8.1737736362672;
-        Fri, 24 Jan 2025 08:32:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737736362; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp928919njk;
+        Fri, 24 Jan 2025 08:32:44 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUntymGM5vNMWz/ZOEutxwVsHcjjMaX1mYtYEux59Z621gZ6YxB8tO51M65pQfbN/yUxGr9iivROZaPpg==@linaro.org
+X-Google-Smtp-Source: AGHT+IFwkT+gn9FJHY2V3IsgphMPEhn1Gd+rPfr0jB5d+L9HMftmfzyz7GBW3ju/JH4dWdwy/fq6
+X-Received: by 2002:a05:622a:14d1:b0:467:87f4:a29f with SMTP id d75a77b69052e-46e12bc5dbcmr409096581cf.45.1737736364148;
+        Fri, 24 Jan 2025 08:32:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737736364; cv=none;
         d=google.com; s=arc-20240605;
-        b=Nw/3K9KlNAva6r1up5qSgcPiZ6oh3xSYXhdDr8bLU8SSbGxsy5Ly08sQK13bP/9MFE
-         fNwQCt+Z6iqgbFM98ewVThnRC4QyppZukd+PWCJ+ZyPzNAVcWeZiG+fjzbNasMkZY+3g
-         rnOjZ7sEiW5usp3McGNAN/Ew7hPaVqPb+7qeAEV8Xbb0g0Uw/81cuKMTPSebx0YUGtkw
-         Py2tVvjbB0EhMDqY0sXCKbQ5sh8ACB7O05W8jAQGcFV7i7NeQy1ZUfq0Sc+26UswmXtd
-         9LzapwSXW+2ln6e+8uhQkW8xC9Muk9LfClw/DL0RpHM1iS5lE4X+NIzqNNfWANpQRn98
-         k4Pw==
+        b=UhDFvMcB3CSnVkbJTK6iygU+yOOmh3PH7CXQXyd8zqZSQlXwYfy+ES4UVVqSqYcg6H
+         UsHmRfzZaZXk63O1yfBb858hXouXa3EYqAaixfj+HXOFbvPy6rlPMgHvt9XaDn4YeZJL
+         Otv+1XpzFGx+1MCJ/in7Rf71zfFiRjWNrRaIfFXMI+U1as+Cra1wQAtlq95X3Pdmpz6s
+         uWYnTacJe6uolP/QvcEHtIs2Y+ndlbKZQEco8SgIBckaWV1kw+4OnQSSMy/RQS+5G47k
+         06zBNHKOI69S3FmGr+gSLeIkBmpaFoS2veLmnzKS1zow+B8WwpotuIFtF6jeKueiWynp
+         o26Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=hR3/G2BdnpgL0DkgE9KDbKtJdTUbStqQyabHgGIFImE=;
-        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
-        b=Bq716K0l3/uDcoK06o0Rj83YmejC5icfw0OdO35QOnkCkyvW4O3IQok0TGVLi+lEFO
-         bvJ6KBxjnIhO4OofFQSf/F0mDlZN5p8DaLpnQRWnAU1lvNNPDXKwGD4YSu7MdPP0XiO8
-         q4Huo8HqlxuqsIEWw8374WslNWyGR8vcZZEcLwj+26sZQ/bZ9H2V51XnjuFYwr6eRq5N
-         cMDLThHtNwG7yeiW7sfDvkz8dwBZ3qbfQ36BoodWMcOPyEPaUiud4oY2gfa6MP2iukWZ
-         zuFp5icEwkowV3yqjtiSUCbIuoBe3jT1N1heo0fW1ZI/dVoDENC5dUbOJBBhDj9EtbH5
-         4ZIQ==;
+        bh=lnkT6ulKHq7dxxtpiNjIKSKMJRk+cdNio8Qkq1PdbQY=;
+        fh=p4KiR89ld/GNb0OGHboAOLXiCvMne43CVqs0bTyY+KM=;
+        b=IhNPpPCN6PQZncGaniP4h3+Mg5/QX+L25xUz/iEwrknh70AMnYjK1TUS1ZGaYKis5l
+         ecod2KcVHrKbvc0BNsOB4JXhArltovI8E3rGZ9QtQSg6giCnaVLGxQJzppJRF7GdORUt
+         agfM1DAvRIpKUk3A/toceiB2eBh5rAAkeRhRY/vX3U6lK9oGWrNLrteyvU1nBuDt1LBN
+         RO/tIF2wGFqjTaByPAt3gzi85V3gQuWDu7BFp+3n+qZAU64XuIrEu6GRUl1vm4pQoPHq
+         C/fTWyduL96XV5abCMt8/i5Es6wkL1PEamSyzOZRD8CditayORl19tliGoejDDDi04uE
+         nebA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BqawQewJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oBn3PmHU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ada2fe7eead31-4b7099ab486si804883137.426.2025.01.24.08.32.42
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e205f04c05si26171166d6.322.2025.01.24.08.32.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jan 2025 08:32:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 24 Jan 2025 08:32:44 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BqawQewJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=oBn3PmHU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tbMYk-0004in-S6; Fri, 24 Jan 2025 11:29:30 -0500
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tbMYr-0005C0-KE; Fri, 24 Jan 2025 11:29:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tbMYV-0003z8-KR
- for qemu-arm@nongnu.org; Fri, 24 Jan 2025 11:29:16 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1tbMYa-00041S-3O
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:29:20 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tbMYT-0005YP-N7
- for qemu-arm@nongnu.org; Fri, 24 Jan 2025 11:29:15 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-3863703258fso2223880f8f.1
- for <qemu-arm@nongnu.org>; Fri, 24 Jan 2025 08:29:13 -0800 (PST)
+ id 1tbMYX-0005Zp-UG
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:29:19 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-3862d161947so1270888f8f.3
+ for <qemu-devel@nongnu.org>; Fri, 24 Jan 2025 08:29:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737736152; x=1738340952; darn=nongnu.org;
+ d=linaro.org; s=google; t=1737736156; x=1738340956; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=hR3/G2BdnpgL0DkgE9KDbKtJdTUbStqQyabHgGIFImE=;
- b=BqawQewJmdoUjvBTmDvtAcP7m+0MOpg0+JmaDt7gkO0F6NggdJlf6ylyS63+/0p73s
- Y5MHsj6k5TrSPG6xl/NdSpLeVTu50DdmD7Mj2LbYl9Nf/RGNWZYXgMxtA1471HFPjryQ
- Rz+yJ0EDSn6wcSZfYb/4o3sV2bYLoE61JIogx3kFO+sVwzLm6+mmZ9zSTNhidF9pq1i4
- c6eJTOFy3qw3tRq64XLe908hAgHTSozo9tfBNovl6gu5W6CMM2pjdJOmyLqS6GyWag6g
- byja2lGqUNHpS2uE5iyKUYss/koA6wFUSYJolDueVqg6QF42ZOLgvlWU3xklLiPztVIS
- GW7w==
+ :reply-to; bh=lnkT6ulKHq7dxxtpiNjIKSKMJRk+cdNio8Qkq1PdbQY=;
+ b=oBn3PmHUwNg/QGxLVHk/WDVxZ5JQpspjVy1c/S7EGMJO2tqoA9EL9FEOMhQrBAbtQE
+ KjmSa6QhbgSdB2SgFh+JjXJe1BYxxNrWDPrKhwKOaumhZtbpLeys9DT9MHkJFIBJ8xMK
+ UTc+qf8ueGoaRxN4k0TM8wHTDD4YjSIfKGG7uR7kaPRZfWy8vRtET343KJp4UTynqazj
+ uPiSrKfjHYBFWIWnajpKqajoCjZLEzTu0dfjZkGGE0KQFkR1M/fCxmKfHkd5wivT38ur
+ Jl4N0F5k1GVCtzpdLz/+xyDi63wQoYvJbpuyBYBSLJqNLG1VuHpMXiHz4yFO3bHWTNGo
+ EoIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737736152; x=1738340952;
+ d=1e100.net; s=20230601; t=1737736156; x=1738340956;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=hR3/G2BdnpgL0DkgE9KDbKtJdTUbStqQyabHgGIFImE=;
- b=Eu5iGyd5mXV/oQMmDWRXPTErh+UeS0M/inW4EQX/HdWK6kacPtly9BWDruVi28lb98
- vLiKSmT2s+m0kxnZdRSo0qpsSBKDgSvJTWzU7qVsbeE+l9GGxi0LWoLNqmcz9WTJUqqP
- 70KCNFoHQSm3cG11A4JxOyAFbjJw2bZxxHuVQqe/l42CrAt63/wYcUdtykoTjtGwwSFy
- hdLLv0llkswFQTdBpJ8kL6ypciTXJMDWxQR5U/rEUYuty6O4NODaUC9OU1SoEp0Bf3Gy
- FmNzcSX5a0jvppBp+p/RnlReLGMKtLJY1ZFtkKTgv9TdtIpWv2RDb8rKzyqw3fw9fjaT
- LdAA==
-X-Gm-Message-State: AOJu0YzS3sAmrRo4IDjgdsxKPg7MUgbJjD65WFcy5QWZKNDVCulRRAPQ
- aC/BVNI/cT/3v/Idf/doAZF1mZJsYWCJwQsvI91PNx6dlHZrq3e+FY0ZQN62+JT8SFYwjhQKt5M
- U
-X-Gm-Gg: ASbGncvmvcfaahR+snpueI8gj+m/00bV4xGIXlLJL8nyjYhoRFGtdVEiy96ZVrHL2yu
- Xp+w1BbODIu2XoYCwOYtn7s6139OiOCQt+w4C7su8RSyvmFYDMXl35XQpsk+iTF8D+PEOA1yyhf
- 1JvHT6P/hySyJ6QlFl15Z001sFOIgiKdUfRHGLTuTXFGjHRHtb1rv6vcTXedaLI8RYUM6CO7C5f
- gkg6arLlakiRQAfNCZsE6SdvA/LdCF3LwMyYgEMoz30VUTXdVnLXJoNuTS3MWDTKNVB/6Ei6v07
- JXbVEg7bemM=
-X-Received: by 2002:a05:6000:2a3:b0:38a:906e:16d0 with SMTP id
- ffacd0b85a97d-38c2b7c17bbmr4053814f8f.21.1737736152082; 
- Fri, 24 Jan 2025 08:29:12 -0800 (PST)
+ bh=lnkT6ulKHq7dxxtpiNjIKSKMJRk+cdNio8Qkq1PdbQY=;
+ b=ncpz3WEnPwn9C5u3OzkE1PyI1117Lax2YMGWw7idNWgu6PDq/ZqIWZLEcErFXrtT3B
+ 2ZjM1ioqA6ldwqi+TLcIsHrqgC8euM9CSHJJwBBM0O77RDRXXfDJ271W7iivUpZIlSQA
+ r7KzgTOgM0ipKLdOwb6+dbJ9L896BrVLcHbdzW0jcwbr25Jton4lXHy7e2v212GvA8hU
+ 1C1vSu56LGoq336FuXJ3ocEk0LWcW4keu/GMG90TYMpkg9/Hdb0Kd7n9WjEU57Sd2wGy
+ 5T9SKycwlvpA8iiwYYsAshMrW9pSYPDEx9ulv13LDSFnCJyRM8KEtfSYXltU/+UqZoX9
+ W/LA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWgF6IK/HwwXw84rhFuotCjGWfuQ37q1LoJ7e6ovThWirUMTKX0zXvhx1Hu1q6ixBr+UT3HiIwriO/3@nongnu.org
+X-Gm-Message-State: AOJu0YzgL8DPdf/mxkA6ByjucElWJoQgaU2iks1e0f+R2FiCwvFz1Kxx
+ dq6tX9ilBOGooOo5MIJVPAc9PKbB0e5PS9/qAGeQJPHioQAzPSO3xYPl2qVMWJ5rLB3bM96BwNf
+ N
+X-Gm-Gg: ASbGncsx3BvRAN+eLtYxybpXP8w1CJ0ZlG+0uO35Ngm9tV1rPf8OCrza5jAPszHSS+H
+ spkpzg8MyouTTz/pA+Cn3PQhWKsTseB90Iw+XZTjHfQ70Dnf1OvUopqYlhYAIE1UIbPMaso3uaj
+ k174TwYXvs/v4akgCzkUWtcPQ9fzPJXD/4I/pBFoAnxC13D/ORkdKBnyBRxhRH8v7eCcj2HJfyf
+ jlScRFdhVtGvyGicdPoxWOzxv4b10K61xoPceVgGZGFCj1I1ezKE3g/UQ5cgziIb3MXk0t2In9x
+ YTvqpF5+Og8=
+X-Received: by 2002:a5d:59a8:0:b0:385:fa26:f0d8 with SMTP id
+ ffacd0b85a97d-38bf5655a0amr27922080f8f.8.1737736156326; 
+ Fri, 24 Jan 2025 08:29:16 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438bd47eecasm31683025e9.6.2025.01.24.08.29.11
+ 5b1f17b1804b1-438bd47eecasm31683025e9.6.2025.01.24.08.29.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Jan 2025 08:29:11 -0800 (PST)
+ Fri, 24 Jan 2025 08:29:14 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 27/76] target/arm: Define FPCR AH, FIZ, NEP bits
-Date: Fri, 24 Jan 2025 16:27:47 +0000
-Message-Id: <20250124162836.2332150-28-peter.maydell@linaro.org>
+Subject: [PATCH 30/76] target/arm: Adjust exception flag handling for AH = 1
+Date: Fri, 24 Jan 2025 16:27:50 +0000
+Message-Id: <20250124162836.2332150-31-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20250124162836.2332150-1-peter.maydell@linaro.org>
 References: <20250124162836.2332150-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: DPQBned0fVwO
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: rVlzuUU8gi9I
 
-The Armv8.7 FEAT_AFP feature defines three new control bits in
-the FPCR:
- * FPCR.AH: "alternate floating point mode"; this changes floating
-   point behaviour in a variety of ways, including:
-    - the sign of a default NaN is 1, not 0
-    - if FPCR.FZ is also 1, denormals detected after rounding
-      with an unbounded exponent has been applied are flushed to zero
-    - FPCR.FZ does not cause denormalized inputs to be flushed to zero
-    - miscellaneous other corner-case behaviour changes
- * FPCR.FIZ: flush denormalized numbers to zero on input for
-   most instructions
- * FPCR.NEP: makes scalar SIMD operations merge the result with
-   higher vector elements in one of the source registers, instead
-   of zeroing the higher elements of the destination
+When FPCR.AH = 1, some of the cumulative exception flags in the FPSR
+behave slightly differently for A64 operations:
+ * IDC is set when a denormal input is used without flushing
+ * IXC (Inexact) is set when an output denormal is flushed to zero
 
-This commit defines the new bits in the FPCR, and allows them to be
-read or written when FEAT_AFP is implemented.  Actual behaviour
-changes will be implemented in subsequent commits.
+Update vfp_get_fpsr_from_host() to do this.
 
-Note that these are the first FPCR bits which don't appear in the
-AArch32 FPSCR view of the register, and which share bit positions
-with FPSR bits.
+Note that because half-precision operations never set IDC, we now
+need to add float_flag_input_denormal_used to the set we mask out of
+fp_status_f16_a64.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu-features.h |  5 +++++
- target/arm/cpu.h          |  3 +++
- target/arm/vfp_helper.c   | 11 ++++++++---
- 3 files changed, 16 insertions(+), 3 deletions(-)
+ target/arm/vfp_helper.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index 30302d6c5b4..7bf24c506b3 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -802,6 +802,11 @@ static inline bool isar_feature_aa64_hcx(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, HCX) != 0;
- }
- 
-+static inline bool isar_feature_aa64_afp(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, AFP) != 0;
-+}
-+
- static inline bool isar_feature_aa64_tidcp1(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, TIDCP1) != 0;
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 2213c277348..7ba227ac4c5 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1713,6 +1713,9 @@ void vfp_set_fpscr(CPUARMState *env, uint32_t val);
-  */
- 
- /* FPCR bits */
-+#define FPCR_FIZ    (1 << 0)    /* Flush Inputs to Zero (FEAT_AFP) */
-+#define FPCR_AH     (1 << 1)    /* Alternate Handling (FEAT_AFP) */
-+#define FPCR_NEP    (1 << 2)    /* SIMD scalar ops preserve elts (FEAT_AFP) */
- #define FPCR_IOE    (1 << 8)    /* Invalid Operation exception trap enable */
- #define FPCR_DZE    (1 << 9)    /* Divide by Zero exception trap enable */
- #define FPCR_OFE    (1 << 10)   /* Overflow exception trap enable */
 diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
-index 3c8f3e65887..8c79ab4fc8a 100644
+index 7507ff24bc0..2eb75bd7ecc 100644
 --- a/target/arm/vfp_helper.c
 +++ b/target/arm/vfp_helper.c
-@@ -242,6 +242,9 @@ static void vfp_set_fpcr_masked(CPUARMState *env, uint32_t val, uint32_t mask)
-     if (!cpu_isar_feature(any_fp16, cpu)) {
-         val &= ~FPCR_FZ16;
-     }
-+    if (!cpu_isar_feature(aa64_afp, cpu)) {
-+        val &= ~(FPCR_FIZ | FPCR_AH | FPCR_NEP);
-+    }
+@@ -78,7 +78,7 @@ static void arm_set_ah_fp_behaviours(float_status *s)
+ #ifdef CONFIG_TCG
  
-     if (!cpu_isar_feature(aa64_ebf16, cpu)) {
-         val &= ~FPCR_EBF;
-@@ -271,12 +274,14 @@ static void vfp_set_fpcr_masked(CPUARMState *env, uint32_t val, uint32_t mask)
-      * We don't implement trapped exception handling, so the
-      * trap enable bits, IDE|IXE|UFE|OFE|DZE|IOE are all RAZ/WI (not RES0!)
-      *
--     * The FPCR bits we keep in vfp.fpcr are AHP, DN, FZ, RMode, EBF
--     * and FZ16. Len, Stride and LTPSIZE we just handled. Store those bits
-+     * The FPCR bits we keep in vfp.fpcr are AHP, DN, FZ, RMode, EBF, FZ16,
-+     * FIZ, AH, and NEP.
-+     * Len, Stride and LTPSIZE we just handled. Store those bits
-      * there, and zero any of the other FPCR bits and the RES0 and RAZ/WI
-      * bits.
-      */
--    val &= FPCR_AHP | FPCR_DN | FPCR_FZ | FPCR_RMODE_MASK | FPCR_FZ16 | FPCR_EBF;
-+    val &= FPCR_AHP | FPCR_DN | FPCR_FZ | FPCR_RMODE_MASK | FPCR_FZ16 |
-+        FPCR_EBF | FPCR_FIZ | FPCR_AH | FPCR_NEP;
-     env->vfp.fpcr &= ~mask;
-     env->vfp.fpcr |= val;
+ /* Convert host exception flags to vfp form.  */
+-static inline uint32_t vfp_exceptbits_from_host(int host_bits)
++static inline uint32_t vfp_exceptbits_from_host(int host_bits, bool ah)
+ {
+     uint32_t target_bits = 0;
+ 
+@@ -100,6 +100,16 @@ static inline uint32_t vfp_exceptbits_from_host(int host_bits)
+     if (host_bits & float_flag_input_denormal_flushed) {
+         target_bits |= FPSR_IDC;
+     }
++    /*
++     * With FPCR.AH, IDC is set when an input denormal is used,
++     * and flushing an output denormal to zero sets both IXC and UFC.
++     */
++    if (ah && (host_bits & float_flag_input_denormal_used)) {
++        target_bits |= FPSR_IDC;
++    }
++    if (ah && (host_bits & float_flag_output_denormal_flushed)) {
++        target_bits |= FPSR_IXC;
++    }
+     return target_bits;
  }
+ 
+@@ -117,7 +127,7 @@ static uint32_t vfp_get_fpsr_from_host(CPUARMState *env)
+ 
+     a64_flags |= get_float_exception_flags(&env->vfp.fp_status_a64);
+     a64_flags |= (get_float_exception_flags(&env->vfp.fp_status_f16_a64)
+-          & ~float_flag_input_denormal_flushed);
++          & ~(float_flag_input_denormal_flushed | float_flag_input_denormal_used));
+     /*
+      * Flushing an input denormal only because FPCR.FIZ == 1 does
+      * not set FPSR.IDC. So squash it unless (FPCR.AH == 0 && FPCR.FZ == 1).
+@@ -127,7 +137,8 @@ static uint32_t vfp_get_fpsr_from_host(CPUARMState *env)
+     if ((env->vfp.fpcr & (FPCR_FZ | FPCR_AH)) != FPCR_FZ) {
+         a64_flags &= ~float_flag_input_denormal_flushed;
+     }
+-    return vfp_exceptbits_from_host(a32_flags | a64_flags);
++    return vfp_exceptbits_from_host(a64_flags, env->vfp.fpcr & FPCR_AH) |
++        vfp_exceptbits_from_host(a32_flags, false);
+ }
+ 
+ static void vfp_clear_float_status_exc_flags(CPUARMState *env)
 -- 
 2.34.1
 

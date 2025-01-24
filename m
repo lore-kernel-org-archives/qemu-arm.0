@@ -1,139 +1,240 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from draig.lan ([85.9.250.243])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-ab6760ab0bcsm135499666b.95.2025.01.24.05.58.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Jan 2025 05:58:14 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
-	by draig.lan (Postfix) with ESMTP id C3DC35F748;
-	Fri, 24 Jan 2025 13:58:13 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Joel Stanley
- <joel@jms.id.au>,  Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] tests/functional: Add a test for the arm microbit machine
-In-Reply-To: <20250124101709.1591761-1-thuth@redhat.com> (Thomas Huth's
-	message of "Fri, 24 Jan 2025 11:17:09 +0100")
-References: <20250124101709.1591761-1-thuth@redhat.com>
-User-Agent: mu4e 1.12.8; emacs 29.4
-Date: Fri, 24 Jan 2025 13:58:13 +0000
-Message-ID: <8734h8joui.fsf@draig.linaro.org>
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp926335njk;
+        Fri, 24 Jan 2025 08:29:01 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUZnQfRjEsf0xe5CGFuePZnCfCdoWC88irZdsPMl97kjx0VrPa15CUY/sPGgPOxlxjl8KPy3OOM3CaOgA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHWClYmSDMEL7bNO3rc0UMZjyWDkdco4ipEnD6YLgRzqChAlthKkIgYSr5kC+o6hRDx+mFr
+X-Received: by 2002:a05:6102:3f0c:b0:4b4:3a28:6491 with SMTP id ada2fe7eead31-4b690d4715fmr26560024137.25.1737736141656;
+        Fri, 24 Jan 2025 08:29:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737736141; cv=none;
+        d=google.com; s=arc-20240605;
+        b=atvvIMJ/fs7l/dGDJsWcPiDvyh8IIFeac9ZTKhugnMhPhJyrWgRDyyDca/VmPuBhj4
+         uAsttMGDrvKvDhH5vs2LM0Ov8NMfpH9dpwGahEaQk5jrWTT4fY5KrfAZLG2myJ4aZ3Zt
+         kzdtljti1Yxl420QxJvV+LXGKG82MHBvAfC5Sz6NViSvjaqw4XquB622H9njWbUrC6Ox
+         4OgXXkgoh/pl/ArPUDtpUF+JG6mzs+9tIzvONq4Xa3HeM8S3iChi7F62bshDTP5/4Ij4
+         onYd64nVlTt+tUBHOC4YG4EUB430OMchrnZzsqaRb0+/YBvj32CydSrFygfcw74Hdz9A
+         XtpA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=aZAtVcMAZKjHRvt52hIevKlBELo2Ys5/XXx3UpdxpVg=;
+        fh=SAarn/LJfkobZksFl6x8SHK+vbqrXSni9ntGRdr4p+U=;
+        b=JM3pnUgHLzY+G4FwNv4K6RA8WgO7fVYpDVYL0m0x9ke75p+wtJDHjdZKGnxg1O48p0
+         9p41xdgdRfZ/zfRKcBOS3ZKiocxD1UNTKsUvG2NflsTMU8xyLoG7oYczOQYeNpNIXUnL
+         pfWyP6h4PEV+cqoURzSm37TVDkkZ2n7nX2Hx4V0fsz2ctt1x4XpH2/98wPm7r0ZEcETE
+         b/tjFzemlN4rB3o5i5LbFhjYL10VB8iq1P9JYMINMVmbf0hytu4zKIJStD9UGSbt+SLH
+         IC73ukcL3nYqVn9pTvWK8nO2RVlotbpS1nA+da8cXRyhvk9jHlOz86oABAycnOG/q+za
+         ZCUA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KKDa7+LR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b7099fcd79si771029137.523.2025.01.24.08.29.01
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 24 Jan 2025 08:29:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KKDa7+LR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces@nongnu.org>)
+	id 1tbMYG-0003jD-5p; Fri, 24 Jan 2025 11:29:00 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10])
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tbMY6-0003Vo-Rk
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:28:52 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tbMXy-0005LJ-HY
+ for qemu-devel@nongnu.org; Fri, 24 Jan 2025 11:28:45 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-43634b570c1so16737145e9.0
+ for <qemu-devel@nongnu.org>; Fri, 24 Jan 2025 08:28:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1737736120; x=1738340920; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=aZAtVcMAZKjHRvt52hIevKlBELo2Ys5/XXx3UpdxpVg=;
+ b=KKDa7+LROzcessQPiB6IqGJhJMGxrlkhFDa83Iobu+rOPy2vqNu+6fwEW6nPuIUhoS
+ EQCTqjuNetmlryARHaDbFv7ZoyvCtgoZ7cdfWeD6J3tUEtuwFrYe/JaI6SqsNObarZDz
+ xVwRIXecz6UxOssb1QBRK6E2qbgEbBIFxpVQSwXRV5rFdo738NGjyEPs/s0gpqXwicQn
+ iopuWzdXp7kivGwS3onsOwyyY+c6BO11FWnWrCafCIRBFUteGRokPn8shm0StY6tgBGX
+ 7sa5DagaSBHm+0ZuO/8+tkOrDKtNwlyUbqr+z695tJVhI0jJh2rVV6v07PwN8y/5R67s
+ R4Hw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737736120; x=1738340920;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=aZAtVcMAZKjHRvt52hIevKlBELo2Ys5/XXx3UpdxpVg=;
+ b=V5nPs5SwgWGczV5U6Rv6XalKMa8bLc+Z3SQ4HJ4+yjI9o8EC5kuQRggdCdc+X+Dexj
+ gHrNOmIo5cvWBMu7YsGovSHmBVq+eQ4GFzZGi+sNb4S5YZ7sVhF3xNo4SVvW/IXel7Wy
+ NnX7a43Lk7XsxI/puGUKXmWDQRL2qSEGnqHC+InAj2PSuZyjYafRa3QisYQRW9Er2CpK
+ XPUa5V5aubyclxZEE7gVY8icvGaboy5gIeuIl3lpYModwuiP2pPM3wuD7HgcoM9jkzSN
+ 9AMvsUvN/9JNd0En4ubsSuCSYfAFMIIWjN03ae18G7sdTKCHLJvS0L2QR9e0G9rk4bTr
+ rq0A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUNGY1FOWc6EG4Mq+a0VWfVWMt0TLgmKj2ceTQA8X8HFv9raK5GJ2WdrmoHUerq6Qak0ALyLqTsD1zn@nongnu.org
+X-Gm-Message-State: AOJu0YxMbZGEor3pYYbQkm4RkqFuc/6cuw215ElRGIvAaDWZ4vI8YgRe
+ lIaANU71Psmz0xnBWukiGs0dkkJIGRTAGyiw8qcMmZUXF3N91oU07vkfw68iLvk=
+X-Gm-Gg: ASbGncusKH/wLdqIB5bQKu+4UI/T2xiouBIpqczDfSqbgvmgXm+ExrrDz7F4JGI2w4n
+ JTqhzrjBGuUciL5KFF9nl8bsTtXgf1u3xFe13eXNgadGJZWqB89u9vEOqfpPidVsYf2onhsZUN5
+ gKNkgSlPxaHX3OOW5Hh6pzg35gk0mVz7DnvR9NAYvCn4BxLSiUO/vZs7qjGMmfq/9LOluXGizLT
+ uwjZXZ2KWgPb6+8PzzcOGKBEFypIE7a+m3zN9nhoUwVujjh8ynNB4QY6AdhtWg4GvVftMtJCy9k
+ nGDUPtpbDY4=
+X-Received: by 2002:a05:600c:1d1d:b0:434:faa9:5266 with SMTP id
+ 5b1f17b1804b1-438913e79e2mr281251225e9.13.1737736120003; 
+ Fri, 24 Jan 2025 08:28:40 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-438bd47eecasm31683025e9.6.2025.01.24.08.28.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 24 Jan 2025 08:28:39 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 01/76] target/i386: Do not raise Invalid for 0 * Inf + QNaN
+Date: Fri, 24 Jan 2025 16:27:21 +0000
+Message-Id: <20250124162836.2332150-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20250124162836.2332150-1-peter.maydell@linaro.org>
+References: <20250124162836.2332150-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: irz3xz24gK95
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.29
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: t9sQtwkTeykx
 
-Thomas Huth <thuth@redhat.com> writes:
+In commit 8adcff4ae7 ("fpu: handle raising Invalid for infzero in
+pick_nan_muladd") we changed the handling of 0 * Inf + QNaN to always
+raise the Invalid exception regardless of target architecture.  (This
+was a change affecting hppa, i386, sh4 and tricore.) However, this
+was incorrect for i386, which documents in the SDM section 14.5.2
+that for the 0 * Inf + NaN case that it will only raise the Invalid
+exception when the input is an SNaN.  (This is permitted by the IEEE
+754-2008 specification, which documents that whether we raise Invalid
+for 0 * Inf + QNaN is implementation defined.)
 
-> We don't have any functional tests for this machine yet, thus let's
-> add a test with a MicroPython binary that is available online
+Adjust the softfloat pick_nan_muladd code to allow the target to
+suppress the raising of Invalid for the inf * zero + NaN case (as an
+extra flag orthogonal to its choice for when to use the default NaN),
+and enable that for x86.
 
-We do have a basic system test:
+We do not revert here the behaviour change for hppa, sh4 or tricore:
+ * The sh4 manual is clear that it should signal Invalid
+ * The tricore manual is a bit vague but doesn't say it shouldn't
+ * The hppa manual doesn't talk about fused multiply-add corner
+   cases at all
 
-  test-armv6m-undef: test-armv6m-undef.S
-          $(CC) -mcpu=3Dcortex-m0 -mfloat-abi=3Dsoft \
-                  -Wl,--build-id=3Dnone -x assembler-with-cpp \
-                  $< -o $@ -nostdlib -static \
-                  -T $(ARM_SRC)/$@.ld
+Cc: qemu-stable@nongnu.org
+Fixes: 8adcff4ae7 (""fpu: handle raising Invalid for infzero in pick_nan_muladd")
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/fpu/softfloat-types.h | 16 +++++++++++++---
+ target/i386/tcg/fpu_helper.c  |  5 ++++-
+ fpu/softfloat-parts.c.inc     |  5 +++--
+ 3 files changed, 20 insertions(+), 6 deletions(-)
 
-  run-test-armv6m-undef: QEMU_OPTS=3D-semihosting-config enable=3Don,target=
-=3Dnative,chardev=3Doutput -M microbit -kernel
+diff --git a/include/fpu/softfloat-types.h b/include/fpu/softfloat-types.h
+index 9d37cdfaa8e..d8f831c331d 100644
+--- a/include/fpu/softfloat-types.h
++++ b/include/fpu/softfloat-types.h
+@@ -278,11 +278,21 @@ typedef enum __attribute__((__packed__)) {
+     /* No propagation rule specified */
+     float_infzeronan_none = 0,
+     /* Result is never the default NaN (so always the input NaN) */
+-    float_infzeronan_dnan_never,
++    float_infzeronan_dnan_never = 1,
+     /* Result is always the default NaN */
+-    float_infzeronan_dnan_always,
++    float_infzeronan_dnan_always = 2,
+     /* Result is the default NaN if the input NaN is quiet */
+-    float_infzeronan_dnan_if_qnan,
++    float_infzeronan_dnan_if_qnan = 3,
++    /*
++     * Don't raise Invalid for 0 * Inf + NaN. Default is to raise.
++     * IEEE 754-2008 section 7.2 makes it implementation defined whether
++     * 0 * Inf + QNaN raises Invalid or not. Note that 0 * Inf + SNaN will
++     * raise the Invalid flag for the SNaN anyway.
++     *
++     * This is a flag which can be ORed in with any of the above
++     * DNaN behaviour options.
++     */
++    float_infzeronan_suppress_invalid = (1 << 2),
+ } FloatInfZeroNaNRule;
+ 
+ /*
+diff --git a/target/i386/tcg/fpu_helper.c b/target/i386/tcg/fpu_helper.c
+index d0a1e2f3c8a..e0a072b4ebc 100644
+--- a/target/i386/tcg/fpu_helper.c
++++ b/target/i386/tcg/fpu_helper.c
+@@ -178,8 +178,11 @@ void cpu_init_fp_statuses(CPUX86State *env)
+      * "Fused-Multiply-ADD (FMA) Numeric Behavior" the NaN handling is
+      * specified -- for 0 * inf + NaN the input NaN is selected, and if
+      * there are multiple input NaNs they are selected in the order a, b, c.
++     * We also do not raise Invalid for the 0 * inf + (Q)NaN case.
+      */
+-    set_float_infzeronan_rule(float_infzeronan_dnan_never, &env->sse_status);
++    set_float_infzeronan_rule(float_infzeronan_dnan_never |
++                              float_infzeronan_suppress_invalid,
++                              &env->sse_status);
+     set_float_3nan_prop_rule(float_3nan_prop_abc, &env->sse_status);
+     /* Default NaN: sign bit set, most significant frac bit set */
+     set_float_default_nan_pattern(0b11000000, &env->fp_status);
+diff --git a/fpu/softfloat-parts.c.inc b/fpu/softfloat-parts.c.inc
+index ebde42992fc..4bb341b2f94 100644
+--- a/fpu/softfloat-parts.c.inc
++++ b/fpu/softfloat-parts.c.inc
+@@ -126,7 +126,8 @@ static FloatPartsN *partsN(pick_nan_muladd)(FloatPartsN *a, FloatPartsN *b,
+         float_raise(float_flag_invalid | float_flag_invalid_snan, s);
+     }
+ 
+-    if (infzero) {
++    if (infzero &&
++        !(s->float_infzeronan_rule & float_infzeronan_suppress_invalid)) {
+         /* This is (0 * inf) + NaN or (inf * 0) + NaN */
+         float_raise(float_flag_invalid | float_flag_invalid_imz, s);
+     }
+@@ -144,7 +145,7 @@ static FloatPartsN *partsN(pick_nan_muladd)(FloatPartsN *a, FloatPartsN *b,
+          * Inf * 0 + NaN -- some implementations return the
+          * default NaN here, and some return the input NaN.
+          */
+-        switch (s->float_infzeronan_rule) {
++        switch (s->float_infzeronan_rule & ~float_infzeronan_suppress_invalid) {
+         case float_infzeronan_dnan_never:
+             break;
+         case float_infzeronan_dnan_always:
+-- 
+2.34.1
 
-  ARM_TESTS+=3Dtest-armv6m-undef
-
-But I guess this exercised more of the machine as micropython actually
-comes up.
-
-> (thanks to Joel Stanley for providing it, see:
->  https://www.mail-archive.com/qemu-devel@nongnu.org/msg606064.html ).
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  MAINTAINERS                           |  1 +
->  tests/functional/meson.build          |  1 +
->  tests/functional/test_arm_microbit.py | 31 +++++++++++++++++++++++++++
->  3 files changed, 33 insertions(+)
->  create mode 100755 tests/functional/test_arm_microbit.py
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 1d9b3a0011..7b4d84bf5f 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1157,6 +1157,7 @@ F: hw/*/microbit*.c
->  F: include/hw/*/nrf51*.h
->  F: include/hw/*/microbit*.h
->  F: tests/qtest/microbit-test.c
-> +F: tests/functional/test_arm_microbit.py
->  F: docs/system/arm/nrf.rst
->=20=20
->  ARM PL011 Rust device
-> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
-> index bcfbb70b65..a301c38806 100644
-> --- a/tests/functional/meson.build
-> +++ b/tests/functional/meson.build
-> @@ -105,6 +105,7 @@ tests_arm_system_thorough =3D [
->    'arm_cubieboard',
->    'arm_emcraft_sf2',
->    'arm_integratorcp',
-> +  'arm_microbit',
->    'arm_orangepi',
->    'arm_quanta_gsj',
->    'arm_raspi2',
-> diff --git a/tests/functional/test_arm_microbit.py b/tests/functional/tes=
-t_arm_microbit.py
-> new file mode 100755
-> index 0000000000..68ea4e73d6
-> --- /dev/null
-> +++ b/tests/functional/test_arm_microbit.py
-> @@ -0,0 +1,31 @@
-> +#!/usr/bin/env python3
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
-> +#
-> +# Copyright 2025, The QEMU Project Developers.
-> +#
-> +# A functional test that runs MicroPython on the arm microbit machine.
-> +
-> +from qemu_test import QemuSystemTest, Asset, exec_command_and_wait_for_p=
-attern
-> +from qemu_test import wait_for_console_pattern
-> +
-> +
-> +class MicrobitMachine(QemuSystemTest):
-> +
-> +    ASSET_MICRO =3D Asset('https://ozlabs.org/~joel/microbit-micropython=
-.hex',
-> +        '021641f93dfb11767d4978dbb3ca7f475d1b13c69e7f4aec3382f212636bffd=
-6')
-> +
-> +    def test_arm_microbit(self):
-> +        self.set_machine('microbit')
-> +
-> +        micropython =3D self.ASSET_MICRO.fetch()
-> +        self.vm.set_console()
-> +        self.vm.add_args('-device', f'loader,file=3D{micropython}')
-> +        self.vm.launch()
-> +        wait_for_console_pattern(self, 'Type "help()" for more informati=
-on.')
-> +        exec_command_and_wait_for_pattern(self, 'import machine as mch',=
- '>>>')
-> +        exec_command_and_wait_for_pattern(self, 'mch.reset()', 'MicroPyt=
-hon')
-> +        wait_for_console_pattern(self, '>>>')
-
-We could do more if we wanted - all the microbit specific stuff lives in
-the microbit module:
-
-  https://microbit-micropython.readthedocs.io/en/latest/microbit_micropytho=
-n_api.html
-
-Anyway:
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-> +
-> +if __name__ =3D=3D '__main__':
-> +    QemuSystemTest.main()
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro

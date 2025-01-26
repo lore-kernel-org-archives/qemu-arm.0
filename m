@@ -1,492 +1,140 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp98992njm;
-        Tue, 4 Mar 2025 04:54:18 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVkVyi1/sD28RbVuCPooMCX5hV2U0ctefgxbCeyrGfnwojMrqgvFc7ee2sgYYDHwZQhvMJOclnAUOqscA==@linaro.org
-X-Google-Smtp-Source: AGHT+IFYC1bxVuS+MsQSXtCyDG/DG7HF67oJ/Nf9fxoss9MJB5wdTuooa9QbGZzAAg47Jg6czRCf
-X-Received: by 2002:ac8:5842:0:b0:471:920d:63b2 with SMTP id d75a77b69052e-474fbc83411mr39639591cf.9.1741092858281;
-        Tue, 04 Mar 2025 04:54:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741092858; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2091949njk;
+        Sun, 26 Jan 2025 13:14:45 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWdDhagNx+HnmY9SZV0UVBXYmiz+eyHkcS9bqxPekjQRQQ3oZbmzDN/oadwnFeYLa1pPs5YdLyziqtFIw==@linaro.org
+X-Received: by 2002:a17:902:d4d2:b0:215:94eb:adb6 with SMTP id d9443c01a7336-21c3563c51amr617799735ad.40.1737926085633;
+        Sun, 26 Jan 2025 13:14:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737926085; cv=none;
         d=google.com; s=arc-20240605;
-        b=dVhNHROa0f8fyuxCWSZlFE1e3aQnzwca18eRPLKUC/2jT1/J/ERvB8Q7gc3SykH2eo
-         bNPFCOHWuM8EjlF+SAm6YUqutC6/pZZaisb7L8pWUCE+0a4ENfLvQRQbcC3YGcxIxhmY
-         AQNQ78DUC66+aShML3hgMvbGPjx59wbj2oHN18/M/2zUPuwnPlawX9wr3gUlt8op2zkk
-         qcXMAxBa/bThM+Aq70u0YD8RwM5U62mbVOMYXmatJ5nY3F9x0109QLPRUo/nKtQdOPY0
-         IZRZlETYRgKecZR01v//PUUZ0JKpwVZ38ywYPqMFOgJw3lyp0x6Mnj4F/yCUu6wVr1Ps
-         x4Hw==
+        b=RJ0+5U10QnndnrYB639naJsLIxm1cmQgGS9JlYIV2iy17ga44u1oHPJ0zSnPXRnQHr
+         JI+ssTBjiN7P36kCQwR1+XCtv39KBYZcZs+nb6ZvbrBaHTe39JNE3v3D0oYeuDXZ8DGd
+         bahZQW2emrSrSK3CQXZW2UoFg5Pqg31AtXdyWRqaDpbQOp2z5t3r1Tz0x7qsowKqpWrD
+         iT79ot50TjqOipWWoAn7HkEgPAmJS5tj7EAe1F13HaEM4or5QFbKSLvZq51qnb4b6/BC
+         Yx0C1tzEpgrgqKn/kfimLKMnGG+9d689R5fQV22nX93EQRDzJ8krQLMrFOEj6cCROXIy
+         iFQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=eSA53h4Tq1ld+EUgLayekMHRu0q1zKVUKG7i9WfYbL0=;
-        fh=AUxCU78jacJE1vSghMJJha3+F2+VikVKZl38eSKs5/I=;
-        b=WldxxVpmgJ7B33yaW3XcJUHt+V1YWyrQMJ8kOOzbyYiXx2A4o20ZNZs7dC4t2Ez3Fy
-         07xpHbs9fFS0h5SZoWvdlLWU8JbbyMC9FTb3hC7wN5X0rZCF6tvsXLbq0NMMg0qDP761
-         tiErE2j1M7EK2o5a9MlSvN6zJ9VlGq5F0HQgRKFCe4y1Qj1qPhfzmmG3aikcWJdi+JTU
-         t5NvF3GpNyj4obF2w6/MEmUQBfss8bbtS4yaWVUx0EZL7XAysyU4xCHeZaoMKbNCew27
-         1rJ2CEUBkWlZvKIkaxCFtXQxoEUOlL48WUtygHq74wZ/EB8uB/ZT4nod18MV5Sf3qWfe
-         9DIA==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=dM482TolBOr/dYb2pXuY2SYJtabVGHzvURXSW1TjI40=;
+        fh=qB3IYHEdiIQ7O9Dc4HVhD4bNHjEw1OoXp4/gk9SCIB0=;
+        b=Ljk6V2qaFnNGZQ8b0N2FAQvaa+OTKaipv8b2QFvWzlbFFrii1DCYfslEhUtXQoY76X
+         u8D0YjDkkycULKSCQf+fB+uQEP5s4VciyWdOumrSkOifrtS9llR7y+9IRBjR6fG9F+1i
+         WXPieAv2DTemKkF6FaJ56pRB2BWmmR8PtQKpddXK8LWrshdiGuFk4ceW47YzE8/0zcX5
+         1PRuP43oKCtuulZTukvG/kbGd/fBcRTocaPm6rZGK/RV0uNthVdDXI2pB9YZe5NBPGIa
+         HdSLC/TDpgyp4Y6FDbT663ZTEjGe5Zg/ThwICM2JgtOU8CWhepwXXaNDwRqCWNCXPcju
+         WrGg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fXFfBe1g;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-474f55be8f1si26997961cf.482.2025.03.04.04.54.18
+       dkim=pass header.i=@linaro.org header.s=google header.b="nu1/HsyU";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-21da424e7d6sor58789905ad.17.2025.01.26.13.14.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Mar 2025 04:54:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sun, 26 Jan 2025 13:14:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fXFfBe1g;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tpRmR-0003dk-14; Tue, 04 Mar 2025 07:53:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhu-0004wl-Fc
- for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:49:13 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhr-0007VM-9S
- for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:49:09 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741092545;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eSA53h4Tq1ld+EUgLayekMHRu0q1zKVUKG7i9WfYbL0=;
- b=fXFfBe1gLaz2JfJKjTBoQmY7MRyqnTW/H5sSER+kqwae0K/mpektldxF7QRuLR9RQNVxC+
- xejJ4DMlu9QDyBakrNTQ4v8O8HqPEWEPD3Hpqyu2I0zrMWywfjTI6oy8tMvZFFAcCkfNJe
- kYQfHeDayFdP7VOwQEeW6y0cBdM1RUI=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-593-R3YktBr-NUe4Q2yq612kWw-1; Tue,
- 04 Mar 2025 07:48:48 -0500
-X-MC-Unique: R3YktBr-NUe4Q2yq612kWw-1
-X-Mimecast-MFC-AGG-ID: R3YktBr-NUe4Q2yq612kWw_1741092527
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E2F051800873; Tue,  4 Mar 2025 12:48:46 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.44.32.122])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C565219560AA; Tue,  4 Mar 2025 12:48:45 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 2631818003BB; Tue, 04 Mar 2025 13:48:16 +0100 (CET)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PULL 14/24] hw/uefi: add var-service-json.c + qapi for NV vars.
-Date: Tue,  4 Mar 2025 13:48:02 +0100
-Message-ID: <20250304124815.591749-15-kraxel@redhat.com>
-In-Reply-To: <20250304124815.591749-1-kraxel@redhat.com>
-References: <20250304124815.591749-1-kraxel@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="nu1/HsyU";
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1737926085; x=1738530885; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=dM482TolBOr/dYb2pXuY2SYJtabVGHzvURXSW1TjI40=;
+        b=nu1/HsyUUv5PoNSp6G6nRYRYpfVAm0lfTAiCzl1JTu3Wn5ryy1geTh0R4SnlOaoe/6
+         FcPQwJGEh/GcJzgR0h7Rv3POR/QQS2UJglplub+BnU7bKgIJtLPtx7wO5bMA7CidJmwm
+         SnryQPIJWN1yphu5KfO2zjMM4f4bB7c4BE4piBOO/v00pBbtn0rs/cZAS5g2/IpwQzR+
+         cirQIxqfgrIbRYSjOmMFA14asBTQ4eYOY/LdAdM0qqornHp7+pXXdloDfuny+IhCPoiS
+         Kzk3wLxIqB5rqPssqIBt/TiQcLA4dUSU+u/Nbz169nIaE34XAaQz0M9SV4x/idhv+x3Y
+         TK9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737926085; x=1738530885;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=dM482TolBOr/dYb2pXuY2SYJtabVGHzvURXSW1TjI40=;
+        b=dJz3cXMw7hupjksHm9Qbp/mU15GYD7tGDNgzvpESLZgyKhkCChD4VRIftqdg/KjGTX
+         LuUspTkyvt0TSeK2DccTC9vbKn3oTCGAEjFFBzbsBPlcvZly/fXYVcfDCg0ZJrs3mU3s
+         0DDImMWFyihEnGb9fIO15XW7eUTtJ4YD0TyRDb+eVnzgYX608iFwTOjRzcddBC53HWLo
+         t8nF5sKPX04ELZAU0mX2BZP1SZ23kXGa/R9svFtIJ6tROAwZ65BqlkzpUCrHRh6As4zN
+         6otzGI4PUo5wOoXpF7gZy4VcSUBMk/riEubyNUt8sePzeaevvHTI5yYjG9E5ZPcJcx1Q
+         t57A==
+X-Forwarded-Encrypted: i=1; AJvYcCUf+FD4KLyu1dxGhZCqD+JQD5NCe6FviN83IwBIf8vVgprVHKnuTdcfZrwdBdfp1tbwCpeqtHMTJG7+EQ==@linaro.org
+X-Gm-Message-State: AOJu0YzBHc63lxK6v5YNTdzl6YLFutjKCxASauq8nERA7fN/Xf/KhC0k
+	eKWLet1VT+ROfmcUtiGxU68AsEUWHgAhR0W6gl2U+oOWkPPQCdgPLYtZwzWtyM34Dg==
+X-Gm-Gg: ASbGncuB+Ij9P8ggmo51YImbHIb0Go0ldzWSPI/LhgZ2w810zzOyMh5Xqx+5Fu3kMbs
+	mKwelFzbb1e1OXjX2jfyDLdsgiMayqPS68pdv8S8+YV70jVwIE4SQUR09j+7nS0Vb9ZiJEizrTb
+	R4u317UBVfO9vK9n2PkImNJ2KFrHQole8ql81KglNme7/1IcqBDTSMy6z/TIp6skCmWHv1iQ+M6
+	SLzdhCygOGEMKBWrF+bFJUg1U8et62tGTgnvb2Z5dVyQhtdCq+JhgfkH82CH9SHvfQAJcu+nr4M
+	K0sWuFKBRc3HytrEkHk+FC7rGkQfj5JippwgdnJZWkfXBX8=
+X-Google-Smtp-Source: AGHT+IE1AaZn04VsAmZoovvHskfFwwHs+/I0v2XJVpXr12XD+Jd8EH5sfL0xlHcxmhZL8x5QsccIOQ==
+X-Received: by 2002:a17:90b:2f50:b0:2ee:fdf3:38ea with SMTP id 98e67ed59e1d1-2f782d32c45mr47771107a91.23.1737926085217;
+        Sun, 26 Jan 2025 13:14:45 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (174-21-71-127.tukw.qwest.net. [174.21.71.127])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-2f7ffb193e1sm5644337a91.42.2025.01.26.13.14.44
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 26 Jan 2025 13:14:44 -0800 (PST)
+Message-ID: <f7c1590d-5c61-4408-92c9-7241aed2c6be@linaro.org>
+Date: Sun, 26 Jan 2025 13:14:43 -0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 15/20] cpus: Fix style in cpu-target.c
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
+ qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
+References: <20250123234415.59850-1-philmd@linaro.org>
+ <20250123234415.59850-16-philmd@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250123234415.59850-16-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: IUJnsxZ1GKss
+X-TUID: yeSghJf4pnbR
 
-Define qapi schema for the uefi variable store state.
+On 1/23/25 15:44, Philippe Mathieu-Daudé wrote:
+> Fix style on code we are going to modify.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   cpu-target.c | 9 ++++++---
+>   1 file changed, 6 insertions(+), 3 deletions(-)
+> 
+> diff --git a/cpu-target.c b/cpu-target.c
+> index 6d8b7825746..a2999e7c3c0 100644
+> --- a/cpu-target.c
+> +++ b/cpu-target.c
+> @@ -47,12 +47,15 @@ static int cpu_common_post_load(void *opaque, int version_id)
+>   {
+>       CPUState *cpu = opaque;
+>   
+> -    /* 0x01 was CPU_INTERRUPT_EXIT. This line can be removed when the
+> -       version_id is increased. */
+> +    /*
+> +     * 0x01 was CPU_INTERRUPT_EXIT. This line can be removed when the
+> +     * version_id is increased.
+> +     */
+>       cpu->interrupt_request &= ~0x01;
+>       tlb_flush(cpu);
+>   
+> -    /* loadvm has just updated the content of RAM, bypassing the
+> +    /*
+> +     * loadvm has just updated the content of RAM, bypassing the
+>        * usual mechanisms that ensure we flush TBs for writes to
+>        * memory we've translated code from. So we must flush all TBs,
+>        * which will now be stale.
 
-Use it and the generated visitor helper functions to store persistent
-(EFI_VARIABLE_NON_VOLATILE) variables in JSON format on disk.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Acked-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20250225163031.1409078-15-kraxel@redhat.com>
-[ incremental fix squashed in ]
-Message-ID: <pji24p6oag7cn2rovus7rquo7q2c6tokuquobfro2sqorky7vu@tk7cxud6jw7f>
----
- hw/uefi/var-service-json.c | 243 +++++++++++++++++++++++++++++++++++++
- qapi/meson.build           |   1 +
- qapi/qapi-schema.json      |   1 +
- qapi/uefi.json             |  64 ++++++++++
- 4 files changed, 309 insertions(+)
- create mode 100644 hw/uefi/var-service-json.c
- create mode 100644 qapi/uefi.json
-
-diff --git a/hw/uefi/var-service-json.c b/hw/uefi/var-service-json.c
-new file mode 100644
-index 000000000000..761082c11fc1
---- /dev/null
-+++ b/hw/uefi/var-service-json.c
-@@ -0,0 +1,243 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * uefi vars device - serialize non-volatile varstore from/to json,
-+ *                    using qapi
-+ *
-+ * tools which can read/write these json files:
-+ *  - https://gitlab.com/kraxel/virt-firmware
-+ *  - https://github.com/awslabs/python-uefivars
-+ */
-+#include "qemu/osdep.h"
-+#include "qemu/cutils.h"
-+#include "qemu/error-report.h"
-+#include "system/dma.h"
-+
-+#include "hw/uefi/var-service.h"
-+
-+#include "qobject/qobject.h"
-+#include "qobject/qjson.h"
-+
-+#include "qapi/dealloc-visitor.h"
-+#include "qapi/qobject-input-visitor.h"
-+#include "qapi/qobject-output-visitor.h"
-+#include "qapi/qapi-types-uefi.h"
-+#include "qapi/qapi-visit-uefi.h"
-+
-+static char *generate_hexstr(void *data, size_t len)
-+{
-+    static const char hex[] = {
-+        '0', '1', '2', '3', '4', '5', '6', '7',
-+        '8', '9', 'a', 'b', 'c', 'd', 'e', 'f',
-+    };
-+    uint8_t *src = data;
-+    char *dest;
-+    size_t i;
-+
-+    dest = g_malloc(len * 2 + 1);
-+    for (i = 0; i < len * 2;) {
-+        dest[i++] = hex[*src >> 4];
-+        dest[i++] = hex[*src & 15];
-+        src++;
-+    }
-+    dest[i++] = 0;
-+
-+    return dest;
-+}
-+
-+static UefiVarStore *uefi_vars_to_qapi(uefi_vars_state *uv)
-+{
-+    UefiVarStore *vs;
-+    UefiVariableList **tail;
-+    UefiVariable *v;
-+    QemuUUID be;
-+    uefi_variable *var;
-+
-+    vs = g_new0(UefiVarStore, 1);
-+    vs->version = 2;
-+    tail = &vs->variables;
-+
-+    QTAILQ_FOREACH(var, &uv->variables, next) {
-+        if (!(var->attributes & EFI_VARIABLE_NON_VOLATILE)) {
-+            continue;
-+        }
-+
-+        v = g_new0(UefiVariable, 1);
-+        be = qemu_uuid_bswap(var->guid);
-+        v->guid = qemu_uuid_unparse_strdup(&be);
-+        v->name = uefi_ucs2_to_ascii(var->name, var->name_size);
-+        v->attr = var->attributes;
-+
-+        v->data = generate_hexstr(var->data, var->data_size);
-+
-+        if (var->attributes &
-+            EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS) {
-+            v->time = generate_hexstr(&var->time, sizeof(var->time));
-+            if (var->digest && var->digest_size) {
-+                v->digest = generate_hexstr(var->digest, var->digest_size);
-+            }
-+        }
-+
-+        QAPI_LIST_APPEND(tail, v);
-+    }
-+    return vs;
-+}
-+
-+static unsigned parse_hexchar(char c)
-+{
-+    switch (c) {
-+    case '0' ... '9': return c - '0';
-+    case 'a' ... 'f': return c - 'a' + 0xa;
-+    case 'A' ... 'F': return c - 'A' + 0xA;
-+    default: return 0;
-+    }
-+}
-+
-+static void parse_hexstr(void *dest, char *src, int len)
-+{
-+    uint8_t *data = dest;
-+    size_t i;
-+
-+    for (i = 0; i < len; i += 2) {
-+        *(data++) =
-+            parse_hexchar(src[i]) << 4 |
-+            parse_hexchar(src[i + 1]);
-+    }
-+}
-+
-+static void uefi_vars_from_qapi(uefi_vars_state *uv, UefiVarStore *vs)
-+{
-+    UefiVariableList *item;
-+    UefiVariable *v;
-+    QemuUUID be;
-+    uefi_variable *var;
-+    uint8_t *data;
-+    size_t i, len;
-+
-+    for (item = vs->variables; item != NULL; item = item->next) {
-+        v = item->value;
-+
-+        var = g_new0(uefi_variable, 1);
-+        var->attributes = v->attr;
-+        qemu_uuid_parse(v->guid, &be);
-+        var->guid = qemu_uuid_bswap(be);
-+
-+        len = strlen(v->name);
-+        var->name_size = len * 2 + 2;
-+        var->name = g_malloc(var->name_size);
-+        for (i = 0; i <= len; i++) {
-+            var->name[i] = v->name[i];
-+        }
-+
-+        len = strlen(v->data);
-+        var->data_size = len / 2;
-+        var->data = data = g_malloc(var->data_size);
-+        parse_hexstr(var->data, v->data, len);
-+
-+        if (v->time && strlen(v->time) == 32) {
-+            parse_hexstr(&var->time, v->time, 32);
-+        }
-+
-+        if (v->digest) {
-+            len = strlen(v->digest);
-+            var->digest_size = len / 2;
-+            var->digest = g_malloc(var->digest_size);
-+            parse_hexstr(var->digest, v->digest, len);
-+        }
-+
-+        QTAILQ_INSERT_TAIL(&uv->variables, var, next);
-+    }
-+}
-+
-+static GString *uefi_vars_to_json(uefi_vars_state *uv)
-+{
-+    UefiVarStore *vs = uefi_vars_to_qapi(uv);
-+    QObject *qobj = NULL;
-+    Visitor *v;
-+    GString *gstr;
-+
-+    v = qobject_output_visitor_new(&qobj);
-+    if (visit_type_UefiVarStore(v, NULL, &vs, NULL)) {
-+        visit_complete(v, &qobj);
-+    }
-+    visit_free(v);
-+    qapi_free_UefiVarStore(vs);
-+
-+    gstr = qobject_to_json_pretty(qobj, true);
-+    qobject_unref(qobj);
-+
-+    return gstr;
-+}
-+
-+void uefi_vars_json_init(uefi_vars_state *uv, Error **errp)
-+{
-+    if (uv->jsonfile) {
-+        uv->jsonfd = qemu_create(uv->jsonfile, O_RDWR, 0666, errp);
-+    }
-+}
-+
-+void uefi_vars_json_save(uefi_vars_state *uv)
-+{
-+    GString *gstr;
-+    int rc;
-+
-+    if (uv->jsonfd == -1) {
-+        return;
-+    }
-+
-+    gstr = uefi_vars_to_json(uv);
-+
-+    lseek(uv->jsonfd, 0, SEEK_SET);
-+    rc = ftruncate(uv->jsonfd, 0);
-+    if (rc != 0) {
-+        warn_report("%s: ftruncate error", __func__);
-+    }
-+    rc = write(uv->jsonfd, gstr->str, gstr->len);
-+    if (rc != gstr->len) {
-+        warn_report("%s: write error", __func__);
-+    }
-+    fsync(uv->jsonfd);
-+
-+    g_string_free(gstr, true);
-+}
-+
-+void uefi_vars_json_load(uefi_vars_state *uv, Error **errp)
-+{
-+    UefiVarStore *vs;
-+    QObject *qobj;
-+    Visitor *v;
-+    char *str;
-+    size_t len;
-+    int rc;
-+
-+    if (uv->jsonfd == -1) {
-+        return;
-+    }
-+
-+    len = lseek(uv->jsonfd, 0, SEEK_END);
-+    if (len == 0) {
-+        return;
-+    }
-+
-+    str = g_malloc(len + 1);
-+    lseek(uv->jsonfd, 0, SEEK_SET);
-+    rc = read(uv->jsonfd, str, len);
-+    if (rc != len) {
-+        warn_report("%s: read error", __func__);
-+    }
-+    str[len] = 0;
-+
-+    qobj = qobject_from_json(str, errp);
-+    v = qobject_input_visitor_new(qobj);
-+    visit_type_UefiVarStore(v, NULL, &vs, errp);
-+    visit_free(v);
-+
-+    if (!(*errp)) {
-+        uefi_vars_from_qapi(uv, vs);
-+        uefi_vars_update_storage(uv);
-+    }
-+
-+    qapi_free_UefiVarStore(vs);
-+    qobject_unref(qobj);
-+    g_free(str);
-+}
-diff --git a/qapi/meson.build b/qapi/meson.build
-index e7bc54e5d047..eadde4db307f 100644
---- a/qapi/meson.build
-+++ b/qapi/meson.build
-@@ -65,6 +65,7 @@ if have_system
-     'pci',
-     'rocker',
-     'tpm',
-+    'uefi',
-   ]
- endif
- if have_system or have_tools
-diff --git a/qapi/qapi-schema.json b/qapi/qapi-schema.json
-index b1581988e4eb..2877aff73d0c 100644
---- a/qapi/qapi-schema.json
-+++ b/qapi/qapi-schema.json
-@@ -81,3 +81,4 @@
- { 'include': 'vfio.json' }
- { 'include': 'cryptodev.json' }
- { 'include': 'cxl.json' }
-+{ 'include': 'uefi.json' }
-diff --git a/qapi/uefi.json b/qapi/uefi.json
-new file mode 100644
-index 000000000000..bdfcabe1df4d
---- /dev/null
-+++ b/qapi/uefi.json
-@@ -0,0 +1,64 @@
-+# -*- Mode: Python -*-
-+# vim: filetype=python
-+#
-+
-+##
-+# = UEFI Variable Store
-+#
-+# The qemu efi variable store implementation (hw/uefi/) uses this to
-+# store non-volatile variables in json format on disk.
-+#
-+# This is an existing format already supported by (at least) two other
-+# projects, specifically https://gitlab.com/kraxel/virt-firmware and
-+# https://github.com/awslabs/python-uefivars.
-+##
-+
-+##
-+# @UefiVariable:
-+#
-+# UEFI Variable.  Check the UEFI specifification for more detailed
-+# information on the fields.
-+#
-+# @guid: variable namespace GUID
-+#
-+# @name: variable name, in UTF-8 encoding.
-+#
-+# @attr: variable attributes.
-+#
-+# @data: variable value, encoded as hex string.
-+#
-+# @time: variable modification time.  EFI_TIME struct, encoded as hex
-+#     string.  Used only for authenticated variables, where the
-+#     EFI_VARIABLE_TIME_BASED_AUTHENTICATED_WRITE_ACCESS attribute bit
-+#     is set.
-+#
-+# @digest: variable certificate digest.  Used to verify the signature
-+#     of updates for authenticated variables.  UEFI has two kinds of
-+#     authenticated variables.  The secure boot variables ('PK',
-+#     'KEK', 'db' and 'dbx') have hard coded signature checking rules.
-+#     For other authenticated variables the firmware stores a digest
-+#     of the signing certificate at variable creation time, and any
-+#     updates must be signed with the same certificate.
-+#
-+# Since: 10.0
-+##
-+{ 'struct' : 'UefiVariable',
-+  'data' : { 'guid'  : 'str',
-+             'name'  : 'str',
-+             'attr'  : 'int',
-+             'data'  : 'str',
-+             '*time' : 'str',
-+             '*digest' : 'str'}}
-+
-+##
-+# @UefiVarStore:
-+#
-+# @version: currently always 2
-+#
-+# @variables: list of UEFI variables
-+#
-+# Since: 10.0
-+##
-+{ 'struct' : 'UefiVarStore',
-+  'data' : { 'version'   : 'int',
-+             'variables' : [ 'UefiVariable' ] }}
--- 
-2.48.1
-
+r~

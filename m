@@ -1,254 +1,202 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp98875njm;
-        Tue, 4 Mar 2025 04:54:00 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW2x77jllgB3aHUrDSOxkJdg2sovvSuU6I+LaYWhHYFQXnHZAXPgDYuh+ptR4bZQANposGF+p/jGUlpuw==@linaro.org
-X-Google-Smtp-Source: AGHT+IEF2WEmW7aBwrMbTbV1xn8Y5miPQULsdLfD2UFjtXsyOdRlX9tEmJ+F8oG63/NtlVydEsIe
-X-Received: by 2002:a05:622a:1114:b0:475:f0:91de with SMTP id d75a77b69052e-47500f0a16cmr17387521cf.19.1741092840683;
-        Tue, 04 Mar 2025 04:54:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741092840; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2080003njk;
+        Sun, 26 Jan 2025 12:38:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXmZRlpdJFeTO1THlPdnsCwMKDVbfZDGY/lwZa401XTsR9ZNZzClO9NRcn2GvaZre18ZTK9fuKeYzgZhQ==@linaro.org
+X-Received: by 2002:a17:903:2312:b0:216:69ca:770b with SMTP id d9443c01a7336-21c3550eaacmr638110355ad.12.1737923895368;
+        Sun, 26 Jan 2025 12:38:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737923895; cv=none;
         d=google.com; s=arc-20240605;
-        b=gvR5/frUO6LeEK1/UxDp+9R0piHZ2voRd1yJ9LdzqAGM/pOH458nSQlbrdAh9zAw0P
-         5KOuneVIBtFiub8xZ2iJiMddg1pAnhBSDAa9BbylX0jREunEKpk17OvZcdEnaWf5omIT
-         7lC8Y9QX88IszV8N85Bgl+aGlnP/mreshArIuUaTx/zoxI2muBnYT3eVXDUzfTPeKGNb
-         FKMtaYCr6bfFftHDlUwEU2QHESyvV+spY3OmHP6j4wtyip2v9trOnBoqh9f44undRn/o
-         NifYEkEpOTrt6n7Omd19J7uTcOmDFV8KMU8/m2g/DpwpVUX7ADT3aWMyNvSpWudyMOq8
-         RXzA==
+        b=Vva/OffEcczWsNeKtkfyOO0Mapl0Squ3JIFETEMmg8jryWveAlsVFW+D8G3Z6uNWl+
+         fFQJm2Awu1SwaVOIyWfX3VtZau1EwMw7hohyjCe7tgBOCRyXxqa7DGviOLBRN3vdK2iS
+         o/JKwXB4IBOcBPye1tp0YuEaIbhAONm9jXdQYQgRCYqM1UuF2cE/amKrD0J6MJNoAUVu
+         49Bd4eiZN6hwDbeAT9rZJA43jhdDJQ4/iIx7u2ijv3M4cghNQDah44+kmdFUZSQNZ5xx
+         9WTxYK4sV7U/QgZIrRRJvtUNzQb2BLOzTrUQqE/woGoA52vacmNy/V6aJa3Ex8Gxb8m1
+         q4dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=e2u9omNZBitCXUqKxUNmPV8npW4CggDgtLN2KruyGkQ=;
-        fh=AUxCU78jacJE1vSghMJJha3+F2+VikVKZl38eSKs5/I=;
-        b=UtAFuazxuho70oXYlKOd0ra/g+CAnCfgIc8dnjlhkIfx/+9MbC8vaE6gsDO1wmPCSQ
-         0LIAh2rEOJcitg4Dw1Qh+N91Ulq/HepljX6uwCFuM5eRsTnkxcPT1KCwmbBt6jvtMTJj
-         oJ8i0XmEYvhFj6Rj8QqXLUkZrJZjjpdOqNhRdfSkKW4Js0QoYlgaGDa4UpoJTfxwIJjT
-         /igKk6reSG/zHaFrFMZgp5pX/C8kGzyG3hpG3v5EnYTVz+/Rqv1ozoaO/KYA8squqUoc
-         pOlnUoOYxXBXfDv04cPLdjYBR0l0/dTx6duUeG4/ACueY6D7HVDCa1Pl0CTMoxQoM7b2
-         AFlw==;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=HVPb45ZdRMqIKUAi6GudayI0aNfKV1cv8oTD0Mxltf8=;
+        fh=95jmS+poNjwmSDC7QoDvdBnUnCuajLXeKx5hnL/lDLU=;
+        b=O4KcDibDB/V9j/tNXGaKdOgcIh+jPxGqfkD0nZpBPq6rc2MPt7b7APb0rN2bcIeLrK
+         V2/+U5qPJFKq3M0zzp9bxkMB6vFz2u1ou4phOtTtrslPA3jU/4PdohGCBuVh45wNVGNo
+         GPLHuP1trPcsVM0RAOVNOGztDLR95pFRwgL5SqV8Is/nw82AdDy1VMt6222u9DxBCFKs
+         S6KiqpCMkUq3Aa5wdWbOHHYH0BJeVUsGRA0zeEOA9Ack19jEk0e0LSyf1naNdqpfxDfi
+         Dj7kDeiIpxUgbsX1QY6a6UtA/4jRiSqWXjsbyAgK1vG54sBP27eti/sk3mW+cZWPwT4o
+         aLGA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="M7KVrNn/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-4746919d44asi108729871cf.99.2025.03.04.04.54.00
+       dkim=pass header.i=@linaro.org header.s=google header.b=xCsZLQ7U;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d9443c01a7336-21da411379esor49841735ad.14.2025.01.26.12.38.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Mar 2025 04:54:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sun, 26 Jan 2025 12:38:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="M7KVrNn/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tpRjP-0007dN-NJ; Tue, 04 Mar 2025 07:50:44 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10])
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhk-0004tX-OJ
- for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:49:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhi-00074P-Oi
- for qemu-devel@nongnu.org; Tue, 04 Mar 2025 07:49:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741092538;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=e2u9omNZBitCXUqKxUNmPV8npW4CggDgtLN2KruyGkQ=;
- b=M7KVrNn/PbyVY8yYYjIrTiA1j7fIDYtkIviCtg3yFUlyZPflKfQUJ1Cmreq1XkNTQdzcNU
- 9hl3vcxkmza7g73VW9icwALJ6Nhh8xWWsN49NeC4gPU3JnZ2AjNbhfd6JdYLM5nZWuMgey
- 9hWoN769WChEMiXznyn7Bjnk6pI3z+c=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-401-W4DTbsqDPQelac5JlWY1JA-1; Tue,
- 04 Mar 2025 07:48:54 -0500
-X-MC-Unique: W4DTbsqDPQelac5JlWY1JA-1
-X-Mimecast-MFC-AGG-ID: W4DTbsqDPQelac5JlWY1JA_1741092533
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D7A001954201; Tue,  4 Mar 2025 12:48:52 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.44.32.122])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 89B15180087C; Tue,  4 Mar 2025 12:48:51 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 70E3B1800607; Tue, 04 Mar 2025 13:48:16 +0100 (CET)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PULL 18/24] hw/uefi: add uefi-vars-sysbus device
-Date: Tue,  4 Mar 2025 13:48:06 +0100
-Message-ID: <20250304124815.591749-19-kraxel@redhat.com>
-In-Reply-To: <20250304124815.591749-1-kraxel@redhat.com>
-References: <20250304124815.591749-1-kraxel@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=xCsZLQ7U;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1737923895; x=1738528695; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=HVPb45ZdRMqIKUAi6GudayI0aNfKV1cv8oTD0Mxltf8=;
+        b=xCsZLQ7UYebZSYUVBmRtgWvbI5WtC5bcYmZxBRo8HhGuCSheGNBhGg3pJWk43XC0gJ
+         f/Xasa7cjZ6jwoCudY1+ajYj6QuTLIpMmvMZTL6f1zk4TNI5k+eQOyGtRKK25Usd61NA
+         h46EcNUGJrgzOdlN9RAmbApp6mrwb+p7nyBbsmjZWttib1BO3zPXCyHWlFcUQXX1h3KH
+         ywxC8ffx5L3EzaMgogXWdzqvBiO0Q29S5UQ4kRp5c9J8YPzRVDE/079RDhNEILM3hFez
+         zTmYohTNRYbu2NsVp9wbPoif+dN8xxVWtmMPc7sfJ0l3vXCx81Xl0kXkoVIx/KwmP9uB
+         49iA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1737923895; x=1738528695;
+        h=content-transfer-encoding:in-reply-to:content-language:references
+         :cc:to:from:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=HVPb45ZdRMqIKUAi6GudayI0aNfKV1cv8oTD0Mxltf8=;
+        b=sp7STsB2mWk0tGJcZZ0Bd400C1/2aTxj2dERVa6qNH4DoV/hPsPFjfF4O25YbcW8i6
+         lq/c5CpPYhBgNxOiFGr0M/sIW8MIQKloK1B1BPq8hThsoiqI3oF7mz2zIQv4oJH5Lw+Q
+         tqbj7heYBQhJ2WnJvMu3Iu9HSub51paXjD47cylikrNJd9xz4J2/8Jn/QYO7jM1lsvu8
+         gQSly0Lz8aDy6iypF5K2pH1z3qC8C5aHKhMWLcHE/kFZStKWEab8+OxmsSM6Hyf+mcYC
+         2pXV5GHVfVgdur4EnMDMVrz9TFSYMl/lq4qsZ3+gJOmc+tiHscHAlQykUkFT5TG5rqSk
+         7DXg==
+X-Forwarded-Encrypted: i=1; AJvYcCX0oj5rolP0wpVR+swSoxorU5ecIYlMW2bgmg91lY+me78pSfSRcGSg17Br6fY9954CD4BGYyYomWAHKw==@linaro.org
+X-Gm-Message-State: AOJu0Yzj8eenWFCoqSMj5Gu4nAhcpQQvnXWjE3XebyJPbf6e5fOUF3ee
+	ES+tSaSLrcCHzuPyLt42hQbU+GpWC0KynCQbJbrOz5KEABq3P+KROrBorY/96Uhsdg==
+X-Gm-Gg: ASbGncvbBGTjHPYQvn7zL13QdKL/pkQpArW7GEfnixYCymIozGdJO2AQ/NS73amoEzy
+	4+/J5XS7Sy5glSg4pogeUKaWxsugnEiwl6y13V1FuwEOmPCO4L01zpi1oBtCnNPzfUFGOz4GBdb
+	GGyrXy6wWYkM+DnOrN1dMZUWzPNXr7y7wrGYdnNo70Q9WF/DcoUt3b83mO0Bz67gB0GhzCsWG1m
+	cfrlLOGvh4hcXfMjPu061EXCE4sfeQdZCkeIsnUHjJaYxgxk/fN6HPyTKAou5s64FZkldVhu6ga
+	2MRJzOBl2c7nYTEc443tX/R7oReaO5Xit4m2PyILr0Voo1Q=
+X-Google-Smtp-Source: AGHT+IFHGSYkE2gK8J+M4s6UHrhYt2yFRPQZ8hFQm3oPTcuYK/Fs6x7qFNLpzA/inMpx9KuBn36otA==
+X-Received: by 2002:a17:903:41c3:b0:216:61d2:46b8 with SMTP id d9443c01a7336-21c3555eb72mr575490595ad.23.1737923894867;
+        Sun, 26 Jan 2025 12:38:14 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (174-21-71-127.tukw.qwest.net. [174.21.71.127])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21da3d9b8e0sm50214325ad.40.2025.01.26.12.38.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 26 Jan 2025 12:38:14 -0800 (PST)
+Message-ID: <36f6337f-f076-44df-bbb0-29290a010b1a@linaro.org>
+Date: Sun, 26 Jan 2025 12:38:12 -0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 10/20] accel/tcg: Rename 'hw/core/tcg-cpu-ops.h' ->
+ 'accel/tcg/cpu-ops.h'
+From: Richard Henderson <richard.henderson@linaro.org>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
+ qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
+References: <20250123234415.59850-1-philmd@linaro.org>
+ <20250123234415.59850-11-philmd@linaro.org>
+ <d81542e9-bebf-4f5f-a911-8ab7b6180d4e@linaro.org>
+Content-Language: en-US
+In-Reply-To: <d81542e9-bebf-4f5f-a911-8ab7b6180d4e@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.29
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: Edp2eJ12CbUX
+X-TUID: vVnn+vSN9p/h
 
-This adds sysbus bindings for the variable service.
+On 1/26/25 12:36, Richard Henderson wrote:
+> On 1/23/25 15:44, Philippe Mathieu-Daudé wrote:
+>> TCGCPUOps structure makes more sense in the accelerator context
+>> rather than hardware emulation. Move it under the accel/tcg/ scope.
+>>
+>> Mechanical change doing:
+>>
+>>   $  sed -i -e 's,hw/core/tcg-cpu-ops.h,accel/tcg/cpu-ops.h,g' \
+>>     $(git grep -l hw/core/tcg-cpu-ops.h)
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   MAINTAINERS                                            | 2 +-
+>>   include/{hw/core/tcg-cpu-ops.h => accel/tcg/cpu-ops.h} | 0
+>>   accel/tcg/cpu-exec.c                                   | 4 ++--
+>>   accel/tcg/cputlb.c                                     | 2 +-
+>>   accel/tcg/translate-all.c                              | 2 +-
+>>   accel/tcg/user-exec.c                                  | 2 +-
+>>   accel/tcg/watchpoint.c                                 | 2 +-
+>>   bsd-user/signal.c                                      | 2 +-
+>>   hw/mips/jazz.c                                         | 2 +-
+>>   linux-user/signal.c                                    | 2 +-
+>>   system/physmem.c                                       | 2 +-
+>>   target/alpha/cpu.c                                     | 2 +-
+>>   target/arm/cpu.c                                       | 2 +-
+>>   target/arm/tcg/cpu-v7m.c                               | 2 +-
+>>   target/arm/tcg/cpu32.c                                 | 2 +-
+>>   target/arm/tcg/mte_helper.c                            | 2 +-
+>>   target/arm/tcg/sve_helper.c                            | 2 +-
+>>   target/avr/cpu.c                                       | 2 +-
+>>   target/avr/helper.c                                    | 2 +-
+>>   target/hexagon/cpu.c                                   | 2 +-
+>>   target/hppa/cpu.c                                      | 2 +-
+>>   target/i386/tcg/tcg-cpu.c                              | 2 +-
+>>   target/loongarch/cpu.c                                 | 2 +-
+>>   target/m68k/cpu.c                                      | 2 +-
+>>   target/microblaze/cpu.c                                | 2 +-
+>>   target/mips/cpu.c                                      | 2 +-
+>>   target/openrisc/cpu.c                                  | 2 +-
+>>   target/ppc/cpu_init.c                                  | 2 +-
+>>   target/riscv/tcg/tcg-cpu.c                             | 2 +-
+>>   target/rx/cpu.c                                        | 2 +-
+>>   target/s390x/cpu.c                                     | 2 +-
+>>   target/s390x/tcg/mem_helper.c                          | 2 +-
+>>   target/sh4/cpu.c                                       | 2 +-
+>>   target/sparc/cpu.c                                     | 2 +-
+>>   target/tricore/cpu.c                                   | 2 +-
+>>   target/xtensa/cpu.c                                    | 2 +-
+>>   36 files changed, 36 insertions(+), 36 deletions(-)
+>>   rename include/{hw/core/tcg-cpu-ops.h => accel/tcg/cpu-ops.h} (100%)
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 7be3d8f431a..fa46d077d30 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -175,7 +175,7 @@ F: include/exec/helper-info.c.inc
+>>   F: include/exec/page-protection.h
+>>   F: include/system/cpus.h
+>>   F: include/system/tcg.h
+>> -F: include/hw/core/tcg-cpu-ops.h
+>> +F: include/accel/tcg/cpu-ops.h
+>>   F: host/include/*/host/cpuinfo.h
+>>   F: util/cpuinfo-*.c
+>>   F: include/tcg/
+>> diff --git a/include/hw/core/tcg-cpu-ops.h b/include/accel/tcg/cpu-ops.h
+>> similarity index 100%
+>> rename from include/hw/core/tcg-cpu-ops.h
+>> rename to include/accel/tcg/cpu-ops.h
+>> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
+>> index be2ba199d3d..8ee76e14b0d 100644
+>> --- a/accel/tcg/cpu-exec.c
+>> +++ b/accel/tcg/cpu-exec.c
+>> @@ -22,7 +22,7 @@
+>>   #include "qapi/error.h"
+>>   #include "qapi/type-helpers.h"
+>>   #include "hw/core/cpu.h"
+>> -#include "hw/core/tcg-cpu-ops.h"
+>> +#include "accel/tcg/cpu-ops.h"
+>>   #include "trace.h"
+>>   #include "disas/disas.h"
+>>   #include "exec/cpu-common.h"
+>> @@ -39,7 +39,7 @@
+>>   #include "exec/replay-core.h"
+>>   #include "system/tcg.h"
+>>   #include "exec/helper-proto-common.h"
+>> -#include "tb-jmp-cache.h"
+>> +//#include "tb-jmp-cache.h"
+> 
+> What's this?
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20250225163031.1409078-19-kraxel@redhat.com>
----
- hw/uefi/var-service-sysbus.c | 91 ++++++++++++++++++++++++++++++++++++
- hw/uefi/meson.build          |  3 +-
- 2 files changed, 93 insertions(+), 1 deletion(-)
- create mode 100644 hw/uefi/var-service-sysbus.c
+Aside from this,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
-new file mode 100644
-index 000000000000..60072c8815cd
---- /dev/null
-+++ b/hw/uefi/var-service-sysbus.c
-@@ -0,0 +1,91 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * uefi vars device - sysbus variant.
-+ */
-+#include "qemu/osdep.h"
-+#include "migration/vmstate.h"
-+
-+#include "hw/qdev-properties.h"
-+#include "hw/sysbus.h"
-+
-+#include "hw/uefi/var-service.h"
-+#include "hw/uefi/var-service-api.h"
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(uefi_vars_sysbus_state, UEFI_VARS_SYSBUS)
-+
-+struct uefi_vars_sysbus_state {
-+    SysBusDevice parent_obj;
-+    struct uefi_vars_state state;
-+};
-+
-+static const VMStateDescription vmstate_uefi_vars_sysbus = {
-+    .name = TYPE_UEFI_VARS_SYSBUS,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_STRUCT(state, uefi_vars_sysbus_state, 0,
-+                       vmstate_uefi_vars, uefi_vars_state),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static const Property uefi_vars_sysbus_properties[] = {
-+    DEFINE_PROP_SIZE("size", uefi_vars_sysbus_state, state.max_storage,
-+                     256 * 1024),
-+    DEFINE_PROP_STRING("jsonfile", uefi_vars_sysbus_state, state.jsonfile),
-+    DEFINE_PROP_BOOL("force-secure-boot", uefi_vars_sysbus_state,
-+                     state.force_secure_boot, false),
-+    DEFINE_PROP_BOOL("disable-custom-mode", uefi_vars_sysbus_state,
-+                     state.disable_custom_mode, false),
-+    DEFINE_PROP_BOOL("use-pio", uefi_vars_sysbus_state,
-+                     state.use_pio, false),
-+};
-+
-+static void uefi_vars_sysbus_init(Object *obj)
-+{
-+    uefi_vars_sysbus_state *uv = UEFI_VARS_SYSBUS(obj);
-+
-+    uefi_vars_init(obj, &uv->state);
-+}
-+
-+static void uefi_vars_sysbus_reset(DeviceState *dev)
-+{
-+    uefi_vars_sysbus_state *uv = UEFI_VARS_SYSBUS(dev);
-+
-+    uefi_vars_hard_reset(&uv->state);
-+}
-+
-+static void uefi_vars_sysbus_realize(DeviceState *dev, Error **errp)
-+{
-+    uefi_vars_sysbus_state *uv = UEFI_VARS_SYSBUS(dev);
-+    SysBusDevice *sysbus = SYS_BUS_DEVICE(dev);
-+
-+    sysbus_init_mmio(sysbus, &uv->state.mr);
-+    uefi_vars_realize(&uv->state, errp);
-+}
-+
-+static void uefi_vars_sysbus_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = uefi_vars_sysbus_realize;
-+    dc->vmsd = &vmstate_uefi_vars_sysbus;
-+    device_class_set_legacy_reset(dc, uefi_vars_sysbus_reset);
-+    device_class_set_props(dc, uefi_vars_sysbus_properties);
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+}
-+
-+static const TypeInfo uefi_vars_sysbus_info = {
-+    .name          = TYPE_UEFI_VARS_SYSBUS,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(uefi_vars_sysbus_state),
-+    .instance_init = uefi_vars_sysbus_init,
-+    .class_init    = uefi_vars_sysbus_class_init,
-+};
-+module_obj(TYPE_UEFI_VARS_SYSBUS);
-+
-+static void uefi_vars_sysbus_register_types(void)
-+{
-+    type_register_static(&uefi_vars_sysbus_info);
-+}
-+
-+type_init(uefi_vars_sysbus_register_types)
-diff --git a/hw/uefi/meson.build b/hw/uefi/meson.build
-index e63708aa164f..91eb95f89e6d 100644
---- a/hw/uefi/meson.build
-+++ b/hw/uefi/meson.build
-@@ -8,7 +8,8 @@ if (config_all_devices.has_key('CONFIG_UEFI_VARS'))
-                          'var-service-auth.c',
-                          'var-service-guid.c',
-                          'var-service-utils.c',
--                         'var-service-policy.c'))
-+                         'var-service-policy.c',
-+                         'var-service-sysbus.c'))
-   uefi_vars_ss.add(when: gnutls,
-                    if_true: files('var-service-pkcs7.c'),
-                    if_false: files('var-service-pkcs7-stub.c'))
--- 
-2.48.1
 
+r~

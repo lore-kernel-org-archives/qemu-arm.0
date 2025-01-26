@@ -1,92 +1,91 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2093197njk;
-        Sun, 26 Jan 2025 13:18:57 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXZWOC1u77KCYlhm/PsTs7aiM59kntrsPr4Cmj5DqChiOzghdm7+z29NLau+vMitFRwi6Z9rioTPUS8sg==@linaro.org
-X-Received: by 2002:a17:902:cec9:b0:216:5e6b:e23 with SMTP id d9443c01a7336-21c355644d3mr480047225ad.30.1737926337231;
-        Sun, 26 Jan 2025 13:18:57 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737926337; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2097858njk;
+        Sun, 26 Jan 2025 13:35:33 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVytcKWhj+ZxlB65NEVwQifHwaiJYgEi7f8qDXpZVbm9LOsMtTdwEsUq00V3JvyaLPDjWr50FfN503Aqw==@linaro.org
+X-Received: by 2002:a17:903:2284:b0:215:ac55:fd72 with SMTP id d9443c01a7336-21c355e3500mr520253015ad.37.1737927333106;
+        Sun, 26 Jan 2025 13:35:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737927333; cv=none;
         d=google.com; s=arc-20240605;
-        b=VPgKhaURlC3qrRX8T693pR4qNRTWM3zA5jSt4d+enF1LjJoLTgEIjOau9dJM4PiLFf
-         xLHTWKb9IpttkQRkkiJxb+Ga+o3ZwjIQj+IPH3+c5nhMHAYgPZ2NyXIzqobEqIGZczrp
-         9CX7Y4ehcNCcsNFTgoO7GCELY65hqKsICSsgU9t4Dg8daU8FhnI77Vmc4ndlNksA8t4/
-         w/R9KMIIt+oGOQvLzg4s/YfSHrQwGRX3cVHo6jke6Puvw2SWCH5bl/+tbOc1pNqZPvcL
-         N1iR+w/k7hwwVwu/j+M+9PYyxAILwljYz5AJwaKbac8OT5EBSa0PMFz32e2N5m+6LDIF
-         XgOw==
+        b=GmJRMocbWavQdJ2APwLj/CeVMTY9uqI3Ihyur3RJNdBdXXxkX/ncEPld2DdHsRSNNC
+         8dK4LDy4LFXtPav/h0W1KnLxgmeFbmN0VuxPhFmATgP3phG8wzQjkBxvzQ/p2TXMWJmq
+         6WcPeYvHSO993jHITEenmn/sGhSvDjPuZS/d0JdQbFab640CTpxtwoZx+vpE56MZo2+2
+         rph9Qgi/tMG+Gaj4b0PgRT4yhVVwt5F/J8xTubhhzFYU+/fEnqNzlXXZ4d3b4mTMXPnD
+         OPXs+Cm2sSvxPYhcJ4t38e8j24MtXcKlHxIB+GFrhxShmIj4NsHYFrU2vCx5I6C3Zsio
+         KA7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :dkim-signature;
-        bh=X+G0ryUleEoZxvXmUvLzmbIUvRMHYbb2l6B2uT5mTT0=;
-        fh=gVj4h2G4AHy46xTowu/mCYfYVrvLyvUmjEeIk3S8HJ4=;
-        b=SgYpM9bcA+Or4ojp1z0pFM2C9RpwzBIGbMBS7n+2r44rAl2ZS6MmTT3ypg9idlKeZ0
-         RSIuHr18F4HN7J1HxCKn604DwtQLzmWXzMgS8ET6hmMzhqCoBvVjSsB3AXlw2M8BdT2l
-         H0UO0TOJ2LQ0G1fDqWfANmsfPe/tv7NTOK3lGQV2q6LukYP30f5f3YW+3Z0N0oa9G25v
-         cwu4hssg88EchqCrhg0eYvRWaJwGYR+vMzaoQf3Yv5pSy8HCQ4wXgHE40jsOJjlL60dP
-         Ks+9J7ktp8TziDaGMpkrZtLo2R0YVRQBQsWthzWdalZosUhocjy5kDqlHU/ScOWfqfZT
-         88NQ==;
+        bh=u0m5yL8s0TWSEEfxviVLYoEbDIw5bajMGnLn0okjgqc=;
+        fh=LvvR9cA6bayWB2MZ/jgm6sZF5NXZX8Pj8tneuJ0M5HI=;
+        b=HPjg3IiG8fjBRlNKcdJuTWS+LcrOcOEJHYASGVlgLjaOWtB30JvRC3bPlNwtm9xZI9
+         g38t0/+JGgVi+wwXGhz/SQRiVhktQY+TYTtwxApZigIm2FQwM1lo/OYpzFvwAAC9rpPE
+         GLRswBhmn+3+cDWfx96LETqv9jvkqlN8ntAMzBJWEpuVxloAvEN9TNeYgyqc9d+4lzcd
+         fv9VuiI/d4/T5yuMWPHXl1pMr2PVMsqroy4tL7t9CJ+q7UF2f8sY/MF8QjQeoh2lj1Oo
+         WIu9uZ8qiKBrEcay3z9vuLT8y3zPaHoGkoyV0bKrhrUO2mHtrXwYICto8Eab+nOe9mxH
+         MNVg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ynZrV5nI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JtyeNIHg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d9443c01a7336-21da3d9e3a5sor33777535ad.2.2025.01.26.13.18.57
+        by mx.google.com with SMTPS id d9443c01a7336-21da3da4547sor41244545ad.3.2025.01.26.13.35.32
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 26 Jan 2025 13:18:57 -0800 (PST)
+        Sun, 26 Jan 2025 13:35:33 -0800 (PST)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ynZrV5nI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JtyeNIHg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1737926337; x=1738531137; darn=linaro.org;
+        d=linaro.org; s=google; t=1737927332; x=1738532132; darn=linaro.org;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :from:to:cc:subject:date:message-id:reply-to;
-        bh=X+G0ryUleEoZxvXmUvLzmbIUvRMHYbb2l6B2uT5mTT0=;
-        b=ynZrV5nInhk6sLLdAbJHaO9PB9l8mccrpv6X5+TKrJNkuk2xSS6EblKcP9jE4bCNPz
-         xhNNzFRBddE2EQroKqZ9VSFhib1Nazklx+dCFrdTose41gL5QpPu7G4t9zljV8HUozqz
-         mY5BxVV6mXmyFwYG4S3zdBm3vk5teb0x4qTzIyu9X6383ctBWEHgRPqFGWPN11rz1Tjm
-         WyPDSUXBJho+qKvbTF6/UYEHWW2FQrkBug0lwdNn5e7pGD6t5ugQe3lz6j6ByWXUQQIe
-         n/tpRLxKcn8rBhVkugnudGsHda1uoVHhwkSQU83XhUHixzQAcGTLRx7/JLYDtovtSad8
-         dHUg==
+        bh=u0m5yL8s0TWSEEfxviVLYoEbDIw5bajMGnLn0okjgqc=;
+        b=JtyeNIHgcttezTJyvmsSQkZODThERp/SA+UzSSMZbqbb1tpsnC6OIWUhljtxJjJMS4
+         JqcW//ezyQB+hZmCqtkr8mtXcRWefmXbzIHH0ghGmqU3PJXITYJDL9k53xViTcyO8DYc
+         VFdVtP4z3medJVY0j1U6uXVgNOhMTwJ7ciLJGT3wez1CM591hUVez2F9Wi9xFHby0S4/
+         a9/LKkLoCLgd1tP7fAgtuLQhOWTfMVLsR4yLQeM/tJZJtA7o6D0rlZPgBVJxm1+506bb
+         fGKJxCF/YPBOcyd7/NBk09XdNf8rq/bXwmhOy7TOa5n5PaSzsvX2vD705jacqAd3MPA2
+         d0/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1737926337; x=1738531137;
+        d=1e100.net; s=20230601; t=1737927332; x=1738532132;
         h=content-transfer-encoding:in-reply-to:from:content-language
          :references:cc:to:subject:user-agent:mime-version:date:message-id
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
-        bh=X+G0ryUleEoZxvXmUvLzmbIUvRMHYbb2l6B2uT5mTT0=;
-        b=nqSVL7XqKZyyhB18/Pp6JglwgSDuVkXnCOvvWu4St3rvQejTO9jpG8z1iUzkUHhcis
-         ETWlYYzYdHvoFdnd4IsOQIgN1MrRYP/4c9O9NtgvX2OGkqCLDhhp0nc0sNyMu76FszcZ
-         6RdIS4cIB2h3G0NtqWWbH7ol0R9xCeegmZz5/DxPcipuTJwTe9zNT6sFDS9VlErGYiTc
-         b8+4cZpRW3BZsqbaQ+84xmv6awp7UFlcTVdaFoyLlBtgkJSp+vz5JgqVdHc9djWBpigF
-         N7a6O+25QRhqVPL7cVT3LPvoNMwDwQUfk+M3SOosFkaxSdwFGj1CV7POtJs8/o4HAsia
-         PCjQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUzYak9HrZx9ARCv8tJodR2EjONHmyANPnrJ0H/8FAeZk1KiTMBXf0wb11ZgD7lKphKqYCjN7sZU0xGtg==@linaro.org
-X-Gm-Message-State: AOJu0Yyb3PMKWnzE0rqOsf/C6iQDQKTHv7h98T0X2ZVBUp+X98EHp+W5
-	/9a0Nia+AtvM3zJpRb82LIJcGCFb1ZtgeGN6Xn4+/+2/dJyL8iFUoddKkzJ8Gjrlxw==
-X-Gm-Gg: ASbGncuZbmH7NU4pEyU9pvCO1umccq2j7rv2tKNT12c4dgfXZHA9e5TflpbtDOsxusa
-	hNTBnVYzpBxn2fDrD+BU50JOq/ObKF6gMhdb63AopvB9bX4bE/Ofw8i2+GXnbgHjGxFjcsJ+BIz
-	Xe+FSTw9+UMbLJu7+74deXD8YZO1G6ChJ4fFXyM4iOOXyg7asgeBNrrYSgAxhf/tZzV8GJr4sqR
-	tGpatS6nYMznaPrDhmNwQKrbBGJ16jMpjm83220RJxqi9/t6ijWbVh7Psz6q8I8VWDFFB5QnS9Y
-	zKu2NWLO2w5nSLH6SdXVNKd+q6KNJbpfNAAyYhBpWyssXP8w5K8KTkRCMg==
-X-Google-Smtp-Source: AGHT+IFqQ9SrCqtaqHBxnEeUe9wIIgiFAi160abwNWKtJLcX5dR1YlfbX/KbmypQ71AFHncXjFvVWg==
-X-Received: by 2002:a17:902:db0e:b0:215:522d:72d6 with SMTP id d9443c01a7336-21c355bae02mr611350715ad.38.1737926336707;
-        Sun, 26 Jan 2025 13:18:56 -0800 (PST)
+        bh=u0m5yL8s0TWSEEfxviVLYoEbDIw5bajMGnLn0okjgqc=;
+        b=YtgdAdY0YHNBZxmONePmhD0F1tJCCzYjNcEmo/MRkiBdJMATcktGTrNnj3Wikmv2vE
+         e3mpIHeoT2pkOwnziLlvmLKCem/qp0GyeknQ6eOVwK5QOnc8r+q+/ZvtxKMhW2WLiN+g
+         X+69LM7fN08ynNa+PZ/zIHWPEtzR+LqkKPU8AR1ZE6XlUvTKstKgGSZazX7xJwGIhKgQ
+         trKuYFtc2QOcZ2lw0mSpXTW0NT0Qn/JmhlPB6A430hvSvs7etj1JHJNSj3C/O0IKhZSw
+         07jS9aUfC88ol/ysYa81e6U5hyWTyiTe5EtmmTVurWt8DsgDYexDRzkfOxUVi33GxJBm
+         TcMw==
+X-Forwarded-Encrypted: i=1; AJvYcCX53SgDoXKoX7oiVk+ZuPUAcqmShgWQYOUCLqKWfBivEdUicsX0TfeDQQbObPjgOLiRLK795VaTvMZYyw==@linaro.org
+X-Gm-Message-State: AOJu0Yz9H0JL9qmECojb1JYMKKf1o/EY5bqj4a1Ksjp1rTE8Mpgux0z7
+	ivEMkGDayWdGfYXf0IFWaF6teM0s1y3jb9HLglPFX/LfUXj7DkK7qEAShDEjeyc9Yw==
+X-Gm-Gg: ASbGncs6v4rg9M18sybAe8glQMdyvGUiYRjQwIugXTi9YWGVhJ58M7Vd7V18Mtce/0n
+	jgJ9d1wQZmNn2p5PavMhwkVlsito0tnPyTqz9cRBp3TIavwoSXCN4Z7cg1mrska5Wg/dnFS5XUB
+	ZvkmeURrugKuy7FSOgmIl5Ao33GPv5O91r1y5qJhOcoiGWW2W0CnRQbsny1mhe/H3W8WcqxcJ8R
+	L2LSm8OYHa8fX6YtxIQDKh0GzbgkYaCiZy5xxdBWyCzlKz6n+yP96bx/r67wzBUAgMSFjg+HTt+
+	M1IPMswqj2EJJpoPEt+wH4YWhSRA0q/Ufda/KCJD/1GFFAI=
+X-Google-Smtp-Source: AGHT+IF/uxXXMxK7HfifMI4lK/bjNl3NXv2LfDusZSj5Oq6BRtJb3xCpVAH5ppeGMpTK7NLB5Z4iRQ==
+X-Received: by 2002:a17:903:191:b0:216:3466:7414 with SMTP id d9443c01a7336-21c355f6a9cmr669165345ad.44.1737927327477;
+        Sun, 26 Jan 2025 13:35:27 -0800 (PST)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.0.4] (174-21-71-127.tukw.qwest.net. [174.21.71.127])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21da3d9db91sm50141815ad.48.2025.01.26.13.18.55
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21da3d9c552sm50455215ad.18.2025.01.26.13.35.26
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 26 Jan 2025 13:18:55 -0800 (PST)
-Message-ID: <39ee3338-aa9b-4cdf-a06c-ab25341d3cd2@linaro.org>
-Date: Sun, 26 Jan 2025 13:18:54 -0800
+        Sun, 26 Jan 2025 13:35:27 -0800 (PST)
+Message-ID: <4de30644-618d-4914-a1c6-008992c7edff@linaro.org>
+Date: Sun, 26 Jan 2025 13:35:25 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 17/20] cpus: Have cpu_class_init_props() per user / system
- emulation
+Subject: Re: [PATCH 19/20] cpus: Register VMState per user / system emulation
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
@@ -96,28 +95,50 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
  qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
 References: <20250123234415.59850-1-philmd@linaro.org>
- <20250123234415.59850-18-philmd@linaro.org>
+ <20250123234415.59850-20-philmd@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20250123234415.59850-18-philmd@linaro.org>
+In-Reply-To: <20250123234415.59850-20-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TUID: +EYkHEK8PIzF
+X-TUID: j8XRs+8hGkxH
 
 On 1/23/25 15:44, Philippe Mathieu-Daudé wrote:
-> Rather than maintaining a mix of system / user code for CPU
-> class properties, move system properties to cpu-system.c
-> and user ones to the new cpu-user.c unit.
+> Simplify cpu-target.c by extracting mixed vmstate code
+> into the cpu_vmstate_register() / cpu_vmstate_unregister()
+> helpers, implemented in cpu-user.c and cpu-system.c.
 > 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   cpu-target.c         | 58 --------------------------------------------
->   hw/core/cpu-system.c | 40 ++++++++++++++++++++++++++++++
->   hw/core/cpu-user.c   | 27 +++++++++++++++++++++
->   hw/core/meson.build  |  5 +++-
->   4 files changed, 71 insertions(+), 59 deletions(-)
->   create mode 100644 hw/core/cpu-user.c
+> XXX: tlb_flush() temporary declared manually.
+> 
+> Only 2 more CONFIG_USER_ONLY to go.
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+> --- a/hw/core/cpu-system.c
+> +++ b/hw/core/cpu-system.c
+> @@ -22,10 +22,21 @@
+>   #include "qapi/error.h"
+>   #include "exec/address-spaces.h"
+>   #include "exec/memory.h"
+> +#include "exec/tb-flush.h"
+>   #include "exec/tswap.h"
+>   #include "hw/qdev-core.h"
+>   #include "hw/qdev-properties.h"
+>   #include "hw/core/sysemu-cpu-ops.h"
+> +#include "migration/vmstate.h"
+> +#include "system/tcg.h"
+> +
+> +/*
+> + * XXX this series plan is to be applied on top on my exec/cputlb rework series,
+> + * then tlb_flush() won't be declared target-specific in exec-all.h.
+> + * Meanwhile, declare locally.
+> + * XXX
+> + */
+> +void tlb_flush(CPUState *cs);
+
+Ack.
+
 
 r~

@@ -1,165 +1,119 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp97842njm;
-        Tue, 4 Mar 2025 04:51:46 -0800 (PST)
-X-Received: by 2002:a05:690c:7086:b0:6f2:9704:405c with SMTP id 00721157ae682-6fd4a0865afmr232814187b3.15.1741092706337;
-        Tue, 04 Mar 2025 04:51:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741092706; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2065458njk;
+        Sun, 26 Jan 2025 11:56:16 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUiLmW0C2HTOCtOlDSUPBETqTRw/6iEbF8QfdtkKGQn+u+3lyYEdwDCUQ6L5vUkypC1Ix67HfDFAbTxxg==@linaro.org
+X-Received: by 2002:a17:902:f543:b0:216:5002:7341 with SMTP id d9443c01a7336-21c3564e6e5mr616772095ad.44.1737921375809;
+        Sun, 26 Jan 2025 11:56:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737921375; cv=none;
         d=google.com; s=arc-20240605;
-        b=Px/oZKQ6SyWmtngADPGEbE//AqZii9EFZkHcbEfDPzMF/eCMeyEtl9sstioOo3OnmS
-         tCzGEo0VvBNSCx9KgzJ0rsnISDYjMwFfjEUBASb2S0Ad5cbW78SssE1rse91/w2cmdaz
-         0i07/otmEg5G3G4DARywSlkrpr311sJJj7xsvLjXNAg7tFMey+GhlI1tMOloeK2mSveI
-         wYI142SD4izCpMICI4kQ1SN5GSope70PQv7Az2VmuGXpjvEGtJoNdny17xC/KkfhJnHh
-         hOVwwFeDUWCpmry4s9GVYBYXXqN9qYHj2C78Lx0j5Q5O9GTdJ5+rtLDgNTkiFkPQEEnu
-         hPDA==
+        b=dHZmh6OwmZpRgs6H5ugGKFLqny7BeTym1E8RmdD72EIwErZMiXea1wBNbBSr/+KNIC
+         DE1/VSZxL/rE+oPLHqpFdKAjRDkJCggLo4eAkbc/RrmoA52qVngVSrO3Jh9+68g3dJ76
+         39RQgNRgL99YTl4g0+zzCIxh4rQ25hgHlTrjFHTTVn4t0CVKfwkXBGrRnjJ6Ooxkmeek
+         y1M10RoiNFeJu4daGrHciUqjcVYWIO9aW4YJBxgQXFvjkJMZCLq/EZUHq4eATSiT7GR2
+         esIPIL4qjBRkuJuJ+hKmZDe9o54AKiYlFwOBJVvwoXk65HZuE33oYPEO52OhfgCB2ITg
+         tyyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=uxGGuaI68JKtynFFjWwLnLjsUcyuO6IkGZ9JrNoj9Hk=;
-        fh=qVWCfp5cAbBY0ANV+bV9qYxhaQkocC3pw4wxQ8eVl4A=;
-        b=jxt6wUd73u1A5svKFG1oDr35sGT714Vyg5Enb8kkhdv+WGZv7CmlxfpFJcULdVzK4j
-         ArTNBoxhomrl0qIry+yRdhJTc6FTA7E6FV5fV14HELNUYHQ6PdU26jah5s9fwaMNuGCk
-         h7Vv8gAOCOgbDyj3CFsQVc03tt0AFcYgq/SRJP3PTaxG4a2Jh94d+I/gyTorNW2Sw9w0
-         my4sZJVi8qK3mLaza7FMhIuFF8UdZKcngX60o66cPTKH81sEqhOLo2FFr4l9fQB36FVL
-         FarghJNw3D4yWypO3ci1HqZ0lOkF14kC31sGQu3OuakJPE9UET6wG5Rf/xDrXliPLowl
-         kZDg==;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :dkim-signature;
+        bh=oZaiNxyRumKDQ6iU0NUlyhjPpWDJhbWYeJfxDmaXxDo=;
+        fh=PGhBYvLwmF03E+dSWKRB2rLJzSotRFdkd7aCEn6B14Y=;
+        b=lJre0vfCSA1o82IDDhxhrPRBGr4q67n9XFW6AiYD1p/+mOZY8hSsb8KdZLrFvTUZZ7
+         8qfrhUIptIwDBptG8sRKCARoD+ncM8W9Z1B/n+X8l4l1fz+fjZOGDdSgQoKU53XfaB8h
+         qck8ulwIeRoTC0VeZavvu2zDZ/2NxusrLDSdwBKBTz61EZS1WAbmZMiv/5ueh2kZrSms
+         eYKUSxOTDuyRyaVMrsL1oPjUr69eRf6r0aW1oVOFG+ffNhgETnBBvNhsfcHreYCy+CwS
+         lvWR+325PEqhrl22vMWTVVzAIKYQruaY1fZtjwCOitSc8pddOIoJg6T1LLA+JepkXKIo
+         wdMQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cf1PsSaq;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tLKovqQc;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 00721157ae682-6fd3cb958dbsor71713457b3.13.2025.03.04.04.51.46
+        by mx.google.com with SMTPS id d9443c01a7336-21da40e6d75sor54399645ad.8.2025.01.26.11.56.15
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 04 Mar 2025 04:51:46 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sun, 26 Jan 2025 11:56:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=cf1PsSaq;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=tLKovqQc;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1741092706; x=1741697506; darn=linaro.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=uxGGuaI68JKtynFFjWwLnLjsUcyuO6IkGZ9JrNoj9Hk=;
-        b=cf1PsSaqE5CKzWSez6dVNEh7H4ItQGL6wqr+Pq2hTReveKPdpdqAQNoFs+VdG23NWU
-         GTXV53KkM1d47nlzIMxATm9+Urf043eSW1zpd0ZTEndaWpHHoNf8AMbPUz6fQ4mJZaYh
-         n7nymfb6g4382/+840LRAEEqubnspE3jbNq5473qoDCH4UuqeDsYeUjdnt570e3dPPcG
-         4HHknuWU+fXoCOTP0nnDVggUfVc2NPWIk8QylcV6lDbTbsC8xYcbGjnYDlQ1E6StcgCn
-         t1nTQqZjmBPLYvEBloQI9iXYlaGKRZeCxD9nl7ph7+/Yrs1o86cBrGSvh8tQObfpH8ss
-         EMcA==
+        d=linaro.org; s=google; t=1737921375; x=1738526175; darn=linaro.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=oZaiNxyRumKDQ6iU0NUlyhjPpWDJhbWYeJfxDmaXxDo=;
+        b=tLKovqQcpPwab/KJQq57582BZbhyJjSF1i0m4mPkkwMGt32SE6o1EIhS2XL7QbrsZI
+         uwOLID2nEXmEKbTzsXt5XkWk4CbAXu+s3RdODwHvq0kcsgR+0yAvajF5YgGqxFcQQRQt
+         iu7pKhUY/90ziC1jpNK6JwoDCM6XjvdbRDsHlf7r/UG29kiRPuRUuxmL490bnAzX73x7
+         nNxXBaDOrhuWV//9kJC/AP6Cv+qXUSbQzq8us1tXyjN5GUsMqSabNSiWjj9s+xuHtyBU
+         5GdDEAEgl/Xe9c5lX1sVcSsxEYYuGfjPCx8AkE8aMttNGTCWR74tFdoVuHvefdbaXGiK
+         UtKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1741092706; x=1741697506;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=uxGGuaI68JKtynFFjWwLnLjsUcyuO6IkGZ9JrNoj9Hk=;
-        b=pIgcAe/DSn3E+WbOJ5yrgiz1URTfDxKwjVMmueL0Z3li8J58r3ymhXOVdLGuPQ3Xvb
-         VhDgaXsb3DxLGpR/fU4x74njL7hOEGgd/X/hqSdoNB6BPnD6+CAwFZRzZZRsEyJ1DNIy
-         K++xYqeb0vVeTzVfX0I8uQuOk0MvbM3OEkivMhq7fOAskcD7J90ZlvLEb7xq73c+zVmT
-         gEwWvxcpTkM1opMJCctRyLRYhWUygh0EXg5sn4Ot7ER5Nz9GHaAqXBVqyG+EzbtLtlvb
-         Io5pxdjWUkH0nSQoWD+AoIO7IFWwe06vO5WUrfXJJ8Kb5Naad2WCIwJDEhix5AyuEOiM
-         Gn4A==
-X-Gm-Message-State: AOJu0YzEWSzbKdUJwK+qqUgJPO3L27GZ6NqCYCLYkbASwZoBllDAaHmV
-	Or8OjYHJXwwQQpYuDl4oT+1E9fqIF8P32j1BkcWpxoh8cWZn8RsrfrGQQt/RMK5cy332nPieWvL
-	c+ehNhYlHdSPB3uG4fPwI+2CHMys7Pak5sVTg9rkEHGdy+2nYmGk=
-X-Gm-Gg: ASbGncs31IwE78FVeS5FYBB7JRL+Zr950ZLav+5+sLDf7++fQDszDl06ojhbm4+d7Fk
-	LbNBEPkRv3nUS4k9ZxJJmzTnHz2CNcvniT+1eKJ072LivbSWf9AGmGguZcu9GmOhvAuD4WshZ72
-	nEo6cpBSOR8jgOcbjYT7VxB+ydBQY=
-X-Google-Smtp-Source: AGHT+IFrMaw5WXbhjojnTuWjafeg9jqYR5kLnuDJEsEs2jRm4DP5ngCjEjC1wDmiwD29KO9B96YcLpmxsqAClMk3SoA=
-X-Received: by 2002:a05:690c:600a:b0:6ef:761e:cfc with SMTP id
- 00721157ae682-6fd4a1405a8mr223122747b3.25.1741092705838; Tue, 04 Mar 2025
- 04:51:45 -0800 (PST)
+        d=1e100.net; s=20230601; t=1737921375; x=1738526175;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=oZaiNxyRumKDQ6iU0NUlyhjPpWDJhbWYeJfxDmaXxDo=;
+        b=UAjhj/5/SUSfHJSuW1qG8Kp3Bv2rCdHqvP4bYdPUgIoyELnwhMcKDlBjUVc888IGYV
+         BVxTE2cdMezhAyuN3+iQE75IVkxXrqyPD+t9+f3egx2WHSayU9954fRLh6gvjzTs2YAT
+         I9OkXihXyjdecVeVZwfiFbZKN5Er6A5FG4ktEfEIl5uoI+Kd2+7jYodqRZsyhc2OtNmB
+         C97TvFddbdQSpTWosKvyt7EQI8WYpe1T5WVa9f9Q6mk4L9LbHVpQxtEaV8CtrjqfgQ+g
+         9Q5OVyTKbkF7uQ9AN6qLeg8SoWX3yOAA1VSpb8IrIph2x0sgmxgHDQUgl/dtpPH6uIwD
+         Ewgg==
+X-Forwarded-Encrypted: i=1; AJvYcCVrXREV3DHRn0OVHrOSgDqJcnI8HPEL6yDoYSlEqvFhPxMv5sAm3hQXQ4EjTciXkK57EzSA3PP8z9rSLw==@linaro.org
+X-Gm-Message-State: AOJu0Yx4wjCUeB5f8Der8KwuTkmmaBhhTrVbnAohXd6CNt5uWqRtBQa4
+	cVK/UaYLeg7KAcm8gd9Mq5cX2AFBACUqELAgzkpBFcBEOyyCzD/AgpwILA5V9vrGHw==
+X-Gm-Gg: ASbGncvAYN4pCuXwtgbeLlGSikZYJ5gQlTJua9TUvupv6bOXzEIjqyStzOMLV00UBEi
+	jgAk0UO4nJlJ0O6aKGbUiHnLXWTpC6nPnCLaHYZmRZAvkJMkSRzBELFod0F5w6X5lX51SEk/Nl2
+	JQrGemyXGRWBFgNPvY2fuDyjOKfHiKJnkuEsr/os3WnfhD3s9rWPTTGpKXzNp0rVs5czlvpxUSh
+	lhNFhyUfyCQ6v4zlpFUyauymLtfNFSiKet+anFxG0jAjOWg5OD/iCnU9VNhRVaFsmUDeQcyAjCw
+	UvWjNFyBBFonyWTiskVbaXA2D80jyCTcN4C3JwJyJjbkbnY=
+X-Google-Smtp-Source: AGHT+IHO4WMUbjm+0GYB5uvcZM2pATyJHyNJ2uKrCdmerCTV19qq9YWTnaUhr9U9sZ/t561e+9mUEA==
+X-Received: by 2002:a17:902:e746:b0:215:97c5:52b4 with SMTP id d9443c01a7336-21c35631dd4mr526655615ad.39.1737921375406;
+        Sun, 26 Jan 2025 11:56:15 -0800 (PST)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.0.4] (174-21-71-127.tukw.qwest.net. [174.21.71.127])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-21da424ef28sm48976545ad.258.2025.01.26.11.56.14
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 26 Jan 2025 11:56:14 -0800 (PST)
+Message-ID: <51770df2-ecbb-47b9-b5c5-a60decf0f751@linaro.org>
+Date: Sun, 26 Jan 2025 11:56:12 -0800
 MIME-Version: 1.0
-References: <20250227141343.1675415-1-peter.maydell@linaro.org> <87o6yh57r2.fsf@draig.linaro.org>
-In-Reply-To: <87o6yh57r2.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Mar 2025 12:51:34 +0000
-X-Gm-Features: AQ5f1JqdU7-x-zWWBzJjlhTFs9_xhTkqxqg-1afm2BT6H0-52lc3IttwZY4Klew
-Message-ID: <CAFEAcA9VDtWKoQ09dOt+ZxJ2MhdRTFY_X1ON58pEjYTM_NtZ-A@mail.gmail.com>
-Subject: Re: [PATCH] tests/tcg: Suppress compiler false-positive warning on sha1.c
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
-	Brian Cain <brian.cain@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 0hJnipoqwGBD
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 03/20] gdbstub: Check for TCG before calling tb_flush()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, kvm@vger.kernel.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
+ qemu-s390x@nongnu.org, xen-devel@lists.xenproject.org
+References: <20250123234415.59850-1-philmd@linaro.org>
+ <20250123234415.59850-4-philmd@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250123234415.59850-4-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-TUID: rYC+oGr4UAjP
 
-On Tue, 4 Mar 2025 at 11:56, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
-> > +# GCC versions 12/13/14/15 at least incorrectly complain about
-> > +# "'SHA1Transform' reading 64 bytes from a region of size 0"; see the =
-gcc bug
-> > +# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=3D106709
-> > +# Since this is just a standard piece of library code we've borrowed f=
-or a
-> > +# TCG test case, suppress the warning rather than trying to modify the
-> > +# code to work around the compiler.
-> > +sha1: CFLAGS+=3D-Wno-stringop-overread
-> > +
->
-> Sadly this breaks the hexagon compiler:
->
->   error: unknown warning option '-Wno-stringop-overread' [-Werror,-Wunkno=
-wn-warning-option]
->   Traceback (most recent call last):
->     File "/home/alex/lsrc/qemu.git/tests/docker/docker.py", line 683, in =
-<module>
->       sys.exit(main())
->                ^^^^^^
->     File "/home/alex/lsrc/qemu.git/tests/docker/docker.py", line 679, in =
-main
->       return args.cmdobj.run(args, argv)
->              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
->     File "/home/alex/lsrc/qemu.git/tests/docker/docker.py", line 657, in =
-run
->       return Docker().run(cmd, False, quiet=3Dargs.quiet,
->              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->     File "/home/alex/lsrc/qemu.git/tests/docker/docker.py", line 370, in =
-run
->       ret =3D self._do_check(["run", "--rm", "--label",
->             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->     File "/home/alex/lsrc/qemu.git/tests/docker/docker.py", line 247, in =
-_do_check
->       return subprocess.check_call(self._command + cmd, **kwargs)
->              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
->     File "/usr/lib/python3.11/subprocess.py", line 413, in check_call
->       raise CalledProcessError(retcode, cmd)
->   subprocess.CalledProcessError: Command '['podman', 'run', '--rm', '--la=
-bel', 'com.qemu.instance.uuid=3D5bbb7b6ed2ea4377b9b6d646859ec4ea', '--usern=
-s=3Dkeep-id', '-u', '1000', '-w', '/home/alex/lsrc/qemu.git/builds/all/test=
-s/tcg/hexagon-linux-user', '-v', '/home/alex/lsrc/qemu.git/builds/all/tests=
-/tcg/hexagon-linux-user:/home/alex/lsrc/qemu.git/builds/all/tests/tcg/hexag=
-on-linux-user:rw', '-v', '/home/alex/lsrc/qemu.git:/home/alex/lsrc/qemu.git=
-:ro,z', 'qemu/debian-hexagon-cross', 'hexagon-unknown-linux-musl-clang', '-=
-Wno-incompatible-pointer-types', '-Wno-undefined-internal', '-fno-unroll-lo=
-ops', '-fno-stack-protector', '-Wall', '-Werror', '-O0', '-g', '-fno-strict=
--aliasing', '-Wno-stringop-overread', '-mv73', '-O2', '-static', '/home/ale=
-x/lsrc/qemu.git/tests/tcg/multiarch/sha1.c', '-o', 'sha1', '-static']' retu=
-rned non-zero exit status 1.
->   filter=3D--filter=3Dlabel=3Dcom.qemu.instance.uuid=3D5bbb7b6ed2ea4377b9=
-b6d646859ec4ea
->   make[1]: *** [Makefile:122: sha1] Error 1
->   make: *** [/home/alex/lsrc/qemu.git/tests/Makefile.include:52: build-tc=
-g-tests-hexagon-linux-user] Error 2
->
-> Is it that new an option?
+On 1/23/25 15:43, Philippe Mathieu-Daudé wrote:
+> Use the tcg_enabled() check so the compiler can elide
+> the call when TCG isn't available, allowing to remove
+> the tb_flush() stub.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+>   accel/stubs/tcg-stub.c | 4 ----
+>   gdbstub/system.c       | 5 ++++-
+>   2 files changed, 4 insertions(+), 5 deletions(-)
 
-I think it's new-ish (gcc 11?). On the other hand
--Wno-unknown-warning-option is quite old, and would suppress
-this error. If we do
- CFLAGS+=3D-Wno-unknown-warning-option -Wno-stringop-overread
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-does that work?
-
-(Meson has cc.get_supported_arguments() that we can use to
-filter out -Wfoo/-Wno-foo options that the compiler doesn't
-support, but since this is built via a makefile rather than
-by meson that's not conveniently accessible.)
-
--- PMM
+r~

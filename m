@@ -1,125 +1,122 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2365555njk;
-        Mon, 27 Jan 2025 03:28:24 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWuvJJpHNYHsYl8fye+IHARscoVGbvHf72Ge38Q+xng/w7Hs7ITlWrrNwUYYN4kzMq/cNJRY6+Wrh8UmA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEz/BnIrZ/Ek3sh+pN5rjEGV6BkMbuDeoRblrPIdaa+88G7dQuqfIAIfsFKa5WtQ0Iq3oL2
-X-Received: by 2002:a05:620a:f0f:b0:7a9:c333:c559 with SMTP id af79cd13be357-7be63289330mr7030544285a.48.1737977304284;
-        Mon, 27 Jan 2025 03:28:24 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737977304; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2365981njk;
+        Mon, 27 Jan 2025 03:29:08 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUb6V7sSoEVYJ5oLLXezKNE29kJcFnfqAIxRa6DY7Zh70zVF6cCt4Uv/QKb3WBSqoQB90mGNPQu33Sb+g==@linaro.org
+X-Google-Smtp-Source: AGHT+IGpmi0erhwYPhj2kBE/E/+QKXWHqhVNfl8W7RG0QGbMb5odAn45eD7uZ1eQ9ThpPj5bgvKD
+X-Received: by 2002:ac8:7d82:0:b0:467:5e61:c116 with SMTP id d75a77b69052e-46e12a1e36cmr455527241cf.7.1737977348142;
+        Mon, 27 Jan 2025 03:29:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737977348; cv=none;
         d=google.com; s=arc-20240605;
-        b=eTnLwverWZMURM2iWUYIaJD3TufSeDOeybgPBjHvKqkHth8WQWQB+qF+0dRa2ORNzl
-         zCEPDnfCOP/SfUQuZu6rTHxyUaF8el1iYIsFlHfQ3hzWETRaIiq7dhtky4JOivHWadD9
-         buLUpmHBudm6MvQN3JeEvXflCJDW7rfSAg77JVVgzL/wlvqw7NuTCB7QjShwfuF8jR2r
-         lqtSfsn4wiNN9nF/a/wSCvBexlCjQLm99EYR2edo4sFL2EVWv3x0fnoGJTq5eKEfzHkN
-         r2dCvdow7vG3Qf0JJE2dohNKXtWBBP1Altkf1EUjWIclecl8Kpze8upJWNc6D/3y2kWS
-         fUrQ==
+        b=YA8WuLWAxqglHRjy9qY44Xxj7dJDbgwUhYzLETyXDVPcmIr8jCiLkoqF7r/JAJ6m8R
+         0VFqKHoGyyIc2bZu3quMnOqwyhrc4rR/qKkJZ+jFzoXg+UQbdRc5UK1YNVBG/InvEl0Z
+         x6HbKS9YG5zKUTGYr87bzYPqQV/TRcrXlqc9eMPZcc3BcUUdnN0VSsvNWtTjkvZeLbRK
+         GFYOzIs4V0mN/iTjEINOX3ds48puBB8BDXWgVJzfmhD/X8NXgCHoufd+Anw2wboZ1wqR
+         293RrmS8EpMke/n60s0N5VvwPo7zCeCL5PziqCI6XzoP8Y6x33qUt82sWXo/fGo20ZTz
+         cRfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=wy91VbHhEjATQmoRwLMo5JHfC5QFQNnnXcOC8jZC3LM=;
-        fh=qxfMXZmsPwZu8XTciDC+r85aaq3eW5blgsNxrDrzyIo=;
-        b=BkOa/t+yx8Mco5jN+1klws0+Bl2i3BgP+qL0bGix7qXU6t9pE13IUZ3DUfzOpfU/O5
-         jSqimxZwtRtyZzGn7NcgB6O1bNl3lG2IqcRnWmfWZDB/KZTPqjFR25UlQTudGI2JDbta
-         dwfynruUIAShYdyxN2TJtA9e4os7NTtxS3YRbAUsa701+TVFQrSeY7fG6WkHtI/J43Dn
-         QhQU/ZBZQNuZowuK08A+CKri3iDm4oBJL6bLbgFiECeJSy0aCZWKGJXrGPD+Pb86jBV1
-         yLJx3e9G4+I/cIELVCmUY0uN0KC9bprIfw0X6t7jd38wgvhRrVem+jsY7GuZxh8ifXq8
-         9c2Q==;
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ZRakPZ6OV3eBLWtDvjLaBsJfRq8OfeLe2uxM2sXVI94=;
+        fh=zStpGdvf+YpPddpoiS0n6ESUosbmZd03ICd+eKyb6Oo=;
+        b=aRsW23t5CL67/uC6KY7/QM6cmLgp1umEl57HlmZnl5qZTQXERNLBhPZRgEUJITlXx7
+         2mbsdFTkfT46sAkuBT5Y9oIfF+MailrAL12GTzBuFd0RcoFAMa9I//ZfKK5bbvfhTNh2
+         eeU1/5qWC8bNmfjA5RVTdg0s0xhfL4pul/5BomR8i9MtDU8sceURIsImQPSycctdYnaB
+         1T9K56pFucq5tQvzPZbBJv5p3q21BfTFTJb0UUBYeSK7M+Gxds/Us+eAt4vdwVP521Hh
+         5d4DvZCxu9ZdESJvSncdtLnnJcn/X//SnJcvQhK7hClD2Idpr2l5YrIdxkayqDhQ7HiN
+         Bl9g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OihiVa5P;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N37l6MjS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e6686cb75si92349921cf.10.2025.01.27.03.28.24
+        by mx.google.com with ESMTPS id d75a77b69052e-46e6686c060si98113881cf.14.2025.01.27.03.29.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2025 03:28:24 -0800 (PST)
+        Mon, 27 Jan 2025 03:29:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OihiVa5P;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N37l6MjS;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tcNHD-0006sK-EN; Mon, 27 Jan 2025 06:27:35 -0500
+	id 1tcNHN-0006vF-IL; Mon, 27 Jan 2025 06:27:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tcNH1-0006qe-7a
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 06:27:25 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ id 1tcNH1-0006qd-45
+ for qemu-devel@nongnu.org; Mon, 27 Jan 2025 06:27:27 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tcNGy-0002vE-W7
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 06:27:23 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-386329da1d9so2174668f8f.1
- for <qemu-devel@nongnu.org>; Mon, 27 Jan 2025 03:27:20 -0800 (PST)
+ id 1tcNGy-0002ua-AK
+ for qemu-devel@nongnu.org; Mon, 27 Jan 2025 06:27:22 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-38be3bfb045so3557974f8f.0
+ for <qemu-devel@nongnu.org>; Mon, 27 Jan 2025 03:27:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737977239; x=1738582039; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=wy91VbHhEjATQmoRwLMo5JHfC5QFQNnnXcOC8jZC3LM=;
- b=OihiVa5PHH3LIobOZjgqsgRRrYAiSTvUc9D4BpykVvPyP3oEW+YePeYpwa6nCqQbBC
- hSewMaWrnLoR/JQglOOyylbkXcrONUgAJuSvaQsWzVM8jkUpFG6owteuPrm4lRJbeOwT
- htandbDVsgLSn71Pu6MNo+0ElNsvliptPPUakRqi+IhPRfwk/yOSp0KVVd+YEKiU0Dv2
- JWcb2rMrKrPQoO4ssSaxnEIGQiVnu9GnVsUZaOo3piA/71L8BnXoFCji53TY7+imEYyn
- 8kUpdP6I/AM0mOhGZDI9YcbeRmbJQmrhnl3HeYxuzgj5rZhUZAq4vUzBF/ldjrNIV743
- 6txg==
+ d=linaro.org; s=google; t=1737977237; x=1738582037; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZRakPZ6OV3eBLWtDvjLaBsJfRq8OfeLe2uxM2sXVI94=;
+ b=N37l6MjSWTDRX4Lw3xnnsfa5t6rBbTT2dCDd0vDLAfnBp00USrdIg0ttSYTM0TybnF
+ iSIMLD2cg62br5VOW0/WesMwLp/xinN+CcpdTNuawn9mm5WaOouiu47yTgrNaPUaD8O6
+ nQG9mkGEgIjeQAKXQ2f7PLW7bVUMv/n7E0e8dV1sxBGJ/Kdo87F6PNhoNL0KxVIh+9BU
+ t8nQN8Ti7f44jVBXlm5GHmXpvOPLD6xjzGhfz8+I5WjKK9bxa8ScjHf8WjvX3grW15qc
+ +V5CcreICvt3dbAJnWeonP5zLwzl4kUrhDVZ7mLkkG4nqcJpSgeMXlgJEap1+BfAJftd
+ ieug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737977239; x=1738582039;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=wy91VbHhEjATQmoRwLMo5JHfC5QFQNnnXcOC8jZC3LM=;
- b=WzjkS9+Q4ca9X35XNYRCToCeY0CEERJhvs1GfTll1SqpcIduFMxbMTCsF67fedfqbc
- pqEdUxSqm8lLzVXyvMGGE4mH/4hGbmedpr+A0xolmA4jTG/dOp8Uk6Zg+VpDX1Eu+Z+O
- nGSacPwNSccbUKpFUoCLF1RXlZCYBwAC81tzq1XGuCq1z8vYsdyWTTreS3GWgQzvZesO
- FL0BAxcLvfwMj5mMbwCz6TGugLGlG+QjcMkURA9Qk78b86odM4ZmEGCV1qk9wXaCWsDU
- 1Z1/SKLoCsagDo13fZ2IginG+aW7ICekWred8Zfv/mxKRfsJfhTk3ohzX++o9MhjRNVU
- hyEg==
+ d=1e100.net; s=20230601; t=1737977237; x=1738582037;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZRakPZ6OV3eBLWtDvjLaBsJfRq8OfeLe2uxM2sXVI94=;
+ b=Beim/XIUrkxaOCmESJo9Wm9/tdxjYahQ2Hy9CgDbyRzpS5+/TNOCmtrwtd2YPWqgt0
+ D0wtZYAI0yZzzdvtokrUbJBrN6sQL/cnW6FPexSp2NL8FOpkuS8CUeuJAChZeq2wz6/C
+ ptbZtuWfOSX1YGmnbhALF1ANzYCl7cRHftm6pKiW27R6IRKi4kJftagzCGm2Tyr3qTOE
+ IKo8c6MTpVsuFBmMJ13nJD69VSbIUOJ0951LTi5N6Lfb2qZM45Zm96iux2GjMnPURtSv
+ fmcuVVCMA3j7fZ4t4XMjbqdH+RxwAt3+P12nIzubd1KsG6xiJZnpXsAr8CYbJNOvz1VY
+ kCpw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWLwzqa50TvHS7GUygbmtpr6E91UDOrxTI1P7NBVKllV7YXa31li5aahJ232QNofPcibJ08xu6b0jxi@nongnu.org
-X-Gm-Message-State: AOJu0Yzi51aIYeQm3s1Q62F6pLGB6uR8HmYaTxI0FtT79Wv941q/w28J
- P8nq522mCjX2/XgAFSg6hEqiuYd9xjg43R977SaOWAyggp2vA3I+spWiZ9rxS7w=
-X-Gm-Gg: ASbGncswmxUP2kI6KAGiQCxpX42kCfsvoJIJg3ermYlbmF2EkIuIemkLuf2BagKlTUG
- vkN1rAWoLXWXsNd+RYuAvuYe+XBTLdNXYo1qUeTun/xwtO/oI5XuhHTKUVj8gdDDxFFiN23WJqR
- US1wZWUbLUgArdXIKANJLzBMwzD5PSKYFNlGJl8u9ei40QtXhCxemoKy/MxPi4ylJrakBz8qQtO
- PzdH3c6M9fh/elai9rSYnyqehLvQzbbilXnkSwcTFDKP+hO8zOEu9xEJ57KHJoQ5sGxNclJwgA+
- 9Pnl1vbKGlzSEQvWrV3T
-X-Received: by 2002:a5d:64e2:0:b0:38b:ef2b:422 with SMTP id
- ffacd0b85a97d-38bf57a9615mr32446944f8f.36.1737977239487; 
- Mon, 27 Jan 2025 03:27:19 -0800 (PST)
+ AJvYcCXiYSl7jvIykVMljJQqrU7GgOd8bBI+APNiKp/DVJI8/kr5CY5O4Kuas4Ne7cEM1Fs93oAvb/RCGe//@nongnu.org
+X-Gm-Message-State: AOJu0YzVS6piH6tM72RBYe5/2GYJznc2PEA6zk3GgHLyF0TkHz0FHRVN
+ 4QXfdeKn+mNCb6q7DKVIIypiCvtBMXEKhXwA0Tfvw+DbB3NQjFxyl9gU/tmWaGPjLmUfP4agIt7
+ L
+X-Gm-Gg: ASbGncvzNBiow+EVBVyFXIHYewe5kE2KAEr2Kl0e0YGfk0GaraFJ3fqdKfWFPr1xrgM
+ z4RcDqOZF1dHoALwm+EliAXYqYY/aOmzhjCb84iBX0IDpaOvxY3NjA8yj39XuhIVFbRSn7Uu+xd
+ iGKHKE8S6PmWlY5Fr/kzrLXOsQG2WvzgfbHUWQykCQESj5h43pZ/cJEHlmfvCPaivRUPmH9DLgc
+ mFIRkRCKPp4Efp36yhVjPzWsOI0W4j9T+KqAFF1c/t8koCffdT1FDhLAzIaeTTCopb+j3cdViU+
+ Q4H1LviBBA==
+X-Received: by 2002:a5d:47a4:0:b0:386:37f8:451c with SMTP id
+ ffacd0b85a97d-38c2b65eccbmr11107200f8f.1.1737977237462; 
+ Mon, 27 Jan 2025 03:27:17 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38c2a176449sm10925329f8f.11.2025.01.27.03.27.18
+ ffacd0b85a97d-38c2a176449sm10925329f8f.11.2025.01.27.03.27.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jan 2025 03:27:18 -0800 (PST)
+ Mon, 27 Jan 2025 03:27:16 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/2] tests/tcg/arm: Remove test-arm-iwmmxt test
-Date: Mon, 27 Jan 2025 11:27:15 +0000
-Message-Id: <20250127112715.2936555-3-peter.maydell@linaro.org>
+Subject: [PATCH 0/2] target/arm: Deprecate iwMMXt emulation and associated CPUs
+Date: Mon, 27 Jan 2025 11:27:13 +0000
+Message-Id: <20250127112715.2936555-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250127112715.2936555-1-peter.maydell@linaro.org>
-References: <20250127112715.2936555-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,132 +131,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: LHioaVElxN/x
+X-TUID: LDlGaaRYxIdb
 
-The test-arm-iwmmmxt test isn't testing what it thinks it's testing.
+This patchset marks all the CPUs that support iwMMXt as deprecated,
+because I don't believe anybody is using them, and we have no way to
+test the thousands of lines of code we have that's only there for
+iwMMXt emulation.  (See for instance the recent thread where a patch
+was submitted to fix an issue detected by a static analyzer: we
+didn't take it, largely because we had no way to know if the
+behaviour change the patch would produce was correct or not.)
 
-If you run it with a CPU type that supports iwMMXt then it will crash
-immediately with a SIGILL, because (even with -marm) GCC will link it
-against startup code that is in Thumb mode, and no iwMMXt CPU has
-Thumb:
+The pxa2xx CPUs are now only useful with user-mode emulation, because
+we dropped all the machine types that used them in 9.2.  (Technically
+you could alse use "-cpu pxa270" with a board model like versatilepb
+which doesn't sanity-check the CPU type, but that has never been a
+supported config.)
 
-00010338 <_start>:
-   10338:       f04f 0b00       mov.w   fp, #0
-   1033c:       f04f 0e00       mov.w   lr, #0
+To use them (or iwMMXt emulation) with QEMU user-mode you would need
+to explicitly select them with the -cpu option or the QEMU_CPU
+environment variable, because the '-cpu max' default CPU does not
+include iwMMXt emulation.  A google search finds no examples of
+anybody doing this in the last decade.
 
-If you run it with a CPU type which does *not* support iwMMXt, which
-is what 'make check-tcg' does, then QEMU will not try to handle the
-insns as iwMMXt.  Instead the translator turns them into illegal
-instructions.  Then in the linux-user cpu_loop() code we identify
-them as FPA11 instructions inside emulate_arm_fpa11(), because the
-FPA11 happened to use the same coprocessor number as these iwMMXt
-insns.  So we execute a completely different set of FPA11 insns,
-which means we don't crash, but we will print garbage to stdout.
-Then the test binary always exits with a 0 return code, so 'make
-check-tcg' thinks the test passes.
+I asked some of the Linaro GCC folks if they were using QEMU to test
+their iwMMXt codegen, or knew anybody doing that upstream, and the
+answer was "no". In fact, GCC is in the process of dropping support
+for iwMMXt entirely.
+                    
+We have one test case in check-tcg which purports to be checking
+iwMMXt. In fact it is doing no such thing: it runs the test without
+selecting an iwMMXt CPU, which means the iwMMXt insns are interpreted
+as FPA11 insns by the linux-user emulate_arm_fpa11() code. So the test
+prints garbage and then succeeds anyway. Modern distro toolchains
+can't generate a binary that will run with -cpu pxa270 (because their
+crt startup code uses Thumb insns); rather than putting in a lot of
+effort trying to salvage the test case to really test a feature we've
+deprecated, I opted to just remove the test.
 
-Modern gnueabihf toolchains assume in their startup code that the CPU
-is not so old as to not support Thumb, so there's no way to get them
-to generate a binary that actually does what the test wants.  Since
-we're deprecating iwMMXt emulation anyway, it's not worth trying to
-salvage the test case to get it to really test the iwMMXt insns.
+-- PMM
 
-Delete the test entirely.
+Peter Maydell (2):
+  target/arm: deprecate the pxa2xx CPUs and iwMMXt emulation
+  tests/tcg/arm: Remove test-arm-iwmmxt test
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
+ docs/about/deprecated.rst       | 21 ++++++++++++++
+ target/arm/cpu.h                |  1 +
+ target/arm/cpu.c                |  3 ++
+ target/arm/tcg/cpu32.c          | 36 ++++++++++++++++--------
  tests/tcg/arm/Makefile.target   |  7 -----
  tests/tcg/arm/README            |  5 ----
  tests/tcg/arm/test-arm-iwmmxt.S | 49 ---------------------------------
- 3 files changed, 61 deletions(-)
+ 7 files changed, 49 insertions(+), 73 deletions(-)
  delete mode 100644 tests/tcg/arm/test-arm-iwmmxt.S
 
-diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
-index 06ddf3e04fc..99a953b6671 100644
---- a/tests/tcg/arm/Makefile.target
-+++ b/tests/tcg/arm/Makefile.target
-@@ -20,13 +20,6 @@ ARM_TESTS = hello-arm
- hello-arm: CFLAGS+=-marm -ffreestanding -fno-stack-protector
- hello-arm: LDFLAGS+=-nostdlib
- 
--# IWMXT floating point extensions
--ARM_TESTS += test-arm-iwmmxt
--# Clang assembler does not support IWMXT, so use the external assembler.
--test-arm-iwmmxt: CFLAGS += -marm -march=iwmmxt -mabi=aapcs -mfpu=fpv4-sp-d16 $(CROSS_CC_HAS_FNIA)
--test-arm-iwmmxt: test-arm-iwmmxt.S
--	$(CC) $(CFLAGS) -Wa,--noexecstack $< -o $@ $(LDFLAGS)
--
- # Float-convert Tests
- ARM_TESTS += fcvt
- fcvt: LDFLAGS += -lm
-diff --git a/tests/tcg/arm/README b/tests/tcg/arm/README
-index e6307116e23..aceccc127f7 100644
---- a/tests/tcg/arm/README
-+++ b/tests/tcg/arm/README
-@@ -4,8 +4,3 @@ hello-arm
- ---------
- 
- A very simple inline assembly, write syscall based hello world
--
--test-arm-iwmmxt
-----------------
--
--A simple test case for older iwmmxt extended ARMs
-diff --git a/tests/tcg/arm/test-arm-iwmmxt.S b/tests/tcg/arm/test-arm-iwmmxt.S
-deleted file mode 100644
-index d647f9404ae..00000000000
---- a/tests/tcg/arm/test-arm-iwmmxt.S
-+++ /dev/null
-@@ -1,49 +0,0 @@
--@ Checks whether iwMMXt is functional.
--.code	32
--.globl	main
--
--main:
--ldr	r0, =data0
--ldr	r1, =data1
--ldr	r2, =data2
--#ifndef FPA
--wldrd	wr0, [r0, #0]
--wldrd	wr1, [r0, #8]
--wldrd	wr2, [r1, #0]
--wldrd	wr3, [r1, #8]
--wsubb	wr2, wr2, wr0
--wsubb	wr3, wr3, wr1
--wldrd	wr0, [r2, #0]
--wldrd	wr1, [r2, #8]
--waddb	wr0, wr0, wr2
--waddb	wr1, wr1, wr3
--wstrd	wr0, [r2, #0]
--wstrd	wr1, [r2, #8]
--#else
--ldfe	f0, [r0, #0]
--ldfe	f1, [r0, #8]
--ldfe	f2, [r1, #0]
--ldfe	f3, [r1, #8]
--adfdp	f2, f2, f0
--adfdp	f3, f3, f1
--ldfe	f0, [r2, #0]
--ldfe	f1, [r2, #8]
--adfd	f0, f0, f2
--adfd	f1, f1, f3
--stfe	f0, [r2, #0]
--stfe	f1, [r2, #8]
--#endif
--mov	r0, #1
--mov	r1, r2
--mov	r2, #0x11
--swi	#0x900004
--mov	r0, #0
--swi	#0x900001
--
--.data
--data0:
--.string	"aaaabbbbccccdddd"
--data1:
--.string	"bbbbccccddddeeee"
--data2:
--.string	"hvLLWs\x1fsdrs9\x1fNJ-\n"
 -- 
 2.34.1
 

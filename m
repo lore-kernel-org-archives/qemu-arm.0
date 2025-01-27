@@ -1,196 +1,197 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2379309njk;
-        Mon, 27 Jan 2025 03:57:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUQN93kDLW9s1qel2qANq6HOKakv8tmo2deFYQRVlEGewDMHAgVSOGmKc/yKEg8/9xEmlBKFFluYErOxA==@linaro.org
-X-Google-Smtp-Source: AGHT+IH3fgAc0xM4kGMinEMWg79Uxf9u2s3Ceu+rn0whbRO6A+ZVHzlu433ntLN6dYQM4j1NmI03
-X-Received: by 2002:a05:620a:2990:b0:7b6:6756:eefb with SMTP id af79cd13be357-7be6321c124mr5206847785a.14.1737979061671;
-        Mon, 27 Jan 2025 03:57:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737979061; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2401139njk;
+        Mon, 27 Jan 2025 04:32:39 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWc4rrVirj63a0dUQxvAonU4tcMrFtwIr7bYqNK03sxA3CyPgYxO4PROEizQY0knUHr3fqJHBkrA5fzmA==@linaro.org
+X-Google-Smtp-Source: AGHT+IE4RyFccaFPPNkkaKmlmmo2ApM9yeOweRMpILB9M8u0819dunWrtsoW3x5xW702qJ90q0Iz
+X-Received: by 2002:a05:620a:3947:b0:7b6:c540:9530 with SMTP id af79cd13be357-7be6320c460mr7108858785a.25.1737981159620;
+        Mon, 27 Jan 2025 04:32:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737981159; cv=none;
         d=google.com; s=arc-20240605;
-        b=D/3gwPw4uVKOJur0RycS0pIVwi3yzM8RD5vmgwujj42FIh5V0RJLYtIKAfkcx0mbQ8
-         d/xQn3SlJ8oMwcU+EO/MNuh7AtgTBOQpd4w+PgF/Kfto3DfnEf5HHvOLAwnPp9CuES+X
-         hlt/Sr5Ig+n3jbArSiKgzRe7gqJmrV+5Mnb53IUlLA9nJ+EePU1XU6WqbmyIcvVDqt7K
-         TMY/vohIN52HAnh2HptjaSbwhMk8WmMCn42oOFlW+t+ztlWpx8mMygo/b9azGcuP5/g3
-         XUPOz+CcuQ0l6jQ1QYGHohlgvkYJ/ioTCjV890PgLuFD84CzOsOPr6syxXFRrUT9h7v0
-         xcZw==
+        b=Tn+wiQE/AIsaBZ1pmovcuEYB8yTgH5WEiDx62JEntXi+CcQzirGCUkH8XPBLnWid2o
+         HVQPC7BmU9lubbTte24ca0ulwuOpIB1Ifthdg5Mqsb3E/xHa7cV8y5vXEsev3tyBnxfj
+         PRPwESChOmKrxFXcg/tQoTL+WRIPnP4p1a5ZGbqzcUpxBUwgth8SCSXZnnvl5OCBE5UP
+         aspHW6d4b/KZ4XhULUYWeT3nK9mndHZBzr2lY4AfVxMJlPyhP8ffNrr01z0NA+CkFv1r
+         g+n7GFIWlAOMhzEm2L7/0u9t55oPjMx1WMphyjqcaHmjpmJuX4xliGOG5uOjAAm/MlCe
+         2/og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=477b2+132Twzc6vm7x293Qvrvp4aEfDDM84pZnLDz7E=;
-        fh=UT36gCECAOtEsgOrSReymFda56t2Gj969DHeMwsi3As=;
-        b=b4QNSx8QDxNSnMUmuT7zeHKslRi/nDL8JK6yObD90SOHO2Z0W1Kmnas8nh0TNusLDx
-         lL9B9URFm2CbXZrunC9n2uWyAYM4ujRl/FexZzrtF9Twhi9NM8JwrJZ2IlcIy66vGpEN
-         G+R40Q4xOTLUXKYPQzHWM19JgvfURoWTgRPJH7c6DNKIsg7an5Kt29TewKs/uVpKGEQZ
-         7C96oGmoVKkyys9nkbmmCdrI6E+XV4jvod5S19jd3qLwZJZpVYwpwRGvqZiINFJJAQlk
-         ZWBh6mIJcIVZOivuBCeVwR/y5IIbI5htTLNj7EyXzQiwEuGzYNA5OjL5b6IQILiP/n55
-         KXvg==;
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=KSwYm9Ifvrp3w/cECG9Gy3rSjhlrv0zcjhWArVvCSig=;
+        fh=H2AmuqulvQE+T5zu97MCEUC3z9wF9NssS7895NhR/+c=;
+        b=gVTaS3vu/Cbr81NzJx9IxMiqf4rpWWftX/4lATtOTm7HCM1CG4gzQGr68sWm4oTYyT
+         XotWKdTn/kAfIHJNSP35OaI/tRHp/JoXYf/RpKctdCxqXgvnQcPf9X43/WwvzRsGvSr8
+         eNu5AvvCeAR8fDvq/uSMFIX1oIqPz40V6UnaTTqGZ/1OhtLrg8TsKj5EE4+UhFjqR5NM
+         l0YsIXNlkgO/vq8mgOAYUIbBKMh8tvuOv50tvy8XbisSXmQR3Et/kiNbjHtjh82frgab
+         RiHAOV2P4lAzEmnwPIgMmB4KzNXCB9U+iDf50sSlx2+bLWEedwglxWrBiQqSoDXew94w
+         INtg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A30Hdz7D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EfUFLFQ2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7be9aee1611si946356685a.226.2025.01.27.03.57.41
+        by mx.google.com with ESMTPS id af79cd13be357-7be9aee1447si970172385a.258.2025.01.27.04.32.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2025 03:57:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 27 Jan 2025 04:32:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A30Hdz7D;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=EfUFLFQ2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tcNiM-0007Wm-G8; Mon, 27 Jan 2025 06:55:38 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tcOH8-00045N-6U; Mon, 27 Jan 2025 07:31:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tcNi6-0006ze-0n
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 06:55:25 -0500
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tcOGt-00041Y-4u
+ for qemu-arm@nongnu.org; Mon, 27 Jan 2025 07:31:19 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tcNi1-0007D8-PL
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 06:55:21 -0500
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-385f07cd1a4so4517926f8f.1
- for <qemu-devel@nongnu.org>; Mon, 27 Jan 2025 03:55:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tcOGr-0003MP-7r
+ for qemu-arm@nongnu.org; Mon, 27 Jan 2025 07:31:18 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4361c705434so30546205e9.3
+ for <qemu-arm@nongnu.org>; Mon, 27 Jan 2025 04:31:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737978916; x=1738583716; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=477b2+132Twzc6vm7x293Qvrvp4aEfDDM84pZnLDz7E=;
- b=A30Hdz7DgNSk/txVVLqyttURob1pvTspsV1OrXuq6BP+rrCMsb3cR3jCvHhAU5zXy0
- 2P+inoAUoI+vsj9Bo3yDQA+WBzhol+dIdi/PR3jRbo4VU3qkW9s9ewdS2c4I1Fx69UC3
- 2USRtgLzjJeD+uvUwesUBXpzyhHwbucQYMFUpzalUN5GbnqxB7CQSSaQtrhchCyOoPen
- 6aEUiysDCL/76HzS1aBlcukYqhsDGu0e89VLb19DIpSWEOnuE5eNsceBW/XudCd4PlFA
- 54nwvd6YrgqO7uxIDTGJqcD7Tfb1zKyh2quAbuona05YUXXh7TNNPUEE8+Wlt88+P4ci
- WRyg==
+ d=linaro.org; s=google; t=1737981075; x=1738585875; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:from:to:cc:subject:date:message-id:reply-to;
+ bh=KSwYm9Ifvrp3w/cECG9Gy3rSjhlrv0zcjhWArVvCSig=;
+ b=EfUFLFQ2TC9YW1K/ijIvCWWl0pUxa7X5P5DpAT9xuN4y5G5Ys1wEd3Tq7XZVRBS3Ow
+ eEa6pFt391O5PvoCM9KGf2Vb1/FBqKUtoUsYqBzUMJOfVAr6EBkEb/ZweyJCMCyWh6V2
+ ncDHvHoET0TSOXbOxwzhs31/g5Q9EM8Eowfw5R3clXo1O3RSAMwbffdyBh+LO2O2nnxl
+ G+gJr/rq0+uqHnCvu+DHHIvTchLAbmi6XhziuF3XKATW82slSWk54OFKmeBqmqqZwsVt
+ /+gNWGB2vt/Qx37FFx8fLVEyzjpIWgcKJ/i/p8IIQ91ZfwhRdzPPQSjCrqtOS+E+2Pc8
+ VOpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737978916; x=1738583716;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=477b2+132Twzc6vm7x293Qvrvp4aEfDDM84pZnLDz7E=;
- b=ocZGBWulrDhIczlXs9aZMYEpFpmumQoFp6KumZLsJzAcWYQHgQwGvZiZH1Ez1UANJK
- At5XNFg1Hq6bNtBFcOEyOCCoXU/npMCUvttWXFfcMzntbynV1GeF2YpY5CyV/y75HdNU
- OmmNuZ2IumExKu+K0/dTRYVCtBfojjSBxF0GrX57wUxAJXcqASl7Yh9ZGlcjJLOvFRPj
- mS/6toQ16jA0UsDTXY/NSqPGxdTvWXNXYpqsWTGCZdnw3EVgB6zj/eZ/RNx332SqrCpG
- e018WuaknNXlwjyRYg9u4QJQ7sNw9cZpd8xmHL4S0gmzU7N06eYYv0HYIaLc43RqCegh
- lqkw==
-X-Gm-Message-State: AOJu0YyZy2/TNh6awpnmKdJJBerw0rxZ6HIKIaRWlNqzMbjswweZa5z2
- oZCf99bSqniBRynTv4jJsDUCKHX5W8aL5qficFf7R2uDgH5ZkRlIPJcVK1VMGXHAvQs/cMylHe0
- AyBc=
-X-Gm-Gg: ASbGncs/fWsJ7XvZIUBsc/Wa/QafHQXlbNifYJ05zYBZ9DQUCDI9LDo/JDM0jRnBajC
- rBEBFBjpr8K6+4UiBESWNJi3BNvgIpiIffgyG+4a90KiyJd8GJr5MBWdk9O+5jqYtqxdcLQIl50
- 7+IUQQpeP/WbxSkIfHAJU1V2S9RMZ4MnkPrGjwYTPuJ9y/A/8w9aKXbXxZ+6ezG+auSBCNVeiww
- q+AYEzKwlmjT6HzVr8EdyYFHDKUce84CfFtatsyPKMf32p+5uTiwnBMrRxPisOP1s+V8E6Onb7F
- y8c7v6M31xxZczJ133qjjIb+P8jcNPv6IXvp2yslpbwL7atYdoq5JZE=
-X-Received: by 2002:a05:6000:1788:b0:385:ea2b:12cc with SMTP id
- ffacd0b85a97d-38bf56628e4mr37165113f8f.13.1737978915871; 
- Mon, 27 Jan 2025 03:55:15 -0800 (PST)
-Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38c2a1bbd93sm10884096f8f.76.2025.01.27.03.55.14
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 27 Jan 2025 03:55:15 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, qemu-ppc@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 10/10] disas: Remove target_words_bigendian() call in
- initialize_debug_target()
-Date: Mon, 27 Jan 2025 12:54:26 +0100
-Message-ID: <20250127115426.51355-11-philmd@linaro.org>
-X-Mailer: git-send-email 2.47.1
-In-Reply-To: <20250127115426.51355-1-philmd@linaro.org>
-References: <20250127115426.51355-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1737981075; x=1738585875;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:to
+ :from:x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=KSwYm9Ifvrp3w/cECG9Gy3rSjhlrv0zcjhWArVvCSig=;
+ b=HqBhcpEtlOypMD2vAem2a34GYNIHhLeHRj8y1aZkuk02LuQjnJ8IH5bxazgjQQ5A0k
+ 16s09L9Urimudgk9pSL1lzmmFccJRiJoJG3WZ2xBiyM21AJlf62GR5fTwgQV+nOPj1a4
+ bQWzUh3Is01i86JTmWDXpdrcs48PzkFj4l8Gv5Ol+bGOvoT0mH4np+0RMh7fG/biHbOy
+ ED6qwjH0P5NbOpGFmB4RB9cunj/g4vT9kXn+z/YvKef9/6xHq8mtt3J2M7BWLMlwYaxD
+ lOrpgRwJSMvaJju4S2CAc4AGHpBnj60OAeuL9mgAwZnk0HiUnjIt9G9QvXT7o9rwPPa4
+ PjvA==
+X-Gm-Message-State: AOJu0Yw8fbNjfX/VzSxSYazNzyfxeROjT7qXfcWC/tHQS+m7mJOwPMu9
+ EiTJ8roYNwemETqDWWNBrhrWDwf5MEQi8jQBUfTpXBpbS7VYvZ+4o4wziIIxdgLQGpGbRmiTSkk
+ 0
+X-Gm-Gg: ASbGncvsLB06T1gB+1WQRXJeGowlcA0+qJcgzDGrwkS9lYQUuZMazcQGZn9UjhVqEqO
+ d9AdWgPbmDVeMGQlkIctr+fX2WsnJXLzsfwK1R6ABvCjo6FFlXQqjGf4ekd6g/m9i4envCr9REy
+ f5x6vs2/s8kvHv7nyfTBwcs6ILaY80WS60wfQ4OrE8ytdNCakf9H3b/fQQ2DCG4dP9mL3s2oHv2
+ 1Ax4lJF7r9y+IESrNoBe2cOpwr0OdN2WHFyReK8mdL0JVzfCrjOJJs8d/jMdCS1Z1YcS9f10d0u
+ AJqYGQVUuw==
+X-Received: by 2002:a05:600c:1e8b:b0:434:f609:1af7 with SMTP id
+ 5b1f17b1804b1-438913bf885mr386127875e9.4.1737981075421; 
+ Mon, 27 Jan 2025 04:31:15 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-438bd4857b8sm129052505e9.15.2025.01.27.04.31.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Jan 2025 04:31:14 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] qemu-options: Deprecate -old-param command line option
+Date: Mon, 27 Jan 2025 12:31:13 +0000
+Message-Id: <20250127123113.2947620-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: oHDS2ZTWo4sA
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: cTPs0uGm8Xyz
 
-All CPUClass implementations must implement disas_set_info()
-which sets the disassemble_info::endian value.
+The '-old-param' command line option is specific to Arm targets; it
+is very briefly documented as "old param mode".  What this option
+actually does is change the behaviour when directly booting a guest
+kernel, so that command line arguments are passed to the kernel using
+the extremely old "param_struct" ABI, rather than the newer ATAGS or
+even newer DTB mechanisms.
 
-Ensure that by:
+This support was added back in 2007 to support an old vendor kernel
+on the akita/terrier board types:
+ https://mail.gnu.org/archive/html/qemu-devel/2007-07/msg00344.html
+Even then, it was an out-of-date mechanism from the kernel's
+point of view -- the kernel has had a comment since 2001 marking
+it as deprecated. As of mid-2024, the kernel only retained
+param_struct support for the RiscPC and Footbridge platforms:
+ https://lore.kernel.org/linux-arm-kernel/2831c5a6-cfbf-4fe0-b51c-0396e5b0aeb7@app.fastmail.com/
 
-1/ assert disas_set_info() handler is not NULL
-2/ set %endian to BFD_ENDIAN_UNKNOWN before calling the
-   CPUClass::disas_set_info() handler, then assert %endian
-   is not BFD_ENDIAN_UNKNOWN after the call.
+None of the board types QEMU supports need param_struct support;
+mark this option as deprecated.
 
-This allows removing the target_words_bigendian() call in disas/.
-
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- disas/disas-common.c | 13 ++++---------
- 1 file changed, 4 insertions(+), 9 deletions(-)
+ docs/about/deprecated.rst | 13 +++++++++++++
+ system/vl.c               |  1 +
+ 2 files changed, 14 insertions(+)
 
-diff --git a/disas/disas-common.c b/disas/disas-common.c
-index 57505823cb7..42e911e36be 100644
---- a/disas/disas-common.c
-+++ b/disas/disas-common.c
-@@ -7,7 +7,6 @@
- #include "disas/disas.h"
- #include "disas/capstone.h"
- #include "hw/core/cpu.h"
--#include "exec/tswap.h"
- #include "disas-internal.h"
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 29de49351d1..a4c7d642236 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -68,6 +68,19 @@ configurations (e.g. -smp drawers=1,books=1,clusters=1 for x86 PC machine) is
+ marked deprecated since 9.0, users have to ensure that all the topology members
+ described with -smp are supported by the target machine.
  
++``-old-param`` option for booting Arm kernels via param_struct (since 10.0)
++'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++The ``-old-param`` command line option is specific to Arm targets:
++it is used when directly booting a guest kernel to pass it the
++command line and other information via the old ``param_struct`` ABI,
++rather than the newer ATAGS or DTB mechanisms. This option was only
++ever needed to support ancient kernels on some old board types
++like the ``akita`` or ``terrier``; it has been deprecated in the
++kernel since 2001. None of the board types QEMU supports need
++``param_struct`` support, so this option has been deprecated and will
++be removed in a future QEMU version.
++
+ User-mode emulator command line arguments
+ -----------------------------------------
  
-@@ -61,15 +60,11 @@ void disas_initialize_debug_target(CPUDebug *s, CPUState *cpu)
- 
-     s->cpu = cpu;
-     s->info.print_address_func = print_address;
--    if (target_words_bigendian()) {
--        s->info.endian = BFD_ENDIAN_BIG;
--    } else {
--        s->info.endian =  BFD_ENDIAN_LITTLE;
--    }
-+    s->info.endian =  BFD_ENDIAN_UNKNOWN;
- 
--    if (cpu->cc->disas_set_info) {
--        cpu->cc->disas_set_info(cpu, &s->info);
--    }
-+    g_assert(cpu->cc->disas_set_info);
-+    cpu->cc->disas_set_info(cpu, &s->info);
-+    g_assert(s->info.endian !=  BFD_ENDIAN_UNKNOWN);
- }
- 
- int disas_gstring_printf(FILE *stream, const char *fmt, ...)
+diff --git a/system/vl.c b/system/vl.c
+index c5678267182..32ee1ce7041 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -3438,6 +3438,7 @@ void qemu_init(int argc, char **argv)
+                 nb_prom_envs++;
+                 break;
+             case QEMU_OPTION_old_param:
++                warn_report("-old-param is deprecated");
+                 old_param = 1;
+                 break;
+             case QEMU_OPTION_rtc:
 -- 
-2.47.1
+2.34.1
 

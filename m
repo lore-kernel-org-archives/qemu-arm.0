@@ -1,110 +1,110 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2319344njk;
-        Mon, 27 Jan 2025 01:44:41 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCV+4vLE8j+V5Seql/u2LPqTLyA5lE8eVqABipO0vMRIAnLICkU38m6Q+fWSaMYujnNMroItQ+N+/brz7A==@linaro.org
-X-Google-Smtp-Source: AGHT+IHqIjoyNlVn8ba83zAXe6gpzt2hzTX+zLS2fx3EUHP5ukmXIPVQDCsFTGZrPzums/PtIgwI
-X-Received: by 2002:a05:622a:8c5:b0:458:1e37:f82 with SMTP id d75a77b69052e-46e670a9e1emr235056821cf.18.1737971081359;
-        Mon, 27 Jan 2025 01:44:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737971081; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2319437njk;
+        Mon, 27 Jan 2025 01:44:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXMKfTZPLoC8Rxc92sAYcvZMyvyxQqrKm3o7RErbi4FnT9jue87bamMQml2pOD+BPrYJau1Y/W4rgDlpw==@linaro.org
+X-Google-Smtp-Source: AGHT+IEtBsb6cdEyT+wqfuPA7RYaLG4MtZebW6rkKAm2GTQdWVPgTqzZqVb25/xP+GwFx9a2QJd/
+X-Received: by 2002:a05:620a:24cc:b0:7b6:d8da:90a3 with SMTP id af79cd13be357-7be6327c4f3mr6268564385a.44.1737971098288;
+        Mon, 27 Jan 2025 01:44:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737971098; cv=none;
         d=google.com; s=arc-20240605;
-        b=kChHWtKprZWbsPDfFb9qYJhASUgK7usu9D+hzkqKtyzmh7SzFO8Ylp+wzRBYSasRG6
-         T8YbQ0u6RZowMfDhP5rRkQtQoh0f5F05L2RCLF9HiDuttMHUIrkHZzCu8COJF6D/vgEp
-         HmF8RLWzXtbSgZ1Y8MbwstBlTTwyZSyrh7Kf4bV5ta6hMRdXKT5OkFULRilJ/42F7+I5
-         UcG/7ozr99/cFLIvWdIaWLLHEs5srMRttK/iCkN/fcD6kjGj8syJIheSYPUhPyDIdMpR
-         8mNbe7iqV8u4SKXKwWHOYQjL0IjMP5nOgPNDmBQeQhmSq5o5rPTabxc1bPuwwC/3q5Sj
-         Ty0A==
+        b=KCCBn7R63FHlfbd7s7ZQHsAtmt33Atq5/t5PaXEaa8wjgbgzgMnho04yx0hmiz/eoC
+         RunLgrsCC3Zj9au20l80ExNGIs08gfrXvmALStuf9oibGoHTKnPiLlVRjQ3XZLQ+OyJR
+         DOedCO98gSNRyMZGF/CFbjMoVQEoEWk7dG4K8/la+de9X6Q2CD3XZlGFpuyVVJPCi/s9
+         xvHoeD708DqM5AKd50xAH3l32Aj45/D0sMi79Yuch/lL7UdHvxHPXFp3B+QLlySEMS9N
+         Qcmqmhmj+vYH2m2t7iBeieWnYZUycfb6UgXRxIny37pV/ooLWT3l6EoPs1HRvGOuJgGo
+         v4MQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gvxXCpgxcR8pnFAbFm1ZXD/+Uaq5sgKqZlPpIPkXai4=;
-        fh=i/PI/VfZf54YsTwJ9sJhiHcO+8PSmdTrt3qYCjPMyJY=;
-        b=SMrzlqFg4wHOjgu3jv64N4+LS1ex/UJEaLkv2MTRS/eHgiEYWE3sLhED6dVisgpLOD
-         L3cv35wq3jVAKYDByEdIjo3BVL0Hr1KaBp/MT3rtbpIpJzOJlhGNJSfc9C4+dYepJBdB
-         lOqIysIv8Cc06Hru8lhpHsc1JZhZpJaLwGmguiiXUQ1w1SpDeTsTE02GYcJwPQLbXfOs
-         AgJqejSIuA5Z+g31TYvxkpLcYAyglYBjjWksVJpibykpC7Fvs3DzYA8gLGhqSOjmAGeW
-         WG9icpAIM/E1jPUMpH95NsJUvWU629u+c5I/JIkpIDpOutoEmNKBH9JhGk9ZXOlyz8yB
-         sXMw==;
+        bh=MYFFX2avdRONuETFtnjg8dK8m+riW2xGtzskxvThhqA=;
+        fh=HCNC18ZglV+EO+6QG3xAPXXwS303incvJlEkcuytr8w=;
+        b=fckRip7jodCYgQ3GcGTXEg073ADuwxp63RynaFI7JA3IvGam+bI9WsNApML3lNFHIH
+         z+u1zaD9z3e4uWTIulB4Ffzj5xBFus0uEbfcHUTbcx9dYgo+jfd4uq8G7j3NL5KuUxYv
+         DvmpHZUyXGW64scwl5q5ev/Z7f7VOdN0GoDWbVa/Ul9yUQcP3opj9peQ/axYVbkyEXap
+         5XfaRdRBR88dVPD/3ZYCTHjutmDbJPsvK7vZMiB7ppDCMOwZ16LAckc3t1kbkX961awT
+         2ayL+PGRNKCyB1uG3yb30jcDAclesQux/MBLcG1AgMop3++6SEScoBRbRxzzwwE3W6l0
+         tNwA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HgUekkEi;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wf2qrajb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e66ba75edsi104094021cf.520.2025.01.27.01.44.41
+        by mx.google.com with ESMTPS id af79cd13be357-7be9af2b7f5si911665285a.644.2025.01.27.01.44.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2025 01:44:41 -0800 (PST)
+        Mon, 27 Jan 2025 01:44:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=HgUekkEi;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Wf2qrajb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tcLel-0006Vc-3m; Mon, 27 Jan 2025 04:43:49 -0500
+	id 1tcLfI-000771-UD; Mon, 27 Jan 2025 04:44:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tcLeF-0006HQ-Pw
- for qemu-arm@nongnu.org; Mon, 27 Jan 2025 04:43:19 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tcLeO-0006SW-KA
+ for qemu-arm@nongnu.org; Mon, 27 Jan 2025 04:43:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tcLeC-0005Rh-IN
- for qemu-arm@nongnu.org; Mon, 27 Jan 2025 04:43:15 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tcLeL-0005Sj-8U
+ for qemu-arm@nongnu.org; Mon, 27 Jan 2025 04:43:24 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1737970991;
+ s=mimecast20190719; t=1737970999;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gvxXCpgxcR8pnFAbFm1ZXD/+Uaq5sgKqZlPpIPkXai4=;
- b=HgUekkEi6QUljUEYtLJ27Ar+A6dYk56Mzvb/VuC/2JDSQ1Zjw6H5n1joNMQ7EHVn+WTt6A
- cn4ZVE+2przM7FmtP3xdysAODfwW2Nq461cQCzIxpAGqsBTDtCSZN/8sCRohH2xnW11RsD
- wIWx/uxOYqmBZP8q4LvJyZ4/foLs2wQ=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=MYFFX2avdRONuETFtnjg8dK8m+riW2xGtzskxvThhqA=;
+ b=Wf2qrajb/RPXDB0Ge9S5OIiAy0jwPUx+BN68uxX3ZdatvUNPDAqS4jVaCgNM1P8yAUXvLf
+ 2+g8Sl0KVzT+vVxcnZGBe7R4DIIXRmF2lxAR9D9W5rb9y6PpwiXjiiC/5eVN6K1DHk0zyE
+ 68zL0192bYZH7vBiUZ+0azRM9xjZYPk=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-88-wTJvDMfFPWa2KzkVTeBabA-1; Mon,
- 27 Jan 2025 04:43:07 -0500
-X-MC-Unique: wTJvDMfFPWa2KzkVTeBabA-1
-X-Mimecast-MFC-AGG-ID: wTJvDMfFPWa2KzkVTeBabA
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-255-gksnzM6EPMSyDtdH_QvXGw-1; Mon,
+ 27 Jan 2025 04:43:13 -0500
+X-MC-Unique: gksnzM6EPMSyDtdH_QvXGw-1
+X-Mimecast-MFC-AGG-ID: gksnzM6EPMSyDtdH_QvXGw
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8D34819560BB; Mon, 27 Jan 2025 09:43:00 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 40C8F1801F10; Mon, 27 Jan 2025 09:43:12 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.39.192.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7FBA71800365; Mon, 27 Jan 2025 09:42:58 +0000 (UTC)
+ id 84B4A18008C8; Mon, 27 Jan 2025 09:43:05 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 05/12] hw/timer/aspeed: Add AST2700 Support
-Date: Mon, 27 Jan 2025 10:42:32 +0100
-Message-ID: <20250127094239.636526-6-clg@redhat.com>
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>
+Subject: [PULL 08/12] test/functional: Update buildroot images to 2024.11
+Date: Mon, 27 Jan 2025 10:42:35 +0100
+Message-ID: <20250127094239.636526-9-clg@redhat.com>
 In-Reply-To: <20250127094239.636526-1-clg@redhat.com>
 References: <20250127094239.636526-1-clg@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.299,
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.299,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,301 +119,96 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: a1oaCj0bzzL5
+X-TUID: hR1Xkz9Eyjlq
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+The main changes compared to upstream 2024.11 buildroot are
 
-The timer controller include 8 sets of 32-bit decrement counters, based on
-either PCLK or 1MHZ clock and the design of timer controller between AST2600
-and AST2700 are almost the same.
+- bumped Linux to version 6.11.11 with a custom config
+- changed U-Boot to OpenBMC branch for more support
+- included extra target packages
 
-TIMER0 – TIMER7 has their own individual control and interrupt status register.
-In other words, users are able to set timer control in register TMC10 with
-different TIMER base address and clear timer control and interrupt status in
-register TMC14 with different TIMER base address.
+See branch [1] for more details.
 
-Introduce new "aspeed_2700_timer_read" and "aspeed_2700_timer_write" callback
-functions and a new ast2700 class to support AST2700.
+There is a slight output change when powering off the machine,
+the console now contains :
 
-The base address of TIMER0 to TIMER7 as following.
-Base Address of Timer 0 = 0x12C1_0000
-Base Address of Timer 1 = 0x12C1_0040
-Base Address of Timer 2 = 0x12C1_0080
-Base Address of Timer 3 = 0x12C1_00C0
-Base Address of Timer 4 = 0x12C1_0100
-Base Address of Timer 5 = 0x12C1_0140
-Base Address of Timer 6 = 0x12C1_0180
-Base Address of Timer 7 = 0x12C1_01C0
+    reboot: Power off not available: System halted
 
-The register address space of each TIMER is "0x40" , and uses the following
-formula to get the index and register of each TIMER.
+Adjust accordingly the expect string in
+do_test_arm_aspeed_buildroot_poweroff().
 
-timer_index = offset >> 6;
-timer_offset = offset & 0x3f;
+[1] https://github.com/legoater/buildroot/commits/aspeed-2024.11
 
-The TMC010 is a counter control set and interrupt status register. Write "1" to
-TMC10[3:0] will set the specific bits to "1". Introduce a new
-"aspeed_2700_timer_set_ctrl" function to handle this register behavior.
-
-The TMC014 is a counter control clear and interrupt status register, to clear
-the specific bits to "0", it should write "1" to  TMC14[3:0] on the same bit
-position. Introduce a new "aspeed_2700_timer_clear_ctrl" function to handle
-this register behavior. TMC014 does not support read operation.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Acked-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/r/20250113064455.1660564-3-jamin_lin@aspeedtech.com
+Reviewed-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Link: https://lore.kernel.org/qemu-devel/20250122070909.1138598-9-clg@redhat.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/timer/aspeed_timer.h |   1 +
- hw/timer/aspeed_timer.c         | 208 ++++++++++++++++++++++++++++++++
- 2 files changed, 209 insertions(+)
+ tests/functional/aspeed.py                  | 2 +-
+ tests/functional/test_arm_aspeed_ast2500.py | 8 ++++----
+ tests/functional/test_arm_aspeed_ast2600.py | 8 ++++----
+ 3 files changed, 9 insertions(+), 9 deletions(-)
 
-diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
-index 07dc6b6f2cbd..767cae4b05ba 100644
---- a/include/hw/timer/aspeed_timer.h
-+++ b/include/hw/timer/aspeed_timer.h
-@@ -32,6 +32,7 @@ OBJECT_DECLARE_TYPE(AspeedTimerCtrlState, AspeedTimerClass, ASPEED_TIMER)
- #define TYPE_ASPEED_2500_TIMER TYPE_ASPEED_TIMER "-ast2500"
- #define TYPE_ASPEED_2600_TIMER TYPE_ASPEED_TIMER "-ast2600"
- #define TYPE_ASPEED_1030_TIMER TYPE_ASPEED_TIMER "-ast1030"
-+#define TYPE_ASPEED_2700_TIMER TYPE_ASPEED_TIMER "-ast2700"
+diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+index 62f50bab7a33..b52358bb8c61 100644
+--- a/tests/functional/aspeed.py
++++ b/tests/functional/aspeed.py
+@@ -42,7 +42,7 @@ def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'
  
- #define ASPEED_TIMER_NR_TIMERS 8
+     def do_test_arm_aspeed_buildroot_poweroff(self):
+         exec_command_and_wait_for_pattern(self, 'poweroff',
+-                                          'reboot: System halted');
++                                          'System halted');
  
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index 24ba40cbe9b4..ecda49574e2c 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -618,6 +618,197 @@ static void aspeed_2600_timer_write(AspeedTimerCtrlState *s, hwaddr offset,
-     }
- }
+     def do_test_arm_aspeed_sdk_start(self, image):
+         self.require_netdev('user')
+diff --git a/tests/functional/test_arm_aspeed_ast2500.py b/tests/functional/test_arm_aspeed_ast2500.py
+index 743fc46eb29e..1ffba6c9953d 100755
+--- a/tests/functional/test_arm_aspeed_ast2500.py
++++ b/tests/functional/test_arm_aspeed_ast2500.py
+@@ -11,15 +11,15 @@
  
-+static void aspeed_2700_timer_set_ctrl(AspeedTimerCtrlState *s, int index,
-+                                    uint32_t reg)
-+{
-+    const uint8_t overflow_interrupt_mask = BIT(op_overflow_interrupt);
-+    const uint8_t external_clock_mask = BIT(op_external_clock);
-+    const uint8_t pulse_enable_mask = BIT(op_pulse_enable);
-+    const uint8_t enable_mask = BIT(op_enable);
-+    AspeedTimer *t;
-+    uint8_t t_old;
-+    uint8_t t_new;
-+    int shift;
-+
-+    /*
-+     * Only 1 will set the specific bits to 1
-+     * Handle a dependency between the 'enable' and remaining three
-+     * configuration bits - i.e. if more than one bit in the control set has
-+     * set, including the 'enable' bit, perform configuration and then
-+     * enable the timer.
-+     * Interrupt Status bit should not be set.
-+     */
-+
-+     t = &s->timers[index];
-+     shift = index * TIMER_CTRL_BITS;
-+
-+     t_old = (s->ctrl >> shift) & TIMER_CTRL_MASK;
-+     t_new = reg & TIMER_CTRL_MASK;
-+
-+    if (!(t_old & external_clock_mask) &&
-+        (t_new & external_clock_mask)) {
-+        aspeed_timer_ctrl_external_clock(t, true);
-+        s->ctrl = deposit32(s->ctrl, shift + op_external_clock, 1, 1);
-+    }
-+
-+    if (!(t_old & overflow_interrupt_mask) &&
-+        (t_new & overflow_interrupt_mask)) {
-+        aspeed_timer_ctrl_overflow_interrupt(t, true);
-+        s->ctrl = deposit32(s->ctrl, shift + op_overflow_interrupt, 1, 1);
-+    }
-+
-+
-+    if (!(t_old & pulse_enable_mask) &&
-+        (t_new & pulse_enable_mask)) {
-+        aspeed_timer_ctrl_pulse_enable(t, true);
-+        s->ctrl = deposit32(s->ctrl, shift + op_pulse_enable, 1, 1);
-+    }
-+
-+    /* If we are enabling, do so last */
-+    if (!(t_old & enable_mask) &&
-+        (t_new & enable_mask)) {
-+        aspeed_timer_ctrl_enable(t, true);
-+        s->ctrl = deposit32(s->ctrl, shift + op_enable, 1, 1);
-+    }
-+}
-+
-+static void aspeed_2700_timer_clear_ctrl(AspeedTimerCtrlState *s, int index,
-+                                    uint32_t reg)
-+{
-+    const uint8_t overflow_interrupt_mask = BIT(op_overflow_interrupt);
-+    const uint8_t external_clock_mask = BIT(op_external_clock);
-+    const uint8_t pulse_enable_mask = BIT(op_pulse_enable);
-+    const uint8_t enable_mask = BIT(op_enable);
-+    AspeedTimer *t;
-+    uint8_t t_old;
-+    uint8_t t_new;
-+    int shift;
-+
-+    /*
-+     * Only 1 will clear the specific bits to 0
-+     * Handle a dependency between the 'enable' and remaining three
-+     * configuration bits - i.e. if more than one bit in the control set has
-+     * clear, including the 'enable' bit, then disable the timer and perform
-+     * configuration
-+     */
-+
-+     t = &s->timers[index];
-+     shift = index * TIMER_CTRL_BITS;
-+
-+     t_old = (s->ctrl >> shift) & TIMER_CTRL_MASK;
-+     t_new = reg & TIMER_CTRL_MASK;
-+
-+    /* If we are disabling, do so first */
-+    if ((t_old & enable_mask) &&
-+        (t_new & enable_mask)) {
-+        aspeed_timer_ctrl_enable(t, false);
-+        s->ctrl = deposit32(s->ctrl, shift + op_enable, 1, 0);
-+    }
-+
-+    if ((t_old & external_clock_mask) &&
-+        (t_new & external_clock_mask)) {
-+        aspeed_timer_ctrl_external_clock(t, false);
-+        s->ctrl = deposit32(s->ctrl, shift + op_external_clock, 1, 0);
-+    }
-+
-+    if ((t_old & overflow_interrupt_mask) &&
-+        (t_new & overflow_interrupt_mask)) {
-+        aspeed_timer_ctrl_overflow_interrupt(t, false);
-+        s->ctrl = deposit32(s->ctrl, shift + op_overflow_interrupt, 1, 0);
-+    }
-+
-+    if ((t_old & pulse_enable_mask) &&
-+        (t_new & pulse_enable_mask)) {
-+        aspeed_timer_ctrl_pulse_enable(t, false);
-+        s->ctrl = deposit32(s->ctrl, shift + op_pulse_enable, 1, 0);
-+    }
-+
-+    /* Clear interrupt status */
-+    if (reg & 0x10000) {
-+        s->irq_sts = deposit32(s->irq_sts, index, 1, 0);
-+    }
-+}
-+
-+static uint64_t aspeed_2700_timer_read(AspeedTimerCtrlState *s, hwaddr offset)
-+{
-+    uint32_t timer_offset = offset & 0x3f;
-+    int timer_index = offset >> 6;
-+    uint64_t value = 0;
-+
-+    if (timer_index >= ASPEED_TIMER_NR_TIMERS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: offset 0x%" PRIx64 " out of bounds\n",
-+                      __func__, offset);
-+        return 0;
-+    }
-+
-+    switch (timer_offset) {
-+    /*
-+     * Counter Status
-+     * Counter Reload
-+     * Counter First Matching
-+     * Counter Second Matching
-+     */
-+    case 0x00 ... 0x0C:
-+        value = aspeed_timer_get_value(&s->timers[timer_index],
-+                                       timer_offset >> 2);
-+        break;
-+    /* Counter Control and Interrupt Status */
-+    case 0x10:
-+        value = deposit64(value, 0, 4,
-+                          extract32(s->ctrl, timer_index * 4, 4));
-+        value = deposit64(value, 16, 1,
-+                          extract32(s->irq_sts, timer_index, 1));
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: no getter for offset 0x%"
-+                     PRIx64"\n", __func__, offset);
-+        value = 0;
-+        break;
-+    }
-+    trace_aspeed_timer_read(offset, value);
-+    return value;
-+}
-+
-+static void aspeed_2700_timer_write(AspeedTimerCtrlState *s, hwaddr offset,
-+                                    uint64_t value)
-+{
-+    const uint32_t timer_value = (uint32_t)(value & 0xFFFFFFFF);
-+    uint32_t timer_offset = offset & 0x3f;
-+    int timer_index = offset >> 6;
-+
-+    if (timer_index >= ASPEED_TIMER_NR_TIMERS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: offset 0x%" PRIx64 " out of bounds\n",
-+                      __func__, offset);
-+    }
-+
-+    switch (timer_offset) {
-+    /*
-+     * Counter Status
-+     * Counter Reload
-+     * Counter First Matching
-+     * Counter Second Matching
-+     */
-+    case 0x00 ... 0x0C:
-+        aspeed_timer_set_value(s, timer_index, timer_offset >> 2,
-+                               timer_value);
-+        break;
-+    /* Counter Control Set and Interrupt Status */
-+    case 0x10:
-+        aspeed_2700_timer_set_ctrl(s, timer_index, timer_value);
-+        break;
-+    /* Counter Control Clear and Interrupr Status */
-+    case 0x14:
-+        aspeed_2700_timer_clear_ctrl(s, timer_index, timer_value);
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: no setter for offset 0x%"
-+                      PRIx64"\n", __func__, offset);
-+        break;
-+    }
-+}
-+
- static void aspeed_init_one_timer(AspeedTimerCtrlState *s, uint8_t id)
- {
-     AspeedTimer *t = &s->timers[id];
-@@ -788,6 +979,22 @@ static const TypeInfo aspeed_1030_timer_info = {
-     .class_init = aspeed_1030_timer_class_init,
- };
+ class AST2500Machine(AspeedTest):
  
-+static void aspeed_2700_timer_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    AspeedTimerClass *awc = ASPEED_TIMER_CLASS(klass);
-+
-+    dc->desc = "ASPEED 2700 Timer";
-+    awc->read = aspeed_2700_timer_read;
-+    awc->write = aspeed_2700_timer_write;
-+}
-+
-+static const TypeInfo aspeed_2700_timer_info = {
-+    .name = TYPE_ASPEED_2700_TIMER,
-+    .parent = TYPE_ASPEED_TIMER,
-+    .class_init = aspeed_2700_timer_class_init,
-+};
-+
- static void aspeed_timer_register_types(void)
- {
-     type_register_static(&aspeed_timer_info);
-@@ -795,6 +1002,7 @@ static void aspeed_timer_register_types(void)
-     type_register_static(&aspeed_2500_timer_info);
-     type_register_static(&aspeed_2600_timer_info);
-     type_register_static(&aspeed_1030_timer_info);
-+    type_register_static(&aspeed_2700_timer_info);
- }
+-    ASSET_BR2_202311_AST2500_FLASH = Asset(
++    ASSET_BR2_202411_AST2500_FLASH = Asset(
+         ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-         'images/ast2500-evb/buildroot-2023.11/flash.img'),
+-        'c23db6160cf77d0258397eb2051162c8473a56c441417c52a91ba217186e715f')
++         'images/ast2500-evb/buildroot-2024.11/flash.img'),
++        '641e6906c18c0f19a2aeb48099d66d4771929c361001d554d0d45c667413e13a')
  
- type_init(aspeed_timer_register_types)
+     def test_arm_ast2500_evb_buildroot(self):
+         self.set_machine('ast2500-evb')
+ 
+-        image_path = self.ASSET_BR2_202311_AST2500_FLASH.fetch()
++        image_path = self.ASSET_BR2_202411_AST2500_FLASH.fetch()
+ 
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
+diff --git a/tests/functional/test_arm_aspeed_ast2600.py b/tests/functional/test_arm_aspeed_ast2600.py
+index 21640123ee81..6ae4ed636ac3 100755
+--- a/tests/functional/test_arm_aspeed_ast2600.py
++++ b/tests/functional/test_arm_aspeed_ast2600.py
+@@ -16,15 +16,15 @@
+ 
+ class AST2600Machine(AspeedTest):
+ 
+-    ASSET_BR2_202311_AST2600_FLASH = Asset(
++    ASSET_BR2_202411_AST2600_FLASH = Asset(
+         ('https://github.com/legoater/qemu-aspeed-boot/raw/master/'
+-         'images/ast2600-evb/buildroot-2023.11/flash.img'),
+-        'b62808daef48b438d0728ee07662290490ecfa65987bb91294cafb1bb7ad1a68')
++         'images/ast2600-evb/buildroot-2024.11/flash.img'),
++        '4bb2f3dfdea31199b51d66b42f686dc5374c144a7346fdc650194a5578b73609')
+ 
+     def test_arm_ast2600_evb_buildroot(self):
+         self.set_machine('ast2600-evb')
+ 
+-        image_path = self.ASSET_BR2_202311_AST2600_FLASH.fetch()
++        image_path = self.ASSET_BR2_202411_AST2600_FLASH.fetch()
+ 
+         self.vm.add_args('-device',
+                          'tmp105,bus=aspeed.i2c.bus.3,address=0x4d,id=tmp-test');
 -- 
 2.48.1
 

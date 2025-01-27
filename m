@@ -1,111 +1,126 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2319441njk;
-        Mon, 27 Jan 2025 01:44:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWSw9cnLXT/C4LTNPcBMjgEEjVozKQfHJQxgSMQMLlJIslQfysHS3Y9XgkeqBb3GvteGlj2V7NqwjFqQA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGDV5L7k8G68WAIMxgtxhmHJSEVigPqq645nzH7v0SvUqItOwCy2ucINHPY0ir0GqU6VqaU
-X-Received: by 2002:ad4:5f4a:0:b0:6d8:a0c8:e468 with SMTP id 6a1803df08f44-6e1b218111cmr513834576d6.24.1737971098757;
-        Mon, 27 Jan 2025 01:44:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737971098; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2378109njk;
+        Mon, 27 Jan 2025 03:54:57 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCXKP30ySfjpw9Cz3cedvhHJ0F06h6CNqE2+gGZDQx1ugxYGwQ3XPQnygTc/G9FX7vm+P8ytYt1JUIj1KA==@linaro.org
+X-Google-Smtp-Source: AGHT+IGhh68573wqiaCKPkSLwKfcIrcT4scaTWj81xPjsnAkHIh4MupGYr7rrsuvrn/PYVZUN8vN
+X-Received: by 2002:a05:620a:258a:b0:7b6:d252:b4ef with SMTP id af79cd13be357-7be6328933cmr6773923785a.53.1737978897150;
+        Mon, 27 Jan 2025 03:54:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737978897; cv=none;
         d=google.com; s=arc-20240605;
-        b=g2ItRYQG1u0TLyhUED7snLPgxBuTEr3Y3lIQHbkRctZ2nZbttWp9sPC53+OYLJlCgs
-         NgnDE7uflBpi2u80wCiFUQP3PlpJraYY4KGSQGrwko6YmYSaTV6CZlPBxZxsDuOlgGSy
-         I6IWGBmbLbFDCw8L2d2c9LmugpLriXAh01xNfkWMlccgpnyjU9dq1QBj0+K97nd083sq
-         tBs4KwZIcetFM7OHcZvNCUxxVUIQthzEIqhAeUUmlAufVOgyye7QKvSKz/t2Hpn8H2yW
-         lPSYEO7mVnTPg6ymqupQ88Ld2d+EP8ujP8vWwKz8kdz0GWbGD4PC80oJpHUqZJWgvZcb
-         6pOg==
+        b=a9KTeL4f7JKtAu+ipZWBoEIcA4OLpI2jXWdqDYn+yyI9FD3eNLx/dq7VH9HCv+Ogwv
+         rHutWFXxqAofJkMg0roH9AExGQoXhmpP3tPCrXlOVP7qPgMJ0MqmbkxZPdmvYDr8nrd5
+         0Q6zvlcOIzgt7lVhxMYHF+kEZ2QFSlrIdYuhTGJTdXcSa4u5iYR+r4WBZCpgDsULZhMR
+         Ca0yQKYsGVcFjftjbj5hMaYPI8LE+zF08OIjv03Nk9ULh46upIyjATLKaIwUR869ybrk
+         umOMqAL3RAmAZmORtrafjwxbezbgyKk+tvztT1OgifhfunYQhFYalCSzE7SwXE8OweOH
+         ITqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=FV0oE3019T3EwDaED9bFl3tH3qaGLmyi3TvhijFdhXE=;
-        fh=mbrJl5XQbiH8OrAj3yvnRRwGVHh6Q6DxbOVHqLKyFKU=;
-        b=dhUrBPPA3AYe09hoC9+B4P7XEortNZbcwUGyGIyioEGyJcDdrR6tPb/aomSm6j0psF
-         AmmTF6qrUmFNtEczQdJM7ddMYTpLD/DaxQFk+qPuvjQyq0vBoC6XuD++93I4wZG/J9uc
-         qLT0WI6uROZEXeL2HJicjEp6V3W3dZ7HFT/ui1t9aTVEX6ahphuIOb6x9W4yMx9JZeIg
-         yJqzMjnLDujosRNxHxRsgRyLi35GvufHegO2qVlGe7+xCylkQ6VkFzaz/qxb375JB/jN
-         lJR/NMrtYo4gnMfp8+wdrhhuBlDbhgTkuxb917yshASf5f8y/PlAJhTolbwtz9kX7NJs
-         qeJw==;
+         :mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=OVs1uQBXV3uSV4KyChDtl5CQXcS/tEhsZMOP3GSwHeM=;
+        fh=UT36gCECAOtEsgOrSReymFda56t2Gj969DHeMwsi3As=;
+        b=HOwMEAIPZHXbwYiMUMrLn9Fi5ectA44oc4KcY7L7yPyA8tNSVDFBIMKzkOaPpw+uNi
+         ycbQ498SznhQ1sesw/3REZEZQWVblKWUCv6S0puJLqwpMmVtW/7LqVqdtDopzDP+Zl6D
+         eX4UY4npsE1mf1Oeldsm4+zMtFZl8Y5RVTd88SnmYnyDa5B1DErDH/uGPFnJqtLCDwbY
+         YNYpNVrvcuYZlW0LzOnbm0CHWoVDLghyI2nRNSp2w7gHsDZGvTxfMl4NBqczdGbMbsX4
+         Gz3rBHX3WYWOmMs5ubsjknYRHonrOy/YsHlvUDe9CrYKZwc3AiKCEQ531cK2hEI9zMn8
+         OUDg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YpqWhMf9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N0LmHQe2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e20601175fsi100085466d6.373.2025.01.27.01.44.58
+        by mx.google.com with ESMTPS id af79cd13be357-7be9aee13f2si949967985a.239.2025.01.27.03.54.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2025 01:44:58 -0800 (PST)
+        Mon, 27 Jan 2025 03:54:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=YpqWhMf9;
+       dkim=pass header.i=@linaro.org header.s=google header.b=N0LmHQe2;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tcLfR-0007Us-Bd; Mon, 27 Jan 2025 04:44:29 -0500
+	id 1tcNhL-0006Jo-BE; Mon, 27 Jan 2025 06:54:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tcLeS-0006VF-3D
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 04:43:30 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tcLeQ-0005UM-JH
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 04:43:27 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1737971005;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FV0oE3019T3EwDaED9bFl3tH3qaGLmyi3TvhijFdhXE=;
- b=YpqWhMf9SSOjqtMFisK/B6tfISrx/uHFM1A5XzDOSC+B5IG2D9WD+54d7j9wZh/OFXwfz0
- 1ugrZUhyJIpV4jr+jlXYkAXfq041k8tmkpafvJ+mevv4KSL0f3akUeE5TgzVoMFHzkhBoN
- MrWAyEF1lhICto4JJZ+2vacwXZu9uD0=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-75-YGVQuy9IPZGIwYBna_MwJA-1; Mon,
- 27 Jan 2025 04:43:21 -0500
-X-MC-Unique: YGVQuy9IPZGIwYBna_MwJA-1
-X-Mimecast-MFC-AGG-ID: YGVQuy9IPZGIwYBna_MwJA
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7F7BA1801F15; Mon, 27 Jan 2025 09:43:20 +0000 (UTC)
-Received: from corto.redhat.com (unknown [10.39.192.63])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D885618008CC; Mon, 27 Jan 2025 09:43:18 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 12/12] docs/system/arm/aspeed: Remove tacoma-bmc from the
- documentation
-Date: Mon, 27 Jan 2025 10:42:39 +0100
-Message-ID: <20250127094239.636526-13-clg@redhat.com>
-In-Reply-To: <20250127094239.636526-1-clg@redhat.com>
-References: <20250127094239.636526-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tcNhJ-0006Hj-9o
+ for qemu-devel@nongnu.org; Mon, 27 Jan 2025 06:54:33 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tcNhG-0006nW-CB
+ for qemu-devel@nongnu.org; Mon, 27 Jan 2025 06:54:33 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-438a39e659cso27832435e9.2
+ for <qemu-devel@nongnu.org>; Mon, 27 Jan 2025 03:54:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1737978868; x=1738583668; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=OVs1uQBXV3uSV4KyChDtl5CQXcS/tEhsZMOP3GSwHeM=;
+ b=N0LmHQe2Z9uUckrFumMPBpDjQw+mazbdiciDwIuFFIvOpzFl+nBKV1aoaRtPdAmBrp
+ Oj5pygnyBwWQhUeR6Q/SdrEgN+5xNMCKrpHUMNDP+PWMEhNq9tDVo1kMhAUm4EoGoxYE
+ 7U0ss9yIAVyWt8+QM9HnIZsvmhFuUZUuZBQ5pFqFNXyIw0bAMRAvnQMeNX7njtN+c5X/
+ 2qYWzWmMnVr9ElMQ2DqffMcSwmmS/NS44l5EsOdsR0BC+i5OYZM9tdS79Q/YiJUysA3+
+ L0Jbgu96n24K5TtNH4zC2XQJPro22EFj+VjOROn723NuYYKcF8ptu2iMSNVtbeDqFeaG
+ cThg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737978868; x=1738583668;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=OVs1uQBXV3uSV4KyChDtl5CQXcS/tEhsZMOP3GSwHeM=;
+ b=NmNoDsNJ3G8Bl87WB9/jAcrXkYEyNf3SX3OmlxIR18gCE5R5dhfyr7N4h6/7JN7DGQ
+ ZyS8KKHVvgz/CmUfvvidiAQl7ioGmLXAljcMogANRe6JGOf0jDXKnQ2B/8uvMkCasY+z
+ yVLChNStGP/ePXoghmbYM8FTeFKOx/pKlM4xmNxGeGJmeaFa24p5sQRBG6oO5tbDcW84
+ OO0U9BeoT+kR2dzJfQmsFcM7NOvnMJUkoCQVDPeDczxMZ5xV5eT/RH6yI5uVKa6saZ7h
+ vS8bIpjJ+bch5UOzMEROba1NcGKQ7CUdnlfQq7rsMa0ocgTdlqNJl5FCSrBAJbpfhDWx
+ o24Q==
+X-Gm-Message-State: AOJu0YxX/Rp2B9w4SnroK+MVPlEu7zqhW0FKVNOvhWKOL4qXCTI7JXFF
+ DfHL0JZkh4uHqrwqHQ7BXsNTYW4/xRvCKA5DozLGj1bX1abP52S7OUIOnkM1NU0fNZZHsLWyy/b
+ JxSs=
+X-Gm-Gg: ASbGnct2PICHln/wYt2lWoMjaXqsSup6M2QA/j01D2hrOXNL6EydeeuPUWsNZoVOQR6
+ bhlBqoP4KMNmnS/UOmFvnhSvRsakZXIyb8GWXhL5H4qFgsAel/OJqoB9dv7PEmYhf0ftSIwwgji
+ 0eOLBqY/ab6NZ4aqPVtF1KRpnz1W1ZFLDI5VxPREQEbm182W+n3Bzvi7dgCD9G/LJsFQuZ7fyTQ
+ wUUs7/cmfATcesWv5a1uHt0nJUZjeFKlerc+QhIInoTYfxHOuRR72nWfQlPeqErT7wxIpNmyOtQ
+ 0Ajx6eDPUw9svLTbUJFwL3WsivHZjNZTsXdlTgWPS8VDRuk0Znmf+2M=
+X-Received: by 2002:a5d:6c65:0:b0:38a:888c:676f with SMTP id
+ ffacd0b85a97d-38bf565f13bmr40889739f8f.15.1737978868609; 
+ Mon, 27 Jan 2025 03:54:28 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38c2a188928sm10793575f8f.45.2025.01.27.03.54.27
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 27 Jan 2025 03:54:28 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, qemu-ppc@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/10] disas: Have CPUClass::disas_set_info() callback set the
+ endianness
+Date: Mon, 27 Jan 2025 12:54:16 +0100
+Message-ID: <20250127115426.51355-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.299,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,34 +135,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: qRVI8ydDgMbt
+X-TUID: /KajVUDVMe8Y
 
-From: Thomas Huth <thuth@redhat.com>
+Targets are aware of their endianness. No need for a global
+target_words_bigendian() call in disas/ where we call the
+CPUClass::disas_set_info() handler which already update
+disassemble_info fields. Specify the target endianness in
+each CPUClass handler.
 
-The tacoma-bmc machine has recently been removed, so let's remove
-it from the documentation now, too.
+Philippe Mathieu-Daudé (10):
+  target: Set disassemble_info::endian value for little-endian targets
+  target: Set disassemble_info::endian value for big-endian targets
+  target/arm: Set disassemble_info::endian value in disas_set_info()
+  target/microblaze: Set disassemble_info::endian value in
+    disas_set_info
+  target/mips: Set disassemble_info::endian value in disas_set_info()
+  target/ppc: Set disassemble_info::endian value in disas_set_info()
+  target/riscv: Set disassemble_info::endian value in disas_set_info()
+  target/sh4: Set disassemble_info::endian value in disas_set_info()
+  target/xtensa: Set disassemble_info::endian value in disas_set_info()
+  disas: Remove target_words_bigendian() call in
+    initialize_debug_target()
 
-Fixes: 2b1b66e01f ("arm: Remove tacoma-bmc machine")
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20250124174507.27348-1-thuth@redhat.com
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
----
- docs/system/arm/aspeed.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ disas/disas-common.c    | 13 ++++---------
+ target/alpha/cpu.c      |  1 +
+ target/arm/cpu.c        |  2 ++
+ target/avr/cpu.c        |  1 +
+ target/hexagon/cpu.c    |  1 +
+ target/hppa/cpu.c       |  1 +
+ target/i386/cpu.c       |  1 +
+ target/loongarch/cpu.c  |  1 +
+ target/m68k/cpu.c       |  1 +
+ target/microblaze/cpu.c |  5 +++++
+ target/mips/cpu.c       |  3 +++
+ target/openrisc/cpu.c   |  1 +
+ target/ppc/cpu_init.c   |  2 ++
+ target/riscv/cpu.c      |  9 +++++++++
+ target/rx/cpu.c         |  1 +
+ target/s390x/cpu.c      |  1 +
+ target/sh4/cpu.c        |  5 +++++
+ target/sparc/cpu.c      |  1 +
+ target/tricore/cpu.c    |  6 ++++++
+ target/xtensa/cpu.c     |  5 +++++
+ 20 files changed, 52 insertions(+), 9 deletions(-)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index fa4aa28eeff2..97fd6a0e7fbd 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,5 +1,5 @@
--Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``tacoma-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
--==================================================================================================================================================================================================================================================================================================================================================================================================================================
-+Aspeed family boards (``ast2500-evb``, ``ast2600-evb``, ``ast2700-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``fby35-bmc``, ``fp5280g2-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``qcom-dc-scm-v1-bmc``, ``qcom-firework-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``sonorapass-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
-+==================================================================================================================================================================================================================================================================================================================================================================================================================
- 
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
 -- 
-2.48.1
+2.47.1
 

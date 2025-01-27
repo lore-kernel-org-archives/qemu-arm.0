@@ -1,113 +1,120 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2440765njk;
-        Mon, 27 Jan 2025 05:36:11 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUsAdyvJAQkIQfVD083RaeMFRG97CDY+hglp9RtWsJIVHFzUqF5qQwrSyGsrqmSHmH/XZGxuHWwous2BQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IEWR8ynXNykPe9liuTCMBdqGwK/e6zXtK4nGIyslwskCy9ip2A60yMTritVjX/Zoxvm0yTd
-X-Received: by 2002:a05:620a:2804:b0:7b7:106a:19a0 with SMTP id af79cd13be357-7be6321c827mr5112923785a.24.1737984970802;
-        Mon, 27 Jan 2025 05:36:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737984970; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2451855njk;
+        Mon, 27 Jan 2025 05:56:58 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCW+/TNbLJijUeeRZJL39VDmal16MpZU5PBaziMvH/W3wFKQm5nQ0VC/Y/ocqHxFfqYyNGiXQYAdjkBdrg==@linaro.org
+X-Google-Smtp-Source: AGHT+IE1FipdchWDxH+jQyfvDU7idHTzFnKvark0JEOlKhKtNGtkPW5oCfr05OwZwvV7Lfdhc49J
+X-Received: by 2002:a05:620a:4410:b0:7b6:dc4f:887c with SMTP id af79cd13be357-7be632543acmr6585154085a.57.1737986217790;
+        Mon, 27 Jan 2025 05:56:57 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737986217; cv=none;
         d=google.com; s=arc-20240605;
-        b=FJXOWlbx5HOUkNxCXlDXkQU51OlqQAcTGcByz+L2jWHeWHWSPU2XQHWfc86sQvh90G
-         1HnskDi6aH8XHNFQwiIGi0StLJIcuT/T90NZgtd4DmWWoNY0vnQmsTc27HUoyhLpYG91
-         gK5tuEuihIfuVB+cfxd7pH/xcnrA+PKEivxKL902Rb2gBBsiiV+oVaItC9YhXGG1IS2s
-         3uzRw8Tn1P2t+z6bAxvOKrzyvvkzf0y+FCt9QNpINMDJUqckLgQ2wTdO0con9hvoON/u
-         btoL237iJtjXPMKoxFO9g1+K3GxLx9hIoEv+19Myj4z2EZZ2x552m53SiNJ6tOCqZP/G
-         L6aQ==
+        b=K1K+EoyLqdrBFImKs9JqFerhuga0xVTP+05xWZuLtpCg1xpbQrXNZZkESUwLAl2xh7
+         e3EElBm4Hfp7wt4WaX6wucu799kE+qgD4CWcYnPiVz0xlIfNoNJ+/WIWI+JaiO/9RHlF
+         dKmMq7i440Kn2vonhdTnAl6I/8Vu7+/Z9FvXJ+zan10qACHwYLpdJQKE/XoEI0IST10E
+         pLigS5s+RJLQGDE7ytl6nr+Vf47zMrpHLj7n37brd6aFUMDSvp2kB36JTvvJsXO0bYwx
+         im2xuLfRmLvalD/OnE5JTDU3vR1e/H0m8vI2r49NpwNR7XKl+bg9QtjOu7eHvsDYP2NJ
+         0EIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=IBwY1xIZnwwgQfA31WCMAUp48GguOAT29byigtR44uo=;
-        fh=eySKZTsJaWXAD0EevXujHzYJSxiqJmy7yUq3vicrWBE=;
-        b=IGmmcvf9h43Df7IaCjaH3p8a2MVCiVimv6AyNhQnHV5/NQAspf0zepCxf6aE8N44wt
-         DY+mW04iuuG4VX/NTqdd93GwSbLUGKZi2/kAAbVtf2yFjTXgHF631yubkwlELV+0LNgF
-         puuyzaKW+KXvl3/LdxyV57DGq0qmx9hXJT55rP7JHm0zS6/DjsLu0eINb4qCjj2Hcqny
-         F/0G4g4JlPS5NmU7G2RiLRpKlB8Gx69PAElk5mOjOo/2AHSS1a5FZqOiBtZH2FZc7gKI
-         CfJpFTPLZxOCYvrxISqe+kyhEP4+6ApP4Gn7ET/FcwmMP+5cZaPAmE1vAzOh1k39Zi1q
-         R6Qg==;
+        bh=YRH6o7Q7ce+oPjw2GOlNv7BlCxO+HqsAqT4RlPl2sgE=;
+        fh=CWrNjvrF6MJVDh42uo4gaIxAmOi5a7T9GnxZdBQpmR8=;
+        b=a8XEnKAdi456dP8b62xC0XWwmLwcQqXwJ7Ur18w0DCW4izM9mn5oHxBP3cn0VvLkCq
+         Tw4VQupNVEWM30nR/n+ZA7F/vAiToyiMFFh2RUFYCm58wOM2BIvOqllwQL9Qiyzy3Bjk
+         Ezrg460xlV/g1BoxAbWckuTainknB6XtBub7M9fyn6U9lFrxQVADdGKxdWW5YCSzxT1b
+         h08dVIHPIRnwiHByvsXedJE4aebR3fUBxBVwAuL2VV4LkR0xGSA+IGHVEoJEWA/Rb7oL
+         3TnF0tD4/U9cd/USyY7sDeMrK7+g+uEZDV8ZejchVxdwFEoSNMEi9SHz2Y592ahp99EN
+         kyiA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S1gIcT92;
+       dkim=pass header.i=@linaro.org header.s=google header.b=efLFSkpT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7be9af12434si975836585a.538.2025.01.27.05.36.10
+        by mx.google.com with ESMTPS id af79cd13be357-7be9aee1681si940178785a.235.2025.01.27.05.56.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2025 05:36:10 -0800 (PST)
+        Mon, 27 Jan 2025 05:56:57 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=S1gIcT92;
+       dkim=pass header.i=@linaro.org header.s=google header.b=efLFSkpT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tcPHb-0001DX-DN; Mon, 27 Jan 2025 08:36:07 -0500
+	id 1tcPbN-0001E5-JD; Mon, 27 Jan 2025 08:56:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchamart@redhat.com>)
- id 1tcPHL-0001At-Fd
- for qemu-arm@nongnu.org; Mon, 27 Jan 2025 08:35:59 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchamart@redhat.com>)
- id 1tcPHI-0005Cf-ME
- for qemu-arm@nongnu.org; Mon, 27 Jan 2025 08:35:51 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1737984944;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=IBwY1xIZnwwgQfA31WCMAUp48GguOAT29byigtR44uo=;
- b=S1gIcT924mpquJpYKVFU3+YIWNHlcNWs1HfRdUIE7poFsPascTH3WPMay2kq2VExKDJURf
- cU3eTjV0kN/r+XokK0htdvT6+XBQjzOAyisXJEdSosX92tiIypkRsiVKCzdR5LE977KXiA
- /mCXUlYU2ffTTqatwh51ma+ltLVco0E=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-595-YeavklvRO9aaaY3lqLJP5w-1; Mon,
- 27 Jan 2025 08:35:42 -0500
-X-MC-Unique: YeavklvRO9aaaY3lqLJP5w-1
-X-Mimecast-MFC-AGG-ID: YeavklvRO9aaaY3lqLJP5w
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5C8A8180035F; Mon, 27 Jan 2025 13:35:41 +0000 (UTC)
-Received: from gezellig (unknown [10.39.195.105])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4C24318008C0; Mon, 27 Jan 2025 13:35:39 +0000 (UTC)
-Date: Mon, 27 Jan 2025 14:35:35 +0100
-From: Kashyap Chamarthy <kchamart@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Marc Zyngier <maz@kernel.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, sebott@redhat.com
-Subject: Re: [PATCH 2/2] docs/cpu-features: Update "PAuth" (Pointer
- Authentication) details
-Message-ID: <Z5eLpzisRtAstcxw@gezellig>
-References: <20250117191106.322363-1-kchamart@redhat.com>
- <20250117191106.322363-3-kchamart@redhat.com>
- <87sepgtp3e.wl-maz@kernel.org> <Z44R-cUz9CWMp5Gi@gezellig>
- <CAFEAcA9arxn3FLRYS4ObD=iRkX-idgCosZkoqknqTkQwYn0uTA@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tcPbM-0001Di-Bg
+ for qemu-arm@nongnu.org; Mon, 27 Jan 2025 08:56:32 -0500
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1tcPbK-0007ex-NV
+ for qemu-arm@nongnu.org; Mon, 27 Jan 2025 08:56:32 -0500
+Received: by mail-yb1-xb29.google.com with SMTP id
+ 3f1490d57ef6-e545c1e8a15so6817350276.1
+ for <qemu-arm@nongnu.org>; Mon, 27 Jan 2025 05:56:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1737986189; x=1738590989; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YRH6o7Q7ce+oPjw2GOlNv7BlCxO+HqsAqT4RlPl2sgE=;
+ b=efLFSkpTspAyD+YaU9sg+oRP0mGQK3O+zwvTbQ5FNLCWeZUhBJC9Q7/2zC/fx8ZSlm
+ YEyEOh7cWPBxfYtIUrvMuCo35gvSFpqKDd5HME41Ht3vfTYRAZil7hzpaDd2ro/UAdWu
+ dCMxoR0AhNKs01+T0qnQeGpGd02jbQu8aytjhiwyGxoSnUdKG/ulEqb7/xe3ptBhc85k
+ Kn/nU1c27aFY10PQ/oN2hzJmRbJvdKeD7HQn0Vnfb9fKhHI4P1H6eTE5CUyPAaiueVsZ
+ pD+0Qf3CnHJr8W1+Cmp01bvhbxS6rN8Xu59UdGPLAnQ+OD6ZK8Z2oD1tKNlx2pBsqj/a
+ t1WA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737986189; x=1738590989;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YRH6o7Q7ce+oPjw2GOlNv7BlCxO+HqsAqT4RlPl2sgE=;
+ b=wmiDaO5Gj8sA9dTWoHOILjXJZ1WWGu9MOwaGp7JuKl1OYpNEIQuGsj+IgG/I0hipQD
+ NCLqxN9/osoCc4KOrozNZiiVTvKvzKeoSa2iPDWv7Of3GV17wVhjf5/YjAs6Ypjg84lN
+ ZoXD+D/D8LabEjMzzjEGdlxocsQ1f3tTWICd3wzzioa56Dl8qFmDQS5JYi8260DcyJoA
+ UxYUhuECsyBvOa4BhMRW57FCzWjiBTzE4PHu/hXspUtVMlz55Sfab5b2tP8jpjx339X5
+ KKE9EKiA3eVuqOXItAmu7wa6tq4N3Tcon4pZwweGeR5ClvwrNzBT8hwalmOO0pzTvAIV
+ gBdA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXSQPHbT6FNsy1h+HylzGGiPUo6CrQ10iapyONLd3IKZbZk3XehOwNURFV14+O3HsfRGlSrU/taxQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yw+1Fja7soHpaD3A5Sudo3tgZCZKtjPXYSx32sCqYjG64PAYgYc
+ Eb6qbNnX7/y5cN8jsAw4Ww94bAnGh0YVME0u24bIYnOiuYGUr5MaZz8XWUE8XmrSCuuHWSmJLsS
+ grHE4uj+XCmTp7yNbcbafXpsX+SrYzfVpbt77iQ==
+X-Gm-Gg: ASbGncuju7A53jJU1Siw/UgmU5MBBIhE3rrXiPJ/wJ/eN8BchP//05Bb9cuQa0WLfrz
+ 7Wtsh343i9iHzSczHfOapwynuCyezVQa1IfC/4JT7F9Wr9ZXuNQh/y1Fho+SyAo8=
+X-Received: by 2002:a05:6902:161b:b0:e54:6daf:c6ec with SMTP id
+ 3f1490d57ef6-e57b13dfdc6mr29077113276.42.1737986189213; Mon, 27 Jan 2025
+ 05:56:29 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9arxn3FLRYS4ObD=iRkX-idgCosZkoqknqTkQwYn0uTA@mail.gmail.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kchamart@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+References: <20250110160204.74997-1-philmd@linaro.org>
+ <20250110160204.74997-2-philmd@linaro.org>
+In-Reply-To: <20250110160204.74997-2-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 27 Jan 2025 13:56:17 +0000
+X-Gm-Features: AWEUYZmSwUbM13OlC65E2eu_iLi82AtDDSBK7Wat799w5mSkusIz-L59MzbmY0A
+Message-ID: <CAFEAcA_JkY9yh+tgthdX-6SKTLJREvgc1FE48jU_JXLfLDvSoA@mail.gmail.com>
+Subject: Re: [PATCH 1/9] hw/arm/stellaris: Link each board schematic
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb29.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,53 +130,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: J2yLbfNzTIhb
+X-TUID: +O3nidoZLyCv
 
-On Mon, Jan 27, 2025 at 01:06:44PM +0000, Peter Maydell wrote:
-> On Mon, 20 Jan 2025 at 09:06, Kashyap Chamarthy <kchamart@redhat.com> wrote:
-> >
-> > On Sat, Jan 18, 2025 at 10:04:37AM +0000, Marc Zyngier wrote:
-> > > On Fri, 17 Jan 2025 19:11:06 +0000,
-> > > Kashyap Chamarthy <kchamart@redhat.com> wrote:
-> > > > +PAuth (Pointer Authentication) is a security feature in software that
-> > > > +was introduced in Armv8.3-A and Armv9.0-A.  It aims to protect against
-> > >
-> > > nit: given that ARMv9.0 is congruent to ARMv8.5 and therefore has all
-> > > the ARMv8.5 features, mentioning ARMv8.3 should be enough (but I don't
-> > > feel strongly about this). I feel much strongly about the use of
-> > > capital letters, but I live in a distant past... ;-)
-> >
-> > Sure, I can keep it to just v8.3.
-> >
-> > On capitalization, I don't feel strongly about it, I just followed this
-> > commit[1], which explained that the rebranding changed "ARM" to "Arm":
-> >
-> >     6fe6d6c9a95 (docs: Be consistent about capitalization of 'Arm',
-> >     2020-03-09)
-> >
-> > That's why I went with it.  I see you know this by your "distant past"
-> > remark :)  To match the above, I'll keep the capitalization to "Arm".
-> 
-> We should probably do another fix-capitalization pass on docs/,
-> because a bunch more "ARM" uses have crept in since 6fe6d6c9a95.
+On Fri, 10 Jan 2025 at 16:02, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> Board schematic is useful to corroborate GPIOs/IRQs wiring.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> ---
+>  hw/arm/stellaris.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+> index 1bba96df14e..9b414ff9069 100644
+> --- a/hw/arm/stellaris.c
+> +++ b/hw/arm/stellaris.c
+> @@ -1379,6 +1379,10 @@ static void lm3s6965evb_init(MachineState *machine=
+)
+>      stellaris_init(machine, &stellaris_boards[1]);
+>  }
+>
+> +/*
+> + * Stellaris LM3S811 Evaluation Board Schematics:
+> + * http://www.ti.com/lit/ug/symlink/spmu030.pdf
+> + */
+>  static void lm3s811evb_class_init(ObjectClass *oc, void *data)
+>  {
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+> @@ -1395,6 +1399,10 @@ static const TypeInfo lm3s811evb_type =3D {
+>      .class_init =3D lm3s811evb_class_init,
+>  };
+>
+> +/*
+> + * Stellaris: LM3S6965 Evaluation Board Schematics:
+> + * http://www.ti.com/lit/ug/symlink/spmu029.pdf
+> + */
 
-I can tack it to v2 of this.  I see about 22 occurrences in docs/:
+I think we should prefer https:// (I checked, and both work);
+otherwise
 
-    $> git grep "ARM " | wc -l
-    22
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-> (6fe6d6c9a95's commit message says that architecture names like
-> "ARMv8" retain all-caps, but I think that was my personal taste
-> creeping in -- at any rate the current Arm ARM uses "Armv8",
-> "Armv9", etc. It was right that "ARM926" etc should stay all-caps,
-> though.)
-
-Okay, so, architecture names should stick to "Armv8", etc.  (I too
-would have preferred "ARMv8", but whatever the branding says.)
-
-For all-caps: I assume you mean these should remain as-is: ARM926EJ-S,
-ARM1176JZS, ARM1176, etc.
-
--- 
-/kashyap
-
+thanks
+-- PMM

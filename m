@@ -1,125 +1,213 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2775785njk;
-        Mon, 27 Jan 2025 15:29:56 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWJ8Lbyy5dom2MJAVy24Oimvp8b4o+tO5haX8Ef8Ii4RkkhvjkyQIvc+0NjjsRdorKiL3YVNtwMwvEBYA==@linaro.org
-X-Google-Smtp-Source: AGHT+IGerIRgx3mADLomRiNzklCyr9PoC7+MDRaLuYPOP1OaV/Z/zVozAfnNI/7CXcVTYC7YMdEm
-X-Received: by 2002:ad4:5ece:0:b0:6dd:84b7:dd86 with SMTP id 6a1803df08f44-6e1b2213ef2mr777893466d6.36.1738020596321;
-        Mon, 27 Jan 2025 15:29:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738020596; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2778050njk;
+        Mon, 27 Jan 2025 15:35:28 -0800 (PST)
+X-Forwarded-Encrypted: i=3; AJvYcCXygWeoxDxieE2A6p0O3F+/CqgvmNbZNfYFCOz9eTIqIYAGOtFXL0FVtuJVjS1psZA0kqfqkAiKcZupjg==@linaro.org
+X-Google-Smtp-Source: AGHT+IEN3riGcFv9Z8xvrOQO1C7uUrDdIzv2xtuuEUeWOB1PM2sOnghkhsBNM94XPfk66lrrfSvF
+X-Received: by 2002:ad4:5f0b:0:b0:6d8:96a6:ec22 with SMTP id 6a1803df08f44-6e1b218a27emr675346776d6.23.1738020928554;
+        Mon, 27 Jan 2025 15:35:28 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1738020928; cv=pass;
         d=google.com; s=arc-20240605;
-        b=Nl8+OqBwRbqAQe1uj7UCjEicn0gQI+Xz2zJPtVZWx5xUoCAL8gSPOboXDOFO6Czmf/
-         xjTDmekHz2i5612IEUWDGicYnPD3PpFF79tcEW5Tuq5qneI5CZsbKEYHdlY35SXzhgW0
-         u8qWeEJkCjQSIzO8/AldGbrkFxiA8b1qUhpoidkZ9MDOCpbThYQ5D2qcdRncnoIHuuoF
-         E9610lk8BfEQiyBu2mN/sjpdl/bBn3KDEANb2PWSGYRsZaM81eXe96FE7+rdlG+LpyMl
-         qjL9fJrrTkt3YGICtaAI+RhAs7vOUm2/Nhv1zCvDtgckXBM8Np5IaXxAoB+s33bYQ1fU
-         XQ0A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        b=TR91LjnJP/Kwx/faFwy0mjIBBh3dSNEG4KRff9ahqrXyfnnthxomlNKprRuzAmz2gX
+         7Ner3hvaSfsdIOo3P8cR93sV1c1qWEtXnL0r5xePIIwNqspem2ftCddq1AD54qdfqftm
+         i58x38ngtQ4h2IYkl+VkvqdPydQI5ies5H1tW6TLldtGb6GOMirZju6tF1ee3Cwt0kns
+         BIMozQRkRlqdXx9cPLwKyN7uFFLSM3b4kL7GxPzLDuc1nuJ1+Ex+xSE+MsYFaX4kCOyr
+         MzrcIwSyx0aTIVoG37izW3oNCJU24saVU4rrnp6MVxHlvxVKVk48WEOOQjo0FtK9C8fK
+         6cOA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=yghuBtj/DIiN8eRSXNAxvUfkjrNQffbHrvxPfCnEeII=;
-        fh=igfKki9zV5i/IfmDn/Sk23mhfaq7a0iqiBvPmqdBsis=;
-        b=UNEWOXDHgtIdmBiysuX0j00t1to1WBWIpLgOUvy+vWH1PtEUc6bInpCtl4XxSdb63B
-         d8Bkd7YLtQpIZAxtWFPqVYj0IxNP1HO8S+KN5SpLTnDeJp1TnTvfge3mCWgm2W62Y7BB
-         t1tcbuW/BP7KSH3RiLR9wkk96DmbaolVInZShjBvtVomMlUj62XVxefL/6OqjlBuR13H
-         rxdDL1n2w3KEnhWfaBzw3tabbqd3drM2IYfGsfcvhFA7eJN05M0+wZ0QSV1tC1rT6HPP
-         unJg9vp9a2hsBeLA4tphBVgws6s7enVcGDgsqZYGW8m4NZA++HikqRR22y4vhg/nT38E
-         GoXQ==;
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:date:message-id:dkim-signature;
+        bh=569dR6DKFKFlRC0xBC/AxxgRxJZ+HOsMiQLZy7s9W4o=;
+        fh=0aewF/RbJcBiVYgONS/a+JvT1G6kbu/9ZI8GV5V3oWQ=;
+        b=Qu/OJI60c9J48BhvAOBFcwbLHVXMGZKcP98fzXexYjYSrohtlej+xlpVMMXjWZvqaA
+         /dIzouPOcHKlm55BnA1A6qudmCuswesLXGcWlse8jFMv7/KHrHNPPJd8l6xdrezrNMtm
+         rmXhHk/PgM3X9OMASSjQEl3dE4Bf1dryF8RXLkf9miZYQspV6tyP0wz0r11FJwKtNj5b
+         vtNw1hq5YWqBDhinIkKWskqsX8j9QN7khMQHjCXYXq+4pGAcvoxvXqS28n6dhwIT4AYo
+         KCwOywlmD8Cyb7jKK6nNwx8dgtuAdBxpUlOQixoI79EbwZryv9a7BY2LFbmYBctGpkAc
+         v3PA==;
         dara=google.com
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JTTU29WC;
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="hLS/IufA";
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e20525c4a0si115144026d6.58.2025.01.27.15.29.56
+        by mx.google.com with ESMTPS id 6a1803df08f44-6e205f02198si110950026d6.328.2025.01.27.15.35.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2025 15:29:56 -0800 (PST)
+        Mon, 27 Jan 2025 15:35:28 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JTTU29WC;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b="hLS/IufA";
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
-       dara=neutral header.i=@linaro.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=nvidia.com
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tcYUq-0006Pi-22; Mon, 27 Jan 2025 18:26:24 -0500
+	id 1tcYdS-00059L-UC; Mon, 27 Jan 2025 18:35:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tcYUf-0006Kf-8p
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 18:26:14 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1tcYUa-0005WM-OA
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 18:26:12 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-2ef28f07dbaso6913816a91.2
- for <qemu-devel@nongnu.org>; Mon, 27 Jan 2025 15:26:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738020367; x=1738625167; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=yghuBtj/DIiN8eRSXNAxvUfkjrNQffbHrvxPfCnEeII=;
- b=JTTU29WC/Earg5aWjVcODge+9oaQXoBD8lwvRU5hp5c7ABmPGY5kMnSSGDkSjoZNwn
- Vf4zsMO6fD7/rVNOzy1q5MvIwAr8M+yGj4q9PUJ0HUg2pPaGUoNIFJpeqcaLqSGm2C2t
- Fb1XrdRAvvPGerrcOvPN2Xfn2ZYElvGSP5AMmcGWCMwW5jDo2D9J0HL3O8oS5ahjujkq
- QbtfyN2GBMs8DWBH2E83Q+Ded9uIjY+SeOKF5a2csx6qj++6lTPb0d7C6jwnpmhu0dVz
- Vng32JmTm2qhdV15q5HRRAJA/scBlBiQmoIo3uA9sAcjvv9UA1EUFMFzOF4ivybvNgAB
- TcJA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738020367; x=1738625167;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=yghuBtj/DIiN8eRSXNAxvUfkjrNQffbHrvxPfCnEeII=;
- b=EQwVB+I0mpzwZ2v3tq3Fyr8jm2t1JzQ3CIm+oaxcqEQBlLwU3QDYoGE+mMjU4I+hCG
- 2QHvC/QWLTW4cwyI9nw7f7QVodRBe34rM+ZUZKEPnVNUlBlJc7cr+zG0IDev7s49v5Ia
- 08cZykjGxJBK1tVuZamCAkMJ93w2o4Qc9Hden1nD9CrdxApnlQa5MmA2G9MUVte/IqHz
- OyElfGDMjOf9k75P2k8IkZpV3OXZ8+uu0PokwcVsvirpUH2ELr+J/k5s5Oy1/r8KIua6
- Y04SahqZX2Ub7NgQ/vDrS07PJbBGUOSu+WVfAKbEUmAujUK5PT1+l8EnLsjxXVozE1dD
- 3gEQ==
-X-Gm-Message-State: AOJu0YzuPl/NOe6W4kkd8FNZn3n+/gB86PhCJozVCiTUgcIPUkdwzREx
- dKIxQplqBPxt1cX37QSCxY8ari854WaBxcTy1a8jCC1kqsDAOYoekYFKHZ3XE0qCz1T7XNkLK/q
- 2
-X-Gm-Gg: ASbGnctH0zCC1YSCUiGCcKoVTMbmXcAbpygehA5uiLBMPO6pCcC6A3XlzgyKIDtEd2i
- aIllicMv7frptNOoCZOuhZNMmPbJU6VKIK9k7cO27KhEZUM+lMZ4XkWhSzipF0FqH73Oc3WGJf+
- jiy5SXxy16s0TSvWvBZeNtiMd9kz+L1PzqMWUOL1QoF9PsPDlWAWxiN+Irc3ONUDYKY5fyjh0LF
- RMJF2iKTmMVd5566R6Ccab8W1vEEGBFpy8h0isq/Xi1OGND2KubqOswHIS87aMltfFV5+AbRGnP
- MEtt3iacyiEypR0LneQAcBk0Orq+65r0nslJgpOmKcJ6owt4Wg==
-X-Received: by 2002:a17:90b:3547:b0:2f7:ef57:c7df with SMTP id
- 98e67ed59e1d1-2f7ef57c8fbmr32424351a91.7.1738020367208; 
- Mon, 27 Jan 2025 15:26:07 -0800 (PST)
-Received: from stoup.. (174-21-71-127.tukw.qwest.net. [174.21.71.127])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-2f7ffb1b31esm7833000a91.47.2025.01.27.15.26.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jan 2025 15:26:06 -0800 (PST)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH 02/22] target/arm: Rename FPST_FPCR_A64 to FPST_A64
-Date: Mon, 27 Jan 2025 15:25:44 -0800
-Message-ID: <20250127232604.20386-3-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20250127232604.20386-1-richard.henderson@linaro.org>
-References: <20250127232604.20386-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1tcYdP-00058i-II; Mon, 27 Jan 2025 18:35:16 -0500
+Received: from mail-dm3nam02on20627.outbound.protection.outlook.com
+ ([2a01:111:f403:2405::627]
+ helo=NAM02-DM3-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <nathanc@nvidia.com>)
+ id 1tcYdM-0007n7-Bw; Mon, 27 Jan 2025 18:35:15 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=WWkiEzr2Dhi2irpVfSFzrVyIUYkqlf5lUuXN8zDGlAQYellXw6r7gO3Z47bqcpYQZkU2BwFkO6Ybw2gyAb048mnBIw0nUSRxINzJ+5dHk9ODvmJONC2uF2DrwFVambsEwpLbEiQLs4F4+IMACFNGUMXWv5VyEoW1XOX6T+K0g+4IvltkX6d7L8M/c9egdjrS7LLkRegEj3enVXcqmOUP4HLEnupvnfhaQ+adgj71dsHpMA+NWx7lLkgeIFQwldE3yHZVdcs+ORM5OmwQNyxr5uyRO5J/HDEUTp3A0t5vFG5rn8eIRifLpUxVMoqlLamLkuuSkHMJzL8AZNfgPiLLAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=569dR6DKFKFlRC0xBC/AxxgRxJZ+HOsMiQLZy7s9W4o=;
+ b=fs89hDPB+sb9sI2/6iplzBKLNTD5ooSHT2PPGawKHeTTKtdVELhQjfWHSy5Td7meUJ/8khTkn2NWn2s/qgyHpve1xIwizhtcyqsNyqlUBVQa4+2nXk5zmbEL2qz9sD85iPGKuM2aFru5oEZ8HWtlD1OlzQ2rqswqbOQZIOTgErxAbrkWY826DOjRT0hvGYP2psHyYrjGNtXhECxeN/BmIEZGM/IUzFv8BWK5Lj/9iBUO8JncBtRnmRPIYMLGEgX9uk1sfdaIYrG+UbJlJxD+dhrtCRkYrkF6QWpd/EOPf80qJQ2cztV864SuqfMn58uSddyGTvcjxCtwHH53mRioJw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=569dR6DKFKFlRC0xBC/AxxgRxJZ+HOsMiQLZy7s9W4o=;
+ b=hLS/IufAxg9ZISoNdNxDliGq9oQGuwDjSaPDn2qJU84tYSVDu/TkmifvzPycDaH3JqSrxW3v9kczP7srJjQxFvdMuV5Fv6mKw0cZIog+9hxcxREE2yLWQLgA+qfpPgUVYhMuix3Ed0+P6LR2k9RuYFk6SzGlZ+O4CjQtNVCWoA93Lupmn8nfjsf5FvGKxGss898bBhucJOuRvBzmNmprX33CvP0GGb4Prp9jlaVEib0llzNpLpvqcSg7sK3WNzqxFlAZ7vmFLqE6zK5bJ3nWGQfM4cxrnN8UFYaelRU/Bl9373sB3BSUI/DRKgJTO84H0Q62lCi4/6+Sia9JPyJuYA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from SN7PR12MB6838.namprd12.prod.outlook.com (2603:10b6:806:266::18)
+ by DM4PR12MB6446.namprd12.prod.outlook.com (2603:10b6:8:be::7) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.8377.22; Mon, 27 Jan 2025 23:35:05 +0000
+Received: from SN7PR12MB6838.namprd12.prod.outlook.com
+ ([fe80::529d:478:bc5d:b400]) by SN7PR12MB6838.namprd12.prod.outlook.com
+ ([fe80::529d:478:bc5d:b400%6]) with mapi id 15.20.8377.021; Mon, 27 Jan 2025
+ 23:35:05 +0000
+Message-ID: <352ca3c2-b808-4328-a57b-0563e7eb189a@nvidia.com>
+Date: Mon, 27 Jan 2025 15:35:02 -0800
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 0/5] hw/arm/virt: Add support for user-creatable
+ nested SMMUv3
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Cc: "ddutile@redhat.com" <ddutile@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "jgg@nvidia.com" <jgg@nvidia.com>, jiangkunkun <jiangkunkun@huawei.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Linuxarm <linuxarm@huawei.com>, "nicolinc@nvidia.com" <nicolinc@nvidia.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "Wangzhou (B)" <wangzhou1@hisilicon.com>,
+ "zhangfei.gao@linaro.org" <zhangfei.gao@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, mochs@nvidia.com
+References: <31db1f75110e46ccaffffb801e894605@huawei.com>
+ <a80c78fd-6203-4aca-a3d3-d67a68b8e595@nvidia.com>
+ <0b281d2f8ebf4368b7e7b97aa0a4cfd3@huawei.com>
+Content-Language: en-US
+From: Nathan Chen <nathanc@nvidia.com>
+In-Reply-To: <0b281d2f8ebf4368b7e7b97aa0a4cfd3@huawei.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-ClientProxiedBy: BY3PR05CA0056.namprd05.prod.outlook.com
+ (2603:10b6:a03:39b::31) To SN7PR12MB6838.namprd12.prod.outlook.com
+ (2603:10b6:806:266::18)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN7PR12MB6838:EE_|DM4PR12MB6446:EE_
+X-MS-Office365-Filtering-Correlation-Id: a73942cd-fed8-435b-11a8-08dd3f2b3a11
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|7416014|376014;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?NCtVYjdmSXZVa1hPRHFmYnN1OGhvMVZjTWJ6bjNyRHQ3SDJrSi9UTmM5Wk9l?=
+ =?utf-8?B?MjNMK0hxaUp0UExTeU1FSHZCY2FYVHhsc0gzM2J3Y3JxUE5kKzZaNW1TdUg0?=
+ =?utf-8?B?UDlOVW5QYVFKSDBGU09laXhxdmJOUU45eGRrWHdTYU83Wmg4aTN1RXV1c0F6?=
+ =?utf-8?B?d0F3cWYvZmZnSHNQclo1aDdtMXZySXpFbW1FMkw2bXFQT01TdGk5VEFEZDdJ?=
+ =?utf-8?B?dERaVzhmU0xFSkxlUnVWemhRbDRmMFF3WXdDMlRUOTBGenRDUXlocml5d2Z1?=
+ =?utf-8?B?dVp1bExDSDdOOVBFOUZqTEpGVUk4YzBRby9ubFlSL1NTM0o0UEttdEl4SWdP?=
+ =?utf-8?B?TXM5MytBdVpxdjhPdjZmU0FGMFpIUFVtTGZ6NEsvVWYvZXZibUFPcVB3UkpX?=
+ =?utf-8?B?UjhtWEdDeEFKNmFOZ09nYTlDT25Ea3Q0TXNZaHROMG8zMlZNdXR3TVdLUVhL?=
+ =?utf-8?B?K3I2Y2s1c1FvazdnVXpQUlluVkxBS1RyYUdSRU5DN1o1azNhMC9Hc2VvZ0hI?=
+ =?utf-8?B?Tys1cldHY0tBTlkrV2hBanN0RFl2Q084bTdZYkxMTzVkMUp2ZWpiaDU2ZTZ3?=
+ =?utf-8?B?aXdCTHp6c1l1WWd0UWt4TjNOaEthZkpMSzdxZnkwUndiNXBZSjlmeHdER0hw?=
+ =?utf-8?B?TCs3c1RLOUU4S3dSZHhGVXNBQWNOT0VDSG1WaGJRblpnQTdkeHBtbjZQVERz?=
+ =?utf-8?B?K3QrUDNiWHVzRWcyejVoYTVDWG1lQUtQUWo3L3VIVXhIN25QWWJQWUJVcE5J?=
+ =?utf-8?B?V1Z4YlQybWdOMnRpOXRGcWo5ZkZMYlhxQzVSQkZ2eWEvRVJXQXpKcnByeDlw?=
+ =?utf-8?B?WWVvWVM5dzZTbkdwQWhGbDdoVE04Z21DV0ZnSHZNMVNUeFBMbnZta0JLUkM1?=
+ =?utf-8?B?cjBmcTZyUXNkamNobjB6OHhtQy9Uakp3QjZ3VWdUY0xIQWJEMkZpSUVDY3RD?=
+ =?utf-8?B?Z1hGVEV3WlVWbXRkV0FTQjVpbXFkeXdTQkxzVDJQMXF4RllCUnkzQVVMUkhL?=
+ =?utf-8?B?S3ZiWFNUQ3hSUGRYVTlSbTFtSFcrVSswQ0tVWjNlU3l4QWh3ci9XOEsxOXI2?=
+ =?utf-8?B?V25zU1hPd2RxVEdneTZ5M3dtQ0pMVE12Q003RjF5bGVDSGxCbHFET1R4YmZl?=
+ =?utf-8?B?MkxkRGNpV3pzVFlHTE0xVTFjV3VrOGRwM0JBanNCUE9NSFZGeUxVVTMvNnlR?=
+ =?utf-8?B?VHQ0ZlNzblB0d01zc0tEQ21JZ2dsVmRNak8rUFVDNHdqUzljS3ZldTVkakRo?=
+ =?utf-8?B?dHA4RmJWanRVMFgzcGlwQVR6a2hOOTNNY1hFblBMSVdsYmdOOUJhSklNSXFu?=
+ =?utf-8?B?N0IyS3FZUDYrckVhVGpsY0NIL0t4QklSdlFlYk9Rc05RMjcxSW9jRnZIU3Ir?=
+ =?utf-8?B?K0owZ2pQV2dOU2Fnckt2YWR2OVZ5RzN2WXI2R2k4a1VJTnU0aUxqU0E2VE5i?=
+ =?utf-8?B?YmE2U2NrSjUyQnlUQTA2b0RxM1NEVHBLdk5Ra1A1b0NCbE9Yc2dHNEJtZ0xU?=
+ =?utf-8?B?YXZTSWY3d21NSjlCcXZJK09lTHA0eUs5T3V5ODAwcHF4RFVuNm5BYnZ5MmdY?=
+ =?utf-8?B?Y1hIK0s3ZXRZdWhLWXcvWmYrdG9KRDlRSWNWRStsNGM0RVplRVNQQmQxMzZZ?=
+ =?utf-8?B?Tmh5clVra09lYjh2NDdkY1BCQzdhdzJiNlVQR3lXMm1wNnBaM2txTjFOeWo2?=
+ =?utf-8?B?WTMreElUVnZxbVVPcVZkd2lMWHRiRGVVeE9VOUZUS2cveWg0ek5tVjdsODRD?=
+ =?utf-8?B?eDdZR0ZSOVo1WFBkY2Jwem5HdVQ1c1VETDF3V1A4MmQvT3FDTzFWcXhXaVpx?=
+ =?utf-8?B?bHdPOG5pb0Mya3N0WnU1RFN5eTNMVy9PTXBTS3MzOGhGNmQwcVVpNXo4V2FI?=
+ =?utf-8?Q?dhRQ+/0qI7LlS?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN7PR12MB6838.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014); DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?c3hPMTdEOEVWaEJnckNVVGtvS3lDTlZLQ0xHN1NQcXpKUUN2WU0wTDFXNi9U?=
+ =?utf-8?B?WmhESnJkQVhHTnVsL3o2L1JPVEJkcExOM2FBd3M3a3RndHAyNHhJYjFQdUZv?=
+ =?utf-8?B?dEN2QldYd1hUN2xpbzdTVWJDWEtXcUFDd0hLWEFvbFVzUWZ1TUZSVzRXV1dv?=
+ =?utf-8?B?eHhQN0hSUDd3OVBtS0Q2YlQ3RmhORksxallKSkt0Lzc3Nm42cDFINTR1R3V0?=
+ =?utf-8?B?b2Iyc3AyN0dpUkE0TnEweThTUDhraUpvM2pBWGttUDhxNFUrMWtRaDcrUWFU?=
+ =?utf-8?B?UVVMK01WR1JmQ0FLTS8yQ1laVFJWekFIY2ZqQjd3ZGtpcE1NZXoydUhZZTha?=
+ =?utf-8?B?NnlsbUYzMmppQkU4QmJYUVdTZGFYZ0tvTUlFc0dGeGNJWEVWcnc4cnN6RUNj?=
+ =?utf-8?B?RXVDL1ozNklLZ2dHL1RrazMyUXIxWXV0eHFQdFVkR1U4YUs4aW9SVkdrdm5o?=
+ =?utf-8?B?ei9qZlgrWDZoS3hDVWNpRjhSUm1GTTYxTWdvWTBRQWQzTkFNWGJoSVh6Unp2?=
+ =?utf-8?B?NmhwSmFNVDFGRnRhMDZvQW9sU3p5NkZpUkNaVWJmUVpjdkxvaXI5OWJOeDB6?=
+ =?utf-8?B?ZGVLMGhXQ2xKdG9zTXhNc2RpRTNUbnFBajNKUHd2SUtGZlZ6VjF0M29QWE9U?=
+ =?utf-8?B?bWxDMFdqRUpub01MTXRSQ3ZmelN2V2dOU215Mmx4bUxidHRTOEJXbC9YTWU2?=
+ =?utf-8?B?RW1zM1RZR3dSbjEwcWgyMXNUakQvb0VGU1dCTU5FVDJqWlh5UTMyN3RHTG5Y?=
+ =?utf-8?B?eHRLRDQrN3FxcEI0bFdXUkFhNXJWZUNBNzNmS2s1WnNxWXdlV0IrZXJTdXFk?=
+ =?utf-8?B?MEw1OW1EUGxkRFFvbnRDSy9IaGY4UDJSN25aMzg1TEJoL0J0RCsrWm1mT3pp?=
+ =?utf-8?B?WDBmeTZmcXJnWkMzUUZjQ3Y1K1NNN3hZTC9qcFZEbFlxL0hWTnZXdU9JWE9Q?=
+ =?utf-8?B?bkRsWnFrY055cWFISGZ1dGw0c3lRQ1pjenJ0ZmdrekYrL3o5TEFwdnYrMmU2?=
+ =?utf-8?B?bENvbzN2bVB2NXJUT3Y4UWRDWVkwUmEzdE4rQk85a0w5NjVybitUNHdwNDJE?=
+ =?utf-8?B?SWNFM3diNkNCU2ZLZnlKUUI1dlF1QitJRG5sYTdPbGVRSk9RS2k1MGt2NHFn?=
+ =?utf-8?B?RERzYmFsTS80WEVETTdHWndVN0tDU2pkU200QkthSEJVWVZkNUNtcjV5WWVE?=
+ =?utf-8?B?dGorY0dhMFI4QWt4YzRGYlBxSVB3MlJxNnZqOStnU0NBNVRvcklVa1Z3aUZZ?=
+ =?utf-8?B?WFIzUzU4UEVxbmJPcHN5ekRobXpWcGduYTNZWEc4NTN0VVRWYTR4MGhrTkhY?=
+ =?utf-8?B?Q21UN1lMVjJYZWJpSmF2VlNBbG5Nd0s5dVlMSTl6V3dwMjN2cU5PaWJrQWEy?=
+ =?utf-8?B?dmdnN0dLWk5EMGJTMkxvYVQ3WXZqYkFMYlQ4azRtTFAvSzJrMXJobFVqazRT?=
+ =?utf-8?B?NWtyenlPdW5hSHB0Vjg2YnUzY1dBUU8yMFRHM1FCUTRHVWlXSTJrVXFMSDVy?=
+ =?utf-8?B?Tk1ycTZmaEtsS2J6VG9CR2tRczJvdkRUYXd2WEV1dDZrVnR1Q0I1WklHSWZV?=
+ =?utf-8?B?R2dqcmxBeGN0Z3pDTlAyeFl6ZkxDbVRSMXo1S3RPKzR6d09qMXhhRXdVNHdP?=
+ =?utf-8?B?YmxFQmVaZHZQZ3BSVmsyYmNwMVU3K0lINXdycyttVDZMaHdhMk9tc2orNzNF?=
+ =?utf-8?B?clRCTnkzOEdTdjNEcEVGZno3cGJKQklXenQ5NVY4Y1g5TGtIeXpDbWY1elBO?=
+ =?utf-8?B?WllwakM2QmxSN3pDeWVaSmpuMmk4emlLcUxqWjJ2MnQ3SGp2OW93M3pGb283?=
+ =?utf-8?B?OVk0L0xZM1pJSW92dWVPRU9vak9TYmpnVGcwb0dOR2hITmQ1L1dDaE16ZVdp?=
+ =?utf-8?B?Z21SSm5kUDFSUEhFQUlNcC9ZcTNZSHEyY0EwUFlPVWMwdVlsYWkyZ1dwd0x1?=
+ =?utf-8?B?bXJYeVZlRnJKRldVdHN1YU84RXBNcTNneHN0QllSZ1ZwMWpPVmFSbzBVaTBs?=
+ =?utf-8?B?L0hxVHpyYkt0cEVWR2FNMEhhbXkzWTdRRHhzM2owcStVRXdKS3J0bjY0eGxN?=
+ =?utf-8?B?V0lhR29vS2J0YmIxRzFCZmlxenp0YTRwVnpoNjRPWTYwMy9qY0g0Y1RRdDRI?=
+ =?utf-8?Q?iZOqxma4iFYbS4gUx4Jty7Mfd?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a73942cd-fed8-435b-11a8-08dd3f2b3a11
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR12MB6838.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Jan 2025 23:35:05.0028 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ENXneyHtiZFp4EBN34KpM7Az4eKslQ62kQi3r2+zyovmzhociQyzL+zlpTgs1DJYmnECV7m1gJ4Qkcgyv9Uz1g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6446
+Received-SPF: softfail client-ip=2a01:111:f403:2405::627;
+ envelope-from=nathanc@nvidia.com;
+ helo=NAM02-DM3-obe.outbound.protection.outlook.com
+X-Spam_score_int: -33
+X-Spam_score: -3.4
+X-Spam_bar: ---
+X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -135,740 +223,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: e18tf2CX046N
+X-TUID: mpF4d/4hoCJ1
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/translate.h     |  8 +--
- target/arm/tcg/translate-a64.c | 78 +++++++++++++--------------
- target/arm/tcg/translate-sme.c |  4 +-
- target/arm/tcg/translate-sve.c | 98 +++++++++++++++++-----------------
- 4 files changed, 94 insertions(+), 94 deletions(-)
+>>>>  >with an error message indicating DMA mapping failed for the
+>>>> passthrough >devices.
+>>>>
+>>>> A correction - the message indicates UEFI failed to find a mapping for
+>>>> the boot partition ("map: no mapping found"), not that DMA mapping
+>>>> failed. But earlier EDK debug logs still show PCI host bridge resource
+>>>> conflicts for the passthrough devices that seem related to the VM boot
+>>>> failure.
+>>>
+>>> I have tried a 2023 version EFI which works. And for more recent tests I
+>> am
+>>> using a one built directly from,
+>>> https://github.com/tianocore/edk2.git master
+>>>
+>>> Commit: 0f3867fa6ef0("UefiPayloadPkg/UefiPayloadEntry: Fix PT
+>> protection
+>>> in 5 level paging"
+>>>
+>>> With both, I don’t remember seeing any boot failure and the above UEFI
+>>> related "map: no mapping found" error. But the Guest kernel at times
+>>> complaints about pci bridge window memory assignment failures.
+>>> ...
+>>> pci 0000:10:01.0: bridge window [mem size 0x00200000 64bit pref]: can't
+>> assign; no space
+>>> pci 0000:10:01.0: bridge window [mem size 0x00200000 64bit pref]: failed
+>> to assign
+>>> pci 0000:10:00.0: bridge window [io  size 0x1000]:can't assign; no space
+>>> ...
+>>>
+>>> But Guest still boots and worked fine so far.
+>>
+>> Hi Shameer,
+>>
+>> Just letting you know I resolved this by increasing the MMIO region size
+>> in hw/arm/virt.c to support passing through GPUs with large BAR regions
+>> (VIRT_HIGH_PCIE_MMIO). Thanks for taking a look.
+>>
+> 
+> Ok. Thanks for that. Does that mean may be an optional property to specify
+> the size for VIRT_HIGH_PCIE_MMIO is worth adding?
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 6ce2471aa6..2edb707b85 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -675,7 +675,7 @@ static inline CPUARMTBFlags arm_tbflags_from_tb(const TranslationBlock *tb)
-  */
- typedef enum ARMFPStatusFlavour {
-     FPST_A32,
--    FPST_FPCR_A64,
-+    FPST_A64,
-     FPST_FPCR_F16_A32,
-     FPST_FPCR_F16_A64,
-     FPST_FPCR_AH,
-@@ -694,7 +694,7 @@ typedef enum ARMFPStatusFlavour {
-  *
-  * FPST_A32
-  *   for AArch32 non-FP16 operations controlled by the FPCR
-- * FPST_FPCR_A64
-+ * FPST_A64
-  *   for AArch64 non-FP16 operations controlled by the FPCR
-  * FPST_FPCR_F16_A32
-  *   for AArch32 operations controlled by the FPCR where FPCR.FZ16 is to be used
-@@ -720,7 +720,7 @@ static inline TCGv_ptr fpstatus_ptr(ARMFPStatusFlavour flavour)
-     case FPST_A32:
-         offset = offsetof(CPUARMState, vfp.fp_status_a32);
-         break;
--    case FPST_FPCR_A64:
-+    case FPST_A64:
-         offset = offsetof(CPUARMState, vfp.fp_status_a64);
-         break;
-     case FPST_FPCR_F16_A32:
-@@ -757,7 +757,7 @@ static inline ARMFPStatusFlavour select_fpst(DisasContext *s, MemOp esz)
-     if (s->fpcr_ah) {
-         return esz == MO_16 ? FPST_FPCR_AH_F16 : FPST_FPCR_AH;
-     } else {
--        return esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64;
-+        return esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64;
-     }
- }
- 
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 3e2fe46464..bf17ecca80 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -5247,7 +5247,7 @@ static bool do_fp3_scalar(DisasContext *s, arg_rrr_e *a, const FPScalar *f,
- {
-     return do_fp3_scalar_with_fpsttype(s, a, f, mergereg,
-                                        a->esz == MO_16 ?
--                                       FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+                                       FPST_FPCR_F16_A64 : FPST_A64);
- }
- 
- static bool do_fp3_scalar_ah_2fn(DisasContext *s, arg_rrr_e *a,
-@@ -5506,9 +5506,9 @@ static bool do_fcmp0_s(DisasContext *s, arg_rr_e *a,
-             TCGv_i64 t0 = read_fp_dreg(s, a->rn);
-             TCGv_i64 t1 = tcg_constant_i64(0);
-             if (swap) {
--                f->gen_d(t0, t1, t0, fpstatus_ptr(FPST_FPCR_A64));
-+                f->gen_d(t0, t1, t0, fpstatus_ptr(FPST_A64));
-             } else {
--                f->gen_d(t0, t0, t1, fpstatus_ptr(FPST_FPCR_A64));
-+                f->gen_d(t0, t0, t1, fpstatus_ptr(FPST_A64));
-             }
-             write_fp_dreg(s, a->rd, t0);
-         }
-@@ -5518,9 +5518,9 @@ static bool do_fcmp0_s(DisasContext *s, arg_rr_e *a,
-             TCGv_i32 t0 = read_fp_sreg(s, a->rn);
-             TCGv_i32 t1 = tcg_constant_i32(0);
-             if (swap) {
--                f->gen_s(t0, t1, t0, fpstatus_ptr(FPST_FPCR_A64));
-+                f->gen_s(t0, t1, t0, fpstatus_ptr(FPST_A64));
-             } else {
--                f->gen_s(t0, t0, t1, fpstatus_ptr(FPST_FPCR_A64));
-+                f->gen_s(t0, t0, t1, fpstatus_ptr(FPST_A64));
-             }
-             write_fp_sreg(s, a->rd, t0);
-         }
-@@ -5768,7 +5768,7 @@ static bool do_fp3_vector(DisasContext *s, arg_qrrr_e *a, int data,
- {
-     return do_fp3_vector_with_fpsttype(s, a, data, fns,
-                                        a->esz == MO_16 ?
--                                       FPST_FPCR_F16_A64 :FPST_FPCR_A64);
-+                                       FPST_FPCR_F16_A64 :FPST_A64);
- }
- 
- static bool do_fp3_vector_2fn(DisasContext *s, arg_qrrr_e *a, int data,
-@@ -6135,7 +6135,7 @@ static bool trans_BFMLAL_v(DisasContext *s, arg_qrrr_e *a)
-     if (fp_access_check(s)) {
-         /* Q bit selects BFMLALB vs BFMLALT. */
-         gen_gvec_op4_fpst(s, true, a->rd, a->rn, a->rm, a->rd,
--                          s->fpcr_ah ? FPST_FPCR_AH : FPST_FPCR_A64, a->q,
-+                          s->fpcr_ah ? FPST_FPCR_AH : FPST_A64, a->q,
-                           gen_helper_gvec_bfmlal);
-     }
-     return true;
-@@ -6174,7 +6174,7 @@ static bool trans_FCMLA_v(DisasContext *s, arg_FCMLA_v *a)
-     }
- 
-     gen_gvec_op4_fpst(s, a->q, a->rd, a->rn, a->rm, a->rd,
--                      a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64,
-+                      a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64,
-                       a->rot, fn[a->esz]);
-     return true;
- }
-@@ -6543,7 +6543,7 @@ static bool do_fp3_scalar_idx(DisasContext *s, arg_rrx_e *a, const FPScalar *f)
-             TCGv_i64 t1 = tcg_temp_new_i64();
- 
-             read_vec_element(s, t1, a->rm, a->idx, MO_64);
--            f->gen_d(t0, t0, t1, fpstatus_ptr(FPST_FPCR_A64));
-+            f->gen_d(t0, t0, t1, fpstatus_ptr(FPST_A64));
-             write_fp_dreg_merging(s, a->rd, a->rn, t0);
-         }
-         break;
-@@ -6553,7 +6553,7 @@ static bool do_fp3_scalar_idx(DisasContext *s, arg_rrx_e *a, const FPScalar *f)
-             TCGv_i32 t1 = tcg_temp_new_i32();
- 
-             read_vec_element_i32(s, t1, a->rm, a->idx, MO_32);
--            f->gen_s(t0, t0, t1, fpstatus_ptr(FPST_FPCR_A64));
-+            f->gen_s(t0, t0, t1, fpstatus_ptr(FPST_A64));
-             write_fp_sreg_merging(s, a->rd, a->rn, t0);
-         }
-         break;
-@@ -6592,7 +6592,7 @@ static bool do_fmla_scalar_idx(DisasContext *s, arg_rrx_e *a, bool neg)
-             if (neg) {
-                 gen_vfp_maybe_ah_negd(s, t1, t1);
-             }
--            gen_helper_vfp_muladdd(t0, t1, t2, t0, fpstatus_ptr(FPST_FPCR_A64));
-+            gen_helper_vfp_muladdd(t0, t1, t2, t0, fpstatus_ptr(FPST_A64));
-             write_fp_dreg_merging(s, a->rd, a->rd, t0);
-         }
-         break;
-@@ -6606,7 +6606,7 @@ static bool do_fmla_scalar_idx(DisasContext *s, arg_rrx_e *a, bool neg)
-             if (neg) {
-                 gen_vfp_maybe_ah_negs(s, t1, t1);
-             }
--            gen_helper_vfp_muladds(t0, t1, t2, t0, fpstatus_ptr(FPST_FPCR_A64));
-+            gen_helper_vfp_muladds(t0, t1, t2, t0, fpstatus_ptr(FPST_A64));
-             write_fp_sreg_merging(s, a->rd, a->rd, t0);
-         }
-         break;
-@@ -6721,7 +6721,7 @@ static bool do_fp3_vector_idx(DisasContext *s, arg_qrrx_e *a,
-     }
- 
-     gen_gvec_op3_fpst(s, a->q, a->rd, a->rn, a->rm,
--                      esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64,
-+                      esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64,
-                       a->idx, fns[esz - 1]);
-     return true;
- }
-@@ -6755,7 +6755,7 @@ static bool do_fmla_vector_idx(DisasContext *s, arg_qrrx_e *a, bool neg)
-     }
- 
-     gen_gvec_op4_fpst(s, a->q, a->rd, a->rn, a->rm, a->rd,
--                      esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64,
-+                      esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64,
-                       (s->fpcr_ah << 5) | (a->idx << 1) | neg,
-                       fns[esz - 1]);
-     return true;
-@@ -6892,7 +6892,7 @@ static bool trans_BFMLAL_vi(DisasContext *s, arg_qrrx_e *a)
-     if (fp_access_check(s)) {
-         /* Q bit selects BFMLALB vs BFMLALT. */
-         gen_gvec_op4_fpst(s, true, a->rd, a->rn, a->rm, a->rd,
--                          s->fpcr_ah ? FPST_FPCR_AH : FPST_FPCR_A64,
-+                          s->fpcr_ah ? FPST_FPCR_AH : FPST_A64,
-                           (a->idx << 1) | a->q,
-                           gen_helper_gvec_bfmlal_idx);
-     }
-@@ -6921,7 +6921,7 @@ static bool trans_FCMLA_vi(DisasContext *s, arg_FCMLA_vi *a)
-     }
-     if (fp_access_check(s)) {
-         gen_gvec_op4_fpst(s, a->q, a->rd, a->rn, a->rm, a->rd,
--                          a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64,
-+                          a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64,
-                           (a->idx << 2) | a->rot, fn);
-     }
-     return true;
-@@ -6941,7 +6941,7 @@ static bool do_fp3_scalar_pair(DisasContext *s, arg_rr_e *a, const FPScalar *f)
- 
-             read_vec_element(s, t0, a->rn, 0, MO_64);
-             read_vec_element(s, t1, a->rn, 1, MO_64);
--            f->gen_d(t0, t0, t1, fpstatus_ptr(FPST_FPCR_A64));
-+            f->gen_d(t0, t0, t1, fpstatus_ptr(FPST_A64));
-             write_fp_dreg(s, a->rd, t0);
-         }
-         break;
-@@ -6952,7 +6952,7 @@ static bool do_fp3_scalar_pair(DisasContext *s, arg_rr_e *a, const FPScalar *f)
- 
-             read_vec_element_i32(s, t0, a->rn, 0, MO_32);
-             read_vec_element_i32(s, t1, a->rn, 1, MO_32);
--            f->gen_s(t0, t0, t1, fpstatus_ptr(FPST_FPCR_A64));
-+            f->gen_s(t0, t0, t1, fpstatus_ptr(FPST_A64));
-             write_fp_sreg(s, a->rd, t0);
-         }
-         break;
-@@ -7109,7 +7109,7 @@ static bool do_fmadd(DisasContext *s, arg_rrrr_e *a, bool neg_a, bool neg_n)
-             if (neg_n) {
-                 gen_vfp_maybe_ah_negd(s, tn, tn);
-             }
--            fpst = fpstatus_ptr(FPST_FPCR_A64);
-+            fpst = fpstatus_ptr(FPST_A64);
-             gen_helper_vfp_muladdd(ta, tn, tm, ta, fpst);
-             write_fp_dreg_merging(s, a->rd, a->ra, ta);
-         }
-@@ -7127,7 +7127,7 @@ static bool do_fmadd(DisasContext *s, arg_rrrr_e *a, bool neg_a, bool neg_n)
-             if (neg_n) {
-                 gen_vfp_maybe_ah_negs(s, tn, tn);
-             }
--            fpst = fpstatus_ptr(FPST_FPCR_A64);
-+            fpst = fpstatus_ptr(FPST_A64);
-             gen_helper_vfp_muladds(ta, tn, tm, ta, fpst);
-             write_fp_sreg_merging(s, a->rd, a->ra, ta);
-         }
-@@ -7243,7 +7243,7 @@ static bool do_fp_reduction(DisasContext *s, arg_qrr_e *a,
-     if (fp_access_check(s)) {
-         MemOp esz = a->esz;
-         int elts = (a->q ? 16 : 8) >> esz;
--        TCGv_ptr fpst = fpstatus_ptr(esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+        TCGv_ptr fpst = fpstatus_ptr(esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
-         TCGv_i32 res = do_reduction_op(s, a->rn, esz, 0, elts, fpst,
-                                        s->fpcr_ah ? fah : fnormal);
-         write_fp_sreg(s, a->rd, res);
-@@ -7294,7 +7294,7 @@ static void handle_fp_compare(DisasContext *s, int size,
-                               bool cmp_with_zero, bool signal_all_nans)
- {
-     TCGv_i64 tcg_flags = tcg_temp_new_i64();
--    TCGv_ptr fpst = fpstatus_ptr(size == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+    TCGv_ptr fpst = fpstatus_ptr(size == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
- 
-     if (size == MO_64) {
-         TCGv_i64 tcg_vn, tcg_vm;
-@@ -8829,7 +8829,7 @@ static bool do_fp1_scalar(DisasContext *s, arg_rr_e *a,
- {
-     return do_fp1_scalar_with_fpsttype(s, a, f, rmode,
-                                        a->esz == MO_16 ?
--                                       FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+                                       FPST_FPCR_F16_A64 : FPST_A64);
- }
- 
- static bool do_fp1_scalar_ah(DisasContext *s, arg_rr_e *a,
-@@ -8866,7 +8866,7 @@ TRANS(FRINTX_s, do_fp1_scalar, a, &f_scalar_frintx, -1)
- 
- static bool trans_BFCVT_s(DisasContext *s, arg_rr_e *a)
- {
--    ARMFPStatusFlavour fpsttype = s->fpcr_ah ? FPST_FPCR_AH : FPST_FPCR_A64;
-+    ARMFPStatusFlavour fpsttype = s->fpcr_ah ? FPST_FPCR_AH : FPST_A64;
-     TCGv_i32 t32;
-     int check;
- 
-@@ -8944,7 +8944,7 @@ static bool trans_FCVT_s_ds(DisasContext *s, arg_rr *a)
-     if (fp_access_check(s)) {
-         TCGv_i32 tcg_rn = read_fp_sreg(s, a->rn);
-         TCGv_i64 tcg_rd = tcg_temp_new_i64();
--        TCGv_ptr fpst = fpstatus_ptr(FPST_FPCR_A64);
-+        TCGv_ptr fpst = fpstatus_ptr(FPST_A64);
- 
-         gen_helper_vfp_fcvtds(tcg_rd, tcg_rn, fpst);
-         write_fp_dreg_merging(s, a->rd, a->rd, tcg_rd);
-@@ -8957,7 +8957,7 @@ static bool trans_FCVT_s_hs(DisasContext *s, arg_rr *a)
-     if (fp_access_check(s)) {
-         TCGv_i32 tmp = read_fp_sreg(s, a->rn);
-         TCGv_i32 ahp = get_ahp_flag();
--        TCGv_ptr fpst = fpstatus_ptr(FPST_FPCR_A64);
-+        TCGv_ptr fpst = fpstatus_ptr(FPST_A64);
- 
-         gen_helper_vfp_fcvt_f32_to_f16(tmp, tmp, fpst, ahp);
-         /* write_fp_hreg_merging is OK here because top half of result is zero */
-@@ -8971,7 +8971,7 @@ static bool trans_FCVT_s_sd(DisasContext *s, arg_rr *a)
-     if (fp_access_check(s)) {
-         TCGv_i64 tcg_rn = read_fp_dreg(s, a->rn);
-         TCGv_i32 tcg_rd = tcg_temp_new_i32();
--        TCGv_ptr fpst = fpstatus_ptr(FPST_FPCR_A64);
-+        TCGv_ptr fpst = fpstatus_ptr(FPST_A64);
- 
-         gen_helper_vfp_fcvtsd(tcg_rd, tcg_rn, fpst);
-         write_fp_sreg_merging(s, a->rd, a->rd, tcg_rd);
-@@ -8985,7 +8985,7 @@ static bool trans_FCVT_s_hd(DisasContext *s, arg_rr *a)
-         TCGv_i64 tcg_rn = read_fp_dreg(s, a->rn);
-         TCGv_i32 tcg_rd = tcg_temp_new_i32();
-         TCGv_i32 ahp = get_ahp_flag();
--        TCGv_ptr fpst = fpstatus_ptr(FPST_FPCR_A64);
-+        TCGv_ptr fpst = fpstatus_ptr(FPST_A64);
- 
-         gen_helper_vfp_fcvt_f64_to_f16(tcg_rd, tcg_rn, fpst, ahp);
-         /* write_fp_hreg_merging is OK here because top half of tcg_rd is zero */
-@@ -9029,7 +9029,7 @@ static bool do_cvtf_scalar(DisasContext *s, MemOp esz, int rd, int shift,
-     TCGv_i32 tcg_shift, tcg_single;
-     TCGv_i64 tcg_double;
- 
--    tcg_fpstatus = fpstatus_ptr(esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+    tcg_fpstatus = fpstatus_ptr(esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
-     tcg_shift = tcg_constant_i32(shift);
- 
-     switch (esz) {
-@@ -9124,7 +9124,7 @@ static void do_fcvt_scalar(DisasContext *s, MemOp out, MemOp esz,
-     TCGv_ptr tcg_fpstatus;
-     TCGv_i32 tcg_shift, tcg_rmode, tcg_single;
- 
--    tcg_fpstatus = fpstatus_ptr(esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+    tcg_fpstatus = fpstatus_ptr(esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
-     tcg_shift = tcg_constant_i32(shift);
-     tcg_rmode = gen_set_rmode(rmode, tcg_fpstatus);
- 
-@@ -9290,7 +9290,7 @@ static bool trans_FJCVTZS(DisasContext *s, arg_FJCVTZS *a)
-     }
-     if (fp_access_check(s)) {
-         TCGv_i64 t = read_fp_dreg(s, a->rn);
--        TCGv_ptr fpstatus = fpstatus_ptr(FPST_FPCR_A64);
-+        TCGv_ptr fpstatus = fpstatus_ptr(FPST_A64);
- 
-         gen_helper_fjcvtzs(t, t, fpstatus);
- 
-@@ -9550,7 +9550,7 @@ static bool trans_FCVTXN_s(DisasContext *s, arg_rr_e *a)
-          */
-         TCGv_i64 src = read_fp_dreg(s, a->rn);
-         TCGv_i32 dst = tcg_temp_new_i32();
--        gen_helper_fcvtx_f64_to_f32(dst, src, fpstatus_ptr(FPST_FPCR_A64));
-+        gen_helper_fcvtx_f64_to_f32(dst, src, fpstatus_ptr(FPST_A64));
-         write_fp_sreg_merging(s, a->rd, a->rd, dst);
-     }
-     return true;
-@@ -9638,7 +9638,7 @@ static void gen_fcvtn_hs(TCGv_i64 d, TCGv_i64 n)
- {
-     TCGv_i32 tcg_lo = tcg_temp_new_i32();
-     TCGv_i32 tcg_hi = tcg_temp_new_i32();
--    TCGv_ptr fpst = fpstatus_ptr(FPST_FPCR_A64);
-+    TCGv_ptr fpst = fpstatus_ptr(FPST_A64);
-     TCGv_i32 ahp = get_ahp_flag();
- 
-     tcg_gen_extr_i64_i32(tcg_lo, tcg_hi, n);
-@@ -9651,7 +9651,7 @@ static void gen_fcvtn_hs(TCGv_i64 d, TCGv_i64 n)
- static void gen_fcvtn_sd(TCGv_i64 d, TCGv_i64 n)
- {
-     TCGv_i32 tmp = tcg_temp_new_i32();
--    TCGv_ptr fpst = fpstatus_ptr(FPST_FPCR_A64);
-+    TCGv_ptr fpst = fpstatus_ptr(FPST_A64);
- 
-     gen_helper_vfp_fcvtsd(tmp, n, fpst);
-     tcg_gen_extu_i32_i64(d, tmp);
-@@ -9664,7 +9664,7 @@ static void gen_fcvtxn_sd(TCGv_i64 d, TCGv_i64 n)
-      * with von Neumann rounding (round to odd)
-      */
-     TCGv_i32 tmp = tcg_temp_new_i32();
--    gen_helper_fcvtx_f64_to_f32(tmp, n, fpstatus_ptr(FPST_FPCR_A64));
-+    gen_helper_fcvtx_f64_to_f32(tmp, n, fpstatus_ptr(FPST_A64));
-     tcg_gen_extu_i32_i64(d, tmp);
- }
- 
-@@ -9683,7 +9683,7 @@ TRANS(FCVTXN_v, do_2misc_narrow_vector, a, f_scalar_fcvtxn)
- 
- static void gen_bfcvtn_hs(TCGv_i64 d, TCGv_i64 n)
- {
--    TCGv_ptr fpst = fpstatus_ptr(FPST_FPCR_A64);
-+    TCGv_ptr fpst = fpstatus_ptr(FPST_A64);
-     TCGv_i32 tmp = tcg_temp_new_i32();
-     gen_helper_bfcvt_pair(tmp, n, fpst);
-     tcg_gen_extu_i32_i64(d, tmp);
-@@ -9773,7 +9773,7 @@ static bool do_fp1_vector(DisasContext *s, arg_qrr_e *a,
-         return check == 0;
-     }
- 
--    fpst = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+    fpst = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
-     if (rmode >= 0) {
-         tcg_rmode = gen_set_rmode(rmode, fpst);
-     }
-@@ -9848,7 +9848,7 @@ static bool do_gvec_op2_fpst(DisasContext *s, MemOp esz, bool is_q,
- {
-     return do_gvec_op2_fpst_with_fpsttype(s, esz, is_q, rd, rn, data, fns,
-                                           esz == MO_16 ? FPST_FPCR_F16_A64 :
--                                          FPST_FPCR_A64);
-+                                          FPST_A64);
- }
- 
- static bool do_gvec_op2_ah_fpst(DisasContext *s, MemOp esz, bool is_q,
-@@ -10008,7 +10008,7 @@ static bool trans_FCVTL_v(DisasContext *s, arg_qrr_e *a)
-         TCGv_i32 tcg_op = tcg_temp_new_i32();
-         int srcelt = a->q ? 2 : 0;
- 
--        fpst = fpstatus_ptr(FPST_FPCR_A64);
-+        fpst = fpstatus_ptr(FPST_A64);
- 
-         for (pass = 0; pass < 2; pass++) {
-             tcg_res[pass] = tcg_temp_new_i64();
-diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
-index 29bec7dd7b..fcbb350016 100644
---- a/target/arm/tcg/translate-sme.c
-+++ b/target/arm/tcg/translate-sme.c
-@@ -358,9 +358,9 @@ static bool do_outprod_env(DisasContext *s, arg_op *a, MemOp esz,
- TRANS_FEAT(FMOPA_h, aa64_sme, do_outprod_env, a,
-            MO_32, gen_helper_sme_fmopa_h)
- TRANS_FEAT(FMOPA_s, aa64_sme, do_outprod_fpst, a,
--           MO_32, FPST_FPCR_A64, gen_helper_sme_fmopa_s)
-+           MO_32, FPST_A64, gen_helper_sme_fmopa_s)
- TRANS_FEAT(FMOPA_d, aa64_sme_f64f64, do_outprod_fpst, a,
--           MO_64, FPST_FPCR_A64, gen_helper_sme_fmopa_d)
-+           MO_64, FPST_A64, gen_helper_sme_fmopa_d)
- 
- TRANS_FEAT(BFMOPA, aa64_sme, do_outprod_env, a, MO_32, gen_helper_sme_bfmopa)
- 
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index 454f7ff900..3cc678154a 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -191,7 +191,7 @@ static bool gen_gvec_fpst_arg_zzz(DisasContext *s, gen_helper_gvec_3_ptr *fn,
-                                   arg_rrr_esz *a, int data)
- {
-     return gen_gvec_fpst_zzz(s, fn, a->rd, a->rn, a->rm, data,
--                             a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+                             a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
- }
- 
- static bool gen_gvec_fpst_ah_arg_zzz(DisasContext *s, gen_helper_gvec_3_ptr *fn,
-@@ -404,7 +404,7 @@ static bool gen_gvec_fpst_arg_zpzz(DisasContext *s, gen_helper_gvec_4_ptr *fn,
-                                    arg_rprr_esz *a)
- {
-     return gen_gvec_fpst_zzzp(s, fn, a->rd, a->rn, a->rm, a->pg, 0,
--                              a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+                              a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
- }
- 
- /* Invoke a vector expander on two Zregs and an immediate.  */
-@@ -3534,7 +3534,7 @@ static bool do_FMLA_zzxz(DisasContext *s, arg_rrxr_esz *a, bool sub)
-     };
-     return gen_gvec_fpst_zzzz(s, fns[a->esz], a->rd, a->rn, a->rm, a->ra,
-                               (s->fpcr_ah << 5) | (a->index << 1) | sub,
--                              a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+                              a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
- }
- 
- TRANS_FEAT(FMLA_zzxz, aa64_sve, do_FMLA_zzxz, a, false)
-@@ -3550,7 +3550,7 @@ static gen_helper_gvec_3_ptr * const fmul_idx_fns[4] = {
- };
- TRANS_FEAT(FMUL_zzx, aa64_sve, gen_gvec_fpst_zzz,
-            fmul_idx_fns[a->esz], a->rd, a->rn, a->rm, a->index,
--           a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
-+           a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64)
- 
- /*
-  *** SVE Floating Point Fast Reduction Group
-@@ -3583,7 +3583,7 @@ static bool do_reduce(DisasContext *s, arg_rpr_esz *a,
- 
-     tcg_gen_addi_ptr(t_zn, tcg_env, vec_full_reg_offset(s, a->rn));
-     tcg_gen_addi_ptr(t_pg, tcg_env, pred_full_reg_offset(s, a->pg));
--    status = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+    status = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
- 
-     fn(temp, t_zn, t_pg, status, t_desc);
- 
-@@ -3659,7 +3659,7 @@ static bool do_ppz_fp(DisasContext *s, arg_rpr_esz *a,
-     if (sve_access_check(s)) {
-         unsigned vsz = vec_full_reg_size(s);
-         TCGv_ptr status =
--            fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+            fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
- 
-         tcg_gen_gvec_3_ptr(pred_full_reg_offset(s, a->rd),
-                            vec_full_reg_offset(s, a->rn),
-@@ -3696,7 +3696,7 @@ static gen_helper_gvec_3_ptr * const ftmad_fns[4] = {
- TRANS_FEAT_NONSTREAMING(FTMAD, aa64_sve, gen_gvec_fpst_zzz,
-                         ftmad_fns[a->esz], a->rd, a->rn, a->rm,
-                         a->imm | (s->fpcr_ah << 3),
--                        a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
-+                        a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64)
- 
- /*
-  *** SVE Floating Point Accumulating Reduction Group
-@@ -3729,7 +3729,7 @@ static bool trans_FADDA(DisasContext *s, arg_rprr_esz *a)
-     t_pg = tcg_temp_new_ptr();
-     tcg_gen_addi_ptr(t_rm, tcg_env, vec_full_reg_offset(s, a->rm));
-     tcg_gen_addi_ptr(t_pg, tcg_env, pred_full_reg_offset(s, a->pg));
--    t_fpst = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+    t_fpst = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
-     t_desc = tcg_constant_i32(simd_desc(vsz, vsz, 0));
- 
-     fns[a->esz - 1](t_val, t_val, t_rm, t_pg, t_fpst, t_desc);
-@@ -3829,7 +3829,7 @@ static void do_fp_scalar(DisasContext *s, int zd, int zn, int pg, bool is_fp16,
-     tcg_gen_addi_ptr(t_zn, tcg_env, vec_full_reg_offset(s, zn));
-     tcg_gen_addi_ptr(t_pg, tcg_env, pred_full_reg_offset(s, pg));
- 
--    status = fpstatus_ptr(is_fp16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+    status = fpstatus_ptr(is_fp16 ? FPST_FPCR_F16_A64 : FPST_A64);
-     desc = tcg_constant_i32(simd_desc(vsz, vsz, 0));
-     fn(t_zd, t_zn, t_pg, scalar, status, desc);
- }
-@@ -3902,7 +3902,7 @@ static bool do_fp_cmp(DisasContext *s, arg_rprr_esz *a,
-     }
-     if (sve_access_check(s)) {
-         unsigned vsz = vec_full_reg_size(s);
--        TCGv_ptr status = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+        TCGv_ptr status = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
-         tcg_gen_gvec_4_ptr(pred_full_reg_offset(s, a->rd),
-                            vec_full_reg_offset(s, a->rn),
-                            vec_full_reg_offset(s, a->rm),
-@@ -3935,7 +3935,7 @@ static gen_helper_gvec_4_ptr * const fcadd_fns[] = {
- };
- TRANS_FEAT(FCADD, aa64_sve, gen_gvec_fpst_zzzp, fcadd_fns[a->esz],
-            a->rd, a->rn, a->rm, a->pg, a->rot | (s->fpcr_ah << 1),
--           a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
-+           a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64)
- 
- #define DO_FMLA(NAME, name, ah_name)                                    \
-     static gen_helper_gvec_5_ptr * const name##_fns[4] = {              \
-@@ -3949,7 +3949,7 @@ TRANS_FEAT(FCADD, aa64_sve, gen_gvec_fpst_zzzp, fcadd_fns[a->esz],
-     TRANS_FEAT(NAME, aa64_sve, gen_gvec_fpst_zzzzp,                     \
-                s->fpcr_ah ? name##_ah_fns[a->esz] : name##_fns[a->esz], \
-                a->rd, a->rn, a->rm, a->ra, a->pg, 0,                    \
--               a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
-+               a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64)
- 
- /* We don't need an ah_fmla_zpzzz because fmla doesn't negate anything */
- DO_FMLA(FMLA_zpzzz, fmla_zpzzz, fmla_zpzzz)
-@@ -3965,36 +3965,36 @@ static gen_helper_gvec_5_ptr * const fcmla_fns[4] = {
- };
- TRANS_FEAT(FCMLA_zpzzz, aa64_sve, gen_gvec_fpst_zzzzp, fcmla_fns[a->esz],
-            a->rd, a->rn, a->rm, a->ra, a->pg, a->rot,
--           a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
-+           a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64)
- 
- static gen_helper_gvec_4_ptr * const fcmla_idx_fns[4] = {
-     NULL, gen_helper_gvec_fcmlah_idx, gen_helper_gvec_fcmlas_idx, NULL
- };
- TRANS_FEAT(FCMLA_zzxz, aa64_sve, gen_gvec_fpst_zzzz, fcmla_idx_fns[a->esz],
-            a->rd, a->rn, a->rm, a->ra, a->index * 4 + a->rot,
--           a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
-+           a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64)
- 
- /*
-  *** SVE Floating Point Unary Operations Predicated Group
-  */
- 
- TRANS_FEAT(FCVT_sh, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvt_sh, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvt_sh, a, 0, FPST_A64)
- TRANS_FEAT(FCVT_hs, aa64_sve, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_fcvt_hs, a, 0, FPST_FPCR_F16_A64)
- 
- TRANS_FEAT(BFCVT, aa64_sve_bf16, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_bfcvt, a, 0,
--           s->fpcr_ah ? FPST_FPCR_AH : FPST_FPCR_A64)
-+           s->fpcr_ah ? FPST_FPCR_AH : FPST_A64)
- 
- TRANS_FEAT(FCVT_dh, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvt_dh, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvt_dh, a, 0, FPST_A64)
- TRANS_FEAT(FCVT_hd, aa64_sve, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_fcvt_hd, a, 0, FPST_FPCR_F16_A64)
- TRANS_FEAT(FCVT_ds, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvt_ds, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvt_ds, a, 0, FPST_A64)
- TRANS_FEAT(FCVT_sd, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvt_sd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvt_sd, a, 0, FPST_A64)
- 
- TRANS_FEAT(FCVTZS_hh, aa64_sve, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_fcvtzs_hh, a, 0, FPST_FPCR_F16_A64)
-@@ -4010,22 +4010,22 @@ TRANS_FEAT(FCVTZU_hd, aa64_sve, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_fcvtzu_hd, a, 0, FPST_FPCR_F16_A64)
- 
- TRANS_FEAT(FCVTZS_ss, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvtzs_ss, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvtzs_ss, a, 0, FPST_A64)
- TRANS_FEAT(FCVTZU_ss, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvtzu_ss, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvtzu_ss, a, 0, FPST_A64)
- TRANS_FEAT(FCVTZS_sd, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvtzs_sd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvtzs_sd, a, 0, FPST_A64)
- TRANS_FEAT(FCVTZU_sd, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvtzu_sd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvtzu_sd, a, 0, FPST_A64)
- TRANS_FEAT(FCVTZS_ds, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvtzs_ds, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvtzs_ds, a, 0, FPST_A64)
- TRANS_FEAT(FCVTZU_ds, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvtzu_ds, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvtzu_ds, a, 0, FPST_A64)
- 
- TRANS_FEAT(FCVTZS_dd, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvtzs_dd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvtzs_dd, a, 0, FPST_A64)
- TRANS_FEAT(FCVTZU_dd, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_fcvtzu_dd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_fcvtzu_dd, a, 0, FPST_A64)
- 
- static gen_helper_gvec_3_ptr * const frint_fns[] = {
-     NULL,
-@@ -4034,7 +4034,7 @@ static gen_helper_gvec_3_ptr * const frint_fns[] = {
-     gen_helper_sve_frint_d
- };
- TRANS_FEAT(FRINTI, aa64_sve, gen_gvec_fpst_arg_zpz, frint_fns[a->esz],
--           a, 0, a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
-+           a, 0, a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64)
- 
- static gen_helper_gvec_3_ptr * const frintx_fns[] = {
-     NULL,
-@@ -4043,7 +4043,7 @@ static gen_helper_gvec_3_ptr * const frintx_fns[] = {
-     gen_helper_sve_frintx_d
- };
- TRANS_FEAT(FRINTX, aa64_sve, gen_gvec_fpst_arg_zpz, frintx_fns[a->esz],
--           a, 0, a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+           a, 0, a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
- 
- static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a,
-                           ARMFPRounding mode, gen_helper_gvec_3_ptr *fn)
-@@ -4060,7 +4060,7 @@ static bool do_frint_mode(DisasContext *s, arg_rpr_esz *a,
-     }
- 
-     vsz = vec_full_reg_size(s);
--    status = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64);
-+    status = fpstatus_ptr(a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64);
-     tmode = gen_set_rmode(mode, status);
- 
-     tcg_gen_gvec_3_ptr(vec_full_reg_offset(s, a->rd),
-@@ -4095,7 +4095,7 @@ static gen_helper_gvec_3_ptr * const fsqrt_fns[] = {
-     gen_helper_sve_fsqrt_s, gen_helper_sve_fsqrt_d,
- };
- TRANS_FEAT(FSQRT, aa64_sve, gen_gvec_fpst_arg_zpz, fsqrt_fns[a->esz],
--           a, 0, a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
-+           a, 0, a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64)
- 
- TRANS_FEAT(SCVTF_hh, aa64_sve, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_scvt_hh, a, 0, FPST_FPCR_F16_A64)
-@@ -4105,14 +4105,14 @@ TRANS_FEAT(SCVTF_dh, aa64_sve, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_scvt_dh, a, 0, FPST_FPCR_F16_A64)
- 
- TRANS_FEAT(SCVTF_ss, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_scvt_ss, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_scvt_ss, a, 0, FPST_A64)
- TRANS_FEAT(SCVTF_ds, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_scvt_ds, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_scvt_ds, a, 0, FPST_A64)
- 
- TRANS_FEAT(SCVTF_sd, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_scvt_sd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_scvt_sd, a, 0, FPST_A64)
- TRANS_FEAT(SCVTF_dd, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_scvt_dd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_scvt_dd, a, 0, FPST_A64)
- 
- TRANS_FEAT(UCVTF_hh, aa64_sve, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_ucvt_hh, a, 0, FPST_FPCR_F16_A64)
-@@ -4122,14 +4122,14 @@ TRANS_FEAT(UCVTF_dh, aa64_sve, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_ucvt_dh, a, 0, FPST_FPCR_F16_A64)
- 
- TRANS_FEAT(UCVTF_ss, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_ucvt_ss, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_ucvt_ss, a, 0, FPST_A64)
- TRANS_FEAT(UCVTF_ds, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_ucvt_ds, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_ucvt_ds, a, 0, FPST_A64)
- TRANS_FEAT(UCVTF_sd, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_ucvt_sd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_ucvt_sd, a, 0, FPST_A64)
- 
- TRANS_FEAT(UCVTF_dd, aa64_sve, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve_ucvt_dd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve_ucvt_dd, a, 0, FPST_A64)
- 
- /*
-  *** SVE Memory - 32-bit Gather and Unsized Contiguous Group
-@@ -7011,10 +7011,10 @@ DO_ZPZZ_FP(FMINP, aa64_sve2, sve2_fminp_zpzz)
- 
- TRANS_FEAT_NONSTREAMING(FMMLA_s, aa64_sve_f32mm, gen_gvec_fpst_zzzz,
-                         gen_helper_fmmla_s, a->rd, a->rn, a->rm, a->ra,
--                        0, FPST_FPCR_A64)
-+                        0, FPST_A64)
- TRANS_FEAT_NONSTREAMING(FMMLA_d, aa64_sve_f64mm, gen_gvec_fpst_zzzz,
-                         gen_helper_fmmla_d, a->rd, a->rn, a->rm, a->ra,
--                        0, FPST_FPCR_A64)
-+                        0, FPST_A64)
- 
- static gen_helper_gvec_4 * const sqdmlal_zzzw_fns[] = {
-     NULL,                           gen_helper_sve2_sqdmlal_zzzw_h,
-@@ -7130,18 +7130,18 @@ TRANS_FEAT_NONSTREAMING(RAX1, aa64_sve2_sha3, gen_gvec_fn_arg_zzz,
-                         gen_gvec_rax1, a)
- 
- TRANS_FEAT(FCVTNT_sh, aa64_sve2, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve2_fcvtnt_sh, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve2_fcvtnt_sh, a, 0, FPST_A64)
- TRANS_FEAT(FCVTNT_ds, aa64_sve2, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve2_fcvtnt_ds, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve2_fcvtnt_ds, a, 0, FPST_A64)
- 
- TRANS_FEAT(BFCVTNT, aa64_sve_bf16, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve_bfcvtnt, a, 0,
--           s->fpcr_ah ? FPST_FPCR_AH : FPST_FPCR_A64)
-+           s->fpcr_ah ? FPST_FPCR_AH : FPST_A64)
- 
- TRANS_FEAT(FCVTLT_hs, aa64_sve2, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve2_fcvtlt_hs, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve2_fcvtlt_hs, a, 0, FPST_A64)
- TRANS_FEAT(FCVTLT_sd, aa64_sve2, gen_gvec_fpst_arg_zpz,
--           gen_helper_sve2_fcvtlt_sd, a, 0, FPST_FPCR_A64)
-+           gen_helper_sve2_fcvtlt_sd, a, 0, FPST_A64)
- 
- TRANS_FEAT(FCVTX_ds, aa64_sve2, do_frint_mode, a,
-            FPROUNDING_ODD, gen_helper_sve_fcvt_ds)
-@@ -7153,7 +7153,7 @@ static gen_helper_gvec_3_ptr * const flogb_fns[] = {
-     gen_helper_flogb_s, gen_helper_flogb_d
- };
- TRANS_FEAT(FLOGB, aa64_sve2, gen_gvec_fpst_arg_zpz, flogb_fns[a->esz],
--           a, 0, a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_FPCR_A64)
-+           a, 0, a->esz == MO_16 ? FPST_FPCR_F16_A64 : FPST_A64)
- 
- static bool do_FMLAL_zzzw(DisasContext *s, arg_rrrr_esz *a, bool sub, bool sel)
- {
-@@ -7198,7 +7198,7 @@ static bool do_BFMLAL_zzzw(DisasContext *s, arg_rrrr_esz *a, bool sel)
- {
-     return gen_gvec_fpst_zzzz(s, gen_helper_gvec_bfmlal,
-                               a->rd, a->rn, a->rm, a->ra, sel,
--                              s->fpcr_ah ? FPST_FPCR_AH : FPST_FPCR_A64);
-+                              s->fpcr_ah ? FPST_FPCR_AH : FPST_A64);
- }
- 
- TRANS_FEAT(BFMLALB_zzzw, aa64_sve_bf16, do_BFMLAL_zzzw, a, false)
-@@ -7209,7 +7209,7 @@ static bool do_BFMLAL_zzxw(DisasContext *s, arg_rrxr_esz *a, bool sel)
-     return gen_gvec_fpst_zzzz(s, gen_helper_gvec_bfmlal_idx,
-                               a->rd, a->rn, a->rm, a->ra,
-                               (a->index << 1) | sel,
--                              s->fpcr_ah ? FPST_FPCR_AH : FPST_FPCR_A64);
-+                              s->fpcr_ah ? FPST_FPCR_AH : FPST_A64);
- }
- 
- TRANS_FEAT(BFMLALB_zzxw, aa64_sve_bf16, do_BFMLAL_zzxw, a, false)
--- 
-2.43.0
+Yes, and actually we have a patch ready for the configurable highmem 
+region size. Matt Ochs will send it out in the next day or so and CC you 
+on the submission.
 
+> adding  ""mem-reserve=X" and "io-reserve=X" to pcie-root-port helps
+
+Ok, good to know - I'll keep that in mind for future testing.
+
+Thanks,
+Nathan

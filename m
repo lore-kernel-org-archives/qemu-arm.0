@@ -1,117 +1,127 @@
-Received: by 2002:a17:504:6810:b0:1be9:327d:8ee3 with SMTP id f16csp100593njm;
-        Tue, 4 Mar 2025 04:58:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCW3e1v7DRtOLDVi/rpAbvPB8sy+nCqqUMyZH3wQdAQ+g1PicSkvs0p+JAy/G8aTxigX5GDdfv066JwhVw==@linaro.org
-X-Google-Smtp-Source: AGHT+IHuwRU5fgx6U5UZOomvUr5+ZvPc8xK5d7mgUHAUOZzvaQtOCpRnN4JLNnwABjrmc1s1Z05R
-X-Received: by 2002:ac8:5a55:0:b0:474:efcd:535 with SMTP id d75a77b69052e-474efcd1166mr88158491cf.16.1741093086800;
-        Tue, 04 Mar 2025 04:58:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1741093086; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2595298njk;
+        Mon, 27 Jan 2025 09:28:15 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU0iUaFyKTCd7oyzscRMNFoU5zn4yXbm1dob2CpnKnf1ECU5kjReA+IvIdnx7WfobF9iXaMpLUop0+GKw==@linaro.org
+X-Google-Smtp-Source: AGHT+IGp4ijPqDsmBQtwEvY0pjd2eo81GrLeN2BR2qq5DiZ8DlPEFKV/glm8i0SdpmhUlUXXCLUZ
+X-Received: by 2002:a05:620a:2449:b0:7b6:c92e:2e83 with SMTP id af79cd13be357-7be631f49dcmr5896944985a.17.1737998895022;
+        Mon, 27 Jan 2025 09:28:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737998894; cv=none;
         d=google.com; s=arc-20240605;
-        b=B0P0PyRFhILI2DUesUKuwJTPSAweUooiC825G7y7r70/udD5rV+7d0J5N/rXLTw1LN
-         x6yhMpH97yQXNIrknPHiWPIA2fHObrf5OIWRGhnR0ZMF+JMu/XvQjoGNK2qktgV67hks
-         LXIYjMo0+sPuzZoZ+MA9t3WTpu0Ps0AcaxL/SvBlfWDkCfXDWyKHP/2DjhnDBjzW+GVE
-         sM+CBTsx2U6r1EU3zderiReVp/6oLrtHtdTrZSaoquGayfbhGXnhz9p7o1CCYig3waAH
-         zLaZLuOZSWogOUWfJixzr1dwASh+cbQASpL1Zt8mNftxrAD9XpSddPXXJC/Q88Sp0xBX
-         EyOA==
+        b=AbrCMr66aJxZE0isS8379uGkHBwRAIK491Ney+RSnLoecXMETjITFVow2PTKJ1OgUp
+         DrgeXAqhKWgj9lY9I+5VuP3K0dNbU660iJ2lwCb8pDq9Fglt7wxHK0S1OaUvxFM1hPkb
+         U9793rVZ7Xh4bNFl+xhi3+JAVq5t0dvEvoQ+fqO+lpnev7Eb3wSc1npraMK0dhitRmDd
+         7eWsbgSGzSmFwoWuwedWf2AdHIPo95fUpS4Dmh4ORX05ESkJ/rD8ixYe/EYNxzTD3NaP
+         ijE5CHYdYZNseRkC1pMB1SVpbBMQGGJPOOJ39g1KjRzNsLHd4wqbg1ZtzuF/9mtSkQzg
+         WxiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=WCfTLGK5BCPPyuAOyalwI7XVH4IGkc4LkKHa1QF2XYI=;
-        fh=AUxCU78jacJE1vSghMJJha3+F2+VikVKZl38eSKs5/I=;
-        b=KA+l4tt6Heoneoz7UWY3RJ7EK64nEDxyB4w76WbGRq0deV+lWZ0IEcIvOZXpQzvfgF
-         HM8HN7I+6wi8zN3fsHpjUAHfA2khjq2Wm6+Bh/l+2K3rje5SsYzjUEnWR7S6rp0MVvOj
-         RMjZ9J943yifYH3FFaR804ShWBi7dN/+TtMbTG2NKlHbSV6Z76nxg5OEwiMg+w9Yo9Je
-         OwfgpOGtuQ2wMfyT8STnHT/r9GpxzAtxZvWejnTTV7OrkUhoZEIkTAUPh3ceKJEJI9vC
-         e8qPln6WpiQFwctxdLQRRiEjpj3ouG/5T+ihzXQluHO3dcyC9eddHXpiIMaRdQI47S3w
-         njDg==;
+         :in-reply-to:from:content-language:references:to:subject:user-agent
+         :mime-version:date:message-id:dkim-signature;
+        bh=vst1GWoYUOEqSaQQbfKIzhAHzh0PNZBIbP+qOUJbMGU=;
+        fh=2cS70A5YH36qGivjX+zAWcNfAuGjkTLpyCcnQgK3DaU=;
+        b=eQ5y6Ed/pzWB3TEtsXHVe7ilCsPTVYYnImhTIJo6kIR9LKYa3ob0Fu0N4dI4jpuV6W
+         qd46khdhfw+ooxHqCyvfUwR+GzPJpCaM+TMOhaciEgseZZ0Ra7WL2+MrkqtGNh7PDn8P
+         HNfvN5x1yTv2ugQdTqJ/1RWKi+o1jyjfxXI3dYb5nLD2B0PUy7M7Wb1YoGeP+v3h2soM
+         n3Xg7hU7kVOrIjxMdnlNE9dI6G+O2r3FJB+5ag0SgoWf0LDSEGgNQkHuMLNkjnISh+pC
+         3RAmjXJDxG7iqchGhMFKfWFZj8biH3Y+KLVI++UeH3vxRJI4qKDyOsEd7YnScq7ZIdv4
+         UY+w==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PNS+Z5UA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=m9VSG+0J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-474f7719e3fsi23862391cf.125.2025.03.04.04.58.06
+        by mx.google.com with ESMTPS id af79cd13be357-7be9ae945e4si1011078185a.161.2025.01.27.09.28.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Mar 2025 04:58:06 -0800 (PST)
+        Mon, 27 Jan 2025 09:28:14 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PNS+Z5UA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=m9VSG+0J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
+       dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tpRjE-0006ju-Gr; Tue, 04 Mar 2025 07:50:32 -0500
+	id 1tcStj-0003QA-NG; Mon, 27 Jan 2025 12:27:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhp-0004vT-W6
- for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:49:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1tpRhm-0007JM-O2
- for qemu-arm@nongnu.org; Tue, 04 Mar 2025 07:49:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741092541;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=WCfTLGK5BCPPyuAOyalwI7XVH4IGkc4LkKHa1QF2XYI=;
- b=PNS+Z5UADwZrhea631wB5cFnJHs7taKtTVtofU1sh1W9pUZj+/u3BwXanS5MeR4X8lXWep
- 07Ndewur1aT08YgTgVX0t4Ab+aeTpC5txcAEOCgMi+3Up0FE6SEzMHmDYqVC171Mcr28JC
- lLni/ZXKxfA1YdsQ2hVJyZfr/RTMSH8=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-137-E2cBlXwAMnGUepkLmjbCdg-1; Tue,
- 04 Mar 2025 07:48:58 -0500
-X-MC-Unique: E2cBlXwAMnGUepkLmjbCdg-1
-X-Mimecast-MFC-AGG-ID: E2cBlXwAMnGUepkLmjbCdg_1741092536
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 964F11944D01; Tue,  4 Mar 2025 12:48:56 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.44.32.122])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2004819560AA; Tue,  4 Mar 2025 12:48:56 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 91455180060A; Tue, 04 Mar 2025 13:48:16 +0100 (CET)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Eric Blake <eblake@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Michael Roth <michael.roth@amd.com>, Markus Armbruster <armbru@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PULL 20/24] hw/uefi-vars-sysbus: add x64 variant
-Date: Tue,  4 Mar 2025 13:48:08 +0100
-Message-ID: <20250304124815.591749-21-kraxel@redhat.com>
-In-Reply-To: <20250304124815.591749-1-kraxel@redhat.com>
-References: <20250304124815.591749-1-kraxel@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tcSti-0003PW-4t
+ for qemu-arm@nongnu.org; Mon, 27 Jan 2025 12:27:42 -0500
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tcStg-00049N-G9
+ for qemu-arm@nongnu.org; Mon, 27 Jan 2025 12:27:41 -0500
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-436345cc17bso33714065e9.0
+ for <qemu-arm@nongnu.org>; Mon, 27 Jan 2025 09:27:39 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1737998858; x=1738603658; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=vst1GWoYUOEqSaQQbfKIzhAHzh0PNZBIbP+qOUJbMGU=;
+ b=m9VSG+0Ju+A+peN/twqoRFsminAYmzb8gydkIac5OwslnZtytf0fxFMY8WgY7/gE2K
+ /57It8OID+UHILs0wE88vpmund1NxC0r0v7pLQJ82RS8J50Ws6uQGq2aUZgozvm/aMi/
+ 5dSeqwriG9T4r+Qw8ZqtILnUnzk468JdQHX+VhZWqLRfx3lfBHW5VlIw65d9dBWSuLDG
+ 1KuzZDh4KaIEjETLxmRa8E1dt/VwPd43cp21Xqk+rE+zt+8tLUtbz4uUDcIC9hCDlk1O
+ e55/yMS9iyvaCmbe3fhYTgjydPD9gAQNEGzO1LUsUgCdeYbv4s/NLL9wqi7BWdJiV+6V
+ C3NA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737998858; x=1738603658;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=vst1GWoYUOEqSaQQbfKIzhAHzh0PNZBIbP+qOUJbMGU=;
+ b=vyHcNyUQfjhwgRuSMvQevT8StYFyYxh3G8zOPp3qhqpsrP7REjt4kl+4bhYe5W4FpK
+ R7EoZlmk3cAtS0T+gj+1eXN56nDYY45ZENm8eahtjC9QrN5iaj0ngQxPKWvmNMKbXBLD
+ Z7B1hwO3MopaBBqbT5qQQPwlCH/drIvnltmlNOeGRVp/qBaG+VlfDosWBguGCiIxLNdM
+ aE5OBjc2RWaFAJ71W8UAXYaZYUn0eAE9p+anOFrLy3yie2czbFSovzh3P859aEEhzXU/
+ 90s+9xBiMFbReO7tglVDKRJ3I3+CeKjJSY9QM77ZAkFLa3XAq3qpc66sdvesPS7d3l7R
+ 7vWw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX1z3es30aO+C5B0RTCE9m6d/Qb5SsOP2rS96+++upJygOtdy8IYaXik6SRn4Et9Cnchb904kVYnw==@nongnu.org
+X-Gm-Message-State: AOJu0Yy6YBMHUQ3KbuTKnsOTHbT81a/Nn9vp7I1wodxqICvdnLKnmffh
+ uEgl2ejSYKMnDIQLIvSgkTA2dxGi4e+OKbMqdHvz5q9KdE2H/s+df3+eDzKIMOs=
+X-Gm-Gg: ASbGncuJU6DKcCMdzql2v3PKLXFn2qxaOwfBU+izxKqPM4lFgtphPYxwK/O+2y7ZHqx
+ OzVOU7XzBMFYfxSre0kuSm3tN0dVat+NklTht1m+yDTme5QFiOMOArECpKfePZse6hrR0cGLGdT
+ cSDZWvDr0TW9ONPPGZ/3E5FGP53O1C29TUspLxU2CQ/G6ZrHgFknf5hc6Ea4Lp7HqrX6GqlfJl/
+ WJHUpG1W7Ajh/1Qnrc2RlE6pd1JiHt6uQRxIP+RiWK8gUHe16SQLIEZJA5FmMfxD4CMiO4vBv+d
+ nU+QtaYLBG59F7kZagSzkjyRBNI356LZ2voueELIJM33Gl0e
+X-Received: by 2002:a5d:6c68:0:b0:385:ef39:6cd5 with SMTP id
+ ffacd0b85a97d-38bf5656ddfmr37640768f8f.1.1737998858565; 
+ Mon, 27 Jan 2025 09:27:38 -0800 (PST)
+Received: from [192.168.69.181] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38c2a1bb0d4sm11915942f8f.69.2025.01.27.09.27.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Jan 2025 09:27:37 -0800 (PST)
+Message-ID: <44f75f64-4480-4cd2-a907-cf0638568e55@linaro.org>
+Date: Mon, 27 Jan 2025 18:27:37 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] target/arm: Deprecate iwMMXt emulation and associated
+ CPUs
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20250127112715.2936555-1-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250127112715.2936555-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,79 +136,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: 4WFx3Nuqbd56
+X-TUID: KiCqHNGOMBAZ
 
-The x86 variant of the device is mapped on the fixed address 0xfef10000
-and uses etc/hardware-info instead of FDT to pass the mapping location
-to the edk2 firmware.  The latter allows to move the device to a
-different location should that turn out to be necessary in the future.
+On 27/1/25 12:27, Peter Maydell wrote:
+> This patchset marks all the CPUs that support iwMMXt as deprecated,
+> because I don't believe anybody is using them, and we have no way to
+> test the thousands of lines of code we have that's only there for
+> iwMMXt emulation.  (See for instance the recent thread where a patch
+> was submitted to fix an issue detected by a static analyzer: we
+> didn't take it, largely because we had no way to know if the
+> behaviour change the patch would produce was correct or not.)
+> 
+> The pxa2xx CPUs are now only useful with user-mode emulation, because
+> we dropped all the machine types that used them in 9.2.  (Technically
+> you could alse use "-cpu pxa270" with a board model like versatilepb
+> which doesn't sanity-check the CPU type, but that has never been a
+> supported config.)
+> 
+> To use them (or iwMMXt emulation) with QEMU user-mode you would need
+> to explicitly select them with the -cpu option or the QEMU_CPU
+> environment variable, because the '-cpu max' default CPU does not
+> include iwMMXt emulation.  A google search finds no examples of
+> anybody doing this in the last decade.
+> 
+> I asked some of the Linaro GCC folks if they were using QEMU to test
+> their iwMMXt codegen, or knew anybody doing that upstream, and the
+> answer was "no". In fact, GCC is in the process of dropping support
+> for iwMMXt entirely.
+>                      
+> We have one test case in check-tcg which purports to be checking
+> iwMMXt. In fact it is doing no such thing: it runs the test without
+> selecting an iwMMXt CPU, which means the iwMMXt insns are interpreted
+> as FPA11 insns by the linux-user emulate_arm_fpa11() code. So the test
+> prints garbage and then succeeds anyway. Modern distro toolchains
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20250225163031.1409078-21-kraxel@redhat.com>
----
- hw/uefi/var-service-sysbus.c | 32 ++++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+Uh...
 
-diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
-index 28572981c2af..97da8672ee95 100644
---- a/hw/uefi/var-service-sysbus.c
-+++ b/hw/uefi/var-service-sysbus.c
-@@ -9,6 +9,7 @@
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
- 
-+#include "hw/uefi/hardware-info.h"
- #include "hw/uefi/var-service.h"
- #include "hw/uefi/var-service-api.h"
- 
-@@ -75,6 +76,7 @@ static void uefi_vars_sysbus_class_init(ObjectClass *klass, void *data)
-     set_bit(DEVICE_CATEGORY_MISC, dc->categories);
- }
- 
-+/* generic: hardware discovery via FDT */
- static const TypeInfo uefi_vars_sysbus_info = {
-     .name          = TYPE_UEFI_VARS_SYSBUS,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-@@ -84,9 +86,39 @@ static const TypeInfo uefi_vars_sysbus_info = {
- };
- module_obj(TYPE_UEFI_VARS_SYSBUS);
- 
-+static void uefi_vars_x64_realize(DeviceState *dev, Error **errp)
-+{
-+    HARDWARE_INFO_SIMPLE_DEVICE hwinfo = {
-+        .mmio_address = cpu_to_le64(0xfef10000),
-+    };
-+    SysBusDevice *sysbus = SYS_BUS_DEVICE(dev);
-+
-+    uefi_vars_sysbus_realize(dev, errp);
-+
-+    hardware_info_register(HardwareInfoQemuUefiVars,
-+                           &hwinfo, sizeof(hwinfo));
-+    sysbus_mmio_map(sysbus, 0, hwinfo.mmio_address);
-+}
-+
-+static void uefi_vars_x64_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = uefi_vars_x64_realize;
-+}
-+
-+/* x64: hardware discovery via etc/hardware-info fw_cfg */
-+static const TypeInfo uefi_vars_x64_info = {
-+    .name          = TYPE_UEFI_VARS_X64,
-+    .parent        = TYPE_UEFI_VARS_SYSBUS,
-+    .class_init    = uefi_vars_x64_class_init,
-+};
-+module_obj(TYPE_UEFI_VARS_X64);
-+
- static void uefi_vars_sysbus_register_types(void)
- {
-     type_register_static(&uefi_vars_sysbus_info);
-+    type_register_static(&uefi_vars_x64_info);
- }
- 
- type_init(uefi_vars_sysbus_register_types)
--- 
-2.48.1
+> can't generate a binary that will run with -cpu pxa270 (because their
+> crt startup code uses Thumb insns); rather than putting in a lot of
+> effort trying to salvage the test case to really test a feature we've
+> deprecated, I opted to just remove the test.
+> 
+> -- PMM
+> 
+> Peter Maydell (2):
+>    target/arm: deprecate the pxa2xx CPUs and iwMMXt emulation
+>    tests/tcg/arm: Remove test-arm-iwmmxt test
+
+Series:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 

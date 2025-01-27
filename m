@@ -1,106 +1,105 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2470920njk;
-        Mon, 27 Jan 2025 06:23:02 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXDdRf5ZYi101jE2uGfipDUuplAQikgHexmpDf+pcbcAETlMH6okDutQT90AQpSdNkKdisl1Ek9JSzFnQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IHPw6qMEcL+v0g8x06dszThZ/5mYUGzE/f4cwmAshhgijooelH6Ny2PGAWwYlS0oVBFfjP/
-X-Received: by 2002:a05:6214:2f91:b0:6d8:9c92:654a with SMTP id 6a1803df08f44-6e1b217904dmr763600486d6.10.1737987782658;
-        Mon, 27 Jan 2025 06:23:02 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1737987782; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2476209njk;
+        Mon, 27 Jan 2025 06:31:35 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCU0sO79oYkUZSIU+X9aa8WwHBpUQNsHuuRRmxapuvF5w3ZJ/Dy2OLagxZQrzptChPU4FfLgUogVeuLgIQ==@linaro.org
+X-Google-Smtp-Source: AGHT+IG+oIJZOSw8JbSW7xJF4RLkmyVQ5nDz9o2q5yv1bErraMh/fcAmto7C00LW1PPGgSSS3E7J
+X-Received: by 2002:a05:620a:191f:b0:7b6:67e1:b4ff with SMTP id af79cd13be357-7be931ff9c8mr2897126385a.28.1737988294950;
+        Mon, 27 Jan 2025 06:31:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1737988294; cv=none;
         d=google.com; s=arc-20240605;
-        b=CLTIHEGdTgJqiuniVATLHJRX3iYwqft63RGr0iLvtkQTpjAH049vRPSBj79Pr9G09K
-         wAHZaNYuoPwPnyuum2piG5QGTBVfKcldmi/rAEKAfdwwOCGiSempx21ZWnJtdYojLhlB
-         PQfdjME5AknrgdOO8oVDxvCr5tfMinHLl945+C41HQ3aDR+s03uaYBTw2cPNjKSpqCMw
-         XsPlUVyRU77z/7eFvu+vWM5N3Wi85bo4r1cw7SSYiqN0UEMNCSBzo1Ma7T0775hltvDT
-         K4gdzQK9glFmzqN9f3NaRu53W6pXK+mXvuJT7r5Qi41EMdtMHrhKpHYTwQxN8F+mYPOD
-         627g==
+        b=AcBWCJZM2RgE4VVLRS1QQfxoGs4c1BquyfZ5UtoOFJV4OqN1FNhKAwnDGwUtum8o4/
+         ad2irVcZ6ixPwBTeK4EcZUFdKZnfv795ZccHnhcFtCnjL2sgQfKOIdB0SLeIDxunwTSK
+         Y2T0m66h1CKFm55PaFa004HXvPRrFtEc5O6FOgVlNASBptPwvdMjEflAnlHZrxN5PYli
+         3fUAQ1ve/0uoUpDh7+3jMslGcMQSJCr5+vAcOq7zM1VfE6V45JzBNHJhP7K7tM1scjIT
+         uopHECOeCghZBywMwQyeeWhVvZuK06B8e5uv7ny5GE42q5DSJYTxtouQlZiIQpXQ7hcs
+         Rf6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=IqT9Pqud4yyi1nkIL9hnP/ngJ2ww+fjlQNiSnOSjGhA=;
+        bh=jxacrGrP0r/CLm+pmtQ3yNFfGjcJ7eTZMri8LzeUc3A=;
         fh=ZunbYo7vBCjqSWc9622LTLPHQcfFJMelhG0lIzAt0Bo=;
-        b=gEvdyVoEjyzKtOkuoBSpuRMtI2apWWfTKGgfshLNwwj6IQJUXyhdPXbvDn89ShtMwe
-         cnDpwPiW5GCz3to/oAVCE9pUZwfzIRd7NgO7hv8yhLd/MPdRVN9MKodgiPBaTVLLEK86
-         7WuRFlD5pYdjxD+9q0uo3xDyCXMd6B0p30bVLT9jNiHAIjdeExEninm56sJMLKvKGqJu
-         rS9hXokjqx/OWhT5hLpfP9ZPrR8KAtEywCwXjRisdfFxPms/yz+a6LkvR8MfDzIMHDJ0
-         RKYxPsGJ4nCG9SxAnmfosUBYNCR7iNZV5y5WdM8SOXZbkYQ29/esJwUEdWzIsZG78m/F
-         FdCw==;
+        b=GSQiT4B0w5vBfa2wgZmJ3mkHuE0XOh44FPZ/QZLE3dOjmGwxcEaw3HDHK6G8zBw1MM
+         qRIUl/JMPjZ2DlolKyw6V7phEOOx1X3MAXhwJxyUz8ngfZYb7/7Yhg9PcnXf+qKNggKe
+         t/KhjTT9gd4wqCY1/h3P9qNLgQruNXXeIs+ZY5TfTNgksXXw/ORvRYGH3v4bygBNA/46
+         04mNLGv3Zwj2vOsI5AjrZ/yr9cma6pMSSDOp0f/1VchtoBumrPOE6PBRdJEA21phS6J5
+         C4Xcn6tN0u+VzxMjEA4uUYNwtT/vhzm0kUIzNazK+ARzYfmnsxFagybpIn7u6SMkP0xi
+         2tOA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W+oe4XqA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NR0RsMyI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e20535fdb6si105083736d6.105.2025.01.27.06.23.02
+        by mx.google.com with ESMTPS id af79cd13be357-7be9af2b80csi969015885a.635.2025.01.27.06.31.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2025 06:23:02 -0800 (PST)
+        Mon, 27 Jan 2025 06:31:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=W+oe4XqA;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NR0RsMyI;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tcPzw-0003MT-Ci; Mon, 27 Jan 2025 09:21:57 -0500
+	id 1tcQ9B-0003fO-0I; Mon, 27 Jan 2025 09:31:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tcPze-00037R-DM
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 09:21:42 -0500
+ id 1tcQ96-00035C-KH
+ for qemu-devel@nongnu.org; Mon, 27 Jan 2025 09:31:24 -0500
 Received: from mail-yb1-xb32.google.com ([2607:f8b0:4864:20::b32])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tcPzc-0002on-Il
- for qemu-devel@nongnu.org; Mon, 27 Jan 2025 09:21:37 -0500
+ id 1tcQ94-0004GD-II
+ for qemu-devel@nongnu.org; Mon, 27 Jan 2025 09:31:24 -0500
 Received: by mail-yb1-xb32.google.com with SMTP id
- 3f1490d57ef6-e3a1cfeb711so6380304276.0
- for <qemu-devel@nongnu.org>; Mon, 27 Jan 2025 06:21:36 -0800 (PST)
+ 3f1490d57ef6-e5773c5901aso8853037276.1
+ for <qemu-devel@nongnu.org>; Mon, 27 Jan 2025 06:31:22 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1737987695; x=1738592495; darn=nongnu.org;
+ d=linaro.org; s=google; t=1737988281; x=1738593081; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IqT9Pqud4yyi1nkIL9hnP/ngJ2ww+fjlQNiSnOSjGhA=;
- b=W+oe4XqAJLu5xB1dHIAtTwgvjLN0cmoTT6+L65JDyThbcVN71y/1rsH534+RBMK+fq
- StzEJlqTYKQqZ4JU/khw3qUlMQMg8InbJu4pW8GcnbH5cDBCcPbErhZB0C1wJI33JJ+c
- y1qUp1v2z5odTQM/lQCuedPC6oDovpAGmXr3ONHaWo3yE88t4h931nkoKozGoC0YSKnI
- /o1mV94W9TMdoFgiZev6g+k2FJjyM1OoUI3MF4J8/kQ3IyIB3MoaSxkGUUFOl2Sqx+BW
- oe7GUd4qdoJg4iTJQA5c9c7WdbEslZLOs4rK8CMl09YYwUmC4gMT+SQ9fwxyUO6QupNy
- 9enw==
+ bh=jxacrGrP0r/CLm+pmtQ3yNFfGjcJ7eTZMri8LzeUc3A=;
+ b=NR0RsMyITf9gkG6HOLA8GUvsDq51p+LLIgKKmPxjPJ1xvedcUNJrZxWJm2KAkHk8tn
+ EowYtM/qz1XRFYovNw0S4PhuwtjZ30bWfafHuLjdaM+Wv2WsCASWKPNjCG7FEUra+gm2
+ RAkHq7Tk63+Y8EKFWYPoNhGo8OtTFjdGt1xt1ZiS2KDg3LQCYIQYlqowWrOFpNwTX59F
+ aZ5cE0+jp4z6k7s53f7bFaDssJJfHlsfLYHtYheRdLnn/yg2+pxfYW/+Zi3QEQN3Xze8
+ Hw8STG7hWi4GvFFJHqemnTUJBuEOp/H+UsNKVdW10zvV88qOAoIJoUoWFtGFY9ox1VKj
+ DA0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1737987695; x=1738592495;
+ d=1e100.net; s=20230601; t=1737988281; x=1738593081;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=IqT9Pqud4yyi1nkIL9hnP/ngJ2ww+fjlQNiSnOSjGhA=;
- b=Zwy64sWZDs5Ja/ZCGS05gS4EE4GnTj/oo7a04GOjhq3QIBz1Zg5ekDsrOGpOtstDm2
- mb5ZhcOsX/RVS2U6Lk3Y/waATM1ToeNpfmF0XwNVeqFwAiEhzj3jGEQBASSym1QPO2De
- kYnTqdG/eClgtRF0qF+TYx2/ADDggBTU1GIWZQLMgOukPSjbWmT8JEVXoviM9LahUv1p
- SxBvBuTfotTcVeJRWsH+OaU79dI8NJJgz9Jrweb2ORb5Lh2tFTCOcoHf1FU5+WulpWrg
- RdNEglkyL9mmncrQsUHSw6sFyKlbuCwH07/ZB2GqyErueOIpPBR11cqzJHtPReUBmBwe
- By7A==
-X-Gm-Message-State: AOJu0Yzl7Ex9LKUVbMDnAiDWDF04Av2GTrOUgp/Uiiacp/YI//AMjAwY
- lQH6LIF/tmCiwPqpRtkZpcaf+3E2m1ZbdL4Rk/zRgyaP7BDDwJufunhPiZjlQOpav9loJ5OQArm
- duIQc8nEh6VXgcDSb+EJKsVP4vi88vXL/dbsSPw==
-X-Gm-Gg: ASbGncu3ktJZgAFU8iFd1HIRh5cVjhrc6UPfAgl+UzNCPbJes9Unbuos0FP9BrMnwsO
- +a7jYLuTnoAVcMt5Gvv+BaN8GiG2odm9NT6Jr4jZcItvDB9ffYw/JkYnjfVC6fdk=
-X-Received: by 2002:a05:6902:2b89:b0:e39:73f7:b13f with SMTP id
- 3f1490d57ef6-e57b106357bmr25841645276.18.1737987695340; Mon, 27 Jan 2025
- 06:21:35 -0800 (PST)
+ bh=jxacrGrP0r/CLm+pmtQ3yNFfGjcJ7eTZMri8LzeUc3A=;
+ b=Jp/TnoyKhpGqi0CcvrP+bZBPoY+QjURLlt3NlwIYY3ldZFZOSN+hDJ/kbQCAQQ6h21
+ Ajz7lqoJA1pUf36Roxk0brjCmalwD3U+Q3W9TsBkIZ1ZZXO93mxNnUq1MV74+Htazvjp
+ bzAHDO44FP6atpE7jcBSLZJw1yyoS10hansu5kx0BdkSo+jHWZLyQR5wah7JzAEJ7NNz
+ YCVeQ8RhOJaOi7vMnauI7HLLcxd70usW4NC41EWI4P6H1IPLRY0ggicnvFRonP6lkwdc
+ IVNnaWPYCtqFLYoyRo+CEGeboBfz5CW4AViO3CBq29vZqlY2wFlBblAZqNWrRjEUgz25
+ WjAA==
+X-Gm-Message-State: AOJu0YyqOFiZr5iFaDBT2ILt1aVRfH92Sk7knPcckEIGr+GFip/OfWuc
+ httkq6nZDWc58Zbsj0JKNZ5Cd69IQZjUcFGAK251nxIKZcI065TrDFXRUiiWVctWnhzUgPYsObW
+ 2LKMfSDwGwNyG9PEZ5yEwRgtpNN97etxlQEuZPVKbN72vfFj6
+X-Gm-Gg: ASbGnctOpiFE94nb5tLwjxumt91xoE7AznFP5FfpphUTy0SWkYYps+NHqO7qNLeRumP
+ YgOd9B8tr7Ca/To/Z/9uZTltPk746dWODnmGs9NKeSa5rgsmmY9VKJaXcgU5hFSU=
+X-Received: by 2002:a05:6902:11ce:b0:e49:5f2d:e722 with SMTP id
+ 3f1490d57ef6-e5825835eefmr13960663276.14.1737988281203; Mon, 27 Jan 2025
+ 06:31:21 -0800 (PST)
 MIME-Version: 1.0
 References: <20250110160204.74997-1-philmd@linaro.org>
- <20250110160204.74997-10-philmd@linaro.org>
-In-Reply-To: <20250110160204.74997-10-philmd@linaro.org>
+In-Reply-To: <20250110160204.74997-1-philmd@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Jan 2025 14:21:24 +0000
-X-Gm-Features: AWEUYZlznFRi5lhN7GGj6NwdgjXJhdWPd5AZ8pDgARaGIOX2cLir86Q4xQHQzdk
-Message-ID: <CAFEAcA9u2YpHLPuU+268Ft=QKxTr5S_b+jtQCR1SEf7O3jNvbQ@mail.gmail.com>
-Subject: Re: [PATCH 9/9] hw/arm/stellaris: Wire GPTM[#n] output to ADC input #n
+Date: Mon, 27 Jan 2025 14:31:09 +0000
+X-Gm-Features: AWEUYZlw63k5VIdnIM4zLcNXk48nMCuWoPfkr8XEAdh1KP-asD5Mxilrf4UscJ8
+Message-ID: <CAFEAcA95_AcsszEwqybegfabb-bcZK0qfvF1BjmbsSReTbwvaQ@mail.gmail.com>
+Subject: Re: [PATCH 0/9] hw/arm/stellaris: Fix overwritten IRQs and cleanups
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
@@ -128,108 +127,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: G3v2jc6rLHg4
+X-TUID: bQKJUSiTUOkc
 
 On Fri, 10 Jan 2025 at 16:02, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
 g> wrote:
 >
-> The ADC model is very simple, and only consider the 4 GPTM
-> IRQs as trigger. Currently they are all wired to the same
-> input IRQ. This is a QDev design mistake. We could use a
-> OR_IRQ, but the ADC actually really has one input for each
-> GPTM, so have the ADC create 4 inputs and wire each GPTM
-> output to them.
+> - Remove invalid unimplemented I2C#0
+> - Add DEVCAP() macro to check DeviceCapability registers
+> - Check DEVCAP() before creating devices
+> - Use 4 inputs for ADC, wire each timer output properly
+> - Improve documentation
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  hw/arm/stellaris.c | 26 +++++++++++++++++---------
->  1 file changed, 17 insertions(+), 9 deletions(-)
->
-> diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-> index c89522332e2..446d6595a6d 100644
-> --- a/hw/arm/stellaris.c
-> +++ b/hw/arm/stellaris.c
-> @@ -701,8 +701,16 @@ static void stellaris_i2c_init(Object *obj)
->      sysbus_init_mmio(sbd, &s->iomem);
->  }
->
-> -/* Analogue to Digital Converter.  This is only partially implemented,
-> -   enough for applications that use a combined ADC and timer tick.  */
-> +/*
-> + * Analogue to Digital Converter.
-> + *
-> + * Each of the 4 trigger inputs has a MUX for 5 inputs
-> + * (see Stellaris Data Sheet Figure 11-1: "ADC Module Block Diagram").
-> + *
-> + * This model only consider the GPTM inputs, thus MUX is not implemented=
-.
-> + */
-> +
-> +#define STELLARIS_ADC_TRIGGERS      4
->
->  #define STELLARIS_ADC_EM_CONTROLLER 0
->  #define STELLARIS_ADC_EM_COMP       1
-> @@ -986,7 +994,7 @@ static void stellaris_adc_init(Object *obj)
->      memory_region_init_io(&s->iomem, obj, &stellaris_adc_ops, s,
->                            "adc", 0x1000);
->      sysbus_init_mmio(sbd, &s->iomem);
-> -    qdev_init_gpio_in(dev, stellaris_adc_trigger, 1);
-> +    qdev_init_gpio_in(dev, stellaris_adc_trigger, STELLARIS_ADC_TRIGGERS=
-);
->  }
->
->  /* Board init.  */
-> @@ -1061,7 +1069,7 @@ static void stellaris_init(MachineState *ms, stella=
-ris_board_info *board)
->      DeviceState *gpio_dev[NUM_GPIO], *nvic;
->      qemu_irq gpio_in[NUM_GPIO][8];
->      qemu_irq gpio_out[NUM_GPIO][8];
-> -    qemu_irq adc;
-> +    DeviceState *adc;
->      int sram_size;
->      int flash_size;
->      DeviceState *i2c_dev[NUM_I2C];
-> @@ -1144,15 +1152,12 @@ static void stellaris_init(MachineState *ms, stel=
-laris_board_info *board)
->      sysbus_connect_irq(SYS_BUS_DEVICE(ssys_dev), 0, qdev_get_gpio_in(nvi=
-c, 28));
->
->      if (DEV_CAP(1, ADC)) {
-> -        dev =3D sysbus_create_varargs(TYPE_STELLARIS_ADC, 0x40038000,
-> +        adc =3D sysbus_create_varargs(TYPE_STELLARIS_ADC, 0x40038000,
->                                      qdev_get_gpio_in(nvic, 14),
->                                      qdev_get_gpio_in(nvic, 15),
->                                      qdev_get_gpio_in(nvic, 16),
->                                      qdev_get_gpio_in(nvic, 17),
->                                      NULL);
-> -        adc =3D qdev_get_gpio_in(dev, 0);
-> -    } else {
-> -        adc =3D NULL;
->      }
+> Philippe Mathieu-Daud=C3=A9 (9):
+>   hw/arm/stellaris: Link each board schematic
+>   hw/arm/stellaris: Constify read-only arrays
+>   hw/arm/stellaris: Remove incorrect unimplemented i2c-0 at 0x40002000
+>   hw/arm/stellaris: Replace magic numbers by definitions
+>   hw/arm/stellaris: Use DEVCAP macro to access DeviceCapability
+>     registers
+>   hw/arm/stellaris: Map both I2C controllers
+>   hw/arm/stellaris: Only create MPU when available
+>   hw/arm/stellaris: Only map existing devices as unimplemented
+>   hw/arm/stellaris: Wire GPTM[#n] output to ADC input #n
 
-Here you remove the code path that initializes adc to NULL
-if the device doesn't have an ADC...
-
->      for (i =3D 0; i < NUM_GPTM; i++) {
->          if (DEV_CAP(2, GPTM(i))) {
-> @@ -1166,9 +1171,12 @@ static void stellaris_init(MachineState *ms, stell=
-aris_board_info *board)
->              sysbus_realize_and_unref(sbd, &error_fatal);
->              sysbus_mmio_map(sbd, 0, 0x40030000 + i * 0x1000);
->              sysbus_connect_irq(sbd, 0, qdev_get_gpio_in(nvic, timer_irq[=
-i]));
-> +
->              /* TODO: This is incorrect, but we get away with it because
->                 the ADC output is only ever pulsed.  */
-> -            qdev_connect_gpio_out(dev, 0, adc);
-> +            if (adc) {
-> +                qdev_connect_gpio_out(dev, 0, qdev_get_gpio_in(adc, i));
-> +            }
-
-...but here you add a test on whether adc is set or not.
-
->          }
->      }
+Applied 1-6 to target-arm.next; left review comments on the others.
 
 thanks
 -- PMM

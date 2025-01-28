@@ -1,227 +1,214 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2838371njk;
-        Mon, 27 Jan 2025 18:16:06 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCXEoyM07k/QFrKnjWdod9Hi5noacq5x2ktPEYoRXMvSBVe/iGsd7QdtBVCCzDf1mRRXsMpKNVzrS4Urrg==@linaro.org
-X-Google-Smtp-Source: AGHT+IFBtry6ywrEiPpvYis+3j7baCoVv2zAIFBUw/BNr3stc1aqPBvuUTMYk0LIwpmq+X8ZH2Mc
-X-Received: by 2002:a05:620a:1793:b0:7af:ce28:a10c with SMTP id af79cd13be357-7be63210307mr6326395785a.12.1738030566217;
-        Mon, 27 Jan 2025 18:16:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738030566; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp2987751njk;
+        Tue, 28 Jan 2025 02:01:14 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCUhMk9wJOtTkyF5Be77ku5dfZEeN1AdszPwDMdNbtURxGu69eYyXGFZBfe4F/5Ns5Y5XHVqgi1vKJwNWA==@linaro.org
+X-Google-Smtp-Source: AGHT+IHyeCsRedLizs6jdmSC9MLdZNiKMQ+LyNPNOlFhksgXj6OKEAWJY+j3pWSPMBk28F4h0ylX
+X-Received: by 2002:a05:6102:b01:b0:4af:a216:c0d0 with SMTP id ada2fe7eead31-4b6909c1d11mr41935610137.0.1738058474643;
+        Tue, 28 Jan 2025 02:01:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738058474; cv=none;
         d=google.com; s=arc-20240605;
-        b=WdXCJw4xzHDYlntUfWPqxns4zpm3Ym1fApmXc8UK7Xko1t9iAiuqZY/vIbRgeF0Bjh
-         T+JL4fSMXCkmLseDEXtFB4r5sWBdIppHUxgCjtF0vsByN+zjLEpzWrzYe+o2lpZ6rvQU
-         xA9rMZmwYjgnXC2MRUW/g6oDbJWdPWIZD190+OBacopqfCjLvlcIxP5VvNCSBeLJGOj3
-         5z+cFxFpM0GeBrQ0SMy9FXZEZO/9KJwuBL59U8nHIBgFl6sTYB0ufR8DsCBW0zDEf2Oi
-         5gfG0E1nci7HNXIy88bXYYkV30uElbiOI7RV5PmqdeX4vxR4qn36JSlh33GGrMlZJoxJ
-         t9+g==
+        b=Zhh87zV+RwIxyqU+wobWBSl/7rz1j5QOQfeKRqavRADuPgZmgimo3ie+46Z/NuZXyX
+         YD6TpTTzWbq4xBNggg5OuNuf3dDg8jBVQnQ9wlPekeLDEAHluD7G/dgtRmuUIyG9xxft
+         9HQDTH9r4O3zBSaEAfZa8i+VRk3xMbQrLwj6/rkZL3T4ZA0shYbqdxc/UcyQ95eXWEJw
+         Mh7eyJwoVW7QYQ3pYa1DUUdcoavc7339O3WNWpwmlT3e7CzW4g5GW75VsG+RNRANGPdJ
+         TdcdNUG7Xt/B4iiE6wEhyurvixOPNv8+/z2nwnhJaIZQCbnxDZ1oVokQnPNGceDT5IVL
+         j2kQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=r9xHoRG6np2r6PA/PJt0tvyafxMMFMkMC3nLervUekI=;
-        fh=GFf9WJHhaUXxIlb4pu1GP18CWkszSlTxZVeTnaV2+90=;
-        b=Xtukj2pPw/lyoYXVC90Exl/A4onydZxWp8lUU7CzKo6Bjz3KhH2C5ctS/ZQjB9CC8p
-         1nWIV6Njo8Lfx43+vnNXVRybCqLW5ANpcd2YqLc9KvsifafpBvUZMbbzoabp15V3UzeS
-         tFxIasCGuwu/7Ty6rnrtd+IhdtxBxmF6YC0lKtYRENE664wgqEdwts1o3NiUt/NxbQc/
-         UEhUuvnhTWbQH6a655aFc7uG13MBu6EekO4OLqL7TgqhC0hYPwamnD8XePF2Ii3PhuH+
-         RWsnYL1+baNjtrF5fF9HY02J+kO4ZEGiDz0pj9txsGDvk1yz9E+r/23N7PF964VkfRXh
-         I3+g==;
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date:dkim-signature;
+        bh=tR3ctpdBtfVDWRGXkkRv+NzMbzIJpRZLUqkczU6g/Vs=;
+        fh=ga30WJz+AM+zGlkQ58aeLKsNtsPzufzpPtZNXhGYMmI=;
+        b=RKmApYh6r6dfYAAXWhu8PYkTiPxInKYxVMEC0aFmaIcTyQ4672aFrQe8h229Wt1uTu
+         chyRwryjQtDTifkK4Mko4LSodByHthwc2EbafBmGtthlBjhqMuZNHVMttRdTiiEee9Vp
+         4qU778/jdxZWCF+Npvq2CZ6zu9w730NXg6HsmoR6MGAuUJ7d4yAVFlZbgz0jXZvc70Cs
+         8kjs5V4/m3/qCNqxPQjImRfWzrf5eP+dKpwmlvwD37PyVjEeVXIdMscG9qPXf+agwI2h
+         NJ/p/kTNK9behKg5RJiCe4JdrasQfOnQ8KWe/wVfxBQGJ4W2Fr3QNx6tnmNVRZ/t8POB
+         u/NA==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Pl9c0gvJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=G6vtGOYg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id af79cd13be357-7be9ae845c2si1108658285a.70.2025.01.27.18.16.06
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b7099f8075si2778320137.505.2025.01.28.02.01.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jan 2025 18:16:06 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Jan 2025 02:01:13 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20230601 header.b=Pl9c0gvJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
-       dara=neutral header.i=@linaro.org
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=G6vtGOYg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=kernel.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tcb8F-0002n7-My; Mon, 27 Jan 2025 21:15:16 -0500
+	(envelope-from <qemu-arm-bounces@nongnu.org>)
+	id 1tciOt-0003na-Hx; Tue, 28 Jan 2025 05:00:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1tcb8C-0002kk-Ma; Mon, 27 Jan 2025 21:15:13 -0500
-Received: from mail-vs1-xe2e.google.com ([2607:f8b0:4864:20::e2e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1tcb80-0004Iw-60; Mon, 27 Jan 2025 21:15:12 -0500
-Received: by mail-vs1-xe2e.google.com with SMTP id
- ada2fe7eead31-4afdd15db60so1463281137.1; 
- Mon, 27 Jan 2025 18:14:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1738030497; x=1738635297; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=r9xHoRG6np2r6PA/PJt0tvyafxMMFMkMC3nLervUekI=;
- b=Pl9c0gvJbs+YweuAdTHqv2XbXtbpFNuTMREeBj9RcLOzicz1sJDjsjGWMnr60ZSKPI
- U085hLFfuKUslvQ+/QK79r4dnjs0naSkZU3GLwKmh1Er6uuhA4K1rPwkpfsdfULHhzRH
- 8rHEopTdQ2FKgU23BAnl/KX5vY8EHuzXbVkkdKLOsby+74Sq9BhEZWbnqXAOZ+3MtEIf
- U4x1xY2hFO3bf3ywglifhtWhUaBMuucjRTtWorFVgrZecaiZWoA0+EGoUnmQLzkM4gck
- lHbAOHO2YhuHgEyav0xhCx8eXXaw9CXDNdCg9E7CVF0DxZrzCNEglfUy1LWfioIxrwv4
- z8IA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738030497; x=1738635297;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=r9xHoRG6np2r6PA/PJt0tvyafxMMFMkMC3nLervUekI=;
- b=TMI7el6Tg190g84PjpFMQMFAr6Ua0I4w3GlvO60r1SpMATduhTo4ew+78vcZJrEtxu
- GZqkImOYPY8Ny9PiR1nD6P0JBPFtNrwkgVZ1fnRRCoMOhblwUg6I4gtXp1PwJmu65LuL
- GqktkvcsYzuoco/8z5Vttb7viPt7L9Kyd9pOGs88XJyQPWLtI5RYtofy4psGp/u98H9M
- CeBrztQjCuwesDYHIA4prV4UPIZDgy0Cf1Dt2ToYmEznWS1jQl9F5XuCRPHntO5UW1oL
- tL2BhF8zqj6AXpB2rRHKfdiNqOq0nC1lYH4p4R/9UOmeXLAt6whLs7PUZI+4iNm7KL6Q
- vqtA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU1LFT6PZGCowReSdDks3eXoSg9SAts76ADj01N49wAiXZK1B4669YNQcEZQoRCyKxo8r7fQsqXj19p+g==@nongnu.org,
- AJvYcCUefRFVdnaJE3VbvRKFEIdXfAmzWHiHE++5oXba6kHLg7MRZPWvsO4y5e54o+WEwd5hqqzZGAEsjiQ=@nongnu.org,
- AJvYcCUvRy0OlRj7UmOXDPxFtFuokrSSej7n0v+XkzzR16PMvZN6c0Vpkul+EFNzfgJRKGKi4+A+cXj2+g==@nongnu.org,
- AJvYcCXLAylIXYYo7Ow1vzl00qBqgvhptcmhRyigT5Eot22ugOHRffVgU4++D5larEnCSV1XzrjNNloubJ5i9Q==@nongnu.org
-X-Gm-Message-State: AOJu0Yw0icegZqrTTiGawRT44iOCj3o5LGpr9H2d75iY1PB4KVUJdgYr
- aAZDeixbAnj/B35PGCazHs6OsbyF32H9PWQL7P2YcDsYn+xrz6yVqDSGHo470MgaQVpq3CtBFaz
- 62OaiXHg18AlRYc+2UcD8t35LUF87yw==
-X-Gm-Gg: ASbGncv7bGZ2xOhLRe2hP3yCXruScHM44D9csKOUQrhvh4MIrFw4OEcZSuu5nlAk3/u
- mlq/BMeZk+UPWnanXdI3aVAKu0tBdj6MbBVJ3+2/r1kMP1KP2flCn3xECwhTA6qQNTBSvpbT1r3
- AwX6kQqHHZ/Rz8Mf5sn/eyGmnsAA==
-X-Received: by 2002:a05:6102:548d:b0:4b6:5e0f:6ddc with SMTP id
- ada2fe7eead31-4b690be8ea7mr32059480137.14.1738030496737; Mon, 27 Jan 2025
- 18:14:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tciOs-0003nH-34; Tue, 28 Jan 2025 05:00:54 -0500
+Received: from dfw.source.kernel.org ([139.178.84.217])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
+ id 1tciOp-0002Wt-DO; Tue, 28 Jan 2025 05:00:53 -0500
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by dfw.source.kernel.org (Postfix) with ESMTP id 0DC985C58A0;
+ Tue, 28 Jan 2025 10:00:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 99BF2C4CEE7;
+ Tue, 28 Jan 2025 10:00:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1738058441;
+ bh=kZ5N8tHCHo1PrNZqE9WlUMEB8RGu5iVv5hQ4/VAaUpc=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+ b=G6vtGOYgV8ruY7AF1SWwVYIpaG4+lPlu6Fkv24SvdbRutxSMsJW2GOgelXXeXHj9K
+ XKgnKAamkuOpz34TgqYxcsJpPMfLV5NG62q9KQHMZExlr0iA66S3G35TfiZIWm5Znq
+ JxxmXCl5fBxZsiB3BQXH7iCy4x1Q68HWSU+5tdxum/g3iHnB9J9gWrxU1uhl5yIZ1U
+ +a0gED1Y4Ja2J4wBTqgE6H56TKmSBF7MlKxtsF7o1r/Zo3uRFunaDpxktlHv4oA6fa
+ nEgtP1dxeW1ip/Ey9MYsC8ybPdtbf6f3M+S5/2Vhh3CWhrlzLnv2F6eJdMvFpsbHMw
+ nwG3dIhbGJ8wA==
+Date: Tue, 28 Jan 2025 11:00:34 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, "Michael S . Tsirkin"
+ <mst@redhat.com>, Shiju Jose <shiju.jose@huawei.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, Ani Sinha
+ <anisinha@redhat.com>, Dongjiu Geng <gengdongjiu1@gmail.com>,
+ <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH 02/11] acpi/ghes: add a firmware file with HEST address
+Message-ID: <20250128110034.650445fc@foz.lan>
+In-Reply-To: <20250123100217.00007373@huawei.com>
+References: <cover.1737560101.git.mchehab+huawei@kernel.org>
+ <a3579f6c2c24e764e544f83b6e1b2dbef730e3e3.1737560101.git.mchehab+huawei@kernel.org>
+ <20250123100217.00007373@huawei.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.43; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20250127113824.50177-1-philmd@linaro.org>
- <20250127113824.50177-3-philmd@linaro.org>
-In-Reply-To: <20250127113824.50177-3-philmd@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 28 Jan 2025 12:14:30 +1000
-X-Gm-Features: AWEUYZkQfhfKtkyt5YLJdZtqmowkuuA3J0M10zrKucB3xT4x3esttp3fdyDS9ko
-Message-ID: <CAKmqyKMXZPnW3iTXVD8iL5cZRTxz+iokCYPhJuruFt7sm8GotQ@mail.gmail.com>
-Subject: Re: [PATCH 2/6] hw/loader: Remove unused load_elf_ram()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e2e;
- envelope-from=alistair23@gmail.com; helo=mail-vs1-xe2e.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=139.178.84.217;
+ envelope-from=mchehab+huawei@kernel.org; helo=dfw.source.kernel.org
+X-Spam_score_int: -83
+X-Spam_score: -8.4
+X-Spam_bar: --------
+X-Spam_report: (-8.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_HI=-5, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: cV/nbAqHPPXu
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+X-TUID: n+1Lt9Q8/iyy
 
-On Mon, Jan 27, 2025 at 9:39=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> Last use of load_elf_ram() was removed in commit 188e255bf8e
-> ("hw/s390x: Remove the possibility to load the s390-netboot.img
-> binary"), remove it.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Em Thu, 23 Jan 2025 10:02:17 +0000
+Jonathan Cameron <Jonathan.Cameron@huawei.com> escreveu:
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> On Wed, 22 Jan 2025 16:46:19 +0100
+> Mauro Carvalho Chehab <mchehab+huawei@kernel.org> wrote:
+> 
+> > Store HEST table address at GPA, placing its content at
+> > hest_addr_le variable.
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+> > Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> >   
+> A few trivial things inline.
+> 
+> Jonathan
+> 
+> > ---
+> > 
+> > Change from v8:
+> > - hest_addr_lr is now pointing to the error source size and data.
+> > 
+> > Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>  
+> Bonus.  I guess you really like this patch :)
+> > ---
+> >  hw/acpi/ghes.c         | 17 ++++++++++++++++-
+> >  include/hw/acpi/ghes.h |  1 +
+> >  2 files changed, 17 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/hw/acpi/ghes.c b/hw/acpi/ghes.c
+> > index 3f519ccab90d..34e3364d3fd8 100644
+> > --- a/hw/acpi/ghes.c
+> > +++ b/hw/acpi/ghes.c
+> > @@ -30,6 +30,7 @@
+> >  
+> >  #define ACPI_HW_ERROR_FW_CFG_FILE           "etc/hardware_errors"
+> >  #define ACPI_HW_ERROR_ADDR_FW_CFG_FILE      "etc/hardware_errors_addr"
+> > +#define ACPI_HEST_ADDR_FW_CFG_FILE          "etc/acpi_table_hest_addr"
+> >  
+> >  /* The max size in bytes for one error block */
+> >  #define ACPI_GHES_MAX_RAW_DATA_LENGTH   (1 * KiB)
+> > @@ -261,7 +262,7 @@ static void build_ghes_error_table(GArray *hardware_errors, BIOSLinker *linker,
+> >      }
+> >  
+> >      /*
+> > -     * tell firmware to write hardware_errors GPA into
+> > +     * Tell firmware to write hardware_errors GPA into  
+> 
+> Sneaky tidy up.  No problem with it in general but adding noise here, so if there
+> are others in the series maybe gather them up in a cleanup patch.
 
-Alistair
+There are no other cleanups pending. Besides, as you noticed, this
+aligns with the comment below. So, I'm opting to add a note at the
+patch's description.
 
-> ---
->  include/hw/loader.h | 14 +-------------
->  hw/core/loader.c    | 16 +---------------
->  2 files changed, 2 insertions(+), 28 deletions(-)
->
-> diff --git a/include/hw/loader.h b/include/hw/loader.h
-> index 8985046be40..9bb34e6f062 100644
-> --- a/include/hw/loader.h
-> +++ b/include/hw/loader.h
-> @@ -155,20 +155,8 @@ ssize_t load_elf_ram_sym(const char *filename,
->                           int clear_lsb, int data_swab,
->                           AddressSpace *as, bool load_rom, symbol_fn_t sy=
-m_cb);
->
-> -/** load_elf_ram:
-> - * Same as load_elf_ram_sym(), but doesn't allow the caller to specify a
-> - * symbol callback function
-> - */
-> -ssize_t load_elf_ram(const char *filename,
-> -                     uint64_t (*elf_note_fn)(void *, void *, bool),
-> -                     uint64_t (*translate_fn)(void *, uint64_t),
-> -                     void *translate_opaque, uint64_t *pentry,
-> -                     uint64_t *lowaddr, uint64_t *highaddr, uint32_t *pf=
-lags,
-> -                     int big_endian, int elf_machine, int clear_lsb,
-> -                     int data_swab, AddressSpace *as, bool load_rom);
-> -
->  /** load_elf_as:
-> - * Same as load_elf_ram(), but always loads the elf as ROM
-> + * Same as load_elf_ram_sym(), but always loads the elf as ROM
->   */
->  ssize_t load_elf_as(const char *filename,
->                      uint64_t (*elf_note_fn)(void *, void *, bool),
-> diff --git a/hw/core/loader.c b/hw/core/loader.c
-> index 4dfdb027eee..ead10fb6cb5 100644
-> --- a/hw/core/loader.c
-> +++ b/hw/core/loader.c
-> @@ -425,26 +425,12 @@ ssize_t load_elf_as(const char *filename,
->                      uint64_t *highaddr, uint32_t *pflags, int big_endian=
-,
->                      int elf_machine, int clear_lsb, int data_swab,
->                      AddressSpace *as)
-> -{
-> -    return load_elf_ram(filename, elf_note_fn, translate_fn, translate_o=
-paque,
-> -                        pentry, lowaddr, highaddr, pflags, big_endian,
-> -                        elf_machine, clear_lsb, data_swab, as, true);
-> -}
-> -
-> -/* return < 0 if error, otherwise the number of bytes loaded in memory *=
-/
-> -ssize_t load_elf_ram(const char *filename,
-> -                     uint64_t (*elf_note_fn)(void *, void *, bool),
-> -                     uint64_t (*translate_fn)(void *, uint64_t),
-> -                     void *translate_opaque, uint64_t *pentry,
-> -                     uint64_t *lowaddr, uint64_t *highaddr, uint32_t *pf=
-lags,
-> -                     int big_endian, int elf_machine, int clear_lsb,
-> -                     int data_swab, AddressSpace *as, bool load_rom)
->  {
->      return load_elf_ram_sym(filename, elf_note_fn,
->                              translate_fn, translate_opaque,
->                              pentry, lowaddr, highaddr, pflags, big_endia=
-n,
->                              elf_machine, clear_lsb, data_swab, as,
-> -                            load_rom, NULL);
-> +                            true, NULL);
->  }
->
->  /* return < 0 if error, otherwise the number of bytes loaded in memory *=
-/
-> --
-> 2.47.1
->
->
+> 
+> >       * hardware_errors_addr fw_cfg, once the former has been initialized.
+> >       */
+> >      bios_linker_loader_write_pointer(linker, ACPI_HW_ERROR_ADDR_FW_CFG_FILE, 0,
+> > @@ -355,6 +356,8 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+> >  
+> >      acpi_table_begin(&table, table_data);
+> >  
+> > +    int hest_offset = table_data->len;  
+> 
+> Local style looks to be traditional C with definitions at top.  Maybe define
+> hest_offset up a few lines and just set it here?
+
+Ok. I'll follow Igor's suggestion of using uint32_t.
+
+> > +
+> >      /* Error Source Count */
+> >      build_append_int_noprefix(table_data, num_sources, 4);
+> >      for (i = 0; i < num_sources; i++) {
+> > @@ -362,6 +365,15 @@ void acpi_build_hest(GArray *table_data, GArray *hardware_errors,
+> >      }
+> >  
+> >      acpi_table_end(linker, &table);
+> > +
+> > +    /*
+> > +     * tell firmware to write into GPA the address of HEST via fw_cfg,  
+> 
+> Given the tidy up above, fix this one to have a capital T, or was this
+> where you meant to change it?
+
+OK.
+
+> > +     * once initialized.
+> > +     */
+> > +    bios_linker_loader_write_pointer(linker,
+> > +                                     ACPI_HEST_ADDR_FW_CFG_FILE, 0,  
+> 
+> Could wrap less and stay under 80 chars as both lines above add up to 70 something
+
+Why? This follows QEMU coding style and lines aren't longer than 80
+columns. Besides, at least for my eyes and some experience doing maintainership
+on other projects over the years, it is a lot quicker to identify function
+parameters if they're properly aligned with the parenthesis.
+
+Thanks,
+Mauro

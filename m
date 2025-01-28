@@ -1,128 +1,119 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3006807njk;
-        Tue, 28 Jan 2025 02:48:17 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCWmB1Qugd/HEDsm/H17cBDMwdcor6k2rL2SMbA+piICJSX1g36LZf7vHYBhH6ZiO0ON0Wrv/SiPjUbBDQ==@linaro.org
-X-Google-Smtp-Source: AGHT+IH4x0PlBoTo/Fzh4vTEYE9ZrQX7IhMlKKME14b53Bg/zocCAAGhc+PSD4tp+Hzx94WFjXNo
-X-Received: by 2002:ac8:7d4e:0:b0:467:54f4:737b with SMTP id d75a77b69052e-46e12a87937mr685687421cf.25.1738061296955;
-        Tue, 28 Jan 2025 02:48:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738061296; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3013556njk;
+        Tue, 28 Jan 2025 03:03:21 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVOuSFNvgMRwEa7+w2iPDICDDUjIKNBV0FrNSbFCG5DBUJBxhdCqa4e/RfGOl5egzmqovEhqs4D0TPNig==@linaro.org
+X-Google-Smtp-Source: AGHT+IFRD6Qo1H3qThX97Alt/UuLizFaCtYUvrXgEqiP3bXpMto4QZWu1XxBRDB1Na5XVaJdELYS
+X-Received: by 2002:a05:6102:50a5:b0:4af:f630:7216 with SMTP id ada2fe7eead31-4b690c85e73mr36262040137.16.1738062201301;
+        Tue, 28 Jan 2025 03:03:21 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738062201; cv=none;
         d=google.com; s=arc-20240605;
-        b=VM0WDFefGfDXy+CaEpF1UdYDCEgIs6s1TVk+bW4KbdrJxySoQXc08FvDCj0cx3Xbqx
-         Lr7ss5oX/YjAb4IH8ZEd3UGTyVO5kksuvbObNZ4H5gmzJswElWOWlvjXUWQ3dUoRHj8Z
-         rdYt0w9a1mrgXy3RjeSiyucV/GzbUlo4aI0+EZT4zGR+cZO1La9rAsHrhmP8a3Ll3n3D
-         y/xO4JzD6Fwr8T+48QR3z0HDJf3KIq6gxoGRr1YcJ+h0Q7Fz4/OMS+sgr1GmTgcpTm0Q
-         gBMdvGHcsVXxdq3wzZgS/wWHnVZbFvpDD2UqMMXpc1dHu3W22V+pLiaRj/HK7gBjTKV/
-         XOkg==
+        b=fqynxsnO1NJxGCEYnneLY1J3bzWhJqonjUj+oqiRMEb1IJXrsdvZyO4ngIXIekL/nK
+         piuGQ6PJe+Da+pXJtb8rRJEyqAEzsIrH3VZ/VWYp9B8LxjKPailkC3ipAcKecF4x0hUL
+         tfxrV9bK64Gwgyj86gY4+9BgaIo8espQydTdrmSmIcXqXPkg1xbbUcjV97CmnxXFsXQ6
+         RJjYuYmV+AMsRPpTxeU3PFfFdXY6mMPiwObmYtwV2UmovrQ4hoqEjvASjapBGnYJAFab
+         7Qovv+/JKc+2QM2PAKbRKhgcMhuoNVLVA8td48Zm6YIBYsonpEUjHVE9idDnT1X3dmHs
+         Rq7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=P84lmvWRoPuZSyE7d4+2LbnhWUe5f771b5Xano3sRNQ=;
-        fh=+G2pS+eHXkXmiTvBmAfp3MHxpcQy3FOKsTHIyiZ8RcE=;
-        b=FrW8kPamr80abtk4TvhiaYnGOLSGIWxaAY9SWq5DnZPQOGN8cCfBre/M9seU9Y2um2
-         7I5uvGC49HW2Mh9WyL1FIexddyevNscJoA3LcBx29pSGtiPDUXllxM7z50Ij4PRCTEBx
-         SDY71OrcirGgPj8eogcp0YYXN0908pUW9Qu7+sSQpo8Hwgj2eUt0B8D5JRf2Akld46fx
-         C7ngWIIrMBDEGIyy9mFI/WJBnfYNpreBKqVzdxi6QBXpnpTj6xm79NMn4pJ5B2ymmKpA
-         FwGk9zwzqz3rLRFhoGflI7oUwDpcgvyFg6TBHJpx5uZ7xEnvlJsWXlcxsHkUjypp3FzR
-         N9Ww==;
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=V2I2NjmN3Mq2+zaxHECDvWFrfzR/EWpUa/NXwTC2lBw=;
+        fh=h/NGAyv/hnDdsTRbX/HdYWoZGKUaSSMJ0dd1jEgqOtM=;
+        b=kd43yw1UaS/xQ3wGLySbBo1scXoa+G483E2vjqBorKNslV2oeFqjn9slOdsnzNRRda
+         ibVGdPqJipDp3WK9UtYGwF23xTRqBkCbHkGdLKdWVjLTVubjIIGdLYJjvI+yMTBuoSz4
+         h/J2veAhsn+pERb3eKAdg33WXdjElwr0S5uu4PBvGimOFmko5Hp6hzsTKB8b5o44e4+4
+         L6mS1lx3VvjDZCkatLK+iQDHQsdUDcSkeEDIB8ffGsrMeXidW0jYz/pKJTTd5TqChUql
+         cwh8rP0wtF9qC9Ztc2FmsPn824pH3JSlay8TlrxA0+hfbCLFhFFEbanAGuRF2fFLmyzq
+         RORQ==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OQ3aaO2w;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nPSdM2G9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d75a77b69052e-46e6686cb82si129673841cf.59.2025.01.28.02.48.16
+        by mx.google.com with ESMTPS id ada2fe7eead31-4b7097586fesi2928213137.64.2025.01.28.03.03.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2025 02:48:16 -0800 (PST)
+        Tue, 28 Jan 2025 03:03:21 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=OQ3aaO2w;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nPSdM2G9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tcj76-0001tM-WC; Tue, 28 Jan 2025 05:46:37 -0500
+	id 1tcjN4-0005X1-Hn; Tue, 28 Jan 2025 06:03:07 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tcj68-0001AT-B2
- for qemu-arm@nongnu.org; Tue, 28 Jan 2025 05:45:39 -0500
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ id 1tcjMk-0005Rf-4Z
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2025 06:02:46 -0500
+Received: from mail-yb1-xb31.google.com ([2607:f8b0:4864:20::b31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tcj65-0003a1-LR
- for qemu-arm@nongnu.org; Tue, 28 Jan 2025 05:45:35 -0500
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-3862d16b4f5so3334431f8f.0
- for <qemu-arm@nongnu.org>; Tue, 28 Jan 2025 02:45:32 -0800 (PST)
+ id 1tcjMi-0008Sm-Jl
+ for qemu-arm@nongnu.org; Tue, 28 Jan 2025 06:02:45 -0500
+Received: by mail-yb1-xb31.google.com with SMTP id
+ 3f1490d57ef6-e3a0acba5feso7526323276.2
+ for <qemu-arm@nongnu.org>; Tue, 28 Jan 2025 03:02:43 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738061131; x=1738665931; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=P84lmvWRoPuZSyE7d4+2LbnhWUe5f771b5Xano3sRNQ=;
- b=OQ3aaO2wabwlC+BpjNqzVUObLquPwFMMt1Pp53vcDoOjZJ75SvT4Q2ov2CzqDE2cm1
- mHS5miJyb0dfd+Yz3ITcs6DNSssPhO6SrbeDJ/zlxHuYMjVWcJDWB6qmxR0/8Rfx13z1
- 1hLY74PKeqUEBFH833plgPMxvDGqVaKJdsSUa7keXQVvASzLpdEmOXmss/CdOPmaY/DH
- hb0yKcjaFeHONxyEUlgzA9Zrzq+kdF1Dhl/BtrNty9UH02RnlBCYiPLie1WlSdLmw7H7
- aiR989cnHWl3FQQwu3iVUq4Ku3mKHN7P1bFeQ8sdSoxiCdEC84uiTJ6YSLafnU4dLqA0
- 6wvA==
+ d=linaro.org; s=google; t=1738062163; x=1738666963; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=V2I2NjmN3Mq2+zaxHECDvWFrfzR/EWpUa/NXwTC2lBw=;
+ b=nPSdM2G9VoXayD/3KcTZAs7ngw8V+NjPTRt7ZJ62PMJY/3qj8l0gZH9H6ys2U/COE5
+ 5LHcsITF2Ogc7SpNRk3aUoTeE6Znu1tVtBgT8JK/d8PUupwJljRifh+e1/cwlEyDMbBM
+ 8COMjW2qL6QfInlIZ00Fkm0gc86Dk+LaRL4UEgNuWuMneVIBtAeqGjlBkxUO8653tq/Z
+ Lj5fKebz5f/cMdJI6yzZu9GqUkhPiKTtpu1wDChP3ujHcXUaDxOkKGdpEJHiXiDzcpmW
+ oTOOF9lcnolsMOxtW6Ev1eAua1UpQCN0dzmjw303rLlzEWG9O7AjFgIsNWAbj8OYwX2s
+ slxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738061131; x=1738665931;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=P84lmvWRoPuZSyE7d4+2LbnhWUe5f771b5Xano3sRNQ=;
- b=vp1IeOqpRhC9SveYOUiw+uv+EBP8uPtjYyH3AS6JQkmb0yTSA9d0dzY5ffj5s4Pjax
- 1h83UiHtKOejQDkTHyRtnF/SG+0WnwKzuaU+bYhdN27ypJjRNbaOgo9pfnlbYkJEBeQG
- HtiYlpQX3HDtxjH8zkbUgxbsvck9FgsWg62DJH0+NrpySHaWH8w6cImv49nx8/pI0Aig
- HHRNHUM3yOQN19kCK2UVXreQOYS7QPs5lGBG/9FUlyT+NbIh+aTb4TGq3w65sUz0NidT
- N72PlB1isrbYeDPLTPn93/CrG8SyEwAMPCjJ9e4WPF5HiRzfwd44ut86u7FEgsmSpGVo
- rRIA==
-X-Gm-Message-State: AOJu0YzQgQ2u3EdzjT7g0wr8KezOUz88QHx+tduItKLOOMLTr0ue+arj
- z0LuEbuvx7E4X+hf9ymhS2uWl8OYEz/KO5hmy6UzUx+/IFPOQn/YaaGMhEFRUUnJkf5XIh2ewmp
- B
-X-Gm-Gg: ASbGncthZx1CNJuMmHQx+XN9lNh0UMhEXOptmtzZfD/eYmS3DjJrjNpj6KTkSozW8sa
- VTq5mFNPpqtkIhx1vusSbXmKFzjxNV9xPnNVeMv3KWdxpnLg6agrAS3YIGpTbV4aI6kDI3RgmnT
- lfn2rlNUl4ttKOdzoVC4E2+W0PkDio7IVpbwEgApFWSLFLoTQbwlcCGhS3/5hBXUkJTYVVubou4
- djuHfVZ9gfU4el42KAOdxERRdkgJf0McwAhBMvp8jBOOKj9SOBIDadCjMVV8oTIvTMgj8/5izzf
- k45Ds/8NOLHinxiL5cAt
-X-Received: by 2002:adf:fb84:0:b0:385:e328:8908 with SMTP id
- ffacd0b85a97d-38c49a5d44dmr1754140f8f.29.1738061131513; 
- Tue, 28 Jan 2025 02:45:31 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38c2a1c418esm13920133f8f.95.2025.01.28.02.45.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jan 2025 02:45:30 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Bin Meng <bmeng.cn@gmail.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 09/11] hw/sd: Remove unused 'enable' method from SDCardClass
-Date: Tue, 28 Jan 2025 10:45:17 +0000
-Message-Id: <20250128104519.3981448-10-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250128104519.3981448-1-peter.maydell@linaro.org>
-References: <20250128104519.3981448-1-peter.maydell@linaro.org>
+ d=1e100.net; s=20230601; t=1738062163; x=1738666963;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=V2I2NjmN3Mq2+zaxHECDvWFrfzR/EWpUa/NXwTC2lBw=;
+ b=lJqDUcqw+ZUlcOvquLADV8ZK6ZPOK91M/XECGBgmVYp9bTtHcVmAUaFjuKWfBbTDGS
+ nxs1j39UKt/0PWaOq+8ht5DvpExKNmO9qy/en5l7QuuDNZl89E+Xgn/ZXwn3RwTc84jq
+ LyHEBcUWrcKjJEkaRg32Xw9oCP6tEetpdvST3//FbuUTx0+3H04qIE5b3IypoEAkVSHD
+ H1d3aDoQwUGuYNehIb6QNBehOv+gW44p24kJKDUUIV0GmnualX23Q6aUzAS+/T5Fc5JT
+ 4+r0roj5kP5PCDPOWUk+LvydpejuONkQfegl+YYoLa7y0IbLYegSOU3Eo/rqYRG9VBGZ
+ 8HfQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVYudBq3qgVDazZTYDFk0M3lUMvYMURf+UyaCyRgoAEgbHPgbSp1Y1q1wtk7wQ9TE2QR3gNTRneYg==@nongnu.org
+X-Gm-Message-State: AOJu0YxMS6Pzhfxqw2dmAqAlwdKEFD4qwczKpqG7C9dOBMTtqgZUGFmC
+ L0fk/Inf8EsfYkOwKCssDzD7+UFS0R0+Q8b9xB6yA2Q9l06WPp3m9CrRp7o5+1Q+afaovnvyovg
+ hjosWyxXE5EGoXOZ+Qd1Qedtz1ohoVDGJvbE1KA==
+X-Gm-Gg: ASbGnctsDwkmc57h521n+OiL8O7ODzjhdnP9Dr4PTEVsn3TUTYB4bXPmW7eRfUMvDM/
+ Ixm2n/bd7tGGp0aopgWS6jOziPM6snvE8ZvBylRdKC8qP8PNXb9A+f3PxH2PXb5FHHY0T6QS4oA
+ ==
+X-Received: by 2002:a05:6902:72c:b0:e58:32b4:4866 with SMTP id
+ 3f1490d57ef6-e5832b449dcmr14727103276.25.1738062163125; Tue, 28 Jan 2025
+ 03:02:43 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x432.google.com
+References: <20250127232604.20386-1-richard.henderson@linaro.org>
+ <20250127232604.20386-2-richard.henderson@linaro.org>
+In-Reply-To: <20250127232604.20386-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Jan 2025 11:02:31 +0000
+X-Gm-Features: AWEUYZmFKLyyX3nrLHgttrWoWZvbCOJuRJ0yA24pa5A78USgOfr-8mV372KHqwM
+Message-ID: <CAFEAcA9Uy9=rWXNYiWoXhwyhDu+6p162_EKTX3kksBdmmvBwcQ@mail.gmail.com>
+Subject: Re: [PATCH 01/22] target/arm: Rename FPST_FPCR_A32 to FPST_A32
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b31;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb31.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,47 +128,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: eVX3WBDnO2mB
+X-TUID: 9nz1C0dXezE7
 
-The SDCardClass has an 'enable' method, but nothing actually invokes it.
-The underlying implementation is sd_enable(), which is documented
-in sdcard_legacy.h as something that should not be used and was only
-present for the benefit of the now-removed nseries boards. Unlike
-all the other method pointers in SDCardClass, this one doesn't have
-an sdbus_foo() function wrapper in hw/sd/core.c.
+On Mon, 27 Jan 2025 at 23:26, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/tcg/translate.h     |  6 ++--
+>  target/arm/tcg/translate-vfp.c | 54 +++++++++++++++++-----------------
+>  2 files changed, 30 insertions(+), 30 deletions(-)
+>
+> diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+> index 59e780df2e..6ce2471aa6 100644
+> --- a/target/arm/tcg/translate.h
+> +++ b/target/arm/tcg/translate.h
+> @@ -674,7 +674,7 @@ static inline CPUARMTBFlags arm_tbflags_from_tb(const TranslationBlock *tb)
+>   * Enum for argument to fpstatus_ptr().
+>   */
+>  typedef enum ARMFPStatusFlavour {
+> -    FPST_FPCR_A32,
+> +    FPST_A32,
+>      FPST_FPCR_A64,
+>      FPST_FPCR_F16_A32,
+>      FPST_FPCR_F16_A64,
+> @@ -692,7 +692,7 @@ typedef enum ARMFPStatusFlavour {
+>   * been set up to point to the requested field in the CPU state struct.
+>   * The options are:
+>   *
+> - * FPST_FPCR_A32
+> + * FPST_A32
+>   *   for AArch32 non-FP16 operations controlled by the FPCR
 
-Remove the unused method.
+So the reason we had "FPCR" in the names here is, as the
+comment notes, because the original distinction was
+"operations that use the 'standard FPSCR value'" versus
+"operations controlled by the FPCR". But I think with the
+profusion of float_status values we've ended up with,
+most of which are sort-of-but-not-entirely controlled
+by FPCR bits in one way or another, that the "FPCR"
+part of the constant name has outlived its usefulness.
+So I'm happy with renaming these to be shorter.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/hw/sd/sd.h | 1 -
- hw/sd/sd.c         | 1 -
- 2 files changed, 2 deletions(-)
-
-diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
-index f2458f37b3c..d6bad175131 100644
---- a/include/hw/sd/sd.h
-+++ b/include/hw/sd/sd.h
-@@ -119,7 +119,6 @@ struct SDCardClass {
-     void (*set_voltage)(SDState *sd, uint16_t millivolts);
-     uint8_t (*get_dat_lines)(SDState *sd);
-     bool (*get_cmd_line)(SDState *sd);
--    void (*enable)(SDState *sd, bool enable);
-     bool (*get_inserted)(SDState *sd);
-     bool (*get_readonly)(SDState *sd);
-     void (*set_cid)(SDState *sd);
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 0330d432fd0..f781fd1641d 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -2831,7 +2831,6 @@ static void sdmmc_common_class_init(ObjectClass *klass, void *data)
-     sc->read_byte = sd_read_byte;
-     sc->receive_ready = sd_receive_ready;
-     sc->data_ready = sd_data_ready;
--    sc->enable = sd_enable;
-     sc->get_inserted = sd_get_inserted;
-     sc->get_readonly = sd_get_readonly;
- }
--- 
-2.34.1
-
+thanks
+-- PMM

@@ -1,105 +1,105 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3133242njk;
-        Tue, 28 Jan 2025 06:33:47 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCUjET8PedV8f0rxhzs2JSJr1ZJKk60Ry7lZkIrXxO/oyi5lPZX0xLXoWf0nJIQNi2Gbuz6X3c5HdN4X6Q==@linaro.org
-X-Google-Smtp-Source: AGHT+IHg2ZdMGJd/pRUE5ZOLZANk1v4D1j8dpl4TbDTWlUv45SrzsYmkIdrAdgZtbviDNrRh4pf3
-X-Received: by 2002:a05:6214:62e:b0:6d8:a856:133 with SMTP id 6a1803df08f44-6e1b217875dmr553396486d6.12.1738074827349;
-        Tue, 28 Jan 2025 06:33:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738074827; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3134701njk;
+        Tue, 28 Jan 2025 06:36:05 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCVs4Cby2dz90Uqeupw+dbIb4MZrKek98Yggg4A+BSODjBHCoEXnOtF+1vPnNZhCudGURt5YixXCs+t+Ew==@linaro.org
+X-Google-Smtp-Source: AGHT+IH5jbKAbukxQJ0MOXIKWmItZWQuyOEu2o2WwVtt7S/MTH8V+V+WMddBswa09ktuyzZWUhUc
+X-Received: by 2002:a05:620a:29c2:b0:7b1:48d2:f174 with SMTP id af79cd13be357-7be632388femr6460482285a.34.1738074965705;
+        Tue, 28 Jan 2025 06:36:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738074965; cv=none;
         d=google.com; s=arc-20240605;
-        b=GKsIsMM+eJ6G9sJcnMQ3kPVaeVle33Ig7lH8h+mVgsMbCXJdO5ZKE6OM2vyb2BvKDV
-         H6XbPyCz5wF7BKuU7cbsknwTsbJO4EGbI9wwH/UQYIHtaljCRN+l3kgIbbeIzxnNGp7C
-         3fJ5w1intKRB7MNhLqZl4MuFAWPsCnJgealQE5iCyYnkDAxSu5q6k6lWWk4r3yULQo+k
-         9+oIVfvuvUD27hSe0sDGOhrxDArDdt4U2ThTmBZyiwQBqbKnM+f96wRq7M8LpKt99Bgz
-         tmMAj6XqPzzMvGT9y2jEAsnCOdwc9b9roCmmujLFu3l+jCP9XM3xsFm849ujDWoSduwQ
-         tuZg==
+        b=E+tXrpDOt6NCPT9cpMPdLMTSCXvsLnjEuzf7Q5KBHTD9Gc8Bho1S94cIyts1UV6PLJ
+         L/mPnBthp1N/Dw6pxR617AJKLrh4ZqKE1G3ztJjXIDLBsAu0ASkMO/cNWHU409k8b1oL
+         REpFC5ChdNMP0tbtWvxjTF5C4JFGPFIC+y81eYPz29vF2jYJQG2sF59u+oqKEz+rcmTV
+         JiTUb0vRptY2qiLfLFcUwSHsZnDMi25OyOfwoPt/p22i3w4aDe1NG1/vlL8ahiFlxOdR
+         ZpQEOf06bznmCCy5ErYsVZlcaWpQ8dBMndVBc7UvCWvCKhCMh+4Nkk6jPNo29D3Hu/Nx
+         cXTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
          :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=yBonQdWSAJdGgs1uTdENENUxX2xyohdOtyf/B381iQQ=;
+        bh=lDbZzhgXIddCbAed15y8FhY2UG9TovmqYlE6jiN2G/s=;
         fh=ZZh1PCkjznRQySat/BF4kXHXQZqaL/n+fAawIVkD90g=;
-        b=Z5WiIYXdJpGxkku0ev/Nt4tKTlkB6uQ+OOzXcwo+D+Oov0hbl5iJlcDcyqh/U3hKRq
-         TlYXPyYXgyOI4K8WvU2JmRopUnboKSbH1cq7Gqy2AZBnwxOzmRoFTsWvUpCsRUThsxK2
-         jU+qTZQMK/r1/ARuQu4jHA5KHHQ70JyZM6gewNgehCMO0rJXjDeFcn2Oh2C6VRxuXlvw
-         LyRoHXmsFm7oqTzMT97NsCbvPvp8J/MYdaB923S+9TERN6qfioVfl0LVL2TgMA8+7VGs
-         h++Kf0tQu3PjALUYzJf6HmQFu0fTqRzVjrNu4nCJEkoCX+ISQPXNaCVkng1vmdn2sCrg
-         6IVw==;
+        b=PIAWivurXSJk+P+uHkmQj8bwq0NVbq63zQic+WnkuHMZpudvrnAgy5o1zjj2V7pMgn
+         BPdZrUBS3VJPcJazEC0vAxF85HROhGeVFzgl9cEOSlP8T4kpOXeqZ09QRovPnGJXJPeO
+         3bWfg7+jcD6pOwylWgdT63if+0kVaSYuO/7sAJtR3Ke4nMt3J5OSRXlHg3X4o8G24k9Y
+         hNKY9UWvCS0n7Mw69bM+UB0CQ5VDYlyd7uLcexNVpLS0FH4ajeyErvpXvO8NeNtsazQB
+         EYemDLq26uQGXpj+Il5dJDmO5XnE28xFqRI4aNaJ38xeEYBqRVNpvczA+qh1KBxGO8RB
+         RrAg==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K9xb43Ay;
+       dkim=pass header.i=@linaro.org header.s=google header.b=K0MVsoY6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e2060217a6si118880826d6.416.2025.01.28.06.33.47
+        by mx.google.com with ESMTPS id af79cd13be357-7be9aee097bsi1395131585a.216.2025.01.28.06.36.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jan 2025 06:33:47 -0800 (PST)
+        Tue, 28 Jan 2025 06:36:05 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=K9xb43Ay;
+       dkim=pass header.i=@linaro.org header.s=google header.b=K0MVsoY6;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org;
        dara=neutral header.i=@linaro.org
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces@nongnu.org>)
-	id 1tcmeh-0001i3-6i; Tue, 28 Jan 2025 09:33:31 -0500
+	id 1tcmgd-0003hv-8e; Tue, 28 Jan 2025 09:35:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tcmef-0001gR-20
- for qemu-devel@nongnu.org; Tue, 28 Jan 2025 09:33:29 -0500
-Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
+ id 1tcmga-0003hG-QO
+ for qemu-devel@nongnu.org; Tue, 28 Jan 2025 09:35:28 -0500
+Received: from mail-yb1-xb30.google.com ([2607:f8b0:4864:20::b30])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1tcmed-0004JT-8l
- for qemu-devel@nongnu.org; Tue, 28 Jan 2025 09:33:28 -0500
-Received: by mail-yb1-xb2d.google.com with SMTP id
- 3f1490d57ef6-e549be93d5eso10048777276.1
- for <qemu-devel@nongnu.org>; Tue, 28 Jan 2025 06:33:26 -0800 (PST)
+ id 1tcmgZ-0004of-5F
+ for qemu-devel@nongnu.org; Tue, 28 Jan 2025 09:35:28 -0500
+Received: by mail-yb1-xb30.google.com with SMTP id
+ 3f1490d57ef6-e549b0f8d57so9569317276.3
+ for <qemu-devel@nongnu.org>; Tue, 28 Jan 2025 06:35:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738074806; x=1738679606; darn=nongnu.org;
+ d=linaro.org; s=google; t=1738074926; x=1738679726; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=yBonQdWSAJdGgs1uTdENENUxX2xyohdOtyf/B381iQQ=;
- b=K9xb43AyoBcD+e6XH5IA8KzzZ1DKYnWcYstAIVLmje6f8O/m8rK7+qZtcW4IZzIuBQ
- Ltwons1MO37JGjWwuiCTxc0Zx51iWWk8iZTSLyTOnNWkn8AECeWXRyioQ+0tY8e+UH5S
- Q2TOfCIeaZA6cS7IPWJ9uwuSVa1aIhagP+/bETHzpTj7nJEMbnQytGExvkVwXgns+sLe
- bVq23/3KrAMMH/OP9Fgvm8HRLQfpOqwl8nUZvCPjbkDTY18CcMdbnKQDntw4pdeH1TVH
- yEV/2/FOcZRh95yGtOdjHoszcLgXzAOAbnd5hBuySOCE+N79bZUKDi4Fiey+7GlfV/rW
- 1ReA==
+ bh=lDbZzhgXIddCbAed15y8FhY2UG9TovmqYlE6jiN2G/s=;
+ b=K0MVsoY6UPte6b2nB8DkiJlkpDH84/tcoDZYBLAjTC14Mjt5HUIOCBBDXg0osWfXNt
+ mh0OOG4ncGNBL6trM2WSRdqImCenxA+uVYRIpvF0Aa7ZwsCJ+71zm/GR4fUoCj/d0si9
+ xJqqdXJYr4PM8v+QA5iCUmRGdfGxMWzoxnOZCOPbtKMzYTmJ3hI/qd2bjEw9jtzpqwyu
+ 8eztJ9eHcayc11aKsU+jp8Sh+pv5YgB9PSwTxuFqMyR6Jbk/XgyvEUXNDcomj0cOLtPc
+ KEOMAg2ZQyEYH9ad4Og89g4r2LuKWVhT8x6QIrqdToV34Jcej/jozRVfsckH6Luh6QKK
+ Tv6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738074806; x=1738679606;
+ d=1e100.net; s=20230601; t=1738074926; x=1738679726;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=yBonQdWSAJdGgs1uTdENENUxX2xyohdOtyf/B381iQQ=;
- b=sAnKgaue5Aw6eJprQp9LGXNi0JThuvhgDlA/dAdfnhr0e2VeiuwCdCeY7i6eTBPx59
- 6StG+FuiCy1KMhuF/DQ602TrRuZQjmAIsXXpaA0VngELPxkoSabevHAtJ38NCiAZjl5D
- Hy3bVB+M9bWNLk/z1SZwtyrDLAX8AXJX4Qa0h+sfzgLJFHkkzBZmRNu9bpcOAYsa4i2l
- ZhcCgboBXYcWCm6/R7PnJK5udye/XnUC+3oE+PsA8pV+G3pXE/rDU96uU/QnUykJT4r0
- yebIIL/cP3n66zNOlJ+AZrdZmqPxZDYuy2/9esRIB//BvVXmV2PPn68lo5FtNi4VoN88
- jl6g==
-X-Gm-Message-State: AOJu0YycPsGYv5Iy8WINZfPx7FE86SDBElJDNQLg8kZ7XFPWt6hvQtNO
- Q9XOHyamLPeorN6ImwyWq4moxRr5uOeV7EMiwKj767+LRXG7ifp4JmRJcrJBRaHt4oqtYVIS3m4
- r+zL8GrahSiWAWbyUm6ALHhKTECEjj1sf5zIfTA==
-X-Gm-Gg: ASbGncsrt2Sw8Q2wlOfjlHkZIB0okVzevR9HtlHyJ5mh+NfuQJWzpd01o/cka2fT/yS
- FYA6jhsQQg1ifadNWE2XI3hSDZTzpCx7A5KgIfSI0YfTkTQUjT8rX1wt0TkwpHW+MySHuo02usQ
+ bh=lDbZzhgXIddCbAed15y8FhY2UG9TovmqYlE6jiN2G/s=;
+ b=fT7YBnqkkFjoR1vnTbiq1te7KdD8DSkJ0hggaASjasDFkePNi/pkz8usk8Lw5IY74r
+ 7f6xFc68a7n+ZhtPN+YwbYOYXrsoedJnjQFgKHzU6KytucTanN+AbH058862P1Ohdsn2
+ bNWdUxYz3ETy5iG5lnwRdo9E08pV+VAzOZrlDnKuNcT6SoRtOaWBdI+1M7V0Nu8LnLnd
+ 3y1l8hrjxx2ArSYt3uOqQl4/i2Ny/J1n+VfxzgaqoISfpXd3gfnaz82GWllKOURCr3iq
+ wcWUBHKgSBWvS5wRCZPfGqcwXpv3/By4+pwwgZWQf6vaNZrz0z/cAdXkwSWl+hb/7LRN
+ GLqw==
+X-Gm-Message-State: AOJu0YzZCL9yEFOZScUL7gDt27Y2xjnOMO2CxBy+RzTmgs5s4lXowHsi
+ kD1A0snZRKjncK2It/WTVkv1drTE4xXxQ9PJZgWCvandTswrrx/WIqzwjLpRGtY4G0b4r/SLpsC
+ 79UxAkRJ36yDJpCrMreGMhTIiYsbL815QxOyWAQ==
+X-Gm-Gg: ASbGncsZemE0XkbVHYfj0/YWC76mcYWUDmeOdLaI0YBHs6OU9q+ghZ83uiO+3pfKN2j
+ BvZfxk26x5OszxOPF84jTMbT+XDNKa+yYRZ87w6Wwmjv+TRn9AWLJCTDBp5hyK8GY6VaVeMHluA
  ==
-X-Received: by 2002:a05:6902:c09:b0:e57:4226:8ae0 with SMTP id
- 3f1490d57ef6-e57b1064482mr29044838276.18.1738074805987; Tue, 28 Jan 2025
- 06:33:25 -0800 (PST)
+X-Received: by 2002:a05:6902:2683:b0:e4d:25c6:c3b2 with SMTP id
+ 3f1490d57ef6-e57b103cb9cmr33760637276.7.1738074925814; Tue, 28 Jan 2025
+ 06:35:25 -0800 (PST)
 MIME-Version: 1.0
 References: <20250120203748.4687-1-shentey@gmail.com>
- <20250120203748.4687-10-shentey@gmail.com>
-In-Reply-To: <20250120203748.4687-10-shentey@gmail.com>
+ <20250120203748.4687-7-shentey@gmail.com>
+In-Reply-To: <20250120203748.4687-7-shentey@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Jan 2025 14:33:14 +0000
-X-Gm-Features: AWEUYZny2nrgaLwmdeTrSwbgWY32uyfmH1C0zgj-b-gG36LlnfuW27Fun1d5xLA
-Message-ID: <CAFEAcA9efWMDxaTCfa6t8MiCgFUEU+nsyurNOqVDxAa9=KS=-Q@mail.gmail.com>
-Subject: Re: [PATCH 09/21] hw/arm/fsl-imx8mp: Add PCIe support
+Date: Tue, 28 Jan 2025 14:35:14 +0000
+X-Gm-Features: AWEUYZmvaKfiikR68ibuXrx2iaQ62ZYQ-2HsxLCFCdtX9sVh8QxAIi0uPUrUEW8
+Message-ID: <CAFEAcA8Ox+CjVVgPWciFOPv748tvCSOHpcQn_ihwCXAvSNnk8Q@mail.gmail.com>
+Subject: Re: [PATCH 06/21] hw/arm/fsl-imx8mp: Implement clock tree
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, 
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
@@ -108,8 +108,8 @@ Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Andrey Smirnov <andrew.smirnov@gmail.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b30;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb30.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,47 +131,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: ZEXVUwDxVMK7
+X-TUID: L8Y9E2LbN9K7
 
 On Mon, 20 Jan 2025 at 20:38, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> Linux checks for the PLLs in the PHY to be locked, so implement a model
-> emulating that.
+> Fixes quite a few stack traces during the Linux boot process. Also provides the
+> clocks for devices added later, e.g. enet1.
 >
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>  MAINTAINERS                    |   2 +
+>  docs/system/arm/imx8mp-evk.rst |   1 +
+>  include/hw/arm/fsl-imx8mp.h    |   3 +
+>  include/hw/misc/imx8mp_ccm.h   |  97 ++++++++++
+>  hw/arm/fsl-imx8mp.c            |  20 +++
+>  hw/misc/imx8mp_ccm.c           | 315 +++++++++++++++++++++++++++++++++
+>  hw/misc/meson.build            |   1 +
+>  7 files changed, 439 insertions(+)
+>  create mode 100644 include/hw/misc/imx8mp_ccm.h
+>  create mode 100644 hw/misc/imx8mp_ccm.c
+> diff --git a/include/hw/misc/imx8mp_ccm.h b/include/hw/misc/imx8mp_ccm.h
+> new file mode 100644
+> index 0000000000..2378c157de
+> --- /dev/null
+> +++ b/include/hw/misc/imx8mp_ccm.h
+> @@ -0,0 +1,97 @@
+> +/*
+> + * Copyright (c) 2025 Bernhard Beschow <shentey@gmail.com>
+> + *
+> + * i.MX8MP CCM, ANALOG IP blocks emulation code
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef IMX8MP_CCM_H
+> +#define IMX8MP_CCM_H
+> +
+> +#include "hw/misc/imx_ccm.h"
+> +#include "qom/object.h"
+> +
+> +enum IMX8MPAnalogRegisters {
+> +    ANALOG_AUDIO_PLL1_GEN_CTRL = 0x000 / 4,
+> +    ANALOG_AUDIO_PLL1_FDIV_CTL0 = 0x004 / 4,
+> +    ANALOG_AUDIO_PLL1_FDIV_CTL1 = 0x008 / 4,
+> +    ANALOG_AUDIO_PLL1_SSCG_CTRL = 0x00c / 4,
+> +    ANALOG_AUDIO_PLL1_MNIT_CTRL = 0x010 / 4,
+> +    ANALOG_AUDIO_PLL2_GEN_CTRL = 0x014 / 4,
+> +    ANALOG_AUDIO_PLL2_FDIV_CTL0 = 0x018 / 4,
+> +    ANALOG_AUDIO_PLL2_FDIV_CTL1 = 0x01c / 4,
+> +    ANALOG_AUDIO_PLL2_SSCG_CTRL = 0x020 / 4,
+> +    ANALOG_AUDIO_PLL2_MNIT_CTRL = 0x024 / 4,
+> +    ANALOG_VIDEO_PLL1_GEN_CTRL = 0x028 / 4,
+> +    ANALOG_VIDEO_PLL1_FDIV_CTL0 = 0x02c / 4,
+> +    ANALOG_VIDEO_PLL1_FDIV_CTL1 = 0x030 / 4,
+> +    ANALOG_VIDEO_PLL1_SSCG_CTRL = 0x034 / 4,
+> +    ANALOG_VIDEO_PLL1_MNIT_CTRL = 0x038 / 4,
+> +    ANALOG_DRAM_PLL_GEN_CTRL = 0x050 / 4,
+> +    ANALOG_DRAM_PLL_FDIV_CTL0 = 0x054 / 4,
+> +    ANALOG_DRAM_PLL_FDIV_CTL1 = 0x058 / 4,
+> +    ANALOG_DRAM_PLL_SSCG_CTRL = 0x05c / 4,
+> +    ANALOG_DRAM_PLL_MNIT_CTRL = 0x060 / 4,
+> +    ANALOG_GPU_PLL_GEN_CTRL = 0x064 / 4,
+> +    ANALOG_GPU_PLL_FDIV_CTL0 = 0x068 / 4,
+> +    ANALOG_GPU_PLL_LOCKD_CTRL = 0x06c / 4,
+> +    ANALOG_GPU_PLL_MNIT_CTRL = 0x070 / 4,
+> +    ANALOG_VPU_PLL_GEN_CTRL = 0x074 / 4,
+> +    ANALOG_VPU_PLL_FDIV_CTL0 = 0x078 / 4,
+> +    ANALOG_VPU_PLL_LOCKD_CTRL = 0x07c / 4,
+> +    ANALOG_VPU_PLL_MNIT_CTRL = 0x080 / 4,
+> +    ANALOG_ARM_PLL_GEN_CTRL = 0x084 / 4,
+> +    ANALOG_ARM_PLL_FDIV_CTL0 = 0x088 / 4,
+> +    ANALOG_ARM_PLL_LOCKD_CTRL = 0x08c / 4,
+> +    ANALOG_ARM_PLL_MNIT_CTRL = 0x090 / 4,
+> +    ANALOG_SYS_PLL1_GEN_CTRL = 0x094 / 4,
+> +    ANALOG_SYS_PLL1_FDIV_CTL0 = 0x098 / 4,
+> +    ANALOG_SYS_PLL1_LOCKD_CTRL = 0x09c / 4,
+> +    ANALOG_SYS_PLL1_MNIT_CTRL = 0x100 / 4,
+> +    ANALOG_SYS_PLL2_GEN_CTRL = 0x104 / 4,
+> +    ANALOG_SYS_PLL2_FDIV_CTL0 = 0x108 / 4,
+> +    ANALOG_SYS_PLL2_LOCKD_CTRL = 0x10c / 4,
+> +    ANALOG_SYS_PLL2_MNIT_CTRL = 0x110 / 4,
+> +    ANALOG_SYS_PLL3_GEN_CTRL = 0x114 / 4,
+> +    ANALOG_SYS_PLL3_FDIV_CTL0 = 0x118 / 4,
+> +    ANALOG_SYS_PLL3_LOCKD_CTRL = 0x11c / 4,
+> +    ANALOG_SYS_PLL3_MNIT_CTRL = 0x120 / 4,
+> +    ANALOG_OSC_MISC_CFG = 0x124 / 4,
+> +    ANALOG_ANAMIX_PLL_MNIT_CTL = 0x128 / 4,
+> +
+> +    ANALOG_DIGPROG = 0x800 / 4,
+> +    ANALOG_MAX,
+> +};
+> +
+> +enum IMX8MPCCMRegisters {
+> +    CCM_MAX = 0xc6fc / sizeof(uint32_t) + 1,
+> +};
+> +
+> +#define TYPE_IMX8MP_CCM "imx8mp.ccm"
+> +OBJECT_DECLARE_SIMPLE_TYPE(IMX8MPCCMState, IMX8MP_CCM)
+> +
+> +struct IMX8MPCCMState {
+> +    IMXCCMState parent_obj;
+> +
+> +    MemoryRegion iomem;
+> +
+> +    uint32_t ccm[CCM_MAX];
+> +};
+> +
+> +
+> +#define TYPE_IMX8MP_ANALOG "imx8mp.analog"
+> +OBJECT_DECLARE_SIMPLE_TYPE(IMX8MPAnalogState, IMX8MP_ANALOG)
+> +
+> +struct IMX8MPAnalogState {
+> +    IMXCCMState parent_obj;
+> +
+> +    struct {
+> +        MemoryRegion container;
+> +        MemoryRegion analog;
+> +    } mmio;
+> +
+> +    uint32_t analog[ANALOG_MAX];
+> +};
+> +
+> +#endif /* IMX8MP_CCM_H */
 
-> diff --git a/docs/system/arm/imx8mp-evk.rst b/docs/system/arm/imx8mp-evk.rst
-> index 1514bc5864..8d48580cb4 100644
-> --- a/docs/system/arm/imx8mp-evk.rst
-> +++ b/docs/system/arm/imx8mp-evk.rst
-> @@ -14,6 +14,7 @@ The ``imx8mp-evk`` machine implements the following devices:
->   * Generic Interrupt Controller (GICv3)
->   * 4 UARTs
->   * 3 USDHC Storage Controllers
-> + * 1 Designware PCI Express Controller
->   * Secure Non-Volatile Storage (SNVS) including an RTC
->   * Clock Tree
->
-> @@ -62,3 +63,15 @@ Now that everything is prepared the newly built image can be run in the QEMU
->        -dtb imx8mp-evk-patched.dtb \
->        -append "root=/dev/mmcblk2p2" \
->        -drive file=sdcard.img,if=sd,bus=2,format=raw,id=mmcblk2
-> +
-> +Using PCI Devices
-> +-----------------
-> +
-> +The PCI Express controller spawns two PCI buses, of which only one can be used.
-> +By default QEMU assigns the wrong bus, so the correct one has to be specified
-> +manually by adding ``bus=dw-pcie``. For example, when adding an Intel e1000
-> +network card, the command line looks like:
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-system-aarch64 -M imximp-evk ... -device virtio-net-pci,bus=dw-pcie
-
-Why does this happen? Isn't there some way to make QEMU default to
-using the right bus? Otherwise there's likely to be a lot of
-user confusion because PCI "doesn't work"...
+This seems to be implementing two separate devices in a single
+source file. Generally we prefer one device per file. Is
+there a reason they can't be split?
 
 thanks
 -- PMM

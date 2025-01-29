@@ -1,128 +1,80 @@
-Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3881168njk;
-        Wed, 29 Jan 2025 08:28:58 -0800 (PST)
-X-Forwarded-Encrypted: i=2; AJvYcCVrLELn+yt3r3mou8rF5O0Y/U1PrvGwSGfhIcdNQnwkxJart9u6Mx+nHZmpK/uiD/1vd+z3H6djF5oVeA==@linaro.org
-X-Google-Smtp-Source: AGHT+IEcNROsWttZAzd4DtmfNP392Fqc24LzKzSRvMiXlxHQ9UMbyWQj2kx1kR+wCuzVDMzrcG25
-X-Received: by 2002:a05:6214:242f:b0:6e1:6c94:b5c5 with SMTP id 6a1803df08f44-6e243b8f708mr59178906d6.4.1738168138048;
-        Wed, 29 Jan 2025 08:28:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1738168138; cv=none;
+Received: by 2002:a17:504:1e0a:b0:1be9:327d:8ee3 with SMTP id i10csp3903441njk;
+        Wed, 29 Jan 2025 09:04:34 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCV2/w3U44G2h6hGtt6HdM3eAIix3CWMBdKDKNkJipEEeXlnsvYajya6hQXsRe+OGBauXPjFPpWoJXPfeA==@linaro.org
+X-Google-Smtp-Source: AGHT+IH2/K63liXhoy3AqtJI1YG1LGQbEtYR5qJnRS3dGjCOtdz1XS4Pdgjv+43vFq1OmiSrsbFY
+X-Received: by 2002:a5d:47a4:0:b0:386:3e48:f732 with SMTP id ffacd0b85a97d-38c5195f307mr3631460f8f.16.1738170274142;
+        Wed, 29 Jan 2025 09:04:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1738170274; cv=none;
         d=google.com; s=arc-20240605;
-        b=WOnzVBYCe5PJA2XJG1FEB6vcuiJ5Qz+jSi6A1PiQwKVNeJCFScJ2iVcJINYoAqzxAb
-         VDZvire1bapU6wZB3Ldb9ZrbNv6w407mY4YWLaE3mhj/F7D49N4Xy7j9AjZ+lXtZHFUe
-         PSHB/2rCgUWGaJfBnb24MjQyzkkOjNg7QycA7/UzsiRqO+5fLlq0apMFGrOdS4hPoLau
-         xQLZ3BjHGAF6XDOHSjKkwrDF3zQWx7cdxTSnTUhPrEQgdUqIKA/LNCZqLOwOm3MHh7JC
-         9R1/j6KpSnhvQgHHqUNoSAZkPK7KnmCxa8Nozcahaj8MzTCjq4BpyxOURyqH7eZNm9Ef
-         m/0Q==
+        b=Dz1+QMU8BRlWC/7UwqC25vqgCbuX38seVFJGxa5pH3MBW4ZqEJ0V/UJSDm2fNXSLwO
+         SMPJPqOOJa+wCEwZ0eu+w16oSdsopHbmXDRO5nmj0eg2Dj7zWoXfFVSiHI3KQNymVJdq
+         Wv5dAj5EdVL64nJvGpfYy7gRGqHBxvq80dDWRVxZ23bwagALeTPyz6wU90FW1HDcV+o/
+         /rLazCA1FMYOBBhxOBgUElX7j81HBYr8Kb4mmaZP/p6Awv0cwuXBKfBuce+Hf2iW3Vyp
+         RhZAcLxXOJed+O/oZoJDwvowuE4rTufmU5TB92s+uPbxAB57N/k/5rof+tCmbswqz21s
+         HjnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:autocrypt:from:references:cc:to
-         :subject:user-agent:mime-version:date:message-id:dkim-signature;
-        bh=ZIPg1eKEiMXEzqmCeyUBf+s/54UmKdKqedFuyEWAu2M=;
-        fh=0OF7NMNMsvI22ff+e85Zdisgl2xDZgzyvXc2tIue6Jo=;
-        b=QvgM0erPWXehzb9Ues7scFqNSS2EHWnaqp4BK/jOjymLUr82Emork+/68q4+ENXUQr
-         NRMwKnXo8pPA7Z/oWVZTpMqF6CWP0pUGum9VzA/gH17C4gWn97ndZ1Aka1zBYTg3uM8Z
-         GQf00dzmkhCOXl5cbYTS/iIjGfVdNAhu9pXXEzbjE/Efyh4D4E1AFQ34iiqMowAyp/F9
-         xiQ7QAfXk4IrkRtei5+MF8oDPHxvcLWqzWmnToAhb/jF8/EODu47XwXUYG5b9trQwXJu
-         e+U0IhtGIEc88TSsxTOVTANzS2BpHMdFEfT9xfHJBF7JQpOkHYQ7KntV0Lq3x7Q9om3w
-         rZoA==;
+         :in-reply-to:autocrypt:from:content-language:references:cc:to
+         :subject:user-agent:mime-version:date:message-id;
+        bh=RPsDEebZ8Q2lHoaOucrQvil31SHr5Xd1Hg4iBNarVNs=;
+        fh=y8UldgvBpgWdzvo0ZnT6ptMSZ9zI0pieroCu40oTsaQ=;
+        b=fD2egVIG4/Nl+q05MS9STxn2eeL2kIaeIunCvL1ejdwGdFknRTDhKp1dE/fph+Be8M
+         Kdakr0x6TOhK7bLhQmiyIW0uPR6QItAUTA0XQl2928cI7SBIZztC4Jr3ndRT7bYdh8fs
+         2jtJ2NrRJ6qQ11hkyK1eTyUnPLBPTopUpEnc1Gz3Q+t+5+LISCZKOFZghbYleEyIyK64
+         kiC3q7g9WrwBvgzSA8MGXvkiKX+FN7bVLYuGz2jeVZ6EhUZIxGiv1dvWAWEav6JD5wuL
+         i/ViQAljv9PufLlJ1sKRZT2KmQAljXL5pzV5LxtdoQL5unRqwT6De1zSWxsyqjFd0fpc
+         US4g==;
         dara=google.com
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NFbT19l9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 6a1803df08f44-6e20601fc1fsi155477896d6.395.2025.01.29.08.28.57
+        by mx.google.com with ESMTPS id ffacd0b85a97d-38c2a1734f1si9500001f8f.145.2025.01.29.09.04.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jan 2025 08:28:58 -0800 (PST)
+        Wed, 29 Jan 2025 09:04:34 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NFbT19l9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1tdAvZ-0006Ba-DV; Wed, 29 Jan 2025 11:28:33 -0500
+	id 1tdBU6-0000Ay-Oc; Wed, 29 Jan 2025 12:04:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tdAvK-00067p-Ma
- for qemu-arm@nongnu.org; Wed, 29 Jan 2025 11:28:22 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <SRS0=PAS2=UV=kaod.org=clg@ozlabs.org>)
+ id 1tdBU5-0000AK-8b; Wed, 29 Jan 2025 12:04:13 -0500
+Received: from gandalf.ozlabs.org ([150.107.74.76] helo=mail.ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1tdAvH-0000lN-J2
- for qemu-arm@nongnu.org; Wed, 29 Jan 2025 11:28:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738168093;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ZIPg1eKEiMXEzqmCeyUBf+s/54UmKdKqedFuyEWAu2M=;
- b=NFbT19l9UImD4hQ3luyo9StLwkMR7vp+pL792/N6Klpr9XmuM4+TmWSjiLskngbXM5wjwK
- Dbj05BIgRZMgXid4WvTweWcfIyY4bydFM9jQYzTUWxVjDO5TqggPCISAOoynXuVmxVtTYs
- JvbcLr4A2YrmmzP67TWJco5DuUpEB/c=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-512-LnrBGo7jNcSgGe6cQSCdhA-1; Wed, 29 Jan 2025 11:28:11 -0500
-X-MC-Unique: LnrBGo7jNcSgGe6cQSCdhA-1
-X-Mimecast-MFC-AGG-ID: LnrBGo7jNcSgGe6cQSCdhA
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-438da39bb69so11670375e9.0
- for <qemu-arm@nongnu.org>; Wed, 29 Jan 2025 08:28:11 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738168090; x=1738772890;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=ZIPg1eKEiMXEzqmCeyUBf+s/54UmKdKqedFuyEWAu2M=;
- b=fLmwHvTqvsOQp3hC9sjtcU49jcZuAHfLQB685DS7unIxpVCL6LZRRAi1sB7uKCgOIk
- OmPgUp8yESuO4dQn1y2V/kdDfcQdE2sdcCrjI7wNjq+KpZPPRwAlWk1NP2x6TlVbanlI
- QJa9zI7cR2A3+teZTCzJthJ3lfbgfDa0R8rOIR/RWYvTikH9zkpBo+z6blnn9Qi53vlR
- 65ZNCEc7ZyqcbXgiBNTb9QjWq1hWv6Q7pqIlDQ2J6zfHPTYhIpfh0eTb3DGNkqsJtTJu
- NOwCRwhm9zOP8odB5sAWB6d2/IOchq5yUfMkrTIj/xTf8x0f6wRX7q/q9KqUkrE8FrSy
- 0svA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUXFxgzkEh2Ml1e7bnEjUwQcvT+KiEm5D1Z0QNIcI8W9maIV0HF70kH8+5UTl8icnnD1flWE85mfw==@nongnu.org
-X-Gm-Message-State: AOJu0YzOTV7CGzUoVnCWLC0z/yaZvGwtDIwTRJ8OnJPzCRnvXG6htsg1
- LFtxdzsjAvIpT0j8vsINuYXGTfySYnktttKq0NVknGBz1RFsu1r+TV2/FhSmV8xqziaiP2pQA2L
- an8EMUocmRhQL7B35LGR3m67HETe1u2wRq8Fbv+UcWY14mKq7Lw==
-X-Gm-Gg: ASbGnct3opG6PNSI1bQaCP+o0r0iWxFQySW0QGB4ebGyQHsfLiDyyXD6coqiAmxHJz2
- NlBJ14GW0K4skE1SYI8DIR2PTqn7cV0hrcuQy3rrPTcV0/1MCD5GVQ06imtcXmTWDUSHCzMDrI0
- RlxiwQRl0CB0CVGGmj5J3aJV9Zk/ZwqsnmZmcvEHQ5fUFTWVS8IJdYyxvC5uIVZZ17Xzt4IoCtI
- +GyWtqZXCDK84VHTU/yv3kGqDpwj6dlxvH6zjWxv/EzP1wDtjxG2n89BW1wi2bf6gyBfxTtdiQj
- SWImUniWwraUzrWPtyIPGzgeVMq1HnLXI2xCZWyBktE=
-X-Received: by 2002:a05:600c:5252:b0:431:44f6:566f with SMTP id
- 5b1f17b1804b1-438dc3ca9cfmr33225535e9.13.1738168090550; 
- Wed, 29 Jan 2025 08:28:10 -0800 (PST)
-X-Received: by 2002:a05:600c:5252:b0:431:44f6:566f with SMTP id
- 5b1f17b1804b1-438dc3ca9cfmr33225305e9.13.1738168090049; 
- Wed, 29 Jan 2025 08:28:10 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38c2a188a61sm17728283f8f.52.2025.01.29.08.28.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Jan 2025 08:28:09 -0800 (PST)
-Message-ID: <815ec281-f4b0-43e4-ba56-1400d16dfe21@redhat.com>
-Date: Wed, 29 Jan 2025 17:28:08 +0100
+ (Exim 4.90_1) (envelope-from <SRS0=PAS2=UV=kaod.org=clg@ozlabs.org>)
+ id 1tdBTy-0006Ox-Vf; Wed, 29 Jan 2025 12:04:12 -0500
+Received: from mail.ozlabs.org (mail.ozlabs.org [IPv6:2404:9400:2221:ea00::3])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4YjpQY5BHcz4x4t;
+ Thu, 30 Jan 2025 04:03:49 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4YjpQT6pxFz4wxm;
+ Thu, 30 Jan 2025 04:03:44 +1100 (AEDT)
+Message-ID: <2d9247ab-34dd-4dde-a9c0-c04c2d8a1a18@kaod.org>
+Date: Wed, 29 Jan 2025 18:03:50 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] tests/functional: Introduce a new test routine for
- OpenBMC images
-To: Thomas Huth <thuth@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Cc: Joel Stanley <joel@jms.id.au>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Troy Lee <troy_lee@aspeedtech.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- Steven Lee <steven_lee@aspeedtech.com>
-References: <20250129071820.1258133-1-clg@redhat.com>
- <20250129071820.1258133-2-clg@redhat.com>
- <98b2cdec-dcd2-44bf-a81e-91521e2bd446@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
+Subject: Re: [PATCH v1 01/18] hw/intc/aspeed: Rename INTC to INTC0
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: troy_lee@aspeedtech.com, yunlin.tang@aspeedtech.com
+References: <20250121070424.2465942-1-jamin_lin@aspeedtech.com>
+ <20250121070424.2465942-2-jamin_lin@aspeedtech.com>
+Content-Language: en-US, fr
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Autocrypt: addr=clg@kaod.org; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
  8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
  yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
@@ -132,56 +84,50 @@ Autocrypt: addr=clg@redhat.com; keydata=
  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
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <98b2cdec-dcd2-44bf-a81e-91521e2bd446@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: yrMH_I5tGAPT5WmxNpfJLquQOIfBU7ey-lqx9bBJcw0_1738168091
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
+ 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
+In-Reply-To: <20250121070424.2465942-2-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=PAS2=UV=kaod.org=clg@ozlabs.org; helo=mail.ozlabs.org
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.037, RCVD_IN_DNSWL_LOW=-0.7,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -196,64 +142,228 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-X-TUID: u7Fzg1oHRDFS
+X-TUID: 8jUQ7DR/DAfG
 
-On 1/29/25 08:58, Thomas Huth wrote:
-> On 29/01/2025 08.18, Cédric Le Goater wrote:
->> The OpenBMC images currently used by QEMU to test the Aspeed machines
->> are rather old. To prepare an update to the latest builds, we need to
->> adjust the console patterns. Introduce a new routine to preserve the
->> current tests.
->>
->> Signed-off-by: Cédric Le Goater <clg@redhat.com>
->> ---
->>   tests/functional/aspeed.py | 18 ++++++++++++++++++
->>   1 file changed, 18 insertions(+)
->>
->> diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
->> index b52358bb8c61..51c821944842 100644
->> --- a/tests/functional/aspeed.py
->> +++ b/tests/functional/aspeed.py
->> @@ -23,6 +23,24 @@ def do_test_arm_aspeed(self, machine, image):
->>           self.wait_for_console_pattern("ftgmac100 1e660000.ethernet eth0: irq ")
->>           self.wait_for_console_pattern("systemd[1]: Set hostname to")
->> +    def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
->> +                                   cpu_id='0x0', soc='AST2500 rev A1'):
->> +        hostname = machine.removesuffix('-bmc')
->> +
->> +        self.set_machine(machine)
->> +        self.vm.set_console()
->> +        self.vm.add_args('-drive', 'file=' + image + ',if=mtd,format=raw',
->> +                         '-net', 'nic', '-snapshot')
+On 1/21/25 08:04, Jamin Lin wrote:
+> The design of the INTC has significant changes in the AST2700 A1. In the
+> AST2700 A0, there was one INTC controller, whereas in the AST2700 A1,
+> there were two INTC controllers: INTC0 (CPU DIE) and INTC1 (I/O DIE).
 > 
-> "-net nic" is the default anyway, so unless you also use "-nodefaults", I think you can simply drop that?
-
-OK. Will do.
-
-Do you want a resend for that ? Unless you prefer this series
-to go through you tree, I will amend before sending PR.
+> The previous INTC model only supported the AST2700 A0 and was implemented for
+> the INTC0 (CPU DIE). To support the future INTC1 (I/O DIE) model, rename INTC
+> to INTC0.
 
 
-> 
->> +        self.vm.launch()
->> +
->> +        self.wait_for_console_pattern(f'U-Boot {uboot}')
->> +        self.wait_for_console_pattern('## Loading kernel from FIT Image')
->> +        self.wait_for_console_pattern('Starting kernel ...')
->> +        self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
->> +        self.wait_for_console_pattern(f'ASPEED {soc}')
->> +        self.wait_for_console_pattern('/init as init process')
->> +        self.wait_for_console_pattern(f'systemd[1]: Hostname set to <{hostname}>.')
->> +
->>       def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
->>           self.require_netdev('user')
->>           self.vm.set_console()
-> 
-> Anyway,
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+Why not introduce definitions with _INTC_IO_ and leave alone the current
+instead ? Do we expect to have more than 2 INTC controllers ?
+
 
 Thanks,
 
 C.
 
+
+
+
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   hw/arm/aspeed_ast27x0.c       |  6 +--
+>   hw/intc/aspeed_intc.c         | 90 +++++++++++++++++------------------
+>   include/hw/arm/aspeed_soc.h   |  2 +-
+>   include/hw/intc/aspeed_intc.h |  2 +-
+>   4 files changed, 50 insertions(+), 50 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
+> index 4114e15ddd..ba461fcd3c 100644
+> --- a/hw/arm/aspeed_ast27x0.c
+> +++ b/hw/arm/aspeed_ast27x0.c
+> @@ -56,7 +56,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
+>       [ASPEED_DEV_ETH2]      =  0x14060000,
+>       [ASPEED_DEV_ETH3]      =  0x14070000,
+>       [ASPEED_DEV_EMMC]      =  0x12090000,
+> -    [ASPEED_DEV_INTC]      =  0x12100000,
+> +    [ASPEED_DEV_INTC0]     =  0x12100000,
+>       [ASPEED_DEV_SLI]       =  0x12C17000,
+>       [ASPEED_DEV_SLIIO]     =  0x14C1E000,
+>       [ASPEED_GIC_DIST]      =  0x12200000,
+> @@ -372,7 +372,7 @@ static void aspeed_soc_ast2700_init(Object *obj)
+>   
+>       object_initialize_child(obj, "sli", &s->sli, TYPE_ASPEED_2700_SLI);
+>       object_initialize_child(obj, "sliio", &s->sliio, TYPE_ASPEED_2700_SLIIO);
+> -    object_initialize_child(obj, "intc", &a->intc, TYPE_ASPEED_2700_INTC);
+> +    object_initialize_child(obj, "intc", &a->intc, TYPE_ASPEED_2700_INTC0);
+>   
+>       snprintf(typename, sizeof(typename), "aspeed.adc-%s", socname);
+>       object_initialize_child(obj, "adc", &s->adc, typename);
+> @@ -517,7 +517,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
+>       }
+>   
+>       aspeed_mmio_map(s, SYS_BUS_DEVICE(&a->intc), 0,
+> -                    sc->memmap[ASPEED_DEV_INTC]);
+> +                    sc->memmap[ASPEED_DEV_INTC0]);
+>   
+>       /* GICINT orgates -> INTC -> GIC */
+>       for (i = 0; i < ic->num_ints; i++) {
+> diff --git a/hw/intc/aspeed_intc.c b/hw/intc/aspeed_intc.c
+> index 126b711b94..df4da759e1 100644
+> --- a/hw/intc/aspeed_intc.c
+> +++ b/hw/intc/aspeed_intc.c
+> @@ -14,27 +14,27 @@
+>   #include "hw/registerfields.h"
+>   #include "qapi/error.h"
+>   
+> -/* INTC Registers */
+> -REG32(GICINT128_EN,         0x1000)
+> -REG32(GICINT128_STATUS,     0x1004)
+> -REG32(GICINT129_EN,         0x1100)
+> -REG32(GICINT129_STATUS,     0x1104)
+> -REG32(GICINT130_EN,         0x1200)
+> -REG32(GICINT130_STATUS,     0x1204)
+> -REG32(GICINT131_EN,         0x1300)
+> -REG32(GICINT131_STATUS,     0x1304)
+> -REG32(GICINT132_EN,         0x1400)
+> -REG32(GICINT132_STATUS,     0x1404)
+> -REG32(GICINT133_EN,         0x1500)
+> -REG32(GICINT133_STATUS,     0x1504)
+> -REG32(GICINT134_EN,         0x1600)
+> -REG32(GICINT134_STATUS,     0x1604)
+> -REG32(GICINT135_EN,         0x1700)
+> -REG32(GICINT135_STATUS,     0x1704)
+> -REG32(GICINT136_EN,         0x1800)
+> -REG32(GICINT136_STATUS,     0x1804)
+> -
+> -#define GICINT_STATUS_BASE     R_GICINT128_STATUS
+> +/* AST2700 INTC0 Registers */
+> +REG32(INTC0_GICINT128_EN,         0x1000)
+> +REG32(INTC0_GICINT128_STATUS,     0x1004)
+> +REG32(INTC0_GICINT129_EN,         0x1100)
+> +REG32(INTC0_GICINT129_STATUS,     0x1104)
+> +REG32(INTC0_GICINT130_EN,         0x1200)
+> +REG32(INTC0_GICINT130_STATUS,     0x1204)
+> +REG32(INTC0_GICINT131_EN,         0x1300)
+> +REG32(INTC0_GICINT131_STATUS,     0x1304)
+> +REG32(INTC0_GICINT132_EN,         0x1400)
+> +REG32(INTC0_GICINT132_STATUS,     0x1404)
+> +REG32(INTC0_GICINT133_EN,         0x1500)
+> +REG32(INTC0_GICINT133_STATUS,     0x1504)
+> +REG32(INTC0_GICINT134_EN,         0x1600)
+> +REG32(INTC0_GICINT134_STATUS,     0x1604)
+> +REG32(INTC0_GICINT135_EN,         0x1700)
+> +REG32(INTC0_GICINT135_STATUS,     0x1704)
+> +REG32(INTC0_GICINT136_EN,         0x1800)
+> +REG32(INTC0_GICINT136_STATUS,     0x1804)
+> +
+> +#define GICINT_STATUS_BASE     R_INTC0_GICINT128_STATUS
+>   
+>   static void aspeed_intc_update(AspeedINTCState *s, int irq, int level)
+>   {
+> @@ -153,15 +153,15 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>       trace_aspeed_intc_write(offset, size, data);
+>   
+>       switch (addr) {
+> -    case R_GICINT128_EN:
+> -    case R_GICINT129_EN:
+> -    case R_GICINT130_EN:
+> -    case R_GICINT131_EN:
+> -    case R_GICINT132_EN:
+> -    case R_GICINT133_EN:
+> -    case R_GICINT134_EN:
+> -    case R_GICINT135_EN:
+> -    case R_GICINT136_EN:
+> +    case R_INTC0_GICINT128_EN:
+> +    case R_INTC0_GICINT129_EN:
+> +    case R_INTC0_GICINT130_EN:
+> +    case R_INTC0_GICINT131_EN:
+> +    case R_INTC0_GICINT132_EN:
+> +    case R_INTC0_GICINT133_EN:
+> +    case R_INTC0_GICINT134_EN:
+> +    case R_INTC0_GICINT135_EN:
+> +    case R_INTC0_GICINT136_EN:
+>           irq = (offset & 0x0f00) >> 8;
+>   
+>           if (irq >= aic->num_ints) {
+> @@ -202,15 +202,15 @@ static void aspeed_intc_write(void *opaque, hwaddr offset, uint64_t data,
+>           }
+>           s->regs[addr] = data;
+>           break;
+> -    case R_GICINT128_STATUS:
+> -    case R_GICINT129_STATUS:
+> -    case R_GICINT130_STATUS:
+> -    case R_GICINT131_STATUS:
+> -    case R_GICINT132_STATUS:
+> -    case R_GICINT133_STATUS:
+> -    case R_GICINT134_STATUS:
+> -    case R_GICINT135_STATUS:
+> -    case R_GICINT136_STATUS:
+> +    case R_INTC0_GICINT128_STATUS:
+> +    case R_INTC0_GICINT129_STATUS:
+> +    case R_INTC0_GICINT130_STATUS:
+> +    case R_INTC0_GICINT131_STATUS:
+> +    case R_INTC0_GICINT132_STATUS:
+> +    case R_INTC0_GICINT133_STATUS:
+> +    case R_INTC0_GICINT134_STATUS:
+> +    case R_INTC0_GICINT135_STATUS:
+> +    case R_INTC0_GICINT136_STATUS:
+>           irq = (offset & 0x0f00) >> 8;
+>   
+>           if (irq >= aic->num_ints) {
+> @@ -336,26 +336,26 @@ static const TypeInfo aspeed_intc_info = {
+>       .abstract = true,
+>   };
+>   
+> -static void aspeed_2700_intc_class_init(ObjectClass *klass, void *data)
+> +static void aspeed_2700_intc0_class_init(ObjectClass *klass, void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+>       AspeedINTCClass *aic = ASPEED_INTC_CLASS(klass);
+>   
+> -    dc->desc = "ASPEED 2700 INTC Controller";
+> +    dc->desc = "ASPEED 2700 INTC 0 Controller";
+>       aic->num_lines = 32;
+>       aic->num_ints = 9;
+>   }
+>   
+> -static const TypeInfo aspeed_2700_intc_info = {
+> -    .name = TYPE_ASPEED_2700_INTC,
+> +static const TypeInfo aspeed_2700_intc0_info = {
+> +    .name = TYPE_ASPEED_2700_INTC0,
+>       .parent = TYPE_ASPEED_INTC,
+> -    .class_init = aspeed_2700_intc_class_init,
+> +    .class_init = aspeed_2700_intc0_class_init,
+>   };
+>   
+>   static void aspeed_intc_register_types(void)
+>   {
+>       type_register_static(&aspeed_intc_info);
+> -    type_register_static(&aspeed_2700_intc_info);
+> +    type_register_static(&aspeed_2700_intc0_info);
+>   }
+>   
+>   type_init(aspeed_intc_register_types);
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 689f52dae8..51e585e3e4 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -194,7 +194,7 @@ enum {
+>       ASPEED_DEV_EHCI1,
+>       ASPEED_DEV_EHCI2,
+>       ASPEED_DEV_VIC,
+> -    ASPEED_DEV_INTC,
+> +    ASPEED_DEV_INTC0,
+>       ASPEED_DEV_SDMC,
+>       ASPEED_DEV_SCU,
+>       ASPEED_DEV_ADC,
+> diff --git a/include/hw/intc/aspeed_intc.h b/include/hw/intc/aspeed_intc.h
+> index 18cb43476c..10718ed4a1 100644
+> --- a/include/hw/intc/aspeed_intc.h
+> +++ b/include/hw/intc/aspeed_intc.h
+> @@ -13,7 +13,7 @@
+>   #include "hw/or-irq.h"
+>   
+>   #define TYPE_ASPEED_INTC "aspeed.intc"
+> -#define TYPE_ASPEED_2700_INTC TYPE_ASPEED_INTC "-ast2700"
+> +#define TYPE_ASPEED_2700_INTC0 TYPE_ASPEED_INTC "0" "-ast2700"
+>   OBJECT_DECLARE_TYPE(AspeedINTCState, AspeedINTCClass, ASPEED_INTC)
+>   
+>   #define ASPEED_INTC_NR_REGS (0x2000 >> 2)
 
